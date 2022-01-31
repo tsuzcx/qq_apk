@@ -1,34 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.troop.activity.QLifeCommentActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public final class bbcd
-  extends BroadcastReceiver
+public class bbcd
+  extends amle
 {
-  public bbcd(BaseApplicationImpl paramBaseApplicationImpl) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public bbcd(QLifeCommentActivity paramQLifeCommentActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    int i;
-    do
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QLifeCommentActivity", 2, "onLocationFinish() errCode=" + paramInt);
+    }
+    if (paramSosoLbsInfo != null)
     {
-      do
-      {
-        return;
-      } while (!"tencent.video.q2v.debug".equals(paramIntent.getAction()));
-      i = paramIntent.getIntExtra("_debug_Event_index", -1);
-      int j = paramIntent.getIntExtra("_debug_Event_value", -1);
-      if ((i >= 0) && (i < 35))
-      {
-        AudioHelper.a[i] = j;
-        QLog.w("AudioHelper", 1, "ReceiverDebugValue, [" + i + "]=[" + j + "]");
-      }
-    } while (i != 2);
-    AudioHelper.a(this.a.getApplicationContext());
+      this.a.a = paramSosoLbsInfo.a.a;
+      this.a.b = paramSosoLbsInfo.a.b;
+    }
+    QLifeCommentActivity.a(this.a, this.a.a, this.a.b);
   }
 }
 

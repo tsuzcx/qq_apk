@@ -1,37 +1,37 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
 
-public class auav
-  extends aueh
+class auav
+  extends alsi
 {
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  auav(auat paramauat, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, String paramString, int paramInt) {}
   
-  public auav(OCRResultFragmentNew paramOCRResultFragmentNew) {}
-  
-  public void a(MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, long paramLong, alsj paramalsj)
   {
-    super.a(paramMotionEvent);
-    if ((this.jdField_a_of_type_Boolean) || (this.b)) {
-      auad.a("0X800AC97", 0);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().notifyUI(6003, true, new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq + "" });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData);
+    if (paramBoolean)
+    {
+      auat.a(this.jdField_a_of_type_Auat, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
+      return;
     }
-  }
-  
-  public void a(ScaleGestureDetector paramScaleGestureDetector)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    this.b = true;
-    return super.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    auat localauat = this.jdField_a_of_type_Auat;
+    MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
+    StringBuilder localStringBuilder = new StringBuilder().append("sendStructLongMsg fail : errCode = ");
+    if (paramalsj != null) {}
+    for (paramalsj = Integer.valueOf(paramalsj.b);; paramalsj = "")
+    {
+      auat.a(localauat, localMessageForMixedMsg, true, paramalsj);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auav
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,47 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import java.net.URL;
 
-public class pdu
+public abstract class pdu
+  implements rkx
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public int a;
+  protected Context a;
+  protected View.OnClickListener a;
+  protected pdj a;
+  public View f;
+  
+  public pdu(Context paramContext, pdj parampdj)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    pek.a(paramBaseArticleInfo, localJSONObject1, true);
-    oar.b(paramBaseArticleInfo, localJSONObject1);
-    oar.a(paramBaseArticleInfo, localJSONObject1);
-    pek.m(paramBaseArticleInfo, localJSONObject1);
-    pek.e(paramBaseArticleInfo, localJSONObject1);
-    pek.g(paramBaseArticleInfo, localJSONObject1);
-    pek.aa(paramBaseArticleInfo, localJSONObject1);
-    localJSONObject1.put("style_ID", "ReadInjoy_ad_triple_img_interact_cell");
-    pek.a(localJSONObject1, paramBaseArticleInfo);
-    if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo))
-    {
-      pek.d(paramBaseArticleInfo, localJSONObject1);
-      localJSONObject2 = new JSONObject();
-      localJSONObject2.put("article_model", paramBaseArticleInfo);
-      localJSONObject1.put("id_view_AdBanner", localJSONObject2);
-    }
-    JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("article_model", paramBaseArticleInfo);
-    localJSONObject1.put("id_article_triple_image_interact", localJSONObject2);
-    localJSONObject1.put("id_info_operate_parent", new JSONObject());
-    localJSONObject1.put("id_ad_triple_container", new JSONObject());
-    return localJSONObject1;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Pdj = parampdj;
   }
+  
+  public abstract View a(int paramInt, ViewGroup paramViewGroup);
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+  }
+  
+  protected void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL)
+  {
+    a(paramKandianUrlImageView, paramURL, false);
+  }
+  
+  protected void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, boolean paramBoolean)
+  {
+    orc.a(paramKandianUrlImageView, paramURL, this.jdField_a_of_type_AndroidContentContext, paramBoolean);
+  }
+  
+  public void a(rjk paramrjk, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pdu
  * JD-Core Version:    0.7.0.1
  */

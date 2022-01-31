@@ -1,25 +1,23 @@
-import android.content.Intent;
-import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqcircle.style.QCircleWebViewTitleStyle;
 
-public abstract interface tyw
+public final class tyw
+  implements Parcelable.Creator<QCircleWebViewTitleStyle>
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  public QCircleWebViewTitleStyle a(Parcel paramParcel)
+  {
+    return new QCircleWebViewTitleStyle(paramParcel);
+  }
   
-  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public QCircleWebViewTitleStyle[] a(int paramInt)
+  {
+    return new QCircleWebViewTitleStyle[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tyw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,108 @@
-import java.util.Arrays;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView.Renderer;
+import cooperation.qzone.panorama.piece.PanoramaPieceManager;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class bjiw
+  implements GLSurfaceView.Renderer
 {
-  public static String a;
-  private static final int[] a;
+  private int jdField_a_of_type_Int;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private bjis jdField_a_of_type_Bjis;
+  private bjja jdField_a_of_type_Bjja;
+  private bjje jdField_a_of_type_Bjje;
+  private bjjh jdField_a_of_type_Bjjh;
+  private int b;
+  private int c;
+  private int d;
   
-  static
+  public bjiw(bjjh parambjjh, bjis parambjis)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 0, 64, 91, 96, 123, 8543, 8576, 12295, 19967, 40870, 65295, 65306, 65312, 65339, 65344, 65371, 2147483647 };
-    jdField_a_of_type_JavaLangString = "[a-zA-Z0-9\\u4e00-\\u9fa5]";
+    this.jdField_a_of_type_Bjjh = parambjjh;
+    this.jdField_a_of_type_Int = parambjjh.b();
+    this.jdField_a_of_type_Bjja = parambjjh.a();
+    this.d = parambjjh.a();
+    this.jdField_a_of_type_Bjis = parambjis;
   }
   
-  public static int a(char paramChar)
+  public void a()
   {
-    if (a(paramChar)) {
-      return 3;
+    bjjj.a(this.c);
+    bjjj.a(this.jdField_a_of_type_Bjje);
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (this.jdField_a_of_type_Bjja != null) {
+      this.jdField_a_of_type_Bjja.a(paramFloat);
     }
-    switch (Arrays.binarySearch(jdField_a_of_type_ArrayOfInt, paramChar))
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    if (this.jdField_a_of_type_Bjja != null) {
+      this.jdField_a_of_type_Bjja.a(paramFloat1, paramFloat2);
+    }
+  }
+  
+  public void onDrawFrame(GL10 paramGL10)
+  {
+    GLES20.glClear(16384);
+    if ((this.jdField_a_of_type_Bjjh != null) && (this.jdField_a_of_type_Bjjh.f()))
     {
-    default: 
-      if (Character.isHighSurrogate(paramChar)) {
-        return 2;
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_Bjjh.a();
+      bjjj.a(this.c);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+        this.c = bjjj.a(((BitmapDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap(), false);
       }
-      break;
-    case -16: 
-    case -14: 
-    case -12: 
-    case -10: 
-    case -7: 
-    case -5: 
-    case -3: 
-    case 5: 
-      return 0;
+      if (this.jdField_a_of_type_Bjis != null) {
+        this.jdField_a_of_type_Bjis.b();
+      }
     }
-    return 1;
+    if ((this.jdField_a_of_type_Bjjh != null) && (this.jdField_a_of_type_Bjjh.a() != null))
+    {
+      this.jdField_a_of_type_Bjjh.a().d();
+      this.jdField_a_of_type_Bjje = this.jdField_a_of_type_Bjjh.a().a();
+      this.jdField_a_of_type_Bjja.a(this.jdField_a_of_type_Bjje);
+    }
+    if (this.jdField_a_of_type_Bjja != null)
+    {
+      this.jdField_a_of_type_Bjja.b(this.c);
+      this.jdField_a_of_type_Bjja.c();
+      this.jdField_a_of_type_Bjja.d();
+    }
   }
   
-  public static int a(String paramString)
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    return Character.codePointCount(paramString, 0, paramString.length());
+    GLES20.glViewport(0, 0, paramInt1, paramInt2);
+    GLES20.glEnable(2884);
+    float f = paramInt1 / paramInt2;
+    if (this.jdField_a_of_type_Bjja != null) {
+      this.jdField_a_of_type_Bjja.b(f);
+    }
   }
   
-  private static boolean a(char paramChar)
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    return (paramChar >= '0') && (paramChar <= '9');
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+    this.b = bjji.a();
+    GLES20.glUseProgram(this.b);
+    if (this.jdField_a_of_type_Bjja != null) {
+      this.jdField_a_of_type_Bjja.a(this.b);
+    }
+    paramGL10 = this.jdField_a_of_type_Bjjh.a();
+    if ((paramGL10 != null) && (this.jdField_a_of_type_Bjja != null)) {
+      paramGL10.b(this.jdField_a_of_type_Bjja.a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjiw
  * JD-Core Version:    0.7.0.1
  */

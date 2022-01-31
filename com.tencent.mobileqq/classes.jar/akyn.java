@@ -1,62 +1,26 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.TreeMap;
 
-public class akyn
+class akyn
+  implements alfp
 {
-  public long a;
-  private ArCloudConfigInfo jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-  public String a;
-  public HashMap<Integer, String> a;
-  private final TreeMap<Integer, akyo> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
-  public boolean a;
-  public long b;
-  public String b;
-  public long c = 0L;
+  akyn(akym paramakym) {}
   
-  public akyn()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public ArCloudConfigInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-  }
-  
-  public String a(int paramInt)
-  {
-    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-  }
-  
-  public TreeMap<Integer, akyo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilTreeMap;
-  }
-  
-  public String toString()
-  {
-    String str = "id[" + this.jdField_a_of_type_JavaLangString + "], recoglizeMask[" + this.c + "]";
-    Object localObject = str;
-    if (QLog.isDevelopLevel())
-    {
-      localObject = this.jdField_a_of_type_JavaUtilTreeMap.values().iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        akyo localakyo = (akyo)((Iterator)localObject).next();
-        str = str + "\n" + localakyo;
-      }
-      localObject = str + ", begin[" + this.jdField_a_of_type_Long + "], end[" + this.jdField_b_of_type_Long + "], title[" + this.jdField_b_of_type_JavaLangString + "], tips[" + this.jdField_a_of_type_JavaUtilHashMap.size() + "]";
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloGameActivity.b, 2, new Object[] { "createShortcut result:", Integer.valueOf(paramInt) });
     }
-    return localObject;
+    if (this.a.jdField_a_of_type_Alfo != null) {
+      this.a.jdField_a_of_type_Alfo.a(paramInt);
+    }
+    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, paramInt, new String[] { String.valueOf(this.a.jdField_a_of_type_Int) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyn
  * JD-Core Version:    0.7.0.1
  */

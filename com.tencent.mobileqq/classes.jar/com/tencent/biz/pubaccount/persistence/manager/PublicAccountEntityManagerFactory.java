@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.persistence.manager;
 
-import akfu;
+import alxk;
 import android.database.Cursor;
-import aukp;
-import aulc;
-import aulp;
+import awbw;
+import awcj;
+import awcw;
 import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
@@ -42,7 +42,7 @@ public class PublicAccountEntityManagerFactory
                 continue;
               }
               localObject = PAAdPreloadTask.class;
-              aulc.a(localArrayList, str, localCursor2, (Class)localObject);
+              awcj.a(localArrayList, str, localCursor2, (Class)localObject);
             }
             catch (ClassNotFoundException localClassNotFoundException)
             {
@@ -76,19 +76,19 @@ public class PublicAccountEntityManagerFactory
     com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
   }
   
-  public akfu build(String paramString)
+  public alxk build(String paramString)
   {
     if (this.dbHelper == null)
     {
       this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "public_account_database_" + paramString + ".db", null, 1);
-      this.dbHelper = new akfu(this.mInnerDbHelper);
+      this.dbHelper = new alxk(this.mInnerDbHelper);
     }
     return this.dbHelper;
   }
   
   public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
-    paramSQLiteDatabase.execSQL(aulp.a(new PAAdPreloadTask()));
+    paramSQLiteDatabase.execSQL(awcw.a(new PAAdPreloadTask()));
   }
   
   public String getPackageName()
@@ -106,13 +106,13 @@ public class PublicAccountEntityManagerFactory
   {
     if (this.name.matches("^[0-9]*$"))
     {
-      aukp localaukp = createEntityManager();
-      PublicAccountEntityManagerFactory.VerifyEntity localVerifyEntity = (PublicAccountEntityManagerFactory.VerifyEntity)localaukp.a(PublicAccountEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "public_account_database_verify_entity" });
+      awbw localawbw = createEntityManager();
+      PublicAccountEntityManagerFactory.VerifyEntity localVerifyEntity = (PublicAccountEntityManagerFactory.VerifyEntity)localawbw.a(PublicAccountEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "public_account_database_verify_entity" });
       if (localVerifyEntity == null)
       {
         localVerifyEntity = new PublicAccountEntityManagerFactory.VerifyEntity();
         localVerifyEntity.name = this.name;
-        localaukp.b(localVerifyEntity);
+        localawbw.b(localVerifyEntity);
         return true;
       }
       if ((!localVerifyEntity.flags.equals("public_account_database_verify_entity")) || (!localVerifyEntity.name.equals(this.name)))
@@ -120,7 +120,7 @@ public class PublicAccountEntityManagerFactory
         this.mInnerDbHelper.dropAllTable();
         localVerifyEntity = new PublicAccountEntityManagerFactory.VerifyEntity();
         localVerifyEntity.name = this.name;
-        localaukp.b(localVerifyEntity);
+        localawbw.b(localVerifyEntity);
         return false;
       }
     }
@@ -129,7 +129,7 @@ public class PublicAccountEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.persistence.manager.PublicAccountEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.history;
 
-import agba;
+import ahyy;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ChatHistoryTroopMemberFragment$TroopAdmin
   implements Parcelable
 {
-  public static final Parcelable.Creator<TroopAdmin> CREATOR = new agba();
+  public static final Parcelable.Creator<TroopAdmin> CREATOR = new ahyy();
   public String a;
   public short a;
   public String b;
@@ -51,7 +51,7 @@ public class ChatHistoryTroopMemberFragment$TroopAdmin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.TroopAdmin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,100 +1,87 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqpim.QQPimBridgeActivity;
+import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
+import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
+import com.tencent.qqmini.sdk.core.plugins.engine.JsPluginEngine;
 
 public class bgtg
+  implements IJSEngine
 {
-  public static Intent a(Context paramContext)
+  private bgtj jdField_a_of_type_Bgtj;
+  private JsPluginEngine jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine;
+  
+  bgtg(bgtj parambgtj)
   {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getLaunchIntentForPackage("com.tencent.qqpim");
-      return paramContext;
+    this.jdField_a_of_type_Bgtj = parambgtj;
+  }
+  
+  public JsPluginEngine a()
+  {
+    return this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onResume();
     }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onPause();
+    }
+  }
+  
+  public boolean canHandleEvent(String paramString)
+  {
+    return true;
+  }
+  
+  public ITTJSRuntime getJsRuntime(int paramInt)
+  {
+    if (this.jdField_a_of_type_Bgtj.a(paramInt) != null) {
+      return this.jdField_a_of_type_Bgtj.a(paramInt).a;
     }
     return null;
   }
   
-  public static Intent a(Context paramContext, String paramString1, String paramString2)
+  public void onCreate(Context paramContext)
   {
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    try
-    {
-      if (localPackageManager.getPackageInfo("com.tencent.qqpim", 1).versionCode < 1171)
-      {
-        paramContext = a(paramContext);
-        paramContext.putExtra("big_brother_source_key", "biz_src_qqpim");
-        return paramContext;
-      }
-      paramContext = new Intent();
-      paramContext.setPackage("com.tencent.qqpim");
-      paramContext.setAction("com.tencent.qqpim.action_open_qqpim");
-      paramContext.putExtra("product_package", "com.tencent.mobileqq");
-      paramContext.putExtra("model_name", paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        paramContext.putExtra("account_name", paramString2);
-      }
-      paramContext.setFlags(67108864);
-      paramContext.setFlags(268435456);
-      paramContext.putExtra("big_brother_source_key", "biz_src_qqpim");
-      return paramContext;
-    }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
+    this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine = new JsPluginEngine(paramContext);
+    this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onCreate(this.jdField_a_of_type_Bgtj);
   }
   
-  public static boolean a(Context paramContext)
+  public void onDestroy()
   {
-    boolean bool = true;
-    paramContext = paramContext.getPackageManager();
-    try
-    {
-      paramContext = paramContext.getPackageInfo("com.tencent.qqpim", 1);
-      if (paramContext == null) {
-        bool = false;
-      }
-      return bool;
-    }
-    catch (Throwable paramContext)
-    {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-        paramContext = null;
-      }
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
+      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onDestroy();
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, Bundle paramBundle)
+  public String onScriptCall(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if (a(paramActivity))
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null)
     {
-      axqy.b(paramQQAppInterface, "CliOper", "", "", "0X8006711", "0X8006711", 0, 0, "", "", "", "");
-      paramActivity.startActivity(a(paramActivity, bgta.s, null));
-      return;
+      bgth localbgth = this.jdField_a_of_type_Bgtj.a(paramInt2);
+      localObject1 = localObject2;
+      if (localbgth != null) {
+        localObject1 = this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.handleNativeRequest(paramString1, paramString2, localbgth, paramInt1);
+      }
     }
-    axqy.b(paramQQAppInterface, "CliOper", "", "", "0X8006712", "0X8006712", 0, 0, "", "", "", "");
-    paramQQAppInterface = new Intent();
-    paramQQAppInterface.setClass(paramActivity, QQPimBridgeActivity.class);
-    paramQQAppInterface.putExtras(paramBundle);
-    paramActivity.startActivity(paramQQAppInterface);
+    paramString1 = (String)localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      paramString1 = "{}";
+    }
+    return paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgtg
  * JD-Core Version:    0.7.0.1
  */

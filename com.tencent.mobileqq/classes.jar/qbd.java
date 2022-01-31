@@ -1,60 +1,120 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
+import android.content.Context;
+import android.graphics.Color;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentCenterTopicTitle;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderNewSocial;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class qbd
+  extends pxv
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  
-  public static qbd a(articlesummary.HotWordItem paramHotWordItem)
+  public qbd(Context paramContext, bcws parambcws, rqj paramrqj)
   {
-    qbd localqbd = new qbd();
-    if (paramHotWordItem.hot_word.has()) {
-      localqbd.a = paramHotWordItem.hot_word.get().toStringUtf8();
-    }
-    if (paramHotWordItem.jump_url.has()) {
-      localqbd.b = paramHotWordItem.jump_url.get().toStringUtf8();
-    }
-    if (paramHotWordItem.index_word_color.has()) {
-      localqbd.c = paramHotWordItem.index_word_color.get().toStringUtf8();
-    }
-    if (paramHotWordItem.index_bg_color.has()) {
-      localqbd.d = paramHotWordItem.index_bg_color.get().toStringUtf8();
-    }
-    return localqbd;
+    super(paramContext, parambcws, paramrqj);
   }
   
-  public articlesummary.HotWordItem a()
+  public pxl a()
   {
-    articlesummary.HotWordItem localHotWordItem = new articlesummary.HotWordItem();
-    if (!TextUtils.isEmpty(this.a)) {
-      localHotWordItem.hot_word.set(ByteStringMicro.copyFromUtf8(this.a));
-    }
-    if (!TextUtils.isEmpty(this.d)) {
-      localHotWordItem.index_bg_color.set(ByteStringMicro.copyFromUtf8(this.d));
-    }
-    if (!TextUtils.isEmpty(this.c)) {
-      localHotWordItem.index_word_color.set(ByteStringMicro.copyFromUtf8(this.c));
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localHotWordItem.jump_url.set(ByteStringMicro.copyFromUtf8(this.b));
-    }
-    return localHotWordItem;
+    this.jdField_a_of_type_Boolean = true;
+    return a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).f().g().h().q().l().n();
   }
   
-  public boolean equals(Object paramObject)
+  public pxl d()
   {
-    return ((paramObject instanceof qbd)) && (!TextUtils.isEmpty(this.a)) && (this.a.equals(((qbd)paramObject).a)) && (!TextUtils.isEmpty(this.b)) && (this.b.equals(((qbd)paramObject).b));
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial);
+    }
+    if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentBig)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null))
+    {
+      RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+      Object localObject = new LinearLayout.LayoutParams(-2, -2);
+      ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((LinearLayout.LayoutParams)localObject).rightMargin = aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((LinearLayout.LayoutParams)localObject).bottomMargin = aekt.a(13.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      ((LinearLayout.LayoutParams)localObject).gravity = 1;
+      localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = new RelativeLayout.LayoutParams(-1, aekt.a(150.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((ComponentContentBig)this.jdField_a_of_type_Pxk).setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(-1, aekt.a(150.0F, this.jdField_a_of_type_AndroidContentContext.getResources())));
+      ((ImageView)localObject).setBackgroundColor(Color.parseColor("#66000000"));
+      localRelativeLayout.addView((ComponentContentBig)this.jdField_a_of_type_Pxk);
+      localRelativeLayout.addView((View)localObject);
+      localObject = new RelativeLayout.LayoutParams(-1, -2);
+      ((RelativeLayout.LayoutParams)localObject).addRule(13);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+      localRelativeLayout.setOnClickListener(new qbe(this));
+      localLinearLayout.addView(localRelativeLayout);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public pxl h()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle = new ComponentCenterTopicTitle(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pxl o()
+  {
+    super.o();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_JavaLangObject);
+      if ((this.jdField_a_of_type_JavaLangObject instanceof pgd))
+      {
+        pgd localpgd = (pgd)this.jdField_a_of_type_JavaLangObject;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.setReadedStatus(this.jdField_a_of_type_Rqj.a(localpgd.e(), localpgd.a().mArticleID));
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    return this;
+  }
+  
+  public pxl p()
+  {
+    super.p();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderNewSocial.a(this.jdField_a_of_type_Pxt);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_Pxt);
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qbd
  * JD-Core Version:    0.7.0.1
  */

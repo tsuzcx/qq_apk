@@ -3,12 +3,12 @@ package com.tencent.mobileqq.teamwork;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ayes;
+import bacp;
 
 public class TeamWorkFileImportInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<TeamWorkFileImportInfo> CREATOR = new ayes();
+  public static final Parcelable.Creator<TeamWorkFileImportInfo> CREATOR = new bacp();
   public int a;
   public long a;
   public String a;
@@ -268,7 +268,7 @@ public class TeamWorkFileImportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo
  * JD-Core Version:    0.7.0.1
  */

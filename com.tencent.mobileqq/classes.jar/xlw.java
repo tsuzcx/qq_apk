@@ -1,25 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.image.URLImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
 class xlw
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  xlw(xls paramxls, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  xlw(xlv paramxlv, TroopStoryItemInfo paramTroopStoryItemInfo) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    paramView = ((uro)urr.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
+    if (paramView != null) {
+      ((ukd)urr.a().b(3)).a(paramView);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xlw
  * JD-Core Version:    0.7.0.1
  */

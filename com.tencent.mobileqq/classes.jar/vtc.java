@@ -1,81 +1,19 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Handler;
-import android.support.v4.util.LruCache;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
 
-public class vtc
+class vtc
+  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
 {
-  public int a;
-  protected Context a;
-  public Handler a;
-  public LruCache<String, wbq> a;
-  public int b;
+  vtc(vsv paramvsv) {}
   
-  protected Bitmap a(Bitmap paramBitmap)
+  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    ved.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap start.");
-    float f2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
-    int i = paramBitmap.getWidth();
-    float f1 = f2;
-    if (i > 0)
-    {
-      f1 = f2;
-      if (i < this.jdField_a_of_type_Int * f2) {
-        f1 = i / this.jdField_a_of_type_Int;
-      }
-    }
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Int * f1));
-    this.b = ((int)(f1 * this.b));
-    i = this.jdField_a_of_type_Int;
-    ved.c("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap end.");
-    return bbef.a(paramBitmap, i, this.jdField_a_of_type_Int, this.b);
-  }
-  
-  public Bitmap a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      ved.e("Q.qqstory.record.StoryFaceDrawableFactory", "localPath = null!");
-      return null;
-    }
-    ved.b("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath start. localPath:%s.", paramString);
-    try
-    {
-      paramString = BitmapFactory.decodeFile(paramString);
-      if (paramString == null)
-      {
-        ved.e("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile return null!");
-        return null;
-      }
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      for (;;)
-      {
-        ved.c("Q.qqstory.record.StoryFaceDrawableFactory", "BitmapFactory.decodeFile error : %s.", paramString);
-        paramString = null;
-      }
-      Bitmap localBitmap = a(paramString);
-      if (localBitmap == null)
-      {
-        ved.e("Q.qqstory.record.StoryFaceDrawableFactory", "getCircleFaceBitmap return null!");
-        return null;
-      }
-      if ((paramString != null) && (!paramString.isRecycled())) {
-        paramString.recycle();
-      }
-      ved.c("Q.qqstory.record.StoryFaceDrawableFactory", "getFaceBitmapByPath end.");
-      return localBitmap;
-    }
+    wsv.a(this.a.a, "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vtc
  * JD-Core Version:    0.7.0.1
  */

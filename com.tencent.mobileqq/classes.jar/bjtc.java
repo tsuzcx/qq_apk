@@ -1,23 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 
-public final class bjtc
-  implements Parcelable.Creator<EditLocalGifSource>
+final class bjtc
+  implements DialogInterface.OnClickListener
 {
-  public EditLocalGifSource a(Parcel paramParcel)
-  {
-    return new EditLocalGifSource(paramParcel);
-  }
+  bjtc(Context paramContext) {}
   
-  public EditLocalGifSource[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new EditLocalGifSource[paramInt];
+    try
+    {
+      if (bizf.a().indexOf("GM") < 0) {
+        bjta.a(QzoneConfig.getInstance().getConfig("H5Url", "DownloadQzoneClient", "https://m.qzone.com/client/fwd?bid=update&_wv=7"), this.a);
+      }
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("showQzoneAppDownloadDialog", 2, "simpleBrowserJump exception", paramDialogInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjtc
  * JD-Core Version:    0.7.0.1
  */

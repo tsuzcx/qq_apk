@@ -3,18 +3,18 @@ package com.tencent.biz.pubaccount.readinjoy.channelCover;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import nol;
-import npu;
-import oen;
+import nrt;
+import ntd;
+import oiz;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qza;
-import qzb;
+import rom;
+import ron;
 
 public class ChannelCoverSimpleAdapter$1
   implements Runnable
 {
-  public ChannelCoverSimpleAdapter$1(oen paramoen, ChannelCoverInfo paramChannelCoverInfo) {}
+  public ChannelCoverSimpleAdapter$1(oiz paramoiz, ChannelCoverInfo paramChannelCoverInfo) {}
   
   public void run()
   {
@@ -22,12 +22,12 @@ public class ChannelCoverSimpleAdapter$1
     {
       try
       {
-        if ((oen.a(this.this$0) != null) && ((oen.a(this.this$0) instanceof Activity)) && (((Activity)oen.a(this.this$0)).getIntent() != null))
+        if ((oiz.a(this.this$0) != null) && ((oiz.a(this.this$0) instanceof Activity)) && (((Activity)oiz.a(this.this$0)).getIntent() != null))
         {
-          i = ((Activity)oen.a(this.this$0)).getIntent().getIntExtra("channel_from", -1);
+          i = ((Activity)oiz.a(this.this$0)).getIntent().getIntExtra("channel_from", -1);
           JSONObject localJSONObject = new JSONObject();
           localJSONObject.put("is_followed", "1");
-          nol.a(null, "", "0X8007BE6", "0X8007BE6", 0, 0, "1", "", "", new qzb(npu.a(this.a.mChannelCoverId, localJSONObject)).P(i).a().a(), false);
+          nrt.a(null, "", "0X8007BE6", "0X8007BE6", 0, 0, "1", "", "", new ron(ntd.a(this.a.mChannelCoverId, localJSONObject)).O(i).a().a(), false);
           return;
         }
       }
@@ -42,7 +42,7 @@ public class ChannelCoverSimpleAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverSimpleAdapter.1
  * JD-Core Version:    0.7.0.1
  */

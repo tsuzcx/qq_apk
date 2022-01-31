@@ -1,104 +1,82 @@
-import android.content.Intent;
-import cooperation.qqfav.widget.LocationDetailActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.manager.EngineVersion;
+import java.io.File;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
-public class bgru
-  extends bgrn
+class bgru
+  implements DownloaderProxy.DownloadListener
 {
-  private WeakReference<LocationDetailActivity> a;
+  private float jdField_a_of_type_Float;
   
-  public bgru(LocationDetailActivity paramLocationDetailActivity)
+  bgru(bgrt parambgrt, String paramString, BaseLibInfo paramBaseLibInfo, long paramLong, File paramFile, EngineVersion paramEngineVersion, boolean paramBoolean) {}
+  
+  public void onDownloadFailed(int paramInt, String paramString)
   {
-    this.a = new WeakReference(paramLocationDetailActivity);
+    QMLog.i("EngineInstaller", "[MiniEng] onDownloadFailed " + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType == 2) {
+      bgyd.a(bghu.a(), 5, null, null, null, 1, "1", 0L, null);
+    }
+    bgrt.a(this.jdField_a_of_type_Bgrt);
   }
   
-  public void a()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    localLocationDetailActivity.b(true);
-    bgqi.a(null, "User_Modify", 7, 0, localLocationDetailActivity.getIntent().getIntExtra("category", 1));
-  }
+  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
   
-  public void a(String paramString)
+  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2)
   {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {}
-    while (localLocationDetailActivity.getString(2131692983).compareTo(paramString) != 0) {
-      return;
-    }
-  }
-  
-  public void c()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {}
-    while (!localLocationDetailActivity.d()) {
-      return;
-    }
-    localLocationDetailActivity.finish();
-  }
-  
-  public void d()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    localLocationDetailActivity.A();
-  }
-  
-  public void e()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if ((localLocationDetailActivity == null) || (localLocationDetailActivity.a == null)) {}
-    while (!localLocationDetailActivity.c()) {
-      return;
-    }
-    int i;
-    if (localLocationDetailActivity.e())
+    if (paramFloat - this.jdField_a_of_type_Float > 0.05F)
     {
-      i = 256;
-      if (!localLocationDetailActivity.e()) {
-        break label98;
+      this.jdField_a_of_type_Float = paramFloat;
+      bgrt.a(this.jdField_a_of_type_Bgrt, paramFloat, "正在下载引擎 " + String.format(Locale.getDefault(), "%.1f", new Object[] { Float.valueOf(100.0F * paramFloat) }) + "%");
+      QMLog.i("EngineInstaller", "[MiniEng]onDownloadProgress, progress=" + paramFloat);
+    }
+  }
+  
+  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
+  {
+    QMLog.i("EngineInstaller", "[MiniEng] onDownloadSucceed " + this.jdField_a_of_type_JavaLangString);
+    paramMap = new File(paramString);
+    if ((paramMap.length() == this.jdField_a_of_type_Long) || (this.jdField_a_of_type_Long < 0L))
+    {
+      QMLog.i("EngineInstaller", "[MiniEng] onDownloadSucceed length is match " + this.jdField_a_of_type_Long);
+      bgrt.a(this.jdField_a_of_type_Bgrt, 1.0F, "正在下载引擎 100%");
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType == 2)
+      {
+        bgyd.a(bghu.a(), 5, "1");
+        bgyd.a(bghu.a(), 6, "1");
       }
     }
-    label98:
-    for (String str = localLocationDetailActivity.getString(2131698119);; str = localLocationDetailActivity.getString(2131698095))
+    for (;;)
     {
-      if (!localLocationDetailActivity.a.a(Integer.valueOf(128))) {
-        break label108;
+      try
+      {
+        boolean bool = bgrt.a(this.jdField_a_of_type_Bgrt, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion, paramString, this.jdField_a_of_type_Boolean);
+        if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType == 2)
+        {
+          paramString = bghu.a();
+          if (!bool) {
+            break label255;
+          }
+          paramInt = 0;
+          bgyd.a(paramString, 7, null, null, null, paramInt, "1", 0L, null);
+        }
+        return;
       }
-      localLocationDetailActivity.a.a(Integer.valueOf(128), Integer.valueOf(i), str);
+      finally {}
+      QMLog.i("EngineInstaller", "[MiniEng]refuse to unzip " + paramString + " length=" + paramMap.length() + ", mEngineFileSize=" + this.jdField_a_of_type_Long);
+      bgrt.a(this.jdField_a_of_type_Bgrt);
       return;
-      i = 128;
-      break;
+      label255:
+      paramInt = 1;
     }
-    label108:
-    localLocationDetailActivity.a.a(Integer.valueOf(256), Integer.valueOf(i), str);
-  }
-  
-  public void f()
-  {
-    LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {
-      return;
-    }
-    if ((localLocationDetailActivity.r != null) && (localLocationDetailActivity.s != null))
-    {
-      Intent localIntent = LocationDetailActivity.a(localLocationDetailActivity);
-      localIntent.putExtra("forward_type", -2).putExtra("forward_latitude", localIntent.getStringExtra("latitude")).putExtra("forward_longitude", localIntent.getStringExtra("longitude")).putExtra("forward_location", localLocationDetailActivity.m).putExtra("forward_location_string", localLocationDetailActivity.m).putExtra("forward_thumb", ajsd.cb + localLocationDetailActivity.r + "_" + localLocationDetailActivity.s + ".png").putExtra("isFromFavorites", true).putExtra("title", localLocationDetailActivity.l).putExtra("summary", localLocationDetailActivity.m);
-      aqbe.a(localLocationDetailActivity, localIntent, 103);
-      return;
-    }
-    bcql.a(localLocationDetailActivity, 2131692345, 1, 2000).b(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgru
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,40 @@
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
-public class agmo
+class agmo
+  implements behy<oidb_0x8ed.RspBody>
 {
-  PhotoCropActivity jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity;
-  String[] jdField_a_of_type_ArrayOfJavaLangString;
+  agmo(agmn paramagmn) {}
   
-  public agmo(PhotoCropActivity paramPhotoCropActivity)
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity = paramPhotoCropActivity;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
-    {
-      bfpc localbfpc = (bfpc)bfpp.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, null);
-      int i = 0;
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        localbfpc.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], 1);
-        i += 1;
-      }
-      localbfpc.c(2131690596);
-      localbfpc.a(new agmp(this, localbfpc));
-      localbfpc.show();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a.jdField_a_of_type_JavaLangString, 2, "exitRoom: errorCode = " + paramInt);
     }
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(String[] paramArrayOfString)
-  {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    if ((paramInt == 0) || (paramInt == 1285))
+    {
+      if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
+        this.a.a.d.dismiss();
+      }
+      new Intent().putExtra("isNeedFinish", true);
+      bdiv.f(this.a.a.a(), this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+      autg.a().d();
+      this.a.a.ab = true;
+      this.a.a.b(1);
+      return;
+    }
+    if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
+      this.a.a.d.dismiss();
+    }
+    QQToast.a(this.a.a.a(), 1, alpo.a(2131705452), 0).b(this.a.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agmo
  * JD-Core Version:    0.7.0.1
  */

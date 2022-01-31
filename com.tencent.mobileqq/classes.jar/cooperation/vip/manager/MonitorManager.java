@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import biac;
+import bkby;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -108,7 +108,7 @@ public class MonitorManager
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       this.jdField_a_of_type_JavaUtilList.clear();
-      biac.a(localArrayList);
+      bkby.a(localArrayList);
       return;
     }
   }
@@ -130,7 +130,7 @@ public class MonitorManager
     localTraceReport.page_id.set(str);
     paramString1 = new ArrayList();
     paramString1.add(localTraceReport);
-    biac.b(paramString1);
+    bkby.b(paramString1);
   }
   
   private void b(int paramInt1, int paramInt2, String arg3, boolean paramBoolean)
@@ -190,7 +190,7 @@ public class MonitorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.vip.manager.MonitorManager
  * JD-Core Version:    0.7.0.1
  */

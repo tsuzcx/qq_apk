@@ -1,22 +1,29 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public class afgt
+class afgt
+  implements bhqd
 {
-  public int a;
-  public AccountSearchPb.ResultItem a;
-  public AccountSearchPb.hotwordrecord a;
-  public AccountSearchPb.record a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  afgt(afgr paramafgr, MessageForDeviceFile paramMessageForDeviceFile, bhpy parambhpy) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    if ("device_groupchat".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.extStr)) {
+      ((ztk)this.jdField_a_of_type_Afgr.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Afgr.b();
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      this.jdField_a_of_type_Afgr.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afgt
  * JD-Core Version:    0.7.0.1
  */

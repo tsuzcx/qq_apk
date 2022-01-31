@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import baxn;
+import bcwh;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class RadiusLinerLayout
   extends LinearLayout
 {
-  public static final int a = baxn.a(BaseApplicationImpl.context, 8.0F);
+  public static final int a = bcwh.a(BaseApplicationImpl.context, 8.0F);
   private int b = a;
   
   public RadiusLinerLayout(Context paramContext)
@@ -41,7 +41,7 @@ public class RadiusLinerLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.RadiusLinerLayout
  * JD-Core Version:    0.7.0.1
  */

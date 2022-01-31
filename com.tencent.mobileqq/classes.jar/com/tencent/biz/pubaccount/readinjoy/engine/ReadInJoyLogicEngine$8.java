@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import osg;
-import pcs;
+import owy;
+import piu;
 
 public class ReadInJoyLogicEngine$8
   implements Runnable
 {
-  public ReadInJoyLogicEngine$8(osg paramosg) {}
+  public ReadInJoyLogicEngine$8(owy paramowy) {}
   
   public void run()
   {
-    pcs.a().a();
+    piu.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine.8
  * JD-Core Version:    0.7.0.1
  */

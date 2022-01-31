@@ -1,43 +1,47 @@
-import org.json.JSONObject;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 
-public class amwa
+class amwa
+  implements SensorEventListener
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c = 1;
-  public int d = -1;
+  amwa(amvz paramamvz) {}
   
-  public amwa()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
   
-  public static amwa a(JSONObject paramJSONObject)
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    amwa localamwa = new amwa();
-    localamwa.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("show_c2c_chat_setting", false);
-    localamwa.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("show_group_chat_setting", false);
-    localamwa.jdField_a_of_type_Int = paramJSONObject.optInt("service_type", -1);
-    localamwa.jdField_b_of_type_Int = paramJSONObject.optInt("jumpType", -1);
-    localamwa.c = paramJSONObject.optInt("version", -1);
-    localamwa.d = paramJSONObject.optInt("appid", -1);
-    localamwa.jdField_a_of_type_JavaLangString = paramJSONObject.optString("jumpUrl", "");
-    return localamwa;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("showC2CChatSetting=").append(this.jdField_a_of_type_Boolean).append(" showGroupChatSetting=").append(this.jdField_b_of_type_Boolean).append(" serviceType=").append(this.jdField_a_of_type_Int).append(" jumpType=").append(this.jdField_b_of_type_Int).append(" version=").append(this.c).append(" appId=").append(this.d).append(" jumpUrl=").append(this.jdField_a_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    double d1 = 1.0D;
+    if (1 != paramSensorEvent.sensor.getType()) {
+      return;
+    }
+    paramSensorEvent = paramSensorEvent.values;
+    float f1 = paramSensorEvent[0];
+    float f2 = paramSensorEvent[1];
+    double d2 = Math.sqrt(f1 * f1 + f2 * f2);
+    d2 = f2 / d2;
+    if (d2 > 1.0D) {}
+    for (;;)
+    {
+      d2 = Math.acos(d1);
+      d1 = d2;
+      if (f1 < 0.0F) {
+        d1 = 6.283185307179586D - d2;
+      }
+      int i = (int)(d1 * 57.295779513082323D);
+      amvz.a(this.a, (i + 45) / 90 * 90);
+      return;
+      if (d2 < -1.0D) {
+        d1 = -1.0D;
+      } else {
+        d1 = d2;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwa
  * JD-Core Version:    0.7.0.1
  */

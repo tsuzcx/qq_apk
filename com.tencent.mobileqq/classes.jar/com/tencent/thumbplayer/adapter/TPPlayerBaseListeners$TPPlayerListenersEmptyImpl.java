@@ -6,6 +6,7 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnErrorList
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnInfoListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnPreparedListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSeekCompleteListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnStateChangeListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleDataListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
@@ -15,7 +16,7 @@ import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 import com.tencent.thumbplayer.utils.TPLogUtil;
 
 class TPPlayerBaseListeners$TPPlayerListenersEmptyImpl
-  implements ITPPlayerBaseListener.IOnAudioPcmOutListener, ITPPlayerBaseListener.IOnCompletionListener, ITPPlayerBaseListener.IOnErrorListener, ITPPlayerBaseListener.IOnInfoListener, ITPPlayerBaseListener.IOnPreparedListener, ITPPlayerBaseListener.IOnSeekCompleteListener, ITPPlayerBaseListener.IOnSubtitleDataListener, ITPPlayerBaseListener.IOnVideoFrameOutListener, ITPPlayerBaseListener.IOnVideoSizeChangedListener
+  implements ITPPlayerBaseListener.IOnAudioPcmOutListener, ITPPlayerBaseListener.IOnCompletionListener, ITPPlayerBaseListener.IOnErrorListener, ITPPlayerBaseListener.IOnInfoListener, ITPPlayerBaseListener.IOnPreparedListener, ITPPlayerBaseListener.IOnSeekCompleteListener, ITPPlayerBaseListener.IOnStateChangeListener, ITPPlayerBaseListener.IOnSubtitleDataListener, ITPPlayerBaseListener.IOnVideoFrameOutListener, ITPPlayerBaseListener.IOnVideoSizeChangedListener
 {
   public void onAudioPcmOut(TPAudioFrameBuffer paramTPAudioFrameBuffer)
   {
@@ -47,6 +48,11 @@ class TPPlayerBaseListeners$TPPlayerListenersEmptyImpl
     TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onSeekComplete");
   }
   
+  public void onStateChange(int paramInt1, int paramInt2)
+  {
+    TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onStateChange");
+  }
+  
   public void onSubtitleData(TPSubtitleData paramTPSubtitleData)
   {
     TPLogUtil.i(TPPlayerBaseListeners.access$100(), " empty base listener , notify , onSubtitleData");
@@ -64,7 +70,7 @@ class TPPlayerBaseListeners$TPPlayerListenersEmptyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlayerBaseListeners.TPPlayerListenersEmptyImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.troop_homework.outer.TroopHWRecordBaseActivity;
-
-public class bhyc
-  implements View.OnClickListener
+abstract interface bhyc
 {
-  public bhyc(TroopHWRecordBaseActivity paramTroopHWRecordBaseActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a.a);
-    this.a.setResult(0);
-    this.a.finish();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhyc
  * JD-Core Version:    0.7.0.1
  */

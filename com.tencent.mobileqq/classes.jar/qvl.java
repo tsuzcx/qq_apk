@@ -1,33 +1,37 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
 
 public class qvl
-  extends PhoneStateListener
+  implements TextWatcher
 {
-  qvl(qvk paramqvk) {}
+  public qvl(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
-    }
-    switch (paramInt)
+    if (paramEditable.length() > 0)
     {
-    default: 
-      return;
-    case 1: 
-      this.a.d(true);
-      return;
-    case 2: 
-      this.a.d(true);
+      if (!ReadInJoySelectMemberFragment.a(this.a).isVisible()) {
+        this.a.getChildFragmentManager().beginTransaction().add(2131366789, ReadInJoySelectMemberFragment.a(this.a)).addToBackStack(null).commit();
+      }
+      ReadInJoySelectMemberFragment.a(this.a).a(paramEditable.toString());
+    }
+    while (ReadInJoySelectMemberFragment.a(this.a).isDetached()) {
       return;
     }
-    this.a.c();
+    this.a.getChildFragmentManager().popBackStackImmediate();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qvl
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,8 @@ package com.tencent.mobileqq.mini.report;
 
 public class MiniReportManager$EventId
 {
+  public static final int APKG_DOWNLOAD_PIPELINE_END = 125;
+  public static final int APKG_DOWNLOAD_PIPELINE_START = 124;
   public static final int APP_CREATE = 24;
   public static final int APP_DOWNLOAD_END = 620;
   public static final int APP_DOWNLOAD_START = 619;
@@ -16,6 +18,7 @@ public class MiniReportManager$EventId
   public static final int APP_LOAD_START = 104;
   public static final int APP_LOAD_SUCC = 608;
   public static final int APP_LOAD_TIMEOUT = 610;
+  public static final int APP_ROUTE_DONE = 121;
   public static final int APP_STAY_DURATION = 644;
   public static final int APP_UNZIP_END = 622;
   public static final int APP_UNZIP_START = 621;
@@ -77,6 +80,10 @@ public class MiniReportManager$EventId
   public static final int PAGE_FRAME_LOAD_END = 624;
   public static final int PAGE_FRAME_LOAD_START = 623;
   public static final int PAGE_HIDE = 607;
+  public static final int PAGE_JS_LOAD_END = 123;
+  public static final int PAGE_JS_LOAD_START = 122;
+  public static final int PAGE_LOAD_END = 645;
+  public static final int PAGE_LOAD_RESULT = 646;
   public static final int PAGE_SHOW = 606;
   public static final int PRELOAD_PROCESS = 605;
   public static final int PRELOAD_PROCESS_END = 627;
@@ -125,7 +132,7 @@ public class MiniReportManager$EventId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniReportManager.EventId
  * JD-Core Version:    0.7.0.1
  */

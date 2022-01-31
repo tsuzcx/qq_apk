@@ -38,7 +38,7 @@ public final class send_gift_info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_TEMPLATE_GIFT.send_gift_info
  * JD-Core Version:    0.7.0.1
  */

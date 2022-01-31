@@ -1,16 +1,10 @@
-class bijj
-  implements bisd
+public abstract interface bijj
 {
-  bijj(bijd parambijd) {}
-  
-  public void a(bist parambist)
-  {
-    ((bivi)bijo.a(this.a, bjnf.a()).a(bivi.class)).a().a(parambist);
-  }
+  public abstract bijk a(becq parambecq, bijg parambijg);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bijj
  * JD-Core Version:    0.7.0.1
  */

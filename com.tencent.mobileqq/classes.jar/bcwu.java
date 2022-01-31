@@ -1,171 +1,127 @@
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import android.graphics.Bitmap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.util.FaceInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Hashtable;
+import java.util.LinkedList;
 
-public class bcwu
+public abstract class bcwu
 {
-  private static void a(byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  int jdField_a_of_type_Int = 10;
+  bcwv jdField_a_of_type_Bcwv = null;
+  Hashtable<String, FaceInfo> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
+  LinkedList<FaceInfo> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  boolean jdField_a_of_type_Boolean = false;
+  protected int b;
+  Hashtable<String, FaceInfo> jdField_b_of_type_JavaUtilHashtable = new Hashtable();
+  boolean jdField_b_of_type_Boolean = false;
+  boolean c = false;
+  
+  public abstract Bitmap a(int paramInt1, String paramString, int paramInt2, byte paramByte);
+  
+  public void a()
   {
-    int j = 0;
-    int k = paramArrayOfByte.length;
-    int i = 0;
-    while (i < k >> 2)
-    {
-      int m = j + 1;
-      paramArrayOfByte[j] &= 0xFF;
-      int n = paramArrayOfInt[i];
-      j = m + 1;
-      paramArrayOfInt[i] = (n | (paramArrayOfByte[m] & 0xFF) << 8);
-      n = paramArrayOfInt[i];
-      m = j + 1;
-      paramArrayOfInt[i] = (n | (paramArrayOfByte[j] & 0xFF) << 16);
-      n = paramArrayOfInt[i];
-      j = m + 1;
-      paramArrayOfInt[i] = ((paramArrayOfByte[m] & 0xFF) << 24 | n);
-      i += 1;
+    if (QLog.isColorLevel()) {
+      ausq.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
     }
-    if (j < paramArrayOfByte.length)
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public abstract void a(int paramInt1, String paramString, int paramInt2, long paramLong);
+  
+  public void a(bcwv parambcwv)
+  {
+    this.jdField_a_of_type_Bcwv = parambcwv;
+  }
+  
+  public abstract void a(AppInterface paramAppInterface);
+  
+  protected void a(FaceInfo paramFaceInfo)
+  {
+    if (paramFaceInfo == null) {}
+    for (;;)
     {
-      k = j + 1;
-      paramArrayOfByte[j] &= 0xFF;
-      j = 8;
-      while (k < paramArrayOfByte.length)
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.e("FaceDecoderBase", 2, "enqueueDecode, iRunningRequests=" + this.jdField_b_of_type_Int + ", pause=" + this.jdField_a_of_type_Boolean + ",faceinfo=" + paramFaceInfo.toString());
+      }
+      try
       {
-        paramArrayOfInt[i] |= (paramArrayOfByte[k] & 0xFF) << j;
-        k += 1;
-        j += 8;
+        this.jdField_a_of_type_JavaUtilLinkedList.remove(paramFaceInfo);
+        if (paramFaceInfo.jdField_b_of_type_Boolean)
+        {
+          this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramFaceInfo);
+          paramFaceInfo.a(FaceInfo.k);
+          if ((this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Boolean)) {
+            continue;
+          }
+          e();
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.e("FaceDecoderBase", 2, "enqueueDecode", localException);
+            continue;
+            this.jdField_a_of_type_JavaUtilLinkedList.addFirst(paramFaceInfo);
+          }
+        }
       }
     }
   }
   
-  private static void a(int[] paramArrayOfInt, int paramInt, byte[] paramArrayOfByte)
+  public boolean a()
   {
-    int i = paramArrayOfByte.length >> 2;
-    int j = i;
-    if (i > paramInt) {
-      j = paramInt;
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public final boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3)
+  {
+    return a(paramString, paramInt1, paramBoolean1, paramInt2, paramBoolean2, paramByte, paramInt3, 100, false);
+  }
+  
+  public abstract boolean a(String paramString, int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, byte paramByte, int paramInt3, int paramInt4, boolean paramBoolean3);
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FaceDecoderBase", 2, "resume");
     }
-    int k = 0;
-    i = 0;
-    while (i < j)
-    {
-      int m = k + 1;
-      paramArrayOfByte[k] = ((byte)(paramArrayOfInt[i] & 0xFF));
-      k = m + 1;
-      paramArrayOfByte[m] = ((byte)(paramArrayOfInt[i] >>> 8 & 0xFF));
-      m = k + 1;
-      paramArrayOfByte[k] = ((byte)(paramArrayOfInt[i] >>> 16 & 0xFF));
-      paramArrayOfByte[m] = ((byte)(paramArrayOfInt[i] >>> 24 & 0xFF));
-      i += 1;
-      k = m + 1;
-    }
-    if ((paramInt > j) && (k < paramArrayOfByte.length))
-    {
-      paramInt = k + 1;
-      paramArrayOfByte[k] = ((byte)(paramArrayOfInt[i] & 0xFF));
-      j = 8;
-      while ((j <= 24) && (paramInt < paramArrayOfByte.length))
-      {
-        paramArrayOfByte[paramInt] = ((byte)(paramArrayOfInt[i] >>> j & 0xFF));
-        j += 8;
-        paramInt += 1;
-      }
+    this.jdField_a_of_type_Boolean = false;
+    while ((this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) && (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty())) {
+      e();
     }
   }
   
-  public static byte[] a()
+  public void c()
   {
-    try
-    {
-      byte[] arrayOfByte = "DFG#$%^#%$RGHR(&*M<><".getBytes("UTF-8");
-      return arrayOfByte;
+    if (QLog.isColorLevel()) {
+      ausq.a(2, "FaceDecoderBase", "cancelPendingRequests", new Object[0]);
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      localUnsupportedEncodingException.printStackTrace();
-    }
-    return null;
+    this.jdField_a_of_type_JavaUtilHashtable.clear();
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
   }
   
-  public static byte[] a(byte[] paramArrayOfByte)
+  public void d()
   {
-    Object localObject = paramArrayOfByte;
-    if (paramArrayOfByte != null)
-    {
-      localObject = paramArrayOfByte;
-      if (paramArrayOfByte.length <= 16) {}
+    if (QLog.isColorLevel()) {
+      ausq.a(2, "FaceDecoderBase", "destory", new Object[0]);
     }
-    try
-    {
-      localObject = MessageDigest.getInstance("MD5");
-      ((MessageDigest)localObject).update(paramArrayOfByte);
-      localObject = ((MessageDigest)localObject).digest();
-      return localObject;
-    }
-    catch (NoSuchAlgorithmException paramArrayOfByte) {}
-    return null;
+    c();
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Bcwv = null;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    byte[] arrayOfByte = a(paramArrayOfByte2);
-    if ((paramArrayOfByte1 == null) || (arrayOfByte == null) || (paramArrayOfByte1.length == 0)) {
-      return paramArrayOfByte1;
-    }
-    if ((paramArrayOfByte1.length % 4 != 0) || (paramArrayOfByte1.length < 8)) {
-      return null;
-    }
-    paramArrayOfByte2 = new int[paramArrayOfByte1.length >>> 2];
-    a(paramArrayOfByte1, paramArrayOfByte2);
-    if (arrayOfByte.length % 4 == 0) {}
-    for (int i = arrayOfByte.length >>> 2;; i = (arrayOfByte.length >>> 2) + 1)
-    {
-      j = i;
-      if (i < 4) {
-        j = 4;
-      }
-      paramArrayOfByte1 = new int[j];
-      i = 0;
-      while (i < j)
-      {
-        paramArrayOfByte1[i] = 0;
-        i += 1;
-      }
-    }
-    a(arrayOfByte, paramArrayOfByte1);
-    int m = paramArrayOfByte2.length - 1;
-    i = paramArrayOfByte2[m];
-    i = paramArrayOfByte2[0];
-    int j = (52 / (m + 1) + 6) * -1640531527;
-    while (j != 0)
-    {
-      int n = j >>> 2 & 0x3;
-      int k = i;
-      i = m;
-      while (i > 0)
-      {
-        i1 = paramArrayOfByte2[(i - 1)];
-        k = paramArrayOfByte2[i] - ((k ^ j) + (i1 ^ paramArrayOfByte1[(i & 0x3 ^ n)]) ^ (i1 >>> 5 ^ k << 2) + (k >>> 3 ^ i1 << 4));
-        paramArrayOfByte2[i] = k;
-        i -= 1;
-      }
-      int i1 = paramArrayOfByte2[m];
-      i = paramArrayOfByte2[0] - ((paramArrayOfByte1[(i & 0x3 ^ n)] ^ i1) + (k ^ j) ^ (i1 >>> 5 ^ k << 2) + (k >>> 3 ^ i1 << 4));
-      paramArrayOfByte2[0] = i;
-      j += 1640531527;
-    }
-    i = paramArrayOfByte2[(paramArrayOfByte2.length - 1)];
-    if ((i < 0) || (i > paramArrayOfByte2.length - 1 << 2)) {
-      return null;
-    }
-    paramArrayOfByte1 = new byte[i];
-    a(paramArrayOfByte2, paramArrayOfByte2.length - 1, paramArrayOfByte1);
-    return paramArrayOfByte1;
-  }
+  protected abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcwu
  * JD-Core Version:    0.7.0.1
  */

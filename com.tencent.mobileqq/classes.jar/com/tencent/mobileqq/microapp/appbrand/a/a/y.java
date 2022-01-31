@@ -8,7 +8,7 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.microapp.MiniAppInterface;
 import com.tencent.mobileqq.microapp.appbrand.page.WebViewEventListener;
@@ -139,7 +139,7 @@ public final class y
       if (localBaseActivity != null)
       {
         str = com.tencent.mobileqq.microapp.app.a.d(paramString1, paramString2);
-        if (bbkk.a(str)) {
+        if (bdje.a(str)) {
           break label228;
         }
         if (localBaseActivity.checkSelfPermission(str) != 0) {
@@ -412,7 +412,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.a.a.y
  * JD-Core Version:    0.7.0.1
  */

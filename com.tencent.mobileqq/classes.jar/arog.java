@@ -1,21 +1,33 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
 public class arog
-  implements View.OnClickListener
+  implements Comparator<FileInfo>
 {
-  public arog(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
+    if (paramFileInfo1.c()) {
+      if (paramFileInfo2.c()) {
+        break label25;
+      }
+    }
+    label25:
+    while (paramFileInfo1.b() > paramFileInfo2.b())
+    {
+      return -1;
+      if (paramFileInfo2.c()) {
+        return 1;
+      }
+    }
+    if (paramFileInfo1.b() == paramFileInfo2.b()) {
+      return 0;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arog
  * JD-Core Version:    0.7.0.1
  */

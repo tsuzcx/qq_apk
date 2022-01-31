@@ -1,19 +1,14 @@
-public class bjor<T>
-  extends bjoo<T>
+import cooperation.qzone.statistic.access.concept.Collector;
+
+public abstract class bjor
 {
-  public void a(T paramT)
-  {
-    super.a(paramT);
-  }
+  public static bjor a = new bjos();
   
-  public void b(T paramT)
-  {
-    super.b(paramT);
-  }
+  public abstract boolean a(Collector paramCollector);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjor
  * JD-Core Version:    0.7.0.1
  */

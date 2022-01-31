@@ -1,50 +1,32 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
-class ayqd
-  implements aywy
+public class ayqd
+  implements aypy
 {
-  ayqd(ayqb paramayqb) {}
+  public ayqd(NetSearchEngine paramNetSearchEngine, List paramList) {}
   
-  public Bitmap a(URL paramURL)
+  public void a(List paramList) {}
+  
+  public void a(List paramList, int paramInt)
   {
-    paramURL = this.a.a(paramURL);
-    if (paramURL == null) {
-      paramURL = null;
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
     }
-    for (;;)
-    {
-      return paramURL;
-      String str = paramURL.path;
-      if (TextUtils.isEmpty(str)) {
-        return null;
-      }
-      try
-      {
-        Bitmap localBitmap = this.a.a(str);
-        paramURL = localBitmap;
-        if (localBitmap == null)
-        {
-          paramURL = this.a.b(str);
-          return paramURL;
-        }
-      }
-      catch (Throwable paramURL)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-        }
-      }
-    }
-    return null;
+    ayrd.a();
+    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).a.countDown();
+  }
+  
+  public void a(List paramList, ayqm paramayqm)
+  {
+    a(paramList, paramayqm.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayqd
  * JD-Core Version:    0.7.0.1
  */

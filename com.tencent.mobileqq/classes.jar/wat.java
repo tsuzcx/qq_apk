@@ -1,48 +1,31 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
 
 public class wat
-  implements waj
 {
+  public int a;
   public long a;
-  public waj a;
+  public String a;
   
-  public wat(waj paramwaj)
+  public wat(waq paramwaq, String paramString)
   {
-    this.jdField_a_of_type_Waj = paramwaj;
-  }
-  
-  public void onFailure(String paramString)
-  {
-    if (this.jdField_a_of_type_Waj != null) {
-      this.jdField_a_of_type_Waj.onFailure(paramString);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, "play_video hflip video Error:" + paramString);
+    this.jdField_a_of_type_JavaLangString = "";
+    paramwaq = ((ure)urr.a(19)).a(paramString);
+    if (paramwaq != null) {
+      a(paramwaq);
     }
   }
   
-  public void onFinish(boolean paramBoolean) {}
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
+  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
   {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    paramString = String.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-    vei.a("play_video", "down_watermark_hfliptime", 0, 0, new String[] { paramString });
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.ffmpeg.FFmpegCmd", 2, "play_video down_watermark_hfliptime:" + paramString);
-    }
+    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
+    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
+    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wat
  * JD-Core Version:    0.7.0.1
  */

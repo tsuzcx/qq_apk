@@ -1,31 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-class rxg
-  implements bfpj
+public abstract interface rxg
 {
-  rxg(rxe paramrxe, String paramString) {}
-  
-  public void onDismiss()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("index", -1);
-      localJSONObject.put("type", 1);
-      if (rxe.a(this.jdField_a_of_type_Rxe) != null) {
-        ((BridgeModule)rxe.a(this.jdField_a_of_type_Rxe).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, localJSONObject);
-      }
-      return;
-    }
-    catch (JSONException localJSONException) {}
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxg
  * JD-Core Version:    0.7.0.1
  */

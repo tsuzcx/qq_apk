@@ -1,22 +1,47 @@
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 class aeqq
-  implements View.OnClickListener
+  extends View
 {
-  aeqq(aeqb paramaeqb, String paramString) {}
-  
-  public void onClick(View paramView)
+  public aeqq(aeql paramaeql, Context paramContext)
   {
-    paramView = ((HotChatManager)this.jdField_a_of_type_Aeqb.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Aeqb.jdField_a_of_type_Ajyt.a(paramView);
+    super(paramContext);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Drawable[] arrayOfDrawable = this.a.a;
+    int j = arrayOfDrawable.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOfDrawable[i].draw(paramCanvas);
+      i += 1;
+    }
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramInt1 = 0;
+    paramInt3 = paramInt4 - paramInt2;
+    Drawable[] arrayOfDrawable = this.a.a;
+    paramInt4 = arrayOfDrawable.length;
+    paramInt2 = 0;
+    while (paramInt1 < paramInt4)
+    {
+      Drawable localDrawable = arrayOfDrawable[paramInt1];
+      localDrawable.setBounds(paramInt2, paramInt3 - localDrawable.getIntrinsicHeight(), localDrawable.getIntrinsicWidth() + paramInt2, paramInt3);
+      paramInt2 += localDrawable.getIntrinsicWidth();
+      paramInt1 += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqq
  * JD-Core Version:    0.7.0.1
  */

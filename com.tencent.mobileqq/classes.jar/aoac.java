@@ -1,18 +1,35 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.data.Emoticon;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.comic.VipComicJumpActivity;
 
-class aoac
+public class aoac
+  implements aoah
 {
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  Emoticon jdField_a_of_type_ComTencentMobileqqDataEmoticon;
+  public String a()
+  {
+    return ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getApp().getResources().getString(2131690596);
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject = new Intent("android.intent.action.MAIN");
+    paramView = paramView.getContext();
+    localObject = VipComicJumpActivity.a((Intent)localObject);
+    if (VipComicJumpActivity.a(localQQAppInterface, (Activity)paramView, (biip)localObject)) {
+      VipComicJumpActivity.a(localQQAppInterface, true);
+    }
+    azmj.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", anyi.b(paramInt), 0, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoac
  * JD-Core Version:    0.7.0.1
  */

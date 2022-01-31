@@ -44,7 +44,15 @@ public class AEDependencyManager
   
   public void loadDependency(String paramString)
   {
-    this.loadedDependencies.add(paramString);
+    try
+    {
+      this.loadedDependencies.add(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
   public void setMaterialDependencies(List<String> paramList)

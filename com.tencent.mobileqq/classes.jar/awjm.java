@@ -1,71 +1,11 @@
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import pb.unite.search.DynamicAssociationWord.SuggestUrlItem;
-
 public class awjm
-  extends akjb
 {
-  public awjm(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
-  
-  public void a(String paramString, int paramInt, List<awky> paramList, List<DynamicAssociationWord.SuggestUrlItem> paramList1, DynamicAssociationWord.SuggestUrlItem paramSuggestUrlItem)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleSuggestUrlResult keyword=" + paramString + " activity keyword=" + this.a.jdField_a_of_type_JavaLangString + " size=" + paramList1.size());
-    }
-    if (paramString.equals(this.a.jdField_a_of_type_JavaLangString))
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment = new AssociateSearchWordsFragment();
-      }
-      paramList1 = new ArrayList();
-      paramSuggestUrlItem = new awky();
-      paramSuggestUrlItem.jdField_a_of_type_Int = 1;
-      StringBuilder localStringBuilder = new StringBuilder("");
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        paramInt = 0;
-        if (paramInt < paramList.size())
-        {
-          String str = ((awky)paramList.get(paramInt)).jdField_a_of_type_JavaLangString;
-          awky localawky = new awky();
-          localawky.jdField_a_of_type_JavaLangString = str;
-          localawky.jdField_a_of_type_Int = 3;
-          localawky.d = (paramInt + 1);
-          paramList1.add(localawky);
-          if (paramInt != paramList.size() - 1)
-          {
-            paramList1.add(paramSuggestUrlItem);
-            localStringBuilder.append(str).append("::");
-          }
-          for (;;)
-          {
-            paramInt += 1;
-            break;
-            localStringBuilder.append(str);
-          }
-        }
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramList1);
-      awsq.a(null, new ReportModelDC02528().module("subweb_search").action("exp_thinkword_list").obj1(awwa.a(this.a.jdField_a_of_type_ArrayOfLong)).ver1(this.a.a()).ver4(localStringBuilder.toString()).ver7("{experiment_id:" + awsq.b + "}"));
-    }
-  }
-  
-  public void a(String paramString1, Integer paramInteger, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.ActiveEntitySearchActivity", 2, "handleAssociateResultError keyword=" + paramString1 + "  resultCode=" + paramInteger + "  errorMsg=" + paramString2);
-    }
-  }
+  public long a = -1L;
+  public long b = -1L;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awjm
  * JD-Core Version:    0.7.0.1
  */

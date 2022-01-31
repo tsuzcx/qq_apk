@@ -7,9 +7,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
-import anqq;
-import anqu;
-import bcdp;
+import aphy;
+import apic;
+import becq;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
@@ -54,7 +54,7 @@ public class MessageRoamJsPlugin
   
   private boolean handleGetRoam(String paramString)
   {
-    sendRemoteReq(anqu.a("getRoam", paramString, this.mOnRemoteResp.key, new Bundle()), false, false);
+    sendRemoteReq(apic.a("getRoam", paramString, this.mOnRemoteResp.key, new Bundle()), false, false);
     return true;
   }
   
@@ -347,7 +347,7 @@ public class MessageRoamJsPlugin
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("pwd", paramString);
-    sendRemoteReq(anqu.a("notifyGetMsgRoam", "notifyGetMsgRoam", this.mOnRemoteResp.key, localBundle), true, false);
+    sendRemoteReq(apic.a("notifyGetMsgRoam", "notifyGetMsgRoam", this.mOnRemoteResp.key, localBundle), true, false);
   }
   
   public void onCreate()

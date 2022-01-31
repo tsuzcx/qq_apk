@@ -1,151 +1,101 @@
+import android.text.TextUtils;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.handler.NetAddr;
+import com.tencent.av.business.manager.zimu.ZimuItem;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class liz
-  extends lhd
+  extends liy
 {
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ljb jdField_a_of_type_Ljb;
-  private lja[] jdField_a_of_type_ArrayOfLja = new lja[14];
-  
-  public liz(VideoAppInterface paramVideoAppInterface)
+  public liz(AppInterface paramAppInterface)
   {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_Ljb = new ljb(paramVideoAppInterface);
+    super(paramAppInterface);
   }
   
-  private lja a(int paramInt)
+  protected int a()
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfLja[paramInt];
-    if (localObject1 != null) {
-      return localObject1;
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    Object localObject = (VideoAppInterface)this.mApp;
+    if (((VideoAppInterface)localObject).a(0))
     {
-      lja locallja = this.jdField_a_of_type_ArrayOfLja[paramInt];
-      localObject1 = locallja;
-      if (locallja == null)
-      {
-        locallja = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt);
-        localObject1 = locallja;
-        if (locallja != null)
-        {
-          this.jdField_a_of_type_ArrayOfLja[paramInt] = locallja;
-          localObject1 = locallja;
-        }
-      }
-      return localObject1;
-    }
-  }
-  
-  private lja a(VideoAppInterface paramVideoAppInterface, int paramInt)
-  {
-    long l1 = System.currentTimeMillis();
-    Object localObject = null;
-    switch (paramInt)
-    {
-    default: 
-      localObject = this.jdField_a_of_type_Ljb;
-    }
-    for (;;)
-    {
+      localObject = (lls)((VideoAppInterface)localObject).a(0);
       if (localObject != null) {
-        ((lja)localObject).a();
+        return ((lls)localObject).b();
       }
-      long l2 = System.currentTimeMillis();
-      lcg.c("EffectSupportManager", "create Manager,cost time:" + (l2 - l1));
-      return localObject;
-      localObject = new lje(paramVideoAppInterface);
-      continue;
-      localObject = new ljc(paramVideoAppInterface);
-      continue;
-      localObject = new ljd(paramVideoAppInterface);
     }
+    return 4;
   }
   
-  public int a(int paramInt, String paramString)
+  protected void a(long paramLong1, boolean paramBoolean, List<NetAddr> paramList, long paramLong2)
   {
-    int i = 1;
-    lja locallja = a(paramInt);
-    paramInt = i;
-    if (locallja != null) {
-      paramInt = locallja.a(paramString);
-    }
-    return paramInt;
-  }
-  
-  protected void a() {}
-  
-  public void a(int paramInt)
-  {
-    int i = 0;
-    while (i < 14)
+    VideoController localVideoController = ((VideoAppInterface)this.mApp).a();
+    lid locallid = localVideoController.a();
+    StringBuilder localStringBuilder = new StringBuilder().append("requestRecordingAudio, isStart[").append(paramBoolean).append("], sessionid[").append(paramLong2).append("], seq[").append(paramLong1).append("], iplist[");
+    if (paramList == null)
     {
-      if ((paramInt == 255) || (paramInt == i))
+      localObject = "null";
+      localStringBuilder = localStringBuilder.append(localObject).append("], peerUin[");
+      if (locallid != null) {
+        break label159;
+      }
+    }
+    label159:
+    for (Object localObject = "null";; localObject = locallid.d)
+    {
+      QLog.w("AudioTransClientInterfaceHandlerExtend.runhw", 1, (String)localObject + "]");
+      if ((localVideoController != null) && (locallid != null)) {
+        localVideoController.a(lfx.a(locallid.d), paramBoolean, paramList, paramLong2);
+      }
+      return;
+      localObject = Integer.valueOf(paramList.size());
+      break;
+    }
+  }
+  
+  protected void a(Integer paramInteger, Object paramObject)
+  {
+    lek.c("AudioTransClientInterfaceHandlerExtend.runhw", "notifyEvent :" + paramInteger + "|" + paramObject);
+    ((VideoAppInterface)this.mApp).a(new Object[] { paramInteger, paramObject });
+  }
+  
+  protected void a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    a(Integer.valueOf(6008), new ljf(paramString1, paramString2, paramString3, paramInt));
+  }
+  
+  protected boolean a()
+  {
+    boolean bool2 = false;
+    Object localObject = (VideoAppInterface)this.mApp;
+    boolean bool1 = bool2;
+    if (((VideoAppInterface)localObject).a(0))
+    {
+      localObject = (lls)((VideoAppInterface)localObject).a(0);
+      bool1 = bool2;
+      if (localObject != null)
       {
-        lja locallja = a(i);
-        if (locallja != null) {
-          locallja.b();
+        localObject = (ZimuItem)((lls)localObject).a();
+        bool1 = bool2;
+        if (localObject != null)
+        {
+          localObject = ((ZimuItem)localObject).getId();
+          if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equalsIgnoreCase("film"))) {
+            break label74;
+          }
         }
       }
-      i += 1;
     }
-  }
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    lcg.c("EffectSupportManager", "EffectFaceSupportManager onSessionStatusChanged " + paramInt);
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      a(255);
-      return;
-    }
-    b();
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, String paramString)
-  {
-    lja locallja = a(paramInt1);
-    if (locallja != null) {
-      return locallja.a(paramInt2, paramString);
-    }
-    return false;
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    boolean bool = true;
-    lja locallja = a(paramInt);
-    if (locallja != null) {
-      bool = locallja.a(paramString);
-    }
-    return bool;
-  }
-  
-  protected boolean a(String paramString)
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    int i = 0;
-    while (i < 14)
-    {
-      lja locallja = a(i);
-      if (locallja != null) {
-        locallja.c();
-      }
-      i += 1;
+    label74:
+    for (bool1 = true;; bool1 = false) {
+      return bool1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     liz
  * JD-Core Version:    0.7.0.1
  */

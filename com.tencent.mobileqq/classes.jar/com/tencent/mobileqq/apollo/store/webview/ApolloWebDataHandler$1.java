@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.store.webview;
 
-import ajkc;
+import albo;
 import com.tencent.qphone.base.util.QLog;
 
 public final class ApolloWebDataHandler$1
@@ -9,8 +9,8 @@ public final class ApolloWebDataHandler$1
   public void run()
   {
     long l = System.currentTimeMillis();
-    if (!ajkc.a()) {
-      ajkc.a();
+    if (!albo.a()) {
+      albo.a();
     }
     if (QLog.isColorLevel()) {
       QLog.d("apollo_client_ApolloWebDataHandler", 2, "apollo_client initInAsyncThread use:" + (System.currentTimeMillis() - l));
@@ -19,7 +19,7 @@ public final class ApolloWebDataHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.webview.ApolloWebDataHandler.1
  * JD-Core Version:    0.7.0.1
  */

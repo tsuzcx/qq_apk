@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-class azqc
-  implements DialogInterface.OnClickListener
+public class azqc
 {
-  azqc(azpv paramazpv, azpi paramazpi) {}
+  private static HashMap<String, azqb> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static HashMap<String, azqb> a()
   {
-    bajy.a(this.jdField_a_of_type_Azpv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azpv.jdField_a_of_type_Long).c(this.jdField_a_of_type_Azpi);
-    paramDialogInterface.dismiss();
+    return jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public static List<String> a()
+  {
+    return jdField_a_of_type_JavaUtilList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azqc
  * JD-Core Version:    0.7.0.1
  */

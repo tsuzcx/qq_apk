@@ -103,7 +103,9 @@ public class VideoMaterial
   private String imageFacePointsFileName;
   private List<ImageMaskItem> imageMaskItemList;
   public boolean isDualPeople;
+  private boolean isFaceCharmRangeMaterial = false;
   private boolean isFreezeFrameRequired = false;
+  private boolean isHandCharmRangeMaterial = false;
   public boolean isNeedDecodeFaceFilter = true;
   private boolean isNeedDetectGender = false;
   private boolean isShookHeadPendant = false;
@@ -111,6 +113,7 @@ public class VideoMaterial
   private List<StickerItem3D> itemList3D;
   public String itemTips;
   private String lipsLutPath;
+  private String lipsLutStyleMaskPath;
   private int lipsSegType;
   private boolean loadImageFromCache = true;
   public BigAnimationParam mBigHeadParam;
@@ -148,6 +151,7 @@ public class VideoMaterial
   private String showTips;
   private float splitScreen;
   private StarParam starParam;
+  private int stateVersion = 1;
   private int stickerOrderMode;
   private boolean supportLandscape;
   private boolean supportPause;
@@ -557,6 +561,11 @@ public class VideoMaterial
     return this.lipsLutPath;
   }
   
+  public String getLipsLutStyleMaskPath()
+  {
+    return this.lipsLutStyleMaskPath;
+  }
+  
   public int getLipsSegType()
   {
     return this.lipsSegType;
@@ -757,6 +766,11 @@ public class VideoMaterial
     return this.starParam;
   }
   
+  public int getStateVersion()
+  {
+    return this.stateVersion;
+  }
+  
   public int getStickerOrderMode()
   {
     return this.stickerOrderMode;
@@ -857,6 +871,11 @@ public class VideoMaterial
     return this.isNeedDetectGender;
   }
   
+  public boolean isFaceCharmRange()
+  {
+    return this.isFaceCharmRangeMaterial;
+  }
+  
   public boolean isFaceExchangeImageDisableOpacity()
   {
     return this.faceExchangeImageDisableOpacity;
@@ -875,6 +894,11 @@ public class VideoMaterial
   public boolean isFlattenNose()
   {
     return this.flattenNose;
+  }
+  
+  public boolean isHandCharmRange()
+  {
+    return this.isHandCharmRangeMaterial;
   }
   
   public boolean isHasAudio()
@@ -1108,6 +1132,11 @@ public class VideoMaterial
     this.fabbyParts = paramFabbyParts;
   }
   
+  public void setFaceCharmRangeMaterial(boolean paramBoolean)
+  {
+    this.isFaceCharmRangeMaterial = paramBoolean;
+  }
+  
   public void setFaceCropItem(FaceCropItem paramFaceCropItem)
   {
     this.faceCropItem = paramFaceCropItem;
@@ -1263,6 +1292,11 @@ public class VideoMaterial
     this.handBoostEnable = paramInt;
   }
   
+  public void setHandCharmRangeMaterial(boolean paramBoolean)
+  {
+    this.isHandCharmRangeMaterial = paramBoolean;
+  }
+  
   public void setHasAudio(boolean paramBoolean)
   {
     this.hasAudio = paramBoolean;
@@ -1306,6 +1340,11 @@ public class VideoMaterial
   public void setLipsLutPath(String paramString)
   {
     this.lipsLutPath = paramString;
+  }
+  
+  public void setLipsLutStyleMaskPath(String paramString)
+  {
+    this.lipsLutStyleMaskPath = paramString;
   }
   
   public void setLipsSegType(int paramInt)
@@ -1473,6 +1512,11 @@ public class VideoMaterial
   public void setStarParam(StarParam paramStarParam)
   {
     this.starParam = paramStarParam;
+  }
+  
+  public void setStateVersion(int paramInt)
+  {
+    this.stateVersion = paramInt;
   }
   
   public void setStickerOrderMode(int paramInt)

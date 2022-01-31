@@ -3,29 +3,29 @@ package com.tencent.mobileqq.webview.swift.component;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import bcer;
-import bcqf;
-import bcql;
+import beds;
+import bepp;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class SwiftBrowserLongClickHandler$5
   implements Runnable
 {
-  public SwiftBrowserLongClickHandler$5(bcer parambcer, String paramString) {}
+  public SwiftBrowserLongClickHandler$5(beds parambeds, String paramString) {}
   
   public void run()
   {
     Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
     localIntent.setData(Uri.parse("file://" + this.a));
     this.this$0.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent);
-    if ((this.this$0.jdField_a_of_type_Bcqf != null) && (this.this$0.jdField_a_of_type_Bcqf.isShowing())) {
-      this.this$0.jdField_a_of_type_Bcqf.dismiss();
+    if ((this.this$0.jdField_a_of_type_Bepp != null) && (this.this$0.jdField_a_of_type_Bepp.isShowing())) {
+      this.this$0.jdField_a_of_type_Bepp.dismiss();
     }
-    bcql.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2, this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131717247, new Object[] { this.a }), 1).b(this.this$0.jdField_a_of_type_Int);
+    QQToast.a(this.this$0.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2, this.this$0.jdField_a_of_type_AndroidAppActivity.getString(2131717619, new Object[] { this.a }), 1).b(this.this$0.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler.5
  * JD-Core Version:    0.7.0.1
  */

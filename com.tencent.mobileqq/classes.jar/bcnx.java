@@ -1,47 +1,65 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import com.tencent.mobileqq.troop.data.TroopAioTopADInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class bcnx
-  extends ImageSpan
+class bcnx
+  extends bcoc
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  public TroopAioTopADInfo a;
   
-  public bcnx(Drawable paramDrawable, int paramInt)
+  protected View a(View paramView, TroopFeedItem paramTroopFeedItem, int paramInt, boolean paramBoolean)
   {
-    super(paramDrawable, paramInt);
-  }
-  
-  public bcnx a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-    return this;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
-  {
-    paramCharSequence = getDrawable();
-    paramCanvas.save();
-    paramInt2 = paramInt5 - paramCharSequence.getBounds().bottom;
-    paramInt1 = paramInt2;
-    if (this.mVerticalAlignment == 1) {
-      paramInt1 = paramInt2 - paramPaint.getFontMetricsInt().descent;
+    paramTroopFeedItem = paramView;
+    if (paramView == null) {
+      paramTroopFeedItem = LayoutInflater.from(this.jdField_a_of_type_Bcnw.jdField_a_of_type_AndroidContentContext).inflate(2131560402, null);
     }
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_Float != 0.0F)) {
-      this.jdField_a_of_type_Int = ((int)((paramInt5 - paramInt3) * this.jdField_a_of_type_Float));
+    Object localObject = (bcny)paramTroopFeedItem.getTag();
+    paramView = (View)localObject;
+    if (localObject == null)
+    {
+      paramView = new bcny(this);
+      paramView.a = ((URLImageView)paramTroopFeedItem.findViewById(2131362015));
+      paramTroopFeedItem.setOnClickListener(this.jdField_a_of_type_Bcnw);
+      paramTroopFeedItem.setTag(paramView);
     }
-    paramCanvas.translate(paramFloat, paramInt1 + this.jdField_a_of_type_Int);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    if (!bdee.d(this.jdField_a_of_type_Bcnw.jdField_a_of_type_AndroidContentContext)) {
+      if (this.jdField_a_of_type_Bcnw.jdField_a_of_type_Bbnl != null) {
+        this.jdField_a_of_type_Bcnw.jdField_a_of_type_Bbnl.c();
+      }
+    }
+    do
+    {
+      return paramTroopFeedItem;
+      try
+      {
+        localObject = URLDrawable.URLDrawableOptions.obtain();
+        apgg localapgg = new apgg(1, 1);
+        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localapgg;
+        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localapgg;
+        localObject = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTopADInfo.uiUrl, (URLDrawable.URLDrawableOptions)localObject);
+        paramView.a.setBackgroundDrawable((Drawable)localObject);
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopAioADManager", 2, "URLDrawable: " + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTopADInfo.uiUrl);
+        }
+        azmj.b(this.jdField_a_of_type_Bcnw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "notice_center", "Exp_Promote", 0, 0, this.jdField_a_of_type_Bcnw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTopADInfo.adId + "", "", "");
+        return paramTroopFeedItem;
+      }
+      catch (IllegalArgumentException paramView) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("TroopAioADManager", 2, "IllegalArgumentException");
+    return paramTroopFeedItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcnx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,84 +1,22 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.QavPanel;
+import android.view.View.OnLayoutChangeListener;
 import com.tencent.qphone.base.util.QLog;
 
 class mhm
-  implements Animation.AnimationListener
+  implements View.OnLayoutChangeListener
 {
-  mhm(mhj parammhj) {}
+  mhm(mhl parammhl) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "OutAnimation onAnimationEnd");
-    }
-    try
-    {
-      if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
-      {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().aq = false;
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().ar = false;
-      }
-      if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null) {
-        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setVisibility(4);
-      }
-      if (this.a.jdField_a_of_type_AndroidViewView != null) {
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      }
-      if (this.a.b != null) {
-        this.a.b.setVisibility(4);
-      }
-      if (this.a.c != null) {
-        this.a.c.setVisibility(4);
-      }
-      if (this.a.d != null) {
-        this.a.d.setVisibility(4);
-      }
-      if (this.a.e != null) {
-        this.a.e.setVisibility(4);
-      }
-      if (this.a.g != null) {
-        this.a.g.setVisibility(4);
-      }
-      if (this.a.jdField_a_of_type_Mho != null) {
-        this.a.jdField_a_of_type_Mho.b();
-      }
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationEnd Exception :" + paramAnimation);
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavInOutAnimation", 2, "OutAnimation onAnimationStart");
-    }
-    try
-    {
-      if (this.a.jdField_a_of_type_Mho != null) {
-        this.a.jdField_a_of_type_Mho.a();
-      }
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationStart Exception :" + paramAnimation);
+      QLog.e("MemberPagerAdapter", 2, String.format("view : left[%s], top[%s], right[%s], bottom[%s], oldLeft[%s], oldTop[%s], oldRight[%s], oldBottom[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mhm
  * JD-Core Version:    0.7.0.1
  */

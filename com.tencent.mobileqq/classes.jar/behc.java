@@ -1,36 +1,20 @@
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.view.View.OnClickListener;
 
-public class behc
-  implements TextWatcher
+public abstract interface behc
+  extends bebx
 {
-  public behc(Login paramLogin) {}
+  public abstract View a(int paramInt);
   
-  public void afterTextChanged(Editable paramEditable) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, int paramInt3);
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt3 < 2)
-    {
-      this.a.jdField_b_of_type_Boolean = false;
-      if (paramCharSequence.length() == 0) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
-  }
+  public abstract void a(boolean paramBoolean1, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2, String paramString1, String paramString2, String paramString3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     behc
  * JD-Core Version:    0.7.0.1
  */

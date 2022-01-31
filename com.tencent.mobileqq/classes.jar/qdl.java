@@ -1,69 +1,47 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.BannerItem;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.ContentBannerItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUGCVoice;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class qdl
-  extends qdj
+  implements View.OnClickListener
 {
-  public String f;
+  public qdl(ComponentContentUGCVoice paramComponentContentUGCVoice) {}
   
-  public qdl(int paramInt)
+  public void onClick(View paramView)
   {
-    super(paramInt);
-  }
-  
-  public static qdj b(oidb_cmd0xbc9.BannerItem paramBannerItem)
-  {
-    if (!paramBannerItem.msg_article_content_item.has()) {
-      return null;
+    paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((ComponentContentUGCVoice.a(this.a) != null) && (!TextUtils.isEmpty(ComponentContentUGCVoice.a(this.a).jdField_a_of_type_JavaLangString))) {
+      if (ComponentContentUGCVoice.a(this.a).jdField_a_of_type_Boolean)
+      {
+        nrt.a(null, "", "0X8009CA4", "0X8009CA4", 0, 0, paramView.getCurrentAccountUin(), ComponentContentUGCVoice.a(this.a).mFeedId + "", "2", "", false);
+        qyd.a().a();
+      }
     }
-    oidb_cmd0xbc9.ContentBannerItem localContentBannerItem = paramBannerItem.msg_article_content_item;
-    if (paramBannerItem.uint32_banner_type.has()) {}
-    for (qdl localqdl = new qdl(paramBannerItem.uint32_banner_type.get());; localqdl = new qdl(4))
+    while (!QLog.isColorLevel())
     {
-      if (localContentBannerItem.bytes_image_url.has()) {
-        localqdl.c = localContentBannerItem.bytes_image_url.get().toStringUtf8();
+      return;
+      if (rcp.a().a())
+      {
+        QQToast.a(this.a.getContext(), alpo.a(2131702666), 0).a();
+        return;
       }
-      if (localContentBannerItem.bytes_link_url.has()) {
-        localqdl.f = localContentBannerItem.bytes_link_url.get().toStringUtf8();
-      }
-      if (localContentBannerItem.bytes_rowkey.has()) {
-        localqdl.e = localContentBannerItem.bytes_rowkey.get().toStringUtf8();
-      }
-      a(localqdl, paramBannerItem);
-      a(paramBannerItem, localqdl);
-      return localqdl;
+      nrt.a(null, "", "0X8009CA4", "0X8009CA4", 0, 0, paramView.getCurrentAccountUin(), ComponentContentUGCVoice.a(this.a).mFeedId + "", "1", "", false);
+      qyd.a().a(this.a, ComponentContentUGCVoice.a(this.a));
+      return;
     }
-  }
-  
-  public oidb_cmd0xbc9.BannerItem a()
-  {
-    oidb_cmd0xbc9.BannerItem localBannerItem = super.a();
-    oidb_cmd0xbc9.ContentBannerItem localContentBannerItem = new oidb_cmd0xbc9.ContentBannerItem();
-    if (!TextUtils.isEmpty(this.c)) {
-      localContentBannerItem.bytes_image_url.set(ByteStringMicro.copyFromUtf8(this.c));
-    }
-    if (!TextUtils.isEmpty(this.f)) {
-      localContentBannerItem.bytes_link_url.set(ByteStringMicro.copyFromUtf8(this.f));
-    }
-    if (!TextUtils.isEmpty(this.e)) {
-      localContentBannerItem.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(this.e));
-    }
-    localBannerItem.msg_article_content_item.set(localContentBannerItem);
-    return localBannerItem;
-  }
-  
-  public String toString()
-  {
-    return " jump: " + this.f;
+    QLog.d(ComponentContentUGCVoice.jdField_a_of_type_JavaLangString, 2, "mUGCVoiceInfo or its voiceUrl is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qdl
  * JD-Core Version:    0.7.0.1
  */

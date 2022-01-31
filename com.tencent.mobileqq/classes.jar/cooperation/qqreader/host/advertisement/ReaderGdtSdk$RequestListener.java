@@ -1,5 +1,8 @@
 package cooperation.qqreader.host.advertisement;
 
+import aaie;
+import aaif;
+import aaig;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.gdtad.aditem.GdtAd;
@@ -15,27 +18,24 @@ import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.MutiPicTextInfo;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.PosAdInfo;
-import ysn;
-import yso;
-import ysp;
 
 public abstract class ReaderGdtSdk$RequestListener
-  implements yso
+  implements aaif
 {
-  public void onResponse(ysn paramysn)
+  public void onResponse(aaie paramaaie)
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject = null;
-    paramysn = paramysn.a().a;
-    if (paramysn == null) {
-      paramysn = (ysn)localObject;
+    paramaaie = paramaaie.a().a;
+    if (paramaaie == null) {
+      paramaaie = (aaie)localObject;
     }
     for (;;)
     {
-      onResult(localArrayList, paramysn);
+      onResult(localArrayList, paramaaie);
       return;
-      localObject = paramysn.pos_ads_info.get();
-      paramysn = paramysn.gdt_cookie.get();
+      localObject = paramaaie.pos_ads_info.get();
+      paramaaie = paramaaie.gdt_cookie.get();
       if (localObject != null) {
         if (!((List)localObject).isEmpty())
         {
@@ -61,7 +61,7 @@ public abstract class ReaderGdtSdk$RequestListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.host.advertisement.ReaderGdtSdk.RequestListener
  * JD-Core Version:    0.7.0.1
  */

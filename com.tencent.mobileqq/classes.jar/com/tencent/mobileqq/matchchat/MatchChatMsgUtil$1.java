@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.matchchat;
 
-import asfl;
+import atwl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.redtouch.RedTouch;
@@ -14,7 +14,7 @@ public final class MatchChatMsgUtil$1
   
   public void run()
   {
-    int i = asfl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    int i = atwl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (QLog.isColorLevel()) {
       QLog.d("MatchChatMsgUtil", 2, "updateExtendFriendRedTouch() : " + i);
     }
@@ -25,7 +25,7 @@ public final class MatchChatMsgUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.matchchat.MatchChatMsgUtil.1
  * JD-Core Version:    0.7.0.1
  */

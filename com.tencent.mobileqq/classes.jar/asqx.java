@@ -1,44 +1,35 @@
-import android.content.Context;
-import android.widget.OverScroller;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.hotpic.HotVideoData;
+import java.util.List;
 
 public class asqx
-  extends OverScroller
+  implements baxv
 {
-  private asqy a;
+  public asqx(HotVideoData paramHotVideoData, asqz paramasqz, asqy paramasqy) {}
   
-  public asqx(Context paramContext)
+  public void a(bawo parambawo, baxd parambaxd)
   {
-    super(paramContext);
-  }
-  
-  public void a(asqy paramasqy)
-  {
-    this.a = paramasqy;
-  }
-  
-  public void fling(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioOverScroller", 2, "fling() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], velocityX = [" + paramInt3 + "], velocityY = [" + paramInt4 + "], minX = [" + paramInt5 + "], maxX = [" + paramInt6 + "], minY = [" + paramInt7 + "], maxY = [" + paramInt8 + "], overX = [" + paramInt9 + "], overY = [" + paramInt10 + "]");
+    if (parambaxd != null) {
+      if (parambaxd.a.size() > 0)
+      {
+        parambawo = (baxr)parambaxd.a.get(0);
+        this.jdField_a_of_type_Asqz.a(parambawo);
+      }
     }
-    super.fling(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
-  }
-  
-  public boolean springBack(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioOverScroller", 2, "springBack() called with: startX = [" + paramInt1 + "], startY = [" + paramInt2 + "], minX = [" + paramInt3 + "], maxX = [" + paramInt4 + "], minY = [" + paramInt5 + "], maxY = [" + paramInt6 + "]");
+    for (;;)
+    {
+      this.jdField_a_of_type_Asqy.a(this.jdField_a_of_type_Asqz);
+      return;
+      this.jdField_a_of_type_Asqz.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Asqz.jdField_a_of_type_JavaLangString = "Unknown error！";
+      continue;
+      this.jdField_a_of_type_Asqz.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Asqz.jdField_a_of_type_JavaLangString = "Unknown error！";
     }
-    if (this.a != null) {
-      this.a.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-    }
-    return super.springBack(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asqx
  * JD-Core Version:    0.7.0.1
  */

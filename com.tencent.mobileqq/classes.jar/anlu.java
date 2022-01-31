@@ -1,26 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 class anlu
-  implements Animation.AnimationListener
+  implements DialogInterface.OnDismissListener
 {
-  anlu(anlt paramanlt) {}
+  anlu(anlt paramanlt, bhpy parambhpy) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.a.setVisibility(8);
-    this.a.a.d();
+    this.jdField_a_of_type_Bhpy.dismiss();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearData actionsheet is closed", new Object[0]));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlu
  * JD-Core Version:    0.7.0.1
  */

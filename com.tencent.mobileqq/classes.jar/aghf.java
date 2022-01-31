@@ -1,52 +1,23 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class aghf
-  extends aggw
+class aghf
+  implements Animation.AnimationListener
 {
-  public aghf(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
+  aghf(aghd paramaghd, aggy paramaggy) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramContext, paramSessionInfo, paramQQAppInterface);
+    this.jdField_a_of_type_Aghd.b();
   }
   
-  private void A()
-  {
-    if (!this.d) {}
-    while (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(null);
-    if (mau.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131698570));
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  protected boolean b()
-  {
-    return true;
-  }
-  
-  protected void g()
-  {
-    super.g();
-    A();
-  }
-  
-  protected void y()
-  {
-    this.jdField_a_of_type_JavaLangString = "MiniPieForDisc";
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aghf
  * JD-Core Version:    0.7.0.1
  */

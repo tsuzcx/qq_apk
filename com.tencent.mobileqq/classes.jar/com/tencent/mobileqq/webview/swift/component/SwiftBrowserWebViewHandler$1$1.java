@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bcgb;
-import bcgc;
+import befc;
+import befd;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -14,14 +14,14 @@ class SwiftBrowserWebViewHandler$1$1
   {
     Iterator localIterator = this.a.this$0.a.iterator();
     while (localIterator.hasNext()) {
-      ((bcgc)localIterator.next()).a();
+      ((befd)localIterator.next()).a();
     }
     this.a.this$0.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserWebViewHandler.1.1
  * JD-Core Version:    0.7.0.1
  */

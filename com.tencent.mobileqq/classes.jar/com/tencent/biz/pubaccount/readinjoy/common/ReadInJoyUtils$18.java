@@ -1,26 +1,26 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import ajsd;
+import aljq;
 import android.text.TextUtils;
-import bhvy;
+import bjxj;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
-import nol;
-import npu;
-import onh;
+import nrt;
+import ntd;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pcs;
-import qbi;
+import ors;
+import piu;
+import qle;
 
 public final class ReadInJoyUtils$18
   implements Runnable
@@ -42,7 +42,7 @@ public final class ReadInJoyUtils$18
       }
       str4 = this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$RedTypeInfo.red_content.get();
       localObject2 = "";
-      if (bhvy.j()) {
+      if (bjxj.j()) {
         break label824;
       }
       localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
@@ -65,11 +65,11 @@ public final class ReadInJoyUtils$18
       str4 = "0";
       break label26;
       label80:
-      localObject2 = ((QQMessageFacade)localObject1).b(ajsd.aA, 7220);
+      localObject2 = ((QQMessageFacade)localObject1).b(aljq.aA, 7220);
       if (localObject2 != null)
       {
-        if ((onh.jdField_a_of_type_Qbi.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (onh.jdField_a_of_type_Qbi.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time >= ((MessageRecord)localObject2).time)) {
-          localObject2 = onh.jdField_a_of_type_Qbi.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        if ((ors.jdField_a_of_type_Qle.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (ors.jdField_a_of_type_Qle.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time >= ((MessageRecord)localObject2).time)) {
+          localObject2 = ors.jdField_a_of_type_Qle.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
         }
         for (;;)
         {
@@ -96,7 +96,7 @@ public final class ReadInJoyUtils$18
           }
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject2).extLong));
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq, "extStr", ((MessageRecord)localObject2).extStr);
-          onh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject2);
+          ors.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject2);
           String str3;
           if (((MessageRecord)localObject2).extInt == 5)
           {
@@ -126,46 +126,46 @@ public final class ReadInJoyUtils$18
                 localObject3 = localObject4;
               }
             }
-            if (onh.jdField_a_of_type_Qbi.jdField_a_of_type_Int == 1) {
+            if (ors.jdField_a_of_type_Qle.jdField_a_of_type_Int == 1) {
               break;
             }
-            onh.b(String.valueOf(System.currentTimeMillis()));
-            onh.jdField_a_of_type_Long = System.currentTimeMillis() / 1000L;
+            ors.b(String.valueOf(System.currentTimeMillis()));
+            ors.jdField_a_of_type_Long = System.currentTimeMillis() / 1000L;
             for (;;)
             {
               try
               {
                 localObject4 = new JSONObject();
-                ((JSONObject)localObject4).put("folder_status", onh.jdField_a_of_type_Qbi.jdField_a_of_type_Int);
-                ((JSONObject)localObject4).put("algorithm_id", onh.jdField_a_of_type_Qbi.jdField_a_of_type_JavaLangString);
-                ((JSONObject)localObject4).put("strategy_id", onh.jdField_a_of_type_Qbi.b);
+                ((JSONObject)localObject4).put("folder_status", ors.jdField_a_of_type_Qle.jdField_a_of_type_Int);
+                ((JSONObject)localObject4).put("algorithm_id", ors.jdField_a_of_type_Qle.jdField_a_of_type_JavaLangString);
+                ((JSONObject)localObject4).put("strategy_id", ors.jdField_a_of_type_Qle.b);
                 ((JSONObject)localObject4).put("time", System.currentTimeMillis());
-                if (onh.jdField_a_of_type_Qbi.jdField_a_of_type_Int == 6)
+                if (ors.jdField_a_of_type_Qle.jdField_a_of_type_Int == 6)
                 {
                   ((JSONObject)localObject4).put("id", str3);
                   ((JSONObject)localObject4).put("social_uin", localObject1);
                 }
-                if (!onh.e()) {
+                if (!ors.e()) {
                   continue;
                 }
                 j = 1;
                 ((JSONObject)localObject4).put("message_status", j);
-                if (bhvy.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
+                if (bjxj.I(BaseApplicationImpl.getApplication().getRuntime()) != 1) {
                   continue;
                 }
                 j = 1;
                 ((JSONObject)localObject4).put("reddot_style", j);
                 ((JSONObject)localObject4).put("tab_status", i);
-                ((JSONObject)localObject4).put("kandian_mode_new", npu.a());
+                ((JSONObject)localObject4).put("kandian_mode_new", ntd.a());
                 if (i == 3) {
                   ((JSONObject)localObject4).put("reddot_num", str4);
                 }
-                nol.a(null, "CliOper", "", (String)localObject2, "0X80091DC", "0X80091DC", 0, 0, "0", onh.g(onh.jdField_a_of_type_Qbi.c), onh.jdField_a_of_type_Qbi.b, ((JSONObject)localObject4).toString(), false);
-                if (bhvy.k()) {
-                  onh.a(20, onh.g(onh.jdField_a_of_type_Qbi.c), onh.jdField_a_of_type_Qbi.b, onh.jdField_a_of_type_Qbi.jdField_a_of_type_JavaLangString, (String)localObject2, onh.jdField_a_of_type_Qbi.jdField_a_of_type_Int);
+                nrt.a(null, "CliOper", "", (String)localObject2, "0X80091DC", "0X80091DC", 0, 0, "0", ors.g(ors.jdField_a_of_type_Qle.c), ors.jdField_a_of_type_Qle.b, ((JSONObject)localObject4).toString(), false);
+                if (bjxj.k()) {
+                  ors.a(20, ors.g(ors.jdField_a_of_type_Qle.c), ors.jdField_a_of_type_Qle.b, ors.jdField_a_of_type_Qle.jdField_a_of_type_JavaLangString, (String)localObject2, ors.jdField_a_of_type_Qle.jdField_a_of_type_Int);
                 }
                 ((KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162)).a();
-                if (onh.jdField_a_of_type_Qbi.jdField_a_of_type_Int != 6) {
+                if (ors.jdField_a_of_type_Qle.jdField_a_of_type_Int != 6) {
                   continue;
                 }
                 QLog.d("ReadInJoyUtils", 1, "feedsPreload, social num red point, do not preload.");
@@ -187,10 +187,10 @@ public final class ReadInJoyUtils$18
               }
               try
               {
-                localObject1 = onh.a();
-                ((JSONObject)localObject1).put("kandian_mode", onh.e());
-                ((JSONObject)localObject1).put("tab_source", onh.d());
-                nol.a(null, "CliOper", "", null, "0X80081C6", "0X80081C6", 0, 1, null, null, null, ((JSONObject)localObject1).toString(), false);
+                localObject1 = ors.a();
+                ((JSONObject)localObject1).put("kandian_mode", ors.e());
+                ((JSONObject)localObject1).put("tab_source", ors.d());
+                nrt.a(null, "CliOper", "", null, "0X80081C6", "0X80081C6", 0, 1, null, null, null, ((JSONObject)localObject1).toString(), false);
                 return;
               }
               catch (Exception localException1)
@@ -211,7 +211,7 @@ public final class ReadInJoyUtils$18
               j = 0;
               continue;
               QLog.d("ReadInJoyUtils", 1, "feedsPreload, small red point exposed.");
-              pcs.a().a(true);
+              piu.a().a(true);
             }
             String str2 = "";
             str3 = "";
@@ -223,7 +223,7 @@ public final class ReadInJoyUtils$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.18
  * JD-Core Version:    0.7.0.1
  */

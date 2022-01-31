@@ -80,7 +80,7 @@ public class TPReportManager
   private long mPlayDurationMs = 0L;
   private int mPlayScene = 1;
   private long mPlayStartTimeMs = 0L;
-  private int mPlayType = 0;
+  private int mPlayType = -1;
   private int mPlayerType = 0;
   private TPReportManager.IReportHandler mReportHandler = new TPReportManager.DefaultReportHandler(this);
   private TPDefaultReportInfo mReportInfoGetter = null;
@@ -1082,14 +1082,15 @@ public class TPReportManager
     localCommonParams.p2pVersionString = TPDownloadProxyHelper.getNativeLibVersion();
     localCommonParams.playerVersionString = "1.3.0.1023";
     localCommonParams.playerTypeInt = this.mPlayerType;
-    label261:
+    label270:
     Iterator localIterator;
     if (this.mIsUseP2P)
     {
       paramInt = 1;
       localCommonParams.p2pInt = paramInt;
+      localCommonParams.playerTypeInt = this.mPlayType;
       if ((this.mReportInfoGetter == null) || (!paramBoolean)) {
-        break label539;
+        break label548;
       }
       localCommonParams.testIdInt = this.mReportInfoGetter.testId;
       localCommonParams.cdnIdInt = this.mReportInfoGetter.cdnId;
@@ -1100,7 +1101,7 @@ public class TPReportManager
       localCommonParams.configIdInt = this.mReportInfoGetter.configId;
       localCommonParams.platformLong = this.mReportInfoGetter.platform;
       if (!this.mReportInfoGetter.isOnline) {
-        break label504;
+        break label513;
       }
       paramInt = i;
       localCommonParams.onlineInt = paramInt;
@@ -1117,14 +1118,14 @@ public class TPReportManager
       localCommonParams.mediaResolutionString = this.mReportInfoGetter.mediaResolution;
       localCommonParams.scenesId = this.mReportInfoGetter.scenesId;
       if (this.mReportInfoGetter.reportInfoProperties == null) {
-        break label528;
+        break label537;
       }
       localIterator = this.mReportInfoGetter.reportInfoProperties.entrySet().iterator();
     }
     for (;;)
     {
       if (!localIterator.hasNext()) {
-        break label528;
+        break label537;
       }
       Object localObject2 = (Map.Entry)localIterator.next();
       Object localObject1 = ((Map.Entry)localObject2).getKey();
@@ -1135,15 +1136,15 @@ public class TPReportManager
         continue;
         paramInt = 0;
         break;
-        label504:
+        label513:
         paramInt = 0;
-        break label261;
+        break label270;
       }
       paramITPReportProperties.put(localObject1.toString(), localObject2.toString());
     }
-    label528:
+    label537:
     this.mPlayType = this.mReportInfoGetter.getPlayType();
-    label539:
+    label548:
     if (localCommonParams.platformLong <= 0L) {
       localCommonParams.platformLong = TPPlayerConfig.getPlatform();
     }
@@ -1439,7 +1440,7 @@ public class TPReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager
  * JD-Core Version:    0.7.0.1
  */

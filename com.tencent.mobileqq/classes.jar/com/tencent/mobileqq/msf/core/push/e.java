@@ -16,6 +16,7 @@ import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.ag;
 import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.core.net.utils.MsfPullConfigUtil;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
@@ -23,6 +24,7 @@ import com.tencent.mobileqq.msf.sdk.PushRegisterInfo;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.mobileqq.msf.service.q;
+import com.tencent.mobileqq.msf.service.t;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -167,7 +169,7 @@ public class e
         arrayOfByte1 = localReqBody.toByteArray();
         l1 = arrayOfByte1.length;
         arrayOfByte2 = new byte[(int)l1 + 4];
-        com.tencent.mobileqq.msf.service.n.a(arrayOfByte2, 0, 4L + l1);
+        q.a(arrayOfByte2, 0, 4L + l1);
         System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 4, (int)l1);
         localToServiceMsg.putWupBuffer(arrayOfByte2);
         if (QLog.isColorLevel()) {
@@ -472,7 +474,7 @@ public class e
                 byte[] arrayOfByte1 = localReqBody.toByteArray();
                 l1 = arrayOfByte1.length;
                 byte[] arrayOfByte2 = new byte[(int)l1 + 4];
-                com.tencent.mobileqq.msf.service.n.a(arrayOfByte2, 0, 4L + l1);
+                q.a(arrayOfByte2, 0, 4L + l1);
                 System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 4, (int)l1);
                 localToServiceMsg.putWupBuffer(arrayOfByte2);
                 if (QLog.isColorLevel()) {
@@ -519,7 +521,7 @@ public class e
   
   public void a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
-    paramToServiceMsg = q.c();
+    paramToServiceMsg = t.c();
     try
     {
       if (paramFromServiceMsg.isSuccess())
@@ -614,7 +616,7 @@ public class e
         if (paramToServiceMsg.getMsfCommand() == MsfCommand._msf_UnRegPush)
         {
           QLog.d("MSF.C.PushManager:PushCoder", 1, "handlerPush unregister push succ " + MD5.toMD5(paramFromServiceMsg.getUin()));
-          localObject4 = q.b(paramToServiceMsg);
+          localObject4 = t.b(paramToServiceMsg);
           localObject4 = (a)this.f.i.get(localObject4);
           if (localObject4 != null)
           {
@@ -784,7 +786,7 @@ public class e
         else
         {
           QLog.d("MSF.C.PushManager:PushCoder", 1, "handlerPush register push succ " + MD5.toMD5(paramFromServiceMsg.getUin()) + " bUpdateFlag: " + i4 + ", timeStamp:  " + l2 + ", cReplyCode:" + i5 + " ,iStatus: " + i3 + ", regPushReason: " + (String)localObject1);
-          b(q.b(paramToServiceMsg));
+          b(t.b(paramToServiceMsg));
           continue;
           if (this.f.c.getStatReporter() == null) {
             continue;
@@ -821,7 +823,7 @@ public class e
       }
       paramFromServiceMsg.setMsfCommand(paramToServiceMsg.getMsfCommand());
       break label544;
-      MsfSdkUtils.addFromMsgProcessName(q.b(paramToServiceMsg), paramFromServiceMsg);
+      MsfSdkUtils.addFromMsgProcessName(t.b(paramToServiceMsg), paramFromServiceMsg);
       this.f.c.addRespToQuque(null, paramFromServiceMsg);
       break label569;
       label1546:
@@ -907,7 +909,7 @@ public class e
       } while (!QLog.isColorLevel());
       QLog.d("MSF.C.PushManager:PushCoder", 2, "watchdog startWatchdogCallback mbIsInfoLoginGetted:" + MsfService.getCore().mbIsInfoLoginGetted + " ok");
       return;
-      if (!q.b()) {
+      if (!t.b()) {
         break;
       }
       if (this.A < 6)
@@ -933,12 +935,12 @@ public class e
     QLog.d("MSF.C.PushManager:PushCoder", 2, "watchdog startWatchdogCallback QQProcessRunning mnWatchdogForInfoLoginRetryCount:" + this.A);
     return;
     QLog.d("MSF.C.PushManager:PushCoder", 1, "watchdog startWatchdogCallback QQProcess killed restart now");
-    c(q.c());
+    c(t.c());
   }
   
   void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    String str = q.b(paramToServiceMsg);
+    String str = t.b(paramToServiceMsg);
     if ((a)this.f.i.get(str) != null)
     {
       long l1 = System.currentTimeMillis();
@@ -1023,7 +1025,7 @@ public class e
   
   void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    paramToServiceMsg = q.b(paramToServiceMsg);
+    paramToServiceMsg = t.b(paramToServiceMsg);
     if ((a)this.f.i.get(paramToServiceMsg) != null) {
       try
       {

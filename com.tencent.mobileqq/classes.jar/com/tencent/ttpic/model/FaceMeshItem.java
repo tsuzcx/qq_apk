@@ -7,6 +7,7 @@ public class FaceMeshItem
 {
   public boolean alwaysTriggered;
   public CharmRange charmRange;
+  public String externalTriggerWords;
   public int featureStatType;
   public StickerItem.ValueRange featureStatValueRange;
   public double frameDuration;

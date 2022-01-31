@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
-import actj;
-import adwj;
+import aekt;
+import afsw;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -18,11 +18,11 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import axlk;
-import bfry;
-import bfrz;
-import bfsa;
-import bfsb;
+import azgq;
+import bhsv;
+import bhsw;
+import bhsx;
+import bhsy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
 import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
@@ -38,10 +38,10 @@ public class FitSystemWindowsRelativeLayout
   extends RelativeLayout
   implements Handler.Callback
 {
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bfry(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bhsv(this);
   View jdField_a_of_type_AndroidViewView = new View(getContext());
-  private bfsa jdField_a_of_type_Bfsa;
-  private bfsb jdField_a_of_type_Bfsb;
+  private bhsx jdField_a_of_type_Bhsx;
+  private bhsy jdField_a_of_type_Bhsy;
   GreatMoveCombolEffectView jdField_a_of_type_ComTencentMobileqqActivityAioItemGreatMoveCombolEffectView = null;
   HeartBreakCombolEffectView jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView = null;
   HeartCombolEffectView jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartCombolEffectView = null;
@@ -104,9 +104,9 @@ public class FitSystemWindowsRelativeLayout
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView = new SixCombolEffectView(getContext());
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.topMargin = axlk.a(50.0F);
-      localLayoutParams.addRule(8, 2131369274);
-      ViewGroup localViewGroup = (ViewGroup)findViewById(2131364075);
+      localLayoutParams.topMargin = azgq.a(50.0F);
+      localLayoutParams.addRule(8, 2131369509);
+      ViewGroup localViewGroup = (ViewGroup)findViewById(2131364137);
       localViewGroup.removeView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView);
       localViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView, localLayoutParams);
     }
@@ -119,8 +119,8 @@ public class FitSystemWindowsRelativeLayout
       QLog.d("placeholder", 2, "dispatchTouchEvent() called with: ev = [" + paramMotionEvent + "]");
     }
     boolean bool = false;
-    if (this.jdField_a_of_type_Bfsa != null) {
-      bool = this.jdField_a_of_type_Bfsa.a(paramMotionEvent);
+    if (this.jdField_a_of_type_Bhsx != null) {
+      bool = this.jdField_a_of_type_Bhsx.a(paramMotionEvent);
     }
     if (bool) {
       return true;
@@ -198,7 +198,7 @@ public class FitSystemWindowsRelativeLayout
                                   {
                                     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = new DiniFlyAnimationView(getContext());
                                     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setFitFullScreenXY();
-                                    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new bfrz(this));
+                                    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new bhsw(this));
                                     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
                                     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams(localLayoutParams);
                                     if (1 != paramMessage.arg2) {
@@ -213,7 +213,7 @@ public class FitSystemWindowsRelativeLayout
                                       this.jdField_a_of_type_Boolean = true;
                                       addView(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
                                     }
-                                    adwj.a(a(), getContext(), this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, null, paramMessage.arg1, "fullscreen");
+                                    afsw.a(a(), getContext(), this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, null, paramMessage.arg1, "fullscreen");
                                     return false;
                                     if (!this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()) {
                                       break;
@@ -228,7 +228,7 @@ public class FitSystemWindowsRelativeLayout
                                 this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = null;
                                 return false;
                               } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartCombolEffectView != null);
-                              this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartCombolEffectView = new HeartCombolEffectView(getContext(), adwj.a(a()));
+                              this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartCombolEffectView = new HeartCombolEffectView(getContext(), afsw.a(a()));
                               paramMessage = new RelativeLayout.LayoutParams(-1, -1);
                               addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartCombolEffectView, paramMessage);
                               return false;
@@ -242,11 +242,11 @@ public class FitSystemWindowsRelativeLayout
                         } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView != null);
                         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView = new ZanCombolEffectView(getContext());
                         paramMessage = new RelativeLayout.LayoutParams(-1, -1);
-                        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView.a(getResources().getDisplayMetrics().widthPixels, actj.a(40.0F, getResources()), 0.0F, 150.0F, actj.a(100.0F, getResources()), actj.a(3.0F, getResources()), actj.a(800.0F, getResources()), getResources().getDisplayMetrics().heightPixels, adwj.a(a()));
+                        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView.a(getResources().getDisplayMetrics().widthPixels, aekt.a(40.0F, getResources()), 0.0F, 150.0F, aekt.a(100.0F, getResources()), aekt.a(3.0F, getResources()), aekt.a(800.0F, getResources()), getResources().getDisplayMetrics().heightPixels, afsw.a(a()));
                         addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView, paramMessage);
                         return false;
                       } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView == null);
-                      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView.a(new Integer[] { Integer.valueOf(2130838792), Integer.valueOf(2130838800), Integer.valueOf(2130838812), Integer.valueOf(2130838816), Integer.valueOf(2130838823), Integer.valueOf(2130838831) });
+                      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView.a(new Integer[] { Integer.valueOf(2130838947), Integer.valueOf(2130838948), Integer.valueOf(2130838949), Integer.valueOf(2130838950), Integer.valueOf(2130838951), Integer.valueOf(2130838952) });
                       return false;
                     } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView == null);
                     removeView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemZanCombolEffectView);
@@ -278,12 +278,12 @@ public class FitSystemWindowsRelativeLayout
         } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView != null);
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView = new SixCombolEffectView(getContext());
         paramMessage = new RelativeLayout.LayoutParams(-1, -1);
-        paramMessage.addRule(8, 2131369274);
-        paramMessage.topMargin = axlk.a(50.0F);
-        ((ViewGroup)findViewById(2131364075)).addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView, paramMessage);
+        paramMessage.addRule(8, 2131369509);
+        paramMessage.topMargin = azgq.a(50.0F);
+        ((ViewGroup)findViewById(2131364137)).addView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView, paramMessage);
         return false;
       } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView == null);
-      ((ViewGroup)findViewById(2131364075)).removeView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView);
+      ((ViewGroup)findViewById(2131364137)).removeView(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.c();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView = null;
       return false;
@@ -316,8 +316,8 @@ public class FitSystemWindowsRelativeLayout
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Bfsb != null) {
-      bool = this.jdField_a_of_type_Bfsb.a(paramMotionEvent);
+    if (this.jdField_a_of_type_Bhsy != null) {
+      bool = this.jdField_a_of_type_Bhsy.a(paramMotionEvent);
     }
     if (bool) {
       return true;
@@ -325,19 +325,19 @@ public class FitSystemWindowsRelativeLayout
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
-  public void setDispatchTouchEventListener(bfsa parambfsa)
+  public void setDispatchTouchEventListener(bhsx parambhsx)
   {
-    this.jdField_a_of_type_Bfsa = parambfsa;
+    this.jdField_a_of_type_Bhsx = parambhsx;
   }
   
-  public void setOnInterceptTouchEventListener(bfsb parambfsb)
+  public void setOnInterceptTouchEventListener(bhsy parambhsy)
   {
-    this.jdField_a_of_type_Bfsb = parambfsb;
+    this.jdField_a_of_type_Bhsy = parambhsy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.FitSystemWindowsRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

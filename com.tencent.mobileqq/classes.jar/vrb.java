@@ -1,29 +1,25 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
 public class vrb
-  implements vra
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public vrb(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  public vrb(XViewPager paramXViewPager) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a.c(true);
-  }
-  
-  public void a(vrk paramvrk)
-  {
-    this.a.b(paramvrk);
-  }
-  
-  public void b()
-  {
-    this.a.a();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.scrollTo(i, 0);
+    XViewPager.a(this.a, i);
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vrb
  * JD-Core Version:    0.7.0.1
  */

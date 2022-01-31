@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import acyu;
-import acyv;
+import aeqi;
+import aeqj;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import com.tencent.widget.ListView;
@@ -20,11 +20,11 @@ class PathAnimation$Animator
     long l2 = -1L;
     if (localIterator.hasNext())
     {
-      acyv localacyv = (acyv)localIterator.next();
+      aeqj localaeqj = (aeqj)localIterator.next();
       long l1;
-      if (l3 < localacyv.jdField_a_of_type_Long)
+      if (l3 < localaeqj.jdField_a_of_type_Long)
       {
-        l1 = localacyv.jdField_a_of_type_Long - l3;
+        l1 = localaeqj.jdField_a_of_type_Long - l3;
         label63:
         if (l1 < 0L) {
           break label195;
@@ -33,25 +33,25 @@ class PathAnimation$Animator
           break label186;
         }
         label75:
-        this.this$0.a(localacyv.jdField_a_of_type_AndroidViewView, localacyv);
+        this.this$0.a(localaeqj.jdField_a_of_type_AndroidViewView, localaeqj);
       }
       for (;;)
       {
         l2 = l1;
         break;
-        if (!localacyv.b)
+        if (!localaeqj.b)
         {
-          l1 = localacyv.jdField_a_of_type_Acyu.a(localacyv, localacyv.jdField_a_of_type_AndroidViewView.getWidth(), localacyv.jdField_a_of_type_AndroidViewView.getHeight(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getWidth(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getHeight());
-          localacyv.b = true;
+          l1 = localaeqj.jdField_a_of_type_Aeqi.a(localaeqj, localaeqj.jdField_a_of_type_AndroidViewView.getWidth(), localaeqj.jdField_a_of_type_AndroidViewView.getHeight(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getWidth(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.getHeight());
+          localaeqj.b = true;
           break label63;
         }
-        l1 = localacyv.jdField_a_of_type_Acyu.a(l3 - localacyv.jdField_a_of_type_Long, localacyv);
+        l1 = localaeqj.jdField_a_of_type_Aeqi.a(l3 - localaeqj.jdField_a_of_type_Long, localaeqj);
         break label63;
         label186:
         l1 = Math.min(l2, l1);
         break label75;
         label195:
-        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.removeViewInLayout(localacyv.jdField_a_of_type_AndroidViewView);
+        this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner.removeViewInLayout(localaeqj.jdField_a_of_type_AndroidViewView);
         localIterator.remove();
         l1 = l2;
       }
@@ -67,7 +67,7 @@ class PathAnimation$Animator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.PathAnimation.Animator
  * JD-Core Version:    0.7.0.1
  */

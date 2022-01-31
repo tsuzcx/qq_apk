@@ -1,15 +1,21 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-public abstract interface aeyt
-  extends aeyx
+public class aeyt
+  implements View.OnClickListener
 {
-  public abstract int a();
+  public aeyt(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public abstract View a(Object... paramVarArgs);
+  public void onClick(View paramView)
+  {
+    this.a.b(paramView);
+    AIOLongShotHelper.a("0X8009DE9");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeyt
  * JD-Core Version:    0.7.0.1
  */

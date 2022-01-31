@@ -1,55 +1,35 @@
-import android.os.Build.VERSION;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.videostory.widget.view.smartmusicview.EditVideoSmartMusicPart.1;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
-class yxk
-  implements yxe
+public class yxk
+  implements bapx
 {
-  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
+  public yxk(EditVideoSmartMusicPart.1 param1) {}
+  
+  public void onResp(baqw parambaqw)
   {
-    Object localObject = null;
-    if (paramywk != null) {}
-    for (paramVarArgs = paramywk.a(); (paramywk == null) || (paramVarArgs == null); paramVarArgs = null)
-    {
-      yxp.d("GdtOSVersionJsCall", "handleJsCallRequest error");
-      return true;
+    QLog.i("EditVideoSmartMusicPart", 1, "download smart anim onResp url:  resultcode: " + parambaqw.c);
+    if (yxj.a(this.a.this$0) == null) {
+      return;
     }
-    JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("osVersion", Build.VERSION.RELEASE);
+      QLog.i("EditVideoSmartMusicPart", 1, "start unzip smart anim");
+      ndr.a(yxj.a(this.a.this$0), "/storage/emulated/0/Tencent/MobileQQ/video_story/");
+      return;
     }
-    catch (JSONException localJSONException)
+    catch (IOException parambaqw)
     {
-      try
-      {
-        for (;;)
-        {
-          paramywk.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramywk != null) {
-            paramString = paramywk.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getOSVersion", paramString);
-          return true;
-          localJSONException = localJSONException;
-          localJSONException.printStackTrace();
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      }
+      QLog.i("EditVideoSmartMusicPart", 1, "unzip smart anim failed" + parambaqw);
     }
   }
+  
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yxk
  * JD-Core Version:    0.7.0.1
  */

@@ -19,25 +19,27 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import behp;
-import behq;
-import bejn;
-import bekp;
-import bekr;
-import bekx;
-import bekz;
-import betc;
-import beut;
-import bfgd;
-import bfgg;
-import bfhh;
-import bfho;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import bghn;
+import bgho;
+import bgjw;
+import bgkd;
+import bgki;
+import bgkk;
+import bgri;
+import bgte;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsBannerAdView;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.AdUtil;
+import com.tencent.qqmini.sdk.utils.BannerAdPosInfo;
+import com.tencent.qqmini.sdk.utils.MiniSDKConst.AdConst;
+import com.tencent.qqmini.sdk.utils.ViewUtils;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,7 +47,7 @@ import org.json.JSONObject;
 public class BannerAdPlugin
   extends BaseJsPlugin
 {
-  private static final HashMap<Integer, String> AD_ERROR_MSG = bfhh.a;
+  private static final HashMap<Integer, String> AD_ERROR_MSG = MiniSDKConst.AdConst.CodeMsgMap;
   public static final String API_AD_CREATE_BANNER_AD = "createBannerAd";
   public static final String API_AD_OPERATE_BANNER_AD = "operateBannerAd";
   public static final String API_AD_UPDATE_BANNER_AD_SIZE = "updateBannerAdSize";
@@ -53,16 +55,16 @@ public class BannerAdPlugin
   public static final String EVENT_BANNER_AD_STATE_CHANGE = "onBannerAdStateChange";
   private static final String TAG = "BannerAdPlugin";
   private FrameLayout mBannerAdContainer;
-  private bfgg mBannerAdPosInfo;
+  private BannerAdPosInfo mBannerAdPosInfo;
   private AdProxy.AbsBannerAdView mBannerAdView;
   private float mGameDensity = -1.0F;
   private int mGameHeight;
   private int mGameWidth;
   private boolean mHasNewAd;
   
-  private void bannerErrorStateCallbackDelay(bekr parambekr, int paramInt1, String paramString, int paramInt2)
+  private void bannerErrorStateCallbackDelay(bgkd parambgkd, int paramInt1, String paramString, int paramInt2)
   {
-    bekz.a(new BannerAdPlugin.7(this, paramString, paramInt1, parambekr), paramInt2);
+    bgkk.a(new BannerAdPlugin.7(this, paramString, paramInt1, parambgkd), paramInt2);
   }
   
   private void destroyBannerAd()
@@ -89,9 +91,9 @@ public class BannerAdPlugin
     return Math.round(this.mGameDensity * paramFloat);
   }
   
-  private void informJs(bekr parambekr, JSONObject paramJSONObject, String paramString)
+  private void informJs(bgkd parambgkd, JSONObject paramJSONObject, String paramString)
   {
-    parambekr.jdField_a_of_type_Behp.a(paramString, paramJSONObject.toString(), 0);
+    parambgkd.jdField_a_of_type_Bghn.a(paramString, paramJSONObject.toString(), 0);
   }
   
   private boolean makeSureContainerAdded()
@@ -102,7 +104,7 @@ public class BannerAdPlugin
     ViewGroup localViewGroup = (ViewGroup)this.mMiniAppContext.a().getWindow().getDecorView();
     if (localViewGroup == null)
     {
-      betc.d("BannerAdPlugin", "makeSureContainerAdded, root view is null");
+      QMLog.e("BannerAdPlugin", "makeSureContainerAdded, root view is null");
       return false;
     }
     if (this.mBannerAdContainer == null) {
@@ -122,11 +124,11 @@ public class BannerAdPlugin
   
   private void reportBannerAd(String paramString)
   {
-    betc.b("BannerAdPlugin", "reportBannerAd reportUrl = " + paramString);
+    QMLog.i("BannerAdPlugin", "reportBannerAd reportUrl = " + paramString);
     if ((TextUtils.isEmpty(paramString)) || (!URLUtil.isNetworkUrl(paramString))) {
       return;
     }
-    bejn.a(new BannerAdPlugin.5(this, paramString), 16, null, false);
+    ThreadManager.a(new BannerAdPlugin.5(this, paramString), 16, null, false);
   }
   
   private boolean showBannerAd()
@@ -138,12 +140,12 @@ public class BannerAdPlugin
       {
         if ((this.mBannerAdView == null) || (this.mBannerAdView.getView() == null) || (this.mBannerAdPosInfo == null))
         {
-          betc.d("BannerAdPlugin", "showBannerAd error, data is null");
+          QMLog.e("BannerAdPlugin", "showBannerAd error, data is null");
           return bool;
         }
-        if (!this.mBannerAdPosInfo.a())
+        if (!this.mBannerAdPosInfo.isValid())
         {
-          betc.d("BannerAdPlugin", "showBannerAd error, adPosInfo is invalid." + this.mBannerAdPosInfo);
+          QMLog.e("BannerAdPlugin", "showBannerAd error, adPosInfo is invalid." + this.mBannerAdPosInfo);
           continue;
         }
         if (this.mMiniAppContext == null) {
@@ -154,7 +156,7 @@ public class BannerAdPlugin
       if (this.mMiniAppContext.a() == null)
       {
         label103:
-        betc.d("BannerAdPlugin", "showBannerAd error, mGdtBannerView == null");
+        QMLog.e("BannerAdPlugin", "showBannerAd error, mGdtBannerView == null");
       }
       else
       {
@@ -162,6 +164,7 @@ public class BannerAdPlugin
         if ((!this.mHasNewAd) && (this.mBannerAdContainer.getChildCount() > 0))
         {
           this.mBannerAdContainer.setVisibility(0);
+          bgri.a(this.mApkgInfo.appId, this.mBannerAdView.getAdID(), this.mBannerAdView.getView());
           bool = true;
         }
         else
@@ -169,64 +172,65 @@ public class BannerAdPlugin
           this.mBannerAdContainer.removeAllViews();
           if ((this.mBannerAdView != null) && (this.mBannerAdView.getView() != null))
           {
-            Object localObject2 = new FrameLayout.LayoutParams(gameDpTopx(this.mBannerAdPosInfo.f), gameDpTopx(this.mBannerAdPosInfo.g));
-            ((FrameLayout.LayoutParams)localObject2).leftMargin = gameDpTopx(this.mBannerAdPosInfo.b);
-            ((FrameLayout.LayoutParams)localObject2).topMargin = gameDpTopx(this.mBannerAdPosInfo.c);
+            Object localObject2 = new FrameLayout.LayoutParams(gameDpTopx(this.mBannerAdPosInfo.mAdRealWidth), gameDpTopx(this.mBannerAdPosInfo.mAdRealHeight));
+            ((FrameLayout.LayoutParams)localObject2).leftMargin = gameDpTopx(this.mBannerAdPosInfo.mAdLeft);
+            ((FrameLayout.LayoutParams)localObject2).topMargin = gameDpTopx(this.mBannerAdPosInfo.mAdTop);
             this.mBannerAdContainer.addView(this.mBannerAdView.getView(), (ViewGroup.LayoutParams)localObject2);
             this.mBannerAdContainer.setVisibility(0);
             localObject2 = this.mBannerAdView.getReportUrl();
             if ((this.mHasNewAd) && (this.mBannerAdPosInfo != null) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
               reportBannerAd((String)localObject2);
             }
+            bgri.a(this.mApkgInfo.appId, this.mBannerAdView.getAdID(), this.mBannerAdView.getView());
             this.mHasNewAd = false;
             bool = true;
           }
           else
           {
-            betc.d("BannerAdPlugin", "showBannerAd error, mGdtBannerView is null");
+            QMLog.e("BannerAdPlugin", "showBannerAd error, mGdtBannerView is null");
           }
         }
       }
     }
   }
   
-  private void updateBannerSize(bekr parambekr)
+  private void updateBannerSize(bgkd parambgkd)
   {
     int n = 1;
     int i;
     int j;
     float f1;
-    bfgg localbfgg;
+    BannerAdPosInfo localBannerAdPosInfo;
     int k;
     int m;
     float f2;
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambekr.b);
+      JSONObject localJSONObject = new JSONObject(parambgkd.b);
       if (localJSONObject.has("left"))
       {
         i = localJSONObject.getInt("left");
         j = 1;
-        break label537;
+        break label541;
       }
       if (localJSONObject.has("top"))
       {
         i = localJSONObject.getInt("top");
         j = 2;
-        break label537;
+        break label541;
       }
       if (!localJSONObject.has("width")) {
-        break label531;
+        break label535;
       }
-      f1 = bfho.a();
-      i = bfho.a();
-      j = bfho.b();
-      localbfgg = this.mBannerAdPosInfo;
+      f1 = ViewUtils.getDensity();
+      i = ViewUtils.getScreenWidth();
+      j = ViewUtils.getScreenHeight();
+      localBannerAdPosInfo = this.mBannerAdPosInfo;
       Activity localActivity = this.mMiniAppContext.a();
       if (localActivity == null) {
-        break label519;
+        break label523;
       }
-      int i1 = MiniAppEnv.g().getContext().getResources().getConfiguration().orientation;
+      int i1 = AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getConfiguration().orientation;
       initActivitySize(localActivity);
       if (this.mGameDensity > 0.0F) {
         f1 = this.mGameDensity;
@@ -245,42 +249,42 @@ public class BannerAdPlugin
         k = i;
       }
       i1 = localJSONObject.getInt("width");
-      i = bfgg.a(i1, m, f2, k, j);
-      if ((localbfgg == null) || (i1 == localbfgg.d) || (i != localbfgg.f)) {
-        break label513;
+      i = BannerAdPosInfo.calculateLegalWidth(i1, m, f2, k, j);
+      if ((localBannerAdPosInfo == null) || (i1 == localBannerAdPosInfo.mAdWidth) || (i != localBannerAdPosInfo.mAdRealWidth)) {
+        break label517;
       }
-      localbfgg.d = i1;
+      localBannerAdPosInfo.mAdWidth = i1;
       try
       {
         localJSONObject = new JSONObject();
         localJSONObject.put("state", "resize");
-        localJSONObject.put("width", localbfgg.f);
-        localJSONObject.put("height", localbfgg.g);
-        informJs(parambekr, localJSONObject, "onBannerAdStateChange");
+        localJSONObject.put("width", localBannerAdPosInfo.mAdRealWidth);
+        localJSONObject.put("height", localBannerAdPosInfo.mAdRealHeight);
+        informJs(parambgkd, localJSONObject, "onBannerAdStateChange");
         return;
       }
-      catch (JSONException parambekr)
+      catch (JSONException parambgkd)
       {
-        betc.d("BannerAdPlugin", "updateBannerAd informJs error", parambekr);
+        QMLog.e("BannerAdPlugin", "updateBannerAd informJs error", parambgkd);
         return;
       }
       if (i >= 0) {
-        break label367;
+        break label372;
       }
     }
-    catch (JSONException parambekr)
+    catch (JSONException parambgkd)
     {
-      betc.d("BannerAdPlugin", "handle updateBannerAdSize parse json error", parambekr);
+      QMLog.e("BannerAdPlugin", "handle updateBannerAdSize parse json error", parambgkd);
       return;
     }
-    label337:
-    bannerErrorStateCallbackDelay(parambekr, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
+    label342:
+    bannerErrorStateCallbackDelay(parambgkd, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
     return;
-    label367:
+    label372:
     if ((j != -1) && (this.mIsMiniGame))
     {
-      localbfgg = this.mBannerAdPosInfo;
-      if (localbfgg != null) {
+      localBannerAdPosInfo = this.mBannerAdPosInfo;
+      if (localBannerAdPosInfo != null) {
         switch (j)
         {
         }
@@ -290,23 +294,23 @@ public class BannerAdPlugin
     {
       if (k == 0)
       {
-        if (betc.a())
+        if (QMLog.isColorLevel())
         {
-          betc.b("BannerAdPlugin", "updateBannerAd no need to resize");
+          QMLog.i("BannerAdPlugin", "updateBannerAd no need to resize");
           return;
-          if (localbfgg.b == i) {
-            break label554;
+          if (localBannerAdPosInfo.mAdLeft == i) {
+            break label558;
           }
           k = 1;
-          break label551;
+          break label555;
           k = n;
-          if (localbfgg.c != i) {
+          if (localBannerAdPosInfo.mAdTop != i) {
             continue;
           }
           k = 0;
           continue;
           k = n;
-          if (localbfgg.f != i) {
+          if (localBannerAdPosInfo.mAdRealWidth != i) {
             continue;
           }
           k = 0;
@@ -314,22 +318,22 @@ public class BannerAdPlugin
       }
       else
       {
-        bekz.a(new BannerAdPlugin.6(this, j, i, parambekr));
+        bgkk.a(new BannerAdPlugin.6(this, j, i, parambgkd));
         return;
-        label513:
+        label517:
         j = 3;
-        break label537;
-        label519:
+        break label541;
+        label523:
         m = 1;
         k = i;
         f2 = f1;
         break;
-        label531:
+        label535:
         i = -1;
         j = -1;
-        label537:
+        label541:
         if (j != -1) {
-          break label337;
+          break label342;
         }
       }
       return;
@@ -337,33 +341,33 @@ public class BannerAdPlugin
     }
     for (;;)
     {
-      label551:
+      label555:
       break;
-      label554:
+      label558:
       k = 0;
     }
   }
   
-  public String createBannerAd(bekr parambekr)
+  public String createBannerAd(bgkd parambgkd)
   {
     int i = 90;
     Object localObject1;
     for (;;)
     {
-      label155:
-      label204:
+      label160:
+      label209:
       try
       {
-        betc.b("BannerAdPlugin", "receive createBannerAd event");
+        QMLog.i("BannerAdPlugin", "receive createBannerAd event");
         try
         {
-          localObject1 = bfgg.a(parambekr.b);
+          localObject1 = BannerAdPosInfo.parseBannerAdPosInfoFromJson(parambgkd.b);
           if (localObject1 != null) {
             continue;
           }
-          bannerErrorStateCallbackDelay(parambekr, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
-          betc.b("BannerAdPlugin", "handle createBannerAd error params, " + parambekr.b);
-          parambekr = "";
+          bannerErrorStateCallbackDelay(parambgkd, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
+          QMLog.i("BannerAdPlugin", "handle createBannerAd error params, " + parambgkd.b);
+          parambgkd = "";
         }
         catch (Exception localException)
         {
@@ -373,38 +377,38 @@ public class BannerAdPlugin
           int k;
           String str4;
           Object localObject2;
-          bfgg localbfgg;
+          BannerAdPosInfo localBannerAdPosInfo;
           String str5;
           Object localObject4;
-          localObject1 = bekx.b(parambekr.jdField_a_of_type_JavaLangString, null);
+          localObject1 = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null);
           if (localObject1 == null) {
             continue;
           }
           localObject1 = ((JSONObject)localObject1).toString();
-          bannerErrorStateCallbackDelay(parambekr, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
-          betc.b("BannerAdPlugin", "handle createBannerAd parse json error" + parambekr.b, localException);
+          bannerErrorStateCallbackDelay(parambgkd, 1003, (String)AD_ERROR_MSG.get(Integer.valueOf(1003)), 0);
+          QMLog.i("BannerAdPlugin", "handle createBannerAd parse json error" + parambgkd.b, localException);
           if (localObject1 == null) {
             continue;
           }
-          parambekr = (bekr)localObject1;
+          parambgkd = (bgkd)localObject1;
           continue;
           localObject1 = "";
           continue;
         }
-        return parambekr;
+        return parambgkd;
       }
       finally {}
-      str3 = beut.a().a();
-      f = bfho.a();
-      j = bfho.a();
-      k = bfho.a();
-      str4 = this.mApkgInfo.d;
+      str3 = bgte.a().a();
+      f = ViewUtils.getDensity();
+      j = ViewUtils.getScreenWidth();
+      k = ViewUtils.getScreenWidth();
+      str4 = this.mApkgInfo.appId;
       localObject2 = this.mMiniAppContext.a();
       if (localObject2 == null) {
-        break label722;
+        break label724;
       }
-      if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation != 2) {
-        break label731;
+      if (AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getConfiguration().orientation != 2) {
+        break label733;
       }
       initActivitySize((Activity)localObject2);
       if (this.mGameDensity > 0.0F) {
@@ -414,37 +418,37 @@ public class BannerAdPlugin
         j = this.mGameWidth;
       }
       if (this.mGameHeight <= 0) {
-        break label728;
+        break label730;
       }
       k = this.mGameHeight;
-      break label728;
-      betc.b("BannerAdPlugin", "handle createBannerAd appId = " + str4);
+      break label730;
+      QMLog.i("BannerAdPlugin", "handle createBannerAd appId = " + str4);
       if (TextUtils.isEmpty(str4))
       {
-        bannerErrorStateCallbackDelay(parambekr, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
-        parambekr = "";
+        bannerErrorStateCallbackDelay(parambgkd, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
+        parambgkd = "";
       }
       else
       {
-        localbfgg = bfgg.a((bfgg)localObject1, i, f, j, k);
-        if ((localbfgg == null) || (!localbfgg.a()))
+        localBannerAdPosInfo = BannerAdPosInfo.buildFormatInfo((BannerAdPosInfo)localObject1, i, f, j, k);
+        if ((localBannerAdPosInfo == null) || (!localBannerAdPosInfo.isValid()))
         {
-          bannerErrorStateCallbackDelay(parambekr, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
-          betc.b("BannerAdPlugin", "handle createBannerAd invalid adInfo = " + localbfgg);
-          parambekr = "";
+          bannerErrorStateCallbackDelay(parambgkd, 1001, (String)AD_ERROR_MSG.get(Integer.valueOf(1001)), 300);
+          QMLog.i("BannerAdPlugin", "handle createBannerAd invalid adInfo = " + localBannerAdPosInfo);
+          parambgkd = "";
         }
         else
         {
-          this.mBannerAdPosInfo = localbfgg;
-          str5 = bfgd.a(0);
+          this.mBannerAdPosInfo = localBannerAdPosInfo;
+          str5 = AdUtil.getSpAdGdtCookie(0);
           localObject4 = this.mMiniAppInfo;
           if ((localObject4 != null) && (((MiniAppInfo)localObject4).launchParam != null)) {
-            if (((MiniAppInfo)localObject4).launchParam.c != null)
+            if (((MiniAppInfo)localObject4).launchParam.entryPath != null)
             {
-              localObject1 = ((MiniAppInfo)localObject4).launchParam.c;
-              label408:
+              localObject1 = ((MiniAppInfo)localObject4).launchParam.entryPath;
+              label413:
               if (((MiniAppInfo)localObject4).launchParam == null) {
-                break label736;
+                break label738;
               }
             }
           }
@@ -452,13 +456,13 @@ public class BannerAdPlugin
       }
     }
     String str1;
-    label722:
-    label728:
-    label731:
-    label736:
-    for (localObject2 = MiniAppInfo.getReportDataString(((MiniAppInfo)localObject4).launchParam.jdField_a_of_type_JavaUtilMap);; str1 = "")
+    label724:
+    label730:
+    label733:
+    label738:
+    for (localObject2 = ((MiniAppInfo)localObject4).launchParam.reportData;; str1 = "")
     {
-      j = ((MiniAppInfo)localObject4).launchParam.jdField_a_of_type_Int;
+      j = ((MiniAppInfo)localObject4).launchParam.scene;
       String str2 = String.valueOf(j);
       Object localObject3 = localObject1;
       for (localObject1 = str2;; localObject1 = "")
@@ -475,20 +479,20 @@ public class BannerAdPlugin
           ((Bundle)localObject4).putString(AdProxy.KEY_REPORT_DATA, (String)localObject2);
           ((Bundle)localObject4).putString(AdProxy.KEY_REFER, (String)localObject1);
           ((Bundle)localObject4).putString(AdProxy.KEY_VIA, str2);
-          bekz.a(new BannerAdPlugin.1(this, str4, localbfgg, parambekr, (Bundle)localObject4));
-          parambekr = "";
+          bgkk.a(new BannerAdPlugin.1(this, str4, localBannerAdPosInfo, parambgkd, (Bundle)localObject4));
+          parambgkd = "";
           break;
           localObject1 = "";
-          break label408;
+          break label413;
         }
         localObject3 = "";
         str1 = "";
       }
       i = 90;
-      break label204;
-      break label204;
+      break label209;
+      break label209;
       i = 0;
-      break label155;
+      break label160;
     }
   }
   
@@ -504,8 +508,8 @@ public class BannerAdPlugin
     //   5: getfield 63	com/tencent/qqmini/sdk/core/plugins/BannerAdPlugin:mBannerAdView	Lcom/tencent/qqmini/sdk/core/proxy/AdProxy$AbsBannerAdView;
     //   8: ifnonnull +17 -> 25
     //   11: ldc 26
-    //   13: ldc_w 524
-    //   16: invokestatic 178	betc:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   13: ldc_w 553
+    //   16: invokestatic 179	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   19: iload_2
     //   20: istore_1
     //   21: aload_0
@@ -515,23 +519,23 @@ public class BannerAdPlugin
     //   25: iload_2
     //   26: istore_1
     //   27: aload_0
-    //   28: getfield 108	com/tencent/qqmini/sdk/core/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
+    //   28: getfield 109	com/tencent/qqmini/sdk/core/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
     //   31: ifnull -10 -> 21
     //   34: iload_2
     //   35: istore_1
     //   36: aload_0
-    //   37: getfield 108	com/tencent/qqmini/sdk/core/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
+    //   37: getfield 109	com/tencent/qqmini/sdk/core/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
     //   40: ifnull -19 -> 21
     //   43: iload_2
     //   44: istore_1
     //   45: aload_0
-    //   46: getfield 108	com/tencent/qqmini/sdk/core/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
-    //   49: invokevirtual 527	android/widget/FrameLayout:getVisibility	()I
+    //   46: getfield 109	com/tencent/qqmini/sdk/core/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
+    //   49: invokevirtual 556	android/widget/FrameLayout:getVisibility	()I
     //   52: ifne -31 -> 21
     //   55: aload_0
-    //   56: getfield 108	com/tencent/qqmini/sdk/core/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
+    //   56: getfield 109	com/tencent/qqmini/sdk/core/plugins/BannerAdPlugin:mBannerAdContainer	Landroid/widget/FrameLayout;
     //   59: bipush 8
-    //   61: invokevirtual 257	android/widget/FrameLayout:setVisibility	(I)V
+    //   61: invokevirtual 259	android/widget/FrameLayout:setVisibility	(I)V
     //   64: iconst_1
     //   65: istore_1
     //   66: goto -45 -> 21
@@ -568,7 +572,7 @@ public class BannerAdPlugin
     this.mGameDensity = localDisplayMetrics.density;
     this.mGameWidth = localDisplayMetrics.widthPixels;
     this.mGameHeight = localDisplayMetrics.heightPixels;
-    betc.b("BannerAdPlugin", "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + bfho.a() + ", screenW = " + localDisplayMetrics.widthPixels + ", screenH = " + localDisplayMetrics.heightPixels);
+    QMLog.i("BannerAdPlugin", "density = " + localDisplayMetrics.density + ", ViewUtils.density = " + ViewUtils.getDensity() + ", screenW = " + localDisplayMetrics.widthPixels + ", screenH = " + localDisplayMetrics.heightPixels);
   }
   
   public void onDestroy()
@@ -577,8 +581,8 @@ public class BannerAdPlugin
       this.mBannerAdView.destroy(this.mMiniAppContext.a());
     }
     AdProxy localAdProxy = (AdProxy)ProxyManager.get(AdProxy.class);
-    if (localAdProxy != null) {
-      localAdProxy.destroy();
+    if ((localAdProxy != null) && (this.mMiniAppContext != null) && (this.mMiniAppContext.a() != null)) {
+      localAdProxy.destroy(this.mMiniAppContext.a());
     }
     super.onDestroy();
   }
@@ -597,15 +601,15 @@ public class BannerAdPlugin
     }
   }
   
-  public String operateBannerAd(bekr parambekr)
+  public String operateBannerAd(bgkd parambgkd)
   {
-    betc.b("BannerAdPlugin", "receive operateBannerAd event");
+    QMLog.i("BannerAdPlugin", "receive operateBannerAd event");
     try
     {
-      str = new JSONObject(parambekr.b).getString("type");
-      betc.b("BannerAdPlugin", "handle operateBannerAd type = " + str);
+      str = new JSONObject(parambgkd.b).getString("type");
+      QMLog.i("BannerAdPlugin", "handle operateBannerAd type = " + str);
       if ("show".equals(str)) {
-        bekz.a(new BannerAdPlugin.2(this, parambekr), 300L);
+        bgkk.a(new BannerAdPlugin.2(this, parambgkd), 300L);
       }
       for (;;)
       {
@@ -613,20 +617,20 @@ public class BannerAdPlugin
         if (!"hide".equals(str)) {
           break;
         }
-        bekz.a(new BannerAdPlugin.3(this));
+        bgkk.a(new BannerAdPlugin.3(this));
       }
     }
-    catch (JSONException parambekr)
+    catch (JSONException parambgkd)
     {
       for (;;)
       {
         String str;
-        betc.b("BannerAdPlugin", "handle operateBannerAd parse json error", parambekr);
+        QMLog.i("BannerAdPlugin", "handle operateBannerAd parse json error", parambgkd);
         continue;
         if ("destroy".equals(str)) {
-          bekz.a(new BannerAdPlugin.4(this));
+          bgkk.a(new BannerAdPlugin.4(this));
         } else {
-          betc.b("BannerAdPlugin", "handle operateBannerAd not define type = " + str);
+          QMLog.i("BannerAdPlugin", "handle operateBannerAd not define type = " + str);
         }
       }
     }
@@ -639,10 +643,10 @@ public class BannerAdPlugin
     {
       try
       {
-        betc.b("BannerAdPlugin", "updateBannerAdPosition");
+        QMLog.i("BannerAdPlugin", "updateBannerAdPosition");
         if ((this.mBannerAdView == null) || (this.mBannerAdPosInfo == null))
         {
-          betc.d("BannerAdPlugin", "updateBannerAdPosition error, no data");
+          QMLog.e("BannerAdPlugin", "updateBannerAdPosition error, no data");
           return bool;
         }
         switch (paramInt1)
@@ -653,36 +657,36 @@ public class BannerAdPlugin
           }
           View localView = this.mBannerAdContainer.getChildAt(0);
           FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localView.getLayoutParams();
-          localLayoutParams.leftMargin = gameDpTopx(this.mBannerAdPosInfo.b);
-          localLayoutParams.topMargin = gameDpTopx(this.mBannerAdPosInfo.c);
-          localLayoutParams.width = gameDpTopx(this.mBannerAdPosInfo.f);
-          localLayoutParams.height = gameDpTopx(this.mBannerAdPosInfo.g);
-          this.mBannerAdView.setSize(gameDpTopx(this.mBannerAdPosInfo.f), gameDpTopx(this.mBannerAdPosInfo.g));
+          localLayoutParams.leftMargin = gameDpTopx(this.mBannerAdPosInfo.mAdLeft);
+          localLayoutParams.topMargin = gameDpTopx(this.mBannerAdPosInfo.mAdTop);
+          localLayoutParams.width = gameDpTopx(this.mBannerAdPosInfo.mAdRealWidth);
+          localLayoutParams.height = gameDpTopx(this.mBannerAdPosInfo.mAdRealHeight);
+          this.mBannerAdView.setSize(gameDpTopx(this.mBannerAdPosInfo.mAdRealWidth), gameDpTopx(this.mBannerAdPosInfo.mAdRealHeight));
           localView.setLayoutParams(localLayoutParams);
         }
       }
       finally {}
-      this.mBannerAdPosInfo.b = paramInt2;
+      this.mBannerAdPosInfo.mAdLeft = paramInt2;
       continue;
-      this.mBannerAdPosInfo.c = paramInt2;
+      this.mBannerAdPosInfo.mAdTop = paramInt2;
       continue;
-      this.mBannerAdPosInfo.f = paramInt2;
-      this.mBannerAdPosInfo.g = bfgg.a(paramInt2);
+      this.mBannerAdPosInfo.mAdRealWidth = paramInt2;
+      this.mBannerAdPosInfo.mAdRealHeight = BannerAdPosInfo.getHeight(paramInt2);
       continue;
       label261:
       bool = true;
     }
   }
   
-  public void updateBannerAdSize(bekr parambekr)
+  public void updateBannerAdSize(bgkd parambgkd)
   {
-    betc.b("BannerAdPlugin", "updateBannerAdSize " + parambekr.b);
-    updateBannerSize(parambekr);
+    QMLog.i("BannerAdPlugin", "updateBannerAdSize " + parambgkd.b);
+    updateBannerSize(parambgkd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.BannerAdPlugin
  * JD-Core Version:    0.7.0.1
  */

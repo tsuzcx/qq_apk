@@ -1,10 +1,19 @@
-public abstract interface ayei
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class ayei
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(bcqf parambcqf);
+  ayei(ayee paramayee) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    ayee.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayei
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,22 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
-public class ttk
-  implements suz
+class ttk
+  implements Observer<tzm<FeedCloudMeta.StTagInfo>>
 {
-  public ttk(FollowCaptureLauncher paramFollowCaptureLauncher) {}
+  ttk(ttj paramttj) {}
   
-  public void a(String paramString, int paramInt)
+  public void a(@Nullable tzm<FeedCloudMeta.StTagInfo> paramtzm)
   {
-    Message localMessage = Message.obtain();
-    localMessage.obj = paramString;
-    localMessage.what = 65543;
-    FollowCaptureLauncher.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
-  {
-    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
+    if (paramtzm != null) {
+      ttj.a(this.a, (FeedCloudMeta.StTagInfo)paramtzm.a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,15 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
-
 public class biow
-  implements Animation.AnimationListener
 {
-  public biow(AEProviderContainerView paramAEProviderContainerView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.setVisibility(0);
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biow
  * JD-Core Version:    0.7.0.1
  */

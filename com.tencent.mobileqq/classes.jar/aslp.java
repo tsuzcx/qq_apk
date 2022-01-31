@@ -1,145 +1,246 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.ArrayList;
 
 public class aslp
-  implements aslb
 {
-  public aslp() {}
+  public static final int[] a;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<MessageForGrayTips.HightlightItem> a;
+  protected boolean a;
+  public int b;
+  public String b;
+  protected boolean b;
+  public int[] b;
+  public int c;
+  public String c;
+  protected boolean c;
+  public int d;
+  public String d;
+  public boolean d = true;
+  public boolean e;
+  public boolean f = true;
   
-  public aslp(QQAppInterface paramQQAppInterface)
+  static
   {
-    this();
+    jdField_a_of_type_ArrayOfInt = new int[] { 1, 131073, 131078, 135176, 1376257, 2097153, 2097154, 2097155, 2097156, 1245186, 1245187, 65560, 2359297, 65560, 655362, 2424833, 2490369, 2555907, 1179651, 2686977, 2621441, 2359298, 3145729, 2555906, 3145729, 3211265, 135178, 135179, 655378, 655379, 655369, 655376, 3276801, 3276802, 655377, 1179653, 3342339, 3342337, 3342338, 135180, 135181, 655381, 131080, 131081, 655383, 655392, 131082, 655384, 655385, 2359299, 3276804, 655393, 131083, 655397, 131084, 131085, 131087, 131086, 131088 };
   }
   
-  public static asnp a(MsgBackupResEntity paramMsgBackupResEntity)
+  public aslp(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    switch (paramMsgBackupResEntity.msgType)
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    this.jdField_a_of_type_Long = paramLong;
+    a();
+  }
+  
+  private void a()
+  {
+    if (this.jdField_c_of_type_Int == -5020)
     {
-    default: 
-      return null;
-    case 1: 
-      return new asns(paramMsgBackupResEntity);
-    case 2: 
-      return new asnx(paramMsgBackupResEntity);
+      this.jdField_a_of_type_Boolean = false;
+      return;
     }
-    return new asnu(paramMsgBackupResEntity);
-  }
-  
-  public static asnv a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord instanceof MessageForPic)) {
-      return new asnr((MessageForPic)paramMessageRecord);
-    }
-    if ((paramMessageRecord instanceof MessageForShortVideo)) {
-      return new asnw((MessageForShortVideo)paramMessageRecord);
-    }
-    if ((paramMessageRecord instanceof MessageForPtt)) {
-      return new asnt((MessageForPtt)paramMessageRecord);
-    }
-    if ((paramMessageRecord instanceof MessageForMarketFace)) {
-      return new asnn(paramMessageRecord);
-    }
-    if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-      return new asnq((MessageForMixedMsg)paramMessageRecord);
-    }
-    return null;
-  }
-  
-  public aslo a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    paramMessageRecord = a(paramMsgBackupResEntity);
-    if (paramMessageRecord != null) {
-      return paramMessageRecord.a();
-    }
-    return new aslo();
-  }
-  
-  public String a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    return null;
-  }
-  
-  public void a(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
-  {
-    paramMessageRecord = a(paramMessageRecord);
-    if (paramMessageRecord != null)
+    if (this.jdField_c_of_type_Int == -5021)
     {
-      paramMessageRecord.a();
-      Object localObject = paramMessageRecord.a();
+      this.jdField_c_of_type_Boolean = false;
+      return;
+    }
+    if (this.jdField_c_of_type_Int == -5022)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_b_of_type_Boolean = false;
+      return;
+    }
+    if (this.jdField_c_of_type_Int == -5023)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_c_of_type_Boolean = false;
+      return;
+    }
+    this.jdField_c_of_type_Int = -5040;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    if (paramInt1 >= paramInt2)
+    {
       if (QLog.isColorLevel()) {
-        paramMessageRecord.a("onExport");
+        QLog.e(aslq.jdField_a_of_type_JavaLangString, 2, new Object[] { "revoke msg UniteGrayTipParam addHightlightItem start >= end error,start=", Integer.valueOf(paramInt1), ",end=", Integer.valueOf(paramInt2) });
       }
-      if (localObject != null)
+      return;
+    }
+    Object localObject7 = null;
+    Object localObject5 = null;
+    Object localObject6 = null;
+    Object localObject3 = null;
+    int k = 0;
+    String str1 = null;
+    String str3 = "";
+    int j;
+    label76:
+    Object localObject2;
+    int i;
+    Object localObject1;
+    Object localObject4;
+    String str2;
+    label344:
+    long l;
+    if (paramBundle == null)
+    {
+      j = -1;
+      localObject2 = localObject6;
+      i = k;
+      localObject1 = localObject7;
+      localObject4 = localObject5;
+      str2 = str3;
+      switch (j)
       {
-        paramList.addAll((Collection)localObject);
-        if (QLog.isColorLevel())
-        {
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            localObject = (MsgBackupResEntity)paramList.next();
-            if (QLog.isColorLevel()) {
-              paramMessageRecord.a("export resEntity:" + ((MsgBackupResEntity)localObject).toLogString());
-            }
-          }
+      default: 
+        str2 = str3;
+        localObject4 = localObject5;
+        localObject1 = localObject7;
+        i = k;
+        localObject2 = localObject6;
+      case 4: 
+      case 6: 
+      case 7: 
+      case 8: 
+      case 9: 
+      case 10: 
+      case 12: 
+      case 17: 
+      case 18: 
+      case 22: 
+      case 25: 
+      case 26: 
+      case 31: 
+      case 34: 
+      case 35: 
+      case 37: 
+      case 41: 
+      case 46: 
+      case 47: 
+      case 48: 
+      case 49: 
+      case 50: 
+      case 51: 
+        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        }
+        l = 0L;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break;
         }
       }
     }
-  }
-  
-  public boolean a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null)
+    for (;;)
     {
-      paramMessageRecord = a(paramMessageRecord);
-      if (paramMessageRecord != null) {
-        return paramMessageRecord.a();
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    return (paramMsgBackupResEntity.msgType == 1) || (paramMsgBackupResEntity.msgType == 2) || (paramMsgBackupResEntity.msgType == 3);
-  }
-  
-  public void b(MessageRecord paramMessageRecord, List<MsgBackupResEntity> paramList)
-  {
-    asnv localasnv = a(paramMessageRecord);
-    if (localasnv != null)
-    {
-      if (QLog.isColorLevel()) {
-        localasnv.a("onImport,uniseq:" + paramMessageRecord.uniseq + " msg:" + paramMessageRecord);
-      }
-      localasnv.b();
-      if (paramList != null)
+      try
       {
-        paramMessageRecord = paramList.iterator();
-        while (paramMessageRecord.hasNext())
-        {
-          paramList = a((MsgBackupResEntity)paramMessageRecord.next());
-          if (paramList != null) {
-            paramList.a();
-          }
+        l = Long.parseLong((String)localObject2);
+        if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+          break label692;
         }
+        paramBundle = "#FF4D94FF";
+        k = Color.parseColor(paramBundle);
+        this.jdField_a_of_type_JavaUtilArrayList.add(new MessageForGrayTips.HightlightItem(paramInt1, paramInt2, l, i, j, (String)localObject1, (String)localObject4, str1, null, k, str2, 0));
+        return;
       }
+      catch (NumberFormatException paramBundle) {}
+      j = paramBundle.getInt("key_action");
+      localObject3 = paramBundle.getString("textColor");
+      str1 = paramBundle.getString("image_resource");
+      break label76;
+      localObject2 = paramBundle.getString("troop_mem_uin");
+      if (paramBundle.getBoolean("need_update_nick"))
+      {
+        i = 1;
+        localObject1 = localObject7;
+        localObject4 = localObject5;
+        str2 = str3;
+        break label344;
+      }
+      i = 0;
+      continue;
+      localObject1 = paramBundle.getString("key_action_DATA");
+      localObject4 = paramBundle.getString("key_a_action_DATA");
+      localObject2 = localObject6;
+      i = k;
+      str2 = str3;
+      break label344;
+      localObject2 = paramBundle.getString("troop_mem_uin");
+      i = k;
+      localObject1 = localObject7;
+      localObject4 = localObject5;
+      str2 = str3;
+      break label344;
+      localObject1 = paramBundle.getString("key_action_DATA");
+      localObject2 = localObject6;
+      i = k;
+      localObject4 = localObject5;
+      str2 = str3;
+      break label344;
+      localObject1 = paramBundle.getString("key_action_DATA");
+      localObject4 = paramBundle.getString("key_a_action_DATA");
+      localObject2 = paramBundle.getString("troop_mem_uin");
+      i = k;
+      str2 = str3;
+      break label344;
+      localObject1 = paramBundle.getString("key_action_DATA");
+      localObject2 = localObject6;
+      i = k;
+      localObject4 = localObject5;
+      str2 = str3;
+      break label344;
+      str2 = paramBundle.getString("remark");
+      localObject2 = localObject6;
+      i = k;
+      localObject1 = localObject7;
+      localObject4 = localObject5;
+      break label344;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e(aslq.jdField_a_of_type_JavaLangString, 2, "getHightlightMsgText ==>NumberFormatException");
+      return;
+      label692:
+      paramBundle = (Bundle)localObject3;
     }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = abot.j(this.jdField_c_of_type_Int);
+    int[] arrayOfInt = jdField_a_of_type_ArrayOfInt;
+    int k = arrayOfInt.length;
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      if (arrayOfInt[i] == this.jdField_b_of_type_Int) {
+        j = 1;
+      }
+      i += 1;
+    }
+    return (bool) && (j != 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aslp
  * JD-Core Version:    0.7.0.1
  */

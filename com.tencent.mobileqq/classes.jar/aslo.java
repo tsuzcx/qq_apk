@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.AutoBgImageView;
 
 public class aslo
+  extends aekx
 {
-  public String a;
-  public boolean a;
+  public AutoBgImageView a;
+  public TextView b;
   
-  public String a(aslb paramaslb, MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return paramaslb.a(paramMessageRecord, paramMsgBackupResEntity);
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
+  public aslo(aslk paramaslk) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aslo
  * JD-Core Version:    0.7.0.1
  */

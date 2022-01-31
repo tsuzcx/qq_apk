@@ -1,39 +1,27 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import java.util.List;
 
-public class akcd
-  implements Comparator<PhoneContact>
+class akcd
+  implements View.OnClickListener
 {
-  public akcd(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  akcd(akcc paramakcc, akcb paramakcb, int paramInt) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public void onClick(View paramView)
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
+    if (this.jdField_a_of_type_Akcb.a.isChecked()) {}
+    for (((amhq)this.jdField_a_of_type_Akcc.a.get(this.jdField_a_of_type_Int)).a = false;; ((amhq)this.jdField_a_of_type_Akcc.a.get(this.jdField_a_of_type_Int)).a = true)
+    {
+      this.jdField_a_of_type_Akcc.notifyItemChanged(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Akcc.a();
+      return;
     }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
-    }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-    }
-    j = i;
-    if (i == 0) {
-      j = paramPhoneContact1.contactID - paramPhoneContact2.contactID;
-    }
-    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akcd
  * JD-Core Version:    0.7.0.1
  */

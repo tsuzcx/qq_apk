@@ -1,27 +1,98 @@
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetHotSortVideoResponse.1;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.HotVideoCard;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class uyj
+  extends upt
 {
-  public static void a(String paramString, Object... paramVarArgs)
+  qqstory_group.RspGetGroupHotRankVideo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo;
+  boolean jdField_a_of_type_Boolean = false;
+  
+  public uyj(uyh paramuyh, qqstory_group.RspGetGroupHotRankVideo paramRspGetGroupHotRankVideo, boolean paramBoolean)
   {
-    ved.e(paramString, uyl.a(paramVarArgs));
+    super(paramRspGetGroupHotRankVideo.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo = paramRspGetGroupHotRankVideo;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public static void b(String paramString, Object... paramVarArgs)
+  public uyj(uyh paramuyh, boolean paramBoolean)
   {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a()
+  {
+    Object localObject = this.jdField_a_of_type_Uyh;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.is_end.get() == 1) {}
+    uyk localuyk;
+    for (boolean bool = true;; bool = false)
+    {
+      ((uyh)localObject).jdField_a_of_type_Boolean = bool;
+      uyh.a(this.jdField_a_of_type_Uyh, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.next_cookie.get().toStringUtf8());
+      uyh.a(this.jdField_a_of_type_Uyh, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.seq.get());
+      localObject = new ArrayList();
+      localuyk = new uyk();
+      localuyk.jdField_a_of_type_Boolean = this.jdField_a_of_type_Uyh.jdField_a_of_type_Boolean;
+      localuyk.b = this.jdField_a_of_type_Boolean;
+      if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.size() <= 0)) {
+        break label203;
+      }
+      Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.get().iterator();
+      while (localIterator.hasNext()) {
+        ((ArrayList)localObject).add(HotSortVideoEntry.convertFrom((qqstory_group.HotVideoCard)localIterator.next()));
+      }
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      ThreadManager.post(new GetHotSortVideoHandler.GetHotSortVideoResponse.1(this, (ArrayList)localObject, localuyk), 5, null, true);
+      return;
+      label203:
+      wsv.e("GetHotSortVideoHandler", "GetHotSortVideoResponse Success but video_card_list is empty。");
+    }
+    localuyk.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    uht.a().dispatch(localuyk);
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    paramBundle = new uyk();
+    paramBundle.c = true;
+    uht.a().dispatch(paramBundle);
+    QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131705642), 0).a();
     if (QLog.isColorLevel()) {
-      QLog.i(paramString, 2, uyl.a(paramVarArgs));
+      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
     }
   }
   
-  public static void c(String paramString, Object... paramVarArgs)
+  public void a(int paramInt, String paramString)
   {
-    ved.d(paramString, uyl.a(paramVarArgs));
+    uyk localuyk = new uyk();
+    localuyk.c = true;
+    uht.a().dispatch(localuyk);
+    QQToast.a(BaseApplication.getContext(), 1, alpo.a(2131705641), 0).a();
+    if (QLog.isColorLevel()) {
+      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uyj
  * JD-Core Version:    0.7.0.1
  */

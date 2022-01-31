@@ -1,49 +1,23 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedReq;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StPublishFeedRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.text.TextUtils;
 
-public class wrm
-  extends wro
+class wrm
+  implements wom<wnt>
 {
-  private CertifiedAccountWrite.StPublishFeedReq a = new CertifiedAccountWrite.StPublishFeedReq();
+  wrm(wrh paramwrh, String paramString) {}
   
-  public wrm(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
+  public void a(wnt paramwnt)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-    if (paramStFeed != null) {
-      this.a.feed.set(paramStFeed);
-    }
-  }
-  
-  public static CertifiedAccountWrite.StPublishFeedRsp a(byte[] paramArrayOfByte)
-  {
-    CertifiedAccountWrite.StPublishFeedRsp localStPublishFeedRsp = new CertifiedAccountWrite.StPublishFeedRsp();
-    try
+    if ((paramwnt.a != null) && (TextUtils.equals(paramwnt.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
     {
-      paramArrayOfByte = (CertifiedAccountWrite.StPublishFeedRsp)localStPublishFeedRsp.mergeFrom(paramArrayOfByte);
-      return paramArrayOfByte;
+      wrh.a(this.jdField_a_of_type_Wrh).a = paramwnt.a;
+      wrh.a(this.jdField_a_of_type_Wrh).sendMessage(wrh.a(this.jdField_a_of_type_Wrh).obtainMessage(0, wrh.a(this.jdField_a_of_type_Wrh)));
     }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CertifiedAccountGetMsgTopRequest", 2, "onResponse fail." + paramArrayOfByte);
-      }
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wrm
  * JD-Core Version:    0.7.0.1
  */

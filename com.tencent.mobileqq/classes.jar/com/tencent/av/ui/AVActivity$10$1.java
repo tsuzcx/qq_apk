@@ -1,13 +1,13 @@
 package com.tencent.av.ui;
 
 import com.tencent.av.VideoController;
-import lga;
-import maw;
+import lid;
+import mdl;
 
 public class AVActivity$10$1
   implements Runnable
 {
-  public AVActivity$10$1(maw parammaw) {}
+  public AVActivity$10$1(mdl parammdl) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class AVActivity$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.10.1
  * JD-Core Version:    0.7.0.1
  */

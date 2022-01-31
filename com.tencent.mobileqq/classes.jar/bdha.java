@@ -1,32 +1,92 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.open.applist.QZoneAppListActivity;
-import com.tencent.open.applist.QZoneAppListActivity.1.1;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.text.Editable;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput.3;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import java.lang.ref.SoftReference;
+import java.util.Timer;
 
 public class bdha
-  extends OnPluginInstallListener.Stub
+  extends bdfq
 {
-  public bdha(QZoneAppListActivity paramQZoneAppListActivity) {}
+  private long jdField_a_of_type_Long;
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher;
+  private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
+  private SoftReference<Context> jdField_a_of_type_JavaLangRefSoftReference;
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  public bdha(Context paramContext, int paramInt)
   {
-    this.a.a(paramInt1 / paramInt2 * 100);
+    super(paramContext, paramInt);
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramContext);
   }
   
-  public void onInstallError(String paramString, int paramInt)
+  public EditText a()
   {
-    this.a.runOnUiThread(new QZoneAppListActivity.1.1(this));
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
   }
   
-  public void onInstallFinish(String paramString)
+  public void a(TextWatcher paramTextWatcher)
   {
-    QZoneAppListActivity.a(this.a);
+    if (paramTextWatcher != null)
+    {
+      this.jdField_a_of_type_AndroidTextTextWatcher = paramTextWatcher;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.addTextChangedListener(paramTextWatcher);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText(paramString);
+    }
+  }
+  
+  public String getInputValue()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
+  }
+  
+  public void setContentView(int paramInt)
+  {
+    super.setContentView(paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)findViewById(2131368332));
+  }
+  
+  public bdfq setPositiveButton(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      this.rBtn.setVisibility(8);
+      return this;
+    }
+    this.rBtn.setText(paramInt);
+    this.rBtn.setVisibility(0);
+    this.rBtn.setOnClickListener(new bdhb(this, paramOnClickListener));
+    setSeperatorState();
+    return this;
+  }
+  
+  public void show()
+  {
+    super.show();
+    Editable localEditable = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText();
+    if ((localEditable instanceof Spannable)) {
+      Selection.setSelection((Spannable)localEditable, localEditable.length());
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.isFocusable()) || (this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.isFocusableInTouchMode())) {
+      new Timer().schedule(new QQCustomDialogWtihInput.3(this), 200L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdha
  * JD-Core Version:    0.7.0.1
  */

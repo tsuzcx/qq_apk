@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajra;
+import alin;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 
 public class ApolloPanel$CmshowAppController$5
   implements Runnable
 {
-  public ApolloPanel$CmshowAppController$5(ajra paramajra) {}
+  public ApolloPanel$CmshowAppController$5(alin paramalin) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ApolloPanel$CmshowAppController$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloPanel.CmshowAppController.5
  * JD-Core Version:    0.7.0.1
  */

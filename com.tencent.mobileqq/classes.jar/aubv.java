@@ -1,28 +1,41 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.ocr.TranslateFragment;
-import java.util.List;
-
 public class aubv
-  implements PopupWindow.OnDismissListener
+  implements alkr
 {
-  public aubv(TranslateFragment paramTranslateFragment, auaf paramauaf) {}
+  public void a(boolean paramBoolean) {}
   
-  public void onDismiss()
+  public void a(boolean paramBoolean, aucz paramaucz) {}
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
-    if ((this.jdField_a_of_type_Auaf.b != null) && (this.jdField_a_of_type_Auaf.b.size() > 1))
+    switch (paramInt)
     {
-      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130845299);
-      TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b(paramBoolean, paramObject);
+      return;
+    case 3: 
+      a(paramBoolean);
+      return;
+    case 4: 
+      a(paramBoolean, (aucz)paramObject);
+      return;
     }
+    b(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aubv
  * JD-Core Version:    0.7.0.1
  */

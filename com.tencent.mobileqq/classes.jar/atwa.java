@@ -1,77 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsReq;
-import com.tencent.pb.now.ilive_feeds_write.DelFeedReq;
-import com.tencent.pb.now.ilive_feeds_write.DelFeedStuct;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class atwa
+class atwa
+  implements DialogInterface.OnClickListener
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3, atwi paramatwi)
-  {
-    ilive_feeds_read.ReadNearUserFeedsReq localReadNearUserFeedsReq = new ilive_feeds_read.ReadNearUserFeedsReq();
-    try
-    {
-      localReadNearUserFeedsReq.uin.set(Long.valueOf(paramString).longValue());
-      localReadNearUserFeedsReq.pos.set(paramInt2);
-      localReadNearUserFeedsReq.num.set(paramInt3);
-      localReadNearUserFeedsReq.nowid.set(paramLong);
-      localReadNearUserFeedsReq.id_type.set(paramInt1);
-      paramString = SosoInterface.b();
-      if ((paramString != null) && (paramString.a != null))
-      {
-        paramString = paramString.a;
-        localReadNearUserFeedsReq.lat.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramString.a)));
-        localReadNearUserFeedsReq.lng.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramString.b)));
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyMomentProtocol", 2, "getMomentList, req.lat=" + paramString.a + ",req.lng=" + paramString.b);
-        }
-      }
-      new athx(paramQQAppInterface).a(24624).b(10).a(new atwc(paramInt2, paramatwi)).a(new atwb(paramatwi, paramInt2)).a(localReadNearUserFeedsReq.toByteArray());
-      return;
-    }
-    catch (NumberFormatException paramQQAppInterface)
-    {
-      QLog.i("NearbyMomentProtocol", 1, "getNearbyMomentsList, transfer uin error, uin=" + paramString);
-    }
-  }
+  atwa(atvy paramatvy) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong, int paramInt, atwh paramatwh)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ilive_feeds_write.DelFeedReq localDelFeedReq = new ilive_feeds_write.DelFeedReq();
-    ilive_feeds_write.DelFeedStuct localDelFeedStuct = new ilive_feeds_write.DelFeedStuct();
-    localDelFeedStuct.feed_id.set(ByteStringMicro.copyFromUtf8(paramString));
-    localDelFeedStuct.timestamp.set(paramLong);
-    localDelFeedStuct.feed_type.set(paramInt);
-    localDelFeedReq.del_type.set(2);
-    localDelFeedReq.select_all.set(0);
-    localDelFeedReq.del_st.get().add(localDelFeedStuct);
-    localDelFeedReq.uid.set(Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue());
-    new athx(paramQQAppInterface).a(22528).b(5).a(new atwe(paramatwh, paramString)).a(new atwd(paramatwh, paramString)).a(localDelFeedReq.toByteArray());
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, atwj paramatwj)
-  {
-    new atib(paramQQAppInterface).a(paramString, new atwf(paramatwj), null);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, atwk paramatwk)
-  {
-    new atib(paramQQAppInterface).b(paramString, new atwg(paramatwk), null);
+    paramDialogInterface.dismiss();
+    azmj.b(atvy.a(this.a), "dc00898", "", "", "0X80085DB", "0X80085DB", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atwa
  * JD-Core Version:    0.7.0.1
  */

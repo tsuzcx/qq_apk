@@ -1,15 +1,19 @@
+import android.graphics.Outline;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewOutlineProvider;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
-class aacz
-  implements View.OnClickListener
+public class aacz
+  extends ViewOutlineProvider
 {
-  aacz(aacw paramaacw) {}
+  public aacz(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void onClick(View paramView)
+  public void getOutline(View paramView, Outline paramOutline)
   {
-    this.a.jdField_a_of_type_Aabl.d();
-    aaep.a(this.a.jdField_a_of_type_Aabi, 4);
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramOutline.setRoundRect(0, 0, paramView.getWidth(), paramView.getHeight(), aekt.a(5.0F, paramView.getResources()));
+    }
   }
 }
 

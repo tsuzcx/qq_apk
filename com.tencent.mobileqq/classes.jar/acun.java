@@ -1,13 +1,21 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.16.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-public abstract interface acun
+public class acun
+  extends avqr
 {
-  public abstract void a(ChatMessage paramChatMessage, CompoundButton paramCompoundButton, boolean paramBoolean);
+  public acun(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    ThreadManager.post(new FriendProfileCardActivity.16.1(this), 5, null, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acun
  * JD-Core Version:    0.7.0.1
  */

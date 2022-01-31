@@ -1,46 +1,42 @@
-import android.annotation.TargetApi;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
-final class shf
-  implements DialogInterface.OnClickListener
+public class shf
 {
-  shf(int paramInt1, int paramInt2, Runnable paramRunnable) {}
-  
-  @TargetApi(11)
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static CharSequence a(String paramString1, String paramString2, String paramString3, String paramString4, ArticleInfo paramArticleInfo)
   {
-    paramInt = 1;
-    bhvy.a("readinjoy_user_data_switch", Integer.valueOf(0));
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new JSONObject();
-    try
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(0);
+    if (!TextUtils.isEmpty(paramString4)) {}
+    for (paramString4 = URLDrawable.getDrawable(paramString4, (URLDrawable.URLDrawableOptions)localObject);; paramString4 = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20200102/f5a4461be0ec4116bc34e5b02e5c831f.png", (URLDrawable.URLDrawableOptions)localObject))
     {
-      if (this.jdField_a_of_type_Int == 1) {
-        paramInt = 0;
-      }
-      paramDialogInterface.put("click_src", paramInt);
-      paramDialogInterface.put("user_data_alert_interval", this.b);
-      paramDialogInterface.put("click_opt", 1);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-    nol.a(null, "", "0X800A809", "0X800A809", 0, 0, "", "", "", paramDialogInterface.toString(), false);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
+      paramString4.setBounds(0, 0, xee.b(BaseApplicationImpl.getContext(), 17.0F), xee.b(BaseApplicationImpl.getContext(), 17.0F));
+      localObject = new SpannableStringBuilder();
+      SpannableString localSpannableString = new SpannableString(paramString1);
+      localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#FF262626")), 0, paramString1.length(), 33);
+      localSpannableString.setSpan(new AbsoluteSizeSpan(16, true), 0, paramString1.length(), 33);
+      ((SpannableStringBuilder)localObject).append(localSpannableString);
+      paramString1 = " " + paramString3;
+      paramString3 = new SpannableString(paramString1);
+      paramString3.setSpan(new xsn(paramString4), 0, 1, 17);
+      paramString3.setSpan(new shg(-12084769, 16777215, 860716207, paramString2, paramArticleInfo), 0, paramString1.length(), 33);
+      ((SpannableStringBuilder)localObject).append(paramString3);
+      return ((SpannableStringBuilder)localObject).subSequence(0, ((SpannableStringBuilder)localObject).length());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     shf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.4.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class aird
-  implements DialogInterface.OnClickListener
+public class aird
+  implements aivw
 {
-  aird(airb paramairb) {}
+  public aird(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(airb.a(this.a), 4, "right button is clicked! ");
-    }
-    airb.a(this.a, 0);
+    ThreadManager.getUIHandler().post(new RedPacketEmojiFragment.4.1(this, paramInt, paramPathResult));
   }
 }
 

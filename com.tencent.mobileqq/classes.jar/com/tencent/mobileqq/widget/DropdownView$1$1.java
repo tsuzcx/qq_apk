@@ -2,19 +2,19 @@ package com.tencent.mobileqq.widget;
 
 import android.view.View;
 import android.widget.ImageView;
-import bcmc;
-import bcmd;
+import bele;
+import belf;
 
 public class DropdownView$1$1
   implements Runnable
 {
-  public DropdownView$1$1(bcmc parambcmc, View paramView) {}
+  public DropdownView$1$1(bele parambele, View paramView) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Bcmc.a.jdField_a_of_type_Bcmd.showDropDown();
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Bcmc.a.b);
-    this.jdField_a_of_type_Bcmc.a.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Bele.a.jdField_a_of_type_Belf.showDropDown();
+    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Bele.a.b);
+    this.jdField_a_of_type_Bele.a.jdField_a_of_type_Boolean = true;
   }
 }
 

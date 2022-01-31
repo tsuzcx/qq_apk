@@ -1,31 +1,36 @@
-import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.Subscriber;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class wcj
-  extends SimpleJob
+  implements Subscriber
 {
-  public wcj(SegmentList paramSegmentList, String paramString)
+  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public wcj(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
   {
-    super(paramString);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
   }
   
-  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
   {
-    this.a.a.f();
-    if (SegmentList.a(this.a)) {
-      return null;
+    paramList.add(xmp.class);
+  }
+  
+  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
+  {
+    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDispatchable != null) {
+      paramDispatchable.c();
     }
-    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wcj
  * JD-Core Version:    0.7.0.1
  */

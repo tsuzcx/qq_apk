@@ -1,29 +1,41 @@
-import android.app.Activity;
-import android.database.ContentObserver;
-import android.net.Uri;
-import android.os.Handler;
-import android.provider.Settings.System;
-
-class qkw
-  extends ContentObserver
+public class qkw
 {
-  qkw(qkv paramqkv, Handler paramHandler)
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private Long jdField_a_of_type_JavaLangLong;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  
+  public qkw(Long paramLong, Integer paramInteger, String paramString1, String paramString2)
   {
-    super(paramHandler);
+    this.jdField_a_of_type_JavaLangLong = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangInteger = paramInteger;
   }
   
-  public void onChange(boolean paramBoolean, Uri paramUri)
+  public Long a()
   {
-    super.onChange(paramBoolean, paramUri);
-    int i = Settings.System.getInt(qkv.a(this.a).getContentResolver(), "screen_brightness", 125);
-    if ((qkv.a(this.a)) && (i > 0)) {
-      this.a.a(i / 255.0F);
-    }
+    return this.jdField_a_of_type_JavaLangLong;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    return "FollowingMember{uin='" + this.jdField_a_of_type_JavaLangLong + '\'' + ", nickname='" + this.jdField_a_of_type_JavaLangString + '\'' + ", headUrl='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qkw
  * JD-Core Version:    0.7.0.1
  */

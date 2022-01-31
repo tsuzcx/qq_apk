@@ -1,95 +1,96 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tribe.async.async.JobContext;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import android.animation.Animator;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.Fragment;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.mobileqq.activity.photo.album.AlbumListBaseData;
+import com.tencent.widget.XFrameLayout;
+import com.tencent.widget.XListView;
 
-public class bklz
-  extends bklt<bkld, bkld>
+public abstract class bklz
+  extends Fragment
 {
-  protected void a(JobContext paramJobContext, bkld parambkld)
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  public bklw a;
+  public bkmd a;
+  public bkmp a;
+  AlbumListBaseData jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData;
+  XFrameLayout jdField_a_of_type_ComTencentWidgetXFrameLayout;
+  public XListView a;
+  
+  @TargetApi(14)
+  private void a(View paramView)
   {
-    System.currentTimeMillis();
-    int i = vzl.a(BaseApplication.getContext());
-    i = vzl.d(BaseApplication.getContext()) * 720 / i;
-    if (i % 2 != 0) {
-      i += 1;
-    }
-    for (;;)
-    {
-      Object localObject = parambkld.jdField_a_of_type_Bklj.jdField_a_of_type_JavaLangString;
-      paramJobContext = (JobContext)localObject;
-      if (!parambkld.jdField_a_of_type_Bklj.c)
-      {
-        paramJobContext = (JobContext)localObject;
-        if (parambkld.jdField_a_of_type_Bklj.jdField_b_of_type_Boolean) {
-          paramJobContext = parambkld.jdField_a_of_type_Bklj.jdField_b_of_type_JavaLangString;
-        }
-      }
-      localObject = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-      for (;;)
-      {
-        try
-        {
-          bbef.a(paramJobContext, (BitmapFactory.Options)localObject);
-          if (((BitmapFactory.Options)localObject).outWidth * 720 == ((BitmapFactory.Options)localObject).outHeight * i)
-          {
-            j = 1;
-            if ((!(parambkld.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalPhotoSource)) && ((parambkld.jdField_a_of_type_Int != 1) || (j != 0)) && (((BitmapFactory.Options)localObject).outWidth <= 720) && (((BitmapFactory.Options)localObject).outHeight <= i) && (((BitmapFactory.Options)localObject).outWidth % 2 == 0) && (((BitmapFactory.Options)localObject).outHeight % 2 == 0)) {
-              break label384;
-            }
-            paramJobContext = parambkld.jdField_a_of_type_Bklj.jdField_a_of_type_AndroidGraphicsBitmap;
-            if (paramJobContext != null) {
-              break;
-            }
-            ved.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "srcBitmap is null please check!");
-            super.notifyError(new BitmapError("Q.qqstory.publish.edit.ResizeBitmapSegment", 0));
-            return;
-          }
-        }
-        catch (OutOfMemoryError paramJobContext)
-        {
-          ved.b("Q.qqstory.publish.edit.ResizeBitmapSegment", "decode image failed", paramJobContext);
-          super.notifyError(new BitmapError("Q.qqstory.publish.edit.ResizeBitmapSegment", 6));
-          return;
-        }
-        int j = 0;
-      }
-      ved.a("Q.qqstory.publish.edit.ResizeBitmapSegment", "srcBitmap width=%s, height=%s", Integer.valueOf(paramJobContext.getWidth()), Integer.valueOf(paramJobContext.getHeight()));
-      localObject = vxv.b(paramJobContext, 720, i, false, false);
-      if (localObject == null)
-      {
-        super.notifyError(new BitmapError("Q.qqstory.publish.edit.ResizeBitmapSegment", 5));
-        return;
-      }
-      parambkld.jdField_a_of_type_Bklj.c = false;
-      parambkld.jdField_a_of_type_Bklj.jdField_b_of_type_Boolean = true;
-      String str = bklw.a(parambkld.jdField_a_of_type_Int, parambkld.jdField_b_of_type_JavaLangString, ".jpg");
-      vxv.a((Bitmap)localObject, str);
-      if (paramJobContext != localObject)
-      {
-        ((Bitmap)localObject).recycle();
-        ved.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "BitmapUtils.resizeAndFillBitmapEdge recycle bitmap");
-      }
-      for (;;)
-      {
-        parambkld.jdField_a_of_type_Bklj.jdField_b_of_type_JavaLangString = str;
-        super.notifyResult(parambkld);
-        return;
-        ved.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "BitmapUtils.resizeAndFillBitmapEdge do not recycle bitmap");
-      }
-      label384:
-      ved.b("Q.qqstory.publish.edit.ResizeBitmapSegment", "no need resize. srcWidth=%s, srcHeight=%s, destWidth=%s, destHeight=%s", Integer.valueOf(((BitmapFactory.Options)localObject).outWidth), Integer.valueOf(((BitmapFactory.Options)localObject).outHeight), Integer.valueOf(720), Integer.valueOf(i));
-      super.notifyResult(parambkld);
-      return;
+    this.jdField_a_of_type_ComTencentWidgetXFrameLayout = ((XFrameLayout)paramView.findViewById(2131369529));
+    this.jdField_a_of_type_ComTencentWidgetXFrameLayout.setCornerRadiusAndMode(Utils.dp2px(10.0D), 5);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramView.findViewById(2131362464));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setWrapByScroll(true);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Bklw);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new bkmc(this, null));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollMode(2);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131362495));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(new bkma(this));
+    paramView.findViewById(2131362494).setVisibility(8);
+    int i = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_index", 0);
+    int j = getActivity().getIntent().getIntExtra("PhotoConst.photo_selection_y", 0);
+    Looper.myQueue().addIdleHandler(new bkmb(this, i, j));
+    this.jdField_a_of_type_Bkmp.b();
+  }
+  
+  protected abstract bkmp a();
+  
+  public void a(bkmd parambkmd)
+  {
+    this.jdField_a_of_type_Bkmd = parambkmd;
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    super.onCreate(paramBundle);
+  }
+  
+  public Animator onCreateAnimator(int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    return null;
+  }
+  
+  public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
+  {
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560815, paramViewGroup, false);
+    this.jdField_a_of_type_Bkmp = a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData = this.jdField_a_of_type_Bkmp.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumAlbumListBaseData;
+    paramViewGroup = getActivity().getIntent();
+    this.jdField_a_of_type_Bkmp.a(paramViewGroup);
+    a(paramLayoutInflater);
+    return paramLayoutInflater;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+  }
+  
+  public void onDestroyView()
+  {
+    super.onDestroyView();
+    if (this.jdField_a_of_type_Bkmp != null) {
+      this.jdField_a_of_type_Bkmp.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bklz
  * JD-Core Version:    0.7.0.1
  */

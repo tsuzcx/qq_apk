@@ -1,41 +1,49 @@
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.content.ComponentName;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.redtouch.RedTouchLifeTimeManager;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
-public class avpr
-  implements Application.ActivityLifecycleCallbacks
+final class avpr
+  implements QQPermissionCallback
 {
-  public avpr(RedTouchLifeTimeManager paramRedTouchLifeTimeManager) {}
+  avpr(Context paramContext, String paramString, AppActivity paramAppActivity, Intent paramIntent) {}
   
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity) {}
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramActivity.getComponentName() != null)
-    {
-      RedTouchLifeTimeManager.a(this.a, paramActivity.getComponentName().getClassName());
-      if ((!TextUtils.isEmpty(RedTouchLifeTimeManager.a(this.a))) && (RedTouchLifeTimeManager.a(this.a).equals(RedTouchLifeTimeManager.b(this.a)))) {
-        RedTouchLifeTimeManager.a(this.a);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyPublishMenuHelper", 2, "permissions deny");
     }
+    bdcd.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyPublishMenuHelper", 2, "permissions grant");
+    }
+    try
+    {
+      avpq.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).commit();
+      this.jdField_a_of_type_MqqAppAppActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 1001);
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyPublishMenuHelper", 2, "takePhoto");
+      }
+      return;
+    }
+    catch (Exception paramArrayOfString)
+    {
+      QLog.e("NearbyPublishMenuHelper", 1, paramArrayOfString, new Object[0]);
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690645, 0).a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avpr
  * JD-Core Version:    0.7.0.1
  */

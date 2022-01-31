@@ -3,7 +3,7 @@ package okio;
 import java.io.IOException;
 import java.io.InputStream;
 
-class Okio$2
+final class Okio$2
   implements Source
 {
   Okio$2(Timeout paramTimeout, InputStream paramInputStream) {}
@@ -55,7 +55,7 @@ class Okio$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.Okio.2
  * JD-Core Version:    0.7.0.1
  */

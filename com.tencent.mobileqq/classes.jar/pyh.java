@@ -1,21 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pyh
-  implements Animation.AnimationListener
+class pyh
+  implements View.OnClickListener
 {
-  public pyh(ComponentSocialOperation paramComponentSocialOperation) {}
+  pyh(pyg parampyg) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(View paramView)
+  {
+    paramView = this.a.jdField_a_of_type_Rqj.a();
+    if (paramView != null) {
+      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pyh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,29 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
 class bkpl
-  implements CompoundButton.OnCheckedChangeListener
+  implements bmac<bkvz>
 {
-  bkpl(bkpk parambkpk) {}
+  bkpl(bkpi parambkpi) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(@Nullable bkvz parambkvz)
   {
-    bkpk.a(this.a).g = paramBoolean;
+    if (bkpi.a(this.a) == AECaptureMode.GIF)
+    {
+      String str = null;
+      if (parambkvz != null) {
+        str = bkvv.a().a(parambkvz.a);
+      }
+      bkpi.a(this.a).setMaterial(str);
+      blfg.a("VideoStoryPiecesPart", "[GifAuthor]---checkShowGifAuthor when material change");
+      bkpi.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkpl
  * JD-Core Version:    0.7.0.1
  */

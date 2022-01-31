@@ -1,29 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
 
-class ahog
-  implements View.OnTouchListener
+public class ahog
+  implements axxi
 {
-  ahog(ahof paramahof) {}
+  private ahog(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+    if ((AlphabetFriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
+      AlphabetFriendFragment.a(this.a, 1400L, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahog
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,24 @@
-public abstract interface aqau
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+
+public class aqau
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static final Integer a = Integer.valueOf(0);
-  public static final Integer b = Integer.valueOf(1);
-  public static final Integer c = Integer.valueOf(2);
-  public static final Integer d = Integer.valueOf(3);
-  public static final Integer e = Integer.valueOf(4);
-  public static final Integer f = Integer.valueOf(5);
-  public static final Integer g = Integer.valueOf(6);
-  public static final Integer h = Integer.valueOf(8);
-  public static final Integer i = Integer.valueOf(9);
-  public static final Integer j = Integer.valueOf(10);
-  public static final Integer k = Integer.valueOf(11);
-  public static final Integer l = Integer.valueOf(12);
-  public static final Integer m = Integer.valueOf(13);
-  public static final Integer n = Integer.valueOf(14);
+  public aqau(ExtendFriendSquareFragment paramExtendFriendSquareFragment, View paramView) {}
+  
+  public void onGlobalLayout()
+  {
+    int[] arrayOfInt = new int[2];
+    this.jdField_a_of_type_AndroidViewView.getLocationInWindow(arrayOfInt);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.e = arrayOfInt[1];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqau
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,38 @@
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 
 class mjv
-  implements mho
+  implements DialogInterface.OnClickListener
 {
   mjv(mju parammju) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.setViewEnable(2131372374, false);
-      this.a.a.a.setViewEnable(2131362921, false);
-      this.a.a.a.setViewEnable(2131362933, false);
-      this.a.a.a.setViewEnable(2131362932, false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-  }
-  
-  public void b()
-  {
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 2130772163);
+    mjs.a(this.a.a, false);
+    if (paramInt == 1)
+    {
+      azmj.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
+      this.a.a.c();
+      if (!mww.a(mjs.a(this.a.a))) {
+        mjs.a(this.a.a).a(mjs.a(this.a.a));
+      }
+    }
+    while (paramInt != 0)
+    {
+      return;
+      mjs.a(this.a.a).b(mjs.a(this.a.a));
+      return;
+    }
+    mjs.a(this.a.a, mjs.a(this.a.a).a().v);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mjv
  * JD-Core Version:    0.7.0.1
  */

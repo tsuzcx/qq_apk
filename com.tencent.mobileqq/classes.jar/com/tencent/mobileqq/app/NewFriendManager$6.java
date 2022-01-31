@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app;
 
-import akbn;
+import altc;
 
 public class NewFriendManager$6
   implements Runnable
 {
-  public NewFriendManager$6(akbn paramakbn) {}
+  public NewFriendManager$6(altc paramaltc) {}
   
   public void run()
   {

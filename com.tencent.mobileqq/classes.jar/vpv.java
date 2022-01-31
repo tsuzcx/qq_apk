@@ -1,42 +1,31 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class vpv
-  extends vpr
+  implements View.OnClickListener
 {
-  @NonNull
-  public final tdu a;
-  @NonNull
-  public final String c;
+  public vpv(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public vpv(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull tdu paramtdu)
+  public void onClick(View paramView)
   {
-    super(paramInt1, paramString1, paramInt2);
-    this.c = paramString2;
-    this.a = paramtdu;
-  }
-  
-  @NonNull
-  public Class<? extends vps> a()
-  {
-    return vpx.class;
-  }
-  
-  @NonNull
-  public vps a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new vpx(paramContext, paramViewGroup, null);
-  }
-  
-  public boolean a()
-  {
-    return true;
+    if (!bdee.g(this.a.jdField_a_of_type_AndroidViewView.getContext()))
+    {
+      QQToast.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 1, 2131694764, 0).a();
+      return;
+    }
+    VideoViewVideoHolder.a(this.a, 2);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vpv
  * JD-Core Version:    0.7.0.1
  */

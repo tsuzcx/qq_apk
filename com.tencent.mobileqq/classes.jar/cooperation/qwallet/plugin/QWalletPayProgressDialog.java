@@ -1,6 +1,6 @@
 package cooperation.qwallet.plugin;
 
-import ajya;
+import alpo;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -15,7 +15,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class QWalletPayProgressDialog
   extends Dialog
 {
-  private String mMessage = ajya.a(2131711451);
+  private String mMessage = alpo.a(2131711823);
   private TextView mTextView;
   
   public QWalletPayProgressDialog(Context paramContext)
@@ -32,14 +32,14 @@ public class QWalletPayProgressDialog
   {
     try
     {
-      super.setContentView(2131559245);
+      super.setContentView(2131559289);
       paramBundle = getWindow();
       paramBundle.setLayout(-1, -1);
       paramBundle.setBackgroundDrawable(new ColorDrawable(0));
       if (ImmersiveUtils.isSupporImmersive() == 1) {
         paramBundle.addFlags(67108864);
       }
-      this.mTextView = ((TextView)super.findViewById(2131370037));
+      this.mTextView = ((TextView)super.findViewById(2131370303));
       this.mTextView.setVisibility(0);
       this.mTextView.setText(this.mMessage);
       super.setCancelable(false);
@@ -83,7 +83,7 @@ public class QWalletPayProgressDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPayProgressDialog
  * JD-Core Version:    0.7.0.1
  */

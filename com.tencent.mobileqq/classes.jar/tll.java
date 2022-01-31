@@ -1,25 +1,35 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
 public class tll
-  extends ssh
 {
-  public String a;
-  public List<uuc> a;
+  private String a;
   
-  public tll()
+  public static tll a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    return tln.a();
   }
   
-  public String toString()
+  public String a()
   {
-    return super.toString() + " collectionId=" + this.jdField_a_of_type_JavaLangString + "mSimpleInfoList.size=" + this.jdField_a_of_type_JavaUtilList.size() + "mSimpleInfoList=" + this.jdField_a_of_type_JavaUtilList;
+    return this.a;
+  }
+  
+  public void a()
+  {
+    WSRedDotPushMsg localWSRedDotPushMsg = tlv.a();
+    if (localWSRedDotPushMsg != null) {
+      this.a = localWSRedDotPushMsg.mPushId;
+    }
+  }
+  
+  public void b()
+  {
+    this.a = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tll
  * JD-Core Version:    0.7.0.1
  */

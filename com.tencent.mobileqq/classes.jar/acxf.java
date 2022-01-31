@@ -1,23 +1,46 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface acxf
+class acxf
+  extends alox
 {
-  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, long paramLong, float paramFloat);
+  acxf(acxe paramacxe) {}
   
-  public abstract void a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage, boolean paramBoolean);
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  {
+    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+      }
+    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
+    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
+  }
   
-  public abstract boolean a(XListView paramXListView, int paramInt, View paramView, ChatMessage paramChatMessage);
-  
-  public abstract boolean a(XListView paramXListView, int paramInt1, View paramView, ChatMessage paramChatMessage, AudioPlayer paramAudioPlayer, int paramInt2);
-  
-  public abstract boolean b(ChatMessage paramChatMessage);
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.b.equals(paramString)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
+    }
+    this.a.b(this.a.jdField_a_of_type_Acxi);
+    if (paramBoolean)
+    {
+      this.a.a(this.a.jdField_a_of_type_Acxi, false);
+      this.a.c(this.a.jdField_a_of_type_Acxi);
+      return;
+    }
+    this.a.jdField_a_of_type_Acxi.a = 2;
+    this.a.c(this.a.jdField_a_of_type_Acxi);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxf
  * JD-Core Version:    0.7.0.1
  */

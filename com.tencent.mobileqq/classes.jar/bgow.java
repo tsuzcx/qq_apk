@@ -1,50 +1,98 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QlAndQQInterface.DailogClickInfo;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnVideoPreparedListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.1;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.2;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.3;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bgow
-  implements DialogInterface.OnClickListener
+  implements VideoPlayerProxy.OnVideoPreparedListener
 {
-  public bgow(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
+  public bgow(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onVideoPrepared(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    this.a.app.a().a("0X8004750", 1);
-    this.a.app.a().a(new QlAndQQInterface.DailogClickInfo(9));
-    StringBuilder localStringBuilder;
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder().append("topAct:");
-      if (QlinkStandardDialogActivity.a(this.a) == null) {
-        break label150;
-      }
-    }
-    label150:
-    for (paramDialogInterface = QlinkStandardDialogActivity.a(this.a).getLocalClassName();; paramDialogInterface = "null")
-    {
-      QLog.d("QlinkStandardDialogActivity", 2, paramDialogInterface);
-      if ((QlinkStandardDialogActivity.a(this.a) == null) || (!(QlinkStandardDialogActivity.a(this.a) instanceof FMActivity))) {
-        break;
-      }
-      paramDialogInterface = (FMActivity)QlinkStandardDialogActivity.a(this.a);
-      if ((paramDialogInterface.e() != 0) && (7 != paramDialogInterface.e())) {
-        break;
-      }
-      this.a.finish();
+    boolean bool = true;
+    if (!this.a.jdField_a_of_type_Boolean) {
       return;
     }
-    apug.a(this.a, false);
-    this.a.finish();
+    if (!this.a.jdField_a_of_type_Bghn.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
+      MiniAppVideoPlayer.a(this.a, "waiting");
+    }
+    for (;;)
+    {
+      MiniAppVideoPlayer.b(this.a, false);
+      MiniAppVideoPlayer.b(this.a, false);
+      this.a.jdField_a_of_type_Boolean = true;
+      if (!MiniAppVideoPlayer.a(this.a)) {
+        break;
+      }
+      if (MiniAppVideoPlayer.a(this.a).isPlaying()) {
+        MiniAppVideoPlayer.a(this.a).pause();
+      }
+      ThreadManager.c().post(new MiniAppVideoPlayer.7.1(this));
+      MiniAppVideoPlayer.c(this.a, false);
+      return;
+      try
+      {
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        this.a.jdField_a_of_type_Bghn.a("onVideoWaiting", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+      }
+      catch (JSONException paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
+      }
+    }
+    MiniAppVideoPlayer.a(this.a).start();
+    this.a.postDelayed(new MiniAppVideoPlayer.7.2(this), 200L);
+    if (!this.a.jdField_a_of_type_Bghn.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService"))
+    {
+      MiniAppVideoPlayer.a(this.a, "play");
+      MiniAppVideoPlayer.e(this.a);
+      ThreadManager.c().post(new MiniAppVideoPlayer.7.3(this));
+      paramVideoPlayerProxy = new StringBuilder().append("onVideoPrepared: ").append(MiniAppVideoPlayer.a(this.a).getDuration()).append(" ").append(MiniAppVideoPlayer.a(this.a).getCurrentPostion()).append(" ");
+      if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
+        break label464;
+      }
+    }
+    for (;;)
+    {
+      for (;;)
+      {
+        Log.i("MiniAppVideoPlayer", bool);
+        MiniAppVideoPlayer.a(this.a, 200L);
+        return;
+        try
+        {
+          paramVideoPlayerProxy = new JSONObject();
+          paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
+          paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+          this.a.jdField_a_of_type_Bghn.a("onVideoPlay", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+          QMLog.d("MiniAppVideoPlayer", "OnVideoPreparedListener - onVideoPrepared evaluateSubcribeJS onVideoPlay = " + paramVideoPlayerProxy.toString());
+        }
+        catch (JSONException paramVideoPlayerProxy)
+        {
+          paramVideoPlayerProxy.printStackTrace();
+        }
+      }
+      break;
+      label464:
+      bool = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgow
  * JD-Core Version:    0.7.0.1
  */

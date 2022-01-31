@@ -1,36 +1,36 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.NowLive;
+import com.tencent.mobileqq.intervideo.yiqikan.NewTogetherRoomMessageData;
 
-final class aszg
-  implements DialogInterface.OnClickListener
+class aszg
+  implements ataw
 {
-  aszg(String paramString, int paramInt, Activity paramActivity) {}
+  aszg(asyy paramasyy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString + "&from=" + this.jdField_a_of_type_Int;
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramDialogInterface);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby.tribeAppDownload", 2, "open download page, url=" + paramDialogInterface);
-    }
-    if (this.jdField_a_of_type_Int == 1) {
-      axqy.b(null, "dc00899", "grp_lbs", "", "app_down", "msg_down", 0, 0, "", "", "", "");
-    }
-    while (this.jdField_a_of_type_Int != 2) {
-      return;
-    }
-    axqy.b(null, "dc00899", "grp_lbs", "", "app_down", "pic_down", 0, 0, "", "", "", "");
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 101);
+    NowLive.sendServerPushMessage(asyy.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+  }
+  
+  public void b(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 102);
+    NowLive.sendServerPushMessage(asyy.a(this.a, localBundle, paramNewTogetherRoomMessageData));
+  }
+  
+  public void c(NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("ctrl_cmd", 103);
+    NowLive.sendServerPushMessage(asyy.a(this.a, localBundle, paramNewTogetherRoomMessageData));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszg
  * JD-Core Version:    0.7.0.1
  */

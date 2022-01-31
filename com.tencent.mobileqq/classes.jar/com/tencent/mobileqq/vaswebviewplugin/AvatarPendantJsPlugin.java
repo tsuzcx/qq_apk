@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import ajya;
+import alpo;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -10,17 +10,16 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anqq;
-import anqu;
-import bbco;
-import bbdj;
-import bbef;
-import bbhi;
-import bcdp;
-import bcii;
-import bcql;
-import bfpc;
-import bfpp;
+import aphy;
+import apic;
+import bdbi;
+import bdcd;
+import bdda;
+import bdge;
+import becq;
+import behj;
+import bhpy;
+import bhql;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
@@ -28,6 +27,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -66,26 +66,26 @@ public class AvatarPendantJsPlugin
     }
     Bundle localBundle = new Bundle();
     localBundle.putString("params", paramJSONObject.toString());
-    super.sendRemoteReq(anqu.a("getPendantNumberPic", paramString, this.mOnRemoteResp.key, localBundle), false, false);
+    super.sendRemoteReq(apic.a("getPendantNumberPic", paramString, this.mOnRemoteResp.key, localBundle), false, false);
   }
   
   private Bitmap getRoundFaceBitmap(String paramString)
   {
     if (new File(paramString).exists())
     {
-      Object localObject = bbef.a(new BitmapFactory.Options(), paramString, 200);
+      Object localObject = bdda.a(new BitmapFactory.Options(), paramString, 200);
       try
       {
         paramString = BitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject);
         int i = paramString.getWidth();
         int j = paramString.getHeight();
-        localObject = bbef.a(paramString, i, i, j);
+        localObject = bdda.a(paramString, i, i, j);
         paramString = (String)localObject;
         if (localObject != null)
         {
           paramString = (String)localObject;
           if (((Bitmap)localObject).getWidth() > 200) {
-            paramString = bbef.a((Bitmap)localObject, 200);
+            paramString = bdda.a((Bitmap)localObject, 200);
           }
         }
         return paramString;
@@ -95,7 +95,7 @@ public class AvatarPendantJsPlugin
         return null;
       }
     }
-    return bbef.a();
+    return bdda.a();
   }
   
   private void showDiyGuide(JSONObject paramJSONObject, String paramString)
@@ -131,10 +131,10 @@ public class AvatarPendantJsPlugin
     if (QLog.isColorLevel()) {
       QLog.i("AvatarPendantJsPlugin", 2, "changeFace: " + paramJSONObject);
     }
-    paramJSONObject = (bfpc)bfpp.a(this.mRuntime.a(), null);
-    paramJSONObject.c(ajya.a(2131700883));
-    paramJSONObject.c(ajya.a(2131700885));
-    paramJSONObject.d(ajya.a(2131700866));
+    paramJSONObject = (bhpy)bhql.a(this.mRuntime.a(), null);
+    paramJSONObject.c(alpo.a(2131701252));
+    paramJSONObject.c(alpo.a(2131701254));
+    paramJSONObject.d(alpo.a(2131701235));
     paramJSONObject.a(new AvatarPendantJsPlugin.5(this, paramString, paramJSONObject));
     paramJSONObject.a(new AvatarPendantJsPlugin.6(this, paramString));
     paramJSONObject.show();
@@ -307,7 +307,7 @@ public class AvatarPendantJsPlugin
       label200:
       Object localObject2 = new ByteArrayOutputStream();
       ((Bitmap)localObject1).compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject2);
-      String str3 = bbco.encodeToString(((ByteArrayOutputStream)localObject2).toByteArray(), 2);
+      String str3 = bdbi.encodeToString(((ByteArrayOutputStream)localObject2).toByteArray(), 2);
       paramBundle.put("result", 1);
       paramBundle.put("file", "data:image/png;base64," + str3);
       paramBundle.put("size", ((Bitmap)localObject1).getWidth());
@@ -315,8 +315,8 @@ public class AvatarPendantJsPlugin
       continue;
       label291:
       Object localObject1 = this.mRuntime.a(this.mRuntime.a());
-      if ((localObject1 != null) && ((localObject1 instanceof bcii))) {
-        bcql.a(this.mRuntime.a(), 2131719313, 0).b(((bcii)localObject1).b());
+      if ((localObject1 != null) && ((localObject1 instanceof behj))) {
+        QQToast.a(this.mRuntime.a(), 2131719794, 0).b(((behj)localObject1).b());
       }
       paramBundle.put("result", 1001);
       continue;
@@ -363,17 +363,17 @@ public class AvatarPendantJsPlugin
       paramJSONObject = paramJSONObject.getJSONArray("button");
       if (paramJSONObject.length() >= 1)
       {
-        bbhi localbbhi = bbdj.a(this.mRuntime.a(), 230);
-        localbbhi.a(str2);
-        localbbhi.b(str1);
-        localbbhi.a(paramJSONObject.getString(0), new AvatarPendantJsPlugin.2(this, paramString));
+        bdge localbdge = bdcd.a(this.mRuntime.a(), 230);
+        localbdge.a(str2);
+        localbdge.b(str1);
+        localbdge.a(paramJSONObject.getString(0), new AvatarPendantJsPlugin.2(this, paramString));
         if (paramJSONObject.length() >= 2) {
-          localbbhi.b(paramJSONObject.getString(1), new AvatarPendantJsPlugin.3(this, paramString));
+          localbdge.b(paramJSONObject.getString(1), new AvatarPendantJsPlugin.3(this, paramString));
         }
         if (paramJSONObject.length() >= 3) {
-          localbbhi.c(paramJSONObject.getString(2), new AvatarPendantJsPlugin.4(this, paramString));
+          localbdge.c(paramJSONObject.getString(2), new AvatarPendantJsPlugin.4(this, paramString));
         }
-        localbbhi.show();
+        localbdge.show();
         paramJSONObject = new JSONObject();
         super.callJs(paramString + "(" + paramJSONObject.toString() + ");");
         return;
@@ -403,7 +403,7 @@ public class AvatarPendantJsPlugin
       paramJSONObject = new Bundle();
       paramJSONObject.putString("uin", this.browserApp.getAccount());
       paramJSONObject.putLong("pendantId", l);
-      super.sendRemoteReq(anqu.a("updatePendantId", paramString, this.mOnRemoteResp.key, paramJSONObject), false, false);
+      super.sendRemoteReq(apic.a("updatePendantId", paramString, this.mOnRemoteResp.key, paramJSONObject), false, false);
       return;
     }
     catch (JSONException paramJSONObject)

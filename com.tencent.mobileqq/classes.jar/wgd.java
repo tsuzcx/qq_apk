@@ -1,41 +1,28 @@
-import android.os.CountDownTimer;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity.22;
+import android.support.annotation.NonNull;
 
 public class wgd
-  implements View.OnTouchListener
+  extends uhw<wfn, uqw>
 {
-  public wgd(QRDisplayActivity.22 param22) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public wgd(wfn paramwfn)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    do
-    {
-      do
-      {
-        return true;
-      } while (QRDisplayActivity.a(this.a.this$0) == null);
-      QRDisplayActivity.a(this.a.this$0, false);
-      QRDisplayActivity.a(this.a.this$0).start();
-      return true;
-      if (QRDisplayActivity.a(this.a.this$0) != null) {
-        QRDisplayActivity.a(this.a.this$0).cancel();
-      }
-    } while ((QRDisplayActivity.a(this.a.this$0)) || (paramMotionEvent.getAction() != 1));
-    baww.c(this.a.this$0.d);
-    this.a.this$0.onClick(this.a.this$0.d);
-    return true;
+    super(paramwfn);
   }
+  
+  public void a(@NonNull wfn paramwfn, @NonNull uqw paramuqw)
+  {
+    wfn.a(paramwfn, paramuqw.a, this.TAG);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uqw.class;
+  }
+  
+  public void b(@NonNull wfn paramwfn, @NonNull uqw paramuqw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgd
  * JD-Core Version:    0.7.0.1
  */

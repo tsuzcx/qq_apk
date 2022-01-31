@@ -1,14 +1,24 @@
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
-public abstract interface mif
+class mif
+  implements View.OnClickListener
 {
-  public abstract void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
+  mif(mie parammie) {}
   
-  public abstract void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    if (this.a.a.a != null) {
+      this.a.a.a.j();
+    }
+    azmj.b(null, "CliOper", "", "", "0X8005DF1", "0X8005DF1", 0, 0, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mif
  * JD-Core Version:    0.7.0.1
  */

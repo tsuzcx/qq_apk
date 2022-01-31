@@ -1,34 +1,57 @@
-import java.util.Observable;
-import java.util.Observer;
-import mqq.util.WeakReference;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class mmo
-  implements Observer
+public class mmo
+  extends lhe
 {
-  private final WeakReference<mmk> a;
+  public mmo(VideoInviteActivity paramVideoInviteActivity) {}
   
-  mmo(mmk parammmk)
+  protected void a(long paramLong, int paramInt)
   {
-    this.a = new WeakReference(parammmk);
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    paramObservable = (Object[])paramObject;
-    switch (((Integer)paramObservable[0]).intValue())
-    {
+    long l = AudioHelper.b();
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onDestroyInviteUI, relationId[" + paramLong + "], seq[" + l + "]");
     }
-    do
+    boolean bool = this.a.i;
+    if ((bool) && (this.a.c != null) && (this.a.c.equals(String.valueOf(paramLong))))
     {
+      super.a(paramLong);
+      mwk.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      this.a.a(l);
+      if ((bool) && (this.a.c.length() > 2) && (paramLong != 0L))
+      {
+        paramLong = Long.valueOf(this.a.c).longValue();
+        if (!this.a.h)
+        {
+          this.a.h = true;
+          if (paramInt != 1) {
+            break label255;
+          }
+          this.a.a().a(l, paramLong, 7);
+        }
+      }
+    }
+    for (;;)
+    {
+      this.a.e = true;
+      if ((!this.a.l) || (this.a.jdField_a_of_type_Mkb == null) || (this.a.f())) {
+        break;
+      }
+      this.a.jdField_a_of_type_Mkb.a(new mmp(this));
       return;
-      paramObject = (mmk)this.a.get();
-    } while ((paramObject == null) || (paramObservable.length < 2) || (!(paramObservable[1] instanceof Boolean)) || (((Boolean)paramObservable[1]).booleanValue()));
-    paramObject.a();
+      label255:
+      if (paramInt == 2) {
+        this.a.a().a(l, paramLong, 2);
+      }
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmo
  * JD-Core Version:    0.7.0.1
  */

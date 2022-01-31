@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.javahook;
 
-import axrn;
+import azmz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.HashMap;
@@ -25,12 +25,12 @@ public final class BadTokenHooker$2
       ((HashMap)localObject).put("detail", this.b);
     }
     ((HashMap)localObject).put("type", String.valueOf(this.jdField_a_of_type_Int));
-    axrn.a(BaseApplicationImpl.getApplication()).a(str, "BadTokenHooker", false, 0L, 0L, (HashMap)localObject, "", true);
+    azmz.a(BaseApplicationImpl.getApplication()).a(str, "BadTokenHooker", false, 0L, 0L, (HashMap)localObject, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.BadTokenHooker.2
  * JD-Core Version:    0.7.0.1
  */

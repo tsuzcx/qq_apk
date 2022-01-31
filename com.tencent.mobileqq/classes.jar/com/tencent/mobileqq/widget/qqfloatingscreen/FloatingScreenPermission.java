@@ -11,11 +11,11 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.provider.Settings;
 import android.support.annotation.RequiresApi;
-import bbdj;
-import bbgu;
-import bcty;
-import bctz;
-import bcub;
+import bdcd;
+import bdfq;
+import beth;
+import beti;
+import betk;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
 
@@ -305,15 +305,15 @@ public class FloatingScreenPermission
     if (paramContext == null) {
       return;
     }
-    bcub.b();
-    bbdj.a(paramContext, 230, paramContext.getString(2131718551), paramContext.getString(2131718549), paramContext.getString(2131718548), paramContext.getString(2131718550), new bcty(paramContext), null).show();
+    betk.b();
+    bdcd.a(paramContext, 230, paramContext.getString(2131719000), paramContext.getString(2131718998), paramContext.getString(2131718997), paramContext.getString(2131718999), new beth(paramContext), null).show();
   }
   
   private static boolean handleVivoPermissionDialog(Context paramContext)
   {
     if (canUseCheckOpForVivo())
     {
-      bbdj.a(paramContext, 230, paramContext.getString(2131718551), paramContext.getString(2131699630), paramContext.getString(2131718548), paramContext.getString(2131694938), new bctz(paramContext), null).show();
+      bdcd.a(paramContext, 230, paramContext.getString(2131719000), paramContext.getString(2131699998), paramContext.getString(2131718997), paramContext.getString(2131695095), new beti(paramContext), null).show();
       return true;
     }
     return false;

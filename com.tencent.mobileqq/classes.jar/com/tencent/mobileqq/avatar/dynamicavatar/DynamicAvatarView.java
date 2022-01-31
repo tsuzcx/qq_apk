@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import alyy;
-import alzj;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Looper;
 import android.util.AttributeSet;
-import baxo;
-import bayh;
-import bayi;
-import bayj;
-import bazu;
-import bfwr;
-import bfws;
+import anpx;
+import anqi;
+import bcwi;
+import bcxb;
+import bcxc;
+import bcxd;
+import bcyo;
+import bhxo;
+import bhxp;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.VideoDrawable;
@@ -28,12 +28,12 @@ import mqq.util.WeakReference;
 
 public class DynamicAvatarView
   extends URLTextImageView
-  implements bfws
+  implements bhxp
 {
   public int a;
-  public baxo a;
-  public bfwr a;
-  private VideoDrawable.OnPlayRepeatListener jdField_a_of_type_ComTencentImageVideoDrawable$OnPlayRepeatListener = new alzj(this);
+  public bcwi a;
+  public bhxo a;
+  private VideoDrawable.OnPlayRepeatListener jdField_a_of_type_ComTencentImageVideoDrawable$OnPlayRepeatListener = new anqi(this);
   private Runnable jdField_a_of_type_JavaLangRunnable = new DynamicAvatarView.1(this);
   public String a;
   public boolean a;
@@ -62,13 +62,13 @@ public class DynamicAvatarView
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Baxo == null) || (!this.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_Bcwi == null) || (!this.jdField_a_of_type_Boolean))
     {
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
       {
         localStringBuilder = new StringBuilder().append("updateImageDrawable null == mDynamicFaceDrawable: ");
-        if (this.jdField_a_of_type_Baxo != null) {
+        if (this.jdField_a_of_type_Bcwi != null) {
           break label69;
         }
       }
@@ -81,36 +81,36 @@ public class DynamicAvatarView
     }
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      setImageDrawable(this.jdField_a_of_type_Baxo.a());
+      setImageDrawable(this.jdField_a_of_type_Bcwi.a());
       return;
     }
     ThreadManager.getUIHandler().post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void a(Canvas paramCanvas)
-  {
-    super.onDraw(paramCanvas);
-  }
-  
   public void a(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_Baxo != null)
+    if (this.jdField_a_of_type_Bcwi != null)
     {
-      this.jdField_a_of_type_Baxo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      if (this.jdField_a_of_type_Baxo.a() != this.jdField_a_of_type_Baxo.jdField_a_of_type_ComTencentImageURLDrawable) {
-        setImageDrawable(this.jdField_a_of_type_Baxo.a());
+      this.jdField_a_of_type_Bcwi.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+      if (this.jdField_a_of_type_Bcwi.a() != this.jdField_a_of_type_Bcwi.jdField_a_of_type_ComTencentImageURLDrawable) {
+        setImageDrawable(this.jdField_a_of_type_Bcwi.a());
       }
       return;
     }
     setImageDrawable(paramDrawable);
   }
   
+  public void a_(Canvas paramCanvas)
+  {
+    super.onDraw(paramCanvas);
+  }
+  
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Baxo != null) {
-      setImageDrawable(this.jdField_a_of_type_Baxo.a());
+    if (this.jdField_a_of_type_Bcwi != null) {
+      setImageDrawable(this.jdField_a_of_type_Bcwi.a());
     }
   }
   
@@ -119,8 +119,8 @@ public class DynamicAvatarView
     Drawable localDrawable = getDrawable();
     if (((localDrawable instanceof URLDrawable)) && ((((URLDrawable)localDrawable).getCurrDrawable() instanceof VideoDrawable)))
     {
-      if (this.jdField_a_of_type_Baxo != null) {
-        this.jdField_a_of_type_Baxo.jdField_a_of_type_Alyy.a(this.jdField_a_of_type_Baxo, true);
+      if (this.jdField_a_of_type_Bcwi != null) {
+        this.jdField_a_of_type_Bcwi.jdField_a_of_type_Anpx.a(this.jdField_a_of_type_Bcwi, true);
       }
       if (QLog.isColorLevel()) {
         QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.01");
@@ -135,9 +135,9 @@ public class DynamicAvatarView
   {
     try
     {
-      if (this.jdField_a_of_type_Bfwr != null)
+      if (this.jdField_a_of_type_Bhxo != null)
       {
-        this.jdField_a_of_type_Bfwr.a(paramCanvas, this);
+        this.jdField_a_of_type_Bhxo.a(paramCanvas, this);
         return;
       }
       super.onDraw(paramCanvas);
@@ -167,59 +167,59 @@ public class DynamicAvatarView
     QLog.i("Q.dynamicAvatar", 1, "onLoadSuccessed, curDrawable " + paramURLDrawable);
   }
   
-  public void setFaceDrawable(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, bayi parambayi, int paramInt4, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt5)
+  public void setFaceDrawable(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString, byte paramByte, int paramInt3, boolean paramBoolean1, Drawable paramDrawable1, Drawable paramDrawable2, bcxc parambcxc, int paramInt4, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, int paramInt5)
   {
     this.jdField_a_of_type_Int = paramInt5;
     this.jdField_b_of_type_JavaLangString = paramString;
     this.jdField_b_of_type_Boolean = paramBoolean3;
     String str = null;
-    if (this.jdField_a_of_type_Baxo != null) {
-      str = alyy.a(this.jdField_a_of_type_Baxo, false);
+    if (this.jdField_a_of_type_Bcwi != null) {
+      str = anpx.a(this.jdField_a_of_type_Bcwi, false);
     }
-    if (alyy.b(paramInt1, paramInt2, paramString, paramInt4).equals(str))
+    if (anpx.b(paramInt1, paramInt2, paramString, paramInt4).equals(str))
     {
-      boolean bool = this.jdField_a_of_type_Baxo.a();
-      this.jdField_a_of_type_Baxo.a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, true);
+      boolean bool = this.jdField_a_of_type_Bcwi.a();
+      this.jdField_a_of_type_Bcwi.a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, true);
       if ((paramAppInterface instanceof QQAppInterface)) {}
-      for (this.jdField_a_of_type_Baxo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bayj(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, parambayi, paramBoolean4);; this.jdField_a_of_type_Baxo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bazu(paramAppInterface, paramInt1, paramInt2, paramString, (byte)1, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambayi, paramBoolean4))
+      for (this.jdField_a_of_type_Bcwi.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bcxd(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, parambcxc, paramBoolean4);; this.jdField_a_of_type_Bcwi.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bcyo(paramAppInterface, paramInt1, paramInt2, paramString, (byte)1, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambcxc, paramBoolean4))
       {
-        this.jdField_a_of_type_Baxo.a(paramBoolean4, null);
+        this.jdField_a_of_type_Bcwi.a(paramBoolean4, null);
         if (!bool) {
-          setImageDrawable(this.jdField_a_of_type_Baxo.a());
+          setImageDrawable(this.jdField_a_of_type_Bcwi.a());
         }
         return;
       }
     }
     this.jdField_a_of_type_JavaLangString = "";
-    if (this.jdField_a_of_type_Baxo != null)
+    if (this.jdField_a_of_type_Bcwi != null)
     {
-      this.jdField_a_of_type_Baxo.a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, false);
+      this.jdField_a_of_type_Bcwi.a(paramAppInterface, null, paramInt1, paramInt2, paramString, paramInt4, paramInt3, paramBoolean3, paramInt5, paramBoolean2, paramBoolean5, paramBoolean1, null, false);
       if ((paramAppInterface instanceof QQAppInterface))
       {
-        this.jdField_a_of_type_Baxo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bayj(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, parambayi, paramBoolean4);
-        this.jdField_a_of_type_Baxo.a(paramBoolean4, null);
+        this.jdField_a_of_type_Bcwi.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bcxd(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramInt4, paramBoolean1, paramDrawable1, paramDrawable2, parambcxc, paramBoolean4);
+        this.jdField_a_of_type_Bcwi.a(paramBoolean4, null);
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_Baxo.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
-      setImageDrawable(this.jdField_a_of_type_Baxo.a());
+      this.jdField_a_of_type_Bcwi.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
+      setImageDrawable(this.jdField_a_of_type_Bcwi.a());
       return;
-      this.jdField_a_of_type_Baxo.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bazu(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambayi, paramBoolean4);
+      this.jdField_a_of_type_Bcwi.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new bcyo(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambcxc, paramBoolean4);
       break;
-      this.jdField_a_of_type_Baxo = new baxo(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambayi, paramInt4, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt5);
+      this.jdField_a_of_type_Bcwi = new bcwi(paramAppInterface, paramInt1, paramInt2, paramString, paramByte, paramInt3, paramBoolean1, paramDrawable1, paramDrawable2, parambcxc, paramInt4, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt5);
     }
   }
   
   public void setFaceDrawable(AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, int paramInt3)
   {
-    Drawable localDrawable = bayh.a(paramInt1, 3);
+    Drawable localDrawable = bcxb.a(paramInt1, 3);
     setFaceDrawable(paramAppInterface, paramInt1, 200, paramString, (byte)0, 3, false, localDrawable, localDrawable, null, paramInt2, false, paramBoolean1, paramBoolean2, false, paramInt3);
   }
   
   public void setFaceDrawable(AppInterface paramAppInterface, int paramInt1, String paramString, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt3)
   {
-    Drawable localDrawable = bayh.a(paramInt1, 3);
+    Drawable localDrawable = bcxb.a(paramInt1, 3);
     setFaceDrawable(paramAppInterface, paramInt1, 200, paramString, (byte)0, 3, false, localDrawable, localDrawable, null, paramInt2, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramInt3);
   }
   
@@ -229,16 +229,16 @@ public class DynamicAvatarView
     this.jdField_b_of_type_JavaLangString = paramString;
     this.jdField_b_of_type_Boolean = paramBoolean1;
     String str = null;
-    if (this.jdField_a_of_type_Baxo != null) {
-      str = alyy.a(this.jdField_a_of_type_Baxo, false);
+    if (this.jdField_a_of_type_Bcwi != null) {
+      str = anpx.a(this.jdField_a_of_type_Bcwi, false);
     }
-    if (alyy.b(paramInt1, paramInt2, paramString, paramInt3).equals(str))
+    if (anpx.b(paramInt1, paramInt2, paramString, paramInt3).equals(str))
     {
-      boolean bool = this.jdField_a_of_type_Baxo.a();
-      this.jdField_a_of_type_Baxo.a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 3, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, true);
-      this.jdField_a_of_type_Baxo.a(paramBoolean3, paramDynamicAvatar);
+      boolean bool = this.jdField_a_of_type_Bcwi.a();
+      this.jdField_a_of_type_Bcwi.a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 3, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, true);
+      this.jdField_a_of_type_Bcwi.a(paramBoolean3, paramDynamicAvatar);
       if (!bool) {
-        setImageDrawable(this.jdField_a_of_type_Baxo.a());
+        setImageDrawable(this.jdField_a_of_type_Bcwi.a());
       }
       if (QLog.isDevelopLevel()) {
         QLog.w("Q.dynamicAvatar", 2, "setFaceDrwable bitmapDrawable is: " + paramDrawable + " id: " + paramString);
@@ -246,22 +246,22 @@ public class DynamicAvatarView
       return;
     }
     this.jdField_a_of_type_JavaLangString = "";
-    if (this.jdField_a_of_type_Baxo == null) {
-      this.jdField_a_of_type_Baxo = new baxo(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, paramBoolean1, paramDynamicAvatar, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt4);
+    if (this.jdField_a_of_type_Bcwi == null) {
+      this.jdField_a_of_type_Bcwi = new bcwi(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, paramBoolean1, paramDynamicAvatar, paramBoolean2, paramBoolean3, paramBoolean4, paramBoolean5, paramInt4);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Baxo.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
-      setImageDrawable(this.jdField_a_of_type_Baxo.a());
+      this.jdField_a_of_type_Bcwi.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(this);
+      setImageDrawable(this.jdField_a_of_type_Bcwi.a());
       break;
-      this.jdField_a_of_type_Baxo.a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 3, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, false);
-      this.jdField_a_of_type_Baxo.a(paramBoolean3, paramDynamicAvatar);
+      this.jdField_a_of_type_Bcwi.a(paramAppInterface, paramDrawable, paramInt1, paramInt2, paramString, paramInt3, 3, paramBoolean1, paramInt4, paramBoolean5, paramBoolean4, paramBoolean2, paramDynamicAvatar, false);
+      this.jdField_a_of_type_Bcwi.a(paramBoolean3, paramDynamicAvatar);
     }
   }
   
   public void setFaceDrawable(AppInterface paramAppInterface, Drawable paramDrawable, int paramInt1, String paramString, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, int paramInt3)
   {
-    bayh.a(paramInt1, 3);
+    bcxb.a(paramInt1, 3);
     a(paramAppInterface, paramDrawable, paramInt1, 200, paramString, false, paramInt2, false, paramBoolean1, paramBoolean2, false, paramInt3);
   }
   
@@ -311,17 +311,17 @@ public class DynamicAvatarView
           if (n >= 0) {
             localObject2 = ((String)localObject3).substring(n);
           }
-          if (this.jdField_a_of_type_Baxo == null) {
+          if (this.jdField_a_of_type_Bcwi == null) {
             break label418;
           }
-          localObject2 = (String)localObject2 + this.jdField_a_of_type_Baxo.d;
+          localObject2 = (String)localObject2 + this.jdField_a_of_type_Bcwi.d;
           localObject3 = new StringBuilder().append("setImageDrawable isStatic: ");
-          if (paramDrawable == this.jdField_a_of_type_Baxo.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
+          if (paramDrawable == this.jdField_a_of_type_Bcwi.jdField_a_of_type_AndroidGraphicsDrawableDrawable)
           {
             bool = true;
             label203:
             localObject3 = ((StringBuilder)localObject3).append(bool).append(" isDynamic: ");
-            if (paramDrawable != this.jdField_a_of_type_Baxo.jdField_a_of_type_ComTencentImageURLDrawable) {
+            if (paramDrawable != this.jdField_a_of_type_Bcwi.jdField_a_of_type_ComTencentImageURLDrawable) {
               break label412;
             }
             bool = true;
@@ -341,15 +341,15 @@ public class DynamicAvatarView
         }
         for (;;)
         {
-          if (((k != 0) && (i == 0)) || ((localDrawable == null) && (this.jdField_a_of_type_Baxo != null))) {
-            this.jdField_a_of_type_Baxo.jdField_a_of_type_Alyy.a(this.jdField_a_of_type_Baxo, false);
+          if (((k != 0) && (i == 0)) || ((localDrawable == null) && (this.jdField_a_of_type_Bcwi != null))) {
+            this.jdField_a_of_type_Bcwi.jdField_a_of_type_Anpx.a(this.jdField_a_of_type_Bcwi, false);
           }
-          if ((this.jdField_a_of_type_Baxo != null) && (paramDrawable != this.jdField_a_of_type_Baxo.jdField_a_of_type_ComTencentImageURLDrawable) && (paramDrawable != this.jdField_a_of_type_Baxo.jdField_a_of_type_AndroidGraphicsDrawableDrawable))
+          if ((this.jdField_a_of_type_Bcwi != null) && (paramDrawable != this.jdField_a_of_type_Bcwi.jdField_a_of_type_ComTencentImageURLDrawable) && (paramDrawable != this.jdField_a_of_type_Bcwi.jdField_a_of_type_AndroidGraphicsDrawableDrawable))
           {
             this.jdField_b_of_type_JavaLangString = "";
             this.jdField_a_of_type_JavaLangString = "";
             this.jdField_b_of_type_Boolean = false;
-            this.jdField_a_of_type_Baxo = null;
+            this.jdField_a_of_type_Bcwi = null;
           }
           super.setImageDrawable(paramDrawable);
           if (!QLog.isDevelopLevel()) {
@@ -390,13 +390,13 @@ public class DynamicAvatarView
   
   public void setStrangerFaceDrawable(AppInterface paramAppInterface, int paramInt1, String paramString, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt3)
   {
-    Drawable localDrawable = bayh.a(32, 3);
+    Drawable localDrawable = bcxb.a(32, 3);
     setFaceDrawable(paramAppInterface, 32, paramInt1, paramString, (byte)1, 3, paramBoolean1, localDrawable, localDrawable, null, paramInt2, false, paramBoolean2, paramBoolean3, paramBoolean4, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView
  * JD-Core Version:    0.7.0.1
  */

@@ -123,7 +123,7 @@ public class MiniAppPrePullManager
     MiniAppCmdUtil.getInstance().getAppInfoById(null, paramString1, paramString2, paramString3, new MiniAppPrePullManager.2(this, paramString1, paramString2, paramIPrePullListener));
   }
   
-  public void prePullAppinfoByLink(String paramString, int paramInt, MiniAppPrePullManager.IPrePullListener paramIPrePullListener)
+  public void prePullAppinfoByLink(String paramString, int paramInt, boolean paramBoolean, MiniAppPrePullManager.IPrePullListener paramIPrePullListener)
   {
     if (!enablePrePull) {}
     Object localObject;
@@ -138,6 +138,7 @@ public class MiniAppPrePullManager
         paramIPrePullListener = new Bundle();
         paramIPrePullListener.putString("miniapp_preload_link", paramString);
         paramIPrePullListener.putInt("miniapp_preload_link_type", paramInt);
+        paramIPrePullListener.putBoolean("miniapp_repload_with_package_and_cache_preload", paramBoolean);
         QIPCClientHelper.getInstance().getClient().callServer("QzoneIPCModule", "action_pre_pull_mini_app", paramIPrePullListener);
         return;
       }
@@ -188,7 +189,7 @@ public class MiniAppPrePullManager
           str = paramString;
           i = paramInt;
         }
-        MiniAppCmdUtil.getInstance().getAppInfoByLink(str, i, new MiniAppPrePullManager.3(this, str, paramIPrePullListener));
+        MiniAppCmdUtil.getInstance().getAppInfoByLink(str, i, new MiniAppPrePullManager.3(this, str, paramBoolean, paramIPrePullListener));
       }
       QLog.d("MiniAppPrePullManager", 1, "prePullAppinfoByLink, link = " + (String)localObject + ",linkType = " + i);
       paramString = getPrePullAppInfoWrapperByLink((String)localObject);
@@ -212,26 +213,26 @@ public class MiniAppPrePullManager
     }
   }
   
-  public void prePullAppinfoByLink(String paramString, MiniAppPrePullManager.IPrePullListener paramIPrePullListener)
+  public void prePullAppinfoByLink(String paramString, boolean paramBoolean, MiniAppPrePullManager.IPrePullListener paramIPrePullListener)
   {
     if ((paramString != null) && (paramString.startsWith("mqqapi://miniapp/"))) {
-      prePullAppinfoByLink(paramString, 2, paramIPrePullListener);
+      prePullAppinfoByLink(paramString, 2, paramBoolean, paramIPrePullListener);
     }
     do
     {
       return;
       if ((paramString != null) && (paramString.contains("fakeUrl")))
       {
-        prePullAppinfoByLink(paramString, 0, paramIPrePullListener);
+        prePullAppinfoByLink(paramString, 0, paramBoolean, paramIPrePullListener);
         return;
       }
     } while (paramString == null);
-    prePullAppinfoByLink(paramString, 1, paramIPrePullListener);
+    prePullAppinfoByLink(paramString, 1, paramBoolean, paramIPrePullListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppPrePullManager
  * JD-Core Version:    0.7.0.1
  */

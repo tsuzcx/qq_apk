@@ -1,44 +1,48 @@
-import com.tencent.biz.troop.VideoCombineHelper.2;
-import com.tencent.qphone.base.util.QLog;
-
 public class wyu
-  extends wzs
 {
-  public wyu(VideoCombineHelper.2 param2)
-  {
-    super(param2.this$0);
-  }
+  private static volatile wyu jdField_a_of_type_Wyu;
+  private wyv jdField_a_of_type_Wyv;
   
-  public void a(wzr paramwzr)
+  public static wyu a()
   {
-    if ((paramwzr instanceof wzm)) {
-      this.a.jdField_a_of_type_Wzb.a("", false, "download failed! msg = " + paramwzr.d);
-    }
-    do
+    if (jdField_a_of_type_Wyu == null) {}
+    try
     {
-      return;
-      if ((paramwzr instanceof wze))
-      {
-        this.a.jdField_a_of_type_Wzb.a("", false, "combine failed! msg = " + paramwzr.d);
-        return;
+      if (jdField_a_of_type_Wyu == null) {
+        jdField_a_of_type_Wyu = new wyu();
       }
-    } while (!(paramwzr instanceof wzp));
-    this.a.jdField_a_of_type_Wzb.a("", false, "sending failed! msg = " + paramwzr.d);
+      return jdField_a_of_type_Wyu;
+    }
+    finally {}
   }
   
-  public void b(wzr paramwzr)
+  public void a()
   {
-    if ((paramwzr instanceof wzp))
-    {
-      paramwzr = paramwzr.a();
-      this.a.jdField_a_of_type_Wzb.a(paramwzr.e, true, "seding success");
-      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+    this.jdField_a_of_type_Wyv = null;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Wyv != null) {
+      this.jdField_a_of_type_Wyv.a(paramString1, paramString2);
+    }
+  }
+  
+  public void a(wyv paramwyv)
+  {
+    this.jdField_a_of_type_Wyv = paramwyv;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Wyv != null) {
+      this.jdField_a_of_type_Wyv.ac_();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wyu
  * JD-Core Version:    0.7.0.1
  */

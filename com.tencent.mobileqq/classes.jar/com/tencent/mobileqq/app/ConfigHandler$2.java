@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app;
 
-import ajud;
-import bbev;
+import allq;
+import bddq;
 
 public class ConfigHandler$2
   implements Runnable
 {
-  public ConfigHandler$2(ajud paramajud) {}
+  public ConfigHandler$2(allq paramallq) {}
   
   public void run()
   {
-    bbev.a().a(this.this$0.app.getApplication());
+    bddq.a().a(this.this$0.app.getApplication());
   }
 }
 

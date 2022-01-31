@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import axqv;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import ors;
 
 class Conversation$21
   implements Runnable
@@ -11,30 +10,12 @@ class Conversation$21
   
   public void run()
   {
-    int i = axqv.a();
-    try
-    {
-      MqqHandler localMqqHandler = this.this$0.a;
-      if ((i >= 0) && (localMqqHandler != null))
-      {
-        localMqqHandler.removeMessages(1134061);
-        localMqqHandler.sendEmptyMessageDelayed(1134061, i * 1000L);
-      }
-      return;
-    }
-    catch (NullPointerException localNullPointerException)
-    {
-      for (;;)
-      {
-        QLog.e("Q.recent", 1, localNullPointerException, new Object[0]);
-        Object localObject = null;
-      }
-    }
+    ors.a(Conversation.a(this.this$0).getMeasuredHeight(), Conversation.a(this.this$0).getResources());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.21
  * JD-Core Version:    0.7.0.1
  */

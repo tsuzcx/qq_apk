@@ -1,69 +1,65 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 class ahmu
-  implements URLDrawable.URLDrawableListener
+  implements Comparator<ahmw>
 {
-  ahmu(ahmt paramahmt, ahmp paramahmp, ahmq paramahmq) {}
+  ahmu(ahmt paramahmt) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public int a(ahmw paramahmw1, ahmw paramahmw2)
   {
-    QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable load failed.");
-    paramURLDrawable = null;
-    if (paramThrowable != null) {
-      paramURLDrawable = paramThrowable.getMessage();
-    }
-    try
+    if ((paramahmw1 == null) && (paramahmw2 == null)) {}
+    int j;
+    int k;
+    do
     {
-      if (this.jdField_a_of_type_Ahmp != null) {
-        bhku.a().a(2741, this.jdField_a_of_type_Ahmp.c, 100, "qboss load local photo fail throwable = " + paramURLDrawable + " url = " + this.jdField_a_of_type_Ahmq.a + " filePath = " + this.jdField_a_of_type_Ahmq.c);
-      }
-      this.jdField_a_of_type_Ahmt.e();
-      return;
-    }
-    catch (Exception paramURLDrawable)
-    {
-      paramURLDrawable.printStackTrace();
-      QLog.e("QbossADBannerManager", 1, "onLoadFailed Exception");
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable load success.");
-    try
-    {
-      if ((this.jdField_a_of_type_Ahmt.b != null) && (this.jdField_a_of_type_Ahmt.a != null) && (paramURLDrawable != null))
+      do
       {
-        this.jdField_a_of_type_Ahmt.b.setVisibility(0);
-        this.jdField_a_of_type_Ahmt.a.setImageDrawable(paramURLDrawable);
-        ahmt.a(this.jdField_a_of_type_Ahmt, this.jdField_a_of_type_Ahmp);
-        this.jdField_a_of_type_Ahmt.a(this.jdField_a_of_type_Ahmp);
-        return;
+        return 0;
+        if ((paramahmw1 == null) && (paramahmw2 != null)) {
+          return -1;
+        }
+        if ((paramahmw1 != null) && (paramahmw2 == null)) {
+          return 1;
+        }
+        paramahmw1 = paramahmw1.b;
+        paramahmw2 = paramahmw2.b;
+      } while ((paramahmw1 == null) && (paramahmw2 == null));
+      if ((paramahmw1 == null) && (paramahmw2 != null)) {
+        return -1;
       }
-      if (this.jdField_a_of_type_Ahmt.b != null)
+      if ((paramahmw1 != null) && (paramahmw2 == null)) {
+        return 1;
+      }
+      j = paramahmw1.length();
+      k = paramahmw2.length();
+      int m = Math.min(j, k);
+      int i = 0;
+      while (i < m)
       {
-        this.jdField_a_of_type_Ahmt.b.setVisibility(8);
-        return;
+        char c1 = paramahmw1.charAt(i);
+        char c2 = paramahmw2.charAt(i);
+        if (c1 != c2)
+        {
+          paramahmw1 = ChnToSpell.a(c1);
+          paramahmw2 = ChnToSpell.a(c2);
+          if (paramahmw1.jdField_a_of_type_Int == paramahmw2.jdField_a_of_type_Int) {
+            return paramahmw1.jdField_a_of_type_JavaLangString.compareTo(paramahmw2.jdField_a_of_type_JavaLangString);
+          }
+          return paramahmw1.jdField_a_of_type_Int - paramahmw2.jdField_a_of_type_Int;
+        }
+        i += 1;
       }
-    }
-    catch (Exception paramURLDrawable)
-    {
-      paramURLDrawable.printStackTrace();
-      QLog.e("QbossADBannerManager", 1, "onLoadSuccessed Exception");
-    }
+      if (j < k) {
+        return -1;
+      }
+    } while (j <= k);
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahmu
  * JD-Core Version:    0.7.0.1
  */

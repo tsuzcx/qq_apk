@@ -1,28 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8.1.1;
 
-public final class anim
-  implements Parcelable.Creator
+public class anim
+  extends anjb
 {
-  public IPSiteModel.ComicRich a(Parcel paramParcel)
-  {
-    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
-    localComicRich.extCover = paramParcel.readString();
-    localComicRich.extName = paramParcel.readString();
-    localComicRich.extTitle = paramParcel.readString();
-    localComicRich.extUrl = paramParcel.readString();
-    return localComicRich;
-  }
+  public anim(ArkAiDictUpdateMgr.8 param8) {}
   
-  public IPSiteModel.ComicRich[] a(int paramInt)
+  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte)
   {
-    return new IPSiteModel.ComicRich[paramInt];
+    ThreadManager.post(new ArkAiDictUpdateMgr.8.1.1(this, paramArrayOfByte, paramBoolean), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anim
  * JD-Core Version:    0.7.0.1
  */

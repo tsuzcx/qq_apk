@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acwl;
-import adjv;
-import adjx;
+import aenv;
+import afcf;
+import afch;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -18,7 +18,7 @@ import com.tencent.widget.immersive.SystemBarCompact;
 public class IntimateInfoFragment
   extends PublicBaseFragment
 {
-  private adjv a;
+  private afcf a;
   
   public void a()
   {
@@ -54,12 +54,12 @@ public class IntimateInfoFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = getActivity().getIntent().getStringExtra("FORWARD_PEER_UIN");
-    this.a = adjx.a(getActivity().app, getActivity(), getActivity(), paramLayoutInflater);
+    this.a = afch.a(getActivity().app, getActivity(), getActivity(), paramLayoutInflater);
     if ((this.a == null) || (this.a.a() == null)) {
       return null;
     }
-    if ((this.a instanceof acwl)) {
-      ((acwl)this.a).a(2);
+    if ((this.a instanceof aenv)) {
+      ((aenv)this.a).a(2);
     }
     return this.a.a();
   }
@@ -67,14 +67,14 @@ public class IntimateInfoFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.a.i();
+    this.a.j();
   }
   
   public void onPause()
   {
     super.onPause();
-    if ((this.a instanceof acwl)) {
-      ((acwl)this.a).g();
+    if ((this.a instanceof aenv)) {
+      ((aenv)this.a).h();
     }
   }
   
@@ -83,9 +83,9 @@ public class IntimateInfoFragment
     super.onResume();
     this.a.b(true);
     this.a.d();
-    this.a.o();
-    if ((this.a instanceof acwl)) {
-      ((acwl)this.a).h();
+    this.a.p();
+    if ((this.a instanceof aenv)) {
+      ((aenv)this.a).i();
     }
   }
   
@@ -99,7 +99,7 @@ public class IntimateInfoFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoFragment
  * JD-Core Version:    0.7.0.1
  */

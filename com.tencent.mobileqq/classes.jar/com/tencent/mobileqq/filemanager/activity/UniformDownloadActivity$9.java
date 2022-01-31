@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity;
 
-import bdle;
+import bfkb;
 
 class UniformDownloadActivity$9
   implements Runnable
@@ -9,12 +9,12 @@ class UniformDownloadActivity$9
   
   public void run()
   {
-    bdle.a().b(UniformDownloadActivity.a(this.this$0));
+    bfkb.a().b(UniformDownloadActivity.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.9
  * JD-Core Version:    0.7.0.1
  */

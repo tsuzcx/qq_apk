@@ -18,11 +18,11 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aywm;
+import baul;
 import com.tencent.image.URLDrawable;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletPicHelper;
-import vzl;
+import xod;
 
 class EmojiFragment$TempListItem
   extends FrameLayout
@@ -46,21 +46,21 @@ class EmojiFragment$TempListItem
     paramEmojiFragment = new RelativeLayout(paramContext);
     this.mRootLayout.addView(paramEmojiFragment);
     Object localObject = (LinearLayout.LayoutParams)paramEmojiFragment.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).width = vzl.a(paramContext, 66.0F);
-    ((LinearLayout.LayoutParams)localObject).height = vzl.a(paramContext, 66.0F);
+    ((LinearLayout.LayoutParams)localObject).width = xod.a(paramContext, 66.0F);
+    ((LinearLayout.LayoutParams)localObject).height = xod.a(paramContext, 66.0F);
     ((LinearLayout.LayoutParams)localObject).gravity = 17;
     this.mCornerImageView = new ImageView(paramContext);
     paramEmojiFragment.addView(this.mCornerImageView);
-    this.mCornerImageView.getLayoutParams().width = vzl.a(paramContext, 66.0F);
-    this.mCornerImageView.getLayoutParams().height = vzl.a(paramContext, 66.0F);
+    this.mCornerImageView.getLayoutParams().width = xod.a(paramContext, 66.0F);
+    this.mCornerImageView.getLayoutParams().height = xod.a(paramContext, 66.0F);
     this.mCornerImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.mCornerImageView.setImageResource(2130842762);
+    this.mCornerImageView.setImageResource(2130842946);
     this.mCornerImageView.setVisibility(8);
     this.mLoadingView = new View(paramContext);
     paramEmojiFragment.addView(this.mLoadingView);
     localObject = (RelativeLayout.LayoutParams)this.mLoadingView.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).width = vzl.a(paramContext, 40.0F);
-    ((RelativeLayout.LayoutParams)localObject).height = vzl.a(paramContext, 40.0F);
+    ((RelativeLayout.LayoutParams)localObject).width = xod.a(paramContext, 40.0F);
+    ((RelativeLayout.LayoutParams)localObject).height = xod.a(paramContext, 40.0F);
     ((RelativeLayout.LayoutParams)localObject).addRule(13, -1);
     this.mImageView = new ImageView(paramContext);
     paramEmojiFragment.addView(this.mImageView);
@@ -77,7 +77,7 @@ class EmojiFragment$TempListItem
     paramEmojiFragment.width = -2;
     paramEmojiFragment.height = -2;
     paramEmojiFragment.gravity = 1;
-    paramEmojiFragment.topMargin = vzl.a(paramContext, 6.0F);
+    paramEmojiFragment.topMargin = xod.a(paramContext, 6.0F);
   }
   
   public void setData(EmojiFragment.TemplateInfo paramTemplateInfo)
@@ -95,12 +95,12 @@ class EmojiFragment$TempListItem
       if (QLog.isColorLevel()) {
         QLog.i("EmojiFragment", 2, "模板url: " + (String)localObject1);
       }
-      Object localObject2 = getResources().getDrawable(2130842856);
+      Object localObject2 = getResources().getDrawable(2130843040);
       this.mLoadingView.setBackgroundDrawable((Drawable)localObject2);
       ((Animatable)localObject2).start();
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("qwallet_config_md5", paramTemplateInfo.md5);
-      localObject1 = QWalletPicHelper.getNetDrawableForQWallet((String)localObject1, aywm.a, aywm.a, (Bundle)localObject2);
+      localObject1 = QWalletPicHelper.getNetDrawableForQWallet((String)localObject1, baul.a, baul.a, (Bundle)localObject2);
       this.mImageView.setImageDrawable((Drawable)localObject1);
       if (localObject1 == null) {
         break label252;
@@ -127,14 +127,14 @@ class EmojiFragment$TempListItem
       break;
       label252:
       this.mImageView.setImageDrawable(null);
-      this.mLoadingView.setBackgroundDrawable(getResources().getDrawable(2130842933));
+      this.mLoadingView.setBackgroundDrawable(getResources().getDrawable(2130843117));
       this.mCornerImageView.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.EmojiFragment.TempListItem
  * JD-Core Version:    0.7.0.1
  */

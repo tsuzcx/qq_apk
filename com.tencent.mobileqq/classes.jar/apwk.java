@@ -1,130 +1,91 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-class apwk
-  implements apwm
+public class apwk
 {
-  apwk(apwj paramapwj) {}
+  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[1];
+  private Map<String, Integer> b = new HashMap();
+  private Map<String, List<StructMsg.ButtonInfo>> c = new HashMap();
   
-  public void a(int paramInt, Bundle paramBundle)
+  public int a(String paramString)
   {
-    boolean bool = this.a.c();
-    QLog.i(apwj.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadStart. start:" + bool + "progress:" + paramInt);
-    if (bool) {}
-    for (;;)
+    synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
-      return;
-      this.a.a(true);
-      Object localObject = apwj.a(this.a);
-      if (paramBundle != null) {
-        paramBundle.putBundle("_CB_USERDATA", apwj.a(this.a));
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      if ((!TextUtils.isEmpty(paramString)) && (this.b.containsKey(paramString)))
       {
-        apwm localapwm = (apwm)((Iterator)localObject).next();
-        if (localapwm != null) {
-          localapwm.a(paramInt, paramBundle);
+        int i = ((Integer)this.b.get(paramString)).intValue();
+        return i;
+      }
+      return -1;
+    }
+  }
+  
+  public long a(String paramString)
+  {
+    long l2 = -1L;
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    long l1 = l2;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        l1 = l2;
+        if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+          l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
         }
       }
+      return l1;
     }
+    finally {}
   }
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public List<StructMsg.ButtonInfo> a(String paramString)
   {
-    QLog.i(apwj.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errcode:" + paramInt + "errStr:" + paramString);
-    if ((apwj.b(this.a) < 1) && (1 == apwj.a(this.a)))
+    synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
-      QLog.i(apwj.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadFailed. errorRetry");
-      apwj.c(this.a);
-      apwj.a(this.a, paramInt, paramString, paramBundle);
-    }
-    for (;;)
-    {
-      return;
-      if (paramBundle != null) {
-        paramBundle.putBundle("_CB_USERDATA", apwj.a(this.a));
-      }
-      Iterator localIterator = apwj.a(this.a).iterator();
-      while (localIterator.hasNext())
+      if (this.c.containsKey(paramString))
       {
-        apwm localapwm = (apwm)localIterator.next();
-        if (localapwm != null) {
-          localapwm.a(paramInt, paramString, paramBundle);
+        paramString = (List)this.c.get(paramString);
+        return paramString;
+      }
+      return null;
+    }
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+        return;
+      }
+    }
+  }
+  
+  public void a(String paramString, List<StructMsg.ButtonInfo> paramList, int paramInt, long paramLong)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      {
+        if (this.c.containsKey(paramString)) {
+          this.c.remove(paramString);
         }
-      }
-    }
-  }
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
-  {
-    QLog.i(apwj.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadSucess. filePath:" + paramString);
-    paramBundle = new Bundle();
-    paramBundle.putInt("_CB_SID", apwj.a(this.a));
-    paramBundle.putString("_CB_URL", apwj.a(this.a));
-    paramBundle.putBundle("_CB_USERDATA", apwj.a(this.a));
-    Iterator localIterator = apwj.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      apwm localapwm = (apwm)localIterator.next();
-      if (localapwm != null) {
-        localapwm.a(paramString, paramLong, paramBundle);
-      }
-    }
-  }
-  
-  public void b(int paramInt, Bundle paramBundle)
-  {
-    if (paramBundle != null) {
-      paramBundle.putBundle("_CB_USERDATA", apwj.a(this.a));
-    }
-    Iterator localIterator = apwj.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      apwm localapwm = (apwm)localIterator.next();
-      if (localapwm != null) {
-        localapwm.b(paramInt, paramBundle);
-      }
-    }
-  }
-  
-  public void c(int paramInt, Bundle paramBundle)
-  {
-    QLog.i(apwj.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadPause. progress:" + paramInt);
-    if (paramBundle != null) {
-      paramBundle.putBundle("_CB_USERDATA", apwj.a(this.a));
-    }
-    Iterator localIterator = apwj.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      apwm localapwm = (apwm)localIterator.next();
-      if (localapwm != null) {
-        localapwm.c(paramInt, paramBundle);
-      }
-    }
-  }
-  
-  public void d(int paramInt, Bundle paramBundle)
-  {
-    QLog.i(apwj.jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.a.jdField_a_of_type_Long + "]. onDownloadResume. progress:" + paramInt);
-    if (paramBundle != null) {
-      paramBundle.putBundle("_CB_USERDATA", apwj.a(this.a));
-    }
-    Iterator localIterator = apwj.a(this.a).iterator();
-    while (localIterator.hasNext())
-    {
-      apwm localapwm = (apwm)localIterator.next();
-      if (localapwm != null) {
-        localapwm.d(paramInt, paramBundle);
+        this.c.put(paramString, paramList);
+        this.b.put(paramString, Integer.valueOf(paramInt));
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apwk
  * JD-Core Version:    0.7.0.1
  */

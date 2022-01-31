@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import auko;
+import awbv;
 
 public class ContactBinded
-  extends auko
+  extends awbv
 {
   public boolean isReaded;
   public long timestamp;

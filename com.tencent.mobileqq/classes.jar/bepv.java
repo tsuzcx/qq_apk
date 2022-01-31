@@ -1,69 +1,36 @@
-import android.os.Binder;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class bepv
-  extends Binder
-  implements bepu
+public class bepv
+  implements View.OnTouchListener
 {
-  public bepv()
-  {
-    attachInterface(this, "com.tencent.qqmini.sdk.ipc.MiniCmdCallback");
-  }
+  public bepv(QQToast paramQQToast, Toast paramToast, View.OnTouchListener paramOnTouchListener) {}
   
-  public static bepu a(IBinder paramIBinder)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.qqmini.sdk.ipc.MiniCmdCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof bepu))) {
-      return (bepu)localIInterface;
-    }
-    return new bepw(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    boolean bool = true;
+    if (paramMotionEvent.getAction() == 0)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.qqmini.sdk.ipc.MiniCmdCallback");
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.qqmini.sdk.ipc.MiniCmdCallback");
-    boolean bool;
-    if (paramParcel1.readInt() != 0)
-    {
-      bool = true;
-      if (paramParcel1.readInt() == 0) {
-        break label101;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQToast", 2, "start to cancel toast");
       }
+      this.jdField_a_of_type_AndroidWidgetToast.cancel();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast, true);
+      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
+        bool = this.jdField_a_of_type_AndroidViewView$OnTouchListener.onTouch(paramView, paramMotionEvent);
+      }
+      return bool;
     }
-    label101:
-    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(bool, paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
-      bool = false;
-      break;
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bepv
  * JD-Core Version:    0.7.0.1
  */

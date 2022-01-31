@@ -1,117 +1,64 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class vyl
+  extends uhn
 {
-  public static Long a()
+  public vyl(QQStoryBasicSettingsActivity paramQQStoryBasicSettingsActivity) {}
+  
+  public void b(int paramInt)
   {
-    String str = akuf.b();
-    if (TextUtils.isEmpty(str))
+    QQStoryBasicSettingsActivity.a(this.a);
+    switch (paramInt)
     {
-      ved.b("LocationUtils", "getCityCode() lbsInfo.location.cityCode is empty");
-      return null;
+    default: 
+      return;
+    case 1: 
+    case 1001: 
+      this.a.a(0);
+      return;
+    case 2: 
+      this.a.a(1);
+      return;
+    case 3: 
+      this.a.a(2);
+      return;
     }
-    try
-    {
-      long l = Long.parseLong(str);
-      ved.a("LocationUtils", "getCityCode() lbsInfo.location.cityCode is %d", Long.valueOf(l));
-      return Long.valueOf(l);
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      ved.e("LocationUtils", "getCityCode() cityCode is not number!");
-      axpu.a(vzg.a("LocationUtils getCityCode() error", localNumberFormatException), "LocationUtils getCityCode() error");
-    }
-    return null;
+    QQToast.a(this.a, alpo.a(2131711189), 0).b(this.a.getTitleBarHeight());
   }
   
-  public static ter a(com.tencent.biz.qqstory.takevideo.EditVideoParams paramEditVideoParams)
+  public void b(boolean paramBoolean)
   {
-    ter localter2 = tes.a();
-    ter localter1;
-    int j;
-    int i;
-    if (paramEditVideoParams.d())
-    {
-      localter1 = null;
-      paramEditVideoParams = paramEditVideoParams.a;
-      if ((paramEditVideoParams instanceof EditLocalVideoSource))
-      {
-        paramEditVideoParams = ((EditLocalVideoSource)paramEditVideoParams).a;
-        j = paramEditVideoParams.latitude;
-        i = paramEditVideoParams.longitude;
-      }
+    if (this.a.jdField_a_of_type_Beps != null) {
+      this.a.jdField_a_of_type_Beps.b();
     }
-    for (;;)
+    if (paramBoolean)
     {
-      if ((j != 0) || (i != 0))
+      this.a.jdField_a_of_type_Uhl.a(this.a.b(this.a.jdField_a_of_type_Int));
+      this.a.jdField_a_of_type_Uhl.b(this.a.b(this.a.jdField_a_of_type_Int));
+      if (this.a.jdField_a_of_type_Int == 2) {
+        wta.a("browse_friend_settings", "close", 0, 0, new String[] { "", "", "", "" });
+      }
+      do
       {
-        localter1 = new ter(j, i, 0);
-        ved.a("LocationUtils", "Use LocalMediaInfo Lat/Lng to Request POIList %s", paramEditVideoParams);
-        return localter1;
-        if ((paramEditVideoParams instanceof EditLocalPhotoSource))
+        return;
+        if (this.a.jdField_a_of_type_Int == 0)
         {
-          paramEditVideoParams = ((EditLocalPhotoSource)paramEditVideoParams).a;
-          j = paramEditVideoParams.latitude;
-          i = paramEditVideoParams.longitude;
+          wta.a("browse_friend_settings", "choose_all", 0, 0, new String[] { "", "", "", "" });
+          return;
         }
-      }
-      else
-      {
-        return localter2;
-      }
-      i = 0;
-      j = 0;
-      paramEditVideoParams = localter1;
+      } while (this.a.jdField_a_of_type_Int != 1);
+      wta.a("browse_friend_settings", "choose_wifi", 0, 0, new String[] { "", "", "", "" });
+      return;
     }
-  }
-  
-  public static ter a(dov.com.tencent.biz.qqstory.takevideo.EditVideoParams paramEditVideoParams)
-  {
-    ter localter2 = tes.a();
-    ter localter1;
-    int j;
-    int i;
-    if (paramEditVideoParams.d())
-    {
-      localter1 = null;
-      paramEditVideoParams = paramEditVideoParams.a;
-      if ((paramEditVideoParams instanceof EditLocalVideoSource))
-      {
-        paramEditVideoParams = ((EditLocalVideoSource)paramEditVideoParams).a;
-        j = paramEditVideoParams.latitude;
-        i = paramEditVideoParams.longitude;
-      }
-    }
-    for (;;)
-    {
-      if ((j != 0) || (i != 0))
-      {
-        localter1 = new ter(j, i, 0);
-        ved.a("LocationUtils", "Use LocalMediaInfo Lat/Lng to Request POIList %s", paramEditVideoParams);
-        return localter1;
-        if ((paramEditVideoParams instanceof EditLocalPhotoSource))
-        {
-          paramEditVideoParams = ((EditLocalPhotoSource)paramEditVideoParams).a;
-          j = paramEditVideoParams.latitude;
-          i = paramEditVideoParams.longitude;
-        }
-      }
-      else
-      {
-        return localter2;
-      }
-      i = 0;
-      j = 0;
-      paramEditVideoParams = localter1;
-    }
+    QQToast.a(this.a, 2131695132, 0).b(this.a.getTitleBarHeight());
+    this.a.a(this.a.b);
+    this.a.jdField_a_of_type_Uhk.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyl
  * JD-Core Version:    0.7.0.1
  */

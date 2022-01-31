@@ -1,33 +1,28 @@
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
-import com.tencent.mobileqq.search.model.BusinessGroupWord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 
-public class awlk
-  extends akiy
+class awlk
+  implements DialogInterface.OnClickListener
 {
-  public awlk(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
+  awlk(awlh paramawlh, View paramView, PersonalityLabelInfo paramPersonalityLabelInfo) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "unify handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-  }
-  
-  public void a(int paramInt, List<BusinessGroupWord> paramList)
-  {
-    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
-    HotWordsForSubBussFragment.a(this.a, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "unify handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
+    paramDialogInterface = (awlg)this.jdField_a_of_type_AndroidViewView.getTag(2131365063);
+    if (paramDialogInterface != null) {
+      this.jdField_a_of_type_Awlh.a.a(paramDialogInterface.e, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awlk
  * JD-Core Version:    0.7.0.1
  */

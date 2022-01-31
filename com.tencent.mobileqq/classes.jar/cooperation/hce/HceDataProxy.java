@@ -1,6 +1,6 @@
 package cooperation.hce;
 
-import akuf;
+import amkv;
 
 public class HceDataProxy
 {
@@ -11,12 +11,12 @@ public class HceDataProxy
     if (paramGetLocationListener == null) {
       return;
     }
-    akuf.a(new HceDataProxy.1(paramString, paramGetLocationListener));
+    amkv.a(new HceDataProxy.1(paramString, paramGetLocationListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.hce.HceDataProxy
  * JD-Core Version:    0.7.0.1
  */

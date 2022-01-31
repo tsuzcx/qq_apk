@@ -1,18 +1,15 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import java.util.List;
 
-public class aobx
+public abstract interface aobx
 {
-  public ImageView a;
-  public URLDrawable a;
-  public URLImageView a;
+  public abstract void a(long paramLong, String paramString, int paramInt, List<DanmuItemBean> paramList);
   
-  public aobx(aobw paramaobw) {}
+  public abstract void a(long paramLong, String paramString, DanmuItemBean paramDanmuItemBean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aobx
  * JD-Core Version:    0.7.0.1
  */

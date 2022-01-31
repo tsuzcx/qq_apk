@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.activity.qwallet.emoj.HandRecognizer.OnPreviewFrameHandlerListener;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.ReferenceQueue;
+import java.lang.ref.WeakReference;
 
-class biho
-  implements HandRecognizer.OnPreviewFrameHandlerListener
+class biho<K, V>
+  extends WeakReference<V>
 {
-  biho(bihj parambihj) {}
+  K a;
   
-  public void getHandRecognizeResult(int paramInt)
+  public biho(K paramK, V paramV, ReferenceQueue<V> paramReferenceQueue)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "onPreviewFrame: getHandRecognizeResult=" + paramInt);
-    }
-    if (paramInt >= this.a.g)
-    {
-      bihj.a(this.a);
-      if (bihj.a(this.a)) {
-        this.a.ad();
-      }
-    }
+    super(paramV, paramReferenceQueue);
+    this.a = paramK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biho
  * JD-Core Version:    0.7.0.1
  */

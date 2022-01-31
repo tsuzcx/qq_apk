@@ -418,41 +418,20 @@ public abstract class AppRuntime
     return null;
   }
   
-  /* Error */
   public AppRuntime.Status getOnlineStatus()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
-    //   6: ifnull +15 -> 21
-    //   9: aload_0
-    //   10: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
-    //   13: invokevirtual 456	mqq/app/AppRuntime:getOnlineStatus	()Lmqq/app/AppRuntime$Status;
-    //   16: astore_1
-    //   17: aload_0
-    //   18: monitorexit
-    //   19: aload_1
-    //   20: areturn
-    //   21: aload_0
-    //   22: getfield 106	mqq/app/AppRuntime:onlineStatus	Lmqq/app/AppRuntime$Status;
-    //   25: astore_1
-    //   26: goto -9 -> 17
-    //   29: astore_1
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload_1
-    //   33: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	34	0	this	AppRuntime
-    //   16	10	1	localStatus	AppRuntime.Status
-    //   29	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	17	29	finally
-    //   21	26	29	finally
+    if (this.parentRuntime != null) {
+      return this.parentRuntime.getOnlineStatus();
+    }
+    return this.onlineStatus;
+  }
+  
+  public AppRuntime.Status getOnlineStatusNonSync()
+  {
+    if (this.parentRuntime != null) {
+      return this.parentRuntime.getOnlineStatusNonSync();
+    }
+    return this.onlineStatus;
   }
   
   /* Error */
@@ -466,7 +445,7 @@ public abstract class AppRuntime
     //   6: ifnull +15 -> 21
     //   9: aload_0
     //   10: getfield 280	mqq/app/AppRuntime:parentRuntime	Lmqq/app/AppRuntime;
-    //   13: invokevirtual 459	mqq/app/AppRuntime:getPowerConnect	()I
+    //   13: invokevirtual 462	mqq/app/AppRuntime:getPowerConnect	()I
     //   16: istore_1
     //   17: aload_0
     //   18: monitorexit
@@ -1079,15 +1058,10 @@ public abstract class AppRuntime
   
   public void setOnlineStatus(AppRuntime.Status paramStatus)
   {
-    try
-    {
-      if (this.parentRuntime != null) {
-        this.parentRuntime.setOnlineStatus(paramStatus);
-      }
-      this.onlineStatus = paramStatus;
-      return;
+    if (this.parentRuntime != null) {
+      this.parentRuntime.setOnlineStatus(paramStatus);
     }
-    finally {}
+    this.onlineStatus = paramStatus;
   }
   
   public void setPowerConnect(int paramInt)

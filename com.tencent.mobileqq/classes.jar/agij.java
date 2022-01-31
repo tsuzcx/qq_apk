@@ -1,20 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class agij
-  implements View.OnClickListener
 {
-  public agij(BaseActivityView paramBaseActivityView) {}
+  public String a;
   
-  public void onClick(View paramView)
+  public agij(String paramString)
   {
-    this.a.f();
+    this.a = paramString;
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agij
  * JD-Core Version:    0.7.0.1
  */

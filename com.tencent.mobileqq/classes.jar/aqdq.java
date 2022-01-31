@@ -1,21 +1,29 @@
-import android.view.MotionEvent;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.forward.ForwardPhotoOption.3;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class aqdq
-  implements View.OnTouchListener
+final class aqdq
+  implements View.OnClickListener
 {
-  public aqdq(ForwardPhotoOption.3 param3) {}
+  aqdq(Context paramContext, Dialog paramDialog) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", "https://ti.qq.com/extend-friend/?_wv=536870912");
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    azmj.b(null, "dc00898", "", "", "kuolie", "0X80097DE", 0, 0, "", "", "", "");
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdq
  * JD-Core Version:    0.7.0.1
  */

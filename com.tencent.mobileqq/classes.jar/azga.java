@@ -1,103 +1,77 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import org.json.JSONObject;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class azga
-  extends azec
 {
-  Context a;
-  protected boolean c;
-  String d;
-  String e;
-  String f;
-  String g;
-  String h = "0";
-  protected String i;
+  public static final List<String> a = Arrays.asList(new String[] { "VIVO X7", "VIVO XPLAY5A", "VIVO X6SPLUS", "VIVO X6S A", "REDMI NOTE 3", "REDMI NOTE 4X", "MI 5", "MI-4C", "CAM-AL00", "MLA-AL10", "CAZ-AL10", "VNS-AL00" });
   
-  public azga(BaseActivity paramBaseActivity, Bundle paramBundle)
+  public static boolean a()
   {
-    super(paramBaseActivity, paramBundle);
-    this.jdField_a_of_type_AndroidContentContext = paramBaseActivity.getApplicationContext();
-  }
-  
-  protected void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    this.d = this.jdField_a_of_type_OrgJsonJSONObject.optString("bid");
-    this.e = this.jdField_a_of_type_OrgJsonJSONObject.optString("pid");
-    this.f = this.jdField_a_of_type_OrgJsonJSONObject.optString("cid");
-    this.g = this.jdField_a_of_type_OrgJsonJSONObject.optString("rid");
-    if ("detail".equals(this.jdField_a_of_type_OrgJsonJSONObject.optString("from"))) {}
-    for (paramBundle = "0";; paramBundle = "1")
+    boolean bool2 = false;
+    String str1 = Build.MANUFACTURER + ";" + Build.MODEL;
+    String[] arrayOfString = "Meizu;PRO 6 Plus|samsung;SM-G9250|samsung;SM-G955FD|HUAWEI;CAM-TL00|OPPO;OPPO A37m|OPPO;OPPO A59s|samsung;SM-G9280|samsung;SM-G9200|samsung;SM-G955F|Meizu;Meizu S6".split("\\|");
+    boolean bool1 = bool2;
+    int j;
+    int i;
+    if (arrayOfString != null)
     {
-      this.h = paramBundle;
-      this.i = this.jdField_a_of_type_OrgJsonJSONObject.optString("extparam");
-      this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime().getAccount() + "-" + this.d + "-" + this.e + "-" + this.f + "-" + this.g);
-      bajf.a("two_comment", "exp", this.d, this.h, "", "");
-      return;
-    }
-  }
-  
-  protected void a(String paramString)
-  {
-    if (this.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.jdField_c_of_type_Boolean = true;
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("pid", this.e);
-      localJSONObject.put("cid", this.f);
-      localJSONObject.put("bid", Long.parseLong(this.d));
-      localJSONObject.put("target_rid", this.g);
-      localJSONObject.put("comment", TroopBarPublishUtils.a(paramString, null, null));
-      localJSONObject.put("version", "8.3.0.4480");
-      localJSONObject.put("extparam", this.i);
-      paramString = new NewIntent(this.jdField_a_of_type_AndroidContentContext, mxe.class);
-      paramString.putExtra("cmd", "MQUpdateSvc_com_qq_xiaoqu.web.recomment");
-      WebSsoBody.WebSsoRequestBody localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
-      localWebSsoRequestBody.type.set(0);
-      localWebSsoRequestBody.data.set(localJSONObject.toString());
-      paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
-      this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      paramString.setObserver(new azgb(this));
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime().startServlet(paramString);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      bcql.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 1, 2131696569, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-      this.jdField_c_of_type_Boolean = false;
-    }
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    if ((this.jdField_a_of_type_AndroidWidgetEditText != null) && (this.jdField_a_of_type_AndroidWidgetEditText.length() > 0)) {}
-    for (String str = "0";; str = "1")
-    {
-      bajf.a("two_comment", "un", this.d, str, "", "");
-      if (!this.jdField_a_of_type_Boolean) {
-        a(this.jdField_c_of_type_JavaLangString, null, false);
+      bool1 = bool2;
+      if (arrayOfString.length > 0)
+      {
+        j = arrayOfString.length;
+        i = 0;
       }
-      return;
     }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < j)
+      {
+        String str2 = arrayOfString[i];
+        if ((str2 != null) && (str2.equals(str1)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("MediaCodecUtil", 2, "isFollowBlackPhone true: " + str1);
+          }
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public static boolean b()
+  {
+    int i = Build.VERSION.SDK_INT;
+    if ((i == 22) || (i == 23) || (i == 24))
+    {
+      String str = Build.MODEL.toUpperCase();
+      Iterator localIterator = a.iterator();
+      while (localIterator.hasNext()) {
+        if (str.contains((String)localIterator.next())) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  public static boolean c()
+  {
+    return (Build.MANUFACTURER.toLowerCase().contains("samsung")) && (Build.VERSION.SDK_INT == 18);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azga
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ved;
-import vhm;
-import vjc;
+import wsv;
+import wwe;
+import wxu;
 
 public class HWEditLocalVideoPlayer$ConvertIFramesRunnable$1$1
   implements Runnable
 {
-  public HWEditLocalVideoPlayer$ConvertIFramesRunnable$1$1(vjc paramvjc) {}
+  public HWEditLocalVideoPlayer$ConvertIFramesRunnable$1$1(wxu paramwxu) {}
   
   public void run()
   {
     HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0, null);
     if (!HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0))
     {
-      ved.d("Q.qqstory.record.HWEditLocalVideoPlayer", "Convert video finished but player not displayed.");
+      wsv.d("Q.qqstory.record.HWEditLocalVideoPlayer", "Convert video finished but player not displayed.");
       return;
     }
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Vhm.a != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Vhm.a.b() == 3) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.c == this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Int)) {
-      HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0, this.a.jdField_a_of_type_Vje);
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Wwe.a != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Wwe.a.b() == 3) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.c == this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Int)) {
+      HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0, this.a.jdField_a_of_type_Wxw);
     }
     HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0);
     HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0, this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$ConvertIFramesRunnable.this$0.jdField_a_of_type_Int);
@@ -26,7 +26,7 @@ public class HWEditLocalVideoPlayer$ConvertIFramesRunnable$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.ConvertIFramesRunnable.1.1
  * JD-Core Version:    0.7.0.1
  */

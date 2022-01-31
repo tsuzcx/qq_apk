@@ -1,22 +1,64 @@
-public abstract interface acxg
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public abstract class acxg
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4);
+  protected acxh a;
+  protected acxi a;
+  public QQAppInterface a;
+  protected int b = -1;
+  public String b;
   
-  public abstract void ab();
+  public acxg(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
   
-  public abstract void ac();
+  public abstract int a();
   
-  public abstract void c(boolean paramBoolean1, boolean paramBoolean2);
+  public acxi a()
+  {
+    return this.jdField_a_of_type_Acxi;
+  }
   
-  public abstract void f(int paramInt);
+  public abstract acxi a(int paramInt);
   
-  public abstract void g(int paramInt);
+  public Drawable a()
+  {
+    return null;
+  }
   
-  public abstract void h(int paramInt);
+  public abstract void a(int paramInt);
+  
+  public void a(acxh paramacxh)
+  {
+    this.jdField_a_of_type_Acxh = paramacxh;
+  }
+  
+  public abstract void a(acxi paramacxi);
+  
+  public abstract void a(BaseActivity paramBaseActivity);
+  
+  public abstract void a(BaseActivity paramBaseActivity, acxi paramacxi);
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public abstract void b(BaseActivity paramBaseActivity);
+  
+  public void c(acxi paramacxi)
+  {
+    if ((paramacxi == this.jdField_a_of_type_Acxi) && (this.jdField_a_of_type_Acxh != null)) {
+      this.jdField_a_of_type_Acxh.a(paramacxi);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,144 +1,98 @@
-import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
-import com.tencent.mobileqq.data.QQWalletTransferMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
+import java.util.ArrayList;
 
-class adxw
-  implements View.OnClickListener
+public class adxw
+  extends BaseAdapter
 {
-  adxw(adxv paramadxv) {}
+  public adxw(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
   
-  public void onClick(View paramView)
+  public int getCount()
   {
-    if (this.a.a()) {}
-    label138:
-    label159:
-    label194:
-    label595:
-    for (;;)
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = this.a.getLayoutInflater().inflate(2131562734, null);
+    }
+    TextView localTextView1 = (TextView)paramViewGroup.findViewById(2131378294);
+    TextView localTextView2 = (TextView)paramViewGroup.findViewById(2131378293);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131371375);
+    bcru localbcru2 = (bcru)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    Object localObject;
+    if ((this.a.jdField_a_of_type_Bcru != null) && (localbcru2.jdField_a_of_type_Int < this.a.jdField_a_of_type_Bcru.jdField_a_of_type_Int))
     {
-      return;
-      long l = System.currentTimeMillis();
-      if (ahiv.a(this.a.c, l))
+      localObject = this.a.jdField_a_of_type_Bcru;
+      paramView = ((bcru)localObject).jdField_a_of_type_Bcru;
+      if ((paramView == null) || (paramView.jdField_a_of_type_Int < localbcru2.jdField_a_of_type_Int)) {
+        break label310;
+      }
+      if (!localbcru2.b.equals(paramView.b)) {}
+    }
+    label302:
+    label310:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt != 0)
       {
-        this.a.c = l;
-        MessageForQQWalletMsg localMessageForQQWalletMsg = (MessageForQQWalletMsg)((adxy)actj.a(paramView)).a;
-        String str = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-        if (localMessageForQQWalletMsg != null)
+        localTextView2.setVisibility(0);
+        localTextView2.setText(((bcru)localObject).jdField_a_of_type_JavaLangString);
+        localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130850013, 0);
+      }
+      for (;;)
+      {
+        localTextView1.setText(localbcru2.jdField_a_of_type_JavaLangString);
+        if ((localbcru2.jdField_a_of_type_JavaUtilArrayList == null) || (localbcru2.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
+          break label302;
+        }
+        localImageView.setVisibility(0);
+        return paramViewGroup;
+        bcru localbcru1 = paramView.jdField_a_of_type_Bcru;
+        localObject = paramView;
+        paramView = localbcru1;
+        break;
+        localTextView2.setVisibility(4);
+        continue;
+        if ((this.a.jdField_a_of_type_Bcru != null) && (localbcru2.b.equals(this.a.jdField_a_of_type_Bcru.b)))
         {
-          QQWalletTransferMsgElem localQQWalletTransferMsgElem;
-          Object localObject;
-          int i;
-          if (localMessageForQQWalletMsg.mQQWalletTransferMsg != null)
-          {
-            localQQWalletTransferMsgElem = localMessageForQQWalletMsg.mQQWalletTransferMsg.elem;
-            if (localMessageForQQWalletMsg.messageType == 9) {
-              if (localMessageForQQWalletMsg.isSend())
-              {
-                axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.askaio.buyerclick", 0, 0, "", "", "", "");
-                localObject = localMessageForQQWalletMsg.mQQWalletTransferMsg.body;
-                if (localObject == null) {
-                  break label289;
-                }
-                i = ((QQWalletAioBodyReserve)localObject).pfa_type;
-                if (i != 1) {
-                  break label294;
-                }
-                axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.aio.qiukaitong.click", 0, 0, "", "", "", "");
-                if (QLog.isColorLevel()) {
-                  QLog.d(adxv.jdField_a_of_type_JavaLangString, 2, "onClick pfa_type=" + i);
-                }
-              }
-            }
-          }
-          for (;;)
-          {
-            for (;;)
-            {
-              if (localQQWalletTransferMsgElem == null) {
-                break label595;
-              }
-              if (TextUtils.isEmpty(localQQWalletTransferMsgElem.actionsPriority))
-              {
-                ahiv.b(paramView.getContext(), localQQWalletTransferMsgElem.linkUrl);
-                return;
-                axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "friendpay.askaio.payerclick", 0, 0, "", "", "", "");
-                break label138;
-                i = 0;
-                break label159;
-                if (i != 2) {
-                  break label194;
-                }
-                axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.aio.yikaitong.click", 0, 0, "", "", "", "");
-                break label194;
-                axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "transferaccountmsg", "show", 0, 0, "" + localMessageForQQWalletMsg.mQQWalletTransferMsg.templateId, "", "", "");
-                continue;
-              }
-              localObject = localQQWalletTransferMsgElem.actionsPriority.split("\\|");
-              int j = 0;
-              i = 0;
-              while (j < localObject.length)
-              {
-                if (!TextUtils.isEmpty(localObject[j])) {
-                  break label429;
-                }
-                j += 1;
-              }
-              break;
-              try
-              {
-                k = Integer.valueOf(localObject[j]).intValue();
-                if (k == 1)
-                {
-                  if (ahiv.b(paramView.getContext(), localQQWalletTransferMsgElem.linkUrl)) {
-                    break;
-                  }
-                  i = -1;
-                }
-              }
-              catch (Exception localException)
-              {
-                int k;
-                do
-                {
-                  do
-                  {
-                    for (;;)
-                    {
-                      if (QLog.isDevelopLevel()) {
-                        localException.printStackTrace();
-                      }
-                      k = i;
-                      if (QLog.isColorLevel())
-                      {
-                        QLog.d(adxv.jdField_a_of_type_JavaLangString, 2, "QQWalletMsgItemBuilder failed to convert String:" + localObject[j] + " to Interger,", localException);
-                        k = i;
-                      }
-                    }
-                    if (k != 2) {
-                      break;
-                    }
-                  } while (!ahiv.a(paramView.getContext(), localQQWalletTransferMsgElem.jumpUrl));
-                  return;
-                } while ((k != 3) || (!adxv.a(this.a, paramView.getContext(), localQQWalletTransferMsgElem.nativeAndroid, null, str, localMessageForQQWalletMsg, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)));
-                return;
-              }
-            }
-            localQQWalletTransferMsgElem = null;
-          }
+          localTextView2.setVisibility(0);
+          localTextView2.setText("");
+          localTextView2.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130850013, 0);
+        }
+        else
+        {
+          localTextView2.setVisibility(4);
         }
       }
+      localImageView.setVisibility(4);
+      return paramViewGroup;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxw
  * JD-Core Version:    0.7.0.1
  */

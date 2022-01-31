@@ -1,33 +1,18 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.view.View.OnClickListener;
 
-public class begz
-  implements View.OnFocusChangeListener
+public abstract interface begz
+  extends bebx
 {
-  public begz(Login paramLogin) {}
+  public abstract View a();
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
-  {
-    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
-    {
-      if (true == paramBoolean) {
-        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
-      }
-      if (!paramBoolean) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
-    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     begz
  * JD-Core Version:    0.7.0.1
  */

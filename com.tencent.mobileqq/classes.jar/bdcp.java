@@ -1,14 +1,13 @@
+import android.content.Context;
+import android.view.View;
+
 public abstract interface bdcp
 {
-  public abstract void a();
-  
-  public abstract void a(String paramString, boolean paramBoolean);
-  
-  public abstract void b();
+  public abstract View a(Context paramContext, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdcp
  * JD-Core Version:    0.7.0.1
  */

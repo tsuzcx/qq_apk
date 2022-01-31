@@ -1,9 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
-import aung;
-import ayvx;
-import aywc;
-import blaa;
+import awen;
+import batw;
+import baub;
+import bnlk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -11,11 +11,11 @@ import com.tencent.mobileqq.data.MessageRecord;
 class BaseShortVideoOprerator$ForwardShortVideoTask
   implements Runnable
 {
-  blaa a;
+  bnlk a;
   
-  public BaseShortVideoOprerator$ForwardShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, blaa paramblaa)
+  public BaseShortVideoOprerator$ForwardShortVideoTask(BaseShortVideoOprerator paramBaseShortVideoOprerator, bnlk parambnlk)
   {
-    this.a = paramblaa;
+    this.a = parambnlk;
   }
   
   public void run()
@@ -24,41 +24,41 @@ class BaseShortVideoOprerator$ForwardShortVideoTask
     for (;;)
     {
       return;
-      blaa localblaa = this.a;
+      bnlk localbnlk = this.a;
       Object localObject;
       int i;
-      if (localblaa.k == 3)
+      if (localbnlk.k == 3)
       {
-        localObject = this.this$0.a(localblaa);
+        localObject = this.this$0.a(localbnlk);
         i = 1;
       }
       while (localObject != null)
       {
         this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
         long l = System.currentTimeMillis();
-        aywc localaywc = new aywc();
-        localaywc.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
-        localaywc.c = ((MessageRecord)localObject).frienduin;
-        localaywc.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
-        localaywc.jdField_b_of_type_Int = 20;
-        localaywc.jdField_a_of_type_JavaLangObject = localblaa;
-        localaywc.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
-        localaywc.jdField_a_of_type_Boolean = true;
-        localaywc.e = 0;
-        localaywc.f = localblaa.e;
-        localaywc.i = (localblaa.h + "QQ_&_MoblieQQ_&_QQ" + localblaa.i + "QQ_&_MoblieQQ_&_QQ" + localblaa.j + "QQ_&_MoblieQQ_&_QQ" + localblaa.g);
-        localaywc.jdField_a_of_type_Auoq = this.this$0;
-        localaywc.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-        this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaywc);
+        baub localbaub = new baub();
+        localbaub.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
+        localbaub.c = ((MessageRecord)localObject).frienduin;
+        localbaub.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
+        localbaub.jdField_b_of_type_Int = 20;
+        localbaub.jdField_a_of_type_JavaLangObject = localbnlk;
+        localbaub.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
+        localbaub.jdField_a_of_type_Boolean = true;
+        localbaub.e = 0;
+        localbaub.f = localbnlk.e;
+        localbaub.i = (localbnlk.h + "QQ_&_MoblieQQ_&_QQ" + localbnlk.i + "QQ_&_MoblieQQ_&_QQ" + localbnlk.j + "QQ_&_MoblieQQ_&_QQ" + localbnlk.g);
+        localbaub.jdField_a_of_type_Awfy = this.this$0;
+        localbaub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+        this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localbaub);
         if (i != 0) {
           this.this$0.a((MessageRecord)localObject);
         }
-        aung.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doForwardShortVideo", "cost:" + (System.currentTimeMillis() - l));
-        aung.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doForwardShortVideo.start", "TransferRequest: " + localaywc.toString());
+        awen.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doForwardShortVideo", "cost:" + (System.currentTimeMillis() - l));
+        awen.a(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.jdField_a_of_type_JavaLangString, "doForwardShortVideo.start", "TransferRequest: " + localbaub.toString());
         return;
-        if (localblaa.k == 4)
+        if (localbnlk.k == 4)
         {
-          localObject = (MessageForShortVideo)localblaa.jdField_a_of_type_JavaLangObject;
+          localObject = (MessageForShortVideo)localbnlk.jdField_a_of_type_JavaLangObject;
           i = 0;
         }
         else
@@ -72,7 +72,7 @@ class BaseShortVideoOprerator$ForwardShortVideoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator.ForwardShortVideoTask
  * JD-Core Version:    0.7.0.1
  */

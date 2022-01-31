@@ -2,19 +2,18 @@ package com.tencent.mobileqq.widget;
 
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import bcqo;
 import com.tencent.common.app.BaseApplicationImpl;
 
-public class QQToast$ProtectedToast$1
+class QQToast$ProtectedToast$1
   implements Runnable
 {
-  public QQToast$ProtectedToast$1(bcqo parambcqo) {}
+  QQToast$ProtectedToast$1(QQToast.ProtectedToast paramProtectedToast) {}
   
   public void run()
   {
     this.this$0.cancel();
-    this.this$0.getView().findViewById(2131377515);
-    AnimationUtils.loadAnimation(BaseApplicationImpl.context, 2130772216);
+    this.this$0.getView().findViewById(2131378052);
+    AnimationUtils.loadAnimation(BaseApplicationImpl.context, 2130772231);
   }
 }
 

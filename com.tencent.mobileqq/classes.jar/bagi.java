@@ -1,26 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment.17;
+import android.content.DialogInterface.OnDismissListener;
 
-public class bagi
-  implements DialogInterface.OnClickListener
+class bagi
+  implements DialogInterface.OnDismissListener
 {
-  public bagi(VisitorTroopCardFragment.17 param17) {}
+  bagi(bagh parambagh) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramInt == 1)
-    {
-      this.a.this$0.a.cancel();
-      this.a.this$0.getActivity().finish();
-    }
+    this.a.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bagi
  * JD-Core Version:    0.7.0.1
  */

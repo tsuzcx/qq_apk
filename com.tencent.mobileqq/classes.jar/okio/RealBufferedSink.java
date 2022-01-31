@@ -2,6 +2,7 @@ package okio;
 
 import java.io.EOFException;
 import java.io.OutputStream;
+import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 
 final class RealBufferedSink
@@ -14,7 +15,7 @@ final class RealBufferedSink
   RealBufferedSink(Sink paramSink)
   {
     if (paramSink == null) {
-      throw new IllegalArgumentException("sink == null");
+      throw new NullPointerException("sink == null");
     }
     this.sink = paramSink;
   }
@@ -100,6 +101,11 @@ final class RealBufferedSink
     this.sink.flush();
   }
   
+  public boolean isOpen()
+  {
+    return !this.closed;
+  }
+  
   public OutputStream outputStream()
   {
     return new RealBufferedSink.1(this);
@@ -115,6 +121,16 @@ final class RealBufferedSink
     return "buffer(" + this.sink + ")";
   }
   
+  public int write(ByteBuffer paramByteBuffer)
+  {
+    if (this.closed) {
+      throw new IllegalStateException("closed");
+    }
+    int i = this.buffer.write(paramByteBuffer);
+    emitCompleteSegments();
+    return i;
+  }
+  
   public BufferedSink write(ByteString paramByteString)
   {
     if (this.closed) {
@@ -126,11 +142,8 @@ final class RealBufferedSink
   
   public BufferedSink write(Source paramSource, long paramLong)
   {
-    for (;;)
+    while (paramLong > 0L)
     {
-      if (paramLong <= 0L) {
-        return this;
-      }
       long l = paramSource.read(this.buffer, paramLong);
       if (l == -1L) {
         throw new EOFException();
@@ -138,6 +151,7 @@ final class RealBufferedSink
       paramLong -= l;
       emitCompleteSegments();
     }
+    return this;
   }
   
   public BufferedSink write(byte[] paramArrayOfByte)
@@ -177,11 +191,12 @@ final class RealBufferedSink
     {
       long l2 = paramSource.read(this.buffer, 8192L);
       if (l2 == -1L) {
-        return l1;
+        break;
       }
       l1 += l2;
       emitCompleteSegments();
     }
+    return l1;
   }
   
   public BufferedSink writeByte(int paramInt)
@@ -312,7 +327,7 @@ final class RealBufferedSink
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.RealBufferedSink
  * JD-Core Version:    0.7.0.1
  */

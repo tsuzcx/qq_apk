@@ -1,19 +1,48 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
 public class bhyu
-  extends bdta
+  extends BaseAdapter
+  implements bhyi
 {
-  public void i(String paramString1, String paramString2)
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  
+  public bhyu(View paramView)
   {
-    if ((!TextUtils.isEmpty(paramString2)) && (paramString2.contains("onRenderFrame"))) {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Int = 0;
       return;
     }
-    super.i(paramString1, paramString2);
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return this.jdField_a_of_type_AndroidViewView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhyu
  * JD-Core Version:    0.7.0.1
  */

@@ -8,11 +8,12 @@ import com.tencent.thumbplayer.api.TPOptionalParam;
 import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPTrackInfo;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
+import java.util.List;
 import java.util.Map;
 
 public abstract interface ITPPlayerBase
 {
-  public abstract void addAudioTrackSource(String paramString1, String paramString2);
+  public abstract void addAudioTrackSource(String paramString1, String paramString2, List<TPOptionalParam> paramList);
   
   public abstract void addSubtitleSource(String paramString1, String paramString2, String paramString3);
   
@@ -20,7 +21,7 @@ public abstract interface ITPPlayerBase
   
   public abstract void deselectTrack(int paramInt, long paramLong);
   
-  public abstract int getBufferPercent();
+  public abstract long getBufferedDurationMs();
   
   public abstract long getCurrentPositionMs();
   
@@ -100,13 +101,13 @@ public abstract interface ITPPlayerBase
   
   public abstract void stop();
   
-  public abstract void switchDefinition(ITPMediaAsset paramITPMediaAsset, long paramLong);
+  public abstract void switchDefinition(ITPMediaAsset paramITPMediaAsset, int paramInt, long paramLong);
   
-  public abstract void switchDefinition(String paramString, long paramLong);
+  public abstract void switchDefinition(String paramString, int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.ITPPlayerBase
  * JD-Core Version:    0.7.0.1
  */

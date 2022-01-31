@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class apxq
-  implements bcwm
 {
-  public apxq(QfileEditBottomBar paramQfileEditBottomBar) {}
-  
-  public void a(int paramInt)
-  {
-    QfileEditBottomBar.a(this.a);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<String> a;
+  public JSONObject a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apxq
  * JD-Core Version:    0.7.0.1
  */

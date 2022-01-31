@@ -1,82 +1,121 @@
-import SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_rsp;
-import SWEET_NEW_COMM_SVR.sweet_comm_cfg_item;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.Map;
+import android.content.Context;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bhzz
-  extends bhzs
+public abstract class bhzz<M, VH extends biac<M>>
+  extends biad<M, VH>
 {
-  private void a(boolean paramBoolean, Object paramObject)
+  private List<M> a;
+  
+  public bhzz(Context paramContext)
   {
-    if ((paramBoolean) && ((paramObject instanceof sweet_comm_cfg_item)))
-    {
-      paramObject = (sweet_comm_cfg_item)paramObject;
-      if (a() != null)
-      {
-        aqkh localaqkh = (aqkh)a().a(153);
-        if (localaqkh != null) {
-          localaqkh.a(true, paramObject.wording, paramObject.dynamic_value, paramObject.url);
-        }
-      }
+    super(paramContext);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public bhzz(Context paramContext, List<M> paramList)
+  {
+    super(paramContext);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public abstract int a(int paramInt);
+  
+  public M a(int paramInt)
+  {
+    if (((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size() + d())) {
+      return null;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (a() == null);
-      paramObject = (aqkh)a().a(153);
-    } while (paramObject == null);
-    paramObject.a(false, null, null, null);
-  }
-  
-  public QQAppInterface a()
-  {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    return null;
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
   }
   
-  public QzoneExternalRequest a(Intent paramIntent)
+  public List<M> a()
   {
-    return new biaa(this, paramIntent);
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public void a(long paramLong)
+  public void a(M paramM)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("currentUin", paramLong);
-    a(localIntent);
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    boolean bool = false;
-    if (paramFromServiceMsg != null) {}
-    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
-    {
-      paramIntent = (sweet_comm_cfg_get_rsp)bhoz.a(paramFromServiceMsg.getWupBuffer(), "GetCommCfg");
-      if ((paramIntent != null) && (paramIntent.m_cfg_res != null))
-      {
-        paramIntent = (sweet_comm_cfg_item)paramIntent.m_cfg_res.get(new Long(1L));
-        if (paramIntent != null) {
-          bool = true;
-        }
-        a(bool, paramIntent);
-      }
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramM);
+    if (i < 0) {
       return;
     }
-    a(false, null);
+    this.jdField_a_of_type_JavaUtilList.remove(i);
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      notifyItemRemoved(i);
+      return;
+    }
+    notifyItemRemoved(i + 1);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty());
+  }
+  
+  public boolean a(List<M> paramList)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {}
+    for (int i = 1;; i = 0)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      boolean bool = i | this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      if (bool) {
+        notifyDataSetChanged();
+      }
+      return bool;
+    }
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    notifyDataSetChanged();
+  }
+  
+  public boolean b(List<M> paramList)
+  {
+    boolean bool = this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    if (bool) {
+      notifyItemRangeInserted(this.jdField_a_of_type_JavaUtilList.size() - paramList.size(), paramList.size());
+    }
+    return bool;
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size() + c();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final int getItemViewType(int paramInt)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (paramInt == 0)) {
+      return 1024;
+    }
+    if ((this.b != null) && (paramInt == this.jdField_a_of_type_JavaUtilList.size() + d())) {
+      return 1025;
+    }
+    return a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhzz
  * JD-Core Version:    0.7.0.1
  */

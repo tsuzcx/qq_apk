@@ -1,84 +1,14 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.map.lib.basemap.data.GeoPoint;
 
-public class bepo
-  extends bepq
+public abstract interface bepo
 {
-  private Context a;
-  public String a;
+  public abstract void onMapScrollEnd(GeoPoint paramGeoPoint);
   
-  public bepo(Context paramContext, String paramString)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public Bundle a(String paramString1, String paramString2, Bundle paramBundle)
-  {
-    betc.b("minisdk-start_AppMainService", "requestAync cmd:" + paramString1 + " process:" + paramString2);
-    try
-    {
-      if ("query_mini_process".equals(paramString1))
-      {
-        boolean bool = beqb.a().a().isMiniProcess(paramString2);
-        paramString1 = new Bundle();
-        paramString1.putBoolean("key_result", bool);
-        return paramString1;
-      }
-    }
-    catch (Throwable paramString1)
-    {
-      betc.b("minisdk-start_AppMainService", "requestAync exception!", paramString1);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    betc.c("minisdk-start_AppMainService", "AppMainServiceBinder call preloadMiniApp not from Main Processor . pName=" + this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(int paramInt, String paramString, MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
-  {
-    betc.b("minisdk-start_AppMainService", "handleAppLifecycle lifecycle:" + paramInt + " process:" + paramString + " miniAppInfo:" + paramMiniAppInfo);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      beqb.a().a().onAppStart(paramString, paramMiniAppInfo, paramBundle);
-      return;
-    case 4: 
-      beqb.a().a().onAppStop(paramString, paramMiniAppInfo, paramBundle);
-      return;
-    case 2: 
-      beqb.a().a().onAppForeground(paramString, paramMiniAppInfo, paramBundle);
-      return;
-    }
-    beqb.a().a().onAppBackground(paramString, paramMiniAppInfo, paramBundle);
-  }
-  
-  public void a(MiniAppInfo paramMiniAppInfo)
-  {
-    betc.c("minisdk-start_AppMainService", "AppMainServiceBinder call preloadPackage not from Main Processor. pName=" + this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
-  {
-    betc.c("minisdk-start_AppMainService", "AppMainServiceBinder call startMiniApp not from Main Processor. pName=" + this.jdField_a_of_type_JavaLangString);
-    beqb.a().a().startMiniApp(null, paramMiniAppInfo, paramBundle, paramResultReceiver);
-  }
-  
-  public void a(String paramString1, String paramString2, Bundle paramBundle, bepu parambepu)
-  {
-    beps.a().a(paramString1, paramBundle, parambepu);
-  }
+  public abstract void onMapScrollStart(GeoPoint paramGeoPoint);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bepo
  * JD-Core Version:    0.7.0.1
  */

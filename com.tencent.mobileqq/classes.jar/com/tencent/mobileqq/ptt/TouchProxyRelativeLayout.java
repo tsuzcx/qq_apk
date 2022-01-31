@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
-import avce;
+import awtr;
 
 public class TouchProxyRelativeLayout
   extends RelativeLayout
 {
-  public avce a;
+  public awtr a;
   
   public TouchProxyRelativeLayout(Context paramContext)
   {
@@ -28,10 +28,10 @@ public class TouchProxyRelativeLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    avce localavce = this.a;
+    awtr localawtr = this.a;
     boolean bool1 = false;
-    if (localavce != null) {
-      bool1 = localavce.a(paramMotionEvent);
+    if (localawtr != null) {
+      bool1 = localawtr.a(paramMotionEvent);
     }
     boolean bool2 = bool1;
     if (!bool1) {
@@ -42,7 +42,7 @@ public class TouchProxyRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.TouchProxyRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

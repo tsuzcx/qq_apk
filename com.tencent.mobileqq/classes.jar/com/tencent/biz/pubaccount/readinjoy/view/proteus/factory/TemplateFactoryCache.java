@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.factory;
 
 import android.content.Context;
-import bhvy;
+import bjxj;
 import com.tencent.commonsdk.cache.QQHashMap;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,16 +10,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import rpr;
-import rpu;
-import rpv;
-import rpw;
-import rqj;
+import sfq;
+import sft;
+import sfu;
+import sfv;
+import sgi;
 
 public class TemplateFactoryCache
-  extends QQHashMap<String, rpw>
+  extends QQHashMap<String, sfv>
 {
-  private volatile rpu mStyleConfigHelper = new rpu();
+  private volatile sft mStyleConfigHelper = new sft();
   
   public TemplateFactoryCache()
   {
@@ -42,16 +42,16 @@ public class TemplateFactoryCache
   
   public void clearMemory()
   {
-    if (!bhvy.o()) {
+    if (!bjxj.p()) {
       clear();
     }
   }
   
-  public rpw get(String paramString)
+  public sfv get(String paramString)
   {
     try
     {
-      paramString = (rpw)super.get(paramString);
+      paramString = (sfv)super.get(paramString);
       return paramString;
     }
     finally
@@ -61,16 +61,16 @@ public class TemplateFactoryCache
     }
   }
   
-  public rpr getAutoCreate(Context paramContext, String paramString)
+  public sfq getAutoCreate(Context paramContext, String paramString)
   {
-    rpw localrpw = get(paramString);
-    if ((localrpw != null) && (localrpw.a != null))
+    sfv localsfv = get(paramString);
+    if ((localsfv != null) && (localsfv.a != null))
     {
-      paramContext = rqj.a(this.mStyleConfigHelper.a(paramContext, paramString).a());
-      if ((paramContext != null) && (localrpw.a.a().equals(paramContext.a())) && (localrpw.a.getTemplateId() != paramContext.getTemplateId())) {
+      paramContext = sgi.a(this.mStyleConfigHelper.a(paramContext, paramString).a());
+      if ((paramContext != null) && (localsfv.a.a().equals(paramContext.a())) && (localsfv.a.getTemplateId() != paramContext.getTemplateId())) {
         return paramContext;
       }
-      return localrpw.a;
+      return localsfv.a;
     }
     paramContext = this.mStyleConfigHelper.a(paramContext, paramString);
     if ((paramContext != null) && (paramContext.a != null))
@@ -82,11 +82,11 @@ public class TemplateFactoryCache
     return null;
   }
   
-  public rpw put(String paramString, rpw paramrpw)
+  public sfv put(String paramString, sfv paramsfv)
   {
     try
     {
-      paramString = (rpw)super.put(paramString, paramrpw);
+      paramString = (sfv)super.put(paramString, paramsfv);
       return paramString;
     }
     finally
@@ -96,11 +96,11 @@ public class TemplateFactoryCache
     }
   }
   
-  public rpw remove(String paramString)
+  public sfv remove(String paramString)
   {
     try
     {
-      paramString = (rpw)super.remove(paramString);
+      paramString = (sfv)super.remove(paramString);
       return paramString;
     }
     finally
@@ -113,14 +113,14 @@ public class TemplateFactoryCache
   public void reset()
   {
     Object localObject1 = this.mStyleConfigHelper;
-    rpu localrpu = new rpu();
-    Object localObject2 = ((rpu)localObject1).a();
+    sft localsft = new sft();
+    Object localObject2 = ((sft)localObject1).a();
     localObject1 = new ArrayList();
     localObject2 = ((Map)localObject2).entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-      if (!((rpv)localEntry.getValue()).equals(localrpu.a((String)localEntry.getKey()))) {
+      if (!((sfu)localEntry.getValue()).equals(localsft.a((String)localEntry.getKey()))) {
         ((List)localObject1).add(localEntry.getKey());
       }
     }
@@ -128,13 +128,13 @@ public class TemplateFactoryCache
     while (((Iterator)localObject1).hasNext()) {
       remove((String)((Iterator)localObject1).next());
     }
-    QLog.d("TemplateFactory", 2, "reset: " + localrpu);
-    this.mStyleConfigHelper = localrpu;
+    QLog.d("TemplateFactory", 2, "reset: " + localsft);
+    this.mStyleConfigHelper = localsft;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.TemplateFactoryCache
  * JD-Core Version:    0.7.0.1
  */

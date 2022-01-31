@@ -1,38 +1,30 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-class auvd
-  implements AdapterView.OnItemClickListener
+final class auvd
+  implements DialogInterface.OnClickListener
 {
-  auvd(auvb paramauvb) {}
+  auvd(Activity paramActivity, String paramString, int paramInt, long paramLong) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (auvb.a(this.a).a()) {
-      auvb.a(this.a).b();
-    }
-    paramInt = -1;
-    switch ((int)paramLong)
+    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidAppActivity, GameRoomInviteActivity.class);
+    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Long > 0L)
     {
+      paramDialogInterface.putExtra("gc", this.jdField_a_of_type_Long);
+      paramDialogInterface.putExtra("isInviteTroop", false);
     }
-    for (;;)
-    {
-      if (auvb.a(this.a) != null) {
-        auvb.a(this.a).a(paramInt, auvb.a(this.a));
-      }
-      return;
-      auvb.a(this.a);
-      paramInt = 0;
-      continue;
-      auvb.b(this.a);
-      paramInt = 2;
-    }
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auvd
  * JD-Core Version:    0.7.0.1
  */

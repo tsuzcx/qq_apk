@@ -1,60 +1,155 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.List;
 
 public class akaz
-  extends ajtb
+  extends alox
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private alji jdField_a_of_type_Alji;
+  public akaz(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public akaz(AppInterface paramAppInterface)
+  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    super(paramAppInterface);
-  }
-  
-  public void a(Context paramContext)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Alji == null)
-      {
-        this.jdField_a_of_type_Alji = alji.a();
-        this.jdField_a_of_type_Alji.a(paramContext, hashCode(), "MiniCodePeakHandler");
-      }
-      return;
-    }
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return null;
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
+    int i = ((Integer)paramArrayOfObject[0]).intValue();
+    paramArrayOfObject = (String[])paramArrayOfObject[1];
     if (QLog.isColorLevel()) {
-      QLog.i("MiniCodePeakHandler", 2, "onDestroy");
+      QLog.d("SpecailCareListActivity", 2, "onSetSpecialCareSwitch_global isSucess= " + paramBoolean + ",type=" + i + ",uinSize=" + paramArrayOfObject.length);
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if ((SpecailCareListActivity.a(this.a) != null) && (paramArrayOfObject != null)) {}
+    for (boolean bool = Arrays.equals(SpecailCareListActivity.a(this.a), paramArrayOfObject);; bool = false)
     {
-      if (this.jdField_a_of_type_Alji != null)
-      {
-        this.jdField_a_of_type_Alji.a(hashCode(), "MiniCodePeakHandler");
-        this.jdField_a_of_type_Alji = null;
+      if (bool) {
+        if (paramArrayOfObject.length >= 1)
+        {
+          this.a.h();
+          if (paramBoolean) {
+            if (this.a.c != null)
+            {
+              this.a.d();
+              QQToast.a(BaseApplication.getContext(), 2, 2131689639, 0).b(this.a.getTitleBarHeight());
+              this.a.a();
+              this.a.jdField_a_of_type_Akbf.notifyDataSetChanged();
+            }
+          }
+        }
       }
+      while (!paramBoolean)
+      {
+        do
+        {
+          for (;;)
+          {
+            return;
+            QQToast.a(BaseApplication.getContext(), 2, 2131699861, 0).b(this.a.getTitleBarHeight());
+          }
+          if (this.a.c != null)
+          {
+            QQToast.a(BaseApplication.getContext(), 1, 2131699844, 0).b(this.a.getTitleBarHeight());
+            return;
+          }
+          QQToast.a(BaseApplication.getContext(), 1, 2131699860, 0).b(this.a.getTitleBarHeight());
+          return;
+        } while (!paramBoolean);
+        this.a.a();
+        this.a.jdField_a_of_type_Akbf.notifyDataSetChanged();
+        return;
+      }
+      this.a.a();
+      this.a.jdField_a_of_type_Akbf.notifyDataSetChanged();
       return;
     }
   }
   
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecailCareListActivity", 2, "onUpdateDelFriend isSucess= " + paramBoolean + ", uin=" + (Long)paramObject);
+    }
+    if (paramBoolean)
+    {
+      this.a.a();
+      this.a.jdField_a_of_type_Akbf.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecailCareListActivity", 2, "onUpdateFriendList isSuccess=" + paramBoolean1 + ", isComplete=" + paramBoolean2 + " mIsPullRefresh=" + this.a.jdField_a_of_type_Boolean);
+    }
+    if ((!paramBoolean1) || (paramBoolean2))
+    {
+      this.a.a();
+      this.a.jdField_a_of_type_Akbf.notifyDataSetChanged();
+    }
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      if ((!paramBoolean1) || (!paramBoolean2)) {
+        break label135;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2001, 1000L);
+      this.a.jdField_a_of_type_Boolean = false;
+    }
+    label135:
+    while (paramBoolean1) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2001, 1000L);
+    this.a.jdField_a_of_type_Boolean = false;
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecailCareListActivity", 2, "onUpdateSignature isSucess= " + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if (this.a.d != 0) {
+        this.a.b = true;
+      }
+    }
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_Akbf.notifyDataSetChanged();
+  }
+  
+  protected void onUpdateSignature(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecailCareListActivity", 2, "onUpdateSignature isSucess= " + paramBoolean);
+    }
+    if (this.a.d != 0)
+    {
+      this.a.b = true;
+      return;
+    }
+    this.a.jdField_a_of_type_Akbf.notifyDataSetChanged();
+  }
+  
+  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List<SpecialCareInfo> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SpecailCareListActivity", 2, "onUpdateSpecialCareList isSucess= " + paramBoolean1 + ",isComplete=" + paramBoolean2);
+    }
+    if (paramBoolean1)
+    {
+      this.a.a();
+      this.a.jdField_a_of_type_Akbf.notifyDataSetChanged();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akaz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,26 @@
-import android.graphics.Bitmap;
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.reactive.SimpleObserver;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.util.ArrayList;
 
-class ukm
-  extends SimpleObserver<Bitmap>
+public final class ukm
 {
-  ukm(ukl paramukl) {}
+  public ShareGroupFeedItem a;
+  public VideoListFeedItem a;
+  public ArrayList<ukl> a;
   
-  public void a(Bitmap paramBitmap)
+  public ukm()
   {
-    super.onNext(paramBitmap);
-    ukj.b(ukl.a(this.a), "onNext, oldResult=%s, newResult=%s", ukl.a(this.a), paramBitmap);
-    ukl.a(this.a, paramBitmap);
-    ukl.a(this.a, true);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void onCancel()
+  public String toString()
   {
-    super.onCancel();
-    ukj.a(ukl.a(this.a), "onCancel");
-    onError(new ErrorMessage(-1, "onCancel"));
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    ukj.c(ukl.a(this.a), "onError, oldError=%s, newError=%s", ukl.a(this.a), paramError);
-    ukl.a(this.a, paramError);
-    ukl.a(this.a, SystemClock.uptimeMillis());
-    ukl.a(this.a, false);
+    return "ShareGroupFakeItem{mFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem + ", mSucFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem + ", mVideos=" + this.jdField_a_of_type_JavaUtilArrayList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ukm
  * JD-Core Version:    0.7.0.1
  */

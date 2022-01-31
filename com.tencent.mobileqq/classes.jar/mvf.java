@@ -1,30 +1,28 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.av.utils.PopupDialogQQSide;
+
 public class mvf
+  implements DialogInterface.OnDismissListener
 {
-  public static int a(int paramInt1, int paramInt2)
-  {
-    return (paramInt1 % paramInt2 + paramInt2) % paramInt2;
-  }
+  public mvf(PopupDialogQQSide paramPopupDialogQQSide) {}
   
-  public static int a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramInt1 = a(paramInt1, paramInt3);
-    paramInt2 = a(paramInt2, paramInt3);
-    if (paramBoolean)
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
+    if (this.a.getActivity() != null)
     {
-      if (paramInt1 > paramInt2) {
-        return paramInt1 - paramInt2;
-      }
-      return paramInt1 + (paramInt3 - paramInt2);
+      this.a.getActivity().doOnBackPressed();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
-    if (paramInt1 > paramInt2) {
-      return paramInt3 - paramInt1 + paramInt2;
-    }
-    return paramInt2 - paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvf
  * JD-Core Version:    0.7.0.1
  */

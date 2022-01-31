@@ -14,7 +14,7 @@ class QIMProviderContainerView$6$1
     {
       this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.setReddotXOffsetDp(12);
       this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.setReddotYOffsetDp(11);
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.setRedDotDrawable(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.getResources().getDrawable(2130849298));
+      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.setRedDotDrawable(this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.getResources().getDrawable(2130849729));
       this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.a(true);
     }
     while ((this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView$6.a.a())) {
@@ -25,7 +25,7 @@ class QIMProviderContainerView$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.view.QIMProviderContainerView.6.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,101 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class nnn
+  extends WebViewClient
 {
-  public nnn(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString, long paramLong) {}
+  protected WebViewPluginEngine a;
   
-  @QQPermissionDenied(1)
-  public void denied()
+  public nnn(WebViewPluginEngine paramWebViewPluginEngine)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+    this.a = paramWebViewPluginEngine;
   }
   
-  @QQPermissionGrant(1)
-  public void grant()
+  public void onLoadResource(WebView paramWebView, String paramString)
   {
-    SosoInterface.a(new nnt(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
     if (QLog.isColorLevel()) {
-      QLog.d("PAjs.location", 2, "SosoInterface.startLocation");
+      QLog.d("WEBVIEWCHECK", 2, "CustomWebView loadUrl url:" + paramString);
     }
+    super.onLoadResource(paramWebView, paramString);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+    if (this.a != null) {
+      this.a.a(paramString, 8589934594L, null);
+    }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+    if (this.a != null) {
+      this.a.a(paramString, 8589934593L, null);
+    }
+  }
+  
+  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WEBVIEWCHECK", 2, "CustomWebViewClient onReceivedError errorCode:" + paramInt + ", description:" + paramString1 + ", failingUrl:" + paramString2);
+    }
+    if (this.a != null) {
+      this.a.a(paramString2, 8589934595L, paramInt);
+    }
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  {
+    if (this.a != null) {
+      try
+      {
+        paramWebView = (WebResourceResponse)this.a.a(paramString, 8L);
+        return paramWebView;
+      }
+      catch (Exception paramWebView)
+      {
+        QLog.e("WEBVIEWCHECK", 1, "shouldInterceptRequest error:" + paramWebView.toString());
+      }
+    }
+    return null;
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1;
+    if ((this.a != null) && (this.a.a(paramString))) {
+      bool1 = true;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return bool1;
+          bool1 = bool2;
+        } while (paramString == null);
+        if (paramString.startsWith("http")) {
+          break;
+        }
+        bool1 = bool2;
+      } while (!paramString.startsWith("data:"));
+      bool1 = bool2;
+    } while (paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"));
+    CustomWebView.addContextLog(ndq.b(paramString, new String[0]));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnn
  * JD-Core Version:    0.7.0.1
  */

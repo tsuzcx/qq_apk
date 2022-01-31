@@ -1,39 +1,50 @@
-import java.lang.reflect.Method;
+import android.os.Bundle;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.share.QZoneShareActivity;
+import mqq.observer.BusinessObserver;
 
-class bjni
+public class bjni
+  implements BusinessObserver
 {
-  final int jdField_a_of_type_Int;
-  final Method jdField_a_of_type_JavaLangReflectMethod;
+  public bjni(QZoneShareActivity paramQZoneShareActivity) {}
   
-  bjni(int paramInt, Method paramMethod)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangReflectMethod = paramMethod;
-    this.jdField_a_of_type_JavaLangReflectMethod.setAccessible(true);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    synchronized (QZoneShareActivity.jdField_a_of_type_JavaLangObject)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      this.a.h = false;
+      if (paramBoolean) {}
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
+          localGetAppinfoResponse.mergeFrom(paramBundle);
+          this.a.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse = localGetAppinfoResponse;
+          if (QLog.isColorLevel()) {
+            QLog.d("QZoneShare", 2, "get appinfo time = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+          }
+        }
       }
-      paramObject = (bjni)paramObject;
-    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangReflectMethod.getName().equals(paramObject.jdField_a_of_type_JavaLangReflectMethod.getName())));
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int * 31 + this.jdField_a_of_type_JavaLangReflectMethod.getName().hashCode();
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QZoneShare", 2, paramBundle.getMessage());
+          }
+        }
+      }
+      QZoneShareActivity.jdField_a_of_type_JavaLangObject.notify();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjni
  * JD-Core Version:    0.7.0.1
  */

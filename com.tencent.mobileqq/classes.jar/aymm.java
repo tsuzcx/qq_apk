@@ -1,54 +1,72 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-class aymm
-  extends Handler
+public class aymm
+  extends aynd
 {
-  aymm(ayml paramayml, Looper paramLooper)
+  private aylm jdField_a_of_type_Aylm;
+  private aylv jdField_a_of_type_Aylv;
+  private aymi jdField_a_of_type_Aymi;
+  private aymo jdField_a_of_type_Aymo;
+  
+  public aymm(bcws parambcws)
   {
-    super(paramLooper);
+    super(parambcws);
+    this.jdField_a_of_type_Aymi = new aymi(parambcws);
+    this.jdField_a_of_type_Aylv = new aylv(parambcws);
+    this.jdField_a_of_type_Aylm = new aylm(parambcws, 268435456);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void b(ayjl paramayjl, ayru paramayru)
   {
-    Activity localActivity;
-    if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null))
-    {
-      localActivity = null;
-      if (localActivity != null) {
-        break label75;
-      }
-      QLog.d("ThemeSwitchManager", 2, "handleMessage activity is not TitleBarActivity, , what=" + paramMessage.what);
+    if ((!(paramayjl instanceof ayjh)) && (!(paramayjl instanceof ayij))) {
+      QLog.e("MostUsedResultPresenter", 2, "unresolved model");
     }
-    label75:
     do
     {
       return;
-      localActivity = (Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-      break;
-      switch (paramMessage.what)
+      if ((paramayjl instanceof ayjh))
       {
-      default: 
+        localObject = (ayjh)paramayjl;
+        int i = aykw.a(((ayjh)localObject).e());
+        if (i == 2)
+        {
+          this.jdField_a_of_type_Aymi.b(paramayjl, paramayru);
+          return;
+        }
+        if (i == 1)
+        {
+          this.jdField_a_of_type_Aylv.b(paramayjl, paramayru);
+          return;
+        }
+        QLog.e("MostUsedResultPresenter", 2, "unresolved id type" + ((ayjh)localObject).e());
         return;
       }
-    } while ((localActivity.isFinishing()) || ((this.a.jdField_a_of_type_Bcqf != null) && (this.a.jdField_a_of_type_Bcqf.isShowing())));
-    this.a.jdField_a_of_type_Bcqf = new bcqf(localActivity, ((BaseActivity)localActivity).getTitleBarHeight());
-    this.a.jdField_a_of_type_Bcqf.setCancelable(true);
-    this.a.jdField_a_of_type_Bcqf.c(2131719980);
-    this.a.jdField_a_of_type_Bcqf.show();
-    return;
-    this.a.c();
-    bcql.a(localActivity, ajya.a(2131714934), 4000).a();
+    } while (!(paramayjl instanceof ayij));
+    Object localObject = (ayij)paramayjl;
+    if (aykw.a(((ayij)localObject).e()) == 3)
+    {
+      this.jdField_a_of_type_Aylm.b(paramayjl, paramayru);
+      return;
+    }
+    QLog.e("MostUsedResultPresenter", 2, "unresolved id type" + ((ayij)localObject).e());
+  }
+  
+  protected void c(ayjl paramayjl, ayru paramayru)
+  {
+    if (this.jdField_a_of_type_Aymo != null)
+    {
+      if (paramayru.a() != null) {
+        paramayru.a().setOnClickListener(new aymn(this));
+      }
+      return;
+    }
+    super.c(paramayjl, paramayru);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aymm
  * JD-Core Version:    0.7.0.1
  */

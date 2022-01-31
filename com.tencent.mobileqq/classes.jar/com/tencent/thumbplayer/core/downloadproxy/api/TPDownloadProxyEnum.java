@@ -2,10 +2,15 @@ package com.tencent.thumbplayer.core.downloadproxy.api;
 
 public class TPDownloadProxyEnum
 {
+  public static final int DLMODE_ALL = 2147483647;
+  public static final int DLMODE_DOWNLOAD = 4;
+  public static final int DLMODE_PLAY = 1;
+  public static final int DLMODE_PREPARE = 2;
   public static final String DLPARAM_ADAPTIVE_TYPE = "dl_param_adaptive_type";
   public static final String DLPARAM_CACHE_NEED_ENCRYPT = "dl_param_cache_need_encrypt";
   public static final String DLPARAM_CURRENT_FORMAT = "dl_param_current_format";
   public static final String DLPARAM_CURRENT_FORMATID = "dl_param_current_formatid";
+  public static final String DLPARAM_DATA_TRANSFER_MODE = "dl_param_data_transfer_mode";
   public static final String DLPARAM_ENABLE_EXPAND_DOWNLOAD_URL = "dl_param_enable_expand_donwload_url";
   public static final String DLPARAM_FILE_DURATION = "dl_param_file_duration";
   public static final String DLPARAM_FILE_MD5 = "dl_param_file_md5";
@@ -18,6 +23,7 @@ public class TPDownloadProxyEnum
   public static final String DLPARAM_PLAY_CLIP_NO = "dl_param_play_clip_no";
   public static final String DLPARAM_PLAY_DEFINITION = "dl_param_play_definition";
   public static final String DLPARAM_PLAY_END_TIME = "dl_param_play_end_time";
+  public static final String DLPARAM_PLAY_FLOWID = "dl_param_play_flowid";
   public static final String DLPARAM_PLAY_KEYID = "dl_param_play_keyid";
   public static final String DLPARAM_PLAY_START_TIME = "dl_param_play_start_time";
   public static final String DLPARAM_PRELOAD_DURATION = "dl_param_preload_duration";
@@ -49,6 +55,11 @@ public class TPDownloadProxyEnum
   public static final int DLTYPE_OFFLINE_BASE = 100;
   public static final int DLTYPE_OFFLINE_PLAY_BASE = 300;
   public static final int DLTYPE_PREPARE_BASE = 200;
+  public static final int DL_DATA_TRANSFER_MODE_AV = 1;
+  public static final int DL_DATA_TRANSFER_MODE_DEFAULT = 0;
+  public static final int DL_DATA_TRANSFER_MODE_FMP4_TO_TS = 2;
+  public static final int DL_URL_TYPE_LOCAL_ABSOLUTE_URL_PRIORITY = 0;
+  public static final int DL_URL_TYPE_LOCAL_PROXY_URL_ONLY = 1;
   public static final int EVENT_APPTOBACK = 13;
   public static final int EVENT_APPTOFRONT = 14;
   public static final int EVENT_BUFFER_MORE_DATA = 21;
@@ -105,7 +116,7 @@ public class TPDownloadProxyEnum
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadProxyEnum
  * JD-Core Version:    0.7.0.1
  */

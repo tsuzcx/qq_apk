@@ -1,80 +1,104 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtPreLoader.1;
-import com.tencent.gdtad.aditem.GdtPreLoader.2;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.mp.mobileqq_mp.ButtonInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class ysu
+public class ysu
 {
-  private static volatile ysu a;
+  private int jdField_a_of_type_Int;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  String jdField_a_of_type_JavaLangString;
+  private List<ysu> jdField_a_of_type_JavaUtilList;
+  String b;
+  String c;
+  String d;
+  private String e;
+  private String f;
   
-  public static ysu a()
+  public ysu(String paramString1, String paramString2, Drawable paramDrawable, int paramInt)
   {
-    if (a == null) {}
-    try
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.e = paramString2;
+    this.f = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Drawable a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  public String a()
+  {
+    return this.e;
+  }
+  
+  public ysu a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return null;
+    }
+    return (ysu)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(mobileqq_mp.ButtonInfo paramButtonInfo)
+  {
+    if (paramButtonInfo.logo_url.has()) {
+      this.jdField_a_of_type_JavaLangString = paramButtonInfo.logo_url.get();
+    }
+    if (paramButtonInfo.texture_url.has()) {
+      this.d = paramButtonInfo.texture_url.get();
+    }
+    if (paramButtonInfo.bg_colors.has())
     {
-      if (a == null) {
-        a = new ysu();
+      paramButtonInfo = paramButtonInfo.bg_colors.get().split("\\|");
+      if (paramButtonInfo.length > 0) {
+        this.b = paramButtonInfo[0];
       }
-      return a;
-    }
-    finally {}
-  }
-  
-  private void b(GdtAd paramGdtAd)
-  {
-    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (TextUtils.isEmpty(paramGdtAd.getCanvas()))) {}
-    for (;;)
-    {
-      return;
-      int i = paramGdtAd.getDestType();
-      int j = paramGdtAd.getProductType();
-      if (((i == 4) && (j == 1000)) || (paramGdtAd.isAppXiJing()) || (paramGdtAd.isAppXiJingDefault())) {}
-      for (i = 1; i != 0; i = 0) {
-        try
-        {
-          Object localObject = new JSONObject(paramGdtAd.getCanvas());
-          String str = ((JSONObject)localObject).optString("canvas_json_key");
-          localObject = ((JSONObject)localObject).optString("canvas_json_url");
-          if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty((CharSequence)localObject))) {
-            break label138;
-          }
-          yyo.a().a(paramGdtAd, str, (String)localObject);
-          return;
-        }
-        catch (JSONException paramGdtAd)
-        {
-          yxp.d("GdtPreLoader", "preloadCanvasJsonAfterAdLoaded error", paramGdtAd);
-          return;
-        }
+      if (paramButtonInfo.length > 1) {
+        this.c = paramButtonInfo[1];
       }
     }
-    label138:
-    yxp.d("GdtPreLoader", "preloadCanvasJsonAfterAdLoaded error");
   }
   
-  private void c(GdtAd paramGdtAd)
+  public void a(ysu paramysu)
   {
-    yxp.a("GdtPreLoader", "preloadVideoAfterAdLoaded() called with: ad = [" + paramGdtAd + "]");
-    if (!paramGdtAd.isVideoSplice()) {
+    if (paramysu == null) {
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new GdtPreLoader.2(this, paramGdtAd));
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramysu);
   }
   
-  public void a(GdtAd paramGdtAd)
+  public boolean a()
   {
-    new Handler(Looper.getMainLooper()).post(new GdtPreLoader.1(this, paramGdtAd));
-    c(paramGdtAd);
-    b(paramGdtAd);
+    return this.jdField_a_of_type_JavaUtilList != null;
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public String b()
+  {
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysu
  * JD-Core Version:    0.7.0.1
  */

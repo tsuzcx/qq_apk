@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.gallery.view.GalleryUrlImageView;
-
 public class aqps
-  extends aqoo
 {
-  public GalleryUrlImageView a;
-  
-  public aqps(aqpp paramaqpp) {}
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqps
  * JD-Core Version:    0.7.0.1
  */

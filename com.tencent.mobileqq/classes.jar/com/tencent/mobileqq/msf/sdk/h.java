@@ -17,7 +17,7 @@ public class h
       return MsfServiceSdk.get().sendMsg(paramToServiceMsg);
     }
     if (!a.containsKey(paramToServiceMsg.getServiceName())) {
-      a.putIfAbsent(paramToServiceMsg.getServiceName(), new p(paramToServiceMsg.getServiceName()));
+      a.putIfAbsent(paramToServiceMsg.getServiceName(), new q(paramToServiceMsg.getServiceName()));
     }
     return ((IMsfProxy)a.get(paramToServiceMsg.getServiceName())).sendMsg(paramToServiceMsg);
   }
@@ -25,9 +25,9 @@ public class h
   public static IMsfProxy a(String paramString, boolean paramBoolean)
   {
     if (paramBoolean) {
-      return new p(paramString);
+      return new q(paramString);
     }
-    return new k(paramString);
+    return new l(paramString);
   }
   
   public static void a(String paramString)
@@ -41,7 +41,7 @@ public class h
       return;
     }
     if (!a.containsKey(paramString)) {
-      a.putIfAbsent(paramString, new p(paramString));
+      a.putIfAbsent(paramString, new q(paramString));
     }
     ((IMsfProxy)a.get(paramString)).initMsfService();
   }
@@ -57,7 +57,7 @@ public class h
       return;
     }
     if (!a.containsKey(paramString)) {
-      a.putIfAbsent(paramString, new p(paramString));
+      a.putIfAbsent(paramString, new q(paramString));
     }
     ((IMsfProxy)a.get(paramString)).initMsfService();
   }
@@ -73,7 +73,7 @@ public class h
       return;
     }
     if (!a.containsKey(paramString)) {
-      a.putIfAbsent(paramString, new p(paramString));
+      a.putIfAbsent(paramString, new q(paramString));
     }
     ((IMsfProxy)a.get(paramString)).initMsfService();
   }

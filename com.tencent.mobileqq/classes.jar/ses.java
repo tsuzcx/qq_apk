@@ -1,14 +1,10 @@
-public class ses
+public abstract interface ses
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ses
  * JD-Core Version:    0.7.0.1
  */

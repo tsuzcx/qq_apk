@@ -1,10 +1,16 @@
-public abstract interface ajcv
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class ajcv
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  ajcv(ajbm paramajbm) {}
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajcv
  * JD-Core Version:    0.7.0.1
  */

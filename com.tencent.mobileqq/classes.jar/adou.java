@@ -1,24 +1,391 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneClickReport;
+import cooperation.qzone.UndealCount.QZoneCountUserInfo;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.util.ArrayList;
 
-class adou
-  implements bcjp
+public class adou
 {
-  adou(adop paramadop) {}
-  
-  public void a(View paramView)
+  public static void a(ayxn paramayxn, boolean paramBoolean1, boolean paramBoolean2)
   {
-    actj.n = true;
-    if (this.a.a()) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("QZoneEntryReporterInLeba", 2, "Leba isTableModel:" + paramBoolean2);
     }
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+    int i3;
+    int i2;
+    label53:
+    Object localObject1;
+    int i;
+    int j;
+    int n;
+    int m;
+    int k;
+    Object localObject2;
+    label126:
+    bjct localbjct1;
+    label138:
+    bjct localbjct2;
+    if (paramayxn != null)
+    {
+      i3 = paramayxn.a(1);
+      if (paramayxn == null) {
+        break label685;
+      }
+      i2 = paramayxn.a(2);
+      localObject1 = "";
+      i = 0;
+      j = 0;
+      int i5 = 0;
+      int i4 = 0;
+      int i6 = 0;
+      int i1 = 0;
+      n = i6;
+      m = i5;
+      k = i;
+      localObject2 = localObject1;
+      if (i3 > 0) {
+        break label1008;
+      }
+      n = i6;
+      m = i5;
+      k = i;
+      localObject2 = localObject1;
+      if (i2 > 0) {
+        break label1008;
+      }
+      if (paramayxn == null) {
+        break label691;
+      }
+      localObject2 = paramayxn.a(6);
+      if (paramayxn == null) {
+        break label697;
+      }
+      localbjct1 = paramayxn.a(61);
+      if (paramayxn == null) {
+        break label703;
+      }
+      localbjct2 = paramayxn.a(3);
+      label149:
+      k = i1;
+      i = j;
+      paramayxn = (ayxn)localObject1;
+      if (localObject2 != null)
+      {
+        k = i1;
+        i = j;
+        paramayxn = (ayxn)localObject1;
+        if (((bjct)localObject2).jdField_a_of_type_JavaUtilArrayList != null)
+        {
+          k = i1;
+          i = j;
+          paramayxn = (ayxn)localObject1;
+          if (((bjct)localObject2).jdField_a_of_type_JavaUtilArrayList.size() > 0)
+          {
+            k = i1;
+            i = j;
+            paramayxn = (ayxn)localObject1;
+            if (((QZoneCountUserInfo)((bjct)localObject2).jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long > 0L)
+            {
+              k = i1;
+              i = j;
+              paramayxn = (ayxn)localObject1;
+              if (((bjct)localObject2).jdField_a_of_type_Long > 0L)
+              {
+                k = i1;
+                i = j;
+                paramayxn = (ayxn)localObject1;
+                if (!TextUtils.isEmpty(((bjct)localObject2).f))
+                {
+                  paramayxn = ((bjct)localObject2).f;
+                  k = 1;
+                  i = 1;
+                }
+              }
+            }
+          }
+        }
+      }
+      i1 = k;
+      j = i4;
+      localObject1 = paramayxn;
+      if (k == 0)
+      {
+        i1 = k;
+        j = i4;
+        localObject1 = paramayxn;
+        if (localbjct1 != null)
+        {
+          i1 = k;
+          j = i4;
+          localObject1 = paramayxn;
+          if (localbjct1.jdField_a_of_type_JavaUtilArrayList != null)
+          {
+            i1 = k;
+            j = i4;
+            localObject1 = paramayxn;
+            if (localbjct1.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+            {
+              i1 = k;
+              j = i4;
+              localObject1 = paramayxn;
+              if (((QZoneCountUserInfo)localbjct1.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long > 0L)
+              {
+                i1 = k;
+                j = i4;
+                localObject1 = paramayxn;
+                if (localbjct1.jdField_a_of_type_Long > 0L)
+                {
+                  i1 = k;
+                  j = i4;
+                  localObject1 = paramayxn;
+                  if (!TextUtils.isEmpty(localbjct1.f))
+                  {
+                    localObject1 = localbjct1.f;
+                    i1 = 1;
+                    j = 1;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      n = i1;
+      m = j;
+      k = i;
+      localObject2 = localObject1;
+      if (i1 != 0) {
+        break label1008;
+      }
+      n = i1;
+      m = j;
+      k = i;
+      localObject2 = localObject1;
+      if (localbjct2 == null) {
+        break label1008;
+      }
+      n = i1;
+      m = j;
+      k = i;
+      localObject2 = localObject1;
+      if (localbjct2.jdField_a_of_type_JavaUtilArrayList == null) {
+        break label1008;
+      }
+      n = i1;
+      m = j;
+      k = i;
+      localObject2 = localObject1;
+      if (localbjct2.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+        break label1008;
+      }
+      n = i1;
+      m = j;
+      k = i;
+      localObject2 = localObject1;
+      if (((QZoneCountUserInfo)localbjct2.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Long <= 0L) {
+        break label1008;
+      }
+      n = i1;
+      m = j;
+      k = i;
+      localObject2 = localObject1;
+      if (localbjct2.jdField_a_of_type_Long <= 0L) {
+        break label1008;
+      }
+      n = i1;
+      m = j;
+      k = i;
+      localObject2 = localObject1;
+      if (TextUtils.isEmpty(localbjct2.f)) {
+        break label1008;
+      }
+      paramayxn = localbjct2.f;
+      n = 1;
+      m = 1;
+      k = i;
+      i = n;
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        if (i3 <= 0) {
+          if (i2 <= 0) {
+            if (paramBoolean1)
+            {
+              i = 1;
+              label658:
+              if (!paramBoolean2) {
+                break label714;
+              }
+              paramayxn = "1";
+              label665:
+              LpReportInfo_pf00064.report(637, 13, i, paramayxn, "0", null);
+            }
+          }
+        }
+      }
+      label685:
+      label691:
+      label697:
+      label703:
+      label714:
+      label733:
+      label762:
+      do
+      {
+        return;
+        i3 = 0;
+        break;
+        i2 = 0;
+        break label53;
+        localObject2 = null;
+        break label126;
+        localbjct1 = null;
+        break label138;
+        localbjct2 = null;
+        break label149;
+        i = 2;
+        break label658;
+        paramayxn = "2";
+        break label665;
+        if (paramBoolean1)
+        {
+          i = 1;
+          if (!paramBoolean2) {
+            break label762;
+          }
+          paramayxn = "1";
+          if (i2 <= 1) {
+            break label768;
+          }
+        }
+        for (localObject1 = "2";; localObject1 = "1")
+        {
+          LpReportInfo_pf00064.report(637, 11, i, paramayxn, (String)localObject1, null);
+          return;
+          i = 2;
+          break;
+          paramayxn = "2";
+          break label733;
+        }
+        if (i2 <= 0)
+        {
+          if (paramBoolean1)
+          {
+            i = 1;
+            if (!paramBoolean2) {
+              break label812;
+            }
+          }
+          for (paramayxn = "1";; paramayxn = "2")
+          {
+            LpReportInfo_pf00064.report(637, 12, i, paramayxn, "0", null);
+            return;
+            i = 2;
+            break;
+          }
+        }
+        if (paramBoolean1)
+        {
+          i = 1;
+          if (!paramBoolean2) {
+            break label860;
+          }
+          paramayxn = "1";
+          if (i2 <= 1) {
+            break label866;
+          }
+        }
+        for (localObject1 = "2";; localObject1 = "1")
+        {
+          LpReportInfo_pf00064.report(637, 14, i, paramayxn, (String)localObject1, null);
+          return;
+          i = 2;
+          break;
+          paramayxn = "2";
+          break label831;
+        }
+        if (m != 0)
+        {
+          if (paramBoolean1)
+          {
+            i = 1;
+            if (!paramBoolean2) {
+              break label911;
+            }
+          }
+          for (localObject1 = "1";; localObject1 = "2")
+          {
+            LpReportInfo_pf00064.report(637, 15, i, (String)localObject1, null, paramayxn);
+            return;
+            i = 2;
+            break;
+          }
+        }
+        if (k != 0)
+        {
+          if (paramBoolean1)
+          {
+            i = 1;
+            if (!paramBoolean2) {
+              break label956;
+            }
+          }
+          for (localObject1 = "1";; localObject1 = "2")
+          {
+            LpReportInfo_pf00064.report(637, 17, i, (String)localObject1, null, paramayxn);
+            return;
+            i = 2;
+            break;
+          }
+        }
+      } while (j == 0);
+      label768:
+      label812:
+      label831:
+      label860:
+      label866:
+      if (paramBoolean1)
+      {
+        i = 1;
+        if (!paramBoolean2) {
+          break label1001;
+        }
+      }
+      label911:
+      label956:
+      label1001:
+      for (localObject1 = "1";; localObject1 = "2")
+      {
+        LpReportInfo_pf00064.report(637, 16, i, (String)localObject1, null, paramayxn);
+        return;
+        i = 2;
+        break;
+      }
+      label1008:
+      i = n;
+      j = m;
+      m = 0;
+      paramayxn = (ayxn)localObject2;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneEntryReporterInLeba", 2, "leba 曝光上报");
+    }
+    bizg localbizg = new bizg();
+    localbizg.c = "637";
+    localbizg.d = "10";
+    QZoneClickReport.report(paramQQAppInterface.getAccount(), localbizg, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adou
  * JD-Core Version:    0.7.0.1
  */

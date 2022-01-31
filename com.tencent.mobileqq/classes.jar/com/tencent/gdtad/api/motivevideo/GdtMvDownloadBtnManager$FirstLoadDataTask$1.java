@@ -1,7 +1,7 @@
 package com.tencent.gdtad.api.motivevideo;
 
+import aanp;
 import java.lang.ref.WeakReference;
-import yxp;
 
 class GdtMvDownloadBtnManager$FirstLoadDataTask$1
   implements Runnable
@@ -10,7 +10,7 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask$1
   
   public void run()
   {
-    yxp.a("FirstLoadDataTask", "run() called");
+    aanp.a("FirstLoadDataTask", "run() called");
     if (GdtMvDownloadBtnManager.FirstLoadDataTask.a(this.this$0)) {}
     GdtMvDownloadBtnManager localGdtMvDownloadBtnManager;
     do
@@ -23,7 +23,7 @@ class GdtMvDownloadBtnManager$FirstLoadDataTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnManager.FirstLoadDataTask.1
  * JD-Core Version:    0.7.0.1
  */

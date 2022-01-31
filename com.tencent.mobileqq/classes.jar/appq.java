@@ -1,18 +1,26 @@
-import android.view.View;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
+import java.util.Comparator;
 
 class appq
-  implements apuv
+  implements Comparator<EmosmPb.SmallYellowItem>
 {
-  appq(appo paramappo) {}
+  appq(appp paramappp) {}
   
-  public void onClick(View paramView)
+  public int a(EmosmPb.SmallYellowItem paramSmallYellowItem1, EmosmPb.SmallYellowItem paramSmallYellowItem2)
   {
-    apug.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Apnb.c());
+    if (paramSmallYellowItem2.ts.get() > paramSmallYellowItem1.ts.get()) {
+      return 1;
+    }
+    if (paramSmallYellowItem2.ts.get() == paramSmallYellowItem1.ts.get()) {
+      return 0;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appq
  * JD-Core Version:    0.7.0.1
  */

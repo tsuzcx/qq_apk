@@ -1,319 +1,157 @@
-import android.content.Context;
-import android.graphics.Color;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.VideoColumnInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.model.DailyDynamicHeaderModule.1;
+import com.tencent.biz.pubaccount.readinjoy.model.DailyDynamicHeaderModule.2;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.concurrent.ExecutorService;
+import org.json.JSONArray;
 import org.json.JSONObject;
-import tencent.im.oidb.articlesummary.articlesummary.VideoDownloadBarInfo;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ReqBody;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspBody;
+import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspChannelArticle;
 
 public class pfn
-  implements php
+  extends pgp
 {
-  private void a(Context paramContext, BaseArticleInfo paramBaseArticleInfo, ram paramram)
+  private final Object jdField_a_of_type_JavaLangObject = new Object();
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  
+  public pfn(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mVideoDownloadBarInfo != null) && (paramBaseArticleInfo.mVideoDownloadBarInfo.get() != null))
-    {
-      localUrlJumpInfo = UrlJumpInfo.a(paramBaseArticleInfo.mVideoDownloadBarInfo.msg_url_jump_info);
-      if (localUrlJumpInfo != null) {
-        qoi.a(paramContext, localUrlJumpInfo);
-      }
-    }
-    while (paramram == null)
-    {
-      UrlJumpInfo localUrlJumpInfo;
-      do
-      {
-        return;
-      } while (paramram == null);
-      paramram.a(ram.a(paramBaseArticleInfo), paramBaseArticleInfo, false, false);
-      return;
-    }
-    paramram.a(ram.a(paramBaseArticleInfo), paramBaseArticleInfo, false, false);
+    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
+    d();
   }
   
-  private void a(BaseArticleInfo paramBaseArticleInfo, boolean paramBoolean, JSONObject paramJSONObject)
+  static JSONObject a(boolean paramBoolean)
   {
-    if ((paramBaseArticleInfo == null) || (paramJSONObject == null)) {
-      return;
-    }
-    if (paramBaseArticleInfo.mVideoColumnInfo != null) {}
-    for (int i = paramBaseArticleInfo.mVideoColumnInfo.a;; i = -1)
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
+    if (paramBoolean) {}
+    for (int i = 0;; i = 1)
     {
-      if (paramBoolean) {}
-      for (int j = 0;; j = 1)
-      {
-        paramBaseArticleInfo = new qzb(null, null, null, null).X(Integer.valueOf("1031").intValue()).h(paramBaseArticleInfo.getInnerUniqueID()).ac(j).s(paramJSONObject.optString("double_videocard_jump_page")).t(paramJSONObject.optString("double_videocard_jump_src")).u(paramBaseArticleInfo.mSubscribeName).f(paramBaseArticleInfo);
-        if (i != -1) {
-          paramBaseArticleInfo.ab(i);
-        }
-        paramBaseArticleInfo = paramBaseArticleInfo.a().a();
-        nol.a(null, null, "0X8007625", "0X8007625", 0, 0, "", "", "", paramBaseArticleInfo, false);
-        nol.a(null, null, "0X800A5A9", "0X800A5A9", 0, 0, "", "", "", paramBaseArticleInfo, false);
-        return;
-      }
+      localJSONObject2.put("req_type", i);
+      localJSONObject2.put("ad_code", amkv.b());
+      localJSONObject2.put("city_name", amkv.a());
+      localJSONObject1.put("dynamic_header_req_param", localJSONObject2);
+      return localJSONObject1;
     }
   }
   
-  private void a(ViewBase paramViewBase, BaseArticleInfo paramBaseArticleInfo)
+  private void c()
   {
-    TextView localTextView;
-    if ((paramBaseArticleInfo != null) && (paramViewBase != null) && ((paramViewBase.getNativeView() instanceof TextView)))
-    {
-      localTextView = (TextView)paramViewBase.getNativeView();
-      if (!osg.a().a(paramBaseArticleInfo.mArticleID)) {
-        break label51;
-      }
-    }
-    label51:
-    for (paramViewBase = "#999999";; paramViewBase = "#000000")
-    {
-      localTextView.setTextColor(Color.parseColor(paramViewBase));
-      return;
-    }
-  }
-  
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mSubArtilceList == null) || (paramBaseArticleInfo.mSubArtilceList.size() == 0) || (paramBaseArticleInfo.mSubArtilceList.get(0) == null)) {
-      return new JSONObject();
-    }
-    localJSONObject1 = paramBaseArticleInfo.getProteusItemData();
-    if (localJSONObject1 == null) {
-      return null;
-    }
-    localJSONObject2 = new JSONObject();
-    localBaseArticleInfo = (BaseArticleInfo)paramBaseArticleInfo.mSubArtilceList.get(0);
-    str1 = paramBaseArticleInfo.getInnerUniqueID();
-    str2 = localBaseArticleInfo.getInnerUniqueID();
-    str3 = "[" + str1 + "," + str2 + "]";
-    localJSONObject3 = new JSONObject();
-    localJSONObject3.put("all_rowkey", str3);
-    localObject3 = null;
-    localObject1 = null;
-    localObject4 = null;
-    localObject8 = null;
-    localObject7 = null;
-    localObject2 = localObject3;
+    oidb_cmd0x68b.ReqBody localReqBody = new oidb_cmd0x68b.ReqBody();
+    long l = Long.valueOf(ors.a()).longValue();
+    localReqBody.uint64_uin.set(l);
+    localReqBody.uint32_network_type.set(pew.b());
     try
     {
-      if (paramBaseArticleInfo.mVideoColumnInfo != null)
-      {
-        localObject2 = localObject3;
-        localObject1 = String.valueOf(paramBaseArticleInfo.mVideoColumnInfo.a);
+      Object localObject = new JSONArray();
+      ((JSONArray)localObject).put(a(false));
+      localObject = ((JSONArray)localObject).toString();
+      if (QLog.isColorLevel()) {
+        QLog.d("DynamicHeaderModule", 2, "[requestForUpdate] req: " + (String)localObject);
       }
-      localObject2 = localObject1;
-      if (localBaseArticleInfo.mVideoColumnInfo == null) {
-        break label1429;
-      }
-      localObject2 = localObject1;
-      paramInt = localBaseArticleInfo.mVideoColumnInfo.a;
-      localObject2 = String.valueOf(paramInt);
+      localReqBody.bytes_nearby_cookie.set(ByteStringMicro.copyFromUtf8((String)localObject));
     }
-    catch (Exception localException1)
+    catch (Exception localException)
     {
       for (;;)
       {
-        try
-        {
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            localObject3 = localObject7;
-            localObject5 = localObject2;
-            localObject6 = localObject1;
-            localObject4 = localObject8;
-            if (!TextUtils.isEmpty((CharSequence)localObject2))
-            {
-              localObject4 = localObject8;
-              localObject3 = "[" + (String)localObject1 + "," + (String)localObject2 + "]";
-              localObject4 = localObject3;
-              localJSONObject3.put("column_id", localObject3);
-              localObject6 = localObject1;
-              localObject5 = localObject2;
-            }
-          }
-          localJSONObject3.put("double_videocard_jump_page", localJSONObject1.optString("double_videocard_jump_page"));
-          localJSONObject3.put("double_videocard_jump_src", localJSONObject1.optString("double_videocard_jump_src"));
-          localJSONObject2.put("id_double_video_cell", localJSONObject3);
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("rowkey_1", str1);
-          ((JSONObject)localObject1).put("column_id_1", localObject6);
-          ((JSONObject)localObject1).put("double_videocard_jump_page", localJSONObject1.optString("double_videocard_jump_page"));
-          ((JSONObject)localObject1).put("double_videocard_jump_src", localJSONObject1.optString("double_videocard_jump_src"));
-          ((JSONObject)localObject1).put("article_jump_url_1", localJSONObject1.optString("article_jump_url_1"));
-          localJSONObject2.put("id_container_1", localObject1);
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("cover_image_url_1", onh.a(paramBaseArticleInfo.mFirstPagePicUrl, bbll.b(180.5F), bbll.b(102.0F)));
-          localJSONObject2.put("cover_image_1", localObject1);
-          localJSONObject2.put("id_paly_wrapper_1", new JSONObject());
-          localObject1 = new JSONObject();
-          localObject2 = qoi.a(paramBaseArticleInfo.mVideoDuration * 1000);
-          if (localObject2 != null)
-          {
-            localObject2 = ((StringBuilder)localObject2).toString();
-            if (!TextUtils.isEmpty((CharSequence)localObject2))
-            {
-              ((JSONObject)localObject1).put("video_duration_1", localObject2);
-              localJSONObject2.put("id_video_play_duration_1", localObject1);
-            }
-          }
-          localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("article_title_1", paramBaseArticleInfo.mTitle);
-          if (!osg.a().a(paramBaseArticleInfo.mArticleID)) {
-            continue;
-          }
-          localObject1 = "#999999";
-          ((JSONObject)localObject2).put("article_title_1_color", localObject1);
-          ((JSONObject)localObject2).put("article_title_1_textsize", oow.a());
-          localJSONObject2.put("id_artilce_title_1", localObject2);
-          localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("info_source_1", paramBaseArticleInfo.mSubscribeName);
-          localObject1 = "#A6A6A6";
-          if (!TextUtils.isEmpty(paramBaseArticleInfo.mArticleSubscriptColor)) {
-            localObject1 = paramBaseArticleInfo.mArticleSubscriptColor;
-          }
-          ((JSONObject)localObject2).put("info_source_color1", localObject1);
-          localJSONObject2.put("id_info_source", localObject2);
-          localObject1 = new JSONObject();
-          localObject2 = qoi.d(paramBaseArticleInfo.mVideoCommentCount);
-          if (!TextUtils.isEmpty((CharSequence)localObject2))
-          {
-            ((JSONObject)localObject1).put("comment_num_1", (String)localObject2 + ajya.a(2131703443));
-            localJSONObject2.put("id_comment_num", localObject1);
-          }
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("rowkey_2", str2);
-          ((JSONObject)localObject1).put("column_id_2", localObject5);
-          ((JSONObject)localObject1).put("double_videocard_jump_page", localJSONObject1.optString("double_videocard_jump_page"));
-          ((JSONObject)localObject1).put("double_videocard_jump_src", localJSONObject1.optString("double_videocard_jump_src"));
-          ((JSONObject)localObject1).put("article_jump_url_2", localJSONObject1.optString("article_jump_url_2"));
-          localJSONObject2.put("id_container_1", localObject1);
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("cover_image_url_2", onh.a(localBaseArticleInfo.mFirstPagePicUrl, bbll.b(180.5F), bbll.b(102.0F)));
-          localJSONObject2.put("cover_image_2", localObject1);
-          localJSONObject2.put("id_play_wrapper_2", new JSONObject());
-          localObject1 = new JSONObject();
-          localObject2 = qoi.a(localBaseArticleInfo.mVideoDuration * 1000);
-          if (localObject2 != null)
-          {
-            localObject2 = ((StringBuilder)localObject2).toString();
-            if (!TextUtils.isEmpty((CharSequence)localObject2))
-            {
-              ((JSONObject)localObject1).put("video_duration_2", localObject2);
-              localJSONObject2.put("id_video_play_duration_2", localObject1);
-            }
-          }
-          localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("article_title_2", localBaseArticleInfo.mTitle);
-          if (!osg.a().a(localBaseArticleInfo.mArticleID)) {
-            continue;
-          }
-          localObject1 = "#999999";
-          ((JSONObject)localObject2).put("article_title_2_color", localObject1);
-          ((JSONObject)localObject2).put("article_title_2_textsize", oow.a());
-          localJSONObject2.put("id_artilce_title_2", localObject2);
-          localObject2 = new JSONObject();
-          localObject1 = "#A6A6A6";
-          if (!TextUtils.isEmpty(localBaseArticleInfo.mArticleSubscriptColor)) {
-            localObject1 = localBaseArticleInfo.mArticleSubscriptColor;
-          }
-          ((JSONObject)localObject2).put("info_source_color2", localObject1);
-          ((JSONObject)localObject2).put("info_source_2", localBaseArticleInfo.mSubscribeName);
-          localJSONObject2.put("id_info_source_2", localObject2);
-          localObject1 = new JSONObject();
-          localObject2 = qoi.d(localBaseArticleInfo.mVideoCommentCount);
-          if (!TextUtils.isEmpty((CharSequence)localObject2))
-          {
-            ((JSONObject)localObject1).put("comment_num_2", (String)localObject2 + ajya.a(2131703444));
-            localJSONObject2.put("id_comment_num_2", localObject1);
-          }
-          localJSONObject2.put("style_ID", "ReadInjoy_double_short_video_cell");
-          localJSONObject1.put("all_rowkey", str3);
-          localJSONObject1.put("column_id", localObject3);
-          localJSONObject1.put("columnId_1", localObject6);
-          localJSONObject1.put("columnId_2", localObject5);
-          localJSONObject1.put("rowKey_1", str1);
-          localJSONObject1.put("rowKey_2", str2);
-          localJSONObject1.put("subscript", "[" + paramBaseArticleInfo.mSubscribeName + "," + localBaseArticleInfo.mSubscribeName + "]");
-          localJSONObject1.put("subscript_1", paramBaseArticleInfo.mSubscribeName);
-          localJSONObject1.put("subscript_2", localBaseArticleInfo.mSubscribeName);
-          paramBaseArticleInfo.proteusItemsData = localJSONObject1.toString();
-          return localJSONObject2;
-        }
-        catch (Exception localException2)
-        {
-          Object localObject5;
-          Object localObject6;
-          continue;
-        }
-        localException1 = localException1;
-        localObject3 = null;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-        localObject5 = localObject2;
-        localObject6 = localObject1;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("DoubleShortVideoProteus", 2, "getDataJson: " + localException1.getMessage());
-          localObject3 = localObject4;
-          localObject5 = localObject2;
-          localObject6 = localObject1;
-          continue;
-          localObject1 = "#000000";
-          continue;
-          localObject1 = "#000000";
-          continue;
-          localObject2 = null;
-        }
+        QLog.e("DynamicHeaderModule", 1, "[requestForUpdate] ", localException);
       }
     }
-    localObject3 = localObject7;
-    localObject5 = localObject2;
-    localObject6 = localObject1;
-    localObject4 = localObject8;
+    a(pvb.a("OidbSvc.0xcba", 3258, 0, localReqBody.toByteArray()));
   }
   
-  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2)
+  private void d()
   {
-    paramContainer = paramContainer.getVirtualView();
-    if (paramContainer == null) {}
-    do
-    {
-      return;
-      a(paramContainer.findViewBaseByName("id_artilce_title_1"), parampau.a());
-    } while ((parampau.a() == null) || (parampau.a().mSubArtilceList == null) || (parampau.a().mSubArtilceList.size() <= 0) || (parampau.a().mSubArtilceList.get(0) == null));
-    a(paramContainer.findViewBaseByName("id_artilce_title_2"), (BaseArticleInfo)parampau.a().mSubArtilceList.get(0));
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
-  {
-    paramInt = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
-    switch (paramInt)
-    {
-    default: 
-      return false;
+    String str = (String)bjxj.a("sp_key_daily_dynamic_header_data", "");
+    QLog.i("DynamicHeaderModule", 1, "[startLoadFromDisk] json=" + str);
+    if (!TextUtils.isEmpty(str)) {
+      a(str);
     }
-    paramViewBase.setOnClickListener(new pfo(this, parampau, paramInt, paramContainer));
-    return true;
   }
+  
+  public JSONObject a()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
+      return localJSONObject;
+    }
+  }
+  
+  public void a()
+  {
+    c();
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    oidb_cmd0x68b.RspBody localRspBody = new oidb_cmd0x68b.RspBody();
+    int i = ork.a(paramToServiceMsg, paramFromServiceMsg, paramObject, localRspBody, false);
+    QLog.i("DynamicHeaderModule", 1, "[onReceive] result=" + i);
+    if (i == 0)
+    {
+      if ((localRspBody.rspChannelArticle.has()) && (localRspBody.rspChannelArticle.get() != null))
+      {
+        paramToServiceMsg = (oidb_cmd0x68b.RspChannelArticle)localRspBody.rspChannelArticle.get();
+        if ((paramToServiceMsg.bytes_nearby_cookie.has()) && (paramToServiceMsg.bytes_nearby_cookie.get() != null))
+        {
+          paramToServiceMsg = paramToServiceMsg.bytes_nearby_cookie.get().toStringUtf8();
+          bjxj.a("sp_key_daily_dynamic_header_data", paramToServiceMsg);
+          a(paramToServiceMsg);
+        }
+      }
+      return;
+    }
+    bjxj.a("sp_key_daily_dynamic_header_data", "");
+    ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderModule.2(this));
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool = true;
+    QLog.i("DynamicHeaderModule", 1, "[updateDynamicHeaderData] jsonString=" + paramString);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      try
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString).optJSONObject("dynamic_header_data");
+        paramString = this.jdField_a_of_type_OrgJsonJSONObject;
+        if (paramString == null) {
+          break label79;
+        }
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          label79:
+          QLog.e("DynamicHeaderModule", 1, "[updateDynamicHeaderData] ", paramString);
+          this.jdField_a_of_type_OrgJsonJSONObject = null;
+          bool = false;
+        }
+      }
+      ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderModule.1(this, bool));
+      return;
+      bool = false;
+    }
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pfn
  * JD-Core Version:    0.7.0.1
  */

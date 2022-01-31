@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -13,17 +13,17 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import anxk;
+import apox;
 
 public class BigEmotionDownloadedAdapter$1
   implements Runnable
 {
-  public BigEmotionDownloadedAdapter$1(anxk paramanxk, Context paramContext) {}
+  public BigEmotionDownloadedAdapter$1(apox paramapox, Context paramContext) {}
   
   public void run()
   {
     this.this$0.a = new ColorDrawable(Color.parseColor("#fafafa"));
-    Bitmap localBitmap = Bitmap.createBitmap(actj.a(44.0F, this.a.getResources()), actj.a(44.0F, this.a.getResources()), Bitmap.Config.ARGB_8888);
+    Bitmap localBitmap = Bitmap.createBitmap(aekt.a(44.0F, this.a.getResources()), aekt.a(44.0F, this.a.getResources()), Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
     Paint localPaint = new Paint();
     Rect localRect = new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
@@ -39,7 +39,7 @@ public class BigEmotionDownloadedAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.BigEmotionDownloadedAdapter.1
  * JD-Core Version:    0.7.0.1
  */

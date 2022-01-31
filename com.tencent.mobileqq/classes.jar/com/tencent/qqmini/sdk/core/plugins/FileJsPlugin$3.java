@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import behp;
-import bekr;
-import belk;
-import betc;
-import bezi;
+import bghn;
+import bgkd;
+import bgla;
+import bgyd;
 import com.tencent.qqmini.sdk.core.proxy.UploaderProxy.UploadListener;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -16,14 +16,14 @@ import org.json.JSONObject;
 class FileJsPlugin$3
   implements UploaderProxy.UploadListener
 {
-  FileJsPlugin$3(FileJsPlugin paramFileJsPlugin, int paramInt, bekr parambekr, long paramLong, File paramFile) {}
+  FileJsPlugin$3(FileJsPlugin paramFileJsPlugin, int paramInt, bgkd parambgkd, long paramLong, File paramFile) {}
   
   private void reportUploadResult(long paramLong, int paramInt)
   {
     if (this.this$0.mIsMiniGame) {}
     for (String str = "1";; str = "0")
     {
-      bezi.a(this.this$0.mMiniAppInfo, 641, null, null, null, paramInt, str, paramLong, null);
+      bgyd.a(this.this$0.mMiniAppInfo, 641, null, null, null, paramInt, str, paramLong, null);
       return;
     }
   }
@@ -44,7 +44,7 @@ class FileJsPlugin$3
         reportUploadResult(System.currentTimeMillis() - this.val$startMS, paramInt);
         this.val$req.a.a("onUploadTaskStateChange", localJSONObject.toString(), 0);
         return;
-        belk.a("uploadFile", localJSONObject, paramInt);
+        bgla.a("uploadFile", localJSONObject, paramInt);
       }
     }
     catch (JSONException paramString)
@@ -71,7 +71,7 @@ class FileJsPlugin$3
     }
     catch (Exception paramMap)
     {
-      betc.d("FileJsPlugin", "httpUpload--headersReceived fail---");
+      QMLog.e("FileJsPlugin", "httpUpload--headersReceived fail---");
     }
   }
   
@@ -131,7 +131,7 @@ class FileJsPlugin$3
       }
       catch (Exception paramArrayOfByte)
       {
-        betc.d("FileJsPlugin", "httpUpload--onUploadSucceed fail---");
+        QMLog.e("FileJsPlugin", "httpUpload--onUploadSucceed fail---");
         continue;
       }
       reportUploadResult(System.currentTimeMillis() - this.val$startMS, paramInt);
@@ -142,7 +142,7 @@ class FileJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.FileJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,11 @@
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.CardHeadLayout;
-import com.tencent.qphone.base.util.QLog;
 
-public class bdai
+final class bdai
   extends Handler
 {
-  public bdai(CardHeadLayout paramCardHeadLayout, Looper paramLooper)
+  bdai(Looper paramLooper)
   {
     super(paramLooper);
   }
@@ -17,22 +14,18 @@ public class bdai
   {
     switch (paramMessage.what)
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
+    default: 
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("CardHeadLayout", 2, "-->handleMessage MSG_UPDATE");
-      }
-      CardHeadLayout.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    case 1: 
+      bdah.a();
+      return;
     }
+    bdah.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdai
  * JD-Core Version:    0.7.0.1
  */

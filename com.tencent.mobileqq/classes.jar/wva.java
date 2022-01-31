@@ -1,29 +1,37 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 class wva
-  implements bcww
+  extends QQUIEventReceiver<wus, xau>
 {
-  wva(wux paramwux) {}
-  
-  public void a(BaseResp paramBaseResp)
+  public wva(@NonNull wus paramwus)
   {
-    if ((wux.a(this.a) == null) || (!wux.a(this.a).equals(paramBaseResp.transaction))) {
-      return;
+    super(paramwus);
+  }
+  
+  public void a(@NonNull wus paramwus, @NonNull xau paramxau)
+  {
+    wvc localwvc = paramwus.a;
+    if (localwvc != null) {
+      localwvc.a(paramwus.a());
     }
-    switch (paramBaseResp.errCode)
+    for (;;)
     {
-    case -2: 
-    case -1: 
-    default: 
-      bcql.a(this.a.a, 1, ajya.a(2131714655), 0).a();
+      wta.b("edit_video", "face_list_success", 0, paramxau.a.errorCode, new String[0]);
       return;
+      wsv.b(this.TAG, "DoodleEmojiListEventReceiver adapter is null");
     }
-    bcql.a(this.a.a, 2, ajya.a(2131714657), 0).a();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return xau.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wva
  * JD-Core Version:    0.7.0.1
  */

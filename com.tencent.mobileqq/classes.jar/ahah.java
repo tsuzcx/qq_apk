@@ -1,27 +1,48 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
 public class ahah
-  implements AnimationView.MyAnimationListener
+  extends ahad
 {
-  public ahah(ThemeHbFragment paramThemeHbFragment) {}
-  
-  public void onAnimationEnd(AnimationView paramAnimationView) {}
-  
-  public void onAnimationRepeat(AnimationView paramAnimationView) {}
-  
-  public void onAnimationStart(AnimationView paramAnimationView)
+  public ahah(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (ThemeHbFragment.a(this.a).getChildCount() > 0) {
-      ThemeHbFragment.a(this.a).removeViewAt(0);
-    }
+    super(paramContext, paramQQAppInterface, paramBoolean);
+  }
+  
+  protected int a()
+  {
+    return 10021;
+  }
+  
+  protected void a(RecommendTroopItem paramRecommendTroopItem)
+  {
+    azmj.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int b()
+  {
+    return 109;
+  }
+  
+  protected void b(RecommendTroopItem paramRecommendTroopItem)
+  {
+    azmj.b(null, "dc00899", "Grp_recom", "", "no_search_result", "clk_add", 0, 0, String.valueOf(paramRecommendTroopItem.uin), paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int c()
+  {
+    return 10022;
+  }
+  
+  protected void c(RecommendTroopItem paramRecommendTroopItem)
+  {
+    azmj.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahah
  * JD-Core Version:    0.7.0.1
  */

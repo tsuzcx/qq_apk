@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app.proxy;
 
-import aksy;
+import amjd;
 import android.content.ContentValues;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class DataLineMsgProxy$7
   implements Runnable
 {
-  public DataLineMsgProxy$7(aksy paramaksy, long paramLong, String paramString) {}
+  public DataLineMsgProxy$7(amjd paramamjd, long paramLong, String paramString) {}
   
   public void run()
   {

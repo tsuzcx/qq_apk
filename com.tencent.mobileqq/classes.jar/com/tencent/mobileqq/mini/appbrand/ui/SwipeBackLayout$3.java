@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import amgq;
 import android.os.Bundle;
+import anxq;
 
 class SwipeBackLayout$3
-  extends amgq
+  extends anxq
 {
   SwipeBackLayout$3(SwipeBackLayout paramSwipeBackLayout) {}
   
@@ -16,7 +16,7 @@ class SwipeBackLayout$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.SwipeBackLayout.3
  * JD-Core Version:    0.7.0.1
  */

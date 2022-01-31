@@ -1,57 +1,37 @@
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
-public class arkz
-  implements asgr
+class arkz
+  implements army
 {
-  private WeakReference<IVideoOuterStatusListener> a;
+  arkz(arky paramarky, List paramList, aqns paramaqns, arld paramarld) {}
   
-  public arkz(WeakReference<IVideoOuterStatusListener> paramWeakReference)
+  public void a()
   {
-    this.a = paramWeakReference;
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    if ((this.a == null) || (this.a.get() == null)) {
-      return;
-    }
-    IVideoOuterStatusListener localIVideoOuterStatusListener = (IVideoOuterStatusListener)this.a.get();
-    if (paramBoolean)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      localIVideoOuterStatusListener.onVideoStop();
-      return;
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_Aqns.b(localFileManagerEntity);
+      }
     }
-    localIVideoOuterStatusListener.onVideoStart(-1);
+    if (this.jdField_a_of_type_Arld != null) {
+      this.jdField_a_of_type_Arld.a(1, 0);
+    }
   }
   
-  public void a(int paramInt)
+  public void b()
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_GAIN");
-      arkv.a().a(false);
-      a(false);
-      return;
+    if (this.jdField_a_of_type_Arld != null) {
+      this.jdField_a_of_type_Arld.a(1, 1);
     }
-    QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_LOSS");
-    arkv.a().a(true);
-    a(true);
-  }
-  
-  public void a(WeakReference<IVideoOuterStatusListener> paramWeakReference)
-  {
-    this.a = paramWeakReference;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arkz
  * JD-Core Version:    0.7.0.1
  */

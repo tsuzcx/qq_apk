@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 
 class TroopAvatarWallEditActivity$9
   implements Runnable
@@ -9,7 +9,7 @@ class TroopAvatarWallEditActivity$9
   
   public void run()
   {
-    bcql.a(this.this$0, this.this$0.getString(2131695190), 0).a();
+    QQToast.a(this.this$0, this.this$0.getString(2131695348), 0).a();
   }
 }
 

@@ -1,33 +1,34 @@
-import android.os.Process;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
 
 public class aiyc
+  implements aizb
 {
-  public static final int a;
-  public static final long a;
-  public static final String a;
-  public static final String b;
-  public static final String c;
-  public long b;
-  public long c;
+  public aiyc(DoodleView paramDoodleView) {}
   
-  static
+  public void a()
   {
-    jdField_a_of_type_JavaLangString = bbdh.e();
-    jdField_b_of_type_JavaLangString = bbdh.i();
-    jdField_c_of_type_JavaLangString = bbdh.g();
-    jdField_a_of_type_Int = bbdh.b();
-    jdField_a_of_type_Long = bbdh.a();
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
+    }
   }
   
-  public aiyc()
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_Long = bbdh.a(Process.myPid());
-    this.jdField_c_of_type_Long = bbdh.f();
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    }
+  }
+  
+  public void b()
+  {
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.takevideo;
 
 import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-import vhm;
-import viw;
-import vvd;
-import vve;
+import wwe;
+import wxo;
+import xjv;
+import xjw;
 
 class EditVideoMusic$2
   implements Runnable
@@ -16,20 +16,20 @@ class EditVideoMusic$2
     if ((!this.this$0.c) && (this.this$0.d))
     {
       this.this$0.c = true;
-      localObject = this.this$0.a(viw.class);
+      localObject = this.this$0.a(wxo.class);
       if (localObject == null) {
         break label145;
       }
     }
     label145:
-    for (Object localObject = ((viw)localObject).a(this.this$0.a.a());; localObject = null)
+    for (Object localObject = ((wxo)localObject).a(this.this$0.a.a());; localObject = null)
     {
       boolean bool2 = false;
       boolean bool1 = bool2;
       if (localObject != null)
       {
         bool1 = bool2;
-        if (((vvd)localObject).a.a == 1) {
+        if (((xjv)localObject).a.a == 1) {
           bool1 = true;
         }
       }
@@ -40,7 +40,7 @@ class EditVideoMusic$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditVideoMusic.2
  * JD-Core Version:    0.7.0.1
  */

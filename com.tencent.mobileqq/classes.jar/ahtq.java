@@ -1,32 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2.23;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 
 public class ahtq
-  implements DialogInterface.OnClickListener
+  implements ahzw
 {
-  public ahtq(FlowCameraActivity2.23 param23) {}
+  public ahtq(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    paramDialogInterface = this.a.this$0.getIntent();
-    paramDialogInterface.putExtra("flow_back", 0);
-    this.a.this$0.setResult(1001, paramDialogInterface);
-    paramDialogInterface = null;
-    if (this.a.this$0.g) {
-      paramDialogInterface = this.a.this$0.a.jdField_a_of_type_Ahxm;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.k();
+      return;
+    case 3: 
+      this.a.l();
+      return;
+    case 2: 
+      this.a.m();
+      return;
     }
-    this.a.this$0.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a(this.a.this$0.d, this.a.this$0.e, this.a.this$0.n, this.a.this$0.g, paramDialogInterface);
-    this.a.this$0.finish();
+    this.a.n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtq
  * JD-Core Version:    0.7.0.1
  */

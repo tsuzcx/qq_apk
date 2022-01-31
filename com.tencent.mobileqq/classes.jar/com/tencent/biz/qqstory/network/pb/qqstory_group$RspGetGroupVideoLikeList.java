@@ -15,7 +15,7 @@ public final class qqstory_group$RspGetGroupVideoLikeList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupVideoLikeList
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusInnerData;
-import java.util.regex.Pattern;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class nyh
+  implements bhqd
 {
-  public int a;
-  public String a;
-  public Pattern a;
-  public JSONObject a;
-  public String b = "";
-  public String c = "";
+  public nyh(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity, boolean paramBoolean1, long paramLong, boolean paramBoolean2, int paramInt) {}
   
-  public nyh(ProteusInnerData paramProteusInnerData, int paramInt, String paramString1, String paramString2, String paramString3, JSONObject paramJSONObject, Pattern paramPattern)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt;
-    if (!TextUtils.isEmpty(paramString1)) {
-      this.jdField_a_of_type_JavaLangString = paramString1;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Boolean) {
+      return;
     }
-    if (!TextUtils.isEmpty(paramString2)) {
-      this.b = paramString2;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Boolean = true;
+    switch (paramInt)
+    {
     }
-    if (!TextUtils.isEmpty(paramString3)) {
-      this.c = paramString3;
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        arys.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.moveTaskToBack(true);
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.finish();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.e();
+      if (this.b) {
+        nrt.a(null, "", "0X8008661", "0X8008661", 0, 0, this.jdField_a_of_type_Int + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+      }
     }
-    if (paramJSONObject != null) {
-      this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    }
-    if (paramPattern != null) {
-      this.jdField_a_of_type_JavaUtilRegexPattern = paramPattern;
-    }
-  }
-  
-  public String toString()
-  {
-    return "InnerFormItem[" + this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyh
  * JD-Core Version:    0.7.0.1
  */

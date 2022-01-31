@@ -1,73 +1,82 @@
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
+import com.tencent.mobileqq.fragment.NearbyBaseFragment;
+import com.tencent.mobileqq.widget.TabBarView;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class adeu
+  implements ViewPager.OnPageChangeListener
 {
-  public adet a = new adet();
-  public adet b = new adet();
-  public adet c = new adet();
-  public adet d = new adet();
+  public adeu(NearbyActivity paramNearbyActivity) {}
   
-  public void a()
-  {
-    this.a.a(this.b);
-    this.c.a(this.d);
-    this.b.a(this.d);
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    this.a.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.b.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.c.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-  }
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, boolean paramBoolean)
+  public void onPageSelected(int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.a.a(this.b);
-      this.c.a(this.d);
-      this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
-      this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-      return;
+    if (QLog.isColorLevel()) {
+      ausq.a("onPageSelected", new Object[] { Integer.valueOf(this.a.b), Integer.valueOf(this.a.jdField_h_of_type_Int), Integer.valueOf(paramInt) });
     }
-    this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
-    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-  }
-  
-  public void a(adeu paramadeu)
-  {
-    this.a.a(paramadeu.a);
-    this.b.a(paramadeu.b);
-    this.c.a(paramadeu.c);
-    this.d.a(paramadeu.d);
-  }
-  
-  public void b(adeu paramadeu)
-  {
-    if (paramadeu.d == this.c)
+    Object localObject = this.a;
+    int i = ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabIndex;
+    ((NearbyActivity)localObject).b = i;
+    NearbyBaseFragment.b = i;
+    if ((this.a.jdField_h_of_type_Long == 0L) && (this.a.b == 2))
     {
-      this.a = paramadeu.a;
-      this.c = paramadeu.c;
-      this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
-    }
-    do
-    {
-      return;
-      if (this.d == paramadeu.c)
-      {
-        this.d.a(paramadeu.d);
-        this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
-        return;
+      this.a.jdField_h_of_type_Long = System.currentTimeMillis();
+      if (QLog.isDevelopLevel()) {
+        ausq.a("WebSpeedTrace", "mClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_h_of_type_Long) });
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("TransPathJob", 2, "TransPathJob merge point error");
+    }
+    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.b == 1))
+    {
+      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (QLog.isDevelopLevel()) {
+        ausq.a("WebSpeedTrace", "mNowClickTime", new Object[] { "onPageSelected", Long.valueOf(this.a.jdField_a_of_type_Long) });
+      }
+    }
+    if (this.a.jdField_h_of_type_Int != paramInt) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(paramInt, true);
+    }
+    if (this.a.jdField_h_of_type_Int != -1)
+    {
+      i = this.a.jdField_h_of_type_Int;
+      if (this.a.jdField_h_of_type_Int != this.a.c) {
+        break label411;
+      }
+      i = 9;
+    }
+    for (;;)
+    {
+      if (TextUtils.equals(alpo.a(2131707473), ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName)) {
+        i = 11;
+      }
+      int j = ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).reportId;
+      if (j != 0)
+      {
+        if (QLog.isColorLevel()) {
+          ausq.a("report_switch_tab", new Object[] { ((NearbyActivity.TabInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).tabName, Integer.valueOf(j) });
+        }
+        i = j;
+      }
+      ausq.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "switch_tab", i);
+      localObject = this.a.a(paramInt);
+      if (localObject != null) {
+        ((NearbyBaseFragment)localObject).aU_();
+      }
+      return;
+      label411:
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adeu
  * JD-Core Version:    0.7.0.1
  */

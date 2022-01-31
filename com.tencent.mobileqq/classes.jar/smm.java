@@ -1,69 +1,28 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
-import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
-import com.tencent.biz.pubaccount.weishi_new.push.biz.WSWeSeeClientBiz.1;
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class smm
-  extends smh<WSRedDotPushMsg, WSPushStrategyInfo>
+  implements smq
 {
-  private int jdField_a_of_type_Int;
-  private Intent jdField_a_of_type_AndroidContentIntent;
+  public smm(ViolaAccessHelper.2 param2) {}
   
-  public smm(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
+  public void a()
   {
-    super(paramWSRedDotPushMsg);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-  }
-  
-  private String a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return Uri.parse(paramString).getQueryParameter("logsour");
-    }
-    return null;
-  }
-  
-  private void a(String paramString)
-  {
-    if ((this.jdField_a_of_type_Int == 2) && (TextUtils.equals(a(paramString), "2020020163")))
-    {
-      smp.a();
-      WSPublicAccReport.getInstance().feedsItemForPushReport("gzh_click", 1000003);
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk error");
     }
   }
   
-  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  public void a(long paramLong)
   {
-    boolean bool3 = vzw.a(paramContext);
-    snb.d("WSPushLog", "WSWeSeeClientBiz strategyInfo.scheme = " + paramWSPushStrategyInfo.mScheme + ", isInstallWeishi = " + bool3);
-    boolean bool1 = false;
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      WSRecommendFragment.a(paramContext);
-      bool1 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk succ");
     }
-    boolean bool2 = bool1;
-    if (!TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme))
-    {
-      bool2 = bool1;
-      if (bool3)
-      {
-        sll.a().a(new WSWeSeeClientBiz.1(this, paramContext, paramWSPushStrategyInfo), 200L);
-        bool2 = true;
-      }
-    }
-    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smm
  * JD-Core Version:    0.7.0.1
  */

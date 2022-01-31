@@ -1,53 +1,61 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloManager.20.1;
-import com.tencent.mobileqq.apollo.data.ApolloPreDownloadData;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import Wallet.PfaFriend;
+import Wallet.PfaFriendRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class aisc
-  extends bbwt
+final class aisc
+  implements DialogInterface.OnClickListener
 {
-  aisc(airx paramairx) {}
+  aisc(WeakReference paramWeakReference, ArrayList paramArrayList) {}
   
-  public void onDoneFile(bbwu parambbwu)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((parambbwu == null) || (this.a.a == null)) {}
-    String str1;
+    if ((paramDialogInterface instanceof bdhc)) {
+      switch (paramInt)
+      {
+      }
+    }
     do
     {
       return;
-      if (parambbwu.a != 0)
-      {
-        QLog.e("ApolloManager", 1, new Object[] { "preDownloadListener task error:", Integer.valueOf(parambbwu.a()) });
-        return;
-      }
-      str1 = parambbwu.c;
-      parambbwu = parambbwu.a();
-    } while (parambbwu == null);
-    ApolloPreDownloadData localApolloPreDownloadData = (ApolloPreDownloadData)parambbwu.getSerializable(str1);
-    if (localApolloPreDownloadData == null)
+      aisa.a((SelectMemberActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaUtilArrayList, (bdhc)paramDialogInterface);
+    } while ((aisa.a == null) || (aisa.a.vecRec == null) || (aisa.a.vecRec.size() <= 0));
+    paramInt = 0;
+    label79:
+    String str;
+    int i;
+    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      QLog.e("ApolloManager", 1, "preDownloadListener res onDoneFile but preDownload data is null");
-      return;
+      str = "friendpay.selectpage.unrecomchoosefriclick";
+      i = 0;
     }
-    if (!TextUtils.isEmpty(localApolloPreDownloadData.zipDir)) {}
-    for (parambbwu = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.zipDir;; parambbwu = ajms.t + localApolloPreDownloadData.resId + ".zip")
+    for (;;)
     {
-      String str2 = ApolloUtil.e(localApolloPreDownloadData.dirType) + localApolloPreDownloadData.dir;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloManager", 2, new Object[] { "preDownloadListener res zip done reportId:", localApolloPreDownloadData.reportId, ", url:", str1 });
+      paramDialogInterface = str;
+      if (i < aisa.a.vecRec.size())
+      {
+        if (((ResultRecord)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a.equals(((PfaFriend)aisa.a.vecRec.get(i)).uin)) {
+          paramDialogInterface = "friendpay.selectpage.recommendfriclick";
+        }
       }
-      ThreadManager.getSubThreadHandler().post(new ApolloManager.20.1(this, localApolloPreDownloadData, parambbwu, str2));
-      return;
+      else
+      {
+        azmj.b(ajaf.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramDialogInterface, 0, 0, "", "", "", "");
+        paramInt += 1;
+        break label79;
+        break;
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aisc
  * JD-Core Version:    0.7.0.1
  */

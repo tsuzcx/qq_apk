@@ -1,88 +1,74 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class amnl
-  extends ahnw
+  extends QIPCModule
 {
-  int a;
+  private static amnl a;
   
-  public View a(int paramInt, Object paramObject, ahnr paramahnr, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpo paramahpo)
+  public amnl(String paramString)
   {
-    paramOnClickListener = paramContext.getResources();
-    if (paramView == null)
+    super(paramString);
+  }
+  
+  public static amnl a()
+  {
+    if (a == null) {}
+    try
     {
-      paramahnr = null;
-      if ((paramView == null) || (!(paramView.getTag() instanceof amnm))) {
-        break label179;
+      if (a == null) {
+        a = new amnl("PublicAccountModule");
       }
-      paramahnr = (amnm)paramahnr;
-      label35:
-      paramInt = paramViewGroup.getMeasuredHeight() - this.a;
-      if (paramInt >= 0) {
-        break label348;
-      }
-      paramInt = (int)(this.a * 1.5F);
+      return a;
     }
-    label81:
-    label348:
-    for (;;)
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountModule", 2, new Object[] { "PublicAccountModule : " + paramString + ", " + paramBundle.toString(), ", " + paramInt });
+    }
+    String str;
+    boolean bool;
+    if ("ACTION_REPORT_PUBLIC_ACCOUNT_FOLLOW_INFO_IN_WEBVIEW".equalsIgnoreCase(paramString))
     {
-      if ((paramView.getLayoutParams() instanceof AbsListView.LayoutParams))
+      paramInt = paramBundle.getInt("BUNDLE_KEY_REPORT_INFO_SOURCE", -1);
+      str = paramBundle.getString("BUNDLE_KEY_REPORT_INFO_PUIN", "");
+      bool = paramBundle.getBoolean("BUNDLE_KEY_REPORT_INFO_IS_FOLLOW", false);
+      if ((paramInt != -1) && (!TextUtils.isEmpty(str))) {
+        break label161;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountModule", 2, new Object[] { "empty error: source=", Integer.valueOf(paramInt), " uin=", str });
+      }
+    }
+    return null;
+    label161:
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
+    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    {
+      if (paramString == null)
       {
-        paramViewGroup = (AbsListView.LayoutParams)paramView.getLayoutParams();
-        paramViewGroup.width = -1;
-        paramViewGroup.height = paramInt;
-        paramView.setLayoutParams(paramViewGroup);
-        if ((paramObject instanceof Integer))
-        {
-          paramInt = ((Integer)paramObject).intValue();
-          if (paramInt != 16) {
-            break label294;
-          }
-          paramahnr.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839144);
-          if ((paramahnr.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-            ((Animatable)paramahnr.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
-          }
-          paramahnr.jdField_a_of_type_AndroidWidgetTextView.setText(2131698705);
+        if (!QLog.isColorLevel()) {
+          break;
         }
+        QLog.d("PublicAccountModule", 2, "app is null!");
+        return null;
       }
-      while (paramInt != 17)
-      {
-        return paramView;
-        paramahnr = paramView.getTag();
-        break;
-        paramView = LayoutInflater.from(paramContext).inflate(2131560698, null);
-        paramahnr = new amnm();
-        paramahnr.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131368899));
-        paramahnr.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367679));
-        paramahnr.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378436));
-        paramView.setTag(paramahnr);
-        this.a = (paramOnClickListener.getDimensionPixelSize(2131297958) + paramOnClickListener.getDimensionPixelSize(2131297960) + paramOnClickListener.getDimensionPixelSize(2131297959) * 2);
-        break label35;
-        paramViewGroup = new AbsListView.LayoutParams(-1, paramInt);
-        break label81;
-      }
-      if ((paramahnr.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-        ((Animatable)paramahnr.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
-      }
-      paramahnr.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-      paramahnr.jdField_a_of_type_AndroidWidgetTextView.setText(2131698704);
-      return paramView;
+      amnm.a(paramString, bool, str, paramInt);
+      return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amnl
  * JD-Core Version:    0.7.0.1
  */

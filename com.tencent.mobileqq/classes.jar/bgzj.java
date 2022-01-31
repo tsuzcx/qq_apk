@@ -1,48 +1,84 @@
-import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_req;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageReq;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StGetUserInteractiveStorageRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
 public class bgzj
-  extends QzoneExternalRequest
+  extends bgzp
 {
-  public JceStruct a;
+  private CloudStorage.StGetUserInteractiveStorageReq a = new CloudStorage.StGetUserInteractiveStorageReq();
   
-  public bgzj(long paramLong1, long paramLong2, int paramInt)
+  public bgzj(COMM.StCommonExt paramStCommonExt, String paramString, String[] paramArrayOfString)
   {
-    mobile_sub_get_cover_req localmobile_sub_get_cover_req = new mobile_sub_get_cover_req();
-    localmobile_sub_get_cover_req.uin = paramLong1;
-    localmobile_sub_get_cover_req.flag = paramInt;
-    this.a = localmobile_sub_get_cover_req;
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong2);
+    if (paramStCommonExt != null) {
+      this.a.ext.set(paramStCommonExt);
+    }
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramStCommonExt = paramArrayOfString[i];
+      this.a.keyList.add(paramStCommonExt);
+      i += 1;
+    }
+    this.a.appid.set(paramString);
   }
   
-  public static JceStruct a(byte[] paramArrayOfByte)
+  protected String a()
+  {
+    return "mini_app_cloudstorage";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
       return null;
     }
-    return decode(paramArrayOfByte, "getCover");
+    CloudStorage.StGetUserInteractiveStorageRsp localStGetUserInteractiveStorageRsp = new CloudStorage.StGetUserInteractiveStorageRsp();
+    try
+    {
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStGetUserInteractiveStorageRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if (localStGetUserInteractiveStorageRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("response", localStGetUserInteractiveStorageRsp);
+        paramArrayOfByte.put("resultCode", 0);
+        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        return paramArrayOfByte;
+      }
+      QMLog.d("GetUserInteractiveStorageRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("GetUserInteractiveStorageRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public String getCmdString()
+  public byte[] a()
   {
-    return "QzoneNewService.getCover";
+    return this.a.toByteArray();
   }
   
-  public JceStruct getReq()
+  protected String b()
   {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getCover";
+    return "GetUserInteractiveStorage";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgzj
  * JD-Core Version:    0.7.0.1
  */

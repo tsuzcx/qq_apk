@@ -1,101 +1,82 @@
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ocr.OcrControl.5.1;
+import com.tencent.mobileqq.ocr.OcrControl.5.2;
+import com.tencent.mobileqq.ocr.OcrControl.5.3;
+import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class avst
-  implements GLGestureListener
+  implements amvm
 {
-  protected View a;
-  private avsu a;
-  protected ProviderContainerView a;
-  protected AEMaterialPanel a;
-  protected AEProviderContainerView a;
-  protected QIMProviderContainerView a;
+  avst(avss paramavss) {}
   
-  public avst() {}
-  
-  public avst(QIMProviderContainerView paramQIMProviderContainerView)
+  public void a(int paramInt, String paramString, amxd paramamxd)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView = paramQIMProviderContainerView;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(avsu paramavsu)
-  {
-    this.jdField_a_of_type_Avsu = paramavsu;
-  }
-  
-  public void a(AEMaterialPanel paramAEMaterialPanel)
-  {
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel = paramAEMaterialPanel;
-  }
-  
-  public void a(AEProviderContainerView paramAEProviderContainerView)
-  {
-    this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView = paramAEProviderContainerView;
-  }
-  
-  public int onGetPriority()
-  {
-    return 1060;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    int j = paramMotionEvent.getPointerCount();
-    int k = paramMotionEvent.getAction() & 0xFF;
-    Object localObject = new StringBuilder().append("action: ").append(k).append(" event Y: ").append(paramMotionEvent.getY()).append(" container view height: ");
-    if (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight())
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.ocr.control", 2, "retCode:" + paramInt + ",sessionId:" + paramString + ",recogResult:" + paramamxd);
+    }
+    paramString = avss.a(this.a, paramString);
+    long l = 0L;
+    if (paramString != null) {
+      l = System.currentTimeMillis() - paramString.c;
+    }
+    int k = -1;
+    int m = -1;
+    int i = m;
+    int j = k;
+    if (paramString != null)
     {
-      bjah.a("CameraProviderViewGesture", i);
-      if ((j == 1) && (!paramBoolean)) {}
-      switch (k)
+      i = m;
+      j = k;
+      if (paramString.a != null)
       {
-      default: 
-        return false;
+        if ((paramInt != 0) || (paramamxd == null) || (paramamxd.a == null)) {
+          break label282;
+        }
+        paramamxd = paramamxd.a;
+        OcrRecogResult localOcrRecogResult = paramamxd.a();
+        if (avss.a(this.a) != null) {
+          avss.a(this.a).a(0, localOcrRecogResult, paramString.a.b, l);
+        }
+        if ((localOcrRecogResult != null) && ((this.a.a == 1) || (this.a.a == 2))) {
+          ThreadManager.postImmediately(new OcrControl.5.1(this, localOcrRecogResult, paramString), null, false);
+        }
+        if (paramamxd.a == null) {
+          break label334;
+        }
+        i = paramamxd.a.a;
+        j = paramamxd.a.b;
       }
     }
-    if (this.jdField_a_of_type_AndroidViewView != null) {}
-    for (localObject = this.jdField_a_of_type_AndroidViewView;; localObject = GLGestureProxy.getInstance().getGLSurfaceView())
+    for (;;)
     {
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.getHeight())) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderContainerView.a();
-      }
-      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.getHeight()))
+      k = j;
+      j = i;
+      i = k;
+      for (;;)
       {
-        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setCloseEventTouch(true);
-        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.c();
-        this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setCloseEventTouch(false);
+        ThreadManager.postImmediately(new OcrControl.5.2(this, paramString), null, false);
+        ThreadManager.post(new OcrControl.5.3(this, j, i, paramInt), 5, null, false);
+        return;
+        label282:
+        i = m;
+        j = k;
+        if (avss.a(this.a) != null)
+        {
+          avss.a(this.a).a(3, null, paramString.a.b, l);
+          i = m;
+          j = k;
+        }
       }
-      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight()))
-      {
-        bjah.a("CameraProviderViewGesture", "in hide close panel.");
-        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.a(true);
-      }
-      if ((localObject != null) && (this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView != null) && (paramMotionEvent.getY() < ((View)localObject).getHeight() - this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.getHeight())) {
-        this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEProviderContainerView.d();
-      }
-      if (this.jdField_a_of_type_Avsu == null) {
-        break;
-      }
-      this.jdField_a_of_type_Avsu.a();
-      return false;
+      label334:
+      j = -1;
+      i = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avst
  * JD-Core Version:    0.7.0.1
  */

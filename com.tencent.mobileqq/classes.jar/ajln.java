@@ -1,136 +1,85 @@
-import android.util.SparseIntArray;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class ajln
-  implements ajma
+  extends ajll
+  implements agco
 {
-  public static SparseIntArray a = new SparseIntArray();
+  int jdField_a_of_type_Int = -1;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public static int a(int paramInt1, boolean paramBoolean1, int paramInt2, int paramInt3, boolean paramBoolean2)
+  public ajln(FlowActivity paramFlowActivity)
   {
-    int k = 0;
-    int j = 0;
-    int i;
-    if (paramInt3 != 0) {
-      i = 1;
-    }
-    while ((paramInt2 == 0) && (!paramBoolean2)) {
-      if (i != 0)
-      {
-        paramInt2 = j;
-        return paramInt2;
-        i = 0;
-      }
-      else
-      {
-        return 6;
-      }
-    }
-    if ((paramInt2 != 1) && (paramInt2 != 2)) {
-      return 101;
-    }
-    if (a.get(paramInt1) == 0)
-    {
-      j = 1;
-      switch (paramInt2)
-      {
-      default: 
-        label67:
-        paramInt3 = k;
-        label95:
-        a.put(paramInt1, 1);
-        if (paramBoolean1) {
-          if (paramInt2 == 1) {
-            paramInt2 = 4;
-          }
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      paramInt3 = paramInt2;
-      if (paramInt1 == 1)
-      {
-        paramInt3 = paramInt2;
-        if (!ajmr.b) {
-          paramInt3 = paramInt2 + 10;
-        }
-      }
-      paramInt2 = paramInt3;
-      if (paramInt1 != 1) {
-        break;
-      }
-      paramInt2 = paramInt3;
-      if (ajmr.jdField_d_of_type_Boolean) {
-        break;
-      }
-      return paramInt3 | 0x20;
-      j = 0;
-      break label67;
-      paramInt3 = k;
-      if (j != 0) {
-        break label95;
-      }
-      paramInt3 = 1;
-      break label95;
-      if (j != 0)
-      {
-        paramInt3 = 2;
-        break label95;
-      }
-      paramInt3 = 3;
-      break label95;
-      paramInt2 = 5;
-      continue;
-      paramInt2 = paramInt3;
-      if (i == 0) {
-        paramInt2 = paramInt3 + 6;
-      }
-    }
-  }
-  
-  public String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return "";
-    case 1: 
-      return "_sprite_aio";
-    case 2: 
-      return "_sprite_drawer";
-    case 3: 
-      return "_sprite_friend_card";
-    case 113: 
-      return "_sprite_sdk";
-    case 4: 
-      return "_sprite_action_fps";
-    case 10: 
-      return "_apollo_so";
-    case 20: 
-      return "_apollo_crash";
-    case 30: 
-      return "_apollo_resource_download";
-    case 40: 
-      return "_apollo_store_sso";
-    }
-    return "_apollo_view_re_attach";
+    super(paramFlowActivity);
   }
   
   public void a()
   {
-    a.clear();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }
   
-  public boolean a(int paramInt)
+  public void a(ViewGroup paramViewGroup)
   {
-    return ajmr.jdField_d_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt));
+    PanelIconLinearLayout localPanelIconLinearLayout = new PanelIconLinearLayout(paramViewGroup.getContext(), null);
+    localPanelIconLinearLayout.setPanelIconListener(this);
+    int i = (int)(40.0F * paramViewGroup.getResources().getDisplayMetrics().density + 0.5F);
+    Object localObject = new RelativeLayout.LayoutParams(-1, -2);
+    ((RelativeLayout.LayoutParams)localObject).addRule(2, 2131366598);
+    paramViewGroup.addView(localPanelIconLinearLayout, (ViewGroup.LayoutParams)localObject);
+    localPanelIconLinearLayout.setCustomHeight(i);
+    paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowActivity.getIntent().getExtras();
+    if ((paramViewGroup != null) && (paramViewGroup.containsKey("selected_item")))
+    {
+      this.jdField_a_of_type_Int = paramViewGroup.getInt("selected_item");
+      if (paramViewGroup.containsKey("selected_data"))
+      {
+        localObject = (ArrayList)paramViewGroup.getSerializable("selected_data");
+        localPanelIconLinearLayout.a.clear();
+        localPanelIconLinearLayout.a.addAll((Collection)localObject);
+      }
+      localPanelIconLinearLayout.a();
+      localPanelIconLinearLayout.setSelected(this.jdField_a_of_type_Int);
+      if (paramViewGroup.containsKey("flow_key_need_poke_red")) {
+        localPanelIconLinearLayout.setShowRed(23, paramViewGroup.getBoolean("flow_key_need_poke_red"));
+      }
+      this.jdField_a_of_type_AndroidViewView = localPanelIconLinearLayout;
+      return;
+    }
+    throw new RuntimeException("No pass args SELECTED_ITEM");
+  }
+  
+  public void a(Object paramObject)
+  {
+    Intent localIntent = ((FlowActivity)a()).getIntent();
+    if ((paramObject == null) || (!(paramObject instanceof Integer))) {
+      return;
+    }
+    int i = ((Integer)paramObject).intValue();
+    QLog.d("XPanel", 2, " FlowPlusPanel  onPanelIconClick  i==" + i + "panelType===" + this.jdField_a_of_type_Int);
+    localIntent.putExtra("click_item", i);
+    ((FlowActivity)a()).setResult(1000, localIntent);
+    ((FlowActivity)a()).finish();
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajln
  * JD-Core Version:    0.7.0.1
  */

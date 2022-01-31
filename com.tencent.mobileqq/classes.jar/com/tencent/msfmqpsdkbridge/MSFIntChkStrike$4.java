@@ -2,8 +2,8 @@ package com.tencent.msfmqpsdkbridge;
 
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
-import bbdj;
-import bbgu;
+import bdcd;
+import bdfq;
 import com.tencent.mobileqq.app.BaseActivity;
 
 class MSFIntChkStrike$4
@@ -15,15 +15,15 @@ class MSFIntChkStrike$4
   {
     try
     {
-      bbgu localbbgu = bbdj.a(BaseActivity.sTopActivity, 230, this.val$fstrTitle, this.val$fstrWording, this.val$fonConfirm, this.val$fonCancel);
-      if (localbbgu == null) {
+      bdfq localbdfq = bdcd.a(BaseActivity.sTopActivity, 230, this.val$fstrTitle, this.val$fstrWording, this.val$fonConfirm, this.val$fonCancel);
+      if (localbdfq == null) {
         return;
       }
-      localbbgu.setNegativeButton(this.val$fstrCancelText, this.val$fonCancel);
-      localbbgu.setPositiveButton(this.val$fstrConfirmText, this.val$fonConfirm);
-      localbbgu.setOnDismissListener(this.val$fonDismissListener);
-      localbbgu.setCancelable(false);
-      localbbgu.show();
+      localbdfq.setNegativeButton(this.val$fstrCancelText, this.val$fonCancel);
+      localbdfq.setPositiveButton(this.val$fstrConfirmText, this.val$fonConfirm);
+      localbdfq.setOnDismissListener(this.val$fonDismissListener);
+      localbdfq.setCancelable(false);
+      localbdfq.show();
     }
     catch (Exception localException)
     {
@@ -37,7 +37,7 @@ class MSFIntChkStrike$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msfmqpsdkbridge.MSFIntChkStrike.4
  * JD-Core Version:    0.7.0.1
  */

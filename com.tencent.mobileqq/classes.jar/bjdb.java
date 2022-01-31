@@ -1,51 +1,35 @@
-import android.graphics.Canvas;
-import android.view.MotionEvent;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 
-public class bjdb
-  extends bkbm
+class bjdb
+  extends BroadcastReceiver
 {
-  public bjdb(DoodleView paramDoodleView)
+  private String jdField_a_of_type_JavaLangString;
+  
+  private bjdb(bjcz parambjcz) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramDoodleView);
-  }
-  
-  public String a()
-  {
-    return "PickLayer";
-  }
-  
-  public void a() {}
-  
-  protected void a(Canvas paramCanvas) {}
-  
-  public void a(Canvas paramCanvas, float paramFloat) {}
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return true;
-  }
-  
-  protected boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public void b(Canvas paramCanvas) {}
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+        break label40;
+      }
+      bjcz.a(this.jdField_a_of_type_Bjcz, true);
+    }
+    label40:
+    while (!this.jdField_a_of_type_JavaLangString.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
+      return;
+    }
+    bjcz.b(this.jdField_a_of_type_Bjcz, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjdb
  * JD-Core Version:    0.7.0.1
  */

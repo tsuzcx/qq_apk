@@ -1,40 +1,21 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
 public class ahsd
-  implements bckv
+  extends RecyclerView.ViewHolder
 {
-  public ahsd(LoginView paramLoginView, ImageView paramImageView, int paramInt) {}
+  TextView a;
   
-  public int a()
+  ahsd(View paramView)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localImageView.setVisibility(i);
-      return;
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.5F);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131379104));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsd
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.open.agent;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
-import bczo;
+import beyq;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 
 class BindGroupActivity$1
@@ -19,9 +19,9 @@ class BindGroupActivity$1
     {
       if (i < j)
       {
-        bczo localbczo = (bczo)this.this$0.a.getChildAt(i).getTag();
-        if ((localbczo != null) && (this.jdField_a_of_type_JavaLangString.equals(localbczo.jdField_a_of_type_JavaLangString))) {
-          localbczo.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        beyq localbeyq = (beyq)this.this$0.a.getChildAt(i).getTag();
+        if ((localbeyq != null) && (this.jdField_a_of_type_JavaLangString.equals(localbeyq.jdField_a_of_type_JavaLangString))) {
+          localbeyq.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
         }
       }
       else

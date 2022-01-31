@@ -1,441 +1,148 @@
-import android.app.ActivityManager;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.ConfigurationInfo;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge.1;
+import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge.2;
+import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge.3;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ARDeviceController.1;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
-import com.tencent.mobileqq.ar.model.ArDefaultSetting;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import mqq.os.MqqHandler;
 
 public class akxb
+  implements akwv
 {
-  private static akxb jdField_a_of_type_Akxb = new akxb();
-  private int jdField_a_of_type_Int = 5;
-  private ArEffectConfig jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
-  private String jdField_a_of_type_JavaLangString = a(Build.MODEL);
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int = 1;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = true;
-  private int jdField_d_of_type_Int;
-  private boolean jdField_d_of_type_Boolean;
-  private boolean e = true;
-  private boolean f = true;
-  private boolean g;
-  private boolean h;
+  private akwl jdField_a_of_type_Akwl;
+  private akwm jdField_a_of_type_Akwm;
+  private akwp jdField_a_of_type_Akwp;
+  private akwy jdField_a_of_type_Akwy;
+  private String jdField_a_of_type_JavaLangString;
   
-  private akxb()
+  public akxb(akwl paramakwl, akwy paramakwy, akwm paramakwm, akwp paramakwp)
   {
-    Object localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4);
-    this.jdField_b_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("gpu_renderer", null);
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_b_of_type_JavaLangString = a(this.jdField_b_of_type_JavaLangString);
-    }
-    this.jdField_c_of_type_Int = ((SharedPreferences)localObject1).getInt("ar_incompatible_reason", 0);
-    this.jdField_d_of_type_Int = ((SharedPreferences)localObject1).getInt("ar_load_so_crash_time", 0);
-    Object localObject2 = ((SharedPreferences)localObject1).getString("ar_load_so_crash_version", "");
-    if (!AppSetting.f().equals(localObject2))
-    {
-      localObject2 = ((SharedPreferences)localObject1).edit();
-      ((SharedPreferences.Editor)localObject2).putInt("ar_load_so_crash_time", 0);
-      bbkb.a((SharedPreferences.Editor)localObject2);
-      this.jdField_d_of_type_Int = 0;
-    }
-    int i = ((SharedPreferences)localObject1).getInt("ar_native_so_crash_version", 0);
-    if (((SharedPreferences)localObject1).getInt("ar_native_so_version", 0) != i)
-    {
-      ((SharedPreferences)localObject1).edit().putInt("ar_load_so_crash_time", 0).commit();
-      this.jdField_d_of_type_Int = 0;
-    }
-    try
-    {
-      localObject1 = ((ActivityManager)BaseApplicationImpl.getApplication().getSystemService("activity")).getDeviceConfigurationInfo();
-      if (localObject1 == null) {
-        break label249;
-      }
-      if (((ConfigurationInfo)localObject1).reqGlEsVersion < 131072) {
-        break label290;
-      }
-      bool = true;
-    }
-    catch (Exception localException)
-    {
-      try
-      {
-        if ((!"000000000000000".equalsIgnoreCase(((TelephonyManager)BaseApplicationImpl.getApplication().getSystemService("phone")).getDeviceId())) || (!Build.FINGERPRINT.startsWith("generic"))) {
-          break label303;
-        }
-        for (boolean bool = true;; bool = false)
-        {
-          this.g = bool;
-          return;
-          bool = false;
-          break;
-          localException = localException;
-          localException.printStackTrace();
-          break label249;
-        }
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-    this.h = bool;
+    this.jdField_a_of_type_Akwl = paramakwl;
+    this.jdField_a_of_type_Akwy = paramakwy;
+    this.jdField_a_of_type_Akwm = paramakwm;
+    this.jdField_a_of_type_Akwp = paramakwp;
   }
   
-  public static akxb a()
+  private boolean a(int paramInt1, int paramInt2)
   {
-    return jdField_a_of_type_Akxb;
+    if ((this.jdField_a_of_type_Akwl == null) || (this.jdField_a_of_type_Akwl.a() == null)) {}
+    while (this.jdField_a_of_type_Akwp.a(paramInt1, paramInt2) == null) {
+      return false;
+    }
+    return true;
   }
   
-  private static String a(String paramString)
+  public void a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    paramString = paramString.toLowerCase();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramString.length())
-    {
-      char c1 = paramString.charAt(i);
-      if (((c1 >= '0') && (c1 <= '9')) || ((c1 >= 'a') && (c1 <= 'z'))) {
-        localStringBuilder.append(c1);
-      }
-      i += 1;
-    }
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Akwm.a();
   }
   
-  private void a()
+  public void a(akwl paramakwl)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
-    int i;
-    int k;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null)
-    {
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_b_of_type_Int = -1;
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.a.iterator();
-      for (;;)
-      {
-        if (localIterator.hasNext()) {
-          if (a((String)localIterator.next()).equals(this.jdField_a_of_type_JavaLangString))
-          {
-            this.jdField_a_of_type_Int = 5;
-            this.jdField_b_of_type_Int = 1;
-            i = 1;
-            int j = i;
-            if (i == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.c.iterator();
-              do
-              {
-                k = i;
-                if (!localIterator.hasNext()) {
-                  break;
-                }
-              } while (!a((String)localIterator.next()).equals(this.jdField_a_of_type_JavaLangString));
-              this.jdField_a_of_type_Boolean = true;
-              k = 1;
-              j = k;
-              if (k == 0)
-              {
-                this.jdField_a_of_type_Boolean = false;
-                j = k;
-              }
-            }
-            k = j;
-            ArDefaultSetting localArDefaultSetting;
-            if (j == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.e.iterator();
-              do
-              {
-                k = j;
-                if (!localIterator.hasNext()) {
-                  break;
-                }
-                localArDefaultSetting = (ArDefaultSetting)localIterator.next();
-              } while ((localArDefaultSetting.jdField_a_of_type_Int != 0) || (!a(localArDefaultSetting.jdField_a_of_type_JavaLangString).equals(this.jdField_a_of_type_JavaLangString)));
-              this.jdField_a_of_type_Int = localArDefaultSetting.jdField_c_of_type_Int;
-              this.jdField_b_of_type_Int = localArDefaultSetting.jdField_b_of_type_Int;
-              k = 1;
-            }
-            i = k;
-            if (k == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.b.iterator();
-              do
-              {
-                i = k;
-                if (!localIterator.hasNext()) {
-                  break;
-                }
-              } while (!a((String)localIterator.next()).equals(this.jdField_b_of_type_JavaLangString));
-              this.jdField_a_of_type_Int = 5;
-              this.jdField_b_of_type_Int = 1;
-              i = 1;
-            }
-            k = i;
-            if (i == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.d.iterator();
-              do
-              {
-                j = i;
-                if (!localIterator.hasNext()) {
-                  break;
-                }
-              } while (!a((String)localIterator.next()).equals(this.jdField_b_of_type_JavaLangString));
-              this.jdField_a_of_type_Boolean = true;
-              j = 1;
-              k = j;
-              if (j == 0)
-              {
-                this.jdField_a_of_type_Boolean = false;
-                k = j;
-              }
-            }
-            if (k == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.e.iterator();
-              while (localIterator.hasNext())
-              {
-                localArDefaultSetting = (ArDefaultSetting)localIterator.next();
-                if ((localArDefaultSetting.jdField_a_of_type_Int == 1) && (a(localArDefaultSetting.jdField_a_of_type_JavaLangString).equals(this.jdField_b_of_type_JavaLangString)))
-                {
-                  this.jdField_a_of_type_Int = localArDefaultSetting.jdField_c_of_type_Int;
-                  this.jdField_b_of_type_Int = localArDefaultSetting.jdField_b_of_type_Int;
-                  i = 1;
-                }
-              }
-            }
-          }
-        }
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteDrawerInfoBridge", 2, "[initSprite]");
+    }
+    if ((this.jdField_a_of_type_Akwm == null) || (paramakwl == null) || (!paramakwl.c())) {
+      if (paramakwl != null) {
+        alda.a(paramakwl.a(), 300, 160, new Object[] { "glview is not ready" });
       }
     }
-    for (;;)
-    {
-      if ((i != 0) && (this.jdField_a_of_type_Int >= 1) && (this.jdField_a_of_type_Int <= 5) && (this.jdField_b_of_type_Int >= 0) && (this.jdField_b_of_type_Int <= 1))
-      {
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = true;
-        return;
-      }
-      this.jdField_a_of_type_Int = localSharedPreferences.getInt("ar_adjust_track_quality", -1);
-      if ((this.jdField_a_of_type_Int >= 1) && (this.jdField_a_of_type_Int <= 5))
-      {
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_b_of_type_Int = localSharedPreferences.getInt("ar_adjust_render_quality", -1);
-        if ((this.jdField_b_of_type_Int < 0) || (this.jdField_b_of_type_Int > 1)) {
-          break label608;
-        }
-      }
-      for (this.jdField_c_of_type_Boolean = false;; this.jdField_c_of_type_Boolean = true)
-      {
-        this.jdField_d_of_type_Boolean = true;
-        return;
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = 5;
-        break;
-        label608:
-        this.jdField_b_of_type_Int = 1;
-      }
-      i = k;
-      continue;
-      i = 0;
-      break;
-      i = 0;
-    }
-  }
-  
-  private void a(boolean paramBoolean, int paramInt)
-  {
-    if ((this.e) || (this.jdField_c_of_type_Int != paramInt))
-    {
-      this.e = false;
-      ThreadManager.post(new ARDeviceController.1(this, paramInt, paramBoolean), 5, null, true);
-    }
-    this.jdField_c_of_type_Int = paramInt;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a(ArEffectConfig paramArEffectConfig)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = paramArEffectConfig;
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      a();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
+    String str;
+    akwc localakwc;
     do
     {
+      do
+      {
+        return;
+        if (a(0, -1)) {
+          break;
+        }
+        QLog.w("cmshow_scripted_SpriteDrawerInfoBridge", 1, "[initSprite], fail to load script.");
+      } while (paramakwl.e != 1);
+      ThreadManager.getUIHandler().post(new SpriteDrawerInfoBridge.2(this, paramakwl));
       return;
-      this.jdField_b_of_type_JavaLangString = a(paramString);
-      SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit();
-      localEditor.putString("gpu_renderer", paramString);
-      bbkb.a(localEditor);
-      a(paramString);
-    } while (this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig == null);
-    a();
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        str = this.jdField_a_of_type_Akwm.a();
+        QLog.d("CmShowStatUtil", 1, "drawer get spriteJs");
+      }
+      while (TextUtils.isEmpty(str))
+      {
+        alda.a(paramakwl.a(), 300, 301, new Object[] { "spriteJs is empty" });
+        return;
+        str = this.jdField_a_of_type_JavaLangString;
+        QLog.d("CmShowStatUtil", 1, "drawer spriteJs from cache");
+        this.jdField_a_of_type_JavaLangString = null;
+      }
+      localakwc = (akwc)this.jdField_a_of_type_Akwp.a(0);
+    } while (localakwc == null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initDrawerInfoSprite('").append(str).append("');");
+    alda.a(this.jdField_a_of_type_Akwl.a(), 350);
+    localakwc.a(localStringBuilder.toString());
+    ThreadManager.executeOnSubThread(new SpriteDrawerInfoBridge.3(this, localakwc, paramakwl));
   }
   
-  public boolean a()
+  public void a(SpriteTaskParam paramSpriteTaskParam)
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    for (;;)
-    {
-      int j;
-      try
-      {
-        if (this.jdField_d_of_type_Int >= 5)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ARDeviceController", 2, "isAREnable enable= false,failCode= 870888");
-          }
-          a(false, 870888);
-          return bool2;
-        }
-        if (!this.f) {
-          break label338;
-        }
-        this.f = false;
-        this.jdField_d_of_type_Int += 1;
-        Object localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
-        SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
-        localEditor.putInt("ar_load_so_crash_time", this.jdField_d_of_type_Int);
-        localEditor.putString("ar_load_so_crash_version", AppSetting.f());
-        localEditor.putInt("ar_native_so_crash_version", ((SharedPreferences)localObject1).getInt("ar_native_so_version", 0));
-        bbkb.a(localEditor);
-        j = 1;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          i = 870882;
-          a(bool1, i);
-          if (QLog.isColorLevel()) {
-            QLog.d("ARDeviceController", 2, "isAREnable enable= " + bool1 + ",failCode= " + i);
-          }
-          bool2 = bool1;
-          if (j == 0) {
-            continue;
-          }
-          localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit();
-          ((SharedPreferences.Editor)localObject1).putInt("ar_load_so_crash_time", 0);
-          bbkb.a((SharedPreferences.Editor)localObject1);
-          this.jdField_d_of_type_Int = 0;
-          bool2 = bool1;
-          continue;
-        }
-        if (Build.VERSION.SDK_INT >= 14) {
-          break label272;
-        }
-      }
-      finally {}
-      int i = 870881;
-      continue;
-      label272:
-      if (!this.h)
-      {
-        i = 870883;
-      }
-      else if (this.g)
-      {
-        i = 870887;
-      }
-      else if (llw.f() < 3)
-      {
-        i = 870884;
-      }
-      else
-      {
-        bool2 = augv.a();
-        if (!bool2)
-        {
-          i = 870886;
-        }
-        else
-        {
-          bool1 = true;
-          i = 0;
-          continue;
-          label338:
-          j = 0;
-        }
-      }
+    if (paramSpriteTaskParam == null) {
+      return;
     }
+    ThreadManager.excute(new SpriteDrawerInfoBridge.1(this, paramSpriteTaskParam), 192, null, true);
   }
   
-  public boolean b()
+  public void b() {}
+  
+  public void b(SpriteTaskParam paramSpriteTaskParam)
   {
-    boolean bool = false;
-    int i;
-    if (this.jdField_d_of_type_Int >= 5) {
-      i = 870888;
+    boolean bool = true;
+    if ((paramSpriteTaskParam == null) || (this.jdField_a_of_type_Akwm == null) || (this.jdField_a_of_type_Akwl == null) || (!this.jdField_a_of_type_Akwl.c())) {
+      return;
     }
+    this.jdField_a_of_type_Akwm.a(paramSpriteTaskParam);
+    if (!a(paramSpriteTaskParam.jdField_c_of_type_Int, paramSpriteTaskParam.f))
+    {
+      QLog.w("cmshow_scripted_SpriteDrawerInfoBridge", 1, "[playAction], fail to load script.");
+      paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_Akwm.a(paramSpriteTaskParam);
+    if (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+      return;
+    }
+    akwd localakwd = this.jdField_a_of_type_Akwp.a(paramSpriteTaskParam.jdField_c_of_type_Int);
+    if (localakwd == null)
+    {
+      QLog.w("cmshow_scripted_SpriteDrawerInfoBridge", 1, "actionScript == null.");
+      paramSpriteTaskParam.jdField_b_of_type_Int = 4;
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteDrawerInfoBridge", 2, new Object[] { "[playAction], ready to play, actionId:", Integer.valueOf(paramSpriteTaskParam.f) });
+    }
+    paramSpriteTaskParam.jdField_b_of_type_Int = 2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("playDrawerInfoAction ('").append((String)localObject).append("');");
+    localakwd.a(localStringBuilder.toString());
+    localakwd.a(paramSpriteTaskParam.jdField_a_of_type_JavaLangString, false);
+    localakwd.a(paramSpriteTaskParam.jdField_b_of_type_JavaLangString, false);
+    localObject = this.jdField_a_of_type_Akwl.a();
+    if (!TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString)) {}
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARDeviceController", 2, "isSupportAr enable= " + bool + ",errorCode= " + i);
-      }
-      return bool;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i = 870882;
-      }
-      else if (Build.VERSION.SDK_INT < 14)
-      {
-        i = 870881;
-      }
-      else if (!this.h)
-      {
-        i = 870883;
-      }
-      else if (this.g)
-      {
-        i = 870887;
-      }
-      else if (llw.f() < 3)
-      {
-        i = 870884;
-      }
-      else if (!augv.a())
-      {
-        i = 870886;
-      }
-      else
-      {
-        i = 0;
-        bool = true;
-      }
+      albu.a((QQAppInterface)localObject, paramSpriteTaskParam, bool, paramSpriteTaskParam.jdField_b_of_type_Boolean);
+      return;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxb
  * JD-Core Version:    0.7.0.1
  */

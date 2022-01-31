@@ -1,31 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.ArithResultView;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.CheckArithHWResultFragment;
-import org.json.JSONException;
+import com.tencent.mobileqq.data.MessageForPtt;
 
-public class azwf
-  implements View.OnClickListener
+public abstract interface azwf
 {
-  public azwf(CheckArithHWResultFragment paramCheckArithHWResultFragment) {}
+  public abstract void a(String paramString, MessageForPtt paramMessageForPtt);
   
-  public void onClick(View paramView)
-  {
-    try
-    {
-      CheckArithHWResultFragment.a(this.a, CheckArithHWResultFragment.a(this.a).a(), CheckArithHWResultFragment.a(this.a).a());
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-      vxp.a("QQ.Troop.homework.CheckArithHWResultFragment//onClick toJSON error:" + paramView, new Object[0]);
-    }
-  }
+  public abstract void a(boolean paramBoolean, MessageForPtt paramMessageForPtt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azwf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,116 +1,88 @@
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import java.io.File;
 
 public class aolv
+  extends aofy<blus>
 {
-  private int jdField_a_of_type_Int = 0;
-  public aogn a;
-  private aolv jdField_a_of_type_Aolv;
-  private int jdField_b_of_type_Int = 0;
-  private aolv jdField_b_of_type_Aolv;
-  private int c;
-  private int d;
-  private int e;
-  
-  public aolv(aogn paramaogn)
-  {
-    this.jdField_a_of_type_Aogn = paramaogn;
-    this.e = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297146);
-  }
-  
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return 309;
   }
   
-  public aolv a()
+  @NonNull
+  public blus a(int paramInt)
   {
-    return this.jdField_a_of_type_Aolv;
+    return new blus();
+  }
+  
+  @Nullable
+  public blus a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length == 0)) {
+      return null;
+    }
+    paramArrayOfaogf = paramArrayOfaogf[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onParsed, content:" + paramArrayOfaogf);
+    }
+    return new blup().a(paramArrayOfaogf, DynamicTextConfigManager.a.getAbsolutePath(), "temp_dynamic_text_zip", new aolw(this));
+  }
+  
+  public Class<blus> a()
+  {
+    return blus.class;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onReqFailed");
+    }
   }
   
-  public void a(aolv paramaolv)
+  public void a(blus paramblus)
   {
-    this.jdField_a_of_type_Aolv = paramaolv;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onUpdate");
+    }
   }
   
   public int b()
   {
-    return this.jdField_b_of_type_Int;
+    if (!DynamicTextConfigManager.b()) {
+      return 0;
+    }
+    return bdiv.a(BaseApplicationImpl.getContext());
   }
   
-  public aolv b()
+  public int b(int paramInt)
   {
-    return this.jdField_b_of_type_Aolv;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(aolv paramaolv)
-  {
-    this.jdField_b_of_type_Aolv = paramaolv;
-  }
-  
-  public int c()
-  {
-    if (this.d != 0)
+    if (!DynamicTextConfigManager.b())
     {
-      if (this.e != 0) {
-        return this.d + this.e;
-      }
-      this.e = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297146);
-      return this.d + this.e;
+      QLog.i("QIMDynamicTextConfigProcessor", 1, "config file not exist");
+      aogj.a().a(309, 0);
+      return 0;
     }
-    return 0;
+    return super.b(paramInt);
   }
   
-  public void c(int paramInt)
+  public boolean b()
   {
-    this.d = paramInt;
+    return false;
   }
   
-  public int d()
+  public boolean c()
   {
-    if (this.c != 0) {
-      return this.c;
-    }
-    if ((this.jdField_a_of_type_Aogn != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Aogn.a)))
-    {
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      Object localObject2 = aolw.a(this.jdField_a_of_type_Aogn.a, ((QQAppInterface)localObject1).getApp().getBaseContext());
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = this.jdField_a_of_type_Aogn.a;
-      }
-      int i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297151);
-      localObject2 = new TextPaint();
-      ((TextPaint)localObject2).setAntiAlias(true);
-      ((TextPaint)localObject2).setDither(true);
-      ((TextPaint)localObject2).setTextSize(i);
-      this.c = ((int)((TextPaint)localObject2).measureText((String)localObject1) + (BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297150) + BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297149) * 2 + BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297146) + BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131297147)));
-    }
-    for (;;)
-    {
-      return this.c;
-      QLog.e("TAG horserace", 2, " GET WIDTH WITH NULL INFO");
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aolv
  * JD-Core Version:    0.7.0.1
  */

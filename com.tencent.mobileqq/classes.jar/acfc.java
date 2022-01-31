@@ -1,60 +1,57 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TextPreviewSettingActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class acfc
-  extends bbwt
+  extends avqu
 {
-  public acfc(TextPreviewSettingActivity paramTextPreviewSettingActivity, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public SessionInfo a;
+  public WeakReference<QQAppInterface> a;
   
-  public void onCancel(bbwu parambbwu)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onCancel| task:" + parambbwu);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      if (QLog.isColorLevel()) {
+        QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed appRef==null");
+      }
     }
-    super.onCancel(parambbwu);
-  }
-  
-  public void onDone(bbwu parambbwu)
-  {
-    super.onDone(parambbwu);
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onDone| task:" + parambbwu);
-    }
-    if (parambbwu.b()) {}
+    QQAppInterface localQQAppInterface;
     do
     {
       return;
-      if (parambbwu.a() == -1)
-      {
-        parambbwu = new Message();
-        parambbwu.what = 17;
-        TextPreviewSettingActivity.a(this.a).sendMessage(parambbwu);
-        return;
+      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
+        break;
       }
-      parambbwu = TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a));
-    } while (parambbwu == null);
-    Message localMessage = new Message();
-    localMessage.what = 18;
-    localMessage.obj = parambbwu;
-    TextPreviewSettingActivity.a(this.a).sendMessage(localMessage);
-  }
-  
-  public boolean onStart(bbwu parambbwu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewSettingActivity", 2, "fontNameDownloadListener.onStart| task:" + parambbwu);
+    } while (!QLog.isColorLevel());
+    QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed app == null || sessionInfo == nul");
+    return;
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = (FromServiceMsg)paramBundle.getParcelable("KEY_FOR_AIO_STORY_FEED_DATA");
+      if (paramBundle != null)
+      {
+        paramBundle = yvp.a(bdku.b(paramBundle.getWupBuffer()));
+        if (paramBundle != null) {
+          acex.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBundle);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+      return;
     }
-    return super.onStart(parambbwu);
+    catch (Exception paramBundle)
+    {
+      QLog.e("UndealCount.QZoneObserver", 1, "call onGetNewestStoryFeed exception " + paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfc
  * JD-Core Version:    0.7.0.1
  */

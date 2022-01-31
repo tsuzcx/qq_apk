@@ -24,21 +24,21 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.locks.ReentrantLock;
-import lga;
-import lly;
-import llz;
-import lma;
-import lmc;
+import lid;
+import lob;
+import loc;
+import lod;
+import lof;
 
 public class DoodleSurfaceView
   extends MySurfaceView
-  implements Handler.Callback, lma
+  implements Handler.Callback, lod
 {
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   public Handler a;
-  private llz jdField_a_of_type_Llz;
+  private loc jdField_a_of_type_Loc;
   private long jdField_b_of_type_Long = -1L;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
   
@@ -62,33 +62,33 @@ public class DoodleSurfaceView
   
   private void a(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Llz.a(0, paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Loc.a(0, paramFloat1, paramFloat2);
   }
   
   @TargetApi(11)
   private void a(Context paramContext)
   {
-    setId(2131372242);
+    setId(2131372598);
     setClickable(false);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-    a(llz.a());
+    a(loc.a());
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   }
   
-  private void a(Canvas paramCanvas, lly paramlly, boolean paramBoolean)
+  private void a(Canvas paramCanvas, lob paramlob, boolean paramBoolean)
   {
-    if (paramlly != null) {
-      paramlly.a(paramCanvas, this, paramBoolean);
+    if (paramlob != null) {
+      paramlob.a(paramCanvas, this, paramBoolean);
     }
   }
   
-  private void a(llz paramllz)
+  private void a(loc paramloc)
   {
-    this.jdField_a_of_type_Llz = paramllz;
-    this.jdField_a_of_type_Llz.d = getHeight();
-    this.jdField_a_of_type_Llz.c = getWidth();
+    this.jdField_a_of_type_Loc = paramloc;
+    this.jdField_a_of_type_Loc.d = getHeight();
+    this.jdField_a_of_type_Loc.c = getWidth();
   }
   
   private void a(boolean paramBoolean, int paramInt1, int paramInt2)
@@ -143,12 +143,12 @@ public class DoodleSurfaceView
   
   private void b(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Llz.b(0, paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Loc.b(0, paramFloat1, paramFloat2);
   }
   
   private void c(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Llz.c(0, paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Loc.c(0, paramFloat1, paramFloat2);
   }
   
   public void a(int paramInt)
@@ -156,9 +156,9 @@ public class DoodleSurfaceView
     if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {}
     synchronized (this.jdField_a_of_type_AndroidGraphicsCanvas)
     {
-      a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_a_of_type_Llz.jdField_a_of_type_ArrayOfLly[paramInt], false);
+      a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_a_of_type_Loc.jdField_a_of_type_ArrayOfLob[paramInt], false);
       if (this.jdField_b_of_type_Long == -1L) {
-        this.jdField_b_of_type_Long = this.jdField_a_of_type_Llz.jdField_a_of_type_ArrayOfLly[paramInt].jdField_a_of_type_Long;
+        this.jdField_b_of_type_Long = this.jdField_a_of_type_Loc.jdField_a_of_type_ArrayOfLob[paramInt].jdField_a_of_type_Long;
       }
       return;
     }
@@ -166,47 +166,47 @@ public class DoodleSurfaceView
   
   protected void a(long paramLong)
   {
-    this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
     Object localObject3;
     try
     {
-      if ((this.jdField_a_of_type_Llz.jdField_a_of_type_ArrayOfBoolean[1] != 0) || (this.jdField_a_of_type_Llz.jdField_a_of_type_ArrayOfBoolean[0] != 0))
+      if ((this.jdField_a_of_type_Loc.jdField_a_of_type_ArrayOfBoolean[1] != 0) || (this.jdField_a_of_type_Loc.jdField_a_of_type_ArrayOfBoolean[0] != 0))
       {
-        Iterator localIterator = this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+        Iterator localIterator = this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
         while (localIterator.hasNext())
         {
-          localObject3 = (lly)localIterator.next();
-          if (this.jdField_a_of_type_Long - ((lly)localObject3).jdField_a_of_type_Long <= 1200L) {
-            ((lly)localObject3).jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+          localObject3 = (lob)localIterator.next();
+          if (this.jdField_a_of_type_Long - ((lob)localObject3).jdField_a_of_type_Long <= 1200L) {
+            ((lob)localObject3).jdField_a_of_type_Long = this.jdField_a_of_type_Long;
           }
         }
       }
-      if (this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() <= 0) {
+      if (this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() <= 0) {
         break label225;
       }
     }
     finally
     {
-      this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
     }
     for (;;)
     {
-      ??? = (lly)this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek();
-      if ((??? == null) || (this.jdField_a_of_type_Long - ((lly)???).jdField_a_of_type_Long <= 2000L)) {
+      ??? = (lob)this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.peek();
+      if ((??? == null) || (this.jdField_a_of_type_Long - ((lob)???).jdField_a_of_type_Long <= 2000L)) {
         break;
       }
-      this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-      QLog.w("DoodleSurfaceView", 1, "onUpdateDoodle, poll[" + ??? + "], size[" + this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() + "]");
+      this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      QLog.w("DoodleSurfaceView", 1, "onUpdateDoodle, poll[" + ??? + "], size[" + this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.size() + "]");
     }
     label225:
-    ??? = this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+    ??? = this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
     while (((Iterator)???).hasNext())
     {
-      localObject3 = (lly)((Iterator)???).next();
-      if (this.jdField_a_of_type_Long - ((lly)localObject3).jdField_a_of_type_Long <= 1200L) {
+      localObject3 = (lob)((Iterator)???).next();
+      if (this.jdField_a_of_type_Long - ((lob)localObject3).jdField_a_of_type_Long <= 1200L) {
         break;
       }
-      ((lly)localObject3).a(paramLong);
+      ((lob)localObject3).a(paramLong);
     }
     if ((this.jdField_b_of_type_Long != -1L) && (this.jdField_a_of_type_Long - this.jdField_b_of_type_Long > 1200L) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
@@ -215,25 +215,25 @@ public class DoodleSurfaceView
       {
         this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_b_of_type_AndroidGraphicsPaint);
         l1 = -1L;
-        localObject3 = this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+        localObject3 = this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          lly locallly = (lly)((Iterator)localObject3).next();
+          lob locallob = (lob)((Iterator)localObject3).next();
           long l2 = l1;
           if (l1 == -1L)
           {
             l2 = l1;
-            if (this.jdField_a_of_type_Long - locallly.jdField_a_of_type_Long <= 1200L) {
-              l2 = locallly.jdField_a_of_type_Long;
+            if (this.jdField_a_of_type_Long - locallob.jdField_a_of_type_Long <= 1200L) {
+              l2 = locallob.jdField_a_of_type_Long;
             }
           }
           l1 = l2;
           if (l2 != -1L)
           {
             l1 = l2;
-            if (locallly.jdField_a_of_type_Long - l2 >= 0L)
+            if (locallob.jdField_a_of_type_Long - l2 >= 0L)
             {
-              a(this.jdField_a_of_type_AndroidGraphicsCanvas, locallly, false);
+              a(this.jdField_a_of_type_AndroidGraphicsCanvas, locallob, false);
               l1 = l2;
             }
           }
@@ -241,26 +241,26 @@ public class DoodleSurfaceView
       }
       this.jdField_b_of_type_Long = l1;
     }
-    this.jdField_a_of_type_Llz.b(paramLong);
-    this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    this.jdField_a_of_type_Loc.b(paramLong);
+    this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
   }
   
   protected void a(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
     try
     {
       paramCanvas.drawPaint(this.jdField_b_of_type_AndroidGraphicsPaint);
-      Object localObject = this.jdField_a_of_type_Llz.jdField_a_of_type_ComTencentAvVideoController.a();
-      if ((!this.jdField_a_of_type_Llz.jdField_a_of_type_ComTencentAvVideoController.q()) && ((localObject == null) || (((lga)localObject).d != 2))) {
+      Object localObject = this.jdField_a_of_type_Loc.jdField_a_of_type_ComTencentAvVideoController.a();
+      if ((!this.jdField_a_of_type_Loc.jdField_a_of_type_ComTencentAvVideoController.q()) && ((localObject == null) || (((lid)localObject).d != 2))) {
         break label245;
       }
-      localObject = this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
+      localObject = this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        lly locallly = (lly)((Iterator)localObject).next();
-        if ((this.jdField_b_of_type_Long == -1L) || (locallly.jdField_a_of_type_Long - this.jdField_b_of_type_Long < 0L)) {
-          a(paramCanvas, locallly, false);
+        lob locallob = (lob)((Iterator)localObject).next();
+        if ((this.jdField_b_of_type_Long == -1L) || (locallob.jdField_a_of_type_Long - this.jdField_b_of_type_Long < 0L)) {
+          a(paramCanvas, locallob, false);
         }
       }
       if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
@@ -269,8 +269,8 @@ public class DoodleSurfaceView
     }
     finally
     {
-      this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      if ((this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) && (this.jdField_a_of_type_Llz.jdField_a_of_type_ArrayOfLly[0] == null) && (this.jdField_a_of_type_Llz.jdField_a_of_type_ArrayOfLly[1] == null)) {
+      this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      if ((this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) && (this.jdField_a_of_type_Loc.jdField_a_of_type_ArrayOfLob[0] == null) && (this.jdField_a_of_type_Loc.jdField_a_of_type_ArrayOfLob[1] == null)) {
         b(false);
       }
     }
@@ -278,21 +278,21 @@ public class DoodleSurfaceView
       paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
     label205:
-    if (this.jdField_a_of_type_Llz.jdField_a_of_type_Boolean)
+    if (this.jdField_a_of_type_Loc.jdField_a_of_type_Boolean)
     {
-      a(paramCanvas, this.jdField_a_of_type_Llz.jdField_a_of_type_ArrayOfLly[1], true);
-      a(paramCanvas, this.jdField_a_of_type_Llz.jdField_a_of_type_ArrayOfLly[0], true);
+      a(paramCanvas, this.jdField_a_of_type_Loc.jdField_a_of_type_ArrayOfLob[1], true);
+      a(paramCanvas, this.jdField_a_of_type_Loc.jdField_a_of_type_ArrayOfLob[0], true);
     }
     for (;;)
     {
       label245:
-      this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      if ((this.jdField_a_of_type_Llz.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) && (this.jdField_a_of_type_Llz.jdField_a_of_type_ArrayOfLly[0] == null) && (this.jdField_a_of_type_Llz.jdField_a_of_type_ArrayOfLly[1] == null)) {
+      this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      if ((this.jdField_a_of_type_Loc.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) && (this.jdField_a_of_type_Loc.jdField_a_of_type_ArrayOfLob[0] == null) && (this.jdField_a_of_type_Loc.jdField_a_of_type_ArrayOfLob[1] == null)) {
         b(false);
       }
       return;
-      a(paramCanvas, this.jdField_a_of_type_Llz.jdField_a_of_type_ArrayOfLly[0], true);
-      a(paramCanvas, this.jdField_a_of_type_Llz.jdField_a_of_type_ArrayOfLly[1], true);
+      a(paramCanvas, this.jdField_a_of_type_Loc.jdField_a_of_type_ArrayOfLob[0], true);
+      a(paramCanvas, this.jdField_a_of_type_Loc.jdField_a_of_type_ArrayOfLob[1], true);
     }
   }
   
@@ -337,10 +337,10 @@ public class DoodleSurfaceView
     try
     {
       a(a(), paramInt1, paramInt2);
-      if (this.jdField_a_of_type_Llz != null)
+      if (this.jdField_a_of_type_Loc != null)
       {
-        this.jdField_a_of_type_Llz.d = paramInt2;
-        this.jdField_a_of_type_Llz.c = paramInt1;
+        this.jdField_a_of_type_Loc.d = paramInt2;
+        this.jdField_a_of_type_Loc.c = paramInt1;
       }
       return;
     }
@@ -362,7 +362,7 @@ public class DoodleSurfaceView
       {
       }
     }
-    while (this.jdField_a_of_type_Llz.jdField_a_of_type_ArrayOfLly[0] == null)
+    while (this.jdField_a_of_type_Loc.jdField_a_of_type_ArrayOfLob[0] == null)
     {
       float f1;
       float f2;
@@ -375,7 +375,7 @@ public class DoodleSurfaceView
       paramMotionEvent = getContext();
       if ((paramMotionEvent instanceof AVActivity))
       {
-        localObject = ((View)localObject).findViewById(2131372231);
+        localObject = ((View)localObject).findViewById(2131372587);
         if (localObject != null)
         {
           paramMotionEvent = ((AVActivity)paramMotionEvent).a;
@@ -392,7 +392,7 @@ public class DoodleSurfaceView
       Object localObject = getContext();
       if ((localObject instanceof AVActivity))
       {
-        paramMotionEvent = ((View)getParent()).findViewById(2131372231);
+        paramMotionEvent = ((View)getParent()).findViewById(2131372587);
         if (paramMotionEvent != null)
         {
           localObject = ((AVActivity)localObject).a;
@@ -414,27 +414,27 @@ public class DoodleSurfaceView
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if ((paramBoolean) && (this.jdField_a_of_type_Llz != null))
+    if ((paramBoolean) && (this.jdField_a_of_type_Loc != null))
     {
-      this.jdField_a_of_type_Llz.d = getHeight();
-      this.jdField_a_of_type_Llz.c = getWidth();
+      this.jdField_a_of_type_Loc.d = getHeight();
+      this.jdField_a_of_type_Loc.c = getWidth();
     }
   }
   
   public void setColor(int paramInt1, int paramInt2, float paramFloat)
   {
-    this.jdField_a_of_type_Llz.jdField_a_of_type_Lmc.a(this.jdField_a_of_type_Llz.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Llz.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Llz.b = paramInt2;
-    this.jdField_a_of_type_Llz.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Loc.jdField_a_of_type_Lof.a(this.jdField_a_of_type_Loc.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Loc.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Loc.b = paramInt2;
+    this.jdField_a_of_type_Loc.jdField_a_of_type_Float = paramFloat;
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    if (this.jdField_a_of_type_Llz.a() != this) {
-      this.jdField_a_of_type_Llz.a(this);
+    if (this.jdField_a_of_type_Loc.a() != this) {
+      this.jdField_a_of_type_Loc.a(this);
     }
     super.surfaceCreated(paramSurfaceHolder);
   }
@@ -442,14 +442,14 @@ public class DoodleSurfaceView
   public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
   {
     super.surfaceDestroyed(paramSurfaceHolder);
-    if (this.jdField_a_of_type_Llz.a() == this) {
-      this.jdField_a_of_type_Llz.a(null);
+    if (this.jdField_a_of_type_Loc.a() == this) {
+      this.jdField_a_of_type_Loc.a(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.doodle.DoodleSurfaceView
  * JD-Core Version:    0.7.0.1
  */

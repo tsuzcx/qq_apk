@@ -1,22 +1,27 @@
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.mobileqq.app.automator.step.CleanCache;
+import java.io.File;
+import java.util.Comparator;
 
 public class amde
+  implements Comparator<File>
 {
-  public Set<Integer> a;
-  public boolean a;
-  public boolean b = false;
-  public boolean c = false;
+  public amde(CleanCache paramCleanCache) {}
   
-  public amde()
+  public int a(File paramFile1, File paramFile2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    long l = paramFile1.lastModified() - paramFile2.lastModified();
+    if (l > 0L) {
+      return -1;
+    }
+    if (l < 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amde
  * JD-Core Version:    0.7.0.1
  */

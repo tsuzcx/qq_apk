@@ -1,19 +1,38 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-class adkq
-  extends actn
+public class adkq
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView b;
-  TextView c;
-  TextView d;
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  adkq(adko paramadko) {}
+  public adkq(PublicAccountInfo paramPublicAccountInfo)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.b = str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkq
  * JD-Core Version:    0.7.0.1
  */

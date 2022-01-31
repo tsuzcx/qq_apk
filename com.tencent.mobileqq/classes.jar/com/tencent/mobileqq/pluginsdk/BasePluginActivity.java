@@ -13,6 +13,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.content.res.Resources.Theme;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -1130,7 +1131,21 @@ public class BasePluginActivity
     if (this.mIsRunInPlugin)
     {
       this.mOutActivity.setTheme(paramInt);
-      return;
+      try
+      {
+        if ((this.mContext != null) && (this.mContext.getTheme() != null)) {
+          this.mContext.getTheme().setTo(this.mOutActivity.getTheme());
+        }
+        if (getTheme() != null) {
+          getTheme().setTo(this.mOutActivity.getTheme());
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("plugin_tag", 1, "setTheme Exception:", localException);
+        return;
+      }
     }
     super.setTheme(paramInt);
   }

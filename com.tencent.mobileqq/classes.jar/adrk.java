@@ -1,46 +1,38 @@
-import android.app.Activity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.qphone.base.util.QLog;
 
 class adrk
-  implements bfph
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  adrk(adri paramadri, bfpc parambfpc) {}
+  adrh jdField_a_of_type_Adrh;
+  Button jdField_a_of_type_AndroidWidgetButton;
   
-  public void OnClick(View paramView, int paramInt)
+  public adrk(adrj paramadrj, View paramView, adrh paramadrh)
   {
-    this.jdField_a_of_type_Bfpc.dismiss();
-    switch (paramInt)
-    {
-    default: 
+    super(paramView);
+    this.jdField_a_of_type_Adrh = paramadrh;
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131373929));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Adrh != null) {
+      this.jdField_a_of_type_Adrh.a(paramView, getPosition());
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    String str;
-    if (this.jdField_a_of_type_Adri.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1006)
-    {
-      str = this.jdField_a_of_type_Adri.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      paramView = null;
-    }
-    for (;;)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_Adri.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Adri.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adri.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Adri.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, str, true, this.jdField_a_of_type_Adri.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, true, true, null, "from_internal");
-      str = ChatActivityUtils.a(this.jdField_a_of_type_Adri.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      paramView = str;
-      if (str == null) {
-        paramView = "";
-      }
-      axqy.b(this.jdField_a_of_type_Adri.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "13", paramView, "", "");
-      axqy.b(this.jdField_a_of_type_Adri.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005974", "0X8005974", 0, 0, "", "", "", "");
-      return;
-      paramView = this.jdField_a_of_type_Adri.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      str = null;
-    }
+    QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,135 @@
-import android.app.Activity;
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bise
-  extends biwr
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private bijd jdField_a_of_type_Bijd;
-  private bisp jdField_a_of_type_Bisp;
-  private bitt jdField_a_of_type_Bitt;
-  private biwp jdField_a_of_type_Biwp;
-  private biwq jdField_a_of_type_Biwq;
-  private String jdField_a_of_type_JavaLangString;
-  private List<birj> jdField_a_of_type_JavaUtilList;
+  private final HashSet<WeakReference<bisf>> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private final ConcurrentHashMap<Integer, HashSet<WeakReference<bisf>>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public bise(Activity paramActivity, View paramView, biws parambiws)
+  public void a(int paramInt, Object paramObject, Object... paramVarArgs)
   {
-    super(paramActivity, paramView, parambiws);
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    this.jdField_a_of_type_Bijd = ((bijd)parambiws.a(65537, new Object[0]));
+    Object localObject1 = new ArrayList();
+    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    {
+      HashSet localHashSet = (HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+      if (localHashSet != null) {
+        ((ArrayList)localObject1).addAll(localHashSet);
+      }
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    {
+      ((ArrayList)localObject1).addAll(this.jdField_a_of_type_JavaUtilHashSet);
+      localObject1 = ((ArrayList)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        ??? = (bisf)((WeakReference)((Iterator)localObject1).next()).get();
+        if (??? != null)
+        {
+          ((bisf)???).a(paramInt, paramObject, paramVarArgs);
+          continue;
+          paramObject = finally;
+          throw paramObject;
+        }
+      }
+    }
   }
   
-  private void d()
+  public void a(bisf parambisf)
   {
-    this.jdField_a_of_type_Biwp = ((biwp)bijo.a(this.jdField_a_of_type_Bijd).a(biwp.class));
-    this.jdField_a_of_type_Biwp.a().a(this.jdField_a_of_type_Bijd, new bisg(this));
-    this.jdField_a_of_type_Biwq = ((biwq)bijo.a(this.jdField_a_of_type_Bijd).a(biwq.class));
-    this.jdField_a_of_type_Biwq.a().a(this.jdField_a_of_type_Bijd, new bish(this));
-    this.jdField_a_of_type_Bisp = ((bisp)bijo.a(this.jdField_a_of_type_Bijd).a(bisp.class));
-    this.jdField_a_of_type_Bisp.a().a(this.jdField_a_of_type_Bijd, new bisi(this));
-    this.jdField_a_of_type_Bisp.b().a(this.jdField_a_of_type_Bijd, new bisj(this));
-    this.jdField_a_of_type_Bisp.a(this.jdField_a_of_type_Bijd);
-  }
-  
-  private void e()
-  {
-    xfc.a(new View[] { this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView }).b(new float[] { 0.0F, 1.0F }).a(300L).a(new bisk(this)).b();
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {
+    if (parambisf == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362171));
-    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext, 0, false);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localLinearLayoutManager);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemAnimator(null);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Bitt = new bitt(this.jdField_a_of_type_AndroidViewView.getContext(), this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Bitt.a(new bisf(this));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Bitt);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setVisibility(8);
-    d();
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator;
+    Object localObject2;
+    Object localObject3;
+    synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+    {
+      localIterator = this.jdField_a_of_type_JavaUtilHashSet.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = (WeakReference)localIterator.next();
+        localObject3 = (bisf)((WeakReference)localObject2).get();
+        if ((localObject3 == null) || (parambisf == localObject3)) {
+          localArrayList.add(localObject2);
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaUtilHashSet.removeAll(localArrayList);
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      {
+        localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        int i = ((Integer)localIterator.next()).intValue();
+        localObject2 = (HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+        localArrayList.clear();
+        localObject3 = ((HashSet)localObject2).iterator();
+        if (((Iterator)localObject3).hasNext())
+        {
+          WeakReference localWeakReference = (WeakReference)((Iterator)localObject3).next();
+          bisf localbisf = (bisf)localWeakReference.get();
+          if ((localbisf != null) && (parambisf != localbisf)) {
+            continue;
+          }
+          localArrayList.add(localWeakReference);
+        }
+      }
+      ((HashSet)localObject2).removeAll(localArrayList);
+    }
   }
   
-  public void g()
+  public void a(bisf parambisf, int... arg2)
   {
-    super.g();
+    if (parambisf == null) {
+      return;
+    }
+    a(parambisf);
+    parambisf = new WeakReference(parambisf);
+    if ((??? == null) || (???.length == 0)) {
+      synchronized (this.jdField_a_of_type_JavaUtilHashSet)
+      {
+        this.jdField_a_of_type_JavaUtilHashSet.add(parambisf);
+        return;
+      }
+    }
+    for (;;)
+    {
+      int i;
+      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      {
+        int j = ???.length;
+        i = 0;
+        if (i < j)
+        {
+          int k = ???[i];
+          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(k)))
+          {
+            ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(k))).add(parambisf);
+          }
+          else
+          {
+            HashSet localHashSet = new HashSet();
+            localHashSet.add(parambisf);
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(k), localHashSet);
+          }
+        }
+      }
+      return;
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bise
  * JD-Core Version:    0.7.0.1
  */

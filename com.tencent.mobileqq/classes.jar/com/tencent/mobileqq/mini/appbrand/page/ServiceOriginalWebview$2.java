@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
+import android.text.TextUtils;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime.OnLoadServiceWebvieJsListener;
 import com.tencent.mobileqq.mini.utils.FileUtils;
@@ -11,30 +12,34 @@ import java.io.IOException;
 class ServiceOriginalWebview$2
   implements ValueCallback
 {
-  ServiceOriginalWebview$2(ServiceOriginalWebview paramServiceOriginalWebview, ApkgInfo paramApkgInfo, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener) {}
+  ServiceOriginalWebview$2(ServiceOriginalWebview paramServiceOriginalWebview, String paramString, ApkgInfo paramApkgInfo, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener) {}
   
   public void onReceiveValue(Object paramObject)
   {
     QLog.i("ServiceOriginalWebview", 2, "---end onWxConfigReady----");
-    paramObject = null;
+    String str = this.val$appServiceStr;
+    paramObject = str;
     try
     {
-      String str = FileUtils.readFileToString(new File(this.val$apkgInfo.getAppServiceJsPath()));
-      paramObject = str;
+      if (TextUtils.isEmpty(str)) {
+        paramObject = FileUtils.readFileToString(new File(this.val$apkgInfo.getAppServiceJsPath()));
+      }
+      ServiceOriginalWebview.access$000(this.this$0, paramObject, new ServiceOriginalWebview.2.1(this));
+      return;
     }
-    catch (IOException localIOException)
+    catch (IOException paramObject)
     {
       for (;;)
       {
-        localIOException.printStackTrace();
+        paramObject.printStackTrace();
+        paramObject = str;
       }
     }
-    ServiceOriginalWebview.access$000(this.this$0, paramObject, new ServiceOriginalWebview.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.ServiceOriginalWebview.2
  * JD-Core Version:    0.7.0.1
  */

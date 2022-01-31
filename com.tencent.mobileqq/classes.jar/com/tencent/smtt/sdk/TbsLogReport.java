@@ -140,7 +140,7 @@ public class TbsLogReport
       localStringBuilder.append(addData(TbsLogReport.TbsLogInfo.access$1800(paramTbsLogInfo)));
       localStringBuilder.append(addData(TbsDownloadConfig.getInstance(this.mContext).mPreferences.getInt("tbs_download_version", 0)));
       localStringBuilder.append(addData(AppUtil.getAndroidID(this.mContext)));
-      localStringBuilder.append(addData("4.3.0.1190_43739"));
+      localStringBuilder.append(addData("4.3.0.1203_43752"));
       localStringBuilder.append(false);
       localSharedPreferences = sharedPreferences();
       localObject1 = getUploadData();
@@ -735,7 +735,7 @@ public class TbsLogReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsLogReport
  * JD-Core Version:    0.7.0.1
  */

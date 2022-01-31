@@ -1,86 +1,72 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_del_message.RspDelOneMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
 
-public class uut
-  extends mxh
+class uut
+  extends uhn
 {
-  public uut(StoryMessageListActivity paramStoryMessageListActivity) {}
+  uut(uur paramuur) {}
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(byte paramByte)
   {
-    int j = -1;
-    paramBundle = new qqstory_struct.ErrorInfo();
-    qqstory_710_del_message.RspDelOneMessage localRspDelOneMessage;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      localRspDelOneMessage = new qqstory_710_del_message.RspDelOneMessage();
+    boolean bool = true;
+    this.a.a = paramByte;
+    uur.c(this.a, true);
+    uur localuur;
+    if (paramByte != -1)
+    {
+      if (paramByte == 0) {
+        uur.b(this.a);
+      }
+      localuur = this.a;
+      if (paramByte != 2) {
+        break label88;
+      }
     }
     for (;;)
     {
-      int m;
-      int k;
-      try
-      {
-        localRspDelOneMessage.mergeFrom(paramArrayOfByte);
-        if (!localRspDelOneMessage.errinfo.error_code.has()) {
-          break label239;
-        }
-        i = localRspDelOneMessage.errinfo.error_code.get();
-        j = i;
-        if (j == 0) {
-          i = 1;
-        }
+      localuur.a(bool);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryOIDBReceived:" + this.a.c);
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      return;
+      label88:
+      bool = false;
+    }
+  }
+  
+  public void b()
+  {
+    urk localurk = (urk)urr.a(10);
+    this.a.b = ((Boolean)localurk.b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "commonConfigReceived:" + this.a.b);
+    }
+    uur.a(this.a);
+    uur.a(this.a, true);
+    uur.a(this.a, true);
+    uur.b(this.a);
+  }
+  
+  public void f(boolean paramBoolean)
+  {
+    if (!uur.a(this.a))
+    {
+      if (paramBoolean)
       {
-        m = 0;
-        k = j;
+        this.a.c = this.a.a();
+        uur.a(this.a);
+        uur.a(this.a, true);
       }
-      try
-      {
-        paramBundle.error_code.set(localRspDelOneMessage.errinfo.error_code.get());
-        paramBundle.error_desc.set(localRspDelOneMessage.errinfo.error_desc.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqstory.msgList", 2, "receive delete one msg, code=" + paramInt + " bizCode=" + j);
-        }
-        if (i == 0) {
-          bcql.a(this.a.getApplicationContext(), 1, ajya.a(2131714538), 0).a();
-        }
-        return paramBundle;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          k = j;
-          m = i;
-        }
-      }
-      int i = 0;
-      continue;
-      j = k;
-      i = m;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("Q.qqstory.msgList", 2, "error parse RspDelOneMessage", paramArrayOfByte);
-        j = k;
-        i = m;
-        continue;
-        label239:
-        i = 0;
-      }
+      uur.b(this.a, true);
+      uur.b(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryDPCCfgHasContentReceived:" + this.a.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uut
  * JD-Core Version:    0.7.0.1
  */

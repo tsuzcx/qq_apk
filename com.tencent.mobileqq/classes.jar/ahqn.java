@@ -1,16 +1,12 @@
-import android.content.Context;
+import android.view.View;
 
-public class ahqn
-  extends ahpz
+public abstract interface ahqn
 {
-  public ahqn(Context paramContext)
-  {
-    this.a = paramContext.getString(2131697943);
-  }
+  public abstract View a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import afgw;
+import aheb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -14,7 +14,7 @@ import com.tencent.pb.addcontacts.AccountSearchPb.record;
 public class SearchResultItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<SearchResultItem> CREATOR = new afgw();
+  public static final Parcelable.Creator<SearchResultItem> CREATOR = new aheb();
   public byte a;
   public int a;
   public long a;
@@ -82,7 +82,7 @@ public class SearchResultItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem
  * JD-Core Version:    0.7.0.1
  */

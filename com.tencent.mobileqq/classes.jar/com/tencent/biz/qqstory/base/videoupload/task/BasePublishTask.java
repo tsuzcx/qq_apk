@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import swx;
-import sxa;
-import sxc;
-import sxd;
-import ved;
+import ulp;
+import uls;
+import ulu;
+import ulv;
+import wsv;
 
-public abstract class BasePublishTask<T extends sxc>
+public abstract class BasePublishTask<T extends ulu>
   implements Runnable
 {
   public static final Boolean a;
@@ -22,7 +22,7 @@ public abstract class BasePublishTask<T extends sxc>
   public ArrayList<ErrorMessage> a;
   public AtomicBoolean a;
   public T a;
-  public sxd a;
+  public ulv a;
   public ArrayList<Stream> b = new ArrayList();
   
   static
@@ -35,33 +35,33 @@ public abstract class BasePublishTask<T extends sxc>
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_a_of_type_Int = 7;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Sxc = paramT;
+    this.jdField_a_of_type_Ulu = paramT;
   }
   
   private void d()
   {
     if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      ved.d("Q.qqstory.publish.upload:BasePublishTask", "stop task in send rich data:" + this);
+      wsv.d("Q.qqstory.publish.upload:BasePublishTask", "stop task in send rich data:" + this);
       a(this.jdField_a_of_type_Int, new ErrorMessage());
       return;
     }
     a(1, new ErrorMessage());
-    if (this.jdField_a_of_type_Sxc.jdField_a_of_type_JavaUtilList.size() == 0)
+    if (this.jdField_a_of_type_Ulu.jdField_a_of_type_JavaUtilList.size() == 0)
     {
       e();
       return;
     }
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_Sxc.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.jdField_a_of_type_Ulu.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        Object localObject2 = (swx)localIterator.next();
+        Object localObject2 = (ulp)localIterator.next();
         localObject2 = Stream.of(new ErrorMessage()).map(new ThreadOffFunction("Q.qqstory.publish.upload:BasePublishTask", 4)).map((StreamFunction)localObject2);
-        ((Stream)localObject2).subscribe(new sxa(this, null));
+        ((Stream)localObject2).subscribe(new uls(this, null));
         this.b.add(localObject2);
-        ved.c("Q.qqstory.publish.upload:BasePublishTask", "add task finish");
+        wsv.c("Q.qqstory.publish.upload:BasePublishTask", "add task finish");
       }
     }
     finally {}
@@ -81,12 +81,12 @@ public abstract class BasePublishTask<T extends sxc>
   
   public T a()
   {
-    return this.jdField_a_of_type_Sxc;
+    return this.jdField_a_of_type_Ulu;
   }
   
   public void a()
   {
-    ved.d("Q.qqstory.publish.upload:BasePublishTask", "user try to stop task" + this);
+    wsv.d("Q.qqstory.publish.upload:BasePublishTask", "user try to stop task" + this);
     this.jdField_a_of_type_Int = 7;
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     try
@@ -102,23 +102,23 @@ public abstract class BasePublishTask<T extends sxc>
   
   public void a(int paramInt, ErrorMessage paramErrorMessage)
   {
-    ved.c("Q.qqstory.publish.upload:BasePublishTask", "mTaskInfo:" + this.jdField_a_of_type_Sxc);
+    wsv.c("Q.qqstory.publish.upload:BasePublishTask", "mTaskInfo:" + this.jdField_a_of_type_Ulu);
     if (paramErrorMessage.isFail()) {
-      ved.d("Q.qqstory.publish.upload:BasePublishTask", "mTaskInfo:%s with fail result: %s", new Object[] { this.jdField_a_of_type_Sxc, paramErrorMessage });
+      wsv.d("Q.qqstory.publish.upload:BasePublishTask", "mTaskInfo:%s with fail result: %s", new Object[] { this.jdField_a_of_type_Ulu, paramErrorMessage });
     }
     if (a()) {
       paramInt = this.jdField_a_of_type_Int;
     }
-    this.jdField_a_of_type_Sxc.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Sxd != null) {
-      this.jdField_a_of_type_Sxd.a(this, paramErrorMessage);
+    this.jdField_a_of_type_Ulu.jdField_a_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Ulv != null) {
+      this.jdField_a_of_type_Ulv.a(this, paramErrorMessage);
     }
   }
   
   public void a(ErrorMessage paramErrorMessage)
   {
     this.jdField_a_of_type_JavaUtilArrayList.add(paramErrorMessage);
-    ved.d("Q.qqstory.publish.upload:BasePublishTask", "not finish file count:%d, one file finish with result:%s", new Object[] { Integer.valueOf(this.b.size() - this.jdField_a_of_type_JavaUtilArrayList.size()), paramErrorMessage });
+    wsv.d("Q.qqstory.publish.upload:BasePublishTask", "not finish file count:%d, one file finish with result:%s", new Object[] { Integer.valueOf(this.b.size() - this.jdField_a_of_type_JavaUtilArrayList.size()), paramErrorMessage });
     if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.b.size())
     {
       paramErrorMessage = new ErrorMessage();
@@ -149,9 +149,9 @@ public abstract class BasePublishTask<T extends sxc>
     }
   }
   
-  public void a(sxd paramsxd)
+  public void a(ulv paramulv)
   {
-    this.jdField_a_of_type_Sxd = paramsxd;
+    this.jdField_a_of_type_Ulv = paramulv;
   }
   
   public boolean a()
@@ -161,7 +161,7 @@ public abstract class BasePublishTask<T extends sxc>
   
   public void b()
   {
-    ved.d("Q.qqstory.publish.upload:BasePublishTask", "user try to force stop task" + this);
+    wsv.d("Q.qqstory.publish.upload:BasePublishTask", "user try to force stop task" + this);
     this.jdField_a_of_type_Int = 3;
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     try
@@ -184,14 +184,14 @@ public abstract class BasePublishTask<T extends sxc>
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("BasePublishTask{");
-    localStringBuilder.append("mTaskInfo=").append(this.jdField_a_of_type_Sxc);
+    localStringBuilder.append("mTaskInfo=").append(this.jdField_a_of_type_Ulu);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask
  * JD-Core Version:    0.7.0.1
  */

@@ -5,8 +5,8 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.text.TextUtils;
 import android.util.Log;
-import bbcf;
-import bbdh;
+import bdaz;
+import bdcb;
 import com.tencent.mobileqq.mini.appbrand.utils.FileUtils;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.audiorecorder.LameMp3Recorder;
@@ -14,9 +14,8 @@ import com.tencent.mobileqq.mini.audiorecorder.LameMp3Recorder.AudioPlayerListen
 import com.tencent.mobileqq.mini.audiorecorder.LameMp3Recorder.AudioRecordListener;
 import com.tencent.mobileqq.mini.audiorecorder.LameMp3Recorder.OnErrorListener;
 import com.tencent.mobileqq.mini.sdk.BridgeInfo;
-import com.tencent.mobileqq.minigame.manager.GameLoadManager;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
+import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -225,7 +224,7 @@ class AudioJsPlugin$AudioManager
     try
     {
       localJSONObject.put("state", "frameRecorded");
-      NativeBuffer.packNativeBuffer(paramArrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "frameBuffer", localJSONObject, GameLoadManager.g().getGameEngine().getNativeBufferPool());
+      NativeBuffer.packNativeBuffer(paramArrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "frameBuffer", localJSONObject, (ITNativeBufferPool)this.this$0.jsPluginEngine.getNativeBufferPool());
       localJSONObject.put("isLastFrame", paramBoolean);
       AudioJsPlugin.access$1500(this.this$0, "onRecorderStateChange", localJSONObject.toString());
       return;
@@ -376,13 +375,13 @@ class AudioJsPlugin$AudioManager
     {
       if (i != 0)
       {
-        localObject = bbdh.b();
+        localObject = bdcb.b();
         if ((new StatFs(Environment.getExternalStorageDirectory().getAbsolutePath()).getAvailableBlocks() > 1) && (localObject != null) && (localObject[1] > 2L))
         {
           if (AudioHelper.b(1))
           {
             if (this.this$0.isColorLevel()) {
-              this.this$0.miniLogD("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131698473));
+              this.this$0.miniLogD("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131698768));
             }
             AudioJsPlugin.access$1200(this.this$0, "startRecord", paramBridgeInfo);
             return;
@@ -398,17 +397,17 @@ class AudioJsPlugin$AudioManager
           }
           paramBridgeInfo = this.recorder.getRecordFilPath();
           QLog.i("QQRecorder", 2, "path: " + paramBridgeInfo);
-          bbcf.a(this.context, true);
+          bdaz.a(this.context, true);
           this.recorder.recordStart();
           setFateOfRecorder(0);
           return;
         }
-        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131719060));
+        QLog.d("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131719540));
         AudioJsPlugin.access$1200(this.this$0, "startRecord", paramBridgeInfo);
         return;
       }
     }
-    QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131694694));
+    QLog.w("[mini] AudioJsPlugin", 2, "startRecord() " + this.context.getString(2131694851));
     AudioJsPlugin.access$1200(this.this$0, "startRecord", paramBridgeInfo);
   }
   
@@ -438,7 +437,7 @@ class AudioJsPlugin$AudioManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AudioJsPlugin.AudioManager
  * JD-Core Version:    0.7.0.1
  */

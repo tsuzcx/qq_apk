@@ -1,61 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-
 class bkne
-  implements Animator.AnimatorListener
+  implements bevo
 {
-  bkne(bknb parambknb) {}
+  bkne(bknd parambknd, Runnable paramRunnable) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(int paramInt)
   {
-    if (!bknb.a(this.a)) {}
-    do
-    {
-      return;
-      if (bknb.b(this.a)) {
-        break;
-      }
-      bknb.a(this.a, false);
-    } while (bknb.b(this.a) != 2);
-    bknb.a(this.a, 0);
-    return;
-    bknb.a(this.a, false);
-    bknb.a(this.a, 0);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (!bknb.a(this.a)) {
-      return;
-    }
-    if (!bknb.b(this.a))
-    {
-      bknb.a(this.a, false);
-      if (bknb.b(this.a) == 1)
-      {
-        bknb.a(this.a, 3);
-        return;
-      }
-      bknb.a(this.a, 0);
-      return;
-    }
-    if (bknb.b(this.a) == 1)
-    {
-      bknb.a(this.a, 2);
-      bknb.a(this.a, bknb.b(this.a), 1000);
-      return;
-    }
-    bknb.a(this.a, false);
-    bknb.a(this.a, 0);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkne
  * JD-Core Version:    0.7.0.1
  */

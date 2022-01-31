@@ -1,19 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ahfx;
-import ahjx;
-import amtb;
+import ajbg;
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -22,19 +16,14 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import aokd;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
-import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.HongBaoResBuilder;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ARMapHongBaoListView;
@@ -78,14 +67,14 @@ public class MiniAppEntryLayout
     this.mTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     this.mRefer = paramInt;
     this.mListView = paramARMapHongBaoListView;
-    inflate(paramContext, 2131561975, this);
-    this.mParent = ((ViewGroup)findViewById(2131370305));
-    this.mRecyclerView = ((RecyclerView)findViewById(2131369945));
+    inflate(paramContext, 2131562167, this);
+    this.mParent = ((ViewGroup)findViewById(2131370603));
+    this.mRecyclerView = ((RecyclerView)findViewById(2131370211));
     this.mRecyclerView.setItemAnimator(null);
     this.mAdapter = new MiniAppEntryAdapter((Activity)paramContext, paramInt);
-    if (amtb.l())
+    if (aokd.l())
     {
-      boolean bool = ((ahjx)this.mContext.app.getManager(315)).a();
+      boolean bool = ((ajbg)this.mContext.app.getManager(315)).a();
       paramARMapHongBaoListView = this.mAdapter;
       if (!bool) {
         break label295;
@@ -97,12 +86,12 @@ public class MiniAppEntryLayout
       paramARMapHongBaoListView.setRedDotSwitchState(paramInt);
       this.mRecyclerView.setAdapter(this.mAdapter);
       this.mRecyclerView.addOnScrollListener(new MiniAppEntryLayout.1(this));
-      this.mThemeBackgroudView = ((ImageView)findViewById(2131370182));
-      this.mNormalStateView = ((ViewGroup)findViewById(2131370220));
-      this.mDefaultStateView = ((ViewGroup)findViewById(2131370170));
-      this.mAppStoreEntryText = ((TextView)findViewById(2131370251));
+      this.mThemeBackgroudView = ((ImageView)findViewById(2131370449));
+      this.mNormalStateView = ((ViewGroup)findViewById(2131370488));
+      this.mDefaultStateView = ((ViewGroup)findViewById(2131370437));
+      this.mAppStoreEntryText = ((TextView)findViewById(2131370548));
       this.mAppStoreEntryText.setOnClickListener(this);
-      this.mDotView = ((MiniAppDotAnimationView)findViewById(2131370303));
+      this.mDotView = ((MiniAppDotAnimationView)findViewById(2131370601));
       this.mLinearLayoutManager = new MiniAppEntryLayout.MiniAppLinearLayoutManager(paramContext, 0, false);
       this.mLinearLayoutManager.setAutoMeasureEnabled(false);
       this.mRecyclerView.setLayoutManager(this.mLinearLayoutManager);
@@ -269,12 +258,14 @@ public class MiniAppEntryLayout
     {
       localObject1 = MiniAppUtils.getAppInterface();
       if (localObject1 == null) {
-        break label455;
+        break label383;
       }
     }
-    label137:
-    label450:
-    label455:
+    label128:
+    label207:
+    label231:
+    label378:
+    label383:
     for (Object localObject1 = (MiniAppExposureManager)((AppInterface)localObject1).getManager(322);; localObject1 = null)
     {
       Map localMap = this.mAdapter.getRedDotDataMap();
@@ -290,21 +281,21 @@ public class MiniAppEntryLayout
         {
           k = 1001;
           if ((this.mRefer != 0) || (((MiniAppInfo)localObject3).reportData == null)) {
-            break label249;
+            break label231;
           }
           if (((MiniAppInfo)localObject3).recommend != 1) {
-            break label216;
+            break label207;
           }
-          ((MiniAppInfo)localObject3).reportData.put("via", "1001_1");
+          ((MiniAppInfo)localObject3).via = "1001_1";
           i = k;
           localObject2 = new MiniAppConfig((MiniAppInfo)localObject3);
           ((MiniAppConfig)localObject2).launchParam.scene = i;
           if (localMap == null) {
-            break label450;
+            break label378;
           }
           localObject3 = (Integer)localMap.get(((MiniAppInfo)localObject3).appId);
           if (localObject3 == null) {
-            break label450;
+            break label378;
           }
         }
       }
@@ -313,50 +304,48 @@ public class MiniAppEntryLayout
         ((MiniAppExposureManager)localObject1).addReportItem(new MiniAppExposureManager.MiniAppExposureData((MiniAppConfig)localObject2, j, String.valueOf(i)));
         j += 1;
         break;
-        label216:
         i = k;
         if (((MiniAppInfo)localObject3).topType != 1) {
-          break label137;
+          break label128;
         }
-        ((MiniAppInfo)localObject3).reportData.put("via", "1001_3");
+        ((MiniAppInfo)localObject3).via = "1001_3";
         i = k;
-        break label137;
-        label249:
+        break label128;
         if ((this.mRefer == 1) && (((MiniAppInfo)localObject3).reportData != null))
         {
           if (((MiniAppInfo)localObject3).recommend == 1) {
-            ((MiniAppInfo)localObject3).reportData.put("via", "2006_1");
+            ((MiniAppInfo)localObject3).via = "2006_1";
           }
           for (;;)
           {
             i = 2006;
             break;
             if (((MiniAppInfo)localObject3).topType == 1) {
-              ((MiniAppInfo)localObject3).reportData.put("via", "2006_2");
+              ((MiniAppInfo)localObject3).via = "2006_2";
             } else {
-              ((MiniAppInfo)localObject3).reportData.put("via", "2006_3");
+              ((MiniAppInfo)localObject3).via = "2006_3";
             }
           }
         }
         i = k;
         if (this.mRefer != 2) {
-          break label137;
+          break label128;
         }
         i = k;
         if (((MiniAppInfo)localObject3).reportData == null) {
-          break label137;
+          break label128;
         }
         if (((MiniAppInfo)localObject3).recommend == 1) {
-          ((MiniAppInfo)localObject3).reportData.put("via", "2007_1");
+          ((MiniAppInfo)localObject3).via = "2007_1";
         }
         for (;;)
         {
           i = 2007;
           break;
           if (((MiniAppInfo)localObject3).topType == 1) {
-            ((MiniAppInfo)localObject3).reportData.put("via", "2007_2");
+            ((MiniAppInfo)localObject3).via = "2007_2";
           } else {
-            ((MiniAppInfo)localObject3).reportData.put("via", "2007_3");
+            ((MiniAppInfo)localObject3).via = "2007_3";
           }
         }
         return;
@@ -374,60 +363,84 @@ public class MiniAppEntryLayout
     this.mDotView.setTranslationY(paramFloat);
   }
   
+  /* Error */
   public void setThemeBackgroundDrawable()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    for (;;)
-    {
-      try
-      {
-        if (this.mContext != null)
-        {
-          localObject1 = localObject2;
-          if (this.mContext.app != null) {
-            localObject1 = (ahfx)this.mContext.app.getManager(342);
-          }
-        }
-        if ((localObject1 != null) && (((ahfx)localObject1).h()))
-        {
-          updateHongBaoRes();
-          this.mAdapter.notifyDataSetChanged();
-          return;
-        }
-        if (this.mThemeBackgroudView != null)
-        {
-          if ((ThemeUtil.isDefaultTheme()) || (MiniAppUtils.isNightMode())) {
-            this.mThemeBackgroudView.setVisibility(8);
-          }
-        }
-        else
-        {
-          try
-          {
-            if (!ThemeUtil.isDefaultTheme()) {
-              break label170;
-            }
-            this.mDefaultStateView.setBackgroundResource(2130840658);
-          }
-          catch (Exception localException)
-          {
-            QLog.e("MicroAppEntryLayout", 1, new Object[] { "setThemeBackgroundDrawable:", Log.getStackTraceString(localException) });
-          }
-          continue;
-        }
-        this.mThemeBackgroudView.setVisibility(0);
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("MicroAppEntryLayout", 1, "setThemeBackgroundDrawable error.", localThrowable);
-        return;
-      }
-      this.mThemeBackgroudView.setImageResource(2130838515);
-      continue;
-      label170:
-      this.mDefaultStateView.setBackgroundColor(0);
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 160	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mThemeBackgroudView	Landroid/widget/ImageView;
+    //   4: ifnull +24 -> 28
+    //   7: invokestatic 488	com/tencent/mobileqq/theme/ThemeUtil:isDefaultTheme	()Z
+    //   10: ifne +9 -> 19
+    //   13: invokestatic 491	com/tencent/mobileqq/mini/entry/MiniAppUtils:isNightMode	()Z
+    //   16: ifeq +36 -> 52
+    //   19: aload_0
+    //   20: getfield 160	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mThemeBackgroudView	Landroid/widget/ImageView;
+    //   23: bipush 8
+    //   25: invokevirtual 494	android/widget/ImageView:setVisibility	(I)V
+    //   28: invokestatic 488	com/tencent/mobileqq/theme/ThemeUtil:isDefaultTheme	()Z
+    //   31: ifeq +54 -> 85
+    //   34: aload_0
+    //   35: getfield 166	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mDefaultStateView	Landroid/view/ViewGroup;
+    //   38: ldc_w 495
+    //   41: invokevirtual 498	android/view/ViewGroup:setBackgroundResource	(I)V
+    //   44: aload_0
+    //   45: getfield 119	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mAdapter	Lcom/tencent/mobileqq/mini/entry/MiniAppEntryAdapter;
+    //   48: invokevirtual 262	com/tencent/mobileqq/mini/entry/MiniAppEntryAdapter:notifyDataSetChanged	()V
+    //   51: return
+    //   52: aload_0
+    //   53: getfield 160	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mThemeBackgroudView	Landroid/widget/ImageView;
+    //   56: iconst_0
+    //   57: invokevirtual 494	android/widget/ImageView:setVisibility	(I)V
+    //   60: aload_0
+    //   61: getfield 160	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mThemeBackgroudView	Landroid/widget/ImageView;
+    //   64: ldc_w 499
+    //   67: invokevirtual 502	android/widget/ImageView:setImageResource	(I)V
+    //   70: goto -42 -> 28
+    //   73: astore_1
+    //   74: ldc 17
+    //   76: iconst_1
+    //   77: ldc_w 504
+    //   80: aload_1
+    //   81: invokestatic 387	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   84: return
+    //   85: aload_0
+    //   86: getfield 166	com/tencent/mobileqq/mini/entry/MiniAppEntryLayout:mDefaultStateView	Landroid/view/ViewGroup;
+    //   89: iconst_0
+    //   90: invokevirtual 507	android/view/ViewGroup:setBackgroundColor	(I)V
+    //   93: goto -49 -> 44
+    //   96: astore_1
+    //   97: ldc 17
+    //   99: iconst_1
+    //   100: iconst_2
+    //   101: anewarray 509	java/lang/Object
+    //   104: dup
+    //   105: iconst_0
+    //   106: ldc_w 511
+    //   109: aastore
+    //   110: dup
+    //   111: iconst_1
+    //   112: aload_1
+    //   113: invokestatic 517	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   116: aastore
+    //   117: invokestatic 520	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
+    //   120: goto -76 -> 44
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	123	0	this	MiniAppEntryLayout
+    //   73	8	1	localThrowable	Throwable
+    //   96	17	1	localException	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   0	19	73	java/lang/Throwable
+    //   19	28	73	java/lang/Throwable
+    //   28	44	73	java/lang/Throwable
+    //   44	51	73	java/lang/Throwable
+    //   52	70	73	java/lang/Throwable
+    //   85	93	73	java/lang/Throwable
+    //   97	120	73	java/lang/Throwable
+    //   28	44	96	java/lang/Exception
+    //   85	93	96	java/lang/Exception
   }
   
   public void startSwitchIconAnimation()
@@ -446,69 +459,18 @@ public class MiniAppEntryLayout
   
   public void updateHongBaoRes()
   {
-    for (;;)
+    try
     {
-      DesktopDataManager.HongBaoResBuilder localHongBaoResBuilder;
-      try
-      {
-        QLog.d("MicroAppEntryLayout", 1, "---updateHongBaoRes---");
-        if ((this.mContext == null) || (this.mContext.app == null)) {
-          break label302;
-        }
-        Object localObject1 = (ahfx)this.mContext.app.getManager(342);
-        if ((localObject1 == null) || (!((ahfx)localObject1).h())) {
-          break label276;
-        }
-        localHongBaoResBuilder = ((ahfx)localObject1).a();
-        DesktopDataManager localDesktopDataManager = (DesktopDataManager)this.mContext.app.getManager(336);
-        if (localDesktopDataManager.getHongBaoResBuilder() != null) {
-          localHongBaoResBuilder = localDesktopDataManager.getHongBaoResBuilder();
-        }
-        if ((localHongBaoResBuilder != null) && ((getParent() instanceof PullRefreshHeader)))
-        {
-          if (((ahfx)localObject1).a() != null)
-          {
-            localObject1 = new BitmapDrawable(((ahfx)localObject1).a());
-            ((PullRefreshHeader)getParent()).setBackgroundDrawable((Drawable)localObject1);
-          }
-        }
-        else
-        {
-          if (this.mAdapter == null) {
-            break;
-          }
-          this.mAdapter.notifyDataSetChanged();
-          return;
-        }
-        if ((localHongBaoResBuilder.getBackgroundUrl() != null) && (localHongBaoResBuilder.getBackgroundLoadingResId() != -1) && (localHongBaoResBuilder.getBackgroundFailedResId() != -1))
-        {
-          localObject1 = URLDrawable.URLDrawableOptions.obtain();
-          ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(localHongBaoResBuilder.getBackgroundLoadingResId());
-          ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(localHongBaoResBuilder.getBackgroundFailedResId());
-          localObject1 = URLDrawable.getDrawable(localHongBaoResBuilder.getBackgroundUrl(), (URLDrawable.URLDrawableOptions)localObject1);
-          ((URLDrawable)localObject1).setDecodeHandler(this.decodeHandler);
-          ((PullRefreshHeader)getParent()).setBackgroundDrawable((Drawable)localObject1);
-          continue;
-        }
-        if (localHongBaoResBuilder.getBackgroundResId() == -1) {
-          continue;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("MicroAppEntryLayout", 1, "updateHongBaoRes error.", localThrowable);
-        return;
-      }
-      ((PullRefreshHeader)getParent()).setBackgroundResource(localHongBaoResBuilder.getBackgroundResId());
-      continue;
-      label276:
+      QLog.d("MicroAppEntryLayout", 1, "---updateHongBaoRes---");
       if ((getParent() instanceof PullRefreshHeader)) {
         ((PullRefreshHeader)getParent()).setBackgroundColor(0);
       }
       setThemeBackgroundDrawable();
       return;
-      label302:
-      Object localObject2 = null;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("MicroAppEntryLayout", 1, "updateHongBaoRes error.", localThrowable);
     }
   }
   
@@ -536,7 +498,7 @@ public class MiniAppEntryLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryLayout
  * JD-Core Version:    0.7.0.1
  */

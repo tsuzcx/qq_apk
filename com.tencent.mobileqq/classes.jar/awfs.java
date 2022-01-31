@@ -1,94 +1,79 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.common.app.AppInterface;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AccountNotMatchException;
 
-public class awfs
-  extends awfm
+class awfs
+  implements awfv
 {
-  public awfs(Context paramContext, AppInterface paramAppInterface, View paramView, String paramString)
-  {
-    super(paramContext, paramAppInterface, paramView, paramString);
-    this.e = 0;
-  }
+  awfs(awfr paramawfr, awfc paramawfc, awfl paramawfl) {}
   
-  public View a(RichStatus paramRichStatus)
-  {
-    paramRichStatus = super.a(paramRichStatus);
-    l();
-    return paramRichStatus;
-  }
+  public void a(int paramInt) {}
   
-  protected CharSequence a(RichStatus paramRichStatus, awfv paramawfv, int paramInt)
+  public void a(int paramInt, awfd paramawfd) {}
+  
+  public void a(int paramInt, ArrayList<awfd> paramArrayList) {}
+  
+  public void a_(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt, awfd paramawfd) {}
+  
+  public void c(int paramInt, awfd arg2)
   {
-    if (paramRichStatus == null) {
-      paramawfv = "";
-    }
-    do
+    awfz localawfz = (awfz)???.a;
+    Object localObject2 = new StringBuilder().append("PresendStatus: destPath:").append(this.jdField_a_of_type_Awfc.jdField_a_of_type_Awfl.g).append(",uuid:").append(this.jdField_a_of_type_Awfc.jdField_a_of_type_JavaLangString).append(",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true, mainUploadFinish:true, uploadResult:");
+    if (paramInt == 0)
     {
-      return paramawfv;
-      localObject1 = paramRichStatus.toSpannableStringWithoutAction(paramawfv);
-      paramawfv = (awfv)localObject1;
-    } while (TextUtils.isEmpty(paramRichStatus.actionText));
-    Object localObject2 = paramRichStatus.actionText;
-    paramawfv = (awfv)localObject2;
-    if (!TextUtils.isEmpty(paramRichStatus.dataText)) {
-      paramawfv = (String)localObject2 + paramRichStatus.dataText;
+      ??? = "ResultOk";
+      awen.a("PresendPicMgrService", "onSend ", ???);
+      awen.a("PresendPicMgrService", "onSend", " SendResult = " + localawfz);
     }
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130848546);
-    localObject2 = new SpannableStringBuilder((CharSequence)localObject1);
-    ((SpannableStringBuilder)localObject2).insert(0, "[S] ");
-    Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130848539);
-    String str = awek.a().a(paramRichStatus.actionId);
-    paramRichStatus = (RichStatus)localObject1;
-    if (!TextUtils.isEmpty(str))
+    for (;;)
     {
-      paramRichStatus = URLDrawable.URLDrawableOptions.obtain();
-      paramRichStatus.mLoadingDrawable = ((Drawable)localObject1);
-      paramRichStatus.mFailedDrawable = ((Drawable)localObject1);
-      paramRichStatus.mRequestWidth = paramInt;
-      paramRichStatus.mRequestHeight = paramInt;
-      paramRichStatus = URLDrawable.getDrawable(str, paramRichStatus);
-      paramRichStatus.setCallback(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView);
+      synchronized (awfr.a(this.jdField_a_of_type_Awfr))
+      {
+        if (!this.jdField_a_of_type_Awfl.f)
+        {
+          if (paramInt == 0)
+          {
+            this.jdField_a_of_type_Awfc.jdField_a_of_type_Awfl.c = 1;
+            awen.a("PresendPicMgrService", "onSend", " SendButton not clicked, add senReq to mUploadFinishList,senReq = " + this.jdField_a_of_type_Awfc);
+            awfr.a(this.jdField_a_of_type_Awfr).add(this.jdField_a_of_type_Awfc);
+            return;
+            ??? = "ResultFail";
+            break;
+          }
+          this.jdField_a_of_type_Awfc.jdField_a_of_type_Awfl.c = 2;
+        }
+      }
+      if (paramInt == 0)
+      {
+        try
+        {
+          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(awfr.a(this.jdField_a_of_type_Awfr));
+          localObject2 = (MessageRecord)this.jdField_a_of_type_Awfc.jdField_a_of_type_Awfl.a;
+          ((axso)localQQAppInterface.getManager(326)).a((MessageRecord)localObject2, null);
+          awen.a("PresendPicMgrService", "onSend", " SendButton has been clicked, sendMessage directly! ,senReq = " + this.jdField_a_of_type_Awfc);
+        }
+        catch (AccountNotMatchException localAccountNotMatchException) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("PresendPicMgrService", 2, "no appRuntime");
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("PresendPicMgrService", 2, "onSend SendResult = " + localAccountNotMatchException + ", upload failed");
+      }
     }
-    paramRichStatus.setBounds(0, 0, paramInt, paramInt);
-    int i = Color.parseColor("#ffa8a8a8");
-    if ((Build.VERSION.SDK_INT >= 4) && (Build.VERSION.SDK_INT != 20)) {}
-    for (paramRichStatus = new awdb(paramRichStatus, 1, paramawfv, i, localDrawable, paramInt);; paramRichStatus = new awdb(paramRichStatus, 0, paramawfv, i, localDrawable, paramInt))
-    {
-      ((SpannableStringBuilder)localObject2).setSpan(paramRichStatus, 0, "[S]".length(), 17);
-      return localObject2;
-    }
   }
   
-  protected boolean b()
-  {
-    return false;
-  }
-  
-  protected boolean d()
-  {
-    return false;
-  }
-  
-  protected void e()
-  {
-    int i = jdField_a_of_type_ArrayOfInt[6];
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(i, i, i, i);
-  }
+  public void d(int paramInt, awfd paramawfd) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awfs
  * JD-Core Version:    0.7.0.1
  */

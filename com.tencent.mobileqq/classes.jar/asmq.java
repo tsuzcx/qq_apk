@@ -1,64 +1,78 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
 public class asmq
-  implements amne
+  implements afal
 {
-  public asmq(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  private final BaseChatPie a;
+  public boolean a;
   
-  public void a()
+  public asmq(BaseChatPie paramBaseChatPie)
   {
-    if ((MsgBackupDateFragment.a(this.a) != null) && (MsgBackupDateFragment.a(this.a).isShowing()))
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+  }
+  
+  public static asmq a(BaseChatPie paramBaseChatPie)
+  {
+    return (asmq)paramBaseChatPie.a(6);
+  }
+  
+  private void b(XEditTextEx paramXEditTextEx)
+  {
+    try
     {
-      MsgBackupDateFragment.a(this.a).dismiss();
-      MsgBackupDateFragment.b(this.a);
-      MsgBackupDateFragment.a(this.a);
-      MsgBackupDateFragment.b(this.a, MsgBackupDateFragment.b(this.a));
+      paramXEditTextEx.setTextMenuListener(null);
+      return;
+    }
+    catch (Throwable paramXEditTextEx) {}
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 2) {
+      a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    }
+    do
+    {
+      return;
+      if (paramInt == 11)
+      {
+        b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+        return;
+      }
+    } while (paramInt != 4);
+    bhpd.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
+  
+  public void a(XEditTextEx paramXEditTextEx)
+  {
+    asmr localasmr = new asmr(this);
+    try
+    {
+      paramXEditTextEx.setTextMenuListener(localasmr);
+      return;
+    }
+    catch (Throwable paramXEditTextEx)
+    {
+      paramXEditTextEx.printStackTrace();
     }
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public int[] a()
   {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      MsgBackupDateFragment.a(this.a, MsgBackupDateFragment.b(this.a));
-      MsgBackupDateFragment.a(this.a);
-      if ((MsgBackupDateFragment.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        MsgBackupDateFragment.a(this.a).a(2);
-      }
-      return;
-      if (MsgBackupDateFragment.b(this.a) == 1)
-      {
-        MsgBackupDateFragment.b(this.a, paramInt2);
-      }
-      else if (MsgBackupDateFragment.b(this.a) == 2)
-      {
-        MsgBackupDateFragment.c(this.a, paramInt2);
-        continue;
-        if (MsgBackupDateFragment.b(this.a) == 1)
-        {
-          MsgBackupDateFragment.d(this.a, paramInt2);
-        }
-        else if (MsgBackupDateFragment.b(this.a) == 2)
-        {
-          MsgBackupDateFragment.e(this.a, paramInt2);
-          continue;
-          if (MsgBackupDateFragment.b(this.a) == 1) {
-            MsgBackupDateFragment.f(this.a, paramInt2);
-          } else if (MsgBackupDateFragment.b(this.a) == 2) {
-            MsgBackupDateFragment.g(this.a, paramInt2);
-          }
-        }
-      }
+    return new int[] { 2, 11, 4 };
+  }
+  
+  public void b(int paramInt)
+  {
+    if (paramInt >= 30) {
+      this.jdField_a_of_type_Boolean = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asmq
  * JD-Core Version:    0.7.0.1
  */

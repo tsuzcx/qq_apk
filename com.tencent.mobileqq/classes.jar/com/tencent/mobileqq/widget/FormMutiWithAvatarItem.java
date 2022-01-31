@@ -8,8 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import baxy;
-import bbdv;
+import bcws;
+import bdcq;
 import com.tencent.mobileqq.activity.contact.newfriend.connections.OverlappingImgLayout;
 import com.tencent.qphone.base.util.QLog;
 
@@ -36,16 +36,16 @@ public class FormMutiWithAvatarItem
   private void d()
   {
     this.b = new LinearLayout(getContext());
-    this.b.setId(2131366626);
+    this.b.setId(2131366744);
     this.b.setOrientation(0);
     this.b.setGravity(16);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(0, 2131366627);
+    localLayoutParams.addRule(0, 2131366745);
     localLayoutParams.addRule(15);
     addView(this.b, localLayoutParams);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(1, 2131366625);
-    localLayoutParams.addRule(0, 2131366626);
+    localLayoutParams.addRule(1, 2131366743);
+    localLayoutParams.addRule(0, 2131366744);
     localLayoutParams.addRule(15);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
   }
@@ -55,9 +55,9 @@ public class FormMutiWithAvatarItem
     return (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout.getChildCount() != 0);
   }
   
-  public void setOverimgLayout(int paramInt1, int paramInt2, String[] paramArrayOfString, baxy parambaxy)
+  public void setOverimgLayout(int paramInt1, int paramInt2, String[] paramArrayOfString, bcws parambcws)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout.a(paramInt1, paramInt2, paramArrayOfString, parambaxy);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout.a(paramInt1, paramInt2, paramArrayOfString, parambcws);
   }
   
   public void setOverloading()
@@ -65,18 +65,18 @@ public class FormMutiWithAvatarItem
     this.jdField_c_of_type_AndroidWidgetTextView = new TextView(getContext());
     this.jdField_c_of_type_AndroidWidgetTextView.setSingleLine(true);
     this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(b(getResources(), this.j));
-    int i = getResources().getDimensionPixelSize(2131296646);
+    int i = getResources().getDimensionPixelSize(2131296662);
     this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(0, i);
     this.jdField_c_of_type_AndroidWidgetTextView.setGravity(21);
     this.jdField_c_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
     this.jdField_c_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(true);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.rightMargin = ((int)bbdv.a(getContext(), 5.0F));
+    localLayoutParams.rightMargin = ((int)bdcq.a(getContext(), 5.0F));
     this.b.addView(this.jdField_c_of_type_AndroidWidgetTextView, localLayoutParams);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout = new OverlappingImgLayout(getContext());
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout.setGravity(21);
     localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.rightMargin = ((int)bbdv.a(getContext(), 12.0F));
+    localLayoutParams.rightMargin = ((int)bdcq.a(getContext(), 12.0F));
     this.b.addView(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsOverlappingImgLayout, localLayoutParams);
     if (QLog.isColorLevel()) {
       QLog.d("FormMutiWithAvatarItem", 2, "setOverloading, run ");

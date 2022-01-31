@@ -1,52 +1,27 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.List;
-
 class tfo
-  extends SimpleObserver<List<tso>>
+  implements tkr
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
   tfo(tfk paramtfk) {}
   
-  public void a(List<tso> paramList)
+  public void a(String paramString)
   {
-    ved.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onNext()");
-    super.onNext(paramList);
-    int i = 0;
-    while (i < paramList.size())
-    {
-      tso localtso = (tso)paramList.get(i);
-      if (!localtso.a) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(localtso.b);
-      }
-      i += 1;
-    }
+    tlo.b("WSFollowFeedHolder", "[onUserClick] uid: " + paramString);
+    paramString = "weishi://profile?person_id=" + paramString;
+    tlf.a(tfk.a(this.a).a(), paramString, 700, tfk.a(this.a), "content");
+    tfk.a(this.a, "content");
   }
   
-  public void onCancel()
+  public void b(String paramString)
   {
-    super.onCancel();
-  }
-  
-  public void onComplete()
-  {
-    ved.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onComplete()");
-    super.onComplete();
-    this.jdField_a_of_type_Tfk.a(this.jdField_a_of_type_JavaUtilArrayList);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    ved.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onError()");
-    super.onError(paramError);
-    this.jdField_a_of_type_Tfk.a(this.jdField_a_of_type_JavaUtilArrayList);
+    tlo.b("WSFollowFeedHolder", "[onTopicClick] tid: " + paramString);
+    paramString = "weishi://topic?topic_id=" + paramString;
+    tlf.a(tfk.a(this.a).a(), paramString, 700, tfk.a(this.a), "content");
+    tfk.a(this.a, "content");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,26 @@
 import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.2;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.2.1.1;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.os.Looper;
+import android.os.Message;
 
-public class nmm
-  implements TVK_SDKMgr.InstallListener
+class nmm
+  extends Handler
 {
-  public nmm(ReadInJoyNativeAdAppVideoView.2 param2) {}
-  
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  nmm(nml paramnml, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk failed");
-    }
+    super(paramLooper);
   }
   
-  public void onInstalledSuccessed()
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "install sdk success");
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
     }
-    ReadInJoyNativeAdAppVideoView.a(this.a.this$0).post(new ReadInJoyNativeAdAppVideoView.2.1.1(this));
+    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nmm
  * JD-Core Version:    0.7.0.1
  */

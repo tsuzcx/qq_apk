@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import alhj;
-import alhk;
-import alhn;
+import amxz;
+import amya;
+import amyd;
 import com.tencent.qphone.base.util.QLog;
 
 class ARLocalGestureCircleRecog$ProcessWorker
@@ -88,10 +88,10 @@ class ARLocalGestureCircleRecog$ProcessWorker
         ARLocalGestureCircleRecog.a(this.this$0, true);
         try
         {
-          alhk localalhk = this.this$0.a(this.jdField_a_of_type_ArrayOfByte, ARLocalGestureCircleRecog.a(this.this$0), ARLocalGestureCircleRecog.b(this.this$0), 17);
-          QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecog. recogResult = " + localalhk + ",mRecogResult.gestureResult.mode = " + ARLocalGestureCircleRecog.a(this.this$0).a.d);
+          amya localamya = this.this$0.a(this.jdField_a_of_type_ArrayOfByte, ARLocalGestureCircleRecog.a(this.this$0), ARLocalGestureCircleRecog.b(this.this$0), 17);
+          QLog.i("AREngine_ARLocalGestureCircleRecog", 1, "ARLocalGestureCircleRecog. recogResult = " + localamya + ",mRecogResult.gestureResult.mode = " + ARLocalGestureCircleRecog.a(this.this$0).a.d);
           if ((ARLocalGestureCircleRecog.a(this.this$0)) && (!ARLocalGestureCircleRecog.b(this.this$0)) && (ARLocalGestureCircleRecog.a(this.this$0) != null) && (ARLocalGestureCircleRecog.a(this.this$0).a.d == 0)) {
-            ARLocalGestureCircleRecog.a(this.this$0).a(localalhk);
+            ARLocalGestureCircleRecog.a(this.this$0).a(localamya);
           }
           ARLocalGestureCircleRecog.a(this.this$0, false);
           yield();
@@ -117,7 +117,7 @@ class ARLocalGestureCircleRecog$ProcessWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecog.ProcessWorker
  * JD-Core Version:    0.7.0.1
  */

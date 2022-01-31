@@ -1,41 +1,30 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import ajsd;
-import android.app.Activity;
-import bbxx;
-import bhvf;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class CapsuleButton$8
-  implements Runnable
+  implements MiniAppCmdInterface
 {
-  CapsuleButton$8(CapsuleButton paramCapsuleButton, Activity paramActivity) {}
+  CapsuleButton$8(CapsuleButton paramCapsuleButton, MiniAppInfo paramMiniAppInfo) {}
   
-  public void run()
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (!CapsuleButton.access$800(this.this$0))
+    if (paramBoolean)
     {
-      bhvf.a().a(this.val$activity, CapsuleButton.access$500(this.this$0), CapsuleButton.access$900(this.this$0), 1, 14.0F, 5.0D, 10.0D, 3000L, -16578534, false, true, 0, null, 0);
-      CapsuleButton.access$1000(this.this$0);
-    }
-    for (;;)
-    {
-      CapsuleButton.access$500(this.this$0).addAnimatorListener(new CapsuleButton.8.1(this));
-      if ((CapsuleButton.access$1100(this.this$0) != -1) && (!CapsuleButton.access$1200(this.this$0))) {
-        break;
-      }
-      CapsuleButton.access$1300(this.this$0).a(CapsuleButton.access$500(this.this$0), MiniAppGlobal.KINGCARD_GUIDE_DARK_LOTTIE, ajsd.ch + MiniAppGlobal.KINGCARD_GUIDE_DARK_LOTTIE.hashCode() + ".zip", true);
+      AppBrandTask.runTaskOnUiThread(new CapsuleButton.8.1(this));
+      QLog.d("CapsuleButton", 2, "sendSetUserAppTopRequest, success to set top");
       return;
-      QLog.i("CapsuleButton", 1, "showKingCardTips, guide had been showed, not show this time");
     }
-    CapsuleButton.access$1300(this.this$0).a(CapsuleButton.access$500(this.this$0), MiniAppGlobal.KINGCARD_GUIDE_LOTTIE, ajsd.ch + MiniAppGlobal.KINGCARD_GUIDE_LOTTIE.hashCode() + ".zip", true);
+    QLog.e("CapsuleButton", 1, "sendSetUserAppTopRequest, fail to set top");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.CapsuleButton.8
  * JD-Core Version:    0.7.0.1
  */

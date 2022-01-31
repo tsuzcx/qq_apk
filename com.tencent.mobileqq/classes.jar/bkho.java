@@ -1,181 +1,124 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.view.animation.LinearInterpolator;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public class bkho
-  extends bkhx
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private final short jdField_a_of_type_Short;
+  private final byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
-  private Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
-  private String jdField_b_of_type_JavaLangString;
-  private int c;
-  private int d;
-  private int e;
+  private long jdField_b_of_type_Long;
+  private short jdField_b_of_type_Short;
+  private final byte[] jdField_b_of_type_ArrayOfByte;
+  private long c;
   
-  public bkho(Context paramContext, String paramString)
+  public bkho(int paramInt, byte[] paramArrayOfByte1, long paramLong1, byte[] paramArrayOfByte2, long paramLong2)
   {
-    super(paramContext, paramString);
-    a(paramString);
-    b();
-    c();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte2;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_ArrayOfByte = new byte[20];
+    if (paramArrayOfByte1.length > 20) {
+      throw new IllegalArgumentException("file Hash is too long.");
+    }
+    this.jdField_a_of_type_Short = ((short)paramArrayOfByte1.length);
+    paramInt = 0;
+    while (paramInt < paramArrayOfByte1.length)
+    {
+      this.jdField_b_of_type_ArrayOfByte[paramInt] = paramArrayOfByte1[paramInt];
+      paramInt += 1;
+    }
   }
   
-  public static String a(int paramInt, String paramString)
+  public int a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("type", paramInt);
-      localJSONObject.put("city_bitmap_path", paramString);
-      paramString = localJSONObject.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("CityStickerDrawable", 2, paramString);
-      }
-      return paramString;
+    if (this.jdField_a_of_type_Int == 1000) {
+      return this.jdField_a_of_type_ArrayOfByte.length + 2 + 34 + 16;
     }
-    catch (JSONException paramString)
+    return this.jdField_a_of_type_ArrayOfByte.length + 2 + 42 + 16;
+  }
+  
+  public int a(long paramLong, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
+  {
+    paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte, paramInt2, paramInt3);
+    if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {
+      paramArrayOfByte.order(ByteOrder.BIG_ENDIAN);
+    }
+    paramArrayOfByte.putInt(-1412589450);
+    paramArrayOfByte.putInt(this.jdField_a_of_type_Int);
+    paramArrayOfByte.putInt((int)this.jdField_b_of_type_Long);
+    if (this.jdField_a_of_type_Int == 1000) {}
+    for (paramInt2 = this.jdField_a_of_type_ArrayOfByte.length + 2 + 34 + paramInt1;; paramInt2 = this.jdField_a_of_type_ArrayOfByte.length + 2 + 42 + paramInt1)
     {
-      for (;;)
+      paramArrayOfByte.putInt(paramInt2);
+      short s = (short)this.jdField_a_of_type_ArrayOfByte.length;
+      paramArrayOfByte.putShort(s);
+      paramArrayOfByte.put(this.jdField_a_of_type_ArrayOfByte, 0, s);
+      paramArrayOfByte.putShort(this.jdField_a_of_type_Short);
+      paramArrayOfByte.put(this.jdField_b_of_type_ArrayOfByte);
+      paramArrayOfByte.putInt((int)(this.jdField_a_of_type_Long & 0xFFFFFFFF));
+      paramArrayOfByte.putInt((int)(0xFFFFFFFF & paramLong));
+      paramArrayOfByte.putInt(paramInt1);
+      if (this.jdField_a_of_type_Int == 1007)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("CityStickerDrawable", 2, paramString, new Object[0]);
-        }
-        paramString = null;
+        paramArrayOfByte.putInt((int)((this.jdField_a_of_type_Long & 0x0) >> 32));
+        paramArrayOfByte.putInt((int)((0x0 & paramLong) >> 32));
       }
+      return paramInt2 + 16 - paramInt1;
     }
   }
   
-  protected void a(Canvas paramCanvas, ArrayList<Integer> paramArrayList)
+  public int a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
   {
-    int i;
-    int k;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      i = 225;
-      k = this.e;
-      if (paramArrayList == null) {
-        break label200;
-      }
+    paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte, 0, paramInt);
+    if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {
+      paramArrayOfByte.order(ByteOrder.BIG_ENDIAN);
     }
-    for (;;)
+    long l1 = paramArrayOfByte.getInt();
+    this.jdField_b_of_type_Int = paramArrayOfByte.getInt();
+    paramArrayOfByte.getInt();
+    paramInt = paramArrayOfByte.getInt();
+    if (l1 != -1412589450L) {}
+    do
     {
-      try
-      {
-        j = ((Integer)paramArrayList.get(this.jdField_a_of_type_Int)).intValue();
-        int n;
-        QLog.e("CityStickerDrawable", 1, paramArrayList, new Object[0]);
+      return 100002;
+      if (this.jdField_b_of_type_Int != 0) {
+        return this.jdField_b_of_type_Int;
       }
-      catch (RuntimeException paramArrayList)
-      {
-        try
-        {
-          n = ((Integer)paramArrayList.get(this.jdField_b_of_type_Int)).intValue();
-          i = n;
-          m = ((Integer)paramArrayList.get(this.c)).intValue();
-          k = n;
-          i = j;
-          j = m;
-          this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(k);
-          paramCanvas.save();
-          this.jdField_b_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidGraphicsRect);
-          this.jdField_b_of_type_AndroidGraphicsRect.offset(0, i);
-          paramCanvas.clipRect(0, 0, this.d, j);
-          paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-          paramCanvas.restore();
-          return;
-        }
-        catch (RuntimeException paramArrayList)
-        {
-          for (;;)
-          {
-            int m = j;
-            j = i;
-            i = m;
-          }
-        }
-        paramArrayList = paramArrayList;
-        j = 225;
-        i = 0;
+      if (!paramBoolean) {
+        break;
       }
-      m = j;
-      int j = k;
-      k = m;
-      continue;
-      label200:
-      j = k;
-      k = 225;
-      i = 0;
+    } while ((paramInt != 5) && (paramInt != 9));
+    this.jdField_b_of_type_Short = ((short)paramArrayOfByte.get());
+    l1 = 0L;
+    long l2 = paramArrayOfByte.getInt();
+    if (this.jdField_a_of_type_Int == 1007) {
+      l1 = paramArrayOfByte.getInt();
     }
+    this.c = ((l1 << 32 & 0x0) + (l2 & 0xFFFFFFFF));
+    return 0;
   }
   
-  public String[] a(String paramString)
+  public long a()
   {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      if (paramString != null)
-      {
-        this.f = paramString.optInt("type", 0);
-        this.jdField_b_of_type_JavaLangString = paramString.optString("city_bitmap_path");
-      }
-      return new String[] { this.jdField_b_of_type_JavaLangString };
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        QLog.e("CityStickerDrawable", 1, paramString, new Object[0]);
-        paramString = null;
-      }
-    }
+    return this.c;
   }
   
-  protected void b()
+  public short a()
   {
-    if ((this.jdField_b_of_type_JavaLangString != null) && (new File(this.jdField_b_of_type_JavaLangString).exists()))
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeFile(this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
-      float f1 = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 3.0F;
-      float f2 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 3.0F;
-      int i = a(f1, this.jdField_a_of_type_AndroidContentContext.getResources());
-      int j = a(f2, this.jdField_a_of_type_AndroidContentContext.getResources());
-      this.d = i;
-      this.e = j;
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, i, j);
-      i = a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Bkhl.a("offsetY", 0L, 500L, -i, 0, new LinearInterpolator());
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Bkhl.a("alpha", 0L, 500L, 0, 255, new LinearInterpolator());
-      this.c = this.jdField_a_of_type_Bkhl.a("height", 0L, 500L, 0, this.e, new LinearInterpolator());
-    }
+    return this.jdField_b_of_type_Short;
   }
   
-  public int getIntrinsicHeight()
+  public void a(long paramLong)
   {
-    return this.e;
-  }
-  
-  public int getIntrinsicWidth()
-  {
-    return this.d;
+    this.jdField_b_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkho
  * JD-Core Version:    0.7.0.1
  */

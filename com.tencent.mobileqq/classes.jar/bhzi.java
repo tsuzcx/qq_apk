@@ -1,30 +1,44 @@
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBStringField;
-import cooperation.vip.pb.vac_adv_get.DropList;
+import android.os.Handler;
+import android.os.Message;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
 
-public class bhzi
+class bhzi
+  extends Handler
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  bhzi(bhzh parambhzh) {}
   
-  public static bhzi a(vac_adv_get.DropList paramDropList)
+  bhzi(bhzh parambhzh, Handler paramHandler)
   {
-    if (paramDropList == null) {
-      return null;
+    super(paramHandler.getLooper());
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message " + paramMessage);
+    case 1: 
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
     }
-    bhzi localbhzi = new bhzi();
-    localbhzi.jdField_a_of_type_Int = paramDropList.action_type.get();
-    localbhzi.b = paramDropList.optext.get();
-    localbhzi.jdField_a_of_type_JavaLangString = paramDropList.iconurl.get();
-    localbhzi.c = paramDropList.jumpurl.get();
-    return localbhzi;
+    do
+    {
+      return;
+      this.a.a();
+      return;
+    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
+      return;
+    }
+    this.a.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhzi
  * JD-Core Version:    0.7.0.1
  */

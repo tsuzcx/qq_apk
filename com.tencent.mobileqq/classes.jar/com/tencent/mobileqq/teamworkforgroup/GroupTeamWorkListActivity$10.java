@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.teamworkforgroup;
 
 import android.os.Message;
-import ayir;
+import bagn;
 import java.util.List;
 import mqq.os.MqqHandler;
 
@@ -13,12 +13,12 @@ class GroupTeamWorkListActivity$10
   public void run()
   {
     List localList;
-    if (this.this$0.jdField_a_of_type_Ayir != null)
+    if (this.this$0.jdField_a_of_type_Bagn != null)
     {
       if (this.a == 1) {
-        this.this$0.jdField_a_of_type_Ayir.a(this.this$0.jdField_a_of_type_Long);
+        this.this$0.jdField_a_of_type_Bagn.a(this.this$0.jdField_a_of_type_Long);
       }
-      localList = this.this$0.jdField_a_of_type_Ayir.b();
+      localList = this.this$0.jdField_a_of_type_Bagn.b();
       if (localList == null) {}
     }
     synchronized (this.this$0.b)
@@ -32,7 +32,7 @@ class GroupTeamWorkListActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.10
  * JD-Core Version:    0.7.0.1
  */

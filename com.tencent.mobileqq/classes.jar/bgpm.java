@@ -1,21 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-class bgpm
-  implements DialogInterface.OnClickListener
+public class bgpm
+  implements bgpl
 {
-  bgpm(bgpj parambgpj) {}
+  private int jdField_a_of_type_Int;
+  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    this.a.b = true;
-    bgpj.a(this.a, 2);
-    bgpj.c(this.a);
+    return this.jdField_a_of_type_Int;
   }
+  
+  public MiniAppInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgpm
  * JD-Core Version:    0.7.0.1
  */

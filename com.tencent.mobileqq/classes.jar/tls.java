@@ -1,48 +1,23 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class tls
+final class tls
+  implements bevy
 {
-  public int a;
-  public String a;
-  public List<CommentEntry> a;
-  public int b;
-  public String b;
-  
-  public tls()
+  public void a(BaseResp paramBaseResp)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    switch (paramBaseResp.errCode)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (tls)paramObject;
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
-      }
-    } while (paramObject.jdField_a_of_type_JavaLangString == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString.hashCode();
+    case -1: 
+    default: 
+      bfhq.a().a(2131720019);
     }
-    return 0;
+    WXShareHelper.a().b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tls
  * JD-Core Version:    0.7.0.1
  */

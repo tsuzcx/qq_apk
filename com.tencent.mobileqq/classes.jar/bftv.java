@@ -1,23 +1,26 @@
-import android.graphics.drawable.Drawable;
-import android.text.SpannableString;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.SurfaceTexture;
 
-public class bftv
-  extends bfvw
+public abstract interface bftv
 {
-  public Drawable a;
+  public abstract void a();
   
-  public void a(SpannableString paramSpannableString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("spanStyle", 2, "[ImageStyle] start:" + this.b + " end:" + this.c);
-    }
-    paramSpannableString.setSpan(new bftu(this.a, 1), this.b, this.c, 17);
-  }
+  public abstract void a(int paramInt, Throwable paramThrowable);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(SurfaceTexture paramSurfaceTexture);
+  
+  public abstract void b();
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bftv
  * JD-Core Version:    0.7.0.1
  */

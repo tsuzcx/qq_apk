@@ -1,38 +1,42 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.MessageMicro;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class tly<REQ extends MessageMicro>
-  extends sys<tnw>
+final class tly
+  implements URLDrawable.URLDrawableListener
 {
-  public final Bundle a;
-  public final REQ a;
-  public final String a;
+  tly(String paramString1, ImageView paramImageView, String paramString2) {}
   
-  public tly(String paramString, REQ paramREQ, Bundle paramBundle)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramREQ;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    tlo.a("815", "onLoadCanceled - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841377);
   }
   
-  public String a()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    tlo.a("815", "onLoadFialed - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841377);
   }
   
-  public syn a(byte[] paramArrayOfByte)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    return new tnw(paramArrayOfByte);
+    tlo.a("815", "onLoadProgressed - " + this.jdField_a_of_type_JavaLangString);
   }
   
-  protected byte[] a()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro.toByteArray();
+    tlo.a("815", "onLoadSuccessed - " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "banner")) {
+      tfd.b(2, this.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tly
  * JD-Core Version:    0.7.0.1
  */

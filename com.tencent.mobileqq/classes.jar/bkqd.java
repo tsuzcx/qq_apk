@@ -1,48 +1,29 @@
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.widget.Button;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class bkqd
-  extends bjts
+class bkqd
+  implements bkpv
 {
-  private View a;
+  bkqd(bkqa parambkqa, AtomicReference paramAtomicReference) {}
   
-  public bkqd(@NonNull bjxn parambjxn)
+  public void a(bkpz parambkpz)
   {
-    super(parambjxn);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.a = a(2131374092);
-    ((Button)a(2131366434)).setOnClickListener(new bkqe(this));
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    if (paramMessage.arg1 == 1) {
-      this.a.setVisibility(8);
+    axmg localaxmg = (axmg)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localaxmg != null) {
+      localaxmg.a(parambkpz);
     }
-    return super.a(paramMessage);
   }
   
-  public void a_(int paramInt, Object paramObject)
+  public void a(String paramString)
   {
-    super.a_(paramInt, paramObject);
-    paramObject = this.a;
-    if ((paramInt == 0) || (paramInt == 7)) {}
-    for (paramInt = 0;; paramInt = 8)
-    {
-      paramObject.setVisibility(paramInt);
-      return;
+    axmg localaxmg = (axmg)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localaxmg != null) {
+      localaxmg.a(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkqd
  * JD-Core Version:    0.7.0.1
  */

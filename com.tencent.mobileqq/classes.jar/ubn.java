@@ -1,32 +1,35 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalBaseBottomFragment;
+import com.tencent.biz.qqcircle.widgets.QCircleFolderTabViewPager;
+import com.tencent.biz.qqcircle.widgets.QCirclePersonalBottomView;
+import java.util.List;
 
 public class ubn
-  extends ubs<StoryVideoItem>
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public ubn(VideoViewVideoHolder paramVideoViewVideoHolder)
-  {
-    super(paramVideoViewVideoHolder, null);
-  }
+  public ubn(QCirclePersonalBottomView paramQCirclePersonalBottomView) {}
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    super.onNext(paramStoryVideoItem);
-    VideoViewVideoHolder.a(this.a);
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    ved.d(this.a.a, "VideoPrepareSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
-    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
+    if (QCirclePersonalBottomView.a(this.a).getId() == paramInt)
+    {
+      QCirclePersonalBottomView.a(this.a).setCurrentItem(0);
+      ((QCirclePersonalBaseBottomFragment)QCirclePersonalBottomView.a(this.a).get(0)).a(0);
+      ((QCirclePersonalBaseBottomFragment)QCirclePersonalBottomView.a(this.a).get(1)).e();
+    }
+    while (QCirclePersonalBottomView.b(this.a).getId() != paramInt) {
+      return;
+    }
+    QCirclePersonalBottomView.a(this.a).setCurrentItem(1);
+    ((QCirclePersonalBaseBottomFragment)QCirclePersonalBottomView.a(this.a).get(1)).a(1);
+    ((QCirclePersonalBaseBottomFragment)QCirclePersonalBottomView.a(this.a).get(0)).e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubn
  * JD-Core Version:    0.7.0.1
  */

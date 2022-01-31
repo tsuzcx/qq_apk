@@ -1,16 +1,10 @@
-class axjz
-  implements adnx
+public abstract interface axjz
 {
-  axjz(axjs paramaxjs) {}
-  
-  public void a()
-  {
-    axjs.e(this.a);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axjz
  * JD-Core Version:    0.7.0.1
  */

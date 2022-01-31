@@ -1,12 +1,18 @@
+import com.tencent.mobileqq.ptt.LSRecordPanel;
+
 public abstract interface awtd
 {
-  public abstract void a(awtc paramawtc);
+  public abstract void a(boolean paramBoolean1, int paramInt, String paramString, boolean paramBoolean2, boolean paramBoolean3);
   
-  public abstract void a(awtc paramawtc, String paramString1, String paramString2);
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, LSRecordPanel paramLSRecordPanel);
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awtd
  * JD-Core Version:    0.7.0.1
  */

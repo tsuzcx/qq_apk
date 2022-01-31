@@ -1,27 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class adoe
-  implements bfph
+public class adoe
+  implements bdrd
 {
-  adoe(adod paramadod, MessageForDeviceFile paramMessageForDeviceFile, bfpc parambfpc) {}
+  public adoe(QQSettingMe paramQQSettingMe) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    switch (paramInt)
+    if (this.a.a != null)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      this.jdField_a_of_type_Adod.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "enterWordListener");
+      }
+      this.a.c(this.a.a.getAccount());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adoe
  * JD-Core Version:    0.7.0.1
  */

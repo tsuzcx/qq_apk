@@ -1,52 +1,30 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.biz.qqstory.msgTabNode.view.viewholder.FriendNodeViewHolder.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stRedDotRsp;
 
-public class tik
-  extends tin
+class tik
+  implements tgt
 {
-  public tik(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561301);
-  }
+  tik(tij paramtij) {}
   
-  public void a(tff paramtff)
+  public void a(the paramthe)
   {
-    ved.a("FriendNodeViewHolder", "bindData %s", paramtff);
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    QQAppInterface localQQAppInterface;
-    String str;
-    if ((localObject instanceof QQAppInterface))
+    if ((this.a.a() != null) && (paramthe != null) && (paramthe.a()) && (paramthe.a != null) && ((paramthe.a instanceof stRedDotRsp)))
     {
-      localQQAppInterface = (QQAppInterface)localObject;
-      str = String.valueOf(paramtff.b);
-      b(vzi.b(paramtff.g));
-      if (!thv.h) {
-        break label180;
+      paramthe = (stRedDotRsp)paramthe.a;
+      tij.a(this.a, paramthe.notificationReddot);
+      tij.b(this.a, paramthe.menu);
+      if (this.a.a() != null) {
+        ((tiu)this.a.a()).a(paramthe);
       }
     }
-    label180:
-    for (localObject = bbcz.m(localQQAppInterface, str);; localObject = str)
-    {
-      this.a.setNodeName((String)localObject, false);
-      ThreadManager.post(new FriendNodeViewHolder.1(this, localQQAppInterface, str), 8, null, true);
-      if (QLog.isColorLevel())
-      {
-        QLog.e("FriendNodeViewHolder", 2, new Object[] { "userItem = " + paramtff.b + ", name = " + (String)localObject, " list: ", String.valueOf(paramtff.a) });
-        QLog.e("FriendNodeViewHolder", 2, new Object[] { "data: ", String.valueOf(paramtff) });
-      }
-      super.a(paramtff);
+    while (this.a.a() == null) {
       return;
     }
+    ((tiu)this.a.a()).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tik
  * JD-Core Version:    0.7.0.1
  */

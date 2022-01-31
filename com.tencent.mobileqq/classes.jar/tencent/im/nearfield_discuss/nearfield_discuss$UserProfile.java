@@ -19,7 +19,7 @@ public final class nearfield_discuss$UserProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.nearfield_discuss.nearfield_discuss.UserProfile
  * JD-Core Version:    0.7.0.1
  */

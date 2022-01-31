@@ -1,56 +1,48 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity;
-
 public class azia
-  implements View.OnClickListener
+  implements alkr
 {
-  int jdField_a_of_type_Int = 0;
-  TroopCreateBaseActivity jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = null;
-  String jdField_a_of_type_JavaLangString;
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString) {}
   
-  public azia(TroopCreateBaseActivity paramTroopCreateBaseActivity, int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity = paramTroopCreateBaseActivity;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3, String paramString, long paramLong) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity == null) {
-      return;
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      if (this.jdField_a_of_type_Int == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.b();
-      }
-    }
-    for (;;)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a(this.jdField_a_of_type_Int);
-      return;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.c();
-      }
-      else if (this.jdField_a_of_type_Int == 2)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.d();
-        continue;
-        paramView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a;
-        if (paramView != null) {
-          paramView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-        }
-      }
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramObject = (Object[])paramObject;
+          } while ((paramObject == null) || (paramObject.length != 4));
+          a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
+          return;
+          paramObject = (Object[])paramObject;
+        } while ((paramObject == null) || (paramObject.length != 5));
+        a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue(), (String)paramObject[3], ((Long)paramObject[4]).longValue());
+        return;
+        paramObject = (Object[])paramObject;
+      } while ((paramObject == null) || (paramObject.length != 3));
+      a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Boolean)paramObject[1]).booleanValue(), ((Integer)paramObject[2]).intValue());
+      return;
+      paramObject = (Object[])paramObject;
+    } while ((paramObject == null) || (paramObject.length != 3));
+    a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azia
  * JD-Core Version:    0.7.0.1
  */

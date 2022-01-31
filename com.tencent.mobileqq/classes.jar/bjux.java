@@ -1,66 +1,214 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
+import android.app.Activity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
-import java.util.concurrent.atomic.AtomicInteger;
+import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin.2;
+import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin.3;
+import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin.4;
+import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin.5;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bjux
-  extends Handler
+  extends bjts
+  implements bjmq
 {
-  public bjux(EditVideoArtFilter paramEditVideoArtFilter) {}
+  private String a;
+  private String b;
   
-  public void dispatchMessage(Message paramMessage)
+  public bjux()
   {
-    super.dispatchMessage(paramMessage);
-    switch (paramMessage.what)
+    this.jdField_a_of_type_JavaLangString = bjux.class.getSimpleName();
+  }
+  
+  private void a(String paramString)
+  {
+    try
     {
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getLocalProxyUrl. json=" + paramString);
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).getJSONArray("playList");
+      localObject = ((JSONObject)localObject).getString("callback");
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        this.b = ((String)localObject);
+      }
+      localObject = new ArrayList();
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramString.length())
+      {
+        ((ArrayList)localObject).add(paramString.getJSONObject(i).getString("url"));
+        localArrayList.add(paramString.getJSONObject(i).getString("vid"));
+        i += 1;
+      }
+      if (((ArrayList)localObject).size() > 0) {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bjux.class).post(new QzoneVideoTabJsPlugin.2(this, (ArrayList)localObject, localArrayList));
+      }
+      return;
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  private static Activity b(Activity paramActivity)
+  {
+    Activity localActivity;
+    if (paramActivity == null) {
+      localActivity = null;
+    }
+    do
+    {
+      return localActivity;
+      localActivity = paramActivity;
+    } while (!(paramActivity instanceof BasePluginActivity));
+    return ((BasePluginActivity)paramActivity).getOutActivity();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bjux.class).post(new QzoneVideoTabJsPlugin.4(this));
+  }
+  
+  private void b(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString).getJSONArray("state");
+      ArrayList localArrayList1 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList();
+      int i = 0;
+      while (i < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        localArrayList1.add(localJSONObject.getString("url"));
+        localArrayList2.add(localJSONObject.getString("state"));
+        i += 1;
+      }
+      if (localArrayList1.size() > 0) {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bjux.class).post(new QzoneVideoTabJsPlugin.3(this, localArrayList1, localArrayList2));
+      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  private void c(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString).optString("url");
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(bjux.class).post(new QzoneVideoTabJsPlugin.5(this, paramString));
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e(this.jdField_a_of_type_JavaLangString, 1, paramString, new Object[0]);
+    }
+  }
+  
+  public void a()
+  {
+    bjmn.a().b(this);
+    super.a();
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
+      return false;
+    }
+    if (("videoProxyGetLocalProxyURL".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+    {
+      bjmn.a().a(this);
+      a(paramVarArgs[0]);
+      return true;
+    }
+    if (("videoProxySetPlayState".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+    {
+      bjmn.a().a(this);
+      b(paramVarArgs[0]);
+      return true;
+    }
+    if ("videoProxyStopAll".equals(paramString3))
+    {
+      bjmn.a().a(this);
+      b();
+      return true;
+    }
+    if ("videoProxySaveVideoToAlbum".equals(paramString3))
+    {
+      paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+      if ((paramJsBridgeListener != null) && (bjqu.a(paramJsBridgeListener, new bjuy(this, paramVarArgs, paramJsBridgeListener), 1))) {
+        c(paramVarArgs[0]);
+      }
+    }
+    return false;
+  }
+  
+  public void onWebEvent(String paramString, Bundle paramBundle)
+  {
+    if ((paramBundle == null) || (!paramBundle.containsKey("data"))) {}
     do
     {
       do
       {
         return;
-        EditVideoArtFilter.a(this.a, false);
-        localObject = (String)paramMessage.obj;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER SUCCESS,fileOutputPath:" + (String)localObject);
+        paramBundle = paramBundle.getBundle("data");
+        if (paramBundle == null)
+        {
+          QLog.e(this.jdField_a_of_type_JavaLangString, 1, "call js function,bundle is empty");
+          return;
         }
-        this.a.a((String)localObject, paramMessage.arg1);
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a(0, true);
-        return;
-        EditVideoArtFilter.a(this.a, false);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER ERROR");
+      } while (!"cmd.videoGetLocalProxyUrl".equals(paramString));
+      paramString = paramBundle.getStringArrayList("param.videoLocalUrls");
+      ArrayList localArrayList = paramBundle.getStringArrayList("param.videoId");
+      paramBundle = new JSONObject();
+      JSONArray localJSONArray = new JSONArray();
+      if ((paramString != null) && (localArrayList != null)) {}
+      try
+      {
+        if (paramString.size() == localArrayList.size())
+        {
+          int i = 0;
+          while (i < paramString.size())
+          {
+            String str = (String)paramString.get(i);
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("vid", localArrayList.get(i));
+            localJSONObject.put("url", str);
+            localJSONArray.put(localJSONObject);
+            i += 1;
+          }
         }
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a();
-        bcql.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690245), 0).a();
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "GET_FILTER TIMEOUT,state:isProcessing:" + this.a.jdField_a_of_type_Boolean + ",taskId:" + paramMessage.obj + ",currentFilterTaskId:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
-        }
-      } while ((!this.a.jdField_a_of_type_Boolean) || (((Integer)paramMessage.obj).intValue() != this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
-      EditVideoArtFilter.a(this.a, false);
-      this.a.c();
-      bcql.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131690245), 0).a();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.publish.edit.EditVideoArtFilter", 2, "UPDATE_FILTER_PROGRESS,state:isProcessing:" + this.a.jdField_a_of_type_Boolean + ",taskId:" + paramMessage.arg1 + ",updateCount:" + paramMessage.arg2 + ",currentFilterTaskId:" + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
+        paramBundle.put("proxyList", localJSONArray);
       }
-    } while ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a.getVisibility() != 0) || (paramMessage.arg1 != this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()));
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a(paramMessage.arg2, false);
-    Object localObject = EditVideoArtFilter.a(this.a).obtainMessage(38);
-    ((Message)localObject).arg1 = paramMessage.arg1;
-    ((Message)localObject).arg2 = (paramMessage.arg2 + 1);
-    EditVideoArtFilter.a(this.a).sendMessageDelayed((Message)localObject, 100L);
+      catch (JSONException paramString)
+      {
+        for (;;)
+        {
+          QLog.w(this.jdField_a_of_type_JavaLangString, 2, "getLocalProxyUrl result is invalid.", paramString);
+        }
+      }
+      QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getLocalProxyUrl result=" + paramBundle);
+    } while (TextUtils.isEmpty(this.b));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.b, new String[] { paramBundle.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjux
  * JD-Core Version:    0.7.0.1
  */

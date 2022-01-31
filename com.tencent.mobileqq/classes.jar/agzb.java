@@ -1,21 +1,10 @@
-public class agzb
+public abstract interface agzb
 {
-  public long a;
-  public String a;
-  public String b;
-  
-  public agzb() {}
-  
-  public agzb(String paramString1, String paramString2, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agzb
  * JD-Core Version:    0.7.0.1
  */

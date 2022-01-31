@@ -1,41 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
 class tbt
-  implements syq<tmn, toh>
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  tbt(tbr paramtbr) {}
+  tbt(tbs paramtbs) {}
   
-  public void a(@NonNull tmn paramtmn, @Nullable toh paramtoh, @NonNull ErrorMessage paramErrorMessage)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    ved.b("AddressDataProvider", "requestAddress Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramtoh != null))
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
     {
-      ved.a("AddressDataProvider", "requestAddress onCmdRespond success : %s .", paramtoh.toString());
-      this.a.jdField_a_of_type_JavaLangObject = new tbu(paramtoh.a, paramtoh.c, paramtoh.d, paramtoh.e, paramtoh.f, paramtmn.d, paramtmn.e);
-      this.a.a("country", paramtoh.a);
-      this.a.a("province", paramtoh.c);
-      this.a.a("city", paramtoh.d);
-      this.a.a("district", paramtoh.e);
-      this.a.a("street", paramtoh.f);
-      this.a.a("longitude", paramtmn.d);
-      this.a.a("latitude", paramtmn.e);
-      this.a.a("time", System.currentTimeMillis());
-      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
+      tlo.d("WSPublisherDialog", str + ", bundle: " + paramBundle.toString());
       return;
-      ved.d("AddressDataProvider", "requestAddress onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramtmn });
-      this.a.a(false, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbt
  * JD-Core Version:    0.7.0.1
  */

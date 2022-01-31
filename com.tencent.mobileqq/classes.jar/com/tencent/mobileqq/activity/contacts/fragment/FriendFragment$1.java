@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import avnj;
+import axfe;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class FriendFragment$1
@@ -10,12 +10,12 @@ public class FriendFragment$1
   
   public void run()
   {
-    ((avnj)this.this$0.a.getManager(91)).a();
+    ((axfe)this.this$0.a.getManager(91)).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.fragment.FriendFragment.1
  * JD-Core Version:    0.7.0.1
  */

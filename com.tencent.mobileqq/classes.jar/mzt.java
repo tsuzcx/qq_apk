@@ -1,75 +1,86 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import java.util.HashMap;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.biz.PoiMapActivity;
+import java.util.List;
 
-class mzt
-  implements ITMAssistantDownloadClientListener
+public class mzt
+  extends BaseAdapter
 {
-  mzt(mzs parammzs) {}
+  protected LayoutInflater a;
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public mzt(PoiMapActivity paramPoiMapActivity, Context paramContext)
   {
-    if (paramTMAssistantDownloadClient == null) {}
-    do
-    {
-      return;
-      paramTMAssistantDownloadClient = (mzn)mzs.a().get(paramString);
-    } while ((paramTMAssistantDownloadClient == null) || (paramTMAssistantDownloadClient.a == null));
-    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    paramTMAssistantDownloadClient.a.progress(i);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public int getCount()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OfflineDownload", 2, "task onDownloadSDKTaskStateChanged + url = " + paramString1 + ", state = " + paramInt1 + ", errorCode = " + paramInt2);
+    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a == null) {
+      return 0;
     }
-    if (paramTMAssistantDownloadClient == null) {
-      this.a.a(null, paramString1, null, -1, "client is null, " + paramString2);
+    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.d) {
+      return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size() + 1;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramString2 = (mzn)mzs.a().get(paramString1);
-          if ((paramString2 == null) || (paramString2.a == null))
-          {
-            this.a.a(null, paramString1, null, -1, "download info is null or callback is null");
-            return;
-          }
-          switch (paramInt1)
-          {
-          default: 
-            return;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("OfflineDownload", 2, "task downloading + url = " + paramString1);
-        return;
-        this.a.a(paramTMAssistantDownloadClient, paramString2, paramString1);
-        return;
-        this.a.a(paramString2.a, paramString1, paramString2.c, paramInt2, "offline zip download fail");
-        try
-        {
-          this.a.a.cancelDownloadTask(paramString1);
-          return;
-        }
-        catch (Exception paramTMAssistantDownloadClient) {}
-      } while (!QLog.isDevelopLevel());
-      QLog.d("OfflineDownload", 4, paramTMAssistantDownloadClient.toString());
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("OfflineDownload", 2, "task paused + url = " + paramString1);
+    return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size();
   }
   
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPoiMapActivity.a == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramViewGroup = new mzo(this.jdField_a_of_type_ComTencentBizPoiMapActivity);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizPoiMapActivity).inflate(2131559823, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370971));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362135));
+      paramViewGroup.c = paramView.findViewById(2131376296);
+      paramViewGroup.c.setVisibility(4);
+      paramViewGroup.d = paramView.findViewById(2131370727);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365150);
+      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131376503);
+      paramView.setTag(paramViewGroup);
+      paramViewGroup.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      if (paramInt != this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.size()) {
+        break label164;
+      }
+      paramViewGroup.d.setVisibility(0);
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    label164:
+    mzm localmzm;
+    do
+    {
+      return paramView;
+      paramViewGroup = (mzo)paramView.getTag();
+      break;
+      paramViewGroup.d.setVisibility(8);
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      localmzm = (mzm)getItem(paramInt);
+    } while (localmzm == null);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localmzm.a);
+    paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localmzm.b);
+    return paramView;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mzt
  * JD-Core Version:    0.7.0.1
  */

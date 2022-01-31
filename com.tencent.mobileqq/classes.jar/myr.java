@@ -1,39 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-
-class myr
-  extends Handler
+public abstract interface myr
 {
-  myr(myq parammyq, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
-      }
-      this.a.a.clear();
-    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
-    }
-    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspWatchVideo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class vds
-  implements View.OnClickListener
+public class vds
+  extends unf
 {
-  vds(vdr paramvdr) {}
+  public int b;
   
-  public void onClick(View paramView)
+  public vds(qqstory_service.RspWatchVideo paramRspWatchVideo)
   {
-    vdr.a(this.a, false);
-    this.a.notifyDataSetChanged();
-    if (vdr.a(this.a) != null) {
-      vdr.a(this.a).f();
-    }
+    super(paramRspWatchVideo.result);
+    this.b = paramRspWatchVideo.unread_count.get();
+  }
+  
+  public String toString()
+  {
+    return "WatchVideoResponse{unReadCount=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vds
  * JD-Core Version:    0.7.0.1
  */

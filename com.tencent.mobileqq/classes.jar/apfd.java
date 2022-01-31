@@ -1,160 +1,129 @@
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import mqq.app.AppActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class apfd
-  extends apfc
+public final class apfd
 {
-  private astt jdField_a_of_type_Astt;
-  private asug jdField_a_of_type_Asug;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private MessageForReplyText jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private final WebViewPlugin jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin;
   private String jdField_a_of_type_JavaLangString;
-  HashMap<String, ArrayList<MessageRecord>> jdField_a_of_type_JavaUtilHashMap;
-  private HashMap<String, ArrayList<MessageRecord>> b;
   
-  public apfd(QQAppInterface paramQQAppInterface, asug paramasug, HashMap<String, ArrayList<MessageRecord>> paramHashMap, astt paramastt)
+  public apfd(WebViewPlugin paramWebViewPlugin)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Asug = paramasug;
-    this.jdField_a_of_type_Astt = paramastt;
-    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin = paramWebViewPlugin;
+  }
+  
+  private AppActivity a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null)
     {
-      paramQQAppInterface = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      do
-      {
-        if (!paramQQAppInterface.hasNext()) {
-          break;
-        }
-        paramasug = (String)paramQQAppInterface.next();
-        paramHashMap = ((ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramasug)).iterator();
-        while (paramHashMap.hasNext())
-        {
-          paramastt = (MessageRecord)paramHashMap.next();
-          if ((paramastt instanceof MessageForReplyText))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText = ((MessageForReplyText)paramastt);
-            this.jdField_a_of_type_JavaLangString = paramasug;
-          }
-        }
-      } while (this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText == null);
-    }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_Asug == null) {}
-    while (this.jdField_a_of_type_Asug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-      return -1;
-    }
-    return this.jdField_a_of_type_Asug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Asug == null) {
-      return "";
-    }
-    if (this.jdField_a_of_type_Asug.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing == null) {
-      return "";
-    }
-    return String.valueOf(this.jdField_a_of_type_Asug.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq);
-  }
-  
-  public HashMap<String, ArrayList<MessageRecord>> a()
-  {
-    if (this.b == null)
-    {
-      this.b = new HashMap();
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage() != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-      {
-        Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage();
-        Object localObject2;
-        if ((localObject1 instanceof MessageForFile))
-        {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(((MessageRecord)localObject1).uniseq, ((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop);
-          if ((localObject2 != null) && (((FileManagerEntity)localObject2).getCloudType() == 0))
-          {
-            QLog.i("ReplyMsgForwardRequest<QFile>", 1, "getForwardMessageList. init UploadSourceMsgList, find online file.");
-            localObject2 = ajya.a(2131713410) + ((MessageRecord)localObject1).getExtInfoFromExtStr("_m_ForwardFileName");
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a((MessageRecord)localObject1, (String)localObject2, true);
-            this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord((MessageRecord)localObject2);
-          }
-        }
-        if (apug.a((MessageRecord)localObject1))
-        {
-          int i = a();
-          if ((i != 0) && (i != 3000) && (i != 1))
-          {
-            QLog.i("ReplyMsgForwardRequest<QFile>", 1, "getForwardMessageList. init UploadSourceMsgList, find unsupport chatType file.");
-            localObject2 = ajya.a(2131713407) + ((MessageRecord)localObject1).getExtInfoFromExtStr("_m_ForwardFileName");
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a((MessageRecord)localObject1, (String)localObject2, true);
-            this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord((MessageRecord)localObject1);
-          }
-        }
-        localObject1 = new ArrayList(1);
-        ((ArrayList)localObject1).add(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage());
-        this.b.put(this.jdField_a_of_type_JavaLangString, localObject1);
+      localObject = null;
+      if (localObject != null) {
+        break label38;
       }
     }
-    return this.b;
+    label38:
+    for (Object localObject = null;; localObject = ((becq)localObject).a())
+    {
+      if (!(localObject instanceof AppActivity)) {
+        break label46;
+      }
+      return (AppActivity)localObject;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime;
+      break;
+    }
+    label46:
+    return null;
   }
   
-  public void a(int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2)
+  private void a(boolean paramBoolean, int paramInt)
   {
-    a(this.b, this.jdField_a_of_type_JavaUtilHashMap);
-    if (paramInt == 1)
+    String str = this.jdField_a_of_type_JavaLangString;
+    Object localObject1;
+    if (!TextUtils.isEmpty(str)) {
+      localObject1 = "";
+    }
+    try
     {
-      paramList1 = this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.getSourceMessage();
-      paramList2 = ajya.a(2131713409) + paramList1.getExtInfoFromExtStr("_m_ForwardFileName");
-      paramList1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramList1, paramList2, false);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord(paramList1);
-      this.jdField_a_of_type_Astt.a(1, 2, this.jdField_a_of_type_Asug);
+      Object localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("granted", paramBoolean);
+      ((JSONObject)localObject2).put("errorCode", paramInt);
+      ((JSONObject)localObject2).put("cmd", "onPermissionResult");
+      localObject2 = ((JSONObject)localObject2).toString();
+      localObject1 = localObject2;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("CameraHelper", 1, "onPermissionResult error", localJSONException);
+      }
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(str, new String[] { localObject1 });
+    }
+  }
+  
+  private boolean a()
+  {
+    AppActivity localAppActivity = a();
+    return (Build.VERSION.SDK_INT < 23) || (localAppActivity == null) || (localAppActivity.checkSelfPermission("android.permission.CAMERA") == 0);
+  }
+  
+  private void b()
+  {
+    AppActivity localAppActivity = a();
+    if (localAppActivity == null) {
       return;
     }
-    paramList2 = new ArrayList();
-    if ((paramList1 != null) && (paramList1.size() > 0)) {
-      paramList2.addAll(paramList1);
+    localAppActivity.requestPermissions(new apfe(this), 1819, new String[] { "android.permission.CAMERA" });
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new apff(this, Looper.getMainLooper());
     }
-    this.jdField_a_of_type_Astt.a(0, 2, this.jdField_a_of_type_Asug);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 10000L);
   }
   
-  public void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt)
+  private void c()
   {
-    paramString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFaildReason");
-    paramList = ajya.a(2131713408) + paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    paramMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramMessageRecord, paramList, false);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.setSourceMessageRecord(paramMessageRecord);
-    QLog.i("ReplyMsgForwardRequest<QFile>", 1, "replaceDropForwardMsg hint[ + " + paramList + "reason[" + paramString + "]");
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    }
   }
   
-  public String b()
+  public void a()
   {
-    if (this.jdField_a_of_type_Asug == null) {
-      return "";
+    this.jdField_a_of_type_JavaLangString = null;
+    c();
+    this.jdField_a_of_type_AndroidOsHandler = null;
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("CameraHelper", 1, "checkPermission failed, callback is invalid.");
     }
-    if (this.jdField_a_of_type_Asug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-      return "";
+    while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) {
+      return false;
     }
-    return String.valueOf(this.jdField_a_of_type_Asug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (a())
+    {
+      a(true, 0);
+      return true;
+    }
+    b();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apfd
  * JD-Core Version:    0.7.0.1
  */

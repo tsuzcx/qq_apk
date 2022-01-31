@@ -1,20 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.BaseVMPeakActivity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable;
+import cooperation.qqpim.QQPimTipsInfo;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class biuc
-  implements View.OnClickListener
+public class biuc
+  implements EIPCResultCallback
 {
-  biuc(biua parambiua) {}
+  public biuc(QQPimGetTipsInfoIPC.GetContactTipsRunnable paramGetContactTipsRunnable) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    biua.a(this.a).finish();
+    if (QLog.isColorLevel()) {
+      QLog.i(bitz.a, 2, "QQPimGetTipsInfoIPC.onCallback() " + QQPimGetTipsInfoIPC.a(this.a.this$0).hashCode());
+    }
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
+    {
+      paramEIPCResult = paramEIPCResult.data.getParcelable(bitz.n);
+      if (paramEIPCResult != null)
+      {
+        paramEIPCResult = (QQPimTipsInfo)paramEIPCResult;
+        this.a.this$0.a = paramEIPCResult;
+        QQPimGetTipsInfoIPC.a(this.a.this$0).a(paramEIPCResult);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biuc
  * JD-Core Version:    0.7.0.1
  */

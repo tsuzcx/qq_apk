@@ -1,37 +1,135 @@
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.pubaccount.util.PAReportInfo;
+import com.tencent.biz.pubaccount.util.PAReportManager.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.manager.Manager;
+
 public class swi
+  implements Handler.Callback, Manager
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  private volatile int jdField_a_of_type_Int = -1;
+  private awbw jdField_a_of_type_Awbw;
+  private bhoe jdField_a_of_type_Bhoe;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<PAReportInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public swi(int paramInt, String paramString)
+  public swi(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Awbw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Bhoe = new bhoe(ThreadManager.getSubThreadLooper(), this);
   }
   
-  public int a()
+  public void a()
   {
-    return this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("PAReport", 2, "scheduleReport ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
+    }
+    if ((this.jdField_a_of_type_JavaUtilList.size() == 0) && (this.jdField_a_of_type_Int == 0)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("PAReport", 2, "scheduleReport ... No need query DB");
+      }
+    }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
+        break;
+      }
+    } while (this.jdField_a_of_type_Bhoe.hasMessages(100001));
+    this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(100001, 3000L);
+    return;
+    this.jdField_a_of_type_Bhoe.sendEmptyMessage(100002);
   }
   
-  public String a()
+  public void a(PAReportInfo paramPAReportInfo)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Bhoe.post(new PAReportManager.1(this, paramPAReportInfo));
   }
   
-  public void a(int paramInt)
+  public void b()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("PAReport", 2, "queryDatabases ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_Int == -1) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b().a(PAReportInfo.class.getSimpleName());
+    }
+    List localList2 = this.jdField_a_of_type_Awbw.a(PAReportInfo.class, true, null, (String[])null, null, null, null, String.valueOf(20));
+    if (localList2 != null) {}
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.addAll(localList2);
+      this.jdField_a_of_type_Bhoe.sendEmptyMessage(100002);
+      return;
+    }
   }
   
-  public void a(String paramString)
+  public void c()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (QLog.isColorLevel()) {
+      QLog.d("PAReport", 2, "reporting ... size = " + this.jdField_a_of_type_JavaUtilList.size() + ", count = " + this.jdField_a_of_type_Int);
+    }
+    if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {}
+    for (;;)
+    {
+      return;
+      Object localObject1 = (PAReportInfo)this.jdField_a_of_type_JavaUtilList.get(0);
+      if (!this.jdField_a_of_type_Awbw.b((awbv)localObject1)) {
+        continue;
+      }
+      this.jdField_a_of_type_Int -= 1;
+      synchronized (this.jdField_a_of_type_JavaUtilList)
+      {
+        this.jdField_a_of_type_JavaUtilList.remove(0);
+        ??? = new ArrayList();
+        localObject1 = ((PAReportInfo)localObject1).msgIds.split("\\|");
+        int j = localObject1.length;
+        int i = 0;
+        if (i >= j) {
+          continue;
+        }
+        ((List)???).add(localObject1[i]);
+        i += 1;
+      }
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 100001)
+    {
+      b();
+      return true;
+    }
+    if (paramMessage.what == 100002)
+    {
+      c();
+      return true;
+    }
+    return false;
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_Awbw.a();
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_Int = -1;
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     swi
  * JD-Core Version:    0.7.0.1
  */

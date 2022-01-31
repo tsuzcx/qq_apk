@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.multicard;
 
-import asrq;
+import auin;
 import java.util.List;
 import java.util.Map;
 
@@ -30,7 +30,7 @@ class MultiCardFragment$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

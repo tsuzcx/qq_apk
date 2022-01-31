@@ -1,53 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import io.flutter.plugin.common.BinaryMessenger;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
-public abstract class apzi
+public class apzi
+  implements DialogInterface.OnClickListener
 {
-  public static int a;
-  public static int b = 2;
-  private String a;
+  public apzi(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  static
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    jdField_a_of_type_Int = 1;
-  }
-  
-  public apzi(String paramString, BinaryMessenger paramBinaryMessenger)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public AppRuntime a()
-  {
-    return BaseApplicationImpl.getApplication().getRuntime();
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.BaseChannel", 2, String.format("channel: %s is destroy", new Object[] { a() }));
-    }
-  }
-  
-  public String b()
-  {
-    AppRuntime localAppRuntime = a();
-    if (localAppRuntime != null) {
-      return localAppRuntime.getAccount();
-    }
-    return "";
+    paramDialogInterface.dismiss();
+    ExtendFriendEditFragment.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apzi
  * JD-Core Version:    0.7.0.1
  */

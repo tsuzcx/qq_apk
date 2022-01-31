@@ -1,21 +1,35 @@
-class lle
+import com.tencent.av.app.VideoAppInterface;
+
+public class lle
+  extends lld
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = "";
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = "";
-  int c = 0;
-  int d = 0;
-  int e = 0;
-  int f = 0;
-  int g = 0;
-  int h = 0;
+  public lle(VideoAppInterface paramVideoAppInterface)
+  {
+    super(paramVideoAppInterface);
+  }
   
-  lle(llc paramllc) {}
+  public int a(String paramString)
+  {
+    return 1;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return true;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lle
  * JD-Core Version:    0.7.0.1
  */

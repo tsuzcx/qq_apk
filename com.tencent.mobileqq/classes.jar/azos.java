@@ -1,28 +1,85 @@
-import com.tencent.mobileqq.data.TroopInfo;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-final class azos
-  extends ajxj
+public class azos
 {
-  WeakReference<azop> a;
+  private int jdField_a_of_type_Int;
+  private LinkedHashMap<String, Integer> jdField_a_of_type_JavaUtilLinkedHashMap;
+  private int b;
   
-  private azos(azop paramazop)
+  public azos(int paramInt1, int paramInt2)
   {
-    this.a = new WeakReference(paramazop);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(paramInt1, 0.5F, true);
   }
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  public Map<String, Integer> a()
   {
-    azop localazop = (azop)this.a.get();
-    if ((localazop != null) && (paramBoolean) && (paramString != null) && (localazop.a != null) && (localazop.a.size() > 0) && (paramString.equals(((TroopInfo)localazop.a.get(0)).troopuin))) {
-      localazop.c();
+    HashMap localHashMap = null;
+    label110:
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+        if (localIterator.hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)localIterator.next();
+          if (((Integer)localEntry.getValue()).intValue() < this.b) {
+            break label110;
+          }
+          if (localHashMap == null)
+          {
+            localHashMap = new HashMap();
+            localHashMap.put(localEntry.getKey(), localEntry.getValue());
+            break label110;
+          }
+        }
+        else
+        {
+          return localHashMap;
+        }
+      }
+    }
+  }
+  
+  public void a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
+    {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+      return;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilLinkedHashMap)
+      {
+        if (this.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(paramString))
+        {
+          this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString)).intValue() + 1));
+          if (this.jdField_a_of_type_JavaUtilLinkedHashMap.size() <= this.jdField_a_of_type_Int) {
+            break;
+          }
+          paramString = (Map.Entry)this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator().next();
+          this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramString.getKey());
+        }
+      }
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString, Integer.valueOf(1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azos
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import akpx;
+import abot;
 import android.content.SharedPreferences;
-import bbjh;
+import bdid;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ public class DeviceProfileManager$AccountDpcManager
   {
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaLangString = akpx.a(paramAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_JavaLangString = abot.a(paramAppInterface.getCurrentAccountUin());
     if (BaseApplicationImpl.sProcessId != 9) {}
     for (boolean bool = true;; bool = false)
     {
@@ -42,7 +42,7 @@ public class DeviceProfileManager$AccountDpcManager
     if (paramAppInterface == null) {
       return "";
     }
-    return akpx.a(paramAppInterface.getCurrentAccountUin()) + "_" + paramString;
+    return abot.a(paramAppInterface.getCurrentAccountUin()) + "_" + paramString;
   }
   
   private String a(String paramString)
@@ -70,7 +70,7 @@ public class DeviceProfileManager$AccountDpcManager
     if (!paramBoolean) {
       return;
     }
-    SharedPreferences localSharedPreferences = bbjh.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
+    SharedPreferences localSharedPreferences = bdid.a(BaseApplicationImpl.getApplication(), "dpcConfig_account");
     DeviceProfileManager.AccountDpcManager.DpcAccountNames[] arrayOfDpcAccountNames = DeviceProfileManager.AccountDpcManager.DpcAccountNames.values();
     int j = arrayOfDpcAccountNames.length;
     int i = 0;

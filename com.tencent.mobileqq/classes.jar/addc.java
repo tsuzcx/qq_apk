@@ -1,43 +1,23 @@
 import android.view.View;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import mqq.os.MqqHandler;
 
 public class addc
-  implements URLDrawableDownListener
+  implements View.OnClickListener
 {
-  public addc(DoodleMsgLayout paramDoodleMsgLayout) {}
+  public addc(LoginInfoActivity paramLoginInfoActivity, FrameLayout paramFrameLayout) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    if (paramView == DoodleMsgLayout.a(this.a))
-    {
-      DoodleMsgLayout.a(this.a, true);
-      DoodleMsgLayout.a(this.a);
-    }
-    do
-    {
-      return;
-      if (paramView == DoodleMsgLayout.b(this.a))
-      {
-        ((GifDrawable)paramURLDrawable.getCurrDrawable()).setGIFPlayOnceListener(this.a);
-        return;
-      }
-    } while (paramView != DoodleMsgLayout.c(this.a));
+    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    LoginInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity).removeMessages(20200313);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addc
  * JD-Core Version:    0.7.0.1
  */

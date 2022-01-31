@@ -1,39 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class rke
+class rke
+  implements DialogInterface.OnDismissListener
 {
-  public float a;
-  public int a;
-  public long a;
-  public BaseData a;
-  public Long a;
-  public long b;
+  rke(rkd paramrkd) {}
   
-  public rke(int paramInt, Long paramLong, BaseData paramBaseData)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramBaseData;
-    this.b = 0L;
-  }
-  
-  public void a(rke paramrke)
-  {
-    if (paramrke != null)
-    {
-      this.jdField_a_of_type_JavaLangLong = paramrke.jdField_a_of_type_JavaLangLong;
-      this.jdField_a_of_type_Long = paramrke.jdField_a_of_type_Long;
-      this.jdField_a_of_type_Float = paramrke.jdField_a_of_type_Float;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = paramrke.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
-      this.b = paramrke.b;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
     }
+    if (rkd.a(this.a) != null) {
+      rkd.a(this.a).a(rkd.a(this.a), rkd.b(this.a), false, false);
+    }
+    rkd.a(this.a, true);
+    rkd.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rke
  * JD-Core Version:    0.7.0.1
  */

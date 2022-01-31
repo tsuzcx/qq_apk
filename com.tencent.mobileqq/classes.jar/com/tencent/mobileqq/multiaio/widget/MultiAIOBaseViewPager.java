@@ -29,20 +29,20 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.Interpolator;
 import android.widget.EdgeEffect;
 import android.widget.Scroller;
-import asqa;
-import asqf;
-import asqg;
-import asqh;
-import asqi;
-import asqj;
-import asqk;
-import asql;
-import asqm;
-import asqn;
-import asqo;
-import asqp;
-import asqq;
-import asqt;
+import augz;
+import auhe;
+import auhf;
+import auhg;
+import auhh;
+import auhi;
+import auhj;
+import auhk;
+import auhl;
+import auhm;
+import auhn;
+import auho;
+import auhp;
+import auhs;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -53,8 +53,8 @@ import java.util.List;
 public class MultiAIOBaseViewPager
   extends ViewGroup
 {
-  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new asqg();
-  private static final Comparator<asqk> jdField_a_of_type_JavaUtilComparator;
+  private static final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new auhf();
+  private static final Comparator<auhj> jdField_a_of_type_JavaUtilComparator;
   static final int[] jdField_a_of_type_ArrayOfInt = { 16842931 };
   private float jdField_a_of_type_Float = -3.402824E+038F;
   protected int a;
@@ -66,24 +66,24 @@ public class MultiAIOBaseViewPager
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private EdgeEffect jdField_a_of_type_AndroidWidgetEdgeEffect;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private asqj jdField_a_of_type_Asqj;
-  private final asqk jdField_a_of_type_Asqk = new asqk();
-  private asqo jdField_a_of_type_Asqo;
-  private asqp jdField_a_of_type_Asqp;
-  private asqq jdField_a_of_type_Asqq;
-  private final asqt jdField_a_of_type_Asqt = new asql(this);
+  private auhi jdField_a_of_type_Auhi;
+  private final auhj jdField_a_of_type_Auhj = new auhj();
+  private auhn jdField_a_of_type_Auhn;
+  private auho jdField_a_of_type_Auho;
+  private auhp jdField_a_of_type_Auhp;
+  private final auhs jdField_a_of_type_Auhs = new auhk(this);
   private ClassLoader jdField_a_of_type_JavaLangClassLoader;
   private final Runnable jdField_a_of_type_JavaLangRunnable = new MultiAIOBaseViewPager.3(this);
-  private final ArrayList<asqk> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private List<asqo> jdField_a_of_type_JavaUtilList;
+  private final ArrayList<auhj> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private List<auhn> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float = 3.4028235E+38F;
   public int b;
   private EdgeEffect jdField_b_of_type_AndroidWidgetEdgeEffect;
   private Scroller jdField_b_of_type_AndroidWidgetScroller;
-  private asqo jdField_b_of_type_Asqo;
+  private auhn jdField_b_of_type_Auhn;
   private ArrayList<View> jdField_b_of_type_JavaUtilArrayList;
-  private List<asqn> jdField_b_of_type_JavaUtilList;
+  private List<auhm> jdField_b_of_type_JavaUtilList;
   private boolean jdField_b_of_type_Boolean;
   private float jdField_c_of_type_Float;
   protected int c;
@@ -122,7 +122,7 @@ public class MultiAIOBaseViewPager
   
   static
   {
-    jdField_a_of_type_JavaUtilComparator = new asqf();
+    jdField_a_of_type_JavaUtilComparator = new auhe();
   }
   
   public MultiAIOBaseViewPager(Context paramContext)
@@ -165,7 +165,7 @@ public class MultiAIOBaseViewPager
     }
   }
   
-  private asqk a()
+  private auhj a()
   {
     int i1 = d();
     float f1;
@@ -178,7 +178,7 @@ public class MultiAIOBaseViewPager
     Object localObject1;
     label53:
     Object localObject2;
-    asqk localasqk;
+    auhj localauhj;
     if (i1 > 0)
     {
       f1 = getScrollX() / i1;
@@ -195,14 +195,14 @@ public class MultiAIOBaseViewPager
       localObject2 = localObject1;
       if (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        localasqk = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-        if ((i2 != 0) || (localasqk.jdField_a_of_type_Int == i3 + 1)) {
+        localauhj = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+        if ((i2 != 0) || (localauhj.jdField_a_of_type_Int == i3 + 1)) {
           break label249;
         }
-        localasqk = this.jdField_a_of_type_Asqk;
-        localasqk.jdField_b_of_type_Float = (f4 + f3 + f2);
-        localasqk.jdField_a_of_type_Int = (i3 + 1);
-        localasqk.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getPageWidth(localasqk.jdField_a_of_type_Int);
+        localauhj = this.jdField_a_of_type_Auhj;
+        localauhj.jdField_b_of_type_Float = (f4 + f3 + f2);
+        localauhj.jdField_a_of_type_Int = (i3 + 1);
+        localauhj.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getPageWidth(localauhj.jdField_a_of_type_Int);
         i1 -= 1;
       }
     }
@@ -211,8 +211,8 @@ public class MultiAIOBaseViewPager
     label249:
     for (;;)
     {
-      f3 = localasqk.jdField_b_of_type_Float;
-      f4 = localasqk.jdField_a_of_type_Float;
+      f3 = localauhj.jdField_b_of_type_Float;
+      f4 = localauhj.jdField_a_of_type_Float;
       if (i2 == 0)
       {
         localObject2 = localObject1;
@@ -223,18 +223,18 @@ public class MultiAIOBaseViewPager
         if ((f1 >= f4 + f3 + f2) && (i1 != this.jdField_a_of_type_JavaUtilArrayList.size() - 1)) {
           break label219;
         }
-        localObject2 = localasqk;
+        localObject2 = localauhj;
       }
       return localObject2;
       f1 = 0.0F;
       break;
       f2 = 0.0F;
       break label36;
-      i3 = localasqk.jdField_a_of_type_Int;
-      f4 = localasqk.jdField_a_of_type_Float;
+      i3 = localauhj.jdField_a_of_type_Int;
+      f4 = localauhj.jdField_a_of_type_Float;
       i2 = 0;
       i1 += 1;
-      localObject1 = localasqk;
+      localObject1 = localauhj;
       break label53;
     }
   }
@@ -256,9 +256,9 @@ public class MultiAIOBaseViewPager
       scrollTo((int)((paramInt1 - i1 - i2 + paramInt3) * f1), getScrollY());
       return;
     }
-    asqk localasqk = a(this.jdField_b_of_type_Int);
-    if (localasqk != null) {}
-    for (float f1 = Math.min(localasqk.jdField_b_of_type_Float, this.jdField_b_of_type_Float);; f1 = 0.0F)
+    auhj localauhj = a(this.jdField_b_of_type_Int);
+    if (localauhj != null) {}
+    for (float f1 = Math.min(localauhj.jdField_b_of_type_Float, this.jdField_b_of_type_Float);; f1 = 0.0F)
     {
       paramInt1 = (int)(f1 * (paramInt1 - getPaddingLeft() - getPaddingRight()));
       if (paramInt1 == getScrollX()) {
@@ -272,12 +272,12 @@ public class MultiAIOBaseViewPager
   
   private void a(int paramInt1, boolean paramBoolean1, int paramInt2, boolean paramBoolean2)
   {
-    asqk localasqk = a(paramInt1);
+    auhj localauhj = a(paramInt1);
     float f1;
-    if (localasqk != null) {
+    if (localauhj != null) {
       f1 = d();
     }
-    for (int i1 = (int)(Math.max(this.jdField_a_of_type_Float, Math.min(localasqk.jdField_b_of_type_Float, this.jdField_b_of_type_Float)) * f1);; i1 = 0)
+    for (int i1 = (int)(Math.max(this.jdField_a_of_type_Float, Math.min(localauhj.jdField_b_of_type_Float, this.jdField_b_of_type_Float)) * f1);; i1 = 0)
     {
       if (paramBoolean1)
       {
@@ -335,7 +335,7 @@ public class MultiAIOBaseViewPager
     }
   }
   
-  private void a(asqk paramasqk1, int paramInt, asqk paramasqk2)
+  private void a(auhj paramauhj1, int paramInt, auhj paramauhj2)
   {
     int i4 = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount();
     int i1 = d();
@@ -343,13 +343,13 @@ public class MultiAIOBaseViewPager
     if (i1 > 0)
     {
       f2 = this.jdField_g_of_type_Int / i1;
-      if (paramasqk2 == null) {
+      if (paramauhj2 == null) {
         break label409;
       }
-      i1 = paramasqk2.jdField_a_of_type_Int;
-      if (i1 < paramasqk1.jdField_a_of_type_Int)
+      i1 = paramauhj2.jdField_a_of_type_Int;
+      if (i1 < paramauhj1.jdField_a_of_type_Int)
       {
-        f1 = paramasqk2.jdField_b_of_type_Float + paramasqk2.jdField_a_of_type_Float + f2;
+        f1 = paramauhj2.jdField_b_of_type_Float + paramauhj2.jdField_a_of_type_Float + f2;
         i1 += 1;
         i2 = 0;
       }
@@ -358,14 +358,14 @@ public class MultiAIOBaseViewPager
     {
       for (;;)
       {
-        if ((i1 > paramasqk1.jdField_a_of_type_Int) || (i2 >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+        if ((i1 > paramauhj1.jdField_a_of_type_Int) || (i2 >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
           break label409;
         }
-        for (paramasqk2 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i2);; paramasqk2 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i2))
+        for (paramauhj2 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i2);; paramauhj2 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i2))
         {
           i3 = i1;
           f3 = f1;
-          if (i1 <= paramasqk2.jdField_a_of_type_Int) {
+          if (i1 <= paramauhj2.jdField_a_of_type_Int) {
             break;
           }
           i3 = i1;
@@ -377,28 +377,28 @@ public class MultiAIOBaseViewPager
         }
         f2 = 0.0F;
         break;
-        while (i3 < paramasqk2.jdField_a_of_type_Int)
+        while (i3 < paramauhj2.jdField_a_of_type_Int)
         {
           f3 += this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getPageWidth(i3) + f2;
           i3 += 1;
         }
-        paramasqk2.jdField_b_of_type_Float = f3;
-        f1 = f3 + (paramasqk2.jdField_a_of_type_Float + f2);
+        paramauhj2.jdField_b_of_type_Float = f3;
+        f1 = f3 + (paramauhj2.jdField_a_of_type_Float + f2);
         i1 = i3 + 1;
       }
     }
-    if (i1 > paramasqk1.jdField_a_of_type_Int)
+    if (i1 > paramauhj1.jdField_a_of_type_Int)
     {
       i2 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-      f1 = paramasqk2.jdField_b_of_type_Float;
+      f1 = paramauhj2.jdField_b_of_type_Float;
       i1 -= 1;
-      while ((i1 >= paramasqk1.jdField_a_of_type_Int) && (i2 >= 0))
+      while ((i1 >= paramauhj1.jdField_a_of_type_Int) && (i2 >= 0))
       {
-        for (paramasqk2 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i2);; paramasqk2 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i2))
+        for (paramauhj2 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i2);; paramauhj2 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i2))
         {
           i3 = i1;
           f3 = f1;
-          if (i1 >= paramasqk2.jdField_a_of_type_Int) {
+          if (i1 >= paramauhj2.jdField_a_of_type_Int) {
             break;
           }
           i3 = i1;
@@ -408,28 +408,28 @@ public class MultiAIOBaseViewPager
           }
           i2 -= 1;
         }
-        while (i3 > paramasqk2.jdField_a_of_type_Int)
+        while (i3 > paramauhj2.jdField_a_of_type_Int)
         {
           f3 -= this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getPageWidth(i3) + f2;
           i3 -= 1;
         }
-        f1 = f3 - (paramasqk2.jdField_a_of_type_Float + f2);
-        paramasqk2.jdField_b_of_type_Float = f1;
+        f1 = f3 - (paramauhj2.jdField_a_of_type_Float + f2);
+        paramauhj2.jdField_b_of_type_Float = f1;
         i1 = i3 - 1;
       }
     }
     label409:
     int i3 = this.jdField_a_of_type_JavaUtilArrayList.size();
-    float f3 = paramasqk1.jdField_b_of_type_Float;
-    i1 = paramasqk1.jdField_a_of_type_Int - 1;
-    if (paramasqk1.jdField_a_of_type_Int == 0)
+    float f3 = paramauhj1.jdField_b_of_type_Float;
+    i1 = paramauhj1.jdField_a_of_type_Int - 1;
+    if (paramauhj1.jdField_a_of_type_Int == 0)
     {
-      f1 = paramasqk1.jdField_b_of_type_Float;
+      f1 = paramauhj1.jdField_b_of_type_Float;
       this.jdField_a_of_type_Float = f1;
-      if (paramasqk1.jdField_a_of_type_Int != i4 - 1) {
+      if (paramauhj1.jdField_a_of_type_Int != i4 - 1) {
         break label550;
       }
-      f1 = paramasqk1.jdField_b_of_type_Float + paramasqk1.jdField_a_of_type_Float - 1.0F;
+      f1 = paramauhj1.jdField_b_of_type_Float + paramauhj1.jdField_a_of_type_Float - 1.0F;
       label475:
       this.jdField_b_of_type_Float = f1;
       i2 = paramInt - 1;
@@ -440,10 +440,10 @@ public class MultiAIOBaseViewPager
       if (i2 < 0) {
         break label603;
       }
-      paramasqk2 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i2);
+      paramauhj2 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i2);
       for (;;)
       {
-        if (i1 > paramasqk2.jdField_a_of_type_Int)
+        if (i1 > paramauhj2.jdField_a_of_type_Int)
         {
           f1 -= this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getPageWidth(i1) + f2;
           i1 -= 1;
@@ -455,32 +455,32 @@ public class MultiAIOBaseViewPager
           break label475;
         }
       }
-      f1 -= paramasqk2.jdField_a_of_type_Float + f2;
-      paramasqk2.jdField_b_of_type_Float = f1;
-      if (paramasqk2.jdField_a_of_type_Int == 0) {
+      f1 -= paramauhj2.jdField_a_of_type_Float + f2;
+      paramauhj2.jdField_b_of_type_Float = f1;
+      if (paramauhj2.jdField_a_of_type_Int == 0) {
         this.jdField_a_of_type_Float = f1;
       }
       i1 -= 1;
       i2 -= 1;
     }
     label603:
-    float f1 = paramasqk1.jdField_b_of_type_Float + paramasqk1.jdField_a_of_type_Float + f2;
-    int i2 = paramasqk1.jdField_a_of_type_Int + 1;
+    float f1 = paramauhj1.jdField_b_of_type_Float + paramauhj1.jdField_a_of_type_Float + f2;
+    int i2 = paramauhj1.jdField_a_of_type_Int + 1;
     i1 = paramInt + 1;
     paramInt = i2;
     while (i1 < i3)
     {
-      paramasqk1 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      while (paramInt < paramasqk1.jdField_a_of_type_Int)
+      paramauhj1 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+      while (paramInt < paramauhj1.jdField_a_of_type_Int)
       {
         f1 = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getPageWidth(paramInt) + f2 + f1;
         paramInt += 1;
       }
-      if (paramasqk1.jdField_a_of_type_Int == i4 - 1) {
-        this.jdField_b_of_type_Float = (paramasqk1.jdField_a_of_type_Float + f1 - 1.0F);
+      if (paramauhj1.jdField_a_of_type_Int == i4 - 1) {
+        this.jdField_b_of_type_Float = (paramauhj1.jdField_a_of_type_Float + f1 - 1.0F);
       }
-      paramasqk1.jdField_b_of_type_Float = f1;
-      f1 += paramasqk1.jdField_a_of_type_Float + f2;
+      paramauhj1.jdField_b_of_type_Float = f1;
+      f1 += paramauhj1.jdField_a_of_type_Float + f2;
       paramInt += 1;
       i1 += 1;
     }
@@ -498,15 +498,15 @@ public class MultiAIOBaseViewPager
     paramFloat = i3 * this.jdField_a_of_type_Float;
     f1 = i3;
     float f3 = this.jdField_b_of_type_Float;
-    asqk localasqk1 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    asqk localasqk2 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    if (localasqk1.jdField_a_of_type_Int != 0) {
-      paramFloat = localasqk1.jdField_b_of_type_Float * i3;
+    auhj localauhj1 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+    auhj localauhj2 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    if (localauhj1.jdField_a_of_type_Int != 0) {
+      paramFloat = localauhj1.jdField_b_of_type_Float * i3;
     }
     for (int i1 = 0;; i1 = 1)
     {
-      if (localasqk2.jdField_a_of_type_Int != this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() - 1) {
-        f1 = localasqk2.jdField_b_of_type_Float * i3;
+      if (localauhj2.jdField_a_of_type_Int != this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() - 1) {
+        f1 = localauhj2.jdField_b_of_type_Float * i3;
       }
       for (int i2 = 0;; i2 = 1)
       {
@@ -552,13 +552,13 @@ public class MultiAIOBaseViewPager
   
   private static boolean a(View paramView)
   {
-    return paramView.getClass().getAnnotation(asqi.class) != null;
+    return paramView.getClass().getAnnotation(auhh.class) != null;
   }
   
   private void b(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (this.jdField_a_of_type_Asqo != null) {
-      this.jdField_a_of_type_Asqo.a(paramInt1, paramFloat, paramInt2);
+    if (this.jdField_a_of_type_Auhn != null) {
+      this.jdField_a_of_type_Auhn.a(paramInt1, paramFloat, paramInt2);
     }
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
@@ -566,15 +566,15 @@ public class MultiAIOBaseViewPager
       int i1 = 0;
       while (i1 < i2)
       {
-        asqo localasqo = (asqo)this.jdField_a_of_type_JavaUtilList.get(i1);
-        if (localasqo != null) {
-          localasqo.a(paramInt1, paramFloat, paramInt2);
+        auhn localauhn = (auhn)this.jdField_a_of_type_JavaUtilList.get(i1);
+        if (localauhn != null) {
+          localauhn.a(paramInt1, paramFloat, paramInt2);
         }
         i1 += 1;
       }
     }
-    if (this.jdField_b_of_type_Asqo != null) {
-      this.jdField_b_of_type_Asqo.a(paramInt1, paramFloat, paramInt2);
+    if (this.jdField_b_of_type_Auhn != null) {
+      this.jdField_b_of_type_Auhn.a(paramInt1, paramFloat, paramInt2);
     }
   }
   
@@ -616,10 +616,10 @@ public class MultiAIOBaseViewPager
       i1 = i3;
       while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        asqk localasqk = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-        if (localasqk.jdField_a_of_type_Boolean)
+        auhj localauhj = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+        if (localauhj.jdField_a_of_type_Boolean)
         {
-          localasqk.jdField_a_of_type_Boolean = false;
+          localauhj.jdField_a_of_type_Boolean = false;
           i2 = 1;
         }
         i1 += 1;
@@ -662,8 +662,8 @@ public class MultiAIOBaseViewPager
   
   private void d(int paramInt)
   {
-    if (this.jdField_a_of_type_Asqo != null) {
-      this.jdField_a_of_type_Asqo.a(paramInt);
+    if (this.jdField_a_of_type_Auhn != null) {
+      this.jdField_a_of_type_Auhn.a(paramInt);
     }
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
@@ -671,15 +671,15 @@ public class MultiAIOBaseViewPager
       int i1 = 0;
       while (i1 < i2)
       {
-        asqo localasqo = (asqo)this.jdField_a_of_type_JavaUtilList.get(i1);
-        if (localasqo != null) {
-          localasqo.a(paramInt);
+        auhn localauhn = (auhn)this.jdField_a_of_type_JavaUtilList.get(i1);
+        if (localauhn != null) {
+          localauhn.a(paramInt);
         }
         i1 += 1;
       }
     }
-    if (this.jdField_b_of_type_Asqo != null) {
-      this.jdField_b_of_type_Asqo.a(paramInt);
+    if (this.jdField_b_of_type_Auhn != null) {
+      this.jdField_b_of_type_Auhn.a(paramInt);
     }
   }
   
@@ -693,8 +693,8 @@ public class MultiAIOBaseViewPager
   
   private void e(int paramInt)
   {
-    if (this.jdField_a_of_type_Asqo != null) {
-      this.jdField_a_of_type_Asqo.b(paramInt);
+    if (this.jdField_a_of_type_Auhn != null) {
+      this.jdField_a_of_type_Auhn.b(paramInt);
     }
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
@@ -702,15 +702,15 @@ public class MultiAIOBaseViewPager
       int i1 = 0;
       while (i1 < i2)
       {
-        asqo localasqo = (asqo)this.jdField_a_of_type_JavaUtilList.get(i1);
-        if (localasqo != null) {
-          localasqo.b(paramInt);
+        auhn localauhn = (auhn)this.jdField_a_of_type_JavaUtilList.get(i1);
+        if (localauhn != null) {
+          localauhn.b(paramInt);
         }
         i1 += 1;
       }
     }
-    if (this.jdField_b_of_type_Asqo != null) {
-      this.jdField_b_of_type_Asqo.b(paramInt);
+    if (this.jdField_b_of_type_Auhn != null) {
+      this.jdField_b_of_type_Auhn.b(paramInt);
     }
   }
   
@@ -774,9 +774,9 @@ public class MultiAIOBaseViewPager
         paramInt2 = paramInt1;
         if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
         {
-          asqk localasqk1 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-          asqk localasqk2 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-          paramInt2 = Math.max(localasqk1.jdField_a_of_type_Int, Math.min(paramInt1, localasqk2.jdField_a_of_type_Int));
+          auhj localauhj1 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+          auhj localauhj2 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+          paramInt2 = Math.max(localauhj1.jdField_a_of_type_Int, Math.min(paramInt1, localauhj2.jdField_a_of_type_Int));
         }
         return paramInt2;
         paramInt1 += 1;
@@ -795,43 +795,43 @@ public class MultiAIOBaseViewPager
     return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter;
   }
   
-  asqk a(int paramInt)
+  auhj a(int paramInt)
   {
     int i1 = 0;
     while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      asqk localasqk = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      if (localasqk.jdField_a_of_type_Int == paramInt) {
-        return localasqk;
+      auhj localauhj = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+      if (localauhj.jdField_a_of_type_Int == paramInt) {
+        return localauhj;
       }
       i1 += 1;
     }
     return null;
   }
   
-  asqk a(int paramInt1, int paramInt2)
+  auhj a(int paramInt1, int paramInt2)
   {
-    asqk localasqk = new asqk();
-    localasqk.jdField_a_of_type_Int = paramInt1;
-    localasqk.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.instantiateItem(this, paramInt1);
-    localasqk.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getPageWidth(paramInt1);
+    auhj localauhj = new auhj();
+    localauhj.jdField_a_of_type_Int = paramInt1;
+    localauhj.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.instantiateItem(this, paramInt1);
+    localauhj.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getPageWidth(paramInt1);
     if ((paramInt2 < 0) || (paramInt2 >= this.jdField_a_of_type_JavaUtilArrayList.size()))
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(localasqk);
-      return localasqk;
+      this.jdField_a_of_type_JavaUtilArrayList.add(localauhj);
+      return localauhj;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt2, localasqk);
-    return localasqk;
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramInt2, localauhj);
+    return localauhj;
   }
   
-  asqk a(View paramView)
+  auhj a(View paramView)
   {
     int i1 = 0;
     while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      asqk localasqk = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-      if (this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.isViewFromObject(paramView, localasqk.jdField_a_of_type_JavaLangObject)) {
-        return localasqk;
+      auhj localauhj = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+      if (this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.isViewFromObject(paramView, localauhj.jdField_a_of_type_JavaLangObject)) {
+        return localauhj;
       }
       i1 += 1;
     }
@@ -851,18 +851,18 @@ public class MultiAIOBaseViewPager
     this.o = localViewConfiguration.getScaledPagingTouchSlop();
     this.q = ((int)(400.0F * f1));
     this.jdField_c_of_type_Int = localViewConfiguration.getScaledMaximumFlingVelocity();
-    this.jdField_a_of_type_Int = asqa.a(getContext(), this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_Int = augz.a(getContext(), this.jdField_c_of_type_Int);
     this.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_AndroidWidgetEdgeEffect = new EdgeEffect(localContext);
     this.jdField_b_of_type_AndroidWidgetEdgeEffect = new EdgeEffect(localContext);
     this.r = ((int)(25.0F * f1));
     this.s = ((int)(2.0F * f1));
     this.m = ((int)(16.0F * f1));
-    ViewCompat.setAccessibilityDelegate(this, new asqm(this));
+    ViewCompat.setAccessibilityDelegate(this, new auhl(this));
     if (ViewCompat.getImportantForAccessibility(this) == 0) {
       ViewCompat.setImportantForAccessibility(this, 1);
     }
-    ViewCompat.setOnApplyWindowInsetsListener(this, new asqh(this));
+    ViewCompat.setOnApplyWindowInsetsListener(this, new auhg(this));
   }
   
   public void a(float paramFloat)
@@ -883,13 +883,13 @@ public class MultiAIOBaseViewPager
     float f4 = this.jdField_a_of_type_Float;
     float f1 = i1;
     float f3 = this.jdField_b_of_type_Float;
-    Object localObject = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    asqk localasqk = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    if (((asqk)localObject).jdField_a_of_type_Int != 0) {}
-    for (paramFloat = ((asqk)localObject).jdField_b_of_type_Float * i1;; paramFloat *= f4)
+    Object localObject = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+    auhj localauhj = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    if (((auhj)localObject).jdField_a_of_type_Int != 0) {}
+    for (paramFloat = ((auhj)localObject).jdField_b_of_type_Float * i1;; paramFloat *= f4)
     {
-      if (localasqk.jdField_a_of_type_Int != this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() - 1) {}
-      for (f1 = localasqk.jdField_b_of_type_Float * i1;; f1 *= f3)
+      if (localauhj.jdField_a_of_type_Int != this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() - 1) {}
+      for (f1 = localauhj.jdField_b_of_type_Float * i1;; f1 *= f3)
       {
         if (f2 < paramFloat) {}
         for (;;)
@@ -921,7 +921,7 @@ public class MultiAIOBaseViewPager
       return;
     }
     this.w = paramInt;
-    if (this.jdField_a_of_type_Asqp != null) {
+    if (this.jdField_a_of_type_Auho != null) {
       if (paramInt == 0) {
         break label38;
       }
@@ -1006,7 +1006,7 @@ public class MultiAIOBaseViewPager
       }
     }
     b(paramInt1, paramFloat, paramInt2);
-    if (this.jdField_a_of_type_Asqp != null)
+    if (this.jdField_a_of_type_Auho != null)
     {
       paramInt2 = getScrollX();
       i1 = getChildCount();
@@ -1020,7 +1020,7 @@ public class MultiAIOBaseViewPager
           paramInt1 += 1;
           break;
           paramFloat = (localView.getLeft() - paramInt2) / d();
-          this.jdField_a_of_type_Asqp.a(localView, paramFloat);
+          this.jdField_a_of_type_Auho.a(localView, paramFloat);
         }
       }
     }
@@ -1125,7 +1125,7 @@ public class MultiAIOBaseViewPager
       paramInt1 = 0;
       while (paramInt1 < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((asqk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).jdField_a_of_type_Boolean = true;
+        ((auhj)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).jdField_a_of_type_Boolean = true;
         paramInt1 += 1;
       }
       i1 = paramInt1;
@@ -1152,12 +1152,12 @@ public class MultiAIOBaseViewPager
     a(i1, paramBoolean1, paramInt2, paramBoolean2);
   }
   
-  public void a(asqo paramasqo)
+  public void a(auhn paramauhn)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramasqo);
+    this.jdField_a_of_type_JavaUtilList.add(paramauhn);
   }
   
   void a(boolean paramBoolean)
@@ -1202,7 +1202,7 @@ public class MultiAIOBaseViewPager
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
       if (!this.jdField_i_of_type_Boolean) {}
     }
-    asqk localasqk;
+    auhj localauhj;
     do
     {
       do
@@ -1212,13 +1212,13 @@ public class MultiAIOBaseViewPager
         a(0, 0.0F, 0);
       } while (this.jdField_k_of_type_Boolean);
       throw new IllegalStateException("onPageScrolled did not call superclass implementation");
-      localasqk = a();
-    } while (localasqk == null);
+      localauhj = a();
+    } while (localauhj == null);
     int i2 = d();
     int i3 = this.jdField_g_of_type_Int;
     float f1 = this.jdField_g_of_type_Int / i2;
-    int i1 = localasqk.jdField_a_of_type_Int;
-    f1 = (paramInt / i2 - localasqk.jdField_b_of_type_Float) / (localasqk.jdField_a_of_type_Float + f1);
+    int i1 = localauhj.jdField_a_of_type_Int;
+    f1 = (paramInt / i2 - localauhj.jdField_b_of_type_Float) / (localauhj.jdField_a_of_type_Float + f1);
     paramInt = (int)((i3 + i2) * f1);
     this.jdField_k_of_type_Boolean = false;
     a(i1, f1, paramInt);
@@ -1290,8 +1290,8 @@ public class MultiAIOBaseViewPager
         View localView = getChildAt(i1);
         if (localView.getVisibility() == 0)
         {
-          asqk localasqk = a(localView);
-          if ((localasqk != null) && (localasqk.jdField_a_of_type_Int == this.jdField_b_of_type_Int)) {
+          auhj localauhj = a(localView);
+          if ((localauhj != null) && (localauhj.jdField_a_of_type_Int == this.jdField_b_of_type_Int)) {
             localView.addFocusables(paramArrayList, paramInt1, paramInt2);
           }
         }
@@ -1313,8 +1313,8 @@ public class MultiAIOBaseViewPager
       View localView = getChildAt(i1);
       if (localView.getVisibility() == 0)
       {
-        asqk localasqk = a(localView);
-        if ((localasqk != null) && (localasqk.jdField_a_of_type_Int == this.jdField_b_of_type_Int)) {
+        auhj localauhj = a(localView);
+        if ((localauhj != null) && (localauhj.jdField_a_of_type_Int == this.jdField_b_of_type_Int)) {
           localView.addTouchables(paramArrayList);
         }
       }
@@ -1350,7 +1350,7 @@ public class MultiAIOBaseViewPager
     return this.jdField_g_of_type_Int;
   }
   
-  asqk b(View paramView)
+  auhj b(View paramView)
   {
     for (;;)
     {
@@ -1391,8 +1391,8 @@ public class MultiAIOBaseViewPager
       if (i3 >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
         break label299;
       }
-      localObject = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i3);
-      i5 = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getItemPosition(((asqk)localObject).jdField_a_of_type_JavaLangObject);
+      localObject = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i3);
+      i5 = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getItemPosition(((auhj)localObject).jdField_a_of_type_JavaLangObject);
       if (i5 != -1) {
         break label157;
       }
@@ -1425,8 +1425,8 @@ public class MultiAIOBaseViewPager
           this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.startUpdate(this);
           i3 = 1;
         }
-        this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.destroyItem(this, ((asqk)localObject).jdField_a_of_type_Int, ((asqk)localObject).jdField_a_of_type_JavaLangObject);
-        if (this.jdField_b_of_type_Int == ((asqk)localObject).jdField_a_of_type_Int)
+        this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.destroyItem(this, ((auhj)localObject).jdField_a_of_type_Int, ((auhj)localObject).jdField_a_of_type_JavaLangObject);
+        if (this.jdField_b_of_type_Int == ((auhj)localObject).jdField_a_of_type_Int)
         {
           i2 = Math.max(0, Math.min(this.jdField_b_of_type_Int, i7 - 1));
           i1 = i3;
@@ -1435,12 +1435,12 @@ public class MultiAIOBaseViewPager
       }
       else
       {
-        if (((asqk)localObject).jdField_a_of_type_Int != i5)
+        if (((auhj)localObject).jdField_a_of_type_Int != i5)
         {
-          if (((asqk)localObject).jdField_a_of_type_Int == this.jdField_b_of_type_Int) {
+          if (((auhj)localObject).jdField_a_of_type_Int == this.jdField_b_of_type_Int) {
             i1 = i5;
           }
-          ((asqk)localObject).jdField_a_of_type_Int = i5;
+          ((auhj)localObject).jdField_a_of_type_Int = i5;
           i5 = i1;
           i6 = 1;
           i4 = i3;
@@ -1533,9 +1533,9 @@ public class MultiAIOBaseViewPager
       paramInt = 0;
       if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        localObject1 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-        if (((asqk)localObject1).jdField_a_of_type_Int >= this.jdField_b_of_type_Int) {
-          if (((asqk)localObject1).jdField_a_of_type_Int != this.jdField_b_of_type_Int) {
+        localObject1 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        if (((auhj)localObject1).jdField_a_of_type_Int >= this.jdField_b_of_type_Int) {
+          if (((auhj)localObject1).jdField_a_of_type_Int != this.jdField_b_of_type_Int) {
             break label1266;
           }
         }
@@ -1561,7 +1561,7 @@ public class MultiAIOBaseViewPager
             if (i4 < 0) {
               break label640;
             }
-            localObject1 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i4);
+            localObject1 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i4);
             i8 = d();
             if (i8 > 0) {
               break label646;
@@ -1581,14 +1581,14 @@ public class MultiAIOBaseViewPager
                 break label667;
               }
             }
-            f1 = ((asqk)localObject3).jdField_a_of_type_Float;
+            f1 = ((auhj)localObject3).jdField_a_of_type_Float;
             paramInt = i2 + 1;
             if (f1 < 2.0F)
             {
               if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
                 break label921;
               }
-              localObject1 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+              localObject1 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
               label459:
               if (i8 > 0) {
                 break label927;
@@ -1613,8 +1613,8 @@ public class MultiAIOBaseViewPager
                 break label942;
               }
             }
-            a((asqk)localObject3, i2, (asqk)localObject2);
-            this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.setPrimaryItem(this, this.jdField_b_of_type_Int, ((asqk)localObject3).jdField_a_of_type_JavaLangObject);
+            a((auhj)localObject3, i2, (auhj)localObject2);
+            this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.setPrimaryItem(this, this.jdField_b_of_type_Int, ((auhj)localObject3).jdField_a_of_type_JavaLangObject);
             this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.finishUpdate(this);
             i1 = getChildCount();
             paramInt = 0;
@@ -1628,8 +1628,8 @@ public class MultiAIOBaseViewPager
                 localObject2 = a((View)localObject2);
                 if (localObject2 != null)
                 {
-                  ((MultiAIOBaseViewPager.LayoutParams)localObject1).jdField_a_of_type_Float = ((asqk)localObject2).jdField_a_of_type_Float;
-                  ((MultiAIOBaseViewPager.LayoutParams)localObject1).jdField_b_of_type_Int = ((asqk)localObject2).jdField_a_of_type_Int;
+                  ((MultiAIOBaseViewPager.LayoutParams)localObject1).jdField_a_of_type_Float = ((auhj)localObject2).jdField_a_of_type_Float;
+                  ((MultiAIOBaseViewPager.LayoutParams)localObject1).jdField_b_of_type_Int = ((auhj)localObject2).jdField_a_of_type_Int;
                 }
               }
               paramInt += 1;
@@ -1638,7 +1638,7 @@ public class MultiAIOBaseViewPager
             break;
             localObject1 = null;
             break label359;
-            f2 = 2.0F - ((asqk)localObject3).jdField_a_of_type_Float + getPaddingLeft() / i8;
+            f2 = 2.0F - ((auhj)localObject3).jdField_a_of_type_Float + getPaddingLeft() / i8;
             break label372;
             localObject1 = localObject4;
             paramInt = i4;
@@ -1659,7 +1659,7 @@ public class MultiAIOBaseViewPager
                 if (paramInt < 0) {
                   break label792;
                 }
-                localObject1 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+                localObject1 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
                 f1 = f3;
               }
             }
@@ -1681,7 +1681,7 @@ public class MultiAIOBaseViewPager
                 paramInt = i4 - 1;
                 if (paramInt >= 0)
                 {
-                  localObject1 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+                  localObject1 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
                   i1 = i2;
                 }
                 else
@@ -1696,7 +1696,7 @@ public class MultiAIOBaseViewPager
                 i1 = i2 + 1;
                 if (i4 >= 0)
                 {
-                  localObject1 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i4);
+                  localObject1 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i4);
                   paramInt = i4;
                 }
                 else
@@ -1712,12 +1712,12 @@ public class MultiAIOBaseViewPager
           label792:
           label921:
           label942:
-          if ((i1 == ((asqk)localObject1).jdField_a_of_type_Int) && (!((asqk)localObject1).jdField_a_of_type_Boolean))
+          if ((i1 == ((auhj)localObject1).jdField_a_of_type_Int) && (!((auhj)localObject1).jdField_a_of_type_Boolean))
           {
             this.jdField_a_of_type_JavaUtilArrayList.remove(paramInt);
-            this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.destroyItem(this, i1, ((asqk)localObject1).jdField_a_of_type_JavaLangObject);
+            this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.destroyItem(this, i1, ((auhj)localObject1).jdField_a_of_type_JavaLangObject);
             if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-              localObject1 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+              localObject1 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
             }
           }
           for (;;)
@@ -1727,12 +1727,12 @@ public class MultiAIOBaseViewPager
             localObject1 = null;
             continue;
             label1023:
-            if ((localObject1 != null) && (i1 == ((asqk)localObject1).jdField_a_of_type_Int))
+            if ((localObject1 != null) && (i1 == ((auhj)localObject1).jdField_a_of_type_Int))
             {
-              f3 = ((asqk)localObject1).jdField_a_of_type_Float;
+              f3 = ((auhj)localObject1).jdField_a_of_type_Float;
               paramInt += 1;
               if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {}
-              for (localObject1 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);; localObject1 = null)
+              for (localObject1 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);; localObject1 = null)
               {
                 f1 += f3;
                 break;
@@ -1740,9 +1740,9 @@ public class MultiAIOBaseViewPager
             }
             localObject1 = a(i1, paramInt);
             paramInt += 1;
-            f3 = ((asqk)localObject1).jdField_a_of_type_Float;
+            f3 = ((auhj)localObject1).jdField_a_of_type_Float;
             if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {}
-            for (localObject1 = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);; localObject1 = null)
+            for (localObject1 = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);; localObject1 = null)
             {
               f1 += f3;
               break;
@@ -1755,7 +1755,7 @@ public class MultiAIOBaseViewPager
             if (localObject1 != null) {}
             for (localObject1 = b((View)localObject1);; localObject1 = null)
             {
-              if ((localObject1 != null) && (((asqk)localObject1).jdField_a_of_type_Int == this.jdField_b_of_type_Int)) {
+              if ((localObject1 != null) && (((auhj)localObject1).jdField_a_of_type_Int == this.jdField_b_of_type_Int)) {
                 break label1254;
               }
               paramInt = 0;
@@ -1766,7 +1766,7 @@ public class MultiAIOBaseViewPager
                 }
                 localObject1 = getChildAt(paramInt);
                 localObject2 = a((View)localObject1);
-                if ((localObject2 != null) && (((asqk)localObject2).jdField_a_of_type_Int == this.jdField_b_of_type_Int) && (((View)localObject1).requestFocus(2))) {
+                if ((localObject2 != null) && (((auhj)localObject2).jdField_a_of_type_Int == this.jdField_b_of_type_Int) && (((View)localObject1).requestFocus(2))) {
                   break;
                 }
                 paramInt += 1;
@@ -1785,10 +1785,10 @@ public class MultiAIOBaseViewPager
     }
   }
   
-  public void b(asqo paramasqo)
+  public void b(auhn paramauhn)
   {
     if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramasqo);
+      this.jdField_a_of_type_JavaUtilList.remove(paramauhn);
     }
   }
   
@@ -1908,11 +1908,11 @@ public class MultiAIOBaseViewPager
     this.jdField_e_of_type_Boolean = true;
     int i1 = d();
     int i2 = getScrollX();
-    asqk localasqk = a();
-    if (localasqk == null) {
+    auhj localauhj = a();
+    if (localauhj == null) {
       return;
     }
-    a(a(localasqk.jdField_a_of_type_Int, (i2 / i1 - localasqk.jdField_b_of_type_Float) / localasqk.jdField_a_of_type_Float, paramInt, this.r - 1), true, true, paramInt);
+    a(a(localauhj.jdField_a_of_type_Int, (i2 / i1 - localauhj.jdField_b_of_type_Float) / localauhj.jdField_a_of_type_Float, paramInt, this.r - 1), true, true, paramInt);
   }
   
   boolean c()
@@ -2001,7 +2001,7 @@ public class MultiAIOBaseViewPager
         }
         this.jdField_b_of_type_JavaUtilArrayList.clear();
       }
-      Collections.sort(this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_Asqt);
+      Collections.sort(this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_Auhs);
     }
   }
   
@@ -2040,8 +2040,8 @@ public class MultiAIOBaseViewPager
       View localView = getChildAt(i1);
       if (localView.getVisibility() == 0)
       {
-        asqk localasqk = a(localView);
-        if ((localasqk != null) && (localasqk.jdField_a_of_type_Int == this.jdField_b_of_type_Int) && (localView.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent))) {
+        auhj localauhj = a(localView);
+        if ((localauhj != null) && (localauhj.jdField_a_of_type_Int == this.jdField_b_of_type_Int) && (localView.dispatchPopulateAccessibilityEvent(paramAccessibilityEvent))) {
           return true;
         }
       }
@@ -2129,7 +2129,7 @@ public class MultiAIOBaseViewPager
       if (localObject == null) {
         return;
       }
-      a(((asqk)localObject).jdField_a_of_type_Int, (i3 / i2 - ((asqk)localObject).jdField_b_of_type_Float) / ((asqk)localObject).jdField_a_of_type_Float, i1, (int)(this.jdField_c_of_type_Float - this.jdField_e_of_type_Float));
+      a(((auhj)localObject).jdField_a_of_type_Int, (i3 / i2 - ((auhj)localObject).jdField_b_of_type_Float) / ((auhj)localObject).jdField_a_of_type_Float, i1, (int)(this.jdField_c_of_type_Float - this.jdField_e_of_type_Float));
     }
     h();
     this.jdField_h_of_type_Boolean = false;
@@ -2211,11 +2211,11 @@ public class MultiAIOBaseViewPager
       i3 = getScrollX();
       i4 = getWidth();
       f3 = this.jdField_g_of_type_Int / i4;
-      localObject = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      f1 = ((asqk)localObject).jdField_b_of_type_Float;
+      localObject = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(0);
+      f1 = ((auhj)localObject).jdField_b_of_type_Float;
       i5 = this.jdField_a_of_type_JavaUtilArrayList.size();
-      i1 = ((asqk)localObject).jdField_a_of_type_Int;
-      i6 = ((asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1)).jdField_a_of_type_Int;
+      i1 = ((auhj)localObject).jdField_a_of_type_Int;
+      i6 = ((auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i5 - 1)).jdField_a_of_type_Int;
       i2 = 0;
     }
     for (;;)
@@ -2223,20 +2223,20 @@ public class MultiAIOBaseViewPager
       float f2;
       if (i1 < i6)
       {
-        while ((i1 > ((asqk)localObject).jdField_a_of_type_Int) && (i2 < i5))
+        while ((i1 > ((auhj)localObject).jdField_a_of_type_Int) && (i2 < i5))
         {
           localObject = this.jdField_a_of_type_JavaUtilArrayList;
           i2 += 1;
-          localObject = (asqk)((ArrayList)localObject).get(i2);
+          localObject = (auhj)((ArrayList)localObject).get(i2);
         }
-        if (i1 != ((asqk)localObject).jdField_a_of_type_Int) {
+        if (i1 != ((auhj)localObject).jdField_a_of_type_Int) {
           break label271;
         }
-        f2 = (((asqk)localObject).jdField_b_of_type_Float + ((asqk)localObject).jdField_a_of_type_Float) * i4;
+        f2 = (((auhj)localObject).jdField_b_of_type_Float + ((auhj)localObject).jdField_a_of_type_Float) * i4;
       }
       label271:
       float f4;
-      for (f1 = ((asqk)localObject).jdField_b_of_type_Float + ((asqk)localObject).jdField_a_of_type_Float + f3;; f1 += f4 + f3)
+      for (f1 = ((auhj)localObject).jdField_b_of_type_Float + ((auhj)localObject).jdField_a_of_type_Float + f3;; f1 += f4 + f3)
       {
         if (this.jdField_g_of_type_Int + f2 > i3)
         {
@@ -2362,8 +2362,8 @@ public class MultiAIOBaseViewPager
           {
             i1 = 1;
             label514:
-            if (this.jdField_a_of_type_Asqj != null) {
-              if (this.jdField_a_of_type_Asqj.a()) {
+            if (this.jdField_a_of_type_Auhi != null) {
+              if (this.jdField_a_of_type_Auhi.a()) {
                 break label597;
               }
             }
@@ -2375,8 +2375,8 @@ public class MultiAIOBaseViewPager
               break label603;
             }
             this.jdField_b_of_type_AndroidWidgetScroller.abortAnimation();
-            if (this.jdField_a_of_type_Asqj != null) {
-              this.jdField_a_of_type_Asqj.a();
+            if (this.jdField_a_of_type_Auhi != null) {
+              this.jdField_a_of_type_Auhi.a();
             }
             this.jdField_e_of_type_Boolean = false;
             c();
@@ -2505,11 +2505,11 @@ public class MultiAIOBaseViewPager
           localLayoutParams = (MultiAIOBaseViewPager.LayoutParams)localView.getLayoutParams();
           if (!localLayoutParams.jdField_a_of_type_Boolean)
           {
-            asqk localasqk = a(localView);
-            if (localasqk != null)
+            auhj localauhj = a(localView);
+            if (localauhj != null)
             {
               float f1 = i1;
-              i3 = (int)(localasqk.jdField_b_of_type_Float * f1) + paramInt2;
+              i3 = (int)(localauhj.jdField_b_of_type_Float * f1) + paramInt2;
               if (localLayoutParams.jdField_b_of_type_Boolean)
               {
                 localLayoutParams.jdField_b_of_type_Boolean = false;
@@ -2707,8 +2707,8 @@ public class MultiAIOBaseViewPager
       View localView = getChildAt(i1);
       if (localView.getVisibility() == 0)
       {
-        asqk localasqk = a(localView);
-        if ((localasqk != null) && (localasqk.jdField_a_of_type_Int == this.jdField_b_of_type_Int) && (localView.requestFocus(paramInt, paramRect)))
+        auhj localauhj = a(localView);
+        if ((localauhj != null) && (localauhj.jdField_a_of_type_Int == this.jdField_b_of_type_Int) && (localView.requestFocus(paramInt, paramRect)))
         {
           return true;
           i1 = i2 - 1;
@@ -2883,8 +2883,8 @@ public class MultiAIOBaseViewPager
             break;
           }
           f1 = this.jdField_g_of_type_Int / i4;
-          int i3 = ((asqk)localObject).jdField_a_of_type_Int;
-          f2 = (i5 / i4 - ((asqk)localObject).jdField_b_of_type_Float) / (((asqk)localObject).jdField_a_of_type_Float + f1);
+          int i3 = ((auhj)localObject).jdField_a_of_type_Int;
+          f2 = (i5 / i4 - ((auhj)localObject).jdField_b_of_type_Float) / (((auhj)localObject).jdField_a_of_type_Float + f1);
           i4 = paramMotionEvent.findPointerIndex(this.p);
           f1 = this.jdField_c_of_type_Float;
           if (i4 != -1) {
@@ -2897,8 +2897,8 @@ public class MultiAIOBaseViewPager
           for (;;)
           {
             bool1 = g();
-            if ((i1 != 0) && (this.jdField_a_of_type_Asqj != null)) {
-              this.jdField_a_of_type_Asqj.a(i2);
+            if ((i1 != 0) && (this.jdField_a_of_type_Auhi != null)) {
+              this.jdField_a_of_type_Auhi.a(i2);
             }
             break;
             a(a(i3, f2, i2, i4), true, true, i2);
@@ -2962,8 +2962,8 @@ public class MultiAIOBaseViewPager
       i1 = 0;
       while (i1 < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        localObject = (asqk)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-        this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.destroyItem(this, ((asqk)localObject).jdField_a_of_type_Int, ((asqk)localObject).jdField_a_of_type_JavaLangObject);
+        localObject = (auhj)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+        this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.destroyItem(this, ((auhj)localObject).jdField_a_of_type_Int, ((auhj)localObject).jdField_a_of_type_JavaLangObject);
         i1 += 1;
       }
       this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.finishUpdate(this);
@@ -2979,10 +2979,10 @@ public class MultiAIOBaseViewPager
     boolean bool;
     if (this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter != null)
     {
-      if (this.jdField_a_of_type_Asqq == null) {
-        this.jdField_a_of_type_Asqq = new asqq(this);
+      if (this.jdField_a_of_type_Auhp == null) {
+        this.jdField_a_of_type_Auhp = new auhp(this);
       }
-      a(this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter, this.jdField_a_of_type_Asqq);
+      a(this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter, this.jdField_a_of_type_Auhp);
       this.jdField_e_of_type_Boolean = false;
       bool = this.jdField_i_of_type_Boolean;
       this.jdField_i_of_type_Boolean = true;
@@ -3002,7 +3002,7 @@ public class MultiAIOBaseViewPager
       i1 = i2;
       while (i1 < i3)
       {
-        ((asqn)this.jdField_b_of_type_JavaUtilList.get(i1)).a(this, (PagerAdapter)localObject, paramPagerAdapter);
+        ((auhm)this.jdField_b_of_type_JavaUtilList.get(i1)).a(this, (PagerAdapter)localObject, paramPagerAdapter);
         i1 += 1;
       }
       label305:
@@ -3036,9 +3036,9 @@ public class MultiAIOBaseViewPager
     a(paramInt, paramBoolean1, paramBoolean2);
   }
   
-  public void setFlingListener(asqj paramasqj)
+  public void setFlingListener(auhi paramauhi)
   {
-    this.jdField_a_of_type_Asqj = paramasqj;
+    this.jdField_a_of_type_Auhi = paramauhi;
   }
   
   public void setOffscreenPageLimit(int paramInt)
@@ -3057,9 +3057,9 @@ public class MultiAIOBaseViewPager
   }
   
   @Deprecated
-  public void setOnPageChangeListener(asqo paramasqo)
+  public void setOnPageChangeListener(auhn paramauhn)
   {
-    this.jdField_a_of_type_Asqo = paramasqo;
+    this.jdField_a_of_type_Auhn = paramauhn;
   }
   
   public void setPageMargin(int paramInt)
@@ -3091,22 +3091,22 @@ public class MultiAIOBaseViewPager
     }
   }
   
-  public void setPageTransformer(boolean paramBoolean, asqp paramasqp)
+  public void setPageTransformer(boolean paramBoolean, auho paramauho)
   {
-    setPageTransformer(paramBoolean, paramasqp, 2);
+    setPageTransformer(paramBoolean, paramauho, 2);
   }
   
-  public void setPageTransformer(boolean paramBoolean, asqp paramasqp, int paramInt)
+  public void setPageTransformer(boolean paramBoolean, auho paramauho, int paramInt)
   {
     int i2 = 1;
     boolean bool1;
     boolean bool2;
     label20:
     int i1;
-    if (paramasqp != null)
+    if (paramauho != null)
     {
       bool1 = true;
-      if (this.jdField_a_of_type_Asqp == null) {
+      if (this.jdField_a_of_type_Auho == null) {
         break label80;
       }
       bool2 = true;
@@ -3115,7 +3115,7 @@ public class MultiAIOBaseViewPager
       }
       i1 = 1;
       label30:
-      this.jdField_a_of_type_Asqp = paramasqp;
+      this.jdField_a_of_type_Auho = paramauho;
       setChildrenDrawingOrderEnabled(bool1);
       if (!bool1) {
         break label92;
@@ -3152,7 +3152,7 @@ public class MultiAIOBaseViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager
  * JD-Core Version:    0.7.0.1
  */

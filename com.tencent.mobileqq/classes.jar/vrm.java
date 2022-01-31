@@ -1,29 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.support.v4.os.ParcelableCompatCreatorCallbacks;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState;
 
-class vrm
-  implements View.OnClickListener
+public final class vrm
+  implements ParcelableCompatCreatorCallbacks<XViewPager.SavedState>
 {
-  vrm(vrl paramvrl, vro paramvro) {}
-  
-  public void onClick(View paramView)
+  public XViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
   {
-    if (!this.jdField_a_of_type_Vro.a()) {
-      this.jdField_a_of_type_Vro.b();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Vrl.a != null) {
-        this.jdField_a_of_type_Vrl.a.a(this.jdField_a_of_type_Vrl);
-      }
-      return;
-      this.jdField_a_of_type_Vro.c();
-    }
+    return new XViewPager.SavedState(paramParcel, paramClassLoader);
+  }
+  
+  public XViewPager.SavedState[] a(int paramInt)
+  {
+    return new XViewPager.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vrm
  * JD-Core Version:    0.7.0.1
  */

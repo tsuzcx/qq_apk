@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.apollo.view.ApolloMessageProgressView;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.Comparator;
 
 public class adku
-  extends adlw
+  implements Comparator<adkq>
 {
-  public ApolloMessageProgressView a;
+  public adku(PublicAccountListActivity paramPublicAccountListActivity) {}
+  
+  public int a(adkq paramadkq1, adkq paramadkq2)
+  {
+    long l = paramadkq1.a.certifiedGrade;
+    return (int)(paramadkq2.a.certifiedGrade - l);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adku
  * JD-Core Version:    0.7.0.1
  */

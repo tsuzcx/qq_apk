@@ -1,14 +1,26 @@
-import android.graphics.Bitmap;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
-public abstract interface adcx
+public class adcx
+  implements Animation.AnimationListener
 {
-  public abstract void a(String paramString, int paramInt);
+  public adcx(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public abstract void a(String paramString, long paramLong, Bitmap paramBitmap);
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    LoginInfoActivity.a(this.a).setVisibility(4);
+    LoginInfoActivity.a(this.a).clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcx
  * JD-Core Version:    0.7.0.1
  */

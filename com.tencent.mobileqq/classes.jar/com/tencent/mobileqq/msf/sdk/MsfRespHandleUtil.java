@@ -503,7 +503,7 @@ public class MsfRespHandleUtil
     //   659: checkcast 166	java/lang/String
     //   662: astore 8
     //   664: aload_1
-    //   665: invokestatic 358	com/tencent/mobileqq/msf/service/q:b	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Ljava/lang/String;
+    //   665: invokestatic 358	com/tencent/mobileqq/msf/service/t:b	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Ljava/lang/String;
     //   668: iload_3
     //   669: aload 8
     //   671: aload_1

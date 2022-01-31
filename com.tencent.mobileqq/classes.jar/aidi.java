@@ -1,21 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.selectmember.FriendTabView;
+import android.widget.TextView;
 
-public class aidi
-  implements View.OnClickListener
+class aidi
 {
-  public aidi(FriendTabView paramFriendTabView) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.a(1);
-  }
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aidi
  * JD-Core Version:    0.7.0.1
  */

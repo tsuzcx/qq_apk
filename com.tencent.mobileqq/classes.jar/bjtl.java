@@ -1,22 +1,29 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class bjtl
-  extends bkzl
+  extends bjts
 {
-  public bjtl(EditPicActivity paramEditPicActivity) {}
-  
-  public void a()
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    ved.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
-    bjsu localbjsu = (bjsu)this.a.a.a(bjsu.class);
-    if (localbjsu != null) {
-      localbjsu.b();
+    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
+    while (!"jumpQQCleanPage".equalsIgnoreCase(paramString3)) {
+      return false;
     }
+    if (this.a.mRuntime.a() != null)
+    {
+      QQSettingCleanActivity.a(this.a.mRuntime.a());
+      return true;
+    }
+    QLog.e("jumpCleanPage", 2, "call activity with null runtime");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjtl
  * JD-Core Version:    0.7.0.1
  */

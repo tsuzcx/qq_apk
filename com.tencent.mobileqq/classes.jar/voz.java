@@ -1,58 +1,114 @@
-import android.content.Context;
-import android.widget.BaseAdapter;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-public abstract class voz<PACKAGE extends voq>
-  extends BaseAdapter
+public class voz
+  extends voy
 {
-  public int a;
-  protected Context a;
-  protected PACKAGE a;
-  protected vos a;
+  private voy a;
   
-  public voz(Context paramContext)
+  public Activity a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    return this.a.a();
   }
   
-  public void a(PACKAGE paramPACKAGE)
+  public OpenPlayerBuilder.Data a()
   {
-    this.jdField_a_of_type_Voq = paramPACKAGE;
+    return this.a.a();
   }
   
-  public void a(vos paramvos)
+  public XViewPager a()
   {
-    this.jdField_a_of_type_Vos = paramvos;
+    return this.a.a();
   }
   
-  public int getCount()
+  public String a(String paramString)
   {
-    if (this.jdField_a_of_type_Voq == null) {
-      return 0;
+    return this.a.a(paramString);
+  }
+  
+  public vld a()
+  {
+    return this.a.a();
+  }
+  
+  public vlg a()
+  {
+    return this.a.a();
+  }
+  
+  public voq a()
+  {
+    return this.a.a();
+  }
+  
+  public voy a()
+  {
+    return this.a;
+  }
+  
+  public vpj a()
+  {
+    return this.a.a();
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    this.a.a(paramIntent);
+  }
+  
+  public void a(uhn paramuhn)
+  {
+    this.a.a(paramuhn);
+  }
+  
+  public void a(vno paramvno)
+  {
+    this.a.a(paramvno);
+  }
+  
+  public void a(voy paramvoy)
+  {
+    if (this.a != null) {
+      throw new IllegalStateException("Base context already set");
     }
-    int i = this.jdField_a_of_type_Voq.b();
-    int j = this.jdField_a_of_type_Voq.a();
-    if (j < 1) {
-      throw new IllegalArgumentException("per item count < 1 :" + j);
-    }
-    if (i % j == 0) {
-      return i / j;
-    }
-    return i / j + 1;
+    this.a = paramvoy;
   }
   
-  public Object getItem(int paramInt)
+  public void a(vpr paramvpr)
   {
-    return Integer.valueOf(paramInt);
+    this.a.a(paramvpr);
   }
   
-  public long getItemId(int paramInt)
+  public boolean a()
   {
-    return paramInt;
+    return this.a.a();
+  }
+  
+  public void b(uhn paramuhn)
+  {
+    this.a.b(paramuhn);
+  }
+  
+  public void b(vno paramvno)
+  {
+    this.a.b(paramvno);
+  }
+  
+  public boolean b()
+  {
+    return this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     voz
  * JD-Core Version:    0.7.0.1
  */

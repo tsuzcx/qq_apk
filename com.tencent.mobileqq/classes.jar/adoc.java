@@ -1,51 +1,20 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQSettingMe.34.1;
+import com.tencent.mobileqq.app.BaseActivity;
 
-abstract class adoc
+public class adoc
+  extends alrn
 {
-  protected int a;
-  protected adtd a;
-  protected String a;
-  protected int b;
-  protected String b;
+  public adoc(QQSettingMe paramQQSettingMe) {}
   
-  public int a()
+  public void a(Object paramObject)
   {
-    return this.jdField_b_of_type_Int;
+    this.a.a.runOnUiThread(new QQSettingMe.34.1(this));
   }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public abstract void a();
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(adtd paramadtd)
-  {
-    this.jdField_a_of_type_Adtd = paramadtd;
-  }
-  
-  public boolean a(String paramString)
-  {
-    a();
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = -1;
-    return true;
-  }
-  
-  public abstract boolean b(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adoc
  * JD-Core Version:    0.7.0.1
  */

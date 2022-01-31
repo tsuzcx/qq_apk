@@ -1,26 +1,19 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import android.os.Handler;
 
-public class agpe
-  implements View.OnClickListener
+class agpe
+  implements nrr
 {
-  public agpe(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
+  agpe(agpd paramagpd) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = QzonePhotoPreviewActivity.a(this.a);
-    paramView.putExtra("PhotoConst.send_changtu", true);
-    paramView.putExtra("PhotoConst.KEY_SHOW_TYPE", 1);
-    paramView.putExtra("PhotoConst.KEY_SHOW_ORIGIN_TYPE", 1);
-    PhotoUtils.a(this.a.getActivity(), QzonePhotoPreviewActivity.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_Int, false);
+    agot.b(this.a.a, false);
+    this.a.a.a.sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agpe
  * JD-Core Version:    0.7.0.1
  */

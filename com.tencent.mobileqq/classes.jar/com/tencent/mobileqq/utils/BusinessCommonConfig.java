@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.utils;
 
-import ajya;
-import akyq;
-import akyx;
+import alpo;
+import ampg;
+import ampn;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import augv;
-import axgr;
-import bbcs;
-import bbdx;
+import avxz;
+import azbx;
+import bdbm;
+import bdcs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
@@ -34,8 +34,8 @@ import com.tencent.mobileqq.utils.confighandler.QAVSoConfigHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
-import lct;
-import lzp;
+import lex;
+import mce;
 import mqq.app.AppRuntime;
 import mqq.manager.Manager;
 
@@ -94,13 +94,13 @@ public class BusinessCommonConfig
       }
       QLog.w(paramString1, 1, "isResReady, md5Key[" + paramString2 + "], ready[" + bool1 + "], " + paramSharedPreferences);
       return bool1;
-      if (!bbdx.a(paramString4))
+      if (!bdcs.a(paramString4))
       {
         paramSharedPreferences = localObject;
         bool1 = bool2;
         if (AudioHelper.e())
         {
-          paramSharedPreferences = ajya.a(2131701273) + paramString4 + "]";
+          paramSharedPreferences = alpo.a(2131701642) + paramString4 + "]";
           bool1 = bool2;
         }
       }
@@ -135,13 +135,13 @@ public class BusinessCommonConfig
     default: 
       return;
     case 2: 
-      akyx.a(paramQQAppInterface).a(paramQQAppInterface, str);
+      ampn.a(paramQQAppInterface).a(paramQQAppInterface, str);
       return;
     case 1: 
-      axgr.a();
+      azbx.a();
       return;
     }
-    lzp.a();
+    mce.a();
   }
   
   public static void saveMd5(String paramString1, SharedPreferences paramSharedPreferences, String paramString2, String paramString3)
@@ -199,7 +199,7 @@ public class BusinessCommonConfig
         localConfigHandler = getConfigHandler(paramInt);
         if (localConfigHandler == null)
         {
-          AudioHelper.c(ajya.a(2131701259) + paramInt);
+          AudioHelper.c(alpo.a(2131701628) + paramInt);
           return Boolean.valueOf(false);
         }
         str = localConfigHandler.getTag();
@@ -268,7 +268,7 @@ public class BusinessCommonConfig
       if (AudioHelper.d())
       {
         throw new IllegalArgumentException(str + "new 实例失败1, cls[" + paramIntent + "]");
-        throw new IllegalArgumentException(ajya.a(2131701261));
+        throw new IllegalArgumentException(alpo.a(2131701630));
         localThrowable2 = null;
         i = 0;
         localObject4 = null;
@@ -284,7 +284,7 @@ public class BusinessCommonConfig
             {
               if (paramIntent.compress.get() == 1)
               {
-                localObject5 = augv.a(((ByteStringMicro)localObject1).toByteArray());
+                localObject5 = avxz.a(((ByteStringMicro)localObject1).toByteArray());
                 if (localObject5 == null) {}
               }
               for (;;)
@@ -345,7 +345,7 @@ public class BusinessCommonConfig
                   }
                   try
                   {
-                    AudioHelper.c(str + ajya.a(2131701250));
+                    AudioHelper.c(str + alpo.a(2131701619));
                     localObject4 = localObject1;
                     localObject1 = localObject5;
                     QLog.w(str, 1, "handleResp_Config, index[" + i + "], task_id[" + m + "], downloadInfo[" + localObject1 + "], jsonContent[" + paramIntent + "]");
@@ -370,14 +370,14 @@ public class BusinessCommonConfig
                   }
                   paramIntent = paramIntent;
                   paramIntent.printStackTrace();
-                  localObject1 = ajya.a(2131701244) + paramIntent.getMessage();
+                  localObject1 = alpo.a(2131701613) + paramIntent.getMessage();
                   paramIntent = null;
                   continue;
                 }
                 catch (OutOfMemoryError paramIntent)
                 {
                   paramIntent.printStackTrace();
-                  localObject1 = ajya.a(2131701247) + paramIntent.getMessage();
+                  localObject1 = alpo.a(2131701616) + paramIntent.getMessage();
                   System.gc();
                   try
                   {
@@ -386,7 +386,7 @@ public class BusinessCommonConfig
                   catch (Throwable localThrowable1)
                   {
                     paramIntent = null;
-                    localObject2 = ajya.a(2131701242) + localThrowable1.getMessage();
+                    localObject2 = alpo.a(2131701611) + localThrowable1.getMessage();
                   }
                   continue;
                 }
@@ -395,11 +395,11 @@ public class BusinessCommonConfig
                 if (bool) {
                   break label939;
                 }
-                localObject2 = ajya.a(2131701266);
+                localObject2 = alpo.a(2131701635);
                 paramIntent = null;
                 continue;
                 paramIntent = ((ByteStringMicro)localObject2).toStringUtf8();
-                localObject2 = ajya.a(2131701262);
+                localObject2 = alpo.a(2131701631);
               }
               QLog.w(str, 1, "new 实例失败2, cls[" + localObject4 + "]", (Throwable)localObject5);
               if (AudioHelper.d())
@@ -456,7 +456,7 @@ public class BusinessCommonConfig
         localConfigHandler = getConfigHandler(paramInt);
         if (localConfigHandler == null)
         {
-          AudioHelper.c(ajya.a(2131701243) + paramInt);
+          AudioHelper.c(alpo.a(2131701612) + paramInt);
           return Boolean.valueOf(false);
         }
         str1 = localConfigHandler.getTag();
@@ -477,17 +477,17 @@ public class BusinessCommonConfig
         if (!AudioHelper.d()) {
           continue;
         }
-        throw new IllegalArgumentException(ajya.a(2131701271));
+        throw new IllegalArgumentException(alpo.a(2131701640));
       }
       try
       {
         localConfigInfo = (ConfigInfo)((Class)localObject1).newInstance();
         localConfigInfo.setUin(paramQQAppInterface.getAccount());
-        localConfigInfo.serverVer = lct.a(paramInt);
+        localConfigInfo.serverVer = lex.a(paramInt);
         localObject1 = localConfigInfo;
         if (!localConfigInfo.tryParse(str1, paramString))
         {
-          AudioHelper.c(str1 + ajya.a(2131701260));
+          AudioHelper.c(str1 + alpo.a(2131701629));
           localObject1 = null;
         }
       }
@@ -649,7 +649,7 @@ public class BusinessCommonConfig
   
   boolean registReceiverToReceSubProcessNotify(QQAppInterface paramQQAppInterface)
   {
-    this.mBroadcastReceiver = new bbcs(this, paramQQAppInterface);
+    this.mBroadcastReceiver = new bdbm(this, paramQQAppInterface);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("tencent.businessnotify.subprocess.to.qq");
     return paramQQAppInterface.getApp().registerReceiver(this.mBroadcastReceiver, localIntentFilter) != null;
@@ -657,7 +657,7 @@ public class BusinessCommonConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.BusinessCommonConfig
  * JD-Core Version:    0.7.0.1
  */

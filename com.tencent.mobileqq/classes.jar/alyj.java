@@ -1,13 +1,32 @@
-public class alyj
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.Queue;
+
+class alyj
+  extends Handler
 {
-  public static int a(float paramFloat)
+  alyj(alyh paramalyh, Looper paramLooper)
   {
-    return Float.floatToIntBits(paramFloat);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (alyl)paramMessage.obj;
+    this.a.a.remove(paramMessage);
+    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alyj
  * JD-Core Version:    0.7.0.1
  */

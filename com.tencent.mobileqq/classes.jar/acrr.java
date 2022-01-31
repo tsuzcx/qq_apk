@@ -1,35 +1,62 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonResp;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class acrr
-  implements View.OnClickListener
+  extends alnb
 {
-  public acrr(PositionActivatePage paramPositionActivatePage) {}
+  public acrr(EmosmActivity paramEmosmActivity) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
-    {
-      paramView = new Intent((Context)PositionActivatePage.a(this.a).get(), SendBirthdayWishesActivity.class);
-      paramView.putExtra("key_msg_type", 1);
-      paramView.putExtra("key_friend_list", this.a.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendGrid.a());
-      paramView.putExtra("key_roam_city", this.a.jdField_a_of_type_JavaLangString);
-      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivityForResult(paramView, 1000);
-      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).overridePendingTransition(2130771979, 2130771990);
-      axqy.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E06", "0X8004E06", 0, 0, "", "", "", "");
+    if (paramInt == 1) {
+      if (paramBoolean)
+      {
+        paramObject = (EmoticonResp)paramObject;
+        this.a.a(paramObject.delEpId);
+        this.a.b();
+        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e();
+      }
     }
+    label119:
+    do
+    {
+      do
+      {
+        return;
+        this.a.a();
+        EmosmActivity.a(this.a, (EmoticonResp)paramObject);
+        break;
+        if (paramInt != 2) {
+          break label119;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("EmosmActivity", 2, "emoticon fetch:" + paramBoolean);
+        }
+      } while (!paramBoolean);
+      this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+      return;
+    } while (paramInt != 17);
+    if (paramBoolean)
+    {
+      paramObject = ((EmoticonResp)paramObject).ids.iterator();
+      while (paramObject.hasNext())
+      {
+        Integer localInteger = (Integer)paramObject.next();
+        this.a.a(localInteger.intValue());
+      }
+    }
+    this.a.a();
+    EmosmActivity.a(this.a, (EmoticonResp)paramObject);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrr
  * JD-Core Version:    0.7.0.1
  */

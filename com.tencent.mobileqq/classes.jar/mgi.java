@@ -1,39 +1,22 @@
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.ui.GAudioMembersCtrlActivity.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class mgi
-  extends bbgu
+  extends lhs
 {
-  public mgi(Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public mgi(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public static bbgu a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  protected void a(long paramLong1, long paramLong2, ArrayList<lfu> paramArrayList)
   {
-    paramContext = new mgi(paramContext, 2131755791);
-    paramContext.setContentView(2131558906);
-    paramContext.setTitle(paramString1);
-    paramContext.setMessage(paramString2);
-    paramContext.setNegativeButton(paramInt2, paramOnClickListener2);
-    paramContext.setPositiveButton(paramInt3, paramOnClickListener1);
-    paramContext.setCanceledOnTouchOutside(false);
-    return paramContext;
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    super.onWindowFocusChanged(paramBoolean);
-    QLog.w("MultiVideoEnterPageActivity", 1, "onWindowFocusChanged, hasFocus[" + paramBoolean + "]");
-    if (!paramBoolean) {
-      dismiss();
-    }
+    ThreadManager.getUIHandler().post(new GAudioMembersCtrlActivity.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgi
  * JD-Core Version:    0.7.0.1
  */

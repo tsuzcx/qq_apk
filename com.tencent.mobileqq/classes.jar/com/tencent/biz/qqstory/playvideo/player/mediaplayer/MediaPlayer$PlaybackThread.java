@@ -8,13 +8,13 @@ import android.os.SystemClock;
 import android.util.Log;
 import android.view.Surface;
 import java.io.IOException;
-import uet;
-import uew;
-import uey;
-import ufb;
-import ufc;
-import ufd;
-import uff;
+import vtl;
+import vto;
+import vtq;
+import vtt;
+import vtu;
+import vtv;
+import vtx;
 
 public class MediaPlayer$PlaybackThread
   extends HandlerThread
@@ -22,7 +22,7 @@ public class MediaPlayer$PlaybackThread
 {
   private double jdField_a_of_type_Double;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private uew jdField_a_of_type_Uew;
+  private vto jdField_a_of_type_Vto;
   private boolean jdField_a_of_type_Boolean = true;
   private boolean b = false;
   private boolean c;
@@ -32,7 +32,7 @@ public class MediaPlayer$PlaybackThread
   public MediaPlayer$PlaybackThread(MediaPlayer paramMediaPlayer)
   {
     super("Story-MediaPlayer#" + PlaybackThread.class.getSimpleName(), -16);
-    this.c = ufd.a(paramMediaPlayer.g);
+    this.c = vtv.a(paramMediaPlayer.g);
     this.d = true;
     this.e = false;
   }
@@ -66,66 +66,66 @@ public class MediaPlayer$PlaybackThread
   
   private void a(long paramLong)
   {
-    if (this.jdField_a_of_type_Uew != null)
+    if (this.jdField_a_of_type_Vto != null)
     {
-      this.this$0.jdField_a_of_type_Uet.a().a(this.jdField_a_of_type_Uew);
-      this.jdField_a_of_type_Uew = null;
+      this.this$0.jdField_a_of_type_Vtl.a().a(this.jdField_a_of_type_Vto);
+      this.jdField_a_of_type_Vto = null;
     }
     if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback != null) {
       this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback.a(true);
     }
-    this.this$0.jdField_a_of_type_Uet.a(this.this$0.jdField_a_of_type_Ufc, paramLong);
-    this.this$0.jdField_a_of_type_Uff.a(this.this$0.jdField_a_of_type_Uet.a());
+    this.this$0.jdField_a_of_type_Vtl.a(this.this$0.jdField_a_of_type_Vtu, paramLong);
+    this.this$0.jdField_a_of_type_Vtx.a(this.this$0.jdField_a_of_type_Vtl.a());
     boolean bool = this.jdField_a_of_type_AndroidOsHandler.hasMessages(4);
     if (bool) {
-      this.this$0.jdField_a_of_type_Uet.c();
+      this.this$0.jdField_a_of_type_Vtl.c();
     }
     for (;;)
     {
       if (!bool)
       {
-        this.this$0.c = this.this$0.jdField_a_of_type_Uet.a();
+        this.this$0.c = this.this$0.jdField_a_of_type_Vtl.a();
         this.this$0.jdField_a_of_type_Boolean = false;
         this.e = false;
-        this.this$0.jdField_a_of_type_Ufb.sendEmptyMessage(4);
+        this.this$0.jdField_a_of_type_Vtt.sendEmptyMessage(4);
         if (!this.jdField_a_of_type_Boolean) {
           b();
         }
       }
       return;
-      this.this$0.jdField_a_of_type_Uet.b();
+      this.this$0.jdField_a_of_type_Vtl.b();
     }
   }
   
-  private void a(uew paramuew)
+  private void a(vto paramvto)
   {
-    if (paramuew.jdField_a_of_type_Boolean)
+    if (paramvto.jdField_a_of_type_Boolean)
     {
-      this.this$0.jdField_a_of_type_Uet.a().a(paramuew);
+      this.this$0.jdField_a_of_type_Vtl.a().a(paramvto);
       return;
     }
-    long l = this.this$0.jdField_a_of_type_Uff.a(paramuew.jdField_a_of_type_Long);
+    long l = this.this$0.jdField_a_of_type_Vtx.a(paramvto.jdField_a_of_type_Long);
     if (l < -1000L)
     {
       Log.d("Story-MediaPlayer", "LAGGING " + l);
-      this.this$0.jdField_a_of_type_Ufb.sendMessage(this.this$0.jdField_a_of_type_Ufb.obtainMessage(200, 700, 0));
+      this.this$0.jdField_a_of_type_Vtt.sendMessage(this.this$0.jdField_a_of_type_Vtt.obtainMessage(200, 700, 0));
     }
-    if (paramuew.b)
+    if (paramvto.b)
     {
       if (!this.this$0.f) {
         break label202;
       }
-      this.this$0.jdField_a_of_type_Ufb.sendMessage(this.this$0.jdField_a_of_type_Ufb.obtainMessage(5, this.this$0.jdField_a_of_type_Uet.a().b(), this.this$0.jdField_a_of_type_Uet.a().a()));
+      this.this$0.jdField_a_of_type_Vtt.sendMessage(this.this$0.jdField_a_of_type_Vtt.obtainMessage(5, this.this$0.jdField_a_of_type_Vtl.a().b(), this.this$0.jdField_a_of_type_Vtl.a().a()));
     }
     for (;;)
     {
       if ((!this.c) && (l > 5000L)) {
         Thread.sleep(l / 1000L);
       }
-      this.this$0.jdField_a_of_type_Uet.a().a(paramuew, l);
+      this.this$0.jdField_a_of_type_Vtl.a().a(paramvto, l);
       return;
       label202:
-      this.this$0.jdField_a_of_type_Ufb.sendMessage(this.this$0.jdField_a_of_type_Ufb.obtainMessage(5, this.this$0.jdField_a_of_type_Uet.a().a(), this.this$0.jdField_a_of_type_Uet.a().b()));
+      this.this$0.jdField_a_of_type_Vtt.sendMessage(this.this$0.jdField_a_of_type_Vtt.obtainMessage(5, this.this$0.jdField_a_of_type_Vtl.a().a(), this.this$0.jdField_a_of_type_Vtl.a().b()));
     }
   }
   
@@ -146,18 +146,18 @@ public class MediaPlayer$PlaybackThread
   
   private void b()
   {
-    if (this.this$0.jdField_a_of_type_Uet.a())
+    if (this.this$0.jdField_a_of_type_Vtl.a())
     {
       this.this$0.c = 0L;
-      this.this$0.jdField_a_of_type_Uet.a(ufc.a(0), 0L);
+      this.this$0.jdField_a_of_type_Vtl.a(vtu.a(0), 0L);
     }
-    this.this$0.jdField_a_of_type_Uff.a(this.this$0.jdField_a_of_type_Uet.a());
+    this.this$0.jdField_a_of_type_Vtx.a(this.this$0.jdField_a_of_type_Vtl.a());
     if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
       this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback.a();
     }
-    this.jdField_a_of_type_Double = this.this$0.jdField_a_of_type_Uff.a();
+    this.jdField_a_of_type_Double = this.this$0.jdField_a_of_type_Vtx.a();
     if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback != null) {
       this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback.a((float)this.jdField_a_of_type_Double);
     }
@@ -167,14 +167,14 @@ public class MediaPlayer$PlaybackThread
   
   private void b(Surface paramSurface)
   {
-    if ((this.this$0.jdField_a_of_type_Uet != null) && (this.this$0.jdField_a_of_type_Uet.a() != null))
+    if ((this.this$0.jdField_a_of_type_Vtl != null) && (this.this$0.jdField_a_of_type_Vtl.a() != null))
     {
-      if (this.jdField_a_of_type_Uew != null)
+      if (this.jdField_a_of_type_Vto != null)
       {
-        this.this$0.jdField_a_of_type_Uet.a().a(this.jdField_a_of_type_Uew);
-        this.jdField_a_of_type_Uew = null;
+        this.this$0.jdField_a_of_type_Vtl.a().a(this.jdField_a_of_type_Vto);
+        this.jdField_a_of_type_Vto = null;
       }
-      this.this$0.jdField_a_of_type_Uet.a().a(paramSurface);
+      this.this$0.jdField_a_of_type_Vtl.a().a(paramSurface);
     }
   }
   
@@ -192,20 +192,20 @@ public class MediaPlayer$PlaybackThread
   
   private void e()
   {
-    long l1 = this.this$0.jdField_a_of_type_Uet.b();
+    long l1 = this.this$0.jdField_a_of_type_Vtl.b();
     if (l1 != -1L) {
-      this.this$0.jdField_a_of_type_Ufb.sendMessage(this.this$0.jdField_a_of_type_Ufb.obtainMessage(3, (int)(100.0D / (this.this$0.a() * 1000) * (this.this$0.c + l1)), 0));
+      this.this$0.jdField_a_of_type_Vtt.sendMessage(this.this$0.jdField_a_of_type_Vtt.obtainMessage(3, (int)(100.0D / (this.this$0.a() * 1000) * (this.this$0.c + l1)), 0));
     }
-    if ((this.this$0.e) && (l1 > -1L) && (l1 < 2000000L) && (!this.this$0.jdField_a_of_type_Uet.b())) {
+    if ((this.this$0.e) && (l1 > -1L) && (l1 < 2000000L) && (!this.this$0.jdField_a_of_type_Vtl.b())) {
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 100L);
     }
     for (;;)
     {
       return;
-      if ((this.this$0.jdField_a_of_type_Uet.a() != null) && (this.jdField_a_of_type_Uew == null))
+      if ((this.this$0.jdField_a_of_type_Vtl.a() != null) && (this.jdField_a_of_type_Vto == null))
       {
-        this.jdField_a_of_type_Uew = this.this$0.jdField_a_of_type_Uet.a(false);
-        if ((this.jdField_a_of_type_Uew == null) && (!this.this$0.jdField_a_of_type_Uet.a()))
+        this.jdField_a_of_type_Vto = this.this$0.jdField_a_of_type_Vtl.a(false);
+        if ((this.jdField_a_of_type_Vto == null) && (!this.this$0.jdField_a_of_type_Vtl.a()))
         {
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 10L);
           return;
@@ -215,52 +215,52 @@ public class MediaPlayer$PlaybackThread
       if (this.this$0.e)
       {
         this.this$0.e = false;
-        this.this$0.jdField_a_of_type_Ufb.sendMessage(this.this$0.jdField_a_of_type_Ufb.obtainMessage(200, 702, 0));
-        this.this$0.jdField_a_of_type_Uff.a(this.this$0.jdField_a_of_type_Uet.a());
+        this.this$0.jdField_a_of_type_Vtt.sendMessage(this.this$0.jdField_a_of_type_Vtt.obtainMessage(200, 702, 0));
+        this.this$0.jdField_a_of_type_Vtx.a(this.this$0.jdField_a_of_type_Vtl.a());
       }
-      if ((this.jdField_a_of_type_Uew != null) && (this.this$0.jdField_a_of_type_Uff.a(this.jdField_a_of_type_Uew.jdField_a_of_type_Long) > 60000L))
+      if ((this.jdField_a_of_type_Vto != null) && (this.this$0.jdField_a_of_type_Vtx.a(this.jdField_a_of_type_Vto.jdField_a_of_type_Long) > 60000L))
       {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 50L);
         return;
       }
-      this.this$0.c = this.this$0.jdField_a_of_type_Uet.a();
-      if ((this.this$0.jdField_a_of_type_Uet.a() != null) && (this.jdField_a_of_type_Uew != null))
+      this.this$0.c = this.this$0.jdField_a_of_type_Vtl.a();
+      if ((this.this$0.jdField_a_of_type_Vtl.a() != null) && (this.jdField_a_of_type_Vto != null))
       {
-        a(this.jdField_a_of_type_Uew);
-        this.jdField_a_of_type_Uew = null;
+        a(this.jdField_a_of_type_Vto);
+        this.jdField_a_of_type_Vto = null;
         if (this.d)
         {
           this.d = false;
-          this.this$0.jdField_a_of_type_Ufb.sendMessage(this.this$0.jdField_a_of_type_Ufb.obtainMessage(200, 3, 0));
+          this.this$0.jdField_a_of_type_Vtt.sendMessage(this.this$0.jdField_a_of_type_Vtt.obtainMessage(200, 3, 0));
         }
       }
       if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback != null)
       {
-        if (this.jdField_a_of_type_Double != this.this$0.jdField_a_of_type_Uff.a())
+        if (this.jdField_a_of_type_Double != this.this$0.jdField_a_of_type_Vtx.a())
         {
-          this.jdField_a_of_type_Double = this.this$0.jdField_a_of_type_Uff.a();
+          this.jdField_a_of_type_Double = this.this$0.jdField_a_of_type_Vtx.a();
           this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback.a((float)this.jdField_a_of_type_Double);
         }
         long l2 = this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback.c();
         if (l2 > AudioPlayback.jdField_a_of_type_Long) {
-          this.this$0.jdField_a_of_type_Uff.a(l2);
+          this.this$0.jdField_a_of_type_Vtx.a(l2);
         }
       }
-      if (this.this$0.jdField_a_of_type_Uet.a())
+      if (this.this$0.jdField_a_of_type_Vtl.a())
       {
-        this.this$0.jdField_a_of_type_Ufb.sendEmptyMessage(2);
+        this.this$0.jdField_a_of_type_Vtt.sendEmptyMessage(2);
         if (this.this$0.d)
         {
           if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback != null) {
             this.this$0.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerAudioPlayback.c();
           }
-          this.this$0.jdField_a_of_type_Uet.a(ufc.a(0), 0L);
-          this.this$0.jdField_a_of_type_Uet.b();
+          this.this$0.jdField_a_of_type_Vtl.a(vtu.a(0), 0L);
+          this.this$0.jdField_a_of_type_Vtl.b();
         }
       }
       while (!this.jdField_a_of_type_Boolean)
       {
-        l1 = (10L / this.this$0.jdField_a_of_type_Uff.a()) - (SystemClock.elapsedRealtime() - l1);
+        l1 = (10L / this.this$0.jdField_a_of_type_Vtx.a()) - (SystemClock.elapsedRealtime() - l1);
         if (l1 <= 0L) {
           break label637;
         }
@@ -269,7 +269,7 @@ public class MediaPlayer$PlaybackThread
         this.jdField_a_of_type_Boolean = true;
         a(true);
         continue;
-        this.jdField_a_of_type_Uew = this.this$0.jdField_a_of_type_Uet.a(false);
+        this.jdField_a_of_type_Vto = this.this$0.jdField_a_of_type_Vtl.a(false);
       }
     }
     label637:
@@ -290,21 +290,21 @@ public class MediaPlayer$PlaybackThread
     //   11: putfield 46	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer$PlaybackThread:jdField_a_of_type_Boolean	Z
     //   14: aload_0
     //   15: getfield 21	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer$PlaybackThread:this$0	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer;
-    //   18: getfield 107	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer:jdField_a_of_type_Uet	Luet;
+    //   18: getfield 107	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer:jdField_a_of_type_Vtl	Lvtl;
     //   21: ifnull +32 -> 53
     //   24: aload_0
-    //   25: getfield 104	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer$PlaybackThread:jdField_a_of_type_Uew	Luew;
+    //   25: getfield 104	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer$PlaybackThread:jdField_a_of_type_Vto	Lvto;
     //   28: ifnull +25 -> 53
     //   31: aload_0
     //   32: getfield 21	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer$PlaybackThread:this$0	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer;
-    //   35: getfield 107	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer:jdField_a_of_type_Uet	Luet;
-    //   38: invokevirtual 112	uet:a	()Luey;
+    //   35: getfield 107	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer:jdField_a_of_type_Vtl	Lvtl;
+    //   38: invokevirtual 112	vtl:a	()Lvtq;
     //   41: aload_0
-    //   42: getfield 104	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer$PlaybackThread:jdField_a_of_type_Uew	Luew;
-    //   45: invokevirtual 281	uey:b	(Luew;)V
+    //   42: getfield 104	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer$PlaybackThread:jdField_a_of_type_Vto	Lvto;
+    //   45: invokevirtual 281	vtq:b	(Lvto;)V
     //   48: aload_0
     //   49: aconst_null
-    //   50: putfield 104	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer$PlaybackThread:jdField_a_of_type_Uew	Luew;
+    //   50: putfield 104	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer$PlaybackThread:jdField_a_of_type_Vto	Lvto;
     //   53: aload_0
     //   54: getfield 21	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer$PlaybackThread:this$0	Lcom/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer;
     //   57: invokevirtual 284	com/tencent/biz/qqstory/playvideo/player/mediaplayer/MediaPlayer:h	()V
@@ -440,7 +440,7 @@ public class MediaPlayer$PlaybackThread
     catch (InterruptedException paramMessage)
     {
       Log.d("Story-MediaPlayer", "decoder interrupted", paramMessage);
-      this.this$0.jdField_a_of_type_Ufb.sendMessage(this.this$0.jdField_a_of_type_Ufb.obtainMessage(100, 1, 0));
+      this.this$0.jdField_a_of_type_Vtt.sendMessage(this.this$0.jdField_a_of_type_Vtt.obtainMessage(100, 1, 0));
       f();
       return true;
     }
@@ -449,7 +449,7 @@ public class MediaPlayer$PlaybackThread
       for (;;)
       {
         Log.e("Story-MediaPlayer", "decoder error, too many instances?", paramMessage);
-        this.this$0.jdField_a_of_type_Ufb.sendMessage(this.this$0.jdField_a_of_type_Ufb.obtainMessage(100, 1, 0));
+        this.this$0.jdField_a_of_type_Vtt.sendMessage(this.this$0.jdField_a_of_type_Vtt.obtainMessage(100, 1, 0));
       }
     }
     catch (IOException paramMessage)
@@ -457,7 +457,7 @@ public class MediaPlayer$PlaybackThread
       for (;;)
       {
         Log.e("Story-MediaPlayer", "decoder error, codec can not be created", paramMessage);
-        this.this$0.jdField_a_of_type_Ufb.sendMessage(this.this$0.jdField_a_of_type_Ufb.obtainMessage(100, 1, -1004));
+        this.this$0.jdField_a_of_type_Vtt.sendMessage(this.this$0.jdField_a_of_type_Vtt.obtainMessage(100, 1, -1004));
       }
     }
   }
@@ -480,7 +480,7 @@ public class MediaPlayer$PlaybackThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.poi.PoiInfo;
-
 public final class bjpg
-  implements Parcelable.Creator<PoiInfo>
+  extends ThreadLocal<Integer>
 {
-  public PoiInfo a(Parcel paramParcel)
+  protected Integer a()
   {
-    return new PoiInfo(paramParcel, null);
-  }
-  
-  public PoiInfo[] a(int paramInt)
-  {
-    return new PoiInfo[paramInt];
+    return Integer.valueOf(-100);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjpg
  * JD-Core Version:    0.7.0.1
  */

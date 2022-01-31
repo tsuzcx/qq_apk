@@ -1,22 +1,18 @@
-public class akyh
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+
+class akyh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public long a;
-  public String a;
-  public long b;
+  akyh(akyg paramakyg) {}
   
-  public String toString()
+  public void onGlobalLayout()
   {
-    StringBuffer localStringBuffer = new StringBuffer("PlayGuideShowInfo{");
-    localStringBuffer.append("nStartTime=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", nEndTime=").append(this.b);
-    localStringBuffer.append(", strShow=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    akyg.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyh
  * JD-Core Version:    0.7.0.1
  */

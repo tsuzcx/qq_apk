@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import adcw;
+import aeuy;
 import java.util.TimerTask;
 
 class DoodleMsgView$2
@@ -12,8 +12,8 @@ class DoodleMsgView$2
   {
     try
     {
-      adcw localadcw = DoodleMsgView.a(this.this$0);
-      if (localadcw == null)
+      aeuy localaeuy = DoodleMsgView.a(this.this$0);
+      if (localaeuy == null)
       {
         this.this$0.a(new DoodleMsgView.2.1(this));
         return;
@@ -24,16 +24,16 @@ class DoodleMsgView$2
       if (DoodleMsgView.a(this.this$0) < this.a) {
         DoodleMsgView.a(this.this$0, DoodleMsgView.a(this.this$0) + this.b);
       }
-      if (localadcw != null) {
-        localadcw.a(DoodleMsgView.a(this.this$0), true);
+      if (localaeuy != null) {
+        localaeuy.a(DoodleMsgView.a(this.this$0), true);
       }
       if (DoodleMsgView.a(this.this$0) >= this.a)
       {
         DoodleMsgView.a(this.this$0);
         return;
       }
-      if ((!DoodleMsgView.a(this.this$0)) && (localadcw != null)) {
-        localadcw.a(this.a, true);
+      if ((!DoodleMsgView.a(this.this$0)) && (localaeuy != null)) {
+        localaeuy.a(this.a, true);
       }
       return;
     }
@@ -42,7 +42,7 @@ class DoodleMsgView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView.2
  * JD-Core Version:    0.7.0.1
  */

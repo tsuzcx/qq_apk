@@ -1,34 +1,21 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class ocn
-  implements TVK_SDKMgr.InstallListener
+class ocn
+  implements ViewFactory.FoundClickableViewListener
 {
-  public ocn(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
+  ocn(ocm paramocm, BaseData paramBaseData, Context paramContext) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void onFound(ViewBase paramViewBase)
   {
-    yxp.a("ReadInJoyArticleBottomVideoView", "installSDK onInstallProgress arg0=");
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    yxp.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledFailed arg0=");
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    yxp.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledSuccessed");
-    if ((ReadInJoyArticleBottomVideoView.b()) && (ReadInJoyArticleBottomVideoView.a(this.a) != null)) {
-      ReadInJoyArticleBottomVideoView.a(this.a).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(this.a, 4));
-    }
+    paramViewBase.setOnClickListener(new oco(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ocn
  * JD-Core Version:    0.7.0.1
  */

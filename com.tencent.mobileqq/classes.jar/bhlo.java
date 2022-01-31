@@ -1,45 +1,30 @@
-import NS_MOBILE_CLIENT_REPORT.CLIENT_NBP_REPORT_REQ;
-import com.qq.taf.jce.JceStruct;
-import java.util.ArrayList;
-import java.util.Map;
-
 public class bhlo
-  extends bgyk
 {
-  public JceStruct a;
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
   
-  public bhlo(String paramString, ArrayList<String> paramArrayList, Map<String, String> paramMap)
+  bhlo()
   {
-    CLIENT_NBP_REPORT_REQ localCLIENT_NBP_REPORT_REQ = new CLIENT_NBP_REPORT_REQ();
-    localCLIENT_NBP_REPORT_REQ.strABTestId = paramString;
-    localCLIENT_NBP_REPORT_REQ.report_info = paramArrayList;
-    localCLIENT_NBP_REPORT_REQ.extra_info = paramMap;
-    this.a = localCLIENT_NBP_REPORT_REQ;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.nbpClientReport";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "nbpClientReport";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhlo
  * JD-Core Version:    0.7.0.1
  */

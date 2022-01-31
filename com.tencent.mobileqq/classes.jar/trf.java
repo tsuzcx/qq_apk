@@ -1,74 +1,47 @@
-public abstract class trf
-  extends tqh
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import com.tencent.biz.qqcircle.widgets.QCircleMessageNoticeView;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import java.util.ArrayList;
+
+public class trf
+  extends yei
 {
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
+  private QCircleMessageNoticeView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView;
+  private trt jdField_a_of_type_Trt;
   
-  protected String a(int paramInt)
+  public trf(Bundle paramBundle)
   {
-    return null;
+    super(paramBundle);
   }
   
-  public void a(trl paramtrl)
+  protected BaseWidgetView a(ViewGroup paramViewGroup, ydp paramydp)
   {
-    super.a(paramtrl);
-    paramtrl.a = this.jdField_c_of_type_JavaLangString;
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView = new QCircleMessageNoticeView(a());
+    return this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView;
   }
   
-  public void a(trn paramtrn)
-  {
-    super.a(paramtrn);
-    paramtrn.b = 2;
-    paramtrn.d = ("[" + ssf.a + "] " + this.a);
-    paramtrn.a = this.d;
-    paramtrn.k = this.a;
-    paramtrn.l = this.b;
-    paramtrn.h = this.jdField_c_of_type_JavaLangString;
-  }
+  public void a(Bundle paramBundle) {}
   
-  public void a(tro paramtro)
-  {
-    super.a(paramtro);
-    paramtro.jdField_c_of_type_JavaLangString = this.a;
-    paramtro.d = this.b;
-    paramtro.a = this.d;
-    paramtro.e = this.jdField_c_of_type_JavaLangString;
-  }
+  public void a(yeb paramyeb) {}
   
-  public void a(trp paramtrp)
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    super.a(paramtrp);
-    paramtrp.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-    paramtrp.e = this.d;
-    paramtrp.a = this.a;
-    paramtrp.d = trx.a(this.d);
-  }
-  
-  public void a(trq paramtrq)
-  {
-    super.a(paramtrq);
-    paramtrq.jdField_c_of_type_JavaLangString = this.b;
-    paramtrq.a = this.a;
-    paramtrq.d = this.jdField_c_of_type_JavaLangString;
-    paramtrq.e = this.d;
-    paramtrq.jdField_c_of_type_Boolean = true;
-  }
-  
-  public void b(trq paramtrq)
-  {
-    super.b(paramtrq);
-    paramtrq.jdField_c_of_type_JavaLangString = this.b;
-    paramtrq.a = this.a;
-    paramtrq.d = this.jdField_c_of_type_JavaLangString;
-    paramtrq.e = this.d;
-    paramtrq.jdField_c_of_type_Boolean = true;
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      this.jdField_a_of_type_Trt = ((trt)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView != null)
+      {
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView.setData(this.jdField_a_of_type_Trt);
+        this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleMessageNoticeView.setAdapterListener(new trg(this));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trf
  * JD-Core Version:    0.7.0.1
  */

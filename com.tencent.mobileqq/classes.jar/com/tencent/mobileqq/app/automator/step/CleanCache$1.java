@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ajsd;
-import aklk;
-import akll;
+import aljq;
+import amda;
+import amdb;
 import android.os.Build.VERSION;
-import aukp;
-import aukq;
-import aywm;
+import awbw;
+import awbx;
+import baul;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -48,7 +48,7 @@ public class CleanCache$1
     //   32: lconst_0
     //   33: lstore 8
     //   35: aload_1
-    //   36: getstatic 39	aywm:a	Ljava/io/File;
+    //   36: getstatic 39	baul:a	Ljava/io/File;
     //   39: if_acmpne +40 -> 79
     //   42: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   45: ifeq +34 -> 79
@@ -69,10 +69,10 @@ public class CleanCache$1
     //   81: iload_2
     //   82: if_icmple +412 -> 494
     //   85: aload 14
-    //   87: new 70	aklm
+    //   87: new 70	amdc
     //   90: dup
     //   91: aload_0
-    //   92: invokespecial 73	aklm:<init>	(Lcom/tencent/mobileqq/app/automator/step/CleanCache$1;)V
+    //   92: invokespecial 73	amdc:<init>	(Lcom/tencent/mobileqq/app/automator/step/CleanCache$1;)V
     //   95: invokestatic 79	java/util/Arrays:sort	([Ljava/lang/Object;Ljava/util/Comparator;)V
     //   98: aload 14
     //   100: arraylength
@@ -204,7 +204,7 @@ public class CleanCache$1
     //   335: iload_2
     //   336: istore_3
     //   337: aload_1
-    //   338: getstatic 39	aywm:a	Ljava/io/File;
+    //   338: getstatic 39	baul:a	Ljava/io/File;
     //   341: if_acmpne +141 -> 482
     //   344: invokestatic 44	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   347: ifeq +46 -> 393
@@ -236,7 +236,7 @@ public class CleanCache$1
     //   403: getfield 121	com/tencent/mobileqq/app/automator/step/CleanCache:a	Lcom/tencent/mobileqq/app/automator/Automator;
     //   406: getfield 127	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
     //   409: invokevirtual 132	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   412: invokestatic 137	bbkb:a	(Ljava/lang/String;)J
+    //   412: invokestatic 137	bdiv:a	(Ljava/lang/String;)J
     //   415: lstore 8
     //   417: invokestatic 142	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getServerTime	()J
     //   420: ldc2_w 143
@@ -251,7 +251,7 @@ public class CleanCache$1
     //   437: lcmp
     //   438: ifle +26 -> 464
     //   441: invokestatic 150	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   444: invokestatic 155	axrn:a	(Landroid/content/Context;)Laxrn;
+    //   444: invokestatic 155	azmz:a	(Landroid/content/Context;)Lazmz;
     //   447: aconst_null
     //   448: ldc 157
     //   450: iconst_1
@@ -262,13 +262,13 @@ public class CleanCache$1
     //   457: i2l
     //   458: aconst_null
     //   459: ldc 159
-    //   461: invokevirtual 162	axrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   461: invokevirtual 162	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   464: aload_0
     //   465: getfield 14	com/tencent/mobileqq/app/automator/step/CleanCache$1:this$0	Lcom/tencent/mobileqq/app/automator/step/CleanCache;
     //   468: getfield 121	com/tencent/mobileqq/app/automator/step/CleanCache:a	Lcom/tencent/mobileqq/app/automator/Automator;
     //   471: getfield 127	com/tencent/mobileqq/app/automator/Automator:mApp	Lcom/tencent/common/app/AppInterface;
     //   474: invokevirtual 132	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   477: invokestatic 165	bbkb:a	(Ljava/lang/String;)V
+    //   477: invokestatic 165	bdiv:a	(Ljava/lang/String;)V
     //   480: iload_2
     //   481: istore_3
     //   482: iload_3
@@ -356,8 +356,8 @@ public class CleanCache$1
     //   13: getfield 14	com/tencent/mobileqq/app/automator/step/CleanCache$1:this$0	Lcom/tencent/mobileqq/app/automator/step/CleanCache;
     //   16: getfield 121	com/tencent/mobileqq/app/automator/step/CleanCache:a	Lcom/tencent/mobileqq/app/automator/Automator;
     //   19: getfield 180	com/tencent/mobileqq/app/automator/Automator:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   22: invokevirtual 186	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Laukq;
-    //   25: invokevirtual 192	aukq:createEntityManager	()Laukp;
+    //   22: invokevirtual 186	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lawbx;
+    //   25: invokevirtual 192	awbx:createEntityManager	()Lawbw;
     //   28: astore 7
     //   30: aload 7
     //   32: iconst_0
@@ -384,7 +384,7 @@ public class CleanCache$1
     //   64: aconst_null
     //   65: aconst_null
     //   66: aconst_null
-    //   67: invokevirtual 214	aukp:a	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   67: invokevirtual 214	awbw:a	(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   70: astore 8
     //   72: aload 10
     //   74: astore 9
@@ -442,7 +442,7 @@ public class CleanCache$1
     //   199: ldc 250
     //   201: invokevirtual 55	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   207: invokevirtual 254	aukp:b	(Ljava/lang/String;)Z
+    //   207: invokevirtual 254	awbw:b	(Ljava/lang/String;)Z
     //   210: pop
     //   211: aload 9
     //   213: ifnull +347 -> 560
@@ -555,7 +555,7 @@ public class CleanCache$1
     //   415: aload 7
     //   417: ifnull +12 -> 429
     //   420: aload 7
-    //   422: invokevirtual 274	aukp:a	()V
+    //   422: invokevirtual 274	awbw:a	()V
     //   425: aload 9
     //   427: astore 10
     //   429: aload 10
@@ -572,7 +572,7 @@ public class CleanCache$1
     //   452: aload 8
     //   454: ifnull -25 -> 429
     //   457: aload 8
-    //   459: invokevirtual 274	aukp:a	()V
+    //   459: invokevirtual 274	awbw:a	()V
     //   462: aload_1
     //   463: areturn
     //   464: astore_1
@@ -587,7 +587,7 @@ public class CleanCache$1
     //   484: aload 7
     //   486: ifnull +8 -> 494
     //   489: aload 7
-    //   491: invokevirtual 274	aukp:a	()V
+    //   491: invokevirtual 274	awbw:a	()V
     //   494: aload_1
     //   495: athrow
     //   496: astore_1
@@ -637,7 +637,7 @@ public class CleanCache$1
     //   229	333	4	k	int
     //   10	346	5	m	int
     //   148	408	6	bool	boolean
-    //   28	393	7	localaukp	aukp
+    //   28	393	7	localawbw	awbw
     //   432	1	7	localException1	Exception
     //   435	93	7	localObject1	Object
     //   1	498	8	localCursor	android.database.Cursor
@@ -681,16 +681,16 @@ public class CleanCache$1
   private File[] a(File[] paramArrayOfFile, int paramInt)
   {
     int m = 0;
-    aukp localaukp = null;
-    localObject2 = localaukp;
+    awbw localawbw = null;
+    localObject2 = localawbw;
     for (;;)
     {
       try
       {
         localObject3 = new LinkedList();
-        localObject2 = localaukp;
-        localaukp = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
-        localObject2 = localaukp;
+        localObject2 = localawbw;
+        localawbw = this.this$0.a.app.getEntityManagerFactory().createEntityManager();
+        localObject2 = localawbw;
       }
       catch (Exception localException)
       {
@@ -701,7 +701,7 @@ public class CleanCache$1
         if (localObject2 == null) {
           continue;
         }
-        ((aukp)localObject2).a();
+        ((awbw)localObject2).a();
         return paramArrayOfFile;
       }
       finally
@@ -713,42 +713,42 @@ public class CleanCache$1
       }
       try
       {
-        localObject4 = (ArrayList)localaukp.a(Friends.class, false, "groupid>=?", new String[] { "0" }, null, null, null, null);
+        localObject4 = (ArrayList)localawbw.a(Friends.class, false, "groupid>=?", new String[] { "0" }, null, null, null, null);
         if (localObject4 != null)
         {
-          localObject2 = localaukp;
+          localObject2 = localawbw;
           if (((ArrayList)localObject4).size() != 0)
           {
             i = 0;
-            localObject2 = localaukp;
+            localObject2 = localawbw;
             if (i < ((ArrayList)localObject4).size())
             {
-              localObject2 = localaukp;
+              localObject2 = localawbw;
               localObject5 = (Friends)((ArrayList)localObject4).get(i);
-              localObject2 = localaukp;
+              localObject2 = localawbw;
               ((LinkedList)localObject3).add(this.this$0.a.app.a(false, ((Friends)localObject5).uin));
               i += 1;
               continue;
             }
           }
         }
-        localObject2 = localaukp;
-        localObject4 = (ArrayList)localaukp.a(TroopInfo.class, false, null, null, null, null, null, null);
+        localObject2 = localawbw;
+        localObject4 = (ArrayList)localawbw.a(TroopInfo.class, false, null, null, null, null, null, null);
         if (localObject4 == null) {
           break label598;
         }
-        localObject2 = localaukp;
+        localObject2 = localawbw;
         if (((ArrayList)localObject4).size() <= 0) {
           break label598;
         }
         i = 0;
-        localObject2 = localaukp;
+        localObject2 = localawbw;
         if (i >= ((ArrayList)localObject4).size()) {
           break label598;
         }
-        localObject2 = localaukp;
+        localObject2 = localawbw;
         localObject5 = (TroopInfo)((ArrayList)localObject4).get(i);
-        localObject2 = localaukp;
+        localObject2 = localawbw;
         ((LinkedList)localObject3).add(this.this$0.a.app.a(true, ((TroopInfo)localObject5).troopuin));
         i += 1;
         continue;
@@ -762,40 +762,40 @@ public class CleanCache$1
         continue;
       }
       k = i;
-      localObject2 = localaukp;
+      localObject2 = localawbw;
       if (j < paramArrayOfFile.length)
       {
         localObject4 = paramArrayOfFile[j];
-        localObject2 = localaukp;
+        localObject2 = localawbw;
         localObject5 = ((File)localObject4).getAbsolutePath();
         k = i;
-        localObject2 = localaukp;
+        localObject2 = localawbw;
         if (!((LinkedList)localObject3).contains(localObject5))
         {
           k = i;
-          localObject2 = localaukp;
+          localObject2 = localawbw;
           if (((String)localObject5).indexOf("discussion_") < 0)
           {
             k = i;
-            localObject2 = localaukp;
+            localObject2 = localawbw;
             if (((String)localObject5).indexOf("sys_") < 0)
             {
-              localObject2 = localaukp;
+              localObject2 = localawbw;
               if (((File)localObject4).exists())
               {
-                localObject2 = localaukp;
+                localObject2 = localawbw;
                 ((File)localObject4).delete();
               }
               paramArrayOfFile[j] = null;
               i += 1;
-              localObject2 = localaukp;
+              localObject2 = localawbw;
               if (QLog.isColorLevel())
               {
-                localObject2 = localaukp;
+                localObject2 = localawbw;
                 QLog.d("QQInitHandler", 2, "onCleanCache->delSecondaryQQHead. delete QQHead,filePath=" + ((File)localObject4).getAbsolutePath());
               }
               k = i;
-              localObject2 = localaukp;
+              localObject2 = localawbw;
               if (paramInt + i >= this.a) {
                 k = i;
               }
@@ -809,15 +809,15 @@ public class CleanCache$1
         if (k <= 0) {
           continue;
         }
-        localObject2 = localaukp;
+        localObject2 = localawbw;
         localObject3 = new File[paramArrayOfFile.length - k];
         paramInt = 0;
         i = m;
-        localObject2 = localaukp;
+        localObject2 = localawbw;
         if (i >= paramArrayOfFile.length) {
           continue;
         }
-        localObject2 = localaukp;
+        localObject2 = localawbw;
         if (paramInt >= localObject3.length) {
           continue;
         }
@@ -835,9 +835,9 @@ public class CleanCache$1
     }
     localObject2 = localObject3;
     localObject3 = localObject2;
-    if (localaukp != null)
+    if (localawbw != null)
     {
-      localaukp.a();
+      localawbw.a();
       localObject3 = localObject2;
     }
     return localObject3;
@@ -853,7 +853,7 @@ public class CleanCache$1
     try
     {
       String[] arrayOfString = new String[2];
-      arrayOfString[0] = ajsd.bI;
+      arrayOfString[0] = aljq.bJ;
       arrayOfString[1] = "/data/data/com.tencent.mobileqq/files/head/_hd/";
       j = arrayOfString.length;
       i = 0;
@@ -879,7 +879,7 @@ public class CleanCache$1
       if (n >= this.a) {
         break label820;
       }
-      Arrays.sort((Object[])localObject2, new aklk(this));
+      Arrays.sort((Object[])localObject2, new amda(this));
       i1 = localObject2.length;
       localObject2 = a((File[])localObject2, n);
       n += i1 - localObject2.length;
@@ -903,7 +903,7 @@ public class CleanCache$1
     return;
     label384:
     Object localObject1 = new String[2];
-    localObject1[0] = ajsd.bK;
+    localObject1[0] = aljq.bL;
     localObject1[1] = "/data/data/com.tencent.mobileqq/files/head/_stranger/";
     int n = localObject1.length;
     int i = 0;
@@ -918,7 +918,7 @@ public class CleanCache$1
       if ((localObject2 == null) || (localObject2.length <= 300)) {
         break label848;
       }
-      Arrays.sort((Object[])localObject2, new akll(this));
+      Arrays.sort((Object[])localObject2, new amdb(this));
       i1 = localObject2.length;
       j = 0;
       k = 0;
@@ -941,9 +941,9 @@ public class CleanCache$1
         QLog.d("QQInitHandler", 2, "onCleanCache. delete stranger head...");
         break label848;
         localObject1 = new File[3];
-        localObject1[0] = new File(ajsd.aW + "photo");
-        localObject1[1] = new File(ajsd.aW + "ptv_template");
-        localObject1[2] = new File(ajsd.bH + File.separator + "_dynamic");
+        localObject1[0] = new File(aljq.aX + "photo");
+        localObject1[1] = new File(aljq.aX + "ptv_template");
+        localObject1[2] = new File(aljq.bI + File.separator + "_dynamic");
         k = localObject1.length;
         j = 0;
         i = m;
@@ -954,7 +954,7 @@ public class CleanCache$1
         }
         i = a(new File(SafeBitmapFactory.LARGE_MAP_CACHE_PATH), 150, 50) + j;
         if (Build.VERSION.SDK_INT < 21) {
-          i += a(aywm.a, 2000, 500);
+          i += a(baul.a, 2000, 500);
         }
         for (;;)
         {
@@ -966,7 +966,7 @@ public class CleanCache$1
           CleanCache.a(this.this$0);
           CleanCache.b(this.this$0);
           break;
-          j = a(aywm.a, 5000, 2000);
+          j = a(baul.a, 5000, 2000);
           i += j;
         }
         label820:

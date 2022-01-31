@@ -1,88 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.CheckBox;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import QC.CommonRsp;
+import QC.FaceRsp;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
 public class aigb
-  extends Handler
+  extends alxo
 {
-  public aigb(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
+  public aigb(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, FaceRsp paramFaceRsp)
   {
-    switch (paramMessage.what)
+    if (paramFaceRsp != null)
     {
+      int i = paramFaceRsp.authRet;
+      localObject = "null";
+      if (paramFaceRsp.stRet != null) {
+        localObject = "ret:" + paramFaceRsp.stRet.ret + " auth:" + paramFaceRsp.authRet + " url:" + paramFaceRsp.url;
+      }
+      QLog.d("AvatarPendantActivity", 2, "onSetFace: " + paramBoolean + "," + (String)localObject);
+      if (i == 0) {
+        this.a.r = 0;
+      }
     }
-    label366:
-    do
+    else
     {
-      Object[] arrayOfObject;
-      String str;
-      do
-      {
-        do
-        {
-          return;
-          TroopMemberListInnerFrame.a(this.a, paramMessage);
-          return;
-          paramMessage = this.a;
-          paramMessage.jdField_a_of_type_Double += TroopMemberListInnerFrame.jdField_b_of_type_Double;
-        } while ((this.a.jdField_a_of_type_Double >= 90.0D) || (this.a.jdField_a_of_type_Int <= 0));
-        if (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 8) {
-          this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-        }
-        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)this.a.jdField_a_of_type_Double);
-        this.a.d.setText(String.format(ajya.a(2131715623), new Object[] { Integer.valueOf(Math.min((int)(this.a.jdField_a_of_type_Int * this.a.jdField_a_of_type_Double / 100.0D), this.a.jdField_a_of_type_Int)), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4), 800L);
-        return;
-        TroopMemberListInnerFrame.a(this.a, paramMessage.arg1);
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
-        if (!(paramMessage.obj instanceof Object[])) {
-          break label366;
-        }
-        arrayOfObject = (Object[])paramMessage.obj;
-        if (arrayOfObject.length <= 0) {
-          break label366;
-        }
-        str = (String)arrayOfObject[1];
-        if (str.equals(this.a.jdField_b_of_type_JavaLangString)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopMemberListInnerFrame.thread", 2, "handleMessage, troopUin != mTroopUin, break:" + str + "," + this.a.jdField_b_of_type_JavaLangString);
-      return;
-      this.a.jdField_a_of_type_JavaUtilMap = ((Map)arrayOfObject[0]);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberListInnerFrame.thread", 2, "handleMessage, mIndexedFriends.size=" + this.a.jdField_a_of_type_JavaUtilMap.size());
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 1) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 0) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 5))
-      {
-        int i = TroopMemberListInnerFrame.a(this.a, this.a.jdField_a_of_type_JavaUtilMap);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b(i);
-      }
-      paramMessage.obj = TroopMemberListInnerFrame.a(this.a);
-      TroopMemberListInnerFrame.a(this.a, paramMessage);
-    } while ((this.a.jdField_a_of_type_Boolean) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.q));
-    this.a.jdField_a_of_type_Boolean = true;
-    paramMessage = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-    if (!this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramMessage.setChecked(bool);
-      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
       return;
     }
+    this.a.r = 1;
+    Object localObject = new Intent(this.a, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramFaceRsp.url);
+    this.a.startActivity((Intent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigb
  * JD-Core Version:    0.7.0.1
  */

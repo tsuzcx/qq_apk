@@ -1,20 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-
-public class wxo
-  implements DialogInterface.OnClickListener
+public abstract interface wxo
+  extends wwd
 {
-  public wxo(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  public abstract xjv a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    EditUniqueTitleActivity.a(this.a);
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxo
  * JD-Core Version:    0.7.0.1
  */

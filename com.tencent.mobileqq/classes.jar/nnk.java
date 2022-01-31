@@ -1,21 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class nnk
-  implements DialogInterface.OnClickListener
 {
-  public nnk(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, long paramLong, String paramString2, String paramString3) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public nnk(CustomWebView paramCustomWebView)
   {
-    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
-    PublicAccountJavascriptInterface.setLocationPermissionGrant(this.b, this.c, 1);
+    this.jdField_a_of_type_Int = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnk
  * JD-Core Version:    0.7.0.1
  */

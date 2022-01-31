@@ -1,44 +1,22 @@
-import android.graphics.Point;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public final class anhx
+class anhx
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public float a;
-  public final int a;
-  public final long a;
-  public final Point a;
-  public float b;
+  anhx(anhw paramanhw, anhy paramanhy) {}
   
-  public anhx(long paramLong, Point paramPoint, int paramInt)
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public float a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPoint.x - this.jdField_a_of_type_Float;
-  }
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-  }
-  
-  public float b()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsPoint.y - this.b;
-  }
-  
-  public String toString()
-  {
-    return "TouchPoint{mTime=" + this.jdField_a_of_type_Long + ", mPoint=" + this.jdField_a_of_type_AndroidGraphicsPoint + ", mDistanceOfError=" + this.jdField_a_of_type_Int + '}';
+    if (paramBitmap != null) {
+      this.jdField_a_of_type_Anhy.a.setImageBitmap(paramBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhx
  * JD-Core Version:    0.7.0.1
  */

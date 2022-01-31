@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ahbt;
+import aivy;
 import com.tencent.util.Pair;
 import java.io.Serializable;
 import java.util.List;
@@ -22,7 +22,7 @@ public class DownloadParam
   
   public void standardlize()
   {
-    if (ahbt.b) {
+    if (aivy.b) {
       this.filePos = 1;
     }
   }
@@ -34,7 +34,7 @@ public class DownloadParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.DownloadParam
  * JD-Core Version:    0.7.0.1
  */

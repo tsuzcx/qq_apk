@@ -1,21 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class vdx
-  implements View.OnClickListener
+public abstract interface vdx
 {
-  vdx(vdw paramvdw, vdv paramvdv, vve paramvve) {}
+  public abstract void a(vge paramvge);
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Vdv != null) {
-      this.jdField_a_of_type_Vdv.a(this.jdField_a_of_type_Vve);
-    }
-  }
+  public abstract void b(vge paramvge);
+  
+  public abstract void c(vge paramvge);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdx
  * JD-Core Version:    0.7.0.1
  */

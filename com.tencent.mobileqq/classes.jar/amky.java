@@ -1,21 +1,30 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-class amky
-  implements EIPCResultCallback
+public abstract class amky
 {
-  amky(amkx paramamkx) {}
+  public String businessId;
+  public boolean observerOnUiThread;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public amky(String paramString)
   {
-    QLog.d("DanmuDataIPCClient", 1, new Object[] { "get barrage list, IPC success, msgSeq:", Long.valueOf(paramEIPCResult.data.getLong("key_barrage_msg_seq")) });
+    this.businessId = paramString;
   }
+  
+  public amky(String paramString, boolean paramBoolean)
+  {
+    this.businessId = paramString;
+    this.observerOnUiThread = paramBoolean;
+  }
+  
+  public void onConsecutiveFailure(int paramInt1, int paramInt2, boolean paramBoolean) {}
+  
+  public abstract void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
+  
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amky
  * JD-Core Version:    0.7.0.1
  */

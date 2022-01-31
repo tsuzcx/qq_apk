@@ -1,34 +1,26 @@
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 public class bfmy
 {
-  public static boolean a(int paramInt, List paramList)
+  public static SharedPreferences a(Context paramContext, String paramString)
   {
-    return (paramList == null) || (paramInt < 0) || (paramInt >= paramList.size());
-  }
-  
-  public static <T> boolean a(T[] paramArrayOfT, T paramT)
-  {
-    if ((paramArrayOfT == null) || (paramT == null)) {}
-    for (;;)
+    String str;
+    if (paramString != null)
     {
-      return false;
-      int j = paramArrayOfT.length;
-      int i = 0;
-      while (i < j)
-      {
-        T ? = paramArrayOfT[i];
-        if ((? != null) && (?.equals(paramT))) {
-          return true;
-        }
-        i += 1;
-      }
+      str = paramString;
+      if (paramString.length() != 0) {}
     }
+    else
+    {
+      str = "sdk_preference";
+    }
+    return paramContext.getSharedPreferences(str, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfmy
  * JD-Core Version:    0.7.0.1
  */

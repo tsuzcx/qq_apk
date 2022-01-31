@@ -1,6 +1,6 @@
 package com.tencent.biz.lebasearch;
 
-import ajte;
+import alkr;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,26 +11,26 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bbgu;
+import bdfq;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.smtt.sdk.WebView;
-import nco;
-import ncp;
-import wxr;
+import nfk;
+import nfl;
+import ymk;
 
 public class LebaSearchMoreInfoActivity
   extends AbsBaseWebViewActivity
 {
   long jdField_a_of_type_Long;
-  public ajte a;
-  Handler jdField_a_of_type_AndroidOsHandler = new nco(this);
+  public alkr a;
+  Handler jdField_a_of_type_AndroidOsHandler = new nfk(this);
   View jdField_a_of_type_AndroidViewView;
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bbgu jdField_a_of_type_Bbgu = null;
+  bdfq jdField_a_of_type_Bdfq = null;
   String jdField_a_of_type_JavaLangString;
-  public wxr a;
+  public ymk a;
   public boolean a;
   public String b;
   public String c = null;
@@ -38,14 +38,14 @@ public class LebaSearchMoreInfoActivity
   public LebaSearchMoreInfoActivity()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Ajte = new ncp(this);
+    this.jdField_a_of_type_Alkr = new nfl(this);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_Wxr = wxr.a();
-    this.jdField_a_of_type_Wxr.a();
-    this.jdField_a_of_type_Wxr.a(this.jdField_a_of_type_Ajte);
+    this.jdField_a_of_type_Ymk = ymk.a();
+    this.jdField_a_of_type_Ymk.a();
+    this.jdField_a_of_type_Ymk.a(this.jdField_a_of_type_Alkr);
     Intent localIntent = getIntent();
     if (localIntent == null) {
       finish();
@@ -61,21 +61,21 @@ public class LebaSearchMoreInfoActivity
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371782);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131372100);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370855));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371165));
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370853);
-    ((ImageView)localObject).setImageResource(2130846527);
+    Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371163);
+    ((ImageView)localObject).setImageResource(2130846908);
     ((ImageView)localObject).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131379392));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131380107));
     this.jdField_a_of_type_AndroidOsHandler.post(new LebaSearchMoreInfoActivity.2(this));
     if (this.jdField_a_of_type_Long != -1L)
     {
       localObject = new Bundle();
       ((Bundle)localObject).putLong("uiResId", this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_Wxr.a(18, (Bundle)localObject, this.jdField_a_of_type_Ajte);
+      this.jdField_a_of_type_Ymk.a(18, (Bundle)localObject, this.jdField_a_of_type_Alkr);
     }
   }
   
@@ -102,7 +102,7 @@ public class LebaSearchMoreInfoActivity
           break label232;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.b);
-        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.b + ";" + getString(2131696347));
+        this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.b + ";" + getString(2131696519));
         long l = localSharedPreferences.getLong("time_" + str + "_" + this.jdField_a_of_type_Long, 0L);
         if (System.currentTimeMillis() - l <= 86400000L) {
           break label244;
@@ -132,7 +132,7 @@ public class LebaSearchMoreInfoActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131559616);
+    setContentView(2131559669);
     b();
     c();
     return true;
@@ -140,10 +140,10 @@ public class LebaSearchMoreInfoActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Wxr != null)
+    if (this.jdField_a_of_type_Ymk != null)
     {
-      this.jdField_a_of_type_Wxr.b();
-      this.jdField_a_of_type_Wxr.b(this.jdField_a_of_type_Ajte);
+      this.jdField_a_of_type_Ymk.b();
+      this.jdField_a_of_type_Ymk.b(this.jdField_a_of_type_Alkr);
     }
     super.doOnDestroy();
   }
@@ -155,16 +155,16 @@ public class LebaSearchMoreInfoActivity
     {
     default: 
       return;
-    case 2131364759: 
-    case 2131371782: 
+    case 2131364840: 
+    case 2131372100: 
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      if (this.jdField_a_of_type_Bbgu == null) {
-        this.jdField_a_of_type_Bbgu = Utils.createPluginSetDialogForWeb(this, this.jdField_a_of_type_Wxr, this.jdField_a_of_type_Ajte, 1, this.jdField_a_of_type_Long, this.c, null);
+      if (this.jdField_a_of_type_Bdfq == null) {
+        this.jdField_a_of_type_Bdfq = Utils.createPluginSetDialogForWeb(this, this.jdField_a_of_type_Ymk, this.jdField_a_of_type_Alkr, 1, this.jdField_a_of_type_Long, this.c, null);
       }
-      if (this.jdField_a_of_type_Bbgu.isShowing()) {
-        this.jdField_a_of_type_Bbgu.dismiss();
+      if (this.jdField_a_of_type_Bdfq.isShowing()) {
+        this.jdField_a_of_type_Bdfq.dismiss();
       }
-      this.jdField_a_of_type_Bbgu.show();
+      this.jdField_a_of_type_Bdfq.show();
       return;
     }
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
@@ -172,7 +172,7 @@ public class LebaSearchMoreInfoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity
  * JD-Core Version:    0.7.0.1
  */

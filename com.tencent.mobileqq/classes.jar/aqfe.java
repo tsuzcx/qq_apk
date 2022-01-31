@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
 
-class aqfe
-  implements aqby
+public class aqfe
+  implements View.OnClickListener
 {
-  aqfe(aqfd paramaqfd) {}
+  public aqfe(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.d("ForwardOption.ForwardSdkShareOption", 1, "--> mD55ResultListener onResult");
-    ((aqfo)this.a.a.getManager(350)).a().a(null);
-    this.a.x();
-    this.a.a();
+    bcyw.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqfe
  * JD-Core Version:    0.7.0.1
  */

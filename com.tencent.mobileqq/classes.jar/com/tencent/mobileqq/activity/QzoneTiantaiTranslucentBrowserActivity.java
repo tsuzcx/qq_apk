@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bibd;
+import bkcz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
@@ -14,9 +14,9 @@ public class QzoneTiantaiTranslucentBrowserActivity
   extends QQTranslucentBrowserActivity
 {
   private static volatile long jdField_a_of_type_Long;
-  private bibd jdField_a_of_type_Bibd;
+  private bkcz jdField_a_of_type_Bkcz;
   
-  private bibd a()
+  private bkcz a()
   {
     Intent localIntent = getIntent();
     if (localIntent != null)
@@ -24,11 +24,11 @@ public class QzoneTiantaiTranslucentBrowserActivity
       switch (localIntent.getIntExtra("translucent_controller", 0))
       {
       default: 
-        return new bibd(this);
+        return new bkcz(this);
       }
-      return new bibd(this);
+      return new bkcz(this);
     }
-    return new bibd(this);
+    return new bkcz(this);
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
@@ -67,14 +67,14 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public void a(WebView paramWebView, String paramString)
   {
     super.a(paramWebView, paramString);
-    if (this.jdField_a_of_type_Bibd != null) {
-      this.jdField_a_of_type_Bibd.e();
+    if (this.jdField_a_of_type_Bkcz != null) {
+      this.jdField_a_of_type_Bkcz.e();
     }
   }
   
   public void doOnBackPressed()
   {
-    if ((this.jdField_a_of_type_Bibd != null) && (this.jdField_a_of_type_Bibd.a())) {
+    if ((this.jdField_a_of_type_Bkcz != null) && (this.jdField_a_of_type_Bkcz.a())) {
       super.doOnBackPressed();
     }
   }
@@ -82,8 +82,8 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    if (this.jdField_a_of_type_Bibd != null) {
-      this.jdField_a_of_type_Bibd.a();
+    if (this.jdField_a_of_type_Bkcz != null) {
+      this.jdField_a_of_type_Bkcz.a();
     }
     return bool;
   }
@@ -91,36 +91,36 @@ public class QzoneTiantaiTranslucentBrowserActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Bibd != null) {
-      this.jdField_a_of_type_Bibd.d();
+    if (this.jdField_a_of_type_Bkcz != null) {
+      this.jdField_a_of_type_Bkcz.d();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Bibd != null) {
-      this.jdField_a_of_type_Bibd.b();
+    if (this.jdField_a_of_type_Bkcz != null) {
+      this.jdField_a_of_type_Bkcz.b();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Bibd != null) {
-      this.jdField_a_of_type_Bibd.c();
+    if (this.jdField_a_of_type_Bkcz != null) {
+      this.jdField_a_of_type_Bkcz.c();
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    this.jdField_a_of_type_Bibd = a();
+    this.jdField_a_of_type_Bkcz = a();
     super.onCreate(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QzoneTiantaiTranslucentBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

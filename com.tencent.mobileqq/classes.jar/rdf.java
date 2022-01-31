@@ -1,21 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-
-public class rdf
-  extends oyd
+public abstract interface rdf
 {
-  public rdf(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean, int paramInt)
-  {
-    super(paramString);
-  }
+  public abstract long a();
   
-  public void a(oxx paramoxx)
-  {
-    paramoxx.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract long b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdf
  * JD-Core Version:    0.7.0.1
  */

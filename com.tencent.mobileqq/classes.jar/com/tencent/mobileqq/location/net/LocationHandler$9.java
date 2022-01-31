@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.location.net;
 
-import arus;
+import atln;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 
 public class LocationHandler$9
   implements Runnable
 {
-  public LocationHandler$9(arus paramarus) {}
+  public LocationHandler$9(atln paramatln) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class LocationHandler$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.location.net.LocationHandler.9
  * JD-Core Version:    0.7.0.1
  */

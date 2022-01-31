@@ -1,16 +1,24 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView;
+import android.os.Bundle;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class sxq
+class sxq
+  implements EIPCResultCallback
 {
-  public static boolean a(QQStoryAutoPlayView paramQQStoryAutoPlayView, MotionEvent paramMotionEvent)
+  sxq(sxe paramsxe, String paramString) {}
+  
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    return syj.a(paramQQStoryAutoPlayView, paramMotionEvent);
+    if (paramEIPCResult.data != null)
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("action_update_biu_and_comment_request_string");
+      this.jdField_a_of_type_Sxe.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramEIPCResult });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxq
  * JD-Core Version:    0.7.0.1
  */

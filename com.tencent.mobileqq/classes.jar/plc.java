@@ -1,34 +1,19 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorSet;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class plc
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  plc(plb paramplb) {}
+  plc(plb paramplb, pgd parampgd) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    plb.a(this.a).setSelected(this.a.isSelected());
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    plb.a(this.a).setSelected(this.a.isSelected());
-    plb.a(this.a).start();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    plb.a(this.a, true);
+    rqj.a(this.jdField_a_of_type_Pgd.a(), 0, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     plc
  * JD-Core Version:    0.7.0.1
  */

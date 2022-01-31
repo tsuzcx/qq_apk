@@ -1,18 +1,24 @@
-import java.util.Comparator;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 class aioe
-  implements Comparator<atza>
+  implements army
 {
-  aioe(aiod paramaiod) {}
+  aioe(aiob paramaiob) {}
   
-  public int a(atza paramatza1, atza paramatza2)
+  public void a()
   {
-    return (int)(paramatza2.a - paramatza1.a);
+    this.a.b();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aioe
  * JD-Core Version:    0.7.0.1
  */

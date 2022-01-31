@@ -1,27 +1,27 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aflp
-  extends akkd
+class aflp
+  extends afpq
 {
-  public aflp(SystemMsgListView paramSystemMsgListView) {}
-  
-  protected void a(boolean paramBoolean, String paramString)
+  aflp(aflj paramaflj)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NewFriendVerification.manager", 2, "ui.onRefreshBlockedEntrance");
-    }
-    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {}
-    while ((!paramBoolean) || (SystemMsgListView.a(this.a) == null)) {
-      return;
-    }
-    SystemMsgListView.a(this.a).c();
+    super(paramaflj, null);
+  }
+  
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afhy(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+  }
+  
+  protected boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aflp
  * JD-Core Version:    0.7.0.1
  */

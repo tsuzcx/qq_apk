@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import dov.com.qq.im.ae.camera.ui.watermark.WatermarkEditView;
 
-public final class bkvc
-  implements Parcelable.Creator<FilterCategoryItem>
+public class bkvc
+  implements bkvb
 {
-  public FilterCategoryItem a(Parcel paramParcel)
+  public bkvc(WatermarkEditView paramWatermarkEditView) {}
+  
+  public void a()
   {
-    return new FilterCategoryItem(paramParcel);
+    WatermarkEditView.a(this.a).setVisibility(8);
   }
   
-  public FilterCategoryItem[] a(int paramInt)
+  public void a(int paramInt, String paramString, EditText paramEditText)
   {
-    return new FilterCategoryItem[paramInt];
+    paramString = paramString.split("-");
+    WatermarkEditView.a(this.a).init(Integer.parseInt(paramString[0]), Integer.parseInt(paramString[1]) - 1, Integer.parseInt(paramString[2]), WatermarkEditView.a(this.a));
+    WatermarkEditView.a(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkvc
  * JD-Core Version:    0.7.0.1
  */

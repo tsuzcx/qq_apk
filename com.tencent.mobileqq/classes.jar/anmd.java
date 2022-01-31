@@ -1,43 +1,21 @@
-import android.content.Intent;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class anmd
-  implements bcsc
+class anmd
+  implements DialogInterface.OnDismissListener
 {
-  public anmd(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
+  anmd(anmb paramanmb) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.msgbox.tab", 2, "BaseMsgBoxActivity, onTabSelected: old=" + paramInt1 + ", cur=" + paramInt2 + ", msgTabIdx=" + this.a.b + ", unReadMsgNum=" + this.a.c);
-    }
-    Intent localIntent;
-    if ((paramInt1 == this.a.b) && (paramInt2 != this.a.b))
-    {
-      localIntent = new Intent();
-      localIntent.putExtra("curIndex", paramInt2);
-      if (!this.a.e) {
-        break label176;
-      }
-    }
-    label176:
-    for (paramInt1 = this.a.c;; paramInt1 = 0)
-    {
-      localIntent.putExtra("unReadMsgNum", paramInt1);
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
-      this.a.overridePendingTransition(2130772211, 2130772211);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.msgbox.tab", 2, "finish");
-      }
-      return;
-    }
+    anmb.a(this.a, false);
+    QLog.d("ark.download.ctrl", 1, "ark.dctrl [showDownloadDialog] onDismiss");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmd
  * JD-Core Version:    0.7.0.1
  */

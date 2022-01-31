@@ -1,46 +1,33 @@
-import android.graphics.Typeface;
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.av.redpacket.ui.RedPacketRollTextView;
-import com.tencent.mobileqq.portal.StrokeTextView;
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
 
 public class lvq
-  implements ViewSwitcher.ViewFactory
+  extends lvn
 {
-  public lvq(RedPacketRollTextView paramRedPacketRollTextView, boolean paramBoolean) {}
+  public boolean a;
+  public String b;
+  public String c;
+  public int f = -1;
+  public int g = -1;
   
-  public View makeView()
+  public lvq(RandomWebProtocol paramRandomWebProtocol) {}
+  
+  void a(String paramString)
   {
-    localStrokeTextView = new StrokeTextView(RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
-    try
+    super.a(paramString);
+    if ((2 == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
     {
-      localStrokeTextView.setLayoutParams(new FrameLayout.LayoutParams(actj.a(42.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()), -1));
-      localStrokeTextView.setTextSize(0, RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
-      localStrokeTextView.setIncludeFontPadding(false);
-      if (this.jdField_a_of_type_Boolean) {}
-      for (String str = "0";; str = "")
-      {
-        localStrokeTextView.setText(str);
-        localStrokeTextView.setStrokeEnable(true);
-        localStrokeTextView.setStrokeColor(-1);
-        localStrokeTextView.setStrokeSize(actj.a(6.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()));
-        localStrokeTextView.setInnerTextColor(-2094274);
-        localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
-        localStrokeTextView.setGravity(17);
-        return localStrokeTextView;
-      }
-      return localStrokeTextView;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      this.f = this.jdField_a_of_type_OrgJsonJSONObject.optInt("ismask", -1);
+      this.b = this.jdField_a_of_type_OrgJsonJSONObject.optString("groupids");
+      this.g = this.jdField_a_of_type_OrgJsonJSONObject.optInt("businessid", -1);
+      this.c = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
+      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_OrgJsonJSONObject.optBoolean("ownerenable", true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lvq
  * JD-Core Version:    0.7.0.1
  */

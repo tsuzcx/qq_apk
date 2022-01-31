@@ -1,43 +1,27 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler.10;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajbq
-  extends ajod
+class ajbq
+  implements View.OnClickListener
 {
-  public ajbq(CmGameSubProcessHandler.10 param10) {}
+  ajbq(ajbm paramajbm) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    if (paramInt == 200)
+    paramView = akty.a();
+    if (paramView != null)
     {
-      Object localObject = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject).inSampleSize = 1;
-      ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
-      ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
-      paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length, (BitmapFactory.Options)localObject);
-      localObject = Bitmap.createBitmap(paramArrayOfByte.getWidth(), paramArrayOfByte.getHeight(), Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      localCanvas.drawBitmap(paramArrayOfByte, 0.0F, 0.0F, null);
-      localCanvas.save();
-      paramArrayOfByte.recycle();
-      if (localObject != null)
-      {
-        this.a.a.a((Bitmap)localObject, 200);
-        ajbo.b(this.a.this$0).put(this.a.b, localObject);
-      }
-      return;
+      paramView.a(ajbm.a(this.a));
+      paramView.a();
+      akty.i();
     }
-    this.a.a.a(null, paramInt);
+    azmj.a(ajbm.a(this.a).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 10, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbq
  * JD-Core Version:    0.7.0.1
  */

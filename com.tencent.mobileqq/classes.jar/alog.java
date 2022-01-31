@@ -1,24 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.5;
-import cooperation.wadl.ipc.WadlParams;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class alog
-  implements DialogInterface.OnClickListener
+  extends awae
 {
-  public alog(ArkAppDownloadModule.5 param5) {}
+  public alog(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "onBatteryChanged updateOnlineStatusItem");
     }
-    axqy.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.a.a, "");
+    FrameHelperActivity localFrameHelperActivity = this.a;
+    if (paramInt > 0) {
+      i = 1;
+    }
+    FrameHelperActivity.a(localFrameHelperActivity, i);
+    this.a.v();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alog
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,51 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.widget.Switch;
 
-public class niy
-  extends URLDrawableDownListener.Adapter
+class niy
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public niy(VideoCoverFragment paramVideoCoverFragment) {}
+  niy(nin paramnin, npo paramnpo, Switch paramSwitch) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-  }
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    while (!(paramView instanceof ImageView)) {
+    if (!this.jdField_a_of_type_Nin.c)
+    {
+      this.jdField_a_of_type_Nin.c = true;
       return;
     }
-    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-    int i = paramURLDrawable.getIntrinsicWidth();
-    int j = paramURLDrawable.getIntrinsicHeight();
-    localLayoutParams.width = (i * actj.a(23.0F, VideoCoverFragment.a(this.a).getResources()) / j);
-    paramView.setLayoutParams(localLayoutParams);
-    ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
-    paramView.requestLayout();
+    if (this.jdField_a_of_type_Npo.f == 1) {
+      this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, paramBoolean);
+    }
+    for (;;)
+    {
+      nin.a(this.jdField_a_of_type_Nin, this.jdField_a_of_type_Npo.a);
+      return;
+      if (this.jdField_a_of_type_Npo.f == 2)
+      {
+        if (paramBoolean) {
+          this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
+        } else {
+          this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, paramBoolean);
+        }
+      }
+      else if (this.jdField_a_of_type_Npo.f == 3)
+      {
+        if (!paramBoolean) {
+          this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
+        } else {
+          this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, paramBoolean);
+        }
+      }
+      else {
+        this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, paramBoolean);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     niy
  * JD-Core Version:    0.7.0.1
  */

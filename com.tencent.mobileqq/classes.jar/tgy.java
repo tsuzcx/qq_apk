@@ -1,32 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Collections;
-import java.util.List;
-
-class tgy
-  extends SimpleObserver<List<tso>>
+final class tgy
+  extends bjoe<tgx, Void>
 {
-  tgy(tgv paramtgv, tgz paramtgz, tff paramtff) {}
-  
-  public void a(List<tso> paramList)
+  protected tgx a(Void paramVoid)
   {
-    super.onNext(paramList);
-    if (this.jdField_a_of_type_Tgz != null) {
-      this.jdField_a_of_type_Tgz.a(this.jdField_a_of_type_Tff, Collections.emptyList());
-    }
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    if (this.jdField_a_of_type_Tgz != null) {
-      this.jdField_a_of_type_Tgz.a(this.jdField_a_of_type_Tff, paramError);
-    }
+    return new tgx();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tgy
  * JD-Core Version:    0.7.0.1
  */

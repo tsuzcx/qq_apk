@@ -1,26 +1,26 @@
 package com.tencent.biz.pubaccount.troopbarassit;
 
-import ahpd;
-import akpb;
+import abol;
+import ajgm;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import sdc;
-import sgg;
+import suv;
+import syb;
 
 public class TroopBarAssistantManager$3
   implements Runnable
 {
-  public TroopBarAssistantManager$3(sdc paramsdc, QQAppInterface paramQQAppInterface) {}
+  public TroopBarAssistantManager$3(suv paramsuv, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    akpb localakpb = this.a.a();
+    abol localabol = this.a.a();
     Object localObject1 = this.a.a();
-    if ((localakpb == null) || (localObject1 == null))
+    if ((localabol == null) || (localObject1 == null))
     {
       if (QLog.isColorLevel()) {
         QLog.w("TroopBarAssistantManager", 2, "clearAllSubscriptionUnreadMsgLite getConversationFacade fail");
@@ -43,12 +43,12 @@ public class TroopBarAssistantManager$3
               break label192;
             }
             localObject1 = this.a.a().b(localTroopBarData.mUin, 1008);
-            if ((localObject1 == null) || (localakpb.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop) <= 0)) {
+            if ((localObject1 == null) || (localabol.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop) <= 0)) {
               continue;
             }
-            int i = sgg.b(this.a, ((MessageRecord)localObject1).frienduin);
-            ahpd.b(this.a, ((MessageRecord)localObject1).frienduin, i);
-            localakpb.a(((MessageRecord)localObject1).frienduin, i, true);
+            int i = syb.b(this.a, ((MessageRecord)localObject1).frienduin);
+            ajgm.b(this.a, ((MessageRecord)localObject1).frienduin, i);
+            localabol.a(((MessageRecord)localObject1).frienduin, i, true);
           }
         }
       }
@@ -58,7 +58,7 @@ public class TroopBarAssistantManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager.3
  * JD-Core Version:    0.7.0.1
  */

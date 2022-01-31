@@ -135,10 +135,10 @@ public class FloatingScreenParams
     Object localObject = BaseApplicationImpl.sApplication.getResources();
     if (localObject != null)
     {
-      this.mScreenLonger = ((Resources)localObject).getDimensionPixelSize(2131298299);
-      this.mSquareLength = ((Resources)localObject).getDimensionPixelSize(2131298301);
-      this.mRoundCorner = ((Resources)localObject).getDimensionPixelSize(2131298300);
-      this.mOuterPadding = ((Resources)localObject).getDimensionPixelSize(2131298302);
+      this.mScreenLonger = ((Resources)localObject).getDimensionPixelSize(2131298325);
+      this.mSquareLength = ((Resources)localObject).getDimensionPixelSize(2131298327);
+      this.mRoundCorner = ((Resources)localObject).getDimensionPixelSize(2131298326);
+      this.mOuterPadding = ((Resources)localObject).getDimensionPixelSize(2131298328);
     }
     this.mWidth = this.mScreenLonger;
     this.mHeight = ((int)(this.mWidth * this.mScreenRatio));

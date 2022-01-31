@@ -1,83 +1,48 @@
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import org.json.JSONObject;
 
-class bbvu
-  extends anqq
+public class bbvu
+  implements bcgo
 {
-  bbvu(bbvt parambbvt) {}
+  public bbvu(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    Object localObject;
-    String str;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.a.key))
+    this.a.o();
+    if ((paramJSONObject != null) && (paramJSONObject.has("retcode")))
     {
-      localObject = paramBundle.getString("cmd");
-      str = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response");
+      paramInt = paramJSONObject.optInt("retcode");
+      if (paramInt == 0)
+      {
+        QQToast.a(this.a.getActivity(), 2131697872, 0).a();
+        paramJSONObject = aekt.a(new Intent(this.a.getActivity(), SplashActivity.class), new int[] { 2 });
+        paramJSONObject.addFlags(268435456);
+        paramJSONObject.putExtra("uin", this.a.b);
+        paramJSONObject.putExtra("uintype", 1);
+        this.a.getActivity().startActivity(paramJSONObject);
+        this.a.getActivity().overridePendingTransition(2130771990, 2130772294);
+      }
     }
-    for (;;)
+    else
     {
-      try
-      {
-        if (TextUtils.equals((CharSequence)localObject, "ipc_video_isinstalled"))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VideoApiPlugin", 2, "video remote response cmd=" + (String)localObject);
-          }
-          boolean bool = paramBundle.getBoolean("isInstalled");
-          this.a.callJs(str, new String[] { String.valueOf(bool) });
-          return;
-        }
-        if (!TextUtils.equals((CharSequence)localObject, "ipc_video_install_plugin")) {
-          break label347;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoApiPlugin", 2, "video remote response cmd=" + (String)localObject);
-        }
-        int i = paramBundle.getInt("status");
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("status", i);
-        switch (i)
-        {
-        case 3: 
-          this.a.callJs(str, new String[] { ((JSONObject)localObject).toString() });
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      ((JSONObject)localObject).put("result", 0);
-      ((JSONObject)localObject).put("progress", 100);
-      ((JSONObject)localObject).put("msg", "install finished");
-      continue;
-      ((JSONObject)localObject).put("result", 1);
-      ((JSONObject)localObject).put("progress", paramBundle.getFloat("progress"));
-      ((JSONObject)localObject).put("msg", "install progress");
-      continue;
-      ((JSONObject)localObject).put("result", paramBundle.getInt("errCode"));
-      ((JSONObject)localObject).put("progress", bbvv.a);
-      ((JSONObject)localObject).put("msg", "install failed");
-      continue;
-      label347:
       return;
     }
+    if (paramInt == 111000)
+    {
+      QQToast.a(this.a.getActivity(), 2131697871, 0).a();
+      return;
+    }
+    QQToast.a(this.a.getActivity(), 2131697931, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbvu
  * JD-Core Version:    0.7.0.1
  */

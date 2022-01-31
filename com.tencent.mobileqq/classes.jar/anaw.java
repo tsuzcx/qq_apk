@@ -1,72 +1,47 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONObject;
-
 public class anaw
 {
-  private HashMap<String, anax> a = new HashMap();
+  public float a;
+  public int a;
+  public String a;
+  public float b = 0.0F;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e = 0.0F;
+  public float f = 1.0F;
+  public float g = 0.0F;
+  public float h = 1.0F;
+  public float i = 0.0F;
   
-  public static anaw a(amph paramamph)
+  public anaw()
   {
-    anaw localanaw = new anaw();
-    if (paramamph != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VerticalNavigationConfBean", 2, "parse taskid->" + paramamph.jdField_a_of_type_Int + " content->" + paramamph.jdField_a_of_type_JavaLangString);
-      }
-    }
-    try
-    {
-      paramamph = new JSONObject(paramamph.jdField_a_of_type_JavaLangString);
-      if (paramamph.has("emoji"))
-      {
-        paramamph = paramamph.optJSONObject("emoji");
-        if (paramamph != null)
-        {
-          anax localanax = new anax();
-          localanax.jdField_a_of_type_Int = paramamph.optInt("switch", 0);
-          localanax.jdField_a_of_type_JavaLangString = paramamph.optString("url", "");
-          localanaw.a.put("emoji", localanax);
-        }
-      }
-    }
-    catch (Exception paramamph)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("VerticalNavigationConfBean", 2, "parse error->" + paramamph.toString());
-    }
-    return localanaw;
-    return localanaw;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
   }
   
-  public String a()
+  public anaw(int paramInt)
   {
-    anax localanax = (anax)this.a.get("emoji");
-    if (localanax != null) {
-      return localanax.jdField_a_of_type_JavaLangString;
-    }
-    return "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public boolean a()
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    anax localanax = (anax)this.a.get("emoji");
-    if (localanax != null) {
-      return localanax.jdField_a_of_type_Int == 1;
-    }
-    return false;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
   }
   
   public String toString()
   {
-    if (this.a != null) {}
-    for (String str = this.a.toString();; str = "null") {
-      return String.format("mConfigData:%s ", new Object[] { str });
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("KeyingParams {keyType: ").append(this.jdField_a_of_type_Int).append(", screenColorR: ").append(this.jdField_a_of_type_Float).append(", screenColorG: ").append(this.b).append(", screenColorB: ").append(this.c).append(", uA: ").append(this.d).append(", uD: ").append(this.e).append(", u_threshold: ").append(this.f).append(", u_clipBlack: ").append(this.g).append(", u_clipWhite: ").append(this.h).append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anaw
  * JD-Core Version:    0.7.0.1
  */

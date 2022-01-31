@@ -1,6 +1,6 @@
 package com.tencent.open.downloadnew;
 
-import bdle;
+import bfkb;
 
 public final class DownloadApi$7
   implements Runnable
@@ -9,7 +9,7 @@ public final class DownloadApi$7
   
   public void run()
   {
-    bdle.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+    bfkb.a().a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 

@@ -1,28 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 class ailw
-  implements View.OnClickListener
+  implements ailu
 {
-  private WeakReference<ails> a;
+  ailw(ailv paramailv) {}
   
-  public ailw(ails paramails)
+  public void a(long paramLong, float paramFloat, String paramString)
   {
-    this.a = new WeakReference(paramails);
+    ailv.a(this.a).put(Long.valueOf(paramLong), Float.valueOf(paramFloat));
+    ailv.a(this.a).a(paramLong, paramFloat, paramString);
   }
   
-  public void onClick(View paramView)
+  public void b(long paramLong)
   {
-    ails localails = (ails)this.a.get();
-    if (localails != null) {
-      localails.onClick(paramView);
-    }
+    QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onDownloadSuccess:" + paramLong);
+    ailv.a(this.a).b(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ailw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class aeev
-  implements adnz
+  implements View.OnClickListener
 {
-  public aeev(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  public aeev(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onUpdate(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 23) {
-      UnlimitedBladeWorks.a(this.a).start();
-    }
+    this.a.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeev
  * JD-Core Version:    0.7.0.1
  */

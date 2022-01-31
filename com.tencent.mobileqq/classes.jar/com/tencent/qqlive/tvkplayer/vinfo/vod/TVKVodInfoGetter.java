@@ -54,7 +54,7 @@ public class TVKVodInfoGetter
     if (paramTVKPlayerVideoInfo.isNeedCharge()) {
       paramInt1 = 1;
     }
-    paramTVKUserInfo = localTVKVInfoRequestParasBuilder.isCharge(paramInt1).ckeyExtraParamsMap(paramTVKPlayerVideoInfo.getProxyExtraMap()).extraParamsMap(paramTVKPlayerVideoInfo.getExtraRequestParamsMap()).format(paramString).loginCookie(paramTVKUserInfo.getLoginCookie()).sdtFrom(TVideoMgr.getVinfoSdtfrom()).requestType(paramInt2).upc(TVideoMgr.mOriginalUpc).platForm(TVideoMgr.getVinfoPlatform()).playerCapacity(TVKVcSystemInfo.getPlayerLevel()).appVer(TVideoMgr.getPlayerVersion()).encryptVer(((Integer)TVKMediaPlayerConfig.PlayerConfig.encrypt_ver.getValue()).intValue()).networkType(TVKVcSystemInfo.getNetWorkType(this.mContext)).wxOpenId(paramTVKUserInfo.getWxOpenID()).guid(TVideoMgr.getStaGuid()).build();
+    paramTVKUserInfo = localTVKVInfoRequestParasBuilder.isCharge(paramInt1).ckeyExtraParamsMap(paramTVKPlayerVideoInfo.getProxyExtraMap()).extraParamsMap(paramTVKPlayerVideoInfo.getExtraRequestParamsMap()).format(paramString).loginCookie(paramTVKUserInfo.getLoginCookie()).sdtFrom(TVideoMgr.getVinfoSdtfrom(paramTVKPlayerVideoInfo.getPlatform())).platForm(paramTVKPlayerVideoInfo.getPlatform()).requestType(paramInt2).upc(TVideoMgr.mOriginalUpc).playerCapacity(TVKVcSystemInfo.getPlayerLevel()).appVer(TVideoMgr.getPlayerVersion()).encryptVer(((Integer)TVKMediaPlayerConfig.PlayerConfig.encrypt_ver.getValue()).intValue()).networkType(TVKVcSystemInfo.getNetWorkType(this.mContext)).wxOpenId(paramTVKUserInfo.getWxOpenID()).guid(TVideoMgr.getStaGuid()).build();
     return new TVKVideoInfoRequest().startRequest(paramTVKUserInfo, new TVKVodInfoGetter.1(this));
   }
   
@@ -65,7 +65,7 @@ public class TVKVodInfoGetter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKVodInfoGetter
  * JD-Core Version:    0.7.0.1
  */

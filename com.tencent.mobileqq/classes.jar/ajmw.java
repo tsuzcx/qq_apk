@@ -1,25 +1,28 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class ajmw
-  implements Comparator<ApolloActionData>
+public class ajmw
+  implements azde
 {
-  ajmw(ajmu paramajmu) {}
+  public ajmw(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void a(Exception paramException)
   {
-    if (paramApolloActionData2.limitStart == paramApolloActionData1.limitStart) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onCameraException]", paramException);
     }
-    if (paramApolloActionData2.limitStart > paramApolloActionData1.limitStart) {
-      return 1;
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
     }
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmw
  * JD-Core Version:    0.7.0.1
  */

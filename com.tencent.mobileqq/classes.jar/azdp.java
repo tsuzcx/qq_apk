@@ -1,40 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class azdp
-  extends BroadcastReceiver
+public class azdp
 {
-  azdp(azdn paramazdn) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("com.tencent.mobileqq.JoinTroopUtil.RET_ACTION".equals(paramIntent.getAction())) {}
-    switch (paramIntent.getIntExtra("ret_action", 1000))
-    {
-    default: 
-      azdn.a(this.a, azdn.a(this.a).troopUin, 2);
-      return;
-    case 1000: 
-      azdn.a(this.a, azdn.a(this.a).troopUin, 2);
-      return;
-    case 1001: 
-      azdn.a(this.a, azdn.a(this.a).troopUin, 2);
-      return;
-    case 1002: 
-      azdn.a(this.a, azdn.a(this.a).troopUin, 2);
-      return;
-    case 1003: 
-      azdn.a(this.a, azdn.a(this.a).troopUin, 1);
-      return;
-    }
-    azdn.a(this.a, azdn.a(this.a).troopUin, 3);
-  }
+  public azda a;
+  public AtomicBoolean a = new AtomicBoolean(false);
+  public azda b;
+  public azda c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azdp
  * JD-Core Version:    0.7.0.1
  */

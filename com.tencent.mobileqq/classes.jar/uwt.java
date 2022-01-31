@@ -1,40 +1,43 @@
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.widget.ARMapHongBaoListView;
 
 class uwt
-  extends ssv
+  extends RecyclerView.OnScrollListener
 {
-  uwt(uwq paramuwq) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  uwt(uwn paramuwn) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
+    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+    if (paramInt == 0)
     {
-      ved.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
-      this.a.a(paramStoryPushMsg.d);
-    }
-    do
-    {
+      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Uwn.jdField_a_of_type_Uvz.d();
+      }
       return;
-      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 18))
-      {
-        ved.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
-        this.a.b(paramStoryPushMsg.d);
-        return;
+    }
+    uwn.a(this.jdField_a_of_type_Uwn);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 > 0) {}
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
+    {
+      if (this.jdField_a_of_type_Uwn.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
+        this.jdField_a_of_type_Uwn.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
       }
-      if (paramStoryPushMsg.a == 17)
-      {
-        ved.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
-        ((tbw)tcz.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
-        return;
-      }
-    } while (paramStoryPushMsg.a != 16);
-    ved.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
-    this.a.b(paramStoryPushMsg.d);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uwt
  * JD-Core Version:    0.7.0.1
  */

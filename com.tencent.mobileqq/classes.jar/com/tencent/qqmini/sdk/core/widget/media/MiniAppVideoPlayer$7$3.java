@@ -3,14 +3,14 @@ package com.tencent.qqmini.sdk.core.widget.media;
 import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import beot;
+import bgow;
 import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
 import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
 
 public class MiniAppVideoPlayer$7$3
   implements Runnable
 {
-  public MiniAppVideoPlayer$7$3(beot parambeot) {}
+  public MiniAppVideoPlayer$7$3(bgow parambgow) {}
   
   public void run()
   {
@@ -50,7 +50,7 @@ public class MiniAppVideoPlayer$7$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.3
  * JD-Core Version:    0.7.0.1
  */

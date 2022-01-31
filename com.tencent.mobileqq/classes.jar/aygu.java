@@ -1,22 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import android.graphics.Bitmap;
+import android.util.Log;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.smtt.sdk.WebView;
 
 class aygu
-  implements DialogInterface.OnClickListener
+  extends nnn
 {
-  aygu(aygs paramaygs) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  aygu(aygt paramaygt, WebViewPluginEngine paramWebViewPluginEngine)
   {
-    if (this.a.a.b == 1) {
-      axqy.b(TeamWorkAuthorizeSettingFragment.a(this.a.a), "dc00898", "", "", "0x8007CFE", "0x8007CFE", 0, 0, "", "", "", "");
+    super(paramWebViewPluginEngine);
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    this.a.onPageFinished(paramWebView, paramString);
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    this.a.onPageStarted(paramWebView, paramString, paramBitmap);
+    super.onPageStarted(paramWebView, paramString, paramBitmap);
+  }
+  
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  {
+    Log.d("KDSearchResultBuilder", "shouldOverrideUrlLoading: setWebViewClient");
+    if (this.a.shouldOverrideUrlLoading(paramWebView, paramString)) {
+      return true;
     }
+    return super.shouldOverrideUrlLoading(paramWebView, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aygu
  * JD-Core Version:    0.7.0.1
  */

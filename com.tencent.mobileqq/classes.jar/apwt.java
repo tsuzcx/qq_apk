@@ -1,35 +1,42 @@
-import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class apwt
+class apwt
+  extends WtloginObserver
 {
-  public long a;
-  public long b;
+  apwt(apwr paramapwr) {}
   
-  public apwt(long paramLong1, long paramLong2)
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
-  }
-  
-  public static apwt a(Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebImpl", 2, "OnCheckDevLockSms ret=" + paramInt);
     }
-    return new apwt(paramBundle.getLong("RPARAM_RECV_SIZE"), paramBundle.getLong("RPARAM_TRANS_SIZE"));
-  }
-  
-  public Bundle a()
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("RPARAM_RECV_SIZE", this.a);
-    localBundle.putLong("RPARAM_TRANS_SIZE", this.b);
-    return localBundle;
+    if (paramInt == 0)
+    {
+      apwr.c(this.a, true);
+      if (apwr.a(this.a) != null)
+      {
+        paramWUserSigInfo = (QQAppInterface)apwr.a(this.a).get();
+        if ((paramWUserSigInfo != null) && (apwu.a().a(paramWUserSigInfo))) {}
+      }
+      else
+      {
+        apwr.a(this.a, false);
+        apwr.b(this.a, false);
+      }
+      return;
+    }
+    apwr.a(this.a, false);
+    apwr.c(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apwt
  * JD-Core Version:    0.7.0.1
  */

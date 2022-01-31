@@ -12,15 +12,15 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pzw;
+import qjr;
 import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.AdReport;
 import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
 
 public class RefreshData
   extends SkinData
 {
-  public List<pzw> adClickReports;
-  public List<pzw> adExposureReports;
+  public List<qjr> adClickReports;
+  public List<qjr> adExposureReports;
   public Long adId;
   public boolean isAD;
   public boolean isShown = true;
@@ -53,9 +53,9 @@ public class RefreshData
         localObject2 = ((JSONArray)localObject1).optJSONObject(i);
         if (localObject2 != null)
         {
-          pzw localpzw = new pzw();
-          localpzw.a = ((JSONObject)localObject2).optString("reportUrl", "");
-          this.adClickReports.add(localpzw);
+          qjr localqjr = new qjr();
+          localqjr.a = ((JSONObject)localObject2).optString("reportUrl", "");
+          this.adClickReports.add(localqjr);
         }
         i += 1;
       }
@@ -70,8 +70,8 @@ public class RefreshData
         localObject1 = paramJSONObject.optJSONObject(i);
         if (localObject1 != null)
         {
-          localObject2 = new pzw();
-          ((pzw)localObject2).a = ((JSONObject)localObject1).optString("reportUrl", "");
+          localObject2 = new qjr();
+          ((qjr)localObject2).a = ((JSONObject)localObject1).optString("reportUrl", "");
           this.adExposureReports.add(localObject2);
         }
         i += 1;
@@ -102,7 +102,7 @@ public class RefreshData
       while (((Iterator)localObject).hasNext())
       {
         oidb_0x5bd.AdReport localAdReport = (oidb_0x5bd.AdReport)((Iterator)localObject).next();
-        this.adClickReports.add(pzw.a(localAdReport));
+        this.adClickReports.add(qjr.a(localAdReport));
       }
       bool = false;
     }
@@ -114,12 +114,12 @@ public class RefreshData
       while (paramRefreshInfo.hasNext())
       {
         localObject = (oidb_0x5bd.AdReport)paramRefreshInfo.next();
-        this.adExposureReports.add(pzw.a((oidb_0x5bd.AdReport)localObject));
+        this.adExposureReports.add(qjr.a((oidb_0x5bd.AdReport)localObject));
       }
     }
   }
   
-  public List<String> getUrls(List<pzw> paramList)
+  public List<String> getUrls(List<qjr> paramList)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       return null;
@@ -127,7 +127,7 @@ public class RefreshData
     ArrayList localArrayList = new ArrayList(paramList.size());
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      localArrayList.add(((pzw)paramList.next()).a);
+      localArrayList.add(((qjr)paramList.next()).a);
     }
     return localArrayList;
   }
@@ -170,7 +170,7 @@ public class RefreshData
       while ((this.adClickReports != null) && (i < this.adClickReports.size()))
       {
         localJSONObject2 = new JSONObject();
-        localJSONObject2.put("reportUrl", ((pzw)this.adClickReports.get(i)).a);
+        localJSONObject2.put("reportUrl", ((qjr)this.adClickReports.get(i)).a);
         localJSONArray.put(localJSONObject2);
         i += 1;
       }
@@ -180,7 +180,7 @@ public class RefreshData
       while ((this.adExposureReports != null) && (i < this.adExposureReports.size()))
       {
         localJSONObject2 = new JSONObject();
-        localJSONObject2.put("reportUrl", ((pzw)this.adExposureReports.get(i)).a);
+        localJSONObject2.put("reportUrl", ((qjr)this.adExposureReports.get(i)).a);
         localJSONArray.put(localJSONObject2);
         i += 1;
       }
@@ -213,7 +213,7 @@ public class RefreshData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.skin.RefreshData
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,10 @@ public final class EnumOpType
   public static final int _eOpTypeLoadFeedsFail = 302;
   public static final int _eOpTypeLoadFeedsSuccess = 301;
   public static final int _eOpTypeOpenH5 = 140;
+  public static final int _ePageTypeFlolowVideo = 21;
+  public static final int _ePageTypeFollowList = 20;
+  public static final int _ePageTypeFollowVideoCommentPage = 22;
+  public static final int _ePageTypeFollowVideoCommentPopupPage = 23;
   public static final int eOpTypeBeforeLoading = 121;
   public static final int eOpTypeBiuChuTaiDu = 111;
   public static final int eOpTypeBlankClick = 136;

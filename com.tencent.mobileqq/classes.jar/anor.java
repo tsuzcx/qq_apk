@@ -1,82 +1,339 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PicMessageExtraData;
+import android.content.Context;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import com.tencent.qphone.base.util.QLog;
 
 public class anor
 {
-  public static void a(Intent paramIntent, auod paramauod)
-  {
-    paramauod.j = paramIntent.getStringExtra("doutuBigMd5");
-    paramauod.d = paramIntent.getLongExtra("doutuBigFileSize", 0L);
-    paramauod.k = paramIntent.getStringExtra("doutuThumbMD5");
-    paramauod.l = paramIntent.getStringExtra("doutuSupplierName");
-  }
+  private int jdField_a_of_type_Int = 2;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private anoz jdField_a_of_type_Anoz;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static void a(aywc paramaywc, ayyy paramayyy)
+  public anor(Context paramContext, int paramInt)
   {
-    if (paramaywc.p)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    try
     {
-      paramayyy.jdField_a_of_type_Long = paramaywc.f;
-      if (paramaywc.n != null) {
-        paramayyy.jdField_a_of_type_ArrayOfByte = bbea.a(paramaywc.n);
-      }
-      paramayyy.e = 2;
-    }
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, auod paramauod)
-  {
-    paramMessageRecord.saveExtInfoToExtStr("doutu_big_md5", paramauod.j);
-    paramMessageRecord.saveExtInfoToExtStr("doutu_big_file_size", String.valueOf(paramauod.d));
-    paramMessageRecord.saveExtInfoToExtStr("doutu_thumb_md5", String.valueOf(paramauod.k));
-    paramMessageRecord.saveExtInfoToExtStr("doutu_supplier_name", paramauod.l);
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, aywc paramaywc, int paramInt)
-  {
-    PicMessageExtraData localPicMessageExtraData = new PicMessageExtraData();
-    if (paramInt == 1044) {}
-    for (paramInt = 3;; paramInt = 4)
-    {
-      localPicMessageExtraData.imageBizType = paramInt;
-      localPicMessageExtraData.doutuSupplier = paramMessageRecord.getExtInfoFromExtStr("doutu_supplier_name");
-      if ((paramMessageRecord instanceof MessageForPic)) {
-        ((MessageForPic)paramMessageRecord).picExtraData = localPicMessageExtraData;
-      }
-      long l = Long.valueOf(paramMessageRecord.getExtInfoFromExtStr("doutu_big_file_size")).longValue();
-      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("doutu_big_md5");
-      if ((l > 0L) && (paramMessageRecord != null) && (paramMessageRecord.length() > 0))
-      {
-        paramaywc.p = true;
-        paramaywc.f = l;
-        paramaywc.n = paramMessageRecord;
-      }
-      if (localPicMessageExtraData.imageBizType != 4) {
-        break label180;
-      }
-      paramMessageRecord = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramMessageRecord instanceof AppInterface))
-      {
-        paramMessageRecord = aezl.a((AppInterface)paramMessageRecord).b();
-        if (!TextUtils.isEmpty(paramMessageRecord)) {
-          break;
-        }
-      }
+      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
       return;
     }
-    localPicMessageExtraData.textSummary = ("[" + paramMessageRecord + "]");
-    return;
-    label180:
-    localPicMessageExtraData.textSummary = BaseApplicationImpl.getApplication().getString(2131691289);
+    catch (Throwable paramContext)
+    {
+      QLog.e("ARSensorManager", 1, "ARSensorManager getSystemService error:" + paramContext.getMessage());
+      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
+    }
+  }
+  
+  public anoz a(int paramInt, SensorManager paramSensorManager, anos paramanos)
+  {
+    if (paramSensorManager == null) {
+      return null;
+    }
+    if (paramInt == 1) {
+      if (0 != 0) {
+        break label515;
+      }
+    }
+    for (;;)
+    {
+      Object localObject7;
+      label89:
+      Object localObject3;
+      try
+      {
+        localObject1 = new anpe(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramanos);
+        localObject7 = localObject1;
+        if (localObject1 != null) {}
+      }
+      catch (OrientationProviderNotFound localOrientationProviderNotFound2)
+      {
+        try
+        {
+          localObject7 = new anpc(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramanos);
+          localObject1 = localObject7;
+          if (localObject7 != null) {}
+        }
+        catch (OrientationProviderNotFound localOrientationProviderNotFound2)
+        {
+          try
+          {
+            Object localObject1 = new anox(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramanos);
+            if (localObject1 != null) {
+              break label485;
+            }
+            paramSensorManager = "null";
+            QLog.d("ARSensorManager", 1, "getProvider:" + paramSensorManager);
+            return localObject1;
+            localOrientationProviderNotFound1 = localOrientationProviderNotFound1;
+            Object localObject2 = null;
+            continue;
+            localOrientationProviderNotFound2 = localOrientationProviderNotFound2;
+            localObject7 = null;
+          }
+          catch (OrientationProviderNotFound paramSensorManager)
+          {
+            localObject3 = null;
+            continue;
+          }
+        }
+      }
+      if (paramInt == 0) {
+        if (0 != 0) {
+          break label509;
+        }
+      }
+      for (;;)
+      {
+        try
+        {
+          localObject7 = new anpb(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramanos);
+          localObject3 = localObject7;
+          if (localObject7 != null) {}
+        }
+        catch (OrientationProviderNotFound localOrientationProviderNotFound5)
+        {
+          try
+          {
+            localObject3 = new anpc(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramanos);
+            localObject7 = localObject3;
+            if (localObject3 != null) {}
+          }
+          catch (OrientationProviderNotFound localOrientationProviderNotFound5)
+          {
+            try
+            {
+              localObject7 = new anpe(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramanos);
+              localObject8 = localObject7;
+              if (localObject7 != null) {}
+            }
+            catch (OrientationProviderNotFound localOrientationProviderNotFound5)
+            {
+              try
+              {
+                for (;;)
+                {
+                  localObject8 = new anow(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramanos);
+                  localObject3 = localObject8;
+                  if (localObject8 != null) {
+                    break;
+                  }
+                  try
+                  {
+                    localObject3 = new anoy(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramanos);
+                  }
+                  catch (OrientationProviderNotFound paramSensorManager)
+                  {
+                    localObject3 = null;
+                  }
+                }
+                break;
+                localOrientationProviderNotFound3 = localOrientationProviderNotFound3;
+                localObject7 = null;
+                continue;
+                localOrientationProviderNotFound4 = localOrientationProviderNotFound4;
+                Object localObject4 = null;
+                continue;
+                localOrientationProviderNotFound5 = localOrientationProviderNotFound5;
+                localObject7 = null;
+              }
+              catch (OrientationProviderNotFound localOrientationProviderNotFound6)
+              {
+                Object localObject8 = null;
+                continue;
+              }
+            }
+          }
+        }
+        if ((paramInt == 2) || (paramInt == 3)) {
+          if (0 != 0) {
+            break label503;
+          }
+        }
+        for (;;)
+        {
+          for (;;)
+          {
+            try
+            {
+              localObject7 = new anpc(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramanos);
+              localObject5 = localObject7;
+              if (localObject7 != null) {}
+            }
+            catch (OrientationProviderNotFound localOrientationProviderNotFound8)
+            {
+              try
+              {
+                localObject5 = new anpe(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramanos);
+                localObject7 = localObject5;
+                if (localObject5 != null) {}
+              }
+              catch (OrientationProviderNotFound localOrientationProviderNotFound8)
+              {
+                try
+                {
+                  for (;;)
+                  {
+                    localObject7 = new anow(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramanos);
+                    Object localObject5 = localObject7;
+                    if (localObject7 != null) {
+                      break;
+                    }
+                    try
+                    {
+                      localObject5 = new anox(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramanos);
+                    }
+                    catch (OrientationProviderNotFound paramSensorManager)
+                    {
+                      localObject5 = null;
+                    }
+                  }
+                  break;
+                  localOrientationProviderNotFound7 = localOrientationProviderNotFound7;
+                  localObject7 = null;
+                  continue;
+                  localOrientationProviderNotFound8 = localOrientationProviderNotFound8;
+                  Object localObject6 = null;
+                }
+                catch (OrientationProviderNotFound localOrientationProviderNotFound9)
+                {
+                  localObject7 = null;
+                  continue;
+                }
+              }
+            }
+            if (((paramInt != 4) && (paramInt != 5)) || (0 != 0)) {
+              break label497;
+            }
+            try
+            {
+              localanpd = new anpd(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramanos);
+            }
+            catch (OrientationProviderNotFound paramSensorManager)
+            {
+              localanpd = null;
+            }
+          }
+          break;
+          label485:
+          paramSensorManager = localanpd.getClass().getSimpleName();
+          break label89;
+          label497:
+          localanpd = null;
+          break;
+          label503:
+          localObject7 = null;
+        }
+        label509:
+        localObject7 = null;
+      }
+      label515:
+      anpd localanpd = null;
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Anoz != null) {
+        this.jdField_a_of_type_Anoz.c();
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return (a(2)) && ((a(1)) || (a(4)));
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {}
+    while (this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(paramInt) == null) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean a(anos paramanos)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Anoz = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidHardwareSensorManager, paramanos);
+      if (this.jdField_a_of_type_Anoz == null) {
+        break label48;
+      }
+      this.jdField_a_of_type_Anoz.b();
+    }
+    label48:
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false) {
+      return this.jdField_a_of_type_Boolean;
+    }
+  }
+  
+  public boolean a(anos paramanos, int paramInt)
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Anoz = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidHardwareSensorManager, paramanos);
+      if (this.jdField_a_of_type_Anoz == null) {
+        break label78;
+      }
+      int i = paramInt;
+      if (paramInt != 2)
+      {
+        i = paramInt;
+        if (paramInt != 1)
+        {
+          i = paramInt;
+          if (paramInt != 0)
+          {
+            i = paramInt;
+            if (paramInt != 3) {
+              i = 2;
+            }
+          }
+        }
+      }
+      this.jdField_a_of_type_Anoz.a(i);
+    }
+    label78:
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false) {
+      return this.jdField_a_of_type_Boolean;
+    }
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
+      return false;
+    }
+    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager;
+    int i;
+    if (this.jdField_a_of_type_Int == 5)
+    {
+      i = 15;
+      localObject = ((SensorManager)localObject).getDefaultSensor(i);
+      if ((this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4) == null) || (localObject == null)) {
+        break label56;
+      }
+    }
+    label56:
+    for (boolean bool = true;; bool = false)
+    {
+      return bool;
+      i = 11;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anor
  * JD-Core Version:    0.7.0.1
  */

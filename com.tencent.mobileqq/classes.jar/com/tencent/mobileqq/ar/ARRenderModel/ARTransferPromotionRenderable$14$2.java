@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import akxy;
-import alal;
-import bfnk;
+import amoo;
+import amrb;
+import bhoe;
 import com.tencent.qphone.base.util.QLog;
 
 class ARTransferPromotionRenderable$14$2
@@ -12,11 +12,11 @@ class ARTransferPromotionRenderable$14$2
   
   public void run()
   {
-    if ((this.a.this$0.a != null) && (alal.a(this.a.this$0) != null) && (alal.a(this.a.this$0).a()))
+    if ((this.a.this$0.a != null) && (amrb.a(this.a.this$0) != null) && (amrb.a(this.a.this$0).a()))
     {
-      long l = alal.a(this.a.this$0).a();
-      if (alal.a(this.a.this$0) != null) {
-        this.a.this$0.a.postDelayed(alal.a(this.a.this$0), 4600L - l);
+      long l = amrb.a(this.a.this$0).a();
+      if (amrb.a(this.a.this$0) != null) {
+        this.a.this$0.a.postDelayed(amrb.a(this.a.this$0), 4600L - l);
       }
       QLog.d("ARTransferPromotionRenderable", 2, "start Post  mRepeatCheckRunnable " + l);
     }
@@ -24,7 +24,7 @@ class ARTransferPromotionRenderable$14$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.14.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,43 @@
-import android.text.style.CharacterStyle;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.troop.utils.TroopNameHelper.GenTroopNameTask;
 
 public class bckp
+  implements Comparable<bckp>
 {
-  public int a;
-  public CharacterStyle a;
   public String a;
-  public int b;
-  public int c;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public bckp(int paramInt1, int paramInt2, int paramInt3, String paramString, CharacterStyle paramCharacterStyle)
+  public bckp(TroopNameHelper.GenTroopNameTask paramGenTroopNameTask) {}
+  
+  public int a(@NonNull bckp parambckp)
   {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidTextStyleCharacterStyle = paramCharacterStyle;
+    int i = -1;
+    if ((this.f != null) && (parambckp.f != null)) {
+      i = this.f.compareTo(parambckp.f);
+    }
+    do
+    {
+      do
+      {
+        return i;
+        if (this.f != null) {
+          break;
+        }
+      } while (parambckp.f == null);
+      return 1;
+    } while (parambckp.f == null);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bckp
  * JD-Core Version:    0.7.0.1
  */

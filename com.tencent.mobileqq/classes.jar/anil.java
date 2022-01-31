@@ -1,40 +1,55 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Comic;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.open.base.BspatchUtil;
+import java.io.File;
 
-public final class anil
-  implements Parcelable.Creator
+class anil
+  implements anio
 {
-  public IPSiteModel.Comic a(Parcel paramParcel)
-  {
-    IPSiteModel.Comic localComic = new IPSiteModel.Comic();
-    localComic.comicType = paramParcel.readInt();
-    localComic.cover = paramParcel.readString();
-    localComic.desc = paramParcel.readString();
-    localComic.id = paramParcel.readString();
-    localComic.jumpUrl = paramParcel.readString();
-    localComic.name = paramParcel.readString();
-    localComic.recommDesc = paramParcel.readString();
-    localComic.typeName = paramParcel.readString();
-    if (localComic.comicRiches == null) {
-      localComic.comicRiches = new ArrayList();
-    }
-    localComic.comicRiches.clear();
-    paramParcel.readList(localComic.comicRiches, IPSiteModel.ComicRich.class.getClassLoader());
-    return localComic;
-  }
+  anil(anid paramanid, anin paramanin1, String paramString1, anin paramanin2, String paramString2, anip paramanip) {}
   
-  public IPSiteModel.Comic[] a(int paramInt)
+  public void a(byte[] paramArrayOfByte)
   {
-    return new IPSiteModel.Comic[paramInt];
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anin.jdField_b_of_type_JavaLangString }));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Anip.a(false);
+      return;
+      if (!anid.b(paramArrayOfByte, this.jdField_a_of_type_Anin.f))
+      {
+        ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, md5 mismatch, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anin.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Anin.f }));
+      }
+      else
+      {
+        String str1 = anid.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Anin.jdField_a_of_type_JavaLangString);
+        if (!new File(str1).isFile())
+        {
+          ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, src path not exist, name=%s, path=s", new Object[] { this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString, str1 }));
+        }
+        else
+        {
+          String str2 = String.format("%s/diff-%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Anin.d });
+          if (!anid.a(paramArrayOfByte, str2))
+          {
+            ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, write diff to file fail, name=%s, path=%s", new Object[] { this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString, str2 }));
+          }
+          else
+          {
+            if (BspatchUtil.a(str1, str2, String.format("%s/%s", new Object[] { this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString }))) {
+              break;
+            }
+            ArkAppCenter.c("ArkApp.Dict.Update", String.format("dictIncrementalUpdate, patch fail, name=%s, diff-md5=%s", new Object[] { this.jdField_a_of_type_Anin.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Anin.f }));
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_Anip.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anil
  * JD-Core Version:    0.7.0.1
  */

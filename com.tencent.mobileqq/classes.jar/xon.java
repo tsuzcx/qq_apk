@@ -1,47 +1,17 @@
-import android.content.Context;
-import java.lang.reflect.Method;
-import mqq.app.IActivityDispatchCallback;
-
-public abstract class xon
-  implements IActivityDispatchCallback
+public class xon
 {
-  public static xon a;
+  public long a;
+  public long b;
   
-  public static void a()
+  public xon(long paramLong1, long paramLong2)
   {
-    try
-    {
-      Method localMethod = Class.forName("com.tencent.mobileqq.screendetect.ScreenShotDetector").getMethod("getInstance", new Class[0]);
-      localMethod.setAccessible(true);
-      a = (xon)localMethod.invoke(null, new Object[0]);
-      return;
-    }
-    catch (Throwable localThrowable) {}
+    this.a = paramLong1;
+    this.b = paramLong2;
   }
-  
-  public static void a(Context paramContext)
-  {
-    xon localxon = a;
-    if (localxon != null) {
-      localxon.c(paramContext);
-    }
-  }
-  
-  public static void b(Context paramContext)
-  {
-    xon localxon = a;
-    if (localxon != null) {
-      localxon.d(paramContext);
-    }
-  }
-  
-  public abstract void c(Context paramContext);
-  
-  public abstract void d(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xon
  * JD-Core Version:    0.7.0.1
  */

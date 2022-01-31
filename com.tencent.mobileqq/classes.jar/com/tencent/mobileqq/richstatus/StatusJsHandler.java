@@ -1,17 +1,16 @@
 package com.tencent.mobileqq.richstatus;
 
-import akdh;
+import aluw;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import arly;
-import aukp;
-import aukq;
-import aweo;
-import awep;
-import bcql;
+import atcm;
+import awbw;
+import awbx;
+import axzr;
+import axzs;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -20,26 +19,27 @@ import com.tencent.mobileqq.mp.mobileqq_mp.FollowRequest;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoRequest;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import java.lang.ref.WeakReference;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
-import nol;
-import nor;
+import nrt;
+import nrz;
 
 public class StatusJsHandler
-  extends arly
+  extends atcm
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
   public AccountDetail a;
   public String a;
   public WeakReference<BaseActivity> a;
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new aweo(this);
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new axzr(this);
   boolean jdField_a_of_type_Boolean = false;
   String jdField_b_of_type_JavaLangString;
   WeakReference<WebView> jdField_b_of_type_JavaLangRefWeakReference;
-  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new awep(this);
+  private BusinessObserver jdField_b_of_type_MqqObserverBusinessObserver = new axzs(this);
   boolean jdField_b_of_type_Boolean = false;
   public String c;
   
@@ -56,11 +56,11 @@ public class StatusJsHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.richstatus.", 2, "sendDetailInfoRequest");
     }
-    NewIntent localNewIntent = new NewIntent(paramBaseActivity, nor.class);
+    NewIntent localNewIntent = new NewIntent(paramBaseActivity, nrz.class);
     localNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
     localGetPublicAccountDetailInfoRequest.version.set(1);
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.3.0,3,4480");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.3.3,3,4515");
     localGetPublicAccountDetailInfoRequest.seqno.set(0);
     try
     {
@@ -84,7 +84,7 @@ public class StatusJsHandler
     if (QLog.isColorLevel()) {
       QLog.d("Q.richstatus.", 2, "follow");
     }
-    NewIntent localNewIntent = new NewIntent(paramBaseActivity, nor.class);
+    NewIntent localNewIntent = new NewIntent(paramBaseActivity, nrz.class);
     localNewIntent.putExtra("cmd", "follow");
     mobileqq_mp.FollowRequest localFollowRequest = new mobileqq_mp.FollowRequest();
     try
@@ -94,7 +94,7 @@ public class StatusJsHandler
       localNewIntent.putExtra("data", localFollowRequest.toByteArray());
       localNewIntent.setObserver(this.jdField_b_of_type_MqqObserverBusinessObserver);
       paramBaseActivity.app.startServlet(localNewIntent);
-      nol.a(paramBaseActivity.app, paramString, 0);
+      nrt.a(paramBaseActivity.app, paramString, 0);
       if (QLog.isColorLevel()) {
         QLog.d("Q.richstatus.", 2, "follow exit");
       }
@@ -112,32 +112,32 @@ public class StatusJsHandler
     if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
       return;
     }
-    bcql.a(localBaseActivity, paramInt, 0).b(localBaseActivity.getTitleBarHeight());
+    QQToast.a(localBaseActivity, paramInt, 0).b(localBaseActivity.getTitleBarHeight());
   }
   
   public void a(BaseActivity paramBaseActivity, AccountDetail paramAccountDetail)
   {
-    aukp localaukp = paramBaseActivity.app.getEntityManagerFactory().createEntityManager();
+    awbw localawbw = paramBaseActivity.app.getEntityManagerFactory().createEntityManager();
     if ((this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.getId() != -1L))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.richstatus.", 2, paramAccountDetail.name);
       }
       this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.clone(paramAccountDetail);
-      if (!localaukp.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail)) {
-        localaukp.a(AccountDetail.class);
+      if (!localawbw.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail)) {
+        localawbw.a(AccountDetail.class);
       }
     }
     for (;;)
     {
-      localaukp.a();
-      paramBaseActivity = (akdh)paramBaseActivity.app.getManager(56);
+      localawbw.a();
+      paramBaseActivity = (aluw)paramBaseActivity.app.getManager(56);
       if (paramBaseActivity != null) {
         paramBaseActivity.a(paramAccountDetail);
       }
       return;
       this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = paramAccountDetail;
-      localaukp.a(paramAccountDetail);
+      localawbw.a(paramAccountDetail);
     }
   }
   
@@ -192,8 +192,8 @@ public class StatusJsHandler
     if (localObject == null) {
       return false;
     }
-    localObject = (akdh)((BaseActivity)localObject).app.getManager(56);
-    return (localObject != null) && (((akdh)localObject).b(paramString) != null);
+    localObject = (aluw)((BaseActivity)localObject).app.getManager(56);
+    return (localObject != null) && (((aluw)localObject).b(paramString) != null);
   }
   
   public void setData(String paramString1, String paramString2)
@@ -213,7 +213,7 @@ public class StatusJsHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusJsHandler
  * JD-Core Version:    0.7.0.1
  */

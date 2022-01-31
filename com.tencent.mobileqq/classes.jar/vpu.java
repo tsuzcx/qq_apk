@@ -1,45 +1,28 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.util.SparseArray;
 
-public class vpu
-  extends vps<vpt>
+public final class vpu
+  extends SparseArray<int[]>
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369540);
-  
-  vpu(vpt paramvpt, @NonNull Context paramContext, ViewGroup paramViewGroup)
+  public vpu()
   {
-    super(paramContext, paramViewGroup);
-  }
-  
-  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return LayoutInflater.from(paramContext).inflate(2131561335, paramViewGroup, false);
-  }
-  
-  public void a()
-  {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-  }
-  
-  public void a(vpt paramvpt, int paramInt)
-  {
-    super.a(paramvpt, paramInt);
-    if (paramvpt != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramvpt.a());
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    put(0, new int[] { 1, 7 });
+    put(1, new int[] { 0, 2 });
+    put(2, new int[] { 0, 3 });
+    put(3, new int[] { 0, 4 });
+    put(4, new int[] { 0, 5 });
+    put(5, new int[] { 0, 6 });
+    put(6, new int[] { 0, 7 });
+    put(7, new int[] { 0, 8 });
+    put(8, new int[] { 0, 9 });
+    put(9, new int[] { 0, 10, 12 });
+    put(10, new int[] { 0, 11, 12 });
+    put(11, new int[] { 0, 9, 12 });
+    put(12, new int[] { 0, 7 });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vpu
  * JD-Core Version:    0.7.0.1
  */

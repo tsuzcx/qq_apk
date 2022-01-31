@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
 import QQService.EVIPSPEC;
-import afcw;
+import ahab;
 import android.database.Cursor;
 import android.text.TextUtils;
-import auko;
-import aulz;
-import aumc;
+import awbv;
+import awdg;
+import awdj;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
 
 public class Friends
-  extends auko
+  extends awbv
   implements Cloneable
 {
   public static final int CLIENT_DEFAULT = 0;
@@ -64,9 +64,9 @@ public class Friends
   public int cNewLoverDiamondFlag;
   public byte cSpecialFlag;
   public String customModel = "";
-  @aulz
+  @awdg
   public String customOnlineStatus;
-  @aulz
+  @awdg
   public int customOnlineStatusType;
   public long datetime;
   public byte detalStatusFlag;
@@ -82,7 +82,6 @@ public class Friends
   public int hollywoodVipInfo;
   public int iBatteryStatus;
   public int iTermType;
-  public int isHideBigClub;
   @Deprecated
   public byte isIphoneOnline;
   @Deprecated
@@ -103,7 +102,7 @@ public class Friends
   public long namePlateOfKingLoginTime;
   public String nameplateCfgInfo;
   public int nameplateVipType;
-  @aulz
+  @awdg
   public int netTypeIconId;
   public int qqVipInfo;
   public String recommReason;
@@ -111,7 +110,7 @@ public class Friends
   public String remark;
   @Deprecated
   public byte[] richBuffer;
-  @aulz
+  @awdg
   @Deprecated
   public RichStatus richStatus;
   @Deprecated
@@ -119,7 +118,16 @@ public class Friends
   public long showLoginClient;
   @Deprecated
   public String signature;
+  public String singerName;
   public String smartRemark;
+  @awdg
+  public int songDuration;
+  public long songEndTime;
+  public String songId;
+  public String songName;
+  @awdg
+  public int songPauseRemainTime;
+  public int songSourceType;
   @Deprecated
   public byte sqqOnLineState;
   @Deprecated
@@ -127,13 +135,13 @@ public class Friends
   @Deprecated
   public byte status = 10;
   public String strMasterUin = "";
-  @aulz
+  @awdg
   public String strTermDesc;
   public int superQqInfo;
   public int superVipInfo;
   public int superVipTemplateId;
   public long uExtOnlineStatus;
-  @aumc
+  @awdj
   public String uin;
   
   public static boolean isValidUin(long paramLong)
@@ -207,7 +215,6 @@ public class Friends
     this.bigClubTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("bigClubTemplateId"));
     this.nameplateVipType = paramCursor.getInt(paramCursor.getColumnIndex("nameplateVipType"));
     this.grayNameplateFlag = paramCursor.getInt(paramCursor.getColumnIndex("grayNameplateFlag"));
-    this.isHideBigClub = paramCursor.getInt(paramCursor.getColumnIndex("isHideBigClub"));
     this.cNewLoverDiamondFlag = paramCursor.getInt(paramCursor.getColumnIndex("cNewLoverDiamondFlag"));
     this.medalsInfo = paramCursor.getString(paramCursor.getColumnIndex("medalsInfo"));
     this.relationIconFlag = paramCursor.getInt(paramCursor.getColumnIndex("relationIconFlag"));
@@ -286,7 +293,7 @@ public class Friends
   public int getNetWorkType()
   {
     int j = 2;
-    afcw localafcw = afcw.a();
+    ahab localahab = ahab.a();
     int i;
     if (this.eNetwork == 0)
     {
@@ -297,9 +304,9 @@ public class Friends
       {
         return i;
         i = j;
-      } while (1 != localafcw.a(this.iTermType, 1));
+      } while (1 != localahab.a(this.iTermType, 1));
     }
-    if (1 != localafcw.a(this.iTermType, 1)) {
+    if (1 != localahab.a(this.iTermType, 1)) {
       i = j;
     }
     switch (this.netTypeIconId)

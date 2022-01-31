@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.view;
 
-import afsx;
+import ahqp;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -20,7 +20,7 @@ public class IndexBar
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = -1;
-  private afsx jdField_a_of_type_Afsx;
+  private ahqp jdField_a_of_type_Ahqp;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private boolean jdField_a_of_type_Boolean;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
@@ -84,10 +84,10 @@ public class IndexBar
   {
     this.jdField_b_of_type_Int = paramContext.getResources().getColor(17170444);
     this.jdField_c_of_type_Int = paramContext.getResources().getColor(17170444);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDimensionPixelSize(2131297062);
-    this.jdField_b_of_type_Float = paramContext.getResources().getDimensionPixelSize(2131297063);
-    this.jdField_c_of_type_Float = paramContext.getResources().getDimension(2131297059);
-    this.jdField_d_of_type_Float = paramContext.getResources().getDimension(2131297061);
+    this.jdField_a_of_type_Float = paramContext.getResources().getDimensionPixelSize(2131297079);
+    this.jdField_b_of_type_Float = paramContext.getResources().getDimensionPixelSize(2131297080);
+    this.jdField_c_of_type_Float = paramContext.getResources().getDimension(2131297076);
+    this.jdField_d_of_type_Float = paramContext.getResources().getDimension(2131297078);
     if (paramAttributeSet != null)
     {
       paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.IndexBar);
@@ -187,8 +187,8 @@ public class IndexBar
     {
       return bool;
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Afsx != null) {
-        this.jdField_a_of_type_Afsx.c(false);
+      if (this.jdField_a_of_type_Ahqp != null) {
+        this.jdField_a_of_type_Ahqp.c(false);
       }
       invalidate();
       return true;
@@ -197,22 +197,22 @@ public class IndexBar
         if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (i >= 0) && (i < this.jdField_a_of_type_ArrayOfJavaLangString.length))
         {
           this.jdField_a_of_type_Int = i;
-          if (this.jdField_a_of_type_Afsx != null)
+          if (this.jdField_a_of_type_Ahqp != null)
           {
             Rect localRect = new Rect();
             this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int], 0, this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int].length(), localRect);
             k = this.jdField_a_of_type_ArrayOfJavaLangString.length;
             f1 = this.e / k * (this.jdField_a_of_type_Int + 1);
             float f2 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int]) / 2.0F;
-            this.jdField_a_of_type_Afsx.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], j, f1 - f2);
+            this.jdField_a_of_type_Ahqp.a(this.jdField_a_of_type_ArrayOfJavaLangString[i], j, f1 - f2);
           }
         }
         invalidate();
       }
     } while (paramMotionEvent.getAction() != 0);
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Afsx != null) {
-      this.jdField_a_of_type_Afsx.c(true);
+    if (this.jdField_a_of_type_Ahqp != null) {
+      this.jdField_a_of_type_Ahqp.c(true);
     }
     invalidate();
     return true;
@@ -231,14 +231,14 @@ public class IndexBar
     invalidate();
   }
   
-  public void setOnIndexBarTouchListener(afsx paramafsx)
+  public void setOnIndexBarTouchListener(ahqp paramahqp)
   {
-    this.jdField_a_of_type_Afsx = paramafsx;
+    this.jdField_a_of_type_Ahqp = paramahqp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.view.IndexBar
  * JD-Core Version:    0.7.0.1
  */

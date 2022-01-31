@@ -18,8 +18,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import com.tencent.widget.pull2refresh.RecyclerViewCompat;
-import woz;
-import wpc;
+import ydp;
+import yds;
 
 public class NestScrollRecyclerView
   extends RecyclerViewCompat
@@ -80,15 +80,15 @@ public class NestScrollRecyclerView
   
   private boolean a()
   {
-    if (!(getAdapter() instanceof wpc)) {
+    if (!(getAdapter() instanceof yds)) {
       return false;
     }
-    woz localwoz = ((wpc)getAdapter()).a(1);
-    if (localwoz == null) {
+    ydp localydp = ((yds)getAdapter()).a(1);
+    if (localydp == null) {
       return true;
     }
     int i = a(getLayoutManager());
-    if (localwoz.c(0) > i) {}
+    if (localydp.c(0) > i) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -140,22 +140,9 @@ public class NestScrollRecyclerView
           break;
         }
       }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        if (i < 0)
-        {
-          bool1 = bool2;
-          if (!canScrollVertically(1)) {
-            break;
-          }
-        }
-        if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.canScrollVertically(-1)) {
-            break;
-          }
-        }
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Boolean) {
+        break;
       }
     } while ((Math.abs(j) <= this.d) || (Math.abs(i) <= Math.abs(j)));
     return super.onInterceptTouchEvent(paramMotionEvent);
@@ -220,7 +207,7 @@ public class NestScrollRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.component.base.NestScrollRecyclerView
  * JD-Core Version:    0.7.0.1
  */

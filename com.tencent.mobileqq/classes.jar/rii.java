@@ -1,29 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
 
-public class rii
-  implements ogo
+class rii
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rii(FastWebActivity paramFastWebActivity) {}
+  rii(rig paramrig, LinearLayout.LayoutParams paramLayoutParams, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void a(long paramLong)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (FastWebActivity.a(this.a) != null)
+    this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams.bottomMargin = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (!this.jdField_a_of_type_Boolean)
     {
-      FastWebActivity.a(this.a).b = paramLong;
-      if (FastWebActivity.a(this.a).b <= 0L)
-      {
-        FastWebActivity.a(this.a).b = 0L;
-        this.a.e();
+      if (!this.b) {
+        break label63;
       }
-      FastWebActivity.a(this.a).a(this.a, FastWebActivity.a(this.a), FastWebActivity.a(this.a));
+      rig.a(this.jdField_a_of_type_Rig).w.setVisibility(0);
+    }
+    for (;;)
+    {
+      rig.a(this.jdField_a_of_type_Rig).u.setLayoutParams(this.jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams);
+      return;
+      label63:
+      rig.a(this.jdField_a_of_type_Rig).v.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rii
  * JD-Core Version:    0.7.0.1
  */

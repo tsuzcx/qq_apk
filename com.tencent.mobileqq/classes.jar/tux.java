@@ -1,30 +1,20 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class tux
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  tux(tut paramtut) {}
+  tux(tuw paramtuw) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = tut.a(this.a).a();
-    if (!bbfj.g(paramView))
-    {
-      bcql.a(paramView, 1, 2131694608, 0).a();
-      return;
-    }
-    ved.d("Q.qqstory.playernew.StoryPlayerImpl", "updateData error, retry, requestGroupData, currentInfo = %s", new Object[] { tut.a(this.a) });
-    tut.a(this.a).setVisibility(0);
-    tut.a(this.a).removeCallbacks(tut.a(this.a));
-    tut.a(this.a).postDelayed(tut.a(this.a), 500L);
+    this.a.jdField_a_of_type_Tuu.a.a().b(tuk.a(this.a.jdField_a_of_type_Tuu.a), this.a.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment);
+    tuk.b(this.a.jdField_a_of_type_Tuu.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tux
  * JD-Core Version:    0.7.0.1
  */

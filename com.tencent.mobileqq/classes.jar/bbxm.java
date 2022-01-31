@@ -1,10 +1,20 @@
-public abstract interface bbxm
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
+
+public class bbxm
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  public bbxm(ReciteFragment paramReciteFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    ReciteFragment.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbxm
  * JD-Core Version:    0.7.0.1
  */

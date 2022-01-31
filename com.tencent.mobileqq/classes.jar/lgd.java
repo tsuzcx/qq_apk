@@ -1,51 +1,34 @@
+import com.tencent.av.VideoSocketReconnectReporter.1;
+import com.tencent.av.VideoSocketReconnectReporter.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+
 public class lgd
-  extends lej
 {
-  protected int ac;
-  protected long l;
-  
-  public long b()
+  public static void a()
   {
-    return this.l;
+    int i = mqg.a().o;
+    int j = ndk.a(BaseApplication.getContext());
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoSocketReconnectReporter", 2, String.format("reportSocketReconRequest policyType=%s netType=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
+    }
+    ThreadManager.post(new VideoSocketReconnectReporter.1(i, j), 5, null, false);
   }
   
-  public void d(int paramInt)
+  public static void a(long paramLong)
   {
-    this.ac = paramInt;
-  }
-  
-  public void d(long paramLong)
-  {
-    this.l = paramLong;
-  }
-  
-  public int e()
-  {
-    return this.ac;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (lgd)paramObject;
-    } while (this.l == paramObject.l);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return (int)(this.l ^ this.l >>> 32);
+    int i = mqg.a().o;
+    int j = ndk.a(BaseApplication.getContext());
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoSocketReconnectReporter", 2, String.format("reportSocketReconResult policyType=%s netType=%s timeCost=%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(paramLong) }));
+    }
+    ThreadManager.post(new VideoSocketReconnectReporter.2(i, j, paramLong), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lgd
  * JD-Core Version:    0.7.0.1
  */

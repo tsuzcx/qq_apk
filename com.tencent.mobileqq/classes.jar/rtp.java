@@ -1,12 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-
-public abstract interface rtp
+class rtp
+  extends pdi
 {
-  public abstract void a(SelectPositionModule.PositionData paramPositionData);
+  rtp(rto paramrto, String paramString)
+  {
+    super(paramString);
+  }
+  
+  public void a(pdc parampdc)
+  {
+    parampdc.g();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rtp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rtk
-  implements View.OnClickListener
+  extends pdi
 {
-  public rtk(ReadInJoyScrollViewSwitcher paramReadInJoyScrollViewSwitcher, rtn paramrtn) {}
-  
-  public void onClick(View paramView)
+  public rtk(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyScrollViewSwitcher.a.a(this.jdField_a_of_type_Rtn);
-    }
+    super(paramString);
+  }
+  
+  public void a(pdc parampdc)
+  {
+    parampdc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rtk
  * JD-Core Version:    0.7.0.1
  */

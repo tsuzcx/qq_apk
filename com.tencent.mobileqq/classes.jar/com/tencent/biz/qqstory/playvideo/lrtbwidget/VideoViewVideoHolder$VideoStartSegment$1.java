@@ -2,8 +2,8 @@ package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import ucz;
-import ved;
+import vrr;
+import wsv;
 
 class VideoViewVideoHolder$VideoStartSegment$1
   implements Runnable
@@ -15,14 +15,14 @@ class VideoViewVideoHolder$VideoStartSegment$1
     if (this.a.isCanceled()) {
       return;
     }
-    ved.d(this.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, mVideoView.start()");
-    this.a.this$0.jdField_a_of_type_Ucz.b();
+    wsv.d(this.a.this$0.jdField_a_of_type_JavaLangString, "VideoStartSegment, mVideoView.start()");
+    this.a.this$0.jdField_a_of_type_Vrr.b();
     ThreadManager.getUIHandler().post(new VideoViewVideoHolder.VideoStartSegment.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.VideoStartSegment.1
  * JD-Core Version:    0.7.0.1
  */

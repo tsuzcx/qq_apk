@@ -1,27 +1,46 @@
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.app.Activity;
+import android.view.View;
 
-@TargetApi(11)
 public class bkdb
 {
-  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, bkde parambkde)
+  public static void a(Activity paramActivity, View paramView, bkdc parambkdc, bkdd parambkdd)
   {
-    return a(ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2 }), parambkde, paramLong);
-  }
-  
-  private static ValueAnimator a(ValueAnimator paramValueAnimator, bkde parambkde, long paramLong)
-  {
-    paramValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    paramValueAnimator.addUpdateListener(new bkdc(parambkde));
-    paramValueAnimator.addListener(new bkdd(parambkde, paramValueAnimator));
-    paramValueAnimator.setDuration(paramLong);
-    return paramValueAnimator;
+    if ((paramActivity == null) || (paramView == null) || (parambkdc == null) || (parambkdd == null)) {}
+    int i;
+    int j;
+    int m;
+    int i1;
+    int i2;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (parambkdd.isShowing());
+        paramActivity = new int[2];
+        paramView.getLocationOnScreen(paramActivity);
+        i = paramActivity[0] + parambkdc.a() + parambkdc.c() / 2;
+        j = paramActivity[1] + parambkdc.b() + parambkdc.d() / 2;
+        int k = bdkf.b();
+        m = parambkdd.a();
+        int n = parambkdc.c() / 4;
+        i1 = parambkdc.c() / 4;
+        i2 = parambkdd.b();
+        if (k - j - n < m) {
+          break;
+        }
+      } while (!parambkdd.a(i, j + parambkdc.c() / 4));
+      parambkdd.b();
+      return;
+    } while ((j - i1 - i2 < m) || (!parambkdd.a(i, j - m - parambkdc.c() / 4)));
+    parambkdd.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkdb
  * JD-Core Version:    0.7.0.1
  */

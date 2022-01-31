@@ -8,16 +8,16 @@ import com.tencent.biz.qqstory.storyHome.qqstorylist.view.VideoListLayout;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 import com.tribe.async.dispatch.Dispatcher;
 import java.util.List;
-import stb;
-import tun;
-import vap;
-import vba;
-import ved;
+import uht;
+import vjf;
+import wph;
+import wps;
+import wsv;
 
 public class FeedSegment$17
   implements Runnable
 {
-  public FeedSegment$17(vba paramvba, List paramList, VideoListLayout paramVideoListLayout, String paramString) {}
+  public FeedSegment$17(wps paramwps, List paramList, VideoListLayout paramVideoListLayout, String paramString) {}
   
   public void run()
   {
@@ -25,8 +25,8 @@ public class FeedSegment$17
     if (this.jdField_a_of_type_JavaUtilList.size() == 1)
     {
       localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewVideoListLayout.a();
-      ved.a("Q.qqstory.home:FeedSegment", "broadcast close animation %s", this.jdField_a_of_type_JavaLangString);
-      stb.a().dispatch(new tun(new AnimationParam((View)localObject1), this.jdField_a_of_type_JavaLangString));
+      wsv.a("Q.qqstory.home:FeedSegment", "broadcast close animation %s", this.jdField_a_of_type_JavaLangString);
+      uht.a().dispatch(new vjf(new AnimationParam((View)localObject1), this.jdField_a_of_type_JavaLangString));
     }
     for (;;)
     {
@@ -39,16 +39,16 @@ public class FeedSegment$17
         {
           View localView = ((StoryHomeHorizontalListView)localObject1).getChildAt(i);
           Object localObject2 = localView.getTag();
-          if ((localObject2 instanceof vap))
+          if ((localObject2 instanceof wph))
           {
-            localObject2 = (vap)localObject2;
-            if (((vap)localObject2).b < this.jdField_a_of_type_JavaUtilList.size())
+            localObject2 = (wph)localObject2;
+            if (((wph)localObject2).b < this.jdField_a_of_type_JavaUtilList.size())
             {
-              localObject2 = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(((vap)localObject2).b);
+              localObject2 = (StoryVideoItem)this.jdField_a_of_type_JavaUtilList.get(((wph)localObject2).b);
               if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((StoryVideoItem)localObject2).mVid))
               {
-                ved.a("Q.qqstory.home:FeedSegment", "broadcast close animation %s", this.jdField_a_of_type_JavaLangString);
-                stb.a().dispatch(new tun(new AnimationParam(localView), this.jdField_a_of_type_JavaLangString));
+                wsv.a("Q.qqstory.home:FeedSegment", "broadcast close animation %s", this.jdField_a_of_type_JavaLangString);
+                uht.a().dispatch(new vjf(new AnimationParam(localView), this.jdField_a_of_type_JavaLangString));
                 return;
               }
             }
@@ -61,7 +61,7 @@ public class FeedSegment$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.17
  * JD-Core Version:    0.7.0.1
  */

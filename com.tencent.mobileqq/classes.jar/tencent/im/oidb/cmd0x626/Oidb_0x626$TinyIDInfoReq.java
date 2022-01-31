@@ -13,7 +13,7 @@ public final class Oidb_0x626$TinyIDInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x626.Oidb_0x626.TinyIDInfoReq
  * JD-Core Version:    0.7.0.1
  */

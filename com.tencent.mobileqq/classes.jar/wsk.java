@@ -1,19 +1,23 @@
-final class wsk
-  implements bfpj
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class wsk
+  implements View.OnClickListener
 {
-  wsk(wsn paramwsn, bfpc parambfpc) {}
+  wsk(wsj paramwsj) {}
   
-  public void onDismiss()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Wsn != null) {
-      this.jdField_a_of_type_Wsn.a(false);
+    wsj.a(this.a, false);
+    this.a.notifyDataSetChanged();
+    if (wsj.a(this.a) != null) {
+      wsj.a(this.a).f();
     }
-    this.jdField_a_of_type_Bfpc.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsk
  * JD-Core Version:    0.7.0.1
  */

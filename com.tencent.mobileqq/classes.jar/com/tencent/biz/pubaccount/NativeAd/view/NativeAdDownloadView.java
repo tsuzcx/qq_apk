@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.NativeAd.view;
 
-import actj;
-import ajya;
+import aekt;
+import alpo;
 import android.content.Context;
 import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.Drawable;
@@ -14,9 +14,11 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import nmh;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyHeaderAdDownloadView.SimpleRoundProgress;
+import npd;
+import odp;
 import org.json.JSONObject;
-import sgt;
+import syo;
 
 public class NativeAdDownloadView
   extends RelativeLayout
@@ -26,6 +28,7 @@ public class NativeAdDownloadView
   private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ReadInjoyHeaderAdDownloadView.SimpleRoundProgress jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress;
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   
   public NativeAdDownloadView(Context paramContext)
@@ -54,25 +57,25 @@ public class NativeAdDownloadView
     }
     if (this.jdField_a_of_type_AndroidWidgetProgressBar == null)
     {
-      inflate(getContext(), 2131559797, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371327));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378294));
+      inflate(getContext(), 2131559892, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371642));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378875));
     }
-    int j = nmh.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("width"), 82);
-    int i = nmh.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("minWidth"), 82);
+    int j = npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("width"), 82);
+    int i = npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("minWidth"), 82);
     int k;
     int m;
     label145:
     float f1;
     if (j < i)
     {
-      k = nmh.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("height"), 20);
-      m = nmh.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("maxHeight"), 22);
+      k = npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("height"), 20);
+      m = npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("maxHeight"), 22);
       if (k >= 18) {
         break label757;
       }
       j = 18;
-      f1 = nmh.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("corner"), 2.0F);
+      f1 = npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("corner"), 2.0F);
       if (f1 >= 2.0F) {
         break label775;
       }
@@ -85,23 +88,23 @@ public class NativeAdDownloadView
     {
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetProgressBar.getLayoutParams();
-      localLayoutParams.width = actj.a(i, this.jdField_a_of_type_AndroidContentContext.getResources());
-      localLayoutParams.height = actj.a(j, this.jdField_a_of_type_AndroidContentContext.getResources());
+      localLayoutParams.width = aekt.a(i, this.jdField_a_of_type_AndroidContentContext.getResources());
+      localLayoutParams.height = aekt.a(j, this.jdField_a_of_type_AndroidContentContext.getResources());
       localLayoutParams.addRule(13);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setLayoutParams(localLayoutParams);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(100);
       Object localObject1 = new GradientDrawable();
-      ((GradientDrawable)localObject1).setCornerRadius(actj.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((GradientDrawable)localObject1).setColor(nmh.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("progressBg"), "#F2F2F2"));
+      ((GradientDrawable)localObject1).setCornerRadius(aekt.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((GradientDrawable)localObject1).setColor(npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("progressBg"), "#F2F2F2"));
       localObject1 = new ClipDrawable((Drawable)localObject1, 3, 1);
       ((ClipDrawable)localObject1).setLevel(10000);
       Object localObject2 = new GradientDrawable();
-      ((GradientDrawable)localObject2).setCornerRadius(actj.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      ((GradientDrawable)localObject2).setColor(nmh.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("secondaryProgressBg"), "#F2F2F2"));
+      ((GradientDrawable)localObject2).setCornerRadius(aekt.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      ((GradientDrawable)localObject2).setColor(npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("secondaryProgressBg"), "#F2F2F2"));
       localObject2 = new ClipDrawable((Drawable)localObject2, 3, 1);
       GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setCornerRadius(actj.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources()));
-      localGradientDrawable.setColor(nmh.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("progressColor"), "#12B7F5"));
+      localGradientDrawable.setCornerRadius(aekt.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localGradientDrawable.setColor(npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("progressColor"), "#12B7F5"));
       localObject1 = new LayerDrawable(new Drawable[] { localObject1, localObject2, new ClipDrawable(localGradientDrawable, 3, 1) });
       ((LayerDrawable)localObject1).setId(0, 16908288);
       ((LayerDrawable)localObject1).setId(1, 16908303);
@@ -109,8 +112,8 @@ public class NativeAdDownloadView
       this.jdField_a_of_type_AndroidWidgetProgressBar.setProgressDrawable((Drawable)localObject1);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(nmh.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("textColor"), "#ffffff"));
-      j = nmh.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("textSize"), 12);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("textColor"), "#ffffff"));
+      j = npd.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("textSize"), 12);
       float f3;
       if (j < 10)
       {
@@ -123,7 +126,7 @@ public class NativeAdDownloadView
         if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
           break;
         }
-        f3 = nmh.a((String)localObject2, 0.0F);
+        f3 = npd.a((String)localObject2, 0.0F);
         if (f3 <= 2.0F) {
           break label806;
         }
@@ -131,10 +134,10 @@ public class NativeAdDownloadView
       for (;;)
       {
         localObject2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-        ((RelativeLayout.LayoutParams)localObject2).width = (localLayoutParams.width + actj.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources()) * 2);
-        ((RelativeLayout.LayoutParams)localObject2).height = (localLayoutParams.height + actj.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources()) * 2);
+        ((RelativeLayout.LayoutParams)localObject2).width = (localLayoutParams.width + aekt.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources()) * 2);
+        ((RelativeLayout.LayoutParams)localObject2).height = (localLayoutParams.height + aekt.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources()) * 2);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        sgt.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, actj.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources()), nmh.a((String)localObject1, "#12B7F5"), actj.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        syo.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, aekt.a(f1, this.jdField_a_of_type_AndroidContentContext.getResources()), npd.a((String)localObject1, "#12B7F5"), aekt.a(f2, this.jdField_a_of_type_AndroidContentContext.getResources()));
         return;
         i = j;
         if (j <= 100) {
@@ -168,8 +171,20 @@ public class NativeAdDownloadView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    inflate(getContext(), 2131559789, this);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131371325));
+    inflate(getContext(), 2131559883, this);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131371640));
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress == null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress = new ReadInjoyHeaderAdDownloadView.SimpleRoundProgress(getContext());
+      odp.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(aekt.a(25.0F, getContext().getResources()), aekt.a(25.0F, getContext().getResources()));
+      localLayoutParams.rightMargin = aekt.a(10.0F, getContext().getResources());
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, localLayoutParams);
+    }
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -180,17 +195,32 @@ public class NativeAdDownloadView
         this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt2);
       }
       if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131707074));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131707446));
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress != null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setPaused(true);
       }
       return;
     }
     setProgress(paramInt2);
   }
   
+  public void setBtnText(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    }
+  }
+  
   public void setProgress(int paramInt)
   {
     if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
       this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setPauseWithoutInvalidate(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.setProgress(paramInt);
     }
     setText(paramInt);
   }
@@ -200,7 +230,7 @@ public class NativeAdDownloadView
     this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
     if (paramJSONObject != null)
     {
-      this.jdField_a_of_type_Int = nmh.a(paramJSONObject.optString("style"), 1);
+      this.jdField_a_of_type_Int = npd.a(paramJSONObject.optString("style"), 1);
       setStyle(this.jdField_a_of_type_Int);
     }
   }
@@ -211,8 +241,11 @@ public class NativeAdDownloadView
     {
     default: 
       return;
+    case 1: 
+      a();
+      return;
     }
-    a();
+    b();
   }
   
   public void setText(int paramInt)
@@ -222,16 +255,13 @@ public class NativeAdDownloadView
     {
     default: 
       return;
-    case 1: 
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131707072) + paramInt + "%");
-      return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131707076));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131707444) + paramInt + "%");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.NativeAdDownloadView
  * JD-Core Version:    0.7.0.1
  */

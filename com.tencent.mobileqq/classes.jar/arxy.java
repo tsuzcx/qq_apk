@@ -1,26 +1,25 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class arxy
   implements View.OnClickListener
 {
-  arxy(arxt paramarxt, arxj paramarxj) {}
+  arxy(arxx paramarxx) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Arxt.jdField_a_of_type_Arxj.a()) {}
-    while (paramView.isSelected()) {
+    if (this.a.a == null) {
       return;
     }
-    this.jdField_a_of_type_Arxt.a(paramView);
-    this.jdField_a_of_type_Arxt.jdField_a_of_type_Int = 3;
-    arxj.a(this.jdField_a_of_type_Arxt.jdField_a_of_type_Arxj, Integer.valueOf(3));
-    axqy.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 1, 0, "0", "0", "0", "");
+    this.a.a.hideSoftInputFromWindow();
+    arxx.a(this.a, arxx.a(this.a).uniseq);
+    this.a.D();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arxy
  * JD-Core Version:    0.7.0.1
  */

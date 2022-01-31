@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import actj;
-import ahvt;
-import ahvu;
+import aekt;
+import ajnd;
+import ajne;
 import android.animation.ValueAnimator;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
-import axlk;
-import ved;
+import azgq;
+import wsv;
 
 public class NewFlowCameraActivity$RunnableUpdateThumb
   implements Runnable
@@ -27,32 +27,32 @@ public class NewFlowCameraActivity$RunnableUpdateThumb
   {
     if ((NewFlowCameraActivity.a(this.this$0) == null) || (NewFlowCameraActivity.b(this.this$0) == null) || (NewFlowCameraActivity.a(this.this$0) == null))
     {
-      ved.e("PTV.NewFlowCameraActivity", "RunnableUpdateThumb error. mFragmentAnimThumbView == null or mFragmentThumbView == null or mFragmentNumView == null.");
+      wsv.e("PTV.NewFlowCameraActivity", "RunnableUpdateThumb error. mFragmentAnimThumbView == null or mFragmentThumbView == null or mFragmentNumView == null.");
       return;
     }
     NewFlowCameraActivity.a(this.this$0).setImageBitmap(this.a);
     NewFlowCameraActivity.a(this.this$0).setVisibility(0);
     NewFlowCameraActivity.b(this.this$0).setVisibility(8);
-    int i = axlk.a;
-    int j = axlk.a(this.this$0.getApplicationContext());
-    int k = actj.a(47.0F, this.this$0.getResources());
-    int m = actj.a(75.0F, this.this$0.getResources());
-    int n = actj.a(12.0F, this.this$0.getResources());
-    int i1 = actj.a(20.0F, this.this$0.getResources());
-    ved.c("PTV.NewFlowCameraActivity", "startScaleAnim. sWidth:" + i + " sHeight:" + j + " dWidth:" + k + " dHeight:" + m + " sMarginLeft:" + 0 + " sMarginBottom:" + 0 + " dMarginLeft:" + n + " dMarginBottom:" + i1);
+    int i = azgq.a;
+    int j = azgq.a(this.this$0.getApplicationContext());
+    int k = aekt.a(47.0F, this.this$0.getResources());
+    int m = aekt.a(75.0F, this.this$0.getResources());
+    int n = aekt.a(12.0F, this.this$0.getResources());
+    int i1 = aekt.a(20.0F, this.this$0.getResources());
+    wsv.c("PTV.NewFlowCameraActivity", "startScaleAnim. sWidth:" + i + " sHeight:" + j + " dWidth:" + k + " dHeight:" + m + " sMarginLeft:" + 0 + " sMarginBottom:" + 0 + " dMarginLeft:" + n + " dMarginBottom:" + i1);
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     localValueAnimator.setDuration(300L);
     localValueAnimator.setInterpolator(new LinearInterpolator());
-    localValueAnimator.addUpdateListener(new ahvt(this, k, i, m, j, n, i1));
-    localValueAnimator.addListener(new ahvu(this));
+    localValueAnimator.addUpdateListener(new ajnd(this, k, i, m, j, n, i1));
+    localValueAnimator.addListener(new ajne(this));
     localValueAnimator.start();
   }
   
   public void run()
   {
-    if (!this.this$0.k)
+    if (!this.this$0.j)
     {
-      ved.e("PTV.NewFlowCameraActivity", "RunnableUpdateThumb error. enableMultiFragment = %s.", new Object[] { Boolean.valueOf(this.this$0.k) });
+      wsv.e("PTV.NewFlowCameraActivity", "RunnableUpdateThumb error. enableMultiFragment = %s.", new Object[] { Boolean.valueOf(this.this$0.j) });
       return;
     }
     a();
@@ -60,7 +60,7 @@ public class NewFlowCameraActivity$RunnableUpdateThumb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb
  * JD-Core Version:    0.7.0.1
  */

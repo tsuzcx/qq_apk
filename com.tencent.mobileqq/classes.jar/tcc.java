@@ -1,36 +1,44 @@
-import com.tencent.biz.qqstory.database.LiveVideoEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class tcc
-  extends ssh
+  implements bibd
 {
-  public int a;
-  public long a;
-  public LiveVideoEntry a;
-  public String a;
-  public List<StoryVideoItem> a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
+  public tcc(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public tcc()
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    tlo.b("WSRecommendFragment", "endOfRefresh");
+    this.a.a.d();
   }
   
-  public String toString()
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
   {
-    return "PlayerVideoListEvent{context='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", label='" + this.jdField_c_of_type_JavaLangString + '\'' + ", topicId=" + this.jdField_a_of_type_Long + ", mStoryVideoItems=" + this.jdField_a_of_type_JavaUtilList + ", totalTime=" + this.jdField_b_of_type_Long + ", videoCount=" + this.jdField_a_of_type_Int + ", isFromCache=" + this.jdField_a_of_type_Boolean + ", isEnd=" + this.jdField_b_of_type_Boolean + ", interactStatus=" + this.jdField_c_of_type_Boolean + ", liveVideoInfo=" + this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLiveVideoEntry + '}';
+    tlo.b("WSRecommendFragment", "startLoadMore");
+    ((tjl)this.a.b()).a(false, false, "");
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    tlo.b("WSRecommendFragment", "startTopRefresh");
+    if (WSRecommendFragment.a(this.a)) {
+      WSRecommendFragment.a(this.a, false);
+    }
+    do
+    {
+      return;
+      if (!WSRecommendFragment.b(this.a)) {
+        WSRecommendFragment.b(this.a, true);
+      }
+      WSRecommendFragment.a(this.a, System.currentTimeMillis());
+      ((tjl)this.a.b()).a(true, false, "");
+    } while (WSRecommendFragment.c(this.a));
+    ((tjl)this.a.b()).a("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tcc
  * JD-Core Version:    0.7.0.1
  */

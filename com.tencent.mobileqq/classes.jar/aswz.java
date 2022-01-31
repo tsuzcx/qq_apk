@@ -1,262 +1,96 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.intervideo.huayang.MonitorConfig.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import org.json.JSONObject;
+
 public class aswz
 {
-  private static final byte[] a = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47 };
-  private static final byte[] b = new byte[''];
+  public static Map<String, aswz> a;
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
   
   static
   {
-    int i = 0;
-    while (i < 128)
-    {
-      b[i] = -1;
-      i += 1;
-    }
-    i = 65;
-    while (i <= 90)
-    {
-      b[i] = ((byte)(i - 65));
-      i += 1;
-    }
-    i = 97;
-    while (i <= 122)
-    {
-      b[i] = ((byte)(i - 97 + 26));
-      i += 1;
-    }
-    i = 48;
-    while (i <= 57)
-    {
-      b[i] = ((byte)(i - 48 + 52));
-      i += 1;
-    }
-    b[43] = 62;
-    b[47] = 63;
+    jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  public static String a(String paramString)
+  public static void a(Context paramContext, String paramString)
   {
-    if (paramString != null) {}
-    for (;;)
-    {
-      try
-      {
-        paramString = new String(a(paramString.getBytes("UTF-8")), "UTF-8");
-        return paramString;
-      }
-      catch (Exception paramString)
-      {
-        return null;
-      }
-      paramString = null;
-    }
-  }
-  
-  private static boolean a(byte paramByte)
-  {
-    if (paramByte == 61) {}
+    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null) {}
     do
     {
-      return true;
-      if ((paramByte < 0) || (paramByte >= 128)) {
-        return false;
-      }
-    } while (b[paramByte] != -1);
-    return false;
+      return;
+      paramContext = paramContext.getApplicationContext().getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).getString("pre_monitor" + paramString, null);
+    } while (paramContext == null);
+    a(paramString, paramContext);
   }
   
-  public static byte[] a(String paramString)
+  public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    int i = 0;
-    if (paramString == null) {
-      return null;
+    if ((jdField_a_of_type_JavaUtilMap.get(paramString1) != null) || (TextUtils.isEmpty(paramString2))) {
+      return;
     }
-    String str = b(paramString);
-    if (str.charAt(str.length() - 2) == '=') {
-      paramString = new byte[(str.length() / 4 - 1) * 3 + 1];
-    }
-    for (;;)
-    {
-      j = 0;
-      while (j < str.length() - 4)
-      {
-        k = b[str.charAt(j)];
-        m = b[str.charAt(j + 1)];
-        int n = b[str.charAt(j + 2)];
-        int i1 = b[str.charAt(j + 3)];
-        paramString[i] = ((byte)(k << 2 | m >> 4));
-        paramString[(i + 1)] = ((byte)(m << 4 | n >> 2));
-        paramString[(i + 2)] = ((byte)(n << 6 | i1));
-        j += 4;
-        i += 3;
-      }
-      if (str.charAt(str.length() - 1) == '=') {
-        paramString = new byte[(str.length() / 4 - 1) * 3 + 2];
-      } else {
-        paramString = new byte[str.length() / 4 * 3];
-      }
-    }
-    if (str.charAt(str.length() - 2) == '=')
-    {
-      i = b[str.charAt(str.length() - 4)];
-      j = b[str.charAt(str.length() - 3)];
-      paramString[(paramString.length - 1)] = ((byte)(i << 2 | j >> 4));
-      return paramString;
-    }
-    if (str.charAt(str.length() - 1) == '=')
-    {
-      i = b[str.charAt(str.length() - 4)];
-      j = b[str.charAt(str.length() - 3)];
-      k = b[str.charAt(str.length() - 2)];
-      paramString[(paramString.length - 2)] = ((byte)(i << 2 | j >> 4));
-      paramString[(paramString.length - 1)] = ((byte)(j << 4 | k >> 2));
-      return paramString;
-    }
-    i = b[str.charAt(str.length() - 4)];
-    int j = b[str.charAt(str.length() - 3)];
-    int k = b[str.charAt(str.length() - 2)];
-    int m = b[str.charAt(str.length() - 1)];
-    paramString[(paramString.length - 3)] = ((byte)(i << 2 | j >> 4));
-    paramString[(paramString.length - 2)] = ((byte)(j << 4 | k >> 2));
-    paramString[(paramString.length - 1)] = ((byte)(k << 6 | m));
-    return paramString;
+    paramContext.getApplicationContext().getSharedPreferences("pre_huayang_plugin_new_start_mode", 4).edit().putString("pre_monitor" + paramString1, paramString2).commit();
+    a(paramString1, paramString2);
   }
   
-  public static byte[] a(byte[] paramArrayOfByte)
+  private static void a(String paramString1, String paramString2)
   {
-    int i = 0;
-    int k = paramArrayOfByte.length % 3;
-    if (k == 0) {}
-    for (byte[] arrayOfByte = new byte[paramArrayOfByte.length * 4 / 3];; arrayOfByte = new byte[(paramArrayOfByte.length / 3 + 1) * 4])
+    try
     {
-      int m = paramArrayOfByte.length;
-      j = 0;
-      while (j < m - k)
-      {
-        int n = paramArrayOfByte[j] & 0xFF;
-        int i1 = paramArrayOfByte[(j + 1)] & 0xFF;
-        int i2 = paramArrayOfByte[(j + 2)] & 0xFF;
-        arrayOfByte[i] = a[(n >>> 2 & 0x3F)];
-        arrayOfByte[(i + 1)] = a[((n << 4 | i1 >>> 4) & 0x3F)];
-        arrayOfByte[(i + 2)] = a[((i1 << 2 | i2 >>> 6) & 0x3F)];
-        arrayOfByte[(i + 3)] = a[(i2 & 0x3F)];
-        j += 3;
-        i += 4;
+      paramString2 = new JSONObject(paramString2);
+      aswz localaswz = new aswz();
+      localaswz.jdField_a_of_type_Int = paramString2.optInt("startupId");
+      localaswz.b = paramString2.optInt("downloadSucId");
+      localaswz.c = paramString2.optInt("downloadFailId");
+      localaswz.d = paramString2.optInt("loadSucId");
+      localaswz.e = paramString2.optInt("loadFailId");
+      localaswz.f = paramString2.optInt("startSucId");
+      localaswz.g = paramString2.optInt("firstUserId");
+      localaswz.h = paramString2.optInt("exitId");
+      jdField_a_of_type_JavaUtilMap.put(paramString1, localaswz);
+      if (QLog.isColorLevel()) {
+        QLog.d("MonitorConfig", 2, paramString1 + localaswz);
       }
+      return;
     }
-    switch (k)
+    catch (Throwable paramString1)
     {
-    case 0: 
-    default: 
-      return arrayOfByte;
-    case 1: 
-      i = paramArrayOfByte[(paramArrayOfByte.length - 1)] & 0xFF;
-      arrayOfByte[(arrayOfByte.length - 4)] = a[(i >>> 2 & 0x3F)];
-      arrayOfByte[(arrayOfByte.length - 3)] = a[(i << 4 & 0x3F)];
-      arrayOfByte[(arrayOfByte.length - 2)] = 61;
-      arrayOfByte[(arrayOfByte.length - 1)] = 61;
-      return arrayOfByte;
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MonitorConfig", 2, "pareMonitorConfig exception :" + paramString1);
     }
-    i = paramArrayOfByte[(paramArrayOfByte.length - 2)] & 0xFF;
-    int j = paramArrayOfByte[(paramArrayOfByte.length - 1)] & 0xFF;
-    arrayOfByte[(arrayOfByte.length - 4)] = a[(i >>> 2 & 0x3F)];
-    arrayOfByte[(arrayOfByte.length - 3)] = a[((i << 4 | j >>> 4) & 0x3F)];
-    arrayOfByte[(arrayOfByte.length - 2)] = a[(j << 2 & 0x3F)];
-    arrayOfByte[(arrayOfByte.length - 1)] = 61;
-    return arrayOfByte;
   }
   
-  private static String b(String paramString)
+  public static void b(Context paramContext, String paramString)
   {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int j = paramString.length();
-    int i = 0;
-    while (i < j)
+    if (jdField_a_of_type_JavaUtilMap.get(paramString) != null)
     {
-      if (a((byte)paramString.charAt(i))) {
-        localStringBuffer.append(paramString.charAt(i));
-      }
-      i += 1;
+      aswy.b(String.valueOf(((aswz)jdField_a_of_type_JavaUtilMap.get(paramString)).jdField_a_of_type_Int));
+      return;
     }
-    return localStringBuffer.toString();
-  }
-  
-  public static byte[] b(byte[] paramArrayOfByte)
-  {
-    int i = 0;
-    byte[] arrayOfByte = c(paramArrayOfByte);
-    if (arrayOfByte[(arrayOfByte.length - 2)] == 61) {
-      paramArrayOfByte = new byte[(arrayOfByte.length / 4 - 1) * 3 + 1];
+    if (QLog.isColorLevel()) {
+      QLog.d("MonitorConfig", 2, "没有找到匹配的monitor离线配置文件，重新拉取一次");
     }
-    for (;;)
-    {
-      j = 0;
-      while (j < arrayOfByte.length - 4)
-      {
-        k = b[arrayOfByte[j]];
-        m = b[arrayOfByte[(j + 1)]];
-        int n = b[arrayOfByte[(j + 2)]];
-        int i1 = b[arrayOfByte[(j + 3)]];
-        paramArrayOfByte[i] = ((byte)(k << 2 | m >> 4));
-        paramArrayOfByte[(i + 1)] = ((byte)(m << 4 | n >> 2));
-        paramArrayOfByte[(i + 2)] = ((byte)(n << 6 | i1));
-        j += 4;
-        i += 3;
-      }
-      if (arrayOfByte[(arrayOfByte.length - 1)] == 61) {
-        paramArrayOfByte = new byte[(arrayOfByte.length / 4 - 1) * 3 + 2];
-      } else {
-        paramArrayOfByte = new byte[arrayOfByte.length / 4 * 3];
-      }
-    }
-    if (arrayOfByte[(arrayOfByte.length - 2)] == 61)
-    {
-      i = b[arrayOfByte[(arrayOfByte.length - 4)]];
-      j = b[arrayOfByte[(arrayOfByte.length - 3)]];
-      paramArrayOfByte[(paramArrayOfByte.length - 1)] = ((byte)(i << 2 | j >> 4));
-      return paramArrayOfByte;
-    }
-    if (arrayOfByte[(arrayOfByte.length - 1)] == 61)
-    {
-      i = b[arrayOfByte[(arrayOfByte.length - 4)]];
-      j = b[arrayOfByte[(arrayOfByte.length - 3)]];
-      k = b[arrayOfByte[(arrayOfByte.length - 2)]];
-      paramArrayOfByte[(paramArrayOfByte.length - 2)] = ((byte)(i << 2 | j >> 4));
-      paramArrayOfByte[(paramArrayOfByte.length - 1)] = ((byte)(j << 4 | k >> 2));
-      return paramArrayOfByte;
-    }
-    i = b[arrayOfByte[(arrayOfByte.length - 4)]];
-    int j = b[arrayOfByte[(arrayOfByte.length - 3)]];
-    int k = b[arrayOfByte[(arrayOfByte.length - 2)]];
-    int m = b[arrayOfByte[(arrayOfByte.length - 1)]];
-    paramArrayOfByte[(paramArrayOfByte.length - 3)] = ((byte)(i << 2 | j >> 4));
-    paramArrayOfByte[(paramArrayOfByte.length - 2)] = ((byte)(j << 4 | k >> 2));
-    paramArrayOfByte[(paramArrayOfByte.length - 1)] = ((byte)(k << 6 | m));
-    return paramArrayOfByte;
-  }
-  
-  private static byte[] c(byte[] paramArrayOfByte)
-  {
-    byte[] arrayOfByte = new byte[paramArrayOfByte.length];
-    int i = 0;
-    int k;
-    for (int j = 0; i < paramArrayOfByte.length; j = k)
-    {
-      k = j;
-      if (a(paramArrayOfByte[i]))
-      {
-        arrayOfByte[j] = paramArrayOfByte[i];
-        k = j + 1;
-      }
-      i += 1;
-    }
-    paramArrayOfByte = new byte[j];
-    System.arraycopy(arrayOfByte, 0, paramArrayOfByte, 0, j);
-    return paramArrayOfByte;
+    aswy.b("3235982");
+    new Handler(Looper.getMainLooper()).postDelayed(new MonitorConfig.1(paramContext, paramString), 1500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aswz
  * JD-Core Version:    0.7.0.1
  */

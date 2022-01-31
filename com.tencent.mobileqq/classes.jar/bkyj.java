@@ -1,103 +1,116 @@
-import android.opengl.GLES20;
-import android.opengl.Matrix;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import java.nio.FloatBuffer;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.TextView;
+import java.util.ArrayList;
 
 public class bkyj
-  extends GPUBaseFilter
+  extends RecyclerView.Adapter<bkyl>
 {
-  private float a;
-  protected FloatBuffer a;
-  private float b;
-  protected FloatBuffer b;
-  private FloatBuffer c;
+  private int jdField_a_of_type_Int = -1;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+  private bkxy jdField_a_of_type_Bkxy;
+  private ArrayList<bkxu> jdField_a_of_type_JavaUtilArrayList;
   
-  public bkyj()
+  public bkyj(Context paramContext, bkxy parambkxy)
   {
-    super("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nvarying vec2 vTextureCoord;\nattribute vec4 aTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", "precision mediump float;\n\nvarying vec2 vTextureCoord;\nuniform vec4 a_color;\n\nuniform float widthShadowRegion;\n\nuniform float heightShadowRegion;\n\nvoid main() {\n    float x = abs(vTextureCoord.x-0.5);\n    float y = abs(vTextureCoord.y-0.5);\n    float mx = 1.0 - (1.0-(0.5-x)/widthShadowRegion)*step(0.5-widthShadowRegion,x);\n    float my = 1.0 - (1.0-(0.5-y)/heightShadowRegion)*step(0.5-heightShadowRegion,y);\n    gl_FragColor = a_color;\n    gl_FragColor.a = gl_FragColor.a*mx*my;\n}\n");
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bkxy = parambkxy;
+    a(this.jdField_a_of_type_Bkxy.a());
+    a(this.jdField_a_of_type_Bkxy.a());
   }
   
-  public void a(float paramFloat1, float paramFloat2)
+  private void a(RecyclerView paramRecyclerView)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  private void a(ArrayList<bkxu> paramArrayList)
   {
-    this.c = GlUtil.createFloatBuffer(new float[] { paramFloat1, paramFloat2, paramFloat3, paramFloat4 });
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
-  public void a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  public bkyl a(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    checkGlError("onDrawFrame start");
-    int j = getProgram();
-    float[] arrayOfFloat = paramArrayOfFloat1;
-    if (paramArrayOfFloat1 == null)
-    {
-      arrayOfFloat = new float[16];
-      Matrix.setIdentityM(arrayOfFloat, 0);
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = paramViewGroup.getContext();
     }
-    paramArrayOfFloat1 = paramArrayOfFloat2;
-    if (paramArrayOfFloat2 == null)
-    {
-      paramArrayOfFloat1 = new float[16];
-      Matrix.setIdentityM(paramArrayOfFloat1, 0);
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558546, paramViewGroup, false);
+    if (paramInt != 0) {
+      paramViewGroup.setVisibility(4);
     }
-    GLES20.glEnable(3042);
-    GLES20.glBlendFunc(770, 771);
-    GLES20.glUseProgram(j);
-    checkGlError("glUseProgram");
-    int k = GLES20.glGetAttribLocation(j, "aPosition");
-    checkLocation(k, "aPosition");
-    int m = GLES20.glGetAttribLocation(j, "aTextureCoord");
-    checkLocation(m, "aTextureCoord");
-    int i = GLES20.glGetUniformLocation(j, "uMVPMatrix");
-    checkLocation(i, "uMVPMatrix");
-    int n = GLES20.glGetUniformLocation(j, "uTextureMatrix");
-    checkLocation(n, "uTextureMatrix");
-    GLES20.glVertexAttribPointer(k, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioFloatBuffer);
-    checkGlError("glVertexAttribPointer aPosition");
-    GLES20.glEnableVertexAttribArray(k);
-    checkGlError("glEnableVertexAttribArray mPositionHandle");
-    GLES20.glVertexAttribPointer(m, 2, 5126, false, 8, this.jdField_b_of_type_JavaNioFloatBuffer);
-    checkGlError("glVertexAttribPointer mTextureHandle");
-    GLES20.glEnableVertexAttribArray(m);
-    checkGlError("glEnableVertexAttribArray mTextureHandle");
-    GLES20.glUniformMatrix4fv(i, 1, false, paramArrayOfFloat1, 0);
-    GLES20.glUniformMatrix4fv(n, 1, false, arrayOfFloat, 0);
-    k = GLES20.glGetUniformLocation(j, "a_color");
-    checkLocation(i, "a_color");
-    GLES20.glUniform4fv(k, 1, this.c);
-    k = GLES20.glGetUniformLocation(j, "widthShadowRegion");
-    checkLocation(i, "widthShadowRegion");
-    GLES20.glUniform1f(k, this.jdField_a_of_type_Float);
-    j = GLES20.glGetUniformLocation(j, "heightShadowRegion");
-    checkLocation(i, "heightShadowRegion");
-    GLES20.glUniform1f(j, this.jdField_b_of_type_Float);
-    GLES20.glActiveTexture(33984);
-    onDrawTexture();
-    GLES20.glDrawArrays(5, 0, 4);
-    checkGlError("glDrawArrays");
-    GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(this.mTextureType, 0);
-    GLES20.glDisable(3042);
+    return new bkyl(paramViewGroup);
   }
   
-  public void onInitialized()
+  public void a()
   {
-    super.onInitialized();
-    this.jdField_a_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F });
-    this.jdField_b_of_type_JavaNioFloatBuffer = GlUtil.createFloatBuffer(new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F });
-    this.c = GlUtil.createFloatBuffer(new float[] { 1.0F, 1.0F, 1.0F, 1.0F });
+    bkyl localbkyl = (bkyl)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.findViewHolderForLayoutPosition(this.jdField_a_of_type_Int);
+    if (localbkyl != null) {
+      localbkyl.a(false);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Int >= 0) {
+        ((bkxu)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int - 1)).a(false);
+      }
+      this.jdField_a_of_type_Int = -1;
+      return;
+      if (this.jdField_a_of_type_Int >= 0) {
+        notifyItemChanged(this.jdField_a_of_type_Int);
+      }
+    }
+  }
+  
+  public void a(bkyl parambkyl, int paramInt)
+  {
+    if (parambkyl.getLayoutPosition() == 0)
+    {
+      localObject = new FrameLayout.LayoutParams(bcwh.a(this.jdField_a_of_type_AndroidContentContext, 33.0F), bcwh.a(this.jdField_a_of_type_AndroidContentContext, 33.0F));
+      ((FrameLayout.LayoutParams)localObject).setMargins(0, 0, bcwh.a(this.jdField_a_of_type_AndroidContentContext, 51.0F), 0);
+      parambkyl.itemView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      return;
+    }
+    Object localObject = ((bkxu)this.jdField_a_of_type_JavaUtilArrayList.get(parambkyl.getLayoutPosition() - 1)).a;
+    parambkyl.a.setText((CharSequence)localObject);
+    if (this.jdField_a_of_type_Int == parambkyl.getLayoutPosition()) {
+      parambkyl.a(true);
+    }
+    for (;;)
+    {
+      parambkyl.itemView.setOnClickListener(new bkyk(this, parambkyl, (String)localObject));
+      return;
+      parambkyl.a(false);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size() + 1;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (paramInt != 0) {
+      return 0;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkyj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,20 @@
-public abstract interface arrp
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+
+public class arrp
+  implements army
 {
-  public abstract void a();
+  public arrp(SendBottomBar paramSendBottomBar) {}
   
-  public abstract void a(boolean paramBoolean);
+  public void a()
+  {
+    SendBottomBar.c(this.a);
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arrp
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile.dns;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import ayxg;
+import bavf;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
@@ -13,14 +13,14 @@ import java.util.Map;
 public class InnerDns$4
   implements Runnable
 {
-  public InnerDns$4(ayxg paramayxg) {}
+  public InnerDns$4(bavf parambavf) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("InnerDns", 1, "syncAddressData called, mServerProcName=" + ayxg.a(this.this$0) + ", mConnected=" + ayxg.a(this.this$0));
+      QLog.i("InnerDns", 1, "syncAddressData called, mServerProcName=" + bavf.a(this.this$0) + ", mConnected=" + bavf.a(this.this$0));
     }
-    if (ayxg.a(this.this$0)) {
+    if (bavf.a(this.this$0)) {
       try
       {
         Object localObject1 = new Bundle();
@@ -31,18 +31,18 @@ public class InnerDns$4
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
             return;
           }
-          localObject1 = ayxg.a((String)localObject1);
+          localObject1 = bavf.a((String)localObject1);
           if (localObject1 == null) {
             return;
           }
           try
           {
-            ayxg.a(this.this$0, new HashMap((Map)localObject1));
+            bavf.a(this.this$0, new HashMap((Map)localObject1));
             return;
           }
           finally {}
         }
-        QLog.e("InnerDns", 1, "syncAddressData fail, mServerProcName=" + ayxg.a(this.this$0));
+        QLog.e("InnerDns", 1, "syncAddressData fail, mServerProcName=" + bavf.a(this.this$0));
       }
       catch (Throwable localThrowable)
       {
@@ -54,7 +54,7 @@ public class InnerDns$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.dns.InnerDns.4
  * JD-Core Version:    0.7.0.1
  */

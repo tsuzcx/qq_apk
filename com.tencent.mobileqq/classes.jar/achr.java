@@ -1,33 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.pb.troop.bindgame.GCBindGroup.GCBindGroupSsoServerRsp;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistory;
+import mqq.os.MqqHandler;
 
 public class achr
-  extends mxj
+  extends alsi
 {
-  public achr(TroopInfoActivity paramTroopInfoActivity) {}
+  public achr(ChatHistory paramChatHistory) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void b(boolean paramBoolean)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    this.a.r();
+    if (!paramBoolean)
     {
-      paramBundle = new GCBindGroup.GCBindGroupSsoServerRsp();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      this.a.a(paramBundle);
+      Message localMessage = this.a.a.obtainMessage(5);
+      this.a.a(localMessage);
+    }
+  }
+  
+  protected void c(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      localMessage = this.a.a.obtainMessage(3);
+      this.a.a(localMessage);
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.e("Q.troopinfo", 1, "parse game bind status failed");
-    }
+    Message localMessage = this.a.a.obtainMessage(2);
+    this.a.a(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achr
  * JD-Core Version:    0.7.0.1
  */

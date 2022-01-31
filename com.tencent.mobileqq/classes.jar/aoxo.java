@@ -1,53 +1,119 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-
-class aoxo
-  extends aoxv
+public abstract class aoxo<DATA, CONFIG extends aoyb>
+  extends aoxh<DATA, CONFIG>
 {
-  protected long a;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  protected String a;
-  private long b;
-  protected String b;
+  private float[] a;
+  private float d;
+  private float e = -1.0F;
+  private float f;
   
-  aoxo(aowx paramaowx, MessageRecord paramMessageRecord)
+  public aoxo(aoxq paramaoxq)
   {
-    super(paramaowx);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
-    paramaowx = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramaowx);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
+    super(paramaoxq);
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aoxt paramaoxt)
+  public float a()
   {
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "2");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
-    String str1 = apgt.a(apug.d(this.jdField_b_of_type_JavaLangString));
-    String str2 = apgt.a(apug.a(this.jdField_b_of_type_JavaLangString));
-    this.jdField_a_of_type_Long = apug.a(this.jdField_b_of_type_JavaLangString);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Long + "");
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardMd5", str1);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSha", str2);
-    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardDeadTime", "0");
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start DiscUploadTaskExcuter:" + this.jdField_a_of_type_JavaLangString);
+    return -this.f;
+  }
+  
+  protected float a(long paramLong)
+  {
+    long l = this.jdField_a_of_type_Long;
+    return f() - (float)(paramLong - l) * this.f;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
+  {
+    if (!a(paramLong1))
+    {
+      aozj.c("BaseDanmaku", "onLayout, Y = " + paramFloat2 + ", danmaku = " + toString());
+      this.d = a(paramLong2);
+      if (!c())
+      {
+        this.e = paramFloat2;
+        a(true);
+      }
+      return;
     }
-    aowx.a(this.jdField_a_of_type_Aowx).a().a(str1, str2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramString, aowx.a(this.jdField_a_of_type_Aowx).getCurrentAccountUin(), new aoxp(this, paramaoxt, str2));
+    a(false);
+  }
+  
+  public void a(long paramLong)
+  {
+    this.d = a(paramLong);
+  }
+  
+  public float[] a(long paramLong)
+  {
+    if (!b()) {
+      return null;
+    }
+    float f1 = a(paramLong);
+    if (this.jdField_a_of_type_ArrayOfFloat == null) {
+      this.jdField_a_of_type_ArrayOfFloat = new float[4];
+    }
+    this.jdField_a_of_type_ArrayOfFloat[0] = (f1 - aoxq.a().b());
+    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
+    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float + this.c);
+    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
+    return this.jdField_a_of_type_ArrayOfFloat;
+  }
+  
+  public float b()
+  {
+    return this.d;
+  }
+  
+  public float[] b(long paramLong)
+  {
+    if (!b()) {
+      return null;
+    }
+    float f1 = a(paramLong);
+    if (this.jdField_a_of_type_ArrayOfFloat == null) {
+      this.jdField_a_of_type_ArrayOfFloat = new float[4];
+    }
+    this.jdField_a_of_type_ArrayOfFloat[0] = f1;
+    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
+    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float);
+    this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
+    return this.jdField_a_of_type_ArrayOfFloat;
+  }
+  
+  public float c()
+  {
+    return this.e;
+  }
+  
+  public float d()
+  {
+    return this.d + this.jdField_a_of_type_Float;
+  }
+  
+  public float e()
+  {
+    return this.e + this.b;
+  }
+  
+  public void g()
+  {
+    super.g();
+    this.f = ((int)(f() + this.jdField_a_of_type_Float) / (float)this.jdField_a_of_type_Aoyz.a());
+  }
+  
+  public void g(float paramFloat)
+  {
+    this.d = paramFloat;
+  }
+  
+  public void h(float paramFloat)
+  {
+    this.e = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoxo
  * JD-Core Version:    0.7.0.1
  */

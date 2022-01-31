@@ -1,73 +1,38 @@
-import android.os.CountDownTimer;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-
 class ahgz
-  extends CountDownTimer
+  extends bhxd
 {
-  ahgz(ahgw paramahgw, long paramLong1, long paramLong2)
+  ahgz(ahgy paramahgy, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    super(paramLong1, paramLong2);
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void onFinish()
+  public void a(int paramInt, Object paramObject, bhxc[] paramArrayOfbhxc)
   {
-    try
+    paramInt = 1;
+    if ((paramArrayOfbhxc == null) || (paramArrayOfbhxc.length <= 0)) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("SpringHbCountDownDialog", 2, "startCountDown-->onFinish mCurrentTime:" + NetConnInfoCenter.getServerTimeMillis());
-      }
-      if ((BaseActivity.sTopActivity != null) && (BaseActivity.sTopActivity.app != null)) {
-        ((ahfx)BaseActivity.sTopActivity.app.getManager(342)).a((ViewGroup)BaseActivity.sTopActivity.getWindow().getDecorView(), true);
-      }
-      this.a.dismiss();
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("SpringHbCountDownDialog", 1, localThrowable, new Object[0]);
-    }
-  }
-  
-  public void onTick(long paramLong)
-  {
-    try
-    {
-      long l1 = paramLong / 3600000L;
-      long l2 = (paramLong - 3600000L * l1) / 60000L;
-      paramLong = (paramLong - 3600000L * l1 - 60000L * l2) / 1000L;
-      String str1;
-      if (l2 > 9L)
+      int i = this.a.a();
+      if ((paramArrayOfbhxc.length < 0) && ((i & 0xF) == 1))
       {
-        str1 = "" + l2;
-        if (paramLong <= 9L) {
-          break label160;
-        }
+        paramArrayOfbhxc[0].b = 0;
+        paramArrayOfbhxc[0].a = 0;
       }
-      label160:
-      for (String str2 = "" + paramLong;; str2 = "0" + paramLong)
+      while (paramInt < paramArrayOfbhxc.length)
       {
-        ahgw.a(this.a).setText(String.format("%s:%s:%s", new Object[] { Long.valueOf(l1), str1, str2 }));
-        return;
-        str1 = "0" + l2;
-        break;
+        paramArrayOfbhxc[paramInt].b = -1;
+        paramArrayOfbhxc[paramInt].a = -1;
+        paramInt += 1;
+        continue;
+        paramInt = 0;
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("SpringHbCountDownDialog", 1, localThrowable, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgz
  * JD-Core Version:    0.7.0.1
  */

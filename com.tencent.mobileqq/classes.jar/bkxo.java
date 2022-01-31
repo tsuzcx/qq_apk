@@ -1,37 +1,49 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bkxo
+  extends BaseFilter
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private List<Frame> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  private void a()
+  public bkxo()
   {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView);
-    }
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   }
   
-  private void a(ViewGroup paramViewGroup)
+  public Frame a()
   {
-    if (paramViewGroup != null) {
-      paramViewGroup.removeAllViews();
+    float f1 = 2.0F / this.jdField_a_of_type_JavaUtilList.size();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      float f2 = -1.0F + i * f1;
+      float f3 = f2 + f1;
+      setPositions(new float[] { f2, -1.0F, f2, 1.0F, f3, 1.0F, f3, -1.0F });
+      Frame localFrame = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
+      RenderProcess(localFrame.getTextureId(), localFrame.width, localFrame.height, this.jdField_a_of_type_JavaUtilList.size() * 64, 64, -1, 0.0D, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      i += 1;
     }
+    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
   }
   
-  public void a(RelativeLayout paramRelativeLayout)
+  public void a(List<Frame> paramList)
   {
-    a(this.jdField_a_of_type_AndroidViewViewGroup);
-    a(paramRelativeLayout);
-    this.jdField_a_of_type_AndroidViewViewGroup = paramRelativeLayout;
-    a();
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void clearGLSLSelf()
+  {
+    super.clearGLSLSelf();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkxo
  * JD-Core Version:    0.7.0.1
  */

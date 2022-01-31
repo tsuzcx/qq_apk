@@ -1,136 +1,85 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.manager.ServerConfigManager.ConfigType;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-final class bbfw
-  extends AsyncTask<Void, Void, Void>
+public class bbfw
+  implements BusinessObserver
 {
-  bbfw(String paramString1, int paramInt, String paramString2) {}
+  public bbfw(TroopBarReplyActivity paramTroopBarReplyActivity) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramVarArgs = bbjc.a(ServerConfigManager.ConfigType.common, bbfv.p());
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PerformanceReportUtils", 4, "reportFPS openStr ：" + paramVarArgs);
-    }
-    if ((paramVarArgs == null) || (!"1".equals(paramVarArgs))) {
-      return null;
-    }
-    int i;
+    this.a.a(false);
+    this.a.rightViewText.setEnabled(true);
+    TroopBarReplyActivity localTroopBarReplyActivity = this.a;
+    this.a.getString(2131696744);
+    if (paramBoolean) {}
     for (;;)
     {
       try
       {
-        localSharedPreferences = bbfv.a();
-        if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_Int <= 0)) {
-          break label631;
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          continue;
         }
-        if ((this.jdField_a_of_type_Int >= 60) && (QLog.isDevelopLevel())) {
-          QLog.e("PerformanceReportUtils", 4, "reportFPS  fps error fpsvalue :" + this.jdField_a_of_type_Int);
+        localObject = new WebSsoBody.WebSsoResponseBody();
+        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
+        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
+        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
+        if (paramInt == 0) {
+          continue;
         }
-        l2 = localSharedPreferences.getLong(this.jdField_a_of_type_JavaLangString, 0L);
-        l1 = bbfv.a();
-        paramVarArgs = bbjc.a(ServerConfigManager.ConfigType.common, bbfv.q());
-        if (paramVarArgs == null) {}
+        localObject = paramBundle.optString("msg");
+        paramBundle = (Bundle)localObject;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          paramBundle = this.a.getString(2131696745, new Object[] { Integer.valueOf(paramInt) });
+        }
       }
-      catch (Exception paramVarArgs)
+      catch (Exception paramBundle)
       {
-        SharedPreferences localSharedPreferences;
-        long l2;
-        long l1;
-        HashMap localHashMap;
-        BaseApplicationImpl localBaseApplicationImpl;
-        break label631;
-        i = 1;
+        Object localObject;
+        paramBundle = this.a.getString(2131696745, new Object[] { Integer.valueOf(9992) });
+        continue;
+        paramBundle = this.a.getString(2131696745, new Object[] { Integer.valueOf(9991) });
         continue;
       }
-      try
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("PerformanceReportUtils", 4, "reportFPS  server time：" + paramVarArgs);
-        }
-        l1 = Long.valueOf(paramVarArgs).longValue();
-        l1 *= 1000L;
+      this.a.jdField_a_of_type_Boolean = false;
+      QQToast.a(localTroopBarReplyActivity, 1, paramBundle, 0).b(this.a.getTitleBarHeight());
+      return;
+      paramBundle = paramBundle.getJSONObject("result");
+      localObject = new StringBuffer();
+      if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+        ((StringBuffer)localObject).append("0");
       }
-      catch (Exception paramVarArgs)
-      {
-        l1 = bbfv.a();
-        continue;
-        paramVarArgs = this.jdField_a_of_type_JavaLangString + "_new";
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI != null) {
+        ((StringBuffer)localObject).append("1");
       }
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PerformanceReportUtils", 4, "reportFPS report_time ：" + l1 + ",lastRp" + l2 + ",reportFPS fpsvalue：" + this.jdField_a_of_type_Int);
-    }
-    if ((l2 != 0L) && (SystemClock.uptimeMillis() >= l2))
-    {
-      if (SystemClock.uptimeMillis() - l2 < l1) {
-        break label633;
+      if (!TextUtils.isEmpty(bcht.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetXEditTextExWithListener))) {
+        ((StringBuffer)localObject).append("2");
       }
-      break label626;
-      bool = UnifiedMonitor.a().whetherReportThisTime(12, false);
-      if ((i == 0) && (!bool)) {
-        break label631;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo != null) {
+        ((StringBuffer)localObject).append("5");
       }
-      localHashMap = new HashMap();
-      localHashMap.put("param_FPS", String.valueOf(this.jdField_a_of_type_Int));
-      localHashMap.put("aioBusiness", this.b);
-      localHashMap.put("theme_Id", QQAppInterface.d());
-      localHashMap.put("param_threadOpId", String.valueOf(akhm.a().a()));
-      if (QLog.isDevelopLevel()) {
-        QLog.d("PerformanceReportUtils", 4, "reportFPS real report  fpsvalue：" + this.jdField_a_of_type_Int);
-      }
-      localHashMap.put("param_DeviceType", String.valueOf(agqd.a()));
-      paramVarArgs = null;
-      localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      if (localBaseApplicationImpl != null) {
-        paramVarArgs = localBaseApplicationImpl.getRuntime();
-      }
-      if ((paramVarArgs != null) && ((paramVarArgs instanceof QQAppInterface)))
-      {
-        if (((QQAppInterface)paramVarArgs).a.a == 0L) {
-          break label638;
-        }
-        bool = true;
-        label457:
-        localHashMap.put("param_is_logining", String.valueOf(bool));
-        if (((QQAppInterface)paramVarArgs).a.c()) {
-          break label644;
-        }
-      }
-    }
-    label644:
-    for (boolean bool = true;; bool = false)
-    {
-      localHashMap.put("param_syncing_msg", String.valueOf(bool));
-      localHashMap.put("param_NetType", String.valueOf(bbfj.a(BaseApplication.getContext())));
-      if (i != 0)
-      {
-        paramVarArgs = this.jdField_a_of_type_JavaLangString;
-        axrn.a(BaseApplication.getContext()).a(bbjc.a(), paramVarArgs, bbfv.a(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int, 0L, localHashMap, bbfv.o());
-        if (i == 0) {
-          break label631;
-        }
-        localSharedPreferences.edit().putLong(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis()).commit();
-      }
-      label626:
-      label631:
-      return null;
-      label633:
-      i = 0;
-      break;
-      label638:
-      bool = false;
-      break label457;
+      ((StringBuffer)localObject).append("8");
+      this.a.b = true;
+      paramBundle.optString("pid");
+      paramBundle.optString("bid");
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("result", paramBundle.toString());
+      this.a.setResult(-1, (Intent)localObject);
+      this.a.finish();
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      paramBundle = this.a.getString(2131696745, new Object[] { Integer.valueOf(9992) });
     }
   }
 }

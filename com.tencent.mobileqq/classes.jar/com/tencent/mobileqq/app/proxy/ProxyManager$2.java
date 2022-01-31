@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.proxy;
 
-import akkq;
+import amcg;
 import com.tencent.mobileqq.app.ThreadRegulator;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Vector;
@@ -13,13 +13,13 @@ class ProxyManager$2
   public void run()
   {
     ProxyManager.a(this.this$0, System.currentTimeMillis());
-    while (!this.this$0.jdField_a_of_type_Boolean) {
-      synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
+    while (!this.this$0.a) {
+      synchronized (ProxyManager.a(this.this$0))
       {
         try
         {
           this.this$0.c();
-          this.this$0.jdField_a_of_type_JavaLangObject.wait(ProxyManager.a());
+          ProxyManager.a(this.this$0).wait(ProxyManager.a());
           ThreadRegulator.a().b();
           if (((!ProxyManager.a(this.this$0).isEmpty()) || (ProxyManager.a(this.this$0).a().size() > 0)) && (ProxyManager.a(this.this$0)))
           {

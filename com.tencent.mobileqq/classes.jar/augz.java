@@ -1,21 +1,38 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import com.tencent.qphone.base.util.QLog;
 
 public class augz
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public augz(ScanIconAnimateView paramScanIconAnimateView) {}
+  public static int a = 12;
+  public static boolean a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static int a(Context paramContext)
   {
-    this.a.d = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * -1.0F * actj.a(1.5F, this.a.getResources()));
-    this.a.invalidate();
+    paramContext = paramContext.getResources();
+    return paramContext.getDisplayMetrics().widthPixels - aekt.a(42.0F, paramContext) * 2;
+  }
+  
+  public static int a(Context paramContext, int paramInt)
+  {
+    paramInt /= 5;
+    int i = a(paramContext);
+    paramContext = paramContext.getResources().getDisplayMetrics();
+    float f = paramContext.heightPixels * 1.0F / paramContext.widthPixels;
+    if (QLog.isColorLevel()) {
+      QLog.d("VelocityUtil", 2, "getInitVelocity() displayMetrics.widthPixels = " + paramContext.widthPixels + ", displayMetrics.heightPixels = " + paramContext.heightPixels + ", ratio = " + f + ", 16.F/9.F = " + 1.777778F + ",viewPagerClientWidth = " + i);
+    }
+    if ((f > 1.777778F) && (QLog.isColorLevel())) {
+      QLog.d("VelocityUtil", 2, "getInitVelocity() ratio > 16.F/9.F");
+    }
+    QLog.d("VelocityUtil", 1, "getInitVelocity: pendingVelocity = " + paramInt + ", viewPagerClientWidth = " + i);
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     augz
  * JD-Core Version:    0.7.0.1
  */

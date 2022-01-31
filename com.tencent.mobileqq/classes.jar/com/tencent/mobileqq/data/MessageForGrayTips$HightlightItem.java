@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import bbll;
+import bdkf;
 
 public class MessageForGrayTips$HightlightItem
 {
@@ -9,7 +9,7 @@ public class MessageForGrayTips$HightlightItem
   public int groupId;
   public String icon;
   public String iconAlt;
-  private int iconSize = bbll.b(16.0F);
+  private int iconSize = bdkf.b(16.0F);
   public String mMsgActionData;
   public String mMsg_A_ActionData;
   public boolean needUpdateNick;
@@ -56,7 +56,7 @@ public class MessageForGrayTips$HightlightItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips.HightlightItem
  * JD-Core Version:    0.7.0.1
  */

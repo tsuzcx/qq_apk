@@ -1,30 +1,15 @@
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class acsw
+  extends alox
 {
-  @arlz(a="structmsg_switch")
-  public int a;
-  @arlz(a="msf_http_monitor_ban")
-  public boolean a;
-  @arlz(a="structmsg_sampling")
-  public int b;
-  @arlz(a="structmsg_filternumber")
-  public int c;
-  @arlz(a="switch_background_start_activity")
-  public int d;
-  @arlz(a="switch_open_third_app")
-  public int e;
-  @arlz(a="switch_imei")
-  public int f;
+  public acsw(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public JSONObject a()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    return arma.a(this);
-  }
-  
-  public String toString()
-  {
-    return a().toString();
+    if (paramBoolean) {
+      ForwardRecentActivity.f(this.a);
+    }
   }
 }
 

@@ -1,21 +1,14 @@
-import android.graphics.Bitmap;
-import dov.com.qq.im.ae.play.AETakeFacePhotoPreviewFragment;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class bixo
-  implements bizb
 {
-  public bixo(AETakeFacePhotoPreviewFragment paramAETakeFacePhotoPreviewFragment) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(Bitmap paramBitmap)
-  {
-    AETakeFacePhotoPreviewFragment.a(biqw.a(this.a.getActivity(), paramBitmap));
-  }
+  public ImageView a;
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bixo
  * JD-Core Version:    0.7.0.1
  */

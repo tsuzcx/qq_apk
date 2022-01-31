@@ -1,23 +1,20 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RiskHintDlgFragment;
 
-class adqz
-  implements apuv
+public class adqz
+  implements DialogInterface.OnClickListener
 {
-  adqz(adqw paramadqw) {}
+  public adqz(RiskHintDlgFragment paramRiskHintDlgFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = bbdj.a(this.a.a, 230);
-    paramView.setTitle(2131691555);
-    paramView.setMessage(2131691556);
-    paramView.setNegativeButton(2131690596, new adra(this, paramView));
-    paramView.setPositiveButton(2131694794, new adrb(this));
-    paramView.show();
+    this.a.a(this.a.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqz
  * JD-Core Version:    0.7.0.1
  */

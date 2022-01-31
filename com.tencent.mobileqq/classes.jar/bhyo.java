@@ -1,30 +1,31 @@
-import android.content.Context;
-import android.opengl.GLSurfaceView.Renderer;
-import android.view.ViewGroup;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
-public abstract class bhyo
-  implements GLSurfaceView.Renderer
+public class bhyo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public Context a;
-  protected ViewGroup a;
+  public bhyo(XPanelContainer paramXPanelContainer, int paramInt) {}
   
-  public bhyo(Context paramContext, ViewGroup paramViewGroup)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("XPanelContainer", 2, "colseAnim resetPosition");
+      }
+      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
+      return;
+    }
+    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
+    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
   }
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhyo
  * JD-Core Version:    0.7.0.1
  */

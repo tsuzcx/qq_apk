@@ -1,60 +1,77 @@
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
+import android.app.Activity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class arbl
-  extends RecyclerView.Adapter
 {
-  private RecyclerView.Adapter jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter;
-  private RecyclerView.AdapterDataObserver jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver = new arbm(this);
-  aqyx jdField_a_of_type_Aqyx;
-  
-  public arbl(@NonNull RecyclerView.Adapter paramAdapter, aqyx paramaqyx)
+  public static View.OnClickListener a(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString)
   {
-    this.jdField_a_of_type_Aqyx = paramaqyx;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter = paramAdapter;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.registerAdapterDataObserver(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$AdapterDataObserver);
+    return new arbq(paramActivity, paramFileManagerEntity, paramString);
   }
   
-  public int getItemCount()
+  public static View.OnClickListener a(Activity paramActivity, String paramString)
   {
-    if (this.jdField_a_of_type_Aqyx == null) {
-      return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount();
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.getItemCount() + 1;
+    return new arbx(paramActivity, paramString);
   }
   
-  public int getItemViewType(int paramInt)
+  public static View.OnClickListener a(ardn paramardn, FileManagerEntity paramFileManagerEntity)
   {
-    if ((this.jdField_a_of_type_Aqyx != null) && (paramInt == getItemCount() - 1)) {
-      return 2147483647;
-    }
-    return super.getItemViewType(paramInt);
+    return new arbs(paramFileManagerEntity, paramardn);
   }
   
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public static View.OnClickListener a(ardn paramardn, FileManagerEntity paramFileManagerEntity, Activity paramActivity)
   {
-    if ((this.jdField_a_of_type_Aqyx != null) && (paramInt == getItemCount() - 1))
-    {
-      this.jdField_a_of_type_Aqyx.a(paramViewHolder, paramInt);
-      return;
-    }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onBindViewHolder(paramViewHolder, paramInt);
+    return new arbt(paramFileManagerEntity, paramActivity, paramardn);
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public static View.OnClickListener a(ardn paramardn, String paramString)
   {
-    if ((this.jdField_a_of_type_Aqyx != null) && (2147483647 == paramInt)) {
-      return this.jdField_a_of_type_Aqyx.a(paramViewGroup, paramInt);
-    }
-    return this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.onCreateViewHolder(paramViewGroup, paramInt);
+    return new arbm(paramString, paramardn);
+  }
+  
+  public static View.OnClickListener a(FileManagerEntity paramFileManagerEntity, Activity paramActivity)
+  {
+    return a(paramFileManagerEntity, paramActivity, false);
+  }
+  
+  public static View.OnClickListener a(FileManagerEntity paramFileManagerEntity, Activity paramActivity, boolean paramBoolean)
+  {
+    return new arbp(paramFileManagerEntity, paramActivity, paramBoolean);
+  }
+  
+  public static View.OnClickListener b(Activity paramActivity, FileManagerEntity paramFileManagerEntity, String paramString)
+  {
+    return new arbr(paramActivity, paramFileManagerEntity, paramString);
+  }
+  
+  public static View.OnClickListener b(ardn paramardn, FileManagerEntity paramFileManagerEntity)
+  {
+    return new arbu(paramFileManagerEntity, paramardn);
+  }
+  
+  public static View.OnClickListener b(ardn paramardn, String paramString)
+  {
+    return new arbw(paramString, paramardn);
+  }
+  
+  public static View.OnClickListener c(ardn paramardn, FileManagerEntity paramFileManagerEntity)
+  {
+    return new arbv(paramFileManagerEntity, paramardn);
+  }
+  
+  public static View.OnClickListener d(ardn paramardn, FileManagerEntity paramFileManagerEntity)
+  {
+    return new arby(paramardn, paramFileManagerEntity);
+  }
+  
+  public static View.OnClickListener e(ardn paramardn, FileManagerEntity paramFileManagerEntity)
+  {
+    return new arbz(paramardn, paramFileManagerEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbl
  * JD-Core Version:    0.7.0.1
  */

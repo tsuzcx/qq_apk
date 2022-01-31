@@ -1,26 +1,18 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-public class bgko
-  extends FlingGestureHandler
+class bgko
+  implements FileFilter
 {
-  boolean a = true;
-  
-  public bgko(Activity paramActivity)
+  public boolean accept(File paramFile)
   {
-    super(paramActivity);
-  }
-  
-  public void flingLToR()
-  {
-    if (this.a) {
-      super.flingLToR();
-    }
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgko
  * JD-Core Version:    0.7.0.1
  */

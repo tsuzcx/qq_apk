@@ -1,52 +1,56 @@
-public abstract class bhna
+import com.tencent.mobileqq.shortvideo.resource.GestureResource;
+
+public class bhna
+  implements GestureResource
 {
-  protected String a;
-  protected boolean a;
+  public static String a;
+  public static boolean a;
+  public static String b = "200";
+  public static String c = "20";
   
-  public bhna(String paramString, boolean paramBoolean)
+  static
   {
-    a(paramString);
-    a(paramBoolean);
+    jdField_a_of_type_JavaLangString = "5";
   }
   
-  public abstract String a();
-  
-  public void a(String paramString)
+  public String getGestureGapFrame()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public void a(boolean paramBoolean)
+  public String getGestureGapTime()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return b;
   }
   
-  public boolean a()
+  public boolean getGestureShouldUpload()
   {
-    return this.jdField_a_of_type_Boolean;
+    return jdField_a_of_type_Boolean;
   }
   
-  public String b()
+  public String getGestureThreadColdTime()
   {
-    return null;
+    return c;
   }
   
-  public String c()
+  public String getModelPath()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return azce.a();
   }
   
-  public String d()
+  public String getSoPathDir()
   {
-    if (a()) {
-      return a();
-    }
-    return null;
+    return azce.b();
+  }
+  
+  public boolean isGestureEnable()
+  {
+    return azbx.a().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhna
  * JD-Core Version:    0.7.0.1
  */

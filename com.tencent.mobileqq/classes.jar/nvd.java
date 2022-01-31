@@ -1,40 +1,101 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class nvd
-  implements bfph
 {
-  public nvd(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity, boolean paramBoolean1, long paramLong, boolean paramBoolean2, int paramInt) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static nva a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Boolean) {
-      return;
+    nva localnva2 = nvc.a();
+    nva localnva1 = localnva2;
+    if (localnva2 == null) {
+      localnva1 = new nva();
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Boolean = true;
-    switch (paramInt)
+    return localnva1;
+  }
+  
+  public static nvb a(int paramInt)
+  {
+    Object localObject = a().jdField_a_of_type_JavaUtilArrayList;
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      if (this.jdField_a_of_type_Boolean)
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        aqfd.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity, true, "shareToQQ", this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.moveTaskToBack(true);
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.finish();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.e();
-      if (this.b) {
-        nol.a(null, "", "0X8008661", "0X8008661", 0, 0, this.jdField_a_of_type_Int + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+        nvb localnvb = (nvb)((Iterator)localObject).next();
+        if (localnvb.jdField_a_of_type_Int == paramInt) {
+          return localnvb;
+        }
       }
     }
+    return new nvb();
+  }
+  
+  public static boolean a()
+  {
+    nva localnva = nvc.a();
+    if (localnva == null) {}
+    for (String str = "false";; str = localnva.jdField_a_of_type_Int + "")
+    {
+      QLog.i("EcshopEcshopConfUtil", 2, str);
+      if (localnva != null) {
+        break;
+      }
+      return false;
+    }
+    if (localnva.jdField_a_of_type_Int == 1) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public static boolean a(nva paramnva)
+  {
+    return a(paramnva, 1, 1);
+  }
+  
+  public static boolean a(nva paramnva, int paramInt1, int paramInt2)
+  {
+    if ((paramnva == null) || (paramnva.jdField_a_of_type_JavaUtilArrayList == null) || (paramnva.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+      return false;
+    }
+    paramnva = paramnva.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramnva.hasNext())
+    {
+      nvb localnvb = (nvb)paramnva.next();
+      if ((localnvb.b == paramInt1) && (localnvb.jdField_a_of_type_Int == paramInt2)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean b()
+  {
+    nva localnva = nvc.a();
+    if (localnva == null) {}
+    for (String str = "false";; str = localnva.b + "")
+    {
+      QLog.i("EcshopEcshopConfUtil", 2, str);
+      if (localnva != null) {
+        break;
+      }
+      return false;
+    }
+    if (localnva.b == 1) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
+  }
+  
+  public static boolean c()
+  {
+    return (a()) && (a(nvc.a()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvd
  * JD-Core Version:    0.7.0.1
  */

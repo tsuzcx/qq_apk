@@ -1,182 +1,221 @@
-import android.content.Context;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.os.SystemClock;
-import android.view.MotionEvent;
-import android.view.VelocityTracker;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.ScaleAnimation;
-import android.view.animation.TranslateAnimation;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.widget.RoundRectImageView;
-import java.util.ArrayList;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class aekk
-  extends aekm
+public class aekk
+  implements Handler.Callback
 {
-  public aekk(aekh paramaekh, Context paramContext, ViewGroup paramViewGroup)
+  public static int a;
+  public static long a;
+  private static aekk jdField_a_of_type_Aekk;
+  public static boolean a;
+  private static boolean b;
+  private Handler jdField_a_of_type_AndroidOsHandler = new bhow(Looper.getMainLooper(), this);
+  
+  static
   {
-    super(paramaekh, paramContext, paramViewGroup);
+    jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_Long = -1L;
+    jdField_a_of_type_Aekk = new aekk();
+    a();
   }
   
-  private boolean a(int paramInt)
+  public static aekk a()
   {
-    Object localObject1 = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Aeke.itemView.getWidth() - (int)(2.0F * this.jdField_a_of_type_Aekh.e + 0.5F), this.jdField_a_of_type_Aeke.itemView.getHeight() - (int)(2.0F * this.jdField_a_of_type_Aekh.e + 0.5F) * 2);
-    ((RelativeLayout.LayoutParams)localObject1).leftMargin = (this.jdField_c_of_type_ArrayOfInt[0] + (int)(2.0F * this.jdField_a_of_type_Aekh.e + 0.5F));
-    this.jdField_a_of_type_AndroidViewViewGroup.getLocationInWindow(this.jdField_b_of_type_ArrayOfInt);
-    ((RelativeLayout.LayoutParams)localObject1).topMargin = (this.jdField_c_of_type_ArrayOfInt[1] - this.jdField_b_of_type_ArrayOfInt[1] - this.jdField_a_of_type_Aekh.jdField_a_of_type_Int + (int)(2.0F * this.jdField_a_of_type_Aekh.e + 0.5F));
-    this.jdField_a_of_type_Aeke.itemView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent() != null) {
-      return false;
-    }
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_c_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetRelativeLayout, (ViewGroup.LayoutParams)localObject1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentWidgetRoundRectImageView, (ViewGroup.LayoutParams)localObject1);
-    float f1;
-    int j;
-    int i;
-    int k;
-    int m;
-    float f2;
-    switch (PhotoListPanel.f())
+    try
     {
-    default: 
-      f1 = this.jdField_a_of_type_Aekh.a(paramInt, this.jdField_a_of_type_Aeke.itemView.getWidth() - (int)(4.0F * this.jdField_a_of_type_Aekh.e), this.jdField_a_of_type_Aeke.itemView.getHeight() - (int)(4.0F * this.jdField_a_of_type_Aekh.e));
-      aung.a("PhotoListPanel", "startFlingAnim", "f scale = " + f1);
-      j = this.jdField_a_of_type_Aekh.jdField_a_of_type_ArrayOfInt[0] - (int)(65.0F * this.jdField_a_of_type_Aekh.e + 0.5F + this.jdField_a_of_type_Aeke.itemView.getWidth() * f1 + 0.5F) - this.jdField_c_of_type_ArrayOfInt[0];
-      paramInt = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
-      i = this.jdField_a_of_type_Aekh.jdField_a_of_type_ArrayOfInt[1];
-      k = this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.getHeight();
-      int n = (int)(13.0F * this.jdField_a_of_type_Aekh.e + 0.5F + this.jdField_a_of_type_Aeke.itemView.getHeight() * f1 + 0.5F);
-      int i1 = this.jdField_c_of_type_ArrayOfInt[1];
-      m = ((RelativeLayout.LayoutParams)localObject1).topMargin - (int)(30.0F * this.jdField_a_of_type_Aekh.e);
-      k = paramInt + i - k - n - i1 + m;
-      localObject1 = this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Aekc.a(this.jdField_a_of_type_Aekh.c);
-      f2 = ((LocalMediaInfo)localObject1).mediaHeight * 1.0F / ((LocalMediaInfo)localObject1).mediaWidth;
-      if (this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Aekc.getItemViewType(this.jdField_b_of_type_Int) == 1)
+      aekk localaekk = jdField_a_of_type_Aekk;
+      return localaekk;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void a()
+  {
+    boolean bool1 = true;
+    for (;;)
+    {
+      Object localObject1;
+      try
       {
-        paramInt = k - (int)(70.0F * this.jdField_a_of_type_Aekh.e + 0.5F);
-        i = j;
+        boolean bool2 = b;
+        if (bool2) {
+          return;
+        }
       }
-      break;
+      finally {}
+      try
+      {
+        localObject1 = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.aio_config.name(), "-1|1=0,2=0,3=0,4=0,5=1|1");
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.aio.AIOPreLoadEngine", 2, "initAIOPreloadFlagByDpc thumbConfig:" + (String)localObject1);
+        }
+        localObject1 = ((String)localObject1).split("\\|");
+        if (localObject1.length > 2)
+        {
+          if (!"1".equals(localObject1[2])) {
+            break label137;
+          }
+          jdField_a_of_type_Boolean = bool1;
+        }
+      }
+      catch (Exception localException)
+      {
+        label137:
+        jdField_a_of_type_Boolean = false;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.aio.AIOPreLoadEngine", 2, "initAIOPreloadFlagByDpc error|" + jdField_a_of_type_Boolean);
+        continue;
+      }
+      b = true;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.aio.AIOPreLoadEngine", 2, "initAIOPreloadFlagByDpc|" + jdField_a_of_type_Boolean);
+        continue;
+        bool1 = false;
+      }
+    }
+  }
+  
+  @TargetApi(17)
+  private void a(Activity paramActivity)
+  {
+    SplashActivity localSplashActivity;
+    label122:
+    FragmentManager localFragmentManager;
+    Fragment localFragment;
+    if ((paramActivity != null) && ((paramActivity instanceof SplashActivity)))
+    {
+      if ((jdField_a_of_type_Int == 1) || (QQAppInterface.b)) {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.aio.AIOPreLoadEngine", 2, "sPreloadedAIOType:" + jdField_a_of_type_Int + "|AIO_HAD_OPEN:" + QQAppInterface.b);
+        }
+      }
+      do
+      {
+        return;
+        localSplashActivity = (SplashActivity)paramActivity;
+        if ((localSplashActivity.app != null) && (localSplashActivity.app.isRunning()) && (localSplashActivity.app.isLogin())) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("Q.aio.AIOPreLoadEngine", 2, "app is not valid");
+      return;
+      if (!QLog.isColorLevel())
+      {
+        localFragmentManager = localSplashActivity.getSupportFragmentManager();
+        localFragment = localFragmentManager.findFragmentByTag(ChatFragment.class.getName());
+        if (((Build.VERSION.SDK_INT <= 16) || (!paramActivity.isDestroyed())) && (!paramActivity.isFinishing())) {
+          break label296;
+        }
+      }
+    }
+    label296:
+    for (boolean bool = false;; bool = true)
+    {
+      if ((localFragment == null) && (bool))
+      {
+        jdField_a_of_type_Long = SystemClock.uptimeMillis();
+        bdjd.a(null, "AIO_preLoad_Cost");
+        try
+        {
+          paramActivity = localFragmentManager.beginTransaction();
+          paramActivity.add(16908290, ChatFragment.a(), ChatFragment.class.getName());
+          localSplashActivity.setIntent(new Intent());
+          paramActivity.commitAllowingStateLoss();
+          jdField_a_of_type_Int = 1;
+          return;
+        }
+        catch (Exception paramActivity)
+        {
+          QLog.e("Q.aio.AIOPreLoadEngine", 1, "AIO preLoad:", paramActivity);
+          return;
+        }
+        QLog.d("Q.aio.AIOPreLoadEngine", 2, "doRealPreLoadAIO");
+        break label122;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("Q.aio.AIOPreLoadEngine", 2, "AIO cannot peload:" + bool);
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("Q.aio.AIOPreLoadEngine", 2, "activity is not splashActivity");
+      return;
+    }
+  }
+  
+  public void a(BaseActivity paramBaseActivity)
+  {
+    if (!jdField_a_of_type_Boolean) {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.aio.AIOPreLoadEngine", 2, "startPreLoadAIO return");
+      }
     }
     for (;;)
     {
-      localObject1 = new AnimationSet(false);
-      Object localObject2 = new ScaleAnimation(1.0F, f1, 1.0F, f1);
-      ((ScaleAnimation)localObject2).setStartOffset(200L);
-      ((ScaleAnimation)localObject2).setDuration(300L);
-      ((AnimationSet)localObject1).addAnimation((Animation)localObject2);
-      localObject2 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -m);
-      ((TranslateAnimation)localObject2).setStartOffset(0L);
-      ((TranslateAnimation)localObject2).setDuration(200L);
-      ((AnimationSet)localObject1).addAnimation((Animation)localObject2);
-      localObject2 = new AnimationSet(false);
-      ((AnimationSet)localObject2).setStartOffset(200L);
-      ((AnimationSet)localObject2).setDuration(300L);
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, i, 0.0F, 0.0F);
-      localTranslateAnimation.setInterpolator(new LinearInterpolator());
-      ((AnimationSet)localObject2).addAnimation(localTranslateAnimation);
-      localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, paramInt);
-      localTranslateAnimation.setInterpolator(new AccelerateInterpolator());
-      ((AnimationSet)localObject2).addAnimation(localTranslateAnimation);
-      ((AnimationSet)localObject1).addAnimation((Animation)localObject2);
-      localObject2 = new AlphaAnimation(1.0F, 0.0F);
-      ((AlphaAnimation)localObject2).setStartOffset(200L + 300L - 200L / 2L);
-      ((AlphaAnimation)localObject2).setDuration(200L);
-      ((AnimationSet)localObject1).addAnimation((Animation)localObject2);
-      this.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation((Animation)localObject1);
-      ((AnimationSet)localObject1).setAnimationListener(new aekl(this));
-      return true;
-      f1 = this.jdField_a_of_type_Aekh.a(paramInt, this.jdField_a_of_type_Aeke.itemView.getHeight() - (int)(4.0F * this.jdField_a_of_type_Aekh.e));
-      break;
-      paramInt = k;
-      i = j;
-      if (PhotoListPanel.f() == 1) {
-        if (((LocalMediaInfo)localObject1).mediaHeight > ((LocalMediaInfo)localObject1).mediaWidth)
-        {
-          paramInt = k - (int)((this.jdField_a_of_type_Aeke.itemView.getHeight() - (int)(4.0F * this.jdField_a_of_type_Aekh.e)) * 0.5F * (f2 - 1.0F) * f1);
-          i = j;
-        }
-        else
-        {
-          i = j - (int)((this.jdField_a_of_type_Aeke.itemView.getHeight() - (int)(4.0F * this.jdField_a_of_type_Aekh.e)) * 0.5F * (1.0F / f2 - 1.0F) * f1);
-          paramInt = k;
-        }
+      return;
+      if (!QLog.isColorLevel()) {}
+      while (paramBaseActivity != null)
+      {
+        Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+        localMessage.what = 1;
+        localMessage.obj = paramBaseActivity;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+        return;
+        QLog.i("Q.aio.AIOPreLoadEngine", 2, "startPreLoadAIO");
       }
     }
   }
   
-  boolean a(MotionEvent paramMotionEvent)
+  public void b()
   {
-    this.jdField_a_of_type_Aekh.jdField_a_of_type_AndroidViewVelocityTracker.addMovement(paramMotionEvent);
-    return true;
+    if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    }
   }
   
-  boolean b(MotionEvent paramMotionEvent)
+  public boolean handleMessage(Message paramMessage)
   {
-    aung.a("PhotoListPanel", "handleUp", "handler = " + this);
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    float f3 = f2 - this.jdField_a_of_type_Aekh.jdField_b_of_type_Float;
-    float f4 = this.jdField_a_of_type_Aekh.jdField_a_of_type_Float;
-    int i = paramMotionEvent.getPointerId(0);
-    this.jdField_a_of_type_Aekh.jdField_a_of_type_AndroidViewVelocityTracker.computeCurrentVelocity(1000);
-    float f5 = this.jdField_a_of_type_Aekh.jdField_a_of_type_AndroidViewVelocityTracker.getYVelocity(i);
-    aung.a("PhotoListPanel", "FlingHandler", "@@handleUp,x = " + f1 + ",y = " + f2 + ",delY = " + f3 + ",velocityY = " + f5 + ",SWIPE_THRESHOLD = " + aekh.a());
-    if ((-f3 > aekh.a()) && (Math.abs(f5) > 100.0F) && (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Aekh.jdField_a_of_type_Long < 500L) && ((this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l == 1) || (this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.l == 0)) && (Math.abs(f3) > Math.abs(f1 - f4)))
+    switch (paramMessage.what)
     {
-      if (this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Aekc.a.size() == 0)
-      {
-        aung.a("PhotoListPanel", "handleUp", "handler = " + this + "mInfos is null!!!!!! targetPosition=" + this.jdField_b_of_type_Int);
-        return false;
-      }
-      this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Boolean = true;
-      if (!a(this.jdField_b_of_type_Int))
-      {
-        aung.a("PhotoListPanel", "handleUp", "handler  animLayout already hasparent= ");
-        return false;
-      }
-      i = this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Aekc.getItemViewType(this.jdField_b_of_type_Int);
-      paramMotionEvent = new ArrayList();
-      paramMotionEvent.add(this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Aekc.a(this.jdField_b_of_type_Int).path);
-      axqy.b(null, "dc00898", "", "", "0X800A7B0", "0X800A7B0", this.jdField_b_of_type_Int + 1, 0, "1", "", "", "");
-      axqy.b(null, "dc00898", "", "", "0X800A914", "0X800A914", PhotoUtils.c(this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo), 0, "" + (this.jdField_b_of_type_Int + 1), "", "", "");
-      boolean bool;
-      if (this.jdField_a_of_type_Aekh.jdField_a_of_type_Aekg != null)
-      {
-        paramMotionEvent = this.jdField_a_of_type_Aekh.jdField_a_of_type_Aekg;
-        String str = this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_Aekc.a(this.jdField_b_of_type_Int).path;
-        if (this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.g == 2)
-        {
-          bool = true;
-          paramMotionEvent.a(str, bool);
-        }
-      }
-      for (;;)
-      {
-        return true;
-        bool = false;
-        break;
-        this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.a(this.jdField_b_of_type_Int, paramMotionEvent, false, true, "0X8005E0D", "1", i + "", false);
+    }
+    for (;;)
+    {
+      return false;
+      if (paramMessage.obj != null) {
+        a((Activity)paramMessage.obj);
       }
     }
-    aung.a("PhotoListPanel", "FlingHandler", "@handleUp,return false. velocityY = " + f5 + ",dely = " + (f2 - this.jdField_a_of_type_Aekh.jdField_b_of_type_Float));
-    return (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Aekh.jdField_a_of_type_Long >= 200L) || (Math.abs(f2 - this.jdField_a_of_type_Aekh.jdField_b_of_type_Float) >= this.jdField_a_of_type_Aekh.jdField_b_of_type_Int) || (Math.abs(f1 - this.jdField_a_of_type_Aekh.jdField_a_of_type_Float) >= this.jdField_a_of_type_Aekh.jdField_b_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aekk
  * JD-Core Version:    0.7.0.1
  */

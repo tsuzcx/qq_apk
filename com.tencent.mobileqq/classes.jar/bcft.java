@@ -1,30 +1,17 @@
-import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.TbsDownloader.TbsDownloaderCallback;
-
 class bcft
-  implements TbsDownloader.TbsDownloaderCallback
+  implements bcsn
 {
-  bcft(bcfs parambcfs) {}
+  bcft(bcfr parambcfr, boolean paramBoolean) {}
   
-  public void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
+  public void a()
   {
-    if (paramBoolean)
-    {
-      QbSdk.setUploadCode(BaseApplication.getContext(), 156);
-      if (QLog.isColorLevel()) {
-        QLog.d("TBS_update", 2, "tbs need download");
-      }
-      this.a.a.a.a(false);
-    }
+    this.jdField_a_of_type_Bcfr.a = 1;
+    this.jdField_a_of_type_Bcfr.a(this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcft
  * JD-Core Version:    0.7.0.1
  */

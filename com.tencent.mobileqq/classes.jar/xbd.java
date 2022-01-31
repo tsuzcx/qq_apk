@@ -1,43 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.RspBody;
-import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileRspBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
-public abstract class xbd
-  extends mxj
+class xbd
+  implements View.OnClickListener
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (paramInt != 0)
-    {
-      a(false, paramInt, null, paramBundle);
-      return;
-    }
-    oidb_0x6d9.RspBody localRspBody = new oidb_0x6d9.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d9.TransFileRspBody)localRspBody.trans_file_rsp.get();
-      if (paramArrayOfByte.int32_ret_code.has())
-      {
-        a(true, 0, paramArrayOfByte, paramBundle);
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, null, paramBundle);
-      return;
-    }
-    a(false, -1, null, paramBundle);
-  }
+  xbd(xay paramxay) {}
   
-  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle);
+  public void onClick(View paramView)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.a.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.a.d);
+    this.a.jdField_a_of_type_Xah.a = this.a.d;
+    this.a.jdField_a_of_type_Xah.d = this.a.e;
+    this.a.dismiss();
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 3, 3);
+    }
+    wtb.a("0X80076C5");
+    wtb.b("0X80075D9");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xbd
  * JD-Core Version:    0.7.0.1
  */

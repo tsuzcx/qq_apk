@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emosm.web;
 
-import ajxl;
+import aloz;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anuq;
+import aply;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 import java.util.ArrayList;
@@ -13,20 +13,20 @@ import java.util.Iterator;
 public class MessengerService$IncomingHandler$11
   implements Runnable
 {
-  public MessengerService$IncomingHandler$11(anuq paramanuq, QQAppInterface paramQQAppInterface, ArrayList paramArrayList, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$11(aply paramaply, QQAppInterface paramQQAppInterface, ArrayList paramArrayList, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
     Bundle localBundle = new Bundle();
     HashMap localHashMap = new HashMap();
-    ajxl localajxl = (ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    if (localajxl != null)
+    aloz localaloz = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    if (localaloz != null)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        Friends localFriends = localajxl.e(str);
+        Friends localFriends = localaloz.e(str);
         if (localFriends != null)
         {
           if (!TextUtils.isEmpty(localFriends.remark)) {
@@ -49,7 +49,7 @@ public class MessengerService$IncomingHandler$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.11
  * JD-Core Version:    0.7.0.1
  */

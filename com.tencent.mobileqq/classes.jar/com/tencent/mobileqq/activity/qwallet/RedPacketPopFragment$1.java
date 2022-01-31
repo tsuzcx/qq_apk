@@ -14,6 +14,7 @@ class RedPacketPopFragment$1
     this.this$0.c.setAlpha(0.3F);
     this.this$0.c.animate().alpha(1.0F).setDuration(200L);
     this.this$0.d.setAlpha(0.3F);
+    this.this$0.d.setVisibility(0);
     this.this$0.d.setPivotX(this.this$0.d.getWidth() / 2);
     this.this$0.d.setPivotY(this.this$0.d.getHeight() / 2);
     this.this$0.d.setScaleX(0.5F);
@@ -23,7 +24,7 @@ class RedPacketPopFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment.1
  * JD-Core Version:    0.7.0.1
  */

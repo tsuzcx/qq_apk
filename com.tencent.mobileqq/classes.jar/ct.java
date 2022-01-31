@@ -1,26 +1,36 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.dataline.activities.LiteActivity;
+import com.dataline.activities.PrinterSubOptionActivity;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 public class ct
-  implements View.OnTouchListener
+  implements di
 {
-  public ct(LiteActivity paramLiteActivity) {}
+  public ct(PrinterSubOptionActivity paramPrinterSubOptionActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0)
+    if (this.a.jdField_a_of_type_Allz.a != null)
     {
-      LiteActivity.a(this.a).x = paramMotionEvent.getRawX();
-      LiteActivity.a(this.a).y = paramMotionEvent.getRawY();
+      List localList = this.a.jdField_a_of_type_Allz.a.a();
+      if ((localList == null) || (localList.size() > 0)) {
+        break label79;
+      }
+      this.a.findViewById(2131365743).setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
     }
-    return false;
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Allz.a.a();
+      return;
+      label79:
+      PrinterSubOptionActivity.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ct
  * JD-Core Version:    0.7.0.1
  */

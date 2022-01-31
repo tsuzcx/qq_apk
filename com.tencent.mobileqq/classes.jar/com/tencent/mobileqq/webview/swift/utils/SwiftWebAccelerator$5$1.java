@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
 import android.os.Bundle;
-import bcgn;
+import befo;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 
 class SwiftWebAccelerator$5$1
@@ -16,7 +16,7 @@ class SwiftWebAccelerator$5$1
     {
       localObject = new String[2];
       localObject[0] = "https://qc.vip.qq.com/";
-      localObject[1] = "http://m.gamecenter.qq.com";
+      localObject[1] = "https://m.gamecenter.qq.com";
       int j = localObject.length;
       while (i < j)
       {
@@ -38,7 +38,7 @@ class SwiftWebAccelerator$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.5.1
  * JD-Core Version:    0.7.0.1
  */

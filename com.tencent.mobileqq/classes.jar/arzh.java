@@ -1,19 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class arzh
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  arzh(arzc paramarzc, View.OnClickListener paramOnClickListener) {}
+  arzh(arzf paramarzf, bdfq parambdfq) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    this.jdField_a_of_type_Arzf.c();
+    this.jdField_a_of_type_Bdfq.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arzh
  * JD-Core Version:    0.7.0.1
  */

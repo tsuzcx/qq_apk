@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import adwj;
+import agso;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$66
@@ -11,14 +11,14 @@ class BaseChatPie$66
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "checkPESourceDowned onShow First");
+      QLog.d(this.this$0.a, 2, "checkPESourceDowned onShow First");
     }
-    adwj.d(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    agso.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.66
  * JD-Core Version:    0.7.0.1
  */

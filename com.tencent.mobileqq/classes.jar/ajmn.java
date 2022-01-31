@@ -1,10 +1,20 @@
-public abstract interface ajmn
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+
+public class ajmn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract void b();
+  public ajmn(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    NewFlowCameraActivity.a(this.a, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmn
  * JD-Core Version:    0.7.0.1
  */

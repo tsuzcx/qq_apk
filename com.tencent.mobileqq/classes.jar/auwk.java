@@ -1,46 +1,20 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.EditText;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.9.1;
 
 public class auwk
-  extends ajto
+  implements bemq
 {
-  public auwk(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity) {}
+  public auwk(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void reqShoppingInfo(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "user binding shoppingNo = " + paramString1 + "Threadid=" + Thread.currentThread().getId());
-    }
-    if ((this.a.app == null) || (this.a.isFinishing())) {}
-    do
-    {
-      return;
-      this.a.app.removeObserver(this);
-      this.a.b = null;
-    } while (!paramBoolean);
-    if ("0".equals(paramString1))
-    {
-      paramString1 = this.a.a;
-      paramString2 = this.a.a;
-      paramString1 = paramString1.getSharedPreferences("is_binding_shop", 0).edit();
-      paramString1.putBoolean(this.a.e, false);
-      paramString1.commit();
-      return;
-    }
-    paramString1 = this.a.a;
-    paramString2 = this.a.a;
-    paramString1 = paramString1.getSharedPreferences("is_binding_shop", 0).edit();
-    paramString1.putBoolean(this.a.e, true);
-    paramString1.commit();
+    ChooseInterestTagActivity.a(this.a).post(new ChooseInterestTagActivity.9.1(this, paramInt1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auwk
  * JD-Core Version:    0.7.0.1
  */

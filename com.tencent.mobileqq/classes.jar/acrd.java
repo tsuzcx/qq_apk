@@ -1,42 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class acrd
-  implements View.OnClickListener
+class acrd
+  implements DialogInterface.OnClickListener
 {
-  public acrd(ActivateFriendGrid paramActivateFriendGrid) {}
+  acrd(acrb paramacrb) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (ActivateFriendGridItem)paramView;
-    if (paramView.jdField_a_of_type_Boolean)
-    {
-      ActivateFriendGrid.a(this.a);
-      if (paramView.jdField_a_of_type_Boolean) {
-        break label101;
-      }
-    }
-    label101:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      if (ActivateFriendGrid.a(this.a) != null) {
-        ActivateFriendGrid.a(this.a).a(ActivateFriendGrid.c(this.a));
-      }
-      if (ActivateFriendGrid.a(this.a) != null) {
-        ActivateFriendGrid.a(this.a).a(paramView.jdField_a_of_type_Int);
-      }
-      return;
-      ActivateFriendGrid.b(this.a);
-      break;
-    }
+    this.a.a.a.sendEmptyMessage(259);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.mobileqq.ar.view.ARScanEntryView.26;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import java.util.Comparator;
 
 public class allw
-  implements View.OnClickListener
+  implements Comparator<DiscussionMemberInfo>
 {
-  public allw(ARScanEntryView.26 param26) {}
-  
-  public void onClick(View paramView)
+  public int a(DiscussionMemberInfo paramDiscussionMemberInfo1, DiscussionMemberInfo paramDiscussionMemberInfo2)
   {
-    if (this.a.jdField_a_of_type_Alae != null) {
-      this.a.jdField_a_of_type_Alae.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
+    if ((paramDiscussionMemberInfo1 != null) && (paramDiscussionMemberInfo2 != null))
+    {
+      paramDiscussionMemberInfo1 = Long.valueOf(Long.parseLong(paramDiscussionMemberInfo1.memberUin));
+      paramDiscussionMemberInfo2 = Long.valueOf(Long.parseLong(paramDiscussionMemberInfo2.memberUin));
+      if (paramDiscussionMemberInfo1.longValue() <= paramDiscussionMemberInfo2.longValue()) {}
     }
-    ARScanEntryView.g(this.a.this$0);
-    ARScanEntryView.d(this.a.this$0);
-    this.a.this$0.a.setOnClickListener(this.a.this$0);
+    while (paramDiscussionMemberInfo1 != null)
+    {
+      return 1;
+      if (paramDiscussionMemberInfo1.longValue() < paramDiscussionMemberInfo2.longValue()) {
+        return -1;
+      }
+      return 0;
+    }
+    if (paramDiscussionMemberInfo2 != null) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     allw
  * JD-Core Version:    0.7.0.1
  */

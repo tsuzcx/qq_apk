@@ -1,72 +1,64 @@
-import android.content.Context;
-import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class tsa
+  extends tvg
+  implements View.OnClickListener
 {
-  public static void a(Context paramContext, String paramString, tsc paramtsc, bcqf parambcqf)
+  private View jdField_a_of_type_AndroidViewView;
+  private SquareImageView jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
+  private View b;
+  private View c;
+  private View d;
+  private View e;
+  
+  protected void a(View paramView)
   {
-    ThreadManager.getUIHandler().post(new StoryShareEncryptHelper.2(paramString, parambcqf, paramContext, paramtsc));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372529);
+    this.b = paramView.findViewById(2131372527);
+    this.c = paramView.findViewById(2131372519);
+    this.c.setOnClickListener(this);
+    this.d = paramView.findViewById(2131372523);
+    this.d.setOnClickListener(this);
+    tyj.a("", 4, 1L);
+    this.e = paramView.findViewById(2131372518);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131372522));
+    this.e.setOnClickListener(this);
+    if ((a() != null) && ((a() instanceof BaseActivity))) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setImageDrawable(bcxb.a(((BaseActivity)a()).app, 1, 4, tqg.a()));
+    }
   }
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  public void onClick(View paramView)
   {
-    paramString = paramString.split("&");
-    int j = paramString.length;
-    int i = 0;
-    while (i < j)
+    String str = "1";
+    if (tym.a().c(3)) {
+      str = "2";
+    }
+    switch (paramView.getId())
     {
-      String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length == 2) {
-        paramHashMap.put(arrayOfString[0], arrayOfString[1]);
-      }
-      i += 1;
+    case 2131372520: 
+    case 2131372521: 
+    default: 
+      return;
+    case 2131372519: 
+      ((BaseActivity)a()).doOnBackPressed();
+      tyj.a("", 21, 1L, 0L, str, "", "", "", "");
+      return;
+    case 2131372523: 
+      tqs.a(a(), tqr.b, null);
+      tyj.a("", 4, 2L);
+      return;
     }
-  }
-  
-  public static void a(HashMap<String, String> paramHashMap)
-  {
-    HashMap<String, String> localHashMap = null;
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    paramHashMap = localHashMap;
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if ((!str.equals("src_type")) && (!str.equals("version")) && (!str.equals("from_leba")) && (!str.equals("leba_resid")) && (!str.equals("config_res_plugin_item_name")) && (!str.equals("redtouch_click_timestamp")) && (!str.equals("lebaVersion")) && (!str.equals("redid")))
-      {
-        localHashMap = paramHashMap;
-        if (QLog.isColorLevel())
-        {
-          if (paramHashMap != null) {
-            break label144;
-          }
-          paramHashMap = new StringBuilder();
-        }
-        for (;;)
-        {
-          paramHashMap.append(str);
-          localHashMap = paramHashMap;
-          localIterator.remove();
-          paramHashMap = localHashMap;
-          break;
-          label144:
-          paramHashMap.append('|');
-        }
-      }
-    }
-    if ((paramHashMap != null) && (QLog.isColorLevel())) {
-      QLog.d("Q.qqstory.share.trans.helper", 2, "remove attrs:" + paramHashMap);
-    }
+    tyj.a("", 21, 2L, 0L, str, "", "", "", "");
+    tqs.a(tqg.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsa
  * JD-Core Version:    0.7.0.1
  */

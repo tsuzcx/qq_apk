@@ -1,46 +1,59 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 class aqqh
-  implements View.OnClickListener
+  implements aqnr
 {
-  aqqh(aqqc paramaqqc, String paramString1, String paramString2) {}
+  aqqh(aqqg paramaqqg, String paramString, aqqr paramaqqr) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString)
   {
-    paramView = new HashMap();
-    yoa.a(paramView, this.jdField_a_of_type_JavaLangString);
-    paramView.put(Integer.valueOf(2), this.jdField_a_of_type_JavaLangString);
-    paramView.put(Integer.valueOf(10), "1");
-    paramView.put(Integer.valueOf(12), this.b);
-    Intent localIntent = new Intent(aqqc.a(this.jdField_a_of_type_Aqqc), QQBrowserActivity.class);
-    if (TextUtils.isEmpty(this.b))
-    {
-      localIntent.putExtra("url", "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=gzh&_wv=18950115&_wwv=393");
-      paramView.put(Integer.valueOf(12), this.b + "&adtag=gzhyuyuezq");
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2BuddyTaskExcuter onFaild：");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
     }
     for (;;)
     {
-      yoa.a(ajac.a(), "769", "205711", this.jdField_a_of_type_Aqqc.a().gameAppId, "76905", "1", "160", paramView);
-      aqqc.a(this.jdField_a_of_type_Aqqc).startActivity(localIntent);
-      aqqc.a(this.jdField_a_of_type_Aqqc).dismiss();
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqqg.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Aqqr.a(aqpv.a(this.jdField_a_of_type_Aqqg.jdField_a_of_type_Long, bool2), bool1);
       return;
-      localIntent.putExtra("url", this.b);
-      paramView.put(Integer.valueOf(12), this.b + "&adtag=gzhyuyuebl");
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+      }
     }
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "1");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqqg.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqqg.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqqg.c);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqqg.e);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqqg.f);
+    localBundle.putString("_m_ForwardUuid", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqqg.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send success");
+    }
+    this.jdField_a_of_type_Aqqr.a(paramString, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqh
  * JD-Core Version:    0.7.0.1
  */

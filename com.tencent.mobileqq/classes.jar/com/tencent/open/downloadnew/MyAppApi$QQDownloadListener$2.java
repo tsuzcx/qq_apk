@@ -1,16 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import bdle;
-import bdmd;
+import bfkb;
+import bfla;
 
 public class MyAppApi$QQDownloadListener$2
   implements Runnable
 {
-  public MyAppApi$QQDownloadListener$2(bdmd parambdmd) {}
+  public MyAppApi$QQDownloadListener$2(bfla parambfla) {}
   
   public void run()
   {
-    bdle.a().d();
+    bfkb.a().d();
   }
 }
 

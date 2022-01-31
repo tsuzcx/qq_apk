@@ -1,142 +1,110 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.NonNull;
+import android.app.Activity;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.2;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPOIList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.util.WeakReference;
+import com.tencent.biz.pubaccount.weishi_new.download.RockDownloadListenerWrapper;
+import com.tencent.biz.pubaccount.weishi_new.download.RockDownloadPresenter.1;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener;
+import com.tencent.mobileqq.data.RockDownloadInfo;
 
 public class tes
-  implements tch
 {
-  public static ter a;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private List<tev> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
-  protected boolean a;
-  public ter b;
-  private boolean b;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private WSDownloadParams jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams;
+  private RockDownloadListener jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloadListener;
   
-  public static ter a()
+  public tes(Activity paramActivity)
   {
-    return jdField_a_of_type_Ter;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public void a()
+  private RockDownloadListener a(RockDownloadListenerWrapper paramRockDownloadListenerWrapper)
   {
-    ved.b("LbsManager", "onInit");
-  }
-  
-  public void a(int paramInt)
-  {
-    c();
-    new Handler().postDelayed(new LbsManager.2(this, paramInt), paramInt);
-  }
-  
-  public void a(@NonNull ter paramter, tey paramtey, tex paramtex)
-  {
-    ved.a("LbsManager", "requestPOIList([lat]%d, [lng]%d, [mars]%d, %s)", Integer.valueOf(paramter.jdField_a_of_type_Int), Integer.valueOf(paramter.b), Integer.valueOf(paramter.c), paramtey);
-    WeakReference localWeakReference = new WeakReference(paramtex);
-    if (paramtey == null) {
-      paramtex = tey.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloadListener == null) {
+      this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloadListener = new RockDownloadPresenter.1(this, paramRockDownloadListenerWrapper);
     }
-    for (;;)
+    return this.jdField_a_of_type_ComTencentMobileqqBigbrotherRockDownloaderRockDownloadListener;
+  }
+  
+  public static String a()
+  {
+    return "https://weseeugg.qq.com/download?channelid=204002177";
+  }
+  
+  public RockDownloadInfo a()
+  {
+    int i = tee.a().e();
+    String str2 = tee.a().c();
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = a();
+    }
+    return new RockDownloadInfo("biz_src_jc_gzh_weishi", "weishi_gzh", "com.tencent.weishi", str1, i);
+  }
+  
+  public void a(Activity paramActivity, RockDownloadInfo paramRockDownloadInfo, int paramInt, WSDownloadParams paramWSDownloadParams, RockDownloadListenerWrapper paramRockDownloadListenerWrapper)
+  {
+    if ((paramActivity != null) && (paramInt == 3)) {
+      tet.a(paramActivity);
+    }
+    if (tfa.c())
     {
-      ved.b("LbsManager", "requestPoiList");
-      paramtey = sxm.a("StorySvc.get_poi_list");
-      qqstory_service.ReqGetPOIList localReqGetPOIList = new qqstory_service.ReqGetPOIList();
-      if (!TextUtils.isEmpty(paramtex.jdField_a_of_type_JavaLangString)) {
-        localReqGetPOIList.start_cookie.set(ByteStringMicro.copyFromUtf8(paramtex.jdField_a_of_type_JavaLangString));
-      }
-      localReqGetPOIList.coordinate.set(paramter.c);
-      localReqGetPOIList.count.set(paramtex.jdField_a_of_type_Int);
-      if (!TextUtils.isEmpty(paramtex.jdField_b_of_type_JavaLangString)) {
-        localReqGetPOIList.keyword.set(ByteStringMicro.copyFromUtf8(paramtex.jdField_b_of_type_JavaLangString));
-      }
-      localReqGetPOIList.gps.lat.set(paramter.jdField_a_of_type_Int);
-      localReqGetPOIList.gps.lng.set(paramter.b);
-      localReqGetPOIList.gps.setHasFlag(true);
-      paramter = new Bundle();
-      syo.a().a(new tly(paramtey, localReqGetPOIList, paramter), new teu(this, localWeakReference, paramtex));
-      return;
-      paramtex = paramtey;
-      if (!TextUtils.isEmpty(paramtey.jdField_a_of_type_JavaLangString))
-      {
-        paramtey.jdField_b_of_type_Boolean = false;
-        paramtex = paramtey;
-      }
-    }
-  }
-  
-  public void a(@NonNull tev paramtev)
-  {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramtev))
-    {
-      ved.a("LbsManager", "registerLbsListener:%s", paramtev.getClass().getName());
-      this.jdField_a_of_type_JavaUtilList.add(paramtev);
-    }
-  }
-  
-  public void a(boolean paramBoolean, ter paramter)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((tev)localIterator.next()).a(paramBoolean, paramter);
-    }
-  }
-  
-  public ter b()
-  {
-    return this.jdField_b_of_type_Ter;
-  }
-  
-  public void b()
-  {
-    ved.b("LbsManager", "onDestroy");
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void b(@NonNull tev paramtev)
-  {
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramtev))
-    {
-      ved.a("LbsManager", "unregisterLbsListener:%s", paramtev.getClass().getName());
-      this.jdField_a_of_type_JavaUtilList.remove(paramtev);
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      ved.d("LbsManager", "is locating..... return directly.");
+      tlo.d("RockDownloader", "已有正在下载的任务，不响应");
       return;
     }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        ved.d("LbsManager", "is locating..... return directly.");
-        return;
-      }
+    paramActivity = paramWSDownloadParams;
+    if (paramWSDownloadParams == null) {
+      paramActivity = new WSDownloadParams();
     }
-    ved.b("LbsManager", "requestLbs...");
-    this.jdField_a_of_type_Boolean = true;
-    SosoInterface.a(new tet(this, 0, true, false, 60000L, false, false, "NewStoryTakeVideoActivity"));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams = paramActivity;
+    tju.a(paramActivity, 1);
+    WSPublicAccReport.getInstance().reportDownload(paramActivity.mEventId, paramInt, 1, 1, 0);
+    if (paramInt == 1)
+    {
+      anrq.a(paramRockDownloadInfo, a(paramRockDownloadListenerWrapper));
+      tlo.d("RockDownloader", "执行预下载Rock下载 " + paramRockDownloadInfo.toString());
+      return;
+    }
+    tlv.a(paramActivity.mScheme);
+    anrq.a(paramRockDownloadInfo, a(paramRockDownloadListenerWrapper));
+    tlo.d("RockDownloader", "执行可call起安装Rock下载 " + paramRockDownloadInfo.toString());
+  }
+  
+  public boolean a(RockDownloadInfo paramRockDownloadInfo)
+  {
+    boolean bool = anrq.a(paramRockDownloadInfo);
+    if (bool)
+    {
+      tlo.b("RockDownloader", "rockdownload deleteSuccess");
+      return bool;
+    }
+    if (paramRockDownloadInfo.realVersionCode == 333)
+    {
+      tlo.b("RockDownloader", "rockdownload 模拟 deleteFail");
+      return bool;
+    }
+    tlo.b("RockDownloader", "rockdownload deleteFail");
+    return bool;
+  }
+  
+  public boolean a(RockDownloadInfo paramRockDownloadInfo, int paramInt)
+  {
+    boolean bool = anrq.b(paramRockDownloadInfo);
+    int i = tfa.b();
+    if (bool)
+    {
+      tlo.d("RockDownloader", "rockdownload installSuccess,eventType = " + i);
+      tju.a(paramInt, 1);
+      WSPublicAccReport.getInstance().reportDownload(tfa.a(), i, 2, 1, 1);
+      return bool;
+    }
+    tlo.d("RockDownloader", "rockdownload installFail,eventType = " + i);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tes
  * JD-Core Version:    0.7.0.1
  */

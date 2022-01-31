@@ -1,27 +1,27 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.activity.OlympicToolBaseActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
 
 public class augb
-  implements Handler.Callback
+  extends AnimatorListenerAdapter
 {
-  public augb(OlympicToolBaseActivity paramOlympicToolBaseActivity) {}
+  public augb(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.f();
-    }
+    super.onAnimationCancel(paramAnimator);
+    MultiAIOFragment.d(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    MultiAIOFragment.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     augb
  * JD-Core Version:    0.7.0.1
  */

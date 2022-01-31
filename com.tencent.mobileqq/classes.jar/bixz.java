@@ -1,21 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class bixz
-  implements DialogInterface.OnCancelListener
+final class bixz
+  implements WtTicketPromise
 {
-  public bixz(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
+  bixz(biya parambiya, String paramString) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void Done(Ticket paramTicket)
   {
-    AEVideoShelfEditFragment.a(this.a).cancelSave();
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "get pskey async success!");
+    }
+    if (this.jdField_a_of_type_Biya != null) {
+      this.jdField_a_of_type_Biya.a(0, new String[] { bixy.a(paramTicket, this.jdField_a_of_type_JavaLangString) });
+    }
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Failed!!!");
+    }
+    if (this.jdField_a_of_type_Biya != null) {
+      this.jdField_a_of_type_Biya.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QWalletUtils", 2, "preGetKey. PSk Timeout!");
+    }
+    if (this.jdField_a_of_type_Biya != null) {
+      this.jdField_a_of_type_Biya.a(-1, new String[] { paramErrMsg.getMessage() });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bixz
  * JD-Core Version:    0.7.0.1
  */

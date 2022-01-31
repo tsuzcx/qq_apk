@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.bless;
 
-import axjs;
+import azey;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -18,13 +18,13 @@ class BlessResultActivity$2
     }
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
     if ((localAppRuntime instanceof QQAppInterface)) {
-      axjs.a((QQAppInterface)localAppRuntime);
+      azey.a((QQAppInterface)localAppRuntime);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessResultActivity.2
  * JD-Core Version:    0.7.0.1
  */

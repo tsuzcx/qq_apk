@@ -1,31 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.app.Dialog;
 import android.view.View;
-import android.widget.ImageView;
+import android.view.View.OnClickListener;
 
-public class bipa
-  extends RecyclerView.ViewHolder
+final class bipa
+  implements View.OnClickListener
 {
-  public ImageView a;
+  bipa(Dialog paramDialog, String paramString) {}
   
-  public bipa(View paramView)
+  public void onClick(View paramView)
   {
-    super(paramView);
-    this.a = ((ImageView)paramView.findViewById(2131377242));
-  }
-  
-  public void a()
-  {
-    this.a.setImageResource(2130845099);
-  }
-  
-  public void b()
-  {
-    this.a.setImageResource(2130845100);
+    if (this.jdField_a_of_type_AndroidAppDialog != null) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bipa
  * JD-Core Version:    0.7.0.1
  */

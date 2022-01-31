@@ -1,33 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.support.annotation.Nullable;
 
-public class bktx
-  extends BroadcastReceiver
+class bktx
+  implements bmac<blbb>
 {
-  public bktx(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  bktx(bktw parambktw) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(@Nullable blbb paramblbb)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
+    if (paramblbb == null) {
+      return;
     }
-    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
-    {
-      if ((this.a.a != null) && (this.a.a.isPlaying())) {
-        this.a.h = true;
-      }
-      this.a.j();
-    }
+    bktw.a(this.a, paramblbb.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bktx
  * JD-Core Version:    0.7.0.1
  */

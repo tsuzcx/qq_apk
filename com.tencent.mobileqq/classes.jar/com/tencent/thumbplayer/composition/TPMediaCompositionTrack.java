@@ -118,7 +118,16 @@ public class TPMediaCompositionTrack
   
   public int getMediaType()
   {
-    return this.mTrackType;
+    try
+    {
+      int i = this.mTrackType;
+      return i;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public long getTimelineDurationMs()
@@ -207,9 +216,13 @@ public class TPMediaCompositionTrack
     }
     catch (IOException localIOException)
     {
-      TPLogUtil.e("TPMediaCompositionTrack", localIOException);
+      for (;;)
+      {
+        TPLogUtil.e("TPMediaCompositionTrack", localIOException);
+        Object localObject1 = null;
+      }
     }
-    return null;
+    finally {}
   }
   
   public int insertTrackClip(ITPMediaTrackClip paramITPMediaTrackClip, int paramInt)
@@ -315,7 +328,7 @@ public class TPMediaCompositionTrack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.composition.TPMediaCompositionTrack
  * JD-Core Version:    0.7.0.1
  */

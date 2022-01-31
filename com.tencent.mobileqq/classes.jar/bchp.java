@@ -1,27 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class bchp
-  implements bchq
+public abstract class bchp
+  extends nac
 {
-  public bchp(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
-  
-  public void a(String paramString)
+  public bchp()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10005;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Bchc.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
+    super(false);
   }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    QLog.i(".troop.troop_app", 2, "clickReport errorCode = " + paramInt);
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      a(bool);
+      return;
+    }
+  }
+  
+  protected abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bchp
  * JD-Core Version:    0.7.0.1
  */

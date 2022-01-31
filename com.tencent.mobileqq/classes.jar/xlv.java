@@ -1,25 +1,58 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
+import java.io.File;
 
-class xlv
-  implements Animation.AnimationListener
+public class xlv
+  extends xlz
 {
-  xlv(xls paramxls, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public xlv(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    super(paramTroopStoryMemoriesListAdapter, paramView);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
+  {
+    TroopStoryMemoriesListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
+    Drawable localDrawable = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130846374);
+    try
+    {
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "troop_story_message";
+      localObject = URLDrawable.getDrawable(new File(paramTroopStoryItemInfo.videoThumbUrl), (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setTag(bcuq.b(xod.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), xod.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), xod.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
+      ((URLDrawable)localObject).setDecodeHandler(bcuq.i);
+      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      localDrawable = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130846371);
+      localDrawable.setBounds(0, 0, 26, 26);
+      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
+      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(alpo.a(2131716171));
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-65536);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new xlw(this, paramTroopStoryItemInfo));
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xlv
  * JD-Core Version:    0.7.0.1
  */

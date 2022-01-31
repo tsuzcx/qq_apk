@@ -1,53 +1,50 @@
-import android.content.Context;
-import android.media.AudioManager;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-class bcus
-  implements asgr
+final class bcus
+  implements DownloadParams.DecodeHandler
 {
-  bcus(bcuq parambcuq) {}
-  
-  public void a(int paramInt)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("TVKVideoController", 4, new Object[] { "onFocusChange focusType:", Integer.valueOf(paramInt) });
-    }
-    switch (paramInt)
-    {
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
     do
     {
       do
       {
+        Object localObject;
         do
         {
-          return;
-        } while (bcuq.a(this.a) == null);
-        ((AudioManager)((Context)bcuq.a(this.a).get()).getSystemService("audio")).requestAudioFocus(null, 3, 2);
-        bcuq.a(this.a).c();
-        bcuq.a(this.a, 1);
-        if (bcuq.a(this.a) != null) {
-          bcuq.a(this.a).onVideoStart((int)bcuq.a(this.a).c());
+          do
+          {
+            return paramDownloadParams;
+            localObject = paramDownloadParams.tag;
+            paramDownloadParams = paramBitmap;
+          } while (!(localObject instanceof int[]));
+          paramDownloadParams = paramBitmap;
+        } while (((int[])localObject).length != 4);
+        paramDownloadParams = (int[])localObject;
+        if (paramDownloadParams[0] == 0) {
+          paramDownloadParams[0] = paramBitmap.getWidth();
         }
-        bcuq.a(this.a).postDelayed(this.a.a, 100L);
-        return;
-      } while (bcuq.a(this.a) == null);
-      bcuq.a(this.a).b();
-      bcuq.a(this.a, 4);
-      if (bcuq.a(this.a) != null) {
-        bcuq.a(this.a).onVideoStop();
-      }
-      bcuq.a(this.a).removeCallbacks(this.a.a);
-      return;
-    } while (bcuq.a(this.a) == null);
-    bcuq.a(this.a).a(true);
+        if (paramDownloadParams[1] == 0) {
+          paramDownloadParams[1] = paramBitmap.getHeight();
+        }
+        paramBitmap = bdda.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1], paramDownloadParams[2], paramDownloadParams[3]);
+        paramDownloadParams = paramBitmap;
+      } while (paramBitmap != null);
+      paramDownloadParams = paramBitmap;
+    } while (!QLog.isDevelopLevel());
+    QLog.w(bcuq.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
+    return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcus
  * JD-Core Version:    0.7.0.1
  */

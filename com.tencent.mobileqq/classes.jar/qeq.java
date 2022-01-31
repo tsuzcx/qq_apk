@@ -1,35 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.articlesummary.articlesummary.PackJumpInfo;
 
 public class qeq
-  implements rte
+  implements View.OnClickListener
 {
-  public qeq(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  public qeq(ComponentJump paramComponentJump, articlesummary.PackJumpInfo paramPackJumpInfo) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverUGCActivity", 2, "startDrag!");
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (ReadInJoyDeliverUGCActivity.a(this.a) != 0)
-    {
-      Integer localInteger = (Integer)ReadInJoyDeliverUGCActivity.a(this.a).remove(paramInt1);
-      ReadInJoyDeliverUGCActivity.a(this.a).add(paramInt2, localInteger);
-      nol.a(null, "", "0X800953F", "0X800953F", 0, 0, "", "", "", onh.e(), false);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverUGCActivity", 2, "change position old position=" + paramInt1 + " new position" + paramInt2);
-      }
-    }
+    paramView = this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_url.get();
+    ors.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), paramView);
+    pja.a(2, this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_wording.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qeq
  * JD-Core Version:    0.7.0.1
  */

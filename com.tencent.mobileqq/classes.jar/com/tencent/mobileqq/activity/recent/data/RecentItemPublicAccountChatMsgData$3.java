@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import axqy;
+import azmj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class RecentItemPublicAccountChatMsgData$3
@@ -10,12 +10,12 @@ class RecentItemPublicAccountChatMsgData$3
   
   public void run()
   {
-    axqy.b(this.a, "dc00899", "Pb_account_lifeservice", "", "0X8007054", "0X8007054", 0, 0, "", "", "", "");
+    azmj.b(this.a, "dc00899", "Pb_account_lifeservice", "", "0X8007054", "0X8007054", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData.3
  * JD-Core Version:    0.7.0.1
  */

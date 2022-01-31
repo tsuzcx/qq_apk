@@ -1,43 +1,82 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 class arut
-  extends akil
+  implements View.OnClickListener
 {
-  arut(arus paramarus) {}
+  arut(arum paramarum, String paramString, aruy paramaruy) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    super.a(paramInt1, paramInt2, paramString);
-    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0))
+    azmj.b(this.jdField_a_of_type_Arum.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800514A", "0X800514A", 0, 0, "", "", "", "");
+    paramView = this.jdField_a_of_type_Arum.jdField_a_of_type_AndroidOsBundle.getParcelable("FORWARD_MSG_FOR_PIC");
+    if ((paramView instanceof MessageForPic))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, new Object[] { "onTroopManagerSuccess: invoked. 主动退群 or 解散群", " reqtype: ", Integer.valueOf(paramInt1), " troopUin: ", paramString });
+        QLog.d("ForwardOption.ForwardBaseOption", 2, "getImageEditListener from MessageForPic");
       }
-      arxj.a(this.a.app, 1, paramString);
+      paramView = (MessageForPic)paramView;
+      File localFile = new File(paramView.path);
+      if (((localFile == null) || (!localFile.exists()) || (localFile.length() != paramView.size)) || (paramView != null)) {
+        arum.a(this.jdField_a_of_type_Arum, paramView, this.jdField_a_of_type_JavaLangString);
+      }
     }
-  }
-  
-  protected void b(String paramString, int paramInt)
-  {
-    super.b(paramString, paramInt);
-    if (!TextUtils.isEmpty(paramString))
+    do
     {
+      do
+      {
+        return;
+        if (!(paramView instanceof AIOImageData)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardOption.ForwardBaseOption", 2, "getImageEditListener from AIOImageData");
+        }
+        paramView = (AIOImageData)paramView;
+        if ((paramView.a(4)) && (paramView.a(4) != null))
+        {
+          arum.a(this.jdField_a_of_type_Arum, paramView, this.jdField_a_of_type_JavaLangString);
+          return;
+        }
+        if ((paramView.a(2)) && (paramView.a(2) != null))
+        {
+          arum.a(this.jdField_a_of_type_Arum, paramView, this.jdField_a_of_type_JavaLangString);
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: image does not exist");
+      return;
       if (QLog.isColorLevel()) {
-        QLog.d("LocationHandler", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
+        QLog.d("ForwardOption.ForwardBaseOption", 2, "getImageEditListener from other");
       }
-      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-      if ((localBaseActivity != null) && (this.a.a.a())) {
-        bcql.a(localBaseActivity, 2131693252, 1).a();
+      paramView = this.jdField_a_of_type_Arum.jdField_a_of_type_AndroidOsBundle.getString("forward_filepath");
+      if (paramView != null)
+      {
+        arum.a(this.jdField_a_of_type_Arum, paramView, this.jdField_a_of_type_JavaLangString);
+        return;
       }
-      arxj.a(this.a.app, 1, paramString);
-    }
+      if (this.jdField_a_of_type_Arum.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("key_flag_from_plugin", false))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: from QZone");
+        }
+        this.jdField_a_of_type_Arum.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_QZONE_SHARE", true);
+        arum.a(this.jdField_a_of_type_Arum, this.jdField_a_of_type_Arum.b, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: Unknown source");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arut
  * JD-Core Version:    0.7.0.1
  */

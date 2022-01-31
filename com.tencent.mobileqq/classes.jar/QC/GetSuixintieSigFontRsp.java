@@ -10,6 +10,7 @@ public final class GetSuixintieSigFontRsp
 {
   static CommonRsp cache_stRet = new CommonRsp();
   static ArrayList<UniBusiSimpleItemDetail> cache_vItems = new ArrayList();
+  public int isEnd;
   public CommonRsp stRet;
   public String strAttachInfo = "";
   public ArrayList<UniBusiSimpleItemDetail> vItems;
@@ -22,11 +23,12 @@ public final class GetSuixintieSigFontRsp
   
   public GetSuixintieSigFontRsp() {}
   
-  public GetSuixintieSigFontRsp(CommonRsp paramCommonRsp, ArrayList<UniBusiSimpleItemDetail> paramArrayList, String paramString)
+  public GetSuixintieSigFontRsp(CommonRsp paramCommonRsp, ArrayList<UniBusiSimpleItemDetail> paramArrayList, String paramString, int paramInt)
   {
     this.stRet = paramCommonRsp;
     this.vItems = paramArrayList;
     this.strAttachInfo = paramString;
+    this.isEnd = paramInt;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -34,6 +36,7 @@ public final class GetSuixintieSigFontRsp
     this.stRet = ((CommonRsp)paramJceInputStream.read(cache_stRet, 0, false));
     this.vItems = ((ArrayList)paramJceInputStream.read(cache_vItems, 1, false));
     this.strAttachInfo = paramJceInputStream.readString(2, false);
+    this.isEnd = paramJceInputStream.read(this.isEnd, 3, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -47,6 +50,7 @@ public final class GetSuixintieSigFontRsp
     if (this.strAttachInfo != null) {
       paramJceOutputStream.write(this.strAttachInfo, 2);
     }
+    paramJceOutputStream.write(this.isEnd, 3);
   }
 }
 

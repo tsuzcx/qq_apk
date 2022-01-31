@@ -1,70 +1,74 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class opk
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  HashMap<String, HashSet<Object>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  opl jdField_a_of_type_Opl;
+  
+  public opk(opl paramopl)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoColumnHandler", 1, "[onReceiveConfig] " + paramString);
-    for (;;)
-    {
-      String str1;
-      String str2;
-      try
-      {
-        paramString = oof.a(paramString);
-        Iterator localIterator = paramString.keySet().iterator();
-        if (localIterator.hasNext())
-        {
-          str1 = (String)localIterator.next();
-          str2 = (String)paramString.get(str1);
-          if (TextUtils.isEmpty(str2)) {
-            break label209;
-          }
-          QLog.d("VideoColumnHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
-          if (TextUtils.equals(str1, "video_channel_feeds_type")) {
-            bhvy.a(Integer.parseInt(str2));
-          }
-        }
-        else
-        {
-          return true;
-        }
-      }
-      catch (Exception paramString)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoColumnHandler", 2, "error in parse video_feeds_Type config: " + paramString.getMessage());
-        }
-      }
-      if (TextUtils.equals(str1, "multi_video_feeds_type"))
-      {
-        bhvy.b(Integer.parseInt(str2));
-        continue;
-        label209:
-        QLog.d("VideoColumnHandler", 2, "key: " + str1 + " of value is null");
-      }
-    }
+    this.jdField_a_of_type_Opl = paramopl;
   }
   
-  public void onWipeConfig(int paramInt)
+  private void b(String paramString, Object paramObject)
   {
-    super.onWipeConfig(paramInt);
-    bhvy.a(1);
-    bhvy.b(1);
+    HashSet localHashSet2 = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if ((localHashSet2 != null) && (localHashSet2.contains(paramObject))) {
+      return;
+    }
+    HashSet localHashSet1 = localHashSet2;
+    if (localHashSet2 == null) {
+      localHashSet1 = new HashSet();
+    }
+    localHashSet1.add(paramObject);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localHashSet1);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    a(paramString, paramObject, true);
+  }
+  
+  public void a(String paramString, Object paramObject, boolean paramBoolean)
+  {
+    b(paramString, paramObject);
+    if (paramBoolean) {}
+    while (this.jdField_a_of_type_Opl == null) {
+      return;
+    }
+    this.jdField_a_of_type_Opl.a(paramString, paramObject);
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Opl != null) && (!this.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
+    {
+      Iterator localIterator1 = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      while (localIterator1.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator1.next();
+        Iterator localIterator2 = ((HashSet)localEntry.getValue()).iterator();
+        while (localIterator2.hasNext())
+        {
+          Object localObject = localIterator2.next();
+          this.jdField_a_of_type_Opl.a((String)localEntry.getKey(), localObject);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     opk
  * JD-Core Version:    0.7.0.1
  */

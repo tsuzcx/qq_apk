@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class StoryEntry
-  extends auko
+  extends awbv
 {
   public String coverUrl;
   public long dbTime = System.currentTimeMillis();
@@ -12,7 +12,7 @@ public class StoryEntry
   public String extra2;
   public String extra3;
   public int hasUnWatchVideo;
-  @aumc
+  @awdj
   public String key;
   public String mDoodleText;
   public int seq;
@@ -50,7 +50,7 @@ public class StoryEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.StoryEntry
  * JD-Core Version:    0.7.0.1
  */

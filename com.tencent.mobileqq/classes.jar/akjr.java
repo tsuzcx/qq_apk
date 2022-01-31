@@ -1,59 +1,98 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 
-public class akjr
-  extends ajtb
+class akjr
+  extends bdvu
 {
-  public akjr(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  akjr(akji paramakji) {}
   
-  public void a(int paramInt)
-  {
-    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "WifiCloudCheckSvc.req");
-    localToServiceMsg.addAttribute("request_type", Integer.valueOf(paramInt));
-    super.send(localToServiceMsg);
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return akjs.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void onDone(bdvv parambdvv)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive resultCode: " + paramFromServiceMsg.getResultCode() + " errorMsg: " + paramFromServiceMsg.getBusinessFailMsg() + " serviceCmd: " + paramToServiceMsg.getServiceCmd());
+      QLog.d("ApolloManager", 2, "download onDone");
     }
-    int i = 0;
-    try
+    if (parambdvv.a() == 3) {
+      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "action_download_success", 0, 0, new String[0]);
+    }
+    if (this.a.jdField_a_of_type_Alfx != null) {
+      this.a.jdField_a_of_type_Alfx.b();
+    }
+  }
+  
+  public void onDoneFile(bdvv parambdvv)
+  {
+    if (parambdvv == null) {}
+    label314:
+    label320:
+    for (;;)
     {
-      if ("WifiCloudCheckSvc.req".equals(paramToServiceMsg.getServiceCmd()))
+      return;
+      String str1 = parambdvv.c;
+      parambdvv = parambdvv.a();
+      if (parambdvv != null)
       {
-        int j = ((Integer)paramToServiceMsg.getAttribute("request_type")).intValue();
-        i = j;
-        if (QLog.isColorLevel())
+        parambdvv = (ApolloActionData)parambdvv.getSerializable(str1);
+        if (parambdvv == null)
         {
-          QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive type: " + j);
-          i = j;
+          QLog.e("ApolloManager", 1, "action res onDoneFile but action data is null");
+          return;
+        }
+        String str2 = ApolloUtil.a(parambdvv, 4);
+        if (str1.equals(ApolloUtil.a(parambdvv, 5)))
+        {
+          try
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloManager", 2, "action res zip done acitonid=" + parambdvv.actionId + " action name =" + parambdvv.actionName);
+            }
+            if (!ApolloUtil.a(parambdvv.actionId, parambdvv.personNum))
+            {
+              bdcs.a(str2, ApolloUtil.a(parambdvv, 6), false);
+              bdcs.d(str2);
+              this.a.a(parambdvv);
+            }
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.e("ApolloManager", 2, "uncompressZip fail zip file: " + str2, localException);
+              }
+            }
+          }
+          if (parambdvv.compoundType <= 0) {
+            break label314;
+          }
+        }
+        for (boolean bool = ApolloUtil.a(parambdvv.actionId, 1, parambdvv.personNum, false);; bool = ApolloUtil.a(parambdvv))
+        {
+          if ((!bool) || (this.a.jdField_a_of_type_Alfx == null)) {
+            break label320;
+          }
+          parambdvv.status = 1;
+          if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+            ((aleh)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).b(parambdvv);
+          }
+          this.a.jdField_a_of_type_Alfx.a(parambdvv);
+          return;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("ApolloManager", 2, "onDoneFile panelView actionId = " + parambdvv.actionId + " action name =" + parambdvv.actionName);
+          break;
         }
       }
-      super.notifyUI(i, paramFromServiceMsg.isSuccess(), paramObject);
-      return;
-    }
-    catch (Exception paramToServiceMsg)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive exception: " + paramToServiceMsg.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akjr
  * JD-Core Version:    0.7.0.1
  */

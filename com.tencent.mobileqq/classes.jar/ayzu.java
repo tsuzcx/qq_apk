@@ -1,35 +1,27 @@
 public class ayzu
-  extends ayzr
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b = 0;
+  public volatile int a = 0;
+  public int b;
+  public int c = 0;
+  public int d;
   
-  public ayzu()
+  public String a()
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" isExist:");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(" fileId:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" startOffset:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" videoAttr:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" videoKandianType:").append(this.b);
-    return localStringBuilder.toString();
+    switch (this.a)
+    {
+    default: 
+      return "UNKNOWN_STATUS";
+    case 0: 
+      return "CONFIG_REQUEST_OK";
+    case 1: 
+      return "CONFIG_START_SERVLET";
+    }
+    return "CONFIG_SEND_REQ";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayzu
  * JD-Core Version:    0.7.0.1
  */

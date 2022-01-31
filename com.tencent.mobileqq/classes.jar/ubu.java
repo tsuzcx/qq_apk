@@ -1,43 +1,24 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicLikePopWindow;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
-public class ubu
-  implements DialogInterface.OnDismissListener
+class ubu
+  implements ytt
 {
-  private final WeakReference<VideoViewVideoHolder> jdField_a_of_type_JavaLangRefWeakReference;
-  private final boolean jdField_a_of_type_Boolean;
+  ubu(ubt paramubt, int paramInt, QQCircleFeedBase.StPolyLike paramStPolyLike) {}
   
-  public ubu(VideoViewVideoHolder paramVideoViewVideoHolder, boolean paramBoolean)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoViewVideoHolder);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramDialogInterface != null)
+    if ((!QCirclePolymorphicLikePopWindow.b(this.jdField_a_of_type_Ubt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow)) && (!QCirclePolymorphicLikePopWindow.c(this.jdField_a_of_type_Ubt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow)) && (ndk.a(QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_Ubt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow).getContext())) && (this.jdField_a_of_type_Int != 0))
     {
-      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing())) {
-        break label40;
-      }
-      ved.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
+      this.jdField_a_of_type_Ubt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow.a(true, false, QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_Ubt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow), this.jdField_a_of_type_Int, this.jdField_a_of_type_QqcircleQQCircleFeedBase$StPolyLike, (QQCircleFeedBase.StPolyLike)ubx.a(this.jdField_a_of_type_Ubt.jdField_a_of_type_Ubx).get());
+      QCirclePolymorphicLikePopWindow.a(this.jdField_a_of_type_Ubt.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicLikePopWindow, true);
     }
-    label40:
-    while (paramDialogInterface.e()) {
-      return;
-    }
-    paramDialogInterface.c(this.jdField_a_of_type_Boolean);
-    paramDialogInterface.d();
-    paramDialogInterface.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.av.utils;
 
 import android.text.TextUtils;
-import aseg;
-import bbjc;
+import atvg;
+import bdhy;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
@@ -20,13 +20,13 @@ final class VideoMsgTools$2
       QLog.d("VideoMsgTools", 2, "addMessage");
     }
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if ((!QQAppInterface.isAppOnForeground(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) || (bbjc.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))) {
+    if ((!QQAppInterface.isAppOnForeground(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) || (bdhy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Boolean);
     }
     for (;;)
     {
       if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        aseg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, "qav");
+        atvg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, "qav");
       }
       if (QLog.isColorLevel()) {
         QLog.d("VideoMsgTools", 2, "addMessage end");
@@ -41,7 +41,7 @@ final class VideoMsgTools$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.utils.VideoMsgTools.2
  * JD-Core Version:    0.7.0.1
  */

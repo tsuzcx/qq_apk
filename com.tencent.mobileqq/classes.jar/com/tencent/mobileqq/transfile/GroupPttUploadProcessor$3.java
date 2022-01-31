@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import ayrj;
+import bape;
 
 public class GroupPttUploadProcessor$3
   implements Runnable
 {
-  public GroupPttUploadProcessor$3(ayrj paramayrj) {}
+  public GroupPttUploadProcessor$3(bape parambape) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class GroupPttUploadProcessor$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.GroupPttUploadProcessor.3
  * JD-Core Version:    0.7.0.1
  */

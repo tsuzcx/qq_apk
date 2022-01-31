@@ -1,23 +1,17 @@
-import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
-final class alvv
-  implements ArkEnvironmentManager.LibraryLoader
+class alvv
+  implements bilp
 {
-  public boolean Load()
-  {
-    ArkAppCenter.f();
-    return ArkAppCenter.b;
-  }
+  alvv(alvt paramalvt) {}
   
-  public boolean isLibraryLoad()
+  public void a(bilo parambilo)
   {
-    return ArkAppCenter.b;
+    parambilo.a(this.a.a);
+    parambilo.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alvv
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.Open
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.PTVConf;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.ShortVideoConf;
 import com.tencent.mobileqq.highway.utils.EndPoint;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,7 +20,10 @@ public class HwConfig
   public static final int NET_TYPE_DEFAULT = 0;
   public static final int NET_TYPE_WIFI = 1;
   private static final long serialVersionUID = 2113693234079222598L;
+  public PBUInt32Field bdhIpv6Policy;
+  public PBUInt32Field connAttemptDelay;
   public subcmd0x501.SubCmd0x501Rspbody.DynTimeOutConf dtConf;
+  public PBUInt32Field fmtIpv6Policy;
   public subcmd0x501.SubCmd0x501Rspbody.IpLearnConf ipConf;
   public ArrayList<EndPoint> ipList;
   public ArrayList<EndPoint> ipv6List;

@@ -1,10 +1,15 @@
-public abstract interface auum
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+
+public class auum
 {
-  public abstract void a(boolean paramBoolean);
+  public String a;
+  public boolean a;
+  
+  auum(GameRoomInviteActivity paramGameRoomInviteActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auum
  * JD-Core Version:    0.7.0.1
  */

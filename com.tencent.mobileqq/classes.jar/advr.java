@@ -1,22 +1,23 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class advr
-  extends actn
+public class advr
+  extends BroadcastReceiver
 {
-  public long a;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
-  View jdField_b_of_type_AndroidViewView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
+  public advr(SubLoginActivity paramSubLoginActivity) {}
   
-  advr(advp paramadvp) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    QLog.d("Q.subaccount.SubLoginActivity", 1, "AutoLoginReceiver onReceive");
+    SubLoginActivity.a(this.a, true);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,30 @@
-import android.database.Cursor;
+import java.util.Comparator;
 
-public abstract interface bdkk<T extends bdkj>
+public final class bdkk
+  implements Comparator<String>
 {
-  public abstract int a();
-  
-  public abstract T a(Cursor paramCursor);
-  
-  public abstract String a();
-  
-  public abstract bdkl[] a();
+  public int a(String paramString1, String paramString2)
+  {
+    if ((paramString1 != null) && (paramString2 != null)) {
+      if (paramString1.length() <= paramString2.length()) {}
+    }
+    while (paramString1 != null)
+    {
+      return -1;
+      if (paramString1.length() >= paramString2.length()) {
+        break;
+      }
+      return 1;
+    }
+    if (paramString2 != null) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdkk
  * JD-Core Version:    0.7.0.1
  */

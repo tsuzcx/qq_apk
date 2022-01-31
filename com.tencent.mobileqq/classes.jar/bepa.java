@@ -1,130 +1,54 @@
-import android.util.Log;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.qqmini.sdk.core.widget.media.VideoGestureRelativeLayout;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class bepa
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnClickListener
 {
-  private VideoGestureRelativeLayout b;
+  final WeakReference<QQAppInterface> a;
+  final WeakReference<awmk> b;
   
-  public bepa(VideoGestureRelativeLayout paramVideoGestureRelativeLayout1, VideoGestureRelativeLayout paramVideoGestureRelativeLayout2)
+  public bepa(QQAppInterface paramQQAppInterface, awmk paramawmk)
   {
-    this.b = paramVideoGestureRelativeLayout2;
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramawmk);
   }
   
-  public boolean onContextClick(MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    Log.d("gesturetest", "onContextClick: ");
-    return true;
-  }
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    Log.d("gesturetest", "onDoubleTap: ");
-    if (VideoGestureRelativeLayout.a(this.a) != null) {
-      VideoGestureRelativeLayout.a(this.a).b(paramMotionEvent);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    awmk localawmk = (awmk)this.b.get();
+    if ((localQQAppInterface == null) || (localawmk == null) || (localawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne == null)) {
+      return;
     }
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    Log.d("gesturetest", "onDoubleTapEvent: ");
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    Log.d("gesturetest", "onDown: ");
-    VideoGestureRelativeLayout.a(this.a, false);
-    VideoGestureRelativeLayout.a(this.a, 0);
-    if (VideoGestureRelativeLayout.a(this.a) != null) {
-      VideoGestureRelativeLayout.a(this.a).c(paramMotionEvent);
-    }
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    Log.d("gesturetest", "onFling: ");
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    Log.d("gesturetest", "onLongPress: ");
-    super.onLongPress(paramMotionEvent);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    Log.d("gesturetest", "onScroll: e1:" + paramMotionEvent1.getX() + "," + paramMotionEvent1.getY());
-    Log.d("gesturetest", "onScroll: e2:" + paramMotionEvent2.getX() + "," + paramMotionEvent2.getY());
-    Log.d("gesturetest", "onScroll: X:" + paramFloat1 + "  Y:" + paramFloat2);
-    switch (VideoGestureRelativeLayout.a(this.a))
+    if (((bcbt)localQQAppInterface.getManager(346)).b(localawmk.jdField_a_of_type_JavaLangString)) {}
+    for (String str = bckj.a().a(localawmk.jdField_a_of_type_JavaLangString, localawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);; str = bckj.a().a(localawmk.jdField_a_of_type_JavaLangString, localawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, awnk.a(localQQAppInterface, localawmk.jdField_a_of_type_JavaLangString, localawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, localawmk.jdField_a_of_type_ComTencentMobileqqDataCard), "3", "aio"))
     {
-    default: 
-      return true;
-    case 0: 
-      Log.d("gesturetest", "NONE: ");
-      if (Math.abs(paramFloat1) - Math.abs(paramFloat2) > VideoGestureRelativeLayout.b(this.a))
+      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      localIntent.putExtra("url", str);
+      paramView.getContext().startActivity(localIntent);
+      if (bbpo.a().a(localawmk.jdField_a_of_type_JavaLangString, localawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString))
       {
-        VideoGestureRelativeLayout.a(this.a, 3);
-        return true;
+        paramView = paramView.findViewById(2131375500);
+        if (paramView != null) {
+          paramView.setVisibility(8);
+        }
+        bbpo.a().a(localawmk.jdField_a_of_type_JavaLangString, localawmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, false);
       }
-      if (paramMotionEvent1.getX() < this.a.getWidth() / 2)
-      {
-        VideoGestureRelativeLayout.a(this.a, 2);
-        return true;
-      }
-      VideoGestureRelativeLayout.a(this.a, 1);
-      return true;
-    case 1: 
-      if (VideoGestureRelativeLayout.a(this.a) != null) {
-        VideoGestureRelativeLayout.a(this.a).b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      }
-      Log.d("gesturetest", "VOLUME: ");
-      return true;
-    case 2: 
-      if (VideoGestureRelativeLayout.a(this.a) != null) {
-        VideoGestureRelativeLayout.a(this.a).a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      }
-      Log.d("gesturetest", "BRIGHTNESS: ");
-      return true;
+      bbpo.a("grp_data", "clk_medal");
+      new azmo(localQQAppInterface).a("dc00899").b("Grp_mem_card").c("page").d("title_clk").a(new String[] { localawmk.jdField_a_of_type_JavaLangString }).a();
+      return;
     }
-    if (VideoGestureRelativeLayout.a(this.a) != null) {
-      VideoGestureRelativeLayout.a(this.a).c(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    VideoGestureRelativeLayout.a(this.a, true);
-    Log.d("gesturetest", "FF_REW: ");
-    return true;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    Log.d("gesturetest", "onShowPress: ");
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    Log.d("gesturetest", "onSingleTapConfirmed: ");
-    if (VideoGestureRelativeLayout.a(this.a) != null) {
-      VideoGestureRelativeLayout.a(this.a).a(paramMotionEvent);
-    }
-    return super.onSingleTapConfirmed(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    Log.d("gesturetest", "onSingleTapUp: ");
-    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bepa
  * JD-Core Version:    0.7.0.1
  */

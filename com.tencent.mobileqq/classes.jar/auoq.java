@@ -1,17 +1,31 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import tencent.im.msg.im_msg_body.RichText;
+import java.util.HashMap;
 
-public abstract interface auoq
+class auoq
+  implements bapw
 {
-  public abstract MessageRecord a(im_msg_body.RichText paramRichText);
+  auoq(auoo paramauoo) {}
   
-  public abstract void a(auor paramauor);
-  
-  public abstract void b(auor paramauor);
+  public void a(baqv parambaqv, baqw parambaqw)
+  {
+    if ((parambaqv != null) && (parambaqw != null) && ((parambaqv instanceof baps)))
+    {
+      parambaqv = (baps)parambaqv;
+      parambaqv.jdField_a_of_type_Long += parambaqw.c;
+      parambaqw.c = 0L;
+      parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
+      parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
+      parambaqw = parambaqv.jdField_a_of_type_JavaLangString;
+      if (parambaqw.contains("range="))
+      {
+        parambaqw = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
+        parambaqv.jdField_a_of_type_JavaLangString = (parambaqw + "range=" + parambaqv.jdField_a_of_type_Long);
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auoq
  * JD-Core Version:    0.7.0.1
  */

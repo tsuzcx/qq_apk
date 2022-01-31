@@ -1,82 +1,74 @@
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserMiniAIOHelper.1;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
 
-public class apin
-  implements Observer
+class apin
+  implements apjb
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public apin(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  apin(apik paramapik, aulk paramaulk) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if (this.jdField_a_of_type_Aulk.isShowing()) {
+      this.jdField_a_of_type_Aulk.dismiss();
     }
+    apik.a(this.jdField_a_of_type_Apik);
+    apik.a(this.jdField_a_of_type_Apik).a().b();
   }
   
-  public void a(View paramView)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Aulk.a(paramInt);
+  }
+  
+  public void a(apij paramapij)
+  {
+    if ((paramapij != null) && (!this.jdField_a_of_type_Apik.a.isFinishing())) {
+      switch (paramapij.a)
+      {
+      }
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Aulk.isShowing()) {
+        this.jdField_a_of_type_Aulk.dismiss();
+      }
+      apik.a(this.jdField_a_of_type_Apik);
+      apik.a(this.jdField_a_of_type_Apik).a().b();
+      return;
+      QQToast.a(this.jdField_a_of_type_Apik.a.getApplicationContext(), this.jdField_a_of_type_Apik.a.getString(2131719309), 0).a();
+      continue;
+      if (paramapij.b == 10006)
+      {
+        QQToast.a(this.jdField_a_of_type_Apik.a.getApplicationContext(), this.jdField_a_of_type_Apik.a.getString(2131719300), 0).a();
+      }
+      else
+      {
+        QQToast.a(this.jdField_a_of_type_Apik.a.getApplicationContext(), this.jdField_a_of_type_Apik.a.getString(2131719304), 0).a();
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.i("MultiEmotionSaveManager", 2, "onSaveComplete " + this.jdField_a_of_type_Apik.a.isFinishing());
+        }
+      }
+    }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this);
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this);
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this);
-    }
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
+    if (!this.jdField_a_of_type_Aulk.isShowing())
     {
-      do
-      {
-        do
-        {
-          return;
-        } while ((!(paramObject instanceof MessageRecord)) || (!(paramObject instanceof ChatMessage)));
-        paramObservable = (MessageRecord)paramObject;
-      } while (!QLog.isColorLevel());
-      QLog.d("FileBrowserMiniAIOHelper<QFile>", 2, "recv: msgseq[" + paramObservable.msgseq + "] uin[" + paramObservable.frienduin + "]");
-    } while (!paramObservable.frienduin.equals(this.jdField_a_of_type_JavaLangString));
-    ThreadManagerV2.getUIHandlerV2().post(new FileBrowserMiniAIOHelper.1(this));
+      this.jdField_a_of_type_Aulk.a(0);
+      this.jdField_a_of_type_Aulk.a(new apio(this));
+      if (QLog.isColorLevel()) {
+        QLog.i("MultiEmotionSaveManager", 2, "onSaveBegin");
+      }
+      this.jdField_a_of_type_Aulk.show();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apin
  * JD-Core Version:    0.7.0.1
  */

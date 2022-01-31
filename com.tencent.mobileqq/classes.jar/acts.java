@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import android.view.View;
 
 public abstract interface acts
 {
-  public abstract void a(AudioPlayer paramAudioPlayer);
+  public abstract void a(View paramView);
   
-  public abstract void a(AudioPlayer paramAudioPlayer, int paramInt);
-  
-  public abstract void b(AudioPlayer paramAudioPlayer, int paramInt);
-  
-  public abstract void c(AudioPlayer paramAudioPlayer, int paramInt);
-  
-  public abstract void d(AudioPlayer paramAudioPlayer, int paramInt);
+  public abstract boolean a(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acts
  * JD-Core Version:    0.7.0.1
  */

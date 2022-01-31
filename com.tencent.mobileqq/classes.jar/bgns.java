@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqmini.sdk.core.widget.TabBar;
+import com.tencent.qqmini.sdk.launcher.model.TabBarInfo.ButtonInfo;
 
-class bgns
-  implements DialogInterface.OnClickListener
+public class bgns
+  implements View.OnClickListener
 {
-  bgns(bgnk parambgnk, whr paramwhr) {}
+  public bgns(TabBar paramTabBar, int paramInt, TabBarInfo.ButtonInfo paramButtonInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Whr.a();
-    paramDialogInterface.dismiss();
+    if (TabBar.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetTabBar) != null) {
+      TabBar.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetTabBar).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo$ButtonInfo.pagePath, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo$ButtonInfo.text);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgns
  * JD-Core Version:    0.7.0.1
  */

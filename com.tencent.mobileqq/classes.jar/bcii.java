@@ -1,27 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import org.json.JSONObject;
-
-public abstract interface bcii
-  extends bccw
+public class bcii
 {
-  public abstract long a();
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
   
-  public abstract View a();
+  public bcii(String paramString, long paramLong, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt1;
+  }
   
-  public abstract void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, aabi paramaabi);
-  
-  public abstract void a(JSONObject paramJSONObject);
-  
-  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
-  
-  public abstract int b();
-  
-  public abstract int c();
+  public bcii(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcii
  * JD-Core Version:    0.7.0.1
  */

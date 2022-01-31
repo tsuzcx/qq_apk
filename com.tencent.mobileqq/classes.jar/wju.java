@@ -1,39 +1,29 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.subscribe.account_folder.recommend_banner.SubScribeSwipeRefreshLayout;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class wju
-  implements TopGestureLayout.InterceptTouchEventListener
+  extends xsl
 {
-  public wju(SubScribeSwipeRefreshLayout paramSubScribeSwipeRefreshLayout) {}
+  private static final int[] a = { 2131691561 };
+  private static final int[] f = { 2131165566 };
+  private static final int[] g = { 2131370179 };
+  private static int[] h = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298801) };
   
-  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
-  
-  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
+  public wju()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        return true;
-        i = (int)(paramMotionEvent.getX() + 0.5F);
-        j = (int)(paramMotionEvent.getY() + 0.5F);
-      } while (SubScribeSwipeRefreshLayout.a(this.a) == null);
-      SubScribeSwipeRefreshLayout.a(this.a).getLocalVisibleRect(SubScribeSwipeRefreshLayout.a(this.a));
-    } while (!SubScribeSwipeRefreshLayout.a(this.a).contains(i, j));
-    return false;
+    super(1, 1, h, -1, g, a, f);
+  }
+  
+  public void a(int paramInt, Object paramObject, bhxc[] paramArrayOfbhxc)
+  {
+    paramArrayOfbhxc[0].a = 0;
+    paramArrayOfbhxc[0].b = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wju
  * JD-Core Version:    0.7.0.1
  */

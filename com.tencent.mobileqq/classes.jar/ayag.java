@@ -1,48 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPtt;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
 
 public class ayag
-  extends ayaj
+  implements View.OnLongClickListener
 {
-  public ayag(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public ayag(CommentsView paramCommentsView, ayac paramayac, int paramInt) {}
   
-  private Long b(MessageForPtt paramMessageForPtt)
+  public boolean onLongClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null)
+    if (this.jdField_a_of_type_Ayac.a())
     {
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this);
+      if (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null) {
+        CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_Int, paramView);
+      }
+      return true;
     }
-    Long localLong = Long.valueOf(paramMessageForPtt.uniseq);
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localLong)) {
-      return localLong;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(localLong, paramMessageForPtt);
-    return localLong;
-  }
-  
-  public Long a(MessageForPtt paramMessageForPtt)
-  {
-    long l = b(paramMessageForPtt).longValue();
-    new ayah(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForPtt, Long.valueOf(l)).a();
-    return Long.valueOf(l);
-  }
-  
-  public Long a(MessageForPtt paramMessageForPtt, int paramInt)
-  {
-    if (adwt.h) {
-      return a(paramMessageForPtt);
-    }
-    return b(paramMessageForPtt, paramInt);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayag
  * JD-Core Version:    0.7.0.1
  */

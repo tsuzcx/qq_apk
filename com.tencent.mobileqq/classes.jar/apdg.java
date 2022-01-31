@@ -1,24 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.MobileQQ;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import com.tencent.mobileqq.datareportviewer.ReportData;
+import java.util.HashMap;
 
 class apdg
-  implements apwi
+  extends BroadcastReceiver
 {
-  apdg(apdc paramapdc) {}
+  apdg(apde paramapde) {}
   
-  public void a(String paramString, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (apwe.a(paramString))
+    paramContext = (ReportData)paramIntent.getSerializableExtra("reportData");
+    paramIntent = (apdh)apde.a(this.a).get(paramContext.actionName);
+    if ((paramIntent != null) && (paramIntent.b()))
     {
-      axrm.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-0");
-      return;
+      this.a.a();
+      apde.a(this.a).a(paramContext);
     }
-    axrm.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apdg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.PluginInfo;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.widget.WorkSpaceView;
 
-public final class besd
-  implements Parcelable.Creator<PluginInfo>
+public class besd
+  extends Handler
 {
-  public PluginInfo a(Parcel paramParcel)
-  {
-    PluginInfo localPluginInfo = new PluginInfo();
-    PluginInfo.a(localPluginInfo, paramParcel.readString());
-    PluginInfo.b(localPluginInfo, paramParcel.readString());
-    return localPluginInfo;
-  }
+  public besd(WorkSpaceView paramWorkSpaceView) {}
   
-  public PluginInfo[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new PluginInfo[paramInt];
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      int i = ((azqd)this.a.getChildAt(this.a.a).getTag()).a;
+      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
+        this.a.a(this.a.a() + 1);
+      }
+      WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
+      continue;
+      WorkSpaceView.a(this.a).removeMessages(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besd
  * JD-Core Version:    0.7.0.1
  */

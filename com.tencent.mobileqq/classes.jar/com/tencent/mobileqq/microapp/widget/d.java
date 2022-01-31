@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.microapp.appbrand.utils.b;
 import com.tencent.smtt.sdk.TbsReaderView;
 import com.tencent.smtt.sdk.TbsReaderView.ReaderCallback;
@@ -23,7 +23,7 @@ public final class d
   
   private String a(String paramString)
   {
-    if (bbkk.a(paramString)) {}
+    if (bdje.a(paramString)) {}
     int i;
     do
     {
@@ -63,7 +63,7 @@ public final class d
   
   public void a(File paramFile)
   {
-    if ((paramFile != null) && (!bbkk.a(paramFile.toString())))
+    if ((paramFile != null) && (!bdje.a(paramFile.toString())))
     {
       File localFile = new File(b.a().a(""));
       if (!localFile.exists()) {
@@ -85,7 +85,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.d
  * JD-Core Version:    0.7.0.1
  */

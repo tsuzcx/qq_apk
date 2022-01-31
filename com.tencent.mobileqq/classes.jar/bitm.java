@@ -1,39 +1,78 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
+import android.os.Bundle;
+import android.util.SparseArray;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
-class bitm
-  implements bjos<String>
+public class bitm
+  extends RemoteCommand
 {
-  bitm(bitj parambitj, AEGIFOutlineTextView paramAEGIFOutlineTextView) {}
+  private SparseArray<List<bitn>> a = new SparseArray();
   
-  public void a(@Nullable String paramString)
+  public bitm(AppRuntime paramAppRuntime)
   {
-    String str;
-    if (paramString != null)
+    super("com.tencent.individuality.individualityremotecommand");
+    a(0, new bito());
+  }
+  
+  public boolean a(int paramInt, bitn parambitn)
+  {
+    List localList = (List)this.a.get(paramInt);
+    Object localObject = localList;
+    if (localList == null)
     {
-      str = paramString;
-      if (!paramString.equals("")) {}
+      localObject = new ArrayList();
+      this.a.put(paramInt, localObject);
     }
-    else
+    if (!((List)localObject).contains(parambitn)) {
+      return ((List)localObject).add(parambitn);
+    }
+    return false;
+  }
+  
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    int i = paramBundle.getInt("com.tencent.individuality.individualityremotecommand.id", -1);
+    if (-1 != i)
     {
-      str = ajya.a(2131699966);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("IndividualityRemoteCommand", 4, "invoke: dataInvoke=" + paramBundle.toString());
+      }
+      paramOnInvokeFinishLinstener = (List)this.a.get(i);
+      if (paramOnInvokeFinishLinstener == null) {
+        break label100;
+      }
+      paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
+      do
+      {
+        if (!paramOnInvokeFinishLinstener.hasNext()) {
+          break;
+        }
+      } while (!((bitn)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
     }
-    paramString = this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.getLayoutParams();
-    if (str.indexOf('\n') > 0) {}
-    for (int i = bitj.a(this.jdField_a_of_type_Bitj) * 3 / 10;; i = bitj.a(this.jdField_a_of_type_Bitj) * 11 / 50)
+    label100:
+    do
     {
-      paramString.height = i;
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setTextSize(baxn.c(bitj.a(this.jdField_a_of_type_Bitj), 23.0F));
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setOutlineWidth(baxn.a(bitj.a(this.jdField_a_of_type_Bitj), 2.0F));
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setText(str);
-      this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView.setLayoutParams(paramString);
-      return;
-    }
+      while (!paramOnInvokeFinishLinstener.hasNext())
+      {
+        do
+        {
+          return paramBundle;
+          paramOnInvokeFinishLinstener = (List)this.a.get(0);
+        } while (paramOnInvokeFinishLinstener == null);
+        paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.iterator();
+      }
+    } while (!((bitn)paramOnInvokeFinishLinstener.next()).a(i, paramBundle));
+    return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bitm
  * JD-Core Version:    0.7.0.1
  */

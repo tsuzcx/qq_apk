@@ -1,43 +1,60 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SougouSearchInfo;
+import com.tencent.mobileqq.ocr.data.TranslateResult;
+import java.util.List;
 
-class avrb
-  extends Handler
+public class avrb
+  implements alkr
 {
-  public avrb(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public void a(int paramInt, String paramString, avsl paramavsl) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, int paramInt, TranslateResult paramTranslateResult) {}
+  
+  public void a(boolean paramBoolean, String paramString, List<OCRTextSearchInfo.SougouSearchInfo> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    avrf.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
-    switch (paramMessage.what)
+    switch (paramInt)
     {
-    case 1: 
     default: 
+      return;
+    case 1: 
+      paramObject = (Object[])paramObject;
+      if ((paramObject != null) && (paramObject.length == 2))
+      {
+        a(paramBoolean, (String)paramObject[0], (List)paramObject[1]);
+        return;
+      }
+      a(false, "", null);
       return;
     case 2: 
-      i = paramMessage.arg1;
-      paramMessage = paramMessage.getData();
-      avrf.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
+      Object localObject = (Object[])paramObject;
+      if ((paramObject != null) && (localObject.length == 2))
+      {
+        paramObject = (Integer)localObject[0];
+        localObject = (TranslateResult)localObject[1];
+        if (localObject != null)
+        {
+          a(paramBoolean, paramObject.intValue(), (TranslateResult)localObject);
+          return;
+        }
+        a(false, paramObject.intValue(), null);
+        return;
+      }
+      a(false, -1, null);
       return;
     }
-    int i = paramMessage.arg1;
-    switch (paramMessage.arg1)
+    paramObject = (Object[])paramObject;
+    if ((paramObject != null) && (paramObject.length == 3))
     {
-    default: 
+      a(((Integer)paramObject[0]).intValue(), (String)paramObject[1], (avsl)paramObject[2]);
       return;
     }
-    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-    avrf.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
+    a(-1, "", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avrb
  * JD-Core Version:    0.7.0.1
  */

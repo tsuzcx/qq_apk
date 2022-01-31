@@ -1,47 +1,29 @@
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 class aysn
-  implements ITransactionCallback
 {
-  public int a;
-  public awbg a;
-  public Transaction a;
+  public View.OnClickListener a;
+  public View a;
+  public TextView a;
+  public URLImageView a;
   
-  aysn(aysi paramaysi) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public aysn(aysm paramaysm, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>TransactionListener.onFailed  erroCode: " + paramInt + " sendInfo:" + this.jdField_a_of_type_Awbg);
-    }
-    this.jdField_a_of_type_Aysi.f(paramInt);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ayso(this);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131561244, paramaysm.b, false);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367910));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365102));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LightVideoUploadProcessor", 2, "<BDH_LOG>TransactionListener.onSuccess  erroCode:  sendInfo:" + this.jdField_a_of_type_Awbg);
-    }
-    paramArrayOfByte = this.jdField_a_of_type_Aysi.jdField_a_of_type_Ayqo;
-    paramArrayOfByte.e += this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.totalLength;
-    if (this.jdField_a_of_type_Aysi.jdField_a_of_type_Awbg != null) {
-      this.jdField_a_of_type_Aysi.i();
-    }
-    this.jdField_a_of_type_Aysi.f(this.jdField_a_of_type_Awbg);
-  }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart() {}
-  
-  public void onUpdateProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aysn
  * JD-Core Version:    0.7.0.1
  */

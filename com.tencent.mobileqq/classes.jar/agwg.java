@@ -1,24 +1,38 @@
-public class agwg
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+class agwg
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public long b;
+  agwg(agwf paramagwf) {}
   
-  public boolean equals(Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramObject instanceof agwg))
+    QQAppInterface localQQAppInterface;
+    String str;
+    if (this.a.a())
     {
-      paramObject = (agwg)paramObject;
-      if ((paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (paramObject.jdField_a_of_type_Long == this.jdField_a_of_type_Long)) {
-        return true;
+      atwd.a().a(agwf.a(this.a), agwf.a(this.a).a);
+      agwf.a(this.a).a();
+      localQQAppInterface = agwf.a(this.a);
+      str = agwf.a(this.a).a;
+      if (agwf.a(this.a).b(agwf.a(this.a).a) != 3) {
+        break label112;
       }
     }
-    return false;
+    label112:
+    for (paramView = "1";; paramView = "0")
+    {
+      azmj.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_close", 0, 0, str, paramView, "", "");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agwg
  * JD-Core Version:    0.7.0.1
  */

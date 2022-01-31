@@ -1,32 +1,41 @@
-import cooperation.qzone.panorama.widget.PanoramaView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.ui.MoreFragment;
 
 public class bhic
-  implements bhhi
+  implements Animation.AnimationListener
 {
-  public bhic(PanoramaView paramPanoramaView) {}
+  public bhic(MoreFragment paramMoreFragment, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (PanoramaView.a(this.a) != null) {
-      PanoramaView.a(this.a).onPanoramaClick();
+    paramAnimation = MoreFragment.a(this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment);
+    if (paramAnimation != null)
+    {
+      paramAnimation.putExtra("miniAppID", MoreFragment.a(this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment));
+      paramAnimation.putExtra("more_item_id", this.jdField_a_of_type_Int);
+      paramAnimation.putExtra("share_in_mini_process", this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_AndroidOsBundle != null) {
+        paramAnimation.putExtras(this.jdField_a_of_type_AndroidOsBundle);
+      }
+      if (this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment.getActivity() != null)
+      {
+        this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment.getActivity().setResult(-1, paramAnimation);
+        this.jdField_a_of_type_ComTencentQqminiSdkUiMoreFragment.getActivity().finish();
+      }
     }
   }
   
-  public void a(float paramFloat)
-  {
-    if (PanoramaView.a(this.a) != null) {
-      PanoramaView.a(this.a).a(paramFloat);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    this.a.a(paramFloat1, paramFloat2);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhic
  * JD-Core Version:    0.7.0.1
  */

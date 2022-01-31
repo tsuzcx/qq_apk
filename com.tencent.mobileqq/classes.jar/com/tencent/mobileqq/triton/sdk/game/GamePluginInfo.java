@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.triton.sdk.game;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public class GamePluginInfo
 {
@@ -23,7 +23,7 @@ public class GamePluginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.triton.sdk.game.GamePluginInfo
  * JD-Core Version:    0.7.0.1
  */

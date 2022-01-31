@@ -14,15 +14,15 @@ public class QidianProfileAllTextActivity
     super.doOnCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("title");
     String str = getIntent().getStringExtra("content");
-    super.setContentView(2131560516);
-    ((TextView)this.mContentView.findViewById(2131377350)).setText(paramBundle);
-    ((TextView)this.mContentView.findViewById(2131364691)).setText(str);
+    super.setContentView(2131560692);
+    ((TextView)this.mContentView.findViewById(2131377884)).setText(paramBundle);
+    ((TextView)this.mContentView.findViewById(2131364770)).setText(str);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileAllTextActivity
  * JD-Core Version:    0.7.0.1
  */

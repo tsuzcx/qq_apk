@@ -2,7 +2,7 @@ package com.tencent.av.business.manager.magicface;
 
 import com.tencent.av.business.manager.pendant.PendantItem;
 import java.lang.ref.WeakReference;
-import liq;
+import lkt;
 
 class MagicFaceDataEntity$StopSelfDecorationRunnable
   implements Runnable
@@ -30,7 +30,7 @@ class MagicFaceDataEntity$StopSelfDecorationRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicFaceDataEntity.StopSelfDecorationRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,13 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.IInterface;
 
-class qhr
-  extends qht
+public abstract interface qhr
+  extends IInterface
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public abstract qhx a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qhr
  * JD-Core Version:    0.7.0.1
  */

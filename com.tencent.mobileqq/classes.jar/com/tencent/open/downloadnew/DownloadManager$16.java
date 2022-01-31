@@ -1,22 +1,22 @@
 package com.tencent.open.downloadnew;
 
-import bdle;
-import bdlr;
-import bdmk;
+import bfkb;
+import bfko;
+import bflh;
 
 public class DownloadManager$16
   implements Runnable
 {
-  public DownloadManager$16(bdle parambdle) {}
+  public DownloadManager$16(bfkb parambfkb) {}
   
   public void run()
   {
     this.this$0.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadClientListener = null;
-    if (bdmk.a()) {
-      bdmk.a().a();
+    if (bflh.a()) {
+      bflh.a().a();
     }
-    if (bdlr.d()) {
-      bdlr.a().h();
+    if (bfko.d()) {
+      bfko.a().h();
     }
     this.this$0.a(this.this$0.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadLogListener);
   }

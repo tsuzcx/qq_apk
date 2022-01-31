@@ -1,43 +1,17 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
-class arnd
-  implements mym
+final class arnd
+  implements Comparator<FileInfo>
 {
-  arnd(arnc paramarnc) {}
-  
-  public void a(Bundle paramBundle)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    if (!TextUtils.isEmpty(this.a.a))
-    {
-      paramBundle = paramBundle.getString("info");
-      localJSONObject = new JSONObject();
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        JSONObject localJSONObject;
-        localJSONObject.put("data", paramBundle);
-        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
-        if (QLog.isColorLevel()) {
-          QLog.d("PushApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
-        }
-        return;
-      }
-      catch (Throwable paramBundle)
-      {
-        QLog.e("PushApiPlugin", 1, paramBundle, new Object[0]);
-        return;
-      }
-    }
-    QLog.d("PushApiPlugin", 2, "handleJsRequest callback is empty");
+    return (int)(paramFileInfo2.b() / 1000L - paramFileInfo1.b() / 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arnd
  * JD-Core Version:    0.7.0.1
  */

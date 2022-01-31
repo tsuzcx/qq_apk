@@ -7,21 +7,21 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import aqzz;
-import araa;
-import arab;
-import arbn;
-import arbo;
+import asqn;
+import asqo;
+import asqp;
+import assb;
+import assc;
 import com.tencent.qphone.base.util.QLog;
 
 public class HotPicRecyclerView
   extends FooterRecyclerView
-  implements arbo
+  implements assc
 {
   public int a;
-  public araa a;
-  arab jdField_a_of_type_Arab;
-  public arbn a;
+  public asqo a;
+  asqp jdField_a_of_type_Asqp;
+  public assb a;
   boolean jdField_a_of_type_Boolean = false;
   public int[] a;
   boolean b = false;
@@ -36,8 +36,8 @@ public class HotPicRecyclerView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ArrayOfInt = new int[3];
-    this.jdField_a_of_type_Arbn = new arbn(200, this);
-    setOnScrollListener(new aqzz(this));
+    this.jdField_a_of_type_Assb = new assb(200, this);
+    setOnScrollListener(new asqn(this));
   }
   
   public static void a(String paramString)
@@ -208,10 +208,10 @@ public class HotPicRecyclerView
   
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_Araa != null) && (HotPicPageView.b)) {
-      this.jdField_a_of_type_Araa.c();
+    if ((paramBoolean) && (this.jdField_a_of_type_Asqo != null) && (HotPicPageView.b)) {
+      this.jdField_a_of_type_Asqo.c();
     }
-    this.jdField_a_of_type_Arbn.a(false);
+    this.jdField_a_of_type_Assb.a(false);
   }
   
   public boolean a(int paramInt)
@@ -250,8 +250,8 @@ public class HotPicRecyclerView
   
   public void b()
   {
-    if (this.jdField_a_of_type_Arab != null) {
-      this.jdField_a_of_type_Arab.g();
+    if (this.jdField_a_of_type_Asqp != null) {
+      this.jdField_a_of_type_Asqp.g();
     }
     this.b = false;
   }
@@ -263,8 +263,8 @@ public class HotPicRecyclerView
     {
       return;
       this.b = true;
-    } while (this.jdField_a_of_type_Arab == null);
-    this.jdField_a_of_type_Arab.f();
+    } while (this.jdField_a_of_type_Asqp == null);
+    this.jdField_a_of_type_Asqp.f();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -288,8 +288,8 @@ public class HotPicRecyclerView
     if (paramMotionEvent.getAction() == 1)
     {
       ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.jdField_a_of_type_ArrayOfInt);
-      if ((this.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.jdField_a_of_type_Araa != null)) {
-        this.jdField_a_of_type_Araa.d();
+      if ((this.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.jdField_a_of_type_Asqo != null)) {
+        this.jdField_a_of_type_Asqo.d();
       }
     }
     try
@@ -301,14 +301,14 @@ public class HotPicRecyclerView
     return true;
   }
   
-  public void setScrollStatusChengedListener(arab paramarab)
+  public void setScrollStatusChengedListener(asqp paramasqp)
   {
-    this.jdField_a_of_type_Arab = paramarab;
+    this.jdField_a_of_type_Asqp = paramasqp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicRecyclerView
  * JD-Core Version:    0.7.0.1
  */

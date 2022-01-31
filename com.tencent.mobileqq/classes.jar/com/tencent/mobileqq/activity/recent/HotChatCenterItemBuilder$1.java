@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent;
 
 import android.util.SparseArray;
-import aukp;
-import aukq;
+import awbw;
+import awbx;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,14 +16,14 @@ class HotChatCenterItemBuilder$1
   public void run()
   {
     ??? = ((QQAppInterface)HotChatCenterItemBuilder.a(this.this$0).get()).getEntityManagerFactory().createEntityManager();
-    HotChatCenterItemBuilder.a(this.this$0, ApolloGameUtil.a((aukp)???));
+    HotChatCenterItemBuilder.a(this.this$0, ApolloGameUtil.a((awbw)???));
     if ((HotChatCenterItemBuilder.a(this.this$0) != null) && (HotChatCenterItemBuilder.a(this.this$0).size() > 0))
     {
       SparseArray localSparseArray = (SparseArray)HotChatCenterItemBuilder.a(this.this$0).get(this.a);
       if ((localSparseArray != null) && (localSparseArray.size() > 0))
       {
         if ((HotChatCenterItemBuilder.a(this.this$0) != null) && (HotChatCenterItemBuilder.a(this.this$0).get() != null)) {
-          ApolloGameUtil.a((aukp)???, ApolloUtil.a(localSparseArray));
+          ApolloGameUtil.a((awbw)???, ApolloUtil.a(localSparseArray));
         }
         synchronized (HotChatCenterItemBuilder.a(this.this$0))
         {
@@ -36,7 +36,7 @@ class HotChatCenterItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.HotChatCenterItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

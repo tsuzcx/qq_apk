@@ -1,21 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class azet
-  implements DialogInterface.OnClickListener
 {
-  public azet(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, URLDrawable paramURLDrawable, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(int paramInt)
   {
-    TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("crashKind", "" + paramInt);
+    azmz.a(VideoEnvironment.a()).a(null, "sv_filter_egl_crash_exp", true, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("time", "" + paramLong);
+    localHashMap.put("filter_id", azeu.jdField_a_of_type_JavaLangString);
+    localHashMap.put("front_camera", String.valueOf(azeu.jdField_a_of_type_Boolean));
+    azmz.a(VideoEnvironment.a()).a(null, paramString, true, paramLong, azbo.c, localHashMap, "");
+    if (QLog.isColorLevel()) {
+      QLog.d("PerformenceDataTag", 2, "reportPerformance : tag = " + paramString + " ; duration = " + paramLong + " ; filter_id = " + azeu.jdField_a_of_type_JavaLangString + " ; front_camera = " + azeu.jdField_a_of_type_Boolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azet
  * JD-Core Version:    0.7.0.1
  */

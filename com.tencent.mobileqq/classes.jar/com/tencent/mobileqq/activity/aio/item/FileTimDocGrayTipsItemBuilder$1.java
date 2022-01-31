@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adpo;
-import adpp;
+import afhy;
+import afhz;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
 
 public class FileTimDocGrayTipsItemBuilder$1
   implements Runnable
 {
-  public FileTimDocGrayTipsItemBuilder$1(adpo paramadpo, adpp paramadpp) {}
+  public FileTimDocGrayTipsItemBuilder$1(afhy paramafhy, afhz paramafhz) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class FileTimDocGrayTipsItemBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.FileTimDocGrayTipsItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

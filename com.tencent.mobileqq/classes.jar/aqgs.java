@@ -1,31 +1,18 @@
-import android.util.Pair;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 
-class aqgs
-  extends akil
+public class aqgs
+  extends aqnl
 {
-  aqgs(aqgr paramaqgr) {}
+  public aqgs(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  protected void a(String paramString, List<Pair<String, String>> paramList)
+  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
-    if (paramList == null) {}
-    for (int i = 0;; i = paramList.size())
-    {
-      QLog.i("ForwardTroopMemberControllerForMiniPie", 2, i);
-      if ((aqgr.a(this.a).equals(paramString)) && (aqgr.a(this.a) != null))
-      {
-        aqgr.a(this.a);
-        aqgr.a(this.a).a(paramList);
-      }
-      return;
-    }
+    super.a(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,29 @@
-public class tjp
+import UserGrowth.stSimpleMetaPerson;
+import android.view.View;
+import android.widget.TextView;
+
+class tjp
+  implements bhqd
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  public boolean a;
-  private String b;
+  tjp(tjo paramtjo) {}
   
-  public tjp(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.b = paramString;
-  }
-  
-  public void a()
-  {
-    tjq localtjq = new tjq(this, false);
-    tjr localtjr = new tjr(this, false);
-    tay.a().a(localtjq, localtjr);
-  }
-  
-  public void b()
-  {
-    tjq localtjq = new tjq(this, true);
-    tjr localtjr = new tjr(this, true);
-    tay.a().a(localtjq, localtjr);
+    if (!ndk.a(tjo.a(this.a)))
+    {
+      bfhq.a().a(2131721476);
+      return;
+    }
+    tjo.a(this.a).b(tjo.a(this.a).id, 2);
+    tjo.a(this.a).followStatus = 2;
+    tjo.a(this.a).setVisibility(0);
+    tjo.b(this.a).setVisibility(8);
+    tjt.a("follow", tjo.a(this.a) + 1, tjo.a(this.a).id, tjw.r);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tjp
  * JD-Core Version:    0.7.0.1
  */

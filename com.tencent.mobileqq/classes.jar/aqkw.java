@@ -1,33 +1,23 @@
-import com.tencent.mobileqq.fts.entity.FTSEntity;
-import java.util.Arrays;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
 
 public class aqkw
+  implements azjq
 {
-  public int a;
-  public Class<? extends FTSEntity> a;
-  public String a;
-  public boolean a;
-  public aqky[] a;
-  public String b;
+  public aqkw(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public aqkw(Class<? extends FTSEntity> paramClass, aqky[] paramArrayOfaqky, boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    this.jdField_a_of_type_ArrayOfAqky = paramArrayOfaqky;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    FileAssistantActivity.c(this.a);
   }
   
-  public String toString()
+  public void b()
   {
-    return "FTSQueryArgs{entityClazz=" + this.jdField_a_of_type_JavaLangClass + ", matchKeys=" + Arrays.toString(this.jdField_a_of_type_ArrayOfAqky) + ", matchKeysOr=" + this.jdField_a_of_type_Boolean + ", limit=" + this.jdField_a_of_type_Int + ", selectionSql='" + this.jdField_a_of_type_JavaLangString + '\'' + ", orderBySql='" + this.b + '\'' + '}';
+    FileAssistantActivity.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkw
  * JD-Core Version:    0.7.0.1
  */

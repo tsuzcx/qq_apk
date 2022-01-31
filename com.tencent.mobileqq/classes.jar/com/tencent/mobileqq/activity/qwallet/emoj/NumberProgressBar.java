@@ -10,7 +10,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
-import baxn;
+import bcwh;
 
 public class NumberProgressBar
   extends View
@@ -34,7 +34,7 @@ public class NumberProgressBar
   public NumberProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.ringWidth = baxn.a(paramContext, 5.0F);
+    this.ringWidth = bcwh.a(paramContext, 5.0F);
     this.progressTitle = "xx";
     this.progress = 0.0F;
     this.paint = new Paint();
@@ -74,7 +74,7 @@ public class NumberProgressBar
       this.paint.setShader(null);
       this.paint.setStyle(Paint.Style.FILL);
       this.paint.setColor(-1);
-      this.paint.setTextSize(baxn.c(getContext(), 16.0F));
+      this.paint.setTextSize(bcwh.c(getContext(), 16.0F));
       this.paint.getTextBounds(str, 0, str.length(), this.rec);
       i = this.rec.width();
       j = this.rec.height();
@@ -82,7 +82,7 @@ public class NumberProgressBar
         break;
       }
       paramCanvas.drawText(str, (paramCanvas.getWidth() - i) / 2, (j + paramCanvas.getHeight()) / 2, this.paint);
-      this.paint.setTextSize(baxn.c(getContext(), 16.0F));
+      this.paint.setTextSize(bcwh.c(getContext(), 16.0F));
       return;
       paramCanvas.drawArc(this.arcElements, -90.0F, -this.progress, false, this.paint);
     }
@@ -97,7 +97,7 @@ public class NumberProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.NumberProgressBar
  * JD-Core Version:    0.7.0.1
  */

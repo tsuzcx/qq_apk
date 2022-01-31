@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.SeekBar;
 import java.util.TimerTask;
-import ued;
+import vsv;
 
 class VideoPlayerView$14
   extends TimerTask
@@ -55,7 +55,7 @@ class VideoPlayerView$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoPlayerView.14
  * JD-Core Version:    0.7.0.1
  */

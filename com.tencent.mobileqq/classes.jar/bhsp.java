@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import mqq.app.QQPermissionCallback;
+import android.view.View;
+import com.tencent.widget.ExpandableListView;
 
-class bhsp
-  implements QQPermissionCallback
+public abstract interface bhsp
 {
-  bhsp(bhso parambhso) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bbdj.b(this.a.a.mRuntime.a());
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bhso.a(this.a);
-  }
+  public abstract boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhsp
  * JD-Core Version:    0.7.0.1
  */

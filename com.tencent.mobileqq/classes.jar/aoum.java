@@ -1,21 +1,61 @@
-import android.app.Activity;
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class aoum
-  implements bfph
+public class aoum
+  extends aofy<aoul>
 {
-  aoum(aoul paramaoul, String paramString, azqv paramazqv) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static aoul a()
   {
-    axqy.b(this.jdField_a_of_type_Aoul.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A7F3", "0X800A7F3", 2, 0, "", "", "", "");
-    new azpv(Long.parseLong(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Aoul.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Aoul.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Azqv.a);
-    this.jdField_a_of_type_Aoul.a();
+    return (aoul)aogj.a().a(344);
+  }
+  
+  public int a()
+  {
+    return 344;
+  }
+  
+  @NonNull
+  public aoul a(int paramInt)
+  {
+    return new aoul();
+  }
+  
+  @Nullable
+  public aoul a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return aoul.a(paramArrayOfaogf);
+    }
+    return null;
+  }
+  
+  public Class<aoul> a()
+  {
+    return aoul.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aoul paramaoul) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoum
  * JD-Core Version:    0.7.0.1
  */

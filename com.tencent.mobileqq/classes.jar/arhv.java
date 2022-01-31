@@ -1,22 +1,19 @@
-import com.tencent.hlyyb.downloader.DownloaderTask;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface arhv
+class arhv
+  implements View.OnClickListener
 {
-  public abstract void a(DownloaderTask paramDownloaderTask);
+  arhv(arhu paramarhu) {}
   
-  public abstract void b(DownloaderTask paramDownloaderTask);
-  
-  public abstract void c(DownloaderTask paramDownloaderTask);
-  
-  public abstract void d(DownloaderTask paramDownloaderTask);
-  
-  public abstract void e(DownloaderTask paramDownloaderTask);
-  
-  public abstract void f(DownloaderTask paramDownloaderTask);
+  public void onClick(View paramView)
+  {
+    this.a.m();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arhv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ChannelTopPositionView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.qphone.base.util.QLog;
 
-public class rrj
+class rrj
   implements View.OnClickListener
 {
-  public rrj(ChannelTopPositionView paramChannelTopPositionView) {}
+  rrj(rqj paramrqj, String paramString) {}
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ChannelTopPositionView", 2, "onclick");
-    }
-    if (ChannelTopPositionView.a(this.a) != null) {
-      PublicFragmentActivity.a(ChannelTopPositionView.a(this.a), ReadInJoySelectPositionFragment.class);
-    }
+    nrt.a(null, "", "0X8009BE2", "0X8009BE2", 0, 0, "", "", "", this.jdField_a_of_type_JavaLangString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rrj
  * JD-Core Version:    0.7.0.1
  */

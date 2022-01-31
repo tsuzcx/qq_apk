@@ -19,13 +19,15 @@ public class TTAudioPlayerManager$InnerAudioStateChangeHandler
   volatile String localPath;
   WeakReference<TTAudioPlayerManager> managerReference;
   String rawPath;
-  int retryCount = 0;
+  volatile int retryCount;
+  String src;
   
   public TTAudioPlayerManager$InnerAudioStateChangeHandler(TTAudioPlayerManager paramTTAudioPlayerManager1, TTAudioPlayerManager paramTTAudioPlayerManager2, int paramInt, IAudioStateChangeListener paramIAudioStateChangeListener)
   {
     this.managerReference = new WeakReference(paramTTAudioPlayerManager2);
     this.audioId = paramInt;
     this.callback = paramIAudioStateChangeListener;
+    this.retryCount = 0;
   }
   
   private void downloadAndPlayAudio()
@@ -46,7 +48,7 @@ public class TTAudioPlayerManager$InnerAudioStateChangeHandler
       if ((this.managerReference != null) && (this.managerReference.get() != null))
       {
         TTAudioPlayerManager localTTAudioPlayerManager = (TTAudioPlayerManager)this.managerReference.get();
-        TTLog.i("[audio] TTAudioPlayerManager", "playLocalAudio localPath:" + this.localPath);
+        TTLog.i("[audio] TTAudioPlayerManager", "audioId:" + this.audioId + ", playLocalAudio localPath:" + this.localPath);
         localTTAudioPlayerManager.setMusicPath(null, this.audioId, this.localPath);
         if (paramBoolean) {
           localTTAudioPlayerManager.playMusic(this.audioId);
@@ -78,6 +80,7 @@ public class TTAudioPlayerManager$InnerAudioStateChangeHandler
   
   public void onError(int paramInt)
   {
+    TTLog.e("[audio] TTAudioPlayerManager", this + " onError retryCount:" + this.retryCount + ", audioId:" + this.audioId);
     if ((URLUtil.isNetworkUrl(this.rawPath)) && (this.retryCount < 3))
     {
       this.retryCount += 1;
@@ -85,12 +88,19 @@ public class TTAudioPlayerManager$InnerAudioStateChangeHandler
         prepareAndPlayLocalAudio(hasCallPlay());
       }
     }
-    while (this.callback == null)
+    do
     {
       return;
       downloadAndPlayAudio();
       return;
-    }
+      this.localPath = this.src;
+      if ((this.retryCount < 3) && (isFileExists(TTAudioPlayerManager.access$300(this.this$0).getQQEnv().getResPath(this.localPath, null, null))))
+      {
+        this.retryCount += 1;
+        AudioHandleThread.getInstance().postDelayed(new TTAudioPlayerManager.InnerAudioStateChangeHandler.2(this), this.retryCount * 500);
+        return;
+      }
+    } while (this.callback == null);
     this.callback.onError(paramInt);
   }
   
@@ -148,15 +158,15 @@ public class TTAudioPlayerManager$InnerAudioStateChangeHandler
     this.callPaly = paramBoolean;
   }
   
-  public void setPath(String paramString)
+  public void setPath(String paramString1, String paramString2)
   {
-    this.rawPath = paramString;
-    this.retryCount = 0;
+    this.src = paramString1;
+    this.rawPath = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.triton.audio.TTAudioPlayerManager.InnerAudioStateChangeHandler
  * JD-Core Version:    0.7.0.1
  */

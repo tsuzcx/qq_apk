@@ -1,49 +1,86 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.1;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.2;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.3;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.4;
-import com.tencent.mobileqq.gallery.view.AIOGalleryActivity.2.5;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqod
-  extends aejf
+class aqod
+  implements aqnr
 {
-  public aqod(AIOGalleryActivity paramAIOGalleryActivity) {}
+  aqod(aqoc paramaqoc, String paramString, aqot paramaqot) {}
   
-  public void a()
+  public void a(int paramInt, String paramString)
   {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.4(this));
+    boolean bool3 = false;
+    boolean bool4 = true;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2TroopTaskExcuter onFaild retcode[" + paramInt + "] retMsg[" + paramString + "]");
+    boolean bool2 = bool3;
+    boolean bool1 = bool4;
+    if (paramInt != -100001)
+    {
+      bool2 = bool3;
+      bool1 = bool4;
+      if (paramInt != -100002)
+      {
+        if (paramInt != -100003) {
+          break label107;
+        }
+        bool1 = bool4;
+        bool2 = bool3;
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aqot.a(aqnw.a(this.jdField_a_of_type_Aqoc.jdField_a_of_type_Long, bool2), bool1);
+      return;
+      label107:
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+        bool2 = bool3;
+      }
+    }
   }
   
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
+  public void a(String paramString)
   {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.2(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "3");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqoc.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqoc.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqoc.c);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqoc.d);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqoc.e);
+    localBundle.putString("_m_ForwardUuid", paramString);
+    int i;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_Aqoc.d))
+    {
+      i = 0;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aqoc.e)) {
+        break label257;
+      }
+    }
+    label257:
+    for (int j = 0;; j = Integer.parseInt(this.jdField_a_of_type_Aqoc.e))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqoc.jdField_a_of_type_JavaLangString + " Buddy2TroopTaskExcuter send success, send feeds");
+      }
+      aqnw.a(aqnw.a(this.jdField_a_of_type_Aqoc.jdField_a_of_type_Aqnw), Long.parseLong(this.jdField_a_of_type_JavaLangString), 102, paramString, this.jdField_a_of_type_Aqoc.jdField_a_of_type_Long, 0, i, j, 0, false, localBundle, this.jdField_a_of_type_Aqot);
+      return;
+      i = Integer.parseInt(this.jdField_a_of_type_Aqoc.d);
+      break;
+    }
   }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.1(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.5(this, paramLong, paramInt1, paramInt2, paramString1, paramArrayOfString, paramString2, paramMessageForShortVideo, paramInt3));
-  }
-  
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
-  {
-    this.a.runOnUiThread(new AIOGalleryActivity.2.3(this, paramArrayOfAIORichMediaData, paramInt));
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqod
  * JD-Core Version:    0.7.0.1
  */

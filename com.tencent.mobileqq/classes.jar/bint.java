@@ -1,26 +1,50 @@
-import android.support.v7.widget.RecyclerView;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.pluginbridge.BridgeHelper;
+import cooperation.pluginbridge.BridgePluginInstallActivity;
 
-class bint
-  implements CompoundButton.OnCheckedChangeListener
+public class bint
+  extends BroadcastReceiver
 {
-  bint(binq parambinq) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramCompoundButton = binq.b(this.a);
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
+    paramIntent = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("BridgeHelper", 2, "action:" + paramIntent);
+    }
+    if (("bridge.plugin.onresume.broadcast".equals(paramIntent)) || ("bridge.onresume.broadcast".equals(paramIntent))) {}
+    try
     {
-      paramCompoundButton.setVisibility(i);
+      paramContext.unregisterReceiver(BridgeHelper.a());
+      BridgeHelper.a(null);
+      if (BridgeHelper.a() != null)
+      {
+        BridgeHelper.a().dismiss();
+        BridgeHelper.a(null);
+      }
+      if ((paramContext instanceof BridgePluginInstallActivity))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("BridgeHelper", 2, "Activity finish!");
+        }
+        ((BridgePluginInstallActivity)paramContext).finish();
+      }
       return;
+    }
+    catch (Exception paramIntent)
+    {
+      for (;;)
+      {
+        paramIntent.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bint
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,12 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
 import android.text.TextUtils;
-import bekr;
-import bekx;
-import bevt;
-import bevz;
-import bexk;
+import bgkd;
+import bgki;
+import bgtp;
+import bgun;
+import bgut;
+import bgwc;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.json.JSONException;
@@ -19,19 +20,19 @@ public class SubpackageJsPlugin
   private static final String TAG = "SubpackageJsPlugin";
   private AtomicInteger subpackageTaskId = new AtomicInteger(0);
   
-  public String createLoadSubPackageTask(bekr parambekr)
+  public String createLoadSubPackageTask(bgkd parambgkd)
   {
     try
     {
-      localObject = new JSONObject(parambekr.b);
+      localObject1 = new JSONObject(parambgkd.b);
       i = this.subpackageTaskId.getAndIncrement();
-      if (localObject != null)
+      if (localObject1 != null)
       {
-        localObject = ((JSONObject)localObject).optString("name", null);
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        localObject1 = ((JSONObject)localObject1).optString("name", null);
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           break label103;
         }
-        localObject = new JSONObject();
+        localObject1 = new JSONObject();
       }
     }
     catch (Throwable localThrowable)
@@ -42,10 +43,10 @@ public class SubpackageJsPlugin
       {
         for (;;)
         {
-          Object localObject;
-          ((JSONObject)localObject).put("loadTaskId", i);
-          ((JSONObject)localObject).put("state", "fail");
-          return bekx.b(parambekr.a, (JSONObject)localObject).toString();
+          Object localObject1;
+          ((JSONObject)localObject1).put("loadTaskId", i);
+          ((JSONObject)localObject1).put("state", "fail");
+          return bgki.b(parambgkd.a, (JSONObject)localObject1).toString();
           localThrowable = localThrowable;
           localJSONObject = new JSONObject();
         }
@@ -59,32 +60,39 @@ public class SubpackageJsPlugin
         }
       }
       label103:
-      bevt localbevt = bevz.a().a();
-      if (localbevt != null)
+      Object localObject2 = bgtp.a(this.mMiniAppContext);
+      if (localObject2 != null) {
+        localObject2 = ((bgut)localObject2).a();
+      }
+      for (;;)
       {
-        bexk.a().i("SubpackageJsPlugin", "start loadSubPackage:" + localJSONObject + ", gameId:" + localbevt.d + ", gameName:" + localbevt.c);
-        localbevt.a(localJSONObject, new SubpackageJsPlugin.1(this, localJSONObject, i, parambekr));
-        localJSONObject = new JSONObject();
-        try
+        if (localObject2 != null)
         {
-          localJSONObject.put("loadTaskId", i);
-          return bekx.a(parambekr.a, localJSONObject).toString();
-        }
-        catch (JSONException localJSONException2)
-        {
-          for (;;)
+          bgwc.a().i("SubpackageJsPlugin", "start loadSubPackage:" + localJSONObject + ", gameId:" + ((bgun)localObject2).appId + ", gameName:" + ((bgun)localObject2).apkgName);
+          ((bgun)localObject2).a(this.mMiniAppInfo, localJSONObject, new SubpackageJsPlugin.1(this, localJSONObject, i, parambgkd));
+          localJSONObject = new JSONObject();
+          try
           {
-            localJSONException2.printStackTrace();
+            localJSONObject.put("loadTaskId", i);
+            return bgki.a(parambgkd.a, localJSONObject).toString();
+            localObject2 = null;
+          }
+          catch (JSONException localJSONException2)
+          {
+            for (;;)
+            {
+              localJSONException2.printStackTrace();
+            }
           }
         }
       }
     }
-    return bekx.a(parambekr.a, null, "found no miniGamePkg error").toString();
+    return bgki.a(parambgkd.a, null, "found no miniGamePkg error").toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.plugins.SubpackageJsPlugin
  * JD-Core Version:    0.7.0.1
  */

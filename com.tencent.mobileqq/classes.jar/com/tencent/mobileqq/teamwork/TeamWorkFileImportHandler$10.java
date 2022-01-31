@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.teamwork;
 
-import ajya;
+import alpo;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import axqy;
-import ayeq;
-import ayfj;
+import azmj;
+import bacn;
+import badg;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class TeamWorkFileImportHandler$10
   implements Runnable
 {
-  public TeamWorkFileImportHandler$10(ayeq paramayeq, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  public TeamWorkFileImportHandler$10(bacn parambacn, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class TeamWorkFileImportHandler$10
       return;
     }
     long l1 = System.currentTimeMillis();
-    Object localObject1 = ayfj.c(this.a, this.this$0.app.getCurrentAccountUin());
+    Object localObject1 = badg.c(this.a, this.this$0.app.getCurrentAccountUin());
     long l2 = System.currentTimeMillis();
     Object localObject2 = "";
     if (localObject1 != null) {}
@@ -58,7 +58,7 @@ public class TeamWorkFileImportHandler$10
           }
         }
       }
-      localObject1 = ajya.a(2131714817);
+      localObject1 = alpo.a(2131715189);
       if (this.a.e == 3)
       {
         localObject1 = "word";
@@ -67,13 +67,13 @@ public class TeamWorkFileImportHandler$10
           continue;
         }
         i = 1;
-        axqy.b(localQQAppInterface, "dc00898", "", "", "0X8009958", "0X8009958", 0, i, l2 - l1 + "", "", (String)localObject1, (String)localObject2);
-        if ((bool) || (ayeq.a(this.this$0) == null)) {
+        azmj.b(localQQAppInterface, "dc00898", "", "", "0X8009958", "0X8009958", 0, i, l2 - l1 + "", "", (String)localObject1, (String)localObject2);
+        if ((bool) || (bacn.a(this.this$0) == null)) {
           break;
         }
-        localObject1 = ayeq.a(this.this$0).obtainMessage(8002);
+        localObject1 = bacn.a(this.this$0).obtainMessage(8002);
         ((Message)localObject1).obj = this.a;
-        ayeq.a(this.this$0).sendMessage((Message)localObject1);
+        bacn.a(this.this$0).sendMessage((Message)localObject1);
         return;
       }
     }
@@ -81,7 +81,7 @@ public class TeamWorkFileImportHandler$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler.10
  * JD-Core Version:    0.7.0.1
  */

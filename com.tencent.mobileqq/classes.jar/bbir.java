@@ -1,18 +1,33 @@
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class bbir
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  bbir(bbin parambbin, DialogInterface.OnClickListener paramOnClickListener) {}
+  bbir(bbiq parambbiq) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbin, 1);
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(0.15F);
+      this.a.c.setAlpha(0.5F);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
     }
-    this.jdField_a_of_type_Bbin.dismiss();
+    for (;;)
+    {
+      return false;
+      if ((i == 3) || (i == 1))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setAlpha(1.0F);
+        this.a.c.setAlpha(1.0F);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      }
+    }
   }
 }
 

@@ -1,70 +1,57 @@
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import android.os.Bundle;
+import mqq.manager.WtloginManager;
+import mqq.observer.SSOAccountObserver;
+import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
+import oicq.wlogin_sdk.tools.RSACrypt;
+import oicq.wlogin_sdk.tools.util;
 
-public class bfho
+class bfho
+  extends SSOAccountObserver
 {
-  public static float a;
-  public static int a;
-  private static float jdField_b_of_type_Float;
-  private static int jdField_b_of_type_Int = -1;
-  private static float jdField_c_of_type_Float;
-  private static int jdField_c_of_type_Int = -1;
-  private static int d = -1;
+  bfho(bfhn parambfhn) {}
   
-  static
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    DisplayMetrics localDisplayMetrics = MiniAppEnv.g().getContext().getResources().getDisplayMetrics();
-    jdField_a_of_type_Float = localDisplayMetrics.density;
-    jdField_a_of_type_Int = localDisplayMetrics.densityDpi;
-    jdField_b_of_type_Float = -1.0F;
-    jdField_c_of_type_Float = -1.0F;
-  }
-  
-  public static float a()
-  {
-    if (jdField_b_of_type_Float < 0.0F) {
-      jdField_b_of_type_Float = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().density;
+    if (this.a.jdField_a_of_type_Bfhp != null) {
+      this.a.jdField_a_of_type_Bfhp.a();
     }
-    return jdField_b_of_type_Float;
   }
   
-  public static int a()
+  public void onGetA1WithA1(String paramString, int paramInt1, byte[] paramArrayOfByte, int paramInt2, Bundle paramBundle)
   {
-    if (jdField_c_of_type_Int < 0) {
-      if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation != 2) {
-        break label47;
+    if (paramInt1 == 0)
+    {
+      paramBundle = new WloginSimpleInfo();
+      if (this.a.jdField_a_of_type_MqqManagerWtloginManager != null) {
+        this.a.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(paramString, paramBundle);
+      }
+      paramString = "" + paramBundle._uin;
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
+      {
+        util.LOGD("outA1 buff: " + util.buf_to_string(paramArrayOfByte));
+        paramArrayOfByte = new RSACrypt(bexd.a().a()).EncryptData(this.a.a(bexd.a().a(), this.a.jdField_a_of_type_Long, 1L), paramArrayOfByte);
+        util.LOGD("encrypt buff:" + util.buf_to_string(paramArrayOfByte));
+        if (this.a.jdField_a_of_type_Bfhp != null) {
+          this.a.jdField_a_of_type_Bfhp.a(paramString, paramArrayOfByte);
+        }
       }
     }
-    label47:
-    for (jdField_c_of_type_Int = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().heightPixels;; jdField_c_of_type_Int = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().widthPixels) {
-      return jdField_c_of_type_Int;
+    while (this.a.jdField_a_of_type_Bfhp == null) {
+      return;
     }
+    this.a.jdField_a_of_type_Bfhp.a();
   }
   
-  public static int a(float paramFloat)
+  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
   {
-    return Math.round(a() * paramFloat);
-  }
-  
-  public static int b()
-  {
-    if (d < 0) {
-      if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation != 2) {
-        break label47;
-      }
-    }
-    label47:
-    for (d = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().widthPixels;; d = MiniAppEnv.g().getContext().getResources().getDisplayMetrics().heightPixels) {
-      return d;
+    if (this.a.jdField_a_of_type_Bfhp != null) {
+      this.a.jdField_a_of_type_Bfhp.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfho
  * JD-Core Version:    0.7.0.1
  */

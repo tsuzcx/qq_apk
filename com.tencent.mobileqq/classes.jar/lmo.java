@@ -1,28 +1,24 @@
-import java.io.BufferedReader;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.qphone.base.util.QLog;
 
-public class lmo
+class lmo
+  implements Camera.AutoFocusCallback
 {
-  boolean a;
-  boolean b;
+  lmo(lmn paramlmn) {}
   
-  public void a(BufferedReader paramBufferedReader)
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    if (!this.b)
-    {
-      this.a = lml.a(paramBufferedReader, "active");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AndroidCamera", 2, "camera focus success ? " + paramBoolean);
     }
-    this.a = true;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
+    GraphicRenderMgr.getInstance().setIsFocusing(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmo
  * JD-Core Version:    0.7.0.1
  */

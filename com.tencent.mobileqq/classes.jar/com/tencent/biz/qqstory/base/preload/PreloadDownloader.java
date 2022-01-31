@@ -12,33 +12,33 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import stl;
-import stz;
-import sub;
-import sui;
-import suj;
-import sum;
-import suu;
-import svd;
-import tcw;
-import tcz;
-import ved;
-import vei;
-import vwp;
-import vyf;
+import uid;
+import uir;
+import uit;
+import uja;
+import ujb;
+import uje;
+import ujm;
+import ujv;
+import uro;
+import urr;
+import wsv;
+import wta;
+import xlh;
+import xmx;
 
 @TargetApi(14)
 public class PreloadDownloader
-  implements sub
+  implements uit
 {
   public static final Object a;
   protected PreloadDownloader.DownloadRunnable a;
   protected volatile PreloadQueue a;
   protected Thread a;
-  protected List<WeakReference<sum>> a;
-  protected stz a;
-  protected volatile sui a;
-  protected suu a;
+  protected List<WeakReference<uje>> a;
+  protected uir a;
+  protected volatile uja a;
+  protected ujm a;
   protected final Object b = new Object();
   
   static
@@ -49,71 +49,71 @@ public class PreloadDownloader
   public PreloadDownloader()
   {
     this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-    this.jdField_a_of_type_Stz = new stz();
-    this.jdField_a_of_type_Stz.a(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Uir = new uir();
+    this.jdField_a_of_type_Uir.a(this.jdField_a_of_type_JavaUtilList);
   }
   
-  private void b(sui paramsui, ErrorMessage arg2)
+  private void b(uja paramuja, ErrorMessage arg2)
   {
-    paramsui.jdField_b_of_type_Int = 3;
-    File localFile = new File(paramsui.jdField_e_of_type_JavaLangString);
+    paramuja.jdField_b_of_type_Int = 3;
+    File localFile = new File(paramuja.jdField_e_of_type_JavaLangString);
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        sum localsum = (sum)((WeakReference)localIterator.next()).get();
-        if (localsum != null) {
-          localsum.a(paramsui.jdField_b_of_type_JavaLangString, paramsui.jdField_a_of_type_Int, localFile, paramsui.c, paramsui);
+        uje localuje = (uje)((WeakReference)localIterator.next()).get();
+        if (localuje != null) {
+          localuje.a(paramuja.jdField_b_of_type_JavaLangString, paramuja.jdField_a_of_type_Int, localFile, paramuja.c, paramuja);
         }
       }
     }
-    ((stl)tcz.a(28)).b(paramsui.jdField_b_of_type_JavaLangString, paramsui.jdField_a_of_type_Int);
+    ((uid)urr.a(28)).b(paramuja.jdField_b_of_type_JavaLangString, paramuja.jdField_a_of_type_Int);
   }
   
-  private void c(sui paramsui, ErrorMessage arg2)
+  private void c(uja paramuja, ErrorMessage arg2)
   {
-    ved.d("Q.qqstory.download.preload.PreloadDownloader", String.format("download success , task = %s", new Object[] { paramsui }));
-    File localFile = new File(paramsui.jdField_e_of_type_JavaLangString);
-    paramsui.jdField_b_of_type_Int = 3;
+    wsv.d("Q.qqstory.download.preload.PreloadDownloader", String.format("download success , task = %s", new Object[] { paramuja }));
+    File localFile = new File(paramuja.jdField_e_of_type_JavaLangString);
+    paramuja.jdField_b_of_type_Int = 3;
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        sum localsum = (sum)((WeakReference)localIterator.next()).get();
-        if (localsum != null) {
-          localsum.b(paramsui.jdField_b_of_type_JavaLangString, paramsui.jdField_a_of_type_Int, localFile, paramsui.c, paramsui);
+        uje localuje = (uje)((WeakReference)localIterator.next()).get();
+        if (localuje != null) {
+          localuje.b(paramuja.jdField_b_of_type_JavaLangString, paramuja.jdField_a_of_type_Int, localFile, paramuja.c, paramuja);
         }
       }
     }
-    ((stl)tcz.a(28)).b(paramsui.jdField_b_of_type_JavaLangString, paramsui.jdField_a_of_type_Int);
-    boolean bool = vwp.a(paramsui.jdField_b_of_type_JavaLangString);
+    ((uid)urr.a(28)).b(paramuja.jdField_b_of_type_JavaLangString, paramuja.jdField_a_of_type_Int);
+    boolean bool = xlh.a(paramuja.jdField_b_of_type_JavaLangString);
     int i;
-    if (!paramsui.jdField_b_of_type_Boolean)
+    if (!paramuja.jdField_b_of_type_Boolean)
     {
-      if (paramsui.c == 0)
+      if (paramuja.c == 0)
       {
         i = 1;
-        if (!vwp.a(paramsui.jdField_b_of_type_JavaLangString)) {
+        if (!xlh.a(paramuja.jdField_b_of_type_JavaLangString)) {
           break label381;
         }
         ??? = "video_download_time_gs";
         label175:
-        vei.b("download_video", ???, i, (int)paramsui.jdField_b_of_type_Long, new String[] { String.valueOf(new File(paramsui.jdField_e_of_type_JavaLangString).length()), String.valueOf(paramsui.jdField_a_of_type_Int), vei.a(BaseApplication.getContext()), paramsui.jdField_b_of_type_JavaLangString });
+        wta.b("download_video", ???, i, (int)paramuja.jdField_b_of_type_Long, new String[] { String.valueOf(new File(paramuja.jdField_e_of_type_JavaLangString).length()), String.valueOf(paramuja.jdField_a_of_type_Int), wta.a(BaseApplication.getContext()), paramuja.jdField_b_of_type_JavaLangString });
       }
     }
     else
     {
-      if (!vwp.a(paramsui.jdField_b_of_type_JavaLangString)) {
+      if (!xlh.a(paramuja.jdField_b_of_type_JavaLangString)) {
         break label387;
       }
       ??? = "video_download_success_gs";
       label250:
-      vei.b("download_video", ???, 0, 0, new String[] { String.valueOf(new File(paramsui.jdField_e_of_type_JavaLangString).length()), String.valueOf(paramsui.jdField_a_of_type_Int), vei.a(BaseApplication.getContext()) });
-      if ((!bool) && (paramsui.jdField_a_of_type_Int == 0))
+      wta.b("download_video", ???, 0, 0, new String[] { String.valueOf(new File(paramuja.jdField_e_of_type_JavaLangString).length()), String.valueOf(paramuja.jdField_a_of_type_Int), wta.a(BaseApplication.getContext()) });
+      if ((!bool) && (paramuja.jdField_a_of_type_Int == 0))
       {
-        ??? = ((tcw)tcz.a(5)).a(paramsui.jdField_b_of_type_JavaLangString);
+        ??? = ((uro)urr.a(5)).a(paramuja.jdField_b_of_type_JavaLangString);
         if (??? != null) {
           break label393;
         }
@@ -123,7 +123,7 @@ public class PreloadDownloader
     label393:
     for (long l = 0L;; l = ???.mCreateTime)
     {
-      vei.b("download_video", "video_download_info", 0, 0, new String[] { String.valueOf(l), String.valueOf(System.currentTimeMillis()), String.valueOf(paramsui.jdField_f_of_type_Int) });
+      wta.b("download_video", "video_download_info", 0, 0, new String[] { String.valueOf(l), String.valueOf(System.currentTimeMillis()), String.valueOf(paramuja.jdField_f_of_type_Int) });
       return;
       i = 0;
       break;
@@ -135,21 +135,21 @@ public class PreloadDownloader
     }
   }
   
-  private void d(sui paramsui, ErrorMessage arg2)
+  private void d(uja paramuja, ErrorMessage arg2)
   {
     Object localObject2;
     if (???.errorCode == 9037)
     {
-      paramsui.jdField_b_of_type_Int = 2;
-      ved.d("Q.qqstory.download.preload.PreloadDownloader", "download task cancel ," + paramsui);
+      paramuja.jdField_b_of_type_Int = 2;
+      wsv.d("Q.qqstory.download.preload.PreloadDownloader", "download task cancel ," + paramuja);
       synchronized (jdField_a_of_type_JavaLangObject)
       {
         ??? = this.jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)???).hasNext())
         {
-          localObject2 = (sum)((WeakReference)((Iterator)???).next()).get();
+          localObject2 = (uje)((WeakReference)((Iterator)???).next()).get();
           if (localObject2 != null) {
-            ((sum)localObject2).b(paramsui.jdField_b_of_type_JavaLangString, paramsui.jdField_a_of_type_Int, paramsui);
+            ((uje)localObject2).b(paramuja.jdField_b_of_type_JavaLangString, paramuja.jdField_a_of_type_Int, paramuja);
           }
         }
       }
@@ -157,16 +157,16 @@ public class PreloadDownloader
     do
     {
       return;
-      paramsui.jdField_b_of_type_Int = 4;
-      ved.e("Q.qqstory.download.preload.PreloadDownloader", String.format("download error , errorMsg = %s , task = %s", new Object[] { ???, paramsui }));
+      paramuja.jdField_b_of_type_Int = 4;
+      wsv.e("Q.qqstory.download.preload.PreloadDownloader", String.format("download error , errorMsg = %s , task = %s", new Object[] { ???, paramuja }));
       synchronized (jdField_a_of_type_JavaLangObject)
       {
         localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          sum localsum = (sum)((WeakReference)((Iterator)localObject2).next()).get();
-          if (localsum != null) {
-            localsum.a(paramsui.jdField_b_of_type_JavaLangString, paramsui.jdField_a_of_type_Int, ???, paramsui.c, paramsui);
+          uje localuje = (uje)((WeakReference)((Iterator)localObject2).next()).get();
+          if (localuje != null) {
+            localuje.a(paramuja.jdField_b_of_type_JavaLangString, paramuja.jdField_a_of_type_Int, ???, paramuja.c, paramuja);
           }
         }
       }
@@ -175,7 +175,7 @@ public class PreloadDownloader
     {
       try
       {
-        if (vwp.a(paramsui.jdField_b_of_type_JavaLangString))
+        if (xlh.a(paramuja.jdField_b_of_type_JavaLangString))
         {
           localObject2 = "video_download_success_gs";
           if (!TextUtils.isEmpty(???.errorMsg)) {
@@ -185,21 +185,21 @@ public class PreloadDownloader
           if (???.errorCode != 9301) {
             break label453;
           }
-          if (!vyf.a()) {
+          if (!xmx.a()) {
             break label405;
           }
-          svd.a().a();
+          ujv.a().a();
           i = 0;
           if (i == 0) {
             break;
           }
-          vei.b("download_video", (String)localObject2, 0, ???.errorCode, new String[] { ???, String.valueOf(paramsui.jdField_a_of_type_Int), vei.a(BaseApplication.getContext()), paramsui.jdField_b_of_type_JavaLangString });
+          wta.b("download_video", (String)localObject2, 0, ???.errorCode, new String[] { ???, String.valueOf(paramuja.jdField_a_of_type_Int), wta.a(BaseApplication.getContext()), paramuja.jdField_b_of_type_JavaLangString });
           return;
         }
       }
-      catch (Exception paramsui)
+      catch (Exception paramuja)
       {
-        QLog.e("Q.qqstory.download.preload.PreloadDownloader", 1, paramsui, new Object[0]);
+        QLog.e("Q.qqstory.download.preload.PreloadDownloader", 1, paramuja, new Object[0]);
         return;
       }
       localObject2 = "video_download_success";
@@ -208,7 +208,7 @@ public class PreloadDownloader
       ??? = ???.errorMsg.substring(0, Math.min(???.errorMsg.length(), 20));
       continue;
       label405:
-      ??? = (String)??? + " -" + vyf.a() / 1024L / 1024L + "M";
+      ??? = (String)??? + " -" + xmx.a() / 1024L / 1024L + "M";
       int i = 1;
       continue;
       label453:
@@ -225,9 +225,9 @@ public class PreloadDownloader
     return localPreloadQueue.getId();
   }
   
-  public sui a()
+  public uja a()
   {
-    return this.jdField_a_of_type_Sui;
+    return this.jdField_a_of_type_Uja;
   }
   
   /* Error */
@@ -241,7 +241,7 @@ public class PreloadDownloader
     //   6: ifeq +14 -> 20
     //   9: ldc 109
     //   11: ldc_w 289
-    //   14: invokestatic 123	ved:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   14: invokestatic 123	wsv:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   17: aload_0
     //   18: monitorexit
     //   19: return
@@ -250,7 +250,7 @@ public class PreloadDownloader
     //   24: dup
     //   25: aload_0
     //   26: aconst_null
-    //   27: invokespecial 294	com/tencent/biz/qqstory/base/preload/PreloadDownloader$DownloadRunnable:<init>	(Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader;Lsus;)V
+    //   27: invokespecial 294	com/tencent/biz/qqstory/base/preload/PreloadDownloader$DownloadRunnable:<init>	(Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader;Lujk;)V
     //   30: putfield 296	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader$DownloadRunnable	Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader$DownloadRunnable;
     //   33: aload_0
     //   34: getfield 296	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader$DownloadRunnable	Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader$DownloadRunnable;
@@ -268,7 +268,7 @@ public class PreloadDownloader
     //   60: invokevirtual 313	java/lang/Thread:start	()V
     //   63: ldc 109
     //   65: ldc_w 315
-    //   68: invokestatic 123	ved:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   68: invokestatic 123	wsv:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   71: goto -54 -> 17
     //   74: astore_1
     //   75: aload_0
@@ -298,7 +298,7 @@ public class PreloadDownloader
     label71:
     for (Object localObject2 = "null";; localObject2 = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue)
     {
-      ved.d("Q.qqstory.download.preload.PreloadDownloader", "setDownloadQueue newQueue = %s , currentQueue = %s", new Object[] { localObject1, localObject2 });
+      wsv.d("Q.qqstory.download.preload.PreloadDownloader", "setDownloadQueue newQueue = %s , currentQueue = %s", new Object[] { localObject1, localObject2 });
       localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue;
       this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue = paramPreloadQueue;
       if (localObject1 != null) {
@@ -313,36 +313,36 @@ public class PreloadDownloader
     }
   }
   
-  public void a(sui paramsui)
+  public void a(uja paramuja)
   {
-    if ((paramsui == null) || (this.jdField_a_of_type_Stz.a(paramsui))) {}
+    if ((paramuja == null) || (this.jdField_a_of_type_Uir.a(paramuja))) {}
     synchronized (this.b)
     {
       this.b.notifyAll();
-      ved.d("Q.qqstory.download.preload.PreloadDownloader", "cancel task " + paramsui);
+      wsv.d("Q.qqstory.download.preload.PreloadDownloader", "cancel task " + paramuja);
       return;
     }
   }
   
-  public void a(sui arg1, ErrorMessage paramErrorMessage)
+  public void a(uja arg1, ErrorMessage paramErrorMessage)
   {
     int j = 1;
     if ((??? == null) || (paramErrorMessage == null))
     {
-      ved.e("Q.qqstory.download.preload.PreloadDownloader", "resp param is error");
+      wsv.e("Q.qqstory.download.preload.PreloadDownloader", "resp param is error");
       synchronized (this.b)
       {
         this.b.notifyAll();
         return;
       }
     }
-    Object localObject = this.jdField_a_of_type_Sui;
-    if ((localObject != null) && (((sui)localObject).equals(???))) {
-      this.jdField_a_of_type_Sui = null;
+    Object localObject = this.jdField_a_of_type_Uja;
+    if ((localObject != null) && (((uja)localObject).equals(???))) {
+      this.jdField_a_of_type_Uja = null;
     }
     for (int i = 1;; i = 0)
     {
-      ved.c("Q.qqstory.download.preload.PreloadDownloader", String.format("onResp , errorMsg = %s , task = %s", new Object[] { paramErrorMessage, ??? }));
+      wsv.c("Q.qqstory.download.preload.PreloadDownloader", String.format("onResp , errorMsg = %s , task = %s", new Object[] { paramErrorMessage, ??? }));
       if (paramErrorMessage.errorCode == 12)
       {
         b(???, paramErrorMessage);
@@ -356,23 +356,23 @@ public class PreloadDownloader
       {
         try
         {
-          ved.e("Q.qqstory.download.preload.PreloadDownloader", "picture 9047 error , errorMsg = %s , task = %s", new Object[] { paramErrorMessage, ??? });
+          wsv.e("Q.qqstory.download.preload.PreloadDownloader", "picture 9047 error , errorMsg = %s , task = %s", new Object[] { paramErrorMessage, ??? });
           ???.d = ???.d.replace("https://", "http://");
           ???.jdField_e_of_type_Int += 1;
-          if (this.jdField_a_of_type_Stz.a(???, this))
+          if (this.jdField_a_of_type_Uir.a(???, this))
           {
-            this.jdField_a_of_type_Sui = ???;
+            this.jdField_a_of_type_Uja = ???;
             if (!TextUtils.isEmpty(paramErrorMessage.errorMsg)) {
               break label360;
             }
             localObject = "";
-            vei.b("download_video", "hostname_not_verified", 0, paramErrorMessage.errorCode, new String[] { localObject, String.valueOf(???.jdField_a_of_type_Int), vei.a(BaseApplication.getContext()), ???.jdField_b_of_type_JavaLangString });
+            wta.b("download_video", "hostname_not_verified", 0, paramErrorMessage.errorCode, new String[] { localObject, String.valueOf(???.jdField_a_of_type_Int), wta.a(BaseApplication.getContext()), ???.jdField_b_of_type_JavaLangString });
             return;
           }
         }
         catch (Exception localException)
         {
-          ved.c("Q.qqstory.download.preload.PreloadDownloader", "picture 9047 protect error , errorMsg = %s", localException);
+          wsv.c("Q.qqstory.download.preload.PreloadDownloader", "picture 9047 protect error , errorMsg = %s", localException);
         }
       }
       else
@@ -408,19 +408,19 @@ public class PreloadDownloader
     }
   }
   
-  public void a(sum paramsum)
+  public void a(uje paramuje)
   {
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      paramsum = new WeakReference(paramsum);
-      this.jdField_a_of_type_JavaUtilList.add(paramsum);
+      paramuje = new WeakReference(paramuje);
+      this.jdField_a_of_type_JavaUtilList.add(paramuje);
       return;
     }
   }
   
-  public void a(suu paramsuu)
+  public void a(ujm paramujm)
   {
-    this.jdField_a_of_type_Suu = paramsuu;
+    this.jdField_a_of_type_Ujm = paramujm;
   }
   
   public boolean a()
@@ -445,8 +445,8 @@ public class PreloadDownloader
     //   18: aconst_null
     //   19: putfield 296	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader$DownloadRunnable	Lcom/tencent/biz/qqstory/base/preload/PreloadDownloader$DownloadRunnable;
     //   22: aload_0
-    //   23: getfield 44	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Stz	Lstz;
-    //   26: invokevirtual 393	stz:a	()Z
+    //   23: getfield 44	com/tencent/biz/qqstory/base/preload/PreloadDownloader:jdField_a_of_type_Uir	Luir;
+    //   26: invokevirtual 393	uir:a	()Z
     //   29: ifeq +19 -> 48
     //   32: aload_0
     //   33: getfield 46	com/tencent/biz/qqstory/base/preload/PreloadDownloader:b	Ljava/lang/Object;
@@ -460,7 +460,7 @@ public class PreloadDownloader
     //   47: monitorexit
     //   48: ldc 109
     //   50: ldc_w 395
-    //   53: invokestatic 123	ved:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   53: invokestatic 123	wsv:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   56: aload_0
     //   57: monitorexit
     //   58: return
@@ -488,11 +488,11 @@ public class PreloadDownloader
     //   62	64	64	finally
   }
   
-  public void b(sui arg1)
+  public void b(uja arg1)
   {
-    ved.c("Q.qqstory.download.preload.PreloadDownloader", "downloadTask , " + ???);
-    vei.b("download_video", "video_download_start", 0, 0, new String[] { "", String.valueOf(???.jdField_a_of_type_Int), vei.a(BaseApplication.getContext()), ???.jdField_b_of_type_JavaLangString });
-    File localFile = suj.a(???.jdField_b_of_type_JavaLangString, ???.jdField_a_of_type_Int, false, false);
+    wsv.c("Q.qqstory.download.preload.PreloadDownloader", "downloadTask , " + ???);
+    wta.b("download_video", "video_download_start", 0, 0, new String[] { "", String.valueOf(???.jdField_a_of_type_Int), wta.a(BaseApplication.getContext()), ???.jdField_b_of_type_JavaLangString });
+    File localFile = ujb.a(???.jdField_b_of_type_JavaLangString, ???.jdField_a_of_type_Int, false, false);
     if (localFile != null)
     {
       ???.jdField_e_of_type_JavaLangString = localFile.getAbsolutePath();
@@ -507,10 +507,10 @@ public class PreloadDownloader
         if (localFile.exists())
         {
           localFile.delete();
-          ved.d("Q.qqstory.download.preload.PreloadDownloader", "%s - %d found orphan tmp , delete it", new Object[] { ???.jdField_b_of_type_JavaLangString, Integer.valueOf(???.jdField_a_of_type_Int) });
+          wsv.d("Q.qqstory.download.preload.PreloadDownloader", "%s - %d found orphan tmp , delete it", new Object[] { ???.jdField_b_of_type_JavaLangString, Integer.valueOf(???.jdField_a_of_type_Int) });
         }
       }
-    } while (!this.jdField_a_of_type_Stz.a(???, this));
+    } while (!this.jdField_a_of_type_Uir.a(???, this));
     try
     {
       synchronized (this.b)
@@ -523,14 +523,14 @@ public class PreloadDownloader
     {
       for (;;)
       {
-        ved.d("Q.qqstory.download.preload.PreloadDownloader", "wait error , %s", new Object[] { localInterruptedException.getMessage() });
+        wsv.d("Q.qqstory.download.preload.PreloadDownloader", "wait error , %s", new Object[] { localInterruptedException.getMessage() });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.PreloadDownloader
  * JD-Core Version:    0.7.0.1
  */

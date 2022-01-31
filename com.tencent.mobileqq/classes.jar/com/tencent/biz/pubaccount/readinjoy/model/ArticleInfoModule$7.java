@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import ozo;
+import pew;
 
 public class ArticleInfoModule$7
   implements Runnable
 {
-  public ArticleInfoModule$7(ozo paramozo) {}
+  public ArticleInfoModule$7(pew parampew) {}
   
   public void run()
   {
-    bcql.a(BaseApplication.getContext(), 0, BaseApplication.getContext().getString(2131718594), 1).a();
+    QQToast.a(BaseApplication.getContext(), 0, BaseApplication.getContext().getString(2131719054), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule.7
  * JD-Core Version:    0.7.0.1
  */

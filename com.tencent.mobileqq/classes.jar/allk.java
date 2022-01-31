@@ -1,10 +1,24 @@
-public abstract interface allk
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import java.util.Comparator;
+
+class allk
+  implements Comparator<BaseAddress>
 {
-  public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, boolean paramBoolean);
+  allk(allj paramallj) {}
+  
+  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
+  {
+    int j = paramBaseAddress1.pinyinFirst.compareTo(paramBaseAddress2.pinyinFirst);
+    int i = j;
+    if (j == 0) {
+      i = paramBaseAddress1.pinyinAll.compareTo(paramBaseAddress2.pinyinAll);
+    }
+    return i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     allk
  * JD-Core Version:    0.7.0.1
  */

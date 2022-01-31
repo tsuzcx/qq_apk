@@ -1,31 +1,27 @@
-import android.content.Context;
+import android.os.Build.VERSION;
 import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
 
-final class wte
-  implements bfph
+public class wte
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  wte(Context paramContext, String paramString, wth paramwth, bfpc parambfpc) {}
+  public wte(DanceMachineQQBrowserActivity paramDanceMachineQQBrowserActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if (wtb.a()) {
-      return;
-    }
-    wtb.a(true);
-    switch (paramInt)
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 4870;; paramInt = 775)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
+      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
       return;
-      wtb.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Wth);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wte
  * JD-Core Version:    0.7.0.1
  */

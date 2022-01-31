@@ -1,27 +1,13 @@
-import com.tencent.qqmini.sdk.launcher.model.ShareChatModel;
+import com.tencent.mobileqq.widget.datepicker.CalendarDay;
+import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
 
-public class besl
+public abstract interface besl
 {
-  public int a = -1;
-  public ShareChatModel a;
-  public String a;
-  public boolean a;
-  public int b = -1;
-  public String b;
-  public boolean b;
-  public int c = -1;
-  public String c;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
-  public boolean h;
-  public boolean i;
+  public abstract void a(SimpleMonthView paramSimpleMonthView, CalendarDay paramCalendarDay, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besl
  * JD-Core Version:    0.7.0.1
  */

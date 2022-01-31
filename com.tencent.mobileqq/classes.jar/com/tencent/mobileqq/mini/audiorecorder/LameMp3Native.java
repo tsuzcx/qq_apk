@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.audiorecorder;
 
-import asjj;
+import auaj;
 import com.tencent.qphone.base.util.QLog;
 
 public class LameMp3Native
 {
   public static final int ERR_NATIVE_LOAD = -99999;
-  public static volatile boolean mNativeLoaded = asjj.a().c();
+  public static volatile boolean mNativeLoaded = auaj.a().c();
   
   static
   {
@@ -14,7 +14,7 @@ public class LameMp3Native
     if (!mNativeLoaded) {}
     try
     {
-      mNativeLoaded = asjj.a().b();
+      mNativeLoaded = auaj.a().b();
       if (mNativeLoaded) {}
     }
     catch (Throwable localThrowable1)
@@ -79,7 +79,7 @@ public class LameMp3Native
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.audiorecorder.LameMp3Native
  * JD-Core Version:    0.7.0.1
  */

@@ -2,17 +2,17 @@ package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
 import com.tencent.TMG.utils.QLog;
 import java.lang.ref.WeakReference;
-import nyo;
+import oby;
 
 public class ReadInJoyArticleBottomVideoView$WeakReferenceRunnable
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private WeakReference<nyo> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<oby> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public ReadInJoyArticleBottomVideoView$WeakReferenceRunnable(nyo paramnyo, int paramInt)
+  public ReadInJoyArticleBottomVideoView$WeakReferenceRunnable(oby paramoby, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramnyo);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramoby);
     this.jdField_a_of_type_Int = paramInt;
   }
   
@@ -28,20 +28,20 @@ public class ReadInJoyArticleBottomVideoView$WeakReferenceRunnable
     } while (!QLog.isColorLevel());
     QLog.e("ReadInJoyArticleBottomVideoView", 0, "WeakReferenceRunnable run type is error mType: " + this.jdField_a_of_type_Int);
     return;
-    ((nyo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+    ((oby)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
     return;
-    ((nyo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
+    ((oby)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
     return;
-    ((nyo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).c();
+    ((oby)this.jdField_a_of_type_JavaLangRefWeakReference.get()).c();
     return;
-    ((nyo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d();
+    ((oby)this.jdField_a_of_type_JavaLangRefWeakReference.get()).d();
     return;
-    ((nyo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).e();
+    ((oby)this.jdField_a_of_type_JavaLangRefWeakReference.get()).e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable
  * JD-Core Version:    0.7.0.1
  */

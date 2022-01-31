@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.sdk;
 
 import android.content.Context;
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 
 final class MiniAppController$7
   implements Runnable
@@ -10,12 +10,12 @@ final class MiniAppController$7
   
   public void run()
   {
-    bcql.a(this.val$context, "参数link为空", 0).a();
+    QQToast.a(this.val$context, "参数link为空", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppController.7
  * JD-Core Version:    0.7.0.1
  */

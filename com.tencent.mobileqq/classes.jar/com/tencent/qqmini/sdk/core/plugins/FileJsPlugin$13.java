@@ -1,26 +1,26 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
+import bgkd;
 
 class FileJsPlugin$13
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$13(FileJsPlugin paramFileJsPlugin, String paramString, bekr parambekr, boolean paramBoolean) {}
+  FileJsPlugin$13(FileJsPlugin paramFileJsPlugin, String paramString, bgkd parambgkd, boolean paramBoolean) {}
   
   /* Error */
   public String run()
   {
     // Byte code:
-    //   0: invokestatic 40	bejl:a	()Lbejl;
+    //   0: invokestatic 40	bgjm:a	()Lbgjm;
     //   3: aload_0
     //   4: getfield 20	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$path	Ljava/lang/String;
-    //   7: invokevirtual 43	bejl:a	(Ljava/lang/String;)I
+    //   7: invokevirtual 43	bgjm:a	(Ljava/lang/String;)I
     //   10: sipush 9999
     //   13: if_icmpne +38 -> 51
     //   16: aload_0
     //   17: getfield 18	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:this$0	Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;
     //   20: aload_0
-    //   21: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbekr;
+    //   21: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbgkd;
     //   24: aconst_null
     //   25: new 45	java/lang/StringBuilder
     //   28: dup
@@ -31,12 +31,12 @@ class FileJsPlugin$13
     //   38: getfield 20	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$path	Ljava/lang/String;
     //   41: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   44: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   47: invokestatic 61	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$100	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbekr;Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
+    //   47: invokestatic 61	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$100	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbgkd;Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
     //   50: areturn
-    //   51: invokestatic 40	bejl:a	()Lbejl;
+    //   51: invokestatic 40	bgjm:a	()Lbgjm;
     //   54: aload_0
     //   55: getfield 20	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$path	Ljava/lang/String;
-    //   58: invokevirtual 64	bejl:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   58: invokevirtual 64	bgjm:a	(Ljava/lang/String;)Ljava/lang/String;
     //   61: astore_1
     //   62: new 66	java/io/File
     //   65: dup
@@ -49,7 +49,7 @@ class FileJsPlugin$13
     //   78: aload_0
     //   79: getfield 18	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:this$0	Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;
     //   82: aload_0
-    //   83: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbekr;
+    //   83: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbgkd;
     //   86: aconst_null
     //   87: new 45	java/lang/StringBuilder
     //   90: dup
@@ -60,7 +60,7 @@ class FileJsPlugin$13
     //   100: getfield 20	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$path	Ljava/lang/String;
     //   103: invokevirtual 52	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   109: invokestatic 61	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$100	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbekr;Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
+    //   109: invokestatic 61	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$100	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbgkd;Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
     //   112: areturn
     //   113: aload_0
     //   114: getfield 24	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$recursive	Z
@@ -69,14 +69,14 @@ class FileJsPlugin$13
     //   121: invokevirtual 78	java/io/File:isDirectory	()Z
     //   124: ifeq +114 -> 238
     //   127: aload_1
-    //   128: invokestatic 84	belh:b	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   128: invokestatic 84	bgkv:b	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   131: astore_2
     //   132: aload_2
     //   133: ifnull +186 -> 319
     //   136: ldc 86
     //   138: aload_0
-    //   139: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbekr;
-    //   142: getfield 90	bekr:a	Ljava/lang/String;
+    //   139: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbgkd;
+    //   142: getfield 90	bgkd:a	Ljava/lang/String;
     //   145: invokevirtual 96	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   148: ifeq +8 -> 156
     //   151: aload_2
@@ -98,16 +98,16 @@ class FileJsPlugin$13
     //   182: aload_0
     //   183: getfield 18	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:this$0	Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;
     //   186: aload_0
-    //   187: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbekr;
+    //   187: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbgkd;
     //   190: aload_1
-    //   191: invokestatic 113	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$200	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbekr;Lorg/json/JSONObject;)Ljava/lang/String;
+    //   191: invokestatic 113	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$200	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbgkd;Lorg/json/JSONObject;)Ljava/lang/String;
     //   194: areturn
     //   195: aload_0
     //   196: getfield 18	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:this$0	Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;
     //   199: aload_0
-    //   200: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbekr;
+    //   200: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbgkd;
     //   203: aload_2
-    //   204: invokestatic 113	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$200	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbekr;Lorg/json/JSONObject;)Ljava/lang/String;
+    //   204: invokestatic 113	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$200	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbgkd;Lorg/json/JSONObject;)Ljava/lang/String;
     //   207: astore_1
     //   208: aload_1
     //   209: areturn
@@ -121,18 +121,18 @@ class FileJsPlugin$13
     //   225: aload_1
     //   226: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   229: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   232: invokestatic 126	betc:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   232: invokestatic 126	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   235: ldc 128
     //   237: areturn
     //   238: aload_1
-    //   239: invokestatic 130	belh:a	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   239: invokestatic 130	bgkv:a	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   242: astore_2
     //   243: aload_2
     //   244: ifnull +75 -> 319
     //   247: ldc 86
     //   249: aload_0
-    //   250: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbekr;
-    //   253: getfield 90	bekr:a	Ljava/lang/String;
+    //   250: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbgkd;
+    //   253: getfield 90	bgkd:a	Ljava/lang/String;
     //   256: invokevirtual 96	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   259: ifeq +8 -> 267
     //   262: aload_2
@@ -154,24 +154,24 @@ class FileJsPlugin$13
     //   293: aload_0
     //   294: getfield 18	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:this$0	Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;
     //   297: aload_0
-    //   298: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbekr;
+    //   298: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbgkd;
     //   301: aload_1
-    //   302: invokestatic 113	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$200	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbekr;Lorg/json/JSONObject;)Ljava/lang/String;
+    //   302: invokestatic 113	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$200	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbgkd;Lorg/json/JSONObject;)Ljava/lang/String;
     //   305: areturn
     //   306: aload_0
     //   307: getfield 18	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:this$0	Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;
     //   310: aload_0
-    //   311: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbekr;
+    //   311: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbgkd;
     //   314: aload_2
-    //   315: invokestatic 113	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$200	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbekr;Lorg/json/JSONObject;)Ljava/lang/String;
+    //   315: invokestatic 113	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$200	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbgkd;Lorg/json/JSONObject;)Ljava/lang/String;
     //   318: areturn
     //   319: aload_0
     //   320: getfield 18	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:this$0	Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;
     //   323: aload_0
-    //   324: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbekr;
+    //   324: getfield 22	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin$13:val$req	Lbgkd;
     //   327: aconst_null
     //   328: ldc 75
-    //   330: invokestatic 61	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$100	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbekr;Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
+    //   330: invokestatic 61	com/tencent/qqmini/sdk/core/plugins/FileJsPlugin:access$100	(Lcom/tencent/qqmini/sdk/core/plugins/FileJsPlugin;Lbgkd;Lorg/json/JSONObject;Ljava/lang/String;)Ljava/lang/String;
     //   333: areturn
     //   334: astore_2
     //   335: goto -42 -> 293
@@ -200,7 +200,7 @@ class FileJsPlugin$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.FileJsPlugin.13
  * JD-Core Version:    0.7.0.1
  */

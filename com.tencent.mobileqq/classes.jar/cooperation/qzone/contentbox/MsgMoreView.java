@@ -7,9 +7,9 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bbll;
-import bhcv;
-import bhdn;
+import bdkf;
+import bjef;
+import bjex;
 import cooperation.qzone.contentbox.model.MQBottomCell;
 import cooperation.qzone.contentbox.model.MQMsg;
 import java.util.ArrayList;
@@ -17,10 +17,10 @@ import java.util.ArrayList;
 public class MsgMoreView
   extends FrameLayout
 {
-  private static final int jdField_a_of_type_Int = bbll.b(24.0F);
+  private static final int jdField_a_of_type_Int = bdkf.b(24.0F);
   private Context jdField_a_of_type_AndroidContentContext;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private bhdn jdField_a_of_type_Bhdn;
+  private bjex jdField_a_of_type_Bjex;
   private MQMsg jdField_a_of_type_CooperationQzoneContentboxModelMQMsg;
   
   public MsgMoreView(@NonNull Context paramContext)
@@ -44,9 +44,9 @@ public class MsgMoreView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131561990, this);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131362964));
-    setOnClickListener(new bhcv(this));
+    LayoutInflater.from(paramContext).inflate(2131562182, this);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131362999));
+    setOnClickListener(new bjef(this));
   }
   
   public void setData(MQMsg paramMQMsg, boolean paramBoolean)
@@ -77,18 +77,18 @@ public class MsgMoreView
       }
     }
     if (paramBoolean) {
-      ((TextView)findViewById(2131370437)).setTextColor(-7500397);
+      ((TextView)findViewById(2131370743)).setTextColor(-7500397);
     }
   }
   
-  public void setMsgOnClickListener(bhdn parambhdn)
+  public void setMsgOnClickListener(bjex parambjex)
   {
-    this.jdField_a_of_type_Bhdn = parambhdn;
+    this.jdField_a_of_type_Bjex = parambjex;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgMoreView
  * JD-Core Version:    0.7.0.1
  */

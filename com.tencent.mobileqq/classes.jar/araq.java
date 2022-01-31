@@ -1,12 +1,21 @@
-public abstract interface araq
+import java.util.List;
+
+public class araq
 {
-  public abstract void a(String paramString);
+  public int a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public byte[] a;
+  public byte[] b;
+  public byte[] c;
+  public byte[] d;
   
-  public abstract void c(int paramInt);
+  public araq(arap paramarap) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     araq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import akaw;
+import alsl;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
@@ -9,7 +9,7 @@ import mqq.app.MobileQQ;
 public class MessageRoamManager$6
   implements Runnable
 {
-  public MessageRoamManager$6(akaw paramakaw) {}
+  public MessageRoamManager$6(alsl paramalsl) {}
   
   public void run()
   {

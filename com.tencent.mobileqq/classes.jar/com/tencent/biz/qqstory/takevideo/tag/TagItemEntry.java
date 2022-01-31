@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.takevideo.tag;
 
-import auko;
-import ssi;
+import awbv;
+import uha;
 
 public class TagItemEntry
-  extends auko
-  implements ssi
+  extends awbv
+  implements uha
 {
   public String desc;
   public long id;
@@ -29,7 +29,7 @@ public class TagItemEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.tag.TagItemEntry
  * JD-Core Version:    0.7.0.1
  */

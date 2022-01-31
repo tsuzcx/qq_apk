@@ -1,20 +1,28 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class tkt
-  implements syq<tnm, tox>
+final class tkt
+  extends ClickableSpan
 {
-  public void a(@NonNull tnm paramtnm, @Nullable tox paramtox, @NonNull ErrorMessage paramErrorMessage)
+  tkt(tkr paramtkr, String paramString) {}
+  
+  public void onClick(@NonNull View paramView)
   {
-    paramtnm = new tku(this, paramErrorMessage, paramtnm.b, paramtnm.jdField_c_of_type_JavaLangString, paramtnm.jdField_c_of_type_Int);
-    stb.a().dispatch(paramtnm);
+    if (this.jdField_a_of_type_Tkr != null) {
+      this.jdField_a_of_type_Tkr.a(this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tkt
  * JD-Core Version:    0.7.0.1
  */

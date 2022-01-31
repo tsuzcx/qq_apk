@@ -1,22 +1,16 @@
-class bbyr
-  implements bbzd
+import android.widget.TextView;
+
+public class bbyr
 {
-  bbyr(bbyp parambbyp) {}
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void a(int paramInt, String paramString) {}
-  
-  public void a(bbyu parambbyu)
-  {
-    if (parambbyu.a)
-    {
-      bbyp.a(this.a, parambbyu);
-      bbyp.a(this.a);
-    }
-  }
+  protected bbyr(bbyq parambbyq) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbyr
  * JD-Core Version:    0.7.0.1
  */

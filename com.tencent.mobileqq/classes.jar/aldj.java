@@ -1,63 +1,60 @@
-import android.os.Handler;
-import android.os.Message;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-class aldj
-  extends alel
+public class aldj
 {
-  aldj(aldf paramaldf) {}
-  
-  public void a(int paramInt)
+  public static void a(String paramString, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadSuccess success " + paramInt);
-    }
-    if (aldf.a(this.a) == null)
+    if (paramBundle == null) {}
+    int i;
+    do
     {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadSuccess error mHandler is null ");
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 10;
-    localMessage.arg1 = paramInt;
-    aldf.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadProcess process " + paramInt1 + " : " + paramInt2);
-    }
-    if (aldf.a(this.a) == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 11;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    aldf.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadError " + paramInt1 + " : " + paramInt2);
-    }
-    if (aldf.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadError error mHandler is null ");
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 12;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    aldf.a(this.a).sendMessage(localMessage);
+      String str;
+      for (;;)
+      {
+        return;
+        try
+        {
+          if (alde.a())
+          {
+            i = paramBundle.getInt("featureId");
+            str = paramBundle.getString("featureKey");
+            if ("action_begin_trace".equals(paramString))
+            {
+              alde.a().a(i, str, paramBundle);
+              return;
+            }
+          }
+        }
+        catch (Exception paramString)
+        {
+          QLog.e("TraceReport", 1, paramString, new Object[0]);
+          return;
+        }
+      }
+      if ("action_end_trace".equals(paramString))
+      {
+        alde.a().b(i, str, paramBundle);
+        return;
+      }
+      if ("action_report_span".equals(paramString))
+      {
+        alde.a().c(i, str, paramBundle);
+        return;
+      }
+      if ("action_update_trace".equals(paramString))
+      {
+        alde.a().a(i, paramBundle);
+        return;
+      }
+    } while (!"action_enable_trace".equals(paramString));
+    boolean bool = paramBundle.getBoolean("enable");
+    alde.a().a(i, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldj
  * JD-Core Version:    0.7.0.1
  */

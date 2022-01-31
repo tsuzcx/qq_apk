@@ -1,43 +1,23 @@
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.LinearLayout.LayoutParams;
+import mqq.app.QQPermissionCallback;
 
-public class axvv
-  extends Animation
+class axvv
+  implements QQPermissionCallback
 {
-  int jdField_a_of_type_Int;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  axvv(axvr paramaxvr) {}
   
-  public axvv(ViewGroup paramViewGroup)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    int i = View.MeasureSpec.makeMeasureSpec(0, 0);
-    int j = View.MeasureSpec.makeMeasureSpec(0, 0);
-    this.jdField_a_of_type_AndroidViewViewGroup.measure(i, j);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getMeasuredHeight();
-    paramViewGroup = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramViewGroup.height = 0;
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramViewGroup);
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+    bdcd.b(this.a.mContext);
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
+    axvr.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axvv
  * JD-Core Version:    0.7.0.1
  */

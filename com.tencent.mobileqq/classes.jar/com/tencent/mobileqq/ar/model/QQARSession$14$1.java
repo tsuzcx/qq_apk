@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.model;
 
-import ajya;
-import bcql;
+import alpo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class QQARSession$14$1
   implements Runnable
@@ -11,12 +11,12 @@ class QQARSession$14$1
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131710154), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131710526), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.14.1
  * JD-Core Version:    0.7.0.1
  */

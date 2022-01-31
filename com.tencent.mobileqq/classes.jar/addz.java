@@ -1,38 +1,37 @@
-import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
 
 public class addz
-  implements adec
+  implements View.OnLongClickListener
 {
-  public addz(LoadDataJob paramLoadDataJob, Map paramMap, List paramList) {}
+  public addz(MainFragment paramMainFragment) {}
   
-  public void a(int paramInt, aden paramaden)
+  public boolean onLongClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoadDataJob", 2, "unmarshall task finish id:" + paramInt);
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    if (this.a.a() == MainFragment.b)
     {
-      this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
-      this.jdField_a_of_type_JavaUtilMap.notifyAll();
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilList)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramaden);
-      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
-        this.jdField_a_of_type_JavaUtilList.notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("MainFragment", 2, "Mainfragment onLongClick");
       }
-      return;
-      paramaden = finally;
-      throw paramaden;
+      paramView = (Conversation)this.a.a(Conversation.class);
+      if (paramView != null)
+      {
+        paramView = paramView.a().a();
+        if (paramView != null) {
+          augs.a(this.a.getActivity(), paramView.a(), paramView.a(), paramView.b(), "conversation_tab_bottom");
+        }
+      }
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addz
  * JD-Core Version:    0.7.0.1
  */

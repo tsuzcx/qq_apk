@@ -1,13 +1,19 @@
 package com.tencent.mobileqq.app.automator;
 
-import akla;
-import aklb;
+import amcq;
+import amcr;
 import android.os.Process;
 import android.os.SystemClock;
-import axnx;
-import bfwu;
+import azjg;
+import bhxr;
 import com.tencent.mobileqq.app.automator.step.ActiveAccount;
+import com.tencent.mobileqq.app.automator.step.CheckPublicAccount;
+import com.tencent.mobileqq.app.automator.step.GetSubAccount;
+import com.tencent.mobileqq.app.automator.step.LoginWelcomeRequest;
 import com.tencent.mobileqq.app.automator.step.RegisterPush;
+import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
+import com.tencent.mobileqq.app.automator.step.UpdateFriend;
+import com.tencent.mobileqq.app.automator.step.UpdateTroop;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,7 +23,7 @@ public class AsyncStep
 {
   protected volatile int a;
   private long jdField_a_of_type_Long;
-  public akla a;
+  public amcq a;
   public Automator a;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
@@ -79,7 +85,7 @@ public class AsyncStep
             return true;
           }
         }
-        if ((axnx.f) && (!aklb.a.contains(Integer.valueOf(this.jdField_b_of_type_Int))))
+        if ((azjg.f) && (!amcr.a.contains(Integer.valueOf(this.jdField_b_of_type_Int))))
         {
           long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
           if (QLog.isColorLevel()) {
@@ -158,7 +164,7 @@ public class AsyncStep
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      bfwu.a(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      bhxr.a(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 1, this.jdField_a_of_type_JavaLangString + " begin with " + this.jdField_a_of_type_Int);
       }
@@ -178,7 +184,7 @@ public class AsyncStep
     }
     catch (Throwable localThrowable1)
     {
-      label177:
+      label250:
       QLog.e("QQInitHandler", 1, "", localThrowable1);
       a(8);
       return;
@@ -190,32 +196,32 @@ public class AsyncStep
       }
       try
       {
-        if (((this instanceof ActiveAccount)) || ((this instanceof RegisterPush))) {
+        if (((this instanceof ActiveAccount)) || ((this instanceof LoginWelcomeRequest)) || ((this instanceof UpdateFriend)) || ((this instanceof UpdateTroop)) || ((this instanceof UpdateDiscuss)) || ((this instanceof CheckPublicAccount)) || ((this instanceof GetSubAccount)) || ((this instanceof InitBeforeSyncMsg)) || ((this instanceof RegisterPush)) || ("{4,3,5,6}".equals(this.jdField_a_of_type_JavaLangString)) || ("[11,12,14]".equals(this.jdField_a_of_type_JavaLangString))) {
           this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long));
         }
       }
       catch (Throwable localThrowable4)
       {
-        break label434;
+        break label653;
       }
-      bfwu.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
-      if (this.jdField_a_of_type_Akla != null) {
-        this.jdField_a_of_type_Akla.a(this, this.jdField_a_of_type_Int);
+      bhxr.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+      if (this.jdField_a_of_type_Amcq != null) {
+        this.jdField_a_of_type_Amcq.a(this, this.jdField_a_of_type_Int);
       }
     }
     try
     {
-      if (((this instanceof ActiveAccount)) || ((this instanceof RegisterPush))) {
+      if (((this instanceof ActiveAccount)) || ((this instanceof LoginWelcomeRequest)) || ((this instanceof UpdateFriend)) || ((this instanceof UpdateTroop)) || ((this instanceof UpdateDiscuss)) || ((this instanceof CheckPublicAccount)) || ((this instanceof GetSubAccount)) || ((this instanceof InitBeforeSyncMsg)) || ((this instanceof RegisterPush)) || ("{4,3,5,6}".equals(this.jdField_a_of_type_JavaLangString)) || ("[11,12,14]".equals(this.jdField_a_of_type_JavaLangString))) {
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long));
       }
     }
     catch (Throwable localThrowable3)
     {
-      break label177;
+      break label250;
     }
-    bfwu.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
-    if (this.jdField_a_of_type_Akla != null) {
-      this.jdField_a_of_type_Akla.a(this, this.jdField_a_of_type_Int);
+    bhxr.b(4096L, this.jdField_a_of_type_JavaLangString, Process.myTid());
+    if (this.jdField_a_of_type_Amcq != null) {
+      this.jdField_a_of_type_Amcq.a(this, this.jdField_a_of_type_Int);
     }
   }
 }

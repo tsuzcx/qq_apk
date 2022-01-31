@@ -1,33 +1,29 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
 
 class axfk
-  implements axfm
+  implements Downloader.DownloadListener
 {
   axfk(axfj paramaxfj) {}
   
-  public void a(MessageForShortVideo paramMessageForShortVideo, float paramFloat)
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (axfj.a(this.a) != null) {
-      axfj.a(this.a).a(this.a.a, paramFloat);
-    }
+    QLog.i("QzoneGiftManager", 1, " preloadLottieZip fail error");
   }
   
-  public void a(MessageForShortVideo paramMessageForShortVideo, int paramInt)
-  {
-    QLog.d("VideoCompressProcessor", 1, "hardware compress finish code: " + paramInt);
-    if (axfj.a(this.a) != null)
-    {
-      axfj.a(this.a).a(this.a.a, 1.0F);
-      axfj.a(this.a).a(this.a.a, 3);
-    }
-  }
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
   
-  public void a(MessageForShortVideo paramMessageForShortVideo, boolean paramBoolean) {}
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    QLog.i("QzoneGiftManager", 1, " preloadLottieZip success");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axfk
  * JD-Core Version:    0.7.0.1
  */

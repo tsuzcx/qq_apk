@@ -1,81 +1,142 @@
-import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Handler;
+import android.os.Looper;
+import android.widget.Toast;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelper.GetLoginKeyDataListener.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class aswl
+  implements asvc
 {
-  public static String a = "";
+  private final long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private final InstalledPlugin jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin;
+  private final IVPluginInfo jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo;
+  private final String jdField_a_of_type_JavaLangString;
+  private final boolean jdField_a_of_type_Boolean;
+  private volatile boolean b;
   
-  public static Intent a(Context paramContext, AppInterface paramAppInterface, String paramString, boolean paramBoolean)
+  public aswl(aswi paramaswi, String paramString, IVPluginInfo paramIVPluginInfo, InstalledPlugin paramInstalledPlugin, boolean paramBoolean, long paramLong)
   {
-    Object localObject = paramContext;
-    if (paramContext == null) {}
-    for (;;)
-    {
-      try
-      {
-        localObject = BaseApplication.getContext();
-        localObject = new Intent((Context)localObject, QQBrowserActivity.class);
-        paramContext = "http://y.qq.com/m/personal_music/index.html?_wv=3&_bid=2032";
-        if (paramAppInterface != null) {}
-        try
-        {
-          paramContext = "http://y.qq.com/m/personal_music/index.html?_wv=3&_bid=2032" + "&uin=" + paramAppInterface.getCurrentAccountUin();
-          paramAppInterface = paramContext;
-          if (!TextUtils.isEmpty(paramString)) {
-            paramAppInterface = paramContext + "&guestuin=" + paramString;
-          }
-          if (!paramBoolean) {
-            continue;
-          }
-          paramContext = paramAppInterface + "&ADTAG=GXYY_GUAJIAN";
-          ((Intent)localObject).putExtra("url", paramContext);
-          ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-          return localObject;
-        }
-        catch (Exception paramAppInterface)
-        {
-          paramContext = (Context)localObject;
-        }
-        QLog.e("MusicPendantUtil", 1, "openMusicPendantSettingPage() app is null.");
-        continue;
-      }
-      catch (Exception paramAppInterface)
-      {
-        paramContext = null;
-        continue;
-      }
-      QLog.e("MusicPendantUtil", 1, "getPlayBarIntent() exception", paramAppInterface);
-      return paramContext;
-      paramContext = paramAppInterface + "&ADTAG=GXYY_TOPCELL";
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo = paramIVPluginInfo;
+    this.jdField_a_of_type_ComTencentHydevteamPluginframeworkInstalledpluginInstalledPlugin = paramInstalledPlugin;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public static String a()
+  private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (TextUtils.isEmpty(a)) {}
-    try
+    if ((paramBoolean1) && (!paramBoolean2))
     {
-      a = QQPlayerService.a(6, "MusicPendantUtil");
-      return a;
+      aswi.a(this.jdField_a_of_type_Aswi).a(5, new Object[] { "" });
+      return;
     }
-    catch (Exception localException)
+    if (paramBoolean1) {}
+    for (long l = 0L;; l = 2000L)
     {
+      if (!this.b) {
+        break label66;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("HuayangPluginNewDownloader", 2, "需要stop");
+      return;
+    }
+    label66:
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new HuayangDowanloadHelper.GetLoginKeyDataListener.1(this, paramBoolean1, paramBoolean2), l);
+  }
+  
+  public void a()
+  {
+    this.b = true;
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    int j = 1;
+    long l1;
+    label99:
+    String str;
+    if (paramBoolean) {
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_AndroidOsBundle = aswi.a(this.jdField_a_of_type_Aswi).a().a.getExtras();
+        if ("Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+          aswy.a("2653752");
+        }
+        a(this.jdField_a_of_type_Boolean, paramBoolean);
+        long l2 = System.currentTimeMillis();
+        if (!"Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+          break label421;
+        }
+        l1 = aswi.a(this.jdField_a_of_type_Aswi);
+        l1 = l2 - l1;
+        if (QLog.isColorLevel()) {
+          QLog.d("HuayangPluginNewDownloader", 2, "拉取票据完成 耗时：" + l1 + "appId = " + paramString + " isSuccess =  " + paramBoolean + " code = " + paramInt);
+        }
+        if (!aswy.jdField_a_of_type_Boolean) {
+          break label433;
+        }
+        str = "huayang";
+        label175:
+        if (!paramBoolean) {
+          break label440;
+        }
+        i = 1;
+        label182:
+        wta.a(str, "getLoginKey", i, (int)l1, new String[] { aswi.c(this.jdField_a_of_type_Aswi), paramInt + "", paramString, "8.3.3" });
+        paramString = aswi.a(this.jdField_a_of_type_Aswi).opName(aswi.a(this.jdField_a_of_type_Aswi)).opType("getLoginKey");
+        if (!paramBoolean) {
+          break label446;
+        }
+      }
+    }
+    label421:
+    label433:
+    label440:
+    label446:
+    for (int i = j;; i = 0)
+    {
+      paramString.opIn(i).opResult(paramInt).report();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_Int != 2) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_AndroidOsBundle = atak.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo, aswi.a(this.jdField_a_of_type_Aswi));
+      if (!"Od".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+        break;
+      }
+      aswy.a("2691711");
+      break;
+      if ("Hy".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+        aswy.a("2653753");
+      }
       for (;;)
       {
-        QLog.e("MusicPendantUtil", 1, "MusicPendantManager() exception", localException);
+        Toast.makeText(aswi.a(this.jdField_a_of_type_Aswi), alpo.a(2131706010) + paramInt, 0).show();
+        break;
+        if ("Od".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqIntervideoIVPluginInfo.jdField_a_of_type_JavaLangString)) {
+          aswy.a("2691712");
+        }
       }
+      l1 = aswi.b(this.jdField_a_of_type_Aswi);
+      break label99;
+      str = "group_video";
+      break label175;
+      i = 0;
+      break label182;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aswl
  * JD-Core Version:    0.7.0.1
  */

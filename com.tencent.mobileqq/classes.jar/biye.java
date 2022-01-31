@@ -1,44 +1,58 @@
-import android.graphics.RectF;
-import android.os.Build.VERSION;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.ttpic.videoshelf.model.edit.NodeItem;
-import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
-import dov.com.qq.im.ae.play.EditTextViewer;
+import android.os.Bundle;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class biye
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends biyc
 {
-  public biye(AEVideoShelfEditFragment paramAEVideoShelfEditFragment, EditTextViewer paramEditTextViewer, NodeItem paramNodeItem) {}
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
   
-  public void onGlobalLayout()
+  public String a()
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
+    try
     {
-      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.getLayoutParams();
-      int i = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.left * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int j = (int)(this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.top * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int k = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.right) * AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      int m = (int)((1.0F - this.jdField_a_of_type_ComTencentTtpicVideoshelfModelEditNodeItem.maskRect.bottom) * AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment));
-      localMarginLayoutParams.leftMargin = i;
-      localMarginLayoutParams.topMargin = j;
-      localMarginLayoutParams.rightMargin = k;
-      localMarginLayoutParams.bottomMargin = m;
-      localMarginLayoutParams.width = (AEVideoShelfEditFragment.a(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - k - i);
-      localMarginLayoutParams.height = (AEVideoShelfEditFragment.b(this.jdField_a_of_type_DovComQqImAePlayAEVideoShelfEditFragment) - m - j);
-      this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.setLayoutParams(localMarginLayoutParams);
-      return;
-      this.jdField_a_of_type_DovComQqImAePlayEditTextViewer.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      Object localObject = new JSONObject();
+      JSONObject localJSONObject1 = new JSONObject();
+      localJSONObject1.put("name", "pay");
+      localJSONObject1.put("identifier", this.i);
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("code", this.jdField_c_of_type_Int);
+      localJSONObject2.put("message", this.a);
+      ((JSONObject)localObject).put("action", localJSONObject1);
+      ((JSONObject)localObject).put("params", localJSONObject2);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return "";
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+    paramBundle.putString("_mqqpay_payresp_paychanneltype", this.jdField_c_of_type_JavaLangString);
+    paramBundle.putString("_mqqpay_payresp_transactionid", this.d);
+    paramBundle.putString("_mqqpay_payresp_paytime", this.e);
+    paramBundle.putString("_mqqpay_payresp_totalfee", this.f);
+    paramBundle.putString("_mqqpay_payresp_callbackurl", this.g);
+    paramBundle.putString("_mqqpay_payresp_spdata", this.h);
+    paramBundle.putString("_mqqpay_payapi_serialnumber", this.i);
+    paramBundle.putString("_mqqpay_payapi_openid", this.j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biye
  * JD-Core Version:    0.7.0.1
  */

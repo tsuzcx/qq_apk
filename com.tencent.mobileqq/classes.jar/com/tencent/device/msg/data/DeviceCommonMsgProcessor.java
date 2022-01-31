@@ -1,31 +1,31 @@
 package com.tencent.device.msg.data;
 
 import com.tencent.litetransfersdk.Session;
-import yeo;
+import zth;
 
 public class DeviceCommonMsgProcessor
 {
-  static String a(yeo paramyeo1, yeo paramyeo2)
+  static String a(zth paramzth1, zth paramzth2)
   {
-    if ((paramyeo1 == null) || (paramyeo2 == null)) {
+    if ((paramzth1 == null) || (paramzth2 == null)) {
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("{");
     localStringBuilder.append("\"");
-    localStringBuilder.append(paramyeo1.a);
+    localStringBuilder.append(paramzth1.a);
     localStringBuilder.append("\"");
     localStringBuilder.append(":");
     localStringBuilder.append("\"");
-    localStringBuilder.append(paramyeo1.b);
+    localStringBuilder.append(paramzth1.b);
     localStringBuilder.append("\"");
     localStringBuilder.append(",");
     localStringBuilder.append("\"");
-    localStringBuilder.append(paramyeo2.a);
+    localStringBuilder.append(paramzth2.a);
     localStringBuilder.append("\"");
     localStringBuilder.append(":");
     localStringBuilder.append("\"");
-    localStringBuilder.append(paramyeo2.b);
+    localStringBuilder.append(paramzth2.b);
     localStringBuilder.append("\"");
     localStringBuilder.append("}");
     return localStringBuilder.toString();
@@ -46,7 +46,7 @@ public class DeviceCommonMsgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceCommonMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

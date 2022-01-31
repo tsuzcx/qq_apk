@@ -1,15 +1,13 @@
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import java.util.ArrayList;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 
 public abstract interface bdml
 {
-  public abstract void a(String paramString);
-  
-  public abstract void a(ArrayList<ApkUpdateDetail> paramArrayList);
+  public abstract boolean a(@ColorInt int paramInt, @NonNull float[] paramArrayOfFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdml
  * JD-Core Version:    0.7.0.1
  */

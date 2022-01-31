@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.task;
 
-import ajkn;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import albz;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -9,7 +9,7 @@ import mqq.app.MobileQQ;
 public class ApolloMsgPlayController$2
   implements Runnable
 {
-  public ApolloMsgPlayController$2(ajkn paramajkn, MessageRecord paramMessageRecord) {}
+  public ApolloMsgPlayController$2(albz paramalbz, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class ApolloMsgPlayController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.task.ApolloMsgPlayController.2
  * JD-Core Version:    0.7.0.1
  */

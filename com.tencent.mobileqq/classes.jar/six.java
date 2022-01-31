@@ -1,42 +1,55 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.biz.pubaccount.util.monitor.FPSSuspendedBall;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class six
-  implements View.OnTouchListener
+class six
+  implements sjc
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
+  six(siw paramsiw) {}
   
-  private six(FPSSuspendedBall paramFPSSuspendedBall) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, String paramString)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramBoolean)
     {
+      if (siw.a(this.a) != null)
+      {
+        paramString = (Animation)siw.a(this.a).getTag(2131369009);
+        paramString.setAnimationListener(new siy(this));
+        siw.a(this.a).startAnimation(paramString);
+      }
+      return;
     }
-    for (;;)
+    QQToast.a(this.a.a, 1, 2131718882, 0).a();
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  {
+    if (paramBoolean)
     {
-      return false;
-      this.jdField_a_of_type_Int = FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).x;
-      this.jdField_b_of_type_Int = FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).y;
-      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getRawY();
-      continue;
-      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).x = (this.jdField_a_of_type_Int + (int)(this.jdField_a_of_type_Float - paramMotionEvent.getRawX()));
-      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).y = (this.jdField_b_of_type_Int + (int)(paramMotionEvent.getRawY() - this.jdField_b_of_type_Float));
-      FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall).updateViewLayout(paramView, FPSSuspendedBall.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilMonitorFPSSuspendedBall));
+      siw.a(this.a).a(siw.a(this.a), siw.a(this.a, paramInt), this.a.a, "", "", paramString2);
+      return;
     }
+    QQToast.a(this.a.a, 1, 2131718886, 0).a();
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      if (siw.a(this.a) != null)
+      {
+        paramString = (Animation)siw.a(this.a).getTag(2131369009);
+        paramString.setAnimationListener(new siz(this));
+        siw.a(this.a).startAnimation(paramString);
+      }
+      return;
+    }
+    QQToast.a(this.a.a, 1, 2131718889, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     six
  * JD-Core Version:    0.7.0.1
  */

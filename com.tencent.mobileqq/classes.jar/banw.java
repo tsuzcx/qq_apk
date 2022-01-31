@@ -1,92 +1,185 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Paint.Style;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
+import android.annotation.SuppressLint;
+import android.content.ContentResolver;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import android.os.Build.VERSION;
+import android.provider.MediaStore.Images.Media;
+import android.provider.MediaStore.Video.Thumbnails;
 import android.text.TextUtils;
-import android.text.style.ReplacementSpan;
-import android.util.TypedValue;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class banw
-  extends ReplacementSpan
+  extends bame
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float c;
-  private float d;
+  private static final String[] a = { "DISTINCT _id", "_data" };
   
-  public banw(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString)
+  public static String a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      return;
+      paramString = null;
     }
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Float = TypedValue.applyDimension(1, paramInt2, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
-    this.c = TypedValue.applyDimension(1, paramInt4, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
-    this.d = TypedValue.applyDimension(1, paramInt5, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
-    this.jdField_b_of_type_Int = paramInt6;
-    this.jdField_b_of_type_Float = a(paramString, paramInt3);
-  }
-  
-  private float a(String paramString, int paramInt)
-  {
-    if (paramString.length() > 1)
+    String str;
+    do
     {
-      Rect localRect = new Rect();
-      Paint localPaint = new Paint();
-      localPaint.setTextSize(this.d);
-      localPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
-      float f = TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics());
-      return localRect.width() + f * 2.0F;
+      return paramString;
+      str = paramString;
+      if (paramString.startsWith("file://")) {
+        str = paramString.substring("file://".length());
+      }
+      paramString = str;
+    } while (str.startsWith(File.separator));
+    return File.separator + str;
+  }
+  
+  public static URL a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString2);
+    try
+    {
+      paramString1 = new URL("devicemsgthumb", "", localStringBuilder.toString());
+      return paramString1;
     }
-    return this.jdField_a_of_type_Float;
+    catch (MalformedURLException paramString1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DeviceMsgThumbDownloader", 2, paramString1.getMessage(), paramString1);
+      }
+    }
+    return null;
   }
   
-  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public Cursor a(String paramString)
   {
-    paramCharSequence = new Paint();
-    paramCharSequence.setColor(this.jdField_a_of_type_Int);
-    paramCharSequence.setStyle(Paint.Style.FILL);
-    paramCharSequence.setAntiAlias(true);
-    paramPaint = paramPaint.getFontMetrics();
-    float f2 = paramPaint.descent;
-    float f3 = paramPaint.ascent;
-    float f1 = paramInt4;
-    f2 = (f2 - f3 - this.jdField_a_of_type_Float) / 2.0F;
-    f1 = paramPaint.ascent + (f2 + f1);
-    paramCanvas.drawRoundRect(new RectF(paramFloat, f1, this.jdField_b_of_type_Float + paramFloat, this.jdField_a_of_type_Float + f1), 0.0F, 0.0F, paramCharSequence);
-    paramCharSequence = new TextPaint();
-    paramCharSequence.setColor(this.jdField_b_of_type_Int);
-    paramCharSequence.setTextSize(this.d);
-    paramCharSequence.setAntiAlias(true);
-    paramCharSequence.setTextAlign(Paint.Align.CENTER);
-    paramPaint = paramCharSequence.getFontMetrics();
-    f2 = paramPaint.bottom;
-    f3 = paramPaint.top;
-    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Float / 2.0F + paramFloat, f1 + (this.jdField_a_of_type_Float - (f2 - f3)) / 2.0F - paramPaint.top, paramCharSequence);
+    paramString = "_data='" + a(paramString) + "' COLLATE NOCASE";
+    return BaseApplicationImpl.getContext().getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, a, paramString, null, null);
   }
   
-  public int getSize(@NonNull Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  @SuppressLint({"NewApi"})
+  public Bitmap a(String paramString)
   {
-    return (int)(this.jdField_b_of_type_Float + this.c);
+    if (Build.VERSION.SDK_INT < 8) {
+      return null;
+    }
+    return ThumbnailUtils.createVideoThumbnail(paramString, 1);
+  }
+  
+  public LocalMediaInfo a(URL paramURL)
+  {
+    try
+    {
+      LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+      paramURL = paramURL.getFile().split("\\|");
+      localLocalMediaInfo.path = paramURL[0];
+      localLocalMediaInfo.thumbWidth = Integer.parseInt(paramURL[1]);
+      localLocalMediaInfo.thumbHeight = Integer.parseInt(paramURL[2]);
+      return localLocalMediaInfo;
+    }
+    catch (Exception paramURL) {}
+    return null;
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    return new File(aljq.aW);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public Bitmap b(String paramString)
+  {
+    Object localObject = null;
+    Cursor localCursor = null;
+    if (Build.VERSION.SDK_INT < 5)
+    {
+      localObject = localCursor;
+      label17:
+      return localObject;
+    }
+    try
+    {
+      localCursor = a(paramString);
+      paramString = (String)localObject;
+      if (localCursor != null) {
+        paramString = (String)localObject;
+      }
+    }
+    finally
+    {
+      try
+      {
+        if (localCursor.getCount() > 0)
+        {
+          long l = localCursor.getLong(localCursor.getColumnIndexOrThrow("_id"));
+          paramString = (String)localObject;
+          if (localCursor.moveToFirst()) {
+            paramString = MediaStore.Video.Thumbnails.getThumbnail(BaseApplicationImpl.getContext().getContentResolver(), l, 1, null);
+          }
+        }
+        localObject = paramString;
+        if (localCursor == null) {
+          break label17;
+        }
+        localCursor.close();
+        return paramString;
+      }
+      finally
+      {
+        break label112;
+      }
+      paramString = finally;
+      localCursor = null;
+    }
+    label112:
+    if (localCursor != null) {
+      localCursor.close();
+    }
+    throw paramString;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramFile = a(paramDownloadParams.url);
+    if (paramFile == null) {}
+    do
+    {
+      return null;
+      if (bdcs.b(paramFile.path)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("DeviceMsgThumbDownloader", 2, "decodeFile file not exits. just return");
+    return null;
+    paramURLDrawableHandler = BaseApplicationImpl.getContext();
+    if (arni.a(paramFile.path) == 2) {}
+    for (paramFile = new bany(this);; paramFile = new banx(this)) {
+      return AlbumThumbManager.getInstance(paramURLDrawableHandler).getThumb(paramDownloadParams.url, paramFile);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     banw
  * JD-Core Version:    0.7.0.1
  */

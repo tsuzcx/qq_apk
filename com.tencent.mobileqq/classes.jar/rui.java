@@ -1,49 +1,21 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
-import java.util.Iterator;
 import java.util.List;
 
-public class rui
-  implements ViewPager.OnPageChangeListener
+class rui
+  extends pdi
 {
-  private rui(ViewPagerCompat paramViewPagerCompat) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  rui(ruh paramruh, String paramString, List paramList)
   {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
-    }
+    super(paramString);
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void a(pdc parampdc)
   {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (ViewPagerCompat.a(this.a) != null)
-    {
-      Iterator localIterator = ViewPagerCompat.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
-      }
-    }
+    parampdc.a(this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rui
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import amvk;
-import amvl;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
-import aywm;
+import aomp;
+import aomq;
+import baul;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -16,17 +16,17 @@ import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.widget.MeasureGridView;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import pau;
-import pqo;
-import pqy;
-import pvq;
-import pvr;
-import qbc;
-import ram;
+import pgd;
+import pxj;
+import pxt;
+import qck;
+import qcl;
+import qky;
+import rqj;
 
 public class ComponentContentHotSearch
   extends RelativeLayout
-  implements pqo
+  implements pxj
 {
   public static final String a;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -34,25 +34,25 @@ public class ComponentContentHotSearch
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   private MeasureGridView jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView;
-  private pau jdField_a_of_type_Pau;
-  private pvr jdField_a_of_type_Pvr;
-  private ram jdField_a_of_type_Ram;
+  private pgd jdField_a_of_type_Pgd;
+  private qcl jdField_a_of_type_Qcl;
+  private rqj jdField_a_of_type_Rqj;
   
   static
   {
     jdField_a_of_type_JavaLangString = ComponentContentHotSearch.class.getSimpleName();
   }
   
-  public ComponentContentHotSearch(Context paramContext, ram paramram)
+  public ComponentContentHotSearch(Context paramContext, rqj paramrqj)
   {
     super(paramContext);
-    this.jdField_a_of_type_Ram = paramram;
+    this.jdField_a_of_type_Rqj = paramrqj;
     a(paramContext);
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559855, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559950, this, true);
   }
   
   public void a(Context paramContext)
@@ -62,21 +62,21 @@ public class ComponentContentHotSearch
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367638));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377390));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131370911));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView = ((MeasureGridView)paramView.findViewById(2131367637));
-    this.jdField_a_of_type_Pvr = new pvr(this);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView.setAdapter(this.jdField_a_of_type_Pvr);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new pvq(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367767));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377925));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramView.findViewById(2131371222));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView = ((MeasureGridView)paramView.findViewById(2131367766));
+    this.jdField_a_of_type_Qcl = new qcl(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetMeasureGridView.setAdapter(this.jdField_a_of_type_Qcl);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new qck(this));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pau))
+    if ((paramObject instanceof pgd))
     {
-      this.jdField_a_of_type_Pau = ((pau)paramObject);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_Pau.a();
+      this.jdField_a_of_type_Pgd = ((pgd)paramObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_Pgd.a();
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {}
     }
     else
@@ -86,8 +86,8 @@ public class ComponentContentHotSearch
     paramObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hotWordInfo;
     if ((paramObject != null) && (paramObject.a != null) && (paramObject.a.size() > 0))
     {
-      this.jdField_a_of_type_Pvr.a(paramObject.a);
-      paramObject = amvl.a();
+      this.jdField_a_of_type_Qcl.a(paramObject.a);
+      paramObject = aomq.a();
       if ((paramObject == null) || (TextUtils.isEmpty(paramObject.b))) {
         break label191;
       }
@@ -95,7 +95,7 @@ public class ComponentContentHotSearch
     label191:
     for (paramObject = paramObject.b;; paramObject = "http://pub.idqqimg.com/pc/misc/files/20180903/eddc885537fc4606a66c93a06854511b.png")
     {
-      Drawable localDrawable = aywm.a;
+      Drawable localDrawable = baul.a;
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mFailedDrawable = localDrawable;
       localURLDrawableOptions.mLoadingDrawable = localDrawable;
@@ -116,16 +116,16 @@ public class ComponentContentHotSearch
     }
   }
   
-  public void a(pqy parampqy)
+  public void a(pxt parampxt)
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.a(parampqy);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.a(parampxt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotSearch
  * JD-Core Version:    0.7.0.1
  */

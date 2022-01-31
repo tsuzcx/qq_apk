@@ -9,6 +9,7 @@ public final class SdkProxyServiceScope
   
   static
   {
+    PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.MusicPlayerProxy", "com.tencent.qqmini.sdk.core.proxy.MusicPlayerProxyDefault");
     PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.ChannelProxy", "com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault");
     PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.KingCardProxy", "com.tencent.qqmini.sdk.core.proxy.service.KingCardProxyDefault");
     PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.WnsConfigProxy", "com.tencent.qqmini.sdk.core.proxy.service.WnsConfigProxyDefault");
@@ -21,7 +22,7 @@ public final class SdkProxyServiceScope
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.SdkProxyServiceScope
  * JD-Core Version:    0.7.0.1
  */

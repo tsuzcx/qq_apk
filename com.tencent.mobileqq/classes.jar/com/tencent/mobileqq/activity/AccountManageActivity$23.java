@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity;
 
+import azyu;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 class AccountManageActivity$23
   implements Runnable
 {
@@ -7,12 +10,13 @@ class AccountManageActivity$23
   
   public void run()
   {
-    this.this$0.g();
+    azyu localazyu = (azyu)this.this$0.app.getManager(61);
+    this.this$0.runOnUiThread(new AccountManageActivity.23.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.23
  * JD-Core Version:    0.7.0.1
  */

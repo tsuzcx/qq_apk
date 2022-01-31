@@ -1,30 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class auix
   implements View.OnClickListener
 {
-  public auix(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  public auix(MultiCardFragment paramMultiCardFragment) {}
   
   public void onClick(View paramView)
   {
-    if (AutoReplyEditActivity.c(this.a))
-    {
-      AutoReplyEditActivity.a(this.a, false);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiCardFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
     }
-    if (AutoReplyEditActivity.d(this.a))
-    {
-      AutoReplyEditActivity.b(this.a, false);
-      return;
-    }
-    AutoReplyEditActivity.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auix
  * JD-Core Version:    0.7.0.1
  */

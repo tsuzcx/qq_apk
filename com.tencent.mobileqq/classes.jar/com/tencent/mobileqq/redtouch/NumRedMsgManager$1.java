@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.redtouch;
 
-import akbv;
-import avpn;
-import avpo;
+import altk;
+import axhi;
+import axhj;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -17,16 +17,16 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x89.Submsgtype0x89.NumRedBusiInfo;
 public class NumRedMsgManager$1
   implements Runnable
 {
-  public NumRedMsgManager$1(avpo paramavpo, List paramList, avpn paramavpn, String paramString) {}
+  public NumRedMsgManager$1(axhj paramaxhj, List paramList, axhi paramaxhi, String paramString) {}
   
   public void run()
   {
     int k = 0;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1) || (this.jdField_a_of_type_Avpn == null)) {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 1) || (this.jdField_a_of_type_Axhi == null)) {
       return;
     }
-    if ((this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Avpn.a)))) {
-      this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Avpn.a), this.jdField_a_of_type_Avpn);
+    if ((this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_Axhi.a)))) {
+      this.this$0.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Axhi.a), this.jdField_a_of_type_Axhi);
     }
     Object localObject1 = new ArrayList();
     ArrayList localArrayList = new ArrayList();
@@ -83,7 +83,7 @@ public class NumRedMsgManager$1
       }
       if (((List)localObject1).size() == this.jdField_a_of_type_JavaUtilList.size())
       {
-        this.jdField_a_of_type_Avpn.a(this.jdField_a_of_type_JavaLangString, (List)localObject1);
+        this.jdField_a_of_type_Axhi.a(this.jdField_a_of_type_JavaLangString, (List)localObject1);
         return;
       }
       localObject1 = new long[this.jdField_a_of_type_JavaUtilList.size()];
@@ -93,7 +93,7 @@ public class NumRedMsgManager$1
         localObject1[i] = ((Submsgtype0x89.NumRedBusiInfo)this.jdField_a_of_type_JavaUtilList.get(i)).uint64_msgid.get();
         i += 1;
       }
-      this.this$0.jdField_a_of_type_Akbv.a(localArrayList, this.jdField_a_of_type_Avpn.a, this.jdField_a_of_type_JavaLangString, (long[])localObject1);
+      this.this$0.jdField_a_of_type_Altk.a(localArrayList, this.jdField_a_of_type_Axhi.a, this.jdField_a_of_type_JavaLangString, (long[])localObject1);
       return;
       label585:
       j = 0;
@@ -103,7 +103,7 @@ public class NumRedMsgManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.NumRedMsgManager.1
  * JD-Core Version:    0.7.0.1
  */

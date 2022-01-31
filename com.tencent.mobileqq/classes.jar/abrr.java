@@ -1,19 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class abrr
-  implements DialogInterface.OnClickListener
+public class abrr
 {
-  abrr(abrq paramabrq) {}
+  public double a;
+  public long a;
+  public String a;
+  public double b;
+  public long b;
+  public long c = 9223372036854775807L;
+  public long d = 9223372036854775807L;
+  public long e = 9223372036854775807L;
+  public long f;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public abrr()
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = 9223372036854775807L;
+    this.jdField_b_of_type_Long = 9223372036854775807L;
+    this.jdField_a_of_type_Double = (0.0D / 0.0D);
+    this.jdField_b_of_type_Double = (0.0D / 0.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abrr
  * JD-Core Version:    0.7.0.1
  */

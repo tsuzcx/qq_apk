@@ -1,29 +1,44 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
+import org.apache.http.Header;
+import org.apache.http.HeaderElement;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpResponseInterceptor;
+import org.apache.http.protocol.HttpContext;
 
-public class lch
+class lch
+  implements HttpResponseInterceptor
 {
-  private static aysa jdField_a_of_type_Aysa;
-  private static bbmv jdField_a_of_type_Bbmv = new lci();
+  lch(lce paramlce) {}
   
-  public static aysa a()
+  public void process(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
   {
-    if (jdField_a_of_type_Aysa == null) {}
-    try
+    paramHttpContext = paramHttpResponse.getEntity();
+    if (paramHttpContext == null) {}
+    for (;;)
     {
-      if (jdField_a_of_type_Aysa == null)
+      return;
+      paramHttpContext = paramHttpContext.getContentEncoding();
+      if (paramHttpContext != null)
       {
-        HttpCommunicator localHttpCommunicator = new HttpCommunicator(jdField_a_of_type_Bbmv, 128);
-        localHttpCommunicator.a();
-        jdField_a_of_type_Aysa = new aytb(localHttpCommunicator, true);
+        paramHttpContext = paramHttpContext.getElements();
+        int j = paramHttpContext.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (paramHttpContext[i].getName().equalsIgnoreCase("gzip"))
+          {
+            paramHttpResponse.setEntity(new lcj(paramHttpResponse.getEntity()));
+            return;
+          }
+          i += 1;
+        }
       }
-      return jdField_a_of_type_Aysa;
     }
-    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lch
  * JD-Core Version:    0.7.0.1
  */

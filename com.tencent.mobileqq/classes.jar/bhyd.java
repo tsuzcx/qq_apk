@@ -1,31 +1,38 @@
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceStruct;
+import android.database.DataSetObservable;
+import android.database.DataSetObserver;
+import java.util.ArrayList;
 
-public class bhyd
+class bhyd
+  extends DataSetObservable
 {
-  public static <T extends JceStruct> T a(Class<T> paramClass, byte[] paramArrayOfByte)
+  bhyd(bhyb parambhyb) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    try
+    for (;;)
     {
-      paramClass = (JceStruct)paramClass.newInstance();
-      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
-      paramArrayOfByte.setServerEncoding("utf8");
-      paramClass.readFrom(paramArrayOfByte);
-      return paramClass;
+      int i;
+      synchronized (this.mObservers)
+      {
+        i = this.mObservers.size() - 1;
+        if (i >= 0)
+        {
+          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
+          if ((localDataSetObserver instanceof bhyc)) {
+            ((bhyc)localDataSetObserver).a(paramInt1, paramInt2);
+          } else {
+            localDataSetObserver.onChanged();
+          }
+        }
+      }
+      return;
+      i -= 1;
     }
-    catch (Exception paramClass)
-    {
-      paramClass.printStackTrace();
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhyd
  * JD-Core Version:    0.7.0.1
  */

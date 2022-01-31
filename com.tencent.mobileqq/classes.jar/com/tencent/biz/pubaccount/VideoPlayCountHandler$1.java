@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount;
 
-import npq;
+import nsz;
 
 public class VideoPlayCountHandler$1
   implements Runnable
 {
-  public VideoPlayCountHandler$1(npq paramnpq, String paramString1, String paramString2) {}
+  public VideoPlayCountHandler$1(nsz paramnsz, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class VideoPlayCountHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoPlayCountHandler.1
  * JD-Core Version:    0.7.0.1
  */

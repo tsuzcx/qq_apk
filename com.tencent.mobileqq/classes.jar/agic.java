@@ -1,50 +1,102 @@
-import android.animation.IntEvaluator;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import java.util.List;
+import android.text.TextUtils.TruncateAt;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class agic
-  implements ValueAnimator.AnimatorUpdateListener
+  extends aghi
 {
-  private int jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
-  private IntEvaluator jdField_a_of_type_AndroidAnimationIntEvaluator = new IntEvaluator();
+  aipw a;
   
-  public agic(AvatarPendantActivity paramAvatarPendantActivity, List paramList1, List paramList2) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public agic(QQAppInterface paramQQAppInterface, agia paramagia, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aemp paramaemp)
   {
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int)
+    super(paramQQAppInterface, paramagia, paramQQWalletTransferMsgElem, paramInt, paramaemp);
+    this.jdField_a_of_type_Aipw = ((aipw)paramQQAppInterface.getManager(125));
+    if (a(this.jdField_a_of_type_Aipw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId))) {}
+    for (this.i = 0;; this.i = paramQQWalletTransferMsgElem.effectsId)
     {
-      paramValueAnimator = (View)this.jdField_a_of_type_JavaUtilList.get(i);
-      agif localagif = (agif)this.b.get(i);
-      ViewGroup.LayoutParams localLayoutParams = paramValueAnimator.getLayoutParams();
-      if (localagif.jdField_a_of_type_Int != localagif.b)
-      {
-        FrameLayout.LayoutParams localLayoutParams1 = (FrameLayout.LayoutParams)paramValueAnimator.getLayoutParams();
-        localLayoutParams1.topMargin = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localagif.jdField_a_of_type_Int), Integer.valueOf(localagif.b)).intValue();
-        paramValueAnimator.setLayoutParams(localLayoutParams1);
-      }
-      if (localagif.c != localagif.d) {
-        localLayoutParams.height = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localagif.c), Integer.valueOf(localagif.d)).intValue();
-      }
-      if (localagif.e != localagif.f) {
-        localLayoutParams.width = this.jdField_a_of_type_AndroidAnimationIntEvaluator.evaluate(f, Integer.valueOf(localagif.e), Integer.valueOf(localagif.f)).intValue();
-      }
-      paramValueAnimator.setLayoutParams(localLayoutParams);
-      paramValueAnimator.requestLayout();
-      i += 1;
+      this.j = 2130846701;
+      return;
     }
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.jdField_a_of_type_Agia.b.setVisibility(0);
+    this.jdField_a_of_type_Agia.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Agia.b.setText(aghn.b);
+    this.jdField_a_of_type_Agia.b.setSingleLine(true);
+    this.jdField_a_of_type_Agia.b.setEllipsize(TextUtils.TruncateAt.START);
+    this.jdField_a_of_type_Agia.b.setSelected(true);
+    return false;
+  }
+  
+  public void i()
+  {
+    QQWalletRedPacketMsg localQQWalletRedPacketMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg;
+    aipv localaipv = this.jdField_a_of_type_Aipw.a(localQQWalletRedPacketMsg.redPacketId);
+    Object localObject = localaipv;
+    if (localaipv == null) {
+      localObject = new JSONObject();
+    }
+    label294:
+    do
+    {
+      try
+      {
+        ((JSONObject)localObject).put("key_sub_channel", localQQWalletRedPacketMsg.body.subChannel);
+        localObject = new aipv(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, false, false, false, 4, "", ((JSONObject)localObject).toString());
+        this.jdField_a_of_type_Aipw.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.redPacketIndex, this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.time + 90000L, String.valueOf(this.jdField_a_of_type_Aipw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.istroop)), this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin, localQQWalletRedPacketMsg.authkey, false, false, 4);
+        if ((bdje.a(((aipv)localObject).e)) || (bdje.a(((aipv)localObject).e.trim()))) {
+          this.jdField_a_of_type_Aipw.a(localQQWalletRedPacketMsg.redPacketId, localQQWalletRedPacketMsg.elem.title, localQQWalletRedPacketMsg.elem.lastPinyin, 0);
+        }
+        if (!a((aipv)localObject))
+        {
+          this.jdField_a_of_type_Agia.d.setVisibility(8);
+          if (bdje.a(((aipv)localObject).e)) {
+            continue;
+          }
+          if (!((aipv)localObject).b) {
+            break label294;
+          }
+          this.jdField_a_of_type_Agia.b.setText(alpo.a(2131714599));
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        String str;
+        do
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+            continue;
+            this.jdField_a_of_type_Agia.d.setVisibility(0);
+          }
+          str = ((aipv)localObject).e;
+          str = this.jdField_a_of_type_Aipw.a(str);
+        } while (bdje.a(str));
+        this.jdField_a_of_type_Agia.b.setText(alpo.a(2131714600) + str.trim() + " ");
+        this.jdField_a_of_type_Aipw.a(this.jdField_a_of_type_AndroidContentContext, str.trim(), ((aipv)localObject).a);
+        return;
+      }
+    } while (!((aipv)localObject).b);
+    this.jdField_a_of_type_Agia.b.setText(alpo.a(2131714598));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agic
  * JD-Core Version:    0.7.0.1
  */

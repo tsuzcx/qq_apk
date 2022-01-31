@@ -1,131 +1,26 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import java.util.Stack;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.List;
 
-public abstract class wdt
-  extends bfwg
+public class wdt
 {
-  public wdt(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  public int a;
+  public String a;
+  public List<CommentEntry> a;
+  public boolean a;
+  public boolean b;
   
-  public int a(Context paramContext, View paramView, int paramInt, Object paramObject, bfwe parambfwe, View.OnClickListener paramOnClickListener)
+  public wdt(boolean paramBoolean1, List<CommentEntry> paramList, int paramInt, boolean paramBoolean2, String paramString)
   {
-    int i = 0;
-    if ((!(paramView instanceof LinearLayout)) || (parambfwe == null) || (parambfwe.jdField_a_of_type_ArrayOfBfwf == null) || (parambfwe.jdField_a_of_type_ArrayOfBfwf.length == 0) || (parambfwe.jdField_a_of_type_ArrayOfBfwf.length > this.b)) {
-      return 0;
-    }
-    LinearLayout localLinearLayout = (LinearLayout)paramView;
-    a(paramInt, paramObject, this.jdField_a_of_type_ArrayOfBfwf);
-    int j = 0;
-    int n = 0;
-    if (n < this.b)
-    {
-      if ((this.jdField_a_of_type_ArrayOfJavaUtilStack.length > 1) && (parambfwe.jdField_a_of_type_ArrayOfBfwf[n].jdField_a_of_type_Int != this.jdField_a_of_type_ArrayOfBfwf[n].jdField_a_of_type_Int)) {
-        a(parambfwe.jdField_a_of_type_ArrayOfBfwf[n]);
-      }
-      parambfwe.jdField_a_of_type_ArrayOfBfwf[n].jdField_a_of_type_Int = this.jdField_a_of_type_ArrayOfBfwf[n].jdField_a_of_type_Int;
-      parambfwe.jdField_a_of_type_ArrayOfBfwf[n].b = this.jdField_a_of_type_ArrayOfBfwf[n].b;
-      parambfwe.jdField_a_of_type_ArrayOfBfwf[n].c = 0;
-      parambfwe.jdField_a_of_type_ArrayOfBfwf[n].d = -1;
-      int k = parambfwe.jdField_a_of_type_ArrayOfBfwf[n].jdField_a_of_type_Int;
-      Object localObject1 = parambfwe.jdField_a_of_type_ArrayOfBfwf[n].jdField_a_of_type_AndroidViewView;
-      int m;
-      if ((k < 0) || (k >= this.jdField_a_of_type_ArrayOfJavaUtilStack.length))
-      {
-        m = j;
-        k = i;
-        if (localObject1 == null) {
-          break label532;
-        }
-        ((View)localObject1).setVisibility(8);
-        k = j + 1;
-        j = i;
-        i = k;
-      }
-      for (;;)
-      {
-        n += 1;
-        k = j;
-        j = i;
-        i = k;
-        break;
-        int i1;
-        if (localObject1 == null)
-        {
-          synchronized (this.jdField_a_of_type_ArrayOfJavaUtilStack)
-          {
-            if (!this.jdField_a_of_type_ArrayOfJavaUtilStack[k].isEmpty()) {
-              localObject1 = (View)this.jdField_a_of_type_ArrayOfJavaUtilStack[k].pop();
-            }
-            ??? = localObject1;
-            if (localObject1 == null) {
-              ??? = a(paramContext, k);
-            }
-            if (??? == null) {
-              throw new NullPointerException("updateRightMenuView menuView is null");
-            }
-          }
-          parambfwe.jdField_a_of_type_ArrayOfBfwf[n].jdField_a_of_type_AndroidViewView = ((View)???);
-          i1 = 1;
-          localObject1 = ???;
-        }
-        for (;;)
-        {
-          a(paramInt, paramObject, parambfwe.jdField_a_of_type_ArrayOfBfwf[n], paramOnClickListener);
-          if (parambfwe.jdField_a_of_type_ArrayOfBfwf[n].c >= 0) {
-            break;
-          }
-          throw new IllegalArgumentException("updateRightMenuView, menuWidth = " + parambfwe.jdField_a_of_type_ArrayOfBfwf[n].c);
-          i1 = 0;
-        }
-        i += parambfwe.jdField_a_of_type_ArrayOfBfwf[n].c;
-        j += 1;
-        ((View)localObject1).setVisibility(0);
-        m = j;
-        k = i;
-        if (i1 != 0)
-        {
-          a(localLinearLayout, (View)localObject1, parambfwe.jdField_a_of_type_ArrayOfBfwf[n], j);
-          k = i;
-          m = j;
-        }
-        label532:
-        i = m;
-        j = k;
-      }
-    }
-    paramView.setTag(-3, Integer.valueOf(i));
-    return i;
-  }
-  
-  protected void a(ViewGroup paramViewGroup, View paramView, bfwf parambfwf, int paramInt)
-  {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    if (localLayoutParams == null)
-    {
-      parambfwf = new LinearLayout.LayoutParams(parambfwf.c, parambfwf.d);
-      paramView.setLayoutParams(parambfwf);
-    }
-    for (;;)
-    {
-      parambfwf.gravity = 16;
-      paramViewGroup.addView(paramView, paramInt);
-      return;
-      localLayoutParams.width = parambfwf.c;
-      localLayoutParams.height = parambfwf.d;
-      parambfwf = localLayoutParams;
-    }
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramBoolean2;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdt
  * JD-Core Version:    0.7.0.1
  */

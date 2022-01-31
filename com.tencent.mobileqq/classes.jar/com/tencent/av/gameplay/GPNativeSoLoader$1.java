@@ -1,18 +1,18 @@
 package com.tencent.av.gameplay;
 
-import lmw;
+import loz;
 
 public final class GPNativeSoLoader$1
   implements Runnable
 {
   public void run()
   {
-    lmw.a().c();
+    loz.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.gameplay.GPNativeSoLoader.1
  * JD-Core Version:    0.7.0.1
  */

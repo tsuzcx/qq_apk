@@ -1,25 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 
-public class ahsa
-  implements DialogInterface.OnClickListener
+class ahsa
+  implements ViewPager.OnPageChangeListener
 {
-  public ahsa(LoginView paramLoginView) {}
+  ahsa(ahrz paramahrz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    try
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = ahrz.a(this.a).a(paramInt);
+    if (localEmoticonFromGroupEntity != null)
     {
-      paramDialogInterface.dismiss();
-      return;
+      ahrz.a(this.a, localEmoticonFromGroupEntity);
+      ahrz.b(this.a, localEmoticonFromGroupEntity);
     }
-    catch (Exception paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsa
  * JD-Core Version:    0.7.0.1
  */

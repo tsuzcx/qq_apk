@@ -1,12 +1,12 @@
 package cooperation.qwallet.pluginshare;
 
 import android.content.Context;
-import bgxk;
+import biyh;
 
 public class TenCookie$1
   implements Runnable
 {
-  public TenCookie$1(bgxk parambgxk, Context paramContext) {}
+  public TenCookie$1(biyh parambiyh, Context paramContext) {}
   
   /* Error */
   public void run()
@@ -17,8 +17,8 @@ public class TenCookie$1
     //   3: aload_0
     //   4: getfield 16	cooperation/qwallet/pluginshare/TenCookie$1:a	Landroid/content/Context;
     //   7: aload_0
-    //   8: getfield 14	cooperation/qwallet/pluginshare/TenCookie$1:this$0	Lbgxk;
-    //   11: invokestatic 28	bgxk:a	(Lbgxk;)Ljava/lang/String;
+    //   8: getfield 14	cooperation/qwallet/pluginshare/TenCookie$1:this$0	Lbiyh;
+    //   11: invokestatic 28	biyh:a	(Lbiyh;)Ljava/lang/String;
     //   14: iconst_4
     //   15: invokevirtual 34	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   18: invokeinterface 40 1 0
@@ -28,8 +28,8 @@ public class TenCookie$1
     //   28: invokespecial 43	java/util/ArrayList:<init>	()V
     //   31: astore_2
     //   32: aload_0
-    //   33: getfield 14	cooperation/qwallet/pluginshare/TenCookie$1:this$0	Lbgxk;
-    //   36: invokestatic 46	bgxk:a	(Lbgxk;)Ljava/util/Map;
+    //   33: getfield 14	cooperation/qwallet/pluginshare/TenCookie$1:this$0	Lbiyh;
+    //   36: invokestatic 46	biyh:a	(Lbiyh;)Ljava/util/Map;
     //   39: invokeinterface 52 1 0
     //   44: invokeinterface 58 1 0
     //   49: astore_3
@@ -41,8 +41,8 @@ public class TenCookie$1
     //   65: checkcast 70	java/lang/String
     //   68: astore 4
     //   70: aload_0
-    //   71: getfield 14	cooperation/qwallet/pluginshare/TenCookie$1:this$0	Lbgxk;
-    //   74: invokestatic 46	bgxk:a	(Lbgxk;)Ljava/util/Map;
+    //   71: getfield 14	cooperation/qwallet/pluginshare/TenCookie$1:this$0	Lbiyh;
+    //   74: invokestatic 46	biyh:a	(Lbiyh;)Ljava/util/Map;
     //   77: aload 4
     //   79: invokeinterface 74 2 0
     //   84: checkcast 76	java/util/List
@@ -50,9 +50,9 @@ public class TenCookie$1
     //   89: aload_1
     //   90: aload 4
     //   92: aload_0
-    //   93: getfield 14	cooperation/qwallet/pluginshare/TenCookie$1:this$0	Lbgxk;
+    //   93: getfield 14	cooperation/qwallet/pluginshare/TenCookie$1:this$0	Lbiyh;
     //   96: aload 5
-    //   98: invokestatic 79	bgxk:a	(Lbgxk;Ljava/util/List;)Lorg/json/JSONArray;
+    //   98: invokestatic 79	biyh:a	(Lbiyh;Ljava/util/List;)Lorg/json/JSONArray;
     //   101: invokevirtual 85	org/json/JSONArray:toString	()Ljava/lang/String;
     //   104: invokeinterface 91 3 0
     //   109: pop
@@ -68,9 +68,9 @@ public class TenCookie$1
     //   131: ldc 107
     //   133: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   136: aload_0
-    //   137: getfield 14	cooperation/qwallet/pluginshare/TenCookie$1:this$0	Lbgxk;
+    //   137: getfield 14	cooperation/qwallet/pluginshare/TenCookie$1:this$0	Lbiyh;
     //   140: aload 5
-    //   142: invokestatic 79	bgxk:a	(Lbgxk;Ljava/util/List;)Lorg/json/JSONArray;
+    //   142: invokestatic 79	biyh:a	(Lbiyh;Ljava/util/List;)Lorg/json/JSONArray;
     //   145: invokevirtual 85	org/json/JSONArray:toString	()Ljava/lang/String;
     //   148: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   151: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -145,7 +145,7 @@ public class TenCookie$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.pluginshare.TenCookie.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class arra
-  implements artg
+  implements View.OnClickListener
 {
-  public arra(ListenTogetherManager paramListenTogetherManager) {}
+  public arra(SendBottomBar paramSendBottomBar) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    ListenTogetherManager.a(this.a, paramString, paramInt1, paramInt2);
+    if (this.a.a.isShowing()) {
+      return;
+    }
+    this.a.a.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arra
  * JD-Core Version:    0.7.0.1
  */

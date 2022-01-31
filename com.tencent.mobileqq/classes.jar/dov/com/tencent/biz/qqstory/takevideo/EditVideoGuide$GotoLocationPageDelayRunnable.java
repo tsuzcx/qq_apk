@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bjsu;
+import bmee;
 
 class EditVideoGuide$GotoLocationPageDelayRunnable
   implements Runnable
@@ -9,15 +9,15 @@ class EditVideoGuide$GotoLocationPageDelayRunnable
   
   public void run()
   {
-    bjsu localbjsu = (bjsu)this.this$0.a(bjsu.class);
-    if (localbjsu != null) {
-      localbjsu.c();
+    bmee localbmee = (bmee)this.this$0.a(bmee.class);
+    if (localbmee != null) {
+      localbmee.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide.GotoLocationPageDelayRunnable
  * JD-Core Version:    0.7.0.1
  */

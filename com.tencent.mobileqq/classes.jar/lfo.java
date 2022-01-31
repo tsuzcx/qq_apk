@@ -1,38 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
-class lfo
-  extends BroadcastReceiver
+public class lfo
+  implements DialogInterface.OnClickListener
 {
-  lfo(lfn paramlfn) {}
+  public lfo(VideoController paramVideoController) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        paramContext = lfn.a(this.a).a();
-      } while (paramContext == null);
-      if (QLog.isColorLevel()) {
-        QLog.d("GVipFunCallMonitor", 2, "recv vipfuncall msg broadcast: " + paramIntent.getAction());
-      }
-    } while (!paramIntent.getAction().equals("tencent.video.q2v.AnnimateDownloadFinish"));
-    if (QLog.isColorLevel()) {
-      QLog.d("GVipFunCallMonitor", 2, "ACTION_ANNIMATE_DOWNLOAD_FINISH");
-    }
-    paramContext.e(paramIntent.getIntExtra("fun_call_id", 0));
+    azmj.b(null, "CliOper", "", "", "0x8006994", "0x8006994", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfo
  * JD-Core Version:    0.7.0.1
  */

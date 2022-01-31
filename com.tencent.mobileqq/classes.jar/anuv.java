@@ -1,43 +1,21 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
-import android.os.Messenger;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class anuv
-  implements IBinder.DeathRecipient
+public class anuv
+  implements View.OnClickListener
 {
-  anuv(anuq paramanuq) {}
+  public anuv(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void binderDied()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("MessengerService$IncomingHandler", 2, "-->binder died");
-      MessengerService.a((MessengerService)this.a.a.get());
-      MessengerService.b((MessengerService)this.a.a.get());
-    }
-    MessengerService localMessengerService;
-    if (this.a.a != null)
-    {
-      localMessengerService = (MessengerService)this.a.a.get();
-      if ((localMessengerService == null) || (localMessengerService.a == null)) {}
-    }
-    try
-    {
-      localMessengerService.a.getBinder().unlinkToDeath(anuq.a(this.a), 0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("MessengerService$IncomingHandler", 1, "-->binder died unlink to death error=" + localException.toString());
-    }
+    paramView = (anva)paramView.getTag();
+    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anuv
  * JD-Core Version:    0.7.0.1
  */

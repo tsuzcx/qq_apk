@@ -1,70 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import dov.com.qq.im.QIMCameraCaptureActivity;
-import dov.com.qq.im.ae.play.AETemplateInfoFragment;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bjai
+public final class bjai
+  implements DialogInterface.OnClickListener
 {
-  public static void a(Activity paramActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramActivity == null)
-    {
-      bjah.d("PicChooseJumpUtil", "activity is null.");
-      return;
-    }
-    String str1 = QIMCameraCaptureActivity.class.getName();
-    String str2 = LocalVideoSelectActivity.class.getName();
-    Intent localIntent = new Intent(paramActivity, NewPhotoListActivity.class);
-    localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
-    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 5);
-    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_VIDEO_DURATION", 60000L);
-    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", str1);
-    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-    localIntent.putExtra("PhotoConst.DEST_ACTIVITY_CLASS_NAME", str2);
-    localIntent.putExtra("PhotoConst.DEST_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-    localIntent.putExtra("enter_from", 26);
-    localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", true);
-    localIntent.putExtra("pic_back_type_result", true);
-    localIntent.putExtra("VIDEO_STORY_JUMP_TO_TYPE", birt.b(paramActivity.getIntent()));
-    localIntent.putExtra("VIDEO_STORY_FROM_TYPE", birt.a(paramActivity.getIntent()));
-    localIntent.putExtra("edit_video_way", 11);
-    localIntent.putExtra("edit_video_type", 10023);
-    paramActivity.startActivityForResult(localIntent, 10006);
-  }
-  
-  public static void a(Activity paramActivity, int paramInt)
-  {
-    String str = QIMCameraCaptureActivity.class.getName();
-    Intent localIntent = new Intent(paramActivity, NewPhotoListActivity.class);
-    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", str);
-    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-    localIntent.putExtra("enter_from", 23);
-    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
-    localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", false);
-    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", paramInt);
-    localIntent.putExtra("VIDEO_STORY_FROM_TYPE", AETemplateInfoFragment.a(paramActivity));
-    paramActivity.startActivity(localIntent);
-  }
-  
-  public static void b(Activity paramActivity, int paramInt)
-  {
-    String str = QIMCameraCaptureActivity.class.getName();
-    Intent localIntent = new Intent(paramActivity, NewPhotoListActivity.class);
-    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", str);
-    localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-    localIntent.putExtra("enter_from", 23);
-    localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", true);
-    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 1);
-    localIntent.putExtra("pic_choose_in_node_id", paramInt);
-    localIntent.putExtra("VIDEO_STORY_FROM_TYPE", AETemplateInfoFragment.a(paramActivity));
-    paramActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjai
  * JD-Core Version:    0.7.0.1
  */

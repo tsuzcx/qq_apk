@@ -1,136 +1,91 @@
-import android.content.Intent;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.open.agent.ChallengeBragBase;
-import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
-import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.SocketTimeoutException;
-import org.apache.http.conn.ConnectTimeoutException;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CardProfile;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdam
-  implements bdje
 {
-  public bdam(ChallengeBragBase paramChallengeBragBase) {}
-  
-  protected void a(Intent paramIntent)
+  public static CardProfile a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    int i = paramIntent.getIntExtra("key_error_code", -6);
-    if (i != 0)
+    boolean bool = true;
+    CardProfile localCardProfile = null;
+    awbw localawbw = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    paramQQAppInterface = localCardProfile;
+    if (localawbw != null)
     {
-      Toast.makeText(this.a, paramIntent.getStringExtra("key_error_msg"), 0).show();
-      bdii.e("qqBaseActivity", "onGetNickNameError{KEY_ERROR_CODE:" + i + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
-    }
-    this.a.setResult(-1, paramIntent);
-    this.a.finish();
-  }
-  
-  public void a(Exception paramException)
-  {
-    this.a.d();
-    bdii.c("qqBaseActivity", "GetNickNameCallback exception." + paramException.getMessage(), paramException);
-    Intent localIntent = new Intent();
-    if ((paramException instanceof ConnectTimeoutException))
-    {
-      localIntent.putExtra("key_error_code", -7);
-      localIntent.putExtra("key_error_msg", bdjm.e);
+      localCardProfile = (CardProfile)localawbw.a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(paramInt) });
+      paramQQAppInterface = localCardProfile;
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder().append("readFromDb. uin:").append(paramLong).append(" find:");
+        if (localCardProfile == null) {
+          break label111;
+        }
+      }
     }
     for (;;)
     {
-      a(localIntent);
-      return;
-      if ((paramException instanceof SocketTimeoutException))
-      {
-        localIntent.putExtra("key_error_code", -8);
-        localIntent.putExtra("key_error_msg", bdjm.f);
-      }
-      else if ((paramException instanceof MalformedURLException))
-      {
-        localIntent.putExtra("key_error_code", -3);
-        localIntent.putExtra("key_error_msg", "访问url有误!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
-      {
-        localIntent.putExtra("key_error_code", -10);
-        localIntent.putExtra("key_error_msg", "Http返回码异常!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
-      {
-        localIntent.putExtra("key_error_code", -9);
-        localIntent.putExtra("key_error_msg", bdjm.g);
-      }
-      else if ((paramException instanceof IOException))
-      {
-        localIntent.putExtra("key_error_code", -2);
-        localIntent.putExtra("key_error_msg", bdjm.a);
-      }
-      else
-      {
-        localIntent.putExtra("key_error_code", -6);
-        localIntent.putExtra("key_error_msg", bdjm.d);
-      }
+      QLog.i("VoteUtil", 2, bool);
+      paramQQAppInterface = localCardProfile;
+      return paramQQAppInterface;
+      label111:
+      bool = false;
     }
   }
   
-  public void a(JSONObject paramJSONObject)
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    try
+    Object localObject = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    CardProfile localCardProfile;
+    if (localObject != null)
     {
-      this.a.d();
-      int i = paramJSONObject.getInt("ret");
-      String str = paramJSONObject.getString("msg");
-      if (i != 0)
+      paramQQAppInterface = (CardProfile)((awbw)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(2) });
+      if (paramQQAppInterface != null)
       {
-        Intent localIntent = new Intent();
-        localIntent.putExtra("key_error_code", i);
-        localIntent.putExtra("key_error_msg", str);
-        localIntent.putExtra("key_response", paramJSONObject.toString());
-        a(localIntent);
-        return;
+        paramQQAppInterface.bAvailableCnt -= paramInt;
+        paramQQAppInterface.bTodayVotedCnt += paramInt;
+        if (paramQQAppInterface.getStatus() != 1000) {
+          break label238;
+        }
+        ((awbw)localObject).b(paramQQAppInterface);
       }
-      paramJSONObject = paramJSONObject.getJSONArray("data");
-      if (paramJSONObject.length() == 0)
+      localCardProfile = (CardProfile)((awbw)localObject).a(CardProfile.class, "lEctID=? and type=?", new String[] { Long.toString(paramLong), Integer.toString(3) });
+      if (localCardProfile != null)
       {
-        paramJSONObject = new Intent();
-        paramJSONObject.putExtra("key_error_code", -5);
-        paramJSONObject.putExtra("key_error_msg", bdjm.c);
-        paramJSONObject.putExtra("key_error_detail", ajya.a(2131701510));
-        a(paramJSONObject);
-        return;
+        localCardProfile.bAvailableCnt -= paramInt;
+        localCardProfile.bTodayVotedCnt += paramInt;
+        localCardProfile.bVoteCnt = ((short)(int)localCardProfile.bTodayVotedCnt);
+        if (localCardProfile.getStatus() != 1000) {
+          break label248;
+        }
+        ((awbw)localObject).b(localCardProfile);
+      }
+      label180:
+      ((awbw)localObject).a();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder().append("updateProfileCardVote. uin:").append(paramLong).append(" find:");
+        if (paramQQAppInterface == null) {
+          break label259;
+        }
       }
     }
-    catch (JSONException paramJSONObject)
+    label259:
+    for (boolean bool = true;; bool = false)
     {
-      bdii.c("qqBaseActivity", "GetNickNameCallback exception." + paramJSONObject.getMessage(), paramJSONObject);
-      paramJSONObject = new Intent();
-      paramJSONObject.putExtra("key_error_code", -4);
-      paramJSONObject.putExtra("key_error_msg", bdjm.b);
-      a(paramJSONObject);
+      QLog.i("VoteUtil", 2, bool);
       return;
-      paramJSONObject = bdio.a(bdio.a(paramJSONObject.getJSONObject(0).getString("nick")), 12, true, true);
-      if ("action_brag".equals(this.a.p))
-      {
-        this.a.a.setText(this.a.getString(2131689861, new Object[] { paramJSONObject }));
-        return;
-      }
-    }
-    catch (Exception paramJSONObject)
-    {
-      a(paramJSONObject);
-      return;
-    }
-    if ("action_challenge".equals(this.a.p)) {
-      this.a.a.setText(this.a.getString(2131689865, new Object[] { paramJSONObject }));
+      label238:
+      ((awbw)localObject).a(paramQQAppInterface);
+      break;
+      label248:
+      ((awbw)localObject).a(localCardProfile);
+      break label180;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdam
  * JD-Core Version:    0.7.0.1
  */

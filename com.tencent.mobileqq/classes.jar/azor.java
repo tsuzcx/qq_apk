@@ -1,22 +1,11 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import org.json.JSONObject;
-
-class azor
-  implements baic
+public final class azor
 {
-  azor(azoq paramazoq, bajo parambajo, int paramInt) {}
-  
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
-  {
-    if ((paramJSONObject != null) && (paramJSONObject.optInt("retcode", -1) == 0)) {
-      this.jdField_a_of_type_Bajo.a(this.jdField_a_of_type_Azoq.a.a.a, 0, this.jdField_a_of_type_Int);
-    }
-  }
+  public long a;
+  public Object a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azor
  * JD-Core Version:    0.7.0.1
  */

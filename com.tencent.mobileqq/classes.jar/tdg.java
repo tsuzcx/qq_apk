@@ -1,22 +1,22 @@
-import com.tencent.image.URLDrawable;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.pubaccount.weishi_new.comment.WsCommentInputPopupWindow.1.1;
 
 public class tdg
-  implements tci
+  implements ybs
 {
-  public void a(int paramInt)
+  tdg(tdf paramtdf) {}
+  
+  public void a(View paramView)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return;
+    if (this.a.isShowing()) {
+      tdf.a(this.a).runOnUiThread(new WsCommentInputPopupWindow.1.1(this));
     }
-    URLDrawable.clearMemoryCache();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdg
  * JD-Core Version:    0.7.0.1
  */

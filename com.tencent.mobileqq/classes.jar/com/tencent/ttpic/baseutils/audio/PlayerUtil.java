@@ -121,8 +121,7 @@ public class PlayerUtil
   {
     if (paramPlayer != null)
     {
-      paramPlayer.stop();
-      paramPlayer.reset();
+      stopAndResetPlayer(paramPlayer);
       paramPlayer.release();
     }
   }
@@ -221,6 +220,15 @@ public class PlayerUtil
   {
     if (paramRecorder != null) {
       paramRecorder.start();
+    }
+  }
+  
+  public static void stopAndResetPlayer(PlayerUtil.Player paramPlayer)
+  {
+    if (paramPlayer != null)
+    {
+      paramPlayer.stop();
+      paramPlayer.release();
     }
   }
   

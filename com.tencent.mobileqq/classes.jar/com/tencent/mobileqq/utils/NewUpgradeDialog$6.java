@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import bbfk;
+import bdef;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.concurrent.TimeUnit;
 import mqq.os.MqqHandler;
@@ -8,7 +8,7 @@ import mqq.os.MqqHandler;
 public class NewUpgradeDialog$6
   implements Runnable
 {
-  public NewUpgradeDialog$6(bbfk parambbfk) {}
+  public NewUpgradeDialog$6(bdef parambdef) {}
   
   public void run()
   {
@@ -33,14 +33,14 @@ public class NewUpgradeDialog$6
         }
       }
     }
-    if (!bbfk.a(this.this$0)) {
-      bbfk.b(this.this$0);
+    if (!bdef.a(this.this$0)) {
+      bdef.b(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.NewUpgradeDialog.6
  * JD-Core Version:    0.7.0.1
  */

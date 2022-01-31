@@ -1,35 +1,40 @@
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+
 public class ldv
+  implements BusinessObserver
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public int d;
-  public long d;
-  public int e;
+  public ldw a;
   
-  public boolean a()
+  public ldv(ldw paramldw)
   {
-    return this.jdField_a_of_type_Int == 3;
+    this.a = paramldw;
   }
   
-  public String toString()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("VideoPacket{roomId=").append(this.jdField_a_of_type_Long).append(", bodyType=").append(this.jdField_a_of_type_Int).append(", uin=").append(this.jdField_b_of_type_Long).append(", fromuin=").append(this.jdField_c_of_type_Long).append(", subServiceType=").append(this.jdField_b_of_type_Int).append(", seq=").append(this.jdField_c_of_type_Int).append(", business_flag=").append(this.jdField_d_of_type_Int).append(", terminal_switch_flag =").append(this.jdField_a_of_type_Boolean).append(", u32AccountType =").append(this.e).append(", uint64_group_uin =").append(this.jdField_d_of_type_Long).append(", str_from_nation =").append(this.jdField_b_of_type_JavaLangString).append(", str_from_mobile =");
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    for (boolean bool = true;; bool = false) {
-      return bool + '}';
+    aanp.b("GdtSSOLoadAD", "onReceive i " + paramInt + " success " + paramBoolean + " bundle " + paramBundle);
+    switch (paramInt)
+    {
     }
+    do
+    {
+      do
+      {
+        return;
+        if (!paramBoolean) {
+          break;
+        }
+      } while (this.a == null);
+      this.a.a(paramBundle);
+      return;
+    } while (this.a == null);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ldv
  * JD-Core Version:    0.7.0.1
  */

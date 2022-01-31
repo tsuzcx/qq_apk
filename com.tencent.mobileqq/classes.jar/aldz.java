@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import android.os.Bundle;
 
-public final class aldz
-  implements Parcelable.Creator<ArConfigInfo>
+public abstract interface aldz
 {
-  public ArConfigInfo a(Parcel paramParcel)
-  {
-    return new ArConfigInfo(paramParcel);
-  }
-  
-  public ArConfigInfo[] a(int paramInt)
-  {
-    return new ArConfigInfo[paramInt];
-  }
+  public abstract int a(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldz
  * JD-Core Version:    0.7.0.1
  */

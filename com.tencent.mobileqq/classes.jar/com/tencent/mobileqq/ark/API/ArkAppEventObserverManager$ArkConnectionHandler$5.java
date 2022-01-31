@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.ark.API;
 
-import aloo;
-import aloq;
-import alos;
+import anff;
+import anfh;
+import anfj;
 
 public class ArkAppEventObserverManager$ArkConnectionHandler$5
   implements Runnable
 {
-  public ArkAppEventObserverManager$ArkConnectionHandler$5(aloq paramaloq) {}
+  public ArkAppEventObserverManager$ArkConnectionHandler$5(anfh paramanfh) {}
   
   public void run()
   {
-    if ((aloo.a(this.a.a) != null) && (!"wifi".equals(aloo.b(this.a.a))))
+    if ((anff.a(this.a.a) != null) && (!"wifi".equals(anff.b(this.a.a))))
     {
-      aloo.a(this.a.a).a(true, "wifi");
-      aloo.a(this.a.a, "wifi");
+      anff.a(this.a.a).a(true, "wifi");
+      anff.a(this.a.a, "wifi");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ArkConnectionHandler.5
  * JD-Core Version:    0.7.0.1
  */

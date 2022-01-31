@@ -1,40 +1,44 @@
 package com.tencent.gdtad.views.videoceiling;
 
-import abtq;
+import aanp;
+import aapa;
+import adky;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.ResultReceiver;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import yxp;
-import yzb;
 
 public abstract class GdtBaseVideoCeilingFragment
   extends PublicBaseFragment
 {
+  public static String a;
+  public static String b = "key_ad_position";
   private GdtVideoCeilingView a;
   
-  public static void a(Activity paramActivity, Class<? extends GdtBaseVideoCeilingFragment> paramClass, GdtVideoCeilingData paramGdtVideoCeilingData)
+  static
   {
-    a(paramActivity, paramClass, paramGdtVideoCeilingData, null);
+    jdField_a_of_type_JavaLangString = "key_result_receiver";
   }
   
   public static void a(Activity paramActivity, Class<? extends GdtBaseVideoCeilingFragment> paramClass, GdtVideoCeilingData paramGdtVideoCeilingData, Bundle paramBundle)
   {
     if ((paramActivity == null) || (paramGdtVideoCeilingData == null) || (!paramGdtVideoCeilingData.isValid()))
     {
-      yxp.d("GdtBaseVideoCeilingFragment", "start error");
+      aanp.d("GdtBaseVideoCeilingFragment", "start error");
       return;
     }
-    yxp.b("GdtBaseVideoCeilingFragment", "start");
+    aanp.b("GdtBaseVideoCeilingFragment", "start");
     Bundle localBundle = new Bundle();
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
       localBundle.putAll(paramBundle);
@@ -48,14 +52,33 @@ public abstract class GdtBaseVideoCeilingFragment
     paramBundle.putExtra("big_brother_source_key", "biz_src_ads");
     paramBundle.putExtras(localBundle);
     if (TextUtils.isEmpty(paramBundle.getStringExtra("big_brother_ref_source_key"))) {
-      yxp.d("GdtBaseVideoCeilingFragment", "start gdt empty refId");
+      aanp.d("GdtBaseVideoCeilingFragment", "start gdt empty refId");
     }
-    if (paramGdtVideoCeilingData.getStyle() == 4)
+    if (paramGdtVideoCeilingData.getStyle() == 4) {
+      adky.a(paramActivity, paramBundle, PublicFragmentActivity.class, paramClass);
+    }
+    for (;;)
     {
-      abtq.a(paramActivity, paramBundle, PublicFragmentActivity.class, paramClass);
+      AdReporterForAnalysis.reportForStartActivity(paramActivity, paramGdtVideoCeilingData.getAd(), "GdtBaseVideoCeilingFragment");
       return;
+      adky.a(paramActivity, paramBundle, PublicFragmentActivityForTool.class, paramClass);
     }
-    abtq.a(paramActivity, paramBundle, PublicFragmentActivityForTool.class, paramClass);
+  }
+  
+  public void beforeFinish()
+  {
+    super.beforeFinish();
+    Object localObject = getArguments();
+    if (localObject != null)
+    {
+      localObject = (ResultReceiver)((Bundle)localObject).getParcelable(jdField_a_of_type_JavaLangString);
+      if ((localObject != null) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView != null))
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putLong(b, this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView.a());
+        ((ResultReceiver)localObject).send(-1, localBundle);
+      }
+    }
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -85,7 +108,7 @@ public abstract class GdtBaseVideoCeilingFragment
   
   public boolean onBackEvent()
   {
-    return (this.a != null) && (this.a.a());
+    return (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView != null) && (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView.a());
   }
   
   public void onCreate(Bundle paramBundle)
@@ -95,12 +118,13 @@ public abstract class GdtBaseVideoCeilingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559111, paramViewGroup, false);
-    this.a = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131379117));
-    yzb.a(this.a);
-    this.a.a(paramBundle);
+    AdReporterForAnalysis.reportForActivityStatusChanged(getActivity(), null, "GdtBaseVideoCeilingFragment", 1);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559154, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131379796));
+    aapa.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView.a(paramBundle);
     if ((getArguments() != null) && ((getArguments().getSerializable("data") instanceof GdtVideoCeilingData))) {
-      this.a.setData((GdtVideoCeilingData)getArguments().getSerializable("data"));
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView.setData((GdtVideoCeilingData)getArguments().getSerializable("data"));
     }
     if ((getActivity() != null) && (getActivity().getWindow() != null)) {
       getActivity().getWindow().setSoftInputMode(16);
@@ -110,16 +134,16 @@ public abstract class GdtBaseVideoCeilingFragment
   
   public void onDestroy()
   {
-    if (this.a != null) {
-      this.a.a();
+    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView != null) {
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView.c();
     }
     super.onDestroy();
   }
   
   public void onPause()
   {
-    if (this.a != null) {
-      this.a.c();
+    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView != null) {
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView.e();
     }
     super.onPause();
   }
@@ -127,14 +151,14 @@ public abstract class GdtBaseVideoCeilingFragment
   public void onResume()
   {
     super.onResume();
-    if (this.a != null) {
-      this.a.b();
+    if (this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView != null) {
+      this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtVideoCeilingView.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtBaseVideoCeilingFragment
  * JD-Core Version:    0.7.0.1
  */

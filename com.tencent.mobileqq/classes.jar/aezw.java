@@ -1,41 +1,21 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aezw
-  extends RecyclerView.OnScrollListener
+class aezw
+  implements DialogInterface.OnClickListener
 {
-  public boolean a;
+  aezw(aezv paramaezv, boolean paramBoolean) {}
   
-  public aezw(ZhituPanelView paramZhituPanelView) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
-    {
-      GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
-      if ((localGridLayoutManager.findLastCompletelyVisibleItemPosition() + 1 == localGridLayoutManager.getItemCount()) && (this.jdField_a_of_type_Boolean)) {
-        ((aezx)paramRecyclerView.getAdapter()).a();
-      }
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezw
  * JD-Core Version:    0.7.0.1
  */

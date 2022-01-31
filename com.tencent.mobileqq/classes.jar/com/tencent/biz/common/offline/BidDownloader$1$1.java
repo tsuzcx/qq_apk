@@ -1,11 +1,11 @@
 package com.tencent.biz.common.offline;
 
-import mza;
+import nbu;
 
 public class BidDownloader$1$1
   extends Thread
 {
-  public BidDownloader$1$1(mza parammza) {}
+  public BidDownloader$1$1(nbu paramnbu) {}
   
   public void run()
   {
@@ -36,7 +36,7 @@ public class BidDownloader$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.common.offline.BidDownloader.1.1
  * JD-Core Version:    0.7.0.1
  */

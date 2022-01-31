@@ -2,12 +2,12 @@ package com.tencent.biz.subscribe.comment;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import wni;
+import ybx;
 
 public class CommentPresenter$10
   implements Runnable
 {
-  public CommentPresenter$10(wni paramwni, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
+  public CommentPresenter$10(ybx paramybx, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class CommentPresenter$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentPresenter.10
  * JD-Core Version:    0.7.0.1
  */

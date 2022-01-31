@@ -1,66 +1,22 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserHealthDataReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserHealthDataRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityAccountView;
 
 public class bfam
-  extends bfau
+  implements View.OnClickListener
 {
-  private INTERFACE.StGetUserHealthDataReq a = new INTERFACE.StGetUserHealthDataReq();
+  public bfam(OpenAuthorityAccountView paramOpenAuthorityAccountView) {}
   
-  public bfam(COMM.StCommonExt paramStCommonExt, String paramString)
+  public void onClick(View paramView)
   {
-    this.a.appid.set(paramString);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
+    if (OpenAuthorityAccountView.a(this.a) != null) {
+      OpenAuthorityAccountView.a(this.a).b();
     }
-  }
-  
-  protected String a()
-  {
-    return "mini_user_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StGetUserHealthDataRsp localStGetUserHealthDataRsp = new INTERFACE.StGetUserHealthDataRsp();
-    try
-    {
-      localStGetUserHealthDataRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetUserHealthDataRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("encryptedData", localStGetUserHealthDataRsp.encryptedData.get());
-        paramArrayOfByte.put("iv", localStGetUserHealthDataRsp.iv.get());
-        return paramArrayOfByte;
-      }
-      betc.a("GetUserHealthDataRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      betc.a("GetUserHealthDataRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetUserHealthData";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfam
  * JD-Core Version:    0.7.0.1
  */

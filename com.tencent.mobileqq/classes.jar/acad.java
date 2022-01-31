@@ -1,27 +1,40 @@
-import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class acad
-  extends ajxj
+  extends Handler
 {
-  public acad(SearchFriendListActivity paramSearchFriendListActivity) {}
+  public acad(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
     }
-  }
-  
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null)) {
-      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
-    }
+    do
+    {
+      return;
+      if (!this.a.isFinishing())
+      {
+        this.a.jdField_a_of_type_Bepp.a(this.a.getString(2131690861));
+        this.a.jdField_a_of_type_Bepp.d(2130849053);
+        this.a.jdField_a_of_type_Bepp.b(false);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_Bepp == null) || (!this.a.jdField_a_of_type_Bepp.isShowing()));
+    this.a.jdField_a_of_type_Bepp.cancel();
+    this.a.jdField_a_of_type_Bepp.a(this.a.getString(2131690863));
+    this.a.jdField_a_of_type_Bepp.c(true);
+    this.a.jdField_a_of_type_Bepp.a(false);
+    this.a.jdField_a_of_type_Bepp.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acad
  * JD-Core Version:    0.7.0.1
  */

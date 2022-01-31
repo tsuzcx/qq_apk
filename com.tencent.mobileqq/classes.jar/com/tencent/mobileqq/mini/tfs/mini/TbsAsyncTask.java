@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -38,6 +39,7 @@ public class TbsAsyncTask
   public boolean mIsTimeout;
   private int mTbsProgress;
   private boolean mWaitForX5;
+  protected Handler workHander;
   
   static
   {
@@ -162,6 +164,14 @@ public class TbsAsyncTask
     getWorkHander().sendEmptyMessageDelayed(6, 1000L);
   }
   
+  public Handler getWorkHander()
+  {
+    if (this.workHander == null) {
+      this.workHander = new Handler(Looper.getMainLooper(), this);
+    }
+    return this.workHander;
+  }
+  
   public boolean handleMessage(Message paramMessage)
   {
     switch (paramMessage.what)
@@ -216,7 +226,7 @@ public class TbsAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.tfs.mini.TbsAsyncTask
  * JD-Core Version:    0.7.0.1
  */

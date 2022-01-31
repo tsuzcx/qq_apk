@@ -1,54 +1,39 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class amyv
-  extends amyp<amys>
+class amyv
+  implements amzq
 {
-  @NonNull
-  public static amys c()
+  amyv(amyt paramamyt, amyx paramamyx, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  
+  public void a()
   {
-    amys localamys2 = (amys)ampl.a().a(541);
-    amys localamys1 = localamys2;
-    if (localamys2 == null) {
-      localamys1 = amys.a();
+    if (this.jdField_a_of_type_Amyx != null) {
+      this.jdField_a_of_type_Amyx.e();
     }
-    return localamys1;
   }
   
-  public int a()
+  public void a(int paramInt)
   {
-    return 541;
-  }
-  
-  @NonNull
-  public amys a()
-  {
-    return amys.a();
-  }
-  
-  @NonNull
-  public amys a(@NonNull amph[] paramArrayOfamph)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("KC.ConfigProcessor", 1, paramArrayOfamph[0].a);
+    if (this.jdField_a_of_type_Amyx != null) {
+      this.jdField_a_of_type_Amyx.b(paramInt);
     }
-    return amys.a(paramArrayOfamph[0].a);
   }
   
-  public Class<amys> a()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    return amys.class;
+    if (this.jdField_a_of_type_Amyx != null) {}
   }
   
-  @NonNull
-  public amys b()
+  public void a(boolean paramBoolean)
   {
-    return amys.a();
+    if (this.jdField_a_of_type_Amyx != null) {
+      this.jdField_a_of_type_Amyx.b(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyv
  * JD-Core Version:    0.7.0.1
  */

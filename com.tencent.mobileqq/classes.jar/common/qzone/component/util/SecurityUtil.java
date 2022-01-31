@@ -103,7 +103,7 @@ public class SecurityUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     common.qzone.component.util.SecurityUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import bbki;
+import bdjc;
 import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
 
 class FriendProfileCardActivity$BlurBackgroundJob
@@ -29,7 +29,7 @@ class FriendProfileCardActivity$BlurBackgroundJob
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
       localObject = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(((Bitmap)localObject).getWidth() * 0.125F), (int)(((Bitmap)localObject).getHeight() * 0.125F), true);
-      bbki.a((Bitmap)localObject, 2);
+      bdjc.a((Bitmap)localObject, 2);
       localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(12, localObject);
       this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
     }
@@ -37,7 +37,7 @@ class FriendProfileCardActivity$BlurBackgroundJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileCardActivity.BlurBackgroundJob
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,38 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.async.Job;
 import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class uki
-  extends JobSegment<List<Bitmap>, Bitmap>
+class uki
+  extends Job<Object, Object, Object>
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString = "story.icon.BitmapListToIconSegment";
-  
-  public uki(Context paramContext, String paramString, int paramInt)
+  uki(ukd paramukd, String paramString1, String paramString2, StoryVideoItem paramStoryVideoItem)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "[" + paramString + "]");
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramString1);
   }
   
-  protected void a(JobContext paramJobContext, List<Bitmap> paramList)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    if ((paramList == null) || (paramList.isEmpty()))
+    paramJobContext = new uqw(new ErrorMessage(), this.jdField_a_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
     {
-      notifyError(new ErrorMessage(-1, "bitmap list should not be empty"));
-      return;
+      paramJobContext.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      paramJobContext.c = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.shareGroupId;
+      paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+      if (paramJobContext.a == 0L) {
+        paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
+      }
     }
-    paramJobContext = (Bitmap[])paramList.toArray(new Bitmap[paramList.size()]);
-    paramList = bbae.a(this.jdField_a_of_type_Int, Bitmap.Config.ARGB_8888, paramJobContext);
-    ukj.b(this.jdField_a_of_type_JavaLangString, "result bitmap = %s, child count = %d", paramList, Integer.valueOf(paramJobContext.length));
-    notifyResult(paramList);
+    uht.a().dispatch(paramJobContext);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uki
  * JD-Core Version:    0.7.0.1
  */

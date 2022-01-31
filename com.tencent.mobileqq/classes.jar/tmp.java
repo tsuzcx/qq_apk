@@ -1,60 +1,39 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPOIPosters;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import UserGrowth.stSimpleMetaFeed;
+import android.app.Activity;
+import android.content.Context;
 
-public class tmp
-  extends sys<toj>
+final class tmp
+  implements tmc
 {
-  public final int c;
-  public final int d;
-  public final int e;
+  tmp(Context paramContext, int paramInt1, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt2) {}
   
-  public tmp(int paramInt1, int paramInt2)
+  public void a(String paramString, int paramInt)
   {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = 1;
-  }
-  
-  public String a()
-  {
-    return sxm.a("StorySvc.video_poi_posters_get");
-  }
-  
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetPOIPosters localRspGetPOIPosters = new qqstory_service.RspGetPOIPosters();
-    try
-    {
-      localRspGetPOIPosters.mergeFrom(paramArrayOfByte);
-      return new toj(localRspGetPOIPosters);
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+      tmo.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramString, 4, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.b, null);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-    }
+    tnt.d(1000003, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
   }
   
-  protected byte[] a()
+  public void b(String paramString, int paramInt)
   {
-    qqstory_service.ReqGetPOIPosters localReqGetPOIPosters = new qqstory_service.ReqGetPOIPosters();
-    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
-    localGpsMsg.lng.set(this.c);
-    localGpsMsg.lat.set(this.d);
-    localReqGetPOIPosters.coordinate.set(this.e);
-    localReqGetPOIPosters.gps.set(localGpsMsg);
-    return localReqGetPOIPosters.toByteArray();
+    tch.a(this.jdField_a_of_type_AndroidContentContext, paramString);
+    tnt.d(1000004, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
   }
+  
+  public void c(String paramString, int paramInt)
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+      tmo.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramString, 4, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.b, null);
+    }
+    tnt.d(1000002, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+  }
+  
+  public void d(String paramString, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,21 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
 class aios
-  extends aimt
+  implements View.OnClickListener
 {
-  public TextView a;
-  public MayKnowRecommend a;
-  public TroopLabelLayout a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  aios(aior paramaior) {}
+  
+  public void onClick(View paramView)
+  {
+    ((NewPhotoPreviewActivity)this.a.mActivity).flashPicCb.toggle();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aios
  * JD-Core Version:    0.7.0.1
  */

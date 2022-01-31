@@ -1,284 +1,282 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.recent.MsgSummary;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
-import com.tencent.mobileqq.data.MessageForFuDai;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import com.tencent.mobileqq.data.MessageForIncompatibleGrayTips;
-import com.tencent.mobileqq.data.MessageForLightVideo;
-import com.tencent.mobileqq.data.MessageForLongTextMsg;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForQQWalletTips;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForSafeGrayTips;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageForSplitLineTips;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageForTroopConfess;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageForTroopGift;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.inputstatus.InputStatusHelper.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.widget.XEditTextEx;
+import mqq.app.AppRuntime.Status;
+import mqq.manager.Manager;
 
 public class asuh
+  implements afal
 {
-  public static boolean a = true;
-  public static boolean b = true;
+  private static final String jdField_a_of_type_JavaLangString = asuh.class.getSimpleName();
+  private int jdField_a_of_type_Int;
+  public long a;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new asui(this);
+  private asuk jdField_a_of_type_Asuk;
+  private asul jdField_a_of_type_Asul;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new InputStatusHelper.2(this);
+  private boolean jdField_a_of_type_Boolean = true;
+  public long b;
+  private String jdField_b_of_type_JavaLangString = "";
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
+  private boolean d;
   
-  public static int a(ChatMessage paramChatMessage)
+  public asuh(BaseChatPie paramBaseChatPie)
   {
-    int j = 0;
-    int i = j;
-    if (a(paramChatMessage))
-    {
-      paramChatMessage = (MessageForStructing)paramChatMessage;
-      i = j;
-      if (paramChatMessage.structingMsg != null)
-      {
-        i = j;
-        if ("viewMultiMsg".equals(paramChatMessage.structingMsg.mMsgAction)) {
-          i = paramChatMessage.structingMsg.mTSum;
-        }
-      }
-    }
-    return i + 1;
+    this.jdField_a_of_type_Long = 5000L;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  private Handler a()
   {
-    if ((paramMessageRecord == null) || (paramQQAppInterface == null)) {
-      return null;
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     }
-    String str1 = paramMessageRecord.getExtInfoFromExtStr("outest_uin");
-    String str2 = paramMessageRecord.getExtInfoFromExtStr("outest_uintype");
-    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("outest_uniseq");
+    return this.jdField_a_of_type_AndroidOsHandler;
+  }
+  
+  private asul a()
+  {
+    if (this.jdField_a_of_type_Asul == null)
+    {
+      Manager localManager = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(316);
+      if ((localManager instanceof asul)) {
+        this.jdField_a_of_type_Asul = ((asul)localManager);
+      }
+    }
+    return this.jdField_a_of_type_Asul;
+  }
+  
+  private boolean a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agnp))) {
+      return c();
+    }
+    return b();
+  }
+  
+  private void b(int paramInt)
+  {
+    if ((e()) && (f()) && (a())) {}
     try
     {
-      paramQQAppInterface = paramQQAppInterface.a().a(str1, Integer.parseInt(str2), Long.parseLong(paramMessageRecord));
-      return paramQQAppInterface;
+      this.jdField_a_of_type_Int = paramInt;
+      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      asug localasug = (asug)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(150);
+      if (localasug != null) {
+        localasug.a(paramInt, l);
+      }
+      return;
     }
-    catch (Exception paramQQAppInterface)
+    catch (Exception localException)
     {
-      QLog.e("MultiMsg_TAG", 1, paramQQAppInterface, new Object[0]);
+      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
     }
-    return null;
   }
   
-  public static String a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  private boolean b()
   {
-    if ((paramQQAppInterface == null) || (paramMessageRecord == null)) {
-      return null;
-    }
-    if (((paramMessageRecord instanceof MessageForStructing)) && (((MessageForStructing)paramMessageRecord).structingMsg != null) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 128)) {
-      return ajya.a(2131707019);
-    }
-    QQMessageFacade.Message localMessage = new QQMessageFacade.Message();
-    MessageRecord.copyMessageRecordBaseField(localMessage, paramMessageRecord);
-    localMessage.emoRecentMsg = null;
-    localMessage.fileType = -1;
-    paramQQAppInterface.a().a(localMessage);
-    paramMessageRecord = new MsgSummary();
-    bbfh.a(paramQQAppInterface.getApp(), paramQQAppInterface, localMessage, localMessage.istroop, paramMessageRecord, null, false, false);
     try
     {
-      paramQQAppInterface = paramMessageRecord.a(paramQQAppInterface.getApp()).toString();
-      return paramQQAppInterface;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("MultiMsg_TAG.Nest", 1, paramQQAppInterface, new Object[0]);
-    }
-    return null;
-  }
-  
-  public static String a(String paramString)
-  {
-    return paramString;
-  }
-  
-  public static ArrayList<ChatMessage> a(QQAppInterface paramQQAppInterface, ArrayList<ChatMessage> paramArrayList)
-  {
-    if ((paramQQAppInterface == null) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return paramArrayList;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      ChatMessage localChatMessage = (ChatMessage)paramArrayList.next();
-      if (a(paramQQAppInterface, localChatMessage))
+      asuf localasuf = (asuf)aogj.a().a(445);
+      if (localasuf != null)
       {
-        localArrayList.add(localChatMessage);
-      }
-      else
-      {
-        String str = a(paramQQAppInterface, localChatMessage);
-        localChatMessage = (ChatMessage)paramQQAppInterface.a().a(localChatMessage, str, false);
-        if (localChatMessage.senderuin.equals(paramQQAppInterface.getCurrentAccountUin())) {
-          ((akfv)paramQQAppInterface.a(13)).a(localChatMessage);
-        }
-        localChatMessage.setStatus(1000);
-        localChatMessage.msgData = localChatMessage.msg.getBytes();
-        localArrayList.add(localChatMessage);
+        boolean bool = localasuf.jdField_a_of_type_Boolean;
+        return bool;
       }
     }
-    return localArrayList;
-  }
-  
-  public static void a(MessageRecord paramMessageRecord1, String paramString, MessageRecord paramMessageRecord2)
-  {
-    a("step.fillExtraInfo.nickName = %s", new Object[] { paramString });
-    if ((paramMessageRecord1 == null) || (paramMessageRecord2 == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    paramMessageRecord1.saveExtInfoToExtStr("outest_uin", paramMessageRecord2.frienduin);
-    paramMessageRecord1.saveExtInfoToExtStr("outest_uintype", String.valueOf(paramMessageRecord2.istroop));
-    paramMessageRecord1.saveExtInfoToExtStr("outest_uniseq", String.valueOf(paramMessageRecord2.uniseq));
-    paramMessageRecord1.saveExtInfoToExtStr("self_nickname", paramString);
-  }
-  
-  public static void a(String paramString)
-  {
-    axqy.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    if (!a) {}
-    while (!QLog.isDevelopLevel()) {
-      return;
-    }
-    QLog.d("MultiMsg_TAG.Nest", 4, String.format(paramString, paramVarArgs));
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
-  {
-    if ((MessageForShortVideo.class.isInstance(paramChatMessage)) && (((MessageForShortVideo)paramChatMessage).busiType == 2)) {}
-    while (((MessageForLongTextMsg.class.isInstance(paramChatMessage)) && ((paramChatMessage.getExtInfoFromExtStr("long_text_recv_state").equals("2")) || (paramChatMessage.getExtInfoFromExtStr("long_text_recv_state").equals("3")))) || (!MessageForArkApp.isAllowedArkForward(false, paramChatMessage)) || (MessageForTroopConfess.class.isInstance(paramChatMessage)) || (MessageForLightVideo.class.isInstance(paramChatMessage)) || ((paramChatMessage instanceof MessageForFuDai)) || (ajwb.a(paramChatMessage)) || (((paramChatMessage instanceof MessageForPic)) && (aezl.a((MessageForPic)paramChatMessage)))) {
-      return false;
-    }
-    boolean bool;
-    switch (paramChatMessage.msgtype)
+    catch (Exception localException)
     {
-    default: 
-      bool = false;
+      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
     }
-    for (;;)
-    {
-      return bool;
-      bool = true;
-      continue;
-      paramQQAppInterface = (MessageForStructing)paramChatMessage;
-      if (paramQQAppInterface.structingMsg == null)
-      {
-        bool = false;
-      }
-      else
-      {
-        int i = paramQQAppInterface.structingMsg.mMsgServiceID;
-        if ((i == 107) || (i == 82) || (i == 128) || (i == 104))
-        {
-          bool = false;
-        }
-        else if ((paramQQAppInterface.structingMsg.hasFlag(1)) && (i != 35))
-        {
-          bool = false;
-        }
-        else
-        {
-          bool = true;
-          continue;
-          paramQQAppInterface = (MessageForArkBabyqReply)paramChatMessage;
-          if ((paramQQAppInterface.mArkBabyqReplyCardList == null) || (paramQQAppInterface.mArkBabyqReplyCardList.size() <= 0))
-          {
-            bool = false;
-          }
-          else
-          {
-            bool = true;
-            continue;
-            if (!(paramChatMessage instanceof MessageForFile)) {
-              break;
-            }
-            if (paramChatMessage.isMultiMsg) {
-              bool = true;
-            } else if (apug.a(paramQQAppInterface, (MessageForFile)paramChatMessage).getCloudType() == 0) {
-              bool = false;
-            } else {
-              bool = true;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public static boolean a(ChatMessage paramChatMessage)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (MessageForStructing.class.isInstance(paramChatMessage))
-    {
-      paramChatMessage = (MessageForStructing)paramChatMessage;
-      bool1 = bool2;
-      if (paramChatMessage.structingMsg != null)
-      {
-        bool1 = bool2;
-        if ("viewMultiMsg".equals(paramChatMessage.structingMsg.mMsgAction)) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
     return false;
   }
   
-  public static void b(String paramString, Object... paramVarArgs)
+  private boolean c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiMsg_TAG.Nest", 2, String.format(paramString, paramVarArgs));
-    }
-  }
-  
-  public static boolean b(ChatMessage paramChatMessage)
-  {
-    return ((paramChatMessage instanceof MessageForText)) || ((paramChatMessage instanceof MessageForReplyText)) || ((paramChatMessage instanceof MessageForPic)) || ((paramChatMessage instanceof MessageForStructing)) || ((paramChatMessage instanceof MessageForShortVideo)) || ((paramChatMessage instanceof MessageForArkApp)) || ((paramChatMessage instanceof MessageForFile)) || ((paramChatMessage instanceof MessageForMixedMsg)) || ((paramChatMessage instanceof MessageForTroopFile));
-  }
-  
-  public static boolean c(ChatMessage paramChatMessage)
-  {
-    if (((paramChatMessage instanceof MessageForGrayTips)) || ((paramChatMessage instanceof MessageForUniteGrayTip)) || ((paramChatMessage instanceof MessageForIncompatibleGrayTips)) || ((paramChatMessage instanceof MessageForNewGrayTips)) || ((paramChatMessage instanceof MessageForSafeGrayTips)) || ((paramChatMessage instanceof MessageForFoldMsgGrayTips)) || ((paramChatMessage instanceof MessageForNearbyMarketGrayTips)) || ((paramChatMessage instanceof MessageForQQWalletTips)) || ((paramChatMessage instanceof MessageForSplitLineTips))) {}
-    for (boolean bool = false;; bool = true)
+    try
     {
-      if ((paramChatMessage instanceof MessageForTroopGift)) {
-        return true;
+      asuf localasuf = (asuf)aogj.a().a(445);
+      if (localasuf != null)
+      {
+        boolean bool = localasuf.jdField_b_of_type_Boolean;
+        return bool;
       }
-      return bool;
     }
+    catch (Exception localException)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
+    }
+    return true;
+  }
+  
+  private boolean d()
+  {
+    AppRuntime.Status localStatus = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getOnlineStatus();
+    return (localStatus != AppRuntime.Status.away) && (localStatus != AppRuntime.Status.busy) && (localStatus != AppRuntime.Status.dnd) && (localStatus != AppRuntime.Status.invisiable);
+  }
+  
+  private void e()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (f()) && (a())) {}
+    try
+    {
+      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      asug localasug = (asug)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(150);
+      if (localasug != null) {
+        localasug.a(2, l);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
+    }
+  }
+  
+  private boolean e()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agnp))) {
+      return true;
+    }
+    return d();
+  }
+  
+  private boolean f()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agnp))) {
+      return true;
+    }
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public void a()
+  {
+    if (!this.d)
+    {
+      this.d = true;
+      if ((f()) && (a())) {
+        a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+      }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+    d();
+    switch (paramInt)
+    {
+    default: 
+    case 6: 
+      do
+      {
+        do
+        {
+          return;
+        } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (!a()));
+        if (this.jdField_a_of_type_Asuk == null) {
+          this.jdField_a_of_type_Asuk = new asuj(this, null);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Asuk);
+        this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.d(true);
+      } while (!f());
+      if (a() != null) {
+        a().a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      return;
+    }
+    if (a() != null) {
+      a().onDestroy();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Asuk);
+    }
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    e();
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    if (!this.jdField_b_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaLangString);
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      localBaseChatPie.a(paramBoolean, paramString);
+      return;
+      paramString = this.jdField_b_of_type_JavaLangString;
+    }
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 6, 11 };
+  }
+  
+  public void b()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_b_of_type_Boolean, this.jdField_b_of_type_JavaLangString);
+    if (a() != null) {
+      a().a();
+    }
+  }
+  
+  public void c()
+  {
+    a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    if ((f()) && (a())) {}
+    try
+    {
+      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      asug localasug = (asug)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(150);
+      if (localasug != null) {
+        localasug.a(2, l);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
+    }
+  }
+  
+  public void d()
+  {
+    this.d = false;
+    this.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asuh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.specialcare;
 
-import bbdx;
+import bdcs;
 
 class QvipSpecialSoundManager$MoveConfig
   implements Runnable
@@ -14,7 +14,7 @@ class QvipSpecialSoundManager$MoveConfig
   
   public void run()
   {
-    bbdx.b(this.a + "https://i.gtimg.cn/club/moblie/special_sound/new_config.json", this.a + "pddata/vas/special_remind/new_config.json");
+    bdcs.b(this.a + "https://i.gtimg.cn/club/moblie/special_sound/new_config.json", this.a + "pddata/vas/special_remind/new_config.json");
   }
 }
 

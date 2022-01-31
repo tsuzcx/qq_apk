@@ -1,27 +1,47 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.viola.core.ViolaInstance;
 
 public class som
-  implements Animation.AnimationListener
+  implements sqs
 {
-  public som(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public som(BridgeModule paramBridgeModule) {}
+  
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    paramAnimation = (ImageView)this.a.findViewById(2131378755);
-    ImageView localImageView = (ImageView)this.a.findViewById(2131378756);
-    PublicAccountImageCollectionMainActivity.a(this.a, localImageView, paramAnimation, 100L, 240L);
+    ViolaFragment localViolaFragment;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance() != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment() instanceof ViolaFragment)))
+    {
+      localViolaFragment = (ViolaFragment)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getFragment();
+      if (!paramBoolean) {
+        break label85;
+      }
+      this.jdField_a_of_type_JavaLangString = localViolaFragment.b();
+      this.jdField_a_of_type_Boolean = localViolaFragment.a().booleanValue();
+      localViolaFragment.a("#FF000000");
+      localViolaFragment.b("#FF000000");
+      localViolaFragment.a(Boolean.valueOf(true), true);
+    }
+    label85:
+    do
+    {
+      return;
+      localViolaFragment.a(this.jdField_a_of_type_JavaLangString);
+      localViolaFragment.b(this.jdField_a_of_type_JavaLangString);
+      localViolaFragment.a(Boolean.valueOf(this.jdField_a_of_type_Boolean), true);
+    } while ((!localViolaFragment.a()) || (localViolaFragment.a() == null));
+    localViolaFragment.a().g();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     som
  * JD-Core Version:    0.7.0.1
  */

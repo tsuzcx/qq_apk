@@ -1,51 +1,59 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import tencent.im.oidb.oidb_0xb6f.Identity;
+import tencent.im.oidb.oidb_0xb6f.ReportFreqRspBody;
+import tencent.im.oidb.oidb_0xb6f.RspBody;
 
-public class abuw
-  extends akat
+class abuw
+  extends nac
 {
-  public abuw(QQLSActivity paramQQLSActivity) {}
+  abuw(abuv paramabuv, String paramString1, String paramString2, int paramInt) {}
   
-  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice isSuccess=" + paramBoolean1);
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI.report", 2, "onResult key=" + this.jdField_a_of_type_JavaLangString + ", api=" + this.b + ", count=" + this.jdField_a_of_type_Int + ", code=" + paramInt);
     }
-    this.a.a.removeMessages(267387140);
-    Object localObject1 = new ArrayList();
-    Object localObject2;
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      localObject2 = paramList.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((List)localObject1).add((ChatMessage)((Iterator)localObject2).next());
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.report", 2, "req error");
       }
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice chatlist=" + ((List)localObject1).size());
-    }
-    if ((paramBoolean1) && (localObject1 != null) && (!((List)localObject1).isEmpty()) && (((ChatMessage)((List)localObject1).get(0) instanceof MessageForPtt)))
+    do
     {
-      localObject1 = (MessageForPtt)((List)localObject1).get(0);
-      localObject2 = MediaPlayerManager.a(QQLSActivity.a(this.a)).a();
-      if ((localObject2 == localObject1) || (((localObject2 instanceof MessageForPtt)) && (((ChatMessage)localObject2).frienduin != null) && (((ChatMessage)localObject2).frienduin.equals(((MessageForPtt)localObject1).frienduin)) && (((ChatMessage)localObject2).uniseq == ((MessageForPtt)localObject1).uniseq))) {
-        MediaPlayerManager.a(QQLSActivity.a(this.a)).a(true);
+      for (;;)
+      {
+        return;
+        paramBundle = new oidb_0xb6f.RspBody();
+        try
+        {
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if (paramBundle.report_freq_rsp.has()) {
+            break label146;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.i("DoraemonOpenAPI.report", 2, "rsp invalid");
+            return;
+          }
+        }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
       }
-    }
-    super.a(paramBoolean1, paramList, paramBoolean2);
+    } while (!QLog.isColorLevel());
+    QLog.i("DoraemonOpenAPI.report", 2, "parse rsp error", paramArrayOfByte);
+    return;
+    label146:
+    abuv.a(this.jdField_a_of_type_Abuv, this.jdField_a_of_type_JavaLangString, paramBundle.report_freq_rsp.identity.apptype.get(), String.valueOf(paramBundle.report_freq_rsp.identity.appid.get()), paramBundle.report_freq_rsp.identity.apiName.get(), paramBundle.report_freq_rsp.remain_times.get(), paramBundle.report_freq_rsp.expire_time.get() * 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abuw
  * JD-Core Version:    0.7.0.1
  */

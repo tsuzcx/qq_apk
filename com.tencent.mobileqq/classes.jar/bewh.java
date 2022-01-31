@@ -1,67 +1,132 @@
-import android.content.Context;
+import android.os.Bundle;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.ims.bankcode_info.BankcodeCtrlInfo;
+import com.tencent.ims.bankcode_info.BankcodeElem;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public class bewh
+final class bewh
+  extends ClickableSpan
 {
-  private bemx a;
+  bewh(String paramString, int paramInt, long paramLong, bankcode_info.BankcodeCtrlInfo paramBankcodeCtrlInfo, boolean paramBoolean) {}
   
-  private void a(String paramString1, String paramString2, bewo parambewo)
+  public void onClick(View paramView)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      betc.d("MiniGameAuthorizeManager", "showDialog: appid or scopeName is empty,appid= " + paramString1 + "scopeName=" + paramString2);
-    }
-    bevt localbevt;
-    Object localObject;
-    label233:
-    label239:
-    do
+    int k = 0;
+    int i = 0;
+    paramView = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    int j = k;
+    Object localObject1;
+    if (paramView != null)
     {
-      return;
-      if ((this.a != null) && (this.a.isShowing()))
+      paramView = (QQMessageFacade)paramView.getManager(20);
+      j = k;
+      if (paramView != null)
       {
-        betc.d("MiniGameAuthorizeManager", "showDialog: mAuthorDialog is showing now.just return");
-        return;
-      }
-      localbevt = bevz.a().a();
-      if ((localbevt == null) || (!TextUtils.equals(localbevt.d, paramString1)))
-      {
-        betc.d("MiniGameAuthorizeManager", "showDialog: cann't get gamePkg");
-        return;
-      }
-      localObject = beqy.a().a();
-      paramString1 = new bewi(this, paramString1, paramString2, parambewo);
-      this.a = new bemx((Context)localObject);
-      this.a.setOnDismissListener(paramString1);
-      parambewo = beic.a().a(paramString2);
-      if (parambewo != null)
-      {
-        paramString1 = parambewo.b;
-        if (parambewo == null) {
-          break label233;
+        paramView = paramView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+        if (paramView == null) {
+          return;
         }
+        localObject1 = paramView.getExtInfoFromExtStr("sens_msg_attr");
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {}
       }
-      for (parambewo = parambewo.c;; parambewo = "")
+    }
+    label105:
+    label363:
+    label368:
+    for (;;)
+    {
+      boolean bool;
+      try
       {
-        localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-        if (!"scope.userInfo".equals(paramString2)) {
-          break label239;
+        j = Integer.parseInt((String)localObject1);
+        i = j;
+      }
+      catch (Exception localException)
+      {
+        Object localObject3;
+        String str1;
+        String str2;
+        localException.printStackTrace();
+        continue;
+      }
+      paramView = paramView.getExtInfoFromExtStr("sens_msg_need_mask");
+      j = i;
+      Object localObject2;
+      if (!TextUtils.isEmpty(paramView))
+      {
+        bool = Boolean.parseBoolean(paramView);
+        if ((this.jdField_a_of_type_Boolean) || (!bool)) {
+          break label356;
         }
-        ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getUserInfo(localbevt.d, false, "en", new bewj(this, (MiniAppProxy)localObject, localbevt, paramString1, parambewo));
-        return;
-        paramString1 = paramString2;
+        paramView = (Bundle)bdat.a().a("SensMsgTipsCfg", "Action", 1, i);
+        if (paramView == null) {
+          break;
+        }
+        localObject1 = paramView.keySet().iterator();
+        if (((Iterator)localObject1).hasNext())
+        {
+          localObject3 = paramView.getBundle((String)((Iterator)localObject1).next());
+          if ((localObject3 == null) || (((Bundle)localObject3).getString("Type").compareToIgnoreCase("showAlert") != 0)) {
+            continue;
+          }
+          localObject2 = ((Bundle)localObject3).getString("AlertTitle");
+          str1 = ((Bundle)localObject3).getString("AlertText");
+          str2 = ((Bundle)localObject3).getString("AlertOtherBtnText");
+          localObject3 = ((Bundle)localObject3).getString("AlertCancelBtnText");
+          bewd.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, (String)localObject2, str1, str2, (String)localObject3);
+          continue;
+        }
         break;
+        if (!this.jdField_a_of_type_ComTencentImsBankcode_info$BankcodeCtrlInfo.bankcode_elems.has()) {
+          continue;
+        }
+        Iterator localIterator = this.jdField_a_of_type_ComTencentImsBankcode_info$BankcodeCtrlInfo.bankcode_elems.get().iterator();
+        i = 0;
+        if (!localIterator.hasNext()) {
+          break label368;
+        }
+        localObject2 = (bankcode_info.BankcodeElem)localIterator.next();
+        if (!((bankcode_info.BankcodeElem)localObject2).bankcode_attr.has()) {
+          break label363;
+        }
       }
-    } while (this.a == null);
-    this.a.a(((MiniAppProxy)localObject).getDrawable(MiniAppEnv.g().getContext(), localbevt.e, 0, 0, null), localbevt.c, paramString1, null, null, parambewo, "拒绝", new bewm(this), "允许", new bewn(this));
+      for (j = ((bankcode_info.BankcodeElem)localObject2).bankcode_attr.get();; j = 0)
+      {
+        if (j > i) {}
+        for (;;)
+        {
+          i = j;
+          break label298;
+          bool = true;
+          i = j;
+          break label105;
+          break;
+          j = i;
+        }
+      }
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(true);
+    paramTextPaint.setColor(-12541697);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bewh
  * JD-Core Version:    0.7.0.1
  */

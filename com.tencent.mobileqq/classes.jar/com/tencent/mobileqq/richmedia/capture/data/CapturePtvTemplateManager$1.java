@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import avrv;
+import axjt;
 
 public class CapturePtvTemplateManager$1
   implements Runnable
 {
-  public CapturePtvTemplateManager$1(avrv paramavrv, boolean paramBoolean) {}
+  public CapturePtvTemplateManager$1(axjt paramaxjt, boolean paramBoolean) {}
   
   /* Error */
   public void run()
@@ -14,8 +14,8 @@ public class CapturePtvTemplateManager$1
     //   0: aconst_null
     //   1: astore_2
     //   2: aload_0
-    //   3: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Lavrv;
-    //   6: getfield 30	avrv:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   3: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Laxjt;
+    //   6: getfield 30	axjt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   9: invokeinterface 36 1 0
     //   14: ifne +11 -> 25
     //   17: aload_0
@@ -32,7 +32,7 @@ public class CapturePtvTemplateManager$1
     //   41: aload_1
     //   42: astore_2
     //   43: aload_1
-    //   44: invokestatic 61	nau:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   44: invokestatic 61	ndq:a	(Ljava/io/InputStream;)Ljava/lang/String;
     //   47: astore_3
     //   48: aload_3
     //   49: astore_2
@@ -43,20 +43,20 @@ public class CapturePtvTemplateManager$1
     //   58: aload_3
     //   59: astore_2
     //   60: aload_0
-    //   61: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Lavrv;
+    //   61: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Laxjt;
     //   64: aload_2
     //   65: aconst_null
-    //   66: invokestatic 69	avrv:a	(Lavrv;Ljava/lang/String;Lcom/tencent/mobileqq/richmedia/capture/data/CaptureRedDotConfig;)Ljava/util/List;
+    //   66: invokestatic 69	axjt:a	(Laxjt;Ljava/lang/String;Lcom/tencent/mobileqq/richmedia/capture/data/CaptureRedDotConfig;)Ljava/util/List;
     //   69: astore_1
     //   70: aload_1
     //   71: ifnull +29 -> 100
     //   74: aload_0
-    //   75: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Lavrv;
-    //   78: getfield 30	avrv:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   75: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Laxjt;
+    //   78: getfield 30	axjt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   81: invokeinterface 72 1 0
     //   86: aload_0
-    //   87: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Lavrv;
-    //   90: getfield 30	avrv:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   87: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Laxjt;
+    //   90: getfield 30	axjt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   93: aload_1
     //   94: invokeinterface 76 2 0
     //   99: pop
@@ -67,17 +67,17 @@ public class CapturePtvTemplateManager$1
     //   109: ldc 85
     //   111: invokestatic 89	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   114: aload_0
-    //   115: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Lavrv;
+    //   115: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Laxjt;
     //   118: aload_1
     //   119: iconst_0
-    //   120: invokevirtual 92	avrv:a	(Ljava/util/List;Z)V
+    //   120: invokevirtual 92	axjt:a	(Ljava/util/List;Z)V
     //   123: aload_0
-    //   124: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Lavrv;
-    //   127: getfield 95	avrv:jdField_a_of_type_Avsb	Lavsb;
+    //   124: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Laxjt;
+    //   127: getfield 95	axjt:jdField_a_of_type_Axjz	Laxjz;
     //   130: ifnull -106 -> 24
     //   133: aload_0
-    //   134: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Lavrv;
-    //   137: getfield 95	avrv:jdField_a_of_type_Avsb	Lavsb;
+    //   134: getfield 14	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$1:this$0	Laxjt;
+    //   137: getfield 95	axjt:jdField_a_of_type_Axjz	Laxjz;
     //   140: invokeinterface 99 1 0
     //   145: return
     //   146: astore_1
@@ -167,7 +167,7 @@ public class CapturePtvTemplateManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager.1
  * JD-Core Version:    0.7.0.1
  */

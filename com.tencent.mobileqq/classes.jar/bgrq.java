@@ -1,32 +1,26 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.widget.FadeIconImageView;
-import cooperation.qqfav.widget.LocationDetailActivity;
-import mqq.app.AppRuntime;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import android.os.ResultReceiver;
+import com.tencent.qqmini.sdk.manager.EngineChannel;
 
-public class bgrq
-  extends bgrj
+public final class bgrq
+  implements Parcelable.Creator<EngineChannel>
 {
-  public bgrq(LocationDetailActivity paramLocationDetailActivity, Activity paramActivity, bgrm parambgrm, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
+  public EngineChannel a(Parcel paramParcel)
   {
-    super(paramActivity, parambgrm, paramInt1, paramInt2, paramAppRuntime);
+    EngineChannel localEngineChannel = new EngineChannel((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel), null);
+    localEngineChannel.a(paramParcel.readString());
+    return localEngineChannel;
   }
   
-  public void onClick(View paramView)
+  public EngineChannel[] a(int paramInt)
   {
-    if (LocationDetailActivity.a(this.a))
-    {
-      bgqm.a(true);
-      if (LocationDetailActivity.a(this.a) != null) {
-        LocationDetailActivity.a(this.a).setVisibility(8);
-      }
-    }
-    super.onClick(paramView);
+    return new EngineChannel[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgrq
  * JD-Core Version:    0.7.0.1
  */

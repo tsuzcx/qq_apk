@@ -1,42 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.Switch;
-
-public class nwq
-  implements bcqh
+class nwq
+  implements oxx
 {
-  public nwq(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  nwq(nwm paramnwm) {}
   
-  public void a()
+  public void l()
   {
-    boolean bool2 = true;
-    Object localObject;
-    if (this.a.a)
-    {
-      localObject = this.a;
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label61;
-      }
-      bool1 = true;
-      ReadInJoySettingActivity.a((ReadInJoySettingActivity)localObject, bool1);
-      localObject = ReadInJoySettingActivity.a(this.a);
-      if (ReadInJoySettingActivity.a(this.a)) {
-        break label66;
-      }
-    }
-    label61:
-    label66:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      ((Switch)localObject).setChecked(bool1);
-      return;
-      bool1 = false;
-      break;
-    }
+    nwm.d(this.a);
+  }
+  
+  public void m()
+  {
+    nwm.e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nwq
  * JD-Core Version:    0.7.0.1
  */

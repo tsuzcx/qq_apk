@@ -1,178 +1,165 @@
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.OpenSdkFriendService.GetFriendListCallback.1;
-import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
-import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.net.MalformedURLException;
-import java.net.SocketTimeoutException;
-import java.util.ArrayList;
-import org.apache.http.conn.ConnectTimeoutException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class bddc
-  implements bdje
+class bddc
+  extends bfvh
 {
-  protected final WeakReference<bddb> a;
+  bddc(bddb parambddb) {}
   
-  public bddc(bdcy parambdcy, bddb parambddb)
+  protected void i(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambddb);
-  }
-  
-  public void a(Exception paramException)
-  {
-    bdii.c("OpenSdkFriendService", "GetFriendListCallback exception." + paramException.getMessage(), paramException);
-    Intent localIntent = new Intent();
-    if ((paramException instanceof ConnectTimeoutException))
+    if (paramHashMap == null) {}
+    Object localObject;
+    String str1;
+    Intent localIntent;
+    int i;
+    do
     {
-      localIntent.putExtra("key_error_code", -7);
-      localIntent.putExtra("key_error_msg", bdjm.e);
-    }
-    for (;;)
-    {
-      paramException = (bddb)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramException != null) {
-        paramException.a(localIntent);
-      }
-      return;
-      if ((paramException instanceof SocketTimeoutException))
+      do
       {
-        localIntent.putExtra("key_error_code", -8);
-        localIntent.putExtra("key_error_msg", bdjm.f);
-      }
-      else if ((paramException instanceof MalformedURLException))
-      {
-        localIntent.putExtra("key_error_code", -3);
-        localIntent.putExtra("key_error_msg", "访问url有误!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
-      {
-        localIntent.putExtra("key_error_code", -10);
-        localIntent.putExtra("key_error_msg", "Http返回码异常!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
-      {
-        localIntent.putExtra("key_error_code", -9);
-        localIntent.putExtra("key_error_msg", bdjm.g);
-      }
-      else if ((paramException instanceof JSONException))
-      {
-        localIntent.putExtra("key_error_code", -4);
-        localIntent.putExtra("key_error_msg", bdjm.b);
-      }
-      else if ((paramException instanceof IOException))
-      {
-        localIntent.putExtra("key_error_code", -2);
-        localIntent.putExtra("key_error_msg", bdjm.jdField_a_of_type_JavaLangString);
-      }
-      else
-      {
-        localIntent.putExtra("key_error_code", -6);
-        localIntent.putExtra("key_error_msg", bdjm.d);
-      }
-    }
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    bden localbden = new bden();
-    for (;;)
-    {
-      Object localObject;
-      try
-      {
-        localbden.jdField_a_of_type_Int = paramJSONObject.getInt("ret");
-        localbden.jdField_a_of_type_JavaLangString = paramJSONObject.getString("msg");
-        if (localbden.jdField_a_of_type_Int != 0) {
-          break label486;
-        }
-        if (paramJSONObject.has("conc_max")) {
-          localbden.d = paramJSONObject.getInt("conc_max");
-        }
-        if ((paramJSONObject.has("inv_max")) && (paramJSONObject.has("inv_count")))
+        do
         {
-          localbden.b = paramJSONObject.getInt("inv_max");
-          localbden.c = paramJSONObject.getInt("inv_count");
-        }
-        if ((paramJSONObject.has("fgmax")) && (paramJSONObject.has("fgcur")))
-        {
-          localbden.b = paramJSONObject.getInt("fgmax");
-          localbden.c = paramJSONObject.getInt("fgcur");
-        }
-        bdii.c("OpenSdkFriendService", "-->result = " + paramJSONObject);
-        localbden.e = paramJSONObject.optInt("app_rid", -1);
-        localbden.f = paramJSONObject.optInt("app_tid", -1);
-        if ("action_invite".equals(this.jdField_a_of_type_Bdcy.d))
-        {
-          if (!paramJSONObject.has("md5str")) {
-            break label559;
-          }
-          localObject = paramJSONObject.getString("md5str");
-          if (!bdob.a(bcyb.a().a(), "invite_friend_list_md5").getString(this.jdField_a_of_type_Bdcy.b, "").equals(localObject))
-          {
-            paramJSONObject = (ArrayList)bdel.c(paramJSONObject);
-            localbden.jdField_a_of_type_JavaUtilArrayList = paramJSONObject;
-            ThreadManager.executeOnSubThread(new OpenSdkFriendService.GetFriendListCallback.1(this, paramJSONObject, (String)localObject));
-            paramJSONObject = (bddb)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-            if (paramJSONObject == null) {
-              break label558;
-            }
-            paramJSONObject.a(localbden);
-            return;
-          }
-          localbden.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_Bdcy.a();
-          if (localbden.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
-            continue;
-          }
-          this.jdField_a_of_type_Bdcy.a.putString("md5str", "0");
-          this.jdField_a_of_type_Bdcy.a("0");
-          paramJSONObject = (bddb)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (paramJSONObject == null) {
-            break label558;
-          }
-          new bdjd(this.jdField_a_of_type_Bdcy.c, "GET", new bddc(this.jdField_a_of_type_Bdcy, paramJSONObject)).a(this.jdField_a_of_type_Bdcy.a);
           return;
+          localObject = paramHashMap.get("ranKey");
+        } while ((localObject != null) && (this.jdField_a_of_type_Int != ((Integer)localObject).intValue()));
+        bddb.a(this.jdField_a_of_type_Bddb).removeObserver(this.jdField_a_of_type_Bddb.jdField_a_of_type_Bfvh);
+      } while (!paramBoolean);
+      localObject = (String)paramHashMap.get("key_ext_uin");
+      str1 = (String)paramHashMap.get("key_sigt");
+      String str2 = (String)paramHashMap.get("key_return_root");
+      localIntent = new Intent();
+      if ((!TextUtils.isEmpty(str2)) && (!str2.equals("NO"))) {
+        break;
+      }
+      localIntent.setComponent(new ComponentName(this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidContentContext, ChatActivity.class));
+      localIntent.addFlags(67108864);
+      i = ((Integer)paramHashMap.get("key_aio_type")).intValue();
+    } while (localObject == null);
+    if (str1 != null) {
+      localIntent.putExtra("sigt", bdcv.a(str1));
+    }
+    if (i == 1) {
+      if (((aloz)bddb.a(this.jdField_a_of_type_Bddb).getManager(51)).b((String)localObject))
+      {
+        localIntent.putExtra("uintype", 0);
+        localIntent.putExtra("uinname", bdbt.i(bddb.a(this.jdField_a_of_type_Bddb), (String)localObject));
+        if (QLog.isColorLevel()) {
+          QLog.d("JumpAction", 2, "onAssignExt AIO_TYPE_EXT UIN_TYPE_FRIEND");
         }
-      }
-      catch (Exception paramJSONObject)
-      {
-        a(paramJSONObject);
-        return;
-      }
-      if (("action_gift".equals(this.jdField_a_of_type_Bdcy.d)) || ("action_ask".equals(this.jdField_a_of_type_Bdcy.d)) || ("action_voice".equals(this.jdField_a_of_type_Bdcy.d)) || ("action_reactive".equals(this.jdField_a_of_type_Bdcy.d)))
-      {
-        localbden.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)bdel.b(paramJSONObject));
-      }
-      else
-      {
-        localbden.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)bdel.a(paramJSONObject));
-        continue;
-        label486:
-        localbden.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-        paramJSONObject = new Intent();
-        paramJSONObject.putExtra("key_error_code", localbden.jdField_a_of_type_Int);
-        paramJSONObject.putExtra("key_error_msg", localbden.jdField_a_of_type_JavaLangString);
-        paramJSONObject.putExtra("key_error_detail", localbden.jdField_a_of_type_OrgJsonJSONObject.toString());
-        localObject = (bddb)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localObject != null) {
-          ((bddb)localObject).a(paramJSONObject);
-        }
-        label558:
-        return;
-        label559:
-        localObject = null;
       }
     }
+    for (;;)
+    {
+      localIntent.putExtra("uin", (String)localObject);
+      this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      return;
+      localIntent.setComponent(new ComponentName(this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidContentContext, SplashActivity.class));
+      localIntent.putExtra("open_chatfragment", true);
+      break;
+      localIntent.putExtra("uintype", 1025);
+      localIntent.putExtra("from_wpa_for_crm", true);
+      if (QLog.isColorLevel())
+      {
+        QLog.d("JumpAction", 2, "onAssignExt AIO_TYPE_EXT UIN_TYPE_BUSINESS_CRM_EXT_TMP");
+        continue;
+        localIntent.putExtra("uintype", 1024);
+        localIntent.putExtra("chat_subType", 1);
+        if (QLog.isColorLevel()) {
+          QLog.d("JumpAction", 2, "onAssignExt AIO_TYPE_MASTER");
+        }
+      }
+    }
+  }
+  
+  protected void j(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    bddb.a(this.jdField_a_of_type_Bddb).removeObserver(this.jdField_a_of_type_Bddb.jdField_a_of_type_Bfvh);
+    if (paramHashMap != null) {
+      if (!paramBoolean) {
+        break label350;
+      }
+    }
+    label276:
+    label313:
+    label350:
+    for (int i = ((Integer)paramHashMap.get("key_aio_type")).intValue();; i = 2)
+    {
+      String str1 = (String)paramHashMap.get("key_sigt");
+      String str2 = (String)paramHashMap.get("uin");
+      paramHashMap = (String)paramHashMap.get("key_return_root");
+      Intent localIntent = new Intent();
+      if ((TextUtils.isEmpty(paramHashMap)) || (paramHashMap.equals("NO")))
+      {
+        localIntent.setComponent(new ComponentName(this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidContentContext, ChatActivity.class));
+        localIntent.addFlags(67108864);
+        if ((str1 != null) && (str2 != null)) {
+          localIntent.putExtra("sigt", bdcv.a(str1));
+        }
+        if (i != 1) {
+          break label313;
+        }
+        if (!((aloz)bddb.a(this.jdField_a_of_type_Bddb).getManager(51)).b(str2)) {
+          break label276;
+        }
+        localIntent.putExtra("uintype", 0);
+        localIntent.putExtra("uinname", bdbt.i(bddb.a(this.jdField_a_of_type_Bddb), str2));
+        if (QLog.isColorLevel()) {
+          QLog.d("JumpAction", 2, "onCorpUinWpaReport AIO_TYPE_EXT UIN_TYPE_FRIEND");
+        }
+      }
+      for (;;)
+      {
+        localIntent.putExtra("uin", str2);
+        this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+        return;
+        localIntent.setComponent(new ComponentName(this.jdField_a_of_type_Bddb.jdField_a_of_type_AndroidContentContext, SplashActivity.class));
+        localIntent.putExtra("open_chatfragment", true);
+        break;
+        localIntent.putExtra("uintype", 1025);
+        localIntent.putExtra("from_wpa_for_crm", true);
+        if (QLog.isColorLevel())
+        {
+          QLog.d("JumpAction", 2, "onCorpUinWpaReport AIO_TYPE_EXT UIN_TYPE_BUSINESS_CRM_EXT_TMP");
+          continue;
+          localIntent.putExtra("uintype", 1024);
+          localIntent.putExtra("chat_subType", 1);
+          if (QLog.isColorLevel()) {
+            QLog.d("JumpAction", 2, "onCorpUinWpaReport AIO_TYPE_MASTER");
+          }
+        }
+      }
+    }
+  }
+  
+  protected void k(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    bddb.a(this.jdField_a_of_type_Bddb).removeObserver(this.jdField_a_of_type_Bddb.jdField_a_of_type_Bfvh);
+    if ((paramBoolean) && (paramHashMap != null))
+    {
+      paramHashMap = (String)paramHashMap.get("cipher_text");
+      this.jdField_a_of_type_Bddb.jdField_a_of_type_JavaUtilHashMap.put("uin", paramHashMap);
+      if (this.jdField_a_of_type_Bddb.jdField_a_of_type_JavaUtilHashMap.containsKey("isPrivate")) {
+        this.jdField_a_of_type_Bddb.jdField_a_of_type_JavaUtilHashMap.remove("isPrivate");
+      }
+      bddb.d(this.jdField_a_of_type_Bddb);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, BaseApplicationImpl.getContext().getString(2131719221), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bddc
  * JD-Core Version:    0.7.0.1
  */

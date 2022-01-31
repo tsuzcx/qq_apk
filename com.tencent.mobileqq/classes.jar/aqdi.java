@@ -1,21 +1,16 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.ScrollView;
-
-class aqdi
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface aqdi
 {
-  aqdi(aqdd paramaqdd) {}
+  public abstract void a();
   
-  public void onGlobalLayout()
-  {
-    if (this.a.a != null) {
-      this.a.a.fullScroll(130);
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdi
  * JD-Core Version:    0.7.0.1
  */

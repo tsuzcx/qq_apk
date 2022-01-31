@@ -1,58 +1,49 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupVideoDelete;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class uig
-  extends mxh
+  extends SimpleJob<Void>
 {
-  uig(uif paramuif) {}
-  
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  uig(uid paramuid, String paramString1, String paramString2, int paramInt)
   {
-    this.a.jdField_a_of_type_Uhw.l();
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_Uhw.jdField_b_of_type_JavaLangString, 2, "troop story delete result, code=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      try
-      {
-        paramBundle = this.a.jdField_a_of_type_Uhw.a.jdField_b_of_type_JavaLangString;
-        Object localObject = new qqstory_group.RspGroupVideoDelete();
-        ((qqstory_group.RspGroupVideoDelete)localObject).mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = (qqstory_struct.ErrorInfo)((qqstory_group.RspGroupVideoDelete)localObject).result.get();
-        this.a.jdField_a_of_type_Uwd.a(paramBundle, 0, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        this.a.jdField_a_of_type_Uwd.a(paramBundle, 1, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-        localObject = new tce(new ErrorMessage(), this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
-        ((tce)localObject).jdField_b_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
-        ((tce)localObject).d = paramBundle;
-        ((tce)localObject).jdField_b_of_type_Boolean = false;
-        ((tce)localObject).c = this.a.jdField_a_of_type_Uhw.b();
-        ((tce)localObject).a = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
-        if (((tce)localObject).a == 0L) {
-          ((tce)localObject).a = this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
-        }
-        Bosses.get().scheduleJobDelayed(new uih(this, this.a.jdField_a_of_type_Uhw.jdField_b_of_type_JavaLangString, (tce)localObject), 400);
-        return paramArrayOfByte;
+    super(paramString1);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = uid.a(this.jdField_a_of_type_Uid, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    long l1;
+    if (paramJobContext != null)
+    {
+      paramVarArgs = ((uro)urr.a(5)).a(this.jdField_a_of_type_JavaLangString);
+      if (paramVarArgs != null) {
+        break label132;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.jdField_a_of_type_Uhw.jdField_b_of_type_JavaLangString, 2, "parse RspGroupVideoDelete error", paramArrayOfByte);
-        }
+      l1 = 0L;
+      if (paramJobContext.updatedMs <= 0L) {
+        break label141;
       }
     }
-    return null;
+    label132:
+    label141:
+    for (long l2 = paramJobContext.updatedMs;; l2 = System.currentTimeMillis())
+    {
+      int i = paramJobContext.compressLevel;
+      wta.b("download_video", "video_download_info", 0, 0, new String[] { String.valueOf(l1), String.valueOf(l2), String.valueOf(i), this.jdField_a_of_type_JavaLangString });
+      wsv.a("Q.qqstory.DownloadUrlManager", "report url level , vid = %s , compress level = %d , cms = %d , dms = %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2));
+      return null;
+      l1 = paramVarArgs.mCreateTime;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uig
  * JD-Core Version:    0.7.0.1
  */

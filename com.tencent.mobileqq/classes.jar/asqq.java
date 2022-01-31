@@ -1,24 +1,38 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import android.content.Intent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class asqq
-  extends DataSetObserver
+  extends MSFServlet
 {
-  public asqq(MultiAIOBaseViewPager paramMultiAIOBaseViewPager) {}
-  
-  public void onChanged()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.a.b();
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
+      asps.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
+    }
   }
   
-  public void onInvalidated()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    this.a.b();
+    if (paramIntent == null)
+    {
+      QLog.e("HotPicServlet", 1, "onSend : req is null");
+      return;
+    }
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
+    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
+    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asqq
  * JD-Core Version:    0.7.0.1
  */

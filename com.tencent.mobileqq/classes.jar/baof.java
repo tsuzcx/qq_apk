@@ -1,181 +1,263 @@
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
-import android.text.TextPaint;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawableHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class baof
+  extends bamf
 {
-  private int jdField_a_of_type_Int;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private FollowImageTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private List<baod> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  
-  public baof(FollowImageTextView paramFollowImageTextView)
+  public baof(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView = paramFollowImageTextView;
+    super("favimage", paramBaseApplicationImpl);
   }
   
-  private int a()
+  public static File a(URL paramURL)
   {
-    return this.jdField_a_of_type_Int - this.f - this.d;
-  }
-  
-  private int a(CharSequence paramCharSequence)
-  {
-    return (int)this.jdField_a_of_type_AndroidTextTextPaint.measureText(paramCharSequence, 0, paramCharSequence.length());
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    int n = a();
-    if (n <= 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FollowImageTextView", 2, "lineWidth=" + n);
-      }
-      return;
+    paramURL = a(paramURL, new String[] { null });
+    if (paramURL == null) {
+      return null;
     }
-    int i1 = this.jdField_a_of_type_JavaLangCharSequence.length();
-    int j = 0;
-    int k = 0;
-    int i = 0;
-    label70:
-    baod localbaod;
-    if (j < i1) {
-      if (this.jdField_a_of_type_JavaLangCharSequence.charAt(j) == '\n')
-      {
-        localbaod = new baod(null);
-        localbaod.jdField_a_of_type_Int = i;
-        localbaod.b = (j - 1);
-        localbaod.c = k;
-        localbaod.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(i, j);
-        this.jdField_a_of_type_JavaUtilList.add(localbaod);
-        i = j + 1;
-        k = 0;
-      }
+    return new File(paramURL);
+  }
+  
+  private static String a(URL paramURL, String[] paramArrayOfString)
+  {
+    Object localObject = paramURL.getFile();
+    if (((String)localObject).startsWith("file/")) {
+      paramURL = ((String)localObject).substring("file/".length());
     }
-    for (;;)
+    do
     {
-      j += 1;
-      break label70;
-      int m = a(this.jdField_a_of_type_JavaLangCharSequence.subSequence(i, j + 1));
-      if (m > n)
+      do
       {
-        localbaod = new baod(null);
-        localbaod.jdField_a_of_type_Int = i;
-        localbaod.b = (j - 1);
-        localbaod.c = k;
-        localbaod.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(i, j);
-        this.jdField_a_of_type_JavaUtilList.add(localbaod);
-        if (this.jdField_a_of_type_JavaUtilList.size() >= i1)
-        {
-          if (FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView) == null) {
-            break;
-          }
-          FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView).a(this.jdField_a_of_type_JavaUtilList.size());
-          return;
+        return paramURL;
+        if (((String)localObject).startsWith("file://")) {
+          return ((String)localObject).substring(7);
         }
-        i = j;
-        j -= 1;
-        k = 0;
-        continue;
+        paramURL = (URL)localObject;
+      } while (!((String)localObject).startsWith("http"));
+      paramURL = (URL)localObject;
+      if (((String)localObject).startsWith("http/")) {
+        paramURL = ((String)localObject).substring("http/".length());
       }
-      if (j == i1 - 1)
-      {
-        localbaod = new baod(null);
-        localbaod.jdField_a_of_type_Int = i;
-        localbaod.b = (j - 1);
-        localbaod.c = m;
-        localbaod.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_JavaLangCharSequence.subSequence(i, i1);
-        this.jdField_a_of_type_JavaUtilList.add(localbaod);
-      }
-      else
-      {
-        k = m;
-      }
-    }
+      localObject = paramURL.split("\\|");
+    } while (localObject.length < 2);
+    paramArrayOfString[0] = localObject[0];
+    return localObject[1];
   }
   
-  public void a(int paramInt)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    baoc localbaoc = FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView);
-    this.jdField_a_of_type_JavaLangCharSequence = localbaoc.getText();
-    this.jdField_a_of_type_AndroidTextTextPaint = localbaoc.getPaint();
-    this.jdField_a_of_type_Int = localbaoc.getMeasuredWidth();
-    this.b = localbaoc.getLineHeight();
-    this.d = localbaoc.getPaddingLeft();
-    this.e = localbaoc.getPaddingTop();
-    this.f = localbaoc.getPaddingRight();
-    this.g = localbaoc.getPaddingBottom();
-    this.c = paramInt;
-    a();
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    int j = this.jdField_a_of_type_JavaUtilList.size();
+    paramOutputStream = new String[1];
+    paramOutputStream[0] = null;
+    String str1 = a(paramDownloadParams.url, paramOutputStream);
     int i;
-    if ((this.c > 0) && (this.c < j))
+    Object localObject;
+    if (paramOutputStream[0] != null)
     {
-      i = 1;
-      if (i == 0) {
-        break label260;
+      if (new File(str1).exists()) {
+        break label405;
       }
-      j = this.c;
+      i = 1;
+      j = i;
+      if (i == 0)
+      {
+        localObject = new BitmapFactory.Options();
+        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+      }
     }
-    label260:
-    for (;;)
+    label100:
+    String str3;
+    try
     {
-      int k = 0;
+      BitmapFactory.decodeFile(str1, (BitmapFactory.Options)localObject);
+      i = ((BitmapFactory.Options)localObject).outHeight;
+      j = ((BitmapFactory.Options)localObject).outWidth;
+      if (j + i != 0) {
+        break label411;
+      }
+      i = 1;
+    }
+    catch (Exception localException)
+    {
       for (;;)
       {
-        if (k < j)
-        {
-          CharSequence localCharSequence = ((baod)this.jdField_a_of_type_JavaUtilList.get(k)).jdField_a_of_type_JavaLangCharSequence;
-          float f1 = this.jdField_a_of_type_AndroidTextTextPaint.getTextSize();
-          int m = localCharSequence.length();
-          float f2 = this.d + 0;
-          float f3 = this.b * k;
-          paramCanvas.drawText(localCharSequence, 0, m, f2, this.e + (f1 + f3), this.jdField_a_of_type_AndroidTextTextPaint);
-          k += 1;
-          continue;
-          i = 0;
-          break;
-        }
+        String str2;
+        label405:
+        label411:
+        i = 1;
       }
-      if ((i != 0) && (j < this.jdField_a_of_type_JavaUtilList.size()))
-      {
-        paramCanvas = (baod)this.jdField_a_of_type_JavaUtilList.get(j);
-        i = this.jdField_a_of_type_JavaLangCharSequence.length();
-        if ((paramCanvas.jdField_a_of_type_Int > -1) && (paramCanvas.jdField_a_of_type_Int < i))
-        {
-          paramCanvas = this.jdField_a_of_type_JavaLangCharSequence.subSequence(paramCanvas.jdField_a_of_type_Int, i);
-          FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView).setText(paramCanvas);
-          FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, true);
-          return;
-        }
-        FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, false);
-        return;
-      }
-      FollowImageTextView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView, false);
-      return;
     }
+    int j = i;
+    if (i != 0)
+    {
+      new File(str1).delete();
+      j = i;
+    }
+    if ((j != 0) && (bdee.g(this.a.getApplicationContext())))
+    {
+      localObject = paramDownloadParams.url;
+      str2 = paramDownloadParams.urlStr;
+      paramDownloadParams.url = new URL(paramOutputStream[0]);
+      paramDownloadParams.urlStr = paramOutputStream[0];
+      if (QLog.isDevelopLevel()) {
+        QLog.d("qqfav", 4, "favimage download: " + paramOutputStream[0] + " -> " + str1);
+      }
+      str3 = str1 + ".tmp";
+      paramOutputStream = new File(str3);
+      if (paramOutputStream.exists()) {
+        paramOutputStream.delete();
+      }
+      paramURLDrawableHandler.publishProgress(0);
+    }
+    for (;;)
+    {
+      try
+      {
+        paramOutputStream = new FileOutputStream(str3);
+      }
+      catch (Exception paramOutputStream)
+      {
+        File localFile;
+        paramOutputStream = null;
+      }
+      try
+      {
+        new bapk().a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+        paramOutputStream.close();
+        paramURLDrawableHandler = new File(str3);
+        localFile = new File(str1);
+        if (!paramURLDrawableHandler.renameTo(localFile))
+        {
+          bdcs.a(paramURLDrawableHandler, localFile);
+          paramURLDrawableHandler.delete();
+        }
+        birh.a(this.a.waitAppRuntime(null), false, new File(str1).length());
+        paramDownloadParams.url = ((URL)localObject);
+        paramDownloadParams.urlStr = str2;
+        paramOutputStream = new File(str1);
+        if ((!paramOutputStream.exists()) || (paramOutputStream.length() <= 0L)) {
+          break label452;
+        }
+        return paramOutputStream;
+      }
+      catch (Exception paramURLDrawableHandler)
+      {
+        break label428;
+      }
+      i = 0;
+      break;
+      i = 0;
+      break label100;
+      label428:
+      if (paramOutputStream != null) {
+        paramOutputStream.close();
+      }
+      new File(str3).delete();
+    }
+    label452:
+    paramOutputStream.delete();
+    QLog.e("qqfav.FavoriteImageDownloader", 1, "downloadImage|file not exist or empty. filepath=" + str1);
+    throw new IOException("File not Found. url: " + paramDownloadParams.url);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    Object localObject;
+    if (paramFile == null) {
+      localObject = null;
+    }
+    for (;;)
+    {
+      return localObject;
+      if (GifDrawable.isGifFile(paramFile)) {
+        return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
+      }
+      if (5 == arni.a(paramFile.getName()))
+      {
+        localObject = arna.a(this.a, paramFile.getPath());
+        if (localObject != null)
+        {
+          if ((localObject instanceof BitmapDrawable)) {
+            return ((BitmapDrawable)localObject).getBitmap();
+          }
+          paramFile = Bitmap.createBitmap(((Drawable)localObject).getIntrinsicWidth(), ((Drawable)localObject).getIntrinsicHeight(), Bitmap.Config.RGB_565);
+          paramDownloadParams = new Canvas(paramFile);
+          ((Drawable)localObject).setBounds(0, 0, paramDownloadParams.getWidth(), paramDownloadParams.getHeight());
+          ((Drawable)localObject).draw(paramDownloadParams);
+          return paramFile;
+        }
+      }
+      localObject = paramFile.getPath();
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        try
+        {
+          localObject = BitmapFactory.decodeFile((String)localObject);
+        }
+        catch (OutOfMemoryError paramFile)
+        {
+          try
+          {
+            int i = ((Bitmap)localObject).getByteCount();
+            if (i <= 20971520) {
+              continue;
+            }
+            paramFile = super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
+            return paramFile;
+          }
+          catch (Exception paramFile)
+          {
+            break label181;
+          }
+          catch (OutOfMemoryError paramFile)
+          {
+            break label170;
+          }
+          paramFile = paramFile;
+          localObject = null;
+          paramFile.printStackTrace();
+          return localObject;
+        }
+        catch (Exception paramFile)
+        {
+          label170:
+          localObject = null;
+          label181:
+          paramFile.printStackTrace();
+          return localObject;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public boolean gifHasDifferentState()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baof
  * JD-Core Version:    0.7.0.1
  */

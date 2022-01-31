@@ -1,19 +1,20 @@
-public class bjvn
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+class bjvn
+  extends BroadcastReceiver
 {
-  public final int a;
-  public final long a;
-  public final CharSequence a;
+  bjvn(bjvj parambjvj) {}
   
-  public bjvn(long paramLong, int paramInt, CharSequence paramCharSequence)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    bjvj.a(this.a, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjvn
  * JD-Core Version:    0.7.0.1
  */

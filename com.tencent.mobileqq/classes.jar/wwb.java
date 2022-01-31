@@ -1,32 +1,23 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 
-public class wwb
-  implements View.OnClickListener
+public final class wwb
+  implements Parcelable.Creator<EditVideoParams>
 {
-  public wwb(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
-  
-  public void onClick(View paramView)
+  public EditVideoParams a(Parcel paramParcel)
   {
-    if (!TextUtils.isEmpty(ServiceFolderFollowPBHeadView.a(this.a))) {
-      wis.a(ServiceFolderFollowPBHeadView.a(this.a));
-    }
-    for (;;)
-    {
-      ServiceFolderFollowPBHeadView.a(this.a).setVisibility(8);
-      axqy.b(null, "dc00898", "", "", "auth_page", "msg_exp", 0, 0, "", "", "", "");
-      return;
-      QLog.e(ServiceFolderFollowPBHeadView.a(), 2, "jump error mJumpWebMessageListUrl is null");
-    }
+    return new EditVideoParams(paramParcel);
+  }
+  
+  public EditVideoParams[] a(int paramInt)
+  {
+    return new EditVideoParams[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wwb
  * JD-Core Version:    0.7.0.1
  */

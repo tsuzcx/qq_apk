@@ -1,31 +1,29 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.widget.ImageView;
 
 class ansl
-  implements Handler.Callback
+  extends AnimatorListenerAdapter
 {
-  ansl(ansk paramansk) {}
+  ansl(ansh paramansh, anso paramanso, ObjectAnimator paramObjectAnimator) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Anso != null) {
+      this.jdField_a_of_type_Anso.a.setVisibility(0);
     }
-    do
-    {
-      return true;
-      this.a.b = true;
-      QLog.i("EmoticonFromGroup_DBManager", 1, "set db tag, mCanWriteDataToDB = true.");
-    } while (this.a.b() < 300);
-    ansk.a(this.a).clear();
-    return true;
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansl
  * JD-Core Version:    0.7.0.1
  */

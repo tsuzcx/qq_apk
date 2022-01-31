@@ -1,87 +1,147 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.core.proxy.WnsConfigProxy;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.util.Pair;
+import android.util.SparseArray;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.PopupWindow;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class bema
+class bema
+  extends FrameLayout
 {
-  public static int a(String paramString1, String paramString2, int paramInt)
+  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  int[] jdField_a_of_type_ArrayOfInt = new int[2];
+  
+  public bema(belw parambelw, Context paramContext)
   {
-    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {}
-    do
+    super(paramContext);
+    setWillNotDraw(false);
+  }
+  
+  private FrameLayout.LayoutParams a(belz parambelz, bely parambely)
+  {
+    if (parambely.width == -9) {
+      parambely.width = (parambelz.jdField_a_of_type_AndroidViewView.getMeasuredWidth() + -parambely.a * 2);
+    }
+    if (parambely.height == -9) {
+      parambely.height = (parambelz.jdField_a_of_type_AndroidViewView.getMeasuredHeight() + -parambely.b * 2);
+    }
+    if (parambely.a != 2147483647)
     {
-      return paramInt;
-      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
-    } while (paramString1 == null);
+      parambely.gravity |= 0x3;
+      parambely.leftMargin = (parambelz.jdField_a_of_type_ArrayOfInt[0] + parambely.a - this.jdField_a_of_type_ArrayOfInt[0]);
+    }
+    if (parambely.b != 2147483647)
+    {
+      parambely.gravity |= 0x30;
+      parambely.topMargin = (parambelz.jdField_a_of_type_ArrayOfInt[1] + parambely.b - this.jdField_a_of_type_ArrayOfInt[1]);
+    }
+    return parambely;
+  }
+  
+  protected void onAttachedToWindow()
+  {
+    super.onAttachedToWindow();
     try
     {
-      int i = Integer.valueOf(paramString1).intValue();
-      return i;
+      getLocationOnScreen(this.jdField_a_of_type_ArrayOfInt);
+      int i = 0;
+      while (i < belw.a(this.jdField_a_of_type_Belw).size())
+      {
+        belz localbelz = (belz)belw.a(this.jdField_a_of_type_Belw).valueAt(i);
+        if (localbelz.jdField_a_of_type_ArrayOfInt == null)
+        {
+          localbelz.jdField_a_of_type_ArrayOfInt = new int[2];
+          localbelz.jdField_a_of_type_AndroidViewView.getLocationOnScreen(localbelz.jdField_a_of_type_ArrayOfInt);
+        }
+        i += 1;
+      }
+      return;
     }
-    catch (Exception paramString1) {}
-    return paramInt;
+    catch (NullPointerException localNullPointerException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("GuideView", 2, "getLocationOnScreen Null Pointer");
+      }
+    }
   }
   
-  public static long a(String paramString1, String paramString2, long paramLong)
+  protected void onDraw(Canvas paramCanvas)
   {
-    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {}
-    do
+    int i = 0;
+    while (i < belw.a(this.jdField_a_of_type_Belw).size())
     {
-      return paramLong;
-      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
-    } while (paramString1 == null);
-    try
-    {
-      long l = Long.valueOf(paramString1).longValue();
-      return l;
+      belz localbelz = (belz)belw.a(this.jdField_a_of_type_Belw).valueAt(i);
+      int j = paramCanvas.save();
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(localbelz.jdField_a_of_type_ArrayOfInt[0], localbelz.jdField_a_of_type_ArrayOfInt[1], localbelz.jdField_a_of_type_ArrayOfInt[0] + localbelz.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), localbelz.jdField_a_of_type_ArrayOfInt[1] + localbelz.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
+      this.jdField_a_of_type_AndroidGraphicsRectF.offset(-this.jdField_a_of_type_ArrayOfInt[0], -this.jdField_a_of_type_ArrayOfInt[1]);
+      paramCanvas.clipRect(this.jdField_a_of_type_AndroidGraphicsRectF);
+      localbelz.jdField_a_of_type_AndroidViewView.getRootView().draw(paramCanvas);
+      paramCanvas.restoreToCount(j);
+      i += 1;
     }
-    catch (Exception paramString1) {}
-    return paramLong;
   }
   
-  public static final String a(String paramString1, String paramString2)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {
-      return null;
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    paramInt1 = 0;
+    while (paramInt1 < belw.a(this.jdField_a_of_type_Belw).size())
+    {
+      belz localbelz = (belz)belw.a(this.jdField_a_of_type_Belw).valueAt(paramInt1);
+      Iterator localIterator = localbelz.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        Pair localPair = (Pair)localIterator.next();
+        if (indexOfChild((View)localPair.first) == -1)
+        {
+          Object localObject = ((View)localPair.first).getLayoutParams();
+          if (localPair.second != null) {
+            localObject = a(localbelz, (bely)localPair.second);
+          }
+          if (localObject != null) {
+            addViewInLayout((View)localPair.first, -1, (ViewGroup.LayoutParams)localObject);
+          }
+        }
+      }
+      paramInt1 += 1;
     }
-    return localWnsConfigProxy.getConfig(paramString1, paramString2);
   }
   
-  public static final String a(String paramString1, String paramString2, String paramString3)
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {}
-    do
+    switch (paramMotionEvent.getAction())
     {
-      return paramString3;
-      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
-    } while (TextUtils.isEmpty(paramString1));
-    return paramString1;
-  }
-  
-  public static boolean a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    WnsConfigProxy localWnsConfigProxy = (WnsConfigProxy)ProxyManager.get(WnsConfigProxy.class);
-    if (localWnsConfigProxy == null) {}
-    do
-    {
-      return paramBoolean;
-      paramString1 = localWnsConfigProxy.getConfig(paramString1, paramString2);
-    } while (paramString1 == null);
-    try
-    {
-      boolean bool = Boolean.parseBoolean(paramString1);
-      return bool;
     }
-    catch (Exception paramString1) {}
-    return paramBoolean;
+    for (;;)
+    {
+      return super.onTouchEvent(paramMotionEvent);
+      int i = 0;
+      while (i < belw.a(this.jdField_a_of_type_Belw).size())
+      {
+        belz localbelz = (belz)belw.a(this.jdField_a_of_type_Belw).valueAt(i);
+        if ((paramMotionEvent.getX() > localbelz.jdField_a_of_type_ArrayOfInt[0]) && (paramMotionEvent.getX() < localbelz.jdField_a_of_type_ArrayOfInt[0] + localbelz.jdField_a_of_type_AndroidViewView.getMeasuredWidth()) && (paramMotionEvent.getY() > localbelz.jdField_a_of_type_ArrayOfInt[1]) && (paramMotionEvent.getY() < localbelz.jdField_a_of_type_ArrayOfInt[1] + localbelz.jdField_a_of_type_AndroidViewView.getMeasuredHeight()) && (localbelz.jdField_a_of_type_AndroidViewView$OnClickListener != null))
+        {
+          this.jdField_a_of_type_Belw.a.dismiss();
+          localbelz.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(localbelz.jdField_a_of_type_AndroidViewView);
+          return true;
+        }
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bema
  * JD-Core Version:    0.7.0.1
  */

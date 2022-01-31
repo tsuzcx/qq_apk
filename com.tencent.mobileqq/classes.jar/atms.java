@@ -1,58 +1,21 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.3.1;
-import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
 
 public class atms
-  implements GestureDetector.OnDoubleTapListener
+  implements DialogInterface.OnClickListener
 {
-  atms(atlw paramatlw) {}
+  public atms(LocationDialogUtil.4 param4) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (System.currentTimeMillis() - atlw.a(this.a) >= 500L)
-    {
-      int i = (int)paramMotionEvent.getRawX();
-      int j = (int)paramMotionEvent.getRawY();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a != 6)) {
-        ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369178)).a(i, j);
-      }
-      if (!atlw.a(this.a)) {
-        break label98;
-      }
-    }
-    for (;;)
-    {
-      atlw.a(this.a, System.currentTimeMillis());
-      return true;
-      label98:
-      if ((!atlw.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369178).getVisibility() == 0))
-      {
-        atlw.a(this.a, false);
-        this.a.c(null);
-        new atix().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        ThreadManagerV2.excute(new PlayOperationViewModel.3.1(this, (aszf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
-      }
-    }
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return false;
+    this.a.a.b();
+    azmj.b(null, "CliOper", "", "", "0X800A967", "0X800A967", 0, 0, "0", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atms
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,92 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.database.Cursor;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
 
-class awbv
-  implements View.OnClickListener
+public abstract class awbv
 {
-  awbv(awbu paramawbu) {}
+  public static final int DETACHED = 1002;
+  public static final int MANAGED = 1001;
+  public static final int NEW = 1000;
+  public static final int REMOVED = 1003;
+  long _id = -1L;
+  int _status = 1000;
   
-  public void onClick(View paramView)
+  public awbv deepCopyByReflect()
   {
-    paramView = new Intent(awbu.a(this.a).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, PublicFragmentActivity.class);
-    paramView.putExtra("key_uin", awbu.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    paramView.putExtra("key_uin_name", awbu.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-    paramView.putExtra("key_open_via", "history-liaotian");
-    abtq.a(awbu.a(this.a).jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramView, PublicFragmentActivity.class, SignatureHistoryFragment.class);
-    awbu.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.reportClickEvent("CliOper", "0X800A66B");
+    try
+    {
+      awbv localawbv = (awbv)getClass().newInstance();
+      if (localawbv != null)
+      {
+        Field[] arrayOfField = getClass().getFields();
+        int j = arrayOfField.length;
+        int i = 0;
+        while (i < j)
+        {
+          Field localField = arrayOfField[i];
+          if (!localField.isAccessible()) {
+            localField.setAccessible(true);
+          }
+          localField.set(localawbv, localField.get(this));
+          i += 1;
+        }
+        localawbv._status = 1000;
+        localawbv.postRead();
+      }
+      return localawbv;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("Entity", 1, " deepCopyByReflect:failed" + getClass().getName() + " exception e: = " + localException.getMessage());
+      localException.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected boolean entityByCursor(Cursor paramCursor)
+  {
+    return false;
+  }
+  
+  protected Class<? extends awbv> getClassForTable()
+  {
+    return getClass();
+  }
+  
+  public long getId()
+  {
+    return this._id;
+  }
+  
+  public int getStatus()
+  {
+    return this._status;
+  }
+  
+  public String getTableName()
+  {
+    return getClass().getSimpleName();
+  }
+  
+  protected void postRead() {}
+  
+  protected void postwrite() {}
+  
+  protected void prewrite() {}
+  
+  public void setId(long paramLong)
+  {
+    this._id = paramLong;
+  }
+  
+  public void setStatus(int paramInt)
+  {
+    this._status = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awbv
  * JD-Core Version:    0.7.0.1
  */

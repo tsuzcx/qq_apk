@@ -1,33 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import com.tencent.mobileqq.statistics.LocalCrashCollector.3;
-import com.tencent.widget.XEditTextEx;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class axqm
-  implements DialogInterface.OnClickListener
+  implements Handler.Callback
 {
-  public axqm(LocalCrashCollector.3 param3) {}
+  public axqm(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      LocalCrashCollector.a(this.a.this$0).a.setText("");
-      LocalCrashCollector.a(this.a.this$0).delete(0, LocalCrashCollector.a(this.a.this$0).length());
-      paramDialogInterface.dismiss();
-      return;
+    default: 
+      return false;
     }
-    catch (Exception paramDialogInterface)
+    if (!NeoVideoFilterPlayView.a(this.a))
     {
-      paramDialogInterface.printStackTrace();
+      this.a.requestRender();
+      return true;
     }
+    NeoVideoFilterPlayView.a(this.a).set(true);
+    wsv.b("FlowEdit_NeoVideoFilterPlayView", "skip request render because of pause play");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axqm
  * JD-Core Version:    0.7.0.1
  */

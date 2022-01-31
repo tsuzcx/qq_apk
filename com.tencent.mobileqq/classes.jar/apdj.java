@@ -1,17 +1,31 @@
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.1;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity.1.2;
+
 public class apdj
+  extends alox
 {
-  public int a;
-  String a;
+  public apdj(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public apdj(String paramString, int paramInt)
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    if (!this.a.a) {
+      return;
+    }
+    this.a.runOnUiThread(new BaseMsgBoxActivity.1.2(this, paramBoolean, paramString1, paramString2));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.a) {
+      return;
+    }
+    this.a.runOnUiThread(new BaseMsgBoxActivity.1.1(this, paramBoolean, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apdj
  * JD-Core Version:    0.7.0.1
  */

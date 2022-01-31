@@ -1,114 +1,200 @@
-import java.util.ArrayList;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.highway.api.IRequestCallback;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.ShortVideoRspExtInfo;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.ShortVideoSureRspInfo;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.VideoInfo;
+import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.SegHead;
+import com.tencent.mobileqq.highway.segment.HwRequest;
+import com.tencent.mobileqq.highway.segment.HwResponse;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.highway.utils.BdhLogUtil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class bate
-  extends DefaultHandler
+  implements IRequestCallback
 {
-  protected bata a;
-  protected String a;
-  protected ArrayList<bata> a;
-  protected boolean a;
-  protected bata b;
+  public bate(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
   
-  public bate(String paramString)
+  public void onFailed(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public bata a()
-  {
-    return this.jdField_a_of_type_Bata;
-  }
-  
-  public ArrayList<bata> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2) {}
-  
-  public void endDocument() {}
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    if (this.b != null) {
-      this.b = this.b.jdField_a_of_type_Bata;
+    synchronized (this.a)
+    {
+      this.a.u();
+      ShortVideoUploadProcessor.a(this.a, 4);
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer  onFailed  erroCode : " + paramInt);
+      }
+      bddw.a(String.valueOf(this.a.jdField_a_of_type_Baub.jdField_a_of_type_Long), "svrcomp_r", "sendAckToBDHServer fail!  erroCode:" + paramInt);
+      this.a.f(paramInt);
+      return;
     }
   }
   
-  public void startDocument() {}
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  public void onResponse(HwResponse paramHwResponse)
   {
-    paramString3 = null;
-    int j = paramAttributes.getLength();
-    int i = 0;
-    paramString1 = null;
-    String str2;
-    String str1;
-    if (i < j)
+    int i;
+    Object localObject1;
+    synchronized (this.a)
     {
-      str2 = paramAttributes.getLocalName(i);
-      str1 = paramAttributes.getValue(str2);
-      if ("id".equals(str2)) {
-        paramString1 = str1;
+      ShortVideoUploadProcessor.a(this.a, 4);
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer onResponse retCode : " + paramHwResponse.retCode + " htCost:" + paramHwResponse.htCost + " front:" + paramHwResponse.cacheCost);
+      }
+      this.a.u();
+      if (paramHwResponse.retCode != 0) {
+        break label992;
+      }
+      if (paramHwResponse.segmentResp.uint32_cache_addr.has())
+      {
+        i = paramHwResponse.segmentResp.uint32_cache_addr.get();
+        if (i != 0)
+        {
+          BdhLogUtil.LogEvent("R", "RequestAck onResponse : cache_addr res from server is : " + i + " ( " + HwRequest.intToIP(i) + " )");
+          if (ShortVideoUploadProcessor.d(this.a) == 0) {
+            ShortVideoUploadProcessor.e(this.a, i);
+          }
+          if ((ShortVideoUploadProcessor.d(this.a) != 0) && (ShortVideoUploadProcessor.d(this.a) != i))
+          {
+            BdhLogUtil.LogEvent("R", "RequestAck onResponse : cache ip Diff !");
+            ShortVideoUploadProcessor.a(this.a, true);
+          }
+        }
+      }
+      localObject1 = paramHwResponse.mBuExtendinfo;
+      if (localObject1 == null) {
+        break label849;
+      }
+      i = localObject1.length;
+      if (i <= 0) {
+        break label849;
+      }
+    }
+    Object localObject2;
+    Object localObject3;
+    try
+    {
+      localObject2 = new Bdh_extinfo.ShortVideoRspExtInfo();
+      ((Bdh_extinfo.ShortVideoRspExtInfo)localObject2).mergeFrom((byte[])localObject1);
+      if (!((Bdh_extinfo.ShortVideoRspExtInfo)localObject2).msg_shortvideo_sure_rsp.has())
+      {
+        if (!ShortVideoUploadProcessor.jdField_a_of_type_Boolean)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ShortVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer onResponse error : rspExtInfo.msg_shortvideo_sure_rsp is null");
+          }
+          this.a.f(4);
+        }
+        return;
+      }
+      localObject1 = new Bdh_extinfo.ShortVideoSureRspInfo();
+      ((Bdh_extinfo.ShortVideoSureRspInfo)localObject1).mergeFrom(((Bdh_extinfo.ShortVideoRspExtInfo)localObject2).msg_shortvideo_sure_rsp.toByteArray());
+      if (!((Bdh_extinfo.ShortVideoSureRspInfo)localObject1).msg_videoinfo.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ShortVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer onResponse error : rspInfo.msg_videoinfo is null");
+        }
+        this.a.f(4);
+        return;
+        paramHwResponse = finally;
+        throw paramHwResponse;
+      }
+      localObject2 = (Bdh_extinfo.VideoInfo)((Bdh_extinfo.ShortVideoSureRspInfo)localObject1).msg_videoinfo.get();
+      if (!((Bdh_extinfo.VideoInfo)localObject2).bytes_bin_md5.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ShortVideoUploadProcessor", 2, "<BDH_LOG>sendAckToBDHServer onResponse error : videoInfo.bytes_bin_md5 is null");
+        }
+        this.a.f(4);
+        return;
+      }
+      localObject3 = ((Bdh_extinfo.VideoInfo)localObject2).bytes_bin_md5.get().toByteArray();
+      i = ((Bdh_extinfo.VideoInfo)localObject2).uint32_size.get();
+      int j = ((Bdh_extinfo.VideoInfo)localObject2).uint32_time.get();
+      int k = ((Bdh_extinfo.VideoInfo)localObject2).uint32_format.get();
+      bddw.a(String.valueOf(this.a.jdField_a_of_type_Baub.jdField_a_of_type_Long), "svrcomp_r", "sendAckToBDHServer success!  MD5:" + HexUtil.bytes2HexStr((byte[])localObject3) + " mSendClicked : " + this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      this.a.jdField_a_of_type_Baub.f = HexUtil.bytes2HexStr((byte[])localObject3);
+      this.a.jdField_c_of_type_JavaLangString = this.a.jdField_a_of_type_Baub.f;
+      if (this.a.jdField_a_of_type_JavaUtilHashMap != null)
+      {
+        this.a.jdField_a_of_type_JavaUtilHashMap.put("param_fileMD5", this.a.jdField_a_of_type_Baub.f);
+        this.a.jdField_a_of_type_JavaUtilHashMap.put("param_videoDuration", String.valueOf(j));
+        this.a.jdField_a_of_type_JavaUtilHashMap.put("param_fileFormat", String.valueOf(k));
+        if (((Bdh_extinfo.ShortVideoSureRspInfo)localObject1).uint32_merge_cost.has())
+        {
+          k = ((Bdh_extinfo.ShortVideoSureRspInfo)localObject1).uint32_merge_cost.get();
+          this.a.jdField_a_of_type_JavaUtilHashMap.put("param_cost_s_comp", String.valueOf(k));
+        }
+        this.a.jdField_a_of_type_JavaUtilHashMap.put("param_cost_s_store", String.valueOf(paramHwResponse.cacheCost));
+      }
+      this.a.jdField_a_of_type_Baub.i = ShortVideoUtils.a((MessageForShortVideo)this.a.jdField_a_of_type_Baub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, "mp4");
+      this.a.f = ((Bdh_extinfo.ShortVideoSureRspInfo)localObject1).bytes_fileid.get().toStringUtf8();
+      this.a.q = i;
+      this.a.jdField_c_of_type_Int = j;
+      this.a.e.b();
+      this.a.e.a = 1;
+      if (this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+      {
+        if (!ShortVideoUploadProcessor.jdField_a_of_type_Boolean) {
+          break label893;
+        }
+        if (this.a.jdField_c_of_type_JavaUtilList.isEmpty()) {
+          break label865;
+        }
+        localObject2 = this.a.jdField_c_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject2).hasNext()) {
+          ((Transaction)((Iterator)localObject2).next()).cancelTransaction();
+        }
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramHwResponse)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoUploadProcessor", 2, "sendAckToBDHServer onResponse ", paramHwResponse);
       }
     }
     for (;;)
     {
-      i += 1;
-      break;
-      if ("value".equals(str2))
+      label849:
+      return;
+      this.a.jdField_c_of_type_JavaUtilList.clear();
+      label865:
+      if (this.a.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction != null)
       {
-        paramString3 = str1;
-        continue;
-        if (("0".equals(paramString1)) || (paramString1 == null)) {}
-        for (;;)
-        {
-          return;
-          paramAttributes = this.b;
-          if (paramString2.startsWith("L"))
-          {
-            paramString2 = paramString2.substring(1);
-            try
-            {
-              i = Integer.parseInt(paramString2);
-              if (i != 0)
-              {
-                paramString2 = new bata(i, paramString1, paramString3);
-                this.b = paramString2;
-                if (paramString2.a(paramAttributes))
-                {
-                  paramAttributes.a(this.b);
-                  if ((this.jdField_a_of_type_Boolean) || (!String.valueOf(this.jdField_a_of_type_JavaLangString).equals(paramString1))) {
-                    continue;
-                  }
-                  this.jdField_a_of_type_Boolean = true;
-                  this.jdField_a_of_type_Bata = paramString2;
-                }
-              }
-            }
-            catch (NumberFormatException paramString2)
-            {
-              for (;;)
-              {
-                paramString2.printStackTrace();
-                i = 0;
-                continue;
-                this.jdField_a_of_type_JavaUtilArrayList.add(this.b);
-              }
-            }
-          }
-        }
+        this.a.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+        this.a.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
       }
+      label893:
+      localObject2 = this.a.jdField_a_of_type_Baoj;
+      localObject3 = this.a.jdField_a_of_type_Baoj;
+      ShortVideoUploadProcessor localShortVideoUploadProcessor2 = this.a;
+      long l = this.a.q;
+      localShortVideoUploadProcessor2.s = l;
+      ((baoj)localObject3).e = l;
+      ((baoj)localObject2).jdField_a_of_type_Long = l;
+      this.a.d(1007);
+      this.a.b(false);
+      ShortVideoUploadProcessor.a(this.a, true, ((Bdh_extinfo.ShortVideoSureRspInfo)localObject1).uint32_merge_cost.get(), String.valueOf(paramHwResponse.cacheCost));
+      continue;
+      label992:
+      ShortVideoUploadProcessor.a(this.a, false, 0L, "");
+      this.a.f(paramHwResponse.retCode);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bate
  * JD-Core Version:    0.7.0.1
  */

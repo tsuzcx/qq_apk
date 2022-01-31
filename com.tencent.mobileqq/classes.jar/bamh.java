@@ -1,127 +1,121 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.open.base.http.HttpBaseUtil;
+import android.view.animation.AnimationUtils;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.GZIPInputStream;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.ByteBuffer;
 
 public class bamh
+  implements bdlq
 {
-  public static aznv a(Bundle paramBundle, String paramString1, String paramString2)
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = -1L;
+  private URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private OutputStream jdField_a_of_type_JavaIoOutputStream;
+  String jdField_a_of_type_JavaLangString = "ImageDownloaderProcesser";
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long = 0L;
+  String jdField_b_of_type_JavaLangString = "";
+  boolean jdField_b_of_type_Boolean = false;
+  
+  public bamh(OutputStream paramOutputStream, URLDrawableHandler paramURLDrawableHandler, QQAppInterface paramQQAppInterface)
   {
-    localObject = null;
-    HttpPost localHttpPost = null;
-    int j = 0;
-    long l = System.currentTimeMillis();
-    String str2 = paramBundle.getString("title");
-    String str1 = paramBundle.getString("file_path");
-    paramBundle = paramBundle.getString("vid");
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopBar", 2, "applyUpload title = " + str2 + ", filePath = " + str1 + ", size = " + bbdx.a(str1));
-    }
-    if ((TextUtils.isEmpty(str1)) || (!bbdx.a(str1)))
+    this.jdField_a_of_type_JavaIoOutputStream = paramOutputStream;
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void a(byte[] paramArrayOfByte)
+  {
+    boolean bool2 = false;
+    if (this.jdField_a_of_type_Int == 0)
     {
-      paramString1 = localHttpPost;
-      if (QLog.isColorLevel())
+      paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
+      byte[] arrayOfByte = new byte[2];
+      paramArrayOfByte.get(arrayOfByte);
+      paramArrayOfByte = bdcs.a(arrayOfByte);
+      bool1 = bool2;
+      if (paramArrayOfByte != null)
       {
-        QLog.e("TroopBar", 2, "!!!!!!!applyUpload filePath = " + str1);
-        paramString1 = localHttpPost;
-      }
-      return paramString1;
-    }
-    localHttpPost = new HttpPost("http://pay.qun.qq.com/cgi-bin/group_pay/reward/video_up_ready");
-    localHttpPost.setHeader("Accept", "Accept text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-    localHttpPost.setHeader("Accept-Charset", "utf-8;q=0.7,*;q=0.7");
-    localHttpPost.setHeader("Accept-Encoding", "gzip, deflate");
-    localHttpPost.setHeader("Accept-Language", "zh-cn,zh;q=0.5");
-    localHttpPost.setHeader("Connection", "keep-alive");
-    localHttpPost.setHeader("Cookie", "skey=" + paramString2 + ";uin=" + paramString1);
-    paramString1 = new ArrayList();
-    paramString1.add(new BasicNameValuePair("title", str2));
-    paramString1.add(new BasicNameValuePair("size", String.valueOf(bbdx.a(str1))));
-    paramString1.add(new BasicNameValuePair("sha", bbea.a(apug.a(str1)).toLowerCase()));
-    paramString1.add(new BasicNameValuePair("md5", bbea.a(apug.d(str1)).toLowerCase()));
-    paramString1.add(new BasicNameValuePair("bkn", "" + banb.b(paramString2)));
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopBar", 2, "applyUpload() getMessageDigest time = " + (System.currentTimeMillis() - l));
-    }
-    paramString1.add(new BasicNameValuePair("platform", "android"));
-    if (!TextUtils.isEmpty(paramBundle)) {
-      paramString1.add(new BasicNameValuePair("vid", paramBundle));
-    }
-    try
-    {
-      localHttpPost.setEntity(new UrlEncodedFormEntity(paramString1, "UTF-8"));
-      paramBundle = new DefaultHttpClient().execute(localHttpPost);
-      if (paramBundle.getStatusLine().getStatusCode() != 200) {
-        break label710;
-      }
-      paramString1 = paramBundle.getHeaders("Content-Encoding");
-      k = paramString1.length;
-      i = 0;
-    }
-    catch (Exception paramString1)
-    {
-      for (;;)
-      {
-        int k;
-        int i;
-        paramBundle = localObject;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("TroopBar", 2, QLog.getStackTraceString(paramString1));
-          paramBundle = localObject;
-          continue;
-          paramBundle = null;
-          continue;
-          i += 1;
+        bool1 = bool2;
+        if (paramArrayOfByte.length() > 0) {
+          if (!paramArrayOfByte.contains(bdcs.jdField_a_of_type_JavaLangString)) {
+            break label112;
+          }
         }
       }
     }
-    if (i < k)
+    label112:
+    for (boolean bool1 = bool2;; bool1 = true)
     {
-      if (paramString1[i].getValue().equals("gzip")) {
-        j = 1;
-      }
-    }
-    else
-    {
-      paramBundle = paramBundle.getEntity();
-      if (j != 0) {}
-      for (paramBundle = HttpBaseUtil.a(new GZIPInputStream(paramBundle.getContent()));; paramBundle = EntityUtils.toString(paramBundle))
+      if (!bool1)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("TroopBar", 2, "applyUpload result = " + paramBundle);
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "verifyPhotofile verify:" + bool1);
         }
-        paramBundle = new JSONObject(paramBundle);
-        if (paramBundle.optInt("ec", -1) != 0) {
-          break label710;
-        }
-        paramBundle = new aznv(paramBundle);
-        paramString1 = paramBundle;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("TroopBar", 2, "applyUpload time: " + (System.currentTimeMillis() - l));
-        return paramBundle;
+        this.jdField_b_of_type_Boolean = true;
+        throw new RuntimeException("unKnownFileTypeMark");
       }
+      return;
     }
   }
+  
+  public void a(bdlo parambdlo1, bdlo parambdlo2)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "decode mHandler.isCancelled:" + this.jdField_a_of_type_ComTencentImageURLDrawableHandler.isCancelled());
+      }
+      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler.isCancelled())
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHttpCommunicatort().a(parambdlo1);
+        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.doCancel();
+        return;
+      }
+      if ((parambdlo2.c() == 206) || (parambdlo2.c() == 200))
+      {
+        parambdlo1 = parambdlo2.a();
+        a(parambdlo1);
+        this.jdField_a_of_type_JavaIoOutputStream.write(parambdlo1);
+        this.jdField_a_of_type_JavaIoOutputStream.flush();
+        this.jdField_a_of_type_Int += parambdlo1.length;
+        this.jdField_a_of_type_Long = parambdlo2.a();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "dataLen:" + parambdlo1.length + ",totalLen:" + parambdlo2.a());
+        }
+        if (AnimationUtils.currentAnimationTimeMillis() - this.jdField_b_of_type_Long > 100L)
+        {
+          this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / (float)this.jdField_a_of_type_Long * 8500.0F));
+          this.jdField_a_of_type_ComTencentImageURLDrawableHandler.publishProgress(this.jdField_b_of_type_Int);
+          return;
+        }
+      }
+    }
+    catch (IOException parambdlo1)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_b_of_type_JavaLangString = parambdlo1.getMessage();
+      throw new RuntimeException();
+    }
+  }
+  
+  public void a(String paramString) {}
+  
+  public boolean a(bdlo parambdlo1, bdlo parambdlo2, int paramInt)
+  {
+    return true;
+  }
+  
+  public void b(bdlo parambdlo1, bdlo parambdlo2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bamh
  * JD-Core Version:    0.7.0.1
  */

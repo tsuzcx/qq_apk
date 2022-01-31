@@ -3,7 +3,7 @@ package com.tencent.mobileqq.redtouch;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
-import bbef;
+import bdda;
 
 public class RedTouchTab
   extends RedTouch
@@ -45,13 +45,13 @@ public class RedTouchTab
       {
         try
         {
-          localTextView.setBackgroundResource(2130849303);
+          localTextView.setBackgroundResource(2130849734);
           localTextView.setLayoutParams(a());
           if (this.b)
           {
             localTextView.measure(0, 0);
             this.l += localTextView.getMeasuredWidth() / 2;
-            a();
+            c();
           }
           return localTextView;
           localTextView.setText(paramString);
@@ -61,17 +61,17 @@ public class RedTouchTab
         }
         catch (OutOfMemoryError paramString)
         {
-          bbef.a(getResources(), localTextView, 2130849303);
+          bdda.a(getResources(), localTextView, 2130849734);
           continue;
         }
         try
         {
           label185:
-          localTextView.setBackgroundResource(2130849301);
+          localTextView.setBackgroundResource(2130849732);
         }
         catch (OutOfMemoryError paramString)
         {
-          bbef.a(getResources(), localTextView, 2130849301);
+          bdda.a(getResources(), localTextView, 2130849732);
         }
         continue;
         label210:
@@ -82,7 +82,7 @@ public class RedTouchTab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchTab
  * JD-Core Version:    0.7.0.1
  */

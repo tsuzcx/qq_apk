@@ -1,9 +1,9 @@
 package com.tencent.qqmini.proxyimpl;
 
-import amgn;
-import behq;
-import bekr;
-import bekz;
+import anxn;
+import bgho;
+import bgkd;
+import bgkk;
 import com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI;
 import com.tencent.mobileqq.minigame.ui.GameActivity1;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
@@ -33,15 +33,15 @@ public class ColorNotePlugin
           }
         }
       }
-      while ((localObject1 != null) && (!((amgn)localObject1).c()))
+      while ((localObject1 != null) && (!((anxn)localObject1).c()))
       {
-        if (!((amgn)localObject1).b()) {
+        if (!((anxn)localObject1).b()) {
           break label168;
         }
         if (!paramBoolean) {
           break label155;
         }
-        bekz.a(new ColorNotePlugin.1(this, (amgn)localObject1));
+        bgkk.a(new ColorNotePlugin.1(this, (anxn)localObject1));
         return;
         localObject1 = localObject2;
         if (this.mMiniAppContext.a() != null)
@@ -54,27 +54,27 @@ public class ColorNotePlugin
       }
     }
     label155:
-    bekz.a(new ColorNotePlugin.2(this, (amgn)localObject1));
+    bgkk.a(new ColorNotePlugin.2(this, (anxn)localObject1));
     return;
     label168:
-    bekz.a(new ColorNotePlugin.3(this, (amgn)localObject1));
+    bgkk.a(new ColorNotePlugin.3(this, (anxn)localObject1));
   }
   
-  public void addColorSign(bekr parambekr)
+  public void addColorSign(bgkd parambgkd)
   {
-    parambekr.a();
+    parambgkd.a();
     addColorSign(false);
   }
   
-  public void addColorSignDirectly(bekr parambekr)
+  public void addColorSignDirectly(bgkd parambgkd)
   {
-    parambekr.a();
+    parambgkd.a();
     addColorSign(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ColorNotePlugin
  * JD-Core Version:    0.7.0.1
  */

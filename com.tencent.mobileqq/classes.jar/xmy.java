@@ -1,13 +1,20 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.utils.FileUtils.1;
 
 public class xmy
-  extends WebViewPlugin
+  implements DialogInterface.OnClickListener
 {
-  public static String[] a = { "http://htdata.qq.com/cgi-bin/httpconn?htcmd=0x6ff0080", "http://htdata2.qq.com/cgi-bin/httpconn?htcmd=0x6ff0080" };
+  public xmy(FileUtils.1 param1) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xmy
  * JD-Core Version:    0.7.0.1
  */

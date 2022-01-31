@@ -1,31 +1,24 @@
-import java.util.HashMap;
+import android.util.Log;
 
 class asxt
-  implements aysb
+  implements asxd
 {
   asxt(asxr paramasxr) {}
   
-  public void a(aysy paramaysy, aysz paramaysz)
+  public void a(int paramInt, String paramString)
   {
-    if ((paramaysy != null) && (paramaysz != null) && ((paramaysy instanceof ayrx)))
+    Log.i("Huiyin", "code " + paramInt + ", filename " + paramString);
+    if (paramInt == 0)
     {
-      paramaysy = (ayrx)paramaysy;
-      paramaysy.jdField_a_of_type_Long += paramaysz.c;
-      paramaysz.c = 0L;
-      paramaysz = "bytes=" + paramaysy.jdField_a_of_type_Long + "-";
-      paramaysy.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
-      paramaysz = paramaysy.jdField_a_of_type_JavaLangString;
-      if (paramaysz.contains("range="))
-      {
-        paramaysz = paramaysz.substring(0, paramaysz.lastIndexOf("range="));
-        paramaysy.jdField_a_of_type_JavaLangString = (paramaysz + "range=" + paramaysy.jdField_a_of_type_Long);
-      }
+      asxr.a(this.a, paramString);
+      asxr.a(this.a, 1);
+      Log.i("Huiyin", "file created " + asxr.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asxt
  * JD-Core Version:    0.7.0.1
  */

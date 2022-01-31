@@ -1,10 +1,13 @@
 package com.tencent.mobileqq.minigame.gpkg;
 
 import android.text.TextUtils;
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.mini.apkg.ApkgBaseInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.apkg.NetworkTimeoutInfo;
+import com.tencent.mobileqq.mini.http.MiniOkHttpClientFactory;
 import com.tencent.mobileqq.mini.utils.FileUtils;
+import com.tencent.mobileqq.minigame.manager.GamePreConnectManager;
 import java.io.File;
 import java.util.HashMap;
 import org.json.JSONArray;
@@ -18,6 +21,7 @@ public class MiniGamePkg
   public static final String NAME_OFFLINECONFIG_JSON = "offlineconfig.json";
   public static final String PLUGIN_ENTRY_FILE = "plugin.js";
   public JSONObject mGameConfigJson;
+  public NetworkTimeoutInfo networkTimeoutInfo;
   public HashMap<String, String> subPackRoots = new HashMap();
   
   public MiniGamePkg(String paramString, MiniAppConfig paramMiniAppConfig)
@@ -48,14 +52,34 @@ public class MiniGamePkg
     return localHashMap;
   }
   
-  public static MiniGamePkg loadGamePkgFromFolderPath(String paramString1, String paramString2, MiniAppConfig paramMiniAppConfig)
+  private static void initOkHttp(MiniGamePkg paramMiniGamePkg)
+  {
+    if ((paramMiniGamePkg != null) && (paramMiniGamePkg.networkTimeoutInfo != null)) {}
+    for (paramMiniGamePkg = paramMiniGamePkg.networkTimeoutInfo;; paramMiniGamePkg = new NetworkTimeoutInfo())
+    {
+      MiniOkHttpClientFactory.init(paramMiniGamePkg.request, paramMiniGamePkg.uploadFile, paramMiniGamePkg.downloadFile);
+      return;
+    }
+  }
+  
+  public static MiniGamePkg loadGamePkgFromFolderPath(String paramString1, String paramString2, MiniAppConfig paramMiniAppConfig, boolean paramBoolean)
   {
     if ((TextUtils.isEmpty(paramString1)) || (!new File(paramString1).exists())) {
-      return null;
+      paramString1 = null;
     }
-    paramString1 = new MiniGamePkg(paramString1, paramMiniAppConfig);
-    paramString1.init(paramString2);
-    return paramString1;
+    do
+    {
+      return paramString1;
+      paramMiniAppConfig = new MiniGamePkg(paramString1, paramMiniAppConfig);
+      paramMiniAppConfig.init(paramString2);
+      if (paramMiniAppConfig.networkTimeoutInfo == null) {
+        paramMiniAppConfig.networkTimeoutInfo = new NetworkTimeoutInfo();
+      }
+      paramString1 = paramMiniAppConfig;
+    } while (!paramBoolean);
+    initOkHttp(paramMiniAppConfig);
+    GamePreConnectManager.connectHost(paramMiniAppConfig);
+    return paramMiniAppConfig;
   }
   
   public void downloadSubPack(String paramString, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener)
@@ -65,7 +89,7 @@ public class MiniGamePkg
   
   public String getRootPath(String paramString)
   {
-    if (bbkk.a(paramString)) {
+    if (bdje.a(paramString)) {
       return "";
     }
     if (this.subPackRoots != null)
@@ -100,6 +124,7 @@ public class MiniGamePkg
           paramString = this.mGameConfigJson.optJSONArray("subPackages");
         }
         this.subPackRoots = getSubPackRoots(paramString);
+        this.networkTimeoutInfo = NetworkTimeoutInfo.parse(this.mGameConfigJson.optJSONObject("networkTimeout"));
         return;
       }
       catch (Throwable paramString)
@@ -117,7 +142,7 @@ public class MiniGamePkg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.gpkg.MiniGamePkg
  * JD-Core Version:    0.7.0.1
  */

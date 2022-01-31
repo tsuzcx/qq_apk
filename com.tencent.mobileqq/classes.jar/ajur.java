@@ -1,35 +1,47 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
-class ajur
-  extends akat
+public class ajur
+  implements bhvg
 {
-  ajur(ajum paramajum) {}
+  public ajur(FriendTabView paramFriendTabView) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void a()
   {
-    if ((paramInt1 == 1) && (this.a.a()))
-    {
-      this.a.a(true);
-      ajum.a(this.a, awzy.a());
-      this.a.app.a().a(0).b();
-    }
-    this.a.a.a(this.a);
+    this.a.a = true;
+    FriendTabView.a(this.a).setFooterEnable(false);
   }
   
-  protected void b(int paramInt1, int paramInt2)
+  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
   {
-    if ((paramInt1 == 1) && (this.a.b()))
+    if (!this.a.a)
     {
-      this.a.b(true);
-      ajum.b(this.a, awzy.a());
-      this.a.app.a().a(1).b();
+      if (paramInt - 1 >= 0) {
+        paramPinnedFooterExpandableListView.b(paramInt - 1);
+      }
+      for (;;)
+      {
+        this.a.a = true;
+        FriendTabView.a(this.a).setFooterEnable(false);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendTabView", 2, "header group unusal: " + paramInt);
+        }
+      }
     }
+    if (paramPinnedFooterExpandableListView.c(paramInt))
+    {
+      paramPinnedFooterExpandableListView.b(paramInt);
+      return;
+    }
+    paramPinnedFooterExpandableListView.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajur
  * JD-Core Version:    0.7.0.1
  */

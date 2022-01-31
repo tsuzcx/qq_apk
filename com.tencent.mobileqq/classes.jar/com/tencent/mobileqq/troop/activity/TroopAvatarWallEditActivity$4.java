@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aukp;
-import aukq;
+import awbw;
+import awbx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Setting;
 
@@ -12,9 +12,9 @@ class TroopAvatarWallEditActivity$4
   
   public void run()
   {
-    aukp localaukp = this.this$0.app.getEntityManagerFactory().createEntityManager();
-    Setting localSetting = (Setting)localaukp.a(Setting.class, "troop_" + this.this$0.a);
-    localaukp.a();
+    awbw localawbw = this.this$0.app.getEntityManagerFactory().createEntityManager();
+    Setting localSetting = (Setting)localawbw.a(Setting.class, "troop_" + this.this$0.a);
+    localawbw.a();
     this.this$0.runOnUiThread(new TroopAvatarWallEditActivity.4.1(this, localSetting));
   }
 }

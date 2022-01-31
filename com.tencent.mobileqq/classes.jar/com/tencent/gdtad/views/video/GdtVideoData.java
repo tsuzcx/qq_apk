@@ -1,13 +1,13 @@
 package com.tencent.gdtad.views.video;
 
 import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.ad.tangram.Ad;
 import java.io.Serializable;
 
 public class GdtVideoData
   implements Serializable
 {
-  private GdtAd ad;
+  private Ad ad;
   private String coverURL;
   private boolean directPlay;
   private long durationMillis;
@@ -20,7 +20,7 @@ public class GdtVideoData
   private String url;
   private int videoDefaultBackgroundColor = -16777216;
   
-  public GdtAd getAd()
+  public Ad getAd()
   {
     return this.ad;
   }
@@ -85,10 +85,10 @@ public class GdtVideoData
     return this.needReport;
   }
   
-  public void setAd(GdtAd paramGdtAd)
+  public void setAd(Ad paramAd)
   {
-    if (paramGdtAd != null) {
-      this.ad = paramGdtAd;
+    if (paramAd != null) {
+      this.ad = paramAd;
     }
   }
   
@@ -163,7 +163,7 @@ public class GdtVideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.video.GdtVideoData
  * JD-Core Version:    0.7.0.1
  */

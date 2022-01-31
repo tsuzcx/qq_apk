@@ -1,26 +1,23 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.DailyDynamicHeaderViewController.5.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class nsj
-  extends akui
+public final class nsj
+  implements Parcelable.Creator<VideoInfo>
 {
-  nsj(nsc paramnsc, String paramString)
+  public VideoInfo a(Parcel paramParcel)
   {
-    super(paramString);
+    return new VideoInfo(paramParcel);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public VideoInfo[] a(int paramInt)
   {
-    QLog.i("DailyHeaderViewController", 1, "[onLocationFinish] errCode=" + paramInt + "");
-    ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderViewController.5.1(this, paramInt, paramSosoLbsInfo));
+    return new VideoInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import ajya;
+import alpo;
 import android.text.TextUtils;
-import bcqf;
-import bcql;
+import bepp;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -11,6 +10,7 @@ import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager;
 import com.tencent.mobileqq.mini.app.MiniAppStateManager.MiniAppStateMsg;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -50,7 +50,7 @@ class AppBrandPageContainer$1$1
       {
         ((AppBrandPageContainer)localObject).launch(this.this$1.val$url, "reLaunch");
         continue;
-        bcql.a(this.this$1.val$dialog.getContext(), ajya.a(2131700600), 1).a();
+        QQToast.a(this.this$1.val$dialog.getContext(), alpo.a(2131700969), 1).a();
         QLog.e("AppBrandPageContainer", 1, "Page not found." + this.this$1.val$url);
         if ((this.val$apkgInfo != null) && (this.val$apkgInfo.mAppConfigInfo != null) && (this.val$apkgInfo.appConfig != null) && (this.val$apkgInfo.appConfig.config != null))
         {
@@ -71,7 +71,7 @@ class AppBrandPageContainer$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer.1.1
  * JD-Core Version:    0.7.0.1
  */

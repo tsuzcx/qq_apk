@@ -1,23 +1,28 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
+import android.graphics.Bitmap;
+import com.tencent.gdtad.util.GdtSmartBlur;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bcuv
-  implements MediaPlayer.OnCompletionListener
+final class bcuv
+  implements DownloadParams.DecodeHandler
 {
-  public bcuv(VideoTextureView paramVideoTextureView) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if (VideoTextureView.a() != null) {
-      VideoTextureView.a().onVideoComplete(true);
+    if (paramBitmap != null)
+    {
+      paramDownloadParams = paramDownloadParams.tag;
+      if ((GdtSmartBlur.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
+      {
+        int i = ((int[])(int[])paramDownloadParams)[0];
+        GdtSmartBlur.a().a(paramBitmap, i);
+      }
     }
+    return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcuv
  * JD-Core Version:    0.7.0.1
  */

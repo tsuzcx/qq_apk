@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aemy;
-import ajya;
+import agjp;
+import alpo;
 import android.widget.TextView;
 
 public class CmGameChatPie$7
   implements Runnable
 {
-  public CmGameChatPie$7(aemy paramaemy) {}
+  public CmGameChatPie$7(agjp paramagjp) {}
   
   public void run()
   {
-    this.this$0.f.setText(ajya.a(2131719776));
+    this.this$0.f.setText(alpo.a(2131720302));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.CmGameChatPie.7
  * JD-Core Version:    0.7.0.1
  */

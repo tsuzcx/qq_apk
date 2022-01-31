@@ -49,61 +49,35 @@ public class RichTextParser
     if ((paramNode != null) && (paramNode.cssStyleSet != null)) {
       localCssStyleSet.addInheritStyle(paramNode.cssStyleSet);
     }
-    int i = -1;
-    switch (paramString1.hashCode())
-    {
-    default: 
-      switch (i)
-      {
-      }
-      break;
+    if (("div".equalsIgnoreCase(paramString1)) || ("p".equalsIgnoreCase(paramString1))) {
+      localCssStyleSet.addCssStyle(CssStyle.getDisplay(true));
     }
-    for (;;)
+    while (paramString2 != null)
     {
-      localCssStyleSet.addCssStyle(CssStyle.getDisplay(false));
-      for (;;)
+      paramString1 = paramString2.split("[;]");
+      if (paramString1 == null) {
+        break;
+      }
+      int j = paramString1.length;
+      int i = 0;
+      while (i < j)
       {
-        if (paramString2 == null) {
-          break label261;
-        }
-        paramString1 = paramString2.split("[;]");
-        if (paramString1 == null) {
-          break label261;
-        }
-        int j = paramString1.length;
-        i = 0;
-        while (i < j)
+        paramString2 = paramString1[i];
+        if (paramString2 != null)
         {
-          paramString2 = paramString1[i];
-          if (paramString2 != null)
-          {
-            paramString2 = paramString2.split(":");
-            if (paramString2.length == 2) {
-              localCssStyleSet.addCssStyle(CssStyle.createStyle(paramString2[0].trim(), paramString2[1].trim()));
-            }
+          paramString2 = paramString2.split(":");
+          if (paramString2.length == 2) {
+            localCssStyleSet.addCssStyle(CssStyle.createStyle(paramString2[0].trim(), paramString2[1].trim()));
           }
-          i += 1;
         }
-        if (!paramString1.equals("div")) {
-          break;
-        }
-        i = 0;
-        break;
-        if (!paramString1.equals("p")) {
-          break;
-        }
-        i = 1;
-        break;
-        if (!paramString1.equals("strong")) {
-          break;
-        }
-        i = 2;
-        break;
-        localCssStyleSet.addCssStyle(CssStyle.getDisplay(true));
+        i += 1;
       }
-      localCssStyleSet.addCssStyle(CssStyle.createStyle("font-weight", "bold"));
+      if ("strong".equalsIgnoreCase(paramString1)) {
+        localCssStyleSet.addCssStyle(CssStyle.createStyle("font-weight", "bold"));
+      } else {
+        localCssStyleSet.addCssStyle(CssStyle.getDisplay(false));
+      }
     }
-    label261:
     return localCssStyleSet;
   }
   
@@ -151,7 +125,7 @@ public class RichTextParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.RichTextParser
  * JD-Core Version:    0.7.0.1
  */

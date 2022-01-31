@@ -1,10 +1,16 @@
-public abstract interface bcxo
+class bcxo
+  extends amab
 {
-  public abstract void a(Object paramObject1, Object paramObject2);
+  private bcxo(bcxl parambcxl) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    this.a.c(106, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), paramString });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcxo
  * JD-Core Version:    0.7.0.1
  */

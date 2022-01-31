@@ -1,50 +1,76 @@
-import android.view.ViewTreeObserver;
-import com.tencent.mobileqq.location.data.LocationRoom;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
-public class aryg
-  implements TencentMap.OnMapLoadedCallback
+class aryg
+  extends nac
 {
-  public aryg(MapWidget paramMapWidget) {}
+  aryg(arye paramarye, long paramLong, Bundle paramBundle) {}
   
-  public void onMapLoaded()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    aruk localaruk = this.a.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. selfItem: ", localaruk.a() });
-    }
-    if ((localaruk.a() != null) && (!aryf.a(this.a.getContext(), this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap, localaruk.a())))
+    if (paramInt == 0)
     {
-      this.a.a(false);
-      this.a.setTag(-2147483648, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. success moveMapToSelfCenter selfItem: ", localaruk.a() });
+      bool = true;
+      arzy.a("KEY_STAGE_2_NORMAL_B77", bool);
+      if (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 10000L) {
+        break label116;
       }
     }
-    for (;;)
+    label116:
+    for (boolean bool = true;; bool = false)
     {
-      if (MapWidget.a(this.a) != null)
-      {
-        if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition() != null) {
-          break;
-        }
-        this.a.getViewTreeObserver().addOnGlobalLayoutListener(new aryh(this));
+      QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "notifyServerSendMessage() onResult errorCode=", Integer.valueOf(paramInt), ", timeout=", Boolean.valueOf(bool) });
+      if (!bool) {
+        break label122;
       }
+      arye.a(this.jdField_a_of_type_Arye, new Object[] { Integer.valueOf(0), "", alpo.a(2131705173), "" }, -1);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("MapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. failed moveMapToSelfCenter selfItem: ", localaruk.a() });
+      bool = false;
+      break;
+    }
+    label122:
+    if (paramBundle != null)
+    {
+      long l = paramBundle.getLong("0xb77_9_sendTime", -1L);
+      if ((l == -1L) || (l != arye.a(this.jdField_a_of_type_Arye)))
+      {
+        QLog.d("SDK_SHARE.ForwardSDKB77Sender", 1, "handleGetMessageState currentRequestTime =" + arye.a(this.jdField_a_of_type_Arye) + ", sendStamp = " + l);
+        return;
       }
     }
-    MapWidget.a(this.a).a(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.getCameraPosition().target);
+    Object localObject = ForwardUtils.c(arye.a(this.jdField_a_of_type_Arye).getInt("req_type"));
+    String str = ForwardUtils.a(arye.a(this.jdField_a_of_type_Arye).getInt("uintype"));
+    if ((arye.a(this.jdField_a_of_type_Arye) instanceof AbsShareMsg)) {}
+    for (paramBundle = ((AbsShareMsg)arye.a(this.jdField_a_of_type_Arye)).mContentTitle;; paramBundle = "")
+    {
+      azmj.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, (String)localObject, str, paramBundle);
+      if ((paramInt == 0) && (paramArrayOfByte != null)) {
+        arye.a(this.jdField_a_of_type_Arye, this.jdField_a_of_type_AndroidOsBundle.getString("share_comment_message_for_server"));
+      }
+      paramBundle = this.jdField_a_of_type_Arye;
+      localObject = ForwardUtils.a(paramArrayOfByte);
+      if (paramArrayOfByte == null) {
+        paramInt = -1;
+      }
+      arye.a(paramBundle, (Object[])localObject, paramInt);
+      return;
+    }
+  }
+  
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.e("SDK_SHARE.ForwardSDKB77Sender", 1, new Object[] { "onError msg =", paramString });
+    }
+    return super.a(paramInt, paramString, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aryg
  * JD-Core Version:    0.7.0.1
  */

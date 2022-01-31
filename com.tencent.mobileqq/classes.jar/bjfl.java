@@ -1,468 +1,853 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
+import com.etrump.mixlayout.ETEngine;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import dov.com.qq.im.capture.paster.PasterDataManager.1;
-import dov.com.qq.im.capture.view.StaticStickerProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import java.util.Collection;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.font.FontManager.3;
+import cooperation.qzone.font.FontManager.4;
+import cooperation.qzone.util.NetworkState;
+import java.io.File;
+import java.io.FileFilter;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class bjfl
-  extends bjbv
-  implements IEventReceiver, tbz<tdq>, tex
 {
-  public static AtomicBoolean a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  protected Handler a;
-  private bjfp jdField_a_of_type_Bjfp;
-  protected bjwf a;
-  public bkcj a;
-  protected bkga a;
-  protected bkgg a;
-  protected Runnable a;
-  public CopyOnWriteArrayList<bkfz> a;
-  private tdn jdField_a_of_type_Tdn;
-  public tey a;
-  public boolean a;
-  private boolean b;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  private static final atsr<bjfl, Void> jdField_a_of_type_Atsr = new bjfm();
+  private static bjds jdField_a_of_type_Bjds;
+  private FileFilter jdField_a_of_type_JavaIoFileFilter = new bjfo(this);
+  private String jdField_a_of_type_JavaLangString;
+  private ConcurrentHashMap<Integer, bjfg> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private FileFilter jdField_b_of_type_JavaIoFileFilter = new bjfp(this);
+  private String jdField_b_of_type_JavaLangString;
+  private ConcurrentHashMap<Integer, ArrayList<bjft>> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private String c;
   
   public bjfl()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_Tey = null;
-    this.jdField_a_of_type_JavaLangRunnable = new PasterDataManager.1(this);
-    this.jdField_a_of_type_Bkcj = new bjfm(this);
+    a();
+    ThreadManager.init();
   }
   
-  private void a(String paramString1, String paramString2, boolean paramBoolean)
+  private int a(File paramFile)
   {
-    if ((paramString1 != null) && (this.jdField_a_of_type_Bkga != null) && (!paramString1.equals(this.jdField_a_of_type_Bkga.g))) {
-      this.jdField_a_of_type_Bkga.g = paramString1;
-    }
-    if ((paramString2 != null) && (this.jdField_a_of_type_Bkgg != null) && (!paramString2.equals(this.jdField_a_of_type_Bkgg.f))) {}
-    for (int i = 1;; i = 0)
+    try
     {
-      if ((this.jdField_a_of_type_Bkgg != null) && (i != 0))
-      {
-        this.jdField_a_of_type_Bkgg.f = paramString2;
-        paramString1 = this.jdField_a_of_type_Bkgg.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramString1.hasNext()) {
-          ((bkgh)paramString1.next()).jdField_b_of_type_JavaLangString = paramString2;
-        }
-        if (paramBoolean) {
-          this.jdField_a_of_type_Bjwf.a(this.jdField_a_of_type_Bkgg);
-        }
-      }
-      if (this.jdField_a_of_type_Bkga != null)
-      {
-        if (i != 0)
-        {
-          this.jdField_a_of_type_Bkga.f = paramString2;
-          paramString1 = this.jdField_a_of_type_Bkga.jdField_a_of_type_JavaUtilList.iterator();
-          while (paramString1.hasNext())
-          {
-            bkgd localbkgd = (bkgd)paramString1.next();
-            if (localbkgd.jdField_a_of_type_Boolean) {
-              localbkgd.l = paramString2;
-            }
-          }
-        }
-        paramString1 = this.jdField_a_of_type_Bkga.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramString1.hasNext())
-        {
-          paramString2 = (bkgd)paramString1.next();
-          if ((paramString2.jdField_a_of_type_Int == 7) && (!this.jdField_a_of_type_Bkga.g.equals(paramString2.i)) && (this.jdField_a_of_type_Bkga.jdField_a_of_type_JavaUtilMap != null)) {
-            a(this.jdField_a_of_type_Bkga.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Bkga.g, paramString2);
-          }
-        }
-        if (paramBoolean) {
-          this.jdField_a_of_type_Bjwf.a(this.jdField_a_of_type_Bkga);
-        }
-      }
+      paramFile = paramFile.getName();
+      int i = Integer.parseInt(paramFile.substring(0, paramFile.indexOf('.')));
+      return i;
+    }
+    catch (Exception paramFile) {}
+    return -1;
+  }
+  
+  public static bjfl a()
+  {
+    return (bjfl)jdField_a_of_type_Atsr.b(null);
+  }
+  
+  private String a()
+  {
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return this.jdField_a_of_type_JavaLangString + File.separator;
+    }
+    this.jdField_a_of_type_JavaLangString = bjdq.a();
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if (!localFile.isDirectory()) {
+      localFile.mkdirs();
+    }
+    return this.jdField_a_of_type_JavaLangString + File.separator;
+  }
+  
+  private String a(int paramInt)
+  {
+    return c() + paramInt + ".zip";
+  }
+  
+  private String a(int paramInt1, int paramInt2)
+  {
+    return a() + c(paramInt1, paramInt2);
+  }
+  
+  private void a()
+  {
+    Object localObject = new File(a());
+    if (!((File)localObject).exists())
+    {
+      QLog.d("FontManager", 1, "cache font dir not found, cache font size = 0.");
       return;
     }
+    localObject = a((File)localObject);
+    if ((localObject != null) && (localObject.length > 0))
+    {
+      HashSet localHashSet = new HashSet();
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        int k = a(localObject[i]);
+        if (b(k)) {
+          localHashSet.add(Integer.valueOf(k));
+        }
+        i += 1;
+      }
+      localObject = localHashSet.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        b(((Integer)((Iterator)localObject).next()).intValue());
+      }
+    }
+    QLog.d("FontManager", 1, "cache font size = " + this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size());
   }
   
-  private void a(Map<String, Map<String, bkgb>> paramMap, String paramString, bkgd parambkgd)
+  private void a(int paramInt)
   {
-    if (parambkgd.a() != null) {
-      parambkgd.a().c();
-    }
-    Map localMap = (Map)paramMap.get(parambkgd.h);
-    if (localMap != null)
-    {
-      paramMap = (bkgb)localMap.get(paramString);
-      if (paramMap != null) {
-        break label94;
-      }
-      paramMap = (bkgb)localMap.get("default");
-    }
-    label94:
+    if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null) {}
     for (;;)
     {
-      if (paramMap != null)
-      {
-        parambkgd.g = paramMap.jdField_a_of_type_JavaLangString;
-        parambkgd.e = paramMap.jdField_b_of_type_JavaLangString;
-        parambkgd.f = paramMap.c;
-      }
       return;
-    }
-  }
-  
-  private void a(tdq paramtdq)
-  {
-    if (paramtdq != null)
-    {
-      this.jdField_a_of_type_Bkga.c = paramtdq.jdField_a_of_type_Int;
-      if (paramtdq.jdField_a_of_type_JavaLangString != null)
+      synchronized (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap)
       {
-        paramtdq = paramtdq.jdField_a_of_type_JavaLangString.split("\\|");
-        if ((paramtdq != null) && (paramtdq.length == 2))
-        {
-          this.jdField_a_of_type_Bkga.h = paramtdq[0];
-          this.jdField_a_of_type_Bkga.i = paramtdq[1];
+        Object localObject2 = (ArrayList)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
+        if (localObject2 == null) {
+          continue;
         }
-        paramtdq = this.jdField_a_of_type_Bkga.jdField_a_of_type_JavaUtilList.iterator();
-        while (paramtdq.hasNext())
+        ??? = ((ArrayList)localObject2).iterator();
+        bjfi localbjfi;
+        do
         {
-          bkgd localbkgd = (bkgd)paramtdq.next();
-          if (localbkgd.jdField_a_of_type_Int == 6)
-          {
-            localbkgd.j = this.jdField_a_of_type_Bkga.h;
-            localbkgd.k = this.jdField_a_of_type_Bkga.i;
-            localbkgd.c = this.jdField_a_of_type_Bkga.c;
+          if (!((Iterator)???).hasNext()) {
+            break;
           }
-        }
+          localObject2 = (bjft)((Iterator)???).next();
+          localbjfi = (bjfi)((bjft)localObject2).jdField_a_of_type_JavaLangRefWeakReference.get();
+        } while (localbjfi == null);
+        localbjfi.a(paramInt, b(paramInt, ((bjft)localObject2).b), ((bjft)localObject2).jdField_a_of_type_JavaLangString);
       }
     }
   }
   
-  private void a(ter paramter, boolean paramBoolean)
+  private void a(int paramInt1, String paramString1, int paramInt2, String paramString2, bjfi parambjfi)
   {
-    ved.b("PasterDataManager", "requestPoiList");
-    tes localtes = (tes)tcz.a(9);
-    ter localter = paramter;
-    if (paramter == null) {
-      localter = tes.a();
-    }
-    if (paramBoolean)
-    {
-      localtes.a(localter, null, this);
+    if (parambjfi == null) {
       return;
     }
-    localtes.a(localter, this.jdField_a_of_type_Tey, this);
+    ThreadManager.post(new FontManager.3(this, paramInt1, paramInt2, parambjfi, paramString2, paramString1), 8, null, false);
   }
   
-  private void a(boolean paramBoolean)
+  private void a(int paramInt1, String paramString1, int paramInt2, String paramString2, boolean paramBoolean, bjfi parambjfi)
   {
-    a(null, paramBoolean);
+    if (parambjfi == null) {
+      return;
+    }
+    if ((!NetworkState.isNetSupport()) || (a() == null))
+    {
+      parambjfi.a(paramInt1, null, paramString2);
+      return;
+    }
+    if (!paramBoolean)
+    {
+      paramBoolean = NetworkState.isWifiConn();
+      int i = QzoneConfig.getInstance().getConfig("QzCustomFont", "DownloadFontAnyway", 0);
+      if ((!paramBoolean) && (i == 0))
+      {
+        parambjfi.a(paramInt1, null, paramString2);
+        return;
+      }
+    }
+    a(paramInt1, paramString1, paramInt2, paramString2, parambjfi);
   }
   
-  private static void b(bkgj parambkgj, DoodleEmojiItem paramDoodleEmojiItem)
+  /* Error */
+  private boolean a(int paramInt)
   {
-    parambkgj.jdField_b_of_type_JavaLangString = paramDoodleEmojiItem.name;
-    parambkgj.c = paramDoodleEmojiItem.icon;
-    parambkgj.d = paramDoodleEmojiItem.download_icon;
-    parambkgj.g = paramDoodleEmojiItem.getLocalEmojiFolderPath();
-    parambkgj.e = paramDoodleEmojiItem.download_wording;
-    parambkgj.jdField_a_of_type_Boolean = "1".equals(paramDoodleEmojiItem.random_position);
-    parambkgj.a(paramDoodleEmojiItem.config);
-    parambkgj.jdField_a_of_type_Int = paramDoodleEmojiItem.hide;
-    parambkgj.jdField_b_of_type_Int = paramDoodleEmojiItem.mask;
+    // Byte code:
+    //   0: aload_0
+    //   1: iload_1
+    //   2: invokespecial 133	bjfl:a	(I)Ljava/lang/String;
+    //   5: astore 5
+    //   7: aload_0
+    //   8: iload_1
+    //   9: invokespecial 269	bjfl:b	(I)Ljava/lang/String;
+    //   12: astore 6
+    //   14: new 55	java/io/File
+    //   17: dup
+    //   18: aload 5
+    //   20: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;)V
+    //   23: new 55	java/io/File
+    //   26: dup
+    //   27: aload 6
+    //   29: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;)V
+    //   32: invokestatic 274	bjps:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   35: istore 4
+    //   37: iload 4
+    //   39: ifeq +440 -> 479
+    //   42: new 55	java/io/File
+    //   45: dup
+    //   46: aload 6
+    //   48: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;)V
+    //   51: invokevirtual 278	java/io/File:listFiles	()[Ljava/io/File;
+    //   54: astore 7
+    //   56: aload 7
+    //   58: ifnull +375 -> 433
+    //   61: aload 7
+    //   63: arraylength
+    //   64: ifle +369 -> 433
+    //   67: aload 7
+    //   69: iconst_0
+    //   70: aaload
+    //   71: astore 7
+    //   73: invokestatic 283	com/etrump/mixlayout/ETEngine:getInstanceForSpace	()Lcom/etrump/mixlayout/ETEngine;
+    //   76: pop
+    //   77: aload 7
+    //   79: invokevirtual 286	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   82: invokestatic 289	com/etrump/mixlayout/ETEngine:native_getFontType	(Ljava/lang/String;)I
+    //   85: istore_2
+    //   86: iload_2
+    //   87: iconst_2
+    //   88: if_icmpne +192 -> 280
+    //   91: new 55	java/io/File
+    //   94: dup
+    //   95: aload_0
+    //   96: iload_1
+    //   97: iconst_1
+    //   98: invokespecial 136	bjfl:a	(II)Ljava/lang/String;
+    //   101: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;)V
+    //   104: astore 8
+    //   106: aload 8
+    //   108: invokevirtual 139	java/io/File:exists	()Z
+    //   111: ifne +12 -> 123
+    //   114: aload 7
+    //   116: aload 8
+    //   118: invokevirtual 293	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   121: istore 4
+    //   123: iload 4
+    //   125: istore_3
+    //   126: iload 4
+    //   128: ifeq +18 -> 146
+    //   131: invokestatic 78	bjfl:b	()Lbjds;
+    //   134: aload 8
+    //   136: invokevirtual 286	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   139: iconst_1
+    //   140: invokevirtual 298	bjds:a	(Ljava/lang/String;Z)V
+    //   143: iload 4
+    //   145: istore_3
+    //   146: iload_3
+    //   147: ifeq +209 -> 356
+    //   150: new 300	bjfg
+    //   153: dup
+    //   154: invokespecial 301	bjfg:<init>	()V
+    //   157: astore 7
+    //   159: aload 7
+    //   161: iload_1
+    //   162: putfield 303	bjfg:jdField_a_of_type_Int	I
+    //   165: aload_0
+    //   166: getfield 31	bjfl:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   169: aload 7
+    //   171: getfield 303	bjfg:jdField_a_of_type_Int	I
+    //   174: invokestatic 164	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   177: aload 7
+    //   179: invokevirtual 307	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   182: pop
+    //   183: new 55	java/io/File
+    //   186: dup
+    //   187: aload 5
+    //   189: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;)V
+    //   192: invokestatic 309	bjps:a	(Ljava/io/File;)Z
+    //   195: pop
+    //   196: new 55	java/io/File
+    //   199: dup
+    //   200: aload 6
+    //   202: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;)V
+    //   205: invokestatic 309	bjps:a	(Ljava/io/File;)Z
+    //   208: pop
+    //   209: iload_3
+    //   210: ireturn
+    //   211: astore 7
+    //   213: ldc 141
+    //   215: iconst_1
+    //   216: new 94	java/lang/StringBuilder
+    //   219: dup
+    //   220: invokespecial 95	java/lang/StringBuilder:<init>	()V
+    //   223: ldc_w 311
+    //   226: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: aload 7
+    //   231: invokevirtual 312	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   234: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   240: invokestatic 315	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   243: new 55	java/io/File
+    //   246: dup
+    //   247: aload 5
+    //   249: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;)V
+    //   252: invokestatic 309	bjps:a	(Ljava/io/File;)Z
+    //   255: pop
+    //   256: new 55	java/io/File
+    //   259: dup
+    //   260: aload 6
+    //   262: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;)V
+    //   265: invokestatic 309	bjps:a	(Ljava/io/File;)Z
+    //   268: pop
+    //   269: iconst_0
+    //   270: ireturn
+    //   271: astore 5
+    //   273: aload 5
+    //   275: invokevirtual 318	java/lang/Exception:printStackTrace	()V
+    //   278: iconst_0
+    //   279: ireturn
+    //   280: iload_2
+    //   281: iconst_1
+    //   282: if_icmpne +262 -> 544
+    //   285: new 55	java/io/File
+    //   288: dup
+    //   289: aload_0
+    //   290: iload_1
+    //   291: iconst_0
+    //   292: invokespecial 136	bjfl:a	(II)Ljava/lang/String;
+    //   295: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;)V
+    //   298: astore 8
+    //   300: aload 8
+    //   302: invokevirtual 139	java/io/File:exists	()Z
+    //   305: ifne +12 -> 317
+    //   308: aload 7
+    //   310: aload 8
+    //   312: invokevirtual 293	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   315: istore 4
+    //   317: iload 4
+    //   319: istore_3
+    //   320: iload 4
+    //   322: ifeq -176 -> 146
+    //   325: invokestatic 78	bjfl:b	()Lbjds;
+    //   328: aload 8
+    //   330: invokevirtual 286	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   333: iconst_1
+    //   334: invokevirtual 298	bjds:a	(Ljava/lang/String;Z)V
+    //   337: aload_0
+    //   338: aload 8
+    //   340: invokevirtual 286	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   343: aload_0
+    //   344: iload_1
+    //   345: iconst_1
+    //   346: invokespecial 136	bjfl:a	(II)Ljava/lang/String;
+    //   349: invokespecial 321	bjfl:a	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   352: istore_3
+    //   353: goto -207 -> 146
+    //   356: ldc 141
+    //   358: iconst_1
+    //   359: new 94	java/lang/StringBuilder
+    //   362: dup
+    //   363: invokespecial 95	java/lang/StringBuilder:<init>	()V
+    //   366: ldc_w 323
+    //   369: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: aload 7
+    //   374: invokevirtual 286	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   377: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   380: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   383: invokestatic 315	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   386: goto -203 -> 183
+    //   389: astore 7
+    //   391: ldc 141
+    //   393: iconst_1
+    //   394: ldc_w 325
+    //   397: aload 7
+    //   399: invokestatic 329	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   402: new 55	java/io/File
+    //   405: dup
+    //   406: aload 5
+    //   408: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;)V
+    //   411: invokestatic 309	bjps:a	(Ljava/io/File;)Z
+    //   414: pop
+    //   415: new 55	java/io/File
+    //   418: dup
+    //   419: aload 6
+    //   421: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;)V
+    //   424: invokestatic 309	bjps:a	(Ljava/io/File;)Z
+    //   427: pop
+    //   428: iconst_0
+    //   429: istore_3
+    //   430: goto -221 -> 209
+    //   433: ldc 141
+    //   435: iconst_1
+    //   436: ldc_w 331
+    //   439: invokestatic 315	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   442: iload 4
+    //   444: istore_3
+    //   445: goto -262 -> 183
+    //   448: astore 7
+    //   450: new 55	java/io/File
+    //   453: dup
+    //   454: aload 5
+    //   456: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;)V
+    //   459: invokestatic 309	bjps:a	(Ljava/io/File;)Z
+    //   462: pop
+    //   463: new 55	java/io/File
+    //   466: dup
+    //   467: aload 6
+    //   469: invokespecial 112	java/io/File:<init>	(Ljava/lang/String;)V
+    //   472: invokestatic 309	bjps:a	(Ljava/io/File;)Z
+    //   475: pop
+    //   476: aload 7
+    //   478: athrow
+    //   479: ldc 141
+    //   481: iconst_1
+    //   482: new 94	java/lang/StringBuilder
+    //   485: dup
+    //   486: invokespecial 95	java/lang/StringBuilder:<init>	()V
+    //   489: ldc_w 333
+    //   492: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   495: aload 5
+    //   497: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   500: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   503: invokestatic 315	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   506: iload 4
+    //   508: istore_3
+    //   509: goto -326 -> 183
+    //   512: astore 5
+    //   514: aload 5
+    //   516: invokevirtual 318	java/lang/Exception:printStackTrace	()V
+    //   519: goto -310 -> 209
+    //   522: astore 5
+    //   524: aload 5
+    //   526: invokevirtual 318	java/lang/Exception:printStackTrace	()V
+    //   529: iconst_0
+    //   530: istore_3
+    //   531: goto -322 -> 209
+    //   534: astore 5
+    //   536: aload 5
+    //   538: invokevirtual 318	java/lang/Exception:printStackTrace	()V
+    //   541: goto -65 -> 476
+    //   544: iconst_0
+    //   545: istore_3
+    //   546: goto -400 -> 146
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	549	0	this	bjfl
+    //   0	549	1	paramInt	int
+    //   85	198	2	i	int
+    //   125	421	3	bool1	boolean
+    //   35	472	4	bool2	boolean
+    //   5	243	5	str1	String
+    //   271	225	5	localException1	Exception
+    //   512	3	5	localException2	Exception
+    //   522	3	5	localException3	Exception
+    //   534	3	5	localException4	Exception
+    //   12	456	6	str2	String
+    //   54	124	7	localObject1	Object
+    //   211	162	7	localThrowable	Throwable
+    //   389	9	7	localException5	Exception
+    //   448	29	7	localObject2	Object
+    //   104	235	8	localFile	File
+    // Exception table:
+    //   from	to	target	type
+    //   73	86	211	java/lang/Throwable
+    //   243	269	271	java/lang/Exception
+    //   14	37	389	java/lang/Exception
+    //   42	56	389	java/lang/Exception
+    //   61	67	389	java/lang/Exception
+    //   73	86	389	java/lang/Exception
+    //   91	106	389	java/lang/Exception
+    //   106	123	389	java/lang/Exception
+    //   131	143	389	java/lang/Exception
+    //   150	183	389	java/lang/Exception
+    //   213	243	389	java/lang/Exception
+    //   285	300	389	java/lang/Exception
+    //   300	317	389	java/lang/Exception
+    //   325	353	389	java/lang/Exception
+    //   356	386	389	java/lang/Exception
+    //   433	442	389	java/lang/Exception
+    //   479	506	389	java/lang/Exception
+    //   14	37	448	finally
+    //   42	56	448	finally
+    //   61	67	448	finally
+    //   73	86	448	finally
+    //   91	106	448	finally
+    //   106	123	448	finally
+    //   131	143	448	finally
+    //   150	183	448	finally
+    //   213	243	448	finally
+    //   285	300	448	finally
+    //   300	317	448	finally
+    //   325	353	448	finally
+    //   356	386	448	finally
+    //   391	402	448	finally
+    //   433	442	448	finally
+    //   479	506	448	finally
+    //   183	209	512	java/lang/Exception
+    //   402	428	522	java/lang/Exception
+    //   450	476	534	java/lang/Exception
   }
   
-  private void e()
+  private boolean a(int paramInt1, String paramString1, int paramInt2, String arg4, bjfi parambjfi)
   {
-    Object localObject = (bkby)tcz.a(39);
-    ((bkby)localObject).c();
+    if (TextUtils.isEmpty(paramString1))
+    {
+      QLog.e("FontManager", 1, "fontUrl is empty.");
+      return false;
+    }
+    if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    }
+    bjft localbjft = new bjft(this, null);
+    localbjft.jdField_a_of_type_Int = paramInt1;
+    localbjft.b = paramInt2;
+    localbjft.jdField_a_of_type_JavaLangString = ???;
+    localbjft.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambjfi);
+    synchronized (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap)
+    {
+      parambjfi = (ArrayList)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt1));
+      if (parambjfi == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("FontManager", 4, "add new download task. fontId =" + paramInt1);
+        }
+        parambjfi = new ArrayList();
+        parambjfi.add(localbjft);
+        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt1), parambjfi);
+        ThreadManager.post(new FontManager.4(this, paramString1, paramInt1), 5, null, false);
+        return true;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("FontManager", 4, "attache download task. fontId =" + paramInt1);
+      }
+      parambjfi.add(localbjft);
+      return true;
+    }
+  }
+  
+  private boolean a(String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      return false;
+    }
+    Object localObject = paramString2 + "." + b() + ".tmp";
+    boolean bool;
+    try
+    {
+      ETEngine.getInstanceForSpace();
+      bool = ETEngine.native_ftf2ttf(paramString1, (String)localObject);
+      if (!bool) {
+        break label178;
+      }
+      paramString1 = new File((String)localObject);
+      localObject = new File(paramString2);
+      if (!((File)localObject).exists()) {
+        bool = paramString1.renameTo((File)localObject);
+      }
+      if (!bool)
+      {
+        QLog.e("FontManager", 1, "failed to move trueType font file, from path = " + paramString1.getAbsolutePath());
+        return bool;
+      }
+    }
+    catch (Throwable paramString1)
+    {
+      QLog.e("FontManager", 1, "call native_ftf2ttf error, errMsg = " + paramString1.toString());
+      return false;
+    }
+    b().a(paramString2, true);
+    return bool;
+    label178:
+    QLog.e("FontManager", 1, "call native_ftf2ttf error");
+    return bool;
+  }
+  
+  private File[] a(File paramFile)
+  {
+    return paramFile.listFiles(this.jdField_a_of_type_JavaIoFileFilter);
+  }
+  
+  private static bjds b()
+  {
+    if (jdField_a_of_type_Bjds == null) {
+      jdField_a_of_type_Bjds = bjdq.d();
+    }
+    return jdField_a_of_type_Bjds;
+  }
+  
+  private String b()
+  {
     String str;
-    if (this.jdField_a_of_type_Bkgg == null)
+    int i;
+    if (TextUtils.isEmpty(this.c))
     {
-      this.jdField_a_of_type_Bkgg = new bkgg("0");
-      this.jdField_a_of_type_Bkgg.jdField_b_of_type_Boolean = true;
-      str = bkby.c((bkby)localObject, "0");
-      localObject = bkby.a((bkby)localObject, "0");
-      if ((TextUtils.isEmpty((CharSequence)localObject)) || (!bbfj.g(this.jdField_a_of_type_AndroidContentContext))) {
-        break label113;
+      str = BaseApplicationImpl.getApplication().getQQProcessName();
+      i = str.indexOf(':');
+      if ((i <= 0) || (i >= str.length() - 1)) {
+        break label54;
       }
-      this.jdField_a_of_type_Bkgg.c = ((String)localObject);
     }
-    for (;;)
+    label54:
+    for (this.c = str.substring(i + 1);; this.c = str) {
+      return this.c;
+    }
+  }
+  
+  private String b(int paramInt)
+  {
+    String str = c() + paramInt;
+    File localFile = new File(str);
+    if (!localFile.isDirectory()) {
+      localFile.mkdirs();
+    }
+    return str + File.separator;
+  }
+  
+  private String b(int paramInt1, int paramInt2)
+  {
+    String str2 = a(paramInt1, paramInt2);
+    String str1 = str2;
+    if (!new File(str2).exists()) {
+      str1 = null;
+    }
+    return str1;
+  }
+  
+  private void b(int paramInt)
+  {
+    bjfg localbjfg = new bjfg(paramInt);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localbjfg);
+  }
+  
+  private boolean b(int paramInt)
+  {
+    return paramInt > 0;
+  }
+  
+  private String c()
+  {
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_b_of_type_JavaLangString + File.separator;
+    }
+    this.jdField_b_of_type_JavaLangString = (a() + b());
+    File localFile = new File(this.jdField_b_of_type_JavaLangString);
+    if (!localFile.isDirectory()) {
+      localFile.mkdirs();
+    }
+    return this.jdField_b_of_type_JavaLangString + File.separator;
+  }
+  
+  private String c(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 1) {}
+    for (String str = ".ttf";; str = ".ftf")
     {
-      this.jdField_a_of_type_Bkgg.a(str);
-      if (this.jdField_a_of_type_Bkga == null) {
-        this.jdField_a_of_type_Bkga = new bkga("2001");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt1).append(str);
+      return localStringBuilder.toString();
+      if (paramInt2 != 0) {
+        break;
       }
-      return;
-      label113:
-      this.jdField_a_of_type_Bkgg.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845702);
+    }
+    throw new IllegalArgumentException("fontType = " + paramInt2);
+  }
+  
+  public bjfq a(long paramLong)
+  {
+    Object localObject1 = LocalMultiProcConfig.getString4Uin("qzone_barrage_effect_save_data", "", paramLong);
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+    String[] arrayOfString;
+    do
+    {
+      return null;
+      arrayOfString = ((String)localObject1).split(";");
+    } while ((arrayOfString == null) || (arrayOfString.length < 2));
+    localObject1 = new bjfq();
+    try
+    {
+      ((bjfq)localObject1).jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
+      ((bjfq)localObject1).jdField_a_of_type_JavaLangString = arrayOfString[1];
+      return localObject1;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("FontManager", 1, "loadDefaultFontData Throwable, errMsg = " + localThrowable.getMessage());
+        Object localObject2 = null;
+      }
     }
   }
   
-  public bjwf a()
+  public bjfr a(long paramLong)
   {
-    return this.jdField_a_of_type_Bjwf;
-  }
-  
-  public bkfz a(String paramString)
-  {
-    return this.jdField_a_of_type_Bjwf.a(paramString);
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_Bkgg != null) {
-      return this.jdField_a_of_type_Bkgg.f;
+    String str = LocalMultiProcConfig.getString4Uin("qzone_font_save_data", "", paramLong);
+    if (TextUtils.isEmpty(str)) {
+      return null;
     }
+    bjfr localbjfr = new bjfr();
+    localbjfr.a(str);
+    return localbjfr;
+  }
+  
+  public bjfs a(long paramLong)
+  {
+    Object localObject1 = LocalMultiProcConfig.getString4Uin("qzone_super_font_save_data", "", paramLong);
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
+    String[] arrayOfString;
+    do
+    {
+      return null;
+      arrayOfString = ((String)localObject1).split(";");
+    } while ((arrayOfString == null) || (arrayOfString.length < 2));
+    localObject1 = new bjfs();
+    try
+    {
+      ((bjfs)localObject1).jdField_a_of_type_Int = Integer.valueOf(arrayOfString[0]).intValue();
+      ((bjfs)localObject1).jdField_a_of_type_JavaLangString = arrayOfString[1];
+      return localObject1;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        QLog.e("FontManager", 1, "loadDefaultFontData Throwable, errMsg = " + localThrowable.getMessage());
+        Object localObject2 = null;
+      }
+    }
+  }
+  
+  public ETEngine a()
+  {
+    boolean bool = true;
+    ETEngine localETEngine = null;
+    if ((!gf.b()) && (gf.a())) {
+      bool = gf.c();
+    }
+    while (gf.a())
+    {
+      if (bool) {
+        localETEngine = ETEngine.getInstanceForSpace();
+      }
+      return localETEngine;
+    }
+    a(null);
+    QLog.d("FontManager", 1, "initEngine but libvipfont.so didn't download, start download.");
     return null;
   }
   
-  public List<bkfz> a()
+  public String a(int paramInt, String paramString1, String paramString2, bjfj parambjfj)
   {
-    return a(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("FontManager", 2, "getFullTypeFont fontId:" + paramInt + ", strUrl = " + paramString1);
+    }
+    if (!b(paramInt)) {
+      return null;
+    }
+    String str = a(paramInt, 0);
+    if (!new File(str).exists())
+    {
+      a(paramInt, paramString1, 0, paramString2, false, parambjfj);
+      return null;
+    }
+    b().a(str, true);
+    return str;
   }
   
-  @NonNull
-  public List<bkfz> a(boolean paramBoolean)
+  public String a(int paramInt, String paramString1, String paramString2, boolean paramBoolean, bjfk parambjfk)
   {
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("FontManager", 2, "getTrueTypeFont fontId:" + paramInt + ", strUrl = " + paramString1);
+    }
+    if (!b(paramInt)) {
+      return null;
+    }
+    String str = a(paramInt, 1);
+    if (!new File(str).exists())
     {
-      DoodleEmojiItem localDoodleEmojiItem;
-      Object localObject3;
-      try
+      a(paramInt, paramString1, 1, paramString2, paramBoolean, parambjfk);
+      return null;
+    }
+    b().a(str, true);
+    return str;
+  }
+  
+  public void a(long paramLong, bjfq parambjfq)
+  {
+    String str = "";
+    Object localObject = str;
+    if (parambjfq != null)
+    {
+      localObject = str;
+      if (parambjfq.jdField_a_of_type_Int > 0)
       {
-        if ((this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList != null) && (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() != 0)) {
-          break label752;
-        }
-        Object localObject1 = ((bkby)tcz.a(39)).a();
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-        localObject1 = ((Collection)localObject1).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
-        localDoodleEmojiItem = (DoodleEmojiItem)((Iterator)localObject1).next();
-        if (localDoodleEmojiItem.type == 1)
+        localObject = str;
+        if (!TextUtils.isEmpty(parambjfq.jdField_a_of_type_JavaLangString))
         {
-          localObject3 = new bkgj(localDoodleEmojiItem.pack_id);
-          b((bkgj)localObject3, localDoodleEmojiItem);
-          if (("1".equals(((bkgj)localObject3).jdField_a_of_type_JavaLangString)) && (!bbfj.g(this.jdField_a_of_type_AndroidContentContext))) {
-            ((bkgj)localObject3).jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845559);
-          }
-          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(localObject3);
-          continue;
-        }
-        if (localDoodleEmojiItem.type != 2) {
-          break label398;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(parambjfq.jdField_a_of_type_Int).append(";");
+          ((StringBuilder)localObject).append(parambjfq.jdField_a_of_type_JavaLangString).append(";");
+          localObject = ((StringBuilder)localObject).toString();
+          a(paramLong, null);
+          a(paramLong, null);
         }
       }
-      finally {}
-      this.jdField_a_of_type_Bkgg.jdField_b_of_type_JavaLangString = localDoodleEmojiItem.name;
-      if ((!TextUtils.isEmpty(localDoodleEmojiItem.icon)) && (bbfj.g(this.jdField_a_of_type_AndroidContentContext))) {
-        this.jdField_a_of_type_Bkgg.c = localDoodleEmojiItem.icon;
-      }
-      Object localObject4;
-      while (localDoodleEmojiItem.mItemList != null)
+    }
+    LocalMultiProcConfig.putString4Uin("qzone_barrage_effect_save_data", (String)localObject, paramLong);
+  }
+  
+  public void a(long paramLong, bjfr parambjfr)
+  {
+    String str2 = "";
+    String str1 = str2;
+    if (parambjfr != null)
+    {
+      str1 = str2;
+      if (parambjfr.jdField_a_of_type_Int > 0)
       {
-        this.jdField_a_of_type_Bkgg.jdField_a_of_type_JavaUtilList = localDoodleEmojiItem.mItemList;
-        if (localDoodleEmojiItem.mItemList == null) {
-          break;
-        }
-        ved.b("PasterDataManager", "add doodle emoji location item name = " + this.jdField_a_of_type_Bkgg.f);
-        localObject3 = localDoodleEmojiItem.mItemList.iterator();
-        while (((Iterator)localObject3).hasNext())
+        str1 = str2;
+        if (!TextUtils.isEmpty(parambjfr.jdField_a_of_type_JavaLangString))
         {
-          localObject4 = (bkgh)((Iterator)localObject3).next();
-          ((bkgh)localObject4).g = this.jdField_a_of_type_Bkgg.jdField_b_of_type_JavaLangString;
-          ((bkgh)localObject4).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Bkgg.f;
+          str1 = parambjfr.toString();
+          a(paramLong, null);
         }
-        this.jdField_a_of_type_Bkgg.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845702);
       }
-      this.jdField_a_of_type_Bkgg.jdField_a_of_type_Boolean = "1".equals(localDoodleEmojiItem.random_position);
-      this.jdField_a_of_type_Bkgg.jdField_a_of_type_Int = localDoodleEmojiItem.hide;
-      this.jdField_a_of_type_Bkgg.jdField_b_of_type_Int = localDoodleEmojiItem.mask;
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_Bkgg);
-      continue;
-      label398:
-      if (localDoodleEmojiItem.type == 3)
+    }
+    LocalMultiProcConfig.putString4Uin("qzone_font_save_data", str1, paramLong);
+  }
+  
+  public void a(long paramLong, bjfs parambjfs)
+  {
+    String str = "";
+    Object localObject = str;
+    if (parambjfs != null)
+    {
+      localObject = str;
+      if (parambjfs.jdField_a_of_type_Int > 0)
       {
-        if (this.jdField_a_of_type_Bkga == null) {
-          this.jdField_a_of_type_Bkga = new bkga(localDoodleEmojiItem.pack_id);
-        }
-        for (;;)
+        localObject = str;
+        if (!TextUtils.isEmpty(parambjfs.jdField_a_of_type_JavaLangString))
         {
-          this.jdField_a_of_type_Bkga.jdField_b_of_type_JavaLangString = localDoodleEmojiItem.name;
-          this.jdField_a_of_type_Bkga.jdField_a_of_type_JavaUtilList = localDoodleEmojiItem.mInfoItemList;
-          this.jdField_a_of_type_Bkga.a(localDoodleEmojiItem.config);
-          this.jdField_a_of_type_Bkga.jdField_a_of_type_Int = localDoodleEmojiItem.hide;
-          this.jdField_a_of_type_Bkga.g = "default";
-          this.jdField_a_of_type_Bkga.c = -999;
-          this.jdField_a_of_type_Bkga.h = "--";
-          this.jdField_a_of_type_Bkga.i = "default";
-          if (this.jdField_a_of_type_Bkga.jdField_a_of_type_JavaUtilList == null) {
-            break;
-          }
-          localObject3 = this.jdField_a_of_type_Bkga.jdField_a_of_type_JavaUtilList.iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            localObject4 = (bkgd)((Iterator)localObject3).next();
-            ((bkgd)localObject4).m = this.jdField_a_of_type_Bkga.jdField_b_of_type_JavaLangString;
-            if (bkge.a(((bkgd)localObject4).jdField_a_of_type_Int)) {
-              ((bkgd)localObject4).l = this.jdField_a_of_type_Bkga.f;
-            }
-            if ((localDoodleEmojiItem.mCityRes != null) && (((bkgd)localObject4).jdField_a_of_type_Int == 7)) {
-              a(localDoodleEmojiItem.mCityRes, this.jdField_a_of_type_Bkga.g, (bkgd)localObject4);
-            }
-            if (((bkgd)localObject4).jdField_a_of_type_Int == 6)
-            {
-              ((bkgd)localObject4).c = this.jdField_a_of_type_Bkga.c;
-              ((bkgd)localObject4).j = this.jdField_a_of_type_Bkga.h;
-              ((bkgd)localObject4).k = this.jdField_a_of_type_Bkga.i;
-            }
-          }
-          this.jdField_a_of_type_Bkga.jdField_a_of_type_JavaLangString = localDoodleEmojiItem.pack_id;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(this.jdField_a_of_type_Bkga);
-        this.jdField_a_of_type_Bkga.jdField_a_of_type_JavaUtilMap = localDoodleEmojiItem.mCityRes;
-      }
-    }
-    ved.b("PasterDataManager", "getDoodleFacePackages, size = " + this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size());
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    label752:
-    if (paramBoolean)
-    {
-      StaticStickerProviderView.a(this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList);
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    }
-    CopyOnWriteArrayList localCopyOnWriteArrayList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    return localCopyOnWriteArrayList;
-  }
-  
-  public void a(int paramInt, tey paramtey, List<TroopBarPOI> paramList)
-  {
-    ved.b("PasterDataManager", "onPOIListRequestResult." + paramInt);
-    if ((paramInt == 0) && (paramtey != null))
-    {
-      this.jdField_a_of_type_Tey = paramtey;
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        paramtey = ((TroopBarPOI)paramList.get(0)).a();
-        if (QLog.isColorLevel()) {
-          QLog.d("PasterDataManager", 2, "onPOIListRequestResult " + paramtey);
-        }
-        String str = ShortVideoUtils.c(QQStoryContext.a().getCurrentAccountUin());
-        Iterator localIterator = paramList.iterator();
-        while (localIterator.hasNext()) {
-          if (((TroopBarPOI)localIterator.next()).a().equals(str)) {
-            paramtey = str;
-          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(parambjfs.jdField_a_of_type_Int).append(";");
+          ((StringBuilder)localObject).append(parambjfs.jdField_a_of_type_JavaLangString).append(";");
+          localObject = ((StringBuilder)localObject).toString();
+          a(paramLong, null);
         }
       }
     }
-    for (;;)
-    {
-      a(((TroopBarPOI)paramList.get(0)).jdField_b_of_type_JavaLangString, paramtey, true);
-      return;
-    }
+    LocalMultiProcConfig.putString4Uin("qzone_super_font_save_data", (String)localObject, paramLong);
   }
   
-  public void a(String paramString)
+  public void a(apgm paramapgm)
   {
-    a(null, paramString, false);
+    paramapgm = new bjfn(this);
+    QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gh.jdField_a_of_type_JavaLangString, null, paramapgm);
   }
   
-  public void a(ter paramter)
+  public boolean a()
   {
-    this.jdField_a_of_type_Tdn = ((tdn)((tca)tcz.a(20)).a(0));
-    Object localObject = this.jdField_a_of_type_Tdn.a();
-    if (localObject != null)
-    {
-      ved.b("PasterDataManager", "get weather from cache.");
-      a((tdq)localObject);
-      return;
-    }
-    ved.b("PasterDataManager", "get weather from net.");
-    localObject = paramter;
-    if (paramter == null) {
-      localObject = tes.a();
-    }
-    this.jdField_a_of_type_Tdn.a(this);
-    this.jdField_a_of_type_Tdn.b((ter)localObject);
-  }
-  
-  public void a(boolean paramBoolean, Activity paramActivity)
-  {
-    if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Bkga != null) && (!"default".equals(this.jdField_a_of_type_Bkga.g)) && (!"--".equals(this.jdField_a_of_type_Bkga.h))) {
-      return;
-    }
-    new avtl(paramActivity, new bjfn(this, paramBoolean)).a();
-  }
-  
-  public void a(boolean paramBoolean, tdq paramtdq)
-  {
-    if (paramBoolean) {
-      a(paramtdq);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Bjfp != null)
-    {
-      stb.a().unRegisterSubscriber(this.jdField_a_of_type_Bjfp);
-      this.jdField_a_of_type_Bjfp = null;
-    }
-    if (this.jdField_a_of_type_Tdn != null) {
-      this.jdField_a_of_type_Tdn.b(this);
-    }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-    this.jdField_a_of_type_Bjwf = new bjwf();
-    e();
-    this.jdField_a_of_type_Bjfp = new bjfp(this);
-    stb.a().registerSubscriber(this.jdField_a_of_type_Bjfp);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PasterDataManager", 4, "initPasterConfig");
-    }
-  }
-  
-  public void d()
-  {
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public boolean isValidate()
-  {
-    return true;
+    return gf.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjfl
  * JD-Core Version:    0.7.0.1
  */

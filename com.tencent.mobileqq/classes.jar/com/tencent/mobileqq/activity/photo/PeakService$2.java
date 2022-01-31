@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agmg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,12 +13,12 @@ class PeakService$2
     if (QLog.isColorLevel()) {
       QLog.d("PeakService", 2, "peak service start MediaScanner.doScan()");
     }
-    agmg.a(BaseApplicationImpl.getContext()).a();
+    MediaScanner.getInstance(BaseApplicationImpl.getContext()).doScan();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.PeakService.2
  * JD-Core Version:    0.7.0.1
  */

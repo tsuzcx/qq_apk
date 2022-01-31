@@ -1,32 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class aboi
-  implements DialogInterface.OnClickListener
+class aboi
+  implements Comparator<MessageRecord>
 {
-  public aboi(NotificationActivity paramNotificationActivity) {}
+  aboi(abof paramabof) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    try
-    {
-      axqy.b(null, "P_CliOper", "Safe_StartAppCheck", "", "DIALOG_PACKAGE_INVALID", "LeftButton", 0, 0, "", "", "", "");
-      this.a.finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
-    }
+    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aboi
  * JD-Core Version:    0.7.0.1
  */

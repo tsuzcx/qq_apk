@@ -1,169 +1,114 @@
-import android.graphics.Matrix;
-import android.graphics.RectF;
-import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.model.SizeI;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
-import java.util.List;
-import org.jetbrains.annotations.NotNull;
-import org.libpag.PAGComposition;
-import org.libpag.PAGFile;
-import org.libpag.PAGImage;
-import org.libpag.PAGLayer;
-import org.libpag.PAGRenderer;
-import org.libpag.PAGSurface;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.StringTokenizer;
 
 public class lrb
-  extends lrc
 {
-  private int jdField_a_of_type_Int = 720;
-  private long jdField_a_of_type_Long;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-  private final String jdField_a_of_type_JavaLangString = "PAGFilter-" + Integer.toHexString(hashCode());
-  private PAGFile jdField_a_of_type_OrgLibpagPAGFile;
-  private PAGRenderer jdField_a_of_type_OrgLibpagPAGRenderer;
-  private PAGSurface jdField_a_of_type_OrgLibpagPAGSurface;
-  private int jdField_b_of_type_Int = 1280;
-  private long jdField_b_of_type_Long;
+  private char jdField_a_of_type_Char = '\r';
+  private Map<String, String> jdField_a_of_type_JavaUtilMap;
+  private char b = '\t';
   
-  public lrb(int paramInt1, int paramInt2)
+  public lrb()
   {
-    super(1);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Char = '\r';
+    this.b = '\t';
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  private void d()
+  public lrb(char paramChar1, char paramChar2)
   {
-    if (this.jdField_a_of_type_OrgLibpagPAGFile != null)
-    {
-      if (this.jdField_a_of_type_OrgLibpagPAGSurface != null)
-      {
-        this.jdField_a_of_type_OrgLibpagPAGSurface.release();
-        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyPag: surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()) + " released");
-        this.jdField_a_of_type_OrgLibpagPAGSurface = null;
-      }
-      if (this.jdField_a_of_type_OrgLibpagPAGRenderer == null) {
-        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "applyPag: not inited yet");
-      }
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_OrgLibpagPAGRenderer.setFile(this.jdField_a_of_type_OrgLibpagPAGFile);
-    this.jdField_a_of_type_OrgLibpagPAGSurface = PAGSurface.FromTexture(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.getTextureId(), this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, true);
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyPag: create surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()));
-    this.jdField_a_of_type_OrgLibpagPAGRenderer.setSurface(this.jdField_a_of_type_OrgLibpagPAGSurface);
-    this.jdField_a_of_type_Long = (this.jdField_a_of_type_OrgLibpagPAGFile.duration() / 1000L);
+    this.jdField_a_of_type_Char = paramChar1;
+    this.b = paramChar2;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  @NotNull
-  protected Frame a(List<lrg> paramList, long paramLong)
+  public int a(String paramString)
   {
-    if ((this.jdField_b_of_type_Long == 0L) || (this.jdField_b_of_type_Long > paramLong)) {
-      this.jdField_b_of_type_Long = paramLong;
-    }
-    int j = Math.min(this.jdField_a_of_type_OrgLibpagPAGFile.numImages(), paramList.size());
-    int i = 0;
-    while (i < j)
-    {
-      Object localObject = ((lrg)paramList.get(i)).jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-      localObject = PAGImage.FromTexture(((Frame)localObject).getTextureId(), 3553, ((Frame)localObject).width, ((Frame)localObject).height, true);
-      if (localObject != null)
-      {
-        ((PAGImage)localObject).setScaleMode(3);
-        this.jdField_a_of_type_OrgLibpagPAGRenderer.replaceImage(i, (PAGImage)localObject);
-      }
-      i += 1;
-    }
-    double d = (paramLong - this.jdField_b_of_type_Long) % this.jdField_a_of_type_Long / this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_OrgLibpagPAGRenderer.setProgress(d);
-    this.jdField_a_of_type_OrgLibpagPAGRenderer.flush();
-    return this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+    return a(paramString, 0);
   }
   
-  public SizeI a()
+  public int a(String paramString, int paramInt)
   {
-    return new SizeI(this.jdField_a_of_type_OrgLibpagPAGFile.width(), this.jdField_a_of_type_OrgLibpagPAGFile.height());
+    String str = (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    int i = paramInt;
+    if (str != null) {}
+    try
+    {
+      i = Integer.parseInt(str);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      QLog.w("GlStringParser", 1, "getInt, key[" + paramString + "], value[" + str + "], def[" + paramInt + "]", localException);
+    }
+    return paramInt;
   }
   
-  public List<Pair<RectF, Matrix>> a()
+  public String a()
   {
-    int k = 0;
-    PAGComposition localPAGComposition = this.jdField_a_of_type_OrgLibpagPAGRenderer.getRootComposition();
-    int n = this.jdField_a_of_type_OrgLibpagPAGFile.numImages();
-    int m = localPAGComposition.numLayers();
-    ArrayList localArrayList = new ArrayList(n);
-    int i = 0;
-    int j;
-    for (;;)
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      j = k;
-      if (i >= n) {
-        break;
-      }
-      localArrayList.add(null);
-      i += 1;
+      String str = (String)localIterator.next();
+      localStringBuilder.append(str);
+      localStringBuilder.append(this.jdField_a_of_type_Char);
+      localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilMap.get(str));
+      localStringBuilder.append(this.b);
     }
-    while (j < m)
-    {
-      PAGLayer localPAGLayer = localPAGComposition.getLayerAt(j);
-      if (localPAGLayer.layerType() == 5) {
-        localArrayList.set(localPAGLayer.editableIndex(), new Pair(localPAGLayer.getBounds(), localPAGLayer.getTotalMatrix()));
-      }
-      j += 1;
-    }
-    return localArrayList;
+    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+    return localStringBuilder.toString();
   }
   
-  protected void a()
+  public String a(String paramString)
   {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit");
-    if (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame == null)
-    {
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.bindFrame(-1, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0.0D);
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create frame#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.hashCode()));
-    }
-    this.jdField_a_of_type_OrgLibpagPAGRenderer = new PAGRenderer();
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onInit: create render#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGRenderer.hashCode()));
-    d();
+    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_OrgLibpagPAGFile = PAGFile.Load(paramString);
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "applyMaterial: " + paramString + " loaded, width=" + this.jdField_a_of_type_OrgLibpagPAGFile.width() + ", height=" + this.jdField_a_of_type_OrgLibpagPAGFile.height());
-    d();
+    if (paramString == null) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilMap.clear();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.b);
+      paramString = new StringTokenizer(paramString, ((StringBuilder)localObject).toString());
+      while (paramString.hasMoreElements())
+      {
+        String str = paramString.nextToken();
+        int i = str.indexOf(this.jdField_a_of_type_Char);
+        if (i != -1)
+        {
+          localObject = str.substring(0, i);
+          str = str.substring(i + 1);
+          this.jdField_a_of_type_JavaUtilMap.put(localObject, str);
+        }
+      }
+    }
   }
   
-  protected void b()
+  public void a(String paramString, int paramInt)
   {
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy");
-    if (this.jdField_a_of_type_OrgLibpagPAGRenderer != null)
-    {
-      this.jdField_a_of_type_OrgLibpagPAGRenderer.setSurface(null);
-      this.jdField_a_of_type_OrgLibpagPAGRenderer = null;
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.toString(paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString1.indexOf(this.b) != -1) || (paramString1.indexOf(this.jdField_a_of_type_Char) != -1)) {}
+    while ((paramString2 == null) || (paramString2.indexOf(this.jdField_a_of_type_Char) != -1) || (paramString2.indexOf(this.b) != -1)) {
+      return;
     }
-    if (this.jdField_a_of_type_OrgLibpagPAGSurface != null)
-    {
-      this.jdField_a_of_type_OrgLibpagPAGSurface.release();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: surface#" + Integer.toHexString(this.jdField_a_of_type_OrgLibpagPAGSurface.hashCode()) + " released");
-      this.jdField_a_of_type_OrgLibpagPAGSurface = null;
-    }
-    if (this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame != null)
-    {
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: frame#" + Integer.toHexString(this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.hashCode()) + " cleared");
-      this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = null;
-    }
+    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lrb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,44 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.1;
-import com.tencent.mobileqq.util.QQAvatarFHDDecoder.1.2;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class bbai
-  extends ajxj
+class bbai
+  implements awfy
 {
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  bbai(bbah parambbah) {}
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetHeadInfo ").append(paramBoolean).append(" ");
-      if (paramSetting == null) {
-        break label99;
-      }
-    }
-    label99:
-    for (String str = paramSetting.uin;; str = "")
-    {
-      QLog.i("QQAvatarFHDDecoder", 2, str);
-      if ((paramSetting != null) && (paramSetting.uin != null) && (paramSetting.uin.equals(bbah.a(this.a)))) {
-        ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.1(this, paramSetting), 128, null, true);
-      }
-      return;
-    }
+    return null;
   }
   
-  public void onGetHeadInfoEmpty(boolean paramBoolean, int paramInt, List<String> paramList)
+  public void a(awfz paramawfz) {}
+  
+  public void b(awfz paramawfz)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    if (paramawfz.jdField_b_of_type_Int == 0)
     {
-      localStringBuilder = new StringBuilder().append("onGetHeadInfoEmpty ").append(paramBoolean).append(" ").append(paramInt).append(" ");
-      if (paramList == null) {
-        break label138;
-      }
-    }
-    label138:
-    for (String str = paramList.toString();; str = "")
-    {
-      QLog.i("QQAvatarFHDDecoder", 2, str);
-      if (paramList != null)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          str = (String)paramList.next();
-          if ((str != null) && (str.equals(bbah.a(this.a))))
-          {
-            if (!paramBoolean) {
-              break label145;
-            }
-            ThreadManagerV2.excute(new QQAvatarFHDDecoder.1.2(this, str), 128, null, true);
-          }
-        }
-      }
+      this.a.a.c = paramawfz.jdField_b_of_type_JavaLangString;
+      this.a.a.a = paramawfz.c;
+      bbah.a(this.a);
+      bbah.a(this.a, new ErrorMessage());
       return;
     }
-    label145:
-    bbah.a(this.a).obtainMessage(1).sendToTarget();
+    if ((paramawfz.jdField_b_of_type_Int == bato.a(940010)) && (bbah.a(this.a).getAndIncrement() < 2))
+    {
+      bbah.b(this.a);
+      wsv.d("tribe_publish_TribeVideoFileObject", "retry load file");
+      return;
+    }
+    bbah.c(this.a);
+    paramawfz = new ErrorMessage(paramawfz.jdField_b_of_type_Int, paramawfz.a);
+    bbah.a(this.a, paramawfz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbai
  * JD-Core Version:    0.7.0.1
  */

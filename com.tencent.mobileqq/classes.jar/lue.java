@@ -1,82 +1,212 @@
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.text.method.MovementMethod;
-import android.text.style.ClickableSpan;
-import android.text.style.ForegroundColorSpan;
-import android.view.MotionEvent;
-import android.widget.TextView;
+import android.graphics.Bitmap;
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class lue
-  extends LinkMovementMethod
+public abstract class lue
+  extends lty
 {
-  private static lue a;
-  public int a;
-  public int b = -7447805;
+  private static int k;
+  boolean a;
+  protected Bitmap b;
+  private boolean b;
+  private boolean c = true;
+  private boolean d;
   
-  public lue()
+  protected lue()
   {
-    this.jdField_a_of_type_Int = -10864125;
+    super(null, 0);
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  static int a(TextView paramTextView, int paramInt1, int paramInt2)
+  private Bitmap b()
   {
-    paramTextView = paramTextView.getTag(paramInt1);
-    if ((paramTextView instanceof Integer)) {
-      paramInt2 = ((Integer)paramTextView).intValue();
-    }
-    return paramInt2;
-  }
-  
-  public static MovementMethod a()
-  {
-    if (jdField_a_of_type_Lue == null) {
-      jdField_a_of_type_Lue = new lue();
-    }
-    return jdField_a_of_type_Lue;
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
+    if (this.jdField_b_of_type_AndroidGraphicsBitmap == null)
     {
-      int j = (int)paramMotionEvent.getX();
-      int k = (int)paramMotionEvent.getY();
-      int m = paramTextView.getTotalPaddingLeft();
-      int n = paramTextView.getTotalPaddingTop();
-      int i1 = paramTextView.getScrollX();
-      int i2 = paramTextView.getScrollY();
-      Object localObject = paramTextView.getLayout();
-      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
-      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
-      if (localObject.length != 0)
+      this.jdField_b_of_type_AndroidGraphicsBitmap = a();
+      if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
       {
-        if (i == 1)
-        {
-          i = a(paramTextView, 2131376866, this.b);
-          localObject[0].onClick(paramTextView);
-          paramSpannable.setSpan(new ForegroundColorSpan(i), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+        int i = this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth();
+        int j = this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight();
+        if (this.e == -1) {
+          a(i, j);
+        }
+      }
+    }
+    return this.jdField_b_of_type_AndroidGraphicsBitmap;
+  }
+  
+  private void c(lsv paramlsv)
+  {
+    Bitmap localBitmap = b();
+    if (localBitmap != null) {
+      try
+      {
+        int i = localBitmap.getWidth();
+        int j = localBitmap.getHeight();
+        int m = e();
+        int n = f();
+        if (this.jdField_a_of_type_ArrayOfInt == null) {
+          this.jdField_a_of_type_ArrayOfInt = new int[1];
+        }
+        this.jdField_a_of_type_ArrayOfInt[0] = paramlsv.a().a();
+        paramlsv.a(this);
+        if ((i == m) && (j == n)) {
+          paramlsv.a(this, localBitmap);
         }
         for (;;)
         {
-          return true;
-          if (i == 0)
-          {
-            paramSpannable.setSpan(new ForegroundColorSpan(a(paramTextView, 2131376865, this.jdField_a_of_type_Int)), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
-            Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]));
+          e();
+          a(paramlsv);
+          this.jdField_b_of_type_Int = 1;
+          this.jdField_b_of_type_Boolean = true;
+          return;
+          i = GLUtils.getInternalFormat(localBitmap);
+          j = GLUtils.getType(localBitmap);
+          paramlsv.a(this, i, j);
+          paramlsv.a(this, 0, 0, localBitmap, i, j);
+        }
+        this.jdField_b_of_type_Int = -1;
+      }
+      finally
+      {
+        e();
+      }
+    }
+    throw new RuntimeException("Texture load fail, no bitmap");
+  }
+  
+  private void e()
+  {
+    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
+    {
+      a(this.jdField_b_of_type_AndroidGraphicsBitmap);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = null;
+    }
+  }
+  
+  public static boolean e()
+  {
+    return k > 100;
+  }
+  
+  public static void g()
+  {
+    k = 0;
+  }
+  
+  protected abstract Bitmap a();
+  
+  public void a()
+  {
+    super.a();
+    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
+      e();
+    }
+  }
+  
+  protected abstract void a(Bitmap paramBitmap);
+  
+  public void a(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  public boolean a(lsv paramlsv)
+  {
+    b(paramlsv);
+    return true;
+  }
+  
+  public ltw[] a(lsv paramlsv)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(770, 771);
+    }
+    return super.a(paramlsv);
+  }
+  
+  public void b(lsv paramlsv)
+  {
+    if (!c()) {
+      if (this.d)
+      {
+        int i = k + 1;
+        k = i;
+        if (i <= 100) {}
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        return;
+        c(paramlsv);
+        return;
+        if (!this.jdField_b_of_type_Boolean)
+        {
+          Bitmap localBitmap = b();
+          if (localBitmap != null) {
+            try
+            {
+              if (!localBitmap.isRecycled())
+              {
+                paramlsv.a(this, 0, 0, localBitmap, GLUtils.getInternalFormat(localBitmap), GLUtils.getType(localBitmap));
+                e();
+                this.jdField_b_of_type_Boolean = true;
+                return;
+              }
+            }
+            catch (IllegalArgumentException paramlsv) {}
           }
         }
       }
-      Selection.removeSelection(paramSpannable);
+    } while (!QLog.isColorLevel());
+    QLog.e("UploadedTexture", 2, "WL_DEBUG updateContent e = " + paramlsv);
+  }
+  
+  public boolean b()
+  {
+    return this.c;
+  }
+  
+  public int c()
+  {
+    if (this.e == -1) {
+      b();
     }
-    return super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+    return this.e;
+  }
+  
+  public int d()
+  {
+    if (this.e == -1) {
+      b();
+    }
+    return this.f;
+  }
+  
+  protected void f()
+  {
+    if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
+      e();
+    }
+    this.jdField_b_of_type_Boolean = false;
+    this.e = -1;
+    this.f = -1;
+  }
+  
+  public int g()
+  {
+    return 3553;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lue
  * JD-Core Version:    0.7.0.1
  */

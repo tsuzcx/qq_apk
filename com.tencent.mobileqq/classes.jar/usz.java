@@ -1,59 +1,56 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.QimVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class usz
-  extends QQUIEventReceiver<ust, tkk>
 {
-  public usz(@NonNull ust paramust)
+  public String a;
+  public String b;
+  public String c;
+  
+  public usz(qqstory_struct.QimVideoInfo paramQimVideoInfo)
   {
-    super(paramust);
+    this.a = paramQimVideoInfo.qim_unionid.get().toStringUtf8();
+    this.b = paramQimVideoInfo.qim_feedID.get().toStringUtf8();
+    this.c = paramQimVideoInfo.qim_vid.get().toStringUtf8();
   }
   
-  public void a(@NonNull ust paramust, @NonNull tkk paramtkk)
+  public static usz a(byte[] paramArrayOfByte)
   {
-    if (TextUtils.equals(paramtkk.jdField_a_of_type_JavaLangString, String.valueOf(paramust.hashCode())))
-    {
-      if ((paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null))
-      {
-        ved.b("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", paramtkk);
-        paramust.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-        paramust.jdField_a_of_type_JavaLangString = paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
-        if (ust.a(paramust) != -1) {
-          paramust.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = ust.a(paramust);
-        }
-        if (ust.b(paramust) != -1) {
-          paramust.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.shareGroupCount = ust.b(paramust);
-        }
-        ((FriendListHandler)tsr.a().a(1)).c(paramtkk.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, false);
-        ThreadManager.post(new MemoriesProfilePresenter.UpdateUserInfoEventReceiver.1(this, paramust), 5, null, false);
-      }
-      for (;;)
-      {
-        ust.a(paramust).a(paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-        return;
-        bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131706538) + paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.getErrorMessage(), 0);
-        ved.e("Q.qqstory.memories.MemoriesProfilePresenter", "receive update user info event: %s.", new Object[] { paramtkk });
-      }
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
+      return null;
     }
-    ved.b("Q.qqstory.memories.MemoriesProfilePresenter", "ignore this update user info event: %s.", paramtkk);
+    qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
+    try
+    {
+      localQimVideoInfo.mergeFrom(paramArrayOfByte);
+      return new usz(localQimVideoInfo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wsv.c("QimVideoInfoItem", "Error: parse db bytes error.", paramArrayOfByte);
+    }
+    return null;
   }
   
-  public Class acceptEventClass()
+  public byte[] a()
   {
-    return tkk.class;
+    qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
+    localQimVideoInfo.qim_vid.set(ByteStringMicro.copyFromUtf8(this.c));
+    localQimVideoInfo.qim_unionid.set(ByteStringMicro.copyFromUtf8(this.a));
+    localQimVideoInfo.qim_feedID.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localQimVideoInfo.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "QimVideoInfoItem{mOwnerUnionId='" + this.a + '\'' + ", mFeedId='" + this.b + '\'' + ", mVid='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     usz
  * JD-Core Version:    0.7.0.1
  */

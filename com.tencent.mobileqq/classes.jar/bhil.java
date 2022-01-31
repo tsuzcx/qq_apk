@@ -1,22 +1,21 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-final class bhil
-  implements bhin
+public class bhil
 {
-  public void a(boolean paramBoolean, Context paramContext, bhio parambhio)
+  public static String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginBroadcast onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      bhii.c(paramContext, parambhio);
-    }
+    return BaseApplication.getContext().getDir("qqprotect", 0).toString();
+  }
+  
+  public static String b()
+  {
+    return a() + File.separator + "qseclibs";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhil
  * JD-Core Version:    0.7.0.1
  */

@@ -5,55 +5,32 @@ import android.graphics.PointF;
 import android.graphics.drawable.BitmapDrawable;
 import android.opengl.GLES20;
 import android.text.TextUtils;
-import android.util.Log;
 import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.aekit.openrender.AttributeParam;
 import com.tencent.aekit.openrender.util.GlUtil;
-import com.tencent.aekit.plugin.core.AEDetectorType;
-import com.tencent.aekit.plugin.core.AIActionCounter;
-import com.tencent.aekit.plugin.core.AIActionCounter.AI_TYPE;
-import com.tencent.aekit.plugin.core.AIAttr;
-import com.tencent.aekit.plugin.core.HotAreaActionCounter;
-import com.tencent.aekit.plugin.core.IAIDataClassifier;
-import com.tencent.aekit.plugin.core.PTHandAttr;
 import com.tencent.ttpic.baseutils.audio.PlayerUtil;
 import com.tencent.ttpic.baseutils.audio.PlayerUtil.Player;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.facedetect.FaceActionCounterListener;
 import com.tencent.ttpic.openapi.PTDetectInfo;
-import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
-import com.tencent.ttpic.openapi.filter.VideoFilterList;
-import com.tencent.ttpic.openapi.manager.TriggerStateManager;
-import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.model.RedPacketPosition;
 import com.tencent.ttpic.openapi.model.StickerItem;
-import com.tencent.ttpic.openapi.model.StickerItem.ValueRange;
-import com.tencent.ttpic.openapi.model.TriggerStateItem;
 import com.tencent.ttpic.openapi.recorder.ActVideoDecoder;
-import com.tencent.ttpic.openapi.ttpicmodule.AETriggerAnalyzer;
-import com.tencent.ttpic.openapi.util.TriggerUtil;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil.ITEM_SOURCE_TYPE;
 import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
+import com.tencent.ttpic.trigger.TriggerCtrlItem;
 import com.tencent.ttpic.util.PersonParam;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public abstract class FastSticker
 {
-  private AIAttr aiAttr = null;
   protected String dataPath;
-  protected long frameStartTime;
   protected int height;
   private ArrayList<RedPacketPosition> hotAreaPositions;
   protected boolean isImageReady;
-  private boolean isItemTriggerCountOnce = false;
   protected StickerItem item;
   private int lastImageIndex = -1;
   private boolean mAudioPause;
@@ -66,13 +43,9 @@ public abstract class FastSticker
   protected double mScreenScale;
   private long mTimesForLostProtect = 2000L;
   protected ActVideoDecoder mVideoDecoder;
-  protected int playCount = 0;
-  private int renderID = 0;
   protected RenderParam renderParam = new RenderParam();
   private int[] tex = new int[1];
   protected TriggerCtrlItem triggerCtrlItem;
-  private ArrayList<String> triggerState;
-  private StickerItem.ValueRange triggerStateRange;
   protected boolean triggered = false;
   protected int width;
   
@@ -81,10 +54,6 @@ public abstract class FastSticker
     this.item = paramStickerItem;
     this.dataPath = paramString;
     this.renderParam.id = paramStickerItem.id;
-    this.triggerState = paramStickerItem.triggerState;
-    this.renderID = paramStickerItem.renderId;
-    this.triggerStateRange = paramStickerItem.triggerStateRange;
-    this.triggerCtrlItem = new TriggerCtrlItem(paramStickerItem);
     initAudio();
   }
   
@@ -107,18 +76,6 @@ public abstract class FastSticker
     this.mHasSeenValid = true;
     this.mPreviousLostTime = System.currentTimeMillis();
     this.mPreviousBodyPoints = paramPTDetectInfo.bodyPoints;
-  }
-  
-  private int getFrameIndex(long paramLong)
-  {
-    if (!this.triggered) {
-      this.frameStartTime = paramLong;
-    }
-    int i = (int)((paramLong - this.frameStartTime) / Math.max(this.item.frameDuration, 1.0D));
-    if (i >= this.item.frames * (this.playCount + 1)) {
-      this.playCount += 1;
-    }
-    return i % Math.max(this.item.frames, 1);
   }
   
   private int getNextFrame(int paramInt)
@@ -187,57 +144,9 @@ public abstract class FastSticker
     this.mPlayer = PlayerUtil.createPlayerFromUri(AEModule.getContext(), str, false);
   }
   
-  private boolean isFullScreenRender(AttributeParam paramAttributeParam)
-  {
-    if (paramAttributeParam == null) {
-      return false;
-    }
-    paramAttributeParam = paramAttributeParam.vertices;
-    int j = paramAttributeParam.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i >= j) {
-        break label52;
-      }
-      float f = paramAttributeParam[i];
-      if ((Float.compare(-1.0F, f) != 0) && (Float.compare(1.0F, f) != 0)) {
-        break;
-      }
-      i += 1;
-    }
-    label52:
-    return true;
-  }
-  
   private boolean isRangeValueHit()
   {
     return ((this.item.charmRange == null) || (this.item.charmRange.isHit())) && ((this.item.ageRange == null) || (this.item.ageRange.isHit())) && ((this.item.genderRange == null) || (this.item.genderRange.isHit())) && ((this.item.popularRange == null) || (this.item.popularRange.isHit())) && ((this.item.cpRange == null) || (this.item.cpRange.isHit()));
-  }
-  
-  private boolean isStateTriggered()
-  {
-    boolean bool2 = false;
-    TriggerStateItem localTriggerStateItem = TriggerStateManager.getInstance().getTriggerStateItem(this.renderID);
-    boolean bool1 = bool2;
-    if (localTriggerStateItem != null)
-    {
-      bool1 = localTriggerStateItem.isTriggerState(this.triggerState);
-      if ((!bool1) || (this.triggerStateRange == null) || (this.triggerStateRange.min >= this.triggerStateRange.max)) {
-        return bool1;
-      }
-      double d = localTriggerStateItem.getRandomValue();
-      bool1 = bool2;
-      if (d >= this.triggerStateRange.min)
-      {
-        bool1 = bool2;
-        if (d < this.triggerStateRange.max) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-    return bool1;
   }
   
   private void updateHotArea(int paramInt)
@@ -261,6 +170,30 @@ public abstract class FastSticker
         this.hotAreaPositions.addAll(localArrayList);
       }
     }
+  }
+  
+  private void updateTriggerAudio(boolean paramBoolean)
+  {
+    if (!this.triggered) {
+      destroyAudio();
+    }
+    do
+    {
+      return;
+      if ((VideoPrefsUtil.getMaterialMute()) || (this.mAudioPause)) {
+        break label61;
+      }
+      initAudio();
+      if (this.item.audioLoopCount <= 0) {
+        break;
+      }
+    } while (!paramBoolean);
+    PlayerUtil.startPlayer(this.mPlayer, true);
+    return;
+    PlayerUtil.startPlayer(this.mPlayer, paramBoolean);
+    return;
+    label61:
+    PlayerUtil.stopPlayer(this.mPlayer);
   }
   
   public void ApplyGLSLFilter()
@@ -314,12 +247,12 @@ public abstract class FastSticker
     this.mPlayer = null;
   }
   
-  public float getFrameDuration(long paramLong)
+  public String getItemID()
   {
-    if (!this.triggered) {
-      return 0.0F;
+    if (this.item != null) {
+      return this.item.id + this.item.hashCode();
     }
-    return (float)((paramLong - this.frameStartTime) / 1000.0D);
+    return null;
   }
   
   public int getLastFrameIndex()
@@ -353,15 +286,6 @@ public abstract class FastSticker
     return (this.triggered) && (this.isImageReady);
   }
   
-  public boolean needCopyTex()
-  {
-    if (this.item == null) {}
-    while ((this.item.blendMode < 2) || (this.item.blendMode > 12)) {
-      return false;
-    }
-    return true;
-  }
-  
   public boolean needRender(int paramInt)
   {
     if ((this.item.personID != -1) && (this.item.personID != paramInt)) {}
@@ -379,13 +303,9 @@ public abstract class FastSticker
   public void reset()
   {
     this.triggered = false;
-    this.playCount = 0;
     this.mHasBodyDetected = false;
     this.mHasSeenValid = false;
     this.mPreviousBodyPoints = null;
-    if (this.triggerCtrlItem != null) {
-      this.triggerCtrlItem.reset();
-    }
   }
   
   public void setAudioPause(boolean paramBoolean)
@@ -405,310 +325,9 @@ public abstract class FastSticker
     this.item = paramStickerItem;
   }
   
-  protected void updateActionTriggered(PTDetectInfo paramPTDetectInfo)
+  public void setTriggerCtrlItem(TriggerCtrlItem paramTriggerCtrlItem)
   {
-    boolean bool3 = false;
-    boolean bool4 = false;
-    if (this.item == null) {
-      return;
-    }
-    Object localObject1 = paramPTDetectInfo.faceActionCounter;
-    Map localMap = paramPTDetectInfo.handActionCounter;
-    Object localObject2 = paramPTDetectInfo.triggeredExpression;
-    List localList = paramPTDetectInfo.bodyPoints;
-    PTHandAttr localPTHandAttr = (PTHandAttr)this.aiAttr.getAvailableData(AEDetectorType.HAND.value);
-    this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
-    label124:
-    int i;
-    label154:
-    label168:
-    label217:
-    boolean bool2;
-    boolean bool1;
-    if (this.item.activateTriggerTotalCount != 0)
-    {
-      boolean bool5;
-      boolean bool6;
-      if (this.item.preTriggerType != PTFaceAttr.PTExpression.ALWAYS.value)
-      {
-        if (VideoMaterialUtil.isFaceTriggerType(this.item.preTriggerType)) {
-          if (!((Set)localObject2).contains(Integer.valueOf(this.item.preTriggerType))) {
-            break label605;
-          }
-        }
-      }
-      else
-      {
-        bool5 = VideoMaterialUtil.isFaceTriggerType(this.item.countTriggerType);
-        bool6 = VideoMaterialUtil.isHotAreaTriggerItem(this.item);
-        if (!bool5) {
-          break label611;
-        }
-        localObject2 = localObject1;
-        if (localObject2 == null) {
-          break label605;
-        }
-        if (!bool5) {
-          break label618;
-        }
-        localObject2 = localObject1;
-        if (!((Map)localObject2).containsKey(Integer.valueOf(this.item.countTriggerType))) {
-          break label623;
-        }
-        if (!bool5) {
-          break label625;
-        }
-        i = ((FaceActionCounter)((Map)localObject1).get(Integer.valueOf(this.item.countTriggerType))).count;
-        if (i % this.item.activateTriggerTotalCount != this.item.activateTriggerCount) {
-          break label605;
-        }
-        if (!bool6) {
-          break label664;
-        }
-        bool2 = TriggerUtil.isGestureTriggered(localPTHandAttr, this.item.preTriggerType, this.item.triggerHandPoint, this.item.triggerArea, paramPTDetectInfo.aiAttr);
-        bool1 = bool2;
-        if (this.item.activateTriggerCountOnce == 1)
-        {
-          bool1 = bool2;
-          if (!this.isItemTriggerCountOnce)
-          {
-            HotAreaActionCounter.updateCount();
-            this.isItemTriggerCountOnce = true;
-            bool1 = bool2;
-          }
-        }
-        label311:
-        bool2 = bool1;
-        if (!VideoFilterList.sIsUseFreezeFrame)
-        {
-          if (this.playCount >= this.item.playCount) {
-            break label728;
-          }
-          if (!bool5) {
-            break label700;
-          }
-          bool2 = bool1;
-          if (paramPTDetectInfo.faceDetector != null)
-          {
-            paramPTDetectInfo.faceDetector.lockActionCounter();
-            bool2 = bool1;
-          }
-        }
-      }
-      for (;;)
-      {
-        label364:
-        if ((!bool2) || (!isRangeValueHit())) {
-          break label1161;
-        }
-        bool1 = true;
-        label379:
-        if (this.triggerCtrlItem.isTimeTriggered(paramPTDetectInfo)) {
-          bool1 = true;
-        }
-        bool2 = bool1;
-        if (this.triggerState != null)
-        {
-          bool2 = bool1;
-          if (this.triggerState.size() > 0) {
-            bool2 = isStateTriggered();
-          }
-        }
-        if (!bool2) {
-          break label1167;
-        }
-        bool1 = bool4;
-        if (!this.triggered)
-        {
-          this.frameStartTime = paramPTDetectInfo.timestamp;
-          Log.i("fastfilter", " updateActionTriggered item.id = " + this.item.id);
-          Log.i("fastfilter", " updateActionTriggered triggered = " + this.triggered + "frameStartTime = " + this.frameStartTime + ", curPlayCount = " + this.playCount);
-          bool1 = true;
-        }
-        this.triggered = true;
-        label545:
-        this.triggerCtrlItem.updateTriggerTime(paramPTDetectInfo.timestamp, this.triggered);
-        if (this.triggered) {
-          break label1207;
-        }
-        destroyAudio();
-        return;
-        if (TriggerUtil.isGestureTriggered(localPTHandAttr, this.item.preTriggerType, this.item.triggerHandPoint, this.item.triggerArea, paramPTDetectInfo.aiAttr)) {
-          break label124;
-        }
-        label605:
-        bool2 = false;
-        continue;
-        label611:
-        localObject2 = localMap;
-        break label154;
-        label618:
-        localObject2 = localMap;
-        break label168;
-        label623:
-        break;
-        label625:
-        if (bool6)
-        {
-          i = HotAreaActionCounter.getCount();
-          break label217;
-        }
-        i = ((Integer)localMap.get(Integer.valueOf(this.item.countTriggerType))).intValue();
-        break label217;
-        label664:
-        if ((this.item.playCount == 0) || (this.playCount < this.item.playCount))
-        {
-          bool1 = true;
-          break label311;
-        }
-        bool1 = false;
-        break label311;
-        label700:
-        if (bool6)
-        {
-          HotAreaActionCounter.lockUpdate();
-          bool2 = bool1;
-        }
-        else
-        {
-          AIActionCounter.lockAction(AIActionCounter.AI_TYPE.HAND);
-          bool2 = bool1;
-          continue;
-          label728:
-          bool2 = bool1;
-          if (this.item.playCount > 0) {
-            if (bool5)
-            {
-              bool2 = bool1;
-              if (paramPTDetectInfo.faceDetector != null)
-              {
-                paramPTDetectInfo.faceDetector.clearActionCounter();
-                bool2 = bool1;
-              }
-            }
-            else if (bool6)
-            {
-              HotAreaActionCounter.lockUpdate();
-              bool2 = bool1;
-            }
-            else
-            {
-              AIActionCounter.clearAction(AIActionCounter.AI_TYPE.HAND);
-              bool2 = bool1;
-            }
-          }
-        }
-      }
-    }
-    if (AETriggerAnalyzer.getInstance().isInteger(this.item.getTriggerTypeString())) {
-      if (VideoMaterialUtil.isFaceTriggerType(this.item.getTriggerTypeInt())) {
-        bool1 = ((Set)localObject2).contains(Integer.valueOf(this.item.getTriggerTypeInt()));
-      }
-    }
-    for (;;)
-    {
-      if ((bool1) || (this.mIsRenderForBitmap))
-      {
-        bool2 = true;
-        break label364;
-        if (VideoMaterialUtil.isTouchTriggerType(this.item.getTriggerTypeInt()))
-        {
-          bool1 = ((Set)localObject2).contains(Integer.valueOf(this.item.getTriggerTypeInt()));
-          continue;
-        }
-        if (VideoMaterialUtil.isBodyDetectType(this.item.getTriggerTypeInt()))
-        {
-          if (localList == null)
-          {
-            bool1 = true;
-            continue;
-          }
-          if (localList.isEmpty()) {
-            break label1266;
-          }
-          bool1 = true;
-          continue;
-        }
-        if (VideoMaterialUtil.isAllFreezeFrameTriggerType(this.item.getTriggerTypeInt()))
-        {
-          bool1 = ((Set)localObject2).contains(Integer.valueOf(this.item.getTriggerTypeInt()));
-          continue;
-        }
-        if (paramPTDetectInfo.isFreezeInfo)
-        {
-          if (this.item.getTriggerTypeInt() == paramPTDetectInfo.gestureTrigger)
-          {
-            bool1 = true;
-            continue;
-          }
-          bool1 = false;
-          continue;
-        }
-        bool1 = TriggerUtil.isGestureTriggered(localPTHandAttr, this.item.getTriggerTypeInt(), this.item.triggerHandPoint, this.item.triggerArea, paramPTDetectInfo.aiAttr);
-        continue;
-        localObject1 = this.item.getTriggerTypeString().split("-");
-        if (localObject1.length != 2) {
-          break label1266;
-        }
-        localMap = localObject1[0];
-        try
-        {
-          i = Integer.parseInt(localObject1[1]);
-          localObject1 = AETriggerAnalyzer.getInstance().getClassifier(localMap);
-          if (localObject1 == null) {
-            break label1266;
-          }
-          int j = ((IAIDataClassifier)localObject1).classifyData2Type(paramPTDetectInfo.aiAttr);
-          bool1 = ((IAIDataClassifier)localObject1).getClassifierTypeMap().containsValue(Integer.valueOf(j));
-          if ((bool1) && (i == j))
-          {
-            bool1 = true;
-            continue;
-          }
-          bool1 = false;
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          bool1 = false;
-        }
-        continue;
-      }
-      bool2 = false;
-      break label364;
-      label1161:
-      bool1 = false;
-      break label379;
-      label1167:
-      if (!this.item.alwaysTriggered)
-      {
-        bool1 = bool3;
-        if (this.playCount < this.item.playCount) {
-          break label545;
-        }
-      }
-      this.triggered = false;
-      bool1 = bool3;
-      break label545;
-      label1207:
-      if ((!VideoPrefsUtil.getMaterialMute()) && (!this.mAudioPause))
-      {
-        initAudio();
-        if (this.item.audioLoopCount > 0)
-        {
-          if (!bool1) {
-            break;
-          }
-          PlayerUtil.startPlayer(this.mPlayer, true);
-          return;
-        }
-        PlayerUtil.startPlayer(this.mPlayer, bool1);
-        return;
-      }
-      PlayerUtil.stopPlayer(this.mPlayer);
-      return;
-      label1266:
-      bool1 = false;
-    }
+    this.triggerCtrlItem = paramTriggerCtrlItem;
   }
   
   protected abstract void updatePositions(List<PointF> paramList);
@@ -728,55 +347,59 @@ public abstract class FastSticker
       if (VideoMaterialUtil.isBodyDetectItem(this.item)) {
         avoidBodyPointsShake(paramObject);
       }
-      this.aiAttr = paramObject.aiAttr;
-      i = getFrameIndex(paramObject.timestamp);
-      updateActionTriggered(paramObject);
+      if (this.triggerCtrlItem == null) {
+        break label226;
+      }
+      i = this.triggerCtrlItem.getFrameIndex();
+      updateTriggerAudio(this.triggerCtrlItem.isFirstTriggered());
+      this.triggered = this.triggerCtrlItem.isTriggered();
+    }
+    for (;;)
+    {
       updateHotArea(i);
       if (!needRenderTexture())
       {
         clearTextureParam();
-        this.playCount = 0;
         VideoMemoryManager.getInstance().reset(this.item.id);
         updateTextureParam(0);
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    if (VideoMaterialUtil.isFaceItem(this.item)) {
-      updatePositions(paramObject.facePoints, paramObject.faceAngles);
-    }
-    for (;;)
-    {
-      updateTextureParam(i);
-      return;
-      if (VideoMaterialUtil.isBodyDetectItem(this.item))
+      if (VideoMaterialUtil.isFaceItem(this.item)) {
+        updatePositions(paramObject.facePoints, paramObject.faceAngles);
+      }
+      for (;;)
       {
-        if (VideoMaterialUtil.isBody4AnchorItem(this.item)) {
-          updatePositionsForMultiAnchor(paramObject.bodyPoints, 4);
-        }
-        for (;;)
+        updateTextureParam(i);
+        return;
+        if (VideoMaterialUtil.isBodyDetectItem(this.item))
         {
-          if (this.mHasBodyDetected) {
-            break label192;
+          if (VideoMaterialUtil.isBody4AnchorItem(this.item)) {
+            updatePositionsForMultiAnchor(paramObject.bodyPoints, 4);
           }
-          paramObject.bodyPoints = null;
-          break;
-          if (VideoMaterialUtil.isBody2AnchorItem(this.item)) {
-            updatePositionsForMultiAnchor(paramObject.bodyPoints, 2);
-          } else {
-            updatePositions(paramObject.bodyPoints);
+          for (;;)
+          {
+            if (this.mHasBodyDetected) {
+              break label202;
+            }
+            paramObject.bodyPoints = null;
+            break;
+            if (VideoMaterialUtil.isBody2AnchorItem(this.item)) {
+              updatePositionsForMultiAnchor(paramObject.bodyPoints, 2);
+            } else {
+              updatePositions(paramObject.bodyPoints);
+            }
+          }
+        }
+        else
+        {
+          label202:
+          if (VideoMaterialUtil.isGestureItem(this.item)) {
+            updatePositions(paramObject.handPoints, 0);
           }
         }
       }
-      else
-      {
-        label192:
-        if (VideoMaterialUtil.isGestureItem(this.item)) {
-          updatePositions(paramObject.handPoints, 0);
-        }
-      }
+      label226:
+      i = 0;
     }
   }
   
@@ -793,13 +416,16 @@ public abstract class FastSticker
   
   public void updateTextureParam(long paramLong)
   {
-    int i = getFrameIndex(paramLong);
-    try
+    if (this.triggerCtrlItem != null)
     {
-      updateTextureParam(i);
-      return;
+      int i = this.triggerCtrlItem.getFrameIndex();
+      try
+      {
+        updateTextureParam(i);
+        return;
+      }
+      finally {}
     }
-    finally {}
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)

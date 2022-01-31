@@ -1,31 +1,43 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.subscribe.comment.CommentView;
-import com.tencent.biz.subscribe.comment.ReplyContainer;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class woa
-  implements View.OnClickListener
+  extends unk<wob>
 {
-  public woa(CommentView paramCommentView) {}
+  public static final String a = ume.a("StorySvc.get_user_guide");
   
-  public void onClick(View paramView)
+  public String a()
   {
-    if ((CommentView.a(this.a) != null) && (CommentView.a(this.a).vecReply.size() > 0))
+    return a;
+  }
+  
+  public wob a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetUserGuide localRspGetUserGuide = new qqstory_service.RspGetUserGuide();
+    try
     {
-      CommentView.a(this.a).a(paramView, 10, CommentView.a(this.a), CommentView.a(this.a));
-      this.a.jdField_a_of_type_Wob.b.setVisibility(8);
-      this.a.jdField_a_of_type_Wob.a.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentBizSubscribeCommentReplyContainer.setVisibility(0);
+      localRspGetUserGuide.mergeFrom(paramArrayOfByte);
+      return new wob(localRspGetUserGuide);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        wsv.c("Q.qqstory.home.GetUserGuideInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetUserGuide().toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     woa
  * JD-Core Version:    0.7.0.1
  */

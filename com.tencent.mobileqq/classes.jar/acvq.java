@@ -1,48 +1,45 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.VoiceResStrategy.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
 public class acvq
-  implements acve
+  extends apxc
 {
-  public agzd a;
-  public PreloadManager a;
-  private QQAppInterface a;
+  public acvq(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public acvq(QQAppInterface paramQQAppInterface)
+  protected void a(boolean paramBoolean, Card paramCard)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
-    this.jdField_a_of_type_Agzd = null;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    super.a(paramBoolean, paramCard);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, "checkUpdateExtendInfo, got extend info");
+    }
+    if (FriendProfileCardActivity.a(this.a) != null) {
+      FriendProfileCardActivity.a(this.a).dismiss();
+    }
+    if (FriendProfileCardActivity.a(this.a) != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
-      this.jdField_a_of_type_Agzd = ((agzd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245));
+      FriendProfileCardActivity.a(this.a).removeCallbacksAndMessages(null);
+      FriendProfileCardActivity.a(this.a, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendProfileCardActivity", 2, "checkUpdateExtendInfo, start add friend :" + FriendProfileCardActivity.d(this.a));
+      }
+      if (!FriendProfileCardActivity.d(this.a))
+      {
+        FriendProfileCardActivity.a(this.a, true);
+        FriendProfileCardActivity.b(this.a);
+      }
     }
   }
   
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  protected void b(boolean paramBoolean)
   {
-    ThreadManager.post(new CustomizeStrategyFactory.VoiceResStrategy.1(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aels paramaels)
-  {
-    if ((paramRedPacketInfo != null) && ((paramaels instanceof aelz)))
-    {
-      paramaels = (aelz)paramaels;
-      paramRedPacketInfo.icon = paramaels.a;
-      paramRedPacketInfo.resPath = paramaels.b;
-    }
+    super.b(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvq
  * JD-Core Version:    0.7.0.1
  */

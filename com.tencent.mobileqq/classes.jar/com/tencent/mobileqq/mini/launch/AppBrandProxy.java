@@ -38,7 +38,7 @@ public class AppBrandProxy
     }
   }
   
-  private boolean isMainProcess()
+  public static boolean isMainProcess()
   {
     return "com.tencent.mobileqq".equals(BaseApplicationImpl.getApplication().getQQProcessName());
   }
@@ -165,7 +165,7 @@ public class AppBrandProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandProxy
  * JD-Core Version:    0.7.0.1
  */

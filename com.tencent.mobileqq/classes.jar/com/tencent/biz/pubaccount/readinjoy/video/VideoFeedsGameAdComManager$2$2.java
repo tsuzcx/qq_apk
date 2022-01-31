@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import ajya;
-import bcql;
+import alpo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class VideoFeedsGameAdComManager$2$2
   implements Runnable
@@ -11,12 +11,12 @@ class VideoFeedsGameAdComManager$2$2
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getApplication(), 1, ajya.a(2131716240), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), 1, alpo.a(2131716612), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGameAdComManager.2.2
  * JD-Core Version:    0.7.0.1
  */

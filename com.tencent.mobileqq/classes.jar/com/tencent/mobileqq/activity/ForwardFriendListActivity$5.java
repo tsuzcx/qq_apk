@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.view.View;
-import bfni;
+import bhoc;
 
 class ForwardFriendListActivity$5
   implements Runnable
@@ -10,12 +10,12 @@ class ForwardFriendListActivity$5
   
   public void run()
   {
-    bfni.b(this.a);
+    bhoc.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardFriendListActivity.5
  * JD-Core Version:    0.7.0.1
  */

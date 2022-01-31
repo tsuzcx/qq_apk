@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.topentry;
 
-import afsh;
+import ahpz;
 
 public class MayknowRecommendsAdapter$2
   implements Runnable
 {
-  public MayknowRecommendsAdapter$2(afsh paramafsh) {}
+  public MayknowRecommendsAdapter$2(ahpz paramahpz) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class MayknowRecommendsAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.MayknowRecommendsAdapter.2
  * JD-Core Version:    0.7.0.1
  */

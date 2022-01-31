@@ -1,81 +1,26 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class aneg
+class aneg
+  implements anfo
 {
-  protected byte a;
-  protected int a;
-  protected long a;
-  protected String a;
-  protected short a;
-  protected boolean a;
-  protected byte[] a;
-  public String b;
-  protected String c;
-  protected String d;
-  protected String e = "";
-  protected String f = "";
+  aneg(andz paramandz, long paramLong) {}
   
-  public aneg(anef paramanef)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_Byte = 3;
-    this.jdField_a_of_type_Boolean = true;
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Andz.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
   }
   
-  public void a(DataInputStream paramDataInputStream)
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
   {
-    this.jdField_a_of_type_Long = paramDataInputStream.readLong();
-    this.jdField_a_of_type_JavaLangString = paramDataInputStream.readUTF();
-    this.b = paramDataInputStream.readUTF();
-    this.d = paramDataInputStream.readUTF();
-    this.jdField_a_of_type_Byte = paramDataInputStream.readByte();
-    this.c = paramDataInputStream.readUTF();
-    this.e = paramDataInputStream.readUTF();
-    this.jdField_a_of_type_Short = paramDataInputStream.readShort();
-  }
-  
-  public void a(DataOutputStream paramDataOutputStream)
-  {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = "";
-    }
-    if (this.b == null) {
-      this.b = "";
-    }
-    if (this.d == null) {
-      this.d = "";
-    }
-    if (this.c == null) {
-      this.c = "";
-    }
-    paramDataOutputStream.writeLong(this.jdField_a_of_type_Long);
-    paramDataOutputStream.writeUTF(this.jdField_a_of_type_JavaLangString);
-    paramDataOutputStream.writeUTF(this.b);
-    paramDataOutputStream.writeUTF(this.d);
-    paramDataOutputStream.writeByte(this.jdField_a_of_type_Byte);
-    paramDataOutputStream.writeUTF(this.c);
-    paramDataOutputStream.writeUTF(this.e);
-    paramDataOutputStream.writeShort(this.jdField_a_of_type_Short);
-  }
-  
-  public void b(DataInputStream paramDataInputStream)
-  {
-    a(paramDataInputStream);
-    this.f = paramDataInputStream.readUTF();
-  }
-  
-  public void b(DataOutputStream paramDataOutputStream)
-  {
-    a(paramDataOutputStream);
-    if (this.f == null) {
-      this.f = "";
-    }
-    paramDataOutputStream.writeUTF(this.f);
+    andw.a(this.jdField_a_of_type_Andz.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aneg
  * JD-Core Version:    0.7.0.1
  */

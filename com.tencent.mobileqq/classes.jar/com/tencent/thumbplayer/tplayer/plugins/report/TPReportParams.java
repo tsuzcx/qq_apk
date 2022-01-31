@@ -49,7 +49,7 @@ public class TPReportParams
   public static final int PLAY_SCENE_NORMAL_PLAY = 1;
   public static final int PLAY_SCENE_TRICK_PLAY = 2;
   public static final int PLAY_TYPE_LIVE = 1;
-  public static final int PLAY_TYPE_UNKNOWN = 2;
+  public static final int PLAY_TYPE_UNKNOWN = -1;
   public static final int PLAY_TYPE_VOD = 0;
   public static final String PROP_KEY_DATA = "data";
   private static final String TAG = "TPReportParams";
@@ -170,7 +170,7 @@ public class TPReportParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportParams
  * JD-Core Version:    0.7.0.1
  */

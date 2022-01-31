@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Handler;
 
-public final class asgs
-  implements Parcelable.Creator<MediaFocusStackItem>
+class asgs
+  extends AnimatorListenerAdapter
 {
-  public MediaFocusStackItem a(Parcel paramParcel)
-  {
-    return new MediaFocusStackItem(paramParcel);
-  }
+  asgs(asgq paramasgq) {}
   
-  public MediaFocusStackItem[] a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new MediaFocusStackItem[paramInt];
+    asgq.a(this.a).sendEmptyMessageDelayed(6, 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asgs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,89 +1,57 @@
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager.36.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.net.URLEncoder;
+import mqq.os.MqqHandler;
 
 public class ajcs
-  implements INetInfoHandler
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
+  ajcs(ajbm paramajbm) {}
   
-  public ajcs(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private void a(int paramInt)
-  {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {}
-    for (;;)
-    {
+    if (!ajbm.a(this.a)) {
       return;
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameNetInfoHandler", 2, "[notifyEngineNetChange], type:" + paramInt);
-      }
-      try
-      {
-        ApolloCmdChannel localApolloCmdChannel = ajac.a();
-        if (localApolloCmdChannel != null)
-        {
-          Object localObject = ajac.a(this.jdField_a_of_type_Int);
-          if (localObject != null)
-          {
-            localObject = ((ajcf)localObject).a();
-            if (localObject != null)
-            {
-              JSONObject localJSONObject = new JSONObject();
-              localJSONObject.put("type", paramInt);
-              localApolloCmdChannel.callbackFromRequest(((ApolloSurfaceView)localObject).getLuaState(), 0, "sc.network_change.local", localJSONObject.toString());
-              return;
-            }
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("cmgame_process.CmGameNetInfoHandler", 1, "errInfo->" + localException.getMessage());
-      }
     }
-  }
-  
-  public void onNetMobile2None()
-  {
-    a(4);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    a(3);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    a(1);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    a(2);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    a(6);
-  }
-  
-  public void onNetWifi2None()
-  {
-    a(5);
+    ajbm.a(this.a, false);
+    new Handler().postDelayed(new BannerManager.36.1(this), 1000L);
+    paramView = (QQAppInterface)ajbm.a(this.a).getAppRuntime();
+    String str = paramView.getCurrentAccountUin();
+    Object localObject = new StringBuilder("https://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw");
+    ((StringBuilder)localObject).append("?");
+    ((StringBuilder)localObject).append("uin=");
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append("&plat=1");
+    ((StringBuilder)localObject).append("&app=1");
+    ((StringBuilder)localObject).append("&version=8.3.3.4515");
+    ((StringBuilder)localObject).append("&device=" + URLEncoder.encode(Build.DEVICE));
+    ((StringBuilder)localObject).append("&system=" + Build.VERSION.RELEASE);
+    ((StringBuilder)localObject).append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
+    localObject = ((StringBuilder)localObject).toString();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("portraitOnly", true);
+    localIntent.putExtra("url", (String)localObject);
+    localIntent.putExtra("uin", str);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("hide_more_button", true);
+    VasWebviewUtil.openQQBrowserActivity(ajbm.a(this.a), (String)localObject, 32768L, localIntent, false, -1);
+    awdr.a().a(paramView);
+    ajbm.a(this.a).sendEmptyMessageDelayed(4, 1000L);
+    azmj.b(paramView, "CliOper", "", "", "Mobile_signup", "Clk_blue_pw", 0, 0, "", "", "", "");
+    azmj.a(ajbm.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 18, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajcs
  * JD-Core Version:    0.7.0.1
  */

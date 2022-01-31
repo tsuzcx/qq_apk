@@ -1,45 +1,131 @@
 import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bagd
-  implements bfph
+  extends bago
 {
-  public bagd(VisitorTroopCardFragment paramVisitorTroopCardFragment, bfpc parambfpc) {}
+  public bagd(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    if (VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) == null) {
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, new bcqi(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity()));
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupTeamWorkListActivity", 2, " onDeletePanInfo success: " + paramBoolean + " \nretCode: " + paramInt + " \nerrorMsg: " + paramString);
     }
-    if (bbfj.d(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.getActivity()))
+    if ((paramBoolean) && (paramInt == 0))
     {
-      paramView = (akhp)this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-      if (paramView != null)
-      {
-        if ((VisitorTroopCardFragment.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) & 0x1) == 0)
-        {
-          VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment, VisitorTroopCardFragment.b(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment) | 0x1);
-          paramView.l(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-        }
-        VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(0, 2131692216, 1000);
+      GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, 5);
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131691575), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131691568), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString, List<GPadInfo> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, " onGetPadTemplateList success: " + paramBoolean + " \nretCode: " + paramInt + " \nerrorMsg: " + paramString);
+    }
+    if ((paramBoolean) && (paramInt == 0))
+    {
+      GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, 2);
+      if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity) != null) {
+        GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).notifyDataSetChanged();
       }
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, String paramString, List<GPadInfo> paramList, int paramInt2, int paramInt3)
+  {
+    int i = 1;
+    int j = 0;
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, " onGetPadList success: " + paramBoolean + " \nretCode: " + paramInt1 + " \nerrorMsg: " + paramString + "\n next =" + paramInt2);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.b = paramInt2;
+    if (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity))
+    {
+      if (paramBoolean)
+      {
+        paramInt2 = 1;
+        paramString = this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a.obtainMessage(111, paramInt2, 0);
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a.sendMessageDelayed(paramString, 500L);
+        GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, false);
+      }
+    }
+    else
+    {
+      if (GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
+        GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, false);
+      }
+      if (paramInt3 != 2) {
+        break label211;
+      }
+      paramInt2 = 3;
     }
     for (;;)
     {
-      bagx.a(21, new Object());
-      this.jdField_a_of_type_Bfpc.cancel();
-      return;
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(2, 2131692212, 1500);
-      continue;
-      VisitorTroopCardFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment).b(2, 2131694673, 1500);
+      if ((paramBoolean) && (paramInt1 == 0))
+      {
+        GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity, paramInt2);
+        paramInt1 = j;
+        if (paramInt1 != 0) {
+          GroupTeamWorkListActivity.d(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
+        }
+        return;
+        paramInt2 = 2;
+        break;
+        label211:
+        if (paramInt3 != 3) {
+          break label398;
+        }
+        paramInt2 = 4;
+        continue;
+      }
+      if (paramInt2 == 2)
+      {
+        if ((GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity) != null) && (GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getCount() == 0))
+        {
+          GroupTeamWorkListActivity.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
+          if (GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).getVisibility() == 0) {
+            GroupTeamWorkListActivity.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(8);
+          }
+          GroupTeamWorkListActivity.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity).setVisibility(0);
+        }
+      }
+      else
+      {
+        label300:
+        if (paramInt2 != 4) {
+          break label393;
+        }
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131694090), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
+      }
+      label393:
+      for (paramInt1 = i;; paramInt1 = 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.a(2);
+        break;
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.app.getApp(), 1, this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getString(2131694090), 0).b(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkListActivity.getTitleBarHeight());
+        break label300;
+      }
+      label398:
+      paramInt2 = 2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bagd
  * JD-Core Version:    0.7.0.1
  */

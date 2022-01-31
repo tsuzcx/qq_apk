@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.widget;
 
 import android.annotation.SuppressLint;
-import apxz;
+import arrb;
 
 public class SendBottomBar$10
   implements Runnable
@@ -11,12 +11,12 @@ public class SendBottomBar$10
   @SuppressLint({"StaticFieldLeak"})
   public void run()
   {
-    new apxz(this).execute(new Void[0]);
+    new arrb(this).execute(new Void[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.10
  * JD-Core Version:    0.7.0.1
  */

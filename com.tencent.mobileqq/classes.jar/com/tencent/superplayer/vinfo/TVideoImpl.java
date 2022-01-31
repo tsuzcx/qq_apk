@@ -9,7 +9,7 @@ import com.tencent.qqlive.tvkplayer.vinfo.TVKPlaybackParam;
 import com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerVideoInfo;
 import com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerWrapperCGIModel;
 import com.tencent.superplayer.api.SuperPlayerVideoInfo;
-import com.tencent.superplayer.utils.SPlayerLogUtil;
+import com.tencent.superplayer.utils.LogUtil;
 
 class TVideoImpl
 {
@@ -34,17 +34,18 @@ class TVideoImpl
     switch (paramSuperPlayerVideoInfo.getVideoType())
     {
     default: 
-      SPlayerLogUtil.e(TAG, "doGetVInfo() playerVideoInfo.getVideoType() is ERROR = " + paramSuperPlayerVideoInfo.getVideoType());
+      LogUtil.e(TAG, "doGetVInfo() playerVideoInfo.getVideoType() is ERROR = " + paramSuperPlayerVideoInfo.getVideoType());
       return;
     case 1: 
       i = 2;
       localObject = new TVKPlayerVideoInfo(i, paramSuperPlayerVideoInfo.getVid(), paramSuperPlayerVideoInfo.getPid());
       ((TVKPlayerVideoInfo)localObject).setPid(paramSuperPlayerVideoInfo.getPid());
+      ((TVKPlayerVideoInfo)localObject).setPlatform(paramSuperPlayerVideoInfo.getBusiPlatform());
       localTVKPlaybackParam = new TVKPlaybackParam();
       localTVKPlaybackParam.context(this.mContext);
       localTVKPlaybackParam.userInfo(null);
       localTVKPlaybackParam.videoInfo((TVKPlayerVideoInfo)localObject);
-      localTVKPlaybackParam.definition("");
+      localTVKPlaybackParam.definition(paramSuperPlayerVideoInfo.getRequestDefinition());
       localTVKPlaybackParam.mediaSource(new TVKMediaSource((TVKPlayerVideoInfo)localObject));
       localObject = new TVKPlaybackInfo();
       ((TVKPlaybackInfo)localObject).requestInfo().flowId(localTVKPlaybackParam.flowId());
@@ -72,7 +73,7 @@ class TVideoImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.superplayer.vinfo.TVideoImpl
  * JD-Core Version:    0.7.0.1
  */

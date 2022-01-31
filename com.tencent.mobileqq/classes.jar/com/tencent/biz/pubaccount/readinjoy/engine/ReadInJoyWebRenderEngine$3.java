@@ -2,24 +2,24 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import anqf;
-import anqg;
+import aphn;
+import apho;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import osq;
-import oss;
-import osw;
+import oxi;
+import oxk;
+import oxo;
 
 public final class ReadInJoyWebRenderEngine$3
   implements Runnable
 {
-  public ReadInJoyWebRenderEngine$3(oss paramoss, String paramString) {}
+  public ReadInJoyWebRenderEngine$3(oxk paramoxk, String paramString) {}
   
   public void run()
   {
     int j = 0;
-    if (!osw.a(this.jdField_a_of_type_Oss))
+    if (!oxo.a(this.jdField_a_of_type_Oxk))
     {
       if (QLog.isColorLevel()) {
         QLog.e("viola.ReadInJoyWebRenderEngine", 2, " checkReinstallSoDel is false, return and wait for next load");
@@ -32,12 +32,12 @@ public final class ReadInJoyWebRenderEngine$3
     {
       try
       {
-        if (anqg.i()) {
+        if (apho.i()) {
           continue;
         }
         localStringBuilder.append("viola jsc lib not exist");
-        if (this.jdField_a_of_type_Oss != null) {
-          this.jdField_a_of_type_Oss.onError(osq.c);
+        if (this.jdField_a_of_type_Oxk != null) {
+          this.jdField_a_of_type_Oxk.onError(oxi.c);
         }
         localSharedPreferences1 = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
         l2 = localSharedPreferences1.getLong("js_lib", 0L);
@@ -46,28 +46,28 @@ public final class ReadInJoyWebRenderEngine$3
         }
         if (System.currentTimeMillis() - l2 > 120000L)
         {
-          anqg.a();
+          apho.a();
           localSharedPreferences1.edit().putLong("js_lib", System.currentTimeMillis()).commit();
         }
-        osq.a(1);
+        oxi.a(1);
       }
       catch (Throwable localThrowable)
       {
         SharedPreferences localSharedPreferences1;
-        osq.a(false);
+        oxi.a(false);
         localStringBuilder.append(localThrowable.getMessage());
-        if (this.jdField_a_of_type_Oss == null) {
+        if (this.jdField_a_of_type_Oxk == null) {
           continue;
         }
-        this.jdField_a_of_type_Oss.onError(osq.b);
+        this.jdField_a_of_type_Oxk.onError(oxi.b);
         return;
-        if (anqf.i()) {
+        if (aphn.i()) {
           break label470;
         }
-        if (this.jdField_a_of_type_Oss == null) {
+        if (this.jdField_a_of_type_Oxk == null) {
           continue;
         }
-        this.jdField_a_of_type_Oss.onError(osq.d);
+        this.jdField_a_of_type_Oxk.onError(oxi.d);
         SharedPreferences localSharedPreferences2 = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
         long l2 = localSharedPreferences2.getLong("js_lib_biz", 0L);
         if (l2 <= 0L) {
@@ -76,17 +76,17 @@ public final class ReadInJoyWebRenderEngine$3
         if (System.currentTimeMillis() - l2 <= 120000L) {
           continue;
         }
-        anqf.a();
+        aphn.a();
         localSharedPreferences2.edit().putLong("js_lib_biz", System.currentTimeMillis()).commit();
-        osq.a(2);
+        oxi.a(2);
         continue;
       }
       finally
       {
-        localStringBuilder.append(", isLoaded: ").append(osq.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
+        localStringBuilder.append(", isLoaded: ").append(oxi.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
         QLog.i("viola.ReadInJoyWebRenderEngine", 1, localStringBuilder.toString());
       }
-      localStringBuilder.append(", isLoaded: ").append(osq.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
+      localStringBuilder.append(", isLoaded: ").append(oxi.c()).append(", cost: ").append(System.currentTimeMillis() - l1);
       QLog.i("viola.ReadInJoyWebRenderEngine", 1, localStringBuilder.toString());
       return;
       localSharedPreferences1.edit().putLong("js_lib", System.currentTimeMillis()).commit();
@@ -95,8 +95,8 @@ public final class ReadInJoyWebRenderEngine$3
       localObject.edit().putLong("js_lib_biz", System.currentTimeMillis()).commit();
       continue;
       label470:
-      String str1 = osw.a();
-      String[] arrayOfString = anqg.a;
+      String str1 = oxo.a();
+      String[] arrayOfString = apho.a;
       int k = arrayOfString.length;
       int i = 0;
       String str2;
@@ -112,14 +112,14 @@ public final class ReadInJoyWebRenderEngine$3
         }
         else
         {
-          if (this.jdField_a_of_type_Oss != null) {
-            this.jdField_a_of_type_Oss.onError(osq.c);
+          if (this.jdField_a_of_type_Oxk != null) {
+            this.jdField_a_of_type_Oxk.onError(oxi.c);
           }
           localStringBuilder.append(str2).append(" not exist");
-          osq.a(1);
+          oxi.a(1);
         }
       }
-      arrayOfString = anqf.a;
+      arrayOfString = aphn.a;
       k = arrayOfString.length;
       i = j;
       while (i < k)
@@ -133,23 +133,23 @@ public final class ReadInJoyWebRenderEngine$3
         }
         else
         {
-          if (this.jdField_a_of_type_Oss != null) {
-            this.jdField_a_of_type_Oss.onError(osq.d);
+          if (this.jdField_a_of_type_Oxk != null) {
+            this.jdField_a_of_type_Oxk.onError(oxi.d);
           }
           localStringBuilder.append(str2).append(" not exist");
-          osq.a(2);
+          oxi.a(2);
         }
       }
-      osq.a(true);
-      if (this.jdField_a_of_type_Oss != null) {
-        this.jdField_a_of_type_Oss.onFinish(osq.f);
+      oxi.a(true);
+      if (this.jdField_a_of_type_Oxk != null) {
+        this.jdField_a_of_type_Oxk.onFinish(oxi.f);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyWebRenderEngine.3
  * JD-Core Version:    0.7.0.1
  */

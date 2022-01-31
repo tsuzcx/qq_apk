@@ -1,55 +1,26 @@
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import java.util.concurrent.CountDownLatch;
 
-public class atac
-  implements BusinessObserver
+class atac
+  implements asvc
 {
-  public atac(NearbyJsInterface paramNearbyJsInterface, String paramString, int paramInt) {}
+  atac(atab paramatab, asuy paramasuy, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    if (paramBoolean) {}
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        Object localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramBundle);
-        paramBundle = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        if (paramBundle.optInt("retcode") == 0)
-        {
-          paramBundle = paramBundle.optString(this.jdField_a_of_type_JavaLangString);
-          localObject = bbkb.d(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.a, this.jdField_a_of_type_JavaLangString);
-          paramBundle = (String)localObject + "&uid=" + paramBundle + "&from=" + this.jdField_a_of_type_Int;
-          localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.a, QQBrowserActivity.class);
-          ((Intent)localObject).putExtra("url", paramBundle);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.a.startActivity((Intent)localObject);
-          if (QLog.isColorLevel()) {
-            QLog.d("NearbyJsInterface", 2, "openProfileCard web url:" + paramBundle);
-          }
-        }
-      }
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("NearbyJsInterface", 2, "openProfileCard, exception");
-    }
+    paramString = new Bundle(this.jdField_a_of_type_Asuy.a().a.getExtras());
+    Bundle localBundle = new Bundle();
+    localBundle.putBundle("data", paramString);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putInt("code", paramInt);
+    this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atac
  * JD-Core Version:    0.7.0.1
  */

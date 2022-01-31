@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.medalwall;
 
-import axqy;
+import azmj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -15,12 +15,12 @@ final class MedalGuideView$10
     if (localQQAppInterface == null) {
       return;
     }
-    axqy.b(localQQAppInterface, "dc00898", "", "", "0X80088EA", "0X80088EA", this.a, 0, "", "", "", "");
+    azmj.b(localQQAppInterface, "dc00898", "", "", "0X80088EA", "0X80088EA", this.a, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalGuideView.10
  * JD-Core Version:    0.7.0.1
  */

@@ -1,110 +1,95 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.biz.qqcircle.widgets.QCircleCertifiedDialogView;
 
-public final class trx
+public class trx
+  extends tvg
 {
-  public static <K, V, T extends V> T a(@NonNull Map<K, V> paramMap, K paramK, T paramT)
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private QCircleCertifiedDialogView jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView;
+  private trv jdField_a_of_type_Trv;
+  private boolean jdField_a_of_type_Boolean;
+  
+  private void a()
   {
-    Object localObject = paramMap.get(paramK);
-    if ((localObject != null) || (paramMap.containsKey(paramK))) {
-      paramT = localObject;
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new try(this));
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView != null) {
+        break label98;
+      }
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView = new QCircleCertifiedDialogView(a());
     }
-    return paramT;
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView.setCertifiedListener(new trz(this));
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+      localLayoutParams.gravity = 17;
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView, localLayoutParams);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      return;
+      label98:
+      if (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView.getParent() != null) {
+        ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView.getParent()).removeView(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView);
+      }
+    }
   }
   
-  public static String a(String paramString)
+  private void a(String paramString)
   {
-    return ajsd.bn + ayoi.c(paramString);
+    tqs.a(a(), paramString);
+    if (this.jdField_a_of_type_Boolean) {
+      b();
+    }
   }
   
-  public static String a(String paramString, boolean paramBoolean)
+  private void b()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    String str1 = null;
-    int i = 1;
-    String[] arrayOfString = paramString.split("&");
-    int k = arrayOfString.length;
-    int j = 0;
-    paramString = str1;
-    if (j < k)
+    if ((this.jdField_a_of_type_AndroidWidgetFrameLayout != null) && (this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView != null))
     {
-      str1 = arrayOfString[j];
-      String str2 = str1.split("=")[0];
-      if ((str2.equals("src_type")) || (str2.equals("version")) || (str2.equals("type")) || (str2.equals("actionnamekey")) || (str2.equals("storysharefrom")) || ((paramBoolean) && (str2.equals("videoId"))) || ((paramBoolean) && (str2.equals("videoOwnerUin"))) || ((paramBoolean) && (str2.equals("unionid"))))
-      {
-        if (i != 0) {
-          i = 0;
-        }
-        for (;;)
-        {
-          localStringBuilder.append(str1);
-          j += 1;
-          break;
-          localStringBuilder.append('&');
-        }
-      }
-      str1 = paramString;
-      if (QLog.isColorLevel())
-      {
-        if (paramString != null) {
-          break label216;
-        }
-        paramString = new StringBuilder();
-      }
-      for (;;)
-      {
-        paramString.append(str2);
-        str1 = paramString;
-        paramString = str1;
-        break;
-        label216:
-        paramString.append('|');
-      }
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleCertifiedDialogView);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
     }
-    if ((paramString != null) && (QLog.isColorLevel())) {
-      QLog.d("ShareUtil", 2, "remove params:" + paramString);
-    }
-    return localStringBuilder.toString();
   }
   
-  public static String b(String paramString)
+  protected void a(View paramView)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)paramView.findViewById(2131373124));
+    if (this.jdField_a_of_type_AndroidViewViewStub != null)
     {
-      return paramString;
-      arrayOfString = paramString.split("\\?");
-    } while (arrayOfString.length != 2);
-    paramString = arrayOfString[0];
-    String[] arrayOfString = arrayOfString[1].split("&");
-    StringBuilder localStringBuilder = new StringBuilder("?");
-    int i = 0;
-    if (i < arrayOfString.length)
-    {
-      Object localObject = arrayOfString[i].split("=");
-      if (localObject.length != 2) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localObject = localObject[0];
-        if ("s".equals(localObject)) {
-          arrayOfString[i] = ((String)localObject + "=" + "140");
-        }
-        localStringBuilder.append(arrayOfString[i]);
-        if (i + 1 < arrayOfString.length) {
-          localStringBuilder.append("&");
-        }
-      }
+      paramView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131373133));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131373132));
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
     }
-    return paramString + localStringBuilder.toString();
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    super.a(paramString, paramObject);
+    if ("tag_cetrified_part_show".equals(paramString)) {
+      a();
+    }
+    while (!"tag_cetrified_part_show_gone".equals(paramString)) {
+      return;
+    }
+    b();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trx
  * JD-Core Version:    0.7.0.1
  */

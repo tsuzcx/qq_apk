@@ -1,110 +1,183 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Message;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import com.tribe.async.dispatch.IEventReceiver;
 
-public class wwc
-  extends RecyclerView.Adapter
-  implements baxz
+public abstract class wwc
+  implements IEventReceiver
 {
-  private ahnr jdField_a_of_type_Ahnr;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
-  private HashMap<String, Bitmap> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private List<sat> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
+  @NonNull
+  public final wwe a;
+  public wxp a;
+  protected long c;
   
-  public wwc(Context paramContext, RecyclerView paramRecyclerView)
+  public wwc(@NonNull wwe paramwwe)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Ahnr = new ahnr(((BaseActivity)paramContext).app, this, false);
+    this.jdField_a_of_type_Wwe = paramwwe;
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_Wxp == null) {
+      throw new IllegalStateException("have not attached ui");
+    }
+  }
+  
+  @NonNull
+  public Context a()
+  {
+    f();
+    return this.jdField_a_of_type_Wxp.a();
+  }
+  
+  @NonNull
+  public Resources a()
+  {
+    f();
+    return this.jdField_a_of_type_Wxp.a().getResources();
+  }
+  
+  @NonNull
+  protected View a(int paramInt)
+  {
+    f();
+    View localView = this.jdField_a_of_type_Wxp.a().findViewById(paramInt);
+    if (localView == null) {
+      throw new IllegalArgumentException("can not find view by id " + paramInt);
+    }
+    return localView;
+  }
+  
+  protected String a(int paramInt)
+  {
+    f();
+    return a().getString(paramInt);
+  }
+  
+  public wwd a(Class<? extends wwd> paramClass)
+  {
+    f();
+    return this.jdField_a_of_type_Wwe.a(paramClass);
+  }
+  
+  @NonNull
+  public wxp a()
+  {
+    f();
+    return this.jdField_a_of_type_Wxp;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    f();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    f();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    a(paramInt2, paramObject);
+  }
+  
+  public void a(int paramInt, Object paramObject) {}
+  
+  public void a(int paramInt, @NonNull xgs paramxgs)
+  {
+    a(paramxgs);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    f();
+  }
+  
+  public void a(Class<? extends wwd> paramClass, wwd paramwwd)
+  {
+    f();
+    this.jdField_a_of_type_Wwe.a(paramClass, paramwwd);
+  }
+  
+  public void a(@NonNull Error paramError) {}
+  
+  public void a(wxp paramwxp)
+  {
+    if (this.jdField_a_of_type_Wxp != null) {
+      throw new IllegalStateException("attach context duplicate");
     }
-    if (this.jdField_a_of_type_Ahnr != null) {
-      this.jdField_a_of_type_Ahnr.a();
+    if (paramwxp == null) {
+      throw new IllegalArgumentException("ui should not be null");
     }
+    this.jdField_a_of_type_Wxp = paramwxp;
   }
   
-  public void a(DragFrameLayout paramDragFrameLayout)
+  @Deprecated
+  public void a(@NonNull xgs paramxgs) {}
+  
+  public boolean a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = paramDragFrameLayout;
+    f();
+    return false;
   }
   
-  public void a(List<sat> paramList)
+  protected boolean a(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
+    return false;
   }
   
-  public void a(boolean paramBoolean)
+  public void ad_()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    f();
   }
   
-  public int getItemCount()
+  public void af_()
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    f();
   }
   
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void b(Bundle paramBundle)
   {
-    ((wwd)paramViewHolder).a(this.jdField_a_of_type_Boolean);
-    ((wwd)paramViewHolder).a((sat)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
+    f();
   }
   
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  public void b(@NonNull xgs paramxgs) {}
+  
+  public final boolean b(@NonNull Message paramMessage)
   {
-    return new wwd(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559454, paramViewGroup, false), this.jdField_a_of_type_Ahnr, this.jdField_a_of_type_JavaUtilHashMap, this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout);
+    boolean bool = a(paramMessage);
+    paramMessage.recycle();
+    return bool;
   }
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void c()
   {
-    if ((paramBitmap == null) || (paramString == null) || (paramString.length() == 0)) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramBitmap);
-      paramBitmap = (LinearLayoutManager)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutManager();
-      paramInt1 = 0;
-      while (paramInt1 < getItemCount())
-      {
-        Object localObject = paramBitmap.findViewByPosition(paramInt1);
-        if (localObject != null)
-        {
-          localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
-          if (((localObject instanceof wwd)) && (paramString.equals(((wwd)localObject).a.a)))
-          {
-            ((wwd)localObject).a(wwd.a((wwd)localObject), paramString);
-            return;
-          }
-        }
-        paramInt1 += 1;
-      }
-    }
+    f();
+  }
+  
+  public void d()
+  {
+    f();
+  }
+  
+  public void h()
+  {
+    f();
+  }
+  
+  public boolean isValidate()
+  {
+    return this.jdField_a_of_type_Wwe.isValidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wwc
  * JD-Core Version:    0.7.0.1
  */

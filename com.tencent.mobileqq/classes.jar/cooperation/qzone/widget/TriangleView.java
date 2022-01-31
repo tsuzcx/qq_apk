@@ -20,7 +20,7 @@ public class TriangleView
   {
     super(paramContext);
     BaseApplicationImpl.getApplication();
-    this.b = BaseApplicationImpl.getContext().getResources().getColor(2131165466);
+    this.b = BaseApplicationImpl.getContext().getResources().getColor(2131165501);
     this.a = paramInt1;
     this.b = paramInt2;
   }
@@ -55,7 +55,7 @@ public class TriangleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.widget.TriangleView
  * JD-Core Version:    0.7.0.1
  */

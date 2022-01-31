@@ -1,47 +1,50 @@
-import com.tencent.mobileqq.triton.sdk.ITHttp;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
-import com.tencent.qqmini.sdk.core.proxy.RequestProxy.RequestListener;
-import java.util.List;
-import java.util.Map;
+import MWIFI.SCGet3rdCloudCheck;
+import android.content.Context;
+import android.os.Message;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class beve
-  implements RequestProxy.RequestListener
+final class beve
+  extends bevp
 {
-  beve(bevd parambevd, long paramLong1, long paramLong2, String paramString) {}
+  beve(Context paramContext, String paramString, QQAppInterface paramQQAppInterface, ambi paramambi) {}
   
-  public void onRequestFailed(int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    bexk.a().i("APIProxyImpl", "httpRequest minigame onFailure [timecost = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + "ms]");
-    if (bevd.a(this.jdField_a_of_type_Bevd) != null) {
-      bevd.a(this.jdField_a_of_type_Bevd).getNativeHttp().httpCallBack(this.b, -1, null);
-    }
-    for (;;)
-    {
-      bevd.a(this.jdField_a_of_type_Bevd, System.currentTimeMillis() - this.jdField_a_of_type_Long, -1);
-      return;
-      bexk.a().e("APIProxyImpl", "httpRequest onFailure but mTTEngine is null, url:" + this.jdField_a_of_type_JavaLangString);
+    if ((1 == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ambi);
     }
   }
   
-  public void onRequestHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
-  
-  public void onRequestSucceed(int paramInt, byte[] paramArrayOfByte, Map<String, List<String>> paramMap)
+  public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck)
   {
-    bexk.a().i("APIProxyImpl", "httpRequest minigame [timecost = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + "ms]");
-    if (bevd.a(this.jdField_a_of_type_Bevd) != null) {
-      bevd.a(this.jdField_a_of_type_Bevd).getNativeHttp().httpCallBack(this.b, paramInt, paramArrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, result: " + paramSCGet3rdCloudCheck);
     }
-    for (;;)
+    if (paramSCGet3rdCloudCheck != null)
     {
-      bevd.a(this.jdField_a_of_type_Bevd, System.currentTimeMillis() - this.jdField_a_of_type_Long, paramInt);
-      return;
-      bexk.a().e("APIProxyImpl", "httpRequest onResponse but mTTEngine is null, url:" + this.jdField_a_of_type_JavaLangString);
+      if (paramSCGet3rdCloudCheck.delayHour > 24) {
+        bevt.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramSCGet3rdCloudCheck.delayHour);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, tips: " + paramSCGet3rdCloudCheck.tips + " tipsType: " + paramSCGet3rdCloudCheck.tipsType + " delayHour: " + paramSCGet3rdCloudCheck.delayHour + " URL: " + paramSCGet3rdCloudCheck.h5);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      {
+        MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+        Message localMessage = localMqqHandler.obtainMessage(1134063);
+        localMessage.obj = paramSCGet3rdCloudCheck;
+        localMqqHandler.sendMessage(localMessage);
+        bevd.b(this.jdField_a_of_type_AndroidContentContext, 398677);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beve
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,20 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
 
-final class ahix
-  implements Comparator<File>
+public class ahix
+  implements DialogInterface.OnDismissListener
 {
-  private int a(String paramString)
-  {
-    try
-    {
-      int i = paramString.lastIndexOf('.');
-      if (i == -1) {
-        return Integer.parseInt(paramString);
-      }
-      i = Integer.parseInt(paramString.substring(0, i));
-      return i;
-    }
-    catch (Exception paramString) {}
-    return 0;
-  }
+  public ahix(SystemRequestInfoView paramSystemRequestInfoView) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return a(paramFile1.getName()) - a(paramFile2.getName());
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahix
  * JD-Core Version:    0.7.0.1
  */

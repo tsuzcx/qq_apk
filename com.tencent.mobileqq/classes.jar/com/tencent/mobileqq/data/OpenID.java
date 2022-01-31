@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class OpenID
-  extends auko
+  extends awbv
 {
-  @aumc
+  @awdj
   public String appID;
   public String openID;
   
@@ -17,7 +17,7 @@ public class OpenID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.OpenID
  * JD-Core Version:    0.7.0.1
  */

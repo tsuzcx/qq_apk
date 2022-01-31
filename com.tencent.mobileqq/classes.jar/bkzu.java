@@ -1,14 +1,22 @@
-public abstract interface bkzu
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.8.1;
+
+public class bkzu
+  implements View.OnClickListener
 {
-  public abstract void a();
+  bkzu(bkzl parambkzl) {}
   
-  public abstract void a(long paramLong1, long paramLong2);
-  
-  public abstract void b();
+  public void onClick(View paramView)
+  {
+    bkzl.b(this.a);
+    new Handler().postDelayed(new AEGIFTextEditFragment.8.1(this), 200L);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkzu
  * JD-Core Version:    0.7.0.1
  */

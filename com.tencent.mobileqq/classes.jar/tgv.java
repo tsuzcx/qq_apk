@@ -1,47 +1,14 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.Stream;
+import com.qq.jce.wup.UniAttribute;
+import com.qq.taf.jce.JceInputStream;
 
 public class tgv
+  extends UniAttribute
 {
-  private int jdField_a_of_type_Int = 1;
-  private boolean jdField_a_of_type_Boolean = true;
-  private boolean b = true;
-  
-  public void a(@NonNull tff paramtff, tgz paramtgz)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.b)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("MsgTabVideoPreloaderDataProvider", 2, "下载vidList和VideoInfo");
-        }
-        Stream.of(paramtff).map(new tfv("MsgTabPreloader")).map(new tfs(null)).subscribe(new tgw(this, paramtgz, paramtff));
-      }
-    }
-    else {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("MsgTabVideoPreloaderDataProvider", 2, "只加载vidList");
-    }
-    Stream.of(paramtff).map(new tfv("MsgTabPreloader")).subscribe(new tgy(this, paramtgz, paramtff));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.b = paramBoolean;
-  }
+  JceInputStream a = new JceInputStream();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tgv
  * JD-Core Version:    0.7.0.1
  */

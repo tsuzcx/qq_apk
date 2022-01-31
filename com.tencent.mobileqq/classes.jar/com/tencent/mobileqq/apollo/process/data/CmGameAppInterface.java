@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import aizs;
-import ajac;
-import ajca;
-import ajcf;
-import ajco;
-import ajdo;
-import ajom;
-import ajtb;
-import ajte;
+import akre;
+import akro;
+import aktm;
+import aktr;
+import akua;
+import akva;
+import alfz;
+import alko;
+import alkr;
 import android.content.Intent;
-import aukq;
-import aysa;
-import aysx;
-import bbww;
+import awbx;
+import bapv;
+import baqu;
+import bdvx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -34,88 +34,88 @@ public class CmGameAppInterface
   extends AppInterface
   implements IToolProcEventListener
 {
-  private aukq jdField_a_of_type_Aukq;
-  private aysx jdField_a_of_type_Aysx;
-  List<ajte> jdField_a_of_type_JavaUtilList = new Vector();
+  private awbx jdField_a_of_type_Awbx;
+  private baqu jdField_a_of_type_Baqu;
+  List<alkr> jdField_a_of_type_JavaUtilList = new Vector();
   Map<Integer, Manager> jdField_a_of_type_JavaUtilMap = new HashMap(20);
-  private ajtb[] jdField_a_of_type_ArrayOfAjtb = new ajtb[1];
-  List<ajte> b = new Vector();
-  List<ajte> c = new Vector();
+  private alko[] jdField_a_of_type_ArrayOfAlko = new alko[1];
+  List<alkr> b = new Vector();
+  List<alkr> c = new Vector();
   
   public CmGameAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
     super(paramBaseApplicationImpl, paramString);
     QLog.i("cmgame_process.CmGameAppInterface", 1, "new CmGameAppInterface obj.");
-    aizs.a();
+    akre.a();
     TVK_SDKMgr.initSdk(BaseApplicationImpl.getContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-    TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new ajca(this));
+    TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new aktm(this));
   }
   
   private void a()
   {
-    ajcf localajcf = ajac.a();
-    if (localajcf != null) {
-      ajac.a(localajcf.a());
+    aktr localaktr = akro.a();
+    if (localaktr != null) {
+      akro.a(localaktr.a());
     }
   }
   
-  private ajtb b(int paramInt)
+  private alko b(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     }
-    return new ajdo(this);
+    return new akva(this);
   }
   
-  public ajtb a(int paramInt)
+  public alko a(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfAjtb[paramInt];
+    Object localObject1 = this.jdField_a_of_type_ArrayOfAlko[paramInt];
     if (localObject1 != null) {
       return localObject1;
     }
-    synchronized (this.jdField_a_of_type_ArrayOfAjtb)
+    synchronized (this.jdField_a_of_type_ArrayOfAlko)
     {
-      ajtb localajtb = this.jdField_a_of_type_ArrayOfAjtb[paramInt];
-      localObject1 = localajtb;
-      if (localajtb == null)
+      alko localalko = this.jdField_a_of_type_ArrayOfAlko[paramInt];
+      localObject1 = localalko;
+      if (localalko == null)
       {
-        localajtb = b(paramInt);
-        localObject1 = localajtb;
-        if (localajtb != null)
+        localalko = b(paramInt);
+        localObject1 = localalko;
+        if (localalko != null)
         {
-          this.jdField_a_of_type_ArrayOfAjtb[paramInt] = localajtb;
-          localObject1 = localajtb;
+          this.jdField_a_of_type_ArrayOfAlko[paramInt] = localalko;
+          localObject1 = localalko;
         }
       }
       return localObject1;
     }
   }
   
-  public void addObserver(ajte paramajte)
+  public void addObserver(alkr paramalkr)
   {
-    addObserver(paramajte, false);
+    addObserver(paramalkr, false);
   }
   
-  public void addObserver(ajte paramajte, boolean paramBoolean)
+  public void addObserver(alkr paramalkr, boolean paramBoolean)
   {
-    if (paramajte == null) {
+    if (paramalkr == null) {
       return;
     }
     if (paramBoolean) {
       synchronized (this.b)
       {
-        if (!this.b.contains(paramajte)) {
-          this.b.add(paramajte);
+        if (!this.b.contains(paramalkr)) {
+          this.b.add(paramalkr);
         }
         return;
       }
     }
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramajte)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramajte);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramalkr)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramalkr);
       }
       return;
     }
@@ -131,7 +131,7 @@ public class CmGameAppInterface
     return AppSetting.a();
   }
   
-  public List<ajte> getBusinessObserver(int paramInt)
+  public List<alkr> getBusinessObserver(int paramInt)
   {
     if (paramInt == 1) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -150,12 +150,12 @@ public class CmGameAppInterface
     return getAccount();
   }
   
-  public aukq getEntityManagerFactory(String paramString)
+  public awbx getEntityManagerFactory(String paramString)
   {
-    if (this.jdField_a_of_type_Aukq == null) {
-      this.jdField_a_of_type_Aukq = new QQEntityManagerFactory(getAccount());
+    if (this.jdField_a_of_type_Awbx == null) {
+      this.jdField_a_of_type_Awbx = new QQEntityManagerFactory(getAccount());
     }
-    return this.jdField_a_of_type_Aukq;
+    return this.jdField_a_of_type_Awbx;
   }
   
   public Manager getManager(int paramInt)
@@ -187,16 +187,16 @@ public class CmGameAppInterface
             return localObject1;
           }
           finally {}
-          localObject1 = new ajco(this);
+          localObject1 = new akua(this);
           break;
         case 256: 
-          localObject4 = new aysx();
+          localObject4 = new baqu();
         }
       }
       finally {}
-      this.jdField_a_of_type_Aysx = ((aysx)localObject4);
+      this.jdField_a_of_type_Baqu = ((baqu)localObject4);
       continue;
-      Object localObject4 = new bbww(this);
+      Object localObject4 = new bdvx(this);
       continue;
       Object localObject5 = localObject4;
       if (localObject4 != null)
@@ -212,12 +212,12 @@ public class CmGameAppInterface
     return "cmshowgame_module";
   }
   
-  public aysa getNetEngine(int paramInt)
+  public bapv getNetEngine(int paramInt)
   {
-    if (this.jdField_a_of_type_Aysx == null) {
-      this.jdField_a_of_type_Aysx = ((aysx)getManager(256));
+    if (this.jdField_a_of_type_Baqu == null) {
+      this.jdField_a_of_type_Baqu = ((baqu)getManager(256));
     }
-    return this.jdField_a_of_type_Aysx.a(this, paramInt);
+    return this.jdField_a_of_type_Baqu.a(this, paramInt);
   }
   
   public void onBeforeExitProc()
@@ -260,7 +260,7 @@ public class CmGameAppInterface
     }
     label114:
     this.jdField_a_of_type_JavaUtilMap.clear();
-    ajom.a();
+    alfz.a();
   }
   
   public boolean onReceiveAccountAction(String paramString, Intent paramIntent)
@@ -273,7 +273,7 @@ public class CmGameAppInterface
   public boolean onReceiveLegalExitProcAction(Intent paramIntent)
   {
     QLog.i("cmgame_process.CmGameAppInterface", 1, "[onReceiveLegalExitProcAction]");
-    if (ajac.a() != null)
+    if (akro.a() != null)
     {
       QLog.i("cmgame_process.CmGameAppInterface", 1, "NOT kill tool process");
       return true;
@@ -281,30 +281,30 @@ public class CmGameAppInterface
     return false;
   }
   
-  public void removeObserver(ajte paramajte)
+  public void removeObserver(alkr paramalkr)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramajte);
+      this.jdField_a_of_type_JavaUtilList.remove(paramalkr);
       synchronized (this.b)
       {
-        this.b.remove(paramajte);
+        this.b.remove(paramalkr);
       }
     }
     synchronized (this.c)
     {
-      this.c.remove(paramajte);
+      this.c.remove(paramalkr);
       return;
-      paramajte = finally;
-      throw paramajte;
-      paramajte = finally;
-      throw paramajte;
+      paramalkr = finally;
+      throw paramalkr;
+      paramalkr = finally;
+      throw paramalkr;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.data.CmGameAppInterface
  * JD-Core Version:    0.7.0.1
  */

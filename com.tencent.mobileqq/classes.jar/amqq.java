@@ -1,99 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-
 public class amqq
-  extends ampa<amqk>
+  extends amqp
 {
-  public static amqk b(int paramInt)
+  public amqq()
   {
-    amqk localamqk = (amqk)ampl.a().a(paramInt);
-    if (localamqk != null) {
-      return localamqk;
-    }
-    return new amqk();
+    this("uniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTextureMatrix * aTextureCoord).xy;\n}\n", "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform samplerExternalOES sTexture;\nvoid main() {\n    gl_FragColor = texture2D(sTexture, vTextureCoord);\n}\n");
   }
   
-  public int a()
+  public amqq(String paramString1, String paramString2)
   {
-    return 0;
-  }
-  
-  @NonNull
-  public amqk a(int paramInt)
-  {
-    return new amqk();
-  }
-  
-  public amqk a(String paramString)
-  {
-    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
-    return new amqk(paramString);
-  }
-  
-  @Nullable
-  public amqk a(amph[] paramArrayOfamph)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkConfProcessor", 2, "[onParsed] config type = " + a());
-    }
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
-    {
-      paramArrayOfamph = paramArrayOfamph[0].a;
-      if (!TextUtils.isEmpty(paramArrayOfamph)) {
-        return a(paramArrayOfamph);
-      }
-      QLog.d("ArkConfProcessor", 1, "[onParsed] content is empty, config type = " + a());
-    }
-    return null;
-  }
-  
-  public Class<amqk> a()
-  {
-    return amqk.class;
-  }
-  
-  public void a()
-  {
-    super.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("ArkConfProcessor", 1, "[onReqFailed] failCode=" + paramInt + ", config type = " + a());
-  }
-  
-  public void a(amqk paramamqk)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkConfProcessor", 2, "[onUpdate]  config type = " + a());
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    super(paramString1, paramString2);
+    this.c = 36197;
+    this.d = 102;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqq
  * JD-Core Version:    0.7.0.1
  */

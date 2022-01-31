@@ -1,21 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-
-public class aoox
-  implements DialogInterface.OnDismissListener
+public abstract interface aoox
 {
-  public aoox(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public abstract aooy a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.a.a(null);
-    LocalFileBrowserActivity.a(this.a);
-  }
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoox
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.utils;
 
-import agzh;
+import aith;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -8,7 +8,7 @@ import android.os.ResultReceiver;
 public final class ComIPCUtils$2
   extends ResultReceiver
 {
-  public ComIPCUtils$2(Handler paramHandler, agzh paramagzh, String paramString)
+  public ComIPCUtils$2(Handler paramHandler, aith paramaith, String paramString)
   {
     super(paramHandler);
   }
@@ -18,13 +18,13 @@ public final class ComIPCUtils$2
     if ((paramInt == 0) && (paramBundle != null))
     {
       paramBundle = paramBundle.getString("res");
-      this.jdField_a_of_type_Agzh.a(this.jdField_a_of_type_JavaLangString, paramBundle, null);
+      this.jdField_a_of_type_Aith.a(this.jdField_a_of_type_JavaLangString, paramBundle, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.utils.ComIPCUtils.2
  * JD-Core Version:    0.7.0.1
  */

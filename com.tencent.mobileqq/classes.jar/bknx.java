@@ -1,31 +1,31 @@
-import android.util.Property;
+import android.support.annotation.NonNull;
 
-class bknx
-  extends Property<bknw, Integer>
+public class bknx
 {
-  bknx(bknw parambknw, Class paramClass, String paramString)
+  public static final bknx a;
+  public static final bknx[] a;
+  public static final bknx b;
+  public static final bknx c;
+  public static final bknx d;
+  public final String a;
+  
+  static
   {
-    super(paramClass, paramString);
+    jdField_a_of_type_Bknx = new bknx("STARTED");
+    b = new bknx("SUCCESS");
+    c = new bknx("ERROR");
+    d = new bknx("FAILURE_GESTURE_IN_PROCESS");
+    jdField_a_of_type_ArrayOfBknx = new bknx[] { jdField_a_of_type_Bknx, b, c, d };
   }
   
-  public Integer a(bknw parambknw)
+  private bknx(@NonNull String paramString)
   {
-    if (parambknw != null) {
-      return Integer.valueOf(bknw.a(parambknw));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(bknw parambknw, Integer paramInteger)
-  {
-    if (parambknw != null) {
-      bknw.a(parambknw, paramInteger.intValue());
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bknx
  * JD-Core Version:    0.7.0.1
  */

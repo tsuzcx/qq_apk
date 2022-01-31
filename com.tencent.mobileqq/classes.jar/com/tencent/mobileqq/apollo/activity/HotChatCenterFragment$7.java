@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.activity;
 
-import ajyg;
+import alpu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class HotChatCenterFragment$7
@@ -10,12 +10,12 @@ class HotChatCenterFragment$7
   
   public void run()
   {
-    ((ajyg)HotChatCenterFragment.a(this.this$0).a(35)).a(this.jdField_a_of_type_JavaLangString, 0, false, 4, this.jdField_a_of_type_Int);
+    ((alpu)HotChatCenterFragment.a(this.this$0).a(35)).a(this.jdField_a_of_type_JavaLangString, 0, false, 4, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.activity.HotChatCenterFragment.7
  * JD-Core Version:    0.7.0.1
  */

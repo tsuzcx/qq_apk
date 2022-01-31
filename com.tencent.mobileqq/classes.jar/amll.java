@@ -1,53 +1,104 @@
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-final class amll
-  implements angy
+public class amll
+  implements bfjs
 {
-  public void a(String paramString1, String paramString2)
+  private amlm jdField_a_of_type_Amlm;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public amll(String paramString, amlm paramamlm)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(amlk.a(), 2, paramString2);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Amlm = paramamlm;
   }
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(amlk.a(), 2, paramString2, paramThrowable);
+    int i = -20;
+    if (paramString1.equals(BaseApplicationImpl.sApplication.getPackageName()))
+    {
+      if (this.jdField_a_of_type_JavaLangString == null)
+      {
+        paramString1 = null;
+        paramInt = -1;
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Amlm != null) {
+          this.jdField_a_of_type_Amlm.a(paramInt);
+        }
+        QLog.d("UpgradeController", 1, "writeCodeToApk:" + this.jdField_a_of_type_JavaLangString + ", forFile:" + paramString2 + " result: " + paramInt, paramString1);
+        return paramInt;
+        if (this.jdField_a_of_type_JavaLangString.length() == 0)
+        {
+          paramString1 = null;
+          paramInt = 0;
+        }
+        else
+        {
+          try
+          {
+            paramString1 = new File(paramString2);
+            paramBundle = new File(paramString2 + "~tmp");
+            if (paramBundle.exists()) {
+              paramBundle.delete();
+            }
+            paramString1.renameTo(paramBundle);
+            bhlw.a(paramBundle, this.jdField_a_of_type_JavaLangString);
+            paramBundle.renameTo(paramString1);
+            paramString1 = null;
+            paramInt = 0;
+          }
+          catch (FileNotFoundException paramString1)
+          {
+            paramInt = -30;
+          }
+          catch (IOException paramString1)
+          {
+            paramInt = i;
+            if (paramString1 != null)
+            {
+              paramInt = i;
+              if (paramString1.getMessage() != null)
+              {
+                paramInt = i;
+                if (paramString1.getMessage().contains("space")) {
+                  paramInt = -10;
+                }
+              }
+            }
+          }
+          catch (Exception paramString1)
+          {
+            paramInt = -20;
+          }
+        }
+      }
     }
+    return -1;
   }
   
-  public void b(String paramString1, String paramString2)
+  public void a(String paramString, int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(amlk.a(), 2, paramString2);
-    }
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(amlk.a(), 2, paramString2);
-    }
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w(amlk.a(), 2, paramString2);
-    }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(amlk.a(), 2, paramString2);
+    if (BaseApplicationImpl.sApplication.getPackageName().equals(paramString))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("UpgradeController", 4, "syncVersionCodeToTool:" + paramString + ", versionCode:" + paramInt);
+      }
+      if ((this.jdField_a_of_type_Amlm != null) && (!this.jdField_a_of_type_Amlm.a(paramInt))) {
+        this.jdField_a_of_type_JavaLangString = null;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amll
  * JD-Core Version:    0.7.0.1
  */

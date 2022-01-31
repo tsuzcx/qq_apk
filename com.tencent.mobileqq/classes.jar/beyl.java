@@ -1,16 +1,47 @@
-class beyl
-  implements beye
+import android.os.Handler;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.qphone.base.util.QLog;
+
+public class beyl
+  extends ndm
 {
-  private beyl(beyk parambeyk) {}
+  public beyl(BindGroupActivity paramBindGroupActivity) {}
   
-  public void a(long paramLong, double paramDouble)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    this.a.a = paramDouble;
+    if (QLog.isColorLevel()) {
+      QLog.d("BindGroupActivity", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString());
+    }
+    if ((this.a.isFinishing()) || (this.a.jdField_c_of_type_Boolean)) {}
+    do
+    {
+      return;
+      this.a.jdField_b_of_type_Bepp.hide();
+      if (this.a.a != null) {
+        this.a.a.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BindGroupActivity", 2, "openIdObserver success");
+        }
+        this.a.jdField_c_of_type_JavaLangString = paramOpenID.openID;
+        if (!paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString))
+        {
+          this.a.b();
+          return;
+        }
+        this.a.a();
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("BindGroupActivity", 2, "openIdObserver fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyl
  * JD-Core Version:    0.7.0.1
  */

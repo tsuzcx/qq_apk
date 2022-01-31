@@ -1,22 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.open.agent.BindGroupFragment;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
 public class bczx
-  implements View.OnClickListener
+  implements DownloadParams.DecodeHandler
 {
-  public bczx(BindGroupFragment paramBindGroupFragment) {}
+  private DownloadParams.DecodeHandler a;
+  private DownloadParams.DecodeHandler b;
   
-  public void onClick(View paramView)
+  public bczx(DownloadParams.DecodeHandler paramDecodeHandler1, DownloadParams.DecodeHandler paramDecodeHandler2)
   {
-    BindGroupFragment.a(this.a, ajya.a(2131701124));
-    ((akhp)BindGroupFragment.a(this.a).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.a)).intValue(), Integer.valueOf(BindGroupFragment.b(this.a)).intValue());
+    this.a = paramDecodeHandler1;
+    this.b = paramDecodeHandler2;
+  }
+  
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    Bitmap localBitmap = this.a.run(paramDownloadParams, paramBitmap);
+    DownloadParams localDownloadParams = null;
+    if (localBitmap != null)
+    {
+      paramDownloadParams = this.b.run(paramDownloadParams, localBitmap);
+      localDownloadParams = paramDownloadParams;
+      if (localBitmap != paramDownloadParams)
+      {
+        localDownloadParams = paramDownloadParams;
+        if (localBitmap != paramBitmap)
+        {
+          localBitmap.recycle();
+          localDownloadParams = paramDownloadParams;
+        }
+      }
+    }
+    if (localDownloadParams != null) {
+      paramBitmap = localDownloadParams;
+    }
+    return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bczx
  * JD-Core Version:    0.7.0.1
  */

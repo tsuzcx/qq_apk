@@ -1,30 +1,23 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
-class ahwz
-  implements aysc
+public class ahwz
+  implements bcij
 {
-  ahwz(ahww paramahww) {}
+  private long jdField_a_of_type_Long;
   
-  public void onResp(aysz paramaysz)
+  public ahwz(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
   {
-    FilterDesc localFilterDesc = (FilterDesc)paramaysz.jdField_a_of_type_Aysy.a();
-    if (paramaysz.jdField_a_of_type_Int != 0)
-    {
-      lcg.c("VideoFilterTools", "download IconFile failed. errorCode: " + paramaysz.b + ", errorMsg: " + paramaysz.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
-      return;
-    }
-    if ((ahww.a(this.a).decrementAndGet() == 0) && (ahww.a(this.a) != null)) {
-      ahww.a(this.a).a(true);
-    }
-    lcg.c("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,85 +1,98 @@
+import android.content.res.Resources;
+import android.os.Message;
 import android.text.TextUtils;
-import java.util.regex.Pattern;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.dating.NearbyTransitActivity;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class apej
+  extends alqf
 {
-  public static int a;
-  public static final String a;
-  public static boolean a;
-  public static final char[] a;
-  public static final String[] a;
-  public static int b;
-  public static final String b;
-  public static final char[] b;
-  public static int c;
-  public static int d;
-  public static int e;
+  public apej(NearbyTransitActivity paramNearbyTransitActivity) {}
   
-  static
+  protected void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, Boolean paramBoolean1)
   {
-    jdField_a_of_type_Int = 1;
-    jdField_b_of_type_Int = 2;
-    c = 3;
-    d = 4;
-    e = 5;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ".doc|.docx|.wps|.pages|", ".xls|.xlsx|.et|.numbers|" };
-    jdField_a_of_type_ArrayOfChar = new char[] { '…' };
-    jdField_a_of_type_JavaLangString = new String(jdField_a_of_type_ArrayOfChar);
-    jdField_b_of_type_ArrayOfChar = new char[] { '‥' };
-    jdField_b_of_type_JavaLangString = new String(jdField_b_of_type_ArrayOfChar);
+    apds.a("NearbyTransitActivity", new Object[] { "onJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), paramString1 });
+    NearbyTransitActivity.a("onJoinHotChat", 1);
+    if (NearbyTransitActivity.a(this.a)) {
+      return;
+    }
+    NearbyTransitActivity.a(this.a).removeMessages(2);
+    NearbyTransitActivity.a(this.a).removeMessages(5);
+    if (this.a.jdField_a_of_type_Beps != null) {
+      this.a.jdField_a_of_type_Beps.b();
+    }
+    paramBoolean1 = Message.obtain();
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString1))) {
+      paramBoolean1.what = 3;
+    }
+    for (paramBoolean1.obj = new Object[] { paramString1, paramString2, paramString4 };; paramBoolean1.obj = paramString1)
+    {
+      NearbyTransitActivity.a(this.a).sendMessage(paramBoolean1);
+      return;
+      paramString1 = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        paramString1 = NearbyTransitActivity.jdField_a_of_type_JavaLangString;
+      }
+      paramBoolean1.what = 1;
+      paramBoolean1.arg1 = 11;
+    }
   }
   
-  public static final boolean a(String paramString)
+  public void a(boolean paramBoolean, HotChatInfo paramHotChatInfo, Common.WifiPOIInfo paramWifiPOIInfo, int paramInt, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString))
+    {
+      str = paramString;
+      if (paramHotChatInfo != null) {
+        str = paramHotChatInfo.name;
+      }
     }
-    return Pattern.matches("(https|http)?(://)?docs.qq.com/(doc|sheet|slide|form/edit|form/fill)/.*", paramString);
-  }
-  
-  public static final boolean b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    if ((NearbyTransitActivity.a(this.a) == 1) && (!bdal.a(str, NearbyTransitActivity.a(this.a)))) {}
+    do
+    {
+      return;
+      NearbyTransitActivity.a("onQuickJoinHotChat", 1);
+      apds.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), Integer.valueOf(NearbyTransitActivity.a(this.a)), Integer.valueOf(paramInt), str, paramHotChatInfo, paramWifiPOIInfo });
+    } while (NearbyTransitActivity.a(this.a));
+    NearbyTransitActivity.a(this.a).removeMessages(2);
+    NearbyTransitActivity.a(this.a).removeMessages(5);
+    if (this.a.jdField_a_of_type_Beps != null) {
+      this.a.jdField_a_of_type_Beps.b();
     }
-    return Pattern.matches("(https|http)?(://)?docs.qq.com/(doc)/.*", paramString);
-  }
-  
-  public static final boolean c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    paramWifiPOIInfo = Message.obtain();
+    if (paramBoolean) {
+      if ((paramHotChatInfo != null) && ((paramInt == 1) || (paramInt == 2)))
+      {
+        paramWifiPOIInfo.what = 3;
+        paramWifiPOIInfo.obj = new Object[] { paramHotChatInfo.troopUin, paramHotChatInfo.troopCode, paramHotChatInfo.name };
+      }
     }
-    return Pattern.matches("(https|http)?(://)?docs.qq.com/(sheet)/.*", paramString);
-  }
-  
-  public static final boolean d(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    while ((NearbyTransitActivity.b(this.a) == 1) && (paramWifiPOIInfo.what == 3) && (paramHotChatInfo.mFissionRoomNum > 0))
+    {
+      ausq.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat allocate room success,is to showing entering tip " });
+      paramString = Message.obtain();
+      paramString.what = 5;
+      paramString.obj = String.format(this.a.getResources().getString(2131693404), new Object[] { Integer.valueOf(paramHotChatInfo.mFissionRoomNum) });
+      NearbyTransitActivity.a(this.a).sendMessage(paramString);
+      NearbyTransitActivity.a(this.a).sendMessageDelayed(paramWifiPOIInfo, 600L);
+      return;
+      paramWifiPOIInfo.what = 1;
+      paramWifiPOIInfo.arg1 = 5;
+      paramWifiPOIInfo.obj = NearbyTransitActivity.jdField_a_of_type_JavaLangString;
+      continue;
+      paramWifiPOIInfo.what = 1;
+      paramWifiPOIInfo.arg1 = (paramInt + 100);
+      paramWifiPOIInfo.obj = aupu.a(paramInt);
     }
-    return Pattern.matches("(https|http)?(://)?docs.qq.com/(slide)/.*", paramString);
-  }
-  
-  public static final boolean e(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return Pattern.matches("(https|http)?(://)?docs.qq.com/(form/edit|form/fill)/.*", paramString);
-  }
-  
-  public static final boolean f(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return Pattern.matches("(https|http)?(://)?docs.qq.com/(pdf)/.*", paramString);
+    NearbyTransitActivity.a(this.a).sendMessage(paramWifiPOIInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apej
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import bcqf;
+import bepp;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.ApkgManager.OnInitApkgListener;
@@ -11,7 +11,7 @@ import mqq.os.MqqHandler;
 class AppBrandPageContainer$1
   implements ApkgManager.OnInitApkgListener
 {
-  AppBrandPageContainer$1(AppBrandPageContainer paramAppBrandPageContainer, String paramString1, WeakReference paramWeakReference, String paramString2, bcqf parambcqf) {}
+  AppBrandPageContainer$1(AppBrandPageContainer paramAppBrandPageContainer, String paramString1, WeakReference paramWeakReference, String paramString2, bepp parambepp) {}
   
   public void onInitApkgInfo(int paramInt, ApkgInfo paramApkgInfo, String paramString)
   {
@@ -23,7 +23,7 @@ class AppBrandPageContainer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer.1
  * JD-Core Version:    0.7.0.1
  */

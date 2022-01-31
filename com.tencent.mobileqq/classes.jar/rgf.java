@@ -1,70 +1,109 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class rgf
-  extends RecyclerView.OnScrollListener
+  implements qyy, rjd, rje
 {
-  public rgf(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView) {}
+  private rgf(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public List<qyp> a(List<VideoInfo> paramList)
   {
-    int i = 0;
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((paramInt == 0) && (ReadInjoyXRecyclerView.c(this.a) == 2)) {
-      this.a.a();
-    }
-    int j = paramRecyclerView.getChildCount();
-    boolean bool;
-    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
-      i = paramRecyclerView.getItemCount();
-      paramRecyclerView = paramRecyclerView.findFirstVisibleItemPositions(null);
-      int k = ReadInjoyXRecyclerView.a(this.a).a();
-      if (i - j <= paramRecyclerView[0] + k)
-      {
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("XRecyclerView", 2, new Object[] { "totalItemCount=%d, firstVisibleItem=%d, visibleThreshold=%d, isCloseToTheEnd=%b", Integer.valueOf(i), Integer.valueOf(paramRecyclerView[0]), Integer.valueOf(k), Boolean.valueOf(bool) });
-        }
-        if (bool) {
-          ReadInjoyXRecyclerView.a(this.a).b(true);
-        }
+      VideoInfo localVideoInfo = (VideoInfo)paramList.next();
+      localArrayList.add(a(localVideoInfo));
+      if (VideoFeedsRecommendFragment.a(this.a) != null) {
+        VideoFeedsRecommendFragment.a(this.a).b(localVideoInfo);
       }
     }
-    for (;;)
+    return localArrayList;
+  }
+  
+  public rgg a(VideoInfo paramVideoInfo)
+  {
+    rgg localrgg = new rgg(null);
+    rgg.a(localrgg, paramVideoInfo);
+    localrgg.jdField_b_of_type_Long = 409409L;
+    localrgg.jdField_a_of_type_Int = 0;
+    localrgg.jdField_a_of_type_JavaLangString = paramVideoInfo.c;
+    localrgg.jdField_b_of_type_JavaLangString = paramVideoInfo.jdField_b_of_type_JavaLangString;
+    localrgg.c = paramVideoInfo.jdField_a_of_type_JavaLangString;
+    localrgg.jdField_a_of_type_Long = paramVideoInfo.jdField_b_of_type_Long;
+    return localrgg;
+  }
+  
+  public void a()
+  {
+    VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Qyv.f(false);
+    VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Riw.a(6);
+  }
+  
+  public void a(qyp paramqyp)
+  {
+    if ((paramqyp instanceof rgg))
     {
-      ReadInjoyXRecyclerView.c(this.a, paramInt);
+      paramqyp = rgg.a((rgg)paramqyp);
+      if (paramqyp != VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rfs.a) {
+        break label54;
+      }
+      VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rfs, false);
+    }
+    label54:
+    int i;
+    do
+    {
       return;
-      bool = false;
-      break;
-      if ((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager))
-      {
-        paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-        if (paramRecyclerView.getItemCount() - j <= paramRecyclerView.findFirstVisibleItemPosition() + ReadInjoyXRecyclerView.a(this.a).a()) {
-          i = 1;
-        }
-        if (i != 0) {
-          ReadInjoyXRecyclerView.a(this.a).b(true);
-        }
+      i = VideoFeedsRecommendFragment.a(this.a).c;
+      VideoFeedsRecommendFragment.a(this.a).remove(i);
+      VideoFeedsRecommendFragment.a(this.a).add(i, paramqyp);
+    } while (!VideoFeedsRecommendFragment.a(this.a).jdField_b_of_type_Boolean);
+    VideoFeedsRecommendFragment.a(this.a).notifyItemChanged(i);
+  }
+  
+  public void a(qyp paramqyp1, qyp paramqyp2, int paramInt, boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    Object localObject = rgg.a((rgg)VideoFeedsRecommendFragment.a(this.a).a());
+    VideoInfo localVideoInfo = VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rfs.a;
+    if (VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rfs.a != localObject)
+    {
+      VideoFeedsRecommendFragment.a(this.a).add(VideoFeedsRecommendFragment.a(this.a).c, localObject);
+      VideoFeedsRecommendFragment.a(this.a).notifyItemInserted(VideoFeedsRecommendFragment.a(this.a).c);
+      if (!VideoFeedsRecommendFragment.a(this.a).jdField_b_of_type_Boolean) {
+        break label231;
       }
+      localObject = VideoFeedsRecommendFragment.a(this.a);
+    }
+    label231:
+    for (((rbt)localObject).jdField_b_of_type_Int += 1;; VideoFeedsRecommendFragment.a(this.a).jdField_b_of_type_Int = 0)
+    {
+      localObject = VideoFeedsRecommendFragment.a(this.a);
+      ((rbt)localObject).c += 1;
+      VideoFeedsRecommendFragment.a(this.a).scrollToPosition(VideoFeedsRecommendFragment.a(this.a).c);
+      if (paramBoolean) {
+        VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Rfs, false);
+      }
+      nrt.a(null, "", "0X8009505", "0X8009505", 0, 0, "", "0", "", new ron(null, null, localVideoInfo.jdField_a_of_type_JavaLangString, localVideoInfo.g).a(409409).a().a(), false);
+      return;
     }
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public void j()
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    ReadInjoyXRecyclerView.a(this.a, ReadInjoyXRecyclerView.a(this.a) + paramInt1);
-    ReadInjoyXRecyclerView.b(this.a, ReadInjoyXRecyclerView.b(this.a) + paramInt2);
+    VideoFeedsRecommendFragment.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgf
  * JD-Core Version:    0.7.0.1
  */

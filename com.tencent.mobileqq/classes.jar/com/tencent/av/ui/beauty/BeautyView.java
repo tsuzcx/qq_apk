@@ -1,6 +1,6 @@
 package com.tencent.av.ui.beauty;
 
-import actj;
+import aekt;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
-import bbdj;
-import bbll;
+import bdcd;
+import bdkf;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.av.ui.FadingHorizontalScrollView;
@@ -22,40 +22,26 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
-import lpn;
-import mlv;
-import mlw;
-import mlx;
-import mqo;
-import mtp;
-import muc;
+import lrq;
+import mop;
+import moq;
+import mor;
+import mti;
+import mwj;
+import mww;
 
 public class BeautyView
   extends BeautyBaseView
 {
-  static final Object[][] jdField_a_of_type_Array2dOfJavaLangObject;
+  static final Object[][] jdField_a_of_type_Array2dOfJavaLangObject = { { "BEAUTY_SKIN", Integer.valueOf(2131695871), Integer.valueOf(2130841581) }, { "FACE_SHAPE_4", Integer.valueOf(2131695855), Integer.valueOf(2130841572) }, { "COLOR_TONE", Integer.valueOf(2131695870), Integer.valueOf(2130841582) }, { "FACE_V", Integer.valueOf(2131695858), Integer.valueOf(2130841575) }, { "FACE_THIN", Integer.valueOf(2131695857), Integer.valueOf(2130841573) }, { "FACE_SHORTEN", Integer.valueOf(2131695856), Integer.valueOf(2130841574) }, { "CHIN", Integer.valueOf(2131695853), Integer.valueOf(2130841571) }, { "ENLARGE_EYE", Integer.valueOf(2131695854), Integer.valueOf(2130841576) }, { "EYE_LIGHTEN", Integer.valueOf(2131695862), Integer.valueOf(2130841577) }, { "NOSE_THIN", Integer.valueOf(2131695867), Integer.valueOf(2130841583) }, { "MOUTH_SHAPE", Integer.valueOf(2131695864), Integer.valueOf(2130841579) }, { "TOOTH_WHITEN", Integer.valueOf(2131695878), Integer.valueOf(2130841584) } };
   int jdField_a_of_type_Int = 0;
   public final Button a;
   final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   final FadingHorizontalScrollView jdField_a_of_type_ComTencentAvUiFadingHorizontalScrollView;
   final BeautySeekView jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView;
-  final ArrayList<mlx> jdField_a_of_type_JavaUtilArrayList = new ArrayList(12);
+  final ArrayList<mor> jdField_a_of_type_JavaUtilArrayList = new ArrayList(12);
   private boolean jdField_a_of_type_Boolean = true;
   VideoAppInterface b;
-  
-  static
-  {
-    Object[] arrayOfObject1 = { "BEAUTY_SKIN", Integer.valueOf(2131695711), Integer.valueOf(2130841433) };
-    Object[] arrayOfObject2 = { "FACE_SHAPE_4", Integer.valueOf(2131695695), Integer.valueOf(2130841424) };
-    Object[] arrayOfObject3 = { "COLOR_TONE", Integer.valueOf(2131695710), Integer.valueOf(2130841434) };
-    Object[] arrayOfObject4 = { "FACE_THIN", Integer.valueOf(2131695697), Integer.valueOf(2130841425) };
-    Object[] arrayOfObject5 = { "FACE_SHORTEN", Integer.valueOf(2131695696), Integer.valueOf(2130841426) };
-    Object[] arrayOfObject6 = { "CHIN", Integer.valueOf(2131695693), Integer.valueOf(2130841423) };
-    Object[] arrayOfObject7 = { "NOSE_THIN", Integer.valueOf(2131695707), Integer.valueOf(2130841435) };
-    Object[] arrayOfObject8 = { "MOUTH_SHAPE", Integer.valueOf(2131695704), Integer.valueOf(2130841431) };
-    Object[] arrayOfObject9 = { "TOOTH_WHITEN", Integer.valueOf(2131695718), Integer.valueOf(2130841436) };
-    jdField_a_of_type_Array2dOfJavaLangObject = new Object[][] { arrayOfObject1, arrayOfObject2, arrayOfObject3, { "FACE_V", Integer.valueOf(2131695698), Integer.valueOf(2130841427) }, arrayOfObject4, arrayOfObject5, arrayOfObject6, { "ENLARGE_EYE", Integer.valueOf(2131695694), Integer.valueOf(2130841428) }, { "EYE_LIGHTEN", Integer.valueOf(2131695702), Integer.valueOf(2130841429) }, arrayOfObject7, arrayOfObject8, arrayOfObject9 };
-  }
   
   public BeautyView(Context paramContext)
   {
@@ -70,11 +56,11 @@ public class BeautyView
   public BeautyView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    inflate(paramContext, 2131559553, this);
-    this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView = ((BeautySeekView)findViewById(2131363135));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363114));
-    this.jdField_a_of_type_ComTencentAvUiFadingHorizontalScrollView = ((FadingHorizontalScrollView)findViewById(2131363131));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363130));
+    inflate(paramContext, 2131559605, this);
+    this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView = ((BeautySeekView)findViewById(2131363171));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363150));
+    this.jdField_a_of_type_ComTencentAvUiFadingHorizontalScrollView = ((FadingHorizontalScrollView)findViewById(2131363167));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363166));
     int i = (int)(ImmersiveUtils.a() / 5.6F);
     this.jdField_a_of_type_ComTencentAvUiFadingHorizontalScrollView.setFadingMode(1);
     this.jdField_a_of_type_ComTencentAvUiFadingHorizontalScrollView.setFadingEdgeLength(i / 2);
@@ -85,7 +71,7 @@ public class BeautyView
     {
       paramContext = new RelativeLayout.LayoutParams(i, -2);
       this.jdField_a_of_type_AndroidWidgetButton.setLayoutParams(paramContext);
-      a(this.jdField_a_of_type_AndroidWidgetButton, 2131695692, 2130841432, 2131165839, Integer.valueOf(2131363114));
+      a(this.jdField_a_of_type_AndroidWidgetButton, 2131695852, 2130841580, 2131165877, Integer.valueOf(2131363150));
       paramContext = BaseApplicationImpl.getApplication().getRuntime();
       if (!(paramContext instanceof VideoAppInterface)) {
         break label426;
@@ -104,16 +90,16 @@ public class BeautyView
       if (paramInt >= jdField_a_of_type_Array2dOfJavaLangObject.length) {
         break label445;
       }
-      Object localObject = new mlx();
-      ((mlx)localObject).jdField_a_of_type_JavaLangString = ((String)jdField_a_of_type_Array2dOfJavaLangObject[paramInt][0]);
-      ((mlx)localObject).jdField_a_of_type_Int = ((Integer)jdField_a_of_type_Array2dOfJavaLangObject[paramInt][1]).intValue();
-      ((mlx)localObject).b = ((Integer)jdField_a_of_type_Array2dOfJavaLangObject[paramInt][2]).intValue();
-      ((mlx)localObject).c = paramContext.a(((mlx)localObject).jdField_a_of_type_JavaLangString);
-      ((mlx)localObject).f = paramContext.b(((mlx)localObject).jdField_a_of_type_JavaLangString);
-      ((mlx)localObject).e = paramInt;
+      Object localObject = new mor();
+      ((mor)localObject).jdField_a_of_type_JavaLangString = ((String)jdField_a_of_type_Array2dOfJavaLangObject[paramInt][0]);
+      ((mor)localObject).jdField_a_of_type_Int = ((Integer)jdField_a_of_type_Array2dOfJavaLangObject[paramInt][1]).intValue();
+      ((mor)localObject).b = ((Integer)jdField_a_of_type_Array2dOfJavaLangObject[paramInt][2]).intValue();
+      ((mor)localObject).c = paramContext.a(((mor)localObject).jdField_a_of_type_JavaLangString);
+      ((mor)localObject).f = paramContext.b(((mor)localObject).jdField_a_of_type_JavaLangString);
+      ((mor)localObject).e = paramInt;
       this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-      paramAttributeSet = a((mlx)localObject);
-      localObject = new LinearLayout.LayoutParams(Math.max(i, ((mlx)localObject).d), -2);
+      paramAttributeSet = a((mor)localObject);
+      localObject = new LinearLayout.LayoutParams(Math.max(i, ((mor)localObject).d), -2);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramAttributeSet, (ViewGroup.LayoutParams)localObject);
       if (this.jdField_a_of_type_Int != paramInt) {
         break label437;
@@ -131,7 +117,7 @@ public class BeautyView
       bool = false;
       break label219;
       label426:
-      paramContext = new lpn();
+      paramContext = new lrq();
       break label233;
       label437:
       paramAttributeSet.setSelected(false);
@@ -141,11 +127,11 @@ public class BeautyView
     this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.setBeautySeekActionListener(this);
   }
   
-  View a(mlx parammlx)
+  View a(mor parammor)
   {
     Button localButton = new Button(getContext());
-    a(localButton, parammlx.jdField_a_of_type_Int, parammlx.b, 2131165838, parammlx);
-    parammlx.d = ((int)Math.max(muc.a(localButton), actj.a(28.0F, getResources())));
+    a(localButton, parammor.jdField_a_of_type_Int, parammor.b, 2131165876, parammor);
+    parammor.d = ((int)Math.max(mww.a(localButton), aekt.a(28.0F, getResources())));
     return localButton;
   }
   
@@ -159,8 +145,8 @@ public class BeautyView
       i = 0;
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        mlx localmlx = (mlx)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        localmlx.c = ((lpn)localObject).a(localmlx.jdField_a_of_type_JavaLangString);
+        mor localmor = (mor)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        localmor.c = ((lrq)localObject).a(localmor.jdField_a_of_type_JavaLangString);
         i += 1;
       }
     }
@@ -188,16 +174,16 @@ public class BeautyView
   {
     Resources localResources = getResources();
     Drawable localDrawable = localResources.getDrawable(paramInt2);
-    mtp localmtp = mtp.a(localResources, paramInt2, paramInt3);
-    localmtp.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    paramButton.setCompoundDrawables(null, localmtp, null, null);
+    mwj localmwj = mwj.a(localResources, paramInt2, paramInt3);
+    localmwj.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
+    paramButton.setCompoundDrawables(null, localmwj, null, null);
     paramButton.setTextColor(localResources.getColorStateList(paramInt3));
     paramButton.setText(paramInt1);
     paramButton.setBackgroundDrawable(null);
     paramButton.setOnClickListener(this);
-    paramButton.setTag(2131371127, paramObject);
-    paramButton.setTextSize(bbll.e(actj.a(12.0F, getResources())));
-    paramButton.setCompoundDrawablePadding(actj.a(8.0F, getResources()));
+    paramButton.setTag(2131371440, paramObject);
+    paramButton.setTextSize(bdkf.e(aekt.a(12.0F, getResources())));
+    paramButton.setCompoundDrawablePadding(aekt.a(8.0F, getResources()));
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -208,17 +194,17 @@ public class BeautyView
     {
       return;
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      mlx localmlx;
+      mor localmor;
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-        localmlx = (mlx)localIterator.next();
-      } while (!paramString.equals(localmlx.jdField_a_of_type_JavaLangString));
+        localmor = (mor)localIterator.next();
+      } while (!paramString.equals(localmor.jdField_a_of_type_JavaLangString));
       for (;;)
       {
-        if (localmlx == null) {
+        if (localmor == null) {
           break label146;
         }
         switch (paramInt1)
@@ -227,20 +213,20 @@ public class BeautyView
         default: 
           return;
         case 2: 
-          localmlx.c = paramInt2;
+          localmor.c = paramInt2;
           if (this.b == null) {
             break;
           }
           this.b.a(paramString, paramInt2, false);
           return;
         case 3: 
-          localmlx.c = paramInt2;
+          localmor.c = paramInt2;
           if (this.b != null) {
             this.b.a(paramString, paramInt2, true);
           }
-          mqo.a("0X800A569", localmlx.e + 1);
+          mti.a("0X800A569", localmor.e + 1);
           return;
-          localmlx = null;
+          localmor = null;
         }
       }
     }
@@ -255,11 +241,11 @@ public class BeautyView
     {
       localObject1 = localObject2;
       if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        localObject1 = (mlx)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+        localObject1 = (mor)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
       }
     }
     if (localObject1 != null) {
-      this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.a(localResources.getString(((mlx)localObject1).jdField_a_of_type_Int), ((mlx)localObject1).jdField_a_of_type_JavaLangString, ((mlx)localObject1).c, ((mlx)localObject1).f);
+      this.jdField_a_of_type_ComTencentAvUiBeautyBeautySeekView.a(localResources.getString(((mor)localObject1).jdField_a_of_type_Int), ((mor)localObject1).jdField_a_of_type_JavaLangString, ((mor)localObject1).c, ((mor)localObject1).f);
     }
   }
   
@@ -272,7 +258,7 @@ public class BeautyView
         if (this.b != null) {
           AVNotifyCenter.a(this.b.getCurrentAccountUin(), 1);
         }
-        bbdj.a((Activity)getContext(), getResources().getString(2131695708), 2131690596, 2131694794, new mlv(this), new mlw(this)).show();
+        bdcd.a((Activity)getContext(), getResources().getString(2131695868), 2131690648, 2131694951, new mop(this), new moq(this)).show();
       }
     }
     do
@@ -284,25 +270,25 @@ public class BeautyView
         paramView = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (paramView.hasNext())
         {
-          localObject = (mlx)paramView.next();
-          ((mlx)localObject).c = this.b.b(((mlx)localObject).jdField_a_of_type_JavaLangString);
+          localObject = (mor)paramView.next();
+          ((mor)localObject).c = this.b.b(((mor)localObject).jdField_a_of_type_JavaLangString);
         }
       }
       b();
       return;
-      localObject = paramView.getTag(2131371127);
-    } while (!(localObject instanceof mlx));
-    Object localObject = (mlx)localObject;
-    if (((mlx)localObject).e == this.jdField_a_of_type_Int) {}
+      localObject = paramView.getTag(2131371440);
+    } while (!(localObject instanceof mor));
+    Object localObject = (mor)localObject;
+    if (((mor)localObject).e == this.jdField_a_of_type_Int) {}
     for (;;)
     {
-      mqo.a("0X800A568", ((mlx)localObject).e + 1);
+      mti.a("0X800A568", ((mor)localObject).e + 1);
       return;
       if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())) {
         this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(this.jdField_a_of_type_Int).setSelected(false);
       }
       paramView.setSelected(true);
-      this.jdField_a_of_type_Int = ((mlx)localObject).e;
+      this.jdField_a_of_type_Int = ((mor)localObject).e;
       b();
     }
   }
@@ -320,9 +306,9 @@ public class BeautyView
         Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         while (localIterator.hasNext())
         {
-          mlx localmlx = (mlx)localIterator.next();
-          if (localmlx != null) {
-            localmlx.c = paramVideoAppInterface.a(localmlx.jdField_a_of_type_JavaLangString);
+          mor localmor = (mor)localIterator.next();
+          if (localmor != null) {
+            localmor.c = paramVideoAppInterface.a(localmor.jdField_a_of_type_JavaLangString);
           }
         }
       }
@@ -332,7 +318,7 @@ public class BeautyView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.beauty.BeautyView
  * JD-Core Version:    0.7.0.1
  */

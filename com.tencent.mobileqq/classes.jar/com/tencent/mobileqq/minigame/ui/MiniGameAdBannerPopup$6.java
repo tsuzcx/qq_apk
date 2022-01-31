@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import biam;
+import bkci;
 import cooperation.vip.pb.TianShuAccess.AdItem;
 
 final class MiniGameAdBannerPopup$6
@@ -10,12 +10,12 @@ final class MiniGameAdBannerPopup$6
   
   public void run()
   {
-    biam.a().a(MiniGameAdBannerPopup.access$400(this.val$adItem, this.val$type, this.val$reportActionId));
+    bkci.a().a(MiniGameAdBannerPopup.access$400(this.val$adItem, this.val$type, this.val$reportActionId));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGameAdBannerPopup.6
  * JD-Core Version:    0.7.0.1
  */

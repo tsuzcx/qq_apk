@@ -1,9 +1,9 @@
 package com.tencent.qqmini.proxyimpl;
 
-import amgn;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import betc;
+import anxn;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class ColorNotePlugin$1$1
   implements DialogInterface.OnClickListener
@@ -21,13 +21,13 @@ class ColorNotePlugin$1$1
     }
     catch (Exception paramDialogInterface)
     {
-      betc.d("ColorNotePlugin", "show modalView error." + paramDialogInterface);
+      QMLog.e("ColorNotePlugin", "show modalView error." + paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ColorNotePlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

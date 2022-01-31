@@ -1,21 +1,22 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+
 public class asdf
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a = -1;
-  public String a;
-  public boolean a;
-  public int b = -1;
-  public String b;
-  public int c = 1;
-  public String c;
-  public int d;
-  public int e = 1;
-  public int f;
-  public int g;
-  public int h;
+  public asdf(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    ((atvu)this.a.a.getManager(303)).a((short)-23308, paramBoolean, true);
+    azmj.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 1, 1, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asdf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,39 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.content.Intent;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
-class adpc
-  implements ajoq
+public class adpc
+  implements akfn
 {
-  adpc(adox paramadox, FileManagerEntity paramFileManagerEntity) {}
+  public adpc(RecommendFriendActivity paramRecommendFriendActivity) {}
+  
+  public void a()
+  {
+    RecommendFriendActivity.a(this.a).setVisibility(0);
+  }
+  
+  public void a(String paramString)
+  {
+    RecommendFriendActivity.a(this.a, paramString);
+  }
+  
+  public void a(List<MayKnowRecommend> paramList)
+  {
+    Intent localIntent = this.a.getIntent();
+    int i = localIntent.getIntExtra("EntranceId", 0);
+    RecommendFriendActivity.a(this.a, localIntent, i, paramList);
+  }
+  
+  public void b()
+  {
+    RecommendFriendActivity.a(this.a).setVisibility(8);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpc
  * JD-Core Version:    0.7.0.1
  */

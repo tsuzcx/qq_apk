@@ -1,174 +1,151 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
 import android.os.Handler;
-import android.util.SparseArray;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-import com.tencent.qqmini.sdk.manager.EngineManager.1;
-import com.tencent.qqmini.sdk.manager.EngineManager.2;
-import com.tencent.qqmini.sdk.manager.InstalledEngine;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.FloatingBuilder;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenStatusReceiver;
+import com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingLocationWrapper.2;
+import com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingLocationWrapper.3;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class betq
+  extends betp
+  implements atqt, bete
 {
-  private static volatile betq jdField_a_of_type_Betq;
-  private SparseArray<betm> jdField_a_of_type_AndroidUtilSparseArray;
-  private SparseArray<EngineChannel> b;
-  private SparseArray<EngineChannel> c;
-  
-  private betq()
+  public betq(Context paramContext)
   {
-    betc.b("EngineManager", "[MiniEng]init start");
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.c = new SparseArray();
-    EngineChannel localEngineChannel = new EngineChannel();
-    localEngineChannel.a("MainGame");
-    localEngineChannel.a(new bett(this));
-    this.c.put(2, localEngineChannel);
-    localEngineChannel = new EngineChannel();
-    localEngineChannel.a("MainApp");
-    localEngineChannel.a(new bett(this));
-    this.c.put(3, localEngineChannel);
-    this.b = new SparseArray();
-    betm.a();
-    betm.b(2);
-    betm.a(2);
-    betm.a(3);
-    betc.b("EngineManager", "[MiniEng]init end cost=" + (System.currentTimeMillis() - l));
+    super(paramContext);
+    f();
   }
   
-  public static betq a()
+  private atqj a()
   {
-    if (jdField_a_of_type_Betq == null) {}
-    try
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return atqj.a((QQAppInterface)localAppRuntime);
+    }
+    return null;
+  }
+  
+  private void f()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.setOnDragListener(this);
+    if (a() != null) {
+      a().a().a(this);
+    }
+  }
+  
+  private void g()
+  {
+    View localView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373607);
+    localView.setContentDescription("位置共享悬浮窗");
+    if (bhxo.a())
     {
-      if (jdField_a_of_type_Betq == null) {
-        jdField_a_of_type_Betq = new betq();
+      localView.setBackgroundColor(Color.parseColor("#4D000000"));
+      return;
+    }
+    localView.setBackgroundColor(Color.parseColor("#00000000"));
+  }
+  
+  public int a(FloatingScreenParams paramFloatingScreenParams, View paramView)
+  {
+    FloatingScreenParams localFloatingScreenParams = paramFloatingScreenParams;
+    if (paramFloatingScreenParams == null)
+    {
+      if (this.jdField_a_of_type_AndroidContentContext != null) {
+        localFloatingScreenParams = new FloatingScreenParams.FloatingBuilder().build();
       }
-      return jdField_a_of_type_Betq;
     }
-    finally {}
-  }
-  
-  private ArrayList<Integer> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = MiniAppEnv.g().getContext();
-    if (localObject == null) {
-      return localArrayList;
-    }
-    localObject = (ActivityManager)((Context)localObject).getSystemService("activity");
-    if (localObject == null) {
-      return localArrayList;
-    }
-    localObject = ((ActivityManager)localObject).getRunningAppProcesses().iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localArrayList.add(Integer.valueOf(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).pid));
-    }
-    return localArrayList;
-  }
-  
-  private void a(BaseLibInfo paramBaseLibInfo, EngineChannel paramEngineChannel)
-  {
-    if (paramBaseLibInfo != null)
+    else
     {
-      bejn.b().post(new EngineManager.1(this, paramBaseLibInfo, paramEngineChannel));
-      return;
+      paramFloatingScreenParams = new FloatingLocationWrapper.2(this, paramView, localFloatingScreenParams);
+      ThreadManager.getUIHandlerV2().postDelayed(paramFloatingScreenParams, 500L);
+      return 0;
     }
-    paramEngineChannel.a(54, null);
+    return 2;
   }
   
-  private void a(EngineChannel paramEngineChannel)
+  public void a()
   {
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingLocationWrapper", 2, new Object[] { "onThemeChanged: invoked. ", " TAG: ", "FloatingLocationWrapper" });
+    }
+    g();
+  }
+  
+  public void a(Context paramContext)
+  {
+    super.a(paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("关闭位置共享悬浮窗");
+    g();
+  }
+  
+  public void a(FloatingScreenParams paramFloatingScreenParams)
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("qqfs_floating_sp", 4);
+    int i = localSharedPreferences.getInt("KEY_QQFS_LOCATION_SHARE_CENTER_X", -2147483648);
+    int j = localSharedPreferences.getInt("KEY_QQFS_LOCATION_SHARE_CENTER_Y", -2147483648);
+    if ((i != -2147483648) && (j != -2147483648))
     {
-      int i;
-      try
-      {
-        ArrayList localArrayList = a();
-        if (this.b != null)
-        {
-          i = 0;
-          if (i < this.b.size())
-          {
-            int j = this.b.keyAt(i);
-            if (localArrayList.contains(Integer.valueOf(j))) {
-              break label137;
-            }
-            if (((EngineChannel)this.b.valueAt(i)).equals(paramEngineChannel))
-            {
-              betc.d("EngineManager", "[MiniEng] removeDeadChannelExcept error pid=" + j);
-            }
-            else
-            {
-              this.b.remove(j);
-              betc.b("EngineManager", "[MiniEng] removeDeadChannelExcept pid=" + j);
-            }
-          }
-        }
+      paramFloatingScreenParams.setFloatingCenterX(i);
+      paramFloatingScreenParams.setFloatingCenterY(j);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("FloatingLocationWrapper", 2, new Object[] { "restoreLastCenterPosition: invoked. ", " centerX: ", Integer.valueOf(i), " centerY: ", Integer.valueOf(j) });
+    }
+  }
+  
+  public void b()
+  {
+    azmj.b(null, "CliOper", "", "", "0X800A977", "0X800A977", 0, 0, "", "0", "0", "");
+  }
+  
+  public void b(int paramInt)
+  {
+    FloatingLocationWrapper.3 local3 = new FloatingLocationWrapper.3(this, paramInt);
+    ThreadManager.getUIHandlerV2().post(local3);
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver = new FloatingScreenStatusReceiver(this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenStatusReceiver.a(1, new betr(this));
+    }
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer != null)
+    {
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.b();
+      SharedPreferences.Editor localEditor = BaseApplicationImpl.getContext().getSharedPreferences("qqfs_floating_sp", 4).edit();
+      int i = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.a();
+      int j = this.jdField_a_of_type_ComTencentMobileqqWidgetQqfloatingscreenFloatingScreenContainer.b();
+      localEditor.putInt("KEY_QQFS_LOCATION_SHARE_CENTER_X", i);
+      localEditor.putInt("KEY_QQFS_LOCATION_SHARE_CENTER_Y", j);
+      localEditor.apply();
+      if (QLog.isColorLevel()) {
+        QLog.d("FloatingLocationWrapper", 2, new Object[] { "saveFloatingCenter: invoked. ", " centerX: ", Integer.valueOf(i), " centerY: ", Integer.valueOf(j), " isSmallFloating: ", Boolean.valueOf(bool) });
       }
-      finally {}
-      return;
-      label137:
-      i += 1;
     }
-  }
-  
-  private void b(BaseLibInfo paramBaseLibInfo, EngineChannel paramEngineChannel)
-  {
-    if (paramBaseLibInfo != null)
-    {
-      bejn.b().post(new EngineManager.2(this, paramBaseLibInfo, paramEngineChannel));
-      return;
-    }
-    paramEngineChannel.a(54, null);
-  }
-  
-  private void c(BaseLibInfo paramBaseLibInfo, EngineChannel paramEngineChannel)
-  {
-    betc.b("EngineManager", "[MiniEng] installBaseLibForChannel " + paramBaseLibInfo + "," + paramEngineChannel);
-    a(paramBaseLibInfo, new bets(this, paramEngineChannel, paramBaseLibInfo));
-  }
-  
-  public EngineChannel a(int paramInt)
-  {
-    EngineChannel localEngineChannel = (EngineChannel)this.c.get(paramInt);
-    if (localEngineChannel == null) {
-      betc.d("EngineManager", "[MiniEng]getChannelForType error type" + paramInt);
-    }
-    return localEngineChannel;
-  }
-  
-  public ArrayList<InstalledEngine> a(int paramInt)
-  {
-    return betm.a(paramInt);
-  }
-  
-  public void a(BaseLibInfo paramBaseLibInfo, betp parambetp)
-  {
-    if (paramBaseLibInfo != null)
-    {
-      betm localbetm2 = (betm)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramBaseLibInfo.baseLibType);
-      betm localbetm1 = localbetm2;
-      if (localbetm2 == null)
-      {
-        localbetm1 = new betm();
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramBaseLibInfo.baseLibType, localbetm1);
-      }
-      localbetm1.a(paramBaseLibInfo, parambetp);
-      return;
-    }
-    betc.b("EngineManager", "[MiniEng] libInfo is null ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     betq
  * JD-Core Version:    0.7.0.1
  */

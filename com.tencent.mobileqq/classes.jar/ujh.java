@@ -1,34 +1,28 @@
-import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
 
 public class ujh
-  extends ste<ujf, tjy>
 {
-  public ujh(ujf paramujf)
+  public int a;
+  public final long a;
+  public final String a;
+  public boolean a;
+  public String b = "";
+  
+  public ujh(String paramString)
   {
-    super(paramujf);
+    this.jdField_a_of_type_Int = 1000;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public void a(@NonNull ujf paramujf, @NonNull tjy paramtjy)
+  public ErrorMessage a()
   {
-    if ((ujf.a(paramujf) != null) && (paramtjy.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtjy.jdField_a_of_type_JavaUtilList.contains(ujf.a(paramujf).a)))
-    {
-      ved.a("WeiShiFlowBannerVideoInfoController", "GetStoryTagInfoReceiver receive tag info change event. %s", paramtjy.b.toString());
-      paramujf.a.i();
-    }
+    return new ErrorMessage(this.jdField_a_of_type_Int, this.b);
   }
-  
-  public Class acceptEventClass()
-  {
-    return tjy.class;
-  }
-  
-  public void b(@NonNull ujf paramujf, @NonNull tjy paramtjy) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujh
  * JD-Core Version:    0.7.0.1
  */

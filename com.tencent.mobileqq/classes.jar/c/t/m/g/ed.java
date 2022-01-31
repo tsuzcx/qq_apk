@@ -2,36 +2,50 @@ package c.t.m.g;
 
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Pair;
+import android.util.SparseArray;
 
-public final class ed
+final class ed
+  extends ec
 {
-  public static final Location a = new Location("Empty");
+  private SparseArray<Pair<Double, Double>> a = new SparseArray();
   
-  static
+  public ed(String paramString)
   {
-    new Bundle();
+    super(paramString, "check cell");
   }
   
-  public static String a(int paramInt1, int paramInt2)
+  public final void a()
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    boolean bool = cz.a().d("https");
-    StringBuilder localStringBuilder2 = new StringBuilder("http");
-    if (bool) {}
-    for (String str = "s";; str = "")
-    {
-      localStringBuilder1.append(str + "://lbs.map.qq.com/loc");
-      localStringBuilder1.append("?");
-      localStringBuilder1.append("c=1");
-      localStringBuilder1.append("&mars=").append(paramInt1);
-      localStringBuilder1.append("&obs=").append(paramInt2);
-      return localStringBuilder1.toString();
+    super.a();
+    this.a.clear();
+  }
+  
+  protected final boolean b(Bundle paramBundle)
+  {
+    int i = paramBundle.getInt("lac");
+    int j = paramBundle.getInt("cid");
+    paramBundle = (Location)paramBundle.getParcelable("location");
+    if ((i == 0) || (j == 0) || (paramBundle == null)) {
+      return false;
     }
+    i <<= j + 16;
+    Pair localPair = (Pair)this.a.get(i);
+    if (localPair == null)
+    {
+      paramBundle = Pair.create(Double.valueOf(paramBundle.getLatitude()), Double.valueOf(paramBundle.getLongitude()));
+      this.a.put(i, paramBundle);
+      if (this.a.size() > 320) {
+        this.a.delete(this.a.keyAt(0));
+      }
+      return true;
+    }
+    return fp.a(paramBundle.getLatitude(), paramBundle.getLongitude(), ((Double)localPair.first).doubleValue(), ((Double)localPair.second).doubleValue()) < 6000.0D;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.ed
  * JD-Core Version:    0.7.0.1
  */

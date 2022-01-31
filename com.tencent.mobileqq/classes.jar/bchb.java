@@ -1,89 +1,45 @@
-import com.tencent.mobileqq.webview.webso.HttpRequestPackage;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Field;
-import wns_proxy.HttpRsp;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.troop.utils.RollangleImageView;
+import java.lang.ref.WeakReference;
 
 public class bchb
+  extends AsyncTask<Boolean, Void, Bitmap>
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  private final String e = "\r\n";
+  private WeakReference<RollangleImageView> a;
   
-  public bchb(HttpRsp paramHttpRsp)
+  public bchb(RollangleImageView paramRollangleImageView)
   {
-    a(paramHttpRsp.rspinfo);
-    this.d = paramHttpRsp.body;
+    this.a = new WeakReference(paramRollangleImageView);
   }
   
-  private void a(String paramString)
+  protected Bitmap a(Boolean... paramVarArgs)
   {
-    int i = 0;
-    for (;;)
+    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
+    if (localRollangleImageView != null) {
+      return RollangleImageView.a(localRollangleImageView, paramVarArgs[0].booleanValue());
+    }
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
+    if (localRollangleImageView != null)
     {
-      try
-      {
-        paramString = paramString.substring(0, paramString.indexOf("\r\n\r\n") - 1).split("\r\n");
-        int j = paramString.length;
-        if (i < j) {
-          if (i == 0)
-          {
-            b(paramString[i]);
-          }
-          else
-          {
-            Object localObject = paramString[i];
-            int k = localObject.indexOf(":");
-            a(localObject.substring(0, k).trim(), localObject.substring(k + 1, localObject.length()));
-          }
-        }
+      if (paramBitmap != null) {
+        localRollangleImageView.setImageBitmap(paramBitmap);
       }
-      catch (Exception paramString)
-      {
-        QLog.e("HttpResponsePackage", 1, paramString.toString());
-      }
+    }
+    else {
       return;
-      i += 1;
     }
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    if ((paramString2 == null) || (paramString2.length() == 0)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramString1 = HttpRequestPackage.class.getDeclaredField(paramString1);
-        if (paramString1 != null)
-        {
-          paramString1.set(this, paramString2);
-          return;
-        }
-      }
-      catch (NoSuchFieldException paramString1) {}catch (IllegalArgumentException paramString1) {}catch (IllegalAccessException paramString1) {}
-    }
-  }
-  
-  private void b(String paramString)
-  {
-    if ((paramString != null) && (paramString.length() > 0))
-    {
-      paramString = paramString.split(" ");
-      if ((paramString != null) && (paramString.length == 3))
-      {
-        this.b = paramString[0];
-        this.a = paramString[1];
-        this.c = paramString[2];
-      }
-    }
+    localRollangleImageView.setImageResource(arni.b(localRollangleImageView.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bchb
  * JD-Core Version:    0.7.0.1
  */

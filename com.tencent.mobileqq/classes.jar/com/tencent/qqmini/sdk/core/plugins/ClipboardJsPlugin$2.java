@@ -3,13 +3,13 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import bekr;
+import bgkd;
 import org.json.JSONObject;
 
 class ClipboardJsPlugin$2
   implements Runnable
 {
-  ClipboardJsPlugin$2(ClipboardJsPlugin paramClipboardJsPlugin, bekr parambekr) {}
+  ClipboardJsPlugin$2(ClipboardJsPlugin paramClipboardJsPlugin, bgkd parambgkd) {}
   
   public void run()
   {
@@ -32,7 +32,7 @@ class ClipboardJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.ClipboardJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

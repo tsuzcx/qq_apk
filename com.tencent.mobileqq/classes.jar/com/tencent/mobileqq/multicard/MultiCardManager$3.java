@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.multicard;
 
-import assi;
-import assl;
+import aujf;
+import auji;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -11,17 +11,17 @@ import mqq.os.MqqHandler;
 public class MultiCardManager$3
   implements Runnable
 {
-  public MultiCardManager$3(assi paramassi, long paramLong, assl paramassl) {}
+  public MultiCardManager$3(aujf paramaujf, long paramLong, auji paramauji) {}
   
   public void run()
   {
-    ArrayList localArrayList = assi.a(this.this$0, this.jdField_a_of_type_Long);
+    ArrayList localArrayList = aujf.a(this.this$0, this.jdField_a_of_type_Long);
     if (localArrayList != null) {}
     for (;;)
     {
-      synchronized (assi.a(this.this$0))
+      synchronized (aujf.a(this.this$0))
       {
-        assi.a(this.this$0).put(Long.valueOf(this.jdField_a_of_type_Long), (ArrayList)localArrayList.clone());
+        aujf.a(this.this$0).put(Long.valueOf(this.jdField_a_of_type_Long), (ArrayList)localArrayList.clone());
         if (QLog.isColorLevel())
         {
           StringBuilder localStringBuilder = new StringBuilder().append("callbackWithNativeUinList ").append(this.jdField_a_of_type_Long).append(" ");
@@ -43,7 +43,7 @@ public class MultiCardManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.3
  * JD-Core Version:    0.7.0.1
  */

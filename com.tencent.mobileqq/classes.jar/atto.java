@@ -1,24 +1,65 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import java.io.File;
 
-class atto
-  implements DialogInterface.OnClickListener
+public class atto
 {
-  atto(attm paramattm, bbgu parambbgu) {}
+  public int a;
+  public boolean a;
+  public String[] a;
+  public int b;
+  public String[] b;
+  public int c;
+  public int d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public atto()
   {
-    this.jdField_a_of_type_Bbgu.dismiss();
-    this.jdField_a_of_type_Attm.a.a.c();
-    paramInt = ((Integer)atbi.a(this.jdField_a_of_type_Attm.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-    axqy.b(this.jdField_a_of_type_Attm.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, atbr.a(this.jdField_a_of_type_Attm.a.a.j), paramInt + "", "", "");
+    a();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 1;
+    this.c = 100;
+    this.d = 0;
+    this.jdField_a_of_type_ArrayOfJavaLangString = null;
+    this.jdField_b_of_type_ArrayOfJavaLangString = null;
+  }
+  
+  public boolean a()
+  {
+    int i;
+    if ((this.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
+    {
+      i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      {
+        if (!new File(this.jdField_a_of_type_ArrayOfJavaLangString[i]).exists()) {
+          return false;
+        }
+        i += 1;
+      }
+    }
+    if ((this.jdField_b_of_type_ArrayOfJavaLangString != null) && (this.jdField_b_of_type_ArrayOfJavaLangString.length > 0))
+    {
+      i = 0;
+      for (;;)
+      {
+        if (i >= this.jdField_b_of_type_ArrayOfJavaLangString.length) {
+          break label106;
+        }
+        if (!new File(this.jdField_b_of_type_ArrayOfJavaLangString[i]).exists()) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    label106:
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atto
  * JD-Core Version:    0.7.0.1
  */

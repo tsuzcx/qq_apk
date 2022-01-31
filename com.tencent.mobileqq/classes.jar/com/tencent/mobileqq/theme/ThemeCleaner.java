@@ -7,8 +7,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Process;
 import android.text.TextUtils;
-import anqz;
-import aymj;
+import apih;
+import bakf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
@@ -49,16 +49,9 @@ public class ThemeCleaner
   
   public static void a(Context paramContext)
   {
-    a(paramContext.getDir("theme_810", 0));
-    a(paramContext.getDir("mobileqq_theme", 0));
+    b(paramContext.getDir("theme_810", 0));
+    b(paramContext.getDir("mobileqq_theme", 0));
     ThemeSwitcher.a(ThemeUtil.getCurrentThemeId(), "210", null);
-  }
-  
-  private static void a(File paramFile)
-  {
-    VasQuickUpdateEngine.safeDeleteFile(paramFile, "theme_move_");
-    int i = ThemeUtil.getFileNumInFile(paramFile);
-    QLog.e("ThemeCleaner", 1, "clean " + paramFile.getName() + ", remain " + i);
   }
   
   public static void a(String paramString)
@@ -109,24 +102,14 @@ public class ThemeCleaner
     }
   }
   
-  private static void a(AppRuntime paramAppRuntime, String paramString)
+  public static void a(AppRuntime paramAppRuntime, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!anqz.a(paramString)))
-    {
-      QLog.e("ThemeCleaner", 1, "cleanTheme error id: " + paramString);
-      return;
-    }
-    if (paramString.equals(ThemeUtil.getCurrentThemeId()))
-    {
-      QLog.e("ThemeCleaner", 1, paramString + " is current, should not clean");
-      return;
-    }
-    a(new File(new aymj().a(paramString).a(paramAppRuntime.getApplication())));
+    ThreadManagerV2.executeOnFileThread(new ThemeCleaner.1(paramString, paramAppRuntime));
   }
   
   private static boolean a(AppRuntime paramAppRuntime, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!anqz.a(paramString)) || ("1000".equals(paramString)) || (jdField_a_of_type_JavaUtilHashSet.contains(paramString))) {}
+    if ((TextUtils.isEmpty(paramString)) || (!apih.a(paramString)) || ("1000".equals(paramString)) || (jdField_a_of_type_JavaUtilHashSet.contains(paramString))) {}
     for (;;)
     {
       return false;
@@ -164,6 +147,13 @@ public class ThemeCleaner
     }
   }
   
+  private static void b(File paramFile)
+  {
+    VasQuickUpdateEngine.safeDeleteFile(paramFile, "theme_move_");
+    int i = ThemeUtil.getFileNumInFile(paramFile);
+    QLog.e("ThemeCleaner", 1, "clean " + paramFile.getName() + ", remain " + i);
+  }
+  
   private static void b(AppRuntime paramAppRuntime)
   {
     JSONArray localJSONArray = new JSONArray();
@@ -172,6 +162,21 @@ public class ThemeCleaner
       localJSONArray.put((String)localIterator.next());
     }
     ThemeUtil.getUinThemePreferences(paramAppRuntime).edit().putString("cleanList", localJSONArray.toString()).commit();
+  }
+  
+  private static void b(AppRuntime paramAppRuntime, String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (!apih.a(paramString)))
+    {
+      QLog.e("ThemeCleaner", 1, "cleanTheme error id: " + paramString);
+      return;
+    }
+    if (paramString.equals(ThemeUtil.getCurrentThemeId()))
+    {
+      QLog.e("ThemeCleaner", 1, paramString + " is current, should not clean");
+      return;
+    }
+    b(new File(new bakf().a(paramString).a(paramAppRuntime.getApplication())));
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -208,7 +213,7 @@ public class ThemeCleaner
       }
       ??? = ((ArrayList)localObject2).iterator();
       while (((Iterator)???).hasNext()) {
-        a(localAppRuntime2, (String)((Iterator)???).next());
+        b(localAppRuntime2, (String)((Iterator)???).next());
       }
       synchronized (jdField_b_of_type_JavaUtilHashSet)
       {
@@ -225,7 +230,7 @@ public class ThemeCleaner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeCleaner
  * JD-Core Version:    0.7.0.1
  */

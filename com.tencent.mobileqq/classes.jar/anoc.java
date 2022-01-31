@@ -1,23 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.doutu.DoutuData;
+import android.view.View;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 
-public final class anoc
-  implements Parcelable.Creator<DoutuData>
+class anoc
+  implements Animator.AnimatorListener
 {
-  public DoutuData a(Parcel paramParcel)
+  anoc(annx paramannx, View paramView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    return new DoutuData(paramParcel);
+    this.jdField_a_of_type_Annx.l();
   }
   
-  public DoutuData[] a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new DoutuData[paramInt];
+    this.jdField_a_of_type_Annx.l();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Annx.e) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anoc
  * JD-Core Version:    0.7.0.1
  */

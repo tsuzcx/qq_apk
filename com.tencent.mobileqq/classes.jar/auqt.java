@@ -1,34 +1,38 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class auqt
-  implements Animator.AnimatorListener
+public class auqt
+  extends BroadcastReceiver
 {
-  auqt(auqk paramauqk, View paramView) {}
+  public auqt(NearbyJsInterface paramNearbyJsInterface) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Auqk.l();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Auqk.l();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Auqk.f) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    int i = paramIntent.getIntExtra("command_type", 0);
+    QLog.i("NearbyJsInterface", 2, "receive request" + paramIntent.getExtras());
+    switch (i)
+    {
     }
+    do
+    {
+      do
+      {
+        return;
+      } while (TextUtils.isEmpty(NearbyJsInterface.a(this.a)));
+      this.a.callJs(NearbyJsInterface.a(this.a), new String[] { paramIntent.getStringExtra("data") });
+      NearbyJsInterface.a(this.a, "");
+      return;
+    } while (TextUtils.isEmpty(NearbyJsInterface.b(this.a)));
+    this.a.callJs(NearbyJsInterface.b(this.a), new String[] { paramIntent.getStringExtra("data") });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auqt
  * JD-Core Version:    0.7.0.1
  */

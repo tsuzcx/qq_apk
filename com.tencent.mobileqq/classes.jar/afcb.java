@@ -1,19 +1,23 @@
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-
-public class afcb
-  implements agbu
+class afcb
+  implements bcnf
 {
-  public afcb(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
+  afcb(afby paramafby, String paramString) {}
   
-  public void a(MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.a.a.a(paramMotionEvent);
+    if ((paramBoolean) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
+    {
+      ((agiu)afby.a(this.jdField_a_of_type_Afby)).X = true;
+      this.jdField_a_of_type_Afby.a(true);
+      return;
+    }
+    ((agiu)afby.a(this.jdField_a_of_type_Afby)).X = false;
+    this.jdField_a_of_type_Afby.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afcb
  * JD-Core Version:    0.7.0.1
  */

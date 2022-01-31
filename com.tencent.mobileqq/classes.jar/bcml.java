@@ -1,16 +1,13 @@
-import android.graphics.Color;
+import android.view.View;
+import android.widget.TextView;
 
 public abstract interface bcml
 {
-  public static final int b = bbll.b(0.5F);
-  public static final int c = Color.parseColor("#EBEDF5");
-  public static final int d = bbll.b(16.0F);
-  public static final int e = bbll.b(9.0F);
-  public static final int f = bbll.b(15.0F);
+  public abstract void a(TextView paramTextView, View paramView, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcml
  * JD-Core Version:    0.7.0.1
  */

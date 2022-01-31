@@ -1,10 +1,16 @@
-public abstract interface asef
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+
+class asef
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public abstract void a();
+  asef(asee paramasee) {}
+  
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asef
  * JD-Core Version:    0.7.0.1
  */

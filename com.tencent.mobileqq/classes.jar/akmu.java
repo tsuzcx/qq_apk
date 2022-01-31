@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
-class akmu
-  implements akmz
+public class akmu
+  extends alsi
 {
-  akmu(akmt paramakmt) {}
+  public akmu(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void a(FullMessageSearchResult paramFullMessageSearchResult)
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    akmt.a(this.a);
-    this.a.notifyObservers(paramFullMessageSearchResult);
+    this.a.b();
   }
+  
+  protected void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akmu
  * JD-Core Version:    0.7.0.1
  */

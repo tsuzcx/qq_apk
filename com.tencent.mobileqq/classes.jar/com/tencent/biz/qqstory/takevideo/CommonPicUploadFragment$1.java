@@ -2,8 +2,8 @@ package com.tencent.biz.qqstory.takevideo;
 
 import android.os.SystemClock;
 import android.text.TextUtils;
-import avrv;
-import bfnk;
+import axjt;
+import bhoe;
 import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr;
 import java.io.File;
 
@@ -18,7 +18,7 @@ class CommonPicUploadFragment$1
     if (CommonPicUploadFragment.a(this.this$0) == 2)
     {
       String str = RecentDanceConfigMgr.a();
-      new StringBuilder().append(avrv.a).append(str).append(File.separator).toString();
+      new StringBuilder().append(axjt.a).append(str).append(File.separator).toString();
       CommonPicUploadFragment.a(this.this$0, "");
     }
     if (!TextUtils.isEmpty(CommonPicUploadFragment.a(this.this$0)))
@@ -33,7 +33,7 @@ class CommonPicUploadFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment.1
  * JD-Core Version:    0.7.0.1
  */

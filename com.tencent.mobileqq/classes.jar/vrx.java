@@ -1,91 +1,146 @@
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
 
 public class vrx
-  extends bfxe
+  implements vrr
 {
-  public static final TroopBarPOI a;
-  protected LayoutInflater a;
-  protected ArrayList<TroopBarPOI> a;
-  protected TroopBarPOI b;
+  private vrr jdField_a_of_type_Vrr;
+  private vrz jdField_a_of_type_Vrz = new vrz(this, null);
+  private vsa jdField_a_of_type_Vsa = new vsa(this, null);
+  private vsb jdField_a_of_type_Vsb = new vsb(this, null);
+  private vsc jdField_a_of_type_Vsc;
   
-  static
+  public vrx(vrr paramvrr)
   {
-    jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI = new TroopBarPOI("-1", "", ajya.a(2131710998), 0, "", 0, "");
+    this.jdField_a_of_type_Vrr = paramvrr;
   }
   
-  public vrx(Context paramContext)
+  public int a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    return this.jdField_a_of_type_Vrr.a();
   }
   
-  public void a(ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI)
+  public long a()
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
-    if (paramTroopBarPOI != null) {
-      this.b = new TroopBarPOI(paramTroopBarPOI);
+    return this.jdField_a_of_type_Vrr.a();
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_Vrr.a();
+  }
+  
+  public vrr a()
+  {
+    return this.jdField_a_of_type_Vrr;
+  }
+  
+  public vse a()
+  {
+    return this.jdField_a_of_type_Vrr.a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Vrr.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Vrr.a(paramInt);
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Vrr.a(paramLong);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Vrr.a(paramString1, paramString2, paramString3, paramLong, paramInt1, paramInt2);
+  }
+  
+  public void a(vrs paramvrs)
+  {
+    this.jdField_a_of_type_Vrr.a(paramvrs);
+  }
+  
+  public void a(vrt paramvrt)
+  {
+    this.jdField_a_of_type_Vrr.a(paramvrt);
+  }
+  
+  public void a(vru paramvru)
+  {
+    this.jdField_a_of_type_Vrz.a = paramvru;
+    this.jdField_a_of_type_Vrr.a(this.jdField_a_of_type_Vrz);
+  }
+  
+  public void a(vrv paramvrv)
+  {
+    this.jdField_a_of_type_Vsa.a = paramvrv;
+    this.jdField_a_of_type_Vrr.a(this.jdField_a_of_type_Vsa);
+  }
+  
+  public void a(vrw paramvrw)
+  {
+    this.jdField_a_of_type_Vsb.a = paramvrw;
+    this.jdField_a_of_type_Vrr.a(this.jdField_a_of_type_Vsb);
+  }
+  
+  public void a(vsc paramvsc)
+  {
+    this.jdField_a_of_type_Vsc = paramvsc;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Vrr.a();
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Vrr.b();
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_Vrr.b();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Vsc != null) {
+      this.jdField_a_of_type_Vsc.b(this.jdField_a_of_type_Vrr);
     }
+    this.jdField_a_of_type_Vrr.b();
   }
   
-  public int getCount()
+  public void c()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return 0;
+    if (this.jdField_a_of_type_Vsc != null) {
+      this.jdField_a_of_type_Vsc.c(this.jdField_a_of_type_Vrr);
     }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.jdField_a_of_type_Vrr.c();
   }
   
-  public Object getItem(int paramInt)
+  public void d()
   {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    TroopBarPOI localTroopBarPOI;
-    if (paramView == null)
+    if (this.jdField_a_of_type_Vsc != null)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561337, null);
-      paramViewGroup = new vry();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375823));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369066));
-      paramView.setTag(paramViewGroup);
-      localTroopBarPOI = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.c);
-      paramViewGroup = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
-      if (!localTroopBarPOI.equals(this.b)) {
-        break label135;
-      }
+      this.jdField_a_of_type_Vsc.a(0L, this.jdField_a_of_type_Vrr.b(), this.jdField_a_of_type_Vrr);
+      this.jdField_a_of_type_Vsc.b(this.jdField_a_of_type_Vrr);
     }
-    label135:
-    for (paramInt = 0;; paramInt = 8)
-    {
-      paramViewGroup.setVisibility(paramInt);
-      paramView.setContentDescription(localTroopBarPOI.c);
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-      return paramView;
-      paramViewGroup = (vry)paramView.getTag();
-      break;
-    }
+    this.jdField_a_of_type_Vrr.d();
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Vrr.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vrx
  * JD-Core Version:    0.7.0.1
  */

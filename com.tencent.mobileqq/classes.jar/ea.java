@@ -1,38 +1,42 @@
-import android.content.Intent;
 import android.view.View;
-import com.dataline.activities.LiteAdvanceActivity;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.qphone.base.util.QLog;
 
-public class ea
-  implements bfph
+class ea
+  implements View.OnClickListener
 {
-  public ea(LiteAdvanceActivity paramLiteAdvanceActivity, bfpc parambfpc) {}
+  ea(dz paramdz) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    paramView = (ef)paramView.getTag();
+    if (paramView == null) {}
+    DataLineMsgSet localDataLineMsgSet;
+    do
     {
+      return;
+      localDataLineMsgSet = paramView.a();
+    } while (localDataLineMsgSet == null);
+    long l = 0L;
+    if (localDataLineMsgSet.getFirstItem() != null) {
+      l = localDataLineMsgSet.getFirstItem().sessionid;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfpc.cancel();
+      localDataLineMsgSet.setPaused(true);
+      ((allz)this.a.a.a(8)).a(localDataLineMsgSet.getGroupId(), l, false);
+      dz.a(this.a, paramView, localDataLineMsgSet);
       return;
-      axrm.a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getApplication().getApplicationContext(), this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.getCurrentAccountUin(), "dl_ckclearmsg");
-      paramView = (ajum)this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.a(8);
-      paramView.a(32, true);
-      paramView.e();
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.app.a().a(this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.a).a();
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.getIntent().putExtra("clear_flag", true);
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.setResult(-1, this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.getIntent());
-      this.jdField_a_of_type_ComDatalineActivitiesLiteAdvanceActivity.finish();
+      QLog.e("DatalineSessionAdapterUseNewFileBubble", 1, "stop send but no sessionid");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ea
  * JD-Core Version:    0.7.0.1
  */

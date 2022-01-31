@@ -1,25 +1,87 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class aomd
-  implements View.OnClickListener
+  extends aofy<blus>
 {
-  public aomd(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    paramView = new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", this.a.f).putExtra("mgid", (byte)this.a.l);
-    paramView.putExtra("PARAM_EXECUTE_IMMEDIATELY", false);
-    this.a.startActivityForResult(paramView, 100);
-    axqy.b(null, "CliOper", "", "", "0X80050F1", "0X80050F1", 0, 0, "", "", "", "");
+    return 307;
+  }
+  
+  @NonNull
+  public blus a(int paramInt)
+  {
+    return new blus();
+  }
+  
+  @Nullable
+  public blus a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length == 0)) {
+      return null;
+    }
+    paramArrayOfaogf = paramArrayOfaogf[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMTemplateConfigProcessor", 2, "handleQIMTemplateConfig onParsed, content:" + paramArrayOfaogf);
+    }
+    return new blup().a(paramArrayOfaogf, bnkz.a.getAbsolutePath(), "temp_faceu_zip", new aome(this));
+  }
+  
+  public Class<blus> a()
+  {
+    return blus.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMTemplateConfigProcessor", 2, "handleQIMTemplateConfig onReqFailed");
+    }
+  }
+  
+  public void a(blus paramblus)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMTemplateConfigProcessor", 2, "handleQIMTemplateConfig onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    if (!bnkz.a()) {
+      return 0;
+    }
+    return bdiv.E(BaseApplicationImpl.getContext());
+  }
+  
+  public int b(int paramInt)
+  {
+    if (!bnkz.a())
+    {
+      QLog.i("QIMTemplateConfigProcessor", 1, "config file not exist");
+      aogj.a().a(307, 0);
+      return 0;
+    }
+    return super.b(paramInt);
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomd
  * JD-Core Version:    0.7.0.1
  */

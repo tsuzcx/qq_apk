@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class afxv
-  implements DialogInterface.OnClickListener
+  implements bhvv
 {
-  public afxv(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, aasg paramaasg) {}
+  public afxv(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Aasg.a(false);
-  }
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afxv
  * JD-Core Version:    0.7.0.1
  */

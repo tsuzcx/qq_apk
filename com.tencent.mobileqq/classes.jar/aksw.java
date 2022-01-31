@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-
-public class aksw
-  extends aksy
+public abstract interface aksw
 {
-  public aksw(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
-  {
-    super(paramQQAppInterface, paramProxyManager);
-    this.a = DataLineMsgRecord.tableName(1);
-  }
+  public abstract int a();
+  
+  public abstract aknh a(String paramString1, String paramString2, int paramInt1, int paramInt2);
+  
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.widget.XListView;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.widget.TipsBar;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class acho
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public acho(TroopInfoActivity paramTroopInfoActivity, XListView paramXListView) {}
+  public acho(ChatHistory paramChatHistory) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView.removeHeaderView(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b);
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.b = null;
+    if (bdee.d(BaseApplication.getContext()))
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      this.a.h();
+      azmj.b(this.a.app, "CliOper", "", "", "AIO", "AIO_chatlog_lately", 0, 0, "", "", "", "");
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.jdField_c_of_type_AndroidAppDialog.dismiss();
+    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
+      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
+    this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131692397));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acho
  * JD-Core Version:    0.7.0.1
  */

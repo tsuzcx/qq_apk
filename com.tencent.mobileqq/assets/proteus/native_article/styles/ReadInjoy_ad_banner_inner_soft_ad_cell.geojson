@@ -1,0 +1,318 @@
+{
+    "ReadInjoy_ad_banner_inner_soft_ad_cell": {
+        "view_type": "container",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "UIView",
+                "layout_type": "layout_relative",
+                "view_id": "id_ad_banner_inner_small_root",
+                "event_type": "cmd_native_inner_ad_nothing_click",
+                "margin_left": "16",
+                "margin_right": "16",
+                "margin_top": "16",
+                "height": {
+                    "type": "relative",
+                    "value": "52"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "343"
+                },
+                "attributes": {
+                    "setBackgroundColorString:": "$container_background_color",
+                    "setCornerRadiusArray:type:": [["3", "3", "3", "3"], "relative"]
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_inner_small_img",
+                        "height": {
+                            "type": "relative",
+                            "value": "36"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "36"
+                        },
+                        "margin_left": "8",
+                        "margin_top": "8",
+                        "margin_bottom": "8",
+                        "align_parent_left": "YES",
+                        "event_type": "cmd_native_inner_ad_cover_click",
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "$image_url",
+                                "-1"
+                            ],
+                            "setCornerRadiusString:": "$ad_icon_radius"
+                        }
+                    },
+                    {
+                        "view_type": "UIView",
+                        "layout_type": "layout_relative",
+                        "view_id": "id_inner_button_area",
+                        "margin_right":"8",
+                        "align_parent_right": "YES",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_inner_ad_button",
+                                "event_type": "cmd_native_inner_ad_button_click",
+                                "align_parent_center_vertical": "YES",
+                                "padding_left":"12",
+                                "padding_right":"12",
+                                "padding_top":"6",
+                                "padding_bottom":"6",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width":{
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "setFrameString:": "-1",
+                                    "setText:": "$text_button",
+                                    "setTextColorString:": "#ffffff",
+                                    "setFontSizeString:": "11",
+                                    "setNumberOfLinesString:": "1",
+                                    "setTextAlignmentString:": "1",
+                                    "setCornerRadiusString:": "13.0",
+                                    "setBackgroundColorString:": "#00cafc"
+                                }
+                            },
+                            {
+                                "view_type": "ReadinjoyNativeArticleAdDownloadView",
+                                "view_id": "id_view_AdDownloadView",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "align_parent_center_vertical": "YES",
+                                "event_type": "cmd_native_inner_game_button_click",
+                                "attributes": {
+                                    "setFeedsModel:": "$article_model",
+                                    "setDownloadBtnStyle:": {
+                                        "buttonTextColor": "#FFFFFF",
+                                        "buttonTextSize": "11",
+                                        "buttonCornerSize": "11.5",
+                                        "buttonBackgroundColor": "#00CAFC",
+                                        "showBunttonLeftIconOrNot": "",
+                                        "buttonBorderSize": "",
+                                        "buttonBorderColor": "",
+                                        "buttonHorizontalPadding": "10",
+                                        "buttonVerticalPadding": "6",
+                                        "showAdIconOrNot": "",
+                                        "buttonAlignment": "3"
+                                    },
+                                    "progressStyle:": {
+                                        "style": "2",
+                                        "showProgress": "1",
+                                        "width": "25",
+                                        "height": "25",
+                                        "textColor": "#ffffff",
+                                        "textSize": "12",
+                                        "corner": "2.5",
+                                        "background": "",
+                                        "progressBg": "#CCCCCC",
+                                        "secondaryProgressBg": "#CCCCCC",
+                                        "progressColor": "#12B7F5"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "UIView",
+                        "view_id":"id_area_right_of_img",
+                        "event_type": "cmd_id_area_right_of_img_click",
+                        "layout_type":"layout_relative",
+                        "right_of_view": "id_inner_small_img",
+                        "left_of_view": "id_inner_button_area",
+                        "height": {
+                            "type":"relative",
+                            "value":"32"
+                        },
+                        "width":{
+                            "type":"match_parent"
+                        },
+                        "margin_left": "6",
+                        "margin_right": "6",
+                        "margin_top": "10",
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_inner_title",
+                                "event_type": "cmd_native_inner_ad_title_click",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width":{
+                                    "type": "match_parent"
+                                },
+                                "align_parent_right": "YES",
+                                "attributes": {
+                                    "setTextColorString:": "$title_text_color",
+                                    "setText:lineSpace:": [
+                                        "$text_title",
+                                        "4"
+                                    ],
+                                    "setBoldFontSizeString:": "14",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "UIView",
+                                "view_id": "id_bottom_operation",
+                                "event_type": "cmd_id_area_right_bottom_operation_click",
+                                "layout_type": "layout_linear",
+                                "direction": "horizontal",
+                                "visible_depend_on_children":"YES",
+                                "height": {
+                                    "type":"wrap_content"
+                                },
+                                "width": {
+                                    "type":"match_parent"
+                                },
+                                "align_parent_left": "YES",
+                                "align_parent_bottom": "YES",
+                                "subviews": [
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_inner_default_label",
+                                        "height": {
+                                            "type": "wrap_content"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "event_type": "cmd_native_inner_default_label_click",
+                                        "align_parent_center_vertical": "YES",
+                                        "attributes": {
+                                            "setTextColorString:": "$text_default_color",
+                                            "setText:": "$text_default",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_inner_ad_price",
+                                        "height": {
+                                            "type": "wrap_content"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "event_type": "cmd_native_inner_ad_price_click",
+                                        "align_parent_center_vertical": "YES",
+                                        "attributes": {
+                                            "setTextColorString:": "#ff4060",
+                                            "setText:": "$text_price",
+                                            "setFontSizeString:": "11",
+                                            "setTextAlignmentString:": "1"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UILabel",
+                                        "view_id": "id_inner_ad_tag",
+                                        "align_parent_center_vertical": "YES",
+                                        "margin_left" : "3",
+                                        "padding_left":"2",
+                                        "padding_right":"2",
+                                        "padding_top":"0.5",
+                                        "padding_bottom":"0.5",
+                                        
+                                        "height": {
+                                            "type": "wrap_content"
+                                        },
+                                        "width": {
+                                            "type": "wrap_content"
+                                        },
+                                        "event_type": "cmd_native_inner_ad_tag_click",
+                                        "attributes": {
+                                            "setFrameString:": "-1",
+                                            "setText:": "$text_ad_tag",
+                                            "setTextColorString:": "#ffffff",
+                                            "setFontSizeString:": "9",
+                                            "setNumberOfLinesString:": "1",
+                                            "setTextAlignmentString:": "1",
+                                            "setAndroidGravity": "1",
+                                            "setCornerRadiusString:": "2.0",
+                                            "setBackgroundColorString:": "#ff4060"
+                                        }
+                                    },
+                                    {
+                                        "view_type": "UIView",
+                                        "view_id": "id_inner_ad_sale_price_container",
+                                        "event_type": "cmd_native_inner_ad_sale_price_click",
+                                        "layout_type": "layout_relative",
+                                        "margin_left": "3",
+                                        "height": {
+                                            "type": "wrap_content"
+                                        },
+                                        "width": {
+                                            "type":"wrap_content"
+                                        },
+                                        "subviews": [
+                                            {
+                                                "view_type": "UILabel",
+                                                "view_id": "id_inner_ad_sale_price",
+                                                "align_parent_center_vertical": "YES",
+                                                "align_parent_left": "YES",
+                                                "event_type": "cmd_native_inner_ad_sale_price_click",
+                                                "height": {
+                                                    "type": "wrap_content"
+                                                },
+                                                "width": {
+                                                    "type": "wrap_content"
+                                                },
+                                                "attributes": {
+                                                    "setTextColorString:": "$sale_price_color",
+                                                    "setText:": "$text_sale_price",
+                                                    "setFontSizeString:": "11",
+                                                    "setTextAlignmentString:": "1",
+                                                    "setNumberOfLinesString:": "1"
+                                                }
+                                            },
+                                            {
+                                                "view_type":"UIView",
+                                                "view_id":"id_inner_ad_sale_price_line",
+                                                "align_parent_center_vertical": "YES",
+                                                "height": {
+                                                    "type":"absolutely",
+                                                    "value":"1"
+                                                },
+                                                "width": {
+                                                    "type":"match_parent"
+                                                },
+                                                "attributes": {
+                                                    "setBackgroundColorString:":"$sale_price_line_color"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

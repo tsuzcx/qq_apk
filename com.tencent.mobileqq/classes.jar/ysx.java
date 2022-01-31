@@ -1,44 +1,67 @@
-public final class ysx
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
+
+public class ysx
 {
-  private int a = -2147483648;
+  protected Context a;
+  protected Drawable a;
+  protected View a;
+  protected WindowManager a;
+  protected PopupWindow a;
   
-  public ysx(int paramInt)
+  public ysx(Context paramContext)
   {
-    this.a = paramInt;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(paramContext);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchInterceptor(new ysy(this));
+    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
   }
   
-  public int a()
+  protected void a()
   {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    switch (a())
-    {
-    default: 
-      return null;
-    case 0: 
-      return "Success";
-    case 1: 
-      return "Internal Error";
-    case 2: 
-      return "Ad was re-loaded too frequently";
-    case 3: 
-      return "Network Error";
-    case 4: 
-      return "Invalid Request";
-    case 5: 
-      return "No Fill";
-    case 6: 
-      return "Server Error";
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      throw new IllegalStateException("setContentView was not called with a view to display.");
     }
-    return "Display Format Mismatch";
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setTouchable(true);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_AndroidViewView);
+      return;
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    }
+  }
+  
+  public void a(PopupWindow.OnDismissListener paramOnDismissListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(paramOnDismissListener);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+  }
+  
+  public void b(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ysx
  * JD-Core Version:    0.7.0.1
  */

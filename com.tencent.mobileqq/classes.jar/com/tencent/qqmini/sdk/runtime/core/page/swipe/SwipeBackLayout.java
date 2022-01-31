@@ -11,10 +11,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
-import bfck;
-import bfcl;
-import bfcm;
-import bfgl;
+import bhca;
+import bhcb;
+import bhcc;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 
 public class SwipeBackLayout
   extends FrameLayout
@@ -23,8 +23,8 @@ public class SwipeBackLayout
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public View a;
-  private bfcl jdField_a_of_type_Bfcl;
-  private bfcm jdField_a_of_type_Bfcm;
+  private bhcb jdField_a_of_type_Bhcb;
+  private bhcc jdField_a_of_type_Bhcc;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = -1728053248;
@@ -48,10 +48,10 @@ public class SwipeBackLayout
   
   private void a()
   {
-    this.jdField_a_of_type_Bfcm = bfcm.a(this, 1.0F, new bfck(this));
-    this.jdField_a_of_type_Bfcm.a(1);
+    this.jdField_a_of_type_Bhcc = bhcc.a(this, 1.0F, new bhca(this));
+    this.jdField_a_of_type_Bhcc.a(1);
     this.c = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840834);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840950);
   }
   
   private void a(Canvas paramCanvas, View paramView)
@@ -74,7 +74,7 @@ public class SwipeBackLayout
   {
     super.computeScroll();
     this.jdField_a_of_type_Float = (1.0F - this.jdField_b_of_type_Float);
-    if ((this.jdField_a_of_type_Bfcm != null) && (this.jdField_a_of_type_Bfcm.a(true))) {
+    if ((this.jdField_a_of_type_Bhcc != null) && (this.jdField_a_of_type_Bhcc.a(true))) {
       ViewCompat.postInvalidateOnAnimation(this);
     }
   }
@@ -82,7 +82,7 @@ public class SwipeBackLayout
   protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
     boolean bool = super.drawChild(paramCanvas, paramView, paramLong);
-    if ((paramView == this.jdField_a_of_type_AndroidViewView) && (this.jdField_a_of_type_Bfcm.a() != 0))
+    if ((paramView == this.jdField_a_of_type_AndroidViewView) && (this.jdField_a_of_type_Bhcc.a() != 0))
     {
       a(paramCanvas, paramView);
       b(paramCanvas, paramView);
@@ -121,11 +121,11 @@ public class SwipeBackLayout
       if (i == 0) {
         break;
       }
-      if (this.jdField_a_of_type_Bfcm == null) {
+      if (this.jdField_a_of_type_Bhcc == null) {
         break label157;
       }
-      return this.jdField_a_of_type_Bfcm.a(paramMotionEvent);
-      if (Math.abs(j) >= bfgl.a(getContext()) * 30.0F)
+      return this.jdField_a_of_type_Bhcc.a(paramMotionEvent);
+      if (Math.abs(j) >= DisplayUtil.getDensity(getContext()) * 30.0F)
       {
         i = 0;
         continue;
@@ -154,9 +154,9 @@ public class SwipeBackLayout
     if (!this.jdField_b_of_type_Boolean) {
       return false;
     }
-    if (this.jdField_a_of_type_Bfcm != null)
+    if (this.jdField_a_of_type_Bhcc != null)
     {
-      this.jdField_a_of_type_Bfcm.a(paramMotionEvent);
+      this.jdField_a_of_type_Bhcc.a(paramMotionEvent);
       ViewCompat.postInvalidateOnAnimation(this);
       return true;
     }
@@ -168,9 +168,9 @@ public class SwipeBackLayout
     this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public void setSwipeBackCallback(bfcl parambfcl)
+  public void setSwipeBackCallback(bhcb parambhcb)
   {
-    this.jdField_a_of_type_Bfcl = parambfcl;
+    this.jdField_a_of_type_Bhcb = parambhcb;
   }
   
   public void setSwipeBackEnable(boolean paramBoolean)
@@ -180,7 +180,7 @@ public class SwipeBackLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.swipe.SwipeBackLayout
  * JD-Core Version:    0.7.0.1
  */

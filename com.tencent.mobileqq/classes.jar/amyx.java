@@ -1,73 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class amyx
-  extends amyp<amyw>
+public abstract interface amyx
 {
-  public int a()
-  {
-    return 95;
-  }
+  public abstract void a(int paramInt);
   
-  @NonNull
-  public amyw a()
-  {
-    return new amyw();
-  }
+  public abstract void a(boolean paramBoolean, int paramInt, ArCloudConfigInfo paramArCloudConfigInfo);
   
-  @NonNull
-  public amyw a(amph[] paramArrayOfamph)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    int j = paramArrayOfamph.length;
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        String str = paramArrayOfamph[i].a;
-        if (QLog.isColorLevel()) {
-          QLog.i("PushOpenNotify", 2, "config :" + str);
-        }
-        if (!TextUtils.isEmpty(str))
-        {
-          akse.a(localQQAppInterface, str, false);
-          PreferenceManager.getDefaultSharedPreferences(localQQAppInterface.getApp()).edit().putString(localQQAppInterface.c() + "_" + "push_open_notify_xml", str).commit();
-        }
-      }
-      else
-      {
-        return new amyw();
-      }
-      i += 1;
-    }
-  }
+  public abstract void a(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
   
-  public Class<amyw> a()
-  {
-    return amyw.class;
-  }
+  public abstract void b(int paramInt);
   
-  @NonNull
-  public amyw b()
-  {
-    return new amyw();
-  }
+  public abstract void b(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
   
-  public boolean c()
-  {
-    return false;
-  }
+  public abstract void c(int paramInt);
+  
+  public abstract void c(boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyx
  * JD-Core Version:    0.7.0.1
  */

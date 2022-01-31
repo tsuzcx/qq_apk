@@ -1,11 +1,11 @@
 package com.tencent.mm.hardcoder;
 
-import aabg;
+import absd;
 
 public class HardCoderManager$2
   implements Runnable
 {
-  public HardCoderManager$2(aabg paramaabg) {}
+  public HardCoderManager$2(absd paramabsd) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class HardCoderManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HardCoderManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,20 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class binh
-  implements xez
+final class binh
+  implements DialogInterface.OnClickListener
 {
-  binh(bina parambina) {}
+  binh(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bina.a(this.a).setVisibility(0);
+    this.a.onClick(paramDialogInterface, paramInt);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     binh
  * JD-Core Version:    0.7.0.1
  */

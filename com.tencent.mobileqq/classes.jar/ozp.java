@@ -1,25 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import java.util.List;
 
-class ozp
-  implements Comparator<ArticleInfo>
+public abstract interface ozp<DataType>
 {
-  ozp(ozo paramozo) {}
+  public abstract DataType a(int paramInt);
   
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
-  {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
-    }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
-    }
-    return 1;
-  }
+  public abstract List<DataType> a();
+  
+  public abstract void a();
+  
+  public abstract void a(DataType paramDataType, int paramInt);
+  
+  public abstract void a(List<DataType> paramList);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b();
+  
+  public abstract void b(List<DataType> paramList);
+  
+  public abstract void c();
+  
+  public abstract void c(List<ChannelCoverInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ozp
  * JD-Core Version:    0.7.0.1
  */

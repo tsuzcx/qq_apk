@@ -1,169 +1,23 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
 public class axxz
-  extends axuq
+  implements DialogInterface.OnClickListener
 {
-  private void a(Context paramContext, RelativeLayout paramRelativeLayout, Resources paramResources, axyb paramaxyb)
-  {
-    paramContext = new ImageView(paramContext);
-    paramContext.setImageResource(2130849298);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(10);
-    localLayoutParams.addRule(9);
-    localLayoutParams.leftMargin = actj.a(239.0F, paramResources);
-    localLayoutParams.topMargin = actj.a(10.0F, paramResources);
-    paramaxyb.jdField_a_of_type_AndroidWidgetImageView = paramContext;
-    paramContext.setVisibility(4);
-    paramRelativeLayout.addView(paramContext, localLayoutParams);
-  }
+  public axxz(SignTextEditFragment paramSignTextEditFragment) {}
   
-  private void b(Context paramContext, RelativeLayout paramRelativeLayout, Resources paramResources, axyb paramaxyb)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = new TextView(paramContext);
-    paramContext.setId(2131374858);
-    paramContext.setTextColor(Color.parseColor("#777777"));
-    paramContext.setTextSize(1, 14.0F);
-    paramContext.setGravity(16);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, actj.a(25.0F, paramResources));
-    localLayoutParams.topMargin = actj.a(83.0F, paramResources);
-    localLayoutParams.leftMargin = actj.a(30.0F, paramResources);
-    paramaxyb.b = paramContext;
-    paramRelativeLayout.addView(paramContext, localLayoutParams);
-  }
-  
-  private void c(Context paramContext, RelativeLayout paramRelativeLayout, Resources paramResources, axyb paramaxyb)
-  {
-    paramContext = new TextView(paramContext);
-    paramContext.setId(2131374859);
-    paramContext.setText(2131698521);
-    paramContext.setTextSize(1, 22.0F);
-    paramContext.setTextColor(-1);
-    paramContext.setGravity(16);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, actj.a(75.0F, paramResources));
-    localLayoutParams.leftMargin = actj.a(60.0F, paramResources);
-    localLayoutParams.topMargin = actj.a(8.0F, paramResources);
-    paramaxyb.jdField_a_of_type_AndroidWidgetTextView = paramContext;
-    paramRelativeLayout.addView(paramContext, localLayoutParams);
-  }
-  
-  protected int b()
-  {
-    return 29;
-  }
-  
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    avpg localavpg = avpg.a();
-    Resources localResources = paramContext.getResources();
-    int j = 0;
-    if (paramView == null)
-    {
-      paramBundle = new RelativeLayout(paramContext);
-      paramView = new axyb(null);
-      paramBundle.setTag(-1, paramView);
-      paramBundle.setId(2131374857);
-      paramView.jdField_a_of_type_AndroidViewView = paramBundle;
-      c(paramContext, paramBundle, localResources, paramView);
-      b(paramContext, paramBundle, localResources, paramView);
-      a(paramContext, paramBundle, localResources, paramView);
-      j = 1;
-      paramContext = paramBundle;
-      if ((this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) && (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message != null)) {
-        break label190;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsgItemLayout29", 2, "getView but parentMsg or message is null");
-      }
-      if (!QLog.isDebugVersion()) {
-        break label384;
-      }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
-        break label179;
-      }
-    }
-    label179:
-    for (paramContext = "-";; paramContext = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message)
-    {
-      throw new IllegalStateException(String.format("getView but parentMsg or message is null, %s / %s", new Object[] { paramView, paramContext }));
-      paramContext = (RelativeLayout)paramView;
-      paramView = (axyb)paramContext.getTag(-1);
-      break;
-    }
-    label190:
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message.isSend();
-    paramBundle = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int i = 0;
-    if (paramBundle.hasNext())
-    {
-      axup localaxup = (axup)paramBundle.next();
-      if ((!"type".equals(localaxup.a)) || (!(localaxup instanceof axzr))) {
-        break label447;
-      }
-      i = ((axzr)localaxup).k;
-    }
-    label384:
-    label447:
-    for (;;)
-    {
-      break;
-      if ((bool != paramView.jdField_a_of_type_Boolean) || (i != paramView.jdField_a_of_type_Int) || (j != 0))
-      {
-        paramContext.setBackgroundDrawable(new BitmapDrawable(localResources, localavpg.a(localResources, bool, i)));
-        paramView.jdField_a_of_type_Boolean = bool;
-        paramView.jdField_a_of_type_Int = i;
-      }
-      if (bool)
-      {
-        paramView.b.setText(2131698520);
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      }
-      for (;;)
-      {
-        if ((!bool) && (BaseApplicationImpl.sProcessId == 1))
-        {
-          paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          avpg.a().a(paramView, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message);
-        }
-        return paramContext;
-        if ("1".equals(avpg.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message)))
-        {
-          paramView.b.setText(2131698518);
-          paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-        }
-        else
-        {
-          paramView.b.setText(2131698519);
-          paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        }
-      }
-    }
-  }
-  
-  public String b()
-  {
-    return "layout29";
+    paramDialogInterface.dismiss();
+    this.a.a.clear();
+    SignTextEditFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axxz
  * JD-Core Version:    0.7.0.1
  */

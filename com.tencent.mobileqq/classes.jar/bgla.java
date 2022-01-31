@@ -1,71 +1,39 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.photoplus.PhotoPlusManager;
-import cooperation.photoplus.PhotoPlusModule.1;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
 public class bgla
-  extends QIPCModule
 {
-  private static bgla a;
-  
-  private bgla()
+  public static void a(String paramString, JSONObject paramJSONObject, int paramInt)
   {
-    super("PhotoPlusModule");
-  }
-  
-  public static bgla a()
-  {
-    if (a == null) {}
-    try
+    switch (paramInt)
     {
-      if (a == null) {
-        a = new bgla();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPlusModule", 2, "[onCall] action = " + paramString + ", params = " + paramBundle + ", callbackId=" + paramInt);
-    }
-    paramBundle = BaseApplicationImpl.sApplication.getRuntime();
-    if (!QQAppInterface.class.isInstance(paramBundle)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("PhotoPlusModule", 2, "[onCall] get app failed.");
-      }
-    }
-    do
-    {
-      return null;
-      paramBundle = (PhotoPlusManager)paramBundle.getManager(169);
-      if ("action_get_sticker_templates".equals(paramString))
+    case -4: 
+    default: 
+    case -5: 
+      try
       {
-        paramBundle.b(true);
-        ThreadManager.postImmediately(new PhotoPlusModule.1(this, paramBundle, paramInt), null, true);
-        return null;
+        paramJSONObject.put("errMsg", "unknown reason");
+        return;
       }
-      if ("action_exit_sticker".equals(paramString))
+      catch (Throwable paramString)
       {
-        paramBundle.b(false);
-        return null;
+        QMLog.e("MiniappHttpUtil", "fillErrMsg", paramString);
+        return;
       }
-    } while (!"action_jump_to_shortvideo".equals(paramString));
-    paramBundle.c(true);
-    return null;
+      if (TextUtils.isEmpty(paramString)) {}
+      for (paramString = "abort";; paramString = paramString + ":fail abort")
+      {
+        paramJSONObject.put("errMsg", paramString);
+        return;
+      }
+    }
+    paramJSONObject.put("errMsg", "request protocol error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgla
  * JD-Core Version:    0.7.0.1
  */

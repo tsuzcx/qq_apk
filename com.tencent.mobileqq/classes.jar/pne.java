@@ -1,22 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pne
-  implements spa
+class pne
+  implements View.OnClickListener
 {
-  public void a(URL paramURL, int paramInt) {}
+  pne(pna parampna, pgd parampgd, rqj paramrqj) {}
   
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, rpd paramrpd)
+  public void onClick(View paramView)
   {
-    QLog.d("NativeReadInjoyImageView", 2, "setImageDrawable: url is " + paramURL);
-    paramrpd.a();
+    this.jdField_a_of_type_Pgd.a();
+    rro localrro = this.jdField_a_of_type_Rqj.a();
+    if (localrro != null) {
+      localrro.a(paramView, this.jdField_a_of_type_Pgd.a(), 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pne
  * JD-Core Version:    0.7.0.1
  */

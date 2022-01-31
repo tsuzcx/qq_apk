@@ -1,23 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiOperationInfo;
+import android.widget.NumberPicker;
+import android.widget.TimePicker;
+import android.widget.TimePicker.OnTimeChangedListener;
 
-public final class bhfv
-  implements Parcelable.Creator<WeishiOperationInfo>
+class bhfv
+  implements TimePicker.OnTimeChangedListener
 {
-  public WeishiOperationInfo a(Parcel paramParcel)
-  {
-    return new WeishiOperationInfo(paramParcel);
-  }
+  bhfv(bhfu parambhfu) {}
   
-  public WeishiOperationInfo[] a(int paramInt)
+  public void onTimeChanged(TimePicker paramTimePicker, int paramInt1, int paramInt2)
   {
-    return new WeishiOperationInfo[paramInt];
+    bhfu.a(this.a, paramInt1);
+    if (paramInt1 == bhfu.a(this.a).getMinValue())
+    {
+      bhfu.b(this.a).setMinValue(bhfu.a(this.a));
+      bhfu.b(this.a).setMaxValue(59);
+      return;
+    }
+    if (paramInt1 == bhfu.a(this.a).getMaxValue())
+    {
+      bhfu.b(this.a).setMinValue(0);
+      bhfu.b(this.a).setMaxValue(bhfu.b(this.a));
+      return;
+    }
+    bhfu.b(this.a).setMinValue(0);
+    bhfu.b(this.a).setMaxValue(59);
+    bhfu.b(this.a, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhfv
  * JD-Core Version:    0.7.0.1
  */

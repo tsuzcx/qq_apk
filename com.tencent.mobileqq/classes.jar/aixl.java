@@ -1,76 +1,25 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import mqq.observer.BusinessObserver;
 
 public class aixl
-  extends aixj
+  implements BusinessObserver
 {
-  public long a;
-  public String a;
-  public WeakReference<QQSettingMe> a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public int f;
-  int g = 7;
-  private int h;
+  public aixl(RedPacketManager paramRedPacketManager) {}
   
-  public aixl(QQAppInterface paramQQAppInterface, JSONObject paramJSONObject, QQSettingMe paramQQSettingMe)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 98;
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("entry_id", 1);
-    this.jdField_a_of_type_Long = paramJSONObject.optLong("seq", 0L);
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("wording");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("jump_url");
-    this.jdField_c_of_type_Int = paramJSONObject.optInt("is_red", 0);
-    this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("icon_url");
-    this.jdField_d_of_type_Int = paramJSONObject.optInt("action_id", 0);
-    this.e = paramJSONObject.optInt("bubble_id", 0);
-    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("scheme");
-    this.f = paramJSONObject.optInt("show_sum", 1);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQSettingMe);
-  }
-  
-  public void a(ajfq paramajfq, Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExploreDrawerStatus", 2, "[onBubbleClick] " + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_b_of_type_JavaLangString);
-    }
-    ((airx)paramQQAppInterface.getManager(153)).a(paramQQAppInterface, paramContext, this.jdField_d_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, "drawer");
-  }
-  
-  public void a(ajfq paramajfq, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (this.h >= this.f) {}
-    do
+    switch (paramInt)
     {
-      do
-      {
-        return;
-        this.h += 1;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          ajfh.a(paramajfq, this.jdField_a_of_type_JavaLangString, 9, this.e);
-        }
-      } while ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || (this.jdField_a_of_type_JavaLangRefWeakReference == null));
-      paramajfq = (QQSettingMe)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (paramajfq == null);
-    paramajfq.a(this.jdField_c_of_type_JavaLangString);
+    default: 
+      return;
+    }
+    this.a.a(paramBoolean, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixl
  * JD-Core Version:    0.7.0.1
  */

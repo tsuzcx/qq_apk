@@ -1,0 +1,97 @@
+{
+    "RIJ_biucomment_without_social_header": {
+        "view_type": "container",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "$includeComponet": "componet/socialize_recommend_follow.geojson"
+            },
+            {
+                "$includeComponet": "componet/ugc_biu_comment_with_avatar.geojson"
+            },
+            {
+                "$includeComponet": "componet/RIJ_biu_small_image_article.geojson"
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_middle_body_wrapper",
+                "direction": "vertical",
+                "padding_top": "12",
+                "margin_left": "12",
+                "margin_right": "12",
+                "visible_depend_on_children": "YES",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes": {
+                    "setBackgroundColorString:": "#F5F6FA"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInJoySummaryView",
+                        "view_id": "id_summary",
+                        "margin_left": "12",
+                        "margin_right": "12",
+                        "margin_bottom": "12",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "attributes": {
+                            "setArticleModel:": "-1"
+                        }
+                    },
+                    {
+                        "$includeComponet": "componet/RIJ_biu_more_image.geojson"
+                    },
+                    {
+                        "$includeComponet": "componet/RIJ_biu_big_video.geojson"
+                    }
+                ]
+            },
+            {
+                "$includeComponet": "componet/RIJ_column_capsule.geojson"
+            },
+            {
+              "$includeComponet": "componet/social_bottom_biucomment.geojson"
+            },
+            {
+                "view_type":"UIView",
+                "view_id":"id_flow_guide_separator",
+                "default_visible":"NO",
+                "margin_left":"6",
+                "margin_right":"6",
+                "margin_top":"0",
+                "height":{
+                    "type":"absolutely","value":"0.5"
+                },
+                "width":{
+                    "type": "match_parent"
+                },
+                "attributes":{
+                    "setFrameString:":"-1",
+                    "setBackgroundColorString:":"#E5E5E5",
+                    "setAttatchInfo:":"$separatorShouldShould"
+                }
+            },
+            {
+                "$includeComponet": "componet/flow_guide_bottom_1_2_3.geojson"
+            },
+            {
+                "$includeComponet": "componet/separator.geojson"
+            }
+        ]
+    }
+}

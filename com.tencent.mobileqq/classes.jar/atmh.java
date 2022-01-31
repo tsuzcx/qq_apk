@@ -1,74 +1,38 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.1;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.20.2;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class atmh
-  implements atii
+class atmh
+  implements bhqd
 {
-  atmh(atlw paramatlw) {}
+  atmh(atmg paramatmg, bhpy parambhpy) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    switch (paramInt)
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + atlw.c(this.a));
-        }
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + atlw.c(this.a));
-          }
-          if (paramArrayOfByte.ret.get() == 0)
-          {
-            atlw.c(this.a, true);
-            if (atlw.d(this.a))
-            {
-              ThreadManager.getUIHandler().post(new PlayOperationViewModel.20.1(this));
-              atlw.d(this.a, false);
-            }
-            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a = true;
-            new atix().h("video").i("playpage_focus").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            ThreadManagerV2.excute(new PlayOperationViewModel.20.2(this, (aszf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(106)), 16, null, false);
-            return;
-          }
-          if (!TextUtils.isEmpty(paramArrayOfByte.msg.get()))
-          {
-            bcql.a(BaseApplication.getContext(), 1, paramArrayOfByte.msg.get(), 0).a();
-            return;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.e();
+      return;
+      atmg.a(this.jdField_a_of_type_Atmg).finish();
+      paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      Object localObject = atmg.a(this.jdField_a_of_type_Atmg).getIntent();
+      String str = ((Intent)localObject).getStringExtra("uin");
+      paramInt = ((Intent)localObject).getIntExtra("uintype", -1);
+      atln.a(paramView).a.a(3, paramInt, str);
+      localObject = new atlh(paramInt, str);
+      atln.a(paramView).a((atlh)localObject, false);
+      azmj.b(null, "CliOper", "", "", "0X800A76E", "0X800A76E", 0, 0, "", "0", "0", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atmh
  * JD-Core Version:    0.7.0.1
  */

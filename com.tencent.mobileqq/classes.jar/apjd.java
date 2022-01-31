@@ -1,146 +1,83 @@
-import android.app.Activity;
 import android.os.Bundle;
-import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoIpcServer.1;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.TbsReaderView;
-import java.io.File;
+import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class apjd
+  extends QIPCModule
 {
-  private static apjd jdField_a_of_type_Apjd;
-  private int jdField_a_of_type_Int = -1;
-  private TbsReaderView jdField_a_of_type_ComTencentSmttSdkTbsReaderView;
-  private TbsReaderView b;
+  public apjd()
+  {
+    super("CameraEmoIpcServer");
+  }
   
   public static apjd a()
   {
-    if (jdField_a_of_type_Apjd == null) {
-      jdField_a_of_type_Apjd = new apjd();
-    }
-    return jdField_a_of_type_Apjd;
+    return apje.a();
   }
   
-  public TbsReaderView a(Activity paramActivity, String paramString, apjj paramapjj)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView != null) && (paramActivity.hashCode() == this.jdField_a_of_type_Int)) {
-      return this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView;
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraEmoIpcServer", 2, "action = " + paramString + ", params = " + paramBundle);
     }
-    if (!apvd.b(paramString)) {
+    Bundle localBundle = new Bundle();
+    ArrayList localArrayList1;
+    ArrayList localArrayList2;
+    ArrayList localArrayList3;
+    if ("qipc_action_camera_emo_create_gif_and_upload".equals(paramString))
+    {
+      paramBundle.setClassLoader(getClass().getClassLoader());
+      localArrayList1 = paramBundle.getStringArrayList("qipc_param_camera_emo_png_dirs");
+      localArrayList2 = paramBundle.getStringArrayList("qipc_param_camera_emo_texts");
+      localArrayList3 = paramBundle.getStringArrayList("qipc_param_camera_emo_snapshots");
+      paramBundle = paramBundle.getStringArrayList("qipc_param_emo_widget_infos");
+      if ((localArrayList1 == null) || (localArrayList2 == null)) {
+        break label252;
+      }
+      if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+        break label334;
+      }
+    }
+    label334:
+    for (paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; paramString = null)
+    {
+      if (paramString == null)
+      {
+        QLog.d("CameraEmoIpcServer", 2, "CameraEmoIpcServer.onCall get app failed");
+        localBundle.putInt("qipc_param_camera_emo_upload_result", 16);
+        callbackResult(paramInt, EIPCResult.createExceptionResult(new Exception("app == null")));
+        paramString = new HashMap();
+        paramString.put("sucFlag", "0");
+        paramString.put("retCode", String.valueOf(16));
+        azmz.a(BaseApplication.getContext()).a(null, "CamEmoUpload", false, 0L, 0L, paramString, null);
+        return null;
+      }
+      ThreadManager.excute(new CameraEmoIpcServer.1(this, localArrayList3, localArrayList1, localArrayList2, paramBundle), 64, null, false);
+      callbackResult(paramInt, EIPCResult.createSuccessResult(localBundle));
       return null;
-    }
-    if (this.b != null)
-    {
-      this.b.onStop();
-      this.b = null;
-    }
-    if (this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView != null)
-    {
-      this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView.onStop();
-      this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView = null;
-    }
-    QLog.w("LocalTbsViewManager<FileAssistant>", 4, "initVarView: new TbsReaderView");
-    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView = new TbsReaderView(paramActivity, new apje(this, paramActivity, paramapjj, paramString));
-    QLog.w("LocalTbsViewManager<FileAssistant>", 4, "initVarView: TbsReaderView openFile");
-    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView.setBackgroundColor(-1);
-    Object localObject = apvd.a(paramString);
-    paramapjj = (apjj)localObject;
-    if (((String)localObject).startsWith(".")) {
-      paramapjj = ((String)localObject).replaceFirst(".", "");
-    }
-    if (this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView.preOpen(paramapjj, false))
-    {
-      paramapjj = new Bundle();
-      paramapjj.putString("filePath", paramString);
-      paramString = aptm.a().b();
-      localObject = new File(paramString);
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
-      }
-      paramapjj.putString("tempPath", paramString);
-      this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView.openFile(paramapjj);
-      this.jdField_a_of_type_Int = paramActivity.hashCode();
-      return this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView;
-    }
-    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView.onStop();
-    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView = null;
-    return null;
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    int i = paramActivity.hashCode();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LocalTbsViewManager<FileAssistant>", 4, "LocalTbsViewManager destroy hashCode[" + this.jdField_a_of_type_Int + "],activity[" + i + "]");
-    }
-    if (this.jdField_a_of_type_Int != i) {}
-    do
-    {
-      return;
-      if (this.b != null)
-      {
-        this.b.onStop();
-        this.b = null;
-      }
-    } while (this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView == null);
-    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView.onStop();
-    this.jdField_a_of_type_ComTencentSmttSdkTbsReaderView = null;
-  }
-  
-  public boolean a(Activity paramActivity, String paramString, apjj paramapjj, boolean paramBoolean)
-  {
-    if (this.b != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "canOpenFile return 2-------");
-      }
-      this.b.onStop();
-      this.b = null;
-    }
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (paramapjj != null) {
-        paramapjj.b(false);
-      }
-      return false;
-    }
-    TbsReaderView localTbsReaderView = new TbsReaderView(paramActivity, new apji(this, paramapjj));
-    paramActivity = apvd.a(paramString);
-    if (paramActivity.startsWith(".")) {
-      paramActivity = paramActivity.replaceFirst(".", "");
-    }
-    for (;;)
-    {
-      if (!paramBoolean) {}
-      for (boolean bool = true;; bool = false)
-      {
-        if (localTbsReaderView.preOpen(paramActivity, bool)) {
-          break label152;
-        }
-        localTbsReaderView.onStop();
-        if (paramapjj != null) {
-          paramapjj.b(false);
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("LocalTbsViewManager<FileAssistant>", 1, "pre open file false!");
-        return false;
-      }
-      label152:
-      if ((paramBoolean) && (paramapjj != null)) {
-        paramapjj.b(true);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("LocalTbsViewManager<FileAssistant>", 1, "pre open file true! wait callback!");
-      }
-      this.b = localTbsReaderView;
-      return true;
+      label252:
+      QLog.d("CameraEmoIpcServer", 2, "CameraEmoIpcServer.onCall params error");
+      localBundle.putInt("qipc_param_camera_emo_upload_result", 16);
+      callbackResult(paramInt, EIPCResult.createExceptionResult(new Exception("pngDirs == null || texts == null")));
+      paramString = new HashMap();
+      paramString.put("sucFlag", "0");
+      paramString.put("retCode", String.valueOf(16));
+      azmz.a(BaseApplication.getContext()).a(null, "CamEmoUpload", false, 0L, 0L, paramString, null);
+      return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apjd
  * JD-Core Version:    0.7.0.1
  */

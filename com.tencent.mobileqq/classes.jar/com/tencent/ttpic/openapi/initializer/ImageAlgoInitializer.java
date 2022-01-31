@@ -8,7 +8,7 @@ public class ImageAlgoInitializer
   extends Feature
 {
   private static final String TAG = ImageAlgoInitializer.class.getSimpleName();
-  private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("algo_rithm_jni"), new SharedLibraryInfo("image_filter_cpu") };
+  private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("algo_rithm_jni") };
   
   protected boolean destroyImpl()
   {

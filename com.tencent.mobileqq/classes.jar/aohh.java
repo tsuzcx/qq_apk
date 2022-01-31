@@ -1,29 +1,32 @@
-import com.tencent.mobileqq.extendfriend.bean.GroupInfo;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import org.json.JSONObject;
 
 public class aohh
-  extends aoez
 {
-  public aohh(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  public boolean a;
   
-  protected void a(boolean paramBoolean1, List<GroupInfo> paramList, boolean paramBoolean2, long paramLong, boolean paramBoolean3)
+  public static aohh a(String paramString)
   {
-    try
+    if (paramString == null) {}
+    do
     {
-      ExtendFriendGroupFragment.a(this.a, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramList);
-      return;
-    }
-    catch (Exception paramList)
-    {
-      QLog.e("ExtendFriendGroupFragment", 1, "mExtendFriendObserver exception", paramList);
-    }
+      return null;
+      try
+      {
+        aohh localaohh = new aohh();
+        localaohh.a = new JSONObject(paramString).optBoolean("is_in_messagetab", false);
+        QLog.d("AppletNotificationConfProcessor", 2, "confBean = " + localaohh.toString());
+        return localaohh;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("AppletNotificationConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aohh
  * JD-Core Version:    0.7.0.1
  */

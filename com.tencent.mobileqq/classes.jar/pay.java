@@ -1,201 +1,31 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.kandianreport.ReadInJoyMMapKvStorage;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class pay
+  implements View.OnClickListener
 {
-  public String a;
-  public List<String> a;
-  public String b;
-  public List<String> b;
-  public String c = "";
-  public String d = "";
+  public pay(ReadInJoySelfFragment paramReadInJoySelfFragment, String paramString1, int paramInt, String paramString2) {}
   
-  public pay()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static String a()
-  {
-    return a(-1);
-  }
-  
-  public static String a(int paramInt)
-  {
-    for (;;)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      try
-      {
-        JSONArray localJSONArray = new JSONArray();
-        if (bhvy.a(paramInt))
-        {
-          if (-1 == paramInt) {
-            break label195;
-          }
-          localObject1 = (String)bhvy.a("DAILY_CHILD_FEEDS_REQUEST_CONFIG" + paramInt, "");
-          if (!TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            localObject3 = new JSONObject();
-            ((JSONObject)localObject3).put("daily_sub_channel_request_data", localObject1);
-            localJSONArray.put(localObject3);
-          }
-          if (bhvy.x()) {
-            localJSONArray.put(bhvy.a());
-          }
-          return localJSONArray.toString();
-        }
-        Object localObject1 = ReadInJoyMMapKvStorage.getInstance().getValeForKey("KANDIAN_DAILY_SETTING_CONFIG");
-        Object localObject3 = (String)bhvy.a("KANDIAN_DAILY_LCAOL_SETTING_CONFIG", "");
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label190;
-        }
-        localObject1 = new JSONArray((String)localObject1);
-        if (!TextUtils.isEmpty((CharSequence)localObject3))
-        {
-          localObject3 = new JSONArray((String)localObject3);
-          a((JSONArray)localObject1, localJSONArray);
-          a((JSONArray)localObject3, localJSONArray);
-          if (!oou.b()) {
-            continue;
-          }
-          localJSONArray.put(pae.a(true));
-          continue;
-        }
-        localObject3 = null;
-      }
-      catch (JSONException localJSONException)
-      {
-        localJSONException.printStackTrace();
-        return "";
-      }
-      continue;
-      label190:
-      Object localObject2 = null;
-      continue;
-      label195:
-      localObject2 = null;
+      paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity(), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment.getActivity().startActivity(paramView);
+      nrt.a(null, "CliOper", "", "", "0X80092FF", "0X80092FF", 0, 0, ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment, this.jdField_a_of_type_Int) + "", this.jdField_a_of_type_Int + "", "", ors.a(this.b), false);
+      ReadInJoySelfFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySelfFragment, this.jdField_a_of_type_Int);
     }
-  }
-  
-  public static pay a(JSONObject paramJSONObject)
-  {
-    int j = 0;
-    pay localpay = new pay();
-    if (paramJSONObject != null)
-    {
-      localpay.jdField_a_of_type_JavaLangString = paramJSONObject.optString("key");
-      localpay.jdField_b_of_type_JavaLangString = paramJSONObject.optString("name");
-      localpay.d = paramJSONObject.optString("value");
-      localpay.c = paramJSONObject.optString("id");
-      Object localObject = paramJSONObject.optJSONArray("valuelist");
-      int i;
-      if (localObject != null)
-      {
-        localpay.jdField_b_of_type_JavaUtilList = new ArrayList();
-        i = 0;
-        while (i < ((JSONArray)localObject).length())
-        {
-          String str = ((JSONArray)localObject).optString(i);
-          localpay.jdField_b_of_type_JavaUtilList.add(str);
-          i += 1;
-        }
-      }
-      paramJSONObject = paramJSONObject.optJSONArray("idlist");
-      if (paramJSONObject != null)
-      {
-        localpay.jdField_a_of_type_JavaUtilList = new ArrayList();
-        i = j;
-        while (i < paramJSONObject.length())
-        {
-          localObject = paramJSONObject.optString(i);
-          localpay.jdField_a_of_type_JavaUtilList.add(localObject);
-          i += 1;
-        }
-      }
-    }
-    return localpay;
-  }
-  
-  private static void a(JSONArray paramJSONArray1, JSONArray paramJSONArray2)
-  {
-    if (paramJSONArray1 != null)
-    {
-      int i = 0;
-      for (;;)
-      {
-        if (i < paramJSONArray1.length())
-        {
-          JSONObject localJSONObject = paramJSONArray1.optJSONObject(i);
-          String str1 = localJSONObject.optString("key");
-          String str2 = localJSONObject.optString("id");
-          if (!TextUtils.isEmpty(str2)) {
-            localJSONObject = new JSONObject();
-          }
-          try
-          {
-            localJSONObject.put(str1, str2);
-            paramJSONArray2.put(localJSONObject);
-            i += 1;
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    Iterator localIterator;
-    try
-    {
-      localJSONObject.put("key", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("name", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("id", this.c);
-      localJSONObject.put("value", this.d);
-      JSONArray localJSONArray1 = new JSONArray();
-      if (this.jdField_b_of_type_JavaUtilList != null)
-      {
-        localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext()) {
-          localJSONArray1.put((String)localIterator.next());
-        }
-      }
-      localJSONObject.put("valuelist", localJSONException);
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-      return localJSONObject;
-    }
-    JSONArray localJSONArray2 = new JSONArray();
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        localJSONArray2.put((String)localIterator.next());
-      }
-    }
-    localJSONObject.put("idlist", localJSONArray2);
-    return localJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pay
  * JD-Core Version:    0.7.0.1
  */

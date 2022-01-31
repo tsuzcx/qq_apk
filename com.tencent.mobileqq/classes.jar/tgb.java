@@ -1,72 +1,56 @@
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-class tgb
-  extends ssv
+public class tgb
+  extends tfj
 {
-  tgb(tfz paramtfz) {}
+  private TextView a;
   
-  public void a(byte paramByte)
+  private tgb(ViewGroup paramViewGroup, tby paramtby)
   {
-    boolean bool = true;
-    this.a.a = paramByte;
-    tfz.c(this.a, true);
-    tfz localtfz;
-    if (paramByte != -1)
-    {
-      if (paramByte == 0) {
-        tfz.b(this.a);
-      }
-      localtfz = this.a;
-      if (paramByte != 2) {
-        break label88;
-      }
-    }
-    for (;;)
-    {
-      localtfz.a(bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryOIDBReceived:" + this.a.c);
-      }
+    super(paramViewGroup, paramtby, 2131560227);
+  }
+  
+  public static tgb a(ViewGroup paramViewGroup, tby paramtby)
+  {
+    return new tgb(paramViewGroup, paramtby);
+  }
+  
+  protected void a()
+  {
+    this.a = ((TextView)a(2).findViewById(2131379789));
+  }
+  
+  protected void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.a.setVisibility(paramInt);
+  }
+  
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    super.a(paramstSimpleMetaFeed);
+    if (paramstSimpleMetaFeed == null) {
       return;
-      label88:
-      bool = false;
     }
-  }
-  
-  public void b()
-  {
-    tcs localtcs = (tcs)tcz.a(10);
-    this.a.b = ((Boolean)localtcs.b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "commonConfigReceived:" + this.a.b);
-    }
-    tfz.a(this.a);
-    tfz.a(this.a, true);
-    tfz.a(this.a, true);
-    tfz.b(this.a);
-  }
-  
-  public void f(boolean paramBoolean)
-  {
-    if (!tfz.a(this.a))
+    TextView localTextView = this.a;
+    if (TextUtils.isEmpty(paramstSimpleMetaFeed.feed_desc)) {}
+    for (int i = 8;; i = 0)
     {
-      if (paramBoolean)
-      {
-        this.a.c = this.a.a();
-        tfz.a(this.a);
-        tfz.a(this.a, true);
-      }
-      tfz.b(this.a, true);
-      tfz.b(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryDPCCfgHasContentReceived:" + this.a.c);
+      localTextView.setVisibility(i);
+      this.a.setText(paramstSimpleMetaFeed.feed_desc);
+      a(1, paramstSimpleMetaFeed);
+      a(2, 2, paramstSimpleMetaFeed);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tgb
  * JD-Core Version:    0.7.0.1
  */

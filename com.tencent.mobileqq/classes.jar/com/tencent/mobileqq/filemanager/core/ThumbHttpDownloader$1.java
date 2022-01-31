@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import apcz;
-import apda;
+import aqvx;
+import aqvy;
 
 public class ThumbHttpDownloader$1
   implements Runnable
 {
-  public ThumbHttpDownloader$1(apcz paramapcz, apda paramapda) {}
+  public ThumbHttpDownloader$1(aqvx paramaqvx, aqvy paramaqvy) {}
   
   public void run()
   {
-    apcz.a(this.this$0, this.a);
+    aqvx.a(this.this$0, this.a);
   }
 }
 

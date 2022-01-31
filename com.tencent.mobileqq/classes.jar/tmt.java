@@ -1,34 +1,46 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspProfileYearNodeList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.YearNodeInfo;
-import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import UserGrowth.stSimpleGetFeedListRsp;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class tmt
-  extends syn
+class tmt
+  implements tgt
 {
-  public List<MomeriesYearNode> a = new ArrayList();
+  tmt(tms paramtms, tmr paramtmr) {}
   
-  public tmt() {}
-  
-  public tmt(qqstory_service.RspProfileYearNodeList paramRspProfileYearNodeList)
+  public void a(the paramthe)
   {
-    super(paramRspProfileYearNodeList.result);
-    paramRspProfileYearNodeList = paramRspProfileYearNodeList.year_node_list.get().iterator();
-    while (paramRspProfileYearNodeList.hasNext())
+    if (!paramthe.a())
     {
-      qqstory_struct.YearNodeInfo localYearNodeInfo = (qqstory_struct.YearNodeInfo)paramRspProfileYearNodeList.next();
-      MomeriesYearNode localMomeriesYearNode = new MomeriesYearNode();
-      localMomeriesYearNode.convertFrom(localYearNodeInfo);
-      this.a.add(localMomeriesYearNode);
+      tlo.d("WSVerticalDataManagerLog", "fetchVerticalListData failed code:" + paramthe.jdField_a_of_type_Int + ", msg:" + paramthe.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_Tmr != null) {
+        this.jdField_a_of_type_Tmr.a(paramthe.jdField_a_of_type_Int, paramthe.jdField_a_of_type_JavaLangString);
+      }
     }
+    do
+    {
+      Object localObject;
+      do
+      {
+        return;
+        if (!(paramthe.jdField_a_of_type_JavaLangObject instanceof stSimpleGetFeedListRsp)) {
+          break;
+        }
+        stSimpleGetFeedListRsp localstSimpleGetFeedListRsp = (stSimpleGetFeedListRsp)paramthe.jdField_a_of_type_JavaLangObject;
+        localObject = localstSimpleGetFeedListRsp.feeds;
+        localObject = this.jdField_a_of_type_Tms.a((ArrayList)localObject);
+        if (paramthe.jdField_a_of_type_Tgu != null) {
+          tee.a().a(localstSimpleGetFeedListRsp.trace_id, paramthe.jdField_a_of_type_Tgu.a);
+        }
+      } while (this.jdField_a_of_type_Tmr == null);
+      this.jdField_a_of_type_Tmr.a((List)localObject);
+      return;
+    } while (this.jdField_a_of_type_Tmr == null);
+    this.jdField_a_of_type_Tmr.a(paramthe.b, paramthe.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmt
  * JD-Core Version:    0.7.0.1
  */

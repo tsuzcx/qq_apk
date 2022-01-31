@@ -1,10 +1,26 @@
-public abstract interface ajrw
+public class ajrw
 {
-  public abstract void a(ajru paramajru, String paramString1, String paramString2, String paramString3);
+  public int a;
+  public String a;
+  public String b = "";
+  public String c = "";
+  
+  private ajrw()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = "";
+    this.c = "";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajrw
  * JD-Core Version:    0.7.0.1
  */

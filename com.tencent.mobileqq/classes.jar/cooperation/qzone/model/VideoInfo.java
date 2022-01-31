@@ -3,14 +3,14 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhfn;
+import bjgy;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class VideoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoInfo> CREATOR = new bhfn();
+  public static final Parcelable.Creator<VideoInfo> CREATOR = new bjgy();
   public byte a;
   public int a;
   public long a;
@@ -183,7 +183,7 @@ public class VideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

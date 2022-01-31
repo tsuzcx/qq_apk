@@ -1,49 +1,36 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
 
 public class aakw
-  implements bfph
+  implements aalt
 {
-  public aakw(AuthDevActivity paramAuthDevActivity, String paramString, ArrayList paramArrayList, int paramInt, boolean paramBoolean, long paramLong) {}
+  public aakw(GdtMotiveVideoFragment paramGdtMotiveVideoFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public Activity a()
   {
-    switch (paramInt)
-    {
+    return this.a.getActivity();
+  }
+  
+  public void a()
+  {
+    Activity localActivity = a();
+    if (localActivity != null) {
+      localActivity.finish();
     }
-    for (;;)
-    {
-      if ((AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity) != null) && (AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.isFinishing()))
-      {
-        AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).dismiss();
-        AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity).cancel();
-        AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, null);
-      }
-      return;
-      if (!bbfj.d(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity))
-      {
-        bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getString(2131692321), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.getTitleBarHeight());
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.devlock.AuthDevActivity", 2, "OnClick.begin to delAuthDev");
-        }
-        axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.app, "CliOper", "", "", "My_eq_lock", "My_eq_lock_delete", 0, 0, "", "", "", "");
-        if (aoes.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long)) {
-          AuthDevActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevActivity);
-        } else if (QLog.isColorLevel()) {
-          QLog.d("Q.devlock.AuthDevActivity", 2, "OnClick.delAuthDev fail");
-        }
-      }
+  }
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    Activity localActivity = a();
+    if (localActivity != null) {
+      localActivity.setResult(paramInt, paramIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aakw
  * JD-Core Version:    0.7.0.1
  */

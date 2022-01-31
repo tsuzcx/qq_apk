@@ -1,41 +1,35 @@
-import android.animation.TypeEvaluator;
-import android.graphics.PointF;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aeau
-  implements TypeEvaluator<PointF>
+  implements View.OnClickListener
 {
-  private PointF[] jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
+  public aeau(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public aeau(SixCombolEffectView paramSixCombolEffectView) {}
-  
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
+  public void onClick(View paramView)
   {
-    paramPointF1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0];
-    paramPointF2 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[1];
-    PointF localPointF = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2];
-    if (paramFloat <= 1.0F)
+    xmh.a(this.a.jdField_a_of_type_Aecg);
+    xmh.a(this.a.jdField_a_of_type_JavaUtilList);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
     {
-      float f1 = 1.0F - paramFloat;
-      float f2 = (float)(paramPointF1.x * Math.pow(f1, 2.0D) + 2.0F * paramPointF2.x * paramFloat * f1 + localPointF.x * Math.pow(paramFloat, 2.0D));
-      double d1 = paramPointF1.y;
-      double d2 = Math.pow(f1, 2.0D);
-      return new PointF(f2, (float)(2.0F * paramPointF2.y * paramFloat * f1 + d1 * d2 + localPointF.y * Math.pow(paramFloat, 2.0D)));
+      paramView.add(((aece)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
+      i += 1;
     }
-    return this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2];
-  }
-  
-  public void a(PointF... paramVarArgs)
-  {
-    if (paramVarArgs.length != 3) {
-      throw new IllegalArgumentException(ajya.a(2131714196));
-    }
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = paramVarArgs;
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeau
  * JD-Core Version:    0.7.0.1
  */

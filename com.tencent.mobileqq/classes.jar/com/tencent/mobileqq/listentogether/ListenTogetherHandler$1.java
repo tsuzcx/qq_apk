@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.listentogether;
 
-import arqv;
-import axrn;
+import athq;
+import azmz;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 
 public class ListenTogetherHandler$1
   implements Runnable
 {
-  public ListenTogetherHandler$1(arqv paramarqv, long paramLong1, long paramLong2, int paramInt, long paramLong3) {}
+  public ListenTogetherHandler$1(athq paramathq, long paramLong1, long paramLong2, int paramInt, long paramLong3) {}
   
   public void run()
   {
@@ -18,12 +18,12 @@ public class ListenTogetherHandler$1
     localHashMap.put("requestInterval", String.valueOf(this.b));
     localHashMap.put("reportType", String.valueOf(this.jdField_a_of_type_Int));
     localHashMap.put("interval", String.valueOf(this.c));
-    axrn.a(BaseApplicationImpl.getContext()).a("", "listen_together_seek_adjust", true, 0L, 0L, localHashMap, "", false);
+    azmz.a(BaseApplicationImpl.getContext()).a("", "listen_together_seek_adjust", true, 0L, 0L, localHashMap, "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherHandler.1
  * JD-Core Version:    0.7.0.1
  */

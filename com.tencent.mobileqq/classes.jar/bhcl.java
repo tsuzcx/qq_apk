@@ -1,47 +1,44 @@
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
+import com.qflutter.log.qflutter_log.QflutterLogPlugin.Log;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class bhcl
-  implements ThreadPool.Job<Object>
+  implements QflutterLogPlugin.Log
 {
-  bhcl(bhck parambhck, boolean paramBoolean) {}
+  bhcl(bhch parambhch) {}
   
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public void d(String paramString)
   {
-    paramJobContext.setMode(1);
-    paramJobContext = bhck.a(this.jdField_a_of_type_Bhck).a();
-    if (paramJobContext != null)
-    {
-      paramJobContext = paramJobContext.iterator();
-      while (paramJobContext.hasNext())
-      {
-        bhci localbhci = (bhci)paramJobContext.next();
-        int j = localbhci.a(this.jdField_a_of_type_Boolean);
-        String str = localbhci.a();
-        int i = bhck.a(this.jdField_a_of_type_Bhck, str);
-        j = bhck.a(this.jdField_a_of_type_Bhck, j, i);
-        this.jdField_a_of_type_Bhck.a(i, j, str);
-        QLog.w("CacheManager", 1, "onLowStorage clear cache service:" + localbhci + ": remain=" + j);
-      }
-      if (bhck.a(bhcg.p()))
-      {
-        bhcg.a(false);
-        if (bhck.a(bhcg.p()))
-        {
-          bhcg.a(true);
-          bhck.a(this.jdField_a_of_type_Bhck);
-        }
-      }
-    }
-    return null;
+    QMLog.d("miniapp-TISSUE", paramString);
+  }
+  
+  public void e(String paramString)
+  {
+    QMLog.e("miniapp-TISSUE", paramString);
+  }
+  
+  public int getLogLevel()
+  {
+    return 5;
+  }
+  
+  public void i(String paramString)
+  {
+    QMLog.i("miniapp-TISSUE", paramString);
+  }
+  
+  public void v(String paramString)
+  {
+    QMLog.d("miniapp-TISSUE", paramString);
+  }
+  
+  public void w(String paramString)
+  {
+    QMLog.w("miniapp-TISSUE", paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhcl
  * JD-Core Version:    0.7.0.1
  */

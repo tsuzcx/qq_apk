@@ -1,21 +1,33 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.dataline.activities.LiteActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.dataline.activities.PrinterOptionActivity;
 
 public class cs
-  implements View.OnLongClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public cs(LiteActivity paramLiteActivity) {}
+  public cs(PrinterOptionActivity paramPrinterOptionActivity) {}
   
-  public boolean onLongClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    actj.n = true;
-    return this.a.a(paramView);
+    if (paramBoolean)
+    {
+      PrinterOptionActivity.a(this.a).setVisibility(0);
+      PrinterOptionActivity.a(this.a).setText(2131691429);
+      return;
+    }
+    if (PrinterOptionActivity.b(this.a))
+    {
+      PrinterOptionActivity.a(this.a).setVisibility(0);
+      PrinterOptionActivity.a(this.a).setText(2131691409);
+      return;
+    }
+    PrinterOptionActivity.a(this.a).setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cs
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.item;
 
 import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import pfu;
+import pmd;
 
 public class GalleryProteusItem$1
   implements Runnable
 {
-  public GalleryProteusItem$1(pfu parampfu, View paramView, NativeTextImp paramNativeTextImp) {}
+  public GalleryProteusItem$1(pmd parampmd, View paramView, NativeTextImp paramNativeTextImp) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class GalleryProteusItem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.item.GalleryProteusItem.1
  * JD-Core Version:    0.7.0.1
  */

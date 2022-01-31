@@ -216,6 +216,20 @@ public class RealTimeSmoothFilterV3
     return renderSmoothMulti(paramFrame);
   }
   
+  public Frame updateAndRender(Frame paramFrame, List<List<PointF>> paramList, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramFrame.width <= 0) || (paramFrame.height <= 0)) {
+      return paramFrame;
+    }
+    if (paramList.size() == 1)
+    {
+      updateBlurAlphaValue(this.alphaValue * this.malePercent);
+      return renderSmoothSingle(paramFrame, paramList, paramInt1, paramInt2, paramInt3);
+    }
+    updateBlurAlphaValue(this.alphaValue * this.femalePercent);
+    return renderSmoothMulti(paramFrame);
+  }
+  
   public void updateBlurAlpha(float paramFloat)
   {
     this.alphaValue = paramFloat;

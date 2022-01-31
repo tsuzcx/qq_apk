@@ -1,24 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.articlesummary.articlesummary.PackJumpInfo;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
 
 public class pxw
-  implements View.OnClickListener
+  extends pxv
 {
-  public pxw(ComponentJump paramComponentJump, articlesummary.PackJumpInfo paramPackJumpInfo) {}
-  
-  public void onClick(View paramView)
+  public pxw(Context paramContext, bcws parambcws, rqj paramrqj)
   {
-    paramView = this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_url.get();
-    onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), paramView);
-    pcy.a(2, this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_wording.get());
+    super(paramContext, parambcws, paramrqj);
+  }
+  
+  public pxl g()
+  {
+    this.jdField_a_of_type_Pxk = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pxw
  * JD-Core Version:    0.7.0.1
  */

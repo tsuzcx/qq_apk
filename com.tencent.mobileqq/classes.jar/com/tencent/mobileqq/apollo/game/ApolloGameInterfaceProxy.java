@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.apollo.game;
 
-import aiws;
-import aixq;
-import aixu;
-import aixv;
-import aixw;
-import aixy;
-import aiya;
-import aiye;
-import aiyf;
-import aiyl;
-import ajac;
-import ajbu;
-import ajcf;
-import ajco;
-import ajct;
-import ajdn;
-import ajdo;
-import ajnc;
+import akoe;
+import akpc;
+import akpg;
+import akph;
+import akpi;
+import akpk;
+import akpm;
+import akpq;
+import akpr;
+import akpx;
+import akro;
+import aktg;
+import aktr;
+import akua;
+import akuf;
+import akuz;
+import akva;
+import alep;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
 import android.webkit.URLUtil;
-import bbea;
+import bdcv;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
@@ -48,11 +48,11 @@ import javax.crypto.spec.SecretKeySpec;
 import org.json.JSONObject;
 
 public class ApolloGameInterfaceProxy
-  implements aiyl
+  implements akpx
 {
   private int jdField_a_of_type_Int;
-  private aiyf jdField_a_of_type_Aiyf;
-  private ajdn jdField_a_of_type_Ajdn = new aixu(this);
+  private akpr jdField_a_of_type_Akpr;
+  private akuz jdField_a_of_type_Akuz = new akpg(this);
   private WebGameFakeView jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView;
   private CmGameInitParams jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams;
   private String jdField_a_of_type_JavaLangString;
@@ -60,9 +60,9 @@ public class ApolloGameInterfaceProxy
   private boolean jdField_a_of_type_Boolean;
   private int b;
   
-  public ApolloGameInterfaceProxy(aiyf paramaiyf, String paramString)
+  public ApolloGameInterfaceProxy(akpr paramakpr, String paramString)
   {
-    this.jdField_a_of_type_Aiyf = paramaiyf;
+    this.jdField_a_of_type_Akpr = paramakpr;
     try
     {
       this.jdField_a_of_type_Int = Integer.parseInt(paramString);
@@ -72,7 +72,7 @@ public class ApolloGameInterfaceProxy
       }
       return;
     }
-    catch (Throwable paramaiyf)
+    catch (Throwable paramakpr)
     {
       for (;;)
       {
@@ -108,7 +108,7 @@ public class ApolloGameInterfaceProxy
       paramInt1 = 0;
       while (paramInt1 < paramInt2)
       {
-        ((StringBuilder)localObject4).append(bbea.a(localObject3[paramInt1]));
+        ((StringBuilder)localObject4).append(bdcv.a(localObject3[paramInt1]));
         paramInt1 += 1;
       }
       localObject3 = ((StringBuilder)localObject4).toString().toLowerCase();
@@ -141,10 +141,10 @@ public class ApolloGameInterfaceProxy
         return bool1;
         if (this.jdField_a_of_type_JavaUtilRegexPattern == null)
         {
-          Object localObject = ajac.a();
+          Object localObject = akro.a();
           if (localObject != null)
           {
-            localObject = ((ajco)localObject).a(this.jdField_a_of_type_Int);
+            localObject = ((akua)localObject).a(this.jdField_a_of_type_Int);
             if (QLog.isColorLevel()) {
               QLog.w("ApolloGameInterfaceProxy", 1, "isValidSsoCmd cmd:" + paramString + ", rule: " + (String)localObject);
             }
@@ -161,9 +161,9 @@ public class ApolloGameInterfaceProxy
   
   private void b(int paramInt, String paramString1, String paramString2)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (this.jdField_a_of_type_Aiyf != null))
+    if ((!TextUtils.isEmpty(paramString1)) && (this.jdField_a_of_type_Akpr != null))
     {
-      this.jdField_a_of_type_Aiyf.a(paramInt, paramString1, paramString2);
+      this.jdField_a_of_type_Akpr.a(paramInt, paramString1, paramString2);
       return;
     }
     QLog.e("ApolloGameInterfaceProxy", 1, "[callbackJS] fail for " + paramString1);
@@ -468,24 +468,24 @@ public class ApolloGameInterfaceProxy
       {
         if ("cs.share_game_in_ark.local".equals(paramString2))
         {
-          if (this.jdField_a_of_type_Aiyf != null) {
-            this.jdField_a_of_type_Aiyf.a();
+          if (this.jdField_a_of_type_Akpr != null) {
+            this.jdField_a_of_type_Akpr.a();
           }
           e(paramString1);
           return;
         }
         if ("cs.game_shell_share_callback.local".equals(paramString2))
         {
-          if (this.jdField_a_of_type_Aiyf != null) {
-            this.jdField_a_of_type_Aiyf.a();
+          if (this.jdField_a_of_type_Akpr != null) {
+            this.jdField_a_of_type_Akpr.a();
           }
           f(paramString1);
           return;
         }
         if ("cs.share_game_result.local".equals(paramString2))
         {
-          if (this.jdField_a_of_type_Aiyf != null) {
-            this.jdField_a_of_type_Aiyf.a();
+          if (this.jdField_a_of_type_Akpr != null) {
+            this.jdField_a_of_type_Akpr.a();
           }
           if (!TextUtils.isEmpty(paramString1)) {
             g(paramString1);
@@ -543,13 +543,13 @@ public class ApolloGameInterfaceProxy
             if ("cs.on_get_open_key.local".equals(paramString2)) {
               try
               {
-                aixv localaixv = new aixv(this);
+                akph localakph = new akph(this);
                 Bundle localBundle = new Bundle();
                 localBundle.putString("cmd", paramString2);
                 localBundle.putString("reqData", paramString1);
                 localBundle.putBoolean("async", true);
                 localBundle.putInt("gameId", this.jdField_a_of_type_Int);
-                QIPCClientHelper.getInstance().callServer("cm_game_module", "action_chanel_req", localBundle, localaixv);
+                QIPCClientHelper.getInstance().callServer("cm_game_module", "action_chanel_req", localBundle, localakph);
                 return;
               }
               catch (Throwable paramString1)
@@ -605,7 +605,7 @@ public class ApolloGameInterfaceProxy
               try
               {
                 int i = new JSONObject(paramString1).optInt("taskId");
-                paramString1 = ajac.a(this.jdField_a_of_type_Int);
+                paramString1 = akro.a(this.jdField_a_of_type_Int);
                 if (paramString1 != null)
                 {
                   paramString1.a(i);
@@ -624,7 +624,7 @@ public class ApolloGameInterfaceProxy
     }
     if ("cs.create_xy.local".equals(paramString2))
     {
-      ajbu.a("cs.create_xy.local", paramString1, false, null, this.jdField_a_of_type_Int);
+      aktg.a("cs.create_xy.local", paramString1, false, null, this.jdField_a_of_type_Int);
       return;
     }
     if ("cs.get_state_info.local".equals(paramString2))
@@ -637,10 +637,10 @@ public class ApolloGameInterfaceProxy
   
   private void e(String paramString)
   {
-    ajcf localajcf = ajac.a(this.jdField_a_of_type_Int);
-    if ((localajcf != null) && (!TextUtils.isEmpty(paramString)))
+    aktr localaktr = akro.a(this.jdField_a_of_type_Int);
+    if ((localaktr != null) && (!TextUtils.isEmpty(paramString)))
     {
-      ajnc.a(this.jdField_a_of_type_Int, paramString, localajcf.a());
+      alep.a(this.jdField_a_of_type_Int, paramString, localaktr.a());
       return;
     }
     QLog.e("ApolloGameInterfaceProxy", 1, "[shareGameInARK] can not find launcher for " + this.jdField_a_of_type_Int);
@@ -668,16 +668,16 @@ public class ApolloGameInterfaceProxy
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      ajcf localajcf = ajac.a(this.jdField_a_of_type_Int);
-      if (localajcf != null) {
-        localajcf.d(paramString);
+      aktr localaktr = akro.a(this.jdField_a_of_type_Int);
+      if (localaktr != null) {
+        localaktr.d(paramString);
       }
     }
   }
   
   private void f(String paramString1, String paramString2)
   {
-    b(0, paramString1, ajac.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams));
+    b(0, paramString1, akro.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams));
   }
   
   private void g(String paramString) {}
@@ -694,10 +694,10 @@ public class ApolloGameInterfaceProxy
     {
       Object localObject = new JSONObject(paramString);
       String str = ((JSONObject)localObject).optString("cmd");
-      localObject = aiye.a(((JSONObject)localObject).optString("data"), String.valueOf(this.jdField_a_of_type_Int));
-      ajdo localajdo = ajac.a();
-      if ((localajdo != null) && (!TextUtils.isEmpty(paramString)) && (a(str))) {
-        localajdo.a(str, (String)localObject);
+      localObject = akpq.a(((JSONObject)localObject).optString("data"), String.valueOf(this.jdField_a_of_type_Int));
+      akva localakva = akro.a();
+      if ((localakva != null) && (!TextUtils.isEmpty(paramString)) && (a(str))) {
+        localakva.a(str, (String)localObject);
       }
       return;
     }
@@ -714,7 +714,7 @@ public class ApolloGameInterfaceProxy
       Intent localIntent = new Intent();
       localIntent.putExtra("url", new JSONObject(paramString).optString("url"));
       localIntent.putExtra("isFullScreen", true);
-      aixq.a().a(localIntent);
+      akpc.a().a(localIntent);
       return;
     }
     catch (Throwable paramString)
@@ -741,10 +741,10 @@ public class ApolloGameInterfaceProxy
             paramString = str;
             if (this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView != null)
             {
-              aiya localaiya = aixy.a().a(str, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView.a()));
+              akpm localakpm = akpk.a().a(str, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView.a()));
               paramString = str;
-              if (localaiya != null) {
-                paramString = localaiya.a();
+              if (localakpm != null) {
+                paramString = localakpm.a();
               }
             }
           }
@@ -754,7 +754,7 @@ public class ApolloGameInterfaceProxy
       for (paramString = paramString + "&apollo_bk=1";; paramString = paramString + "?apollo_bk=1")
       {
         localIntent.putExtra("url", paramString);
-        aixq.a().a(localIntent, ApolloWebViewFragment.class);
+        akpc.a().a(localIntent, ApolloWebViewFragment.class);
         return;
       }
       return;
@@ -776,17 +776,17 @@ public class ApolloGameInterfaceProxy
           QLog.d("ApolloGameInterfaceProxy", 2, "[sendMessageToGame] " + paramString);
         }
         a("sc.web_callback_game.local", paramString);
-        ajcf localajcf = ajac.a();
-        if (localajcf != null)
+        aktr localaktr = akro.a();
+        if (localaktr != null)
         {
-          i = localajcf.a();
+          i = localaktr.a();
           if (i > 0)
           {
-            localajcf = ajac.a(i);
-            if (localajcf == null) {
+            localaktr = akro.a(i);
+            if (localaktr == null) {
               break;
             }
-            localajcf.c(paramString);
+            localaktr.c(paramString);
             return;
           }
           if (!QLog.isColorLevel()) {
@@ -810,23 +810,23 @@ public class ApolloGameInterfaceProxy
   {
     try
     {
-      aiws localaiws = ajac.a();
+      akoe localakoe = akro.a();
       if ((paramInt2 < 0) || (paramInt1 > 0))
       {
         paramString1 = ApolloUtil.e(paramString1);
         paramString2 = ApolloUtil.e(paramString2);
         paramString3 = ApolloUtil.e(paramString3);
         QLog.e("sava_native_log", 1, new Object[] { "level:", Integer.valueOf(paramInt1), ",code:", Integer.valueOf(paramInt2), ",info1:", paramString1, ",info2:", paramString2, ",info3:", paramString3 });
-        if (localaiws != null) {
-          localaiws.a("sava_native_log", 2, new Object[] { "level:", Integer.valueOf(paramInt1), ",code:", Integer.valueOf(paramInt2), ",info1:", paramString1, ",info2:", paramString2, ",info3:", paramString3 });
+        if (localakoe != null) {
+          localakoe.a("sava_native_log", 2, new Object[] { "level:", Integer.valueOf(paramInt1), ",code:", Integer.valueOf(paramInt2), ",info1:", paramString1, ",info2:", paramString2, ",info3:", paramString3 });
         }
       }
       else if (QLog.isColorLevel())
       {
         QLog.d("sava_native_log", 2, new Object[] { "level:", Integer.valueOf(paramInt1), ",code:", Integer.valueOf(paramInt2), ",info1:", paramString1, ",info2:", paramString2, ",info3:", paramString3 });
-        if (localaiws != null)
+        if (localakoe != null)
         {
-          localaiws.a("sava_native_log", 1, new Object[] { "level:", Integer.valueOf(paramInt1), ",code:", Integer.valueOf(paramInt2), ",info1:", paramString1, ",info2:", paramString2, ",info3:", paramString3 });
+          localakoe.a("sava_native_log", 1, new Object[] { "level:", Integer.valueOf(paramInt1), ",code:", Integer.valueOf(paramInt2), ",info1:", paramString1, ",info2:", paramString2, ",info3:", paramString3 });
           return;
         }
       }
@@ -894,7 +894,7 @@ public class ApolloGameInterfaceProxy
     //   84: new 111	java/lang/String
     //   87: dup
     //   88: aload_2
-    //   89: invokestatic 656	aswz:a	([B)[B
+    //   89: invokestatic 656	aunw:a	([B)[B
     //   92: invokespecial 659	java/lang/String:<init>	([B)V
     //   95: areturn
     //   96: astore_1
@@ -980,10 +980,10 @@ public class ApolloGameInterfaceProxy
   {
     if (this.jdField_a_of_type_Int != 0)
     {
-      localajcf = ajac.a(this.jdField_a_of_type_Int);
-      if (localajcf != null)
+      localaktr = akro.a(this.jdField_a_of_type_Int);
+      if (localaktr != null)
       {
-        localObject = localajcf.a();
+        localObject = localaktr.a();
         if ((localObject != null) && ((localObject instanceof ApolloGameActivity)))
         {
           localObject = (ApolloGameActivity)localObject;
@@ -993,11 +993,11 @@ public class ApolloGameInterfaceProxy
             if (this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView != null)
             {
               this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView.a(this);
-              localObject = ajac.a();
-              if ((localObject != null) && (this.jdField_a_of_type_Ajdn != null)) {
-                ((AppInterface)localObject).addObserver(this.jdField_a_of_type_Ajdn);
+              localObject = akro.a();
+              if ((localObject != null) && (this.jdField_a_of_type_Akuz != null)) {
+                ((AppInterface)localObject).addObserver(this.jdField_a_of_type_Akuz);
               }
-              localajcf.a(this);
+              localaktr.a(this);
             }
           }
         }
@@ -1005,7 +1005,7 @@ public class ApolloGameInterfaceProxy
     }
     while (!QLog.isColorLevel())
     {
-      ajcf localajcf;
+      aktr localaktr;
       Object localObject;
       return;
       QLog.e("ApolloGameInterfaceProxy", 1, "[bindGameView] cann not bindGameView");
@@ -1017,15 +1017,15 @@ public class ApolloGameInterfaceProxy
   public void a(int paramInt, String paramString)
   {
     if (this.jdField_a_of_type_Int == 0) {}
-    ajct localajct;
+    akuf localakuf;
     do
     {
       return;
-      localajct = ajac.a(this.jdField_a_of_type_Int);
-    } while (localajct == null);
+      localakuf = akro.a(this.jdField_a_of_type_Int);
+    } while (localakuf == null);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramString);
-    localajct.a(2, localArrayList, null, 10, 0L, false, "", "", new aixw(this, paramInt, paramString));
+    localakuf.a(2, localArrayList, null, 10, 0L, false, "", "", new akpi(this, paramInt, paramString));
   }
   
   public void a(int paramInt, String paramString1, String paramString2)
@@ -1044,11 +1044,11 @@ public class ApolloGameInterfaceProxy
       if ((this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams == null) && (this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView != null)) {
         this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView.a();
       }
-      if ((paramObject instanceof aiyf)) {
+      if ((paramObject instanceof akpr)) {
         this.jdField_a_of_type_Boolean = true;
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams != null) && (this.jdField_a_of_type_Boolean)) {
-        g("sc.init_global_var.local", ajac.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams));
+        g("sc.init_global_var.local", akro.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams));
       }
       StringBuilder localStringBuilder;
       if (QLog.isColorLevel())
@@ -1121,15 +1121,15 @@ public class ApolloGameInterfaceProxy
     if (paramString.startsWith("GameSandBox")) {
       str = "sandbox";
     }
-    return aiye.a(paramString, this.jdField_a_of_type_Int, str, false);
+    return akpq.a(paramString, this.jdField_a_of_type_Int, str, false);
   }
   
   public void b()
   {
     g("sc.game_shell_pack_up.local", "{}");
-    ajcf localajcf = ajac.a(this.jdField_a_of_type_Int);
-    if (localajcf != null) {
-      localajcf.h();
+    aktr localaktr = akro.a(this.jdField_a_of_type_Int);
+    if (localaktr != null) {
+      localaktr.h();
     }
   }
   
@@ -1174,9 +1174,9 @@ public class ApolloGameInterfaceProxy
             localObject1 = new JSONObject();
             ((JSONObject)localObject1).put("gameId", String.valueOf(((CmGameStartChecker.StartCheckParam)localObject2).gameId));
             ((JSONObject)localObject1).put("isSelectFriend", 1);
-            localObject2 = ajac.a(this.jdField_a_of_type_Int);
+            localObject2 = akro.a(this.jdField_a_of_type_Int);
             if (localObject2 != null) {
-              ((ajcf)localObject2).b(((JSONObject)localObject1).toString());
+              ((aktr)localObject2).b(((JSONObject)localObject1).toString());
             }
           }
         }
@@ -1191,7 +1191,7 @@ public class ApolloGameInterfaceProxy
   
   public void c(String paramString1, String paramString2)
   {
-    ApolloCmdChannel localApolloCmdChannel = ajac.a();
+    ApolloCmdChannel localApolloCmdChannel = akro.a();
     if (localApolloCmdChannel != null)
     {
       localApolloCmdChannel.requestData(this.jdField_a_of_type_Int, paramString1, paramString2, false, false);
@@ -1205,10 +1205,10 @@ public class ApolloGameInterfaceProxy
   public void e()
   {
     g("sc.game_shell_close.local", "{}");
-    Object localObject = ajac.a(this.jdField_a_of_type_Int);
+    Object localObject = akro.a(this.jdField_a_of_type_Int);
     if (localObject != null)
     {
-      localObject = ((ajcf)localObject).a();
+      localObject = ((aktr)localObject).a();
       if ((localObject != null) && (!((Activity)localObject).isFinishing())) {
         ((Activity)localObject).finish();
       }
@@ -1241,11 +1241,11 @@ public class ApolloGameInterfaceProxy
   public void h()
   {
     this.jdField_a_of_type_ComTencentMobileqqApolloGameWebGameFakeView = null;
-    this.jdField_a_of_type_Aiyf = null;
+    this.jdField_a_of_type_Akpr = null;
     this.jdField_a_of_type_Int = 0;
-    AppInterface localAppInterface = ajac.a();
-    if ((localAppInterface != null) && (this.jdField_a_of_type_Ajdn != null)) {
-      localAppInterface.removeObserver(this.jdField_a_of_type_Ajdn);
+    AppInterface localAppInterface = akro.a();
+    if ((localAppInterface != null) && (this.jdField_a_of_type_Akuz != null)) {
+      localAppInterface.removeObserver(this.jdField_a_of_type_Akuz);
     }
   }
   
@@ -1287,7 +1287,7 @@ public class ApolloGameInterfaceProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy
  * JD-Core Version:    0.7.0.1
  */

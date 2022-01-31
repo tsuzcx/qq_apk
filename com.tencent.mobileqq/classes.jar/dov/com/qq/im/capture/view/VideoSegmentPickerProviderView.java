@@ -7,25 +7,25 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import bjmd;
-import bjme;
-import bjmf;
-import bkin;
-import bkkh;
+import blxn;
+import blxo;
+import blxp;
+import bmtx;
+import bmvr;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentPicker;
 import java.lang.ref.WeakReference;
 import java.util.List;
-import vzl;
+import xod;
 
 public class VideoSegmentPickerProviderView
   extends ProviderView
-  implements bkkh
+  implements bmvr
 {
   private long jdField_a_of_type_Long;
-  private bkin jdField_a_of_type_Bkin;
+  private bmtx jdField_a_of_type_Bmtx;
   private SegmentPicker jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker;
-  private WeakReference<bjmf> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<blxp> jdField_a_of_type_JavaLangRefWeakReference;
   private long b;
   
   public VideoSegmentPickerProviderView(Context paramContext)
@@ -42,7 +42,7 @@ public class VideoSegmentPickerProviderView
   
   protected int a()
   {
-    return 2131560575;
+    return 2131560751;
   }
   
   public void a()
@@ -54,17 +54,17 @@ public class VideoSegmentPickerProviderView
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker.a();
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = null;
     }
-    this.jdField_a_of_type_Bkin = null;
+    this.jdField_a_of_type_Bmtx = null;
   }
   
   public void a(long paramLong)
   {
-    bjmf localbjmf = null;
+    blxp localblxp = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbjmf = (bjmf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localblxp = (blxp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbjmf != null) {
-      localbjmf.a(paramLong);
+    if (localblxp != null) {
+      localblxp.a(paramLong);
     }
   }
   
@@ -72,15 +72,15 @@ public class VideoSegmentPickerProviderView
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560575, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131560751, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = ((SegmentPicker)this.jdField_a_of_type_AndroidViewView.findViewById(2131365524));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131363695).setOnClickListener(new bjmd(this));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131363696).setOnClickListener(new bjme(this));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = ((SegmentPicker)this.jdField_a_of_type_AndroidViewView.findViewById(2131365609));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131363751).setOnClickListener(new blxn(this));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131363752).setOnClickListener(new blxo(this));
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      paramBundle = (bjmf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramBundle = (blxp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (paramBundle != null) {
         paramBundle.a();
       }
@@ -89,19 +89,19 @@ public class VideoSegmentPickerProviderView
   
   public void a(List<Long> paramList)
   {
-    bjmf localbjmf = null;
+    blxp localblxp = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbjmf = (bjmf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localblxp = (blxp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbjmf != null) {
-      localbjmf.a(paramList);
+    if (localblxp != null) {
+      localblxp.a(paramList);
     }
   }
   
   public int b()
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.findViewById(2131377183).getLayoutParams();
-    int i = vzl.a(getContext(), 22.0F);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.findViewById(2131377704).getLayoutParams();
+    int i = xod.a(getContext(), 22.0F);
     return localLayoutParams.topMargin + i;
   }
   
@@ -114,17 +114,17 @@ public class VideoSegmentPickerProviderView
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker.a();
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = null;
     }
-    this.jdField_a_of_type_Bkin = null;
+    this.jdField_a_of_type_Bmtx = null;
   }
   
   public void b(long paramLong)
   {
-    bjmf localbjmf = null;
+    blxp localblxp = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbjmf = (bjmf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localblxp = (blxp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbjmf != null) {
-      localbjmf.b(paramLong);
+    if (localblxp != null) {
+      localblxp.b(paramLong);
     }
   }
   
@@ -133,19 +133,19 @@ public class VideoSegmentPickerProviderView
     return true;
   }
   
-  public void setItems(bkin parambkin)
+  public void setItems(bmtx parambmtx)
   {
-    this.jdField_a_of_type_Bkin = parambkin;
-    if (this.jdField_a_of_type_Bkin != null)
+    this.jdField_a_of_type_Bmtx = parambmtx;
+    if (this.jdField_a_of_type_Bmtx != null)
     {
-      this.jdField_a_of_type_Bkin.a.changeNormalMode(this.jdField_a_of_type_Long - this.b);
-      b(this.jdField_a_of_type_Bkin.a.getSegmentList());
+      this.jdField_a_of_type_Bmtx.a.changeNormalMode(this.jdField_a_of_type_Long - this.b);
+      b(this.jdField_a_of_type_Bmtx.a.getSegmentList());
     }
   }
   
-  public void setListener(bjmf parambjmf)
+  public void setListener(blxp paramblxp)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambjmf);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramblxp);
   }
   
   public void setPlayMode(int paramInt)
@@ -176,7 +176,7 @@ public class VideoSegmentPickerProviderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.view.VideoSegmentPickerProviderView
  * JD-Core Version:    0.7.0.1
  */

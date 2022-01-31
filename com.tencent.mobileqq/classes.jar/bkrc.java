@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
 class bkrc
+  implements Animator.AnimatorListener
 {
-  public FilterDesc a;
-  public ArrayList<WeakReference<bkre>> a;
+  bkrc(bkqr parambkqr) {}
   
-  bkrc(bkrb parambkrb)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if (QLog.isColorLevel()) {
+      QLog.d("AEWaterMarkListPart", 2, "Watermark Panel Opened!");
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkrc
  * JD-Core Version:    0.7.0.1
  */

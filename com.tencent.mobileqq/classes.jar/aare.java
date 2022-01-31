@@ -1,39 +1,78 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class aare
-  implements View.OnClickListener
+  extends WebViewPlugin
 {
-  public aare(ChatHistory paramChatHistory) {}
+  private ArrayList<aarc> a = new ArrayList();
   
-  public void onClick(View paramView)
+  public aare()
   {
-    if (this.a.d > 1)
+    this.mPluginNameSpace = "GdtWebReportPlugin";
+    aard localaard = new aard(this);
+    aarf localaarf = new aarf(this);
+    odh localodh = new odh();
+    this.a.add(localaard);
+    this.a.add(localaarf);
+    this.a.add(localodh);
+  }
+  
+  public Activity a()
+  {
+    if (this.mRuntime != null) {}
+    for (Activity localActivity1 = this.mRuntime.a();; localActivity1 = null)
     {
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838767);
-      paramView = this.a;
-      paramView.d -= 1;
-      if (this.a.d <= 1)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840184);
+      Activity localActivity2 = localActivity1;
+      if ((localActivity1 instanceof BasePluginActivity)) {
+        localActivity2 = ((BasePluginActivity)BasePluginActivity.class.cast(localActivity1)).getOutActivity();
       }
-      this.a.e = ((this.a.d - 1) * 8);
-      this.a.jdField_a_of_type_Aarf.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      this.a.t();
+      return localActivity2;
     }
+  }
+  
+  public void callJs(String paramString)
+  {
+    super.callJs(paramString);
+  }
+  
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  {
+    int i = 0;
+    while (i < this.a.size())
+    {
+      ((aarc)this.a.get(i)).a(paramString, paramLong, paramMap);
+      i += 1;
+    }
+    return false;
+  }
+  
+  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  {
+    return super.handleSchemaRequest(paramString1, paramString2);
+  }
+  
+  public void onActivityReady()
+  {
+    super.onActivityReady();
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+  }
+  
+  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  {
+    super.onWebViewCreated(paramCustomWebView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aare
  * JD-Core Version:    0.7.0.1
  */

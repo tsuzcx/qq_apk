@@ -1,39 +1,108 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class azxj
-  implements CompoundButton.OnCheckedChangeListener
+  extends aofy<azxi>
 {
-  public azxj(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static azxi a()
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("口算开关状态改变 ");
-      if (!paramBoolean) {
-        break label70;
-      }
+    return (azxi)aogj.a().a(612);
+  }
+  
+  public static void b()
+  {
+    aogj.a().a(new int[] { 612 });
+  }
+  
+  public int a()
+  {
+    return 612;
+  }
+  
+  @NonNull
+  public azxi a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[migrateOldOrDefaultContent]");
     }
-    label70:
-    for (paramCompoundButton = "on";; paramCompoundButton = "off")
-    {
-      QLog.d("PublishHomeWorkFragment", 2, paramCompoundButton);
-      this.a.e = paramBoolean;
-      if (this.a.e) {
-        this.a.a.setChecked(true);
-      }
-      return;
+    return new azxi();
+  }
+  
+  @Nullable
+  public azxi a(aogf[] paramArrayOfaogf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[onParsed]");
     }
+    azxi localazxi = new azxi();
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    {
+      paramArrayOfaogf = paramArrayOfaogf[0];
+      if ((paramArrayOfaogf == null) || (TextUtils.isEmpty(paramArrayOfaogf.a))) {}
+    }
+    try
+    {
+      localazxi.a = new JSONObject(paramArrayOfaogf.a);
+      return localazxi;
+    }
+    catch (JSONException paramArrayOfaogf)
+    {
+      QLog.e("StudyRoomConfProcessor", 4, paramArrayOfaogf, new Object[0]);
+    }
+    return localazxi;
+  }
+  
+  public Class<azxi> a()
+  {
+    return azxi.class;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "onReqNoReceive: type=" + a() + "curContent:" + a());
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
+    }
+  }
+  
+  public void a(azxi paramazxi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[onUpdate] newConf:" + paramazxi);
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StudyRoomConfProcessor", 2, "[get migrateOldVersion]");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azxj
  * JD-Core Version:    0.7.0.1
  */

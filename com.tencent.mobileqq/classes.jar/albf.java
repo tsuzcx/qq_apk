@@ -1,128 +1,31 @@
-import android.content.Context;
-import android.opengl.Matrix;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.locks.ReentrantLock;
 
-public class albf
+final class albf
+  extends bdvu
 {
-  public static boolean a;
-  public static final float[] a;
-  private albh jdField_a_of_type_Albh;
-  private alxs jdField_a_of_type_Alxs;
-  private alxw jdField_a_of_type_Alxw = new albg(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
-  private boolean jdField_b_of_type_Boolean;
-  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
-  private float[] c;
-  private float[] d = new float[4];
+  albf(SharedPreferences paramSharedPreferences, int paramInt, albd paramalbd) {}
   
-  static
+  public void onDone(bdvv parambdvv)
   {
-    jdField_a_of_type_ArrayOfFloat = new float[16];
-    Matrix.setIdentityM(jdField_a_of_type_ArrayOfFloat, 0);
-    jdField_a_of_type_Boolean = true;
-  }
-  
-  public static boolean a()
-  {
-    String str = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.ARCfg.name());
-    if (!TextUtils.isEmpty(str))
+    super.onDone(parambdvv);
+    QLog.i("apollo_client_ApolloSSOConfig", 1, "checkUpdateApolloWebViewConfig download file task.getStatus()->" + parambdvv.a() + ", httpCode: " + parambdvv.f);
+    if (3 == parambdvv.a())
     {
-      String[] arrayOfString = new String[1];
-      arrayOfString[0] = "";
-      int i = DeviceProfileManager.a(str, arrayOfString, new ajvc());
-      boolean bool;
-      if (i >= 1) {
-        if (Integer.valueOf(arrayOfString[0]).intValue() == 1) {
-          bool = true;
-        }
-      }
-      for (;;)
-      {
-        QLog.i("AREngine_SensorTrackManager", 1, "arCfg = " + str + ", size = " + i + ", params[0] = " + arrayOfString[0] + ", isUseGameRotationVector = " + bool);
-        return bool;
-        bool = false;
-        continue;
-        bool = false;
-      }
-    }
-    return false;
-  }
-  
-  public void a()
-  {
-    a(true);
-  }
-  
-  public void a(Context paramContext, albh paramalbh)
-  {
-    long l = System.currentTimeMillis();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Albh = paramalbh;
-    b();
-    jdField_a_of_type_Boolean = this.jdField_a_of_type_Alxs.b();
-    alip.a().c(System.currentTimeMillis() - l);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      QLog.d("SensorTrackManager", 2, "enableSensor enabled: " + paramBoolean);
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Alxs == null) {
-      if (!a()) {
-        break label57;
-      }
-    }
-    label57:
-    for (this.jdField_a_of_type_Alxs = new alxs(this.jdField_a_of_type_AndroidContentContext, 5);; this.jdField_a_of_type_Alxs = new alxs(this.jdField_a_of_type_AndroidContentContext, 4))
-    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("sp_key_apollo_webView_config_version", this.jdField_a_of_type_Int).commit();
       if (QLog.isColorLevel()) {
-        QLog.d("SensorTrackManager", 2, "startupSensor");
+        QLog.d("apollo_client_ApolloSSOConfig", 2, "checkUpdateApolloWebViewConfig download version:" + this.jdField_a_of_type_Int);
       }
-      this.jdField_a_of_type_Alxs.a(this.jdField_a_of_type_Alxw, 1);
-      return;
+      if (this.jdField_a_of_type_Albd != null) {
+        albd.a(this.jdField_a_of_type_Albd);
+      }
     }
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SensorTrackManager", 2, "stopSensor");
-    }
-    if (this.jdField_a_of_type_Alxs != null)
-    {
-      this.jdField_a_of_type_Alxs.a();
-      this.jdField_a_of_type_Alxs = null;
-    }
-  }
-  
-  public void d()
-  {
-    a(false);
-  }
-  
-  public void e()
-  {
-    c();
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     albf
  * JD-Core Version:    0.7.0.1
  */

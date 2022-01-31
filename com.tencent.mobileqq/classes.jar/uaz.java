@@ -1,110 +1,48 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowTagView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import qqcircle.QQCircleWrite.DoFollowTagRsp;
 
-public abstract class uaz
-  extends uah
+public class uaz
+  implements yvn<QQCircleWrite.DoFollowTagRsp>
 {
-  public int a;
-  @NonNull
-  public final View a;
-  public StoryPlayerGroupHolder a;
-  public String a;
-  public uas a;
-  protected uba a;
-  protected boolean a;
-  public int b;
-  private final String b;
-  protected boolean b;
+  public uaz(QCircleFollowTagView paramQCircleFollowTagView, int paramInt, boolean paramBoolean) {}
   
-  public uaz(@NonNull ViewGroup paramViewGroup)
+  public void a(boolean paramBoolean, long paramLong, String paramString, QQCircleWrite.DoFollowTagRsp paramDoFollowTagRsp)
   {
-    this.jdField_b_of_type_JavaLangString = ("Q.qqstory.playernew." + getClass().getSimpleName());
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this));
-    this.jdField_a_of_type_AndroidViewView = a(paramViewGroup);
-  }
-  
-  protected abstract View a(ViewGroup paramViewGroup);
-  
-  public uaz a(Class<? extends uaz> paramClass)
-  {
-    if (this.jdField_a_of_type_Uba != null) {
-      return this.jdField_a_of_type_Uba.b(paramClass);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
-    ved.a(this.jdField_a_of_type_JavaLangString, "onPositionChanged, oldVer=%d, oldHor=%d, newVer=%d, newHor=%d", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, @NonNull uas paramuas, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.jdField_b_of_type_JavaLangString + System.identityHashCode(this) + "[" + paramInt1 + "," + paramInt2 + "]");
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Uas = paramuas;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = paramStoryPlayerGroupHolder;
-  }
-  
-  void a(uba paramuba)
-  {
-    this.jdField_a_of_type_Uba = paramuba;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
+    boolean bool = true;
+    if ((paramBoolean) && (paramLong == 0L))
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      b(this.jdField_b_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.a(this.jdField_a_of_type_Int);
+      if (QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView) != null)
+      {
+        QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.getContext(), QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView).tagId.get(), this.jdField_a_of_type_Int);
+        paramString = txu.a();
+        paramDoFollowTagRsp = QCircleFollowTagView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView).tagId.get();
+        if (this.jdField_a_of_type_Int != 1) {
+          break label101;
+        }
+      }
+      label101:
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramString.a(paramDoFollowTagRsp, paramBoolean);
+        return;
+      }
+    }
+    paramString = this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowTagView.getContext();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 2131698316;; i = 2131698381)
+    {
+      QQToast.a(paramString, i, 0).a();
       return;
     }
-    ved.e(this.jdField_a_of_type_JavaLangString, "onSelected donot changed !");
-  }
-  
-  protected void b() {}
-  
-  protected void b(boolean paramBoolean)
-  {
-    ved.b(this.jdField_a_of_type_JavaLangString, "onSelectedChanged (ver=%d, hor=%d) , => %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int), Boolean.valueOf(paramBoolean));
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Uas = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder = null;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String toString()
-  {
-    return "VideoHolderBase{, GroupPos=" + this.jdField_a_of_type_Int + ", VideoPos=" + this.jdField_b_of_type_Int + ", mData=" + this.jdField_a_of_type_Uas + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uaz
  * JD-Core Version:    0.7.0.1
  */

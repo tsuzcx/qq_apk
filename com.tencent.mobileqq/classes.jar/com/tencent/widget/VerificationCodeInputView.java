@@ -16,20 +16,20 @@ import android.view.View;
 import android.view.View.OnKeyListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import bftq;
-import bfwz;
+import bhun;
+import bhxw;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 
 public class VerificationCodeInputView
   extends LinearLayout
-  implements TextWatcher, View.OnKeyListener, bftq
+  implements TextWatcher, View.OnKeyListener, bhun
 {
   public static final int[] a;
   private int jdField_a_of_type_Int = 4;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private bfwz jdField_a_of_type_Bfwz;
+  private bhxw jdField_a_of_type_Bhxw;
   private final List<EditText> jdField_a_of_type_JavaUtilList = new ArrayList();
   private final InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[0];
   private int jdField_b_of_type_Int;
@@ -38,7 +38,7 @@ public class VerificationCodeInputView
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131364340, 2131364341, 2131364342, 2131364343, 2131364344, 2131364345 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131364408, 2131364409, 2131364410, 2131364411, 2131364412, 2131364413 };
   }
   
   public VerificationCodeInputView(Context paramContext)
@@ -61,9 +61,9 @@ public class VerificationCodeInputView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844194);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844195);
-    LayoutInflater.from(getContext()).inflate(2131559367, this);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844537);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844538);
+    LayoutInflater.from(getContext()).inflate(2131559419, this);
     b();
   }
   
@@ -129,8 +129,8 @@ public class VerificationCodeInputView
     {
       if (i != 0)
       {
-        if (this.jdField_a_of_type_Bfwz != null) {
-          this.jdField_a_of_type_Bfwz.a(localStringBuilder.toString());
+        if (this.jdField_a_of_type_Bhxw != null) {
+          this.jdField_a_of_type_Bhxw.a(localStringBuilder.toString());
         }
         setEnabled(false);
       }
@@ -266,14 +266,14 @@ public class VerificationCodeInputView
     }
   }
   
-  public void setOnCompleteListener(bfwz parambfwz)
+  public void setOnCompleteListener(bhxw parambhxw)
   {
-    this.jdField_a_of_type_Bfwz = parambfwz;
+    this.jdField_a_of_type_Bhxw = parambhxw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.VerificationCodeInputView
  * JD-Core Version:    0.7.0.1
  */

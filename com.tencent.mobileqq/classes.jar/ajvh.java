@@ -1,8 +1,19 @@
-public class ajvh
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+
+public final class ajvh
+  implements Parcelable.Creator<ResultRecord>
 {
-  public int a;
-  public String a;
-  public int b = 100;
+  public ResultRecord a(Parcel paramParcel)
+  {
+    return new ResultRecord(paramParcel, null);
+  }
+  
+  public ResultRecord[] a(int paramInt)
+  {
+    return new ResultRecord[paramInt];
+  }
 }
 
 

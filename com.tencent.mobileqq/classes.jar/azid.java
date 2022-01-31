@@ -1,21 +1,28 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import com.tencent.mobileqq.soload.config.SoConfig.SoInfo;
 
-public class azid
-  implements azih
+class azid
+  implements aziw
 {
-  public azid(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
+  azid(azic paramazic) {}
   
-  public void a(Bitmap paramBitmap)
+  public void a(int paramInt, SoConfig.SoInfo paramSoInfo)
   {
-    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bcww);
-    WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
+    azic.a(this.a, paramInt);
+    long l = azic.a(this.a).a;
+    StringBuilder localStringBuilder = new StringBuilder().append("is64bit=");
+    if (azio.a()) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      VACDReportUtil.a(l, null, "load.item.getconfig.end", paramInt + "&v=" + azic.a() + "&f=" + azic.a(this.a).d, SoConfig.SoInfo.getReportCode(paramSoInfo), null);
+      azic.a(this.a, azic.a(this.a), paramSoInfo);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azid
  * JD-Core Version:    0.7.0.1
  */

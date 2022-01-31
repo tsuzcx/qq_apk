@@ -1,158 +1,105 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Random;
+import java.util.UUID;
 
-public class arnm
-  extends WebViewPlugin
+final class arnm
+  implements aroj
 {
-  private arnn jdField_a_of_type_Arnn;
-  private arno jdField_a_of_type_Arno;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  arnm(QQAppInterface paramQQAppInterface) {}
   
-  public arnm()
+  public long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3)
   {
-    this.mPluginNameSpace = "sms";
+    return a(paramString1, paramInt1, paramString2, paramInt2, paramString3, paramString4, paramString5, paramLong, paramInt3, 0L, 0);
   }
   
-  private void b()
+  public long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong1, int paramInt3, long paramLong2, int paramInt4)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Arno != null))
+    return 0L;
+  }
+  
+  public String a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong1, long paramLong2, long paramLong3, int paramInt3)
+  {
+    if (paramInt1 == 3000) {
+      paramInt1 = 106;
+    }
+    TroopFileTransferManager localTroopFileTransferManager;
+    for (;;)
     {
-      Context localContext = a();
-      if (localContext != null) {
-        localContext.getContentResolver().unregisterContentObserver(this.jdField_a_of_type_Arno);
+      localTroopFileTransferManager = TroopFileTransferManager.a(this.a, Long.valueOf(paramString2).longValue());
+      if (localTroopFileTransferManager != null) {
+        break;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("FileManagerUtil<FileAssistant>", 2, "send2Troop: troopuin error");
+      }
+      return null;
+      if (paramInt1 == 6000) {
+        paramInt1 = 38;
+      } else {
+        paramInt1 = 3;
       }
     }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  private void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    paramInt2 = Math.abs(new Random().nextInt());
+    FileManagerEntity localFileManagerEntity = this.a.a().a(paramLong2);
+    paramString1 = localTroopFileTransferManager.a(paramString3, paramString4, null, paramLong1, paramInt1, paramInt2, Long.valueOf(paramString1).longValue(), paramLong2, localFileManagerEntity);
+    long l = 0L;
+    paramInt1 = arni.a(paramString1.jdField_a_of_type_JavaLangString);
+    if ((arof.a(paramString1.jdField_a_of_type_JavaLangString)) && ((paramInt1 == 0) || (paramInt1 == 2))) {
+      if (paramInt1 == 0)
+      {
+        paramString3 = new BitmapFactory.Options();
+        paramString3.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(paramString1.jdField_a_of_type_JavaLangString, paramString3);
+        paramLong1 = bcjk.a(this.a, paramString2, paramString1.g, paramString1.c, paramString1.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, String.valueOf(paramString1.b), paramLong2, paramString3.outWidth, paramString3.outHeight, paramLong3, paramInt3);
+      }
     }
     for (;;)
     {
-      String str;
-      try
+      if (localFileManagerEntity != null)
       {
-        Object localObject = new JSONObject(paramString);
-        paramString = ((JSONObject)localObject).optString("senderMatcher", null);
-        str = ((JSONObject)localObject).optString("smsContentMatcher", null);
-        int i = ((JSONObject)localObject).optInt("timeout", 0);
-        this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("callback", null);
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(str)) || (i <= 0)) {
-          break;
-        }
-        if (!this.jdField_a_of_type_Boolean)
-        {
-          localObject = a();
-          if (localObject == null) {
-            break;
-          }
-          if (this.jdField_a_of_type_Arnn == null) {
-            this.jdField_a_of_type_Arnn = new arnn(this);
-          }
-          if (this.jdField_a_of_type_Arno == null) {
-            this.jdField_a_of_type_Arno = new arno(this.jdField_a_of_type_Arnn, (Context)localObject, paramString, str);
-          }
-          this.jdField_a_of_type_Boolean = true;
-          ((Context)localObject).getContentResolver().registerContentObserver(Uri.parse("content://sms/"), true, this.jdField_a_of_type_Arno);
-          this.jdField_a_of_type_Arnn.removeMessages(2);
-          this.jdField_a_of_type_Arnn.sendEmptyMessageDelayed(2, i * 1000);
-          return;
+        localFileManagerEntity.structMsgSeq = paramLong1;
+        if (QLog.isColorLevel()) {
+          QLog.d("FileManagerUtil<FileAssistant>", 2, "prepareForward2Troop==>InsertAIOMsg, msgSeq:" + paramLong1);
         }
       }
-      catch (JSONException paramString)
+      return paramString1.jdField_a_of_type_JavaUtilUUID.toString();
+      paramLong1 = l;
+      if (paramInt1 == 2)
       {
-        paramString.printStackTrace();
-        return;
-      }
-      if (this.jdField_a_of_type_Arno != null) {
-        this.jdField_a_of_type_Arno.a(paramString, str);
-      }
-    }
-  }
-  
-  protected Context a()
-  {
-    if (this.mRuntime != null) {
-      return this.mRuntime.a();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    b();
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString });
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      return false;
-    }
-    if ("sms".equals(paramString2))
-    {
-      if ("startReceiver".equals(paramString3))
-      {
-        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-          return false;
+        paramString3 = ShortVideoUtils.a(paramString1.jdField_a_of_type_JavaLangString);
+        paramLong1 = bcjk.a(this.a, paramString2, paramString1.g, paramString1.c, paramString1.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, String.valueOf(paramString1.b), paramLong2, paramString3[0], paramString3[1], paramString3[2], paramLong3, paramInt3);
+        continue;
+        if (localFileManagerEntity != null) {
+          paramLong1 = bcjk.a(this.a, paramString2, paramString4, paramLong1, paramString1.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, String.valueOf(8888L), paramLong2, localFileManagerEntity.imgWidth, localFileManagerEntity.imgHeight, 0, paramLong3, paramInt3);
+        } else {
+          paramLong1 = bcjk.a(this.a, paramString2, paramString4, paramLong1, paramString1.jdField_a_of_type_JavaUtilUUID.toString(), paramInt2, String.valueOf(8888L), paramLong2, paramLong3, paramInt3);
         }
-        b(paramVarArgs[0]);
-        return true;
-      }
-      if ("stopReceiver".equals(paramString3))
-      {
-        b();
-        return true;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "can not handle objectname:" + paramString2 + " methodname:" + paramString3);
       }
     }
-    return false;
   }
   
-  public void onCreate()
-  {
-    super.onCreate();
-  }
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public void onDestroy()
+  public void a(boolean paramBoolean, String paramString1, long paramLong, int paramInt, String paramString2, String paramString3, String paramString4)
   {
-    b();
-    if (this.jdField_a_of_type_Arno != null)
-    {
-      this.jdField_a_of_type_Arno.a();
-      this.jdField_a_of_type_Arno = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerUtil<FileAssistant>", 2, "getTroopProcessCallback->onResult2Troop{bSuccess[" + paramBoolean + "],troopFileUuid[" + paramString1 + "],nSessionId[" + paramLong + "],retCode[" + paramInt + "],retMsg[" + paramString2 + "],troopUin[" + paramString3 + "],newFilePath[" + paramString4 + "]}");
     }
-    if (this.jdField_a_of_type_Arnn != null)
-    {
-      this.jdField_a_of_type_Arnn.a();
-      this.jdField_a_of_type_Arnn = null;
+    paramString3 = TroopFileTransferManager.a(this.a, Long.valueOf(paramString3).longValue());
+    if (paramString3 != null) {
+      paramString3.a(paramLong, UUID.fromString(paramString1), null, paramInt, paramString4, paramString2);
     }
-    super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arnm
  * JD-Core Version:    0.7.0.1
  */

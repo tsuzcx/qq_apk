@@ -1,28 +1,22 @@
-import com.tencent.widget.AbsListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import java.util.ArrayList;
 
 class aiox
-  implements bfos
+  implements View.OnClickListener
 {
-  aiox(aiot paramaiot) {}
+  aiox(aiow paramaiow) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    aiot.a(this.a, paramInt);
-    if (paramInt == 0)
-    {
-      aiot.a(this.a, null, null);
-      aiot.a(this.a).b();
-      return;
-    }
-    aiot.a(this.a).c();
-    aiot.a(this.a).a();
+    AIOLongShotHelper.a(this.a.mActivity, (String)aiow.a(this.a).selectedPhotoList.get(0), new aioy(this));
+    AIOLongShotHelper.a("0X8009DEE");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiox
  * JD-Core Version:    0.7.0.1
  */

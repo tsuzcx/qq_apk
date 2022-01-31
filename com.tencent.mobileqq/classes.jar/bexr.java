@@ -1,19 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.widget.MaxHeightScrollView;
 
-class bexr
-  implements View.OnClickListener
+public class bexr
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bexr(bexp parambexp) {}
+  public bexr(AuthorityActivity paramAuthorityActivity) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    bexp.a(this.a);
+    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
+    {
+      i = AuthorityActivity.a(this.a).a();
+      int j = DisplayUtil.getNavigationBarHeight(this.a);
+      AuthorityActivity.a(this.a).setMaxHeight(i - j);
+    }
+    int i = ((View)this.a.findViewById(2131375981).getParent()).getTop();
+    if (i > 0) {
+      AuthorityActivity.a(this.a).setMaxHeight(AuthorityActivity.a(this.a).a() - i);
+    }
+    AuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexr
  * JD-Core Version:    0.7.0.1
  */

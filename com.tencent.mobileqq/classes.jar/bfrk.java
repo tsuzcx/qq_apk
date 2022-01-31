@@ -1,26 +1,24 @@
-import com.tencent.widget.DynamicGridView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class bfrk
-  implements bfrl
+class bfrk
+  extends BroadcastReceiver
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  bfrk(bfrj parambfrj) {}
   
-  public bfrk(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.jdField_a_of_type_Int);
-    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.b);
+    boolean bool = "tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction());
+    bfrg.c("CallingStateMonitor", String.format("onVideoChattingStateChanged isChatting=%s", new Object[] { Boolean.valueOf(bool) }));
+    if (bfrj.a(this.a) != null) {
+      bfrj.a(this.a).c(bool);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfrk
  * JD-Core Version:    0.7.0.1
  */

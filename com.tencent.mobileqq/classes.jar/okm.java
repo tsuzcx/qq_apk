@@ -1,70 +1,33 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeExposeReplyCommentView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.graphics.Rect;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
 
 public class okm
-  extends ViewBase
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private NativeExposeReplyCommentView a;
+  public okm(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public okm(VafContext paramVafContext)
+  public void onGlobalLayout()
   {
-    super(paramVafContext);
-    this.a = new NativeExposeReplyCommentView(paramVafContext.getContext());
-  }
-  
-  public void a(ogn paramogn)
-  {
-    this.a.setAdapter(paramogn);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.a.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
+    Rect localRect = new Rect();
+    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.getWindowVisibleDisplayFrame(localRect);
+    int j = localRect.bottom;
+    int i = j;
+    if (!this.a.e) {
+      i = j - this.a.g;
     }
-    do
+    if (i != this.a.f)
     {
-      return super.setAttribute(paramInt, paramObject);
-    } while ((!(paramObject instanceof oif)) || (((oif)paramObject).a == null));
-    this.a.a((oif)paramObject);
-    return true;
+      this.a.f = i;
+      this.a.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = this.a.f;
+      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okm
  * JD-Core Version:    0.7.0.1
  */

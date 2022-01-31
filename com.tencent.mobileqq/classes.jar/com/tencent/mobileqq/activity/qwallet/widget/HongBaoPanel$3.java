@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import ahda;
-import ahiv;
+import aixe;
+import ajae;
 import android.view.View;
 import android.view.View.OnClickListener;
-import bbkk;
+import bdje;
 import org.json.JSONObject;
 
 class HongBaoPanel$3
@@ -18,7 +18,7 @@ class HongBaoPanel$3
     {
       try
       {
-        paramView = (ahda)paramView.getTag();
+        paramView = (aixe)paramView.getTag();
         if (paramView == null) {
           return;
         }
@@ -41,20 +41,20 @@ class HongBaoPanel$3
             }
           } while (paramView.jdField_a_of_type_OrgJsonJSONObject == null);
           paramView = paramView.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-        } while (bbkk.a(paramView));
-        ahiv.b(this.this$0.mContext, paramView);
+        } while (bdje.a(paramView));
+        ajae.b(this.this$0.mContext, paramView);
         return;
       }
       HongBaoPanel.access$200(this.this$0);
       return;
       paramView = paramView.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-    } while (bbkk.a(paramView));
-    ahiv.b(this.this$0.mContext, paramView);
+    } while (bdje.a(paramView));
+    ajae.b(this.this$0.mContext, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel.3
  * JD-Core Version:    0.7.0.1
  */

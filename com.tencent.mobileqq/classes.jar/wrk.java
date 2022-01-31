@@ -1,51 +1,44 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedReq;
-import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StModifyFeedRsp;
-import NS_COMM.COMM.StCommonExt;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.widget.StoryCoverView;
+import java.util.ArrayList;
 
-public class wrk
-  extends wro
+class wrk
+  extends wna
 {
-  private CertifiedAccountWrite.StModifyFeedReq a = new CertifiedAccountWrite.StModifyFeedReq();
+  wrk(wrh paramwrh, boolean paramBoolean) {}
   
-  public wrk(COMM.StCommonExt paramStCommonExt, CertifiedAccountMeta.StFeed paramStFeed)
+  public void a(int paramInt, View paramView, Object paramObject, wph paramwph)
   {
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
+    if (paramView == paramwph.a()) {
+      wrh.a(this.jdField_a_of_type_Wrh, paramInt, (StoryVideoItem)wrh.a(this.jdField_a_of_type_Wrh).a().get(paramInt), paramView);
     }
-    if (paramStFeed != null) {
-      this.a.feed.set(paramStFeed);
-    }
-    this.a.mBitmap.set(1L);
-  }
-  
-  public static CertifiedAccountWrite.StModifyFeedRsp a(byte[] paramArrayOfByte)
-  {
-    CertifiedAccountWrite.StModifyFeedRsp localStModifyFeedRsp = new CertifiedAccountWrite.StModifyFeedRsp();
-    try
+    do
     {
-      paramArrayOfByte = (CertifiedAccountWrite.StModifyFeedRsp)localStModifyFeedRsp.mergeFrom(paramArrayOfByte);
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CertifiedAccountModifyFeedRequest", 2, "onResponse fail." + paramArrayOfByte);
+      return;
+      if (paramView == paramwph.a(2131373769))
+      {
+        paramView = (StoryCoverView)paramwph.a(2131373768);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          wrh.a(this.jdField_a_of_type_Wrh, paramInt, (StoryVideoItem)wrh.a(this.jdField_a_of_type_Wrh).a().get(paramInt), paramView);
+          return;
+        }
+        wrh.b(this.jdField_a_of_type_Wrh, paramInt, (StoryVideoItem)wrh.a(this.jdField_a_of_type_Wrh).a().get(paramInt), paramView);
+        return;
       }
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
+      if ((paramView == paramwph.a(2131373824)) || (paramView == paramwph.a(2131373771)))
+      {
+        wrh.a(this.jdField_a_of_type_Wrh, paramInt, (StoryVideoItem)wrh.a(this.jdField_a_of_type_Wrh).a().get(paramInt));
+        return;
+      }
+    } while (paramView != paramwph.a(2131373820));
+    this.jdField_a_of_type_Wrh.a(paramwph, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wrk
  * JD-Core Version:    0.7.0.1
  */

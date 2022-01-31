@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.armap;
 
-import alxe;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.HandlerThread;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import anod;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -13,10 +13,10 @@ import mqq.os.MqqHandler;
 
 public class SdCardImageAnimView
   extends ImageView
-  implements alxe
+  implements anod
 {
-  alxe jdField_a_of_type_Alxe = null;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  anod jdField_a_of_type_Anod = null;
   private FrameBmpCache jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache;
   private Runnable jdField_a_of_type_JavaLangRunnable = new SdCardImageAnimView.1(this);
   public boolean a;
@@ -109,8 +109,8 @@ public class SdCardImageAnimView
   
   public void a(SdCardImageAnimView paramSdCardImageAnimView)
   {
-    if (this.jdField_a_of_type_Alxe != null) {
-      this.jdField_a_of_type_Alxe.a(this);
+    if (this.jdField_a_of_type_Anod != null) {
+      this.jdField_a_of_type_Anod.a(this);
     }
   }
   
@@ -152,9 +152,9 @@ public class SdCardImageAnimView
     ThreadManager.getSubThreadHandler().post(this.jdField_b_of_type_JavaLangRunnable);
   }
   
-  public void setEndListener(alxe paramalxe)
+  public void setEndListener(anod paramanod)
   {
-    this.jdField_a_of_type_Alxe = paramalxe;
+    this.jdField_a_of_type_Anod = paramanod;
   }
   
   public void setFPS(int paramInt)
@@ -176,7 +176,7 @@ public class SdCardImageAnimView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.armap.SdCardImageAnimView
  * JD-Core Version:    0.7.0.1
  */

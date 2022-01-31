@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
-class aoyo
-  implements ajoq
+public abstract interface aoyo
 {
-  aoyo(aoyi paramaoyi, FileManagerEntity paramFileManagerEntity) {}
+  public abstract void i();
+  
+  public abstract void j();
+  
+  public abstract void k();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyo
  * JD-Core Version:    0.7.0.1
  */

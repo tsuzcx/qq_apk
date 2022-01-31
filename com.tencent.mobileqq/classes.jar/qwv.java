@@ -1,20 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.HorizontalRefreshLayout;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class qwv
-  extends AnimatorListenerAdapter
+class qwv
+  implements qwk<String>
 {
-  public qwv(HorizontalRefreshLayout paramHorizontalRefreshLayout) {}
+  qwv(qwp paramqwp) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    HorizontalRefreshLayout.a(this.a, 0.0F);
+    QQToast.a(qwp.a(this.a), paramString, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qwv
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.filemanager.util;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
-import apty;
-import apvd;
+import arna;
+import arof;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.util.Iterator;
@@ -16,7 +16,7 @@ public final class FileCategoryUtil$6
   
   public void run()
   {
-    if (apvd.a(this.a.getFilePath())) {}
+    if (arof.a(this.a.getFilePath())) {}
     PackageInfo localPackageInfo;
     do
     {
@@ -25,17 +25,17 @@ public final class FileCategoryUtil$6
       {
         return;
         while ((this.a.strApkPackageName == null) || (this.a.strApkPackageName.length() == 0)) {}
-        localIterator = apty.a(BaseApplicationImpl.getContext()).iterator();
+        localIterator = arna.a(BaseApplicationImpl.getContext()).iterator();
       } while (!localIterator.hasNext());
       localPackageInfo = (PackageInfo)localIterator.next();
     } while (!this.a.strApkPackageName.equalsIgnoreCase(localPackageInfo.packageName));
     this.a.setFilePath(localPackageInfo.applicationInfo.publicSourceDir);
-    this.a.fileName = apty.a(this.a.getFilePath());
+    this.a.fileName = arna.a(this.a.getFilePath());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileCategoryUtil.6
  * JD-Core Version:    0.7.0.1
  */

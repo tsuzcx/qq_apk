@@ -1,13 +1,11 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-
-public abstract interface atul
+class atul
+  extends alxv
 {
-  public abstract void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo);
+  atul(atuj paramatuj) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atul
  * JD-Core Version:    0.7.0.1
  */

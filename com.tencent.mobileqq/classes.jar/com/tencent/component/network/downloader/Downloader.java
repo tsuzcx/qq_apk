@@ -17,6 +17,7 @@ import com.tencent.component.network.module.cache.CacheManager;
 import com.tencent.component.network.module.cache.file.FileCacheService;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import java.net.Proxy;
+import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.Executor;
 
@@ -96,11 +97,17 @@ public abstract class Downloader
   
   public final boolean download(String paramString, String[] paramArrayOfString, boolean paramBoolean1, boolean paramBoolean2, Downloader.DownloadListener paramDownloadListener, Downloader.DownloadMode paramDownloadMode)
   {
+    return download(paramString, paramArrayOfString, paramBoolean1, paramBoolean2, paramDownloadListener, paramDownloadMode, null);
+  }
+  
+  public final boolean download(String paramString, String[] paramArrayOfString, boolean paramBoolean1, boolean paramBoolean2, Downloader.DownloadListener paramDownloadListener, Downloader.DownloadMode paramDownloadMode, DownloadRequest.OnResponseDataListener paramOnResponseDataListener)
+  {
     if ((!Utils.checkUrl(paramString)) || (paramArrayOfString == null)) {
       return false;
     }
     paramString = new DownloadRequest(paramString, paramArrayOfString, paramBoolean1, paramDownloadListener);
     paramString.mode = paramDownloadMode;
+    paramString.onResponseDataListener = paramOnResponseDataListener;
     return download(paramString, paramBoolean2);
   }
   
@@ -158,6 +165,8 @@ public abstract class Downloader
   {
     return this.pProcessStrategy;
   }
+  
+  public abstract void preConnectHost(ArrayList<String> paramArrayList);
   
   public void setBackupIPConfigStrategy(IPStrategy paramIPStrategy)
   {
@@ -254,7 +263,7 @@ public abstract class Downloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.Downloader
  * JD-Core Version:    0.7.0.1
  */

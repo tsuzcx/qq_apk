@@ -1,37 +1,36 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.VideoControlUI;
-import java.lang.ref.WeakReference;
+import com.tencent.av.ui.QavListItemBase;
+import com.tencent.qphone.base.util.QLog;
 
-public class mjn
-  implements View.OnTouchListener
+class mjn
+  implements mkh
 {
-  WeakReference<VideoControlUI> a;
+  mjn(mjk parammjk) {}
   
-  public mjn(VideoControlUI paramVideoControlUI)
+  public void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase)
   {
-    this.a = new WeakReference(paramVideoControlUI);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    paramView = (VideoControlUI)this.a.get();
-    if (paramView != null) {
-      switch (paramMotionEvent.getAction())
-      {
-      }
-    }
-    for (;;)
+    if ((System.currentTimeMillis() - this.a.a < 500L) && (paramInt > 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      return false;
-      paramView.z(0L);
+      if (QLog.isColorLevel()) {
+        QLog.w("QAVPtvTemplateAdapter", 1, "onItemClicked begin, position[" + paramInt + "], mCurSelectedPosition[" + this.a.d + "], ignore[" + bool + "], seq[" + paramLong + "]");
+      }
+      if (!bool) {
+        break;
+      }
+      return;
     }
+    QLog.w("QAVPtvTemplateAdapter", 1, "onItemClicked valid, position[" + paramInt + "], mCurSelectedPosition[" + this.a.d + "], seq[" + paramLong + "]");
+    this.a.a = System.currentTimeMillis();
+    int i = this.a.d;
+    this.a.d = paramInt;
+    this.a.a(i, this.a.d);
+    this.a.a(this.a.d);
+    this.a.a(paramLong, this.a.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mjn
  * JD-Core Version:    0.7.0.1
  */

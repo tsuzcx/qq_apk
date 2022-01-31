@@ -1,15 +1,20 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.ConvertIFramesRunnable;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class vjd
-  implements avzf
+class vjd
+  extends AnimatorListenerAdapter
 {
-  public vjd(HWEditLocalVideoPlayer.ConvertIFramesRunnable paramConvertIFramesRunnable) {}
+  vjd(vjc paramvjc) {}
   
-  public void a() {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.a.a = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjd
  * JD-Core Version:    0.7.0.1
  */

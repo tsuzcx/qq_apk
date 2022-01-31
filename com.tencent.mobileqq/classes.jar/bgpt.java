@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qqdataline.ipc.MessageRecordParcel;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
-public final class bgpt
-  implements Parcelable.Creator<MessageRecordParcel>
+public class bgpt
+  implements AsyncResult
 {
-  public MessageRecordParcel a(Parcel paramParcel)
-  {
-    return MessageRecordParcel.a(paramParcel);
-  }
+  public bgpt(AppBrandLaunchManager paramAppBrandLaunchManager) {}
   
-  public MessageRecordParcel[] a(int paramInt)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    return new MessageRecordParcel[paramInt];
+    QMLog.i("minisdk-start_AppBrandLaunchManager", "---startApp---- useUserApp isSuccess = " + paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgpt
  * JD-Core Version:    0.7.0.1
  */

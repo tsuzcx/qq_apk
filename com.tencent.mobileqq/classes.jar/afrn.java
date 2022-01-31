@@ -1,24 +1,36 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class afrn
-  extends aimt
+class afrn
+  implements beiq
 {
-  public afrk a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  afrn(afrl paramafrl) {}
+  
+  public void a(View paramView)
+  {
+    aekt.n = true;
+    if (this.a.a()) {
+      return;
+    }
+    Object localObject = (FragmentActivity)paramView.getContext();
+    if (localObject != null) {}
+    for (localObject = ((FragmentActivity)localObject).getChatFragment();; localObject = null)
+    {
+      if (localObject == null)
+      {
+        ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+        return;
+      }
+      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afrn
  * JD-Core Version:    0.7.0.1
  */

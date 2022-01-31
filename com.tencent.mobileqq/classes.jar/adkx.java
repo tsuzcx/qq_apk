@@ -1,95 +1,89 @@
+import android.app.Activity;
 import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.io.File;
+import java.util.HashMap;
 
 public class adkx
-  implements View.OnClickListener
 {
-  public adkx(ApolloItemBuilder paramApolloItemBuilder) {}
-  
-  public void onClick(View paramView)
+  public static void a(Activity paramActivity)
   {
-    if (this.a.a()) {}
-    adlc localadlc;
-    do
+    b(paramActivity);
+  }
+  
+  public static void a(Activity paramActivity, String paramString)
+  {
+    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
+    if ((paramActivity instanceof BaseActivity)) {
+      localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
+    }
+    if (bect.a.containsKey("PublicAccountJs")) {
+      localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
+    }
+    localIntent.putExtra("fromLocalUrl", true);
+    localIntent.putExtra("hide_operation_bar", true);
+    localIntent.putExtra("hideRightButton", true);
+    localIntent.putExtra("leftViewText", paramActivity.getString(2131695682));
+    localIntent.putExtra("assignBackText", paramActivity.getString(2131695682));
+    if (TextUtils.isEmpty(paramString)) {
+      localIntent.putExtra("url", swy.b);
+    }
+    for (;;)
     {
+      paramActivity.startActivity(localIntent);
       return;
-      localadlc = (adlc)actj.a(paramView);
-    } while ((localadlc == null) || (localadlc.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) || (localadlc.jdField_a_of_type_ComTencentImageURLImageView == null));
-    int i = localadlc.e;
-    Object localObject1;
-    if ((paramView instanceof TextView))
-    {
-      Object localObject2;
-      int j;
-      if (airx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))
-      {
-        ApolloUtil.a(paramView.getContext(), null, "aio", ajms.ah, null);
-        paramView = "1";
-        localObject1 = ((airx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-        localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        i = ApolloUtil.b(localadlc.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop);
-        j = localadlc.e;
-        if (localObject1 != null) {
-          break label312;
-        }
-      }
-      label312:
-      for (localObject1 = "0";; localObject1 = ((ApolloBaseInfo)localObject1).apolloStatus + "")
-      {
-        VipUtils.a((AppInterface)localObject2, "cmshow", "Apollo", "clk_icon", i, 0, new String[] { String.valueOf(j), localObject1, paramView, airx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) + "" });
-        return;
-        if (!airx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication())) {}
-        for (localObject1 = ajms.U;; localObject1 = ajms.V + i)
-        {
-          localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
-          ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_zf_lmx");
-          VasWebviewUtil.openQQBrowserActivity(paramView.getContext(), (String)localObject1, -1L, (Intent)localObject2, false, -1);
-          paramView = "0";
-          break;
-        }
+      localIntent.putExtra("url", "http://find.mp.qq.com/search/index?_wv=67109947&keyword=" + paramString);
+    }
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3)
+  {
+    Intent localIntent = new Intent(paramActivity, PublicAccountBrowser.class);
+    if (TextUtils.isEmpty(paramString2)) {
+      if ((paramActivity instanceof BaseActivity)) {
+        localIntent.putExtra("uin", ((QQAppInterface)((BaseActivity)paramActivity).getAppRuntime()).getCurrentAccountUin());
       }
     }
-    if (new File(adlb.a(i)).exists()) {
-      ApolloItemBuilder.a(this.a.jdField_a_of_type_AndroidContentContext, localadlc.jdField_a_of_type_ComTencentImageURLImageView, (MessageForApollo)localadlc.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    }
-    for (paramView = "0";; paramView = "1")
+    for (;;)
     {
-      VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "clk_gif", ApolloUtil.b(localadlc.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop), 0, new String[] { String.valueOf(i), paramView, "0", String.valueOf(System.currentTimeMillis() / 1000L) });
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        localIntent.putExtra("leftViewText", paramString1);
+        localIntent.putExtra("assignBackText", paramString1);
+      }
+      if (bect.a.containsKey("PublicAccountJs")) {
+        localIntent.putExtra("insertPluginsArray", new String[] { "PublicAccountJs" });
+      }
+      paramString1 = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        paramString1 = "http://dyzx.mp.qq.com/static/v8/page/subscribeindex.html?_wv=67109947&_bid=2278&_wwv=1";
+      }
+      localIntent.putExtra("fromLocalUrl", true);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("url", paramString1);
+      localIntent.putExtra("hideRightButton", true);
+      paramActivity.startActivity(localIntent);
       return;
-      localObject1 = localadlc.jdField_a_of_type_ComTencentImageURLImageView.getDrawable();
-      if ((localObject1 != null) && ((localObject1 instanceof URLDrawable)))
-      {
-        localObject1 = (URLDrawable)localObject1;
-        if ((((URLDrawable)localObject1).getStatus() == 3) || (((URLDrawable)localObject1).getStatus() == 2))
-        {
-          if (!bbfj.g(paramView.getContext())) {
-            break;
-          }
-          this.a.a(localadlc, paramView.getResources(), true);
-          return;
-        }
-      }
+      localIntent.putExtra("uin", paramString2);
     }
+  }
+  
+  private static void b(Activity paramActivity)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("last_key_words", "");
+    localIntent.putExtra("from_key", 2);
+    localIntent.putExtra(ClassificationSearchActivity.a, ClassificationSearchActivity.c);
+    localIntent.setClass(paramActivity, ClassificationSearchActivity.class);
+    ClassificationSearchActivity.a(paramActivity, localIntent, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,41 @@
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class vze
+class vze
+  extends SimpleObserver<Bitmap>
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  vze(vzd paramvzd) {}
+  
+  public void a(Bitmap paramBitmap)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return;
-      paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
-    } while (paramQQAppInterface == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("StoryAIOUtils", 2, "refreshAIOStoryMessages");
-    }
-    paramQQAppInterface.removeMessages(267387141);
-    paramQQAppInterface.sendMessageDelayed(paramQQAppInterface.obtainMessage(267387141), 500L);
+    super.onNext(paramBitmap);
+    vzb.b(vzd.a(this.a), "onNext, oldResult=%s, newResult=%s", vzd.a(this.a), paramBitmap);
+    vzd.a(this.a, paramBitmap);
+    vzd.a(this.a, true);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    vzb.a(vzd.a(this.a), "onCancel");
+    onError(new ErrorMessage(-1, "onCancel"));
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    vzb.c(vzd.a(this.a), "onError, oldError=%s, newError=%s", vzd.a(this.a), paramError);
+    vzd.a(this.a, paramError);
+    vzd.a(this.a, SystemClock.uptimeMillis());
+    vzd.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vze
  * JD-Core Version:    0.7.0.1
  */

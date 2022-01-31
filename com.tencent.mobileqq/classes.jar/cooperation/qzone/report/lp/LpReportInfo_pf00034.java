@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
-import bgyh;
-import bgyi;
+import bize;
+import bizf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.NetworkState;
@@ -62,10 +62,10 @@ public class LpReportInfo_pf00034
       LpReportUtils.safePut(localHashMap, "uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
       LpReportUtils.safePut(localHashMap, "touin", this.toUin);
       LpReportUtils.safePut(localHashMap, "network_type", NetworkState.getNetworkType());
-      LpReportUtils.safePut(localHashMap, "app_version", "8.3.0");
-      LpReportUtils.safePut(localHashMap, "qua", bgyi.a());
+      LpReportUtils.safePut(localHashMap, "app_version", "8.3.3");
+      LpReportUtils.safePut(localHashMap, "qua", bizf.a());
       LpReportUtils.safePut(localHashMap, "platform", "android");
-      LpReportUtils.safePut(localHashMap, "device_info", bgyh.a().c());
+      LpReportUtils.safePut(localHashMap, "device_info", bize.a().c());
       LpReportUtils.safePut(localHashMap, "login_from", this.loginFrom);
       LpReportUtils.safePut(localHashMap, "is_activity", this.isActivity);
       LpReportUtils.safePut(localHashMap, "test_id", this.testId);
@@ -81,7 +81,7 @@ public class LpReportInfo_pf00034
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_pf00034
  * JD-Core Version:    0.7.0.1
  */

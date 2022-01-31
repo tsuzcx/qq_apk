@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
-import nol;
+import nrt;
 import org.json.JSONObject;
 
 class TaskManager$21
@@ -17,13 +17,13 @@ class TaskManager$21
     JSONObject localJSONObject = new JSONObject();
     localJSONObject.put("version", TaskManager.scriptVersion + "");
     localJSONObject.put("info", paramArrayOfObject);
-    nol.a(null, "", paramJSContext, paramJSContext, 0, 0, "", "", "", localJSONObject.toString(), false);
+    nrt.a(null, "", paramJSContext, paramJSContext, 0, 0, "", "", "", localJSONObject.toString(), false);
     return Integer.valueOf(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager.21
  * JD-Core Version:    0.7.0.1
  */

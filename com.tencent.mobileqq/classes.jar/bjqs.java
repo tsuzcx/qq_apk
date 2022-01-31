@@ -1,34 +1,47 @@
+import android.text.TextUtils;
+import android.util.Log;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+
 public class bjqs
 {
-  public static final int a = blcq.a(8.0F);
-  public static final int b = blcq.a(15.0F);
-  public static final int c = blcq.a(23.0F);
-  public float a;
-  public long a;
-  public boolean a;
-  public float b;
-  public long b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public int d = 0;
-  public boolean d;
-  public float e;
-  public int e = 0;
-  public boolean e;
-  public float f;
-  public int f = 0;
-  public boolean f;
-  public float g;
-  public boolean g;
-  public float h;
-  public boolean h;
-  public boolean i;
+  private static Field a;
+  
+  private static void a(Throwable paramThrowable)
+  {
+    try
+    {
+      if (a == null) {
+        a = Throwable.class.getDeclaredField("detailMessage");
+      }
+      a.setAccessible(true);
+      a.set(paramThrowable, "QzoneCatchedException:" + paramThrowable.getMessage());
+      return;
+    }
+    catch (Throwable paramThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QZoneExceptionReport", 2, "addStackTag failed", paramThrowable);
+    }
+  }
+  
+  public static final void a(Throwable paramThrowable, String paramString)
+  {
+    if (paramThrowable == null) {
+      return;
+    }
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = Log.getStackTraceString(paramThrowable);
+    }
+    a(paramThrowable);
+    QLog.d("QZoneExceptionReport", 2, "", paramThrowable);
+    azlf.a(paramThrowable, str);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjqs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.ark.ArkViewImplement;
-import com.tencent.ark.ArkViewModel;
-import com.tencent.mobileqq.search.rich.ArkAppView;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
 
-class awsz
+public class awsz
   implements View.OnClickListener
 {
-  awsz(awsy paramawsy) {}
+  public awsz(LSRecordPanel paramLSRecordPanel) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = null;
-    if (awsy.a(this.a) != null) {
-      paramView = awsy.a(this.a).mViewImpl.getViewModel();
-    }
-    if (paramView == null) {
-      return;
-    }
-    paramView.reinitArkContainer();
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awsz
  * JD-Core Version:    0.7.0.1
  */

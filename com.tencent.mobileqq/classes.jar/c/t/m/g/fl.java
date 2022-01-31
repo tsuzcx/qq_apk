@@ -1,38 +1,41 @@
 package c.t.m.g;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Iterator;
 
 public final class fl
 {
-  public static final Pattern a;
-  public static final Pattern b;
-  public static final Pattern c = Pattern.compile("[A-Z0-9]{12}");
+  private final String a;
   
-  static
+  fl(String paramString)
   {
-    Pattern localPattern = Pattern.compile("[0-9a-zA-Z+-]*");
-    a = localPattern;
-    b = localPattern;
+    this.a = paramString;
   }
   
-  public static String a(String paramString, Pattern paramPattern)
+  final StringBuilder a(StringBuilder paramStringBuilder, Iterator<?> paramIterator)
   {
-    String str;
-    if (paramString == null) {
-      str = "";
-    }
-    do
+    Object localObject;
+    if (paramIterator.hasNext())
     {
-      return str;
-      str = paramString;
-    } while (paramPattern.matcher(paramString).matches());
-    return "";
+      localObject = paramIterator.next();
+      if (localObject != null) {
+        paramStringBuilder.append(localObject.toString());
+      }
+    }
+    while (paramIterator.hasNext())
+    {
+      localObject = paramIterator.next();
+      if (localObject != null)
+      {
+        paramStringBuilder.append(this.a);
+        paramStringBuilder.append(localObject.toString());
+      }
+    }
+    return paramStringBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.fl
  * JD-Core Version:    0.7.0.1
  */

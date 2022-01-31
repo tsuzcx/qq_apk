@@ -7,7 +7,7 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.View;
 import android.view.ViewGroup;
-import bkwl;
+import bnhv;
 import com.tencent.qphone.base.util.QLog;
 
 public class DragAnimationMgr$DragViewIcon
@@ -270,7 +270,7 @@ public class DragAnimationMgr$DragViewIcon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.view.DragAnimationMgr.DragViewIcon
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,26 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetCollectListEventReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class usv
-  extends QQUIEventReceiver<ust, tjj>
+public abstract interface usv
 {
-  public usv(@NonNull ust paramust)
-  {
-    super(paramust);
-  }
+  public abstract String getName();
   
-  public void a(@NonNull ust paramust, @NonNull tjj paramtjj)
-  {
-    if (paramtjj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      ved.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramtjj.jdField_a_of_type_Int));
-      if ((TextUtils.isEmpty(paramtjj.b)) || (paramtjj.b.equals(paramust.jdField_a_of_type_JavaLangString))) {
-        break label49;
-      }
-    }
-    label49:
-    do
-    {
-      return;
-      if (paramtjj.jdField_a_of_type_Int != -1) {
-        ust.a(paramust, paramtjj.jdField_a_of_type_Int);
-      }
-    } while (paramust.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
-    paramust.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = ust.a(paramust);
-    ThreadManager.post(new MemoriesProfilePresenter.GetCollectListEventReceiver.1(this, paramust), 5, null, false);
-  }
+  public abstract int getRelationType();
   
-  public Class acceptEventClass()
-  {
-    return tjj.class;
-  }
+  public abstract String getUnionId();
+  
+  public abstract boolean isFriend();
+  
+  public abstract boolean isMe();
+  
+  public abstract boolean isSubscribe();
+  
+  public abstract boolean isSubscribeButNoFriend();
+  
+  public abstract boolean isVip();
+  
+  public abstract boolean isVipButNoFriend();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     usv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,30 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.RecvMsg;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract class bgmx
-  extends Binder
-  implements bgmw
+class bgmx
+  implements View.OnClickListener
 {
-  public static bgmw a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IActionListener");
-    if ((localIInterface != null) && ((localIInterface instanceof bgmw))) {
-      return (bgmw)localIInterface;
-    }
-    return new bgmy(paramIBinder);
-  }
+  bgmx(bgmu parambgmu, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void onClick(View paramView)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qappcenter.remote.IActionListener");
-      return true;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bgmu, 1);
     }
-    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IActionListener");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (RecvMsg)RecvMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    try
     {
-      a(paramParcel1);
-      return true;
+      if (this.jdField_a_of_type_Bgmu.isShowing()) {
+        this.jdField_a_of_type_Bgmu.dismiss();
+      }
+      return;
     }
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgmx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,11 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
 
-public final class bblq
-  implements Comparator<String>
+public abstract class bblq
 {
-  public int a(String paramString1, String paramString2)
-  {
-    if ((paramString1 != null) && (paramString2 != null)) {
-      if (paramString1.length() <= paramString2.length()) {}
-    }
-    while (paramString1 != null)
-    {
-      return -1;
-      if (paramString1.length() >= paramString2.length()) {
-        break;
-      }
-      return 1;
-    }
-    if (paramString2 != null) {
-      return 1;
-    }
-    return 0;
-  }
+  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo) {}
+  
+  public void a(String paramString, Integer paramInteger) {}
 }
 
 

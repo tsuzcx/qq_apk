@@ -10,12 +10,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import bdam;
-import bdan;
-import bdii;
-import bdjd;
-import bdjm;
-import bdoc;
+import bezk;
+import bezl;
+import bfhg;
+import bfib;
+import bfik;
+import bfmz;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -48,7 +48,7 @@ public abstract class ChallengeBragBase
   
   protected void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(2131690925), true);
+    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(2131690978), true);
     this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
     Bundle localBundle = new Bundle();
     localBundle.putString("appid", this.jdField_c_of_type_JavaLangString);
@@ -70,7 +70,7 @@ public abstract class ChallengeBragBase
       }
       localBundle.putString("appid_for_getting_config", this.jdField_c_of_type_JavaLangString);
     } while (this.n == null);
-    new bdjd(this.n, "GET", new bdam(this)).a(localBundle);
+    new bfib(this.n, "GET", new bezk(this)).a(localBundle);
   }
   
   protected boolean a()
@@ -104,7 +104,7 @@ public abstract class ChallengeBragBase
     }
     catch (Exception localException)
     {
-      bdii.c("qqBaseActivity", "initParams exception." + localException.getMessage(), localException);
+      bfhg.c("qqBaseActivity", "initParams exception." + localException.getMessage(), localException);
       c();
       return false;
     }
@@ -114,8 +114,8 @@ public abstract class ChallengeBragBase
     if (this.jdField_a_of_type_AndroidOsBundle.containsKey("source")) {
       this.k = this.jdField_a_of_type_AndroidOsBundle.getString("source");
     }
-    this.n = bdoc.a().a("http://fusion.qq.com/cgi-bin/qzapps/mapp_getuserinfo.cgi");
-    this.o = bdoc.a().a("http://appic.qq.com/cgi-bin/appstage/mapp_sendbragging.cgi");
+    this.n = bfmz.a().a("http://fusion.qq.com/cgi-bin/qzapps/mapp_getuserinfo.cgi");
+    this.o = bfmz.a().a("http://appic.qq.com/cgi-bin/appstage/mapp_sendbragging.cgi");
     return true;
   }
   
@@ -123,8 +123,8 @@ public abstract class ChallengeBragBase
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("key_error_code", -5);
-    localIntent.putExtra("key_error_msg", bdjm.jdField_c_of_type_JavaLangString);
-    bdii.e("qqBaseActivity", "initParams:error code:-5; error msg:" + bdjm.jdField_c_of_type_JavaLangString);
+    localIntent.putExtra("key_error_msg", bfik.jdField_c_of_type_JavaLangString);
+    bfhg.e("qqBaseActivity", "initParams:error code:-5; error msg:" + bfik.jdField_c_of_type_JavaLangString);
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -134,7 +134,7 @@ public abstract class ChallengeBragBase
         String str = (String)localIterator.next();
         localStringBuilder.append(str + ": " + this.jdField_a_of_type_AndroidOsBundle.get(str).toString() + " ");
       }
-      bdii.e("qqBaseActivity", "params=" + localStringBuilder.toString());
+      bfhg.e("qqBaseActivity", "params=" + localStringBuilder.toString());
     }
     super.setResult(-1, localIntent);
     super.finish();
@@ -169,7 +169,7 @@ public abstract class ChallengeBragBase
       paramView.putString("sendmsg", this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
       paramView.putString("imgurl", this.j);
       paramView.putString("receiver", this.h);
-      i1 = 2131690944;
+      i1 = 2131690997;
       if ("action_brag".equals(this.p)) {
         paramView.putString("typeid", "52");
       }
@@ -187,12 +187,12 @@ public abstract class ChallengeBragBase
           paramView.putString("pf", this.l);
         }
         this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getResources().getString(i1), true);
-        new bdjd(this.o, "POST", new bdan(this)).a(paramView);
+        new bfib(this.o, "POST", new bezl(this)).a(paramView);
         return;
         if ("action_challenge".equals(this.p))
         {
           paramView.putString("typeid", "53");
-          i1 = 2131690945;
+          i1 = 2131690998;
         }
       }
     }

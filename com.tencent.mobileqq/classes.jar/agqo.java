@@ -1,12 +1,31 @@
-import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public abstract interface agqo
+class agqo
+  implements bcnf
 {
-  public abstract void a(Bundle paramBundle);
+  agqo(agqn paramagqn) {}
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.a.a)) && (this.a.a.a.equals(paramString)))
+    {
+      paramString = (afby)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
+    }
+    do
+    {
+      return;
+      paramString = (afby)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqo
  * JD-Core Version:    0.7.0.1
  */

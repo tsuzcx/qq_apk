@@ -1,117 +1,165 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.MD5;
+import java.io.File;
+import mqq.app.AppRuntime;
 
-public abstract class aivy<T>
+public abstract class aivy
 {
-  protected final List<aiwb> a = new ArrayList();
+  public static boolean b = TextUtils.isEmpty(c());
+  public AppRuntime a;
   
-  public void a(boolean paramBoolean)
+  public aivy(AppRuntime paramAppRuntime)
   {
+    this.a = paramAppRuntime;
+  }
+  
+  private int a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return 0;
+      if (paramString.equalsIgnoreCase("WiFi")) {
+        return 1;
+      }
+      if (paramString.equalsIgnoreCase("4G")) {
+        return 4;
+      }
+      if (paramString.equalsIgnoreCase("3G")) {
+        return 3;
+      }
+      if (paramString.equalsIgnoreCase("2G")) {
+        return 2;
+      }
+    } while (!paramString.equalsIgnoreCase("5G"));
+    return 6;
+  }
+  
+  public static String a()
+  {
+    return a(0);
+  }
+  
+  public static String a(int paramInt)
+  {
+    if (paramInt == 1) {
+      return b();
+    }
+    String str = c();
+    if (!TextUtils.isEmpty(str))
+    {
+      b = false;
+      return str;
+    }
+    b = true;
+    return b();
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      String str = b(paramString, paramInt);
+      if ((!TextUtils.isEmpty(str)) && (new File(str).exists()))
+      {
+        aiwy.a(paramString, paramInt, NetConnInfoCenter.getServerTimeMillis());
+        return str;
+      }
+    }
+    return null;
+  }
+  
+  public static String a(AppRuntime paramAppRuntime)
+  {
+    return ajal.c + paramAppRuntime.getAccount() + "/" + ".preloaduni" + "/";
+  }
+  
+  public static String a(AppRuntime paramAppRuntime, String paramString)
+  {
+    return a(paramAppRuntime) + paramString;
+  }
+  
+  public static String b()
+  {
+    return ajal.c + ".preloaduni" + "/";
+  }
+  
+  public static String b(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    paramString = MD5.toMD5(paramString);
+    return a(paramInt) + paramString;
+  }
+  
+  public static String c()
+  {
+    String str1 = null;
     try
     {
-      this.a.clear();
-      return;
+      String str2 = ajal.a;
+      if (!TextUtils.isEmpty(str2)) {
+        str1 = str2 + ".preloaduni" + "/";
+      }
+      return str1;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    catch (Throwable localThrowable) {}
+    return null;
   }
   
-  /* Error */
-  public boolean a()
+  public static String e(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 17	aivy:a	Ljava/util/List;
-    //   6: invokeinterface 28 1 0
-    //   11: istore_1
-    //   12: iload_1
-    //   13: ifne +9 -> 22
-    //   16: iconst_1
-    //   17: istore_1
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: iload_1
-    //   21: ireturn
-    //   22: iconst_0
-    //   23: istore_1
-    //   24: goto -6 -> 18
-    //   27: astore_2
-    //   28: aload_0
-    //   29: monitorexit
-    //   30: aload_2
-    //   31: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	32	0	this	aivy
-    //   11	13	1	bool	boolean
-    //   27	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	12	27	finally
+    return a(paramString, 0);
   }
   
-  public boolean a(aiwb paramaiwb)
+  public static String f(String paramString)
   {
-    try
-    {
-      boolean bool = this.a.remove(paramaiwb);
-      return bool;
-    }
-    finally
-    {
-      paramaiwb = finally;
-      throw paramaiwb;
-    }
+    return b(paramString, 0);
   }
   
-  public abstract boolean a(T paramT, float paramFloat);
+  public abstract void a(DownloadParam paramDownloadParam, aivw paramaivw);
   
-  /* Error */
-  public boolean a(List<aiwb> paramList)
+  public boolean a(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +27 -> 30
-    //   6: aload_1
-    //   7: invokeinterface 28 1 0
-    //   12: ifne +18 -> 30
-    //   15: aload_0
-    //   16: getfield 17	aivy:a	Ljava/util/List;
-    //   19: aload_1
-    //   20: invokeinterface 39 2 0
-    //   25: istore_2
-    //   26: aload_0
-    //   27: monitorexit
-    //   28: iload_2
-    //   29: ireturn
-    //   30: iconst_0
-    //   31: istore_2
-    //   32: goto -6 -> 26
-    //   35: astore_1
-    //   36: aload_0
-    //   37: monitorexit
-    //   38: aload_1
-    //   39: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	40	0	this	aivy
-    //   0	40	1	paramList	List<aiwb>
-    //   25	7	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   6	26	35	finally
+    if (TextUtils.isEmpty(paramString)) {
+      return true;
+    }
+    paramString = paramString.split("\\|");
+    int j = bdee.a(this.a.getApplication());
+    int k = paramString.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= k) {
+        break label57;
+      }
+      if (a(paramString[i]) == j) {
+        break;
+      }
+      i += 1;
+    }
+    label57:
+    return false;
+  }
+  
+  public void c(String paramString, aivw paramaivw)
+  {
+    DownloadParam localDownloadParam = new DownloadParam();
+    localDownloadParam.url = paramString;
+    a(localDownloadParam, paramaivw);
+  }
+  
+  public String d(String paramString)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aivy
  * JD-Core Version:    0.7.0.1
  */

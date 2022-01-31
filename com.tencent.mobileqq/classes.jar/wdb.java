@@ -1,93 +1,24 @@
-import android.content.Context;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class wdb
+class wdb
+  implements wnk<Integer>
 {
-  protected int a;
-  Context a;
-  protected bfzk a;
-  protected wdd a;
-  protected boolean a;
+  wdb(wcy paramwcy, urk paramurk) {}
   
-  public wdb(bfzk parambfzk, Context paramContext)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_Bfzk = parambfzk;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    wsv.e("QQStoryTakeVideoHelper", "get vip error.");
   }
   
-  public int a()
+  public void a(Integer paramInteger)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(wdd paramwdd)
-  {
-    this.jdField_a_of_type_Wdd = paramwdd;
-    if (paramwdd != null)
-    {
-      a(true);
-      a(true, false);
-    }
-    this.jdField_a_of_type_Bfzk.setOnClickListener(new wdc(this));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Bfzk.a(3);
-      return;
-    }
-    this.jdField_a_of_type_Bfzk.a(0);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if (!paramBoolean1)
-    {
-      this.jdField_a_of_type_Bfzk.a(5);
-      return;
-    }
-    if (paramBoolean2) {}
-    for (int i = 3;; i = 4)
-    {
-      this.jdField_a_of_type_Bfzk.a(i);
-      if ((!this.jdField_a_of_type_Bfzk.b(i)) || (this.jdField_a_of_type_Wdd == null)) {
-        break;
-      }
-      this.jdField_a_of_type_Wdd.a();
-      return;
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    boolean bool;
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_Bfzk.a() == 0) || (!this.jdField_a_of_type_Bfzk.b(2)));
-      bool = true;
-      if (this.jdField_a_of_type_Wdd != null) {
-        bool = this.jdField_a_of_type_Wdd.a(paramBoolean);
-      }
-    } while (!bool);
-    this.jdField_a_of_type_Bfzk.a(2);
+    wsv.b("QQStoryTakeVideoHelper", "get vip competed, vip:" + paramInteger);
+    this.jdField_a_of_type_Urk.b("qqstory_i_am_vip", paramInteger);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,29 @@
-import com.tencent.biz.pubaccount.util.ReadInjoyWebShareHelper.4;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.view.ucrop.GestureCropImageView;
 
 public class shk
-  implements ooc
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public shk(ReadInjoyWebShareHelper.4 param4) {}
+  private shk(GestureCropImageView paramGestureCropImageView) {}
   
-  public void a(BaseResp paramBaseResp)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    if ((this.a.this$0.a == null) || (!this.a.this$0.a.equals(paramBaseResp.transaction))) {
-      return;
+    if (GestureCropImageView.a(this.a)) {
+      this.a.a(this.a.c(), paramMotionEvent.getX(), paramMotionEvent.getY(), 200L);
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      wij.a(1, 2131719487);
-      bool = false;
-    }
-    while (this.a.a)
-    {
-      shh.a(this.a.this$0, "we_chat", bool);
-      return;
-      wij.a(2, 2131719506);
-      continue;
-      bool = false;
-    }
-    shh.a(this.a.this$0, "we_chat_circle", bool);
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    this.a.a(-paramFloat1, -paramFloat2);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     shk
  * JD-Core Version:    0.7.0.1
  */

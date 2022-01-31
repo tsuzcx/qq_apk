@@ -1,48 +1,99 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqAddFeedComment;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-public final class uny
-  implements View.OnClickListener
+public class uny
+  extends ups
 {
-  public uny(unw paramunw, Activity paramActivity, String paramString) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  CommentEntry jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry;
+  String jdField_a_of_type_JavaLangString;
+  upu jdField_a_of_type_Upu;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
+  String d;
   
-  public void onClick(View paramView)
+  public uny(CommentEntry paramCommentEntry, upu paramupu)
   {
-    ved.d("QQStoryMainController", "top right button on click:" + this.jdField_a_of_type_Unw);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_Unw.c)) && (naj.a(this.jdField_a_of_type_Unw.c)))
+    this(paramCommentEntry.feedId, paramCommentEntry.replierUnionId, paramCommentEntry.content, paramCommentEntry.fakeId, paramCommentEntry.pbType, paramCommentEntry.extras, paramCommentEntry.commentType, paramupu);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
+  }
+  
+  public uny(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, String paramString4, int paramInt2, upu paramupu)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.d = paramString4;
+    this.jdField_a_of_type_Upu = paramupu;
+    paramString1 = wta.a("home_page-comment_suc-d1");
+    if (TextUtils.isEmpty(paramString1)) {}
+    for (paramInt1 = 0;; paramInt1 = Integer.parseInt(paramString1))
     {
-      paramView = this.jdField_a_of_type_Unw.c;
-      if (this.jdField_a_of_type_Unw.a != 1) {
-        break label172;
-      }
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+      this.jdField_a_of_type_Int = paramInt1;
+      return;
+    }
+  }
+  
+  public String a()
+  {
+    return unw.jdField_a_of_type_JavaLangString;
+  }
+  
+  public upt a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspAddFeedComment localRspAddFeedComment = new qqstory_service.RspAddFeedComment();
+    try
+    {
+      localRspAddFeedComment.mergeFrom(paramArrayOfByte);
+      return new unz(localRspAddFeedComment, this.jdField_a_of_type_Upu);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wsv.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqAddFeedComment localReqAddFeedComment = new qqstory_service.ReqAddFeedComment();
+    localReqAddFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    localReqAddFeedComment.content.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    localReqAddFeedComment.fake_id.set(this.jdField_a_of_type_Long);
+    localReqAddFeedComment.source.set(this.jdField_a_of_type_Int);
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localReqAddFeedComment.reply_union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    if (this.jdField_b_of_type_Int == 1) {
+      localReqAddFeedComment.type.set(1);
     }
     for (;;)
     {
-      vei.a("hall", "exp", 0, 0, new String[] { "" });
-      if (!"troopStoryHallConfig".equals(this.jdField_a_of_type_JavaLangString)) {
-        break label197;
+      localReqAddFeedComment.comment_type.set(this.jdField_c_of_type_Int);
+      if (!TextUtils.isEmpty(this.d)) {
+        localReqAddFeedComment.extras.set(ByteStringMicro.copyFromUtf8(this.d));
       }
-      vei.a("story_grp", "clk_find_left", 0, 0, new String[] { "", "", "", "" });
-      return;
-      paramView = "https://story.now.qq.com/mobile/find.html?_wv=3&_bid=2542";
-      break;
-      label172:
-      if ((this.jdField_a_of_type_Unw.a == 2) || (this.jdField_a_of_type_Unw.a != 3)) {}
+      return localReqAddFeedComment.toByteArray();
+      localReqAddFeedComment.type.set(0);
     }
-    label197:
-    vei.a("home_page", "clk_find_entry", 0, 0, new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uny
  * JD-Core Version:    0.7.0.1
  */

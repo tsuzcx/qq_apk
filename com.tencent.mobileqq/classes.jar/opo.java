@@ -1,49 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
-public class opo
-  extends SimpleConfigHandler
-  implements AladdinConfigHandler
+final class opo
+  extends amle
 {
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  opo(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    super.onReceiveConfig(paramInt1, paramInt2, paramString);
-    QLog.d("VideoSdkConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    paramString = oof.a(paramString);
-    Object localObject = paramString.keySet();
-    try
-    {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str1 = (String)((Iterator)localObject).next();
-        String str2 = (String)paramString.get(str1);
-        if (TextUtils.equals(str1, "readinjoy_video_preplay_download_time_limit")) {
-          bhvy.k(Integer.parseInt(str2));
-        }
-      }
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
   }
   
-  public void onWipeConfig(int paramInt)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    super.onWipeConfig(paramInt);
-    bhvy.k(6);
+    opn.a(false);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (QLog.isColorLevel())) {
+      QLog.d("GalleryReportedUtils", 2, "get Location: info = " + paramSosoLbsInfo.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     opo
  * JD-Core Version:    0.7.0.1
  */

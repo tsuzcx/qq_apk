@@ -1,38 +1,52 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
-import java.lang.ref.WeakReference;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
 public class mmv
-  extends Handler
+  implements mkg
 {
-  WeakReference<EffectFilterTextPager> a;
+  public mmv(VideoInviteActivity paramVideoInviteActivity, long paramLong) {}
   
-  public mmv(EffectFilterTextPager paramEffectFilterTextPager)
+  public void a()
   {
-    this.a = new WeakReference(paramEffectFilterTextPager);
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null)
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131372730, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131362956, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131362968, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131362967, false);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void b()
   {
-    EffectFilterTextPager localEffectFilterTextPager = (EffectFilterTextPager)this.a.get();
-    if (localEffectFilterTextPager == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d = false;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i)
     {
+      long l = mto.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, 3, l);
+      if (!this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h)
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h = true;
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, l, 2);
+      }
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e = true;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
     }
     for (;;)
     {
-      super.handleMessage(paramMessage);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.overridePendingTransition(0, 2130772165);
       return;
-      localEffectFilterTextPager.b();
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 246);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(246);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 0);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmv
  * JD-Core Version:    0.7.0.1
  */

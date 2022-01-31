@@ -1,16 +1,18 @@
-import android.graphics.drawable.Drawable;
-import java.util.List;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.6;
 
 public class sxu
+  implements bepr
 {
-  public static Drawable a(List<String> paramList)
+  public sxu(PublicAccountH5AbilityPlugin.6 param6, ref paramref) {}
+  
+  public void a()
   {
-    return ((uks)tcz.a(24)).a(paramList);
+    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin$6.this$0.a.b(this.jdField_a_of_type_Ref);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxu
  * JD-Core Version:    0.7.0.1
  */

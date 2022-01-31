@@ -1,17 +1,19 @@
-public class aqun
+class aqun
+  extends aqus
 {
-  public int a;
-  public String a;
-  
-  public aqun(aqui paramaqui, int paramInt, String paramString)
+  public aqun(aqug paramaqug)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramaqug);
+  }
+  
+  protected String a()
+  {
+    return "StateCancelUploadWhenRecv";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqun
  * JD-Core Version:    0.7.0.1
  */

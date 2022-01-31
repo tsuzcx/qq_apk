@@ -1,25 +1,38 @@
-import android.animation.Animator;
-import android.view.View;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public final class wfb
+class wfb
 {
-  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  public int a;
+  public CommentEntry a;
+  private int b = -1;
+  
+  wfb(wew paramwew)
   {
-    return a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2, 2);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public static Animator a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3)
+  private void a()
   {
-    wew localwew = wew.a(paramView, paramInt1, paramInt2, paramFloat1, paramFloat2);
-    if (paramInt3 != paramView.getLayerType()) {
-      localwew.addListener(new wey(paramView, paramInt3));
-    }
-    return localwew;
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = null;
+    this.jdField_a_of_type_Int = -1;
+    this.b = -1;
+  }
+  
+  public void a(CommentEntry paramCommentEntry, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry = paramCommentEntry;
+    this.b = paramCommentEntry.commentId;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(CommentEntry paramCommentEntry)
+  {
+    return paramCommentEntry.commentId != this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wfb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
-import com.tencent.maxvideo.common.AVIOStruct;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import java.util.concurrent.atomic.AtomicReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
 
-public class axkm
+public final class axkm
+  implements Parcelable.Creator<FilterCategoryItem>
 {
-  public int a;
-  public axin a;
-  public axli a;
-  public AVIOStruct a;
-  public AtomicReference<SVHwEncoder> a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public FilterCategoryItem a(Parcel paramParcel)
+  {
+    return new FilterCategoryItem(paramParcel);
+  }
+  
+  public FilterCategoryItem[] a(int paramInt)
+  {
+    return new FilterCategoryItem[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axkm
  * JD-Core Version:    0.7.0.1
  */

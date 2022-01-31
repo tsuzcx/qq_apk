@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.widget.media;
 
-import behp;
-import betc;
+import bghn;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,7 +12,7 @@ class MiniAppVideoPlayer$16
   
   public void run()
   {
-    if ((!MiniAppVideoPlayer.b(this.this$0)) && (MiniAppVideoPlayer.j(this.this$0) == 0)) {}
+    if ((!MiniAppVideoPlayer.b(this.this$0)) && (MiniAppVideoPlayer.l(this.this$0) == 0)) {}
     label169:
     do
     {
@@ -26,11 +26,11 @@ class MiniAppVideoPlayer$16
           if (!MiniAppVideoPlayer.b(this.this$0)) {
             continue;
           }
-          i = MiniAppVideoPlayer.j(this.this$0);
+          i = MiniAppVideoPlayer.l(this.this$0);
           localJSONObject.put("buffered", i);
           localJSONObject.put("videoId", this.this$0.jdField_a_of_type_Long);
-          this.this$0.jdField_a_of_type_Behp.a("onVideoProgress", localJSONObject.toString(), this.this$0.jdField_a_of_type_Int);
-          betc.a("MiniAppVideoPlayer", "updateBufferProgress onVideoProgress = " + localJSONObject.toString());
+          this.this$0.jdField_a_of_type_Bghn.a("onVideoProgress", localJSONObject.toString(), this.this$0.jdField_a_of_type_Int);
+          QMLog.d("MiniAppVideoPlayer", "updateBufferProgress onVideoProgress = " + localJSONObject.toString());
         }
         catch (JSONException localJSONException)
         {
@@ -41,29 +41,29 @@ class MiniAppVideoPlayer$16
         if (MiniAppVideoPlayer.b(this.this$0)) {
           break label169;
         }
-        MiniAppVideoPlayer.e(this.this$0, 0);
+        MiniAppVideoPlayer.g(this.this$0, 0);
         return;
         i = 100;
       }
-    } while (MiniAppVideoPlayer.j(this.this$0) > 98);
-    if (MiniAppVideoPlayer.j(this.this$0) < 60) {
-      MiniAppVideoPlayer.e(this.this$0, MiniAppVideoPlayer.j(this.this$0) + 10);
+    } while (MiniAppVideoPlayer.l(this.this$0) > 98);
+    if (MiniAppVideoPlayer.l(this.this$0) < 60) {
+      MiniAppVideoPlayer.g(this.this$0, MiniAppVideoPlayer.l(this.this$0) + 10);
     }
     for (;;)
     {
       MiniAppVideoPlayer.b(this.this$0, true);
       return;
-      if (MiniAppVideoPlayer.j(this.this$0) < 90) {
-        MiniAppVideoPlayer.e(this.this$0, MiniAppVideoPlayer.j(this.this$0) + 5);
+      if (MiniAppVideoPlayer.l(this.this$0) < 90) {
+        MiniAppVideoPlayer.g(this.this$0, MiniAppVideoPlayer.l(this.this$0) + 5);
       } else {
-        MiniAppVideoPlayer.k(this.this$0);
+        MiniAppVideoPlayer.m(this.this$0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.16
  * JD-Core Version:    0.7.0.1
  */

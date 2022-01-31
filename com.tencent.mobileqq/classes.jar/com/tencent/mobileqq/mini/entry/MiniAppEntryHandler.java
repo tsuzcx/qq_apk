@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.mini.entry;
 
-import ajtb;
-import ajte;
+import alko;
+import alkr;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class MiniAppEntryHandler
-  extends ajtb
+  extends alko
 {
   public MiniAppEntryHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
   }
   
-  public Class<? extends ajte> observerClass()
+  public Class<? extends alkr> observerClass()
   {
     return MiniAppEntryObserver.class;
   }
@@ -23,7 +23,7 @@ public class MiniAppEntryHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntryHandler
  * JD-Core Version:    0.7.0.1
  */

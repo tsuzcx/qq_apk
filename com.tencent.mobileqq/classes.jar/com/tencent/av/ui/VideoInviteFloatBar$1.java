@@ -1,11 +1,11 @@
 package com.tencent.av.ui;
 
-import mki;
+import mnc;
 
 public class VideoInviteFloatBar$1
   implements Runnable
 {
-  public VideoInviteFloatBar$1(mki parammki) {}
+  public VideoInviteFloatBar$1(mnc parammnc) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class VideoInviteFloatBar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteFloatBar.1
  * JD-Core Version:    0.7.0.1
  */

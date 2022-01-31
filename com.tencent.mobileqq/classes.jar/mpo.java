@@ -1,25 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import java.lang.ref.WeakReference;
 
-class mpo
-  extends mcf
+public class mpo
+  implements Animation.AnimationListener
 {
-  mpo(mpk parammpk) {}
+  private WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  protected void b(mcj parammcj)
+  public mpo(EffectFilterPanel paramEffectFilterPanel, View paramView)
   {
-    if (parammcj.jdField_b_of_type_Boolean) {
-      return;
-    }
-    parammcj.jdField_b_of_type_Boolean = this.a.a(false, 2);
-    if (parammcj.jdField_b_of_type_Boolean) {
-      parammcj.jdField_b_of_type_JavaLangString = "AVRegbagResultUI";
-    }
-    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + parammcj.jdField_b_of_type_Boolean + "]");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    lek.c("EffectFilterPanel", "MyTextAlphaAnimationListener onAnimationEnd :" + localView + "|" + paramAnimation);
+    if (localView != null) {
+      localView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpo
  * JD-Core Version:    0.7.0.1
  */

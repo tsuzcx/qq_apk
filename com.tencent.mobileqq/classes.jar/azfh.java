@@ -1,30 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import java.util.ArrayList;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
 
-public class azfh
-  implements DialogInterface.OnClickListener
+class azfh
+  extends AsyncTask<String, Integer, Boolean>
 {
-  public azfh(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, int paramInt) {}
+  azfh(azey paramazey) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected Boolean a(String... paramVarArgs)
   {
-    paramDialogInterface = (String)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b.get(this.jdField_a_of_type_Int);
-    long l = Long.parseLong((String)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.c.get(this.jdField_a_of_type_Int));
-    ajti localajti = (ajti)this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.a(2);
-    if (localajti != null) {
-      localajti.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.app.getCurrentAccountUin(), paramDialogInterface, l);
+    if (azey.a(this.a) != null)
+    {
+      azey.a(this.a).h = 1;
+      long l = azey.a(this.a).a;
+      paramVarArgs = azey.a(this.a).e;
+      int i = azey.a(this.a).g;
+      Bundle localBundle = new Bundle();
+      localBundle.putLong("VALUE_MSG_UINSEQ", l);
+      localBundle.putString("VALUE_MSG_FRIENDUIN", paramVarArgs);
+      localBundle.putInt("VALUE_MSG_ISTROOP", i);
+      localBundle.putString("VALUE_MSG_VIDEO_ID", azey.a(this.a).c);
+      azfj.a().a("CMD_UPDATE_MSG_FOR_VIDEO_REDBAG_STAT", localBundle);
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.isFinishing()) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.finish();
-    }
+    return Boolean.valueOf(true);
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    this.a.b(azey.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azfh
  * JD-Core Version:    0.7.0.1
  */

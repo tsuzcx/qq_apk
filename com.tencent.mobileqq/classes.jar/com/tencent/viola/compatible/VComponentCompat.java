@@ -1,6 +1,7 @@
 package com.tencent.viola.compatible;
 
 import android.view.View;
+import com.tencent.viola.core.ViolaInstance;
 import com.tencent.viola.ui.baseComponent.VComponent;
 import com.tencent.viola.ui.dom.DomObject;
 import com.tencent.viola.ui.dom.style.FlexConvertUtils;
@@ -38,6 +39,14 @@ public class VComponentCompat<C extends VComponent, D extends DomObject>
     return this.component.getHostView();
   }
   
+  protected String getInstanceId()
+  {
+    if ((this.component != null) && (this.component.getInstance() != null)) {
+      return this.component.getInstance().getInstanceId();
+    }
+    return null;
+  }
+  
   protected boolean isContainEvent(String paramString)
   {
     return this.component.mAppendEvents.contains(paramString);
@@ -55,7 +64,7 @@ public class VComponentCompat<C extends VComponent, D extends DomObject>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.compatible.VComponentCompat
  * JD-Core Version:    0.7.0.1
  */

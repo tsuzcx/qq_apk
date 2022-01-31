@@ -1,17 +1,10 @@
-public class amxv
+public abstract interface amxv
 {
-  public int a;
-  public int b = 3145728;
-  public int c = 3145728;
-  
-  public amxv(amxu paramamxu)
-  {
-    this.jdField_a_of_type_Int = 512000;
-  }
+  public abstract void a(amxx paramamxx);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxv
  * JD-Core Version:    0.7.0.1
  */

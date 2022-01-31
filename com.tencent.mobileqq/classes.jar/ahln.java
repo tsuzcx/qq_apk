@@ -1,56 +1,30 @@
-import android.content.Intent;
-import android.os.Message;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 import mqq.os.MqqHandler;
 
-class ahln
-  implements View.OnClickListener
+public class ahln
+  implements bhqd
 {
-  ahln(ahkd paramahkd, int paramInt1, String paramString, int paramInt2) {}
+  public ahln(TroopSuspiciousFragment paramTroopSuspiciousFragment, bhpy parambhpy) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    Intent localIntent = new Intent(ahkd.a(this.jdField_a_of_type_Ahkd), QQBrowserActivity.class);
-    localIntent.putExtra("individuation_url_type", 40100);
-    paramView = bbqd.a(ahkd.a(this.jdField_a_of_type_Ahkd), "theme", "mvip.gongneng.android.theme.index_dynamic_tab");
-    Object localObject = new StringBuilder().append(paramView);
-    if (paramView.contains("?"))
+    switch (paramInt)
     {
-      paramView = "&";
-      paramView = paramView;
-      localObject = paramView + "dialog_source=other&authresult=" + this.jdField_a_of_type_Int;
-      paramView = (View)localObject;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        if (!((String)localObject).contains("id=[id]")) {
-          break label266;
-        }
-      }
     }
-    label266:
-    for (paramView = ((String)localObject).replace("[id]", this.jdField_a_of_type_JavaLangString);; paramView = (String)localObject + "&id=" + this.jdField_a_of_type_JavaLangString)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent.banner", 2, "theme market url: " + paramView);
-      }
-      VasWebviewUtil.openQQBrowserWithoutAD(ahkd.a(this.jdField_a_of_type_Ahkd), paramView, 32L, localIntent, true, -1);
-      axqy.b(null, "CliOper", "", "", "theme", "0X8007233", 0, 0, String.valueOf(this.b), "", "", "");
-      ahkd.a(this.jdField_a_of_type_Ahkd).obtainMessage(16).sendToTarget();
-      axqy.a(ahkd.a(this.jdField_a_of_type_Ahkd).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 15, 0, "", "", "", "");
+      this.jdField_a_of_type_Bhpy.dismiss();
       return;
-      paramView = "?";
-      break;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a != null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.a.sendEmptyMessage(1014);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahln
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.lebasearch.Utils;
 
-class nfv
-  implements View.OnClickListener
+public final class nfv
+  implements DialogInterface.OnClickListener
 {
-  nfv(nfr paramnfr) {}
+  public nfv(int paramInt, alkr paramalkr, Context paramContext, ymk paramymk, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(this.a.a, this.a.a.d);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_Alkr.onUpdate(17, false, null);
+        paramDialogInterface.dismiss();
+        return;
+      }
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ymk, this.jdField_a_of_type_Alkr, this.jdField_a_of_type_Long, false);
+      return;
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ymk, this.jdField_a_of_type_Alkr, this.jdField_a_of_type_Long, true);
+      return;
+    }
+    this.jdField_a_of_type_Alkr.onUpdate(17, false, null);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfv
  * JD-Core Version:    0.7.0.1
  */

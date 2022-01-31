@@ -1,153 +1,141 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAiDictMgr.1;
-import com.tencent.mobileqq.ark.ArkAiDictMgr.3;
-import com.tencent.mobileqq.ark.ArkAiDictMgr.4;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.ark.ArkRecommendLogic.ArkWordSegmentThread;
-import com.tencent.mobileqq.startup.step.UpdateArkSo;
-import com.tencent.wordsegment.WordSegment;
-import java.io.File;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.util.Printer;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqMessageQueue;
+import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
 
 public class alri
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private java.lang.ref.WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  public static int a;
+  private static AbstractUnifiedMonitor.ThreadMonitorCallback a;
   
-  public alri(AppInterface paramAppInterface)
+  static
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new mqq.util.WeakReference(paramAppInterface);
-  }
-  
-  public static alrk a(AppInterface paramAppInterface, String paramString)
-  {
-    alrk localalrk = new alrk();
-    localalrk.jdField_a_of_type_JavaLangString = paramString;
-    ArkRecommendLogic.a().a(new ArkAiDictMgr.3(paramAppInterface, localalrk, paramString));
-    return localalrk;
-  }
-  
-  static String a()
-  {
-    return ArkAppCenter.b() + "/WordData/";
-  }
-  
-  public static String a(String paramString)
-  {
-    return a() + paramString;
+    jdField_a_of_type_Int = 100;
+    jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback = new alrj();
   }
   
   public static void a()
   {
-    Object localObject = new File(a());
-    if (((File)localObject).isFile()) {
-      ((File)localObject).delete();
-    }
-    for (;;)
-    {
-      return;
-      localObject = ((File)localObject).listFiles();
-      if (localObject != null)
-      {
-        int j = localObject.length;
-        int i = 0;
-        while (i < j)
-        {
-          localObject[i].delete();
-          i += 1;
-        }
-      }
-    }
-  }
-  
-  public static void a(AppInterface paramAppInterface)
-  {
-    if (a())
-    {
-      ArkAppCenter.c("ArkApp.Dict", "initWordData, already inited.");
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(0)) {
       return;
     }
-    new File(a()).mkdirs();
-    if (!jdField_a_of_type_Boolean) {
-      ArkRecommendLogic.a().a(new ArkAiDictMgr.1());
-    }
-    b(paramAppInterface);
+    int i = UnifiedMonitor.a().getThreshold(0);
+    UnifiedMonitor.a().setMonitoredThread(0, Looper.getMainLooper().getThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    alrk localalrk = new alrk(0);
+    localalrk.a(i, false);
+    Looper.getMainLooper().setMessageLogging(localalrk);
+    MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(localalrk);
   }
   
-  public static boolean a()
+  public static void b()
   {
-    return (jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString));
-  }
-  
-  public static void b(AppInterface paramAppInterface)
-  {
-    if (!jdField_a_of_type_Boolean)
-    {
-      ArkAppCenter.c("ArkApp.Dict", "reloadWordData, sIsSoLoaded is false");
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(14)) {
       return;
     }
-    ArkRecommendLogic.a().post(new ArkAiDictMgr.4(paramAppInterface));
+    int i = UnifiedMonitor.a().getThreshold(14);
+    UnifiedMonitor.a().setMonitoredThread(14, Looper.getMainLooper().getThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    alrk localalrk = new alrk(14);
+    localalrk.a(i, false);
+    Looper.getMainLooper().setMessageLogging(localalrk);
   }
   
-  private static boolean b(AppInterface paramAppInterface)
+  public static void c()
   {
-    if (paramAppInterface == null) {}
-    do
-    {
-      return true;
-      paramAppInterface = amqq.b(170).a();
-      if ((paramAppInterface == null) || (paramAppInterface.a() == null))
-      {
-        ArkAppCenter.c("ArkApp.Dict", "getWordInitState, confBean is empty");
-        return true;
-      }
-      paramAppInterface = paramAppInterface.a().d;
-      if (paramAppInterface == null) {
-        break;
-      }
-      ArkAppCenter.c("ArkApp.Dict", String.format("getWordInitState, wordInitState=%s", new Object[] { paramAppInterface }));
-    } while (!paramAppInterface.equals("false"));
-    return false;
-    ArkAppCenter.c("ArkApp.Dict", "getWordInitState, ark_dict_init is empty");
-    return true;
-  }
-  
-  private static void d()
-  {
-    try
-    {
-      if ((alqx.b) && (!jdField_a_of_type_Boolean))
-      {
-        jdField_a_of_type_Boolean = UpdateArkSo.b(BaseApplicationImpl.getContext(), "WordSegment");
-        ArkAppCenter.c("ArkApp.Dict", String.format("loadWordSegmentSo, result=%s", new Object[] { Boolean.toString(jdField_a_of_type_Boolean) }));
-        if (jdField_a_of_type_Boolean) {
-          WordSegment.setLogCallback(new alrj());
-        }
-      }
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(4)) {
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    int i = UnifiedMonitor.a().getThreshold(4);
+    UnifiedMonitor.a().setMonitoredThread(4, ThreadManager.getSubThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    alyx localalyx = new alyx(4, "SubLooper");
+    localalyx.a(i, false);
+    ThreadManager.getSubThreadLooper().setMessageLogging(localalyx);
   }
   
-  public void b()
+  public static void d()
   {
-    ArkAppCenter.c("ArkApp.Dict", "clearDict");
-    AppInterface localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    bbkb.i(localAppInterface.getApp(), localAppInterface.getCurrentAccountUin());
-    a();
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(18)) {
+      return;
+    }
+    Object localObject1 = MsfCore.sCore;
+    if (localObject1 == null)
+    {
+      QLog.e("MagnifierSDK_QAPM", 1, "msf core hasnot init");
+      return;
+    }
+    Object localObject2 = ((MsfCore)localObject1).getNetworkHandlerThread();
+    if (localObject2 == null)
+    {
+      QLog.e("MagnifierSDK_QAPM", 1, "network thread hasnot init");
+      return;
+    }
+    localObject1 = ((HandlerThread)localObject2).getLooper();
+    if (localObject1 == null)
+    {
+      QLog.e("MagnifierSDK_QAPM", 1, "network thread has not start");
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(18);
+    UnifiedMonitor.a().setMonitoredThread(18, (Thread)localObject2, jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    localObject2 = new alyx(18, "msf-network");
+    ((alyx)localObject2).a(i, false);
+    ((Looper)localObject1).setMessageLogging((Printer)localObject2);
+  }
+  
+  public static void e()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(13)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(13);
+    UnifiedMonitor.a().setMonitoredThread(13, ThreadManager.getRecentThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    alyx localalyx = new alyx(13, "RecentLooper");
+    localalyx.a(i, false);
+    ThreadManager.getRecentThreadLooper().setMessageLogging(localalyx);
+  }
+  
+  public static void f()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(5)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(5);
+    UnifiedMonitor.a().setMonitoredThread(5, ThreadManager.getFileThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    alyx localalyx = new alyx(5, "FileLooper");
+    localalyx.a(i, false);
+    ThreadManager.getFileThreadLooper().setMessageLogging(localalyx);
+  }
+  
+  public static void g()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(6))
+    {
+      com.tencent.mobileqq.app.ThreadExcutor.sLooperMonitorSwitch = false;
+      return;
+    }
+    com.tencent.mobileqq.app.ThreadExcutor.sLooperMonitorSwitch = true;
+    com.tencent.mobileqq.app.ThreadExcutor.sThreshTime = UnifiedMonitor.a().getThreshold(6);
+  }
+  
+  public static void h()
+  {
+    if (!UnifiedMonitor.a().whetherReportDuringThisStartup(19)) {
+      return;
+    }
+    int i = UnifiedMonitor.a().getThreshold(19);
+    UnifiedMonitor.a().setMonitoredThread(19, Looper.getMainLooper().getThread(), jdField_a_of_type_MqqUtilAbstractUnifiedMonitor$ThreadMonitorCallback);
+    alrk localalrk = new alrk(19);
+    localalrk.a(i, false);
+    Looper.getMainLooper().setMessageLogging(localalrk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alri
  * JD-Core Version:    0.7.0.1
  */

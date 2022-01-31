@@ -1,33 +1,20 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.SearchMightKnowFragment;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class acak
-  implements aioc
+  implements DialogInterface.OnClickListener
 {
-  public acak(SearchMightKnowFragment paramSearchMightKnowFragment) {}
+  public acak(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SearchMightKnowFragment.a(this.a).setVisibility(0);
-    SearchMightKnowFragment.a(this.a).setVisibility(8);
-  }
-  
-  public void a(String paramString) {}
-  
-  public void a(List<MayKnowRecommend> paramList) {}
-  
-  public void b()
-  {
-    SearchMightKnowFragment.a(this.a).setVisibility(8);
-    SearchMightKnowFragment.a(this.a).setVisibility(0);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acak
  * JD-Core Version:    0.7.0.1
  */

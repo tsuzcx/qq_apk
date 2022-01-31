@@ -1,86 +1,59 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import java.util.List;
 
 public class nqi
-  extends ampa<nqh>
+  extends ArrayAdapter<nqh>
 {
-  public int a()
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private List<nqh> jdField_a_of_type_JavaUtilList;
+  
+  public nqi(Context paramContext, int paramInt, List<nqh> paramList)
   {
-    return 81;
+    super(paramContext, paramInt, paramList);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
-  public Class<nqh> a()
-  {
-    return nqh.class;
-  }
-  
-  @NonNull
   public nqh a(int paramInt)
   {
-    if (paramInt == 0)
+    return (nqh)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface))
-      {
-        sfe.a((QQAppInterface)localAppRuntime);
-        return nqh.a();
-      }
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559083, null);
+      paramViewGroup = new nqj();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372398));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372399));
+      paramView.setTag(paramViewGroup);
     }
-    return new nqh();
-  }
-  
-  @Nullable
-  public nqh a(amph[] paramArrayOfamph)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderConfProcessor", 2, "[onParsed]");
+    for (;;)
+    {
+      nqh localnqh = a(paramInt);
+      paramViewGroup.jdField_a_of_type_Nqh = localnqh;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localnqh.jdField_a_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(localnqh.jdField_a_of_type_Int);
+      return paramView;
+      paramViewGroup = (nqj)paramView.getTag();
     }
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return nqh.a(paramArrayOfamph);
-    }
-    return null;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(nqh paramnqh)
-  {
-    paramnqh.b();
-    paramnqh.a();
-    paramnqh.c();
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return sfe.a((QQAppInterface)localAppRuntime);
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nqi
  * JD-Core Version:    0.7.0.1
  */

@@ -22,22 +22,22 @@ import android.widget.MediaController;
 import android.widget.MediaController.MediaPlayerControl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
-import uds;
-import udt;
-import udu;
-import udv;
-import udw;
-import udy;
-import ufh;
-import ufi;
-import ufj;
-import ufk;
-import ufl;
-import ufm;
-import ufn;
-import ufp;
-import ufq;
-import ufr;
+import vsk;
+import vsl;
+import vsm;
+import vsn;
+import vso;
+import vsq;
+import vtz;
+import vua;
+import vub;
+import vuc;
+import vud;
+import vue;
+import vuf;
+import vuh;
+import vui;
+import vuj;
 
 @TargetApi(14)
 public class TextureVideoView
@@ -50,20 +50,20 @@ public class TextureVideoView
   public MediaController a;
   public String a;
   protected Map<String, String> a;
-  public ufh a;
-  private ufi jdField_a_of_type_Ufi = new udy(this);
-  public ufj a;
-  public ufk a;
-  public ufl a;
-  public ufm a;
-  protected ufn a;
-  ufp jdField_a_of_type_Ufp = new uds(this);
-  protected ufq a;
+  public vtz a;
+  private vua jdField_a_of_type_Vua = new vsq(this);
+  public vub a;
+  public vuc a;
+  public vud a;
+  public vue a;
+  protected vuf a;
+  vuh jdField_a_of_type_Vuh = new vsk(this);
+  protected vui a;
   public int b;
-  private ufj jdField_b_of_type_Ufj = new udu(this);
-  private ufk jdField_b_of_type_Ufk = new udw(this);
-  private ufl jdField_b_of_type_Ufl = new udv(this);
-  ufm jdField_b_of_type_Ufm = new udt(this);
+  private vub jdField_b_of_type_Vub = new vsm(this);
+  private vuc jdField_b_of_type_Vuc = new vso(this);
+  private vud jdField_b_of_type_Vud = new vsn(this);
+  vue jdField_b_of_type_Vue = new vsl(this);
   public boolean b;
   protected int c;
   public boolean c;
@@ -141,10 +141,10 @@ public class TextureVideoView
     //   45: pop
     //   46: aload_0
     //   47: aload_0
-    //   48: invokevirtual 140	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:a	()Lufh;
-    //   51: putfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   48: invokevirtual 140	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:a	()Lvtz;
+    //   51: putfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   54: aload_0
-    //   55: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   55: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   58: aload_0
     //   59: getfield 144	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_e_of_type_Boolean	Z
     //   62: invokeinterface 148 2 0
@@ -152,53 +152,53 @@ public class TextureVideoView
     //   68: getfield 150	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_c_of_type_Int	I
     //   71: ifeq +300 -> 371
     //   74: aload_0
-    //   75: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   75: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   78: aload_0
     //   79: getfield 150	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_c_of_type_Int	I
     //   82: invokeinterface 153 2 0
     //   87: aload_0
-    //   88: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   88: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   91: aload_0
-    //   92: getfield 63	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Ufm	Lufm;
+    //   92: getfield 63	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vue	Lvue;
     //   95: invokeinterface 156 2 0
     //   100: aload_0
-    //   101: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   101: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   104: aload_0
-    //   105: getfield 58	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufp	Lufp;
+    //   105: getfield 58	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vuh	Lvuh;
     //   108: invokeinterface 159 2 0
     //   113: aload_0
-    //   114: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   114: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   117: aload_0
-    //   118: getfield 68	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Ufj	Lufj;
+    //   118: getfield 68	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vub	Lvub;
     //   121: invokeinterface 162 2 0
     //   126: aload_0
-    //   127: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   127: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   130: aload_0
-    //   131: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Ufk	Lufk;
+    //   131: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vuc	Lvuc;
     //   134: invokeinterface 165 2 0
     //   139: aload_0
-    //   140: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   140: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   143: aload_0
-    //   144: getfield 73	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Ufl	Lufl;
+    //   144: getfield 73	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vud	Lvud;
     //   147: invokeinterface 168 2 0
     //   152: aload_0
-    //   153: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   153: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   156: aload_0
-    //   157: getfield 83	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufi	Lufi;
+    //   157: getfield 83	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vua	Lvua;
     //   160: invokeinterface 171 2 0
     //   165: aload_0
-    //   166: getfield 173	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufn	Lufn;
+    //   166: getfield 173	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vuf	Lvuf;
     //   169: ifnull +16 -> 185
     //   172: aload_0
-    //   173: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   173: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   176: aload_0
-    //   177: getfield 173	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufn	Lufn;
+    //   177: getfield 173	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vuf	Lvuf;
     //   180: invokeinterface 176 2 0
     //   185: aload_0
     //   186: iconst_0
     //   187: putfield 178	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_f_of_type_Int	I
     //   190: aload_0
-    //   191: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   191: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   194: aload_0
     //   195: invokevirtual 93	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:getContext	()Landroid/content/Context;
     //   198: invokevirtual 125	android/content/Context:getApplicationContext	()Landroid/content/Context;
@@ -208,20 +208,20 @@ public class TextureVideoView
     //   206: getfield 180	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
     //   209: invokeinterface 183 4 0
     //   214: aload_0
-    //   215: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   215: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   218: aload_0
     //   219: getfield 117	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_AndroidViewSurface	Landroid/view/Surface;
     //   222: invokeinterface 186 2 0
     //   227: aload_0
-    //   228: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   228: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   231: iconst_3
     //   232: invokeinterface 188 2 0
     //   237: aload_0
-    //   238: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   238: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   241: iconst_1
     //   242: invokeinterface 189 2 0
     //   247: aload_0
-    //   248: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   248: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   251: invokeinterface 190 1 0
     //   256: aload_0
     //   257: iconst_1
@@ -253,9 +253,9 @@ public class TextureVideoView
     //   310: iconst_m1
     //   311: putfield 51	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Int	I
     //   314: aload_0
-    //   315: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Ufk	Lufk;
+    //   315: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vuc	Lvuc;
     //   318: aload_0
-    //   319: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   319: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   322: iconst_1
     //   323: iconst_0
     //   324: invokeinterface 224 4 0
@@ -280,7 +280,7 @@ public class TextureVideoView
     //   368: goto -322 -> 46
     //   371: aload_0
     //   372: aload_0
-    //   373: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   373: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   376: invokeinterface 236 1 0
     //   381: putfield 150	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_c_of_type_Int	I
     //   384: goto -297 -> 87
@@ -308,9 +308,9 @@ public class TextureVideoView
     //   431: iconst_m1
     //   432: putfield 51	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Int	I
     //   435: aload_0
-    //   436: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Ufk	Lufk;
+    //   436: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vuc	Lvuc;
     //   439: aload_0
-    //   440: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   440: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   443: iconst_1
     //   444: iconst_0
     //   445: invokeinterface 224 4 0
@@ -332,9 +332,9 @@ public class TextureVideoView
     //   476: iconst_m1
     //   477: putfield 51	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Int	I
     //   480: aload_0
-    //   481: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Ufk	Lufk;
+    //   481: getfield 78	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_b_of_type_Vuc	Lvuc;
     //   484: aload_0
-    //   485: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Ufh	Lufh;
+    //   485: getfield 142	com/tencent/biz/qqstory/playvideo/player/TextureVideoView:jdField_a_of_type_Vtz	Lvtz;
     //   488: iconst_1
     //   489: iconst_0
     //   490: invokeinterface 224 4 0
@@ -367,7 +367,7 @@ public class TextureVideoView
   
   private boolean a()
   {
-    return (this.jdField_a_of_type_Ufh != null) && (this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1);
+    return (this.jdField_a_of_type_Vtz != null) && (this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Int != 1);
   }
   
   private void b()
@@ -384,14 +384,14 @@ public class TextureVideoView
   
   private void b(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Ufh != null) {
-      this.jdField_a_of_type_Ufh.e();
+    if (this.jdField_a_of_type_Vtz != null) {
+      this.jdField_a_of_type_Vtz.e();
     }
     try
     {
-      this.jdField_a_of_type_Ufh.g();
-      this.jdField_a_of_type_Ufh.f();
-      this.jdField_a_of_type_Ufh = null;
+      this.jdField_a_of_type_Vtz.g();
+      this.jdField_a_of_type_Vtz.f();
+      this.jdField_a_of_type_Vtz = null;
       this.jdField_a_of_type_Int = 0;
       if (paramBoolean) {
         this.jdField_b_of_type_Int = 0;
@@ -421,7 +421,7 @@ public class TextureVideoView
   
   private void d()
   {
-    if ((this.jdField_a_of_type_Ufh != null) && (this.jdField_a_of_type_AndroidWidgetMediaController != null))
+    if ((this.jdField_a_of_type_Vtz != null) && (this.jdField_a_of_type_AndroidWidgetMediaController != null))
     {
       this.jdField_a_of_type_AndroidWidgetMediaController.setMediaPlayer(this);
       if (!(getParent() instanceof View)) {
@@ -447,25 +447,25 @@ public class TextureVideoView
     this.jdField_a_of_type_AndroidWidgetMediaController.show();
   }
   
-  protected ufh a()
+  protected vtz a()
   {
-    return new ufr();
+    return new vuj();
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Ufh != null)
+    if (this.jdField_a_of_type_Vtz != null)
     {
-      this.jdField_a_of_type_Ufh.e();
-      this.jdField_a_of_type_Ufh.f();
-      this.jdField_a_of_type_Ufh.a(null);
-      this.jdField_a_of_type_Ufh.a(null);
-      this.jdField_a_of_type_Ufh.a(null);
-      this.jdField_a_of_type_Ufh.a(null);
-      this.jdField_a_of_type_Ufh.a(null);
-      this.jdField_a_of_type_Ufh.a(null);
-      this.jdField_a_of_type_Ufh.a(null);
-      this.jdField_a_of_type_Ufh = null;
+      this.jdField_a_of_type_Vtz.e();
+      this.jdField_a_of_type_Vtz.f();
+      this.jdField_a_of_type_Vtz.a(null);
+      this.jdField_a_of_type_Vtz.a(null);
+      this.jdField_a_of_type_Vtz.a(null);
+      this.jdField_a_of_type_Vtz.a(null);
+      this.jdField_a_of_type_Vtz.a(null);
+      this.jdField_a_of_type_Vtz.a(null);
+      this.jdField_a_of_type_Vtz.a(null);
+      this.jdField_a_of_type_Vtz = null;
       this.jdField_a_of_type_Int = 0;
       this.jdField_b_of_type_Int = 0;
       ((AudioManager)super.getContext().getApplicationContext().getSystemService("audio")).abandonAudioFocus(null);
@@ -500,7 +500,7 @@ public class TextureVideoView
   
   public int getBufferPercentage()
   {
-    if (this.jdField_a_of_type_Ufh != null) {
+    if (this.jdField_a_of_type_Vtz != null) {
       return this.jdField_f_of_type_Int;
     }
     return 0;
@@ -509,7 +509,7 @@ public class TextureVideoView
   public int getCurrentPosition()
   {
     if (a()) {
-      return this.jdField_a_of_type_Ufh.b();
+      return this.jdField_a_of_type_Vtz.b();
     }
     return 0;
   }
@@ -517,14 +517,14 @@ public class TextureVideoView
   public int getDuration()
   {
     if (a()) {
-      return this.jdField_a_of_type_Ufh.a();
+      return this.jdField_a_of_type_Vtz.a();
     }
     return -1;
   }
   
   public boolean isPlaying()
   {
-    return (a()) && (this.jdField_a_of_type_Ufh.a());
+    return (a()) && (this.jdField_a_of_type_Vtz.a());
   }
   
   public void onInitializeAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
@@ -551,7 +551,7 @@ public class TextureVideoView
       if ((paramInt != 79) && (paramInt != 85)) {
         break label116;
       }
-      if (!this.jdField_a_of_type_Ufh.a()) {
+      if (!this.jdField_a_of_type_Vtz.a()) {
         break label103;
       }
       pause();
@@ -572,14 +572,14 @@ public class TextureVideoView
         if (paramInt != 126) {
           break label147;
         }
-      } while (this.jdField_a_of_type_Ufh.a());
+      } while (this.jdField_a_of_type_Vtz.a());
       start();
       this.jdField_a_of_type_AndroidWidgetMediaController.hide();
       return true;
       if ((paramInt != 86) && (paramInt != 127)) {
         break label184;
       }
-    } while (!this.jdField_a_of_type_Ufh.a());
+    } while (!this.jdField_a_of_type_Vtz.a());
     label147:
     pause();
     this.jdField_a_of_type_AndroidWidgetMediaController.show();
@@ -741,7 +741,7 @@ public class TextureVideoView
     label67:
     for (paramInt1 = j;; paramInt1 = 0)
     {
-      if ((this.jdField_a_of_type_Ufh != null) && (i != 0) && (paramInt1 != 0))
+      if ((this.jdField_a_of_type_Vtz != null) && (i != 0) && (paramInt1 != 0))
       {
         if (this.jdField_g_of_type_Int != 0) {
           seekTo(this.jdField_g_of_type_Int);
@@ -756,8 +756,8 @@ public class TextureVideoView
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
   {
-    if (this.jdField_a_of_type_Ufq != null) {
-      this.jdField_a_of_type_Ufq.a(paramSurfaceTexture);
+    if (this.jdField_a_of_type_Vui != null) {
+      this.jdField_a_of_type_Vui.a(paramSurfaceTexture);
     }
   }
   
@@ -779,9 +779,9 @@ public class TextureVideoView
   
   public void pause()
   {
-    if ((a()) && (this.jdField_a_of_type_Ufh.a()))
+    if ((a()) && (this.jdField_a_of_type_Vtz.a()))
     {
-      this.jdField_a_of_type_Ufh.d();
+      this.jdField_a_of_type_Vtz.d();
       this.jdField_a_of_type_Int = 4;
     }
     this.jdField_b_of_type_Int = 4;
@@ -791,7 +791,7 @@ public class TextureVideoView
   {
     if (a())
     {
-      this.jdField_a_of_type_Ufh.a(paramInt);
+      this.jdField_a_of_type_Vtz.a(paramInt);
       this.jdField_g_of_type_Int = 0;
       return;
     }
@@ -806,36 +806,36 @@ public class TextureVideoView
   public void setLooping(boolean paramBoolean)
   {
     this.jdField_e_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Ufh != null) {
-      this.jdField_a_of_type_Ufh.a(paramBoolean);
+    if (this.jdField_a_of_type_Vtz != null) {
+      this.jdField_a_of_type_Vtz.a(paramBoolean);
     }
   }
   
-  public void setOnCompletionListener(ufj paramufj)
+  public void setOnCompletionListener(vub paramvub)
   {
-    this.jdField_a_of_type_Ufj = paramufj;
+    this.jdField_a_of_type_Vub = paramvub;
   }
   
-  public void setOnErrorListener(ufk paramufk)
+  public void setOnErrorListener(vuc paramvuc)
   {
-    this.jdField_a_of_type_Ufk = paramufk;
+    this.jdField_a_of_type_Vuc = paramvuc;
   }
   
-  public void setOnInfoListener(ufl paramufl)
+  public void setOnInfoListener(vud paramvud)
   {
-    this.jdField_a_of_type_Ufl = paramufl;
+    this.jdField_a_of_type_Vud = paramvud;
   }
   
-  public void setOnPreparedListener(ufm paramufm)
+  public void setOnPreparedListener(vue paramvue)
   {
-    this.jdField_a_of_type_Ufm = paramufm;
+    this.jdField_a_of_type_Vue = paramvue;
   }
   
-  public void setOnSeekCompleteListener(ufn paramufn)
+  public void setOnSeekCompleteListener(vuf paramvuf)
   {
-    this.jdField_a_of_type_Ufn = paramufn;
-    if (this.jdField_a_of_type_Ufh != null) {
-      this.jdField_a_of_type_Ufh.a(paramufn);
+    this.jdField_a_of_type_Vuf = paramvuf;
+    if (this.jdField_a_of_type_Vtz != null) {
+      this.jdField_a_of_type_Vtz.a(paramvuf);
     }
   }
   
@@ -867,16 +867,16 @@ public class TextureVideoView
     super.invalidate();
   }
   
-  public void setmOnTextureUpdateListener(ufq paramufq)
+  public void setmOnTextureUpdateListener(vui paramvui)
   {
-    this.jdField_a_of_type_Ufq = paramufq;
+    this.jdField_a_of_type_Vui = paramvui;
   }
   
   public void start()
   {
     if (a())
     {
-      this.jdField_a_of_type_Ufh.c();
+      this.jdField_a_of_type_Vtz.c();
       this.jdField_a_of_type_Int = 3;
     }
     this.jdField_b_of_type_Int = 3;
@@ -884,7 +884,7 @@ public class TextureVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.TextureVideoView
  * JD-Core Version:    0.7.0.1
  */

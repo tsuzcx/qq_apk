@@ -1,30 +1,25 @@
-import android.opengl.GLSurfaceView;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.richmedia.capture.gesture.GL3DGesture.1;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameplayEngine;
-import com.tencent.ttpic.openapi.filter.GLGestureListener;
-import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ocr.TranslateFragment;
 
 public class avsy
-  implements GLGestureListener
+  implements avvc
 {
-  public GameplayEngine a;
+  public avsy(TranslateFragment paramTranslateFragment, avrj paramavrj) {}
   
-  public int onGetPriority()
+  public void a(int paramInt, avvd paramavvd)
   {
-    return 1040;
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    paramMotionEvent = new axjm(paramMotionEvent);
-    GLGestureProxy.getInstance().getGLSurfaceView().queueEvent(new GL3DGesture.1(this, paramMotionEvent));
-    return false;
+    if ((paramavvd != null) && (!TextUtils.isEmpty(paramavvd.b)))
+    {
+      if (!this.jdField_a_of_type_Avrj.b.equalsIgnoreCase(paramavvd.b)) {
+        TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, paramavvd.b, this.jdField_a_of_type_Avrj.b(paramavvd.b));
+      }
+      avrh.a("0X800AD30", avrh.a(paramavvd.b));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avsy
  * JD-Core Version:    0.7.0.1
  */

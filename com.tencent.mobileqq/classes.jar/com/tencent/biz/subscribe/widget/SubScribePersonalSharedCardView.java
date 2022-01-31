@@ -4,7 +4,7 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StIconInfo;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
 import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import ajya;
+import alpo;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
@@ -18,10 +18,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.widget.SquareImageView;
 import java.util.ArrayList;
-import win;
-import wit;
-import wkm;
-import wun;
+import xxf;
+import xxl;
+import xzf;
+import yjf;
 
 public class SubScribePersonalSharedCardView
   extends AbsSubscribeShareCardView
@@ -51,7 +51,7 @@ public class SubScribePersonalSharedCardView
   
   public int a()
   {
-    return 2131558703;
+    return 2131558739;
   }
   
   protected URLImageView a()
@@ -61,52 +61,52 @@ public class SubScribePersonalSharedCardView
   
   public void a(View paramView)
   {
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131376048);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131376043));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376050));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376044));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376051));
-    this.d = ((TextView)paramView.findViewById(2131376046));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376041));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376042));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131376547);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131376542));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376549));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376543));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131376550));
+    this.d = ((TextView)paramView.findViewById(2131376545));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376540));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376541));
   }
   
-  public void a(wkm paramwkm, Bitmap paramBitmap, wun paramwun)
+  public void a(xzf paramxzf, Bitmap paramBitmap, yjf paramyjf)
   {
-    super.a(paramwkm, paramBitmap, paramwun);
+    super.a(paramxzf, paramBitmap, paramyjf);
     CertifiedAccountMeta.StUser localStUser;
-    if ((paramwkm != null) && (paramwkm.a() != null) && (paramwkm.a().poster != null))
+    if ((paramxzf != null) && (paramxzf.a() != null) && (paramxzf.a().poster != null))
     {
-      localStUser = paramwkm.a().poster;
+      localStUser = paramxzf.a().poster;
       if (!TextUtils.isEmpty(localStUser.iconInfo.iconUrl.get())) {
         break label251;
       }
     }
     label251:
-    for (paramwkm = localStUser.icon.get();; paramwkm = localStUser.iconInfo.iconUrl.get())
+    for (paramxzf = localStUser.icon.get();; paramxzf = localStUser.iconInfo.iconUrl.get())
     {
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
-      localArrayList1.add(paramwkm);
+      localArrayList1.add(paramxzf);
       localArrayList2.add(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
-      a(localArrayList1, localArrayList2, paramwun);
+      a(localArrayList1, localArrayList2, paramyjf);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(localStUser.nick.get());
-      paramwun = localStUser.desc.get();
-      if ((!TextUtils.isEmpty(paramwun)) && (!paramwun.equals(ajya.a(2131719933))))
+      paramyjf = localStUser.desc.get();
+      if ((!TextUtils.isEmpty(paramyjf)) && (!paramyjf.equals(alpo.a(2131720468))))
       {
-        paramwkm = paramwun;
-        if (!TextUtils.isEmpty(paramwun.trim())) {}
+        paramxzf = paramyjf;
+        if (!TextUtils.isEmpty(paramyjf.trim())) {}
       }
       else
       {
-        paramwkm = ajya.a(2131719932);
+        paramxzf = alpo.a(2131720467);
       }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramwkm);
-      paramwkm = win.a();
-      if (paramwkm != null)
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramxzf);
+      paramxzf = xxf.a();
+      if (paramxzf != null)
       {
-        this.d.setText(wit.a(paramwkm.fansCount.get()));
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(wit.a(paramwkm.feedCount.get()));
+        this.d.setText(xxl.a(paramxzf.fansCount.get()));
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(xxl.a(paramxzf.feedCount.get()));
         measure(jdField_c_of_type_Int, e);
         layout(0, 0, getMeasuredWidth(), getMeasuredHeight());
       }
@@ -117,7 +117,7 @@ public class SubScribePersonalSharedCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubScribePersonalSharedCardView
  * JD-Core Version:    0.7.0.1
  */

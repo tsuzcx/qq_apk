@@ -26,7 +26,7 @@ public class PluginBaseActivity2
     {
       getWindow().addFlags(67108864);
       if (this.b) {
-        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131166910));
+        this.jdField_a_of_type_ComTencentWidgetImmersiveSystemBarCompact = new SystemBarCompact(this, true, getResources().getColor(2131166957));
       }
     }
   }
@@ -41,7 +41,7 @@ public class PluginBaseActivity2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.plugin.PluginBaseActivity2
  * JD-Core Version:    0.7.0.1
  */

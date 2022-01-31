@@ -1,31 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.RecommendAndAdCallback.1;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
 
-public class rjo
-  implements rmv
+public abstract class rjo
 {
-  private WeakReference<FastWebActivity> a;
+  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo) {}
   
-  public rjo(FastWebActivity paramFastWebActivity)
+  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, rjn paramrjn)
   {
-    this.a = new WeakReference(paramFastWebActivity);
+    a(paramTVK_NetVideoInfo);
   }
   
-  public void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
+  public void a(rjn paramrjn) {}
+  
+  public abstract void a(rjn paramrjn, Object paramObject);
+  
+  public void a(rjn paramrjn, String paramString) {}
+  
+  public void a(rjn paramrjn, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
+  
+  public boolean a(rjn paramrjn, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    FastWebActivity localFastWebActivity = (FastWebActivity)this.a.get();
-    if (localFastWebActivity == null) {
-      return;
-    }
-    localFastWebActivity.runOnUiThread(new FastWebActivity.RecommendAndAdCallback.1(this, localFastWebActivity, paramBoolean, paramString, paramList1, paramList2));
+    return false;
   }
+  
+  public boolean a(rjn paramrjn, int paramInt, Object paramObject)
+  {
+    return false;
+  }
+  
+  public void b(rjn paramrjn) {}
+  
+  public void b(rjn paramrjn, String paramString) {}
+  
+  public void d(rjn paramrjn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rjo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,47 @@
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
 public class aojs
-  extends aojp
 {
-  public aojs(aojo paramaojo, aojc paramaojc)
-  {
-    super(paramaojo, paramaojc);
-    this.jdField_a_of_type_Int = 0;
-  }
+  public boolean a;
   
-  public void a(int paramInt)
+  public static aojs a(aogf[] paramArrayOfaogf)
   {
-    super.a(paramInt);
-    this.jdField_a_of_type_Aojc.a();
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-    switch (paramInt1)
-    {
-    default: 
-      return false;
+    boolean bool = false;
+    aojs localaojs = new aojs();
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramArrayOfaogf != null) {
+      localObject1 = localObject2;
     }
-    this.jdField_a_of_type_Aojo.a(2, paramInt2);
-    return true;
+    try
+    {
+      if (paramArrayOfaogf.length > 0) {
+        localObject1 = paramArrayOfaogf[0].a;
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        QLog.i("LebaRedTouchSwitchBean", 1, "content is empty");
+        return localaojs;
+      }
+      if (new JSONObject((String)localObject1).optInt("red_touch_all_tianshu", 0) == 1) {
+        bool = true;
+      }
+      localaojs.a = bool;
+      QLog.i("LebaRedTouchSwitchBean", 1, "parse config=" + (String)localObject1 + ",mRedTouchAllTianshu=" + localaojs.a);
+      return localaojs;
+    }
+    catch (Exception paramArrayOfaogf)
+    {
+      QLog.i("LebaRedTouchSwitchBean", 1, "handleLebaConfig parse", paramArrayOfaogf);
+    }
+    return localaojs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aojs
  * JD-Core Version:    0.7.0.1
  */

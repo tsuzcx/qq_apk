@@ -3,13 +3,12 @@ package com.tencent.qqmini.sdk.launcher.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import besh;
 import java.io.Serializable;
 
 public class SecondApiRightInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<SecondApiRightInfo> CREATOR = new besh();
+  public static final Parcelable.Creator<SecondApiRightInfo> CREATOR = new SecondApiRightInfo.1();
   public String apiName;
   public int right;
   public String secondName;
@@ -33,7 +32,7 @@ public class SecondApiRightInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.SecondApiRightInfo
  * JD-Core Version:    0.7.0.1
  */

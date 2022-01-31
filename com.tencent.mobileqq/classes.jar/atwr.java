@@ -1,21 +1,20 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
 public class atwr
-  extends atva
+  implements DialogInterface.OnDismissListener
 {
-  public ImageView e;
-  public ImageView f;
-  public TextView g;
+  public atwr(MedalGuideView paramMedalGuideView) {}
   
-  public atwr(atwq paramatwq)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(paramatwq);
+    MedalGuideView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atwr
  * JD-Core Version:    0.7.0.1
  */

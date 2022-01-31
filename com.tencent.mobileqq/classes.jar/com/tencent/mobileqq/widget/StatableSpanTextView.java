@@ -9,15 +9,15 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import awfu;
-import bckn;
+import ayax;
+import bejo;
 import java.util.ArrayList;
 
 public class StatableSpanTextView
   extends TextView
 {
   private long jdField_a_of_type_Long;
-  awfu jdField_a_of_type_Awfu;
+  ayax jdField_a_of_type_Ayax;
   private ImageSpan[] jdField_a_of_type_ArrayOfAndroidTextStyleImageSpan;
   private StatableSpanTextView.StatableForegroundColorSpan[] jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
   
@@ -95,15 +95,15 @@ public class StatableSpanTextView
           int i2 = getScrollY();
           localObject2 = getLayout();
           j = ((Layout)localObject2).getOffsetForHorizontal(((Layout)localObject2).getLineForVertical(k - n + i2), j - m + i1);
-          localObject1 = (awfu[])((Spannable)localObject1).getSpans(j, j, awfu.class);
+          localObject1 = (ayax[])((Spannable)localObject1).getSpans(j, j, ayax.class);
           if (localObject1.length != 0)
           {
             localObject1 = localObject1[0];
             if (i == 1)
             {
-              ((awfu)localObject1).a(this, false);
+              ((ayax)localObject1).a(this, false);
               if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
-                ((awfu)localObject1).onClick(this);
+                ((ayax)localObject1).onClick(this);
               }
             }
             for (;;)
@@ -112,17 +112,17 @@ public class StatableSpanTextView
               return super.onTouchEvent(paramMotionEvent);
               if (i == 0)
               {
-                ((awfu)localObject1).a(this, true);
-                this.jdField_a_of_type_Awfu = ((awfu)localObject1);
+                ((ayax)localObject1).a(this, true);
+                this.jdField_a_of_type_Ayax = ((ayax)localObject1);
               }
               else
               {
-                ((awfu)localObject1).a(this, false);
+                ((ayax)localObject1).a(this, false);
               }
             }
           }
-          if (this.jdField_a_of_type_Awfu != null) {
-            this.jdField_a_of_type_Awfu.a(this, false);
+          if (this.jdField_a_of_type_Ayax != null) {
+            this.jdField_a_of_type_Ayax.a(this, false);
           }
         }
       }
@@ -146,7 +146,7 @@ public class StatableSpanTextView
         while (i < j)
         {
           ImageSpan localImageSpan = arrayOfImageSpan[i];
-          if (!(localImageSpan instanceof bckn)) {
+          if (!(localImageSpan instanceof bejo)) {
             localArrayList.add(localImageSpan);
           }
           i += 1;

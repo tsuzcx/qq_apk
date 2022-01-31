@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import aiuu;
-import aiuv;
+import akmg;
+import akmh;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ public class GLTextureView$GLThread
   extends Thread
 {
   private int jdField_a_of_type_Int = 0;
-  private aiuu jdField_a_of_type_Aiuu;
+  private akmg jdField_a_of_type_Akmg;
   private WeakReference<GLTextureView> jdField_a_of_type_JavaLangRefWeakReference;
   private ArrayList<Runnable> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean;
@@ -46,7 +46,7 @@ public class GLTextureView$GLThread
     if (this.i)
     {
       this.i = false;
-      this.jdField_a_of_type_Aiuu.b();
+      this.jdField_a_of_type_Akmg.b();
     }
   }
   
@@ -54,7 +54,7 @@ public class GLTextureView$GLThread
   {
     if (this.h)
     {
-      this.jdField_a_of_type_Aiuu.c();
+      this.jdField_a_of_type_Akmg.c();
       this.h = false;
       GLTextureView.access$1100().b(this);
     }
@@ -65,12 +65,12 @@ public class GLTextureView$GLThread
   {
     // Byte code:
     //   0: aload_0
-    //   1: new 96	aiuu
+    //   1: new 96	akmg
     //   4: dup
     //   5: aload_0
     //   6: getfield 77	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   9: invokespecial 116	aiuu:<init>	(Ljava/lang/ref/WeakReference;)V
-    //   12: putfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Aiuu	Laiuu;
+    //   9: invokespecial 116	akmg:<init>	(Ljava/lang/ref/WeakReference;)V
+    //   12: putfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Akmg	Lakmg;
     //   15: aload_0
     //   16: iconst_0
     //   17: putfield 100	com/tencent/mobileqq/apollo/GLTextureView$GLThread:h	Z
@@ -103,7 +103,7 @@ public class GLTextureView$GLThread
     //   56: istore 4
     //   58: invokestatic 122	java/lang/System:currentTimeMillis	()J
     //   61: pop2
-    //   62: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   62: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   65: astore 23
     //   67: aload 23
     //   69: monitorenter
@@ -118,7 +118,7 @@ public class GLTextureView$GLThread
     //   86: ifeq +34 -> 120
     //   89: aload 23
     //   91: monitorexit
-    //   92: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   92: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   95: astore 21
     //   97: aload 21
     //   99: monitorenter
@@ -197,7 +197,7 @@ public class GLTextureView$GLThread
     //   238: aload_0
     //   239: getfield 141	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_c_of_type_Boolean	Z
     //   242: putfield 83	com/tencent/mobileqq/apollo/GLTextureView$GLThread:d	Z
-    //   245: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   245: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   248: invokevirtual 146	java/lang/Object:notifyAll	()V
     //   251: iload_3
     //   252: istore 4
@@ -246,19 +246,19 @@ public class GLTextureView$GLThread
     //   343: istore 20
     //   345: iload 20
     //   347: ifeq +12 -> 359
-    //   350: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
-    //   353: invokevirtual 156	aiuv:a	()Z
+    //   350: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
+    //   353: invokevirtual 156	akmh:a	()Z
     //   356: ifeq +7 -> 363
     //   359: aload_0
     //   360: invokespecial 128	com/tencent/mobileqq/apollo/GLTextureView$GLThread:i	()V
     //   363: iload 19
     //   365: ifeq +19 -> 384
-    //   368: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
-    //   371: invokevirtual 158	aiuv:b	()Z
+    //   368: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
+    //   371: invokevirtual 158	akmh:b	()Z
     //   374: ifeq +10 -> 384
     //   377: aload_0
-    //   378: getfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Aiuu	Laiuu;
-    //   381: invokevirtual 102	aiuu:c	()V
+    //   378: getfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Akmg	Lakmg;
+    //   381: invokevirtual 102	akmg:c	()V
     //   384: aload_0
     //   385: getfield 85	com/tencent/mobileqq/apollo/GLTextureView$GLThread:e	Z
     //   388: ifne +71 -> 459
@@ -290,7 +290,7 @@ public class GLTextureView$GLThread
     //   448: aload_0
     //   449: iconst_0
     //   450: putfield 87	com/tencent/mobileqq/apollo/GLTextureView$GLThread:f	Z
-    //   453: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   453: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   456: invokevirtual 146	java/lang/Object:notifyAll	()V
     //   459: aload_0
     //   460: getfield 85	com/tencent/mobileqq/apollo/GLTextureView$GLThread:e	Z
@@ -301,7 +301,7 @@ public class GLTextureView$GLThread
     //   473: aload_0
     //   474: iconst_0
     //   475: putfield 160	com/tencent/mobileqq/apollo/GLTextureView$GLThread:g	Z
-    //   478: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   478: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   481: invokevirtual 146	java/lang/Object:notifyAll	()V
     //   484: iload 14
     //   486: istore 12
@@ -316,7 +316,7 @@ public class GLTextureView$GLThread
     //   503: aload_0
     //   504: iconst_1
     //   505: putfield 180	com/tencent/mobileqq/apollo/GLTextureView$GLThread:m	Z
-    //   508: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   508: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   511: invokevirtual 146	java/lang/Object:notifyAll	()V
     //   514: iload 4
     //   516: istore_3
@@ -383,7 +383,7 @@ public class GLTextureView$GLThread
     //   631: aload_0
     //   632: iconst_0
     //   633: putfield 73	com/tencent/mobileqq/apollo/GLTextureView$GLThread:l	Z
-    //   636: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   636: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   639: invokevirtual 146	java/lang/Object:notifyAll	()V
     //   642: iload 4
     //   644: istore 11
@@ -412,9 +412,9 @@ public class GLTextureView$GLThread
     //   687: invokestatic 185	com/tencent/mobileqq/apollo/GLTextureView:access$1200	(Lcom/tencent/mobileqq/apollo/GLTextureView;)Z
     //   690: istore 20
     //   692: goto -347 -> 345
-    //   695: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   695: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   698: aload_0
-    //   699: invokevirtual 188	aiuv:a	(Lcom/tencent/mobileqq/apollo/GLTextureView$GLThread;)Z
+    //   699: invokevirtual 188	akmh:a	(Lcom/tencent/mobileqq/apollo/GLTextureView$GLThread;)Z
     //   702: istore 19
     //   704: iload 4
     //   706: istore_3
@@ -423,8 +423,8 @@ public class GLTextureView$GLThread
     //   711: iload 19
     //   713: ifeq -148 -> 565
     //   716: aload_0
-    //   717: getfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Aiuu	Laiuu;
-    //   720: invokevirtual 190	aiuu:a	()V
+    //   717: getfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Akmg	Lakmg;
+    //   720: invokevirtual 190	akmg:a	()V
     //   723: aload_0
     //   724: getfield 77	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
     //   727: invokevirtual 154	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
@@ -439,7 +439,7 @@ public class GLTextureView$GLThread
     //   749: ifeq +78 -> 827
     //   752: aload 23
     //   754: monitorexit
-    //   755: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   755: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   758: astore 21
     //   760: aload 21
     //   762: monitorenter
@@ -456,9 +456,9 @@ public class GLTextureView$GLThread
     //   780: aload 22
     //   782: athrow
     //   783: astore 21
-    //   785: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   785: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   788: aload_0
-    //   789: invokevirtual 111	aiuv:b	(Lcom/tencent/mobileqq/apollo/GLTextureView$GLThread;)V
+    //   789: invokevirtual 111	akmh:b	(Lcom/tencent/mobileqq/apollo/GLTextureView$GLThread;)V
     //   792: aload 21
     //   794: athrow
     //   795: astore 21
@@ -467,7 +467,7 @@ public class GLTextureView$GLThread
     //   800: aload 21
     //   802: athrow
     //   803: astore 22
-    //   805: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   805: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   808: astore 21
     //   810: aload 21
     //   812: monitorenter
@@ -484,12 +484,12 @@ public class GLTextureView$GLThread
     //   829: putfield 100	com/tencent/mobileqq/apollo/GLTextureView$GLThread:h	Z
     //   832: iconst_1
     //   833: istore 10
-    //   835: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   835: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   838: invokevirtual 146	java/lang/Object:notifyAll	()V
     //   841: iload 4
     //   843: istore_3
     //   844: goto -279 -> 565
-    //   847: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   847: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   850: invokevirtual 196	java/lang/Object:wait	()V
     //   853: iload 12
     //   855: istore 14
@@ -509,17 +509,17 @@ public class GLTextureView$GLThread
     //   884: iload 9
     //   886: ifeq +458 -> 1344
     //   889: aload_0
-    //   890: getfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Aiuu	Laiuu;
-    //   893: invokevirtual 197	aiuu:a	()Z
+    //   890: getfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Akmg	Lakmg;
+    //   893: invokevirtual 197	akmg:a	()Z
     //   896: ifeq +357 -> 1253
-    //   899: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   899: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   902: astore 23
     //   904: aload 23
     //   906: monitorenter
     //   907: aload_0
     //   908: iconst_1
     //   909: putfield 199	com/tencent/mobileqq/apollo/GLTextureView$GLThread:j	Z
-    //   912: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   912: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   915: invokevirtual 146	java/lang/Object:notifyAll	()V
     //   918: aload 23
     //   920: monitorexit
@@ -528,13 +528,13 @@ public class GLTextureView$GLThread
     //   924: iload 8
     //   926: ifeq +415 -> 1341
     //   929: aload_0
-    //   930: getfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Aiuu	Laiuu;
-    //   933: invokevirtual 202	aiuu:a	()Ljavax/microedition/khronos/opengles/GL;
+    //   930: getfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Akmg	Lakmg;
+    //   933: invokevirtual 202	akmg:a	()Ljavax/microedition/khronos/opengles/GL;
     //   936: checkcast 204	javax/microedition/khronos/opengles/GL10
     //   939: astore 22
-    //   941: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   941: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   944: aload 22
-    //   946: invokevirtual 207	aiuv:a	(Ljavax/microedition/khronos/opengles/GL10;)V
+    //   946: invokevirtual 207	akmh:a	(Ljavax/microedition/khronos/opengles/GL10;)V
     //   949: iconst_0
     //   950: istore 8
     //   952: iload 10
@@ -552,8 +552,8 @@ public class GLTextureView$GLThread
     //   980: invokestatic 211	com/tencent/mobileqq/apollo/GLTextureView:access$1300	(Lcom/tencent/mobileqq/apollo/GLTextureView;)Landroid/opengl/GLSurfaceView$Renderer;
     //   983: aload 22
     //   985: aload_0
-    //   986: getfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Aiuu	Laiuu;
-    //   989: getfield 214	aiuu:a	Ljavax/microedition/khronos/egl/EGLConfig;
+    //   986: getfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Akmg	Lakmg;
+    //   989: getfield 214	akmg:a	Ljavax/microedition/khronos/egl/EGLConfig;
     //   992: invokeinterface 220 3 0
     //   997: goto +406 -> 1403
     //   1000: iload 7
@@ -611,8 +611,8 @@ public class GLTextureView$GLThread
     //   1125: invokestatic 122	java/lang/System:currentTimeMillis	()J
     //   1128: pop2
     //   1129: aload_0
-    //   1130: getfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Aiuu	Laiuu;
-    //   1133: invokevirtual 243	aiuu:a	()I
+    //   1130: getfield 94	com/tencent/mobileqq/apollo/GLTextureView$GLThread:jdField_a_of_type_Akmg	Lakmg;
+    //   1133: invokevirtual 243	akmg:a	()I
     //   1136: istore 12
     //   1138: invokestatic 122	java/lang/System:currentTimeMillis	()J
     //   1141: pop2
@@ -623,15 +623,15 @@ public class GLTextureView$GLThread
     //   1177: <illegal opcode>
     //   1178: ldc 247
     //   1180: iload 12
-    //   1182: invokestatic 250	aiuu:a	(Ljava/lang/String;Ljava/lang/String;I)V
-    //   1185: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   1182: invokestatic 250	akmg:a	(Ljava/lang/String;Ljava/lang/String;I)V
+    //   1185: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   1188: astore 23
     //   1190: aload 23
     //   1192: monitorenter
     //   1193: aload_0
     //   1194: iconst_1
     //   1195: putfield 87	com/tencent/mobileqq/apollo/GLTextureView$GLThread:f	Z
-    //   1198: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   1198: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   1201: invokevirtual 146	java/lang/Object:notifyAll	()V
     //   1204: aload 23
     //   1206: monitorexit
@@ -661,7 +661,7 @@ public class GLTextureView$GLThread
     //   1249: monitorexit
     //   1250: aload 21
     //   1252: athrow
-    //   1253: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   1253: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   1256: astore 23
     //   1258: aload 23
     //   1260: monitorenter
@@ -671,7 +671,7 @@ public class GLTextureView$GLThread
     //   1266: aload_0
     //   1267: iconst_1
     //   1268: putfield 87	com/tencent/mobileqq/apollo/GLTextureView$GLThread:f	Z
-    //   1271: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   1271: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   1274: invokevirtual 146	java/lang/Object:notifyAll	()V
     //   1277: aload 23
     //   1279: monitorexit
@@ -772,7 +772,7 @@ public class GLTextureView$GLThread
     //   51	727	21	localObject1	Object
     //   783	10	21	localRuntimeException	java.lang.RuntimeException
     //   795	6	21	localObject2	Object
-    //   808	14	21	localaiuv	aiuv
+    //   808	14	21	localakmh	akmh
     //   1245	6	21	localObject3	Object
     //   1311	6	21	localObject4	Object
     //   1325	11	21	localObject5	Object
@@ -1013,19 +1013,19 @@ public class GLTextureView$GLThread
     // Byte code:
     //   0: aload_0
     //   1: invokespecial 285	com/tencent/mobileqq/apollo/GLTextureView$GLThread:j	()V
-    //   4: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   4: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   7: aload_0
-    //   8: invokevirtual 287	aiuv:a	(Lcom/tencent/mobileqq/apollo/GLTextureView$GLThread;)V
+    //   8: invokevirtual 287	akmh:a	(Lcom/tencent/mobileqq/apollo/GLTextureView$GLThread;)V
     //   11: return
     //   12: astore_1
-    //   13: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   13: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   16: aload_0
-    //   17: invokevirtual 287	aiuv:a	(Lcom/tencent/mobileqq/apollo/GLTextureView$GLThread;)V
+    //   17: invokevirtual 287	akmh:a	(Lcom/tencent/mobileqq/apollo/GLTextureView$GLThread;)V
     //   20: return
     //   21: astore_1
-    //   22: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Laiuv;
+    //   22: invokestatic 106	com/tencent/mobileqq/apollo/GLTextureView:access$1100	()Lakmh;
     //   25: aload_0
-    //   26: invokevirtual 287	aiuv:a	(Lcom/tencent/mobileqq/apollo/GLTextureView$GLThread;)V
+    //   26: invokevirtual 287	akmh:a	(Lcom/tencent/mobileqq/apollo/GLTextureView$GLThread;)V
     //   29: aload_1
     //   30: athrow
     // Local variable table:
@@ -1041,7 +1041,7 @@ public class GLTextureView$GLThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.GLTextureView.GLThread
  * JD-Core Version:    0.7.0.1
  */

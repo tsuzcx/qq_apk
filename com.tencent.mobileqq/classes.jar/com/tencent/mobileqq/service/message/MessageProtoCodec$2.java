@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.service.message;
 
-import ajum;
+import allz;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import msf.msgcomm.msg_comm.Msg;
@@ -12,12 +12,12 @@ public final class MessageProtoCodec$2
   
   public void run()
   {
-    ((ajum)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
+    ((allz)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.a(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageProtoCodec.2
  * JD-Core Version:    0.7.0.1
  */

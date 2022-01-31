@@ -1,34 +1,103 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
+import com.tencent.smtt.sdk.WebSettings;
+import com.tencent.smtt.sdk.WebView;
 
-public class baee
-  implements Comparable<baee>
+class baee
+  extends nmx
 {
-  public int a;
-  public TroopInfo a;
-  public String a;
-  public int b;
+  baee(baed parambaed) {}
   
-  public int a(@NonNull baee parambaee)
+  @SuppressLint({"InflateParams"})
+  public View getVideoLoadingProgressView()
   {
-    if (this.b != parambaee.b) {
-      return this.b - parambaee.b;
+    if (this.a.a != null) {
+      return this.a.a.b();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime != parambaee.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime) {
-      return (int)(parambaee.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime);
+    return null;
+  }
+  
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramString, paramGeolocationPermissionsCallback);
     }
-    if (parambaee.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime != this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime) {
-      return (int)(parambaee.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime);
+  }
+  
+  public void onHideCustomView()
+  {
+    if (this.a.a != null) {
+      this.a.a.v();
     }
-    if (this.jdField_a_of_type_Int != parambaee.jdField_a_of_type_Int) {
-      return this.jdField_a_of_type_Int - parambaee.jdField_a_of_type_Int;
+  }
+  
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramWebView, paramString1, paramString2, paramJsResult);
     }
-    return this.jdField_a_of_type_JavaLangString.compareTo(parambaee.jdField_a_of_type_JavaLangString);
+    return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
+  }
+  
+  public void onProgressChanged(WebView paramWebView, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewWrapper", 2, "onProgressChanged:" + paramInt);
+    }
+    if (this.a.a != null) {
+      this.a.a.a(paramWebView, paramInt);
+    }
+    if ((paramInt > 30) && (!paramWebView.getSettings().getLoadsImagesAutomatically())) {
+      paramWebView.getSettings().setLoadsImagesAutomatically(true);
+    }
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    if (this.a.a != null) {
+      this.a.a.b(paramWebView, paramString);
+    }
+  }
+  
+  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramView, paramInt, paramCustomViewCallback);
+    }
+  }
+  
+  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramView, 10, paramCustomViewCallback);
+    }
+  }
+  
+  public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
+  {
+    if ((paramValueCallback != null) && (this.a.a != null)) {
+      return this.a.a.a(paramValueCallback, paramFileChooserParams);
+    }
+    return super.onShowFileChooser(paramWebView, paramValueCallback, paramFileChooserParams);
+  }
+  
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  {
+    if (this.a.a != null) {
+      this.a.a.a(paramValueCallback, paramString1, paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baee
  * JD-Core Version:    0.7.0.1
  */

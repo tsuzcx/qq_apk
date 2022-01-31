@@ -1,52 +1,82 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.os.Message;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject;
+import com.tencent.component.network.module.report.ImageDownloadReporter;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
 
-public class bjkn
-  implements bjdy
+class bjkn
+  implements Downloader.DownloadListener
 {
-  public bjkn(MusicProviderView paramMusicProviderView) {}
+  bjkl jdField_a_of_type_Bjkl;
   
-  public void a()
+  public bjkn(bjkk parambjkk, bjkl parambjkl)
   {
-    this.a.jdField_a_of_type_Bfob.sendEmptyMessage(2);
+    this.jdField_a_of_type_Bjkl = parambjkl;
   }
   
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
+  public void onDownloadCanceled(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "requestMusicSuccess mListener= " + this.a.jdField_a_of_type_Bjky);
-    }
-    if (this.a.jdField_a_of_type_Bjky != null)
+    paramString = Message.obtain(this.jdField_a_of_type_Bjkk.a, 2);
+    paramString.obj = this.jdField_a_of_type_Bjkl;
+    paramString.sendToTarget();
+  }
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  {
+    paramString = Message.obtain(this.jdField_a_of_type_Bjkk.a, 3);
+    paramString.obj = this.jdField_a_of_type_Bjkl;
+    paramString.arg1 = -9999;
+    if ((paramDownloadResult != null) && (paramDownloadResult.getReport() != null)) {}
+    for (;;)
     {
-      if (paramMusicItemInfo.mType == 2) {
-        this.a.jdField_a_of_type_Bjky.a(true);
+      try
+      {
+        paramDownloadResult = new ImageDownloadReporter().obtainReportObj(paramDownloadResult, paramDownloadResult.getReport());
+        if (paramDownloadResult != null)
+        {
+          paramString.arg1 = paramDownloadResult.retCode;
+          QLog.w("QZoneLiveSoDownloader", 1, "So download failed, code=" + paramDownloadResult.retCode);
+          this.jdField_a_of_type_Bjkl.jdField_a_of_type_Int = paramDownloadResult.retCode;
+        }
+      }
+      catch (Exception paramDownloadResult)
+      {
+        QLog.w("QZoneLiveSoDownloader", 1, "", paramDownloadResult);
+        continue;
+      }
+      paramString.sendToTarget();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneLiveSoDownloader", 2, "So download failed downloadResult:null");
       }
     }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_Bjky.a(false);
   }
   
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
   {
-    if ((paramInt != -1) && (MusicProviderView.a(this.a) != null)) {
-      MusicProviderView.a(this.a).f();
+    int i = (int)(100.0F * paramFloat);
+    if (this.jdField_a_of_type_Bjkl != null) {
+      this.jdField_a_of_type_Bjkl.jdField_a_of_type_Float = i;
     }
+    paramString = Message.obtain(this.jdField_a_of_type_Bjkk.a, 5);
+    paramString.obj = this.jdField_a_of_type_Bjkl;
+    paramString.sendToTarget();
   }
   
-  public void b(MusicItemInfo paramMusicItemInfo) {}
-  
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo) {}
-  
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo) {}
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneLiveSoDownloader", 2, "onDownloadSucceed path:" + paramDownloadResult.getPath());
+    }
+    paramString = Message.obtain(this.jdField_a_of_type_Bjkk.a, 4);
+    paramString.obj = this.jdField_a_of_type_Bjkl;
+    paramString.sendToTarget();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjkn
  * JD-Core Version:    0.7.0.1
  */

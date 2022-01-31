@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import bcqf;
+import bepp;
 
 class BaseAppBrandRuntime$1
   implements Runnable
@@ -11,14 +11,14 @@ class BaseAppBrandRuntime$1
   {
     if (this.this$0.activity != null)
     {
-      BaseAppBrandRuntime.access$002(this.this$0, new bcqf(this.this$0.activity));
+      BaseAppBrandRuntime.access$002(this.this$0, new bepp(this.this$0.activity));
       BaseAppBrandRuntime.access$000(this.this$0).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,18 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class akwf
+class akwf
+  implements aleu
 {
-  @TargetApi(23)
-  public static void a(AppActivity paramAppActivity, int paramInt, QQPermissionCallback paramQQPermissionCallback)
-  {
-    if (paramAppActivity != null) {
-      paramAppActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
-    }
-  }
+  akwf(akwd paramakwd, boolean paramBoolean, int paramInt, int[] paramArrayOfInt) {}
   
-  @TargetApi(23)
-  public static boolean a(Context paramContext)
+  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    return (paramContext != null) && (paramContext.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (paramContext.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0);
+    akwd.a(this.jdField_a_of_type_Akwd, this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwf
  * JD-Core Version:    0.7.0.1
  */

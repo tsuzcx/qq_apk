@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.contact.newfriend.connections;
 
-import aflu;
-import aflv;
-import aflw;
-import ajxj;
-import akaa;
+import ahiz;
+import ahja;
+import ahjb;
+import alox;
+import alro;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import axqy;
+import azmj;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,15 +24,15 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
-import rtw;
-import rub;
+import skj;
+import sko;
 
 public class ConnectionsExplorationFragment
   extends PublicBaseFragment
-  implements ViewPager.OnPageChangeListener, rtw
+  implements ViewPager.OnPageChangeListener, skj
 {
-  ajxj jdField_a_of_type_Ajxj = new aflv(this);
-  private akaa jdField_a_of_type_Akaa;
+  alox jdField_a_of_type_Alox = new ahja(this);
+  private alro jdField_a_of_type_Alro;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private ConnectionsExplorationViewPager jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsExplorationViewPager;
@@ -40,7 +40,7 @@ public class ConnectionsExplorationFragment
   private ThemeTabLayout jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsThemeTabLayout;
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ArrayList<aflw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<ahjb> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private boolean jdField_a_of_type_Boolean = true;
   private TextView b;
   private TextView c;
@@ -49,9 +49,9 @@ public class ConnectionsExplorationFragment
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()))
     {
-      aflw localaflw = (aflw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      if (localaflw != null) {
-        return localaflw.a;
+      ahjb localahjb = (ahjb)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      if (localahjb != null) {
+        return localahjb.a;
       }
     }
     return -1;
@@ -80,29 +80,29 @@ public class ConnectionsExplorationFragment
   private void a(View paramView)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = getActivity().app;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajxj);
-    LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131375493);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Alox);
+    LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131375981);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       localLinearLayout.setFitsSystemWindows(true);
       localLinearLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368472));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368659));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689730);
-    this.b = ((TextView)paramView.findViewById(2131368429));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689731);
+    this.b = ((TextView)paramView.findViewById(2131368613));
     this.b.setVisibility(0);
     this.b.setText("");
-    this.b.setOnClickListener(new aflu(this));
-    this.jdField_a_of_type_Akaa = ((akaa)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369472));
-    this.c = ((TextView)paramView.findViewById(2131365658));
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsExplorationViewPager = ((ConnectionsExplorationViewPager)paramView.findViewById(2131364623));
+    this.b.setOnClickListener(new ahiz(this));
+    this.jdField_a_of_type_Alro = ((alro)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369732));
+    this.c = ((TextView)paramView.findViewById(2131365742));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsExplorationViewPager = ((ConnectionsExplorationViewPager)paramView.findViewById(2131364702));
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsViewPagerAdapter = new ConnectionsViewPagerAdapter(getChildFragmentManager(), getActivity().app, this.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsExplorationViewPager.setOnPageChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsExplorationViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsViewPagerAdapter);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsExplorationViewPager.setOffscreenPageLimit(2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsThemeTabLayout = ((ThemeTabLayout)paramView.findViewById(2131376814));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsThemeTabLayout = ((ThemeTabLayout)paramView.findViewById(2131377327));
     a(true, false);
     a(true);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsThemeTabLayout.setOnTabSelectedListener(this);
@@ -113,19 +113,19 @@ public class ConnectionsExplorationFragment
     ThreadManager.getSubThreadHandler().post(new ConnectionsExplorationFragment.2(this, paramBoolean2, paramBoolean1));
   }
   
-  public void a(rub paramrub)
+  public void a(sko paramsko)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ConnectionsExplorationFragment", 2, "onTabSelected mCurrentTabPos:" + paramrub.a());
+      QLog.i("ConnectionsExplorationFragment", 2, "onTabSelected mCurrentTabPos:" + paramsko.a());
     }
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_Boolean = false;
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsExplorationViewPager.setCurrentItem(paramrub.a(), false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsExplorationViewPager.setCurrentItem(paramsko.a(), false);
       return;
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "frd_recom", "frd_tab_clk", a(paramrub.a()), 0, "0", "4", "", "");
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "frd_recom", "frd_tab_clk", a(paramsko.a()), 0, "0", "4", "", "");
     }
   }
   
@@ -153,23 +153,23 @@ public class ConnectionsExplorationFragment
     }
   }
   
-  public void b(rub paramrub)
+  public void b(sko paramsko)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ConnectionsExplorationFragment", 2, "onTabUnselected mCurrentTabPos:" + paramrub.a());
+      QLog.i("ConnectionsExplorationFragment", 2, "onTabUnselected mCurrentTabPos:" + paramsko.a());
     }
   }
   
-  public void c(rub paramrub)
+  public void c(sko paramsko)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ConnectionsExplorationFragment", 2, "onTabReselected mCurrentTabPos:" + paramrub.a());
+      QLog.i("ConnectionsExplorationFragment", 2, "onTabReselected mCurrentTabPos:" + paramsko.a());
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131560912, paramViewGroup, false);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561095, paramViewGroup, false);
     a(paramLayoutInflater);
     return paramLayoutInflater;
   }
@@ -179,7 +179,7 @@ public class ConnectionsExplorationFragment
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsViewPagerAdapter != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsViewPagerAdapter.a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajxj);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Alox);
     super.onDestroy();
   }
   
@@ -199,7 +199,7 @@ public class ConnectionsExplorationFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment
  * JD-Core Version:    0.7.0.1
  */

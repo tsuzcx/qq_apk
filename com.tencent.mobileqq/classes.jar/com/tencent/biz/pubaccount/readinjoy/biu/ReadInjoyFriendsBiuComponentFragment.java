@@ -11,20 +11,20 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bbco;
-import bfpt;
+import bdbi;
+import bhqp;
 import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
-import nol;
-import odx;
-import ody;
-import odz;
-import omj;
-import onh;
+import nrt;
+import oid;
+import oie;
+import oif;
+import oqu;
 import org.json.JSONObject;
+import ors;
 
 public class ReadInjoyFriendsBiuComponentFragment
   extends PublicBaseFragment
@@ -33,7 +33,7 @@ public class ReadInjoyFriendsBiuComponentFragment
   public View.OnClickListener a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  bfpt jdField_a_of_type_Bfpt = new ody(this);
+  bhqp jdField_a_of_type_Bhqp = new oie(this);
   ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString;
   public ArrayList<MultiBiuSameContent> a;
@@ -46,17 +46,17 @@ public class ReadInjoyFriendsBiuComponentFragment
   public ReadInjoyFriendsBiuComponentFragment()
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new odx(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new oid(this);
   }
   
   private String a(long paramLong)
   {
-    return omj.k + bbco.encodeToString(String.valueOf(paramLong).getBytes(), 2);
+    return oqu.k + bdbi.encodeToString(String.valueOf(paramLong).getBytes(), 2);
   }
   
   private String a(long paramLong1, int paramInt, long paramLong2)
   {
-    String str2 = omj.e.replace("uin=", "uin=" + bbco.encodeToString(String.valueOf(paramLong1).getBytes(), 0).replace('\n', ' ').trim());
+    String str2 = oqu.e.replace("uin=", "uin=" + bdbi.encodeToString(String.valueOf(paramLong1).getBytes(), 0).replace('\n', ' ').trim());
     String str1 = str2;
     if (str2.contains("&feedstype=")) {
       str1 = str2.replace("&feedstype=", "&feedstype=" + paramInt);
@@ -71,14 +71,14 @@ public class ReadInjoyFriendsBiuComponentFragment
     try
     {
       localJSONObject.put("algorithm_id", this.c);
-      localJSONObject.put("folder_status", onh.d);
+      localJSONObject.put("folder_status", ors.d);
       localJSONObject.put("feeds_source", this.d);
       localJSONObject.put("feeds_type", paramInt + "");
-      localJSONObject.put("kandian_mode", "" + onh.e());
-      localJSONObject.put("tab_source", "" + onh.d());
+      localJSONObject.put("kandian_mode", "" + ors.e());
+      localJSONObject.put("tab_source", "" + ors.d());
       localJSONObject.put("rowkey", this.e);
       localJSONObject.put("channel_id", this.f);
-      nol.a(null, String.valueOf(paramLong1), paramString, paramString, 0, 0, String.valueOf(paramLong2), "0", this.b, localJSONObject.toString(), false);
+      nrt.a(null, String.valueOf(paramLong1), paramString, paramString, 0, 0, String.valueOf(paramLong2), "0", this.b, localJSONObject.toString(), false);
       return;
     }
     catch (Exception paramString)
@@ -91,7 +91,7 @@ public class ReadInjoyFriendsBiuComponentFragment
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      onh.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString);
+      ors.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString);
       if (QLog.isColorLevel()) {
         QLog.d("ReadInjoyFriendsBiuComponentFragment", 2, "jumpUrl url:" + paramString);
       }
@@ -132,18 +132,18 @@ public class ReadInjoyFriendsBiuComponentFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559940, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131366838));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131366765));
-    this.jdField_a_of_type_ComTencentWidgetListView.setSelector(2131167087);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560038, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131366957));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131366884));
+    this.jdField_a_of_type_ComTencentWidgetListView.setSelector(2131167138);
     this.jdField_a_of_type_ComTencentWidgetListView.setOverScrollMode(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131364258));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131364325));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    paramLayoutInflater.findViewById(2131362990).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    paramViewGroup = (LinearLayout)paramLayoutInflater.findViewById(2131362537);
-    paramBundle = new odz(this, getActivity(), this.jdField_a_of_type_JavaUtilArrayList);
+    paramLayoutInflater.findViewById(2131363026).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    paramViewGroup = (LinearLayout)paramLayoutInflater.findViewById(2131362565);
+    paramBundle = new oif(this, getActivity(), this.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(this.jdField_a_of_type_Bfpt);
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(this.jdField_a_of_type_Bhqp);
     if (this.jdField_a_of_type_JavaUtilArrayList != null) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("Biu列表");
     }
@@ -160,7 +160,7 @@ public class ReadInjoyFriendsBiuComponentFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment
  * JD-Core Version:    0.7.0.1
  */

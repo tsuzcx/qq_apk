@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bjck;
-import bjcy;
-import bjfy;
+import blnu;
+import bloj;
+import blrj;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.capture.part.QIMTemplateItem;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 public class TemplateData
   implements Parcelable
 {
-  public static final Parcelable.Creator<TemplateData> CREATOR = new bjcy();
+  public static final Parcelable.Creator<TemplateData> CREATOR = new bloj();
   public int a;
   public String a;
   public List<QIMTemplateItem> a;
@@ -27,7 +27,7 @@ public class TemplateData
   public List<String> b;
   public boolean b;
   public String c;
-  public List<bjfy> c;
+  public List<blrj> c;
   
   public TemplateData(Parcel paramParcel)
   {
@@ -72,7 +72,7 @@ public class TemplateData
         localQIMTemplateItem.h = localJSONObject.optString("video_url");
         localQIMTemplateItem.i = localJSONObject.optString("video_md5");
         localQIMTemplateItem.jdField_a_of_type_Boolean = localJSONObject.optBoolean("segments_twinkle");
-        localQIMTemplateItem.j = (bjck.jdField_b_of_type_JavaLangString + localQIMTemplateItem.jdField_b_of_type_JavaLangString + ".mp4");
+        localQIMTemplateItem.j = (blnu.jdField_b_of_type_JavaLangString + localQIMTemplateItem.jdField_b_of_type_JavaLangString + ".mp4");
         JSONArray localJSONArray = localJSONObject.optJSONArray("filters");
         if (localJSONArray != null)
         {
@@ -171,7 +171,7 @@ public class TemplateData
         str1 = ((JSONArray)localObject1).get(0).toString();
         localObject1 = ((JSONArray)localObject1).get(1).toString();
         if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-          localArrayList.add(new bjfy(str2, str1, (String)localObject1));
+          localArrayList.add(new blrj(str2, str1, (String)localObject1));
         }
       }
       catch (Exception localException1)
@@ -210,7 +210,7 @@ public class TemplateData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.data.TemplateData
  * JD-Core Version:    0.7.0.1
  */

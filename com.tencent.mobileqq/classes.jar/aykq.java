@@ -1,18 +1,24 @@
-import android.view.View;
+import android.text.TextUtils;
 
-final class aykq
-  implements bfph
+public class aykq
 {
-  aykq(bfnv parambfnv) {}
+  public String a;
+  public String b;
   
-  public void OnClick(View paramView, int paramInt)
+  public aykq(String paramString1, String paramString2)
   {
-    this.a.a(Integer.valueOf(paramInt));
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aykq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.browser;
 
-import azka;
-import bcdp;
+import bbij;
+import becq;
 import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class TroopWebviewPlugin$2
   implements Runnable
 {
-  public TroopWebviewPlugin$2(azka paramazka, String paramString) {}
+  public TroopWebviewPlugin$2(bbij parambbij, String paramString) {}
   
   public void run()
   {

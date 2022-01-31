@@ -9,20 +9,20 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import bccj;
-import bcfx;
-import bcsr;
-import bkvi;
+import bebk;
+import beey;
+import besa;
+import bngs;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.ToolAppRuntime;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import mqq.app.AppRuntime;
-import otn;
-import oto;
-import qoi;
-import vzl;
+import oyr;
+import oys;
+import rdm;
+import xod;
 
 public class ReadInJoyAdIMAXBrowserFragment
   extends WebViewFragment
@@ -41,45 +41,45 @@ public class ReadInJoyAdIMAXBrowserFragment
   
   private View.OnClickListener a()
   {
-    return new oto(this);
+    return new oys(this);
   }
   
   private void i()
   {
-    bkvi.a(getActivity());
-    if (bkvi.b()) {
-      bkvi.c(getActivity());
+    bngs.a(getActivity());
+    if (bngs.b()) {
+      bngs.c(getActivity());
     }
-    if (bkvi.b()) {}
-    for (int i = bkvi.b(getActivity());; i = 0)
+    if (bngs.b()) {}
+    for (int i = bngs.b(getActivity());; i = 0)
     {
-      if (this.jdField_a_of_type_Bcfx.jdField_a_of_type_Bccj.a != null) {
-        this.jdField_a_of_type_Bcfx.jdField_a_of_type_Bccj.a.setVisibility(8);
+      if (this.jdField_a_of_type_Beey.jdField_a_of_type_Bebk.a != null) {
+        this.jdField_a_of_type_Beey.jdField_a_of_type_Bebk.a.setVisibility(8);
       }
-      if (this.jdField_a_of_type_Bcfx.d != null) {
-        b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131296536), 0);
+      if (this.jdField_a_of_type_Beey.d != null) {
+        b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131296550), 0);
       }
-      if (this.jdField_a_of_type_Bcfx.c == null) {
+      if (this.jdField_a_of_type_Beey.c == null) {
         return;
       }
-      int j = vzl.a(getActivity(), 30.0F);
+      int j = xod.a(getActivity(), 30.0F);
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getActivity());
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842361);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842530);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(j, j);
       localLayoutParams.addRule(10);
       localLayoutParams.addRule(9);
-      localLayoutParams.leftMargin = vzl.a(getActivity(), 15.0F);
-      localLayoutParams.topMargin = (vzl.a(getActivity(), 15.0F) + i);
-      this.jdField_a_of_type_Bcfx.c.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new otn(this));
+      localLayoutParams.leftMargin = xod.a(getActivity(), 15.0F);
+      localLayoutParams.topMargin = (xod.a(getActivity(), 15.0F) + i);
+      this.jdField_a_of_type_Beey.c.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new oyr(this));
       this.b = new ImageView(getActivity());
-      this.b.setBackgroundResource(2130842363);
+      this.b.setBackgroundResource(2130842532);
       localLayoutParams = new RelativeLayout.LayoutParams(j, j);
       localLayoutParams.addRule(10);
       localLayoutParams.addRule(11);
-      localLayoutParams.rightMargin = vzl.a(getActivity(), 15.0F);
-      localLayoutParams.topMargin = (i + vzl.a(getActivity(), 15.0F));
-      this.jdField_a_of_type_Bcfx.c.addView(this.b, localLayoutParams);
+      localLayoutParams.rightMargin = xod.a(getActivity(), 15.0F);
+      localLayoutParams.topMargin = (i + xod.a(getActivity(), 15.0F));
+      this.jdField_a_of_type_Beey.c.addView(this.b, localLayoutParams);
       this.b.setOnClickListener(a());
       return;
     }
@@ -93,12 +93,12 @@ public class ReadInJoyAdIMAXBrowserFragment
     }
     getWebView().setVerticalScrollBarEnabled(false);
     getWebView().setHorizontalScrollBarEnabled(false);
-    if ((this.jdField_a_of_type_Bcfx != null) && (this.jdField_a_of_type_Bcfx.jdField_a_of_type_Bcsr != null)) {
-      this.jdField_a_of_type_Bcfx.jdField_a_of_type_Bcsr.a(false);
+    if ((this.jdField_a_of_type_Beey != null) && (this.jdField_a_of_type_Beey.jdField_a_of_type_Besa != null)) {
+      this.jdField_a_of_type_Beey.jdField_a_of_type_Besa.a(false);
     }
-    if ((this.jdField_a_of_type_Bcfx != null) && (this.jdField_a_of_type_Bcfx.d != null))
+    if ((this.jdField_a_of_type_Beey != null) && (this.jdField_a_of_type_Beey.d != null))
     {
-      paramBundle = this.jdField_a_of_type_Bcfx.d.findViewById(2131364717);
+      paramBundle = this.jdField_a_of_type_Beey.d.findViewById(2131364796);
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
@@ -106,7 +106,7 @@ public class ReadInJoyAdIMAXBrowserFragment
     if (this.d != null) {
       this.d.setVisibility(8);
     }
-    qoi.a(a());
+    rdm.a(a());
     paramBundle = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramBundle instanceof ToolAppRuntime)) {
       this.jdField_a_of_type_MqqAppAppRuntime = paramBundle.getAppRuntime("modular_web");
@@ -118,25 +118,25 @@ public class ReadInJoyAdIMAXBrowserFragment
   
   public int c(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Bcfx != null)
+    if (this.jdField_a_of_type_Beey != null)
     {
-      this.jdField_a_of_type_Bcfx.jdField_a_of_type_Bcga.B = true;
-      this.jdField_a_of_type_Bcfx.jdField_a_of_type_Bcga.f = true;
-      this.jdField_a_of_type_Bcga.n = true;
+      this.jdField_a_of_type_Beey.jdField_a_of_type_Befb.D = true;
+      this.jdField_a_of_type_Beey.jdField_a_of_type_Befb.f = true;
+      this.jdField_a_of_type_Befb.n = true;
     }
-    qoi.a(a());
+    rdm.a(a());
     return super.c(paramBundle);
   }
   
   public void onResume()
   {
     super.onResume();
-    qoi.a(a());
+    rdm.a(a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

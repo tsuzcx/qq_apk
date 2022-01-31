@@ -1,17 +1,16 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
-import behq;
-import behw;
-import behz;
-import bejc;
-import bekp;
-import bekr;
-import betc;
+import bgho;
+import bgjd;
+import bgjw;
+import bgkd;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import com.tencent.qqmini.sdk.core.auth.AuthState;
+import com.tencent.qqmini.sdk.core.auth.AuthStateItem;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
@@ -24,28 +23,33 @@ public class SettingsJsPlugin
   private static final String TAG = "SettingsJsPlugin";
   private ChannelProxy mProxy;
   
-  private void callbackSettingEvent(behw parambehw, bekr parambekr)
+  private void callbackSettingEvent(bgkd parambgkd)
   {
-    if (parambehw == null) {
+    callbackSettingEvent(MiniAppEnv.g().getAuthSate(this.mApkgInfo.appId), parambgkd);
+  }
+  
+  private void callbackSettingEvent(AuthState paramAuthState, bgkd parambgkd)
+  {
+    if (paramAuthState == null) {
       return;
     }
-    Object localObject = parambehw.a(6);
+    Object localObject = paramAuthState.getAuthStateList(6);
     JSONArray localJSONArray;
     for (;;)
     {
       try
       {
-        parambehw = new JSONObject();
+        paramAuthState = new JSONObject();
         localJSONArray = new JSONArray();
         localObject = ((List)localObject).iterator();
         if (!((Iterator)localObject).hasNext()) {
           break;
         }
-        behz localbehz = (behz)((Iterator)localObject).next();
+        AuthStateItem localAuthStateItem = (AuthStateItem)((Iterator)localObject).next();
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("scope", localbehz.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("scope", localAuthStateItem.scopeName);
         int i;
-        if (localbehz.jdField_a_of_type_Int == 2)
+        if (localAuthStateItem.authFlag == 2)
         {
           i = 1;
           localJSONObject.put("state", i);
@@ -56,58 +60,53 @@ public class SettingsJsPlugin
           i = 0;
         }
       }
-      catch (JSONException parambehw)
+      catch (JSONException paramAuthState)
       {
-        betc.d("SettingsJsPlugin", parambekr.jdField_a_of_type_JavaLangString + " error.", parambehw);
-        parambekr.b();
+        QMLog.e("SettingsJsPlugin", parambgkd.a + " error.", paramAuthState);
+        parambgkd.b();
         return;
       }
     }
-    parambehw.put("authSetting", localJSONArray);
-    parambekr.a(parambehw);
+    paramAuthState.put("authSetting", localJSONArray);
+    parambgkd.a(paramAuthState);
   }
   
-  private void callbackSettingEvent(bekr parambekr)
+  private void openSettingActivity(Activity paramActivity, bgjw parambgjw)
   {
-    callbackSettingEvent(MiniAppEnv.g().getAuthSate(this.mApkgInfo.d), parambekr);
-  }
-  
-  private void openSettingActivity(Activity paramActivity, bekp parambekp)
-  {
-    if (parambekp == null)
+    if (parambgjw == null)
     {
-      betc.d("SettingsJsPlugin", "openSettingActivity, appInfo:" + parambekp);
+      QMLog.e("SettingsJsPlugin", "openSettingActivity, appInfo:" + parambgjw);
       return;
     }
-    ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).openPermissionSettingsActivity(paramActivity, parambekp.d, parambekp.c);
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openPermissionSettingsActivity(paramActivity, parambgjw.appId, parambgjw.apkgName);
   }
   
-  public void getSetting(bekr parambekr)
+  public void getSetting(bgkd parambgkd)
   {
-    String str = this.mApkgInfo.d;
-    behw localbehw = MiniAppEnv.g().getAuthSate(str);
-    if (localbehw == null)
+    String str = this.mApkgInfo.appId;
+    AuthState localAuthState = MiniAppEnv.g().getAuthSate(str);
+    if (localAuthState == null)
     {
-      betc.d("SettingsJsPlugin", "getSetting, but authorizeCenter is null?!");
+      QMLog.e("SettingsJsPlugin", "getSetting, but authorizeCenter is null?!");
       return;
     }
-    if (localbehw.a())
+    if (localAuthState.isSynchronized())
     {
-      callbackSettingEvent(localbehw, parambekr);
+      callbackSettingEvent(localAuthState, parambgkd);
       return;
     }
-    this.mProxy.getAuthList(str, new SettingsJsPlugin.2(this, localbehw, parambekr));
+    this.mProxy.getAuthList(str, new SettingsJsPlugin.2(this, localAuthState, parambgkd));
   }
   
-  public void openSetting(bekr parambekr)
+  public void openSetting(bgkd parambgkd)
   {
-    bejc.a().a(new SettingsJsPlugin.1(this, parambekr));
+    bgjd.a().a(new SettingsJsPlugin.1(this, parambgkd));
     openSettingActivity(this.mMiniAppContext.a(), this.mApkgInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.SettingsJsPlugin
  * JD-Core Version:    0.7.0.1
  */

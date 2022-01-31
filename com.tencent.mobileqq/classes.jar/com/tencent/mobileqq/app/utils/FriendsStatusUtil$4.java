@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.utils;
 
-import ajya;
+import alpo;
 import android.content.res.Resources;
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 
 final class FriendsStatusUtil$4
@@ -10,7 +10,7 @@ final class FriendsStatusUtil$4
 {
   public void run()
   {
-    bcql.a(BaseApplication.getContext(), ajya.a(2131704946), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298865));
+    QQToast.a(BaseApplication.getContext(), alpo.a(2131705318), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
   }
 }
 

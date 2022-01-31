@@ -1,82 +1,104 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.widget.AbsListView;
+import android.content.Intent;
+import android.media.AudioManager;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl.VolumeReceiver.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class rle
-  implements rkh, rkj
+  extends BroadcastReceiver
 {
-  private static boolean jdField_a_of_type_Boolean;
-  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private pah jdField_a_of_type_Pah = new rlf(this);
+  private rle(rlb paramrlb) {}
   
-  public int a(BaseData paramBaseData)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return 16;
-  }
-  
-  public rkg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    if ((BaseApplicationImpl.getApplication().getRuntime().isBackground_Stop) || (BaseApplicationImpl.getApplication().getRuntime().isBackground_Pause)) {}
+    label24:
+    do
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new pol();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramBaseData.b;
-    }
-    paramViewGroup = (ProteusBookData)paramBaseData;
-    Container localContainer = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramViewGroup.a);
-    paramViewGroup = localContainer;
-    if (localContainer == null) {
-      paramViewGroup = new View(paramContext);
-    }
-    return new rlg(paramViewGroup, paramBaseData);
-  }
-  
-  public void a() {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.p == 18;
-  }
-  
-  public void b()
-  {
-    if (jdField_a_of_type_Boolean)
-    {
-      jdField_a_of_type_Boolean = false;
-      paf localpaf = osg.a().a();
-      if (localpaf != null) {
-        localpaf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Pah, false);
+      do
+      {
+        do
+        {
+          do
+          {
+            break label24;
+            break label24;
+            do
+            {
+              return;
+            } while (rlb.b(this.a));
+            if (rlb.c(this.a))
+            {
+              rlb.b(this.a, false);
+              return;
+            }
+            if (rlb.a(this.a) != null) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "VolumeReceiver onReceive null");
+          return;
+        } while (!rlb.d(this.a));
+        if (!rlb.e(this.a)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "dynamicPauseReceive true");
+      return;
+      int i;
+      try
+      {
+        if (!paramIntent.getAction().equals("android.media.VOLUME_CHANGED_ACTION")) {
+          continue;
+        }
+        i = rlb.a(this.a).getStreamVolume(3);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "volume change:" + i);
+        }
+        if (rlb.f(this.a))
+        {
+          QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "volume change shield ");
+          return;
+        }
       }
+      catch (Exception paramContext)
+      {
+        QLog.d("Q.readinjoy.video.VideoVolumeControl", 1, "VolumeReceiver", paramContext);
+        return;
+      }
+      if (i == 0)
+      {
+        this.a.a(true, "system volume 0", rlb.a(this.a));
+        return;
+      }
+      this.a.a(false, "system volume change", rlb.a(this.a));
+      return;
+    } while (!paramIntent.getAction().equals("android.intent.action.HEADSET_PLUG"));
+    boolean bool = rlb.a(this.a).isWiredHeadsetOn();
+    if (rlb.g(this.a))
+    {
+      rlb.c(this.a, false);
+      return;
+    }
+    rlb.d(this.a, true);
+    if (bool) {
+      this.a.a(false, "headset on", rlb.a(this.a));
+    }
+    for (;;)
+    {
+      rlb.a(this.a).postDelayed(new VideoVolumeControl.VolumeReceiver.1(this), 200L);
+      return;
+      this.a.a(true, "headset off", rlb.a(this.a));
     }
   }
-  
-  public void c() {}
-  
-  public void d()
-  {
-    paf localpaf = osg.a().a();
-    if (localpaf != null) {
-      localpaf.a(this.jdField_a_of_type_Pah);
-    }
-  }
-  
-  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rle
  * JD-Core Version:    0.7.0.1
  */

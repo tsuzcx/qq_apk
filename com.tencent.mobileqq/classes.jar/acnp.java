@@ -1,26 +1,24 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acnp
-  implements TextWatcher
+  extends uhn
 {
-  private acnp(TroopTransferActivity paramTroopTransferActivity) {}
+  public acnp(Conversation paramConversation) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void d(boolean paramBoolean)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.a(paramEditable);
+    if (paramBoolean)
+    {
+      wsv.b("Q.recent", "onMsgTabStoryShowChange() sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send");
+      this.a.a(1055, 0L, false);
+      return;
+    }
+    Conversation.a(this.a, false);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acnp
  * JD-Core Version:    0.7.0.1
  */

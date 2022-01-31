@@ -1,25 +1,30 @@
-import android.graphics.Canvas;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.7;
 
-public abstract interface anhg
+public class anhg
+  implements DialogInterface.OnClickListener
 {
-  public abstract float a();
+  public anhg(ArkAppYYBDownloadModule.7 param7) {}
   
-  public abstract Canvas a();
-  
-  public abstract void a();
-  
-  public abstract void a(Canvas paramCanvas);
-  
-  public abstract void a(View.OnTouchListener paramOnTouchListener);
-  
-  public abstract void a(anhh paramanhh);
-  
-  public abstract void b();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      bfgi.a().a(10, this.a.a);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhg
  * JD-Core Version:    0.7.0.1
  */

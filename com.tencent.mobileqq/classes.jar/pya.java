@@ -1,49 +1,24 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import org.json.JSONException;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class pya
-  implements View.OnClickListener
+class pya
+  implements View.OnTouchListener
 {
-  public pya(ComponentLastRead paramComponentLastRead) {}
+  pya(pxx parampxx, LinearLayout paramLinearLayout) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    shu.a(false);
-    paramView = new ono();
-    paramView.h().b().e().a(this.a.a.jdField_a_of_type_Pau.e()).f().g().d();
-    if (this.a.a.jdField_a_of_type_Pau.e() == 0) {}
-    for (;;)
-    {
-      try
-      {
-        RefreshData localRefreshData = pyz.b(this.a.getContext(), 0);
-        if ((localRefreshData == null) || (!localRefreshData.isAD)) {
-          continue;
-        }
-        i = 1;
-        paramView.a("ad_page", i);
-      }
-      catch (JSONException localJSONException)
-      {
-        int i;
-        localJSONException.printStackTrace();
-        continue;
-      }
-      nol.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, bhvy.a("default_feeds_proteus_offline_bid"), "", "", paramView.a(), false);
-      if (this.a.a.jdField_a_of_type_Pqy != null) {
-        this.a.a.jdField_a_of_type_Pqy.a(this.a, null);
-      }
-      return;
-      i = 0;
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pya
  * JD-Core Version:    0.7.0.1
  */

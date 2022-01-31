@@ -13,7 +13,7 @@ class LocalCache$ACacheManager$1
   public void run()
   {
     int i = 0;
-    File[] arrayOfFile = this.this$1.cacheDir.listFiles();
+    File[] arrayOfFile = this.this$0.cacheDir.listFiles();
     if (arrayOfFile != null)
     {
       int m = arrayOfFile.length;
@@ -22,19 +22,19 @@ class LocalCache$ACacheManager$1
       while (i < m)
       {
         File localFile = arrayOfFile[i];
-        k = (int)(k + LocalCache.ACacheManager.access$1600(this.this$1, localFile));
+        k = (int)(k + LocalCache.ACacheManager.access$1600(this.this$0, localFile));
         j += 1;
-        LocalCache.ACacheManager.access$1700(this.this$1).put(localFile, Long.valueOf(localFile.lastModified()));
+        LocalCache.ACacheManager.access$1700(this.this$0).put(localFile, Long.valueOf(localFile.lastModified()));
         i += 1;
       }
-      LocalCache.ACacheManager.access$1800(this.this$1).set(k);
-      LocalCache.ACacheManager.access$1900(this.this$1).set(j);
+      LocalCache.ACacheManager.access$1800(this.this$0).set(k);
+      LocalCache.ACacheManager.access$1900(this.this$0).set(j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.LocalCache.ACacheManager.1
  * JD-Core Version:    0.7.0.1
  */

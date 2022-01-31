@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import bcfx;
+import beey;
 import com.tencent.biz.ui.RefreshView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
@@ -26,8 +26,8 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
       return i;
     }
     getActivity().getWindow().setFlags(1024, 1024);
-    this.jdField_a_of_type_Bcfx.a.setVisibility(8);
-    this.jdField_a_of_type_Bcga.a = true;
+    this.jdField_a_of_type_Beey.a.setVisibility(8);
+    this.jdField_a_of_type_Befb.a = true;
     D();
     g(false);
     return i;
@@ -37,12 +37,12 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
   public int d(Bundle paramBundle)
   {
     int i = super.d(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131167087);
-    if ((this.jdField_a_of_type_Bcfx.c instanceof RefreshView)) {
-      ((RefreshView)this.jdField_a_of_type_Bcfx.c).a(false);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131167138);
+    if ((this.jdField_a_of_type_Beey.jdField_c_of_type_AndroidViewViewGroup instanceof RefreshView)) {
+      ((RefreshView)this.jdField_a_of_type_Beey.jdField_c_of_type_AndroidViewViewGroup).a(false);
     }
-    if (this.jdField_a_of_type_Bcfx.b != null) {
-      this.jdField_a_of_type_Bcfx.b.setVisibility(8);
+    if (this.jdField_a_of_type_Beey.jdField_c_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_Beey.jdField_c_of_type_AndroidViewView.setVisibility(8);
     }
     if (this.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension() != null) {}
     for (;;)
@@ -72,7 +72,7 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

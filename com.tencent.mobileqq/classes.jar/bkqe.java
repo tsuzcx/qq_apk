@@ -1,21 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.util.QZLog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class bkqe
-  implements View.OnClickListener
+  extends Handler
 {
-  bkqe(bkqd parambkqd) {}
-  
-  public void onClick(View paramView)
+  bkqe(bkqa parambkqa, Looper paramLooper)
   {
-    QZLog.d("QzoneEditPicturePartSav", 2, "onClick save button");
-    this.a.a.a(19);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      yvu.a("mystatus_shoot", "comp_recomm", 0, 0, new String[0]);
+      paramMessage = paramMessage.getData();
+      int i = paramMessage.getInt("sceneLvOne");
+      paramMessage = paramMessage.getString("sceneName");
+      this.a.a(i, paramMessage, true);
+      return;
+    }
+    yvu.a("mystatus_shoot", "exp_recomm", 0, 0, new String[0]);
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkqe
  * JD-Core Version:    0.7.0.1
  */

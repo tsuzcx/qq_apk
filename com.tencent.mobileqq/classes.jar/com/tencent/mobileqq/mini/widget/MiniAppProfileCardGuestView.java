@@ -8,13 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
-import aqks;
+import asei;
 import java.util.List;
 
 public class MiniAppProfileCardGuestView
   extends LinearLayout
 {
-  private aqks adapter;
+  private asei adapter;
   private ColorStateList attrValue;
   private int colorInt;
   private boolean isTheme;
@@ -45,8 +45,8 @@ public class MiniAppProfileCardGuestView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131560990, this, true);
-    this.mRecyclerView = ((RecyclerView)findViewById(2131366811));
+    this.mLayoutInflater.inflate(2131561173, this, true);
+    this.mRecyclerView = ((RecyclerView)findViewById(2131366930));
     this.mRecyclerView.setVisibility(0);
   }
   
@@ -62,7 +62,7 @@ public class MiniAppProfileCardGuestView
     if (this.mRecyclerView != null)
     {
       this.mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-      this.adapter = new aqks(paramList, paramString2, paramString1);
+      this.adapter = new asei(paramList, paramString2, paramString1);
       this.adapter.b(2062);
       this.mRecyclerView.setAdapter(this.adapter);
     }
@@ -85,7 +85,7 @@ public class MiniAppProfileCardGuestView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppProfileCardGuestView
  * JD-Core Version:    0.7.0.1
  */

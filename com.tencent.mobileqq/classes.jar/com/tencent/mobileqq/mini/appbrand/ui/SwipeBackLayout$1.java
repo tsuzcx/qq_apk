@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import amgm;
-import amgo;
-import amgv;
-import amkr;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import axqy;
+import anxm;
+import anxo;
+import anxw;
+import aobp;
+import azmj;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.mobileqq.colornote.swipeback.PostTable;
@@ -98,7 +98,7 @@ class SwipeBackLayout$1
       paramView = paramView.parseBundle();
       paramView.putInt("color_note_curd_from_type", 1);
       SwipeBackLayout.access$900(this.this$0).a(paramView);
-      axqy.b(null, "dc00898", "", "", "0X800A742", "0X800A742", amgm.a(SwipeBackLayout.access$1200(this.this$0).getColorNote().mServiceType), 0, "", "", "", "");
+      azmj.b(null, "dc00898", "", "", "0X800A742", "0X800A742", anxm.a(SwipeBackLayout.access$1200(this.this$0).getColorNote().mServiceType), 0, "", "", "", "");
       i = 0;
       j = 1;
       label274:
@@ -121,7 +121,7 @@ class SwipeBackLayout$1
       label338:
       i = 1;
       SwipeBackLayout.access$1300(this.this$0).a(0.0D);
-      axqy.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 1, 0, "", "", "", "");
+      azmj.b(null, "dc00898", "", "", "0X800A6CF", "0X800A6CF", 1, 0, "", "", "", "");
       label376:
       j = 0;
       break label274;
@@ -153,7 +153,7 @@ class SwipeBackLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.SwipeBackLayout.1
  * JD-Core Version:    0.7.0.1
  */

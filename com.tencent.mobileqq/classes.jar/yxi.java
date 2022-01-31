@@ -1,54 +1,23 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.v7.widget.LinearSmoothScroller;
 
 class yxi
-  implements yxe
+  extends LinearSmoothScroller
 {
-  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
+  yxi(yxh paramyxh, Context paramContext)
   {
-    Object localObject = null;
-    if (paramywk != null) {}
-    for (paramVarArgs = paramywk.a(); (paramywk == null) || (paramVarArgs == null); paramVarArgs = null)
-    {
-      yxp.d("GdtMacJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("macAddress", yys.b(paramVarArgs));
-    }
-    catch (JSONException localJSONException)
-    {
-      try
-      {
-        for (;;)
-        {
-          paramywk.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramywk != null) {
-            paramString = paramywk.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getMacAddress", paramString);
-          return true;
-          localJSONException = localJSONException;
-          yxp.d("GdtMacJsCallHandler", "handleJsCallRequest error", localJSONException);
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          yxp.d("GdtMacJsCallHandler", "handleJsCallRequest error", paramString);
-        }
-      }
-    }
+    super(paramContext);
+  }
+  
+  public PointF computeScrollVectorForPosition(int paramInt)
+  {
+    return this.a.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yxi
  * JD-Core Version:    0.7.0.1
  */

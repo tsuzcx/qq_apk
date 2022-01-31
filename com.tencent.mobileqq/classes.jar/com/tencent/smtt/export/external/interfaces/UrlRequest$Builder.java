@@ -14,13 +14,19 @@ public abstract class UrlRequest$Builder
   
   public abstract Builder disableCache();
   
+  public abstract Builder setDns(String paramString1, String paramString2);
+  
   public abstract Builder setHttpMethod(String paramString);
   
   public abstract Builder setPriority(int paramInt);
+  
+  public abstract Builder setRequestBody(String paramString);
+  
+  public abstract Builder setRequestBodyBytes(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.export.external.interfaces.UrlRequest.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,21 @@
-import android.content.Context;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import java.util.List;
 
-final class onm
-  implements INetEventHandler
+class onm
+  extends oob
 {
-  onm(Context paramContext) {}
-  
-  public void onNetChangeEvent(boolean paramBoolean)
+  onm(omz paramomz, boolean paramBoolean, List paramList)
   {
-    if (paramBoolean)
-    {
-      onh.c(this.a);
-      return;
-    }
-    onh.j("");
-    onh.k("");
+    super(paramomz, null);
+  }
+  
+  void a(ooe paramooe)
+  {
+    paramooe.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, omz.c(this.jdField_a_of_type_Omz), 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     onm
  * JD-Core Version:    0.7.0.1
  */

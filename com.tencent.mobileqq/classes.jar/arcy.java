@@ -1,28 +1,30 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.ReqBody;
 
-class arcy
-  implements EIPCResultCallback
+public class arcy
 {
-  arcy(arcx paramarcx) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    arcx.a(paramEIPCResult, "action");
-    switch (paramEIPCResult.code)
-    {
-    default: 
-      return;
-    case -102: 
-      arcx.a(this.a).a(2, paramEIPCResult.data);
+    return "http://" + paramString1 + "/ftn_handler/" + paramString2 + "/?fname=" + bdcv.b(paramString3) + paramString5;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, arda paramarda)
+  {
+    if (paramLong < 0L) {
       return;
     }
-    arcx.a(this.a).a(1, paramEIPCResult.data);
+    oidb_0x6e7.ReqBody localReqBody = new oidb_0x6e7.ReqBody();
+    localReqBody.uint64_group_code.set(paramLong);
+    localReqBody.str_app_src.set("android");
+    localReqBody.str_version.set("8.3.3");
+    mzy.b(paramQQAppInterface, new arcz(paramarda), localReqBody.toByteArray(), "OidbSvc.oidb_0x6e7", 1767, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arcy
  * JD-Core Version:    0.7.0.1
  */

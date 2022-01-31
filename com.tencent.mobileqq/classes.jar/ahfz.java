@@ -1,48 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-class ahfz
-  implements ahbr
+public class ahfz
+  implements View.OnClickListener
 {
-  ahfz(ahfx paramahfx) {}
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  String jdField_a_of_type_JavaLangString;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  protected ahfz(ahfw paramahfw) {}
+  
+  public void onClick(View paramView)
   {
-    int j = 1;
-    int i;
-    if (paramInt == 0)
-    {
-      i = 1;
-      if (paramPathResult == null) {
-        break label114;
-      }
-    }
-    for (;;)
-    {
-      if (((j & i) != 0) && (!bbkk.a(paramPathResult.filePath)))
-      {
-        Bitmap localBitmap = ahfx.a(this.a, paramPathResult.filePath, false);
-        if (localBitmap != null)
-        {
-          ahfx.a(this.a, localBitmap);
-          ahfx.a(this.a, false);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("springHb_SpringEntryManager", 2, "getTransitionOrDefaultBitmap resCode:" + paramInt + ",pathRes:" + paramPathResult);
-      }
-      return;
-      i = 0;
-      break;
-      label114:
-      j = 0;
+    if (ahfw.a(this.jdField_a_of_type_Ahfw) != null) {
+      ahfw.a(this.jdField_a_of_type_Ahfw).a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahfz
  * JD-Core Version:    0.7.0.1
  */

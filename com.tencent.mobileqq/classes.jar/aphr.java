@@ -1,362 +1,248 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
+import android.view.View;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.BaseEmosmStrategy.1;
+import com.tencent.mobileqq.emosm.BaseEmosmStrategy.2;
 import com.tencent.qphone.base.util.QLog;
-import java.text.DecimalFormat;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.GridView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class aphr
-  extends apax
-  implements apic
+public abstract class aphr
+  implements apiz
 {
-  final String jdField_c_of_type_JavaLangString = "ExcitingTransfer.OfflineSendWorker<FileAssistant>";
-  private boolean jdField_c_of_type_Boolean;
-  private boolean d;
-  protected long e;
-  protected long f;
+  apik jdField_a_of_type_Apik;
+  apja jdField_a_of_type_Apja = null;
+  public QQAppInterface a;
+  public List<apsw> a;
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
+  public boolean a;
+  public boolean b;
   
-  public aphr(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
+  public aphr(QQAppInterface paramQQAppInterface, apik paramapik)
   {
-    super(paramQQAppInterface, paramFileManagerEntity);
-    this.jdField_d_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Apik = paramapik;
+    this.jdField_a_of_type_Apja = new apja(paramQQAppInterface);
   }
   
-  private apar a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, aphs paramaphs)
+  public int a()
   {
-    Object localObject2 = this.jdField_c_of_type_ArrayOfByte;
-    Object localObject1 = localObject2;
-    if (localObject2 == null)
+    return 2131692075;
+  }
+  
+  public View a(int paramInt, View paramView, apis paramapis, appw paramappw)
+  {
+    return paramView;
+  }
+  
+  public apja a()
+  {
+    return this.jdField_a_of_type_Apja;
+  }
+  
+  public String a(appw paramappw)
+  {
+    return null;
+  }
+  
+  public List<appw> a(List<appw> paramList)
+  {
+    if (paramList == null) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      localObject1 = localObject2;
-      if (paramaphs.jdField_b_of_type_ArrayOfByte != null)
+      appw localappw = (appw)paramList.next();
+      Object localObject;
+      if ((localappw instanceof appi))
       {
-        localObject1 = localObject2;
-        if (paramaphs.jdField_b_of_type_ArrayOfByte.length > 0) {
-          localObject1 = paramaphs.jdField_b_of_type_ArrayOfByte;
+        localObject = (appi)localappw;
+        if ((!TextUtils.isEmpty(((appi)localObject).h)) && (!((appi)localObject).h.equals("needUpload"))) {
+          localArrayList.add(localappw);
         }
       }
-    }
-    localObject1 = new aphx(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath(), null, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.jdField_d_of_type_ArrayOfByte, (byte[])localObject1, paramaphs.jdField_d_of_type_ArrayOfByte, paramaphs.jdField_a_of_type_ArrayOfByte);
-    localObject2 = new ArrayList();
-    if (paramaphs.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = paramaphs.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      else if ((localappw instanceof apsw))
       {
-        String str = (String)localIterator.next();
-        if (!TextUtils.isEmpty(str)) {
-          ((List)localObject2).add(new ExcitingTransferHostInfo(str, paramaphs.jdField_a_of_type_Int));
+        localObject = (apsw)localappw;
+        if ((!TextUtils.isEmpty(((apsw)localObject).h)) && (!((apsw)localObject).h.equals("needUpload"))) {
+          localArrayList.add(localappw);
         }
-      }
-    }
-    return aphw.a(paramQQAppInterface, paramLong1, paramLong2, (aphx)localObject1, new apib((List)localObject2, null, paramaphs.jdField_a_of_type_Boolean, paramaphs.jdField_a_of_type_JavaLangString, paramaphs.jdField_c_of_type_ArrayOfByte));
-  }
-  
-  private void a(int paramInt)
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    if (paramInt == 9037)
-    {
-      n();
-      return;
-    }
-    aphq localaphq = null;
-    Object localObject = localaphq;
-    if (this.jdField_a_of_type_Apar != null)
-    {
-      localObject = localaphq;
-      if ((this.jdField_a_of_type_Apar instanceof aphw)) {
-        localObject = ((aphw)this.jdField_a_of_type_Apar).a();
-      }
-    }
-    localaphq = new aphq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (localObject != null) {
-      if (((ExcitingTransferUploadResultRp)localObject).m_nResult == 0L)
-      {
-        localaphq.a((ExcitingTransferUploadResultRp)localObject);
-        label91:
-        localaphq.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-        localObject = apug.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
-        localaphq.a(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin).longValue(), 0L, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-        localaphq.c(this.jdField_b_of_type_Boolean);
-        long l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-        if (l <= 0L) {
-          break label273;
-        }
-        localaphq.c(l);
-        label184:
-        l = this.f - this.e;
-        if (l <= 0L) {
-          break label282;
-        }
-        localaphq.b(l);
-      }
-    }
-    for (;;)
-    {
-      localaphq.a(bool1);
-      return;
-      bool1 = false;
-      break;
-      if (paramInt == 0) {
-        bool1 = bool2;
-      }
-      for (;;)
-      {
-        if (!bool1)
-        {
-          if (this.jdField_c_of_type_Long == 0L)
-          {
-            localaphq.a(paramInt);
-            break;
-            bool1 = false;
-            continue;
-          }
-          localaphq.a(17);
-          break;
-        }
-      }
-      localaphq.a(0);
-      break label91;
-      label273:
-      localaphq.c(0L);
-      break label184;
-      label282:
-      localaphq.b(0L);
-    }
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    QLog.e("ExcitingTransfer.OfflineSendWorker<FileAssistant>", 1, "nSessionID[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "] setCloseExtfAbility:" + this.jdField_c_of_type_Boolean + "->" + paramBoolean);
-    this.jdField_c_of_type_Boolean = paramBoolean;
-  }
-  
-  private void n()
-  {
-    aphq localaphq = new aphq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    localaphq.a(33);
-    localaphq.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    Object localObject = apug.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
-    localaphq.a(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin).longValue(), 0L, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, (String)localObject, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-    localaphq.c(this.jdField_b_of_type_Boolean);
-    long l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-    if (l > 0L)
-    {
-      localaphq.c(l);
-      l = this.f - this.e;
-      if (l <= 0L) {
-        break label168;
-      }
-      localaphq.b(l);
-    }
-    for (;;)
-    {
-      localObject = new ExcitingTransferUploadResultRp();
-      ((ExcitingTransferUploadResultRp)localObject).m_bIsXTFValid = true;
-      ((ExcitingTransferUploadResultRp)localObject).m_nResult = 33;
-      localaphq.a((ExcitingTransferUploadResultRp)localObject);
-      localaphq.a(false);
-      return;
-      localaphq.c(0L);
-      break;
-      label168:
-      localaphq.b(0L);
-    }
-  }
-  
-  protected apar a(aowf paramaowf, List<String> paramList, int paramInt, boolean paramBoolean, String paramString)
-  {
-    QLog.i("ExcitingTransfer.OfflineSendWorker<FileAssistant>", 1, "^_^ nSessionID[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "] get ExtfFileUploader. bIsHttps:" + paramBoolean + " strHttpsDomain:" + paramString + " strlanIp:" + paramaowf.e);
-    paramList = new aphs(this);
-    if ((paramaowf.jdField_c_of_type_ArrayOfByte != null) && (paramaowf.jdField_c_of_type_ArrayOfByte.length > 0))
-    {
-      paramList.jdField_b_of_type_ArrayOfByte = paramaowf.jdField_c_of_type_ArrayOfByte;
-      j();
-      a(paramaowf.jdField_c_of_type_ArrayOfByte);
-    }
-    paramList.jdField_a_of_type_Boolean = paramBoolean;
-    paramList.jdField_a_of_type_JavaLangString = paramString;
-    paramList.jdField_a_of_type_ArrayOfByte = paramaowf.jdField_b_of_type_ArrayOfByte;
-    paramList.jdField_a_of_type_Int = paramInt;
-    paramList.jdField_c_of_type_ArrayOfByte = paramaowf.jdField_d_of_type_ArrayOfByte;
-    paramList.jdField_d_of_type_ArrayOfByte = paramaowf.jdField_a_of_type_ArrayOfByte;
-    paramaowf = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin).longValue(), paramList);
-    if (paramaowf != null)
-    {
-      ((aphw)paramaowf).a(this);
-      return paramaowf;
-    }
-    QLog.e("ExcitingTransfer.OfflineSendWorker<FileAssistant>", 1, "^_^ nSessionID[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "] get ExtfFileUploader fail.");
-    return paramaowf;
-  }
-  
-  public void a(int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp) {}
-  
-  public void a(int paramInt, ExcitingTransferUploaderRp paramExcitingTransferUploaderRp)
-  {
-    boolean bool = true;
-    if (paramInt != 0)
-    {
-      int i = aphw.a(paramInt);
-      b(this.jdField_a_of_type_Apar.a(), i, "subsender_err", "");
-    }
-    if (paramExcitingTransferUploaderRp != null)
-    {
-      apht localapht = new apht(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      localapht.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-      String str = apug.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
-      localapht.a(paramInt);
-      localapht.a(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin).longValue(), 0L, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, str, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-      localapht.a(paramExcitingTransferUploaderRp);
-      if (paramInt == 0) {}
-      for (;;)
-      {
-        localapht.a(bool);
-        return;
-        bool = false;
-      }
-    }
-    QLog.e("ExcitingTransfer.OfflineSendWorker<FileAssistant>", 1, "nSessionID[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "] onExtfSubUploaderResult datareport fail. no rp");
-  }
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    super.a(paramLong, paramInt, paramString1, paramString2);
-    if (d()) {
-      a(paramInt);
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3)
-  {
-    float f1;
-    String str;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
-    {
-      if (paramLong3 <= 1048576L) {
-        break label82;
-      }
-      f1 = (float)paramLong3 / 1048576.0F;
-      str = new DecimalFormat("0.00").format(f1);
-      str = "加速上传 " + str + "MB/s";
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mExcitingSpeed = str;
-      return;
-      label82:
-      if (paramLong3 > 1024L)
-      {
-        f1 = (float)paramLong3 / 1024.0F;
-        str = new DecimalFormat("0.00").format(f1);
-        str = "加速上传 " + str + "KB/s";
       }
       else
       {
-        str = "加速上传 " + paramLong3 + "KB/s";
+        localArrayList.add(localappw);
       }
     }
+    return localArrayList;
   }
   
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2)
+  public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    if ((this.jdField_d_of_type_Boolean) && (paramBoolean) && (d()))
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    switch (paramInt1)
     {
-      QLog.e("ExcitingTransfer.OfflineSendWorker<FileAssistant>", 1, "*_* nSessionID[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "] exciting tansfer fail. ftnUploader try again");
-      a(paramInt);
-      a(true);
-      m();
-      return;
     }
-    super.a(paramBoolean, paramLong, paramInt, paramString1, paramString2);
-  }
-  
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Boolean) {}
     do
     {
       return;
-      this.f = System.currentTimeMillis();
-      long l1 = this.f;
-      long l2 = this.e;
-      QLog.i("ExcitingTransfer.OfflineSendWorker<FileAssistant>", 1, "^_^ nSessionID[" + String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId) + "] onFullShaCalcDone costTime:" + (l1 - l2) + " bigFile:" + paramBoolean + ". useExtfUploader:" + d());
-    } while ((!paramBoolean) || (!d()) || (this.jdField_a_of_type_Apar == null));
-    this.jdField_a_of_type_Apar.a(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseEmosmStrategy", 2, "onActivityResult, PeakConstants.REQUEST_CODE_FOR_PHOTO_PREVIEW");
+      }
+      if (paramIntent == null) {
+        break;
+      }
+      paramIntent = paramIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
+      if (paramIntent != null)
+      {
+        ThreadManager.excute(new BaseEmosmStrategy.2(this, paramIntent), 64, null, false);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("BaseEmosmStrategy", 2, "onActivityResult, selected is empty");
+    return;
+    QLog.e("BaseEmosmStrategy", 1, "onActivityResult, PeakConstants.REQUEST_CODE_FOR_PHOTO_PREVIEW, data is null");
   }
   
-  public void aw_()
+  public void a(Context paramContext, Intent paramIntent)
   {
-    super.aw_();
+    if (this.jdField_a_of_type_Apik == null) {}
+    do
+    {
+      do
+      {
+        return;
+        paramContext = paramIntent.getAction();
+        if ("com.tencent.mobileqq.action.refresh.emotiom".equals(paramContext))
+        {
+          this.jdField_a_of_type_Apik.e();
+          return;
+        }
+      } while (!"com.tencent.mobileqq.action.upload.emotiom".equals(paramContext));
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseEmosmStrategy", 2, "onReceive ACTION_UPLOAD_EMOTION");
+      }
+      paramContext = paramIntent.getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
+      if (paramContext != null)
+      {
+        ThreadManager.excute(new BaseEmosmStrategy.1(this, paramContext), 64, null, false);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("BaseEmosmStrategy", 2, "onReceive selected is empty");
   }
   
-  public void ay_() {}
-  
-  protected void b(String paramString)
+  public void a(apia paramapia)
   {
-    super.b(paramString);
-    if (d()) {
-      a(0);
+    a().a(paramapia);
+  }
+  
+  public void a(GridView paramGridView, int paramInt, aptd paramaptd) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(Activity paramActivity)
+  {
+    return false;
+  }
+  
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Apik == null) {
+      return;
+    }
+    Object localObject = a(this.jdField_a_of_type_Apik.jdField_a_of_type_JavaUtilList);
+    if (localObject == null) {
+      localObject = new ArrayList();
+    }
+    for (;;)
+    {
+      if ((((List)localObject).size() > 0) && (((appw)((List)localObject).get(0)).f == 1)) {
+        ((List)localObject).remove(0);
+      }
+      this.jdField_a_of_type_Apik.d((List)localObject);
+      return;
     }
   }
   
-  protected boolean b()
+  public boolean b()
   {
-    return false;
+    return true;
   }
   
-  protected boolean c()
+  public void c()
   {
-    return false;
+    if (this.jdField_a_of_type_Apik == null) {
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_Apik.jdField_a_of_type_JavaUtilList;
+    if (localObject == null) {
+      localObject = new ArrayList();
+    }
+    for (;;)
+    {
+      appw localappw;
+      if (a())
+      {
+        if (((List)localObject).size() <= 0) {
+          break label91;
+        }
+        if (((appw)((List)localObject).get(0)).f != 1)
+        {
+          localappw = new appw();
+          localappw.f = 1;
+          ((List)localObject).add(0, localappw);
+        }
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Apik.d((List)localObject);
+        return;
+        label91:
+        localappw = new appw();
+        localappw.f = 1;
+        ((List)localObject).add(0, localappw);
+      }
+    }
   }
   
   public void d()
   {
-    if ((d()) && (this.jdField_a_of_type_Apar != null) && ((this.jdField_a_of_type_Apar instanceof aphw))) {
-      aphw localaphw = (aphw)this.jdField_a_of_type_Apar;
-    }
-    super.d();
+    this.jdField_a_of_type_Apja.onDestroy();
+    this.jdField_a_of_type_Apik = null;
   }
   
-  protected boolean d()
-  {
-    return !e();
-  }
+  public void e() {}
   
-  public boolean e()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
+  public void f() {}
   
-  protected void k()
-  {
-    super.k();
-    this.e = System.currentTimeMillis();
-  }
-  
-  protected void l()
-  {
-    super.l();
-    if (d())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strServerPath = "";
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bombData = null;
-    }
-  }
+  public void g() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aphr
  * JD-Core Version:    0.7.0.1
  */

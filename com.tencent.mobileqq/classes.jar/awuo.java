@@ -1,39 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
 
-public class awuo
-  extends awut
+class awuo
+  implements DialogInterface.OnClickListener
 {
-  public awuo(GroupSearchEngine paramGroupSearchEngine, awuu paramawuu, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramawuu, paramString, paramInt);
-  }
+  awuo(awul paramawul, String paramString, PushDialogTemplate paramPushDialogTemplate) {}
   
-  public awoh a(List<awoi> paramList, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return null;
-  }
-  
-  public List<awoh> a(awvi paramawvi)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = -1;
-    if (paramawvi.jdField_a_of_type_AndroidOsBundle == null) {
-      paramawvi.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    new awuq(awul.a(this.jdField_a_of_type_Awul).jdField_a_of_type_AndroidContentContext, awul.a(this.jdField_a_of_type_Awul).a()).a(this.jdField_a_of_type_JavaLangString).a(awul.a(this.jdField_a_of_type_Awul).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo).a(awul.a(this.jdField_a_of_type_Awul)).a();
+    if (this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.isFriendBanned())
+    {
+      azmj.b(awul.a(this.jdField_a_of_type_Awul).a(), "dc00898", "", "", "0X800A4BE", "0X800A4BE", 0, 0, "", "", "", "");
+      return;
     }
-    ArrayList localArrayList = new ArrayList();
-    paramawvi = new awnx(paramawvi.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
-    localArrayList.add(new awnp(paramawvi));
-    localArrayList.add(paramawvi);
-    awvz.a(0);
-    return localArrayList;
+    azmj.b(awul.a(this.jdField_a_of_type_Awul).a(), "dc00898", "", "", "0X800A4BC", "0X800A4BC", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awuo
  * JD-Core Version:    0.7.0.1
  */

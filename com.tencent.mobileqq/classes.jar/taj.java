@@ -1,28 +1,39 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.util.SwipeBackLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class taj
-  extends tbb
+  extends Handler
 {
-  qqstory_service.RspLikeFeed a;
+  public taj(SwipeBackLayout paramSwipeBackLayout) {}
   
-  public taj() {}
-  
-  public taj(qqstory_service.RspLikeFeed paramRspLikeFeed)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramRspLikeFeed.result);
-    this.a = paramRspLikeFeed;
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (SwipeBackLayout.a(this.a));
+      SwipeBackLayout.a(this.a, true);
+    } while (!(this.a.a instanceof Activity));
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
+    }
+    this.a.c = true;
+    ((Activity)this.a.a).finish();
   }
-  
-  public void a() {}
-  
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     taj
  * JD-Core Version:    0.7.0.1
  */

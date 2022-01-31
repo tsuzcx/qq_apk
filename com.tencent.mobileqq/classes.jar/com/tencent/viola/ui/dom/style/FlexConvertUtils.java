@@ -13,11 +13,13 @@ import android.view.WindowManager;
 import com.tencent.viola.core.ViolaEnvironment;
 import com.tencent.viola.utils.ViolaLogUtils;
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 
 public class FlexConvertUtils
 {
   public static String TAG = "FlexConvertUtils";
   private static String deviceid = "";
+  private static int mScreenContentHeight;
   private static int mScreenHeight;
   private static int mScreenWidth;
   private static final boolean mUseWebPx = false;
@@ -408,9 +410,25 @@ public class FlexConvertUtils
     }
   }
   
+  public static int getScreenContentHeight()
+  {
+    return getScreenContentHeight(ViolaEnvironment.sApplication);
+  }
+  
+  public static int getScreenContentHeight(Context paramContext)
+  {
+    if ((paramContext != null) && (mScreenContentHeight == 0))
+    {
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
+      mScreenContentHeight = localDisplayMetrics.heightPixels;
+    }
+    return mScreenContentHeight;
+  }
+  
   public static int getScreenHeight()
   {
-    return getScreenHeight(ViolaEnvironment.sApplication);
+    return Math.max(getScreenWidth(ViolaEnvironment.sApplication), getScreenHeight(ViolaEnvironment.sApplication));
   }
   
   public static int getScreenHeight(Context paramContext)
@@ -430,7 +448,7 @@ public class FlexConvertUtils
   
   public static int getScreenWidth()
   {
-    return getScreenWidth(ViolaEnvironment.sApplication);
+    return Math.min(getScreenWidth(ViolaEnvironment.sApplication), getScreenHeight(ViolaEnvironment.sApplication));
   }
   
   public static int getScreenWidth(Context paramContext)
@@ -450,20 +468,28 @@ public class FlexConvertUtils
   
   public static float px2dip(float paramFloat)
   {
-    float f1 = 2.0F;
+    float f2 = 2.0F;
     try
     {
-      float f2 = ViolaEnvironment.getApplication().getResources().getDisplayMetrics().density;
-      f1 = f2;
+      f1 = ViolaEnvironment.getApplication().getResources().getDisplayMetrics().density;
+      if (f1 == 0.0F)
+      {
+        f1 = f2;
+        DecimalFormat localDecimalFormat = new DecimalFormat("0.00");
+        DecimalFormatSymbols localDecimalFormatSymbols = new DecimalFormatSymbols();
+        localDecimalFormatSymbols.setDecimalSeparator('.');
+        localDecimalFormat.setDecimalFormatSymbols(localDecimalFormatSymbols);
+        return Float.valueOf(localDecimalFormat.format(paramFloat / f1)).floatValue();
+      }
     }
     catch (Exception localException)
     {
       for (;;)
       {
         ViolaLogUtils.e(TAG, "Exception e:" + localException.getMessage());
+        float f1 = 2.0F;
       }
     }
-    return Float.valueOf(new DecimalFormat("0.00").format(paramFloat / f1)).floatValue();
   }
   
   public static int sp2px(float paramFloat)
@@ -506,7 +532,7 @@ public class FlexConvertUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.dom.style.FlexConvertUtils
  * JD-Core Version:    0.7.0.1
  */

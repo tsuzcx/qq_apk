@@ -1,35 +1,69 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
 class odg
-  implements DialogInterface.OnClickListener
+  implements bhue
 {
-  odg(odd paramodd, boolean paramBoolean) {}
+  odg(odf paramodf, int paramInt, VideoInfo paramVideoInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject)
   {
-    paramDialogInterface = new HashMap();
-    paramDialogInterface.put("stat_src", "2");
-    nmc.a(new nyd().a(BaseApplication.getContext()).a(nmc.e).b(nmc.ac).a(oas.a(odd.a(this.jdField_a_of_type_Odd))).d(nmc.a(odd.a(this.jdField_a_of_type_Odd), paramDialogInterface)).a());
-    if (!this.jdField_a_of_type_Boolean) {
-      if (!odd.a(this.jdField_a_of_type_Odd)) {}
-    }
-    while (!(this.jdField_a_of_type_Odd.a instanceof Activity))
+    int i = 0;
+    if (paramInt == this.jdField_a_of_type_Int)
     {
-      return;
-      this.jdField_a_of_type_Odd.g();
-      return;
+      QQToast.a(odf.a(this.jdField_a_of_type_Odf), 0, 2131695685, 0).a();
+      odf.a(this.jdField_a_of_type_Odf).d(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+      if ((paramObject == null) || (!(paramObject instanceof DislikeInfo))) {
+        break label349;
+      }
     }
-    shq.a(this.jdField_a_of_type_Odd.a);
-    oai.a(this.jdField_a_of_type_Odd.a, odd.a(this.jdField_a_of_type_Odd));
+    label346:
+    label349:
+    for (long l = ((DislikeInfo)paramObject).a;; l = 0L)
+    {
+      paramView = "";
+      paramInt = i;
+      if (paramInt < paramArrayList.size())
+      {
+        paramObject = (DislikeInfo)paramArrayList.get(paramInt);
+        if (paramObject == null) {
+          break label346;
+        }
+        paramObject = paramView + paramObject.a;
+        paramView = paramObject;
+        if (paramInt != paramArrayList.size() - 1) {
+          paramView = paramObject + ",";
+        }
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a != null)
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f = l;
+          paramArrayList = noy.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+          if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a(odf.a(this.jdField_a_of_type_Odf))) {
+            noy.a(new obk().a(odf.a(this.jdField_a_of_type_Odf)).a(noy.c).b(noy.P).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
+          }
+        }
+        else
+        {
+          return;
+        }
+        noy.a(new obk().a(odf.a(this.jdField_a_of_type_Odf)).a(noy.c).b(noy.N).a(paramArrayList).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a).a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a.f).a(paramView).a());
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     odg
  * JD-Core Version:    0.7.0.1
  */

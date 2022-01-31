@@ -1,54 +1,59 @@
-import android.view.View;
-import android.view.animation.Animation;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 class rsk
-  implements rsp
+  implements ViewBase.OnClickListener
 {
   rsk(rsj paramrsj) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (paramBoolean)
+    for (;;)
     {
-      if (rsj.a(this.a) != null)
+      FastWebArticleInfo localFastWebArticleInfo;
+      try
       {
-        paramString = (Animation)rsj.a(this.a).getTag(2131368790);
-        paramString.setAnimationListener(new rsl(this));
-        rsj.a(this.a).startAnimation(paramString);
+        String str = paramViewBase.getEventAttachedData();
+        int i = StringCommon.getStrIdFromString(paramViewBase.getClickEvnet());
+        paramViewBase = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b;
+        localFastWebArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
+        switch (i)
+        {
+        case 1004: 
+          if (TextUtils.isEmpty(str)) {
+            return;
+          }
+          ors.d(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, str);
+          return;
+        }
       }
-      return;
-    }
-    bcql.a(this.a.a, 1, 2131718453, 0).a();
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
-  {
-    if (paramBoolean)
-    {
-      rsj.a(this.a).a(rsj.a(this.a), rsj.a(this.a, paramInt), this.a.a, "", "", paramString2);
-      return;
-    }
-    bcql.a(this.a.a, 1, 2131718457, 0).a();
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      if (rsj.a(this.a) != null)
+      catch (Exception paramViewBase)
       {
-        paramString = (Animation)rsj.a(this.a).getTag(2131368790);
-        paramString.setAnimationListener(new rsm(this));
-        rsj.a(this.a).startAnimation(paramString);
+        QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "findClickableViewListener error!  msg=" + paramViewBase);
+        return;
       }
+      ReadInJoyFastWebBottomSocialViewNew.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.b(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.c(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.d(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
+      return;
+      ReadInJoyFastWebBottomSocialViewNew.e(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, paramViewBase, localFastWebArticleInfo);
       return;
     }
-    bcql.a(this.a.a, 1, 2131718460, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rsk
  * JD-Core Version:    0.7.0.1
  */

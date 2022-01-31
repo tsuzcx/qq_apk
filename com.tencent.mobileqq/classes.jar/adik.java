@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 class adik
-  extends arzu
+  implements DialogInterface.OnCancelListener
 {
   adik(adii paramadii) {}
   
-  public void a() {}
-  
-  public void a(arum paramarum)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((adii.a(this.a) != null) && (adii.a(this.a).equals(paramarum)) && (adii.a(this.a) == adii.a(this.a).a().a())) {
-      adii.a(this.a).a().a();
-    }
+    this.a.a.setResult(4003);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adik
  * JD-Core Version:    0.7.0.1
  */

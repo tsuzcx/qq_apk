@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beiw;
-import beix;
-import bekr;
-import belz;
-import betc;
+import bgiu;
+import bgiy;
+import bgkd;
+import bglp;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 class StorageJsPlugin$3
   implements StorageJsPlugin.StorageTask
 {
-  StorageJsPlugin$3(StorageJsPlugin paramStorageJsPlugin, bekr parambekr) {}
+  StorageJsPlugin$3(StorageJsPlugin paramStorageJsPlugin, bgkd parambgkd) {}
   
   public String run()
   {
@@ -28,14 +28,14 @@ class StorageJsPlugin$3
       {
         localObject = ((Set)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          localHashSet.add(belz.b((String)((Iterator)localObject).next()));
+          localHashSet.add(bglp.b((String)((Iterator)localObject).next()));
         }
       }
-      localException.put("keys", beiw.a(localHashSet));
+      localException.put("keys", bgiu.a(localHashSet));
     }
     catch (Exception localException)
     {
-      betc.d("StorageJsPlugin", this.val$req.a + " result error." + localException);
+      QMLog.e("StorageJsPlugin", this.val$req.a + " result error." + localException);
       return this.val$req.a("json error");
     }
     String str = this.val$req.a(localException);
@@ -44,7 +44,7 @@ class StorageJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.StorageJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

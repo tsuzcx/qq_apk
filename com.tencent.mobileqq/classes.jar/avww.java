@@ -1,31 +1,21 @@
-import java.util.HashMap;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import android.widget.RelativeLayout;
 
-public class avww
-  extends avwx
+class avww
+  extends AnimatorListenerAdapter
 {
-  public int a = -1;
+  avww(avwn paramavwn, View paramView) {}
   
-  public HashMap<String, String> a(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ("ShortVideo.Preview".equals(paramString))
-    {
-      paramString = new HashMap();
-      paramString.put("param_uinType", this.b + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
-      paramString.put("param_playAction", this.a + "");
-      return paramString;
-    }
-    return null;
+    avwn.a(this.jdField_a_of_type_Avwn).removeView(this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avww
  * JD-Core Version:    0.7.0.1
  */

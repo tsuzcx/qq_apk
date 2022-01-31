@@ -1,23 +1,39 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import NS_USER_ACTION_REPORT.UserActionReport;
+import NS_USER_ACTION_REPORT.UserActionReportReq;
+import NS_USER_ACTION_REPORT.UserCommReport;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
-class bjgg
-  implements TextWatcher
+public class bjgg
+  extends QzoneExternalRequest
 {
-  bjgg(bjgd parambjgd) {}
+  private final JceStruct a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public bjgg(UserCommReport paramUserCommReport, ArrayList<UserActionReport> paramArrayList)
   {
-    bjgd.a(this.a);
+    this.a = new UserActionReportReq(1, paramUserCommReport, paramArrayList);
+    this.needCompress = false;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public String getCmdString()
+  {
+    return "MobileReport.UserActionReport";
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "UserActionReport";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjgg
  * JD-Core Version:    0.7.0.1
  */

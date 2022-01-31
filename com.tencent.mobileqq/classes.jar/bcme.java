@@ -1,49 +1,21 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.troop.widget.BorderURLImageView;
 
 public class bcme
-  extends bcnc
 {
-  private float jdField_a_of_type_Float;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
-  private int d = -872415232;
-  private int e = 0;
-  private int f;
+  aiiy jdField_a_of_type_Aiiy;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  BorderURLImageView jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView;
   
-  public void a(float paramFloat)
-  {
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.f = paramInt;
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas)
-  {
-    Rect localRect = getBounds();
-    paramCanvas.save();
-    int i = localRect.centerX();
-    int j = this.f;
-    paramCanvas.clipRect(localRect);
-    paramCanvas.drawColor(this.d);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
-    paramCanvas.drawCircle(i, this.jdField_a_of_type_Float, j, this.jdField_a_of_type_AndroidGraphicsPaint);
-    paramCanvas.restore();
-  }
+  protected bcme(bcmd parambcmd) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcme
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import NS_MINI_SHARE.MiniProgramShare.StAdaptSharePicRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -31,7 +31,7 @@ public class MiniAppChangeShareImageUrlServlet
     {
       try
       {
-        localStQWebRsp.mergeFrom(bbma.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bdku.b(paramFromServiceMsg.getWupBuffer()));
         MiniProgramShare.StAdaptSharePicRsp localStAdaptSharePicRsp = new MiniProgramShare.StAdaptSharePicRsp();
         localStAdaptSharePicRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
@@ -58,14 +58,14 @@ public class MiniAppChangeShareImageUrlServlet
       arrayOfByte1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_share.AdaptSharePic");
-    paramPacket.putSendData(bbma.a(arrayOfByte1));
+    paramPacket.putSendData(bdku.a(arrayOfByte1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppChangeShareImageUrlServlet
  * JD-Core Version:    0.7.0.1
  */

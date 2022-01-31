@@ -1,34 +1,21 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class mcw
-  implements mho
+class mcw
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public mcw(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI, long paramLong) {}
+  mcw(mcv parammcv) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = true;
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.L();
-  }
-  
-  public void b()
-  {
-    mtq.a().b(this.jdField_a_of_type_Long);
-    if (!this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().Q) {
-      DoubleVideoMeetingCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI, this.jdField_a_of_type_Long);
+    if (this.a.a == null) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.jdField_a_of_type_Long, true, 0);
-    DoubleVideoMeetingCtrlUI.b(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.b(true);
-    axqy.b(null, "CliOper", "", "", "0X8005206", "0X8005206", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = false;
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mcw
  * JD-Core Version:    0.7.0.1
  */

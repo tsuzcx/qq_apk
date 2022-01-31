@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.webprocess;
 
-import bcay;
+import bdzz;
 
 class WebProcessManager$1
   implements Runnable
 {
-  WebProcessManager$1(WebProcessManager paramWebProcessManager, bcay parambcay) {}
+  WebProcessManager$1(WebProcessManager paramWebProcessManager, bdzz parambdzz) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class WebProcessManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebProcessManager.1
  * JD-Core Version:    0.7.0.1
  */

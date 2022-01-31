@@ -12,7 +12,7 @@ public abstract interface DownloadCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqinterface.DownloadCallback
  * JD-Core Version:    0.7.0.1
  */

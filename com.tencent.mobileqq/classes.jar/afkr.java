@@ -1,72 +1,83 @@
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Rect;
-import android.view.LayoutInflater;
+import android.os.Bundle;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.LinearLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.ThemeImageView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class afkr
-  extends afjt
-  implements View.OnClickListener
+class afkr
+  extends ClickableSpan
 {
-  private boolean a;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Context> b;
   
-  public afkr(Context paramContext, QQAppInterface paramQQAppInterface, aipn paramaipn, atza paramatza)
+  afkr(afjb paramafjb, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(paramContext, paramQQAppInterface, paramaipn, paramatza);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramContext);
   }
   
-  public View a(int paramInt, View paramView)
+  public void onClick(View paramView)
   {
-    afks localafks;
-    Object localObject;
-    if ((paramView == null) || (!(paramView.getTag() instanceof afks)))
+    paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (Context)this.b.get();
+    if ((paramView == null) || (localObject == null)) {}
+    long l;
+    do
     {
-      localafks = new afks();
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560918, null);
-      localafks.a = ((LinearLayout)paramView.findViewById(2131364676));
-      localafks.b = ((LinearLayout)paramView.findViewById(2131364671));
-      localObject = (ThemeImageView)paramView.findViewById(2131365662);
-      ((ThemeImageView)localObject).setSupportMaskView(true);
-      ((ThemeImageView)localObject).setMaskShape(bfwr.b);
-      paramView.setTag(localafks);
+      do
+      {
+        return;
+      } while (!(localObject instanceof Activity));
+      if (!bdee.d((Context)localObject))
+      {
+        QQToast.a((Context)localObject, 2131692397, 0).b(((Context)localObject).getResources().getDimensionPixelSize(2131298914));
+        return;
+      }
+      l = System.currentTimeMillis();
+      if ((afjb.a(this.jdField_a_of_type_Afjb) == 0L) || (l <= afjb.a(this.jdField_a_of_type_Afjb)) || (l - afjb.a(this.jdField_a_of_type_Afjb) > 800L)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("GrayTipsItemBuilder", 2, "click too often...ignore click envent");
+    return;
+    afjb.a(this.jdField_a_of_type_Afjb, l);
+    if (bdee.h((Context)localObject))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString(bfjy.b, "100868074");
+      localBundle.putString(bfjy.j, "https://shouji.sogou.com/proxy/linkto.php?site=20141110sogouinputapk");
+      localBundle.putString(bfjy.f, "com.sohu.inputmethod.sogou");
+      localBundle.putInt(bfjy.k, 2);
+      localBundle.putString(bfjy.i, "ANDROIDQQ.MSG.SOUGOU");
+      localBundle.putString(bfjy.l, alpo.a(2131705705));
+      localBundle.putBoolean(bfjy.x, false);
+      bfju.a((Activity)localObject, localBundle, "biz_src_yyb", null, 0);
     }
     for (;;)
     {
-      paramView.setOnClickListener(this);
-      localObject = new Rect();
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-      paramInt = ((Rect)localObject).height() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298865) - bbll.a(80.0F);
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
+      azmj.b(paramView, "CliOper", "", "", "0X80047CF", "0X80047CF", 0, 0, "", "", "", "");
+      return;
+      localObject = bdds.a(paramView, (Context)localObject, "qapp://detail?param=" + afjb.a("id=100868074&channelId=2800&packageName=com.sohu.inputmethod.sogou&via=MSG.SOUGOU"));
+      if (localObject != null) {
+        ((bddb)localObject).c();
       }
-      a(paramView, paramInt);
-      localafks.a.setVisibility(8);
-      localafks.b.setVisibility(0);
-      return paramView;
-      localafks = (afks)paramView.getTag();
     }
-    a(paramView, paramInt);
-    localafks.a.setVisibility(0);
-    localafks.b.setVisibility(8);
-    return paramView;
   }
   
-  public void a(boolean paramBoolean)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramTextPaint.setColor(-12541697);
   }
-  
-  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afkr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.BindGroupFragment;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bczw
-  implements View.OnClickListener
+final class bczw
+  implements DownloadParams.DecodeHandler
 {
-  public bczw(BindGroupFragment paramBindGroupFragment) {}
-  
-  public void onClick(View paramView)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    BindGroupFragment.a(this.a).finish();
+    if (paramBitmap == null) {
+      return null;
+    }
+    if ((paramDownloadParams != null) && (paramDownloadParams.reqWidth >= 0) && (paramDownloadParams.reqHeight >= 0)) {
+      return bczv.a(paramBitmap, paramDownloadParams.reqWidth, paramDownloadParams.reqHeight);
+    }
+    return bczv.a(paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bczw
  * JD-Core Version:    0.7.0.1
  */

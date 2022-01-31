@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-
-class aesz
-  implements View.OnClickListener
+public class aesz
 {
-  aesz(aert paramaert, RelativeLayout paramRelativeLayout, LinearLayout paramLinearLayout) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  private aesz(aesv paramaesv, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesz
  * JD-Core Version:    0.7.0.1
  */

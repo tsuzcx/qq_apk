@@ -1,32 +1,27 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.LeakHelper.2.1;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.util.List;
+import org.json.JSONObject;
 
-public final class bgyc
-  implements View.OnClickListener
+class bgyc
+  implements AsyncResult
 {
-  public void onClick(View paramView)
+  bgyc(bgya parambgya, List paramList) {}
+  
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (this.a != null) {
-      this.a.dismiss();
+    if (paramBoolean)
+    {
+      QMLog.d("MiniProgramReporter", "performDataReportViaSSO  onDcReport() called with: isSuc = [true], ret = [" + paramJSONObject + "]");
+      return;
     }
-    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131706007) + "/Tencent/MobileQQ/log/", 1).a();
-    paramView = ThreadManager.newFreeHandlerThread("qzone-leaker", 10);
-    paramView.start();
-    paramView = paramView.getLooper();
-    if (paramView != null) {
-      new Handler(paramView).post(new LeakHelper.2.1(this));
-    }
+    QMLog.e("MiniProgramReporter", "performDataReportViaSSO onDcReport: sso command failed, try again");
+    this.jdField_a_of_type_Bgya.b(this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgyc
  * JD-Core Version:    0.7.0.1
  */

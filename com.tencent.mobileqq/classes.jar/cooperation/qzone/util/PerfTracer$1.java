@@ -1,6 +1,6 @@
 package cooperation.qzone.util;
 
-import axrn;
+import azmz;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
@@ -13,7 +13,7 @@ final class PerfTracer$1
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put(this.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Long));
-    axrn.a(BaseApplication.getContext()).a(null, "QzoneTracePref", true, 0L, 0L, localHashMap, null, true);
+    azmz.a(BaseApplication.getContext()).a(null, "QzoneTracePref", true, 0L, 0L, localHashMap, null, true);
   }
 }
 

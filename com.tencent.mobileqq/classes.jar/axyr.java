@@ -1,19 +1,21 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
-class axyr
-  extends acuj
+public class axyr
+  implements ga
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public axyr(SignatureHistoryFragment paramSignatureHistoryFragment) {}
+  
+  public void a()
+  {
+    Message localMessage = SignatureHistoryFragment.a(this.a).obtainMessage(1);
+    SignatureHistoryFragment.a(this.a).sendMessage(localMessage);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axyr
  * JD-Core Version:    0.7.0.1
  */

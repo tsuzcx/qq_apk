@@ -1,25 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class azyb
-  implements DialogInterface.OnClickListener
+class azyb
+  implements Callable<File>
 {
-  public azyb(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  azyb(azya paramazya) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public File a()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (azya.a(this.a).exists()) {
+      return azya.a(this.a);
     }
-    SubmitHomeWorkFragment.a(this.a);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azyb
  * JD-Core Version:    0.7.0.1
  */

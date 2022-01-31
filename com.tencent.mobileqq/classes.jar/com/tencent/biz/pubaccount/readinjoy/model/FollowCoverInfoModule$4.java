@@ -2,23 +2,23 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bhvy;
+import bjxj;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pam;
+import pfv;
 
 public class FollowCoverInfoModule$4
   implements Runnable
 {
-  public FollowCoverInfoModule$4(pam parampam, HashMap paramHashMap) {}
+  public FollowCoverInfoModule$4(pfv parampfv, HashMap paramHashMap) {}
   
   public void run()
   {
-    Object localObject = bhvy.a(pam.a(this.this$0), true, false);
+    Object localObject = bjxj.a(pfv.a(this.this$0), true, false);
     JSONObject localJSONObject;
     if (localObject != null)
     {
@@ -43,12 +43,12 @@ public class FollowCoverInfoModule$4
       }
     }
     localJSONException.putString("follow_tab_topic_update_info_exposure", localJSONObject.toString());
-    bhvy.a(localJSONException, true);
+    bjxj.a(localJSONException, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.FollowCoverInfoModule.4
  * JD-Core Version:    0.7.0.1
  */

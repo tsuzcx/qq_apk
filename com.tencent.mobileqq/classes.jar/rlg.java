@@ -1,59 +1,14 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import org.json.JSONObject;
-
-class rlg
-  extends rkg
+public abstract interface rlg
 {
-  private Container a;
+  public abstract void a(int paramInt);
   
-  public rlg(View paramView, BaseData paramBaseData)
-  {
-    super(paramView, paramBaseData);
-    if ((paramView instanceof Container)) {
-      this.a = ((Container)paramView);
-    }
-  }
+  public abstract void a(boolean paramBoolean);
   
-  private JSONObject a(ProteusBookData paramProteusBookData)
-  {
-    if (paramProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo != null) {
-      return paramProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.a(paramProteusBookData.b);
-    }
-    return null;
-  }
-  
-  private void b()
-  {
-    ViewFactory.findClickableViewListener(this.a.getVirtualView(), new rlh(this));
-  }
-  
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    switch (paramBaseData2.p)
-    {
-    }
-    do
-    {
-      return;
-    } while (this.a == null);
-    paramBaseData1 = (ProteusBookData)paramBaseData2;
-    if (paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean != null)
-    {
-      paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.putDynamicJson(a(paramBaseData1));
-      olo.a(this.a.getVirtualView(), paramBaseData1.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean.getViewBean());
-    }
-    b();
-  }
+  public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rlg
  * JD-Core Version:    0.7.0.1
  */

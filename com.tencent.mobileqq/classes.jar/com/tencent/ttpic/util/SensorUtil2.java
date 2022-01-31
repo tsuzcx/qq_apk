@@ -18,6 +18,9 @@ public class SensorUtil2
   public SensorUtil2()
   {
     Matrix.setIdentityM(this.mRotationMatrix, 0);
+    if (AEModule.getContext() == null) {
+      return;
+    }
     this.mSensorManager = ((SensorManager)AEModule.getContext().getSystemService("sensor"));
     this.mRotationSensor = this.mSensorManager.getDefaultSensor(11);
   }
@@ -46,12 +49,16 @@ public class SensorUtil2
   
   public void start()
   {
-    this.mSensorManager.registerListener(this, this.mRotationSensor, 1);
+    if (this.mSensorManager != null) {
+      this.mSensorManager.registerListener(this, this.mRotationSensor, 1);
+    }
   }
   
   public void stop()
   {
-    this.mSensorManager.unregisterListener(this);
+    if (this.mSensorManager != null) {
+      this.mSensorManager.unregisterListener(this);
+    }
   }
 }
 

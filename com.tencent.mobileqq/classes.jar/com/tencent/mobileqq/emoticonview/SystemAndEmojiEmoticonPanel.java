@@ -3,26 +3,26 @@ package com.tencent.mobileqq.emoticonview;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import anyb;
-import anyg;
+import appo;
+import appt;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SystemAndEmojiEmoticonPanel
   extends SystemEmoticonPanel
 {
-  public SystemAndEmojiEmoticonPanel(Context paramContext, anyg paramanyg)
+  public SystemAndEmojiEmoticonPanel(Context paramContext, appt paramappt)
   {
-    super(paramContext, paramanyg);
+    super(paramContext, paramappt);
   }
   
-  protected void a(Context paramContext, anyg paramanyg)
+  protected void a(Context paramContext, appt paramappt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.b.findViewById(2131374683));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.b.findViewById(2131379152));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.b.findViewById(2131375141));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.b.findViewById(2131379848));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter = new EmoticonPagerAdapter();
     ArrayList localArrayList = new ArrayList(1);
-    paramContext = new anyb(paramContext, paramanyg, 9);
+    paramContext = new appo(paramContext, paramappt, 9);
     localArrayList.add(paramContext);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.a(localArrayList);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter);
@@ -33,7 +33,7 @@ public class SystemAndEmojiEmoticonPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel
  * JD-Core Version:    0.7.0.1
  */

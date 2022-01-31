@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount;
 import com.tencent.common.app.AppInterface;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sgg;
+import syb;
 
 class PublicAccountJavascriptInterface$18
   implements Runnable
@@ -12,7 +12,7 @@ class PublicAccountJavascriptInterface$18
   
   public void run()
   {
-    boolean bool = sgg.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString);
+    boolean bool = syb.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString);
     try
     {
       this.jdField_a_of_type_OrgJsonJSONObject.put("follow", bool);
@@ -27,7 +27,7 @@ class PublicAccountJavascriptInterface$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.PublicAccountJavascriptInterface.18
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,16 @@
-import android.text.TextUtils;
-import java.io.File;
-import java.io.FilenameFilter;
-
-final class beto
-  implements FilenameFilter
+public abstract interface beto
 {
-  public boolean accept(File paramFile, String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && ((paramString.endsWith(".so")) || (paramString.endsWith(".jar")));
-  }
+  public abstract void a();
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beto
  * JD-Core Version:    0.7.0.1
  */

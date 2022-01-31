@@ -1,86 +1,55 @@
-import QQService.SvcDevLoginInfo;
-import QQService.SvcRspGetDevLoginInfo;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
 
 public class abxt
-  extends ajxj
+  implements View.OnClickListener
 {
-  public abxt(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public abxt(AddFriendVerifyActivity paramAddFriendVerifyActivity, StringBuffer paramStringBuffer, int paramInt1, int paramInt2, int paramInt3) {}
   
-  protected void onDelHistoryDevResult(boolean paramBoolean, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onDelHistoryDevResult isSuccess=" + paramBoolean + " errorMsg=" + paramString + " index=" + paramInt);
-    }
-    RecentLoginDevActivity.b(this.a);
-    if (paramBoolean)
+    paramView = this.jdField_a_of_type_JavaLangStringBuffer.toString();
+    int i = 0;
+    String str;
+    if (i < AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).size())
     {
-      axqy.b(this.a.app, "CliOper", "", "", "My_eq", "Delete_eq", 0, 0, "", "", "", "");
-      if ((paramInt > -1) && (RecentLoginDevActivity.a(this.a) != null) && (paramInt < RecentLoginDevActivity.a(this.a).size()))
-      {
-        RecentLoginDevActivity.a(this.a).remove(paramInt);
-        RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
+      str = ((EditText)AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity).get(i)).getText().toString().trim();
+      if (!"".equals(str)) {}
+    }
+    for (i = 1;; i = 0)
+    {
+      if (i != 0) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131690106), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getTitleBarHeight());
       }
-      bcql.a(this.a.getApplicationContext(), 2, this.a.getString(2131692124), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (TextUtils.isEmpty(paramString))
-    {
-      bcql.a(this.a.getApplicationContext(), 1, this.a.getString(2131694487), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    bcql.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.getTitleBarHeight());
-  }
-  
-  protected void onGetHistoryDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
-  {
-    RecentLoginDevActivity.b(this.a);
-    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult success");
-      }
-      RecentLoginDevActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecHistoryLoginDevInfo);
-      if (QLog.isColorLevel())
+      for (;;)
       {
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
-        paramSvcRspGetDevLoginInfo = RecentLoginDevActivity.a(this.a).iterator();
-        while (paramSvcRspGetDevLoginInfo.hasNext())
-        {
-          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
-          if (localSvcDevLoginInfo != null) {
-            QLog.d("Q.devlock.RecentLoginDevActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
-          }
+        azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("AddFriendVerifyActivity", 2, "reportClickEvent action: 0X80077B4  sourceId = " + this.jdField_a_of_type_Int + " subSourceId = " + this.b);
         }
-        QLog.d("Q.devlock.RecentLoginDevActivity", 2, "------------------------------------------------------------------------------");
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_Int, this.c);
+        return;
+        paramView = paramView.replaceFirst("\\$\\{answer\\}", Matcher.quoteReplacement(str));
+        i += 1;
+        break;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(paramView, null, "");
       }
-      RecentLoginDevActivity.a(this.a, RecentLoginDevActivity.a(this.a));
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed isSuccess=" + paramBoolean);
-      if (paramSvcRspGetDevLoginInfo != null) {
-        break label288;
-      }
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data is null");
-    }
-    for (;;)
-    {
-      bcql.a(this.a.getActivity(), 1, this.a.getString(2131692140), 0).b(this.a.getTitleBarHeight());
-      return;
-      label288:
-      QLog.d("Q.devlock.RecentLoginDevActivity", 2, "onGetHistoryDevResult failed data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxt
  * JD-Core Version:    0.7.0.1
  */

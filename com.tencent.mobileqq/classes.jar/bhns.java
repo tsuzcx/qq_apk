@@ -1,37 +1,34 @@
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import java.util.List;
 
-class bhns
-  implements InvocationHandler
+public class bhns
 {
-  bhns(bhnr parambhnr) {}
-  
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public static boolean a(int paramInt, List paramList)
   {
-    paramObject = paramMethod.getName();
-    boolean bool;
-    if ("onLoad".equals(paramObject)) {
-      if ((paramArrayOfObject != null) && (paramArrayOfObject.length == 2))
-      {
-        int i = ((Integer)paramArrayOfObject[0]).intValue();
-        bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-        bhnr.a(this.a, i, bool);
-      }
-    }
+    return (paramList == null) || (paramInt < 0) || (paramInt >= paramList.size());
+  }
+  
+  public static <T> boolean a(T[] paramArrayOfT, T paramT)
+  {
+    if ((paramArrayOfT == null) || (paramT == null)) {}
     for (;;)
     {
-      return null;
-      if (("onLoadFinish".equals(paramObject)) && (paramArrayOfObject != null) && (paramArrayOfObject.length == 1))
+      return false;
+      int j = paramArrayOfT.length;
+      int i = 0;
+      while (i < j)
       {
-        bool = ((Boolean)paramArrayOfObject[0]).booleanValue();
-        bhnr.a(this.a, bool);
+        T ? = paramArrayOfT[i];
+        if ((? != null) && (?.equals(paramT))) {
+          return true;
+        }
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhns
  * JD-Core Version:    0.7.0.1
  */

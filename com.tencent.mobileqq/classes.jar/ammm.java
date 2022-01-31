@@ -1,51 +1,155 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.io.File;
+import mqq.app.ISecurityFileHelper;
 
 public class ammm
-  implements amnf
+  extends amml
+  implements ISecurityFileHelper
 {
-  public ammm(LocationSelectActivity paramLocationSelectActivity) {}
-  
-  public int a()
+  public ammm()
   {
-    return this.a.jdField_a_of_type_Int;
+    super(null);
   }
   
-  public int a(int paramInt)
+  protected String a()
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt] != null) {
-      return ((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt]).size();
-    }
-    return 0;
+    return "QQThemeMigration";
   }
   
-  public String a(int paramInt1, int paramInt2)
+  public String declareBusinessFileName()
   {
-    try
+    return "QQ_Favorite";
+  }
+  
+  public boolean doMigrate(File paramFile)
+  {
+    QLog.d("ISecurityFileHelper", 1, "Move Theme file start");
+    paramFile = new File(ThemeDiyStyleLogic.getSdcardDIYDir());
+    File[] arrayOfFile;
+    int j;
+    int i;
+    Object localObject1;
+    Object localObject2;
+    if ((paramFile.exists()) && (paramFile.isDirectory()))
     {
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1] != null)
+      arrayOfFile = ammj.a(paramFile);
+      j = arrayOfFile.length;
+      i = 0;
+      if (i < j)
       {
-        if (((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).code.equals("0")) {
-          return "----";
+        localObject1 = arrayOfFile[i];
+        if ((!((File)localObject1).isDirectory()) || (new File((File)localObject1, ".moveflag").exists())) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject2 = ((File)localObject1).getName();
+          if ((((String)localObject2).length() > 4) && (((String)localObject2).matches("[0-9]{5,}")))
+          {
+            localObject2 = paramFile.getAbsolutePath() + "/" + ammj.a((String)localObject2);
+            bdcs.c((String)localObject2 + "/.moveflag");
+            ammj.a(((File)localObject1).getAbsolutePath(), (String)localObject2);
+          }
         }
-        String str = ((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).name;
-        return str;
       }
     }
-    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    paramFile = new File(aljq.aX);
+    if ((paramFile.exists()) && (paramFile.isDirectory()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("LocationSelectActivity", 2, "", localIndexOutOfBoundsException);
+      paramFile = ammj.a(paramFile);
+      int n = paramFile.length;
+      int k = 0;
+      while (k < n)
+      {
+        arrayOfFile = paramFile[k];
+        int m = 0;
+        i = 0;
+        localObject1 = arrayOfFile.getName();
+        j = m;
+        if (arrayOfFile.isDirectory())
+        {
+          j = m;
+          if (((String)localObject1).length() > 4)
+          {
+            j = m;
+            if (((String)localObject1).matches("[0-9]{5,}"))
+            {
+              if (ammj.a(arrayOfFile).length > 0)
+              {
+                localObject2 = ammj.a(arrayOfFile);
+                int i1 = localObject2.length;
+                m = 0;
+                for (;;)
+                {
+                  j = i;
+                  if (m >= i1) {
+                    break;
+                  }
+                  Object localObject3 = localObject2[m];
+                  j = i;
+                  if (((File)localObject3).isDirectory())
+                  {
+                    j = i;
+                    if (((File)localObject3).getName().equals("custom_background"))
+                    {
+                      localObject3 = ammj.a((File)localObject3);
+                      j = localObject3.length;
+                      i = 0;
+                      while (i < j)
+                      {
+                        Object localObject4 = localObject3[i];
+                        if (localObject4.isFile())
+                        {
+                          bdcs.c(ThemeDiyStyleLogic.getSdcardDIYDir() + ammj.a((String)localObject1) + "/.moveflag");
+                          bdcs.a(localObject4.getAbsolutePath(), ThemeDiyStyleLogic.getSdcardDIYDir() + ammj.a((String)localObject1) + "/" + localObject4.getName());
+                        }
+                        i += 1;
+                      }
+                      j = 1;
+                    }
+                  }
+                  m += 1;
+                  i = j;
+                }
+              }
+              j = 1;
+            }
+          }
+        }
+        if (j != 0) {
+          bdcs.a(arrayOfFile.getAbsolutePath());
+        }
+        k += 1;
       }
     }
-    return "";
+    a();
+    return true;
+  }
+  
+  public boolean needMigration()
+  {
+    return a();
+  }
+  
+  public File oldBusinessDir(String paramString)
+  {
+    return null;
+  }
+  
+  public boolean oldBusinessDirExist(String paramString)
+  {
+    return false;
+  }
+  
+  public String[] reportHistoryFileInfo()
+  {
+    return new String[] { "0", "0" };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammm
  * JD-Core Version:    0.7.0.1
  */

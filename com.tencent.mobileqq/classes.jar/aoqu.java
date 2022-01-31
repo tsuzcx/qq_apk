@@ -1,57 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-
 public class aoqu
-  implements View.OnClickListener
 {
-  public aoqu(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  public String a;
+  public boolean a;
+  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
   
-  public void onClick(View paramView)
+  public aoqu()
   {
-    Object localObject = paramView.getTag();
-    int i;
-    if ((localObject instanceof aorg))
-    {
-      localObject = (aorg)paramView.getTag();
-      i = ((aorg)localObject).c;
-      localObject = (WeiYunFileInfo)((aorg)localObject).a;
-    }
-    for (;;)
-    {
-      QfileBaseCloudFileTabView localQfileBaseCloudFileTabView;
-      if (localObject != null)
-      {
-        if ((paramView.getId() == 2131366211) && (QfileBaseCloudFileTabView.c(this.a))) {
-          axqy.b(QfileBaseCloudFileTabView.c(this.a), "dc00898", "", "", "0X800A665", "0X800A665", 0, 0, "", "", "", "");
-        }
-        localQfileBaseCloudFileTabView = this.a;
-        if (paramView.getId() != 2131366211) {
-          break label148;
-        }
-      }
-      label148:
-      for (boolean bool = true;; bool = false)
-      {
-        localQfileBaseCloudFileTabView.a((WeiYunFileInfo)localObject, i, bool);
-        return;
-        if (!(localObject instanceof aoqa)) {
-          break label153;
-        }
-        localObject = (WeiYunFileInfo)((aoqa)paramView.getTag()).a;
-        i = -1;
-        break;
-      }
-      label153:
-      i = 0;
-      localObject = null;
-    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = alpo.a(2131711645);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqu
  * JD-Core Version:    0.7.0.1
  */

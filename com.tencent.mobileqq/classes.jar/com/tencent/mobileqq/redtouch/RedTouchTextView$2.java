@@ -3,7 +3,7 @@ package com.tencent.mobileqq.redtouch;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
-import bbef;
+import bdda;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import java.io.File;
 
@@ -19,7 +19,7 @@ class RedTouchTextView$2
       localBitmap = this.this$0.a((File)localObject);
       localObject = localBitmap;
       if (this.a == 1) {
-        localObject = bbef.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
+        localObject = bdda.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
       }
       this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable((Bitmap)localObject);
       this.this$0.a();
@@ -33,7 +33,7 @@ class RedTouchTextView$2
       localBitmap = this.this$0.a((File)localObject);
       localObject = localBitmap;
       if (this.a == 1) {
-        localObject = bbef.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
+        localObject = bdda.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
       }
       this.this$0.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable((Bitmap)localObject);
       this.this$0.a();
@@ -43,7 +43,7 @@ class RedTouchTextView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchTextView.2
  * JD-Core Version:    0.7.0.1
  */

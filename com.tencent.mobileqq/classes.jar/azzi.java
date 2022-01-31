@@ -1,41 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-
 public class azzi
-  implements DialogInterface.OnClickListener
+  extends azzf
 {
-  public azzi(ReciteFragment paramReciteFragment, QQAppInterface paramQQAppInterface) {}
+  private float d;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public azzi(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.c();
-    QQAppInterface localQQAppInterface;
-    String str1;
-    String str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      str1 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Babi.f;
-      str2 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_Babi.f;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo == null) {
-        break label108;
-      }
+    super(paramInt1, 11, 0);
+    this.f = paramInt2;
+    this.g = paramInt3;
+    this.h = paramInt4;
+    this.i = paramInt5;
+    this.d = paramFloat;
+  }
+  
+  protected void a(int paramInt, float paramFloat)
+  {
+    this.jdField_c_of_type_Float = (paramInt * 0.8F / this.jdField_c_of_type_Int);
+    if (this.jdField_c_of_type_Float > 0.8F) {
+      this.jdField_c_of_type_Float = 0.8F;
     }
-    label108:
-    for (paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteDataArticleInfo.title;; paramDialogInterface = "")
-    {
-      bbbp.a(localQQAppInterface, str1, "Grp_recite", "Out_Recite_Clk", 0, 0, new String[] { str2, "", paramDialogInterface, "" });
-      return;
-    }
+    this.jdField_b_of_type_Int = ((int)(360.0F * paramInt * paramInt / (this.jdField_c_of_type_Int * this.jdField_c_of_type_Int)));
+    this.a = (this.f + (this.h - this.f) * paramInt / this.jdField_c_of_type_Int);
+    this.jdField_b_of_type_Float = ((int)(this.g + this.i * Math.sin(this.d * this.a)));
+    super.a(paramInt, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azzi
  * JD-Core Version:    0.7.0.1
  */

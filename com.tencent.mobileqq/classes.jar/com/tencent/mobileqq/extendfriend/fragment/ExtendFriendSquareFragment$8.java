@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
+
 class ExtendFriendSquareFragment$8
   implements Runnable
 {
@@ -7,12 +9,12 @@ class ExtendFriendSquareFragment$8
   
   public void run()
   {
-    this.this$0.d(false);
+    ExtendFriendSquareFragment.a(this.this$0).a(this.this$0.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment.8
  * JD-Core Version:    0.7.0.1
  */

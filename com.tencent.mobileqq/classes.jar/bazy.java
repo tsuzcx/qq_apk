@@ -1,69 +1,21 @@
-import android.content.Context;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
-
 public class bazy
 {
-  private static int a = -1;
+  public long a;
+  public String a;
+  public String b;
   
-  public static void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      a = i;
-      if (QLog.isColorLevel()) {
-        QLog.d("NoDisturbUtil", 2, new Object[] { "setMuteStat:", Integer.valueOf(a) });
-      }
-      return;
-    }
-  }
+  public bazy() {}
   
-  public static boolean a(Context paramContext, AppInterface paramAppInterface)
+  public bazy(long paramLong, String paramString1, String paramString2)
   {
-    return (!FriendsStatusUtil.a(paramContext)) || ((!paramAppInterface.isBackground_Pause) && (bbap.a(BaseApplicationImpl.sApplication)));
-  }
-  
-  public static boolean b(Context paramContext, AppInterface paramAppInterface)
-  {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    amsa localamsa = (amsa)ampl.a().a(528);
-    boolean bool1 = bool3;
-    if ((paramAppInterface instanceof QQAppInterface))
-    {
-      bool1 = bool3;
-      if (localamsa.a == 1)
-      {
-        if (a != -1) {
-          break label79;
-        }
-        bool1 = SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), null, "qqsetting_qrlogin_set_mute", false);
-        if (!bool1) {
-          break label74;
-        }
-      }
-    }
-    label74:
-    for (int i = 1;; i = 0)
-    {
-      a = i;
-      return bool1;
-    }
-    label79:
-    if (a == 1) {}
-    for (bool1 = bool2;; bool1 = false) {
-      return bool1;
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bazy
  * JD-Core Version:    0.7.0.1
  */

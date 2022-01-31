@@ -1,25 +1,30 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.core.widget.actionsheet.ActionSheet.3;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.WindowManager;
 
-public class beoa
-  implements Animation.AnimationListener
+class beoa
+  implements Animator.AnimatorListener
 {
-  public beoa(ActionSheet.3 param3) {}
+  beoa(benw parambenw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.this$0.a();
-    beny.a(this.a.this$0, true);
+    if (benw.a(this.a) != null)
+    {
+      benw.a(this.a).removeViewImmediate(benw.a(this.a));
+      benw.a(this.a, null);
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beoa
  * JD-Core Version:    0.7.0.1
  */

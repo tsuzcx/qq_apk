@@ -1,16 +1,26 @@
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.gdtad.api.banner.GdtBannerAd;
 
-public class ajah
+final class ajah
+  extends ClickableSpan
 {
-  int a;
-  public View a;
-  public GdtBannerAd a;
-  int b;
+  ajah(ajak paramajak, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Ajak.a(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajah
  * JD-Core Version:    0.7.0.1
  */

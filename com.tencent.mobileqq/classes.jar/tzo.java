@@ -1,72 +1,27 @@
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
-import com.tribe.async.dispatch.Subscriber;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.SeekBar;
+import com.tencent.biz.qqcircle.widgets.BaseVideoView;
 
 public class tzo
-  extends AbsVideoInfoWidget
+  implements ytf
 {
-  private tzq a = new tzq(this);
-  private boolean e;
+  public tzo(BaseVideoView paramBaseVideoView, SeekBar paramSeekBar) {}
   
-  public tzo(ViewGroup paramViewGroup)
+  public void a()
   {
-    super(paramViewGroup);
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    localMessage.arg1 = this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    localMessage.arg2 = ((int)this.jdField_a_of_type_ComTencentBizQqcircleWidgetsBaseVideoView.a().b());
+    localMessage.obj = Boolean.valueOf(false);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsBaseVideoView.a(this.jdField_a_of_type_AndroidWidgetSeekBar.getProgress());
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsBaseVideoView.a().sendMessage(localMessage);
   }
-  
-  public String a()
-  {
-    return "LoadingMoreWidget";
-  }
-  
-  public tzq a()
-  {
-    return this.a;
-  }
-  
-  public void a(View paramView) {}
-  
-  public void a(@NonNull Map<Subscriber, String> paramMap)
-  {
-    paramMap.put(new tzp(this), "");
-  }
-  
-  public void a(@NonNull uas paramuas, @NonNull StoryVideoItem paramStoryVideoItem) {}
-  
-  public boolean a(@NonNull uas paramuas, @NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return this.e;
-  }
-  
-  public int b()
-  {
-    return 2131561412;
-  }
-  
-  public void d()
-  {
-    this.e = true;
-    i();
-    ved.b("Q.qqstory.playernew.LoadingMoreWidget", "showLoadMore");
-  }
-  
-  public void e()
-  {
-    this.e = false;
-    k();
-    ved.b("Q.qqstory.playernew.LoadingMoreWidget", "hideLoadMore");
-  }
-  
-  public void f() {}
-  
-  public void g() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tzo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.gamecenter.anim;
 
-import aqqy;
+import asgq;
 
 public class FullPopAnimLowVersion$6
   implements Runnable
 {
-  public FullPopAnimLowVersion$6(aqqy paramaqqy) {}
+  public FullPopAnimLowVersion$6(asgq paramasgq) {}
   
   public void run()
   {
-    aqqy.d(this.this$0);
+    asgq.d(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.anim.FullPopAnimLowVersion.6
  * JD-Core Version:    0.7.0.1
  */

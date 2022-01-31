@@ -1,212 +1,148 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.data.AddressData.NO_LIMIT_ADDRESS;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-
 public class amma
-  implements amne
+  extends bdvu
 {
-  public amma(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
-  
-  public void a()
+  /* Error */
+  public void onDone(bdvv parambdvv)
   {
-    if ((this.a.i == 0) && (this.a.f > this.a.g) && (this.a.g != 0)) {
-      bcql.a(this.a, this.a.getResources().getString(2131691014), 0).b(this.a.getTitleBarHeight());
-    }
-    while ((this.a.jdField_a_of_type_Bfpc == null) || (!this.a.jdField_a_of_type_Bfpc.isShowing())) {
-      return;
-    }
-    this.a.jdField_a_of_type_Bfpc.dismiss();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearchFriendActivity", 2, "onItemSelected|pickerType : " + this.a.i + ", column : " + paramInt1 + ", row : " + paramInt2);
-    }
-    int i;
-    Object localObject;
-    if (this.a.i == 0)
-    {
-      if (paramInt2 >= 0)
-      {
-        i = paramInt2;
-        if (paramInt2 < ajtw.b.length) {}
-      }
-      else
-      {
-        i = 0;
-      }
-      switch (paramInt1)
-      {
-      default: 
-        if ((this.a.f <= this.a.g) || (this.a.g == 0))
-        {
-          this.a.jdField_b_of_type_Int = this.a.f;
-          this.a.jdField_c_of_type_Int = this.a.g;
-        }
-        localObject = this.a.jdField_a_of_type_Ajtw.a(this.a.jdField_b_of_type_Int, this.a.jdField_c_of_type_Int);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText((CharSequence)localObject);
-      }
-    }
-    do
-    {
-      return;
-      this.a.f = i;
-      break;
-      this.a.g = i;
-      break;
-      if (this.a.i == 3)
-      {
-        if (paramInt2 >= 0)
-        {
-          paramInt1 = paramInt2;
-          if (paramInt2 < ajtw.c.length) {}
-        }
-        else
-        {
-          paramInt1 = 0;
-        }
-        this.a.d = paramInt1;
-        this.a.e.setRightText(ajtw.c[paramInt1]);
-        return;
-      }
-      switch (paramInt1)
-      {
-      }
-      while (this.a.i == 1)
-      {
-        this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(this.a.jdField_a_of_type_Ajtw.c(ConditionSearchFriendActivity.a(this.a)));
-        return;
-        if ((this.a.jdField_a_of_type_ArrayOfJavaLangObject.length > 0) && (this.a.jdField_a_of_type_ArrayOfJavaLangObject[0] != null) && (((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[0]).size() > 0))
-        {
-          if (paramInt2 >= 0)
-          {
-            paramInt1 = paramInt2;
-            if (paramInt2 < ((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[0]).size()) {}
-          }
-          else
-          {
-            paramInt1 = 0;
-          }
-          this.a.jdField_a_of_type_ArrayOfInt[0] = paramInt1;
-          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[0] = ((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[0]).get(paramInt1));
-          this.a.jdField_a_of_type_ArrayOfJavaLangString[0] = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[0].code;
-          localObject = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[0].getDataList();
-          if (this.a.h > 1)
-          {
-            this.a.jdField_a_of_type_ArrayOfJavaLangObject[1] = localObject;
-            this.a.jdField_a_of_type_ArrayOfInt[1] = 0;
-            this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = new AddressData.NO_LIMIT_ADDRESS(2);
-            this.a.jdField_a_of_type_ArrayOfJavaLangString[1] = "0";
-            try
-            {
-              this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1);
-              this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, 0);
-              if (this.a.h <= 2) {
-                continue;
-              }
-              this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = null;
-              this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-              this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(2);
-              this.a.jdField_a_of_type_ArrayOfJavaLangString[2] = "0";
-              try
-              {
-                this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-                this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, 0);
-              }
-              catch (Exception localException1)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("ConditionSearchFriendActivity", 2, localException1, new Object[0]);
-                }
-              }
-              if ((this.a.jdField_a_of_type_Bfpc == null) || (!this.a.jdField_a_of_type_Bfpc.isShowing())) {
-                continue;
-              }
-              this.a.jdField_a_of_type_Bfpc.dismiss();
-            }
-            catch (Exception localException2)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("ConditionSearchFriendActivity", 2, localException2, new Object[0]);
-                }
-                if ((this.a.jdField_a_of_type_Bfpc != null) && (this.a.jdField_a_of_type_Bfpc.isShowing())) {
-                  this.a.jdField_a_of_type_Bfpc.dismiss();
-                }
-              }
-            }
-            if ((this.a.jdField_a_of_type_ArrayOfJavaLangObject.length > 1) && (this.a.jdField_a_of_type_ArrayOfJavaLangObject[1] != null) && (((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[1]).size() > 0))
-            {
-              if (paramInt2 >= 0)
-              {
-                paramInt1 = paramInt2;
-                if (paramInt2 < ((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[1]).size()) {}
-              }
-              else
-              {
-                paramInt1 = 0;
-              }
-              this.a.jdField_a_of_type_ArrayOfInt[1] = paramInt1;
-              this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = ((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[1]).get(paramInt1));
-              this.a.jdField_a_of_type_ArrayOfJavaLangString[1] = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1].code;
-              ArrayList localArrayList = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1].getDataList();
-              if (this.a.h > 2)
-              {
-                this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = localArrayList;
-                this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-                this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(2);
-                this.a.jdField_a_of_type_ArrayOfJavaLangString[2] = "0";
-                try
-                {
-                  this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-                  this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, 0);
-                }
-                catch (Exception localException3)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.d("ConditionSearchFriendActivity", 2, localException3, new Object[0]);
-                  }
-                }
-                if ((this.a.jdField_a_of_type_Bfpc != null) && (this.a.jdField_a_of_type_Bfpc.isShowing()))
-                {
-                  this.a.jdField_a_of_type_Bfpc.dismiss();
-                  continue;
-                  if ((this.a.h > 2) && (this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] != null) && (((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[2]).size() > 0))
-                  {
-                    if (paramInt2 >= 0)
-                    {
-                      paramInt1 = paramInt2;
-                      if (paramInt2 < ((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[2]).size()) {}
-                    }
-                    else
-                    {
-                      paramInt1 = 0;
-                    }
-                    this.a.jdField_a_of_type_ArrayOfInt[2] = paramInt1;
-                    this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = ((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[2]).get(paramInt1));
-                    this.a.jdField_a_of_type_ArrayOfJavaLangString[2] = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2].code;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    } while (this.a.i != 2);
-    this.a.jdField_c_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(this.a.jdField_a_of_type_Ajtw.c(ConditionSearchFriendActivity.a(this.a)));
+    // Byte code:
+    //   0: aload_0
+    //   1: aload_1
+    //   2: invokespecial 17	bdvu:onDone	(Lbdvv;)V
+    //   5: iconst_3
+    //   6: aload_1
+    //   7: invokevirtual 23	bdvv:a	()I
+    //   10: if_icmpne +107 -> 117
+    //   13: aload_1
+    //   14: getfield 26	bdvv:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   17: invokeinterface 31 1 0
+    //   22: iconst_1
+    //   23: if_icmpne +94 -> 117
+    //   26: aload_1
+    //   27: getfield 34	bdvv:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   30: aload_1
+    //   31: getfield 37	bdvv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   34: invokeinterface 43 2 0
+    //   39: checkcast 45	java/io/File
+    //   42: astore 4
+    //   44: aload 4
+    //   46: invokevirtual 49	java/io/File:exists	()Z
+    //   49: ifeq +68 -> 117
+    //   52: aload 4
+    //   54: new 51	java/lang/StringBuilder
+    //   57: dup
+    //   58: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   61: aload 4
+    //   63: invokevirtual 56	java/io/File:getParent	()Ljava/lang/String;
+    //   66: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: getstatic 63	java/io/File:separator	Ljava/lang/String;
+    //   72: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: invokestatic 71	ndr:a	(Ljava/io/File;Ljava/lang/String;)V
+    //   81: aload_1
+    //   82: invokevirtual 74	bdvv:a	()Landroid/os/Bundle;
+    //   85: astore_1
+    //   86: aload_1
+    //   87: ifnull +20 -> 107
+    //   90: aload_1
+    //   91: ldc 76
+    //   93: invokevirtual 82	android/os/Bundle:getLong	(Ljava/lang/String;)J
+    //   96: lstore_2
+    //   97: lconst_0
+    //   98: lload_2
+    //   99: lcmp
+    //   100: ifeq +7 -> 107
+    //   103: lload_2
+    //   104: invokestatic 88	amly:b	(J)V
+    //   107: iconst_1
+    //   108: invokestatic 93	akji:b	(Z)V
+    //   111: aload 4
+    //   113: invokevirtual 96	java/io/File:delete	()Z
+    //   116: pop
+    //   117: return
+    //   118: astore_1
+    //   119: invokestatic 101	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   122: ifeq +31 -> 153
+    //   125: ldc 103
+    //   127: iconst_2
+    //   128: new 51	java/lang/StringBuilder
+    //   131: dup
+    //   132: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   135: ldc 105
+    //   137: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   140: aload_1
+    //   141: invokevirtual 108	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   144: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   150: invokestatic 112	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   153: aload 4
+    //   155: invokevirtual 96	java/io/File:delete	()Z
+    //   158: pop
+    //   159: return
+    //   160: astore_1
+    //   161: return
+    //   162: astore_1
+    //   163: invokestatic 101	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   166: ifeq +31 -> 197
+    //   169: ldc 103
+    //   171: iconst_2
+    //   172: new 51	java/lang/StringBuilder
+    //   175: dup
+    //   176: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   179: ldc 114
+    //   181: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   184: aload_1
+    //   185: invokevirtual 115	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   188: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   194: invokestatic 112	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   197: aload 4
+    //   199: invokevirtual 96	java/io/File:delete	()Z
+    //   202: pop
+    //   203: return
+    //   204: astore_1
+    //   205: return
+    //   206: astore_1
+    //   207: aload 4
+    //   209: invokevirtual 96	java/io/File:delete	()Z
+    //   212: pop
+    //   213: aload_1
+    //   214: athrow
+    //   215: astore_1
+    //   216: return
+    //   217: astore 4
+    //   219: goto -6 -> 213
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	222	0	this	amma
+    //   0	222	1	parambdvv	bdvv
+    //   96	8	2	l	long
+    //   42	166	4	localFile	java.io.File
+    //   217	1	4	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   52	86	118	java/lang/Exception
+    //   90	97	118	java/lang/Exception
+    //   103	107	118	java/lang/Exception
+    //   107	111	118	java/lang/Exception
+    //   153	159	160	java/lang/Exception
+    //   52	86	162	java/lang/OutOfMemoryError
+    //   90	97	162	java/lang/OutOfMemoryError
+    //   103	107	162	java/lang/OutOfMemoryError
+    //   107	111	162	java/lang/OutOfMemoryError
+    //   197	203	204	java/lang/Exception
+    //   52	86	206	finally
+    //   90	97	206	finally
+    //   103	107	206	finally
+    //   107	111	206	finally
+    //   119	153	206	finally
+    //   163	197	206	finally
+    //   111	117	215	java/lang/Exception
+    //   207	213	217	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amma
  * JD-Core Version:    0.7.0.1
  */

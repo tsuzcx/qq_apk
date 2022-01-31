@@ -1,28 +1,28 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
-class ahci
-  implements IRedPacket.OnGetSkinListener
+public class ahci
+  extends oxe
 {
-  ahci(ahcg paramahcg, Bundle paramBundle, ResultReceiver paramResultReceiver) {}
+  public ahci(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onGetSkin(RedPacketInfoBase paramRedPacketInfoBase)
+  public void f(boolean paramBoolean, List<ChannelInfo> paramList)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putParcelable("key_red_packet_info", paramRedPacketInfoBase);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCModule", 2, "getRedPacketBundle | info resPath = " + paramRedPacketInfoBase.resPath);
-    }
-    if (this.jdField_a_of_type_AndroidOsResultReceiver != null) {
-      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, this.jdField_a_of_type_AndroidOsBundle);
+    if (paramBoolean)
+    {
+      if ((paramList != null) && (!paramList.isEmpty()))
+      {
+        this.a.c.clear();
+        this.a.c.addAll(paramList);
+      }
+      ClassificationSearchActivity.b(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahci
  * JD-Core Version:    0.7.0.1
  */

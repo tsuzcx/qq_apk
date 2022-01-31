@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import ajsd;
+import aljq;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
   
   static
   {
-    jdField_a_of_type_JavaLangString = ajsd.bn + "qqstory/animation_cover.jpg";
+    jdField_a_of_type_JavaLangString = aljq.bo + "qqstory/animation_cover.jpg";
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -58,7 +58,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-public class rhu
-  implements bfos
+class rhu
+  implements bhqg
 {
-  public rhu(SlideActiveAnimController paramSlideActiveAnimController) {}
+  rhu(rht paramrht) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void as_()
   {
-    if (paramInt == 0) {
-      this.a.e = false;
-    }
+    rhf.a(this.a.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhu
  * JD-Core Version:    0.7.0.1
  */

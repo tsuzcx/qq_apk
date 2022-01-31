@@ -1,14 +1,22 @@
-abstract class aovw
+import android.accounts.AccountManagerCallback;
+import android.accounts.AccountManagerFuture;
+import com.tencent.qphone.base.util.QLog;
+
+class aovw
+  implements AccountManagerCallback<Boolean>
 {
-  aovw(aouy paramaouy) {}
+  aovw(aovt paramaovt) {}
   
-  abstract void a(String paramString, int paramInt);
-  
-  abstract void a(String paramString, int paramInt, aovv paramaovv);
+  public void run(AccountManagerFuture<Boolean> paramAccountManagerFuture)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aovw
  * JD-Core Version:    0.7.0.1
  */

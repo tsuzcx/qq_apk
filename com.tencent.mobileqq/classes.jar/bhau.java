@@ -1,23 +1,48 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.QzoneTranslucentBrowserFragment;
+import android.os.Handler;
+import android.os.Looper;
+import android.webkit.ValueCallback;
 
-public class bhau
-  implements View.OnClickListener
+public abstract class bhau
+  extends bhax<Integer, Integer>
 {
-  public bhau(QzoneTranslucentBrowserFragment paramQzoneTranslucentBrowserFragment) {}
+  public static final Integer a;
+  public static final Integer b = Integer.valueOf(2);
+  protected Handler a;
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.a.a() != null) {
-      this.a.a().finish();
+    jdField_a_of_type_JavaLangInteger = Integer.valueOf(1);
+  }
+  
+  public bhau()
+  {
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  public void a(Integer paramInteger)
+  {
+    Object localObject = getCurrState();
+    if ((localObject instanceof bhav))
+    {
+      localObject = (bhav)localObject;
+      if ((bhav.a((bhav)localObject) != null) && (jdField_a_of_type_JavaLangInteger == paramInteger)) {
+        setCurrState(bhav.a((bhav)localObject));
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        super.sendEvent(paramInteger);
+      }
+      return;
     }
   }
+  
+  public abstract void a(String paramString1, ValueCallback paramValueCallback, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhau
  * JD-Core Version:    0.7.0.1
  */

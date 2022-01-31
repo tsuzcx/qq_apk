@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.data;
 
-import azlj;
-import azoc;
-import azod;
+import bbjs;
+import bbml;
+import bbmm;
 
 public class TroopCreateLogic$1$1
   implements Runnable
 {
-  public TroopCreateLogic$1$1(azod paramazod) {}
+  public TroopCreateLogic$1$1(bbmm parambbmm) {}
   
   public void run()
   {
-    azoc.a(this.a.jdField_a_of_type_Azoc);
-    new azlj(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_Azol).show();
+    bbml.a(this.a.jdField_a_of_type_Bbml);
+    new bbjs(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_Bbmu).show();
   }
 }
 

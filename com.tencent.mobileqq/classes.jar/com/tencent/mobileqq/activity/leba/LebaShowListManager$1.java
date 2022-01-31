@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.leba;
 
-import agby;
-import avps;
+import aiab;
+import axho;
 import com.tencent.qphone.base.util.QLog;
 
 public class LebaShowListManager$1
   implements Runnable
 {
-  public LebaShowListManager$1(agby paramagby, avps paramavps, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3) {}
+  public LebaShowListManager$1(aiab paramaiab, axho paramaxho, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3) {}
   
   public void run()
   {
@@ -15,14 +15,14 @@ public class LebaShowListManager$1
     {
       try
       {
-        avps localavps = this.jdField_a_of_type_Avps;
+        axho localaxho = this.jdField_a_of_type_Axho;
         i = (int)this.jdField_a_of_type_Long;
         boolean bool = this.jdField_a_of_type_Boolean;
         if (this.b != -9223372036854775808L) {
           continue;
         }
         l = this.c;
-        i = localavps.a(i, bool, l);
+        i = localaxho.a(i, bool, l);
       }
       catch (Exception localException)
       {
@@ -46,7 +46,7 @@ public class LebaShowListManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.leba.LebaShowListManager.1
  * JD-Core Version:    0.7.0.1
  */

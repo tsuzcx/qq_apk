@@ -1,58 +1,132 @@
-import android.graphics.drawable.BitmapDrawable;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class bdvg
-  extends Handler
+  extends WebViewPlugin
 {
-  public bdvg(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  protected aphy a;
+  public final String a;
+  public String b;
   
-  public void handleMessage(Message paramMessage)
+  public bdvg()
   {
-    switch (paramMessage.what)
-    {
+    this.jdField_a_of_type_JavaLangString = "VideoApiPlugin";
+    this.jdField_a_of_type_Aphy = new bdvh(this);
+    this.mPluginNameSpace = "video";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool2 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoApiPlugin", 2, "handleJsRequest, url=" + paramString1);
     }
-    for (;;)
+    boolean bool1;
+    if ((!"video".equals(paramString2)) || (paramString1 == null) || (paramString3 == null)) {
+      bool1 = false;
+    }
+    label154:
+    do
     {
-      super.handleMessage(paramMessage);
-      return;
-      try
+      do
       {
-        BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.a.getResources(), this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(localBitmapDrawable);
-      }
-      catch (Exception localException) {}
-      continue;
-      Object localObject = (QidianProfileCardActivity.QidianSimpleProfileItem)paramMessage.getData().getParcelable("data");
-      localObject = this.a.a((QidianProfileCardActivity.QidianSimpleProfileItem)localObject);
-      if (localObject != null)
-      {
-        this.a.b.addView((View)localObject);
-        continue;
-        localObject = paramMessage.getData().getParcelableArrayList("data");
-        localObject = this.a.a((List)localObject);
-        if (localObject != null)
+        do
         {
-          LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-          localLayoutParams.leftMargin = this.a.d;
-          ((View)localObject).setPadding(0, this.a.e, this.a.d, this.a.e);
-          this.a.b.addView((View)localObject, localLayoutParams);
-        }
+          return bool1;
+          for (;;)
+          {
+            try
+            {
+              paramString1 = new JSONObject(paramVarArgs[0]);
+              if (paramString1.has("callback"))
+              {
+                paramJsBridgeListener = paramString1.getString("callback");
+                if (!"isInstalled".equals(paramString3)) {
+                  break label154;
+                }
+                bool1 = bool2;
+                if (!apmy.a().a()) {
+                  break;
+                }
+                paramString1 = new Bundle();
+                paramJsBridgeListener = apic.a("ipc_video_isinstalled", paramJsBridgeListener, this.jdField_a_of_type_Aphy.key, paramString1);
+                apmy.a().a(paramJsBridgeListener);
+                return true;
+              }
+            }
+            catch (Exception paramJsBridgeListener)
+            {
+              paramJsBridgeListener.printStackTrace();
+              return true;
+            }
+            paramJsBridgeListener = "";
+          }
+          if (!"installPlugin".equals(paramString3)) {
+            break;
+          }
+          bool1 = bool2;
+        } while (!apmy.a().a());
+        paramString1 = new Bundle();
+        paramJsBridgeListener = apic.a("ipc_video_install_plugin", paramJsBridgeListener, this.jdField_a_of_type_Aphy.key, paramString1);
+        apmy.a().a(paramJsBridgeListener);
+        return true;
+        bool1 = bool2;
+      } while (!"playVideo".equals(paramString3));
+      paramString2 = paramString1.optString("vid", "");
+      paramString3 = paramString1.optString("format", "");
+      int i = paramString1.optInt("playType", 0);
+      paramString1 = paramString1.optString("screenOrientation", "landscape");
+      if (!TextUtils.isEmpty(paramJsBridgeListener)) {
+        this.b = paramJsBridgeListener;
       }
+      if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (i > 0))
+      {
+        paramJsBridgeListener = new Intent(this.mRuntime.a(), VipVideoPlayActivity.class);
+        paramJsBridgeListener.putExtra("vid", paramString2);
+        paramJsBridgeListener.putExtra("videoFormat", paramString3);
+        paramJsBridgeListener.putExtra("vtype", i);
+        paramJsBridgeListener.putExtra("screenOrientation", paramString1);
+        startActivityForResult(paramJsBridgeListener, (byte)100);
+        return true;
+      }
+      bool1 = bool2;
+    } while (TextUtils.isEmpty(this.b));
+    callJs(this.b, new String[] { String.valueOf(4) });
+    return true;
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoApiPlugin", 2, "vip video api plugin on activity result requestCode=" + paramByte + ",resultCode=" + paramInt);
     }
+    super.onActivityResult(paramIntent, paramByte, paramInt);
+    if ((paramByte == 100) && (!TextUtils.isEmpty(this.b))) {
+      callJs(this.b, new String[] { String.valueOf(paramInt) });
+    }
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    apmy.a().a(this.jdField_a_of_type_Aphy);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    apmy.a().b(this.jdField_a_of_type_Aphy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdvg
  * JD-Core Version:    0.7.0.1
  */

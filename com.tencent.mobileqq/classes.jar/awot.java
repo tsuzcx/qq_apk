@@ -1,74 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.Iterator;
 import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
 
-public class awot
-  extends awor
+class awot
+  implements View.OnClickListener
 {
-  public static final String a;
-  public float a;
-  public int a;
-  public CharSequence a;
-  public float b;
-  public CharSequence b;
-  public String b;
-  public String j;
-  public String k;
+  awot(awos paramawos, int paramInt) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = "Q.uniteSearch." + awot.class.getSimpleName();
-  }
-  
-  public awot(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public awot(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = paramInt;
-    switch (paramInt)
-    {
-    default: 
-      i = 1;
-    }
-    return i;
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("bannerImageType");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("bannerImageUrl");
-      this.jdField_a_of_type_Float = ((float)paramString.optDouble("bannerImageWidth"));
-      this.jdField_b_of_type_Float = ((float)paramString.optDouble("bannerImageHeight"));
-      this.j = paramString.optString("topLeftTagText");
-      this.k = paramString.optString("topLeftTagColor");
-      this.jdField_a_of_type_JavaLangCharSequence = paramString.optString("firstLineText");
-      this.jdField_b_of_type_JavaLangCharSequence = paramString.optString("secondLineText");
+    if (awos.a(this.jdField_a_of_type_Awos) == this.jdField_a_of_type_Int) {
       return;
     }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
+    paramView = awos.a(this.jdField_a_of_type_Awos).iterator();
+    while (paramView.hasNext()) {
+      ((awow)paramView.next()).a = false;
     }
+    ((awow)awos.a(this.jdField_a_of_type_Awos).get(this.jdField_a_of_type_Int)).a = true;
+    awos.a(this.jdField_a_of_type_Awos, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Awos.notifyDataSetChanged();
+    if (awos.a(this.jdField_a_of_type_Awos) != null) {
+      awos.a(this.jdField_a_of_type_Awos).a((awow)awos.a(this.jdField_a_of_type_Awos).get(this.jdField_a_of_type_Int));
+    }
+    azmj.b(null, "dc00898", "", "", "0X800AB2B", "0X800AB2B", 0, 0, "0", "0", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awot
  * JD-Core Version:    0.7.0.1
  */

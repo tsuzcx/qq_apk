@@ -1,19 +1,42 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.widget.RoundImageView;
+import org.json.JSONObject;
 
-class aksl
-  implements alxj
+public class aksl
+  implements aksz
 {
-  aksl(aksk paramaksk) {}
+  private int a;
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public aksl()
   {
-    aksk.a(this.a).setImageBitmap(paramBitmap);
+    int i = aksy.a;
+    aksy.a = i + 1;
+    this.a = i;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public JSONObject a(aksy paramaksy, JSONObject paramJSONObject)
+  {
+    if ("cs.audio_create.local".equals(paramJSONObject.optString("N_R_CMD")))
+    {
+      paramJSONObject = new akry(paramJSONObject.optInt("N_R_OBJ"), paramJSONObject.optInt("id"), paramJSONObject.optString("type"));
+      if (paramaksy != null) {
+        paramaksy.a(paramJSONObject);
+      }
+    }
+    return null;
+  }
+  
+  public int c()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksl
  * JD-Core Version:    0.7.0.1
  */

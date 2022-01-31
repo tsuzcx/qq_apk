@@ -1,77 +1,35 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
 
-class bjad
+public class bjad
+  extends bjke
 {
-  private static final SharedPreferences a = BaseApplicationImpl.getApplication().getSharedPreferences("ae_camera_multi_process_sp", 4);
+  public bjad(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
   
-  static int a(@NonNull String paramString, int paramInt)
+  public void a(String paramString) {}
+  
+  public void a(String paramString, float paramFloat, long paramLong) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    return a.getInt(paramString, paramInt);
+    QLog.w("QZoneLiveVideoDownLoadActivtyV2", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
+    paramString = this.a.a.obtainMessage();
+    paramString.what = 1010;
+    if (8 == paramInt) {}
+    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
+    {
+      this.a.a.sendMessage(paramString);
+      return;
+    }
   }
   
-  static long a(@NonNull String paramString, long paramLong)
-  {
-    return a.getLong(paramString, paramLong);
-  }
-  
-  @Nullable
-  static String a(@NonNull String paramString1, String paramString2)
-  {
-    return a.getString(paramString1, paramString2);
-  }
-  
-  static void a(@NonNull String paramString)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.remove(paramString);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, int paramInt)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putInt(paramString, paramInt);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, long paramLong)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putLong(paramString, paramLong);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString1, String paramString2)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putString(paramString1, paramString2);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putBoolean(paramString, paramBoolean);
-    localEditor.apply();
-  }
-  
-  static boolean a(@NonNull String paramString)
-  {
-    return a.contains(paramString);
-  }
-  
-  static boolean a(@NonNull String paramString, boolean paramBoolean)
-  {
-    return a.getBoolean(paramString, paramBoolean);
-  }
+  public void b(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjad
  * JD-Core Version:    0.7.0.1
  */

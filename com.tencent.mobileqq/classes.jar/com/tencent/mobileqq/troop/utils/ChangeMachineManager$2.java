@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bahw;
+import bcgi;
 
 public class ChangeMachineManager$2
   implements Runnable
 {
-  public ChangeMachineManager$2(bahw parambahw) {}
+  public ChangeMachineManager$2(bcgi parambcgi) {}
   
   public void run()
   {
-    bahw.b(this.this$0);
+    bcgi.b(this.this$0);
   }
 }
 

@@ -1,25 +1,16 @@
-import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
 public class lpo
 {
-  public final int a;
-  final BeautyRealConfig.TYPE a;
-  final int b;
-  final int c;
-  public int d;
+  public long a;
+  String jdField_a_of_type_JavaLangString = null;
+  public boolean a;
   
-  lpo(BeautyRealConfig.TYPE paramTYPE, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_ComTencentTtpicOpenapiConfigBeautyRealConfig$TYPE = paramTYPE;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.d = paramInt2;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
+  public lpo(AVNotifyCenter paramAVNotifyCenter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lpo
  * JD-Core Version:    0.7.0.1
  */

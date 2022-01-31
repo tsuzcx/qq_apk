@@ -1,31 +1,51 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import java.util.Calendar;
 
 public class abzk
-  extends ajsn
+  implements aoed
 {
-  public abzk(RewardNoticeActivity paramRewardNoticeActivity) {}
+  private abzk(AgeSelectionActivity paramAgeSelectionActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public int a()
   {
-    if (paramBoolean)
+    return 3;
+  }
+  
+  public int a(int paramInt)
+  {
+    switch (paramInt)
     {
-      if (!TextUtils.isEmpty(this.a.f)) {
-        bcql.a(this.a.app.getApp(), 2, this.a.f, 0).a();
-      }
-      if (this.a.a == 13) {
-        this.a.b();
-      }
-      this.a.finish();
-      return;
+    default: 
+      return 0;
+    case 0: 
+      return AgeSelectionActivity.a(this.a) - AgeSelectionActivity.b(this.a) + 1;
+    case 1: 
+      return 12;
     }
-    bcql.a(this.a.app.getApp(), 1, ajya.a(2131713453), 0).a();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, AgeSelectionActivity.c(this.a) + AgeSelectionActivity.b(this.a));
+    localCalendar.set(2, AgeSelectionActivity.d(this.a));
+    localCalendar.set(5, 1);
+    return localCalendar.getActualMaximum(5);
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return "";
+    case 0: 
+      return AgeSelectionActivity.b(this.a) + paramInt2 + alpo.a(2131700391);
+    case 1: 
+      return paramInt2 + 1 + alpo.a(2131700388);
+    }
+    return paramInt2 + 1 + alpo.a(2131700389);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzk
  * JD-Core Version:    0.7.0.1
  */

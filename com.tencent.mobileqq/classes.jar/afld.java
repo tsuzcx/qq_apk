@@ -1,151 +1,167 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.contact.newfriend.QIMNotifyAddFriendBuilder.1;
-import com.tencent.mobileqq.app.FriendListHandler;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.HiBoomMessage;
+import com.tencent.mobileqq.data.MessageForHiBoom;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
 
 public class afld
-  extends afjt
-  implements View.OnClickListener
+  extends BaseBubbleBuilder
 {
-  public akdq a;
+  private ason a;
+  Context b;
   
-  public afld(Context paramContext, QQAppInterface paramQQAppInterface, aipn paramaipn, atza paramatza)
+  public afld(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    super(paramContext, paramQQAppInterface, paramaipn, paramatza);
-    this.jdField_a_of_type_Bfwd = a(paramContext);
-    this.jdField_a_of_type_Akdq = ((akdq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(257));
-    this.b = paramContext.getResources().getDimensionPixelSize(2131297274);
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+    this.jdField_a_of_type_Ason = new afle(this);
+    this.b = paramContext;
   }
   
-  protected int a()
+  private void g(ChatMessage paramChatMessage)
   {
-    return 1;
-  }
-  
-  public View a(int paramInt, View paramView)
-  {
-    afle localafle;
-    StringBuilder localStringBuilder;
-    QIMNotifyAddFriend localQIMNotifyAddFriend;
-    Object localObject;
-    boolean bool;
-    if ((paramView == null) || (!(paramView.getTag() instanceof afle)))
+    if ((paramChatMessage instanceof MessageForHiBoom))
     {
-      localafle = new afle();
-      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2131561122, localafle);
-      a(paramView, this.b);
-      localafle.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361795));
-      localafle.h = ((TextView)paramView.findViewById(2131370832));
-      localafle.i = ((TextView)paramView.findViewById(2131375196));
-      localafle.l = ((TextView)paramView.findViewById(2131362195));
-      localafle.j = ((TextView)paramView.findViewById(2131376341));
-      localafle.k = ((TextView)paramView.findViewById(2131375193));
-      localafle.a = ((Button)paramView.findViewById(2131375183));
-      b(localafle.jdField_f_of_type_AndroidWidgetImageView);
-      paramView.setTag(localafle);
-      localafle.g.setTag(localafle);
-      localafle.g.setClickable(false);
-      a(this.jdField_a_of_type_AndroidContentContext, paramView, paramInt, this.jdField_a_of_type_Atza, localafle, this);
-      localStringBuilder = new StringBuilder(256);
-      localQIMNotifyAddFriend = ((atzl)this.jdField_a_of_type_Atza).a;
-      localafle.h.setText(localQIMNotifyAddFriend.nickName);
-      if (AppSetting.d) {
-        localStringBuilder.append(localQIMNotifyAddFriend.nickName);
+      paramChatMessage = (MessageForHiBoom)paramChatMessage;
+      ((alxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(paramChatMessage.mHiBoomMessage.id, paramChatMessage.mHiBoomMessage.text, 1);
+      paramChatMessage = asnx.a(this.b);
+      if (paramChatMessage != null)
+      {
+        paramChatMessage.a(alpo.a(2131705841));
+        paramChatMessage.show();
       }
-      localObject = localafle.g;
-      if (this.jdField_a_of_type_Atza.a()) {
-        break label564;
+    }
+  }
+  
+  public int a(ChatMessage paramChatMessage)
+  {
+    return 0;
+  }
+  
+  public aelt a()
+  {
+    return new aflh();
+  }
+  
+  public View a(ChatMessage paramChatMessage, aelt paramaelt, View paramView, BaseChatItemLayout paramBaseChatItemLayout, aeov paramaeov)
+  {
+    if ((paramaelt instanceof aflh))
+    {
+      paramBaseChatItemLayout = (aflh)paramaelt;
+      paramaelt = paramView;
+      paramView = paramBaseChatItemLayout;
+      if (!(paramaelt instanceof HiBoomTextView)) {
+        break label129;
       }
-      bool = true;
-      label267:
-      a((View)localObject, bool);
-      a(localafle.l, localQIMNotifyAddFriend.gender, localQIMNotifyAddFriend.age, localStringBuilder);
-      localObject = this.jdField_a_of_type_Akdq.a(localQIMNotifyAddFriend.uin, localQIMNotifyAddFriend.qqUin);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break label569;
-      }
-      localafle.i.setVisibility(8);
+      paramaeov = (HiBoomTextView)paramaelt;
+      paramBaseChatItemLayout = paramaelt;
+      paramaelt = paramaeov;
     }
     for (;;)
     {
-      String str = ((FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(217)).c();
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = "来自QIM的好友申请";
+      paramView.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.jdField_a_of_type_Ason = this.jdField_a_of_type_Ason;
+      if ((paramChatMessage instanceof MessageForHiBoom))
+      {
+        paramChatMessage = (MessageForHiBoom)paramChatMessage;
+        if (paramChatMessage.mHiBoomMessage != null)
+        {
+          paramaelt.setHiBoom(paramChatMessage.mHiBoomMessage.id, 0, paramChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, asnx.jdField_a_of_type_Asnq);
+          paramaelt.setText(paramChatMessage.mHiBoomMessage.text);
+          if (e) {
+            paramaelt.setContentDescription(a(paramChatMessage));
+          }
+        }
       }
-      localObject = String.format(Locale.getDefault(), ajya.a(2131709820), new Object[] { localObject });
-      localafle.j.setText((CharSequence)localObject);
-      localafle.j.setVisibility(0);
-      if (AppSetting.d) {
-        localStringBuilder.append(",").append((String)localObject);
-      }
-      localafle.k.setVisibility(8);
-      localafle.a.setText(ajya.a(2131709821));
-      localafle.a.setVisibility(0);
-      localafle.a.setOnClickListener(this);
-      localafle.jdField_f_of_type_JavaLangString = String.valueOf(localQIMNotifyAddFriend.uin);
-      localafle.jdField_f_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_Aipn.a(1, String.valueOf(localQIMNotifyAddFriend.uin)));
-      if (AppSetting.d) {
-        paramView.setContentDescription(localStringBuilder.toString());
-      }
-      axqy.b(null, "dc00898", "", "", "0X8008AA4", "0X8008AA4", 0, 0, "", "", "", "");
-      return paramView;
-      localafle = (afle)paramView.getTag();
+      return paramBaseChatItemLayout;
+      paramView = (aflh)a();
+      paramaelt = null;
       break;
-      label564:
-      bool = false;
-      break label267;
-      label569:
-      localafle.i.setVisibility(0);
-      localafle.i.setText((CharSequence)localObject);
-      if (AppSetting.d) {
-        localStringBuilder.append(",").append((String)localObject);
-      }
+      label129:
+      paramaelt = new HiBoomTextView(this.b);
+      paramaelt.setMaxSize(Math.min(BaseChatItemLayout.e, asnx.jdField_a_of_type_Int));
+      paramView.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView = paramaelt;
+      paramaelt.setOnLongClickListener(paramaeov);
+      paramaelt.setOnTouchListener(paramaeov);
+      paramaelt.setTag(paramView);
+      paramBaseChatItemLayout = paramaelt;
     }
   }
   
-  protected void a()
+  public String a(ChatMessage paramChatMessage)
   {
-    axqy.b(null, "dc00898", "", "", "0X8008AA6", "0X8008AA6", 0, 0, "", "", "", "");
-    ThreadManager.postImmediately(new QIMNotifyAddFriendBuilder.1(this), null, true);
+    if ((paramChatMessage instanceof MessageForHiBoom))
+    {
+      paramChatMessage = (MessageForHiBoom)paramChatMessage;
+      if (paramChatMessage.mHiBoomMessage != null) {
+        return paramChatMessage.mHiBoomMessage.text;
+      }
+    }
+    return null;
   }
   
-  public void onClick(View paramView)
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage)
   {
-    switch (paramView.getId())
+    switch (paramInt)
     {
     default: 
-      a(paramView);
-    case 2131375335: 
+      super.a(paramInt, paramContext, paramChatMessage);
+      return;
+    case 2131370842: 
+      super.d(paramChatMessage);
+      return;
+    case 2131367633: 
+      g(paramChatMessage);
+      return;
+    case 2131365069: 
+      acex.b(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }
-    ((FlashChatManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(217)).a(this.jdField_a_of_type_AndroidContentContext, null);
-    ((akbn)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).g();
-    paramView = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
-    QIMNotifyAddFriend localQIMNotifyAddFriend = ((atzl)this.jdField_a_of_type_Atza).a;
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localQIMNotifyAddFriend);
-    paramView.a(localArrayList);
-    axqy.b(null, "dc00898", "", "", "0X8008AA5", "0X8008AA5", 0, 0, "", "", "", "");
+    super.a(paramChatMessage);
+  }
+  
+  public void a(View paramView)
+  {
+    super.a(paramView);
+    paramView = aekt.a(paramView);
+    String str1 = this.b.getString(2131690042);
+    String str2 = this.b.getString(2131690043);
+    if (paramView.isSendFromLocal()) {
+      bdcd.a(this.b, 230, str1, str2, new aflf(this, paramView), new aflg(this)).show();
+    }
+  }
+  
+  public bdlb[] a(View paramView)
+  {
+    bdkz localbdkz = new bdkz();
+    if ((aekt.a(paramView) instanceof aflh))
+    {
+      paramView = (aflh)aekt.a(paramView);
+      if ((paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForHiBoom))
+      {
+        localbdkz.a(2131367633, this.b.getString(2131692835), 2130838677);
+        if (((MessageForHiBoom)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage).istroop == 0) {
+          a(paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage, localbdkz);
+        }
+      }
+      if ((paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage.extraflag != 32768) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage))) {
+        a(localbdkz, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      }
+      a(localbdkz, paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    }
+    super.c(localbdkz, this.b);
+    super.e(localbdkz, this.b);
+    return localbdkz.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afld
  * JD-Core Version:    0.7.0.1
  */

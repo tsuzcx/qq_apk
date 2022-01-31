@@ -1,37 +1,39 @@
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity.10.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class agip
-  extends ajxj
+  extends agij
 {
-  public agip(BindNumberActivity paramBindNumberActivity) {}
+  public aemn a;
+  public Bitmap a;
+  public boolean a;
+  public Drawable[] a;
   
-  public void onGetFriendsHasBindPhone(boolean paramBoolean, int paramInt, List<String> paramList)
+  public agip(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      if (paramList != null) {
-        break label95;
-      }
-    }
-    label95:
-    for (Object localObject = "null";; localObject = Integer.valueOf(paramList.size()))
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
     {
-      QLog.i("BindNumberActivity", 2, String.format("onGetFriendsHasBindPhone [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), localObject }));
-      if (paramBoolean) {
-        this.a.runOnUiThread(new BindNumberActivity.10.1(this, paramInt, paramList));
-      }
-      this.a.app.removeObserver(this.a.a);
-      this.a.a = null;
-      return;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap;
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      this.jdField_a_of_type_Aemn = paramRedPacketInfo.jdField_a_of_type_Aemn;
+      this.jdField_a_of_type_Boolean = paramRedPacketInfo.b;
     }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) || (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agip
  * JD-Core Version:    0.7.0.1
  */

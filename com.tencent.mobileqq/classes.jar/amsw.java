@@ -1,126 +1,42 @@
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amsw
+  extends bavo
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
+  amst jdField_a_of_type_Amst;
+  amsv jdField_a_of_type_Amsv;
   
-  public amsw()
+  public amsw(QQAppInterface paramQQAppInterface, amsv paramamsv, amst paramamst)
   {
-    this.jdField_a_of_type_JavaLangString = "0.0f|0.0f|0.0f|0.0f";
-    this.jdField_b_of_type_JavaLangString = "-1";
-    this.jdField_c_of_type_JavaLangString = "-1";
+    super(paramQQAppInterface, paramamsv.b);
+    this.jdField_a_of_type_Amsv = paramamsv;
+    this.jdField_a_of_type_Amst = paramamst;
   }
   
-  public static amsw a(String paramString)
+  protected void realCancel()
   {
-    if (paramString == null) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        amsw localamsw = new amsw();
-        paramString = new JSONObject(paramString);
-        localamsw.jdField_a_of_type_JavaLangString = paramString.optString("userratio_new", "0.0f|0.0f|0.0f|0.0f");
-        localamsw.jdField_b_of_type_JavaLangString = paramString.optString("extralsteps_new", "-1");
-        localamsw.jdField_c_of_type_JavaLangString = paramString.optString("predownloadwhitelist_new", "-1");
-        localamsw.e = paramString.optBoolean("useapm_new", false);
-        paramString = Float.valueOf(Float.parseFloat(paramString.optString("suspend_user_ratio", "0.0f")));
-        float f1;
-        float f2;
-        float f3;
-        float f4;
-        if (paramString != null)
-        {
-          if (paramString.floatValue() > Math.random())
-          {
-            bool = true;
-            localamsw.f = bool;
-          }
-        }
-        else if (!localamsw.jdField_a_of_type_JavaLangString.isEmpty())
-        {
-          paramString = localamsw.jdField_a_of_type_JavaLangString.split("\\|");
-          if (paramString.length == 4)
-          {
-            f1 = Float.parseFloat(paramString[0]);
-            f2 = Float.parseFloat(paramString[1]);
-            f3 = Float.parseFloat(paramString[2]);
-            f4 = Float.parseFloat(paramString[3]);
-            if (f1 <= Math.random()) {
-              break label347;
-            }
-            bool = true;
-            label185:
-            localamsw.jdField_a_of_type_Boolean = bool;
-            if (f2 <= Math.random()) {
-              break label353;
-            }
-            bool = true;
-            label204:
-            localamsw.jdField_b_of_type_Boolean = bool;
-            if (f3 <= Math.random()) {
-              break label359;
-            }
-            bool = true;
-            label223:
-            localamsw.jdField_c_of_type_Boolean = bool;
-            if (f4 <= Math.random()) {
-              break label365;
-            }
-          }
-        }
-        label347:
-        label353:
-        label359:
-        label365:
-        for (boolean bool = true;; bool = false)
-        {
-          localamsw.d = bool;
-          QLog.d("Perf", 1, "disable_preload_user_ratio = " + f1 + ",disable_predownload_user_ratio = " + f2 + ",disable_gettroop_user_ratio = " + f3 + ",enable_auto_user_ratio = " + f4);
-          if (QLog.isColorLevel()) {
-            QLog.d("Perf", 2, "confBean = " + localamsw.toString());
-          }
-          return localamsw;
-          bool = false;
-          break;
-          bool = false;
-          break label185;
-          bool = false;
-          break label204;
-          bool = false;
-          break label223;
-        }
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (Throwable paramString) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realCancel");
     }
-    QLog.e("Perf", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
   }
   
-  public boolean a()
+  protected void realStart()
   {
-    return !this.e;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realStart");
+    }
+    amst.a(this.jdField_a_of_type_Amst, this.jdField_a_of_type_Amsv);
   }
   
   public String toString()
   {
-    return "LowEndPerfBean{mDisablePreloadProcess=" + this.jdField_a_of_type_Boolean + ",mDisablePredownload=" + this.jdField_b_of_type_Boolean + ",mDisableGetTroopList=" + this.jdField_c_of_type_Boolean + ",mEnableAutomatorDelay=" + this.d + ",mUserRatio=" + this.jdField_a_of_type_JavaLangString + ",mExtraSteps=" + this.jdField_b_of_type_JavaLangString + ",mPredownLoadWhiteList=" + this.jdField_c_of_type_JavaLangString + ",mUseApmConfig=" + this.e + ",mSuspend_Thread=" + this.f + '}';
+    return "[DownloadTask] mInfo=" + this.jdField_a_of_type_Amsv + ", mDownloader=" + this.jdField_a_of_type_Amst;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsw
  * JD-Core Version:    0.7.0.1
  */

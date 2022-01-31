@@ -1,105 +1,68 @@
-import android.content.Context;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
-import android.os.Handler;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import java.util.Map;
-import java.util.WeakHashMap;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import com.tencent.mobileqq.widget.presseffect.PressEffectTextView;
+import java.util.ArrayList;
 
 public class bazl
+  extends BaseAdapter
 {
-  protected int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = new BitmapDrawable();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private bazh jdField_a_of_type_Bazh;
-  private Map<View, bazo> jdField_a_of_type_JavaUtilMap = new WeakHashMap();
-  private boolean jdField_a_of_type_Boolean;
-  protected int b;
-  private boolean b;
+  bbaa jdField_a_of_type_Bbaa;
+  ArrayList<bazy> jdField_a_of_type_JavaUtilArrayList;
   
-  public bazl(Context paramContext)
+  protected bazl(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  
+  public void a(ArrayList<bazy> paramArrayList, bbaa parambbaa)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bazh = new bazh(bbap.a(paramContext) / 8);
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Bbaa = parambbaa;
+    notifyDataSetChanged();
   }
   
-  private bazn a(View paramView)
+  public int getCount()
   {
-    if (paramView != null)
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity()).inflate(2131560392, paramViewGroup, false);
+    }
+    for (;;)
     {
-      bazo localbazo = (bazo)this.jdField_a_of_type_JavaUtilMap.get(paramView);
-      if (localbazo != null) {
-        paramView = localbazo.jdField_a_of_type_Bazm;
-      }
-      while ((paramView instanceof bazm))
+      paramViewGroup = (PressEffectTextView)paramView;
+      if (TextUtils.isEmpty(((bazy)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a))
       {
-        return ((bazm)paramView).a();
-        if ((paramView instanceof ImageView)) {
-          paramView = ((ImageView)paramView).getDrawable();
-        } else {
-          paramView = paramView.getBackground();
-        }
+        paramViewGroup.setVisibility(8);
+        return paramView;
       }
+      paramViewGroup.setVisibility(0);
+      paramViewGroup.setText(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a(this.jdField_a_of_type_JavaUtilArrayList.size(), ((bazy)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a));
+      paramViewGroup.setOnClickListener(new bazm(this, paramInt));
+      return paramView;
     }
-    return null;
-  }
-  
-  private void a(boolean paramBoolean, View paramView, Drawable paramDrawable, bazo parambazo)
-  {
-    Object localObject = paramDrawable;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      localObject = paramDrawable;
-      if (paramBoolean)
-      {
-        localObject = paramDrawable;
-        if (!(paramDrawable instanceof AnimationDrawable))
-        {
-          localObject = paramDrawable;
-          if (paramDrawable != null)
-          {
-            localObject = new TransitionDrawable(new Drawable[] { new ColorDrawable(17170445), paramDrawable });
-            ((TransitionDrawable)localObject).startTransition(200);
-          }
-        }
-      }
-    }
-    paramDrawable = null;
-    if (parambazo != null) {
-      paramDrawable = parambazo.jdField_a_of_type_Bazk;
-    }
-    if (paramDrawable != null)
-    {
-      paramDrawable.a(paramView, (Drawable)localObject);
-      return;
-    }
-    if ((paramView instanceof ImageView))
-    {
-      ((ImageView)paramView).setImageDrawable((Drawable)localObject);
-      return;
-    }
-    paramView.setBackgroundDrawable((Drawable)localObject);
-  }
-  
-  public bazh a()
-  {
-    return this.jdField_a_of_type_Bazh;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bazl
  * JD-Core Version:    0.7.0.1
  */

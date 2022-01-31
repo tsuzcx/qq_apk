@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import akhp;
+import alzf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -11,7 +11,7 @@ public class GetTroopConfig
   public int a()
   {
     if (this.a.app != null) {
-      ((akhp)this.a.app.a(20)).c();
+      ((alzf)this.a.app.a(20)).c();
     }
     return 7;
   }

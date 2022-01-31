@@ -1,29 +1,31 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import com.tencent.widget.XListView;
 
-class ahkn
-  implements View.OnClickListener
+public class ahkn
+  extends Handler
 {
-  ahkn(ahkd paramahkd) {}
+  public ahkn(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    if (bfnz.e()) {
-      ahkd.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
+    switch (paramMessage.what)
+    {
     }
     for (;;)
     {
-      axqy.a(ahkd.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 1, 0, "", "", "", "");
+      super.handleMessage(paramMessage);
       return;
-      ahkd.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+      this.a.a.springBackOverScrollHeaderView();
+      continue;
+      this.a.a.springBackOverScrollHeaderView();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,23 @@
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.downloadnew.DownloadManager.17;
 
-class bfkd
-  implements bfjx
+public class bfkd
+  implements DialogInterface.OnClickListener
 {
-  bfkd(bfkc parambfkc) {}
+  public bfkd(DownloadManager.17 param17) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt1 == 1) {
-      synchronized (bfkc.a(this.a))
-      {
-        Object localObject2 = (List)bfkc.a(this.a).get(Integer.valueOf(paramInt2));
-        if (localObject2 != null)
-        {
-          bfkc.a(this.a).remove(Integer.valueOf(paramInt2));
-          bfkc.a(this.a);
-        }
-        if (localObject2 != null)
-        {
-          ??? = ((List)localObject2).iterator();
-          if (((Iterator)???).hasNext())
-          {
-            localObject2 = (bfke)((Iterator)???).next();
-            bfkc.a(this.a).a(((bfke)localObject2).jdField_a_of_type_Int, ((bfke)localObject2).b, ((bfke)localObject2).c, new Object[] { ((bfke)localObject2).jdField_a_of_type_ArrayOfByte }, null);
-          }
-        }
-      }
-    }
+    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bfjy.r, false);
+    bfju.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfkd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,36 @@
-import android.graphics.Bitmap;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import cooperation.qzone.report.lp.LpReportManager;
+import cooperation.qzone.util.QZLog;
 
 public class bjzq
-  extends bkaa
 {
-  public final long a;
-  public final long b;
-  public final long c;
-  public final long d;
-  
-  public bjzq(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Bitmap paramBitmap)
+  public static void a(int paramInt)
   {
-    super(paramInt, paramBitmap);
-    this.a = paramLong1;
-    this.b = paramLong2;
-    this.jdField_c_of_type_Long = paramLong3;
-    this.d = paramLong4;
+    a("WidgetReport", 302, 7, paramInt, false, false);
   }
   
-  public bjzq a(Bitmap paramBitmap)
+  public static void a(int paramInt1, int paramInt2)
   {
-    return new bjzq(this.jdField_c_of_type_Int, this.a, this.b, this.jdField_c_of_type_Long, this.d, paramBitmap);
+    a("MsgActiveFeed", 133, paramInt1, paramInt2, false, false);
   }
   
-  public String toString()
+  public static void a(String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
   {
-    return "RecordVideoBlockInfo{index:" + this.jdField_c_of_type_Int + ", vfFrame: " + this.a + " ~ " + this.b + ", afTime: " + this.jdField_c_of_type_Long + " ~ " + this.d + '}';
+    if (QZLog.isColorLevel()) {
+      QZLog.i(paramString, 2, "reportToPf00064 actiontype = " + paramInt1 + " subactionType = " + paramInt2 + " reserves = " + paramInt3 + " isNeedSample = " + paramBoolean1 + " isReportNow = " + paramBoolean2);
+    }
+    paramString = new LpReportInfo_pf00064(paramInt1, paramInt2, paramInt3);
+    LpReportManager.getInstance().reportToPF00064(paramString, paramBoolean1, paramBoolean2);
+  }
+  
+  public static void b(int paramInt1, int paramInt2)
+  {
+    a("VipSignature", paramInt1, paramInt2, 0, false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjzq
  * JD-Core Version:    0.7.0.1
  */

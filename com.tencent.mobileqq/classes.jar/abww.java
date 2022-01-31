@@ -1,26 +1,77 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class abww
-  implements bbsj
+  implements Animation.AnimationListener
 {
-  public abww(QQSettingMe paramQQSettingMe) {}
+  int jdField_a_of_type_Int = -1;
+  View jdField_a_of_type_AndroidViewView;
   
-  public void a()
+  public abww(AccountManageActivity paramAccountManageActivity, View paramView, int paramInt)
   {
-    if (this.a.a != null)
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return;
+    }
+    switch (this.jdField_a_of_type_Int)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "enterWordListener");
+    case 2: 
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      paramAnimation.leftMargin += (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+      this.jdField_a_of_type_AndroidViewView.setTag("right");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      return;
+      paramAnimation = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      paramAnimation.leftMargin -= (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a * 34.0F);
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+      this.jdField_a_of_type_AndroidViewView.setTag("left");
+      continue;
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      if (this.jdField_a_of_type_AndroidViewView.getId() == 2131364237)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c();
+        continue;
+        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
       }
-      this.a.c(this.a.a.getAccount());
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
+    }
+    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abww
  * JD-Core Version:    0.7.0.1
  */

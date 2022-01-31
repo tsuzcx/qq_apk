@@ -1,22 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.widget.ImageView;
 
-public class ahet
-  implements DialogInterface.OnClickListener
+class ahet
+  implements bcwt
 {
-  public ahet(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
+  ahet(ahes paramahes) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).isShowing())) {
-      DrawRedpacketPannelPreviewFragment.a(this.a).dismiss();
+    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      paramInt2 = ahes.a(this.a).getChildCount();
+      paramInt1 = 0;
+      while (paramInt1 < paramInt2)
+      {
+        Object localObject = ahes.a(this.a).getChildViewHolder(ahes.a(this.a).getChildAt(paramInt1));
+        if ((localObject instanceof aheu))
+        {
+          localObject = (aheu)localObject;
+          if (((aheu)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
+            ((aheu)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+          }
+        }
+        paramInt1 += 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahet
  * JD-Core Version:    0.7.0.1
  */

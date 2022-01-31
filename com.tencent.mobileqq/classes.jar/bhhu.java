@@ -1,62 +1,47 @@
-import android.graphics.Bitmap;
+import android.text.TextUtils;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class bhhu
+class bhhu
+  implements ThreadFactory
 {
-  private int jdField_a_of_type_Int = -1;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private int b;
+  private static final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+  private final String jdField_a_of_type_JavaLangString;
+  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
+  private final AtomicInteger b = new AtomicInteger(1);
   
-  public int a()
+  bhhu(String paramString)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-    while (this.jdField_a_of_type_Int > 0) {
+    Object localObject = System.getSecurityManager();
+    if (localObject != null) {}
+    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
+    {
+      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localObject = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        localObject = "threadpool";
+      }
+      this.jdField_a_of_type_JavaLangString = ((String)localObject + "-" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() + "-thread-");
       return;
     }
-    this.jdField_a_of_type_Int = bhhy.a(this.jdField_a_of_type_AndroidGraphicsBitmap, true);
   }
   
-  public void a(int paramInt)
+  public Thread newThread(Runnable paramRunnable)
   {
-    this.b = paramInt;
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.b.getAndIncrement(), 0L);
+    if (paramRunnable.isDaemon()) {
+      paramRunnable.setDaemon(false);
     }
-    bhhy.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int c()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      return this.jdField_a_of_type_AndroidGraphicsBitmap.getByteCount();
+    if (paramRunnable.getPriority() != 5) {
+      paramRunnable.setPriority(5);
     }
-    return 0;
+    return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhhu
  * JD-Core Version:    0.7.0.1
  */

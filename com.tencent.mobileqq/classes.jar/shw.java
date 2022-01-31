@@ -1,23 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ChannelTopPositionView;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-final class shw
-  implements Comparator<ArticleInfo>
+public class shw
+  implements View.OnClickListener
 {
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  public shw(ChannelTopPositionView paramChannelTopPositionView) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.i("ChannelTopPositionView", 2, "onclick");
     }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
+    if (ChannelTopPositionView.a(this.a) != null) {
+      PublicFragmentActivity.a(ChannelTopPositionView.a(this.a), ReadInJoySelectPositionFragment.class);
     }
-    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     shw
  * JD-Core Version:    0.7.0.1
  */

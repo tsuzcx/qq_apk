@@ -1,48 +1,33 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.4.1;
+import java.util.List;
 
-public final class bblp
-  implements URLDrawable.URLDrawableListener
+public class bblp
+  extends alzj
 {
-  public bblp(Resources paramResources, String paramString, ImageView paramImageView, Drawable paramDrawable) {}
+  bblp(bbln parambbln, MessageRecord paramMessageRecord, bblq parambblq) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
   {
-    int i;
-    if (paramURLDrawable != null)
+    if (paramBoolean)
     {
-      i = actj.a(15.0F, this.jdField_a_of_type_AndroidContentResResources);
-      j = paramURLDrawable.getIntrinsicHeight();
-      if (j == 0)
+      if ((paramList != null) && (paramList.size() > 0))
       {
-        boolean bool = new File(bbqz.a(this.jdField_a_of_type_JavaLangString)).delete();
-        QLog.e("VipUtils", 1, "onLoadSuccessed drawableHeight=0, deleteSucc=" + bool + " url=" + this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        bbln.a(this.jdField_a_of_type_Bbln, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (TroopAioKeywordTipInfo)paramList.get(0), this.jdField_a_of_type_Bblq);
+        synchronized (this.jdField_a_of_type_Bbln.b)
+        {
+          this.jdField_a_of_type_Bbln.b.put(((TroopAioKeywordTipInfo)paramList.get(0)).ruleId, paramList.get(0));
+          ThreadManager.post(new TroopAioKeywordTipManager.4.1(this, paramList), 2, null, true);
+          return;
+        }
       }
-    }
-    else
-    {
+      bbln.a(this.jdField_a_of_type_Bbln, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Bblq);
       return;
     }
-    int j = paramURLDrawable.getIntrinsicWidth() * i / j;
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    localLayoutParams.height = i;
-    localLayoutParams.width = j;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    bbln.a(this.jdField_a_of_type_Bbln, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Bblq);
   }
 }
 

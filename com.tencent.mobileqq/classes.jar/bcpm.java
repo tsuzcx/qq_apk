@@ -1,29 +1,10 @@
-public class bcpm
+public abstract interface bcpm
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    localStringBuilder.append("DataItem:position=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", type=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", coverUrl=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", feedId=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", vid=").append(this.c);
-    localStringBuilder.append(", jumpUrl=").append(this.d);
-    localStringBuilder.append(", spiritImageUrl=").append(this.e);
-    return localStringBuilder.toString();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcpm
  * JD-Core Version:    0.7.0.1
  */

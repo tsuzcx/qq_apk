@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.text.TextUtils;
-import auko;
-import aulz;
+import awbv;
+import awdg;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class DynamicChannelDataModel
-  extends auko
+  extends awbv
 {
-  @aulz
+  @awdg
   public static final String TAG = "DynamicChannelDataModel";
   public int channelID;
-  @aulz
+  @awdg
   public TemplateBean mTemplateBean;
   public String proteusData;
   public long recommendSeq;
@@ -53,7 +53,7 @@ public class DynamicChannelDataModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel
  * JD-Core Version:    0.7.0.1
  */

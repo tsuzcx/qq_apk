@@ -6,13 +6,13 @@ import android.opengl.GLES30;
 import android.os.Build.VERSION;
 import android.os.HandlerThread;
 import android.os.SystemClock;
-import bbdx;
+import bdcs;
 import com.tencent.maxvideo.common.AVIOStruct;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
-import ved;
+import wsv;
 
 public class PtvFilterUtils
 {
@@ -45,7 +45,7 @@ public class PtvFilterUtils
     if (paramInt4 == 3) {
       i = 6407;
     }
-    ved.a("PtvFilterUtils", "sharedMemoryGLReadPixels %d, width=%d, height=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+    wsv.a("PtvFilterUtils", "sharedMemoryGLReadPixels %d, width=%d, height=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
     if (paramInt1 != 0)
     {
       paramAVIOStruct = new int[1];
@@ -74,10 +74,10 @@ public class PtvFilterUtils
           getGLFrameBufferDataPBO(paramInt2, paramInt3, 4);
           paramInt4 = GLES20.glGetError();
           if (paramInt4 != 0) {
-            ved.e("PtvFilterUtils", "getGLFrameBufferDataPBO:err=" + Integer.toHexString(paramInt4));
+            wsv.e("PtvFilterUtils", "getGLFrameBufferDataPBO:err=" + Integer.toHexString(paramInt4));
           }
           GLES30.glBindTexture(3553, 0);
-          ved.a("PtvFilterUtils", "getGLFrameBufferDataPBO request pack pixel to PBO frame=%d, PBO=%d, cost=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt1 % jdField_a_of_type_ArrayOfInt.length), Long.valueOf(SystemClock.elapsedRealtime() - l1));
+          wsv.a("PtvFilterUtils", "getGLFrameBufferDataPBO request pack pixel to PBO frame=%d, PBO=%d, cost=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt1 % jdField_a_of_type_ArrayOfInt.length), Long.valueOf(SystemClock.elapsedRealtime() - l1));
           if (paramInt1 < 1) {
             break label450;
           }
@@ -87,7 +87,7 @@ public class PtvFilterUtils
           ByteBuffer localByteBuffer = (ByteBuffer)GLES30.glMapBufferRange(35051, 0, paramInt2 * paramInt3 * 4, 1);
           paramInt4 = GLES20.glGetError();
           if (paramInt4 != 0) {
-            ved.e("PtvFilterUtils", "glMapBufferRange:err=" + Integer.toHexString(paramInt4));
+            wsv.e("PtvFilterUtils", "glMapBufferRange:err=" + Integer.toHexString(paramInt4));
           }
           long l2 = SystemClock.elapsedRealtime();
           long l3 = SystemClock.elapsedRealtime();
@@ -96,7 +96,7 @@ public class PtvFilterUtils
           }
           copyMapData(localByteBuffer, paramByteBuffer, paramInt2 * paramInt3 * 4);
           bool = GLES30.glUnmapBuffer(35051);
-          ved.b("PtvFilterUtils", "getGLFrameBufferDataPBO copyMapData from PBO frame=%d, PBO=%d, result=%s, glMapBufferRange cost=%d, copyMapData cost=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt1 % jdField_a_of_type_ArrayOfInt.length), Boolean.valueOf(bool), Long.valueOf(l2 - l1), Long.valueOf(SystemClock.elapsedRealtime() - l3) });
+          wsv.b("PtvFilterUtils", "getGLFrameBufferDataPBO copyMapData from PBO frame=%d, PBO=%d, result=%s, glMapBufferRange cost=%d, copyMapData cost=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt1 % jdField_a_of_type_ArrayOfInt.length), Boolean.valueOf(bool), Long.valueOf(l2 - l1), Long.valueOf(SystemClock.elapsedRealtime() - l3) });
         }
         for (;;)
         {
@@ -106,7 +106,7 @@ public class PtvFilterUtils
           bool = false;
           break label134;
           label440:
-          ved.d("PtvFilterUtils", "getGLFrameBufferDataPBO glMapBufferRange failed");
+          wsv.d("PtvFilterUtils", "getGLFrameBufferDataPBO glMapBufferRange failed");
         }
         label450:
         GLES30.glBindBuffer(35051, 0);
@@ -194,7 +194,7 @@ public class PtvFilterUtils
     if (QLog.isColorLevel()) {
       QLog.d("PtvFilterUtils", 2, "configure file content:" + localStringBuilder.toString());
     }
-    bbdx.a(paramString1, localStringBuilder.toString());
+    bdcs.a(paramString1, localStringBuilder.toString());
   }
   
   public static void a(boolean paramBoolean)
@@ -332,7 +332,7 @@ public class PtvFilterUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.PtvFilterUtils
  * JD-Core Version:    0.7.0.1
  */

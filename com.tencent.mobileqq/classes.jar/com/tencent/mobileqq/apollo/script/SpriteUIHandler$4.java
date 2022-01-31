@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.script;
 
-import ajez;
+import akwl;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.apollo.view.ApolloPanel;
@@ -19,13 +19,13 @@ class SpriteUIHandler$4
       if (SpriteUIHandler.a(this.this$0).a() == null) {
         return;
       }
-      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.this$0).a().a().findViewById(2131375493);
+      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.this$0).a().a().findViewById(2131375981);
       if (1 == this.a)
       {
         if (localXPanelContainer.a() != 21) {
           return;
         }
-        SpriteUIHandler.a(this.this$0).a().ap();
+        SpriteUIHandler.a(this.this$0).a().ar();
         return;
       }
     }
@@ -52,7 +52,7 @@ class SpriteUIHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler.4
  * JD-Core Version:    0.7.0.1
  */

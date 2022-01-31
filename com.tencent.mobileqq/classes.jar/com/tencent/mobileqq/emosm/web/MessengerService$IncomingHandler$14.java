@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emosm.web;
 
-import agby;
+import aiab;
 import android.os.Bundle;
-import anec;
-import anuq;
+import aovj;
+import aply;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.LebaPluginInfo;
 import java.util.Iterator;
@@ -12,11 +12,11 @@ import java.util.List;
 public class MessengerService$IncomingHandler$14
   implements Runnable
 {
-  public MessengerService$IncomingHandler$14(anuq paramanuq, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface, int paramInt, Bundle paramBundle) {}
+  public MessengerService$IncomingHandler$14(aply paramaply, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface, int paramInt, Bundle paramBundle) {}
   
   public void run()
   {
-    Object localObject2 = agby.a().a();
+    Object localObject2 = aiab.a().a();
     Object localObject1;
     if (localObject2 != null)
     {
@@ -25,8 +25,8 @@ public class MessengerService$IncomingHandler$14
     }
     else
     {
-      agby.a().a(this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      localObject1 = agby.a().a();
+      aiab.a().a(this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject1 = aiab.a().a();
     }
     if (localObject1 != null)
     {
@@ -36,10 +36,10 @@ public class MessengerService$IncomingHandler$14
         if (!((Iterator)localObject1).hasNext()) {
           break;
         }
-        localObject2 = (anec)((Iterator)localObject1).next();
-      } while ((localObject2 == null) || (((anec)localObject2).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (((anec)localObject2).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId != this.jdField_a_of_type_Int));
+        localObject2 = (aovj)((Iterator)localObject1).next();
+      } while ((localObject2 == null) || (((aovj)localObject2).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) || (((aovj)localObject2).jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.uiResId != this.jdField_a_of_type_Int));
     }
-    for (int i = ((anec)localObject2).jdField_a_of_type_Byte;; i = -1)
+    for (int i = ((aovj)localObject2).jdField_a_of_type_Byte;; i = -1)
     {
       localObject1 = new Bundle();
       if (i == -1)
@@ -64,7 +64,7 @@ public class MessengerService$IncomingHandler$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.14
  * JD-Core Version:    0.7.0.1
  */

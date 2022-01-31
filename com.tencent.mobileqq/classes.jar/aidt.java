@@ -1,67 +1,62 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.ClipboardManager;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.PhoneContact;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 class aidt
   implements View.OnClickListener
 {
-  aidt(aids paramaids) {}
+  aidt(aidp paramaidp) {}
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131365217) {}
-    aidz localaidz;
-    PhoneContact localPhoneContact;
-    do
+    int i = paramView.getId();
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "onClick, id = " + i);
+    }
+    switch (i)
     {
+    default: 
+    case 2131364910: 
+    case 2131366750: 
       do
       {
+        do
+        {
+          return;
+        } while (this.a.jdField_a_of_type_Aicu == null);
+        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_Aicu.a.msg);
         return;
-        localaidz = (aidz)paramView.getTag();
-      } while ((localaidz == null) || (localaidz.jdField_a_of_type_AndroidWidgetCheckBox == null) || (localaidz.jdField_a_of_type_ComTencentMobileqqDataPhoneContact == null));
-      localPhoneContact = localaidz.jdField_a_of_type_ComTencentMobileqqDataPhoneContact;
-    } while (!localaidz.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled());
-    if (localaidz.jdField_a_of_type_JavaLangString.startsWith("+")) {}
-    for (boolean bool = this.a.a.a.a(localaidz.jdField_a_of_type_JavaLangString, localPhoneContact.name, 4, "-1", localPhoneContact.mobileNo);; bool = this.a.a.a.a(localaidz.jdField_a_of_type_JavaLangString, localPhoneContact.name, 0, "-1", localPhoneContact.mobileNo))
-    {
-      localaidz.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-      if (!AppSetting.d) {
-        break;
-      }
-      if (!localaidz.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break label255;
-      }
-      if (!localaidz.jdField_a_of_type_Boolean) {
-        break label216;
-      }
-      paramView.setContentDescription(localaidz.b.getText() + this.a.a.a.getString(2131719236));
+      } while (this.a.jdField_a_of_type_Aicu == null);
+      paramView = new Bundle();
+      paramView.putInt("forward_type", -1);
+      paramView.putString("forward_text", this.a.jdField_a_of_type_Aicu.a.msg);
+      Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
+      localIntent.putExtras(paramView);
+      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 21);
       return;
     }
-    label216:
-    paramView.setContentDescription(localaidz.b.getText().toString() + ajya.a(2131708006));
-    return;
-    label255:
-    if (localaidz.jdField_a_of_type_Boolean) {}
-    for (int i = this.a.a.a.a(localaidz.jdField_a_of_type_JavaLangString);; i = 0)
-    {
-      if ((localaidz.jdField_a_of_type_Boolean) && (i != 0))
-      {
-        paramView.setContentDescription(localaidz.b.getText() + this.a.a.a.getString(i));
-        return;
-      }
-      paramView.setContentDescription(localaidz.b.getText().toString() + ajya.a(2131708003));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "OnClickListener, setMessageItems");
     }
+    this.a.c = false;
+    aidp.a(this.a).setVisibility(8);
+    aidp.a(this.a, 0, null);
+    this.a.jdField_a_of_type_Ahzs.a(aidp.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
+    this.a.jdField_a_of_type_Ahzs.notifyDataSetChanged();
+    this.a.b = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aidt
  * JD-Core Version:    0.7.0.1
  */

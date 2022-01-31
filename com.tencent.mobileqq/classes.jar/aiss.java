@@ -1,29 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.ApolloActionPush;
-import com.tencent.qphone.base.util.QLog;
+import Wallet.RedPackGrapInfo;
+import android.animation.Animator;
+import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
+import java.util.List;
 
-class aiss
-  implements aist
+public class aiss
+  implements IRedPacket.OnGetAvailableListListener
 {
-  aiss(aisr paramaisr) {}
+  public aiss(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
+  public void OnGetAvailableList(List<RedPackGrapInfo> paramList)
   {
-    if ((aisr.a(this.a) != null) && (paramApolloActionPush != null))
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+    }
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
       }
-      if ((aisr.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == aisr.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(aisr.a(this.a).jdField_a_of_type_JavaLangString)) && (aisr.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
-        this.a.a(paramApolloActionPush);
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null)
+      {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+        TroopUnAccalimedRedPacketList.a(this.a).setText(alpo.a(2131716179));
       }
     }
+    do
+    {
+      return;
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
+      }
+      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+        TroopUnAccalimedRedPacketList.a(this.a).a(paramList);
+      }
+    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
+    TroopUnAccalimedRedPacketList.a(this.a).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiss
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,30 @@
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import java.util.Arrays;
+import java.util.List;
 
 public class xcn
-  extends balg
+  implements xab
 {
-  public xcn(TroopGiftPanel paramTroopGiftPanel) {}
+  @NonNull
+  private final wzy[] a;
   
-  public void a(int paramInt)
+  public xcn(wzy... paramVarArgs)
   {
-    super.a(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetButton.setText(TroopGiftPanel.a(this.a));
-    TroopGiftPanel.a(this.a, 0L);
+    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+      throw new IllegalArgumentException("layers should not be null or empty");
+    }
+    this.a = paramVarArgs;
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(List<wzy> paramList, DoodleView paramDoodleView)
   {
-    super.a(paramInt, paramString);
-    bcql.a(this.a.jdField_a_of_type_AndroidContentContext, ajya.a(2131715434), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
-    TroopGiftPanel.a(true);
-  }
-  
-  public void b(int paramInt, String paramString)
-  {
-    super.b(paramInt, paramString);
-    bcql.a(this.a.jdField_a_of_type_AndroidContentContext, ajya.a(2131715401), 0).b(this.a.getResources().getDimensionPixelSize(2131298865));
-    TroopGiftPanel.a(true);
+    paramList.addAll(Arrays.asList(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xcn
  * JD-Core Version:    0.7.0.1
  */

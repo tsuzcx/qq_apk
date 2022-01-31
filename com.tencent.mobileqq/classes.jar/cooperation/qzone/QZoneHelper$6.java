@@ -2,7 +2,7 @@ package cooperation.qzone;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
-import bgyv;
+import bizs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import java.util.List;
 public final class QZoneHelper$6
   implements Runnable
 {
-  public QZoneHelper$6(bgyv parambgyv) {}
+  public QZoneHelper$6(bizs parambizs) {}
   
   public void run()
   {
@@ -38,7 +38,7 @@ public final class QZoneHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.6
  * JD-Core Version:    0.7.0.1
  */

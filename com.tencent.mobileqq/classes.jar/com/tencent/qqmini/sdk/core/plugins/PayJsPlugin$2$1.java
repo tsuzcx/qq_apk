@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import benn;
+import bgnf;
 
 class PayJsPlugin$2$1
   implements Runnable
@@ -9,12 +9,12 @@ class PayJsPlugin$2$1
   
   public void run()
   {
-    benn.a(this.this$1.this$0.mContext, this.val$errMsg, 0).a();
+    bgnf.a(this.this$1.this$0.mContext, this.val$errMsg, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.PayJsPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

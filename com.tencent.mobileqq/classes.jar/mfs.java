@@ -1,28 +1,106 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.funchat.filter.EffectFilterPanel;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class mfs
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public mfs(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong) {}
+  public mfs(EffectSettingUi paramEffectSettingUi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a != null) && (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.d()))
+    long l = AudioHelper.b();
+    int k = paramView.getId();
+    paramView = paramView.getTag(2131377361);
+    if ((paramView != null) && ((paramView instanceof Boolean))) {}
+    for (boolean bool = ((Boolean)paramView).booleanValue();; bool = false)
     {
-      MultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase, true);
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.e();
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.f(this.jdField_a_of_type_Long, 65535);
-      this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a().ao = true;
+      int m = this.a.jdField_a_of_type_Int;
+      bool = this.a.a(l, k, bool);
+      int i;
+      int j;
+      if (k == 4)
+      {
+        i = 1;
+        j = i;
+        if (i != 0)
+        {
+          paramView = ((AVActivity)this.a.getContext()).a;
+          if ((paramView != null) && ((paramView == null) || (paramView.getVisibility() != 8))) {
+            break label321;
+          }
+          j = 1;
+        }
+        label109:
+        if ((bool) && ((m != k) || (j != 0))) {
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(6105), Integer.valueOf(k), Long.valueOf(l) });
+        }
+        if (bool)
+        {
+          paramView = VideoController.a().a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get());
+          if (paramView != null)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.d("EffectSettingUi", 1, "onShow clear state");
+            }
+            paramView.b(k);
+          }
+        }
+        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(165), Integer.valueOf(1) });
+        if (m != k)
+        {
+          if (k != 1) {
+            break label326;
+          }
+          meb.b((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().E, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
+        }
+      }
+      label321:
+      label326:
+      label372:
+      do
+      {
+        do
+        {
+          return;
+          i = 0;
+          break;
+          j = 0;
+          break label109;
+          if (k != 2) {
+            break label372;
+          }
+          meb.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.a.a(), bool);
+        } while (this.a.jdField_a_of_type_Mfp == null);
+        this.a.jdField_a_of_type_Mfp.a();
+        return;
+        if (k == 4)
+        {
+          meb.a((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().E, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d, this.a.a(), bool);
+          return;
+        }
+        if (k == 3)
+        {
+          meb.a(this.a.a(), bool);
+          return;
+        }
+      } while (k != 5);
+      mtq.f();
+      return;
     }
-    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfs
  * JD-Core Version:    0.7.0.1
  */

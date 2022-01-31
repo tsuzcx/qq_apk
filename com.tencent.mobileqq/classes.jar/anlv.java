@@ -1,69 +1,21 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-import com.tencent.mobileqq.datareportviewer.ReportData;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
-public class anlv
-  extends BaseAdapter
+class anlv
+  implements bhqd
 {
-  public anlv(DataReportViewer paramDataReportViewer) {}
+  anlv(anlt paramanlt, bhpy parambhpy) {}
   
-  public int getCount()
+  public void OnClick(View paramView, int paramInt)
   {
-    return this.a.a.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.a.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131559422, paramViewGroup, false);
-      paramViewGroup = new anlw(this.a, paramView);
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      ReportData localReportData = (ReportData)this.a.a.get(paramInt);
-      paramViewGroup.a.setText(localReportData.table);
-      paramViewGroup.b.setText(localReportData.mainAction);
-      paramViewGroup.c.setText(localReportData.subAction);
-      paramViewGroup.d.setText(localReportData.actionName);
-      paramViewGroup.e.setText(String.valueOf(localReportData.opType));
-      paramViewGroup.f.setText(String.valueOf(localReportData.result));
-      paramViewGroup.g.setText(localReportData.r2);
-      paramViewGroup.h.setText(localReportData.r3);
-      paramViewGroup.i.setText(localReportData.r4);
-      paramViewGroup.j.setText(localReportData.r5);
-      if (!localReportData.isLightBlueBg) {
-        break;
-      }
-      paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131166439));
-      return paramView;
-      paramViewGroup = (anlw)paramView.getTag();
-    }
-    paramView.setBackgroundColor(this.a.getContext().getResources().getColor(2131167134));
-    return paramView;
+    this.jdField_a_of_type_Anlt.a.e();
+    this.jdField_a_of_type_Anlt.a.b(alpo.a(2131701064));
+    this.jdField_a_of_type_Bhpy.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlv
  * JD-Core Version:    0.7.0.1
  */

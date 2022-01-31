@@ -1,44 +1,36 @@
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.HashMap;
 
-public class amsu
+final class amsu
+  implements bapw
 {
-  private String a = "";
-  private String b = "";
-  
-  public static amsu a(String paramString)
+  public void a(baqv parambaqv, baqw parambaqw)
   {
-    if (paramString == null) {}
+    if ((parambaqv == null) || (parambaqw == null)) {}
     do
     {
-      return null;
-      try
+      do
       {
-        amsu localamsu = new amsu();
-        paramString = new JSONObject(paramString);
-        localamsu.a = paramString.optString("dest_icon", "");
-        localamsu.b = paramString.optString("avatar_pendant", "");
-        return localamsu;
+        return;
+      } while (!(parambaqv instanceof baps));
+      parambaqv = (baps)parambaqv;
+      parambaqv.jdField_a_of_type_Long += parambaqw.c;
+      parambaqw.c = 0L;
+      parambaqw = "bytes=" + parambaqv.jdField_a_of_type_Long + "-";
+      parambaqv.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
+      parambaqw = parambaqv.jdField_a_of_type_JavaLangString;
+      if (parambaqw.contains("range="))
+      {
+        String str = parambaqw.substring(0, parambaqw.lastIndexOf("range="));
+        parambaqv.jdField_a_of_type_JavaLangString = (str + "range=" + parambaqv.jdField_a_of_type_Long);
       }
-      catch (Exception paramString) {}
     } while (!QLog.isColorLevel());
-    QLog.e("TogetherEntryConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    QLog.i("ArConfig_ArResourceDownload", 2, "IBreakDownFix, " + parambaqw + ", offset=" + parambaqv.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsu
  * JD-Core Version:    0.7.0.1
  */

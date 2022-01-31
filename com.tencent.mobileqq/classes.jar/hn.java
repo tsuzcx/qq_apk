@@ -1,40 +1,56 @@
-import android.graphics.Typeface;
-import com.etrump.mixlayout.ETFont;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.IMMRReq;
+import tencent.im.oidb.cmd0xa4d.oidb_0xa4d.ReqBody;
 
 public class hn
+  extends alko
 {
-  public int a;
-  public Typeface a;
-  public ETFont a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private hm jdField_a_of_type_Hm;
   
-  public hn() {}
-  
-  public hn(int paramInt1, int paramInt2, String paramString)
+  public hn(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public hn(int paramInt, String paramString)
+  public void a(hm paramhm)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Hm = paramhm;
   }
   
-  public String toString()
+  public void a(String paramString)
   {
-    return "[id=" + this.jdField_a_of_type_Int + ",path=" + this.jdField_a_of_type_JavaLangString + "]";
+    if (QLog.isColorLevel()) {
+      QLog.i("ImmersionHandler", 2, "HapticMediaPlayer start request");
+    }
+    oidb_0xa4d.IMMRReq localIMMRReq = new oidb_0xa4d.IMMRReq();
+    localIMMRReq.str_url.set(paramString);
+    paramString = new oidb_0xa4d.ReqBody();
+    paramString.msg_immr_req.set(localIMMRReq);
+    mzy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ho(false, this.jdField_a_of_type_Hm), paramString.toByteArray(), "OidbSvc.0xa4d", 2637, 1, null);
   }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return null;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     hn
  * JD-Core Version:    0.7.0.1
  */

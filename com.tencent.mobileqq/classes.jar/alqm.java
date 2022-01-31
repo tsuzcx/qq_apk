@@ -1,88 +1,26 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Comparator;
 
 class alqm
-  implements bdld
+  implements Comparator<alqp>
 {
-  alqm(alqk paramalqk) {}
+  alqm(alql paramalql) {}
   
-  public void installSucceed(String paramString1, String paramString2)
+  public int a(alqp paramalqp1, alqp paramalqp2)
   {
-    if (alqk.a(this.a) != null) {
-      alqk.a(this.a).a(this.a.a(paramString1, 6, paramString2).toString());
-    }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (alqk.a(this.a) != null)) {
-      alqk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if ((paramDownloadInfo != null) && (alqk.a(this.a) != null)) {
-      alqk.a(this.a).a(this.a.a(paramDownloadInfo.k, paramDownloadInfo.a(), paramDownloadInfo.f, paramDownloadInfo.e, paramString, paramInt1, paramDownloadInfo.j).toString());
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (alqk.a(this.a) != null)) {
-      alqk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (alqk.a(this.a) != null)) {
-      alqk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    if ((paramList != null) && (alqk.a(this.a) != null))
+    if ((paramalqp1 == null) || (paramalqp2 == null)) {}
+    do
     {
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        localJSONArray.put(this.a.a(localDownloadInfo));
+      return 0;
+      if (paramalqp1.a > paramalqp2.a) {
+        return 1;
       }
-      alqk.a(this.a).a(localJSONArray.toString());
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    if ((paramDownloadInfo != null) && (alqk.a(this.a) != null)) {
-      alqk.a(this.a).a(this.a.a(paramDownloadInfo).toString());
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    if (alqk.a(this.a) != null) {
-      alqk.a(this.a).a(this.a.a(paramString1, 13, paramString2).toString());
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    if (alqk.a(this.a) != null) {
-      alqk.a(this.a).a(this.a.a(paramString1, 9, paramString2).toString());
-    }
+    } while (paramalqp1.a >= paramalqp2.a);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alqm
  * JD-Core Version:    0.7.0.1
  */

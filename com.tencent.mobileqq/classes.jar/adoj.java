@@ -1,29 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import java.lang.ref.WeakReference;
 
-class adoj
-  implements bfph
+public class adoj
+  implements zdq
 {
-  adoj(adoh paramadoh, MessageForDeviceFile paramMessageForDeviceFile, bfpc parambfpc) {}
+  WeakReference<QQSettingMe> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public adoj(QQSettingMe paramQQSettingMe)
   {
-    if ("device_groupchat".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.extStr)) {
-      ((yer)this.jdField_a_of_type_Adoh.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    this.a = new WeakReference(paramQQSettingMe);
+  }
+  
+  public int a()
+  {
+    QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
+    if (localQQSettingMe != null) {
+      return localQQSettingMe.a();
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Adoh.b();
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      this.jdField_a_of_type_Adoh.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adoj
  * JD-Core Version:    0.7.0.1
  */

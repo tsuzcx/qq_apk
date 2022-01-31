@@ -1,134 +1,136 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer.1;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.manager.Manager;
 
 public class arjw
-  implements areo, Manager
+  extends arju
 {
-  QQAppInterface a;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private SeekBar jdField_a_of_type_AndroidWidgetSeekBar;
+  private TextView d;
+  private TextView e;
+  private TextView f;
+  private TextView g;
+  private TextView h;
   
-  public arjw(QQAppInterface paramQQAppInterface)
+  public arjw(Activity paramActivity)
   {
-    this.a = paramQQAppInterface;
+    super(paramActivity);
   }
   
-  public static Bundle a(IVPluginInfo paramIVPluginInfo, arek paramarek)
+  public void a()
   {
-    int m = 0;
-    Bundle localBundle = new Bundle();
-    for (;;)
+    QLog.i("FileBrowserViewBase", 4, "FileBrowserViewBase: MusicFileViewer initFileView");
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      try
-      {
-        localObject1 = ((BaseApplicationImpl)MobileQQ.getContext()).waitAppRuntime(null);
-        str2 = ((AppRuntime)localObject1).getAccount();
-        localObject2 = (ajxl)((AppRuntime)localObject1).getManager(51);
-        localObject3 = ((ajxl)localObject2).e(str2);
-        if (localObject3 == null) {
-          break label470;
-        }
-        localObject1 = ((Friends)localObject3).name;
-        j = ((Friends)localObject3).gender;
-        i = ((Friends)localObject3).age;
-        localObject3 = ((ajxl)localObject2).b(str2);
-        if (localObject3 == null) {
-          break label452;
-        }
-        k = (int)((Card)localObject3).lBirthday;
-        localObject2 = ((Card)localObject3).strCountry;
-        str1 = ((Card)localObject3).strProvince;
-        localObject3 = ((Card)localObject3).strCity;
-      }
-      catch (Exception paramIVPluginInfo)
-      {
-        String str2;
-        paramIVPluginInfo.printStackTrace();
-        return localBundle;
-      }
-      localBundle.putString("nickname", (String)localObject1);
-      localBundle.putLong("roomid", paramIVPluginInfo.a);
-      localBundle.putInt("authtype", 1);
-      localBundle.putString("authid", paramarek.a().b);
-      localBundle.putInt("gender", j);
-      localBundle.putInt("vastype", 2);
-      localBundle.putLong("hostid", Long.parseLong(str2));
-      localBundle.putString("authkey", paramarek.a().a);
-      localBundle.putString("appid", paramIVPluginInfo.b);
-      localBundle.putString("vasname", paramIVPluginInfo.g);
-      localBundle.putString("userdata", paramIVPluginInfo.d);
-      localBundle.putInt("fromid", Integer.parseInt(paramIVPluginInfo.e));
-      localBundle.putInt("age", i);
-      localBundle.putInt("birthyear", n);
-      localBundle.putInt("birthmonth", m);
-      localBundle.putInt("birthday", k);
-      localBundle.putBoolean("loghost", true);
-      localBundle.putBoolean("reporthost", true);
-      localBundle.putString("backType", paramIVPluginInfo.h);
-      localBundle.putInt("isGroupCode", paramIVPluginInfo.c);
-      localBundle.putString("openType", paramIVPluginInfo.i);
-      localBundle.putString("extra", paramIVPluginInfo.j);
-      localBundle.putString("payToken", paramarek.a().c);
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        localBundle.putString("addrCountry", (String)localObject2);
-      }
-      if (!TextUtils.isEmpty(str1)) {
-        localBundle.putString("addrProv", str1);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-        localBundle.putString("addrCity", (String)localObject3);
-      }
-      return localBundle;
-      int n = k >>> 16;
-      m = (0xFF00 & k) >>> 8;
-      k &= 0xFF;
-      continue;
-      label452:
-      Object localObject2 = "";
-      int k = 0;
-      String str1 = "";
-      Object localObject3 = "";
-      break label481;
-      label470:
-      int i = 0;
-      int j = 0;
-      Object localObject1 = "";
-      continue;
-      label481:
-      if (k == 0)
-      {
-        n = 1995;
-        k = 0;
+      this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)BaseApplicationImpl.getContext().getSystemService("layout_inflater")).inflate(2131560677, this.jdField_a_of_type_AndroidViewViewGroup, false);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370898));
+      this.d = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371376));
+      this.g = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366311));
+      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidViewView.findViewById(2131372089));
+      this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362548));
+      this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372197));
+      this.h = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366307));
+      if (Build.VERSION.SDK_INT >= 21) {
+        this.jdField_a_of_type_AndroidWidgetSeekBar.setSplitTrack(false);
       }
     }
   }
   
-  public void a() {}
-  
-  public void a(Context paramContext, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt) {}
-  
-  public void onDestroy()
+  public void a(SeekBar.OnSeekBarChangeListener paramOnSeekBarChangeListener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("XProxy|ODPROXY", 2, "onDestroy");
+    if (paramOnSeekBarChangeListener != null) {
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(paramOnSeekBarChangeListener);
     }
-    a();
-    this.a = null;
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+    }
+  }
+  
+  public void c()
+  {
+    if (alnq.a() > 17.0F)
+    {
+      float f1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().density;
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams((int)(150.0F * f1), (int)(f1 * 150.0F));
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(paramInt);
+  }
+  
+  public void c(String paramString)
+  {
+    this.f.setText(paramString);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setEnabled(paramBoolean);
+  }
+  
+  public void d(int paramInt)
+  {
+    if (paramInt > 0) {
+      this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(paramInt);
+    }
+  }
+  
+  public void d(String paramString)
+  {
+    this.e.setText(paramString);
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843857);
+      this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131691181));
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843858);
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getString(2131691183));
+  }
+  
+  public void e(String paramString)
+  {
+    if (this.g.getMeasuredWidth() <= 0)
+    {
+      this.g.post(new MusicFileViewer.1(this, paramString));
+      return;
+    }
+    this.g.setText(arni.a(paramString, false, this.g.getMeasuredWidth(), this.g.getPaint(), 2));
+  }
+  
+  public void f(String paramString)
+  {
+    this.h.setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arjw
  * JD-Core Version:    0.7.0.1
  */

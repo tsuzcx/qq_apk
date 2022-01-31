@@ -1,64 +1,36 @@
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import mqq.util.WeakReference;
 
-public class besc
-  implements Cloneable
+class besc
+  extends Handler
 {
-  public besr a;
+  final WeakReference<besa> a;
   
-  public static besc a()
+  public besc(besa parambesa)
   {
-    besc localbesc = new besc();
-    localbesc.a = besr.a();
-    return localbesc;
+    super(Looper.getMainLooper());
+    this.a = new WeakReference(parambesa);
   }
   
-  public void a(JSONObject paramJSONObject)
+  public void handleMessage(Message paramMessage)
   {
-    besr localbesr;
-    if (this.a != null)
-    {
-      localbesr = this.a;
-      if (paramJSONObject != null) {
-        break label24;
-      }
-    }
-    label24:
-    for (paramJSONObject = null;; paramJSONObject = paramJSONObject.optJSONObject("window"))
-    {
-      localbesr.a(paramJSONObject);
+    besa localbesa = (besa)this.a.get();
+    if (localbesa == null) {
       return;
     }
-  }
-  
-  public besc b()
-  {
-    try
+    switch (paramMessage.what)
     {
-      localbesc = (besc)super.clone();
-      localThrowable1.printStackTrace();
+    default: 
+      return;
     }
-    catch (Throwable localThrowable1)
-    {
-      try
-      {
-        localbesc.a = this.a.b();
-        return localbesc;
-      }
-      catch (Throwable localThrowable2)
-      {
-        besc localbesc;
-        break label24;
-      }
-      localThrowable1 = localThrowable1;
-      localbesc = null;
-    }
-    label24:
-    return localbesc;
+    localbesa.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besc
  * JD-Core Version:    0.7.0.1
  */

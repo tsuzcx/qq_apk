@@ -1,88 +1,63 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsLikeRsp;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopRemindSettingData;
+import com.tencent.mobileqq.managers.TroopRemindSettingManager.1;
+import com.tencent.qphone.base.util.BaseApplication;
 
-final class atwf
-  implements atii
+public class atwf
 {
-  atwf(atwj paramatwj) {}
+  private static atwf a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static atwf a()
   {
-    bool3 = true;
-    boolean bool2 = true;
-    int j = 0;
-    int k = 0;
-    i = 0;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
+    if (a == null) {
+      a = new atwf();
     }
-    for (;;)
-    {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (paramArrayOfByte.ret.has())
-          {
-            paramInt = paramArrayOfByte.ret.get();
-            if (paramInt == 0) {
-              i = k;
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool1 = false;
-        paramInt = j;
-      }
-      try
-      {
-        j = paramArrayOfByte.total.get();
-        paramInt = j;
-        bool1 = bool2;
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          i = j;
-          QLog.i("NearbyMomentProtocol", 2, "like success, total:   " + j);
-          bool1 = bool2;
-          paramInt = j;
-        }
-        if (this.a != null) {
-          this.a.a(bool1, paramInt);
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramInt = i;
-          bool1 = bool3;
-        }
-      }
-      QLog.i("NearbyMomentProtocol", 1, "like error, ret=" + paramArrayOfByte.ret.get() + ",err_msg=" + paramBundle.err_msg.get());
-      bool1 = false;
-      paramInt = i;
-      continue;
-      paramArrayOfByte.printStackTrace();
+    return a;
+  }
+  
+  public static void a()
+  {
+    if (a != null) {
+      a = null;
     }
+  }
+  
+  public void a(awbw paramawbw, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("init_troop_remind", false).commit();
+  }
+  
+  public void a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    TroopRemindSettingData localTroopRemindSettingData = new TroopRemindSettingData();
+    localTroopRemindSettingData.troopUin = paramString;
+    localTroopRemindSettingData.isOpenState = 1;
+    paramQQAppInterface.b(localTroopRemindSettingData);
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("init_troop_remind", true);
+  }
+  
+  public boolean a(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    paramString = (TroopRemindSettingData)paramQQAppInterface.getEntityManagerFactory().createEntityManager().a(TroopRemindSettingData.class, paramString);
+    return (paramString != null) && (paramString.isOpenState == 0);
+  }
+  
+  public void b(String paramString, QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.post(new TroopRemindSettingManager.1(this, paramQQAppInterface, paramString), 8, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atwf
  * JD-Core Version:    0.7.0.1
  */

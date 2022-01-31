@@ -1,87 +1,47 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
-import pb.unite.search.DynamicSearch.ResultItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.widget.ScrollView;
+import com.tencent.widget.XEditTextEx;
 
 public class awpd
-  extends awor
+  implements View.OnTouchListener
 {
-  public static final String a;
-  public List<awmj> a;
-  public String b;
-  public String j;
-  public String k;
+  public awpd(StickyNotePublishFragment paramStickyNotePublishFragment) {}
   
-  static
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    jdField_a_of_type_JavaLangString = awpd.class.getSimpleName();
-  }
-  
-  public awpd(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public awpd(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
-  {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    try
+    if (StickyNotePublishFragment.a(this.a))
     {
-      paramString = new JSONObject(paramString);
-      this.b = paramString.optString("askIcon");
-      this.j = paramString.optString("headLine");
-      this.k = paramString.optString("answerNumText");
-      paramString = paramString.optJSONArray("answers");
-      if (paramString != null)
-      {
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(paramString.length());
-        int i = 0;
-        while (i < paramString.length())
-        {
-          Object localObject2 = paramString.optJSONObject(i);
-          Object localObject1 = ((JSONObject)localObject2).optString("leftIcon");
-          String str1 = ((JSONObject)localObject2).optString("userNameText");
-          String str2 = ((JSONObject)localObject2).optString("praiseText");
-          String str3 = ((JSONObject)localObject2).optString("answerText");
-          int n = ((JSONObject)localObject2).optInt("imageTotalCount");
-          localObject2 = ((JSONObject)localObject2).optJSONArray("imageList");
-          ArrayList localArrayList = new ArrayList();
-          if (localObject2 != null)
-          {
-            int m = 0;
-            while (m < ((JSONArray)localObject2).length())
-            {
-              JSONObject localJSONObject = ((JSONArray)localObject2).optJSONObject(m);
-              localArrayList.add(new awok(localJSONObject.optString("url"), localJSONObject.optInt("type")));
-              m += 1;
-            }
-          }
-          localObject1 = new awmj((String)localObject1, str1, str2, str3, n, localArrayList);
-          this.jdField_a_of_type_JavaUtilList.add(localObject1);
-          i += 1;
-        }
-      }
-      return;
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      bhoc.b(StickyNotePublishFragment.a(this.a));
+      return false;
     }
-    catch (JSONException paramString)
+    if (StickyNotePublishFragment.a(this.a) == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(paramString));
-      }
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(8);
+      StickyNotePublishFragment.a(this.a).setVisibility(0);
+      StickyNotePublishFragment.a(this.a).requestFocus();
+      bhoc.a(StickyNotePublishFragment.a(this.a));
+      return false;
     }
+    StickyNotePublishFragment.a(this.a).setVisibility(8);
+    StickyNotePublishFragment.a(this.a, 0);
+    this.a.a(false);
+    this.a.b(false);
+    this.a.c(true);
+    this.a.c(0, 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awpd
  * JD-Core Version:    0.7.0.1
  */

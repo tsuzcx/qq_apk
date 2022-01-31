@@ -1,163 +1,51 @@
-import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 
-public class pgd
-  implements php
+public abstract interface pgd
 {
-  private void a(ArticleInfo paramArticleInfo, int paramInt)
-  {
-    Object localObject = paramArticleInfo.mNewPolymericInfo;
-    HashMap localHashMap = new HashMap();
-    localObject = (qbo)((qbn)localObject).jdField_a_of_type_JavaUtilList.get(paramInt);
-    localHashMap.put("rowkey", ((qbo)localObject).jdField_g_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(((qbo)localObject).k)) {
-      localHashMap.put("jump_report_info", ((qbo)localObject).k);
-    }
-    ram.a(paramArticleInfo, "0X8007625", "0X8007625", (int)paramArticleInfo.mChannelID, localHashMap);
-  }
+  public abstract int a();
   
-  private void a(ArticleInfo paramArticleInfo, String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    if (!TextUtils.isEmpty(paramArticleInfo.mReportCommonData)) {
-      localHashMap.put("jump_report_info", paramString);
-    }
-    ram.a(paramArticleInfo, "0X8007625", "0X8007625", (int)paramArticleInfo.mChannelID, localHashMap);
-  }
+  public abstract ArticleInfo a();
   
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
+  public abstract VafContext a();
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mNewPolymericInfo == null)) {
-      return new JSONObject();
-    }
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
-    qbn localqbn = paramBaseArticleInfo.mNewPolymericInfo;
-    localJSONObject1.put("style_ID", "ReadInJoy_video_set_card");
-    localJSONObject1.put("common_header_text", localqbn.jdField_b_of_type_JavaLangString);
-    localJSONObject1.put("topic_header_big_icon_url", localqbn.jdField_a_of_type_JavaLangString);
-    localJSONObject1.put("topic_header_small_icon_url", localqbn.e);
-    localJSONObject1.put("topic_header_desc_text", localqbn.jdField_c_of_type_JavaLangString);
-    String str2;
-    String str1;
-    label175:
-    label177:
-    qbo localqbo;
-    switch (localqbn.jdField_b_of_type_Int)
-    {
-    default: 
-      localJSONObject1.put("empty_header_visibility", "1");
-      switch (localqbn.jdField_c_of_type_Int)
-      {
-      default: 
-        str2 = "195";
-        str1 = "148";
-        paramInt = 0;
-        if (paramInt >= localqbn.jdField_a_of_type_JavaUtilList.size()) {
-          break label398;
-        }
-        localqbo = (qbo)localqbn.jdField_a_of_type_JavaUtilList.get(paramInt);
-        if (localqbo != null) {}
-        break;
-      }
-      break;
-    }
-    for (;;)
-    {
-      paramInt += 1;
-      break label177;
-      localJSONObject1.put("common_header_visibility", "1");
-      break;
-      localJSONObject1.put("topic_header_visibility", "1");
-      break;
-      str2 = "260";
-      str1 = "146";
-      break label175;
-      str2 = "315";
-      str1 = "236";
-      break label175;
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("style_ID", "ReadInJoy_video_set_card_collection_cell");
-      localJSONObject2.put("videoWidth", str1);
-      localJSONObject2.put("videoHeight", str2);
-      localJSONObject2.put("video_cover_url", localqbo.jdField_c_of_type_JavaLangString);
-      localJSONObject2.put("video_title_text", localqbo.jdField_a_of_type_JavaLangString);
-      localJSONObject2.put("play_count_text", localqbo.j);
-      localJSONObject2.put("comment_count_text", localqbo.jdField_g_of_type_Int + "评论");
-      localJSONObject2.put("rowkey", localqbo.jdField_g_of_type_JavaLangString);
-      localJSONArray.put(paramInt, localJSONObject2);
-    }
-    label398:
-    if (paramBaseArticleInfo.mNewPolymericInfo.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo == null) {
-      localJSONObject1.put("canEdgeDrag", "0");
-    }
-    for (;;)
-    {
-      localJSONObject1.put("video_datas", localJSONArray);
-      localJSONObject1.put("card_jump_report_info", "");
-      QLog.d("NewPolymericMultiVideoProteusItem", 1, localJSONObject1.toString());
-      return localJSONObject1;
-      localJSONObject1.put("canEdgeDrag", "1");
-    }
-  }
+  public abstract rqj a();
   
-  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2)
-  {
-    ArticleInfo localArticleInfo = parampau.a();
-    if (localArticleInfo == null) {}
-    Object localObject;
-    do
-    {
-      return;
-      localObject = paramContainer.getVirtualView();
-      pno localpno = (pno)((ViewBase)localObject).findViewBaseByName("id_proteus_collection_view");
-      localpno.a(parampau);
-      localpno.a(new pge(this, localArticleInfo, paramContainer));
-      localpno.a(new pgf(this, localArticleInfo, parampau));
-      parampau = paramContainer.getLayoutParams();
-      localObject = ((ViewBase)localObject).getComLayoutParams();
-    } while ((parampau == null) || (localObject == null));
-    parampau.width = ((Layout.Params)localObject).mLayoutWidth;
-    parampau.height = ((Layout.Params)localObject).mLayoutHeight;
-    paramContainer.setLayoutParams(parampau);
-  }
+  public abstract boolean a();
   
-  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
-  {
-    if (paramViewBase == null) {}
-    String str;
-    do
-    {
-      do
-      {
-        return false;
-        str = paramViewBase.getClickEvnet();
-      } while (TextUtils.isEmpty(str));
-      parampau = parampau.a();
-    } while (!"cmd_video_set_card_click".equals(str));
-    paramViewBase.setOnClickListener(new pgg(this, parampau, paramContainer));
-    return true;
-  }
+  public abstract int b();
+  
+  public abstract ArticleInfo b();
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract boolean d();
+  
+  public abstract int e();
+  
+  public abstract boolean e();
+  
+  public abstract int f();
+  
+  public abstract boolean f();
+  
+  public abstract int g();
+  
+  public abstract boolean g();
+  
+  public abstract boolean h();
+  
+  public abstract boolean i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgd
  * JD-Core Version:    0.7.0.1
  */

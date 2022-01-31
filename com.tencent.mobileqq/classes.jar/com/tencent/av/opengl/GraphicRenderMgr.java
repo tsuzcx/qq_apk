@@ -1,6 +1,6 @@
 package com.tencent.av.opengl;
 
-import axle;
+import azgk;
 import com.tencent.av.opengl.texture.YUVTexture;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.startup.step.UpdateAvSo;
@@ -9,8 +9,8 @@ import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
-import loz;
-import lpu;
+import lrc;
+import lsa;
 
 public class GraphicRenderMgr
 {
@@ -21,7 +21,7 @@ public class GraphicRenderMgr
   public static boolean soloaded;
   public static boolean soloadedPTV;
   public int decoderPtrRef;
-  private loz mAutoFocusCallback;
+  private lrc mAutoFocusCallback;
   private Object mAutoFocusCallbackLock = new Object();
   
   private GraphicRenderMgr()
@@ -46,13 +46,13 @@ public class GraphicRenderMgr
   
   public static void loadPtuSO()
   {
-    if (lpu.a())
+    if (lsa.a())
     {
-      soloadedPTV = axle.a();
-      ptuSoVersion = axle.b();
+      soloadedPTV = azgk.a();
+      ptuSoVersion = azgk.b();
     }
     if (QLog.isColorLevel()) {
-      QLog.w("GraphicRenderMgr", 1, "loadPtuSO, soloadedPTV[" + soloadedPTV + "], ptuSoVersion[" + ptuSoVersion + "], isSupported[" + lpu.a() + "]");
+      QLog.w("GraphicRenderMgr", 1, "loadPtuSO, soloadedPTV[" + soloadedPTV + "], ptuSoVersion[" + ptuSoVersion + "], isSupported[" + lsa.a() + "]");
     }
   }
   
@@ -188,11 +188,11 @@ public class GraphicRenderMgr
   
   public native void setFocusConfig(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2);
   
-  public void setFocusDetectCallback(loz paramloz)
+  public void setFocusDetectCallback(lrc paramlrc)
   {
     synchronized (this.mAutoFocusCallbackLock)
     {
-      this.mAutoFocusCallback = paramloz;
+      this.mAutoFocusCallback = paramlrc;
       return;
     }
   }
@@ -209,7 +209,7 @@ public class GraphicRenderMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.opengl.GraphicRenderMgr
  * JD-Core Version:    0.7.0.1
  */

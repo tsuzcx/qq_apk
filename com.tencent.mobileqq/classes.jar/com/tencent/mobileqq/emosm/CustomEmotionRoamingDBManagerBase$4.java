@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm;
 
-import anqr;
+import aphz;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;
@@ -16,7 +16,7 @@ public class CustomEmotionRoamingDBManagerBase$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.CustomEmotionRoamingDBManagerBase.4
  * JD-Core Version:    0.7.0.1
  */

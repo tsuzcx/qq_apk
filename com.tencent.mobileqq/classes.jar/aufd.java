@@ -1,12 +1,20 @@
-public abstract interface aufd
+import android.support.annotation.NonNull;
+
+public class aufd
 {
-  public abstract void a(String paramString1, String paramString2, Object paramObject, int paramInt, String paramString3);
+  public int a;
+  public int b;
+  public int c;
   
-  public abstract void a(String paramString1, String paramString2, Object paramObject, long paramLong1, long paramLong2);
+  @NonNull
+  public String toString()
+  {
+    return "[errorCode = " + this.a + ", fileType = " + this.b + ", fileTrivial = " + this.c + "]";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aufd
  * JD-Core Version:    0.7.0.1
  */

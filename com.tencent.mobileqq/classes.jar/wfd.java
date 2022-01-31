@@ -1,31 +1,20 @@
-import android.annotation.SuppressLint;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeProvider;
-import com.tencent.biz.qrcode.CustomAccessibilityDelegate.1;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-@SuppressLint({"NewApi"})
-public class wfd
-  extends View.AccessibilityDelegate
+public abstract interface wfd
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new CustomAccessibilityDelegate.1(this);
-  private wfe jdField_a_of_type_Wfe;
+  public abstract void a(int paramInt);
   
-  public wfd(View paramView, wfe paramwfe)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Wfe = paramwfe;
-  }
+  public abstract void a(CommentEntry paramCommentEntry);
   
-  public AccessibilityNodeProvider getAccessibilityNodeProvider(View paramView)
-  {
-    return new wff(this);
-  }
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt);
+  
+  public abstract void b(CommentEntry paramCommentEntry);
+  
+  public abstract void c(CommentEntry paramCommentEntry);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wfd
  * JD-Core Version:    0.7.0.1
  */

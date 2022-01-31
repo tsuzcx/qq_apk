@@ -1,34 +1,25 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
 
 class sta
-  implements ThreadExcutor.IThreadListener
+  implements yhf
 {
-  sta(ssz paramssz, Runnable paramRunnable) {}
+  sta(ssz paramssz) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void a(boolean paramBoolean)
   {
-    ssz.a(this.jdField_a_of_type_Ssz).decrementAndGet();
-    ved.b(ssz.a(this.jdField_a_of_type_Ssz), "threshold after running current task is " + ssz.a(this.jdField_a_of_type_Ssz).get());
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      ved.b(ssz.a(this.jdField_a_of_type_Ssz), "threshold after running current task is:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
-    }
-  }
-  
-  public void onPreRun()
-  {
-    ssz.a(this.jdField_a_of_type_Ssz).incrementAndGet();
-    ved.a(ssz.a(this.jdField_a_of_type_Ssz), "execute %s", this.jdField_a_of_type_JavaLangRunnable);
-    if (this.jdField_a_of_type_JavaLangRunnable != null) {
-      ved.b(ssz.a(this.jdField_a_of_type_Ssz), "execute hashcode:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
+    if (paramBoolean)
+    {
+      ssy.a(this.a.a).c();
+      this.a.a.a(false);
+      this.a.a.a.c();
+      yvu.a("", "auth_discover", "fold", 0, 0, new String[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sta
  * JD-Core Version:    0.7.0.1
  */

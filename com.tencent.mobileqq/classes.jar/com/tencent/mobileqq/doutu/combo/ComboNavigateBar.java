@@ -10,9 +10,9 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import anot;
-import anou;
-import anov;
+import apga;
+import apgb;
+import apgc;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ComboNavigateBar
@@ -21,7 +21,7 @@ public class ComboNavigateBar
 {
   protected Animation a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  anot jdField_a_of_type_Anot;
+  apga jdField_a_of_type_Apga;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean = true;
@@ -35,47 +35,47 @@ public class ComboNavigateBar
     super(paramContext, paramAttributeSet);
   }
   
-  private Drawable a(View paramView, anov paramanov)
+  private Drawable a(View paramView, apgc paramapgc)
   {
     paramView = paramView.getLayoutParams();
-    paramView.width = paramanov.jdField_a_of_type_Int;
-    paramView.height = paramanov.b;
-    return paramanov.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    paramView.width = paramapgc.jdField_a_of_type_Int;
+    paramView.height = paramapgc.b;
+    return paramapgc.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
   
   private boolean a()
   {
-    anov localanov = anou.a();
-    if (localanov == null)
+    apgc localapgc = apgb.a();
+    if (localapgc == null)
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    this.e.setImageDrawable(a(this.e, localanov));
+    this.e.setImageDrawable(a(this.e, localapgc));
     return true;
   }
   
   private boolean a(ImageView paramImageView, int paramInt)
   {
-    anov localanov = anou.a(paramInt);
-    if (localanov == null)
+    apgc localapgc = apgb.a(paramInt);
+    if (localapgc == null)
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    paramImageView.setImageDrawable(a(paramImageView, localanov));
+    paramImageView.setImageDrawable(a(paramImageView, localapgc));
     return true;
   }
   
   private boolean b()
   {
-    anov localanov = anou.b();
-    if (localanov == null)
+    apgc localapgc = apgb.b();
+    if (localapgc == null)
     {
       this.jdField_a_of_type_Boolean = false;
       return false;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(this.jdField_a_of_type_AndroidWidgetImageView, localanov));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(a(this.jdField_a_of_type_AndroidWidgetImageView, localapgc));
     return true;
   }
   
@@ -91,11 +91,11 @@ public class ComboNavigateBar
   public void a(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.e = ((ImageView)findViewById(2131362244));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362238));
-    this.b = ((ImageView)findViewById(2131362239));
-    this.c = ((ImageView)findViewById(2131362240));
-    this.d = ((ImageView)findViewById(2131362241));
+    this.e = ((ImageView)findViewById(2131362265));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362259));
+    this.b = ((ImageView)findViewById(2131362260));
+    this.c = ((ImageView)findViewById(2131362261));
+    this.d = ((ImageView)findViewById(2131362262));
     setVisibility(8);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 1.0F, 2, 0.0F, 2, 0.0F);
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(500L);
@@ -120,7 +120,7 @@ public class ComboNavigateBar
   
   public void setCountNum()
   {
-    int k = this.jdField_a_of_type_Anot.jdField_a_of_type_Int;
+    int k = this.jdField_a_of_type_Apga.jdField_a_of_type_Int;
     int j = k / 10;
     int i;
     if (j != 0)
@@ -163,12 +163,12 @@ public class ComboNavigateBar
     }
   }
   
-  public void setInfo(anot paramanot)
+  public void setInfo(apga paramapga)
   {
-    this.jdField_a_of_type_Anot = paramanot;
+    this.jdField_a_of_type_Apga = paramapga;
     this.jdField_a_of_type_Boolean = true;
-    String str = paramanot.jdField_a_of_type_JavaLangString;
-    int i = paramanot.jdField_a_of_type_Int;
+    String str = paramapga.jdField_a_of_type_JavaLangString;
+    int i = paramapga.jdField_a_of_type_Int;
     setCountNum();
     if (this.jdField_a_of_type_Boolean == true)
     {
@@ -181,7 +181,7 @@ public class ComboNavigateBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.combo.ComboNavigateBar
  * JD-Core Version:    0.7.0.1
  */

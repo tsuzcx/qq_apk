@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bcce;
-import bcfx;
+import bebf;
+import beey;
 
 public class SwiftFloatViewUI$3
   implements Runnable
 {
-  public SwiftFloatViewUI$3(bcce parambcce) {}
+  public SwiftFloatViewUI$3(bebf parambebf) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class SwiftFloatViewUI$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftFloatViewUI.3
  * JD-Core Version:    0.7.0.1
  */

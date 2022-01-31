@@ -207,7 +207,7 @@ public class ArkPlayer
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      ENV.logD("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
+      ENV.logE("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
     }
     return false;
   }
@@ -247,7 +247,7 @@ public class ArkPlayer
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      ENV.logD("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
+      ENV.logE("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
     }
     return false;
   }
@@ -276,7 +276,7 @@ public class ArkPlayer
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      ENV.logD("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
+      ENV.logE("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
     }
     return false;
   }
@@ -315,7 +315,7 @@ public class ArkPlayer
       }
       catch (IllegalStateException localIllegalStateException)
       {
-        ENV.logD("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
+        ENV.logE("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
       }
     }
     return false;
@@ -403,7 +403,7 @@ public class ArkPlayer
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      ENV.logD("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
+      ENV.logE("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
     }
     return false;
   }
@@ -468,49 +468,55 @@ public class ArkPlayer
   public void onPrepared(MediaPlayer paramMediaPlayer)
   {
     boolean bool = true;
-    if (ENV.mIsDebug) {
-      ENV.logD("ArkApp.ArkPlayer", "onPrepared.call!!");
-    }
-    int j = paramMediaPlayer.getDuration();
-    int k = paramMediaPlayer.getVideoWidth();
-    int m = paramMediaPlayer.getVideoHeight();
-    paramMediaPlayer = this.mMediaInfo;
-    int i;
-    if ((k > 0) && (m > 0))
+    ENV.logI("ArkApp.ArkPlayer", "onPrepared.call!!");
+    try
     {
-      i = 0;
-      paramMediaPlayer.type = i;
-      this.mMediaInfo.duration = (j / 1000.0D);
+      int j = paramMediaPlayer.getDuration();
+      int k = paramMediaPlayer.getVideoWidth();
+      int m = paramMediaPlayer.getVideoHeight();
       paramMediaPlayer = this.mMediaInfo;
-      if (j > 0) {
-        break label184;
-      }
-    }
-    for (;;)
-    {
-      paramMediaPlayer.islive = bool;
-      if (this.mSurfaceHolder != null) {
-        this.mSurfaceHolder.SetFrameSize(this.mMediaInfo.width, this.mMediaInfo.height);
-      }
-      if (VideoPreviewSupported())
+      int i;
+      if ((k > 0) && (m > 0))
       {
-        this.mMediaInfo.width = k;
-        this.mMediaInfo.height = m;
+        i = 0;
+        paramMediaPlayer.type = i;
+        this.mMediaInfo.duration = (j / 1000.0D);
+        paramMediaPlayer = this.mMediaInfo;
+        if (j > 0) {
+          break label175;
+        }
       }
-      if (!this.mPlayWhenReady) {
-        break label190;
+      for (;;)
+      {
+        paramMediaPlayer.islive = bool;
+        if (this.mSurfaceHolder != null) {
+          this.mSurfaceHolder.SetFrameSize(this.mMediaInfo.width, this.mMediaInfo.height);
+        }
+        if (VideoPreviewSupported())
+        {
+          this.mMediaInfo.width = k;
+          this.mMediaInfo.height = m;
+        }
+        if (!this.mPlayWhenReady) {
+          break label214;
+        }
+        this.mPlayWhenReady = false;
+        this.mMediaInfo.state = 2;
+        ArkDispatchQueue.asyncRun(this.mQueueKey, new ArkPlayer.2(this));
+        return;
+        i = 1;
+        break;
+        label175:
+        bool = false;
       }
-      this.mPlayWhenReady = false;
-      this.mMediaInfo.state = 2;
-      ArkDispatchQueue.asyncRun(this.mQueueKey, new ArkPlayer.2(this));
-      return;
-      i = 1;
-      break;
-      label184:
-      bool = false;
+      changeState(2);
     }
-    label190:
-    changeState(2);
+    catch (IllegalStateException paramMediaPlayer)
+    {
+      ENV.logE("ArkApp.ArkPlayer", "onPrepared, exception!! " + paramMediaPlayer.getMessage());
+      return;
+    }
+    label214:
   }
   
   public void onSeekComplete(MediaPlayer paramMediaPlayer)
@@ -538,7 +544,7 @@ public class ArkPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.ark.ArkPlayer
  * JD-Core Version:    0.7.0.1
  */

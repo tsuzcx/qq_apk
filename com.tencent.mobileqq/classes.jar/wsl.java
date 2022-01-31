@@ -1,21 +1,21 @@
 import android.view.View;
+import android.view.View.OnClickListener;
 
-final class wsl
-  implements bfph
+class wsl
+  implements View.OnClickListener
 {
-  wsl(wsn paramwsn, bfpc parambfpc) {}
+  wsl(wsj paramwsj) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Wsn != null) {
-      this.jdField_a_of_type_Wsn.a(true);
+    if (wsj.a(this.a) != null) {
+      wsj.a(this.a).W_();
     }
-    this.jdField_a_of_type_Bfpc.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,21 @@
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+
 public class aixs
+  implements View.OnTouchListener
 {
-  public static int a;
-  public static final String a;
-  public static int b;
-  public static int c;
-  public static int d;
+  public aixs(ChooseItemView paramChooseItemView) {}
   
-  static
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    jdField_a_of_type_Int = 6;
-    b = 1;
-    c = 1;
-    d = 1;
-    jdField_a_of_type_JavaLangString = ajms.jdField_a_of_type_JavaLangString + "/game";
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixs
  * JD-Core Version:    0.7.0.1
  */

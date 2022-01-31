@@ -1,5 +1,13 @@
 package com.tencent.gdtad.api;
 
+import aaie;
+import aaif;
+import aaig;
+import aain;
+import aaio;
+import aaip;
+import aaiq;
+import aanp;
 import android.content.Context;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -7,36 +15,28 @@ import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.gdtad.aditem.GdtHandler.Params;
 import java.io.Serializable;
 import java.lang.ref.WeakReference;
-import ysn;
-import yso;
-import ysp;
-import ysw;
-import ysx;
-import ysy;
-import ysz;
-import yxp;
 
 public abstract class GdtAd
   implements Serializable
 {
   private static int jdField_a_of_type_Int;
   private static long jdField_a_of_type_Long = -2147483648L;
-  private WeakReference<ysy> listener;
-  private yso loadListener = new ysw(this);
+  private WeakReference<aaip> listener;
+  private aaif loadListener = new aain(this);
   private long loadedTimeMillis = -2147483648L;
-  private ysn loader;
+  private aaie loader;
   private int status = 0;
   
-  public GdtAd(ysz paramysz)
+  public GdtAd(aaiq paramaaiq)
   {
-    if (paramysz == null)
+    if (paramaaiq == null)
     {
-      yxp.d("GdtAd", "constructor");
+      aanp.d("GdtAd", "constructor");
       return;
     }
-    ysp localysp = new ysp();
-    localysp.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramysz.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
-    this.loader = new ysn(localysp, new WeakReference(this.loadListener));
+    aaig localaaig = new aaig();
+    localaaig.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = paramaaiq.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
+    this.loader = new aaie(localaaig, new WeakReference(this.loadListener));
   }
   
   private void a()
@@ -45,10 +45,10 @@ public abstract class GdtAd
     new Handler().post(new GdtAd.2(this, localWeakReference));
   }
   
-  private void a(ysx paramysx)
+  private void a(aaio paramaaio)
   {
     WeakReference localWeakReference = new WeakReference(this);
-    new Handler().post(new GdtAd.1(this, localWeakReference, paramysx));
+    new Handler().post(new GdtAd.1(this, localWeakReference, paramaaio));
   }
   
   public com.tencent.gdtad.aditem.GdtAd getAd()
@@ -96,12 +96,12 @@ public abstract class GdtAd
     return 0;
   }
   
-  public ysn getGdtAdLoader()
+  public aaie getGdtAdLoader()
   {
     return this.loader;
   }
   
-  public abstract ysz getParams();
+  public abstract aaiq getParams();
   
   public boolean isInvalidated()
   {
@@ -123,7 +123,7 @@ public abstract class GdtAd
     if (paramContext == null) {}
     for (;;)
     {
-      yxp.d("GdtAd", String.format("load error, status:%d", new Object[] { Integer.valueOf(this.status) }));
+      aanp.d("GdtAd", String.format("load error, status:%d", new Object[] { Integer.valueOf(this.status) }));
       return false;
       if ((isValid()) && ((this.status == 0) || (this.status == 3)))
       {
@@ -134,7 +134,7 @@ public abstract class GdtAd
           break label114;
         }
         this.status = 3;
-        a(new ysx(2));
+        a(new aaio(2));
       }
     }
     jdField_a_of_type_Int = 0;
@@ -164,14 +164,14 @@ public abstract class GdtAd
     new Handler().post(new GdtAd.3(this, localWeakReference));
   }
   
-  public void setListener(WeakReference<ysy> paramWeakReference)
+  public void setListener(WeakReference<aaip> paramWeakReference)
   {
     this.listener = paramWeakReference;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.api.GdtAd
  * JD-Core Version:    0.7.0.1
  */

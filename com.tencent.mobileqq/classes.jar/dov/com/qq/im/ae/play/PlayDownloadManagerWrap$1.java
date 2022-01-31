@@ -1,24 +1,24 @@
 package dov.com.qq.im.ae.play;
 
-import birb;
-import bire;
-import birp;
-import bizf;
+import bkvr;
+import bkvu;
+import bkwg;
+import bldz;
 
 public class PlayDownloadManagerWrap$1
   implements Runnable
 {
-  public PlayDownloadManagerWrap$1(bizf parambizf, birb parambirb, bire parambire, birp parambirp) {}
+  public PlayDownloadManagerWrap$1(bldz parambldz, bkvr parambkvr, bkvu parambkvu, bkwg parambkwg) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Birb.a(this.jdField_a_of_type_Birb.a(), this.jdField_a_of_type_Bire, this.jdField_a_of_type_Birp);
-    this.jdField_a_of_type_Bire.e = true;
+    this.jdField_a_of_type_Bkvr.a(this.jdField_a_of_type_Bkvr.a(), this.jdField_a_of_type_Bkvu, this.jdField_a_of_type_Bkwg);
+    this.jdField_a_of_type_Bkvu.e = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.play.PlayDownloadManagerWrap.1
  * JD-Core Version:    0.7.0.1
  */

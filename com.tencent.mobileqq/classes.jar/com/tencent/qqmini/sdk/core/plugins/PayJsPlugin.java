@@ -6,18 +6,21 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import behq;
-import bejc;
-import bekp;
-import bekr;
-import bekz;
-import betc;
-import beut;
-import bfgt;
+import bgho;
+import bgjd;
+import bgjw;
+import bgkd;
+import bgkk;
+import bglq;
+import bgte;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.PayProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.MD5Utils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,6 +40,7 @@ public class PayJsPlugin
   public static final int SET_MIDAS_ENV_VAL_RELEASE = 0;
   public static final int SET_MIDAS_ENV_VAL_TEST = 1;
   private static final String TAG = "PayJsPlugin";
+  public static final String URL_PAY_BY_H5 = bglq.a("qqminiapp", "mini_game_pay_by_h5_url", "https://h5.qzone.qq.com/miniapp/act/midasPay?offerId={offerId}&prepayId={prepayId}&starCurrency={starCurrency}&setEnv={setEnv}&appid={appid}&_proxy=1&_wv=17301504");
   protected String mRealOfferId = "";
   
   private String appendPayComeFrom(String paramString)
@@ -55,20 +59,57 @@ public class PayJsPlugin
     return paramString;
   }
   
-  private String getSDKPf()
+  private String getSDKPf(String paramString)
   {
-    int i = beut.a().a();
-    String str = "";
-    if (i == 2) {
-      str = "qq_m_qq-20031-android-2011-" + this.mMiniAppInfo.appId;
+    Object localObject2 = "null";
+    Object localObject1 = localObject2;
+    if (!TextUtils.isEmpty(paramString)) {
+      localObject1 = localObject2;
     }
-    while (i != 1) {
-      return str;
+    int i;
+    for (;;)
+    {
+      try
+      {
+        localObject2 = new JSONObject(paramString).optString("prepayId");
+        paramString = (String)localObject2;
+        localObject1 = localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          paramString = "null";
+        }
+        localObject2 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName();
+        localObject1 = localObject2;
+        if (this.mMiniAppInfo != null)
+        {
+          localObject1 = localObject2;
+          if (this.mMiniAppInfo.launchParam != null) {
+            localObject1 = (String)localObject2 + "_" + this.mMiniAppInfo.launchParam.scene;
+          }
+        }
+        String str = bgte.a().a();
+        localObject2 = str;
+        if (TextUtils.isEmpty(str)) {
+          localObject2 = "null";
+        }
+        i = bgte.a().a();
+        if (i != 2) {
+          break;
+        }
+        return "qq_m_qq-20031-android-2011-" + this.mMiniAppInfo.appId + "-" + paramString + "-" + (String)localObject1 + "-" + (String)localObject2;
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+      paramString = (String)localObject1;
     }
-    return "qq_m_wx-20031-android-2011-" + this.mMiniAppInfo.appId;
+    if (i == 1) {
+      return "qq_m_wx-20031-android-2011-" + this.mMiniAppInfo.appId + "-" + paramString + "-" + (String)localObject1 + "-" + (String)localObject2;
+    }
+    return "";
   }
   
-  private void handleMidasGoodsPay(Activity paramActivity, JSONObject paramJSONObject, bekr parambekr)
+  private void handleMidasGoodsPay(Activity paramActivity, JSONObject paramJSONObject, bgkd parambgkd)
   {
     String str1 = paramJSONObject.optString("offerId", "");
     JSONObject localJSONObject = paramJSONObject.getJSONObject("payInfo");
@@ -80,7 +121,7 @@ public class PayJsPlugin
     String str6 = localJSONObject.optString("unit", "");
     String str7 = localJSONObject.optString("discountId", "");
     String str8 = localJSONObject.optString("other", "");
-    int i = parambekr.jdField_b_of_type_Int;
+    int i = parambgkd.jdField_b_of_type_Int;
     localJSONObject = new JSONObject();
     localJSONObject.put("offerId", str1);
     localJSONObject.put("userId", paramJSONObject);
@@ -98,75 +139,75 @@ public class PayJsPlugin
     paramJSONObject.putInt("payparmas_paytype", 1);
     paramJSONObject.putLong("payparmas_h5_start", System.currentTimeMillis());
     paramJSONObject.putInt("payparmas_request_code", 7);
-    paramJSONObject.putString("payparmas_sdk_pf", getSDKPf());
+    paramJSONObject.putString("payparmas_sdk_pf", getSDKPf(localJSONObject.toString()));
     if (paramActivity != null) {}
-    for (paramActivity = ((PayProxy)ProxyManager.get(PayProxy.class)).midasPay(paramActivity, localJSONObject.toString(), new PayJsPlugin.7(this, parambekr), paramJSONObject);; paramActivity = null)
+    for (paramActivity = ((PayProxy)ProxyManager.get(PayProxy.class)).midasPay(paramActivity, localJSONObject.toString(), new PayJsPlugin.8(this, parambgkd), paramJSONObject);; paramActivity = null)
     {
       if (paramActivity != null) {}
       for (i = paramActivity.getInt("retCode", 0);; i = 0)
       {
         if ((paramActivity != null) && (i != 0)) {
-          handleNativeResponseFail(parambekr, null, "");
+          handleNativeResponseFail(parambgkd, null, "");
         }
         return;
       }
     }
   }
   
-  private void handleMidasMonthCardPay(Activity paramActivity, String paramString, bekr parambekr)
+  private void handleMidasMonthCardPay(Activity paramActivity, String paramString, bgkd parambgkd)
   {
-    int i = parambekr.jdField_b_of_type_Int;
+    int i = parambgkd.jdField_b_of_type_Int;
     Bundle localBundle = new Bundle();
     localBundle.putString("payparmas_callback_sn", String.valueOf(i));
     localBundle.putString("payparmas_json", paramString);
     localBundle.putInt("payparmas_paytype", 1);
     localBundle.putLong("payparmas_h5_start", System.currentTimeMillis());
     localBundle.putInt("payparmas_request_code", 14);
-    localBundle.putString("payparmas_sdk_pf", getSDKPf());
+    localBundle.putString("payparmas_sdk_pf", getSDKPf(paramString));
     if (paramActivity != null) {}
-    for (paramActivity = ((PayProxy)ProxyManager.get(PayProxy.class)).midasPay(paramActivity, paramString, new PayJsPlugin.6(this, parambekr), localBundle);; paramActivity = null)
+    for (paramActivity = ((PayProxy)ProxyManager.get(PayProxy.class)).midasPay(paramActivity, paramString, new PayJsPlugin.7(this, parambgkd), localBundle);; paramActivity = null)
     {
       if (paramActivity != null) {}
       for (i = paramActivity.getInt("retCode", 0);; i = 0)
       {
         if ((paramActivity != null) && (i != 0)) {
-          handleNativeResponseFail(parambekr, null, "");
+          handleNativeResponseFail(parambgkd, null, "");
         }
         return;
       }
     }
   }
   
-  private void handleNativeResponseCancel(bekr parambekr, JSONObject paramJSONObject)
+  private void handleNativeResponseCancel(bgkd parambgkd, JSONObject paramJSONObject)
   {
-    if (parambekr != null) {
-      parambekr.b(paramJSONObject);
+    if (parambgkd != null) {
+      parambgkd.b(paramJSONObject);
     }
   }
   
-  private void handleNativeResponseFail(bekr parambekr, JSONObject paramJSONObject, String paramString)
+  private void handleNativeResponseFail(bgkd parambgkd, JSONObject paramJSONObject, String paramString)
   {
-    if (parambekr != null) {
-      parambekr.a(paramJSONObject, paramString);
+    if (parambgkd != null) {
+      parambgkd.a(paramJSONObject, paramString);
     }
   }
   
-  private void handleNativeResponseOk(bekr parambekr, JSONObject paramJSONObject)
+  private void handleNativeResponseOk(bgkd parambgkd, JSONObject paramJSONObject)
   {
-    if (parambekr != null) {
-      parambekr.a(paramJSONObject);
+    if (parambgkd != null) {
+      parambgkd.a(paramJSONObject);
     }
   }
   
-  private void handleQQPay(bekr parambekr)
+  private void handleQQPay(bgkd parambgkd)
   {
-    Object localObject1 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
+    Object localObject1 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
     Object localObject3 = ((JSONObject)localObject1).optString("prepayId", "");
     Object localObject4 = ((JSONObject)localObject1).getJSONObject("payInfo");
     Object localObject2 = ((JSONObject)localObject4).optString("miniAppId", "");
     localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = this.mApkgInfo.d;
+      localObject1 = this.mApkgInfo.appId;
     }
     String str = ((JSONObject)localObject4).optString("bargainor_id", "");
     localObject4 = ((JSONObject)localObject4).optString("channel", "");
@@ -174,29 +215,29 @@ public class PayJsPlugin
     ((JSONObject)localObject2).put("tokenId", localObject3);
     ((JSONObject)localObject2).put("comeForm", 9);
     ((JSONObject)localObject2).put("appInfo", "appid#" + (String)localObject1 + "|bargainor_id#" + str + "|channel#" + (String)localObject4);
-    int i = parambekr.jdField_b_of_type_Int;
+    int i = parambgkd.jdField_b_of_type_Int;
     localObject3 = new Bundle();
     ((Bundle)localObject3).putString("payparmas_callback_sn", String.valueOf(i));
     ((Bundle)localObject3).putString("payparmas_json", ((JSONObject)localObject2).toString());
     ((Bundle)localObject3).putInt("payparmas_paytype", 1);
     ((Bundle)localObject3).putLong("payparmas_h5_start", System.currentTimeMillis());
     ((Bundle)localObject3).putInt("payparmas_request_code", 9);
-    ((Bundle)localObject3).putString("payparmas_sdk_pf", getSDKPf());
+    ((Bundle)localObject3).putString("payparmas_sdk_pf", getSDKPf(((JSONObject)localObject2).toString()));
     if (this.mMiniAppContext != null)
     {
       localObject1 = this.mMiniAppContext.a();
       if (localObject1 == null) {
-        break label329;
+        break label339;
       }
     }
-    label329:
-    for (localObject1 = ((PayProxy)ProxyManager.get(PayProxy.class)).midasPay((Activity)localObject1, ((JSONObject)localObject2).toString(), new PayJsPlugin.8(this, parambekr), (Bundle)localObject3);; localObject1 = null)
+    label339:
+    for (localObject1 = ((PayProxy)ProxyManager.get(PayProxy.class)).midasPay((Activity)localObject1, ((JSONObject)localObject2).toString(), new PayJsPlugin.9(this, parambgkd), (Bundle)localObject3);; localObject1 = null)
     {
       if (localObject1 != null) {}
       for (i = ((Bundle)localObject1).getInt("retCode", 0);; i = 0)
       {
         if ((localObject1 != null) && (i != 0)) {
-          handleNativeResponseFail(parambekr, null, "");
+          handleNativeResponseFail(parambgkd, null, "");
         }
         return;
         localObject1 = null;
@@ -234,21 +275,21 @@ public class PayJsPlugin
     try
     {
       paramJSONObject.put("aid", paramString1);
-      label124:
-      betc.a("PayJsPlugin", "putAid, aid = " + paramString1);
+      label119:
+      QMLog.d("PayJsPlugin", "putAid, aid = " + paramString1);
       return;
     }
     catch (JSONException paramJSONObject)
     {
-      break label124;
+      break label119;
     }
   }
   
-  private void reChargeStarCurrency(bekr parambekr, boolean paramBoolean)
+  private void reChargeStarCurrency(bgkd parambgkd, boolean paramBoolean)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
       String str2 = localJSONObject.optString("prepayId", null);
       int i = localJSONObject.optInt("balanceAmount", -1);
       int j = localJSONObject.optInt("topupAmount", -1);
@@ -260,10 +301,10 @@ public class PayJsPlugin
       {
         localObject = str1;
         if (str1.contains("{appid}")) {
-          localObject = str1.replace("{appid}", this.mApkgInfo.d);
+          localObject = str1.replace("{appid}", this.mApkgInfo.appId);
         }
       }
-      localJSONObject.put("userId", beut.a().a());
+      localJSONObject.put("userId", bgte.a().a());
       localJSONObject.put("aid", localObject);
       localJSONObject.put("comeForm", 9);
       localJSONObject.put("setMidasEnv", m);
@@ -272,13 +313,13 @@ public class PayJsPlugin
         localObject = this.mMiniAppInfo;
         if (localObject != null)
         {
-          localObject = this.mApkgInfo.d + "_" + ((MiniAppInfo)localObject).verType;
-          str1 = bfgt.b((String)localObject);
+          localObject = this.mApkgInfo.appId + "_" + ((MiniAppInfo)localObject).verType;
+          str1 = MD5Utils.encodeHexStr((String)localObject);
           this.mContext.getSharedPreferences("keyMiniGamePayEnv", 4).edit().putString("keyMiniGamePayEnvAppidVertype", str1).commit();
           localJSONObject.put("miniAppVertypeStr", localObject);
         }
       }
-      str1 = String.valueOf(parambekr.jdField_b_of_type_Int);
+      str1 = String.valueOf(parambgkd.jdField_b_of_type_Int);
       localObject = str1;
       if (i != -1)
       {
@@ -289,12 +330,12 @@ public class PayJsPlugin
           if (k != -1)
           {
             localObject = new JSONObject();
-            ((JSONObject)localObject).put("appId", this.mApkgInfo.d);
+            ((JSONObject)localObject).put("appId", this.mApkgInfo.appId);
             ((JSONObject)localObject).put("prepayId", str2);
             ((JSONObject)localObject).put("balanceAmount", i);
             ((JSONObject)localObject).put("topupAmount", j);
             ((JSONObject)localObject).put("starCurrency", k);
-            ((JSONObject)localObject).put("seq", parambekr.jdField_b_of_type_Int);
+            ((JSONObject)localObject).put("seq", parambgkd.jdField_b_of_type_Int);
             ((JSONObject)localObject).put("setEnv", m);
             localObject = ((JSONObject)localObject).toString();
           }
@@ -303,59 +344,83 @@ public class PayJsPlugin
       if (!TextUtils.isEmpty(this.mRealOfferId)) {
         localJSONObject.put("offerId", this.mRealOfferId);
       }
-      handleRechargeGame(parambekr, this.mMiniAppContext.a(), localJSONObject.toString(), (String)localObject, paramBoolean);
+      handleRechargeGame(parambgkd, this.mMiniAppContext.a(), localJSONObject.toString(), (String)localObject, paramBoolean);
       return;
     }
-    catch (JSONException parambekr)
+    catch (JSONException parambgkd)
     {
-      betc.d("PayJsPlugin", "API_RECHARGE_STAR_CURRENCY JSONException ", parambekr);
+      QMLog.e("PayJsPlugin", "API_RECHARGE_STAR_CURRENCY JSONException ", parambgkd);
     }
   }
   
-  public void consumeStarCurrency(bekr parambekr)
+  private void startPayBrowserActivity(Activity paramActivity, bgkd parambgkd, String paramString)
+  {
+    bgjd.a().a(new PayJsPlugin.3(this, parambgkd));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).startTransparentBrowserActivityForResult(paramActivity, paramString, 3003);
+  }
+  
+  public void checkH5PayStatus(bgkd parambgkd)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("resultCode", bglq.a("qqminiapp", "mini_game_pay_by_h5", 1));
+      handleNativeResponseOk(parambgkd, localJSONObject);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QMLog.e("PayJsPlugin", "checkH5PayStatus JSONException ", localJSONException);
+      }
+    }
+  }
+  
+  public void consumeStarCurrency(bgkd parambgkd)
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject1 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
       String str = localJSONObject1.optString("prepayId");
       int i = localJSONObject1.optInt("starCurrency");
       int j = localJSONObject1.optInt("balanceAmount");
       int k = localJSONObject1.optInt("topupAmount");
       int m = localJSONObject1.optInt("payChannel");
       int n = localJSONObject1.optInt("setEnv", 0);
-      invokeMidasConsume(parambekr, this.mApkgInfo.d, str, i, j, k, m, n);
+      invokeMidasConsume(parambgkd, this.mApkgInfo.appId, str, i, j, k, m, n);
       return;
     }
     catch (JSONException localJSONException)
     {
-      betc.d("PayJsPlugin", "consumestarcurrency error = ", localJSONException);
+      QMLog.e("PayJsPlugin", "consumestarcurrency error = ", localJSONException);
       JSONObject localJSONObject2 = new JSONObject();
       try
       {
         localJSONObject2.put("resultCode", 1000);
-        handleNativeResponseFail(parambekr, localJSONObject2, "参数错误");
+        handleNativeResponseFail(parambgkd, localJSONObject2, "参数错误");
         return;
       }
-      catch (JSONException parambekr)
+      catch (JSONException parambgkd)
       {
-        betc.d("PayJsPlugin", "handleNativeResponse error = ", parambekr);
+        QMLog.e("PayJsPlugin", "handleNativeResponse error = ", parambgkd);
       }
     }
   }
   
-  public void handleRechargeGame(bekr parambekr, Activity paramActivity, String paramString1, String paramString2, boolean paramBoolean)
+  public void handleRechargeGame(bgkd parambgkd, Activity paramActivity, String paramString1, String paramString2, boolean paramBoolean)
   {
     if (paramActivity == null)
     {
-      handleNativeResponseFail(parambekr, null, "activity is null");
+      handleNativeResponseFail(parambgkd, null, "activity is null");
       return;
     }
-    bekz.a(new PayJsPlugin.9(this, paramString2, paramString1, paramActivity, parambekr, paramBoolean));
+    bgkk.a(new PayJsPlugin.10(this, paramString2, paramString1, paramActivity, parambgkd, paramBoolean));
   }
   
-  public void invokeMidasConsume(bekr parambekr, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public void invokeMidasConsume(bgkd parambgkd, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    betc.b("PayJsPlugin", "invokeMidasConsume prepayId= " + paramString2 + " starCurrency=" + String.valueOf(paramInt1));
+    QMLog.i("PayJsPlugin", "invokeMidasConsume prepayId= " + paramString2 + " starCurrency=" + String.valueOf(paramInt1));
     if ((TextUtils.isEmpty(paramString2)) || (paramInt1 <= 0) || (TextUtils.isEmpty(paramString1)))
     {
       paramString1 = new JSONObject();
@@ -363,21 +428,35 @@ public class PayJsPlugin
       {
         paramString1.put("resultCode", -4);
         paramString1.put("resultMsg", "消耗参数错误");
-        handleNativeResponseFail(parambekr, paramString1, "");
+        handleNativeResponseFail(parambgkd, paramString1, "");
         return;
       }
-      catch (JSONException parambekr)
+      catch (JSONException parambgkd)
       {
-        betc.d("PayJsPlugin", "invokeMidasConsume JSONException ", parambekr);
+        QMLog.e("PayJsPlugin", "invokeMidasConsume JSONException ", parambgkd);
         return;
       }
     }
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getMidasConsumeResult(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, new PayJsPlugin.4(this, parambekr));
+    String str2 = "";
+    String str1 = str2;
+    if (this.mMiniAppInfo != null)
+    {
+      str1 = str2;
+      if (this.mMiniAppInfo.launchParam != null) {
+        str1 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName() + "_" + this.mMiniAppInfo.launchParam.scene;
+      }
+    }
+    if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.via != null)) {}
+    for (str2 = this.mMiniAppInfo.via;; str2 = "")
+    {
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getMidasConsumeResult(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, str1, str2, new PayJsPlugin.5(this, parambgkd));
+      return;
+    }
   }
   
   public void invokeMidasQuery(String paramString1, String paramString2, int paramInt1, int paramInt2, PayJsPlugin.IStarQueryListener paramIStarQueryListener)
   {
-    betc.b("PayJsPlugin", "invokeMidasQuery prepayId= " + paramString1 + " starCurrency=" + String.valueOf(paramInt1) + " setEnv:" + paramInt2);
+    QMLog.i("PayJsPlugin", "invokeMidasQuery prepayId= " + paramString1 + " starCurrency=" + String.valueOf(paramInt1) + " setEnv:" + paramInt2);
     if ((TextUtils.isEmpty(paramString1)) || (paramInt1 <= 0) || (TextUtils.isEmpty(paramString2)))
     {
       paramString1 = new JSONObject();
@@ -392,126 +471,180 @@ public class PayJsPlugin
       }
       catch (JSONException paramString1)
       {
-        betc.d("PayJsPlugin", "invokeMidasQuery JSONException ", paramString1);
+        QMLog.e("PayJsPlugin", "invokeMidasQuery JSONException ", paramString1);
         return;
       }
     }
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).queryCurrency(paramString1, paramString2, paramInt1, paramInt2, new PayJsPlugin.5(this, paramIStarQueryListener));
+    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).queryCurrency(paramString1, paramString2, paramInt1, paramInt2, new PayJsPlugin.6(this, paramIStarQueryListener));
   }
   
-  public void onCreate(behq parambehq)
+  public void onCreate(bgho parambgho)
   {
-    super.onCreate(parambehq);
+    super.onCreate(parambgho);
   }
   
-  public void queryStarCurrency(bekr parambekr)
+  public boolean onInterceptJsEvent(bgkd parambgkd)
+  {
+    Object localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+    if ((localObject != null) && (((ChannelProxy)localObject).isGooglePlayVersion()))
+    {
+      int i;
+      if (bglq.a("qqminiapp", "mini_app_google_play_pay_switch", 0) == 1) {
+        i = 1;
+      }
+      for (;;)
+      {
+        if (i == 0)
+        {
+          localObject = new JSONObject();
+          try
+          {
+            ((JSONObject)localObject).put("retCode", -123);
+            ((JSONObject)localObject).put("errMsg", "googlePlay PayAPI no supported!");
+            handleNativeResponseFail(parambgkd, (JSONObject)localObject, "googlePlay PayAPI no supported!");
+            return true;
+            i = 0;
+          }
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
+        }
+      }
+    }
+    return super.onInterceptJsEvent(parambgkd);
+  }
+  
+  public void queryStarCurrency(bgkd parambgkd)
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject1 = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
       String str = localJSONObject1.optString("prepayId");
       int i = localJSONObject1.optInt("starCurrency");
       int j = localJSONObject1.optInt("setEnv", 0);
-      invokeMidasQuery(str, this.mApkgInfo.d, i, j, new PayJsPlugin.3(this, parambekr));
+      invokeMidasQuery(str, this.mApkgInfo.appId, i, j, new PayJsPlugin.4(this, parambgkd));
       return;
     }
     catch (JSONException localJSONException)
     {
-      betc.d("PayJsPlugin", "querystarcurrency error = ", localJSONException);
+      QMLog.e("PayJsPlugin", "querystarcurrency error = ", localJSONException);
       JSONObject localJSONObject2 = new JSONObject();
       try
       {
         localJSONObject2.put("resultCode", 1000);
-        handleNativeResponseFail(parambekr, null, "参数错误");
+        handleNativeResponseFail(parambgkd, null, "参数错误");
         return;
       }
-      catch (JSONException parambekr)
+      catch (JSONException parambgkd)
       {
-        betc.d("PayJsPlugin", "handleNativeResponse error = ", parambekr);
+        QMLog.e("PayJsPlugin", "handleNativeResponse error = ", parambgkd);
       }
     }
   }
   
-  public void rechargeAndConsumeStarCurrency(bekr parambekr)
+  public void rechargeAndConsumeStarCurrency(bgkd parambgkd)
   {
-    reChargeStarCurrency(parambekr, true);
+    reChargeStarCurrency(parambgkd, true);
   }
   
-  public void rechargeStarCurrency(bekr parambekr)
+  public void rechargeStarCurrency(bgkd parambgkd)
   {
-    reChargeStarCurrency(parambekr, false);
+    reChargeStarCurrency(parambgkd, false);
   }
   
-  public void requestMidasGoodsPay(bekr parambekr)
+  public void requestMidasGoodsPay(bgkd parambgkd)
   {
     try
     {
-      String str = beut.a().a();
-      JSONObject localJSONObject = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
+      String str = bgte.a().a();
+      JSONObject localJSONObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
       localJSONObject.put("userId", str);
-      handleMidasGoodsPay(this.mMiniAppContext.a(), localJSONObject, parambekr);
+      handleMidasGoodsPay(this.mMiniAppContext.a(), localJSONObject, parambgkd);
       return;
     }
     catch (JSONException localJSONException)
     {
-      betc.d("PayJsPlugin", parambekr.a + " error.", localJSONException);
-      handleNativeResponseFail(parambekr, null, "");
+      QMLog.e("PayJsPlugin", parambgkd.a + " error.", localJSONException);
+      handleNativeResponseFail(parambgkd, null, "");
     }
   }
   
-  public void requestMidasMonthCardPay(bekr parambekr)
+  public void requestMidasMonthCardPay(bgkd parambgkd)
   {
     try
     {
-      String str = beut.a().a();
-      JSONObject localJSONObject = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
+      String str = bgte.a().a();
+      JSONObject localJSONObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
       localJSONObject.put("userId", str);
-      handleMidasMonthCardPay(this.mMiniAppContext.a(), localJSONObject.toString(), parambekr);
+      handleMidasMonthCardPay(this.mMiniAppContext.a(), localJSONObject.toString(), parambgkd);
       return;
     }
-    catch (JSONException parambekr)
+    catch (JSONException parambgkd)
     {
-      parambekr.printStackTrace();
+      parambgkd.printStackTrace();
     }
   }
   
-  public void requestMidasPayment(bekr parambekr)
+  public void requestMidasPayment(bgkd parambgkd)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambekr.jdField_b_of_type_JavaLangString);
+      JSONObject localJSONObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
       String str1 = localJSONObject.optString("offerId");
-      localJSONObject.put("userId", beut.a().a());
+      localJSONObject.put("userId", bgte.a().a());
       localJSONObject.put("comeForm", 9);
-      String str2 = this.mApkgInfo.d;
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).checkOfferId(str2, str1, new PayJsPlugin.2(this, localJSONObject, parambekr));
+      String str2 = this.mApkgInfo.appId;
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).checkOfferId(str2, str1, new PayJsPlugin.2(this, localJSONObject, parambgkd));
       return;
     }
     catch (Exception localException)
     {
-      betc.d("PayJsPlugin", " error,", localException);
-      handleNativeResponseFail(parambekr, null, "");
+      QMLog.e("PayJsPlugin", " error,", localException);
+      handleNativeResponseFail(parambgkd, null, "");
     }
   }
   
-  public void requestPayment(bekr parambekr)
+  public void requestMidasPaymentByH5(bgkd parambgkd)
   {
-    bejc.a().a(new PayJsPlugin.1(this, parambekr));
     try
     {
-      handleQQPay(parambekr);
+      Object localObject = new JSONObject(parambgkd.jdField_b_of_type_JavaLangString);
+      String str = ((JSONObject)localObject).optString("prepayId");
+      int i = ((JSONObject)localObject).optInt("starCurrency");
+      int j = ((JSONObject)localObject).optInt("setEnv", 0);
+      localObject = ((JSONObject)localObject).optString("offerId", "1450023163");
+      str = URL_PAY_BY_H5.replace("{offerId}", (CharSequence)localObject).replace("{prepayId}", str).replace("{starCurrency}", i + "").replace("{setEnv}", j + "").replace("{appid}", this.mMiniAppInfo.appId);
+      startPayBrowserActivity(this.mMiniAppContext.a(), parambgkd, str);
+      return;
+    }
+    catch (JSONException parambgkd)
+    {
+      parambgkd.printStackTrace();
+    }
+  }
+  
+  public void requestPayment(bgkd parambgkd)
+  {
+    bgjd.a().a(new PayJsPlugin.1(this, parambgkd));
+    try
+    {
+      handleQQPay(parambgkd);
       return;
     }
     catch (Exception localException)
     {
-      betc.d("PayJsPlugin", parambekr.a + " error,", localException);
-      handleNativeResponseFail(parambekr, null, "");
+      QMLog.e("PayJsPlugin", parambgkd.a + " error,", localException);
+      handleNativeResponseFail(parambgkd, null, "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.PayJsPlugin
  * JD-Core Version:    0.7.0.1
  */

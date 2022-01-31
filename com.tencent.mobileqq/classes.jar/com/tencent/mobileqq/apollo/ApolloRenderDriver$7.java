@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import aivb;
+import akmn;
 import java.util.concurrent.locks.ReentrantLock;
 
 class ApolloRenderDriver$7
@@ -22,8 +22,8 @@ class ApolloRenderDriver$7
         if (this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine != null) {
           this.this$0.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(str);
         }
-        if (this.this$0.jdField_a_of_type_Aivb != null) {
-          this.this$0.jdField_a_of_type_Aivb.onRender();
+        if (this.this$0.jdField_a_of_type_Akmn != null) {
+          this.this$0.jdField_a_of_type_Akmn.onRender();
         }
         return;
       }
@@ -36,7 +36,7 @@ class ApolloRenderDriver$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRenderDriver.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.msgbackup.data;
 
 import android.text.TextUtils;
-import asoi;
-import auko;
-import aulz;
+import aufh;
+import awbv;
+import awdg;
 
 public class MsgBackupResEntity
-  extends auko
+  extends awbv
 {
   public static final String TABLE_NAME = "res";
   public byte[] extraData;
-  @aulz
+  @awdg
   public String extraDataStr;
   public String filePath;
   public long fileSize;
@@ -27,7 +27,7 @@ public class MsgBackupResEntity
   public void postRead()
   {
     super.postRead();
-    asoi.b(this);
+    aufh.b(this);
     try
     {
       if (this.extraData != null) {
@@ -37,7 +37,7 @@ public class MsgBackupResEntity
     }
     catch (Exception localException)
     {
-      asoi.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
+      aufh.b("MsgBackup", "MsgBackupMsgEntity  postRead is called error!", new Object[0]);
       this.extraDataStr = "";
     }
   }
@@ -48,8 +48,8 @@ public class MsgBackupResEntity
     if (!TextUtils.isEmpty(this.extraDataStr)) {
       this.extraData = this.extraDataStr.getBytes();
     }
-    asoi.a(this);
-    this.filePath = asoi.c(this.filePath);
+    aufh.a(this);
+    this.filePath = aufh.c(this.filePath);
   }
   
   public String toLogString()
@@ -59,7 +59,7 @@ public class MsgBackupResEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity
  * JD-Core Version:    0.7.0.1
  */

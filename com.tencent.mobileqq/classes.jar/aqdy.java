@@ -1,24 +1,29 @@
-import android.os.Build.VERSION;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendSearchBarView;
 
-class aqdy
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class aqdy
+  implements Animator.AnimatorListener
 {
-  aqdy(aqdx paramaqdx) {}
+  public aqdy(ExtendFriendSearchBarView paramExtendFriendSearchBarView) {}
   
-  public void onGlobalLayout()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    aqdx.a(this.a);
+    this.a.c();
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.c();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdy
  * JD-Core Version:    0.7.0.1
  */

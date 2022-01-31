@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.audiopanel;
 
 import android.os.Build;
 import android.view.LayoutInflater;
-import avcq;
+import awud;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,11 +16,11 @@ class AudioPanelAdapter$1
     if (this.this$0.b == null) {}
     try
     {
-      ListenChangeVoicePanel localListenChangeVoicePanel = (ListenChangeVoicePanel)LayoutInflater.from(AudioPanelAdapter.a(this.this$0).getApp()).inflate(2131560611, null);
+      ListenChangeVoicePanel localListenChangeVoicePanel = (ListenChangeVoicePanel)LayoutInflater.from(AudioPanelAdapter.a(this.this$0).getApp()).inflate(2131560786, null);
       if (this.this$0.b == null) {
         this.this$0.b = localListenChangeVoicePanel;
       }
-      avcq.a(AudioPanelAdapter.a(this.this$0));
+      awud.a(AudioPanelAdapter.a(this.this$0));
       return;
     }
     catch (Exception localException)
@@ -36,7 +36,7 @@ class AudioPanelAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelAdapter.1
  * JD-Core Version:    0.7.0.1
  */

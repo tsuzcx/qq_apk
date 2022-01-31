@@ -21,7 +21,7 @@ public class MiniAppSecurityUtil
   public static final String TAG = "MiniAppSecurityUtil";
   private static final String kLoginMiniAppForbidToken = "kLoginMiniAppForbidToken";
   private static final String kLoginMiniAppUin = "kLoginMiniAppUin";
-  private static final List<String> sMiniAppLoginSecurityList = Arrays.asList(new String[] { "1109048181", "1109907872", "1109664704" });
+  private static final List<String> sMiniAppLoginSecurityList = Arrays.asList(new String[] { "1109048181", "1109907872", "1109664704", "1108149324" });
   
   public static boolean checkMiniAppForLogin(String paramString)
   {
@@ -172,6 +172,7 @@ public class MiniAppSecurityUtil
       paramIntent.putExtra("isSpecialMiniApp", false);
       paramIntent.putExtra("showKingcardTip", false);
       paramIntent.putExtra("showChatNewsList", false);
+      paramIntent.putExtra("showRestartMiniApp", false);
     }
   }
   
@@ -237,7 +238,7 @@ public class MiniAppSecurityUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.util.MiniAppSecurityUtil
  * JD-Core Version:    0.7.0.1
  */

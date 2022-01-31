@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aulw;
-import aumc;
+import awbv;
+import awdd;
+import awdj;
 import java.io.Serializable;
 
 public class EmoticonPackage
-  extends auko
+  extends awbv
   implements Serializable
 {
   public static final int BUSINESS_GUIDE_FLAG = 4;
@@ -54,7 +54,7 @@ public class EmoticonPackage
   public String diversionName;
   public int downloadCount;
   public long endTime;
-  @aumc
+  @awdj
   public String epId;
   public long expiretime;
   public int extraFlags;
@@ -76,7 +76,7 @@ public class EmoticonPackage
   public boolean isMagicFaceDownloading;
   public boolean isRecommendation;
   public int jobType;
-  @aulw
+  @awdd
   public int jsonVersion;
   public String jumpUrl;
   public boolean kandian;
@@ -113,7 +113,7 @@ public class EmoticonPackage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.EmoticonPackage
  * JD-Core Version:    0.7.0.1
  */

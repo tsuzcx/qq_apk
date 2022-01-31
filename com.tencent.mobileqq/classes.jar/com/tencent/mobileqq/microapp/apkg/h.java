@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.apkg;
 
-import ahbu;
+import aivz;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
@@ -23,11 +23,11 @@ final class h
         QLog.d("ApkgManager", 2, "initApkgByConfig - base lib is not ready");
       }
       long l = System.currentTimeMillis();
-      ahbu localahbu = ahbu.a(BaseApplicationImpl.getApplication().getRuntime());
+      aivz localaivz = aivz.a(BaseApplicationImpl.getApplication().getRuntime());
       DownloadParam localDownloadParam = new DownloadParam();
       localDownloadParam.filePos = 1;
       localDownloadParam.url = this.a.baseLibInfo.baseLibUrl;
-      localahbu.a(localDownloadParam, new i(this, paramd, l));
+      localaivz.a(localDownloadParam, new i(this, paramd, l));
       return;
     }
     g.a(this.b, paramd, 1, null, "miniConfig not valid");
@@ -35,7 +35,7 @@ final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.data;
 
-import azpv;
+import bboe;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
 public class TroopFileItemOperation$9
   implements Runnable
 {
-  public TroopFileItemOperation$9(azpv paramazpv, TroopFileTransferManager paramTroopFileTransferManager) {}
+  public TroopFileItemOperation$9(bboe parambboe, TroopFileTransferManager paramTroopFileTransferManager) {}
   
   public void run()
   {

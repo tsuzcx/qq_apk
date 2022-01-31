@@ -1,10 +1,25 @@
-public abstract interface aevo
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+
+class aevo
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(aevn paramaevn);
+  aevo(aevn paramaevn) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    DoodlePanel.a(this.a.a, false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aevo
  * JD-Core Version:    0.7.0.1
  */

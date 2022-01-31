@@ -1,31 +1,20 @@
-import android.view.View;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-class adip
-  implements bfph
+public class adip
+  implements DialogInterface.OnCancelListener
 {
-  adip(adio paramadio, List paramList, bfpc parambfpc) {}
+  public adip(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      adio.a(this.jdField_a_of_type_Adio, this.jdField_a_of_type_JavaUtilList);
-      adfy.a(adio.a(this.jdField_a_of_type_Adio), this.jdField_a_of_type_JavaUtilList, 3);
-      continue;
-      this.jdField_a_of_type_Adio.a(this.jdField_a_of_type_JavaUtilList, 0);
-      adfy.a(adio.a(this.jdField_a_of_type_Adio), this.jdField_a_of_type_JavaUtilList, 3);
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adip
  * JD-Core Version:    0.7.0.1
  */

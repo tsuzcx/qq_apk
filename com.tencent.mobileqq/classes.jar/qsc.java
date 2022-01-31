@@ -1,30 +1,19 @@
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.videoplatform.SDKInitListener;
+import com.tencent.qphone.base.util.QLog;
 
-class qsc
-  implements URLDrawable.URLDrawableListener
+final class qsc
+  implements SDKInitListener
 {
-  qsc(qrt paramqrt) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onSDKInited(boolean paramBoolean)
   {
-    if ((qrt.a(this.a) != null) && (qrt.a(this.a).getStatus() == 1) && ((qrt.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
-    {
-      paramURLDrawable = (RegionDrawable)qrt.a(this.a).getCurrDrawable();
-      qrt.a(this.a, paramURLDrawable.getBitmap());
+    if (QLog.isColorLevel()) {
+      QLog.d("PlayerCaptureProxy", 2, "onSDKInited result:" + paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qsc
  * JD-Core Version:    0.7.0.1
  */

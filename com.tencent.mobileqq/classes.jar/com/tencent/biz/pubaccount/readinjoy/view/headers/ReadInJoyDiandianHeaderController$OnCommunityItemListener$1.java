@@ -4,24 +4,24 @@ import android.graphics.Color;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.mobileqq.widget.SquareImageView;
-import roe;
-import rog;
+import sed;
+import sef;
 
 public class ReadInJoyDiandianHeaderController$OnCommunityItemListener$1
   implements Runnable
 {
-  public ReadInJoyDiandianHeaderController$OnCommunityItemListener$1(rog paramrog, View paramView) {}
+  public ReadInJoyDiandianHeaderController$OnCommunityItemListener$1(sef paramsef, View paramView) {}
   
   public void run()
   {
-    roe localroe = (roe)this.jdField_a_of_type_AndroidViewView.getTag();
-    localroe.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(Color.parseColor("#00000000"));
-    localroe.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    sed localsed = (sed)this.jdField_a_of_type_AndroidViewView.getTag();
+    localsed.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(Color.parseColor("#00000000"));
+    localsed.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.OnCommunityItemListener.1
  * JD-Core Version:    0.7.0.1
  */

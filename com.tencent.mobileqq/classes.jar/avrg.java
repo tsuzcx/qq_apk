@@ -1,117 +1,41 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.HandlerThread;
 import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.mobileqq.richmedia.RichmediaService;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.mobileqq.ocr.OCRPerformFragment.6.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class avrg
+  extends asfo
 {
-  static volatile avrg jdField_a_of_type_Avrg;
-  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
-  HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  Messenger jdField_a_of_type_AndroidOsMessenger;
-  avrc jdField_a_of_type_Avrc;
-  avrj jdField_a_of_type_Avrj;
-  avrl jdField_a_of_type_Avrl;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  Messenger b;
+  public avrg(OCRPerformFragment paramOCRPerformFragment) {}
   
-  private avrg()
+  public void a()
   {
-    avrf.a("PTV.RichmediaClient", "RichmediaClient");
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("RichmediaClientWorkerThread");
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Avrj = new avrj(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-    this.jdField_a_of_type_AndroidOsMessenger = new Messenger(this.jdField_a_of_type_Avrj);
-    this.jdField_a_of_type_AndroidContentServiceConnection = new avrh(this);
-    this.jdField_a_of_type_Avrc = new avri(this);
+    this.a.a.sendEmptyMessageDelayed(101, 60000L);
   }
   
-  public static avrg a()
+  public void a(asfr paramasfr)
   {
-    avrf.a("PTV.RichmediaClient", "getInstance");
-    if (jdField_a_of_type_Avrg == null) {}
-    try
+    this.a.a.obtainMessage(102, paramasfr).sendToTarget();
+  }
+  
+  protected void a(boolean paramBoolean, asfr paramasfr)
+  {
+    if (!OCRPerformFragment.a(this.a))
     {
-      if (jdField_a_of_type_Avrg == null) {
-        jdField_a_of_type_Avrg = new avrg();
+      if (QLog.isColorLevel()) {
+        QLog.d("OCRPerformFragment", 2, "onPicOcrResult other!");
       }
-      return jdField_a_of_type_Avrg;
-    }
-    finally {}
-  }
-  
-  public avrl a()
-  {
-    if (this.jdField_a_of_type_Avrl == null) {
-      this.jdField_a_of_type_Avrl = new avrl();
-    }
-    return this.jdField_a_of_type_Avrl;
-  }
-  
-  public void a(Context paramContext)
-  {
-    avrf.a("PTV.RichmediaClient", "bindService");
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {}
-    try
-    {
-      paramContext.bindService(new Intent(paramContext, RichmediaService.class), this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-      avrf.a("PTV.RichmediaClient", "bindService,bingding");
       return;
     }
-    catch (SecurityException paramContext)
-    {
-      for (;;)
-      {
-        avrf.b("PTV.RichmediaClient", "bindService failed. e = " + paramContext);
-      }
-    }
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    avrf.a("PTV.RichmediaClient", "sendToService,msgCode = " + paramInt1 + ",subCmd = " + paramInt2 + ",data = " + paramBundle);
-    if (this.b == null)
-    {
-      avrf.b("PTV.RichmediaClient", "sendToService failed. mService is null ");
-      return false;
-    }
-    Message localMessage = Message.obtain(null, paramInt1);
-    if (paramBundle != null) {
-      paramBundle.putInt("msg_sub_cmd", paramInt2);
-    }
-    localMessage.setData(paramBundle);
-    try
-    {
-      this.b.send(localMessage);
-      return true;
-    }
-    catch (RemoteException paramBundle)
-    {
-      avrf.b("PTV.RichmediaClient", "sendToService failed. e = " + paramBundle);
-    }
-    return false;
-  }
-  
-  public void b(Context paramContext)
-  {
-    avrf.a("PTV.RichmediaClient", "unbindService");
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
-    {
-      a(2, -1, null);
-      paramContext.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-      this.b = null;
-    }
+    this.a.a.removeMessages(101);
+    OCRPerformFragment.a(this.a, false);
+    OCRPerformFragment.a(this.a).runOnUiThread(new OCRPerformFragment.6.1(this, paramBoolean, paramasfr));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avrg
  * JD-Core Version:    0.7.0.1
  */

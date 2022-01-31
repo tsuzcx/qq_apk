@@ -1,55 +1,30 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.mobileqq.videoplatform.api.LoadSoCallback;
+import com.tencent.mobileqq.videoplatform.util.LogUtil;
 
-public class awwt
-  implements awwq
+class awwt
+  implements azin
 {
-  protected View a;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private List<awwr> jdField_a_of_type_JavaUtilList;
+  awwt(awws paramawws, LoadSoCallback paramLoadSoCallback) {}
   
-  public awwt(ViewGroup paramViewGroup, int paramInt)
+  public void a(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370397));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369348));
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public LinearLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
-  }
-  
-  public TextView a()
-  {
-    return a();
-  }
-  
-  public List<awwr> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    if (LogUtil.isColorLevel()) {
+      LogUtil.d("[VideoPlatform]QQLoadSoImp", 2, "initSDKAsync, onLoadResult, resCode = " + paramInt);
+    }
+    if (paramInt == 0)
+    {
+      this.jdField_a_of_type_Awws.a = true;
+      this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiLoadSoCallback.onLoad(true);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqVideoplatformApiLoadSoCallback.onLoad(false);
+    this.jdField_a_of_type_Awws.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awwt
  * JD-Core Version:    0.7.0.1
  */

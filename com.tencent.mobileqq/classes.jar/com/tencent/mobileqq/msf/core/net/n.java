@@ -424,10 +424,10 @@ public class n
     if (l1 - this.O > 180000L)
     {
       this.O = l1;
-      w();
+      x();
       a("3gimg.qq.com", 80);
       a("120.33.50.146", 80);
-      r();
+      s();
       c(paramString.split(":")[0].trim());
     }
   }
@@ -487,7 +487,7 @@ public class n
         }
         l1 = SystemClock.elapsedRealtime();
         n = com.tencent.mobileqq.msf.core.c.k.a(false, K, l1);
-        if (q() != null)
+        if (r() != null)
         {
           localObject1 = new CopyOnWriteArrayList();
           localObject2 = paramCopyOnWriteArrayList2.iterator();
@@ -607,7 +607,7 @@ public class n
     return (NetConnInfoCenter.isWifiConn()) || ((!NetConnInfoCenter.isWifiOrMobileConn()) && (NetConnInfoCenter.getCurrentAPN() == null));
   }
   
-  private boolean p()
+  private boolean q()
   {
     boolean bool2;
     if (this.F.length() > 0) {
@@ -915,7 +915,7 @@ public class n
     }
   }
   
-  private String q()
+  private String r()
   {
     if (Build.VERSION.SDK_INT >= 14) {
       return System.getProperty("http.proxyHost");
@@ -923,7 +923,7 @@ public class n
     return Proxy.getDefaultHost();
   }
   
-  private void r()
+  private void s()
   {
     for (;;)
     {
@@ -967,12 +967,12 @@ public class n
     }
   }
   
-  private static boolean s()
+  private static boolean t()
   {
-    return t() != null;
+    return u() != null;
   }
   
-  private static String t()
+  private static String u()
   {
     try
     {
@@ -1028,14 +1028,14 @@ public class n
     }
   }
   
-  private static void u()
+  private static void v()
   {
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.NetConnTag", 2, "tcpdump: stopTCPDump begin");
     }
     try
     {
-      Object localObject = t();
+      Object localObject = u();
       if (localObject == null)
       {
         if (QLog.isColorLevel()) {
@@ -1069,7 +1069,7 @@ public class n
     }
   }
   
-  private void v()
+  private void w()
   {
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.NetConnTag", 2, "tcpdump Report begin");
@@ -1086,7 +1086,7 @@ public class n
     this.Q.start();
   }
   
-  private void w()
+  private void x()
   {
     v localv = new v(this);
     localv.setName("checkNetConnectByHttpThread");
@@ -1222,7 +1222,7 @@ public class n
     if (!this.B[this.C.get()].c())
     {
       K = SystemClock.elapsedRealtime();
-      p();
+      q();
       arrayOfByte = this.f.sender.e(paramToServiceMsg);
       QLog.d("MSF.C.NetConnTag", 1, "p ok re1: " + paramToServiceMsg.getRequestSsoSeq());
     }
@@ -1239,7 +1239,7 @@ public class n
         if (i1 != -100) {
           break label337;
         }
-        p();
+        q();
         arrayOfByte = this.f.sender.e(paramToServiceMsg);
         QLog.d("MSF.C.NetConnTag", 1, "p ok re2: " + paramToServiceMsg.getRequestSsoSeq());
         if (this.B[this.C.get()].a(paramInt1, paramInt2, paramInt3, paramString3, paramString1, paramString2, paramMsfCommand, arrayOfByte, paramArrayOfByte) != -100) {
@@ -1277,7 +1277,7 @@ public class n
   
   public void b(int paramInt, boolean paramBoolean)
   {
-    if (this.i.a() == 1)
+    if (o())
     {
       QLog.d("DualConnContext", 1, "onDualConnConnected: connId: " + paramInt + ", success: " + paramBoolean);
       if (paramBoolean) {
@@ -1479,10 +1479,10 @@ public class n
   
   public void j()
   {
-    if (s())
+    if (t())
     {
       if (System.currentTimeMillis() - this.R > com.tencent.mobileqq.msf.core.a.a.aC()) {
-        u();
+        v();
       }
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.NetConnTag", 2, "tcpdump is running return");
@@ -1507,6 +1507,11 @@ public class n
   public boolean n()
   {
     return (b()) && (this.I == 0L);
+  }
+  
+  public boolean o()
+  {
+    return this.i.a() == 1;
   }
 }
 

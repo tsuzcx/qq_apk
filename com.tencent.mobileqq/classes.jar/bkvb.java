@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
+import android.widget.EditText;
 
-public final class bkvb
-  implements Parcelable.Creator<FilterCategory>
+public abstract interface bkvb
 {
-  public FilterCategory a(Parcel paramParcel)
-  {
-    return new FilterCategory(paramParcel);
-  }
+  public abstract void a();
   
-  public FilterCategory[] a(int paramInt)
-  {
-    return new FilterCategory[paramInt];
-  }
+  public abstract void a(int paramInt, String paramString, EditText paramEditText);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkvb
  * JD-Core Version:    0.7.0.1
  */

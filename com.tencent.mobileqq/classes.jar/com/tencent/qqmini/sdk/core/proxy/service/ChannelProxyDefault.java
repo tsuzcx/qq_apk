@@ -3,66 +3,77 @@ package com.tencent.qqmini.sdk.core.proxy.service;
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
+import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import beif;
-import beih;
-import betc;
-import beut;
-import bezm;
-import bezn;
-import bezo;
-import bezp;
-import bezq;
-import bezr;
-import bezs;
-import bezt;
-import bezu;
-import bezv;
-import bezw;
-import bezx;
-import bezy;
-import bezz;
-import bfaa;
-import bfab;
-import bfac;
-import bfad;
-import bfae;
-import bfaf;
-import bfag;
-import bfah;
-import bfai;
-import bfaj;
-import bfak;
-import bfal;
-import bfam;
-import bfan;
-import bfao;
-import bfap;
-import bfaq;
-import bfar;
-import bfas;
-import bfat;
-import bfau;
-import bfav;
-import bfaw;
-import bfax;
-import bfay;
-import bfaz;
-import bfba;
-import bfbb;
-import bfbc;
-import bfhm;
+import bgte;
+import bgyh;
+import bgyi;
+import bgyj;
+import bgyk;
+import bgyl;
+import bgym;
+import bgyn;
+import bgyo;
+import bgyp;
+import bgyq;
+import bgyr;
+import bgys;
+import bgyt;
+import bgyu;
+import bgyv;
+import bgyw;
+import bgyx;
+import bgyy;
+import bgyz;
+import bgza;
+import bgzb;
+import bgzc;
+import bgzd;
+import bgze;
+import bgzf;
+import bgzg;
+import bgzh;
+import bgzi;
+import bgzj;
+import bgzk;
+import bgzl;
+import bgzm;
+import bgzn;
+import bgzo;
+import bgzp;
+import bgzq;
+import bgzr;
+import bgzs;
+import bgzt;
+import bgzu;
+import bgzv;
+import bgzw;
+import bgzx;
+import bgzy;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.core.auth.UserAuthInfo;
+import com.tencent.qqmini.sdk.core.auth.UserSettingInfo;
+import com.tencent.qqmini.sdk.core.auth.ui.PermissionSettingFragment;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy.AuthListResult;
+import com.tencent.qqmini.sdk.core.proxy.ChannelProxy.SoLoaderOption;
+import com.tencent.qqmini.sdk.core.proxy.IMediaPlayer;
+import com.tencent.qqmini.sdk.core.proxy.IMediaPlayerUtil;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.model.PluginInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
+import com.tencent.qqmini.sdk.utils.StorageUtil;
+import cooperation.vip.pb.TianShuAccess.AdItem;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -92,30 +103,30 @@ public class ChannelProxyDefault
     return i;
   }
   
-  private void handleRequest(bfau parambfau, AsyncResult paramAsyncResult)
+  private void handleRequest(bgzp parambgzp, AsyncResult paramAsyncResult)
   {
     MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
     try
     {
-      byte[] arrayOfByte = parambfau.b();
-      betc.c("ChannelProxyDefault", "sendData " + parambfau);
-      localMiniAppProxy.sendData(arrayOfByte, new ChannelProxyDefault.4(this, parambfau, paramAsyncResult));
+      byte[] arrayOfByte = parambgzp.b();
+      QMLog.w("ChannelProxyDefault", "sendData " + parambgzp);
+      localMiniAppProxy.sendData(arrayOfByte, new ChannelProxyDefault.4(this, parambgzp, paramAsyncResult));
       return;
     }
-    catch (Exception parambfau)
+    catch (Exception parambgzp)
     {
       do
       {
-        betc.d("ChannelProxyDefault", "handleRequest Exception", parambfau);
+        QMLog.e("ChannelProxyDefault", "handleRequest Exception", parambgzp);
       } while (paramAsyncResult == null);
-      parambfau = new JSONObject();
+      parambgzp = new JSONObject();
     }
     try
     {
-      parambfau.put("retCode", -1);
-      parambfau.put("errMsg", "数据编码错误");
+      parambgzp.put("retCode", -1);
+      parambgzp.put("errMsg", "数据编码错误");
       label94:
-      paramAsyncResult.onReceiveResult(false, parambfau);
+      paramAsyncResult.onReceiveResult(false, parambgzp);
       return;
     }
     catch (Throwable localThrowable)
@@ -124,161 +135,188 @@ public class ChannelProxyDefault
     }
   }
   
-  public void JudgeTiming(String paramString1, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, String paramString2, int paramInt5, String paramString3, AsyncResult paramAsyncResult)
+  public void JudgeTiming(String paramString1, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4, String paramString2, int paramInt5, String paramString3, int paramInt6, COMM.StCommonExt paramStCommonExt, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfaq(paramString1, paramInt1, paramInt2, paramInt3, paramLong, paramInt4, paramString2, paramInt5, paramString3), paramAsyncResult);
+    handleRequest(new bgzl(paramString1, paramInt1, paramInt2, paramInt3, paramLong, paramInt4, paramString2, paramInt5, paramString3, paramInt6, paramStCommonExt), paramAsyncResult);
   }
   
   public void ReportExecute(String paramString1, int paramInt, String paramString2, String paramString3, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfax(paramString1, paramInt, paramString2, paramString3), paramAsyncResult);
+    handleRequest(new bgzs(paramString1, paramInt, paramString2, paramString3), paramAsyncResult);
+  }
+  
+  public boolean addPublicAccount(String paramString1, String paramString2, AsyncResult paramAsyncResult)
+  {
+    return false;
   }
   
   public void batchGetContact(ArrayList<String> paramArrayList, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bezm(paramArrayList), paramAsyncResult);
+    handleRequest(new bgyh(paramArrayList), paramAsyncResult);
   }
   
   public void checkNavigateRight(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bezo(paramString1, paramString2), paramAsyncResult);
+    handleRequest(new bgyj(paramString1, paramString2), paramAsyncResult);
   }
   
   public void checkOfferId(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bezp(null, paramString1, paramString2), paramAsyncResult);
+    handleRequest(new bgyk(null, paramString1, paramString2), paramAsyncResult);
   }
   
   public void checkSession(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bezq(paramString), paramAsyncResult);
+    handleRequest(new bgyl(paramString), paramAsyncResult);
   }
   
   public void dataReport(byte[] paramArrayOfByte, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bezr(paramArrayOfByte), paramAsyncResult);
+    handleRequest(new bgym(paramArrayOfByte), paramAsyncResult);
   }
+  
+  public void downloadQQBrowser(String paramString) {}
   
   public void getAppInfoById(String paramString1, String paramString2, String paramString3, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bezu(null, paramString1, 1, 0, paramString2, paramString3), paramAsyncResult);
+    handleRequest(new bgyp(null, paramString1, 1, 0, paramString2, paramString3), paramAsyncResult);
   }
   
   public void getAppInfoByLink(String paramString, int paramInt, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bezv(paramString, paramInt), paramAsyncResult);
+    handleRequest(new bgyq(paramString, paramInt), paramAsyncResult);
   }
   
   public void getAuthList(String paramString, ChannelProxy.AuthListResult paramAuthListResult)
   {
-    paramString = new bezw(null, paramString);
+    paramString = new bgyr(null, paramString);
     MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
     handleRequest(paramString, new ChannelProxyDefault.1(this, paramAuthListResult));
   }
   
+  public String getDeviceInfo()
+  {
+    return QUAUtil.getSimpleDeviceInfo(AppLoaderFactory.g().getMiniAppEnv().getContext());
+  }
+  
   public void getFormId(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bezz(paramString), paramAsyncResult);
+    handleRequest(new bgyu(paramString), paramAsyncResult);
   }
   
   public void getFriendCloudStorage(String paramString, String[] paramArrayOfString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfaa(paramArrayOfString, paramString), paramAsyncResult);
+    handleRequest(new bgyv(paramArrayOfString, paramString), paramAsyncResult);
   }
   
   public void getGdtAd(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bezt(paramString1, paramInt, paramString2, paramString3, paramString4, paramHashMap), paramAsyncResult);
+    handleRequest(new bgyo(paramString1, paramInt, paramString2, paramString3, paramString4, paramHashMap), paramAsyncResult);
   }
   
   public void getGroupCloudStorage(String paramString1, String paramString2, String[] paramArrayOfString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfab(paramArrayOfString, paramString2, paramString1), paramAsyncResult);
+    handleRequest(new bgyw(paramArrayOfString, paramString2, paramString1), paramAsyncResult);
   }
   
   public void getGroupShareInfo(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfar(null, paramString1, paramString2), paramAsyncResult);
+    handleRequest(new bgzm(null, paramString1, paramString2), paramAsyncResult);
   }
   
-  public void getMidasConsumeResult(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, AsyncResult paramAsyncResult)
+  public IMediaPlayer getMediaPlayer()
   {
-    handleRequest(new bfat(paramString1, null, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5), paramAsyncResult);
+    return new DefaultMediaPlayer();
+  }
+  
+  public IMediaPlayerUtil getMediaPlayerUtil()
+  {
+    return new ChannelProxyDefault.5(this);
+  }
+  
+  public void getMidasConsumeResult(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString3, String paramString4, AsyncResult paramAsyncResult)
+  {
+    handleRequest(new bgzo(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramString3, paramString4), paramAsyncResult);
   }
   
   public void getMiniAppStoreAppList(int paramInt, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bezy(paramInt), paramAsyncResult);
+    handleRequest(new bgyt(paramInt), paramAsyncResult);
   }
   
   public void getNativeAppInfoForJump(String paramString1, String paramString2, String paramString3, int paramInt, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfad(null, paramString1, paramString2, paramString3, paramInt), paramAsyncResult);
+    handleRequest(new bgyy(null, paramString1, paramString2, paramString3, paramInt), paramAsyncResult);
   }
   
   public void getPhoneNumber(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfbc(paramString), paramAsyncResult);
+    handleRequest(new bgzy(paramString), paramAsyncResult);
   }
   
   public void getPotentialFriendList(COMM.StCommonExt paramStCommonExt, String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfaf(paramStCommonExt, paramString), paramAsyncResult);
+    handleRequest(new bgza(paramStCommonExt, paramString), paramAsyncResult);
   }
   
   public void getRobotUin(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfah(null, paramString), paramAsyncResult);
+    handleRequest(new bgzc(null, paramString), paramAsyncResult);
   }
   
   public void getSDKOpenKeyToken(COMM.StCommonExt paramStCommonExt, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfai(paramStCommonExt), paramAsyncResult);
+    handleRequest(new bgzd(paramStCommonExt), paramAsyncResult);
   }
   
   public void getShareInfo(MiniProgramShare.StAdaptShareInfoReq paramStAdaptShareInfoReq, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfaj(paramStAdaptShareInfoReq), paramAsyncResult);
+    handleRequest(new bgze(paramStAdaptShareInfoReq), paramAsyncResult);
   }
   
   public void getTcbTicket(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfak(null, paramString1, paramString2), paramAsyncResult);
+    handleRequest(new bgzf(null, paramString1, paramString2), paramAsyncResult);
+  }
+  
+  public ChannelProxy.SoLoaderOption getTissueSoLoaderOption()
+  {
+    return null;
   }
   
   public void getUserCloudStorage(String paramString, String[] paramArrayOfString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bezx(paramArrayOfString, paramString), paramAsyncResult);
+    handleRequest(new bgys(paramArrayOfString, paramString), paramAsyncResult);
   }
   
   public void getUserHealthData(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfam(null, paramString), paramAsyncResult);
+    handleRequest(new bgzh(null, paramString), paramAsyncResult);
   }
   
   public void getUserInfo(String paramString1, boolean paramBoolean, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfag(paramString1, paramBoolean, paramString2), paramAsyncResult);
+    handleRequest(new bgzb(paramString1, paramBoolean, paramString2), paramAsyncResult);
   }
   
   public void getUserInfoExtra(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfan(paramString), paramAsyncResult);
+    handleRequest(new bgzi(paramString), paramAsyncResult);
   }
   
   public void getUserInfoOpenData(String paramString1, String paramString2, String[] paramArrayOfString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bezn(paramString1, paramString2, paramArrayOfString), paramAsyncResult);
+    handleRequest(new bgyi(paramString1, paramString2, paramArrayOfString), paramAsyncResult);
   }
   
   public void getUserInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString, String[] paramArrayOfString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfao(paramStCommonExt, paramString, paramArrayOfString), paramAsyncResult);
+    handleRequest(new bgzj(paramStCommonExt, paramString, paramArrayOfString), paramAsyncResult);
   }
   
   public void getUserSetting(String paramString1, String paramString2, String paramString3, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfap(paramString1, paramString2, paramString3), paramAsyncResult);
+    handleRequest(new bgzk(paramString1, paramString2, paramString3), paramAsyncResult);
   }
   
   public void httpReport(Bundle paramBundle)
@@ -301,78 +339,136 @@ public class ChannelProxyDefault
     ((RequestProxy)ProxyManager.get(RequestProxy.class)).request("https://q.qq.com/report/dc/" + str, localStringBuilder.toString().getBytes(), null, "POST", 60, new ChannelProxyDefault.2(this));
   }
   
+  public boolean isGooglePlayVersion()
+  {
+    return false;
+  }
+  
+  public boolean jump2PublicAccount(Context paramContext, String paramString1, String paramString2)
+  {
+    return false;
+  }
+  
   public void login(String paramString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfac(paramString), paramAsyncResult);
+    handleRequest(new bgyx(paramString), paramAsyncResult);
   }
   
   public void modifyFriendInteractiveStorage(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfas(paramStCommonExt, paramString1, paramString2, paramString3, paramInt, paramString4, paramHashMap), paramAsyncResult);
+    handleRequest(new bgzn(paramStCommonExt, paramString1, paramString2, paramString3, paramInt, paramString4, paramHashMap), paramAsyncResult);
+  }
+  
+  public boolean openGroup(Context paramContext, String paramString, AsyncResult paramAsyncResult)
+  {
+    return false;
+  }
+  
+  public boolean openPermissionSettingsActivity(Context paramContext, String paramString1, String paramString2)
+  {
+    PermissionSettingFragment.launchForResult((Activity)paramContext, paramString1, paramString2, 5);
+    return true;
+  }
+  
+  public boolean openRobotProfileCard(Context paramContext, String paramString1, String paramString2)
+  {
+    return false;
   }
   
   public void queryCurrency(String paramString1, String paramString2, int paramInt1, int paramInt2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfav(null, paramString2, paramString1, paramInt1, paramInt2), paramAsyncResult);
+    handleRequest(new bgzq(null, paramString2, paramString1, paramInt1, paramInt2), paramAsyncResult);
   }
   
   public void removeUserCloudStorage(String paramString, String[] paramArrayOfString, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfaw(paramArrayOfString, paramString), paramAsyncResult);
+    handleRequest(new bgzr(paramArrayOfString, paramString), paramAsyncResult);
   }
   
   public void report(byte[] paramArrayOfByte, String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bezs(paramArrayOfByte, paramString1, paramString2), paramAsyncResult);
+    handleRequest(new bgyn(paramArrayOfByte, paramString1, paramString2), paramAsyncResult);
   }
   
-  public void setAuth(String paramString, beif parambeif, AsyncResult paramAsyncResult)
+  public void reportShare(COMM.StCommonExt paramStCommonExt, long paramLong, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, AsyncResult paramAsyncResult)
+  {
+    handleRequest(new bgzt(paramLong, paramString1, paramInt1, paramInt2, paramInt3, paramInt4, paramString2), paramAsyncResult);
+  }
+  
+  public void setAuth(String paramString, UserAuthInfo paramUserAuthInfo, AsyncResult paramAsyncResult)
   {
     INTERFACE.StUserAuthInfo localStUserAuthInfo = new INTERFACE.StUserAuthInfo();
-    localStUserAuthInfo.scope.set(parambeif.jdField_a_of_type_JavaLangString);
-    if (!TextUtils.isEmpty(parambeif.b)) {
-      localStUserAuthInfo.desc.set(parambeif.b);
+    localStUserAuthInfo.scope.set(paramUserAuthInfo.scope);
+    if (!TextUtils.isEmpty(paramUserAuthInfo.desc)) {
+      localStUserAuthInfo.desc.set(paramUserAuthInfo.desc);
     }
-    localStUserAuthInfo.authState.set(parambeif.jdField_a_of_type_Int);
-    handleRequest(new bfay(null, paramString, localStUserAuthInfo), paramAsyncResult);
+    localStUserAuthInfo.authState.set(paramUserAuthInfo.authState);
+    handleRequest(new bgzu(null, paramString, localStUserAuthInfo), paramAsyncResult);
   }
   
   public void setPersonalizeInfo(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfaz(null, paramString1, paramString2, paramInt, paramString3, paramString4), paramAsyncResult);
+    handleRequest(new bgzv(null, paramString1, paramString2, paramInt, paramString3, paramString4), paramAsyncResult);
   }
   
   public void setUserCloudStorage(String paramString, HashMap<String, String> paramHashMap, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfba(paramHashMap, paramString), paramAsyncResult);
+    handleRequest(new bgzw(paramHashMap, paramString), paramAsyncResult);
+  }
+  
+  public boolean startAddFriendActivity(Context paramContext, String paramString1, String paramString2)
+  {
+    return false;
+  }
+  
+  public boolean startTransparentBrowserActivityForResult(Activity paramActivity, String paramString, int paramInt)
+  {
+    return false;
+  }
+  
+  public boolean tianshuReport(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt)
+  {
+    return false;
+  }
+  
+  public boolean tianshuRequestAdv(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, AsyncResult paramAsyncResult)
+  {
+    return false;
   }
   
   public void transForRoomId(String paramString1, String paramString2, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfal(paramString1, paramString2), paramAsyncResult);
+    handleRequest(new bgzg(paramString1, paramString2), paramAsyncResult);
   }
   
   public boolean updateBaseLib(String paramString, boolean paramBoolean1, boolean paramBoolean2, AsyncResult paramAsyncResult)
   {
-    betc.b("ChannelProxyDefault", "[MiniEng] doUpdateBaseLib nocheck=" + paramBoolean1 + ", force=" + paramBoolean2);
+    QMLog.i("ChannelProxyDefault", "[MiniEng] doUpdateBaseLib nocheck=" + paramBoolean1 + ", force=" + paramBoolean2);
     if ((!paramBoolean1) && (!paramBoolean2))
     {
-      long l = bfhm.a().getLong("baselib_min_update_time", 0L);
+      long l = StorageUtil.getPreference().getLong("baselib_min_update_time", 0L);
       if (System.currentTimeMillis() - l <= 0L)
       {
-        betc.b("ChannelProxyDefault", "[MiniEng] updateBaseLib 在时间间隔内，暂时不更新");
+        QMLog.i("ChannelProxyDefault", "[MiniEng] updateBaseLib 在时间间隔内，暂时不更新");
         return false;
       }
     }
-    handleRequest(new bfae(paramString, 0), paramAsyncResult);
+    handleRequest(new bgyz(paramString, 0), paramAsyncResult);
     return true;
   }
   
-  public void updateUserSetting(String paramString, beih parambeih, AsyncResult paramAsyncResult) {}
+  public boolean updateEntryList(String paramString)
+  {
+    return false;
+  }
+  
+  public void updateUserSetting(String paramString, UserSettingInfo paramUserSettingInfo, AsyncResult paramAsyncResult) {}
+  
+  public void uploadUserLog(String paramString) {}
   
   public void useUserApp(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, COMM.StCommonExt paramStCommonExt, AsyncResult paramAsyncResult)
   {
-    handleRequest(new bfbb(paramStCommonExt, paramString1, paramInt1, paramInt2, paramString2, paramString3), paramAsyncResult);
+    handleRequest(new bgzx(paramStCommonExt, paramString1, paramInt1, paramInt2, paramString2, paramString3), paramAsyncResult);
   }
   
   public void verifyPlugin(String paramString, ArrayList<PluginInfo> paramArrayList, AsyncResult paramAsyncResult) {}
@@ -384,7 +480,6 @@ public class ChannelProxyDefault
       if (paramAsyncResult != null) {
         paramAsyncResult.onReceiveResult(false, new JSONObject());
       }
-      paramAsyncResult.onReceiveResult(false, new JSONObject());
       return false;
     }
     for (;;)
@@ -400,7 +495,7 @@ public class ChannelProxyDefault
           localObject2 = paramJSONObject.optJSONObject("header");
           localObject3 = ((JSONObject)localObject2).keys();
           if (0 != 0) {
-            break label737;
+            break label723;
           }
           localObject1 = new HashMap();
           localObject6 = localObject1;
@@ -418,7 +513,7 @@ public class ChannelProxyDefault
       }
       catch (Throwable paramJSONObject)
       {
-        betc.d("ChannelProxyDefault", "performWnsCgiRequest ", paramJSONObject);
+        QMLog.e("ChannelProxyDefault", "performWnsCgiRequest ", paramJSONObject);
         if (paramAsyncResult != null) {
           paramAsyncResult.onReceiveResult(false, null);
         }
@@ -426,9 +521,9 @@ public class ChannelProxyDefault
       }
       String str1 = paramJSONObject.optString("url");
       if ((0 == 0) && (paramJSONObject.has("data"))) {}
-      label542:
-      label684:
-      label721:
+      label528:
+      label670:
+      label707:
       for (Object localObject1 = paramJSONObject.optString("data");; localObject1 = null)
       {
         String str2 = paramJSONObject.optString("method", "GET");
@@ -453,10 +548,10 @@ public class ChannelProxyDefault
         localObject3 = str1;
         try
         {
-          beut.a().a();
+          bgte.a().a();
           localObject2 = localObject1;
           localObject3 = str1;
-          paramJSONObject = new String(beut.a().a());
+          paramJSONObject = new String(bgte.a().a());
           localObject2 = localObject1;
           localObject3 = str1;
           if (TextUtils.isEmpty(paramJSONObject)) {
@@ -471,7 +566,7 @@ public class ChannelProxyDefault
           for (;;)
           {
             Object localObject5;
-            betc.d("ChannelProxyDefault", "get gtk fail.", paramJSONObject);
+            QMLog.e("ChannelProxyDefault", "get gtk fail.", paramJSONObject);
             paramJSONObject = (JSONObject)localObject2;
             localObject4 = localObject3;
             continue;
@@ -490,20 +585,20 @@ public class ChannelProxyDefault
         {
           localObject2 = localObject1;
           localObject3 = str1;
-          if (!"post".equalsIgnoreCase(str2)) {
-            break label542;
+          if (!"get".equalsIgnoreCase(str2)) {
+            break label528;
           }
           localObject2 = localObject1;
           localObject3 = str1;
           if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label505;
+            break label491;
           }
           localObject2 = localObject1;
           localObject3 = str1;
           paramJSONObject = "g_tk=" + i;
           localObject2 = paramJSONObject;
           localObject3 = str1;
-          betc.a("ChannelProxyDefault", "wns body : " + paramJSONObject);
+          QMLog.d("ChannelProxyDefault", "wns body : " + paramJSONObject);
           localObject4 = str1;
           localObject5 = paramJSONObject;
         }
@@ -512,12 +607,12 @@ public class ChannelProxyDefault
           paramJSONObject = (JSONObject)localObject5;
           localObject1 = (RequestProxy)ProxyManager.get(RequestProxy.class);
           if (paramJSONObject == null) {
-            break label721;
+            break label707;
           }
           paramJSONObject = paramJSONObject.getBytes();
           ((RequestProxy)localObject1).request((String)localObject4, paramJSONObject, localObject6, str2, 60000, new ChannelProxyDefault.3(this, paramAsyncResult, bool1, bool2));
           return true;
-          label505:
+          label491:
           localObject2 = localObject1;
           localObject3 = str1;
           paramJSONObject = (String)localObject1 + "&g_tk=" + i;
@@ -526,25 +621,25 @@ public class ChannelProxyDefault
           localObject4 = str1;
           localObject2 = localObject1;
           localObject3 = str1;
-          if ("get".equalsIgnoreCase(str2))
+          if ("post".equalsIgnoreCase(str2))
           {
             localObject2 = localObject1;
             localObject3 = str1;
             if (!str1.contains("?")) {
-              break label684;
+              break label670;
             }
             localObject2 = localObject1;
             localObject3 = str1;
             paramJSONObject = str1 + "&g_tk=" + i;
             localObject2 = localObject1;
             localObject3 = paramJSONObject;
-            betc.a("ChannelProxyDefault", "url : " + paramJSONObject);
+            QMLog.d("ChannelProxyDefault", "url : " + paramJSONObject);
             localObject5 = localObject1;
             localObject4 = paramJSONObject;
           }
         }
       }
-      label737:
+      label723:
       localObject1 = null;
     }
     return false;
@@ -552,7 +647,7 @@ public class ChannelProxyDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault
  * JD-Core Version:    0.7.0.1
  */

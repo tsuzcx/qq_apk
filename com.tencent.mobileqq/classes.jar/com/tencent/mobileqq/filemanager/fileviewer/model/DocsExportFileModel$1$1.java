@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import apmy;
-import apmz;
-import apnf;
+import arfw;
+import arfx;
+import argf;
 
 public class DocsExportFileModel$1$1
   implements Runnable
 {
-  public DocsExportFileModel$1$1(apmz paramapmz) {}
+  public DocsExportFileModel$1$1(arfx paramarfx) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class DocsExportFileModel$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.DocsExportFileModel.1.1
  * JD-Core Version:    0.7.0.1
  */

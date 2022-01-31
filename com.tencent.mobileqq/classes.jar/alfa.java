@@ -1,630 +1,465 @@
-import android.os.Build.VERSION;
-import android.util.Xml;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.utils.ApolloGameShare.2;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.lang.ref.WeakReference;
+import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.List;
-import org.xmlpull.v1.XmlPullParser;
+import org.json.JSONObject;
 
 public class alfa
+  implements DialogInterface.OnDismissListener, Handler.Callback, AdapterView.OnItemClickListener, bhqd
 {
-  private static alfe a;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+  private bhpy jdField_a_of_type_Bhpy;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private WeakReference<AppInterface> jdField_b_of_type_JavaLangRefWeakReference;
+  private String c;
+  private String d;
+  private String e;
+  private String f;
+  private String g;
   
-  static
+  public alfa(Context paramContext, AppInterface paramAppInterface)
   {
-    alfi localalfi = new alfi();
-    if ((alez.a("HUAWEI")) && (Build.VERSION.SDK_INT >= 23) && (akyp.a())) {
-      a = localalfi;
+    try
+    {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference((Activity)paramContext);
+      this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      QLog.i("ApolloGameShare", 1, "[ApolloGameShare], errInfo->" + paramContext.getMessage());
     }
   }
   
-  /* Error */
-  public static int a(alfe paramalfe, String paramString)
+  private int a(String paramString)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: ifnull +14 -> 18
-    //   7: aload_1
-    //   8: invokestatic 38	bbkk:a	(Ljava/lang/String;)Z
-    //   11: istore 4
-    //   13: iload 4
-    //   15: ifeq +11 -> 26
-    //   18: bipush 252
-    //   20: istore_2
-    //   21: ldc 2
-    //   23: monitorexit
-    //   24: iload_2
-    //   25: ireturn
-    //   26: aload_0
-    //   27: invokeinterface 43 1 0
-    //   32: astore 5
-    //   34: aload_0
-    //   35: invokeinterface 46 1 0
-    //   40: astore_0
-    //   41: aload 5
-    //   43: aload_0
-    //   44: aload 5
-    //   46: aload_0
-    //   47: aload 5
-    //   49: invokestatic 51	albz:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   52: aload_1
-    //   53: invokestatic 54	albz:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
-    //   56: istore_3
-    //   57: iload_3
-    //   58: istore_2
-    //   59: invokestatic 59	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   62: ifeq -41 -> 21
-    //   65: ldc 61
-    //   67: iconst_2
-    //   68: new 63	java/lang/StringBuilder
-    //   71: dup
-    //   72: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   75: ldc 66
-    //   77: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   80: aload_1
-    //   81: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: ldc 72
-    //   86: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: iload_3
-    //   90: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   93: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokestatic 82	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   99: iload_3
-    //   100: istore_2
-    //   101: goto -80 -> 21
-    //   104: astore_0
-    //   105: ldc 2
-    //   107: monitorexit
-    //   108: aload_0
-    //   109: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	110	0	paramalfe	alfe
-    //   0	110	1	paramString	String
-    //   20	81	2	i	int
-    //   56	44	3	j	int
-    //   11	3	4	bool	boolean
-    //   32	16	5	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   7	13	104	finally
-    //   26	57	104	finally
-    //   59	99	104	finally
-  }
-  
-  /* Error */
-  public static int a(alfe paramalfe, String paramString1, String paramString2)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: ifnull +21 -> 25
-    //   7: aload_1
-    //   8: invokestatic 38	bbkk:a	(Ljava/lang/String;)Z
-    //   11: ifne +14 -> 25
-    //   14: aload_2
-    //   15: invokestatic 38	bbkk:a	(Ljava/lang/String;)Z
-    //   18: istore 4
-    //   20: iload 4
-    //   22: ifeq +10 -> 32
-    //   25: iconst_m1
-    //   26: istore_3
-    //   27: ldc 2
-    //   29: monitorexit
-    //   30: iload_3
-    //   31: ireturn
-    //   32: aload_0
-    //   33: invokeinterface 43 1 0
-    //   38: astore 5
-    //   40: aload_0
-    //   41: invokeinterface 46 1 0
-    //   46: astore 6
-    //   48: aload_0
-    //   49: invokeinterface 90 1 0
-    //   54: astore 8
-    //   56: aload_0
-    //   57: invokeinterface 93 1 0
-    //   62: astore 7
-    //   64: aload 7
-    //   66: ifnull +730 -> 796
-    //   69: aload 7
-    //   71: invokeinterface 99 1 0
-    //   76: ifne +6 -> 82
-    //   79: goto +717 -> 796
-    //   82: ldc 61
-    //   84: iconst_2
-    //   85: new 63	java/lang/StringBuilder
-    //   88: dup
-    //   89: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   92: ldc 101
-    //   94: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: aload_1
-    //   98: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   101: ldc 103
-    //   103: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   106: aload_2
-    //   107: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokestatic 106	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   116: aload 5
-    //   118: aload 6
-    //   120: aload 5
-    //   122: aload_2
-    //   123: invokestatic 109	albz:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   126: aload_1
-    //   127: aload 5
-    //   129: aload 6
-    //   131: aload 5
-    //   133: aload 6
-    //   135: aload 5
-    //   137: invokestatic 51	albz:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   140: invokestatic 111	albz:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   143: invokestatic 116	albv:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   146: new 63	java/lang/StringBuilder
-    //   149: dup
-    //   150: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   153: aload 5
-    //   155: aload 6
-    //   157: aload 5
-    //   159: aload 6
-    //   161: aload 5
-    //   163: invokestatic 51	albz:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   166: invokestatic 111	albz:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   169: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: getstatic 122	java/io/File:separator	Ljava/lang/String;
-    //   175: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   178: aload 8
-    //   180: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   186: astore_0
-    //   187: new 118	java/io/File
-    //   190: dup
-    //   191: aload_0
-    //   192: invokespecial 125	java/io/File:<init>	(Ljava/lang/String;)V
-    //   195: astore_2
-    //   196: aload_2
-    //   197: invokevirtual 128	java/io/File:exists	()Z
-    //   200: ifeq +525 -> 725
-    //   203: new 130	java/util/HashMap
-    //   206: dup
-    //   207: invokespecial 131	java/util/HashMap:<init>	()V
-    //   210: pop
-    //   211: aload_2
-    //   212: invokestatic 136	bbdx:b	(Ljava/io/File;)Ljava/lang/String;
-    //   215: aload 7
-    //   217: invokestatic 139	alfa:a	(Ljava/lang/String;Ljava/util/List;)Ljava/util/HashMap;
-    //   220: astore_0
-    //   221: aload_0
-    //   222: invokevirtual 140	java/util/HashMap:size	()I
-    //   225: ifle +470 -> 695
-    //   228: aload_0
-    //   229: invokevirtual 144	java/util/HashMap:entrySet	()Ljava/util/Set;
-    //   232: invokeinterface 150 1 0
-    //   237: astore_1
-    //   238: aload_1
-    //   239: invokeinterface 155 1 0
-    //   244: ifeq +522 -> 766
-    //   247: aload_1
-    //   248: invokeinterface 159 1 0
-    //   253: checkcast 161	java/util/Map$Entry
-    //   256: astore_2
-    //   257: ldc 163
-    //   259: astore_0
-    //   260: aload_2
-    //   261: invokeinterface 166 1 0
-    //   266: checkcast 168	java/lang/String
-    //   269: astore 8
-    //   271: aload 7
-    //   273: aload 8
-    //   275: invokeinterface 172 2 0
-    //   280: ifeq +67 -> 347
-    //   283: new 63	java/lang/StringBuilder
-    //   286: dup
-    //   287: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   290: aload 5
-    //   292: aload 6
-    //   294: aload 5
-    //   296: aload 6
-    //   298: aload 5
-    //   300: invokestatic 51	albz:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   303: invokestatic 111	albz:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   306: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   309: getstatic 122	java/io/File:separator	Ljava/lang/String;
-    //   312: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   315: aload 8
-    //   317: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   320: ldc 174
-    //   322: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   328: astore_0
-    //   329: aload 5
-    //   331: aload 6
-    //   333: aload 8
-    //   335: aload_2
-    //   336: invokeinterface 177 1 0
-    //   341: checkcast 168	java/lang/String
-    //   344: invokestatic 109	albz:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   347: new 118	java/io/File
-    //   350: dup
-    //   351: aload_0
-    //   352: invokespecial 125	java/io/File:<init>	(Ljava/lang/String;)V
-    //   355: astore 8
-    //   357: ldc 61
-    //   359: iconst_2
-    //   360: new 63	java/lang/StringBuilder
-    //   363: dup
-    //   364: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   367: ldc 179
-    //   369: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   372: aload_0
-    //   373: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   376: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   379: invokestatic 106	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   382: aload 8
-    //   384: invokevirtual 128	java/io/File:exists	()Z
-    //   387: ifeq +267 -> 654
-    //   390: aload_0
-    //   391: invokestatic 184	aurn:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   394: astore 9
-    //   396: aload_2
-    //   397: invokeinterface 177 1 0
-    //   402: checkcast 168	java/lang/String
-    //   405: astore_2
-    //   406: aload_2
-    //   407: aload 9
-    //   409: invokevirtual 187	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   412: ifne -174 -> 238
-    //   415: aload 8
-    //   417: invokevirtual 190	java/io/File:delete	()Z
-    //   420: pop
-    //   421: ldc 61
-    //   423: iconst_2
-    //   424: new 63	java/lang/StringBuilder
-    //   427: dup
-    //   428: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   431: ldc 192
-    //   433: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   436: bipush 253
-    //   438: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   441: ldc 194
-    //   443: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   446: aload_0
-    //   447: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   450: ldc 196
-    //   452: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   455: aload 9
-    //   457: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   460: ldc 198
-    //   462: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   465: aload_2
-    //   466: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   469: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   472: invokestatic 106	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   475: bipush 253
-    //   477: istore_3
-    //   478: goto -451 -> 27
-    //   481: astore_0
-    //   482: bipush 250
-    //   484: istore_3
-    //   485: aload 5
-    //   487: aload 6
-    //   489: aload 5
-    //   491: aload 6
-    //   493: aload 5
-    //   495: invokestatic 51	albz:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   498: invokestatic 111	albz:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   501: iconst_0
-    //   502: invokestatic 201	bbdx:a	(Ljava/lang/String;Z)V
-    //   505: new 118	java/io/File
-    //   508: dup
-    //   509: aload_1
-    //   510: invokespecial 125	java/io/File:<init>	(Ljava/lang/String;)V
-    //   513: astore_0
-    //   514: aload_0
-    //   515: invokevirtual 128	java/io/File:exists	()Z
-    //   518: ifeq +8 -> 526
-    //   521: aload_0
-    //   522: invokevirtual 190	java/io/File:delete	()Z
-    //   525: pop
-    //   526: ldc 61
-    //   528: iconst_2
-    //   529: new 63	java/lang/StringBuilder
-    //   532: dup
-    //   533: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   536: ldc 203
-    //   538: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   541: bipush 250
-    //   543: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   546: ldc 205
-    //   548: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   551: aload_1
-    //   552: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   555: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   558: invokestatic 106	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   561: goto -534 -> 27
-    //   564: astore_0
-    //   565: ldc 2
-    //   567: monitorexit
-    //   568: aload_0
-    //   569: athrow
-    //   570: astore_0
-    //   571: bipush 251
-    //   573: istore_3
-    //   574: ldc 61
-    //   576: iconst_2
-    //   577: new 63	java/lang/StringBuilder
-    //   580: dup
-    //   581: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   584: ldc 207
-    //   586: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   589: bipush 251
-    //   591: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   594: ldc 205
-    //   596: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   599: aload_1
-    //   600: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   603: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   606: invokestatic 106	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   609: goto -582 -> 27
-    //   612: astore_0
-    //   613: bipush 251
-    //   615: istore_3
-    //   616: ldc 61
-    //   618: iconst_2
-    //   619: new 63	java/lang/StringBuilder
-    //   622: dup
-    //   623: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   626: ldc 207
-    //   628: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   631: bipush 251
-    //   633: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   636: ldc 205
-    //   638: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   641: aload_1
-    //   642: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   645: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   648: invokestatic 106	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   651: goto -624 -> 27
-    //   654: bipush 254
-    //   656: istore_3
-    //   657: ldc 61
-    //   659: iconst_2
-    //   660: new 63	java/lang/StringBuilder
-    //   663: dup
-    //   664: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   667: ldc 209
-    //   669: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   672: bipush 254
-    //   674: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   677: ldc 194
-    //   679: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   682: aload_0
-    //   683: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   686: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   689: invokestatic 106	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   692: goto -665 -> 27
-    //   695: iconst_m1
-    //   696: istore_3
-    //   697: ldc 61
-    //   699: iconst_2
-    //   700: new 63	java/lang/StringBuilder
-    //   703: dup
-    //   704: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   707: ldc 211
-    //   709: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   712: iconst_m1
-    //   713: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   716: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   719: invokestatic 106	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   722: goto -695 -> 27
-    //   725: bipush 254
-    //   727: istore_3
-    //   728: ldc 61
-    //   730: iconst_2
-    //   731: new 63	java/lang/StringBuilder
-    //   734: dup
-    //   735: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   738: ldc 209
-    //   740: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   743: bipush 254
-    //   745: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   748: ldc 213
-    //   750: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   753: aload_0
-    //   754: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   757: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   760: invokestatic 106	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   763: goto -736 -> 27
-    //   766: iconst_0
-    //   767: istore_3
-    //   768: ldc 61
-    //   770: iconst_2
-    //   771: new 63	java/lang/StringBuilder
-    //   774: dup
-    //   775: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   778: ldc 215
-    //   780: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   783: iconst_0
-    //   784: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   787: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   790: invokestatic 106	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   793: goto -766 -> 27
-    //   796: iconst_m1
-    //   797: istore_3
-    //   798: goto -771 -> 27
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	801	0	paramalfe	alfe
-    //   0	801	1	paramString1	String
-    //   0	801	2	paramString2	String
-    //   26	772	3	i	int
-    //   18	3	4	bool	boolean
-    //   38	456	5	str1	String
-    //   46	446	6	str2	String
-    //   62	210	7	localList	List
-    //   54	362	8	localObject	Object
-    //   394	62	9	str3	String
-    // Exception table:
-    //   from	to	target	type
-    //   126	146	481	java/io/IOException
-    //   7	20	564	finally
-    //   32	64	564	finally
-    //   69	79	564	finally
-    //   82	126	564	finally
-    //   126	146	564	finally
-    //   146	211	564	finally
-    //   211	221	564	finally
-    //   221	238	564	finally
-    //   238	257	564	finally
-    //   260	271	564	finally
-    //   271	347	564	finally
-    //   347	475	564	finally
-    //   485	526	564	finally
-    //   526	561	564	finally
-    //   574	609	564	finally
-    //   616	651	564	finally
-    //   657	692	564	finally
-    //   697	722	564	finally
-    //   728	763	564	finally
-    //   768	793	564	finally
-    //   211	221	570	java/io/IOException
-    //   211	221	612	java/lang/OutOfMemoryError
-  }
-  
-  public static alfe a()
-  {
-    return a;
-  }
-  
-  private static HashMap<String, String> a(String paramString, List<String> paramList)
-  {
-    HashMap localHashMap = new HashMap();
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameShare", 2, "[parseShareParm],jsonStr:" + paramString);
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return -1;
+    }
     for (;;)
     {
       try
       {
-        localXmlPullParser = Xml.newPullParser();
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
-      }
-      catch (Exception paramList)
-      {
-        XmlPullParser localXmlPullParser;
-        QLog.e("ArCoreNativeSoManager", 2, "parseSoMd5FromXmlConfig failed. error = " + paramList.getMessage() + ", xmlConfigContent = " + paramString);
-        return localHashMap;
-      }
-      int i = localXmlPullParser.next();
-      break label162;
-      str = localXmlPullParser.getName();
-      if (paramList.contains(str))
-      {
-        localHashMap.put(str, localXmlPullParser.nextText());
-        label162:
-        while (i == 1)
-        {
-          String str;
-          QLog.d("ArCoreNativeSoManager", 2, "parseSoMd5FromXmlConfig successfully. soMd5List = " + localHashMap);
-          return localHashMap;
+        paramString = new JSONObject(paramString);
+        if (paramString.has("title")) {
+          this.jdField_a_of_type_JavaLangString = paramString.getString("title");
         }
-        switch (i)
-        {
+        this.f = (alpo.a(2131700725) + this.jdField_a_of_type_JavaLangString);
+        if (paramString.has("summary")) {
+          this.jdField_b_of_type_JavaLangString = paramString.getString("summary");
         }
-      }
-    }
-  }
-  
-  public static boolean a(alfe paramalfe)
-  {
-    if (paramalfe == null) {
-      return false;
-    }
-    Object localObject = paramalfe.a();
-    if ((localObject == null) || (((List)localObject).size() == 0)) {
-      return false;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if (!a(paramalfe, (String)((Iterator)localObject).next())) {
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  public static boolean a(alfe paramalfe, String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramalfe != null) {}
-    for (;;)
-    {
-      try
-      {
-        bool1 = bbkk.a(paramString);
-        if (bool1)
-        {
-          bool1 = bool2;
-          return bool1;
+        if (paramString.has("detailUrl")) {
+          this.c = paramString.getString("detailUrl");
         }
-        String str1 = paramalfe.a();
-        String str2 = paramalfe.b();
-        paramalfe = albz.a(str1, str2, albz.b(str1, str2, str1)) + File.separator + paramString + ".so";
-        File localFile = new File(paramalfe);
-        if (QLog.isColorLevel()) {
-          QLog.d("ArCoreNativeSoManager", 2, "isSoFileExist soFile=" + paramalfe + ", exist=" + localFile.exists());
+        if (paramString.has("picUrl")) {
+          this.d = paramString.getString("picUrl");
         }
-        if (localFile.exists())
+        if (paramString.has("gameVersion")) {
+          this.e = paramString.getString("gameVersion");
+        }
+        if (paramString.has("gameId")) {
+          this.jdField_a_of_type_Int = paramString.getInt("gameId");
+        }
+        if (paramString.has("roomId")) {
+          this.jdField_b_of_type_Long = paramString.getLong("roomId");
+        }
+        if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(this.c))) {
+          break;
+        }
+        if (this.jdField_b_of_type_JavaLangRefWeakReference != null)
         {
-          paramString = albz.b(str1, str2, paramString);
-          str1 = aurn.a(paramalfe);
-          if (paramString.equalsIgnoreCase(str1))
+          paramString = (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+          if (paramString != null)
           {
-            bool1 = true;
-            continue;
+            paramString = paramString.getCurrentAccountUin();
+            this.c = (this.c + "&gameId=" + this.jdField_a_of_type_Int + "&roomId=" + this.jdField_b_of_type_Long + "&gameVersion=" + this.e + "&uin=" + paramString);
+            if (QLog.isColorLevel()) {
+              QLog.d("ApolloGameShare", 2, "[mDetailUrl]:" + this.c);
+            }
+            return 0;
           }
-          QLog.i("ArCoreNativeSoManager", 2, "isSoFileExist. check md5 failed. soFilename = " + paramalfe + ", md5FromConfig = " + paramString + ", md5FromCalc = " + str1);
-          bool1 = bool2;
-          continue;
         }
-        QLog.i("ArCoreNativeSoManager", 2, "isSoFileExist. so not exist. soFilename = " + paramalfe);
       }
-      finally {}
-      bool1 = bool2;
+      catch (Exception paramString)
+      {
+        QLog.i("ApolloGameShare", 1, "[showShareDialog], errInfo->" + paramString.getMessage());
+        return -3;
+      }
+      paramString = "";
+    }
+    return -2;
+  }
+  
+  private AppInterface a()
+  {
+    if (this.jdField_b_of_type_JavaLangRefWeakReference == null) {
+      return null;
+    }
+    return (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  private void a(int paramInt)
+  {
+    ThreadManager.post(new ApolloGameShare.2(this, paramInt), 5, null, true);
+  }
+  
+  private void b()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("title", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("desc", this.jdField_b_of_type_JavaLangString);
+    localBundle.putString("detail_url", this.c);
+    Object localObject = new ArrayList(1);
+    ((ArrayList)localObject).add(this.d);
+    localBundle.putStringArrayList("image_url", (ArrayList)localObject);
+    localBundle.putLong("req_share_id", 0L);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+    for (localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localObject = null)
+    {
+      if (this.jdField_b_of_type_JavaLangRefWeakReference != null) {}
+      for (AppInterface localAppInterface = (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();; localAppInterface = null)
+      {
+        if ((localObject != null) && (localAppInterface != null) && (bjao.a(localAppInterface, (Context)localObject, localBundle, null)))
+        {
+          localObject = a();
+          if (localObject != null) {
+            break label172;
+          }
+        }
+        label172:
+        for (int i = -1;; i = ApolloUtil.b(((BaseChatPie)localObject).a.jdField_a_of_type_Int))
+        {
+          VipUtils.a(a(), "cmshow", "Apollo", "share_url_succeed", i, 1, new String[] { Integer.toString(this.jdField_a_of_type_Int) });
+          return;
+        }
+      }
     }
   }
   
-  public static boolean b(alfe paramalfe)
+  private void c()
   {
-    if (paramalfe == null) {
-      return false;
-    }
-    String str1 = paramalfe.a();
-    String str2 = paramalfe.b();
-    paramalfe = paramalfe.a();
-    if ((paramalfe == null) || (paramalfe.size() == 0)) {
-      return false;
-    }
-    paramalfe = paramalfe.iterator();
-    while (paramalfe.hasNext())
+    Object localObject1 = new azqg(StructMsgForGeneralShare.class).c(96).a(this.f).e(this.c).a(alpo.a(2131700753), null).b("web", "https://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326", "https://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326", "https://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326", "https://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326").a();
+    Object localObject2 = azqt.a(2);
+    ((azqk)localObject2).a(this.d, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+    ((AbsShareMsg)localObject1).addItem((azqj)localObject2);
+    localObject2 = new Intent();
+    ((Intent)localObject2).putExtra("forward_type", -3);
+    ((Intent)localObject2).putExtra("stuctmsg_bytes", ((AbsShareMsg)localObject1).getBytes());
+    ((Intent)localObject2).putExtra("cmshow_game_id", this.jdField_a_of_type_Int);
+    ((Intent)localObject2).putExtra("forwardDirect", true);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      String str3 = (String)paramalfe.next();
-      if (!new File(albz.a(str1, str2, albz.b(str1, str2, str1)) + File.separator + str3 + ".so").exists())
-      {
-        QLog.i("ArCoreNativeSoManager", 2, "isAllFileExists. name not exist.");
-        return false;
+      localObject1 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject1 != null) {
+        arum.a((Activity)localObject1, (Intent)localObject2, 14002);
       }
     }
-    return true;
+  }
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    a();
+  }
+  
+  public BaseChatPie a()
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      localObject = null;
+    }
+    for (;;)
+    {
+      return localObject;
+      localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject == null) {
+        return null;
+      }
+      try
+      {
+        localObject = ((FragmentActivity)localObject).getChatFragment().a();
+        if (localObject != null)
+        {
+          int i = ((BaseChatPie)localObject).g();
+          if (i < 7) {}
+        }
+        else
+        {
+          return null;
+        }
+      }
+      catch (Throwable localThrowable) {}
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bhpy != null) {
+      this.jdField_a_of_type_Bhpy.dismiss();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    bhqi localbhqi = null;
+    int i = a(paramString);
+    if (i < 0)
+    {
+      QLog.i("ApolloGameShare", 1, "[showShareDialog], errInfo->parse err or param err, ret:" + i);
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(bhqi.a(0));
+    localArrayList.add(bhqi.a(1));
+    localArrayList.add(bhqi.a(2));
+    localArrayList.add(bhqi.a(3));
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+    for (paramString = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();; paramString = null)
+    {
+      if (paramString != null)
+      {
+        localbhqi = new bhqi(paramString);
+        localbhqi.a(localArrayList);
+      }
+      if ((this.jdField_a_of_type_Bhpy == null) && (paramString != null)) {
+        this.jdField_a_of_type_Bhpy = bhqi.a(paramString, localbhqi, this, this, this, false);
+      }
+      if ((this.jdField_a_of_type_Bhpy != null) && (!this.jdField_a_of_type_Bhpy.isShowing()))
+      {
+        this.jdField_a_of_type_Bhpy.setOnDismissListener(this);
+        this.jdField_a_of_type_Bhpy.show();
+      }
+      paramString = a();
+      if (paramString == null) {}
+      for (i = -1;; i = ApolloUtil.b(paramString.a.jdField_a_of_type_Int))
+      {
+        VipUtils.a(a(), "cmshow", "Apollo", "share_panel_open", i, 0, new String[] { Integer.toString(this.jdField_a_of_type_Int) });
+        return;
+      }
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    bhqi localbhqi = null;
+    ArrayList localArrayList;
+    try
+    {
+      paramString = new JSONObject(paramString).optString("path");
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("ApolloGameShare", 2, "showSharePic parse err=" + paramString.toString());
+        paramString = null;
+      }
+      localArrayList = new ArrayList();
+      localArrayList.add(bhqi.a(1));
+      localArrayList.add(bhqi.a(0));
+      if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    }
+    for (Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localActivity = null)
+    {
+      if (localActivity != null)
+      {
+        localbhqi = new bhqi(localActivity);
+        localbhqi.a(localArrayList);
+      }
+      if ((this.jdField_a_of_type_Bhpy == null) && (localActivity != null))
+      {
+        paramString = ApolloRender.getSandBoxPathByRealGameId(paramInt, paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloGameShare", 2, new Object[] { "share pic:", paramString });
+        }
+        this.jdField_a_of_type_Bhpy = bhqi.a(localActivity, localbhqi, new alfb(this, paramString), this, this, false);
+      }
+      if ((this.jdField_a_of_type_Bhpy == null) || (this.jdField_a_of_type_Bhpy.isShowing())) {
+        break;
+      }
+      this.jdField_a_of_type_Bhpy.setOnDismissListener(this);
+      this.jdField_a_of_type_Bhpy.show();
+      return;
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    Object localObject;
+    Bundle localBundle;
+    ArrayList localArrayList;
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+            if (this.jdField_a_of_type_Bhpy != null) {
+              this.jdField_a_of_type_Bhpy.dismiss();
+            }
+          } while (this.jdField_b_of_type_JavaLangRefWeakReference == null);
+          localObject = (AppInterface)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+        } while (localObject == null);
+        paramMessage = (String)paramMessage.obj;
+        if (!TextUtils.isEmpty(paramMessage)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.e("ApolloGameShare", 1, "onItemClick share QZone apolloImage no file");
+      return false;
+      localBundle = new Bundle();
+      localArrayList = new ArrayList();
+    }
+    for (;;)
+    {
+      try
+      {
+        localArrayList.add(URLDecoder.decode(paramMessage));
+        localBundle.putStringArrayList("images", localArrayList);
+        localBundle.putString("summary", alpo.a(2131700710));
+        localBundle.putInt("req_type", 7);
+        localBundle.putBoolean("key_need_save_draft", false);
+        if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+          break label335;
+        }
+        paramMessage = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (paramMessage == null) {
+          break;
+        }
+        bjao.a((AppInterface)localObject, paramMessage, localBundle, this, 15);
+        return false;
+      }
+      catch (Exception paramMessage)
+      {
+        QLog.d("ApolloGameShare", 2, "publishToQzone:" + paramMessage.getMessage());
+        return false;
+      }
+      if (this.jdField_a_of_type_Bhpy != null) {
+        this.jdField_a_of_type_Bhpy.dismiss();
+      }
+      localObject = (String)paramMessage.obj;
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        QLog.e("ApolloGameShare", 1, "onItemClick share QQ apolloImage no file");
+        return false;
+      }
+      if (!new File((String)localObject).exists())
+      {
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.e("ApolloGameShare", 1, "onItemClick share QQ apolloImage no file");
+        return false;
+      }
+      if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+      for (paramMessage = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(); paramMessage != null; paramMessage = null)
+      {
+        ApolloUtil.a(paramMessage, (String)localObject, null, 1);
+        return false;
+      }
+      break;
+      label335:
+      paramMessage = null;
+    }
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 1000L) {
+      return;
+    }
+    this.jdField_a_of_type_Long = l;
+    a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameShare", 2, new Object[] { "click type:", Long.valueOf(paramLong) });
+    }
+    if (paramLong == 1L)
+    {
+      b();
+      paramInt = 1;
+    }
+    for (;;)
+    {
+      paramAdapterView = a();
+      if (paramAdapterView == null) {}
+      for (int i = -1;; i = ApolloUtil.b(paramAdapterView.a.jdField_a_of_type_Int))
+      {
+        VipUtils.a(a(), "cmshow", "Apollo", "send_game_share", i, paramInt, new String[] { Integer.toString(this.jdField_a_of_type_Int) });
+        return;
+        if (paramLong == 0L)
+        {
+          c();
+          paramInt = 0;
+          break;
+        }
+        if (paramLong == 2L)
+        {
+          paramInt = 3;
+          a(1);
+          break;
+        }
+        if (paramLong != 3L) {
+          break label186;
+        }
+        paramInt = 4;
+        a(2);
+        break;
+      }
+      label186:
+      paramInt = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alfa
  * JD-Core Version:    0.7.0.1
  */

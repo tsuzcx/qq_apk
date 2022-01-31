@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.Context;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
-class adug
-  implements DialogInterface.OnClickListener
+public class adug
+  implements View.OnClickListener
 {
-  adug(adue paramadue, adus paramadus) {}
+  public adug(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    aanz.a(this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adue.b, this.jdField_a_of_type_Adue.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Adus.jdField_a_of_type_Aobp.a, this.jdField_a_of_type_Adus.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
+    this.a.b(0);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230720);
+    if (this.a.a().booleanValue())
+    {
+      this.a.b();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230720));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adug
  * JD-Core Version:    0.7.0.1
  */

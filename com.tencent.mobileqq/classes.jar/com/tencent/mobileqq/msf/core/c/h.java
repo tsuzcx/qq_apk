@@ -159,6 +159,8 @@ public class h
   public static final String cV = "EvtRegisterProxySuccV4";
   public static final String cW = "EvtRegisterProxySuccV6";
   public static final String cX = "EvtDeepSleep";
+  public static final String cY = "EvtIPCTransport";
+  public static final String cZ = "EvtConn";
   public static final int ca = 11;
   public static final int cb = 12;
   public static final int cc = 13;
@@ -186,6 +188,9 @@ public class h
   public static final String cy = "msf.core.EvtTxlibSoExist";
   public static final String cz = "msf.core.EvtLoadUseTxlib";
   public static final String d = "dim.Msf.ConnDefaultElapsedTime";
+  public static final String da = "EvtConnV4";
+  public static final String db = "EvtConnV6";
+  public static final String dc = "EvtDual";
   public static final String e = "dim.Msf.ConnElapsedTime";
   public static final String f = "msf_connAndRecv";
   public static final String g = "msf_connAndRecv_ipv6";

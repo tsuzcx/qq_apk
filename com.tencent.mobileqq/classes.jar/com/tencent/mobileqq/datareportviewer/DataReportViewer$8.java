@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.datareportviewer;
 
-import anlx;
+import apde;
 
 class DataReportViewer$8
   implements Runnable
@@ -9,14 +9,14 @@ class DataReportViewer$8
   
   public void run()
   {
-    if (anlx.a) {
-      anlx.a().b();
+    if (apde.a) {
+      apde.a().b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportViewer.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <View android:layout_gravity="center_vertical" android:background="#ffeeeeee" android:layout_width="0.0dip" android:layout_height="0.5dip" android:layout_weight="1.0" />
     <TextView android:textSize="@dimen/alw" android:textStyle="bold|italic" android:textColor="@color/aak" android:gravity="center" android:layout_gravity="center" android:id="@id/hx0" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="6.0dip" android:text="@string/grd" />
     <ImageView android:layout_gravity="center" android:id="@id/e1z" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/d7z" />
     <View android:layout_gravity="center_vertical" android:background="#ffeeeeee" android:layout_width="0.0dip" android:layout_height="0.5dip" android:layout_weight="1.0" />
-</merge>
+</LinearLayout>

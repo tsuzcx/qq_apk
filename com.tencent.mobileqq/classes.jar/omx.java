@@ -1,67 +1,41 @@
+import android.graphics.Color;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import org.jetbrains.annotations.NotNull;
 
-final class omx
-  implements WtTicketPromise
+class omx
+  extends ClickableSpan
 {
-  omx(TicketManager paramTicketManager, QQAppInterface paramQQAppInterface) {}
+  omx(omt paramomt, BaseCommentData paramBaseCommentData, String paramString1, String paramString2) {}
   
-  public void Done(Ticket paramTicket)
+  public void onClick(@NotNull View paramView)
   {
-    int j = 0;
-    int i;
-    if (paramTicket == null) {
-      i = 1;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.isAuthorReply()) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage))) {
+      olt.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData.ksHomePage, BaseActivity.sTopActivity);
     }
     for (;;)
     {
-      QLog.i(omu.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Done, result: " + i);
-      omu.a(this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "m.tencent.com"));
-      if ((!TextUtils.isEmpty(omu.b())) && (omu.b().length() > 0)) {
-        QLog.i(omu.a(), 1, "getPskeyFromServerAndRetry get pskey from server success!");
-      }
+      nrt.a(null, olt.a(this.jdField_a_of_type_Omt.a), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.jdField_a_of_type_Omt.a.mArticleID), String.valueOf(this.jdField_a_of_type_Omt.a.mAlgorithmID), this.jdField_a_of_type_Omt.a.innerUniqueID, this.b, false);
       return;
-      if ((paramTicket != null) && (paramTicket._pskey_map == null))
-      {
-        i = 2;
-      }
-      else
-      {
-        i = j;
-        if (paramTicket != null)
-        {
-          i = j;
-          if (paramTicket._pskey_map != null)
-          {
-            i = j;
-            if (paramTicket._pskey_map.get("m.tencent.com") == null) {
-              i = 3;
-            }
-          }
-        }
-      }
+      olt.a(this.jdField_a_of_type_JavaLangString, BaseActivity.sTopActivity);
     }
   }
   
-  public void Failed(ErrMsg paramErrMsg)
+  public void updateDrawState(@NotNull TextPaint paramTextPaint)
   {
-    QLog.i(omu.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Failed, " + paramErrMsg);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.i(omu.a(), 1, "getPskeyFromServerAndRetry get pskey from server : Timeout, " + paramErrMsg);
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#376099"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     omx
  * JD-Core Version:    0.7.0.1
  */

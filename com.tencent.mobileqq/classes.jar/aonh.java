@@ -1,26 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public abstract interface aonh
+public class aonh
 {
-  public abstract QQAppInterface a();
+  public String a = "";
   
-  public abstract void a();
-  
-  public abstract void a(aonm paramaonm);
-  
-  public abstract boolean a(aonm paramaonm, int paramInt);
-  
-  public abstract boolean a(String paramString);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public static aonh a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return null;
+      try
+      {
+        aonh localaonh = new aonh();
+        paramString = new JSONObject(paramString);
+        if (paramString.has("contents")) {
+          localaonh.a = paramString.getJSONArray("contents").toString();
+        }
+        return localaonh;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("SlideShowStoryConfigBean", 2, paramString.getMessage());
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonh
  * JD-Core Version:    0.7.0.1
  */

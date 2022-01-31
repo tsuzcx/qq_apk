@@ -1,77 +1,28 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ocr.TranslateController;
-import com.tencent.mobileqq.ocr.TranslateController.ImageTranslateTask;
-import com.tencent.mobileqq.ocr.data.TranslateResult;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.data.TroopMessageNavigateInfo;
+import java.util.Comparator;
 
 public class aubs
-  implements alew
+  implements Comparator<TroopMessageNavigateInfo>
 {
-  public aubs(TranslateController.ImageTranslateTask paramImageTranslateTask, algs paramalgs) {}
-  
-  public void a(int paramInt, String paramString, algn paramalgn)
+  public int a(TroopMessageNavigateInfo paramTroopMessageNavigateInfo1, TroopMessageNavigateInfo paramTroopMessageNavigateInfo2)
   {
-    Object localObject;
-    label82:
-    boolean bool;
-    if (QLog.isColorLevel())
-    {
-      if (paramalgn != null)
-      {
-        localObject = paramalgn.a;
-        QLog.d("TranslateController", 2, "imageTranslate, retCode:" + paramInt + ",sessionId:" + paramString + ",result: " + localObject);
-      }
-    }
-    else
+    if (paramTroopMessageNavigateInfo1.type == paramTroopMessageNavigateInfo2.type)
     {
       int i = 0;
-      if ((paramalgn == null) || (paramalgn.a == null)) {
-        break label241;
+      if (paramTroopMessageNavigateInfo1.msgseq > paramTroopMessageNavigateInfo2.msgseq) {
+        i = -1;
       }
-      paramString = paramalgn.a;
-      i = 1;
-      paramalgn = this.jdField_a_of_type_Algs.a.b;
-      localObject = this.jdField_a_of_type_Algs.a.a;
-      paramString.c = paramalgn;
-      if ((apvd.a((String)localObject)) && (!((String)localObject).equals(paramalgn))) {
-        apvd.c((String)localObject);
+      while (paramTroopMessageNavigateInfo1.msgseq >= paramTroopMessageNavigateInfo2.msgseq) {
+        return i;
       }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateController$ImageTranslateTask.this$0;
-      if (paramInt != 0) {
-        break label260;
-      }
-      bool = true;
-      label149:
-      TranslateController.a((TranslateController)localObject, bool, paramalgn, paramString);
-      paramalgn = new HashMap();
-      paramalgn.put("costTime", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Algs.c));
-      paramalgn.put("retCode", String.valueOf(paramInt));
-      if (i == 0) {
-        break label266;
-      }
+      return 1;
     }
-    label260:
-    label266:
-    for (paramString = "1";; paramString = "0")
-    {
-      paramalgn.put("hasResult", paramString);
-      axrn.a(BaseApplicationImpl.getContext()).a("", "SCAN_IMAGE_TRANSLATE_COST", true, 0L, 0L, paramalgn, "", false);
-      return;
-      localObject = null;
-      break;
-      label241:
-      paramString = new TranslateResult(2);
-      paramString.b = 1002;
-      break label82;
-      bool = false;
-      break label149;
-    }
+    return -(paramTroopMessageNavigateInfo1.getMsgBizType() - paramTroopMessageNavigateInfo2.getMsgBizType());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aubs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,38 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MarkFaceMessage;
 
-class adum
-  implements askr<MarkFaceMessage, Void>
+public class adum
+  implements CompoundButton.OnCheckedChangeListener
 {
-  adum(adue paramadue, adus paramadus) {}
+  public adum(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public Void a(MarkFaceMessage paramMarkFaceMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramMarkFaceMessage = ((askf)this.jdField_a_of_type_Adue.a.getManager(14)).a(paramMarkFaceMessage);
-    this.jdField_a_of_type_Adus.jdField_a_of_type_Aobp = paramMarkFaceMessage;
-    if ((paramMarkFaceMessage != null) && (paramMarkFaceMessage.a != null)) {
-      this.jdField_a_of_type_Adus.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = ((askf)this.jdField_a_of_type_Adue.a.getManager(14)).a(paramMarkFaceMessage.a.epId);
+    int i = 1;
+    if (paramBoolean)
+    {
+      this.a.app.c(1);
+      paramCompoundButton = this.a.app;
+      if (!paramBoolean) {
+        break label68;
+      }
     }
-    asea.a();
-    return null;
+    for (;;)
+    {
+      azmj.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
+      return;
+      this.a.app.c(0);
+      break;
+      label68:
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adum
  * JD-Core Version:    0.7.0.1
  */

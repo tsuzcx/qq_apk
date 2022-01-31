@@ -1,6 +1,6 @@
 {
     "ReadInjoy_video_gallery": {
-        "view_type": "cell",
+        "view_type": "container",
         "direction": "vertical",
         "height": {
             "type": "wrap_content"

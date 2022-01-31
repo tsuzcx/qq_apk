@@ -1,31 +1,30 @@
 package com.tencent.qqmini.sdk.runtime.flutter;
 
 import android.content.Context;
-import beqm;
-import beqn;
-import betc;
-import bfdw;
-import bfea;
-import bfec;
-import bfee;
-import bfef;
-import bfeg;
-import bfej;
-import bfel;
-import bffi;
+import bgqg;
+import bgqh;
+import bhdl;
+import bhdu;
+import bhdw;
+import bhdz;
+import bhea;
+import bheb;
+import bhee;
+import bheh;
+import bhhn;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class FlutterRuntimeLoader
-  extends beqm
+  extends bgqg
 {
-  public static final beqn<FlutterRuntimeLoader> CREATOR = new bfdw();
+  public static final bgqh<FlutterRuntimeLoader> CREATOR = new bhdl();
   public static final String TAG = "FlutterRuntimeLoader";
-  private bfea apkgLoadTask;
-  private bfec baselibLoadTask;
-  private bfee preloadFlagTask;
-  public bfef runtimeCreateTask;
-  private bfeg runtimeInitTask;
-  public bfej serviceInitTask;
+  private bhdu apkgLoadTask;
+  private bhdw baselibLoadTask;
+  private bhdz preloadFlagTask;
+  public bhea runtimeCreateTask;
+  private bheb runtimeInitTask;
+  public bhee serviceInitTask;
   
   public FlutterRuntimeLoader(Context paramContext)
   {
@@ -33,20 +32,20 @@ public class FlutterRuntimeLoader
     getAppStateManager().c = true;
   }
   
-  public bffi[] createTasks()
+  public bhhn[] createTasks()
   {
     Context localContext = this.mContext;
-    this.runtimeCreateTask = new bfef(localContext, this);
+    this.runtimeCreateTask = new bhea(localContext, this);
     this.runtimeCreateTask.a(true);
-    this.runtimeInitTask = new bfeg(localContext, this);
+    this.runtimeInitTask = new bheb(localContext, this);
     this.runtimeInitTask.a(true);
-    this.baselibLoadTask = new bfec(localContext, this);
-    this.apkgLoadTask = new bfea(localContext, this);
+    this.baselibLoadTask = new bhdw(localContext, this);
+    this.apkgLoadTask = new bhdu(localContext, this);
     this.apkgLoadTask.a(true);
-    this.serviceInitTask = new bfel(localContext, this);
-    this.preloadFlagTask = new bfee(localContext, this);
+    this.serviceInitTask = new bheh(localContext, this);
+    this.preloadFlagTask = new bhdz(localContext, this);
     this.runtimeInitTask.a(this.preloadFlagTask.a(this.serviceInitTask.a(this.baselibLoadTask).a(this.runtimeCreateTask))).a(this.apkgLoadTask);
-    return new bffi[] { this.runtimeInitTask };
+    return new bhhn[] { this.runtimeInitTask };
   }
   
   public boolean dismissLoadingAfterLoaded()
@@ -60,32 +59,31 @@ public class FlutterRuntimeLoader
     this.apkgLoadTask.a(paramMiniAppInfo);
   }
   
-  public void onTaskDone(bffi parambffi)
+  public void onTaskDone(bhhn parambhhn)
   {
-    if (parambffi == null) {
+    if (parambhhn == null) {
       return;
     }
-    betc.a("FlutterRuntimeLoader", "onTaskDone " + parambffi);
-    if (!parambffi.d())
+    if (!parambhhn.d())
     {
       notifyRuntimeEvent(12, new Object[0]);
-      onRuntimeLoadResult(parambffi.jdField_a_of_type_Int, parambffi.jdField_a_of_type_JavaLangString);
+      onRuntimeLoadResult(parambhhn.a, parambhhn.b);
       return;
     }
-    if (parambffi == this.preloadFlagTask) {
+    if (parambhhn == this.preloadFlagTask) {
       notifyRuntimeEvent(3, new Object[0]);
     }
     for (;;)
     {
-      super.onTaskDone(parambffi);
+      super.onTaskDone(parambhhn);
       return;
-      if (parambffi == this.runtimeCreateTask)
+      if (parambhhn == this.runtimeCreateTask)
       {
         if (this.runtimeCreateTask.d()) {
           this.mRuntime = this.runtimeCreateTask.a();
         }
       }
-      else if (parambffi == this.runtimeInitTask)
+      else if (parambhhn == this.runtimeInitTask)
       {
         if (this.runtimeInitTask.d())
         {
@@ -94,7 +92,7 @@ public class FlutterRuntimeLoader
         }
         this.mIsRunning = false;
       }
-      else if ((parambffi == this.apkgLoadTask) && (this.apkgLoadTask.d()) && (this.mMiniAppInfo != null))
+      else if ((parambhhn == this.apkgLoadTask) && (this.apkgLoadTask.d()) && (this.mMiniAppInfo != null))
       {
         this.mMiniAppInfo.apkgInfo = this.apkgLoadTask.a();
       }
@@ -103,7 +101,7 @@ public class FlutterRuntimeLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.flutter.FlutterRuntimeLoader
  * JD-Core Version:    0.7.0.1
  */

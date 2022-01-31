@@ -1,30 +1,35 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class aeat
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public aeat(SixCombolEffectView paramSixCombolEffectView, aeaw paramaeaw) {}
+  public aeat(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (!SixCombolEffectView.a) {
-      return;
+    xmh.a(this.a.a);
+    xmh.a(this.a.a.a);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
+    {
+      paramView.add(((aece)this.a.a.a.get(i)).a);
+      i += 1;
     }
-    this.jdField_a_of_type_Aeaw.b.start();
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeat
  * JD-Core Version:    0.7.0.1
  */

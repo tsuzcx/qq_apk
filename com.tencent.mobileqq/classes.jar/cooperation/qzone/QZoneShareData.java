@@ -3,14 +3,14 @@ package cooperation.qzone;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bgzk;
+import bjan;
 import java.util.ArrayList;
 import java.util.Map;
 
 public class QZoneShareData
   implements Parcelable
 {
-  public static final Parcelable.Creator<QZoneShareData> CREATOR = new bgzk();
+  public static final Parcelable.Creator<QZoneShareData> CREATOR = new bjan();
   public int a;
   public long a;
   public String a;
@@ -96,7 +96,7 @@ public class QZoneShareData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QZoneShareData
  * JD-Core Version:    0.7.0.1
  */

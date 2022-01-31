@@ -1,22 +1,26 @@
 package com.tencent.biz.videostory.network;
 
+import android.content.Context;
+import com.tencent.biz.qqcircle.QCircleGlobalBroadcastHelper;
 import com.tencent.biz.videostory.network.request.VSBaseRequest;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
-import win;
-import xgt;
-import xgu;
-import xgz;
+import tqg;
+import xxf;
+import yvm;
+import yvn;
+import yvs;
 
 public class VSNetworkHelper
 {
   private static volatile VSNetworkHelper jdField_a_of_type_ComTencentBizVideostoryNetworkVSNetworkHelper;
-  private volatile xgt jdField_a_of_type_Xgt = new xgt();
+  private volatile yvm jdField_a_of_type_Yvm = new yvm();
   
   private VSNetworkHelper()
   {
     b();
+    QCircleGlobalBroadcastHelper.a().a();
   }
   
   public static VSNetworkHelper a()
@@ -46,15 +50,15 @@ public class VSNetworkHelper
     BaseApplicationImpl.getApplication().getRuntime().registObserver(a());
   }
   
-  public xgt a()
+  public yvm a()
   {
-    if (this.jdField_a_of_type_Xgt == null) {}
+    if (this.jdField_a_of_type_Yvm == null) {}
     try
     {
-      if (this.jdField_a_of_type_Xgt == null) {
-        this.jdField_a_of_type_Xgt = new xgt();
+      if (this.jdField_a_of_type_Yvm == null) {
+        this.jdField_a_of_type_Yvm = new yvm();
       }
-      return this.jdField_a_of_type_Xgt;
+      return this.jdField_a_of_type_Yvm;
     }
     finally {}
   }
@@ -64,31 +68,51 @@ public class VSNetworkHelper
     QLog.i("VSNetworkHelper", 2, "VSNetworkHelper: release");
     BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(a());
     a().a();
-    win.a();
+    xxf.a();
+    tqg.a();
+    QCircleGlobalBroadcastHelper.a().b();
     jdField_a_of_type_ComTencentBizVideostoryNetworkVSNetworkHelper = null;
   }
   
-  public void a(VSBaseRequest paramVSBaseRequest, xgu paramxgu)
+  public void a(int paramInt, VSBaseRequest paramVSBaseRequest, yvn paramyvn)
   {
     if (paramVSBaseRequest == null) {
       return;
     }
-    a().a(paramVSBaseRequest, paramxgu);
-    paramxgu = new VSNetworkHelper.RequestIntent(this, BaseApplicationImpl.getApplication(), xgz.class);
-    paramxgu.putExtra("key_request_data", paramVSBaseRequest);
-    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramxgu);
-    QLog.i("VSNetworkHelper", 2, paramVSBaseRequest.getCmdName() + " sendRequest: success");
+    paramVSBaseRequest.setContextHashCode(paramInt);
+    a().a(paramVSBaseRequest, paramyvn);
+    paramyvn = new VSNetworkHelper.RequestIntent(this, BaseApplicationImpl.getApplication(), yvs.class);
+    paramyvn.putExtra("key_request_data", paramVSBaseRequest);
+    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramyvn);
+    QLog.i("VSNetworkHelper", 2, String.format("VSNetworkHelper: sendRequest: success, contextHashCode:%s", new Object[] { Integer.valueOf(paramInt) }));
   }
   
-  public void a(String paramString)
+  public void a(Context paramContext)
   {
-    QLog.i("VSNetworkHelper", 2, "VSNetworkHelper: cancelRequest：" + paramString);
-    a().a(paramString);
+    if (paramContext != null)
+    {
+      QLog.i("VSNetworkHelper", 2, String.format("VSNetworkHelper: cancelRequest：success, contextHashCode:%s", new Object[] { Integer.valueOf(paramContext.hashCode()) }));
+      a().a(paramContext);
+    }
+  }
+  
+  public void a(Context paramContext, VSBaseRequest paramVSBaseRequest, yvn paramyvn)
+  {
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseApplicationImpl.getContext();
+    }
+    a(localObject.hashCode(), paramVSBaseRequest, paramyvn);
+  }
+  
+  public void a(VSBaseRequest paramVSBaseRequest, yvn paramyvn)
+  {
+    a(null, paramVSBaseRequest, paramyvn);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.videostory.network.VSNetworkHelper
  * JD-Core Version:    0.7.0.1
  */

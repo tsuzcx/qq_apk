@@ -16,20 +16,20 @@ class OpenDataPlugin$5$1
     try
     {
       paramDialogInterface.dismiss();
-      OpenDataPlugin.access$000(this.this$1.this$0, this.this$1.val$toUser, this.this$1.val$nick, this.this$1.val$title, this.this$1.val$imageUrl, this.this$1.val$imageUrlId, this.this$1.val$jsRuntime, this.this$1.val$callbackId, "modifyFriendInteractiveStorage");
+      OpenDataPlugin.access$000(this.this$1.this$0, this.this$1.val$toUser, this.this$1.val$nick, this.this$1.val$title, this.this$1.val$imageUrl, this.this$1.val$imageUrlId, this.this$1.val$jsRuntime, this.this$1.val$callbackId, "shareMessageToFriend");
       return;
     }
     catch (Throwable paramDialogInterface)
     {
-      GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramDialogInterface.getMessage());
-      GameLog.vconsoleLog("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramDialogInterface.getMessage());
-      this.this$1.this$0.jsPluginEngine.callbackJsEventFail(this.this$1.val$jsRuntime, "modifyFriendInteractiveStorage", null, this.this$1.val$callbackId);
+      GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_SHARE_MESSAGE_TO_FRIEND error " + paramDialogInterface.getMessage());
+      GameLog.vconsoleLog("handleNativeRequest API_SHARE_MESSAGE_TO_FRIEND error " + paramDialogInterface.getMessage());
+      this.this$1.this$0.jsPluginEngine.callbackJsEventFail(this.this$1.val$jsRuntime, "shareMessageToFriend", null, this.this$1.val$callbackId);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.OpenDataPlugin.5.1
  * JD-Core Version:    0.7.0.1
  */

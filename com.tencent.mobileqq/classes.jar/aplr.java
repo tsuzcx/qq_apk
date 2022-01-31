@@ -1,57 +1,75 @@
-import android.content.res.Resources;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class aplr
-  implements apux
+public class aplr
+  extends bada
 {
-  aplr(aplq paramaplq, long paramLong, boolean paramBoolean, String paramString1, String paramString2, short paramShort, String paramString3) {}
+  public aplr(MessengerService paramMessengerService) {}
   
-  public void a(boolean paramBoolean)
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    if (paramBoolean)
+    Bundle localBundle;
+    int i;
+    String str;
+    if (this.a.a != null)
     {
-      localObject1 = new HashMap();
-      ((Map)localObject1).put("shouq_bus_type", "bus_type_video_file");
-      localObject2 = new TVK_PlayerVideoInfo();
-      ((TVK_PlayerVideoInfo)localObject2).setReportInfoMap((Map)localObject1);
-      ((TVK_PlayerVideoInfo)localObject2).setPlayType(4);
-      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("RawVideoPlay", "true");
-      ((TVK_PlayerVideoInfo)localObject2).setConfigMap("keep_last_frame", "true");
-      this.jdField_a_of_type_Aplq.jdField_a_of_type_Apaf.aD_();
-      return;
-    }
-    if (this.jdField_a_of_type_Long == -100001L) {}
-    while ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_JavaLangString.length() == 0))
-    {
-      long l = 9360L;
-      if (this.jdField_a_of_type_Long == 0L) {
-        l = 9048L;
+      localBundle = new Bundle();
+      localBundle.putString("url", null);
+      if (paramTeamWorkFileImportInfo == null) {
+        break label115;
       }
-      this.jdField_a_of_type_Aplq.jdField_a_of_type_Apaf.a((int)l, BaseApplication.getContext().getResources().getString(2131690922));
-      return;
-      if ((this.jdField_a_of_type_Long == -25081L) || (this.jdField_a_of_type_Long == -6101L) || (this.jdField_a_of_type_Long == -7003L))
-      {
-        this.jdField_a_of_type_Aplq.jdField_a_of_type_Aplp.a(true);
-        this.jdField_a_of_type_Aplq.jdField_a_of_type_Apaf.a((int)this.jdField_a_of_type_Long, BaseApplication.getContext().getResources().getString(2131692889));
-        return;
+      i = paramTeamWorkFileImportInfo.f;
+      localBundle.putInt("retCode", i);
+      if (paramTeamWorkFileImportInfo == null) {
+        break label120;
       }
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Aplq.jdField_a_of_type_Apaf.a((int)9045L, BaseApplication.getContext().getResources().getString(2131690922));
-        return;
+      str = paramTeamWorkFileImportInfo.h;
+      label53:
+      localBundle.putString("errorStr", str);
+      if (paramTeamWorkFileImportInfo == null) {
+        break label126;
       }
     }
-    Object localObject1 = this.b;
-    Object localObject2 = "http://" + this.jdField_a_of_type_JavaLangString + ":" + String.valueOf(this.jdField_a_of_type_Short) + this.c;
-    this.jdField_a_of_type_Aplq.jdField_a_of_type_Apaf.a((String)localObject2, (String)localObject1);
+    label115:
+    label120:
+    label126:
+    for (paramTeamWorkFileImportInfo = paramTeamWorkFileImportInfo.i;; paramTeamWorkFileImportInfo = "")
+    {
+      localBundle.putString("redirectUrl", paramTeamWorkFileImportInfo);
+      this.a.a.putBundle("response", localBundle);
+      this.a.a(this.a.a);
+      this.a.a = null;
+      return;
+      i = 0;
+      break;
+      str = "";
+      break label53;
+    }
+  }
+  
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.MessengerService", 2, "MessengerService onFileImportSuccess");
+    }
+    if (this.a.a != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("url", paramString);
+      if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.d == 10)) {
+        localBundle.putBoolean("needRefresh", true);
+      }
+      this.a.a.putBundle("response", localBundle);
+      this.a.a(this.a.a);
+      this.a.a = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aplr
  * JD-Core Version:    0.7.0.1
  */

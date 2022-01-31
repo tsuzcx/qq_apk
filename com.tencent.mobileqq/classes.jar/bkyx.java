@@ -1,41 +1,27 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
 
-public class bkyx
-  implements GLSurfaceView.EGLContextFactory
+class bkyx
+  extends RecyclerView.ItemDecoration
 {
-  private int jdField_a_of_type_Int = 12440;
+  bkyx(bkyt parambkyt) {}
   
-  public bkyx(HWVideoPlayView paramHWVideoPlayView) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    int i = this.jdField_a_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.d("HWVideoPlayView", 1, "createContext. display = " + paramEGLDisplay + " tid = " + Thread.currentThread().getId());
-    }
-    return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
-  }
-  
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
-      QLog.e("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
-    }
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecWidgetHWVideoPlayView.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("HWVideoPlayView", 1, "destroyContext. display = " + paramEGLDisplay + " context = " + paramEGLContext + " tid = " + Thread.currentThread().getId());
-    }
+    int i = paramRecyclerView.getChildAdapterPosition(paramView) % 2;
+    int j = (int)(DeviceUtils.getScreenWidth(bkyt.a(this.a)) * 0.04F);
+    paramRect.left = (j - i * j / 2);
+    paramRect.right = ((i + 1) * j / 2);
+    paramRect.bottom = j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkyx
  * JD-Core Version:    0.7.0.1
  */

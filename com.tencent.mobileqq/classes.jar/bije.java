@@ -1,35 +1,10 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import dov.com.qq.im.ae.AEPituCameraUnit.10;
-
-public class bije
-  implements DialogInterface.OnClickListener
+public abstract interface bije
 {
-  public bije(AEPituCameraUnit.10 param10) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    Activity localActivity = bijd.a(this.a.this$0).a();
-    if (paramInt == 1)
-    {
-      Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      localIntent.setData(Uri.fromParts("package", localActivity.getPackageName(), null));
-      localActivity.startActivity(localIntent);
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      localActivity.finish();
-    }
-  }
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bije
  * JD-Core Version:    0.7.0.1
  */

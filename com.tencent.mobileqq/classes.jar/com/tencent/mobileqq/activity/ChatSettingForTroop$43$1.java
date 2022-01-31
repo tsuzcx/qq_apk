@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajya;
+import alpo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -21,7 +21,7 @@ class ChatSettingForTroop$43$1
     if (localArrayList != null)
     {
       if (this.a.this$0.c != null) {
-        this.a.this$0.c.setText(this.a.this$0.a.wMemberNum + ajya.a(2131701722));
+        this.a.this$0.c.setText(this.a.this$0.a.wMemberNum + alpo.a(2131702095));
       }
       int i = localArrayList.size() - 1;
       while (i >= 0)
@@ -46,7 +46,7 @@ class ChatSettingForTroop$43$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.43.1
  * JD-Core Version:    0.7.0.1
  */

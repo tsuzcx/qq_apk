@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import afrt;
+import ahpk;
 
 public class TroopFragment$MyTroopObserver$1
   implements Runnable
 {
-  public TroopFragment$MyTroopObserver$1(afrt paramafrt) {}
+  public TroopFragment$MyTroopObserver$1(ahpk paramahpk) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class TroopFragment$MyTroopObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.fragment.TroopFragment.MyTroopObserver.1
  * JD-Core Version:    0.7.0.1
  */

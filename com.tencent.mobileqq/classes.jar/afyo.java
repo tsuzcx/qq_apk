@@ -1,58 +1,92 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopDateFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.datepicker.CalendarDay;
-import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
+import android.app.Activity;
+import android.view.View;
+import com.etrump.mixlayout.ETFont;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.AnimationTextView;
 import com.tencent.qphone.base.util.QLog;
 
-public class afyo
-  implements bcsz
+class afyo
+  implements beir
 {
-  CalendarDay jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-  CalendarDay b;
+  afyo(afyl paramafyl, boolean paramBoolean) {}
   
-  public afyo(ChatHistoryTroopDateFragment paramChatHistoryTroopDateFragment, CalendarDay paramCalendarDay1, CalendarDay paramCalendarDay2)
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay = paramCalendarDay1;
-    this.b = paramCalendarDay2;
-  }
-  
-  public CalendarDay a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay == null) {
-      return new CalendarDay(System.currentTimeMillis());
+    if (QLog.isColorLevel()) {
+      QLog.d("TextItemBuilder", 2, "SingleTap invoked!");
     }
-    return this.jdField_a_of_type_ComTencentMobileqqWidgetDatepickerCalendarDay;
-  }
-  
-  public void a(CalendarDay paramCalendarDay, MessageRecord paramMessageRecord)
-  {
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_JavaLangString;
-    ChatHistoryBubbleListForTroopFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.getActivity(), str, paramMessageRecord, -1, 3);
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_date", "date_clk", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.jdField_b_of_type_JavaLangString, "", "", "");
-    QLog.i(ChatHistoryTroopDateFragment.b(), 1, "clickDay: CalendarDay" + paramCalendarDay + " | MessageRecord:" + paramMessageRecord);
-  }
-  
-  public void a(SimpleMonthView paramSimpleMonthView, int paramInt1, int paramInt2)
-  {
-    if (!ChatHistoryTroopDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment, paramInt1, paramInt2)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopDateFragment.a(paramInt1, paramInt2);
+    Object localObject = (AnimationTextView)paramView;
+    float f1 = ((AnimationTextView)localObject).touchL - afyl.e;
+    float f2 = ((AnimationTextView)localObject).touchT;
+    float f3 = afyl.c;
+    if (this.jdField_a_of_type_Boolean) {
+      f1 = ((AnimationTextView)localObject).touchL - afyl.f;
     }
-  }
-  
-  public CalendarDay b()
-  {
-    if (this.b == null)
+    localObject = ((AnimationTextView)localObject).getText();
+    int k;
+    boolean bool2;
+    int j;
+    boolean bool1;
+    if ((localObject instanceof baig))
     {
-      CalendarDay localCalendarDay = new CalendarDay(System.currentTimeMillis());
-      return new CalendarDay(localCalendarDay.year + 1, localCalendarDay.month, localCalendarDay.month);
+      localObject = (baig)localObject;
+      localObject = (bain[])((baig)localObject).getSpans(0, ((baig)localObject).length(), bain.class);
+      if (!(paramView instanceof ETTextView)) {
+        break label325;
+      }
+      paramView = (ETTextView)paramView;
+      k = paramView.mClickEpId;
+      int m = paramView.mClickcEId;
+      if ((paramView.mFont == null) || (paramView.mFont.mFontId == 0) || (paramView.mFont.mFontType != 1)) {
+        break label307;
+      }
+      bool2 = true;
+      i = k;
+      j = m;
+      bool1 = bool2;
+      if (bool2)
+      {
+        i = k;
+        j = m;
+        bool1 = bool2;
+        if (paramView.getETLayout() != null)
+        {
+          paramView = paramView.getETLayout();
+          if (QLog.isColorLevel()) {
+            QLog.d("ChatItemBuilder", 2, "isHanYiFont, onlyEmoji: " + paramView.jdField_a_of_type_Boolean);
+          }
+          if (paramView.jdField_a_of_type_Boolean) {
+            break label313;
+          }
+          bool1 = true;
+          label241:
+          j = m;
+        }
+      }
     }
-    return this.b;
+    for (int i = k;; i = -1)
+    {
+      if ((i != -1) && (j != -1)) {}
+      for (bool2 = true;; bool2 = false)
+      {
+        apro.a((bain[])localObject, f1, f2 - f3, bool2, i, j, this.jdField_a_of_type_Afyl.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Afyl.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (Activity)this.jdField_a_of_type_Afyl.jdField_a_of_type_AndroidContentContext, bool1);
+        return;
+        label307:
+        bool2 = false;
+        break;
+        label313:
+        bool1 = false;
+        break label241;
+      }
+      label325:
+      bool1 = false;
+      j = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afyo
  * JD-Core Version:    0.7.0.1
  */

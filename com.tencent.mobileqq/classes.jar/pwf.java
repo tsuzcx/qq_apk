@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.mobileqq.soload.LoadExtResult;
+import com.tencent.qphone.base.util.QLog;
 
-public class pwf
-  implements View.OnClickListener
+class pwf
+  implements azin
 {
-  public pwf(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
+  pwf(pwe parampwe, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, LoadExtResult paramLoadExtResult)
   {
-    this.a.a();
+    QLog.i("PTSSoLoader", 1, "[onLoadResult], resCode = " + paramInt);
+    if (paramInt == 0)
+    {
+      QLog.i("PTSSoLoader", 1, "[onLoadResult], load so succeeded, name = " + this.jdField_a_of_type_JavaLangString + ", version = " + azic.a(this.jdField_a_of_type_JavaLangString));
+      pwe.a(this.jdField_a_of_type_Pwe, true);
+    }
+    pwe.a(this.jdField_a_of_type_Pwe, this.jdField_a_of_type_JavaLangString, paramInt, azic.a(this.jdField_a_of_type_JavaLangString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pwf
  * JD-Core Version:    0.7.0.1
  */

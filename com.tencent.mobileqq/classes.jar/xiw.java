@@ -1,21 +1,78 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StSmartMatchMusicRsp;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class xiw
-  implements xgu<CLIENT.StSmartMatchMusicRsp>
+  implements xin
 {
-  xiw(xiq paramxiq) {}
+  xiw(xiv paramxiv) {}
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CLIENT.StSmartMatchMusicRsp paramStSmartMatchMusicRsp)
+  public void a(int paramInt)
   {
-    long l = System.currentTimeMillis() - xiq.a(this.a);
-    xhb.a("edit_smart_music", xhb.a(paramLong, l, "", 0L));
-    this.a.a(ajya.a(2131703910) + l + "ms");
-    xiq.a(this.a, paramBoolean, paramLong, paramString, paramStSmartMatchMusicRsp);
+    SlideItemInfo localSlideItemInfo = (SlideItemInfo)xir.a().a().get(paramInt);
+    if (localSlideItemInfo == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(xiv.a(this.a), 2, "slideItem is null, do not jump");
+      }
+      return;
+    }
+    int i = xir.a().a();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("media_info", localSlideItemInfo.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo);
+    localIntent.putExtra("file_send_duration", localSlideItemInfo.jdField_a_of_type_Long);
+    localIntent.putExtra("from_slideshow_to_share", true);
+    localIntent.putExtra("video_index", paramInt);
+    localIntent.putExtra("start_index", localSlideItemInfo.e);
+    localIntent.putExtra("end_index", localSlideItemInfo.f);
+    localIntent.putExtra("scroll_x", localSlideItemInfo.d);
+    if (i == 11)
+    {
+      paramInt = 0;
+      localIntent.putExtra("entrance_type", paramInt);
+      if (!(xiv.a(this.a) instanceof NewPhotoListActivity)) {
+        break label329;
+      }
+      str = "0";
+      label174:
+      localIntent.putExtra("op_entrance_type", str);
+      localIntent.putExtra("start_time", localSlideItemInfo.b);
+      localIntent.putExtra("end_time", localSlideItemInfo.c);
+      localIntent.putExtra("PhotoConst.IS_FROM_EDIT", true);
+      localIntent.setClass(xiv.a(this.a), LocalVideoSelectActivity.class);
+      xiv.a(this.a).startActivityForResult(localIntent, 24747);
+      if (i != 11) {
+        break label335;
+      }
+      paramInt = 0;
+      label256:
+      if (!(xiv.a(this.a) instanceof NewPhotoListActivity)) {
+        break label340;
+      }
+    }
+    label329:
+    label335:
+    label340:
+    for (String str = "0";; str = "1")
+    {
+      wta.a("pic_choose", "clk_cutVideo", paramInt, 0, new String[] { str, localSlideItemInfo.b + "-" + localSlideItemInfo.c });
+      return;
+      paramInt = 1;
+      break;
+      str = "1";
+      break label174;
+      paramInt = 1;
+      break label256;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xiw
  * JD-Core Version:    0.7.0.1
  */

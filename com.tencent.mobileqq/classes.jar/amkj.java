@@ -1,42 +1,114 @@
-import android.app.Activity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.colornote.swipeback.SwipeBackLayout;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.InOutQQ;
+import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.ReqBody;
+import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.RspBody;
 
 public class amkj
-  extends GestureDetector.SimpleOnGestureListener
+  extends alko
 {
-  public amkj(SwipeBackLayout paramSwipeBackLayout) {}
+  private List<amkk> a = new ArrayList();
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public amkj(QQAppInterface paramQQAppInterface)
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    super(paramQQAppInterface);
+  }
+  
+  /* Error */
+  public void a(amkk paramamkk)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +18 -> 21
+    //   6: aload_0
+    //   7: getfield 18	amkj:a	Ljava/util/List;
+    //   10: aload_1
+    //   11: invokeinterface 26 2 0
+    //   16: istore_2
+    //   17: iload_2
+    //   18: ifeq +6 -> 24
+    //   21: aload_0
+    //   22: monitorexit
+    //   23: return
+    //   24: aload_0
+    //   25: getfield 18	amkj:a	Ljava/util/List;
+    //   28: aload_1
+    //   29: invokeinterface 29 2 0
+    //   34: pop
+    //   35: goto -14 -> 21
+    //   38: astore_1
+    //   39: aload_0
+    //   40: monitorexit
+    //   41: aload_1
+    //   42: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	43	0	this	amkj
+    //   0	43	1	paramamkk	amkk
+    //   16	2	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   6	17	38	finally
+    //   24	35	38	finally
+  }
+  
+  public void a(List<oidb_cmd0xe27.InOutQQ> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return;
     }
-    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
-    if ((!this.a.jdField_a_of_type_Boolean) || (paramFloat1 < 200.0F)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    int i = paramList.size();
+    if (i > 20) {
+      paramList.subList(i - 20, i);
     }
-    if ((f1 < 0.0F) && (f2 < 0.5F))
+    oidb_cmd0xe27.ReqBody localReqBody = new oidb_cmd0xe27.ReqBody();
+    localReqBody.rpt_msg_in_out_qq.set(paramList);
+    sendPbReq(makeOIDBPkg("OidbSvc.0xe27", 3623, 1, localReqBody.toByteArray()));
+  }
+  
+  public void b(amkk paramamkk)
+  {
+    if ((paramamkk == null) || (!this.a.contains(paramamkk))) {
+      return;
+    }
+    this.a.remove(paramamkk);
+  }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQDailyHandler", 0, "receive from front back report: " + paramFromServiceMsg.isSuccess());
+    }
+    oidb_cmd0xe27.RspBody localRspBody = new oidb_cmd0xe27.RspBody();
+    if (parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody) == 0)
     {
-      if (!(this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-        break label126;
+      paramObject = this.a.iterator();
+      while (paramObject.hasNext())
+      {
+        amkk localamkk = (amkk)paramObject.next();
+        if (localamkk != null) {
+          localamkk.a(paramToServiceMsg, paramFromServiceMsg, localRspBody);
+        }
       }
-      this.a.c = true;
-      this.a.d();
-    }
-    for (;;)
-    {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label126:
-      this.a.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkj
  * JD-Core Version:    0.7.0.1
  */

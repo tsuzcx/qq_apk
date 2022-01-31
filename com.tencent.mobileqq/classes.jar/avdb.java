@@ -1,27 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_like.FeedsLikeRsp;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 class avdb
-  implements DialogInterface.OnClickListener
+  implements auzh
 {
-  avdb(avcy paramavcy, String paramString, PushDialogTemplate paramPushDialogTemplate) {}
+  avdb(avcw paramavcw, VideoData paramVideoData) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    new avdd(avcy.a(this.jdField_a_of_type_Avcy).jdField_a_of_type_AndroidContentContext, avcy.a(this.jdField_a_of_type_Avcy).a()).a(this.jdField_a_of_type_JavaLangString).a(avcy.a(this.jdField_a_of_type_Avcy).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo).a(avcy.a(this.jdField_a_of_type_Avcy)).a();
-    if (this.jdField_a_of_type_ComTencentMobileqqPushdialogPushDialogTemplate.isFriendBanned())
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      axqy.b(avcy.a(this.jdField_a_of_type_Avcy).a(), "dc00898", "", "", "0X800A4BE", "0X800A4BE", 0, 0, "", "", "", "");
-      return;
+      paramBundle = new oidb_0xada.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (QLog.isColorLevel()) {
+          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + avcw.a(this.jdField_a_of_type_Avcw));
+        }
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          this.jdField_a_of_type_Avcw.f(true);
+          this.jdField_a_of_type_Avcw.d(paramArrayOfByte.total.get());
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Int = avcw.a(this.jdField_a_of_type_Avcw);
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Boolean = true;
+          avcw.b(this.jdField_a_of_type_Avcw, false);
+          avcw.b(this.jdField_a_of_type_Avcw, false);
+          ((avms)this.jdField_a_of_type_Avcw.a.getManager(263)).a(avcw.a(this.jdField_a_of_type_Avcw), paramArrayOfByte.total.get());
+          if (QLog.isColorLevel()) {
+            QLog.i("PlayOperationViewModel", 2, "total:   " + paramArrayOfByte.total.get() + ",ret:     " + paramArrayOfByte.ret.get());
+          }
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.w("PlayOperationViewModel", 1, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + avcw.a(this.jdField_a_of_type_Avcw) + "  e:" + paramArrayOfByte);
+        return;
+      }
     }
-    axqy.b(avcy.a(this.jdField_a_of_type_Avcy).a(), "dc00898", "", "", "0X800A4BC", "0X800A4BC", 0, 0, "", "", "", "");
+    QLog.w("PlayOperationViewModel", 1, "errorCode:   " + paramInt + " isLiked=" + avcw.a(this.jdField_a_of_type_Avcw));
+    avcw.b(this.jdField_a_of_type_Avcw, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avdb
  * JD-Core Version:    0.7.0.1
  */

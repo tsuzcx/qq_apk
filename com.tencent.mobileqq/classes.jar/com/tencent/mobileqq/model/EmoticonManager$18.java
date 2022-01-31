@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.model;
 
-import aexb;
-import askf;
-import aukp;
-import aukr;
+import agug;
+import aube;
+import awbw;
+import awby;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonTab;
 import java.util.Collection;
@@ -14,37 +14,37 @@ import java.util.List;
 public class EmoticonManager$18
   implements Runnable
 {
-  public EmoticonManager$18(askf paramaskf, String paramString) {}
+  public EmoticonManager$18(aube paramaube, String paramString) {}
   
   public void run()
   {
     String str;
     synchronized (this.this$0)
     {
-      this.this$0.jdField_a_of_type_Aukp.a(EmoticonTab.class.getSimpleName());
-      aukr localaukr = this.this$0.jdField_a_of_type_Aukp.a();
+      this.this$0.jdField_a_of_type_Awbw.a(EmoticonTab.class.getSimpleName());
+      awby localawby = this.this$0.jdField_a_of_type_Awbw.a();
       try
       {
-        localaukr.a();
+        localawby.a();
         Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator.hasNext())
         {
           str = (String)localIterator.next();
-          askf.a(this.this$0, str, true, false);
+          aube.a(this.this$0, str, true, false);
           continue;
           localObject2 = finally;
         }
       }
       finally
       {
-        localaukr.b();
+        localawby.b();
       }
     }
     Object localObject5 = this.this$0.b.iterator();
     while (((Iterator)localObject5).hasNext())
     {
       str = (String)((Iterator)localObject5).next();
-      askf.a(this.this$0, str, false, true);
+      aube.a(this.this$0, str, false, true);
     }
     localObject2.c();
     localObject2.b();
@@ -61,13 +61,13 @@ public class EmoticonManager$18
         ((HashSet)???).add(((Emoticon)localObject5).name);
       }
     }
-    aexb.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Collection)???);
+    agug.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a((Collection)???);
     this.this$0.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.model.EmoticonManager.18
  * JD-Core Version:    0.7.0.1
  */

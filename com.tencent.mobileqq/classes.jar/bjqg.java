@@ -1,30 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LightWeightCaptureButtonLayout;
+import cooperation.qzone.util.TimeCostTrace;
 
-public class bjqg
-  extends AnimatorListenerAdapter
+public abstract interface bjqg
 {
-  public bjqg(LightWeightCaptureButtonLayout paramLightWeightCaptureButtonLayout) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner 140ms translate end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "rollBackLockAnimatorToActiveCorner lockView begin");
-    }
-  }
+  public abstract void reportPerfTime(TimeCostTrace paramTimeCostTrace);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjqg
  * JD-Core Version:    0.7.0.1
  */

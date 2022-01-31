@@ -1,28 +1,31 @@
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class bbgk
-  extends PipedInputStream
+  implements bevy
 {
-  private int a = 1024;
+  public bbgk(TroopCreateLogicActivity paramTroopCreateLogicActivity) {}
   
-  public bbgk(PipedOutputStream paramPipedOutputStream, int paramInt)
+  public void a(BaseResp paramBaseResp)
   {
-    super(paramPipedOutputStream);
-    this.a = paramInt;
-  }
-  
-  protected void receive(int paramInt)
-  {
-    try
-    {
-      if (this.buffer.length != this.a) {
-        this.buffer = new byte[this.a];
-      }
-      super.receive(paramInt);
+    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
       return;
     }
-    finally {}
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720019, 1).a();
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720038, 1).a();
+    }
   }
 }
 

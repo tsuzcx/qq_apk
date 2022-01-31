@@ -1,50 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.view.View;
 
-public class ajeh
-  implements TVK_SDKMgr.OnLogListener
+class ajeh
+  implements bhrf
 {
-  public static String a = "cmgame_process.CmGameVideoLogImpl";
+  ajeh(ajee paramajee, View paramView) {}
   
-  public int d(String paramString1, String paramString2)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    QLog.e(a, 1, paramString1 + ":" + paramString2);
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, paramString1 + ":" + paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    QLog.w(a, 1, paramString1 + ":" + paramString2);
-    return 0;
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajeh
  * JD-Core Version:    0.7.0.1
  */

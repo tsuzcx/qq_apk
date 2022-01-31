@@ -7,7 +7,7 @@ import NS_MINI_INTERFACE.INTERFACE.StGetExpandAppListRsp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -103,7 +103,7 @@ public class MiniAppGetKuolieApplistServlet
         localObject = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.GetExpandAppList");
-      paramPacket.putSendData(bbma.a((byte[])localObject));
+      paramPacket.putSendData(bdku.a((byte[])localObject));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;
@@ -122,7 +122,7 @@ public class MiniAppGetKuolieApplistServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetKuolieApplistServlet
  * JD-Core Version:    0.7.0.1
  */

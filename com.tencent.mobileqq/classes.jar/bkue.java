@@ -1,14 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public final class bkue
-  implements DialogInterface.OnClickListener
+class bkue
+  implements bmac<bkuk>
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  bkue(bkuc parambkuc) {}
+  
+  public void a(@Nullable bkuk parambkuk)
+  {
+    if (parambkuk == null) {
+      return;
+    }
+    bkuc.d(this.a).setSelected(parambkuk.a());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkue
  * JD-Core Version:    0.7.0.1
  */

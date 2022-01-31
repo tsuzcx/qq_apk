@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import acxs;
+import aepf;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -10,7 +10,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import aoax;
+import apsu;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -42,11 +42,11 @@ public class FastImagePreviewLayout
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "showFastImage called, path = " + acxs.b);
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "showFastImage called, path = " + aepf.b);
     }
     removeAllViews();
-    Object localObject = inflate(this.jdField_a_of_type_AndroidContentContext, 2131558544, null);
-    ((ImageView)((View)localObject).findViewById(2131365916)).setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    Object localObject = inflate(this.jdField_a_of_type_AndroidContentContext, 2131558574, null);
+    ((ImageView)((View)localObject).findViewById(2131366003)).setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
     addView((View)localObject);
     setVisibility(0);
     localObject = new AlphaAnimation(0.0F, 1.0F);
@@ -69,7 +69,7 @@ public class FastImagePreviewLayout
       localAlphaAnimation.setDuration(500L);
       localAlphaAnimation.setFillAfter(true);
       startAnimation(localAlphaAnimation);
-      localAlphaAnimation.setAnimationListener(new aoax(this));
+      localAlphaAnimation.setAnimationListener(new apsu(this));
       return;
     }
     removeAllViews();
@@ -87,7 +87,7 @@ public class FastImagePreviewLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.FastImagePreviewLayout
  * JD-Core Version:    0.7.0.1
  */

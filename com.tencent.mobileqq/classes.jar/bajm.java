@@ -1,63 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IInterface;
 
-public abstract class bajm
-  extends mxj
+public abstract interface bajm
+  extends IInterface
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    boolean bool2 = false;
-    mobileqq_mp.FollowResponse localFollowResponse;
-    if (paramInt == 0) {
-      localFollowResponse = new mobileqq_mp.FollowResponse();
-    }
-    for (;;)
-    {
-      try
-      {
-        localFollowResponse.mergeFrom(paramArrayOfByte);
-        if (!((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.has()) {
-          break label146;
-        }
-        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-        if (paramInt != 0) {
-          break label146;
-        }
-        bool1 = true;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("TroopBindPubAccountProtocol", 2, paramArrayOfByte.toString());
-        bool1 = bool2;
-        continue;
-      }
-      a(bool1, paramBundle);
-      return;
-      boolean bool1 = bool2;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("TroopBindPubAccountProtocol", 2, "follow pubAccount failed, errorCode=" + paramInt);
-        bool1 = bool2;
-        continue;
-        label146:
-        bool1 = false;
-      }
-    }
-  }
+  public abstract void beginSwitch();
   
-  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
+  public abstract void doSwitch(String paramString1, String paramString2);
+  
+  public abstract void onProgress(long paramLong1, long paramLong2);
+  
+  public abstract void postSwitch(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bajm
  * JD-Core Version:    0.7.0.1
  */

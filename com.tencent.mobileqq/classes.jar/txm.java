@@ -1,33 +1,53 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
-import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
+import android.app.Activity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.view.MotionEvent;
 
-public class txm
-  extends Subscriber.SingleEventSubscriberNoRefect<svv>
+class txm
+  implements RecyclerView.OnItemTouchListener
 {
-  txh a;
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public txm(@NonNull txh paramtxh)
-  {
-    this.a = paramtxh;
-  }
+  txm(txk paramtxk) {}
   
-  protected void a(@NonNull svv paramsvv)
+  private boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    if ((paramsvv.b != null) && (paramsvv.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)) {
-      txh.a(this.a, paramsvv.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramsvv.b.mVid, paramsvv.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId);
+    switch (paramMotionEvent.getAction())
+    {
     }
+    int j;
+    do
+    {
+      return false;
+      this.b = ((int)(paramMotionEvent.getX() + 0.5F));
+      this.jdField_a_of_type_Int = ((int)(paramMotionEvent.getY() + 0.5F));
+      return false;
+      j = (int)(paramMotionEvent.getX() + 0.5F);
+      int i = (int)(paramMotionEvent.getY() + 0.5F);
+      j -= this.b;
+      i = (int)((i - this.jdField_a_of_type_Int) * 0.6F);
+    } while ((Math.abs(j) <= txk.a(this.jdField_a_of_type_Txk) * 2) || (j <= 0));
+    ((Activity)paramRecyclerView.getContext()).finish();
+    return false;
   }
   
-  public Class acceptEventClass()
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    return svv.class;
+    if (((paramRecyclerView.getLayoutManager() instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition() != 0)) {
+      return false;
+    }
+    return a(paramRecyclerView, paramMotionEvent);
   }
+  
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
+  
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txm
  * JD-Core Version:    0.7.0.1
  */

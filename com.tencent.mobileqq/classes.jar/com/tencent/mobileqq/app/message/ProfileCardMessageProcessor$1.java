@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.message;
 
-import akql;
+import amgt;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,12 +8,12 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class ProfileCardMessageProcessor$1
   implements Runnable
 {
-  public ProfileCardMessageProcessor$1(akql paramakql) {}
+  public ProfileCardMessageProcessor$1(amgt paramamgt) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(this.this$0.a.getAccount())) {
-      ((FriendListHandler)this.this$0.a.a(1)).b(this.this$0.a.getAccount());
+    if (!TextUtils.isEmpty(amgt.a(this.this$0).getAccount())) {
+      ((FriendListHandler)amgt.b(this.this$0).a(1)).b(amgt.c(this.this$0).getAccount());
     }
   }
 }

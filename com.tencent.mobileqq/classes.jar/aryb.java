@@ -1,23 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 class aryb
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  aryb(arxz paramarxz) {}
+  aryb(arya paramarya, int paramInt, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.a()) {
-      return;
+    if (paramInt == 1)
+    {
+      arzk.a(arya.a(this.jdField_a_of_type_Arya), "shareToQQ", arya.a(this.jdField_a_of_type_Arya), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      ndq.a(arya.a(this.jdField_a_of_type_Arya), 0, "", "");
+      if (arya.a(this.jdField_a_of_type_Arya) != null) {
+        arya.a(this.jdField_a_of_type_Arya).b(1);
+      }
+      arya.a(this.jdField_a_of_type_Arya).moveTaskToBack(true);
     }
-    arxj.a(this.a.a, null);
-    axqy.b(null, "CliOper", "", "", "0X800A96B", "0X800A96B", 0, 0, "0", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aryb
  * JD-Core Version:    0.7.0.1
  */

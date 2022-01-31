@@ -1,29 +1,29 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.EncryptUinInfo;
-import java.util.List;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import mqq.util.WeakReference;
 
-public abstract class nkv
-  implements ajte
+public class nkv
+  extends alox
 {
-  protected abstract void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle);
+  WeakReference<AccountDetailActivity> a;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public nkv(AccountDetailActivity paramAccountDetailActivity)
   {
-    if (paramObject != null) {}
-    try
-    {
-      paramObject = (Bundle)paramObject;
-      a(paramBoolean, paramObject.getParcelableArrayList("KEY_ENCRYPT_RESULT_LIST"), paramObject);
+    this.a = new WeakReference(paramAccountDetailActivity);
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    AccountDetailActivity localAccountDetailActivity = (AccountDetailActivity)this.a.get();
+    if (localAccountDetailActivity == null) {}
+    while ((localAccountDetailActivity.h) || (!paramBoolean) || (!paramString.equals(localAccountDetailActivity.d))) {
       return;
     }
-    catch (Exception paramObject) {}
-    a(false, null, new Bundle());
-    return;
+    localAccountDetailActivity.P();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nkv
  * JD-Core Version:    0.7.0.1
  */

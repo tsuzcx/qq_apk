@@ -1,16 +1,16 @@
 package com.tencent.biz;
 
-import mww;
-import mwx;
+import mzp;
+import mzq;
 
 public class PoiMapActivity$PoiMapNameTask$1
   implements Runnable
 {
-  public PoiMapActivity$PoiMapNameTask$1(mww parammww, String paramString) {}
+  public PoiMapActivity$PoiMapNameTask$1(mzp parammzp, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Mww.a.a[0].a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Mzp.a.a[0].a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

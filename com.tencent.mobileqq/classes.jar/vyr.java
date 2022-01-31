@@ -1,47 +1,30 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
 
-public abstract interface vyr
+class vyr
+  extends nac
 {
-  public abstract int a();
+  vyr(vym paramvym, boolean paramBoolean) {}
   
-  public abstract Bitmap a();
-  
-  public abstract View a();
-  
-  public abstract vyw a(int paramInt);
-  
-  public abstract vyx a();
-  
-  public abstract void a();
-  
-  public abstract void a(List<QQUserUIItem> paramList, int paramInt);
-  
-  public abstract void a(tej paramtej, float paramFloat1, float paramFloat2);
-  
-  public abstract void a(vyt paramvyt);
-  
-  public abstract void a(vyv paramvyv);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(int[] paramArrayOfInt);
-  
-  public abstract vyz[] a();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c(boolean paramBoolean);
-  
-  public abstract void d(boolean paramBoolean);
-  
-  public abstract void e(boolean paramBoolean);
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt != 0)
+    {
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
+      {
+        paramArrayOfByte.a(7, bool);
+        this.a.a(0, this.a.a.getString(2131721084));
+        return;
+      }
+    }
+    ((urk)urr.a(10)).b("story_publish_flag_compress", Boolean.valueOf(this.b));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyr
  * JD-Core Version:    0.7.0.1
  */

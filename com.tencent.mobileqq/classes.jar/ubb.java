@@ -1,25 +1,17 @@
-import android.view.View;
-import android.view.ViewGroup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowTagView;
 
 public class ubb
-  extends uaz
+  implements DialogInterface.OnClickListener
 {
-  public final View b;
+  public ubb(QCircleFollowTagView paramQCircleFollowTagView) {}
   
-  public ubb(View paramView)
-  {
-    super((ViewGroup)paramView.getParent());
-    this.b = paramView;
-  }
-  
-  protected View a(ViewGroup paramViewGroup)
-  {
-    return this.b;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubb
  * JD-Core Version:    0.7.0.1
  */

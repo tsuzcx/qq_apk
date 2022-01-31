@@ -1,23 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import feedcloud.FeedCloudRead.StGetBusiInfoRsp;
 
 class txw
-  implements Animation.AnimationListener
+  implements yvn<FeedCloudRead.StGetBusiInfoRsp>
 {
-  txw(txt paramtxt) {}
+  txw(txv paramtxv, yft paramyft) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetBusiInfoRsp paramStGetBusiInfoRsp)
   {
-    this.a.dismiss();
+    if (this.jdField_a_of_type_Yft != null) {
+      this.jdField_a_of_type_Yft.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetBusiInfoRsp });
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txw
  * JD-Core Version:    0.7.0.1
  */

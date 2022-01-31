@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="50" android:drawable="@drawable/eh3" />
+    <item android:duration="50" android:drawable="@drawable/eh4" />
+    <item android:duration="50" android:drawable="@drawable/ehj" />
+    <item android:duration="50" android:drawable="@drawable/eho" />
+    <item android:duration="50" android:drawable="@drawable/eil" />
+    <item android:duration="50" android:drawable="@drawable/eim" />
+    <item android:duration="50" android:drawable="@drawable/eja" />
+    <item android:duration="50" android:drawable="@drawable/eke" />
+    <item android:duration="50" android:drawable="@drawable/ekg" />
+    <item android:duration="50" android:drawable="@drawable/ekh" />
+    <item android:duration="50" android:drawable="@drawable/ekk" />
+    <item android:duration="50" android:drawable="@drawable/ekl" />
+    <item android:duration="50" android:drawable="@drawable/ekm" />
+    <item android:duration="50" android:drawable="@drawable/eko" />
+    <item android:duration="50" android:drawable="@drawable/ekt" />
+</animation-list>

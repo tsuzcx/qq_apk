@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troopshare;
 
-import baus;
+import bctm;
 
 class TroopShareUtility$10$1
   implements Runnable
@@ -14,7 +14,7 @@ class TroopShareUtility$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopshare.TroopShareUtility.10.1
  * JD-Core Version:    0.7.0.1
  */

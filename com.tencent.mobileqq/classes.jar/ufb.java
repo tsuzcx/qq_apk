@@ -1,77 +1,84 @@
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ufb
-  extends Handler
+  extends JobSegment<List<uer>, List<ueq>>
+  implements uem
 {
-  private ufb(MediaPlayer paramMediaPlayer) {}
+  private ArrayList<ueq> jdField_a_of_type_JavaUtilArrayList;
+  private List<uek> jdField_a_of_type_JavaUtilList;
+  private ufe jdField_a_of_type_Ufe;
   
-  public void handleMessage(Message paramMessage)
+  public ufb(ufe paramufe)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Ufe = paramufe;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  private List<uek> a(long paramLong1, long paramLong2)
+  {
+    int i = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getInt("kmeans_interval_txt", 1);
+    ArrayList localArrayList = new ArrayList();
+    List localList = ((uef)urr.a(30)).a(paramLong1, paramLong2);
+    if (localList != null) {
+      localArrayList.addAll(localList);
+    }
+    localArrayList.add(new ueo(i, this.jdField_a_of_type_Ufe));
+    return localArrayList;
+  }
+  
+  private void a(List<uer> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-    default: 
-    case 1: 
-    case 4: 
-    case 2: 
-    case 5: 
-      do
+      uek localuek = (uek)this.jdField_a_of_type_JavaUtilList.remove(0);
+      localuek.a(paramList);
+      localuek.a(this);
+      return;
+    }
+    paramList = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramList.hasNext()) {
+      uef.a((ueq)paramList.next(), 10);
+    }
+    notifyResult(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  protected void a(JobContext paramJobContext, List<uer> paramList)
+  {
+    wsv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.AlbumSplitSegment", "start runSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
+    if (paramList.isEmpty())
+    {
+      notifyResult(this.jdField_a_of_type_JavaUtilArrayList);
+      return;
+    }
+    uef.b(paramList);
+    this.jdField_a_of_type_JavaUtilList = a(((uer)paramList.get(0)).b, ((uer)paramList.get(paramList.size() - 1)).b);
+    a(paramList);
+  }
+  
+  public void a(List<ueq> paramList, List<uer> paramList1)
+  {
+    if (paramList != null)
+    {
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
       {
-        do
-        {
-          do
-          {
-            return;
-            Log.d("Story-MediaPlayer", "onPrepared");
-          } while (this.a.jdField_a_of_type_Ufm == null);
-          this.a.jdField_a_of_type_Ufm.a_(this.a);
-          return;
-          Log.d("Story-MediaPlayer", "onSeekComplete");
-        } while (this.a.jdField_a_of_type_Ufn == null);
-        this.a.jdField_a_of_type_Ufn.a(this.a);
-        return;
-        Log.d("Story-MediaPlayer", "onPlaybackComplete");
-        if (this.a.jdField_a_of_type_Ufj != null) {
-          this.a.jdField_a_of_type_Ufj.a(this.a);
-        }
-        this.a.c(false);
-        return;
-        Log.d("Story-MediaPlayer", "onVideoSizeChanged");
-      } while (this.a.jdField_a_of_type_Ufp == null);
-      this.a.jdField_a_of_type_Ufp.a(this.a, paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 100: 
-      Log.e("Story-MediaPlayer", "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
-      if (this.a.jdField_a_of_type_Ufk == null) {
-        break;
+        ueq localueq = (ueq)localIterator.next();
+        wsv.b("Q.qqstory.recommendAlbum.logic.StoryScanManager.AlbumSplitSegment", "onFilterFinish album:" + localueq.toString());
       }
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
     }
-    for (boolean bool = this.a.jdField_a_of_type_Ufk.a(this.a, paramMessage.arg1, paramMessage.arg2);; bool = false)
-    {
-      if ((this.a.jdField_a_of_type_Ufj != null) && (!bool)) {
-        this.a.jdField_a_of_type_Ufj.a(this.a);
-      }
-      this.a.c(false);
-      return;
-      Log.d("Story-MediaPlayer", "onInfo");
-      if (this.a.jdField_a_of_type_Ufl == null) {
-        break;
-      }
-      this.a.jdField_a_of_type_Ufl.a_(this.a, paramMessage.arg1, paramMessage.arg2);
-      return;
-      if (this.a.jdField_a_of_type_Ufi != null) {
-        this.a.jdField_a_of_type_Ufi.a(this.a, paramMessage.arg1);
-      }
-      this.a.e = paramMessage.arg1;
-      return;
-    }
+    a(paramList1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ufb
  * JD-Core Version:    0.7.0.1
  */

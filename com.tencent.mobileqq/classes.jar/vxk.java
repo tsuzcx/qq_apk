@@ -1,50 +1,10 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
-
-public class vxk
-  extends uvr<uwm>
+public abstract interface vxk
 {
-  public vxk(@Nullable uvv paramuvv)
-  {
-    super(paramuvv);
-  }
-  
-  protected JobSegment<uvu, uwm> a()
-  {
-    return new uwh();
-  }
-  
-  protected JobSegment<Integer, uvu> a(uvt paramuvt)
-  {
-    return new vxl(paramuvt);
-  }
-  
-  protected uwm a()
-  {
-    uvx localuvx = (uvx)tcz.a(11);
-    List localList = localuvx.b();
-    uwm localuwm = new uwm(new ErrorMessage());
-    localuwm.jdField_b_of_type_JavaUtilList = localuvx.b(localList);
-    localuwm.jdField_b_of_type_Boolean = true;
-    localuwm.a = localuwm.jdField_b_of_type_JavaUtilList.isEmpty();
-    return localuwm;
-  }
-  
-  protected uwm a(ErrorMessage paramErrorMessage)
-  {
-    return new uwm(paramErrorMessage);
-  }
-  
-  protected void a(List<String> paramList, boolean paramBoolean)
-  {
-    ((uvx)tcz.a(11)).b(paramList, paramBoolean);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vxk
  * JD-Core Version:    0.7.0.1
  */

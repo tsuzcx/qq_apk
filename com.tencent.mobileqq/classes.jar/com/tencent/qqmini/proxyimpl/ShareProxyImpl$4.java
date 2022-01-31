@@ -7,7 +7,6 @@ import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Handler;
-import besj;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -16,6 +15,7 @@ import com.tencent.mobileqq.mini.util.ImageUtil;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.core.model.InnerShareData;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import eipc.EIPCClient;
 import java.io.ByteArrayOutputStream;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
 class ShareProxyImpl$4
   implements MiniAppCmdInterface
 {
-  ShareProxyImpl$4(ShareProxyImpl paramShareProxyImpl, Activity paramActivity, besj parambesj, int paramInt, String paramString, MiniAppInfo paramMiniAppInfo) {}
+  ShareProxyImpl$4(ShareProxyImpl paramShareProxyImpl, Activity paramActivity, InnerShareData paramInnerShareData, int paramInt, String paramString, MiniAppInfo paramMiniAppInfo) {}
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -40,9 +40,9 @@ class ShareProxyImpl$4
       {
         paramJSONObject = URLDrawable.URLDrawableOptions.obtain();
         if (this.val$activity != null) {
-          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130847472);
+          paramJSONObject.mFailedDrawable = this.val$activity.getResources().getDrawable(2130847854);
         }
-        Bitmap localBitmap = ImageUtil.drawableToBitmap(URLDrawable.getDrawable(this.val$shareData.b, paramJSONObject).getCurrDrawable());
+        Bitmap localBitmap = ImageUtil.drawableToBitmap(URLDrawable.getDrawable(this.val$shareData.sharePicPath, paramJSONObject).getCurrDrawable());
         paramJSONObject = localBitmap;
         if (localBitmap != null)
         {
@@ -73,7 +73,7 @@ class ShareProxyImpl$4
           for (;;)
           {
             QLog.e("AppBrandRuntime", 1, "startShareToWeChat. get an exception when handling URLbmp:" + paramJSONObject);
-            paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130847472));
+            paramJSONObject = ImageUtil.drawableToBitmap(this.val$activity.getResources().getDrawable(2130847854));
           }
         } while (this.val$shareType != 4);
         WXShareHelper.a().c(String.valueOf(System.currentTimeMillis()), "QQ小程序 · " + this.val$miniAppInfo.name + ": " + this.val$finalDescription, paramJSONObject, "", str);
@@ -109,7 +109,7 @@ class ShareProxyImpl$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareProxyImpl.4
  * JD-Core Version:    0.7.0.1
  */

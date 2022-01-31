@@ -1,34 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.smtt.sdk.WebView;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bdgj
-  extends Handler
+class bdgj
+  implements View.OnClickListener
 {
-  public void handleMessage(Message paramMessage)
+  int jdField_a_of_type_Int;
+  
+  public bdgj(bdge parambdge, int paramInt)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Bdge.a != null)
     {
-    }
-    do
-    {
-      return;
-      paramMessage = (bdgi)paramMessage.obj;
-    } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView == null) || (paramMessage.jdField_a_of_type_JavaLangString == null));
-    try
-    {
-      paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramMessage.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
+      this.jdField_a_of_type_Bdge.a.onClick(this.jdField_a_of_type_Bdge, this.jdField_a_of_type_Bdge.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_Bdge.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdgj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,15 @@
-import android.support.annotation.NonNull;
-
-public class amza
-  extends amyp<amzt>
+class amza
+  implements bapx
 {
-  @NonNull
-  public static amzt c()
-  {
-    amzt localamzt2 = (amzt)ampl.a().a(527);
-    amzt localamzt1 = localamzt2;
-    if (localamzt2 == null) {
-      localamzt1 = new amzt();
-    }
-    return localamzt1;
-  }
+  amza(amyy paramamyy) {}
   
-  public int a()
-  {
-    return 527;
-  }
+  public void onResp(baqw parambaqw) {}
   
-  @NonNull
-  public amzt a()
-  {
-    return new amzt();
-  }
-  
-  @NonNull
-  public amzt a(@NonNull amph[] paramArrayOfamph)
-  {
-    return amzt.a(paramArrayOfamph[0].a);
-  }
-  
-  public Class<amzt> a()
-  {
-    return amzt.class;
-  }
-  
-  @NonNull
-  public amzt b()
-  {
-    return new amzt();
-  }
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amza
  * JD-Core Version:    0.7.0.1
  */

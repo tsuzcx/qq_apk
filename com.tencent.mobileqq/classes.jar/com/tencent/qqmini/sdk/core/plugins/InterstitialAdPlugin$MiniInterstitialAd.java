@@ -6,20 +6,21 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import behp;
-import bekx;
-import bekz;
-import bema;
-import betc;
-import beut;
-import bfgd;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import bghn;
+import bgki;
+import bgkk;
+import bglq;
+import bgte;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsInterstitialAdView;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.InterstitialADLisener;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.AdUtil;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import org.json.JSONObject;
@@ -37,16 +38,16 @@ class InterstitialAdPlugin$MiniInterstitialAd
   private int appInterstitialId;
   private WeakReference<Activity> mActivity;
   private volatile boolean mIsRequestingAd;
-  private behp mJsService;
+  private bghn mJsService;
   private AdProxy.InterstitialADLisener mListener;
   
-  InterstitialAdPlugin$MiniInterstitialAd(InterstitialAdPlugin paramInterstitialAdPlugin, Activity paramActivity, int paramInt, String paramString1, String paramString2, behp parambehp)
+  InterstitialAdPlugin$MiniInterstitialAd(InterstitialAdPlugin paramInterstitialAdPlugin, Activity paramActivity, int paramInt, String paramString1, String paramString2, bghn parambghn)
   {
     this.mActivity = new WeakReference(paramActivity);
     this.appInterstitialId = paramInt;
     this.adUnitId = paramString1;
     this.appId = paramString2;
-    this.mJsService = parambehp;
+    this.mJsService = parambghn;
   }
   
   private void callbackJs(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -57,10 +58,10 @@ class InterstitialAdPlugin$MiniInterstitialAd
       }
     }
     label75:
-    for (paramString = bekx.a(paramString, getResultObj(paramInt1, paramInt2));; paramString = bekx.a(paramString, getResultObj(paramInt1, paramInt2), (String)InterstitialAdPlugin.S_CodeMsg_Map.get(Integer.valueOf(paramInt2))))
+    for (paramString = bgki.a(paramString, getResultObj(paramInt1, paramInt2));; paramString = bgki.a(paramString, getResultObj(paramInt1, paramInt2), (String)InterstitialAdPlugin.S_CodeMsg_Map.get(Integer.valueOf(paramInt2))))
     {
       paramString = paramString.toString();
-      betc.b("SDK_MiniInterstitialAd", "evaluateCallbackJs callbackId: " + paramInt3 + " content:" + paramString);
+      QMLog.i("SDK_MiniInterstitialAd", "evaluateCallbackJs callbackId: " + paramInt3 + " content:" + paramString);
       this.mJsService.a(paramInt3, paramString);
       return;
     }
@@ -80,7 +81,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
     catch (Throwable localThrowable)
     {
       localThrowable = localThrowable;
-      betc.d("SDK_MiniInterstitialAd", "getResultObj e:", localThrowable);
+      QMLog.e("SDK_MiniInterstitialAd", "getResultObj e:", localThrowable);
       return localJSONObject;
     }
     finally {}
@@ -89,79 +90,79 @@ class InterstitialAdPlugin$MiniInterstitialAd
   
   private boolean initAdParam(int paramInt1, int paramInt2)
   {
-    String str3 = beut.a().a();
+    String str3 = bgte.a().a();
     if (TextUtils.isEmpty(this.appId))
     {
-      betc.d("SDK_MiniInterstitialAd", "TextUtils.isEmpty(appid)");
+      QMLog.e("SDK_MiniInterstitialAd", "TextUtils.isEmpty(appid)");
       return false;
     }
     int i;
-    label55:
+    label60:
     int j;
-    label117:
-    label126:
+    label122:
     Object localObject3;
+    label131:
     Object localObject1;
-    label169:
+    label174:
     String str1;
-    label190:
+    label192:
     String str2;
     Object localObject2;
-    if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation == 2)
+    if (AppLoaderFactory.g().getMiniAppEnv().getContext().getResources().getConfiguration().orientation == 2)
     {
       i = 1;
       if (i == 0) {
-        break label429;
+        break label431;
       }
       i = 90;
-      betc.b("SDK_MiniInterstitialAd", "handle initAdParam appId = " + this.appId + "， deviceOrient = " + i);
+      QMLog.i("SDK_MiniInterstitialAd", "handle initAdParam appId = " + this.appId + "， deviceOrient = " + i);
       if ((this.this$0.mMiniAppInfo == null) || (!this.this$0.mMiniAppInfo.isEngineTypeMiniApp())) {
-        break label434;
+        break label436;
       }
       j = 0;
       if (j != 0) {
-        break label440;
+        break label442;
       }
       j = 10;
       localObject3 = this.this$0.mMiniAppInfo;
       if ((localObject3 == null) || (((MiniAppInfo)localObject3).launchParam == null)) {
-        break label477;
+        break label479;
       }
-      if (((MiniAppInfo)localObject3).launchParam.c == null) {
-        break label447;
+      if (((MiniAppInfo)localObject3).launchParam.entryPath == null) {
+        break label449;
       }
-      localObject1 = ((MiniAppInfo)localObject3).launchParam.c;
+      localObject1 = ((MiniAppInfo)localObject3).launchParam.entryPath;
       if (((MiniAppInfo)localObject3).launchParam == null) {
-        break label455;
+        break label457;
       }
-      str1 = MiniAppInfo.getReportDataString(((MiniAppInfo)localObject3).launchParam.jdField_a_of_type_JavaUtilMap);
-      str2 = String.valueOf(((MiniAppInfo)localObject3).launchParam.jdField_a_of_type_Int);
+      str1 = ((MiniAppInfo)localObject3).launchParam.reportData;
+      str2 = String.valueOf(((MiniAppInfo)localObject3).launchParam.scene);
       localObject2 = localObject1;
       localObject1 = str2;
     }
     for (;;)
     {
-      label231:
+      label233:
       String str4;
       if ((localObject3 != null) && (((MiniAppInfo)localObject3).via != null))
       {
         str2 = ((MiniAppInfo)localObject3).via;
-        str4 = bfgd.a(j);
-        bema.a("QZoneSetting", "MiniGameShareRate", 53);
+        str4 = AdUtil.getSpAdGdtCookie(j);
+        bglq.a("QZoneSetting", "MiniGameShareRate", 53);
         if (this.mActivity == null) {
-          break label471;
+          break label473;
         }
       }
-      label429:
-      label434:
-      label440:
-      label447:
-      label455:
-      label471:
+      label431:
+      label436:
+      label442:
+      label449:
+      label457:
+      label473:
       for (localObject3 = (Activity)this.mActivity.get();; localObject3 = null)
       {
         if (localObject3 == null) {
-          break label475;
+          break label477;
         }
         Bundle localBundle = new Bundle();
         localBundle.putString(AdProxy.KEY_ACCOUNT, str3);
@@ -181,21 +182,21 @@ class InterstitialAdPlugin$MiniInterstitialAd
         i = 0;
         break;
         i = 0;
-        break label55;
+        break label60;
         j = 1;
-        break label117;
+        break label122;
         j = 11;
-        break label126;
+        break label131;
         localObject1 = "";
-        break label169;
+        break label174;
         str1 = "";
-        break label190;
+        break label192;
         str2 = "";
-        break label231;
+        break label233;
       }
-      label475:
-      break;
       label477:
+      break;
+      label479:
       localObject1 = "";
       str1 = "";
       localObject2 = "";
@@ -229,9 +230,9 @@ class InterstitialAdPlugin$MiniInterstitialAd
     this.mActivity = new WeakReference(paramActivity);
   }
   
-  void setJsService(behp parambehp)
+  void setJsService(bghn parambghn)
   {
-    this.mJsService = parambehp;
+    this.mJsService = parambghn;
   }
   
   boolean show(int paramInt1, int paramInt2)
@@ -239,13 +240,13 @@ class InterstitialAdPlugin$MiniInterstitialAd
     if ((this.adInterstitial == null) || (this.mActivity == null) || (this.mActivity.get() == null)) {
       return false;
     }
-    bekz.a(new InterstitialAdPlugin.MiniInterstitialAd.1(this, paramInt1, paramInt2));
+    bgkk.a(new InterstitialAdPlugin.MiniInterstitialAd.1(this, paramInt1, paramInt2));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.InterstitialAdPlugin.MiniInterstitialAd
  * JD-Core Version:    0.7.0.1
  */

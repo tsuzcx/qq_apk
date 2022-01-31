@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.ws.WebSocket;
 import com.tencent.TMG.utils.QLog;
+import okhttp3.WebSocket;
 
 class BaseMiniWebSocket$1
   implements Runnable
@@ -14,8 +12,7 @@ class BaseMiniWebSocket$1
   {
     try
     {
-      MediaType localMediaType = MediaType.parse("application/vnd.okhttp.websocket+text; charset=utf-8");
-      this.this$0.mWebSocket.sendMessage(RequestBody.create(localMediaType, this.val$message));
+      this.this$0.mWebSocket.send(this.val$message);
       QLog.e("ServiceRemoteRuntime", 0, "[sendStringMessage]:" + this.val$message);
       return;
     }
@@ -27,7 +24,7 @@ class BaseMiniWebSocket$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.BaseMiniWebSocket.1
  * JD-Core Version:    0.7.0.1
  */

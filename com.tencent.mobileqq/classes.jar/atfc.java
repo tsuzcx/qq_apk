@@ -1,33 +1,21 @@
+import android.app.Activity;
 import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
 public class atfc
-  implements atft
+  implements View.OnClickListener
 {
-  public atfc(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public atfc(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void a(long paramLong)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    while (i < ChooseInterestTagActivity.a(this.a).getChildCount())
-    {
-      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.a(this.a).getChildAt(i).getTag();
-      if ((localInterestTagInfo != null) && (paramLong == localInterestTagInfo.tagId))
-      {
-        ChooseInterestTagActivity.a(this.a).remove(localInterestTagInfo);
-        ChooseInterestTagActivity.a(this.a, localInterestTagInfo);
-        ChooseInterestTagActivity.b(this.a, localInterestTagInfo);
-      }
-      i += 1;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atfc
  * JD-Core Version:    0.7.0.1
  */

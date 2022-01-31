@@ -1,50 +1,90 @@
-import android.content.Context;
-import android.support.annotation.IdRes;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.weishi_new.WSBaseHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import java.util.List;
 
-public class tbg<M>
-  extends RecyclerView.ViewHolder
+public class tbg
+  implements ViewPager.OnPageChangeListener
 {
-  private SparseArray<View> a = new SparseArray();
+  public tbg(WSHomeFragment paramWSHomeFragment) {}
   
-  public tbg(View paramView)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    super(paramView);
-  }
-  
-  public tbg(ViewGroup paramViewGroup, int paramInt)
-  {
-    super(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false));
-  }
-  
-  protected Context a()
-  {
-    return this.itemView.getContext();
-  }
-  
-  protected <T extends View> T a(@IdRes int paramInt)
-  {
-    View localView2 = (View)this.a.get(paramInt);
-    View localView1 = localView2;
-    if (localView2 == null)
-    {
-      localView1 = this.itemView.findViewById(paramInt);
-      this.a.put(paramInt, localView1);
+    if (paramInt == 1) {
+      WSHomeFragment.b(this.a, true);
     }
-    return localView1;
+    for (;;)
+    {
+      return;
+      if (paramInt == 0)
+      {
+        paramInt = 0;
+        while (paramInt < WSHomeFragment.a(this.a).size())
+        {
+          Fragment localFragment = (Fragment)WSHomeFragment.a(this.a).get(paramInt);
+          if ((localFragment instanceof WSBaseHomeFragment)) {
+            ((WSBaseHomeFragment)localFragment).a(WSHomeFragment.a);
+          }
+          paramInt += 1;
+        }
+      }
+    }
   }
   
-  public void a() {}
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if ((!WSHomeFragment.a(this.a)) || (WSHomeFragment.a(this.a) == null) || (WSHomeFragment.b(this.a) == null)) {
+      return;
+    }
+    switch (paramInt1)
+    {
+    default: 
+      return;
+    case 0: 
+      WSHomeFragment.a(this.a).b(paramFloat, true);
+      WSHomeFragment.b(this.a).a(paramFloat, true);
+      return;
+    }
+    WSHomeFragment.a(this.a).a(paramFloat, true);
+    WSHomeFragment.b(this.a).b(paramFloat, true);
+  }
   
-  public void a(M paramM) {}
+  public void onPageSelected(int paramInt)
+  {
+    WSHomeFragment.a = paramInt;
+    WSHomeFragment.a(this.a, true);
+    if (WSHomeFragment.a == 0)
+    {
+      tlv.c("focus");
+      localWSPublicAccReport = WSPublicAccReport.getInstance();
+      if (WSHomeFragment.a(this.a) == null)
+      {
+        paramInt = 0;
+        localWSPublicAccReport.reportAttentionClick(paramInt);
+        WSHomeFragment.a(this.a, 0);
+        WSPublicAccReport.getInstance().reportPageVisitEnter("focus");
+        WSPublicAccReport.getInstance().reportPageVisitExit("feeds");
+      }
+    }
+    while (WSHomeFragment.a != 1) {
+      for (;;)
+      {
+        WSPublicAccReport localWSPublicAccReport;
+        return;
+        paramInt = WSHomeFragment.a(this.a).a();
+      }
+    }
+    tlv.c("feeds");
+    WSPublicAccReport.getInstance().reportRecommendClick();
+    WSPublicAccReport.getInstance().reportPageVisitEnter("feeds");
+    WSPublicAccReport.getInstance().reportPageVisitExit("focus");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbg
  * JD-Core Version:    0.7.0.1
  */

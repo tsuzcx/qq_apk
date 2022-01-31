@@ -1,34 +1,34 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter;
 
-import ajya;
-import bcql;
-import bkgd;
-import bkgs;
-import bkgu;
+import alpo;
+import bmrn;
+import bmsc;
+import bmse;
+import com.tencent.mobileqq.widget.QQToast;
 import dov.com.qq.im.capture.view.QIMCommonLoadingView;
 
 public class InformationFaceAdapter$DownloadProgressCallback$2
   implements Runnable
 {
-  public InformationFaceAdapter$DownloadProgressCallback$2(bkgu parambkgu, boolean paramBoolean, bkgd parambkgd) {}
+  public InformationFaceAdapter$DownloadProgressCallback$2(bmse parambmse, boolean paramBoolean, bmrn parambmrn) {}
   
   public void run()
   {
-    bkgu.a(this.jdField_a_of_type_Bkgu).setVisibility(8);
+    bmse.a(this.jdField_a_of_type_Bmse).setVisibility(8);
     if (this.jdField_a_of_type_Boolean) {
-      bkgs.a(this.jdField_a_of_type_Bkgu.a, bkgu.a(this.jdField_a_of_type_Bkgu), bkgu.a(this.jdField_a_of_type_Bkgu), this.jdField_a_of_type_Bkgd);
+      bmsc.a(this.jdField_a_of_type_Bmse.a, bmse.a(this.jdField_a_of_type_Bmse), this.jdField_a_of_type_Bmrn);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bkgu.a();
+      this.jdField_a_of_type_Bmse.a();
       return;
-      bcql.a(bkgu.a(this.jdField_a_of_type_Bkgu).getContext(), 0, ajya.a(2131705768), 0).a();
+      QQToast.a(bmse.a(this.jdField_a_of_type_Bmse).getContext(), 0, alpo.a(2131706140), 0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.InformationFaceAdapter.DownloadProgressCallback.2
  * JD-Core Version:    0.7.0.1
  */

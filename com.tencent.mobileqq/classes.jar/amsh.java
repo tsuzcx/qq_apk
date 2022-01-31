@@ -1,80 +1,58 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.ar.ArConfigService.6.1;
+import com.tencent.mobileqq.ar.ArConfigService.6.2;
+import com.tencent.mobileqq.ar.ArConfigService.6.3;
 import com.tencent.qphone.base.util.QLog;
 
 public class amsh
-  extends ampa<amsg>
+  implements amzd
 {
-  public int a()
-  {
-    return 168;
-  }
+  public amsh(ArConfigService paramArConfigService) {}
   
-  @NonNull
-  public amsg a(int paramInt)
-  {
-    return new amsg();
-  }
-  
-  @Nullable
-  public amsg a(amph[] paramArrayOfamph)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfamph != null)
-    {
-      localObject1 = localObject2;
-      if (paramArrayOfamph.length > 0)
-      {
-        localObject1 = localObject2;
-        if (paramArrayOfamph[0] != null)
-        {
-          localObject1 = amsg.a(paramArrayOfamph[0].a);
-          paramArrayOfamph = BaseApplicationImpl.getApplication().getRuntime();
-          if ((paramArrayOfamph instanceof QQAppInterface)) {
-            ((FlashChatManager)((QQAppInterface)paramArrayOfamph).getManager(217)).b(((amsg)localObject1).a);
-          }
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public Class<amsg> a()
-  {
-    return amsg.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amsg paramamsg)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("FlashChatConfProcessor", 2, "onUpdate " + paramamsg.toString());
+      QLog.d("ArConfig_ArConfigService", 2, "mARCloudResourceDownloadCallback");
     }
   }
   
-  public int b()
+  public void a(long paramLong1, long paramLong2)
   {
-    return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadUpdateProgress curOffset=%s totalLen=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+    }
+    ArConfigService.c(this.a, (int)(100L * paramLong1 / paramLong2));
+    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
+    if (!ArConfigService.e(this.a)) {
+      ArConfigService.a(this.a).post(new ArConfigService.6.1(this, i));
+    }
   }
   
-  public boolean b()
+  public void a(boolean paramBoolean, amze paramamze)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArConfigService", 2, String.format("onARResourceDownloadComplete mARCloudResourceDownloadCallback result=%s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    if (paramBoolean)
+    {
+      ArConfigService.d(this.a, true);
+      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
+        ArConfigService.a(this.a).post(new ArConfigService.6.2(this));
+      }
+    }
+    while (ArConfigService.e(this.a)) {
+      return;
+    }
+    ArConfigService.a(this.a).post(new ArConfigService.6.3(this));
+    ArConfigService.a(this.a, true);
   }
   
-  public boolean c()
-  {
-    return true;
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsh
  * JD-Core Version:    0.7.0.1
  */

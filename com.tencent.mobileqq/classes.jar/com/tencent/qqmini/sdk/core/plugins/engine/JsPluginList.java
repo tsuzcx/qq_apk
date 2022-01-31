@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import belq;
-import betc;
+import bglg;
 import com.tencent.qqmini.sdk.core.plugins.IJsPlugin;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,9 +18,11 @@ public class JsPluginList
   private static final String EXT_JS_PLUGIN = "com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope";
   private static final String GAME_JS_PLUGIN = "com.tencent.qqmini.sdk.core.generated.GameJsPluginScope";
   private static final String GENERATED_PACKAGE = "com.tencent.qqmini.sdk.core.generated.";
+  private static final String MAP_JS_PLUGIN = "com.tencent.qqmini.sdk.core.generated.MapJsPluginScope";
   private static final String PLUGIN_EVENTS = "PLUGIN_EVENTS";
   private static final String PRELOAD_PLUGINS = "PRELOAD_PLUGINS";
   private static final String SDK_JS_PLUGIN = "com.tencent.qqmini.sdk.core.generated.SdkJsPluginScope";
+  private static final String SECONDARY_PLUGIN_EVENTS = "SECONDARY_PLUGIN_EVENTS";
   private static final String TAG = "JsPluginList";
   private static Map<String, String> sPluginScope = new HashMap();
   
@@ -41,7 +43,7 @@ public class JsPluginList
       {
         String str2 = (String)((Iterator)localObject).next();
         if (paramMap.containsKey(str2)) {
-          betc.c("JsPluginList", "registerJsPlugin, conflict event:" + str2);
+          QMLog.w("JsPluginList", "register JsPlugin, conflict event:" + str2);
         } else {
           paramMap.put(str2, str1);
         }
@@ -58,6 +60,27 @@ public class JsPluginList
     }
   }
   
+  private static void fillSecondaryEventPluginMap(String paramString, Map<String, String> paramMap)
+  {
+    Iterator localIterator = getSecondaryPluginEventsByScope(paramString).entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Map.Entry)localIterator.next();
+      String str1 = (String)((Map.Entry)localObject).getKey();
+      localObject = ((Map)((Map.Entry)localObject).getValue()).keySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str2 = (String)((Iterator)localObject).next();
+        if (paramMap.containsKey(str2)) {
+          QMLog.w("JsPluginList", "register Secondary JsPlugin, conflict event:" + str2);
+        } else {
+          paramMap.put(str2, str1);
+        }
+      }
+      sPluginScope.put(str1, paramString);
+    }
+  }
+  
   public static Map<String, String> getEventPluginMap(boolean paramBoolean)
   {
     HashMap localHashMap = new HashMap();
@@ -66,8 +89,9 @@ public class JsPluginList
     for (String str = "com.tencent.qqmini.sdk.core.generated.GameJsPluginScope";; str = "com.tencent.qqmini.sdk.core.generated.AppJsPluginScope")
     {
       fillEventPluginMap(str, localHashMap);
+      fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.MapJsPluginScope", localHashMap);
       fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope", localHashMap);
-      betc.b("JsPluginList", "Registered events size: " + localHashMap.keySet().size());
+      QMLog.i("JsPluginList", "Registered events size: " + localHashMap.keySet().size());
       return localHashMap;
     }
   }
@@ -78,7 +102,7 @@ public class JsPluginList
       return null;
     }
     String str = "EVENT_HANDLERS_" + paramIJsPlugin.getClass().getSimpleName();
-    paramIJsPlugin = belq.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
+    paramIJsPlugin = bglg.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
     if ((paramIJsPlugin instanceof Map))
     {
       paramIJsPlugin = ((Map)paramIJsPlugin).get(paramString);
@@ -91,7 +115,7 @@ public class JsPluginList
   
   private static Map<String, Map> getPluginEventsByScope(String paramString)
   {
-    paramString = belq.a(paramString, "PLUGIN_EVENTS");
+    paramString = bglg.a(paramString, "PLUGIN_EVENTS");
     if ((paramString instanceof Map)) {
       return (Map)paramString;
     }
@@ -113,17 +137,40 @@ public class JsPluginList
   
   private static List<String> getPreloadPluginsByScope(String paramString)
   {
-    paramString = belq.a(paramString, "PRELOAD_PLUGINS");
+    paramString = bglg.a(paramString, "PRELOAD_PLUGINS");
     if ((paramString instanceof List)) {
       return (List)paramString;
     }
     return new ArrayList();
   }
   
+  public static Map<String, String> getSecondaryEventPluginMap(boolean paramBoolean)
+  {
+    HashMap localHashMap = new HashMap();
+    fillSecondaryEventPluginMap("com.tencent.qqmini.sdk.core.generated.SdkJsPluginScope", localHashMap);
+    if (paramBoolean) {}
+    for (String str = "com.tencent.qqmini.sdk.core.generated.GameJsPluginScope";; str = "com.tencent.qqmini.sdk.core.generated.AppJsPluginScope")
+    {
+      fillSecondaryEventPluginMap(str, localHashMap);
+      fillSecondaryEventPluginMap("com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope", localHashMap);
+      QMLog.i("JsPluginList", "Registered secondary events size: " + localHashMap.keySet().size());
+      return localHashMap;
+    }
+  }
+  
+  private static Map<String, Map> getSecondaryPluginEventsByScope(String paramString)
+  {
+    paramString = bglg.a(paramString, "SECONDARY_PLUGIN_EVENTS");
+    if ((paramString instanceof Map)) {
+      return (Map)paramString;
+    }
+    return new HashMap();
+  }
+  
   public static Map<String, String> getServiceInjectors(IJsPlugin paramIJsPlugin)
   {
     String str = "SERVICE_INJECTORS_" + paramIJsPlugin.getClass().getSimpleName();
-    paramIJsPlugin = belq.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
+    paramIJsPlugin = bglg.a((String)sPluginScope.get(paramIJsPlugin.getClass().getName()), str);
     if ((paramIJsPlugin instanceof Map)) {
       return (Map)paramIJsPlugin;
     }
@@ -132,7 +179,7 @@ public class JsPluginList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.engine.JsPluginList
  * JD-Core Version:    0.7.0.1
  */

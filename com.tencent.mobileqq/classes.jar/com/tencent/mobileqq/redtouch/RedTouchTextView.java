@@ -19,7 +19,7 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.widget.TextView;
-import bbef;
+import bdda;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -304,7 +304,7 @@ public class RedTouchTextView
             }
             j = getWidth() - a(this.jdField_a_of_type_JavaUtilList, i) - a(0);
             k = getHeight() / 2 - this.jdField_b_of_type_Int / 2;
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849297);
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849728);
             this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(j, k, this.jdField_b_of_type_Int + j, this.jdField_b_of_type_Int + k);
             this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
           }
@@ -346,7 +346,7 @@ public class RedTouchTextView
                 float f2 = ((Paint.FontMetrics)localObject4).top;
                 if (k != 0)
                 {
-                  localObject4 = getResources().getDrawable(2130849301);
+                  localObject4 = getResources().getDrawable(2130849732);
                   ((Drawable)localObject4).getBounds();
                   ((Drawable)localObject4).setBounds(m, i3, localRect.right, localRect.bottom);
                   ((Drawable)localObject4).draw(paramCanvas);
@@ -388,7 +388,7 @@ public class RedTouchTextView
                 if (QLog.isColorLevel()) {
                   QLog.d("RedTouchTextView", 2, "draw redtouch img gif ");
                 }
-                localObject2 = getResources().getDrawable(2130839736);
+                localObject2 = getResources().getDrawable(2130840084);
                 localObject3 = URLDrawable.URLDrawableOptions.obtain();
                 ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject2);
                 ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject2);
@@ -415,7 +415,7 @@ public class RedTouchTextView
               }
               if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)
               {
-                localObject2 = getResources().getDrawable(2130839736);
+                localObject2 = getResources().getDrawable(2130840084);
                 ((Drawable)localObject2).setBounds(n, i1, this.jdField_a_of_type_Int + n, this.jdField_a_of_type_Int + i1);
                 ((Drawable)localObject2).draw(paramCanvas);
               }
@@ -423,7 +423,7 @@ public class RedTouchTextView
               {
                 if (k == 1)
                 {
-                  localObject2 = getResources().getDrawable(2130849297);
+                  localObject2 = getResources().getDrawable(2130849728);
                   ((Drawable)localObject2).setBounds(getWidth() - a(0) - a(9), i1 - a(4), getWidth() - a(0), i1 + a(5));
                   ((Drawable)localObject2).draw(paramCanvas);
                 }
@@ -716,7 +716,7 @@ public class RedTouchTextView
     {
       paramFile = paramFile.getAbsolutePath();
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inSampleSize = ((int)bbef.a(new BufferedInputStream(new FileInputStream(paramFile)), this.c, this.c));
+      localOptions.inSampleSize = ((int)bdda.a(new BufferedInputStream(new FileInputStream(paramFile)), this.c, this.c));
       paramFile = SafeBitmapFactory.decodeStream(new BufferedInputStream(new FileInputStream(paramFile)), null, localOptions);
       return paramFile;
     }
@@ -778,7 +778,7 @@ public class RedTouchTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchTextView
  * JD-Core Version:    0.7.0.1
  */

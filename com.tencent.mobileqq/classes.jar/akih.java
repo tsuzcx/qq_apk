@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.app.TroopManager;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 
-public class akih
+public abstract interface akih
 {
-  public long a;
-  public String a;
-  
-  public akih(TroopManager paramTroopManager, String paramString, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  public abstract void a(Canvas paramCanvas, Paint paramPaint);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akih
  * JD-Core Version:    0.7.0.1
  */

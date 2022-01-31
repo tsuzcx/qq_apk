@@ -1,37 +1,38 @@
-import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoInnerStatusListener;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class bcur
-  implements IVideoInnerStatusListener
+final class bcur
+  implements DownloadParams.DecodeHandler
 {
-  bcur(bcuq parambcuq) {}
-  
-  public void notifyVideoClose(int paramInt)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.a.b();
-  }
-  
-  public void notifyVideoSeek(int paramInt)
-  {
-    if (bcuq.a(this.a) != null)
-    {
-      paramInt = (int)(paramInt * bcuq.a(this.a).c() / 100.0D);
-      bcuq.a(this.a, paramInt);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
     }
-  }
-  
-  public void notifyVideoStart()
-  {
-    bcuq.a(this.a);
-  }
-  
-  public void notifyVideoStop()
-  {
-    bcuq.b(this.a);
+    if (paramBitmap == null) {
+      return null;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
+    {
+      paramDownloadParams = (int[])paramDownloadParams;
+      float f2 = bdcb.a();
+      float f1 = f2;
+      if (f2 < 0.01F) {
+        f1 = 1.0F;
+      }
+      paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
+      paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
+      return bdda.c(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+    }
+    return bdda.c(paramBitmap, 50, 50);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcur
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,73 @@
-import android.media.MediaCodec.BufferInfo;
-import java.util.ArrayList;
-
 public class awbe
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private String jdField_b_of_type_JavaLangString;
-  private ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  public static final String a;
+  public static final String[] a;
+  public static final String b;
+  public static final String c;
+  public static final String d;
+  public static final String e;
+  public static final String f;
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public int c;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
   
-  public awbe(String paramString, int paramInt)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_JavaLangString + "segment" + paramInt + ".mp4");
+    jdField_a_of_type_JavaLangString = alpo.a(2131707016);
+    jdField_b_of_type_JavaLangString = alpo.a(2131707015);
+    jdField_c_of_type_JavaLangString = alpo.a(2131707014);
+    d = alpo.a(2131707018);
+    e = alpo.a(2131707017);
+    f = alpo.a(2131707019);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "uin", "uin_type", "senderUin", "msg_type", "msgid", "msgTime", "is_send", "msgContent", "media_path", "mediaStatus" };
   }
   
-  public int a()
+  private awbe() {}
+  
+  public awbe(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, long paramLong, boolean paramBoolean, String paramString4, String paramString5, int paramInt3)
   {
-    return this.jdField_a_of_type_Int;
+    this.g = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.h = paramString2;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.i = paramString3;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.j = paramString4;
+    this.k = paramString5;
+    this.jdField_c_of_type_Int = paramInt3;
   }
   
-  public long a()
+  public Object[] a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(0)).longValue();
-    }
-    return 0L;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void a(avzd paramavzd)
-  {
-    paramavzd = paramavzd.a;
-    this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramavzd.presentationTimeUs));
-    this.jdField_b_of_type_JavaUtilArrayList.add(Integer.valueOf(paramavzd.flags));
+    return new Object[] { this.g, Integer.valueOf(this.jdField_a_of_type_Int), this.h, Integer.valueOf(this.jdField_b_of_type_Int), this.i, Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(this.jdField_a_of_type_Boolean), this.j, this.k, Integer.valueOf(this.jdField_c_of_type_Int) };
   }
   
   public String toString()
   {
-    return "SegmentInfo{mSegmentPath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mFrames=" + this.jdField_a_of_type_JavaUtilArrayList + ", mFlags=" + this.jdField_b_of_type_JavaUtilArrayList + '}';
+    StringBuilder localStringBuilder = new StringBuilder(200);
+    localStringBuilder.append(this.g).append("; ");
+    localStringBuilder.append(this.jdField_b_of_type_Int).append("; ");
+    localStringBuilder.append(this.h).append("; ");
+    localStringBuilder.append(this.i).append("; ");
+    localStringBuilder.append(this.jdField_a_of_type_Long).append(";");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean).append("; ");
+    localStringBuilder.append(this.j).append("; ");
+    localStringBuilder.append(this.k).append("; ");
+    localStringBuilder.append(this.jdField_c_of_type_Int).append(". ");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awbe
  * JD-Core Version:    0.7.0.1
  */

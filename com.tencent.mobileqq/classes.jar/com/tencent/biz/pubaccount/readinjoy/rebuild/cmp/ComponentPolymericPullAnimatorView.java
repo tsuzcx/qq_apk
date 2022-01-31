@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -25,17 +25,17 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
-import nol;
-import onh;
-import oou;
+import nrt;
 import org.json.JSONObject;
-import pau;
-import pyc;
-import qbn;
-import qbo;
-import qbp;
-import qbq;
-import vpm;
+import ors;
+import otf;
+import pgd;
+import qew;
+import qlj;
+import qlk;
+import qll;
+import qlm;
+import xee;
 
 public class ComponentPolymericPullAnimatorView
   extends LinearLayout
@@ -46,45 +46,45 @@ public class ComponentPolymericPullAnimatorView
   TextView jdField_a_of_type_AndroidWidgetTextView;
   ComponentPolymericView jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView;
   KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  pau jdField_a_of_type_Pau;
+  pgd jdField_a_of_type_Pgd;
   View jdField_b_of_type_AndroidViewView;
   TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public ComponentPolymericPullAnimatorView(Context paramContext, pau parampau)
+  public ComponentPolymericPullAnimatorView(Context paramContext, pgd parampgd)
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Pau = parampau;
+    this.jdField_a_of_type_Pgd = parampgd;
     b();
   }
   
   private void b()
   {
     setOrientation(1);
-    Object localObject1 = this.jdField_a_of_type_Pau.a();
+    Object localObject1 = this.jdField_a_of_type_Pgd.a();
     Object localObject2;
-    if ((onh.o((BaseArticleInfo)localObject1)) || (onh.p((BaseArticleInfo)localObject1)))
+    if ((ors.o((BaseArticleInfo)localObject1)) || (ors.p((BaseArticleInfo)localObject1)))
     {
-      localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559853, null);
+      localObject2 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559948, null);
       addView((View)localObject2);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)((View)localObject2).findViewById(2131367679));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131377350));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131370397));
-      this.jdField_b_of_type_AndroidViewView = ((View)localObject2).findViewById(2131365268);
-      this.jdField_a_of_type_AndroidViewView = ((View)localObject2).findViewById(2131364656);
-      if (!oou.c(this.jdField_a_of_type_Pau.e())) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)((View)localObject2).findViewById(2131367808));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131377884));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131370702));
+      this.jdField_b_of_type_AndroidViewView = ((View)localObject2).findViewById(2131365353);
+      this.jdField_a_of_type_AndroidViewView = ((View)localObject2).findViewById(2131364735);
+      if (!otf.c(this.jdField_a_of_type_Pgd.e())) {
         break label373;
       }
-      localObject1 = new LinearLayout.LayoutParams(-1, vpm.b(getContext(), 45.0F));
+      localObject1 = new LinearLayout.LayoutParams(-1, xee.b(getContext(), 45.0F));
       this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Int = 2130842274;
+      this.jdField_a_of_type_Int = 2130842443;
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageDrawable(getResources().getDrawable(this.jdField_a_of_type_Int));
-      localObject1 = new RelativeLayout.LayoutParams(vpm.b(getContext(), 18.0F), vpm.b(getContext(), 18.0F));
-      ((RelativeLayout.LayoutParams)localObject1).setMargins(vpm.b(getContext(), 12.0F), 0, vpm.b(getContext(), 6.0F), 0);
+      localObject1 = new RelativeLayout.LayoutParams(xee.b(getContext(), 18.0F), xee.b(getContext(), 18.0F));
+      ((RelativeLayout.LayoutParams)localObject1).setMargins(xee.b(getContext(), 12.0F), 0, xee.b(getContext(), 6.0F), 0);
       ((RelativeLayout.LayoutParams)localObject1).addRule(15);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131702287));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131702659));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#262626"));
       this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(Typeface.defaultFromStyle(1));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, Utils.rp2px(18.0D));
@@ -101,20 +101,20 @@ public class ComponentPolymericPullAnimatorView
       addView((View)localObject1);
       return;
       label373:
-      localObject2 = new LinearLayout.LayoutParams(-1, vpm.b(getContext(), 36.0F));
+      localObject2 = new LinearLayout.LayoutParams(-1, xee.b(getContext(), 36.0F));
       this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
       if (((ArticleInfo)localObject1).mNewPolymericInfo.jdField_a_of_type_Int == 12)
       {
-        this.jdField_a_of_type_Int = 2130842455;
+        this.jdField_a_of_type_Int = 2130842627;
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageDrawable(getResources().getDrawable(this.jdField_a_of_type_Int));
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131702317));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131702689));
       }
       else if (((ArticleInfo)localObject1).mNewPolymericInfo.jdField_a_of_type_Int == 13)
       {
-        this.jdField_a_of_type_Int = 2130842401;
+        this.jdField_a_of_type_Int = 2130842572;
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setImageDrawable(getResources().getDrawable(this.jdField_a_of_type_Int));
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131702313));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131702685));
       }
     }
   }
@@ -126,15 +126,15 @@ public class ComponentPolymericPullAnimatorView
   
   public void a()
   {
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pau.a();
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pgd.a();
     JSONObject localJSONObject;
-    if ((onh.o(localArticleInfo)) || (onh.p(localArticleInfo))) {
+    if ((ors.o(localArticleInfo)) || (ors.p(localArticleInfo))) {
       localJSONObject = new JSONObject();
     }
     for (;;)
     {
       Object localObject2;
-      qbo localqbo;
+      qlk localqlk;
       try
       {
         StringBuilder localStringBuilder = new StringBuilder();
@@ -143,11 +143,11 @@ public class ComponentPolymericPullAnimatorView
         if (!localIterator.hasNext()) {
           break label369;
         }
-        localqbo = (qbo)localIterator.next();
-        if (!onh.o(localArticleInfo)) {
+        localqlk = (qlk)localIterator.next();
+        if (!ors.o(localArticleInfo)) {
           break label346;
         }
-        localStringBuilder.append(localqbo.jdField_a_of_type_Qbq.b).append(",");
+        localStringBuilder.append(localqlk.jdField_a_of_type_Qlm.b).append(",");
         continue;
         localObject2 = localArticleInfo.mFeedId + "";
       }
@@ -157,10 +157,10 @@ public class ComponentPolymericPullAnimatorView
       }
       label119:
       Object localObject1;
-      if (onh.o(localArticleInfo))
+      if (ors.o(localArticleInfo))
       {
         localObject1 = "1";
-        nol.a(null, "CliOper", "", "", "0X8009828", "0X8009828", 0, 0, (String)localObject2, (String)localObject1, localArticleInfo.mStrategyId + "", localJSONObject.toString(), false);
+        nrt.a(null, "CliOper", "", "", "0X8009828", "0X8009828", 0, 0, (String)localObject2, (String)localObject1, localArticleInfo.mStrategyId + "", localJSONObject.toString(), false);
         if (TextUtils.isEmpty(localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaLangString)) {}
       }
       try
@@ -174,15 +174,15 @@ public class ComponentPolymericPullAnimatorView
           this.jdField_b_of_type_AndroidWidgetTextView.setText(localArticleInfo.mNewPolymericInfo.c);
         }
         if (!TextUtils.isEmpty(localArticleInfo.mNewPolymericInfo.d)) {
-          this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new pyc(this, localArticleInfo, localJSONObject));
+          this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new qew(this, localArticleInfo, localJSONObject));
         }
         return;
         label346:
-        ((StringBuilder)localObject2).append(localqbo.jdField_a_of_type_Qbp.jdField_a_of_type_JavaLangString).append(",");
+        ((StringBuilder)localObject2).append(localqlk.jdField_a_of_type_Qll.jdField_a_of_type_JavaLangString).append(",");
         continue;
         label369:
         ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
-        localJSONObject.put("channel_id", this.jdField_a_of_type_Pau.e());
+        localJSONObject.put("channel_id", this.jdField_a_of_type_Pgd.e());
         localJSONObject.put("rowkey", ((StringBuilder)localObject2).toString());
         localJSONObject.put("topicid", ((StringBuilder)localObject1).toString());
         break label119;
@@ -200,7 +200,7 @@ public class ComponentPolymericPullAnimatorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericPullAnimatorView
  * JD-Core Version:    0.7.0.1
  */

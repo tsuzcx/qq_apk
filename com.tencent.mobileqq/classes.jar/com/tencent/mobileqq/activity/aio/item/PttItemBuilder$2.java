@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adwp;
+import aftc;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class PttItemBuilder$2
   implements Runnable
 {
-  public PttItemBuilder$2(adwp paramadwp, MessageRecord paramMessageRecord) {}
+  public PttItemBuilder$2(aftc paramaftc, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class PttItemBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

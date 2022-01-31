@@ -1,23 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.AuthorityAccountView;
-
-public class bcyi
-  implements View.OnClickListener
+class bcyi
 {
-  public bcyi(AuthorityAccountView paramAuthorityAccountView) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof String))) {
-      this.a.b((String)paramView);
-    }
-  }
+  bcye jdField_a_of_type_Bcye;
+  bcyg jdField_a_of_type_Bcyg;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcyi
  * JD-Core Version:    0.7.0.1
  */

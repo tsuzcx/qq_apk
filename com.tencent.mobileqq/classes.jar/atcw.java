@@ -1,28 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class atcw
-  implements DialogInterface.OnClickListener
+class atcw
+  extends WtloginListener
 {
-  public atcw(GameRoomInviteActivity paramGameRoomInviteActivity, oidb_0x8e4.RspBody paramRspBody) {}
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
+  private String d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public atcw(atcu paramatcu, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    paramDialogInterface = this.jdField_a_of_type_TencentImOidbCmd0x8e4Oidb_0x8e4$RspBody.poi_info;
-    String str = paramDialogInterface.bytes_uid.get().toStringUtf8();
-    atdy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity, HotChatInfo.createHotChat(paramDialogInterface, false, 0), paramDialogInterface.uint32_group_code.get(), str, paramDialogInterface.bytes_name.get().toStringUtf8());
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+  }
+  
+  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (paramInt2 == 0)
+    {
+      this.jdField_a_of_type_Atcu.a(this.jdField_a_of_type_JavaLangString, paramWUserSigInfo, this.b, paramInt1, this.c, this.d);
+      return;
+    }
+    this.jdField_a_of_type_Atcu.b(this.b, "getTicket fail code = " + paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcw
  * JD-Core Version:    0.7.0.1
  */

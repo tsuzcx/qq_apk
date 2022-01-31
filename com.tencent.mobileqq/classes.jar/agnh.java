@@ -1,29 +1,24 @@
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class agnh
-  implements bfos
+class agnh
+  implements DialogInterface.OnClickListener
 {
-  public agnh(PhotoListActivity paramPhotoListActivity) {}
+  agnh(agmy paramagmy) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((PhotoListActivity.b(this.a)) && (paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView != null) && (this.a.jdField_a_of_type_Agnt != null) && (this.a.c != null)) {
-      PhotoListActivity.a(this.a);
-    }
-    if (paramInt == 0)
-    {
-      zzz.a().a("list_photo", false);
-      return;
-    }
-    zzz.a().a("list_photo");
+    paramDialogInterface = new Intent(this.a.a(), QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "https://qun.qq.com/qqweb/m/nearby/charm_level/index.html?_wv=1027&_bid=2747");
+    this.a.a.startActivity(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agnh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,20 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
 
-class aqbk
+public class aqbk
   implements DialogInterface.OnClickListener
 {
-  aqbk(aqbe paramaqbe) {}
+  public aqbk(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case -2: 
-      this.a.n();
-      return;
-    }
-    this.a.o();
+    ExtendFriendLimitChatMatchFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbk
  * JD-Core Version:    0.7.0.1
  */

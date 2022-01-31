@@ -1,6 +1,6 @@
 package com.tencent.thumbplayer.api;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public abstract interface ITPModuleLoader
 {
@@ -8,7 +8,7 @@ public abstract interface ITPModuleLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.api.ITPModuleLoader
  * JD-Core Version:    0.7.0.1
  */

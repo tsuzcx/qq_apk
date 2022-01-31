@@ -1,39 +1,18 @@
-import android.os.Build.VERSION;
-import android.os.HandlerThread;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import javax.annotation.Nullable;
 
-public class sna
+public abstract interface sna
 {
-  private HandlerThread a;
+  public abstract InputStream a(@Nullable InputStream paramInputStream);
   
-  public HandlerThread a()
-  {
-    if (this.a == null) {
-      this.a = new HandlerThread("WeishiHandlerThread");
-    }
-    return this.a;
-  }
+  public abstract void a();
   
-  public void a()
-  {
-    if (this.a != null)
-    {
-      if (Build.VERSION.SDK_INT < 18) {
-        break label29;
-      }
-      this.a.quitSafely();
-    }
-    for (;;)
-    {
-      this.a = null;
-      return;
-      label29:
-      this.a.quit();
-    }
-  }
+  public abstract void a(HttpURLConnection paramHttpURLConnection, @Nullable String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sna
  * JD-Core Version:    0.7.0.1
  */

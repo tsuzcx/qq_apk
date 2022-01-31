@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
-import adet;
-import adeu;
-import adey;
+import aewv;
+import aeww;
+import aexa;
 import android.graphics.Path;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -14,13 +14,13 @@ class HalfAlgorithm$TransPathJob
   implements Runnable
 {
   private int jdField_a_of_type_Int;
-  private WeakReference<adey> jdField_a_of_type_JavaLangRefWeakReference;
-  private List<adeu> jdField_a_of_type_JavaUtilList;
+  private WeakReference<aexa> jdField_a_of_type_JavaLangRefWeakReference;
+  private List<aeww> jdField_a_of_type_JavaUtilList;
   
-  public HalfAlgorithm$TransPathJob(int paramInt, List<adeu> paramList, adey paramadey)
+  public HalfAlgorithm$TransPathJob(int paramInt, List<aeww> paramList, aexa paramaexa)
   {
     this.jdField_a_of_type_Int = paramList;
-    this.jdField_a_of_type_JavaUtilList = paramadey;
+    this.jdField_a_of_type_JavaUtilList = paramaexa;
     Object localObject;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject);
   }
@@ -31,9 +31,9 @@ class HalfAlgorithm$TransPathJob
     {
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        localObject = (adey)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        localObject = (aexa)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         if (localObject != null) {
-          ((adey)localObject).a(this.jdField_a_of_type_Int, false, null, null);
+          ((aexa)localObject).a(this.jdField_a_of_type_Int, false, null, null);
         }
       }
       return;
@@ -46,14 +46,14 @@ class HalfAlgorithm$TransPathJob
     ArrayList localArrayList2 = new ArrayList();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     Object localObject = null;
-    adeu localadeu;
+    aeww localaeww;
     if (localIterator.hasNext())
     {
-      localadeu = (adeu)localIterator.next();
+      localaeww = (aeww)localIterator.next();
       if (localObject == null) {
         break label488;
       }
-      localadeu.b((adeu)localObject);
+      localaeww.b((aeww)localObject);
       localObject = null;
     }
     label321:
@@ -61,7 +61,7 @@ class HalfAlgorithm$TransPathJob
     label488:
     for (;;)
     {
-      if (HalfAlgorithm.a(this.this$0, localadeu.a.jdField_a_of_type_Float, localadeu.a.b, localadeu.a.c, localadeu.a.jdField_a_of_type_Long, localadeu.c.jdField_a_of_type_Float, localadeu.c.b, localadeu.b.jdField_a_of_type_Float, localadeu.b.b, localadeu.b.c, localadeu.b.jdField_a_of_type_Long, localPath2, localArrayList2)) {
+      if (HalfAlgorithm.a(this.this$0, localaeww.a.jdField_a_of_type_Float, localaeww.a.b, localaeww.a.c, localaeww.a.jdField_a_of_type_Long, localaeww.c.jdField_a_of_type_Float, localaeww.c.b, localaeww.b.jdField_a_of_type_Float, localaeww.b.b, localaeww.b.c, localaeww.b.jdField_a_of_type_Long, localPath2, localArrayList2)) {
         if (localArrayList2.size() > 0)
         {
           localPath1.addPath(localPath2);
@@ -76,9 +76,9 @@ class HalfAlgorithm$TransPathJob
         QLog.d("TransPathJob", 2, "TransPathJob segment == 0:" + System.currentTimeMillis());
         break label321;
         QLog.d("TransPathJob", 2, "TransPathJob no segment:" + System.currentTimeMillis());
-        localObject = localadeu;
+        localObject = localaeww;
       }
-      localObject = (adey)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localObject = (aexa)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       int i;
       if (localObject != null)
       {
@@ -89,7 +89,7 @@ class HalfAlgorithm$TransPathJob
       }
       for (boolean bool = true;; bool = false)
       {
-        ((adey)localObject).a(i, bool, localPath1, localArrayList1);
+        ((aexa)localObject).a(i, bool, localPath1, localArrayList1);
         QLog.d("TransPathJob", 2, "TransPathJob end:" + this.jdField_a_of_type_Int + "-" + System.currentTimeMillis());
         return;
       }
@@ -98,7 +98,7 @@ class HalfAlgorithm$TransPathJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.HalfAlgorithm.TransPathJob
  * JD-Core Version:    0.7.0.1
  */

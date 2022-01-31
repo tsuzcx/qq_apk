@@ -1,32 +1,66 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.ContentObserver;
+import android.os.Handler;
+import android.provider.Settings.System;
+import com.tencent.qphone.base.util.QLog;
 
 public class qze
-  implements View.OnClickListener
+  extends ContentObserver
 {
-  long jdField_a_of_type_Long = 0L;
-  
-  public qze(BaseTabbar paramBaseTabbar, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public qze(qzb paramqzb, Handler paramHandler)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 300L)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a.a(this.jdField_a_of_type_Int);
-      }
-      return;
+    super(paramHandler);
+  }
+  
+  public ContentResolver a()
+  {
+    if (this.a.a() != null) {
+      return this.a.a().getContentResolver();
     }
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
+    return null;
+  }
+  
+  public void a()
+  {
+    if (a() != null) {
+      a().registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
+    }
+  }
+  
+  public void b()
+  {
+    if (a() != null) {
+      a().unregisterContentObserver(this);
+    }
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    super.onChange(paramBoolean);
+    if (this.a.a() == null) {}
+    for (;;)
+    {
+      return;
+      int i = Settings.System.getInt(this.a.a().getContentResolver(), "accelerometer_rotation", -1);
+      if (i == 1)
+      {
+        qzb.a(this.a, true);
+        this.a.a(true);
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d(qzb.a, 2, "RotationObserver.onChange() : rotateState=" + i);
+        return;
+        qzb.a(this.a, false);
+        this.a.a(false);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qze
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,38 @@
-import NS_MINI_APP_MISC.MISC.StTrans4RoomidReq;
-import NS_MINI_APP_MISC.MISC.StTrans4RoomidRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import org.json.JSONObject;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.open.agent.JoinTroopPreVerificationFragment;
 
 public class bfal
-  extends bfau
+  extends amab
 {
-  private MISC.StTrans4RoomidReq a = new MISC.StTrans4RoomidReq();
+  public bfal(JoinTroopPreVerificationFragment paramJoinTroopPreVerificationFragment) {}
   
-  public bfal(String paramString1, String paramString2)
+  protected void e(boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.a.appid.set(paramString1);
-    this.a.groupid.set(paramString2);
-  }
-  
-  protected String a()
-  {
-    return "mini_app_misc";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    MISC.StTrans4RoomidRsp localStTrans4RoomidRsp = new MISC.StTrans4RoomidRsp();
-    try
+    this.a.d();
+    QLog.i("TroopAbility.PreVerification", 1, "onGetJoinTroopTokenForThirdApp, isSuccess: " + paramBoolean + " token: " + paramString1 + ", troopUin: " + paramString2);
+    if (paramBoolean)
     {
-      localStTrans4RoomidRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStTrans4RoomidRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("openId", localStTrans4RoomidRsp.openid.get());
-        paramArrayOfByte.put("tinyId", localStTrans4RoomidRsp.tinyid.get());
-        paramArrayOfByte.put("roomId", localStTrans4RoomidRsp.roomid.get());
-        return paramArrayOfByte;
-      }
-      betc.a("GetTransRoomIdRequest", "onResponse fail.rsp = null");
-      return null;
+      paramString2 = TroopInfoActivity.a(String.valueOf(paramString2), 32);
+      paramString2.putString("authSig", paramString1);
+      paramString2.putString("appid", this.a.c);
+      paramString2.putBoolean("fromThirdAppByOpenSDK", true);
+      paramString2.putInt("action", 3);
+      paramString2.putString("pkg_name", this.a.d);
+      paramString2.putString("app_name", this.a.jdField_a_of_type_JavaLangString);
+      bclo.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramString2, 2);
+      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+      return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      betc.a("GetTransRoomIdRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "Trans4Roomid";
+    this.a.a(alpo.a(2131706259));
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfal
  * JD-Core Version:    0.7.0.1
  */

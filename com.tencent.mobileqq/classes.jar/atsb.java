@@ -1,38 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-
-public abstract class atsb
-  extends atpi
+public class atsb
 {
-  public boolean a;
+  public final int a;
+  public final long a;
+  public final int b;
+  public final long b;
   
-  public atsb(Context paramContext)
+  public atsb(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    super(paramContext);
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(PicInfo paramPicInfo);
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsb
  * JD-Core Version:    0.7.0.1
  */

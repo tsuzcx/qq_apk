@@ -4,11 +4,11 @@ import com.tencent.biz.qqstory.model.BaseUIItem;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import java.util.ArrayList;
 import java.util.List;
-import ssi;
+import uha;
 
 public class FeedVideoInfo
   extends BaseUIItem
-  implements ssi
+  implements uha
 {
   public String feedId;
   public boolean mIsVideoEnd;
@@ -45,7 +45,7 @@ public class FeedVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.FeedVideoInfo
  * JD-Core Version:    0.7.0.1
  */

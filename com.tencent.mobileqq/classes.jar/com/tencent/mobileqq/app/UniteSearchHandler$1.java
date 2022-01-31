@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import akiz;
+import amap;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileOutputStream;
@@ -9,7 +9,7 @@ import java.io.IOException;
 public class UniteSearchHandler$1
   implements Runnable
 {
-  public UniteSearchHandler$1(akiz paramakiz, String paramString, Object paramObject) {}
+  public UniteSearchHandler$1(amap paramamap, String paramString, Object paramObject) {}
   
   public void run()
   {

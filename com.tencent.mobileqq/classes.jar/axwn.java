@@ -1,27 +1,21 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.richmediabrowser.log.BrowserLogHelper;
+import com.tencent.richmediabrowser.log.IBrowserLog;
 
 class axwn
-  implements View.OnLongClickListener
+  implements DialogInterface.OnClickListener
 {
-  axwn(axwm paramaxwm) {}
+  axwn(axwf paramaxwf) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null)
-    {
-      acxj localacxj = (acxj)this.a.a.get();
-      if (localacxj != null) {
-        return localacxj.onLongClick(paramView);
-      }
-    }
-    return false;
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOVideoView", 4, "showSaveFileTips cancel");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axwn
  * JD-Core Version:    0.7.0.1
  */

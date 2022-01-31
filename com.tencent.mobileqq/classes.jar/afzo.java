@@ -1,27 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class afzo
-  implements View.OnTouchListener
+  extends aelt
 {
-  public afzo(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.x();
-      paramView = this.a.o;
-      this.a.a("Clk_find", paramView, "");
-    }
-    return true;
-  }
+  public RelativeLayout a;
+  public TextView a;
+  public URLDrawable a;
+  public URLImageView a;
+  public BubbleImageView a;
+  public TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afzo
  * JD-Core Version:    0.7.0.1
  */

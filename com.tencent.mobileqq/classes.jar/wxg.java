@@ -1,21 +1,16 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.tribe.TribeVideoPlugin;
+import android.view.View.OnClickListener;
 
-public class wxg
-  implements View.OnTouchListener
+class wxg
+  implements View.OnClickListener
 {
-  public wxg(TribeVideoPlugin paramTribeVideoPlugin) {}
+  wxg(wxf paramwxf) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxg
  * JD-Core Version:    0.7.0.1
  */

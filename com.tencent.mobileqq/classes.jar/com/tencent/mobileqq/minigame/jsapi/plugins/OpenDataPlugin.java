@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.minigame.jsapi.plugins;
 
-import ajya;
+import alpo;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.text.TextUtils;
 import android.webkit.URLUtil;
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -18,7 +18,6 @@ import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.mobileqq.mini.sdk.ShareChatModel;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.jsapi.GameJsRuntime;
-import com.tencent.mobileqq.minigame.manager.GameInfoManager;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
@@ -108,7 +107,7 @@ public class OpenDataPlugin
     }
     HashMap localHashMap = new HashMap();
     localHashMap.put(paramString1, paramInt1 + "");
-    MiniAppCmdUtil.getInstance().modifyFriendInteractiveStorage(null, str1, paramString3, str2, paramInt1, paramString2, localHashMap, new OpenDataPlugin.5(this, paramJsRuntime, paramInt2, paramString5, paramBoolean, paramString9, paramString8, paramString3, paramString4, paramString6, paramString7, paramString1));
+    MiniAppCmdUtil.getInstance().modifyFriendInteractiveStorage(null, str1, paramString3, str2, paramInt1, paramString2, localHashMap, new OpenDataPlugin.5(this, paramJsRuntime, paramInt2, paramString1, paramString5, paramBoolean, paramString9, paramString8, paramString3, paramString4, paramString6, paramString7));
   }
   
   private void setMessageToFriendQuery(JsRuntime paramJsRuntime, int paramInt) {}
@@ -148,7 +147,7 @@ public class OpenDataPlugin
     for (boolean bool2 = true;; bool2 = false)
     {
       paramString2 = new ShareChatModel(0, 0L, paramString2);
-      if ((!bbkk.a(paramString4)) && ((bool1) || (bool2))) {
+      if ((!bdje.a(paramString4)) && ((bool1) || (bool2))) {
         break label326;
       }
       this.jsPluginEngine.appBrandRuntime.startShare(paramString3, GameWnsUtils.defaultShareImg(), paramString5, "", "", "", null, paramString2, 11, 5, paramString1, paramJsRuntime);
@@ -186,44 +185,44 @@ public class OpenDataPlugin
     AppBrandTask.runTaskOnUiThread(new OpenDataPlugin.8(this, paramString1, paramString2, paramString3, paramOnClickListener1, paramBoolean, paramString4, paramOnClickListener2, paramOnCancelListener));
   }
   
-  public void getFriendCloudStorage(String[] paramArrayOfString, JsRuntime paramJsRuntime, int paramInt)
+  public void getFriendCloudStorage(String[] paramArrayOfString, JsRuntime paramJsRuntime, int paramInt, String paramString)
   {
     GameLog localGameLog = GameLog.getInstance();
-    StringBuilder localStringBuilder = new StringBuilder().append("getFriendCloudStorage appid:").append(GameInfoManager.g().getAppId()).append(", keys:");
+    StringBuilder localStringBuilder = new StringBuilder().append("getFriendCloudStorage appid:").append(paramString).append(", keys:");
     if (paramArrayOfString != null) {}
     for (String str = Arrays.toString(paramArrayOfString);; str = "")
     {
       localGameLog.i("OpenDataPlugin", str);
-      MiniAppCmdUtil.getInstance().getFriendCloudStorage(GameInfoManager.g().getAppId(), paramArrayOfString, new OpenDataPlugin.11(this, paramJsRuntime, paramInt));
+      MiniAppCmdUtil.getInstance().getFriendCloudStorage(paramString, paramArrayOfString, new OpenDataPlugin.11(this, paramString, paramJsRuntime, paramInt));
       return;
     }
   }
   
-  public void getGroupCloudStorage(String paramString, String[] paramArrayOfString, JsRuntime paramJsRuntime, int paramInt)
+  public void getGroupCloudStorage(String paramString1, String[] paramArrayOfString, JsRuntime paramJsRuntime, int paramInt, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString))
+    if (TextUtils.isEmpty(paramString1))
     {
-      paramString = new JSONObject();
+      paramString1 = new JSONObject();
       try
       {
-        paramString.put("state", "fail");
-        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "getGroupCloudStorage", paramString, ajya.a(2131707864), paramInt);
+        paramString1.put("state", "fail");
+        this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "getGroupCloudStorage", paramString1, alpo.a(2131708236), paramInt);
         return;
       }
-      catch (JSONException paramString)
+      catch (JSONException paramString1)
       {
-        GameLog.getInstance().e("OpenDataPlugin", "getGroupCloudStorage error " + paramString.getMessage());
+        GameLog.getInstance().e("OpenDataPlugin", "getGroupCloudStorage error " + paramString1.getMessage());
         this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "getGroupCloudStorage", null, paramInt);
         return;
       }
     }
-    MiniAppCmdUtil.getInstance().getGroupCloudStorage(GameInfoManager.g().getAppId(), paramString, paramArrayOfString, new OpenDataPlugin.10(this, paramJsRuntime, paramInt));
+    MiniAppCmdUtil.getInstance().getGroupCloudStorage(paramString2, paramString1, paramArrayOfString, new OpenDataPlugin.10(this, paramString2, paramJsRuntime, paramInt));
   }
   
-  public void getUserCloudStorage(String[] paramArrayOfString, JsRuntime paramJsRuntime, int paramInt)
+  public void getUserCloudStorage(String[] paramArrayOfString, JsRuntime paramJsRuntime, int paramInt, String paramString)
   {
     GameLog localGameLog = GameLog.getInstance();
-    StringBuilder localStringBuilder = new StringBuilder().append("getUserCloudStorage appid:").append(GameInfoManager.g().getAppId()).append(", keys:");
+    StringBuilder localStringBuilder = new StringBuilder().append("getUserCloudStorage appid:").append(paramString).append(", keys:");
     if (paramArrayOfString != null) {}
     for (String str = Arrays.toString(paramArrayOfString);; str = "")
     {
@@ -233,21 +232,20 @@ public class OpenDataPlugin
       }
       return;
     }
-    paramJsRuntime = new OpenDataPlugin.9(this, paramJsRuntime, paramInt);
-    MiniAppCmdUtil.getInstance().getUserCloudStorage(GameInfoManager.g().getAppId(), paramArrayOfString, paramJsRuntime);
+    paramJsRuntime = new OpenDataPlugin.9(this, paramString, paramJsRuntime, paramInt);
+    MiniAppCmdUtil.getInstance().getUserCloudStorage(paramString, paramArrayOfString, paramJsRuntime);
   }
   
   public String handleNativeRequest(String paramString1, String paramString2, JsRuntime paramJsRuntime, int paramInt)
   {
-    if (this.jsPluginEngine == null)
+    if ((this.jsPluginEngine == null) || (this.jsPluginEngine.getAppInfo() == null))
     {
-      GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest" + paramString1 + " error, jsPluginEngine null");
+      GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest" + paramString1 + " error, jsPluginEngine null or AppInfo null");
       return "{}";
     }
+    Object localObject1 = this.jsPluginEngine.getAppInfo().appId;
     if ("getUserCloudStorage".equals(paramString1)) {}
     int i;
-    label124:
-    Object localObject1;
     for (;;)
     {
       try
@@ -259,15 +257,16 @@ public class OpenDataPlugin
         paramString1 = new String[paramString2.length()];
         i = 0;
         if (i >= paramString2.length()) {
-          break label1981;
+          break label2014;
         }
         paramString1[i] = ((String)paramString2.get(i));
         i += 1;
         continue;
-        getUserCloudStorage(paramString1, paramJsRuntime, paramInt);
+        getUserCloudStorage(paramString1, paramJsRuntime, paramInt, (String)localObject1);
       }
       catch (Throwable paramString1)
       {
+        label148:
         GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest getUserCloudStorage error " + paramString1.getMessage());
         continue;
       }
@@ -281,243 +280,244 @@ public class OpenDataPlugin
           {
             paramString2 = new JSONObject(paramString2).optJSONArray("keyList");
             if (paramString2 == null) {
-              break label289;
+              break label315;
             }
             paramString1 = new String[paramString2.length()];
             i = 0;
             if (i >= paramString2.length()) {
-              break label1984;
+              break label2017;
             }
             paramString1[i] = ((String)paramString2.get(i));
             i += 1;
             continue;
-            label242:
-            getFriendCloudStorage(paramString1, paramJsRuntime, paramInt);
+            label266:
+            getFriendCloudStorage(paramString1, paramJsRuntime, paramInt, (String)localObject1);
           }
           catch (Throwable paramString1)
           {
             GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest getFriendCloudStorage error " + paramString1.getMessage());
           }
           break;
-          label289:
+          label315:
           paramString1 = new String[0];
         }
       }
-      if ("getGroupCloudStorage".equals(paramString1)) {
-        for (;;)
-        {
-          try
-          {
-            paramString1 = new JSONObject(paramString2);
-            paramString2 = paramString1.optString("shareTicket");
-            localObject1 = paramString1.optJSONArray("keyList");
-            if (localObject1 == null) {
-              break label430;
-            }
-            paramString1 = new String[((JSONArray)localObject1).length()];
-            i = 0;
-            if (i >= ((JSONArray)localObject1).length()) {
-              break label1987;
-            }
-            paramString1[i] = ((String)((JSONArray)localObject1).get(i));
-            i += 1;
-            continue;
-            label382:
-            getGroupCloudStorage(paramString2, paramString1, paramJsRuntime, paramInt);
-          }
-          catch (Throwable paramString1)
-          {
-            GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest getUserCloudStorage error " + paramString1.getMessage());
-          }
-          break;
-          label430:
-          paramString1 = new String[0];
-        }
-      }
-      if ("removeUserCloudStorage".equals(paramString1)) {
-        for (;;)
-        {
-          try
-          {
-            paramString2 = new JSONObject(paramString2).optJSONArray("keyList");
-            if (paramString2 == null) {
-              break label555;
-            }
-            paramString1 = new String[paramString2.length()];
-            i = 0;
-            if (i >= paramString2.length()) {
-              break label1990;
-            }
-            paramString1[i] = ((String)paramString2.get(i));
-            i += 1;
-            continue;
-            label508:
-            removeUserCloudStorage(paramString1, paramJsRuntime, paramInt);
-          }
-          catch (Throwable paramString1)
-          {
-            GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest removeUserCloudStorage error " + paramString1.getMessage());
-          }
-          break;
-          label555:
-          paramString1 = new String[0];
-        }
-      }
-      if ("setUserCloudStorage".equals(paramString1))
+      Object localObject2;
+      Object localObject3;
+      if ("getGroupCloudStorage".equals(paramString1))
       {
         try
         {
-          paramString1 = new JSONObject(paramString2).optJSONArray("KVDataList");
-          paramString2 = new HashMap();
-          if (paramString1 != null)
+          paramString1 = new JSONObject(paramString2);
+          localObject2 = paramString1.optString("shareTicket");
+          localObject3 = paramString1.optJSONArray("keyList");
+          if (localObject3 != null)
           {
+            paramString2 = new String[((JSONArray)localObject3).length()];
             i = 0;
-            while (i < paramString1.length())
+            for (;;)
             {
-              localObject1 = paramString1.getJSONObject(i);
-              paramString2.put(((JSONObject)localObject1).get("key").toString(), ((JSONObject)localObject1).get("value").toString());
+              paramString1 = paramString2;
+              if (i >= ((JSONArray)localObject3).length()) {
+                break;
+              }
+              paramString2[i] = ((String)((JSONArray)localObject3).get(i));
               i += 1;
             }
           }
-          setUserCloudStorage(paramString2, paramJsRuntime, paramInt);
+          paramString1 = new String[0];
+          getGroupCloudStorage((String)localObject2, paramString1, paramJsRuntime, paramInt, (String)localObject1);
         }
         catch (Throwable paramString1)
         {
-          GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest setUserCloudStorage error " + paramString1.getMessage());
+          GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest getUserCloudStorage error " + paramString1.getMessage());
         }
-      }
-      else if ("onMessage".equals(paramString1))
-      {
-        if (this.isGameRuntime) {
-          paramString1 = (GameJsRuntime)paramJsRuntime;
-        }
-        for (;;)
-        {
-          if (paramString1 != null)
-          {
-            if (paramString1.getTargetContextType() == 1)
-            {
-              if ((this.jsPluginEngine.appBrandRuntime != null) && (this.jsPluginEngine.appBrandRuntime.getApkgInfo() != null) && (this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig != null) && (this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config != null) && (this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config.whiteList != null) && (this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config.whiteList.contains("onMessage")))
-              {
-                paramJsRuntime.evaluateSubcribeJS("onMessage", paramString2, 0);
-                break;
-                paramString1 = null;
-                continue;
-              }
-              GameLog.getInstance().e("OpenDataPlugin", "开放域调用了未授权的私有API: postMessage -> onMessage");
-              GameLog.vconsoleLog("error 开放域调用了未授权的私有API: postMessage");
-              break;
-            }
-            paramJsRuntime.evaluateSubcribeJS("onMessage", paramString2, 0);
-            break;
-          }
-        }
-        GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest onMessage error, not gameJsRuntime!");
-      }
-      else if ("modifyFriendInteractiveStorage".equals(paramString1))
-      {
-        String str4;
-        int m;
-        String str5;
-        String str6;
-        String str7;
-        String str8;
-        Boolean localBoolean;
-        String str1;
-        int j;
-        for (;;)
-        {
-          try
-          {
-            localObject1 = new JSONObject(paramString2);
-            str4 = ((JSONObject)localObject1).getString("key");
-            m = ((JSONObject)localObject1).getInt("opNum");
-            str5 = ((JSONObject)localObject1).getString("operation");
-            str6 = ((JSONObject)localObject1).optString("title");
-            str7 = ((JSONObject)localObject1).optString("imageUrl");
-            str8 = ((JSONObject)localObject1).optString("imageUrlId");
-            localBoolean = Boolean.valueOf(((JSONObject)localObject1).optBoolean("quiet"));
-            paramString1 = "";
-            paramString2 = "";
-            int k = -1;
-            String str2 = "";
-            String str3 = "";
-            localObject1 = ((JSONObject)localObject1).optJSONObject("friendInfo");
-            if (localObject1 != null)
-            {
-              paramString1 = ((JSONObject)localObject1).getString("openid");
-              paramString2 = ((JSONObject)localObject1).getString("nickname");
-            }
-            Object localObject2 = ((GameActivity)this.jsPluginEngine.getActivityContext()).getGameConfigJson();
-            str1 = str2;
-            localObject1 = str3;
-            j = k;
-            if (localObject2 != null)
-            {
-              localObject2 = ((JSONObject)localObject2).optJSONArray("modifyFriendInteractiveStorageTemplates");
-              str1 = str2;
-              localObject1 = str3;
-              j = k;
-              if (localObject2 != null)
-              {
-                str1 = str2;
-                localObject1 = str3;
-                j = k;
-                if (((JSONArray)localObject2).length() > 0)
-                {
-                  i = 0;
-                  str1 = str2;
-                  localObject1 = str3;
-                  j = k;
-                  if (i < ((JSONArray)localObject2).length())
-                  {
-                    localObject1 = ((JSONArray)localObject2).getJSONObject(i);
-                    if (localObject1 == null) {
-                      break label1342;
-                    }
-                    str1 = ((JSONObject)localObject1).optString("key");
-                    if ((TextUtils.isEmpty(str1)) || (!str1.equals(str4))) {
-                      break label1342;
-                    }
-                    j = ((JSONObject)localObject1).optInt("ratio");
-                    str1 = ((JSONObject)localObject1).optString("action");
-                    localObject1 = ((JSONObject)localObject1).optString("object");
-                  }
-                }
-              }
-            }
-            if (!localBoolean.booleanValue()) {
-              break label1351;
-            }
-            modifyFriendInteractiveStorage(str4, m, str5, paramString1, paramString2, str6, str7, str8, localBoolean, paramJsRuntime, paramInt, str1, (String)localObject1);
-          }
-          catch (Throwable paramString1)
-          {
-            GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramString1.getMessage());
-            GameLog.vconsoleLog("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramString1.getMessage());
-            this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "modifyFriendInteractiveStorage", null, paramInt);
-          }
-          break;
-          label1342:
-          i += 1;
-        }
-        label1351:
-        showConfirmModificationModel(str4, m, str5, paramString1, paramString2, str6, str7, str8, localBoolean, paramJsRuntime, paramInt, str1, (String)localObject1, j);
       }
       else
       {
-        if (!"getUserInteractiveStorage".equals(paramString1)) {
-          break;
+        if ("removeUserCloudStorage".equals(paramString1)) {
+          for (;;)
+          {
+            try
+            {
+              paramString2 = new JSONObject(paramString2).optJSONArray("keyList");
+              if (paramString2 == null) {
+                break label586;
+              }
+              paramString1 = new String[paramString2.length()];
+              i = 0;
+              if (i >= paramString2.length()) {
+                break label2020;
+              }
+              paramString1[i] = ((String)paramString2.get(i));
+              i += 1;
+              continue;
+              label537:
+              removeUserCloudStorage(paramString1, paramJsRuntime, paramInt, (String)localObject1);
+            }
+            catch (Throwable paramString1)
+            {
+              GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest removeUserCloudStorage error " + paramString1.getMessage());
+            }
+            break;
+            label586:
+            paramString1 = new String[0];
+          }
+        }
+        if ("setUserCloudStorage".equals(paramString1))
+        {
+          try
+          {
+            paramString1 = new JSONObject(paramString2).optJSONArray("KVDataList");
+            paramString2 = new HashMap();
+            if (paramString1 != null)
+            {
+              i = 0;
+              while (i < paramString1.length())
+              {
+                localObject2 = paramString1.getJSONObject(i);
+                paramString2.put(((JSONObject)localObject2).get("key").toString(), ((JSONObject)localObject2).get("value").toString());
+                i += 1;
+              }
+            }
+            setUserCloudStorage(paramString2, paramJsRuntime, paramInt, (String)localObject1);
+          }
+          catch (Throwable paramString1)
+          {
+            GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest setUserCloudStorage error " + paramString1.getMessage());
+          }
+        }
+        else if ("onMessage".equals(paramString1))
+        {
+          if (this.isGameRuntime) {
+            paramString1 = (GameJsRuntime)paramJsRuntime;
+          }
+          for (;;)
+          {
+            if (paramString1 != null)
+            {
+              if (paramString1.getTargetContextType() == 1)
+              {
+                if ((this.jsPluginEngine.appBrandRuntime != null) && (this.jsPluginEngine.appBrandRuntime.getApkgInfo() != null) && (this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig != null) && (this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config != null) && (this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config.whiteList != null) && (this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig.config.whiteList.contains("onMessage")))
+                {
+                  paramJsRuntime.evaluateSubcribeJS("onMessage", paramString2, 0);
+                  break;
+                  paramString1 = null;
+                  continue;
+                }
+                GameLog.getInstance().e("OpenDataPlugin", "开放域调用了未授权的私有API: postMessage -> onMessage");
+                GameLog.vconsoleLog("error 开放域调用了未授权的私有API: postMessage");
+                break;
+              }
+              paramJsRuntime.evaluateSubcribeJS("onMessage", paramString2, 0);
+              break;
+            }
+          }
+          GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest onMessage error, not gameJsRuntime!");
+        }
+        else if ("modifyFriendInteractiveStorage".equals(paramString1))
+        {
+          String str2;
+          int m;
+          String str3;
+          String str4;
+          String str5;
+          String str6;
+          Boolean localBoolean;
+          int j;
+          for (;;)
+          {
+            try
+            {
+              localObject1 = new JSONObject(paramString2);
+              str2 = ((JSONObject)localObject1).getString("key");
+              m = ((JSONObject)localObject1).getInt("opNum");
+              str3 = ((JSONObject)localObject1).getString("operation");
+              str4 = ((JSONObject)localObject1).optString("title");
+              str5 = ((JSONObject)localObject1).optString("imageUrl");
+              str6 = ((JSONObject)localObject1).optString("imageUrlId");
+              localBoolean = Boolean.valueOf(((JSONObject)localObject1).optBoolean("quiet"));
+              paramString1 = "";
+              paramString2 = "";
+              int k = -1;
+              localObject3 = "";
+              String str1 = "";
+              localObject1 = ((JSONObject)localObject1).optJSONObject("friendInfo");
+              if (localObject1 != null)
+              {
+                paramString1 = ((JSONObject)localObject1).getString("openid");
+                paramString2 = ((JSONObject)localObject1).getString("nickname");
+              }
+              Object localObject4 = ((GameActivity)this.jsPluginEngine.getActivityContext()).getGameConfigJson();
+              localObject2 = localObject3;
+              localObject1 = str1;
+              j = k;
+              if (localObject4 != null)
+              {
+                localObject4 = ((JSONObject)localObject4).optJSONArray("modifyFriendInteractiveStorageTemplates");
+                localObject2 = localObject3;
+                localObject1 = str1;
+                j = k;
+                if (localObject4 != null)
+                {
+                  localObject2 = localObject3;
+                  localObject1 = str1;
+                  j = k;
+                  if (((JSONArray)localObject4).length() > 0)
+                  {
+                    i = 0;
+                    localObject2 = localObject3;
+                    localObject1 = str1;
+                    j = k;
+                    if (i < ((JSONArray)localObject4).length())
+                    {
+                      localObject1 = ((JSONArray)localObject4).getJSONObject(i);
+                      if (localObject1 == null) {
+                        break label1375;
+                      }
+                      localObject2 = ((JSONObject)localObject1).optString("key");
+                      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!((String)localObject2).equals(str2))) {
+                        break label1375;
+                      }
+                      j = ((JSONObject)localObject1).optInt("ratio");
+                      localObject2 = ((JSONObject)localObject1).optString("action");
+                      localObject1 = ((JSONObject)localObject1).optString("object");
+                    }
+                  }
+                }
+              }
+              if (!localBoolean.booleanValue()) {
+                break label1384;
+              }
+              modifyFriendInteractiveStorage(str2, m, str3, paramString1, paramString2, str4, str5, str6, localBoolean, paramJsRuntime, paramInt, (String)localObject2, (String)localObject1);
+            }
+            catch (Throwable paramString1)
+            {
+              GameLog.getInstance().e("OpenDataPlugin", "handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramString1.getMessage());
+              GameLog.vconsoleLog("handleNativeRequest API_MODIFY_FRIEND_INTERACTIVE_STORAGE error " + paramString1.getMessage());
+              this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "modifyFriendInteractiveStorage", null, paramInt);
+            }
+            break;
+            label1375:
+            i += 1;
+          }
+          label1384:
+          showConfirmModificationModel(str2, m, str3, paramString1, paramString2, str4, str5, str6, localBoolean, paramJsRuntime, paramInt, (String)localObject2, (String)localObject1, j);
+        }
+        else
+        {
+          if (!"getUserInteractiveStorage".equals(paramString1)) {
+            break;
+          }
         }
       }
     }
-    label1539:
-    label1697:
-    label1981:
-    label1984:
-    label1987:
-    label1990:
-    label1993:
+    label1572:
+    label1730:
+    label2014:
+    label2017:
+    label2020:
+    label2023:
     for (;;)
     {
       for (;;)
@@ -530,12 +530,12 @@ public class OpenDataPlugin
             {
               paramString2 = new JSONObject(paramString2).getJSONArray("keyList");
               if (paramString2 == null) {
-                break label1539;
+                break label1572;
               }
               paramString1 = new String[paramString2.length()];
               i = 0;
               if (i >= paramString2.length()) {
-                break label1993;
+                break label2023;
               }
               paramString1[i] = ((String)paramString2.get(i));
               i += 1;
@@ -552,7 +552,7 @@ public class OpenDataPlugin
             paramString1 = new String[0];
             continue;
             if (!"shareMessageToFriend".equals(paramString1)) {
-              break label1697;
+              break label1730;
             }
             try
             {
@@ -569,7 +569,7 @@ public class OpenDataPlugin
           }
           break;
           if (!"getPotentialFriendList".equals(paramString1)) {
-            break label1791;
+            break label1824;
           }
           try
           {
@@ -583,7 +583,6 @@ public class OpenDataPlugin
           }
         }
         break;
-        label1791:
         if (!"setMessageToFriendQuery".equals(paramString1)) {
           break;
         }
@@ -608,36 +607,35 @@ public class OpenDataPlugin
           this.jsPluginEngine.callbackJsEventFail(paramJsRuntime, "setMessageToFriendQuery", null, paramInt);
         }
       }
-      break label124;
+      break label148;
       break;
-      break label242;
-      break label382;
-      break label508;
+      break label266;
+      break label537;
     }
   }
   
-  public void removeUserCloudStorage(String[] paramArrayOfString, JsRuntime paramJsRuntime, int paramInt)
+  public void removeUserCloudStorage(String[] paramArrayOfString, JsRuntime paramJsRuntime, int paramInt, String paramString)
   {
     GameLog localGameLog = GameLog.getInstance();
-    StringBuilder localStringBuilder = new StringBuilder().append("removeUserCloudStorage appid:").append(GameInfoManager.g().getAppId()).append(", keys:");
+    StringBuilder localStringBuilder = new StringBuilder().append("removeUserCloudStorage appid:").append(paramString).append(", keys:");
     if (paramArrayOfString != null) {}
     for (String str = Arrays.toString(paramArrayOfString);; str = "")
     {
       localGameLog.i("OpenDataPlugin", str);
-      MiniAppCmdUtil.getInstance().removeUserCloudStorage(GameInfoManager.g().getAppId(), paramArrayOfString, new OpenDataPlugin.13(this, paramJsRuntime, paramInt));
+      MiniAppCmdUtil.getInstance().removeUserCloudStorage(paramString, paramArrayOfString, new OpenDataPlugin.13(this, paramString, paramJsRuntime, paramInt));
       return;
     }
   }
   
-  public void setUserCloudStorage(HashMap<String, String> paramHashMap, JsRuntime paramJsRuntime, int paramInt)
+  public void setUserCloudStorage(HashMap<String, String> paramHashMap, JsRuntime paramJsRuntime, int paramInt, String paramString)
   {
     GameLog localGameLog = GameLog.getInstance();
-    StringBuilder localStringBuilder = new StringBuilder().append("setUserCloudStorage appid:").append(GameInfoManager.g().getAppId()).append(", kvData:");
+    StringBuilder localStringBuilder = new StringBuilder().append("setUserCloudStorage appid:").append(paramString).append(", kvData:");
     if (paramHashMap != null) {}
     for (String str = paramHashMap.toString();; str = "")
     {
       localGameLog.i("OpenDataPlugin", str);
-      MiniAppCmdUtil.getInstance().setUserCloudStorage(GameInfoManager.g().getAppId(), paramHashMap, new OpenDataPlugin.12(this, paramJsRuntime, paramInt));
+      MiniAppCmdUtil.getInstance().setUserCloudStorage(paramString, paramHashMap, new OpenDataPlugin.12(this, paramString, paramJsRuntime, paramInt));
       return;
     }
   }
@@ -649,7 +647,7 @@ public class OpenDataPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.OpenDataPlugin
  * JD-Core Version:    0.7.0.1
  */

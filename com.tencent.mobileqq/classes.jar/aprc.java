@@ -1,19 +1,32 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.4.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class aprc
-  implements View.OnLayoutChangeListener
+public class aprc
+  extends apns
 {
-  aprc(aprb paramaprb) {}
+  aprc(apqz paramapqz) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    this.a.a(paramInt3 - paramInt1, paramInt4 - paramInt2);
+    if ((paramEmoticonPackage == null) || (TextUtils.isEmpty(paramEmoticonPackage.epId))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonPanelMallHelper", 2, "onPackageEnd resultCode = " + paramInt + ",ep = " + paramEmoticonPackage);
+      }
+    } while (this.a.a.g);
+    ThreadManager.getUIHandler().post(new EmoticonPanelMallHelper.4.1(this, paramEmoticonPackage, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aprc
  * JD-Core Version:    0.7.0.1
  */

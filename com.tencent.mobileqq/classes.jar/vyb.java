@@ -1,28 +1,22 @@
-public class vyb
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+
+class vyb
+  implements DialogInterface.OnDismissListener
 {
-  public static String a(String paramString, int paramInt)
+  vyb(vya paramvya, VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramString.getBytes().length <= paramInt) {
-      return paramString;
-    }
-    int k = paramString.length();
-    int j = 0;
-    for (int i = 0;; i = j) {
-      if (j < k)
-      {
-        j += Character.charCount(paramString.codePointAt(j));
-        if (paramString.substring(0, j).getBytes().length <= paramInt) {}
-      }
-      else
-      {
-        return paramString.substring(0, i);
-      }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyb
  * JD-Core Version:    0.7.0.1
  */

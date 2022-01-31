@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import android.text.TextUtils;
-import bhvy;
+import bjxj;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
@@ -9,8 +9,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import oof;
-import qam;
+import osq;
+import qki;
 
 public class AwesomeCommentConfigHandler
   implements AladdinConfigHandler
@@ -20,7 +20,7 @@ public class AwesomeCommentConfigHandler
   public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
     QLog.d("AwesomeCommentConfigHandler", 2, "[onReceiveConfig] " + paramInt1 + " " + paramString);
-    Map localMap = oof.a(paramString);
+    Map localMap = osq.a(paramString);
     Iterator localIterator = localMap.keySet().iterator();
     while (localIterator.hasNext())
     {
@@ -34,7 +34,7 @@ public class AwesomeCommentConfigHandler
         }
         for (;;)
         {
-          bhvy.a(qam.h, Integer.valueOf(paramInt2));
+          bjxj.a(qki.h, Integer.valueOf(paramInt2));
           break;
           if (TextUtils.equals(str2, "2")) {
             paramInt2 = 2;
@@ -46,7 +46,7 @@ public class AwesomeCommentConfigHandler
       if (TextUtils.equals(str1, "awesome_comment_line_number")) {
         try
         {
-          bhvy.a(qam.i, Integer.valueOf(str2));
+          bjxj.a(qki.i, Integer.valueOf(str2));
           Aladdin.getConfig(paramInt1).update(paramString);
         }
         catch (NumberFormatException localNumberFormatException)
@@ -63,7 +63,7 @@ public class AwesomeCommentConfigHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.AwesomeCommentConfigHandler
  * JD-Core Version:    0.7.0.1
  */

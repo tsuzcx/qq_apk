@@ -1,22 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.text.TextUtils;
 
 class pda
-  implements View.OnClickListener
 {
-  pda(pcy parampcy, long paramLong, ArticleInfo paramArticleInfo) {}
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  pda(String paramString1, String paramString2)
   {
-    paramView = omj.g + bbco.encodeToString(String.valueOf(this.jdField_a_of_type_Long).getBytes(), 2);
-    onh.a(pcy.a(this.jdField_a_of_type_Pcy), paramView);
-    pcy.a(1, onh.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    return "[insertArticleInfo] algorithmID = " + this.a + ", rowKey = " + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pda
  * JD-Core Version:    0.7.0.1
  */

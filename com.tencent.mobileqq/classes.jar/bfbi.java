@@ -1,232 +1,58 @@
-import android.app.Activity;
-import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.core.plugins.engine.JsPluginEngine;
-import com.tencent.qqmini.sdk.core.widget.CapsuleButton;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
+import com.tencent.open.agent.OpenCardContainer;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class bfbi
-  extends behn
+public class bfbi
+  extends URLDrawableDownListener.Adapter
 {
-  protected Activity a;
-  protected ViewGroup a;
-  protected bekp a;
-  protected bfbj a;
-  protected bfcb a;
-  protected bfdt a;
-  protected JsPluginEngine a;
-  protected MiniAppInfo a;
-  protected String a;
+  public bfbi(OpenCardContainer paramOpenCardContainer) {}
   
-  public bfbi()
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Bfbj = new bfbj(this);
-  }
-  
-  public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
-  
-  public Activity a()
-  {
-    return this.jdField_a_of_type_AndroidAppActivity;
-  }
-  
-  public Context a()
-  {
-    return MiniAppEnv.g().getContext();
-  }
-  
-  public behp a()
-  {
-    return this.jdField_a_of_type_Bfdt;
-  }
-  
-  public behs a()
-  {
-    return this.jdField_a_of_type_Bfcb;
-  }
-  
-  public bfbj a()
-  {
-    return this.jdField_a_of_type_Bfbj;
-  }
-  
-  public JsPluginEngine a()
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine;
-  }
-  
-  public CapsuleButton a()
-  {
-    return null;
-  }
-  
-  public MiniAppInfo a()
-  {
-    return this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
-  }
-  
-  public String a()
-  {
-    return bete.a().b().baseLibVersion;
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_Bfcb.a() != null)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_Bfcb.a());
-    }
-    this.jdField_a_of_type_AndroidAppActivity = null;
-    this.jdField_a_of_type_AndroidViewViewGroup = null;
-  }
-  
-  public void a(Activity paramActivity, ViewGroup paramViewGroup)
-  {
-    if ((this.jdField_a_of_type_AndroidAppActivity == paramActivity) && (this.jdField_a_of_type_AndroidViewViewGroup == paramViewGroup)) {
-      return;
-    }
-    this.jdField_a_of_type_Bfcb.a(paramActivity);
-    if ((this.jdField_a_of_type_Bfcb.a() != null) && (this.jdField_a_of_type_Bfcb.a().getParent() != null)) {
-      ((ViewGroup)this.jdField_a_of_type_Bfcb.a().getParent()).removeView(this.jdField_a_of_type_Bfcb.a());
-    }
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    paramViewGroup.addView(this.jdField_a_of_type_Bfcb.a(), new ViewGroup.LayoutParams(-1, -1));
-  }
-  
-  public void a(bfdt parambfdt)
-  {
-    Context localContext = MiniAppEnv.g().getContext();
-    if (parambfdt != null)
-    {
-      this.jdField_a_of_type_Bfdt = parambfdt;
-      int i = this.jdField_a_of_type_Bfdt.a();
-      Log.i("BaseAppBrandRuntime", "customJsService " + parambfdt + ",status=" + i);
-      if (i != 0) {
-        this.jdField_a_of_type_Bfdt = null;
-      }
-      if (this.jdField_a_of_type_Bfdt != null) {
-        this.jdField_a_of_type_Bfdt.a(this.jdField_a_of_type_Bfbj);
-      }
-    }
-    if (this.jdField_a_of_type_Bfdt == null) {
-      this.jdField_a_of_type_Bfdt = new bfdg(this, this.jdField_a_of_type_Bfbj);
-    }
-    this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine = new JsPluginEngine(localContext);
-  }
-  
-  public void a(MiniAppInfo paramMiniAppInfo, String paramString)
-  {
-    if (this.jdField_a_of_type_Bekp != null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
-    this.jdField_a_of_type_Bekp = ((bekp)paramMiniAppInfo.apkgInfo);
-    bejl.a().a(this.jdField_a_of_type_Bekp, false);
-    this.jdField_a_of_type_JavaLangString = paramString;
-    b(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, false);
-  }
-  
-  public void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Bfcb != null) {
-      this.jdField_a_of_type_Bfcb.a(paramMiniAppInfo, paramBoolean);
-    }
-    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onResume();
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadCancelled, view: " + paramView);
     }
   }
   
-  public byte[] a(int paramInt)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return new byte[0];
-  }
-  
-  public void b(MiniAppInfo paramMiniAppInfo, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onCreate(this);
-    this.jdField_a_of_type_Bfdt.a((bekp)paramMiniAppInfo.apkgInfo);
-    this.jdField_a_of_type_Bfcb.setApkgInfo((bekp)paramMiniAppInfo.apkgInfo);
-    Object localObject2 = paramMiniAppInfo.launchParam.c;
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = ((bekp)paramMiniAppInfo.apkgInfo).a.jdField_a_of_type_JavaLangString;
-    }
-    localObject2 = this.jdField_a_of_type_Bfcb;
-    if (paramBoolean) {}
-    for (paramMiniAppInfo = "reLaunch";; paramMiniAppInfo = "appLaunch")
-    {
-      ((bfcb)localObject2).a((String)localObject1, paramMiniAppInfo);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadFailed, view: " + paramView);
     }
   }
   
-  public void c()
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    if (this.jdField_a_of_type_Bfcb != null) {
-      this.jdField_a_of_type_Bfcb.a();
-    }
-    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onPause();
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadInterrupted, view: " + paramView);
     }
   }
   
-  public boolean c()
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    return false;
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Bfcb != null) {
-      this.jdField_a_of_type_Bfcb.b();
+    super.onLoadProgressed(paramView, paramURLDrawable, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadProgressed, view: " + paramView);
     }
   }
   
-  public boolean d()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return false;
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_Bfcb != null)
-    {
-      this.jdField_a_of_type_Bfcb.c();
-      this.jdField_a_of_type_Bfcb.a(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenCardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
     }
-    if (this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine != null) {
-      this.jdField_a_of_type_ComTencentQqminiSdkCorePluginsEngineJsPluginEngine.onDestroy();
-    }
-  }
-  
-  public boolean e()
-  {
-    return false;
-  }
-  
-  public boolean f()
-  {
-    return false;
-  }
-  
-  public boolean g()
-  {
-    return (this.jdField_a_of_type_Bfcb != null) && (this.jdField_a_of_type_Bfcb.a(1, -1));
+    OpenCardContainer.a(this.a);
+    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfbi
  * JD-Core Version:    0.7.0.1
  */

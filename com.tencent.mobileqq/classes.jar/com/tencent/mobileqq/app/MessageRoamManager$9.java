@@ -1,46 +1,46 @@
 package com.tencent.mobileqq.app;
 
-import akav;
-import akaw;
+import alsk;
+import alsl;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import bbwu;
-import bbww;
-import bbwz;
+import bdvv;
+import bdvx;
+import bdwa;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class MessageRoamManager$9
   implements Runnable
 {
-  public MessageRoamManager$9(akaw paramakaw) {}
+  public MessageRoamManager$9(alsl paramalsl) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg start...");
     }
-    bbwz localbbwz = ((bbww)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47)).a(1);
-    if ((localbbwz != null) && (localbbwz.a(akav.a) == null))
+    bdwa localbdwa = ((bdvx)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47)).a(1);
+    if ((localbdwa != null) && (localbdwa.a(alsk.a) == null))
     {
-      Object localObject = new File(akav.b);
-      bbwu localbbwu = new bbwu(akav.a, (File)localObject);
+      Object localObject = new File(alsk.b);
+      bdvv localbdvv = new bdvv(alsk.a, (File)localObject);
       if (((File)localObject).exists())
       {
         localObject = Long.valueOf(((File)localObject).lastModified());
-        localbbwu.i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("cloudSearchCfgLastModify", 0L);
-        if (((Long)localObject).longValue() != localbbwu.i)
+        localbdvv.i = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("cloudSearchCfgLastModify", 0L);
+        if (((Long)localObject).longValue() != localbdvv.i)
         {
-          localbbwu.m = true;
+          localbdvv.m = true;
           if (QLog.isColorLevel()) {
-            QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg file modified local time: " + localObject + ", sp time: " + localbbwu.i);
+            QLog.d("Q.roammsg.MessageRoamManager", 2, "checkCloudSearchCfg file modified local time: " + localObject + ", sp time: " + localbdvv.i);
           }
         }
       }
-      localbbwu.j = true;
-      localbbwu.p = false;
+      localbdvv.j = true;
+      localbdvv.p = false;
       localObject = new Bundle();
-      localbbwz.a(localbbwu, this.this$0.jdField_a_of_type_Bbwt, (Bundle)localObject);
+      localbdwa.a(localbdvv, this.this$0.jdField_a_of_type_Bdvu, (Bundle)localObject);
     }
   }
 }

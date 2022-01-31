@@ -5,7 +5,7 @@ import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import ajya;
+import alpo;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -18,7 +18,6 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bcql;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.event.CommentReplyEvent;
 import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
@@ -27,25 +26,26 @@ import com.tencent.biz.subscribe.network.DoLikeRequest;
 import com.tencent.biz.videostory.network.VSNetworkHelper;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.ArrayList;
-import wit;
-import wmf;
-import wmg;
-import wmh;
-import wmi;
-import wmj;
-import wmk;
-import wml;
-import wni;
-import wnr;
-import wol;
-import wpt;
-import wpv;
-import xfo;
+import xxl;
+import yay;
+import yaz;
+import yba;
+import ybb;
+import ybc;
+import ybd;
+import ybe;
+import ybx;
+import ycg;
+import yda;
+import yej;
+import yel;
+import yuh;
 
 public class CommentBottomBar
   extends LinearLayout
-  implements wpv
+  implements yel
 {
   public static final String a;
   private CertifiedAccountMeta.StComment jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
@@ -54,7 +54,7 @@ public class CommentBottomBar
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private wni jdField_a_of_type_Wni;
+  private ybx jdField_a_of_type_Ybx;
   private boolean jdField_a_of_type_Boolean = true;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -92,7 +92,7 @@ public class CommentBottomBar
       if (paramStReply.postUser == null) {
         break label162;
       }
-      paramStReply = String.format(getContext().getString(2131692379), new Object[] { paramStReply.postUser.nick.get() });
+      paramStReply = String.format(getContext().getString(2131692455), new Object[] { paramStReply.postUser.nick.get() });
       paramStComment = paramStReply;
       if (paramStReply.length() > 10)
       {
@@ -106,7 +106,7 @@ public class CommentBottomBar
       if ((paramStComment == null) || (paramStComment.postUser == null)) {
         break;
       }
-      paramStReply = String.format(getContext().getString(2131692379), new Object[] { paramStComment.postUser.nick.get() });
+      paramStReply = String.format(getContext().getString(2131692455), new Object[] { paramStComment.postUser.nick.get() });
       paramStComment = paramStReply;
     } while (paramStReply.length() <= 10);
     paramStComment = paramStReply.substring(0, 10);
@@ -120,14 +120,14 @@ public class CommentBottomBar
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838722);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838857);
     if (paramBoolean) {}
     for (ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);; localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F))
     {
       localScaleAnimation.setDuration(1000L);
       localScaleAnimation.setFillAfter(true);
       localScaleAnimation.setRepeatCount(0);
-      localScaleAnimation.setAnimationListener(new wmk(this, paramBoolean));
+      localScaleAnimation.setAnimationListener(new ybd(this, paramBoolean));
       this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localScaleAnimation);
       return;
     }
@@ -146,7 +146,7 @@ public class CommentBottomBar
       }
     }
     label35:
-    for (paramInt = 2130838713;; paramInt = 2130838714)
+    for (paramInt = 2130838831;; paramInt = 2130838841)
     {
       localImageView.setBackgroundResource(paramInt);
       return;
@@ -161,14 +161,14 @@ public class CommentBottomBar
     setOrientation(0);
     setBackgroundColor(-1);
     setGravity(16);
-    LayoutInflater.from(getContext()).inflate(2131558705, this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368643));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378048));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368686));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368540));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368539));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368645));
-    this.jdField_b_of_type_Boolean = ((String)xfo.a().a("is_open_sharing", "1")).equals("1");
+    LayoutInflater.from(getContext()).inflate(2131558741, this);
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368848));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378594));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368894));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368736));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368735));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368850));
+    this.jdField_b_of_type_Boolean = ((String)yuh.a().a("is_open_sharing", "1")).equals("1");
     ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
     if (this.jdField_b_of_type_Boolean) {}
     for (int i = 0;; i = 8)
@@ -180,29 +180,29 @@ public class CommentBottomBar
   
   private void g()
   {
-    wpt.a().a(this);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new wmf(this));
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new wmg(this));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new wmh(this));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new wmi(this));
+    yej.a().a(this);
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new yay(this));
+    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new yaz(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new yba(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ybb(this));
   }
   
   private void h()
   {
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment = null;
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply = null;
-    a(getContext().getString(2131701494));
+    a(getContext().getString(2131701867));
   }
   
   private void i()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130846609);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130846976);
     ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.8F, 1.0F, 0.8F, 1, 0.5F, 1, 0.5F);
     localScaleAnimation.setDuration(600L);
     localScaleAnimation.setFillAfter(true);
     localScaleAnimation.setRepeatMode(2);
     localScaleAnimation.setRepeatCount(5);
-    localScaleAnimation.setAnimationListener(new wml(this));
+    localScaleAnimation.setAnimationListener(new ybe(this));
     this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localScaleAnimation);
   }
   
@@ -214,15 +214,15 @@ public class CommentBottomBar
     return localArrayList;
   }
   
-  public wni a()
+  public ybx a()
   {
-    return this.jdField_a_of_type_Wni;
+    return this.jdField_a_of_type_Ybx;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Wni != null) {
-      this.jdField_a_of_type_Wni.h();
+    if (this.jdField_a_of_type_Ybx != null) {
+      this.jdField_a_of_type_Ybx.f();
     }
   }
   
@@ -234,7 +234,7 @@ public class CommentBottomBar
     }
     if (paramInt > 0)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(wol.a(paramInt));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(yda.a(paramInt));
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }
@@ -244,19 +244,19 @@ public class CommentBottomBar
   
   public void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (this.jdField_a_of_type_Wni != null) {
-      this.jdField_a_of_type_Wni.a(paramStFeed);
+    if (this.jdField_a_of_type_Ybx != null) {
+      this.jdField_a_of_type_Ybx.a(paramStFeed);
     }
   }
   
-  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, wnr paramwnr)
+  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, ycg paramycg)
   {
-    a(paramActivity, paramStFeed, paramwnr, null);
+    a(paramActivity, paramStFeed, paramycg, null);
   }
   
-  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, wnr paramwnr, ExtraTypeInfo paramExtraTypeInfo)
+  public void a(Activity paramActivity, CertifiedAccountMeta.StFeed paramStFeed, ycg paramycg, ExtraTypeInfo paramExtraTypeInfo)
   {
-    this.jdField_a_of_type_Wni = new wni(paramActivity, false, paramStFeed, paramwnr, paramExtraTypeInfo);
+    this.jdField_a_of_type_Ybx = new ybx(paramActivity, false, paramStFeed, paramycg, paramExtraTypeInfo);
   }
   
   public void a(SimpleBaseEvent paramSimpleBaseEvent)
@@ -296,12 +296,12 @@ public class CommentBottomBar
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      bcql.a(getContext(), ajya.a(2131702174), 0).a();
+      QQToast.a(getContext(), alpo.a(2131702546), 0).a();
       return;
     }
     this.jdField_a_of_type_Boolean = false;
     DoLikeRequest localDoLikeRequest = new DoLikeRequest(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed);
-    VSNetworkHelper.a().a(localDoLikeRequest, new wmj(this));
+    VSNetworkHelper.a().a(localDoLikeRequest, new ybc(this));
   }
   
   @SuppressLint({"DefaultLocale", "SetTextI18n"})
@@ -312,7 +312,7 @@ public class CommentBottomBar
     }
     if (paramInt > 0)
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(wol.a(paramInt));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(yda.a(paramInt));
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
     }
@@ -322,34 +322,34 @@ public class CommentBottomBar
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_Wni != null) {
-      return this.jdField_a_of_type_Wni.b();
+    if (this.jdField_a_of_type_Ybx != null) {
+      return this.jdField_a_of_type_Ybx.a();
     }
     return false;
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Wni != null) {
-      this.jdField_a_of_type_Wni.f();
+    if (this.jdField_a_of_type_Ybx != null) {
+      this.jdField_a_of_type_Ybx.d();
     }
-    wpt.a().b(this);
+    yej.a().b(this);
   }
   
   public boolean c()
   {
-    return (this.jdField_a_of_type_Wni != null) && (this.jdField_a_of_type_Wni.c());
+    return (this.jdField_a_of_type_Ybx != null) && (this.jdField_a_of_type_Ybx.b());
   }
   
   public void d()
   {
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838722);
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838857);
   }
   
   public boolean d()
   {
-    return (this.jdField_a_of_type_Wni != null) && (this.jdField_a_of_type_Wni.d());
+    return (this.jdField_a_of_type_Ybx != null) && (this.jdField_a_of_type_Ybx.d());
   }
   
   public void e()
@@ -365,7 +365,7 @@ public class CommentBottomBar
     b(paramStFeed.likeInfo.count.get());
     if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      if ((this.jdField_b_of_type_Boolean) && (wit.a(paramStFeed.status.get()))) {
+      if ((this.jdField_b_of_type_Boolean) && (xxl.a(paramStFeed.status.get()))) {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       }
     }
@@ -392,7 +392,7 @@ public class CommentBottomBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentBottomBar
  * JD-Core Version:    0.7.0.1
  */

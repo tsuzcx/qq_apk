@@ -1,116 +1,31 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
 public class bbxt
+  implements DialogInterface.OnClickListener
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private List<bhzo> jdField_a_of_type_JavaUtilList;
+  public bbxt(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  private bbxt(Activity paramActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static bbxt a(@NonNull Activity paramActivity)
-  {
-    return new bbxt(paramActivity);
-  }
-  
-  private bhzo a(@NonNull JSONObject paramJSONObject)
-  {
-    String str = paramJSONObject.optString("type");
-    Object localObject = new bhzp();
-    View localView = ((bhzp)localObject).a(this.jdField_a_of_type_AndroidAppActivity, str);
-    if (localView == null)
+    if (this.a.jdField_a_of_type_Bdfq.isShowing()) {
+      this.a.jdField_a_of_type_Bdfq.dismiss();
+    }
+    if (!bdee.g(this.a.jdField_a_of_type_AndroidContentContext)) {
+      this.a.jdField_a_of_type_Bdfq.show();
+    }
+    do
     {
-      vxp.a("type=" + str + " is illegal json=" + paramJSONObject, new Object[0]);
-      return null;
-    }
-    localObject = ((bhzp)localObject).a(str, localView);
-    if (localView == null)
-    {
-      vxp.a("type=" + str + " create null view model json=" + paramJSONObject, new Object[0]);
-      return null;
-    }
-    ((bhzo)localObject).a(paramJSONObject);
-    return localObject;
-  }
-  
-  public bbxt a(@NonNull ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-    return this;
-  }
-  
-  public bbxt a(@NonNull JSONArray paramJSONArray)
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-      this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
-    }
-    a();
-    int i = 0;
-    if (i < paramJSONArray.length())
-    {
-      Object localObject = paramJSONArray.optJSONObject(i);
-      if (localObject == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localObject = a((JSONObject)localObject);
-        if (localObject != null)
-        {
-          ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-          this.jdField_a_of_type_AndroidViewViewGroup.addView(((bhzo)localObject).a(), localLayoutParams);
-          this.jdField_a_of_type_JavaUtilList.add(localObject);
-        }
-      }
-    }
-    return this;
-  }
-  
-  public bbxt a(@NonNull JSONObject paramJSONObject)
-  {
-    paramJSONObject = a(paramJSONObject);
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-      this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
-    }
-    a();
-    if (paramJSONObject == null) {
-      return this;
-    }
-    ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -1);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(paramJSONObject.a(), localLayoutParams);
-    this.jdField_a_of_type_JavaUtilList.add(paramJSONObject);
-    return this;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((bhzo)localIterator.next()).c();
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
+      return;
+      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    } while (ReciteRecordLayout.a(this.a) == null);
+    ReciteRecordLayout.a(this.a).f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbxt
  * JD-Core Version:    0.7.0.1
  */

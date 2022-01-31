@@ -1,28 +1,30 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class adhj
-  implements DialogInterface.OnClickListener
+public class adhj
+  implements CompoundButton.OnCheckedChangeListener
 {
-  adhj(adhi paramadhi, String paramString, int paramInt) {}
+  public adhj(NotifyPushSettingActivity paramNotifyPushSettingActivity, BubbleManager paramBubbleManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramDialogInterface = new Intent(adhi.a(this.jdField_a_of_type_Adhi), QQBrowserActivity.class);
-    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    adhi.a(this.jdField_a_of_type_Adhi).startActivity(paramDialogInterface);
-    VipUtils.a(adhi.a(this.jdField_a_of_type_Adhi), "cmshow", "Apollo", "activity_alert_view", ApolloUtil.b(adhi.a(this.jdField_a_of_type_Adhi).jdField_a_of_type_Int), 0, new String[] { "" + this.jdField_a_of_type_Int, "1" });
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramBoolean);
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getCurrentAccountUin();
+    if (paramBoolean) {}
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(str, "bubble_new", "change", "0", 0, 0, 0, "", "", paramCompoundButton, "", "", "", "", 0, 0, 0, 0);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhj
  * JD-Core Version:    0.7.0.1
  */

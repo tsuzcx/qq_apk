@@ -1,81 +1,50 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.View;
+import android.view.ViewStub;
+import com.tencent.biz.qqcircle.QCircleInitBean;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
 
-public final class tti
+class tti
+  extends trr
 {
-  public static void a(Context paramContext)
+  tti(ttc paramttc) {}
+  
+  public QCircleInitBean a()
   {
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://story.now.qq.com/mobile/qim/transfer.html?_wv=16777219");
-    paramContext.startActivity(localIntent);
+    return ttc.a(this.a);
   }
   
-  public static void a(Context paramContext, String paramString)
+  public QCirclePolymorphicAniView a()
   {
-    if (a(paramContext, paramString))
+    if (ttc.a(this.a) != null) {
+      return (QCirclePolymorphicAniView)ttc.a(this.a).findViewById(2131373173);
+    }
+    return null;
+  }
+  
+  public tuk a()
+  {
+    if ((ttc.a(this.a) == null) && (ttc.a(this.a) != null))
     {
-      b(paramContext, paramString);
-      return;
+      ViewStub localViewStub = (ViewStub)ttc.a(this.a).findViewById(2131373125);
+      ttc.a(this.a, new tuk(this.a.a()));
+      ttc.a(this.a).a(this.a.a(), localViewStub);
     }
-    a(paramContext);
+    return ttc.a(this.a);
   }
   
-  public static boolean a(Context paramContext, String paramString)
+  public void a(Object paramObject)
   {
-    boolean bool = false;
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    paramContext = null;
-    try
-    {
-      paramString = localPackageManager.getPackageInfo(paramString, 0);
-      paramContext = paramString;
-    }
-    catch (PackageManager.NameNotFoundException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
-    if (paramContext != null) {
-      bool = true;
-    }
-    return bool;
+    this.a.b("share_action_show_share_sheet", paramObject);
   }
   
-  public static boolean a(Context paramContext, String paramString1, String paramString2)
+  public boolean a()
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return false;
-    }
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", String.format("%s?tag_id=%s&tag_type=%s&_wv=3&_nav_alpha=0&_bid=2910", new Object[] { "http://story.now.qq.com/mobile/tag/index.html", String.valueOf(paramString1), String.valueOf(paramString2) }));
-    paramContext.startActivity(localIntent);
-    return true;
-  }
-  
-  public static boolean a(Context paramContext, vve paramvve)
-  {
-    if (paramvve == null) {
-      return false;
-    }
-    return a(paramContext, String.valueOf(paramvve.jdField_a_of_type_Long), String.valueOf(paramvve.jdField_a_of_type_Int));
-  }
-  
-  public static void b(Context paramContext, String paramString)
-  {
-    paramString = paramContext.getPackageManager().getLaunchIntentForPackage(paramString);
-    if (paramString != null) {
-      paramContext.startActivity(paramString);
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tti
  * JD-Core Version:    0.7.0.1
  */

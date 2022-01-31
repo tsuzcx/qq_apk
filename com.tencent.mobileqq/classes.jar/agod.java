@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-
-public class agod
-  implements bcwm
+class agod
+  extends alox
 {
-  public agod(PhotoPreviewActivity paramPhotoPreviewActivity, Runnable paramRunnable) {}
+  agod(agnz paramagnz) {}
   
-  public void a(int paramInt)
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    agnz.a(this.a, paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agod
  * JD-Core Version:    0.7.0.1
  */

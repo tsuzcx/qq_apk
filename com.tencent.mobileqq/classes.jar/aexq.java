@@ -1,23 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class aexq
-  implements View.OnClickListener
+final class aexq
+  implements almm
 {
-  aexq(aexp paramaexp) {}
-  
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    aexp.a(this.a).a();
-    ChatActivityUtils.a(aexp.a(this.a), aexp.a(this.a), aexp.a(this.a).jdField_a_of_type_Int, aexp.a(this.a).jdField_a_of_type_JavaLangString, true, true, null, null);
-    axqy.b(aexp.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
+    if (paramBoolean) {
+      aexp.a(true);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIODrawerDpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexq
  * JD-Core Version:    0.7.0.1
  */

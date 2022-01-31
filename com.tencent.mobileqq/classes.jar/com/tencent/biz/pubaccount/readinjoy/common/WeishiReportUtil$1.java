@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import oob;
-import sgg;
+import osm;
+import syb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class WeishiReportUtil$1
@@ -18,7 +18,7 @@ public final class WeishiReportUtil$1
     oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(1);
     localAttributeList.att_name.set("EnterType");
-    localAttributeList.att_value.set(oob.a(this.jdField_a_of_type_Int));
+    localAttributeList.att_value.set(osm.a(this.jdField_a_of_type_Int));
     localArrayList.add(localAttributeList);
     localAttributeList = new oidb_cmd0x80a.AttributeList();
     localAttributeList.att_id.set(2);
@@ -43,12 +43,12 @@ public final class WeishiReportUtil$1
       localAttributeList.att_value.set("" + this.d);
       localArrayList.add(localAttributeList);
     }
-    sgg.a(25, localArrayList);
+    syb.a(25, localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil.1
  * JD-Core Version:    0.7.0.1
  */

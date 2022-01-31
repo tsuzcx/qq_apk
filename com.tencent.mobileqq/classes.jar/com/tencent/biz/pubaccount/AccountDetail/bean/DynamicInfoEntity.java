@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.AccountDetail.bean;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class DynamicInfoEntity
-  extends auko
+  extends awbv
 {
   public byte[] dynamicInfoData;
-  @aumc
+  @awdj
   public String puin;
 }
 

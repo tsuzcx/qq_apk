@@ -1,44 +1,33 @@
 package c.t.m.g;
 
+import android.os.Looper;
+
 public abstract class dk
+  extends dl
 {
-  protected volatile boolean o = false;
-  protected byte[] p = new byte[0];
+  public abstract int a(Looper paramLooper);
   
-  public abstract void a();
-  
-  public abstract String b();
-  
-  public final boolean d()
+  public final int b(Looper paramLooper)
   {
-    synchronized (this.p)
+    synchronized (this.n)
     {
-      boolean bool = this.o;
-      return bool;
-    }
-  }
-  
-  public final void e()
-  {
-    synchronized (this.p)
-    {
-      if (!this.o) {
-        return;
+      if (this.m) {
+        return -1;
       }
+      this.m = true;
       if (co.e())
       {
         b();
-        co.a("shutdown()");
+        co.a("startup()");
       }
-      a();
-      this.o = false;
-      return;
+      int i = a(paramLooper);
+      return i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.dk
  * JD-Core Version:    0.7.0.1
  */

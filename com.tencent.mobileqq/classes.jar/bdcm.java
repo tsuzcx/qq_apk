@@ -1,29 +1,21 @@
 import android.view.View;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.open.agent.OpenCardContainer;
-import com.tencent.widget.AdapterView;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View.OnClickListener;
 
-public class bdcm
-  implements bfpt
+final class bdcm
+  implements View.OnClickListener
 {
-  public bdcm(OpenCardContainer paramOpenCardContainer) {}
+  bdcm(bdfq parambdfq) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramAdapterView = bdct.a(this.a.jdField_a_of_type_Bdct).iterator();
-    while (paramAdapterView.hasNext()) {
-      ((bdcw)paramAdapterView.next()).a = false;
+    if (this.a != null) {
+      this.a.dismiss();
     }
-    ((bdcw)bdct.a(this.a.jdField_a_of_type_Bdct).get(paramInt)).a = true;
-    this.a.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(false);
-    this.a.jdField_a_of_type_Bdct.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdcm
  * JD-Core Version:    0.7.0.1
  */

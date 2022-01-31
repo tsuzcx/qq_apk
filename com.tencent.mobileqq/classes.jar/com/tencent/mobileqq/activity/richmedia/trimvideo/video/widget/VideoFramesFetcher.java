@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import ahzv;
-import aiaa;
-import aiac;
-import aiag;
+import ajrf;
+import ajrk;
+import ajrm;
+import ajrq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,26 +12,26 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.PriorityBlockingQueue;
 
 public class VideoFramesFetcher
-  implements aiac
+  implements ajrm
 {
   private static long jdField_a_of_type_Long;
   private volatile int jdField_a_of_type_Int = 1;
-  private ahzv jdField_a_of_type_Ahzv;
-  private BlockingQueue<aiag> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private ConcurrentHashMap<Integer, aiag> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private ajrf jdField_a_of_type_Ajrf;
+  private BlockingQueue<ajrq> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private ConcurrentHashMap<Integer, ajrq> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   private volatile boolean jdField_a_of_type_Boolean;
   private int b = 1000;
   private int c;
   
-  private aiaa b(int paramInt)
+  private ajrk b(int paramInt)
   {
     if (!a()) {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFramesFetcher", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    aiag localaiag2;
+    ajrq localajrq2;
     do
     {
       return null;
@@ -39,10 +39,10 @@ public class VideoFramesFetcher
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          aiag localaiag1 = (aiag)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          ajrq localajrq1 = (ajrq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localaiag1.jdField_a_of_type_Long = l;
+          localajrq1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -53,17 +53,17 @@ public class VideoFramesFetcher
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localaiag2 = new aiag(this, l, paramInt, paramInt + this.b);
+      localajrq2 = new ajrq(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localaiag2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localajrq2);
     return null;
   }
   
-  public int a(int paramInt1, int paramInt2, ahzv paramahzv)
+  public int a(int paramInt1, int paramInt2, ajrf paramajrf)
   {
     this.b = paramInt1;
     this.c = paramInt2;
-    this.jdField_a_of_type_Ahzv = paramahzv;
+    this.jdField_a_of_type_Ajrf = paramajrf;
     this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new PriorityBlockingQueue();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
@@ -71,7 +71,7 @@ public class VideoFramesFetcher
     return 0;
   }
   
-  public aiaa a(int paramInt)
+  public ajrk a(int paramInt)
   {
     if ((!a()) || (paramInt < 0))
     {
@@ -80,8 +80,8 @@ public class VideoFramesFetcher
       }
       return null;
     }
-    if (this.jdField_a_of_type_Ahzv.a(paramInt)) {
-      return this.jdField_a_of_type_Ahzv.a(paramInt);
+    if (this.jdField_a_of_type_Ajrf.a(paramInt)) {
+      return this.jdField_a_of_type_Ajrf.a(paramInt);
     }
     return b(this.b * paramInt);
   }
@@ -130,7 +130,7 @@ public class VideoFramesFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher
  * JD-Core Version:    0.7.0.1
  */

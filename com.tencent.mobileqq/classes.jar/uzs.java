@@ -1,45 +1,24 @@
-public class uzs<T>
-  extends uzr
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+public class uzs
+  extends ugz
 {
-  public T a;
-  public String a;
-  public uzu<T> a;
+  public final String a;
   
-  public uzs(uzu<T> paramuzu)
+  public uzs(ErrorMessage paramErrorMessage, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "GetResultSimpleStep";
-    this.jdField_a_of_type_Uzu = paramuzu;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public Object a()
+  public String toString()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + "} ";
   }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Uzu != null) {
-      this.jdField_a_of_type_Uzu.a(this.jdField_a_of_type_JavaLangObject);
-    }
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uzs
  * JD-Core Version:    0.7.0.1
  */

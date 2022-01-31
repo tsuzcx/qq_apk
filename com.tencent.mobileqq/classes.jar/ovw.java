@@ -1,27 +1,42 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class ovw
-  implements Animation.AnimationListener
+  implements bibd
 {
-  public ovw(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public ovw(ReadInJoyDynamicChannelFragment paramReadInJoyDynamicChannelFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    ReadInJoySelfFragment.a(this.a).setVisibility(8);
-    ReadInJoySelfFragment.b(this.a).setAnimation(null);
+    QLog.d("ReadInJoyDynamicChannelFragment", 2, "endRefresh.");
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  {
+    QLog.d("ReadInJoyDynamicChannelFragment", 2, "startLoadMore.");
+    if (ReadInJoyDynamicChannelFragment.h(this.a) == 40830) {}
+    for (paramInt = ReadInJoyDynamicChannelFragment.i(this.a);; paramInt = 1)
+    {
+      owy.a().a(ReadInJoyDynamicChannelFragment.j(this.a), ReadInJoyDynamicChannelFragment.k(this.a), 2, 0, paramInt);
+      return;
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    QLog.d("ReadInJoyDynamicChannelFragment", 2, "startTopRefresh.");
+    if (paramBoolean) {}
+    for (int i = 1;; i = 3)
+    {
+      this.a.b(i);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ovw
  * JD-Core Version:    0.7.0.1
  */

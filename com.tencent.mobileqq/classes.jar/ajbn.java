@@ -1,16 +1,34 @@
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
 
-public abstract interface ajbn
+class ajbn
+  implements aubn
 {
-  public abstract String a();
+  ajbn(ajbm paramajbm) {}
   
-  public abstract JSONObject a(ajbm paramajbm, JSONObject paramJSONObject);
+  public void a(int paramInt)
+  {
+    ajbm.a(this.a).removeMessages(11);
+    ajbm.a(this.a).sendEmptyMessageDelayed(11, 1000L);
+  }
   
-  public abstract int c();
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if ((paramInt & 0x1) != 0)
+    {
+      ajbm.a(this.a).removeMessages(11);
+      ajbm.a(this.a).sendEmptyMessageDelayed(11, 1000L);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbn
  * JD-Core Version:    0.7.0.1
  */

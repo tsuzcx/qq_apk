@@ -1,35 +1,35 @@
 package com.tencent.mfsdk.reporter;
 
-import aaad;
-import aaag;
+import abra;
+import abrd;
 import com.tencent.mfsdk.MagnifierSDK;
 
 class DFObserver$InsertRunnable
   implements Runnable
 {
   private long jdField_a_of_type_Long;
-  private aaad jdField_a_of_type_Aaad;
+  private abra jdField_a_of_type_Abra;
   private String jdField_a_of_type_JavaLangString;
   
-  public DFObserver$InsertRunnable(long paramLong, String paramString, aaad paramaaad)
+  public DFObserver$InsertRunnable(long paramLong, String paramString, abra paramabra)
   {
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aaad = paramaaad;
+    this.jdField_a_of_type_Abra = paramabra;
   }
   
   public void run()
   {
     if (MagnifierSDK.a != null)
     {
-      MagnifierSDK.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aaad);
-      this.jdField_a_of_type_Aaad.a();
+      MagnifierSDK.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Abra);
+      this.jdField_a_of_type_Abra.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mfsdk.reporter.DFObserver.InsertRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
 
 public class aheg
-  implements View.OnClickListener
+  implements ahqs
 {
-  public aheg(DrawHbFragment paramDrawHbFragment) {}
+  public aheg(TroopView paramTroopView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a(DrawHbFragment.a(this.a).getText().toString());
+    if (paramInt == SimpleCheckableSlidingIndicator.a) {
+      TroopView.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aheg
  * JD-Core Version:    0.7.0.1
  */

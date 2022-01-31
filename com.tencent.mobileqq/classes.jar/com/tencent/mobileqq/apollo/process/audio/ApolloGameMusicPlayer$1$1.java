@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.process.audio;
 
-import ajaj;
+import akrv;
 import com.tencent.mobileqq.apollo.ApolloEngine;
 import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
@@ -9,7 +9,7 @@ import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 public class ApolloGameMusicPlayer$1$1
   extends IApolloRunnableTask
 {
-  public ApolloGameMusicPlayer$1$1(ajaj paramajaj, ApolloSurfaceView paramApolloSurfaceView) {}
+  public ApolloGameMusicPlayer$1$1(akrv paramakrv, ApolloSurfaceView paramApolloSurfaceView) {}
   
   public String a()
   {
@@ -18,14 +18,14 @@ public class ApolloGameMusicPlayer$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Ajaj.a != 0L) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a(this.jdField_a_of_type_Ajaj.a);
+    if (this.jdField_a_of_type_Akrv.a != 0L) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender().getSavaWrapper().a(this.jdField_a_of_type_Akrv.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.audio.ApolloGameMusicPlayer.1.1
  * JD-Core Version:    0.7.0.1
  */

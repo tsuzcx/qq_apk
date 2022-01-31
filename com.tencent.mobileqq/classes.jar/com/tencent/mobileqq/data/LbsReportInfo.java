@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import auko;
+import awbv;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class LbsReportInfo
-  extends auko
+  extends awbv
 {
   public float accuracy;
   public double alt;
@@ -76,7 +76,7 @@ public class LbsReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.LbsReportInfo
  * JD-Core Version:    0.7.0.1
  */

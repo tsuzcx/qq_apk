@@ -1,28 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
 public class agyo
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public agyo(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public agyo(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopUnAccalimedRedPacketList.a(this.a, true);
-    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-      ahiw.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
-    }
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
+    paramDialogInterface.dismiss();
+    BlessSelectMemberActivity.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agyo
  * JD-Core Version:    0.7.0.1
  */

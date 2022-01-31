@@ -1,29 +1,26 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-
-class aefa
-  implements adnx
+public class aefa
 {
-  aefa(aeez paramaeez) {}
-  
-  public void a()
-  {
-    UnlimitedBladeWorks.a(this.a.a).b = true;
-    UnlimitedBladeWorks.a(this.a.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a.a) != null)
-    {
-      UnlimitedBladeWorks.a(this.a.a).a();
-      if (UnlimitedBladeWorks.b(this.a.a))
-      {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a.a));
-        UnlimitedBladeWorks.a(this.a.a, 0);
-      }
-    }
-  }
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefa
  * JD-Core Version:    0.7.0.1
  */

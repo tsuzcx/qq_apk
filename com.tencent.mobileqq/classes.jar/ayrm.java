@@ -1,31 +1,65 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
-class ayrm
-  extends akat
+public class ayrm
+  implements ayrt
 {
-  ayrm(ayrj paramayrj) {}
+  protected View a;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ayru jdField_a_of_type_Ayru;
+  private List<ayru> jdField_a_of_type_JavaUtilList;
+  private TextView b;
   
-  public void a(boolean paramBoolean, long paramLong, akau paramakau)
+  public ayrm() {}
+  
+  public ayrm(ViewGroup paramViewGroup, int paramInt)
   {
-    if ((this.a.a.a == 1026) && (QLog.isColorLevel())) {
-      QLog.i("PttShow", 2, "onNotifyResultAfterSendRich, UIN_TYPE_HOTCHAT_TOPIC  " + paramBoolean);
-    }
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramakau);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    if (paramakau != null) {
-      this.a.v = paramakau.d;
-    }
-    this.a.d();
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370702));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369588));
+    this.jdField_a_of_type_Ayru = new ayro(this.jdField_a_of_type_AndroidViewView.findViewById(2131368452));
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public LinearLayout a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public TextView a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
+  
+  public ayru a()
+  {
+    return this.jdField_a_of_type_Ayru;
+  }
+  
+  public List<ayru> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayrm
  * JD-Core Version:    0.7.0.1
  */

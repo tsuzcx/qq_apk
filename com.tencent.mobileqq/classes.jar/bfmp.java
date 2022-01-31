@@ -1,29 +1,23 @@
-import android.graphics.Point;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.CreateVirtualResult;
 
 public final class bfmp
+  implements Parcelable.Creator<CreateVirtualResult>
 {
-  ArrayList<Point> a;
-  
-  public int a()
+  public CreateVirtualResult a(Parcel paramParcel)
   {
-    return this.a.size();
+    return new CreateVirtualResult(paramParcel);
   }
   
-  public int a(int paramInt1, int paramInt2)
+  public CreateVirtualResult[] a(int paramInt)
   {
-    if ((paramInt1 > this.a.size() - 1) && (paramInt1 < 0)) {
-      return 0;
-    }
-    if (paramInt2 == 0) {
-      return ((Point)this.a.get(paramInt1)).x;
-    }
-    return ((Point)this.a.get(paramInt1)).y;
+    return new CreateVirtualResult[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfmp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aukp;
+import awbw;
 import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import pbj;
+import pgu;
 
 public class ReadInJoyUserInfoRepository$2
   implements Runnable
 {
-  public ReadInJoyUserInfoRepository$2(pbj parampbj, int paramInt) {}
+  public ReadInJoyUserInfoRepository$2(pgu parampgu, int paramInt) {}
   
   public void run()
   {
-    Object localObject = pbj.a(this.this$0);
+    Object localObject = pgu.a(this.this$0);
     int i = this.a;
-    localObject = ((aukp)localObject).a(ReadInJoyUserInfo.class, true, "uin IS NOT NULL AND uin != ?", new String[] { "" }, null, null, null, String.valueOf(i));
+    localObject = ((awbw)localObject).a(ReadInJoyUserInfo.class, true, "uin IS NOT NULL AND uin != ?", new String[] { "" }, null, null, null, String.valueOf(i));
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       Iterator localIterator = ((List)localObject).iterator();
@@ -37,7 +37,7 @@ public class ReadInJoyUserInfoRepository$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoRepository.2
  * JD-Core Version:    0.7.0.1
  */

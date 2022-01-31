@@ -1,39 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetShareGroupListReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
 public class usw
-  extends QQUIEventReceiver<ust, utw>
 {
-  public usw(@NonNull ust paramust)
-  {
-    super(paramust);
-  }
+  public final String a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
   
-  public void a(@NonNull ust paramust, @NonNull utw paramutw)
+  public usw(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (paramutw.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      ved.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramutw.jdField_a_of_type_Int));
-      ust.b(paramust, paramutw.jdField_a_of_type_Int);
-      if (paramust.a != null)
-      {
-        paramust.a.shareGroupCount = ust.b(paramust);
-        ThreadManager.post(new MemoriesProfilePresenter.GetShareGroupListReceiver.1(this, paramust), 5, null, false);
-      }
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return utw.class;
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     usw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,107 +1,143 @@
-import java.lang.reflect.Field;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tmdownloader.notify.DownloadGlobalListener;
+import com.tencent.tmdownloader.notify.DownloadTaskInfo;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Set;
 
 public class bfgq
+  implements DownloadGlobalListener
 {
-  public static <T> JSONArray a(List<T> paramList)
+  private static bfgq a;
+  
+  private bfgq()
   {
-    JSONArray localJSONArray = new JSONArray();
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return localJSONArray;
+    if (QLog.isColorLevel()) {
+      QLog.d("TMADownloadMonitor", 2, "TMADownloadMonitor Init");
     }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      Object localObject = paramList.next();
-      if (localObject != null) {
-        if (a(localObject)) {
-          localJSONArray.put(localObject);
-        } else if ((localObject instanceof List)) {
-          localJSONArray.put(a((List)localObject));
-        } else {
-          localJSONArray.put(a(localObject));
-        }
-      }
-    }
-    return localJSONArray;
   }
   
-  public static <T> JSONObject a(T paramT)
+  public static bfgq a()
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramT == null) {
-      return localJSONObject;
+    if (a != null) {
+      return a;
     }
-    Field[] arrayOfField = paramT.getClass().getDeclaredFields();
-    if ((arrayOfField == null) || (arrayOfField.length == 0)) {
-      return localJSONObject;
-    }
-    int j = arrayOfField.length;
-    int i = 0;
-    if (i < j)
+    try
     {
-      Object localObject1 = arrayOfField[i];
-      if (localObject1 == null) {}
-      for (;;)
+      a = new bfgq();
+      bfgq localbfgq = a;
+      return localbfgq;
+    }
+    finally {}
+  }
+  
+  public static void a(Context paramContext, DownloadTaskInfo paramDownloadTaskInfo)
+  {
+    if ((paramDownloadTaskInfo == null) || (paramContext == null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("UniformDownloadEvent", 2, "downloadTaskInfo is null or context==null");
+      }
+    }
+    label401:
+    for (;;)
+    {
+      return;
+      azpb.a().addDownloadURL(paramDownloadTaskInfo.url);
+      if (!a(paramDownloadTaskInfo.url))
       {
-        i += 1;
-        break;
-        Object localObject2 = (bfge)((Field)localObject1).getAnnotation(bfge.class);
-        if (localObject2 != null)
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("url", paramDownloadTaskInfo.url);
+        localHashMap.put("NetworkType", bdee.b(paramContext) + "");
+        localHashMap.put("reportVia", "5");
+        if (paramDownloadTaskInfo.stackInfo.length() < 950)
         {
-          localObject2 = ((bfge)localObject2).a();
-          if (!a((String)localObject2))
-          {
-            try
-            {
-              localObject1 = ((Field)localObject1).get(paramT);
-              if (localObject1 == null) {
-                continue;
-              }
-              if (a(localObject1)) {
-                localJSONObject.put((String)localObject2, localObject1);
-              }
-            }
-            catch (JSONException localJSONException)
-            {
-              localJSONException.printStackTrace();
-              continue;
-              if (!(localJSONException instanceof List)) {
-                break label178;
-              }
-              localJSONObject.put((String)localObject2, a((List)localJSONException));
-            }
-            catch (IllegalAccessException localIllegalAccessException)
-            {
-              localIllegalAccessException.printStackTrace();
-            }
-            continue;
-            label178:
-            localJSONObject.put((String)localObject2, a(localIllegalAccessException));
+          localHashMap.put("Stack", paramDownloadTaskInfo.stackInfo);
+          localHashMap.put("_filesize_from_dlg", "0");
+          localHashMap.put("_filename_from_dlg", paramDownloadTaskInfo.pkgName);
+          if (paramDownloadTaskInfo.versionCode <= 0) {
+            break label364;
           }
+          localHashMap.put("isAPK", "1");
+          label160:
+          localHashMap.put("VersionCode", paramDownloadTaskInfo.versionCode + "");
+          paramDownloadTaskInfo = paramDownloadTaskInfo.source;
+          if (!TextUtils.isEmpty(paramDownloadTaskInfo)) {
+            break label376;
+          }
+          azmz.a(paramContext).a(null, "UniformDownloadEvent_NO_SOURCE", true, 0L, 0L, localHashMap, "");
+        }
+        for (;;)
+        {
+          if (!QLog.isColorLevel()) {
+            break label401;
+          }
+          paramContext = new StringBuilder();
+          paramDownloadTaskInfo = localHashMap.keySet().iterator();
+          while (paramDownloadTaskInfo.hasNext())
+          {
+            String str = (String)paramDownloadTaskInfo.next();
+            paramContext.append(str).append("=").append((String)localHashMap.get(str)).append("\n");
+          }
+          localHashMap.put("Stack", paramDownloadTaskInfo.stackInfo.substring(0, 950));
+          if (paramDownloadTaskInfo.stackInfo.length() < 1901)
+          {
+            localHashMap.put("Stack1", paramDownloadTaskInfo.stackInfo.substring(950));
+            break;
+          }
+          localHashMap.put("Stack1", paramDownloadTaskInfo.stackInfo.substring(950, 1900));
+          break;
+          label364:
+          localHashMap.put("isAPK", "0");
+          break label160;
+          label376:
+          localHashMap.put("DOWNLOAD_BIG_BROTHER_SOURCE", paramDownloadTaskInfo);
+          azmz.a(paramContext).a(null, "UniformDownloadEvent", true, 0L, 0L, localHashMap, "");
         }
       }
     }
-    return localJSONObject;
-  }
-  
-  private static boolean a(Object paramObject)
-  {
-    return ((paramObject instanceof Integer)) || ((paramObject instanceof String)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof Double)) || ((paramObject instanceof Float)) || ((paramObject instanceof Long)) || ((paramObject instanceof Byte)) || ((paramObject instanceof Character)) || ((paramObject instanceof Short));
+    QLog.d("UniformDownloadEvent", 2, paramContext.toString());
   }
   
   private static boolean a(String paramString)
   {
-    return (paramString == null) || (paramString.length() <= 0);
+    return (!TextUtils.isEmpty(paramString)) && ((paramString.endsWith("patch")) || (paramString.endsWith("zip")) || (paramString.endsWith("7z")));
+  }
+  
+  public void onTaskCompleted(DownloadTaskInfo paramDownloadTaskInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskCompleted,", paramDownloadTaskInfo });
+    }
+  }
+  
+  public void onTaskFailed(DownloadTaskInfo paramDownloadTaskInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskFailed,", paramDownloadTaskInfo });
+    }
+  }
+  
+  public void onTaskPaused(DownloadTaskInfo paramDownloadTaskInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskPaused,", paramDownloadTaskInfo });
+    }
+  }
+  
+  public void onTaskStarted(DownloadTaskInfo paramDownloadTaskInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TMADownloadMonitor", 2, new Object[] { "onTaskStarted,", paramDownloadTaskInfo });
+    }
+    a(BaseApplicationImpl.getContext(), paramDownloadTaskInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfgq
  * JD-Core Version:    0.7.0.1
  */

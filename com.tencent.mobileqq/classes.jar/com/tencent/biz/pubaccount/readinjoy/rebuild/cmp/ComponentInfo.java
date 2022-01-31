@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import actj;
+import aekt;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -21,29 +21,29 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bbfr;
+import bdem;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 import com.tencent.qphone.base.util.QLog;
-import oky;
-import onh;
+import opi;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pau;
-import pqp;
-import pqy;
-import puy;
+import ors;
+import pgd;
+import pxk;
+import pxt;
+import qbs;
 
 public class ComponentInfo
   extends LinearLayout
-  implements pqp
+  implements pxk
 {
   View jdField_a_of_type_AndroidViewView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public ComponentNotIntrest a;
   ReadInJoyNickNameTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView;
-  puy jdField_a_of_type_Puy;
+  qbs jdField_a_of_type_Qbs;
   View jdField_b_of_type_AndroidViewView;
   TextView jdField_b_of_type_AndroidWidgetTextView;
   TextView c;
@@ -75,7 +75,7 @@ public class ComponentInfo
   
   public static ShapeDrawable a(int paramInt, Resources paramResources)
   {
-    float f9 = actj.a(1.0F, paramResources);
+    float f9 = aekt.a(1.0F, paramResources);
     float f1 = 6;
     float f2 = 6;
     float f3 = 6;
@@ -102,23 +102,23 @@ public class ComponentInfo
   private void a(Context paramContext, Object paramObject)
   {
     b(paramContext);
-    if ((paramObject instanceof pau))
+    if ((paramObject instanceof pgd))
     {
-      this.jdField_a_of_type_Puy.a((pau)paramObject);
+      this.jdField_a_of_type_Qbs.a((pgd)paramObject);
       b();
     }
   }
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Puy = new puy();
+    this.jdField_a_of_type_Qbs = new qbs();
     a(paramContext);
     a();
   }
   
   private void c()
   {
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Puy.a.a();
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Qbs.a.a();
     if (localArticleInfo == null) {
       return;
     }
@@ -126,7 +126,7 @@ public class ComponentInfo
     {
       String str;
       if (AdvertisementInfo.isAdvertisementInfo(localArticleInfo)) {
-        switch (this.jdField_a_of_type_Puy.a())
+        switch (this.jdField_a_of_type_Qbs.a())
         {
         default: 
           str = "#BBBBBB";
@@ -139,7 +139,7 @@ public class ComponentInfo
         try
         {
           this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(str));
-          oky.a(this.jdField_a_of_type_AndroidWidgetTextView, a(Color.parseColor(str), getResources()));
+          opi.a(this.jdField_a_of_type_AndroidWidgetTextView, a(Color.parseColor(str), getResources()));
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
           return;
           str = "#12B7F5";
@@ -159,7 +159,7 @@ public class ComponentInfo
               QLog.w("ComponentInfo", 2, "configDefaultItem: ", localException);
             }
             this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#00a5e0"));
-            oky.a(this.jdField_a_of_type_AndroidWidgetTextView, a(Color.parseColor("#00a5e0"), getResources()));
+            opi.a(this.jdField_a_of_type_AndroidWidgetTextView, a(Color.parseColor("#00a5e0"), getResources()));
           }
         }
       }
@@ -169,8 +169,8 @@ public class ComponentInfo
   
   private void d()
   {
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Puy.a.a();
-    if ((AdvertisementInfo.isAdvertisementInfo(localArticleInfo)) && (this.jdField_a_of_type_Puy.a() == 1)) {
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_Qbs.a.a();
+    if ((AdvertisementInfo.isAdvertisementInfo(localArticleInfo)) && (this.jdField_a_of_type_Qbs.a() == 1)) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setVisibility(8);
     }
     do
@@ -182,19 +182,19 @@ public class ComponentInfo
       }
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setVisibility(0);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(str);
-    } while (!onh.w(this.jdField_a_of_type_Puy.a.a()));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setNickNameByUin(this.jdField_a_of_type_Puy.a());
+    } while (!ors.w(this.jdField_a_of_type_Qbs.a.a()));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setNickNameByUin(this.jdField_a_of_type_Qbs.a());
   }
   
   private void e()
   {
-    Object localObject1 = this.jdField_a_of_type_Puy.a.a();
+    Object localObject1 = this.jdField_a_of_type_Qbs.a.a();
     int i;
-    if ((this.jdField_a_of_type_Puy.m()) || (((localObject1 instanceof AdvertisementInfo)) && (!TextUtils.isEmpty(((AdvertisementInfo)localObject1).mAdBtnTxt))))
+    if ((this.jdField_a_of_type_Qbs.m()) || (((localObject1 instanceof AdvertisementInfo)) && (!TextUtils.isEmpty(((AdvertisementInfo)localObject1).mAdBtnTxt))))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.jdField_a_of_type_AndroidViewView.setPadding(actj.a(9.75F, getResources()), actj.a(3.75F, getResources()), actj.a(9.75F, getResources()), actj.a(8.25F, getResources()));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.jdField_a_of_type_AndroidViewView.setPadding(aekt.a(9.75F, getResources()), aekt.a(3.75F, getResources()), aekt.a(9.75F, getResources()), aekt.a(8.25F, getResources()));
       localObject1 = (AdvertisementInfo)localObject1;
-      i = this.jdField_a_of_type_Puy.a();
+      i = this.jdField_a_of_type_Qbs.a();
     }
     for (;;)
     {
@@ -206,14 +206,14 @@ public class ComponentInfo
         }
         localObject1 = ((AdvertisementInfo)localObject1).mAdBtnTxt;
         m = -15550475;
-        int n = actj.a(2.0F, getResources());
+        int n = aekt.a(2.0F, getResources());
         localLayoutParams = (LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-        localLayoutParams.rightMargin = actj.a(9.5F, getResources());
-        localLayoutParams.leftMargin = actj.a(5.0F, getResources());
+        localLayoutParams.rightMargin = aekt.a(9.5F, getResources());
+        localLayoutParams.leftMargin = aekt.a(5.0F, getResources());
         switch (i)
         {
         case 1: 
-          oky.a(this.jdField_b_of_type_AndroidWidgetTextView, null);
+          opi.a(this.jdField_b_of_type_AndroidWidgetTextView, null);
           this.jdField_a_of_type_AndroidViewView.setVisibility(0);
           this.jdField_b_of_type_AndroidViewView.setVisibility(8);
           j = 0;
@@ -243,48 +243,48 @@ public class ComponentInfo
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
-      if (bbfr.a(getContext(), ((JSONObject)localObject2).optString("pkg_name")))
+      if (bdem.a(getContext(), ((JSONObject)localObject2).optString("pkg_name")))
       {
-        localObject1 = getContext().getString(2131718464);
+        localObject1 = getContext().getString(2131718893);
       }
       else
       {
-        localObject1 = getContext().getString(2131718462);
+        localObject1 = getContext().getString(2131718891);
         continue;
-        if (bbfr.a(getContext(), ((JSONObject)localObject2).optString("pkg_name")))
+        if (bdem.a(getContext(), ((JSONObject)localObject2).optString("pkg_name")))
         {
-          localObject2 = getResources().getDrawable(2130842181);
+          localObject2 = getResources().getDrawable(2130842345);
           f = 11.0F;
-          k = actj.a(3.0F, getResources());
-          j = actj.a(1.7F, getResources());
-          i = actj.a(1.8F, getResources());
-          oky.a(this.jdField_b_of_type_AndroidWidgetTextView, a(-15550475, getResources()));
+          k = aekt.a(3.0F, getResources());
+          j = aekt.a(1.7F, getResources());
+          i = aekt.a(1.8F, getResources());
+          opi.a(this.jdField_b_of_type_AndroidWidgetTextView, a(-15550475, getResources()));
           this.jdField_a_of_type_AndroidViewView.setVisibility(8);
           this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          localLayoutParams.leftMargin = actj.a(8.0F, getResources());
+          localLayoutParams.leftMargin = aekt.a(8.0F, getResources());
         }
         else
         {
-          localObject2 = getResources().getDrawable(2130842180);
+          localObject2 = getResources().getDrawable(2130842344);
           continue;
-          if (bbfr.a(getContext(), ((JSONObject)localObject2).optString("pkg_name")))
+          if (bdem.a(getContext(), ((JSONObject)localObject2).optString("pkg_name")))
           {
-            localObject2 = getResources().getDrawable(2130842181);
+            localObject2 = getResources().getDrawable(2130842345);
             f = 11.0F;
-            k = actj.a(3.0F, getResources());
-            j = actj.a(1.7F, getResources());
-            i = actj.a(1.8F, getResources());
-            localLayoutParams.rightMargin = actj.a(3.5F, getResources());
-            oky.a(this.jdField_b_of_type_AndroidWidgetTextView, a(-15550475, getResources()));
+            k = aekt.a(3.0F, getResources());
+            j = aekt.a(1.7F, getResources());
+            i = aekt.a(1.8F, getResources());
+            localLayoutParams.rightMargin = aekt.a(3.5F, getResources());
+            opi.a(this.jdField_b_of_type_AndroidWidgetTextView, a(-15550475, getResources()));
             this.jdField_a_of_type_AndroidViewView.setVisibility(0);
             this.jdField_b_of_type_AndroidViewView.setVisibility(8);
           }
           else
           {
-            localObject2 = getResources().getDrawable(2130842180);
+            localObject2 = getResources().getDrawable(2130842344);
             continue;
             localObject1 = "· " + (String)localObject1;
-            oky.a(this.jdField_b_of_type_AndroidWidgetTextView, null);
+            opi.a(this.jdField_b_of_type_AndroidWidgetTextView, null);
             this.jdField_a_of_type_AndroidViewView.setVisibility(8);
             this.jdField_b_of_type_AndroidViewView.setVisibility(0);
             m = -6447715;
@@ -294,7 +294,7 @@ public class ComponentInfo
             k = 0;
             i = 0;
             continue;
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.jdField_a_of_type_AndroidViewView.setPadding(actj.a(9.75F, getResources()), actj.a(8.25F, getResources()), actj.a(9.75F, getResources()), actj.a(8.25F, getResources()));
+            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.jdField_a_of_type_AndroidViewView.setPadding(aekt.a(9.75F, getResources()), aekt.a(8.25F, getResources()), aekt.a(9.75F, getResources()), aekt.a(8.25F, getResources()));
             this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
             this.jdField_a_of_type_AndroidViewView.setVisibility(0);
             this.jdField_b_of_type_AndroidViewView.setVisibility(8);
@@ -314,25 +314,25 @@ public class ComponentInfo
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559878, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131376698));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramContext.findViewById(2131370647));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362648));
-    this.c = ((TextView)paramContext.findViewById(2131375144));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramContext.findViewById(2131370911));
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131371213);
-    this.jdField_b_of_type_AndroidViewView = paramContext.findViewById(2131371214);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559973, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131377208));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramContext.findViewById(2131370958));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362676));
+    this.c = ((TextView)paramContext.findViewById(2131375625));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest = ((ComponentNotIntrest)paramContext.findViewById(2131371222));
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131371525);
+    this.jdField_b_of_type_AndroidViewView = paramContext.findViewById(2131371526);
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pau))
+    if ((paramObject instanceof pgd))
     {
-      this.jdField_a_of_type_Puy.a((pau)paramObject);
-      if (this.jdField_a_of_type_Puy.a.h())
+      this.jdField_a_of_type_Qbs.a((pgd)paramObject);
+      if (this.jdField_a_of_type_Qbs.a.h())
       {
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.setVisibility(8);
-        if (((pau)paramObject).a() != null) {
+        if (((pgd)paramObject).a() != null) {
           break label126;
         }
         QLog.e("ComponentInfo", 1, "bindData getArticleInfo null");
@@ -345,7 +345,7 @@ public class ComponentInfo
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.setVisibility(0);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.a(paramObject);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.getLayoutParams();
-    if (this.jdField_a_of_type_Puy.m()) {}
+    if (this.jdField_a_of_type_Qbs.m()) {}
     for (localLayoutParams.gravity = 0;; localLayoutParams.gravity = 80)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.setLayoutParams(localLayoutParams);
@@ -358,90 +358,90 @@ public class ComponentInfo
     f();
   }
   
-  public void a(pqy parampqy)
+  public void a(pxt parampxt)
   {
-    this.jdField_a_of_type_Puy.a(parampqy);
+    this.jdField_a_of_type_Qbs.a(parampxt);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.a(parampqy);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.a(parampxt);
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Puy.j())
+    if (this.jdField_a_of_type_Qbs.j())
     {
-      if (this.jdField_a_of_type_Puy.a())
+      if (this.jdField_a_of_type_Qbs.a())
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setVisibility(8);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
         localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.getLayoutParams();
-        ((ViewGroup.MarginLayoutParams)localObject).rightMargin = actj.a(7.0F, getResources());
+        ((ViewGroup.MarginLayoutParams)localObject).rightMargin = aekt.a(7.0F, getResources());
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.setLayoutParams((ViewGroup.LayoutParams)localObject);
         return;
       }
       localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject).bottomMargin = actj.a(18.0F, getResources());
-      ((LinearLayout.LayoutParams)localObject).topMargin = actj.a(0.0F, getResources());
+      ((LinearLayout.LayoutParams)localObject).bottomMargin = aekt.a(18.0F, getResources());
+      ((LinearLayout.LayoutParams)localObject).topMargin = aekt.a(0.0F, getResources());
       this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject).bottomMargin = actj.a(18.0F, getResources());
-      ((LinearLayout.LayoutParams)localObject).leftMargin = actj.a(11.0F, getResources());
-      ((LinearLayout.LayoutParams)localObject).topMargin = actj.a(0.0F, getResources());
+      ((LinearLayout.LayoutParams)localObject).bottomMargin = aekt.a(18.0F, getResources());
+      ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(11.0F, getResources());
+      ((LinearLayout.LayoutParams)localObject).topMargin = aekt.a(0.0F, getResources());
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.getLayoutParams();
-      ((ViewGroup.MarginLayoutParams)localObject).rightMargin = actj.a(2.25F, getResources());
+      ((ViewGroup.MarginLayoutParams)localObject).rightMargin = aekt.a(2.25F, getResources());
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.setLayoutParams((ViewGroup.LayoutParams)localObject);
       return;
     }
-    if ((this.jdField_a_of_type_Puy.b()) || (this.jdField_a_of_type_Puy.c()))
+    if ((this.jdField_a_of_type_Qbs.b()) || (this.jdField_a_of_type_Qbs.c()))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject).bottomMargin = actj.a(0.0F, getResources());
-      ((LinearLayout.LayoutParams)localObject).leftMargin = actj.a(13.0F, getResources());
+      ((LinearLayout.LayoutParams)localObject).bottomMargin = aekt.a(0.0F, getResources());
+      ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(13.0F, getResources());
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       return;
     }
-    if (this.jdField_a_of_type_Puy.d())
+    if (this.jdField_a_of_type_Qbs.d())
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setVisibility(0);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject).bottomMargin = actj.a(0.0F, getResources());
-      ((LinearLayout.LayoutParams)localObject).leftMargin = actj.a(13.0F, getResources());
+      ((LinearLayout.LayoutParams)localObject).bottomMargin = aekt.a(0.0F, getResources());
+      ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(13.0F, getResources());
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       return;
     }
-    if (this.jdField_a_of_type_Puy.a())
+    if (this.jdField_a_of_type_Qbs.a())
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.getLayoutParams();
-      ((ViewGroup.MarginLayoutParams)localObject).rightMargin = actj.a(7.0F, getResources());
+      ((ViewGroup.MarginLayoutParams)localObject).rightMargin = aekt.a(7.0F, getResources());
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.setLayoutParams((ViewGroup.LayoutParams)localObject);
       return;
     }
     Object localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).bottomMargin = actj.a(26.0F, getResources());
+    ((LinearLayout.LayoutParams)localObject).bottomMargin = aekt.a(26.0F, getResources());
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).bottomMargin = actj.a(26.0F, getResources());
-    ((LinearLayout.LayoutParams)localObject).leftMargin = actj.a(11.0F, getResources());
+    ((LinearLayout.LayoutParams)localObject).bottomMargin = aekt.a(26.0F, getResources());
+    ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(11.0F, getResources());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.getLayoutParams();
-    ((ViewGroup.MarginLayoutParams)localObject).rightMargin = actj.a(2.25F, getResources());
+    ((ViewGroup.MarginLayoutParams)localObject).rightMargin = aekt.a(2.25F, getResources());
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentNotIntrest.setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentInfo
  * JD-Core Version:    0.7.0.1
  */

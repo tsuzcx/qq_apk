@@ -1,482 +1,137 @@
-import android.content.Context;
-import android.graphics.Color;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
-import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment.3;
-import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment.4;
-import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment.5;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.IEventReceiver;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import mqq.os.MqqHandler;
 
 public class uun
-  extends wco
-  implements IEventReceiver, utd, uue, uug
+  extends JobSegment<utx, List<vhg>>
 {
-  public static final String KEY = "MemoriesVideoListSegment";
-  public int a;
   public String a;
-  private HashMap<String, WeakReference<uuf>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private uta jdField_a_of_type_Uta;
-  private final uuq jdField_a_of_type_Uuq;
-  public String b;
-  private boolean b;
-  private boolean c = true;
+  public vlr a;
+  public boolean a;
+  public String b = "";
+  public String c;
   
-  public uun(Context paramContext, int paramInt, String paramString)
+  public uun(String paramString)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Uta = new uta(paramString, this);
-    this.jdField_a_of_type_Uta.a();
-    this.jdField_a_of_type_Uuq = new uuq(this);
-    stb.a().registerSubscriber(this.jdField_a_of_type_Uuq);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.c = paramString;
   }
   
-  private void a(int paramInt, VideoCollectionItem paramVideoCollectionItem, String paramString, boolean paramBoolean)
+  public uun(String paramString1, String paramString2, String paramString3, vlr paramvlr)
   {
-    Object localObject = a(paramInt);
-    if (localObject == null)
+    this(paramString1);
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString3;
+    this.jdField_a_of_type_Vlr = paramvlr;
+  }
+  
+  public static List<vhg> a(List<uup> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      ved.a("Q.qqstory.memories.MemoriesVideoListSegment", "doScrollHorizal, findViewHolder, null, waiting...  %s", Boolean.valueOf(paramBoolean));
-      if (!paramBoolean) {
-        ThreadManager.getUIHandler().postDelayed(new MemoriesVideoListSegment.3(this, paramInt, paramVideoCollectionItem, paramString), 300L);
+      uup localuup = (uup)paramList.next();
+      if ((!TextUtils.isEmpty(localuup.b)) && (!TextUtils.isEmpty(localuup.jdField_a_of_type_JavaLangString)))
+      {
+        vhg localvhg = new vhg();
+        localvhg.jdField_a_of_type_JavaLangString = localuup.b;
+        localvhg.b = localuup.jdField_a_of_type_JavaLangString;
+        localvhg.jdField_a_of_type_Long = localuup.jdField_a_of_type_Long;
+        localvhg.jdField_a_of_type_Boolean = localuup.jdField_a_of_type_Boolean;
+        localArrayList.add(localvhg);
       }
     }
-    do
+    return localArrayList;
+  }
+  
+  protected void a(JobContext paramJobContext, utx paramutx)
+  {
+    if (paramutx == null)
     {
+      wsv.d("Q.qqstory.msgTab.jobPullVidList", "(0) runSegment() from: nodeInfo is null!");
+      xmh.a("nodeInfo is null!", new Object[0]);
+      notifyResult(new ArrayList());
       return;
-      localObject = (MemoriesInnerListView)((vap)localObject).a(2131368183);
-    } while (localObject == null);
-    Iterator localIterator = paramVideoCollectionItem.collectionVideoUIItemList.iterator();
-    int i = 0;
-    for (;;)
+    }
+    wsv.b("Q.qqstory.msgTab.jobPullVidList", "(1) runSegment() from: %s, uid: %s, cookie: %s, startVid: %s, groupdId: %s, nodeInfoList.size: %d, passthrough: %s", new Object[] { this.c, paramutx.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Vlr, Integer.valueOf(paramutx.jdField_a_of_type_JavaUtilList.size()), paramutx.k });
+    if (TextUtils.isEmpty(paramutx.jdField_a_of_type_JavaLangString))
     {
-      if ((!localIterator.hasNext()) || (TextUtils.equals(((uuc)localIterator.next()).jdField_a_of_type_JavaLangString, paramString)))
+      notifyError(new ErrorMessage(100, "nodeInfo not valid"));
+      return;
+    }
+    if ((paramutx.jdField_a_of_type_JavaUtilList.size() == 0) && (paramutx.jdField_a_of_type_Int != 12))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, new Object[] { "skip, nodeInfo has no video, info=%s", paramutx });
+      }
+      if (paramutx.jdField_a_of_type_Int == 5)
       {
-        if (paramVideoCollectionItem.collectionVideoUIItemList.size() > 2) {
-          break;
-        }
-        ThreadManager.getUIHandler().post(new MemoriesVideoListSegment.4(this, (MemoriesInnerListView)localObject, i, paramString));
+        notifyResult(new ArrayList());
         return;
       }
-      i += 1;
+      notifyError(new ErrorMessage(100, "vid is 0"));
+      return;
     }
-    if (!paramBoolean)
+    if ((paramutx.a()) && (paramutx.jdField_a_of_type_Int != 12))
     {
-      ved.a("Q.qqstory.memories.MemoriesVideoListSegment", "feedPosition:%d do scroll data pos:%d", Integer.valueOf(paramInt), Integer.valueOf(i));
-      int j = vzl.a(this.jdField_a_of_type_AndroidContentContext, 80.0F) * i;
-      ((MemoriesInnerListView)localObject).resetCurrentX(j);
-      ((MemoriesInnerListView)localObject).a().notifyDataSetChanged();
-      ved.a("Q.qqstory.memories.MemoriesVideoListSegment", "feedPosition:%d do scroll data pos:%d, scrollx:%d", Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j));
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, new Object[] { "video list had preloaded, info=%s", paramutx });
+      }
+      notifyResult(a(paramutx.jdField_a_of_type_JavaUtilList));
+      return;
     }
-    ThreadManager.getUIHandler().postDelayed(new MemoriesVideoListSegment.5(this, (MemoriesInnerListView)localObject, i, paramString), 400L);
-  }
-  
-  private void b(int paramInt)
-  {
-    d(paramInt);
-    ved.a("Q.qqstory.memories.MemoriesVideoListSegment", "doScrollVertical,position:%d", Integer.valueOf(paramInt));
-  }
-  
-  private String c()
-  {
-    return String.valueOf(hashCode());
-  }
-  
-  protected void T_()
-  {
-    super.T_();
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public int a()
-  {
+    paramJobContext = null;
+    if (paramutx.jdField_a_of_type_Int != 12) {
+      paramJobContext = uuq.a(paramutx);
+    }
+    if (paramJobContext != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, "get succeed from db, info=" + paramutx);
+      }
+      wsv.b("Q.qqstory.msgTab.jobPullVidList", "(2) runSegment(), try decode cached rsp from DB");
+      paramJobContext = uvd.a(paramutx, paramJobContext);
+      if (paramJobContext != null)
+      {
+        paramJobContext = a(paramJobContext.a.jdField_a_of_type_JavaUtilList);
+        notifyResult(paramJobContext);
+        wsv.a("Q.qqstory.msgTab.jobPullVidList", "(end) runSegment(), Segment notifyResult(), size=%d", Integer.valueOf(paramJobContext.size()));
+        return;
+      }
+      wsv.b("Q.qqstory.msgTab.jobPullVidList", "(2-1) runSegment(), decode cached rsp from DB fail, start to pull vid list instead");
+    }
     if (this.jdField_a_of_type_Boolean)
     {
-      if (!this.jdField_a_of_type_Uta.jdField_a_of_type_Boolean) {
-        return 1;
-      }
-      return this.jdField_a_of_type_Uta.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  protected int a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Uta.jdField_a_of_type_Boolean)
-    {
-      VideoCollectionItem localVideoCollectionItem = (VideoCollectionItem)this.jdField_a_of_type_Uta.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      if (localVideoCollectionItem.collectionType == 0) {
-        return 0;
-      }
-      if (localVideoCollectionItem.collectionType == 1) {
-        return 1;
-      }
-      if (localVideoCollectionItem.collectionType == 8) {
-        return 2;
-      }
-      throw new IllegalStateException("get view type error because unknown view type:" + localVideoCollectionItem.collectionType);
-    }
-    return 3;
-  }
-  
-  public View a(int paramInt, vap paramvap)
-  {
-    TextView localTextView = (TextView)paramvap.a(2131369508);
-    if ((this.jdField_a_of_type_Uta.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null) && (this.jdField_a_of_type_Uta.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode == 11111)) {
-      localTextView.setText(ajya.a(2131706546));
-    }
-    for (;;)
-    {
-      return paramvap.a();
-      localTextView.setText(ajya.a(2131706544));
-    }
-  }
-  
-  public View a(int paramInt, vap paramvap, ViewGroup paramViewGroup)
-  {
-    int i = a(paramInt);
-    if (i == 0) {
-      return b(paramInt, paramvap, paramViewGroup);
-    }
-    if (i == 1) {
-      return c(paramInt, paramvap, paramViewGroup);
-    }
-    if (i == 2) {
-      return d(paramInt, paramvap, paramViewGroup);
-    }
-    if (i == 3) {
-      return a(paramInt, paramvap);
-    }
-    throw new IllegalStateException("bind view error because unknown view type:" + i);
-  }
-  
-  public String a()
-  {
-    return "MemoriesVideoListSegment";
-  }
-  
-  public vap a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramInt = a(paramInt);
-    if (paramInt == 0) {
-      return new vap(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561295, paramViewGroup, false));
-    }
-    if (paramInt == 1) {
-      return new vap(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561285, paramViewGroup, false));
-    }
-    if (paramInt == 2) {
-      return new vap(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561293, paramViewGroup, false));
-    }
-    if (paramInt == 3) {
-      return new vap(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561290, paramViewGroup, false));
-    }
-    throw new IllegalStateException("create view error because unknown view type:" + paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    ved.a("Q.qqstory.memories.MemoriesVideoListSegment", "onInnerListRefresh collectionId=%s", paramString);
-    this.jdField_a_of_type_Uta.a(paramString);
-    paramString = ((tdl)tcz.a(2)).b(this.jdField_a_of_type_Uta.jdField_a_of_type_JavaLangString);
-    int i = StoryMemoriesFragment.a(this.jdField_a_of_type_Int);
-    if ((paramString != null) && (paramString.isMe())) {}
-    for (paramString = "1";; paramString = "2")
-    {
-      vei.a("memory", "left_right", i, 0, new String[] { paramString, "", "", "" });
+      wsv.b("Q.qqstory.msgTab.jobPullVidList", "(2) runSegment(), isLocal Only return null");
+      notifyResult(new ArrayList());
       return;
     }
-  }
-  
-  public void a(String paramString1, int paramInt, View paramView, String paramString2)
-  {
-    Bosses.get().postJob(new uup(this, "Q.qqstory.memories.MemoriesVideoListSegment", paramString1, paramString2, paramInt, paramView));
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    Iterator localIterator = this.jdField_a_of_type_Uta.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
+    if ((this.jdField_a_of_type_Vlr != null) && (this.jdField_a_of_type_Vlr.jdField_a_of_type_Boolean))
     {
-      localVideoCollectionItem = (VideoCollectionItem)localIterator.next();
-      if (paramString1.equals(localVideoCollectionItem.feedId))
-      {
-        this.jdField_a_of_type_JavaLangString = null;
-        this.jdField_b_of_type_JavaLangString = null;
-        b(i);
-        a(i, localVideoCollectionItem, paramString2, false);
-      }
-    }
-    while (!paramBoolean)
-    {
-      VideoCollectionItem localVideoCollectionItem;
-      return;
-      i += 1;
-      break;
-    }
-    ved.b("Q.qqstory.memories.MemoriesVideoListSegment", "scroll2NewGroup, loadmore");
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    b();
-  }
-  
-  public void a(String paramString, List<uuc> paramList)
-  {
-    ved.d("Q.qqstory.memories.MemoriesVideoListSegment", "updateCollectionData. collectionId=%s", new Object[] { paramString });
-    WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      ((uuf)localWeakReference.get()).b(paramList, paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    boolean bool = true;
-    SegmentList localSegmentList;
-    String str;
-    if (paramBoolean)
-    {
-      c(true);
-      localSegmentList = a();
-      str = a();
-      if (a()) {
-        break label83;
-      }
-    }
-    for (;;)
-    {
-      localSegmentList.setLoadMoreComplete(str, paramBoolean, bool);
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_b_of_type_JavaLangString != null))
-      {
-        a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false);
-        this.jdField_a_of_type_JavaLangString = null;
-        this.jdField_b_of_type_JavaLangString = null;
-      }
-      return;
-      c(false);
-      break;
-      label83:
-      bool = false;
-    }
-  }
-  
-  public boolean a()
-  {
-    if (c()) {
-      return this.jdField_a_of_type_Uta.jdField_b_of_type_Boolean;
-    }
-    return true;
-  }
-  
-  protected boolean a_(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Uta.a(false);
-    return true;
-  }
-  
-  public View b(int paramInt, vap paramvap, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (VideoCollectionItem)this.jdField_a_of_type_Uta.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    TextView localTextView1 = (TextView)paramvap.a(2131379564);
-    TextView localTextView2 = (TextView)paramvap.a(2131378947);
-    View localView = paramvap.a(2131369207);
-    if (ThemeUtil.isInNightMode(tsr.a()))
-    {
-      localTextView2.setTextColor(Color.parseColor("#44608a"));
-      localTextView1.setTextColor(Color.parseColor("#6991b8"));
-      localView.setBackgroundColor(Color.parseColor("#0c284e"));
-    }
-    localTextView1.setText(vxy.c(paramViewGroup.collectionTime));
-    if (paramViewGroup.collectionCount <= 0)
-    {
-      localTextView2.setText("");
-      if (paramInt != 0) {
-        break label166;
-      }
-    }
-    label166:
-    for (paramInt = 4;; paramInt = 0)
-    {
-      localView.setVisibility(paramInt);
-      return paramvap.a();
-      localTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131699550, new Object[] { Integer.valueOf(paramViewGroup.collectionCount) }));
-      break;
-    }
-  }
-  
-  protected boolean b()
-  {
-    this.jdField_a_of_type_Uta.c();
-    return true;
-  }
-  
-  public View c(int paramInt, vap paramvap, ViewGroup paramViewGroup)
-  {
-    Object localObject3 = (RelativeLayout)paramvap.a(2131377264);
-    Object localObject4 = (TextView)paramvap.a(2131364347);
-    Object localObject5 = (TextView)paramvap.a(2131364352);
-    TextView localTextView1 = (TextView)paramvap.a(2131364357);
-    paramViewGroup = (MemoriesInnerListView)paramvap.a(2131368183);
-    Object localObject1 = paramvap.a(2131369208);
-    Object localObject2 = (ImageView)paramvap.a(2131371826);
-    TextView localTextView2 = (TextView)paramvap.a(2131362130);
-    if (ThemeUtil.isInNightMode(tsr.a()))
-    {
-      ((View)localObject1).setBackgroundColor(Color.parseColor("#0c284e"));
-      ((ImageView)localObject2).setBackgroundResource(2130845713);
-      localTextView1.setTextColor(Color.parseColor("#44608a"));
-      ((TextView)localObject4).setTextColor(Color.parseColor("#6991b8"));
-      ((TextView)localObject5).setTextColor(Color.parseColor("#6991b8"));
-    }
-    localObject2 = (VideoCollectionItem)this.jdField_a_of_type_Uta.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramViewGroup.setSelection(0);
-    baww.a(paramViewGroup, false);
-    paramViewGroup.setFocusable(false);
-    String[] arrayOfString = vxy.a(((VideoCollectionItem)localObject2).collectionTime);
-    ((TextView)localObject4).setText(arrayOfString[1]);
-    if (!TextUtils.isEmpty(arrayOfString[0]))
-    {
-      ((TextView)localObject5).setText(arrayOfString[0]);
-      ((TextView)localObject5).setVisibility(0);
-      ((TextView)localObject4).setTextSize(1, 32.0F);
-      localObject5 = (LinearLayout.LayoutParams)((TextView)localObject4).getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject5).setMargins(0, vzl.a(this.jdField_a_of_type_AndroidContentContext, -8.0F), 0, 0);
-      ((TextView)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
-      localObject4 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject3).getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject4).setMargins(0, 0, 0, 0);
-      ((RelativeLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-      localTextView1.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131699529, new Object[] { Integer.valueOf(((VideoCollectionItem)localObject2).collectionCount) }));
-      if (!TextUtils.isEmpty(((VideoCollectionItem)localObject2).address)) {
-        break label590;
-      }
-      localTextView2.setVisibility(4);
-      label344:
-      localObject3 = (RelativeLayout.LayoutParams)((View)localObject1).getLayoutParams();
-      if (paramInt != 1) {
-        break label628;
-      }
-      ((RelativeLayout.LayoutParams)localObject3).height = vzl.a(this.jdField_a_of_type_AndroidContentContext, 150.0F);
-    }
-    for (;;)
-    {
-      ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject3);
-      paramViewGroup.a = this;
-      localObject1 = (uuf)paramViewGroup.a();
-      ((uuf)localObject1).a(this.jdField_a_of_type_Uta.jdField_a_of_type_JavaLangString);
-      ((uuf)localObject1).a(this);
-      paramViewGroup.setSelection(0);
-      paramViewGroup.resetCurrentX(0);
-      paramViewGroup.setDate(((VideoCollectionItem)localObject2).collectionVideoUIItemList, ((VideoCollectionItem)localObject2).collectionId);
-      this.jdField_a_of_type_JavaUtilHashMap.put(((VideoCollectionItem)localObject2).collectionId, new WeakReference(localObject1));
-      return paramvap.a();
-      ((TextView)localObject5).setVisibility(8);
-      ((TextView)localObject4).setTextSize(1, 20.0F);
-      localObject5 = (LinearLayout.LayoutParams)((TextView)localObject4).getLayoutParams();
-      ((LinearLayout.LayoutParams)localObject5).setMargins(0, 0, 0, 0);
-      ((TextView)localObject4).setLayoutParams((ViewGroup.LayoutParams)localObject5);
-      localObject4 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject3).getLayoutParams();
-      if (TextUtils.equals(arrayOfString[1], ajya.a(2131706541))) {
-        ((RelativeLayout.LayoutParams)localObject4).setMargins(0, vzl.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, vzl.a(this.jdField_a_of_type_AndroidContentContext, 7.0F));
-      }
-      for (;;)
-      {
-        ((RelativeLayout)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject4);
-        break;
-        ((RelativeLayout.LayoutParams)localObject4).setMargins(0, 0, 0, vzl.a(this.jdField_a_of_type_AndroidContentContext, 7.0F));
-      }
-      label590:
-      ((VideoCollectionItem)localObject2).address = ((VideoCollectionItem)localObject2).address.replace(65292, '‧');
-      localTextView2.setText(((VideoCollectionItem)localObject2).address);
-      localTextView2.setVisibility(0);
-      break label344;
-      label628:
-      if (TextUtils.equals(arrayOfString[1], ajya.a(2131706533))) {
-        ((RelativeLayout.LayoutParams)localObject3).height = vzl.a(this.jdField_a_of_type_AndroidContentContext, 172.0F);
-      } else {
-        ((RelativeLayout.LayoutParams)localObject3).height = vzl.a(this.jdField_a_of_type_AndroidContentContext, 176.0F);
-      }
-    }
-  }
-  
-  protected void c()
-  {
-    this.jdField_a_of_type_Uta.a(true);
-    f();
-  }
-  
-  public View d(int paramInt, vap paramvap, ViewGroup paramViewGroup)
-  {
-    return paramvap.a();
-  }
-  
-  protected void d()
-  {
-    super.d();
-    this.jdField_a_of_type_Uta.b();
-    this.c = false;
-    stb.a().unRegisterSubscriber(this.jdField_a_of_type_Uuq);
-  }
-  
-  public void e_(boolean paramBoolean)
-  {
-    super.e_(paramBoolean);
-    if (this.jdField_a_of_type_Boolean) {
-      f();
-    }
-  }
-  
-  public void f()
-  {
-    a().setOnLoadMoreListener(a(), new uuo(this));
-    SegmentList localSegmentList = a();
-    String str = a();
-    if (!a()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localSegmentList.setLoadMoreComplete(str, true, bool);
+      wsv.b("Q.qqstory.msgTab.jobPullVidList", "(2) runSegment(), groupId is end, won't request anymore!");
+      notifyResult(new ArrayList());
       return;
     }
-  }
-  
-  protected int f_()
-  {
-    return 4;
-  }
-  
-  public boolean isValidate()
-  {
-    return this.c;
+    wsv.b("Q.qqstory.msgTab.jobPullVidList", "(2) runSegment(), start to pull vid list");
+    paramJobContext = new uvd(paramutx, this.jdField_a_of_type_JavaLangString, this.b);
+    wsv.a("Q.qqstory.msgTab.jobPullVidList", "(3) runSegment(), sendCmd: %s", paramJobContext);
+    if ((paramutx.jdField_a_of_type_Int == 12) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      wsv.b("Q.qqstory.msgTab.jobPullVidList", "(3-1) runSegment() weishi node, cookie is empty, clear list");
+      paramutx.jdField_a_of_type_JavaUtilList.clear();
+    }
+    ung.a().a(paramJobContext, new uuo(this, paramutx));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uun
  * JD-Core Version:    0.7.0.1
  */

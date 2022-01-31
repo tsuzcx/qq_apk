@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
 class bjyq
-  implements DialogInterface.OnClickListener
+  implements almm
 {
-  bjyq(bjyn parambjyn) {}
+  bjyq(bjyp parambjyp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    bjyn.a(this.a);
-    paramDialogInterface.dismiss();
+    if (paramBoolean) {
+      this.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjyq
  * JD-Core Version:    0.7.0.1
  */

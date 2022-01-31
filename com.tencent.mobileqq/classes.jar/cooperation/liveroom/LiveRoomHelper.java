@@ -1,10 +1,10 @@
 package cooperation.liveroom;
 
 import android.support.annotation.Nullable;
-import bbdh;
-import bbfj;
-import bdfn;
-import bglh;
+import bdcb;
+import bdee;
+import bfel;
+import bimg;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -149,11 +149,11 @@ public class LiveRoomHelper
   @Nullable
   public static PluginInfo getPluginInfoInQQ()
   {
-    bglh localbglh = getPluginManagerInQQ();
-    if (localbglh == null) {
+    bimg localbimg = getPluginManagerInQQ();
+    if (localbimg == null) {
       return null;
     }
-    return localbglh.a("LiveRoomPlugin.apk");
+    return localbimg.a("LiveRoomPlugin.apk");
   }
   
   public static boolean getPluginInstalledInTool()
@@ -162,7 +162,7 @@ public class LiveRoomHelper
   }
   
   @Nullable
-  public static bglh getPluginManagerInQQ()
+  public static bimg getPluginManagerInQQ()
   {
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject != null) && ((localObject instanceof QQAppInterface))) {}
@@ -173,7 +173,7 @@ public class LiveRoomHelper
         QLog.e("LiveRoomHelper", 1, "get AppRuntime fail");
         return null;
       }
-      return (bglh)((QQAppInterface)localObject).getManager(27);
+      return (bimg)((QQAppInterface)localObject).getManager(27);
     }
   }
   
@@ -211,7 +211,7 @@ public class LiveRoomHelper
       localJSONObject.put("platform", "androidqq");
       localJSONObject.put("platVersion", AppSetting.f());
       String str = "";
-      if ("com.tencent.mobileqq:tool".equals(bdfn.r())) {
+      if ("com.tencent.mobileqq:tool".equals(bfel.r())) {
         str = getPluginVersionInTool();
       }
       for (;;)
@@ -220,11 +220,11 @@ public class LiveRoomHelper
         localJSONObject.put("from", paramString1);
         localJSONObject.put("action", paramString2);
         localJSONObject.put("result", paramString3);
-        localJSONObject.put("imei", bbdh.a());
-        localJSONObject.put("device", bbdh.i());
+        localJSONObject.put("imei", bdcb.a());
+        localJSONObject.put("device", bdcb.i());
         localJSONObject.put("uin", BaseApplicationImpl.sApplication.getRuntime().getAccount());
-        localJSONObject.put("network", bbfj.b(BaseApplicationImpl.getContext()));
-        localJSONObject.put("os", bbdh.e());
+        localJSONObject.put("network", bdee.b(BaseApplicationImpl.getContext()));
+        localJSONObject.put("os", bdcb.e());
         reportJson.put(localJSONObject);
         return;
         PluginInfo localPluginInfo = getPluginInfoInQQ();
@@ -253,7 +253,7 @@ public class LiveRoomHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomHelper
  * JD-Core Version:    0.7.0.1
  */

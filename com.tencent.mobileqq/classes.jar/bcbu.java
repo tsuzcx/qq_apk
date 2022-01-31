@@ -1,58 +1,29 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class bcbu
+class bcbu
+  implements alzv
 {
-  public long a;
-  private bcbx a;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
+  bcbu(bcbt parambcbt, String paramString1, String paramString2, bcbw parambcbw) {}
   
-  public bcbu(bcbx parambcbx)
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    this.jdField_a_of_type_Bcbx = parambcbx;
-  }
-  
-  public void a(Bundle paramBundle, AppInterface paramAppInterface, Intent paramIntent)
-  {
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("pre_init_webview_plugin", true))) {
-      this.jdField_a_of_type_Bcbx.preInitWebviewPlugin();
+    List localList = null;
+    if (paramTroopMemberInfo != null) {
+      localList = this.jdField_a_of_type_Bcbt.a(paramTroopMemberInfo.honorList);
     }
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("pre_get_key", true))) {
-      WebAccelerateHelper.getInstance().preGetKey(paramIntent, paramAppInterface);
-    }
-    long l2 = System.currentTimeMillis();
-    this.jdField_a_of_type_Bcbx.buildLayout();
-    long l1 = System.currentTimeMillis();
-    this.b = (l1 - l2);
-    this.jdField_a_of_type_Bcbx.buildContentView(paramBundle);
-    l2 = System.currentTimeMillis();
-    this.e = (l2 - l1);
-    this.jdField_a_of_type_Bcbx.buildTitleBar();
-    l1 = System.currentTimeMillis();
-    this.c = (l1 - l2);
-    this.jdField_a_of_type_Bcbx.buildBottomBar();
-    l2 = System.currentTimeMillis();
-    this.d = (l2 - l1);
-    this.jdField_a_of_type_Bcbx.buildWebView(paramAppInterface);
-    l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_Long = (l1 - l2);
-    this.jdField_a_of_type_Bcbx.buildData();
-    this.f = (System.currentTimeMillis() - l1);
     if (QLog.isColorLevel()) {
-      QLog.i("WebViewDirector", 2, "buildLayoutTime : " + this.b + ", buildContentTime " + this.e + ", buildTitleTime " + this.c + ", buildWebViewTime " + this.jdField_a_of_type_Long + ", buildBottomTime " + this.d + ", buildDataTime " + this.f);
+      QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, localList }));
+    }
+    if (this.jdField_a_of_type_Bcbw != null) {
+      this.jdField_a_of_type_Bcbw.a(localList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcbu
  * JD-Core Version:    0.7.0.1
  */

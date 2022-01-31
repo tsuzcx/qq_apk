@@ -20,8 +20,6 @@ import com.tencent.ttpic.baseutils.audio.PlayerUtil.Player;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
 import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
@@ -45,25 +43,33 @@ public abstract class NormalVideoFilter
   extends VideoFilterBase
 {
   private static final String TAG = NormalVideoFilter.class.getSimpleName();
+  protected float audioScaleFactor = 1.0F;
+  protected long firstTriggerInStateTime = 0L;
+  protected int frameIndex;
+  protected long frameStartTime;
   private boolean gotSpritePicture = false;
-  private ArrayList<RedPacketPosition> hotAreaPositions;
+  protected ArrayList<RedPacketPosition> hotAreaPositions;
+  protected boolean isFirstTriggered;
   protected boolean isImageReady;
+  protected boolean isInState = false;
+  protected boolean isRenderForBitmap;
   protected StickerItem item;
   private int lastImageIndex = -1;
   private boolean mAudioPause;
   private boolean mHasBodyDetected = false;
   private boolean mHasSeenValid = false;
+  private boolean mIsNeedSeekTime = false;
   private PlayerUtil.Player mPlayer;
   public List<PointF> mPreviousBodyPoints = null;
   private long mPreviousLostTime = System.currentTimeMillis();
   private long mTimesForLostProtect = 2000L;
   protected ActVideoDecoder mVideoDecoder;
+  protected int playMode = 0;
   private int spritePictureColumn;
   private int spritePictureHeight;
   private int spritePictureRow;
   private int spritePictureWidth;
   private int[] tex = new int[2];
-  protected TriggerCtrlItem triggerCtrlItem;
   protected boolean triggered = false;
   
   public NormalVideoFilter(StickerItem paramStickerItem, String paramString)
@@ -71,7 +77,6 @@ public abstract class NormalVideoFilter
     super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_NORMAL));
     this.item = paramStickerItem;
     this.dataPath = paramString;
-    this.triggerCtrlItem = new TriggerCtrlItem(paramStickerItem);
     initParams();
     initAudio();
   }
@@ -81,7 +86,6 @@ public abstract class NormalVideoFilter
     super(paramString2, paramString3);
     this.item = paramStickerItem;
     this.dataPath = paramString1;
-    this.triggerCtrlItem = new TriggerCtrlItem(paramStickerItem);
     initParams();
     initAudio();
   }
@@ -123,7 +127,7 @@ public abstract class NormalVideoFilter
       }
       this.lastImageIndex = paramInt;
     }
-    label405:
+    label404:
     for (;;)
     {
       return this.tex[0];
@@ -139,7 +143,7 @@ public abstract class NormalVideoFilter
         else
         {
           Object localObject = VideoMemoryManager.getInstance().loadImage(this.item.id, paramInt);
-          if ((localObject == null) && ((VideoMemoryManager.getInstance().isForceLoadFromSdCard()) || (!this.isImageReady) || (this.triggerCtrlItem.isRenderForBitmap())))
+          if ((localObject == null) && ((VideoMemoryManager.getInstance().isForceLoadFromSdCard()) || (!this.isImageReady) || (this.isRenderForBitmap)))
           {
             localObject = this.dataPath + File.separator + this.item.subFolder + File.separator + this.item.id + "_" + paramInt + ".png";
             localObject = BitmapUtils.decodeSampleBitmap(AEModule.getContext(), (String)localObject, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
@@ -148,7 +152,7 @@ public abstract class NormalVideoFilter
             for (;;)
             {
               if (!BitmapUtils.isLegal((Bitmap)localObject)) {
-                break label405;
+                break label404;
               }
               BenchUtil.benchStart("normal loadTexture");
               try
@@ -218,17 +222,6 @@ public abstract class NormalVideoFilter
     return true;
   }
   
-  private void updateHotArea()
-  {
-    if ((this.triggerCtrlItem != null) && (this.hotAreaPositions != null))
-    {
-      ArrayList localArrayList = this.triggerCtrlItem.getHotArea();
-      if (localArrayList != null) {
-        this.hotAreaPositions.addAll(localArrayList);
-      }
-    }
-  }
-  
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
@@ -296,7 +289,17 @@ public abstract class NormalVideoFilter
     if (!this.triggered) {
       return 0.0F;
     }
-    return (float)((paramLong - this.triggerCtrlItem.getFrameStartTime()) / 1000.0D);
+    return (float)((paramLong - this.frameStartTime) / 1000.0D);
+  }
+  
+  public int getFrameIndex()
+  {
+    return this.frameIndex;
+  }
+  
+  public long getFrameStartTime()
+  {
+    return this.frameStartTime;
   }
   
   public int getLastFrameIndex()
@@ -316,16 +319,42 @@ public abstract class NormalVideoFilter
   
   public void initParams()
   {
-    addParam(new UniformParam.IntParam("blendMode", this.item.blendMode));
-    addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
-    addParam(new UniformParam.TextureParam("inputImageTexture3", 0, 33987));
-    addParam(new UniformParam.IntParam("texNeedTransform", 1));
-    addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
-    addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
-    addParam(new UniformParam.FloatParam("texScale", 1.0F));
-    addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
-    addParam(new UniformParam.FloatParam("alpha", 1.0F));
-    addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
+    int i = -1;
+    int j;
+    if (this.item.transformType == 1) {
+      j = 1;
+    }
+    for (;;)
+    {
+      addParam(new UniformParam.IntParam("blendMode", this.item.blendMode));
+      addParam(new UniformParam.TextureParam("inputImageTexture2", 0, 33986));
+      addParam(new UniformParam.TextureParam("inputImageTexture3", 0, 33987));
+      addParam(new UniformParam.IntParam("texNeedTransform", 1));
+      addParam(new UniformParam.Float2fParam("canvasSize", 0.0F, 0.0F));
+      addParam(new UniformParam.Float2fParam("texAnchor", 0.0F, 0.0F));
+      addParam(new UniformParam.FloatParam("texScale", 1.0F));
+      addParam(new UniformParam.FloatParam("texScaleX", j));
+      addParam(new UniformParam.FloatParam("texScaleY", i));
+      addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, 0.0F));
+      addParam(new UniformParam.FloatParam("alpha", 1.0F));
+      addParam(new UniformParam.Mat4Param("u_MVPMatrix", MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F)));
+      return;
+      if (this.item.transformType == 2)
+      {
+        j = -1;
+        i = 1;
+      }
+      else
+      {
+        i = 1;
+        j = 1;
+      }
+    }
+  }
+  
+  public boolean isFirstTriggered()
+  {
+    return this.isFirstTriggered;
   }
   
   public boolean isRenderReady()
@@ -362,7 +391,7 @@ public abstract class NormalVideoFilter
     this.mHasBodyDetected = false;
     this.mHasSeenValid = false;
     this.mPreviousBodyPoints = null;
-    this.triggerCtrlItem.reset();
+    this.mAudioPause = false;
   }
   
   public void setAudioPause(boolean paramBoolean)
@@ -370,9 +399,39 @@ public abstract class NormalVideoFilter
     this.mAudioPause = paramBoolean;
   }
   
+  public void setAudioScaleFactor(float paramFloat)
+  {
+    this.audioScaleFactor = paramFloat;
+  }
+  
+  public void setFirstTriggerInStateTime(long paramLong)
+  {
+    this.firstTriggerInStateTime = paramLong;
+  }
+  
+  public void setFirstTriggered(boolean paramBoolean)
+  {
+    this.isFirstTriggered = paramBoolean;
+  }
+  
+  public void setFrameIndex(int paramInt)
+  {
+    this.frameIndex = paramInt;
+  }
+  
+  public void setFrameStartTime(long paramLong)
+  {
+    this.frameStartTime = paramLong;
+  }
+  
   public void setHotAreaPosition(ArrayList<RedPacketPosition> paramArrayList)
   {
     this.hotAreaPositions = paramArrayList;
+  }
+  
+  public void setIsInState(boolean paramBoolean)
+  {
+    this.isInState = paramBoolean;
   }
   
   public void setLastFrameIndex(int paramInt)
@@ -380,52 +439,85 @@ public abstract class NormalVideoFilter
     this.lastImageIndex = paramInt;
   }
   
+  public void setPlayMode(int paramInt)
+  {
+    this.playMode = paramInt;
+  }
+  
   public void setRenderForBitmap(boolean paramBoolean)
   {
-    this.triggerCtrlItem.setRenderForBitmap(paramBoolean);
+    this.isRenderForBitmap = paramBoolean;
   }
   
-  public void setTriggerWords(String paramString)
+  public void setTriggered(boolean paramBoolean)
   {
-    TriggerCtrlItem localTriggerCtrlItem = this.triggerCtrlItem;
-    String str = paramString;
-    if (this.item != null)
-    {
-      str = paramString;
-      if (!TextUtils.isEmpty(this.item.triggerWords)) {
-        str = this.item.triggerWords;
-      }
+    this.triggered = paramBoolean;
+  }
+  
+  public void stopAndResetAudio()
+  {
+    PlayerUtil.stopAndResetPlayer(this.mPlayer);
+  }
+  
+  public void updateHotArea(ArrayList<RedPacketPosition> paramArrayList)
+  {
+    if (paramArrayList != null) {
+      this.hotAreaPositions.addAll(paramArrayList);
     }
-    localTriggerCtrlItem.setTriggerWords(str);
-  }
-  
-  protected TRIGGERED_STATUS updateActionTriggered(PTDetectInfo paramPTDetectInfo)
-  {
-    return this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
   }
   
   protected void updatePlayer(boolean paramBoolean)
   {
-    this.triggered = this.triggerCtrlItem.isTriggered();
-    if (!this.triggered) {
+    if (!this.triggered)
+    {
       destroyAudio();
+      if ((this.playMode == 1) && (this.isInState)) {
+        this.mIsNeedSeekTime = true;
+      }
     }
     do
     {
-      return;
-      if ((VideoPrefsUtil.getMaterialMute()) || (this.mAudioPause)) {
-        break label72;
-      }
-      initAudio();
+      do
+      {
+        return;
+        if ((VideoPrefsUtil.getMaterialMute()) || (this.mAudioPause)) {
+          break;
+        }
+        initAudio();
+      } while (this.mPlayer == null);
       if (this.item.audioLoopCount <= 0) {
         break;
       }
     } while (!paramBoolean);
-    PlayerUtil.startPlayer(this.mPlayer, true);
+    if (this.playMode == 0)
+    {
+      PlayerUtil.startPlayer(this.mPlayer, true);
+      return;
+    }
+    long l;
+    if ((this.playMode == 1) && (this.mIsNeedSeekTime))
+    {
+      l = System.currentTimeMillis();
+      PlayerUtil.seekPlayer(this.mPlayer, (int)(l - this.firstTriggerInStateTime) % this.mPlayer.getDuration());
+      this.mIsNeedSeekTime = false;
+      return;
+    }
+    PlayerUtil.startPlayer(this.mPlayer, false);
     return;
-    PlayerUtil.startPlayer(this.mPlayer, paramBoolean);
+    if (this.playMode == 0)
+    {
+      PlayerUtil.startPlayer(this.mPlayer, paramBoolean);
+      return;
+    }
+    if ((this.playMode == 1) && (this.mIsNeedSeekTime))
+    {
+      l = System.currentTimeMillis();
+      PlayerUtil.seekPlayer(this.mPlayer, (int)(l - this.firstTriggerInStateTime) % this.mPlayer.getDuration());
+      this.mIsNeedSeekTime = false;
+      return;
+    }
+    PlayerUtil.startPlayer(this.mPlayer, false);
     return;
-    label72:
     PlayerUtil.stopPlayer(this.mPlayer);
   }
   
@@ -439,30 +531,24 @@ public abstract class NormalVideoFilter
   
   public void updatePreview(Object paramObject)
   {
+    int i;
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
       if (VideoMaterialUtil.isBodyDetectItem(this.item)) {
         avoidBodyPointsShake(paramObject);
       }
-      TRIGGERED_STATUS localTRIGGERED_STATUS = updateActionTriggered(paramObject);
-      updateHotArea();
-      if (localTRIGGERED_STATUS != TRIGGERED_STATUS.FIRST_TRIGGERED) {
-        break label95;
+      updatePlayer(this.isFirstTriggered);
+      i = this.frameIndex;
+      if (!needRenderTexture())
+      {
+        clearTextureParam();
+        VideoMemoryManager.getInstance().reset(this.item.id);
+        updateTextureParam(0, paramObject.timestamp);
       }
     }
-    int i;
-    label95:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      updatePlayer(bool);
-      i = this.triggerCtrlItem.getFrameIndex();
-      if (needRenderTexture()) {
-        break;
-      }
-      clearTextureParam();
-      VideoMemoryManager.getInstance().reset(this.item.id);
-      updateTextureParam(0, paramObject.timestamp);
       return;
     }
     if (VideoMaterialUtil.isGestureItem(this.item)) {
@@ -480,7 +566,7 @@ public abstract class NormalVideoFilter
         for (;;)
         {
           if (this.mHasBodyDetected) {
-            break label203;
+            break label177;
           }
           paramObject.bodyPoints = null;
           break;
@@ -493,16 +579,13 @@ public abstract class NormalVideoFilter
       }
       else
       {
-        label203:
+        label177:
         updatePositions(paramObject.facePoints, paramObject.faceAngles, paramObject.phoneAngle);
       }
     }
   }
   
-  public void updateRandomGroupValue(int paramInt)
-  {
-    this.triggerCtrlItem.setRandomGroupValue(paramInt);
-  }
+  public void updateRandomGroupValue(int paramInt) {}
   
   public void updateTextureParam(int paramInt)
   {
@@ -573,18 +656,6 @@ public abstract class NormalVideoFilter
     }
     label453:
     addParam(new UniformParam.TextureParam("inputImageTexture2", getNextFrame(paramInt), 33986));
-  }
-  
-  public void updateTextureParam(long paramLong)
-  {
-    this.triggerCtrlItem.updateFrameIndex(paramLong);
-    int i = this.triggerCtrlItem.getFrameIndex();
-    try
-    {
-      updateTextureParam(i, paramLong);
-      return;
-    }
-    finally {}
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)

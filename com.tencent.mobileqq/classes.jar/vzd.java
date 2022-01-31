@@ -1,82 +1,140 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.os.Looper;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class vzd
+class vzd
+  extends Drawable.ConstantState
 {
-  public static int a(int paramInt)
+  private long jdField_a_of_type_Long;
+  @NonNull
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  @NonNull
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private Error jdField_a_of_type_JavaLangError;
+  @NonNull
+  public final String a;
+  private final CopyOnWriteArraySet<vzg> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  @NonNull
+  private vzh<Bitmap> jdField_a_of_type_Vzh;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private String b = "story.icon.ShareGroupDrawableState";
+  
+  public vzd(String paramString, Context paramContext, Drawable paramDrawable)
   {
-    Object localObject = QQStoryContext.a();
-    if (localObject == null)
-    {
-      ved.c("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId() error, app is null", new Throwable());
-      return 0;
+    if ((paramString == null) || (paramContext == null) || (paramDrawable == null)) {
+      throw new IllegalArgumentException("params should not be null");
     }
-    localObject = ((mxu)((QQAppInterface)localObject).getManager(70)).a(paramInt);
-    if (localObject == null)
-    {
-      ved.a("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId(%d) info is null", Integer.valueOf(paramInt));
-      return 0;
-    }
-    ved.a("Q.qqstory.tag.RedPointUtils", "getStoryRedPointByAppId(%d) info is %s", Integer.valueOf(paramInt), vyp.a((MessageMicro)localObject));
-    paramInt = ((oidb_0x791.RedDotInfo)localObject).uint32_number.get();
-    boolean bool = ((oidb_0x791.RedDotInfo)localObject).bool_display_reddot.get();
-    long l = ((oidb_0x791.RedDotInfo)localObject).uint32_last_time.get();
-    if ((paramInt > 0) && (bool)) {}
-    for (;;)
-    {
-      return paramInt;
-      paramInt = 0;
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.b = (this.b + "[" + System.identityHashCode(this) + "]");
   }
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  private void a(boolean paramBoolean)
   {
-    return ((tfz)paramQQAppInterface.getManager(252)).a;
-  }
-  
-  public static BusinessInfoCheckUpdate.AppInfo a(int paramInt1, String paramString, int paramInt2)
-  {
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = new BusinessInfoCheckUpdate.AppInfo();
-    localAppInfo.path.set("null");
-    localAppInfo.num.set(0);
-    localAppInfo.type.set(-1);
-    localAppInfo.iNewFlag.set(0);
-    localAppInfo.appset.set(-1);
-    if (paramInt1 != -1)
+    if (Looper.getMainLooper() == Looper.myLooper())
     {
-      localAppInfo.uiAppId.set(0);
-      localAppInfo.type.set(paramInt1);
-      localAppInfo.iNewFlag.set(1);
-      localAppInfo.appset.set(paramInt2);
-      localAppInfo.mission_level.set(0);
-      BusinessInfoCheckUpdate.RedDisplayInfo localRedDisplayInfo = new BusinessInfoCheckUpdate.RedDisplayInfo();
-      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-      localRedTypeInfo.red_type.set(paramInt1);
-      if (!TextUtils.isEmpty(paramString)) {
-        localRedTypeInfo.red_content.set(paramString);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+      while (localIterator.hasNext())
+      {
+        vzg localvzg = (vzg)localIterator.next();
+        if (vzg.a(localvzg))
+        {
+          if (paramBoolean) {
+            localvzg.a(this);
+          } else {
+            localvzg.b(this);
+          }
+        }
+        else
+        {
+          vzb.a(this.b, "remove invalid callback %s", this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
+          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localvzg);
+        }
       }
-      localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
-      localRedDisplayInfo.tab_display_info.set(localRedTypeInfo);
-      localRedDisplayInfo.red_type_info.add(localRedTypeInfo);
-      localAppInfo.red_display_info.set(localRedDisplayInfo);
     }
-    return localAppInfo;
+    throw new IllegalStateException("notifyCallBack should be at Main-Thread");
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) || (paramBoolean))
+    {
+      vzb.a(this.b, "startLoad");
+      this.jdField_a_of_type_Vzh.a(this).subscribe(new vze(this));
+    }
+    while ((this.jdField_a_of_type_JavaLangError == null) || (Math.abs(this.jdField_a_of_type_Long - SystemClock.uptimeMillis()) <= 10000L)) {
+      return;
+    }
+    vzb.b(this.b, "load again, oldError=%s", this.jdField_a_of_type_JavaLangError);
+    this.jdField_a_of_type_JavaLangError = null;
+    b(true);
+  }
+  
+  Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public Drawable a()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      return new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    return null;
+  }
+  
+  Error a()
+  {
+    return this.jdField_a_of_type_JavaLangError;
+  }
+  
+  public void a()
+  {
+    vzb.b(this.b, "recycle");
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(vzf paramvzf)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new vzg(paramvzf));
+  }
+  
+  void a(@NonNull vzh<Bitmap> paramvzh)
+  {
+    this.jdField_a_of_type_Vzh = paramvzh;
+  }
+  
+  public void b()
+  {
+    b(false);
+  }
+  
+  public int getChangingConfigurations()
+  {
+    return 0;
+  }
+  
+  @NonNull
+  public Drawable newDrawable()
+  {
+    return new vzi(this, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzd
  * JD-Core Version:    0.7.0.1
  */

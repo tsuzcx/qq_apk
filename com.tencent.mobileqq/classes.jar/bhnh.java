@@ -1,16 +1,18 @@
-import cooperation.qzone.statistic.access.concept.Collector;
+import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
 
-final class bhnh
-  extends bhng
+public class bhnh
+  implements SpecialAVFilterResource
 {
-  public boolean a(Collector paramCollector)
+  public static final String a = aljq.aW + "/tencent/qq/music/";
+  
+  public String getMusicResPath()
   {
-    return true;
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhnh
  * JD-Core Version:    0.7.0.1
  */

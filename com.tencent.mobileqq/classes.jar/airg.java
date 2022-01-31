@@ -1,42 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.10.1.1.1;
+import com.tencent.mobileqq.widget.AnimationView;
 
-class airg
-  extends Handler
+public class airg
+  extends beso
 {
-  airg(airf paramairf, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public airg(RedPacketKSongFragment.10.1 param1) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a() {}
+  
+  public void a(boolean paramBoolean)
   {
-    if (paramMessage.what == airf.a(this.a))
+    if (!this.a.a.a.c())
     {
-      QLog.d(airf.a(this.a), 4, "Receive Message!");
-      this.a.a();
-    }
-    for (;;)
-    {
-      try
-      {
-        axqy.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
-        return;
-      }
-      catch (Exception paramMessage) {}
-      if (paramMessage.what == airf.b(this.a))
-      {
-        QLog.d(airf.a(this.a), 4, "Receive Message!");
-        try
-        {
-          axqy.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
-          return;
-        }
-        catch (Exception paramMessage) {}
+      if (paramBoolean) {
+        this.a.a.a.a.post(new RedPacketKSongFragment.10.1.1.1(this));
       }
     }
+    else {
+      return;
+    }
+    this.a.a.a.g();
   }
 }
 

@@ -1,22 +1,16 @@
-import android.graphics.Matrix;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afvr
+class afvr
+  implements DialogInterface.OnClickListener
 {
-  public float a;
-  private final Matrix a;
-  public boolean a;
-  public float b = 0.0F;
+  afvr(afvo paramafvo) {}
   
-  public afvr()
-  {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afvr
  * JD-Core Version:    0.7.0.1
  */

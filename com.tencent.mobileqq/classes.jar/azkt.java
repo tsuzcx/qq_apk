@@ -1,17 +1,22 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
-class azkt
-  extends azkv
+public final class azkt
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public azkt(azjg paramazjg) {}
+  
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    QLog.i("QSplash@QbossSplashUtil", 1, "splash_logoerro+ errotype" + paramInt1 + "errcode =" + paramInt2);
+    this.a.a(15, 1, 0L);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azkt
  * JD-Core Version:    0.7.0.1
  */

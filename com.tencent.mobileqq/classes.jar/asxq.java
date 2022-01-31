@@ -1,50 +1,30 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class asxq
-  implements URLDrawable.URLDrawableListener
+  extends BroadcastReceiver
 {
-  asxq(asxp paramasxp) {}
+  asxq(asxg paramasxg) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadCanceled");
+    paramContext = paramIntent.getAction();
+    if ("close.activity".equals(paramContext)) {
+      if (asxg.a(this.a) != null) {
+        asxg.a(this.a).finish();
+      }
     }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadFialed");
+    while ((!"close.loading".equals(paramContext)) || (this.a.a == null)) {
+      return;
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadProgressed i:" + paramInt);
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("UrlBottomImageSpan", 2, "onLoadSuccessed");
-    }
-    paramURLDrawable = paramURLDrawable.getCallback();
-    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof View)))
-    {
-      ((View)paramURLDrawable).invalidate();
-      ((View)paramURLDrawable).requestLayout();
-    }
+    this.a.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asxq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,30 @@
-import com.tencent.mobileqq.soload.LoadExtResult;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.view.FilterProviderView;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
-class axnf
-  implements axng
+public final class axnf
+  extends BroadcastReceiver
 {
-  axnf(axne paramaxne, int paramInt, axnc paramaxnc, axng paramaxng) {}
+  private axnf(FilterProviderView paramFilterProviderView) {}
   
-  public void onLoadResult(int paramInt, LoadExtResult paramLoadExtResult)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramLoadExtResult = LoadExtResult.mergeExtResult(paramLoadExtResult, axne.a(this.jdField_a_of_type_Axne));
-    axne.a(this.jdField_a_of_type_Axne, paramLoadExtResult);
-    if (paramInt == 0) {
-      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Axnc.a.size() - 1) {
-        if (this.jdField_a_of_type_Axng != null) {
-          this.jdField_a_of_type_Axng.onLoadResult(paramInt, paramLoadExtResult);
-        }
+    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    {
+      axkd.a().b();
+      FilterProviderView.a(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("FilterProviderView", 2, "FilterProviderView FilterBroadcastReceiver size=" + this.a.a.size());
       }
     }
-    do
-    {
-      return;
-      axne.a(this.jdField_a_of_type_Axne, this.jdField_a_of_type_Axnc, this.jdField_a_of_type_Axng, this.jdField_a_of_type_Int + 1);
-      return;
-      if (paramLoadExtResult != null) {
-        paramLoadExtResult.setFailIndex(this.jdField_a_of_type_Int + 1);
-      }
-    } while (this.jdField_a_of_type_Axng == null);
-    this.jdField_a_of_type_Axng.onLoadResult(paramInt, paramLoadExtResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axnf
  * JD-Core Version:    0.7.0.1
  */

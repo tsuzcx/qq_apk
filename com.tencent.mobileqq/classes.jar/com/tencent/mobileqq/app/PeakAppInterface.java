@@ -1,29 +1,32 @@
 package com.tencent.mobileqq.app;
 
-import ajtb;
-import ajte;
-import akaz;
-import akby;
-import akfu;
-import akrt;
+import alko;
+import alkr;
+import also;
+import altn;
+import alxk;
+import amhy;
 import android.content.BroadcastReceiver;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.accessibility.AccessibilityManager;
-import aukq;
-import aukx;
-import auma;
-import avrg;
-import awbj;
-import awbk;
-import awyq;
-import axbr;
-import axjs;
-import aysa;
-import aysx;
-import biqs;
-import biqw;
-import bjbs;
+import awbx;
+import awce;
+import awdh;
+import axje;
+import axti;
+import axtj;
+import aytt;
+import aywv;
+import azey;
+import bapv;
+import baqu;
+import bkvi;
+import bkvm;
+import blfg;
+import blfy;
+import blnc;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -41,30 +44,32 @@ import cooperation.qzone.util.QZLog;
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.IToolProcEventListener;
 import mqq.manager.Manager;
-import vug;
+import xiy;
 
 public class PeakAppInterface
   extends AppInterface
+  implements IToolProcEventListener
 {
-  public static bjbs a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new akby(this);
-  private aukq jdField_a_of_type_Aukq;
-  private aukx jdField_a_of_type_Aukx;
-  private awbk jdField_a_of_type_Awbk;
-  private awyq jdField_a_of_type_Awyq;
-  private aysx jdField_a_of_type_Aysx;
+  public static blnc a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new altn(this);
+  private awbx jdField_a_of_type_Awbx;
+  private awce jdField_a_of_type_Awce;
+  private axtj jdField_a_of_type_Axtj;
+  private aytt jdField_a_of_type_Aytt;
+  private baqu jdField_a_of_type_Baqu;
   private QQStoryContext jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext;
   private String jdField_a_of_type_JavaLangString = "";
-  private List<ajte> jdField_a_of_type_JavaUtilList;
+  private List<alkr> jdField_a_of_type_JavaUtilList;
   private ConcurrentHashMap<Integer, Manager> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(5);
   public boolean a;
-  private ajtb[] jdField_a_of_type_ArrayOfAjtb = new ajtb[5];
+  private alko[] jdField_a_of_type_ArrayOfAlko = new alko[5];
   private boolean b;
   
   static
   {
-    jdField_a_of_type_Bjbs = new bjbs();
+    jdField_a_of_type_Blnc = new blnc();
   }
   
   public PeakAppInterface(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
@@ -80,7 +85,19 @@ public class PeakAppInterface
     return this.app.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null;
   }
   
-  private ajtb b(int paramInt)
+  private boolean a(BaseApplication paramBaseApplication, Intent paramIntent)
+  {
+    paramBaseApplication = paramIntent.getAction();
+    if (paramBaseApplication == null) {}
+    do
+    {
+      return false;
+      blfg.b("PeakAppInterface", "exitPeakRunTime");
+    } while (!paramBaseApplication.equals("com.tencent.process.exit"));
+    return blfy.a().a();
+  }
+  
+  private alko b(int paramInt)
   {
     System.currentTimeMillis();
     switch (paramInt)
@@ -88,49 +105,49 @@ public class PeakAppInterface
     default: 
       return null;
     case 0: 
-      return new awbj(this);
+      return new axti(this);
     case 1: 
-      return new vug(this);
+      return new xiy(this);
     case 2: 
-      return new akaz(this);
+      return new also(this);
     case 3: 
-      return new biqw(this);
+      return new bkvm(this);
     }
-    return new biqs(this);
+    return new bkvi(this);
   }
   
-  public ajtb a(int paramInt)
+  public alko a(int paramInt)
   {
-    Object localObject1 = this.jdField_a_of_type_ArrayOfAjtb[paramInt];
+    Object localObject1 = this.jdField_a_of_type_ArrayOfAlko[paramInt];
     if (localObject1 != null) {
       return localObject1;
     }
-    synchronized (this.jdField_a_of_type_ArrayOfAjtb)
+    synchronized (this.jdField_a_of_type_ArrayOfAlko)
     {
-      ajtb localajtb = this.jdField_a_of_type_ArrayOfAjtb[paramInt];
-      localObject1 = localajtb;
-      if (localajtb == null)
+      alko localalko = this.jdField_a_of_type_ArrayOfAlko[paramInt];
+      localObject1 = localalko;
+      if (localalko == null)
       {
-        localajtb = b(paramInt);
-        localObject1 = localajtb;
-        if (localajtb != null)
+        localalko = b(paramInt);
+        localObject1 = localalko;
+        if (localalko != null)
         {
-          this.jdField_a_of_type_ArrayOfAjtb[paramInt] = localajtb;
-          localObject1 = localajtb;
+          this.jdField_a_of_type_ArrayOfAlko[paramInt] = localalko;
+          localObject1 = localalko;
         }
       }
       return localObject1;
     }
   }
   
-  public aukx a()
+  public awce a()
   {
-    if (this.jdField_a_of_type_Aukx == null)
+    if (this.jdField_a_of_type_Awce == null)
     {
       String str = getCurrentAccountUin();
-      this.jdField_a_of_type_Aukx = new aukx(((QQEntityManagerFactory)getEntityManagerFactory(str)).build(str), str);
+      this.jdField_a_of_type_Awce = new awce(((QQEntityManagerFactory)getEntityManagerFactory(str)).build(str), str);
     }
-    return this.jdField_a_of_type_Aukx;
+    return this.jdField_a_of_type_Awce;
   }
   
   public QQStoryContext a()
@@ -143,7 +160,7 @@ public class PeakAppInterface
     Object localObject = getCurrentAccountUin();
     localObject = ((QQEntityManagerFactory)getEntityManagerFactory((String)localObject)).build((String)localObject);
     if (localObject != null) {
-      return ((akfu)localObject).b();
+      return ((alxk)localObject).b();
     }
     return null;
   }
@@ -156,12 +173,12 @@ public class PeakAppInterface
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")))
+    if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")))
     {
-      this.jdField_a_of_type_Awyq.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg);
+      this.jdField_a_of_type_Aytt.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg);
       return;
     }
-    this.jdField_a_of_type_Awbk.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.jdField_a_of_type_Axtj.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
   public void a(String paramString)
@@ -169,24 +186,24 @@ public class PeakAppInterface
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void addObserver(ajte paramajte)
+  public void addObserver(alkr paramalkr)
   {
-    addObserver(paramajte, false);
+    addObserver(paramalkr, false);
   }
   
-  public void addObserver(ajte paramajte, boolean paramBoolean)
+  public void addObserver(alkr paramalkr, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.contains(paramajte)) {
-      this.jdField_a_of_type_JavaUtilList.add(paramajte);
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramalkr)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramalkr);
     }
   }
   
   public SQLiteDatabase b()
   {
     Object localObject = getCurrentAccountUin();
-    localObject = new auma((String)localObject).build((String)localObject);
+    localObject = new awdh((String)localObject).build((String)localObject);
     if (localObject != null) {
-      return ((akfu)localObject).b();
+      return ((alxk)localObject).b();
     }
     return null;
   }
@@ -201,7 +218,7 @@ public class PeakAppInterface
       if ((bool1) && (bool2)) {}
       for (bool1 = true;; bool1 = false)
       {
-        AppSetting.d = bool1;
+        AppSetting.c = bool1;
         return;
       }
       return;
@@ -219,7 +236,7 @@ public class PeakAppInterface
     return AppSetting.a();
   }
   
-  public List<ajte> getBusinessObserver(int paramInt)
+  public List<alkr> getBusinessObserver(int paramInt)
   {
     if (paramInt == 0) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -237,12 +254,12 @@ public class PeakAppInterface
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public aukq getEntityManagerFactory(String paramString)
+  public awbx getEntityManagerFactory(String paramString)
   {
-    if (this.jdField_a_of_type_Aukq == null) {
-      this.jdField_a_of_type_Aukq = new QQEntityManagerFactory(getAccount());
+    if (this.jdField_a_of_type_Awbx == null) {
+      this.jdField_a_of_type_Awbx = new QQEntityManagerFactory(getAccount());
     }
-    return this.jdField_a_of_type_Aukq;
+    return this.jdField_a_of_type_Awbx;
   }
   
   public Manager getManager(int paramInt)
@@ -266,7 +283,7 @@ public class PeakAppInterface
         localObject2 = super.getManager(paramInt);
       }
       return localObject2;
-      localObject2 = new akrt();
+      localObject2 = new amhy();
       break;
       localObject1 = localObject2;
       if (localObject2 != null)
@@ -282,12 +299,18 @@ public class PeakAppInterface
     return "peak";
   }
   
-  public aysa getNetEngine(int paramInt)
+  public bapv getNetEngine(int paramInt)
   {
-    if (this.jdField_a_of_type_Aysx == null) {
-      this.jdField_a_of_type_Aysx = new aysx();
+    if (this.jdField_a_of_type_Baqu == null) {
+      this.jdField_a_of_type_Baqu = new baqu();
     }
-    return this.jdField_a_of_type_Aysx.a(this, paramInt);
+    return this.jdField_a_of_type_Baqu.a(this, paramInt);
+  }
+  
+  public void onBeforeExitProc()
+  {
+    blfg.b("PeakAppInterface", "onBeforeExitProc");
+    blfy.a().b();
   }
   
   public void onCreate(Bundle paramBundle)
@@ -301,15 +324,15 @@ public class PeakAppInterface
     a();
     this.jdField_a_of_type_JavaUtilList = new Vector();
     this.b = a();
-    this.jdField_a_of_type_Awbk = new awbk(this);
-    this.jdField_a_of_type_Awyq = new awyq(this);
-    jdField_a_of_type_Bjbs.a("{1000,1002}");
+    this.jdField_a_of_type_Axtj = new axtj(this);
+    this.jdField_a_of_type_Aytt = new aytt(this);
+    jdField_a_of_type_Blnc.a("{1000,1002}");
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    avrg.a().b(BaseApplicationImpl.sApplication);
+    axje.a().b(BaseApplicationImpl.sApplication);
     ??? = PresendPicMgr.a(null);
     if (??? != null) {
       ((PresendPicMgr)???).b();
@@ -317,35 +340,35 @@ public class PeakAppInterface
     for (;;)
     {
       int i;
-      synchronized (this.jdField_a_of_type_ArrayOfAjtb)
+      synchronized (this.jdField_a_of_type_ArrayOfAlko)
       {
-        ajtb[] arrayOfajtb = this.jdField_a_of_type_ArrayOfAjtb;
-        int j = arrayOfajtb.length;
+        alko[] arrayOfalko = this.jdField_a_of_type_ArrayOfAlko;
+        int j = arrayOfalko.length;
         i = 0;
         if (i < j)
         {
-          ajtb localajtb = arrayOfajtb[i];
-          if (localajtb == null) {
-            break label169;
+          alko localalko = arrayOfalko[i];
+          if (localalko == null) {
+            break label168;
           }
-          localajtb.onDestroy();
-          break label169;
+          localalko.onDestroy();
+          break label168;
         }
-        if (this.jdField_a_of_type_Aysx == null) {}
+        if (this.jdField_a_of_type_Baqu == null) {}
       }
       try
       {
-        this.jdField_a_of_type_Aysx.onDestroy();
-        this.jdField_a_of_type_Aysx = null;
+        this.jdField_a_of_type_Baqu.onDestroy();
+        this.jdField_a_of_type_Baqu = null;
         if (this.b)
         {
           this.app.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
           this.b = false;
         }
         if (this.jdField_a_of_type_Boolean) {
-          axjs.a(this).a(this);
+          azey.a(this).a(this);
         }
-        jdField_a_of_type_Bjbs.a();
+        jdField_a_of_type_Blnc.a();
         if (QLog.isColorLevel()) {
           QLog.d("PeakAppInterface", 2, "onDestroy");
         }
@@ -357,12 +380,24 @@ public class PeakAppInterface
       {
         for (;;)
         {
-          this.jdField_a_of_type_Aysx.onDestroy();
+          this.jdField_a_of_type_Baqu.onDestroy();
         }
       }
-      label169:
+      label168:
       i += 1;
     }
+  }
+  
+  public boolean onReceiveAccountAction(String paramString, Intent paramIntent)
+  {
+    blfg.b("PeakAppInterface", "onReceiveAccountAction");
+    return false;
+  }
+  
+  public boolean onReceiveLegalExitProcAction(Intent paramIntent)
+  {
+    blfg.b("PeakAppInterface", "onReceiveAccountAction");
+    return a(BaseApplicationImpl.getContext(), paramIntent);
   }
   
   public void onRunningBackground()
@@ -380,19 +415,19 @@ public class PeakAppInterface
     ThreadManager.executeOnFileThread(new PeakAppInterface.2(this));
   }
   
-  public void removeObserver(ajte paramajte)
+  public void removeObserver(alkr paramalkr)
   {
-    this.jdField_a_of_type_JavaUtilList.remove(paramajte);
+    this.jdField_a_of_type_JavaUtilList.remove(paramalkr);
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")))
+    if ((paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetRecommandTextByEmotion")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetTextValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCameraConfig")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetCompressedCategoryMaterial")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetPlayShowCatMatTree")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetOnlineUserNum")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetFontData")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetImgValidStatus")) || (paramToServiceMsg.getServiceCmd().equalsIgnoreCase("CameraModuleSvc.GetBulkImageClassify")))
     {
-      this.jdField_a_of_type_Awyq.a(paramToServiceMsg);
+      this.jdField_a_of_type_Aytt.a(paramToServiceMsg);
       return;
     }
-    this.jdField_a_of_type_Awbk.a(paramToServiceMsg, null, axbr.class);
+    this.jdField_a_of_type_Axtj.a(paramToServiceMsg, null, aywv.class);
   }
 }
 

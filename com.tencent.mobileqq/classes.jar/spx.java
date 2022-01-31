@@ -1,48 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.AddressItem;
-import java.util.List;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
 
-public class spx
+public abstract interface spx
+  extends sqi
 {
-  public AddressItem a;
-  public String a;
-  public List<spz> a;
-  public srd a;
+  public abstract ViewGroup a();
   
-  public spx(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a();
   
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    do
-    {
-      return false;
-      if (this == paramObject) {
-        return true;
-      }
-    } while (!(paramObject instanceof spx));
-    return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((spx)paramObject).jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(int paramInt);
   
-  public String toString()
-  {
-    StringBuilder localStringBuilder1 = new StringBuilder("GeoHashPhotoGroup=[");
-    localStringBuilder1.append("geohashString:").append(this.jdField_a_of_type_JavaLangString);
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("picList size:");
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
-    {
-      localStringBuilder2.append(i);
-      return localStringBuilder1.toString();
-    }
-  }
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(VideoPlayManager paramVideoPlayManager);
+  
+  public abstract void a(sqh paramsqh);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void setControlType(int paramInt);
+  
+  public abstract void setEndWithLastFrame(boolean paramBoolean);
+  
+  public abstract void setEventListener(spy paramspy);
+  
+  public abstract void setFullScreenDisable(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spx
  * JD-Core Version:    0.7.0.1
  */

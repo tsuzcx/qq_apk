@@ -1,79 +1,85 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
+import java.util.ArrayList;
+import java.util.List;
 
-final class ofb
-  implements ViewFactory.FoundClickableViewListener
+public class ofb
+  extends Dialog
+  implements View.OnClickListener
 {
-  ofb(ohs paramohs, oif paramoif, Container paramContainer) {}
+  private int jdField_a_of_type_Int = -1;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private ListView jdField_a_of_type_AndroidWidgetListView;
+  private List<GiftServiceBean> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private ofd jdField_a_of_type_Ofd;
+  private ofe jdField_a_of_type_Ofe;
+  private LinearLayout b;
   
-  public void onFound(ViewBase paramViewBase)
+  public ofb(Context paramContext, int paramInt)
   {
-    if ((paramViewBase.getNativeView() == null) || (paramViewBase.getClickEvnet() == null)) {}
-    do
+    super(paramContext, 2131755332);
+    requestWindowFeature(1);
+    getWindow().setBackgroundDrawable(new ColorDrawable(paramContext.getResources().getColor(17170445)));
+    setContentView(2131560044);
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131369879));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369890));
+    this.jdField_a_of_type_Ofe = new ofe(this);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Ofe);
+    this.jdField_a_of_type_AndroidWidgetListView.setOnItemClickListener(new ofc(this));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131369890));
+    this.b = ((LinearLayout)findViewById(2131369896));
+    this.b.setOnClickListener(this);
+    syo.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, aekt.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
+    syo.a(this.jdField_a_of_type_AndroidWidgetListView, aekt.a(6.0F, paramContext.getResources()), Color.parseColor("#FFFFFF"));
+    setCanceledOnTouchOutside(true);
+  }
+  
+  public void a(List<GiftServiceBean> paramList, ofd paramofd, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Ofd = paramofd;
+    this.jdField_a_of_type_Ofe.notifyDataSetChanged();
+    int i = 0;
+    for (;;)
     {
-      do
+      if (i < paramList.size())
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-              {
-              default: 
-                paramViewBase.setOnClickListener(new ofh(this));
-                return;
-              case 1023: 
-                paramViewBase.setOnClickListener(new ofc(this));
-                return;
-              }
-            } while (!(paramViewBase instanceof okk));
-            ((okk)paramViewBase).a(this.jdField_a_of_type_Ohs);
-            return;
-            paramViewBase.setOnClickListener(new ofi(this));
-            return;
-            paramViewBase.setOnClickListener(new ofj(this));
-            return;
-            paramViewBase.setOnClickListener(new ofk(this));
-            return;
-            paramViewBase.setOnClickListener(new ofl(this, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().findViewBaseByName("id_first_comment_view")));
-            return;
-          } while ((!(paramViewBase instanceof okm)) || (!(this.jdField_a_of_type_Ohs instanceof ogn)));
-          ((okm)paramViewBase).a((ogn)this.jdField_a_of_type_Ohs);
-          return;
-        } while (!(paramViewBase instanceof oki));
-        ((oki)paramViewBase).a(this.jdField_a_of_type_Ohs, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+        paramofd = (GiftServiceBean)paramList.get(i);
+        if ((!TextUtils.isEmpty(paramofd.t)) && (paramofd.t.equals(paramString))) {
+          this.jdField_a_of_type_Int = i;
+        }
+      }
+      else
+      {
         return;
-        paramViewBase.setOnClickListener(new ofn(this));
-        return;
-        paramViewBase.setOnClickListener(new ofo(this));
-        return;
-        paramViewBase.setOnClickListener(new ofp(this, paramViewBase));
-        return;
-        paramViewBase.setOnClickListener(new ofq(this, paramViewBase));
-        return;
-        paramViewBase.setOnClickListener(new ofd(this));
-        return;
-        paramViewBase.setOnClickListener(new ofe(this));
-        paramViewBase = paramViewBase.findViewBaseByName("id_comment_expose_subcomment_one");
-      } while (!(paramViewBase instanceof oki));
-      ((oki)paramViewBase).a(this.jdField_a_of_type_Ohs, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, 0);
+      }
+      i += 1;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
       return;
-      paramViewBase.setOnClickListener(new off(this));
-      paramViewBase = paramViewBase.findViewBaseByName("id_comment_expose_subcomment_two");
-    } while (!(paramViewBase instanceof oki));
-    ((oki)paramViewBase).a(this.jdField_a_of_type_Ohs, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, 1);
-    return;
-    paramViewBase.setOnClickListener(new ofg(this));
+    }
+    dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,34 @@
-import android.util.Pair;
-import java.util.ArrayList;
-import java.util.Arrays;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemBar;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
 
 public class bbaz
+  implements Animation.AnimationListener
 {
-  public static ArrayList<Pair<String, Long>> a(ArrayList<Pair<String, Long>> paramArrayList)
+  public bbaz(AbsPublishActivity paramAbsPublishActivity, Animation paramAnimation) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object[] arrayOfObject = new Object[paramArrayList.size()];
-    int i = 0;
-    Object localObject;
-    while (i < paramArrayList.size())
-    {
-      localObject = (Pair)paramArrayList.get(i);
-      arrayOfObject[i] = { (String)((Pair)localObject).first, String.valueOf(((Pair)localObject).second) };
-      i += 1;
-    }
-    Arrays.sort(arrayOfObject, new bbba());
-    paramArrayList.clear();
-    i = 0;
-    while (i < arrayOfObject.length)
-    {
-      localObject = (String[])arrayOfObject[i];
-      paramArrayList.add(Pair.create(localObject[0], Long.valueOf(Long.parseLong(localObject[1]))));
-      i += 1;
-    }
-    return paramArrayList;
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.b.clearAnimation();
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.clearAnimation();
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.c.clearAnimation();
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbaz
  * JD-Core Version:    0.7.0.1
  */

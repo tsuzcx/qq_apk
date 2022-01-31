@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
-
-public final class usi
-  implements Parcelable.Creator<CardItem.CardVideoInfo>
+public class usi
 {
-  public CardItem.CardVideoInfo a(Parcel paramParcel)
-  {
-    return new CardItem.CardVideoInfo(paramParcel);
-  }
+  public final int a;
+  public final String a;
   
-  public CardItem.CardVideoInfo[] a(int paramInt)
+  public usi(int paramInt, String paramString)
   {
-    return new CardItem.CardVideoInfo[paramInt];
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     usi
  * JD-Core Version:    0.7.0.1
  */

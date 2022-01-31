@@ -1,23 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.part.QIMTemplateItem;
+import android.view.View;
+import cooperation.qzone.contentbox.model.MQMsg;
 
-public final class bjex
-  implements Parcelable.Creator<QIMTemplateItem>
+public abstract interface bjex
 {
-  public QIMTemplateItem a(Parcel paramParcel)
-  {
-    return new QIMTemplateItem(paramParcel);
-  }
-  
-  public QIMTemplateItem[] a(int paramInt)
-  {
-    return new QIMTemplateItem[paramInt];
-  }
+  public abstract void a(MQMsg paramMQMsg, View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjex
  * JD-Core Version:    0.7.0.1
  */

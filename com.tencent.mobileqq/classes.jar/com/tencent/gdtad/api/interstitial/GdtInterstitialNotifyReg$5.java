@@ -1,23 +1,21 @@
 package com.tencent.gdtad.api.interstitial;
 
+import aakc;
 import java.lang.ref.WeakReference;
-import yuj;
 
 public class GdtInterstitialNotifyReg$5
   implements Runnable
 {
-  public GdtInterstitialNotifyReg$5(yuj paramyuj, WeakReference paramWeakReference) {}
+  public GdtInterstitialNotifyReg$5(aakc paramaakc, WeakReference paramWeakReference) {}
   
   public void run()
   {
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((GdtInterstitialFragment)this.a.get()).a(0, -2147483648, -2147483648);
-    }
+    ((GdtInterstitialFragment)this.a.get()).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialNotifyReg.5
  * JD-Core Version:    0.7.0.1
  */

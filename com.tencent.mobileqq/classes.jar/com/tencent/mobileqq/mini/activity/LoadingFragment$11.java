@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.activity;
 
-import ajya;
+import alpo;
 import android.os.Handler;
 import android.os.Message;
-import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
@@ -29,10 +29,10 @@ class LoadingFragment$11
       if (str != null) {}
       for (;;)
       {
-        bcql.a(localBaseApplication, 1, str, 1).a();
+        QQToast.a(localBaseApplication, 1, str, 1).a();
         this.this$0.uiHandler.postDelayed(new LoadingFragment.11.1(this), 1000L);
         return;
-        str = ajya.a(2131706244);
+        str = alpo.a(2131706616);
       }
       return;
     }
@@ -44,7 +44,7 @@ class LoadingFragment$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.LoadingFragment.11
  * JD-Core Version:    0.7.0.1
  */

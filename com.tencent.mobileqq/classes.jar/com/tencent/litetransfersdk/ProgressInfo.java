@@ -1,7 +1,7 @@
 package com.tencent.litetransfersdk;
 
-import aukp;
-import aukq;
+import awbw;
+import awbx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RouterMsgRecord;
 import java.sql.Date;
@@ -99,7 +99,7 @@ public class ProgressInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.litetransfersdk.ProgressInfo
  * JD-Core Version:    0.7.0.1
  */

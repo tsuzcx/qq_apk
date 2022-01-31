@@ -1,70 +1,52 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.qphone.base.util.QLog;
 
 class badp
-  implements View.OnTouchListener
+  extends bada
 {
-  long jdField_a_of_type_Long = 0L;
+  badp(bado parambado) {}
   
-  badp(badn parambadn) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
   {
-    if ((this.jdField_a_of_type_Badn.jdField_a_of_type_Boolean) || (!(paramView instanceof ImageView))) {
-      return false;
+    super.a(paramTeamWorkFileImportInfo);
+    if (paramTeamWorkFileImportInfo.e != bado.a(this.a).uniseq) {
+      return;
     }
-    int i = paramMotionEvent.getAction();
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof asyd))) {}
-    for (paramMotionEvent = (asyd)paramView.getTag();; paramMotionEvent = null)
+    bado.a(this.a).saveExtInfoToExtStr("errorString", bado.a(this.a, paramTeamWorkFileImportInfo.f));
+    bado.a(this.a).saveExtInfoToExtStr("retCode", String.valueOf(paramTeamWorkFileImportInfo.f));
+    bado.a(this.a).a().a(bado.a(this.a).frienduin, bado.a(this.a).istroop, bado.a(this.a).uniseq);
+    bado.a(this.a).removeObserver(bado.a(this.a));
+    bado.a(this.a).a().a(bado.a(this.a).frienduin, bado.a(this.a).istroop, bado.a(this.a).uniseq, "extStr", bado.a(this.a).extStr);
+    bado.a(this.a).a().a(bado.a(this.a).frienduin, bado.a(this.a).istroop, bado.a(this.a).uniseq, 32768, -1);
+    QLog.i("TeamWorkSender", 1, bado.a(this.a).uniseq + " import file faild");
+    bado.a(this.a).a().a(true, 3, null);
+  }
+  
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  {
+    if (paramTeamWorkFileImportInfo.e != bado.a(this.a).uniseq) {}
+    do
     {
-      switch (i)
-      {
-      }
-      for (;;)
-      {
-        return true;
-        if (paramMotionEvent != null)
-        {
-          paramView.setAlpha(paramMotionEvent.a() * 0.5F);
-        }
-        else
-        {
-          paramView.setAlpha(0.5F);
-          continue;
-          if (paramMotionEvent != null) {
-            paramView.setAlpha(paramMotionEvent.a());
-          }
-          while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
-          {
-            return true;
-            paramView.setAlpha(1.0F);
-          }
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          axqy.b(this.jdField_a_of_type_Badn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Badn.jdField_a_of_type_JavaLangString, "0X800A852", "0X800A852", 0, 0, "" + paramMotionEvent.jdField_a_of_type_Long, "", "", "");
-          paramView = balw.a().a(this.jdField_a_of_type_Badn.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Badn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-          paramMotionEvent = new Intent(this.jdField_a_of_type_Badn.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-          paramMotionEvent.putExtra("url", paramView);
-          this.jdField_a_of_type_Badn.jdField_a_of_type_AndroidAppActivity.startActivity(paramMotionEvent);
-          continue;
-          if (paramMotionEvent != null) {
-            paramView.setAlpha(paramMotionEvent.a());
-          } else {
-            paramView.setAlpha(1.0F);
-          }
-        }
-      }
-    }
+      return;
+      bado.a(this.a).removeObserver(bado.a(this.a));
+      bado.a(this.a).mMsgUrl = paramString;
+      bado.a(this.a).structingMsg.mMsgUrl = paramString;
+      bado.a(this.a).msgData = bado.a(this.a).getBytes();
+      bado.a(this.a).removeFlag(1);
+      bado.a(this.a).removeFlag(2);
+      bado.a(this.a).a().b(bado.a(this.a), null, false);
+      QLog.i("TeamWorkSender", 1, "start import file success");
+    } while (!QLog.isColorLevel());
+    QLog.i("TeamWorkSender", 1, "msg uniseq : " + bado.a(this.a).uniseq + " import success, url:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     badp
  * JD-Core Version:    0.7.0.1
  */

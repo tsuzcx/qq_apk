@@ -38,7 +38,7 @@ public final class ModFriendGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     IMMsgBodyPack.ModFriendGroup
  * JD-Core Version:    0.7.0.1
  */

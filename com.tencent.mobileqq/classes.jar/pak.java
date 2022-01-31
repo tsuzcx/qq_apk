@@ -1,19 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
 
-public abstract interface pak
+public class pak
+  implements View.OnClickListener
 {
-  public abstract ArrayList<BaseArticleInfo> a(int paramInt);
+  public pak(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment, ImageView paramImageView) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, pal parampal);
-  
-  public abstract int[] a(int paramInt);
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyProteusFamilyFragment.getActivity(), this.jdField_a_of_type_AndroidWidgetImageView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pak
  * JD-Core Version:    0.7.0.1
  */

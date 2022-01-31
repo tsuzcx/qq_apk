@@ -1,12 +1,12 @@
 package dov.com.qq.im.story.mode;
 
-import bjry;
+import bmdi;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 
 public class StoryEffectTextMode$5
   implements Runnable
 {
-  public StoryEffectTextMode$5(bjry parambjry, QQFilterRenderManager paramQQFilterRenderManager, String paramString) {}
+  public StoryEffectTextMode$5(bmdi parambmdi, QQFilterRenderManager paramQQFilterRenderManager, String paramString) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class StoryEffectTextMode$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.story.mode.StoryEffectTextMode.5
  * JD-Core Version:    0.7.0.1
  */

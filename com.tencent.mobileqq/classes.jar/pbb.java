@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.PicData;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
-public final class pbb
-  implements Parcelable.Creator<ReadInJoyDraftboxItem.PicData>
+public class pbb
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ReadInJoyDraftboxItem.PicData a(Parcel paramParcel)
-  {
-    return new ReadInJoyDraftboxItem.PicData(paramParcel);
-  }
+  public pbb(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public ReadInJoyDraftboxItem.PicData[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new ReadInJoyDraftboxItem.PicData[paramInt];
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = ReadInJoySelfFragment.a(this.a).getLayoutParams();
+    paramValueAnimator.height = i;
+    ReadInJoySelfFragment.a(this.a).setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pbb
  * JD-Core Version:    0.7.0.1
  */

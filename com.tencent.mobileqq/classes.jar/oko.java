@@ -1,37 +1,58 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.drawable.ColorDrawable;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class oko
-  implements ValueAnimator.AnimatorUpdateListener
+  extends baua
 {
-  String jdField_a_of_type_JavaLangString = NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).a.commentId;
+  public oko(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public oko(NativeCommentTextView paramNativeCommentTextView, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    if ((NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView) == null) || (NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).a == null) || (this.jdField_a_of_type_JavaLangString == null))
-    {
-      NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView, this.jdField_a_of_type_AndroidViewView);
+    baoj localbaoj = (baoj)paramMessage.obj;
+    if ((localbaoj == null) || (localbaoj.b != 24) || (localbaoj.c != 10)) {
       return;
     }
-    if (!this.jdField_a_of_type_JavaLangString.equals(NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).a.commentId))
+    switch (paramMessage.what)
     {
-      NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView, this.jdField_a_of_type_AndroidViewView);
+    default: 
+      return;
+    case 1003: 
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler send finished!");
+      }
+      break;
+    }
+    try
+    {
+      ReadInJoyCommentComponentFragment.a(this.a).c = true;
+      ReadInJoyCommentComponentFragment.a(this.a).f = localbaoj.i;
+      ReadInJoyCommentComponentFragment.a(this.a).g = localbaoj.f;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler url=" + ReadInJoyCommentComponentFragment.a(this.a).f + ", md5=" + ReadInJoyCommentComponentFragment.a(this.a).g);
+      }
+      label172:
+      this.a.f();
+      ReadInJoyCommentComponentFragment.a(this.a).setResult(-1, ReadInJoyCommentComponentFragment.a(this.a));
+      ReadInJoyCommentComponentFragment.a(this.a).finish();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler send error or cancel!");
+      }
+      this.a.f();
+      this.a.a(1, this.a.getString(2131718847));
       return;
     }
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView).setAlpha(i);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(NativeCommentTextView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView));
+    catch (Exception paramMessage)
+    {
+      break label172;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oko
  * JD-Core Version:    0.7.0.1
  */

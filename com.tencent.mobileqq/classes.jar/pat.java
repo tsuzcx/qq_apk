@@ -1,24 +1,33 @@
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.qphone.base.util.QLog;
+
 public class pat
+  extends oxe
 {
-  public int a;
-  public String a;
-  public boolean a;
+  public pat(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void a()
+  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, pfm parampfm)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 2);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.self.SelfFragment", 2, "onGetSelfInfo retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden" + paramBoolean);
+    }
+    if (paramInt1 == 0)
+    {
+      this.a.a(paramInt2, paramInt3, paramBoolean);
+      if (parampfm != null) {
+        ReadInJoySelfFragment.a(this.a, parampfm);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.e("Q.readinjoy.self.SelfFragment", 1, "onGetSelfInfo, columnInfoForSelfPage = null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pat
  * JD-Core Version:    0.7.0.1
  */

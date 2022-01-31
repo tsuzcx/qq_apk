@@ -1,22 +1,12 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.qphone.base.util.QLog;
-
-class mex
-  implements View.OnLayoutChangeListener
+public class mex
+  extends mey
 {
-  mex(mev parammev) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("MemberPagerAdapter", 2, String.format("container : left[%s], top[%s], right[%s], bottom[%s], oldLeft[%s], oldTop[%s], oldRight[%s], oldBottom[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8) }));
-    }
-  }
+  public int a;
+  public boolean a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mex
  * JD-Core Version:    0.7.0.1
  */

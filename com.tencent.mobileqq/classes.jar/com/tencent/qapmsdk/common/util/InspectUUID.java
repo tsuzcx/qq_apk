@@ -1,0 +1,72 @@
+package com.tencent.qapmsdk.common.util;
+
+import android.text.TextUtils;
+import java.lang.ref.WeakReference;
+import kotlin.Metadata;
+import kotlin.jvm.JvmField;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/qapmsdk/common/util/InspectUUID;", "Lcom/tencent/qapmsdk/common/util/RecyclablePool$Recyclable;", "()V", "cache", "", "className", "digest", "uuid", "", "weakObj", "Ljava/lang/ref/WeakReference;", "", "reset", "", "toString", "common_release"}, k=1, mv={1, 1, 15})
+public final class InspectUUID
+  extends RecyclablePool.Recyclable
+{
+  @JvmField
+  @NotNull
+  public String cache = "";
+  @JvmField
+  @NotNull
+  public String className = "";
+  @JvmField
+  @NotNull
+  public String digest = "";
+  @JvmField
+  @Nullable
+  public char[] uuid;
+  @JvmField
+  @Nullable
+  public WeakReference<Object> weakObj;
+  
+  public void reset()
+  {
+    this.weakObj = ((WeakReference)null);
+    this.digest = "";
+    this.uuid = ((char[])null);
+    this.className = "";
+    this.cache = "";
+  }
+  
+  @NotNull
+  public String toString()
+  {
+    if (((CharSequence)this.cache).length() == 0) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        Object localObject = new StringBuilder(64);
+        ((StringBuilder)localObject).append(this.className);
+        ((StringBuilder)localObject).append("@");
+        if (this.uuid != null) {
+          ((StringBuilder)localObject).append(this.uuid);
+        }
+        if (!TextUtils.isEmpty((CharSequence)this.digest))
+        {
+          ((StringBuilder)localObject).append("_");
+          ((StringBuilder)localObject).append(this.digest);
+        }
+        localObject = ((StringBuilder)localObject).toString();
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "StringBuilder(64).apply …\n            }.toString()");
+        this.cache = ((String)localObject);
+      }
+      return this.cache;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.qapmsdk.common.util.InspectUUID
+ * JD-Core Version:    0.7.0.1
+ */

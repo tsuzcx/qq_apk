@@ -3,12 +3,12 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anip;
+import aozw;
 
 public class IPSiteModel$Goods
   implements Parcelable
 {
-  public static final Parcelable.Creator<Goods> CREATOR = new anip();
+  public static final Parcelable.Creator<Goods> CREATOR = new aozw();
   public String cover;
   public String goodsTags;
   public String id;
@@ -62,7 +62,7 @@ public class IPSiteModel$Goods
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.IPSiteModel.Goods
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,52 @@
-import com.tencent.mobileqq.data.MedalList;
-import com.tencent.mobileqq.data.MedalList.Info;
-import java.util.ArrayList;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public class bcqu
+class bcqu
+  implements baaa
 {
-  private MedalList a;
+  public int a;
+  public long a;
+  public long b;
+  public long c;
   
-  public int a()
+  bcqu(bcqi parambcqi)
   {
-    if (this.a != null) {
-      return this.a.infoList.size();
-    }
-    return 0;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public int a(int paramInt)
+  public void a()
   {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).type;
+    this.c = NetConnInfoCenter.getServerTimeMillis();
+    switch (this.jdField_a_of_type_Int)
+    {
     }
-    return 0;
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
-      return ((MedalList.Info)this.a.infoList.get(paramInt)).value;
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_giftTroopGiftAnimationController", 2, "animation frame end. requestState:" + this.jdField_a_of_type_Int);
+      }
+      return;
+      this.jdField_a_of_type_Bcqi.a(0L);
+      continue;
+      this.jdField_a_of_type_Bcqi.a(3000L);
+      continue;
+      long l = this.c - this.b;
+      if (l >= 2000L)
+      {
+        this.jdField_a_of_type_Bcqi.a(0L);
+      }
+      else
+      {
+        this.jdField_a_of_type_Bcqi.a(2000L - l);
+        continue;
+        this.jdField_a_of_type_Bcqi.a(3000L);
+      }
     }
-    return null;
-  }
-  
-  public void a(MedalList paramMedalList)
-  {
-    this.a = paramMedalList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcqu
  * JD-Core Version:    0.7.0.1
  */

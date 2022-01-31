@@ -4,23 +4,23 @@ import NS_MOBILE_MAIN_PAGE.PhotoWall;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
 import android.os.Parcel;
 import android.text.TextUtils;
-import auko;
-import aulz;
-import aumc;
+import awbv;
+import awdg;
+import awdj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class QZonePhotoWall
-  extends auko
+  extends awbv
 {
   public String attachInfo;
-  @aulz
+  @awdg
   public int curListSize;
   public int hasMore;
   public int totalPic;
-  @aumc
+  @awdj
   public String uin;
   public byte[] vPhotoIds;
   public byte[] vPhotoTimes;
@@ -388,7 +388,7 @@ public class QZonePhotoWall
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QZonePhotoWall
  * JD-Core Version:    0.7.0.1
  */

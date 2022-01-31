@@ -1,27 +1,58 @@
-import android.support.v4.view.OnApplyWindowInsetsListener;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.WindowInsetsCompat;
-import android.view.View;
-import com.tencent.mobileqq.screendetect.ScreenShotFragment;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class awgn
-  implements OnApplyWindowInsetsListener
+public final class awgn
 {
-  public awgn(ScreenShotFragment paramScreenShotFragment) {}
+  public final List<awgo> a = new ArrayList();
   
-  public WindowInsetsCompat onApplyWindowInsets(View paramView, WindowInsetsCompat paramWindowInsetsCompat)
+  private void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "ScreenShotShareFragment onApplyWindowInsets current is liuhai style!");
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString).optJSONArray("c2c");
+        if (paramString.length() > 0)
+        {
+          int j = paramString.length();
+          int i = 0;
+          while (i < j)
+          {
+            awgo localawgo = new awgo();
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            localawgo.jdField_a_of_type_Int = localJSONObject.optInt("appid");
+            localawgo.d = localJSONObject.optString("title");
+            localawgo.e = localJSONObject.optString("iconNormal");
+            localawgo.f = localJSONObject.optString("iconPress");
+            localawgo.g = localJSONObject.optString("iconNightNormal");
+            localawgo.h = localJSONObject.optString("iconNightPress");
+            localawgo.jdField_b_of_type_Int = localJSONObject.optInt("redDotID");
+            localawgo.jdField_c_of_type_JavaLangString = localJSONObject.optString("redDotPath");
+            localawgo.jdField_a_of_type_JavaLangString = localJSONObject.optString("actionType");
+            localawgo.jdField_b_of_type_JavaLangString = localJSONObject.optString("action");
+            localawgo.jdField_c_of_type_Int = localJSONObject.optInt("order");
+            localawgo.a();
+            localawgo.b();
+            this.a.add(localawgo);
+            i += 1;
+          }
+        }
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("AIOPanelIconConfigProcessor", 1, paramString, new Object[0]);
+      }
     }
-    ScreenShotFragment.a(this.a);
-    return ViewCompat.onApplyWindowInsets(paramView, paramWindowInsetsCompat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awgn
  * JD-Core Version:    0.7.0.1
  */

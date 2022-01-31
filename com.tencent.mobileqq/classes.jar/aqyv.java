@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.hotpic.HotPicData;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchGroupFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class aqyv
-  implements Parcelable.Creator<HotPicData>
+public class aqyv
+  implements View.OnTouchListener
 {
-  public HotPicData a(Parcel paramParcel)
-  {
-    return new HotPicData(paramParcel);
-  }
+  public aqyv(FileSelectorSearchGroupFragment paramFileSelectorSearchGroupFragment) {}
   
-  public HotPicData[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new HotPicData[paramInt];
+    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqyv
  * JD-Core Version:    0.7.0.1
  */

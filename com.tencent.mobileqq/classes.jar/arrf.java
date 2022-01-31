@@ -1,43 +1,28 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class arrf
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  public arrf(ListenTogetherManager paramListenTogetherManager) {}
+  public arrf(SendBottomBar paramSendBottomBar) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if (SendBottomBar.a(this.a).isChecked())
     {
-    default: 
-      return true;
+      SendBottomBar.a(this.a).d();
+      SendBottomBar.a(this.a).setText(alpo.a(2131714185));
+      return;
     }
-    paramMessage = this.a.a();
-    if (paramMessage != null)
-    {
-      paramMessage.a = (SystemClock.elapsedRealtime() - paramMessage.c + paramMessage.a);
-      paramMessage.c = SystemClock.elapsedRealtime();
-      boolean bool = ListenTogetherManager.a(this.a).a(paramMessage);
-      QLog.i("ListenTogether.Seek", 1, "MSG_TYPE_TIME_SYNC seek is: " + paramMessage.a + " currentTime: " + System.currentTimeMillis() + " result: " + bool);
-    }
-    for (;;)
-    {
-      ListenTogetherManager.a(this.a).removeMessages(1001);
-      ListenTogetherManager.a(this.a).sendEmptyMessageDelayed(1001, arqs.a().a);
-      return true;
-      QLog.i("ListenTogether.Manager", 1, "MSG_TYPE_TIME_SYNC startPlay musicInfo is null.");
-    }
+    SendBottomBar.a(this.a).e();
+    SendBottomBar.a(this.a).setText(alpo.a(2131714197));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arrf
  * JD-Core Version:    0.7.0.1
  */

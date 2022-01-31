@@ -1,38 +1,32 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.olympic.activity.ARTipsCircleProgress;
 
-public class avxd
+class avxd
 {
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
-  static String jdField_a_of_type_JavaLangString = "DataCollector";
-  Handler jdField_a_of_type_AndroidOsHandler = new avxe(this, jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-  public boolean a;
+  public View a;
+  public ViewGroup a;
+  public ImageView a;
+  public TextView a;
+  public ARTipsCircleProgress a;
+  public ViewGroup b;
+  public TextView b;
+  public ViewGroup c;
+  public TextView c;
+  public ViewGroup d;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
+  public TextView h;
   
-  static
-  {
-    jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("Colloector-Tasker");
-    jdField_a_of_type_AndroidOsHandlerThread.start();
-  }
-  
-  public avxd(Context paramContext)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-  }
-  
-  static Looper a()
-  {
-    return jdField_a_of_type_AndroidOsHandlerThread.getLooper();
-  }
-  
-  protected void a(Message paramMessage) {}
+  private avxd(avwn paramavwn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avxd
  * JD-Core Version:    0.7.0.1
  */

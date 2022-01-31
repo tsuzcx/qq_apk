@@ -1,21 +1,30 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.UUID;
 
-public class afzt
-  implements View.OnClickListener
+class afzt
+  implements DialogInterface.OnClickListener
 {
-  public afzt(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  afzt(afzs paramafzs, long paramLong, UUID paramUUID, Activity paramActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.d.dismiss();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      TroopFileTransferManager.a(this.jdField_a_of_type_Afzs.a, this.jdField_a_of_type_Long).a(this.jdField_a_of_type_JavaUtilUUID);
+      return;
+    }
+    new bboe(this.jdField_a_of_type_Long, this.jdField_a_of_type_Afzs.a, this.jdField_a_of_type_AndroidAppActivity).b(this.jdField_a_of_type_JavaUtilUUID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afzt
  * JD-Core Version:    0.7.0.1
  */

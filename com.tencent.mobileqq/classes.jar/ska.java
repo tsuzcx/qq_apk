@@ -1,10 +1,12 @@
-class ska
+public class ska
 {
-  private static final sjy a = new sjy(null);
+  public int a;
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ska
  * JD-Core Version:    0.7.0.1
  */

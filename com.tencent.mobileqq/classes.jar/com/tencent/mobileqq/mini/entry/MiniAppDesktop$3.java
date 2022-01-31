@@ -4,11 +4,13 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.view.ViewGroup;
+import annv;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopLayout;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ARMapHongBaoListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import common.config.service.QzoneConfig;
 import mqq.util.WeakReference;
@@ -25,6 +27,9 @@ class MiniAppDesktop$3
       this.this$0.hideMiniAppEntry();
     }
     MiniAppDesktop.access$300(this.this$0).desktopOpened();
+    if (MiniAppDesktop.access$500(this.this$0).b != null) {
+      MiniAppDesktop.access$500(this.this$0).b.d();
+    }
   }
   
   public void onAnimationStart(Animator paramAnimator)
@@ -63,7 +68,7 @@ class MiniAppDesktop$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDesktop.3
  * JD-Core Version:    0.7.0.1
  */

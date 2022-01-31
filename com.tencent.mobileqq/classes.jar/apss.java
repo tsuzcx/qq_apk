@@ -1,104 +1,209 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.image.RegionDrawableData;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.emoticonview.EmotionPreviewInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.util.List;
 
 public class apss
-  extends apsp
+  extends BaseAdapter
+  implements aikc
 {
-  private MessageForTroopFile a;
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private List<EmotionPreviewInfo> jdField_a_of_type_JavaUtilList;
   
-  public apss(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public apss(Context paramContext)
   {
-    super(paramQQAppInterface, paramChatMessage);
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile = ((MessageForTroopFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130847294);
+    this.jdField_a_of_type_Int = aekt.a(207.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
-  public long a()
+  private URL a(File paramFile)
   {
-    azqv localazqv = bakx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    if (localazqv == null) {
-      return 0L;
+    if (paramFile == null) {
+      return null;
     }
-    return localazqv.c;
-  }
-  
-  public apsm a()
-  {
-    apsr localapsr = new apsr(bakx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile));
-    localapsr.a(new apst(this));
-    return localapsr;
-  }
-  
-  public String a()
-  {
-    azqv localazqv = bakx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    if (localazqv != null) {
-      return localazqv.jdField_a_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
-  public boolean a()
-  {
-    azqv localazqv = bakx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin);
-    if (localazqv == null)
+    try
     {
-      QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : file info is null. uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "]");
-      return false;
+      paramFile = paramFile.toURI().toURL();
+      return paramFile;
     }
-    QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload: uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "] fileId[" + localazqv.e + "]");
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l);
-    localTroopFileTransferManager.a(localazqv.e, localazqv.g, localazqv.c, localazqv.h);
-    if ((localazqv.b == 10) || (localazqv.b == 9)) {
-      if (localazqv.jdField_a_of_type_JavaUtilUUID != null) {
-        localTroopFileTransferManager.c(localazqv.jdField_a_of_type_JavaUtilUUID);
+    catch (MalformedURLException paramFile) {}
+    return null;
+  }
+  
+  public EmotionPreviewInfo a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (EmotionPreviewInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public void a(List<EmotionPreviewInfo> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView != null) {
+      return paramView;
+    }
+    URLImageView localURLImageView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+    paramView = a(paramInt);
+    if ((paramView == null) || (TextUtils.isEmpty(paramView.a)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("EmotionPreviewAdapter", 2, "getView Path is empty. position " + paramInt + ", size " + getCount());
       }
+      localURLImageView.setImageDrawable(baul.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      return localURLImageView;
+    }
+    paramViewGroup = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (paramViewGroup != null) {
+      localURLImageView.setImageDrawable(paramViewGroup);
     }
     for (;;)
     {
-      return true;
-      QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : resumeDownload error, infoId is null");
-      return false;
-      if (localazqv.b != 7) {
-        break;
+      localURLImageView.setContentDescription("照片" + paramInt);
+      return localURLImageView;
+      Object localObject = new File(paramView.a);
+      paramView = null;
+      if (((File)localObject).exists())
+      {
+        paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
+        paramViewGroup.mRequestWidth = this.jdField_a_of_type_Int;
+        paramViewGroup.mRequestHeight = this.jdField_a_of_type_Int;
+        paramViewGroup.mLoadingDrawable = baul.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        paramViewGroup.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        paramViewGroup.mPlayGifImage = true;
+        localObject = a((File)localObject);
+        if (localObject != null)
+        {
+          paramViewGroup = URLDrawable.getDrawable((URL)localObject, paramViewGroup);
+          paramView = paramViewGroup;
+          if (paramViewGroup != null)
+          {
+            paramView = paramViewGroup;
+            switch (paramViewGroup.getStatus())
+            {
+            default: 
+              paramViewGroup.setTag(Integer.valueOf(1));
+              paramViewGroup.startDownload();
+              paramView = paramViewGroup;
+            }
+          }
+        }
+        if (paramView != null)
+        {
+          localURLImageView.setImageDrawable(paramView);
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
+        }
+        else
+        {
+          localURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        }
       }
-      localTroopFileTransferManager.a(localazqv.e, localazqv.g, localazqv.c, localazqv.h);
+      else
+      {
+        localURLImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      }
     }
-    QLog.i("TroopFileSaveModel<QFile>", 1, "doDownload : can not handle file info status[" + localazqv.b + ",download error");
-    return false;
   }
   
-  public String b()
+  public View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq;
+    paramView = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (paramView != null) {
+      if (paramView.getStatus() == 3) {
+        paramView.restartDownload();
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return null;
+          paramView = a(paramInt);
+          if ((paramView != null) && (!TextUtils.isEmpty(paramView.a))) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.i("EmotionPreviewAdapter", 2, "onCreateView Path is empty. position " + paramInt + ", size " + getCount());
+        return null;
+        paramViewGroup = new File(paramView.a);
+      } while (!paramViewGroup.exists());
+      paramView = URLDrawable.URLDrawableOptions.obtain();
+      paramView.mRequestWidth = this.jdField_a_of_type_Int;
+      paramView.mRequestHeight = this.jdField_a_of_type_Int;
+      paramView.mLoadingDrawable = baul.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      paramView.mPlayGifImage = true;
+      paramViewGroup = a(paramViewGroup);
+    } while (paramViewGroup == null);
+    paramView = URLDrawable.getDrawable(paramViewGroup, paramView);
+    paramView.setTag(Integer.valueOf(1));
+    paramView.startDownload();
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
+    return null;
   }
   
-  public boolean b()
+  public void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    azqv localazqv = bakx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    if (localazqv == null) {
-      QLog.i("TroopFileSaveModel<QFile>", 1, "stopDownload : file info is null. uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.uniseq + "]");
+    paramView = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (paramView != null)
+    {
+      if (paramView.getStatus() == 0) {
+        paramView.cancelDownload(true);
+      }
+      this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
     }
-    while ((localazqv.b != 8) && (localazqv.b != 9) && (localazqv.b != 10)) {
-      return false;
-    }
-    long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile.frienduin);
-    TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, l).d(localazqv.jdField_a_of_type_JavaUtilUUID);
-    return true;
   }
   
-  public boolean c()
-  {
-    azqv localazqv = bakx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    return (localazqv != null) && (localazqv.b == 8);
-  }
+  public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData) {}
+  
+  public void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup) {}
+  
+  public void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean) {}
+  
+  public void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apss
  * JD-Core Version:    0.7.0.1
  */

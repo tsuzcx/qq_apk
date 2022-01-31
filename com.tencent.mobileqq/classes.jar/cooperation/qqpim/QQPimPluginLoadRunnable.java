@@ -1,9 +1,9 @@
 package cooperation.qqpim;
 
-import axqy;
-import bglh;
-import bgta;
-import bgth;
+import azmj;
+import bimg;
+import bitz;
+import biug;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
@@ -15,13 +15,13 @@ public class QQPimPluginLoadRunnable
   implements Runnable
 {
   private long jdField_a_of_type_Long;
-  private bglh jdField_a_of_type_Bglh;
-  private bgth jdField_a_of_type_Bgth;
+  private bimg jdField_a_of_type_Bimg;
+  private biug jdField_a_of_type_Biug;
   private boolean jdField_a_of_type_Boolean;
   
-  public QQPimPluginLoadRunnable(bgth parambgth)
+  public QQPimPluginLoadRunnable(biug parambiug)
   {
-    this.jdField_a_of_type_Bgth = parambgth;
+    this.jdField_a_of_type_Biug = parambiug;
   }
   
   private QQAppInterface a()
@@ -35,7 +35,7 @@ public class QQPimPluginLoadRunnable
   
   public void a()
   {
-    this.jdField_a_of_type_Bgth = null;
+    this.jdField_a_of_type_Biug = null;
     this.jdField_a_of_type_Boolean = true;
   }
   
@@ -60,20 +60,20 @@ public class QQPimPluginLoadRunnable
               do
               {
                 return;
-                this.jdField_a_of_type_Bglh = ((bglh)localQQAppInterface.getManager(27));
-              } while (this.jdField_a_of_type_Bglh == null);
-              localPluginInfo = this.jdField_a_of_type_Bglh.a("qqpim_plugin.apk");
+                this.jdField_a_of_type_Bimg = ((bimg)localQQAppInterface.getManager(27));
+              } while (this.jdField_a_of_type_Bimg == null);
+              localPluginInfo = this.jdField_a_of_type_Bimg.a("qqpim_plugin.apk");
               if (localPluginInfo != null)
               {
                 if (localPluginInfo.mState != 4) {
                   break label182;
                 }
                 if (QLog.isDevelopLevel()) {
-                  QLog.i(bgta.a, 1, "onPluginManagerLoaded has installed");
+                  QLog.i(bitz.a, 1, "onPluginManagerLoaded has installed");
                 }
-                axqy.b(localQQAppInterface, "CliOper", "", "", "0X8006716", "0X8006716", 0, 0, "", "", "", "");
-                if (this.jdField_a_of_type_Bgth != null) {
-                  this.jdField_a_of_type_Bgth.a();
+                azmj.b(localQQAppInterface, "CliOper", "", "", "0X8006716", "0X8006716", 0, 0, "", "", "", "");
+                if (this.jdField_a_of_type_Biug != null) {
+                  this.jdField_a_of_type_Biug.a();
                 }
               }
               do
@@ -86,45 +86,45 @@ public class QQPimPluginLoadRunnable
                   if (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 30000L) {
                     break label249;
                   }
-                  axqy.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-                  if (this.jdField_a_of_type_Bgth == null) {
+                  azmj.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+                  if (this.jdField_a_of_type_Biug == null) {
                     break;
                   }
-                  this.jdField_a_of_type_Bgth.a(-5);
+                  this.jdField_a_of_type_Biug.a(-5);
                   return;
                   if (QLog.isDevelopLevel()) {
-                    QLog.i(bgta.a, 1, "onPluginManagerLoaded start down or install...");
+                    QLog.i(bitz.a, 1, "onPluginManagerLoaded start down or install...");
                   }
-                  axqy.b(localQQAppInterface, "CliOper", "", "", "0X8006717", "0X8006717", 0, 0, "", "", "", "");
-                  this.jdField_a_of_type_Bglh.a("qqpim_plugin.apk");
-                  if (this.jdField_a_of_type_Bgth != null) {
-                    this.jdField_a_of_type_Bgth.b();
+                  azmj.b(localQQAppInterface, "CliOper", "", "", "0X8006717", "0X8006717", 0, 0, "", "", "", "");
+                  this.jdField_a_of_type_Bimg.a("qqpim_plugin.apk");
+                  if (this.jdField_a_of_type_Biug != null) {
+                    this.jdField_a_of_type_Biug.b();
                   }
                 }
-                localPluginInfo = this.jdField_a_of_type_Bglh.a("qqpim_plugin.apk");
+                localPluginInfo = this.jdField_a_of_type_Bimg.a("qqpim_plugin.apk");
                 if (localPluginInfo != null) {
                   break label333;
                 }
                 if (QLog.isDevelopLevel()) {
-                  QLog.d(bgta.a, 4, "null == pluginInfo");
+                  QLog.d(bitz.a, 4, "null == pluginInfo");
                 }
-              } while (!this.jdField_a_of_type_Bglh.isReady());
-              axqy.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-            } while (this.jdField_a_of_type_Bgth == null);
-            this.jdField_a_of_type_Bgth.a(-1);
+              } while (!this.jdField_a_of_type_Bimg.isReady());
+              azmj.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+            } while (this.jdField_a_of_type_Biug == null);
+            this.jdField_a_of_type_Biug.a(-1);
             return;
             if (QLog.isDevelopLevel()) {
-              QLog.d(bgta.a, 4, "queryPluginInfo mState : " + localPluginInfo.mState + " progress:" + localPluginInfo.mDownloadProgress);
+              QLog.d(bitz.a, 4, "queryPluginInfo mState : " + localPluginInfo.mState + " progress:" + localPluginInfo.mDownloadProgress);
             }
             if (localPluginInfo.mState != 4) {
               break;
             }
-            axqy.b(localQQAppInterface, "CliOper", "", "", "0X8006718", "0X8006718", 0, 0, "", "", "", "");
-          } while (this.jdField_a_of_type_Bgth == null);
-          this.jdField_a_of_type_Bgth.a();
+            azmj.b(localQQAppInterface, "CliOper", "", "", "0X8006718", "0X8006718", 0, 0, "", "", "", "");
+          } while (this.jdField_a_of_type_Biug == null);
+          this.jdField_a_of_type_Biug.a();
           return;
           if (localPluginInfo.mState == 0) {
-            this.jdField_a_of_type_Bglh.a("qqpim_plugin.apk");
+            this.jdField_a_of_type_Bimg.a("qqpim_plugin.apk");
           }
           for (;;)
           {
@@ -140,14 +140,14 @@ public class QQPimPluginLoadRunnable
             break;
             if (localInterruptedException.mState == 3)
             {
-              if (this.jdField_a_of_type_Bgth != null) {
-                this.jdField_a_of_type_Bgth.a(localInterruptedException.mDownloadProgress);
+              if (this.jdField_a_of_type_Biug != null) {
+                this.jdField_a_of_type_Biug.a(localInterruptedException.mDownloadProgress);
               }
             }
             else if (localInterruptedException.mState == 1)
             {
-              if (this.jdField_a_of_type_Bgth != null) {
-                this.jdField_a_of_type_Bgth.a(localInterruptedException.mDownloadProgress);
+              if (this.jdField_a_of_type_Biug != null) {
+                this.jdField_a_of_type_Biug.a(localInterruptedException.mDownloadProgress);
               }
             }
             else
@@ -155,36 +155,36 @@ public class QQPimPluginLoadRunnable
               if (localInterruptedException.mState != 2) {
                 break label555;
               }
-              if (this.jdField_a_of_type_Bgth != null) {
-                this.jdField_a_of_type_Bgth.a(localInterruptedException.mDownloadProgress);
+              if (this.jdField_a_of_type_Biug != null) {
+                this.jdField_a_of_type_Biug.a(localInterruptedException.mDownloadProgress);
               }
             }
           }
           if (localInterruptedException.mState != -1) {
             break;
           }
-          axqy.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-        } while (this.jdField_a_of_type_Bgth == null);
-        this.jdField_a_of_type_Bgth.a(-6);
+          azmj.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+        } while (this.jdField_a_of_type_Biug == null);
+        this.jdField_a_of_type_Biug.a(-6);
         return;
         if (localInterruptedException.mState != -2) {
           break;
         }
-        axqy.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-      } while (this.jdField_a_of_type_Bgth == null);
-      this.jdField_a_of_type_Bgth.a(-3);
+        azmj.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+      } while (this.jdField_a_of_type_Biug == null);
+      this.jdField_a_of_type_Biug.a(-3);
       return;
-      axqy.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
-    } while (this.jdField_a_of_type_Bgth == null);
+      azmj.b(a(), "CliOper", "", "", "0X8006719", "0X8006719", 0, 0, "", "", "", "");
+    } while (this.jdField_a_of_type_Biug == null);
     label182:
     label333:
-    this.jdField_a_of_type_Bgth.a(-2);
+    this.jdField_a_of_type_Biug.a(-2);
     label460:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqpim.QQPimPluginLoadRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,32 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.qg.sdk.invoke.BaseJsModule;
+import com.tencent.qg.sdk.invoke.InvokeCallback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class bkan
-  implements Animator.AnimatorListener
+public class bkan
+  extends BaseJsModule
 {
-  bkan(bkal parambkal) {}
+  public bkan(bkal parambkal) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public String getModuleName()
   {
-    this.a.a = false;
+    return "VipQGModel";
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean handleJsRequest(String paramString, JSONObject paramJSONObject, InvokeCallback paramInvokeCallback)
   {
-    this.a.a = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
+    if ("notifyJsInvokeFinish".equalsIgnoreCase(paramString))
+    {
+      QLog.i("VipQGModel", 1, "handleJsRequest: notifyJsInvokeFinish");
+      this.a.a("getDeviceSize", new float[] { bdkf.a(), bdkf.b() });
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkan
  * JD-Core Version:    0.7.0.1
  */

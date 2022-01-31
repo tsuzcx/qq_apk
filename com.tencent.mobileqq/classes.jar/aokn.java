@@ -1,70 +1,125 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.AppRuntime.Status;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aokn
 {
-  public static Bitmap a(int paramInt1, int paramInt2, float paramFloat)
+  private ArrayList<awam> jdField_a_of_type_JavaUtilArrayList = new ArrayList(20);
+  private HashMap<String, awam> jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
+  
+  public aokn()
   {
-    Bitmap localBitmap = Bitmap.createBitmap(paramInt1 * 2, paramInt1 * 2, Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(localBitmap);
-    Paint localPaint = new Paint(1);
-    localPaint.setAlpha((int)(255.0F * paramFloat));
-    localPaint.setColor(paramInt2);
-    localPaint.setStyle(Paint.Style.FILL);
-    localCanvas.drawCircle(paramInt1, paramInt1, paramInt1, localPaint);
-    localCanvas.save();
-    localCanvas.restore();
-    return localBitmap;
+    int i = 0;
+    while (i < awai.a.length)
+    {
+      AppRuntime.Status localStatus = awai.a[i];
+      awam localawam = new awam(localStatus);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localawam);
+      this.jdField_a_of_type_JavaUtilHashMap.put(awam.a(localStatus, localawam.jdField_a_of_type_Long), localawam);
+      i += 1;
+    }
   }
   
-  public static Bitmap a(Resources paramResources, Bitmap paramBitmap, int paramInt, float paramFloat, boolean paramBoolean)
+  public static aokn a(String paramString)
   {
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
+    aokn localaokn = new aokn();
     for (;;)
     {
-      Canvas localCanvas;
+      int i;
       try
       {
-        Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        localCanvas = new Canvas(localBitmap);
-        localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, null);
-        if (!paramBoolean)
+        paramString = new JSONArray(paramString);
+        if (paramString != null)
         {
-          paramBitmap = new RectF(0.0F, 0.0F, i, j);
-          Paint localPaint = new Paint(1);
-          localPaint.setColor(paramInt);
-          localPaint.setAlpha((int)(paramFloat * 255.0F));
-          paramInt = actj.a(2.0F, paramResources);
-          localCanvas.drawRoundRect(paramBitmap, paramInt, paramInt, localPaint);
-          localCanvas.save();
-          localCanvas.restore();
-          return localBitmap;
+          i = 0;
+          if (i < paramString.length())
+          {
+            Object localObject2 = (JSONObject)paramString.get(i);
+            if (localObject2 == null) {
+              break label212;
+            }
+            long l = ((JSONObject)localObject2).optLong("id");
+            Object localObject1 = ((JSONObject)localObject2).optString("title");
+            localObject2 = ((JSONObject)localObject2).optString("icon");
+            if ((l == 1000L) && (a()))
+            {
+              QLog.d("OnlineStatusConfProcessor", 1, "incompatible for battery status");
+            }
+            else
+            {
+              localObject1 = new awam(l, (String)localObject1, (String)localObject2);
+              localaokn.jdField_a_of_type_JavaUtilHashMap.put(awam.a(AppRuntime.Status.online, ((awam)localObject1).jdField_a_of_type_Long), localObject1);
+              localaokn.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+            }
+          }
         }
       }
-      catch (OutOfMemoryError paramResources)
+      catch (Exception paramString)
       {
-        QLog.e("BackgroundUtil", 1, "get OOM when create ret, return target");
-        return paramBitmap;
+        if (QLog.isColorLevel()) {
+          QLog.e("OnlineStatusConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+        }
+        return localaokn;
       }
-      i /= 2;
-      paramResources = new Paint(1);
-      paramResources.setAlpha((int)(paramFloat * 255.0F));
-      paramResources.setColor(paramInt);
-      paramResources.setStyle(Paint.Style.FILL);
-      localCanvas.drawCircle(i, i, i, paramResources);
+      QLog.d("OnlineStatusConfProcessor", 2, "confBean = " + localaokn.toString());
+      return localaokn;
+      label212:
+      i += 1;
     }
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = false;
+    if (awaf.a() <= 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public awam a(AppRuntime.Status paramStatus, long paramLong)
+  {
+    Object localObject = paramStatus;
+    if (paramStatus == null)
+    {
+      QLog.d("OnlineStatus", 1, new Object[] { "getOnlineStatusItem with null, id:", Long.valueOf(paramLong) });
+      localObject = AppRuntime.Status.online;
+    }
+    paramStatus = awam.a((AppRuntime.Status)localObject, paramLong);
+    localObject = (awam)this.jdField_a_of_type_JavaUtilHashMap.get(paramStatus);
+    paramStatus = (AppRuntime.Status)localObject;
+    if (localObject == null) {
+      paramStatus = new awam(AppRuntime.Status.online);
+    }
+    return paramStatus;
+  }
+  
+  public ArrayList<awam> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(50);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      awam localawam = (awam)localIterator.next();
+      localStringBuilder.append("id:").append(localawam.jdField_a_of_type_Long).append(" ");
+      localStringBuilder.append("title:").append(localawam.jdField_a_of_type_JavaLangString).append(" ");
+      localStringBuilder.append("icon:").append(localawam.b).append("\n");
+    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aokn
  * JD-Core Version:    0.7.0.1
  */

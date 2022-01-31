@@ -1,42 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController.6.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
-
 public class scw
-  implements View.OnClickListener
 {
-  scw(scr paramscr) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(View paramView)
+  public String a(int paramInt)
   {
-    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005733", "0X8005733", 0, 0, "", "", "", "");
-    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006430", "0X8006430", 0, 0, "", "", "", "");
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
-    ThreadManager.getSubThreadHandler().post(new SubscriptRecommendController.6.1(this));
-    if (this.a.jdField_a_of_type_Int == 1) {
-      scr.a(this.a);
+    if (paramInt == 2) {
+      return this.d;
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_Int != 3);
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-    } while ((paramView == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (!(this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity)));
-    paramView.sendEmptyMessage(1006);
+    if (paramInt == 3) {
+      return this.e;
+    }
+    if (paramInt == 6) {
+      return this.a;
+    }
+    if (paramInt == 4) {
+      return this.c;
+    }
+    if (paramInt == 5) {
+      return this.b;
+    }
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("weibo : ").append(this.a).append("\n");
+    localStringBuilder.append("qq : ").append(this.d).append("\n");
+    localStringBuilder.append("wx : ").append(this.c).append("\n");
+    localStringBuilder.append("pyq : ").append(this.b).append("\n");
+    localStringBuilder.append("qzone : ").append(this.e).append("\n");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     scw
  * JD-Core Version:    0.7.0.1
  */

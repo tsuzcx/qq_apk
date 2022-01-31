@@ -1,26 +1,21 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RedPacketTaskData;
+import org.jetbrains.annotations.Nullable;
 
-public class qhf
-  implements View.OnKeyListener
+class qhf
+  implements qfq
 {
-  public qhf(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
+  qhf(qhe paramqhe, String paramString) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(@Nullable RedPacketTaskData paramRedPacketTaskData)
   {
-    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0) && (TextUtils.isEmpty(ReadInJoySelectMemberFragment.a(this.a).getText()))) {
-      ReadInJoySelectMemberFragment.a(this.a).a();
+    if (paramRedPacketTaskData != null) {
+      this.jdField_a_of_type_Qhe.b(this.jdField_a_of_type_JavaLangString);
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qhf
  * JD-Core Version:    0.7.0.1
  */

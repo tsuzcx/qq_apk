@@ -2,13 +2,13 @@ package com.tencent.mobileqq.troopgift;
 
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import basl;
+import bcrf;
 import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class TroopInteractGiftAnimationController$5
   implements Runnable
 {
-  public TroopInteractGiftAnimationController$5(basl parambasl) {}
+  public TroopInteractGiftAnimationController$5(bcrf parambcrf) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class TroopInteractGiftAnimationController$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,32 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
 
-class ansn
-  implements Handler.Callback
+public class ansn
 {
-  ansn(ansm paramansm) {}
+  public int a;
+  public Bitmap a;
+  public Rect a;
+  public anso a;
+  public antr a;
+  public Boolean a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b = "";
+  public boolean b;
+  public int c;
   
-  public boolean handleMessage(Message paramMessage)
+  public ansn()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return true;
-    case 1: 
-      bcql.a(ansm.a(this.a), 2131692830, 0).b(2131298865);
-      return true;
-    }
-    if (paramMessage.obj != null)
-    {
-      paramMessage = (EmoticonFromGroupEntity)paramMessage.obj;
-      this.a.a(paramMessage);
-      return true;
-    }
-    bcql.a(ansm.a(this.a), 1, 2131689687, 0).b(2131298865);
-    return true;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ansn
  * JD-Core Version:    0.7.0.1
  */

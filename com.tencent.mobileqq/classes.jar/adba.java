@@ -1,27 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
-class adba
-  implements ValueAnimator.AnimatorUpdateListener
+public class adba
+  implements DialogInterface.OnDismissListener
 {
-  adba(adaz paramadaz) {}
+  public adba(LbsBaseActivity paramLbsBaseActivity, Runnable paramRunnable) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
-    if (adaz.a(this.a) != null) {
-      adaz.a(this.a).setAlpha((float)d);
+    if (!LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity.a();
+      return;
     }
-    if (adaz.a(this.a) != null) {
-      adaz.a(this.a).setAlpha((float)d * 2.0F);
-    }
+    LbsBaseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLbsBaseActivity, this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adba
  * JD-Core Version:    0.7.0.1
  */

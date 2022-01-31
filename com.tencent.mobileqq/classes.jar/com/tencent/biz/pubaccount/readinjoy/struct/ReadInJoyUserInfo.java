@@ -1,21 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import auko;
-import aulz;
+import awbv;
+import awdg;
 
 public class ReadInJoyUserInfo
-  extends auko
+  extends awbv
 {
-  @aulz
+  @awdg
   private static final String TAG = "ReadInJoyUserInfo";
   public int accountLevel;
   public int accountType;
   public int faceFlag;
   public int faceType;
   public String faceUrl;
+  @awdg
+  public int isApproved = -1;
   public String largeIconUrl;
   public String nick;
-  @aulz
+  @awdg
   public boolean requestFlag;
   public String smallIconUrl;
   public int systemID;
@@ -29,7 +31,7 @@ public class ReadInJoyUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo
  * JD-Core Version:    0.7.0.1
  */

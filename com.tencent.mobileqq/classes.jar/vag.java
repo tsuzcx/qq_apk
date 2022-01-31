@@ -1,23 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
-
 public class vag
-  implements View.OnClickListener
+  extends ugz
 {
-  public vag(StoryListPresenter.4.1 param1) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    vei.a("home_page", "clk_up_shoot", 0, 0, new String[0]);
-    this.a.a.this$0.jdField_a_of_type_Vaq.a(false, true, 13, null);
-    this.a.a.this$0.jdField_a_of_type_Vdj.dismiss();
+    return "WatchVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.b + ", isLiveVideo=" + this.jdField_a_of_type_Boolean + ", unReadCount=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vag
  * JD-Core Version:    0.7.0.1
  */

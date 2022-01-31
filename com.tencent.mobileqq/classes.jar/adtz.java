@@ -1,56 +1,20 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
-class adtz
+public class adtz
   implements View.OnClickListener
 {
-  adtz(adtu paramadtu) {}
+  public adtz(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a()) {}
-    BaseChatPie localBaseChatPie;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramView = actj.a(paramView);
-          if ((paramView instanceof MessageForLongMsg)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForLongMsg");
-        return;
-        paramView = (MessageForLongMsg)paramView;
-      } while ((paramView.mSourceMsgInfo == null) || (!(this.a.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)));
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: isReplyMsg = true");
-      }
-      localBaseChatPie = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 0) && ((localBaseChatPie instanceof aeom)))
-      {
-        ((aeom)localBaseChatPie).a(22, paramView.mSourceMsgInfo.origUid, paramView.mSourceMsgInfo.mSourceMsgTime, null);
-        return;
-      }
-    } while (!localBaseChatPie.j());
-    localBaseChatPie.a(22, paramView.mSourceMsgInfo.mSourceMsgSeq, (int)(paramView.shmsgseq - paramView.mSourceMsgInfo.mSourceMsgSeq), paramView);
-    MessageForReplyText.reportReplyMsg(null, "replyMsg_bubble", "clk_original", paramView.frienduin, paramView);
+    SoundAndVibrateActivity.a(this.a, "CHANNEL_ID_SHOW_BADGE");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adtz
  * JD-Core Version:    0.7.0.1
  */

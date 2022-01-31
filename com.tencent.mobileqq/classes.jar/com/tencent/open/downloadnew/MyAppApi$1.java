@@ -3,10 +3,10 @@ package com.tencent.open.downloadnew;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
-import bcyb;
-import bdii;
-import bdkw;
-import bdlr;
+import bexd;
+import bfhg;
+import bfjt;
+import bfko;
 import com.tencent.tmassistantbase.util.GlobalUtil;
 import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
 import com.tencent.tmassistantsdk.internal.logreport.OuterCallReportModel;
@@ -20,18 +20,18 @@ public final class MyAppApi$1
     int i;
     OuterCallReportModel localOuterCallReportModel;
     Intent localIntent;
-    if (bdlr.h()) {
+    if (bfko.h()) {
       if (TMAssistantCallYYB_V2.getInstance().getIPCInterface() == null)
       {
-        bdii.b("TAMST_WAKE", "getIPCInterface() == null");
+        bfhg.b("TAMST_WAKE", "getIPCInterface() == null");
         i = GlobalUtil.getInstance().getQQDownloaderVersionCode();
-        localOuterCallReportModel = bdlr.a();
+        localOuterCallReportModel = bfko.a();
         if (i >= 7172130)
         {
-          bdii.b("TAMST_WAKE", "YYB version code:" + i + ",use new wake!");
+          bfhg.b("TAMST_WAKE", "YYB version code:" + i + ",use new wake!");
           localIntent = new Intent();
           localIntent.setClassName("com.tencent.android.qqdownloader", "com.live.push.PushActivity");
-          localIntent.putExtra("from", bcyb.a().a().getPackageName());
+          localIntent.putExtra("from", bexd.a().a().getPackageName());
           localIntent.putExtra("via", "CALL_LIVE_QQ");
           localIntent.addFlags(268435456);
         }
@@ -39,26 +39,26 @@ public final class MyAppApi$1
     }
     try
     {
-      bcyb.a().a().startActivity(localIntent);
+      bexd.a().a().startActivity(localIntent);
       localOuterCallReportModel.mComponentName = "com.live.push.PushActivity";
       label145:
-      bdlr.b(localOuterCallReportModel);
-      bdkw.b();
-      bdii.c("TAMST_WAKE", "costTime = " + (System.currentTimeMillis() - l));
+      bfko.b(localOuterCallReportModel);
+      bfjt.b();
+      bfhg.c("TAMST_WAKE", "costTime = " + (System.currentTimeMillis() - l));
       return;
     }
     catch (ActivityNotFoundException localActivityNotFoundException)
     {
       for (;;)
       {
-        bdii.e("TAMST_WAKE", "activity not found error:" + localActivityNotFoundException.getMessage());
+        bfhg.e("TAMST_WAKE", "activity not found error:" + localActivityNotFoundException.getMessage());
         continue;
-        bdii.b("TAMST_WAKE", "YYB version code:" + i + ",use old wake!");
-        bdlr.a(localOuterCallReportModel);
+        bfhg.b("TAMST_WAKE", "YYB version code:" + i + ",use old wake!");
+        bfko.a(localOuterCallReportModel);
         continue;
-        bdii.b("TAMST_WAKE", "don't need tmast wake");
+        bfhg.b("TAMST_WAKE", "don't need tmast wake");
         continue;
-        bdii.b("TAMST_WAKE", "can not do tmast!");
+        bfhg.b("TAMST_WAKE", "can not do tmast!");
       }
     }
     catch (SecurityException localSecurityException)

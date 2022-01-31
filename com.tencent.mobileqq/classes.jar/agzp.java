@@ -1,23 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.util.WeakReference;
 
-public class agzp
-  implements View.OnClickListener
+class agzp
+  extends amab
 {
-  public agzp(LingHbFragment paramLingHbFragment) {}
+  agzp(agzn paramagzn) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.a.c.clearFocus();
-    LingHbFragment.a(this.a).a();
+    agzn.a(this.a).removeMessages(1);
+    if ((this.a.jdField_a_of_type_Bepp == null) || (!this.a.jdField_a_of_type_Bepp.isShowing()))
+    {
+      QLog.e("SeparateForward", 1, new Object[] { "onBatchTroopCardDefaultNick timeout, isSuccess:", Boolean.valueOf(paramBoolean) });
+      return;
+    }
+    if (this.a.jdField_a_of_type_Bepp != null) {
+      this.a.jdField_a_of_type_Bepp.dismiss();
+    }
+    aukx.a().b.clear();
+    if ((paramBoolean) && (paramObject != null))
+    {
+      aukx.a().b.putAll((Map)paramObject);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiMsg_TAG", 4, "onBatchTroopCardDefaultNick = " + paramObject);
+      }
+    }
+    for (;;)
+    {
+      if (aukx.a().b.size() != 0) {
+        break label201;
+      }
+      paramObject = (BaseActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (paramObject == null) {
+        break;
+      }
+      QQToast.a(paramObject, 2131698773, 0).b(paramObject.getTitleBarHeight());
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("MultiMsg_TAG", 4, "onBatchTroopCardDefaultNick failed");
+      }
+    }
+    label201:
+    this.a.a((Map)paramObject, aukx.a().a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agzp
  * JD-Core Version:    0.7.0.1
  */

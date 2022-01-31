@@ -1,22 +1,23 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
 
-class qmb
-  extends RecyclerView.AdapterDataObserver
+public final class qmb
+  implements Parcelable.Creator<SocializeFeedsInfo.BiuCommentInfo>
 {
-  private qmb(qlp paramqlp) {}
-  
-  public void onChanged() {}
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2) {}
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  public SocializeFeedsInfo.BiuCommentInfo a(Parcel paramParcel)
   {
-    onItemRangeChanged(paramInt1, paramInt2);
+    return new SocializeFeedsInfo.BiuCommentInfo(paramParcel);
+  }
+  
+  public SocializeFeedsInfo.BiuCommentInfo[] a(int paramInt)
+  {
+    return new SocializeFeedsInfo.BiuCommentInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qmb
  * JD-Core Version:    0.7.0.1
  */

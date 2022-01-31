@@ -1,34 +1,25 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption.2;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class aqfi
-  implements auoq
+  implements Animation.AnimationListener
 {
-  public aqfi(ForwardSdkShareOption.2 param2) {}
+  public aqfi(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return null;
+    this.a.a.setVisibility(4);
   }
   
-  public void a(auor paramauor)
-  {
-    if ((paramauor != null) && (QLog.isColorLevel())) {
-      QLog.d("ForwardOption.ForwardSdkShareOption", 2, new Object[] { "upCallBack updateMsg info =", paramauor.toString() });
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b(auor paramauor)
-  {
-    aqgj.b("KEY_STAGE_2_UPLOAD_IMAGE");
-    aqfd.a(this.a.this$0, this.a.this$0.a, paramauor, this.a.b, this.a.c, this.a.d);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqfi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,36 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.annotation.TargetApi;
+import java.net.URL;
 
-class uiq
-  implements suz
+@TargetApi(14)
+public class uiq
 {
-  uiq(uip paramuip) {}
-  
-  public void a(String paramString, int paramInt)
+  public static URL a(URL paramURL)
   {
-    ved.d(this.a.a.b, "save -info download suc , start watermark ,vid:%s", new Object[] { uip.a(this.a).mVid });
-    tsr.a(uip.a(this.a), uip.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
+    String str = paramURL.getHost();
+    int k = str.indexOf(':');
+    Object localObject = paramURL;
+    if (k != -1)
+    {
+      localObject = str.substring(0, k);
+      int j = paramURL.getPort();
+      int i = j;
+      if (j == -1) {
+        i = Integer.valueOf(str.substring(k + 1)).intValue();
+      }
+      wsv.b("URLChecker", "url is not initilized correctly, so re-create it");
+      localObject = new URL(paramURL.getProtocol(), (String)localObject, i, paramURL.getFile());
+    }
+    return localObject;
   }
   
-  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
+  public static boolean a(URL paramURL)
   {
-    ved.d(this.a.a.b, "save video -info download error , vid:%s , error :%s", new Object[] { uip.a(this.a).mVid, paramErrorMessage.toString() });
-    tsr.a(uip.a(this.a), uip.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    ved.d(this.a.a.b, "save video -info download cancel , vid:%s ", new Object[] { uip.a(this.a).mVid });
-    tsr.a(uip.a(this.a), uip.a(this.a).mStoryType, String.valueOf(this.a.a.hashCode()));
+    return paramURL.getHost().indexOf(':') == -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uiq
  * JD-Core Version:    0.7.0.1
  */

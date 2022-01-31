@@ -1,106 +1,28 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.PPCLoginAuthHandler.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.comering_req;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.comering_rsp;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.plat_info;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.req;
-import com.tencent.pb.ppcloginauth.PPCLoginAuth.rsp;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 
-public class akbx
-  extends ajtb
+class akbx
+  implements DialogInterface.OnClickListener
 {
-  private long a;
-  public QQAppInterface a;
+  akbx(akbw paramakbw) {}
   
-  public akbx(QQAppInterface paramQQAppInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramQQAppInterface);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public void a()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    PPCLoginAuth.plat_info localplat_info = new PPCLoginAuth.plat_info();
-    localplat_info.implat.set(109L);
-    localplat_info.mqqver.set("8.3.0.4480");
-    localplat_info.osver.set(Build.VERSION.RELEASE);
-    PPCLoginAuth.comering_req localcomering_req = new PPCLoginAuth.comering_req();
-    localcomering_req.id.set(String.valueOf(this.jdField_a_of_type_Long));
-    PPCLoginAuth.req localreq = new PPCLoginAuth.req();
-    localreq.comm.set(localplat_info);
-    localreq.reqcmd_0x01.set(localcomering_req);
-    localObject = new ToServiceMsg("mobileqq.service", (String)localObject, "Loginauth.1");
-    ((ToServiceMsg)localObject).putWupBuffer(localreq.toByteArray());
-    sendPbReq((ToServiceMsg)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.i("PPCLoginAuthHandler", 2, "sendPbReq called. req=" + localreq.toString());
-    }
-  }
-  
-  protected void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        paramToServiceMsg = new PPCLoginAuth.rsp();
-      }
-      try
-      {
-        paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if ((paramToServiceMsg.ret.get() == 0L) && (((PPCLoginAuth.comering_rsp)paramToServiceMsg.rspcmd_0x01.get()).ret.get() != 0)) {
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new PPCLoginAuthHandler.1(this));
-        }
-        return;
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-      }
-    }
-  }
-  
-  public void b()
-  {
-    aukp localaukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).createEntityManager();
-    ExtensionInfo localExtensionInfo = (ExtensionInfo)localaukp.a(ExtensionInfo.class, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-    localaukp.a();
-    if ((localExtensionInfo != null) && (localExtensionInfo.commingRingId != 0L))
-    {
-      this.jdField_a_of_type_Long = localExtensionInfo.commingRingId;
-      a();
-    }
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return null;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("Loginauth.1".equals(paramFromServiceMsg.getServiceCmd()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PPCLoginAuthHandler", 2, "onReceive called.");
-      }
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
+    azmj.b(null, "dc00898", "", "", "0X800A0C7", "0X800A0C7", 0, 0, String.valueOf(SessionClearFragment.b(this.a.a)), String.valueOf(SessionClearFragment.c(this.a.a)), "", "");
+    SessionClearFragment.a(this.a.a);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("extra_delete_total_file_size", SessionClearFragment.a(this.a.a).a());
+    Activity localActivity = SessionClearFragment.a(this.a.a);
+    SessionClearFragment.a(this.a.a);
+    localActivity.setResult(-1, paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbx
  * JD-Core Version:    0.7.0.1
  */

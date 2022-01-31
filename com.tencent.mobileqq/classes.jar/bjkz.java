@@ -1,21 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import cooperation.qzone.plugin.PluginRecord;
 
-public class bjkz
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface bjkz
 {
-  public bjkz(QIMCircleProgress paramQIMCircleProgress) {}
+  public abstract void a(PluginRecord paramPluginRecord);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.c();
-  }
+  public abstract void a(PluginRecord paramPluginRecord, int paramInt);
+  
+  public abstract void b(PluginRecord paramPluginRecord);
+  
+  public abstract void b(PluginRecord paramPluginRecord, int paramInt);
+  
+  public abstract void c(PluginRecord paramPluginRecord);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjkz
  * JD-Core Version:    0.7.0.1
  */

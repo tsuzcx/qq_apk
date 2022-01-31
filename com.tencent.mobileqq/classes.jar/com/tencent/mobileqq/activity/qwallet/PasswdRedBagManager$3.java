@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import agvw;
-import agvx;
+import aipv;
+import aipw;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
@@ -15,12 +15,12 @@ import java.util.List;
 public class PasswdRedBagManager$3
   implements Runnable
 {
-  public PasswdRedBagManager$3(agvx paramagvx, SessionInfo paramSessionInfo) {}
+  public PasswdRedBagManager$3(aipw paramaipw, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = agvx.a(this.this$0).a().b(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int);
+    Object localObject1 = aipw.a(this.this$0).a().b(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int);
     if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
     {
       localObject1 = ((List)localObject1).iterator();
@@ -34,7 +34,7 @@ public class PasswdRedBagManager$3
           {
             Object localObject3 = ((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg;
             localObject3 = this.this$0.a(((QQWalletRedPacketMsg)localObject3).redPacketId);
-            if ((localObject3 != null) && (((agvw)localObject3).jdField_a_of_type_Int == 4) && (!((agvw)localObject3).b)) {
+            if ((localObject3 != null) && (((aipv)localObject3).jdField_a_of_type_Int == 4) && (!((aipv)localObject3).b)) {
               localArrayList.add(((MessageForQQWalletMsg)localObject2).mQQWalletRedPacketMsg.redPacketId);
             }
           }
@@ -46,7 +46,7 @@ public class PasswdRedBagManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.3
  * JD-Core Version:    0.7.0.1
  */

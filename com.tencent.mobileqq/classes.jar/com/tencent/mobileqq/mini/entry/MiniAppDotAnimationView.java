@@ -7,7 +7,7 @@ import android.graphics.Paint.Style;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import bbll;
+import bdkf;
 import com.tencent.mobileqq.mini.util.ColorUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,7 +16,7 @@ import java.util.List;
 public class MiniAppDotAnimationView
   extends View
 {
-  private static final int DEFAULT_OFFSET = bbll.b(-20.0F);
+  private static final int DEFAULT_OFFSET = bdkf.b(-20.0F);
   private static final int MARGIN_LEFT_RIGHT;
   private static final int MAX_DOT_SIZE;
   private static final int MIN_DOT_SIZE;
@@ -31,13 +31,13 @@ public class MiniAppDotAnimationView
   
   static
   {
-    SCROLL_ANIMATION_OPEN_START = bbll.b(-20.0F);
-    SCROLL_ANIMATION_OPEN_END = bbll.b(-50.0F);
-    SCROLL_ANIMATION_CLOSE_START = bbll.b(-70.0F);
-    SCROLL_ANIMATION_CLOSE_END = bbll.b(-95.0F);
-    MIN_DOT_SIZE = bbll.b(3.0F);
-    MAX_DOT_SIZE = bbll.b(6.0F);
-    MARGIN_LEFT_RIGHT = bbll.b(30.0F);
+    SCROLL_ANIMATION_OPEN_START = bdkf.b(-20.0F);
+    SCROLL_ANIMATION_OPEN_END = bdkf.b(-50.0F);
+    SCROLL_ANIMATION_CLOSE_START = bdkf.b(-70.0F);
+    SCROLL_ANIMATION_CLOSE_END = bdkf.b(-95.0F);
+    MIN_DOT_SIZE = bdkf.b(3.0F);
+    MAX_DOT_SIZE = bdkf.b(6.0F);
+    MARGIN_LEFT_RIGHT = bdkf.b(30.0F);
   }
   
   public MiniAppDotAnimationView(Context paramContext)
@@ -224,7 +224,7 @@ public class MiniAppDotAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDotAnimationView
  * JD-Core Version:    0.7.0.1
  */

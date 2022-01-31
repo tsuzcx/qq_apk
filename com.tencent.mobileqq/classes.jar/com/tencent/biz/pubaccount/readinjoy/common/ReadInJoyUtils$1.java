@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import onh;
+import ors;
 
 public final class ReadInJoyUtils$1
   implements Runnable
@@ -17,15 +17,15 @@ public final class ReadInJoyUtils$1
       do
       {
         return;
-      } while (!onh.y());
-      onh.e(this.a);
+      } while (!ors.y());
+      ors.e(this.a);
     } while (!QLog.isColorLevel());
     QLog.d("ReadInJoyUtils", 2, "handNet2Wifi is show conversation");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.1
  * JD-Core Version:    0.7.0.1
  */

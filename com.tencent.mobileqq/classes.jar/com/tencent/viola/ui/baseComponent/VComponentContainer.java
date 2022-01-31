@@ -1,5 +1,6 @@
 package com.tencent.viola.ui.baseComponent;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 import android.text.TextUtils;
@@ -155,21 +156,32 @@ public abstract class VComponentContainer<T extends ViewGroup>
   
   public void createChildViewAt(int paramInt)
   {
-    System.nanoTime();
+    createChildViewAt(null, paramInt);
+  }
+  
+  public void createChildViewAt(Context paramContext, int paramInt)
+  {
     Pair localPair = rearrangeIndexAndGetChild(paramInt);
     VComponent localVComponent;
     if (localPair.first != null)
     {
       localVComponent = (VComponent)localPair.first;
-      localVComponent.createView();
+      if (paramContext == null) {
+        break label60;
+      }
+      localVComponent.createView(paramContext);
       if (!localVComponent.isInterceptAddView()) {
-        break label55;
+        break label68;
       }
       localVComponent.addSubViewOnIntercept(getRealView(), ((Integer)localPair.second).intValue());
     }
-    label55:
-    while (localVComponent.isVirtualComponent()) {
+    label60:
+    label68:
+    while (localVComponent.isVirtualComponent())
+    {
       return;
+      localVComponent.createView();
+      break;
     }
     addSubView(localVComponent.getHostView(), ((Integer)localPair.second).intValue());
   }
@@ -182,6 +194,19 @@ public abstract class VComponentContainer<T extends ViewGroup>
     while (i < j)
     {
       createChildViewAt(i);
+      i += 1;
+    }
+    notifyParentWhenChildAddEnd();
+  }
+  
+  protected void createViewImpl(Context paramContext)
+  {
+    super.createViewImpl(paramContext);
+    int j = getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      createChildViewAt(paramContext, i);
       i += 1;
     }
     notifyParentWhenChildAddEnd();
@@ -250,6 +275,25 @@ public abstract class VComponentContainer<T extends ViewGroup>
   }
   
   public void notifyParentWhenChildAddEnd() {}
+  
+  public void onBindData(DomObject paramDomObject)
+  {
+    super.onBindData(paramDomObject);
+    int j = getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      VComponent localVComponent = getChild(i);
+      if (i < paramDomObject.getChildCount())
+      {
+        DomObject localDomObject = paramDomObject.getChild(i);
+        if ((localDomObject != null) && (localVComponent != null)) {
+          localVComponent.onBindData(localDomObject);
+        }
+      }
+      i += 1;
+    }
+  }
   
   protected Pair<VComponent, Integer> rearrangeIndexAndGetChild(int paramInt)
   {
@@ -349,10 +393,32 @@ public abstract class VComponentContainer<T extends ViewGroup>
     }
     return true;
   }
+  
+  public void unregisterFromContext(boolean paramBoolean)
+  {
+    super.unregisterFromContext(paramBoolean);
+    int j;
+    int i;
+    if (this.mChildren != null)
+    {
+      j = this.mChildren.size();
+      i = 0;
+    }
+    while (i < j)
+    {
+      VComponent localVComponent = (VComponent)this.mChildren.get(i);
+      if (localVComponent == null) {
+        return;
+      }
+      localVComponent.unregisterFromContext(paramBoolean);
+      i += 1;
+    }
+    this.mChildren.clear();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.VComponentContainer
  * JD-Core Version:    0.7.0.1
  */

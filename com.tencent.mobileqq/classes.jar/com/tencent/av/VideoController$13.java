@@ -2,8 +2,8 @@ package com.tencent.av;
 
 import android.graphics.Bitmap;
 import com.tencent.av.app.VideoAppInterface;
-import lga;
-import msp;
+import lid;
+import mvj;
 
 class VideoController$13
   implements Runnable
@@ -14,12 +14,12 @@ class VideoController$13
   {
     String str = this.this$0.a.getDisplayName(this.this$0.a().i, String.valueOf(this.this$0.a().g), null);
     Bitmap localBitmap = this.this$0.a.a(this.this$0.a().i, String.valueOf(this.this$0.a().g), null, true, true);
-    msp.a(this.this$0.a).a(this.this$0.a().c, str, localBitmap, String.valueOf(this.this$0.a().g), 44, this.this$0.a().i, this.this$0.a().d);
+    mvj.a(this.this$0.a).a(this.this$0.a().c, str, localBitmap, String.valueOf(this.this$0.a().g), 44, this.this$0.a().i, this.this$0.a().d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.VideoController.13
  * JD-Core Version:    0.7.0.1
  */

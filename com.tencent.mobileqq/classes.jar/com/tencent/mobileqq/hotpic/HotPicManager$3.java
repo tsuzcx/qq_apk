@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.hotpic;
 
-import aqze;
+import asps;
 
 public class HotPicManager$3
   implements Runnable
 {
-  public HotPicManager$3(aqze paramaqze) {}
+  public HotPicManager$3(asps paramasps) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class HotPicManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicManager.3
  * JD-Core Version:    0.7.0.1
  */

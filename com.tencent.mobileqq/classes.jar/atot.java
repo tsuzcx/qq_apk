@@ -1,106 +1,26 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.13.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class atot
-  extends ajxj
+class atot
+  implements View.OnClickListener
 {
-  public atot(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  atot(atop paramatop, atof paramatof) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    boolean bool = this.a.g;
-    ajxl localajxl = (ajxl)this.a.app.getManager(51);
-    if (localajxl != null) {
-      bool = localajxl.b(NearbyPeopleProfileActivity.a(this.a).uin);
-    }
-    for (;;)
-    {
-      if (bool != this.a.g)
-      {
-        this.a.g = bool;
-        this.a.runOnUiThread(new NearbyPeopleProfileActivity.13.1(this));
-      }
+    if (this.jdField_a_of_type_Atop.jdField_a_of_type_Atof.a()) {}
+    while (paramView.isSelected()) {
       return;
     }
-  }
-  
-  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
-  {
-    if ((paramSetting == null) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!NearbyPeopleProfileActivity.a(this.a).uin.equals(paramSetting.uin))) {
-      return;
-    }
-    if ((paramSetting.bFaceFlags & 0x20) != 0) {
-      this.a.l = 0;
-    }
-    for (;;)
-    {
-      this.a.b = paramSetting.url;
-      if (NearbyPeopleProfileActivity.a(this.a) != null) {
-        NearbyPeopleProfileActivity.a(this.a).k();
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("Q.nearby_people_card.", 2, "onGetHeadInfo mheadSize is: " + this.a.l + " mGetHeadUrl is: " + this.a.b);
-      return;
-      if ((paramSetting.bFaceFlags & 0x10) != 0) {
-        this.a.l = 640;
-      } else if ((paramSetting.bFaceFlags & 0x8) != 0) {
-        this.a.l = 140;
-      } else if ((paramSetting.bFaceFlags & 0x4) != 0) {
-        this.a.l = 100;
-      } else {
-        this.a.l = 40;
-      }
-    }
-  }
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
-  {
-    if ((!paramBoolean1) || (!paramBoolean2) || (!paramBoolean3) || (TextUtils.isEmpty(paramString))) {}
-    while ((this.a.e != 3) || (this.a.g) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin))) {
-      return;
-    }
-    a();
-  }
-  
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    while ((this.a.e != 3) || (this.a.g) || (NearbyPeopleProfileActivity.a(this.a) == null) || (!paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin))) {
-      return;
-    }
-    a();
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((!paramBoolean1) || (!paramBoolean2)) {}
-    while ((this.a.e != 3) || (NearbyPeopleProfileActivity.a(this.a) == null) || (TextUtils.isEmpty(NearbyPeopleProfileActivity.a(this.a).uin))) {
-      return;
-    }
-    a();
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "onUpdateStangerHead: " + paramBoolean1 + "isStrangerHead: " + paramBoolean2);
-    }
-    if ((paramBoolean1) && (!TextUtils.isEmpty(paramString)) && (NearbyPeopleProfileActivity.a(this.a) != null) && (paramString.equals(NearbyPeopleProfileActivity.a(this.a).uin)) && (paramBoolean2) && ((this.a.l == 640) || (this.a.l == 0)) && (!TextUtils.isEmpty(this.a.b)) && (!this.a.h)) {
-      this.a.a(paramString, this.a.l, this.a.b, true);
-    }
+    this.jdField_a_of_type_Atop.a(paramView);
+    this.jdField_a_of_type_Atop.jdField_a_of_type_Int = 2;
+    atof.a(this.jdField_a_of_type_Atop.jdField_a_of_type_Atof, Integer.valueOf(2));
+    azmj.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 3, 0, "0", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atot
  * JD-Core Version:    0.7.0.1
  */

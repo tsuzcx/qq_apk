@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bhfo;
+import bjgz;
 
 public class VideoInfo$VideoRemark
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoRemark> CREATOR = new bhfo();
+  public static final Parcelable.Creator<VideoRemark> CREATOR = new bjgz();
   public int a;
   public String a;
   public int b;
@@ -48,7 +48,7 @@ public class VideoInfo$VideoRemark
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.VideoInfo.VideoRemark
  * JD-Core Version:    0.7.0.1
  */

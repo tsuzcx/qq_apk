@@ -1,73 +1,44 @@
-import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
 
 public class yoh
-  implements aqsq
+  implements xpb
 {
-  public yoh(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
+  yoh(ynm paramynm) {}
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    yoi localyoi;
-    if (paramInt1 == 3)
-    {
-      localyoi = (yoi)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
-      if (localyoi != null) {
-        this.a.callJs(localyoi.g + "(" + localyoi.a() + ");");
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (paramInt1 != 5) {
-              break;
-            }
-            localyoi = (yoi)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
-          } while (localyoi == null);
-          this.a.callJs(localyoi.f + "(" + localyoi.a() + ");");
-          return;
-          if (paramInt1 != 7) {
-            break;
-          }
-          localyoi = (yoi)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
-        } while (localyoi == null);
-        this.a.callJs(localyoi.h + "(" + localyoi.a() + ");");
-        return;
-      } while (paramInt1 != 0);
-      localyoi = (yoi)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt2));
-    } while (localyoi == null);
-    this.a.callJs(localyoi.i + "(" + localyoi.a() + ");");
-  }
+  public void a(boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onFailure(String paramString)
   {
-    yoi localyoi = (yoi)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
-    if (localyoi != null)
-    {
-      localyoi.c = paramBoolean;
-      this.a.callJs(localyoi.d + "(" + localyoi.a() + ");");
+    a(false);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onFailure" + paramString);
     }
   }
   
-  public void b(boolean paramBoolean, int paramInt)
+  public void onFinish(boolean paramBoolean) {}
+  
+  public void onProgress(String paramString)
   {
-    yoi localyoi = (yoi)GameCenterAPIJavaScript.access$100(this.a).get(Integer.valueOf(paramInt));
-    if (localyoi != null)
-    {
-      localyoi.a = paramBoolean;
-      this.a.callJs(localyoi.e + "(" + localyoi.a() + ");");
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onProgress" + paramString);
     }
+  }
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onStart");
+    }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yoh
  * JD-Core Version:    0.7.0.1
  */

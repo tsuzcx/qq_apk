@@ -1,28 +1,35 @@
-import android.net.Uri;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
 
 class bcbb
-  extends bcbf
+  implements View.OnFocusChangeListener
 {
-  bcbb(bcaz parambcaz)
-  {
-    super(parambcaz, null);
-  }
+  bcbb(bcax parambcax, bbzy parambbzy, bcbd parambcbd) {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "new shouldInterceptRequest");
+    QLog.i("xmediaEditor", 1, "mData.position:" + this.jdField_a_of_type_Bbzy.c + ", text:" + this.jdField_a_of_type_Bbzy.jdField_a_of_type_JavaLangString + ",onFocusChange:" + paramBoolean);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Bcbd.a.setCursorVisible(true);
+      this.jdField_a_of_type_Bcax.a.c(this.jdField_a_of_type_Bcbd);
+      this.jdField_a_of_type_Bbzy.jdField_a_of_type_Boolean = true;
     }
-    return a(paramWebView, paramWebResourceRequest.getUrl().toString());
+    for (;;)
+    {
+      this.jdField_a_of_type_Bcbd.a.setFocusable(paramBoolean);
+      this.jdField_a_of_type_Bcbd.a.setFocusableInTouchMode(paramBoolean);
+      return;
+      this.jdField_a_of_type_Bcbd.a.setCursorVisible(false);
+      this.jdField_a_of_type_Bcax.a.d(this.jdField_a_of_type_Bcbd);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcbb
  * JD-Core Version:    0.7.0.1
  */

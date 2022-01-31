@@ -1,20 +1,14 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import java.util.Map;
-
-public class phq
-  implements pqy
+public abstract interface phq<BEAN>
 {
-  public phq(ProteusItemView paramProteusItemView, rbq paramrbq) {}
+  public abstract void a(pht<BEAN> parampht);
   
-  public void a(View paramView, Map<String, Object> paramMap)
-  {
-    this.jdField_a_of_type_Rbq.c();
-  }
+  public abstract void a(boolean paramBoolean, php<BEAN> paramphp);
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     phq
  * JD-Core Version:    0.7.0.1
  */

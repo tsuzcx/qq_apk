@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import bbqd;
+import bdox;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public final class IndividuationUrlHelper$1
@@ -8,12 +8,12 @@ public final class IndividuationUrlHelper$1
 {
   public void run()
   {
-    bbqd.a(BaseApplicationImpl.sApplication.getRuntime());
+    bdox.a(BaseApplicationImpl.sApplication.getRuntime());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.IndividuationUrlHelper.1
  * JD-Core Version:    0.7.0.1
  */

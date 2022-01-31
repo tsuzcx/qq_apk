@@ -1,25 +1,24 @@
-public abstract class asbr<T, P>
+import com.tencent.mobileqq.fragment.MsgBackupSettingFragment;
+import java.io.File;
+import java.io.FileFilter;
+
+public class asbr
+  implements FileFilter
 {
-  private volatile T a;
+  public asbr(MsgBackupSettingFragment paramMsgBackupSettingFragment) {}
   
-  protected abstract T a(P paramP);
-  
-  public final T b(P paramP)
+  public boolean accept(File paramFile)
   {
-    if (this.a == null) {}
-    try
-    {
-      if (this.a == null) {
-        this.a = a(paramP);
-      }
-      return this.a;
+    if (paramFile.getName().endsWith(".png")) {}
+    while (paramFile.getName().endsWith(".jpg")) {
+      return true;
     }
-    finally {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asbr
  * JD-Core Version:    0.7.0.1
  */

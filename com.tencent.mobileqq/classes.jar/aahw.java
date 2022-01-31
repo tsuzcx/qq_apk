@@ -1,29 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.Ad;
+import com.tencent.ad.tangram.canvas.report.AdRefreshCallback;
+import com.tencent.ad.tangram.canvas.report.AdReportAdapter;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppBtnData;
+import com.tencent.gdtad.aditem.GdtAd;
 
 public class aahw
-  implements DialogInterface.OnClickListener
+  implements AdReportAdapter
 {
-  public aahw(AddRequestActivity paramAddRequestActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void downloadReport(Ad paramAd, String paramString, int paramInt, boolean paramBoolean, AdAppBtnData paramAdAppBtnData)
   {
-    if (bbfj.d(BaseApplication.getContext()))
-    {
-      long l = Long.valueOf(this.a.app.getCurrentAccountUin()).longValue();
-      this.a.showDialog(2);
-      this.a.jdField_a_of_type_Ajti.a(l, Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue(), 1);
+    if ((!(paramAd instanceof GdtAd)) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    bcql.a(this.a, 2131694610, 0).b(this.a.getTitleBarHeight());
+    aapc.a().a(paramString, (GdtAd)paramAd, paramAdAppBtnData);
+    aapc.a().a((GdtAd)paramAd, paramInt, paramBoolean);
+  }
+  
+  public AdRefreshCallback getAdReportAdapter()
+  {
+    return aapc.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahw
  * JD-Core Version:    0.7.0.1
  */

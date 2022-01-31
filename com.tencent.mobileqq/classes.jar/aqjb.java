@@ -1,28 +1,31 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment;
-import com.tencent.mobileqq.fragment.QQSettingChatOperationFragment.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ExpandableListView;
 
-public class aqjb
-  implements bclo
+class aqjb
+  implements xtw
 {
-  public aqjb(QQSettingChatOperationFragment paramQQSettingChatOperationFragment) {}
+  aqjb(aqiz paramaqiz, int paramInt) {}
   
-  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
+  public void a()
   {
-    axqy.b(QQSettingChatOperationFragment.a(this.a), "CliOper", "", "", "Setting_tab", "Clean_chat_log", 0, 0, "0", "0", "", "");
-    axqy.b(null, "dc00898", "", "", "0X800A0C4", "0X800A0C4", 0, 0, "", "", "", "");
-    if (!this.a.getActivity().isFinishing()) {
-      QQSettingChatOperationFragment.a(this.a, true);
+    String str = (String)this.jdField_a_of_type_Aqiz.getGroup(this.jdField_a_of_type_Int);
+    if (aqiz.a(this.jdField_a_of_type_Aqiz).c(this.jdField_a_of_type_Int))
+    {
+      QQAppInterface.f(str + alpo.a(2131710008));
+      return;
     }
-    ThreadManagerV2.excute(new QQSettingChatOperationFragment.1.1(this), 64, null, true);
+    QQAppInterface.f(str + alpo.a(2131709988));
+  }
+  
+  public void b()
+  {
+    QLog.e("ACCESS_SILAS", 1, "onViewFocusClear");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqjb
  * JD-Core Version:    0.7.0.1
  */

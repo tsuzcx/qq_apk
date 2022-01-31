@@ -1,44 +1,49 @@
-import android.util.Log;
-import java.nio.charset.Charset;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 
 public class aqle
-  implements aqld
+  extends aroh
 {
-  public static final Charset a = Charset.forName("UTF-8");
+  public aqle(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public void a()
   {
-    a(paramString1, paramString2, paramString3, null);
+    this.a.a.a().c();
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
+  public void b()
   {
-    if ("d".equals(paramString2))
-    {
-      Log.d(paramString1, paramString3, paramThrowable);
-      return;
-    }
-    if ("e".equals(paramString2))
-    {
-      Log.e(paramString1, paramString3, paramThrowable);
-      return;
-    }
-    if ("w".equals(paramString2))
-    {
-      Log.w(paramString1, paramString3, paramThrowable);
-      return;
-    }
-    if ("i".equals(paramString2))
-    {
-      Log.i(paramString1, paramString3, paramThrowable);
-      return;
-    }
-    Log.i(paramString1, paramString3, paramThrowable);
+    this.a.a.a().k();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().l();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().m();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().n();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().o();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().F();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqle
  * JD-Core Version:    0.7.0.1
  */

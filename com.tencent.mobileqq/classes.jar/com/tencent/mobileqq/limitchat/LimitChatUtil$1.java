@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.limitchat;
 
-import aqvb;
-import arqp;
+import aslp;
+import athk;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.qphone.base.util.QLog;
@@ -22,12 +22,12 @@ public final class LimitChatUtil$1
     while (localIterator.hasNext())
     {
       ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-      if (arqp.b(localChatMessage)) {
+      if (athk.b(localChatMessage)) {
         if (-4023 == localChatMessage.msgtype) {
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localChatMessage.msgtype, localChatMessage.uniseq);
         } else if ((localChatMessage.isSend()) && (localChatMessage.extraflag == 32768)) {
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localChatMessage.uniseq);
-        } else if (((localChatMessage instanceof MessageForUniteGrayTip)) && (arqp.a(((MessageForUniteGrayTip)localChatMessage).tipParam.b))) {
+        } else if (((localChatMessage instanceof MessageForUniteGrayTip)) && (athk.a(((MessageForUniteGrayTip)localChatMessage).tipParam.b))) {
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localChatMessage.uniseq);
         }
       }
@@ -39,7 +39,7 @@ public final class LimitChatUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.limitchat.LimitChatUtil.1
  * JD-Core Version:    0.7.0.1
  */

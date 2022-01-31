@@ -1,29 +1,30 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.ui.MiniAppDialog.1.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
 
 public class bffu
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  bffu(bfft parambfft) {}
+  public bffu(DownloadNativeApi.1 param1) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bfft.a(this.a, false);
-    bfft.a(this.a).post(new MiniAppDialog.1.1(this));
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    bfft.a(this.a, true);
+    try
+    {
+      paramDialogInterface.dismiss();
+      label6:
+      bffs.a(this.a.this$0).onDownloadCancel(this.a.a);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      break label6;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bffu
  * JD-Core Version:    0.7.0.1
  */

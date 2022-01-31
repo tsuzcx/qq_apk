@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.TMG.sdk.AVCallback;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.11;
 
-class aksn
-  implements View.OnClickListener
+public class aksn
+  implements AVCallback
 {
-  aksn(aksk paramaksk) {}
+  public aksn(CmGameAvHandler.11 param11) {}
   
-  public void onClick(View paramView)
-  {
-    axqy.b(null, "dc00898", "", "", "0X8009ACD", "0X8009ACD", 0, 0, "", "", "", "");
-    this.a.dismiss();
-  }
+  public void onComplete(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class rdz
-  extends ajxj
+final class rdz
+  extends AnimatorListenerAdapter
 {
-  public rdz(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  rdz(View paramView) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
-    {
-      QLog.d("ReadInJoyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
-      this.a.q();
-    }
+    this.a.setLayerType(0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,24 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class obr
-  extends qtz
+  implements sgn
 {
-  obr(obq paramobq) {}
+  obr(obq paramobq, rqj paramrqj) {}
   
-  public void a(qty paramqty)
+  public void a(int paramInt1, int paramInt2)
   {
-    super.a(paramqty);
-    QLog.d("KandianAdPandent", 2, "onCompletion");
-    obq.a(this.a).sendEmptyMessage(2);
-  }
-  
-  public void a(qty paramqty, Object paramObject)
-  {
-    QLog.d("KandianAdPandent", 2, "onVideoPrepared");
-    obq.a(this.a).f();
+    if (rqj.a() != null)
+    {
+      ocq localocq = (ocq)rqj.a().getManager(307);
+      if (localocq != null) {
+        localocq.a(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Rqj.a(), true, paramInt1);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     obr
  * JD-Core Version:    0.7.0.1
  */

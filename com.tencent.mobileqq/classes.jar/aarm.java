@@ -1,79 +1,45 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.MarkFaceMessage;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aarm
-  implements askq<aobp>
+public class aarm
+  extends aark
 {
-  aarm(aarf paramaarf, ImageView paramImageView1, MarkFaceMessage paramMarkFaceMessage, ImageView paramImageView2, MessageRecord paramMessageRecord) {}
-  
-  public void a(aobp paramaobp)
+  public aarm(JSONObject paramJSONObject)
   {
-    Object localObject;
-    int i;
-    if (paramaobp != null)
+    a(paramJSONObject);
+  }
+  
+  public String a()
+  {
+    String str = super.a();
+    try
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramaobp);
-      String str2 = anzr.z.replace("[epId]", paramaobp.a.epId);
-      String str1 = "";
-      localObject = str1;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam != null)
-      {
-        localObject = str1;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam.length > 0) {
-          localObject = new String(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam);
-        }
-      }
-      i = ascl.a((String)localObject);
-      if ((!bbdx.a(str2)) || (i != 1)) {
-        break label194;
-      }
-      i = 3;
+      Object localObject = new JSONObject(str);
+      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("patchUrl", this.b);
+      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
-    for (;;)
+    catch (JSONException localJSONException)
     {
-      if (paramaobp.b())
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        localObject = this.jdField_a_of_type_Aarf.a.getResources().getDrawable(2130846223);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      }
-      for (;;)
-      {
-        this.b.setMinimumHeight((int)(this.jdField_a_of_type_Aarf.a.a * 100.0F));
-        this.b.setMinimumWidth((int)(this.jdField_a_of_type_Aarf.a.a * 100.0F));
-        this.jdField_a_of_type_Aarf.a(this.b, i, paramaobp, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-        return;
-        label194:
-        if (paramaobp.d())
-        {
-          i = 2;
-          break;
-        }
-        if (!paramaobp.e()) {
-          break label258;
-        }
-        i = 1;
-        break;
-        if (i == 1)
-        {
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          localObject = this.jdField_a_of_type_Aarf.a.getResources().getDrawable(2130837711);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        }
-      }
-      label258:
-      i = 0;
+      QLog.d("PatchLogTag", 1, "DexPatchItemConfigArtLM writeToJsonString", localJSONException);
     }
+    return str;
+  }
+  
+  protected void a(JSONObject paramJSONObject)
+  {
+    super.a(paramJSONObject);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
+    this.b = paramJSONObject.optString("patchUrl", null);
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aarm
  * JD-Core Version:    0.7.0.1
  */

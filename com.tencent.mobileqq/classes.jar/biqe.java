@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.ttpic.openapi.model.WMElement;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class biqe
-  implements DialogInterface.OnClickListener
+final class biqe
+  implements View.OnClickListener
 {
-  biqe(bipy parambipy, biqg parambiqg, WMElement paramWMElement) {}
+  biqe(Dialog paramDialog, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Biqg.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Biqg.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_ComTencentTtpicOpenapiModelWMElement.getCheckInResetString());
+    if (this.jdField_a_of_type_AndroidAppDialog != null) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biqe
  * JD-Core Version:    0.7.0.1
  */

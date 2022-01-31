@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aegm;
+import agdc;
 import android.widget.ImageView;
 
 class AIOGalleryAdapter$2
@@ -20,7 +20,7 @@ class AIOGalleryAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.2
  * JD-Core Version:    0.7.0.1
  */

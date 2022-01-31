@@ -1,25 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class vhq
-  extends SimpleJob<Object>
+final class vhq
+  implements bhqd
 {
-  vhq(vhm paramvhm, String paramString1, String paramString2, int paramInt1, int paramInt2, String[] paramArrayOfString)
-  {
-    super(paramString1);
-  }
+  vhq(StoryVideoItem paramStoryVideoItem, bhpy parambhpy) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void OnClick(View paramView, int paramInt)
   {
-    vei.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    switch (paramInt)
+    {
+    default: 
+      paramView = "16384";
+      QQUserUIItem localQQUserUIItem = ((usd)urr.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
+      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
+        new uzn().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
+      }
+      break;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      wsv.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vhq
  * JD-Core Version:    0.7.0.1
  */

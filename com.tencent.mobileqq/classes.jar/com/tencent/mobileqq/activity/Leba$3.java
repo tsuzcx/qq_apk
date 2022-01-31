@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import akfh;
+import alwx;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class Leba$3
@@ -10,12 +10,12 @@ class Leba$3
   
   public void run()
   {
-    ((akfh)this.this$0.a.a(87)).a(false, false);
+    ((alwx)this.this$0.a.a(87)).a(false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.3
  * JD-Core Version:    0.7.0.1
  */

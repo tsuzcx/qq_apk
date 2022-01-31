@@ -1,31 +1,28 @@
-import java.util.Comparator;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.portal.PortalManager.5.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.os.MqqHandler;
 
-final class awiu
-  implements Comparator<awij>
+public class awiu
+  extends alox
 {
-  public int a(awij paramawij1, awij paramawij2)
+  public awiu(PortalManager paramPortalManager) {}
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    long l1 = paramawij1.c();
-    long l2 = paramawij2.c();
-    if (l1 < l2) {}
-    do
-    {
-      return 1;
-      if (l1 > l2) {
-        return -1;
-      }
-      l1 = paramawij1.b();
-      l2 = paramawij2.b();
-    } while (l1 < l2);
-    if (l1 > l2) {
-      return -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("PortalManagerhead", 2, "onUpdateCustomHead isSuccess = " + paramBoolean + ", mobileNumber = " + paramString);
     }
-    return 0;
+    if (this.a.a.containsKey(paramString)) {
+      ThreadManager.getSubThreadHandler().post(new PortalManager.5.1(this, paramString, paramBoolean));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awiu
  * JD-Core Version:    0.7.0.1
  */

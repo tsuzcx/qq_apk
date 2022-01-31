@@ -1,38 +1,55 @@
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.widget.ThemeLabelTextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.teamwork.spread.ConfigSetting.LocalWtTicketPromise.1;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class bafc
-  extends aimt
+  implements WtTicketPromise
 {
-  int jdField_a_of_type_Int;
-  final View jdField_a_of_type_AndroidViewView;
-  final CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
-  private final LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  final RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public final TextView a;
-  private final ThemeLabelTextView jdField_a_of_type_ComTencentWidgetThemeLabelTextView;
-  TextView b;
+  private aouf jdField_a_of_type_Aouf;
+  private WeakReference<bafb> jdField_a_of_type_JavaLangRefWeakReference;
   
-  bafc(View paramView)
+  public bafc(bafb parambafb, aouf paramaouf)
   {
-    this.c = ((ImageView)paramView.findViewById(2131368583));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131368344));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378265));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131370537));
-    this.jdField_a_of_type_ComTencentWidgetThemeLabelTextView = ((ThemeLabelTextView)paramView.findViewById(2131378258));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378332);
-    this.b = ((TextView)paramView.findViewById(2131378354));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131362514));
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambafb);
+    this.jdField_a_of_type_Aouf = paramaouf;
+  }
+  
+  public void Done(Ticket paramTicket)
+  {
+    if ((paramTicket != null) && (paramTicket._pskey_map != null))
+    {
+      ThreadManager.excute(new ConfigSetting.LocalWtTicketPromise.1(this), 128, null, false);
+      return;
+    }
+    if (this.jdField_a_of_type_Aouf != null) {
+      this.jdField_a_of_type_Aouf.a(false);
+    }
+    QLog.e("ConfigSetting", 2, "get pskey failed ticket is null");
+  }
+  
+  public void Failed(ErrMsg paramErrMsg)
+  {
+    QLog.e("ConfigSetting", 2, "get pskey failed ticket failed");
+    if (this.jdField_a_of_type_Aouf != null) {
+      this.jdField_a_of_type_Aouf.a(false);
+    }
+  }
+  
+  public void Timeout(ErrMsg paramErrMsg)
+  {
+    if (this.jdField_a_of_type_Aouf != null) {
+      this.jdField_a_of_type_Aouf.a(false);
+    }
+    QLog.e("ConfigSetting", 2, "get pskey failed ticket time oiut");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bafc
  * JD-Core Version:    0.7.0.1
  */

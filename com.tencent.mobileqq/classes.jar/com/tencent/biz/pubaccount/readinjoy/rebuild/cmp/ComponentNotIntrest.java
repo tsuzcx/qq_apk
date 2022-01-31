@@ -1,24 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
-import onh;
-import pau;
-import pqp;
-import pqy;
-import puy;
+import ors;
+import pgd;
+import pxk;
+import pxt;
+import qbs;
 
 public class ComponentNotIntrest
   extends FrameLayout
-  implements View.OnClickListener, pqp
+  implements View.OnClickListener, pxk
 {
   public View a;
-  puy a;
+  qbs a;
   
   public ComponentNotIntrest(Context paramContext)
   {
@@ -40,7 +40,7 @@ public class ComponentNotIntrest
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_Puy = new puy();
+    this.jdField_a_of_type_Qbs = new qbs();
     a(paramContext);
     a();
   }
@@ -52,48 +52,48 @@ public class ComponentNotIntrest
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559881, this, true).findViewById(2131378625);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559976, this, true).findViewById(2131379242);
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pau))
+    if ((paramObject instanceof pgd))
     {
-      this.jdField_a_of_type_Puy.a((pau)paramObject);
+      this.jdField_a_of_type_Qbs.a((pgd)paramObject);
       b();
     }
   }
   
-  public void a(pqy parampqy)
+  public void a(pxt parampxt)
   {
-    this.jdField_a_of_type_Puy.a(parampqy);
+    this.jdField_a_of_type_Qbs.a(parampxt);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Puy.a())
+    if (this.jdField_a_of_type_Qbs.a())
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(actj.a(5.0F, getResources()), actj.a(5.0F, getResources()), actj.a(5.0F, getResources()), actj.a(5.0F, getResources()));
+      this.jdField_a_of_type_AndroidViewView.setPadding(aekt.a(5.0F, getResources()), aekt.a(5.0F, getResources()), aekt.a(5.0F, getResources()), aekt.a(5.0F, getResources()));
       return;
     }
-    if (onh.l(this.jdField_a_of_type_Puy.jdField_a_of_type_Pau.a()))
+    if (ors.l(this.jdField_a_of_type_Qbs.jdField_a_of_type_Pgd.a()))
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(actj.a(5.0F, getResources()), actj.a(5.0F, getResources()), actj.a(9.0F, getResources()), actj.a(5.0F, getResources()));
+      this.jdField_a_of_type_AndroidViewView.setPadding(aekt.a(5.0F, getResources()), aekt.a(5.0F, getResources()), aekt.a(9.0F, getResources()), aekt.a(5.0F, getResources()));
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setPadding(actj.a(12.0F, getResources()), actj.a(9.0F, getResources()), actj.a(12.0F, getResources()), actj.a(9.0F, getResources()));
+    this.jdField_a_of_type_AndroidViewView.setPadding(aekt.a(12.0F, getResources()), aekt.a(9.0F, getResources()), aekt.a(12.0F, getResources()), aekt.a(9.0F, getResources()));
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Puy.jdField_a_of_type_Pqy != null) {
-      this.jdField_a_of_type_Puy.jdField_a_of_type_Pqy.a(paramView, null);
+    if (this.jdField_a_of_type_Qbs.jdField_a_of_type_Pxt != null) {
+      this.jdField_a_of_type_Qbs.jdField_a_of_type_Pxt.a(paramView, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentNotIntrest
  * JD-Core Version:    0.7.0.1
  */

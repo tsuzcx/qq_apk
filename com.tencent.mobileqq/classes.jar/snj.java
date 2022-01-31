@@ -1,25 +1,50 @@
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils.4;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.RefreshAnimView;
+import com.tencent.viola.ui.view.VRefreshLayout;
+import com.tencent.viola.ui.view.VRefreshLayout.onRefreshStateChangeListener;
 
-public class snj
-  implements rpf
+class snj
+  implements VRefreshLayout.onRefreshStateChangeListener
 {
-  public snj(WeishiUtils.4 param4) {}
+  snj(sni paramsni, RefreshAnimView paramRefreshAnimView, VRefreshLayout paramVRefreshLayout) {}
   
-  public void a(rph paramrph, int paramInt) {}
-  
-  public void a(rph paramrph, Throwable paramThrowable)
+  public void onRefreshMove(int paramInt)
   {
-    snb.b("PreloadCoverImgLog", "onFail request = " + paramrph);
+    int i = this.jdField_a_of_type_ComTencentViolaUiViewVRefreshLayout.getHeaderHeight();
+    if ((paramInt <= i) && (!sni.a(this.jdField_a_of_type_Sni)))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramInt / i);
+    }
   }
   
-  public void a(rph paramrph, rpd paramrpd)
+  public void onStateEnd()
   {
-    snb.b("PreloadCoverImgLog", "onSuccess request = " + paramrph);
+    sni.a(this.jdField_a_of_type_Sni, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(1000L);
+  }
+  
+  public void onStateFinish(boolean paramBoolean, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a(paramBoolean, paramString);
+  }
+  
+  public void onStateIdel()
+  {
+    sni.a(this.jdField_a_of_type_Sni, false);
+  }
+  
+  public void onStatePulling() {}
+  
+  public void onStateRefreshing()
+  {
+    sni.a(this.jdField_a_of_type_Sni, true);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.a();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshRefreshAnimView.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snj
  * JD-Core Version:    0.7.0.1
  */

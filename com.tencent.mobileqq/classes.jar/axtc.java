@@ -1,20 +1,53 @@
-import android.util.Pair;
-import java.util.HashSet;
-
-class axtc
+public abstract class axtc
 {
-  public String a;
-  public HashSet<Pair<Long, Long>> a;
-  public String b;
+  public static final String a;
+  public long a;
+  private String b;
   
-  private axtc(axtb paramaxtb)
+  static
   {
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    jdField_a_of_type_JavaLangString = axmk.jdField_a_of_type_JavaLangString;
+  }
+  
+  public axtc(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  private void a()
+  {
+    if (this.b == null) {
+      this.b = (jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long + "/");
+    }
+  }
+  
+  public final String a()
+  {
+    a();
+    return this.b + "thumb.jpg";
+  }
+  
+  public final String b()
+  {
+    a();
+    return this.b + "combine.mp4";
+  }
+  
+  public final String c()
+  {
+    a();
+    return this.b + "audio.mp4";
+  }
+  
+  public String d()
+  {
+    a();
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axtc
  * JD-Core Version:    0.7.0.1
  */

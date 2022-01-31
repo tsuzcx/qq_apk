@@ -1,28 +1,33 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.text.style.ReplacementSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.17.1;
+import com.tencent.qphone.base.util.QLog;
 
-class nzj
-  extends ReplacementSpan
+public class nzj
+  extends oxe
 {
-  private int a;
+  public nzj(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public nzj(int paramInt)
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(View paramView)
   {
-    this.a = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "onComponentLastReadShow");
+    }
+    this.a.runOnUiThread(new ReadInJoyNewFeedsActivity.17.1(this));
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  public void b(int paramInt)
   {
-    return this.a;
+    this.a.f(paramInt);
   }
+  
+  public void c(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzj
  * JD-Core Version:    0.7.0.1
  */

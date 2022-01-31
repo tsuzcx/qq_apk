@@ -1,37 +1,26 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class atos
-  implements Animation.AnimationListener
+class atos
+  implements View.OnClickListener
 {
-  public atos(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  atos(atop paramatop, atof paramatof) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    NearbyPeopleProfileActivity.a(this.a).removeView(NearbyPeopleProfileActivity.a(this.a));
-    NearbyPeopleProfileActivity.a(this.a).a();
-    NearbyPeopleProfileActivity.a(this.a, null);
-    NearbyPeopleProfileActivity.a(this.a, null);
-    if (NearbyPeopleProfileActivity.a(this.a) == null)
-    {
-      NearbyPeopleProfileActivity.a(this.a, this.a.a(this.a.j));
-      NearbyPeopleProfileActivity.b(this.a, NearbyPeopleProfileActivity.a(this.a).a());
-      NearbyPeopleProfileActivity.a(this.a).a();
-      NearbyPeopleProfileActivity.a(this.a).addView(NearbyPeopleProfileActivity.b(this.a), new FrameLayout.LayoutParams(-1, -1));
+    if (this.jdField_a_of_type_Atop.jdField_a_of_type_Atof.a()) {}
+    while (paramView.isSelected()) {
+      return;
     }
-    NearbyPeopleProfileActivity.a(this.a).a(NearbyPeopleProfileActivity.a(this.a));
+    this.jdField_a_of_type_Atop.a(paramView);
+    this.jdField_a_of_type_Atop.jdField_a_of_type_Int = 1;
+    atof.a(this.jdField_a_of_type_Atop.jdField_a_of_type_Atof, Integer.valueOf(1));
+    azmj.b(null, "CliOper", "", "", "0X800A96E", "0X800A96E", 2, 0, "0", "0", "0", "");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atos
  * JD-Core Version:    0.7.0.1
  */

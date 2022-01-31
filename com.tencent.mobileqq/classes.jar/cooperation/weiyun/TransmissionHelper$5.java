@@ -1,7 +1,7 @@
 package cooperation.weiyun;
 
-import bieh;
-import bifz;
+import bkgd;
+import bkhv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pb.PBStringField;
 import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunTrialCouponUseMsgReq;
@@ -16,17 +16,17 @@ public final class TransmissionHelper$5
   {
     WeiyunPB.WeiyunTrialCouponUseMsgReq localWeiyunTrialCouponUseMsgReq = new WeiyunPB.WeiyunTrialCouponUseMsgReq();
     localWeiyunTrialCouponUseMsgReq.business_id.set("upload_speed_up");
-    bieh.a(localWeiyunTrialCouponUseMsgReq, null);
+    bkgd.a(localWeiyunTrialCouponUseMsgReq, null);
     if (this.a > 0)
     {
       int i = this.a;
-      bifz.a(BaseApplicationImpl.getApplication().getApplicationContext(), String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "upload_coupon_count", String.valueOf(i - 1));
+      bkhv.a(BaseApplicationImpl.getApplication().getApplicationContext(), String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "upload_coupon_count", String.valueOf(i - 1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.weiyun.TransmissionHelper.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-class oby
-  implements Animator.AnimatorListener
+public abstract interface oby
 {
-  oby(obv paramobv) {}
+  public abstract void a();
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    obv.a(this.a, false);
-  }
+  public abstract void b();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    obv.a(this.a, false);
-  }
+  public abstract void c();
   
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    obv.a(this.a, true);
-  }
+  public abstract void d();
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    obv.a(this.a, true);
-    obv.a(this.a).setAlpha(0.0F);
-    obv.b(this.a).setAlpha(0.0F);
-    obv.c(this.a).setAlpha(0.0F);
-    obv.a(this.a).setVisibility(0);
-  }
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oby
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.runtime.core.page.swipe;
 
-import bfcm;
+import bhcc;
 
 public class ViewDragHelper$2
   implements Runnable
 {
-  public ViewDragHelper$2(bfcm parambfcm) {}
+  public ViewDragHelper$2(bhcc parambhcc) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ViewDragHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.swipe.ViewDragHelper.2
  * JD-Core Version:    0.7.0.1
  */

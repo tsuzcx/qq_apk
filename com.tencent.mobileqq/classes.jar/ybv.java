@@ -1,29 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.device.file.DeviceFileHandler;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.subscribe.comment.CommentInputPopupWindow.1.1;
 
 public class ybv
-  extends Handler
+  implements ybs
 {
-  public ybv(DeviceFileHandler paramDeviceFileHandler, Looper paramLooper)
+  public void a(View paramView)
   {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (this.a.isShowing()) {
+      ybu.a(this.a).runOnUiThread(new CommentInputPopupWindow.1.1(this));
     }
-    this.a.notifyUI(103, true, paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ybv
  * JD-Core Version:    0.7.0.1
  */

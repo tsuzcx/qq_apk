@@ -1,42 +1,44 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.1.1;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class admd
-  extends akuo
+  implements bhqd
 {
-  admd(admc paramadmc, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public admd(QQLSActivity paramQQLSActivity, MessageForPtt paramMessageForPtt, bhpy parambhpy) {}
   
-  protected void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
-    for (boolean bool = true;; bool = false)
+    acex.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    paramView = acex.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), new SessionInfo(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    if (paramView != null) {}
+    try
     {
-      ArkAppCenter.a().post(this.a.a, new ArkAppLocationManager.1.1(this, bool, paramSosoLbsInfo));
+      ((MessageForPtt)paramView).c2cViaOffline = true;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
+      acex.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.d();
+      this.jdField_a_of_type_Bhpy.dismiss();
       return;
     }
-  }
-  
-  public void onConsecutiveFailure(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 < 3) {
-      return;
+    catch (RuntimeException paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, paramView.getMessage(), 0).a();
+      }
     }
-    a(paramInt1, null);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    a(paramInt, paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     admd
  * JD-Core Version:    0.7.0.1
  */

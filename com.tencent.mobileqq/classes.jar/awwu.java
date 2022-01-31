@@ -1,38 +1,47 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.videoplatform.api.ILog;
+import com.tencent.qphone.base.util.QLog;
 
 public class awwu
-  extends awyh
+  implements ILog
 {
-  protected TextView a;
-  protected URLImageView a;
-  
-  public awwu(View paramView)
+  public void d(String paramString1, int paramInt, String paramString2)
   {
-    super(paramView);
+    QLog.d(paramString1, paramInt, paramString2);
   }
   
-  public URLImageView a()
+  public void e(String paramString1, int paramInt, String paramString2)
   {
-    return this.jdField_a_of_type_ComTencentImageURLImageView;
+    QLog.e(paramString1, paramInt, paramString2);
   }
   
-  protected void a()
+  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
   {
-    super.a();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131376246));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.b.findViewById(2131377420));
+    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
   }
   
-  public TextView e()
+  public void i(String paramString1, int paramInt, String paramString2)
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
+    QLog.i(paramString1, paramInt, paramString2);
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void v(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.d(paramString1, paramInt, paramString2);
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.w(paramString1, paramInt, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awwu
  * JD-Core Version:    0.7.0.1
  */

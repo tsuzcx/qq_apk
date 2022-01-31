@@ -1,48 +1,26 @@
-import UserGrowth.stSimpleMetaFeed;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelBottomBanner;
 
 public class slb
-  extends sks
+  implements slg
 {
-  private TextView a;
+  public slb(ChannelBottomBanner paramChannelBottomBanner) {}
   
-  private slb(ViewGroup paramViewGroup, sjf paramsjf)
+  public void a(int paramInt)
   {
-    super(paramViewGroup, paramsjf, 2131560119);
-  }
-  
-  public static slb a(ViewGroup paramViewGroup, sjf paramsjf)
-  {
-    return new slb(paramViewGroup, paramsjf);
-  }
-  
-  protected void a()
-  {
-    this.a = ((TextView)a(1).findViewById(2131379109));
-  }
-  
-  protected void a(int paramInt)
-  {
-    super.a(paramInt);
-    this.a.setVisibility(paramInt);
-  }
-  
-  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
-  {
-    super.a(paramstSimpleMetaFeed);
-    if (paramstSimpleMetaFeed == null) {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.e();
       return;
     }
-    this.a.setText(paramstSimpleMetaFeed.feed_desc);
-    a(1, paramstSimpleMetaFeed);
-    a(2, 1, paramstSimpleMetaFeed);
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     slb
  * JD-Core Version:    0.7.0.1
  */

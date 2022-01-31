@@ -1,42 +1,31 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.widget.qus.QUSHalfScreenFloatView;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class bcvc
-  implements Animator.AnimatorListener
+final class bcvc
+  implements DownloadParams.DecodeHandler
 {
-  public bcvc(QUSHalfScreenFloatView paramQUSHalfScreenFloatView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.b = false;
-    this.a.e = false;
-    if (this.a.jdField_a_of_type_Bkmg != null) {
-      this.a.jdField_a_of_type_Bkmg.hidePanelFinish();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.b = false;
-    this.a.e = false;
-    if (this.a.jdField_a_of_type_Bkmg != null) {
-      this.a.jdField_a_of_type_Bkmg.hidePanelFinish();
+    if (paramBitmap == null) {
+      return null;
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.jdField_a_of_type_Boolean = true;
+    paramDownloadParams = paramDownloadParams.tag;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
+    {
+      paramDownloadParams = (int[])paramDownloadParams;
+      return bdda.a(paramBitmap, 0.0F, paramDownloadParams[0], paramDownloadParams[1]);
+    }
+    return bdda.c(paramBitmap, 50, 50);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcvc
  * JD-Core Version:    0.7.0.1
  */

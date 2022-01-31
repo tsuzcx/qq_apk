@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.msgbackup.fragment;
 
-import ajya;
+import alpo;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -18,14 +18,14 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import asmm;
-import asmn;
-import asmo;
-import asmp;
-import asmq;
-import asmr;
-import asms;
-import bfpc;
+import audl;
+import audm;
+import audn;
+import audo;
+import audp;
+import audq;
+import audr;
+import bhpy;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
@@ -39,21 +39,21 @@ public class MsgBackupDateFragment
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new asmm(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new audl(this);
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  RadioGroup.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener = new asmo(this);
+  RadioGroup.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener = new audn(this);
   private RadioGroup jdField_a_of_type_AndroidWidgetRadioGroup;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bfpc jdField_a_of_type_Bfpc;
+  private bhpy jdField_a_of_type_Bhpy;
   private IphonePickerView jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
   private String jdField_a_of_type_JavaLangString;
   private Calendar jdField_a_of_type_JavaUtilCalendar;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
-  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new asmn(this);
-  RadioGroup.OnCheckedChangeListener jdField_b_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener = new asmp(this);
+  View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new audm(this);
+  RadioGroup.OnCheckedChangeListener jdField_b_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener = new audo(this);
   private RadioGroup jdField_b_of_type_AndroidWidgetRadioGroup;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -113,7 +113,7 @@ public class MsgBackupDateFragment
   
   private void a(View paramView, String paramString)
   {
-    if (AppSetting.d) {
+    if (AppSetting.jdField_c_of_type_Boolean) {
       paramView.setContentDescription(paramString);
     }
   }
@@ -122,7 +122,7 @@ public class MsgBackupDateFragment
   {
     if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_b_of_type_Long != 0L))
     {
-      ((RadioButton)this.jdField_a_of_type_AndroidWidgetRadioGroup.findViewById(2131364909)).setChecked(true);
+      ((RadioButton)this.jdField_a_of_type_AndroidWidgetRadioGroup.findViewById(2131364996)).setChecked(true);
       Calendar localCalendar = Calendar.getInstance();
       localCalendar.setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
       this.jdField_a_of_type_JavaLangString = String.format("%d.%d.%d", new Object[] { Integer.valueOf(localCalendar.get(1)), Integer.valueOf(localCalendar.get(2) + 1), Integer.valueOf(localCalendar.get(5)) });
@@ -136,16 +136,16 @@ public class MsgBackupDateFragment
       if (this.p != 1) {
         break label246;
       }
-      this.jdField_b_of_type_AndroidWidgetRadioGroup.check(2131364706);
+      this.jdField_b_of_type_AndroidWidgetRadioGroup.check(2131364785);
     }
     label246:
     while (this.p != 2)
     {
       return;
-      ((RadioButton)this.jdField_a_of_type_AndroidWidgetRadioGroup.findViewById(2131364908)).setChecked(true);
+      ((RadioButton)this.jdField_a_of_type_AndroidWidgetRadioGroup.findViewById(2131364995)).setChecked(true);
       break;
     }
-    this.jdField_b_of_type_AndroidWidgetRadioGroup.check(2131364707);
+    this.jdField_b_of_type_AndroidWidgetRadioGroup.check(2131364786);
   }
   
   private void b(int paramInt)
@@ -290,66 +290,66 @@ public class MsgBackupDateFragment
   
   private void d()
   {
-    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131363011));
+    this.jdField_a_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131363047));
     this.jdField_a_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener);
-    this.jdField_b_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131363008));
+    this.jdField_b_of_type_AndroidWidgetRadioGroup = ((RadioGroup)this.mContentView.findViewById(2131363044));
     this.jdField_b_of_type_AndroidWidgetRadioGroup.setOnCheckedChangeListener(this.jdField_b_of_type_AndroidWidgetRadioGroup$OnCheckedChangeListener);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131364916));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131363009));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.mContentView.findViewById(2131365003));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131363045));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131364912));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131363010));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131364999));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mContentView.findViewById(2131363046));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131364913));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131365000));
   }
   
   private void e()
   {
-    setTitle(getActivity().getString(2131690350));
-    setRightButton(2131690348, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    setLeftButton(2131690347, this.jdField_b_of_type_AndroidViewView$OnClickListener);
+    setTitle(getActivity().getString(2131690401));
+    setRightButton(2131690399, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    setLeftButton(2131690398, this.jdField_b_of_type_AndroidViewView$OnClickListener);
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_Bfpc != null) {
-      this.jdField_a_of_type_Bfpc.dismiss();
+    if (this.jdField_a_of_type_Bhpy != null) {
+      this.jdField_a_of_type_Bhpy.dismiss();
     }
     Object localObject;
-    if (this.jdField_a_of_type_Bfpc == null)
+    if (this.jdField_a_of_type_Bhpy == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getActivity().getLayoutInflater().inflate(2131560804, null));
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new asms(this, null));
-      this.jdField_a_of_type_Bfpc = bfpc.c(getActivity());
-      this.jdField_a_of_type_Bfpc.d(true);
-      this.jdField_a_of_type_Bfpc.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, null);
-      localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_Bfpc.findViewById(2131361922);
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getActivity().getLayoutInflater().inflate(2131560987, null));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new audr(this, null));
+      this.jdField_a_of_type_Bhpy = bhpy.c(getActivity());
+      this.jdField_a_of_type_Bhpy.d(true);
+      this.jdField_a_of_type_Bhpy.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, null);
+      localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_Bhpy.findViewById(2131361924);
       ((DispatchActionMoveScrollView)localObject).jdField_a_of_type_Boolean = true;
       ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
       if (Build.VERSION.SDK_INT >= 11)
       {
-        localObject = this.jdField_a_of_type_Bfpc.getWindow();
+        localObject = this.jdField_a_of_type_Bhpy.getWindow();
         if (localObject != null) {
           ((Window)localObject).setFlags(16777216, 16777216);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new asmq(this));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new audp(this));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null)
     {
-      localObject = (TextView)this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.findViewById(2131375795);
-      Button localButton = (Button)this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.findViewById(2131377285);
-      ((Button)this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.findViewById(2131377286)).setText(ajya.a(2131706928));
+      localObject = (TextView)this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.findViewById(2131376291);
+      Button localButton = (Button)this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.findViewById(2131377814);
+      ((Button)this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.findViewById(2131377815)).setText(alpo.a(2131707300));
       localButton.setVisibility(0);
-      localButton.setOnClickListener(new asmr(this));
+      localButton.setOnClickListener(new audq(this));
       if (this.u == 1)
       {
-        ((TextView)localObject).setText(ajya.a(2131706916));
+        ((TextView)localObject).setText(alpo.a(2131707288));
         ((TextView)localObject).setVisibility(0);
         ((TextView)localObject).setCompoundDrawables(null, null, null, null);
       }
     }
-    else if ((!this.jdField_a_of_type_Bfpc.isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null))
+    else if ((!this.jdField_a_of_type_Bhpy.isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView != null))
     {
       if (this.u != 1) {
         break label414;
@@ -366,14 +366,14 @@ public class MsgBackupDateFragment
       label375:
       try
       {
-        this.jdField_a_of_type_Bfpc.show();
+        this.jdField_a_of_type_Bhpy.show();
         return;
       }
       catch (Exception localException) {}
       if (this.u != 2) {
         break;
       }
-      ((TextView)localObject).setText(ajya.a(2131706917));
+      ((TextView)localObject).setText(alpo.a(2131707289));
       ((TextView)localObject).setVisibility(0);
       ((TextView)localObject).setCompoundDrawables(null, null, null, null);
       break;
@@ -470,7 +470,7 @@ public class MsgBackupDateFragment
   
   public int getContentLayoutId()
   {
-    return 2131561068;
+    return 2131561255;
   }
   
   public void onClick(View paramView)
@@ -491,7 +491,7 @@ public class MsgBackupDateFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment
  * JD-Core Version:    0.7.0.1
  */

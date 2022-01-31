@@ -1,15 +1,12 @@
-import com.tencent.tissue.v8rt.engine.Callback;
+import android.graphics.Bitmap;
 
-class bfdo
-  implements Callback
+public abstract interface bfdo
 {
-  bfdo(bfdn parambfdn) {}
-  
-  public void onFinish(Object paramObject) {}
+  public abstract void a(String paramString1, Bitmap paramBitmap, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfdo
  * JD-Core Version:    0.7.0.1
  */

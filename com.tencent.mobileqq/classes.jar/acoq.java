@@ -1,24 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class acoq
-  implements DialogInterface.OnKeyListener
+class acoq
+  extends alqf
 {
-  public acoq(UpgradeActivity paramUpgradeActivity) {}
+  acoq(acop paramacop, BaseActivity paramBaseActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    if (paramInt == 4) {
-      this.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this);
+    if (paramBoolean)
+    {
+      if ((this.jdField_a_of_type_Acop.a != null) && (this.jdField_a_of_type_Acop.a.isShowing())) {
+        this.jdField_a_of_type_Acop.a.dismiss();
+      }
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, alpo.a(2131702975), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      return;
     }
-    return false;
+    if ((this.jdField_a_of_type_Acop.a != null) && (this.jdField_a_of_type_Acop.a.isShowing())) {
+      this.jdField_a_of_type_Acop.a.dismiss();
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, alpo.a(2131702976), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acoq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
-class ahop
-  implements BusinessObserver
+public class ahop
+  extends allb
 {
-  ahop(ahoo paramahoo, RecentBaseData paramRecentBaseData, QQAppInterface paramQQAppInterface) {}
+  private ahop(FriendFragment paramFriendFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentPubAccHelper", 2, "unfollow isSuccess:" + String.valueOf(paramBoolean) + ", uin: " + this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
     }
-    if (!paramBoolean)
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
     {
-      ahoo.a(this.jdField_a_of_type_Ahoo, 2131695569);
-      return;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
-          localUnFollowResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() != 0) {
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("RecentPubAccHelper", 2, "unfollow success");
-          }
-          ahoo.a(this.jdField_a_of_type_Ahoo, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-          ((bajo)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a());
-          ahoo.b(this.jdField_a_of_type_Ahoo, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
       }
-      catch (Exception paramBundle)
-      {
-        continue;
-      }
-      ahoo.a(this.jdField_a_of_type_Ahoo);
-      return;
-      ahoo.b(this.jdField_a_of_type_Ahoo, 2131695569);
+      FriendFragment.a(this.a, 1400L, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahop
  * JD-Core Version:    0.7.0.1
  */

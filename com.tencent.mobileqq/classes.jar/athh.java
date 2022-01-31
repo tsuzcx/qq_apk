@@ -1,23 +1,10 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-
-public final class athh
-  implements Parcelable.Creator<Comments>
+public abstract interface athh
 {
-  public Comments a(Parcel paramParcel)
-  {
-    return new Comments(paramParcel);
-  }
-  
-  public Comments[] a(int paramInt)
-  {
-    return new Comments[paramInt];
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     athh
  * JD-Core Version:    0.7.0.1
  */

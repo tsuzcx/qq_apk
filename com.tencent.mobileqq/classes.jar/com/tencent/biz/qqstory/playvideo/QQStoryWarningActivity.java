@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import ajya;
+import alpo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import tug;
+import viy;
 
 public class QQStoryWarningActivity
   extends QQStoryBaseActivity
@@ -20,11 +20,11 @@ public class QQStoryWarningActivity
     super.setContentViewNoTitle(paramBundle);
     paramBundle.a(0);
     paramBundle.setCloseViewVisibility(true);
-    paramBundle.setOnCloseClickListener(new tug(this));
+    paramBundle.setOnCloseClickListener(new viy(this));
     String str = super.getIntent().getExtras().getString("tipsResource");
     if (TextUtils.isEmpty(str))
     {
-      paramBundle.setTipsText(ajya.a(2131711134));
+      paramBundle.setTipsText(alpo.a(2131711506));
       return true;
     }
     paramBundle.setTipsText(str);
@@ -33,7 +33,7 @@ public class QQStoryWarningActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,100 +1,87 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class atds
-  implements bcix<oidb_0x8e4.RspBody>
+  extends WebViewPlugin
 {
-  public atds(GameRoomTransActivity paramGameRoomTransActivity, int paramInt) {}
+  String jdField_a_of_type_JavaLangString;
+  nbg jdField_a_of_type_Nbg = new atdt(this);
+  ymk jdField_a_of_type_Ymk;
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public atds()
   {
-    Object localObject3 = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("qqBaseActivity", 2, "quickStartGame onCallback errorCode = " + paramInt);
-    }
-    Object localObject2;
-    if (paramRspBody.string_err_title.has())
+    this.mPluginNameSpace = "push";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!"push".equals(paramString2)) || (("addListener".equals(paramString3)) && (paramVarArgs.length > 0))) {}
+    for (;;)
     {
-      localObject2 = paramRspBody.string_err_title.get().toStringUtf8();
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
-    }
-    for (Object localObject1 = null;; localObject1 = null)
-    {
-      localObject2 = localObject3;
-      if (paramRspBody.string_err_msg.has())
+      int i;
+      try
       {
-        localObject2 = paramRspBody.string_err_msg.get().toStringUtf8();
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label450;
-        }
-        localObject2 = localObject3;
-      }
-      label450:
-      for (;;)
-      {
-        if ((paramInt == 1000) || (paramInt == 1001) || (paramInt == 1002) || (paramInt == 1003) || (paramInt == 1007)) {
-          this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgu = atdy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, (String)localObject1, (String)localObject2);
-        }
-        for (;;)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgu != null) {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgu.setOnDismissListener(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-          }
-          return;
-          if ((paramInt == 1004) || (paramInt == 1006) || (paramInt == 1010) || (paramInt == 1013))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgu = atdy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, (String)localObject1, (String)localObject2);
-          }
-          else
-          {
-            if ((paramInt == 0) || (paramInt == 1009))
-            {
-              paramRspBody = paramRspBody.poi_info;
-              localObject1 = paramRspBody.bytes_uid.get().toStringUtf8();
-              atdy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), (String)localObject1, paramRspBody.bytes_name.get().toStringUtf8());
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
-              return;
-            }
-            if (paramInt == 1008)
-            {
-              localObject1 = paramRspBody.string_invite_id.get().toStringUtf8();
-              com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.a = (String)localObject1;
-              paramInt = this.jdField_a_of_type_Int;
-              if (paramRspBody.uint32_max_member_num.has()) {
-                paramInt = paramRspBody.uint32_max_member_num.get();
-              }
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgu = atdy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, (String)localObject1, paramInt);
-            }
-            else
-            {
-              if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                break;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgu = atdy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, (String)localObject1, (String)localObject2);
-            }
-          }
-        }
-        bcql.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, 1, ajya.a(2131705123), 1).a();
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        i = paramJsBridgeListener.optInt("appid");
+        this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback");
+        this.jdField_a_of_type_Ymk.a().a(i, this.jdField_a_of_type_Nbg);
         if (QLog.isColorLevel()) {
-          QLog.d("qqBaseActivity", 2, "start game failed! code = " + paramInt);
+          QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
         }
-        GameRoomTransActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity);
-        return;
+        return true;
       }
+      catch (JSONException paramJsBridgeListener)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
+        }
+        return false;
+      }
+      if (("removeListener".equals(paramString3)) && (paramVarArgs.length > 0)) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          i = paramJsBridgeListener.optInt("appid");
+          this.jdField_a_of_type_Ymk.a().a(i);
+          if (QLog.isColorLevel()) {
+            QLog.d("PushApiPlugin", 2, new Object[] { paramString2, ".", paramString3, " args:", paramJsBridgeListener.toString() });
+          }
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("PushApiPlugin", 2, new Object[] { "handleJsRequest pkgName:", paramString2, " method:", paramString3, " JSONException:", paramJsBridgeListener });
+          }
+        }
+      }
+    }
+    return false;
+  }
+  
+  public void onCreate()
+  {
+    super.onCreate();
+    if (this.jdField_a_of_type_Ymk == null)
+    {
+      this.jdField_a_of_type_Ymk = ymk.a();
+      this.jdField_a_of_type_Ymk.a();
+    }
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Ymk != null) {
+      this.jdField_a_of_type_Ymk.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atds
  * JD-Core Version:    0.7.0.1
  */

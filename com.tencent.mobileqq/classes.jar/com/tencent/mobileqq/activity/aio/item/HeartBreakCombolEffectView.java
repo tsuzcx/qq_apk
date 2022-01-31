@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adss;
-import adst;
+import afkx;
+import afky;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -13,7 +13,7 @@ import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import bbef;
+import bdda;
 import com.tencent.mobileqq.app.utils.PokeBigResHandler;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,7 +29,7 @@ public class HeartBreakCombolEffectView
   Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
   Handler jdField_a_of_type_AndroidOsHandler;
   HeartBreakCombolEffectView.DecodeRunnable jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable;
-  ArrayList<adst> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<afky> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Vector<Bitmap> jdField_a_of_type_JavaUtilVector = new Vector();
   int jdField_b_of_type_Int = 0;
   Handler jdField_b_of_type_AndroidOsHandler;
@@ -54,7 +54,7 @@ public class HeartBreakCombolEffectView
   
   private void d()
   {
-    setOnTouchListener(new adss(this));
+    setOnTouchListener(new afkx(this));
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     e();
     HandlerThread localHandlerThread = new HandlerThread("decode");
@@ -102,16 +102,16 @@ public class HeartBreakCombolEffectView
     setVisibility(0);
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this);
     this.jdField_a_of_type_AndroidOsHandler.post(this);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = bbef.a(((adst)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).jdField_a_of_type_JavaLangString, null);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = bdda.a(((afky)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).jdField_a_of_type_JavaLangString, null);
     jdField_a_of_type_Boolean = true;
   }
   
   public void a(String paramString, int paramInt)
   {
-    adst localadst = new adst(this);
-    localadst.jdField_a_of_type_JavaLangString = paramString;
-    localadst.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaUtilArrayList.add(localadst);
+    afky localafky = new afky(this);
+    localafky.jdField_a_of_type_JavaLangString = paramString;
+    localafky.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilArrayList.add(localafky);
   }
   
   public void b()
@@ -176,7 +176,7 @@ public class HeartBreakCombolEffectView
       if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable = new HeartBreakCombolEffectView.DecodeRunnable(this, this.jdField_b_of_type_JavaUtilArrayList);
       }
-      adst localadst = (adst)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      afky localafky = (afky)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       this.jdField_b_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable);
       this.jdField_b_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemHeartBreakCombolEffectView$DecodeRunnable);
       this.jdField_a_of_type_Int += 1;
@@ -193,7 +193,7 @@ public class HeartBreakCombolEffectView
       {
         this.jdField_a_of_type_AndroidGraphicsBitmap = a();
         invalidate();
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, localadst.jdField_a_of_type_Int);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this, localafky.jdField_a_of_type_Int);
         return;
         label150:
         localBitmap.recycle();
@@ -204,7 +204,7 @@ public class HeartBreakCombolEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView
  * JD-Core Version:    0.7.0.1
  */

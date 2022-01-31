@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-
-public class anui
-  implements anwi
+public abstract interface anui
 {
-  public anui(MessengerService paramMessengerService) {}
+  public abstract int a(int paramInt1, String paramString, int paramInt2, anuf paramanuf);
   
-  public void a(boolean paramBoolean)
-  {
-    if (this.a.a != null) {
-      EmojiStickerManager.a().a(this.a.a, paramBoolean);
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anui
  * JD-Core Version:    0.7.0.1
  */

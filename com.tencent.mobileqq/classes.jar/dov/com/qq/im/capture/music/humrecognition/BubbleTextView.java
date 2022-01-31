@@ -7,15 +7,15 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import vzl;
-import wdw;
+import xod;
+import xso;
 
 public class BubbleTextView
   extends TextView
 {
   public float a;
   public int a;
-  private wdw a;
+  private xso a;
   public boolean a;
   public float b;
   public int b;
@@ -26,9 +26,9 @@ public class BubbleTextView
   public BubbleTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Float = vzl.a(BaseApplicationImpl.getContext(), 11.0F);
-    this.jdField_b_of_type_Float = vzl.a(BaseApplicationImpl.getContext(), 3.0F);
-    this.jdField_c_of_type_Float = vzl.a(BaseApplicationImpl.getContext(), 5.0F);
+    this.jdField_a_of_type_Float = xod.a(BaseApplicationImpl.getContext(), 11.0F);
+    this.jdField_b_of_type_Float = xod.a(BaseApplicationImpl.getContext(), 3.0F);
+    this.jdField_c_of_type_Float = xod.a(BaseApplicationImpl.getContext(), 5.0F);
     this.jdField_a_of_type_Int = Color.rgb(255, 189, 161);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
@@ -38,9 +38,9 @@ public class BubbleTextView
   public BubbleTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = vzl.a(BaseApplicationImpl.getContext(), 11.0F);
-    this.jdField_b_of_type_Float = vzl.a(BaseApplicationImpl.getContext(), 3.0F);
-    this.jdField_c_of_type_Float = vzl.a(BaseApplicationImpl.getContext(), 5.0F);
+    this.jdField_a_of_type_Float = xod.a(BaseApplicationImpl.getContext(), 11.0F);
+    this.jdField_b_of_type_Float = xod.a(BaseApplicationImpl.getContext(), 3.0F);
+    this.jdField_c_of_type_Float = xod.a(BaseApplicationImpl.getContext(), 5.0F);
     this.jdField_a_of_type_Int = Color.rgb(255, 189, 161);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
@@ -51,9 +51,9 @@ public class BubbleTextView
   public BubbleTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Float = vzl.a(BaseApplicationImpl.getContext(), 11.0F);
-    this.jdField_b_of_type_Float = vzl.a(BaseApplicationImpl.getContext(), 3.0F);
-    this.jdField_c_of_type_Float = vzl.a(BaseApplicationImpl.getContext(), 5.0F);
+    this.jdField_a_of_type_Float = xod.a(BaseApplicationImpl.getContext(), 11.0F);
+    this.jdField_b_of_type_Float = xod.a(BaseApplicationImpl.getContext(), 3.0F);
+    this.jdField_c_of_type_Float = xod.a(BaseApplicationImpl.getContext(), 5.0F);
     this.jdField_a_of_type_Int = Color.rgb(255, 189, 161);
     this.jdField_b_of_type_Int = 3;
     this.jdField_a_of_type_Boolean = true;
@@ -68,16 +68,16 @@ public class BubbleTextView
   
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Wdw = new wdw();
-    this.jdField_a_of_type_Wdw.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramInt1, paramInt3, paramInt2, paramInt4);
-    this.jdField_a_of_type_Wdw.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    this.jdField_a_of_type_Wdw.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
-    this.jdField_a_of_type_Wdw.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
-    this.jdField_a_of_type_Wdw.jdField_c_of_type_Float = this.jdField_c_of_type_Float;
-    this.jdField_a_of_type_Wdw.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-    this.jdField_a_of_type_Wdw.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Wdw.d = this.d;
-    this.jdField_a_of_type_Wdw.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Xso = new xso();
+    this.jdField_a_of_type_Xso.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramInt1, paramInt3, paramInt2, paramInt4);
+    this.jdField_a_of_type_Xso.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+    this.jdField_a_of_type_Xso.jdField_c_of_type_Int = this.jdField_c_of_type_Int;
+    this.jdField_a_of_type_Xso.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
+    this.jdField_a_of_type_Xso.jdField_c_of_type_Float = this.jdField_c_of_type_Float;
+    this.jdField_a_of_type_Xso.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+    this.jdField_a_of_type_Xso.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Xso.d = this.d;
+    this.jdField_a_of_type_Xso.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
   }
   
   private void c()
@@ -124,8 +124,8 @@ public class BubbleTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Wdw != null) {
-      this.jdField_a_of_type_Wdw.draw(paramCanvas);
+    if (this.jdField_a_of_type_Xso != null) {
+      this.jdField_a_of_type_Xso.draw(paramCanvas);
     }
     super.onDraw(paramCanvas);
   }
@@ -140,7 +140,7 @@ public class BubbleTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.music.humrecognition.BubbleTextView
  * JD-Core Version:    0.7.0.1
  */

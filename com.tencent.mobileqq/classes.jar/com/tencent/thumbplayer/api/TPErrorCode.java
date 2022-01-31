@@ -5,6 +5,7 @@ public class TPErrorCode
   public static final int TP_ERROR_CODE_LOGIC = 13000102;
   public static final int TP_ERROR_CODE_UNKONW = 13000101;
   public static final int TP_ERROR_OK = 1000;
+  public static final int TP_ERROR_QQ_VIDEO_EXPIRED = 14011001;
   public static final int TP_ERROR_TYPE_DECODER_AUDIO_NOT_SUPPORT = 1210;
   public static final int TP_ERROR_TYPE_DECODER_AUDIO_STREAM = 1211;
   public static final int TP_ERROR_TYPE_DECODER_OTHERS = 1200;
@@ -28,7 +29,7 @@ public class TPErrorCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPErrorCode
  * JD-Core Version:    0.7.0.1
  */

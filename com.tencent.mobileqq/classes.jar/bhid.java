@@ -1,18 +1,23 @@
-import cooperation.qzone.panorama.widget.PanoramaView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.ui.MoreItem;
 
-public class bhid
-  implements bhhk
+public final class bhid
+  implements Parcelable.Creator<MoreItem>
 {
-  public bhid(PanoramaView paramPanoramaView) {}
-  
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3)
+  public MoreItem a(Parcel paramParcel)
   {
-    this.a.a(paramFloat1, paramFloat2);
+    return new MoreItem(paramParcel);
+  }
+  
+  public MoreItem[] a(int paramInt)
+  {
+    return new MoreItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhid
  * JD-Core Version:    0.7.0.1
  */

@@ -1,114 +1,219 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.richstatus.HistorySignItem;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
+import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
+import com.tencent.mobileqq.richstatus.sign.BoxShadowLayout;
+import com.tencent.widget.AbsListView.LayoutParams;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
-class axze
-  implements View.OnClickListener
+public class axze
+  extends BaseAdapter
 {
-  axze(axzd paramaxzd) {}
+  private axze(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public void onClick(View paramView)
+  public int getCount()
   {
-    Context localContext = paramView.getContext();
-    Bundle localBundle = new Bundle();
-    localBundle.putString("file_send_path", axzd.a(this.a));
-    localBundle.putInt("video_play_caller", 2);
-    localBundle.putLong("message_click_start", System.currentTimeMillis());
-    Object localObject2 = "";
-    Object localObject1 = null;
-    try
+    int i = SignatureHistoryFragment.b(this.a).size();
+    if (i == 0) {
+      return 1;
+    }
+    return i + 1;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (paramInt >= SignatureHistoryFragment.b(this.a).size()) {
+      return null;
+    }
+    return SignatureHistoryFragment.b(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return getItemViewType(paramInt);
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    int i = SignatureHistoryFragment.b(this.a).size();
+    if (i == 0) {
+      return 2;
+    }
+    if (paramInt < i) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = getItemViewType(paramInt);
+    if (i == 2)
     {
-      ChatMessage localChatMessage = actj.a(paramView);
-      localObject1 = localChatMessage;
+      SignatureHistoryFragment.a(this.a).setLayoutParams(new AbsListView.LayoutParams(this.a.jdField_a_of_type_ComTencentWidgetXListView.getWidth(), this.a.jdField_a_of_type_ComTencentWidgetXListView.getHeight()));
+      paramView = SignatureHistoryFragment.a(this.a);
     }
-    catch (ClassCastException localClassCastException)
-    {
-      for (;;)
-      {
-        continue;
-        paramView = "";
-      }
-    }
-    if (localObject1 != null) {
-      localObject2 = ((ChatMessage)localObject1).getExtInfoFromExtStr("gdt_msgClick");
-    }
-    localBundle.putString("ad_gdt", (String)localObject2);
-    localObject1 = this.a.a(paramView);
-    if (localObject1 == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("structmsg.StructMsgItemVideoForPA", 2, "StructMsgForGeneralShare == NULL");
-      }
-    }
+    Object localObject1;
+    Object localObject2;
+    label379:
+    label639:
     do
     {
-      return;
-      localBundle.putString("msg_id", String.valueOf(((StructMsgForGeneralShare)localObject1).msgId));
-      paramView = "";
-      if ((axzd.b(this.a) == null) || (axzd.b(this.a).equals(""))) {
-        break label500;
-      }
-      localBundle.putString("struct_msg_video_info", axzd.b(this.a));
-      localBundle.putString("from_uin", ((StructMsgForGeneralShare)localObject1).currentAccountUin);
-      localBundle.putInt("from_uin_type", 1008);
-      localBundle.putString("from_session_uin", ((StructMsgForGeneralShare)localObject1).uin);
-      try
+      return paramView;
+      if (i == 0)
       {
-        localObject2 = new JSONObject(axzd.b(this.a));
-        if (localObject2 != null) {
-          paramView = ((JSONObject)localObject2).getString("file_uuid");
+        localObject1 = (HistorySignItem)SignatureHistoryFragment.b(this.a).get(paramInt);
+        if (paramView == null)
+        {
+          paramViewGroup = new BoxShadowLayout(this.a.getActivity());
+          paramView = this.a.a(paramViewGroup);
+          paramViewGroup = new ayas(this.a.getActivity(), this.a.getActivity().app, paramViewGroup, SignatureHistoryFragment.a(this.a));
+          SignatureHistoryFragment.a(this.a).add(paramViewGroup);
+          paramViewGroup.a(this.a);
+          paramViewGroup.a(this.a);
+          localObject2 = (LinearLayout)paramViewGroup.b();
+          paramViewGroup.c().setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
+          paramViewGroup.c().setOnClickListener(this.a);
+          LayoutInflater.from(this.a.getActivity()).inflate(2131561294, (ViewGroup)localObject2);
+          paramView.setTag(paramViewGroup);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131364038));
+          paramViewGroup.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView = ((CommentsView)paramView.findViewById(2131364376));
+          paramViewGroup.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView.setOnSpanItemClick(new axzf(this));
+          paramViewGroup.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView.setOnItemClickListener(new axzg(this, (HistorySignItem)localObject1));
+          paramViewGroup.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView.setOnItemLongClickListener(new axzh(this, (HistorySignItem)localObject1));
+          paramViewGroup.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView = ((LikesView)paramView.findViewById(2131369730));
+          paramViewGroup.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView.setOnItemClickListener(new axzj(this));
+          paramView.setTag(paramViewGroup);
+          paramView.setClickable(true);
+          if ((localObject1 == null) || (((HistorySignItem)localObject1).richStatus == null) || (((HistorySignItem)localObject1).richStatus.feedsId == null)) {
+            break label626;
+          }
+          paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setTag(((HistorySignItem)localObject1).richStatus.feedsId);
+          if (!SignatureHistoryFragment.b(this.a)) {
+            break label639;
+          }
+          paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+          if ((localObject1 == null) || (((HistorySignItem)localObject1).richStatus == null) || (((HistorySignItem)localObject1).richStatus.feedsId == null)) {
+            break label662;
+          }
+          if (!SignatureHistoryFragment.a(this.a).contains(((HistorySignItem)localObject1).richStatus.feedsId)) {
+            break label651;
+          }
+          paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+          paramViewGroup.jdField_a_of_type_Int = paramInt;
+          paramViewGroup.c = SignatureHistoryFragment.a(this.a);
+          localObject2 = ((HistorySignItem)localObject1).richStatus;
+          paramViewGroup.b = ((RichStatus)localObject2);
+          paramViewGroup.a((RichStatus)localObject2);
+          if (((((HistorySignItem)localObject1).likeItemList == null) || (((HistorySignItem)localObject1).likeItemList.size() <= 0)) && ((((HistorySignItem)localObject1).commentItemList == null) || (((HistorySignItem)localObject1).commentItemList.size() <= 0))) {
+            break label673;
+          }
+          if (paramViewGroup.b() != null)
+          {
+            paramViewGroup.b().setVisibility(0);
+            paramViewGroup.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView.a(((HistorySignItem)localObject1).likeItemList, ((HistorySignItem)localObject1).totalLikeNum);
+            paramViewGroup.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView.a(((HistorySignItem)localObject1).commentItemList);
+          }
         }
-      }
-      catch (Exception paramView)
-      {
         for (;;)
         {
-          paramView = "";
+          paramViewGroup.f = SignatureHistoryFragment.a(this.a, ((HistorySignItem)localObject1).likeItemList, SignatureHistoryFragment.b(this.a));
+          paramViewGroup.j();
+          return paramView;
+          paramViewGroup = (ayas)paramView.getTag();
+          break;
+          paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setTag("");
+          break label379;
+          paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
+          break label411;
+          paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+          break label464;
+          paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+          break label464;
+          if (paramViewGroup.b() != null) {
+            paramViewGroup.b().setVisibility(8);
+          }
         }
       }
-      localObject2 = new Intent(localContext, ShortVideoPlayActivity.class);
-      ((Intent)localObject2).putExtras(localBundle);
-      localContext.startActivity((Intent)localObject2);
-      localObject2 = ((FragmentActivity)localContext).getChatFragment().a();
-      axqy.b((QQAppInterface)localObject2, "P_CliOper", "Pb_account_lifeservice", "", "0X8005C9A", "0X8005C9A", 0, 1, 0, ((StructMsgForGeneralShare)localObject1).uin, ((StructMsgForGeneralShare)localObject1).currentAccountUin, axzd.a(this.a), paramView);
-    } while ((((StructMsgForGeneralShare)localObject1).message == null) || (!"1".equals(((StructMsgForGeneralShare)localObject1).message.getExtInfoFromExtStr("is_AdArrive_Msg"))));
-    try
-    {
-      paramView = new JSONObject();
-      paramView.put("puin", ((StructMsgForGeneralShare)localObject1).message.frienduin);
-      paramView.put("type", this.a.l);
-      paramView.put("index", this.a.j);
-      paramView.put("name", this.a.k);
-      paramView.put("net", String.valueOf(naj.a()));
-      paramView.put("mobile_imei", bbdh.a());
-      paramView.put("obj", "");
-      paramView.put("gdt_cli_data", ((StructMsgForGeneralShare)localObject1).message.getExtInfoFromExtStr("gdt_msgClick"));
-      paramView.put("view_id", ((StructMsgForGeneralShare)localObject1).message.getExtInfoFromExtStr("gdt_view_id"));
-      sep.a((AppInterface)localObject2, ((StructMsgForGeneralShare)localObject1).message.selfuin, paramView.toString(), "" + ((StructMsgForGeneralShare)localObject1).msgId);
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-      return;
-    }
+      paramViewGroup = paramView;
+      if (paramView == null)
+      {
+        paramViewGroup = this.a.getActivity().getLayoutInflater().inflate(2131559365, null);
+        paramViewGroup.setBackgroundColor(this.a.getResources().getColor(2131167138));
+        paramView = new axzk();
+        paramViewGroup.setTag(paramView);
+        paramView.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131375537));
+        paramViewGroup.findViewById(2131369742).setVisibility(8);
+        paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131370748));
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131165307));
+      }
+      if (SignatureHistoryFragment.a(this.a) == 1)
+      {
+        SignatureHistoryFragment.a(this.a, 2);
+        this.a.a(false, false);
+      }
+      localObject1 = (axzk)paramViewGroup.getTag();
+      localObject2 = new AbsListView.LayoutParams(-1, -2);
+      if (SignatureHistoryFragment.a(this.a) == 3)
+      {
+        ((axzk)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+        ((axzk)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131714504));
+        ((AbsListView.LayoutParams)localObject2).height = aekt.a(60.0F, this.a.getResources());
+        paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        return paramViewGroup;
+      }
+      if (SignatureHistoryFragment.a(this.a) == 2)
+      {
+        ((axzk)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+        ((axzk)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131714490));
+        ((AbsListView.LayoutParams)localObject2).height = aekt.a(60.0F, this.a.getResources());
+        paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        return paramViewGroup;
+      }
+      paramView = paramViewGroup;
+    } while (SignatureHistoryFragment.a(this.a) != 0);
+    label411:
+    label464:
+    label626:
+    ((axzk)localObject1).jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+    label651:
+    label662:
+    label673:
+    ((axzk)localObject1).jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    ((AbsListView.LayoutParams)localObject2).height = (azgq.b / 4);
+    paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    return paramViewGroup;
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 3;
+  }
+  
+  public boolean isEnabled(int paramInt)
+  {
+    return 2 != getItemViewType(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axze
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class aeez
-  implements Animator.AnimatorListener
+  implements TextWatcher
 {
-  private aeez(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  private aeez(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (UnlimitedBladeWorks.a(this.a).a)
-    {
-      if (UnlimitedBladeWorks.a(this.a) != 2.0D) {
-        break label55;
-      }
-      UnlimitedBladeWorks.a(this.a);
-      UnlimitedBladeWorks.a(this.a, 5);
-    }
-    for (;;)
-    {
-      UnlimitedBladeWorks.a(this.a).setImageDrawable(null);
-      return;
-      label55:
-      UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
-      UnlimitedBladeWorks.a(this.a).a(UnlimitedBladeWorks.a(this.a));
-      UnlimitedBladeWorks.a(this.a).a(new aefa(this));
-      UnlimitedBladeWorks.a(this.a).c();
-      UnlimitedBladeWorks.a(this.a, 1);
-    }
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.a(paramEditable);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (UnlimitedBladeWorks.a(this.a))
-    {
-      UnlimitedBladeWorks.a(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
-      return;
-    }
-    UnlimitedBladeWorks.a(this.a).setImageBitmap(UnlimitedBladeWorks.a(this.a));
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeez
  * JD-Core Version:    0.7.0.1
  */

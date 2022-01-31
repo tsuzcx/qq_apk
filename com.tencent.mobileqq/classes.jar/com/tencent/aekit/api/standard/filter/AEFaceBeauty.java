@@ -19,9 +19,9 @@ public class AEFaceBeauty
   private float faceFeatureNormalAlpha;
   private FaceFeatureParam faceFeatureParam;
   private float faceFeatureSoftlightAlpha;
-  private boolean isAllwaysRender = true;
-  private boolean isBeautyNeedRender = false;
   private boolean isLoadSo = false;
+  private boolean isSkipBeautyRender = false;
+  private boolean isSkipRenderEnabled = false;
   private boolean isVeryLowDevice = false;
   private int lipsLutAlpha;
   private String lipsLutPath;
@@ -42,7 +42,7 @@ public class AEFaceBeauty
   
   private boolean isAllZeroLevel()
   {
-    return (this.colorToneLevel == 50) && (this.beautyLevel + this.eyeLightenLevel + this.removePounchLevel + this.removeWrinklesLevel + this.removeWrinkles2Level + this.contrastRatioLevel == 0);
+    return (this.colorToneLevel == 50) && (this.beautyLevel + this.eyeLightenLevel + this.toothWhitenLevel + this.removePounchLevel + this.removeWrinklesLevel + this.removeWrinkles2Level + this.contrastRatioLevel == 0);
   }
   
   public void apply()
@@ -74,7 +74,7 @@ public class AEFaceBeauty
   
   public Frame render(Frame paramFrame)
   {
-    if (this.isBeautyNeedRender) {}
+    if (this.isSkipBeautyRender) {}
     do
     {
       return paramFrame;
@@ -82,11 +82,6 @@ public class AEFaceBeauty
     } while ((this.mBeautyFaceList == null) || (this.mFaceAttr == null) || (this.mFaceAttr.getFaceCount() <= 0));
     this.mBeautyFaceList.updateVideoSize(this.mVideoWidth, this.mVideoHeight, this.mFaceScale);
     return this.mBeautyFaceList.render2(paramFrame, this.mFaceAttr.getAllFacePoints(), this.mFaceAttr.getPointsVis(), this.mFaceAttr.getFaceStatusList(), this.isVeryLowDevice, this.isLoadSo);
-  }
-  
-  public void setAllwaysRender(boolean paramBoolean)
-  {
-    this.isAllwaysRender = paramBoolean;
   }
   
   public void setFaceAttr(PTFaceAttr paramPTFaceAttr)
@@ -99,11 +94,9 @@ public class AEFaceBeauty
     switch (AEFaceBeauty.1.$SwitchMap$com$tencent$ttpic$openapi$config$BeautyRealConfig$TYPE[paramTYPE.ordinal()])
     {
     }
-    for (;;)
+    while (((this.isSkipRenderEnabled) && (isAllZeroLevel()) && ((this.lipsLutPath == null) || (this.lipsLutPath.isEmpty()))) || ("None/null".equals(this.lipsLutPath)))
     {
-      if ((!this.isAllwaysRender) && (isAllZeroLevel())) {
-        this.isBeautyNeedRender = true;
-      }
+      this.isSkipBeautyRender = true;
       return;
       this.beautyLevel = paramInt;
       this.mBeautyFaceList.setBeautyLevel(this.beautyLevel / 100.0F);
@@ -129,6 +122,7 @@ public class AEFaceBeauty
       this.contrastRatioLevel = paramInt;
       this.mBeautyFaceList.setContrastLevel(this.contrastRatioLevel);
     }
+    this.isSkipBeautyRender = false;
   }
   
   public void setFaceFeatureMultiplyAlpha(float paramFloat)
@@ -169,6 +163,12 @@ public class AEFaceBeauty
     if (this.mBeautyFaceList != null) {
       this.mBeautyFaceList.setLipsLut(paramString);
     }
+    if (((paramString == null) || (paramString.isEmpty()) || (paramString.equals("None/null"))) && (isAllZeroLevel()) && (this.isSkipRenderEnabled))
+    {
+      this.isSkipBeautyRender = true;
+      return;
+    }
+    this.isSkipBeautyRender = false;
   }
   
   public void setLipsLutAlpha(int paramInt)
@@ -176,6 +176,13 @@ public class AEFaceBeauty
     this.lipsLutAlpha = paramInt;
     if (this.mBeautyFaceList != null) {
       this.mBeautyFaceList.setLipsLutAlpha(paramInt);
+    }
+  }
+  
+  public void setLipsStyleMaskPath(String paramString)
+  {
+    if (this.mBeautyFaceList != null) {
+      this.mBeautyFaceList.setLipsStyleMaskPath(paramString);
     }
   }
   
@@ -208,6 +215,11 @@ public class AEFaceBeauty
     }
   }
   
+  public void setSkipRenderEnabled(boolean paramBoolean)
+  {
+    this.isSkipRenderEnabled = paramBoolean;
+  }
+  
   public void setVeryLowDevice(boolean paramBoolean)
   {
     this.isVeryLowDevice = paramBoolean;
@@ -222,7 +234,7 @@ public class AEFaceBeauty
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.aekit.api.standard.filter.AEFaceBeauty
  * JD-Core Version:    0.7.0.1
  */

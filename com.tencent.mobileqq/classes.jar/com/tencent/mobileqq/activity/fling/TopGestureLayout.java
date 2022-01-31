@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.fling;
 
-import aaqe;
+import achc;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Build.VERSION;
@@ -10,7 +10,7 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
-import aocn;
+import apuk;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
@@ -30,7 +30,7 @@ public class TopGestureLayout
   private boolean c = true;
   private boolean d;
   public GestureDetector defaultGestureDetector;
-  public aaqe mMyDispatchDrawListener;
+  public achc mMyDispatchDrawListener;
   public TopGestureLayout.OnGestureListener mOnFlingGesture;
   public GestureDetector mTopGestureDetector;
   
@@ -40,11 +40,11 @@ public class TopGestureLayout
     a(paramContext);
   }
   
-  public TopGestureLayout(Context paramContext, aaqe paramaaqe, TopGestureLayout.InterceptTouchEventListener paramInterceptTouchEventListener)
+  public TopGestureLayout(Context paramContext, achc paramachc, TopGestureLayout.InterceptTouchEventListener paramInterceptTouchEventListener)
   {
     super(paramContext);
     a(paramContext);
-    this.mMyDispatchDrawListener = paramaaqe;
+    this.mMyDispatchDrawListener = paramachc;
     this.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout$InterceptTouchEventListener = paramInterceptTouchEventListener;
   }
   
@@ -77,8 +77,8 @@ public class TopGestureLayout
   {
     if (this.mTopGestureDetector != null)
     {
-      if ((this.mTopGestureDetector instanceof aocn)) {
-        return ((aocn)this.mTopGestureDetector).jdField_a_of_type_Boolean;
+      if ((this.mTopGestureDetector instanceof apuk)) {
+        return ((apuk)this.mTopGestureDetector).jdField_a_of_type_Boolean;
       }
       if ((this.mTopGestureDetector instanceof TopGestureLayout.StickerDismissGestureDetector)) {
         return ((TopGestureLayout.StickerDismissGestureDetector)this.mTopGestureDetector).isInTowFingerMode;
@@ -243,9 +243,9 @@ public class TopGestureLayout
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setMyDispatchDrawListener(aaqe paramaaqe)
+  public void setMyDispatchDrawListener(achc paramachc)
   {
-    this.mMyDispatchDrawListener = paramaaqe;
+    this.mMyDispatchDrawListener = paramachc;
   }
   
   public void setOnFlingGesture(TopGestureLayout.OnGestureListener paramOnGestureListener)
@@ -270,7 +270,7 @@ public class TopGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.TopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

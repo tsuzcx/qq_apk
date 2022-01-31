@@ -28,10 +28,27 @@ public class MultiViewerFilter
   private BaseFilter effectFilter;
   private Frame emptyFrame = new Frame();
   private boolean isSrcRendered = false;
+  private PTDetectInfo mDetectInfo;
   private boolean needOriginFrame;
   private int renderId;
   private StickersMap stickersMap = new StickersMap();
   private VideoFilterList videoFilterList;
+  
+  private PTDetectInfo checkPTDetectInfo(PTDetectInfo paramPTDetectInfo)
+  {
+    if (this.videoFilterList.isFreezeFrame())
+    {
+      if (this.mDetectInfo == null)
+      {
+        this.mDetectInfo = paramPTDetectInfo;
+        return paramPTDetectInfo;
+      }
+      this.mDetectInfo.timestamp = paramPTDetectInfo.timestamp;
+      return this.mDetectInfo;
+    }
+    this.mDetectInfo = null;
+    return paramPTDetectInfo;
+  }
   
   private void copyFrame(Frame paramFrame1, Frame paramFrame2)
   {
@@ -77,6 +94,7 @@ public class MultiViewerFilter
   
   public void clear()
   {
+    this.mDetectInfo = null;
     if (this.videoFilterList != null) {
       this.videoFilterList.destroy();
     }
@@ -221,10 +239,10 @@ public class MultiViewerFilter
         paramFrame1 = this.videoFilterList.updateAndRenderBeforeComicEffectFilters(paramFrame1, paramPTFaceAttr);
         paramFrame1 = this.videoFilterList.updateAndRenderRapidNet(paramFrame1, paramPTFaceAttr);
         if (this.videoFilterList.getFastFaceStickerFilter() == null) {
-          break label323;
+          break label325;
         }
         if (i != 0) {
-          break label304;
+          break label306;
         }
         this.videoFilterList.setMultiViewerSrcTexture(paramFrame1.getTextureId());
         this.videoFilterList.setMultiViewerOutFrame(paramFrame2);
@@ -243,11 +261,11 @@ public class MultiViewerFilter
       i = 1;
       localFrame2 = paramFrame1;
       break;
-      label304:
+      label306:
       this.videoFilterList.setMultiViewerSrcTexture(0);
       this.videoFilterList.setMultiViewerOutFrame(paramFrame1);
     }
-    label323:
+    label325:
     if (i == 0) {
       copyFrame(localFrame2, paramFrame2);
     }
@@ -443,6 +461,7 @@ public class MultiViewerFilter
     if (this.videoFilterList != null) {
       this.videoFilterList.reset();
     }
+    this.mDetectInfo = null;
   }
   
   public void setActiveParts(Set<Integer> paramSet)
@@ -531,6 +550,15 @@ public class MultiViewerFilter
       return;
     }
     this.videoFilterList.updateFaceParams(paramAIAttr, paramPTFaceAttr, paramFrame.width);
+  }
+  
+  public void updateTriggerManager(PTDetectInfo paramPTDetectInfo)
+  {
+    if (this.videoFilterList != null)
+    {
+      paramPTDetectInfo = checkPTDetectInfo(paramPTDetectInfo);
+      this.videoFilterList.updateTriggerManager(paramPTDetectInfo);
+    }
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)

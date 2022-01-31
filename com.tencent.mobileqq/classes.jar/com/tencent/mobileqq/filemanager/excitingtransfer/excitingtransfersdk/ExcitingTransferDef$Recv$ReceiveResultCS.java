@@ -17,7 +17,7 @@ public class ExcitingTransferDef$Recv$ReceiveResultCS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDef.Recv.ReceiveResultCS
  * JD-Core Version:    0.7.0.1
  */

@@ -16,6 +16,7 @@ public class TTBeautyV5PrefixFilterGroup
 {
   private int age = 0;
   private boolean isFemale = true;
+  private boolean isOverall = false;
   private String lastLutPath;
   private BeautyAIParam mBeautyAIParam = new BeautyAIParam();
   private TTBeautyV5BlurFilter mBlurFilter = new TTBeautyV5BlurFilter();
@@ -40,46 +41,55 @@ public class TTBeautyV5PrefixFilterGroup
     if (paramPTFaceAttr != null)
     {
       f1 = f2;
-      if (!paramPTFaceAttr.getAllFacePoints().isEmpty())
+      if (paramPTFaceAttr.getAllFacePoints() != null)
       {
         f1 = f2;
-        if (paramInt1 > 0)
+        if (!paramPTFaceAttr.getAllFacePoints().isEmpty())
         {
           f1 = f2;
-          if (paramInt2 > 0)
+          if (paramInt1 > 0)
           {
-            Iterator localIterator = paramPTFaceAttr.getAllFacePoints().iterator();
-            f1 = 0.0F;
-            if (localIterator.hasNext())
+            f1 = f2;
+            if (paramInt2 > 0)
             {
-              RectF localRectF = AlgoUtils.getFaceRectF((List)localIterator.next());
-              if (localRectF == null) {
-                break label238;
+              Iterator localIterator = paramPTFaceAttr.getAllFacePoints().iterator();
+              f1 = 0.0F;
+              if (localIterator.hasNext())
+              {
+                RectF localRectF = AlgoUtils.getFaceRectF((List)localIterator.next());
+                if (localRectF == null) {
+                  break label264;
+                }
+                f2 = (float)(paramInt1 * paramPTFaceAttr.getFaceDetectScale());
+                float f3 = (float)(paramInt2 * paramPTFaceAttr.getFaceDetectScale());
+                float f4 = localRectF.width();
+                f1 = Math.max(f1, localRectF.height() * f4 / f2 / f3);
               }
-              f2 = (float)(paramInt1 * paramPTFaceAttr.getFaceDetectScale());
-              float f3 = (float)(paramInt2 * paramPTFaceAttr.getFaceDetectScale());
-              float f4 = localRectF.width();
-              f1 = Math.max(f1, localRectF.height() * f4 / f2 / f3);
             }
           }
         }
       }
     }
-    label238:
+    label264:
     for (;;)
     {
       break;
-      f1 = Math.min(0.04F, f1) / 0.04F;
-      if (paramBoolean) {}
-      for (;;)
+      if (this.isOverall)
       {
-        this.mFaceSizeFactor = f1;
+        this.mFaceSizeFactor = 1.0F;
         f1 = this.mBlurStrength;
         f2 = this.mFaceSizeFactor;
         this.mSmoothFilter.setBlurStrength(f1 * f2);
         f1 = this.mSharpenStrength * this.mFaceSizeFactor * Math.min(0.2F, this.mBlurStrength) / 0.2F;
         this.mSmoothFilter.setSharpenStrength(f1);
         return;
+      }
+      f1 = Math.min(0.04F, f1) / 0.04F;
+      if (paramBoolean) {}
+      for (;;)
+      {
+        this.mFaceSizeFactor = f1;
+        break;
         f1 = f1 * 0.2F + this.mFaceSizeFactor * 0.8F;
       }
     }
@@ -211,6 +221,11 @@ public class TTBeautyV5PrefixFilterGroup
   public void setLookUpRightTexture(int paramInt)
   {
     this.mSmoothFilter.setLookUpRight(paramInt);
+  }
+  
+  public void setOverall(boolean paramBoolean)
+  {
+    this.isOverall = paramBoolean;
   }
   
   public void setSmoothBlurAlpha(float paramFloat)

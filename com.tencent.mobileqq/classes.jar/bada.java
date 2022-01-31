@@ -1,59 +1,91 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
 
 public class bada
-  extends badf
+  implements alkr
 {
-  private TextView a;
-  private TextView b;
+  public void a(int paramInt) {}
   
-  protected bada(View paramView)
-  {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378315));
-    this.b = ((TextView)paramView.findViewById(2131378206));
-  }
+  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
   
-  public void a(View paramView, HWReciteItem paramHWReciteItem, badd parambadd)
+  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void a(String paramString1, String paramString2, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void b(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void c(TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramHWReciteItem = (babi)parambadd.a;
-    switch (paramView.getId())
+    switch (paramInt)
     {
     }
     do
     {
-      return;
-      ReciteFragment.a(paramView.getContext(), paramHWReciteItem.a().toString(), paramHWReciteItem.jdField_c_of_type_Int);
-      paramView = BaseApplicationImpl.getApplication().getRuntime();
-    } while (!(paramView instanceof QQAppInterface));
-    bbbp.a((QQAppInterface)paramView, paramHWReciteItem.f, "Grp_recite", "Recite_Clk", 0, 0, new String[] { paramHWReciteItem.f, "", paramHWReciteItem.b, "" });
-  }
-  
-  public void a(HWReciteItem paramHWReciteItem, badd parambadd, babi parambabi, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (TextUtils.isEmpty(parambabi.jdField_c_of_type_JavaLangString))
-    {
-      StringBuilder localStringBuilder = new StringBuilder(ajya.a(2131705315)).append(parambabi.b);
-      if ((parambabi.a != null) && (!parambabi.a.isEmpty())) {
-        localStringBuilder.append(baam.a(parambabi.a));
-      }
-      parambabi.jdField_c_of_type_JavaLangString = localStringBuilder.toString();
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(parambabi.jdField_c_of_type_JavaLangString);
-    paramHWReciteItem.b(this.jdField_a_of_type_AndroidViewView, parambadd);
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      do
+                      {
+                        do
+                        {
+                          do
+                          {
+                            return;
+                          } while (paramObject == null);
+                          b((TeamWorkFileImportInfo)paramObject);
+                          return;
+                        } while (paramObject == null);
+                        paramObject = (Object[])paramObject;
+                      } while (paramObject.length != 2);
+                      a((String)paramObject[0], (TeamWorkFileImportInfo)paramObject[1]);
+                      return;
+                    } while (paramObject == null);
+                    a((TeamWorkFileImportInfo)paramObject);
+                    return;
+                  } while (paramObject == null);
+                  paramObject = (Object[])paramObject;
+                } while (paramObject.length != 1);
+                a(((Integer)paramObject[0]).intValue());
+                return;
+              } while (paramObject == null);
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length != 1);
+            if (((Integer)paramObject[0]).intValue() > 0) {}
+            for (paramBoolean = true;; paramBoolean = false)
+            {
+              a(paramBoolean);
+              return;
+            }
+          } while (paramObject == null);
+          paramObject = (Object[])paramObject;
+        } while (paramObject.length != 3);
+        a((String)paramObject[0], (String)paramObject[1], (TeamWorkFileImportInfo)paramObject[2]);
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    c((TeamWorkFileImportInfo)paramObject[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bada
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPublish;
 
-public final class qea
-  implements Parcelable.Creator<WeishiRedDotInfo>
+public class qea
+  extends ClickableSpan
 {
-  public WeishiRedDotInfo a(Parcel paramParcel)
+  public qea(ComponentHeaderPublish paramComponentHeaderPublish) {}
+  
+  public void onClick(View paramView)
   {
-    return new WeishiRedDotInfo(paramParcel);
+    ors.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
   }
   
-  public WeishiRedDotInfo[] a(int paramInt)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return new WeishiRedDotInfo[paramInt];
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(aekt.a(2, 14, this.a.getResources()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qea
  * JD-Core Version:    0.7.0.1
  */

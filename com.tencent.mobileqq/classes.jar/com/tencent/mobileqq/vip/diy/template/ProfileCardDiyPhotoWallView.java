@@ -7,8 +7,8 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import aywm;
-import bbyb;
+import baul;
+import bdxc;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -31,12 +31,12 @@ public class ProfileCardDiyPhotoWallView
   public ProfileCardDiyPhotoWallView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int -= getResources().getDimensionPixelSize(2131297369) * 2;
+    this.jdField_a_of_type_Int -= getResources().getDimensionPixelSize(2131297388) * 2;
   }
   
   public View a()
   {
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561632, null);
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561823, null);
     localView.setPadding(this.e, this.e, this.e, this.e);
     return localView;
   }
@@ -46,7 +46,7 @@ public class ProfileCardDiyPhotoWallView
     ViewGroup localViewGroup = super.a(paramInt1, paramInt2, paramInt3);
     if ((!TextUtils.isEmpty(this.b)) && (this.b.startsWith("http")))
     {
-      localViewGroup.setBackgroundDrawable(a(this.b, new bbyb(paramInt1 * 2, paramInt2 * 2)));
+      localViewGroup.setBackgroundDrawable(a(this.b, new bdxc(paramInt1 * 2, paramInt2 * 2)));
       return localViewGroup;
     }
     localViewGroup.setBackgroundColor(this.d);
@@ -56,8 +56,8 @@ public class ProfileCardDiyPhotoWallView
   protected URLDrawable a(String paramString, DownloadParams.DecodeHandler paramDecodeHandler)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = aywm.a;
-    localURLDrawableOptions.mFailedDrawable = aywm.a;
+    localURLDrawableOptions.mLoadingDrawable = baul.a;
+    localURLDrawableOptions.mFailedDrawable = baul.a;
     localURLDrawableOptions.mPlayGifImage = false;
     if (paramDecodeHandler != null) {
       localURLDrawableOptions.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
@@ -94,7 +94,7 @@ public class ProfileCardDiyPhotoWallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.ProfileCardDiyPhotoWallView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,55 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
-public class akjj
-  implements DialogInterface.OnClickListener
+class akjj
+  extends QQLruCache<String, ApolloBaseInfo>
 {
-  public akjj(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  akjj(akji paramakji, int paramInt1, int paramInt2, int paramInt3)
   {
-    mqw.e(false, false);
-    VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
-    VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_JavaLangString, this.c, this.d);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  public ApolloBaseInfo a(String paramString, ApolloBaseInfo paramApolloBaseInfo)
+  {
+    if (paramApolloBaseInfo != null) {}
+    try
+    {
+      akji.a(this.a).remove(Long.valueOf(Long.parseLong(paramApolloBaseInfo.uin)));
+      return (ApolloBaseInfo)super.put(paramString, paramApolloBaseInfo);
     }
-    mqw.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause);
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        QLog.e("ApolloManager", 1, localNumberFormatException, new Object[0]);
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, ApolloBaseInfo paramApolloBaseInfo1, ApolloBaseInfo paramApolloBaseInfo2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramApolloBaseInfo1, paramApolloBaseInfo2);
+    if (paramApolloBaseInfo1 != null) {}
+    try
+    {
+      if (akji.a(this.a).size() < 1024) {
+        akji.a(this.a).add(Long.valueOf(Long.parseLong(paramApolloBaseInfo1.uin)));
+      }
+      return;
+    }
+    catch (NumberFormatException paramString)
+    {
+      QLog.e("ApolloManager", 1, paramString, new Object[0]);
+      return;
+    }
+    catch (OutOfMemoryError paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akjj
  * JD-Core Version:    0.7.0.1
  */

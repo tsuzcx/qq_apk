@@ -14,7 +14,7 @@ public class BaseActivity2$1
   {
     try
     {
-      BaseActivity2.a(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+      BaseActivity2.access$201(this.this$0, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
     catch (Throwable localThrowable)

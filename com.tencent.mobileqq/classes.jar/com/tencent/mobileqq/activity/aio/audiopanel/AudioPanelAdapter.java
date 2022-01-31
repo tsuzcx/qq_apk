@@ -74,9 +74,9 @@ public class AudioPanelAdapter
     {
       localFrameLayout = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
       localFrameLayout.setId(1001);
-      localObject1 = (PressToSpeakPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560615, null);
+      localObject1 = (PressToSpeakPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560790, null);
       ((PressToSpeakPanel)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, this.d, this.e);
-      localObject2 = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560612, null);
+      localObject2 = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560787, null);
       ((ListenPanel)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, 1);
       ((ListenPanel)localObject2).setNeedAudioData(true);
       localFrameLayout.addView((View)localObject1, new FrameLayout.LayoutParams(-1, -1));
@@ -108,7 +108,7 @@ public class AudioPanelAdapter
         }
         localFrameLayout = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
         localFrameLayout.setId(1000);
-        localObject1 = (PressToChangeVoicePanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560614, null);
+        localObject1 = (PressToChangeVoicePanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560789, null);
         ((PressToChangeVoicePanel)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, this.d, this.e, this);
         localFrameLayout.addView((View)localObject1, new FrameLayout.LayoutParams(-1, -1));
         if ((Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) && (Build.MODEL.toUpperCase().startsWith("HM NOTE"))) {}
@@ -134,9 +134,9 @@ public class AudioPanelAdapter
       }
       localFrameLayout = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
       localFrameLayout.setId(1002);
-      localObject1 = (RecordSoundPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560618, null);
+      localObject1 = (RecordSoundPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560793, null);
       ((RecordSoundPanel)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, this.d, this.e);
-      localObject2 = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560612, null);
+      localObject2 = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560787, null);
       ((ListenPanel)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, 2);
       ((ListenPanel)localObject2).setNeedAudioData(true);
       localFrameLayout.addView((View)localObject1, new FrameLayout.LayoutParams(-1, -1));
@@ -173,7 +173,7 @@ public class AudioPanelAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

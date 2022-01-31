@@ -1,101 +1,29 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.biz.now.NowVideoLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.richstatus.EditActivity;
 
 public class axxf
-  extends axuq
+  implements axxr
 {
-  private QQAppInterface a;
+  public axxf(EditActivity paramEditActivity) {}
   
-  protected int b()
+  public void a(bejo parambejo)
   {
-    return 18;
-  }
-  
-  public View b(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    Object localObject1 = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemLayout18", 2, "getView.");
-    }
-    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-    paramContext.getResources();
-    if ((paramBundle instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramBundle);
-    }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    paramBundle = null;
-    if (((Iterator)localObject2).hasNext())
+    if (EditActivity.a(this.a) == parambejo)
     {
-      axup localaxup = (axup)((Iterator)localObject2).next();
-      if (!"live".equals(localaxup.a)) {
-        break label255;
+      if (EditActivity.a(this.a) != null) {
+        EditActivity.a(this.a).a(null);
       }
-      paramBundle = (axvy)localaxup;
-    }
-    label247:
-    label255:
-    for (;;)
-    {
-      break;
-      if (paramBundle == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructMsgItemLayout18", 2, "getView itemLive is null.");
-        }
-        return null;
-      }
-      if (paramView != null)
-      {
-        paramContext = (axxg)paramView.getTag();
-        localObject2 = null;
-        localObject1 = paramView;
-        paramView = paramContext;
-        paramContext = (Context)localObject2;
-        if (paramView != null) {
-          break label247;
-        }
-        paramView = new axxg();
-        paramView.jdField_a_of_type_Axvy = paramBundle;
-        paramView.jdField_a_of_type_ComTencentBizNowNowVideoLayout = paramContext;
-      }
-      for (;;)
-      {
-        ((View)localObject1).setTag(paramView);
-        paramView = ((View)localObject1).findViewById(2131376583);
-        if (paramView != null) {
-          paramView.setOnClickListener(paramBundle.a);
-        }
-        if (paramContext != null) {
-          paramContext.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.message);
-        }
-        return localObject1;
-        localObject2 = paramBundle.a(paramContext, null, null);
-        paramContext = (NowVideoLayout)((View)localObject2).findViewById(2131376583);
-        paramContext.a();
-        paramView = (View)localObject1;
-        localObject1 = localObject2;
-        break;
-        paramContext = paramView.jdField_a_of_type_ComTencentBizNowNowVideoLayout;
-      }
+      EditActivity.a(this.a, null);
     }
   }
   
-  public String b()
+  public boolean a(bejo parambejo)
   {
-    return "Layout18";
+    return parambejo != EditActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axxf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public class afep
-  implements ajub
+public abstract interface afep
 {
-  public afep(AddContactsView paramAddContactsView) {}
-  
-  public void a()
-  {
-    this.a.c = false;
-  }
+  public abstract void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afep
  * JD-Core Version:    0.7.0.1
  */

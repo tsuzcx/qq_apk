@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
-import actj;
-import ajya;
+import aekt;
+import alpo;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -18,7 +18,7 @@ public class ScanSuccessView
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  String jdField_a_of_type_JavaLangString = ajya.a(2131713528);
+  String jdField_a_of_type_JavaLangString = alpo.a(2131713900);
   boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -94,7 +94,7 @@ public class ScanSuccessView
     this.jdField_g_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_g_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_g_of_type_AndroidGraphicsPaint.setARGB(255, 255, 255, 255);
-    this.jdField_h_of_type_Int = actj.a(18.0F, getResources());
+    this.jdField_h_of_type_Int = aekt.a(18.0F, getResources());
     this.jdField_g_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_h_of_type_Int);
     Paint.FontMetrics localFontMetrics = this.jdField_f_of_type_AndroidGraphicsPaint.getFontMetrics();
     this.i = ((int)Math.ceil(localFontMetrics.descent - localFontMetrics.ascent));
@@ -196,7 +196,7 @@ public class ScanSuccessView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ScanSuccessView
  * JD-Core Version:    0.7.0.1
  */

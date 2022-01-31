@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aydz;
-import ayfg;
+import babw;
+import badd;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.List;
 import mqq.os.MqqHandler;
-import xmq;
+import zbj;
 
 class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13
   implements Runnable
@@ -41,7 +41,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13
       if (this.jdField_a_of_type_Int == 3000) {
         localList3 = this.jdField_a_of_type_JavaUtilList;
       }
-      bool = ayfg.a(str1, str2, str3, bool, false, 1, localList1, localList2, localList3);
+      bool = badd.a(str1, str2, str3, bool, false, 1, localList1, localList2, localList3);
       ThreadManager.getUIHandler().postDelayed(new TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.13.1(this, i, bool), 3000L);
       return;
       bool = false;
@@ -53,7 +53,7 @@ class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.13
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,19 @@
-import android.os.Bundle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface apwp
+class apwp
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  apwp(apwo paramapwo) {}
   
-  public abstract void a(int paramInt, String paramString, Bundle paramBundle);
-  
-  public abstract void a(Bundle paramBundle);
-  
-  public abstract void a(String paramString, Bundle paramBundle);
-  
-  public abstract void b(Bundle paramBundle);
-  
-  public abstract void c(Bundle paramBundle);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apwp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,37 @@
-import android.text.TextUtils;
+import android.content.res.Resources;
+import com.tencent.mobileqq.nearby.gift.TroopGiftPanelForNearby;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class auvr
+  extends bcjt
 {
-  public String a;
-  public String b;
+  public auvr(TroopGiftPanelForNearby paramTroopGiftPanelForNearby) {}
   
-  public String a()
+  public void a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.b);
-    localStringBuilder.append(" ");
-    localStringBuilder.append(this.a);
-    return localStringBuilder.toString();
+    alsy.a("gift_store", "suc_one", this.a.a(), TroopGiftPanelForNearby.a(this.a) + "", "", "");
   }
   
-  public void a(String paramString)
+  public void a(int paramInt, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
     }
-    paramString = paramString.split(" ");
-    if ((paramString != null) && (paramString.length == 2))
+    if (paramInt == 20007) {
+      QQToast.a(TroopGiftPanelForNearby.a(this.a), alpo.a(2131715805), 0).b(this.a.getResources().getDimensionPixelSize(2131298914));
+    }
+    for (;;)
     {
-      this.b = paramString[0];
-      this.a = paramString[1];
+      alsy.a("gift_store", "fail_one", this.a.a(), TroopGiftPanelForNearby.b(this.a) + "", "", "");
       return;
+      QQToast.a(TroopGiftPanelForNearby.b(this.a), alpo.a(2131715802), 0).b(this.a.getResources().getDimensionPixelSize(2131298914));
     }
-    this.b = "";
-    this.a = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auvr
  * JD-Core Version:    0.7.0.1
  */

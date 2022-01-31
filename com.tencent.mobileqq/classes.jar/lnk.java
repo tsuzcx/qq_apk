@@ -1,21 +1,20 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-
-public class lnk
+class lnk
 {
-  public String a;
-  public String b;
-  public String c;
+  byte jdField_a_of_type_Byte = 1;
+  byte b = 0;
+  byte c = 1;
+  byte d = 1;
+  byte e = 1;
+  byte f = 0;
+  byte g = 0;
+  byte h = 0;
+  byte i = 0;
   
-  public lnk(AVNotifyCenter paramAVNotifyCenter, String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-  }
+  lnk(lnf paramlnf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lnk
  * JD-Core Version:    0.7.0.1
  */

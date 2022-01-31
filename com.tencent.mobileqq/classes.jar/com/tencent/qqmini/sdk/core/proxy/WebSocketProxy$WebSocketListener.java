@@ -9,13 +9,15 @@ public abstract interface WebSocketProxy$WebSocketListener
   
   public abstract void onError(int paramInt1, int paramInt2, String paramString);
   
-  public abstract void onMessage(int paramInt, String paramString, byte[] paramArrayOfByte);
+  public abstract void onMessage(int paramInt, String paramString);
+  
+  public abstract void onMessage(int paramInt, byte[] paramArrayOfByte);
   
   public abstract void onOpen(int paramInt1, int paramInt2, Map<String, List<String>> paramMap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.WebSocketProxy.WebSocketListener
  * JD-Core Version:    0.7.0.1
  */

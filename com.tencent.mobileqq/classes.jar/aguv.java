@@ -1,18 +1,23 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+
 class aguv
-  implements bcwm
+  implements View.OnClickListener
 {
-  aguv(agut paramagut, Runnable paramRunnable) {}
+  aguv(aguu paramaguu) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 2) {
-      this.jdField_a_of_type_JavaLangRunnable.run();
-    }
+    aguu.a(this.a).a();
+    ChatActivityUtils.a(aguu.a(this.a), aguu.a(this.a), aguu.a(this.a).jdField_a_of_type_Int, aguu.a(this.a).jdField_a_of_type_JavaLangString, true, true, null, null);
+    azmj.b(aguu.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aguv
  * JD-Core Version:    0.7.0.1
  */

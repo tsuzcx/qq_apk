@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.intervideo.yiqikan;
 
-import arkv;
-import arla;
+import atbj;
+import atbo;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class WatchTogetherClientIPCModule$1
   implements Runnable
 {
-  public WatchTogetherClientIPCModule$1(arla paramarla, String paramString, WatchTogetherFloatingData paramWatchTogetherFloatingData) {}
+  public WatchTogetherClientIPCModule$1(atbo paramatbo, String paramString, WatchTogetherFloatingData paramWatchTogetherFloatingData) {}
   
   public void run()
   {
     boolean bool = true;
     if ("ACTION_SHOW_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) {
-      if (arkv.a().a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData) == 0) {
+      if (atbj.a().a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData) == 0) {
         if (QLog.isColorLevel()) {
           QLog.d("WatchTogetherClientIPCModule", 2, "call TogetherBusinessIPCModule show=" + bool);
         }
@@ -27,11 +27,11 @@ public class WatchTogetherClientIPCModule$1
       break;
       if ("ACTION_QUIT_WATCH_FLOATING_WINDOWS".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
       {
-        arkv.a().a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin(), this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurType(), true);
+        atbj.a().a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin(), this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurType(), true);
         return;
       }
     } while (!"ACTION_CLOSE_OR_QUIT_WATCH_FLOATING_WINDOWS".equals(this.jdField_a_of_type_JavaLangString));
-    arkv.a().b();
+    atbj.a().b();
   }
 }
 

@@ -1,113 +1,192 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.earlydownload.xmldata.SystemFaceData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.locks.Lock;
 
-class aphm
-  extends aowi
+public class aphm
+  extends apgu
+  implements Handler.Callback
 {
-  aphm(aphl paramaphl, ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo) {}
+  public static final String c = SystemFaceData.class.getSimpleName();
+  private Handler a = new Handler(Looper.getMainLooper(), this);
+  private ArrayList<String> b;
   
-  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
+  public aphm(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_Aphl.a())
+    super("qq.android.system.face.gifv14", paramQQAppInterface);
+  }
+  
+  private void c(String paramString)
+  {
+    int j = 0;
+    int i = j;
+    try
     {
-      QLog.e("C2CFileDownloader<FileAssistant>", 1, "=_= vk [CS Replay]id[" + String.valueOf(aphl.a(this.jdField_a_of_type_Aphl).nSessionId) + "] but isStoped");
-      return;
+      int m = Integer.parseInt(paramString);
+      i = j;
+      int k = bahu.a[m];
+      i = j;
+      j = bahu.b[m];
+      i = j;
+      localURL = new URL("emotion", BaseApplicationImpl.getContext().getResources().getResourceEntryName(k), "");
+      i = j;
     }
-    this.jdField_a_of_type_Aphl.a.d();
-    if (!paramBoolean)
+    catch (MalformedURLException localMalformedURLException)
     {
-      this.jdField_a_of_type_Aphl.a.b(paramLong1);
-      this.jdField_a_of_type_Aphl.a(null, 0);
-      return;
-    }
-    if (!bbfj.d(BaseApplication.getContext()))
-    {
-      aphl.a(this.jdField_a_of_type_Aphl).a();
-      this.jdField_a_of_type_Aphl.a(null, 0);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.fileSize = aphl.a(this.jdField_a_of_type_Aphl).fileSize;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.isSupportHttps = false;
-    paramInt = paramShort;
-    if (apei.b(aphl.a(this.jdField_a_of_type_Aphl)))
-    {
-      paramInt = paramShort;
-      if (paramBundle != null)
+      Object localObject;
+      do
       {
-        paramString6 = paramBundle.getString("strHttpsDomain");
-        short s = paramBundle.getShort("httpsPort", (short)0);
-        paramInt = paramShort;
-        if (!TextUtils.isEmpty(paramString6))
+        for (;;)
         {
-          paramShort = s;
-          if (s == 0) {
-            paramShort = 443;
+          URL localURL;
+          if (QLog.isColorLevel()) {
+            QLog.d(c, 2, "reloadFaceOnUI() ", localMalformedURLException);
           }
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.isSupportHttps = true;
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.sslCName = paramString6;
-          paramInt = paramShort;
+          localObject = null;
         }
-      }
+        Drawable localDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(i);
+        localObject = URLDrawable.getDrawable((URL)localObject, localDrawable, localDrawable, true);
+        if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(c, 2, "reloadFaceOnUI() idx=" + paramString + " d.status!=successed||loading. go to restartDownload");
+          }
+          ((URLDrawable)localObject).addHeader("faceIdx", paramString);
+          ((URLDrawable)localObject).restartDownload();
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(c, 2, "reloadFaceOnUI() idx=" + paramString + " d.status=" + ((URLDrawable)localObject).getStatus() + " do nothing..");
     }
-    if ((TextUtils.isEmpty(paramString3)) || (paramByteStringMicro == null))
+    if (localURL == null) {
+      return;
+    }
+  }
+  
+  public int a()
+  {
+    return 10055;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return SystemFaceData.class;
+  }
+  
+  public String a()
+  {
+    return "actEarlySysFaceGif";
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      if ((paramLong1 == -6101L) || (paramLong1 == -7003L)) {
-        aphl.a(this.jdField_a_of_type_Aphl).status = 16;
+      File localFile = BaseApplicationImpl.getContext().getDir("systemface", 0);
+      bdcs.a(paramString, localFile.getAbsolutePath(), true);
+      if (QLog.isColorLevel()) {
+        QLog.d(c, 2, "doOnDownloadFinish() uncompressZip to:" + localFile.getAbsolutePath());
       }
-      if (paramLong1 == 0L)
-      {
-        this.jdField_a_of_type_Aphl.a.a.b = 9048L;
-        this.jdField_a_of_type_Aphl.a.a.a = 2L;
-        this.jdField_a_of_type_Aphl.a.a(5);
-        this.jdField_a_of_type_Aphl.a.a(false);
-      }
+      super.a(paramString);
+      this.a.sendEmptyMessage(196864);
+      return;
+    }
+    catch (IOException localIOException)
+    {
       for (;;)
       {
-        this.jdField_a_of_type_Aphl.a(null, (int)paramLong1);
-        return;
-        this.jdField_a_of_type_Aphl.a.c(paramLong1);
+        localIOException.printStackTrace();
       }
     }
-    if ((paramString1 != null) && (paramString1.length() > 0))
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public void b(String paramString)
+  {
+    apgj.a.lock();
+    try
     {
-      QLog.e("C2CFileDownloader<FileAssistant>", 1, "=_= ^> [CS Replay]id[" + String.valueOf(aphl.a(this.jdField_a_of_type_Aphl).nSessionId) + "] will show taost, retCode[" + String.valueOf(paramLong1) + "], retMsg:" + paramString1);
-      aphl.a(this.jdField_a_of_type_Aphl).a().a(aphl.a(this.jdField_a_of_type_Aphl).uniseq, aphl.a(this.jdField_a_of_type_Aphl).nSessionId, aphl.a(this.jdField_a_of_type_Aphl).peerUin, aphl.a(this.jdField_a_of_type_Aphl).peerType, 4, null, (int)paramLong1, paramString1);
+      if (this.b == null) {
+        this.b = new ArrayList();
+      }
+      if (!this.b.contains(paramString))
+      {
+        this.b.add(0, paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d(c, 2, "addWaittingFace idx=" + paramString);
+        }
+      }
+      return;
     }
-    paramString1 = paramList;
-    if (paramList == null) {
-      paramString1 = new ArrayList();
+    finally
+    {
+      apgj.a.unlock();
     }
-    QLog.i("C2CFileDownloader<FileAssistant>", 1, "get lstUrl size:" + paramString1.size());
-    paramByteStringMicro = new ArrayList();
-    paramString1 = paramString1.iterator();
-    while (paramString1.hasNext()) {
-      paramByteStringMicro.add(new ExcitingTransferHostInfo((String)paramString1.next(), paramInt));
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.mHosts = ((ExcitingTransferHostInfo[])paramByteStringMicro.toArray(new ExcitingTransferHostInfo[paramByteStringMicro.size()]));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.strCookie = ("Cookie:t=0;v=" + AppSetting.a() + ";" + paramString2 + ";\r\n");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.serverPath = paramString4;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.strTempFilePath = this.jdField_a_of_type_Aphl.b();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.strFileName = paramString5;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadReqInfo.strSaveFileDir = aphl.a(this.jdField_a_of_type_Aphl).b();
-    aphl.a(this.jdField_a_of_type_Aphl).status = 2;
-    this.jdField_a_of_type_Aphl.a.e();
-    aphl.a(this.jdField_a_of_type_Aphl);
+    for (;;)
+    {
+      return false;
+      paramMessage = null;
+      if ((this.b == null) || (this.b.size() <= 0)) {
+        continue;
+      }
+      apgj.a.lock();
+      try
+      {
+        if (this.b.size() > 0) {
+          paramMessage = (String)this.b.remove(0);
+        }
+        apgj.a.unlock();
+        if ((paramMessage == null) || (paramMessage.length() <= 0)) {
+          continue;
+        }
+        c(paramMessage);
+        if (this.b.size() <= 0) {
+          continue;
+        }
+        this.a.sendEmptyMessageDelayed(196864, 2000L);
+        return false;
+      }
+      finally
+      {
+        apgj.a.unlock();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aphm
  * JD-Core Version:    0.7.0.1
  */

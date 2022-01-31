@@ -19,7 +19,7 @@ import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.PushRegisterInfo;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.msf.sdk.x;
+import com.tencent.mobileqq.msf.sdk.z;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -556,7 +556,7 @@ public class MsfCore
         }
       }
     }
-    com.tencent.mobileqq.msf.service.g.t = bool1;
+    com.tencent.mobileqq.msf.service.j.t = bool1;
     t.c();
     if (Build.VERSION.SDK_INT >= 26) {
       this.mDeepSleepDetector = new com.tencent.mobileqq.msf.core.net.c.a(u.f());
@@ -771,9 +771,9 @@ public class MsfCore
     this.pushManager.s().a(paramString1, paramBoolean);
   }
   
-  public void proxyRegister(x paramx, ToServiceMsg paramToServiceMsg)
+  public void proxyRegister(com.tencent.mobileqq.msf.sdk.y paramy, ToServiceMsg paramToServiceMsg)
   {
-    this.pushManager.a(paramx, paramToServiceMsg);
+    this.pushManager.a(paramy, paramToServiceMsg);
   }
   
   public void proxyUnRegister(String paramString, ToServiceMsg paramToServiceMsg)
@@ -812,7 +812,7 @@ public class MsfCore
   
   public void registerCmdCall(ToServiceMsg paramToServiceMsg)
   {
-    CommandCallbackerInfo localCommandCallbackerInfo = com.tencent.mobileqq.msf.sdk.y.a(paramToServiceMsg);
+    CommandCallbackerInfo localCommandCallbackerInfo = z.a(paramToServiceMsg);
     this.pushManager.a(localCommandCallbackerInfo, paramToServiceMsg);
   }
   
@@ -993,13 +993,13 @@ public class MsfCore
   
   public void unRegisterCmdCall(ToServiceMsg paramToServiceMsg)
   {
-    CommandCallbackerInfo localCommandCallbackerInfo = com.tencent.mobileqq.msf.sdk.y.a(paramToServiceMsg);
+    CommandCallbackerInfo localCommandCallbackerInfo = z.a(paramToServiceMsg);
     this.pushManager.b(localCommandCallbackerInfo, paramToServiceMsg);
   }
   
   public void unRegisterPush(ToServiceMsg paramToServiceMsg)
   {
-    PushRegisterInfo localPushRegisterInfo = com.tencent.mobileqq.msf.sdk.y.b(paramToServiceMsg);
+    PushRegisterInfo localPushRegisterInfo = z.b(paramToServiceMsg);
     this.pushManager.a(localPushRegisterInfo, paramToServiceMsg);
     if ((this.accountCenter != null) && (!TextUtils.isEmpty(paramToServiceMsg.getUin())) && (this.accountCenter.i().equals(paramToServiceMsg.getUin()))) {
       this.accountCenter.c("0", "unRegPush");

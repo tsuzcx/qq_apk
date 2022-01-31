@@ -3,12 +3,12 @@ package cooperation.qzone.widget;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhvi;
+import bjwt;
 
 public class RedTouchExtendButton$RedInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RedInfo> CREATOR = new bhvi();
+  public static final Parcelable.Creator<RedInfo> CREATOR = new bjwt();
   public int a;
   public String a;
   public boolean a;
@@ -79,7 +79,7 @@ public class RedTouchExtendButton$RedInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.widget.RedTouchExtendButton.RedInfo
  * JD-Core Version:    0.7.0.1
  */

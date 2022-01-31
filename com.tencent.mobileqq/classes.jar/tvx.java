@@ -1,47 +1,110 @@
-import java.util.List;
+import com.tencent.biz.qqcircle.events.QCircleFakeFeed;
+import cooperation.qzone.LbsDataV2.PoiInfo;
+import cooperation.qzone.model.LabelInfo;
+import java.util.ArrayList;
 
-class tvx
-  implements twn
+public class tvx
 {
-  tvx(tvv paramtvv) {}
+  private QCircleFakeFeed a = new QCircleFakeFeed();
   
-  public void a()
+  public QCircleFakeFeed a()
   {
-    tvv.a(this.a, this.a.a.a(tvv.a(this.a), 5));
-    List localList = tvv.a(this.a).a;
-    if ((tvv.a(this.a) == null) && (localList.size() > 0)) {
-      tvv.a(this.a, ((twm)localList.get(0)).a);
-    }
-    label199:
-    for (;;)
-    {
-      ved.d("Q.qqstory.player.data.SimpleDataProvider", "current group:%s", new Object[] { tvv.a(this.a) });
-      tvv.a(this.a).a(tvv.a(this.a), "");
-      return;
-      int i = 0;
-      for (;;)
-      {
-        if (i >= localList.size()) {
-          break label199;
-        }
-        if (((twm)localList.get(i)).a.equals(tvv.a(this.a)))
-        {
-          if (localList.size() <= i + 1) {
-            break;
-          }
-          tvv.a(this.a, ((twm)localList.get(i + 1)).a);
-          break;
-        }
-        i += 1;
-      }
-    }
+    return this.a;
   }
   
-  public void a(twl paramtwl, String paramString, boolean paramBoolean) {}
+  public tvx a(int paramInt)
+  {
+    QCircleFakeFeed.a(this.a, paramInt);
+    return this;
+  }
+  
+  public tvx a(long paramLong)
+  {
+    QCircleFakeFeed.a(this.a, paramLong);
+    return this;
+  }
+  
+  public tvx a(LbsDataV2.PoiInfo paramPoiInfo)
+  {
+    QCircleFakeFeed.a(this.a, paramPoiInfo);
+    return this;
+  }
+  
+  public tvx a(String paramString)
+  {
+    QCircleFakeFeed.a(this.a, paramString);
+    return this;
+  }
+  
+  public tvx a(ArrayList<String> paramArrayList)
+  {
+    QCircleFakeFeed.a(this.a, paramArrayList);
+    return this;
+  }
+  
+  public tvx b(int paramInt)
+  {
+    QCircleFakeFeed.b(this.a, paramInt);
+    return this;
+  }
+  
+  public tvx b(String paramString)
+  {
+    QCircleFakeFeed.b(this.a, paramString);
+    return this;
+  }
+  
+  public tvx b(ArrayList<LabelInfo> paramArrayList)
+  {
+    QCircleFakeFeed.b(this.a, paramArrayList);
+    return this;
+  }
+  
+  public tvx c(int paramInt)
+  {
+    QCircleFakeFeed.c(this.a, paramInt);
+    return this;
+  }
+  
+  public tvx c(String paramString)
+  {
+    QCircleFakeFeed.c(this.a, paramString);
+    return this;
+  }
+  
+  public tvx d(int paramInt)
+  {
+    QCircleFakeFeed.d(this.a, paramInt);
+    return this;
+  }
+  
+  public tvx d(String paramString)
+  {
+    QCircleFakeFeed.d(this.a, paramString);
+    return this;
+  }
+  
+  public tvx e(String paramString)
+  {
+    QCircleFakeFeed.e(this.a, paramString);
+    return this;
+  }
+  
+  public tvx f(String paramString)
+  {
+    QCircleFakeFeed.f(this.a, paramString);
+    return this;
+  }
+  
+  public tvx g(String paramString)
+  {
+    QCircleFakeFeed.g(this.a, paramString);
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvx
  * JD-Core Version:    0.7.0.1
  */

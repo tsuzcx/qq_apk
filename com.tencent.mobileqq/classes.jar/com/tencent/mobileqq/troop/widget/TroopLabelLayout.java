@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.widget;
 
 import NearbyGroup.GroupLabel;
-import actj;
-import ajya;
+import aekt;
+import alpo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -17,10 +17,11 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bbdv;
-import bbll;
+import bdcq;
+import bdkf;
 import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.mobileqq.data.MayKnowRecommend.MayKnowRecommendLabel;
+import com.tencent.mobileqq.data.RecommendLabel;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -118,7 +119,7 @@ public class TroopLabelLayout
             }
             n = android.graphics.Color.rgb(0, 202, 252);
           }
-          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845021);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845019))
+          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845386);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845384))
           {
             localTroopLabelTextView = new TroopLabelTextView(getContext(), n, -1, this.jdField_b_of_type_Int);
             if (j >= this.jdField_a_of_type_Int) {
@@ -165,7 +166,7 @@ public class TroopLabelLayout
               if (((m == 0) || (i != 1)) && ((m != 0) || (i != 0))) {
                 break;
               }
-              localTroopLabelTextView.setMaxWidth(bbll.a(150.0F));
+              localTroopLabelTextView.setMaxWidth(bdkf.a(150.0F));
               break;
             }
             localTroopLabelTextView.setText("");
@@ -244,11 +245,11 @@ public class TroopLabelLayout
           ((TroopLabelTextView)???).bringToFront();
           if (this.jdField_b_of_type_Int == 2)
           {
-            k = actj.a(42.0F, getResources());
-            n = actj.a(16.0F, getResources());
+            k = aekt.a(42.0F, getResources());
+            n = aekt.a(16.0F, getResources());
             ((TroopLabelTextView)???).setWidth(k);
             ((TroopLabelTextView)???).setHeight(n);
-            ((TroopLabelTextView)???).setMaskImage(2130843246);
+            ((TroopLabelTextView)???).setMaskImage(2130843430);
             if (localGroupLabel.strWording.length() < 2) {
               break label685;
             }
@@ -264,13 +265,13 @@ public class TroopLabelLayout
             if (this.jdField_b_of_type_Int != 0) {
               break label691;
             }
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130849596);
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130850037);
           }
           k = (int)(((TroopLabelTextView)???).getTextSize() * 0.8D + 0.5D);
           this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, k, k);
           ((SpannableString)localObject2).setSpan(new ImageSpan(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 1), 0, "[icon]".length(), 17);
           ((TroopLabelTextView)???).setText((CharSequence)localObject2);
-          ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording + ajya.a(2131715484));
+          ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording + alpo.a(2131715856));
         }
         for (;;)
         {
@@ -288,7 +289,7 @@ public class TroopLabelLayout
           break label357;
           k = 1;
           break label431;
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130843244);
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130843428);
           break label525;
           ((TroopLabelTextView)???).setText(localGroupLabel.strWording + "");
           ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording);
@@ -300,7 +301,7 @@ public class TroopLabelLayout
     }
   }
   
-  public boolean a(List<MayKnowRecommend.MayKnowRecommendLabel> paramList, int paramInt1, int paramInt2, int paramInt3)
+  public boolean a(List<RecommendLabel> paramList, int paramInt1, int paramInt2, int paramInt3)
   {
     this.jdField_b_of_type_Int = paramInt3;
     paramInt3 = 0;
@@ -332,7 +333,7 @@ public class TroopLabelLayout
             }
             m = android.graphics.Color.rgb(0, 202, 252);
           }
-          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845021);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845019))
+          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845386);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845384))
           {
             localTroopLabelTextView = new TroopLabelTextView(getContext(), m, -1, this.jdField_b_of_type_Int);
             if (i >= this.jdField_a_of_type_Int) {
@@ -362,23 +363,23 @@ public class TroopLabelLayout
       {
         if ((paramList != null) && (paramList.size() > m))
         {
-          localObject = (MayKnowRecommend.MayKnowRecommendLabel)paramList.get(m);
-          m = ((MayKnowRecommend.MayKnowRecommendLabel)localObject).edging_color;
-          int n = ((MayKnowRecommend.MayKnowRecommendLabel)localObject).text_color;
+          localObject = (RecommendLabel)paramList.get(m);
+          m = ((RecommendLabel)localObject).edging_color;
+          int n = ((RecommendLabel)localObject).text_color;
           localTroopLabelTextView = new TroopLabelTextView(getContext(), m, n, this.jdField_b_of_type_Int);
           if (i < this.jdField_a_of_type_Int)
           {
             addView(localTroopLabelTextView);
             localTroopLabelTextView.setEllipsize(TextUtils.TruncateAt.END);
             localTroopLabelTextView.bringToFront();
-            if (((MayKnowRecommend.MayKnowRecommendLabel)localObject).bytes_name != null)
+            if (((RecommendLabel)localObject).bytes_name != null)
             {
-              localTroopLabelTextView.setText(((MayKnowRecommend.MayKnowRecommendLabel)localObject).bytes_name);
-              localTroopLabelTextView.setContentDescription(((MayKnowRecommend.MayKnowRecommendLabel)localObject).bytes_name);
+              localTroopLabelTextView.setText(((RecommendLabel)localObject).bytes_name);
+              localTroopLabelTextView.setContentDescription(((RecommendLabel)localObject).bytes_name);
               if (((k == 0) || (paramInt3 != 1)) && ((k != 0) || (paramInt3 != 0))) {
                 break;
               }
-              localTroopLabelTextView.setMaxWidth(bbll.a(150.0F));
+              localTroopLabelTextView.setMaxWidth(bdkf.a(150.0F));
               break;
             }
             localTroopLabelTextView.setText("");
@@ -405,7 +406,7 @@ public class TroopLabelLayout
   {
     int j = getPaddingLeft();
     int k = getPaddingRight();
-    int m = (int)bbdv.a(getContext(), 2.0F);
+    int m = (int)bdcq.a(getContext(), 2.0F);
     int n = getChildCount();
     paramInt2 = getPaddingLeft();
     int i1 = getPaddingTop();

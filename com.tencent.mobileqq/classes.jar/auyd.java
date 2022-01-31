@@ -1,48 +1,67 @@
-import QC.UniBusiCommItemAidInfo;
-import QC.UniBusiGetOneItemWithCheckRsp;
-import QC.UniBusiSimpleItemDetail;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.now.NowNearbyVideoCommentProto.DelCommentResp;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 class auyd
-  implements auyi
+  extends nab
 {
-  auyd(auyb paramauyb) {}
+  auyd(auya paramauya, auxx paramauxx, Comments.Comment paramComment) {}
   
-  public void a(boolean paramBoolean, UniBusiGetOneItemWithCheckRsp paramUniBusiGetOneItemWithCheckRsp)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (auyb.a(this.a) == null) {}
-    do
+    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      do
+      paramBundle = new oidb_0xada.RspBody();
+      try
       {
-        return;
-        if (paramBoolean) {
-          break label195;
+        paramBundle.mergeFrom(paramArrayOfByte);
+        QLog.i("CommentsDataSource", 1, "err_msg:" + paramBundle.err_msg.get());
+        if (paramBundle.busi_buf.has())
+        {
+          paramArrayOfByte = new NowNearbyVideoCommentProto.DelCommentResp();
+          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+          if (QLog.isColorLevel()) {
+            QLog.i("CommentsDataSource", 1, "ret:" + paramArrayOfByte.result.get());
+          }
+          this.jdField_a_of_type_Auxx.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, (int)paramArrayOfByte.result.get());
+          paramArrayOfByte = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (paramArrayOfByte == null) {
+            return;
+          }
+          ((avms)paramArrayOfByte.getManager(263)).a(auya.a(this.jdField_a_of_type_Auya).a, this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment.a);
+          return;
         }
-        if ((paramUniBusiGetOneItemWithCheckRsp == null) || (paramUniBusiGetOneItemWithCheckRsp.stDetail == null)) {
-          break;
-        }
-      } while (paramUniBusiGetOneItemWithCheckRsp.stDetail.itemId != auyb.a(this.a).itemId);
-      if (paramUniBusiGetOneItemWithCheckRsp.ret == 0)
-      {
-        auyb.a(this.a, false);
-        this.a.b();
+        QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
+        this.jdField_a_of_type_Auxx.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
         return;
       }
-    } while (!auyb.a(this.a));
-    auyb.a(this.a, auyb.a(this.a), auyb.a(this.a).stAidInfo.androidAid, auyb.a(this.a).stAidInfo.payType, auyb.a(this.a).stAidInfo.errMsg, auyb.a(this.a).stAidInfo.month);
-    return;
-    auyb.a(this.a, false);
-    bcql.a(auyb.a(this.a), ajya.a(2131715137), 0).a();
-    auyb.a(this.a, null);
-    auyb.a(this.a, -1);
-    return;
-    label195:
-    this.a.b();
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("CommentsDataSource", 1, "merge delete resp data error");
+        this.jdField_a_of_type_Auxx.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+        return;
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Auxx.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelComments$Comment, -1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auyd
  * JD-Core Version:    0.7.0.1
  */

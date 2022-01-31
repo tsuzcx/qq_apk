@@ -1,8 +1,8 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import bhcg;
-import bhci;
+import bjdq;
+import bjds;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ public class QzoneOfflineCacheHelper
   private static final int UPDATE_LRU_FILE_DELAY_TIME = 20000;
   private static final byte[] URL_LOCK = new byte[0];
   private static ConcurrentHashMap<String, ArrayList<Object>> downloadindUrlMap = new ConcurrentHashMap();
-  private static bhci mFileCache;
+  private static bjds mFileCache;
   
   public static boolean checkFileIfExist(String paramString)
   {
@@ -59,7 +59,7 @@ public class QzoneOfflineCacheHelper
         str2 = urlKey2FileName(paramString1, true);
         if (!paramBoolean)
         {
-          str1 = bhcg.e().a("dressup");
+          str1 = bjdq.e().a("dressup");
           localFile1 = new File(str1);
           if (!localFile1.exists()) {
             localFile1.mkdirs();
@@ -154,10 +154,10 @@ public class QzoneOfflineCacheHelper
     }
   }
   
-  private static bhci getFileCache()
+  private static bjds getFileCache()
   {
     if (mFileCache == null) {
-      mFileCache = bhcg.b();
+      mFileCache = bjdq.b();
     }
     return mFileCache;
   }
@@ -245,7 +245,7 @@ public class QzoneOfflineCacheHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneOfflineCacheHelper
  * JD-Core Version:    0.7.0.1
  */

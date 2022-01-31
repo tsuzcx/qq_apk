@@ -1,23 +1,49 @@
-import android.app.Activity;
-import android.os.Bundle;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import android.os.IBinder;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import java.util.Properties;
 
 public class bjcg
+  implements OnPluginInstallListener
 {
-  public Bundle a;
-  public bjcj a;
-  public WeakReference<Activity> a;
+  public bjcg(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity, long paramLong) {}
   
-  public bjcg(bjcj parambjcj, Bundle paramBundle, Activity paramActivity)
+  public IBinder asBinder()
   {
-    this.jdField_a_of_type_Bjcj = parambjcj;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    return null;
+  }
+  
+  public void onInstallBegin(String paramString)
+  {
+    QLog.i("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallBegin");
+  }
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    QLog.i("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallDownloadProgress");
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    QLog.e("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallError");
+    QzoneVerticalVideoDownloadActivity.access$000(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).sendEmptyMessage(1012);
+    paramString = new Properties();
+    paramString.put("status", "installError");
+    QzoneVerticalVideoDownloadActivity.access$1000("vertical_layer_plugin_depend", paramString);
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    QLog.i("QzoneVerticalVideoDownloadActivity", 1, " qzone_plugin onInstallFinish");
+    QzoneVerticalVideoDownloadActivity.access$000(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).sendEmptyMessage(1011);
+    QzoneVerticalVideoDownloadActivity.access$900("vertical_layer_plugin_depend", "status", "installFinish", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjcg
  * JD-Core Version:    0.7.0.1
  */

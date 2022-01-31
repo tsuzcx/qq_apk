@@ -1,43 +1,68 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-class aotl
-  implements aptw
+public class aotl
+  extends aofy<aotk>
 {
-  aotl(aotk paramaotk, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void a()
+  public static aotk a()
   {
-    this.jdField_a_of_type_Aotk.a.a.a().ac();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
-      QfileBaseRecentFileTabView.t(this.jdField_a_of_type_Aotk.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-    }
-    ajum localajum;
-    ArrayList localArrayList;
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
-        break;
-      }
-      localajum = (ajum)QfileBaseRecentFileTabView.u(this.jdField_a_of_type_Aotk.a).a(8);
-      localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
-    } while (localajum.a(localArrayList));
-    aptx.a(2131692665);
-    return;
-    QfileBaseRecentFileTabView.v(this.jdField_a_of_type_Aotk.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    return (aotk)aogj.a().a(483);
   }
   
-  public void b() {}
+  public int a()
+  {
+    return 483;
+  }
+  
+  @NonNull
+  public aotk a(int paramInt)
+  {
+    return new aotk();
+  }
+  
+  @Nullable
+  public aotk a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return aotk.a(paramArrayOfaogf);
+    }
+    return null;
+  }
+  
+  public Class<aotk> a()
+  {
+    return aotk.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aotk paramaotk)
+  {
+    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt("key_tencent_doc_history_tab_tips_count", 0).apply();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aotl
  * JD-Core Version:    0.7.0.1
  */

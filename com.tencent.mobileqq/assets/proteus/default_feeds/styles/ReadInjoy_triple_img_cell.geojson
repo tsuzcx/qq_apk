@@ -1,7 +1,7 @@
 {
     "ReadInjoy_triple_img_cell":{
 
-        "view_type":"cell",
+        "view_type":"container",
         "direction":"vertical",
         "height":{
             "type":"wrap_content"

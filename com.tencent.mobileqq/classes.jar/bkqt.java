@@ -1,19 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
 
 class bkqt
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  bkqt(bkqp parambkqp) {}
+  bkqt(bkqr parambkqr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
+    if ((bkqr.a(this.a) != null) && (bkqr.b(this.a)))
+    {
+      bkqr.a(this.a).setAlpha(1.0F);
+      bkqr.a(this.a).setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkqt
  * JD-Core Version:    0.7.0.1
  */

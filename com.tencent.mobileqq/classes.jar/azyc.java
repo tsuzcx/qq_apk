@@ -1,30 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import java.io.File;
+import java.util.concurrent.Callable;
 
-public class azyc
-  implements View.OnTouchListener
+class azyc
+  implements Callable<Boolean>
 {
-  public azyc(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  azyc(azya paramazya, File paramFile) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public Boolean a()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+    if ((azya.a(this.jdField_a_of_type_Azya).exists()) && (this.jdField_a_of_type_JavaIoFile == azya.a(this.jdField_a_of_type_Azya))) {}
+    for (boolean bool = true;; bool = false) {
+      return Boolean.valueOf(bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azyc
  * JD-Core Version:    0.7.0.1
  */

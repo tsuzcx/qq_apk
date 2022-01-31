@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.apollo.store;
 
-import ajig;
+import akzs;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
 import android.os.Environment;
 import android.os.Message;
 import android.text.TextUtils;
-import bbef;
+import bdda;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 import mqq.os.MqqHandler;
-import vyf;
+import xmx;
 
 class ApolloStoreActivity$3
   implements Runnable
@@ -51,8 +51,8 @@ class ApolloStoreActivity$3
           {
             try
             {
-              bbef.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject);
-              if ((!TextUtils.isEmpty(str)) && (vyf.c(str))) {
+              bdda.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject);
+              if ((!TextUtils.isEmpty(str)) && (xmx.c(str))) {
                 break label275;
               }
               if (!QLog.isColorLevel()) {
@@ -94,7 +94,7 @@ class ApolloStoreActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloStoreActivity.3
  * JD-Core Version:    0.7.0.1
  */

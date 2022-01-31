@@ -1,14 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public abstract interface rkf
+class rkf
+  implements DialogInterface.OnCancelListener
 {
-  public abstract BaseData a();
+  rkf(rkd paramrkd) {}
   
-  public abstract void a();
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkf
  * JD-Core Version:    0.7.0.1
  */

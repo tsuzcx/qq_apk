@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
-class acwr
-  implements adkd
+public class acwr
+  implements Animation.AnimationListener
 {
-  acwr(acwl paramacwl) {}
+  public acwr(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
   
-  public void a(IntimateInfo.MemoryDayInfo paramMemoryDayInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    acwl.a(this.a);
+    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.f) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwr
  * JD-Core Version:    0.7.0.1
  */

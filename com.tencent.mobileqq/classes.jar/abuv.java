@@ -1,43 +1,125 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.Doraemon.monitor.APIQuotaEntity;
+import com.tencent.mobileqq.Doraemon.monitor.APIQuotaItem;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain.1;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain.3;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain.4;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain.5;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.oidb_0xb6f.Identity;
+import tencent.im.oidb.oidb_0xb6f.ReportFreqReqBody;
+import tencent.im.oidb.oidb_0xb6f.ReqBody;
 
 public class abuv
-  implements bfph
+  implements abut
 {
-  public abuv(QQLSActivity paramQQLSActivity, MessageForPtt paramMessageForPtt, bfpc parambfpc) {}
+  abuu a;
   
-  public void OnClick(View paramView, int paramInt)
+  private void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
   {
-    aanz.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    paramView = aanz.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), new SessionInfo(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    if (paramView != null) {}
-    try
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (localAppRuntime == null)
     {
-      ((MessageForPtt)paramView).c2cViaOffline = true;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
-      aanz.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.d();
-      this.jdField_a_of_type_Bfpc.dismiss();
+      QLog.e("DoraemonOpenAPI.report", 1, "app is null");
       return;
     }
-    catch (RuntimeException paramView)
+    oidb_0xb6f.ReqBody localReqBody = new oidb_0xb6f.ReqBody();
+    localReqBody.report_freq_req.identity.apptype.set(paramInt1);
+    try
     {
-      for (;;)
-      {
-        paramView.printStackTrace();
-        bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, paramView.getMessage(), 0).a();
+      localReqBody.report_freq_req.identity.appid.set(Integer.parseInt(paramString2));
+      localReqBody.report_freq_req.identity.apiName.set(paramString3);
+      localReqBody.report_freq_req.identity.setHasFlag(true);
+      localReqBody.report_freq_req.invoke_times.set(paramInt2);
+      localReqBody.report_freq_req.setHasFlag(true);
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.report", 2, "send key=" + paramString1 + ", api=" + paramString3 + ", count=" + paramInt2);
       }
+      mzy.a(localAppRuntime, new abuw(this, paramString1, paramString3, paramInt2), localReqBody.toByteArray(), "OidbSvc.0xb6f_1", 2927, 1, null, 0L);
+      return;
     }
+    catch (NumberFormatException paramString1)
+    {
+      QLog.e("DoraemonOpenAPI.report", 1, "parse appid error appid=" + paramString2, paramString1);
+    }
+  }
+  
+  private void a(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.report", 2, "updateFrequenceData key=" + paramString1 + ", api=" + paramString3 + ", remain=" + paramLong1 + ", exp=" + paramLong2);
+    }
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface)) {
+      ThreadManager.post(new DoraemonAPIReporterMain.3(this, (QQAppInterface)localObject, paramInt, paramString2, paramString3, paramLong1, paramLong2), 5, null, true);
+    }
+    for (;;)
+    {
+      localObject = this.a;
+      if (localObject != null) {
+        ThreadManager.getUIHandler().post(new DoraemonAPIReporterMain.4(this, (abuu)localObject, paramString1, paramInt, paramString2, paramString3, paramLong1, paramLong2));
+      }
+      return;
+      QLog.e("DoraemonOpenAPI.report", 1, "app is null");
+    }
+  }
+  
+  private void a(String paramString, List<APIQuotaEntity> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.report", 2, "updateFrequenceDataBatch key=" + paramString);
+    }
+    abuu localabuu = this.a;
+    if (localabuu != null)
+    {
+      HashMap localHashMap = new HashMap(paramList.size());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        APIQuotaEntity localAPIQuotaEntity = (APIQuotaEntity)paramList.next();
+        APIQuotaItem localAPIQuotaItem = new APIQuotaItem();
+        localAPIQuotaItem.remainTimes = localAPIQuotaEntity.remainTimes;
+        localAPIQuotaItem.expireTimeMillis = localAPIQuotaEntity.expireTimeMillis;
+        localHashMap.put(localAPIQuotaEntity.apiName, localAPIQuotaItem);
+      }
+      ThreadManager.getUIHandler().post(new DoraemonAPIReporterMain.5(this, localabuu, paramString, localHashMap));
+    }
+  }
+  
+  public void a(abuu paramabuu)
+  {
+    this.a = paramabuu;
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(localAppRuntime instanceof QQAppInterface))
+    {
+      QLog.e("DoraemonOpenAPI.report", 1, "app is null");
+      return;
+    }
+    ThreadManager.post(new DoraemonAPIReporterMain.1(this, (QQAppInterface)localAppRuntime, paramInt, paramString2, paramString1), 5, null, true);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    a(paramString1, paramInt, paramString2, paramString3, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abuv
  * JD-Core Version:    0.7.0.1
  */

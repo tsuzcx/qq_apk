@@ -1,94 +1,44 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import java.io.File;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar.1.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class bblg
+  extends alsi
 {
-  public static Handler.Callback a;
-  public static Handler a;
-  public static final String a;
+  bblg(bblf parambblf) {}
   
-  static
+  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
-    jdField_a_of_type_JavaLangString = ajsd.aW + ".VasResourceCheck/temp.json";
-    jdField_a_of_type_AndroidOsHandler$Callback = new bbli();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = (BubbleManager)paramQQAppInterface.getManager(44);
-    if (localObject != null)
+    if ((!bblf.a(this.a)) || (bblf.a(this.a) == null)) {}
+    for (;;)
     {
-      bbdx.a(((BubbleManager)localObject).a().getAbsolutePath(), false);
-      ((BubbleManager)localObject).a();
+      return;
+      if (paramList == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopAioKeywordTipBar", 2, "msgList == null is true");
+        }
+      }
+      else
+      {
+        paramList = paramList.iterator();
+        do
+        {
+          if (!paramList.hasNext()) {
+            break;
+          }
+        } while (((MessageRecord)paramList.next()).uniseq != bblf.a(this.a).uniseq);
+        for (int i = 1; i != 0; i = 0)
+        {
+          ThreadManager.getUIHandler().post(new TroopAioKeywordTipBar.1.1(this));
+          return;
+        }
+      }
     }
-    localObject = (ho)paramQQAppInterface.getManager(42);
-    if (localObject != null)
-    {
-      bbdx.a(((ho)localObject).a().getAbsolutePath(), false);
-      ((ho)localObject).a();
-    }
-    localObject = (AvatarPendantManager)paramQQAppInterface.getManager(46);
-    if (localObject != null)
-    {
-      bbdx.a(((AvatarPendantManager)localObject).a().getAbsolutePath(), false);
-      ((AvatarPendantManager)localObject).a();
-      bbdx.a(((AvatarPendantManager)localObject).b().getAbsolutePath(), false);
-      ((AvatarPendantManager)localObject).b();
-    }
-    localObject = new File(bbvj.a(ajsd.aW + ".emotionsm"));
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    bbdx.a(((File)localObject).getAbsolutePath(), false);
-    ((File)localObject).mkdirs();
-    paramQQAppInterface = new File(paramQQAppInterface.getApplication().getApplicationContext().getFilesDir().getParentFile(), "app_mobileqq_theme");
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    bbdx.a(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(ajsd.bV);
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    bbdx.a(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(ajsd.cc + "resource");
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    bbdx.a(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-    paramQQAppInterface = new File(bbpa.jdField_a_of_type_JavaLangString);
-    if (!paramQQAppInterface.exists()) {
-      paramQQAppInterface.mkdirs();
-    }
-    bbdx.a(paramQQAppInterface.getAbsolutePath(), false);
-    paramQQAppInterface.mkdirs();
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString)
-  {
-    bcql.a(paramActivity, ajya.a(2131716060), 0).a();
-    paramActivity.finish();
-    if (jdField_a_of_type_AndroidOsHandler == null) {
-      jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandler$Callback);
-    }
-    paramActivity = new bbwu(paramString, new File(jdField_a_of_type_JavaLangString));
-    ((bbww)paramQQAppInterface.getManager(47)).a(1).a(paramActivity, new bblh(paramQQAppInterface), null);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("http://gxh.vip.qq.com")) && (paramString.endsWith("secret.json"));
   }
 }
 

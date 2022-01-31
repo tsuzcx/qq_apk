@@ -3,9 +3,9 @@ package com.tencent.mobileqq.profile.PersonalityLabel;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import autg;
-import auth;
-import bbfs;
+import awks;
+import awkt;
+import bden;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -21,7 +21,7 @@ import tencent.im.oidb.cmd0x8f0.cmd0x8f0.RspBody;
 public class PersonalityLabel
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<PersonalityLabel> CREATOR = new autg();
+  public static final Parcelable.Creator<PersonalityLabel> CREATOR = new awks();
   public static int CURRENT_VERSION = 2;
   public static final String TAG = "PersonalityLabel";
   public int isCloseByUser;
@@ -104,7 +104,7 @@ public class PersonalityLabel
       if (QLog.isDevelopLevel()) {
         QLog.i("PersonalityLabel", 2, "before unmarsh:" + this.personalityLabelInfos.toString());
       }
-      Collections.sort(this.personalityLabelInfos, new auth(this));
+      Collections.sort(this.personalityLabelInfos, new awkt(this));
       if (QLog.isDevelopLevel()) {
         QLog.i("PersonalityLabel", 2, "after unmarsh:" + this.personalityLabelInfos.toString());
       }
@@ -120,7 +120,7 @@ public class PersonalityLabel
     do
     {
       return paramArrayOfByte;
-      localPersonalityLabel = (PersonalityLabel)bbfs.a(paramArrayOfByte, CREATOR);
+      localPersonalityLabel = (PersonalityLabel)bden.a(paramArrayOfByte, CREATOR);
       paramArrayOfByte = localPersonalityLabel;
     } while (!QLog.isColorLevel());
     if ("convertFromBytes:" + localPersonalityLabel == null) {}
@@ -255,7 +255,7 @@ public class PersonalityLabel
       if (QLog.isDevelopLevel()) {
         QLog.i("PersonalityLabel", 4, "convertToBytes:" + paramPersonalityLabel.toString());
       }
-      return bbfs.a(paramPersonalityLabel);
+      return bden.a(paramPersonalityLabel);
     }
     return null;
   }
@@ -394,7 +394,7 @@ public class PersonalityLabel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel
  * JD-Core Version:    0.7.0.1
  */

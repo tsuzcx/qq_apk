@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui;
 
-import babx;
-import bhxj;
+import bcag;
+import bjyu;
 
 public class AudioItem$2
   implements Runnable
 {
-  public AudioItem$2(babx parambabx, bhxj parambhxj) {}
+  public AudioItem$2(bcag parambcag, bjyu parambjyu) {}
   
   public void run()
   {

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc;
 
-import abtq;
+import adky;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
@@ -11,42 +11,42 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import bcql;
 import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import nol;
-import onh;
-import osg;
-import osj;
-import osm;
-import qgh;
-import qgi;
-import qgj;
-import qgk;
-import qgl;
-import qgm;
-import qgn;
-import qgo;
+import nrt;
+import ors;
+import owy;
+import oxb;
+import oxe;
+import qqn;
+import qqo;
+import qqp;
+import qqq;
+import qqr;
+import qqs;
+import qqt;
+import qqu;
 
 public class ReadInJoyVideoTagSelectionFragment
   extends IphoneTitleBarFragment
   implements View.OnClickListener
 {
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new qgh(this);
+  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new qqn(this);
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bcql jdField_a_of_type_Bcql;
-  private osm jdField_a_of_type_Osm = new qgj(this);
-  private qgm jdField_a_of_type_Qgm;
-  private qgn jdField_a_of_type_Qgn;
-  private DataSetObserver jdField_b_of_type_AndroidDatabaseDataSetObserver = new qgi(this);
+  private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
+  private oxe jdField_a_of_type_Oxe = new qqp(this);
+  private qqs jdField_a_of_type_Qqs;
+  private qqt jdField_a_of_type_Qqt;
+  private DataSetObserver jdField_b_of_type_AndroidDatabaseDataSetObserver = new qqo(this);
   private View jdField_b_of_type_AndroidViewView;
-  private bcql jdField_b_of_type_Bcql;
+  private QQToast jdField_b_of_type_ComTencentMobileqqWidgetQQToast;
   private View c;
   
   private void a()
@@ -56,24 +56,24 @@ public class ReadInJoyVideoTagSelectionFragment
   
   private void b()
   {
-    this.c = this.mContentView.findViewById(2131376875);
+    this.c = this.mContentView.findViewById(2131377389);
     this.c.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131377220));
-    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131364716);
-    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131364713);
-    ReadInJoyFlowLayout localReadInJoyFlowLayout = (ReadInJoyFlowLayout)this.mContentView.findViewById(2131366479);
-    this.jdField_a_of_type_Qgm = new qgm(getActivity(), 2131560042);
-    this.jdField_a_of_type_Qgm.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
-    localReadInJoyFlowLayout.setAdapter(this.jdField_a_of_type_Qgm);
-    localReadInJoyFlowLayout.setOnItemClickListener(new qgk(this));
-    localReadInJoyFlowLayout = (ReadInJoyFlowLayout)this.mContentView.findViewById(2131366480);
-    this.jdField_a_of_type_Qgn = new qgn(getActivity(), 2131560042);
-    this.jdField_a_of_type_Qgn.registerDataSetObserver(this.jdField_b_of_type_AndroidDatabaseDataSetObserver);
-    localReadInJoyFlowLayout.setAdapter(this.jdField_a_of_type_Qgn);
-    this.jdField_a_of_type_Qgn.notifyDataSetChanged();
-    localReadInJoyFlowLayout.setOnItemClickListener(new qgl(this));
-    this.jdField_a_of_type_Bcql = bcql.a(getActivity(), 2131718586, 0);
-    this.jdField_b_of_type_Bcql = bcql.a(getActivity(), 2131718585, 0);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131377741));
+    this.jdField_a_of_type_AndroidViewView = this.mContentView.findViewById(2131364795);
+    this.jdField_b_of_type_AndroidViewView = this.mContentView.findViewById(2131364792);
+    ReadInJoyFlowLayout localReadInJoyFlowLayout = (ReadInJoyFlowLayout)this.mContentView.findViewById(2131366585);
+    this.jdField_a_of_type_Qqs = new qqs(getActivity(), 2131560143);
+    this.jdField_a_of_type_Qqs.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+    localReadInJoyFlowLayout.setAdapter(this.jdField_a_of_type_Qqs);
+    localReadInJoyFlowLayout.setOnItemClickListener(new qqq(this));
+    localReadInJoyFlowLayout = (ReadInJoyFlowLayout)this.mContentView.findViewById(2131366586);
+    this.jdField_a_of_type_Qqt = new qqt(getActivity(), 2131560143);
+    this.jdField_a_of_type_Qqt.registerDataSetObserver(this.jdField_b_of_type_AndroidDatabaseDataSetObserver);
+    localReadInJoyFlowLayout.setAdapter(this.jdField_a_of_type_Qqt);
+    this.jdField_a_of_type_Qqt.notifyDataSetChanged();
+    localReadInJoyFlowLayout.setOnItemClickListener(new qqr(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getActivity(), 2131719043, 0);
+    this.jdField_b_of_type_ComTencentMobileqqWidgetQQToast = QQToast.a(getActivity(), 2131719042, 0);
     c();
   }
   
@@ -95,15 +95,15 @@ public class ReadInJoyVideoTagSelectionFragment
         localObject3 = localObject1;
         if (localArrayList != null)
         {
-          this.jdField_a_of_type_Qgm.addAll(localArrayList);
+          this.jdField_a_of_type_Qqs.addAll(localArrayList);
           localObject3 = localObject1;
         }
-        this.jdField_a_of_type_Qgm.notifyDataSetChanged();
-        osj.a().a(this.jdField_a_of_type_Osm);
+        this.jdField_a_of_type_Qqs.notifyDataSetChanged();
+        oxb.a().a(this.jdField_a_of_type_Oxe);
         if (localObject3 == null) {
           break label97;
         }
-        osg.a().b(((Long)localObject3).longValue());
+        owy.a().b(((Long)localObject3).longValue());
         return;
       }
       catch (NumberFormatException localNumberFormatException)
@@ -113,7 +113,7 @@ public class ReadInJoyVideoTagSelectionFragment
       Object localObject2 = null;
       continue;
       label97:
-      osg.a().g(null);
+      owy.a().g(null);
       return;
       localObject3 = null;
     }
@@ -122,37 +122,37 @@ public class ReadInJoyVideoTagSelectionFragment
   private void d()
   {
     this.vg.a(true);
-    setRightButton(2131691035, this);
+    setRightButton(2131691088, this);
     this.rightViewText.setTextColor(-16265040);
     this.rightViewText.setBackgroundResource(0);
-    setTitle(getString(2131718566));
-    this.leftView.setText(2131690331);
-    qgo.a(this);
+    setTitle(getString(2131719015));
+    this.leftView.setText(2131690382);
+    qqu.a(this);
   }
   
   private void e()
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
-    localIntent.putExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", this.jdField_a_of_type_Qgm.a());
-    abtq.a(getActivity(), localIntent, PublicTransFragmentActivity.class, ReadInJoyVideoSearchTagFragment.class, 1000);
+    localIntent.putExtra("EXTRA_SELECTION_REACH_MAXIMUM_NUMBER", this.jdField_a_of_type_Qqs.a());
+    adky.a(getActivity(), localIntent, PublicTransFragmentActivity.class, ReadInJoyVideoSearchTagFragment.class, 1000);
   }
   
   private void f()
   {
     Intent localIntent = new Intent();
     ArrayList localArrayList = new ArrayList();
-    int j = this.jdField_a_of_type_Qgm.getCount();
+    int j = this.jdField_a_of_type_Qqs.getCount();
     int i = 0;
     while (i < j)
     {
-      localArrayList.add(this.jdField_a_of_type_Qgm.getItem(i));
+      localArrayList.add(this.jdField_a_of_type_Qqs.getItem(i));
       i += 1;
     }
     localIntent.putParcelableArrayListExtra("EXTRA_SELECTED_TAG_LIST", localArrayList);
     getActivity().setResult(-1, localIntent);
     getActivity().finish();
-    nol.a(null, "", "0X80092F2", "0X80092F2", 0, 0, Integer.valueOf(localArrayList.size()).toString(), "", "", onh.e(), false);
+    nrt.a(null, "", "0X80092F2", "0X80092F2", 0, 0, Integer.valueOf(localArrayList.size()).toString(), "", "", ors.e(), false);
   }
   
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
@@ -163,7 +163,7 @@ public class ReadInJoyVideoTagSelectionFragment
   
   public int getContentLayoutId()
   {
-    return 2131560041;
+    return 2131560142;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -171,8 +171,8 @@ public class ReadInJoyVideoTagSelectionFragment
     if ((paramInt1 == 1000) && (paramInt2 == -1))
     {
       paramIntent = (TagInfo)paramIntent.getParcelableExtra("SEARCH_TAG_RESULT");
-      if ((paramIntent != null) && (!this.jdField_a_of_type_Qgm.a(paramIntent)) && (!this.jdField_a_of_type_Bcql.c())) {
-        this.jdField_a_of_type_Bcql.a();
+      if ((paramIntent != null) && (!this.jdField_a_of_type_Qqs.a(paramIntent)) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.c())) {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast.a();
       }
     }
   }
@@ -189,7 +189,7 @@ public class ReadInJoyVideoTagSelectionFragment
     {
     default: 
       return;
-    case 2131376875: 
+    case 2131377389: 
       this.c.setVisibility(8);
       e();
       return;
@@ -200,7 +200,7 @@ public class ReadInJoyVideoTagSelectionFragment
   public void onPause()
   {
     super.onPause();
-    osj.a().b(this.jdField_a_of_type_Osm);
+    oxb.a().b(this.jdField_a_of_type_Oxe);
   }
   
   public void onResume()
@@ -212,7 +212,7 @@ public class ReadInJoyVideoTagSelectionFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment
  * JD-Core Version:    0.7.0.1
  */

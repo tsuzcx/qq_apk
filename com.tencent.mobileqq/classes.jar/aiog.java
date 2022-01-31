@@ -1,21 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import java.util.ArrayList;
 
 class aiog
-  implements View.OnClickListener
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  aiog(aiod paramaiod, QQAppInterface paramQQAppInterface) {}
+  aiog(aiof paramaiof, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public void onClick(View paramView)
+  public void onMediaInfoChanged(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A327", "0X800A327", 0, 0, "", "", "", "");
-    aiod.a(this.jdField_a_of_type_Aiod);
+    ((NewPhotoListActivity)this.jdField_a_of_type_Aiof.mActivity).cancleProgressDailog();
+    if (bnbf.a(this.jdField_a_of_type_Aiof.mActivity, paramLocalMediaInfo))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+      PhotoUtils.a(this.jdField_a_of_type_Aiof.mActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiog
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,52 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class vjv
-  extends ayxp
+final class vjv
+  extends vhw
 {
-  public vjv(ArtFilterManager paramArtFilterManager, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, File paramFile, String paramString4)
-  {
-    super(paramQQAppInterface, paramString1);
-  }
+  vjv(String paramString1, String paramString2, int paramInt, Context paramContext) {}
   
-  protected void realCancel()
+  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterManager", 2, "realCancel download url:" + this.jdField_a_of_type_JavaLangString + " path:" + this.b);
+    if ((paramInt == 0) && (paramStoryVideoItem != null))
+    {
+      paramString = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString, this.b), this.jdField_a_of_type_Int).a();
+      OpenPlayerBuilder.UIStyle localUIStyle = paramString.mUIStyle;
+      if (paramStoryVideoItem.mInteractStatus == 1) {}
+      for (paramInt = 1;; paramInt = 2)
+      {
+        localUIStyle.bottomWidgetShowFlag = paramInt;
+        paramString.mUIStyle.mPlayerRepeatMode = 1;
+        vju.a(this.jdField_a_of_type_AndroidContentContext, paramString, null);
+        return;
+      }
     }
-  }
-  
-  protected void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterManager", 2, "realStart download url:" + this.jdField_a_of_type_JavaLangString + " path:" + this.b);
+    if (paramInt == 10100)
+    {
+      paramString = new Intent(this.jdField_a_of_type_AndroidContentContext, QQStoryWarningActivity.class);
+      paramString.putExtra("tipsResource", alpo.a(2131714926));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramString);
+      return;
     }
-    bbwz localbbwz = ((bbww)ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager).getManager(47)).a(1);
-    bbwu localbbwu = new bbwu(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
-    localbbwu.n = true;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("md5", this.c);
-    localBundle.putString("path", this.b);
-    localbbwz.a(localbbwu, ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager), localBundle);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramString, 0).a();
+      return;
+    }
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, alpo.a(2131714927) + paramInt, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjv
  * JD-Core Version:    0.7.0.1
  */

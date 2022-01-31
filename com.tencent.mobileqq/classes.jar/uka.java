@@ -1,76 +1,40 @@
-import com.tencent.biz.qqstory.settings.QQStoryShieldActivity;
-import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
-import com.tencent.widget.Switch;
+import java.io.File;
 
-public class uka
-  extends ssv
+class uka
+  implements Comparable<uka>
 {
-  public uka(QQStoryShieldActivity paramQQStoryShieldActivity) {}
+  public long a;
+  public final File a;
   
-  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
+  public uka(ujz paramujz, File paramFile)
   {
-    boolean bool = true;
-    QQStoryShieldActivity.a(this.a);
-    Switch localSwitch;
-    if ((paramBoolean) && (paramQQStoryUserInfo != null))
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    paramujz = paramFile.getName();
+    try
     {
-      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-      this.a.b.setOnCheckedChangeListener(null);
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (paramQQStoryUserInfo.isAllowed != 1) {
-        break label119;
-      }
-      paramBoolean = true;
-      localSwitch.setChecked(paramBoolean);
-      localSwitch = this.a.b;
-      if (paramQQStoryUserInfo.isInterested != 1) {
-        break label124;
-      }
-    }
-    label119:
-    label124:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localSwitch.setChecked(paramBoolean);
-      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-      this.a.b.setOnCheckedChangeListener(this.a);
+      this.jdField_a_of_type_Long = Long.parseLong(paramujz);
       return;
-      paramBoolean = false;
-      break;
+    }
+    catch (Exception paramFile)
+    {
+      wsv.d("Q.qqstory.cleaner:MyVideoCleanStep", "Parse %s error , %s", new Object[] { paramujz, paramFile.getMessage() });
     }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public int a(uka paramuka)
   {
-    boolean bool = true;
-    paramBoolean2 = true;
-    this.a.jdField_a_of_type_Bcqi.b();
-    if (paramBoolean1) {
-      return;
+    if (this.jdField_a_of_type_Long < paramuka.jdField_a_of_type_Long) {
+      return -1;
     }
-    bcql.a(this.a, 2131694975, 0).b(this.a.getTitleBarHeight());
-    if (paramBoolean3)
-    {
-      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
-      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
-      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
-      {
-        localSwitch.setChecked(paramBoolean1);
-        return;
-      }
+    if (this.jdField_a_of_type_Long == paramuka.jdField_a_of_type_Long) {
+      return 0;
     }
-    Switch localSwitch = this.a.b;
-    if (!this.a.b.isChecked()) {}
-    for (paramBoolean1 = bool;; paramBoolean1 = false)
-    {
-      localSwitch.setChecked(paramBoolean1);
-      return;
-    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uka
  * JD-Core Version:    0.7.0.1
  */

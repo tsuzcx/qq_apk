@@ -1,36 +1,22 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afvx
-  implements afyi
+class afvx
+  implements bemn
 {
-  public afvx(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
+  afvx(afvt paramafvt, afwd paramafwd) {}
   
-  public void a()
+  public void a(String paramString)
   {
-    this.a.j();
-  }
-  
-  public void b()
-  {
-    if ((!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof ChatHistoryActivity)) || (!((ChatHistoryActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).c)) {
-      this.a.jdField_a_of_type_Agbq.a();
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Afwd.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Afwd.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Afwd.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
     }
-    this.a.c = true;
-    this.a.b(true);
-  }
-  
-  public void c()
-  {
-    this.a.jdField_a_of_type_Agbq.b();
-    this.a.c = false;
-    this.a.b(false);
-    this.a.jdField_a_of_type_Agbd.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afvx
  * JD-Core Version:    0.7.0.1
  */

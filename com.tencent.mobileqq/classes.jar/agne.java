@@ -1,21 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
-public class agne
+class agne
   implements DialogInterface.OnClickListener
 {
-  public agne(PhotoListActivity paramPhotoListActivity) {}
+  agne(agnc paramagnc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    this.a.setResult(8001);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agne
  * JD-Core Version:    0.7.0.1
  */

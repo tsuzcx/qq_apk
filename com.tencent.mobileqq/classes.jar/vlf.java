@@ -1,33 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.support.annotation.UiThread;
 
-class vlf
-  extends AnimatorListenerAdapter
+public abstract interface vlf
 {
-  vlf(vlc paramvlc) {}
+  @UiThread
+  public abstract void a();
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    ved.b("TextLayer", "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ved.b("TextLayer", "scaleAnimator end!");
-    this.a.p = 1.0F;
-    this.a.c = false;
-    this.a.a.g();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    ved.b("TextLayer", "scaleAnimator start!");
-    this.a.c = true;
-  }
+  @UiThread
+  public abstract void a(vld paramvld, String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vlf
  * JD-Core Version:    0.7.0.1
  */

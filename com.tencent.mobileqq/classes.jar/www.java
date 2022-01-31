@@ -1,12 +1,14 @@
-public class www
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+
+public abstract interface www
 {
-  public float a;
-  public int a;
-  public CharSequence a;
+  public abstract void a();
+  
+  public abstract void a(TroopBarPOI paramTroopBarPOI);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     www
  * JD-Core Version:    0.7.0.1
  */

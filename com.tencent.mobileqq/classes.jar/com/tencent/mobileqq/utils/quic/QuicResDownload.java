@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.utils.quic;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Environment;
-import axes;
-import bbfj;
+import ayzy;
+import bdee;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
@@ -18,7 +18,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class QuicResDownload
-  implements axes
+  implements ayzy
 {
   private static final String jdField_a_of_type_JavaLangString = Environment.getDataDirectory() + "/data/" + BaseApplicationImpl.sApplication.getBaseContext().getPackageName() + "/app_lib/quic/";
   public static boolean a;
@@ -41,14 +41,14 @@ public class QuicResDownload
   
   private boolean a()
   {
-    boolean bool = bbfj.h(null);
+    boolean bool = bdee.h(null);
     if (bool)
     {
       VideoEnvironment.a("QuicResDownload", "QUIC配置下载中...", null);
       ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this);
       return bool;
     }
-    VideoEnvironment.a("QuicResDownload", ajya.a(2131711248), null);
+    VideoEnvironment.a("QuicResDownload", alpo.a(2131711620), null);
     return bool;
   }
   
@@ -110,7 +110,7 @@ public class QuicResDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.quic.QuicResDownload
  * JD-Core Version:    0.7.0.1
  */

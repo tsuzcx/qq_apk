@@ -1,27 +1,32 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatSettingFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class amex
-  implements TextWatcher
+  extends allb
 {
-  public amex(ClearEllipsisEditText paramClearEllipsisEditText) {}
+  public amex(HiddenChatSettingFragment paramHiddenChatSettingFragment) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  protected void onSetHiddenSession(boolean paramBoolean, int paramInt)
   {
-    if ((ClearEllipsisEditText.a(this.a)) && (!ClearEllipsisEditText.b(this.a))) {
-      ClearEllipsisEditText.a(this.a, paramCharSequence.toString());
+    super.onSetHiddenSession(paramBoolean, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("HiddenChatSetting", 2, "onSetHiddenSession " + paramBoolean + " type=" + paramInt);
     }
-    ClearEllipsisEditText.a(this.a, false);
+    if (paramInt == 42318) {
+      if (!paramBoolean) {
+        HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.a(this.a), amey.a(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
+      }
+    }
+    while ((paramInt != 42319) || (paramBoolean)) {
+      return;
+    }
+    HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.b(this.a), amey.b(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amex
  * JD-Core Version:    0.7.0.1
  */

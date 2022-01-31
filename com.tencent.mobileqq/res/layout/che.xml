@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView android:id="@id/ml_" android:paddingLeft="12.0dip" android:paddingTop="8.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" app:expandDuration="250" app:expandedText="@string/weu" app:maxExpandLines="3" app:noExpandText="@string/wev">
+        <com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView android:textSize="16.0dip" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="16.0dip" android:textColor="#ff435a7a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView>
+    <com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView android:id="@id/mlb" android:background="#ffdde3e6" android:paddingLeft="12.0dip" android:paddingTop="8.0dip" android:paddingRight="12.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" app:expandDuration="250" app:expandedText="@string/weu" app:maxExpandLines="4" app:noExpandText="@string/wev">
+        <com.tencent.biz.qqcircle.widgets.QCircleAsyncTextView android:textSize="16.0dip" android:textColor="#ff03081a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="没有了我的猫主子，那么一切还有什么意义呢？我要吃鱼" />
+        <TextView android:textSize="16.0dip" android:textColor="#ff435a7a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView>
+</LinearLayout>

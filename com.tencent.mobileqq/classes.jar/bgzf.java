@@ -1,45 +1,70 @@
-import android.os.Handler;
-import android.os.Message;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.1;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.2;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StGetTCBTicketReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetTCBTicketRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
 public class bgzf
-  extends bhiq
+  extends bgzp
 {
-  public bgzf(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
+  private INTERFACE.StGetTCBTicketReq a = new INTERFACE.StGetTCBTicketReq();
   
-  public void a()
+  public bgzf(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1000;
-    localMessage.arg1 = 1;
-    this.a.a.sendMessage(localMessage);
-    int i = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadSoTimeout", 60000);
-    this.a.a.sendEmptyMessageDelayed(1009, i);
+    this.a.appid.set(paramString1);
+    this.a.envId.set(paramString2);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
   }
   
-  public void a(float paramFloat)
+  protected String a()
   {
-    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.1(this, paramFloat));
+    return "mini_app_info";
   }
   
-  public void a(int paramInt)
+  public JSONObject a(byte[] paramArrayOfByte)
   {
-    this.a.a.obtainMessage(1008).sendToTarget();
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StGetTCBTicketRsp localStGetTCBTicketRsp = new INTERFACE.StGetTCBTicketRsp();
+    try
+    {
+      localStGetTCBTicketRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetTCBTicketRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("ticket", localStGetTCBTicketRsp.ticket.get());
+        paramArrayOfByte.put("createTime", localStGetTCBTicketRsp.createTime.get());
+        paramArrayOfByte.put("period", localStGetTCBTicketRsp.period.get());
+        return paramArrayOfByte;
+      }
+      QMLog.d("GetTcbTicketRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("GetTcbTicketRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public void b()
+  public byte[] a()
   {
-    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.2(this));
+    return this.a.toByteArray();
   }
   
-  public void c() {}
+  protected String b()
+  {
+    return "GetTCBTicket";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgzf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,29 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader.RequestLoadedImgTask;
 
-class asdt
-  implements SoundPool.OnLoadCompleteListener
+public class asdt
+  implements URLDrawableHandler
 {
-  asdt(asds paramasds, int paramInt, String paramString) {}
+  public asdt(NearbyImgLoader.RequestLoadedImgTask paramRequestLoadedImgTask) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void doCancel() {}
+  
+  public boolean isCancelled()
   {
-    if ((this.jdField_a_of_type_Asds.a.play(paramInt1, 1.0F, 1.0F, 0, this.jdField_a_of_type_Int, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
-    }
+    return false;
   }
+  
+  public void onFileDownloadFailed(int paramInt) {}
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
+  
+  public void publishProgress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asdt
  * JD-Core Version:    0.7.0.1
  */

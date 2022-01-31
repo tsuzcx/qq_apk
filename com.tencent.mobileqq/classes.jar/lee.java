@@ -1,306 +1,117 @@
+import android.app.Activity;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
-import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lee
+  extends WebViewPlugin
+  implements lec
 {
-  public static String a;
-  int jdField_a_of_type_Int = 0;
-  ajxj jdField_a_of_type_Ajxj = new lef(this);
-  akat jdField_a_of_type_Akat = new leg(this);
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  public HashMap<String, leh> a;
-  boolean jdField_a_of_type_Boolean = false;
+  private beat jdField_a_of_type_Beat;
+  private boolean jdField_a_of_type_Boolean;
   
-  static
+  public lee()
   {
-    jdField_a_of_type_JavaLangString = "AvAddFriendService";
+    this.mPluginNameSpace = "aioShareMusic";
   }
   
-  public lee(QQAppInterface paramQQAppInterface)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "AvAddFriendLogic");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Akat);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajxj);
-  }
-  
-  private void a(String paramString, int paramInt)
-  {
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "setRelationStatus no uin in map:" + paramString);
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "setRelationStatus :" + paramString + ",status" + paramInt);
-    }
-    ((leh)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt;
-  }
-  
-  private void a(String paramString, int paramInt1, int paramInt2)
-  {
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "setRelationStatus no uin in map:" + paramString);
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "setRelationStatus :" + paramString + ",status" + paramInt1 + ",safeStatus:" + paramInt2);
-    }
-    ((leh)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt1;
-    ((leh)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt2;
-  }
-  
-  private void a(structmsg.StructMsg paramStructMsg, long paramLong)
-  {
-    if (paramStructMsg != null)
-    {
-      long l = ((structmsg.StructMsg)paramStructMsg.get()).msg_seq.get() + ((structmsg.StructMsg)paramStructMsg.get()).msg_type.get();
-      aydc.a().a(Long.valueOf(l), (structmsg.StructMsg)paramStructMsg.get());
-      aydc.a().b(l);
-      aydc.a().a(paramLong);
-    }
-  }
-  
-  private boolean a(int paramInt, String paramString)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    if (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-      return false;
-    }
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {}
     for (;;)
     {
-      try
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("AioShareMusic.AioShareMusicPlugin", 2, "onEvent（） actionType =" + paramString + " data = " + paramJSONObject.toString());
+      }
+      if (this.jdField_a_of_type_Beat == null) {
+        this.jdField_a_of_type_Beat = new beat(this.mRuntime.a());
+      }
+      if ("checkAioShareMusic".equals(paramString))
       {
-        Long.parseLong(paramString);
-        ajxl localajxl = (ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-        if (localajxl != null)
+        this.jdField_a_of_type_Beat.a(paramJSONObject);
+        return;
+      }
+      if ("startListenAioShareMusic".equals(paramString))
+      {
+        this.jdField_a_of_type_Beat.b(paramJSONObject);
+        return;
+      }
+      if ("updateSongIdToAioShareMusic".equals(paramString)) {
+        try
         {
-          paramString = localajxl.e(paramString);
-          if ((paramString == null) || (paramString.groupid < 0)) {
-            break;
+          paramString = paramJSONObject.getString("current_song_id");
+          this.jdField_a_of_type_Beat.a = paramString;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("AioShareMusicAioShareMusic.AioShareMusicPlugin", 2, "updateSongId() newSongId = " + paramString);
+            return;
           }
-          return false;
+        }
+        catch (JSONException paramString)
+        {
+          paramString.printStackTrace();
         }
       }
-      catch (Throwable paramString)
-      {
-        return false;
-      }
-      paramString = null;
-    }
-    return true;
-  }
-  
-  private void d(String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1) != null) {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(paramString, this.jdField_a_of_type_Int, 0, "");
     }
   }
   
-  public int a(String paramString)
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "getRelationStatus no uin in map:" + paramString);
-      }
-      return 0;
-    }
-    return ((leh)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "AvAddFriendLogic onDestory");
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Akat);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajxj);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  }
-  
-  void a(String paramString)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setAction("tencent.video.q2v.AddfrindMsg");
-    localIntent.putExtra("peerUin", paramString);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
-    }
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "addFriend uin is null");
-      }
-      return false;
-    }
-    this.jdField_a_of_type_Int = paramInt;
-    if (((ajxl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).b(paramString))
-    {
-      localleh = new leh(this);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localleh);
-      a(paramString, 4);
-      a(paramString);
+    if ((this.mRuntime == null) || (this.mRuntime.a() == null) || (this.mRuntime.a() == null)) {
       return true;
     }
-    if (!a(1, paramString)) {
-      return false;
+    if (this.jdField_a_of_type_Beat == null) {
+      this.jdField_a_of_type_Beat = new beat(this.mRuntime.a());
     }
     if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "addFriend uin" + paramString);
+      QLog.d("AioShareMusicAioShareMusic.AioShareMusicPlugin", 2, "handleEvent() type = " + paramLong);
     }
-    leh localleh = new leh(this);
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localleh);
-    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a("OidbSvc.0x476_147", Long.parseLong(paramString), 147);
-    return true;
-  }
-  
-  public void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-    }
-    while (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-  }
-  
-  public void c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "acceptAddFriend uin is null");
-      }
-    }
-    label514:
-    do
+    if (paramLong == 8589934594L)
     {
-      List localList;
-      structmsg.StructMsg localStructMsg;
-      do
+      if (!this.jdField_a_of_type_Boolean)
       {
-        do
-        {
-          return;
-          new ArrayList();
-          localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(ajsd.M, 0);
-          localStructMsg = null;
-          if (localList != null) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "systemMsgList is null");
-        return;
-        if ((localList.size() <= 0) || ((localList.get(0) instanceof MessageForSystemMsg))) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "systemMsgList error");
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "answerAddFriend systemMsgList size" + localList.size());
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_Beat.a(this.mRuntime.a().getIntent());
+        return true;
       }
-      int i = localList.size() - 1;
-      for (;;)
+    }
+    else if (paramLong == 8589934622L)
+    {
+      Object localObject = paramMap.get("intent");
+      if ((localObject != null) && ((localObject instanceof Intent)))
       {
-        if (i >= 0)
-        {
-          localStructMsg = ((MessageForSystemMsg)localList.get(i)).getSystemMsg();
-          if (QLog.isColorLevel()) {
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "answerAddFriend structMsg.req_uin =" + String.valueOf(localStructMsg.req_uin.get()) + "friendUin=" + paramString);
-          }
-          if (!paramString.equals(String.valueOf(localStructMsg.req_uin.get()))) {}
-        }
-        else
-        {
-          if ((localStructMsg == null) || (!paramString.equals(String.valueOf(localStructMsg.req_uin.get())))) {
-            break label514;
-          }
-          i = localStructMsg.msg_type.get();
-          long l1 = localStructMsg.msg_seq.get();
-          long l2 = localStructMsg.req_uin.get();
-          int j = localStructMsg.msg.sub_type.get();
-          int k = localStructMsg.msg.src_id.get();
-          int m = localStructMsg.msg.sub_src_id.get();
-          int n = localStructMsg.msg.group_msg_type.get();
-          paramString = localStructMsg.msg.actions.get();
-          if ((paramString == null) || (paramString.size() >= 0)) {
-            break;
-          }
-          paramString = (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramString.get(0)).action_info.get();
-          paramString.remark.set("");
-          paramString.group_id.set(0);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(i, l1, l2, j, k, m, n, paramString, 0, localStructMsg, false);
-          a(localStructMsg, localStructMsg.msg_seq.get());
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "answerAddFriend  structMsg.req_uin:  " + String.valueOf(localStructMsg.req_uin.get()));
-          return;
-        }
-        i -= 1;
+        paramString = (Intent)localObject;
+        this.jdField_a_of_type_Beat.b(paramString);
+        return true;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(jdField_a_of_type_JavaLangString, 2, "answerAddFriend  structMsg == null | , friendUin == structMsg.req_uin | ");
+    }
+    return super.handleEvent(paramString, paramLong, paramMap);
   }
   
-  protected void finalize()
+  public void onCreate()
   {
-    try
+    super.onCreate();
+    lea.a().a(this);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.jdField_a_of_type_Beat != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "finalize");
-      }
-      return;
+      this.jdField_a_of_type_Beat.a();
+      this.jdField_a_of_type_Beat = null;
     }
-    finally
-    {
-      super.finalize();
-    }
+    lea.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lee
  * JD-Core Version:    0.7.0.1
  */

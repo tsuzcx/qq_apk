@@ -3,21 +3,21 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import qiu;
+import qyb;
 
 public class VideoUploadController$1
   implements Runnable
 {
-  public VideoUploadController$1(qiu paramqiu) {}
+  public VideoUploadController$1(qyb paramqyb) {}
   
   public void run()
   {
-    if ((!TextUtils.isEmpty(qiu.a(this.this$0))) && (!TextUtils.isEmpty(qiu.b(this.this$0))) && (!qiu.a(this.this$0).equals(qiu.b(this.this$0))))
+    if ((!TextUtils.isEmpty(qyb.a(this.this$0))) && (!TextUtils.isEmpty(qyb.b(this.this$0))) && (!qyb.a(this.this$0).equals(qyb.b(this.this$0))))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("VideoUploadController", 2, "clearTempFile(video), origin:" + qiu.a(this.this$0) + ", compress:" + qiu.b(this.this$0));
+        QLog.d("VideoUploadController", 2, "clearTempFile(video), origin:" + qyb.a(this.this$0) + ", compress:" + qyb.b(this.this$0));
       }
-      File localFile = new File(qiu.b(this.this$0));
+      File localFile = new File(qyb.b(this.this$0));
       if (localFile.exists()) {
         localFile.delete();
       }
@@ -26,7 +26,7 @@ public class VideoUploadController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.VideoUploadController.1
  * JD-Core Version:    0.7.0.1
  */

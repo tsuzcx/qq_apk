@@ -1,71 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.os.AsyncTask;
 
-public class aroq
-  implements IMiniMsgUnreadCallback
+final class aroq
+  extends da
 {
-  public aroq(UiApiPlugin paramUiApiPlugin) {}
+  aroq(Context paramContext) {}
   
-  public void destroy() {}
-  
-  public void hide() {}
-  
-  public void hideUnread()
+  protected void a(AsyncTask<Integer, Integer, String> paramAsyncTask, int paramInt)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unReadHide", true);
-      this.a.a("UnRead", localJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
-    }
-  }
-  
-  public boolean show(int paramInt)
-  {
-    return false;
-  }
-  
-  public void updateOnBackFromMiniAIO(Bundle paramBundle)
-  {
-    try
-    {
-      paramBundle = new JSONObject();
-      this.a.a("backFromMiniAIO", paramBundle);
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.d("UiApiPlugin", 1, paramBundle, new Object[0]);
-    }
-  }
-  
-  public void updateUnreadCount(int paramInt, boolean paramBoolean)
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("unReadC", paramInt);
-      localJSONObject.put("unReadHide", paramBoolean);
-      this.a.a("updateUnreadCount", localJSONObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("UiApiPlugin", 2, "mini_msg uiApiPlugin undateUnreadCount = " + paramInt);
-      }
-      return;
-    }
-    catch (Exception localException) {}
+    super.a(paramAsyncTask, paramInt);
+    cx.a(this.a, paramAsyncTask, paramInt, new aror(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aroq
  * JD-Core Version:    0.7.0.1
  */

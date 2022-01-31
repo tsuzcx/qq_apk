@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.olympic.OlyimpicConfig;
 
-public class avvx
-  implements View.OnClickListener
+public final class avvx
+  implements Parcelable.Creator<OlyimpicConfig>
 {
-  public avvx(QQSlidingTabView paramQQSlidingTabView, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public OlyimpicConfig a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.jdField_a_of_type_Int);
+    return new OlyimpicConfig(paramParcel);
+  }
+  
+  public OlyimpicConfig[] a(int paramInt)
+  {
+    return new OlyimpicConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avvx
  * JD-Core Version:    0.7.0.1
  */

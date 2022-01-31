@@ -1,26 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import android.graphics.Rect;
+import android.view.MotionEvent;
+import android.view.TouchDelegate;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class ajgy
-  implements DialogInterface.OnClickListener
+  extends TouchDelegate
 {
-  public ajgy(ApolloGameActivity paramApolloGameActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajgy(DragTextView paramDragTextView, Rect paramRect, View paramView)
   {
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putBoolean("key_open_voice", true);
-    paramDialogInterface.putString("key_game_friUin", ApolloGameActivity.a(this.a).mTempAIOUin);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_aduio_enter_room", paramDialogInterface, null);
+    super(paramRect, paramView);
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (this.a.getVisibility() != 0) {
+      return false;
+    }
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    boolean bool = super.onTouchEvent(paramMotionEvent);
+    paramMotionEvent.setLocation(f1, f2);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgy
  * JD-Core Version:    0.7.0.1
  */

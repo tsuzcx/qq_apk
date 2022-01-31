@@ -1,71 +1,28 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.1.1;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.1.2;
-import java.util.Iterator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.OpenCardContainer;
 import java.util.List;
 
-public class bfbs
-  implements belx
+class bfbs
+  implements View.OnClickListener
 {
-  public bfbs(AppBrandPageContainer paramAppBrandPageContainer) {}
+  bfbs(bfbr parambfbr, int paramInt) {}
   
-  public void onSoftKeyboardClosed()
+  public void onClick(View paramView)
   {
-    betc.d("AppBrandPageContainer", "onSoftKeyboardClosed ");
-    if ((AppBrandPageContainer.a(this.a) != null) && (AppBrandPageContainer.a(this.a).size() > 0))
-    {
-      Iterator localIterator = AppBrandPageContainer.a(this.a).iterator();
-      while (localIterator.hasNext())
-      {
-        belx localbelx = (belx)localIterator.next();
-        if (localbelx != null) {
-          localbelx.onSoftKeyboardClosed();
-        }
-      }
+    if ((bfbr.a(this.jdField_a_of_type_Bfbr) == null) || (this.jdField_a_of_type_Int >= bfbr.a(this.jdField_a_of_type_Bfbr).size()) || (this.jdField_a_of_type_Int < 0)) {
+      return;
     }
-    bejn.a().postDelayed(new AppBrandPageContainer.1.2(this), 50L);
-  }
-  
-  public void onSoftKeyboardOpened(int paramInt)
-  {
-    betc.d("AppBrandPageContainer", "onSoftKeyboardOpened " + paramInt);
-    if (AppBrandPageContainer.a(this.a) != null) {}
-    int i;
-    for (Object localObject = AppBrandPageContainer.a(this.a).a();; localObject = null)
-    {
-      i = paramInt;
-      if (localObject != null)
-      {
-        i = paramInt;
-        if (bfgl.a((Context)localObject))
-        {
-          i = paramInt;
-          if (bfgl.a((Activity)localObject)) {
-            i = paramInt - bfgl.c((Context)localObject);
-          }
-        }
-      }
-      if ((AppBrandPageContainer.a(this.a) == null) || (AppBrandPageContainer.a(this.a).size() <= 0)) {
-        break;
-      }
-      localObject = AppBrandPageContainer.a(this.a).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        belx localbelx = (belx)((Iterator)localObject).next();
-        if (localbelx != null) {
-          localbelx.onSoftKeyboardOpened(i);
-        }
-      }
+    if ((this.jdField_a_of_type_Bfbr.a.a != null) && (bfbr.a(this.jdField_a_of_type_Bfbr).get(this.jdField_a_of_type_Int) != null) && (OpenCardContainer.a(this.jdField_a_of_type_Bfbr.a) != null)) {
+      OpenCardContainer.a(this.jdField_a_of_type_Bfbr.a).a(((bfbu)bfbr.a(this.jdField_a_of_type_Bfbr).get(this.jdField_a_of_type_Int)).a);
     }
-    bejn.a().postDelayed(new AppBrandPageContainer.1.1(this, i), 50L);
+    bfbr.a(this.jdField_a_of_type_Bfbr).remove(bfbr.a(this.jdField_a_of_type_Bfbr).get(this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_Bfbr.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfbs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.ctsz;
 
-import xqf;
+import zey;
 
 public class m$1
   extends Thread
 {
-  public m$1(xqf paramxqf) {}
+  public m$1(zey paramzey) {}
   
   public void run()
   {
-    xqf.a(this.this$0);
+    zey.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.ctsz.m.1
  * JD-Core Version:    0.7.0.1
  */

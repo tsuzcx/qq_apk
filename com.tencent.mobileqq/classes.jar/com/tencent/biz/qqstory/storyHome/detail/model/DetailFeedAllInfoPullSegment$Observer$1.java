@@ -2,33 +2,33 @@ package com.tencent.biz.qqstory.storyHome.detail.model;
 
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tribe.async.async.JobContext;
-import upa;
-import upb;
-import upc;
-import upd;
-import upp;
-import ved;
+import wds;
+import wdt;
+import wdu;
+import wdv;
+import weh;
+import wsv;
 
 public class DetailFeedAllInfoPullSegment$Observer$1
   implements Runnable
 {
-  public DetailFeedAllInfoPullSegment$Observer$1(upd paramupd, boolean paramBoolean) {}
+  public DetailFeedAllInfoPullSegment$Observer$1(wdv paramwdv, boolean paramBoolean) {}
   
   public void run()
   {
     int i1 = 0;
-    if (upa.a(this.jdField_a_of_type_Upd.a).isJobCancelled())
+    if (wds.a(this.jdField_a_of_type_Wdv.a).isJobCancelled())
     {
-      ved.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
+      wsv.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
       return;
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      Object localObject = (Integer)this.jdField_a_of_type_Upd.getFunctionResult(0);
+      Object localObject = (Integer)this.jdField_a_of_type_Wdv.getFunctionResult(0);
       if (localObject != null) {
-        upa.a(this.jdField_a_of_type_Upd.a).a.mViewTotalTime = ((Integer)localObject).intValue();
+        wds.a(this.jdField_a_of_type_Wdv.a).a.mViewTotalTime = ((Integer)localObject).intValue();
       }
-      if (upa.a(this.jdField_a_of_type_Upd.a).a()) {}
+      if (wds.a(this.jdField_a_of_type_Wdv.a).a()) {}
       int m;
       int n;
       for (int j = 2;; j = 1)
@@ -42,12 +42,12 @@ public class DetailFeedAllInfoPullSegment$Observer$1
           if (k >= j) {
             break;
           }
-          localObject = (upc)this.jdField_a_of_type_Upd.getFunctionResult(i);
+          localObject = (wdu)this.jdField_a_of_type_Wdv.getFunctionResult(i);
           if (localObject != null)
           {
-            upa.a(this.jdField_a_of_type_Upd.a).b(((upc)localObject).jdField_a_of_type_JavaUtilList, true, ((upc)localObject).jdField_a_of_type_Boolean);
-            upa.a(this.jdField_a_of_type_Upd.a).b(((upc)localObject).jdField_a_of_type_Boolean, ((upc)localObject).jdField_a_of_type_Int);
-            upa.a(this.jdField_a_of_type_Upd.a).a.mHadLike = ((upc)localObject).b;
+            wds.a(this.jdField_a_of_type_Wdv.a).b(((wdu)localObject).jdField_a_of_type_JavaUtilList, true, ((wdu)localObject).jdField_a_of_type_Boolean);
+            wds.a(this.jdField_a_of_type_Wdv.a).b(((wdu)localObject).jdField_a_of_type_Boolean, ((wdu)localObject).jdField_a_of_type_Int);
+            wds.a(this.jdField_a_of_type_Wdv.a).a.mHadLike = ((wdu)localObject).b;
           }
           k += 1;
           i += 1;
@@ -55,26 +55,26 @@ public class DetailFeedAllInfoPullSegment$Observer$1
       }
       while (n < j)
       {
-        localObject = (upb)this.jdField_a_of_type_Upd.getFunctionResult(m);
+        localObject = (wdt)this.jdField_a_of_type_Wdv.getFunctionResult(m);
         if (localObject != null)
         {
-          upa.a(this.jdField_a_of_type_Upd.a).a(((upb)localObject).jdField_a_of_type_JavaUtilList, true, ((upb)localObject).jdField_a_of_type_Boolean);
-          upa.a(this.jdField_a_of_type_Upd.a).a(((upb)localObject).jdField_a_of_type_Boolean, ((upb)localObject).jdField_a_of_type_Int);
-          upa.a(this.jdField_a_of_type_Upd.a).a(((upb)localObject).jdField_a_of_type_Boolean, ((upb)localObject).b);
-          upa.a(this.jdField_a_of_type_Upd.a).a(((upb)localObject).jdField_a_of_type_Boolean, ((upb)localObject).jdField_a_of_type_JavaLangString);
+          wds.a(this.jdField_a_of_type_Wdv.a).a(((wdt)localObject).jdField_a_of_type_JavaUtilList, true, ((wdt)localObject).jdField_a_of_type_Boolean);
+          wds.a(this.jdField_a_of_type_Wdv.a).a(((wdt)localObject).jdField_a_of_type_Boolean, ((wdt)localObject).jdField_a_of_type_Int);
+          wds.a(this.jdField_a_of_type_Wdv.a).a(((wdt)localObject).jdField_a_of_type_Boolean, ((wdt)localObject).b);
+          wds.a(this.jdField_a_of_type_Wdv.a).a(((wdt)localObject).jdField_a_of_type_Boolean, ((wdt)localObject).jdField_a_of_type_JavaLangString);
         }
         n += 1;
         m += 1;
       }
-      upa.a(this.jdField_a_of_type_Upd.a, upa.a(this.jdField_a_of_type_Upd.a));
+      wds.a(this.jdField_a_of_type_Wdv.a, wds.a(this.jdField_a_of_type_Wdv.a));
       return;
     }
-    upa.a(this.jdField_a_of_type_Upd.a, new ErrorMessage(-1, "get feed interact data error."));
+    wds.a(this.jdField_a_of_type_Wdv.a, new ErrorMessage(-1, "get feed interact data error."));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment.Observer.1
  * JD-Core Version:    0.7.0.1
  */

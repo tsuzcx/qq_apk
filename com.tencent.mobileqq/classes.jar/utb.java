@@ -1,51 +1,105 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.Nullable;
+import java.util.Arrays;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class utb
-  extends QQUIEventReceiver<uta, tjj>
+public class utb
 {
-  public utb(@NonNull uta paramuta)
+  public final int a;
+  private final String a;
+  public final String[] a;
+  public final int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public final int i;
+  
+  private utb(JSONObject paramJSONObject)
   {
-    super(paramuta);
+    int k;
+    try
+    {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.toString();
+      this.jdField_a_of_type_Int = paramJSONObject.getInt("v");
+      this.b = paramJSONObject.getInt("id");
+      this.i = paramJSONObject.getJSONObject("a").getInt("r");
+      JSONArray localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ss");
+      this.c = localJSONArray.getInt(0);
+      this.d = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("ls");
+      this.e = localJSONArray.getInt(0);
+      this.f = localJSONArray.getInt(1);
+      localJSONArray = paramJSONObject.getJSONObject("a").getJSONArray("lp");
+      this.g = localJSONArray.getInt(0);
+      this.h = localJSONArray.getInt(1);
+      paramJSONObject = paramJSONObject.getJSONObject("a").getJSONArray("c");
+      k = paramJSONObject.length();
+      if (k < 1) {
+        throw new IllegalArgumentException("content length should more than 1");
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      throw new IllegalArgumentException(paramJSONObject);
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[k];
+    while (j < k)
+    {
+      this.jdField_a_of_type_ArrayOfJavaLangString[j] = paramJSONObject.optString(j, "(NULL)");
+      j += 1;
+    }
   }
   
-  public void a(@NonNull uta paramuta, @NonNull tjj paramtjj)
+  public static utb a(@Nullable String paramString)
   {
-    if (!TextUtils.equals(String.valueOf(paramuta.hashCode()), paramtjj.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    ved.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video collection list. %s.", paramtjj);
-    if (paramtjj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    try
     {
-      if (paramtjj.jdField_a_of_type_Int != -1) {
-        paramuta.jdField_a_of_type_Int = paramtjj.jdField_a_of_type_Int;
-      }
-      paramuta.jdField_a_of_type_Boolean = true;
-      paramuta.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
-      if (paramtjj.e)
-      {
-        paramuta.a(paramtjj.jdField_a_of_type_JavaUtilList, paramtjj.c, paramtjj.jdField_a_of_type_Boolean);
-        paramuta.b = paramtjj.jdField_a_of_type_Boolean;
-      }
+      paramString = a(new JSONObject(paramString));
+      return paramString;
     }
-    for (;;)
+    catch (JSONException paramString)
     {
-      uta.a(paramuta).a(paramtjj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
-      return;
-      paramuta.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramtjj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
+      wsv.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+      return null;
     }
+    catch (NullPointerException paramString)
+    {
+      wsv.a("StoryVideoItem.PollLayout", "fromJson()", paramString);
+    }
+    return null;
   }
   
-  public Class acceptEventClass()
+  public static utb a(JSONObject paramJSONObject)
   {
-    return tjj.class;
+    try
+    {
+      paramJSONObject = new utb(paramJSONObject);
+      return paramJSONObject;
+    }
+    catch (IllegalArgumentException paramJSONObject)
+    {
+      wsv.a("StoryVideoItem.PollLayout", "fromJson()", paramJSONObject);
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "PollLayout{version=" + this.jdField_a_of_type_Int + ", id=" + this.b + ", screenWidth=" + this.c + ", screenHeight=" + this.d + ", layoutWidth=" + this.e + ", layoutHeight=" + this.f + ", layoutCenterX=" + this.g + ", layoutCenterY=" + this.h + ", rotation=" + this.i + ", contents=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     utb
  * JD-Core Version:    0.7.0.1
  */

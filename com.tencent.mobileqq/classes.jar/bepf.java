@@ -1,30 +1,50 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qqmini.sdk.core.widget.media.danmu.BarrageView;
+import android.os.Handler;
+import android.os.Message;
 
-public class bepf
-  implements Animation.AnimationListener
+class bepf
+  extends Handler
 {
-  private final View a;
+  public int a;
   
-  private bepf(BarrageView paramBarrageView, View paramView)
+  bepf(bepe parambepe) {}
+  
+  public void a(int paramInt)
   {
-    this.a = paramView;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    this.b.removeView(this.a);
+    if (!this.jdField_a_of_type_Bepe.isVisible())
+    {
+      this.jdField_a_of_type_Bepe.b = this.jdField_a_of_type_Int;
+      return;
+    }
+    if (this.jdField_a_of_type_Bepe.b > this.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_Bepe.c(this.jdField_a_of_type_Bepe.b - 1);
+      sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bepe.e);
+      return;
+    }
+    if (this.jdField_a_of_type_Bepe.b < this.jdField_a_of_type_Int)
+    {
+      int i = this.jdField_a_of_type_Bepe.b + this.jdField_a_of_type_Bepe.f;
+      if (i <= this.jdField_a_of_type_Int) {
+        this.jdField_a_of_type_Bepe.c(i);
+      }
+      for (;;)
+      {
+        sendEmptyMessageDelayed(0, this.jdField_a_of_type_Bepe.e);
+        return;
+        this.jdField_a_of_type_Bepe.c(this.jdField_a_of_type_Int);
+      }
+    }
+    removeMessages(0);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bepf
  * JD-Core Version:    0.7.0.1
  */

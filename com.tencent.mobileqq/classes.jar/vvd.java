@@ -1,107 +1,60 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
-import com.tencent.biz.qqstory.takevideo.tag.TagItemEntry;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class vvd
+class vvd
+  implements View.OnLongClickListener
 {
-  public final int a;
-  public final String a;
-  public final vve a;
+  vvd(vvc paramvvc) {}
   
-  public vvd(qqstory_struct.TagItem paramTagItem)
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_Vve = new vve((qqstory_struct.TagInfoBase)paramTagItem.base_info.get());
-    this.jdField_a_of_type_Int = paramTagItem.join_count.get();
-    this.jdField_a_of_type_JavaLangString = paramTagItem.wording.get();
-  }
-  
-  public vvd(TagItemEntry paramTagItemEntry)
-  {
-    this.jdField_a_of_type_Vve = new vve(paramTagItemEntry.id, paramTagItemEntry.name, paramTagItemEntry.desc, paramTagItemEntry.type);
-    this.jdField_a_of_type_Int = paramTagItemEntry.joinCount;
-    this.jdField_a_of_type_JavaLangString = paramTagItemEntry.wording;
-  }
-  
-  public vvd(vve paramvve, int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Vve = paramvve;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public TagItemEntry a()
-  {
-    TagItemEntry localTagItemEntry = new TagItemEntry();
-    localTagItemEntry.id = this.jdField_a_of_type_Vve.jdField_a_of_type_Long;
-    localTagItemEntry.name = this.jdField_a_of_type_Vve.jdField_a_of_type_JavaLangString;
-    localTagItemEntry.desc = this.jdField_a_of_type_Vve.b;
-    localTagItemEntry.type = this.jdField_a_of_type_Vve.jdField_a_of_type_Int;
-    localTagItemEntry.joinCount = this.jdField_a_of_type_Int;
-    localTagItemEntry.wording = this.jdField_a_of_type_JavaLangString;
-    return localTagItemEntry;
-  }
-  
-  public String a()
-  {
-    Object localObject = new JSONObject();
-    try
+    int i = 0;
+    switch (paramView.getId())
     {
-      if (this.jdField_a_of_type_Vve == null) {
-        return null;
+    default: 
+    case 2131370702: 
+    case 2131376504: 
+      do
+      {
+        do
+        {
+          return true;
+          paramView = (urk)urr.a(10);
+          if (((Boolean)paramView.b("player_show_debug_panel", Boolean.valueOf(false))).booleanValue()) {
+            break;
+          }
+          bool = true;
+          paramView.b("player_show_debug_panel", Boolean.valueOf(bool));
+          paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
+        } while (paramView == null);
+        paramView = (VideoViewVideoHolder)paramView.a(VideoViewVideoHolder.class);
+      } while (paramView == null);
+      if (bool) {}
+      for (;;)
+      {
+        paramView.a(i);
+        return true;
+        bool = false;
+        break;
+        i = 8;
       }
-      ((JSONObject)localObject).put("tag_id", this.jdField_a_of_type_Vve.jdField_a_of_type_Long);
-      ((JSONObject)localObject).put("tag_name", this.jdField_a_of_type_Vve.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("tag_desc", this.jdField_a_of_type_Vve.b);
-      ((JSONObject)localObject).put("tag_type", this.jdField_a_of_type_Vve.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("join_count", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("wording", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("one_page", 1);
-      ((JSONObject)localObject).put("src_type", "web");
-      ((JSONObject)localObject).put("version", 1);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
     }
-    catch (JSONException localJSONException) {}
-    return null;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    paramView = (urk)urr.a(10);
+    if (!((Boolean)paramView.b("player_use_tvk", Boolean.valueOf(false))).booleanValue()) {}
+    for (boolean bool = true;; bool = false)
     {
+      paramView.b("player_use_tvk", Boolean.valueOf(bool));
+      QQToast.a(this.a.b(), "UserTVK: " + bool, 0).a();
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (vvd)paramObject;
-      if (this.jdField_a_of_type_Vve != null) {
-        return this.jdField_a_of_type_Vve.equals(paramObject.jdField_a_of_type_Vve);
-      }
-    } while (paramObject.jdField_a_of_type_Vve == null);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    if (this.jdField_a_of_type_Vve != null) {
-      return this.jdField_a_of_type_Vve.hashCode();
     }
-    return 0;
-  }
-  
-  public String toString()
-  {
-    return "TagItem{tagInfo=" + this.jdField_a_of_type_Vve + ", joinCount=" + this.jdField_a_of_type_Int + ", wording='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvd
  * JD-Core Version:    0.7.0.1
  */

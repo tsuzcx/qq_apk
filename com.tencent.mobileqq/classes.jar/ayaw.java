@@ -1,96 +1,124 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.res.ColorStateList;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.profile.view.ClickPreventableTextView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import com.tencent.util.Pair;
 
-class ayaw
-  extends akhb
+public class ayaw
+  extends ClickableSpan
+  implements ayax
 {
-  ayaw(ayav paramayav) {}
+  private ColorStateList jdField_a_of_type_AndroidContentResColorStateList;
+  private ayay jdField_a_of_type_Ayay;
+  private Object jdField_a_of_type_JavaLangObject;
+  private boolean jdField_a_of_type_Boolean;
+  private ColorStateList jdField_b_of_type_AndroidContentResColorStateList;
+  private boolean jdField_b_of_type_Boolean;
   
-  protected void a(boolean paramBoolean, ayay paramayay)
+  public ayaw(ayay paramayay, ColorStateList paramColorStateList1, ColorStateList paramColorStateList2, Object paramObject)
   {
-    Object localObject2;
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder().append("SubAccountProtocManager.onGetBindSubAccount() isSucc=").append(paramBoolean).append(" data.mSubUin=");
-      if (paramayay == null)
-      {
-        ??? = "data is null";
-        QLog.d("SUB_ACCOUNT", 2, (String)???);
-      }
+    this.jdField_a_of_type_Ayay = paramayay;
+    this.jdField_a_of_type_AndroidContentResColorStateList = paramColorStateList1;
+    this.jdField_b_of_type_AndroidContentResColorStateList = paramColorStateList2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public ayaw(ayay paramayay, ColorStateList paramColorStateList, Object paramObject)
+  {
+    this(paramayay, paramColorStateList, null, paramObject);
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a(View paramView, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ClickColorTopicSpan", 2, String.format("setPressed %b", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    else
+    if (this.jdField_a_of_type_Boolean != paramBoolean)
     {
-      if (!ayav.a(this.a).l) {
-        break label73;
-      }
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      paramView.invalidate();
     }
-    for (;;)
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_Boolean != paramBoolean) {
+      this.jdField_b_of_type_Boolean = paramBoolean;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((paramView instanceof ClickPreventableTextView)) {
+      if (!((ClickPreventableTextView)paramView).a()) {}
+    }
+    while (this.jdField_a_of_type_Ayay == null)
     {
       return;
-      ??? = paramayay.c;
+      ((ClickPreventableTextView)paramView).a();
+    }
+    this.jdField_a_of_type_Ayay.a(this, paramView);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((this.jdField_a_of_type_JavaLangObject instanceof Pair))
+    {
+      Pair localPair = (Pair)this.jdField_a_of_type_JavaLangObject;
+      localStringBuilder.append("id=").append(localPair.first).append(",");
+      localStringBuilder.append("topic=").append((String)localPair.second).append(",");
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    if (this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    paramTextPaint.setUnderlineText(false);
+    if (this.jdField_a_of_type_AndroidContentResColorStateList != null) {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16842919 }, 0);
+        paramTextPaint.setColor(i);
+        label54:
+        if (this.jdField_b_of_type_AndroidContentResColorStateList == null) {
+          break label130;
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          break label115;
+        }
+      }
+    }
+    label115:
+    for (int i = this.jdField_b_of_type_AndroidContentResColorStateList.getColorForState(new int[] { 16842919 }, 0);; i = this.jdField_b_of_type_AndroidContentResColorStateList.getColorForState(new int[0], 0))
+    {
+      paramTextPaint.bgColor = i;
+      return;
+      i = this.jdField_a_of_type_AndroidContentResColorStateList.getColorForState(new int[0], 0);
       break;
-      label73:
-      if ((!ayav.a(this.a)) && (ThreadManager.getSubThreadHandler() != null)) {
-        ThreadManager.getSubThreadHandler().postDelayed(ayav.a(this.a), 100L);
-      }
-      if (paramayay != null)
-      {
-        if (paramayay.a()) {
-          ayaq.a(ayav.a(this.a), paramayay.a(), 2);
-        }
-        if (paramayay.b())
-        {
-          ??? = paramayay.b();
-          if (??? != null)
-          {
-            ??? = ((ArrayList)???).iterator();
-            while (((Iterator)???).hasNext())
-            {
-              localObject2 = (String)((Iterator)???).next();
-              ayaq.c(ayav.a(this.a), (String)localObject2);
-            }
-          }
-        }
-        paramayay.a();
-      }
-      synchronized (ayav.c())
-      {
-        ayav.c(this.a, false);
-        ayav.d(this.a, true);
-        if ((paramayay == null) || (!paramayay.b)) {
-          continue;
-        }
-        ayaq.a(ayav.a(this.a), paramayay.c, false);
-        return;
-      }
+      paramTextPaint.setColor(-16777216);
+      break label54;
     }
-  }
-  
-  protected void b(boolean paramBoolean, ayay arg2)
-  {
-    synchronized ()
-    {
-      ayav.a(this.a, false);
-      return;
-    }
-  }
-  
-  protected void c(boolean paramBoolean, ayay arg2)
-  {
-    synchronized ()
-    {
-      ayav.b(this.a, false);
-      return;
-    }
+    label130:
+    paramTextPaint.bgColor = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayaw
  * JD-Core Version:    0.7.0.1
  */

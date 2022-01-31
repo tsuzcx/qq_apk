@@ -1,48 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import java.util.List;
 
-final class apix
-  implements View.OnClickListener
+class apix
+  extends alnn
 {
-  apix(FileManagerEntity paramFileManagerEntity, apkq paramapkq) {}
+  apix(apiu paramapiu) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      paramView = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      int i = apug.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      if ((i == 1) || (i == 2) || (i == 4)) {
-        new bgpu(3).a(paramView, BaseActivity.sTopActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, null, false);
-      }
-      while ((this.jdField_a_of_type_Apkq != null) && (this.jdField_a_of_type_Apkq.b()))
-      {
-        this.jdField_a_of_type_Apkq.a(3);
-        apug.a(paramView, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0) && (apvd.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())))
-        {
-          bgpu.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath()).a(paramView).a(BaseActivity.sTopActivity, paramView.getAccount());
-          bgqi.a(paramView, 7, 3);
-        }
-        else if (QLog.isColorLevel())
-        {
-          QLog.i("FileOperaterUtils", 2, "FileVideoMediaPlayHelperthis is a local file, but favorite fail. [Uuid] = " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid + " [status] = " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status + " [fileType] = " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType);
-        }
-      }
-      return;
+    apiu.a(this.a).clear();
+  }
+  
+  protected void a(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.e();
     }
-    catch (Exception paramView) {}
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if ((paramObject != null) && ((paramObject instanceof Integer)) && (apiu.a(this.a) != null)) {
+      apiu.a(this.a).obtainMessage(208, paramObject).sendToTarget();
+    }
+    if ((this.a.a != null) && (paramBoolean)) {
+      this.a.a.e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apix
  * JD-Core Version:    0.7.0.1
  */

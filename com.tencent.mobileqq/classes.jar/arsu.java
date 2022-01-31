@@ -1,53 +1,102 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
+import com.tencent.mobileqq.flutter.channel.model.ResponsePacket;
+import com.tencent.mobileqq.flutter.channel.sso.SSOChannel.2;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.os.MqqHandler;
 
-class arsu
-  implements arrp
+public class arsu
+  extends arsl
 {
-  arsu(arss paramarss) {}
+  public static final AtomicInteger a;
+  private Map<Integer, MethodChannel.Result> a;
   
-  public void a() {}
-  
-  public void a(boolean paramBoolean)
+  static
   {
-    int i = this.a.jdField_a_of_type_Arsq.e;
-    String str3 = this.a.jdField_a_of_type_Arsq.b;
-    this.a.b(i, str3);
-    ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(i, str3, paramBoolean);
-    if ((i == 2) && (!TextUtils.isEmpty(str3))) {
-      axqy.b(null, "dc00899", "c2c_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", "", "");
+    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
+  }
+  
+  public arsu(String paramString, BinaryMessenger paramBinaryMessenger)
+  {
+    super(paramString, paramBinaryMessenger);
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  }
+  
+  private void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult)
+  {
+    if ((paramRequestPacket == null) || (paramResult == null)) {
+      QLog.d("QFlutter.SSOChannel", 1, "send request, packet == null or result == null");
     }
-    while ((i != 1) || (TextUtils.isEmpty(str3))) {
+    int i;
+    do
+    {
+      return;
+      i = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+      ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", a().getAccount(), paramRequestPacket.cmd);
+      localToServiceMsg.setTimeout(paramRequestPacket.timeout.intValue() * 1000L);
+      localToServiceMsg.extraData.putLong("REQUEST_TIME", System.currentTimeMillis());
+      localToServiceMsg.extraData.putInt("FLUTTER_REQUEST_SEQ", i);
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramResult);
+      localToServiceMsg.putWupBuffer(paramRequestPacket.body);
+      paramResult = new NewIntent(a().getApplication(), arst.class);
+      paramResult.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
+      a().startServlet(paramResult);
+    } while (!QLog.isColorLevel());
+    QLog.d("QFlutter.SSOChannel", 2, String.format("send request cmd: %s, request seq: %s", new Object[] { paramRequestPacket.cmd, Integer.valueOf(i) }));
+  }
+  
+  public MethodChannel.MethodCallHandler a()
+  {
+    return new arsv(this);
+  }
+  
+  public MethodCodec a()
+  {
+    return arsw.a;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramToServiceMsg == null)
+    {
+      QLog.d("QFlutter.SSOChannel", 1, "onReceive, request is null");
       return;
     }
-    String str2 = "2";
-    TroopInfo localTroopInfo = ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(str3);
-    String str1 = str2;
-    if (localTroopInfo != null)
-    {
-      if (!localTroopInfo.isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c())) {
-        break label180;
-      }
-      str1 = "0";
+    long l1 = System.currentTimeMillis();
+    long l2 = paramToServiceMsg.extraData.getLong("REQUEST_TIME");
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.SSOChannel", 2, String.format("[onReceive]cmd: %s, app seq: %s, cost: %s, errCode: %s", new Object[] { paramToServiceMsg.getServiceCmd(), Integer.valueOf(paramToServiceMsg.getAppSeq()), Long.valueOf(l1 - l2), Integer.valueOf(paramFromServiceMsg.getResultCode()) }));
     }
-    for (;;)
-    {
-      axqy.b(null, "dc00899", "Grp_AIO", "", "music_tab", "close_tab", 0, 0, str3, "", str1, "");
-      return;
-      label180:
-      str1 = str2;
-      if (localTroopInfo.isAdmin()) {
-        str1 = "1";
-      }
-    }
+    byte[] arrayOfByte = paramFromServiceMsg.getWupBuffer();
+    ResponsePacket localResponsePacket = new ResponsePacket();
+    localResponsePacket.isSuc = Boolean.valueOf(paramFromServiceMsg.isSuccess());
+    localResponsePacket.errCode = Integer.valueOf(paramFromServiceMsg.getResultCode());
+    localResponsePacket.body = arrayOfByte;
+    int i = paramToServiceMsg.extraData.getInt("FLUTTER_REQUEST_SEQ");
+    paramFromServiceMsg = (MethodChannel.Result)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(i));
+    a(paramToServiceMsg.getServiceCmd(), localResponsePacket, paramFromServiceMsg);
+  }
+  
+  public void a(String paramString, ResponsePacket paramResponsePacket, MethodChannel.Result paramResult)
+  {
+    ThreadManager.getUIHandler().post(new SSOChannel.2(this, paramResponsePacket, paramString, paramResult));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arsu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,30 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.qphone.base.util.QLog;
 
 class aksh
-  implements View.OnTouchListener
+  implements SoundPool.OnLoadCompleteListener
 {
-  aksh(akse paramakse, ImageView paramImageView) {}
+  aksh(aksf paramaksf, float paramFloat, int paramInt, String paramString, akni paramakni, long paramLong) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    if (-1.0F == this.jdField_a_of_type_Float) {}
+    for (float f = 1.0F;; f = this.jdField_a_of_type_Float)
     {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
+      paramInt1 = aksf.a(this.jdField_a_of_type_Aksf).play(paramInt1, f, f, 0, this.jdField_a_of_type_Int, 1.0F);
+      if (paramInt1 != 0) {
+        break;
       }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+      QLog.w("cmgame_process.CmGameSoudPoolPlayer", 1, "fail to play, musicPath:" + this.jdField_a_of_type_JavaLangString);
+      return;
     }
-    for (;;)
-    {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
-    }
+    aksf.a(this.jdField_a_of_type_Aksf, this.jdField_a_of_type_Akni, paramInt1, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksh
  * JD-Core Version:    0.7.0.1
  */

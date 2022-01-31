@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingLeft="15.0dip" android:paddingBottom="17.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/mtg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/mue" android:layout_alignParentLeft="true" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/mue" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
+        <TextView android:textSize="12.0sp" android:textColor="#ccffffff" android:gravity="center" android:id="@id/mui" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:text="分享" android:drawableTop="@drawable/evj" />
+        <TextView android:textSize="12.0sp" android:textColor="#ccffffff" android:gravity="center" android:id="@id/mtp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:text="评论" android:drawableTop="@drawable/evf" />
+        <RelativeLayout android:id="@id/mu6" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="15.0dip">
+            <ImageView android:id="@id/mu8" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/a4u" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/mu7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/evh" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="13.0sp" android:textColor="#ccffffff" android:id="@id/mu9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="赞" android:layout_below="@id/mu8" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <ViewStub android:id="@id/mu5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="18.0dip" />
+    </LinearLayout>
+</RelativeLayout>

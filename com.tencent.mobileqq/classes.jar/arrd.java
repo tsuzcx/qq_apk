@@ -1,33 +1,53 @@
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class arrd
-  extends ajxj
+  implements bhqe
 {
-  public arrd(ListenTogetherManager paramListenTogetherManager) {}
+  public arrd(SendBottomBar paramSendBottomBar) {}
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public void a(View paramView, int paramInt, String paramString)
   {
-    QLog.i("ListenTogether.Manager", 1, "onUpdateDelFriend isSuccess: " + paramBoolean + " object: " + paramObject);
-    if (paramBoolean)
+    if (paramString.equals(alpo.a(2131714165)))
     {
-      String str = arrn.a(2, String.valueOf(paramObject));
-      if (ListenTogetherManager.a(this.a).equals(str))
+      paramView = arni.a("排序方式:\n时间", alpo.a(2131714174), null);
+      SendBottomBar.a(this.a).setText(paramView);
+      if (SendBottomBar.a(this.a).g() == 0) {
+        return;
+      }
+      SendBottomBar.a(this.a).b(0);
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      if (paramString.equals(alpo.a(2131714194)))
       {
-        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
-        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
-        arqq.b(ListenTogetherManager.a(this.a), String.valueOf(paramObject), false);
-        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
-        this.a.a(2, String.valueOf(paramObject), false);
+        paramView = arni.a("排序方式:\n大小", alpo.a(2131714168), null);
+        SendBottomBar.a(this.a).setText(paramView);
+        if (SendBottomBar.a(this.a).g() == 1) {
+          break;
+        }
+        SendBottomBar.a(this.a).b(1);
+        continue;
+      }
+      if (paramString.equals(alpo.a(2131714167)))
+      {
+        paramView = arni.a("排序方式:\n类型", alpo.a(2131714190), null);
+        SendBottomBar.a(this.a).setText(paramView);
+        if (SendBottomBar.a(this.a).g() == 2) {
+          break;
+        }
+        SendBottomBar.a(this.a).b(2);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arrd
  * JD-Core Version:    0.7.0.1
  */

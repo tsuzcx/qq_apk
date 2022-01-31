@@ -1,28 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
 
-class aqan
-  implements aqae
+public class aqan
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  aqan(aqam paramaqam) {}
+  public aqan(ExtendFriendSearchFragment paramExtendFriendSearchFragment, View paramView) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  public void onGlobalLayout()
   {
-    QLog.d("FlutterMainQIPCModule", 1, String.format("onResult, isSuccess: %s, installDir: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString }));
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("KEY_INSTALL_RESULT", paramBoolean1);
-    localBundle.putString("KEY_INSTALL_DIR", paramString);
-    localBundle.putBoolean("KEY_IS_APP_EXIST", paramBoolean3);
-    localBundle.putBoolean("KEY_IS_ENGINE_EXIST", paramBoolean2);
-    QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "FlutterSubQIPCModule", "ACTION_INSTALL_RESULT", localBundle, null);
+    Object localObject = new int[2];
+    this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject);
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment.e = localObject[1];
+    localObject = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSearchFragment;
+    ((ExtendFriendSearchFragment)localObject).e += this.jdField_a_of_type_AndroidViewView.getHeight();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqan
  * JD-Core Version:    0.7.0.1
  */

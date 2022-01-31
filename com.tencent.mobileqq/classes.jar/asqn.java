@@ -1,13 +1,56 @@
-import android.support.v4.view.PagerAdapter;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
 
-public abstract interface asqn
+public class asqn
+  extends RecyclerView.OnScrollListener
 {
-  public abstract void a(MultiAIOBaseViewPager paramMultiAIOBaseViewPager, PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
+  public asqn(HotPicRecyclerView paramHotPicRecyclerView) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      AbstractGifImage.resumeAll();
+      asqv.c();
+      this.a.b();
+      if (paramInt != 2) {
+        break label128;
+      }
+      this.a.jdField_a_of_type_Assb.a(true);
+    }
+    for (;;)
+    {
+      if ((paramInt == 0) && (this.a.jdField_a_of_type_Int == 2))
+      {
+        ((StaggeredGridLayoutManager)this.a.getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.a.jdField_a_of_type_ArrayOfInt);
+        if ((this.a.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.a.jdField_a_of_type_Asqo != null)) {
+          this.a.jdField_a_of_type_Asqo.d();
+        }
+      }
+      this.a.jdField_a_of_type_Int = paramInt;
+      return;
+      this.a.c();
+      AbstractGifImage.pauseAll();
+      asqv.b();
+      break;
+      label128:
+      this.a.jdField_a_of_type_Assb.a(false);
+    }
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (paramInt2 > 0) {
+      this.a.jdField_a_of_type_Assb.a(paramInt2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asqn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app.message;
 
-import akpf;
+import amfy;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 
 public class DatalineMessageManager$2
   implements Runnable
 {
-  public DatalineMessageManager$2(akpf paramakpf, DataLineMsgSet paramDataLineMsgSet) {}
+  public DatalineMessageManager$2(amfy paramamfy, DataLineMsgSet paramDataLineMsgSet) {}
   
   public void run()
   {

@@ -1,31 +1,76 @@
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 public class aijg
-  implements Animation.AnimationListener
+  extends BaseAdapter
 {
-  public aijg(SpecailCareListActivity paramSpecailCareListActivity, aijx paramaijx) {}
+  public aijg(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public String a(int paramInt)
   {
-    this.jdField_a_of_type_Aijx.a.clearAnimation();
-    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
-    paramAnimation.addRule(1, 2131367679);
-    paramAnimation.setMargins(0, (int)(24.0F * SpecailCareListActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0, 0);
-    this.jdField_a_of_type_Aijx.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Aijx.a.setVisibility(4);
+    if ((CameraPreviewActivity.a(this.a) != null) && (paramInt < CameraPreviewActivity.a(this.a).size()) && (paramInt >= 0)) {
+      return (String)CameraPreviewActivity.a(this.a).get(paramInt);
+    }
+    return null;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public int getCount()
+  {
+    if (CameraPreviewActivity.a(this.a) != null) {
+      return CameraPreviewActivity.a(this.a).size();
+    }
+    return 0;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = this.a.getLayoutInflater().inflate(2131559435, null);
+      paramViewGroup = new aijh();
+      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131372235));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      Object localObject = a(paramInt);
+      if (localObject == null) {
+        break;
+      }
+      localObject = new File((String)localObject);
+      if (((File)localObject).exists()) {}
+      try
+      {
+        paramViewGroup.a.setImageDrawable(URLDrawable.getDrawable(((File)localObject).toURL(), CameraPreviewActivity.a(this.a), CameraPreviewActivity.b(this.a), CameraPreviewActivity.a(this.a), null, true));
+        return paramView;
+      }
+      catch (MalformedURLException paramViewGroup)
+      {
+        paramViewGroup.printStackTrace();
+        return paramView;
+      }
+      paramViewGroup = (aijh)paramView.getTag();
+    }
+    paramViewGroup.a.setImageDrawable(null);
+    return paramView;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijg
  * JD-Core Version:    0.7.0.1
  */

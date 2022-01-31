@@ -1,60 +1,42 @@
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionReq;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossReportExceptionRsp;
-import NS_MOBILE_QBOSS_PROTO.ReportExceptionInfo;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.util.List;
 
-public class bhkt
-  extends QzoneExternalRequest
+class bhkt
+  extends Handler
 {
-  private JceStruct a;
-  
-  public bhkt(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public bhkt(bhkn parambhkn, Looper paramLooper)
   {
-    ArrayList localArrayList = new ArrayList(1);
-    ReportExceptionInfo localReportExceptionInfo = new ReportExceptionInfo();
-    localReportExceptionInfo.iCode = paramInt3;
-    localReportExceptionInfo.iAppid = paramInt1;
-    localReportExceptionInfo.iTaskId = paramInt2;
-    localReportExceptionInfo.strMsg = paramString;
-    localArrayList.add(localReportExceptionInfo);
-    this.a = new MobileQbossReportExceptionReq(paramLong, localArrayList);
+    super(paramLooper);
   }
   
-  public static MobileQbossReportExceptionRsp a(byte[] paramArrayOfByte)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+    switch (paramMessage.what)
+    {
     }
-    MobileQbossReportExceptionRsp localMobileQbossReportExceptionRsp;
     do
     {
-      return paramArrayOfByte;
-      localMobileQbossReportExceptionRsp = (MobileQbossReportExceptionRsp)decode(paramArrayOfByte, "reportException");
-      paramArrayOfByte = localMobileQbossReportExceptionRsp;
-    } while (localMobileQbossReportExceptionRsp != null);
-    return null;
-  }
-  
-  public String getCmdString()
-  {
-    return "QzoneNewService.mobileqboss.reportException";
-  }
-  
-  public JceStruct getReq()
-  {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "reportException";
+      do
+      {
+        return;
+        bhkn.a(this.a);
+        return;
+      } while (paramMessage.obj == null);
+      bhkn.a(this.a, (List)paramMessage.obj);
+      return;
+      bhkn.b(this.a);
+      return;
+      bhkn.c(this.a);
+      return;
+    } while (paramMessage.obj == null);
+    bhkn.a(this.a, (bhkr)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhkt
  * JD-Core Version:    0.7.0.1
  */

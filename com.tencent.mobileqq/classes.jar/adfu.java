@@ -1,99 +1,113 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
+import com.tencent.ims.AlertReport.ButtonAction;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class adfu
-  extends adfp
+  implements DialogInterface.OnClickListener
 {
-  private asrn jdField_a_of_type_Asrn;
-  private boolean jdField_a_of_type_Boolean;
+  public adfu(NotificationActivity paramNotificationActivity, String paramString1, int paramInt, String paramString2) {}
   
-  public adfu(BaseChatPie paramBaseChatPie)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramBaseChatPie);
-  }
-  
-  private void a(String paramString)
-  {
-    if (TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString)) {
-      c(false);
-    }
-  }
-  
-  private void l()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    adjn localadjn = (adjn)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(31);
-    if (localadjn != null) {
-      localadjn.e();
-    }
-    aefs.e();
-  }
-  
-  protected View a()
-  {
-    this.jdField_a_of_type_Asrn = new adfv(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-    if (this.jdField_a_of_type_Asrn.a() == null) {}
-    return this.jdField_a_of_type_Asrn.a();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Asrn != null) {
-      this.jdField_a_of_type_Asrn.b();
-    }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-  }
-  
-  public boolean b()
-  {
-    if ((this.jdField_a_of_type_Asrn != null) && (a()))
+    try
     {
-      this.jdField_a_of_type_Asrn.a();
-      return true;
+      Object localObject;
+      String str;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+      {
+        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app.getCurrentAccountUin();
+        localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("uin", paramDialogInterface);
+        str = this.jdField_a_of_type_JavaLangString;
+        if (str.indexOf("?") != -1) {
+          break label203;
+        }
+        paramDialogInterface = str + "?uin=" + paramDialogInterface;
+      }
+      for (;;)
+      {
+        ((Intent)localObject).putExtra("url", paramDialogInterface);
+        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.startActivity((Intent)localObject);
+        try
+        {
+          paramDialogInterface = new AlertReport.ButtonAction();
+          paramDialogInterface.uint32_cmd.set(1);
+          paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
+          paramDialogInterface.str_package_name.set(bhim.c());
+          paramDialogInterface.uint32_app_id.set(AppSetting.a());
+          mzy.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
+          azmj.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
+          this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+          return;
+          label203:
+          paramDialogInterface = str + "&uin=" + paramDialogInterface;
+        }
+        catch (Exception paramDialogInterface)
+        {
+          for (;;)
+          {
+            paramDialogInterface.printStackTrace();
+          }
+        }
+      }
+      try
+      {
+        localObject = new AlertReport.ButtonAction();
+        ((AlertReport.ButtonAction)localObject).uint32_cmd.set(1);
+        ((AlertReport.ButtonAction)localObject).uint32_button_id.set(this.jdField_a_of_type_Int);
+        ((AlertReport.ButtonAction)localObject).str_package_name.set(bhim.c());
+        ((AlertReport.ButtonAction)localObject).uint32_app_id.set(AppSetting.a());
+        mzy.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, ((AlertReport.ButtonAction)localObject).toByteArray(), 34, "SecuritySvc.AlertReport");
+        azmj.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
+        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+        throw paramDialogInterface;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
+      }
     }
-    return false;
-  }
-  
-  public void e()
-  {
-    super.e();
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("onDrawerStartOpen", new Object[0]));
-    }
-    if (this.jdField_a_of_type_Asrn != null) {
-      this.jdField_a_of_type_Asrn.a();
-    }
-    l();
-  }
-  
-  public void h()
-  {
-    super.h();
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, String.format("onDrawerClosed", new Object[0]));
-    }
-    if (this.jdField_a_of_type_Asrn != null) {
-      this.jdField_a_of_type_Asrn.c();
-    }
-  }
-  
-  public void j()
-  {
-    if (this.jdField_a_of_type_Asrn != null)
+    catch (Exception paramDialogInterface)
     {
-      this.jdField_a_of_type_Asrn.d();
-      this.jdField_a_of_type_Asrn = null;
+      paramDialogInterface = paramDialogInterface;
+      paramDialogInterface.printStackTrace();
+      try
+      {
+        paramDialogInterface = new AlertReport.ButtonAction();
+        paramDialogInterface.uint32_cmd.set(1);
+        paramDialogInterface.uint32_button_id.set(this.jdField_a_of_type_Int);
+        paramDialogInterface.str_package_name.set(bhim.c());
+        paramDialogInterface.uint32_app_id.set(AppSetting.a());
+        mzy.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.app, paramDialogInterface.toByteArray(), 34, "SecuritySvc.AlertReport");
+        azmj.b(null, "P_CliOper", "Safe_AlertReport", "", "0X8007536", "0X8007536", this.jdField_a_of_type_Int, 0, this.b, "", "", "");
+        this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.finish();
+        return;
+      }
+      catch (Exception paramDialogInterface)
+      {
+        for (;;)
+        {
+          paramDialogInterface.printStackTrace();
+        }
+      }
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adfu
  * JD-Core Version:    0.7.0.1
  */

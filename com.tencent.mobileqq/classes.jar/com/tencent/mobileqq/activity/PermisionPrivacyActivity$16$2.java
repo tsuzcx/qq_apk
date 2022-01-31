@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import abqr;
+import adhz;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class PermisionPrivacyActivity$16$2
   implements Runnable
 {
-  public PermisionPrivacyActivity$16$2(abqr paramabqr) {}
+  public PermisionPrivacyActivity$16$2(adhz paramadhz) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class PermisionPrivacyActivity$16$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.16.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import java.util.HashMap;
-
 public class aajc
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public aajc(AssistantSettingActivity paramAssistantSettingActivity, ahfx paramahfx) {}
+  private aajd a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(aajd paramaajd)
   {
-    this.jdField_a_of_type_Ahfx.a(paramBoolean);
-    paramCompoundButton = new HashMap();
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      paramCompoundButton.put("ext1", i + "");
-      ahif.a("sq.sz.dzkg", 1, 0, paramCompoundButton);
-      return;
-    }
+    this.a = paramaajd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aajc
  * JD-Core Version:    0.7.0.1
  */

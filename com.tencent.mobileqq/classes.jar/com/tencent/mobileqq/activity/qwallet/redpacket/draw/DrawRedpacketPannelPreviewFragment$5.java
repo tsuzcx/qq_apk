@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import ahea;
+import aiye;
 import android.widget.TextView;
 
 class DrawRedpacketPannelPreviewFragment$5
@@ -15,13 +15,13 @@ class DrawRedpacketPannelPreviewFragment$5
       if (this.this$0.a.getVisibility() != 0) {
         this.this$0.a.setVisibility(0);
       }
-      this.this$0.a.setText("当前识别结果：---- 当前识别成功阈值：" + ahea.a().a + "\n" + this.a);
+      this.this$0.a.setText("当前识别结果：---- 当前识别成功阈值：" + aiye.a().a + "\n" + this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.5
  * JD-Core Version:    0.7.0.1
  */

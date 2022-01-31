@@ -1,79 +1,91 @@
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.av.VideoConstants.EmShareOps;
+import com.tencent.av.VideoConstants.EmShareOpsRet;
+import com.tencent.av.VideoController;
+import com.tencent.av.screenshare.ScreenShareCtrl;
 import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-class lyj
-  implements lys
+public class lyj
+  implements lrv, mlt
 {
-  lyj(lyi paramlyi, long paramLong) {}
+  private final lyk jdField_a_of_type_Lyk = new lyk();
+  private final WeakReference<ScreenShareCtrl> jdField_a_of_type_MqqUtilWeakReference;
   
-  public Bitmap a(long paramLong)
+  public lyj(ScreenShareCtrl paramScreenShareCtrl)
   {
-    if (this.jdField_a_of_type_Lyi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      return null;
+    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramScreenShareCtrl);
+  }
+  
+  @TargetApi(21)
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AVShare", 2, "onMediaProjectionEnd fromType:=" + paramInt);
     }
-    return this.jdField_a_of_type_Lyi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Lyi.jdField_a_of_type_JavaLangString, (byte)3, false, false);
-  }
-  
-  public TroopInfoData a()
-  {
-    return this.jdField_a_of_type_Lyi.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData;
-  }
-  
-  public String a()
-  {
-    return lyi.a(this.jdField_a_of_type_Lyi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Lyi.jdField_a_of_type_JavaLangString);
-  }
-  
-  public String a(int paramInt)
-  {
-    return null;
-  }
-  
-  public String a(long paramLong, int paramInt)
-  {
-    Object localObject;
-    if (this.jdField_a_of_type_Lyi.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {
-      localObject = null;
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localScreenShareCtrl == null) {}
+    while (paramInt != 2) {
+      return;
     }
-    String str;
+    if (localScreenShareCtrl.a(VideoConstants.EmShareOps.STOP) == VideoConstants.EmShareOpsRet.SUC) {}
+    for (paramInt = 2;; paramInt = 3)
+    {
+      ScreenShareCtrl.a(paramInt);
+      return;
+    }
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(Bitmap paramBitmap, lyh paramlyh)
+  {
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localScreenShareCtrl != null) {
+      localScreenShareCtrl.a(paramBitmap, paramlyh);
+    }
+  }
+  
+  @TargetApi(21)
+  public void a(lyh paramlyh, int paramInt1, int paramInt2)
+  {
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localScreenShareCtrl == null) {}
     do
     {
-      return localObject;
-      str = lyi.a(this.jdField_a_of_type_Lyi, paramInt);
-      localObject = str;
-    } while (!TextUtils.isEmpty(str));
-    this.jdField_a_of_type_Lyi.a(paramLong, this.jdField_a_of_type_Lyi.jdField_a_of_type_Long, this.jdField_a_of_type_Lyi.jdField_a_of_type_Int);
-    return str;
+      return;
+      localScreenShareCtrl.a(paramlyh, paramInt1, paramInt2);
+      if (localScreenShareCtrl.a(VideoConstants.EmShareOps.START) == VideoConstants.EmShareOpsRet.SUC)
+      {
+        ScreenShareCtrl.a(4);
+        return;
+      }
+      ScreenShareCtrl.a(6);
+      paramlyh = VideoController.a().a();
+    } while (paramlyh == null);
+    paramlyh.a(1);
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, lyh paramlyh)
   {
-    QLog.w("ShareChat", 1, "onFinish, choosedChannel[" + paramInt1 + "], choosedLinkType[" + paramInt2 + "], result[" + paramInt3 + "], seq[" + this.jdField_a_of_type_Long + "]");
-    mqy.a(paramInt1, paramInt2);
-    if (paramInt3 == 2) {
-      mqy.a(paramInt1, paramInt2, 99, null);
+    this.jdField_a_of_type_Lyk.a(1, paramArrayOfByte, paramInt1, paramInt2, paramlyh);
+    ScreenShareCtrl localScreenShareCtrl = (ScreenShareCtrl)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if (localScreenShareCtrl != null) {
+      localScreenShareCtrl.a(paramArrayOfByte, paramInt1, paramInt2, paramlyh);
     }
   }
   
-  public String b()
+  public void b(int paramInt)
   {
-    return lyi.a(this.jdField_a_of_type_Lyi.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3)
-  {
-    QLog.w("ShareChat", 1, "onQRForward, choosedChannel[" + paramInt1 + "], choosedLinkType[" + paramInt2 + "], result[" + paramInt3 + "], seq[" + this.jdField_a_of_type_Long + "]");
-    if (paramInt3 == 2) {
-      mqy.a(paramInt1, paramInt2, 99, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("AVShare", 2, "onMediaProjectionReady errorReason:=" + paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lyj
  * JD-Core Version:    0.7.0.1
  */

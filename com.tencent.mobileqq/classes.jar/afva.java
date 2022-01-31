@@ -1,28 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Rect;
+import java.net.URL;
 
-class afva
-  implements DialogInterface.OnClickListener
+public class afva
 {
-  afva(afup paramafup, boolean paramBoolean, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    axqy.b(null, "dc00898", "", "", "0X8009DCB", "0X8009DCB", 0, 0, afup.a(this.jdField_a_of_type_Afup), "", "", "");
-    if (this.jdField_a_of_type_Boolean) {
-      afup.a(this.jdField_a_of_type_Afup, afup.a(this.jdField_a_of_type_Afup), Long.valueOf(afup.a(this.jdField_a_of_type_Afup)).longValue(), false);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Afup.f();
-      return;
-      afup.a(this.jdField_a_of_type_Afup, afup.a(this.jdField_a_of_type_Afup), Long.valueOf(afup.a(this.jdField_a_of_type_Afup)).longValue(), false, this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  URL jdField_a_of_type_JavaNetURL;
+  boolean jdField_a_of_type_Boolean;
+  float jdField_b_of_type_Float;
+  int jdField_b_of_type_Int;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afva
  * JD-Core Version:    0.7.0.1
  */

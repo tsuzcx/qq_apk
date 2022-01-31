@@ -1,19 +1,22 @@
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityActivity;
+import org.json.JSONObject;
 
-class bexq
-  extends WebViewClient
+public class bexq
+  implements DialogInterface.OnClickListener
 {
-  bexq(bexp parambexp) {}
+  public bexq(AuthorityActivity paramAuthorityActivity, int paramInt, JSONObject paramJSONObject) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bexp.a(this.a, true);
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentOpenAgentAuthorityActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_OrgJsonJSONObject.toString(), null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexq
  * JD-Core Version:    0.7.0.1
  */

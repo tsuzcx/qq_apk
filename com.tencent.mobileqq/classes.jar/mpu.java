@@ -1,315 +1,293 @@
-import android.text.TextUtils;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.BaseToolbar;
-import com.tencent.av.ui.RedbagToolbar;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.annotation.TargetApi;
+import android.media.MediaCodec;
+import android.media.MediaCodec.BufferInfo;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
+@TargetApi(16)
 public class mpu
 {
-  public static int a;
-  public static long a;
-  public static String a;
-  public static int b;
+  private int jdField_a_of_type_Int;
+  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
+  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
+  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
+  private BufferedOutputStream jdField_a_of_type_JavaIoBufferedOutputStream;
+  private FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
+  private String jdField_a_of_type_JavaLangString;
+  private mpv jdField_a_of_type_Mpv;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
   
-  static
+  public mpu() {}
+  
+  public mpu(int paramInt1, int paramInt2, int paramInt3)
   {
-    jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
   }
   
-  static int a(int paramInt)
+  private void a()
   {
-    int i = 1;
-    if ((paramInt & 0x3F) != 0) {
-      i = 2;
-    }
-    return i;
-  }
-  
-  public static void a()
-  {
-    a("0X8008984", null);
-  }
-  
-  public static void a(int paramInt)
-  {
-    jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static void a(long paramLong)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("RedBagReport", 1, "setCurRoomId, RoomId[" + jdField_a_of_type_JavaLangString + "->" + paramLong + "]");
-    }
-    jdField_a_of_type_JavaLangString = String.valueOf(paramLong);
-  }
-  
-  public static void a(VideoAppInterface paramVideoAppInterface, BaseToolbar paramBaseToolbar)
-  {
-    if (paramBaseToolbar != null)
+    ByteBuffer[] arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
+    int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(10000L);
+    Object localObject;
+    int j;
+    if (i >= 0)
     {
-      paramBaseToolbar = new mis();
-      RedbagToolbar.getRedBagBtnStatus(paramVideoAppInterface, paramBaseToolbar);
-    }
-    for (int j = paramBaseToolbar.jdField_a_of_type_Int;; j = -1)
-    {
-      int n;
-      int k;
-      int i;
-      if (j != -1)
+      localObject = arrayOfByteBuffer[i];
+      ((ByteBuffer)localObject).clear();
+      j = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData((ByteBuffer)localObject, 0);
+      if (j < 0)
       {
-        n = a(j);
-        if (n != 2) {
-          break label243;
-        }
-        k = 0;
-        i = 1;
-        if (k >= 32) {
-          break label243;
-        }
-        if ((j & i) != i) {}
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, 0, 0L, 0);
+        label66:
+        arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
       }
-      for (;;)
+    }
+    for (;;)
+    {
+      i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
+      if (i >= 0)
       {
-        k = 0;
-        int m = 1;
-        label65:
-        if (k < 32)
+        localObject = arrayOfByteBuffer[i];
+        byte[] arrayOfByte = new byte[this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size];
+        ((ByteBuffer)localObject).get(arrayOfByte);
+        ((ByteBuffer)localObject).clear();
+        this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(i, false);
+        a(arrayOfByte);
+        continue;
+        this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(i, 0, j, 0L, 0);
+        this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
+        break;
+        if (i != -1) {
+          break;
+        }
+        break label66;
+      }
+      if (i != -2) {
+        return;
+      }
+      localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
+      if (QLog.isColorLevel()) {
+        QLog.d("AudioFileDecoder", 2, "encoder output format changed: " + localObject);
+      }
+    }
+  }
+  
+  private void a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
+    while ((this.d == 0) || (this.e == 0) || (this.f == 0)) {
+      return;
+    }
+    paramArrayOfByte = mpx.a(paramArrayOfByte, this.d, this.e, this.f, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
+    try
+    {
+      this.jdField_a_of_type_JavaIoBufferedOutputStream.write(paramArrayOfByte, 0, paramArrayOfByte.length);
+      return;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      QLog.e("AudioFileDecoder", 1, "writeFile exception", paramArrayOfByte);
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaCodec != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
+      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+      this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+    }
+    if (this.jdField_a_of_type_AndroidMediaMediaExtractor != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+      this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
+    }
+    try
+    {
+      if (this.jdField_a_of_type_JavaIoBufferedOutputStream != null)
+      {
+        this.jdField_a_of_type_JavaIoBufferedOutputStream.flush();
+        this.jdField_a_of_type_JavaIoBufferedOutputStream.close();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AudioFileDecoder", 2, String.format("decode successful, save to %s, size: %sK", new Object[] { this.jdField_b_of_type_JavaLangString, Long.valueOf(new File(this.jdField_b_of_type_JavaLangString).length() / 1024L) }));
+      }
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localIOException.printStackTrace();
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    int j = 0;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    paramString1 = new File(this.jdField_a_of_type_JavaLangString);
+    if (!paramString1.exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AudioFileDecoder", 2, String.format("audio file %s is not exist", new Object[] { this.jdField_a_of_type_JavaLangString }));
+      }
+      if (this.jdField_a_of_type_Mpv != null) {
+        this.jdField_a_of_type_Mpv.a(-2);
+      }
+      return;
+    }
+    int i;
+    for (;;)
+    {
+      try
+      {
+        for (;;)
         {
-          if ((j & m) == m) {
-            if ((m & 0x3F) == 0) {
-              break label130;
+          this.jdField_a_of_type_AndroidMediaMediaExtractor = new MediaExtractor();
+          this.jdField_a_of_type_AndroidMediaMediaExtractor.setDataSource(this.jdField_a_of_type_JavaLangString);
+          i = 0;
+          if (i < this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackCount())
+          {
+            paramString2 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
+            String str = paramString2.getString("mime");
+            if (!str.startsWith("audio")) {
+              break label281;
+            }
+            this.jdField_a_of_type_AndroidMediaMediaFormat = paramString2;
+            this.jdField_a_of_type_AndroidMediaMediaExtractor.selectTrack(i);
+            this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(str);
+          }
+          try
+          {
+            this.jdField_a_of_type_AndroidMediaMediaCodec.configure(paramString2, null, null, 0);
+            if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {
+              break label288;
+            }
+            QLog.e("AudioFileDecoder", 1, "init audioCodec fail");
+            if (this.jdField_a_of_type_Mpv == null) {
+              break;
+            }
+            this.jdField_a_of_type_Mpv.a(-1);
+            return;
+          }
+          catch (Throwable paramString2)
+          {
+            for (;;)
+            {
+              if (this.jdField_a_of_type_Mpv != null) {
+                this.jdField_a_of_type_Mpv.a(-5);
+              }
+              QLog.e("AudioFileDecoder", 1, "decode configure exception:" + paramString2, paramString2);
             }
           }
-          for (boolean bool = true;; bool = false)
+        }
+        if (this.jdField_a_of_type_Mpv == null) {
+          break;
+        }
+      }
+      catch (IOException paramString1)
+      {
+        paramString1.printStackTrace();
+      }
+      this.jdField_a_of_type_Mpv.a(-3);
+      return;
+      label281:
+      i += 1;
+    }
+    label288:
+    this.d = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("sample-rate");
+    this.f = this.jdField_a_of_type_AndroidMediaMediaFormat.getInteger("channel-count");
+    this.e = 16;
+    if (QLog.isColorLevel()) {
+      QLog.d("AudioFileDecoder", 2, String.format("decode audio sampleRate: %s, channelCount: %s, bitDeepth: %s", new Object[] { Integer.valueOf(this.d), Integer.valueOf(this.f), Integer.valueOf(this.e) }));
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(this.jdField_b_of_type_JavaLangString);
+        this.jdField_a_of_type_JavaIoBufferedOutputStream = new BufferedOutputStream(this.jdField_a_of_type_JavaIoFileOutputStream);
+        if (QLog.isColorLevel()) {
+          QLog.d("AudioFileDecoder", 2, String.format("start decode file %s, size: %sK", new Object[] { this.jdField_a_of_type_JavaLangString, Long.valueOf(paramString1.length() / 1024L) }));
+        }
+      }
+      catch (IOException paramString2)
+      {
+        try
+        {
+          this.jdField_a_of_type_AndroidMediaMediaCodec.start();
+          if (this.jdField_a_of_type_Mpv != null) {
+            this.jdField_a_of_type_Mpv.a(this.jdField_a_of_type_JavaLangString);
+          }
+          this.jdField_a_of_type_Boolean = false;
+          if (this.jdField_a_of_type_Boolean) {
+            break label652;
+          }
+          try
           {
-            lts.a(bool, String.valueOf(m));
-            m <<= 1;
-            k += 1;
-            break label65;
-            k += 1;
-            i <<= 1;
+            a();
+          }
+          catch (Throwable paramString1)
+          {
+            QLog.e("AudioFileDecoder", 1, "decode frame exception:" + paramString1, paramString1);
+            i = j;
+            if (this.jdField_a_of_type_Mpv != null)
+            {
+              this.jdField_a_of_type_Mpv.a(-6);
+              i = j;
+            }
+          }
+          b();
+          if ((i == 0) || (this.jdField_a_of_type_Mpv == null)) {
             break;
           }
+          this.jdField_a_of_type_Mpv.b(this.jdField_b_of_type_JavaLangString);
+          return;
         }
-        label130:
-        if (QLog.isDevelopLevel()) {
-          QLog.w("RedBagReport", 1, "reportClickEvent, key[" + "0X8008977" + "], statusFixedEntrance[" + j + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], light[" + n + "], first[" + i + "]");
+        catch (Exception paramString1)
+        {
+          QLog.e("AudioFileDecoder", 1, "decode start exception:" + paramString1, paramString1);
         }
-        axqy.b(null, "dc00898", "", "", "0X8008977", "0X8008977", n, 0, String.valueOf(i), String.valueOf(j), jdField_a_of_type_JavaLangString, "");
-        return;
-        label243:
-        i = 0;
+        paramString2 = paramString2;
+        QLog.e("AudioFileDecoder", 1, "decode io exception:" + paramString2, paramString2);
+        continue;
       }
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    long l1 = jdField_a_of_type_Long;
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
-    {
-      bool1 = bool2;
-      if (jdField_a_of_type_Long > 0L)
-      {
-        long l2 = System.currentTimeMillis();
-        long l3 = jdField_a_of_type_Long;
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("time", String.valueOf(l2 - l3));
-        localHashMap.put("redbagId", String.valueOf(paramString));
-        localHashMap.put("roomid", jdField_a_of_type_JavaLangString);
-        bool1 = UserAction.onUserAction("reportAVRedbagGameTime", true, -1L, -1L, localHashMap, true);
-        jdField_a_of_type_Long = 0L;
+      if (this.jdField_a_of_type_Mpv == null) {
+        break;
       }
-    }
-    if (AudioHelper.d()) {
-      QLog.w("RedBagReport", 1, "reportRedbagCount, count[" + b + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], begin[" + l1 + "], ret[" + bool1 + "]");
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("RedBagReport", 1, "reportClickEvent, key[" + paramString1 + "], mFromType[" + jdField_a_of_type_Int + "], value[" + paramString2 + "], mRoomId[" + jdField_a_of_type_JavaLangString + "]");
-    }
-    axqy.b(null, "dc00898", "", "", paramString1, paramString1, jdField_a_of_type_Int, 0, "", "", jdField_a_of_type_JavaLangString, paramString2);
-  }
-  
-  public static void a(mpw parammpw)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("RedBagReport", 1, "reportClickEvent, key[" + "0X800897F" + "], fromType[" + jdField_a_of_type_Int + "], mSucAboutGame[" + parammpw.jdField_a_of_type_Boolean + "], mExceptionType[" + parammpw.jdField_f_of_type_Int + "], mRoomId[" + jdField_a_of_type_JavaLangString + "]");
-    }
-    int i = jdField_a_of_type_Int;
-    int j = parammpw.jdField_f_of_type_Int;
-    if (parammpw.jdField_a_of_type_Boolean) {}
-    for (parammpw = "1";; parammpw = "0")
-    {
-      axqy.b(null, "dc00898", "", "", "0X800897F", "0X800897F", i, 0, String.valueOf(j), parammpw, jdField_a_of_type_JavaLangString, "");
+      this.jdField_a_of_type_Mpv.a(-4);
       return;
+      label652:
+      i = 1;
     }
   }
   
-  public static void a(boolean paramBoolean, int paramInt)
+  public void a(mpv parammpv)
   {
-    int i = 1;
-    int j = a(paramInt);
-    if (QLog.isDevelopLevel()) {
-      QLog.w("RedBagReport", 1, "reportClickEvent, key[" + "0X8008978" + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], ret[" + paramBoolean + "], disableType[" + paramInt + "], light[" + j + "]");
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      axqy.b(null, "dc00898", "", "", "0X8008978", "0X8008978", j, i, String.valueOf(paramInt), "", jdField_a_of_type_JavaLangString, String.valueOf(j));
-      return;
-      i = 0;
-    }
-  }
-  
-  public static void b()
-  {
-    a("0X8008985", null);
-  }
-  
-  public static void b(int paramInt)
-  {
-    String str;
-    if (paramInt == 0)
-    {
-      str = "0X800897B";
-      f();
-    }
-    for (;;)
-    {
-      a(str, null);
-      return;
-      if (paramInt == 4) {
-        str = "0X800897C";
-      } else {
-        str = "0X800897D";
-      }
-    }
-  }
-  
-  public static void b(mpw parammpw)
-  {
-    String str2 = "0X8008982";
-    String str1 = str2;
-    switch (parammpw.jdField_e_of_type_Int)
-    {
-    default: 
-      str1 = str2;
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.w("RedBagReport", 1, "reportClickEvent, key[" + str1 + "], fromType[" + jdField_a_of_type_Int + "], getRedbag_ResultCode[" + parammpw.jdField_e_of_type_JavaLangString + "], getRedbag_ResultState[" + parammpw.jdField_f_of_type_JavaLangString + "], mRoomId[" + jdField_a_of_type_JavaLangString + "], hitScore[" + parammpw.jdField_a_of_type_Int + "]");
-      }
-      axqy.b(null, "dc00898", "", "", str1, str1, jdField_a_of_type_Int, parammpw.jdField_a_of_type_Int, String.valueOf(parammpw.jdField_f_of_type_Int), parammpw.jdField_e_of_type_JavaLangString, jdField_a_of_type_JavaLangString, parammpw.jdField_f_of_type_JavaLangString);
-      return;
-      str1 = "0X800897E";
-      continue;
-      str1 = "0X8008983";
-      continue;
-      str1 = "0X8008981";
-      continue;
-      str1 = "0X8008980";
-    }
-  }
-  
-  public static void b(boolean paramBoolean, int paramInt)
-  {
-    String str = "0X8008A99";
-    if (!paramBoolean) {
-      str = "0X8008A9A";
-    }
-    axqy.b(null, "dc00898", "", "", str, str, jdField_a_of_type_Int, 0, String.valueOf(paramInt), "", jdField_a_of_type_JavaLangString, null);
-  }
-  
-  public static void c()
-  {
-    a("0X8008986", null);
-  }
-  
-  public static void d()
-  {
-    a("0X8008987", null);
-  }
-  
-  public static void e()
-  {
-    a("0X8008988", null);
-  }
-  
-  public static void f()
-  {
-    b += 1;
-  }
-  
-  public static void g()
-  {
-    b = 0;
-  }
-  
-  public static void h()
-  {
-    if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (b > 0))
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("count", String.valueOf(b));
-      localHashMap.put("roomid", jdField_a_of_type_JavaLangString);
-      UserAction.onUserAction("reportAVRedbagCount", true, -1L, -1L, localHashMap, true);
-    }
-    if (AudioHelper.d()) {
-      QLog.w("RedBagReport", 1, "reportRedbagCount, count[" + b + "], mRoomId[" + jdField_a_of_type_JavaLangString + "]");
-    }
-  }
-  
-  public static void i()
-  {
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    if (AudioHelper.d()) {
-      QLog.w("RedBagReport", 1, "setGameBeginTime, mGameBeginTime[" + jdField_a_of_type_Long + "]");
-    }
-  }
-  
-  public static void j()
-  {
-    a("0X8008A98", null);
-  }
-  
-  public static void k()
-  {
-    a("0X8008CF0", null);
-  }
-  
-  public static void l()
-  {
-    a("0X8008CF1", null);
-  }
-  
-  public static void m()
-  {
-    a("0X8008A9B", null);
-  }
-  
-  public static void n()
-  {
-    a("0X8008CF2", null);
-  }
-  
-  public static void o()
-  {
-    a("0X8008CF3", null);
+    this.jdField_a_of_type_Mpv = parammpv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpu
  * JD-Core Version:    0.7.0.1
  */

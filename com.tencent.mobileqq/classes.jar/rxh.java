@@ -1,33 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import com.tencent.widget.BubblePopupWindow;
 
-class rxh
-  implements DialogInterface.OnCancelListener
+public class rxh
+  implements View.OnClickListener
 {
-  rxh(rxe paramrxe, String paramString) {}
+  public rxh(ReadinjoyTabbar paramReadinjoyTabbar) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new JSONObject();
+    if ((ReadinjoyTabbar.a(this.a) != null) && (ReadinjoyTabbar.a(this.a).b())) {}
     try
     {
-      paramDialogInterface.put("index", rxe.a(this.jdField_a_of_type_Rxe));
-      paramDialogInterface.put("type", 1);
-      if (rxe.a(this.jdField_a_of_type_Rxe) != null) {
-        ((BridgeModule)rxe.a(this.jdField_a_of_type_Rxe).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
-      }
+      ReadinjoyTabbar.a(this.a).a(3, 257, null, true);
+      ReadinjoyTabbar.a(this.a).b();
       return;
     }
-    catch (JSONException paramDialogInterface) {}
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxh
  * JD-Core Version:    0.7.0.1
  */

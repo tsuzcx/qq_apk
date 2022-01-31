@@ -1,53 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 class apdf
-  implements apwm
+  extends DataReportViewer
 {
-  apdf(apdc paramapdc) {}
-  
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  apdf(apde paramapde, Context paramContext1, Context paramContext2)
   {
-    apdc.a(this.a);
+    super(paramContext1);
   }
   
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public void d()
   {
-    axqy.b(null, "P_CliOper", "webview", "", "webview_apk_download", "download_success", 0, 1, 0, "", "", "", "");
-    paramBundle.getInt("_CB_SID");
-    String str = paramBundle.getString("_CB_URL");
-    paramBundle = paramBundle.getBundle("_CB_USERDATA");
-    apdc.a(this.a, str);
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>insertFM and install. PH:" + paramString + " SZ:" + paramLong);
-    if (this.a.a != null) {
-      this.a.a.a().a(null, -1, paramString, paramLong, 16, null, paramBundle);
-    }
-    for (;;)
+    int j = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (int i = 2038;; i = 2003)
     {
-      if (paramBundle != null) {
-        apwe.a(paramString, paramBundle.getString("big_brother_source_key"));
-      }
-      apdc.a(this.a);
-      if ("http://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean".equals(str)) {
-        axqy.b(null, "P_CliOper", "Safe_SpaceClean", "", "SpaceClean_", "download secure apk sucess", 0, 0, "", "", "", "");
-      }
+      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(j, -2, i, 776, -2);
+      localLayoutParams.gravity = 51;
+      localLayoutParams.x = 0;
+      localLayoutParams.y = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
+      apde.a(this.jdField_a_of_type_Apde).updateViewLayout(apde.a(this.jdField_a_of_type_Apde), localLayoutParams);
       return;
-      apug.c(paramString);
     }
   }
   
-  public void b(int paramInt, Bundle paramBundle) {}
-  
-  public void c(int paramInt, Bundle paramBundle) {}
-  
-  public void d(int paramInt, Bundle paramBundle) {}
+  public void e()
+  {
+    if (Build.VERSION.SDK_INT >= 26) {}
+    for (int i = 2038;; i = 2003)
+    {
+      WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams(-1, -2, i, 776, -2);
+      localLayoutParams.gravity = 51;
+      localLayoutParams.x = 0;
+      localLayoutParams.y = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 72.0F);
+      apde.a(this.jdField_a_of_type_Apde).updateViewLayout(apde.a(this.jdField_a_of_type_Apde), localLayoutParams);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apdf
  * JD-Core Version:    0.7.0.1
  */

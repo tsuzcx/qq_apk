@@ -1,240 +1,487 @@
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.app.ActivityManager.RunningTaskInfo;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.os.Build.VERSION;
-import android.os.Process;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.StringReader;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
+import java.util.zip.InflaterInputStream;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
 public class bhoy
+  extends alko
+  implements Handler.Callback
 {
-  public static int a;
-  public static String a;
-  public static WeakReference<Activity> a;
-  private static List<String> a;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
+  private HashMap<String, bhoz> jdField_a_of_type_JavaUtilHashMap;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  static
+  public bhoy(QQAppInterface paramQQAppInterface)
   {
-    jdField_a_of_type_JavaLangString = "";
+    super(paramQQAppInterface);
   }
   
-  public static int a()
+  public static Long a()
   {
-    return jdField_a_of_type_Int;
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(11, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(14, 1);
+    return Long.valueOf(new Timestamp(localCalendar.getTimeInMillis()).getTime());
   }
   
-  public static String a()
+  private HashMap<String, bhoz> a()
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return d();
-    }
-    return b();
-  }
-  
-  public static String a(Context paramContext)
-  {
-    int i = Process.myPid();
-    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-    if (paramContext == null)
-    {
-      QLog.e("ProcessUtils", 1, "getCurProcessName: processInfos is null.");
-      return null;
-    }
-    paramContext = paramContext.iterator();
-    while (paramContext.hasNext())
-    {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      if (localRunningAppProcessInfo.pid == i) {
-        return localRunningAppProcessInfo.processName;
-      }
-    }
-    return null;
-  }
-  
-  private static List<String> a()
-  {
-    if (jdField_a_of_type_JavaUtilList != null) {
-      return jdField_a_of_type_JavaUtilList;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = BaseApplicationImpl.getContext().getPackageManager();
-    Intent localIntent = new Intent("android.intent.action.MAIN");
-    localIntent.addCategory("android.intent.category.HOME");
-    localObject = ((PackageManager)localObject).queryIntentActivities(localIntent, 65536).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localArrayList.add(((ResolveInfo)((Iterator)localObject).next()).activityInfo.packageName);
-    }
-    jdField_a_of_type_JavaUtilList = localArrayList;
-    return localArrayList;
-  }
-  
-  public static void a(Activity paramActivity, String paramString)
-  {
-    jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    jdField_a_of_type_Int = jdField_a_of_type_JavaLangRefWeakReference.hashCode();
-    jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    List localList;
-    do
-    {
-      return false;
-      localList = a();
-      if (localList.contains(paramString)) {
-        return true;
-      }
-      paramString = paramString.split("/");
-    } while (paramString.length < 2);
-    return localList.contains(paramString[0]);
-  }
-  
-  public static String b()
-  {
-    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningTasks(1);
-    if ((localObject == null) || (((List)localObject).get(0) == null) || (((ActivityManager.RunningTaskInfo)((List)localObject).get(0)).topActivity == null)) {
-      return null;
-    }
-    localObject = ((ActivityManager.RunningTaskInfo)((List)localObject).get(0)).topActivity;
-    return ((ComponentName)localObject).getPackageName() + "/" + ((ComponentName)localObject).getClassName();
-  }
-  
-  public static boolean b(String paramString)
-  {
-    boolean bool = true;
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return false;
-      if ("com.tencent.mobileqq:qzone".equals(paramString)) {
-        return true;
-      }
-      paramString = paramString.split("/");
-    } while ((paramString.length < 2) || (!"com.tencent.mobileqq".equals(paramString[0])) || (TextUtils.isEmpty(paramString[1])));
-    paramString = paramString[1].toLowerCase().split("\\.");
-    if ((paramString.length > 0) && (paramString[(paramString.length - 1)].startsWith("qzone")) && (paramString[(paramString.length - 1)].endsWith("proxyactivity"))) {}
+    int i = 0;
     for (;;)
     {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  public static String c()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public static boolean c(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (("com.tencent.mobileqq:tool".equals(paramString)) || ("com.tencent.mobileqq/com.tencent.mobileqq.activity.QQBrowserActivity".equals(paramString)));
-  }
-  
-  private static String d()
-  {
-    Object localObject3 = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ProcessUtils", 4, "processInfos.size()=" + ((List)localObject3).size());
-    }
-    for (;;)
-    {
+      HashMap localHashMap2;
       try
       {
-        Object localObject1 = ActivityManager.RunningAppProcessInfo.class.getDeclaredField("processState");
-        if (localObject1 != null)
+        if (this.b) {
+          break label414;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("NCtr", 2, "[init]");
+        }
+        SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("config_prefile", 0);
+        this.jdField_a_of_type_Boolean = localSharedPreferences.getBoolean("config_should_limit_" + this.app.getAccount(), false);
+        Object localObject2 = localSharedPreferences.getString("extra_limit_uins_" + this.app.getAccount(), "");
+        if (QLog.isColorLevel()) {
+          QLog.d("NCtr", 2, "LimitUins:[" + ((String)localObject2).toString() + "]");
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label409;
+        }
+        localObject2 = ((String)localObject2).split(",");
+        localHashMap2 = new HashMap();
+        int j = localObject2.length;
+        if (i < j)
         {
-          Iterator localIterator = ((List)localObject3).iterator();
-          if (localIterator.hasNext())
+          Object localObject3 = localObject2[i];
+          Object localObject4 = localSharedPreferences.getString("extra_limit_entry_" + this.mApp.getAccount() + "_" + (String)localObject3, "");
+          if (!TextUtils.isEmpty((CharSequence)localObject4))
           {
-            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
-            if (QLog.isDevelopLevel()) {
-              QLog.d("ProcessUtils", 4, "processInfo: processName=" + localRunningAppProcessInfo.processName + " importance=" + localRunningAppProcessInfo.importance + " importanceReasonCode=" + localRunningAppProcessInfo.importanceReasonCode);
+            localObject3 = ((String)localObject4).split(",");
+            localObject4 = new bhoz(this, localObject3[0], Integer.valueOf(localObject3[1]).intValue(), Integer.valueOf(localObject3[2]).intValue(), Long.valueOf(localObject3[3]).longValue(), Integer.valueOf(localObject3[4]).intValue());
+            localHashMap2.put(localObject3[0], localObject4);
+            if (QLog.isColorLevel()) {
+              QLog.d("NCtr", 2, "LimitEntry:[" + ((bhoz)localObject4).toString() + "]");
             }
-            if ((localRunningAppProcessInfo.importance != 100) || (localRunningAppProcessInfo.importanceReasonCode != 0)) {
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.d("NCtr", 2, "LimitEntry is null [" + (String)localObject3 + "]");
+          }
+        }
+      }
+      finally {}
+      this.jdField_a_of_type_JavaUtilHashMap = localHashMap2;
+      label409:
+      this.b = true;
+      label414:
+      HashMap localHashMap1 = this.jdField_a_of_type_JavaUtilHashMap;
+      return localHashMap1;
+      i += 1;
+    }
+  }
+  
+  private void a(Context paramContext, String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)))
+    {
+      bhoz localbhoz = (bhoz)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      paramContext = paramContext.getSharedPreferences("config_prefile", 0).edit();
+      paramContext.putString("extra_limit_entry_" + this.mApp.getAccount() + "_" + paramString, localbhoz.toString());
+      paramContext.apply();
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NCtr", 2, "[updateLimitEntrySP]" + paramString + " " + bool);
+      }
+      return;
+    }
+  }
+  
+  public int a(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences("config_prefile", 0).getInt("config_appid_" + paramString, 0);
+  }
+  
+  public void a(String paramString)
+  {
+    int i = 0;
+    Object localObject1 = BaseApplicationImpl.getContext().getSharedPreferences("config_prefile", 0);
+    Object localObject2 = ((SharedPreferences)localObject1).getString("extra_limit_uins_" + paramString, "");
+    localObject1 = ((SharedPreferences)localObject1).edit();
+    ((SharedPreferences.Editor)localObject1).remove("config_version_" + paramString);
+    ((SharedPreferences.Editor)localObject1).remove("config_appid_" + paramString);
+    ((SharedPreferences.Editor)localObject1).remove("config_should_limit_" + paramString);
+    ((SharedPreferences.Editor)localObject1).remove("extra_limit_uins__" + paramString);
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      localObject2 = ((String)localObject2).split(",");
+      int j = localObject2.length;
+      while (i < j)
+      {
+        String str = localObject2[i];
+        ((SharedPreferences.Editor)localObject1).remove("extra_limit_entry_" + paramString + "_" + str);
+        i += 1;
+      }
+    }
+    ((SharedPreferences.Editor)localObject1).apply();
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    Message localMessage = Message.obtain();
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    localMessage.obj = paramString;
+    localMessage.what = 0;
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    boolean bool3 = true;
+    boolean bool1 = true;
+    for (;;)
+    {
+      long l;
+      try
+      {
+        if (!QLog.isColorLevel()) {
+          break label523;
+        }
+        QLog.d("NCtr", 2, "shouldNotify uin " + paramString + " type " + paramInt);
+      }
+      finally {}
+      Object localObject = a();
+      boolean bool2 = bool3;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        bool2 = bool3;
+        if (localObject != null)
+        {
+          bool2 = bool3;
+          if (((HashMap)localObject).containsKey(paramString))
+          {
+            l = a().longValue();
+            localObject = (bhoz)((HashMap)localObject).get(paramString);
+            if (QLog.isColorLevel()) {
+              QLog.d("NCtr", 2, "todayBeginTime = " + new Date(l) + "----" + l + " ，entry.mBaseLineTime = " + new Date(((bhoz)localObject).jdField_a_of_type_Long) + "----" + ((bhoz)localObject).jdField_a_of_type_Long);
+            }
+            if (((bhoz)localObject).jdField_a_of_type_Long >= 1L) {
               continue;
             }
-            try
+            if (((bhoz)localObject).b <= 0) {
+              continue;
+            }
+            ((bhoz)localObject).jdField_a_of_type_Long = l;
+            ((bhoz)localObject).c += 1;
+            paramInt = 1;
+            bool2 = bool1;
+            if (paramInt != 0)
             {
-              int i = ((Field)localObject1).getInt(localRunningAppProcessInfo);
-              localObject3 = Integer.valueOf(i);
-            }
-            catch (IllegalAccessException localIllegalAccessException)
-            {
-              QLog.w("ProcessUtils", 1, "IllegalAccessException", localIllegalAccessException);
-              Object localObject4 = null;
-              continue;
-            }
-            if (QLog.isDevelopLevel()) {
-              QLog.d("ProcessUtils", 4, "processInfo: state=" + localObject3);
-            }
-            if ((localObject3 == null) || (((Integer)localObject3).intValue() != 2)) {
-              continue;
-            }
-            localObject1 = localRunningAppProcessInfo;
-            if (QLog.isDevelopLevel()) {
-              QLog.d("ProcessUtils", 4, "===============");
-            }
-            if (localObject1 == null) {
-              return null;
+              localObject = Message.obtain();
+              ((Message)localObject).what = 1;
+              ((Message)localObject).obj = paramString;
+              this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+              bool2 = bool1;
             }
           }
         }
       }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        QLog.w("ProcessUtils", 1, "NoSuchFieldException: processState", localNoSuchFieldException);
-        localObject2 = null;
-        continue;
-        return localObject2.processName;
+      if (!bool2) {
+        azmj.b(this.app, "dc00898", "", paramString, "0X8009995", "0X8009995", 0, 0, "" + System.currentTimeMillis(), "", "", "");
       }
-      Object localObject2 = null;
+      azmj.b(this.app, "dc00898", "", paramString, "0X8009996", "0X8009996", 0, 0, "" + System.currentTimeMillis(), "", "", "");
+      if (QLog.isColorLevel()) {
+        QLog.d("NCtr", 2, "uin " + paramString + " shouldNotify is " + bool2);
+      }
+      label416:
+      return bool2;
+      paramInt = 0;
+      bool1 = false;
+      continue;
+      if ((int)((l - ((bhoz)localObject).jdField_a_of_type_Long) / 86400000L) >= ((bhoz)localObject).jdField_a_of_type_Int)
+      {
+        ((bhoz)localObject).jdField_a_of_type_Long = l;
+        ((bhoz)localObject).c = 0;
+        paramInt = 1;
+        if ((((bhoz)localObject).b > 0) && (((bhoz)localObject).c < ((bhoz)localObject).b))
+        {
+          ((bhoz)localObject).c += 1;
+          paramInt = 1;
+        }
+        else
+        {
+          bool1 = false;
+        }
+      }
+      else
+      {
+        paramInt = 0;
+        continue;
+        label523:
+        do
+        {
+          bool2 = true;
+          break label416;
+          if ((paramInt == 7200) || (paramInt == 1008)) {
+            break;
+          }
+        } while (paramInt != 7220);
+      }
     }
   }
   
-  public static boolean d(String paramString)
+  public byte[] a(byte[] paramArrayOfByte)
   {
-    return (!TextUtils.isEmpty(paramString)) && (("com.tencent.mobileqq:peak".equals(paramString)) || ("com.tencent.mobileqq/com.tencent.mobileqq.activity.photo.PhotoListActivity".equals(paramString)) || ("com.tencent.mobileqq/com.tencent.mobileqq.activity.photo.AlbumListActivity".equals(paramString)));
-  }
-  
-  public static boolean e(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (("com.tencent.mobileqq:picture".equals(paramString)) || ("com.tencent.mobileqq/cooperation.qzone.QzonePicturePluginProxyActivity".equals(paramString)));
-  }
-  
-  public static boolean f(String paramString)
-  {
-    return (!TextUtils.isEmpty(paramString)) && (("com.tencent.mobileqq:qzonelive".equals(paramString)) || ("com.tencent.mobileqq/cooperation.qzone.video.QzoneLiveVideoGpuProxyActivity".equals(paramString)));
-  }
-  
-  public static boolean g(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    try
     {
-      return false;
-      if ("com.tencent.mobileqq".equals(paramString)) {
-        return true;
+      paramArrayOfByte = new InflaterInputStream(new ByteArrayInputStream(paramArrayOfByte));
+      byte[] arrayOfByte = new byte[256];
+      for (;;)
+      {
+        int i = paramArrayOfByte.read(arrayOfByte);
+        if (-1 == i) {
+          break;
+        }
+        localByteArrayOutputStream.write(arrayOfByte, 0, i);
       }
-      paramString = paramString.split("/");
-    } while ((paramString.length < 2) || (!"com.tencent.mobileqq".equals(paramString[0])) || (TextUtils.isEmpty(paramString[1])));
-    return true;
+      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("NCtr", 1, "inflateConfigString fail", paramArrayOfByte);
+      }
+      return null;
+    }
+    return paramArrayOfByte;
   }
+  
+  public int b(Context paramContext, String paramString)
+  {
+    return paramContext.getSharedPreferences("config_prefile", 0).getInt("config_version_" + paramString, 0);
+  }
+  
+  public void b(String paramString, int paramInt1, int paramInt2)
+  {
+    Object localObject1;
+    HashMap localHashMap;
+    Object localObject2;
+    int m;
+    boolean bool;
+    int j;
+    int k;
+    int i;
+    Object localObject3;
+    label156:
+    String str;
+    for (;;)
+    {
+      try
+      {
+        localObject1 = a();
+        if (localObject1 != null)
+        {
+          localObject1 = (HashMap)((HashMap)localObject1).clone();
+          localHashMap = new HashMap();
+          if (QLog.isColorLevel()) {
+            QLog.i("NCtr", 1, "sourceString : " + paramString);
+          }
+          localObject2 = XmlPullParserFactory.newInstance().newPullParser();
+          ((XmlPullParser)localObject2).setInput(new StringReader(paramString));
+          m = ((XmlPullParser)localObject2).getEventType();
+          bool = false;
+          paramString = "";
+          j = 0;
+          k = 0;
+          i = 50;
+          if (m == 1) {
+            break label915;
+          }
+          localObject3 = ((XmlPullParser)localObject2).getName();
+        }
+        switch (m)
+        {
+        case 0: 
+          this.jdField_a_of_type_Boolean = bool;
+          localObject2 = BaseApplicationImpl.getContext().getSharedPreferences("config_prefile", 0).edit();
+          localObject3 = this.mApp.getAccount();
+          ((SharedPreferences.Editor)localObject2).putInt("config_version_" + (String)localObject3, paramInt1);
+          ((SharedPreferences.Editor)localObject2).putInt("config_appid_" + (String)localObject3, paramInt2);
+          ((SharedPreferences.Editor)localObject2).apply();
+          ((SharedPreferences.Editor)localObject2).putBoolean("config_should_limit_" + (String)localObject3, bool);
+          if ((localObject1 == null) || (((HashMap)localObject1).size() <= 0)) {
+            break label648;
+          }
+          localObject1 = ((HashMap)localObject1).keySet().iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break label648;
+          }
+          str = (String)((Iterator)localObject1).next();
+          ((SharedPreferences.Editor)localObject2).remove("extra_limit_entry_" + (String)localObject3 + "_" + paramString);
+          continue;
+          localObject1 = null;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("NCtr", 1, "parse fail", paramString);
+        }
+        return;
+      }
+      continue;
+      break label918;
+      if (((String)localObject3).equalsIgnoreCase("body"))
+      {
+        if (Integer.valueOf(((XmlPullParser)localObject2).getAttributeValue(0)).intValue() != 1) {
+          break label929;
+        }
+        bool = true;
+        break label926;
+      }
+      if (((String)localObject3).equalsIgnoreCase("puin"))
+      {
+        paramString = ((XmlPullParser)localObject2).nextText();
+        break label918;
+      }
+      if (((String)localObject3).equalsIgnoreCase("day"))
+      {
+        j = Integer.valueOf(((XmlPullParser)localObject2).nextText()).intValue();
+        break label918;
+      }
+      if (!((String)localObject3).equalsIgnoreCase("enableTimes")) {
+        break label918;
+      }
+      k = Integer.valueOf(((XmlPullParser)localObject2).nextText()).intValue();
+      break label918;
+      if (!((String)localObject3).equalsIgnoreCase("entry")) {
+        break label918;
+      }
+      if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramString)))
+      {
+        localObject3 = (bhoz)((HashMap)localObject1).get(paramString);
+        ((HashMap)localObject1).remove(paramString);
+        if ((j == ((bhoz)localObject3).jdField_a_of_type_Int) && (k == ((bhoz)localObject3).b))
+        {
+          localHashMap.put(paramString, localObject3);
+          break label935;
+        }
+        localHashMap.put(paramString, new bhoz(this, paramString, j, k, 0L, 0));
+        break label935;
+      }
+      localHashMap.put(paramString, new bhoz(this, paramString, j, k, 0L, 0));
+      break label935;
+    }
+    label648:
+    label915:
+    label918:
+    label926:
+    label929:
+    label935:
+    label951:
+    for (;;)
+    {
+      m = ((XmlPullParser)localObject2).next();
+      break;
+      paramString = new StringBuilder();
+      if (localHashMap.size() > 0)
+      {
+        localObject1 = localHashMap.keySet().iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          str = (String)((Iterator)localObject1).next();
+          bhoz localbhoz = (bhoz)localHashMap.get(str);
+          ((SharedPreferences.Editor)localObject2).putString("extra_limit_entry_" + (String)localObject3 + "_" + str, localbhoz.toString());
+          paramString.append(str).append(",");
+          if (QLog.isColorLevel()) {
+            QLog.d("NCtr", 2, "LimitEntry:[" + localbhoz.toString() + "]");
+          }
+        }
+        ((SharedPreferences.Editor)localObject2).putString("extra_limit_uins_" + (String)localObject3, paramString.substring(0, paramString.length() - 1));
+        if (QLog.isColorLevel()) {
+          QLog.d("NCtr", 2, "LimitUins:[" + paramString.substring(0, paramString.length() - 1) + "].mShouldLimit" + this.jdField_a_of_type_Boolean);
+        }
+      }
+      ((SharedPreferences.Editor)localObject2).apply();
+      this.jdField_a_of_type_JavaUtilHashMap = localHashMap;
+      return;
+      break label156;
+      for (;;)
+      {
+        if (i > 0) {
+          break label951;
+        }
+        break;
+        for (;;)
+        {
+          break;
+          bool = false;
+        }
+        paramString = "";
+        j = 0;
+        k = 0;
+        i -= 1;
+      }
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      b((String)paramMessage.obj, paramMessage.arg1, paramMessage.arg2);
+      continue;
+      paramMessage = (String)paramMessage.obj;
+      a(BaseApplicationImpl.getContext(), paramMessage);
+    }
+  }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return null;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_AndroidOsHandler = null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

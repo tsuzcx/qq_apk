@@ -9,10 +9,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
-import birq;
-import birt;
-import bjah;
-import bkvf;
+import bkwi;
+import bkwm;
+import blfg;
+import bngp;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.qq.im.QIMCameraCaptureActivity;
@@ -21,7 +21,7 @@ import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownload
 
 public class CaptureQmcfSoDownloadActivity
   extends FragmentActivity
-  implements bkvf
+  implements bngp
 {
   public static final String a;
   private int jdField_a_of_type_Int;
@@ -71,8 +71,8 @@ public class CaptureQmcfSoDownloadActivity
     localIntent.putExtras(paramBundle);
     localIntent.putExtra("pendingIntentClass", paramString);
     localIntent.putExtra("pendingIntentAllWait", paramBoolean);
-    int i = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", birt.a.a());
-    if ((i == birt.l.a()) || (i == birt.k.a())) {
+    int i = paramBundle.getInt("VIDEO_STORY_FROM_TYPE", bkwm.a.a());
+    if ((i == bkwm.l.a()) || (i == bkwm.k.a())) {
       localIntent.setFlags(268435456);
     }
     paramContext.startActivity(localIntent);
@@ -126,35 +126,35 @@ public class CaptureQmcfSoDownloadActivity
     this.mActNeedImmersive = false;
     this.isClearCoverLayer = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560681);
+    super.setContentView(2131560857);
     this.jdField_a_of_type_AndroidSupportV4AppFragment = new CaptureQmcfSoDownloadFragment();
     this.b = getIntent().getStringExtra("pendingIntentClass");
     if (getIntent().getBooleanExtra("pendingIntentAllWait", false)) {
       this.jdField_a_of_type_AndroidSupportV4AppFragment = new CaptureQmcfSoDownloadFragmentAllWaite();
     }
     paramBundle = super.getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131361948, this.jdField_a_of_type_AndroidSupportV4AppFragment);
+    paramBundle.replace(2131361950, this.jdField_a_of_type_AndroidSupportV4AppFragment);
     paramBundle.commit();
     this.jdField_a_of_type_Boolean = getIntent().hasExtra("pendingIntentRequest");
     if (this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_Int = getIntent().getIntExtra("pendingIntentRequest", 0);
     }
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
-    birq.a().a(true);
-    bjah.b(jdField_a_of_type_JavaLangString, "【Activity doOnCreate】");
+    bkwi.a().a(true);
+    blfg.b(jdField_a_of_type_JavaLangString, "【Activity doOnCreate】");
     return false;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    birq.a().a(false);
-    bjah.b(jdField_a_of_type_JavaLangString, "【Activity doOnDestroy】");
+    bkwi.a().a(false);
+    blfg.b(jdField_a_of_type_JavaLangString, "【Activity doOnDestroy】");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.activity.CaptureQmcfSoDownloadActivity
  * JD-Core Version:    0.7.0.1
  */

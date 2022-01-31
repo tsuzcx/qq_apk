@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.pm.PackageManager;
-import bbdj;
-import bbgu;
+import bdcd;
+import bdfq;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 
 class InternalJSPlugin$4
@@ -14,12 +14,12 @@ class InternalJSPlugin$4
   
   public void run()
   {
-    bbdj.a(this.val$activity, 230, null, String.format(ajya.a(2131705809), new Object[] { this.val$appName }), ajya.a(2131705816), ajya.a(2131705817), new InternalJSPlugin.4.1(this), new InternalJSPlugin.4.2(this)).show();
+    bdcd.a(this.val$activity, 230, null, String.format(alpo.a(2131706181), new Object[] { this.val$appName }), alpo.a(2131706188), alpo.a(2131706189), new InternalJSPlugin.4.1(this), new InternalJSPlugin.4.2(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.InternalJSPlugin.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.ark.debug;
 
-import alvf;
 import android.text.TextUtils;
+import anly;
 
 public final class JSDebuggerSoLoader$3
   implements Runnable
 {
   public void run()
   {
-    if (alvf.a() == 0)
+    if (anly.a() == 0)
     {
-      alvf.a(alvf.a());
-      alvf.a();
-      alvf.a();
+      anly.a(anly.a());
+      anly.a();
+      anly.a();
     }
     String str;
     do
@@ -20,21 +20,21 @@ public final class JSDebuggerSoLoader$3
       do
       {
         return;
-        if (alvf.a() == 1)
+        if (anly.a() == 1)
         {
-          alvf.a();
+          anly.a();
           return;
         }
-      } while (alvf.a() != 2);
-      alvf.a();
-      str = alvf.a();
+      } while (anly.a() != 2);
+      anly.a();
+      str = anly.a();
     } while (TextUtils.isEmpty(str));
-    alvf.a(str, "libarkDebuggerJSImpl.so");
+    anly.a(str, "libarkDebuggerJSImpl.so");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.JSDebuggerSoLoader.3
  * JD-Core Version:    0.7.0.1
  */

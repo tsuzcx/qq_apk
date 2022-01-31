@@ -1,31 +1,32 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.mini.apkg.ApkgInfo;
-import com.tencent.qphone.base.util.QLog;
+import ayri;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.mobileqq.minigame.jsapi.widgets.KeyboardLayout;
 
 class GameActivity$37
-  implements Runnable
+  implements ayri
 {
   GameActivity$37(GameActivity paramGameActivity) {}
   
-  public void run()
+  public void onSoftKeyboardClosed()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("miniAppID", GameActivity.access$4800(this.this$0).appId);
-    localBundle.putString("param_proc_name", BaseApplicationImpl.getApplication().getQQProcessName());
-    localBundle.putString("param_proc_modulename", "mini_app_client_module");
-    this.this$0.onProcessForeGround(localBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("[minigame] GameActivity", 1, "onResume--onRefreshMiniBadge");
+    if ((GameActivity.access$5500(this.this$0) != null) && (GameActivity.access$5500(this.this$0).getVisibility() == 0)) {
+      GameActivity.access$5500(this.this$0).setVisibility(8);
     }
-    this.this$0.onRefreshMiniBadge(localBundle);
+    DisplayUtil.setActivityFullScreen(this.this$0);
+  }
+  
+  public void onSoftKeyboardOpened(int paramInt)
+  {
+    if ((GameActivity.access$5500(this.this$0) != null) && (GameActivity.access$5500(this.this$0).getVisibility() == 0)) {
+      GameActivity.access$5500(this.this$0).setPaddingBottom(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.37
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -11,11 +11,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import aujc;
-import aujf;
-import aujj;
-import aykr;
-import bfua;
+import awaf;
+import awai;
+import awam;
+import bain;
+import bhux;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -26,7 +26,7 @@ public class OnlineStatusItemView
   private int jdField_a_of_type_Int;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public aujj a;
+  public awam a;
   public boolean a;
   public boolean b;
   
@@ -56,11 +56,11 @@ public class OnlineStatusItemView
   private void b(boolean paramBoolean)
   {
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131371047);
+    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131371360);
     Object localObject = new LinearLayout.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131371048);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131371361);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
     TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
     if (paramBoolean) {}
@@ -68,7 +68,7 @@ public class OnlineStatusItemView
     {
       localTextView.setTextColor(Color.parseColor((String)localObject));
       localObject = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject).leftMargin = actj.a(8.0F, getResources());
+      ((LinearLayout.LayoutParams)localObject).leftMargin = aekt.a(8.0F, getResources());
       addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
       return;
     }
@@ -80,50 +80,50 @@ public class OnlineStatusItemView
     setOrientation(0);
     setGravity(17);
     if (bool) {}
-    for (int i = 2130839159;; i = 2130839160)
+    for (int i = 2130839243;; i = 2130839244)
     {
       setBackgroundResource(i);
-      this.jdField_a_of_type_Int = actj.a(16.0F, getResources());
+      this.jdField_a_of_type_Int = aekt.a(16.0F, getResources());
       b(bool);
       return;
     }
   }
   
-  public void a(aujj paramaujj)
+  public void a(awam paramawam)
   {
-    if (paramaujj == null) {}
+    if (paramawam == null) {}
     for (;;)
     {
       return;
-      this.jdField_a_of_type_Aujj = paramaujj;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramaujj.jdField_a_of_type_JavaLangString);
-      if (paramaujj.jdField_a_of_type_Int == 2) {
-        paramaujj = aujf.a(paramaujj.jdField_a_of_type_MqqAppAppRuntime$Status);
+      this.jdField_a_of_type_Awam = paramawam;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramawam.jdField_a_of_type_JavaLangString);
+      if (paramawam.jdField_a_of_type_Int == 2) {
+        paramawam = awai.a(paramawam.jdField_a_of_type_MqqAppAppRuntime$Status);
       }
-      while (paramaujj != null)
+      while (paramawam != null)
       {
-        paramaujj.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramaujj);
+        paramawam.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramawam);
         return;
         if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(a())))
         {
-          paramaujj = new aykk(a(), 3).a[0];
-          if ((paramaujj instanceof aykr)) {
-            paramaujj = ((aykr)paramaujj).a();
+          paramawam = new baig(a(), 3).a[0];
+          if ((paramawam instanceof bain)) {
+            paramawam = ((bain)paramawam).a();
           }
         }
         else
         {
-          if (aujc.a().a(paramaujj))
+          if (awaf.a().a(paramawam))
           {
-            int i = aujc.a();
-            paramaujj = new bfua().a(i, 1);
+            int i = awaf.a();
+            paramawam = new bhux().a(i, 1);
             continue;
           }
-          paramaujj = URLDrawable.getDrawable(this.jdField_a_of_type_Aujj.b, URLDrawable.URLDrawableOptions.obtain());
+          paramawam = URLDrawable.getDrawable(this.jdField_a_of_type_Awam.b, URLDrawable.URLDrawableOptions.obtain());
           continue;
         }
-        paramaujj = null;
+        paramawam = null;
       }
     }
   }
@@ -136,7 +136,7 @@ public class OnlineStatusItemView
     String str;
     if (bool)
     {
-      i = 2130839159;
+      i = 2130839243;
       setBackgroundResource(i);
       this.b = paramBoolean;
       setSelected(paramBoolean);
@@ -151,7 +151,7 @@ public class OnlineStatusItemView
       localTextView.setTextColor(Color.parseColor(str));
       invalidate();
       return;
-      i = 2130839160;
+      i = 2130839244;
       break;
       label65:
       if (paramBoolean) {
@@ -164,7 +164,7 @@ public class OnlineStatusItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusItemView
  * JD-Core Version:    0.7.0.1
  */

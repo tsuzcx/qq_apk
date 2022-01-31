@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.util;
 
 import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import onh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rno;
+import ors;
+import sdn;
 
 public final class ReportUtil$3
   implements Runnable
@@ -23,11 +23,11 @@ public final class ReportUtil$3
     }
     for (;;)
     {
-      localObject = onh.a(localContext, localArticleInfo, i, (String)localObject);
+      localObject = ors.a(localContext, localArticleInfo, i, (String)localObject);
       try
       {
         ((JSONObject)localObject).put("sojourn_time", this.jdField_a_of_type_Long);
-        rno.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800A854", ((JSONObject)localObject).toString());
+        sdn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800A854", ((JSONObject)localObject).toString());
         return;
         localObject = "1";
       }
@@ -43,7 +43,7 @@ public final class ReportUtil$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil.3
  * JD-Core Version:    0.7.0.1
  */

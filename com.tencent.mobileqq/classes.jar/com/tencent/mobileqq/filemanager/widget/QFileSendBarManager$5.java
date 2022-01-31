@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.filemanager.widget;
 
 import android.annotation.SuppressLint;
-import apxi;
-import apxn;
+import arqk;
+import arqp;
 
 public class QFileSendBarManager$5
   implements Runnable
 {
-  public QFileSendBarManager$5(apxi paramapxi) {}
+  public QFileSendBarManager$5(arqk paramarqk) {}
   
   @SuppressLint({"StaticFieldLeak"})
   public void run()
   {
-    new apxn(this).execute(new Void[0]);
+    new arqp(this).execute(new Void[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QFileSendBarManager.5
  * JD-Core Version:    0.7.0.1
  */

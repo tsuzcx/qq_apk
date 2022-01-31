@@ -1,57 +1,32 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.content.Context;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.widgets.LimitWordCountEditText;
 
-class sru
-  extends RecyclerView.OnScrollListener
+public class sru
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
-  private final long b = 20L;
+  public sru(LimitWordCountEditText paramLimitWordCountEditText) {}
   
-  sru(srs paramsrs) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public final void onClick(View paramView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if ((paramInt == 1) && (srs.b(this.jdField_a_of_type_Srs)))
+    if (!LimitWordCountEditText.a(this.a).hasFocus())
     {
-      ved.b("FredguoFix", "set needAnimated to false, break animation");
-      srs.a(this.jdField_a_of_type_Srs).a(srs.a(this.jdField_a_of_type_Srs));
-      srs.b(this.jdField_a_of_type_Srs, false);
-      srs.a(this.jdField_a_of_type_Srs, false);
+      LimitWordCountEditText.a(this.a).requestFocus();
+      LimitWordCountEditText.a(this.a).setSelection(LimitWordCountEditText.a(this.a).getText().length());
     }
-    if (paramInt == 0)
-    {
-      srs.d(this.jdField_a_of_type_Srs, false);
-      this.jdField_a_of_type_Long = 0L;
-      if (srs.a(this.jdField_a_of_type_Srs).a(paramRecyclerView.getLayoutManager()) == null) {
-        return;
-      }
-      if (srs.c(this.jdField_a_of_type_Srs))
-      {
-        ved.b("FredguoFix", "animated to false, play animation done");
-        srs.a(this.jdField_a_of_type_Srs, false);
-        srs.a(this.jdField_a_of_type_Srs).a(srs.a(this.jdField_a_of_type_Srs));
-      }
-      this.jdField_a_of_type_Srs.d();
-      return;
-    }
-    srs.d(this.jdField_a_of_type_Srs, true);
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    long l = System.currentTimeMillis();
-    if (Math.abs(l - this.jdField_a_of_type_Long) >= 20L)
-    {
-      this.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Srs.d();
+    paramView = (InputMethodManager)this.a.getContext().getSystemService("input_method");
+    if (paramView != null) {
+      paramView.showSoftInput(LimitWordCountEditText.a(this.a), 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sru
  * JD-Core Version:    0.7.0.1
  */

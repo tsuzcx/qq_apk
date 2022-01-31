@@ -1,18 +1,20 @@
-import java.util.Map;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
 
-public abstract interface beie
+public class beie
+  extends amab
 {
-  public abstract Map<String, beib> a();
+  public beie(WerewolvesHostInterface paramWerewolvesHostInterface, QQAppInterface paramQQAppInterface) {}
   
-  public abstract boolean a();
-  
-  public abstract Map<String, beib> b();
-  
-  public abstract Map<String, beia> c();
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(6, new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2) });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beie
  * JD-Core Version:    0.7.0.1
  */

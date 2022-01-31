@@ -1,25 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
-class aefo
-  implements Animation.AnimationListener
+public class aefo
+  implements DialogInterface.OnKeyListener
 {
-  aefo(aefn paramaefn) {}
+  public aefo(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (aefn.a(this.a) != null) {
-      aefn.a(this.a).b();
+    if (paramInt == 4) {
+      this.a.a();
     }
+    return false;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefo
  * JD-Core Version:    0.7.0.1
  */

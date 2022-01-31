@@ -55,40 +55,18 @@ public class RichNativeText
         Object localObject3 = (Map.Entry)((Iterator)localObject1).next();
         localObject2 = ((CssStyle)((Map.Entry)localObject3).getValue()).styleName;
         localObject3 = ((CssStyle)((Map.Entry)localObject3).getValue()).styleValue;
-        int i = -1;
-        switch (((String)localObject2).hashCode())
+        if ("width".equalsIgnoreCase((String)localObject2))
         {
+          localRect.left = 0;
+          localRect.right = ((Integer)localObject3).intValue();
         }
-        for (;;)
+        else if ("height".equalsIgnoreCase((String)localObject2))
         {
-          switch (i)
-          {
-          default: 
-            break;
-          case 0: 
-            localRect.left = 0;
-            localRect.right = ((Integer)localObject3).intValue();
-            break;
-            if (((String)localObject2).equals("width"))
-            {
-              i = 0;
-              continue;
-              if (((String)localObject2).equals("height"))
-              {
-                i = 1;
-                continue;
-                if (((String)localObject2).equals("display")) {
-                  i = 2;
-                }
-              }
-            }
-            break;
-          }
+          localRect.top = 0;
+          localRect.bottom = ((Integer)localObject3).intValue();
         }
-        localRect.top = 0;
-        localRect.bottom = ((Integer)localObject3).intValue();
-        continue;
-        if (("block".equals(localObject3)) && (this.spannableStringBuilder.length() > 0) && (this.spannableStringBuilder.charAt(this.spannableStringBuilder.length() - 1) != '\n')) {
+        else if (("display".equalsIgnoreCase((String)localObject2)) && ("block".equals(localObject3)) && (this.spannableStringBuilder.length() > 0) && (this.spannableStringBuilder.charAt(this.spannableStringBuilder.length() - 1) != '\n'))
+        {
           this.spannableStringBuilder.append('\n');
         }
       }
@@ -146,70 +124,43 @@ public class RichNativeText
         Object localObject2 = (Map.Entry)paramCssStyleSet.next();
         Object localObject1 = ((CssStyle)((Map.Entry)localObject2).getValue()).styleName;
         localObject2 = ((CssStyle)((Map.Entry)localObject2).getValue()).styleValue;
-        int i = -1;
-        switch (((String)localObject1).hashCode())
+        int i;
+        if ("line-height".equalsIgnoreCase((String)localObject1))
         {
-        }
-        for (;;)
-        {
-          switch (i)
-          {
-          default: 
-            break;
-          case 0: 
-            i = ((Integer)localObject2).intValue();
-            if (i <= this.maxLineHeight) {
-              break;
-            }
+          i = ((Integer)localObject2).intValue();
+          if (i > this.maxLineHeight) {
             this.maxLineHeight = i;
-            break;
-            if (((String)localObject1).equals("line-height"))
-            {
-              i = 0;
-              continue;
-              if (((String)localObject1).equals("font-size"))
-              {
-                i = 1;
-                continue;
-                if (((String)localObject1).equals("color"))
-                {
-                  i = 2;
-                  continue;
-                  if (((String)localObject1).equals("font-weight"))
-                  {
-                    i = 3;
-                    continue;
-                    if (((String)localObject1).equals("-webkit-line-clamp"))
-                    {
-                      i = 4;
-                      continue;
-                      if (((String)localObject1).equals("display")) {
-                        i = 5;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            break;
           }
         }
-        if (this.maxFontSize > ((Integer)localObject2).intValue()) {}
-        for (i = this.maxFontSize;; i = ((Integer)localObject2).intValue())
+        else
         {
-          this.maxFontSize = i;
-          localObject1 = new AbsoluteSizeSpan(((Integer)localObject2).intValue());
-          this.spannableStringBuilder.setSpan(localObject1, paramInt1, paramInt2, 33);
-          break;
-        }
-        localObject1 = new ForegroundColorSpan(Color.parseColor((String)localObject2));
-        this.spannableStringBuilder.setSpan(localObject1, paramInt1, paramInt2, 33);
-        continue;
-        if ("bold".equals(localObject2))
-        {
-          this.spannableStringBuilder.setSpan(new StyleSpan(1), paramInt1, paramInt2, 33);
-          continue;
-          this.mNative.setMaxLines(((Integer)localObject2).intValue());
+          if ("font-size".equalsIgnoreCase((String)localObject1))
+          {
+            if (this.maxFontSize > ((Integer)localObject2).intValue()) {}
+            for (i = this.maxFontSize;; i = ((Integer)localObject2).intValue())
+            {
+              this.maxFontSize = i;
+              localObject1 = new AbsoluteSizeSpan(((Integer)localObject2).intValue());
+              this.spannableStringBuilder.setSpan(localObject1, paramInt1, paramInt2, 33);
+              break;
+            }
+          }
+          if ("color".equalsIgnoreCase((String)localObject1))
+          {
+            localObject1 = new ForegroundColorSpan(Color.parseColor((String)localObject2));
+            this.spannableStringBuilder.setSpan(localObject1, paramInt1, paramInt2, 33);
+          }
+          else if ("font-weight".equalsIgnoreCase((String)localObject1))
+          {
+            if ("bold".equals(localObject2)) {
+              this.spannableStringBuilder.setSpan(new StyleSpan(1), paramInt1, paramInt2, 33);
+            }
+          }
+          else if ("-webkit-line-clamp".equalsIgnoreCase((String)localObject1))
+          {
+            this.mNative.setMaxLines(((Integer)localObject2).intValue());
+          }
+          else if (!"display".equalsIgnoreCase((String)localObject1)) {}
         }
       }
     }
@@ -255,7 +206,7 @@ public class RichNativeText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.RichNativeText
  * JD-Core Version:    0.7.0.1
  */

@@ -1,99 +1,191 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qqreader.QRPluginManagerClient.1;
+import cooperation.qqreader.QRPluginManagerClient.2;
+import cooperation.qqreader.proxy.ReaderInterfacePluginBuilder;
+import cooperation.qqreader.proxy.ReaderInterfacePluginProxy;
+import cooperation.qqreader.proxy.ReaderJsCallback;
+import cooperation.qqreader.proxy.ReaderJsPluginBuilder;
+import cooperation.qqreader.proxy.ReaderJsPluginProxy;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
-class biuv
-  implements TextWatcher
+public class biuv
 {
-  boolean jdField_a_of_type_Boolean = false;
+  private static biuv jdField_a_of_type_Biuv;
+  private long jdField_a_of_type_Long;
+  private ReaderInterfacePluginBuilder jdField_a_of_type_CooperationQqreaderProxyReaderInterfacePluginBuilder;
+  private ReaderJsPluginBuilder jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginBuilder;
+  private List<WeakReference<biuw>> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private volatile boolean jdField_a_of_type_Boolean;
   
-  biuv(biur parambiur) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public static biuv a()
   {
-    int j;
-    int i;
-    int m;
-    int k;
-    if (paramEditable.length() > 0)
+    
+    if (jdField_a_of_type_Biuv == null) {}
+    try
     {
-      biur.a(this.jdField_a_of_type_Biur).setVisibility(0);
-      j = 1;
-      i = 0;
-      m = 0;
-      k = 0;
+      if (jdField_a_of_type_Biuv == null) {
+        jdField_a_of_type_Biuv = new biuv();
+      }
+      return jdField_a_of_type_Biuv;
     }
-    char c;
-    label55:
-    int n;
-    for (;;)
+    finally {}
+  }
+  
+  private void b()
+  {
+    bixe.c("QRPluginManagerClient", "dispatchPluginReadyEvent");
+    ArrayList localArrayList = new ArrayList();
+    try
     {
-      if (i < paramEditable.length())
+      Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator2.hasNext())
       {
-        c = paramEditable.charAt(i);
-        if (c == '\n')
-        {
-          return;
-          biur.a(this.jdField_a_of_type_Biur).setVisibility(4);
-          j = 1;
-          i = 0;
-          m = 0;
-          k = 0;
-        }
-        else
-        {
-          n = j;
-          if (c == ' ')
-          {
-            if (j == 0) {
-              break label244;
-            }
-            n = 0;
-            m = i;
-          }
+        biuw localbiuw = (biuw)((WeakReference)localIterator2.next()).get();
+        if (localbiuw != null) {
+          localArrayList.add(localbiuw);
         }
       }
+      this.jdField_a_of_type_JavaUtilList.clear();
     }
-    for (;;)
-    {
-      k += biur.a(this.jdField_a_of_type_Biur, c);
-      if ((k > 16) && (!this.jdField_a_of_type_Boolean))
-      {
-        biur.a(this.jdField_a_of_type_Biur).removeTextChangedListener(this);
-        if (n == 0) {
-          biur.a(this.jdField_a_of_type_Biur).setText(paramEditable.insert(m, "\r\n"));
-        }
-        for (;;)
-        {
-          biur.a(this.jdField_a_of_type_Biur).setSelection(paramEditable.length());
-          this.jdField_a_of_type_Boolean = true;
-          biur.a(this.jdField_a_of_type_Biur).addTextChangedListener(this);
-          return;
-          biur.a(this.jdField_a_of_type_Biur).setText(paramEditable.insert(i, "\r\n"));
-        }
-      }
-      i += 1;
-      j = n;
-      break;
-      if (k > 16) {
-        break label55;
-      }
-      this.jdField_a_of_type_Boolean = false;
-      return;
-      label244:
-      m = i;
-      n = j;
+    finally {}
+    Iterator localIterator1 = localObject.iterator();
+    while (localIterator1.hasNext()) {
+      c((biuw)localIterator1.next());
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  private void b(biuw parambiuw)
+  {
+    if (parambiuw == null) {
+      return;
+    }
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      biuw localbiuw;
+      do
+      {
+        for (;;)
+        {
+          if (!localIterator.hasNext()) {
+            break label68;
+          }
+          localbiuw = (biuw)((WeakReference)localIterator.next()).get();
+          if (localbiuw != null) {
+            break;
+          }
+          localIterator.remove();
+        }
+      } while (localbiuw != parambiuw);
+    }
+    finally {}
+    return;
+    label68:
+    this.jdField_a_of_type_JavaUtilList.add(new WeakReference(parambiuw));
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  private static void c()
+  {
+    if (BaseApplicationImpl.sProcessId != 7) {
+      bixe.a("QRPluginManagerClient", "checkToolProcess: QRPluginManagerClient的逻辑必须在Tool进程调用");
+    }
+  }
+  
+  private void c(biuw parambiuw)
+  {
+    if (parambiuw == null) {
+      return;
+    }
+    ThreadManager.getUIHandler().post(new QRPluginManagerClient.2(this, parambiuw));
+  }
+  
+  @Nullable
+  public ReaderInterfacePluginProxy a()
+  {
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderInterfacePluginBuilder == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_CooperationQqreaderProxyReaderInterfacePluginBuilder.create();
+  }
+  
+  @Nullable
+  public ReaderJsPluginProxy a(ReaderJsCallback paramReaderJsCallback)
+  {
+    if (this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginBuilder == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginBuilder.create(paramReaderJsCallback);
+  }
+  
+  public void a()
+  {
+    a(null);
+  }
+  
+  public void a(Context paramContext, Intent paramIntent, String paramString)
+  {
+    if (!a())
+    {
+      bixe.a("QRPluginManagerClient", "startPluginActivityWhenReady: plugin is not ready");
+      return;
+    }
+    if (biwm.a())
+    {
+      biwm.a(paramContext, paramIntent, paramString);
+      return;
+    }
+    biup.a(paramContext, paramIntent, paramString);
+  }
+  
+  public void a(biuw parambiuw)
+  {
+    if (a()) {
+      c(parambiuw);
+    }
+    do
+    {
+      return;
+      b(parambiuw);
+    } while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 3000L);
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (biwm.a())
+    {
+      biwm.a(BaseApplicationImpl.getApplication());
+      return;
+    }
+    ThreadManager.getSubThreadHandler().post(new QRPluginManagerClient.1(this));
+  }
+  
+  public void a(ReaderJsPluginBuilder paramReaderJsPluginBuilder, ReaderInterfacePluginBuilder paramReaderInterfacePluginBuilder)
+  {
+    this.jdField_a_of_type_CooperationQqreaderProxyReaderJsPluginBuilder = paramReaderJsPluginBuilder;
+    this.jdField_a_of_type_CooperationQqreaderProxyReaderInterfacePluginBuilder = paramReaderInterfacePluginBuilder;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Boolean) {
+      b();
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biuv
  * JD-Core Version:    0.7.0.1
  */

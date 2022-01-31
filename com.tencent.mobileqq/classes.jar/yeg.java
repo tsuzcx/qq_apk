@@ -1,21 +1,17 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.mobileqq.data.MessageForPtt;
 
-class yeg
-  implements bfph
+public class yeg
+  extends RecyclerView.ViewHolder
 {
-  yeg(yee paramyee, adws paramadws, MessageForPtt paramMessageForPtt, bfpc parambfpc) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public yeg(View paramView)
   {
-    this.jdField_a_of_type_Yee.a(this.jdField_a_of_type_Adws, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    this.jdField_a_of_type_Yee.b();
-    this.jdField_a_of_type_Bfpc.dismiss();
+    super(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yeg
  * JD-Core Version:    0.7.0.1
  */

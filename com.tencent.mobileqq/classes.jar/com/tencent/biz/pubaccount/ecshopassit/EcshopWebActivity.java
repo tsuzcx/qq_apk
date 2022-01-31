@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import akwu;
+import amnk;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import bcdi;
-import bfvx;
+import becj;
+import bhwu;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
@@ -22,7 +22,7 @@ import java.util.Set;
 
 public class EcshopWebActivity
   extends QQBrowserActivity
-  implements bfvx
+  implements bhwu
 {
   public long a;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
@@ -61,7 +61,7 @@ public class EcshopWebActivity
     if (this.jdField_a_of_type_Boolean) {
       return super.a(paramWebViewTabBarData);
     }
-    return bcdi.a(this, paramWebViewTabBarData, super.getIntent());
+    return becj.a(this, paramWebViewTabBarData, super.getIntent());
   }
   
   public void a(Rect paramRect, boolean paramBoolean)
@@ -129,15 +129,15 @@ public class EcshopWebActivity
     int i = paramMotionEvent.getAction();
     if (this.jdField_a_of_type_AndroidViewViewGroup == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131379412));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131380127));
       if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131364705));
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131364784));
       }
       if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
         return super.dispatchTouchEvent(paramMotionEvent);
       }
     }
-    View localView = findViewById(2131375329);
+    View localView = findViewById(2131375812);
     if (localView == null) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
@@ -181,7 +181,7 @@ public class EcshopWebActivity
       localIntent.putExtra("uin", ((RecentShopParcel)this.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString);
     }
     sendBroadcast(localIntent);
-    akwu.a(this.app, "9970", 1, 4, System.currentTimeMillis() - this.e);
+    amnk.a(this.app, "9970", 1, 4, System.currentTimeMillis() - this.e);
   }
   
   public void doOnRestoreInstanceState(Bundle paramBundle)
@@ -221,7 +221,7 @@ public class EcshopWebActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity
  * JD-Core Version:    0.7.0.1
  */

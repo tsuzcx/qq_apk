@@ -1,29 +1,12 @@
-final class qgt
-  extends qgr<qgw, qgv, qgu>
+public abstract interface qgt
 {
-  public void a(qgw paramqgw, qgv paramqgv, int paramInt, qgu paramqgu)
-  {
-    switch (paramInt)
-    {
-    default: 
-      paramqgw.a(paramqgv);
-      return;
-    case 1: 
-      paramqgw.a(paramqgv, paramqgu.a, paramqgu.b);
-      return;
-    case 2: 
-      paramqgw.b(paramqgv, paramqgu.a, paramqgu.b);
-      return;
-    case 3: 
-      paramqgw.a(paramqgv, paramqgu.a, paramqgu.c, paramqgu.b);
-      return;
-    }
-    paramqgw.c(paramqgv, paramqgu.a, paramqgu.b);
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt, long paramLong, String paramString1, qfz paramqfz, String paramString2, String paramString3, String paramString4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qgt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,22 @@
-import android.graphics.Bitmap;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
-class adyt
-  implements awcg
+public class adyt
+  implements DialogInterface.OnClickListener
 {
-  public WeakReference<adyr> a;
+  public adyt(TroopInfoActivity paramTroopInfoActivity, boolean paramBoolean) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.get() != null) {
-      adyr.a((adyr)this.a.get(), paramInt1, paramInt2, paramBitmap, paramInt3);
+    if (this.jdField_a_of_type_Boolean) {
+      azmj.b(null, "dc00898", "", "", "qq_vip", "0X800A57F", 2, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyt
  * JD-Core Version:    0.7.0.1
  */

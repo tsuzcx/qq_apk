@@ -1,278 +1,292 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.extendfriend.wiget.FeedBannerItemGradientLinearLayout;
-import com.tencent.mobileqq.extendfriend.wiget.TabLayout;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.widget.RoundCorneredRelativeLayout;
+import android.util.SparseArray;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ConfigSeq;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public class aofo
-  extends RecyclerView.ViewHolder
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aojb jdField_a_of_type_Aojb;
-  private aolh jdField_a_of_type_Aolh;
+  private final SparseArray<String> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(10);
+  private final ConcurrentHashMap<String, CopyOnWriteArraySet<aofq>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   
-  public aofo(View paramView, aojb paramaojb)
+  public aofo()
   {
-    super(paramView);
-    this.jdField_a_of_type_Aojb = paramaojb;
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(271, "batch_add_friend_for_troop_config");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(275, "confess_config");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(358, "contact_top_entry_config");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(372, "breaking_ice_config");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(326, "sosointerface_config");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(357, "register_invitation_config");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(330, "hiboom_config");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(296, "extend_friend_config_785");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(369, "account_logout_config");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(379, "qqsettingme_f2f_guide_config");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(378, "profile_btn_config");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(381, "profile_switch_config");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(401, "smart_devices_discovery_config");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(407, "hide_qq_xman");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(405, "add_contact_page_public_account_switch");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(408, "select_member_entry_switch");
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(355, "troop_member_list_config");
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
+    int i = 0;
+    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    {
+      String str = (String)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, new CopyOnWriteArraySet());
+      i += 1;
+    }
+    a("qqsettingme_f2f_guide_config", new aogc());
+    a("smart_devices_discovery_config", new aogd());
   }
   
-  private void a(Context paramContext, aofn paramaofn)
+  public static String a(String paramString1, String paramString2)
   {
-    if ((paramaofn == null) || (paramContext == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.e("FeedBannerViewHolder", 2, "jumpUrl bannerTabItem or context null ");
-      }
-    }
-    label196:
-    do
-    {
-      String str;
-      do
-      {
-        int i;
-        do
-        {
-          do
-          {
-            return;
-            str = paramaofn.d;
-            i = paramaofn.jdField_a_of_type_Int;
-            if (QLog.isColorLevel()) {
-              QLog.d("FeedBannerViewHolder", 2, "parse banner jumpUrl " + str + ", type =" + i);
-            }
-            if (i != 0) {
-              break;
-            }
-          } while (this.jdField_a_of_type_Aojb == null);
-          this.jdField_a_of_type_Aojb.d();
-          return;
-          if (i != 1) {
-            break;
-          }
-          if (MiniAppLauncher.isMiniAppUrl(str))
-          {
-            MiniAppLauncher.startMiniApp(this.itemView.getContext(), str, 2065, null);
-            return;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.e("FeedBannerViewHolder", 2, "jumpUrl is not scheme ");
-        return;
-        if (i != 2) {
-          break label196;
-        }
-        if (!TextUtils.isEmpty(str)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("FeedBannerViewHolder", 2, "web jumpUrl is null ");
-      return;
-      paramaofn = new Intent(paramContext, QQBrowserActivity.class);
-      paramaofn.putExtra("url", str);
-      paramContext.startActivity(paramaofn);
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.e("FeedBannerViewHolder", 2, "jumpUrl is not support ");
+    return bdiv.a(BaseApplicationImpl.getApplication(), paramString1, paramString2);
   }
   
-  private void a(View paramView, aofn paramaofn, int paramInt1, int paramInt2)
+  private CopyOnWriteArraySet<aofq> a(String paramString)
   {
-    int i = bbll.a(5.0F);
-    ((RoundCorneredRelativeLayout)paramView).setRadius(i, i, i, i);
-    Object localObject2 = (ImageView)paramView.findViewById(2131367679);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131377350);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131376621);
-    if (!TextUtils.isEmpty(paramaofn.jdField_a_of_type_JavaLangString)) {
-      localTextView1.setText(paramaofn.jdField_a_of_type_JavaLangString);
+    if (TextUtils.isEmpty(paramString)) {}
+    while (this.jdField_a_of_type_AndroidUtilSparseArray.indexOfValue(paramString) < 0) {
+      return null;
     }
-    if (!TextUtils.isEmpty(paramaofn.jdField_b_of_type_JavaLangString)) {
-      localTextView2.setText(paramaofn.jdField_b_of_type_JavaLangString);
-    }
-    Object localObject1 = (FeedBannerItemGradientLinearLayout)paramView.findViewById(2131367133);
-    if (paramInt2 == 1)
-    {
-      i = 24;
-      ((FeedBannerItemGradientLinearLayout)localObject1).a(bbll.a(i), paramaofn.jdField_b_of_type_Int, paramaofn.jdField_c_of_type_Int);
-      localObject1 = (FrameLayout)paramView.findViewById(2131367681);
-      if (paramaofn.jdField_a_of_type_Int != 0) {
-        break label338;
-      }
-      ((ImageView)localObject2).setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView = localTextView2;
-      localObject2 = paramView.getContext().getResources().getDrawable(2130844289);
-      ((Drawable)localObject2).setBounds(bbll.a(1.0F), 0, bbll.a(7.0F), bbll.a(6.0F));
-      localTextView2.setCompoundDrawablePadding(bbll.a(3.0F));
-      localTextView2.setCompoundDrawables((Drawable)localObject2, null, null, null);
-      if (paramInt2 == 2) {
-        ((ViewGroup.MarginLayoutParams)localTextView2.getLayoutParams()).rightMargin = (-bbll.a(20.0F));
-      }
-      a((FrameLayout)localObject1, paramInt2);
-      a(paramaofn);
-    }
-    for (;;)
-    {
-      localObject2 = (ImageView)paramView.findViewById(2131364800);
-      Object localObject3 = Drawable.createFromPath(aojm.a(paramInt2));
-      if (localObject3 != null) {
-        ((ImageView)localObject2).setImageDrawable((Drawable)localObject3);
-      }
-      paramView.setOnTouchListener(new aofq(this, paramView.findViewById(2131371896), (FrameLayout)localObject1, localTextView1, localTextView2, paramaofn, paramInt1));
-      return;
-      if (paramInt2 == 2)
-      {
-        i = 22;
-        break;
-      }
-      i = 40;
-      break;
-      label338:
-      if (paramaofn.jdField_c_of_type_JavaLangString != null)
-      {
-        try
-        {
-          localObject3 = new URL(paramaofn.jdField_c_of_type_JavaLangString);
-          ColorDrawable localColorDrawable1 = new ColorDrawable(0);
-          ColorDrawable localColorDrawable2 = new ColorDrawable(0);
-          URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          localURLDrawableOptions.mLoadingDrawable = localColorDrawable1;
-          localURLDrawableOptions.mFailedDrawable = localColorDrawable2;
-          localURLDrawableOptions.mUseApngImage = true;
-          localURLDrawableOptions.mMemoryCacheKeySuffix = "useAPNG";
-          ((ImageView)localObject2).setImageDrawable(URLDrawable.getDrawable((URL)localObject3, localURLDrawableOptions));
-        }
-        catch (MalformedURLException localMalformedURLException) {}
-        if (QLog.isColorLevel()) {
-          QLog.e("FeedBannerViewHolder", 2, "setImageUrl error " + localMalformedURLException.toString());
-        }
-      }
-    }
-  }
-  
-  private void a(FrameLayout paramFrameLayout, int paramInt)
-  {
-    if (this.jdField_a_of_type_Aolh != null) {
-      this.jdField_a_of_type_Aolh.d();
-    }
-    int i;
-    FrameLayout.LayoutParams localLayoutParams;
-    if (paramInt <= 2)
-    {
-      i = 2;
-      this.jdField_a_of_type_Aolh = new aolh(i);
-      if (this.jdField_a_of_type_Aolh.a() != null)
-      {
-        localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-        if (paramInt > 2) {
-          break label99;
-        }
-      }
-    }
-    label99:
-    for (paramInt = bbll.a(16.0F);; paramInt = bbll.a(22.0F))
-    {
-      localLayoutParams.bottomMargin = paramInt;
-      localLayoutParams.topMargin = paramInt;
-      paramFrameLayout.addView(this.jdField_a_of_type_Aolh.a(), localLayoutParams);
-      return;
-      i = 3;
-      break;
-    }
-  }
-  
-  private void a(aofn paramaofn, int paramInt)
-  {
-    a(paramaofn, paramInt, "0X800A9B1");
-    a(this.itemView.getContext(), paramaofn);
-  }
-  
-  private void a(aofn paramaofn, int paramInt, String paramString)
-  {
-    if ((paramaofn != null) && (paramaofn.jdField_a_of_type_Int != 0))
-    {
-      String str1 = paramaofn.jdField_a_of_type_JavaLangString;
-      String str2 = paramaofn.jdField_b_of_type_JavaLangString;
-      long l = paramaofn.jdField_a_of_type_Long;
-      axqy.b(null, "dc00898", "", "", "qq_kuolie", paramString, 0, 0, paramInt + "", "", l + ";" + str1, str2);
-    }
+    return (CopyOnWriteArraySet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Aolh != null) {
-      this.jdField_a_of_type_Aolh.d();
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
   }
   
-  public void a(aofn paramaofn)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (paramaofn.jdField_b_of_type_JavaLangString != null)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramaofn.jdField_b_of_type_JavaLangString);
-    }
-    if ((this.jdField_a_of_type_Aolh != null) && (paramaofn.jdField_a_of_type_JavaUtilArrayList != null)) {
-      this.jdField_a_of_type_Aolh.a(paramaofn.jdField_a_of_type_JavaUtilArrayList);
-    }
-  }
-  
-  public void a(aogm paramaogm, int paramInt)
-  {
-    Object localObject;
-    ViewGroup.LayoutParams localLayoutParams;
-    int i;
-    if (((paramaogm instanceof aofm)) && ((this.itemView instanceof TabLayout)))
+    if (QLog.isColorLevel())
     {
-      localObject = (aofm)paramaogm;
-      paramaogm = (TabLayout)this.itemView;
-      paramaogm.setPadding(paramaogm.getPaddingLeft(), paramInt, paramaogm.getPaddingRight(), paramaogm.getPaddingBottom());
-      localObject = ((aofm)localObject).jdField_a_of_type_JavaUtilArrayList;
-      localLayoutParams = paramaogm.getLayoutParams();
-      i = ((ArrayList)localObject).size();
-      if (i != 1) {
-        break label129;
+      paramQQAppInterface = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+      QLog.d("CfgProcess", 2, String.format(Locale.getDefault(), "handleConfigFail [id: %s, tag: %s, isSuc: %s, result: %s]", new Object[] { Integer.valueOf(paramInt1), paramQQAppInterface, Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2) }));
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig, int paramInt)
+  {
+    String str1 = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (TextUtils.isEmpty(str1)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("CfgProcess", 2, String.format(" handleConfig tag is null ! config: %s", new Object[] { Integer.valueOf(paramInt) }));
       }
-      i = 122;
+    }
+    String str2;
+    BaseApplication localBaseApplication;
+    aofp localaofp;
+    do
+    {
+      return;
+      str2 = paramQQAppInterface.getCurrentAccountUin();
+      localBaseApplication = paramQQAppInterface.getApp();
+      localaofp = new aofp();
+      localaofp.jdField_b_of_type_Int = paramConfig.version.get();
+      localaofp.jdField_a_of_type_Int = bdiv.c(localBaseApplication, str2, str1);
+      if (localaofp.jdField_b_of_type_Int != localaofp.jdField_a_of_type_Int) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("CfgProcess", 2, new Object[] { " handleConfig config version is the same. [tag: %s, version: %s]", str1, Integer.valueOf(localaofp.jdField_b_of_type_Int) });
+    return;
+    localaofp.c = 0;
+    if (paramConfig.msg_content_list.size() > 0)
+    {
+      paramConfig = (ConfigurationService.Content)paramConfig.msg_content_list.get(0);
+      if (paramConfig != null) {
+        break label367;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("CfgProcess", 2, " handleConfig content is null !");
+      }
+      localaofp.c = 1;
     }
     for (;;)
     {
-      i = bbll.a(i);
-      if (localLayoutParams != null) {
-        localLayoutParams.height = (i + paramInt);
+      if (localaofp.jdField_a_of_type_JavaLangString == null) {
+        localaofp.jdField_a_of_type_JavaLangString = "";
       }
-      paramaogm.a().setMinimumHeight(i);
-      paramaogm.a(new aofp(this, (ArrayList)localObject, bbll.a(120.0F), bbll.a(4.0F)));
-      return;
-      label129:
-      if (i == 2) {
-        i = 108;
-      } else {
-        i = 168;
+      localaofp.jdField_b_of_type_Boolean = true;
+      localaofp.jdField_a_of_type_Boolean = false;
+      if (localaofp.c == 0) {
+        try
+        {
+          bdbr.a(paramQQAppInterface, str1, localaofp);
+          if (!localaofp.jdField_a_of_type_Boolean)
+          {
+            bdiv.a(localBaseApplication, str2, str1, localaofp.jdField_a_of_type_JavaLangString);
+            paramConfig = a(str1);
+            if ((paramConfig == null) || (paramConfig.size() <= 0)) {
+              break label579;
+            }
+            paramConfig = paramConfig.iterator();
+            for (;;)
+            {
+              for (;;)
+              {
+                if (!paramConfig.hasNext()) {
+                  break label579;
+                }
+                aofq localaofq = (aofq)paramConfig.next();
+                try
+                {
+                  localaofq.a(paramQQAppInterface, paramInt, str1, localaofp);
+                }
+                catch (Exception localException)
+                {
+                  localException.printStackTrace();
+                }
+                if (QLog.isColorLevel())
+                {
+                  QLog.i("CfgProcess", 2, "handleConfig OnGetConfigListener fail:  " + str1);
+                  continue;
+                  label367:
+                  if (paramConfig.compress.get() != 1) {
+                    break label484;
+                  }
+                  paramConfig = avxz.a(paramConfig.content.get().toByteArray());
+                  if (paramConfig == null) {
+                    break label460;
+                  }
+                  try
+                  {
+                    localaofp.jdField_a_of_type_JavaLangString = new String(paramConfig, "UTF-8");
+                  }
+                  catch (Throwable paramConfig)
+                  {
+                    if (QLog.isColorLevel()) {
+                      QLog.d("CfgProcess", 2, " handleConfig Throwable:" + paramConfig.getMessage());
+                    }
+                    localaofp.c = 2;
+                  }
+                }
+              }
+              break;
+              label460:
+              localaofp.c = 3;
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("CfgProcess", 2, " handleConfig inflateConfigString error!");
+              break;
+              label484:
+              localaofp.jdField_a_of_type_JavaLangString = paramConfig.content.get().toStringUtf8();
+            }
+          }
+        }
+        catch (Throwable paramConfig)
+        {
+          for (;;)
+          {
+            paramConfig.printStackTrace();
+            if (QLog.isColorLevel())
+            {
+              QLog.i("CfgProcess", 2, "handleConfig call save individual fail:  " + str1);
+              continue;
+              if (QLog.isColorLevel()) {
+                QLog.i("CfgProcess", 2, "handleConfig self save config tag: " + str1);
+              }
+            }
+          }
+        }
       }
     }
+    label579:
+    if (localaofp.jdField_b_of_type_Boolean) {}
+    for (int i = localaofp.jdField_b_of_type_Int;; i = 0)
+    {
+      bdiv.c(localBaseApplication, str2, str1, i);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("CfgProcess", 2, String.format(Locale.getDefault(), "handleConfigForTag  configId: %s, tag: %s, localVersion: %s, version: %s, result: %s, strContent: %s", new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(localaofp.jdField_a_of_type_Int), Integer.valueOf(localaofp.jdField_b_of_type_Int), Integer.valueOf(localaofp.c), localaofp.jdField_a_of_type_JavaLangString }));
+      return;
+    }
+  }
+  
+  public void a(ConfigurationService.ConfigSeq paramConfigSeq, QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    String str1 = (String)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (TextUtils.isEmpty(str1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("CfgProcess", 2, String.format(Locale.getDefault(), "initConfigVersion tag is null, configId: %s", new Object[] { Integer.valueOf(paramInt) }));
+      }
+      return;
+    }
+    String str2 = paramQQAppInterface.c();
+    paramQQAppInterface = paramQQAppInterface.getApp();
+    int i;
+    if (bdiv.d(paramQQAppInterface, str2, str1) != AppSetting.a())
+    {
+      bdiv.d(paramQQAppInterface, str2, str1, AppSetting.a());
+      bdiv.c(paramQQAppInterface, str2, str1, 0);
+      paramConfigSeq.version.set(0);
+      i = 0;
+    }
+    for (;;)
+    {
+      paramConfigSeq.compress.set(1);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("CfgProcess", 2, String.format(Locale.getDefault(), "initConfigVersion [id: %s, tag: %s, version: %s]", new Object[] { Integer.valueOf(paramInt), str1, Integer.valueOf(i) }));
+      return;
+      i = bdiv.c(paramQQAppInterface, str2, str1);
+      paramConfigSeq.version.set(i);
+    }
+  }
+  
+  public boolean a(aofq paramaofq)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+    for (boolean bool = false; localIterator.hasNext(); bool = ((CopyOnWriteArraySet)localIterator.next()).remove(paramaofq) | bool) {}
+    return bool;
+  }
+  
+  public boolean a(String paramString, aofq paramaofq)
+  {
+    boolean bool = false;
+    paramString = a(paramString);
+    if (paramString != null) {
+      bool = paramString.add(paramaofq);
+    }
+    return bool;
+  }
+  
+  public boolean b(String paramString, aofq paramaofq)
+  {
+    boolean bool = false;
+    paramString = a(paramString);
+    if (paramString != null) {
+      bool = paramString.remove(paramaofq);
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aofo
  * JD-Core Version:    0.7.0.1
  */

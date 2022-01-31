@@ -1,39 +1,28 @@
-import android.os.Build;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
+import java.util.Comparator;
 
 public class mje
-  extends msu
+  implements Comparator<lfu>
 {
-  public mje(VideoControlUI paramVideoControlUI) {}
+  public mje(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
   
-  public void a()
+  public int a(lfu paramlfu1, lfu paramlfu2)
   {
-    this.a.m();
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    if (!this.a.h) {
-      this.a.e(0);
+    if ((paramlfu2.b) && (paramlfu1.b)) {
+      return paramlfu2.e - paramlfu1.e;
     }
-    if ("GT-I9100G".equals(Build.MODEL))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.c, 2, "Model is 9100G, don't do animation");
-      }
-      return;
+    if ((!paramlfu2.b) && (!paramlfu1.b)) {
+      return paramlfu2.e - paramlfu1.e;
     }
-    this.a.F();
+    if ((paramlfu2.b) && (!paramlfu1.b)) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mje
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-public final class aaoi
-  implements DialogInterface.OnCancelListener
+public class aaoi
+  extends QzoneExternalRequest
 {
-  public aaoi(aaqb paramaaqb, aaqa paramaaqa) {}
+  private JceStruct jdField_a_of_type_ComQqTafJceJceStruct;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public aaoi(String paramString1, JceStruct paramJceStruct, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_Aaqb.a) {
-      axqy.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString3;
+    long l = Long.parseLong(paramString1);
+    super.setHostUin(l);
+    super.setLoginUserId(l);
+    this.needCompress = false;
+    this.jdField_a_of_type_ComQqTafJceJceStruct = paramJceStruct;
+  }
+  
+  public static JceStruct a(byte[] paramArrayOfByte, String paramString)
+  {
+    JceStruct localJceStruct = null;
+    if (paramArrayOfByte != null) {
+      localJceStruct = decode(paramArrayOfByte, paramString);
     }
-    if (this.jdField_a_of_type_Aaqa != null) {
-      this.jdField_a_of_type_Aaqa.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    return localJceStruct;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService." + this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+  }
+  
+  public String uniKey()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaoi
  * JD-Core Version:    0.7.0.1
  */

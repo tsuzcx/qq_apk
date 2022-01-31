@@ -1,28 +1,28 @@
-import Wallet.SkinInfo;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.mobileqq.activity.qwallet.fragment.UsualHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView;
 
-public class ahaj
-  implements ahax
+class ahaj
+  implements bhpo
 {
-  public ahaj(UsualHbFragment paramUsualHbFragment) {}
+  ahaj(ahai paramahai) {}
   
-  public void a(ahan paramahan)
+  private boolean a(AbsListView paramAbsListView)
   {
-    if ((paramahan.jdField_a_of_type_WalletSkinInfo.skin_id == 0) || (paramahan.jdField_a_of_type_WalletSkinInfo.skin_id == -2))
-    {
-      paramahan = aham.a(this.a.channel, this.a.a, this.a.mActivity.a(), paramahan.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
-      this.a.c.setHint(paramahan);
-      return;
+    return (paramAbsListView.getChildAt(paramAbsListView.getChildCount() - 1) == this.a.a) && (this.a.a.getBottom() == this.a.a.getBottom());
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (a(paramAbsListView))) {
+      this.a.d();
     }
-    this.a.c.setHint(paramahan.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahaj
  * JD-Core Version:    0.7.0.1
  */

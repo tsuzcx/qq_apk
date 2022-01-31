@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.game;
 
-import aiyc;
+import akpo;
 import android.os.Process;
-import bbdh;
+import bdcb;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class ApolloGameStateMachine$1
@@ -12,20 +12,20 @@ class ApolloGameStateMachine$1
   
   public void run()
   {
-    aiyc localaiyc2 = ApolloGameStateMachine.jdField_a_of_type_Aiyc;
-    aiyc localaiyc1 = localaiyc2;
-    if (localaiyc2 == null) {
-      localaiyc1 = new aiyc();
+    akpo localakpo2 = ApolloGameStateMachine.jdField_a_of_type_Akpo;
+    akpo localakpo1 = localakpo2;
+    if (localakpo2 == null) {
+      localakpo1 = new akpo();
     }
-    localaiyc1.b = bbdh.a(Process.myPid());
-    localaiyc1.c = bbdh.f();
-    ApolloGameStateMachine.jdField_a_of_type_Aiyc = localaiyc1;
+    localakpo1.b = bdcb.a(Process.myPid());
+    localakpo1.c = bdcb.f();
+    ApolloGameStateMachine.jdField_a_of_type_Akpo = localakpo1;
     ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameStateMachine.1
  * JD-Core Version:    0.7.0.1
  */

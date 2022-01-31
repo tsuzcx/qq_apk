@@ -1,32 +1,38 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class akxi
-  implements ServiceConnection
+public final class akxi
+  implements EIPCResultCallback
 {
-  akxi(akxh paramakxh) {}
+  public akxi(akxk paramakxk) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    akxh.a(this.a, alei.a(paramIBinder));
-    if (QLog.isColorLevel()) {
-      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + akxh.a(this.a));
+    boolean bool = true;
+    QLog.i("CmShow_CmShowRenderView", 1, "changeApolloStatus ipc code:" + paramEIPCResult.code);
+    ApolloUtil.b("changeApolloStatus code:" + paramEIPCResult.code);
+    akxk localakxk;
+    if (this.a != null)
+    {
+      localakxk = this.a;
+      if (paramEIPCResult.code != 0) {
+        break label82;
+      }
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    akxh.a(this.a, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + akxh.a(this.a));
+    for (;;)
+    {
+      localakxk.a(bool);
+      return;
+      label82:
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxi
  * JD-Core Version:    0.7.0.1
  */

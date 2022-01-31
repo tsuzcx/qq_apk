@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.database.corrupt;
 
-import ankn;
-import ankw;
+import apbu;
+import apcd;
 
 public class DBFixDialogUI$8
   implements Runnable
 {
-  public DBFixDialogUI$8(ankn paramankn, int paramInt) {}
+  public DBFixDialogUI$8(apbu paramapbu, int paramInt) {}
   
   public void run()
   {
-    if (this.a == ankw.d) {
-      ankn.c(this.this$0);
+    if (this.a == apcd.d) {
+      apbu.c(this.this$0);
     }
-    while (this.a != ankw.e) {
+    while (this.a != apcd.e) {
       return;
     }
-    ankn.d(this.this$0);
+    apbu.d(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixDialogUI.8
  * JD-Core Version:    0.7.0.1
  */

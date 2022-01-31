@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import java.util.Random;
 
-public abstract interface anpf
+public class anpf
 {
-  public abstract void a(XmlData paramXmlData);
+  public static Random a = new Random();
   
-  public abstract void a(XmlData paramXmlData, long paramLong1, long paramLong2);
+  public static final float a(float paramFloat)
+  {
+    return anph.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
+  }
   
-  public abstract void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString);
-  
-  public abstract void b(XmlData paramXmlData);
+  public static final float b(float paramFloat)
+  {
+    return anpg.a[((int)(1303.7972F * paramFloat) & 0x1FFF)];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpf
  * JD-Core Version:    0.7.0.1
  */

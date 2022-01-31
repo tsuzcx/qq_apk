@@ -1,111 +1,64 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import java.util.Map;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aadc
-  extends aabm
 {
-  private bbgu jdField_a_of_type_Bbgu;
-  private bfpc jdField_a_of_type_Bfpc;
+  public int a;
+  public FrameLayout a;
+  public GameCenterVideoViewController a;
+  public String a;
+  public Map<Integer, View> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull aabi paramaabi)
+  public aadc(GameCenterVideoViewController paramGameCenterVideoViewController, FrameLayout paramFrameLayout, Map<Integer, View> paramMap)
   {
-    int j = 0;
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 29: 
-      if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
-        this.jdField_a_of_type_Bbgu.dismiss();
-      }
-      paramString = this.jdField_a_of_type_Aabl.a();
-      if ((paramString == null) || (paramString.isFinishing()))
-      {
-        QLog.e("DoraemonOpenAPI.widget", 1, "execute show dialog activity is null or finish");
-        return false;
-      }
-      this.jdField_a_of_type_Bbgu = bbdj.a(paramString, 230);
-      paramString = paramJSONObject.optString("title");
-      if (!TextUtils.isEmpty(paramString)) {
-        this.jdField_a_of_type_Bbgu.setTitle(paramString);
-      }
-      paramString = paramJSONObject.optString("content");
-      if (!TextUtils.isEmpty(paramString)) {
-        this.jdField_a_of_type_Bbgu.setMessage(paramString);
-      }
-      paramString = new aade(paramaabi);
-      paramaabi = paramJSONObject.optString("confirmText");
-      if (!TextUtils.isEmpty(paramaabi)) {
-        this.jdField_a_of_type_Bbgu.setPositiveButton(paramaabi, paramString);
-      }
-      paramJSONObject = paramJSONObject.optString("cancelText");
-      if (!TextUtils.isEmpty(paramJSONObject)) {
-        this.jdField_a_of_type_Bbgu.setNegativeButton(paramJSONObject, paramString);
-      }
-      this.jdField_a_of_type_Bbgu.setOnCancelListener(paramString);
-      this.jdField_a_of_type_Bbgu.show();
-    }
-    for (;;)
-    {
-      return true;
-      if ((this.jdField_a_of_type_Bfpc != null) && (this.jdField_a_of_type_Bfpc.isShowing())) {
-        this.jdField_a_of_type_Bfpc.dismiss();
-      }
-      paramString = this.jdField_a_of_type_Aabl.a();
-      if ((paramString == null) || (paramString.isFinishing()))
-      {
-        QLog.e("DoraemonOpenAPI.widget", 1, "execute show action sheet activity is null or finish");
-        return false;
-      }
-      this.jdField_a_of_type_Bfpc = bfpc.a(paramString);
-      paramString = paramJSONObject.optJSONArray("itemList");
-      if (paramString == null)
-      {
-        aaep.a(paramaabi, -1, "param error");
-      }
-      else
-      {
-        int k = paramString.length();
-        int i = 0;
-        for (paramInt = j; i < k; paramInt = 1)
-        {
-          String str = paramString.optString(i, "");
-          this.jdField_a_of_type_Bfpc.c(str);
-          i += 1;
-        }
-        paramString = new aadd(this.jdField_a_of_type_Bfpc, paramaabi);
-        paramJSONObject = paramJSONObject.optString("cancelText");
-        if (!TextUtils.isEmpty(paramJSONObject))
-        {
-          this.jdField_a_of_type_Bfpc.d(paramJSONObject);
-          paramInt = 1;
-        }
-        if (paramInt != 0)
-        {
-          this.jdField_a_of_type_Bfpc.a(paramString);
-          this.jdField_a_of_type_Bfpc.setOnCancelListener(paramString);
-          this.jdField_a_of_type_Bfpc.a(paramString);
-          this.jdField_a_of_type_Bfpc.show();
-        }
-        else
-        {
-          aaep.a(paramaabi, -1, "param error");
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController = paramGameCenterVideoViewController;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
   }
   
-  public void b()
+  public String a()
   {
-    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
-      this.jdField_a_of_type_Bbgu.dismiss();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("id", this.jdField_a_of_type_Int);
+      localJSONObject.put("x", this.jdField_c_of_type_Int);
+      localJSONObject.put("y", this.jdField_b_of_type_Int);
+      localJSONObject.put("vid", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("streamType", this.d);
+      localJSONObject.put("protocol", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("mute", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.b());
+      localJSONObject.put("total", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.b());
+      localJSONObject.put("current", this.jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController.a());
+      localJSONObject.put("autoPlay", this.jdField_b_of_type_Boolean);
+      localJSONObject.put("isFullScreen", this.jdField_c_of_type_Boolean);
+      return localJSONObject.toString();
     }
-    if ((this.jdField_a_of_type_Bfpc != null) && (this.jdField_a_of_type_Bfpc.isShowing())) {
-      this.jdField_a_of_type_Bfpc.dismiss();
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
     }
   }
 }

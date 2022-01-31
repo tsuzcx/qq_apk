@@ -1,155 +1,229 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.RemoteException;
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.cs.longconn.hd_video.CmdS2CInviteReqBody;
+import tencent.im.cs.longconn.hd_video.InviteTempSessionData;
+import tencent.im.cs.longconn.hd_video.MsgBody;
+import tencent.im.cs.longconn.hd_video.VideoHead;
 
-class lfx
-  implements ServiceConnection
+public class lfx
 {
-  lfx(lfv paramlfv) {}
-  
-  /* Error */
-  public void onServiceConnected(ComponentName paramComponentName, android.os.IBinder paramIBinder)
+  public static int a(byte paramByte)
   {
-    // Byte code:
-    //   0: ldc 24
-    //   2: iconst_1
-    //   3: new 26	java/lang/StringBuilder
-    //   6: dup
-    //   7: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   10: ldc 29
-    //   12: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: aload_1
-    //   16: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   19: ldc 38
-    //   21: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   27: invokestatic 48	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   30: aload_0
-    //   31: getfield 12	lfx:a	Llfv;
-    //   34: iconst_0
-    //   35: putfield 53	lfv:jdField_a_of_type_Boolean	Z
-    //   38: aload_0
-    //   39: getfield 12	lfx:a	Llfv;
-    //   42: aload_2
-    //   43: invokestatic 58	lws:a	(Landroid/os/IBinder;)Llwr;
-    //   46: putfield 61	lfv:jdField_a_of_type_Lwr	Llwr;
-    //   49: aload_0
-    //   50: getfield 12	lfx:a	Llfv;
-    //   53: getfield 61	lfv:jdField_a_of_type_Lwr	Llwr;
-    //   56: aload_0
-    //   57: getfield 12	lfx:a	Llfv;
-    //   60: getfield 64	lfv:jdField_a_of_type_Lwp	Llwp;
-    //   63: ldc 66
-    //   65: invokeinterface 71 3 0
-    //   70: aload_0
-    //   71: getfield 12	lfx:a	Llfv;
-    //   74: getfield 74	lfv:b	Z
-    //   77: ifeq +10 -> 87
-    //   80: aload_0
-    //   81: getfield 12	lfx:a	Llfv;
-    //   84: invokevirtual 77	lfv:e	()V
-    //   87: aload_0
-    //   88: getfield 12	lfx:a	Llfv;
-    //   91: getfield 80	lfv:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
-    //   94: iconst_1
-    //   95: anewarray 4	java/lang/Object
-    //   98: dup
-    //   99: iconst_0
-    //   100: bipush 10
-    //   102: invokestatic 86	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   105: aastore
-    //   106: invokevirtual 91	com/tencent/av/app/VideoAppInterface:a	([Ljava/lang/Object;)V
-    //   109: aload_0
-    //   110: getfield 12	lfx:a	Llfv;
-    //   113: getfield 61	lfv:jdField_a_of_type_Lwr	Llwr;
-    //   116: invokeinterface 95 1 0
-    //   121: new 97	lfy
-    //   124: dup
-    //   125: aload_0
-    //   126: invokespecial 100	lfy:<init>	(Llfx;)V
-    //   129: iconst_0
-    //   130: invokeinterface 106 3 0
-    //   135: aload_0
-    //   136: getfield 12	lfx:a	Llfv;
-    //   139: getfield 80	lfv:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
-    //   142: ifnull +29 -> 171
-    //   145: aload_0
-    //   146: getfield 12	lfx:a	Llfv;
-    //   149: getfield 80	lfv:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
-    //   152: getfield 109	com/tencent/av/app/VideoAppInterface:a	Lcom/tencent/av/VideoController;
-    //   155: ifnull +16 -> 171
-    //   158: aload_0
-    //   159: getfield 12	lfx:a	Llfv;
-    //   162: getfield 80	lfv:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
-    //   165: invokevirtual 112	com/tencent/av/app/VideoAppInterface:a	()Lcom/tencent/av/VideoController;
-    //   168: invokevirtual 117	com/tencent/av/VideoController:I	()V
-    //   171: return
-    //   172: astore_1
-    //   173: ldc 24
-    //   175: new 26	java/lang/StringBuilder
-    //   178: dup
-    //   179: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   182: ldc 119
-    //   184: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: aload_1
-    //   188: invokevirtual 122	android/os/RemoteException:getMessage	()Ljava/lang/String;
-    //   191: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   194: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   197: invokestatic 127	lcg:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   200: goto -91 -> 109
-    //   203: astore_1
-    //   204: ldc 24
-    //   206: new 26	java/lang/StringBuilder
-    //   209: dup
-    //   210: invokespecial 27	java/lang/StringBuilder:<init>	()V
-    //   213: ldc 119
-    //   215: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   218: aload_1
-    //   219: invokevirtual 128	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   222: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   225: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   228: invokestatic 127	lcg:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   231: goto -96 -> 135
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	234	0	this	lfx
-    //   0	234	1	paramComponentName	ComponentName
-    //   0	234	2	paramIBinder	android.os.IBinder
-    // Exception table:
-    //   from	to	target	type
-    //   49	87	172	android/os/RemoteException
-    //   87	109	172	android/os/RemoteException
-    //   109	135	203	java/lang/Exception
+    return paramByte & 0xFF;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public static int a(short paramShort)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQServiceProxy", 2, "QQServiceForAV onServiceDisconnected");
-    }
-    try
+    return 0xFFFF & paramShort;
+  }
+  
+  public static int a(byte[] paramArrayOfByte, int paramInt)
+  {
+    int i = 0;
+    int k = 0;
+    int j = k;
+    if (paramArrayOfByte.length == paramInt)
     {
-      if (this.a.jdField_a_of_type_Lwr != null) {
-        this.a.jdField_a_of_type_Lwr.a(this.a.jdField_a_of_type_Lwp);
+      if (paramArrayOfByte.length > 4) {
+        j = k;
       }
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(11) });
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().deleteObservers();
     }
-    catch (RemoteException paramComponentName)
+    else {
+      return j;
+    }
+    k = 0;
+    for (;;)
+    {
+      j = i;
+      if (k >= paramInt) {
+        break;
+      }
+      i = (int)(i | (paramArrayOfByte[k] & 0xFF) << (paramInt - k - 1) * 8);
+      k += 1;
+    }
+  }
+  
+  public static long a(int paramInt)
+  {
+    return paramInt & 0xFFFFFFFF;
+  }
+  
+  public static long a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() <= 0)) {}
+    String str2;
+    do
     {
       for (;;)
       {
-        QLog.e("QQServiceProxy", 2, "QQServiceForAV onServiceDisconnected RemoteException", paramComponentName);
+        return 0L;
+        String str1 = paramString;
+        str2 = paramString;
+        try
+        {
+          if (paramString.startsWith("+"))
+          {
+            str2 = paramString;
+            str1 = paramString.substring(1);
+          }
+          str2 = str1;
+          long l = mto.a(str1);
+          if (l >= 10000L) {
+            return l;
+          }
+        }
+        catch (NumberFormatException paramString) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoPackageUtils", 2, "uin = " + str2 + " is error");
+    return 0L;
+  }
+  
+  public static long a(byte[] paramArrayOfByte, int paramInt)
+  {
+    long l1 = 0L;
+    long l2 = l1;
+    if (paramArrayOfByte.length == paramInt)
+    {
+      if (paramArrayOfByte.length > 4) {
+        l2 = l1;
       }
     }
-    this.a.jdField_a_of_type_Lwr = null;
+    else {
+      return l2;
+    }
+    paramInt -= 1;
+    for (;;)
+    {
+      l2 = l1;
+      if (paramInt < 0) {
+        break;
+      }
+      l2 = paramArrayOfByte[paramInt];
+      int i = paramInt - 1;
+      l1 = (l2 & 0xFF) << paramInt * 8 | l1;
+      paramInt = i;
+    }
+  }
+  
+  public static lfy a(byte[] paramArrayOfByte)
+  {
+    lfy locallfy = new lfy();
+    Object localObject = new hd_video.MsgBody();
+    for (;;)
+    {
+      try
+      {
+        paramArrayOfByte = (hd_video.MsgBody)((hd_video.MsgBody)localObject).mergeFrom(paramArrayOfByte);
+        if (paramArrayOfByte.msg_video_head.has())
+        {
+          localObject = (hd_video.VideoHead)paramArrayOfByte.msg_video_head.get();
+          locallfy.jdField_a_of_type_JavaLangString = ((hd_video.VideoHead)localObject).str_from_mobile.get();
+          locallfy.jdField_b_of_type_JavaLangString = ((hd_video.VideoHead)localObject).str_from_nation.get();
+          locallfy.jdField_a_of_type_Int = ((hd_video.VideoHead)localObject).enum_body_type.get();
+          locallfy.jdField_b_of_type_Long = ((hd_video.VideoHead)localObject).uint64_uin.get();
+          if (((hd_video.VideoHead)localObject).int32_sub_service_type.has())
+          {
+            i = ((hd_video.VideoHead)localObject).int32_sub_service_type.get();
+            locallfy.jdField_b_of_type_Int = i;
+            locallfy.jdField_c_of_type_Int = ((hd_video.VideoHead)localObject).uint32_seq.get();
+            locallfy.jdField_a_of_type_Long = ((hd_video.VideoHead)localObject).uint64_room_id.get();
+            if (paramArrayOfByte.msg_invite_body.has())
+            {
+              paramArrayOfByte = (hd_video.CmdS2CInviteReqBody)paramArrayOfByte.msg_invite_body.get();
+              locallfy.jdField_c_of_type_Long = paramArrayOfByte.uint64_from_uin.get();
+              locallfy.jdField_d_of_type_Int = paramArrayOfByte.uint32_new_business_flag.get();
+              locallfy.jdField_a_of_type_Boolean = paramArrayOfByte.bool_terminal_switch_flag.get();
+              if (paramArrayOfByte.msg_temp_session.has())
+              {
+                paramArrayOfByte = paramArrayOfByte.msg_temp_session;
+                locallfy.jdField_d_of_type_Long = paramArrayOfByte.uint64_group_uin.get();
+                locallfy.e = paramArrayOfByte.uint32_relationship_type.get();
+              }
+            }
+            QLog.d("VideoPackageUtils", 1, " --- parse video message " + locallfy.toString());
+            return locallfy;
+          }
+        }
+        else
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("nearby.video.multiMsg", 2, " head not exist");
+          continue;
+        }
+        int i = -1;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        QLog.e("VideoPackageUtils", 1, " invalid format:" + paramArrayOfByte.toString());
+        return locallfy;
+      }
+    }
+  }
+  
+  public static short a(byte[] paramArrayOfByte, int paramInt)
+  {
+    short s3 = 0;
+    short s1 = 0;
+    short s2 = s1;
+    if (paramArrayOfByte.length == paramInt)
+    {
+      if (paramArrayOfByte.length > 2) {
+        s2 = s1;
+      }
+    }
+    else {
+      return s2;
+    }
+    int i = 0;
+    s1 = s3;
+    for (;;)
+    {
+      s2 = s1;
+      if (i >= paramInt) {
+        break;
+      }
+      s1 = (short)(int)(s1 | (paramArrayOfByte[i] & 0xFF) << (paramInt - i - 1) * 8);
+      i += 1;
+    }
+  }
+  
+  public static long b(byte[] paramArrayOfByte, int paramInt)
+  {
+    long l1 = 0L;
+    long l2 = l1;
+    if (paramArrayOfByte.length == paramInt)
+    {
+      if (paramArrayOfByte.length > 8) {
+        l2 = l1;
+      }
+    }
+    else {
+      return l2;
+    }
+    int j;
+    for (int i = 0;; i = j)
+    {
+      l2 = l1;
+      if (i >= paramInt) {
+        break;
+      }
+      l2 = paramArrayOfByte[i];
+      j = i + 1;
+      l1 = (l2 & 0xFF) << (paramInt - i - 1) * 8 | l1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfx
  * JD-Core Version:    0.7.0.1
  */

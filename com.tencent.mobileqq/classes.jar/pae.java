@@ -1,157 +1,49 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.DailyDynamicHeaderModule.1;
-import com.tencent.biz.pubaccount.readinjoy.model.DailyDynamicHeaderModule.2;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ExecutorService;
-import org.json.JSONArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import org.json.JSONObject;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ReqBody;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspBody;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RspChannelArticle;
 
-public class pae
-  extends pbe
+class pae
+  implements View.OnClickListener
 {
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  pae(pac parampac, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public pae(AppInterface paramAppInterface, aukp paramaukp, ExecutorService paramExecutorService, por parampor, Handler paramHandler)
+  public void onClick(View paramView)
   {
-    super(paramAppInterface, paramaukp, paramExecutorService, parampor, paramHandler);
-    d();
-  }
-  
-  static JSONObject a(boolean paramBoolean)
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    if (paramBoolean) {}
-    for (int i = 0;; i = 1)
-    {
-      localJSONObject2.put("req_type", i);
-      localJSONObject2.put("ad_code", akuf.b());
-      localJSONObject2.put("city_name", akuf.a());
-      localJSONObject1.put("dynamic_header_req_param", localJSONObject2);
-      return localJSONObject1;
-    }
-  }
-  
-  private void c()
-  {
-    oidb_cmd0x68b.ReqBody localReqBody = new oidb_cmd0x68b.ReqBody();
-    long l = Long.valueOf(onh.a()).longValue();
-    localReqBody.uint64_uin.set(l);
-    localReqBody.uint32_network_type.set(ozo.b());
+    ReadInJoyPicWaterFallFragment.a(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment).a(paramView, this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Pac.a());
+    paramView = opn.a(this.jdField_a_of_type_Pac.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 3, this.jdField_a_of_type_Pac.a(), (ArticleInfo)this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
     try
     {
-      Object localObject = new JSONArray();
-      ((JSONArray)localObject).put(a(false));
-      localObject = ((JSONArray)localObject).toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("DynamicHeaderModule", 2, "[requestForUpdate] req: " + (String)localObject);
+      paramView.put("card_type", 8);
+      opp localopp = new opp(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      localopp.e = String.valueOf(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
+      localopp.f = String.valueOf(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
+      localopp.g = paramView.toString();
+      if (this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a != null) {
+        localopp.a = String.valueOf(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSocialFeedInfo.a.a);
       }
-      localReqBody.bytes_nearby_cookie.set(ByteStringMicro.copyFromUtf8((String)localObject));
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("DynamicHeaderModule", 1, "[requestForUpdate] ", localException);
-      }
-    }
-    a(pot.a("OidbSvc.0xcba", 3258, 0, localReqBody.toByteArray()));
-  }
-  
-  private void d()
-  {
-    String str = (String)bhvy.a("sp_key_daily_dynamic_header_data", "");
-    QLog.i("DynamicHeaderModule", 1, "[startLoadFromDisk] json=" + str);
-    if (!TextUtils.isEmpty(str)) {
-      a(str);
-    }
-  }
-  
-  public JSONObject a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
-      return localJSONObject;
-    }
-  }
-  
-  public void a()
-  {
-    c();
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    oidb_cmd0x68b.RspBody localRspBody = new oidb_cmd0x68b.RspBody();
-    int i = omz.a(paramToServiceMsg, paramFromServiceMsg, paramObject, localRspBody, false);
-    QLog.i("DynamicHeaderModule", 1, "[onReceive] result=" + i);
-    if (i == 0)
-    {
-      if ((localRspBody.rspChannelArticle.has()) && (localRspBody.rspChannelArticle.get() != null))
-      {
-        paramToServiceMsg = (oidb_cmd0x68b.RspChannelArticle)localRspBody.rspChannelArticle.get();
-        if ((paramToServiceMsg.bytes_nearby_cookie.has()) && (paramToServiceMsg.bytes_nearby_cookie.get() != null))
-        {
-          paramToServiceMsg = paramToServiceMsg.bytes_nearby_cookie.get().toStringUtf8();
-          bhvy.a("sp_key_daily_dynamic_header_data", paramToServiceMsg);
-          a(paramToServiceMsg);
-        }
-      }
+      localopp.b = "0X8009A78";
+      localopp.c = "0X8009A78";
+      opn.a(localopp);
+      paramView = new JSONObject();
+      paramView.put("time", System.currentTimeMillis() / 1000L);
+      paramView.put("channel_id", this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a());
+      paramView.put("folder_status", ors.d);
+      paramView.put("kandian_mode", ors.e());
+      paramView.put("feeds_type", "1008");
+      paramView.put("rowkey", szp.a(this.jdField_a_of_type_Pac.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
+      nrt.a(null, "", "0X8007058", "0X8007058", 0, 0, "", "", "", paramView.toString(), false);
       return;
     }
-    bhvy.a("sp_key_daily_dynamic_header_data", "");
-    ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderModule.2(this));
+    catch (Exception paramView) {}
   }
-  
-  public void a(String paramString)
-  {
-    boolean bool = true;
-    QLog.i("DynamicHeaderModule", 1, "[updateDynamicHeaderData] jsonString=" + paramString);
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString).optJSONObject("dynamic_header_data");
-        paramString = this.jdField_a_of_type_OrgJsonJSONObject;
-        if (paramString == null) {
-          break label79;
-        }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          label79:
-          QLog.e("DynamicHeaderModule", 1, "[updateDynamicHeaderData] ", paramString);
-          this.jdField_a_of_type_OrgJsonJSONObject = null;
-          bool = false;
-        }
-      }
-      ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderModule.1(this, bool));
-      return;
-      bool = false;
-    }
-  }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pae
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode.activity;
 
-import bcqf;
+import bepp;
 
 class QRLoginMgrActivity$4
   implements Runnable
@@ -21,8 +21,8 @@ class QRLoginMgrActivity$4
             QRLoginMgrActivity.a(this.this$0).cancel();
             QRLoginMgrActivity.a(this.this$0, null);
           }
-          QRLoginMgrActivity.a(this.this$0, new bcqf(QRLoginMgrActivity.a(this.this$0), this.this$0.getTitleBarHeight()));
-          QRLoginMgrActivity.a(this.this$0).c(2131718679);
+          QRLoginMgrActivity.a(this.this$0, new bepp(QRLoginMgrActivity.a(this.this$0), this.this$0.getTitleBarHeight()));
+          QRLoginMgrActivity.a(this.this$0).c(2131719152);
           int i = this.a;
           switch (i)
           {
@@ -38,13 +38,13 @@ class QRLoginMgrActivity$4
         QRLoginMgrActivity.a(this.this$0).show();
       }
       return;
-      QRLoginMgrActivity.a(this.this$0).c(2131694931);
+      QRLoginMgrActivity.a(this.this$0).c(2131695088);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRLoginMgrActivity.4
  * JD-Core Version:    0.7.0.1
  */

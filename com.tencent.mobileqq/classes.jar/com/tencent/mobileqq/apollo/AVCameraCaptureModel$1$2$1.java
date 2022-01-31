@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.apollo;
 
-import airm;
-import airn;
-import airp;
-import ajac;
-import ajct;
+import akix;
+import akiy;
+import akja;
+import akro;
+import akuf;
 import android.text.TextUtils;
 import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
 
 public class AVCameraCaptureModel$1$2$1
   extends IApolloRunnableTask
 {
-  public AVCameraCaptureModel$1$2$1(airp paramairp, AVVideoCtrl.VideoFrame paramVideoFrame, ApolloSurfaceView paramApolloSurfaceView) {}
+  public AVCameraCaptureModel$1$2$1(akja paramakja, AVVideoCtrl.VideoFrame paramVideoFrame, ApolloSurfaceView paramApolloSurfaceView) {}
   
   public String a()
   {
@@ -20,15 +20,15 @@ public class AVCameraCaptureModel$1$2$1
   
   public void run()
   {
-    ajct localajct = ajac.a(airm.a(this.jdField_a_of_type_Airp.a.a));
-    if (localajct == null) {
+    akuf localakuf = akro.a(akix.a(this.jdField_a_of_type_Akja.a.a));
+    if (localakuf == null) {
       return;
     }
-    String str2 = localajct.b(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier);
+    String str2 = localakuf.b(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier);
     String str1 = str2;
     if (TextUtils.isEmpty(str2))
     {
-      str2 = localajct.a(Long.parseLong(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier));
+      str2 = localakuf.a(Long.parseLong(this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier));
       str1 = str2;
       if (TextUtils.isEmpty(str2)) {
         str1 = this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$VideoFrame.identifier;
@@ -39,7 +39,7 @@ public class AVCameraCaptureModel$1$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.2.1
  * JD-Core Version:    0.7.0.1
  */

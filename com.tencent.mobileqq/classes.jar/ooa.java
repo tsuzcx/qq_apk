@@ -1,49 +1,19 @@
-import java.util.ArrayList;
-
-public class ooa
+class ooa
+  extends oob
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<ooa> a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c = "";
-  public int d;
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  
-  public ooa()
+  ooa(omz paramomz, int paramInt1, omt paramomt, int paramInt2)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    super(paramomz, null);
   }
   
-  public boolean a(long paramLong)
+  void a(ooe paramooe)
   {
-    return (paramLong - this.jdField_a_of_type_Long > 0L) && (paramLong - this.jdField_a_of_type_Long < 25200L);
-  }
-  
-  public boolean a(long paramLong1, long paramLong2)
-  {
-    return (paramLong1 - this.jdField_a_of_type_Long > 0L) && (paramLong1 - this.jdField_a_of_type_Long < paramLong2);
-  }
-  
-  public String toString()
-  {
-    return "VidUrl {\n vid: " + this.jdField_b_of_type_JavaLangString + "\n url: " + this.jdField_a_of_type_JavaLangString + "\n isH265: " + this.jdField_a_of_type_Boolean + "\n fileBitRate: " + this.c + "\n isHWCodec: " + this.jdField_b_of_type_Boolean + "\n videoReportInfo:" + this.d + "\n speedList:" + this.e + "}";
+    paramooe.onCommentDelete(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Omt, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ooa
  * JD-Core Version:    0.7.0.1
  */

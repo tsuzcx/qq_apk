@@ -2,7 +2,7 @@ package com.tencent.mobileqq.qipc;
 
 import android.content.Context;
 import android.text.TextUtils;
-import bggw;
+import bihu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.ActivityLifecycle;
 import com.tencent.qphone.base.util.QLog;
@@ -13,7 +13,7 @@ import mqq.app.MobileQQ;
 
 public class QIPCEnvironmentInit
 {
-  public static final bggw sCallbac = new bggw();
+  public static final bihu sCallbac = new bihu();
   
   static void initEnvironment()
   {
@@ -66,7 +66,7 @@ public class QIPCEnvironmentInit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qipc.QIPCEnvironmentInit
  * JD-Core Version:    0.7.0.1
  */

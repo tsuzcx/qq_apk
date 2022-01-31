@@ -1,7 +1,7 @@
 package cooperation.plugin;
 
 import android.util.Log;
-import bglf;
+import bime;
 import dalvik.system.DexFile;
 import java.io.File;
 import java.io.IOException;
@@ -12,21 +12,21 @@ class Dex2Oat$OptimizeWorker
   implements Runnable
 {
   private static String jdField_a_of_type_JavaLangString;
-  private final bglf jdField_a_of_type_Bglf;
+  private final bime jdField_a_of_type_Bime;
   private final File jdField_a_of_type_JavaIoFile;
   private final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
   private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   private final boolean jdField_a_of_type_Boolean;
   private final File b;
   
-  Dex2Oat$OptimizeWorker(File paramFile1, File paramFile2, boolean paramBoolean, String paramString, AtomicInteger paramAtomicInteger, CountDownLatch paramCountDownLatch, bglf parambglf)
+  Dex2Oat$OptimizeWorker(File paramFile1, File paramFile2, boolean paramBoolean, String paramString, AtomicInteger paramAtomicInteger, CountDownLatch paramCountDownLatch, bime parambime)
   {
     this.jdField_a_of_type_JavaIoFile = paramFile1;
     this.b = paramFile2;
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger;
     this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = paramCountDownLatch;
-    this.jdField_a_of_type_Bglf = parambglf;
+    this.jdField_a_of_type_Bime = parambime;
     jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -34,25 +34,25 @@ class Dex2Oat$OptimizeWorker
   {
     try
     {
-      if ((!Dex2Oat.a(this.jdField_a_of_type_JavaIoFile)) && (this.jdField_a_of_type_Bglf != null)) {
-        this.jdField_a_of_type_Bglf.a(this.jdField_a_of_type_JavaIoFile, this.b, new IOException("dex file " + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " is not exist!"));
+      if ((!Dex2Oat.a(this.jdField_a_of_type_JavaIoFile)) && (this.jdField_a_of_type_Bime != null)) {
+        this.jdField_a_of_type_Bime.a(this.jdField_a_of_type_JavaIoFile, this.b, new IOException("dex file " + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " is not exist!"));
       }
-      if (this.jdField_a_of_type_Bglf != null) {
-        this.jdField_a_of_type_Bglf.a(this.jdField_a_of_type_JavaIoFile, this.b);
+      if (this.jdField_a_of_type_Bime != null) {
+        this.jdField_a_of_type_Bime.a(this.jdField_a_of_type_JavaIoFile, this.b);
       }
       String str = Dex2Oat.a(this.jdField_a_of_type_JavaIoFile, this.b);
       DexFile.loadDex(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), str, 0);
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
-      if (this.jdField_a_of_type_Bglf != null) {
-        this.jdField_a_of_type_Bglf.a(this.jdField_a_of_type_JavaIoFile, this.b, new File(str));
+      if (this.jdField_a_of_type_Bime != null) {
+        this.jdField_a_of_type_Bime.a(this.jdField_a_of_type_JavaIoFile, this.b, new File(str));
       }
       return;
     }
     catch (Throwable localThrowable)
     {
       Log.e("plugin_tag.Dex2Oat", "Failed to optimize dex: " + this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), localThrowable);
-      if (this.jdField_a_of_type_Bglf != null) {
-        this.jdField_a_of_type_Bglf.a(this.jdField_a_of_type_JavaIoFile, this.b, localThrowable);
+      if (this.jdField_a_of_type_Bime != null) {
+        this.jdField_a_of_type_Bime.a(this.jdField_a_of_type_JavaIoFile, this.b, localThrowable);
       }
       return;
     }
@@ -64,7 +64,7 @@ class Dex2Oat$OptimizeWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.plugin.Dex2Oat.OptimizeWorker
  * JD-Core Version:    0.7.0.1
  */

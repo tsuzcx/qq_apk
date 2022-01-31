@@ -1,397 +1,126 @@
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.config.AppSetting;
+import android.util.Xml;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.LRULinkedHashMap;
-import com.tencent.viola.core.ViolaInstance;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
+import org.xmlpull.v1.XmlPullParser;
 
 public class osq
 {
-  private static final LRULinkedHashMap<String, ost> jdField_a_of_type_ComTencentUtilLRULinkedHashMap;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static volatile osq jdField_a_of_type_Osq;
-  private static volatile boolean jdField_a_of_type_Boolean;
-  public static int b;
-  private static final LRULinkedHashMap<String, ost> jdField_b_of_type_ComTencentUtilLRULinkedHashMap;
-  public static int c;
-  public static int d;
-  public static int e;
-  public static int f;
-  public static int g = 5;
-  protected int a;
-  private long jdField_a_of_type_Long;
-  private ViolaInstance jdField_a_of_type_ComTencentViolaCoreViolaInstance;
-  private String jdField_a_of_type_JavaLangString;
-  protected final osu a;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
-  private String jdField_c_of_type_JavaLangString;
-  private boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString;
-  private boolean jdField_d_of_type_Boolean;
-  private String e;
-  private String f;
-  
-  static
+  public static Map<String, String> a(String paramString)
   {
-    jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(4);
-    jdField_b_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(4);
-    jdField_c_of_type_Int = 1;
-    jdField_d_of_type_Int = 2;
-    jdField_e_of_type_Int = 3;
-    jdField_f_of_type_Int = 4;
-  }
-  
-  public osq()
-  {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Osu = new osu(new osr(this));
-  }
-  
-  public static osq a()
-  {
-    if (jdField_a_of_type_Osq == null) {
-      jdField_a_of_type_Osq = new osq();
-    }
-    return jdField_a_of_type_Osq;
-  }
-  
-  public static ost a(String paramString)
-  {
-    if ((AppSetting.g) || (TextUtils.isEmpty(paramString))) {
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("viola.ReadInJoyWebRenderEngine", 2, "native_render  getRenderHtmlData url : " + paramString);
-    }
-    synchronized (jdField_a_of_type_JavaLangObject)
+    HashMap localHashMap = new HashMap();
+    label159:
+    for (;;)
     {
-      localost = (ost)jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(paramString);
-      if (localost != null)
+      try
       {
-        paramString = localost;
-        if (localost.a()) {
-          paramString = null;
-        }
-        return paramString;
-      }
-    }
-    ost localost = (ost)jdField_b_of_type_ComTencentUtilLRULinkedHashMap.get(paramString);
-    if (localost != null)
-    {
-      paramString = localost;
-      if (localost.a()) {}
-    }
-    for (;;)
-    {
-      return paramString;
-      paramString = null;
-    }
-  }
-  
-  public static void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "[notifyLibLoad], ret:", Integer.valueOf(paramInt) });
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    try
-    {
-      a(paramString, null);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  /* Error */
-  public static void a(String paramString, oss paramoss)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 132	osq:jdField_a_of_type_Boolean	Z
-    //   6: ifeq +20 -> 26
-    //   9: aload_1
-    //   10: ifnull +12 -> 22
-    //   13: aload_1
-    //   14: getstatic 47	osq:g	I
-    //   17: invokeinterface 137 2 0
-    //   22: ldc 2
-    //   24: monitorexit
-    //   25: return
-    //   26: invokestatic 143	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
-    //   29: new 145	com/tencent/biz/pubaccount/readinjoy/engine/ReadInJoyWebRenderEngine$3
-    //   32: dup
-    //   33: aload_1
-    //   34: aload_0
-    //   35: invokespecial 148	com/tencent/biz/pubaccount/readinjoy/engine/ReadInJoyWebRenderEngine$3:<init>	(Loss;Ljava/lang/String;)V
-    //   38: invokevirtual 154	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
-    //   41: pop
-    //   42: goto -20 -> 22
-    //   45: astore_0
-    //   46: ldc 2
-    //   48: monitorexit
-    //   49: aload_0
-    //   50: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	51	0	paramString	String
-    //   0	51	1	paramoss	oss
-    // Exception table:
-    //   from	to	target	type
-    //   3	9	45	finally
-    //   13	22	45	finally
-    //   26	42	45	finally
-  }
-  
-  public static void b()
-  {
-    if (!bhvy.n(onh.a())) {
-      if (QLog.isColorLevel()) {
-        QLog.e("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "preWebRenderLoadSo [getWebRenderConfig], is:", Boolean.valueOf(false) });
-      }
-    }
-    for (;;)
-    {
-      if (rvx.a()) {
-        rvx.a();
-      }
-      return;
-      if (!jdField_a_of_type_Boolean) {
-        a("preload");
-      } else if (QLog.isColorLevel()) {
-        QLog.e("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "preWebRenderLoadSo [sLoadEngineLibDone], is:", Boolean.valueOf(true) });
-      }
-    }
-  }
-  
-  public static boolean b()
-  {
-    boolean bool = true;
-    File localFile = new File(osw.a(), "libviola.so");
-    if ((!jdField_a_of_type_Boolean) || (!localFile.exists()))
-    {
-      onh.a(onh.a(), true, 2);
-      a("other ");
-      if (QLog.isColorLevel()) {
-        QLog.e("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "native_render [isEngineReady], ret:", Boolean.valueOf(false) });
-      }
-      bool = false;
-    }
-    while (!QLog.isColorLevel()) {
-      return bool;
-    }
-    QLog.d("viola.ReadInJoyWebRenderEngine", 2, new Object[] { "native_render [isEngineReady], ret:", Boolean.valueOf(true) });
-    return true;
-  }
-  
-  public static void c() {}
-  
-  private void d()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-  }
-  
-  public int a(Bundle paramBundle)
-  {
-    onh.a(onh.a(), true, 9);
-    this.jdField_a_of_type_Int = 11;
-    return -1;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentViolaCoreViolaInstance != null)
-    {
-      this.jdField_a_of_type_ComTencentViolaCoreViolaInstance.destroy();
-      this.jdField_a_of_type_ComTencentViolaCoreViolaInstance = null;
-    }
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public int b(Bundle paramBundle)
-  {
-    Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("_prenr");
-    if ((!this.jdField_d_of_type_Boolean) && (a(this.jdField_a_of_type_JavaLangString) != null))
-    {
-      this.jdField_a_of_type_Int = 10;
-      if (QLog.isColorLevel()) {
-        QLog.e("viola.ReadInJoyWebRenderEngine", 1, "native_render doCreateLoopStep_Check has url cache");
-      }
-    }
-    for (;;)
-    {
-      return 0;
-      this.jdField_a_of_type_Int = 4;
-    }
-  }
-  
-  @Deprecated
-  public int c(Bundle paramBundle)
-  {
-    return 0;
-  }
-  
-  @Deprecated
-  public int d(Bundle paramBundle)
-  {
-    return 0;
-  }
-  
-  @Deprecated
-  public int e(Bundle paramBundle)
-  {
-    return 0;
-  }
-  
-  @Deprecated
-  public int f(Bundle paramBundle)
-  {
-    return 0;
-  }
-  
-  public int g(Bundle paramBundle)
-  {
-    Object localObject = this.jdField_a_of_type_JavaLangString.replace("_pbid", "_bid");
-    if (bcgl.a((String)localObject))
-    {
-      localObject = bcgl.a((String)localObject);
-      if ((localObject != null) && (!TextUtils.isEmpty(((bcgm)localObject).jdField_b_of_type_JavaLangString))) {
-        this.jdField_e_of_type_JavaLangString = ((bcgm)localObject).jdField_b_of_type_JavaLangString;
-      }
-    }
-    while (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("viola.ReadInJoyWebRenderEngine", 2, "native_render doCreateLoopStep_GetHtml mHtmlOffline is empty");
-      }
-      onh.a(onh.a(), true, 7);
-      return a(paramBundle);
-      localObject = mzb.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-      if (localObject != null) {
-        try
+        XmlPullParser localXmlPullParser = Xml.newPullParser();
+        localXmlPullParser.setFeature("http://xmlpull.org/v1/doc/features.html#process-namespaces", false);
+        localXmlPullParser.setInput(new StringReader(paramString));
+        int i = localXmlPullParser.getEventType();
+        if (i != 1)
         {
-          int i = ((mzf)localObject).a.available();
-          if (i != 0)
+          if (localXmlPullParser.getEventType() == 0)
           {
-            byte[] arrayOfByte = new byte[i];
-            if (i == ((mzf)localObject).a.read(arrayOfByte)) {
-              this.jdField_e_of_type_JavaLangString = new String(arrayOfByte, "utf-8");
-            }
+            QLog.d("AladdinParseUtils", 2, "[parseContentXml] START_DOCUMENT");
+            i = localXmlPullParser.next();
+            continue;
           }
+          if (localXmlPullParser.getEventType() != 2) {
+            continue;
+          }
+          QLog.d("AladdinParseUtils", 2, "[parseContentXml] START_TAG");
+          paramString = localXmlPullParser.getName();
+          if (!"configs".equals(paramString)) {
+            break label159;
+          }
+          a(localXmlPullParser, localHashMap);
+          continue;
         }
-        catch (IOException localIOException)
-        {
-          return a(paramBundle);
-        }
+        QLog.e("AladdinParseUtils", 1, "[parseContentXml] unknown tag: " + paramString);
       }
-    }
-    this.jdField_a_of_type_Int = 8;
-    return 0;
-  }
-  
-  public int h(Bundle paramBundle)
-  {
-    String str1 = "<!--native-render-->";
-    String str3 = "<!--native-data-render-->";
-    String str2 = "renderData";
-    this.jdField_f_of_type_JavaLangString = "true;";
-    String str4 = str1;
-    String str5 = str2;
-    String str6 = str3;
-    if (paramBundle != null)
-    {
-      if (!TextUtils.isEmpty(paramBundle.getString(rwu.jdField_a_of_type_JavaLangString))) {
-        str1 = paramBundle.getString(rwu.jdField_a_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(paramBundle.getString(rwu.jdField_e_of_type_JavaLangString))) {
-        str2 = paramBundle.getString(rwu.jdField_e_of_type_JavaLangString);
-      }
-      if (!TextUtils.isEmpty(paramBundle.getString(rwu.jdField_c_of_type_JavaLangString))) {
-        str3 = paramBundle.getString(rwu.jdField_c_of_type_JavaLangString);
-      }
-      str4 = str1;
-      str5 = str2;
-      str6 = str3;
-      if (!TextUtils.isEmpty(paramBundle.getString(rwu.jdField_d_of_type_JavaLangString)))
+      catch (Exception paramString)
       {
-        this.jdField_f_of_type_JavaLangString = paramBundle.getString(rwu.jdField_d_of_type_JavaLangString);
-        str6 = str3;
-        str5 = str2;
-        str4 = str1;
+        QLog.e("AladdinParseUtils", 1, "[parseContentXml] ", paramString);
+        if (QLog.isColorLevel()) {
+          QLog.d("AladdinParseUtils", 2, "[parseContentXml] result=" + localHashMap);
+        }
+        return localHashMap;
       }
     }
-    this.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString.replaceFirst(str4, this.jdField_d_of_type_JavaLangString);
-    this.jdField_e_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString.replaceFirst(str6, "var " + str5 + " = " + this.jdField_f_of_type_JavaLangString + ";");
-    this.jdField_a_of_type_Int = 9;
-    return 0;
   }
   
-  public int i(Bundle paramBundle)
+  private static void a(XmlPullParser paramXmlPullParser)
   {
-    if (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString))
+    if (paramXmlPullParser.getEventType() != 2) {
+      throw new IllegalStateException();
+    }
+    int i = 1;
+    while (i != 0) {
+      switch (paramXmlPullParser.next())
+      {
+      default: 
+        break;
+      case 1: 
+        throw new IllegalStateException();
+      case 3: 
+        i -= 1;
+        break;
+      case 2: 
+        QLog.d("AladdinParseUtils", 2, "[skip] " + paramXmlPullParser.getName());
+        i += 1;
+      }
+    }
+  }
+  
+  private static void a(XmlPullParser paramXmlPullParser, Map<String, String> paramMap)
+  {
+    paramXmlPullParser.require(2, null, "configs");
+    int i = paramXmlPullParser.next();
+    if ((i != 3) && (i != 1))
     {
-      if (!this.jdField_c_of_type_Boolean) {
-        break label131;
+      if (i == 2) {
+        b(paramXmlPullParser, paramMap);
       }
-      jdField_b_of_type_ComTencentUtilLRULinkedHashMap.put(this.jdField_a_of_type_JavaLangString, new ost(this.jdField_e_of_type_JavaLangString, "utf-8", 1800000L));
+      for (;;)
+      {
+        i = paramXmlPullParser.next();
+        break;
+        QLog.e("AladdinParseUtils", 1, "[readConfigs] unknown event type: " + i);
+      }
     }
-    for (;;)
+    paramXmlPullParser.require(3, null, "configs");
+  }
+  
+  private static void b(XmlPullParser paramXmlPullParser, Map<String, String> paramMap)
+  {
+    if (paramXmlPullParser.getEventType() != 2) {
+      throw new IllegalStateException();
+    }
+    String str = paramXmlPullParser.getName();
+    int i = paramXmlPullParser.next();
+    if ((i != 3) && (i != 1))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render one result total cost[" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + " ms]");
+      if (i == 4) {
+        paramMap.put(str, paramXmlPullParser.getText());
       }
-      onh.a(onh.a(), true, 8);
-      onh.a(onh.a(), true, 12, System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      d();
-      a();
-      this.jdField_a_of_type_Int = 1;
-      return -1;
-      label131:
-      jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(this.jdField_a_of_type_JavaLangString, new ost(this.jdField_e_of_type_JavaLangString, "utf-8"));
+      for (;;)
+      {
+        i = paramXmlPullParser.next();
+        break;
+        if (i == 2)
+        {
+          QLog.d("AladdinParseUtils", 2, "[readTag] unexpected nested tag: " + paramXmlPullParser.getName() + ", skip.");
+          a(paramXmlPullParser);
+        }
+      }
     }
-  }
-  
-  public int j(Bundle paramBundle)
-  {
-    onh.a(onh.a(), true, 3);
-    d();
-    a();
-    this.jdField_a_of_type_Int = 1;
-    return -1;
-  }
-  
-  public int k(Bundle paramBundle)
-  {
-    d();
-    a();
-    this.jdField_a_of_type_Int = 1;
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     osq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,33 @@
-import android.os.Bundle;
+import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
-public class bgsw
+class bgsw
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public Bundle a;
+  bgsw(bgsu parambgsu) {}
   
-  bgsw(bgsu parambgsu, int paramInt, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    if (((this.a.a() instanceof Activity)) && (this.a.a() != null))
+    {
+      paramDialogInterface = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+      Activity localActivity = (Activity)this.a.a();
+      Intent localIntent = new Intent();
+      localIntent.putExtra("url", this.a.a().url.get());
+      paramDialogInterface.startBrowserActivity(localActivity, localIntent);
+    }
+    this.a.a("identi_click");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgsw
  * JD-Core Version:    0.7.0.1
  */

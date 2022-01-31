@@ -1,12 +1,16 @@
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.AdapterView;
+
 public class bbda
+  implements bhqq
 {
-  public String a;
-  public boolean a;
+  public bbda(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
   
-  bbda(String paramString, boolean paramBoolean)
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    TroopAvatarWallEditActivity.a(this.a);
+    return true;
   }
 }
 

@@ -1,59 +1,18 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
-public class omk
-  extends RecyclerView.Adapter
+class omk
+  extends olz
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private rrp jdField_a_of_type_Rrp;
-  private List<String> b = new ArrayList();
+  omk(omj paramomj) {}
   
-  public omk(Context paramContext, List<String> paramList1, List<String> paramList2, rrp paramrrp)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.b = paramList1;
-    this.jdField_a_of_type_JavaUtilList = paramList2;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Rrp = paramrrp;
-  }
-  
-  public int getItemCount()
-  {
-    if (this.b != null) {
-      return this.b.size();
-    }
-    return 0;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder instanceof omm))
-    {
-      paramViewHolder = (omm)paramViewHolder;
-      if ((paramInt >= 0) && (paramInt < this.b.size()))
-      {
-        String str1 = (String)this.b.get(paramInt);
-        String str2 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-        paramViewHolder.a.setText(str1);
-        paramViewHolder.a.setOnClickListener(new oml(this, str2, str1));
-      }
-    }
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new omm(this, View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559889, null));
+    this.a.jdField_a_of_type_Omg.a().a(this.a.jdField_a_of_type_Omt.a.commentId, paramString, paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     omk
  * JD-Core Version:    0.7.0.1
  */

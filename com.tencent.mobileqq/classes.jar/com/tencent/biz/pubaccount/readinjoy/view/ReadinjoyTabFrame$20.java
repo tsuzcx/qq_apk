@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import bbef;
+import bdda;
 import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
 import java.net.MalformedURLException;
@@ -14,7 +14,7 @@ class ReadinjoyTabFrame$20
     try
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.setRound(true);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.a(bbef.a()).a(new URL(ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo)));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderZImageView.a(bdda.a()).a(new URL(ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo)));
       return;
     }
     catch (MalformedURLException localMalformedURLException)
@@ -25,7 +25,7 @@ class ReadinjoyTabFrame$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.20
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,39 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aamf
-  implements View.OnClickListener
+class aamf
+  implements EIPCResultCallback
 {
-  public aamf(BaseChatPie paramBaseChatPie) {}
+  aamf(aame paramaame, aamh paramaamh, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.c.cancel();
+    String str2 = null;
+    String str1;
+    if (this.jdField_a_of_type_Aamh != null)
+    {
+      str1 = this.jdField_a_of_type_Aamh.a();
+      if (this.jdField_a_of_type_Aamh != null) {
+        str2 = this.jdField_a_of_type_Aamh.b();
+      }
+      if (paramEIPCResult == null) {
+        break label91;
+      }
+    }
+    label91:
+    for (boolean bool = paramEIPCResult.isSuccess();; bool = false)
+    {
+      aanp.b("GdtIPCManager", String.format("ClientToServerIPCModule.onCallback action:%s to:%s success:%b", new Object[] { str1, str2, Boolean.valueOf(bool) }));
+      this.jdField_a_of_type_Aame.callbackResult(this.jdField_a_of_type_Int, paramEIPCResult);
+      return;
+      str1 = null;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamf
  * JD-Core Version:    0.7.0.1
  */

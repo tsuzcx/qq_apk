@@ -1,39 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
 public class olf
+  implements oot
 {
-  public BaseArticleInfo a;
-  public String a;
-  public String b;
-  public String c;
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  public olf(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public olf(BaseArticleInfo paramBaseArticleInfo)
+  public void a(int paramInt)
   {
-    this.a = paramBaseArticleInfo;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (paramObject == null) {}
-    while (!(paramObject instanceof olf)) {
-      return false;
+    if (paramInt != 2) {
+      this.a.d();
     }
-    paramObject = (olf)paramObject;
-    return this.a.equals(paramObject.a);
-  }
-  
-  public int hashCode()
-  {
-    return this.a.hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     olf
  * JD-Core Version:    0.7.0.1
  */

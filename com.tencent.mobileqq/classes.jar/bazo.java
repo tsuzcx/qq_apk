@@ -1,11 +1,16 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class bazo
+  implements View.OnClickListener
 {
-  bazk jdField_a_of_type_Bazk;
-  bazm jdField_a_of_type_Bazm;
+  bazo(bazn parambazn) {}
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bazo
  * JD-Core Version:    0.7.0.1
  */

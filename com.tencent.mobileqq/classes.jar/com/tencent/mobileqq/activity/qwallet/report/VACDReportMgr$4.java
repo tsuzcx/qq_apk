@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.report;
 
-import ahik;
+import aizt;
 import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class VACDReportMgr$4
   implements Runnable
 {
-  public VACDReportMgr$4(ahik paramahik, byte[] paramArrayOfByte) {}
+  public VACDReportMgr$4(aizt paramaizt, byte[] paramArrayOfByte) {}
   
   public void run()
   {
@@ -16,8 +16,8 @@ public class VACDReportMgr$4
     {
       try
       {
-        while ((ahik.b(this.this$0).isEmpty()) && (ahik.a(this.this$0).isEmpty())) {
-          ahik.a().wait();
+        while ((aizt.b(this.this$0).isEmpty()) && (aizt.a(this.this$0).isEmpty())) {
+          aizt.a().wait();
         }
         try
         {
@@ -27,12 +27,12 @@ public class VACDReportMgr$4
           }
           do
           {
-            synchronized (ahik.a())
+            synchronized (aizt.a())
             {
-              ahik.b(this.this$0, 2);
-              if (ahik.a(this.this$0))
+              aizt.b(this.this$0, 2);
+              if (aizt.a(this.this$0))
               {
-                ahik.c(this.this$0).post(this);
+                aizt.c(this.this$0).post(this);
                 return;
                 localObject1 = finally;
                 throw localObject1;
@@ -55,7 +55,7 @@ public class VACDReportMgr$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.report.VACDReportMgr.4
  * JD-Core Version:    0.7.0.1
  */

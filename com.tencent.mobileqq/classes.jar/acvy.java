@@ -1,318 +1,256 @@
-import android.support.annotation.NonNull;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.ContactCard;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.QZoneCover;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.model.CoverCacheData;
 
 public class acvy
+  implements Handler.Callback
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
-  public String b;
-  public boolean b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public String f;
-  public long g;
+  public acvy(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public acvy()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_f_of_type_JavaLangString = "";
-  }
-  
-  /* Error */
-  public static acvy a(long paramLong, byte[] paramArrayOfByte)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: iconst_0
-    //   4: istore 4
-    //   6: new 37	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo
-    //   9: dup
-    //   10: invokespecial 38	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:<init>	()V
-    //   13: astore 7
-    //   15: aload 7
-    //   17: aload_2
-    //   18: invokevirtual 42	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   21: pop
-    //   22: new 2	acvy
-    //   25: dup
-    //   26: invokespecial 43	acvy:<init>	()V
-    //   29: astore 6
-    //   31: aload 6
-    //   33: lload_0
-    //   34: putfield 45	acvy:jdField_a_of_type_Long	J
-    //   37: aload 7
-    //   39: getfield 49	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   42: invokevirtual 55	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   45: ifeq +17 -> 62
-    //   48: aload 6
-    //   50: aload 7
-    //   52: getfield 49	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_level	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   55: invokevirtual 59	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   58: i2l
-    //   59: putfield 61	acvy:jdField_b_of_type_Long	J
-    //   62: aload 7
-    //   64: getfield 65	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_last_action_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   67: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   70: ifeq +16 -> 86
-    //   73: aload 6
-    //   75: aload 7
-    //   77: getfield 65	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_last_action_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   80: invokevirtual 71	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   83: putfield 73	acvy:jdField_c_of_type_Long	J
-    //   86: aload 7
-    //   88: getfield 76	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_last_change_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   91: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   94: ifeq +16 -> 110
-    //   97: aload 6
-    //   99: aload 7
-    //   101: getfield 76	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_last_change_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   104: invokevirtual 71	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   107: putfield 78	acvy:jdField_d_of_type_Long	J
-    //   110: aload 7
-    //   112: getfield 81	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_continue_days	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   115: invokevirtual 55	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   118: ifeq +16 -> 134
-    //   121: aload 6
-    //   123: aload 7
-    //   125: getfield 81	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_continue_days	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   128: invokevirtual 59	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   131: putfield 83	acvy:jdField_a_of_type_Int	I
-    //   134: aload 7
-    //   136: getfield 87	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:bytes_wildcard_wording	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   139: invokevirtual 90	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   142: ifeq +19 -> 161
-    //   145: aload 6
-    //   147: aload 7
-    //   149: getfield 87	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:bytes_wildcard_wording	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   152: invokevirtual 93	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   155: invokevirtual 99	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   158: putfield 101	acvy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   161: aload 7
-    //   163: getfield 104	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_notify_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   166: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   169: ifeq +16 -> 185
-    //   172: aload 6
-    //   174: aload 7
-    //   176: getfield 104	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_notify_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   179: invokevirtual 71	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   182: putfield 106	acvy:jdField_e_of_type_Long	J
-    //   185: aload 7
-    //   187: getfield 109	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_icon_status	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   190: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   193: ifeq +16 -> 209
-    //   196: aload 6
-    //   198: aload 7
-    //   200: getfield 109	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_icon_status	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   203: invokevirtual 71	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   206: putfield 111	acvy:jdField_f_of_type_Long	J
-    //   209: aload 7
-    //   211: getfield 114	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_icon_status_end_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   214: invokevirtual 68	com/tencent/mobileqq/pb/PBUInt64Field:has	()Z
-    //   217: ifeq +16 -> 233
-    //   220: aload 6
-    //   222: aload 7
-    //   224: getfield 114	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint64_icon_status_end_time	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   227: invokevirtual 71	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   230: putfield 116	acvy:g	J
-    //   233: aload 7
-    //   235: getfield 119	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_close_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   238: invokevirtual 55	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   241: ifeq +22 -> 263
-    //   244: aload 7
-    //   246: getfield 119	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:uint32_close_flag	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   249: invokevirtual 59	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   252: ifeq +273 -> 525
-    //   255: iconst_1
-    //   256: istore_3
-    //   257: aload 6
-    //   259: iload_3
-    //   260: putfield 121	acvy:jdField_a_of_type_Boolean	Z
-    //   263: aload 7
-    //   265: getfield 124	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:bytes_resource_info	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   268: invokevirtual 90	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   271: ifeq +188 -> 459
-    //   274: new 126	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17
-    //   277: dup
-    //   278: invokespecial 127	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:<init>	()V
-    //   281: astore_2
-    //   282: aload_2
-    //   283: aload 7
-    //   285: getfield 124	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$MutualmarkInfo:bytes_resource_info	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   288: invokevirtual 93	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   291: invokevirtual 131	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   294: invokevirtual 132	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   297: pop
-    //   298: aload_2
-    //   299: ifnull +160 -> 459
-    //   302: aload_2
-    //   303: getfield 135	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:bytes_static_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   306: invokevirtual 90	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   309: ifeq +18 -> 327
-    //   312: aload 6
-    //   314: aload_2
-    //   315: getfield 135	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:bytes_static_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   318: invokevirtual 93	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   321: invokevirtual 99	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   324: putfield 23	acvy:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   327: aload_2
-    //   328: getfield 138	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:bytes_dynamic_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   331: invokevirtual 90	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   334: ifeq +18 -> 352
-    //   337: aload 6
-    //   339: aload_2
-    //   340: getfield 138	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:bytes_dynamic_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   343: invokevirtual 93	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   346: invokevirtual 99	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   349: putfield 25	acvy:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   352: aload_2
-    //   353: getfield 141	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:bytes_cartoon_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   356: invokevirtual 90	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   359: ifeq +18 -> 377
-    //   362: aload 6
-    //   364: aload_2
-    //   365: getfield 141	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:bytes_cartoon_url	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   368: invokevirtual 93	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   371: invokevirtual 99	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   374: putfield 27	acvy:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   377: aload_2
-    //   378: getfield 144	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:bytes_cartoon_md5	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   381: invokevirtual 90	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   384: ifeq +18 -> 402
-    //   387: aload 6
-    //   389: aload_2
-    //   390: getfield 144	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:bytes_cartoon_md5	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   393: invokevirtual 93	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   396: invokevirtual 99	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   399: putfield 29	acvy:jdField_e_of_type_JavaLangString	Ljava/lang/String;
-    //   402: aload_2
-    //   403: getfield 147	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:bytes_word	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   406: invokevirtual 90	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   409: ifeq +18 -> 427
-    //   412: aload 6
-    //   414: aload_2
-    //   415: getfield 147	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:bytes_word	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   418: invokevirtual 93	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   421: invokevirtual 99	com/tencent/mobileqq/pb/ByteStringMicro:toStringUtf8	()Ljava/lang/String;
-    //   424: putfield 31	acvy:jdField_f_of_type_JavaLangString	Ljava/lang/String;
-    //   427: aload_2
-    //   428: getfield 150	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:uint32_play_cartoon	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   431: invokevirtual 55	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   434: ifeq +25 -> 459
-    //   437: iload 4
-    //   439: istore_3
-    //   440: aload_2
-    //   441: getfield 150	tencent/im/s2c/msgtype0x210/submsgtype0xc7/bussinfo/mutualmark/mutualmark$ResourceInfo_17:uint32_play_cartoon	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   444: invokevirtual 59	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   447: iconst_1
-    //   448: if_icmpne +5 -> 453
-    //   451: iconst_1
-    //   452: istore_3
-    //   453: aload 6
-    //   455: iload_3
-    //   456: putfield 152	acvy:jdField_b_of_type_Boolean	Z
-    //   459: invokestatic 157	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   462: ifeq +29 -> 491
-    //   465: ldc 159
-    //   467: iconst_1
-    //   468: new 161	java/lang/StringBuilder
-    //   471: dup
-    //   472: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   475: ldc 164
-    //   477: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: aload 6
-    //   482: invokevirtual 171	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   485: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   488: invokestatic 178	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   491: aload 6
-    //   493: areturn
-    //   494: astore_2
-    //   495: ldc 159
-    //   497: iconst_1
-    //   498: new 161	java/lang/StringBuilder
-    //   501: dup
-    //   502: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   505: ldc 180
-    //   507: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   510: aload_2
-    //   511: invokevirtual 183	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   514: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   517: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   520: invokestatic 178	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   523: aconst_null
-    //   524: areturn
-    //   525: iconst_0
-    //   526: istore_3
-    //   527: goto -270 -> 257
-    //   530: astore_2
-    //   531: ldc 159
-    //   533: iconst_1
-    //   534: new 161	java/lang/StringBuilder
-    //   537: dup
-    //   538: invokespecial 162	java/lang/StringBuilder:<init>	()V
-    //   541: ldc 185
-    //   543: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   546: aload_2
-    //   547: invokevirtual 183	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   550: invokevirtual 168	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   553: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   556: invokestatic 178	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   559: aload 5
-    //   561: astore_2
-    //   562: goto -264 -> 298
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	565	0	paramLong	long
-    //   0	565	2	paramArrayOfByte	byte[]
-    //   256	271	3	bool1	boolean
-    //   4	434	4	bool2	boolean
-    //   1	559	5	localObject	Object
-    //   29	463	6	localacvy	acvy
-    //   13	271	7	localMutualmarkInfo	tencent.im.s2c.msgtype0x210.submsgtype0xc7.bussinfo.mutualmark.mutualmark.MutualmarkInfo
-    // Exception table:
-    //   from	to	target	type
-    //   15	22	494	java/lang/Throwable
-    //   282	298	530	java/lang/Throwable
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ExtSnsMutualMarkPushInfo{");
-    localStringBuilder.append("relation_type:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("relation_level:").append(this.jdField_b_of_type_Long).append(", ");
-    localStringBuilder.append("last_action_time:").append(this.jdField_c_of_type_Long).append(", ");
-    localStringBuilder.append("last_change_time:").append(this.jdField_d_of_type_Long).append(", ");
-    localStringBuilder.append("continue_days:").append(this.jdField_a_of_type_Int).append(", ");
-    localStringBuilder.append("notify_time:").append(this.jdField_e_of_type_Long).append(", ");
-    localStringBuilder.append("icon_status:").append(this.jdField_f_of_type_Long).append(", ");
-    localStringBuilder.append("icon_status_end_time:").append(this.g).append(", ");
-    localStringBuilder.append("wildcard_wording:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_static_url:").append(this.jdField_b_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_dynamic_url:").append(this.jdField_c_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_cartoon_url:").append(this.jdField_d_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_cartoon_md5:").append(this.jdField_e_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("icon_name:").append(this.jdField_f_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("user_close_flag:").append(this.jdField_a_of_type_Boolean).append(", ");
-    localStringBuilder.append("play_cartoon:").append(this.jdField_b_of_type_Boolean).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    Object localObject3 = (aloz)this.a.app.getManager(51);
+    Object localObject4;
+    Object localObject1;
+    switch (paramMessage.what)
+    {
+    case 11: 
+    case 12: 
+    case 13: 
+    case 14: 
+    case 15: 
+    default: 
+    case 1: 
+    case 2: 
+      for (;;)
+      {
+        return true;
+        localObject4 = bhoh.a;
+        if ((localObject4 != null) && (((bhoh)localObject4).a()))
+        {
+          ((bhoh)localObject4).b(4);
+          ((bhoh)localObject4).a(5);
+          ((bhoh)localObject4).a(8);
+        }
+        paramMessage = (String)paramMessage.obj;
+        this.a.jdField_a_of_type_Bdjk.a("initCardByDbStart", true);
+        localObject1 = bcyw.a(this.a.app, paramMessage);
+        this.a.jdField_a_of_type_Bdjk.a("initCardByDbEnd", "initCardByDbStart", false);
+        if ((localObject1 != null) && (localObject3 != null))
+        {
+          if ((((aloz)localObject3).b(((Card)localObject1).uin)) && (!this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString.equals(this.a.app.getCurrentAccountUin())) && (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne))) {
+            this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int = 1;
+          }
+          this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqDataCard = ((Card)localObject1);
+          if ((localObject4 != null) && (((bhoh)localObject4).a()))
+          {
+            ((bhoh)localObject4).b(5);
+            ((bhoh)localObject4).a(6);
+            ((bhoh)localObject4).a(9);
+          }
+          this.a.a((Card)localObject1, false, 1);
+          this.a.jdField_a_of_type_Bdjk.a("initCardBySSOStart", true);
+          localObject3 = ((Card)localObject1).vSeed;
+          paramMessage = null;
+          if ((this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 56) || (this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 57))
+          {
+            paramMessage = this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_b_of_type_ArrayOfByte;
+            this.a.a(((Card)localObject1).feedPreviewTime, (byte[])localObject3, paramMessage, false);
+            FriendProfileCardActivity.e(this.a);
+            if (!this.a.jdField_a_of_type_Awmk.jdField_b_of_type_Boolean) {
+              continue;
+            }
+            paramMessage = this.a.app.getCurrentAccountUin();
+            localObject3 = new StringBuilder().append("");
+            if (this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
+              break label618;
+            }
+            i = 1;
+            localObject3 = i;
+            localObject4 = new StringBuilder().append("");
+            if (((Card)localObject1).lCurrentStyleId <= 0L) {
+              break label623;
+            }
+          }
+          for (int i = 2;; i = 1)
+          {
+            VasWebviewUtil.reportCommercialDrainage(paramMessage, "group_card", "show", "", 0, 0, 0, "", "", (String)localObject3, i, "", "", "", 0, 0, 0, 0);
+            break;
+            if ((this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 35) && (this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 37) && (this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 36)) {
+              break label392;
+            }
+            paramMessage = this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_b_of_type_ArrayOfByte;
+            break label392;
+            i = 2;
+            break label470;
+          }
+          localObject1 = this.a.a(FriendProfileCardActivity.a(this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne));
+          if ((localObject3 != null) && (localObject1 != null) && (((String)localObject1).length() > 0))
+          {
+            paramMessage = bhoh.a;
+            if ((paramMessage != null) && (paramMessage.a()))
+            {
+              paramMessage.b(4);
+              paramMessage.a(8);
+              paramMessage.a(5);
+            }
+            localObject1 = ((aloz)localObject3).b((String)localObject1);
+            localObject4 = FriendProfileCardActivity.a(this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
+            if (localObject4 != null)
+            {
+              ((ContactCard)localObject1).nationCode = ((ProfileActivity.CardContactInfo)localObject4).b;
+              ((ContactCard)localObject1).mobileCode = ((ProfileActivity.CardContactInfo)localObject4).c;
+              ((ContactCard)localObject1).strContactName = ((ProfileActivity.CardContactInfo)localObject4).jdField_a_of_type_JavaLangString;
+            }
+            if ((((ContactCard)localObject1).nickName == null) || (((ContactCard)localObject1).nickName.length() == 0)) {
+              ((ContactCard)localObject1).nickName = this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h;
+            }
+            ((aloz)localObject3).a((ContactCard)localObject1);
+            this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_b_of_type_Boolean = ((ContactCard)localObject1).bindQQ;
+            if (!TextUtils.isEmpty(((ContactCard)localObject1).uin))
+            {
+              localObject3 = ((aloz)localObject3).e(((ContactCard)localObject1).uin);
+              if (localObject3 != null) {
+                this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.i = ((Friends)localObject3).remark;
+              }
+            }
+            this.a.a((ContactCard)localObject1, false);
+            FriendProfileCardActivity.b(this.a.jdField_a_of_type_Awmk);
+            localObject3 = Message.obtain();
+            ((Message)localObject3).what = 4;
+            ((Message)localObject3).obj = localObject1;
+            ((Message)localObject3).arg1 = 0;
+            this.a.b.sendMessage((Message)localObject3);
+            if ((paramMessage != null) && (paramMessage.a()))
+            {
+              paramMessage.b(5);
+              paramMessage.a(6);
+              paramMessage.a(9);
+              paramMessage.a(7);
+              paramMessage.b(7);
+            }
+            this.a.a(0L, null, null, false);
+          }
+        }
+      }
+    case 9: 
+      label392:
+      label470:
+      label618:
+      label623:
+      localObject1 = (awvw)this.a.app.getManager(140);
+      if (localObject1 != null)
+      {
+        paramMessage = ((awvw)localObject1).a(this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+        if (paramMessage != null) {
+          this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqQcallQCallCardInfo = paramMessage;
+        }
+        ((awvw)localObject1).a(paramMessage);
+      }
+      break;
+    }
+    for (;;)
+    {
+      for (;;)
+      {
+        localObject1 = Message.obtain();
+        ((Message)localObject1).what = 6;
+        ((Message)localObject1).obj = paramMessage;
+        ((Message)localObject1).arg1 = 0;
+        this.a.b.sendMessage((Message)localObject1);
+        break;
+        try
+        {
+          if ((paramMessage.arg1 == 0) && (this.a.jdField_a_of_type_Awmk != null) && (this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqDataCard != null) && (!awmr.a(this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId))) {
+            this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId = awmr.a;
+          }
+          if (paramMessage.arg2 == 1) {
+            this.a.a(this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqDataCard, true, 13);
+          }
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.e("FriendProfileCardActivity", 1, "handle SUBTHREAD_MSG_DOWNLOAD_RES fail.", localException);
+          }
+          this.a.a(this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqDataCard, false, 7);
+        }
+      }
+      break;
+      if ((paramMessage.obj instanceof Card))
+      {
+        this.a.a((Card)paramMessage.obj, true, 8);
+        break;
+      }
+      this.a.a(this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqDataCard, true, 8);
+      break;
+      localObject3 = (CoverCacheData)paramMessage.obj;
+      localObject4 = this.a.app.getEntityManagerFactory().createEntityManager();
+      if (localObject4 == null)
+      {
+        paramMessage = null;
+        label1274:
+        localObject2 = paramMessage;
+        if (paramMessage == null)
+        {
+          localObject2 = new QZoneCover();
+          ((QZoneCover)localObject2).uin = Long.toString(((CoverCacheData)localObject3).a);
+        }
+        ((QZoneCover)localObject2).updateQzoneCover((CoverCacheData)localObject3);
+        if (((QZoneCover)localObject2).getStatus() != 1000) {
+          break label1353;
+        }
+        ((awbw)localObject4).a((awbv)localObject2);
+      }
+      for (;;)
+      {
+        ((awbw)localObject4).a();
+        break;
+        paramMessage = (QZoneCover)((awbw)localObject4).a(QZoneCover.class, Long.toString(((CoverCacheData)localObject3).a));
+        break label1274;
+        label1353:
+        ((awbw)localObject4).a((awbv)localObject2);
+      }
+      if ((this.a.app == null) || (localObject3 == null)) {
+        break;
+      }
+      paramMessage = ((aloz)localObject3).b(this.a.app.getCurrentAccountUin());
+      if (paramMessage == null) {
+        break;
+      }
+      this.a.a(paramMessage.feedPreviewTime, paramMessage.vSeed, null, false);
+      break;
+      Object localObject2 = this.a.app.getEntityManagerFactory().createEntityManager();
+      ((awbw)localObject2).a((Card)paramMessage.obj);
+      ((awbw)localObject2).a();
+      break;
+      localObject2 = this.a.app.getEntityManagerFactory().createEntityManager();
+      ((awbw)localObject2).a((Card)paramMessage.obj);
+      ((awbw)localObject2).a();
+      break;
+      this.a.E();
+      break;
+      ((awlp)this.a.app.a(112)).a(this.a.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, 0);
+      break;
+      paramMessage = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvy
  * JD-Core Version:    0.7.0.1
  */

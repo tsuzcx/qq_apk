@@ -1,42 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.downloadnew.DownloadInfo;
 
-class bfjz
-  extends Handler
+public final class bfjz
+  implements Parcelable.Creator<DownloadInfo>
 {
-  public bfjz(bfjt parambfjt, Looper paramLooper)
+  public DownloadInfo a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new DownloadInfo(paramParcel);
   }
   
-  public void handleMessage(Message paramMessage)
+  public DownloadInfo[] a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        bfjt.a(this.a);
-        return;
-      } while (paramMessage.obj == null);
-      bfjt.a(this.a, (List)paramMessage.obj);
-      return;
-      bfjt.b(this.a);
-      return;
-      bfjt.c(this.a);
-      return;
-    } while (paramMessage.obj == null);
-    bfjt.a(this.a, (bfjx)paramMessage.obj);
+    return new DownloadInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfjz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-@Deprecated
-public class til
-  extends tin
+class til
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public til(ViewGroup paramViewGroup)
-  {
-    super(paramViewGroup, 2131561301);
-  }
+  til(tij paramtij) {}
   
-  public void a(tff paramtff)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    super.a(paramtff);
-    this.a.setDisplayState(5);
-    this.a.setNodeName(ajya.a(2131706952), false);
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
+    {
+      tlo.d("WSHomeFragmentPresenter", str + ", bundle: " + paramBundle.toString());
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     til
  * JD-Core Version:    0.7.0.1
  */

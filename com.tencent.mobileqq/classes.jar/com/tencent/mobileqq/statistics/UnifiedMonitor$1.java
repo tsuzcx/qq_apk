@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import zzz;
+import abqw;
 
 class UnifiedMonitor$1
   implements Runnable
@@ -9,7 +9,7 @@ class UnifiedMonitor$1
   
   public void run()
   {
-    zzz.a().c();
+    abqw.a().c();
   }
 }
 

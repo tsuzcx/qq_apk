@@ -1,27 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.contact.troop.TroopView;
+import java.util.Map;
 
-class ahlz
-  implements View.OnClickListener
+public class ahlz
+  extends alox
 {
-  private final int jdField_a_of_type_Int;
-  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  public ahlz(TroopView paramTroopView) {}
   
-  public ahlz(int paramInt, MqqHandler paramMqqHandler)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+    if (paramBoolean1) {
+      this.a.j();
+    }
   }
   
-  public void onClick(View paramView)
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(this.jdField_a_of_type_Int);
+    this.a.j();
+  }
+  
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      this.a.j();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahlz
  * JD-Core Version:    0.7.0.1
  */

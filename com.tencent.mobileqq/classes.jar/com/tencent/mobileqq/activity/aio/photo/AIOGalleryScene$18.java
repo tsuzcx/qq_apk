@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aegs;
+import agdi;
 import android.net.Uri;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class AIOGalleryScene$18
   implements Runnable
 {
-  public AIOGalleryScene$18(aegs paramaegs, File paramFile, ArrayList paramArrayList) {}
+  public AIOGalleryScene$18(agdi paramagdi, File paramFile, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class AIOGalleryScene$18
       if (this.jdField_a_of_type_JavaIoFile != null)
       {
         Uri localUri = Uri.parse("file://" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-        aegs.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
+        agdi.a(this.this$0, localUri, this.jdField_a_of_type_JavaUtilArrayList);
       }
       return;
     }
@@ -30,7 +30,7 @@ public class AIOGalleryScene$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.18
  * JD-Core Version:    0.7.0.1
  */

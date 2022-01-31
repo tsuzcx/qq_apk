@@ -1,503 +1,1507 @@
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import android.app.Activity;
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.business.base.appreport.AppReportReceiver;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.MyAppApi.1;
+import com.tencent.open.downloadnew.MyAppApi.13;
+import com.tencent.open.downloadnew.MyAppApi.14;
+import com.tencent.open.downloadnew.MyAppApi.17;
+import com.tencent.open.downloadnew.MyAppApi.18;
+import com.tencent.open.downloadnew.MyAppApi.19;
+import com.tencent.open.downloadnew.MyAppApi.3;
+import com.tencent.open.downloadnew.MyAppApi.4;
+import com.tencent.open.downloadnew.MyAppApi.5;
+import com.tencent.open.downloadnew.MyAppApi.7;
+import com.tencent.open.downloadnew.MyAppApi.8;
+import com.tencent.open.downloadnew.MyAppApi.9;
+import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
+import com.tencent.tmassistant.st.SDKReportManager2;
+import com.tencent.tmassistantbase.util.GlobalUtil;
+import com.tencent.tmassistantsdk.ITMAssistantCallBackListener;
+import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
+import com.tencent.tmassistantsdk.TMAssistantCallYYBTaskInfo;
+import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
+import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
+import com.tencent.tmassistantsdk.internal.logreport.OuterCallReportModel;
+import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Map;
+import mqq.app.AppActivity;
+import mqq.os.MqqHandler;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bfko
 {
-  protected static MessageDigest a;
-  protected static char[] a;
+  protected static bfko a;
+  private final int a;
+  protected long a;
+  protected DialogInterface.OnClickListener a;
+  public bfkz a;
+  protected bflb a;
+  public bflc a;
+  protected ITMAssistantCallBackListener a;
+  public TMAssistantCallYYBParamStruct a;
+  protected TMAssistantBaseCallYYB a;
+  public String a;
+  protected boolean a;
+  protected long b;
+  TMAssistantCallYYBParamStruct b;
+  protected boolean b;
+  protected final long c = 180000L;
+  protected boolean c;
+  public long d;
+  boolean d;
+  public boolean e;
+  private boolean f;
+  private boolean g;
   
-  static
+  protected bfko()
   {
-    jdField_a_of_type_ArrayOfChar = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+    this.jdField_a_of_type_ComTencentTmassistantsdkITMAssistantCallBackListener = new bfla(this);
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 7090000;
     try
     {
-      jdField_a_of_type_JavaSecurityMessageDigest = MessageDigest.getInstance("MD5");
+      a();
+      d();
+      i();
       return;
     }
-    catch (NoSuchAlgorithmException localNoSuchAlgorithmException) {}
-  }
-  
-  /* Error */
-  public static String a(java.io.File paramFile)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 10
-    //   3: aconst_null
-    //   4: astore 9
-    //   6: aload 9
-    //   8: astore 7
-    //   10: aload_0
-    //   11: ifnull +153 -> 164
-    //   14: aload 9
-    //   16: astore 7
-    //   18: aload_0
-    //   19: invokevirtual 51	java/io/File:exists	()Z
-    //   22: ifeq +142 -> 164
-    //   25: aload 9
-    //   27: astore 7
-    //   29: aload_0
-    //   30: invokevirtual 55	java/io/File:length	()J
-    //   33: lconst_0
-    //   34: lcmp
-    //   35: ifle +129 -> 164
-    //   38: new 57	java/io/FileInputStream
-    //   41: dup
-    //   42: aload_0
-    //   43: invokespecial 61	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   46: astore 8
-    //   48: aload 8
-    //   50: astore 7
-    //   52: aload_0
-    //   53: invokevirtual 55	java/io/File:length	()J
-    //   56: lstore_1
-    //   57: aload 8
-    //   59: astore 7
-    //   61: sipush 4096
-    //   64: newarray byte
-    //   66: astore_0
-    //   67: lload_1
-    //   68: lconst_0
-    //   69: lcmp
-    //   70: ifle +97 -> 167
-    //   73: aload 8
-    //   75: astore 7
-    //   77: aload 8
-    //   79: aload_0
-    //   80: invokevirtual 65	java/io/FileInputStream:read	([B)I
-    //   83: i2l
-    //   84: lstore 5
-    //   86: lload 5
-    //   88: ldc2_w 66
-    //   91: lcmp
-    //   92: ifeq +75 -> 167
-    //   95: lload 5
-    //   97: lstore_3
-    //   98: lload 5
-    //   100: lload_1
-    //   101: lcmp
-    //   102: ifle +5 -> 107
-    //   105: lload_1
-    //   106: lstore_3
-    //   107: lload_1
-    //   108: lload_3
-    //   109: lsub
-    //   110: lstore_1
-    //   111: aload 8
-    //   113: astore 7
-    //   115: getstatic 39	bfko:jdField_a_of_type_JavaSecurityMessageDigest	Ljava/security/MessageDigest;
-    //   118: aload_0
-    //   119: iconst_0
-    //   120: lload_3
-    //   121: l2i
-    //   122: invokestatic 73	java/nio/ByteBuffer:wrap	([BII)Ljava/nio/ByteBuffer;
-    //   125: invokevirtual 77	java/security/MessageDigest:update	(Ljava/nio/ByteBuffer;)V
-    //   128: goto -61 -> 67
-    //   131: astore 7
-    //   133: aload 8
-    //   135: astore_0
-    //   136: aload 7
-    //   138: astore 8
-    //   140: aload_0
-    //   141: astore 7
-    //   143: aload 8
-    //   145: invokevirtual 80	java/lang/Throwable:printStackTrace	()V
-    //   148: aload 9
-    //   150: astore 7
-    //   152: aload_0
-    //   153: ifnull +11 -> 164
-    //   156: aload_0
-    //   157: invokevirtual 83	java/io/FileInputStream:close	()V
-    //   160: aload 9
-    //   162: astore 7
-    //   164: aload 7
-    //   166: areturn
-    //   167: aload 8
-    //   169: astore 7
-    //   171: aload 8
-    //   173: invokevirtual 83	java/io/FileInputStream:close	()V
-    //   176: aload 8
-    //   178: astore 7
-    //   180: getstatic 39	bfko:jdField_a_of_type_JavaSecurityMessageDigest	Ljava/security/MessageDigest;
-    //   183: invokevirtual 87	java/security/MessageDigest:digest	()[B
-    //   186: astore 11
-    //   188: aload 10
-    //   190: astore_0
-    //   191: aload 11
-    //   193: ifnull +13 -> 206
-    //   196: aload 8
-    //   198: astore 7
-    //   200: aload 11
-    //   202: invokestatic 91	bfko:b	([B)Ljava/lang/String;
-    //   205: astore_0
-    //   206: aload_0
-    //   207: astore 7
-    //   209: aload 8
-    //   211: ifnull -47 -> 164
-    //   214: aload 8
-    //   216: invokevirtual 83	java/io/FileInputStream:close	()V
-    //   219: aload_0
-    //   220: areturn
-    //   221: astore 7
-    //   223: aload 7
-    //   225: invokevirtual 92	java/io/IOException:printStackTrace	()V
-    //   228: aload_0
-    //   229: areturn
-    //   230: astore_0
-    //   231: aload_0
-    //   232: invokevirtual 92	java/io/IOException:printStackTrace	()V
-    //   235: aconst_null
-    //   236: areturn
-    //   237: astore_0
-    //   238: aconst_null
-    //   239: astore 7
-    //   241: aload 7
-    //   243: ifnull +8 -> 251
-    //   246: aload 7
-    //   248: invokevirtual 83	java/io/FileInputStream:close	()V
-    //   251: aload_0
-    //   252: athrow
-    //   253: astore 7
-    //   255: aload 7
-    //   257: invokevirtual 92	java/io/IOException:printStackTrace	()V
-    //   260: goto -9 -> 251
-    //   263: astore_0
-    //   264: goto -23 -> 241
-    //   267: astore 8
-    //   269: aconst_null
-    //   270: astore_0
-    //   271: goto -131 -> 140
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	274	0	paramFile	java.io.File
-    //   56	55	1	l1	long
-    //   97	24	3	l2	long
-    //   84	15	5	l3	long
-    //   8	106	7	localObject1	Object
-    //   131	6	7	localThrowable1	java.lang.Throwable
-    //   141	67	7	localObject2	Object
-    //   221	3	7	localIOException1	java.io.IOException
-    //   239	8	7	localObject3	Object
-    //   253	3	7	localIOException2	java.io.IOException
-    //   46	169	8	localObject4	Object
-    //   267	1	8	localThrowable2	java.lang.Throwable
-    //   4	157	9	localObject5	Object
-    //   1	188	10	localObject6	Object
-    //   186	15	11	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   52	57	131	java/lang/Throwable
-    //   61	67	131	java/lang/Throwable
-    //   77	86	131	java/lang/Throwable
-    //   115	128	131	java/lang/Throwable
-    //   171	176	131	java/lang/Throwable
-    //   180	188	131	java/lang/Throwable
-    //   200	206	131	java/lang/Throwable
-    //   214	219	221	java/io/IOException
-    //   156	160	230	java/io/IOException
-    //   38	48	237	finally
-    //   246	251	253	java/io/IOException
-    //   52	57	263	finally
-    //   61	67	263	finally
-    //   77	86	263	finally
-    //   115	128	263	finally
-    //   143	148	263	finally
-    //   171	176	263	finally
-    //   180	188	263	finally
-    //   200	206	263	finally
-    //   38	48	267	java/lang/Throwable
-  }
-  
-  /* Error */
-  public static String a(String paramString)
-  {
-    // Byte code:
-    //   0: ldc2_w 98
-    //   3: lstore_3
-    //   4: aconst_null
-    //   5: astore 9
-    //   7: ldc 31
-    //   9: invokestatic 37	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   12: astore 10
-    //   14: new 57	java/io/FileInputStream
-    //   17: dup
-    //   18: aload_0
-    //   19: invokespecial 102	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   22: astore 8
-    //   24: aload 8
-    //   26: astore 7
-    //   28: new 47	java/io/File
-    //   31: dup
-    //   32: aload_0
-    //   33: invokespecial 103	java/io/File:<init>	(Ljava/lang/String;)V
-    //   36: invokevirtual 55	java/io/File:length	()J
-    //   39: lstore 5
-    //   41: lload 5
-    //   43: ldc2_w 98
-    //   46: lcmp
-    //   47: ifle +276 -> 323
-    //   50: aload 8
-    //   52: astore 7
-    //   54: sipush 4096
-    //   57: newarray byte
-    //   59: astore_0
-    //   60: lload_3
-    //   61: lconst_0
-    //   62: lcmp
-    //   63: ifle +78 -> 141
-    //   66: aload 8
-    //   68: astore 7
-    //   70: aload 8
-    //   72: aload_0
-    //   73: invokevirtual 106	java/io/InputStream:read	([B)I
-    //   76: istore_2
-    //   77: iload_2
-    //   78: iconst_m1
-    //   79: if_icmpeq +62 -> 141
-    //   82: iload_2
-    //   83: istore_1
-    //   84: iload_2
-    //   85: i2l
-    //   86: lload_3
-    //   87: lcmp
-    //   88: ifle +6 -> 94
-    //   91: lload_3
-    //   92: l2i
-    //   93: istore_1
-    //   94: lload_3
-    //   95: iload_1
-    //   96: i2l
-    //   97: lsub
-    //   98: lstore_3
-    //   99: aload 8
-    //   101: astore 7
-    //   103: aload 10
-    //   105: aload_0
-    //   106: iconst_0
-    //   107: iload_1
-    //   108: invokevirtual 109	java/security/MessageDigest:update	([BII)V
-    //   111: goto -51 -> 60
-    //   114: astore_0
-    //   115: aload 8
-    //   117: astore 7
-    //   119: aload_0
-    //   120: invokevirtual 110	java/security/NoSuchAlgorithmException:printStackTrace	()V
-    //   123: aload 9
-    //   125: astore_0
-    //   126: aload 8
-    //   128: ifnull +11 -> 139
-    //   131: aload 8
-    //   133: invokevirtual 111	java/io/InputStream:close	()V
-    //   136: aload 9
-    //   138: astore_0
-    //   139: aload_0
-    //   140: areturn
-    //   141: aload 8
-    //   143: astore 7
-    //   145: aload 8
-    //   147: invokevirtual 111	java/io/InputStream:close	()V
-    //   150: aload 8
-    //   152: astore 7
-    //   154: aload 10
-    //   156: invokevirtual 87	java/security/MessageDigest:digest	()[B
-    //   159: invokestatic 91	bfko:b	([B)Ljava/lang/String;
-    //   162: astore_0
-    //   163: aload_0
-    //   164: astore 7
-    //   166: aload 7
-    //   168: astore_0
-    //   169: aload 8
-    //   171: ifnull -32 -> 139
-    //   174: aload 8
-    //   176: invokevirtual 111	java/io/InputStream:close	()V
-    //   179: aload 7
-    //   181: areturn
-    //   182: astore_0
-    //   183: aload 7
-    //   185: areturn
-    //   186: astore_0
-    //   187: aconst_null
-    //   188: astore 8
-    //   190: aload 8
-    //   192: astore 7
-    //   194: aload_0
-    //   195: invokevirtual 112	java/io/FileNotFoundException:printStackTrace	()V
-    //   198: aload 9
-    //   200: astore_0
-    //   201: aload 8
-    //   203: ifnull -64 -> 139
-    //   206: aload 8
-    //   208: invokevirtual 111	java/io/InputStream:close	()V
-    //   211: aconst_null
-    //   212: areturn
-    //   213: astore_0
-    //   214: aconst_null
-    //   215: areturn
-    //   216: astore_0
-    //   217: aconst_null
-    //   218: astore 8
-    //   220: aload 8
-    //   222: astore 7
-    //   224: aload_0
-    //   225: invokevirtual 92	java/io/IOException:printStackTrace	()V
-    //   228: aload 9
-    //   230: astore_0
-    //   231: aload 8
-    //   233: ifnull -94 -> 139
-    //   236: aload 8
-    //   238: invokevirtual 111	java/io/InputStream:close	()V
-    //   241: aconst_null
-    //   242: areturn
-    //   243: astore_0
-    //   244: aconst_null
-    //   245: areturn
-    //   246: astore_0
-    //   247: aconst_null
-    //   248: astore 8
-    //   250: aload 8
-    //   252: astore 7
-    //   254: aload_0
-    //   255: invokevirtual 80	java/lang/Throwable:printStackTrace	()V
-    //   258: aload 9
-    //   260: astore_0
-    //   261: aload 8
-    //   263: ifnull -124 -> 139
-    //   266: aload 8
-    //   268: invokevirtual 111	java/io/InputStream:close	()V
-    //   271: aconst_null
-    //   272: areturn
-    //   273: astore_0
-    //   274: aconst_null
-    //   275: areturn
-    //   276: astore_0
-    //   277: aconst_null
-    //   278: astore 7
-    //   280: aload 7
-    //   282: ifnull +8 -> 290
-    //   285: aload 7
-    //   287: invokevirtual 111	java/io/InputStream:close	()V
-    //   290: aload_0
-    //   291: athrow
-    //   292: astore_0
-    //   293: aconst_null
-    //   294: areturn
-    //   295: astore 7
-    //   297: goto -7 -> 290
-    //   300: astore_0
-    //   301: goto -21 -> 280
-    //   304: astore_0
-    //   305: goto -55 -> 250
-    //   308: astore_0
-    //   309: goto -89 -> 220
-    //   312: astore_0
-    //   313: goto -123 -> 190
-    //   316: astore_0
-    //   317: aconst_null
-    //   318: astore 8
-    //   320: goto -205 -> 115
-    //   323: lload 5
-    //   325: lstore_3
-    //   326: goto -276 -> 50
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	329	0	paramString	String
-    //   83	25	1	i	int
-    //   76	9	2	j	int
-    //   3	323	3	l1	long
-    //   39	285	5	l2	long
-    //   26	260	7	localObject1	Object
-    //   295	1	7	localException	java.lang.Exception
-    //   22	297	8	localFileInputStream	java.io.FileInputStream
-    //   5	254	9	localObject2	Object
-    //   12	143	10	localMessageDigest	MessageDigest
-    // Exception table:
-    //   from	to	target	type
-    //   28	41	114	java/security/NoSuchAlgorithmException
-    //   54	60	114	java/security/NoSuchAlgorithmException
-    //   70	77	114	java/security/NoSuchAlgorithmException
-    //   103	111	114	java/security/NoSuchAlgorithmException
-    //   145	150	114	java/security/NoSuchAlgorithmException
-    //   154	163	114	java/security/NoSuchAlgorithmException
-    //   174	179	182	java/lang/Exception
-    //   7	24	186	java/io/FileNotFoundException
-    //   206	211	213	java/lang/Exception
-    //   7	24	216	java/io/IOException
-    //   236	241	243	java/lang/Exception
-    //   7	24	246	java/lang/Throwable
-    //   266	271	273	java/lang/Exception
-    //   7	24	276	finally
-    //   131	136	292	java/lang/Exception
-    //   285	290	295	java/lang/Exception
-    //   28	41	300	finally
-    //   54	60	300	finally
-    //   70	77	300	finally
-    //   103	111	300	finally
-    //   119	123	300	finally
-    //   145	150	300	finally
-    //   154	163	300	finally
-    //   194	198	300	finally
-    //   224	228	300	finally
-    //   254	258	300	finally
-    //   28	41	304	java/lang/Throwable
-    //   54	60	304	java/lang/Throwable
-    //   70	77	304	java/lang/Throwable
-    //   103	111	304	java/lang/Throwable
-    //   145	150	304	java/lang/Throwable
-    //   154	163	304	java/lang/Throwable
-    //   28	41	308	java/io/IOException
-    //   54	60	308	java/io/IOException
-    //   70	77	308	java/io/IOException
-    //   103	111	308	java/io/IOException
-    //   145	150	308	java/io/IOException
-    //   154	163	308	java/io/IOException
-    //   28	41	312	java/io/FileNotFoundException
-    //   54	60	312	java/io/FileNotFoundException
-    //   70	77	312	java/io/FileNotFoundException
-    //   103	111	312	java/io/FileNotFoundException
-    //   145	150	312	java/io/FileNotFoundException
-    //   154	163	312	java/io/FileNotFoundException
-    //   7	24	316	java/security/NoSuchAlgorithmException
-  }
-  
-  public static String a(byte[] paramArrayOfByte)
-  {
-    jdField_a_of_type_JavaSecurityMessageDigest.update(paramArrayOfByte);
-    return b(jdField_a_of_type_JavaSecurityMessageDigest.digest());
-  }
-  
-  private static String a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    StringBuffer localStringBuffer = new StringBuffer(paramInt2 * 2);
-    int i = paramInt1;
-    while (i < paramInt1 + paramInt2)
+    catch (Throwable localThrowable)
     {
-      a(paramArrayOfByte[i], localStringBuffer);
-      i += 1;
+      for (;;)
+      {
+        bfhg.c("MyAppApi", "MyAppApi init>>>", localThrowable);
+      }
     }
-    return localStringBuffer.toString();
   }
   
-  private static void a(byte paramByte, StringBuffer paramStringBuffer)
+  private static Uri a(OuterCallReportModel paramOuterCallReportModel)
   {
-    char c1 = jdField_a_of_type_ArrayOfChar[((paramByte & 0xF0) >> 4)];
-    char c2 = jdField_a_of_type_ArrayOfChar[(paramByte & 0xF)];
-    paramStringBuffer.append(c1);
-    paramStringBuffer.append(c2);
+    return Uri.parse("tmast://sdk_wake?jump_code=" + bfio.a(bexd.a().a(), null).a("Common_jump_code") + "&outerCallTime=" + paramOuterCallReportModel.mOuterCallTime + "&outerCallType=" + paramOuterCallReportModel.mOuterCallType + "&outerCallMode=" + paramOuterCallReportModel.mOuterCallMode + "&hostpname=com.tencent.mobileqq&hostversion=" + GlobalUtil.getAppVersionCode(bexd.a().a()));
   }
   
-  public static String b(String paramString)
+  public static bfko a()
   {
-    return a(paramString.getBytes());
+    try
+    {
+      if (jdField_a_of_type_Bfko == null) {
+        jdField_a_of_type_Bfko = new bfko();
+      }
+      c();
+      bfko localbfko = jdField_a_of_type_Bfko;
+      return localbfko;
+    }
+    finally {}
   }
   
-  public static String b(byte[] paramArrayOfByte)
+  public static int b()
   {
-    return a(paramArrayOfByte, 0, paramArrayOfByte.length);
+    return TMAssistantCallYYB_V2.getQQDownloadApiLevel(BaseApplicationImpl.getApplication());
+  }
+  
+  @NonNull
+  private static OuterCallReportModel b()
+  {
+    OuterCallReportModel localOuterCallReportModel = OuterCallReportModel.getDefaultModel();
+    localOuterCallReportModel.mOuterCallMode = 0;
+    localOuterCallReportModel.mOuterCallType = 1;
+    localOuterCallReportModel.mOuterCallTime = System.currentTimeMillis();
+    localOuterCallReportModel.mComponentName = "SplashActivity";
+    return localOuterCallReportModel;
+  }
+  
+  public static void c()
+  {
+    ThreadManager.executeOnSubThread(new MyAppApi.1());
+  }
+  
+  private static void c(OuterCallReportModel paramOuterCallReportModel)
+  {
+    Intent localIntent = new Intent("android.intent.action.VIEW");
+    localIntent.setPackage("com.tencent.android.qqdownloader");
+    localIntent.setData(a(paramOuterCallReportModel));
+    localIntent.addFlags(32768);
+    if (!(bexd.a().a() instanceof Activity)) {
+      localIntent.addFlags(268435456);
+    }
+    try
+    {
+      bexd.a().a().startActivity(localIntent);
+      return;
+    }
+    catch (SecurityException paramOuterCallReportModel)
+    {
+      paramOuterCallReportModel.printStackTrace();
+      return;
+    }
+    catch (ActivityNotFoundException paramOuterCallReportModel)
+    {
+      bfhg.e("TAMST_WAKE", "activity not found error:" + paramOuterCallReportModel.getMessage());
+    }
+  }
+  
+  private static void d(OuterCallReportModel paramOuterCallReportModel)
+  {
+    GlobalUtil.getInstance().setContext(bexd.a().a());
+    SDKReportManager2.getInstance().postReport(15, paramOuterCallReportModel.toString());
+  }
+  
+  /* Error */
+  public static boolean d()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 142	bfko:jdField_a_of_type_Bfko	Lbfko;
+    //   6: astore_1
+    //   7: aload_1
+    //   8: ifnull +10 -> 18
+    //   11: iconst_1
+    //   12: istore_0
+    //   13: ldc 2
+    //   15: monitorexit
+    //   16: iload_0
+    //   17: ireturn
+    //   18: iconst_0
+    //   19: istore_0
+    //   20: goto -7 -> 13
+    //   23: astore_1
+    //   24: ldc 2
+    //   26: monitorexit
+    //   27: aload_1
+    //   28: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   12	8	0	bool	boolean
+    //   6	2	1	localbfko	bfko
+    //   23	5	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	7	23	finally
+  }
+  
+  private void i()
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
+    localIntentFilter.addAction("android.intent.action.PACKAGE_REMOVED");
+    localIntentFilter.addAction("android.intent.action.PACKAGE_REPLACED");
+    bexd.a().a().registerReceiver(new AppReportReceiver(), localIntentFilter);
+  }
+  
+  private static boolean i()
+  {
+    return (bfjt.i()) && (TMAssistantCallYYB_V1.getQQDownloadApiLevel(bexd.a().a()) >= 7);
+  }
+  
+  public int a()
+  {
+    int i = TMAssistantCallYYB_V1.getQQDownloadApiLevel(bexd.a().a());
+    if (!aowf.a("com.tencent.android.qqdownloader", BaseActivity.sTopActivity)) {
+      i = 3;
+    }
+    return i;
+  }
+  
+  public int a(Bundle paramBundle)
+  {
+    int j = 1;
+    int i = j;
+    if (paramBundle != null)
+    {
+      i = j;
+      if (paramBundle.getInt(bfjy.k) == 3) {
+        i = 2;
+      }
+    }
+    return i;
+  }
+  
+  public long a(Bundle paramBundle)
+  {
+    try
+    {
+      bfhg.c("MyAppApi", "--addDownloadTaskFromTmast--params = " + paramBundle);
+      if (paramBundle == null) {
+        return -1L;
+      }
+      paramBundle.getString("url");
+      long l = a().addDownloadTaskFromTmast(paramBundle);
+      return l;
+    }
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
+    return -1L;
+  }
+  
+  protected long a(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    bfhg.c("MyAppApi", "--addDownloadTaskFromTaskList--params = " + paramBundle + "autoDownload = " + paramBoolean1);
+    if (paramBundle == null) {
+      return -1L;
+    }
+    paramBundle = a(paramBundle);
+    this.jdField_b_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = paramBundle;
+    return a().addDownloadTaskFromTaskList(paramBundle, paramBoolean1, paramBoolean1);
+  }
+  
+  public DownloadInfo a(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, Bundle paramBundle)
+  {
+    DownloadInfo localDownloadInfo = new DownloadInfo();
+    localDownloadInfo.jdField_c_of_type_Int = 1;
+    localDownloadInfo.jdField_c_of_type_JavaLangString = paramTMAssistantCallYYBParamStruct.SNGAppId;
+    localDownloadInfo.j = paramTMAssistantCallYYBParamStruct.taskAppId;
+    localDownloadInfo.e = paramTMAssistantCallYYBParamStruct.taskPackageName;
+    localDownloadInfo.k = paramTMAssistantCallYYBParamStruct.taskApkId;
+    localDownloadInfo.jdField_b_of_type_Int = paramTMAssistantCallYYBParamStruct.taskVersion;
+    localDownloadInfo.q = paramTMAssistantCallYYBParamStruct.recommendId;
+    localDownloadInfo.s = paramTMAssistantCallYYBParamStruct.channelId;
+    if (paramBundle != null)
+    {
+      localDownloadInfo.jdField_h_of_type_JavaLangString = paramBundle.getString(bfjy.i);
+      localDownloadInfo.f = paramBundle.getString(bfjy.l);
+      localDownloadInfo.jdField_d_of_type_JavaLangString = paramBundle.getString(bfjy.j);
+      localDownloadInfo.jdField_d_of_type_Int = paramBundle.getInt(bfjy.E);
+    }
+    return localDownloadInfo;
+  }
+  
+  public TMAssistantDownloadTaskInfo a(Bundle paramBundle)
+  {
+    if ((paramBundle == null) || (!b())) {
+      return null;
+    }
+    paramBundle = a(paramBundle);
+    if (a() <= 2)
+    {
+      paramBundle = ((TMAssistantCallYYB_V1)a()).getDownloadTaskState(paramBundle);
+      if (paramBundle != null) {
+        return new TMAssistantDownloadTaskInfo(paramBundle.mUrl, paramBundle.mSavePath, paramBundle.mState, paramBundle.mReceiveDataLen, paramBundle.mTotalDataLen, paramBundle.mContentType);
+      }
+      return null;
+    }
+    paramBundle = ((TMAssistantCallYYB_V2)a()).getDownloadTaskState(paramBundle);
+    if (paramBundle != null) {
+      return new TMAssistantDownloadTaskInfo(paramBundle.mUrl, paramBundle.mSavePath, paramBundle.mState, paramBundle.mReceiveDataLen, paramBundle.mTotalDataLen, paramBundle.mContentType);
+    }
+    return null;
+  }
+  
+  protected TMAssistantCallYYBParamStruct a(Bundle paramBundle)
+  {
+    String str3 = paramBundle.getString(bfjy.b);
+    String str4 = paramBundle.getString(bfjy.jdField_c_of_type_JavaLangString);
+    String str5 = paramBundle.getString(bfjy.jdField_d_of_type_JavaLangString);
+    String str6 = paramBundle.getString(bfjy.f);
+    Object localObject = paramBundle.getString(bfjy.i);
+    int j = paramBundle.getInt(bfjy.e);
+    int i = j;
+    if (j == 0) {}
+    try
+    {
+      i = Integer.valueOf(paramBundle.getString(bfjy.e)).intValue();
+      String str2;
+      String str1;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        str2 = bfip.a((String)localObject, "NEWYYB");
+        paramBundle.getString(bfjy.z);
+        localObject = paramBundle.getString(bfjy.B);
+        j = paramBundle.getInt(bfjy.A);
+        if (j != 1) {
+          break label418;
+        }
+        localObject = "ANDROIDQQ-gray";
+        str1 = "1";
+      }
+      for (;;)
+      {
+        bfhg.b("State_Log", " channelId:" + (String)localObject);
+        localObject = new TMAssistantCallYYBParamStruct(str3, str4, str5, i, str2, str6, "", "", (String)localObject, str1);
+        if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(bexd.a().a()) >= 6)
+        {
+          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_JS_DoDownloadAction", Long.valueOf(paramBundle.getLong("OuterCall_JS_DoDownloadAction", 0L)));
+          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_DownloadApi_DoDownloadAction", Long.valueOf(paramBundle.getLong("OuterCall_DownloadApi_DoDownloadAction", 0L)));
+          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_DownloadApi_DoDownloadActionByMyApp", Long.valueOf(paramBundle.getLong("OuterCall_DownloadApi_DoDownloadActionByMyApp", 0L)));
+          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_MyAppApi_HandleDownloadAction", Long.valueOf(paramBundle.getLong("OuterCall_MyAppApi_HandleDownloadAction", 0L)));
+          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_MyAppApi_StartToAppDetail", Long.valueOf(paramBundle.getLong("OuterCall_MyAppApi_StartToAppDetail", 0L)));
+          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_MyAppApi_StartToDownloadList", Long.valueOf(paramBundle.getLong("OuterCall_MyAppApi_StartToDownloadList", 0L)));
+        }
+        ((TMAssistantCallYYBParamStruct)localObject).source = paramBundle.getString("big_brother_source_key");
+        ((TMAssistantCallYYBParamStruct)localObject).recommendId = paramBundle.getString("recommendId");
+        bfhg.b("MyAppApi", "recommendId:" + ((TMAssistantCallYYBParamStruct)localObject).recommendId);
+        return localObject;
+        str2 = bfip.a((String)localObject, "YYB");
+        break;
+        label418:
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = "ANDROIDQQ";
+          str1 = j + "";
+        }
+        else
+        {
+          str1 = j + "";
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        i = j;
+      }
+    }
+  }
+  
+  public TMAssistantBaseCallYYB a()
+  {
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB == null) {
+        a();
+      }
+      TMAssistantBaseCallYYB localTMAssistantBaseCallYYB = this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB;
+      return localTMAssistantBaseCallYYB;
+    }
+    finally {}
+  }
+  
+  public String a()
+  {
+    if ((this.jdField_a_of_type_Bfkz != null) && (this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidOsBundle != null)) {
+      return this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidOsBundle.getString(bfjy.b);
+    }
+    return "";
+  }
+  
+  public void a()
+  {
+    if (a() <= 2) {}
+    for (this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB = TMAssistantCallYYB_V1.getInstance();; this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB = TMAssistantCallYYB_V2.getInstance())
+    {
+      this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB.initTMAssistantCallYYBApi(bexd.a().a());
+      g();
+      return;
+    }
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    ThreadManager.getSubThreadHandler().post(new MyAppApi.3(this, paramActivity));
+  }
+  
+  public void a(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener, String paramString2, boolean paramBoolean, Bundle paramBundle)
+  {
+    String str = paramBundle.getString(bfjy.p);
+    int i = paramBundle.getInt("dialogType");
+    int j = paramBundle.getInt("auto_start_yyb_download");
+    bfhg.c("TIME-STATISTIC", "MyAppApi--showTipDialog");
+    bfhg.c("MyAppApi", "-showTipDialog-");
+    if (paramActivity == null) {
+      return;
+    }
+    Resources localResources = paramActivity.getResources();
+    Object localObject;
+    if (paramInt2 == 1) {
+      if (paramInt1 == 2)
+      {
+        paramInt1 = 1;
+        if (!TextUtils.isEmpty(str)) {
+          break label463;
+        }
+        localObject = bfjt.a(paramInt1, paramString2);
+        label86:
+        paramString2 = (String)localObject;
+        if (TextUtils.isEmpty((CharSequence)localObject)) {}
+        switch (paramInt1)
+        {
+        default: 
+          paramString2 = localResources.getString(2131691707);
+          label138:
+          if (((paramInt1 != 2) && (paramInt1 != 4)) || (!TextUtils.isEmpty(str))) {
+            break;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString1 = String.format(paramString2, new Object[] { paramString1 });
+        localObject = localResources.getString(2131691727);
+        if ((paramInt2 == 1) && (i == 1))
+        {
+          paramString1 = localResources.getString(2131691728);
+          paramString2 = localResources.getString(2131691711);
+          localObject = new bflc(paramActivity);
+          ((bflc)localObject).b(2131691722, paramOnClickListener2, true);
+          if (!paramBoolean)
+          {
+            bool = true;
+            ((bflc)localObject).a(2131691725, paramOnClickListener1, bool);
+            ((bflc)localObject).a(paramString1);
+            ((bflc)localObject).b(paramString2);
+            if (i == 1)
+            {
+              ((bflc)localObject).b(2131691722, Color.parseColor("#D2D1D1"), paramOnClickListener2, true);
+              paramInt1 = Color.parseColor("#3AC8FF");
+              if (paramBoolean) {
+                continue;
+              }
+              paramBoolean = true;
+              ((bflc)localObject).a(2131691725, paramInt1, paramOnClickListener1, paramBoolean);
+              ((bflc)localObject).a(paramActivity.getResources().getDrawable(2130841513));
+              ((bflc)localObject).a(Color.parseColor("#848484"));
+            }
+            ((bflc)localObject).setCancelable(true);
+            ((bflc)localObject).setOnCancelListener(paramOnCancelListener);
+            ((bflc)localObject).setOnDismissListener(new bfkr(this));
+            if ((!(paramActivity instanceof AppActivity)) || (((AppActivity)paramActivity).isResume())) {
+              continue;
+            }
+            bfhg.c("TIME-STATISTIC", "MyAppApi--showTipDialog---cancel !isResume");
+            return;
+            if ((paramInt1 == 12) && (!TextUtils.isEmpty(paramString1)))
+            {
+              paramInt1 = 2;
+              break;
+            }
+            paramInt1 = 1;
+            break;
+            if (paramInt1 == 2)
+            {
+              paramInt1 = 3;
+              break;
+            }
+            if ((paramInt1 == 12) && (!TextUtils.isEmpty(paramString1)))
+            {
+              paramInt1 = 4;
+              break;
+            }
+            paramInt1 = 3;
+            break;
+            label463:
+            localObject = str;
+            break label86;
+            paramString2 = localResources.getString(2131691707);
+            break label138;
+            paramString2 = localResources.getString(2131691708, new Object[] { paramString1 });
+            break label138;
+            paramString2 = localResources.getString(2131691709);
+            break label138;
+            paramString2 = localResources.getString(2131691710, new Object[] { paramString1 });
+          }
+        }
+      }
+      catch (Exception paramString2)
+      {
+        if (paramInt1 == 2)
+        {
+          paramString1 = localResources.getString(2131691707);
+          bfhg.c("MyAppApi", " errorMsg = " + paramString2.getMessage());
+          continue;
+        }
+        paramString1 = localResources.getString(2131691709);
+        continue;
+        boolean bool = false;
+        continue;
+        paramBoolean = false;
+        continue;
+        try
+        {
+          if (!paramActivity.isFinishing())
+          {
+            ((bflc)localObject).show();
+            azmj.b(null, "dc00898", "", "", "0X8008F7A", "0X8008F7A", 0, 0, "", "", "", "");
+            if (i == 1)
+            {
+              bfgx.a("6006", "0", "0", paramBundle.getString(bfjy.i), paramBundle.getString("pageId") + "_" + paramBundle.getString("moduleId") + "_" + paramBundle.getString(bfjy.f) + "_" + paramBundle.getString(bfjy.jdField_c_of_type_JavaLangString) + "_" + paramBundle.getString(bfjy.jdField_d_of_type_JavaLangString));
+              if (j == 1) {
+                ThreadManager.getUIHandler().post(new MyAppApi.13(this, paramOnClickListener1, (bflc)localObject));
+              }
+            }
+          }
+        }
+        catch (Exception paramActivity)
+        {
+          paramActivity.printStackTrace();
+          continue;
+        }
+        bfhg.c("TIME-STATISTIC", "MyAppApi--showTipDialog---complete");
+        this.jdField_a_of_type_Bflc = ((bflc)localObject);
+        return;
+        paramString2 = paramString1;
+        paramString1 = (String)localObject;
+        continue;
+      }
+      paramString1 = paramString2;
+    }
+  }
+  
+  protected void a(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    boolean bool = bfjt.d();
+    long l = bexd.a().a();
+    int i;
+    if ((bool) && (l > 0L) && (l != this.jdField_d_of_type_Long))
+    {
+      i = 1;
+      if (i != 0) {
+        break label115;
+      }
+      if (this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct == null) {
+        break label106;
+      }
+      if (a() > 2) {
+        break label85;
+      }
+      ((TMAssistantCallYYB_V1)a()).startToAuthorized(paramActivity, this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
+      label74:
+      this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = null;
+    }
+    label85:
+    label106:
+    label115:
+    bfhn localbfhn;
+    do
+    {
+      return;
+      i = 0;
+      break;
+      ((TMAssistantCallYYB_V2)a()).startToAuthorized(paramActivity, this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
+      break label74;
+      bfhg.e("MyAppApi", "startToAuthorizedDirect mLastAuthorizeParam = null, needCarryQQIdentity = false");
+      return;
+      localbfhn = new bfhn();
+      localbfhn.a(new bfks(this, localbfhn, l, paramActivity, paramOnClickListener));
+    } while (!(paramActivity instanceof BaseActivity));
+    localbfhn.a(((BaseActivity)paramActivity).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
+  }
+  
+  public void a(Activity paramActivity, Bundle paramBundle, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    bfhg.c("TIME-STATISTIC", "MyAppApi--handleDownloadAction");
+    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(paramActivity) >= 6) {
+      paramBundle.putLong("OuterCall_MyAppApi_HandleDownloadAction", System.currentTimeMillis());
+    }
+    int i = -1;
+    try
+    {
+      j = a().checkQQDownloaderInstalled();
+      i = j;
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        boolean bool5;
+        DownloadInfo localDownloadInfo;
+        localException1.printStackTrace();
+        continue;
+        bool1 = false;
+      }
+      if (i == 2) {
+        break label307;
+      }
+    }
+    boolean bool2 = paramBundle.getBoolean(bfjy.g, false);
+    boolean bool3 = paramBundle.getBoolean(bfjy.jdField_h_of_type_JavaLangString, true);
+    int k = paramBundle.getInt(bfjy.n);
+    int j = paramBundle.getInt(bfjy.k);
+    String str3 = paramBundle.getString(bfjy.i);
+    String str2 = paramBundle.getString(bfjy.b);
+    int m = paramBundle.getInt("dialogType");
+    int n = paramBundle.getInt(bfjy.t, 0);
+    int i1 = paramBundle.getInt(bfjy.u, 0);
+    boolean bool4 = bfjt.e();
+    bool5 = bfjt.g();
+    bfhg.c("OpenConfig-MyAppApi", " useMyAppFlag = " + bool4);
+    localDownloadInfo = bfkb.a().a(str2);
+    boolean bool1;
+    if ((localDownloadInfo != null) && (localDownloadInfo.jdField_c_of_type_Int == 1))
+    {
+      bool1 = true;
+      if (((bool4) && (bool5)) || (bool1)) {
+        break label295;
+      }
+      if (paramOnClickListener != null)
+      {
+        bfhg.a("MyAppApi", "allowMyApp=" + bool4 + " allowMyAppDownload=" + bool5 + " taskExist=" + bool1);
+        paramOnClickListener.onClick(null, 0);
+      }
+      bfip.a("200", str3, str2);
+    }
+    for (;;)
+    {
+      return;
+      label295:
+      if (i == 1) {
+        label307:
+        if ((this.jdField_a_of_type_Bflc != null) && (this.jdField_a_of_type_Bflc.isShowing())) {
+          if (this.jdField_a_of_type_Bflc.a() == paramActivity)
+          {
+            bfhg.a("MyAppApi", "mTipDialog is showing return");
+            return;
+          }
+        }
+      }
+      try
+      {
+        this.jdField_a_of_type_Bflc.dismiss();
+        label351:
+        for (this.jdField_a_of_type_Bflc = null; (!bfjt.f()) || ((j != 2) && (j != 12)); this.jdField_a_of_type_Bflc = null)
+        {
+          bfhg.a("MyAppApi", "not allowShowDialog return actionCode = " + j);
+          if (paramOnClickListener != null) {
+            paramOnClickListener.onClick(null, 0);
+          }
+          bfip.a("200", str3, str2);
+          return;
+        }
+        ThreadManager.getSubThreadHandler().post(new MyAppApi.5(this, str3, str2));
+        bool4 = bfjt.a();
+        bfkv localbfkv = new bfkv(this, bool2, paramOnClickListener, paramBundle, k, bool4, paramActivity, str3, bool1, bool3, str2, m);
+        bfkx localbfkx = new bfkx(this, paramOnClickListener, str3, str2);
+        bfkw localbfkw = new bfkw(this, str3, str2);
+        String str1 = null;
+        Object localObject = str1;
+        if (i1 > 0)
+        {
+          localObject = str1;
+          if (n > 0)
+          {
+            k = i1 - n;
+            localObject = str1;
+            if (k > 0) {
+              localObject = bfll.a(k);
+            }
+          }
+        }
+        str1 = paramBundle.getString("source");
+        ThreadManager.getUIHandler().post(new MyAppApi.7(this, paramActivity, j, i, (String)localObject, localbfkv, localbfkx, localbfkw, str1, bool4, paramBundle));
+        ThreadManager.getSubThreadHandler().post(new MyAppApi.8(this, str3, str2));
+        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
+        return;
+        if (i != 0) {
+          continue;
+        }
+        if ((bfjt.h()) || (bool1))
+        {
+          paramOnClickListener = bfip.a(str3, "YYB");
+          if (k == 0) {
+            a(paramActivity, paramBundle, bool2, bool3);
+          }
+          while ((localObject == null) && ((j == 2) || (j == 12)))
+          {
+            bfip.a("202", paramOnClickListener, str2);
+            return;
+            a(paramActivity, paramBundle, bool2, bool3);
+          }
+          bfip.a("200", paramOnClickListener, str2);
+          return;
+        }
+        if (paramOnClickListener != null) {
+          paramOnClickListener.onClick(null, 0);
+        }
+        bfip.a("200", str3, str2);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        break label351;
+      }
+    }
+  }
+  
+  public void a(Activity paramActivity, String paramString)
+  {
+    bfhg.c("NewUpgradeDialog", "preDownload called,get updateDetail info");
+    ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.18(this, paramActivity), 0L);
+  }
+  
+  public void a(Activity paramActivity, String paramString, int paramInt)
+  {
+    bfhg.c("MyAppApi", "downloadYyb");
+    if (paramInt == 1) {
+      bfju.a("_1101070898");
+    }
+    if (this.jdField_a_of_type_Bflb == null)
+    {
+      this.jdField_a_of_type_Bflb = new bflb(this);
+      bfkb.a().a(this.jdField_a_of_type_Bflb);
+    }
+    Object localObject = bfkb.a().a("1101070898");
+    bfhg.c("MyAppApi", "---startDownloadYYB---");
+    if (localObject != null)
+    {
+      if (paramInt == 1)
+      {
+        ((DownloadInfo)localObject).jdField_a_of_type_Boolean = false;
+        ((DownloadInfo)localObject).jdField_b_of_type_Boolean = true;
+      }
+      for (((DownloadInfo)localObject).jdField_h_of_type_Int = 1;; ((DownloadInfo)localObject).jdField_h_of_type_Int = 0)
+      {
+        ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString = paramString;
+        bfkb.a().e((DownloadInfo)localObject);
+        bfkb.a().a((DownloadInfo)localObject);
+        return;
+        ((DownloadInfo)localObject).jdField_a_of_type_Boolean = true;
+        ((DownloadInfo)localObject).jdField_b_of_type_Boolean = false;
+      }
+    }
+    String str = bfjt.a();
+    localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = "http://a.app.qq.com/o/myapp-down?g_f=991310";
+    }
+    a(paramActivity, (String)localObject, paramString, paramInt, false);
+  }
+  
+  public void a(Activity paramActivity, String paramString1, String paramString2)
+  {
+    if (!"biz_src_yyb".equals(paramString2))
+    {
+      long l2 = bfjt.a();
+      l1 = l2;
+      if (l2 > 0L) {}
+    }
+    for (long l1 = 2000L;; l1 = 0L)
+    {
+      ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.17(this, paramActivity, paramString1), l1);
+      return;
+    }
+  }
+  
+  public void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  {
+    bfhg.c("MyAppApi", "startDownloadYyb");
+    Bundle localBundle = new Bundle();
+    String str = paramString1;
+    if (TextUtils.isEmpty(paramString1)) {
+      str = "http://a.app.qq.com/o/myapp-down?g_f=991310";
+    }
+    localBundle.putString(bfjy.b, "1101070898");
+    localBundle.putString(bfjy.j, str);
+    localBundle.putString(bfjy.f, "com.tencent.android.qqdownloader");
+    localBundle.putInt(bfjy.k, 2);
+    localBundle.putString(bfjy.i, paramString2);
+    localBundle.putString(bfjy.l, bfll.jdField_d_of_type_JavaLangString);
+    if (paramInt == 1) {
+      localBundle.putBoolean(bfjy.x, true);
+    }
+    for (;;)
+    {
+      localBundle.putInt(bfjy.C, paramInt);
+      localBundle.putString(bfjy.m, "yyb");
+      localBundle.putString(bfjy.jdField_c_of_type_JavaLangString, "5848");
+      localBundle.putBoolean(bfjy.g, true);
+      localBundle.putBoolean(bfjy.jdField_h_of_type_JavaLangString, paramBoolean);
+      localBundle.putInt(bfjy.n, 1);
+      bfju.a(paramActivity, localBundle, "biz_src_yyb", null, 0);
+      return;
+      localBundle.putBoolean(bfjy.x, false);
+    }
+  }
+  
+  public void a(Activity paramActivity, String paramString, boolean paramBoolean)
+  {
+    ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.19(this, paramBoolean, paramActivity, paramString), 0L);
+  }
+  
+  protected void a(Context paramContext, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    bfhg.c("TIME-STATISTIC", "MyAppApi--startToDownloadTaskList");
+    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(paramContext) >= 6) {
+      paramBundle.putLong("OuterCall_MyAppApi_StartToDownloadList", System.currentTimeMillis());
+    }
+    if ((paramBundle == null) || (paramContext == null)) {
+      return;
+    }
+    TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = a(paramBundle);
+    boolean bool = bfjt.d();
+    long l = bexd.a().a();
+    int i;
+    if ((bool) && (l > 0L) && (l != this.jdField_d_of_type_Long)) {
+      i = 1;
+    }
+    Object localObject;
+    label296:
+    int j;
+    while ((i == 0) || (paramContext == null) || (!(paramContext instanceof BaseActivity)))
+    {
+      localObject = a(localTMAssistantCallYYBParamStruct, paramBundle);
+      bfkb.a().e((DownloadInfo)localObject);
+      try
+      {
+        bfhg.a("State_Log", "OpenSDK startToDownloadTaskList param SNGAppId=" + localTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + localTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + localTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + localTMAssistantCallYYBParamStruct.taskPackageName + " version=" + localTMAssistantCallYYBParamStruct.taskVersion + " uin=" + localTMAssistantCallYYBParamStruct.uin + " via=" + localTMAssistantCallYYBParamStruct.via);
+        bfhg.c("TIME-STATISTIC", "mDownloadSdk.startToDownloadTaskList");
+        if (a() > 2) {
+          break label296;
+        }
+        ((TMAssistantCallYYB_V1)a()).startToDownloadTaskList(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2);
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        bfhg.e("MyAppApi", "--startToDownloadTaskList--Exception = " + paramContext);
+        return;
+      }
+      i = 0;
+      continue;
+      i = paramBundle.getInt(bfjy.k);
+      j = a(paramBundle);
+      if (i != 3) {
+        break label400;
+      }
+      paramBoolean1 = false;
+      paramBoolean2 = false;
+    }
+    label400:
+    for (;;)
+    {
+      ((TMAssistantCallYYB_V2)a()).startToDownloadTaskList(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2, j);
+      return;
+      localObject = new bfhn();
+      ((bfhn)localObject).a(new bfkq(this, (bfhn)localObject, localTMAssistantCallYYBParamStruct, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
+      if (!(paramContext instanceof BaseActivity)) {
+        break;
+      }
+      ((bfhn)localObject).a(((BaseActivity)paramContext).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
+      return;
+    }
+  }
+  
+  public void a(Context paramContext, JSONArray paramJSONArray, int paramInt, String paramString1, String paramString2)
+  {
+    int j = 2;
+    if (paramJSONArray == null) {}
+    int k;
+    do
+    {
+      return;
+      k = paramJSONArray.length();
+    } while (k == 0);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    if (i < k)
+    {
+      JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
+      if (localJSONObject == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = new TMAssistantCallYYBParamStruct();
+        localTMAssistantCallYYBParamStruct.recommendId = localJSONObject.optString("recommendId");
+        localTMAssistantCallYYBParamStruct.channelId = localJSONObject.optString(bfjy.K);
+        localTMAssistantCallYYBParamStruct.taskPackageName = localJSONObject.optString(bfjy.f);
+        localTMAssistantCallYYBParamStruct.taskVersion = localJSONObject.optInt(bfjy.e);
+        localTMAssistantCallYYBParamStruct.via = localJSONObject.optString(bfjy.i);
+        localTMAssistantCallYYBParamStruct.taskApkId = localJSONObject.optString(bfjy.jdField_d_of_type_JavaLangString);
+        localTMAssistantCallYYBParamStruct.taskAppId = localJSONObject.optString(bfjy.jdField_c_of_type_JavaLangString);
+        localTMAssistantCallYYBParamStruct.SNGAppId = localJSONObject.optString(bfjy.jdField_c_of_type_JavaLangString);
+        if (TextUtils.isEmpty(localTMAssistantCallYYBParamStruct.SNGAppId)) {
+          localTMAssistantCallYYBParamStruct.SNGAppId = localJSONObject.optString(bfjy.b);
+        }
+        if (TextUtils.isEmpty(localTMAssistantCallYYBParamStruct.via)) {
+          localTMAssistantCallYYBParamStruct.via = paramString1;
+        }
+        localTMAssistantCallYYBParamStruct.source = paramString2;
+        localArrayList.add(localTMAssistantCallYYBParamStruct);
+      }
+    }
+    i = j;
+    if (paramInt == 2) {
+      i = 3;
+    }
+    ThreadManager.excute(new MyAppApi.9(this, paramContext, localArrayList, i, paramString1), 16, null, true);
+  }
+  
+  protected void a(String paramString)
+  {
+    bfkb localbfkb = bfkb.a();
+    DownloadInfo localDownloadInfo = new DownloadInfo();
+    localDownloadInfo.jdField_c_of_type_JavaLangString = paramString;
+    localDownloadInfo.a(10);
+    if (localDownloadInfo != null) {
+      localbfkb.a(10, localDownloadInfo);
+    }
+  }
+  
+  public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity)
+  {
+    ThreadManager.getSubThreadHandler().post(new MyAppApi.14(this, paramString, paramOnClickListener, paramActivity));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.g = paramBoolean;
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      this.jdField_d_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_JavaLangString = paramString;
+    } while (!this.jdField_d_of_type_Boolean);
+    SharedPreferences.Editor localEditor = bexd.a().a().getSharedPreferences("showTost_pf", 0).edit();
+    localEditor.putBoolean("showToast", this.jdField_d_of_type_Boolean);
+    localEditor.putString("toast_msg", paramString);
+    localEditor.commit();
+  }
+  
+  protected boolean a()
+  {
+    return !TMAssistantCallYYB_V1.isExistActoin(this.jdField_a_of_type_Long);
+  }
+  
+  public boolean a(Context paramContext, Bundle paramBundle)
+  {
+    bfhg.c("TIME-STATISTIC", "MyAppApi--startToWebView");
+    if (paramBundle == null) {
+      return false;
+    }
+    paramBundle = paramBundle.getString("url");
+    bfhg.c("TIME-STATISTIC", "mDownloadSdk.startToAppDetail");
+    a().startToWebView(paramContext, paramBundle);
+    return true;
+  }
+  
+  public boolean a(Context paramContext, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    bfhg.c("TIME-STATISTIC", "MyAppApi--startToAppDetail ");
+    if (paramBundle == null) {
+      return false;
+    }
+    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(paramContext) >= 6) {
+      paramBundle.putLong("OuterCall_MyAppApi_StartToAppDetail", System.currentTimeMillis());
+    }
+    TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = a(paramBundle);
+    if (!bfju.b(localTMAssistantCallYYBParamStruct.SNGAppId)) {
+      return false;
+    }
+    boolean bool = bfjt.d();
+    long l = bexd.a().a();
+    if ((bool) && (l > 0L) && (l != this.jdField_d_of_type_Long)) {}
+    for (int i = 1;; i = 0)
+    {
+      Object localObject;
+      if ((i == 0) || (paramContext == null) || (!(paramContext instanceof BaseActivity)))
+      {
+        localObject = a(localTMAssistantCallYYBParamStruct, paramBundle);
+        bfkb.a().e((DownloadInfo)localObject);
+      }
+      for (;;)
+      {
+        try
+        {
+          bfhg.a("State_Log", "OpenSDK startToAppDetail param SNGAppId=" + localTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + localTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + localTMAssistantCallYYBParamStruct.taskAppId + " source=" + localTMAssistantCallYYBParamStruct.source + " packageName=" + localTMAssistantCallYYBParamStruct.taskPackageName + " version=" + localTMAssistantCallYYBParamStruct.taskVersion + " uin=" + localTMAssistantCallYYBParamStruct.uin + " via=" + localTMAssistantCallYYBParamStruct.via + " autoDownload=" + paramBoolean1 + " autoInstall=" + paramBoolean2);
+          bfhg.c("TIME-STATISTIC", "mDownloadSdk.startToAppDetail");
+          if (a() <= 2)
+          {
+            ((TMAssistantCallYYB_V1)a()).startToAppDetail(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2);
+          }
+          else
+          {
+            i = paramBundle.getInt(bfjy.k);
+            int j = a(paramBundle);
+            if (i == 3)
+            {
+              paramBoolean1 = false;
+              paramBoolean2 = false;
+              ((TMAssistantCallYYB_V2)a()).startToAppDetail(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2, j);
+            }
+          }
+        }
+        catch (Exception paramContext)
+        {
+          bfhg.b("MyAppApi", "startToAppDetail err", paramContext);
+          return false;
+        }
+        localObject = new bfhn();
+        ((bfhn)localObject).a(new bfkp(this, (bfhn)localObject, localTMAssistantCallYYBParamStruct, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
+        if ((paramContext instanceof BaseActivity)) {
+          ((bfhn)localObject).a(((BaseActivity)paramContext).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
+        }
+        return true;
+      }
+      return true;
+    }
+  }
+  
+  public long b(Bundle paramBundle)
+  {
+    try
+    {
+      bfhg.c("MyAppApi", "--addDownloadTaskFromAppDetail--params = " + paramBundle);
+      if (paramBundle == null) {
+        return -1L;
+      }
+      String str = paramBundle.getString("url");
+      if (!TextUtils.isEmpty(str))
+      {
+        if ((str.startsWith("tmast")) || (str.startsWith("tpmast"))) {
+          return a().addDownloadTaskFromTmast(paramBundle);
+        }
+        long l = a().addDownloadTaskFromWebview(paramBundle);
+        return l;
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
+    return -1L;
+  }
+  
+  protected long b(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    bfhg.c("MyAppApi", "--addDownloadTaskFromAppDetail--params = " + paramBundle + "autoDownload = " + paramBoolean1);
+    if (paramBundle == null) {
+      return -1L;
+    }
+    paramBundle = a(paramBundle);
+    this.jdField_b_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = paramBundle;
+    return a().addDownloadTaskFromAppDetail(paramBundle, paramBoolean1, paramBoolean1);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB = TMAssistantCallYYB_V2.getInstance();
+    this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB.initTMAssistantCallYYBApi(bexd.a().a());
+    g();
+  }
+  
+  public void b(Activity paramActivity)
+  {
+    long l = System.currentTimeMillis() - this.jdField_b_of_type_Long;
+    bfhg.c("MyAppApi", "judgeInstallFlag -- mInstalledFlag = " + this.jdField_a_of_type_Boolean + "mInstallTime = " + this.jdField_b_of_type_Long + " countTime =" + l);
+    int i;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if ((this.jdField_b_of_type_Long != -1L) && (l <= 180000L)) {
+        break label337;
+      }
+      i = 1;
+      if (!b()) {
+        break label404;
+      }
+      if (a()) {
+        break label342;
+      }
+      this.jdField_b_of_type_Boolean = false;
+      label107:
+      if ((!this.jdField_b_of_type_Boolean) && (i == 0))
+      {
+        if (this.jdField_a_of_type_Long != -1L) {
+          a().removeDownloadTask(this.jdField_a_of_type_Long);
+        }
+        if (!bfjt.h()) {
+          break label379;
+        }
+        if (this.jdField_a_of_type_Bfkz != null)
+        {
+          if (this.jdField_a_of_type_Bfkz.jdField_a_of_type_Int != 0) {
+            break label350;
+          }
+          a(paramActivity, this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bfkz.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bfkz.jdField_b_of_type_Boolean);
+        }
+      }
+    }
+    for (;;)
+    {
+      e();
+      if ((!this.jdField_d_of_type_Boolean) && (!b()))
+      {
+        paramActivity = bexd.a().a().getSharedPreferences("showTost_pf", 0);
+        this.jdField_d_of_type_Boolean = paramActivity.getBoolean("showToast", false);
+        this.jdField_a_of_type_JavaLangString = paramActivity.getString("toast_msg", "");
+      }
+      if (this.jdField_d_of_type_Boolean)
+      {
+        if (!b()) {
+          new Handler(Looper.getMainLooper()).postDelayed(new MyAppApi.4(this), 2000L);
+        }
+        this.jdField_d_of_type_Boolean = false;
+        paramActivity = bexd.a().a().getSharedPreferences("showTost_pf", 0).edit();
+        paramActivity.putBoolean("showToast", this.jdField_d_of_type_Boolean);
+        paramActivity.commit();
+      }
+      return;
+      label337:
+      i = 0;
+      break;
+      label342:
+      this.jdField_b_of_type_Boolean = true;
+      break label107;
+      label350:
+      a(paramActivity, this.jdField_a_of_type_Bfkz.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bfkz.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bfkz.jdField_b_of_type_Boolean);
+      continue;
+      label379:
+      if ((i != 0) || (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null)) {
+        continue;
+      }
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+      continue;
+      try
+      {
+        label404:
+        if (new File(bexd.a().a().getFilesDir() + File.separator + "yyb_via_info.txt").exists()) {
+          bexd.a().a().deleteFile("yyb_via_info.txt");
+        }
+        label464:
+        if ((this.jdField_b_of_type_Boolean) || (i != 0)) {
+          continue;
+        }
+        if (this.jdField_a_of_type_Long != -1L) {
+          a().removeDownloadTask(this.jdField_a_of_type_Long);
+        }
+        if ((i != 0) || (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null)) {
+          continue;
+        }
+        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
+      }
+      catch (Exception paramActivity)
+      {
+        break label464;
+      }
+    }
+  }
+  
+  public void b(Activity paramActivity, Bundle paramBundle, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(paramActivity) >= 6) {
+      paramBundle.putLong("OuterCall_MyAppApi_HandleDownloadAction", System.currentTimeMillis());
+    }
+    int i = -1;
+    try
+    {
+      j = a().checkQQDownloaderInstalled();
+      i = j;
+    }
+    catch (Exception localException)
+    {
+      int j;
+      boolean bool1;
+      boolean bool2;
+      int k;
+      int m;
+      String str2;
+      DownloadInfo localDownloadInfo;
+      for (;;)
+      {
+        boolean bool3;
+        boolean bool4;
+        String str1;
+        localException.printStackTrace();
+        continue;
+        j = 0;
+      }
+      if ((i != 2) && (i != 1)) {
+        break label244;
+      }
+      if (paramOnClickListener == null) {
+        break label233;
+      }
+      paramOnClickListener.onClick(null, 0);
+      bfip.a("202", str2, localException);
+      return;
+      if ((!bfjt.h()) && (j == 0)) {
+        break label331;
+      }
+      if (k != 0) {
+        break label308;
+      }
+      a(paramActivity, paramBundle, bool1, bool2);
+      for (;;)
+      {
+        paramActivity = bfip.a(str2, "YYB");
+        if ((localDownloadInfo != null) || ((m != 2) && (m != 12))) {
+          break;
+        }
+        bfip.a("202", paramActivity, localException);
+        return;
+        a(paramActivity, paramBundle, bool1, bool2);
+      }
+      bfip.a("200", paramActivity, localException);
+      return;
+      if (paramOnClickListener == null) {
+        break label343;
+      }
+      paramOnClickListener.onClick(null, 0);
+      bfip.a("200", str2, localException);
+    }
+    bool1 = paramBundle.getBoolean(bfjy.g, false);
+    bool2 = paramBundle.getBoolean(bfjy.jdField_h_of_type_JavaLangString, true);
+    k = paramBundle.getInt(bfjy.n);
+    m = paramBundle.getInt(bfjy.k);
+    bool3 = bfjt.e();
+    bool4 = bfjt.g();
+    str1 = paramBundle.getString(bfjy.b);
+    str2 = paramBundle.getString(bfjy.i);
+    localDownloadInfo = bfkb.a().a(str1);
+    if ((localDownloadInfo != null) && (localDownloadInfo.jdField_c_of_type_Int == 1))
+    {
+      j = 1;
+      bfhg.c("OpenConfig-MyAppApi", " useMyAppFlag = " + bool3);
+      if (((bool3) && (bool4)) || (j != 0)) {
+        break label209;
+      }
+      if (paramOnClickListener != null) {
+        paramOnClickListener.onClick(null, 0);
+      }
+      bfip.a("200", str2, str1);
+    }
+    label209:
+    label233:
+    label244:
+    return;
+  }
+  
+  public void b(String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity)
+  {
+    for (;;)
+    {
+      String str3;
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramString);
+        String str1 = localJSONObject.optString("appid", "");
+        localJSONObject.optString("myAppid", "");
+        localJSONObject.optString("apkId", "");
+        Object localObject2 = localJSONObject.optString("versionCode", "");
+        String str2 = localJSONObject.optString("via", "");
+        localJSONObject.optString("appPackageName", "");
+        str3 = localJSONObject.optString("appName", alpo.a(2131707429));
+        localJSONObject.optString("channelId", "");
+        Object localObject1 = localJSONObject.optString("appAuthorizedStr", "");
+        Bundle localBundle = new Bundle();
+        paramString = (String)localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          paramString = "1";
+        }
+        int i = Integer.parseInt(paramString);
+        localBundle.putString(bfjy.b, localJSONObject.optString("appid", ""));
+        localBundle.putString(bfjy.jdField_c_of_type_JavaLangString, localJSONObject.optString("myAppid", ""));
+        localBundle.putString(bfjy.jdField_d_of_type_JavaLangString, localJSONObject.optString("apkId"));
+        localBundle.putInt(bfjy.e, i);
+        localBundle.putString(bfjy.f, localJSONObject.optString("appPackageName"));
+        localBundle.putString(bfjy.i, localJSONObject.optString("via"));
+        localBundle.putString(bfjy.l, localJSONObject.optString("appName"));
+        localBundle.putString(bfjy.z, localJSONObject.optString("channelId"));
+        localBundle.putString(bfjy.B, localJSONObject.optString("channel"));
+        localBundle.putString(bfjy.v, localJSONObject.optString("uin"));
+        this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = a(localBundle);
+        this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.actionFlag = "2";
+        if (b())
+        {
+          a(paramActivity, paramOnClickListener);
+          return;
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          paramString = (String)localObject1;
+          boolean bool = bfjt.a();
+          localObject1 = new bfkt(this, localBundle, bool, paramActivity, str2, paramOnClickListener, str1);
+          paramOnClickListener = new bfkx(this, paramOnClickListener, str2, str1);
+          localObject2 = new bfkw(this, str2, str1);
+          localBundle.putString(bfjy.p, paramString);
+          a(paramActivity, 1, 1, "0", (DialogInterface.OnClickListener)localObject1, paramOnClickListener, (DialogInterface.OnCancelListener)localObject2, "biz_src_yyb", bool, localBundle);
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      paramString = str3 + alpo.a(2131707426);
+    }
+  }
+  
+  public boolean b()
+  {
+    boolean bool = true;
+    try
+    {
+      int i = a().checkQQDownloaderInstalled();
+      if ((i == 2) || (i == 1)) {
+        bool = false;
+      }
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      bfhg.c("MyAppApi", "hasValidQQDownloader>>>", localException);
+    }
+    return false;
+  }
+  
+  public boolean b(Context paramContext, Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return false;
+    }
+    bfhg.c("TIME-STATISTIC", "mDownloadSdk.startToDownloadListWithParams");
+    a().startToDownloadTaskListWithParams(paramContext, paramBundle);
+    return true;
+  }
+  
+  public void c(Activity paramActivity)
+  {
+    new bflm(paramActivity, null).execute(new Void[0]);
+  }
+  
+  public boolean c()
+  {
+    return (b()) && (bfjt.e()) && (bfjt.h());
+  }
+  
+  protected void d()
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
+    bfku localbfku = new bfku(this);
+    bexd.a().a().registerReceiver(localbfku, localIntentFilter);
+  }
+  
+  public void d(Activity paramActivity)
+  {
+    if ((this.e) && (this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null))
+    {
+      if ((!a()) && (a().b()))
+      {
+        if (this.jdField_a_of_type_Long != -1L) {
+          a().removeDownloadTask(this.jdField_a_of_type_Long);
+        }
+        a(paramActivity, null);
+      }
+      this.e = false;
+      e();
+      return;
+    }
+    this.e = false;
+    this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = null;
+    e();
+  }
+  
+  protected void e()
+  {
+    bfhg.c("MyAppApi", "clearInstallParam");
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+    this.jdField_a_of_type_Bfkz = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = null;
+  }
+  
+  public boolean e()
+  {
+    return a() > 2;
+  }
+  
+  public void f()
+  {
+    this.jdField_d_of_type_Long = 0L;
+  }
+  
+  public boolean f()
+  {
+    return this.g;
+  }
+  
+  protected void g()
+  {
+    a().registerListener(this.jdField_a_of_type_ComTencentTmassistantsdkITMAssistantCallBackListener);
+  }
+  
+  public boolean g()
+  {
+    boolean bool2 = false;
+    Object localObject = BaseActivity.sTopActivity.getPackageManager();
+    boolean bool1 = bool2;
+    if (localObject != null) {}
+    try
+    {
+      localObject = ((PackageManager)localObject).getPackageInfo("com.tencent.android.qqdownloader", 0);
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        int i = ((PackageInfo)localObject).versionCode;
+        bool1 = bool2;
+        if (i >= 7090000) {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      localNameNotFoundException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public void h()
+  {
+    try
+    {
+      this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB.unregisterListener(this.jdField_a_of_type_ComTencentTmassistantsdkITMAssistantCallBackListener);
+      this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB.destroyQQDownloaderOpenSDK();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        try
+        {
+          jdField_a_of_type_Bfko = null;
+          return;
+        }
+        finally {}
+        localException = localException;
+        bfhg.a("MyAppApi", "onDestroy>>>", localException);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfko
  * JD-Core Version:    0.7.0.1
  */

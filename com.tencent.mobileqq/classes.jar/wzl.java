@@ -1,24 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-
-class wzl
-  extends wzo
+public abstract interface wzl
 {
-  wzl(wze paramwze, wzb paramwzb, String paramString)
-  {
-    super(paramwze.a);
-  }
+  public abstract void a(int paramInt);
   
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
-    }
-    this.jdField_a_of_type_Wzb.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
-  }
+  public abstract void a(wzf paramwzf);
+  
+  public abstract boolean a(wzi paramwzi);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,23 @@
-import com.tencent.tar.jni.ScanFeatureFilterView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.model.GetVirtualListResult;
 
 public final class bfmq
+  implements Parcelable.Creator<GetVirtualListResult>
 {
-  public float a;
-  public int a;
-  public long a;
-  public boolean a;
-  public float b;
-  public int b;
-  public long b;
-  public boolean b;
-  
-  public float a(int paramInt, long paramLong)
+  public GetVirtualListResult a(Parcel paramParcel)
   {
-    if (paramLong < this.jdField_b_of_type_Long) {
-      return 0.0F;
-    }
-    if (paramLong - this.jdField_b_of_type_Long > paramInt) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-    return (float)(paramLong - this.jdField_b_of_type_Long) / paramInt % 1.0F;
+    return new GetVirtualListResult(paramParcel);
   }
   
-  public void a()
+  public GetVirtualListResult[] a(int paramInt)
   {
-    this.jdField_a_of_type_Long = ScanFeatureFilterView.a();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
+    return new GetVirtualListResult[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfmq
  * JD-Core Version:    0.7.0.1
  */

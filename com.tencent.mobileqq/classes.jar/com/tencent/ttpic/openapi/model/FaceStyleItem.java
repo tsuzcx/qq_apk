@@ -7,6 +7,7 @@ public class FaceStyleItem
 {
   public boolean alwaysTriggered;
   public String dataPath;
+  public String externalTriggerWords;
   public String id;
   public int[] imageSize = { 320, 320 };
   public String modelName;

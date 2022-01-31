@@ -1,37 +1,34 @@
-import android.os.Looper;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class abzb
-  implements bbzb
+  implements bhqd
 {
-  private final WeakReference<RegisterQQNumberActivity> a;
+  public abzb(AddRequestActivity paramAddRequestActivity, bhpy parambhpy) {}
   
-  public abzb(RegisterQQNumberActivity paramRegisterQQNumberActivity)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = new WeakReference(paramRegisterQQNumberActivity);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("RegisterQQNumberActivity", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      if (bdee.d(BaseApplication.getContext())) {
+        yzg.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a, null, this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getCurrentAccountUin(), 20010, null);
+      } else {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131694766, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
       }
     }
-    RegisterQQNumberActivity localRegisterQQNumberActivity;
-    do
-    {
-      return;
-      localRegisterQQNumberActivity = (RegisterQQNumberActivity)this.a.get();
-    } while (localRegisterQQNumberActivity == null);
-    localRegisterQQNumberActivity.a(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abzb
  * JD-Core Version:    0.7.0.1
  */

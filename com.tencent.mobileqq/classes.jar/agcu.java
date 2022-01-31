@@ -1,19 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
 
-class agcu
-  implements DialogInterface.OnClickListener
+public class agcu
+  implements aroi
 {
-  agcu(agcf paramagcf) {}
+  public agcu(AIOFileVideoData paramAIOFileVideoData, ailt paramailt, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    if (AIOFileVideoData.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData))
+    {
+      AIOFileVideoData.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData, false);
+      this.jdField_a_of_type_Ailt.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.a(false));
+    }
+    this.jdField_a_of_type_Ailt.b();
+    this.jdField_a_of_type_Ailt.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcu
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import android.os.Handler;
 import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
-import naj;
+import ndd;
 
 class QRCardActivity$2
   implements Runnable
@@ -29,7 +29,7 @@ class QRCardActivity$2
     int n;
     try
     {
-      localObject1 = naj.a(this.this$0, this.this$0.l, "GET", null, null);
+      localObject1 = ndd.a(this.this$0, this.this$0.l, "GET", null, null);
       if (localObject1 == null) {
         return;
       }
@@ -118,7 +118,7 @@ class QRCardActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRCardActivity.2
  * JD-Core Version:    0.7.0.1
  */

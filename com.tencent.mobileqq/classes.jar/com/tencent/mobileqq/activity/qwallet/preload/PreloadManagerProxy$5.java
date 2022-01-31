@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ahbr;
+import aivw;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import com.tencent.qphone.base.util.QLog;
@@ -33,7 +33,7 @@ public class PreloadManagerProxy$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,102 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Process;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
 
-public class abvy
-  extends BroadcastReceiver
+class abvy
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abvy(QQMapActivity.MapRuntime paramMapRuntime) {}
+  abvy(abvx paramabvx) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    int j = 1;
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    for (;;)
+    ViewGroup.LayoutParams localLayoutParams;
+    if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2)) && (Math.abs(paramFloat1) > 20.0F) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c) && (this.a.jdField_a_of_type_AndroidViewView != null))
     {
-      return;
-      int i;
-      if (paramContext.equals("com.tencent.process.exit"))
+      paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131376497);
+      if (paramMotionEvent1 != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQMapActivity", 2, "receive kill map process broadcast");
+        if (paramMotionEvent1.getVisibility() == 0) {
+          break label446;
         }
-        paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
-        if ((!QQMapActivity.a(paramIntent.getExtras().getString("verify"), paramContext)) || (!baxl.a(paramContext, MobileQQ.getContext()))) {
-          break label144;
-        }
-        i = j;
-      }
-      while (i != 0)
-      {
-        Process.killProcess(Process.myPid());
-        return;
-        i = j;
-        if (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))
+        if (AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) != null)
         {
-          i = j;
-          if (!paramContext.equals("mqq.intent.action.LOGOUT"))
-          {
-            i = j;
-            if (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName())) {
-              label144:
-              i = 0;
-            }
+          if (QLog.isColorLevel()) {
+            QLog.i("AccountManage", 2, "hide previous selectedAccountView");
           }
+          paramMotionEvent2 = AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity));
+          if ((paramMotionEvent2 instanceof ShaderAnimLayout)) {
+            ((ShaderAnimLayout)paramMotionEvent2).f();
+          }
+          AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).a();
+          paramMotionEvent2 = AccountManageActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity));
+          localLayoutParams = paramMotionEvent2.getLayoutParams();
+          if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a) {
+            break label395;
+          }
+          localLayoutParams.width = ((int)(AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) - AccountManageActivity.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) * 40.0F));
+          paramMotionEvent2.setLayoutParams(localLayoutParams);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.i("AccountManage", 2, "show current selectedAccountView");
+        }
+        ((ShaderAnimLayout)paramMotionEvent1).b();
+        AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, (RotateSwitchImageView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131365082));
+        AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).b();
+        paramMotionEvent1 = AccountManageActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity));
+        paramMotionEvent2 = paramMotionEvent1.getLayoutParams();
+        if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a) {
+          break label414;
         }
       }
+    }
+    label395:
+    label414:
+    for (paramMotionEvent2.width = ((int)(AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) - 75.0F * AccountManageActivity.d(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity)));; paramMotionEvent2.width = ((int)(AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) - 35.0F * AccountManageActivity.e(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity))))
+    {
+      paramMotionEvent1.setLayoutParams(paramMotionEvent2);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = true;
+      this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+      return true;
+      localLayoutParams.width = ((int)AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity));
+      break;
+    }
+    label446:
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "hide current selectedAccountView");
+    }
+    ((ShaderAnimLayout)paramMotionEvent1).f();
+    if (AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) != null)
+    {
+      AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).a();
+      paramMotionEvent1 = AccountManageActivity.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity));
+      paramMotionEvent2 = paramMotionEvent1.getLayoutParams();
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a) {
+        break label626;
+      }
+    }
+    label626:
+    for (paramMotionEvent2.width = ((int)(AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) - AccountManageActivity.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity) * 40.0F));; paramMotionEvent2.width = ((int)AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity)))
+    {
+      paramMotionEvent1.setLayoutParams(paramMotionEvent2);
+      AccountManageActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity, null);
+      if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.a(false);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.c = true;
+      this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
+      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abvy
  * JD-Core Version:    0.7.0.1
  */

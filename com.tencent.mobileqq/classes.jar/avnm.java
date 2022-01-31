@@ -1,156 +1,120 @@
-import NS_MOBILE_NEWEST_FEEDS.newest_feeds_req;
-import android.content.Intent;
+import android.content.Context;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.NearbyPeopleCard;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
 
 public class avnm
+  extends BaseAdapter
+  implements bcwt
 {
-  private static final Pattern a = Pattern.compile("@?\\{uin:\\d+,nick(name)?:.*?\\}");
+  private Context jdField_a_of_type_AndroidContentContext;
+  private avmi jdField_a_of_type_Avmi;
+  private NearbyPeopleCard jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard;
+  private List<avnx> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public static newest_feeds_req a(int paramInt, long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, String paramString)
+  public avnm(Context paramContext, QQAppInterface paramQQAppInterface)
   {
-    return new newest_feeds_req(paramInt, paramLong1, paramArrayList, paramLong2, paramString, bgyi.a(), null);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (paramQQAppInterface != null) {
+      this.jdField_a_of_type_Avmi = new avmi(paramQQAppInterface, paramContext);
+    }
   }
   
-  public static newest_feeds_req a(Intent paramIntent)
+  public List<avnx> a()
   {
-    if (paramIntent == null) {
-      return new newest_feeds_req();
-    }
-    paramIntent = paramIntent.getSerializableExtra("req");
-    if ((paramIntent != null) && ((paramIntent instanceof newest_feeds_req))) {
-      return (newest_feeds_req)paramIntent;
-    }
-    return new newest_feeds_req();
+    return this.jdField_a_of_type_JavaUtilList;
   }
   
-  public static Intent a(Intent paramIntent, newest_feeds_req paramnewest_feeds_req)
+  public void a(NearbyPeopleCard paramNearbyPeopleCard)
   {
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    localIntent.putExtra("req", paramnewest_feeds_req);
-    return localIntent;
+    this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard = paramNearbyPeopleCard;
   }
   
-  public static String a(String paramString)
+  public void a(List<avnx> paramList)
   {
-    if ("".equals(paramString)) {}
-    int j;
-    int i;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+    notifyDataSetChanged();
+  }
+  
+  public void b(List<avnx> paramList)
+  {
+    if (paramList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (this.jdField_a_of_type_Avmi == null) {
+      return -1;
+    }
+    return this.jdField_a_of_type_Avmi.a((avnx)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_Avmi == null) {
+      paramViewGroup = null;
+    }
+    avnx localavnx;
+    avlt localavlt;
     do
     {
-      return null;
-      int k = paramString.indexOf("uin:");
-      j = paramString.indexOf(",");
-      i = 0;
-      if (k != -1) {
-        i = k + 4;
-      }
-    } while ((i == 0) || (j == -1));
-    return paramString.substring(i, j);
+      return paramViewGroup;
+      localavnx = (avnx)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramInt = this.jdField_a_of_type_Avmi.a(localavnx);
+      localavlt = this.jdField_a_of_type_Avmi.a(paramInt);
+      paramViewGroup = paramView;
+    } while (localavlt == null);
+    localavlt.a(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard);
+    return localavlt.a(localavnx, this.jdField_a_of_type_AndroidContentContext, paramView);
   }
   
-  public static String a(String paramString, QQAppInterface paramQQAppInterface)
+  public int getViewTypeCount()
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {
-      localObject = null;
+    if (this.jdField_a_of_type_Avmi == null) {
+      return 1;
     }
-    Matcher localMatcher;
-    do
-    {
-      return localObject;
-      localMatcher = a.matcher(paramString);
-      localObject = paramString;
-    } while (!localMatcher.find());
-    String str2 = localMatcher.group();
-    String str3 = a(str2);
-    String str1 = "";
-    Object localObject = str1;
-    if (!TextUtils.isEmpty(str3))
-    {
-      ajxl localajxl = (ajxl)paramQQAppInterface.getManager(51);
-      localObject = str1;
-      if (localajxl != null)
-      {
-        localObject = localajxl.e(str3);
-        if (localObject == null) {
-          break label153;
-        }
-      }
-    }
-    label151:
-    label153:
-    for (localObject = ((Friends)localObject).getFriendNickWithAlias();; localObject = "")
-    {
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        localObject = b(str2);
-      }
-      for (;;)
-      {
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break label151;
-        }
-        paramString = paramString.replace(str2, "@" + (String)localObject + " ");
-        break;
-      }
-      break;
-    }
+    return this.jdField_a_of_type_Avmi.a();
   }
   
-  public static ArrayList<Long> a(QQAppInterface paramQQAppInterface)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    paramQQAppInterface = (ajxl)paramQQAppInterface.getManager(51);
-    if (paramQQAppInterface == null) {
-      return null;
+    if (!TextUtils.equals(paramString, this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin)) {
+      return;
     }
-    Object localObject = paramQQAppInterface.d();
-    if (localObject != null)
-    {
-      paramQQAppInterface = new ArrayList(((ArrayList)localObject).size());
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        Friends localFriends = (Friends)((Iterator)localObject).next();
-        if ((localFriends != null) && (Friends.isValidUin(localFriends.uin))) {
-          paramQQAppInterface.add(Long.valueOf(Long.parseLong(localFriends.uin)));
-        }
-      }
-    }
-    for (;;)
-    {
-      return paramQQAppInterface;
-      paramQQAppInterface = null;
-    }
-  }
-  
-  public static String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    int j;
-    int i;
-    do
-    {
-      return null;
-      int k = paramString.indexOf(",nick:");
-      j = paramString.indexOf("}");
-      i = 0;
-      if (k != -1) {
-        i = k + 6;
-      }
-    } while ((j == -1) || (i == 0));
-    return paramString.substring(i, j);
+    notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avnm
  * JD-Core Version:    0.7.0.1
  */

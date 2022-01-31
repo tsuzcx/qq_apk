@@ -1,32 +1,28 @@
-import android.support.v4.view.ViewPager.PageTransformer;
-import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.adapter.VerticleViewPager;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import java.lang.ref.WeakReference;
 
 public class nky
-  implements ViewPager.PageTransformer
+  implements acxh
 {
-  private nky(VerticleViewPager paramVerticleViewPager) {}
+  WeakReference<AccountDetailActivity> a;
   
-  public void transformPage(View paramView, float paramFloat)
+  public nky(AccountDetailActivity paramAccountDetailActivity)
   {
-    if (paramFloat < -1.0F)
-    {
-      paramView.setAlpha(0.0F);
+    this.a = new WeakReference(paramAccountDetailActivity);
+  }
+  
+  public void a(acxi paramacxi)
+  {
+    if ((this.a == null) || (this.a.get() == null)) {
       return;
     }
-    if (paramFloat <= 1.0F)
-    {
-      paramView.setAlpha(1.0F);
-      paramView.setTranslationX(paramView.getWidth() * -paramFloat);
-      paramView.setTranslationY(paramView.getHeight() * paramFloat);
-      return;
-    }
-    paramView.setAlpha(0.0F);
+    ((AccountDetailActivity)this.a.get()).a(paramacxi);
+    ((AccountDetailActivity)this.a.get()).P();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nky
  * JD-Core Version:    0.7.0.1
  */

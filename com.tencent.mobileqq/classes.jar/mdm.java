@@ -1,50 +1,23 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.av.ui.AVActivity;
+import java.util.Comparator;
 
-class mdm
-  implements View.OnClickListener
+public class mdm
+  implements Comparator<lqq>
 {
-  mdm(mdl parammdl) {}
+  public mdm(AVActivity paramAVActivity) {}
   
-  public void onClick(View paramView)
+  public int a(lqq paramlqq1, lqq paramlqq2)
   {
-    int i = 0;
-    paramView = (mdo)paramView.getTag();
-    if (mdl.a(this.a) == null) {
-      return;
+    if (paramlqq1.a) {}
+    while (paramlqq2.a) {
+      return 1;
     }
-    axqy.b(null, "CliOper", "", "", "0X8009E26", "0X8009E26", 0, 0, "", "", "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("GAudioMemberListCtrl", 2, "onItemClick # mRelationUinStr = " + this.a.jdField_a_of_type_Long + " # memberUin = " + String.valueOf(paramView.jdField_a_of_type_Long));
-    }
-    mdl.a(this.a).getCurrentAccountUin();
-    Intent localIntent = new Intent();
-    localIntent.setAction("tencent.video.v2q.GaudioOpenTroopCard");
-    localIntent.putExtra("troopUin", String.valueOf(this.a.jdField_a_of_type_Long));
-    localIntent.putExtra("memberUin", String.valueOf(paramView.jdField_a_of_type_Long));
-    if (this.a.jdField_a_of_type_Int == 1) {
-      i = 1000;
-    }
-    for (;;)
-    {
-      localIntent.putExtra("uinType", i);
-      localIntent.setPackage(mdl.a(this.a).getApplication().getPackageName());
-      mdl.a(this.a).getApp().sendBroadcast(localIntent);
-      return;
-      if (this.a.jdField_a_of_type_Int == 2) {
-        i = 1004;
-      }
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdm
  * JD-Core Version:    0.7.0.1
  */

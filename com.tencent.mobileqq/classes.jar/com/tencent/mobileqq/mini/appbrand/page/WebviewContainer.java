@@ -24,8 +24,8 @@ import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
-import bbkk;
-import bbll;
+import bdje;
+import bdkf;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -98,7 +98,7 @@ public class WebviewContainer
   private boolean needSeetPadding = QzoneConfig.getInstance().getConfig("qqminiapp", "miniappcovertextviewpadding", true);
   protected PageInfo pageInfo;
   private String pageOrientation = WindowInfo.ORIENTATION_PORTRAIT;
-  private PageWebview pageWebview;
+  public PageWebview pageWebview;
   public SwipeRefreshLayout swipeRefreshLayout;
   
   public WebviewContainer(Context paramContext)
@@ -117,7 +117,7 @@ public class WebviewContainer
   
   private String getActualColor(String paramString)
   {
-    if (bbkk.a(paramString)) {
+    if (bdje.a(paramString)) {
       return "";
     }
     String str = paramString.substring(paramString.length() - 2);
@@ -442,7 +442,7 @@ public class WebviewContainer
         paramJSONObject = paramJSONObject.optJSONObject("label");
         if (paramJSONObject != null)
         {
-          if (!bbkk.a(paramJSONObject.optString("color")))
+          if (!bdje.a(paramJSONObject.optString("color")))
           {
             localObject1 = getActualColor(paramJSONObject.optString("color"));
             if (!TextUtils.isEmpty((CharSequence)localObject1)) {
@@ -459,7 +459,7 @@ public class WebviewContainer
           }
           paramCoverTextView.setGravity(3);
           localObject1 = paramJSONObject.optString("content");
-          if (!bbkk.a((String)localObject1)) {
+          if (!bdje.a((String)localObject1)) {
             paramCoverTextView.setText((String)localObject1);
           }
           if ("bold".equals(paramJSONObject.optString("fontWeight"))) {
@@ -895,7 +895,7 @@ public class WebviewContainer
             paramInt2 = paramInt4;
             if (this.appBrandRuntime.pageContainer.getCurrentPage().getNavBar().getNavbarStyle().equals("custom"))
             {
-              paramInt2 = paramInt4 - (bbll.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext()));
+              paramInt2 = paramInt4 - (bdkf.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext()));
               this.appBrandRuntime.pageContainer.getCurrentPage().updateViewStyle("default");
               this.appBrandRuntime.pageContainer.getCurrentPage().getNavBar().setBarStyle("default");
             }
@@ -996,7 +996,7 @@ public class WebviewContainer
           ((CoverView)localObject).setPadding(paramJSONObject1.optInt(3, 0), paramJSONObject1.optInt(0, 0), paramJSONObject1.optInt(1, 0), paramJSONObject1.optInt(2, 0));
         }
         ((CoverView)localObject).setBorderRadius((float)paramJSONObject2.optDouble("borderRadius", 0.0D) * this.density);
-        if ((bbkk.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https"))))
+        if ((bdje.a(paramString2)) || ((paramString2.startsWith("http")) || (paramString2.startsWith("https"))))
         {
           try
           {
@@ -1041,7 +1041,7 @@ public class WebviewContainer
           i = j;
           continue;
           paramJSONObject1 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-          if (!bbkk.a(paramJSONObject1)) {
+          if (!bdje.a(paramJSONObject1)) {
             try
             {
               paramJSONObject1 = ImageUtil.getLocalBitmap(paramJSONObject1);
@@ -2124,7 +2124,7 @@ public class WebviewContainer
         }
         paramString1.setBorderRadius((float)paramJSONObject2.optDouble("borderRadius", 0.0D) * this.density);
       }
-      if ((!bbkk.a(paramString2)) && ((!paramString2.startsWith("http")) && (!paramString2.startsWith("https")))) {
+      if ((!bdje.a(paramString2)) && ((!paramString2.startsWith("http")) && (!paramString2.startsWith("https")))) {
         break label405;
       }
     }
@@ -2158,7 +2158,7 @@ public class WebviewContainer
       return;
       label405:
       paramJSONObject1 = MiniAppFileManager.getInstance().getAbsolutePath(paramString2);
-      if (!bbkk.a(paramJSONObject1)) {
+      if (!bdje.a(paramJSONObject1)) {
         try
         {
           paramJSONObject1 = ImageUtil.getLocalBitmap(paramJSONObject1);
@@ -2277,7 +2277,7 @@ public class WebviewContainer
     {
       ((CoverVideoView)localCoverView).updateVideoPlayerSettings(paramJSONObject);
       paramJSONObject = paramJSONObject.optString("filePath");
-      if (!bbkk.a(paramJSONObject)) {
+      if (!bdje.a(paramJSONObject)) {
         ((CoverVideoView)localCoverView).setVideoPath(paramJSONObject);
       }
     }
@@ -2285,7 +2285,7 @@ public class WebviewContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.WebviewContainer
  * JD-Core Version:    0.7.0.1
  */

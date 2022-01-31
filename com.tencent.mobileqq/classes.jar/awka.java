@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
 
 public class awka
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  public awka(UniteSearchActivity paramUniteSearchActivity) {}
+  public awka(CustomCoverFragment paramCustomCoverFragment) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.finish();
+    if (this.a.getActivity() != null) {
+      this.a.getActivity().finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awka
  * JD-Core Version:    0.7.0.1
  */

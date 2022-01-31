@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
-public class aspj
-  implements asrg
+public final class aspj
+  implements Parcelable.Creator<HotPicData>
 {
-  public aspj(MultiAIOFragment paramMultiAIOFragment) {}
-  
-  public void a(int paramInt)
+  public HotPicData a(Parcel paramParcel)
   {
-    MultiAIOFragment.a(this.a, true);
+    return new HotPicData(paramParcel);
+  }
+  
+  public HotPicData[] a(int paramInt)
+  {
+    return new HotPicData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aspj
  * JD-Core Version:    0.7.0.1
  */

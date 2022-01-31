@@ -1,166 +1,110 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
 
-public class lgi
+class lgi
+  extends alox
 {
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Map<String, int[]> jdField_a_of_type_JavaUtilMap;
+  lgi(lgh paramlgh) {}
   
-  public lgi(AppInterface paramAppInterface)
+  protected void onAddFriend(String paramString)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+    super.onAddFriend(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d(lgh.jdField_a_of_type_JavaLangString, 2, "onAddFriend 进入好友列表" + paramString);
+    }
+    lgh.a(this.a, paramString, 4);
+    this.a.a(paramString);
   }
   
-  public AppInterface a()
+  protected void onGetAutoInfo(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    if (QLog.isColorLevel()) {
+      QLog.d(lgh.jdField_a_of_type_JavaLangString, 2, "onGetAutoInfo  isSuccess= " + paramBoolean + ",uin=" + paramString1 + ",remark=" + paramString2 + ",groupId" + paramInt);
+    }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, amlv paramamlv, Class<? extends MSFServlet> paramClass)
+  protected void onQueryUinSafetyFlag(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
   {
-    if (paramToServiceMsg.getWupBuffer() != null)
+    if (paramInt1 == 147)
     {
-      long l = paramToServiceMsg.getWupBuffer().length;
-      byte[] arrayOfByte = new byte[(int)l + 4];
-      bbmx.a(arrayOfByte, 0, 4L + l);
-      bbmx.a(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
-      paramToServiceMsg.putWupBuffer(arrayOfByte);
       if (QLog.isColorLevel()) {
-        QLog.d("MsfServletProxy", 2, "PB cmd: req cmd: " + paramToServiceMsg.getServiceCmd());
+        QLog.d(lgh.jdField_a_of_type_JavaLangString, 2, "onQueryUinSafetyFlag isSuccess=" + paramBoolean + ",status=" + paramInt2 + ",uin=" + paramLong);
       }
-      paramToServiceMsg.actionListener = paramamlv;
-      paramamlv = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
-      paramamlv.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramamlv);
-      l = System.currentTimeMillis();
-      paramToServiceMsg.extraData.putLong("sendtimekey", l);
+      if ((!paramBoolean) || (paramInt2 == 0)) {
+        lgh.a(this.a, String.valueOf(paramLong));
+      }
+    }
+    else
+    {
+      return;
+    }
+    lgh.a(this.a, String.valueOf(paramLong), 3, paramInt2);
+  }
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    super.onUpdateAddFriend(paramBoolean1, paramBoolean2, paramBoolean3, paramString, paramBundle);
+    int i = paramBundle.getInt("friend_setting");
+    if (QLog.isColorLevel()) {
+      QLog.d(lgh.jdField_a_of_type_JavaLangString, 2, "onUpdateAddFriend 请求加好友回调  isSuccess= " + paramBoolean1 + ",addSuccess=" + paramBoolean2 + ",reqestUin=" + paramString + ",friendSetting" + i);
+    }
+    if ((paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equals(paramString)) && (i == 0)) {
+      this.a.jdField_a_of_type_Boolean = true;
     }
   }
   
-  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
+  protected void onUpdateAddFriendSetting(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramToServiceMsg == null) || (paramToServiceMsg.extraData == null))
-    {
-      paramException = new StringBuilder().append("handleResponse error req:").append(paramToServiceMsg).append("|");
-      if (paramFromServiceMsg == null)
-      {
-        paramToServiceMsg = "null";
-        lcg.d("MsfServletProxy", paramToServiceMsg);
-      }
+    String str = paramBundle.getString("uin");
+    int i = paramBundle.getInt("friend_setting");
+    if (QLog.isColorLevel()) {
+      QLog.d(lgh.jdField_a_of_type_JavaLangString, 2, "onUpdateAddFriendSetting  isSuccess= " + paramBoolean + ",uin" + str + ",friendSetting=" + i);
     }
-    AppInterface localAppInterface;
-    float f;
-    label149:
-    boolean bool;
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equals(str)) && (i == 0)) {
+      this.a.jdField_a_of_type_Boolean = true;
+    }
     do
     {
       return;
-      paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
-      break;
-      localAppInterface = a();
-      f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
-      if (!paramBoolean) {
-        break label335;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + "sec." + f);
-      }
-      bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
-    } while ((!paramBoolean) || (!bool));
-    Object localObject = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("MsfServletProxy", 2, "PB cmd: recv cmd: " + (String)localObject);
+      localFriendListHandler.a(str, null, i, (byte)0, "", this.a.jdField_a_of_type_Int, 0, true, null, true, "", "");
+    } while (!paramBoolean);
+    if (this.a.a(str) == 2) {
+      this.a.c(str);
     }
-    int i;
-    if (paramFromServiceMsg.getWupBuffer() != null)
+    for (;;)
     {
-      i = paramFromServiceMsg.getWupBuffer().length - 4;
-      paramException = new byte[i];
-      bbmx.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-      paramFromServiceMsg.putWupBuffer(paramException);
-    }
-    for (paramException = paramFromServiceMsg.getWupBuffer();; paramException = null)
-    {
-      for (;;)
-      {
-        int[] arrayOfInt = (int[])this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if ((arrayOfInt != null) && (arrayOfInt.length > 0))
-        {
-          int j = arrayOfInt.length;
-          i = 0;
-          label290:
-          if (i >= j) {
-            break;
-          }
-          localObject = (ajtb)localAppInterface.getBusinessHandler(arrayOfInt[i]);
-          if (localObject != null) {}
-          try
-          {
-            ((ajtb)localObject).onReceive(paramToServiceMsg, paramFromServiceMsg, paramException);
-            i += 1;
-            break label290;
-            label335:
-            if (paramException != null)
-            {
-              localObject = new ByteArrayOutputStream();
-              paramException.printStackTrace(new PrintStream((OutputStream)localObject));
-              paramException = new String(((ByteArrayOutputStream)localObject).toByteArray());
-              if (!QLog.isColorLevel()) {
-                break label149;
-              }
-              QLog.d("MsfServletProxy", 2, "[NOT SEND]cmd=" + paramFromServiceMsg.getServiceCmd() + ", " + paramException);
-              break label149;
-            }
-            if (!QLog.isColorLevel()) {
-              break label149;
-            }
-            QLog.w("MsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + ",CODE=" + paramFromServiceMsg.getResultCode() + "sec." + f);
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              localException.printStackTrace();
-              if (QLog.isColorLevel()) {
-                QLog.w("MsfServletProxy", 2, localObject.getClass().getSimpleName() + " onReceive error,", localException);
-              }
-            }
-          }
-        }
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.w("MsfServletProxy", 2, " handlerIds no map " + (String)localObject);
+      paramBundle.getStringArrayList("user_question");
+      paramBundle.getBoolean("contact_bothway");
       return;
+      lgh.a(this.a, str, 1);
+      this.a.a(str);
     }
   }
   
-  public boolean a(String paramString, int[] paramArrayOfInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfInt);
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d(lgh.jdField_a_of_type_JavaLangString, 2, "好友onUpdateCustomHead success = " + paramBoolean + ", uin = " + paramString);
     }
-    return false;
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    super.onUpdateDelFriend(paramBoolean, paramObject);
+    paramObject = String.valueOf((Long)paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d(lgh.jdField_a_of_type_JavaLangString, 2, "onUpdateDelFriend 删除好友" + paramObject);
+    }
+    lgh.a(this.a, paramObject, 0);
+    this.a.a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lgi
  * JD-Core Version:    0.7.0.1
  */

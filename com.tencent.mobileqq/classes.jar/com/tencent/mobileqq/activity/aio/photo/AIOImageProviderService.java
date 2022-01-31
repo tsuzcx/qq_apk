@@ -1,76 +1,77 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import advs;
-import aeht;
-import aehw;
-import aeim;
-import aein;
-import aeio;
-import aeip;
-import aeiq;
-import aeir;
-import aeja;
-import aejc;
-import aeje;
-import aezl;
-import agqd;
-import ajsy;
-import ajwb;
-import ajya;
-import ajyi;
-import akpx;
-import akrv;
+import abot;
+import afsf;
+import agej;
+import agem;
+import agfc;
+import agfd;
+import agfe;
+import agff;
+import agfg;
+import agfh;
+import agfs;
+import agfu;
+import agfw;
+import agwq;
+import aild;
+import alkl;
+import alnp;
+import alpo;
+import alpw;
+import amia;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import aoun;
-import aouu;
-import aoze;
-import aozg;
-import apll;
-import aplp;
-import apls;
-import aplu;
-import apug;
-import apvd;
-import apvm;
-import aqcg;
-import asus;
-import asuw;
-import auko;
-import aunl;
-import aunv;
-import auob;
-import auog;
-import axdq;
-import axdt;
-import axei;
-import axqy;
-import axrn;
-import axwv;
-import ayoi;
-import ayow;
-import aypk;
-import ayvx;
-import aywm;
-import azpi;
-import azqv;
-import bajy;
-import bakx;
-import bbdx;
-import bbfh;
-import bfob;
-import bgpu;
-import bidk;
+import aqnl;
+import aqns;
+import aqsc;
+import aqse;
+import arek;
+import areo;
+import arer;
+import aret;
+import arni;
+import arof;
+import aroo;
+import arvo;
+import aulp;
+import ault;
+import awbv;
+import awes;
+import awfc;
+import awfi;
+import awfo;
+import ayyu;
+import ayyx;
+import ayzo;
+import azmj;
+import azmz;
+import azsp;
+import bame;
+import bamr;
+import banf;
+import batw;
+import baul;
+import bbnr;
+import bbpe;
+import bcil;
+import bcjk;
+import bdcs;
+import bdec;
+import bhow;
+import biqt;
+import bkfg;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForApollo;
 import com.tencent.mobileqq.data.MessageForFile;
@@ -104,21 +105,23 @@ import java.util.UUID;
 import mqq.app.AccountNotMatchException;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 public class AIOImageProviderService
-  extends aejc
+  extends agfu
 {
   public static final HashMap<String, AIOImageProviderService> a;
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long;
-  public aeir a;
-  private ajsy jdField_a_of_type_Ajsy;
-  aoun jdField_a_of_type_Aoun;
-  bfob jdField_a_of_type_Bfob;
+  public agfh a;
+  private alkl jdField_a_of_type_Alkl;
+  aqnl jdField_a_of_type_Aqnl;
+  bhow jdField_a_of_type_Bhow;
   private AIOImageProviderService.IncreasinglyLoadMediaTask jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService$IncreasinglyLoadMediaTask = new AIOImageProviderService.IncreasinglyLoadMediaTask(this);
   String jdField_a_of_type_JavaLangString;
   public ArrayList<Long> a;
   final List<ChatMessage> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new LinkedList());
+  WeakReference<BaseActivity> jdField_a_of_type_MqqUtilWeakReference = null;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int;
   long jdField_b_of_type_Long = 9223372036854775807L;
@@ -139,6 +142,11 @@ public class AIOImageProviderService
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
+  protected AIOImageProviderService()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
   public AIOImageProviderService(String paramString1, String paramString2, int paramInt, ChatMessage paramChatMessage)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -150,12 +158,12 @@ public class AIOImageProviderService
       this.jdField_a_of_type_Boolean = paramChatMessage.isMultiMsg;
       this.jdField_a_of_type_Long = paramChatMessage.msgseq;
       this.jdField_a_of_type_JavaUtilList.add(paramChatMessage);
-      if (akpx.a(paramChatMessage.istroop) == 1032) {
+      if (abot.a(paramChatMessage.istroop) == 1032) {
         this.jdField_b_of_type_Int = paramChatMessage.getConfessTopicId();
       }
     }
-    this.jdField_a_of_type_Bfob = new bfob(ThreadManager.getFileThreadLooper(), null);
-    this.jdField_b_of_type_Boolean = ajwb.a(paramChatMessage);
+    this.jdField_a_of_type_Bhow = new bhow(ThreadManager.getFileThreadLooper(), null);
+    this.jdField_b_of_type_Boolean = alnp.a(paramChatMessage);
     if ((!this.jdField_a_of_type_Boolean) && (!MessageForApollo.class.isInstance(paramChatMessage)))
     {
       paramString2 = a();
@@ -171,12 +179,21 @@ public class AIOImageProviderService
       a(paramString1);
       b(paramString1);
       QLog.e("AIOImageProviderService", 1, "～～～～～～～call AIOImageProviderService～～～～～～～");
-      QLog.e("AIOImageProviderService", 1, apug.a());
-      return;
+      QLog.e("AIOImageProviderService", 1, arni.a());
+      paramString1 = BaseActivity.sTopActivity;
+      if (paramString1 != null)
+      {
+        this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramString1);
+        return;
+      }
     }
     catch (AccountNotMatchException paramString1)
     {
-      paramString1.printStackTrace();
+      for (;;)
+      {
+        paramString1.printStackTrace();
+      }
+      a("Static Null", "Init");
     }
   }
   
@@ -213,6 +230,12 @@ public class AIOImageProviderService
     localBundle.putString("file_source", paramMessageForShortVideo.fileSource);
     localBundle.putString("file_uuid", paramMessageForShortVideo.uuid);
     localBundle.putInt("file_thumb_Size", paramMessageForShortVideo.thumbFileSize);
+    if (bdcs.b(str2))
+    {
+      localBundle.putBoolean("k_dataline", true);
+      localBundle.putString("forward_extra", str2);
+      localBundle.putBoolean("direct_send_if_dataline_forward", true);
+    }
     return new Intent().putExtras(localBundle);
   }
   
@@ -222,7 +245,7 @@ public class AIOImageProviderService
     try
     {
       localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString);
-      localObject1 = bakx.a((QQAppInterface)localObject1, paramMessageForTroopFile);
+      localObject1 = bcjk.a((QQAppInterface)localObject1, paramMessageForTroopFile);
       if (localObject1 == null)
       {
         QLog.w("AIOImageProviderService", 1, "getFileStatusInfo is null");
@@ -236,23 +259,23 @@ public class AIOImageProviderService
     }
     Bundle localBundle = new Bundle();
     localBundle.putInt("forward_type", 0);
-    Object localObject2 = apug.a((azqv)localObject1);
+    Object localObject2 = arni.a((bbpe)localObject1);
     ((FileManagerEntity)localObject2).status = 2;
     ((FileManagerEntity)localObject2).nOpType = 24;
     ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
     localForwardFileInfo.b(((FileManagerEntity)localObject2).nSessionId);
     localForwardFileInfo.b(10006);
     if (!TextUtils.isEmpty(((FileManagerEntity)localObject2).getFilePath())) {
-      localForwardFileInfo.a(((azqv)localObject1).jdField_a_of_type_JavaLangString);
+      localForwardFileInfo.a(((bbpe)localObject1).jdField_a_of_type_JavaLangString);
     }
-    localForwardFileInfo.d(((azqv)localObject1).g);
-    localForwardFileInfo.d(((azqv)localObject1).jdField_c_of_type_Long);
+    localForwardFileInfo.d(((bbpe)localObject1).g);
+    localForwardFileInfo.d(((bbpe)localObject1).jdField_c_of_type_Long);
     localForwardFileInfo.a(Long.parseLong(paramMessageForTroopFile.frienduin));
-    if (((azqv)localObject1).jdField_a_of_type_JavaUtilUUID != null) {
-      localForwardFileInfo.e(((azqv)localObject1).jdField_a_of_type_JavaUtilUUID.toString());
+    if (((bbpe)localObject1).jdField_a_of_type_JavaUtilUUID != null) {
+      localForwardFileInfo.e(((bbpe)localObject1).jdField_a_of_type_JavaUtilUUID.toString());
     }
-    if (!TextUtils.isEmpty(((azqv)localObject1).jdField_c_of_type_JavaLangString)) {
-      localForwardFileInfo.f(((azqv)localObject1).jdField_c_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(((bbpe)localObject1).jdField_c_of_type_JavaLangString)) {
+      localForwardFileInfo.f(((bbpe)localObject1).jdField_c_of_type_JavaLangString);
     }
     for (;;)
     {
@@ -262,20 +285,20 @@ public class AIOImageProviderService
       localBundle.putBoolean("not_forward", true);
       localObject2 = new Intent();
       ((Intent)localObject2).putExtras(localBundle);
-      ((Intent)localObject2).putExtra("forward_text", ((azqv)localObject1).g);
+      ((Intent)localObject2).putExtra("forward_text", ((bbpe)localObject1).g);
       ((Intent)localObject2).putExtra("forward_from_troop_file", true);
       ((Intent)localObject2).putExtra("direct_send_if_dataline_forward", true);
       ((Intent)localObject2).putExtra("forward _key_nojump", false);
       ((Intent)localObject2).putExtra("sender_uin", paramMessageForTroopFile.senderuin);
       ((Intent)localObject2).putExtra("last_time", paramMessageForTroopFile.lastTime);
       return localObject2;
-      if (!TextUtils.isEmpty(((azqv)localObject1).jdField_d_of_type_JavaLangString)) {
-        localForwardFileInfo.f(((azqv)localObject1).jdField_d_of_type_JavaLangString);
+      if (!TextUtils.isEmpty(((bbpe)localObject1).jdField_d_of_type_JavaLangString)) {
+        localForwardFileInfo.f(((bbpe)localObject1).jdField_d_of_type_JavaLangString);
       }
     }
   }
   
-  private asuw a()
+  private ault a()
   {
     try
     {
@@ -296,7 +319,7 @@ public class AIOImageProviderService
         localAccountNotMatchException.printStackTrace();
         localObject = null;
       }
-      return (asuw)localObject.getManager(324);
+      return (ault)localObject.getManager(324);
     }
   }
   
@@ -321,6 +344,28 @@ public class AIOImageProviderService
       localObject2 = new AIOImageProviderService(paramString1, paramString2, paramInt, paramChatMessage);
     }
     return localObject2;
+  }
+  
+  private BaseActivity a(String paramString)
+  {
+    Object localObject = BaseActivity.sTopActivity;
+    if (localObject != null)
+    {
+      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(localObject);
+      return localObject;
+    }
+    if (this.jdField_a_of_type_MqqUtilWeakReference != null) {
+      localObject = (BaseActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    }
+    for (String str = null; localObject != null; str = "WeakReference Null") {
+      return localObject;
+    }
+    localObject = str;
+    if (str == null) {
+      localObject = "WeakReference has freed";
+    }
+    a((String)localObject, paramString);
+    return null;
   }
   
   private QQAppInterface a()
@@ -387,273 +432,109 @@ public class AIOImageProviderService
     return str1;
   }
   
-  private List<AIORichMediaData> a(QQAppInterface paramQQAppInterface, List<MessageRecord> paramList)
+  private void a(int paramInt, String paramString, AIOFilePicData paramAIOFilePicData)
   {
-    long l = System.currentTimeMillis();
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    int k = 0;
-    MessageRecord localMessageRecord;
-    int i;
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    label873:
-    int j;
-    if (k < paramList.size())
+    if ("I:E".equals(paramString))
     {
-      localMessageRecord = (MessageRecord)paramList.get(k);
-      i = localMessageRecord.msgtype;
-      if (localMessageRecord.shmsgseq < this.jdField_c_of_type_Long) {
-        this.jdField_c_of_type_Long = localMessageRecord.shmsgseq;
-      }
-      if (localMessageRecord.versionCode < this.jdField_c_of_type_Int) {
-        this.jdField_c_of_type_Int = localMessageRecord.versionCode;
-      }
-      if ((localMessageRecord.getId() > 0L) && (localMessageRecord.getId() < this.jdField_b_of_type_Long)) {
-        this.jdField_b_of_type_Long = localMessageRecord.getId();
-      }
-      if (localMessageRecord.time < this.jdField_d_of_type_Long) {
-        this.jdField_d_of_type_Long = localMessageRecord.time;
-      }
-      if ((localMessageRecord instanceof MessageForPic))
+      switch (paramInt)
       {
-        localObject1 = (MessageForPic)localMessageRecord;
-        ((MessageForPic)localObject1).parse();
-        if ((i == -3000) || (i == -30003)) {
-          if (QLog.isColorLevel()) {
-            QLog.i("AIOImageProviderService", 2, "LoadMediaTask msgType is " + i);
-          }
-        }
+      case 17: 
+      case 19: 
+      default: 
+        return;
+      case 18: 
+        paramAIOFilePicData.jdField_a_of_type_Boolean = true;
+        return;
+      case 20: 
+        paramAIOFilePicData.jdField_b_of_type_Boolean = true;
+        return;
       }
-      do
-      {
-        for (;;)
-        {
-          k += 1;
-          break;
-          if ((!ajyi.a((MessageRecord)localObject1)) && (!ajwb.a((MessageRecord)localObject1)) && ((akpx.a(this.jdField_a_of_type_Int) != 1032) || (this.jdField_b_of_type_Int <= 0) || (localMessageRecord.getConfessTopicId() == this.jdField_b_of_type_Int)) && (!advs.a((MessageForPic)localObject1)) && (!aezl.a((MessageForPic)localObject1)))
-          {
-            localArrayList1.add(aehw.a((MessageForPic)localObject1));
-            localArrayList2.add(localObject1);
-            continue;
-            if ((localMessageRecord instanceof MessageForMixedMsg))
-            {
-              localObject1 = (MessageForMixedMsg)localMessageRecord;
-              ((MessageForMixedMsg)localObject1).parse();
-              localObject1 = ((MessageForMixedMsg)localObject1).msgElemList.iterator();
-              while (((Iterator)localObject1).hasNext())
-              {
-                localObject2 = (MessageRecord)((Iterator)localObject1).next();
-                if (((localObject2 instanceof MessageForPic)) && (!advs.a((MessageForPic)localObject2)))
-                {
-                  ((MessageForPic)localObject2).isInMixedMsg = true;
-                  localArrayList1.add(aehw.a((MessageForPic)localObject2));
-                  localArrayList2.add((MessageForPic)localObject2);
-                }
-              }
-            }
-            else if ((localMessageRecord instanceof MessageForStructing))
-            {
-              localObject3 = (MessageForStructing)localMessageRecord;
-              ((MessageForStructing)localObject3).parse();
-              if ((((MessageForStructing)localObject3).structingMsg != null) && ((((MessageForStructing)localObject3).structingMsg.mMsgServiceID == 5) || (((MessageForStructing)localObject3).structingMsg.mMsgServiceID == 137)))
-              {
-                StructMsgForImageShare localStructMsgForImageShare = (StructMsgForImageShare)((MessageForStructing)localObject3).structingMsg;
-                axwv localaxwv = localStructMsgForImageShare.getFirstImageElement();
-                if (localaxwv != null)
-                {
-                  localObject2 = localaxwv.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
-                  localObject1 = localObject2;
-                  if (localObject2 == null)
-                  {
-                    if (localaxwv.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null) {
-                      localaxwv.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = localStructMsgForImageShare;
-                    }
-                    localObject1 = localaxwv.a();
-                  }
-                  localObject2 = aehw.a((MessageForPic)localObject1);
-                  ((AIOImageData)localObject2).jdField_g_of_type_Long = ((MessageForStructing)localObject3).time;
-                  ((AIOImageData)localObject2).i = ((MessageForStructing)localObject3).shmsgseq;
-                  if ((localStructMsgForImageShare.mMsgActionData != null) && (localStructMsgForImageShare.mMsgActionData.startsWith("comic_plugin.apk")))
-                  {
-                    ((AIOImageData)localObject2).jdField_b_of_type_Int = 1;
-                    ((AIOImageData)localObject2).jdField_a_of_type_JavaLangObject = localStructMsgForImageShare.getBytes();
-                    ((AIOImageData)localObject2).jdField_d_of_type_Int = aeht.a(aeht.a(localStructMsgForImageShare));
-                  }
-                  for (;;)
-                  {
-                    localArrayList1.add(localObject2);
-                    localArrayList2.add(localObject1);
-                    break;
-                    if ((localStructMsgForImageShare.mMsgActionData != null) && (localStructMsgForImageShare.mMsgActionData.startsWith("ScreenShotShare")))
-                    {
-                      ((AIOImageData)localObject2).jdField_b_of_type_Int = 2;
-                      ((AIOImageData)localObject2).jdField_a_of_type_JavaLangObject = localStructMsgForImageShare.getBytes();
-                      if ((bbfh.b(localMessageRecord.issend)) && (!TextUtils.isEmpty(((MessageForPic)localObject1).path)) && (new File(((MessageForPic)localObject1).path).exists())) {
-                        ((AIOImageData)localObject2).jdField_b_of_type_JavaLangString = ((MessageForPic)localObject1).path;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            else
-            {
-              if (!MessageForShortVideo.class.isInstance(localMessageRecord)) {
-                break label873;
-              }
-              if (MessageForLightVideo.class.isInstance(localMessageRecord))
-              {
-                localObject1 = (MessageForLightVideo)localMessageRecord;
-                localArrayList1.add(aehw.a((MessageForLightVideo)localObject1));
-                localArrayList2.add(localObject1);
-              }
-              else
-              {
-                localObject1 = (MessageForShortVideo)localMessageRecord;
-                if ((((MessageForShortVideo)localObject1).busiType == 1) || (((MessageForShortVideo)localObject1).busiType == 2) || (((MessageForShortVideo)localObject1).busiType == 1007) || (((MessageForShortVideo)localObject1).busiType == 1009) || (((MessageForShortVideo)localObject1).busiType == 0))
-                {
-                  localArrayList1.add(aehw.a((MessageForShortVideo)localObject1));
-                  localArrayList2.add(localObject1);
-                }
-              }
-            }
-          }
-        }
-        if (!(localMessageRecord instanceof MessageForFile)) {
-          break label1125;
-        }
-        localObject3 = (MessageForFile)localMessageRecord;
-      } while ((akpx.a(this.jdField_a_of_type_Int) == 1032) && (this.jdField_b_of_type_Int > 0) && (localMessageRecord.getConfessTopicId() != this.jdField_b_of_type_Int));
-      localObject1 = paramQQAppInterface.a().a(((MessageForFile)localObject3).uniseq, ((MessageForFile)localObject3).frienduin, ((MessageForFile)localObject3).istroop);
-      j = 0;
-      if ((localObject1 == null) || (((!apug.e((FileManagerEntity)localObject1)) || (((FileManagerEntity)localObject1).nFileType == 2)) && (16 == ((FileManagerEntity)localObject1).status))) {
-        break label1462;
-      }
-      if (((FileManagerEntity)localObject1).nFileType == 0)
-      {
-        i = 1;
-        label989:
-        if (((FileManagerEntity)localObject1).nFileType != 2) {
-          break label1054;
-        }
-        j = 1;
-      }
+      paramAIOFilePicData.jdField_c_of_type_Boolean = true;
+      return;
     }
-    for (;;)
+    switch (paramInt)
     {
-      label1001:
-      localObject2 = null;
-      if (i != 0)
-      {
-        ((MessageForFile)localObject3).parse();
-        localObject1 = aehw.a((ChatMessage)localObject3, paramQQAppInterface);
-      }
-      for (;;)
-      {
-        if (localObject1 == null) {
-          break label1123;
-        }
-        localArrayList1.add(localObject1);
-        localArrayList2.add(localObject3);
-        break;
-        i = 0;
-        break label989;
-        label1054:
-        j = 0;
-        break label1001;
-        if (j != 0)
-        {
-          ((MessageForFile)localObject3).parse();
-          localObject1 = aehw.a((ChatMessage)localObject3, paramQQAppInterface);
-        }
-        else
-        {
-          localObject1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            QLog.i("AIOImageProviderService", 2, "ignore filePic: " + localObject3);
-            localObject1 = localObject2;
-          }
-        }
-      }
-      label1123:
-      break;
-      label1125:
-      if ((localMessageRecord instanceof MessageForTroopFile))
-      {
-        localObject1 = (MessageForTroopFile)localMessageRecord;
-        j = apug.a(((MessageForTroopFile)localObject1).fileName);
-        if (j == 0)
-        {
-          i = 1;
-          if (j != 2) {
-            break label1224;
-          }
-        }
-        for (j = 1;; j = 0)
-        {
-          localObject2 = bakx.a(paramQQAppInterface, (MessageForTroopFile)localObject1);
-          if (localObject2 == null) {
-            break;
-          }
-          if (i == 0) {
-            break label1230;
-          }
-          localObject2 = aehw.a((MessageForTroopFile)localObject1, paramQQAppInterface);
-          if (localObject2 == null) {
-            break;
-          }
-          localArrayList1.add(localObject2);
-          localArrayList2.add(localObject1);
-          break;
-          i = 0;
-          break label1157;
-        }
-        if ((j == 0) || ((!apvd.b(((azqv)localObject2).jdField_a_of_type_JavaLangString)) && (!apvm.a(paramQQAppInterface)))) {
-          break;
-        }
-        localObject2 = aehw.a((ChatMessage)localObject1, paramQQAppInterface);
-        if (localObject2 == null) {
-          break;
-        }
-        localArrayList1.add(localObject2);
-        localArrayList2.add(localObject1);
-        break;
-      }
-      label1157:
-      label1224:
-      label1230:
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("AIOImageProviderService", 2, "messageRecordToData " + localMessageRecord.getBaseInfoString());
-      break;
-      if (this.jdField_c_of_type_Boolean)
-      {
-        this.jdField_a_of_type_JavaUtilList.addAll(0, localArrayList2);
-        this.jdField_b_of_type_JavaUtilList.addAll(0, localArrayList1);
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOImageProviderService", 2, "messageRecordToData total size " + localArrayList2.size() + ", cost " + (System.currentTimeMillis() - l));
-        }
-        return localArrayList1;
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_b_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll(localArrayList2);
-        this.jdField_b_of_type_JavaUtilList.addAll(localArrayList1);
-      }
-      label1462:
-      i = 0;
+    case 17: 
+    case 19: 
+    default: 
+      return;
+    case 16: 
+      paramAIOFilePicData.jdField_b_of_type_JavaLangString = paramString;
+      return;
+    case 18: 
+      paramAIOFilePicData.jdField_c_of_type_JavaLangString = paramString;
+      return;
     }
+    paramAIOFilePicData.jdField_d_of_type_JavaLangString = paramString;
   }
   
-  private void a(long paramLong, int paramInt1, int paramInt2, apll paramapll)
+  private void a(int paramInt, String paramString, AIOImageData paramAIOImageData)
   {
-    paramapll.a(new aeiq(this, paramLong, paramInt1, paramInt2, paramapll));
+    if ("I:E".equals(paramString)) {
+      switch (paramInt)
+      {
+      }
+    }
+    do
+    {
+      return;
+      paramAIOImageData.jdField_b_of_type_Boolean = true;
+      return;
+      paramAIOImageData.jdField_c_of_type_Boolean = true;
+      return;
+      paramAIOImageData.jdField_a_of_type_Boolean = true;
+      return;
+      switch (paramInt)
+      {
+      case 3: 
+      case 5: 
+      case 6: 
+      case 7: 
+      default: 
+        return;
+      case 1: 
+        paramAIOImageData.jdField_a_of_type_JavaLangString = paramString;
+        return;
+      case 2: 
+        paramAIOImageData.jdField_b_of_type_JavaLangString = paramString;
+      }
+    } while ((paramAIOImageData.jdField_g_of_type_Boolean) || (!new File(paramAIOImageData.jdField_a_of_type_JavaLangString + "_hd").exists()));
+    paramAIOImageData.jdField_a_of_type_JavaLangString += "_hd";
+    return;
+    paramAIOImageData.jdField_c_of_type_JavaLangString = paramString;
+    return;
+    paramAIOImageData.jdField_d_of_type_JavaLangString = paramString;
+  }
+  
+  private void a(int paramInt, String paramString, AIOShortVideoData paramAIOShortVideoData)
+  {
+    if ("I:E".equals(paramString))
+    {
+      switch (paramInt)
+      {
+      default: 
+        return;
+      case 0: 
+        paramAIOShortVideoData.jdField_a_of_type_Boolean = true;
+        return;
+      }
+      paramAIOShortVideoData.jdField_b_of_type_Boolean = true;
+      return;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      paramAIOShortVideoData.jdField_a_of_type_JavaLangString = paramString;
+      return;
+    }
+    paramAIOShortVideoData.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  private void a(long paramLong, int paramInt1, int paramInt2, arek paramarek)
+  {
+    paramarek.a(new agfg(this, paramLong, paramInt1, paramInt2, paramarek));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, MessageForPic paramMessageForPic)
@@ -661,7 +542,7 @@ public class AIOImageProviderService
     if ((paramQQAppInterface == null) || (paramMessageForPic == null)) {
       return;
     }
-    ((auob)paramQQAppInterface.getManager(73)).c(paramMessageForPic);
+    ((awfi)paramQQAppInterface.getManager(73)).c(paramMessageForPic);
     paramQQAppInterface = paramQQAppInterface.a();
     paramQQAppInterface.a.b(paramMessageForPic, paramMessageForPic.size);
     paramQQAppInterface.f();
@@ -672,7 +553,7 @@ public class AIOImageProviderService
     try
     {
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString);
-      paramMessageForFile = apug.a(localQQAppInterface, paramMessageForFile);
+      paramMessageForFile = arni.a(localQQAppInterface, paramMessageForFile);
       localQQAppInterface.a().a(paramMessageForFile.nSessionId);
       return;
     }
@@ -681,6 +562,85 @@ public class AIOImageProviderService
       while (!QLog.isColorLevel()) {}
       QLog.d("AIOImageProviderService", 2, "no appRuntime");
     }
+  }
+  
+  private void a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord.shmsgseq < this.jdField_c_of_type_Long) {
+      this.jdField_c_of_type_Long = paramMessageRecord.shmsgseq;
+    }
+    if (paramMessageRecord.versionCode < this.jdField_c_of_type_Int) {
+      this.jdField_c_of_type_Int = paramMessageRecord.versionCode;
+    }
+    if ((paramMessageRecord.getId() > 0L) && (paramMessageRecord.getId() < this.jdField_b_of_type_Long)) {
+      this.jdField_b_of_type_Long = paramMessageRecord.getId();
+    }
+    if (paramMessageRecord.time < this.jdField_d_of_type_Long) {
+      this.jdField_d_of_type_Long = paramMessageRecord.time;
+    }
+  }
+  
+  private void a(String paramString1, String paramString2)
+  {
+    HashMap localHashMap = new HashMap();
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
+    }
+    localHashMap.put("result", str);
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    localHashMap.put("fromaction", paramString1);
+    azmz.a(BaseApplication.getContext()).a(null, "ImageProviderService_getTopActivity_event", false, 0L, 0L, localHashMap, null);
+  }
+  
+  private void a(List<AIORichMediaData> paramList, List<ChatMessage> paramList1, MessageForTroopFile paramMessageForTroopFile)
+  {
+    int j = 1;
+    int k = arni.a(paramMessageForTroopFile.fileName);
+    int i;
+    label26:
+    Object localObject;
+    if (k == 0)
+    {
+      i = 1;
+      if (k != 2) {
+        break label48;
+      }
+      localObject = bcjk.a(a(), paramMessageForTroopFile);
+      if (localObject != null) {
+        break label54;
+      }
+    }
+    label48:
+    label54:
+    label92:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          i = 0;
+          break;
+          j = 0;
+          break label26;
+          if (i == 0) {
+            break label92;
+          }
+          localObject = agem.a(paramMessageForTroopFile, a());
+        } while (localObject == null);
+        paramList.add(localObject);
+        paramList1.add(paramMessageForTroopFile);
+        return;
+      } while ((j == 0) || ((!arof.b(((bbpe)localObject).jdField_a_of_type_JavaLangString)) && (!aroo.a(a()))));
+      localObject = agem.a(paramMessageForTroopFile, a());
+    } while (localObject == null);
+    paramList.add(localObject);
+    paramList1.add(paramMessageForTroopFile);
   }
   
   public static boolean a(AIORichMediaData paramAIORichMediaData)
@@ -719,9 +679,9 @@ public class AIOImageProviderService
       label84:
       break label84;
     }
-    return 2 == apug.a(paramMessageRecord.fileName);
+    return 2 == arni.a(paramMessageRecord.fileName);
     if (MessageForTroopFile.class.isInstance(paramMessageRecord)) {
-      return 2 == apug.a(((MessageForTroopFile)paramMessageRecord).fileName);
+      return 2 == arni.a(((MessageForTroopFile)paramMessageRecord).fileName);
     }
     return false;
   }
@@ -755,9 +715,72 @@ public class AIOImageProviderService
   
   private void c(MessageForPic paramMessageForPic, long paramLong, int paramInt1, int paramInt2)
   {
-    asuw localasuw = a();
-    if (localasuw != null) {
-      localasuw.a(paramMessageForPic, paramLong, paramInt1, paramInt2);
+    ault localault = a();
+    if (localault != null) {
+      localault.a(paramMessageForPic, paramLong, paramInt1, paramInt2);
+    }
+  }
+  
+  private void d(List<AIORichMediaData> paramList, List<ChatMessage> paramList1, MessageRecord paramMessageRecord)
+  {
+    int j = 1;
+    int k = 0;
+    MessageForFile localMessageForFile = (MessageForFile)paramMessageRecord;
+    if ((abot.a(this.jdField_a_of_type_Int) == 1032) && (this.jdField_b_of_type_Int > 0) && (paramMessageRecord.getConfessTopicId() != this.jdField_b_of_type_Int)) {
+      return;
+    }
+    paramMessageRecord = a().a().a(localMessageForFile.uniseq, localMessageForFile.frienduin, localMessageForFile.istroop);
+    int i;
+    if ((paramMessageRecord != null) && (((arni.e(paramMessageRecord)) && (paramMessageRecord.nFileType != 2)) || (16 != paramMessageRecord.status))) {
+      if (paramMessageRecord.nFileType == 0)
+      {
+        i = 1;
+        if (paramMessageRecord.nFileType != 2) {
+          break label167;
+        }
+      }
+    }
+    for (;;)
+    {
+      label116:
+      Object localObject = null;
+      if (i != 0)
+      {
+        localMessageForFile.parse();
+        paramMessageRecord = agem.a(localMessageForFile, a());
+      }
+      for (;;)
+      {
+        if (paramMessageRecord == null) {
+          break label236;
+        }
+        paramList.add(paramMessageRecord);
+        paramList1.add(localMessageForFile);
+        return;
+        i = 0;
+        break;
+        label167:
+        j = 0;
+        break label116;
+        if (j != 0)
+        {
+          localMessageForFile.parse();
+          paramMessageRecord = agem.a(localMessageForFile, a());
+        }
+        else
+        {
+          paramMessageRecord = localObject;
+          if (QLog.isColorLevel())
+          {
+            QLog.i("AIOImageProviderService", 2, "ignore filePic: " + localMessageForFile);
+            paramMessageRecord = localObject;
+          }
+        }
+      }
+      label236:
+      break;
+      i = 0;
+      j = k;
     }
   }
   
@@ -772,16 +795,16 @@ public class AIOImageProviderService
       if ((localChatMessage == null) && (QLog.isColorLevel())) {
         QLog.i("AIOImageProviderService", 2, "getSaveFileProgress chatMessage is null");
       }
-      localObject = ((asuw)localObject).a(((asuw)localObject).a(localChatMessage));
+      localObject = ((ault)localObject).a(((ault)localObject).a(localChatMessage));
       i = j;
       if (localObject != null)
       {
         i = j;
-        if (!((asus)localObject).jdField_a_of_type_Boolean)
+        if (!((aulp)localObject).jdField_a_of_type_Boolean)
         {
           i = j;
-          if (((asus)localObject).jdField_d_of_type_Int == 1) {
-            i = ((asus)localObject).jdField_c_of_type_Int;
+          if (((aulp)localObject).jdField_d_of_type_Int == 1) {
+            i = ((aulp)localObject).jdField_c_of_type_Int;
           }
         }
       }
@@ -802,7 +825,7 @@ public class AIOImageProviderService
       {
         Object localObject2 = (MessageForPic)localObject1;
         localObject2 = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString);
-        localObject1 = bgpu.a((auko)localObject1).b((QQAppInterface)localObject2, (MessageRecord)localObject1).a();
+        localObject1 = biqt.a((awbv)localObject1).b((QQAppInterface)localObject2, (MessageRecord)localObject1).a();
         return localObject1;
       }
     }
@@ -877,11 +900,11 @@ public class AIOImageProviderService
       Bundle localBundle = new Bundle();
       localBundle.putInt("forward_type", 0);
       localBundle.putBoolean("not_forward", true);
-      localBundle.putParcelable("fileinfo", aqcg.a(localFileManagerEntity, paramMessageForFile));
-      localBundle.putString("forward_text", ajya.a(2131700095) + apug.d(localFileManagerEntity.fileName) + ajya.a(2131700097) + apvd.a(localFileManagerEntity.fileSize) + "。");
+      localBundle.putParcelable("fileinfo", arvo.a(localFileManagerEntity, paramMessageForFile));
+      localBundle.putString("forward_text", alpo.a(2131700464) + arni.d(localFileManagerEntity.fileName) + alpo.a(2131700466) + arof.a(localFileManagerEntity.fileSize) + "。");
       localBundle.putBoolean("direct_send_if_dataline_forward", true);
       localBundle.putString("forward_filepath", localFileManagerEntity.getFilePath());
-      localBundle.putBoolean("k_favorites", apug.c(localFileManagerEntity));
+      localBundle.putBoolean("k_favorites", arni.c(localFileManagerEntity));
       if ((localFileManagerEntity.getCloudType() == 6) || (localFileManagerEntity.getCloudType() == 7))
       {
         localBundle.putBoolean("isFromShare", true);
@@ -900,6 +923,11 @@ public class AIOImageProviderService
       paramMessageForFile.printStackTrace();
     }
     return null;
+  }
+  
+  protected AIOImageData a(MessageForPic paramMessageForPic)
+  {
+    return agem.a(paramMessageForPic);
   }
   
   public ChatMessage a(long paramLong)
@@ -929,7 +957,7 @@ public class AIOImageProviderService
     //   0: aconst_null
     //   1: astore 8
     //   3: aload_0
-    //   4: getfield 55	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   4: getfield 54	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   7: astore 9
     //   9: aload 9
     //   11: monitorenter
@@ -937,30 +965,30 @@ public class AIOImageProviderService
     //   13: istore 6
     //   15: iload 6
     //   17: aload_0
-    //   18: getfield 55	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   21: invokeinterface 528 1 0
+    //   18: getfield 54	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   21: invokeinterface 867 1 0
     //   26: if_icmpge +217 -> 243
     //   29: aload_0
-    //   30: getfield 55	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   30: getfield 54	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   33: iload 6
-    //   35: invokeinterface 531 2 0
-    //   40: checkcast 95	com/tencent/mobileqq/data/ChatMessage
+    //   35: invokeinterface 870 2 0
+    //   40: checkcast 99	com/tencent/mobileqq/data/ChatMessage
     //   43: astore 7
-    //   45: ldc_w 550
+    //   45: ldc_w 618
     //   48: aload 7
-    //   50: invokevirtual 148	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
+    //   50: invokevirtual 152	java/lang/Class:isInstance	(Ljava/lang/Object;)Z
     //   53: ifeq +143 -> 196
     //   56: aload 7
-    //   58: checkcast 550	com/tencent/mobileqq/data/MessageForPic
+    //   58: checkcast 618	com/tencent/mobileqq/data/MessageForPic
     //   61: astore 10
     //   63: lload_1
     //   64: aload 10
-    //   66: getfield 810	com/tencent/mobileqq/data/MessageForPic:uniseq	J
+    //   66: getfield 733	com/tencent/mobileqq/data/MessageForPic:uniseq	J
     //   69: lcmp
     //   70: ifne +183 -> 253
     //   73: lload_3
     //   74: aload 10
-    //   76: getfield 813	com/tencent/mobileqq/data/MessageForPic:subMsgId	I
+    //   76: getfield 736	com/tencent/mobileqq/data/MessageForPic:subMsgId	I
     //   79: i2l
     //   80: lcmp
     //   81: ifne +172 -> 253
@@ -969,14 +997,14 @@ public class AIOImageProviderService
     //   87: iload 5
     //   89: ifeq +15 -> 104
     //   92: aload_0
-    //   93: getfield 55	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   93: getfield 54	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   96: iload 6
-    //   98: invokeinterface 920 2 0
+    //   98: invokeinterface 873 2 0
     //   103: pop
     //   104: aload 9
     //   106: monitorexit
     //   107: aload_0
-    //   108: getfield 57	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   108: getfield 56	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
     //   111: astore 8
     //   113: aload 8
     //   115: monitorenter
@@ -984,22 +1012,22 @@ public class AIOImageProviderService
     //   117: istore 5
     //   119: iload 5
     //   121: aload_0
-    //   122: getfield 57	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   125: invokeinterface 528 1 0
+    //   122: getfield 56	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   125: invokeinterface 867 1 0
     //   130: if_icmpge +107 -> 237
     //   133: aload_0
-    //   134: getfield 57	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   134: getfield 56	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
     //   137: iload 5
-    //   139: invokeinterface 531 2 0
-    //   144: checkcast 922	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData
+    //   139: invokeinterface 870 2 0
+    //   144: checkcast 875	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData
     //   147: astore 9
     //   149: aload 9
-    //   151: getfield 924	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData:jdField_f_of_type_Long	J
+    //   151: getfield 877	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData:jdField_f_of_type_Long	J
     //   154: lload_1
     //   155: lcmp
     //   156: ifne +64 -> 220
     //   159: aload 9
-    //   161: getfield 926	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData:jdField_f_of_type_Int	I
+    //   161: getfield 879	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData:jdField_f_of_type_Int	I
     //   164: i2l
     //   165: lload_3
     //   166: lcmp
@@ -1009,9 +1037,9 @@ public class AIOImageProviderService
     //   173: iload 6
     //   175: ifeq +15 -> 190
     //   178: aload_0
-    //   179: getfield 57	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   179: getfield 56	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
     //   182: iload 5
-    //   184: invokeinterface 920 2 0
+    //   184: invokeinterface 873 2 0
     //   189: pop
     //   190: aload 8
     //   192: monitorexit
@@ -1019,7 +1047,7 @@ public class AIOImageProviderService
     //   195: areturn
     //   196: lload_1
     //   197: aload 7
-    //   199: getfield 814	com/tencent/mobileqq/data/ChatMessage:uniseq	J
+    //   199: getfield 737	com/tencent/mobileqq/data/ChatMessage:uniseq	J
     //   202: lcmp
     //   203: ifne +50 -> 253
     //   206: iconst_1
@@ -1122,6 +1150,56 @@ public class AIOImageProviderService
     return "";
   }
   
+  protected List<AIORichMediaData> a(List<MessageRecord> paramList)
+  {
+    long l = System.currentTimeMillis();
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    int i = 0;
+    if (i < paramList.size())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramList.get(i);
+      a(localMessageRecord);
+      if ((localMessageRecord instanceof MessageForPic)) {
+        c(localArrayList1, localArrayList2, localMessageRecord);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ((localMessageRecord instanceof MessageForMixedMsg)) {
+          a(localArrayList1, localArrayList2, (MessageForMixedMsg)localMessageRecord);
+        } else if ((localMessageRecord instanceof MessageForStructing)) {
+          b(localArrayList1, localArrayList2, localMessageRecord);
+        } else if (MessageForShortVideo.class.isInstance(localMessageRecord)) {
+          a(localArrayList1, localArrayList2, localMessageRecord);
+        } else if ((localMessageRecord instanceof MessageForFile)) {
+          d(localArrayList1, localArrayList2, localMessageRecord);
+        } else if ((localMessageRecord instanceof MessageForTroopFile)) {
+          a(localArrayList1, localArrayList2, (MessageForTroopFile)localMessageRecord);
+        } else if (QLog.isColorLevel()) {
+          QLog.i("AIOImageProviderService", 2, "messageRecordToData " + localMessageRecord.getBaseInfoString());
+        }
+      }
+    }
+    if (this.jdField_c_of_type_Boolean)
+    {
+      this.jdField_a_of_type_JavaUtilList.addAll(0, localArrayList2);
+      this.jdField_b_of_type_JavaUtilList.addAll(0, localArrayList1);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOImageProviderService", 2, "messageRecordToData total size " + localArrayList2.size() + ", cost " + (System.currentTimeMillis() - l));
+      }
+      return localArrayList1;
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_b_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(localArrayList2);
+      this.jdField_b_of_type_JavaUtilList.addAll(localArrayList1);
+    }
+  }
+  
   public List<ChatMessage> a(long[] paramArrayOfLong)
   {
     ArrayList localArrayList = new ArrayList();
@@ -1150,20 +1228,20 @@ public class AIOImageProviderService
     this.jdField_b_of_type_JavaLangString = null;
     this.jdField_a_of_type_Int = 0;
     this.jdField_d_of_type_Int = 60;
-    this.jdField_a_of_type_Aeir = null;
-    if (this.jdField_a_of_type_Aoun != null) {}
+    this.jdField_a_of_type_Agfh = null;
+    if (this.jdField_a_of_type_Aqnl != null) {}
     try
     {
-      ((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString)).a().deleteObserver(this.jdField_a_of_type_Aoun);
-      this.jdField_a_of_type_Aoun = null;
-      if (this.jdField_a_of_type_Ajsy == null) {}
+      ((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString)).a().deleteObserver(this.jdField_a_of_type_Aqnl);
+      this.jdField_a_of_type_Aqnl = null;
+      if (this.jdField_a_of_type_Alkl == null) {}
     }
     catch (AccountNotMatchException localAccountNotMatchException1)
     {
       try
       {
-        ((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString)).removeObserver(this.jdField_a_of_type_Ajsy);
-        this.jdField_a_of_type_Ajsy = null;
+        ((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString)).removeObserver(this.jdField_a_of_type_Alkl);
+        this.jdField_a_of_type_Alkl = null;
         QLog.i("AIOImageProviderService<QFile>", 1, "clear TroopFileObserver suc");
         if (this.jdField_b_of_type_JavaUtilHashMap != null)
         {
@@ -1189,7 +1267,7 @@ public class AIOImageProviderService
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Aeje == null) && (this.jdField_a_of_type_Aeir == null)) {}
+    if ((this.jdField_a_of_type_Agfw == null) && (this.jdField_a_of_type_Agfh == null)) {}
     do
     {
       return;
@@ -1204,7 +1282,7 @@ public class AIOImageProviderService
         ThreadManagerV2.excute(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService$IncreasinglyLoadMediaTask, 64, null, false);
         return;
       }
-    } while (this.jdField_a_of_type_Aeje == null);
+    } while (this.jdField_a_of_type_Agfw == null);
     ArrayList localArrayList;
     if (this.jdField_b_of_type_JavaUtilList.size() > 0)
     {
@@ -1227,18 +1305,18 @@ public class AIOImageProviderService
       }
       finally {}
       ??? = (AIORichMediaData[])localObject2.toArray(new AIORichMediaData[localObject2.size()]);
-      this.jdField_a_of_type_Aeje.a((AIORichMediaData[])???, -1);
+      this.jdField_a_of_type_Agfw.a((AIORichMediaData[])???, -1);
       return;
       ThreadManagerV2.excute(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService$IncreasinglyLoadMediaTask, 64, null, false);
       return;
-      if (this.jdField_a_of_type_Aeir == null) {
+      if (this.jdField_a_of_type_Agfh == null) {
         break;
       }
       if (this.jdField_b_of_type_JavaUtilList.size() > 0) {
         synchronized (this.jdField_b_of_type_JavaUtilList)
         {
           AIORichMediaData[] arrayOfAIORichMediaData = (AIORichMediaData[])this.jdField_b_of_type_JavaUtilList.toArray(new AIORichMediaData[this.jdField_b_of_type_JavaUtilList.size()]);
-          this.jdField_a_of_type_Aeir.a(arrayOfAIORichMediaData, -1);
+          this.jdField_a_of_type_Agfh.a(arrayOfAIORichMediaData, -1);
           return;
         }
       }
@@ -1251,8 +1329,9 @@ public class AIOImageProviderService
   
   public void a(int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (BaseActivity.sTopActivity != null) {
-      ThreadManager.getUIHandler().post(new AIOImageProviderService.8(this, paramBoolean, paramString2, paramString1, paramString3, paramString4, paramInt));
+    BaseActivity localBaseActivity = a("safetyReport");
+    if (localBaseActivity != null) {
+      ThreadManager.getUIHandler().post(new AIOImageProviderService.8(this, paramBoolean, localBaseActivity, paramString2, paramString1, paramString3, paramString4, paramInt));
     }
   }
   
@@ -1349,146 +1428,95 @@ public class AIOImageProviderService
       try
       {
         if (i >= this.jdField_b_of_type_JavaUtilList.size()) {
-          break label517;
+          break label185;
         }
         localObject = (AIORichMediaData)this.jdField_b_of_type_JavaUtilList.get(i);
-        if (!AIOImageData.class.isInstance(localObject)) {
-          break label277;
-        }
-        localObject = (AIOImageData)localObject;
-        if ((((AIOImageData)localObject).jdField_f_of_type_Long != paramLong) || (((AIOImageData)localObject).jdField_f_of_type_Int != paramInt1)) {
-          break label651;
-        }
-        if (!"I:E".equals(paramString)) {
-          break label524;
-        }
-        switch (paramInt2)
+        if (AIOImageData.class.isInstance(localObject))
         {
-        case 3: 
+          localObject = (AIOImageData)localObject;
+          if ((((AIOImageData)localObject).jdField_f_of_type_Long != paramLong) || (((AIOImageData)localObject).jdField_f_of_type_Int != paramInt1)) {
+            break label189;
+          }
+          a(paramInt2, paramString, (AIOImageData)localObject);
           return;
         }
-      }
-      finally {}
-      ((AIOImageData)localObject).jdField_b_of_type_Boolean = true;
-      continue;
-      ((AIOImageData)localObject).jdField_c_of_type_Boolean = true;
-      continue;
-      ((AIOImageData)localObject).jdField_a_of_type_Boolean = true;
-      continue;
-      ((AIOImageData)localObject).jdField_a_of_type_JavaLangString = paramString;
-      continue;
-      ((AIOImageData)localObject).jdField_b_of_type_JavaLangString = paramString;
-      if ((!((AIOImageData)localObject).jdField_g_of_type_Boolean) && (new File(((AIOImageData)localObject).jdField_a_of_type_JavaLangString + "_hd").exists()))
-      {
-        ((AIOImageData)localObject).jdField_a_of_type_JavaLangString += "_hd";
-        continue;
-        ((AIOImageData)localObject).jdField_c_of_type_JavaLangString = paramString;
-        continue;
-        ((AIOImageData)localObject).jdField_d_of_type_JavaLangString = paramString;
-        continue;
-        label277:
         if (AIOShortVideoData.class.isInstance(localObject))
         {
           localObject = (AIOShortVideoData)localObject;
           if (((AIOShortVideoData)localObject).jdField_f_of_type_Long != paramLong) {
-            break label651;
+            break label189;
           }
-          if (!"I:E".equals(paramString)) {}
-        }
-        else
-        {
-          switch (paramInt2)
-          {
-          case 0: 
-          case 1: 
-            for (;;)
-            {
-              label340:
-              return;
-              ((AIOShortVideoData)localObject).jdField_a_of_type_Boolean = true;
-              continue;
-              ((AIOShortVideoData)localObject).jdField_b_of_type_Boolean = true;
-              continue;
-              ((AIOShortVideoData)localObject).jdField_a_of_type_JavaLangString = paramString;
-              continue;
-              ((AIOShortVideoData)localObject).jdField_b_of_type_JavaLangString = paramString;
-            }
-            if (!AIOFilePicData.class.isInstance(localObject)) {
-              break label651;
-            }
-            localObject = (AIOFilePicData)localObject;
-            if (((AIOFilePicData)localObject).jdField_f_of_type_Long != paramLong) {
-              break label651;
-            }
-            if ("I:E".equals(paramString)) {
-              switch (paramInt2)
-              {
-              }
-            }
-            break;
-          }
-        }
-        for (;;)
-        {
+          a(paramInt2, paramString, (AIOShortVideoData)localObject);
           return;
-          ((AIOFilePicData)localObject).jdField_a_of_type_Boolean = true;
-          continue;
-          ((AIOFilePicData)localObject).jdField_b_of_type_Boolean = true;
-          continue;
-          ((AIOFilePicData)localObject).jdField_c_of_type_Boolean = true;
-          continue;
-          ((AIOFilePicData)localObject).jdField_b_of_type_JavaLangString = paramString;
-          continue;
-          ((AIOFilePicData)localObject).jdField_c_of_type_JavaLangString = paramString;
-          continue;
-          ((AIOFilePicData)localObject).jdField_d_of_type_JavaLangString = paramString;
-          continue;
-          label517:
-          return;
-          break;
-          label524:
-          switch (paramInt2)
-          {
-          }
-          break;
-          break label340;
-          switch (paramInt2)
-          {
-          }
-          break label340;
-          continue;
-          switch (paramInt2)
-          {
-          }
         }
-        label651:
-        i += 1;
       }
+      finally {}
+      if (AIOFilePicData.class.isInstance(localObject))
+      {
+        localObject = (AIOFilePicData)localObject;
+        if (((AIOFilePicData)localObject).jdField_f_of_type_Long == paramLong)
+        {
+          a(paramInt2, paramString, (AIOFilePicData)localObject);
+          return;
+          label185:
+          return;
+        }
+      }
+      label189:
+      i += 1;
     }
   }
   
   public void a(long paramLong, int paramInt, Bundle paramBundle)
   {
+    Object localObject2;
+    Object localObject1;
+    try
+    {
+      localObject2 = a(paramLong);
+      localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString);
+      if ((localObject2 != null) && (a((MessageRecord)localObject2))) {
+        break label943;
+      }
+      QLog.e("VideoPlayControllerForFile.main", 1, "msg is not video, id:" + paramLong);
+      return;
+    }
+    catch (AccountNotMatchException paramBundle)
+    {
+      paramBundle.printStackTrace();
+      return;
+    }
+    float f = paramBundle.getFloat("progress", 0.0F);
+    if (MessageForFile.class.isInstance(localObject2))
+    {
+      paramBundle = (MessageForFile)localObject2;
+      localObject2 = ((QQAppInterface)localObject1).a().a(paramBundle.uniseq, paramBundle.frienduin, paramBundle.istroop);
+      if (localObject2 == null) {
+        break label942;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("VideoPlayControllerForFile.main", 1, "set mobileqq video Play id:" + paramLong + " type: FILE_VIDEO_PEEK_PAUSE entityId:" + ((FileManagerEntity)localObject2).nSessionId);
+      }
+      paramBundle = ((FileManagerEntity)localObject2).getFilePath();
+      if (arof.b(paramBundle))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("VideoPlayControllerForFile.main", 1, "Play id:" + paramLong + " type: FILE_VIDEO_PEEK_PAUSE file is exsited");
+        }
+        if (13 == paramInt)
+        {
+          localObject2 = BaseApplicationImpl.sApplication.getBaseContext();
+          if (localObject2 == null) {
+            break label569;
+          }
+          arni.a((Context)localObject2, paramBundle);
+        }
+      }
+    }
     for (;;)
     {
-      Object localObject2;
-      Object localObject1;
-      try
-      {
-        localObject2 = a(paramLong);
-        localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString);
-        if ((localObject2 != null) && (a((MessageRecord)localObject2))) {
-          break;
-        }
-        QLog.e("VideoPlayControllerForFile.main", 1, "msg is not video, id:" + paramLong);
-        return;
-      }
-      catch (AccountNotMatchException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      float f = paramBundle.getFloat("progress", 0.0F);
+      ((QQAppInterface)localObject1).a().a();
+      return;
       if (MessageForFile.class.isInstance(localObject2))
       {
         paramBundle = (MessageForFile)localObject2;
@@ -1496,74 +1524,18 @@ public class AIOImageProviderService
         if (paramBundle != null)
         {
           if (QLog.isColorLevel()) {
-            QLog.i("VideoPlayControllerForFile.main", 1, "set mobileqq video Play id:" + paramLong + " type: FILE_VIDEO_PEEK_PAUSE entityId:" + paramBundle.nSessionId);
+            QLog.i("VideoPlayControllerForFile.main", 1, "set mobileqq video pause id:" + paramLong + " type: FILE_VIDEO_PEEK_PLAY entityId:" + paramBundle.nSessionId);
           }
-          localObject2 = paramBundle.getFilePath();
-          if (apvd.b((String)localObject2))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("VideoPlayControllerForFile.main", 1, "Play id:" + paramLong + " type: FILE_VIDEO_PEEK_PAUSE file is exsited");
-            }
-            if (13 == paramInt) {
-              apug.a(BaseActivity.sTopActivity, (String)localObject2);
-            }
-            ((QQAppInterface)localObject1).a().a();
-            return;
-            if (MessageForFile.class.isInstance(localObject2))
-            {
-              paramBundle = (MessageForFile)localObject2;
-              paramBundle = ((QQAppInterface)localObject1).a().a(paramBundle.uniseq, paramBundle.frienduin, paramBundle.istroop);
-              if (paramBundle != null)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.i("VideoPlayControllerForFile.main", 1, "set mobileqq video pause id:" + paramLong + " type: FILE_VIDEO_PEEK_PLAY entityId:" + paramBundle.nSessionId);
-                }
-                ((QQAppInterface)localObject1).a().a(paramBundle.nSessionId);
-              }
-            }
-            else if (MessageForTroopFile.class.isInstance(localObject2))
-            {
-              paramBundle = ((ChatMessage)localObject2).frienduin;
-              if (!TextUtils.isEmpty(paramBundle))
-              {
-                localObject2 = bakx.a((QQAppInterface)localObject1, (MessageForTroopFile)localObject2);
-                if (localObject2 == null)
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.i("VideoPlayControllerForFile.main", 2, "onFileVideoStatusChange[" + paramInt + "], info == null");
-                  }
-                }
-                else
-                {
-                  if (QLog.isColorLevel()) {
-                    QLog.i("VideoPlayControllerForFile.main", 1, "set mobileqq video pause id:" + paramLong + " type:" + paramInt + " troopId:" + ((azqv)localObject2).jdField_a_of_type_JavaUtilUUID);
-                  }
-                  TroopFileTransferManager.a((QQAppInterface)localObject1, Long.valueOf(paramBundle).longValue()).d(((azqv)localObject2).jdField_a_of_type_JavaUtilUUID);
-                  return;
-                  if (this.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong))) {
-                    continue;
-                  }
-                  this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
-                }
-              }
-            }
-          }
-          else
-          {
-            if (paramBundle.fProgress - f < 0.0F) {
-              paramBundle.fProgress = f;
-            }
-            ((QQAppInterface)localObject1).a().a(paramBundle.nSessionId);
-          }
+          ((QQAppInterface)localObject1).a().a(paramBundle.nSessionId);
         }
       }
       else if (MessageForTroopFile.class.isInstance(localObject2))
       {
-        String str = ((ChatMessage)localObject2).frienduin;
-        if (!TextUtils.isEmpty(str))
+        paramBundle = ((ChatMessage)localObject2).frienduin;
+        if (!TextUtils.isEmpty(paramBundle))
         {
-          paramBundle = bakx.a((QQAppInterface)localObject1, (MessageForTroopFile)localObject2);
-          if (paramBundle == null)
+          localObject2 = bcjk.a((QQAppInterface)localObject1, (MessageForTroopFile)localObject2);
+          if (localObject2 == null)
           {
             if (QLog.isColorLevel()) {
               QLog.i("VideoPlayControllerForFile.main", 2, "onFileVideoStatusChange[" + paramInt + "], info == null");
@@ -1571,54 +1543,100 @@ public class AIOImageProviderService
           }
           else
           {
-            localObject1 = TroopFileTransferManager.a((QQAppInterface)localObject1, Long.valueOf(str).longValue());
-            localObject2 = ((TroopFileTransferManager)localObject1).a(paramBundle.jdField_a_of_type_JavaUtilUUID);
-            if (apvd.b(paramBundle.jdField_a_of_type_JavaLangString))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i("troop VideoPlayControllerForFile.main", 1, "Play id:" + paramLong + " type: FILE_VIDEO_PEEK_PAUSE file is exsited");
-              }
-              if (13 == paramInt) {
-                apug.a(BaseActivity.sTopActivity, paramBundle.jdField_a_of_type_JavaLangString);
-              }
-              paramBundle = ((TroopFileTransferManager)localObject1).a(paramBundle.jdField_a_of_type_JavaUtilUUID);
-              if (paramBundle != null) {
-                ((TroopFileTransferManager)localObject1).a(paramBundle, 11);
-              }
+            if (QLog.isColorLevel()) {
+              QLog.i("VideoPlayControllerForFile.main", 1, "set mobileqq video pause id:" + paramLong + " type:" + paramInt + " troopId:" + ((bbpe)localObject2).jdField_a_of_type_JavaUtilUUID);
             }
-            else
+            TroopFileTransferManager.a((QQAppInterface)localObject1, Long.valueOf(paramBundle).longValue()).d(((bbpe)localObject2).jdField_a_of_type_JavaUtilUUID);
+            return;
+            if (this.jdField_a_of_type_JavaUtilArrayList.contains(Long.valueOf(paramLong))) {
+              break;
+            }
+            this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong));
+            break;
+            label569:
+            QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [c2c file save album].");
+            continue;
+            if (((FileManagerEntity)localObject2).fProgress - f < 0.0F) {
+              ((FileManagerEntity)localObject2).fProgress = f;
+            }
+            ((QQAppInterface)localObject1).a().a(((FileManagerEntity)localObject2).nSessionId);
+            return;
+            if (MessageForTroopFile.class.isInstance(localObject2))
             {
-              if (QLog.isColorLevel()) {
-                QLog.i("VideoPlayControllerForFile.main", 1, "set mobileqq video Play id:" + paramLong + " type:" + paramInt + " troopId:" + paramBundle.jdField_a_of_type_JavaUtilUUID);
-              }
-              if (localObject2 != null)
+              String str = ((ChatMessage)localObject2).frienduin;
+              if (!TextUtils.isEmpty(str))
               {
-                ((TroopFileTransferManager.Item)localObject2).ProgressValue = ((f * (float)((TroopFileTransferManager.Item)localObject2).ProgressTotal));
-                ((TroopFileTransferManager)localObject1).a((TroopFileTransferManager.Item)localObject2, 8);
+                paramBundle = bcjk.a((QQAppInterface)localObject1, (MessageForTroopFile)localObject2);
+                if (paramBundle == null)
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.i("VideoPlayControllerForFile.main", 2, "onFileVideoStatusChange[" + paramInt + "], info == null");
+                  }
+                }
+                else
+                {
+                  localObject1 = TroopFileTransferManager.a((QQAppInterface)localObject1, Long.valueOf(str).longValue());
+                  localObject2 = ((TroopFileTransferManager)localObject1).a(paramBundle.jdField_a_of_type_JavaUtilUUID);
+                  if (arof.b(paramBundle.jdField_a_of_type_JavaLangString))
+                  {
+                    if (QLog.isColorLevel()) {
+                      QLog.i("troop VideoPlayControllerForFile.main", 1, "Play id:" + paramLong + " type: FILE_VIDEO_PEEK_PAUSE file is exsited");
+                    }
+                    if (13 == paramInt)
+                    {
+                      localObject2 = BaseApplicationImpl.sApplication.getBaseContext();
+                      if (localObject2 == null) {
+                        break label832;
+                      }
+                      arni.a((Context)localObject2, paramBundle.jdField_a_of_type_JavaLangString);
+                    }
+                    for (;;)
+                    {
+                      paramBundle = ((TroopFileTransferManager)localObject1).a(paramBundle.jdField_a_of_type_JavaUtilUUID);
+                      if (paramBundle == null) {
+                        break;
+                      }
+                      ((TroopFileTransferManager)localObject1).a(paramBundle, 11);
+                      return;
+                      label832:
+                      QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [troop file save album].");
+                    }
+                  }
+                  if (QLog.isColorLevel()) {
+                    QLog.i("VideoPlayControllerForFile.main", 1, "set mobileqq video Play id:" + paramLong + " type:" + paramInt + " troopId:" + paramBundle.jdField_a_of_type_JavaUtilUUID);
+                  }
+                  if (localObject2 != null)
+                  {
+                    ((TroopFileTransferManager.Item)localObject2).ProgressValue = ((f * (float)((TroopFileTransferManager.Item)localObject2).ProgressTotal));
+                    ((TroopFileTransferManager)localObject1).a((TroopFileTransferManager.Item)localObject2, 8);
+                  }
+                  ((TroopFileTransferManager)localObject1).c(paramBundle.jdField_a_of_type_JavaUtilUUID);
+                }
               }
-              ((TroopFileTransferManager)localObject1).c(paramBundle.jdField_a_of_type_JavaUtilUUID);
             }
           }
         }
       }
+      label942:
       return;
     }
+    label943:
     switch (paramInt)
     {
     }
   }
   
-  public void a(aeir paramaeir)
+  public void a(agfh paramagfh)
   {
-    this.jdField_a_of_type_Aeir = paramaeir;
+    this.jdField_a_of_type_Agfh = paramagfh;
   }
   
-  public void a(aeje paramaeje)
+  public void a(agfw paramagfw)
   {
-    super.a(paramaeje);
-    asuw localasuw = a();
-    if (localasuw != null) {
-      localasuw.a(paramaeje);
+    super.a(paramagfw);
+    ault localault = a();
+    if (localault != null) {
+      localault.a(paramagfw);
     }
   }
   
@@ -1627,10 +1645,10 @@ public class AIOImageProviderService
     if (QLog.isColorLevel()) {
       QLog.i("AIOImageProviderService", 2, "actbarmemoryleaktest ProgressEvent this " + this + " is added");
     }
-    if (this.jdField_a_of_type_Aoun == null)
+    if (this.jdField_a_of_type_Aqnl == null)
     {
-      this.jdField_a_of_type_Aoun = new aeim(this, paramQQAppInterface);
-      paramQQAppInterface.a().addObserver(this.jdField_a_of_type_Aoun);
+      this.jdField_a_of_type_Aqnl = new agfc(this, paramQQAppInterface);
+      paramQQAppInterface.a().addObserver(this.jdField_a_of_type_Aqnl);
     }
   }
   
@@ -1669,10 +1687,10 @@ public class AIOImageProviderService
       }
       if (paramMessageForFile.istroop == 3000)
       {
-        a(paramLong, paramInt1, paramInt2, new apls((QQAppInterface)localAppRuntime, localFileManagerEntity));
+        a(paramLong, paramInt1, paramInt2, new arer((QQAppInterface)localAppRuntime, localFileManagerEntity));
         return;
       }
-      a(paramLong, paramInt1, paramInt2, new aplp((QQAppInterface)localAppRuntime, localFileManagerEntity));
+      a(paramLong, paramInt1, paramInt2, new areo((QQAppInterface)localAppRuntime, localFileManagerEntity));
       return;
       ((FileManagerEntity)localObject).mContext = new String("igonFlow");
       ((QQAppInterface)localAppRuntime).a().a((FileManagerEntity)localObject, 5);
@@ -1706,21 +1724,21 @@ public class AIOImageProviderService
     for (;;)
     {
       return;
-      aunv localaunv = aunl.a(6, 1536, 1);
+      awfc localawfc = awes.a(6, 1536, 1);
       int i = 1;
       try
       {
         for (;;)
         {
-          localaunv.a(paramMessageForPic, paramMessageForPic.getPicDownloadInfo());
-          String str = ayoi.d(aywm.a(paramMessageForPic, i, null).toString().toString());
-          localaunv.a(new aeio(this, paramLong, paramInt1, paramInt2, paramMessageForPic.size, str));
-          aunl.a(localaunv, (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString));
+          localawfc.a(paramMessageForPic, paramMessageForPic.getPicDownloadInfo());
+          String str = bame.d(baul.a(paramMessageForPic, i, null).toString().toString());
+          localawfc.a(new agfe(this, paramLong, paramInt1, paramInt2, paramMessageForPic.size, str));
+          awes.a(localawfc, (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString));
           return;
-          localaunv = aunl.a(7, 1);
+          localawfc = awes.a(7, 1);
           i = 131075;
           continue;
-          localaunv = aunl.a(5, 1);
+          localawfc = awes.a(5, 1);
           i = 65537;
         }
       }
@@ -1762,9 +1780,9 @@ public class AIOImageProviderService
   
   public void a(MessageForShortVideo paramMessageForShortVideo, long paramLong, int paramInt1, int paramInt2)
   {
-    asuw localasuw = a();
-    if (localasuw != null) {
-      localasuw.a(paramMessageForShortVideo, paramLong, paramInt1, paramInt2);
+    ault localault = a();
+    if (localault != null) {
+      localault.a(paramMessageForShortVideo, paramLong, paramInt1, paramInt2);
     }
   }
   
@@ -1783,7 +1801,7 @@ public class AIOImageProviderService
     }
     catch (AccountNotMatchException localAccountNotMatchException)
     {
-      azqv localazqv;
+      bbpe localbbpe;
       do
       {
         QQAppInterface localQQAppInterface2;
@@ -1797,8 +1815,8 @@ public class AIOImageProviderService
               localQQAppInterface2 = null;
             }
             paramMessageForTroopFile.isPause = true;
-            localazqv = bakx.a(localQQAppInterface2, paramMessageForTroopFile);
-            if (localazqv != null) {
+            localbbpe = bcjk.a(localQQAppInterface2, paramMessageForTroopFile);
+            if (localbbpe != null) {
               break;
             }
           } while (!QLog.isColorLevel());
@@ -1807,9 +1825,9 @@ public class AIOImageProviderService
           paramMessageForTroopFile = paramMessageForTroopFile.frienduin;
         } while (TextUtils.isEmpty(paramMessageForTroopFile));
         paramMessageForTroopFile = TroopFileTransferManager.a(localQQAppInterface2, Long.valueOf(paramMessageForTroopFile).longValue());
-      } while (localazqv.jdField_b_of_type_Int != 8);
-      paramMessageForTroopFile.d(localazqv.jdField_a_of_type_JavaUtilUUID);
-      paramMessageForTroopFile.a(localazqv.jdField_a_of_type_JavaUtilUUID);
+      } while (localbbpe.jdField_b_of_type_Int != 8);
+      paramMessageForTroopFile.d(localbbpe.jdField_a_of_type_JavaUtilUUID);
+      paramMessageForTroopFile.a(localbbpe.jdField_a_of_type_JavaUtilUUID);
     }
   }
   
@@ -1828,7 +1846,7 @@ public class AIOImageProviderService
     }
     catch (AccountNotMatchException localAccountNotMatchException)
     {
-      azqv localazqv;
+      bbpe localbbpe;
       label307:
       do
       {
@@ -1851,8 +1869,8 @@ public class AIOImageProviderService
                       localAccountNotMatchException.printStackTrace();
                       localQQAppInterface2 = null;
                     }
-                    localazqv = bakx.a(localQQAppInterface2, paramMessageForTroopFile);
-                    if (localazqv != null) {
+                    localbbpe = bcjk.a(localQQAppInterface2, paramMessageForTroopFile);
+                    if (localbbpe != null) {
                       break;
                     }
                   } while (!QLog.isColorLevel());
@@ -1863,66 +1881,66 @@ public class AIOImageProviderService
                     if (QLog.isColorLevel()) {
                       QLog.i("AIOImageProviderService", 1, "troop file is video, getUrl");
                     }
-                    a(paramLong, paramInt1, paramInt2, new aplu(localazqv));
+                    a(paramLong, paramInt1, paramInt2, new aret(localbbpe));
                     return;
                   }
-                  if (!TextUtils.isEmpty(localazqv.e)) {
+                  if (!TextUtils.isEmpty(localbbpe.e)) {
                     break;
                   }
                 } while (!QLog.isColorLevel());
                 QLog.i("AIOImageProviderService", 2, "downloadTroopFileImage, info.FilePath is empty");
                 return;
-                str = localazqv.e;
+                str = localbbpe.e;
                 str = paramMessageForTroopFile.frienduin;
               } while (TextUtils.isEmpty(str));
               if (paramInt2 != 20) {
                 break label307;
               }
               paramMessageForTroopFile = TroopFileTransferManager.a(localQQAppInterface2, Long.valueOf(str).longValue());
-              if ((localazqv.jdField_b_of_type_Int != 11) || (!bbdx.a(localazqv.jdField_a_of_type_JavaLangString))) {
+              if ((localbbpe.jdField_b_of_type_Int != 11) || (!bdcs.a(localbbpe.jdField_a_of_type_JavaLangString))) {
                 break;
               }
-            } while (this.jdField_a_of_type_Aeje == null);
-            this.jdField_a_of_type_Aeje.a(paramLong, paramInt1, paramInt2, 1, localazqv.jdField_a_of_type_JavaLangString, false);
+            } while (this.jdField_a_of_type_Agfw == null);
+            this.jdField_a_of_type_Agfw.a(paramLong, paramInt1, paramInt2, 1, localbbpe.jdField_a_of_type_JavaLangString, false);
             return;
-            if ((localazqv.jdField_b_of_type_Int == 7) || ((localazqv.jdField_b_of_type_Int == 11) && (!bbdx.a(localazqv.jdField_a_of_type_JavaLangString))))
+            if ((localbbpe.jdField_b_of_type_Int == 7) || ((localbbpe.jdField_b_of_type_Int == 11) && (!bdcs.a(localbbpe.jdField_a_of_type_JavaLangString))))
             {
-              paramMessageForTroopFile.a(localazqv.e, localazqv.g, localazqv.jdField_c_of_type_Long, localazqv.h);
+              paramMessageForTroopFile.a(localbbpe.e, localbbpe.g, localbbpe.jdField_c_of_type_Long, localbbpe.h);
               return;
             }
-            paramMessageForTroopFile.c(localazqv.jdField_a_of_type_JavaUtilUUID);
+            paramMessageForTroopFile.c(localbbpe.jdField_a_of_type_JavaUtilUUID);
             return;
             if (paramInt2 != 18) {
               break;
             }
-            if (!bbdx.b(localazqv.jdField_c_of_type_JavaLangString))
+            if (!bdcs.b(localbbpe.jdField_c_of_type_JavaLangString))
             {
               paramMessageForTroopFile = TroopFileTransferManager.a(localQQAppInterface2, Long.valueOf(str).longValue());
-              if (localazqv.jdField_a_of_type_JavaUtilUUID != null)
+              if (localbbpe.jdField_a_of_type_JavaUtilUUID != null)
               {
-                paramMessageForTroopFile.a(localazqv.jdField_a_of_type_JavaUtilUUID, 640);
+                paramMessageForTroopFile.a(localbbpe.jdField_a_of_type_JavaUtilUUID, 640);
                 return;
               }
-              paramMessageForTroopFile.a(localazqv.e, localazqv.g, localazqv.h, 640);
+              paramMessageForTroopFile.a(localbbpe.e, localbbpe.g, localbbpe.h, 640);
               return;
             }
-          } while (this.jdField_a_of_type_Aeje == null);
-          this.jdField_a_of_type_Aeje.a(paramMessageForTroopFile.uniseq, 0, 18, 1, localazqv.jdField_c_of_type_JavaLangString, false);
+          } while (this.jdField_a_of_type_Agfw == null);
+          this.jdField_a_of_type_Agfw.a(paramMessageForTroopFile.uniseq, 0, 18, 1, localbbpe.jdField_c_of_type_JavaLangString, false);
           return;
         } while (paramInt2 != 16);
-        if (!bbdx.b(localazqv.jdField_d_of_type_JavaLangString))
+        if (!bdcs.b(localbbpe.jdField_d_of_type_JavaLangString))
         {
           paramMessageForTroopFile = TroopFileTransferManager.a(localQQAppInterface2, Long.valueOf(str).longValue());
-          if (localazqv.jdField_a_of_type_JavaUtilUUID != null)
+          if (localbbpe.jdField_a_of_type_JavaUtilUUID != null)
           {
-            paramMessageForTroopFile.a(localazqv.jdField_a_of_type_JavaUtilUUID, 383);
+            paramMessageForTroopFile.a(localbbpe.jdField_a_of_type_JavaUtilUUID, 383);
             return;
           }
-          paramMessageForTroopFile.a(localazqv.e, localazqv.g, localazqv.h, 383);
+          paramMessageForTroopFile.a(localbbpe.e, localbbpe.g, localbbpe.h, 383);
           return;
         }
-      } while (this.jdField_a_of_type_Aeje == null);
-      this.jdField_a_of_type_Aeje.a(paramMessageForTroopFile.uniseq, 0, 1, 1, localazqv.jdField_d_of_type_JavaLangString, false);
+      } while (this.jdField_a_of_type_Agfw == null);
+      this.jdField_a_of_type_Agfw.a(paramMessageForTroopFile.uniseq, 0, 1, 1, localbbpe.jdField_d_of_type_JavaLangString, false);
     }
   }
   
@@ -1936,16 +1954,49 @@ public class AIOImageProviderService
       AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString);
       if (paramInt == 55)
       {
-        agqd.a(paramString, this.jdField_a_of_type_Int, (QQAppInterface)localAppRuntime);
+        aild.a(paramString, this.jdField_a_of_type_Int, (QQAppInterface)localAppRuntime);
         return;
       }
-      axrn.a(BaseApplication.getContext()).a(localAppRuntime, this.jdField_a_of_type_JavaLangString, "Pic", paramString, 0, 1, null, String.valueOf(paramInt), null, null, null);
+      azmz.a(BaseApplication.getContext()).a(localAppRuntime, this.jdField_a_of_type_JavaLangString, "Pic", paramString, 0, 1, null, String.valueOf(paramInt), null, null, null);
       return;
     }
     catch (AccountNotMatchException paramString)
     {
       throw new IllegalArgumentException("no appRuntime", paramString);
     }
+  }
+  
+  protected void a(List<AIORichMediaData> paramList, List<ChatMessage> paramList1, MessageForMixedMsg paramMessageForMixedMsg)
+  {
+    paramMessageForMixedMsg.parse();
+    paramMessageForMixedMsg = paramMessageForMixedMsg.msgElemList.iterator();
+    while (paramMessageForMixedMsg.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramMessageForMixedMsg.next();
+      if (((localMessageRecord instanceof MessageForPic)) && (!a((MessageForPic)localMessageRecord)))
+      {
+        ((MessageForPic)localMessageRecord).isInMixedMsg = true;
+        paramList.add(a((MessageForPic)localMessageRecord));
+        paramList1.add((MessageForPic)localMessageRecord);
+      }
+    }
+  }
+  
+  protected void a(List<AIORichMediaData> paramList, List<ChatMessage> paramList1, MessageRecord paramMessageRecord)
+  {
+    if (MessageForLightVideo.class.isInstance(paramMessageRecord))
+    {
+      paramMessageRecord = (MessageForLightVideo)paramMessageRecord;
+      paramList.add(agem.a(paramMessageRecord));
+      paramList1.add(paramMessageRecord);
+    }
+    do
+    {
+      return;
+      paramMessageRecord = (MessageForShortVideo)paramMessageRecord;
+    } while ((paramMessageRecord.busiType != 1) && (paramMessageRecord.busiType != 2) && (paramMessageRecord.busiType != 1007) && (paramMessageRecord.busiType != 1009) && (paramMessageRecord.busiType != 0));
+    paramList.add(agem.a(paramMessageRecord));
+    paramList1.add(paramMessageRecord);
   }
   
   public void a(long[] paramArrayOfLong)
@@ -1957,8 +2008,12 @@ public class AIOImageProviderService
       if (QLog.isColorLevel()) {
         QLog.d("AIOImageProviderService", 2, "saveToWeiyunMulti, idList.length = " + paramArrayOfLong.length);
       }
-      bidk.a((QQAppInterface)localAppRuntime, BaseActivity.sTopActivity, BaseActivity.sTopActivity.getTitleBarHeight(), localList, null);
-      axqy.b((QQAppInterface)localAppRuntime, "dc00898", "", "", "0X8009DBA", "0X8009DBA", 0, 0, "", "", "", "");
+      paramArrayOfLong = a("saveToWeiyunMulti");
+      if (paramArrayOfLong != null)
+      {
+        bkfg.a((QQAppInterface)localAppRuntime, paramArrayOfLong, paramArrayOfLong.getTitleBarHeight(), localList, null);
+        azmj.b((QQAppInterface)localAppRuntime, "dc00898", "", "", "0X8009DBA", "0X8009DBA", 0, 0, "", "", "", "");
+      }
       return;
     }
     catch (AccountNotMatchException paramArrayOfLong)
@@ -1968,12 +2023,25 @@ public class AIOImageProviderService
     }
   }
   
+  protected boolean a(MessageForPic paramMessageForPic)
+  {
+    if ((paramMessageForPic.msgtype == -3000) || (paramMessageForPic.msgtype == -30003)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("AIOImageProviderService", 2, "LoadMediaTask msgType is " + paramMessageForPic.msgtype);
+      }
+    }
+    while ((alpw.a(paramMessageForPic)) || (alnp.a(paramMessageForPic)) || ((abot.a(this.jdField_a_of_type_Int) == 1032) && (this.jdField_b_of_type_Int > 0) && (paramMessageForPic.getConfessTopicId() != this.jdField_b_of_type_Int)) || (afsf.a(paramMessageForPic)) || (agwq.a(paramMessageForPic))) {
+      return true;
+    }
+    return false;
+  }
+  
   /* Error */
   public ChatMessage b(long paramLong)
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 55	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   1: getfield 54	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   4: astore 6
     //   6: aload 6
     //   8: monitorenter
@@ -1981,18 +2049,18 @@ public class AIOImageProviderService
     //   10: istore_3
     //   11: iload_3
     //   12: aload_0
-    //   13: getfield 55	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   16: invokeinterface 528 1 0
+    //   13: getfield 54	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   16: invokeinterface 867 1 0
     //   21: if_icmpge +156 -> 177
     //   24: aload_0
-    //   25: getfield 55	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   25: getfield 54	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   28: iload_3
-    //   29: invokeinterface 531 2 0
-    //   34: checkcast 95	com/tencent/mobileqq/data/ChatMessage
+    //   29: invokeinterface 870 2 0
+    //   34: checkcast 99	com/tencent/mobileqq/data/ChatMessage
     //   37: astore 5
     //   39: lload_1
     //   40: aload 5
-    //   42: getfield 814	com/tencent/mobileqq/data/ChatMessage:uniseq	J
+    //   42: getfield 737	com/tencent/mobileqq/data/ChatMessage:uniseq	J
     //   45: lcmp
     //   46: ifne +95 -> 141
     //   49: iconst_1
@@ -2000,14 +2068,14 @@ public class AIOImageProviderService
     //   52: iload 4
     //   54: ifeq +14 -> 68
     //   57: aload_0
-    //   58: getfield 55	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   58: getfield 54	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   61: iload_3
-    //   62: invokeinterface 920 2 0
+    //   62: invokeinterface 873 2 0
     //   67: pop
     //   68: aload 6
     //   70: monitorexit
     //   71: aload_0
-    //   72: getfield 57	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   72: getfield 56	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
     //   75: astore 6
     //   77: aload 6
     //   79: monitorenter
@@ -2015,15 +2083,15 @@ public class AIOImageProviderService
     //   81: istore_3
     //   82: iload_3
     //   83: aload_0
-    //   84: getfield 57	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   87: invokeinterface 528 1 0
+    //   84: getfield 56	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   87: invokeinterface 867 1 0
     //   92: if_icmpge +79 -> 171
     //   95: aload_0
-    //   96: getfield 57	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   96: getfield 56	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
     //   99: iload_3
-    //   100: invokeinterface 531 2 0
-    //   105: checkcast 922	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData
-    //   108: getfield 924	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData:jdField_f_of_type_Long	J
+    //   100: invokeinterface 870 2 0
+    //   105: checkcast 875	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData
+    //   108: getfield 877	com/tencent/mobileqq/activity/aio/photo/AIORichMediaData:jdField_f_of_type_Long	J
     //   111: lload_1
     //   112: lcmp
     //   113: ifne +43 -> 156
@@ -2032,9 +2100,9 @@ public class AIOImageProviderService
     //   119: iload 4
     //   121: ifeq +14 -> 135
     //   124: aload_0
-    //   125: getfield 57	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   125: getfield 56	com/tencent/mobileqq/activity/aio/photo/AIOImageProviderService:jdField_b_of_type_JavaUtilList	Ljava/util/List;
     //   128: iload_3
-    //   129: invokeinterface 920 2 0
+    //   129: invokeinterface 873 2 0
     //   134: pop
     //   135: aload 6
     //   137: monitorexit
@@ -2093,13 +2161,13 @@ public class AIOImageProviderService
   
   public void b()
   {
-    Object localObject = this.jdField_a_of_type_Aeje;
+    Object localObject = this.jdField_a_of_type_Agfw;
     if (localObject != null) {
-      ((aeje)localObject).a(null, -1);
+      ((agfw)localObject).a(null, -1);
     }
-    localObject = this.jdField_a_of_type_Aeir;
+    localObject = this.jdField_a_of_type_Agfh;
     if (localObject != null) {
-      ((aeir)localObject).a(null, -1);
+      ((agfh)localObject).a(null, -1);
     }
   }
   
@@ -2144,17 +2212,17 @@ public class AIOImageProviderService
     if (this.jdField_b_of_type_JavaUtilHashMap == null) {
       this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
     }
-    if (this.jdField_a_of_type_Ajsy == null)
+    if (this.jdField_a_of_type_Alkl == null)
     {
-      this.jdField_a_of_type_Ajsy = new aein(this);
-      paramQQAppInterface.addObserver(this.jdField_a_of_type_Ajsy);
+      this.jdField_a_of_type_Alkl = new agfd(this);
+      paramQQAppInterface.addObserver(this.jdField_a_of_type_Alkl);
     }
   }
   
   public void b(MessageForPic paramMessageForPic, long paramLong, int paramInt1, int paramInt2)
   {
-    asuw localasuw = a();
-    if ((paramInt2 != 24) && (localasuw != null) && (localasuw.a(paramMessageForPic))) {
+    ault localault = a();
+    if ((paramInt2 != 24) && (localault != null) && (localault.a(paramMessageForPic))) {
       if (QLog.isColorLevel()) {
         QLog.d("AIOImageProviderService", 2, "cancelDownloadImage return");
       }
@@ -2164,30 +2232,30 @@ public class AIOImageProviderService
       do
       {
         return;
-        if ((paramInt2 == 24) && (localasuw != null)) {}
+        if ((paramInt2 == 24) && (localault != null)) {}
         try
         {
-          localasuw.b(paramMessageForPic, paramLong, paramInt1, paramInt2);
-          paramMessageForPic = ((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString)).a().a(ayvx.a(paramMessageForPic.md5, paramMessageForPic.uuid, 131075));
-          if (!(paramMessageForPic instanceof aypk)) {
+          localault.b(paramMessageForPic, paramLong, paramInt1, paramInt2);
+          paramMessageForPic = ((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString)).a().a(batw.a(paramMessageForPic.md5, paramMessageForPic.uuid, 131075));
+          if (!(paramMessageForPic instanceof banf)) {
             break;
           }
           if (QLog.isColorLevel()) {
             QLog.d("AIOImageProviderService", 2, "destroy cancel processor c2c :" + paramMessageForPic);
           }
-          ((ayow)paramMessageForPic).a();
+          ((bamr)paramMessageForPic).a();
           return;
         }
         catch (AccountNotMatchException paramMessageForPic) {}
       } while (!QLog.isColorLevel());
       QLog.d("AIOImageProviderService", 2, "no appRuntime");
       return;
-      if ((paramMessageForPic instanceof ayow))
+      if ((paramMessageForPic instanceof bamr))
       {
         if (QLog.isColorLevel()) {
           QLog.d("AIOImageProviderService", 2, "destroy cancel processor:" + paramMessageForPic);
         }
-        ((ayow)paramMessageForPic).a();
+        ((bamr)paramMessageForPic).a();
         return;
       }
     } while (!QLog.isColorLevel());
@@ -2196,9 +2264,9 @@ public class AIOImageProviderService
   
   public void b(MessageForShortVideo paramMessageForShortVideo, long paramLong, int paramInt1, int paramInt2)
   {
-    asuw localasuw = a();
-    if (localasuw != null) {
-      localasuw.b(paramMessageForShortVideo, paramLong, paramInt1, paramInt2);
+    ault localault = a();
+    if (localault != null) {
+      localault.b(paramMessageForShortVideo, paramLong, paramInt1, paramInt2);
     }
   }
   
@@ -2210,7 +2278,7 @@ public class AIOImageProviderService
     if (!TextUtils.isEmpty(paramString)) {}
     try
     {
-      akrv.a(paramString, paramInt, (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString));
+      amia.a(paramString, paramInt, (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString));
       return;
     }
     catch (AccountNotMatchException paramString)
@@ -2222,89 +2290,155 @@ public class AIOImageProviderService
     }
   }
   
+  protected void b(List<AIORichMediaData> paramList, List<ChatMessage> paramList1, MessageRecord paramMessageRecord)
+  {
+    MessageForStructing localMessageForStructing = (MessageForStructing)paramMessageRecord;
+    localMessageForStructing.parse();
+    StructMsgForImageShare localStructMsgForImageShare;
+    Object localObject2;
+    Object localObject1;
+    if ((localMessageForStructing.structingMsg != null) && ((localMessageForStructing.structingMsg.mMsgServiceID == 5) || (localMessageForStructing.structingMsg.mMsgServiceID == 137)))
+    {
+      localStructMsgForImageShare = (StructMsgForImageShare)localMessageForStructing.structingMsg;
+      azsp localazsp = localStructMsgForImageShare.getFirstImageElement();
+      if (localazsp != null)
+      {
+        localObject2 = localazsp.jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          if (localazsp.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null) {
+            localazsp.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = localStructMsgForImageShare;
+          }
+          localObject1 = localazsp.a();
+        }
+        localObject2 = a((MessageForPic)localObject1);
+        ((AIOImageData)localObject2).jdField_g_of_type_Long = localMessageForStructing.time;
+        ((AIOImageData)localObject2).i = localMessageForStructing.shmsgseq;
+        if ((localStructMsgForImageShare.mMsgActionData == null) || (!localStructMsgForImageShare.mMsgActionData.startsWith("comic_plugin.apk"))) {
+          break label203;
+        }
+        ((AIOImageData)localObject2).jdField_b_of_type_Int = 1;
+        ((AIOImageData)localObject2).jdField_a_of_type_JavaLangObject = localStructMsgForImageShare.getBytes();
+        ((AIOImageData)localObject2).jdField_d_of_type_Int = agej.a(agej.a(localStructMsgForImageShare));
+      }
+    }
+    for (;;)
+    {
+      paramList.add(localObject2);
+      paramList1.add(localObject1);
+      return;
+      label203:
+      if ((localStructMsgForImageShare.mMsgActionData != null) && (localStructMsgForImageShare.mMsgActionData.startsWith("ScreenShotShare")))
+      {
+        ((AIOImageData)localObject2).jdField_b_of_type_Int = 2;
+        ((AIOImageData)localObject2).jdField_a_of_type_JavaLangObject = localStructMsgForImageShare.getBytes();
+        if ((bdec.b(paramMessageRecord.issend)) && (!TextUtils.isEmpty(((MessageForPic)localObject1).path)) && (new File(((MessageForPic)localObject1).path).exists())) {
+          ((AIOImageData)localObject2).jdField_b_of_type_JavaLangString = ((MessageForPic)localObject1).path;
+        }
+      }
+    }
+  }
+  
   public void c()
   {
-    this.jdField_a_of_type_Aeje = null;
-    asuw localasuw = a();
-    if (localasuw != null) {
-      localasuw.c();
+    this.jdField_a_of_type_Agfw = null;
+    ault localault = a();
+    if (localault != null) {
+      localault.c();
     }
   }
   
   public void c(long paramLong)
   {
     AppRuntime localAppRuntime;
+    Object localObject2;
     label92:
     String str;
     label200:
+    BaseActivity localBaseActivity;
     do
     {
-      try
+      do
       {
-        localAppRuntime = BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString);
-        Object localObject1 = a(paramLong);
-        if (localObject1 != null)
+        do
         {
-          if (!MessageForFile.class.isInstance(localObject1)) {
-            break label200;
-          }
-          localObject1 = (MessageForFile)localObject1;
-          if (((MessageForFile)localObject1).uniseq == paramLong)
+          try
           {
-            localObject2 = ((QQAppInterface)localAppRuntime).a().a(((MessageForFile)localObject1).uniseq, ((MessageForFile)localObject1).frienduin, ((MessageForFile)localObject1).istroop);
-            if (localObject2 != null) {
-              break label92;
+            localAppRuntime = BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString);
+            Object localObject1 = a(paramLong);
+            if (localObject1 != null)
+            {
+              if (!MessageForFile.class.isInstance(localObject1)) {
+                break label200;
+              }
+              localObject1 = (MessageForFile)localObject1;
+              if (((MessageForFile)localObject1).uniseq == paramLong)
+              {
+                localObject2 = ((QQAppInterface)localAppRuntime).a().a(((MessageForFile)localObject1).uniseq, ((MessageForFile)localObject1).frienduin, ((MessageForFile)localObject1).istroop);
+                if (localObject2 != null) {
+                  break label92;
+                }
+              }
+            }
+            return;
+          }
+          catch (AccountNotMatchException localAccountNotMatchException)
+          {
+            localAccountNotMatchException.printStackTrace();
+            QLog.e("AIOImageProviderService", 1, "saveToWeiyun get app faild");
+            return;
+          }
+          switch (((FileManagerEntity)localObject2).getCloudType())
+          {
+          case 2: 
+          case 4: 
+          default: 
+            return;
+          case 1: 
+            if (localAccountNotMatchException.isSend()) {}
+            for (str = ((QQAppInterface)localAppRuntime).getCurrentAccountUin();; str = ((FileManagerEntity)localObject2).peerUin)
+            {
+              ((QQAppInterface)localAppRuntime).a().a((FileManagerEntity)localObject2, str);
+              return;
             }
           }
-        }
-        return;
-      }
-      catch (AccountNotMatchException localAccountNotMatchException)
-      {
-        localAccountNotMatchException.printStackTrace();
-        QLog.e("AIOImageProviderService", 1, "saveToWeiyun get app faild");
-        return;
-      }
-      switch (((FileManagerEntity)localObject2).getCloudType())
-      {
-      case 2: 
-      case 4: 
-      default: 
-        return;
-      case 1: 
-        if (localAccountNotMatchException.isSend()) {}
-        for (str = ((QQAppInterface)localAppRuntime).getCurrentAccountUin();; str = ((FileManagerEntity)localObject2).peerUin)
-        {
-          ((QQAppInterface)localAppRuntime).a().a((FileManagerEntity)localObject2, str);
+          ((QQAppInterface)localAppRuntime).a().a(((FileManagerEntity)localObject2).getFilePath(), null, localAppRuntime.getAccount(), 0, false);
           return;
-        }
-      }
-      ((QQAppInterface)localAppRuntime).a().a(((FileManagerEntity)localObject2).getFilePath(), null, localAppRuntime.getAccount(), 0, false);
-      return;
-      if (MessageForTroopFile.class.isInstance(str))
-      {
-        bakx.a(BaseActivity.sTopActivity, (QQAppInterface)localAppRuntime, str);
+          if (MessageForTroopFile.class.isInstance(str))
+          {
+            localObject2 = BaseApplicationImpl.sApplication.getBaseContext();
+            if (localObject2 != null)
+            {
+              bcjk.b((Context)localObject2, (QQAppInterface)localAppRuntime, str);
+              return;
+            }
+            QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [troop file to weiyun].");
+            return;
+          }
+          if (!(str instanceof MessageForPic)) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("AIOImageProviderService", 2, "saveToWeiyun, save single pic, uniseq = " + str.uniseq);
+          }
+          localObject2 = new ArrayList(1);
+          ((List)localObject2).add(str);
+          localBaseActivity = a("saveToWeiyun_MessageForPic");
+        } while (localBaseActivity == null);
+        bkfg.b((QQAppInterface)localAppRuntime, localBaseActivity, localBaseActivity.getTitleBarHeight(), (List)localObject2, null);
+        azmj.b((QQAppInterface)localAppRuntime, "dc00898", "", str.frienduin, "0X8009DB8", "0X8009DB8", 0, 0, "", "", "", "");
         return;
+      } while (!(str instanceof MessageForShortVideo));
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOImageProviderService", 2, "saveToWeiyun, save single video, uniseq = " + str.uniseq);
       }
-      if ((str instanceof MessageForPic))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOImageProviderService", 2, "saveToWeiyun, save single pic, uniseq = " + str.uniseq);
-        }
-        localObject2 = new ArrayList(1);
-        ((List)localObject2).add(str);
-        bidk.b((QQAppInterface)localAppRuntime, BaseActivity.sTopActivity, BaseActivity.sTopActivity.getTitleBarHeight(), (List)localObject2, null);
-        axqy.b((QQAppInterface)localAppRuntime, "dc00898", "", str.frienduin, "0X8009DB8", "0X8009DB8", 0, 0, "", "", "", "");
-        return;
-      }
-    } while (!(str instanceof MessageForShortVideo));
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOImageProviderService", 2, "saveToWeiyun, save single video, uniseq = " + str.uniseq);
-    }
-    Object localObject2 = new ArrayList(1);
-    ((List)localObject2).add(str);
-    bidk.b((QQAppInterface)localAppRuntime, BaseActivity.sTopActivity, BaseActivity.sTopActivity.getTitleBarHeight(), (List)localObject2, null);
-    axqy.b((QQAppInterface)localAppRuntime, "dc00898", "", str.frienduin, "0X8009DB8", "0X8009DB8", 0, 0, "", "", "", "");
+      localObject2 = new ArrayList(1);
+      ((List)localObject2).add(str);
+      localBaseActivity = a("saveToWeiyun_MessageForShortVideo");
+    } while (localBaseActivity == null);
+    bkfg.b((QQAppInterface)localAppRuntime, localBaseActivity, localBaseActivity.getTitleBarHeight(), (List)localObject2, null);
+    azmj.b((QQAppInterface)localAppRuntime, "dc00898", "", str.frienduin, "0X8009DB8", "0X8009DB8", 0, 0, "", "", "", "");
   }
   
   public void c(MessageForShortVideo paramMessageForShortVideo, long paramLong, int paramInt1, int paramInt2)
@@ -2317,35 +2451,46 @@ public class AIOImageProviderService
         if (QLog.isColorLevel()) {
           QLog.d("AIOImageProviderService", 2, "carverW downloadVideo GetUrlAction");
         }
-        new aeja((QQAppInterface)localAppRuntime, paramMessageForShortVideo, this.jdField_a_of_type_Aeje, paramLong, paramInt1, paramInt2).a();
+        new agfs((QQAppInterface)localAppRuntime, paramMessageForShortVideo, this.jdField_a_of_type_Agfw, paramLong, paramInt1, paramInt2).a();
         return;
       }
-      localaxei = axdq.a(2, 2);
-      localaxdt = paramMessageForShortVideo.getDownloadInfo(localaxei.jdField_b_of_type_Int);
+      localayzo = ayyu.a(2, 2);
+      localayyx = paramMessageForShortVideo.getDownloadInfo(localayzo.jdField_b_of_type_Int);
       if (paramInt2 != 0) {
         break label173;
       }
-      localaxdt.i = ShortVideoUtils.a(paramMessageForShortVideo.thumbMD5, "jpg");
-      localaxdt.a(paramMessageForShortVideo.istroop, 1);
+      localayyx.i = ShortVideoUtils.a(paramMessageForShortVideo.thumbMD5, "jpg");
+      localayyx.a(paramMessageForShortVideo.istroop, 1);
     }
     catch (AccountNotMatchException paramMessageForShortVideo)
     {
       AppRuntime localAppRuntime;
-      axei localaxei;
-      axdt localaxdt;
+      ayzo localayzo;
+      ayyx localayyx;
       while (QLog.isColorLevel())
       {
         QLog.d("AIOImageProviderService", 2, "no appRuntime");
         return;
         label173:
-        localaxdt.h = ShortVideoUtils.a(paramMessageForShortVideo, "mp4");
-        localaxdt.a(paramMessageForShortVideo.istroop, 0);
+        localayyx.h = ShortVideoUtils.a(paramMessageForShortVideo, "mp4");
+        localayyx.a(paramMessageForShortVideo.istroop, 0);
       }
     }
-    localaxei.a(localaxdt);
-    localaxei.a(new aeip(this, paramLong, paramInt1, paramInt2));
-    axdq.a(localaxei, (QQAppInterface)localAppRuntime);
+    localayzo.a(localayyx);
+    localayzo.a(new agff(this, paramLong, paramInt1, paramInt2));
+    ayyu.a(localayzo, (QQAppInterface)localAppRuntime);
     return;
+  }
+  
+  protected void c(List<AIORichMediaData> paramList, List<ChatMessage> paramList1, MessageRecord paramMessageRecord)
+  {
+    paramMessageRecord = (MessageForPic)paramMessageRecord;
+    paramMessageRecord.parse();
+    if (a(paramMessageRecord)) {
+      return;
+    }
+    paramList.add(a(paramMessageRecord));
+    paramList1.add(paramMessageRecord);
   }
   
   public void d(long paramLong)
@@ -2369,66 +2514,86 @@ public class AIOImageProviderService
       }
       if (MessageForFile.class.isInstance(localChatMessage))
       {
-        apug.a((QQAppInterface)localAccountNotMatchException, localChatMessage, BaseActivity.sTopActivity);
+        localContext = BaseApplicationImpl.sApplication.getBaseContext();
+        if (localContext != null)
+        {
+          arni.a((QQAppInterface)localAccountNotMatchException, localChatMessage, localContext);
+          return;
+        }
+        QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [c2c file send pc].");
         return;
       }
     } while (!MessageForTroopFile.class.isInstance(localChatMessage));
-    bakx.a(BaseActivity.sTopActivity, (QQAppInterface)localAccountNotMatchException, localChatMessage);
+    Context localContext = BaseApplicationImpl.sApplication.getBaseContext();
+    if (localContext != null)
+    {
+      bcjk.a(localContext, (QQAppInterface)localAccountNotMatchException, localChatMessage);
+      return;
+    }
+    QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [troop file send pc].");
   }
   
   public void e(long paramLong)
   {
     Object localObject2 = a(paramLong);
-    MessageForTroopFile localMessageForTroopFile;
-    do
+    for (;;)
     {
-      do
+      try
       {
-        try
+        Object localObject1 = BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString);
+        if (localObject2 != null)
         {
-          Object localObject1 = BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_JavaLangString);
-          if (localObject2 != null)
-          {
-            if (!MessageForFile.class.isInstance(localObject2)) {
-              continue;
-            }
-            localObject2 = (MessageForFile)localObject2;
-            localObject1 = ((QQAppInterface)localObject1).a().a(((MessageForFile)localObject2).uniseq, ((MessageForFile)localObject2).frienduin, ((MessageForFile)localObject2).istroop);
-            if (localObject1 != null) {}
+          if (!MessageForFile.class.isInstance(localObject2)) {
+            break label130;
           }
-          else
-          {
-            return;
-          }
+          localObject2 = (MessageForFile)localObject2;
+          localObject1 = ((QQAppInterface)localObject1).a().a(((MessageForFile)localObject2).uniseq, ((MessageForFile)localObject2).frienduin, ((MessageForFile)localObject2).istroop);
+          if (localObject1 != null) {}
         }
-        catch (AccountNotMatchException localAccountNotMatchException)
+        else
         {
-          localAccountNotMatchException.printStackTrace();
-          QLog.e("AIOImageProviderService", 1, "getAppRuntime Exception!");
           return;
         }
-        localObject2 = new Intent(BaseApplicationImpl.sApplication.getBaseContext(), FilePicQFavActivity.class);
-        ((Intent)localObject2).putExtra("file_pic_favorites", localAccountNotMatchException.nSessionId);
-        BaseActivity.sTopActivity.startActivity((Intent)localObject2);
-        return;
-      } while (!MessageForTroopFile.class.isInstance(localObject2));
-      localMessageForTroopFile = (MessageForTroopFile)localObject2;
-      Object localObject3 = bakx.a((QQAppInterface)localAccountNotMatchException, localMessageForTroopFile);
-      FileManagerEntity localFileManagerEntity = apug.a((azqv)localObject3);
-      localObject3 = bajy.a((QQAppInterface)localAccountNotMatchException, ((azqv)localObject3).jdField_b_of_type_Long).a(localFileManagerEntity.strTroopFilePath);
-      if (localObject3 != null)
-      {
-        localFileManagerEntity.lastTime = ((azpi)localObject3).jdField_c_of_type_Int;
-        localFileManagerEntity.selfUin = String.valueOf(((azpi)localObject3).jdField_b_of_type_Long);
       }
-      new bgpu(3).a((QQAppInterface)localAccountNotMatchException, BaseActivity.sTopActivity, localFileManagerEntity, (ChatMessage)localObject2, false);
-    } while (!localMessageForTroopFile.isMultiMsg);
-    axqy.b((QQAppInterface)localAccountNotMatchException, "dc00898", "", "", "0X8009D67", "0X8009D67", 8, 0, "8", "", "", "");
+      catch (AccountNotMatchException localAccountNotMatchException)
+      {
+        localAccountNotMatchException.printStackTrace();
+        QLog.e("AIOImageProviderService", 1, "getAppRuntime Exception!");
+        return;
+      }
+      localObject2 = new Intent(BaseApplicationImpl.sApplication.getBaseContext(), FilePicQFavActivity.class);
+      ((Intent)localObject2).putExtra("file_pic_favorites", localAccountNotMatchException.nSessionId);
+      BaseApplicationImpl.sApplication.getBaseContext().startActivity((Intent)localObject2);
+      return;
+      label130:
+      if (MessageForTroopFile.class.isInstance(localObject2))
+      {
+        MessageForTroopFile localMessageForTroopFile = (MessageForTroopFile)localObject2;
+        Object localObject3 = bcjk.a((QQAppInterface)localAccountNotMatchException, localMessageForTroopFile);
+        FileManagerEntity localFileManagerEntity = arni.a((bbpe)localObject3);
+        localObject3 = bcil.a((QQAppInterface)localAccountNotMatchException, ((bbpe)localObject3).jdField_b_of_type_Long).a(localFileManagerEntity.strTroopFilePath);
+        if (localObject3 != null)
+        {
+          localFileManagerEntity.lastTime = ((bbnr)localObject3).jdField_c_of_type_Int;
+          localFileManagerEntity.selfUin = String.valueOf(((bbnr)localObject3).jdField_b_of_type_Long);
+        }
+        localObject3 = BaseApplicationImpl.sApplication.getBaseContext();
+        if (localObject3 != null) {
+          new biqt(3).a((QQAppInterface)localAccountNotMatchException, (Context)localObject3, localFileManagerEntity, (ChatMessage)localObject2, false);
+        }
+        while (localMessageForTroopFile.isMultiMsg)
+        {
+          azmj.b((QQAppInterface)localAccountNotMatchException, "dc00898", "", "", "0X8009D67", "0X8009D67", 8, 0, "8", "", "", "");
+          return;
+          QLog.i("AIOImageProviderService<QFile>", 1, "AIO gallery service error, get context is null [troop file save fav].");
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService
  * JD-Core Version:    0.7.0.1
  */

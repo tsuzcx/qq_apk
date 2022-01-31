@@ -1,14 +1,18 @@
 package com.tencent.biz.pubaccount.weishi_new.report;
 
-import axrn;
-import com.google.gson.Gson;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
 import java.util.HashMap;
-import snb;
+import mqq.os.MqqHandler;
+import tgx;
+import the;
+import tjy;
+import tka;
 
 public class WSStatisticsReporter
 {
   private static final String TAG = "WSStatisticsReporter";
+  private WSStatisticsBaseCollector mBaseCollector;
+  private WSStatisticsReporter.Builder mBuilder;
   private String mEventName;
   private boolean mFlush;
   private HashMap<String, String> mReportParams = new HashMap();
@@ -19,20 +23,24 @@ public class WSStatisticsReporter
   {
     this.mEventName = WSStatisticsReporter.Builder.access$000(paramBuilder);
     this.mFlush = WSStatisticsReporter.Builder.access$100(paramBuilder);
-    WSStatisticsBaseCollector.setExtendInfo(new Gson().toJson(WSStatisticsReporter.Builder.access$200(paramBuilder)));
-    this.mReportParams.putAll(WSStatisticsReporter.Builder.access$300(paramBuilder));
-    this.mReportParams.putAll(WSStatisticsBaseCollector.getBaseParams());
+    this.mBaseCollector = WSStatisticsReporter.Builder.access$200(paramBuilder);
+    this.mBuilder = paramBuilder;
+  }
+  
+  private void beaconData2Server()
+  {
+    the localthe = new the(new tka(this.mEventName, this.mReportParams), null, new tjy(this), 4009);
+    tgx.a().a(localthe);
   }
   
   public void report()
   {
-    axrn.a(BaseApplication.getContext()).a(null, this.mEventName, true, 0L, 0L, this.mReportParams, "", this.mFlush);
-    snb.b("WSStatisticsReporter", "event report: " + this.mEventName + " params:" + this.mReportParams.toString() + " isFlush: " + this.mFlush);
+    ThreadManager.getSubThreadHandler().post(new WSStatisticsReporter.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsReporter
  * JD-Core Version:    0.7.0.1
  */

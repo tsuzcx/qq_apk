@@ -1,110 +1,60 @@
-import java.math.RoundingMode;
-import java.text.NumberFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
 
 public class qkz
 {
-  public static HashMap<Integer, Long> a = new HashMap();
-  public static HashMap<Integer, ArrayList<qla>> b = new HashMap();
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
   
-  public static JSONArray a()
+  public static qkz a(articlesummary.HotWordItem paramHotWordItem)
   {
-    try
-    {
-      a();
-      JSONArray localJSONArray1 = new JSONArray();
-      Iterator localIterator = b.keySet().iterator();
-      NumberFormat localNumberFormat = NumberFormat.getInstance(Locale.US);
-      localNumberFormat.setMaximumFractionDigits(2);
-      localNumberFormat.setMinimumFractionDigits(2);
-      localNumberFormat.setRoundingMode(RoundingMode.HALF_UP);
-      localNumberFormat.setGroupingUsed(false);
-      while (localIterator.hasNext())
-      {
-        Object localObject = (Integer)localIterator.next();
-        localObject = ((ArrayList)b.get(localObject)).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          qla localqla = (qla)((Iterator)localObject).next();
-          JSONObject localJSONObject = new JSONObject();
-          try
-          {
-            localJSONObject.put("downloadTime", new Float(localNumberFormat.format(Math.round(localqla.jdField_a_of_type_Float * 100.0F) / 100.0F)));
-            localJSONObject.put("speedList", localqla.b);
-            localJSONArray1.put(localJSONObject);
-          }
-          catch (JSONException localJSONException)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
+    qkz localqkz = new qkz();
+    if (paramHotWordItem.hot_word.has()) {
+      localqkz.a = paramHotWordItem.hot_word.get().toStringUtf8();
     }
-    finally {}
-    return localJSONArray2;
+    if (paramHotWordItem.jump_url.has()) {
+      localqkz.b = paramHotWordItem.jump_url.get().toStringUtf8();
+    }
+    if (paramHotWordItem.index_word_color.has()) {
+      localqkz.c = paramHotWordItem.index_word_color.get().toStringUtf8();
+    }
+    if (paramHotWordItem.index_bg_color.has()) {
+      localqkz.d = paramHotWordItem.index_bg_color.get().toStringUtf8();
+    }
+    return localqkz;
   }
   
-  public static void a()
+  public articlesummary.HotWordItem a()
   {
-    Iterator localIterator = a.keySet().iterator();
-    long l = System.currentTimeMillis();
-    while (localIterator.hasNext())
-    {
-      Integer localInteger = (Integer)localIterator.next();
-      if (((Long)a.get(localInteger)).longValue() < l - 60000L)
-      {
-        b.remove(localInteger);
-        localIterator.remove();
-      }
+    articlesummary.HotWordItem localHotWordItem = new articlesummary.HotWordItem();
+    if (!TextUtils.isEmpty(this.a)) {
+      localHotWordItem.hot_word.set(ByteStringMicro.copyFromUtf8(this.a));
     }
+    if (!TextUtils.isEmpty(this.d)) {
+      localHotWordItem.index_bg_color.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    if (!TextUtils.isEmpty(this.c)) {
+      localHotWordItem.index_word_color.set(ByteStringMicro.copyFromUtf8(this.c));
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localHotWordItem.jump_url.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    return localHotWordItem;
   }
   
-  public static void a(int paramInt, long paramLong)
+  public boolean equals(Object paramObject)
   {
-    if (paramLong == 0L) {
-      return;
-    }
-    for (;;)
-    {
-      long l;
-      try
-      {
-        l = System.currentTimeMillis();
-        a.put(Integer.valueOf(paramInt), Long.valueOf(l));
-        if (b.get(Integer.valueOf(paramInt)) != null)
-        {
-          ArrayList localArrayList1 = (ArrayList)b.get(Integer.valueOf(paramInt));
-          localqla1 = (qla)localArrayList1.get(0);
-          qla localqla2 = new qla();
-          localqla2.b = paramLong;
-          localqla2.jdField_a_of_type_Long = l;
-          localqla2.jdField_a_of_type_Float = ((float)(l - localqla1.jdField_a_of_type_Long) / 1000.0F);
-          localArrayList1.add(localqla2);
-          b.put(Integer.valueOf(paramInt), localArrayList1);
-          a();
-          return;
-        }
-      }
-      finally {}
-      ArrayList localArrayList2 = new ArrayList();
-      qla localqla1 = new qla();
-      localqla1.b = paramLong;
-      localqla1.jdField_a_of_type_Long = l;
-      localqla1.jdField_a_of_type_Float = 0.0F;
-      localArrayList2.add(localqla1);
-    }
+    return ((paramObject instanceof qkz)) && (!TextUtils.isEmpty(this.a)) && (this.a.equals(((qkz)paramObject).a)) && (!TextUtils.isEmpty(this.b)) && (this.b.equals(((qkz)paramObject).b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qkz
  * JD-Core Version:    0.7.0.1
  */

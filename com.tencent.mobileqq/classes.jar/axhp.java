@@ -1,328 +1,84 @@
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.hardware.Camera;
-import android.hardware.Camera.CameraInfo;
-import android.hardware.Camera.Parameters;
-import android.hardware.Camera.Size;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.v4.util.ArraySet;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import org.json.JSONObject;
 
-public class axhp
+class axhp
+  extends axhi
 {
-  private static int jdField_a_of_type_Int;
-  private static axhp jdField_a_of_type_Axhp;
-  private static int b;
-  private static int c;
-  private Camera.Parameters jdField_a_of_type_AndroidHardwareCamera$Parameters;
+  axhp(axho paramaxho, axhr paramaxhr, int paramInt) {}
   
-  static
+  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
   {
-    int j = 0;
-    if (!axhp.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    ArraySet localArraySet = new ArraySet();
+    ArrayList localArrayList = new ArrayList();
+    if ("QQCircleRedCircle".equals(paramString))
     {
-      jdField_a_of_type_Boolean = bool;
-      b = -1;
-      c = -1;
-      for (;;)
+      QLog.d("RedPointManage", 1, "getPassiveRedNumQQCircle updateNumMsg");
+      if (paramList != null)
       {
-        int i;
-        try
+        paramString = paramList.iterator();
+        while (paramString.hasNext())
         {
-          long l = System.currentTimeMillis();
-          Object localObject = amfv.b(BaseApplicationImpl.getContext());
-          if (((SharedPreferences)localObject).contains("localsp_camera_num"))
-          {
-            jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt("localsp_camera_num", 0);
-            i = j;
-            if (QLog.isColorLevel())
+          paramList = (NumRedMsg.NumMsgBusi)paramString.next();
+          if ((paramList != null) && (paramList.str_ext.get() != null)) {
+            try
             {
-              QLog.i("CameraAbility", 2, "getNumberOfCameras cost: " + (System.currentTimeMillis() - l));
-              i = j;
+              JSONObject localJSONObject = new JSONObject(paramList.str_ext.get());
+              localArraySet.add(localJSONObject.optString("_red_ext_uin"));
+              long l = axho.a(this.jdField_a_of_type_Axho);
+              if (l > 0L) {
+                try
+                {
+                  if (Long.parseLong(localJSONObject.optString("_red_ext_feed_time")) < axho.a(this.jdField_a_of_type_Axho))
+                  {
+                    localArrayList.add(Long.valueOf(paramList.ui64_msgid.get()));
+                    axho.a(this.jdField_a_of_type_Axho, 140000, (int)paramList.ui64_msgid.get(), 3);
+                  }
+                }
+                catch (Exception paramList)
+                {
+                  paramList.printStackTrace();
+                  QLog.d("RedPointManage", 1, "getPassiveRedNumQQCircle ", paramList);
+                }
+              }
             }
-            if (i < jdField_a_of_type_Int)
+            catch (Exception paramList)
             {
-              localObject = new Camera.CameraInfo();
-              Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
-              if (localObject == null) {
-                break label194;
-              }
-              if ((((Camera.CameraInfo)localObject).facing != 0) || (b != -1)) {
-                break label181;
-              }
-              b = i;
-              break label194;
+              paramList.printStackTrace();
+              QLog.d("RedPointManage", 1, "getPassiveRedNumQQCircle ", paramList);
             }
           }
-          else
+        }
+        paramString = new ArrayList(localArraySet);
+        if (this.jdField_a_of_type_Axhr != null)
+        {
+          this.jdField_a_of_type_Axhr.a(paramString, this.b);
+          QLog.d("RedPointManage", 1, "getPassiveRedNumQQCircle listener returns successfully: " + paramString.size() + ", num = " + this.b);
+        }
+        if (axho.a(this.jdField_a_of_type_Axho) > 0L)
+        {
+          axho.a(this.jdField_a_of_type_Axho, 0L);
+          if (localArrayList.size() > 0)
           {
-            jdField_a_of_type_Int = Camera.getNumberOfCameras();
-            continue;
-          }
-          return;
-        }
-        catch (RuntimeException localRuntimeException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("CameraAbility", 2, "", localRuntimeException);
-          }
-          jdField_a_of_type_Int = 1;
-        }
-        label181:
-        if (1 == localRuntimeException.facing) {
-          c = i;
-        }
-        label194:
-        i += 1;
-      }
-    }
-  }
-  
-  public static int a()
-  {
-    return c;
-  }
-  
-  public static axhp a()
-  {
-    if (jdField_a_of_type_Axhp == null) {}
-    try
-    {
-      if (jdField_a_of_type_Axhp == null) {
-        jdField_a_of_type_Axhp = new axhp();
-      }
-      return jdField_a_of_type_Axhp;
-    }
-    finally {}
-  }
-  
-  public static boolean a()
-  {
-    return jdField_a_of_type_Int > 0;
-  }
-  
-  public static int b()
-  {
-    return b;
-  }
-  
-  public static boolean b()
-  {
-    return (a()) && (b != -1);
-  }
-  
-  public static boolean c()
-  {
-    return (a()) && (c != -1);
-  }
-  
-  public List<Camera.Size> a()
-  {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
-      throw new AssertionError();
-    }
-    try
-    {
-      List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedPreviewSizes();
-      if ((localList != null) && (QLog.isColorLevel()))
-      {
-        Iterator localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          Camera.Size localSize = (Camera.Size)localIterator.next();
-          if (localSize != null) {
-            QLog.d("CameraAbility", 2, "[@] getPreviewSizes:w=" + localSize.width + ",h=" + localSize.height + " w/h=" + localSize.width / localSize.height);
+            paramString = this.jdField_a_of_type_Axho.a("140000");
+            axho.a(this.jdField_a_of_type_Axho, paramString, 9, false, null, localArrayList, "");
+            QLog.d("RedPointManage", 1, "getPassiveRedNumQQCircle updateNumMsg updateMsgId: " + localArrayList);
           }
         }
       }
     }
-    catch (Exception localException)
-    {
-      List<Camera.Size> localList1;
-      for (;;)
-      {
-        localException.printStackTrace();
-        localList1 = null;
-      }
-      return localList1;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidHardwareCamera$Parameters = null;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
-      throw new AssertionError();
-    }
-    try
-    {
-      List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedPreviewFormats();
-      if (localList == null) {
-        return false;
-      }
-      boolean bool = localList.contains(Integer.valueOf(paramInt));
-      if (bool) {
-        return true;
-      }
-    }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  public boolean a(Camera paramCamera)
-  {
-    a();
-    if (paramCamera == null) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        this.jdField_a_of_type_AndroidHardwareCamera$Parameters = paramCamera.getParameters();
-        if (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null) {
-          continue;
-        }
-        return true;
-      }
-      catch (Exception paramCamera)
-      {
-        for (;;)
-        {
-          paramCamera.printStackTrace();
-          this.jdField_a_of_type_AndroidHardwareCamera$Parameters = null;
-        }
-      }
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
-      throw new AssertionError();
-    }
-    try
-    {
-      List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedFocusModes();
-      if (localList == null) {
-        return false;
-      }
-      boolean bool = localList.contains(paramString);
-      if (bool) {
-        return true;
-      }
-    }
-    catch (Exception paramString) {}
-    return false;
-  }
-  
-  public List<Camera.Size> b()
-  {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
-      throw new AssertionError();
-    }
-    try
-    {
-      List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedPictureSizes();
-      if ((localList != null) && (QLog.isColorLevel()))
-      {
-        Iterator localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          Camera.Size localSize = (Camera.Size)localIterator.next();
-          if (localSize != null) {
-            QLog.d("CameraAbility", 2, "[@] getPictureSizes:w=" + localSize.width + ",h=" + localSize.height + " w/h=" + localSize.width / localSize.height);
-          }
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      List<Camera.Size> localList1;
-      for (;;)
-      {
-        localException.printStackTrace();
-        localList1 = null;
-      }
-      return localList1;
-    }
-  }
-  
-  public boolean b(String paramString)
-  {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
-      throw new AssertionError();
-    }
-    try
-    {
-      List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedSceneModes();
-      if ((localList != null) && (!localList.isEmpty()))
-      {
-        boolean bool = localList.contains(paramString);
-        return bool;
-      }
-    }
-    catch (Exception paramString) {}
-    return false;
-  }
-  
-  @TargetApi(9)
-  public List<int[]> c()
-  {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
-      throw new AssertionError();
-    }
-    try
-    {
-      List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedPreviewFpsRange();
-      return localList;
-    }
-    catch (Exception localException) {}
-    return null;
-  }
-  
-  public boolean d()
-  {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
-      throw new AssertionError();
-    }
-    try
-    {
-      boolean bool = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.isZoomSupported();
-      return bool;
-    }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  public boolean e()
-  {
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
-      throw new AssertionError();
-    }
-    try
-    {
-      List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedFlashModes();
-      if (localList == null) {
-        return false;
-      }
-      boolean bool = localList.contains("torch");
-      if (bool) {
-        return true;
-      }
-    }
-    catch (Exception localException) {}
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axhp
  * JD-Core Version:    0.7.0.1
  */

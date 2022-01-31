@@ -8,12 +8,12 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import org.json.JSONObject;
-import wvg;
+import yjz;
 
 public class CommodityBean
   implements Parcelable
 {
-  public static final Parcelable.Creator<CommodityBean> CREATOR = new wvg();
+  public static final Parcelable.Creator<CommodityBean> CREATOR = new yjz();
   public String mAlias = "";
   public String mImg = "";
   public long mItemID;
@@ -87,7 +87,7 @@ public class CommodityBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.commodity.CommodityBean
  * JD-Core Version:    0.7.0.1
  */

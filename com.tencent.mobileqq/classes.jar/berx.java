@@ -1,23 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.MiniGamePluginInfo;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public final class berx
-  implements Parcelable.Creator<MiniGamePluginInfo>
+final class berx
+  implements Animation.AnimationListener
 {
-  public MiniGamePluginInfo a(Parcel paramParcel)
+  berx(View paramView1, View paramView2) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new MiniGamePluginInfo(paramParcel);
+    paramAnimation = new beqk(this.a);
+    paramAnimation.setDuration(berw.a());
+    paramAnimation.setFillAfter(true);
+    this.a.startAnimation(paramAnimation);
+    this.a.setVisibility(0);
+    this.b.clearAnimation();
+    this.b.setVisibility(4);
   }
   
-  public MiniGamePluginInfo[] a(int paramInt)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return new MiniGamePluginInfo[paramInt];
+    this.a.clearAnimation();
+    this.a.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     berx
  * JD-Core Version:    0.7.0.1
  */

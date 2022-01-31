@@ -11,8 +11,8 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import baxn;
-import ved;
+import bcwh;
+import wsv;
 
 public class ProgressPointer
   extends View
@@ -53,7 +53,7 @@ public class ProgressPointer
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    this.d = baxn.a(getContext(), ScrollFrameSelectBar.jdField_a_of_type_Int);
+    this.d = bcwh.a(getContext(), ScrollFrameSelectBar.jdField_a_of_type_Int);
   }
   
   public void a()
@@ -121,7 +121,7 @@ public class ProgressPointer
   
   public void setRange(int paramInt1, int paramInt2, int paramInt3)
   {
-    ved.a("Q.qqstory.frameWidget.ProgressPointer", "++++++++setRange++++++start=%s,end=%s,duration=%s,mProgress=%s", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Float.valueOf(this.jdField_a_of_type_Float));
+    wsv.a("Q.qqstory.frameWidget.ProgressPointer", "++++++++setRange++++++start=%s,end=%s,duration=%s,mProgress=%s", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Float.valueOf(this.jdField_a_of_type_Float));
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
     this.c = paramInt3;
@@ -129,7 +129,7 @@ public class ProgressPointer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ProgressPointer
  * JD-Core Version:    0.7.0.1
  */

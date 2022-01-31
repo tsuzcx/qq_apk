@@ -1,29 +1,49 @@
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 class aeqp
-  implements myy
+  extends Animation
 {
-  aeqp(aeqb paramaeqb) {}
+  private float jdField_a_of_type_Float;
+  private float b;
   
-  public void loaded(String paramString, int paramInt)
+  aeqp(aeql paramaeql) {}
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a + "Q.hotchat.aio_post_list_plugin", 2, "checkUpByBusinessId:2586|param:" + paramString + "|code:" + paramInt);
+    float f2 = 1.5F;
+    float f1 = 0.0F;
+    if (paramFloat < this.jdField_a_of_type_Aeql.jdField_a_of_type_Float * 5.0F) {
+      paramFloat = f2;
     }
-    paramString = this.a;
-    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {}
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      aeqb.b(paramString, bool);
+      paramTransformation.setAlpha(f1);
+      paramTransformation.getMatrix().setScale(paramFloat, paramFloat, this.jdField_a_of_type_Float, this.b);
       return;
+      if (paramFloat < 13.0F * this.jdField_a_of_type_Aeql.jdField_a_of_type_Float)
+      {
+        f1 = 0.5F - (paramFloat - this.jdField_a_of_type_Aeql.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Aeql.jdField_a_of_type_Float * 8.0F) * 0.5F;
+        paramFloat = 1.5F + (paramFloat - this.jdField_a_of_type_Aeql.jdField_a_of_type_Float * 5.0F) / (this.jdField_a_of_type_Aeql.jdField_a_of_type_Float * 8.0F) * 0.5F;
+      }
+      else
+      {
+        paramFloat = 2.0F;
+      }
     }
   }
   
-  public void progress(int paramInt) {}
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
+    this.b = (paramInt2 * 0.5F);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqp
  * JD-Core Version:    0.7.0.1
  */

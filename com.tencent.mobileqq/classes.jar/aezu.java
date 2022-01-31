@@ -1,43 +1,63 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.util.Pair;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aezu
-  implements BusinessObserver
+class aezu
+  implements URLDrawable.URLDrawableListener
 {
-  private Handler a;
+  aezu(aezp paramaezp) {}
   
-  aezu(Handler paramHandler)
-  {
-    this.a = paramHandler;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    paramInt = paramBundle.getInt("ErrorCode");
-    String str1 = paramBundle.getString("UniqueKey");
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituObserver", 2, aezl.a(str1, "onReceive", "observer onReceive with code: " + paramInt));
-    }
-    String str2 = aezl.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if (!str2.equals(str1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituObserver", 2, aezl.a(str1, "onReceive", "response with " + str1 + " but the last one is " + str2 + ", skip."));
+    if ((paramURLDrawable.getCurrDrawable() instanceof RegionDrawable))
+    {
+      paramThrowable = this.a.a.iterator();
+      while (paramThrowable.hasNext())
+      {
+        Pair localPair = (Pair)paramThrowable.next();
+        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null) && (aezp.a(this.a) != null)) {
+          ((URLImageView)localPair.second).setImageDrawable(aezp.a(this.a).a.getResources().getDrawable(2130843290));
+        }
       }
     }
-    while (this.a == null) {
-      return;
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    Drawable localDrawable = paramURLDrawable.getCurrDrawable();
+    if ((localDrawable instanceof RegionDrawable))
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext())
+      {
+        Pair localPair = (Pair)localIterator.next();
+        if ((((URLDrawable)localPair.first).getURL().equals(paramURLDrawable.getURL())) && (localPair.second != null))
+        {
+          Bitmap localBitmap = ((RegionDrawable)localDrawable).getBitmap();
+          ((URLImageView)localPair.second).setImageBitmap(localBitmap);
+          ((URLImageView)localPair.second).setVisibility(0);
+        }
+      }
     }
-    paramBundle = this.a.obtainMessage(2, paramBundle);
-    this.a.sendMessage(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezu
  * JD-Core Version:    0.7.0.1
  */

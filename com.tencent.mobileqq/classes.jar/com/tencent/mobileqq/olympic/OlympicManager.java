@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.olympic;
 
-import akxb;
+import amnr;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
@@ -14,25 +14,25 @@ import android.os.Message;
 import android.support.v4.util.SparseArrayCompat;
 import android.text.TextUtils;
 import android.util.Xml;
-import aueu;
-import auew;
-import auex;
-import auey;
-import auez;
-import aufa;
-import aufb;
-import aufd;
-import augv;
-import auko;
-import aukp;
-import aukq;
-import aukr;
-import axrn;
-import bbdh;
-import bbdx;
-import bbfj;
-import bbll;
-import bfob;
+import avvy;
+import avwa;
+import avwb;
+import avwc;
+import avwd;
+import avwe;
+import avwf;
+import avwh;
+import avxz;
+import awbv;
+import awbw;
+import awbx;
+import awby;
+import azmz;
+import bdcb;
+import bdcs;
+import bdee;
+import bdkf;
+import bhow;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
@@ -69,7 +69,7 @@ public class OlympicManager
 {
   public static Bitmap a;
   public static Pair<Long, Bitmap> a;
-  private static Comparator<ShuayishuaConfig> jdField_a_of_type_JavaUtilComparator = new auex();
+  private static Comparator<ShuayishuaConfig> jdField_a_of_type_JavaUtilComparator = new avwb();
   static Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap(8);
   public static boolean a;
   private static final int[] jdField_b_of_type_ArrayOfInt;
@@ -79,12 +79,12 @@ public class OlympicManager
   private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
   private Handler jdField_a_of_type_AndroidOsHandler;
   SparseArrayCompat<ArrayList<Long>> jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat(1);
-  private aueu jdField_a_of_type_Aueu;
-  public auew a;
-  private aufa jdField_a_of_type_Aufa = new auez(this);
-  private aufb jdField_a_of_type_Aufb;
-  private aufd jdField_a_of_type_Aufd = new auey(this);
-  private aukp jdField_a_of_type_Aukp;
+  private avvy jdField_a_of_type_Avvy;
+  public avwa a;
+  private avwe jdField_a_of_type_Avwe = new avwd(this);
+  private avwf jdField_a_of_type_Avwf;
+  private avwh jdField_a_of_type_Avwh = new avwc(this);
+  private awbw jdField_a_of_type_Awbw;
   public QQAppInterface a;
   private OlyimpicConfig jdField_a_of_type_ComTencentMobileqqOlympicOlyimpicConfig;
   public OlympicActConfig a;
@@ -128,12 +128,12 @@ public class OlympicManager
   {
     this.jdField_a_of_type_ArrayOfByte = new byte[0];
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new bfob(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new bhow(Looper.getMainLooper(), this);
     this.jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_Aufb = new aufb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_a_of_type_Aukp = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    paramQQAppInterface.addObserver(this.jdField_a_of_type_Aufa);
-    this.jdField_a_of_type_Aufb.a(this.jdField_a_of_type_Aufd);
+    this.jdField_a_of_type_Avwf = new avwf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Awbw = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Avwe);
+    this.jdField_a_of_type_Avwf.a(this.jdField_a_of_type_Avwh);
     paramQQAppInterface.registObserver(this);
     ThreadManager.post(new OlympicManager.1(this), 5, null, false);
     if (QLog.isColorLevel()) {
@@ -257,11 +257,11 @@ public class OlympicManager
       }
       else if (str.equalsIgnoreCase("Begin"))
       {
-        ((ShuayishuaConfig)localObject2).realBegin = augv.a(((XmlPullParser)localObject1).nextText());
+        ((ShuayishuaConfig)localObject2).realBegin = avxz.a(((XmlPullParser)localObject1).nextText());
       }
       else if (str.equalsIgnoreCase("End"))
       {
-        ((ShuayishuaConfig)localObject2).realEnd = augv.a(((XmlPullParser)localObject1).nextText());
+        ((ShuayishuaConfig)localObject2).realEnd = avxz.a(((XmlPullParser)localObject1).nextText());
       }
       else if (str.equalsIgnoreCase("BackGroundImg"))
       {
@@ -357,7 +357,7 @@ public class OlympicManager
         {
           paramInt = ((Integer)paramArrayList.get(0 % i)).intValue() * 1000;
           if (QLog.isColorLevel()) {
-            QLog.i("OlympicManager", 2, "parseConfig last.realBegin=" + ((ShuayishuaConfig)localObject1).realBegin + "(" + augv.a(((ShuayishuaConfig)localObject1).realBegin) + "),countHitConfig =" + 0 + ",diff = " + paramInt);
+            QLog.i("OlympicManager", 2, "parseConfig last.realBegin=" + ((ShuayishuaConfig)localObject1).realBegin + "(" + avxz.a(((ShuayishuaConfig)localObject1).realBegin) + "),countHitConfig =" + 0 + ",diff = " + paramInt);
           }
           ((ShuayishuaConfig)localObject1).realBegin += paramInt;
           l = ((ShuayishuaConfig)localObject1).realEnd;
@@ -376,7 +376,7 @@ public class OlympicManager
           {
             int m = ((Integer)paramArrayList.get(paramInt % i)).intValue() * 1000;
             if (QLog.isColorLevel()) {
-              QLog.i("OlympicManager", 2, "parseConfig cur.realBegin=" + ((ShuayishuaConfig)localObject2).realBegin + "(" + augv.a(((ShuayishuaConfig)localObject2).realBegin) + "),countHitConfig =" + paramInt + ",diff = " + m);
+              QLog.i("OlympicManager", 2, "parseConfig cur.realBegin=" + ((ShuayishuaConfig)localObject2).realBegin + "(" + avxz.a(((ShuayishuaConfig)localObject2).realBegin) + "),countHitConfig =" + paramInt + ",diff = " + m);
             }
             ((ShuayishuaConfig)localObject2).realBegin += m;
             l = ((ShuayishuaConfig)localObject2).realEnd;
@@ -422,15 +422,15 @@ public class OlympicManager
   private void a(long paramLong)
   {
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqOlympicShuayishuaConfig;
-    auew localauew = this.jdField_a_of_type_Auew;
-    if (localauew == null) {
+    avwa localavwa = this.jdField_a_of_type_Avwa;
+    if (localavwa == null) {
       return;
     }
     long l = paramLong;
     if (paramLong == 0L) {
       l = NetConnInfoCenter.getServerTimeMillis();
     }
-    boolean bool1 = akxb.a().b();
+    boolean bool1 = amnr.a().b();
     boolean bool2 = e();
     boolean bool3 = a("olympic_entrance_setting", true);
     StringBuilder localStringBuilder;
@@ -450,9 +450,9 @@ public class OlympicManager
     label235:
     for (localObject = "null";; localObject = "not null")
     {
-      QLog.d("OlympicManager", 2, (String)localObject + ",currentTime = " + l + "(" + augv.a(l) + "),closeEntrance = " + bool2 + ",mHasChechBreathOnRecovery = " + this.jdField_d_of_type_Boolean + ",olympicSettingFlag = " + bool3 + ",mTorchbearerFlag = " + this.jdField_a_of_type_Int);
+      QLog.d("OlympicManager", 2, (String)localObject + ",currentTime = " + l + "(" + avxz.a(l) + "),closeEntrance = " + bool2 + ",mHasChechBreathOnRecovery = " + this.jdField_d_of_type_Boolean + ",olympicSettingFlag = " + bool3 + ",mTorchbearerFlag = " + this.jdField_a_of_type_Int);
       if (this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig != null) {}
-      localauew.a();
+      localavwa.a();
       return;
       localObject = "not null";
       break;
@@ -461,47 +461,47 @@ public class OlympicManager
   
   private void a(OlympicActConfig paramOlympicActConfig, boolean paramBoolean)
   {
-    augv.b("OlympicManager", new Object[] { "tryDownloadActResource ，forceDownload = " + paramBoolean });
+    avxz.b("OlympicManager", new Object[] { "tryDownloadActResource ，forceDownload = " + paramBoolean });
     if (paramOlympicActConfig == null)
     {
       QLog.i("OlympicManager", 1, "tryDownloadActResource actconfig == null!");
       return;
     }
     boolean bool;
-    if (this.jdField_a_of_type_Aueu == null)
+    if (this.jdField_a_of_type_Avvy == null)
     {
       localObject1 = "dpc is null";
       QLog.i("OlympicManager", 1, "tryDownloadActResource dpc =" + (String)localObject1);
-      if ((this.jdField_a_of_type_Aueu != null) && (!this.jdField_a_of_type_Aueu.jdField_a_of_type_Boolean)) {
+      if ((this.jdField_a_of_type_Avvy != null) && (!this.jdField_a_of_type_Avvy.jdField_a_of_type_Boolean)) {
         break label222;
       }
       bool = true;
       label105:
       localObject1 = new HashMap();
-      if (this.jdField_a_of_type_Aueu != null) {
+      if (this.jdField_a_of_type_Avvy != null) {
         break label228;
       }
     }
     label222:
     label228:
-    for (int i = 0;; i = this.jdField_a_of_type_Aueu.jdField_a_of_type_Int)
+    for (int i = 0;; i = this.jdField_a_of_type_Avvy.jdField_a_of_type_Int)
     {
       ((HashMap)localObject1).put("dpc", String.valueOf(i));
-      axrn.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "olympic_down_dpc", bool, 0L, 0L, (HashMap)localObject1, "", false);
+      azmz.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "olympic_down_dpc", bool, 0L, 0L, (HashMap)localObject1, "", false);
       if (paramBoolean) {
         break label262;
       }
       if (d()) {
         break label239;
       }
-      augv.b("OlympicManager", new Object[] { "tryDownloadActResource, can't auto pre download, return" });
+      avxz.b("OlympicManager", new Object[] { "tryDownloadActResource, can't auto pre download, return" });
       return;
-      if (this.jdField_a_of_type_Aueu.jdField_a_of_type_JavaLangString == null)
+      if (this.jdField_a_of_type_Avvy.jdField_a_of_type_JavaLangString == null)
       {
         localObject1 = "dpc.string is null";
         break;
       }
-      localObject1 = this.jdField_a_of_type_Aueu.jdField_a_of_type_JavaLangString;
+      localObject1 = this.jdField_a_of_type_Avvy.jdField_a_of_type_JavaLangString;
       break;
       bool = false;
       break label105;
@@ -509,15 +509,15 @@ public class OlympicManager
     label239:
     if (!c())
     {
-      augv.b("OlympicManager", new Object[] { "tryDownloadActResource, isNetworkCanPredown is false, return" });
+      avxz.b("OlympicManager", new Object[] { "tryDownloadActResource, isNetworkCanPredown is false, return" });
       return;
     }
     label262:
     long l = NetConnInfoCenter.getServerTimeMillis();
     Object localObject1 = paramOlympicActConfig.getConfigString("HomePage", "End");
-    if ((TextUtils.isEmpty((CharSequence)localObject1)) || (augv.a((String)localObject1) < l))
+    if ((TextUtils.isEmpty((CharSequence)localObject1)) || (avxz.a((String)localObject1) < l))
     {
-      augv.b("OlympicManager", new Object[] { "tryDownloadActResource, time expired!" });
+      avxz.b("OlympicManager", new Object[] { "tryDownloadActResource, time expired!" });
       return;
     }
     ArrayList localArrayList1 = new ArrayList();
@@ -526,7 +526,7 @@ public class OlympicManager
     Object localObject3;
     if ((a()) && (this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo != null))
     {
-      augv.b("OlympicManager", new Object[] { "tryDownloadActResource, cityPic & starPic, isSelfTorchbearer() && mTorchbearerInfo != null" });
+      avxz.b("OlympicManager", new Object[] { "tryDownloadActResource, cityPic & starPic, isSelfTorchbearer() && mTorchbearerInfo != null" });
       localObject1 = localObject2;
       if (this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo.city_list.size() > 0)
       {
@@ -534,9 +534,9 @@ public class OlympicManager
         localObject1 = localObject2;
         if (localObject3 != null)
         {
-          this.jdField_a_of_type_Aufb.a(((TorchInfo.CityInfo)localObject3).city_pic_url, ((TorchInfo.CityInfo)localObject3).city_pic_md5, new String[] { "ActConfig", "CityImage", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
+          this.jdField_a_of_type_Avwf.a(((TorchInfo.CityInfo)localObject3).city_pic_url, ((TorchInfo.CityInfo)localObject3).city_pic_md5, new String[] { "ActConfig", "CityImage", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
           localArrayList1.add(((TorchInfo.CityInfo)localObject3).city_pic_md5);
-          this.jdField_a_of_type_Aufb.a(((TorchInfo.CityInfo)localObject3).cons_pic_url, ((TorchInfo.CityInfo)localObject3).cons_pic_md5, new String[] { "ActConfig", "StarImage", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
+          this.jdField_a_of_type_Avwf.a(((TorchInfo.CityInfo)localObject3).cons_pic_url, ((TorchInfo.CityInfo)localObject3).cons_pic_md5, new String[] { "ActConfig", "StarImage", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
           localArrayList1.add(((TorchInfo.CityInfo)localObject3).cons_pic_md5);
           localObject1 = localObject2;
           if (TextUtils.isEmpty("")) {
@@ -551,9 +551,9 @@ public class OlympicManager
         localObject2 = localObject1;
         if (localObject3 != null)
         {
-          this.jdField_a_of_type_Aufb.a(((TorchInfo.CityInfo)localObject3).city_pic_url, ((TorchInfo.CityInfo)localObject3).city_pic_md5, new String[] { "ActConfig", "City2Image", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
+          this.jdField_a_of_type_Avwf.a(((TorchInfo.CityInfo)localObject3).city_pic_url, ((TorchInfo.CityInfo)localObject3).city_pic_md5, new String[] { "ActConfig", "City2Image", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
           localArrayList1.add(((TorchInfo.CityInfo)localObject3).city_pic_md5);
-          this.jdField_a_of_type_Aufb.a(((TorchInfo.CityInfo)localObject3).cons_pic_url, ((TorchInfo.CityInfo)localObject3).cons_pic_md5, new String[] { "ActConfig", "Star2Image", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
+          this.jdField_a_of_type_Avwf.a(((TorchInfo.CityInfo)localObject3).cons_pic_url, ((TorchInfo.CityInfo)localObject3).cons_pic_md5, new String[] { "ActConfig", "Star2Image", ((TorchInfo.CityInfo)localObject3).city_id + "_" + ((TorchInfo.CityInfo)localObject3).city_pic_id }, false, 2, true);
           localArrayList1.add(((TorchInfo.CityInfo)localObject3).cons_pic_md5);
           localObject2 = localObject1;
         }
@@ -573,11 +573,11 @@ public class OlympicManager
         break;
       }
       paramBoolean = true;
-      augv.b("OlympicManager", new Object[] { "tryDownloadActResource, homePageBg==null?", Boolean.valueOf(paramBoolean) });
+      avxz.b("OlympicManager", new Object[] { "tryDownloadActResource, homePageBg==null?", Boolean.valueOf(paramBoolean) });
       if (localObject1 == null) {
         break label1943;
       }
-      this.jdField_a_of_type_Aufb.a(((OlympicActConfig.HomePageBg)localObject1).url, ((OlympicActConfig.HomePageBg)localObject1).md5, new String[] { "ActConfig", "homePageBg", "01" }, false, 2, true);
+      this.jdField_a_of_type_Avwf.a(((OlympicActConfig.HomePageBg)localObject1).url, ((OlympicActConfig.HomePageBg)localObject1).md5, new String[] { "ActConfig", "homePageBg", "01" }, false, 2, true);
       localArrayList1.add(((OlympicActConfig.HomePageBg)localObject1).md5);
       localObject3 = ((OlympicActConfig.HomePageBg)localObject1).md5;
       localObject1 = paramOlympicActConfig.getHomePageBg("2");
@@ -585,14 +585,14 @@ public class OlympicManager
         break label1452;
       }
       paramBoolean = true;
-      augv.b("OlympicManager", new Object[] { "tryDownloadActResource, homePageBg2==null?", Boolean.valueOf(paramBoolean) });
+      avxz.b("OlympicManager", new Object[] { "tryDownloadActResource, homePageBg2==null?", Boolean.valueOf(paramBoolean) });
       if (localObject1 != null)
       {
-        this.jdField_a_of_type_Aufb.a(((OlympicActConfig.HomePageBg)localObject1).url, ((OlympicActConfig.HomePageBg)localObject1).md5, new String[] { "ActConfig", "homePageBg", "02" }, false, 2, true);
+        this.jdField_a_of_type_Avwf.a(((OlympicActConfig.HomePageBg)localObject1).url, ((OlympicActConfig.HomePageBg)localObject1).md5, new String[] { "ActConfig", "homePageBg", "02" }, false, 2, true);
         localArrayList1.add(((OlympicActConfig.HomePageBg)localObject1).md5);
       }
       localObject1 = "";
-      augv.b("OlympicManager", new Object[] { "tryDownloadActResource, actConfig.mTorchImageMap.size() = ", Integer.valueOf(paramOlympicActConfig.getTorchImageMap().size()) });
+      avxz.b("OlympicManager", new Object[] { "tryDownloadActResource, actConfig.mTorchImageMap.size() = ", Integer.valueOf(paramOlympicActConfig.getTorchImageMap().size()) });
       localObject4 = paramOlympicActConfig.getTorchImageMap().keySet().iterator();
       while (((Iterator)localObject4).hasNext())
       {
@@ -601,14 +601,14 @@ public class OlympicManager
         if (localTorchImage == null) {
           break label1940;
         }
-        this.jdField_a_of_type_Aufb.a(localTorchImage.url, localTorchImage.md5, new String[] { "ActConfig", "TorchImage", str }, false, 2, true);
+        this.jdField_a_of_type_Avwf.a(localTorchImage.url, localTorchImage.md5, new String[] { "ActConfig", "TorchImage", str }, false, 2, true);
         localArrayList1.add(localTorchImage.md5);
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
           break label1940;
         }
         localObject1 = localTorchImage.md5;
       }
-      augv.b("OlympicManager", new Object[] { "tryDownloadActResource, actConfig.getChosenCityImageList.size() = ", Integer.valueOf(paramOlympicActConfig.getChosenCityImageList().size()) });
+      avxz.b("OlympicManager", new Object[] { "tryDownloadActResource, actConfig.getChosenCityImageList.size() = ", Integer.valueOf(paramOlympicActConfig.getChosenCityImageList().size()) });
       localObject3 = paramOlympicActConfig.getChosenCityImageList().iterator();
       localObject1 = localObject2;
       localObject2 = localObject1;
@@ -616,9 +616,9 @@ public class OlympicManager
     localObject2 = (OlympicActConfig.CityImage)((Iterator)localObject3).next();
     if (localObject2 != null)
     {
-      this.jdField_a_of_type_Aufb.a(((OlympicActConfig.CityImage)localObject2).url, ((OlympicActConfig.CityImage)localObject2).md5, new String[] { "ActConfig", "CityImage", ((OlympicActConfig.CityImage)localObject2).companyId + "_" + ((OlympicActConfig.CityImage)localObject2).picId }, false, 2, true);
+      this.jdField_a_of_type_Avwf.a(((OlympicActConfig.CityImage)localObject2).url, ((OlympicActConfig.CityImage)localObject2).md5, new String[] { "ActConfig", "CityImage", ((OlympicActConfig.CityImage)localObject2).companyId + "_" + ((OlympicActConfig.CityImage)localObject2).picId }, false, 2, true);
       localArrayList1.add(((OlympicActConfig.CityImage)localObject2).md5);
-      this.jdField_a_of_type_Aufb.a(((OlympicActConfig.CityImage)localObject2).starUrl, ((OlympicActConfig.CityImage)localObject2).starMd5, new String[] { "ActConfig", "StarImage", ((OlympicActConfig.CityImage)localObject2).companyId + "_" + ((OlympicActConfig.CityImage)localObject2).picId }, false, 2, true);
+      this.jdField_a_of_type_Avwf.a(((OlympicActConfig.CityImage)localObject2).starUrl, ((OlympicActConfig.CityImage)localObject2).starMd5, new String[] { "ActConfig", "StarImage", ((OlympicActConfig.CityImage)localObject2).companyId + "_" + ((OlympicActConfig.CityImage)localObject2).picId }, false, 2, true);
       localArrayList1.add(((OlympicActConfig.CityImage)localObject2).starMd5);
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
         localObject1 = ((OlympicActConfig.CityImage)localObject2).md5;
@@ -636,7 +636,7 @@ public class OlympicManager
       str = paramOlympicActConfig.getConfigString("TorchAnim", "FileMd5");
       if ((!TextUtils.isEmpty((CharSequence)localObject4)) && (!TextUtils.isEmpty(str)))
       {
-        this.jdField_a_of_type_Aufb.a((String)localObject4, str, new String[] { "ActConfig", "TorchAnim" }, false, 2, true);
+        this.jdField_a_of_type_Avwf.a((String)localObject4, str, new String[] { "ActConfig", "TorchAnim" }, false, 2, true);
         localArrayList2.add(str);
         label1538:
         localObject4 = paramOlympicActConfig.getConfigString("MsgTabBG", "Img");
@@ -644,7 +644,7 @@ public class OlympicManager
         if ((TextUtils.isEmpty((CharSequence)localObject4)) || (TextUtils.isEmpty(str))) {
           break label1892;
         }
-        this.jdField_a_of_type_Aufb.a((String)localObject4, str, new String[] { "ActConfig", "MsgTabBG" }, false, 2, true);
+        this.jdField_a_of_type_Avwf.a((String)localObject4, str, new String[] { "ActConfig", "MsgTabBG" }, false, 2, true);
         localArrayList1.add(str);
         label1619:
         localObject4 = paramOlympicActConfig.getConfigString("TorchImageNoBg", "FileUrl");
@@ -652,7 +652,7 @@ public class OlympicManager
         if ((TextUtils.isEmpty((CharSequence)localObject4)) || (TextUtils.isEmpty(str))) {
           break label1910;
         }
-        this.jdField_a_of_type_Aufb.a((String)localObject4, str, new String[] { "ActConfig", "TorchImageNoBg" }, false, 2, true);
+        this.jdField_a_of_type_Avwf.a((String)localObject4, str, new String[] { "ActConfig", "TorchImageNoBg" }, false, 2, true);
         localArrayList1.add(str);
         label1700:
         localObject4 = paramOlympicActConfig.getConfigString("cityaward", "Img");
@@ -660,12 +660,12 @@ public class OlympicManager
         if ((TextUtils.isEmpty((CharSequence)localObject4)) || (TextUtils.isEmpty(paramOlympicActConfig))) {
           break label1922;
         }
-        this.jdField_a_of_type_Aufb.a((String)localObject4, paramOlympicActConfig, null, false, 2, true);
+        this.jdField_a_of_type_Avwf.a((String)localObject4, paramOlympicActConfig, null, false, 2, true);
         localArrayList1.add(paramOlympicActConfig);
       }
       for (;;)
       {
-        if (augv.a(BaseApplicationImpl.getContext(), "olympic_predown_act")) {
+        if (avxz.a(BaseApplicationImpl.getContext(), "olympic_predown_act")) {
           this.jdField_b_of_type_AndroidOsHandler.postDelayed(new OlympicManager.13(this, localArrayList1, localArrayList2), 60000L);
         }
         if (!QLog.isColorLevel()) {
@@ -673,16 +673,16 @@ public class OlympicManager
         }
         QLog.d("OlympicManager", 2, "firstTorchMD5:" + (String)localObject1 + ",firstCityMD5:" + (String)localObject2 + ",firstCityBgMD5:" + (String)localObject3 + ",takeAwardImgUrl " + (String)localObject4 + ",takeAwardImgMd5" + paramOlympicActConfig);
         return;
-        augv.b("OlympicManager", new Object[] { "tryDownloadActResource, TorchAnim,  torchAnimUrl or torchAnimMd5 is empty" });
+        avxz.b("OlympicManager", new Object[] { "tryDownloadActResource, TorchAnim,  torchAnimUrl or torchAnimMd5 is empty" });
         break label1538;
         label1892:
-        augv.b("OlympicManager", new Object[] { "tryDownloadActResource, MsgTabBG,  msgTabImgUrl or msgTabImgMD5 is empty" });
+        avxz.b("OlympicManager", new Object[] { "tryDownloadActResource, MsgTabBG,  msgTabImgUrl or msgTabImgMD5 is empty" });
         break label1619;
         label1910:
         QLog.i("OlympicManager", 1, "tryDownloadActResource, TorchImageNoBg,  torchImageNoBgUrl or torchImageNoBgMD5 is empty");
         break label1700;
         label1922:
-        augv.b("OlympicManager", new Object[] { "tryDownloadActResource, takeAwardImg,  takeAwardImgUrl or takeAwardImgUrl is empty" });
+        avxz.b("OlympicManager", new Object[] { "tryDownloadActResource, takeAwardImg,  takeAwardImgUrl or takeAwardImgUrl is empty" });
       }
       label1940:
       break label1184;
@@ -712,7 +712,7 @@ public class OlympicManager
           bool2 = bool1;
           if (paramList1.hasNext())
           {
-            bool1 = aufb.a((String)paramList1.next()) & bool1;
+            bool1 = avwf.a((String)paramList1.next()) & bool1;
             if (!bool1) {
               bool2 = bool1;
             }
@@ -724,7 +724,7 @@ public class OlympicManager
             bool3 = bool1;
             if (paramList1.hasNext())
             {
-              bool1 = aufb.a((String)paramList1.next()) & bool1;
+              bool1 = avwf.a((String)paramList1.next()) & bool1;
               if (bool1) {
                 break label274;
               }
@@ -750,8 +750,8 @@ public class OlympicManager
             }
             paramList1 = "1";
             paramList2.put("act_all_resource", paramList1);
-            axrn.a(BaseApplicationImpl.getContext()).a("", paramString, true, 0L, 0L, paramList2, "", false);
-            augv.a(BaseApplicationImpl.getContext(), paramString);
+            azmz.a(BaseApplicationImpl.getContext()).a("", paramString, true, 0L, 0L, paramList2, "", false);
+            avxz.a(BaseApplicationImpl.getContext(), paramString);
             return;
           }
         }
@@ -789,8 +789,8 @@ public class OlympicManager
       for (paramList1 = "1";; paramList1 = "0")
       {
         paramList2.put("shua_all_resource", paramList1);
-        axrn.a(BaseApplicationImpl.getContext()).a("", paramString, true, 0L, 0L, paramList2, "", false);
-        augv.a(BaseApplicationImpl.getContext(), paramString);
+        azmz.a(BaseApplicationImpl.getContext()).a("", paramString, true, 0L, 0L, paramList2, "", false);
+        avxz.a(BaseApplicationImpl.getContext(), paramString);
         return;
       }
       paramList1 = "0";
@@ -882,7 +882,7 @@ public class OlympicManager
         if (j < ((ArrayList)localObject2).size())
         {
           ShuayishuaConfig localShuayishuaConfig = (ShuayishuaConfig)((ArrayList)localObject2).get(j);
-          ((StringBuilder)localObject1).append(localShuayishuaConfig.realBegin + "(" + augv.a(localShuayishuaConfig.realBegin) + ")").append("-").append(localShuayishuaConfig.uiEnd + "(" + augv.a(localShuayishuaConfig.uiEnd) + ")").append(";");
+          ((StringBuilder)localObject1).append(localShuayishuaConfig.realBegin + "(" + avxz.a(localShuayishuaConfig.realBegin) + ")").append("-").append(localShuayishuaConfig.uiEnd + "(" + avxz.a(localShuayishuaConfig.uiEnd) + ")").append(";");
           j += 1;
           continue;
           i = -k - 1;
@@ -897,7 +897,7 @@ public class OlympicManager
       if (((ShuayishuaConfig)localObject1).uiEnd < paramLong)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("OlympicManager", 2, "handleCheckTime ,cConfig.uiEnd = " + ((ShuayishuaConfig)localObject1).uiEnd + "(" + augv.a(((ShuayishuaConfig)localObject1).uiEnd) + "),current = " + paramLong + "(" + augv.a(paramLong) + ")");
+          QLog.d("OlympicManager", 2, "handleCheckTime ,cConfig.uiEnd = " + ((ShuayishuaConfig)localObject1).uiEnd + "(" + avxz.a(((ShuayishuaConfig)localObject1).uiEnd) + "),current = " + paramLong + "(" + avxz.a(paramLong) + ")");
         }
         localObject1 = null;
       }
@@ -943,7 +943,7 @@ public class OlympicManager
                   }
                   QLog.i("OlympicManager", 2, "handleCheckTime ,strTimeEnd=" + (String)localObject1 + ",end=" + l1 + ",delay = " + paramLong);
                   return;
-                  l2 = augv.a((String)localObject1);
+                  l2 = avxz.a((String)localObject1);
                   l1 = l2;
                   if (l2 <= 0L) {
                     break label560;
@@ -1050,12 +1050,12 @@ public class OlympicManager
       return;
       if (!d())
       {
-        augv.b("OlympicManager", new Object[] { "tryDownload, can't auto pre download, return" });
+        avxz.b("OlympicManager", new Object[] { "tryDownload, can't auto pre download, return" });
         return;
       }
       if (!c())
       {
-        augv.b("OlympicManager", new Object[] { "tryDownload, isNetworkCanPredown is false, return" });
+        avxz.b("OlympicManager", new Object[] { "tryDownload, isNetworkCanPredown is false, return" });
         return;
       }
       long l = NetConnInfoCenter.getServerTimeMillis();
@@ -1069,22 +1069,22 @@ public class OlympicManager
         {
           if ((!TextUtils.isEmpty(localShuayishuaConfig.LUIconImg)) && (!TextUtils.isEmpty(localShuayishuaConfig.LUIconImgMd5)))
           {
-            this.jdField_a_of_type_Aufb.a(localShuayishuaConfig.LUIconImg, localShuayishuaConfig.LUIconImgMd5, new String[] { "shuayishua", String.valueOf(localShuayishuaConfig.id) }, false, 1, true);
+            this.jdField_a_of_type_Avwf.a(localShuayishuaConfig.LUIconImg, localShuayishuaConfig.LUIconImgMd5, new String[] { "shuayishua", String.valueOf(localShuayishuaConfig.id) }, false, 1, true);
             localArrayList1.add(localShuayishuaConfig.LUIconImgMd5);
           }
           if ((!TextUtils.isEmpty(localShuayishuaConfig.torchLogoImg)) && (!TextUtils.isEmpty(localShuayishuaConfig.torchLogoImgMd5)))
           {
-            this.jdField_a_of_type_Aufb.a(localShuayishuaConfig.torchLogoImg, localShuayishuaConfig.torchLogoImgMd5, new String[] { "shuayishua", String.valueOf(localShuayishuaConfig.id) }, false, 1, true);
+            this.jdField_a_of_type_Avwf.a(localShuayishuaConfig.torchLogoImg, localShuayishuaConfig.torchLogoImgMd5, new String[] { "shuayishua", String.valueOf(localShuayishuaConfig.id) }, false, 1, true);
             localArrayList1.add(localShuayishuaConfig.torchLogoImgMd5);
           }
           if ((!TextUtils.isEmpty(localShuayishuaConfig.torchAnimUrl)) && (!TextUtils.isEmpty(localShuayishuaConfig.torchAnimMd5)))
           {
-            this.jdField_a_of_type_Aufb.a(localShuayishuaConfig.torchAnimUrl, localShuayishuaConfig.torchAnimMd5, new String[] { "shuayishua_anim", String.valueOf(localShuayishuaConfig.id) }, false, 1, true);
+            this.jdField_a_of_type_Avwf.a(localShuayishuaConfig.torchAnimUrl, localShuayishuaConfig.torchAnimMd5, new String[] { "shuayishua_anim", String.valueOf(localShuayishuaConfig.id) }, false, 1, true);
             localArrayList2.add(localShuayishuaConfig.torchAnimMd5);
           }
         }
       }
-    } while (!augv.a(BaseApplicationImpl.getContext(), "olympic_predown_shua"));
+    } while (!avxz.a(BaseApplicationImpl.getContext(), "olympic_predown_shua"));
     this.jdField_b_of_type_AndroidOsHandler.postDelayed(new OlympicManager.12(this, localArrayList1, localArrayList2), 60000L);
   }
   
@@ -1181,7 +1181,7 @@ public class OlympicManager
     }
     try
     {
-      augv.b("OlympicManager", new Object[] { "getEntity, url=", str });
+      avxz.b("OlympicManager", new Object[] { "getEntity, url=", str });
       boolean bool = TextUtils.isEmpty(paramString);
       if (bool) {
         paramString = localObject;
@@ -1193,7 +1193,7 @@ public class OlympicManager
         break;
         try
         {
-          paramString = this.jdField_a_of_type_Aukp.a(OlympicPredownInfo.class, false, "url = ?", new String[] { paramString }, null, null, null, null);
+          paramString = this.jdField_a_of_type_Awbw.a(OlympicPredownInfo.class, false, "url = ?", new String[] { paramString }, null, null, null, null);
           if ((paramString != null) && (paramString.size() > 0)) {
             paramString = (OlympicPredownInfo)paramString.get(0);
           }
@@ -1813,7 +1813,7 @@ public class OlympicManager
         if ("handlePush0xb4, torchInfo=" + localTorchInfo == null) {}
         for (paramTorchbearerInfo = "null";; paramTorchbearerInfo = localTorchInfo.toString())
         {
-          augv.b("OlympicManager", new Object[] { paramTorchbearerInfo });
+          avxz.b("OlympicManager", new Object[] { paramTorchbearerInfo });
           return localTorchInfo;
         }
       }
@@ -1869,7 +1869,7 @@ public class OlympicManager
     //   23: iconst_1
     //   24: aload_2
     //   25: aastore
-    //   26: invokestatic 595	augv:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   26: invokestatic 595	avxz:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   29: aload_1
     //   30: ifnonnull +11 -> 41
     //   33: aload_0
@@ -1879,19 +1879,19 @@ public class OlympicManager
     //   37: astore_2
     //   38: goto -28 -> 10
     //   41: aload_0
-    //   42: getfield 185	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_Aukp	Laukp;
-    //   45: invokevirtual 1256	aukp:a	()Laukr;
+    //   42: getfield 185	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_Awbw	Lawbw;
+    //   45: invokevirtual 1256	awbw:a	()Lawby;
     //   48: astore_2
     //   49: aload_2
-    //   50: invokevirtual 1259	aukr:a	()V
+    //   50: invokevirtual 1259	awby:a	()V
     //   53: aload_0
-    //   54: getfield 185	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_Aukp	Laukp;
+    //   54: getfield 185	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_Awbw	Lawbw;
     //   57: aload_1
-    //   58: invokevirtual 1262	aukp:b	(Lauko;)V
+    //   58: invokevirtual 1262	awbw:b	(Lawbv;)V
     //   61: aload_2
-    //   62: invokevirtual 1264	aukr:c	()V
+    //   62: invokevirtual 1264	awby:c	()V
     //   65: aload_2
-    //   66: invokevirtual 1266	aukr:b	()V
+    //   66: invokevirtual 1266	awby:b	()V
     //   69: goto -36 -> 33
     //   72: astore_1
     //   73: aload_0
@@ -1904,11 +1904,11 @@ public class OlympicManager
     //   84: aload_1
     //   85: invokevirtual 1127	java/lang/Exception:printStackTrace	()V
     //   88: aload_2
-    //   89: invokevirtual 1266	aukr:b	()V
+    //   89: invokevirtual 1266	awby:b	()V
     //   92: goto -59 -> 33
     //   95: astore_1
     //   96: aload_2
-    //   97: invokevirtual 1266	aukr:b	()V
+    //   97: invokevirtual 1266	awby:b	()V
     //   100: aload_1
     //   101: athrow
     // Local variable table:
@@ -1950,7 +1950,7 @@ public class OlympicManager
           localObjectOutputStream.writeObject(paramOlyimpicConfig);
           localObjectOutputStream.close();
           localByteArrayOutputStream.close();
-          bbdx.a(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_shuayishua_config_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
+          bdcs.a(new File(BaseApplicationImpl.sApplication.getFilesDir(), "olympic_shuayishua_config_" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).getAbsolutePath(), localByteArrayOutputStream.toByteArray(), false);
         }
         catch (Throwable paramOlyimpicConfig)
         {
@@ -1965,10 +1965,10 @@ public class OlympicManager
   
   public void a(OlympicActConfig paramOlympicActConfig)
   {
-    augv.b("OlympicManager", new Object[] { "onGetActConfig" });
+    avxz.b("OlympicManager", new Object[] { "onGetActConfig" });
     if (paramOlympicActConfig == null)
     {
-      augv.b("OlympicManager", new Object[] { "onGetActConfig, config is null!" });
+      avxz.b("OlympicManager", new Object[] { "onGetActConfig, config is null!" });
       return;
     }
     this.jdField_c_of_type_Boolean = false;
@@ -2011,7 +2011,7 @@ public class OlympicManager
       long l;
       try
       {
-        augv.b("OlympicManager", new Object[] { "updateEntity, url=", localObject1, ", dailyInc=", Integer.valueOf(paramInt) });
+        avxz.b("OlympicManager", new Object[] { "updateEntity, url=", localObject1, ", dailyInc=", Integer.valueOf(paramInt) });
         boolean bool = TextUtils.isEmpty(paramString);
         if (bool)
         {
@@ -2042,12 +2042,12 @@ public class OlympicManager
         ((OlympicPredownInfo)localObject1).dailyStartTime = l;
         ((OlympicPredownInfo)localObject1).totalRetryCount += paramInt;
         label170:
-        paramString = this.jdField_a_of_type_Aukp.a();
+        paramString = this.jdField_a_of_type_Awbw.a();
       }
       try
       {
         paramString.a();
-        this.jdField_a_of_type_Aukp.a((auko)localObject1);
+        this.jdField_a_of_type_Awbw.a((awbv)localObject1);
         paramString.c();
         paramString.b();
         continue;
@@ -2145,12 +2145,12 @@ public class OlympicManager
         QLog.d("OlympicManager", 2, "preDecodeActPic");
       }
       Object localObject;
-      if ((augv.a(paramTorchInfo.torch_pic_url) == null) && (jdField_a_of_type_Boolean))
+      if ((avxz.a(paramTorchInfo.torch_pic_url) == null) && (jdField_a_of_type_Boolean))
       {
-        localObject = aufb.a() + paramTorchInfo.torch_pic_md5;
+        localObject = avwf.a() + paramTorchInfo.torch_pic_md5;
         if (jdField_a_of_type_Boolean)
         {
-          localObject = augv.a(paramTorchInfo.torch_pic_url, (String)localObject, this.jdField_a_of_type_Aueu, 0);
+          localObject = avxz.a(paramTorchInfo.torch_pic_url, (String)localObject, this.jdField_a_of_type_Avvy, 0);
           if (((Pair)localObject).second != null) {
             jdField_a_of_type_AndroidGraphicsBitmap = (Bitmap)((Pair)localObject).second;
           }
@@ -2164,12 +2164,12 @@ public class OlympicManager
         {
           paramTorchInfo = (TorchInfo.CityInfo)((Iterator)localObject).next();
           if (paramTorchInfo.city_id == l) {
-            if ((augv.a(paramTorchInfo.city_pic_url) == null) && (jdField_a_of_type_Boolean))
+            if ((avxz.a(paramTorchInfo.city_pic_url) == null) && (jdField_a_of_type_Boolean))
             {
-              localObject = aufb.a() + paramTorchInfo.city_pic_md5;
+              localObject = avwf.a() + paramTorchInfo.city_pic_md5;
               if (jdField_a_of_type_Boolean)
               {
-                paramTorchInfo = augv.a(paramTorchInfo.city_pic_url, (String)localObject, this.jdField_a_of_type_Aueu, 2);
+                paramTorchInfo = avxz.a(paramTorchInfo.city_pic_url, (String)localObject, this.jdField_a_of_type_Avvy, 2);
                 if (paramTorchInfo.second != null) {
                   jdField_a_of_type_ComTencentUtilPair = new Pair(Long.valueOf(l), paramTorchInfo.second);
                 }
@@ -2191,7 +2191,7 @@ public class OlympicManager
         if (this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig != null)
         {
           bool = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig.save2File(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
-          augv.b("OlympicManager", new Object[] { "saveActConfigToLocal, result=", Boolean.valueOf(bool) });
+          avxz.b("OlympicManager", new Object[] { "saveActConfigToLocal, result=", Boolean.valueOf(bool) });
           return bool;
         }
       }
@@ -2224,10 +2224,10 @@ public class OlympicManager
         bool1 = bool2;
       } while (paramString == null);
       int i;
-      if (this.jdField_a_of_type_Aueu == null)
+      if (this.jdField_a_of_type_Avvy == null)
       {
         i = 3;
-        if (this.jdField_a_of_type_Aueu != null) {
+        if (this.jdField_a_of_type_Avvy != null) {
           break label102;
         }
         j = 1000;
@@ -2241,9 +2241,9 @@ public class OlympicManager
       for (bool1 = true;; bool1 = false)
       {
         return bool1;
-        i = this.jdField_a_of_type_Aueu.jdField_b_of_type_Int;
+        i = this.jdField_a_of_type_Avvy.jdField_b_of_type_Int;
         break;
-        j = this.jdField_a_of_type_Aueu.jdField_c_of_type_Int;
+        j = this.jdField_a_of_type_Avvy.jdField_c_of_type_Int;
         break label55;
       }
       bool1 = bool2;
@@ -2279,7 +2279,7 @@ public class OlympicManager
     //   36: iconst_0
     //   37: ldc_w 1421
     //   40: aastore
-    //   41: invokestatic 595	augv:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   41: invokestatic 595	avxz:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   44: aload_0
     //   45: getfield 94	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ArrayOfByte	[B
     //   48: astore_2
@@ -2328,7 +2328,7 @@ public class OlympicManager
     //   121: getfield 1428	com/tencent/mobileqq/olympic/OlympicActConfig:version	I
     //   124: invokestatic 751	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   127: aastore
-    //   128: invokestatic 595	augv:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   128: invokestatic 595	avxz:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   131: aload_0
     //   132: getfield 567	com/tencent/mobileqq/olympic/OlympicManager:jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig	Lcom/tencent/mobileqq/olympic/OlympicActConfig;
     //   135: getfield 1428	com/tencent/mobileqq/olympic/OlympicActConfig:version	I
@@ -2351,7 +2351,7 @@ public class OlympicManager
     //   165: getfield 1428	com/tencent/mobileqq/olympic/OlympicActConfig:version	I
     //   168: invokestatic 751	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   171: aastore
-    //   172: invokestatic 595	augv:b	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   172: invokestatic 595	avxz:b	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   175: goto -112 -> 63
     //   178: astore_1
     //   179: aload_2
@@ -2385,13 +2385,13 @@ public class OlympicManager
   public boolean c()
   {
     boolean bool = false;
-    augv.b("OlympicManager", new Object[] { "isNetworkCanPredown" });
-    if (this.jdField_a_of_type_Aueu == null) {}
-    for (int i = 0; i == 1; i = this.jdField_a_of_type_Aueu.jdField_a_of_type_Int) {
+    avxz.b("OlympicManager", new Object[] { "isNetworkCanPredown" });
+    if (this.jdField_a_of_type_Avvy == null) {}
+    for (int i = 0; i == 1; i = this.jdField_a_of_type_Avvy.jdField_a_of_type_Int) {
       return true;
     }
-    int j = bbfj.a(BaseApplicationImpl.getContext());
-    augv.b("OlympicManager", new Object[] { "isNetworkCanPredown, type=", Integer.valueOf(j) });
+    int j = bdee.a(BaseApplicationImpl.getContext());
+    avxz.b("OlympicManager", new Object[] { "isNetworkCanPredown, type=", Integer.valueOf(j) });
     if (i == 0) {
       if ((j != 1) && (j != 4)) {}
     }
@@ -2409,13 +2409,13 @@ public class OlympicManager
     int i;
     int j;
     String str;
-    if (this.jdField_a_of_type_Aueu == null)
+    if (this.jdField_a_of_type_Avvy == null)
     {
-      this.jdField_a_of_type_Aueu = new aueu();
-      i = (int)(bbdh.d() / 1024L / 1024L);
-      j = bbll.a();
+      this.jdField_a_of_type_Avvy = new avvy();
+      i = (int)(bdcb.d() / 1024L / 1024L);
+      j = bdkf.a();
       str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.olympic_act_config.name());
-      this.jdField_a_of_type_Aueu.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Avvy.jdField_a_of_type_JavaLangString = str;
     }
     try
     {
@@ -2425,37 +2425,37 @@ public class OlympicManager
         if (arrayOfString.length >= 9)
         {
           if (i <= Integer.valueOf(arrayOfString[0]).intValue()) {}
-          for (this.jdField_a_of_type_Aueu.jdField_b_of_type_Boolean = true;; this.jdField_a_of_type_Aueu.jdField_b_of_type_Boolean = true)
+          for (this.jdField_a_of_type_Avvy.jdField_b_of_type_Boolean = true;; this.jdField_a_of_type_Avvy.jdField_b_of_type_Boolean = true)
           {
             if (Integer.valueOf(arrayOfString[3]).intValue() == 1) {
-              this.jdField_a_of_type_Aueu.jdField_d_of_type_Boolean = true;
+              this.jdField_a_of_type_Avvy.jdField_d_of_type_Boolean = true;
             }
-            this.jdField_a_of_type_Aueu.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[4]).intValue();
-            this.jdField_a_of_type_Aueu.jdField_b_of_type_Int = Integer.valueOf(arrayOfString[5]).intValue();
-            this.jdField_a_of_type_Aueu.jdField_c_of_type_Int = Integer.valueOf(arrayOfString[6]).intValue();
-            this.jdField_a_of_type_Aueu.jdField_d_of_type_Int = Integer.valueOf(arrayOfString[7]).intValue();
-            this.jdField_a_of_type_Aueu.jdField_e_of_type_Int = Integer.valueOf(arrayOfString[8]).intValue();
+            this.jdField_a_of_type_Avvy.jdField_a_of_type_Int = Integer.valueOf(arrayOfString[4]).intValue();
+            this.jdField_a_of_type_Avvy.jdField_b_of_type_Int = Integer.valueOf(arrayOfString[5]).intValue();
+            this.jdField_a_of_type_Avvy.jdField_c_of_type_Int = Integer.valueOf(arrayOfString[6]).intValue();
+            this.jdField_a_of_type_Avvy.jdField_d_of_type_Int = Integer.valueOf(arrayOfString[7]).intValue();
+            this.jdField_a_of_type_Avvy.jdField_e_of_type_Int = Integer.valueOf(arrayOfString[8]).intValue();
             bool1 = false;
-            this.jdField_a_of_type_Aueu.jdField_a_of_type_Boolean = bool1;
+            this.jdField_a_of_type_Avvy.jdField_a_of_type_Boolean = bool1;
             if (bool1)
             {
               if (i > 512) {
                 break label487;
               }
-              this.jdField_a_of_type_Aueu.jdField_b_of_type_Boolean = true;
-              this.jdField_a_of_type_Aueu.jdField_d_of_type_Boolean = false;
-              this.jdField_a_of_type_Aueu.jdField_a_of_type_Int = 0;
-              this.jdField_a_of_type_Aueu.jdField_b_of_type_Int = 3;
-              this.jdField_a_of_type_Aueu.jdField_c_of_type_Int = 1000;
-              this.jdField_a_of_type_Aueu.jdField_d_of_type_Int = 1;
-              this.jdField_a_of_type_Aueu.jdField_e_of_type_Int = 1;
+              this.jdField_a_of_type_Avvy.jdField_b_of_type_Boolean = true;
+              this.jdField_a_of_type_Avvy.jdField_d_of_type_Boolean = false;
+              this.jdField_a_of_type_Avvy.jdField_a_of_type_Int = 0;
+              this.jdField_a_of_type_Avvy.jdField_b_of_type_Int = 3;
+              this.jdField_a_of_type_Avvy.jdField_c_of_type_Int = 1000;
+              this.jdField_a_of_type_Avvy.jdField_d_of_type_Int = 1;
+              this.jdField_a_of_type_Avvy.jdField_e_of_type_Int = 1;
             }
-            if (this.jdField_a_of_type_Aueu.jdField_d_of_type_Int != 1) {
+            if (this.jdField_a_of_type_Avvy.jdField_d_of_type_Int != 1) {
               break label523;
             }
-            augv.a(bool2);
+            avxz.a(bool2);
             if (QLog.isColorLevel()) {
-              QLog.d("OlympicManager", 2, "loadDPCConfig|featureValue:" + str + ",systemTotalMem:" + i + ",screenWidth:" + j + ",isUseDefault:" + bool1 + ",dpc:" + this.jdField_a_of_type_Aueu.toString());
+              QLog.d("OlympicManager", 2, "loadDPCConfig|featureValue:" + str + ",systemTotalMem:" + i + ",screenWidth:" + j + ",isUseDefault:" + bool1 + ",dpc:" + this.jdField_a_of_type_Avvy.toString());
             }
             return;
             if (j > Integer.valueOf(arrayOfString[1]).intValue()) {
@@ -2477,16 +2477,16 @@ public class OlympicManager
         label523:
         if (j <= Integer.valueOf(localException[2]).intValue())
         {
-          this.jdField_a_of_type_Aueu.jdField_c_of_type_Boolean = true;
+          this.jdField_a_of_type_Avvy.jdField_c_of_type_Boolean = true;
           continue;
           label487:
           if (j <= 480)
           {
-            this.jdField_a_of_type_Aueu.jdField_b_of_type_Boolean = true;
+            this.jdField_a_of_type_Avvy.jdField_b_of_type_Boolean = true;
           }
           else if (j <= 720)
           {
-            this.jdField_a_of_type_Aueu.jdField_c_of_type_Boolean = true;
+            this.jdField_a_of_type_Avvy.jdField_c_of_type_Boolean = true;
             continue;
             bool2 = false;
           }
@@ -2497,9 +2497,9 @@ public class OlympicManager
   
   public boolean d()
   {
-    augv.b("OlympicManager", new Object[] { "isNetworkCanPredown" });
-    if (this.jdField_a_of_type_Aueu == null) {}
-    for (int i = 1; i == 1; i = this.jdField_a_of_type_Aueu.jdField_e_of_type_Int) {
+    avxz.b("OlympicManager", new Object[] { "isNetworkCanPredown" });
+    if (this.jdField_a_of_type_Avvy == null) {}
+    for (int i = 1; i == 1; i = this.jdField_a_of_type_Avvy.jdField_e_of_type_Int) {
       return true;
     }
     return false;
@@ -2507,7 +2507,7 @@ public class OlympicManager
   
   public void e()
   {
-    augv.b("OlympicManager", new Object[] { "clearActConfig" });
+    avxz.b("OlympicManager", new Object[] { "clearActConfig" });
     synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
       this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig = null;
@@ -2576,7 +2576,7 @@ public class OlympicManager
   
   public void g()
   {
-    if (augv.a(BaseApplicationImpl.getContext(), "olympic_config_act"))
+    if (avxz.a(BaseApplicationImpl.getContext(), "olympic_config_act"))
     {
       if (QLog.isColorLevel()) {
         QLog.d("OlympicManager", 2, new Object[] { "check24Hour, result=true, do Report, key=", "olympic_config_act" });
@@ -2586,14 +2586,14 @@ public class OlympicManager
       }
       HashMap localHashMap = new HashMap();
       localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicActConfig.version));
-      axrn.a(BaseApplicationImpl.getContext()).a("", "olympic_config_act", false, 0L, 0L, localHashMap, "", false);
+      azmz.a(BaseApplicationImpl.getContext()).a("", "olympic_config_act", false, 0L, 0L, localHashMap, "", false);
     }
     for (;;)
     {
-      augv.a(BaseApplicationImpl.getContext(), "olympic_config_act");
+      avxz.a(BaseApplicationImpl.getContext(), "olympic_config_act");
       return;
       label106:
-      axrn.a(BaseApplicationImpl.getContext()).a("", "olympic_config_act", true, 0L, 0L, null, "", false);
+      azmz.a(BaseApplicationImpl.getContext()).a("", "olympic_config_act", true, 0L, 0L, null, "", false);
     }
   }
   
@@ -2614,8 +2614,8 @@ public class OlympicManager
       {
         this.jdField_a_of_type_ComTencentMobileqqOlympicOlyimpicConfig = null;
         this.jdField_a_of_type_ComTencentMobileqqOlympicShuayishuaConfig = null;
-        if ((this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Auew != null)) {
-          this.jdField_a_of_type_Auew.a();
+        if ((this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Avwa != null)) {
+          this.jdField_a_of_type_Avwa.a();
         }
         this.jdField_b_of_type_Long = 2500L;
         this.jdField_c_of_type_Long = 180000L;
@@ -2633,9 +2633,9 @@ public class OlympicManager
         this.jdField_d_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqOlympicOlyimpicConfig.reportNormalInterval;
         this.jdField_c_of_type_Boolean = false;
       }
-      if (this.jdField_a_of_type_Auew != null)
+      if (this.jdField_a_of_type_Avwa != null)
       {
-        this.jdField_a_of_type_Auew.a(this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo);
+        this.jdField_a_of_type_Avwa.a(this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo);
         continue;
         l = ((Long)paramMessage.obj).longValue();
         if ((this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat.size() > 0) && (l > 0L)) {
@@ -2663,18 +2663,18 @@ public class OlympicManager
             if (QLog.isColorLevel()) {
               QLog.d("OlympicManager", 2, "MSG_BREATHE,type = " + i + ",isRecovery = " + bool);
             }
-            if (this.jdField_a_of_type_Auew == null) {
+            if (this.jdField_a_of_type_Avwa == null) {
               break;
             }
-            this.jdField_a_of_type_Auew.a(true, bool, i);
+            this.jdField_a_of_type_Avwa.a(true, bool, i);
             break;
           }
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putBoolean("in_breath_procedure", false).commit();
           if (QLog.isColorLevel()) {
             QLog.d("OlympicManager", 2, "MSG_STOP_BREATHE");
           }
-          if (this.jdField_a_of_type_Auew != null) {
-            this.jdField_a_of_type_Auew.a(false, false, -1);
+          if (this.jdField_a_of_type_Avwa != null) {
+            this.jdField_a_of_type_Avwa.a(false, false, -1);
           }
         }
       }
@@ -2695,9 +2695,9 @@ public class OlympicManager
     }
     this.jdField_b_of_type_AndroidOsHandler.removeMessages(7);
     this.jdField_b_of_type_AndroidOsHandler.removeMessages(8);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Aufa);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Avwe);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this);
-    this.jdField_a_of_type_Aufb.b(this.jdField_a_of_type_Aufd);
+    this.jdField_a_of_type_Avwf.b(this.jdField_a_of_type_Avwh);
     if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
     {
       this.jdField_a_of_type_AndroidMediaSoundPool.release();
@@ -2742,7 +2742,7 @@ public class OlympicManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.OlympicManager
  * JD-Core Version:    0.7.0.1
  */

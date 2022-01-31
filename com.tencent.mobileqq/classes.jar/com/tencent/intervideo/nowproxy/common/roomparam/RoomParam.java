@@ -28,6 +28,7 @@ public class RoomParam
     localBundle.putString("appid", paramInitData.mAppID);
     localBundle.putString("hostVersion", paramInitData.mSourceVersion);
     localBundle.putString("clientType", String.valueOf(paramInitData.mClientType));
+    localBundle.putBoolean("is_cpu_64bit", paramInitData.mIsCpu64bit);
     if (!TextUtils.isEmpty(paramInitData.mGuid)) {
       localBundle.putString("guid", paramInitData.mGuid);
     }
@@ -56,7 +57,7 @@ public class RoomParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.common.roomparam.RoomParam
  * JD-Core Version:    0.7.0.1
  */

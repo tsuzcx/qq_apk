@@ -1,50 +1,44 @@
 package c.t.m.g;
 
-import android.os.Looper;
-import java.util.Observable;
-
 public abstract class dl
-  extends Observable
 {
-  protected volatile boolean b = false;
-  protected byte[] c = new byte[0];
+  protected volatile boolean m = false;
+  protected byte[] n = new byte[0];
   
-  public abstract int a();
+  public abstract void a();
   
-  public int a(Looper arg1)
+  public abstract String b();
+  
+  public final boolean d()
   {
-    synchronized (this.c)
+    synchronized (this.n)
     {
-      if (this.b) {
-        return -1;
-      }
-      this.b = true;
-      if (co.e())
-      {
-        c();
-        co.a("startup()");
-      }
-      int i = a();
-      return i;
+      boolean bool = this.m;
+      return bool;
     }
   }
   
-  public abstract void b();
-  
-  public abstract String c();
-  
-  public final boolean e()
+  public final void e()
   {
-    synchronized (this.c)
+    synchronized (this.n)
     {
-      boolean bool = this.b;
-      return bool;
+      if (!this.m) {
+        return;
+      }
+      if (co.e())
+      {
+        b();
+        co.a("shutdown()");
+      }
+      a();
+      this.m = false;
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.dl
  * JD-Core Version:    0.7.0.1
  */

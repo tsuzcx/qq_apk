@@ -1,27 +1,29 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import QC.UniLoginCheckRsp;
+import java.lang.ref.WeakReference;
 
 class bdso
-  implements ServiceConnection
+  implements alkr
 {
-  bdso(bdsm parambdsm) {}
+  private WeakReference<bdsn> a;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public bdso(bdsn parambdsn)
   {
-    bdsj.c("CallingStateMonitor", String.format("onServiceConnected name=%s service=%s", new Object[] { paramComponentName, paramIBinder }));
-    bdsm.a(this.a, lws.a(paramIBinder));
+    this.a = new WeakReference(parambdsn);
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    bdsj.c("CallingStateMonitor", String.format("onServiceDisconnected name=%s", new Object[] { paramComponentName }));
-    bdsm.a(this.a, null);
+    bdsn localbdsn = (bdsn)this.a.get();
+    if (localbdsn == null) {}
+    while (!(paramObject instanceof UniLoginCheckRsp)) {
+      return;
+    }
+    localbdsn.a(((UniLoginCheckRsp)paramObject).stKeyWord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdso
  * JD-Core Version:    0.7.0.1
  */

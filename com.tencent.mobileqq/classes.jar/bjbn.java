@@ -1,45 +1,34 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import dov.com.qq.im.capture.data.TransitionCategoryItem;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import feedcloud.FeedCloudTagcategorysvr.StTagCategoryRecomRsp;
 
-public class bjbn
+class bjbn
+  implements yvn<FeedCloudTagcategorysvr.StTagCategoryRecomRsp>
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  TransitionCategoryItem jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem;
-  boolean jdField_a_of_type_Boolean = false;
+  bjbn(bjbk parambjbk, int paramInt) {}
   
-  public void a(boolean paramBoolean)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudTagcategorysvr.StTagCategoryRecomRsp paramStTagCategoryRecomRsp)
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_DovComQqImCaptureDataTransitionCategoryItem != null))
+    QLog.i("[QzoneIPCModule_upload2]QCircle", 1, "ACTION_QCIRCLE_PULISH_FEED onReceive isSuccess:" + paramBoolean + " retCode:" + paramLong + " errMsg:" + paramString);
+    if ((paramBoolean) && (paramLong == 0L) && (paramStTagCategoryRecomRsp != null))
     {
-      if (!paramBoolean) {
-        break label45;
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130843608);
-      }
-    }
-    else
-    {
+      Bundle localBundle = new Bundle();
+      localBundle.putLong("key_return_code", paramLong);
+      localBundle.putString("key_error_msg", paramString);
+      localBundle.putByteArray("key_qcircle_tag_list_rsp", paramStTagCategoryRecomRsp.toByteArray());
+      this.jdField_a_of_type_Bjbk.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, localBundle));
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130843642);
-    return;
-    label45:
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(0);
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130843639);
+    paramStTagCategoryRecomRsp = new Bundle();
+    paramStTagCategoryRecomRsp.putLong("key_return_code", paramLong);
+    paramStTagCategoryRecomRsp.putString("key_error_msg", paramString);
+    this.jdField_a_of_type_Bjbk.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, paramStTagCategoryRecomRsp));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjbn
  * JD-Core Version:    0.7.0.1
  */

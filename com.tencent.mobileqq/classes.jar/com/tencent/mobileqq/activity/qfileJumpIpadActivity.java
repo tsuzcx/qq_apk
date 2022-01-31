@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajsd;
+import aljq;
 import android.os.Bundle;
 
 public class qfileJumpIpadActivity
@@ -9,13 +9,13 @@ public class qfileJumpIpadActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.a = ajsd.A;
+    this.a = aljq.A;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qfileJumpIpadActivity
  * JD-Core Version:    0.7.0.1
  */

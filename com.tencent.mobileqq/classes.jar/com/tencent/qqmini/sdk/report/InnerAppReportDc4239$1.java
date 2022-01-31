@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.report;
 
-import bezl;
+import bgyg;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public final class InnerAppReportDc4239$1
@@ -10,12 +10,12 @@ public final class InnerAppReportDc4239$1
   
   public void run()
   {
-    bezl.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bezl.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo), this.jdField_a_of_type_JavaLangString, "inner_app", "from_api", this.b, this.c, this.d, null, null);
+    bgyg.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo, bgyg.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo), this.jdField_a_of_type_JavaLangString, "inner_app", "from_api", this.b, this.c, this.d, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.InnerAppReportDc4239.1
  * JD-Core Version:    0.7.0.1
  */

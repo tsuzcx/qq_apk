@@ -1,336 +1,331 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.mobileqq.multicard.manager.TroopMemberRecommendManager.1;
+import com.tencent.mobileqq.multicard.manager.TroopMemberRecommendManager.2;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
+import mqq.os.MqqHandler;
 
 public class aukl
-  extends aula
+  implements Manager
 {
-  public aukl()
+  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
+  public aons a;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ConcurrentHashMap<String, List<RecommendPerson>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  public aukl(QQAppInterface paramQQAppInterface)
   {
-    this.a = 24;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("TroopMemberRecom" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    ThreadManager.getSubThreadHandler().post(new TroopMemberRecommendManager.1(this));
   }
   
-  public auko a(auko paramauko, Cursor paramCursor, boolean paramBoolean, aukz paramaukz)
+  private aukk a()
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    paramauko = (Emoticon)paramauko;
-    if (paramaukz == null)
+    return (aukk)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(167);
+  }
+  
+  public static aukl a(QQAppInterface paramQQAppInterface)
+  {
+    return (aukl)paramQQAppInterface.getManager(347);
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_Aons == null) {
+      this.jdField_a_of_type_Aons = aont.a();
+    }
+  }
+  
+  public int a(String paramString)
+  {
+    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    if (localTroopManager != null)
     {
-      paramauko.eId = paramCursor.getString(paramCursor.getColumnIndex("eId"));
-      paramauko.epId = paramCursor.getString(paramCursor.getColumnIndex("epId"));
-      paramauko.name = paramCursor.getString(paramCursor.getColumnIndex("name"));
-      paramauko.encryptKey = paramCursor.getString(paramCursor.getColumnIndex("encryptKey"));
-      if (1 == paramCursor.getShort(paramCursor.getColumnIndex("isSound")))
-      {
-        paramBoolean = true;
-        paramauko.isSound = paramBoolean;
-        paramauko.width = paramCursor.getInt(paramCursor.getColumnIndex("width"));
-        paramauko.height = paramCursor.getInt(paramCursor.getColumnIndex("height"));
-        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("value"))) {
-          break label477;
-        }
-        paramBoolean = true;
-        label169:
-        paramauko.value = paramBoolean;
-        paramauko.magicValue = paramCursor.getString(paramCursor.getColumnIndex("magicValue"));
-        paramauko.jobType = paramCursor.getInt(paramCursor.getColumnIndex("jobType"));
-        paramauko.keyword = paramCursor.getString(paramCursor.getColumnIndex("keyword"));
-        paramauko.keywords = paramCursor.getString(paramCursor.getColumnIndex("keywords"));
-        paramauko.character = paramCursor.getString(paramCursor.getColumnIndex("character"));
-        paramauko.extensionWidth = paramCursor.getInt(paramCursor.getColumnIndex("extensionWidth"));
-        paramauko.extensionHeight = paramCursor.getInt(paramCursor.getColumnIndex("extensionHeight"));
-        paramauko.businessExtra = paramCursor.getString(paramCursor.getColumnIndex("businessExtra"));
-        if (1 != paramCursor.getShort(paramCursor.getColumnIndex("isAPNG"))) {
-          break label482;
-        }
-      }
-      label477:
-      label482:
-      for (paramBoolean = bool1;; paramBoolean = false)
-      {
-        paramauko.isAPNG = paramBoolean;
-        paramauko.ipsiteUrl = paramCursor.getString(paramCursor.getColumnIndex("ipsiteUrl"));
-        paramauko.ipsiteName = paramCursor.getString(paramCursor.getColumnIndex("ipsiteName"));
-        paramauko.exposeNum = paramCursor.getInt(paramCursor.getColumnIndex("exposeNum"));
-        paramauko.clickNum = paramCursor.getInt(paramCursor.getColumnIndex("clickNum"));
-        paramauko.voicePrint = paramCursor.getString(paramCursor.getColumnIndex("voicePrint"));
-        paramauko.backColor = paramCursor.getString(paramCursor.getColumnIndex("backColor"));
-        paramauko.volumeColor = paramCursor.getString(paramCursor.getColumnIndex("volumeColor"));
-        return paramauko;
-        paramBoolean = false;
-        break;
-        paramBoolean = false;
-        break label169;
+      paramString = localTroopManager.c(paramString);
+      if (paramString != null) {
+        return paramString.wMemberNum;
       }
     }
-    int i = paramCursor.getColumnIndex("eId");
-    if (i == -1)
+    return 0;
+  }
+  
+  public SharedPreferences a()
+  {
+    return this.jdField_a_of_type_AndroidContentSharedPreferences;
+  }
+  
+  List<RecommendPerson> a(List<RecommendPerson> paramList, String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int j = paramList.size();
+    if (j > 0)
     {
-      paramaukz.a(new NoColumnError("eId", String.class));
-      i = paramCursor.getColumnIndex("epId");
-      if (i != -1) {
-        break label1330;
+      k = ((RecommendPerson)paramList.get(0)).cardMaxDisplayPersonNum;
+      if (j <= k) {
+        localArrayList.addAll(paramList);
       }
-      paramaukz.a(new NoColumnError("epId", String.class));
-      label555:
-      i = paramCursor.getColumnIndex("name");
-      if (i != -1) {
-        break label1345;
+    }
+    else
+    {
+      return localArrayList;
+    }
+    int i = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, 0);
+    if (i + k <= j)
+    {
+      j = k + i;
+      localArrayList.addAll(paramList.subList(i, j));
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, j).commit();
+      return localArrayList;
+    }
+    int k = (k + i) % j;
+    localArrayList.addAll(paramList.subList(i, j));
+    localArrayList.addAll(paramList.subList(0, k));
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, k).commit();
+    return localArrayList;
+  }
+  
+  public Map<Integer, List<RecommendPerson>> a(List<RecommendPerson> paramList, String paramString)
+  {
+    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.Manager", 2, "filterAndReorderRecommenList start ,troopUin = " + paramString);
+    }
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      Iterator localIterator = paramList.iterator();
+      Object localObject;
+      if (localIterator.hasNext())
+      {
+        localObject = (RecommendPerson)localIterator.next();
+        if (localLinkedHashMap.containsKey(Integer.valueOf(((RecommendPerson)localObject).cardTypeID))) {}
+        for (paramList = (List)localLinkedHashMap.get(Integer.valueOf(((RecommendPerson)localObject).cardTypeID));; paramList = new ArrayList())
+        {
+          paramList.add(localObject);
+          localLinkedHashMap.put(Integer.valueOf(((RecommendPerson)localObject).cardTypeID), paramList);
+          break;
+        }
       }
-      paramaukz.a(new NoColumnError("name", String.class));
-      label589:
-      i = paramCursor.getColumnIndex("encryptKey");
-      if (i != -1) {
-        break label1360;
+      localIterator = localLinkedHashMap.entrySet().iterator();
+      if (localIterator.hasNext())
+      {
+        paramList = (Map.Entry)localIterator.next();
+        localObject = (Integer)paramList.getKey();
+        List localList = (List)paramList.getValue();
+        paramList = "";
+        switch (((Integer)localObject).intValue())
+        {
+        }
+        for (;;)
+        {
+          localLinkedHashMap.put(localObject, a(localList, paramList));
+          break;
+          paramList = "key_ActiveMember_ri" + paramString;
+          continue;
+          paramList = "key_SameUserInfo_ri" + paramString;
+          continue;
+          paramList = "key_CommonBehavior_ri" + paramString;
+          continue;
+          paramList = "key_Interactive_ri" + paramString;
+          continue;
+          paramList = "key_GroupKOL_ri" + paramString;
+        }
       }
-      paramaukz.a(new NoColumnError("encryptKey", String.class));
-      label623:
-      i = paramCursor.getColumnIndex("isSound");
-      if (i != -1) {
-        break label1375;
-      }
-      paramaukz.a(new NoColumnError("isSound", Boolean.TYPE));
-      i = paramCursor.getColumnIndex("width");
-      if (i != -1) {
-        break label1402;
-      }
-      paramaukz.a(new NoColumnError("width", Integer.TYPE));
-      label693:
-      i = paramCursor.getColumnIndex("height");
-      if (i != -1) {
-        break label1417;
-      }
-      paramaukz.a(new NoColumnError("height", Integer.TYPE));
-      label728:
-      i = paramCursor.getColumnIndex("value");
-      if (i != -1) {
-        break label1432;
-      }
-      paramaukz.a(new NoColumnError("value", Boolean.TYPE));
-      i = paramCursor.getColumnIndex("magicValue");
-      if (i != -1) {
-        break label1459;
-      }
-      paramaukz.a(new NoColumnError("magicValue", String.class));
-      label797:
-      i = paramCursor.getColumnIndex("jobType");
-      if (i != -1) {
-        break label1474;
-      }
-      paramaukz.a(new NoColumnError("jobType", Integer.TYPE));
-      label832:
-      i = paramCursor.getColumnIndex("keyword");
-      if (i != -1) {
-        break label1489;
-      }
-      paramaukz.a(new NoColumnError("keyword", String.class));
-      label866:
-      i = paramCursor.getColumnIndex("keywords");
-      if (i != -1) {
-        break label1504;
-      }
-      paramaukz.a(new NoColumnError("keywords", String.class));
-      label900:
-      i = paramCursor.getColumnIndex("character");
-      if (i != -1) {
-        break label1519;
-      }
-      paramaukz.a(new NoColumnError("character", String.class));
-      label934:
-      i = paramCursor.getColumnIndex("extensionWidth");
-      if (i != -1) {
-        break label1534;
-      }
-      paramaukz.a(new NoColumnError("extensionWidth", Integer.TYPE));
-      label969:
-      i = paramCursor.getColumnIndex("extensionHeight");
-      if (i != -1) {
-        break label1549;
-      }
-      paramaukz.a(new NoColumnError("extensionHeight", Integer.TYPE));
-      label1004:
-      i = paramCursor.getColumnIndex("businessExtra");
-      if (i != -1) {
-        break label1564;
-      }
-      paramaukz.a(new NoColumnError("businessExtra", String.class));
-      label1038:
-      i = paramCursor.getColumnIndex("isAPNG");
-      if (i != -1) {
-        break label1579;
-      }
-      paramaukz.a(new NoColumnError("isAPNG", Boolean.TYPE));
-      i = paramCursor.getColumnIndex("ipsiteUrl");
-      if (i != -1) {
-        break label1607;
-      }
-      paramaukz.a(new NoColumnError("ipsiteUrl", String.class));
-      label1107:
-      i = paramCursor.getColumnIndex("ipsiteName");
-      if (i != -1) {
-        break label1622;
-      }
-      paramaukz.a(new NoColumnError("ipsiteName", String.class));
-      label1141:
-      i = paramCursor.getColumnIndex("exposeNum");
-      if (i != -1) {
-        break label1637;
-      }
-      paramaukz.a(new NoColumnError("exposeNum", Integer.TYPE));
-      label1176:
-      i = paramCursor.getColumnIndex("clickNum");
-      if (i != -1) {
-        break label1652;
-      }
-      paramaukz.a(new NoColumnError("clickNum", Integer.TYPE));
-      label1211:
-      i = paramCursor.getColumnIndex("voicePrint");
-      if (i != -1) {
-        break label1667;
-      }
-      paramaukz.a(new NoColumnError("voicePrint", String.class));
-      label1245:
-      i = paramCursor.getColumnIndex("backColor");
-      if (i != -1) {
-        break label1682;
-      }
-      paramaukz.a(new NoColumnError("backColor", String.class));
+    }
+    return localLinkedHashMap;
+  }
+  
+  public void a(String paramString, int paramInt, List<Long> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.Manager", 2, "getTroopMemRecommendCardsData troopUin = " + paramString + ",entryId = " + paramInt);
+    }
+    Object localObject = (List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      a(paramString, false);
+      localObject = a((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString), paramString);
+      a().notifyUI(1, true, new Object[] { localObject, paramString, Integer.valueOf(1) });
     }
     for (;;)
     {
-      i = paramCursor.getColumnIndex("volumeColor");
-      if (i != -1) {
-        break label1697;
+      if (a(paramInt, paramString)) {
+        a().a(paramString, paramInt, paramList);
       }
-      paramaukz.a(new NoColumnError("volumeColor", String.class));
-      return paramauko;
-      paramauko.eId = paramCursor.getString(i);
-      break;
-      label1330:
-      paramauko.epId = paramCursor.getString(i);
-      break label555;
-      label1345:
-      paramauko.name = paramCursor.getString(i);
-      break label589;
-      label1360:
-      paramauko.encryptKey = paramCursor.getString(i);
-      break label623;
-      label1375:
-      if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        paramauko.isSound = paramBoolean;
-        break;
-      }
-      label1402:
-      paramauko.width = paramCursor.getInt(i);
-      break label693;
-      label1417:
-      paramauko.height = paramCursor.getInt(i);
-      break label728;
-      label1432:
-      if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        paramauko.value = paramBoolean;
-        break;
-      }
-      label1459:
-      paramauko.magicValue = paramCursor.getString(i);
-      break label797;
-      label1474:
-      paramauko.jobType = paramCursor.getInt(i);
-      break label832;
-      label1489:
-      paramauko.keyword = paramCursor.getString(i);
-      break label866;
-      label1504:
-      paramauko.keywords = paramCursor.getString(i);
-      break label900;
-      label1519:
-      paramauko.character = paramCursor.getString(i);
-      break label934;
-      label1534:
-      paramauko.extensionWidth = paramCursor.getInt(i);
-      break label969;
-      label1549:
-      paramauko.extensionHeight = paramCursor.getInt(i);
-      break label1004;
-      label1564:
-      paramauko.businessExtra = paramCursor.getString(i);
-      break label1038;
-      label1579:
-      if (1 == paramCursor.getShort(i)) {}
-      for (paramBoolean = bool2;; paramBoolean = false)
-      {
-        paramauko.isAPNG = paramBoolean;
-        break;
-      }
-      label1607:
-      paramauko.ipsiteUrl = paramCursor.getString(i);
-      break label1107;
-      label1622:
-      paramauko.ipsiteName = paramCursor.getString(i);
-      break label1141;
-      label1637:
-      paramauko.exposeNum = paramCursor.getInt(i);
-      break label1176;
-      label1652:
-      paramauko.clickNum = paramCursor.getInt(i);
-      break label1211;
-      label1667:
-      paramauko.voicePrint = paramCursor.getString(i);
-      break label1245;
-      label1682:
-      paramauko.backColor = paramCursor.getString(i);
+      return;
+      ThreadManager.excute(new TroopMemberRecommendManager.2(this, paramString), 32, null, true);
     }
-    label1697:
-    paramauko.volumeColor = paramCursor.getString(i);
-    return paramauko;
   }
   
-  public String a(String paramString)
+  public void a(String paramString1, String paramString2)
   {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,eId TEXT ,epId TEXT ,name TEXT ,encryptKey TEXT ,isSound INTEGER ,width INTEGER ,height INTEGER ,value INTEGER ,magicValue TEXT ,jobType INTEGER ,keyword TEXT ,keywords TEXT ,character TEXT ,extensionWidth INTEGER ,extensionHeight INTEGER ,businessExtra TEXT ,isAPNG INTEGER ,ipsiteUrl TEXT ,ipsiteName TEXT ,exposeNum INTEGER ,clickNum INTEGER ,voicePrint TEXT ,backColor TEXT ,volumeColor TEXT,UNIQUE(eId,epId) ON CONFLICT IGNORE)");
-    return localStringBuilder.toString();
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
+    do
+    {
+      return;
+      Object localObject = new ArrayList();
+      ((List)localObject).addAll((Collection)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1));
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          RecommendPerson localRecommendPerson = (RecommendPerson)((Iterator)localObject).next();
+          if (paramString2.equals(localRecommendPerson.uin)) {
+            ((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1)).remove(localRecommendPerson);
+          }
+        }
+      }
+      paramString1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    } while (paramString1 == null);
+    paramString1.a(RecommendPerson.class.getSimpleName(), "uin=?", new String[] { String.valueOf(paramString2) });
   }
   
-  public void a(auko paramauko, ContentValues paramContentValues)
+  public void a(String paramString, boolean paramBoolean)
   {
-    paramauko = (Emoticon)paramauko;
-    paramContentValues.put("eId", paramauko.eId);
-    paramContentValues.put("epId", paramauko.epId);
-    paramContentValues.put("name", paramauko.name);
-    paramContentValues.put("encryptKey", paramauko.encryptKey);
-    paramContentValues.put("isSound", Boolean.valueOf(paramauko.isSound));
-    paramContentValues.put("width", Integer.valueOf(paramauko.width));
-    paramContentValues.put("height", Integer.valueOf(paramauko.height));
-    paramContentValues.put("value", Boolean.valueOf(paramauko.value));
-    paramContentValues.put("magicValue", paramauko.magicValue);
-    paramContentValues.put("jobType", Integer.valueOf(paramauko.jobType));
-    paramContentValues.put("keyword", paramauko.keyword);
-    paramContentValues.put("keywords", paramauko.keywords);
-    paramContentValues.put("character", paramauko.character);
-    paramContentValues.put("extensionWidth", Integer.valueOf(paramauko.extensionWidth));
-    paramContentValues.put("extensionHeight", Integer.valueOf(paramauko.extensionHeight));
-    paramContentValues.put("businessExtra", paramauko.businessExtra);
-    paramContentValues.put("isAPNG", Boolean.valueOf(paramauko.isAPNG));
-    paramContentValues.put("ipsiteUrl", paramauko.ipsiteUrl);
-    paramContentValues.put("ipsiteName", paramauko.ipsiteName);
-    paramContentValues.put("exposeNum", Integer.valueOf(paramauko.exposeNum));
-    paramContentValues.put("clickNum", Integer.valueOf(paramauko.clickNum));
-    paramContentValues.put("voicePrint", paramauko.voicePrint);
-    paramContentValues.put("backColor", paramauko.backColor);
-    paramContentValues.put("volumeColor", paramauko.volumeColor);
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      aloz localaloz = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+      Object localObject = new ArrayList();
+      ((List)localObject).addAll((Collection)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString));
+      awbw localawbw = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+      if ((localObject != null) && (((List)localObject).size() > 0))
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          RecommendPerson localRecommendPerson = (RecommendPerson)((Iterator)localObject).next();
+          if ((localaloz != null) && (localaloz.b(localRecommendPerson.uin)))
+          {
+            ((List)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).remove(localRecommendPerson);
+            if ((paramBoolean) && (localawbw != null)) {
+              localawbw.a(RecommendPerson.class.getSimpleName(), "uin=?", new String[] { String.valueOf(localRecommendPerson.uin) });
+            }
+          }
+        }
+      }
+    }
   }
+  
+  public void a(boolean paramBoolean, List<RecommendPerson> paramList, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.Manager", 2, "onGetTroopMemRecommendList, success = " + paramBoolean + ",troopUin = " + paramString);
+    }
+    Object localObject = new LinkedHashMap();
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_ActiveMember_ri" + paramString, 0).commit();
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_SameUserInfo_ri" + paramString, 0).commit();
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_CommonBehavior_ri" + paramString, 0).commit();
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_Interactive_ri" + paramString, 0).commit();
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("key_GroupKOL_ri" + paramString, 0).commit();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramList);
+      localObject = a(paramList, paramString);
+    }
+    a().notifyUI(1, paramBoolean, new Object[] { localObject, paramString, Integer.valueOf(3) });
+  }
+  
+  public boolean a()
+  {
+    a();
+    if (this.jdField_a_of_type_Aons == null) {}
+    do
+    {
+      return false;
+      if (this.jdField_a_of_type_Aons.c > 0) {
+        return true;
+      }
+    } while (this.jdField_a_of_type_Aons.jdField_a_of_type_JavaUtilList.size() <= 0);
+    return true;
+  }
+  
+  boolean a(int paramInt, String paramString)
+  {
+    long l1 = 0L;
+    boolean bool = false;
+    SharedPreferences localSharedPreferences = a();
+    if (paramInt == 11) {
+      l1 = localSharedPreferences.getLong("key_LeftSlide_fetch_ts" + paramString, 0L);
+    }
+    for (;;)
+    {
+      long l2 = System.currentTimeMillis() / 1000L;
+      if (l2 > l1) {
+        bool = true;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberRecommend.Manager", 2, "isTimeToObtainRemote result = " + bool + ",entryId = " + paramInt + ",troopUin = " + paramString + ",curTimeStamp = " + l2 + ",fetchTimeStamp = " + l1);
+      }
+      return bool;
+      if (paramInt == 12) {
+        l1 = localSharedPreferences.getLong("key_AIO_fetch_ts" + paramString, 0L);
+      }
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = true;
+    a();
+    int i = a(paramString);
+    if ((this.jdField_a_of_type_Aons == null) || (i <= 0)) {
+      bool = false;
+    }
+    do
+    {
+      return bool;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberRecommend.Manager", 2, "needShowTroopRecommend() troopUin =" + paramString + " troopMemRecommendConfBean = " + this.jdField_a_of_type_Aons.toString() + " troopMemCount = " + i);
+      }
+    } while ((this.jdField_a_of_type_Aons.jdField_a_of_type_Int == 1) && (i > this.jdField_a_of_type_Aons.b));
+    return false;
+  }
+  
+  public boolean b(String paramString)
+  {
+    a();
+    if (this.jdField_a_of_type_Aons == null) {
+      return false;
+    }
+    if (this.jdField_a_of_type_Aons.c > 0) {
+      return true;
+    }
+    TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
+    if (localTroopManager != null)
+    {
+      paramString = localTroopManager.c(paramString);
+      if ((paramString != null) && (this.jdField_a_of_type_Aons.jdField_a_of_type_JavaUtilList.contains(Long.valueOf(paramString.dwGroupClassExt)))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aukl
  * JD-Core Version:    0.7.0.1
  */

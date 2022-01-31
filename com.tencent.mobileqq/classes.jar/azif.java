@@ -1,33 +1,24 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-
 public class azif
-  implements URLDrawable.URLDrawableListener
 {
-  public azif(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, azih paramazih) {}
+  public int a;
+  public long a;
+  public int b;
+  public int c = 0;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  azif()
   {
-    this.jdField_a_of_type_Azih.a(null);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public String toString()
   {
-    this.jdField_a_of_type_Azih.a(null);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = bdig.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
-    this.jdField_a_of_type_Azih.a(paramURLDrawable);
+    return "FailInfo{lastFCode=" + this.jdField_a_of_type_Int + ", lastSubFCode=" + this.b + ", netType=" + this.c + ", lastFTime=" + this.jdField_a_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azif
  * JD-Core Version:    0.7.0.1
  */

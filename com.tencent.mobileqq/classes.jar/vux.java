@@ -1,151 +1,122 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.takevideo.tag.TagItemEntry;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.view.View;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import javax.annotation.Nonnull;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class vux
+public abstract class vux
+  implements IEventReceiver
 {
-  private final int jdField_a_of_type_Int = 20;
-  private aukp jdField_a_of_type_Aukp;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<vvd> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private viu jdField_a_of_type_Viu;
-  private final vva jdField_a_of_type_Vva;
-  private vvd jdField_a_of_type_Vvd;
-  private int b = 1;
+  private long a;
+  protected Map<Subscriber, String> a;
+  protected Set<vno> a;
+  public vuu a;
+  protected boolean a;
+  public boolean b;
   
-  public vux(vva paramvva, aukp paramaukp)
+  public Map<Subscriber, String> a()
   {
-    this.jdField_a_of_type_Vva = paramvva;
-    this.jdField_a_of_type_Aukp = paramaukp;
+    return null;
   }
   
-  public static List<vvd> a(aukp paramaukp)
+  public Set<vno> a()
   {
-    Object localObject = a(paramaukp, TagItemEntry.class, TagItemEntry.class.getSimpleName(), null, null);
-    paramaukp = (aukp)localObject;
-    if (localObject == null) {
-      paramaukp = new ArrayList();
-    }
-    localObject = new ArrayList();
-    paramaukp = paramaukp.iterator();
-    while (paramaukp.hasNext()) {
-      ((List)localObject).add(new vvd((TagItemEntry)paramaukp.next()));
-    }
-    return localObject;
-  }
-  
-  public static List<? extends auko> a(aukp paramaukp, Class<? extends auko> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return paramaukp.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
-  }
-  
-  public static void a(aukp paramaukp, List<vvd> paramList)
-  {
-    try
-    {
-      Object localObject = a(paramaukp, TagItemEntry.class, TagItemEntry.class.getSimpleName(), null, null);
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          TagItemEntry localTagItemEntry = (TagItemEntry)((Iterator)localObject).next();
-          localTagItemEntry.setStatus(1001);
-          paramaukp.b(localTagItemEntry);
-        }
-      }
-    }
-    finally
-    {
-      paramaukp.a().b();
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      paramaukp.b(((vvd)paramList.next()).a());
-    }
-    paramaukp.a().c();
-    paramaukp.a().b();
-  }
-  
-  public List<vvd> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  @Nullable
-  public vvd a()
-  {
-    return this.jdField_a_of_type_Vvd;
+    return null;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Viu = null;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.b = 1;
-    this.jdField_a_of_type_Vvd = null;
-  }
-  
-  public void a(List<vvd> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public void a(@Nonnull viu paramviu)
-  {
-    ved.a("EditVideoTagPresenter", "%s refresh data, behavior:%s", this, paramviu);
-    this.jdField_a_of_type_Viu = paramviu;
-    if (paramviu.jdField_a_of_type_Boolean) {}
-    for (paramviu = new tnd(paramviu.jdField_a_of_type_Int, paramviu.jdField_a_of_type_Long, "", 20);; paramviu = new tnd("", 20))
+    Iterator localIterator;
+    Object localObject;
+    if ((this.jdField_a_of_type_JavaUtilMap != null) && (!this.jdField_a_of_type_JavaUtilMap.isEmpty()))
     {
-      syo.a().a(paramviu, new vuy(this));
-      return;
+      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (Subscriber)((Map.Entry)localIterator.next()).getKey();
+        uht.a().unRegisterSubscriber((Subscriber)localObject);
+      }
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+    if ((this.jdField_a_of_type_JavaUtilSet != null) && (!this.jdField_a_of_type_JavaUtilSet.isEmpty()))
+    {
+      localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (vno)localIterator.next();
+        this.jdField_a_of_type_Vuu.b((vno)localObject);
+      }
+      this.jdField_a_of_type_JavaUtilSet.clear();
     }
   }
   
-  public void a(vvd paramvvd)
+  public final void a(@NonNull vuu paramvuu, int paramInt, @NonNull vpk paramvpk)
   {
-    this.jdField_a_of_type_Vvd = paramvvd;
-  }
-  
-  public boolean a()
-  {
-    return this.b == 1;
-  }
-  
-  public boolean a(viu paramviu)
-  {
-    if (this.jdField_a_of_type_Viu != null) {
-      if (this.jdField_a_of_type_Viu.equals(paramviu)) {}
-    }
-    while (paramviu != null)
+    vuu.a(paramvuu, paramInt);
+    this.jdField_a_of_type_Vuu = paramvuu;
+    if (!this.jdField_a_of_type_Boolean)
     {
-      return true;
+      Object localObject1 = a();
+      if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
+      {
+        Iterator localIterator = ((Map)localObject1).entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject2 = (Map.Entry)localIterator.next();
+          Subscriber localSubscriber = (Subscriber)((Map.Entry)localObject2).getKey();
+          localObject2 = (String)((Map.Entry)localObject2).getValue();
+          uht.a().registerSubscriber((String)localObject2, localSubscriber);
+        }
+        if (this.jdField_a_of_type_JavaUtilMap == null) {
+          this.jdField_a_of_type_JavaUtilMap = new HashMap();
+        }
+        this.jdField_a_of_type_JavaUtilMap.putAll((Map)localObject1);
+      }
+      localObject1 = a();
+      if ((localObject1 != null) && (!((Set)localObject1).isEmpty()))
+      {
+        if (this.jdField_a_of_type_JavaUtilSet == null) {
+          this.jdField_a_of_type_JavaUtilSet = new HashSet();
+        }
+        this.jdField_a_of_type_JavaUtilSet.addAll((Collection)localObject1);
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+    a(paramvuu.a, paramvpk);
+  }
+  
+  public final void a(vuy paramvuy, vpk paramvpk)
+  {
+    paramvuy.a();
+    b(paramvuy, paramvpk);
+  }
+  
+  public boolean a(View paramView)
+  {
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
       return false;
     }
-    return false;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    return true;
   }
   
-  public void b(@Nonnull viu paramviu)
+  public abstract void b(vuy paramvuy, vpk paramvpk);
+  
+  public boolean isValidate()
   {
-    ved.a("EditVideoTagPresenter", "%s loadMore data, behavior:%s", this, paramviu);
-    this.jdField_a_of_type_Viu = paramviu;
-    if (paramviu.jdField_a_of_type_Boolean) {}
-    for (paramviu = new tnd(paramviu.jdField_a_of_type_Int, paramviu.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, 20);; paramviu = new tnd(this.jdField_a_of_type_JavaLangString, 20))
-    {
-      syo.a().a(paramviu, new vuz(this));
-      return;
-    }
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vux
  * JD-Core Version:    0.7.0.1
  */

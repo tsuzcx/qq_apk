@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.servlet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbma;
+import bdku;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Packet;
@@ -53,14 +53,14 @@ public class MiniAppSSOCmdServlet
       localObject = new byte[4];
     }
     paramPacket.setSSOCommand(str);
-    paramPacket.putSendData(bbma.a((byte[])localObject));
+    paramPacket.putSendData(bdku.a((byte[])localObject));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdServlet
  * JD-Core Version:    0.7.0.1
  */

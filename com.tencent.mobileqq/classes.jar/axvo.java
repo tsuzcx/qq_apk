@@ -1,21 +1,19 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class axvo
-  extends URLDrawableDownListener.Adapter
+class axvo
+  implements DialogInterface.OnClickListener
 {
-  public axvo(StructMsgForHypertext paramStructMsgForHypertext) {}
+  axvo(axvm paramaxvm) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView.setBackgroundDrawable(null);
+    this.a.a.back();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axvo
  * JD-Core Version:    0.7.0.1
  */

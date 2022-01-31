@@ -1,14 +1,17 @@
-public abstract interface amjk
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
+
+public class amjk
+  extends RecentUserCache
 {
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public amjk(QQAppInterface paramQQAppInterface, amcg paramamcg)
+  {
+    super(paramQQAppInterface, paramamcg);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjk
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package cooperation.qqindividuality;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import bglh;
-import bglq;
+import bimg;
+import bimp;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.plugin.PluginInfo;
@@ -18,18 +18,18 @@ public class QQIndividualityProxyActivity
     QQIndividualityPluginProxyService.a();
     paramIntent.putExtra("userQqResources", 2);
     paramIntent.putExtra("useSkinEngine", true);
-    bglq localbglq = new bglq(1);
-    localbglq.jdField_b_of_type_JavaLangString = "qqindividuality_plugin.apk";
-    localbglq.d = PluginInfo.m;
-    localbglq.jdField_a_of_type_JavaLangString = paramString1;
-    localbglq.e = paramString2;
-    localbglq.jdField_a_of_type_JavaLangClass = paramClass;
-    localbglq.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    localbglq.jdField_b_of_type_Int = paramInt;
-    localbglq.c = 30000;
-    localbglq.f = null;
-    localbglq.jdField_b_of_type_Boolean = false;
-    bglh.a(paramActivity, localbglq);
+    bimp localbimp = new bimp(1);
+    localbimp.jdField_b_of_type_JavaLangString = "qqindividuality_plugin.apk";
+    localbimp.d = PluginInfo.m;
+    localbimp.jdField_a_of_type_JavaLangString = paramString1;
+    localbimp.e = paramString2;
+    localbimp.jdField_a_of_type_JavaLangClass = paramClass;
+    localbimp.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    localbimp.jdField_b_of_type_Int = paramInt;
+    localbimp.c = 30000;
+    localbimp.f = null;
+    localbimp.jdField_b_of_type_Boolean = false;
+    bimg.a(paramActivity, localbimp);
     if ((paramString2.equals("com.qqindividuality.activity.QQIndividualitySignatureActivity")) && ((paramActivity instanceof QQIndividualityBridgeActivity)) && (paramDialog != null)) {
       paramActivity.finish();
     }
@@ -41,7 +41,7 @@ public class QQIndividualityProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqindividuality.QQIndividualityProxyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,33 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class ahvh
-  implements axie
 {
-  public ahvh(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
+  private TextView c;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  ahvh(ahvc paramahvc, View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "single tap focus " + paramBoolean1);
-    }
-    ahvx.a(paramBoolean1);
-    if (paramBoolean1)
-    {
-      NewFlowCameraActivity.h(this.a, true);
-      return;
-    }
-    this.a.a.g();
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131368579);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369485));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369491));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377972));
+    this.b = ((TextView)paramView.findViewById(2131365004));
+    this.c = ((TextView)paramView.findViewById(2131371140));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131365120));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahvh
  * JD-Core Version:    0.7.0.1
  */

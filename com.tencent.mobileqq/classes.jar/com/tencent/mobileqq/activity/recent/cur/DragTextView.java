@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.recent.cur;
 
-import ahpp;
-import ahpq;
-import ahpr;
+import ajgy;
+import ajgz;
+import ajha;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -18,12 +18,12 @@ import com.tencent.qphone.base.util.QLog;
 @TargetApi(19)
 public class DragTextView
   extends TextView
-  implements ahpq
+  implements ajgz
 {
   private static int jdField_a_of_type_Int;
   private static int b;
   private static int c;
-  private ahpr jdField_a_of_type_Ahpr;
+  private ajha jdField_a_of_type_Ajha;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private View jdField_a_of_type_AndroidViewView;
   private boolean jdField_a_of_type_Boolean;
@@ -94,10 +94,10 @@ public class DragTextView
   {
     if ((this.d != -1) && (!this.jdField_a_of_type_Boolean) && (paramMotionEvent.getAction() == 0))
     {
-      if (this.jdField_a_of_type_Ahpr != null)
+      if (this.jdField_a_of_type_Ajha != null)
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Ahpr.a(this, this.d);
+        this.jdField_a_of_type_Ajha.a(this, this.d);
         return true;
       }
       return super.onTouchEvent(paramMotionEvent);
@@ -117,23 +117,23 @@ public class DragTextView
     if (this.jdField_a_of_type_AndroidViewView == null) {
       this.jdField_a_of_type_AndroidViewView = ((ViewGroup)getParent());
     }
-    if ((this.jdField_a_of_type_Ahpr != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
+    if ((this.jdField_a_of_type_Ajha != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
     {
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new ahpp(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
+      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new ajgy(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
     }
   }
   
-  public void setOnModeChangeListener(ahpr paramahpr)
+  public void setOnModeChangeListener(ajha paramajha)
   {
-    this.jdField_a_of_type_Ahpr = paramahpr;
+    this.jdField_a_of_type_Ajha = paramajha;
     if (QLog.isColorLevel()) {
-      QLog.d("Drag", 2, "setOnModeChangeListener:" + paramahpr);
+      QLog.d("Drag", 2, "setOnModeChangeListener:" + paramajha);
     }
-    if ((this.jdField_a_of_type_Ahpr != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
+    if ((this.jdField_a_of_type_Ajha != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
     {
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new ahpp(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
+      this.jdField_a_of_type_AndroidViewView.setTouchDelegate(new ajgy(this, this.jdField_a_of_type_AndroidGraphicsRect, this));
     }
   }
   
@@ -147,7 +147,7 @@ public class DragTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.cur.DragTextView
  * JD-Core Version:    0.7.0.1
  */

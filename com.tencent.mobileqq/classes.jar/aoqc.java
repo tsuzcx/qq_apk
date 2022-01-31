@@ -1,25 +1,54 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.ExpandableListView;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
-class aoqc
-  implements View.OnClickListener
+public class aoqc
+  extends aopw<aopz>
 {
-  aoqc(aoqb paramaoqb, int paramInt) {}
-  
-  public void onClick(View paramView)
+  @NonNull
+  public static aopz c()
   {
-    if (aoqb.a(this.jdField_a_of_type_Aoqb).c(this.jdField_a_of_type_Int))
-    {
-      aoqb.a(this.jdField_a_of_type_Aoqb).b(this.jdField_a_of_type_Int);
-      return;
+    aopz localaopz2 = (aopz)aogj.a().a(541);
+    aopz localaopz1 = localaopz2;
+    if (localaopz2 == null) {
+      localaopz1 = aopz.a();
     }
-    aoqb.a(this.jdField_a_of_type_Aoqb).a(this.jdField_a_of_type_Int);
+    return localaopz1;
+  }
+  
+  public int a()
+  {
+    return 541;
+  }
+  
+  @NonNull
+  public aopz a()
+  {
+    return aopz.a();
+  }
+  
+  @NonNull
+  public aopz a(@NonNull aogf[] paramArrayOfaogf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("KC.ConfigProcessor", 1, paramArrayOfaogf[0].a);
+    }
+    return aopz.a(paramArrayOfaogf[0].a);
+  }
+  
+  public Class<aopz> a()
+  {
+    return aopz.class;
+  }
+  
+  @NonNull
+  public aopz b()
+  {
+    return aopz.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqc
  * JD-Core Version:    0.7.0.1
  */

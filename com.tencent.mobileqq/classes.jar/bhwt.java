@@ -1,27 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.text.SpannableString;
 
-class bhwt
-  extends Handler
+public abstract class bhwt
 {
-  bhwt(bhws parambhws, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public String a;
+  public int b;
+  public int c;
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1)
-    {
-      this.a.jdField_a_of_type_Bhwp = null;
-      this.a.jdField_a_of_type_Boolean = false;
-    }
-  }
+  public abstract void a(SpannableString paramSpannableString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhwt
  * JD-Core Version:    0.7.0.1
  */

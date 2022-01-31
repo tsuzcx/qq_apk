@@ -1,33 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.app.Activity;
+import android.view.View;
 
-public final class nda
-  implements DialogInterface.OnClickListener
+class nda
+  implements bhqd
 {
-  public nda(int paramInt, QQAppInterface paramQQAppInterface, long paramLong, Handler paramHandler) {}
+  nda(ncv paramncv, Activity paramActivity, String paramString, bhpy parambhpy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Int == 1)
+    switch (paramInt)
     {
-      agby.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-      l = NetConnInfoCenter.getServerTimeMillis();
-      ((akff)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), true, l);
-      return;
     }
-    agby.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, false, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    ((akff)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), false, l);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      ncv.c(this.jdField_a_of_type_Ncv, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      ncv.a(this.jdField_a_of_type_Ncv, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nda
  * JD-Core Version:    0.7.0.1
  */

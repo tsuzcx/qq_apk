@@ -1,96 +1,39 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.armap.wealthgod.ARMapThreadStubReceiver;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetShareGroupListReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class who
-  implements Handler.Callback
+  extends QQUIEventReceiver<whl, wio>
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private String jdField_a_of_type_JavaLangString;
-  private whq jdField_a_of_type_Whq;
-  
-  public who(Context paramContext)
+  public who(@NonNull whl paramwhl)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    b();
+    super(paramwhl);
   }
   
-  private void b()
+  public void a(@NonNull whl paramwhl, @NonNull wio paramwio)
   {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
+    if (paramwio.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new whp(this);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED");
-      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
-    {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-    }
-  }
-  
-  public void a()
-  {
-    c();
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler = null;
-    }
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Whq = null;
-  }
-  
-  public void a(String paramString, long paramLong, whq paramwhq)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreCallUpToolProc", 2, String.format("callUpToolProc from=%s", new Object[] { paramString }));
-    }
-    this.jdField_a_of_type_Whq = paramwhq;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    paramwhq = new Intent(this.jdField_a_of_type_AndroidContentContext, ARMapThreadStubReceiver.class);
-    paramwhq.setAction("com.tencent.mobileqq.armap.ACTION_START_THREAD");
-    paramwhq.putExtra("from", paramString);
-    this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramwhq);
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(108);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(108, paramLong);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if (this.jdField_a_of_type_Whq != null) {
-        this.jdField_a_of_type_Whq.a();
+      wsv.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramwio.jdField_a_of_type_Int));
+      whl.b(paramwhl, paramwio.jdField_a_of_type_Int);
+      if (paramwhl.a != null)
+      {
+        paramwhl.a.shareGroupCount = whl.b(paramwhl);
+        ThreadManager.post(new MemoriesProfilePresenter.GetShareGroupListReceiver.1(this, paramwhl), 5, null, false);
       }
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wio.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     who
  * JD-Core Version:    0.7.0.1
  */

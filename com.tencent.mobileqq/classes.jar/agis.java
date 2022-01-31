@@ -1,31 +1,145 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import android.view.Window;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.1;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie.2;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class agis
-  extends aumg
+  extends BaseChatPie
 {
-  public agis(BindNumberActivity paramBindNumberActivity) {}
+  private anhr a;
+  private bdfq c;
+  private String g;
+  private String h;
   
-  protected void b(boolean paramBoolean)
+  public agis(QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, FragmentActivity paramFragmentActivity, Context paramContext)
   {
-    super.b(paramBoolean);
-    if (paramBoolean) {
-      BindNumberActivity.a(this.a).sendEmptyMessage(3);
-    }
+    super(paramQQAppInterface, paramViewGroup, paramFragmentActivity, paramContext);
+  }
+  
+  private boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ArkAppMessage paramArkAppMessage)
+  {
+    paramSessionInfo = ayvw.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.b, paramSessionInfo.jdField_a_of_type_Int, paramArkAppMessage);
+    paramQQAppInterface.a().b(paramSessionInfo, paramQQAppInterface.getCurrentAccountUin());
+    return true;
+  }
+  
+  private static void b(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {}
     for (;;)
     {
-      this.a.app.unRegistObserver(this.a.b);
-      this.a.b = null;
       return;
-      this.a.b();
-      this.a.b(2131718748);
+      try
+      {
+        if (!paramJSONObject.has("forward")) {
+          paramJSONObject.put("forward", 1);
+        }
+        if (!paramJSONObject.has("autosize"))
+        {
+          paramJSONObject.put("autosize", 1);
+          return;
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
     }
+  }
+  
+  private void br()
+  {
+    if (this.c != null)
+    {
+      this.c.dismiss();
+      this.c = null;
+    }
+    bs();
+    if ((BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity)) {
+      ((ArkFullScreenAppActivity)BaseActivity.sTopActivity).finish();
+    }
+    ar();
+    if (this.jdField_a_of_type_Anhr != null)
+    {
+      this.jdField_a_of_type_Anhr.c();
+      this.jdField_a_of_type_Anhr = null;
+    }
+  }
+  
+  private void bs()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(str, i);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(str, i);
+    afds.a(2);
+  }
+  
+  private void bt()
+  {
+    long l = NetConnInfoCenter.getServerTime();
+    amjk localamjk = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+    RecentUser localRecentUser = localamjk.a(aljq.aM, 1031);
+    if (localRecentUser.lastmsgtime < l) {
+      localRecentUser.lastmsgtime = l;
+    }
+    localamjk.a(localRecentUser);
+    localamjk.b(localRecentUser);
+  }
+  
+  private void f(String paramString)
+  {
+    paramString = new File(paramString);
+    if (!paramString.exists()) {
+      paramString.mkdirs();
+    }
+  }
+  
+  public void H()
+  {
+    ArkAppCenter.a(new ArkDebugChatPie.2(this));
+    super.H();
+  }
+  
+  public void L()
+  {
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getWindow().clearFlags(128);
+    super.L();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaLangString = "ArkDebugChatPie";
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getWindow().addFlags(128);
+    anly.a(2, null);
+    ArkAppCenter.b(true);
+    ArkAppCenter.a(new ArkDebugChatPie.1(this));
+    return super.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agis
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,47 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendPublicAccountMessageReceiptResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 class nof
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  nof(nnu paramnnu, NewIntent paramNewIntent) {}
+  nof(noe paramnoe) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (paramBoolean) {}
-    try
+    if (this.a.jdField_a_of_type_Nnw.b == 2)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      mobileqq_mp.SendPublicAccountMessageReceiptResponse localSendPublicAccountMessageReceiptResponse = new mobileqq_mp.SendPublicAccountMessageReceiptResponse();
-      localSendPublicAccountMessageReceiptResponse.mergeFrom(paramBundle);
-      boolean bool = paramBoolean;
-      if (localSendPublicAccountMessageReceiptResponse.ret_info.has())
-      {
-        bool = paramBoolean;
-        if (localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.has())
-        {
-          paramInt = localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.get();
-          bool = paramBoolean;
-          if (paramInt != 0L) {
-            bool = false;
-          }
-        }
-      }
+      paramView = new Intent((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", this.a.jdField_a_of_type_Nnw.jdField_c_of_type_JavaLangString);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      noy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 3, 0);
+    }
+    while (this.a.jdField_a_of_type_Nnw.b != 1) {
       return;
     }
-    catch (Exception paramBundle)
+    switch (this.a.jdField_c_of_type_Int)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(false));
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      noe.a(this.a);
+      return;
+    case 1: 
+      noy.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Nnw.f);
+      noy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 1, 0);
       return;
     }
-    finally
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(paramBoolean));
-      }
-    }
+    noy.a(this.a.jdField_a_of_type_Nnw);
+    noy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 4, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nof
  * JD-Core Version:    0.7.0.1
  */

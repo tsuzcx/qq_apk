@@ -1,69 +1,103 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import java.util.ArrayList;
 
 public class aeep
-  extends actm
+  extends amab
 {
-  public aeep(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
-  }
+  public aeep(TroopTransferActivity paramTroopTransferActivity) {}
   
-  protected actn a()
+  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    return new aeeq(this);
-  }
-  
-  protected View a(MessageRecord paramMessageRecord, actn paramactn, View paramView, LinearLayout paramLinearLayout, acxj paramacxj)
-  {
-    paramactn = (aeeq)paramactn;
-    paramactn = paramView;
-    if (paramView == null)
+    if ((!bdal.a(String.valueOf(paramLong), this.a.jdField_a_of_type_JavaLangString)) || (!bdal.a(paramString1, this.a.app.getCurrentAccountUin()))) {
+      return;
+    }
+    this.a.jdField_a_of_type_Boolean = false;
+    if (paramBoolean)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558785, null);
-      paramactn = (TextView)paramView.findViewById(2131367153);
-      paramactn.setMovementMethod(null);
-      paramactn.setGravity(17);
-      paramactn = paramView;
-      if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      if (this.a.jdField_a_of_type_Beps != null) {
+        this.a.jdField_a_of_type_Beps.b();
+      }
+      paramString1 = (TroopManager)this.a.app.getManager(52);
+      paramString3 = paramString1.b(paramLong + "");
+      if (paramString3 != null)
       {
-        paramactn = (TextView)paramView.findViewById(2131367499);
-        paramLinearLayout = (TextView)paramView.findViewById(2131367500);
-        paramactn.setBackgroundColor(2130842022);
-        paramLinearLayout.setBackgroundColor(2130842022);
-        paramactn = paramView;
+        paramString3.dwAdditionalFlag = 0L;
+        paramString1.b(paramString3);
+      }
+      paramString1 = new Intent();
+      paramString1.putExtra("isNeedFinish", true);
+      paramString1.putExtra("fin_tip_msg", this.a.getString(2131720993));
+      paramString1.putExtra("uin", paramString2);
+      this.a.setResult(-1, paramString1);
+      this.a.finish();
+      return;
+    }
+    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 6) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10) || (paramInt == 11)) {
+      paramString1 = this.a.getString(2131720979);
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Beps == null) {
+        this.a.jdField_a_of_type_Beps = new beps(this.a);
+      }
+      this.a.jdField_a_of_type_Beps.a(2, paramString1, 1500);
+      return;
+      if ((paramInt == 3) || (paramInt == 4) || (paramInt == 7) || (paramInt == 16) || (paramInt == 19))
+      {
+        paramString1 = this.a.getString(2131720981);
+      }
+      else if ((paramInt == 5) || (paramInt == 17) || (paramInt == 18))
+      {
+        paramString1 = this.a.getString(2131720980);
+      }
+      else
+      {
+        if (paramInt == 12)
+        {
+          if (this.a.jdField_a_of_type_Beps != null) {
+            this.a.jdField_a_of_type_Beps.b();
+          }
+          paramString1 = bdcd.a(this.a, 230);
+          paramString1.setTitle(this.a.getString(2131696691));
+          paramString1.setMessage(this.a.getString(2131696692));
+          paramString1.setNegativeButton(this.a.getString(2131696636), new aeeq(this, paramString1));
+          paramString1.setPositiveButton(this.a.getString(2131720083), new aeer(this, paramString1));
+          paramString1.show();
+          return;
+        }
+        paramString1 = this.a.getString(2131720980);
       }
     }
-    paramView = (TextView)paramactn.findViewById(2131367153);
-    if ((paramMessageRecord.istroop == 1) && (myb.a().a(paramMessageRecord.senderuin)))
-    {
-      paramView.setTextColor(myb.d);
-      return paramactn;
-    }
-    paramView.setTextColor(paramactn.getResources().getColorStateList(2131165465));
-    return paramactn;
   }
   
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public bbmh[] a(View paramView)
+  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
   {
-    return null;
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+      this.a.b(paramArrayList);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList, String paramString)
+  {
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+      this.a.b(paramArrayList);
+    }
+  }
+  
+  protected void c(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
+  {
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+      this.a.b(paramArrayList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeep
  * JD-Core Version:    0.7.0.1
  */

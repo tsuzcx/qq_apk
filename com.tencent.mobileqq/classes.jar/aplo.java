@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import org.json.JSONObject;
 
 public class aplo
-  extends aplm
+  extends num
 {
-  public aplo(apkt paramapkt)
-  {
-    super(paramapkt);
-  }
+  public aplo(MessengerService paramMessengerService) {}
   
-  public boolean a(String paramString)
+  public void a(Object paramObject)
   {
-    FileManagerEntity localFileManagerEntity = this.a.a();
-    if (localFileManagerEntity == null) {}
-    while ((localFileManagerEntity.strTroopFilePath == null) || (!localFileManagerEntity.strTroopFilePath.equalsIgnoreCase(paramString))) {
-      return false;
+    if (this.a.a != null)
+    {
+      this.a.a.putString("data", bcyj.a(paramObject).toString());
+      this.a.a(this.a.a);
+      this.a.a = null;
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aplo
  * JD-Core Version:    0.7.0.1
  */

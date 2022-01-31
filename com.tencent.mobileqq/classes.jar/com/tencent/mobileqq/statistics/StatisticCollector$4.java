@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.statistics;
 
-import axrn;
-import xop;
+import azmz;
+import zdi;
 
 public class StatisticCollector$4
   implements Runnable
 {
-  public StatisticCollector$4(axrn paramaxrn) {}
+  public StatisticCollector$4(azmz paramazmz) {}
   
   public void run()
   {
-    xop.a(axrn.a(), 1);
+    zdi.a(azmz.a(), 1);
   }
 }
 

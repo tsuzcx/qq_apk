@@ -1,93 +1,86 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public abstract class atfx
-  extends Binder
-  implements atfw
+public class atfx
+  extends MSFServlet
 {
-  public atfx()
-  {
-    attachInterface(this, "com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-  }
+  public static long a;
+  public static long b;
+  public static long c;
+  public static long d;
   
-  public static atfw a(IBinder paramIBinder)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramIBinder == null) {
-      return null;
+    c = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebSSOAgentServlet", 2, "onReceive");
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-    if ((localIInterface != null) && ((localIInterface instanceof atfw))) {
-      return (atfw)localIInterface;
-    }
-    return new atfy(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    switch (paramInt1)
+    byte[] arrayOfByte;
+    if (paramFromServiceMsg.isSuccess())
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(paramParcel1);
-      }
-      paramParcel1 = a((BasicTypeDataParcel)localObject1);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-      localObject1 = localObject2;
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (Message)Message.CREATOR.createFromParcel(paramParcel1);
-      }
-      paramParcel1 = a((Message)localObject1);
-      paramParcel2.writeNoException();
-      if (paramParcel1 != null)
-      {
-        paramParcel2.writeInt(1);
-        paramParcel1.writeToParcel(paramParcel2, 1);
-      }
-      for (;;)
-      {
-        return true;
-        paramParcel2.writeInt(0);
-      }
+      int i = paramFromServiceMsg.getWupBuffer().length - 4;
+      arrayOfByte = new byte[i];
+      bdlr.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-    a(atgf.a(paramParcel1.readStrongBinder()));
-    paramParcel2.writeNoException();
-    return true;
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("extra_result_code", paramFromServiceMsg.getResultCode());
+      localBundle.putString("extra_result_err_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putString("extra_cmd", paramIntent.getStringExtra("extra_cmd"));
+      localBundle.putString("extra_callbackid", paramIntent.getStringExtra("extra_callbackid"));
+      localBundle.putByteArray("extra_data", arrayOfByte);
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+      return;
+      arrayOfByte = null;
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebSSOAgentServlet", 2, "onSend");
+    }
+    String str = paramIntent.getStringExtra("extra_cmd");
+    if (str == null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+      }
+      return;
+    }
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("extra_data");
+    paramPacket.setSSOCommand(str);
+    long l = paramIntent.getLongExtra("extra_timeout", -1L);
+    if (l > 0L) {
+      paramPacket.setTimeout(l);
+    }
+    if (arrayOfByte != null)
+    {
+      paramIntent = new byte[arrayOfByte.length + 4];
+      bdlr.a(paramIntent, 0, arrayOfByte.length + 4);
+      bdlr.a(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+      paramPacket.putSendData(paramIntent);
+    }
+    b = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atfx
  * JD-Core Version:    0.7.0.1
  */

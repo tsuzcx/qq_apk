@@ -1,245 +1,75 @@
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-final class whl
-  implements BusinessObserver
+public class whl
+  implements IEventReceiver
 {
-  whl(AppActivity paramAppActivity, String paramString, QQAppInterface paramQQAppInterface, ScannerParams paramScannerParams, View paramView, whr paramwhr) {}
+  private int jdField_a_of_type_Int = -1;
+  private alox jdField_a_of_type_Alox = new whm(this);
+  public QQUserUIItem a;
+  public String a;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private whn jdField_a_of_type_Whn;
+  private who jdField_a_of_type_Who;
+  private whp jdField_a_of_type_Whp;
+  private whq jdField_a_of_type_Whq;
+  private whr jdField_a_of_type_Whr;
+  private int b = -1;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public whl(String paramString, @NonNull whq paramwhq)
   {
-    int j = 0;
-    if (!this.jdField_a_of_type_MqqAppAppActivity.isResume()) {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Whq = paramwhq;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Whr = new whr(this);
+    uht.a().registerSubscriber(this.jdField_a_of_type_Whr);
+    vhj.a().addObserver(this.jdField_a_of_type_Alox);
+    this.jdField_a_of_type_Whn = new whn(this);
+    uht.a().registerSubscriber(this.jdField_a_of_type_Whn);
+    this.jdField_a_of_type_Who = new who(this);
+    uht.a().registerSubscriber(this.jdField_a_of_type_Who);
+    this.jdField_a_of_type_Whp = new whp(this);
+    uht.a().registerSubscriber(this.jdField_a_of_type_Whp);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    wsv.b("Q.qqstory.memories.MemoriesProfilePresenter", "request refresh user info data. from cache : %s.", Boolean.valueOf(paramBoolean));
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((usd)urr.a(2)).b(this.jdField_a_of_type_JavaLangString);
+      wsv.a("Q.qqstory.memories.MemoriesProfilePresenter", "get user info from cache: %s.", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
       return;
     }
-    Object localObject1 = this.jdField_a_of_type_JavaLangString;
-    Object localObject2 = Uri.parse((String)localObject1);
-    label35:
-    label235:
-    int i;
-    if (localObject2 == null)
-    {
-      localObject2 = null;
-      if (QLog.isColorLevel()) {
-        QLog.i("ScannerUtils", 2, String.format("JumpUrl requestUrlDecode authSig=%s url=%s", new Object[] { localObject2, localObject1 }));
-      }
-      if ((paramBoolean) && (paramBundle != null))
-      {
-        paramBundle = paramBundle.getString("result");
-        paramInt = j;
-      }
-    }
-    else
-    {
-      Object localObject3;
-      for (;;)
-      {
-        boolean bool;
-        try
-        {
-          localObject3 = new JSONObject(paramBundle);
-          paramInt = j;
-          if (((JSONObject)localObject3).getInt("r") != 0) {
-            break label823;
-          }
-          paramInt = j;
-          if (!((JSONObject)localObject3).has("d")) {
-            break label559;
-          }
-          paramInt = j;
-          paramBundle = new wfg(((JSONObject)localObject3).getString("d"));
-          paramInt = j;
-          if (!((JSONObject)localObject3).has("wpa")) {
-            break label548;
-          }
-          paramInt = j;
-          if (!"1".equals(((JSONObject)localObject3).getString("wpa"))) {
-            break label548;
-          }
-          paramBoolean = true;
-          paramInt = j;
-          bool = ((JSONObject)localObject3).has("extvalue");
-          paramInt = j;
-          if (!((JSONObject)localObject3).has("exttype")) {
-            break label553;
-          }
-          paramInt = j;
-          if ("2".equals(((JSONObject)localObject3).getString("exttype"))) {
-            break label831;
-          }
-          paramInt = j;
-          if (!"1".equals(((JSONObject)localObject3).getString("exttype"))) {
-            break label553;
-          }
-        }
-        catch (Exception paramBundle) {}
-        paramInt = j;
-        Bundle localBundle = new Bundle();
-        if (paramBoolean)
-        {
-          paramInt = j;
-          localBundle.putBoolean("issupportwpa", paramBoolean);
-        }
-        if ((i != 0) && (bool))
-        {
-          paramInt = j;
-          String str = ((JSONObject)localObject3).getString("exttype");
-          paramInt = j;
-          localObject3 = ((JSONObject)localObject3).getString("extvalue");
-          paramInt = j;
-          localBundle.putString("exttype", str);
-          paramInt = j;
-          localBundle.putString("extvalue", (String)localObject3);
-        }
-        paramInt = j;
-        localBundle.putString("authSig", (String)localObject2);
-        paramInt = j;
-        i = wfk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_MqqAppAppActivity, paramBundle, this.jdField_a_of_type_JavaLangString, localBundle);
-        paramInt = i;
-        if (this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.b)
-        {
-          paramInt = i;
-          this.jdField_a_of_type_MqqAppAppActivity.finish();
-        }
-        paramInt = i;
-        whj.a(i, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        paramInt = i;
-        if (!this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e) {
-          break;
-        }
-        paramInt = i;
-        this.jdField_a_of_type_MqqAppAppActivity.finish();
-        return;
-        label423:
-        QLog.e("ScannerUtils", 1, "handle url error: " + paramBundle.getMessage());
-        label451:
-        paramBundle = bbdj.a(this.jdField_a_of_type_MqqAppAppActivity, 230);
-        paramBundle.setTitle(2131717244);
-        paramBundle.setMessage((CharSequence)localObject1);
-        localObject2 = new whm(this);
-        paramBundle.setPositiveButton(2131694794, new whn(this, (String)localObject1));
-        paramBundle.setNegativeButton(2131690596, (DialogInterface.OnClickListener)localObject2);
-        paramBundle.setOnCancelListener((DialogInterface.OnCancelListener)localObject2);
-        paramBundle.show();
-        whj.a(paramInt, (String)localObject1, this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-        localObject2 = ((Uri)localObject2).getQueryParameter("authKey");
-        break label35;
-        label548:
-        paramBoolean = false;
-        continue;
-        label553:
-        i = 0;
-      }
-      label559:
-      paramInt = j;
-      if (((JSONObject)localObject3).has("a_a"))
-      {
-        paramInt = j;
-        paramBundle = ((JSONObject)localObject3).getString("a_a");
-        paramInt = j;
-        paramBundle = bbex.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_MqqAppAppActivity, paramBundle);
-        if (paramBundle == null) {
-          break label837;
-        }
-        paramInt = j;
-        paramBundle.c();
-        return;
-      }
-      paramInt = j;
-      if (((JSONObject)localObject3).has("url"))
-      {
-        paramInt = j;
-        i = ((JSONObject)localObject3).getInt("url_level");
-        paramInt = j;
-        paramBundle = ((JSONObject)localObject3).getString("url");
-        paramInt = j;
-        if (TextUtils.isEmpty(paramBundle)) {
-          break label861;
-        }
-        if (i != 2) {
-          break label855;
-        }
-        paramInt = j;
-        paramBundle = Uri.parse(paramBundle).toString();
-        paramInt = i;
-      }
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        if (paramInt != 1)
-        {
-          localObject1 = paramBundle;
-          if (paramInt != 2) {
-            break label837;
-          }
-        }
-        try
-        {
-          localObject1 = new Intent(this.jdField_a_of_type_MqqAppAppActivity, PublicAccountBrowser.class);
-          ((Intent)localObject1).putExtra("key_isReadModeEnabled", true);
-          ((Intent)localObject1).putExtra("fromQrcode", true);
-          ((Intent)localObject1).putExtra("url", paramBundle);
-          ((Intent)localObject1).putExtra("big_brother_source_key", "biz_src_jc_sacan_qr");
-          if (this.jdField_a_of_type_MqqAppAppActivity.getIntent().getBooleanExtra("QRDecode", false) == true)
-          {
-            this.jdField_a_of_type_MqqAppAppActivity.startActivity((Intent)localObject1);
-            this.jdField_a_of_type_MqqAppAppActivity.finish();
-          }
-          for (;;)
-          {
-            whj.a(0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqAppAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            if (!this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.b) {
-              break;
-            }
-            this.jdField_a_of_type_MqqAppAppActivity.finish();
-            return;
-            this.jdField_a_of_type_MqqAppAppActivity.startActivity((Intent)localObject1);
-          }
-          label823:
-          break label837;
-          paramInt = 0;
-          break label451;
-          label831:
-          i = 1;
-          break label235;
-          label837:
-          paramInt = 0;
-        }
-        catch (Exception localException)
-        {
-          paramInt = 0;
-          localObject1 = paramBundle;
-          paramBundle = localException;
-        }
-      }
-      break label423;
-      label855:
-      paramInt = i;
-      continue;
-      label861:
-      paramBundle = (Bundle)localObject1;
-      paramInt = 0;
-    }
+    wsv.a("Q.qqstory.memories.MemoriesProfilePresenter", "request user info by uid: %s.", this.jdField_a_of_type_JavaLangString);
+    new uza().a(1, new usy("", this.jdField_a_of_type_JavaLangString), String.valueOf(hashCode()), true, true);
+  }
+  
+  public void b()
+  {
+    uht.a().unRegisterSubscriber(this.jdField_a_of_type_Whr);
+    vhj.a().removeObserver(this.jdField_a_of_type_Alox);
+    uht.a().unRegisterSubscriber(this.jdField_a_of_type_Whn);
+    uht.a().unRegisterSubscriber(this.jdField_a_of_type_Who);
+    uht.a().unRegisterSubscriber(this.jdField_a_of_type_Whp);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public boolean isValidate()
+  {
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whl
  * JD-Core Version:    0.7.0.1
  */

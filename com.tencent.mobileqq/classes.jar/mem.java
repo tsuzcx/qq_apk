@@ -1,35 +1,32 @@
-import com.tencent.av.ui.MultiIncomingCallsActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class mem
-  extends lfb
 {
-  public mem(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
-  
-  protected void a(long paramLong, ArrayList<ldr> paramArrayList, int paramInt1, int paramInt2)
+  public static void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onUserListALLUpdate");
-    }
-    MultiIncomingCallsActivity.a(this.a, paramLong, paramArrayList, paramInt1);
+    azmj.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
   }
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  public static void b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onMembersChange");
+    int i = 0;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof VideoAppInterface)) {
+      i = ((VideoAppInterface)localObject).b("BEAUTY_SKIN");
     }
-    if ((paramLong != this.a.a) || (paramBoolean)) {}
-    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
+    if (i > 0) {}
+    for (localObject = "0X80076B4";; localObject = "0X80076B3")
+    {
+      a((String)localObject);
+      lek.c("BeautyToolbar", "DataReport onUserBeauty:" + paramString + "|" + i);
       return;
     }
-    MultiIncomingCallsActivity.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,77 +1,169 @@
-import android.content.Context;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class aewk
-  implements aewf
 {
-  public URLDrawable.URLDrawableOptions a()
-  {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mExtraInfo = this;
-    return localURLDrawableOptions;
-  }
+  private float jdField_a_of_type_Float = 1.0F;
+  private int jdField_a_of_type_Int = 10;
+  private int b = 25;
   
-  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  private float a(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    if (paramURL == null) {
-      return null;
+    if (paramInt1 <= 1) {
+      return (paramFloat1 + paramFloat2) / 2.0F;
     }
-    paramURL = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
-    paramURL.setTag(new int[] { 0, 0, (int)paramURLDrawableOptions.mGifRoundCorner });
-    return paramURL;
+    return (paramFloat2 - paramFloat1) * (paramInt2 + 1) / paramInt1 + paramFloat1;
   }
   
-  public URL a()
+  private long a(long paramLong1, long paramLong2, int paramInt1, int paramInt2)
   {
-    try
+    if (paramInt1 <= 1) {
+      return (paramLong1 + paramLong2) / 2L;
+    }
+    return (paramLong2 - paramLong1) * (paramInt2 + 1) / paramInt1 + paramLong1;
+  }
+  
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<aewr> paramList);
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Float = paramFloat;
+    if (this.jdField_a_of_type_Int <= 0) {
+      this.jdField_a_of_type_Int = 10;
+    }
+    if (this.b <= 0) {
+      this.b = 25;
+    }
+    if (this.jdField_a_of_type_Float <= 0.0F) {
+      this.jdField_a_of_type_Float = 1.0F;
+    }
+  }
+  
+  public abstract void a(Path paramPath, List<aewr> paramList);
+  
+  public void a(List<aewr> paramList, int paramInt)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    int i;
+    do
     {
-      URL localURL1 = new URL("sticker_recommended_pic", "fromAIO", ((aewv)this).f());
-      if (localURL1 == null)
+      return;
+      i = paramInt;
+      if (paramInt < 0) {
+        i = 0;
+      }
+    } while (paramList.size() <= i);
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = (aewr)paramList.get(i);
+    paramInt = i + 1;
+    while (paramInt < paramList.size())
+    {
+      aewr localaewr = (aewr)paramList.get(paramInt);
+      if ((localaewr.a() - ((aewr)localObject).a() < this.b) && (Math.abs(localaewr.a() - ((aewr)localObject).a()) < this.jdField_a_of_type_Float))
       {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL url = null");
-        return null;
+        ((aewr)localObject).a(localaewr);
+        paramInt += 1;
+      }
+      else
+      {
+        localArrayList.add(localObject);
+        if (((aewr)localObject).a() != localaewr.a()) {
+          localaewr.a(0);
+        }
+        for (;;)
+        {
+          localObject = localaewr;
+          break;
+          localaewr.a(((aewr)localObject).a() + 1);
+        }
       }
     }
-    catch (MalformedURLException localMalformedURLException)
+    localArrayList.add(localObject);
+    paramList.clear();
+    paramList.addAll(localArrayList);
+  }
+  
+  public abstract void a(List<aewm> paramList, Path paramPath, List<aewr> paramList1);
+  
+  public abstract void a(List<aewm> paramList, Path paramPath, List<aewr> paramList1, int paramInt);
+  
+  protected boolean a(List<aewr> paramList, Path paramPath)
+  {
+    if ((paramList == null) || (paramPath == null) || (paramList.size() == 0)) {
+      return false;
+    }
+    PathMeasure localPathMeasure = new PathMeasure(paramPath, false);
+    float f3 = localPathMeasure.getLength();
+    int i = 0;
+    float f1;
+    for (float f2 = 0.0F; i < paramList.size(); f2 = f1)
     {
-      URL localURL2;
+      Path localPath = new Path();
+      float f4 = ((aewr)paramList.get(i)).b() + f2;
+      f1 = f4;
+      if (f4 > f3) {
+        f1 = f3;
+      }
+      localPathMeasure.getSegment(f2, f1, localPath, true);
+      localPath.rLineTo(0.0F, 0.0F);
+      paramPath.addPath(localPath);
+      ((aewr)paramList.get(i)).a(localPath);
+      i += 1;
+    }
+    return true;
+  }
+  
+  protected boolean a(List<aewr> paramList, Path paramPath, float paramFloat1, float paramFloat2, long paramLong1, long paramLong2)
+  {
+    if (paramList == null) {
+      return false;
+    }
+    PathMeasure localPathMeasure = new PathMeasure(paramPath, false);
+    float f2 = localPathMeasure.getLength();
+    int j = (int)Math.ceil(f2 / this.jdField_a_of_type_Int);
+    if (j == 0) {
+      return false;
+    }
+    int i = 0;
+    paramPath = null;
+    if (i < j)
+    {
+      Object localObject = new Path();
+      float f3 = (i + 1) * this.jdField_a_of_type_Int;
+      float f1 = f3;
+      if (f3 > f2) {
+        f1 = f2;
+      }
+      localPathMeasure.getSegment(this.jdField_a_of_type_Int * i, f1, (Path)localObject, true);
+      ((Path)localObject).rLineTo(0.0F, 0.0F);
+      localObject = new aewr((Path)localObject);
+      ((aewr)localObject).a(a(paramFloat1, paramFloat2, j, i));
+      ((aewr)localObject).a(a(paramLong1, paramLong2, j, i));
+      ((aewr)localObject).b(f1 - this.jdField_a_of_type_Int * i);
+      if ((paramPath != null) && (paramPath.a() == ((aewr)localObject).a())) {
+        ((aewr)localObject).a(paramPath.a() + 1);
+      }
       for (;;)
       {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL create url exception e = " + localMalformedURLException.getMessage());
-        localURL2 = null;
+        paramList.add(localObject);
+        i += 1;
+        paramPath = (Path)localObject;
+        break;
+        ((aewr)localObject).a(0);
       }
-      return localURL2;
     }
+    return true;
   }
   
-  public void a(QQAppInterface paramQQAppInterface) {}
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int c()
-  {
-    return 1;
-  }
-  
-  public String c()
-  {
-    return "z-";
-  }
+  public abstract void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<aewr> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewk
  * JD-Core Version:    0.7.0.1
  */

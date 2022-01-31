@@ -1,33 +1,36 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajox
-  extends ajqe
+  extends ajpb
 {
-  public ajox(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo)
+  public void a()
   {
-    super(paramContext, paramQQAppInterface, paramSessionInfo);
-  }
-  
-  public ajpx a(String paramString)
-  {
-    return new ajow(paramString);
-  }
-  
-  public View a()
-  {
-    if (this.c == 0) {
-      return new ApolloLinearLayout(this.b, null, this.d, 4, 2);
+    RMVideoStateMgr.a().a.p();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] initState end");
     }
-    return super.a();
+  }
+  
+  public boolean a()
+  {
+    RMVideoStateMgr.a().a("RMVideoIdleState");
+    return true;
+  }
+  
+  public void b()
+  {
+    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoIdleState", 2, "[@] realDeleteVideoSegment ...");
+    }
+    localRMVideoStateMgr.a.a(100);
+    localRMVideoStateMgr.a(3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajox
  * JD-Core Version:    0.7.0.1
  */

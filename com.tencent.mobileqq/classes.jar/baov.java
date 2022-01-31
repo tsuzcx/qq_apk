@@ -1,60 +1,74 @@
-import android.graphics.Color;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x934.cmd0x934.ItemInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.RichStep.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class baov
+  extends baop
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  private AtomicInteger a;
+  public boolean a;
+  private AtomicBoolean c = new AtomicBoolean(false);
   
-  public baov()
+  baov(baoo parambaoo)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -16777216;
-    this.jdField_c_of_type_Int = -7829368;
+    super(parambaoo);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = "RichStep";
+    g();
   }
   
-  public static baov a(String paramString1, String paramString2)
+  protected boolean a()
   {
-    baov localbaov = new baov();
-    localbaov.jdField_a_of_type_JavaLangString = paramString1;
-    localbaov.jdField_b_of_type_JavaLangString = "";
-    localbaov.jdField_c_of_type_JavaLangString = paramString2;
-    try
-    {
-      localbaov.jdField_a_of_type_Int = 0;
-      localbaov.jdField_b_of_type_Int = 0;
-      localbaov.jdField_c_of_type_Int = 0;
-      return localbaov;
-    }
-    catch (Exception paramString1) {}
-    return localbaov;
+    return (!this.c.get()) || (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 2);
   }
   
-  public static baov a(cmd0x934.ItemInfo paramItemInfo)
+  protected void d()
   {
-    baov localbaov = new baov();
-    localbaov.jdField_a_of_type_JavaLangString = paramItemInfo.title.get();
-    localbaov.jdField_b_of_type_JavaLangString = paramItemInfo.icon.get();
-    localbaov.jdField_c_of_type_JavaLangString = paramItemInfo.url.get();
-    try
-    {
-      localbaov.jdField_a_of_type_Int = Color.parseColor(paramItemInfo.color.get());
-      localbaov.jdField_b_of_type_Int = Color.parseColor(paramItemInfo.font_color.get());
-      localbaov.jdField_c_of_type_Int = Color.parseColor(paramItemInfo.border_color.get());
-      return localbaov;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "RichStep|process|neeRich=" + this.c + ",lack=" + baoo.a(this.jdField_b_of_type_Baoo));
     }
-    catch (Exception paramItemInfo) {}
-    return localbaov;
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      f();
+      return;
+    }
+    if (this.c.get())
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+      ThreadManager.post(new ForwardSdkShareProcessor.RichStep.1(this), 5, null, true);
+      return;
+    }
+    b();
+  }
+  
+  void g()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+    this.c.set(false);
+    if ((TextUtils.isEmpty(baoo.a(this.jdField_b_of_type_Baoo))) && (TextUtils.isEmpty(baoo.b(this.jdField_b_of_type_Baoo)))) {
+      baoo.a(this.jdField_b_of_type_Baoo, baoo.a(this.jdField_b_of_type_Baoo) | 0x1);
+    }
+    if (TextUtils.isEmpty(baoo.c(this.jdField_b_of_type_Baoo))) {
+      baoo.a(this.jdField_b_of_type_Baoo, baoo.a(this.jdField_b_of_type_Baoo) | 0x2);
+    }
+    if (TextUtils.isEmpty(baoo.d(this.jdField_b_of_type_Baoo))) {
+      baoo.a(this.jdField_b_of_type_Baoo, baoo.a(this.jdField_b_of_type_Baoo) | 0x4);
+    }
+    if (baoo.a(this.jdField_b_of_type_Baoo) > 0) {
+      this.c.set(true);
+    }
+    if (baoo.b(this.jdField_b_of_type_Baoo) == 11) {
+      this.c.set(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baov
  * JD-Core Version:    0.7.0.1
  */

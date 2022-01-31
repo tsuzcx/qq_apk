@@ -1,12 +1,17 @@
-public abstract interface akoa
+public class akoa
 {
-  public abstract void a(int paramInt, xot paramxot);
+  public int a;
+  public int b;
   
-  public abstract void a(long paramLong);
+  public akoa(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akoa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeom;
+import agld;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class FriendChatPie$4
   implements Runnable
 {
-  public FriendChatPie$4(aeom paramaeom) {}
+  public FriendChatPie$4(agld paramagld) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ public class FriendChatPie$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie.4
  * JD-Core Version:    0.7.0.1
  */

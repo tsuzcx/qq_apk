@@ -1,32 +1,31 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
 public class rfw
-  implements Animator.AnimatorListener
+  implements qfo
 {
-  public rfw(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
+  public rfw(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment, VideoInfo paramVideoInfo, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.a.setScaleX(1.0F);
-    this.a.setScaleY(1.0F);
-    this.a.setRotation(0.0F);
-    this.a.setAlpha(1.0F);
-    if (ReadInjoyTabDragAnimationView.a(this.a) != 0) {
-      this.a.a(0);
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.l = paramBoolean;
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.v = paramString;
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_n_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_n_of_type_Int = paramInt;
+    if (((VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment) instanceof rbs)) && (VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).c == this.jdField_a_of_type_Int)) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramInt != 0)) {
+        ((rbr)VideoFeedsRecommendFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsRecommendFragment).a).d(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+      }
+      return;
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfw
  * JD-Core Version:    0.7.0.1
  */

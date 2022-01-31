@@ -1,38 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build.VERSION;
-
-class amym
-  implements amxr
+public class amym
 {
-  amym(amyj paramamyj) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void a(Context paramContext)
+  public String toString()
   {
-    Intent localIntent = new Intent();
-    localIntent.addFlags(268435456);
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      localIntent.setAction(amyj.a(this.a));
-      localIntent.setData(Uri.fromParts("package", paramContext.getPackageName(), null));
-    }
-    for (;;)
-    {
-      paramContext.startActivity(localIntent);
-      return;
-      if (Build.VERSION.SDK_INT <= 8)
-      {
-        localIntent.setAction("android.intent.action.VIEW");
-        localIntent.setClassName("com.android.settings", amyj.a(this.a));
-        localIntent.putExtra("com.android.settings.ApplicationPkgName", paramContext.getPackageName());
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("skuId:").append(this.c).append(",skuName:").append(this.d).append(",skuPrice:").append(this.e).append(",imageUrl:").append(this.b).append(",detailUrl:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amym
  * JD-Core Version:    0.7.0.1
  */

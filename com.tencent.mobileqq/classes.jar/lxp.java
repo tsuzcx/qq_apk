@@ -1,146 +1,87 @@
-import android.app.Application;
-import android.content.Intent;
-import android.os.IBinder.DeathRecipient;
-import android.os.RemoteException;
-import android.text.TextUtils;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.av.utils.VideoMsgTools;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class lxp
-  implements IBinder.DeathRecipient
+public class lxp
+  extends lwt
 {
-  lxp(lxn paramlxn) {}
+  public int b;
+  public long b;
+  public int c;
+  public long c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
   
-  public void binderDied()
+  public void a(long paramLong)
   {
-    lcg.d("QQServiceForAV", "binderDied, video process died!");
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a.a();
-    if (localQQAppInterface != null) {
-      localQQAppInterface.a = null;
-    }
-    try
+    paramLong -= this.a;
+    int i1 = 0;
+    float f2 = 1.0F;
+    int m = this.jdField_b_of_type_Int;
+    int n = this.jdField_c_of_type_Int;
+    int i;
+    float f1;
+    int j;
+    int k;
+    if ((paramLong > 2333L) && (paramLong < 2666L))
     {
-      this.a.a();
-      if ((TextUtils.isEmpty(this.a.a.c)) && (localQQAppInterface != null)) {
-        this.a.a.c = localQQAppInterface.getCurrentAccountUin();
-      }
-      str3 = this.a.a.jdField_b_of_type_JavaLangString;
-      str4 = this.a.a.c;
-      if ((this.a.a.jdField_a_of_type_Int == 1004) || (this.a.a.jdField_a_of_type_Int == 1000) || (this.a.a.jdField_a_of_type_Int == 1020))
-      {
-        str2 = this.a.a.d;
-        Object localObject = str3;
-        if ((localQQAppInterface != null) && (localQQAppInterface.c()))
-        {
-          lcg.d("QQServiceForAV", "video chatting!");
-          lcg.d("QQServiceForAV", "linkToVideoProcessDeath-->uinType=" + this.a.a.jdField_a_of_type_Int + " friendUin=" + (String)localObject + " senderUin=" + str2);
-          if ((localObject == null) || (((String)localObject).length() <= 2)) {
-            break label1057;
-          }
-          i = 1;
-          if ((this.a.a.jdField_b_of_type_Boolean) && (i != 0)) {
-            VideoMsgTools.a(localQQAppInterface, this.a.a.jdField_a_of_type_Int, 45, true, (String)localObject, str2, true, null, true, new Object[0]);
-          }
-        }
-        if (QQServiceForAV.a(this.a.a))
-        {
-          if (localQQAppInterface != null)
-          {
-            leb.a("MobileQQ:BootAction", 5000L);
-            localObject = new Intent("com.tencent.av.ui.VChatActivity");
-            ((Intent)localObject).putExtra("uin", localQQAppInterface.c());
-            ((Intent)localObject).putExtra("type", 1);
-            ((Intent)localObject).putExtra("processExitTimestamp", System.currentTimeMillis());
-            ((Intent)localObject).putExtra("source", 1);
-            ((Intent)localObject).setPackage(this.a.a.getPackageName());
-            ((Intent)localObject).setFlags(32);
-            this.a.a.sendBroadcast((Intent)localObject);
-          }
-          QQServiceForAV.a(this.a.a, false);
-        }
-        localObject = new Intent();
-        ((Intent)localObject).setAction("tencent.av.v2q.StopVideoChat");
-        ((Intent)localObject).putExtra("uinType", this.a.a.jdField_a_of_type_Int);
-        ((Intent)localObject).putExtra("bindType", this.a.a.jdField_b_of_type_Int);
-        ((Intent)localObject).putExtra("bindId", this.a.a.jdField_a_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("peerUin", this.a.a.jdField_b_of_type_JavaLangString);
-        ((Intent)localObject).putExtra("extraUin", this.a.a.d);
-        ((Intent)localObject).putExtra("stopReason", 0);
-        ((Intent)localObject).putExtra("selfUin", localQQAppInterface.c());
-        ((Intent)localObject).setPackage(this.a.a.getApplication().getPackageName());
-        if ((this.a.a.jdField_b_of_type_JavaLangString != null) && ((this.a.a.jdField_a_of_type_Int != 1006) || (this.a.a.d != null)))
-        {
-          lcg.d("QQServiceForAV", "ACTION_STOP_VIDEO_CHAT, stopReason = VideoConstants.CLOSE_DOUBLE, mUinType = " + this.a.a.jdField_a_of_type_Int + ", peerUin = " + this.a.a.jdField_b_of_type_JavaLangString);
-          this.a.a.sendBroadcast((Intent)localObject);
-        }
-        if (localQQAppInterface != null)
-        {
-          long l1 = localQQAppInterface.a().b();
-          i = localQQAppInterface.a().a();
-          int j = (int)localQQAppInterface.a().a(i, l1);
-          if ((l1 > 0L) && (this.a.a.jdField_b_of_type_Boolean))
-          {
-            long l2 = Long.valueOf(localQQAppInterface.getCurrentAccountUin()).longValue();
-            localObject = new Intent();
-            ((Intent)localObject).setAction("tencent.av.v2q.MultiVideo");
-            ((Intent)localObject).putExtra("type", 23);
-            ((Intent)localObject).putExtra("friendUin", l2);
-            ((Intent)localObject).putExtra("relationType", i);
-            ((Intent)localObject).putExtra("relationId", l1);
-            ((Intent)localObject).putExtra("from", "QQServiceForAV");
-            ((Intent)localObject).putExtra("MultiAVType", localQQAppInterface.a().b(l1));
-            if (j <= 1) {
-              break label1062;
-            }
-            ((Intent)localObject).putExtra("roomUserNum", j - 1);
-            ((Intent)localObject).setPackage(this.a.a.getApplication().getPackageName());
-            lcg.d("QQServiceForAV", "linkToVideoProcessDeath MULTI_VIDEO_V2Q -->uinType=" + this.a.a.jdField_a_of_type_Int + " roomNum=" + j);
-            this.a.a.sendBroadcast((Intent)localObject);
-          }
-          this.a.a.jdField_b_of_type_Boolean = false;
-          localQQAppInterface.a().a(0, 0);
-        }
-        msp.a(this.a.a.getApplicationContext());
-        QQServiceForAV.jdField_a_of_type_AndroidOsIBinder = null;
-      }
+      i = (int)(255L * (paramLong - 2333L) / 333L);
+      f1 = (0.5F * (float)(2666L + paramLong) - 2333.0F) / 333.0F;
+      j = (int)((this.d * paramLong + this.jdField_b_of_type_Long) / 333L);
+      k = (int)((paramLong * this.e + this.jdField_c_of_type_Long) / 333L);
     }
-    catch (RemoteException localRemoteException)
+    for (;;)
     {
-      for (;;)
+      a(i);
+      b(f1);
+      a(j, k, this.f + j, this.g + k);
+      return;
+      if ((paramLong >= 2666L) && (paramLong <= 4631L))
       {
-        String str3;
-        String str4;
-        int i;
-        localRemoteException.printStackTrace();
-        lcg.e("QQServiceForAV", "linkToDeath stopPumpMessage exception msg = " + localRemoteException.getMessage());
-        continue;
-        String str1 = str3;
-        String str2 = str4;
-        if (this.a.a.jdField_a_of_type_Int == 1006)
+        i = 255;
+        k = n;
+        j = m;
+        f1 = f2;
+      }
+      else
+      {
+        k = n;
+        j = m;
+        f1 = f2;
+        i = i1;
+        if (paramLong > 4631L)
         {
-          str1 = str3;
-          str2 = str4;
-          if (!str3.startsWith("+"))
+          k = n;
+          j = m;
+          f1 = f2;
+          i = i1;
+          if (paramLong < 4798L)
           {
-            str1 = this.a.a.d;
-            str2 = str4;
-            continue;
-            label1057:
-            i = 0;
-            continue;
-            label1062:
-            str1.putExtra("roomUserNum", 0);
+            i = (int)((paramLong - 4798L) * 255L / -167L);
+            k = n;
+            j = m;
+            f1 = f2;
           }
         }
       }
     }
   }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_b_of_type_Int = (paramInt1 * 44 / 750);
+    this.jdField_c_of_type_Int = (paramInt2 - paramInt1 * 624 / 750);
+    paramInt3 = paramInt1 * 154 / 750;
+    paramInt4 = paramInt1 * 537 / 750;
+    this.f = (paramInt1 * 221 / 750);
+    this.g = (paramInt1 * 175 / 750);
+    this.d = (paramInt1 * -110 / 750);
+    this.e = (paramInt1 * -87 / 750);
+    this.jdField_b_of_type_Long = (paramInt3 * 2666L - this.jdField_b_of_type_Int * 2333L);
+    this.jdField_c_of_type_Long = ((paramInt2 - paramInt4) * 2666L - this.jdField_c_of_type_Int * 2333L);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxp
  * JD-Core Version:    0.7.0.1
  */

@@ -30,12 +30,12 @@ public final class AdCarrier
       if (paramContext.getSimState() == 5) {
         return paramContext.getSimOperator();
       }
-      AdLog.e("AdCarrier", "getCode error");
+      AdLog.i("AdCarrier", "getCode error");
       return null;
     }
     catch (Throwable paramContext)
     {
-      AdLog.e("AdCarrier", "getCode", paramContext);
+      AdLog.i("AdCarrier", "getCode", paramContext);
     }
     return null;
   }

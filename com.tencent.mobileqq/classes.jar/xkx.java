@@ -1,56 +1,46 @@
-import android.app.Activity;
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionDenied;
-import mqq.app.QQPermissionGrant;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import java.lang.reflect.Field;
 
 public class xkx
 {
-  public xkx(NewerGuidePlugin paramNewerGuidePlugin, JSONObject paramJSONObject, Activity paramActivity) {}
-  
-  @QQPermissionDenied(1)
-  public void deniedReadContacts()
+  public static void a(@NonNull LayoutInflater paramLayoutInflater, @NonNull LayoutInflater.Factory paramFactory)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "deniedReadContacts");
-    }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.callJs("respRecommend", new String[] { localJSONObject.toString() });
-      bbgu.showPermissionSettingDialog(this.jdField_a_of_type_AndroidAppActivity, ajya.a(2131707439));
+      paramLayoutInflater.setFactory(paramFactory);
       return;
     }
-    catch (Exception localException)
+    catch (IllegalStateException localIllegalStateException)
     {
-      for (;;)
+      xkz.c("LayoutModifier", "LayoutInflater.setFactory IllegalStateException " + localIllegalStateException);
+      try
       {
-        QLog.e("NewerGuidePlugin", 1, "deniedReadContacts fail.", localException);
+        Field localField1 = LayoutInflater.class.getDeclaredField("mFactory");
+        localField1.setAccessible(true);
+        Field localField2 = LayoutInflater.class.getDeclaredField("mFactory2");
+        localField2.setAccessible(true);
+        localField1.set(paramLayoutInflater, paramFactory);
+        localField2.set(paramLayoutInflater, paramFactory);
+        if ((paramLayoutInflater.getFactory() == paramFactory) && (paramLayoutInflater.getFactory2() == paramFactory))
+        {
+          xkz.b("LayoutModifier", "hookLayoutInflaterFactory success");
+          return;
+        }
       }
-    }
-  }
-  
-  @QQPermissionGrant(1)
-  public void grandReadContacts()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewerGuidePlugin", 2, "grandReadContacts");
-    }
-    try
-    {
-      NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, this.jdField_a_of_type_OrgJsonJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NewerGuidePlugin", 1, "grandReadContacts fail.", localException);
+      catch (Exception paramLayoutInflater)
+      {
+        xkz.d("LayoutModifier", "hook setFactory " + paramLayoutInflater);
+        return;
+      }
+      xkz.b("LayoutModifier", "hookLayoutInflaterFactory failed");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkx
  * JD-Core Version:    0.7.0.1
  */

@@ -2,22 +2,22 @@ package com.tencent.biz.pubaccount.AccountDetail.view;
 
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qphone.base.util.QLog;
-import nfb;
-import nfr;
-import nfx;
-import nfy;
+import nhx;
+import nin;
+import nit;
+import niu;
 
 public class AccountDetailGroupListContainer$14$1$1
   implements Runnable
 {
-  public AccountDetailGroupListContainer$14$1$1(nfy paramnfy, AccountDetail paramAccountDetail) {}
+  public AccountDetailGroupListContainer$14$1$1(niu paramniu, AccountDetail paramAccountDetail) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("AccountDetailGroupListContainer", 2, "saveAccountDetailInSubThread");
     }
-    nfb.a(this.jdField_a_of_type_Nfy.a.a.a, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
+    nhx.a(this.jdField_a_of_type_Niu.a.a.a, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
   }
 }
 

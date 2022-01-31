@@ -1,136 +1,64 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.av.config.ConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class mcd
-  implements View.OnClickListener
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new mce(this);
-  private Context jdField_a_of_type_AndroidContentContext;
-  private boolean jdField_a_of_type_Boolean;
-  private long[] jdField_a_of_type_ArrayOfLong;
-  private boolean b;
+  public static String a;
+  public static String b;
+  public static String c;
+  public static String d;
+  public static String e;
+  public int a;
+  @Deprecated
+  lnc a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public mcd(Context paramContext)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ArrayOfLong = new long[6];
+    jdField_b_of_type_JavaLangString = "sharp/small_window/" + "close_flag";
+    jdField_a_of_type_JavaLangString = "sharp/small_window/" + "version";
+    jdField_c_of_type_JavaLangString = "sharp/small_window/" + "use_textureview";
+    jdField_d_of_type_JavaLangString = "sharp/small_window/" + "close_video";
+    jdField_e_of_type_JavaLangString = "sharp/small_window/" + "close_audio";
+    if (QLog.isColorLevel()) {
+      QLog.d("SmallScreenConfigParser", 2, " SmallScreenConfigParser --> key_open_flag = " + jdField_b_of_type_JavaLangString + " , key_version = " + jdField_a_of_type_JavaLangString + " , key_textureview = " + jdField_c_of_type_JavaLangString + " , key_close_video_flag = " + jdField_d_of_type_JavaLangString + " , key_close_audio_flag = " + jdField_e_of_type_JavaLangString);
+    }
   }
   
-  private void a(View paramView)
+  public mcd()
   {
-    Object localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    ((Activity)localObject).findViewById(2131372233).setVisibility(0);
-    paramView = (TextView)((Activity)localObject).findViewById(2131372235);
-    localObject = (TextView)((Activity)localObject).findViewById(2131372234);
-    int i = ConfigInfo.getSharpConfigVersionFromFile(this.jdField_a_of_type_AndroidContentContext);
-    String str2 = a(ConfigInfo.getSharpConfigPayloadFromFile(this.jdField_a_of_type_AndroidContentContext));
-    String str1 = lll.a(this.jdField_a_of_type_AndroidContentContext);
-    str2 = str2 + "\n----------\n";
-    str1 = str2 + a(str1);
-    paramView.setText(i + "|" + lvy.a().a("load"));
-    ((TextView)localObject).setText(str1);
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_a_of_type_Lnc = null;
   }
   
-  private void c() {}
-  
-  String a(String paramString)
+  public boolean a(lnc paramlnc)
   {
-    String[] arrayOfString = paramString.split("\n");
-    paramString = new String();
-    int n = arrayOfString.length;
-    int k = 0;
-    int i = 0;
-    String str;
-    int j;
-    if (k < n)
+    try
     {
-      str = arrayOfString[k];
-      j = str.length();
-      if (j < 2) {
-        break label172;
+      this.jdField_a_of_type_Int = paramlnc.a(jdField_a_of_type_JavaLangString, 0);
+      this.jdField_b_of_type_Int = paramlnc.a(jdField_b_of_type_JavaLangString, 0);
+      this.jdField_c_of_type_Int = paramlnc.a(jdField_c_of_type_JavaLangString, -1);
+      this.jdField_d_of_type_Int = paramlnc.a(jdField_d_of_type_JavaLangString, 0);
+      this.jdField_e_of_type_Int = paramlnc.a(jdField_e_of_type_JavaLangString, 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("SmallScreenConfigParser", 2, "value_version = " + this.jdField_a_of_type_Int + " , value_close_flag = " + this.jdField_b_of_type_Int + " , value_use_textureview = " + this.jdField_c_of_type_Int + " ,value_close_video = " + this.jdField_d_of_type_Int + " , value_close_audio = " + this.jdField_e_of_type_Int);
+      }
+      return true;
+    }
+    catch (Exception paramlnc)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SmallScreenConfigParser", 2, "parseConfig --> Error");
       }
     }
-    label172:
-    for (int m = str.charAt(j - 2);; m = 0)
-    {
-      j = i;
-      if (m == 125) {
-        j = i - 1;
-      }
-      i = 0;
-      while (i < j)
-      {
-        paramString = paramString + "\t";
-        i += 1;
-      }
-      paramString = paramString + str;
-      paramString = paramString + "\n";
-      i = j;
-      if (m == 123) {
-        i = j + 1;
-      }
-      k += 1;
-      break;
-      return paramString;
-    }
-  }
-  
-  public void a()
-  {
-    Object localObject = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    View localView = ((Activity)localObject).findViewById(2131372232);
-    if (localView != null)
-    {
-      localView.setOnClickListener(this);
-      localView.setVisibility(0);
-    }
-    localView = ((Activity)localObject).findViewById(2131372234);
-    if (localView != null) {
-      localView.setOnClickListener(this);
-    }
-    localObject = ((Activity)localObject).findViewById(2131372233);
-    if (localObject != null) {
-      ((View)localObject).setOnClickListener(this);
-    }
-    localObject = new IntentFilter();
-    ((IntentFilter)localObject).addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE");
-    ((IntentFilter)localObject).addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-    case 2131372232: 
-      do
-      {
-        return;
-        System.arraycopy(this.jdField_a_of_type_ArrayOfLong, 1, this.jdField_a_of_type_ArrayOfLong, 0, this.jdField_a_of_type_ArrayOfLong.length - 1);
-        this.jdField_a_of_type_ArrayOfLong[(this.jdField_a_of_type_ArrayOfLong.length - 1)] = SystemClock.uptimeMillis();
-      } while (this.jdField_a_of_type_ArrayOfLong[0] < SystemClock.uptimeMillis() - 2000L);
-      a(paramView);
-      return;
-    }
-    ((Activity)this.jdField_a_of_type_AndroidContentContext).findViewById(2131372233).setVisibility(8);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mcd
  * JD-Core Version:    0.7.0.1
  */

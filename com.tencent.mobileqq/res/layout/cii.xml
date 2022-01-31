@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/l1" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqcircle.component.ComponentPageView android:id="@id/kip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include layout="@layout/cij" />
+    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/mk9" android:visibility="visible" android:layout_width="74.0dip" android:layout_height="74.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="26.0dip" android:src="@drawable/e9q" android:scaleType="fitCenter" />
+    <ViewStub android:layout_gravity="bottom" android:id="@id/mkz" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView android:id="@id/mm_" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/mky" android:layout="@layout/chr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

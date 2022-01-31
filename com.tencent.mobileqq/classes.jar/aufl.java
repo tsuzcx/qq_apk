@@ -1,25 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aufl
-  implements View.OnClickListener
+  implements aulm
 {
-  aufl(aufj paramaufj, aufy paramaufy) {}
+  aufl(aufk paramaufk) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    aufj.a(this.jdField_a_of_type_Aufj).removeMessages(101);
-    aufj.a(this.jdField_a_of_type_Aufj).obtainMessage(101).sendToTarget();
-    if (this.jdField_a_of_type_Aufy.a != null) {
-      this.jdField_a_of_type_Aufy.a.a();
+    if ((aufi.a(this.a.jdField_a_of_type_Aufi) != null) && (aufi.a(this.a.jdField_a_of_type_Aufi).a != null)) {
+      this.a.jdField_a_of_type_Ault.a(this.a.jdField_a_of_type_JavaUtilList, 2, aufi.a(this.a.jdField_a_of_type_Aufi).a.a);
+    }
+    this.a.jdField_a_of_type_Ault.a();
+    if (aufi.a(this.a.jdField_a_of_type_Aufi) != null) {
+      aufi.a(this.a.jdField_a_of_type_Aufi).a(false, null, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aufl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,18 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+import android.view.View;
 
-public class aqjr
-  implements CompoundButton.OnCheckedChangeListener
+class aqjr
+  implements bhrf
 {
-  public aqjr(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  aqjr(aqjp paramaqjp, View paramView) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    ((aseu)this.a.a.getManager(303)).a((short)-23308, paramBoolean, true);
-    axqy.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 1, 1, "", "", "", "");
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqjr
  * JD-Core Version:    0.7.0.1
  */

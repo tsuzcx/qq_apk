@@ -1,62 +1,105 @@
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.RemoteException;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class amtw
+class amtw
+  implements ServiceConnection
 {
-  public int a = -1;
+  amtw(amtv paramamtv) {}
   
-  public static amtw a(amph[] paramArrayOfamph)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    amtw localamtw = new amtw();
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    this.a.jdField_a_of_type_Amur = amus.a(paramIBinder);
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onServiceConnected configManager=" + this.a.jdField_a_of_type_Amur);
+    }
+    if (this.a.jdField_a_of_type_Amur != null) {}
+    try
     {
-      int j = paramArrayOfamph.length;
-      int i = 0;
-      if (i < j)
+      this.a.jdField_a_of_type_Amur.a(this.a.jdField_a_of_type_Amvd);
+      this.a.jdField_a_of_type_Amur.a(this.a.jdField_a_of_type_Amuu);
+      this.a.jdField_a_of_type_Amur.a(amtv.a(this.a));
+      this.a.jdField_a_of_type_Amur.a(this.a.jdField_a_of_type_Amva);
+      if (amtv.a(this.a) != -1) {
+        this.a.jdField_a_of_type_Amur.c(amtv.a(this.a));
+      }
+      if (amtv.a(this.a) != null) {
+        amtv.a(this.a).sendEmptyMessage(0);
+      }
+      if (this.a.c)
       {
-        Object localObject = paramArrayOfamph[i];
-        if (localObject == null) {}
-        for (;;)
+        this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo = this.a.a();
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo != null) && (amtv.a(this.a) != null))
         {
-          i += 1;
-          break;
-          localObject = ((amph)localObject).a;
-          try
-          {
-            a(new JSONObject((String)localObject), localamtw);
-            if (QLog.isColorLevel()) {
-              QLog.i("PhotoListPanelBean", 2, "parse: " + (String)localObject + " bean:" + localamtw);
-            }
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-          }
+          paramComponentName = Message.obtain();
+          paramComponentName.what = 1;
+          paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo;
+          amtv.a(this.a).sendMessage(paramComponentName);
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = this.a.a();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig == null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig = new ArEffectConfig();
+      }
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null) && (amtv.a(this.a) != null))
+      {
+        paramComponentName = Message.obtain();
+        paramComponentName.what = 2;
+        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
+        amtv.a(this.a).sendMessage(paramComponentName);
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo = this.a.a();
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo != null) && (amtv.a(this.a) != null))
+      {
+        paramComponentName = Message.obtain();
+        paramComponentName.what = 9;
+        paramComponentName.obj = this.a.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo;
+        amtv.a(this.a).sendMessage(paramComponentName);
+      }
+      return;
+    }
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_RemoteArConfigManager", 2, "registerArCallback: " + paramComponentName.getMessage());
         }
       }
     }
-    return localamtw;
   }
   
-  private static void a(JSONObject paramJSONObject, amtw paramamtw)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (paramJSONObject.has("showMode")) {
-      paramamtw.a = paramJSONObject.optInt("showMode");
+    if (this.a.jdField_a_of_type_Amur != null) {}
+    try
+    {
+      this.a.jdField_a_of_type_Amur.b(this.a.jdField_a_of_type_Amvd);
+      this.a.jdField_a_of_type_Amur.b(this.a.jdField_a_of_type_Amuu);
+      this.a.jdField_a_of_type_Amur.b(amtv.a(this.a));
+      this.a.jdField_a_of_type_Amur.b(this.a.jdField_a_of_type_Amva);
+      this.a.jdField_a_of_type_Amur = null;
+      return;
     }
-  }
-  
-  public String toString()
-  {
-    return "PhotoListPanelBean{showMode=" + this.a + '}';
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_RemoteArConfigManager", 2, "unregisterCallback: " + paramComponentName.getMessage());
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtw
  * JD-Core Version:    0.7.0.1
  */

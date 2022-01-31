@@ -1,30 +1,29 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
+import android.view.View.OnClickListener;
 
 class xge
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  xge(xgb paramxgb) {}
+  xge(xgd paramxgd, xgg paramxgg) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (xgb.a(this.a) != null) {
-      xgb.a(this.a).setVisibility(4);
+    if (!this.jdField_a_of_type_Xgg.a()) {
+      this.jdField_a_of_type_Xgg.b();
     }
-    if (xgb.a(this.a) != null) {
-      xgb.a(this.a).setAlpha(1.0F);
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Xgd.a != null) {
+        this.jdField_a_of_type_Xgd.a.a(this.jdField_a_of_type_Xgd);
+      }
+      return;
+      this.jdField_a_of_type_Xgg.c();
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xge
  * JD-Core Version:    0.7.0.1
  */

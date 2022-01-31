@@ -4,8 +4,8 @@ import NS_QWEB_PROTOCAL.PROTOCAL.StAuthInfo;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.util.Log;
-import bgyh;
-import bgyi;
+import bize;
+import bizf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.util.MiniAppSecurityUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -61,8 +61,8 @@ public abstract class HttpProtoBufRequest
     PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
     this.seqNo = sSeq.incrementAndGet();
     localStQWebReq.Seq.set(this.seqNo);
-    localStQWebReq.qua.set(bgyi.a());
-    localStQWebReq.deviceInfo.set(bgyh.a().c());
+    localStQWebReq.qua.set(bizf.a());
+    localStQWebReq.deviceInfo.set(bize.a().c());
     localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(getBusiBuf()));
     localStQWebReq.traceid.set(getTraceId());
     localStQWebReq.Module.set(getModule());
@@ -83,7 +83,7 @@ public abstract class HttpProtoBufRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.http.HttpProtoBufRequest
  * JD-Core Version:    0.7.0.1
  */

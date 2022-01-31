@@ -1,73 +1,69 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.biz.AuthorizeConfig.2;
-import com.tencent.biz.AuthorizeConfig.2.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import java.io.File;
 
-public class mvt
-  implements BusinessObserver
+final class mvt
+  implements bapx
 {
-  public mvt(AuthorizeConfig.2 param2) {}
+  mvt(mvv parammvv) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onResp(baqw parambaqw)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorizeConfig", 2, "onReceive whitelist:" + paramBoolean);
+    if (parambaqw.jdField_a_of_type_Int == 3) {
+      if (QLog.isColorLevel()) {
+        QLog.i("ScoreManager", 1, "Download init. url = " + ((baps)parambaqw.jdField_a_of_type_Baqv).a);
+      }
     }
-    if (paramBoolean)
+    do
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+      for (;;)
       {
-        mobileqq_mp.WebviewWhiteListResponse localWebviewWhiteListResponse = new mobileqq_mp.WebviewWhiteListResponse();
-        try
+        return;
+        if (parambaqw.jdField_a_of_type_Int == 0)
         {
-          localWebviewWhiteListResponse.mergeFrom(paramBundle);
-          paramInt = localWebviewWhiteListResponse.ret_info.ret_code.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorizeConfig", 2, "sso status code: " + String.valueOf(paramInt));
-          }
-          if (paramInt == 0)
+          File localFile = new File(((baps)parambaqw.jdField_a_of_type_Baqv).c);
+          String str = awiz.a(localFile.getAbsolutePath());
+          if ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(this.a.b)))
           {
-            ThreadManager.getSubThreadHandler().post(new AuthorizeConfig.2.1.1(this, localWebviewWhiteListResponse));
-            axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_success", 0, 1, 0, "", "", "", "");
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.i("ScoreManager", 1, "Download end. MD5 check error. url = " + ((baps)parambaqw.jdField_a_of_type_Baqv).a + ", fileName = " + localFile.getAbsolutePath() + ", fileMD5 = " + str);
             return;
           }
-          if (paramInt == 304)
+          try
           {
-            this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-            this.a.this$0.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastUpdate", System.currentTimeMillis()).commit();
-            this.a.this$0.g();
-            this.a.this$0.i();
-            axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_not_modify", 0, 1, 0, "", "", "", "");
-            return;
+            parambaqw = new File(this.a.c);
+            amzr.a(this.a.c, parambaqw.getParentFile().getAbsolutePath() + File.separator);
+            if (QLog.isColorLevel()) {
+              QLog.i("ScoreManager", 1, "onDownloadComplete  path : " + parambaqw.getParentFile().getAbsolutePath());
+            }
+            if (QLog.isColorLevel())
+            {
+              QLog.i("ScoreManager", 1, "qav_score_good : " + mum.a("qav_score_good.jpg") + ", qav_score_normal : " + mum.a("qav_score_normal.jpg") + ", qav_score_bad : " + mum.a("qav_score_bad.jpg"));
+              return;
+            }
           }
-        }
-        catch (Exception paramBundle)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorizeConfig", 2, "update error: " + paramBundle);
+          catch (Exception parambaqw)
+          {
+            new File(this.a.c).delete();
           }
         }
       }
+    } while (!QLog.isColorLevel());
+    QLog.i("ScoreManager", 1, "Download end. uncompressZip error.");
+  }
+  
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScoreManager", 2, "onUpdateProgeress. url = " + ((baps)parambaqv).a + ", total size = " + paramLong2 + ", cur downloaded size = " + paramLong1);
     }
-    this.a.this$0.g();
-    this.a.this$0.i();
-    this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-    axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_failed", 0, 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvt
  * JD-Core Version:    0.7.0.1
  */

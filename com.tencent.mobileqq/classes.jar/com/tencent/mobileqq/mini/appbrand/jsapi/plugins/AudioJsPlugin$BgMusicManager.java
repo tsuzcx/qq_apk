@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import asvn;
+import aumk;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.sdk.BridgeInfo;
@@ -54,7 +54,7 @@ class AudioJsPlugin$BgMusicManager
         localJSONObject.put("currentPosition", AudioJsPlugin.access$2700(this.this$0, AudioJsPlugin.access$2600(this.this$0)));
         localJSONObject.put("duration", AudioJsPlugin.access$2700(this.this$0, AudioJsPlugin.access$2800(this.this$0)));
         localJSONObject.put("status", convertState(AudioJsPlugin.access$2900(this.this$0)));
-        localJSONObject.put("dataUrl", AudioJsPlugin.access$2500(this.this$0).jdField_a_of_type_JavaLangString);
+        localJSONObject.put("dataUrl", AudioJsPlugin.access$2500(this.this$0).jdField_b_of_type_JavaLangString);
         AudioJsPlugin.access$1400(this.this$0, "getMusicPlayerState", paramBridgeInfo, localJSONObject);
         return;
       }
@@ -85,12 +85,12 @@ class AudioJsPlugin$BgMusicManager
   {
     SongInfo localSongInfo = new SongInfo();
     localSongInfo.jdField_a_of_type_Long = System.currentTimeMillis();
-    localSongInfo.jdField_a_of_type_JavaLangString = paramJSONObject.optString("dataUrl", paramJSONObject.optString("src"));
-    localSongInfo.jdField_b_of_type_JavaLangString = paramJSONObject.optString("title");
-    localSongInfo.f = paramJSONObject.optString("epname");
-    localSongInfo.g = paramJSONObject.optString("singer");
-    localSongInfo.d = paramJSONObject.optString("coverImgUrl");
-    localSongInfo.e = paramJSONObject.optString("webUrl");
+    localSongInfo.jdField_b_of_type_JavaLangString = paramJSONObject.optString("dataUrl", paramJSONObject.optString("src"));
+    localSongInfo.c = paramJSONObject.optString("title");
+    localSongInfo.g = paramJSONObject.optString("epname");
+    localSongInfo.h = paramJSONObject.optString("singer");
+    localSongInfo.e = paramJSONObject.optString("coverImgUrl");
+    localSongInfo.f = paramJSONObject.optString("webUrl");
     localSongInfo.jdField_b_of_type_Int = 9;
     localSongInfo.jdField_a_of_type_Int = (paramJSONObject.optInt("startTime", 0) * 1000);
     localSongInfo.jdField_a_of_type_Boolean = true;
@@ -121,7 +121,7 @@ class AudioJsPlugin$BgMusicManager
       {
         SongInfo localSongInfo = AudioJsPlugin.access$2100(this.this$0).a();
         String str = paramJSONObject.optString("dataUrl", paramJSONObject.optString("src"));
-        if ((localSongInfo == null) || (!str.equals(localSongInfo.jdField_a_of_type_JavaLangString))) {
+        if ((localSongInfo == null) || (!str.equals(localSongInfo.jdField_b_of_type_JavaLangString))) {
           break;
         }
         if ((AudioJsPlugin.access$2900(this.this$0) == 3) || (AudioJsPlugin.access$2900(this.this$0) == 1))
@@ -234,7 +234,7 @@ class AudioJsPlugin$BgMusicManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AudioJsPlugin.BgMusicManager
  * JD-Core Version:    0.7.0.1
  */

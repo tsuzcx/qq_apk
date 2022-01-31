@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import aifr;
+import ajxb;
 
 public class TroopDiscussionTroop$MyTroopObserver$1
   implements Runnable
 {
-  public TroopDiscussionTroop$MyTroopObserver$1(aifr paramaifr) {}
+  public TroopDiscussionTroop$MyTroopObserver$1(ajxb paramajxb) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class TroopDiscussionTroop$MyTroopObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop.MyTroopObserver.1
  * JD-Core Version:    0.7.0.1
  */

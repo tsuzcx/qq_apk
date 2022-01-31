@@ -1,13 +1,18 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import android.os.IBinder.DeathRecipient;
 
-public abstract interface lib
+class lib
+  implements IBinder.DeathRecipient
 {
-  public abstract void a(Bitmap paramBitmap1, Bitmap paramBitmap2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, Rect paramRect);
+  lib(lia paramlia) {}
+  
+  public void binderDied()
+  {
+    lek.d("QQServiceProxy", "QQServiceForAV mobileQQ process exited!");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lib
  * JD-Core Version:    0.7.0.1
  */

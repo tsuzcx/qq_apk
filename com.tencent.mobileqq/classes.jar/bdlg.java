@@ -1,23 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadManager.17;
-
-public class bdlg
-  implements DialogInterface.OnClickListener
+public abstract interface bdlg
 {
-  public bdlg(DownloadManager.17 param17) {}
+  public abstract void a(bdlf parambdlf, float paramFloat1, float paramFloat2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bdlb.r, false);
-    bdkx.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(bdlf parambdlf, bdlh parambdlh, float paramFloat1, float paramFloat2);
+  
+  public abstract boolean a(bdlf parambdlf, float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdlg
  * JD-Core Version:    0.7.0.1
  */

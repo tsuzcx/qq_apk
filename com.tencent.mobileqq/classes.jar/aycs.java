@@ -1,37 +1,30 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
-public class aycs
-  implements MediaPlayer.OnPreparedListener
+class aycs
+  implements Comparator<ayij>
 {
-  public aycs(VideoSprite paramVideoSprite) {}
+  aycs(aycr paramaycr) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public int a(ayij paramayij1, ayij paramayij2)
   {
-    try
+    int i = paramayij2.a[2] - paramayij1.a[2];
+    if (i != 0) {}
+    int j;
+    do
     {
-      this.a.n = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoWidth();
-      this.a.o = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.getVideoHeight();
-      this.a.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      this.a.g = true;
-      if (this.a.jdField_a_of_type_Aycv != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a, 33L);
-      }
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("VideoSprite", 2, "playVideo Exception: " + QLog.getStackTraceString(paramMediaPlayer));
-    }
+      return i;
+      j = paramayij1.a[0] - paramayij2.a[0];
+      i = j;
+    } while (j != 0);
+    paramayij1 = paramayij1.c.substring(paramayij1.a[0] + paramayij1.a[1]);
+    paramayij2 = paramayij2.c.substring(paramayij2.a[0] + paramayij2.a[1]);
+    return ChnToSpell.a(paramayij1, 2).compareTo(ChnToSpell.a(paramayij2, 2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aycs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+
 public class qcn
-  implements Cloneable
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
+  public qcn(ComponentContentNoteCard paramComponentContentNoteCard) {}
   
-  public qcn a()
+  public void onClick(View paramView)
   {
-    try
-    {
-      qcn localqcn = (qcn)super.clone();
-      return localqcn;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return null;
+    ComponentContentNoteCard.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qcn
  * JD-Core Version:    0.7.0.1
  */

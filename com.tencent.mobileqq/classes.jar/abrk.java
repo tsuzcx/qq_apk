@@ -1,25 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mfsdk.MagnifierSDK;
 
-public class abrk
-  implements DialogInterface.OnClickListener
+public final class abrk
+  implements abrh
 {
-  public abrk(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "showRecommendDialog confirm clicked!");
+    if (MagnifierSDK.a != null) {
+      MagnifierSDK.a.a("result_objects", paramInt, 2);
     }
-    PhoneUnityBindInfoActivity.c(this.a);
-    axqy.b(this.a.app, "dc00898", "", "", "0X800A604", "0X800A604", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abrk
  * JD-Core Version:    0.7.0.1
  */

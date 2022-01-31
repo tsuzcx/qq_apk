@@ -1,20 +1,14 @@
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import android.view.View;
 
-public class wna
-  implements Dispatcher.Dispatchable
+public abstract class wna
 {
-  public int a;
-  public Object a;
+  public abstract void a(int paramInt, View paramView, Object paramObject, wph paramwph);
   
-  public wna(int paramInt, Object... paramVarArgs)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramVarArgs;
-  }
+  public void b(int paramInt, View paramView, Object paramObject, wph paramwph) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wna
  * JD-Core Version:    0.7.0.1
  */

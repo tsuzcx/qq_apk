@@ -1,29 +1,28 @@
-import java.util.Comparator;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ajxu
-  implements Comparator<String>
+class ajxu
+  implements ulb
 {
-  public int a(String paramString1, String paramString2)
+  ajxu(ajxt paramajxt, PublishVideoEntry paramPublishVideoEntry, String paramString, long paramLong) {}
+  
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    try
+    if (ajxt.a(this.jdField_a_of_type_Ajxt)) {}
+    for (int i = -24;; i = paramInt)
     {
-      long l1 = Long.parseLong(paramString1);
-      long l2 = Long.parseLong(paramString2);
-      if (l1 == l2) {
-        return 0;
+      if (QLog.isColorLevel()) {
+        QLog.i("EncodeVideoTask", 2, "onVideoCompositeFinish isCancel:" + ajxt.a(this.jdField_a_of_type_Ajxt) + ", errCode:" + paramInt);
       }
-      if (l1 > l2) {
-        return 2;
-      }
-      return -1;
+      this.jdField_a_of_type_Ajxt.a = true;
+      ajxt.a(this.jdField_a_of_type_Ajxt).a(i, paramString1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      return;
     }
-    catch (Exception paramString1) {}
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxu
  * JD-Core Version:    0.7.0.1
  */

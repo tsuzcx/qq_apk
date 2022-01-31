@@ -1,29 +1,59 @@
-import android.os.Handler;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.qphone.base.util.QLog;
 
-final class asaa
-  implements bbmw
+class asaa
+  extends URLDrawableDownListener.Adapter
 {
-  public void a(bbmu parambbmu1, bbmu parambbmu2)
+  asaa(arzz paramarzz) {}
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    arzy.a().sendEmptyMessage(10000001);
+    super.onLoadCancelled(paramView, paramURLDrawable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadCancelled");
+    }
   }
   
-  public void a(String paramString) {}
-  
-  public boolean a(bbmu parambbmu1, bbmu parambbmu2, int paramInt)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return true;
+    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadFailed ,cause = " + paramThrowable);
+    }
   }
   
-  public void b(bbmu parambbmu1, bbmu parambbmu2)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    arzy.a = false;
-    arzy.a().sendEmptyMessage(10000001);
+    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadInterrupted");
+    }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    if (paramView == null) {}
+    do
+    {
+      return;
+      paramView.setBackgroundDrawable(null);
+      if ((paramView instanceof ImageView))
+      {
+        ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
+        ((ImageView)paramView).setImageDrawable(paramURLDrawable);
+        paramView.requestLayout();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadSuccessed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asaa
  * JD-Core Version:    0.7.0.1
  */

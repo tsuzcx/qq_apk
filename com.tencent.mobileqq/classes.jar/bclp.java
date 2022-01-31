@@ -1,25 +1,45 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-public class bclp
-  implements Animation.AnimationListener
+final class bclp
+  implements bctl
 {
-  public bclp(DraggableGridView paramDraggableGridView, int paramInt1, int paramInt2) {}
+  bclp(TroopInfoData paramTroopInfoData) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, this.b);
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).notifyDataSetChanged();
+    String str1;
+    if (this.a.isMember)
+    {
+      str1 = "";
+      switch (paramInt)
+      {
+      }
+    }
+    while (TextUtils.isEmpty(str1))
+    {
+      return;
+      str1 = "share_circle";
+      continue;
+      str1 = "share_qq";
+      continue;
+      str1 = "share_qzone";
+      continue;
+      str1 = "share_wechat";
+    }
+    String str3 = this.a.troopUin;
+    String str4 = bdaj.a(this.a);
+    if (paramBoolean) {}
+    for (String str2 = "0";; str2 = "1")
+    {
+      bdaj.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, str4, str2 });
+      return;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bclp
  * JD-Core Version:    0.7.0.1
  */

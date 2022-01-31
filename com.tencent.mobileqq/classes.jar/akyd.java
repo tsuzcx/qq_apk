@@ -1,16 +1,23 @@
-public class akyd
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.sdk.IPCSpriteContext;
+
+public final class akyd
+  implements Parcelable.Creator<IPCSpriteContext>
 {
-  public int a = 2;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  public IPCSpriteContext a(Parcel paramParcel)
+  {
+    return new IPCSpriteContext(paramParcel);
+  }
+  
+  public IPCSpriteContext[] a(int paramInt)
+  {
+    return new IPCSpriteContext[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,99 +1,95 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.widget.SimpleTextView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.UrlExchangeStep.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public abstract class baoy
-  extends bfwd
+public class baoy
+  extends baop
 {
-  protected final int a;
-  protected final int[] a;
-  protected final int[] b;
-  protected final int[] c;
-  protected final int[] d;
+  private AtomicInteger a;
+  private AtomicInteger b;
   
-  public baoy(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  baoy(baoo parambaoo)
   {
-    super(paramInt1, paramInt2);
-    this.d = paramArrayOfInt1;
-    this.jdField_a_of_type_Int = paramInt3;
-    this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt2;
-    this.b = paramArrayOfInt3;
-    this.c = paramArrayOfInt4;
+    super(parambaoo);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
+    this.jdField_a_of_type_JavaLangString = "UrlExchangeStep";
   }
   
-  public View a(int paramInt, Object paramObject, bfwf parambfwf, View.OnClickListener paramOnClickListener)
+  protected boolean a()
   {
-    Object localObject3 = null;
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if ((paramObject instanceof Object[]))
-    {
-      paramObject = (Object[])paramObject;
-      if ((paramObject.length != 2) || (!(paramObject[1] instanceof azpi))) {
-        break label229;
-      }
-    }
-    label90:
-    label229:
-    for (azpi localazpi = (azpi)paramObject[1];; localazpi = null)
-    {
-      localObject1 = localObject2;
-      if (parambfwf != null)
-      {
-        localObject1 = localObject2;
-        if (parambfwf.jdField_a_of_type_Int >= 0)
-        {
-          localObject1 = localObject2;
-          if (parambfwf.b >= 0)
-          {
-            if (localazpi != null) {
-              break label90;
-            }
-            localObject1 = localObject2;
-          }
-        }
-      }
-      do
-      {
-        return localObject1;
-        paramObject = localObject3;
-        if ((parambfwf.jdField_a_of_type_AndroidViewView instanceof SimpleTextView)) {
-          paramObject = (SimpleTextView)parambfwf.jdField_a_of_type_AndroidViewView;
-        }
-        localObject1 = paramObject;
-      } while (paramObject == null);
-      paramInt = this.b[parambfwf.b];
-      int i = this.c[parambfwf.b];
-      int j = this.jdField_a_of_type_ArrayOfInt[parambfwf.b];
-      paramObject.setVisibility(0);
-      paramObject.setText(paramObject.getContext().getResources().getString(paramInt));
-      paramObject.setBackgroundResource(i);
-      paramObject.setId(j);
-      paramObject.setTag(localazpi);
-      paramObject.setContentDescription(paramObject.getResources().getString(paramInt));
-      paramObject.setOnClickListener(paramOnClickListener);
-      parambfwf.c = this.d[parambfwf.jdField_a_of_type_Int];
-      parambfwf.d = this.jdField_a_of_type_Int;
-      return paramObject;
-    }
+    return (baoo.c(this.jdField_b_of_type_Baoo).get()) || (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != -1) || (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 2);
   }
   
-  public View a(Context paramContext, int paramInt)
+  protected void d()
   {
-    paramContext = new SimpleTextView(paramContext);
-    paramContext.setLayoutParams(new LinearLayout.LayoutParams(this.d[paramInt], this.jdField_a_of_type_Int));
-    paramContext.setGravity(17);
-    paramContext.setTextSize(16.0F);
-    paramContext.setTextColor(-1);
-    return paramContext;
+    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      f();
+      return;
+    }
+    if ((arzk.a()) && (baoo.b(this.jdField_b_of_type_Baoo) == 11))
+    {
+      QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|ServerShareOpen, skip UrlExchangeStep");
+      baoo.c(this.jdField_b_of_type_Baoo).set(true);
+      b();
+      return;
+    }
+    if ((!TextUtils.isEmpty(baoo.e(this.jdField_b_of_type_Baoo))) && (baoo.e(this.jdField_b_of_type_Baoo).length() > 150)) {
+      baoo.a(this.jdField_b_of_type_Baoo).put("targetUrl", baoo.e(this.jdField_b_of_type_Baoo));
+    }
+    if (!TextUtils.isEmpty(baoo.a(this.jdField_b_of_type_Baoo).c)) {
+      baoo.a(this.jdField_b_of_type_Baoo).put("sourceUrl", baoo.a(this.jdField_b_of_type_Baoo).c);
+    }
+    if (!TextUtils.isEmpty(baoo.a(this.jdField_b_of_type_Baoo).d)) {
+      baoo.a(this.jdField_b_of_type_Baoo).put("sourceIcon", baoo.a(this.jdField_b_of_type_Baoo).d);
+    }
+    if ((baoo.e(this.jdField_b_of_type_Baoo) == 2) && (ndd.a(baoo.h(this.jdField_b_of_type_Baoo)))) {
+      baoo.a(this.jdField_b_of_type_Baoo).put("audioUrl", baoo.h(this.jdField_b_of_type_Baoo));
+    }
+    Bundle localBundle;
+    if (TextUtils.isEmpty(baoo.a(this.jdField_b_of_type_Baoo)))
+    {
+      baoo.c(this.jdField_b_of_type_Baoo, baoo.a(this.jdField_b_of_type_Baoo).e);
+      baoo.b(this.jdField_b_of_type_Baoo).set(false);
+      QLog.i("Q.share.ForwardSdkShareProcessor", 1, "UrlExchangeStep|use app icon:" + baoo.a(this.jdField_b_of_type_Baoo));
+      localBundle = new Bundle();
+      localBundle.putString("report_type", "102");
+      localBundle.putString("act_type", "18");
+      if (!TextUtils.isEmpty(baoo.a(this.jdField_b_of_type_Baoo))) {
+        break label506;
+      }
+    }
+    label506:
+    for (String str = "1";; str = "0")
+    {
+      localBundle.putString("intext_1", str);
+      bfdq.a().a(localBundle, "" + baoo.a(this.jdField_b_of_type_Baoo), this.jdField_b_of_type_Baoo.a.c(), false);
+      if ((!baoo.b(this.jdField_b_of_type_Baoo).get()) && (ndd.a(baoo.a(this.jdField_b_of_type_Baoo)))) {
+        baoo.a(this.jdField_b_of_type_Baoo).put("imageUrl", baoo.a(this.jdField_b_of_type_Baoo));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.share.ForwardSdkShareProcessor", 2, "UrlExchangeStep|process|url=" + baoo.a(this.jdField_b_of_type_Baoo).toString());
+      }
+      if (!baoo.a(this.jdField_b_of_type_Baoo).isEmpty()) {
+        break;
+      }
+      baoo.c(this.jdField_b_of_type_Baoo).set(true);
+      b();
+      return;
+    }
+    ThreadManager.post(new ForwardSdkShareProcessor.UrlExchangeStep.1(this), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baoy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,25 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
-class adxu
-  implements View.OnClickListener
+public class adxu
+  extends alsi
 {
-  adxu(adxt paramadxt) {}
+  public adxu(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    paramView = (String)paramView.getTag();
-    if (!TextUtils.isEmpty(paramView)) {
-      ahiv.b(this.a.a, paramView);
-    }
+    this.a.c();
+  }
+  
+  protected void b()
+  {
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxu
  * JD-Core Version:    0.7.0.1
  */

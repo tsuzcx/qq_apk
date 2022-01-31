@@ -1,13 +1,13 @@
-import android.graphics.Bitmap;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class aiaa
+public abstract interface aiaa
 {
-  public int a;
-  public Bitmap a;
+  public abstract boolean a(View paramView, MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiaa
  * JD-Core Version:    0.7.0.1
  */

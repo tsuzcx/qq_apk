@@ -1,80 +1,35 @@
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.widget.PagingScrollView;
+import com.tencent.qphone.base.util.QLog;
 
-class benf
-  extends BaseAdapter
+public class benf
+  implements View.OnTouchListener
 {
-  benf(bene parambene) {}
+  public benf(PagingScrollView paramPagingScrollView) {}
   
-  public int getCount()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
-    }
-    paramViewGroup = paramView;
-    if (paramView == null)
+    if (this.a.mIsOnSpecialView)
     {
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.a.a(), null);
-      paramView = new benm(this.a, null);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131368381));
-      paramViewGroup.setTag(paramView);
-    }
-    paramView = (benm)paramViewGroup.getTag();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (paramView.a != null)
-    {
-      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-      paramView.a.setOnClickListener(new benl(this.a, paramInt));
-      i = paramView.a.getPaddingTop();
-      j = paramView.a.getPaddingLeft();
-      k = paramView.a.getPaddingRight();
-      m = paramView.a.getPaddingBottom();
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
-        break label212;
-      }
-      paramView.a.setBackgroundResource(2130840757);
-    }
-    for (;;)
-    {
-      paramView.a.setPadding(j, i, k, m);
-      return paramViewGroup;
-      label212:
-      if (paramInt == 0) {
-        paramView.a.setBackgroundResource(2130840758);
-      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-        paramView.a.setBackgroundResource(2130840756);
+      int i = paramMotionEvent.getAction();
+      if ((i == 1) || (i == 3))
+      {
+        this.a.mIsOnSpecialView = false;
+        this.a.getParent().requestDisallowInterceptTouchEvent(false);
+        if (QLog.isDevelopLevel()) {
+          QLog.i("PageScrollView", 4, "C.TE ACT_UP or CANCEL");
+        }
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     benf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,21 @@
-final class onc
-  implements qed<String>
+import java.util.List;
+
+class onc
+  extends oob
 {
-  public boolean a(String paramString)
+  onc(omz paramomz, boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt)
   {
-    return (paramString.toLowerCase().contains("readinjoy")) && (!paramString.contains("readinjoy_local_reset_config_version")) && (!paramString.contains("readinjoy_remote_reset_config_version"));
+    super(paramomz, null);
+  }
+  
+  void a(ooe paramooe)
+  {
+    paramooe.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     onc
  * JD-Core Version:    0.7.0.1
  */

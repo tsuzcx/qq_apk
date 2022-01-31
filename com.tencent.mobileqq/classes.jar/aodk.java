@@ -1,33 +1,51 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aodk
-  implements askq<EmoticonPackage>
+  implements aoed
 {
-  public aodk(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
+  public aodk(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public int a()
   {
-    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.name != null) && ((paramEmoticonPackage.mobileFeetype != 0) || (paramEmoticonPackage.downloadCount != 0)))
-    {
-      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getInt("emosm_json_last_download_timestamp", 0);
-      int j = (int)(System.currentTimeMillis() / 1000L);
-      if ((j - i > 86400) || (j < i))
-      {
-        AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
-        return;
-      }
-      adue.a(6, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, null, true);
-      return;
+    return this.a.jdField_a_of_type_Int;
+  }
+  
+  public int a(int paramInt)
+  {
+    if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt] != null) {
+      return ((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt]).size();
     }
-    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
+    return 0;
+  }
+  
+  public String a(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      if (this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1] != null)
+      {
+        if (((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).code.equals("0")) {
+          return "----";
+        }
+        String str = ((BaseAddress)((List)this.a.jdField_a_of_type_ArrayOfJavaLangObject[paramInt1]).get(paramInt2)).name;
+        return str;
+      }
+    }
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("LocationSelectActivity", 2, "", localIndexOutOfBoundsException);
+      }
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodk
  * JD-Core Version:    0.7.0.1
  */

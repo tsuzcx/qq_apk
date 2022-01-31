@@ -1,10 +1,16 @@
 public abstract interface wsn
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void W_();
+  
+  public abstract void a(xjw paramxjw);
+  
+  public abstract void f();
+  
+  public abstract void h();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsn
  * JD-Core Version:    0.7.0.1
  */

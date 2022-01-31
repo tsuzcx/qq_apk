@@ -1,64 +1,25 @@
-import com.tencent.aekit.openrender.internal.Frame;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import cooperation.qqreader.ReaderSplashImpl.3.1;
 
 public class bivk
+  implements EnterCallback
 {
-  private int jdField_a_of_type_Int;
-  private bisu jdField_a_of_type_Bisu = new bisu();
-  private bivl jdField_a_of_type_Bivl;
-  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b;
+  bivk(bivh parambivh) {}
   
-  public Frame a(Frame paramFrame, int paramInt1, int paramInt2)
-  {
-    Frame localFrame = paramFrame;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Bisu.a(paramFrame, paramInt1, paramInt2, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
-      localFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
-    }
-    if (this.jdField_a_of_type_Bivl != null) {
-      this.jdField_a_of_type_Bivl.a(localFrame);
-    }
-    return localFrame;
-  }
+  public void onCloseLoadingView() {}
   
-  public void a()
-  {
-    this.jdField_a_of_type_Bisu.apply();
-    if (this.jdField_a_of_type_Bivl != null) {
-      this.jdField_a_of_type_Bivl.a();
-    }
-  }
+  public void onEnterComplete() {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onShowLoadingView(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void a(bivl parambivl)
-  {
-    this.jdField_a_of_type_Bivl = parambivl;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bisu.ClearGLSL();
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
-    if (this.jdField_a_of_type_Bivl != null) {
-      this.jdField_a_of_type_Bivl.b();
-    }
+    bivh.a(this.a).runOnUiThread(new ReaderSplashImpl.3.1(this, paramView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bivk
  * JD-Core Version:    0.7.0.1
  */

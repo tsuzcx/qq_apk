@@ -1,107 +1,56 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.util.Pair;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
+import android.annotation.TargetApi;
+import android.os.SystemClock;
 
+@TargetApi(14)
 public class ukz
-  extends JobSegment<List<String>, List<String>>
-  implements tkj
+  extends xos
 {
-  private String a = "story.icon.UidListToUrlListSegment";
+  private int jdField_a_of_type_Int = 941000;
+  private long jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  private String jdField_a_of_type_JavaLangString;
+  private ulb jdField_a_of_type_Ulb;
+  private String b;
   
-  public ukz(String paramString) {}
-  
-  private Pair<List<String>, Boolean> a(List<String> paramList)
+  public ukz(String paramString1, String paramString2, ulb paramulb)
   {
-    ArrayList localArrayList = new ArrayList();
-    tdl localtdl = (tdl)tcz.a(2);
-    paramList = paramList.iterator();
-    boolean bool = true;
-    if (paramList.hasNext())
-    {
-      QQUserUIItem localQQUserUIItem = localtdl.b((String)paramList.next());
-      if ((localQQUserUIItem != null) && (localQQUserUIItem.headUrl != null)) {
-        localArrayList.add(localQQUserUIItem.headUrl);
-      }
-      for (;;)
-      {
-        break;
-        localArrayList.add("stub_url");
-        bool = false;
-      }
-    }
-    return new Pair(localArrayList, Boolean.valueOf(bool));
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Ulb = paramulb;
   }
   
-  private void b(List<String> paramList)
+  public void a(int paramInt)
   {
-    ukj.a(this.a, "fireRefreshUserInfo : %s", new JSONArray(paramList));
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localArrayList.add(new teg(null, (String)paramList.next()));
-    }
-    new tki(this).a(1, localArrayList);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected void a(JobContext paramJobContext, List<String> paramList)
+  public void onFailure(String paramString)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      notifyError(new ErrorMessage(-1, ""));
+    if (paramString.equals(String.valueOf(941001))) {
+      this.jdField_a_of_type_Ulb.a(941001, paramString, "");
     }
-    do
+    for (;;)
     {
+      wsv.d(uku.jdField_a_of_type_JavaLangString, "combine audio fail %s, %d", new Object[] { paramString, Integer.valueOf(this.jdField_a_of_type_Int) });
+      xmx.g(this.jdField_a_of_type_JavaLangString);
       return;
-      paramJobContext = Collections.unmodifiableList(paramList);
-      paramList = a(paramJobContext);
-      ukj.a(this.a, "getUnionIdListFromCache ok=%s", paramList.second);
-      a((List)paramList.first);
-    } while (((Boolean)paramList.second).booleanValue());
-    ukj.a(this.a, "fireRefreshUserInfo");
-    b(paramJobContext);
-  }
-  
-  protected void a(List<String> paramList)
-  {
-    ukj.a(this.a, "notifyResult url list : " + new JSONArray(paramList));
-    if (paramList.size() == 1)
-    {
-      ukj.b(this.a, "add one more default item because of product logic");
-      paramList.add("stub_url");
-    }
-    super.notifyResult(paramList);
-  }
-  
-  public void a(tkk paramtkk)
-  {
-    if ((paramtkk == null) || (paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramtkk.jdField_a_of_type_JavaUtilList == null))
-    {
-      ukj.b(this.a, "refresh user info fail %s", paramtkk);
-      if (paramtkk == null) {}
-      for (paramtkk = new ErrorMessage(-1, "event is null");; paramtkk = paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage)
-      {
-        notifyError(paramtkk);
-        return;
+      if (paramString.equals(String.valueOf(941002))) {
+        this.jdField_a_of_type_Ulb.a(941002, paramString, "");
+      } else {
+        this.jdField_a_of_type_Ulb.a(this.jdField_a_of_type_Int, paramString, "");
       }
     }
-    ukj.a(this.a, "refresh user info success, let's return the new info");
-    ArrayList localArrayList = new ArrayList();
-    paramtkk = paramtkk.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramtkk.hasNext()) {
-      localArrayList.add(((QQUserUIItem)paramtkk.next()).headUrl);
-    }
-    a(localArrayList);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    wsv.a(uku.jdField_a_of_type_JavaLangString, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_Ulb.a(0, "", this.b);
+    xmx.g(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ukz
  * JD-Core Version:    0.7.0.1
  */

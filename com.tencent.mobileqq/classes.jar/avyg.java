@@ -1,19 +1,21 @@
-import android.support.annotation.NonNull;
-import android.view.Surface;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
-public abstract interface avyg
+public class avyg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract Surface a();
+  public avyg(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public abstract void a();
-  
-  public abstract void a(@NonNull avxs paramavxs, boolean paramBoolean);
-  
-  public abstract void b();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.e = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avyg
  * JD-Core Version:    0.7.0.1
  */

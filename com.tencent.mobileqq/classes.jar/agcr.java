@@ -1,30 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 class agcr
-  implements DialogInterface.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  agcr(agcf paramagcf) {}
+  agcr(agcq paramagcq, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    paramDialogInterface = new Intent(this.a.a, LoginActivity.class);
-    paramDialogInterface.putExtra("is_change_account", true);
-    if (this.a.a.getIntent().getExtras() != null) {
-      paramDialogInterface.putExtras(this.a.a.getIntent().getExtras());
+    QLog.e("AioPanelMiniAppManager", 1, "onLoadFialed: failed. ", paramThrowable);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("AioPanelMiniAppManager", 2, "onLoadSuccessed: invoked.  url: " + this.jdField_a_of_type_JavaLangString);
     }
-    paramDialogInterface.addFlags(268435456);
-    paramDialogInterface.addFlags(67108864);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.b.dismiss();
+    agcq.a(this.jdField_a_of_type_Agcq).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agcr
  * JD-Core Version:    0.7.0.1
  */

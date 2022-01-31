@@ -1,26 +1,20 @@
 package com.tencent.qqmini.sdk.core.proxy;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.Bundle;
 import android.os.ResultReceiver;
-import besz;
-import bfga;
-import bfgc;
+import bhif;
+import bhij;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniRuntime;
 import com.tencent.qqmini.sdk.ui.MoreItem;
-import cooperation.vip.pb.TianShuAccess.AdItem;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class MiniAppProxy
 {
-  public abstract boolean addPublicAccount(String paramString1, String paramString2, AsyncResult paramAsyncResult);
-  
-  public abstract boolean addShortcut(Activity paramActivity, MiniAppInfo paramMiniAppInfo, AsyncResult paramAsyncResult);
-  
-  public abstract boolean callServer(String paramString1, String paramString2, Bundle paramBundle);
+  public abstract boolean addShortcut(Context paramContext, MiniAppInfo paramMiniAppInfo, AsyncResult paramAsyncResult);
   
   public abstract boolean chooseLocation(Context paramContext, AsyncResult paramAsyncResult);
   
@@ -36,9 +30,9 @@ public abstract class MiniAppProxy
   
   public abstract String getAppVersion();
   
-  public abstract String getDeviceInfo();
-  
   public abstract Drawable getDrawable(Context paramContext, String paramString, int paramInt1, int paramInt2, Drawable paramDrawable);
+  
+  public abstract String getImei();
   
   public abstract boolean getLocation(Context paramContext, String paramString, boolean paramBoolean, AsyncResult paramAsyncResult);
   
@@ -46,9 +40,9 @@ public abstract class MiniAppProxy
   
   public abstract int getLoginType();
   
-  public abstract bfgc getMoreItemSelectedListener();
+  public abstract bhij getMoreItemSelectedListener();
   
-  public abstract List<MoreItem> getMoreItems(bfga parambfga);
+  public abstract ArrayList<MoreItem> getMoreItems(bhif parambhif);
   
   public abstract String getNickName();
   
@@ -60,49 +54,39 @@ public abstract class MiniAppProxy
   
   public abstract String getPlatformQUA();
   
-  public abstract String getPlatformVersionString();
-  
   public abstract String getSoPath();
+  
+  public abstract int getTbsVersion();
   
   public abstract boolean isDebugVersion();
   
-  public abstract boolean jump2PublicAccount(Context paramContext, String paramString1, String paramString2);
-  
   public abstract void log(int paramInt, String paramString1, String paramString2, Throwable paramThrowable);
   
-  public abstract void notifyMiniAppInfo(MiniAppInfo paramMiniAppInfo);
+  public abstract void muteAudioFocus(Context paramContext, boolean paramBoolean);
   
-  public abstract boolean onCapsuleButtonCloseClick(besz parambesz);
+  public abstract void notifyMiniAppInfo(int paramInt, MiniAppInfo paramMiniAppInfo);
   
-  public abstract boolean onCapsuleButtonMoreClick(besz parambesz);
+  public abstract boolean onCapsuleButtonCloseClick(IMiniRuntime paramIMiniRuntime);
   
-  public abstract boolean openChoosePhotoActivity(Activity paramActivity, int paramInt, MiniAppProxy.IChoosePhotoListner paramIChoosePhotoListner);
+  public abstract boolean onCapsuleButtonMoreClick(IMiniRuntime paramIMiniRuntime);
   
-  public abstract boolean openImagePreview(Activity paramActivity, int paramInt, List<String> paramList);
+  public abstract boolean openChoosePhotoActivity(Context paramContext, int paramInt, MiniAppProxy.IChoosePhotoListner paramIChoosePhotoListner);
+  
+  public abstract boolean openImagePreview(Context paramContext, int paramInt, List<String> paramList);
   
   public abstract boolean openLocation(Context paramContext, double paramDouble1, double paramDouble2, int paramInt, String paramString1, String paramString2);
   
-  public abstract boolean openPermissionSettingsActivity(Activity paramActivity, String paramString1, String paramString2);
-  
-  public abstract boolean openRobotProfileCard(Context paramContext, String paramString1, String paramString2);
-  
-  public abstract boolean openSchema(Activity paramActivity, String paramString, ResultReceiver paramResultReceiver);
+  public abstract boolean openSchema(Context paramContext, String paramString, ResultReceiver paramResultReceiver);
   
   public abstract void sendData(byte[] paramArrayOfByte, MiniAppProxy.SenderListener paramSenderListener);
   
-  public abstract boolean startAddFriendActivity(Context paramContext, String paramString1, String paramString2);
+  public abstract void setDrawableCallback(Drawable paramDrawable, MiniAppProxy.IDrawableLoadedCallBack paramIDrawableLoadedCallBack);
   
-  public abstract boolean startBrowserActivity(Activity paramActivity, Intent paramIntent);
-  
-  public abstract boolean startBrowserActivityForResult(Activity paramActivity, Intent paramIntent, int paramInt);
-  
-  public abstract boolean tianshuReport(TianShuAccess.AdItem paramAdItem, String paramString, int paramInt);
-  
-  public abstract boolean tianshuRequestAdv(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, AsyncResult paramAsyncResult);
+  public abstract boolean startBrowserActivity(Context paramContext, Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.MiniAppProxy
  * JD-Core Version:    0.7.0.1
  */

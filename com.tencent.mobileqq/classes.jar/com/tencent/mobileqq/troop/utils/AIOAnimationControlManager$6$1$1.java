@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bahf;
-import bahn;
-import baho;
+import bcfr;
+import bcfz;
+import bcga;
 
 public class AIOAnimationControlManager$6$1$1
   implements Runnable
 {
-  public AIOAnimationControlManager$6$1$1(baho parambaho) {}
+  public AIOAnimationControlManager$6$1$1(bcga parambcga) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_Bahf.a = 1;
-    this.a.a.jdField_a_of_type_Bahf.a(this.a.a.jdField_a_of_type_Boolean);
+    this.a.a.jdField_a_of_type_Bcfr.a = 1;
+    this.a.a.jdField_a_of_type_Bcfr.a(this.a.a.jdField_a_of_type_Boolean);
   }
 }
 

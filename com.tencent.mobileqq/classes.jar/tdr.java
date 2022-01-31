@@ -1,30 +1,30 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.widget.TextView;
 
-public class tdr
-  extends ssh
+class tdr
+  implements tdm
 {
-  public long a;
-  public String a;
-  public String b;
+  tdr(tdn paramtdn) {}
   
-  public tdr(String paramString, StoryVideoItem paramStoryVideoItem)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramStoryVideoItem.mVideoIndex;
-    this.b = paramStoryVideoItem.mVid;
-    if (this.jdField_a_of_type_Long == 0L) {
-      this.jdField_a_of_type_Long = paramStoryVideoItem.mCreateTime;
+    tdn.a(this.a, null);
+    if (tdn.a(this.a) != null)
+    {
+      tdn.a(this.a).b(null);
+      if ((tdn.c(this.a)) && (tdn.a(this.a) != null)) {
+        tdn.a(this.a).setText(tdn.a(this.a).a());
+      }
     }
-  }
-  
-  public String toString()
-  {
-    return "ReadStoryVideoEvent{unionId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", videoIndex=" + this.jdField_a_of_type_Long + ", vid='" + this.b + '\'' + '}';
+    if ((tdn.d(this.a)) && (tdn.a(this.a) != 0L))
+    {
+      tdn.b(this.a);
+      tdn.b(this.a, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdr
  * JD-Core Version:    0.7.0.1
  */

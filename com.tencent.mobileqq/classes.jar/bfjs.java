@@ -1,10 +1,14 @@
+import android.os.Bundle;
+
 public abstract interface bfjs
 {
-  public abstract int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2);
+  public abstract int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle);
+  
+  public abstract void a(String paramString, int paramInt, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfjs
  * JD-Core Version:    0.7.0.1
  */

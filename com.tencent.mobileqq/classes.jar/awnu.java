@@ -1,71 +1,37 @@
-import android.view.View;
-import com.tencent.mobileqq.search.activity.ContactSearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import java.util.List;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.4;
+import com.tencent.qphone.base.util.QLog;
 
 public class awnu
-  implements awoh
+  extends bdvu
 {
-  public static final String a;
-  private int a;
-  public List<awoi> a;
-  private String b;
+  public awnu(VipProfileCardPreviewActivity.4 param4) {}
   
-  static
+  public void onDone(bdvv parambdvv)
   {
-    jdField_a_of_type_JavaLangString = ajya.a(2131705390);
-  }
-  
-  public awnu(List<awoi> paramList, String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return awin.a("fts_native_contactor_maxnum", 3);
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<awoi> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    ContactSearchActivity.a(paramView.getContext(), this.b, this.jdField_a_of_type_Int, 197437, 2);
-    awwa.a(this.b, 20, 0, paramView);
-    if ((paramView.getContext() instanceof UniteSearchActivity))
-    {
-      awwa.a("all_result", "more_contact", new String[] { "" + this.b });
-      if (SearchConfigManager.needSeparate) {
-        awwa.a("search", "group", "more", 0, 0, new String[] { awwa.a(this.jdField_a_of_type_Int) });
-      }
-      awsq.a(null, 0, this.jdField_a_of_type_Int, "0X8009D3D", 0, 0, null, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style end download, url : %s, resultCode : %d ", new Object[] { parambdvv.jdField_a_of_type_JavaLangString, Integer.valueOf(parambdvv.jdField_a_of_type_Int) }));
     }
   }
   
-  public int b()
+  public void onProgress(bdvv parambdvv)
   {
-    return this.jdField_a_of_type_Int;
+    int i = (int)parambdvv.jdField_a_of_type_Float;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style progress, url : %s, progress : %d", new Object[] { parambdvv.jdField_a_of_type_JavaLangString, Integer.valueOf(i) }));
+    }
   }
   
-  public String b()
+  public boolean onStart(bdvv parambdvv)
   {
-    return this.b;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("Resource style start download, url : %s, position : %s ", new Object[] { parambdvv.jdField_a_of_type_JavaLangString, Integer.valueOf(this.a.jdField_a_of_type_Int) }));
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awnu
  * JD-Core Version:    0.7.0.1
  */

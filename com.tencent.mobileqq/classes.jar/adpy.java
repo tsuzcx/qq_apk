@@ -1,23 +1,20 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 
 public class adpy
-  extends acuj
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public URLDrawable a;
-  public FlashPicItemBuilder.FlashPicAIOThumbView a;
-  public BubbleImageView a;
-  public boolean a;
-  public boolean b;
+  public adpy(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.onBackEvent();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpy
  * JD-Core Version:    0.7.0.1
  */

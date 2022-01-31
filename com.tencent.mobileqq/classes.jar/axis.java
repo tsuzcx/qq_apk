@@ -1,48 +1,42 @@
-import android.hardware.Camera;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.Manager;
 
 public class axis
-  extends PreviewContext
-  implements SurfaceHolder.Callback, axig
+  implements Manager
 {
-  public axis(axhz paramaxhz, int paramInt1, int paramInt2)
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private ConcurrentHashMap<Long, ChatMessage> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  
+  public axis(QQAppInterface paramQQAppInterface)
   {
-    super(paramaxhz, paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void a(byte[] paramArrayOfByte, Camera paramCamera)
+  public ChatMessage a(long paramLong)
   {
-    getPreviewFrame(paramArrayOfByte, paramCamera);
+    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
   }
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  public void a(ChatMessage paramChatMessage)
   {
-    this.mCamera.a(paramInt1, paramInt2, paramInt3);
-    this.mCamera.a(null, paramSurfaceHolder, this, true);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramChatMessage.uniseq), paramChatMessage);
   }
   
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public ChatMessage b(long paramLong)
   {
-    this.mCamera.a();
+    return (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
   }
   
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  public void onDestroy()
   {
-    if (this.mCamera != null)
-    {
-      this.mCamera.b();
-      this.mCamera.b(true);
-      if (this.mActivtiyDestory) {
-        this.mCamera = null;
-      }
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axis
  * JD-Core Version:    0.7.0.1
  */

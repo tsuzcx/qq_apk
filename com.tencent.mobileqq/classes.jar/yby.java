@@ -1,19 +1,19 @@
-public class yby
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class yby
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
+  yby(ybx paramybx) {}
   
-  public yby(ybw paramybw, String paramString, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    ybx.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yby
  * JD-Core Version:    0.7.0.1
  */

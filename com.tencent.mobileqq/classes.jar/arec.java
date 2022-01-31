@@ -1,44 +1,65 @@
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Future;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class arec
-  implements PluginManagerUpdater
+public class arec
+  implements anxw
 {
-  private final File a;
+  private String a;
   
   public arec(String paramString)
   {
-    this.a = new File("/data/local/tmp/" + paramString + "PluginManager.apk");
-  }
-  
-  public File getLatest()
-  {
-    if (this.a.exists()) {
-      return this.a;
+    this.a = paramString;
+    if (bdcs.b(this.a)) {
+      this.a = new File(this.a).getAbsolutePath();
     }
-    return null;
   }
   
-  public Future<Boolean> isAvailable(File paramFile)
+  private String a()
   {
-    return akhk.a(16).submit(new aree(this, paramFile));
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("file_color_note_local_path", this.a);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JSONException localJSONException) {}
+    return "";
   }
   
-  public Future<File> update()
+  public ColorNote getColorNote()
   {
-    return akhk.a(16).submit(new ared(this));
-  }
-  
-  public boolean wasUpdating()
-  {
-    return false;
+    if (!bdcs.b(this.a))
+    {
+      QLog.i("LocalFileColorNoteServiceInfo", 1, "getColorNote: loacl file path is null");
+      return null;
+    }
+    anyc localanyc = new anyc();
+    localanyc.a(17039360);
+    String str = aroo.b(5, this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("LocalFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    }
+    localanyc.a(str);
+    str = arni.a(this.a);
+    localanyc.b(str);
+    localanyc.c(arof.a(arni.a(this.a)));
+    int i = arni.a(arni.a(str));
+    localanyc.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localanyc.a(str.getBytes());
+    }
+    return localanyc.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arec
  * JD-Core Version:    0.7.0.1
  */

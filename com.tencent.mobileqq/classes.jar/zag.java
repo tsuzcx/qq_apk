@@ -1,22 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.form.GdtFormView;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class zag
-  implements View.OnClickListener
+class zag
+  implements QQPermissionCallback
 {
-  public zag(GdtFormView paramGdtFormView) {}
+  zag(zae paramzae) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (GdtFormView.a(this.a)) {
-      GdtFormView.a(this.a);
-    }
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
+    bdcd.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
+    zae.e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zag
  * JD-Core Version:    0.7.0.1
  */

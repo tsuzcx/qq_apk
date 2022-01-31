@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.main;
 
-import agcf;
-import ajti;
-import akcy;
-import akuz;
+import aiak;
+import alkv;
+import alun;
+import amlp;
 import android.os.Handler;
 import android.os.Message;
-import atxd;
-import avps;
-import bbac;
+import avod;
+import axho;
+import bcyw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -18,7 +18,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MainAssistObserver$12
   implements Runnable
 {
-  public MainAssistObserver$12(agcf paramagcf, QQAppInterface paramQQAppInterface) {}
+  public MainAssistObserver$12(aiak paramaiak, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
@@ -28,33 +28,33 @@ public class MainAssistObserver$12
       Object localObject2;
       try
       {
-        avps localavps = (avps)this.a.getManager(36);
-        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = localavps.a(1);
+        axho localaxho = (axho)this.a.getManager(36);
+        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = localaxho.a(1);
         if (localRedTypeInfo != null) {
           break label398;
         }
-        atxd localatxd = (atxd)this.a.getManager(160);
-        localatxd.a(100601, false);
-        boolean bool1 = localatxd.a(10015, false);
-        boolean bool2 = localatxd.a(10016, false);
-        bbac.c(this.a);
-        localObject2 = localatxd.a(-3);
-        if (!localatxd.a((RedTouchItem)localObject2, true)) {
+        avod localavod = (avod)this.a.getManager(160);
+        localavod.a(100601, false);
+        boolean bool1 = localavod.a(10015, false);
+        boolean bool2 = localavod.a(10016, false);
+        bcyw.c(this.a);
+        localObject2 = localavod.a(-3);
+        if (!localavod.a((RedTouchItem)localObject2, true)) {
           break label398;
         }
         localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
         if ((bool1 | bool2)) {
-          agcf.a(this.this$0, this.a);
+          aiak.a(this.this$0, this.a);
         }
         QLog.d("MainAssistObserver", 1, "updateTabSettingNotify me count=" + ((RedTouchItem)localObject2).count);
         i = 1;
-        if ((localRedTypeInfo != null) || (!akuz.a(this.a))) {
+        if ((localRedTypeInfo != null) || (!amlp.a(this.a))) {
           break label395;
         }
         localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
         i = j;
-        localObject2 = (ajti)this.a.a(2);
-        if ((localRedTypeInfo != null) || (((ajti)localObject2).b()) || (!((ajti)localObject2).a())) {
+        localObject2 = (alkv)this.a.a(2);
+        if ((localRedTypeInfo != null) || (((alkv)localObject2).b()) || (!((alkv)localObject2).a())) {
           break label390;
         }
         localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
@@ -65,13 +65,13 @@ public class MainAssistObserver$12
         {
           i = j;
           localObject2 = localRedTypeInfo;
-          if (akcy.a(1))
+          if (alun.a(1))
           {
             localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
             i = 4;
           }
         }
-        j = localavps.b(1);
+        j = localaxho.b(1);
         if (localObject2 != null) {
           ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(0);
         }
@@ -108,7 +108,7 @@ public class MainAssistObserver$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.12
  * JD-Core Version:    0.7.0.1
  */

@@ -5,17 +5,17 @@ import android.view.View;
 import android.widget.Button;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import ldx;
 import lga;
+import lid;
 import mqq.util.WeakReference;
-import msn;
-import mtq;
-import muc;
+import mvh;
+import mwk;
+import mww;
 
 public class TraeHelper$4
   implements Runnable
 {
-  public TraeHelper$4(mtq parammtq) {}
+  public TraeHelper$4(mwk parammwk) {}
   
   public void run()
   {
@@ -30,32 +30,32 @@ public class TraeHelper$4
         if (localObject != null)
         {
           ((Button)localObject).setClickable(true);
-          if ((!mtq.a(this.this$0)) || (!msn.a())) {
+          if ((!mwk.a(this.this$0)) || (!mvh.a())) {
             break;
           }
           ((Button)localObject).setSelected(true);
-          muc.a((View)localObject, ((Button)localObject).getResources().getString(2131690277));
+          mww.a((View)localObject, ((Button)localObject).getResources().getString(2131690328));
         }
       }
-      this.this$0.a.a().a("handFreeJob", mtq.a(this.this$0).N);
-      mtq.a(this.this$0);
+      this.this$0.a.a().a("handFreeJob", mwk.a(this.this$0).O);
+      mwk.a(this.this$0);
       localObject = this.this$0.a.a.a();
     } while (localObject == null);
-    ((ldx)localObject).b();
+    ((lga)localObject).b();
     return;
-    ((Button)localObject).setSelected(mtq.a(this.this$0).N);
+    ((Button)localObject).setSelected(mwk.a(this.this$0).O);
     Resources localResources = ((Button)localObject).getResources();
-    if (mtq.a(this.this$0).N) {}
-    for (int i = 2131690278;; i = 2131690279)
+    if (mwk.a(this.this$0).O) {}
+    for (int i = 2131690329;; i = 2131690330)
     {
-      muc.a((View)localObject, localResources.getString(i));
+      mww.a((View)localObject, localResources.getString(i));
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.utils.TraeHelper.4
  * JD-Core Version:    0.7.0.1
  */

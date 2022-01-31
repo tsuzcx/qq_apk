@@ -1,66 +1,110 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.music.SongInfo;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-public abstract class asvl
-  extends Binder
-  implements asvk
+public class asvl
+  implements View.OnClickListener
 {
-  private static final String DESCRIPTOR = "com.tencent.mobileqq.music.IQQPlayerCallback";
-  static final int TRANSACTION_onPlaySongChanged = 2;
-  static final int TRANSACTION_onPlayStateChanged = 1;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  private TextView f;
   
-  public asvl()
+  public static String a(long paramLong)
   {
-    attachInterface(this, "com.tencent.mobileqq.music.IQQPlayerCallback");
-  }
-  
-  public static asvk asInterface(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
+    if (paramLong > 107374182.40000001D) {
+      return String.format("%.1f G", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F / 1024.0F) });
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof asvk))) {
-      return (asvk)localIInterface;
+    if (paramLong > 104857.60000000001D) {
+      return String.format("%.1f M", new Object[] { Float.valueOf((float)paramLong / 1024.0F / 1024.0F) });
     }
-    return new asvm(paramIBinder);
+    return String.format("%.1f K", new Object[] { Float.valueOf((float)paramLong / 1024.0F) });
   }
   
-  public IBinder asBinder()
+  public void a()
   {
-    return this;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void a(int paramInt, long paramLong)
   {
-    switch (paramInt1)
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    if (paramLong == 0L) {
+      this.e.setVisibility(4);
+    }
+    for (;;)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.music.IQQPlayerCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
-      onPlayStateChanged(paramParcel1.readInt());
-      return true;
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt);
+      return;
+      this.e.setText(String.format("%1$s/%2$s", new Object[] { a(paramInt * paramLong / 100L), a(paramLong) }));
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.music.IQQPlayerCallback");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SongInfo)SongInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      onPlaySongChanged(paramParcel1);
-      return true;
+  }
+  
+  public void a(Activity paramActivity, View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367424));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367431));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367432));
+    this.c = ((TextView)paramView.findViewById(2131367425));
+    this.d = ((TextView)paramView.findViewById(2131367430));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367426));
+    this.e = ((TextView)paramView.findViewById(2131367427));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131367428));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131367429));
+    this.f = ((TextView)paramView.findViewById(2131367423));
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+  }
+  
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(paramString);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.c.setText(paramString1);
+    this.d.setText(paramString2);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((paramView == this.jdField_a_of_type_AndroidWidgetLinearLayout) || (paramView == this.jdField_a_of_type_AndroidWidgetTextView)) {
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asvl
  * JD-Core Version:    0.7.0.1
  */

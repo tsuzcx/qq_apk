@@ -1,75 +1,98 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.NonNull;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.HashSet;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ukx
-  implements ula
+class ukx
+  implements xpb
 {
-  private final HashSet<URLDrawable> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private final ConcurrentHashMap<String, HashSet<ulb>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private final int jdField_a_of_type_Int;
+  private final Object jdField_a_of_type_JavaLangObject;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   
-  private Bitmap a(@NonNull URLDrawable paramURLDrawable, int paramInt1, int paramInt2)
+  public ukx(Object paramObject, AtomicInteger paramAtomicInteger, int paramInt)
   {
-    Object localObject = paramURLDrawable.getCurrDrawable();
-    if ((localObject instanceof RegionDrawable))
-    {
-      localObject = ((RegionDrawable)localObject).getBitmap();
-      if (localObject != null) {
-        return localObject;
-      }
-    }
-    return bbef.a(paramURLDrawable, paramInt1, paramInt2);
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2, ulb paramulb)
+  public void onFailure(String paramString)
   {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(1073741824);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable;
-    try
+    wsv.d(uku.a, "FFMPEGResponseCallback onFailure() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    int j = 0;
+    int k = 0;
+    int m = 0;
+    int i = 0;
+    wsv.d(uku.a, "FFMPEGResponseCallback onFinish() mTaskType = " + this.jdField_a_of_type_Int + " isSuccess = " + paramBoolean);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      URL localURL = new URL(paramString);
-      localObject = URLDrawable.getDrawable(localURL, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setURLDrawableListener(new uky(this, paramString, paramInt1, paramInt2, (URLDrawable)localObject));
-      ((URLDrawable)localObject).setAutoDownload(true);
-      if (((URLDrawable)localObject).getStatus() != 1) {
-        break label177;
-      }
-      ved.a("story.icon.ShareGroupIconManager", "download url success directly. %s", paramString);
-      localObject = a((URLDrawable)localObject, paramInt1, paramInt2);
-      if (localObject != null)
+      this.jdField_a_of_type_JavaLangObject.notify();
+      switch (this.jdField_a_of_type_Int)
       {
-        paramulb.a(paramString, (Bitmap)localObject);
-        return;
+      case 1: 
+        wsv.e(uku.a, "Undefined task type mTaskType = " + this.jdField_a_of_type_Int);
+        throw new RuntimeException("Undefined task in FFMPEGResponseCallback");
       }
     }
-    catch (MalformedURLException localMalformedURLException)
+    AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+    if (paramBoolean)
     {
-      ved.d("story.icon.ShareGroupIconManager", localMalformedURLException, "can not download url. %s", new Object[] { paramString });
-      paramulb.a(paramString, new Throwable("getBitmapFromDrawable failed"));
-      return;
+      label152:
+      localAtomicInteger.set(i);
+      for (;;)
+      {
+        label158:
+        return;
+        localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+        if (!paramBoolean) {
+          break;
+        }
+        i = j;
+        label174:
+        localAtomicInteger.set(i);
+      }
+      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+      if (!paramBoolean) {
+        break label248;
+      }
     }
-    ved.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
-    paramulb.a(paramString, new Throwable("getBitmapFromDrawable failed"));
-    return;
-    label177:
-    ved.a("story.icon.ShareGroupIconManager", "download url pending. %s", paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(paramString, new HashSet());
-    ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).add(paramulb);
-    this.jdField_a_of_type_JavaUtilHashSet.add(localMalformedURLException);
-    localMalformedURLException.startDownload();
+    label248:
+    for (i = k;; i = 945001)
+    {
+      localAtomicInteger.set(i);
+      break label158;
+      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+      if (paramBoolean) {}
+      for (i = m;; i = 944004)
+      {
+        localAtomicInteger.set(i);
+        break;
+      }
+      break;
+      i = 943004;
+      break label152;
+      i = 942004;
+      break label174;
+    }
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    wsv.c(uku.a, "onStart() mTaskType = " + this.jdField_a_of_type_Int);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    wsv.c(uku.a, "FFMPEGResponseCallback onSuccess() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ukx
  * JD-Core Version:    0.7.0.1
  */

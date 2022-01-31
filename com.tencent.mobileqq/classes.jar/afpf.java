@@ -1,27 +1,20 @@
-public class afpf
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+
+final class afpf
+  implements afpr
 {
-  public aiqk a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  
-  public afpf(aiqk paramaiqk)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    this.a = paramaiqk;
-  }
-  
-  public String toString()
-  {
-    return this.b;
+    if (paramChatMessage.msgtype != -1036) {
+      return 17;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afpf
  * JD-Core Version:    0.7.0.1
  */

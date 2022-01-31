@@ -1,29 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 
-class nsq
-  implements ValueAnimator.AnimatorUpdateListener
+public final class nsq
+  implements Parcelable.Creator<VideoInfo.GameAdComData>
 {
-  nsq(nsp paramnsp) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public VideoInfo.GameAdComData a(Parcel paramParcel)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    nsp.a(this.a).setTranslationY(i - nsp.a(this.a));
-    paramValueAnimator = nsp.a(this.a).getLayoutParams();
-    paramValueAnimator.height = i;
-    QLog.d("IconTabController", 1, "showWithAnimation: " + paramValueAnimator.height);
-    nsp.a(this.a).setLayoutParams(paramValueAnimator);
-    nsp.a(this.a).setAlpha(paramValueAnimator.height / nsp.a(this.a));
+    return new VideoInfo.GameAdComData(paramParcel);
+  }
+  
+  public VideoInfo.GameAdComData[] a(int paramInt)
+  {
+    return new VideoInfo.GameAdComData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsq
  * JD-Core Version:    0.7.0.1
  */

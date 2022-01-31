@@ -1,30 +1,26 @@
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class acqn
-  extends bfmx
+  implements TextWatcher
 {
-  public acqn(VisitorsActivity paramVisitorsActivity) {}
+  private acqn(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((paramAnimation == this.a.b) && (this.a.d)) {
-      this.a.centerView.setText("");
-    }
-    this.a.centerView.clearAnimation();
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.b(paramEditable);
   }
   
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == this.a.a) {
-      this.a.centerView.setText(2131694551);
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqn
  * JD-Core Version:    0.7.0.1
  */

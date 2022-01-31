@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import aoze;
+import aqsc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class FileManagerDataCenter$3
   implements Runnable
 {
-  public FileManagerDataCenter$3(aoze paramaoze) {}
+  public FileManagerDataCenter$3(aqsc paramaqsc) {}
   
   public void run()
   {
-    if ((this.this$0.a != null) && (this.this$0.a.getApp() != null) && (aoze.a(this.this$0) != null)) {
-      this.this$0.a.getApp().unregisterReceiver(aoze.a(this.this$0));
+    if ((this.this$0.a != null) && (this.this$0.a.getApp() != null) && (aqsc.a(this.this$0) != null)) {
+      this.this$0.a.getApp().unregisterReceiver(aqsc.a(this.this$0));
     }
-    aoze.a(this.this$0, null);
+    aqsc.a(this.this$0, null);
   }
 }
 

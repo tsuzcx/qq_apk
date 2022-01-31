@@ -1,29 +1,75 @@
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
+
 public class ayxv
+  extends MSFServlet
 {
-  public int a;
-  public long a;
-  public ayxp a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public int d;
-  public long d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
-  public String f;
-  public int g;
-  public String g;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
+    {
+      paramIntent = new Bundle();
+      paramIntent.putString("msg", "servlet result code is " + i);
+      paramIntent.putString("requestType", this.jdField_a_of_type_JavaLangString);
+      paramIntent.putIntegerArrayList("appid", this.jdField_a_of_type_JavaUtilArrayList);
+      if (i != 1000) {
+        break label148;
+      }
+      paramFromServiceMsg = bjmc.a(paramFromServiceMsg.getWupBuffer());
+      if (paramFromServiceMsg == null) {
+        break;
+      }
+      paramIntent.putInt("ret", 0);
+      paramIntent.putSerializable("data", paramFromServiceMsg);
+      notifyObserver(null, 1007, true, paramIntent, avqu.class);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, decode result is null");
+    }
+    paramIntent.putInt("ret", -2);
+    notifyObserver(null, 1007, false, paramIntent, avqu.class);
+    return;
+    label148:
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneGetQbossServlet", 2, "QZONE_GET_QBOSS_DATA fail, resultCode=" + i);
+    }
+    paramIntent.putInt("ret", -3);
+    notifyObserver(null, 1007, false, paramIntent, avqu.class);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    long l = paramIntent.getLongExtra("selfuin", 0L);
+    Object localObject = paramIntent.getIntegerArrayListExtra("appid");
+    boolean bool = paramIntent.getBooleanExtra("needReport", false);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("requestType");
+    this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    bjmc localbjmc = new bjmc(Long.valueOf(l).longValue(), (ArrayList)localObject, bool);
+    localObject = localbjmc.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null)
+    {
+      QLog.e("QzoneGetQbossServlet", 1, "onSend request encode result is null.cmd=" + localbjmc.uniKey());
+      paramIntent = new byte[4];
+    }
+    paramPacket.setTimeout(60000L);
+    paramPacket.setSSOCommand("SQQzoneSvc." + localbjmc.uniKey());
+    paramPacket.putSendData(paramIntent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayxv
  * JD-Core Version:    0.7.0.1
  */

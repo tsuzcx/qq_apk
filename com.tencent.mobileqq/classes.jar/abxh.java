@@ -1,75 +1,56 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.ims.QQProtectRisks.QQProtectRisksResponse;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.activity.QQSettingSettingActivity.7.1;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
 
 public class abxh
-  extends mxj
+  implements TextWatcher
 {
-  public abxh(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  public abxh(AddAccountActivity paramAddAccountActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void afterTextChanged(Editable paramEditable)
   {
-    int i = 0;
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    for (paramInt = 0;; paramInt = 1)
+    AddAccountActivity.a(this.a, null);
+  }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AddAccountActivity.a(this.a, paramCharSequence.toString());
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
     {
-      if (paramInt != 0) {}
-      try
+      paramCharSequence = paramCharSequence.toString();
+      if ((paramCharSequence != null) && (AddAccountActivity.a(this.a) != null) && (AddAccountActivity.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
+        BaseApplicationImpl.sApplication.refreAccountList();
+      }
+      AddAccountActivity.a(this.a, null);
+      if ((AddAccountActivity.a(this.a) == null) || (AddAccountActivity.a(this.a).length() == 0)) {}
+      do
       {
-        QQProtectRisks.QQProtectRisksResponse localQQProtectRisksResponse = new QQProtectRisks.QQProtectRisksResponse();
-        localQQProtectRisksResponse.mergeFrom(paramArrayOfByte);
-        paramInt = i;
-        if (localQQProtectRisksResponse.uint32_sec_cmd.has()) {
-          paramInt = localQQProtectRisksResponse.uint32_sec_cmd.get();
-        }
-        if (paramInt == 1)
+        return;
+        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != AddAccountActivity.a(this.a).length() + 1))
         {
-          long l = 3600L;
-          paramArrayOfByte = "";
-          if (localQQProtectRisksResponse.uint32_cache_time.has()) {
-            l = localQQProtectRisksResponse.uint32_cache_time.get();
-          }
-          if (localQQProtectRisksResponse.str_risk_exist.has()) {
-            paramArrayOfByte = localQQProtectRisksResponse.str_risk_exist.get();
-          }
-          paramBundle = paramArrayOfByte;
-          if (TextUtils.isEmpty(paramArrayOfByte))
-          {
-            paramBundle = paramArrayOfByte;
-            if (localQQProtectRisksResponse.risk_info_list.has())
-            {
-              paramBundle = paramArrayOfByte;
-              if (!localQQProtectRisksResponse.risk_info_list.isEmpty()) {
-                paramBundle = this.a.getString(2131699395);
-              }
-            }
-          }
-          QQSettingSettingActivity.a(this.a, l, paramBundle);
-          this.a.runOnUiThread(new QQSettingSettingActivity.7.1(this, paramBundle));
+          BaseApplicationImpl.sApplication.refreAccountList();
+          return;
         }
-        return;
-      }
-      catch (Throwable paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        return;
-      }
+        if ((!paramCharSequence.substring(0, AddAccountActivity.a(this.a).length()).equals(AddAccountActivity.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText == null)) {
+          break;
+        }
+        paramCharSequence = paramCharSequence.substring(AddAccountActivity.a(this.a).length());
+      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText(paramCharSequence);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(1);
     }
+    AddAccountActivity.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxh
  * JD-Core Version:    0.7.0.1
  */

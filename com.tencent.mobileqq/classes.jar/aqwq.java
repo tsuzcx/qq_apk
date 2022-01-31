@@ -1,28 +1,39 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgRsp;
+import mqq.app.MobileQQ;
 
 class aqwq
-  implements DialogInterface.OnClickListener
+  implements bkgc<WeiyunPB.PwdVerifyMsgRsp>
 {
-  aqwq(aqwp paramaqwp, BaseChatPie paramBaseChatPie, String paramString) {}
+  aqwq(aqwl paramaqwl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, String paramString, WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
   {
-    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
-    Intent localIntent = new Intent(localBaseActivity, QQVasH5PayBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    localBaseActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onFailed. errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
+    }
+    aqwl.a(this.a).a().a(false, 45, new Object[] { Integer.valueOf(paramInt), paramString, null });
+  }
+  
+  public void a(WeiyunPB.PwdVerifyMsgRsp paramPwdVerifyMsgRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "verifyPwd, onSucceed");
+    }
+    String str = bkia.a(paramPwdVerifyMsgRsp.cs_sig.get());
+    if (!TextUtils.isEmpty(str)) {
+      bkgd.a(aqwl.a(this.a).getApplication().getApplicationContext(), str);
+    }
+    bkgd.c(aqwl.a(this.a).getApplication().getApplicationContext(), true);
+    aqwl.a(this.a).a().a(true, 45, new Object[] { Integer.valueOf(0), null, paramPwdVerifyMsgRsp.cs_sig.get() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwq
  * JD-Core Version:    0.7.0.1
  */

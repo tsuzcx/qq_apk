@@ -11,7 +11,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class INTERFACE$StJudgeTimingReq
   extends MessageMicro<StJudgeTimingReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 72, 82, 90 }, new String[] { "extInfo", "appid", "factType", "duration", "reportTime", "afterCertify", "appType", "scene", "totalTime", "launchId", "via" }, new Object[] { null, "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "" }, StJudgeTimingReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 72, 82, 90, 96 }, new String[] { "extInfo", "appid", "factType", "duration", "reportTime", "afterCertify", "appType", "scene", "totalTime", "launchId", "via", "AdsTotalTime" }, new Object[] { null, "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0) }, StJudgeTimingReq.class);
+  public final PBInt32Field AdsTotalTime = PBField.initInt32(0);
   public final PBInt32Field afterCertify = PBField.initInt32(0);
   public final PBInt32Field appType = PBField.initInt32(0);
   public final PBStringField appid = PBField.initString("");

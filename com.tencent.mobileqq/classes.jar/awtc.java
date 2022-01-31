@@ -1,31 +1,42 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.animation.Animation;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface awtc
+public class awtc
+  extends awsv
 {
-  public abstract awte a();
+  public awtc(LSRecordPanel paramLSRecordPanel) {}
   
-  public abstract String a();
-  
-  public abstract void a(awtd paramawtd);
-  
-  public abstract void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(String paramString1, String paramString2, String paramString3);
-  
-  public abstract int b();
-  
-  public abstract void b();
-  
-  public abstract int c();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS startCloseAnimation onAnimationEnd");
+    }
+    if (LSRecordPanel.a(this.a))
+    {
+      if (paramAnimation == this.a.b) {
+        LSRecordPanel.a(this.a);
+      }
+      this.a.a = null;
+      this.a.b = null;
+      paramAnimation = (RelativeLayout.LayoutParams)LSRecordPanel.a(this.a).getLayoutParams();
+      int i = (int)(this.a.getResources().getDisplayMetrics().density * 4.0F);
+      paramAnimation.height -= i;
+      paramAnimation.width -= i;
+      int j = paramAnimation.rightMargin;
+      paramAnimation.rightMargin = (i / 2 + j);
+      LSRecordPanel.a(this.a, false);
+      LSRecordPanel.a(this.a).setLayoutParams(paramAnimation);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awtc
  * JD-Core Version:    0.7.0.1
  */

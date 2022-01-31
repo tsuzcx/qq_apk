@@ -1,47 +1,47 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
-class aetj
-  implements BusinessObserver
+public class aetj
+  extends Handler
 {
-  aetj(aeti paramaeti) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aetj(CommonRecordSoundPanel paramCommonRecordSoundPanel, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a.a, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
-        localSendMenuEventResponse.mergeFrom(paramBundle);
-        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a.a.a, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
-        }
-        if (paramInt == 0)
-        {
-          this.a.a.ap = true;
-          this.a.a.bE();
-          this.a.a.bp();
-          return;
-        }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 16711687: 
+      this.a.b(102);
+      return;
+    case 16711686: 
+      if (QLog.isColorLevel()) {
+        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
       }
-      catch (Exception paramBundle) {}
+      CommonRecordSoundPanel.a(this.a).c();
+      bdaz.b(2131230744, false);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16711686);
+      bdaz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
+      return;
     }
-    this.a.a.B(2131695569);
-    this.a.a.bp();
+    this.a.b(1);
+    this.a.b();
+    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698848), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetj
  * JD-Core Version:    0.7.0.1
  */

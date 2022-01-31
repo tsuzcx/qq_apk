@@ -1,29 +1,89 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aosa
-  extends Handler
+  extends aofy<aory>
 {
-  public aosa(FileAssistantActivity paramFileAssistantActivity, Looper paramLooper)
+  public int a()
   {
-    super(paramLooper);
+    return 432;
   }
   
-  public void handleMessage(Message paramMessage)
+  @NonNull
+  public aory a(int paramInt)
   {
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchRichConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new aory();
+  }
+  
+  @Nullable
+  public aory a(aogf[] paramArrayOfaogf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchRichConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
     {
-    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchRichConfProcessor", 2, "onParsed " + paramArrayOfaogf.length);
+      }
+      return aory.a(paramArrayOfaogf[0]);
+    }
+    return null;
+  }
+  
+  public Class<aory> a()
+  {
+    return aory.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchRichConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(aory paramaory)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramaory == null) {
+        break label49;
+      }
+    }
+    label49:
+    for (paramaory = paramaory.toString();; paramaory = " empty")
+    {
+      QLog.d("SearchRichConfProcessor", 2, paramaory);
+      ayop.a().a();
       return;
     }
-    FileAssistantActivity.f(this.a);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aosa
  * JD-Core Version:    0.7.0.1
  */

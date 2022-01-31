@@ -1,101 +1,136 @@
-import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 
-final class sko
-  extends skm
+public final class sko
 {
-  public void installSucceed(String paramString1, String paramString2)
+  private int jdField_a_of_type_Int = -1;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private View jdField_a_of_type_AndroidViewView;
+  public TabLayoutCompat a;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private Object jdField_a_of_type_JavaLangObject;
+  public skp a;
+  private CharSequence b;
+  
+  public int a()
   {
-    super.installSucceed(paramString1, paramString2);
-    if (skn.b()) {
-      return;
-    }
-    skn.a(paramString1, paramString2, true);
+    return this.jdField_a_of_type_Int;
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  @Nullable
+  public Drawable a()
   {
-    snb.c("WeishiDownloadUtil", "qq onDownloadCancel info = " + paramDownloadInfo);
-    if (skn.a(paramDownloadInfo))
-    {
-      skn.a();
-      int i = skn.b();
-      WSPublicAccReport.getInstance().reportDownload(skn.a(), i, 3, 2, 0);
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  @Nullable
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  @Nullable
+  public CharSequence a()
+  {
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  @Nullable
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  @NonNull
+  public sko a(int paramInt)
+  {
+    return a(LayoutInflater.from(this.jdField_a_of_type_Skp.getContext()).inflate(paramInt, this.jdField_a_of_type_Skp, false));
+  }
+  
+  @NonNull
+  public sko a(@Nullable View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    c();
+    return this;
+  }
+  
+  @NonNull
+  public sko a(@Nullable CharSequence paramCharSequence)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    c();
+    return this;
+  }
+  
+  @NonNull
+  public sko a(@Nullable Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    return this;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
+      throw new IllegalArgumentException("Tab not attached to a TabLayout");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.e(this);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
+      throw new IllegalArgumentException("Tab not attached to a TabLayout");
+    }
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == this.jdField_a_of_type_Int;
+  }
+  
+  @Nullable
+  public CharSequence b()
+  {
+    return this.b;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat == null) {
+      throw new IllegalArgumentException("Tab not attached to a TabLayout");
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.c(this, true);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Skp != null) {
+      this.jdField_a_of_type_Skp.b();
     }
   }
   
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  public void d()
   {
-    snb.d("WeishiDownloadUtil", "qq onDownloadError info = " + paramDownloadInfo);
-    if (skn.a(paramDownloadInfo))
-    {
-      skn.a();
-      paramInt2 = skn.b();
-      WSPublicAccReport.getInstance().reportDownload(skn.a(), paramInt2, 3, 2, 0);
-      snb.d("WeishiDownloadUtil", " errorCode:" + paramInt1 + ", errorMsg: " + paramString);
-      skn.a(paramDownloadInfo, paramInt1);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    skn.a();
-    int i = skn.a();
-    int j = skn.b();
-    if (skn.b())
-    {
-      if (skn.d()) {
-        snb.d("WeishiDownloadUtil", "这是预下载中点击操作，qq监听器响应");
-      }
-    }
-    else
-    {
-      skn.a(paramDownloadInfo, i, j, "QQ");
-      return;
-    }
-    snb.d("WeishiDownloadUtil", "这是qq的监听器，不响应qzone. onDownloadFinish eventId:" + i + ",eventType:" + j);
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    super.onDownloadPause(paramDownloadInfo);
-    snb.d("WeishiDownloadUtil", "qq onDownloadPause info = " + paramDownloadInfo);
-    if (skn.a(paramDownloadInfo)) {
-      skn.a();
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    super.onDownloadUpdate(paramList);
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-        snb.c("WeishiDownloadUtil", "qq onDownloadUpdate progress = " + localDownloadInfo.f + ", url = " + localDownloadInfo.d);
-      }
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    super.onDownloadWait(paramDownloadInfo);
-    snb.d("WeishiDownloadUtil", "qq onDownloadWait info = " + paramDownloadInfo);
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    super.packageReplaced(paramString1, paramString2);
-    snb.d("WeishiDownloadUtil", "qq packageReplaced appid = " + paramString1 + ", packageName = " + paramString2);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat = null;
+    this.jdField_a_of_type_Skp = null;
+    this.jdField_a_of_type_JavaLangObject = null;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.jdField_a_of_type_JavaLangCharSequence = null;
+    this.b = null;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidViewView = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sko
  * JD-Core Version:    0.7.0.1
  */

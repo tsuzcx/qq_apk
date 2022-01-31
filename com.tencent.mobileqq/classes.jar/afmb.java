@@ -1,24 +1,29 @@
-class afmb
-  extends ajto
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.ArkAppMessage.Config;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+
+final class afmb
+  implements afpr
 {
-  afmb(afly paramafly) {}
-  
-  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (paramBoolean)
-    {
-      bcql.a(afly.a(this.a), 2131699212, 3000).a();
-      if (afly.a(this.a) != 23) {
-        this.a.a(true);
-      }
-      return;
+    paramQQAppInterface = (MessageForArkApp)paramChatMessage;
+    paramChatMessage = new ArkAppMessage.Config();
+    paramChatMessage.fromString(paramQQAppInterface.ark_app_message.config);
+    if ((paramChatMessage.type != null) && (paramChatMessage.type.equals("multiple"))) {
+      return 112;
     }
-    bcql.a(afly.a(this.a), 2131699211, 0).a();
+    if ((paramChatMessage.type != null) && (paramChatMessage.type.equals("card"))) {
+      return 81;
+    }
+    return 47;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afmb
  * JD-Core Version:    0.7.0.1
  */

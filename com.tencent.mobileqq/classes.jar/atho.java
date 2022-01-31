@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class atho
-  implements Parcelable.Creator<LocationInfo>
+class atho
+  implements almm
 {
-  public LocationInfo a(Parcel paramParcel)
-  {
-    return new LocationInfo(paramParcel);
-  }
+  atho(athn paramathn) {}
   
-  public LocationInfo[] a(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    return new LocationInfo[paramInt];
+    if (paramBoolean) {
+      athn.a(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogether.dpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atho
  * JD-Core Version:    0.7.0.1
  */

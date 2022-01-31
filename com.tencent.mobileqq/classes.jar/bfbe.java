@@ -1,46 +1,21 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityFragment;
 
-@behk(a="PageCreateTask")
-public class bfbe
-  extends bffk
+class bfbe
+  implements DialogInterface.OnClickListener
 {
-  public bfbe(Context paramContext, beqm parambeqm)
-  {
-    super(paramContext, parambeqm);
-  }
+  bfbe(bfbd parambfbd) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (a().getRuntime() == null)
-    {
-      betc.c("ServiceInitTask", "runtime is null!");
-      c();
-      return;
-    }
-    behs localbehs = a().getRuntime().a();
-    if (!(localbehs instanceof AppBrandPageContainer))
-    {
-      betc.c("ServiceInitTask", "PageContainer type is incorrect! page=" + localbehs);
-      c();
-      return;
-    }
-    try
-    {
-      ((AppBrandPageContainer)localbehs).a(null);
-      c();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      betc.d("ServiceInitTask", "pageContainer init exception!", localThrowable);
-      a(10, "Page创建失败");
-    }
+    paramDialogInterface.dismiss();
+    this.a.a.b(110405, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfbe
  * JD-Core Version:    0.7.0.1
  */

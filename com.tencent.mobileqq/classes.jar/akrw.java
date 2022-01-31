@@ -1,33 +1,21 @@
-public class akrw
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
+
+class akrw
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public static boolean a(int paramInt)
-  {
-    return (paramInt == -2000) || (paramInt == -20000) || (paramInt == -3004) || (paramInt == -3005) || (paramInt == -3000) || (paramInt == -3001) || (paramInt == -1032);
-  }
+  akrw(akru paramakru) {}
   
-  public static boolean b(int paramInt)
+  public void onAudioFocusChange(int paramInt)
   {
-    return paramInt == -2022;
-  }
-  
-  public static boolean c(int paramInt)
-  {
-    return (paramInt == -2005) || (paramInt == -2014) || (paramInt == -2017);
-  }
-  
-  public static boolean d(int paramInt)
-  {
-    return paramInt == -1035;
-  }
-  
-  public static boolean e(int paramInt)
-  {
-    return paramInt == -2011;
+    if (QLog.isColorLevel()) {
+      QLog.d(akru.a, 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akrw
  * JD-Core Version:    0.7.0.1
  */

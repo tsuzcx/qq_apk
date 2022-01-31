@@ -3,17 +3,17 @@ package com.tencent.qqmini.sdk.manager;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import betc;
-import betw;
-import bfgi;
-import bfhk;
+import bgsd;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.DebugUtil;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 
 public class EngineVersion
   implements Parcelable, Comparable<EngineVersion>
 {
-  public static final Parcelable.Creator<EngineVersion> CREATOR = new betw();
+  public static final Parcelable.Creator<EngineVersion> CREATOR = new bgsd();
   public String a;
   public String b;
   
@@ -21,8 +21,8 @@ public class EngineVersion
   
   public EngineVersion(String paramString)
   {
-    if (bfhk.a()) {}
-    for (String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();; str = "1.1.0")
+    if (QUAUtil.isQQApp()) {}
+    for (String str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();; str = "1.3.1")
     {
       this.a = str;
       this.b = paramString;
@@ -91,7 +91,7 @@ public class EngineVersion
     }
     catch (Exception paramEngineVersion)
     {
-      betc.d("EngineVersion", "[MiniEng] compare error " + bfgi.a(paramEngineVersion));
+      QMLog.e("EngineVersion", "[MiniEng] compare error " + DebugUtil.getPrintableStackTrace(paramEngineVersion));
     }
     return 0;
   }
@@ -148,7 +148,7 @@ public class EngineVersion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.EngineVersion
  * JD-Core Version:    0.7.0.1
  */

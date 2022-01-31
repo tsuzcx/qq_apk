@@ -1,87 +1,44 @@
+import android.media.MediaPlayer;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
 
 public class lfr
-  implements INetInfoHandler
+  extends lfv
 {
-  VideoAppInterface a;
-  
-  public lfr(VideoAppInterface paramVideoAppInterface)
+  public lfr(VideoController paramVideoController)
   {
-    this.a = paramVideoAppInterface;
+    super(paramVideoController);
   }
   
-  public void onNetMobile2None()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2None");
+    QLog.w(VideoController.jdField_a_of_type_JavaLangString, 1, "onCompletion, request, mainSession[" + this.jdField_a_of_type_ComTencentAvVideoController.a() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
     }
-    VideoController localVideoController = this.a.a();
-    if (localVideoController != null) {
-      localVideoController.a(0);
+    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().n())
+    {
+      this.jdField_a_of_type_Long = 0L;
+      return;
     }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetMobile2Wifi");
-    }
-    paramString = this.a.a();
-    if (paramString != null) {
-      paramString.a(1);
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Mobile");
-    }
-    paramString = this.a.a();
-    if (paramString != null) {
-      paramString.a(2);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetNone2Wifi");
-    }
-    paramString = this.a.a();
-    if (paramString != null) {
-      paramString.a(1);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2Mobile");
-    }
-    paramString = this.a.a();
-    if (paramString != null) {
-      paramString.a(2);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSFNetInfoMonitor", 2, "Net Change: onNetWifi2None");
-    }
-    VideoController localVideoController = this.a.a();
-    if (localVideoController != null) {
-      localVideoController.a(0);
+    this.jdField_a_of_type_ComTencentAvVideoController.b.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    paramMediaPlayer = this.jdField_a_of_type_ComTencentAvVideoController;
+    long l = this.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Long == 2L) {}
+    for (int i = 4;; i = 1)
+    {
+      paramMediaPlayer.a(l, 2131230741, i, this.jdField_a_of_type_ComTencentAvVideoController.b);
+      this.jdField_a_of_type_ComTencentAvVideoController.a().a("OnCompletionListener", 6);
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(14), Integer.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().y), this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) });
+      this.jdField_a_of_type_Long = 0L;
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfr
  * JD-Core Version:    0.7.0.1
  */

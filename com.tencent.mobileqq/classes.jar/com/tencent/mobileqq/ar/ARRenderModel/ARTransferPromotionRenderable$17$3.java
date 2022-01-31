@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import alal;
+import amrb;
 import android.view.View;
 
 class ARTransferPromotionRenderable$17$3
@@ -11,12 +11,12 @@ class ARTransferPromotionRenderable$17$3
   public void run()
   {
     this.a.a.setVisibility(8);
-    alal.d(this.a.this$0, false);
+    amrb.d(this.a.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.17.3
  * JD-Core Version:    0.7.0.1
  */

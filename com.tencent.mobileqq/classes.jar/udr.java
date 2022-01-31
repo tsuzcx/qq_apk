@@ -1,41 +1,50 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class udr
-  implements TVK_SDKMgr.OnLogListener
+class udr
+  extends RecyclerView.Adapter<uds>
 {
-  public int d(String paramString1, String paramString2)
+  public List<FeedCloudMeta.StTagInfo> a;
+  
+  private udr(udp paramudp)
   {
-    ved.b(paramString1, paramString2);
-    return 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public int e(String paramString1, String paramString2)
+  public uds a(ViewGroup paramViewGroup, int paramInt)
   {
-    ved.e(paramString1, paramString2);
-    return 0;
+    return new uds(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560544, paramViewGroup, false));
   }
   
-  public int i(String paramString1, String paramString2)
+  public void a(List<FeedCloudMeta.StTagInfo> paramList)
   {
-    ved.c(paramString1, paramString2);
-    return 0;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
   }
   
-  public int v(String paramString1, String paramString2)
+  public void a(uds paramuds, int paramInt)
   {
-    ved.b(paramString1, paramString2);
-    return 0;
+    paramuds.a((FeedCloudMeta.StTagInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramInt);
   }
   
-  public int w(String paramString1, String paramString2)
+  public int getItemCount()
   {
-    ved.d(paramString1, paramString2);
-    return 0;
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     udr
  * JD-Core Version:    0.7.0.1
  */

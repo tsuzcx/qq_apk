@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.mainpage;
 
-import ajya;
-import amtb;
-import bcql;
+import alpo;
+import aokd;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class MainPageFragment$3$1
   implements Runnable
@@ -17,17 +17,17 @@ class MainPageFragment$3$1
       this.this$1.val$miniAppInfo.topType = 0;
       MainPageFragment.access$500(this.this$1.this$0, this.this$1.val$miniAppInfo);
     }
-    if (amtb.g())
+    if (aokd.g())
     {
-      bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131706441) + amtb.c() + ajya.a(2131706437), 0).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131706813) + aokd.c() + alpo.a(2131706809), 0).a();
       return;
     }
-    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131694284), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131694433), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.MainPageFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

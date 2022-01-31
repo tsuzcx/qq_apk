@@ -1,83 +1,32 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.lang.reflect.Method;
 
-class aleg
-  implements alee
+public class aleg
 {
-  private IBinder a;
-  
-  aleg(IBinder paramIBinder)
+  public static void a(boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a(int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
     try
     {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      localParcel1.writeInt(paramInt);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
+      if (1 != BaseApplicationImpl.sProcessId) {
+        return;
+      }
+      ClassLoader localClassLoader = BaseApplicationImpl.sApplication.getClassLoader();
+      if ((localClassLoader != null) && (!TextUtils.isEmpty(paramString2)) && (paramString2.contains("Apollo")))
+      {
+        localClassLoader.loadClass("com.tencent.mobileqq.apollo.utils.ApolloUtil").getMethod("handleApolloNoCatchCrash", new Class[] { Boolean.TYPE, String.class, String.class }).invoke(null, new Object[] { Boolean.valueOf(paramBoolean), paramString1, paramString2 });
+        return;
+      }
     }
-    finally
+    catch (Throwable paramString1)
     {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      localParcel1.writeInt(paramInt1);
-      localParcel1.writeInt(paramInt2);
-      this.a.transact(3, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      paramString1.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aleg
  * JD-Core Version:    0.7.0.1
  */

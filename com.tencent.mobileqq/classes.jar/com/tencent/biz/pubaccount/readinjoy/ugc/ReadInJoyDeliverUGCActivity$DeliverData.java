@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.ugc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qet;
+import qoz;
 
 public class ReadInJoyDeliverUGCActivity$DeliverData
   implements Parcelable
 {
-  public static final Parcelable.Creator<DeliverData> CREATOR = new qet();
+  public static final Parcelable.Creator<DeliverData> CREATOR = new qoz();
   private int jdField_a_of_type_Int = 9;
   private int[] jdField_a_of_type_ArrayOfInt = new int[this.jdField_a_of_type_Int];
   private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[this.jdField_a_of_type_Int];
@@ -134,7 +134,7 @@ public class ReadInJoyDeliverUGCActivity$DeliverData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity.DeliverData
  * JD-Core Version:    0.7.0.1
  */

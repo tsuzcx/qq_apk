@@ -1,25 +1,22 @@
-import android.os.Handler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.9;
 
-class anfb
-  implements mxl
+public class anfb
+  implements DialogInterface.OnClickListener
 {
-  anfb(anez paramanez, mxk[] paramArrayOfmxk) {}
+  public anfb(ArkAppDownloadModule.9 param9) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!paramBoolean)
-    {
-      anez.a(this.jdField_a_of_type_Anez).removeCallbacks(anez.a(this.jdField_a_of_type_Anez));
-      anez.a(this.jdField_a_of_type_Anez).run();
-      if (this.jdField_a_of_type_ArrayOfMxk[0] != null) {
-        this.jdField_a_of_type_ArrayOfMxk[0].a();
-      }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfb
  * JD-Core Version:    0.7.0.1
  */

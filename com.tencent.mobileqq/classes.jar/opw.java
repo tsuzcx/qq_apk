@@ -1,259 +1,215 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.data.ReadInJoyActivityDAUInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.KandianSubscribeReportUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.UEC;
-import com.tencent.mobileqq.statistics.UEC.UECItem;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.manager.Manager;
-import mqq.os.MqqHandler;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class opw
-  implements Handler.Callback, axsb, Manager
 {
-  private aukp jdField_a_of_type_Aukp;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HashMap<String, ReadInJoyActivityDAUInfo> jdField_a_of_type_JavaUtilHashMap;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private static Map<String, String> a = new HashMap();
   
-  public opw(QQAppInterface paramQQAppInterface)
+  static
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap(4);
-    this.jdField_a_of_type_MqqOsMqqHandler = new bbdc(ThreadManager.getSubThreadLooper(), this);
+    b();
   }
   
-  private String a()
+  public static String a()
   {
-    return new SimpleDateFormat("yyyyMMdd").format(new Date());
+    String str2 = (String)a.get("folder_status");
+    String str1;
+    if (str2 != null)
+    {
+      str1 = str2;
+      if (!TextUtils.isEmpty(str2)) {}
+    }
+    else
+    {
+      str1 = "1";
+    }
+    return str1;
   }
   
-  public String a(String paramString1, String paramString2)
+  private static String a(MessageRecord paramMessageRecord)
   {
+    if ((paramMessageRecord == null) || (!(paramMessageRecord instanceof MessageForStructing))) {}
+    do
+    {
+      return null;
+      paramMessageRecord = (MessageForStructing)paramMessageRecord;
+      paramMessageRecord.parse();
+    } while ((paramMessageRecord.structingMsg == null) || (TextUtils.isEmpty(paramMessageRecord.structingMsg.mExtraData)));
     try
     {
-      arrayOfString = paramString2.split("\\|");
-      if (arrayOfString == null) {
-        return paramString1;
-      }
-      i = 0;
+      paramMessageRecord = new JSONObject(paramMessageRecord.structingMsg.mExtraData).optString("uin", "");
+      return paramMessageRecord;
     }
-    catch (Exception localException1)
+    catch (JSONException paramMessageRecord)
     {
-      try
-      {
-        String[] arrayOfString;
-        int i;
-        if (i >= arrayOfString.length) {
-          break label165;
-        }
-        String str1 = arrayOfString[i];
-        int j = str1.indexOf("+");
-        int k = str1.indexOf(":");
-        paramString2 = paramString1;
-        if (j > 0)
-        {
-          paramString2 = paramString1;
-          if (k > 0)
-          {
-            paramString2 = str1.substring(0, j);
-            String str2 = str1.substring(j + 1, k);
-            str1 = str1.substring(k + 1);
-            paramString2 = UEC.a(paramString1, paramString2, Integer.valueOf(str2).intValue(), Integer.valueOf(str1).intValue());
-          }
-        }
-        i += 1;
-        paramString1 = paramString2;
-      }
-      catch (Exception localException2)
-      {
-        label129:
-        break label129;
-      }
-      localException1 = localException1;
-      paramString2 = paramString1;
-      if (!QLog.isColorLevel()) {
-        break label165;
-      }
-      QLog.d("Q.activity_dau", 2, "saveToDB|preActivityList error:" + localException1);
-      paramString2 = paramString1;
+      paramMessageRecord.printStackTrace();
     }
-    paramString2 = paramString1;
-    label165:
-    return paramString2;
-    return paramString1;
+    return null;
   }
   
-  public void a(ArrayList<UEC.UECItem> paramArrayList)
+  public static Map<String, String> a()
   {
-    if (bbkb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
-    {
-      Message localMessage = new Message();
-      localMessage.what = 0;
-      localMessage.obj = paramArrayList;
-      this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-    }
+    return a;
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public static void a()
   {
-    Object localObject2;
-    Object localObject3;
-    if (paramMessage.what == 0)
+    Object localObject = (QQAppInterface)ors.a();
+    if (localObject == null) {}
+    do
     {
-      paramMessage = (ArrayList)paramMessage.obj;
-      if (paramMessage != null)
+      return;
+      localObject = ((QQAppInterface)localObject).a().b(aljq.aR, 1008);
+    } while ((localObject == null) || (((MessageRecord)localObject).isread) || (((MessageRecord)localObject).extLong != 1));
+    ThreadManager.post(new KandianSubscribeReportUtils.1((MessageRecord)localObject), 8, null, false);
+    a("0X80093FF", (MessageRecord)localObject);
+    b();
+  }
+  
+  public static void a(MessageRecord paramMessageRecord)
+  {
+    a("0X8009400", paramMessageRecord);
+  }
+  
+  private static void a(String paramString, MessageRecord paramMessageRecord)
+  {
+    int k = 1;
+    String str3 = a(paramMessageRecord);
+    String str4 = syb.a(aljq.aR) + "";
+    Object localObject3 = KandianRedDotInfo.createRedDotFromMessageRecord(paramMessageRecord, "kandian_dt_red_dot_info");
+    Object localObject1;
+    String str1;
+    Object localObject4;
+    String str2;
+    if (localObject3 != null) {
+      if ((((KandianRedDotInfo)localObject3).articleIDList != null) && (!((KandianRedDotInfo)localObject3).articleIDList.isEmpty()))
       {
-        paramMessage = paramMessage.iterator();
-        label308:
-        while (paramMessage.hasNext())
-        {
-          localObject2 = (UEC.UECItem)paramMessage.next();
-          localObject1 = ((UEC.UECItem)localObject2).jdField_a_of_type_JavaLangString;
-          if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject1))
-          {
-            localObject3 = (ReadInJoyActivityDAUInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
-            ((ReadInJoyActivityDAUInfo)localObject3).count += 1;
-            ((ReadInJoyActivityDAUInfo)localObject3).showTime += ((UEC.UECItem)localObject2).jdField_a_of_type_Long;
-            ((ReadInJoyActivityDAUInfo)localObject3).displayCount += ((UEC.UECItem)localObject2).jdField_b_of_type_Int;
-            ((ReadInJoyActivityDAUInfo)localObject3).preActivityList = a(((ReadInJoyActivityDAUInfo)localObject3).preActivityList, ((UEC.UECItem)localObject2).jdField_b_of_type_JavaLangString);
-            ((ReadInJoyActivityDAUInfo)localObject3).activeDate = a();
-          }
-          for (;;)
-          {
-            if (!QLog.isColorLevel()) {
-              break label308;
-            }
-            localObject2 = (ReadInJoyActivityDAUInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
-            if (localObject2 == null) {
-              break;
-            }
-            QLog.d("Q.activity_dau", 2, "reportInternal|activityName:" + (String)localObject1 + " count:" + ((ReadInJoyActivityDAUInfo)localObject2).count + " time:" + ((ReadInJoyActivityDAUInfo)localObject2).showTime + " dis:" + ((ReadInJoyActivityDAUInfo)localObject2).displayCount + " pre:" + ((ReadInJoyActivityDAUInfo)localObject2).preActivityList);
-            break;
-            localObject3 = new ReadInJoyActivityDAUInfo();
-            ((ReadInJoyActivityDAUInfo)localObject3).count = 1;
-            ((ReadInJoyActivityDAUInfo)localObject3).activityName = ((String)localObject1);
-            ((ReadInJoyActivityDAUInfo)localObject3).showTime = ((UEC.UECItem)localObject2).jdField_a_of_type_Long;
-            ((ReadInJoyActivityDAUInfo)localObject3).displayCount = ((UEC.UECItem)localObject2).jdField_b_of_type_Int;
-            ((ReadInJoyActivityDAUInfo)localObject3).preActivityList = ((UEC.UECItem)localObject2).jdField_b_of_type_JavaLangString;
-            ((ReadInJoyActivityDAUInfo)localObject3).activeDate = a();
-            this.jdField_a_of_type_JavaUtilHashMap.put(localObject1, localObject3);
-          }
-        }
-      }
-      if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 4)
-      {
-        this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1);
+        localObject1 = ((KandianRedDotInfo)localObject3).articleIDList.get(0) + "";
+        str1 = ((KandianRedDotInfo)localObject3).strategyID + "";
+        localObject4 = ((KandianRedDotInfo)localObject3).forderStatus;
+        str2 = ((KandianRedDotInfo)localObject3).algorithmID + "";
+        localObject3 = localObject1;
+        localObject1 = localObject4;
       }
     }
-    while (paramMessage.what != 1)
-    {
-      do
-      {
-        return false;
-      } while (this.jdField_a_of_type_MqqOsMqqHandler.hasMessages(1));
-      this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, 120000L);
-      return false;
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Aukp != null) {
-        break label418;
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) {
-        return false;
-      }
-    }
-    finally {}
-    this.jdField_a_of_type_Aukp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    label418:
-    paramMessage = this.jdField_a_of_type_JavaUtilHashMap.keySet();
-    Object localObject1 = this.jdField_a_of_type_Aukp.a();
     for (;;)
     {
-      try
+      localObject4 = localObject1;
+      if ("0X8009400".equals(paramString))
       {
-        ((aukr)localObject1).a();
-        localObject2 = paramMessage.iterator();
-        if (!((Iterator)localObject2).hasNext()) {
-          break label745;
+        localObject4 = localObject1;
+        if (paramMessageRecord.isread) {
+          localObject4 = "0";
         }
-        localObject3 = (String)((Iterator)localObject2).next();
-        localReadInJoyActivityDAUInfo = (ReadInJoyActivityDAUInfo)this.jdField_a_of_type_JavaUtilHashMap.get(localObject3);
-        paramMessage = (ReadInJoyActivityDAUInfo)this.jdField_a_of_type_Aukp.a(ReadInJoyActivityDAUInfo.class, (String)localObject3);
-        if (paramMessage != null) {
-          continue;
+      }
+      int i;
+      if (syb.b(aljq.aR) > 0)
+      {
+        i = 1;
+        label200:
+        if (!"1".equals(paramMessageRecord.getExtInfoFromExtStr("public_account_msg_unread_flag"))) {
+          break label325;
         }
-        paramMessage = new ReadInJoyActivityDAUInfo();
-        paramMessage.activityName = ((String)localObject3);
-        paramMessage.count = localReadInJoyActivityDAUInfo.count;
-        paramMessage.showTime = localReadInJoyActivityDAUInfo.showTime;
-        paramMessage.displayCount = localReadInJoyActivityDAUInfo.displayCount;
-        paramMessage.preActivityList = localReadInJoyActivityDAUInfo.preActivityList;
-        paramMessage.activeDate = a();
       }
-      catch (Exception paramMessage)
+      label325:
+      for (int j = 0;; j = 1)
       {
-        ReadInJoyActivityDAUInfo localReadInJoyActivityDAUInfo;
-        paramMessage.printStackTrace();
-        ((aukr)localObject1).b();
-        if (!QLog.isColorLevel()) {
-          continue;
+        paramMessageRecord = new JSONObject();
+        try
+        {
+          paramMessageRecord.put("folder_status", localObject4);
+          paramMessageRecord.put("message_status", i);
+          paramMessageRecord.put("algorithm_id", str2);
+          paramMessageRecord.put("reddot_style", j);
+          paramMessageRecord.put("os", "1");
+          i = k;
+          if (TextUtils.isEmpty(str3)) {
+            i = 0;
+          }
+          paramMessageRecord.put("avatar", i);
         }
-        QLog.d("Q.activity_dau", 2, "saveToDB|cache size:" + this.jdField_a_of_type_JavaUtilHashMap.size());
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        return false;
-        paramMessage.count += localReadInJoyActivityDAUInfo.count;
-        paramMessage.showTime += localReadInJoyActivityDAUInfo.showTime;
-        paramMessage.displayCount += localReadInJoyActivityDAUInfo.displayCount;
-        paramMessage.preActivityList = a(paramMessage.preActivityList, localReadInJoyActivityDAUInfo.preActivityList);
-        paramMessage.activeDate = a();
-        continue;
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            localException.printStackTrace();
+          }
+        }
+        nrt.a(null, "CliOper", "", str3, paramString, paramString, 0, 0, str4, (String)localObject3, str1, paramMessageRecord.toString(), false);
+        return;
+        localObject1 = null;
+        break;
+        i = 0;
+        break label200;
       }
-      finally
-      {
-        ((aukr)localObject1).b();
-      }
-      if (paramMessage.getStatus() == 1000)
-      {
-        this.jdField_a_of_type_Aukp.b(paramMessage);
-      }
-      else if ((paramMessage.getStatus() == 1001) || (paramMessage.getStatus() == 1002))
-      {
-        this.jdField_a_of_type_Aukp.a(paramMessage);
-        continue;
-        label745:
-        ((aukr)localObject1).c();
-        ((aukr)localObject1).b();
-      }
+      str2 = null;
+      Object localObject2 = null;
+      str1 = null;
+      localObject3 = null;
     }
   }
   
-  public void onDestroy()
+  private static Map<String, String> b()
   {
-    if (this.jdField_a_of_type_Aukp != null) {}
-    try
-    {
-      this.jdField_a_of_type_Aukp.a();
-      return;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("folder_status", "1");
+    localHashMap.put("algorithm_id", "0");
+    localHashMap.put("strategy_id", "0");
+    localHashMap.put("action_data", "");
+    Object localObject = (QQAppInterface)ors.a();
+    if (localObject == null) {
+      return localHashMap;
     }
-    catch (Exception localException)
+    localObject = ((QQAppInterface)localObject).a().b(aljq.aR, 1008);
+    if (localObject == null) {
+      return localHashMap;
+    }
+    if (((MessageRecord)localObject).isread) {
+      return localHashMap;
+    }
+    if ((localObject instanceof MessageForStructing))
     {
-      localException.printStackTrace();
+      localObject = (MessageForStructing)localObject;
+      if (!((MessageForStructing)localObject).mIsParsed) {
+        ((MessageForStructing)localObject).parse();
+      }
+      if (((MessageForStructing)localObject).structingMsg == null) {
+        return localHashMap;
+      }
+      localHashMap.put("folder_status", ((MessageForStructing)localObject).structingMsg.reportEventFolderStatusValue);
+      localHashMap.put("algorithm_id", ((MessageForStructing)localObject).structingMsg.mAlgorithmIds);
+      localHashMap.put("strategy_id", ((MessageForStructing)localObject).structingMsg.mStrategyIds);
+      localHashMap.put("action_data", ((MessageForStructing)localObject).structingMsg.mMsgAction);
+    }
+    return localHashMap;
+  }
+  
+  public static void b()
+  {
+    Map localMap = b();
+    if (localMap != null)
+    {
+      a = localMap;
+      QLog.d(opw.class.getSimpleName(), 2, "update kandian subscribe red pnt info success ");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     opw
  * JD-Core Version:    0.7.0.1
  */

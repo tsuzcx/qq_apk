@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoGpuProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoPluginProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoTransparentActivity;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
 
 public class bhqn
+  implements ContextMenu.ContextMenuInfo
 {
-  public static Class<? extends PluginProxyActivity> a(String paramString)
+  public int a;
+  public long a;
+  public View a;
+  
+  public bhqn(View paramView, int paramInt, long paramLong)
   {
-    if (QzoneVerticalVideoPluginProxyActivity.a(QzoneVerticalVideoPluginProxyActivity.a(), paramString)) {
-      return QzoneVerticalVideoTransparentActivity.class;
-    }
-    return QzoneVerticalVideoGpuProxyActivity.class;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhqn
  * JD-Core Version:    0.7.0.1
  */

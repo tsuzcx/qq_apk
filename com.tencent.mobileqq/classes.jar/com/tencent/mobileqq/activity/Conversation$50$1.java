@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aaxc;
-import ayaq;
+import acoa;
+import azyl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.util.Pair;
 import java.util.ArrayList;
@@ -17,16 +17,16 @@ public class Conversation$50$1
     for (;;)
     {
       return;
-      ayaq localayaq = (ayaq)this.a.this$0.a.getManager(62);
-      if (localayaq != null)
+      azyl localazyl = (azyl)this.a.this$0.a.getManager(62);
+      if (localazyl != null)
       {
-        ArrayList localArrayList = localayaq.a("sub.uin.all");
+        ArrayList localArrayList = localazyl.a("sub.uin.all");
         int j = localArrayList.size();
         int i = 0;
         while (i < j)
         {
           Pair localPair = (Pair)localArrayList.get(i);
-          localayaq.a(this.a.this$0.a, this.a.this$0.a(), localPair, new aaxc(this, localayaq, localPair));
+          localazyl.a(this.a.this$0.a, this.a.this$0.a(), localPair, new acoa(this, localazyl, localPair));
           i += 1;
         }
       }
@@ -35,7 +35,7 @@ public class Conversation$50$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.50.1
  * JD-Core Version:    0.7.0.1
  */

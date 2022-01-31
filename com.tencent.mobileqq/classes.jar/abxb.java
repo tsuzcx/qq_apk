@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
 public class abxb
-  implements xox
+  implements DialogInterface.OnDismissListener
 {
-  WeakReference<QQSettingMe> a;
+  public abxb(AddAccountActivity paramAddAccountActivity) {}
   
-  public abxb(QQSettingMe paramQQSettingMe)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a = new WeakReference(paramQQSettingMe);
-  }
-  
-  public int a()
-  {
-    QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
-    if (localQQSettingMe != null) {
-      return localQQSettingMe.a();
-    }
-    return 0;
+    AddAccountActivity.c(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxb
  * JD-Core Version:    0.7.0.1
  */

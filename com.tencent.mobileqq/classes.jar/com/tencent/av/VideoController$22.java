@@ -1,8 +1,8 @@
 package com.tencent.av;
 
-import bbfj;
+import bdee;
 import com.tencent.av.app.VideoAppInterface;
-import lga;
+import lid;
 import mqq.app.MobileQQ;
 
 class VideoController$22
@@ -12,9 +12,9 @@ class VideoController$22
   
   public void run()
   {
-    this.this$0.i = null;
+    this.this$0.j = null;
     this.this$0.a().a("acceptGAudioChat", 0);
-    boolean bool = bbfj.g(this.this$0.a.getApplication().getApplicationContext());
+    boolean bool = bdee.g(this.this$0.a.getApplication().getApplicationContext());
     VideoController localVideoController = this.this$0;
     int j = this.jdField_a_of_type_Int;
     long l = this.jdField_a_of_type_Long;
@@ -28,7 +28,7 @@ class VideoController$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.VideoController.22
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import behp;
-import bekr;
-import betc;
-import bewe;
+import bghn;
+import bgkd;
+import bguz;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,43 +17,43 @@ public class UpdateManagerJsPlugin
   public static final String NATIVE_EVENT_NAME_UPDATE_APP = "updateApp";
   private static final String TAG = "UpdateManagerJsPlugin";
   
-  public void getUpdateManager(bekr parambekr)
+  public void getUpdateManager(bgkd parambgkd)
   {
-    betc.a("UpdateManagerJsPlugin", "handleNativeRequest do nothing for " + parambekr.jdField_a_of_type_JavaLangString);
-    parambekr.a();
+    QMLog.d("UpdateManagerJsPlugin", "handleNativeRequest do nothing for " + parambgkd.jdField_a_of_type_JavaLangString);
+    parambgkd.a();
     try
     {
-      betc.a("UpdateManagerJsPlugin", "handleUpdateCheckResult() called with:  hasUpdate = [false]");
+      QMLog.d("UpdateManagerJsPlugin", "handleUpdateCheckResult() called with:  hasUpdate = [false]");
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("hasUpdate", false);
-      parambekr.jdField_a_of_type_Behp.a("onUpdateCheckResult", localJSONObject.toString(), 0);
+      parambgkd.jdField_a_of_type_Bghn.a("onUpdateCheckResult", localJSONObject.toString(), 0);
       return;
     }
-    catch (JSONException parambekr)
+    catch (JSONException parambgkd)
     {
-      betc.d("UpdateManagerJsPlugin", "handleNativeRequest", parambekr);
+      QMLog.e("UpdateManagerJsPlugin", "handleNativeRequest", parambgkd);
     }
   }
   
-  public void onUpdateCheckResult(bekr parambekr)
+  public void onUpdateCheckResult(bgkd parambgkd)
   {
-    betc.c("UpdateManagerJsPlugin", "handleNativeRequest " + parambekr.jdField_a_of_type_JavaLangString + " should not send from JS");
+    QMLog.w("UpdateManagerJsPlugin", "handleNativeRequest " + parambgkd.jdField_a_of_type_JavaLangString + " should not send from JS");
   }
   
-  public void onUpdateDownloadResult(bekr parambekr)
+  public void onUpdateDownloadResult(bgkd parambgkd)
   {
-    betc.c("UpdateManagerJsPlugin", "handleNativeRequest " + parambekr.jdField_a_of_type_JavaLangString + " should not send from JS");
+    QMLog.w("UpdateManagerJsPlugin", "handleNativeRequest " + parambgkd.jdField_a_of_type_JavaLangString + " should not send from JS");
   }
   
-  public void updateApp(bekr parambekr)
+  public void updateApp(bgkd parambgkd)
   {
-    bewe.a();
-    betc.a("UpdateManagerJsPlugin", "handleNativeRequest " + parambekr.jdField_a_of_type_JavaLangString);
+    bguz.a();
+    QMLog.d("UpdateManagerJsPlugin", "handleNativeRequest " + parambgkd.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.plugins.UpdateManagerJsPlugin
  * JD-Core Version:    0.7.0.1
  */

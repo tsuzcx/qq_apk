@@ -2,8 +2,8 @@ package com.tencent.mobileqq.webview.webso;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bchc;
-import bgyx;
+import begd;
+import bizu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.base.http.HttpBaseUtil;
@@ -29,12 +29,12 @@ class HybridWebReporter$ReportRunnable
 {
   int jdField_a_of_type_Int = 0;
   String jdField_a_of_type_JavaLangString;
-  ArrayList<bchc> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<begd> jdField_a_of_type_JavaUtilArrayList;
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 0;
   boolean jdField_b_of_type_Boolean = false;
   
-  public HybridWebReporter$ReportRunnable(ArrayList<bchc> paramArrayList)
+  public HybridWebReporter$ReportRunnable(ArrayList<begd> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -61,7 +61,7 @@ class HybridWebReporter$ReportRunnable
       {
         if (((Iterator)localObject2).hasNext())
         {
-          localJSONArray.put(((bchc)((Iterator)localObject2).next()).a());
+          localJSONArray.put(((begd)((Iterator)localObject2).next()).a());
           continue;
           if (localObject1 == null) {
             break;
@@ -114,7 +114,7 @@ class HybridWebReporter$ReportRunnable
       {
         for (;;)
         {
-          localObject = bgyx.a(BaseApplication.getContext(), str2, new StringEntity(this.jdField_a_of_type_JavaLangString, "UTF-8"));
+          localObject = bizu.a(BaseApplication.getContext(), str2, new StringEntity(this.jdField_a_of_type_JavaLangString, "UTF-8"));
           if (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200) {
             break label416;
           }
@@ -180,7 +180,7 @@ class HybridWebReporter$ReportRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.HybridWebReporter.ReportRunnable
  * JD-Core Version:    0.7.0.1
  */

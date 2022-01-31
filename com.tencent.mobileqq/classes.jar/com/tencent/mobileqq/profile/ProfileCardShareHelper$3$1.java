@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profile;
 
 import android.graphics.Bitmap;
-import auvb;
-import bcql;
+import awmn;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ProfileCardShareHelper$3$1
   implements Runnable
@@ -14,15 +14,15 @@ class ProfileCardShareHelper$3$1
     this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0.c();
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
-      auvb.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0, auvb.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), auvb.c(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), this.jdField_a_of_type_AndroidGraphicsBitmap);
+      awmn.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0, awmn.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), awmn.c(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), this.jdField_a_of_type_AndroidGraphicsBitmap);
       return;
     }
-    bcql.a(auvb.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), 1, 2131719488, 1).a();
+    QQToast.a(awmn.a(this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardShareHelper$3.this$0), 1, 2131720020, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardShareHelper.3.1
  * JD-Core Version:    0.7.0.1
  */

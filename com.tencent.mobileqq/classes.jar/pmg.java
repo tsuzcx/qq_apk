@@ -1,82 +1,54 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.articlesummary.UrlJumpInfo;
+import tencent.im.oidb.articlesummary.articlesummary.WeishiUGInfo;
 
-public class pmg
-  extends NativeText
+class pmg
+  implements ViewBase.OnClickListener
 {
-  protected float a = 0.0F;
+  pmg(pmf parampmf, pgd parampgd, Container paramContainer) {}
   
-  public pmg(VafContext paramVafContext)
+  public void onClick(ViewBase paramViewBase)
   {
-    super(paramVafContext);
-    this.mNative.setBackgroundColor(paramVafContext.getContext().getResources().getColor(2131167087));
-  }
-  
-  private String a(String paramString1, String paramString2)
-  {
-    return String.format(paramString1, new Object[] { paramString2 });
-  }
-  
-  public void a(long paramLong)
-  {
-    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new pmi(this, String.valueOf(paramLong)));
-    if (localReadInJoyUserInfo != null)
+    try
     {
-      setText(onh.d(localReadInJoyUserInfo.nick));
+      ArticleInfo localArticleInfo = this.jdField_a_of_type_Pgd.a();
+      opy.a(localArticleInfo, localArticleInfo.mProteusTemplateBean, paramViewBase);
+      if (bdem.a(BaseApplicationImpl.getContext(), "com.tencent.reading")) {
+        if (this.jdField_a_of_type_Pgd.a().weishiUGInfo.msg_url_jump_info.uint32_jump_type.get() == 2)
+        {
+          paramViewBase = pmf.a(this.jdField_a_of_type_Pmf, this.jdField_a_of_type_Pgd.a().weishiUGInfo.msg_url_jump_info.bytes_jump_schema);
+          if (!TextUtils.isEmpty(paramViewBase)) {
+            pmf.a(this.jdField_a_of_type_Pmf, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+          }
+        }
+      }
+      for (;;)
+      {
+        nwh.a(pmf.a(this.jdField_a_of_type_Pmf, this.jdField_a_of_type_Pgd.a().weishiUGInfo.bytes_report_base_url) + pmf.a(this.jdField_a_of_type_Pmf, this.jdField_a_of_type_Pgd.a().weishiUGInfo.bytes_click_report_tail));
+        return;
+        if (this.jdField_a_of_type_Pgd.a().weishiUGInfo.msg_url_jump_info.uint32_jump_type.get() == 1)
+        {
+          paramViewBase = pmf.a(this.jdField_a_of_type_Pmf, this.jdField_a_of_type_Pgd.a().weishiUGInfo.msg_url_jump_info.bytes_jump_url);
+          if (!TextUtils.isEmpty(paramViewBase)) {
+            ayrd.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+          }
+        }
+      }
       return;
     }
-    setText(ReadInJoyUserInfoModule.a());
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new pmh(this, String.valueOf(paramLong), paramString));
-    if (localReadInJoyUserInfo != null)
-    {
-      setText(a(paramString, onh.d(localReadInJoyUserInfo.nick)));
-      return;
-    }
-    setText(a(paramString, ReadInJoyUserInfoModule.a()));
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    if (this.a > 0.0F) {
-      this.mNative.setLineSpacing(this.a, 1.0F);
-    }
-  }
-  
-  public boolean setAttribute(int paramInt, String paramString)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return super.setAttribute(paramInt, paramString);
-      try
-      {
-        this.a = Utils.dp2px(Double.valueOf(paramString).doubleValue());
-        return true;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("ReadInjoyTextView", 1, "", localException);
-      }
-    }
+    catch (Exception paramViewBase) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pmg
  * JD-Core Version:    0.7.0.1
  */

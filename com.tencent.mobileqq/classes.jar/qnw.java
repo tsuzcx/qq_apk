@@ -1,19 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGameAdComManager.2;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGameAdComManager.2.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.VisibleSetParam;
 
-public class qnw
-  implements obi
+public final class qnw
+  implements Parcelable.Creator<VisibleSetParam>
 {
-  public qnw(VideoFeedsGameAdComManager.2.1 param1) {}
-  
-  public void a()
+  public VisibleSetParam a(Parcel paramParcel)
   {
-    this.a.a.this$0.b(true);
+    return new VisibleSetParam(paramParcel);
+  }
+  
+  public VisibleSetParam[] a(int paramInt)
+  {
+    return new VisibleSetParam[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qnw
  * JD-Core Version:    0.7.0.1
  */

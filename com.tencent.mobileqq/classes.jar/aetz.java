@@ -1,50 +1,54 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aetz
-  extends Handler
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aetz(TroopChatPie paramTroopChatPie, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aetz(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    case 3: 
-    default: 
-    case 1: 
-    case 2: 
-    case 4: 
-      do
+      if ((VoiceTextEditPanel.a(this.a).get() > 0) && (bdje.a(VoiceTextEditPanel.a(this.a))) && (!VoiceTextEditPanel.a(this.a).isEnabled())) {
+        this.a.setSendEnable(true);
+      }
+      if (VoiceTextEditPanel.a(this.a) != null) {
+        VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), true).commit();
+      }
+      VoiceTextEditPanel.a(this.a).setText(2131719770);
+      if (this.a.a())
       {
-        do
-        {
-          return;
-          this.a.a(null, false);
-          return;
-          paramMessage = paramMessage.obj;
-        } while (!(paramMessage instanceof bale));
-        this.a.a((bale)paramMessage);
+        azmj.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 2, 0, "", "", "", "");
         return;
-      } while (TroopChatPie.j(this.a) == null);
-      TroopChatPie.k(this.a).a();
+      }
+      azmj.b(null, "dc00898", "", "", "0X800A1D8", "0X800A1D8", 1, 0, "", "", "", "");
       return;
     }
-    String str = (String)paramMessage.obj;
-    int i = paramMessage.arg1;
-    bcql.a(this.a.a, str, i).b(this.a.a.getTitleBarHeight());
+    if (VoiceTextEditPanel.a(this.a) != null) {
+      VoiceTextEditPanel.a(this.a).edit().putBoolean("businessinfo_ptt_vt_send_type_" + VoiceTextEditPanel.a(this.a).getCurrentAccountUin(), false).commit();
+    }
+    VoiceTextEditPanel.a(this.a).setText(2131719768);
+    if ((VoiceTextEditPanel.a(this.a).get() == 5) && (bdje.a(VoiceTextEditPanel.a(this.a)))) {
+      this.a.setSendEnable(false);
+    }
+    if (this.a.a())
+    {
+      azmj.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 2, 0, "", "", "", "");
+      return;
+    }
+    azmj.b(null, "dc00898", "", "", "0X800A1D9", "0X800A1D9", 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetz
  * JD-Core Version:    0.7.0.1
  */

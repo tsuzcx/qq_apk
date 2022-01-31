@@ -1,28 +1,35 @@
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public final class akhj
-  extends MqqHandler
+public class akhj
 {
-  public akhj(Looper paramLooper)
+  public int a;
+  public DiscussionInfo a;
+  public TroopInfo a;
+  public int b;
+  
+  public akhj(int paramInt, awbv paramawbv)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = ((TroopInfo)paramawbv);
   }
   
-  public void removeCallbacksAndMessages(Object paramObject)
+  public akhj(int paramInt, DiscussionInfo paramDiscussionInfo)
   {
-    if (paramObject == null)
-    {
-      QLog.e("ThreadManager", 1, "global fileHandler cannot excute removeCallbacksAndMessages");
-      return;
-    }
-    super.removeCallbacksAndMessages(paramObject);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+  }
+  
+  public akhj(int paramInt1, DiscussionInfo paramDiscussionInfo, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = paramDiscussionInfo;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhj
  * JD-Core Version:    0.7.0.1
  */

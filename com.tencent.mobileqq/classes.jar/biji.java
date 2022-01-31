@@ -1,30 +1,20 @@
+import android.text.TextUtils;
+
 class biji
-  implements bios
+  implements bijg
 {
-  biji(bijd parambijd) {}
+  biji(bijh parambijh) {}
   
-  public void a()
+  public void a(String paramString1, String paramString2)
   {
-    bijd.a(this.a).a(null);
-  }
-  
-  public void a(bire parambire)
-  {
-    if (bijd.a(this.a) == biwo.a)
-    {
-      bijd.a(this.a).a(parambire);
-      return;
+    if (!TextUtils.isEmpty(paramString1)) {
+      bijh.a(this.a, paramString1, new String[] { paramString2 });
     }
-    bjah.d("AEPituCameraUnit", "onMaterialSelected---but current capture mode is not normal");
   }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biji
  * JD-Core Version:    0.7.0.1
  */

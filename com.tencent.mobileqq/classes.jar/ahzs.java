@@ -1,27 +1,169 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.history.link.search.TroopAllMessageResultAdapter.1;
+import com.tencent.mobileqq.activity.history.link.search.TroopAllMessageResultAdapter.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.ColorNickTextView;
+import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class ahzs
-  implements MediaPlayer.OnCompletionListener
+  extends aibl
 {
-  public ahzs(FixedSizeVideoView paramFixedSizeVideoView) {}
+  public Object a;
+  private SimpleDateFormat a;
+  public List<aicu> a;
+  public Set<Long> a;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public ahzs(Context paramContext, bhoe parambhoe, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    if (this.a.a != null)
+    super(paramContext, parambhoe, paramSessionInfo, paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("M月d日");
+  }
+  
+  public void a()
+  {
+    this.b.clear();
+    notifyDataSetChanged();
+  }
+  
+  public void a(long paramLong, String paramString, int paramInt)
+  {
+    ThreadManager.post(new TroopAllMessageResultAdapter.1(this, paramString, paramInt, paramLong), 8, null, false);
+  }
+  
+  public void a(List<aicu> paramList, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    Object localObject;
+    int i;
+    if (QLog.isColorLevel())
     {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
+      localObject = new StringBuilder().append("setMessageItems loadType: ").append(paramInt1).append(", searchMode: ").append(paramInt2).append(", cloudGetCompleted: ").append(paramBoolean).append(", messageItems size: ");
+      if (paramList == null)
+      {
+        i = 0;
+        QLog.d("LinkMessageResultAdapter", 2, i);
       }
-      this.a.a.a(paramMediaPlayer);
+    }
+    else
+    {
+      if ((paramInt1 != 1) || (paramInt2 != 0)) {
+        break label98;
+      }
+      this.b = paramList;
+    }
+    label98:
+    do
+    {
+      do
+      {
+        return;
+        i = paramList.size();
+        break;
+        if ((paramInt1 == 2) && (paramInt2 == 0))
+        {
+          this.b.addAll(paramList);
+          return;
+        }
+      } while ((paramInt1 != 4) || (paramList == null) || (paramList.size() == 0) || (paramInt2 != 1));
+      if ((this.b.size() <= 0) || (paramList.size() <= 0)) {
+        break label237;
+      }
+      localObject = (aicu)paramList.get(0);
+      aicu localaicu = (aicu)this.b.get(this.b.size() - 1);
+      if (((aicu)localObject).a.time <= localaicu.a.time) {
+        break label237;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("LinkMessageResultAdapter", 2, "setMessageItems: error firstItem time > lastItem time");
+    return;
+    label237:
+    this.b.addAll(paramList);
+  }
+  
+  public void a(List<aicu> paramList, String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("LinkMessageResultAdapter", 2, "displayCloudMessages...");
+    }
+    ThreadManager.post(new TroopAllMessageResultAdapter.2(this, paramString, paramLong, paramList), 8, null, false);
+  }
+  
+  public void a(List<aicu> paramList, boolean paramBoolean)
+  {
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LinkMessageResultAdapter", 2, "mergeMsgsAtFirstTime: merge cloud and local msgs cloudGetCompleted: " + paramBoolean);
+    }
+    this.b.clear();
+    this.b.addAll(paramList);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    aicu localaicu = (aicu)getItem(paramInt);
+    MessageRecord localMessageRecord;
+    Object localObject;
+    if (paramView == null)
+    {
+      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559260, null);
+      paramViewGroup = new aibm();
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131377553));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377555));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367808));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131369115));
+      paramView.setTag(paramViewGroup);
+      localMessageRecord = localaicu.a;
+      localObject = bdbt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localMessageRecord.isSend(), localMessageRecord.senderuin);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localaicu.a(localMessageRecord.msg, -11353092));
+      if (!localMessageRecord.isSend()) {
+        break label259;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      label155:
+      if (!nav.a(localMessageRecord)) {
+        break label271;
+      }
+      localObject = nav.a(localMessageRecord);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131697670) + ((naw)localObject).jdField_b_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(nav.a(((naw)localObject).jdField_b_of_type_Int)));
+    }
+    for (;;)
+    {
+      paramViewGroup.b.setText(localaicu.a(localMessageRecord.time));
+      return paramView;
+      paramViewGroup = (aibm)paramView.getTag();
+      break;
+      label259:
+      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      break label155;
+      label271:
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText(localaicu.a((String)localObject, -11353092));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(bcxb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, localMessageRecord.senderuin));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzs
  * JD-Core Version:    0.7.0.1
  */

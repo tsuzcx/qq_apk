@@ -1,63 +1,104 @@
-import android.content.res.Resources;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 
-class aepq
-  implements bfph
+public class aepq
+  extends bdqc
 {
-  aepq(aepe paramaepe, bfpc parambfpc) {}
+  public aepq(PokePanel paramPokePanel) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onPokeAuth(boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
-    {
+    Object localObject = (Bundle)paramObject;
+    if (((Bundle)localObject).getInt("fromType") != 0) {
+      return;
     }
-    for (;;)
+    int j = ((Bundle)localObject).getInt("id");
+    int i = ((Bundle)localObject).getInt("feeType");
+    String str1 = "free";
+    if (i == 4)
     {
-      try
+      str1 = "vip";
+      label47:
+      if (!paramBoolean) {
+        break label160;
+      }
+      paramObject = ((Bundle)localObject).getString("name");
+      localObject = ((Bundle)localObject).getString("minVersion");
+      acex.a(PokePanel.a(this.a), BaseApplicationImpl.getContext(), PokePanel.a(this.a), 126, j, paramObject, (String)localObject);
+      if (true == afsw.a) {
+        afsw.a = false;
+      }
+      label106:
+      if (!paramBoolean) {
+        break label421;
+      }
+    }
+    label160:
+    label419:
+    label421:
+    for (i = 0;; i = 1)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "poke", "send", "", 0, i, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
+      return;
+      if (i != 5) {
+        break label47;
+      }
+      str1 = "svip";
+      break label47;
+      long l = ((Bundle)localObject).getLong("result");
+      localObject = ((Bundle)localObject).getString("msg");
+      paramObject = (Bundle)paramObject;
+      this.a.a = paramObject.getInt("id", 0);
+      String str2 = alpo.a(2131708706);
+      if (l == 0L)
       {
-        this.jdField_a_of_type_Bfpc.dismiss();
+        this.a.b = 1;
+        if (true != afsw.a) {
+          break;
+        }
+        afsw.a = false;
         return;
       }
-      catch (Exception paramView)
+      if (l == 4002L)
       {
-        paramView.printStackTrace();
+        this.a.b = 2;
+        paramObject = alpo.a(2131708709);
+        localObject = str2;
       }
-      if (bbfj.d(this.jdField_a_of_type_Aepe.a())) {
-        try
-        {
-          ((bciq)this.jdField_a_of_type_Aepe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(107)).a(this.jdField_a_of_type_Aepe.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, new aepr(this));
-          this.jdField_a_of_type_Aepe.d = new bcqf(this.jdField_a_of_type_Aepe.a(), this.jdField_a_of_type_Aepe.a());
-          this.jdField_a_of_type_Aepe.d.setContentView(2131562355);
-          this.jdField_a_of_type_Aepe.d.a(this.jdField_a_of_type_Aepe.a().getString(2131692213));
-          this.jdField_a_of_type_Aepe.d.setCancelable(false);
-          this.jdField_a_of_type_Aepe.d.show();
-          paramView = this.jdField_a_of_type_Aepe.jdField_a_of_type_Bcjg.a();
-          if ((paramView == null) || (!paramView.b())) {
-            continue;
-          }
-          axqy.b(this.jdField_a_of_type_Aepe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "run_away", 0, 0, "", "", "", "");
+      for (;;)
+      {
+        if (l == 0L) {
+          break label419;
         }
-        catch (Exception paramView)
+        afsw.a(PokePanel.a(this.a), (Activity)this.a.getContext(), paramObject, (String)localObject, this.a.a, this.a.b);
+        VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTip", "", 0, 0, 0, "", String.valueOf(j), str1, "", "", "", "", 0, 0, 0, 0);
+        break;
+        if (l == 5002L)
         {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e(this.jdField_a_of_type_Aepe.jdField_a_of_type_JavaLangString, 2, "the sessionInfo.curFriendUin is wrong: " + this.jdField_a_of_type_Aepe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-          continue;
+          this.a.b = 4;
+          paramObject = alpo.a(2131708708);
+          localObject = str2;
         }
-      } else {
-        bcql.a(this.jdField_a_of_type_Aepe.a(), 2130839302, this.jdField_a_of_type_Aepe.a().getResources().getString(2131694673), 0).b(this.jdField_a_of_type_Aepe.a());
+        else
+        {
+          this.a.b = 1;
+          str2 = alpo.a(2131708707);
+          QLog.e("Q.aio.PokePanel", 1, "vas poke auth fail, result: " + l);
+          paramObject = localObject;
+          localObject = str2;
+        }
       }
+      break label106;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aepq
  * JD-Core Version:    0.7.0.1
  */

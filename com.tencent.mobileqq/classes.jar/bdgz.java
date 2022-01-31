@@ -1,45 +1,112 @@
-public class bdgz
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
+
+class bdgz
+  extends BaseAdapter
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public boolean e;
-  public boolean f;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<ResultRecord> jdField_a_of_type_JavaUtilList;
   
-  public bdgz(String paramString1, String paramString2)
+  public bdgz(QQAppInterface paramQQAppInterface, Context paramContext, List<ResultRecord> paramList, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramContext;
+    this.jdField_a_of_type_AndroidContentContext = paramList;
+    Object localObject;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = localObject;
+    this.jdField_a_of_type_JavaUtilList = paramOnClickListener;
   }
   
-  public bdgz(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean)
+  private int a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_d_of_type_Boolean = paramBoolean;
+    if (paramInt == 4) {}
+    do
+    {
+      return 11;
+      if (paramInt == 1) {
+        return 4;
+      }
+      if (paramInt == 3000) {
+        return 101;
+      }
+    } while (paramInt == 1006);
+    return 1;
+  }
+  
+  private void a(ImageView paramImageView, ResultRecord paramResultRecord)
+  {
+    if (aljq.z.equals(paramResultRecord.a))
+    {
+      paramImageView.setImageResource(2130843762);
+      return;
+    }
+    if (aljq.A.equals(paramResultRecord.a))
+    {
+      paramImageView.setImageResource(2130843760);
+      return;
+    }
+    if (aljq.B.equals(paramResultRecord.a))
+    {
+      paramImageView.setImageResource(2130843765);
+      return;
+    }
+    if (aljq.y.equals(paramResultRecord.a))
+    {
+      paramImageView.setImageResource(2130839384);
+      return;
+    }
+    int i = a(paramResultRecord.a());
+    paramImageView.setImageDrawable(bcxb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, paramResultRecord.a));
+  }
+  
+  public ResultRecord a(int paramInt)
+  {
+    return (ResultRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Bdgv.i, this.jdField_a_of_type_Bdgv.i));
+    }
+    for (;;)
+    {
+      a(paramView, a(paramInt));
+      paramView.setTag(a(paramInt));
+      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramView.setFocusable(false);
+      return paramView;
+      paramView = (ImageView)paramView;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdgz
  * JD-Core Version:    0.7.0.1
  */

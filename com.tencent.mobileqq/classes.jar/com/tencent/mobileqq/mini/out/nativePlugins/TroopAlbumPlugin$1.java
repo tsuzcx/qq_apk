@@ -41,29 +41,36 @@ class TroopAlbumPlugin$1
       }
       catch (JSONException paramIntent)
       {
-        for (;;)
+        try
         {
+          for (;;)
+          {
+            paramContext.getActivity().unregisterReceiver(TroopAlbumPlugin.access$100(this.this$0));
+            TroopAlbumPlugin.access$002(this.this$0, null);
+            return;
+            ((SharedPreferences.Editor)localObject1).putBoolean("is_exit_fail_misson", false).apply();
+          }
+          paramIntent = paramIntent;
           paramIntent.printStackTrace();
+        }
+        catch (IllegalArgumentException paramContext)
+        {
+          for (;;)
+          {
+            QLog.i("TroopAlbumPlugin", 2, paramContext.getMessage());
+          }
         }
       }
       if (paramContext != null)
       {
         paramContext.callJs("groupAlbum_onGroupAlbumUpload", (JSONObject)localObject2);
-        if (i == 0)
-        {
+        if (i == 0) {
           ((SharedPreferences.Editor)localObject1).putBoolean("is_exit_fail_misson", false).apply();
-          paramContext.getActivity().unregisterReceiver(TroopAlbumPlugin.access$100(this.this$0));
-          TroopAlbumPlugin.access$002(this.this$0, null);
         }
       }
     }
     label229:
-    while (!"troop_select".equals(paramIntent.getAction()))
-    {
-      return;
-      ((SharedPreferences.Editor)localObject1).putBoolean("is_exit_fail_misson", false).apply();
-      break;
-    }
+    while (!"troop_select".equals(paramIntent.getAction())) {}
     QLog.w("TroopAlbumPlugin", 2, "troop_select recive");
     paramContext = paramIntent.getStringExtra("key_selected_albuminfo.id");
     Object localObject1 = paramIntent.getStringExtra("key_selected_albuminfo.name");
@@ -86,7 +93,7 @@ class TroopAlbumPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.TroopAlbumPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,65 @@
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.SendVidRateDataResultReceiver.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
 public class uxe
-  extends QQUIEventReceiver<uwq, tle>
+  extends uxf
 {
-  public uxe(uwq paramuwq1, @NonNull uwq paramuwq2)
+  public uxe(ViewGroup paramViewGroup)
   {
-    super(paramuwq2);
+    super(paramViewGroup, 2131561491);
   }
   
-  public void a(@NonNull uwq paramuwq, @NonNull tle paramtle)
+  private void c(utx paramutx)
   {
-    if ((TextUtils.isEmpty(paramtle.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(paramtle.jdField_b_of_type_JavaLangString)) || (paramtle.c == 0) || (paramtle.jdField_b_of_type_Long == 0L) || (paramtle.jdField_a_of_type_Int < 1))
-    {
-      ved.d("Q.qqstory.home.data.HomeFeedPresenter", "receive not eligible rate event. event.feedId = %s, event.vid = %s, event.commentId = %d, event.commentFakeId = %d, event.rate = %d.", new Object[] { paramtle.jdField_a_of_type_JavaLangString, paramtle.jdField_b_of_type_JavaLangString, Integer.valueOf(paramtle.c), Long.valueOf(paramtle.jdField_b_of_type_Long), Integer.valueOf(paramtle.jdField_a_of_type_Int) });
-      return;
+    paramutx.d = false;
+    uuq.a(QQStoryContext.a()).a(paramutx);
+    uvf localuvf = new uvf();
+    localuvf.jdField_b_of_type_JavaLangString = paramutx.jdField_a_of_type_JavaLangString;
+    localuvf.c = paramutx.jdField_a_of_type_Int;
+    localuvf.d = 4;
+    localuvf.jdField_b_of_type_Long = paramutx.e;
+    ung.a().a(localuvf, null);
+  }
+  
+  public void a(utx paramutx)
+  {
+    super.a(paramutx);
+    if (!TextUtils.isEmpty(paramutx.g)) {
+      c(paramutx.g);
     }
-    Object localObject1 = paramuwq.a(paramtle.jdField_a_of_type_JavaLangString);
-    if ((localObject1 == null) || (!(localObject1 instanceof uxo)))
+    if (!TextUtils.isEmpty(paramutx.j))
     {
-      ved.d("Q.qqstory.home.data.HomeFeedPresenter", "storyHomeFeed is null or it's not a VideoListHomeFeed. feedId = %s", new Object[] { paramtle.jdField_a_of_type_JavaLangString });
-      return;
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramutx.c)) {}
+      for (str = alpo.a(2131707326);; str = paramutx.c)
+      {
+        localStoryMsgNodeFrameLayout.setNodeName(str, paramutx.j);
+        if (paramutx.d) {
+          c(paramutx);
+        }
+        return;
+      }
     }
-    Object localObject2 = (uxo)localObject1;
-    ved.b("Q.qqstory.home.data.HomeFeedPresenter", "receive rate event. event.feedId = %s, event.vid = %s, event.commentId = %d, event.commentFakeId = %d, event.rate = %d.", new Object[] { paramtle.jdField_a_of_type_JavaLangString, paramtle.jdField_b_of_type_JavaLangString, Integer.valueOf(paramtle.c), Long.valueOf(paramtle.jdField_b_of_type_Long), Integer.valueOf(paramtle.jdField_a_of_type_Int) });
-    localObject1 = uqe.a(paramtle.jdField_a_of_type_JavaLangString, paramtle.c, paramtle.jdField_b_of_type_Long, 2, String.valueOf(paramtle.jdField_a_of_type_Int));
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localObject1);
-    ((uxo)localObject2).a(localArrayList, false);
-    localObject2 = (CommentLikeFeedItem)((uxo)localObject2).a;
-    ((CommentLikeFeedItem)localObject2).mCommentCount += 1;
-    if (uwq.a((CommentLikeFeedItem)localObject2)) {
-      ((CommentLikeFeedItem)localObject2).mFriendCommentCount += 1;
-    }
-    for (;;)
+    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout = this.a;
+    if (TextUtils.isEmpty(paramutx.c)) {}
+    for (String str = alpo.a(2131707325);; str = paramutx.c)
     {
-      uwq.a(paramuwq).b(paramtle.jdField_a_of_type_JavaLangString);
-      ThreadManager.post(new HomeFeedPresenter.SendVidRateDataResultReceiver.1(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1), 5, null, false);
-      uwq.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
-      return;
-      ((CommentLikeFeedItem)localObject2).mFanCommentCount += 1;
+      localStoryMsgNodeFrameLayout.setNodeName(str, 0);
+      break;
     }
   }
   
-  public Class acceptEventClass()
+  protected void b(utx paramutx)
   {
-    return tle.class;
+    this.a.setDisplayState(6);
+    this.a.a(paramutx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxe
  * JD-Core Version:    0.7.0.1
  */

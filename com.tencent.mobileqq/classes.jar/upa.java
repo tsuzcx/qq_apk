@@ -1,57 +1,65 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import com.tribe.async.parallel.ParallelStream;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqLikeFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspLikeFeed;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class upa
-  extends JobSegment<upp, upp>
+  extends ups
 {
-  private JobContext jdField_a_of_type_ComTribeAsyncAsyncJobContext;
-  private ParallelStream jdField_a_of_type_ComTribeAsyncParallelParallelStream;
-  private upp jdField_a_of_type_Upp;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  int b = -1;
   
-  private void a(String paramString)
+  public upa(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = ParallelStream.of(new upi(this), paramString);
-    uvo localuvo1;
-    uvo localuvo2;
-    if (this.jdField_a_of_type_Upp.a())
-    {
-      localuvo1 = new uvo(paramString, 2, "", 0);
-      localuvo2 = new uvo(paramString, 2, "", 1);
-    }
-    for (this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new upg(this, 0), paramString).map(new upg(this, 1), paramString).map(new upe(this), localuvo1).map(new upe(this), localuvo2);; this.jdField_a_of_type_ComTribeAsyncParallelParallelStream = this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.map(new upg(this, -1), paramString).map(new upe(this), localuvo1))
-    {
-      this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.subscribe(new upd(this));
-      return;
-      localuvo1 = new uvo(paramString, 2, "");
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
   }
   
-  protected void a(JobContext paramJobContext, upp paramupp)
+  public String a()
   {
-    if ((paramupp == null) || (paramupp.a == null) || (TextUtils.isEmpty(paramupp.a.feedId)))
-    {
-      ved.b("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed id is while request feed all info.");
-      notifyError(new ErrorMessage(940001, "feed id is while request feed all info."));
-      return;
-    }
-    this.jdField_a_of_type_ComTribeAsyncAsyncJobContext = paramJobContext;
-    this.jdField_a_of_type_Upp = paramupp;
-    a(paramupp.a.feedId);
+    return uox.b;
   }
   
-  public void onCancel()
+  public upt a(byte[] paramArrayOfByte)
   {
-    super.onCancel();
-    this.jdField_a_of_type_ComTribeAsyncParallelParallelStream.cancel();
+    qqstory_service.RspLikeFeed localRspLikeFeed = new qqstory_service.RspLikeFeed();
+    try
+    {
+      localRspLikeFeed.mergeFrom(paramArrayOfByte);
+      return new upb(localRspLikeFeed);
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      wsv.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqLikeFeed localReqLikeFeed = new qqstory_service.ReqLikeFeed();
+    localReqLikeFeed.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
+    PBUInt32Field localPBUInt32Field = localReqLikeFeed.operation;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = 1;; i = 2)
+    {
+      localPBUInt32Field.set(i);
+      localReqLikeFeed.source.set(this.jdField_a_of_type_Int);
+      if (this.b != -1) {
+        localReqLikeFeed.type.set(this.b);
+      }
+      return localReqLikeFeed.toByteArray();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,14 @@
-class vgg
-  extends axdi
+public class vgg
+  extends vge
 {
-  vgg(vga paramvga) {}
-  
-  public void a()
-  {
-    ved.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
-    this.a.Y_();
-  }
+  public String a;
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgg
  * JD-Core Version:    0.7.0.1
  */

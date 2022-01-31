@@ -1,42 +1,53 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-public class agmm
+class agmm
+  implements bhqd
 {
-  public static boolean a(String paramString)
-  {
-    if (("jpg".equals(paramString)) || ("gif".equals(paramString)) || ("png".equals(paramString)) || ("jpeg".equals(paramString))) {}
-    while ((paramString.lastIndexOf("bmp") != -1) || (paramString.lastIndexOf("bitmap") != -1)) {
-      return true;
-    }
-    return false;
-  }
+  agmm(agmb paramagmb, boolean paramBoolean, bhpy parambhpy) {}
   
-  public static String[] a(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    String[] arrayOfString;
-    do
+    switch (paramInt)
     {
-      return null;
-      arrayOfString = paramString.split("/");
-      if (arrayOfString.length == 2) {
-        break;
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Bhpy.dismiss();
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("MimeHelper", 2, "Mimetype error:" + paramString);
-    return null;
-    return arrayOfString;
-  }
-  
-  public static boolean b(String paramString)
-  {
-    return "video/mp4".equals(paramString);
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Agmb.bD();
+      }
+      else
+      {
+        this.jdField_a_of_type_Agmb.bB();
+        continue;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          this.jdField_a_of_type_Agmb.bB();
+        }
+        else
+        {
+          this.jdField_a_of_type_Agmb.bA();
+          continue;
+          if (this.jdField_a_of_type_Boolean) {
+            this.jdField_a_of_type_Agmb.bA();
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agmm
  * JD-Core Version:    0.7.0.1
  */

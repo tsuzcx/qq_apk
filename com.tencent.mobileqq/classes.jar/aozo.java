@@ -1,15 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.DynamicAvatar;
 
-class aozo
-  implements aozv
+public final class aozo
+  implements Parcelable.Creator<DynamicAvatar>
 {
-  aozo(aozn paramaozn, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle) {}
+  public DynamicAvatar a(Parcel paramParcel)
+  {
+    return new DynamicAvatar(paramParcel);
+  }
+  
+  public DynamicAvatar[] a(int paramInt)
+  {
+    return new DynamicAvatar[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozo
  * JD-Core Version:    0.7.0.1
  */

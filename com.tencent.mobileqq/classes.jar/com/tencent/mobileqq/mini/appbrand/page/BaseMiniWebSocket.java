@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
 import android.os.Handler;
-import com.squareup.okhttp.Dispatcher;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.ws.WebSocket;
-import com.squareup.okhttp.ws.WebSocketCall;
-import com.squareup.okhttp.ws.WebSocketListener;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
+import okhttp3.Dispatcher;
+import okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient.Builder;
+import okhttp3.Request.Builder;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
 
 public class BaseMiniWebSocket
 {
@@ -17,7 +17,6 @@ public class BaseMiniWebSocket
   private OkHttpClient mOkHttpClient;
   protected Handler mThreadHandler;
   protected WebSocket mWebSocket;
-  private WebSocketCall mWebSocketCall;
   
   public void closeSocket(int paramInt, String paramString)
   {
@@ -35,22 +34,16 @@ public class BaseMiniWebSocket
   
   public void connect(String paramString)
   {
-    this.mOkHttpClient = new OkHttpClient();
-    this.mOkHttpClient.setConnectTimeout(30L, TimeUnit.SECONDS);
-    this.mOkHttpClient.setWriteTimeout(30L, TimeUnit.SECONDS);
-    this.mOkHttpClient.setReadTimeout(30L, TimeUnit.SECONDS);
+    this.mOkHttpClient = new OkHttpClient().newBuilder().connectTimeout(30L, TimeUnit.SECONDS).writeTimeout(30L, TimeUnit.SECONDS).readTimeout(30L, TimeUnit.SECONDS).build();
     paramString = new Request.Builder().url(paramString).build();
-    this.mWebSocketCall = WebSocketCall.create(this.mOkHttpClient, paramString);
-    if (this.mListener != null) {
-      this.mWebSocketCall.enqueue(this.mListener);
-    }
+    this.mOkHttpClient.newWebSocket(paramString, this.mListener);
   }
   
   public void destroy()
   {
     if (this.mOkHttpClient != null)
     {
-      this.mOkHttpClient.getDispatcher().getExecutorService().shutdown();
+      this.mOkHttpClient.dispatcher().executorService().shutdown();
       this.mOkHttpClient = null;
     }
   }
@@ -69,7 +62,7 @@ public class BaseMiniWebSocket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.BaseMiniWebSocket
  * JD-Core Version:    0.7.0.1
  */

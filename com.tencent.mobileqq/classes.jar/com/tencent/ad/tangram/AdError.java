@@ -7,13 +7,13 @@ public final class AdError
 {
   public static final int ERROR_ABI_UNSUPPORTED = 9;
   public static final int ERROR_APP_NOT_INSTLLED = 12;
-  public static final int ERROR_ARK_APP_NOT_EXISTS = 208;
-  public static final int ERROR_ARK_APP_OFFLINE = 209;
   public static final int ERROR_ARK_INVALID_VIEW = 207;
+  public static final int ERROR_ARK_NOT_PUBLISHED = 209;
+  public static final int ERROR_ARK_UPDATE = 208;
   public static final int ERROR_BROWSER_UNSUPPORTED = 301;
   public static final int ERROR_CANVAS_UNSUPPORTED = 302;
   public static final int ERROR_CHARSET_UNSUPPORTED = 11;
-  public static final int ERROR_CRASH = 16;
+  public static final int ERROR_CRASH = 15;
   public static final int ERROR_DEVICE_UNSUPPORTED = 10;
   public static final int ERROR_GET_LAUNCH_INTENT_FOR_PACKAGE = 203;
   public static final int ERROR_INTERNAL = 1;
@@ -32,9 +32,8 @@ public final class AdError
   public static final int ERROR_TAIDSDK_INIT = 205;
   public static final int ERROR_TIMEOUT = 13;
   public static final int ERROR_TOO_FREQUENTLY = 2;
+  public static final int ERROR_UNSUPPORTED_VERSION = 14;
   public static final int ERROR_URI_PARSE = 201;
-  public static final int ERROR_VERSION_TOO_HIGH = 15;
-  public static final int ERROR_VERSION_TOO_LOW = 14;
   public static final int ERROR_VIDEO_CEILING_UNSUPPORTED = 303;
   public static final int ERROR_VIDEO_SPLICE_UNSUPPORTED = 305;
   private int errorCode = -2147483648;

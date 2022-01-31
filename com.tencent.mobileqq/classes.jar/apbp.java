@@ -1,19 +1,21 @@
-class apbp
-  extends apbu
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
+
+public class apbp
+  implements View.OnClickListener
 {
-  public apbp(apbi paramapbi)
-  {
-    super(paramapbi);
-  }
+  public apbp(DBFixConfigActivity paramDBFixConfigActivity) {}
   
-  protected String a()
+  public void onClick(View paramView)
   {
-    return "StateCancelUploadWhenRecv";
+    ThreadManager.post(this.a.a, 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apbp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,24 @@
-import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
 
 public class bhmm
+  implements bhmt
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean = false;
-  private String b = "";
+  public bhmm(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
   
-  public String a()
+  public void a(long paramLong)
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public void b(String paramString)
-  {
-    this.b = paramString;
-    if (!TextUtils.isEmpty(this.b))
-    {
-      this.b = this.b.replaceAll("\\+86", "");
-      this.b = this.b.replaceAll("\\D", "");
+    if (QLog.isColorLevel()) {
+      QLog.w("TraeAudioManager", 1, "_ringPlayer onCompletion, _activeMode[" + this.a.this$0.a + "], _preRingMode[" + this.a.b + "], seq[" + paramLong + "]");
     }
-  }
-  
-  public String toString()
-  {
-    return "SimInfo mIseDataTrafficSim=" + this.jdField_a_of_type_Boolean + ",mIMSI=" + this.jdField_a_of_type_JavaLangString + ",mPhoneNum=" + this.b;
+    TraeAudioManager.b(paramLong, null, -1L, true);
+    this.a.c(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhmm
  * JD-Core Version:    0.7.0.1
  */

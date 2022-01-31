@@ -27,7 +27,7 @@ public class c
   String g;
   String h;
   ConcurrentLinkedQueue i = new ConcurrentLinkedQueue();
-  public r j = null;
+  public u j = null;
   volatile boolean k = false;
   private IMsfServiceCallbacker m;
   private IBinder.DeathRecipient n;
@@ -88,7 +88,7 @@ public class c
       return;
     }
     paramInt = e.e.getUinPushStatus(str);
-    q.a(BaseApplication.getContext(), this.g, str, this.h, paramInt, paramFromServiceMsg);
+    t.a(BaseApplication.getContext(), this.g, str, this.h, paramInt, paramFromServiceMsg);
     MsfService.getCore().pushManager.j.a();
   }
   

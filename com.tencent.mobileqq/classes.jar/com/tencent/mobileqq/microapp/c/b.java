@@ -3,7 +3,7 @@ package com.tencent.mobileqq.microapp.c;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bbkk;
+import bdje;
 
 final class b
   extends BroadcastReceiver
@@ -12,7 +12,7 @@ final class b
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (bbkk.a(paramIntent.getAction())) {}
+    if (bdje.a(paramIntent.getAction())) {}
     while (a.a(this.a) == null) {
       return;
     }
@@ -21,7 +21,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.c.b
  * JD-Core Version:    0.7.0.1
  */

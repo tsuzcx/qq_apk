@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import aafs;
+import abwr;
 
 public class AccountManageActivity$4$1
   implements Runnable
 {
-  public AccountManageActivity$4$1(aafs paramaafs) {}
+  public AccountManageActivity$4$1(abwr paramabwr) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class AccountManageActivity$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.4.1
  * JD-Core Version:    0.7.0.1
  */

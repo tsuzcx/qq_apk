@@ -1,86 +1,49 @@
+import android.animation.Animator;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
-class ajkz
-  implements ajle
+public class ajkz
+  extends ajjr
 {
-  ajkz(ajks paramajks) {}
+  public ajkz(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
-    if (this.a.jdField_a_of_type_Begr != null) {
-      this.a.jdField_a_of_type_Begr.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationEnd <<===");
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.x();
+    this.a.m();
+    if (!this.a.jdField_f_of_type_Boolean) {
+      this.a.e(false);
     }
   }
   
-  public void a(int paramInt, String paramString)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
-    if (this.a.jdField_a_of_type_Begr != null) {
-      this.a.jdField_a_of_type_Begr.c(paramInt, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationStart ===>>");
     }
-  }
-  
-  public void a(int paramInt, String[] paramArrayOfString)
-  {
-    int k = paramArrayOfString.length;
-    int j = 0;
-    String str;
-    if (j < k)
+    this.a.e.setVisibility(0);
+    this.a.jdField_f_of_type_AndroidViewView.setBackgroundColor(this.a.getResources().getColor(2131165611));
+    this.a.c = true;
+    if (this.a.jdField_a_of_type_Ajln != null) {
+      this.a.jdField_a_of_type_Ajln.b();
+    }
+    if (this.a.jdField_f_of_type_Boolean)
     {
-      str = paramArrayOfString[j];
-      QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
-      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-        break label237;
-      }
-    }
-    label237:
-    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
-    {
-      switch (paramInt)
-      {
-      default: 
-        label116:
-        if (i != 0) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
-        }
-        break;
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        i |= 0x20;
-        break label116;
-        i &= 0xFFFFFFDF;
-        break label116;
-        i |= 0x1;
-        break label116;
-        i &= 0xFFFFFFFE;
-        break label116;
-        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
-          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
-        }
-      }
-      if (this.a.jdField_a_of_type_Begr != null) {
-        this.a.jdField_a_of_type_Begr.a(paramInt, paramArrayOfString);
-      }
-      return;
-    }
-  }
-  
-  public void a(String[] paramArrayOfString)
-  {
-    QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
-    if (this.a.jdField_a_of_type_Begr != null) {
-      this.a.jdField_a_of_type_Begr.a(paramArrayOfString);
+      this.a.b.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      this.a.b.setLongClickable(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajkz
  * JD-Core Version:    0.7.0.1
  */

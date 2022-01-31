@@ -1,14 +1,19 @@
-import android.content.Context;
-import android.view.View;
-
 public class ulf
-  implements sxl
+  extends ugz
 {
-  public void a(Context paramContext, View paramView) {}
+  public String a;
+  public String b;
+  
+  public ulf(ulc paramulc) {}
+  
+  public String toString()
+  {
+    return "CompositeVideoEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", errorInfo='" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '\'' + ", videoUrl='" + this.b + '\'' + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ulf
  * JD-Core Version:    0.7.0.1
  */

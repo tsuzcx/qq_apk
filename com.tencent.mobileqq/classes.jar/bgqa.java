@@ -1,62 +1,23 @@
-import android.os.RemoteException;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import cooperation.qqfav.QfavHelper.4;
+import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 public class bgqa
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+  extends bgpz
 {
-  public bgqa(QfavHelper.4 param4) {}
+  public bgqa(AppRuntimeLoaderManager paramAppRuntimeLoaderManager) {}
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public void a(bgpy parambgpy)
   {
-    try
-    {
-      if (!paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
-      {
-        if (this.a.a == null)
-        {
-          paramPluginManagerClient.installPlugin("qqfav.apk");
-          return;
-        }
-        paramPluginManagerClient.installPlugin("qqfav.apk", this.a.a);
-        return;
-      }
+    if ((parambgpy == null) || (parambgpy.a == null)) {
+      return;
     }
-    catch (Exception paramPluginManagerClient)
-    {
-      if (this.a.a != null)
-      {
-        try
-        {
-          this.a.a.onInstallError("qqfav.apk", -1);
-          return;
-        }
-        catch (RemoteException paramPluginManagerClient)
-        {
-          paramPluginManagerClient.printStackTrace();
-          return;
-        }
-        paramPluginManagerClient = this.a.a;
-        if (paramPluginManagerClient != null) {
-          try
-          {
-            this.a.a.onInstallFinish("qqfav.apk");
-            return;
-          }
-          catch (RemoteException paramPluginManagerClient)
-          {
-            paramPluginManagerClient.printStackTrace();
-          }
-        }
-      }
-    }
+    QMLog.i("minisdk-start_AppRuntimeLoaderManager", "OnRuntimeEvent message:" + parambgpy);
+    AppRuntimeLoaderManager.access$000(this.a, parambgpy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgqa
  * JD-Core Version:    0.7.0.1
  */

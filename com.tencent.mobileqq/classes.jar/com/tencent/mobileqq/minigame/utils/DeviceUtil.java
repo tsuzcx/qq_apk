@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.utils;
 
 import android.os.Build.VERSION;
-import bbdh;
+import bdcb;
 import com.tencent.qphone.base.util.QLog;
 
 public class DeviceUtil
@@ -13,15 +13,15 @@ public class DeviceUtil
       if (Build.VERSION.SDK_INT < 18) {
         return 0;
       }
-      int k = bbdh.b();
+      int k = bdcb.b();
       if (k <= 0) {
         return -1;
       }
-      int m = (int)(bbdh.b() / 100000L);
+      int m = (int)(bdcb.b() / 100000L);
       if (m <= 0) {
         return -1;
       }
-      int n = (int)(bbdh.d() / 1048576L);
+      int n = (int)(bdcb.d() / 1048576L);
       if (n <= 0) {
         return -1;
       }
@@ -42,7 +42,7 @@ public class DeviceUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.DeviceUtil
  * JD-Core Version:    0.7.0.1
  */

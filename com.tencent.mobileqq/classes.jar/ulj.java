@@ -1,77 +1,31 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 public class ulj
-  extends ste<QQStoryShareGroupProfileActivity, tae>
 {
-  public ulj(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  public int a;
+  String jdField_a_of_type_JavaLangString;
+  uta jdField_a_of_type_Uta;
+  utb jdField_a_of_type_Utb;
+  boolean jdField_a_of_type_Boolean;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tae paramtae)
+  public ulj(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if ((paramtae.b != 3) || (paramtae.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {}
-    ArrayList localArrayList;
-    label68:
-    do
-    {
-      return;
-      int i;
-      umj localumj;
-      HotSortVideoEntry localHotSortVideoEntry;
-      if (paramtae.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike == 1)
-      {
-        i = 1;
-        localumj = paramQQStoryShareGroupProfileActivity.a.a;
-        Object localObject = paramQQStoryShareGroupProfileActivity.a.a.a;
-        localArrayList = new ArrayList();
-        localObject = ((List)localObject).iterator();
-        do
-        {
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          localHotSortVideoEntry = (HotSortVideoEntry)((Iterator)localObject).next();
-        } while (!localHotSortVideoEntry.feedId.equals(paramtae.jdField_a_of_type_JavaLangString));
-        if (i == 0) {
-          break label164;
-        }
-      }
-      for (int j = localHotSortVideoEntry.likeCount + 1;; j = localHotSortVideoEntry.likeCount - 1)
-      {
-        localHotSortVideoEntry.likeCount = j;
-        if (localHotSortVideoEntry.likeCount < 0) {
-          localHotSortVideoEntry.likeCount = 0;
-        }
-        localumj.a(localHotSortVideoEntry);
-        localArrayList.add(localHotSortVideoEntry);
-        break label68;
-        i = 0;
-        break;
-      }
-    } while (localArrayList.size() <= 0);
-    label164:
-    ((tcg)tcz.a(25)).a(localArrayList);
-    paramQQStoryShareGroupProfileActivity.d = true;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.d = (ugx.t + paramString1 + ".mp4");
+    this.e = vhj.a(paramString1, false);
   }
-  
-  public Class acceptEventClass()
-  {
-    return tae.class;
-  }
-  
-  public void b(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tae paramtae) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ulj
  * JD-Core Version:    0.7.0.1
  */

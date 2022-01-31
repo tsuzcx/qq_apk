@@ -22,6 +22,7 @@ public class QZoneLoginReportHelper
   public static final int LOGIN_FROM_PUBLIC_ACCOUNT_OTHER_MSG = 8;
   public static final int LOGIN_FROM_PUBLIC_ACCOUNT_VIEW_FRIEND_FEEDS_MSG = 9;
   public static final int LOGIN_FROM_QUN_ALBUM = 14;
+  public static final int LOGIN_FROM_SIMPLE_MODE = 27;
   public static final int PA_TYPE_BTM_VIEW_FRIEND_FEEDS = 11;
   public static final int PA_TYPE_BTM_VIEW_MY_ALBUM = 12;
   public static final int PA_TYPE_VIEW_FRIEND_FEEDS_MSG = 8;
@@ -184,6 +185,12 @@ public class QZoneLoginReportHelper
     LpReportManager.getInstance().reportToPF00034(localLpReportInfo_pf00034);
   }
   
+  public static void reportLoginFromSimpleMode()
+  {
+    LpReportInfo_pf00034 localLpReportInfo_pf00034 = new LpReportInfo_pf00034(27);
+    LpReportManager.getInstance().reportToPF00034(localLpReportInfo_pf00034);
+  }
+  
   public static void setLoginFromAIOFeedCard(Intent paramIntent)
   {
     addLoginInfo(paramIntent, 3);
@@ -221,7 +228,7 @@ public class QZoneLoginReportHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.QZoneLoginReportHelper
  * JD-Core Version:    0.7.0.1
  */

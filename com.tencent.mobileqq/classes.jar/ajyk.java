@@ -1,23 +1,20 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-final class ajyk
+public class ajyk
   implements DialogInterface.OnClickListener
 {
-  ajyk(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  public ajyk(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    HotChatManager.a(this.jdField_a_of_type_AndroidAppActivity, false);
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004C6B", "0X8004C6B", 0, 0, "", "", "", "");
+    ShortVideoPlayActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyk
  * JD-Core Version:    0.7.0.1
  */

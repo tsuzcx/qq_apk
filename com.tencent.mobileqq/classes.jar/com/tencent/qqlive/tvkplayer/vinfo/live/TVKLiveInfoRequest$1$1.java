@@ -20,7 +20,7 @@ class TVKLiveInfoRequest$1$1
     }
     catch (ParseException localParseException)
     {
-      TVKLogUtil.e("MediaPlayerMgr[LiveCgiService.java]", localParseException);
+      TVKLogUtil.e("MediaPlayerMgr[TVKLiveInfoRequest.java]", localParseException);
       TVKLiveVideoInfo localTVKLiveVideoInfo2 = new TVKLiveVideoInfo();
       localTVKLiveVideoInfo2.setErrModule(10000);
       localTVKLiveVideoInfo2.setErrInfo("json 解析异常");
@@ -35,7 +35,7 @@ class TVKLiveInfoRequest$1$1
     }
     catch (Throwable localThrowable)
     {
-      TVKLogUtil.e("MediaPlayerMgr[LiveCgiService.java]", localThrowable);
+      TVKLogUtil.e("MediaPlayerMgr[TVKLiveInfoRequest.java]", localThrowable);
       TVKLiveVideoInfo localTVKLiveVideoInfo3 = new TVKLiveVideoInfo();
       localTVKLiveVideoInfo3.setErrModule(10000);
       localTVKLiveVideoInfo3.setErrInfo("网络错误");
@@ -46,7 +46,7 @@ class TVKLiveInfoRequest$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.live.TVKLiveInfoRequest.1.1
  * JD-Core Version:    0.7.0.1
  */

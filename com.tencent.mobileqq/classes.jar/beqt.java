@@ -1,22 +1,12 @@
-import android.content.Context;
+import com.tencent.mobileqq.widget.ObservableScrollView;
 
-class beqt
+public abstract interface beqt
 {
-  beqr a;
-  
-  public beqt(Context paramContext)
-  {
-    this.a = new beqr(paramContext, null);
-  }
-  
-  public beqr a()
-  {
-    return this.a;
-  }
+  public abstract void a(ObservableScrollView paramObservableScrollView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beqt
  * JD-Core Version:    0.7.0.1
  */

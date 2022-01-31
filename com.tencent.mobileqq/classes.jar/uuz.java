@@ -1,47 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class uuz
-  implements View.OnClickListener, View.OnLongClickListener
+  extends unk<uva>
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  View b;
+  static final String a = ume.a("StorySvc.msgtab_node_click");
+  public long b;
+  public String b;
+  public int c;
   
-  public uuz(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
+  public String a()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369486);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369508));
-    this.b = paramView.findViewById(2131370423);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370412));
-    paramView.setOnClickListener(this);
-    paramView.setOnLongClickListener(this);
+    return a;
   }
   
-  public void a(int paramInt)
+  public unf a(byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
+    try
+    {
+      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
+      return new uva(localRspMsgTabNodeWatched);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wsv.d("Q.qqstory.msgTab:ReqMsgTabNodeClick", "" + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public void onClick(View paramView)
+  protected byte[] a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
+    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    localReqMsgTabNodeWatched.node_type.set(this.c);
+    localReqMsgTabNodeWatched.operation.set(3);
+    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
+    return localReqMsgTabNodeWatched.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uuz
  * JD-Core Version:    0.7.0.1
  */

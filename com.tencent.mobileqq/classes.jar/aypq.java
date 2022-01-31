@@ -1,23 +1,22 @@
-class aypq
-  extends akat
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
+
+public class aypq
+  extends aypw
 {
-  aypq(aypp paramaypp) {}
-  
-  public void a(boolean paramBoolean, long paramLong, akau paramakau)
+  public aypq(GroupSearchEngine paramGroupSearchEngine, aypx paramaypx, String paramString, int paramInt)
   {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramakau);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    this.a.d();
+    super(paramGroupSearchEngine, paramaypx, paramString, paramInt);
+  }
+  
+  public ayjk a(List<ayjl> paramList, String paramString)
+  {
+    return new ayjd(paramList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aypq
  * JD-Core Version:    0.7.0.1
  */

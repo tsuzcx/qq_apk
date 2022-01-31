@@ -1,37 +1,43 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import java.util.ArrayList;
 
-class nny
-  extends BroadcastReceiver
+public class nny
+  implements ViewPager.OnPageChangeListener
 {
-  nny(nnu paramnnu) {}
+  public nny(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (this.a.a == 2)
-    {
-      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
-      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
-      this.a.a(null, 0, 14, i, paramIntent);
+    ReadInJoyNativeAdFragment.a(this.a, Math.max(ReadInJoyNativeAdFragment.a(this.a), paramInt + 1));
+    ((noe)ReadInJoyNativeAdFragment.a(this.a).get(paramInt)).a();
+    if (paramInt + 1 < ReadInJoyNativeAdFragment.a(this.a).size()) {
+      ((noe)ReadInJoyNativeAdFragment.a(this.a).get(paramInt + 1)).b();
     }
-    try
+    if ((ReadInJoyNativeAdFragment.a(this.a) != null) && (ReadInJoyNativeAdFragment.a(this.a).a == 1) && ((ReadInJoyNativeAdFragment.b(this.a) == 1) || (ReadInJoyNativeAdFragment.b(this.a) == 2)))
     {
-      paramContext.unregisterReceiver(this.a.b);
-      label50:
-      this.a.b = null;
-      this.a.a = 0;
+      if (paramInt != ReadInJoyNativeAdFragment.a(this.a).size() - 1) {
+        break label155;
+      }
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      ReadInJoyNativeAdFragment.a(this.a);
       return;
-    }
-    catch (Exception paramContext)
-    {
-      break label50;
+      label155:
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nny
  * JD-Core Version:    0.7.0.1
  */

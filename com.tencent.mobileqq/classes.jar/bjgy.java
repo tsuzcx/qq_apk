@@ -1,71 +1,109 @@
-import android.graphics.Bitmap;
-import android.graphics.Typeface;
-import android.text.Layout.Alignment;
-import android.text.StaticLayout;
-import android.text.TextPaint;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.PictureUrl;
+import cooperation.qzone.model.VideoInfo;
+import cooperation.qzone.model.VideoInfo.VideoRemark;
+import cooperation.qzone.model.VideoUrl;
 
-public class bjgy
+public final class bjgy
+  implements Parcelable.Creator<VideoInfo>
 {
-  int a;
-  public Bitmap a;
-  public Typeface a;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i = 2;
-  
-  public bjgy()
+  public VideoInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = 0;
+    boolean bool2 = true;
+    VideoInfo localVideoInfo = new VideoInfo();
+    localVideoInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localVideoInfo.jdField_a_of_type_CooperationQzoneModelVideoUrl = ((VideoUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_a_of_type_CooperationQzoneModelPictureUrl = ((PictureUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_b_of_type_CooperationQzoneModelPictureUrl = ((PictureUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_c_of_type_CooperationQzoneModelPictureUrl = ((PictureUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_d_of_type_CooperationQzoneModelPictureUrl = ((PictureUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localVideoInfo.jdField_b_of_type_CooperationQzoneModelVideoUrl = ((VideoUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_c_of_type_CooperationQzoneModelVideoUrl = ((VideoUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_d_of_type_CooperationQzoneModelVideoUrl = ((VideoUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_e_of_type_CooperationQzoneModelVideoUrl = ((VideoUrl)paramParcel.readParcelable(getClass().getClassLoader()));
+    localVideoInfo.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
+    localVideoInfo.jdField_b_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localVideoInfo.jdField_c_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_d_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localVideoInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
+    localVideoInfo.jdField_a_of_type_Byte = paramParcel.readByte();
+    localVideoInfo.jdField_e_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_f_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localVideoInfo.jdField_g_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_h_of_type_Int = paramParcel.readInt();
+    localVideoInfo.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readInt() == 1)
+    {
+      bool1 = true;
+      localVideoInfo.jdField_b_of_type_Boolean = bool1;
+      localVideoInfo.jdField_a_of_type_CooperationQzoneModelVideoInfo$VideoRemark = ((VideoInfo.VideoRemark)paramParcel.readParcelable(getClass().getClassLoader()));
+      localVideoInfo.jdField_d_of_type_Long = paramParcel.readLong();
+      localVideoInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readInt() != 1) {
+        break label557;
+      }
+      bool1 = true;
+      label405:
+      localVideoInfo.jdField_i_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label562;
+      }
+      bool1 = true;
+      label421:
+      localVideoInfo.jdField_j_of_type_Boolean = bool1;
+      localVideoInfo.jdField_i_of_type_Int = paramParcel.readInt();
+      localVideoInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
+      localVideoInfo.jdField_j_of_type_Int = paramParcel.readInt();
+      localVideoInfo.jdField_k_of_type_Int = paramParcel.readInt();
+      localVideoInfo.jdField_l_of_type_Int = paramParcel.readInt();
+      localVideoInfo.jdField_e_of_type_Long = paramParcel.readLong();
+      localVideoInfo.m = paramParcel.readInt();
+      if (paramParcel.readInt() != 1) {
+        break label567;
+      }
+      bool1 = true;
+      label500:
+      localVideoInfo.jdField_k_of_type_Boolean = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label572;
+      }
+    }
+    label557:
+    label562:
+    label567:
+    label572:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localVideoInfo.jdField_l_of_type_Boolean = bool1;
+      localVideoInfo.jdField_f_of_type_Long = paramParcel.readLong();
+      localVideoInfo.jdField_h_of_type_JavaLangString = paramParcel.readString();
+      localVideoInfo.jdField_i_of_type_JavaLangString = paramParcel.readString();
+      return localVideoInfo;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label405;
+      bool1 = false;
+      break label421;
+      bool1 = false;
+      break label500;
+    }
   }
   
-  public int a(float paramFloat)
+  public VideoInfo[] a(int paramInt)
   {
-    return actj.a(paramFloat, BaseApplicationImpl.getApplication().getResources());
-  }
-  
-  public int a(int paramInt)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int j = 0;
-    while (j < paramInt)
-    {
-      localStringBuilder.append("我");
-      j += 1;
-    }
-    TextPaint localTextPaint = new TextPaint();
-    if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
-      localTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-    }
-    localTextPaint.setShadowLayer(a(3.0F), a(5.0F), a(5.0F), -1);
-    paramInt = actj.a(100.0F, BaseApplicationImpl.getApplication().getResources());
-    for (;;)
-    {
-      localTextPaint.setTextSize(paramInt);
-      StaticLayout localStaticLayout = bjix.a(localStringBuilder, 0, localStringBuilder.length(), localTextPaint, this.c, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false, null, 0, 1);
-      if (localTextPaint.measureText(localStringBuilder.toString()) > this.c)
-      {
-        paramInt -= 1;
-      }
-      else
-      {
-        if (localStaticLayout.getHeight() <= this.d) {
-          break;
-        }
-        paramInt -= 1;
-      }
-    }
-    return paramInt;
+    return new VideoInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjgy
  * JD-Core Version:    0.7.0.1
  */

@@ -202,7 +202,7 @@ public final class RspResOrder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ResPackage.RspResOrder
  * JD-Core Version:    0.7.0.1
  */

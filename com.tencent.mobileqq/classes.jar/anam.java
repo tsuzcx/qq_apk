@@ -1,91 +1,105 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
 import com.tencent.qphone.base.util.QLog;
 
 public class anam
-  extends ampa<anal>
+  extends amzw
 {
+  amzs jdField_a_of_type_Amzs;
+  Handler jdField_a_of_type_AndroidOsHandler;
+  boolean jdField_a_of_type_Boolean = false;
+  
+  public anam(Handler paramHandler)
+  {
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+  }
+  
   public int a()
   {
-    return 460;
-  }
-  
-  @NonNull
-  public anal a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopRobotConfProcessor", 2, "migrateOldOrDefaultContent ");
+    try
+    {
+      long l = System.currentTimeMillis();
+      Object localObject = new int[2];
+      localObject[0] = 2;
+      localObject[1] = 1;
+      int i = bfru.b(0, "ANY", "UTF-8");
+      int j = bfru.b((int[])localObject, localObject.length);
+      localObject = bfru.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("QRSession.QRRecog", 2, String.format("initQbar time cost:%sms, initResult=%s readerResult=%s version=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(i), Integer.valueOf(j), localObject }));
+      }
+      this.jdField_a_of_type_Boolean = true;
+      return 0;
     }
-    return new anal();
-  }
-  
-  @Nullable
-  public anal a(amph[] paramArrayOfamph)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopRobotConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    catch (Exception localException)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("TroopRobotConfProcessor", 2, "onParsed " + paramArrayOfamph.length);
-      }
-      return anal.a(paramArrayOfamph[0]);
-    }
-    return null;
-  }
-  
-  public Class<anal> a()
-  {
-    return anal.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TroopRobotConfProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(anal paramanal)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramanal == null) {
-        break label58;
+        QLog.d("QRSession.QRRecog", 2, "initQbar fail!", localException);
       }
     }
-    label58:
-    for (String str = paramanal.toString();; str = " empty")
+    return -1;
+  }
+  
+  public void a()
+  {
+    try
     {
-      QLog.d("TroopRobotConfProcessor", 2, str);
-      if (paramanal != null) {
-        bail.a(paramanal.a(), paramanal.a());
+      if (this.jdField_a_of_type_Boolean)
+      {
+        bfru.b();
+        this.jdField_a_of_type_Boolean = false;
       }
       return;
     }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QRSession.QRRecog", 2, "unInitQbar fail!", localException);
+    }
   }
   
-  public int b()
+  public void a(amzx paramamzx)
   {
-    return 0;
+    this.jdField_a_of_type_Amzs = ((amzs)paramamzx);
   }
   
-  public boolean b()
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    paramBoolean = false;
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    long l = System.currentTimeMillis();
+    if (bfru.b(paramArrayOfByte, paramInt1, paramInt2, 0) == 1)
+    {
+      bfru.b(localStringBuilder1, localStringBuilder2);
+      paramBoolean = true;
+    }
+    if (this.jdField_a_of_type_Amzs != null)
+    {
+      if (!paramBoolean) {
+        break label131;
+      }
+      this.jdField_a_of_type_Amzs.a(localStringBuilder1.toString(), localStringBuilder2.toString(), false);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel())
+      {
+        if (!paramBoolean) {
+          break;
+        }
+        QLog.d("QRSession.QRRecog", 2, String.format("------> recognize QR suc. type=%s data=%s qrRecog minicode_timecost=%d", new Object[] { localStringBuilder1, localStringBuilder2, Long.valueOf(System.currentTimeMillis() - l) }));
+      }
+      return paramBoolean;
+      label131:
+      this.jdField_a_of_type_Amzs.a(false, 0.0F);
+    }
+    QLog.d("QRSession.QRRecog", 2, String.format("------> recognize QR failed. hasQR=%s qrAreaRatio=%s qrRecog minicode_timecost=%d", new Object[] { Boolean.valueOf(false), Float.valueOf(0.0F), Long.valueOf(System.currentTimeMillis() - l) }));
+    return paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anam
  * JD-Core Version:    0.7.0.1
  */

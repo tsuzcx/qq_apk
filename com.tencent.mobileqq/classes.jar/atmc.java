@@ -1,60 +1,118 @@
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBDoubleField;
+import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsUnLikeRsp;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import tencent.im.oidb.location.RoomOperate.ReqAssemblyPointOperation;
+import tencent.im.oidb.location.RoomOperate.RspAssemblyPointOperation;
+import tencent.im.oidb.location.qq_lbs_share.ResultInfo;
+import tencent.im.oidb.location.qq_lbs_share.RoomKey;
 
-class atmc
-  implements atii
+public class atmc
+  extends atlj<atln>
 {
-  atmc(atlw paramatlw, VideoData paramVideoData) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  atmc(QQAppInterface paramQQAppInterface)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
-    {
-      paramBundle = new oidb_0xada.RspBody();
+    super(paramQQAppInterface);
+  }
+  
+  private void a(int paramInt1, int paramInt2, long paramLong, LocationRoom.Venue paramVenue)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VenueOperateHandler", 2, new Object[] { "[venue] requestVenueOperate: invoked. ", "operateType: " + paramInt1 + " [R_OPT_ADD = 1; R_OPT_UPDATE = 2; R_OPT_DELETE = 3;]", ", uinType: " + paramInt2 + ", sessionUin: " + paramLong + ", venue: " + paramVenue });
+    }
+    RoomOperate.ReqAssemblyPointOperation localReqAssemblyPointOperation = new RoomOperate.ReqAssemblyPointOperation();
+    Object localObject = atpv.a(this.a, paramInt2, paramLong);
+    localReqAssemblyPointOperation.room_key.set((MessageMicro)localObject);
+    localReqAssemblyPointOperation.room_key.setHasFlag(true);
+    localReqAssemblyPointOperation.point_operation.set(paramInt1);
+    localReqAssemblyPointOperation.poi_name.set(ByteStringMicro.copyFrom(paramVenue.b.getBytes()));
+    localReqAssemblyPointOperation.poi_address.set(ByteStringMicro.copyFrom(paramVenue.c.getBytes()));
+    localReqAssemblyPointOperation.lat.set(paramVenue.a.latitude);
+    localReqAssemblyPointOperation.lon.set(paramVenue.a.longitude);
+    localObject = new ToServiceMsg("mobileqq.service", this.a.getCurrentAccountUin(), "QQLBSShareSvc.assembly_point_operation");
+    ((ToServiceMsg)localObject).extraData.putInt("OPT_VENUE_TYPE", paramInt1);
+    ((ToServiceMsg)localObject).extraData.putInt("uintype", paramInt2);
+    ((ToServiceMsg)localObject).extraData.putString("uin", String.valueOf(paramLong));
+    ((ToServiceMsg)localObject).extraData.putParcelable("key_location_venue", paramVenue);
+    ((ToServiceMsg)localObject).putWupBuffer(localReqAssemblyPointOperation.toByteArray());
+    a().sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  private void a(int paramInt1, String paramString, int paramInt2, int paramInt3, LocationRoom.Venue paramVenue)
+  {
+    atpv.a(this.a, paramInt1, paramString, false);
+    atpu.a(this.a, paramInt1, paramString, false);
+    a().notifyUI(7, false, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt1), paramString, paramVenue });
+  }
+  
+  protected atln a()
+  {
+    return atln.a(this.a);
+  }
+  
+  void a(atlh paramatlh, LocationRoom.Venue paramVenue)
+  {
+    if ((paramatlh == null) || (paramVenue == null)) {
+      return;
+    }
+    a(1, paramatlh.a(), Long.parseLong(paramatlh.a()), paramVenue);
+  }
+  
+  void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    int i;
+    if (a(paramToServiceMsg, paramFromServiceMsg, paramObject)) {
       try
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + atlw.a(this.jdField_a_of_type_Atlw));
-        }
-        if (paramBundle.busi_buf.has())
+        i = paramToServiceMsg.extraData.getInt("OPT_VENUE_TYPE");
+        int j = paramToServiceMsg.extraData.getInt("uintype", -1);
+        paramFromServiceMsg = paramToServiceMsg.extraData.getString("uin");
+        paramToServiceMsg = (LocationRoom.Venue)paramToServiceMsg.extraData.getParcelable("key_location_venue");
+        paramObject = (qq_lbs_share.ResultInfo)((RoomOperate.RspAssemblyPointOperation)new RoomOperate.RspAssemblyPointOperation().mergeFrom((byte[])paramObject)).msg_result.get();
+        if (atpv.a(paramObject))
         {
-          paramArrayOfByte = new ilive_feeds_like.FeedsUnLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          this.jdField_a_of_type_Atlw.f(false);
-          this.jdField_a_of_type_Atlw.d(paramArrayOfByte.total.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Int = atlw.a(this.jdField_a_of_type_Atlw);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Boolean = false;
-          atlw.b(this.jdField_a_of_type_Atlw, false);
-          ((atvs)this.jdField_a_of_type_Atlw.a.getManager(263)).b(atlw.a(this.jdField_a_of_type_Atlw), paramArrayOfByte.total.get());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "total:   " + paramArrayOfByte.total.get() + ",ret:     " + paramArrayOfByte.ret.get());
-          }
+          a().notifyUI(7, true, new Object[] { Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(j), paramFromServiceMsg, paramToServiceMsg });
+          return;
         }
+        a(j, paramFromServiceMsg, paramObject.uint32_result.get(), i, paramToServiceMsg);
         return;
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      catch (Exception paramToServiceMsg)
       {
-        QLog.w("PlayOperationViewModel", 1, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + atlw.a(this.jdField_a_of_type_Atlw) + "  e:" + paramArrayOfByte);
+        QLog.e("VenueOperateHandler", 1, "[venue] requestOperateRoomResp: failed. ", paramToServiceMsg);
         return;
       }
     }
-    QLog.w("PlayOperationViewModel", 1, "errorCode:   " + paramInt + " isLiked=" + atlw.a(this.jdField_a_of_type_Atlw));
-    atlw.b(this.jdField_a_of_type_Atlw, false);
+    if (paramFromServiceMsg != null)
+    {
+      i = paramFromServiceMsg.getResultCode();
+      if (QLog.isColorLevel()) {
+        QLog.d("VenueOperateHandler", 2, new Object[] { "[venue] requestOperateRoomResp: invoked. ", " resultCode: ", Integer.valueOf(i) });
+      }
+    }
+    a(-2, "", -10001, -1, (LocationRoom.Venue)paramToServiceMsg.extraData.getParcelable("key_location_venue"));
+  }
+  
+  void b(atlh paramatlh, LocationRoom.Venue paramVenue)
+  {
+    if ((paramatlh == null) || (paramVenue == null)) {
+      return;
+    }
+    a(3, paramatlh.a(), Long.parseLong(paramatlh.a()), paramVenue);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atmc
  * JD-Core Version:    0.7.0.1
  */

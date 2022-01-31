@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
 import android.view.View;
-import aole;
+import aqec;
 
 public class ExtendFriendVoiceView$1$1$1
   implements Runnable
 {
-  public ExtendFriendVoiceView$1$1$1(aole paramaole) {}
+  public ExtendFriendVoiceView$1$1$1(aqec paramaqec) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ExtendFriendVoiceView$1$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView.1.1.1
  * JD-Core Version:    0.7.0.1
  */

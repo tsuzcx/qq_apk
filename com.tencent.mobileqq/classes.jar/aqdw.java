@@ -1,19 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendMultiLinesTagsView;
 
-class aqdw
-  implements View.OnClickListener
+public class aqdw
 {
-  aqdw(aqdv paramaqdv) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  public aqdw(ExtendFriendMultiLinesTagsView paramExtendFriendMultiLinesTagsView, int paramInt, String paramString)
   {
-    this.a.b();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqdw
  * JD-Core Version:    0.7.0.1
  */

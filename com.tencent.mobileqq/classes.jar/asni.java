@@ -1,29 +1,25 @@
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
-import java.util.HashSet;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.hiboom.FontBubble;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import java.util.List;
 
 public class asni
-  implements asmv
+  implements aubq<T, List<FontBubble>>
 {
-  public asni(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
+  public asni(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public void a(boolean paramBoolean, RecentBaseData paramRecentBaseData)
+  public List<FontBubble> a(T paramT)
   {
-    if (paramBoolean) {
-      MsgBackupSelectionFragment.a(this.a).a.add(paramRecentBaseData);
-    }
-    for (;;)
-    {
-      int i = MsgBackupSelectionFragment.a(this.a).a.size();
-      MsgBackupSelectionFragment.a(this.a, i);
-      return;
-      MsgBackupSelectionFragment.a(this.a).a.remove(paramRecentBaseData);
-    }
+    paramT = FontBubblePanelView.a(this.a).a(FontBubblePanelView.a(this.a).a, paramT);
+    FontBubble localFontBubble = new FontBubble();
+    localFontBubble.viewType = 0;
+    paramT.add(localFontBubble);
+    return paramT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asni
  * JD-Core Version:    0.7.0.1
  */

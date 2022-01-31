@@ -1,53 +1,27 @@
-public abstract class bhdx
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.BaselibContent;
+import com.tencent.qqmini.sdk.launcher.shell.BaselibLoader.OnLoadBaselibListener;
+
+class bhdx
+  implements BaselibLoader.OnLoadBaselibListener
 {
-  public static bheg a(long paramLong)
-  {
-    return bheb.a().a(paramLong);
-  }
+  bhdx(bhdw parambhdw) {}
   
-  public static bheh a(long paramLong)
+  public void onResult(int paramInt, String paramString, BaselibLoader.BaselibContent paramBaselibContent)
   {
-    return bheb.a().a(paramLong);
-  }
-  
-  public static bhei a(long paramLong)
-  {
-    return bheb.a().a(paramLong);
-  }
-  
-  public static String a(int paramInt, String paramString1, String paramString2, bhdz parambhdz)
-  {
-    return bheb.a().a(paramInt, paramString1, paramString2, parambhdz);
-  }
-  
-  public static String a(int paramInt, String paramString1, String paramString2, bhea parambhea)
-  {
-    return a(paramInt, paramString1, paramString2, true, parambhea);
-  }
-  
-  public static String a(int paramInt, String paramString1, String paramString2, boolean paramBoolean, bhea parambhea)
-  {
-    return bheb.a().a(paramInt, paramString1, paramString2, paramBoolean, parambhea);
-  }
-  
-  public static void a(long paramLong, bheg parambheg)
-  {
-    bheb.a().a(paramLong, parambheg);
-  }
-  
-  public static void a(long paramLong, bheh parambheh)
-  {
-    bheb.a().a(paramLong, parambheh);
-  }
-  
-  public static void a(long paramLong, bhei parambhei)
-  {
-    bheb.a().a(paramLong, parambhei);
+    bgyd.a(bgxz.a(), 11, "0");
+    if ((paramInt == 0) && (paramBaselibContent != null) && (paramBaselibContent.isBaseLibInited()))
+    {
+      bhdw.a(this.a, paramBaselibContent);
+      bgxn.a = true;
+      this.a.c();
+      return;
+    }
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhdx
  * JD-Core Version:    0.7.0.1
  */

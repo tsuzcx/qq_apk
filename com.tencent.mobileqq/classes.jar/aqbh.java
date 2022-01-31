@@ -1,39 +1,30 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
 
-class aqbh
-  extends ajvj
+public class aqbh
+  implements View.OnTouchListener
 {
-  aqbh(aqbe paramaqbe) {}
+  public aqbh(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "updateDiscussionInfo start: isSuccess=" + paramBoolean);
-    }
-    String str = this.a.jdField_a_of_type_AndroidOsBundle.getString("uin");
-    paramObject = (ArrayList)paramObject;
-    int i = paramObject.indexOf(str);
-    if (i != -1)
+    switch (paramMotionEvent.getAction())
     {
-      paramObject = (Boolean)paramObject.get(i + 1);
-      if ((paramBoolean) && (paramObject.booleanValue()))
-      {
-        paramObject = ((ajvi)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(str);
-        if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.discussionName)) && (this.a.jdField_a_of_type_Bbgu != null)) {
-          this.a.jdField_a_of_type_Bbgu.setTitle(ajya.a(2131704743) + aqbv.g + paramObject.discussionName);
-        }
-      }
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbh
  * JD-Core Version:    0.7.0.1
  */

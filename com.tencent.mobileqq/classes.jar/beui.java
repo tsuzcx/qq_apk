@@ -1,21 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Process;
+import android.view.View;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-class beui
-  implements DialogInterface.OnClickListener
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/widget/qus/QUSDragFloatController;", "", "createContentView", "Landroid/view/View;", "defaultHeight", "", "onShowDefault", "", "onShowMin", "onShowTotal", "showMode", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public abstract interface beui
 {
-  beui(beuh parambeuh) {}
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    Process.killProcess(Process.myPid());
-  }
+  @Nullable
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beui
  * JD-Core Version:    0.7.0.1
  */

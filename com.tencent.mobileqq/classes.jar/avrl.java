@@ -1,41 +1,42 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
-import java.util.concurrent.ConcurrentHashMap;
+import android.app.Activity;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.1;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.2;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.3;
+import com.tencent.mobileqq.ocr.OCRResultActivity.10.4;
+import mqq.os.MqqHandler;
 
 public class avrl
+  extends bady
 {
-  public ConcurrentHashMap<String, avra> a = new ConcurrentHashMap(10);
-  
-  public avra a(SVHwEncoder paramSVHwEncoder, SessionInfo paramSessionInfo, int paramInt)
+  public avrl(OCRResultActivity paramOCRResultActivity, Activity paramActivity)
   {
-    paramSVHwEncoder = new avra(paramSVHwEncoder, paramSessionInfo, paramInt);
-    this.a.put(paramSVHwEncoder.a, paramSVHwEncoder);
-    avrf.a("VideoCompoundController", "newProcessor, key = " + paramSVHwEncoder.a);
-    return paramSVHwEncoder;
+    super(paramActivity);
   }
   
-  public avra a(String paramString)
+  public void a()
   {
-    avrf.a("VideoCompoundController", "findProcessor, key = " + paramString);
-    if ((!this.a.isEmpty()) && (paramString != null) && (this.a.containsKey(paramString))) {
-      return (avra)this.a.get(paramString);
-    }
-    return null;
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.1(this));
   }
   
-  public boolean a(String paramString)
+  public void a(int paramInt)
   {
-    avrf.a("VideoCompoundController", "removeProcessor, key = " + paramString);
-    if (paramString == null) {}
-    while (this.a.remove(paramString) == null) {
-      return false;
-    }
-    return true;
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.4(this, paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.3(this));
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    OCRResultActivity.a(this.a).post(new OCRResultActivity.10.2(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avrl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,88 +1,105 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.widget.SingleLineTextView;
-import java.util.List;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pluginsdk.exception.ExceptionTracker;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
-class azlk
-  extends BaseAdapter
+public class azlk
 {
-  List<baee> jdField_a_of_type_JavaUtilList;
-  
-  azlk(List<baee> paramList)
+  private static String a(QQAppInterface paramQQAppInterface, azow paramazow, int paramInt)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    baee localbaee;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_Azlj.getContext()).inflate(2131560321, null);
-      paramViewGroup = new azll(this.jdField_a_of_type_Azlj);
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131370647));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367427));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368885));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369200);
-      paramView.setOnClickListener(this.jdField_a_of_type_Azlj);
-      paramView.setTag(paramViewGroup);
-      localbaee = (baee)getItem(paramInt);
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localbaee.a.getTroopName());
-      if (localbaee.a.lastMsgTime == 0L) {
-        break label270;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131707578) + ahpj.a().a(localbaee.a.troopuin, localbaee.a.lastMsgTime));
-      label191:
-      if (!localbaee.a.hasSetTroopHead()) {
-        break label356;
-      }
+    if (paramazow == null) {
+      return null;
     }
-    label270:
-    label356:
-    for (paramInt = 4;; paramInt = 113)
+    return paramazow.a(paramInt);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, azov paramazov)
+  {
+    a("dc03309", paramQQAppInterface, paramazov);
+  }
+  
+  private static void a(String paramString, QQAppInterface paramQQAppInterface, azow paramazow)
+  {
+    if (paramazow == null)
     {
-      bayh localbayh = bayh.a(this.jdField_a_of_type_Azlj.a, paramInt, localbaee.a.troopuin, 3, bayh.a(4, 3), bayh.a(4, 3));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localbayh);
-      paramViewGroup.jdField_a_of_type_JavaLangString = localbaee.a.troopuin;
-      return paramView;
-      paramViewGroup = (azll)paramView.getTag();
-      break;
-      if (localbaee.a.troopCreateTime != 0L)
-      {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131707583) + ahpj.a().a(localbaee.a.troopuin, localbaee.a.troopCreateTime));
-        break label191;
+      ExceptionTracker.trackException("EXReportController", "[EXReport runtime] Tag(" + paramString + ") report item is null");
+      if (QLog.isColorLevel()) {}
+    }
+    do
+    {
+      return;
+      QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + "  report item is null");
+      return;
+      if ((!TextUtils.isEmpty(paramazow.i)) && (!TextUtils.isEmpty(paramazow.k)) && (!TextUtils.isEmpty(paramazow.j))) {
+        break;
       }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      break label191;
+    } while (!QLog.isColorLevel());
+    QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + " item.sopType must not empty");
+    return;
+    paramazow.b = NetConnInfoCenter.getServerTime();
+    if (!QLog.isColorLevel()) {}
+    Object localObject;
+    for (;;)
+    {
+      localObject = paramQQAppInterface;
+      if (paramQQAppInterface == null)
+      {
+        localObject = paramQQAppInterface;
+        if (BaseApplicationImpl.sProcessId == 1)
+        {
+          AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
+          localObject = paramQQAppInterface;
+          if (localAppRuntime != null)
+          {
+            localObject = paramQQAppInterface;
+            if ((localAppRuntime instanceof QQAppInterface)) {
+              localObject = (QQAppInterface)localAppRuntime;
+            }
+          }
+        }
+      }
+      if (localObject != null) {
+        break;
+      }
+      paramQQAppInterface = a((QQAppInterface)localObject, paramazow, 1);
+      localObject = new Intent();
+      ((Intent)localObject).setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
+      ((Intent)localObject).putExtra("reporting_tag", paramString);
+      ((Intent)localObject).putExtra("reporting_detail", paramQQAppInterface);
+      ((Intent)localObject).putExtra("reporting_count", paramazow.c);
+      ((Intent)localObject).putExtra("is_runtime", 1);
+      BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject);
+      return;
+      QLog.d("EXReportController", 2, "[EXReport runtime] tag = " + paramString + ", content = " + paramazow.toString());
+    }
+    a(paramString, (QQAppInterface)localObject, a((QQAppInterface)localObject, paramazow, 1));
+  }
+  
+  public static void a(String paramString1, QQAppInterface paramQQAppInterface, String paramString2)
+  {
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      String str = paramString2;
+      if (paramString2.contains("${count_unknown}")) {
+        str = paramString2.replace("${count_unknown}", "1");
+      }
+      paramString2 = new NewIntent(paramQQAppInterface.getApplication(), ayxz.class);
+      paramString2.putExtra("sendType", 2);
+      paramString2.putExtra("tag", paramString1);
+      paramString2.putExtra("content", str);
+      paramString2.setWithouLogin(true);
+      paramQQAppInterface.startServlet(paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azlk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.reuse;
 
-import ajto;
+import allb;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.Conversation;
@@ -10,7 +10,7 @@ import eipc.EIPCResult;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class MiniAppTransferModule$3
-  extends ajto
+  extends allb
 {
   MiniAppTransferModule$3(MiniAppTransferModule paramMiniAppTransferModule) {}
   
@@ -54,7 +54,7 @@ class MiniAppTransferModule$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppTransferModule.3
  * JD-Core Version:    0.7.0.1
  */

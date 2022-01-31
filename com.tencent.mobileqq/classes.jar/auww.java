@@ -1,110 +1,93 @@
-import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-public class auww
+public abstract class auww
+  extends Binder
+  implements auwv
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public int b;
-  public Bitmap b;
-  public String b;
-  public Bitmap c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  
-  public auww(int paramInt)
+  public auww()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    attachInterface(this, "com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
   }
   
-  public static auww a(int paramInt, String paramString)
+  public static auwv a(IBinder paramIBinder)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (paramIBinder == null) {
       return null;
-      try
-      {
-        paramString = a(paramString);
-        if (TextUtils.isEmpty(paramString)) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PraiseInfo", 2, "content:" + paramString);
-        }
-        paramString = new JSONObject(paramString);
-        auww localauww = new auww(paramInt);
-        localauww.jdField_a_of_type_JavaLangString = paramString.optString("name");
-        localauww.jdField_b_of_type_JavaLangString = paramString.optString("text");
-        if (paramString.has("color"))
-        {
-          String str = paramString.optString("color").trim();
-          paramString = str;
-          if (str.startsWith("0x")) {
-            paramString = str.substring(2);
-          }
-        }
-        try
-        {
-          localauww.jdField_b_of_type_Int = Color.parseColor("#" + paramString);
-          return localauww;
-        }
-        catch (Exception paramString)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("PraiseInfo", 2, "color invalid");
-            }
-          }
-        }
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with JsonException.", paramString);
-        return null;
-      }
-      catch (IOException paramString)
-      {
-        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with IOException.", paramString);
-      }
     }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
+    if ((localIInterface != null) && ((localIInterface instanceof auwv))) {
+      return (auwv)localIInterface;
+    }
+    return new auwx(paramIBinder);
   }
   
-  private static String a(String paramString)
+  public IBinder asBinder()
   {
-    File localFile = new File(paramString);
-    if (!localFile.exists()) {
-      QLog.e("PraiseInfo", 1, paramString + " not exist!");
-    }
-    do
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    switch (paramInt1)
     {
-      return null;
-      try
-      {
-        paramString = bbdx.b(localFile);
-        return paramString;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
+      if (paramParcel1.readInt() != 0) {
+        localObject1 = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(paramParcel1);
       }
-      catch (OutOfMemoryError paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("PraiseInfo", 2, paramString.getMessage());
-    return null;
+      paramParcel1 = a((BasicTypeDataParcel)localObject1);
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      for (;;)
+      {
+        return true;
+        paramParcel2.writeInt(0);
+      }
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
+      localObject1 = localObject2;
+      if (paramParcel1.readInt() != 0) {
+        localObject1 = (Message)Message.CREATOR.createFromParcel(paramParcel1);
+      }
+      paramParcel1 = a((Message)localObject1);
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
+      {
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
+      }
+      for (;;)
+      {
+        return true;
+        paramParcel2.writeInt(0);
+      }
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
+    a(auxe.a(paramParcel1.readStrongBinder()));
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auww
  * JD-Core Version:    0.7.0.1
  */

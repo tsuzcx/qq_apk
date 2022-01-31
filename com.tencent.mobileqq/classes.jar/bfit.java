@@ -1,179 +1,114 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.FilterManager.1;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONArray;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.smtt.sdk.WebView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bfit
-  implements bfjf
+  implements bfic
 {
-  private static volatile bfit jdField_a_of_type_Bfit;
-  private static String jdField_a_of_type_JavaLangString = "qp_fm_config";
-  private static String b = "_last_time";
-  private Map<String, bfis> jdField_a_of_type_JavaUtilMap = new HashMap();
+  protected Context a;
+  protected final WebView a;
+  protected final String a;
+  protected boolean a;
+  protected final String b;
+  protected final String c;
   
-  private long a(String paramString, long paramLong)
+  public bfit(Context paramContext, WebView paramWebView, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    long l = -1L;
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences(jdField_a_of_type_JavaLangString, 0);
-    if (localSharedPreferences != null) {
-      l = localSharedPreferences.getLong(paramString + b, paramLong);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
+    this.b = paramString3;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.c = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(Exception paramException)
+  {
+    bfhg.c("AppUpdate", "AppUpdate onException >>> " + paramException.toString());
+    if ((!this.jdField_a_of_type_Boolean) && (bfij.a(this.jdField_a_of_type_AndroidContentContext))) {
+      bfiq.b(this.jdField_a_of_type_AndroidContentContext);
     }
-    return l;
-  }
-  
-  public static bfit a()
-  {
-    if (jdField_a_of_type_Bfit == null) {}
-    try
-    {
-      if (jdField_a_of_type_Bfit == null) {
-        jdField_a_of_type_Bfit = new bfit();
-      }
-      return jdField_a_of_type_Bfit;
-    }
-    finally {}
-  }
-  
-  private void a(String paramString)
-  {
-    if (paramString == null) {
-      return;
-    }
-    paramString = new bfja(paramString);
-    bfid.a().cloudDetect(paramString, true, false, null);
-  }
-  
-  private boolean a(String paramString, long paramLong)
-  {
-    boolean bool = false;
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences(jdField_a_of_type_JavaLangString, 0);
-    if (localSharedPreferences != null)
-    {
-      localSharedPreferences.edit().putLong(paramString + b, paramLong).commit();
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public bfis a(String paramString)
-  {
-    return (bfis)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public bfje a(String paramString)
-  {
-    bfjg localbfjg = null;
-    if (paramString.equalsIgnoreCase("App")) {
-      localbfjg = new bfjg(this);
-    }
-    return localbfjg;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      long l1 = a((String)localObject, -1L);
-      if (l1 != -1L)
+    if (TextUtils.isEmpty(this.b)) {}
+    for (paramException = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";; paramException = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);") {
+      try
       {
-        long l2 = new Date().getTime();
-        bfis localbfis = a((String)localObject);
-        if ((localbfis != null) && (l2 - l1 < localbfis.a() * 1000L))
-        {
-          QLog.d("QSFM", 1, String.format("scan not start: %s:%d-%d=%d:%d", new Object[] { localObject, Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(l2 - l1), Long.valueOf(localbfis.a() * 1000L) }));
-          continue;
-        }
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramException);
+        return;
       }
-      localObject = a((String)localObject);
-      if (localObject != null) {
-        ThreadManager.post(new FilterManager.1(this, (bfje)localObject), 5, null, true);
-      }
+      catch (Exception paramException) {}
     }
   }
   
-  public void a(String paramString, Object paramObject)
+  public void a(JSONObject paramJSONObject)
   {
-    a(paramString, new Date().getTime());
-    QLog.d("QSFM", 1, String.format("scan started: %s", new Object[] { paramString }));
-  }
-  
-  public boolean a(byte[] paramArrayOfByte)
-  {
-    try
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    bfhg.c("AppUpdate", "AppUpdate onResult >>> " + localJSONObject.toString());
+    paramJSONObject = new JSONObject();
+    for (;;)
     {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-      paramArrayOfByte = new JSONArray(new String(paramArrayOfByte));
-      if (paramArrayOfByte != null)
+      try
       {
-        int i = 0;
-        while (i < paramArrayOfByte.length())
+        paramJSONObject.put("guid", this.c);
+        paramJSONObject.put("content", localJSONObject.toString());
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
         {
-          JSONObject localJSONObject = paramArrayOfByte.getJSONObject(i);
-          if ((localJSONObject != null) && (localJSONObject.has("type"))) {
-            this.jdField_a_of_type_JavaUtilMap.put(localJSONObject.getString("type"), new bfis(localJSONObject));
-          }
-          i += 1;
-        }
-      }
-      return true;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return false;
-  }
-  
-  public void b(String paramString, Object paramObject)
-  {
-    if (paramObject != null)
-    {
-      bfis localbfis = a(paramString);
-      if ((localbfis != null) && (localbfis.a(paramObject)))
-      {
-        a(bfir.a(paramObject, "packageName").toString());
-        if (localbfis.a() > 100000)
-        {
-          bfhw localbfhw = new bfhw();
-          Iterator localIterator = localbfis.a().iterator();
-          if (localIterator.hasNext())
+          localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject.toString() + ");}void(0);";
+          paramJSONObject = (JSONObject)localObject;
+          if (!this.jdField_a_of_type_Boolean)
           {
-            paramString = bfir.b(paramObject, (String)localIterator.next());
-            if (paramString != null) {}
-            for (paramString = paramString.toString();; paramString = "")
+            paramJSONObject = (JSONObject)localObject;
+            if (bfij.a(this.jdField_a_of_type_AndroidContentContext))
             {
-              localbfhw.a(paramString);
-              break;
+              if (localJSONObject.optInt("code", -1) != 0) {
+                continue;
+              }
+              bfiq.a(this.jdField_a_of_type_AndroidContentContext);
+              paramJSONObject = (JSONObject)localObject;
             }
           }
-          bfht.a(localbfhw.toString(), localbfis.a());
         }
       }
+      catch (JSONException paramJSONObject)
+      {
+        Object localObject;
+        if (TextUtils.isEmpty(this.b))
+        {
+          paramJSONObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);";
+          continue;
+        }
+        paramJSONObject = "javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);";
+        continue;
+      }
+      try
+      {
+        localObject = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+        if (localObject == null) {}
+      }
+      catch (Exception paramJSONObject)
+      {
+        return;
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramJSONObject);
+        return;
+      }
+      catch (Exception paramJSONObject) {}
+      localObject = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject.toString() + ");void(0);";
+      continue;
+      bfiq.b(this.jdField_a_of_type_AndroidContentContext);
+      paramJSONObject = (JSONObject)localObject;
     }
-  }
-  
-  public void c(String paramString, Object paramObject)
-  {
-    QLog.d("QSFM", 1, String.format("scan completed: %s", new Object[] { paramString }));
-    bfid.a().flushRequest();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfit
  * JD-Core Version:    0.7.0.1
  */

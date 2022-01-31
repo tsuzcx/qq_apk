@@ -26,11 +26,9 @@ import com.tencent.mobileqq.msf.core.d;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.core.net.n.a;
 import com.tencent.mobileqq.msf.core.net.x;
-import com.tencent.mobileqq.msf.core.t;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.RdmReq;
 import com.tencent.mobileqq.msf.service.MsfService;
-import com.tencent.mobileqq.msf.service.q;
 import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -73,14 +71,17 @@ public class k
   public static volatile boolean R = false;
   static long S = 0L;
   static long T = 0L;
-  static AtomicBoolean U = new AtomicBoolean(false);
-  static AtomicBoolean V = new AtomicBoolean(false);
+  static AtomicBoolean U;
+  static AtomicBoolean V;
   static Thread W = new l("MsfCheckDeepSleepThread");
   static final String a = "MSF.C.StatReport";
   private static LinkedBlockingQueue ab = new LinkedBlockingQueue(100);
   private static ConcurrentHashMap ac = new ConcurrentHashMap();
   private static long ad = 3600000L;
-  private static SimpleDateFormat ag = new SimpleDateFormat("MM.dd HH:mm:ss.SSS");
+  private static final int ae = 5000;
+  private static final Object af;
+  private static final Object ag;
+  private static SimpleDateFormat aj = new SimpleDateFormat("MM.dd HH:mm:ss.SSS");
   public static final String b = "param_Reason";
   public static final String c = "param_connecttrycount";
   static final String d = "param_sendTime";
@@ -111,8 +112,19 @@ public class k
   boolean Y = false;
   boolean Z = false;
   boolean aa = false;
-  private k.b ae = new k.b();
-  private StringBuilder af = new StringBuilder("\nMsf Crash Control info:\n");
+  private k.b ah = new k.b();
+  private StringBuilder ai = new StringBuilder("\nMsf Crash Control info:\n");
+  
+  static
+  {
+    R = false;
+    S = 0L;
+    T = 0L;
+    U = new AtomicBoolean(false);
+    V = new AtomicBoolean(false);
+    af = new Object();
+    ag = new Object();
+  }
   
   public k(MsfCore paramMsfCore)
   {
@@ -125,11 +137,11 @@ public class k
     int i3;
     label26:
     int i4;
-    if (o())
+    if (p())
     {
       i1 = 1;
       i3 = (byte)i1;
-      if (!n()) {
+      if (!o()) {
         break label251;
       }
       i1 = 2;
@@ -165,7 +177,7 @@ public class k
     {
       int i5 = (byte)i1;
       i1 = i2;
-      if (p()) {
+      if (q()) {
         i1 = 8;
       }
       return (byte)(i5 | i3 | i4 | (byte)i1);
@@ -330,22 +342,27 @@ public class k
       }
       UserAction.onUserAction(localException.eventName, localException.isSucceed, localException.elapse, localException.size, localMap, localException.isRealTime);
       if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.StatReport", 2, "report RQD IMEI:" + t.d() + " eventName=" + localException.eventName + " isSucceed:" + localException.isSucceed + " elapse:" + localException.elapse + " size:" + localException.size + " isRealTime:" + localException.isRealTime + " isMerge:" + localException.isMerge + " params:" + localStringBuilder.toString());
+        QLog.d("MSF.C.StatReport", 2, "report RQD IMEI:" + com.tencent.mobileqq.msf.core.t.d() + " eventName=" + localException.eventName + " isSucceed:" + localException.isSucceed + " elapse:" + localException.elapse + " size:" + localException.size + " isRealTime:" + localException.isRealTime + " isMerge:" + localException.isMerge + " params:" + localStringBuilder.toString());
       }
     }
-  }
-  
-  private static boolean n()
-  {
-    return !MsfSdkUtils.isTopActivity(BaseApplication.getContext());
+    synchronized (ag)
+    {
+      ag.notifyAll();
+      return;
+    }
   }
   
   private static boolean o()
   {
-    return !MsfSdkUtils.isScreenOn(BaseApplication.getContext());
+    return !MsfSdkUtils.isTopActivity(BaseApplication.getContext());
   }
   
   private static boolean p()
+  {
+    return !MsfSdkUtils.isScreenOn(BaseApplication.getContext());
+  }
+  
+  private static boolean q()
   {
     boolean bool = false;
     if (Settings.System.getInt(BaseApplication.getContext().getContentResolver(), "airplane_mode_on", 0) != 0) {
@@ -361,14 +378,14 @@ public class k
     try
     {
       Object localObject = new JSONObject(str);
-      this.ae.a = ((JSONObject)localObject).getBoolean("control_switch");
-      this.ae.b = ((JSONObject)localObject).getInt("control_window");
-      this.ae.c = ((JSONObject)localObject).getInt("control_freq");
-      localObject = this.af.append("initCrashControl");
+      this.ah.a = ((JSONObject)localObject).getBoolean("control_switch");
+      this.ah.b = ((JSONObject)localObject).getInt("control_window");
+      this.ah.c = ((JSONObject)localObject).getInt("control_freq");
+      localObject = this.ai.append("initCrashControl");
       ((StringBuilder)localObject).append(",controlJson=").append(str);
-      ((StringBuilder)localObject).append(",switch=").append(this.ae.a);
-      ((StringBuilder)localObject).append(",window=").append(this.ae.b);
-      ((StringBuilder)localObject).append(",Freq=").append(this.ae.c);
+      ((StringBuilder)localObject).append(",switch=").append(this.ah.a);
+      ((StringBuilder)localObject).append(",window=").append(this.ah.b);
+      ((StringBuilder)localObject).append(",Freq=").append(this.ah.c);
       ((StringBuilder)localObject).append("\n");
       return;
     }
@@ -376,7 +393,7 @@ public class k
     {
       for (;;)
       {
-        this.ae.a();
+        this.ah.a();
         QLog.d("MSF.C.StatReport", 1, "initCrashControl parse json throws an exception, so reset.");
       }
     }
@@ -461,7 +478,7 @@ public class k
       localHashMap.put("pm_recvwupsize", String.valueOf(paramLong3));
       localHashMap.put("pm_reqpacksize", String.valueOf(paramLong4));
       localHashMap.put("pm_senddataerror", String.valueOf(paramBoolean));
-      localHashMap.put("pm_imsi", t.e());
+      localHashMap.put("pm_imsi", com.tencent.mobileqq.msf.core.t.e());
       localHashMap.put("pm_nettype", String.valueOf(NetConnInfoCenter.getSystemNetworkType()));
       paramInt1 = com.tencent.mobileqq.a.a.a.c;
       com.tencent.mobileqq.a.a.a.c = 0;
@@ -555,89 +572,287 @@ public class k
     a("dim.Msf.UserGrayfail", paramBoolean, paramLong1, paramLong2, localHashMap, false, false);
   }
   
-  public void a(String paramString, boolean paramBoolean1, long paramLong1, long paramLong2, Map paramMap, boolean paramBoolean2, boolean paramBoolean3)
+  /* Error */
+  public void a(String arg1, boolean paramBoolean1, long paramLong1, long paramLong2, Map paramMap, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (!c()) {}
-    do
-    {
-      return;
-      if (R)
-      {
-        R = false;
-        h();
-      }
-      if (!com.tencent.mobileqq.msf.core.a.a.s.contains(paramString)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("MSF.C.StatReport", 2, paramString + " is not need report.");
-    return;
-    if ((paramMap == null) || (!paramBoolean1)) {}
-    for (;;)
-    {
-      int i1;
-      Object localObject;
-      try
-      {
-        if ((this.P != null) && (this.P.sender != null) && (this.P.sender.b != null)) {
-          paramMap.put("param_isConnected", String.valueOf(this.P.sender.b.l().c()));
-        }
-        paramMap.put("param_NetworkOperator", t.l());
-        i1 = NetConnInfoCenter.getSystemNetworkType();
-        paramMap.put("param_NetworkInfo", String.valueOf(i1));
-        if (!paramMap.containsKey(BaseConstants.RDM_NoChangeFailCode)) {
-          break label438;
-        }
-        paramMap.remove(BaseConstants.RDM_NoChangeFailCode);
-        paramMap.put("param_SsoServerIp", ag.E);
-        paramMap.put("param_GatewayrIp", ag.o());
-        if (!paramMap.containsKey("param_reportTime")) {
-          paramMap.put("param_reportTime", String.valueOf(SystemClock.elapsedRealtime()));
-        }
-        boolean bool = this.P.getSsoListManager().d();
-        i1 = this.P.sender.b.f();
-        if (!bool) {
-          break label459;
-        }
-        localObject = String.valueOf(1);
-        paramMap.put("kMsfSupportIPFlag", localObject);
-        if (i1 != 2) {
-          break label468;
-        }
-        localObject = String.valueOf(1);
-        paramMap.put("kMsfConnectedIPFlag", localObject);
-        localObject = new RdmReq();
-        ((RdmReq)localObject).eventName = paramString;
-        ((RdmReq)localObject).elapse = paramLong1;
-        ((RdmReq)localObject).size = paramLong2;
-        ((RdmReq)localObject).isSucceed = paramBoolean1;
-        ((RdmReq)localObject).isRealTime = paramBoolean2;
-        ((RdmReq)localObject).isMerge = paramBoolean3;
-        ((RdmReq)localObject).params = paramMap;
-        if ((ab.offer(localObject)) || (!QLog.isColorLevel())) {
-          break;
-        }
-        QLog.e("MSF.C.StatReport", 2, "wait queue is full!");
-        return;
-      }
-      catch (Exception paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.w("MSF.C.StatReport", 2, "report RQD error " + paramString, paramString);
-      return;
-      label438:
-      if (i1 == 0)
-      {
-        paramMap.put("param_FailCode", "900");
-        continue;
-        label459:
-        localObject = String.valueOf(0);
-        continue;
-        label468:
-        localObject = String.valueOf(0);
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 770	com/tencent/mobileqq/msf/core/c/k:c	()Z
+    //   4: ifne +4 -> 8
+    //   7: return
+    //   8: getstatic 181	com/tencent/mobileqq/msf/core/c/k:R	Z
+    //   11: ifeq +11 -> 22
+    //   14: iconst_0
+    //   15: putstatic 181	com/tencent/mobileqq/msf/core/c/k:R	Z
+    //   18: aload_0
+    //   19: invokevirtual 772	com/tencent/mobileqq/msf/core/c/k:h	()V
+    //   22: getstatic 774	com/tencent/mobileqq/msf/core/a/a:s	Ljava/util/HashSet;
+    //   25: aload_1
+    //   26: invokevirtual 761	java/util/HashSet:contains	(Ljava/lang/Object;)Z
+    //   29: ifeq +36 -> 65
+    //   32: invokestatic 281	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   35: ifeq -28 -> 7
+    //   38: ldc 60
+    //   40: iconst_2
+    //   41: new 226	java/lang/StringBuilder
+    //   44: dup
+    //   45: invokespecial 282	java/lang/StringBuilder:<init>	()V
+    //   48: aload_1
+    //   49: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: ldc_w 776
+    //   55: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: invokevirtual 304	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   61: invokestatic 307	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   64: return
+    //   65: aload 7
+    //   67: ifnull +254 -> 321
+    //   70: iload_2
+    //   71: ifne +62 -> 133
+    //   74: aload_0
+    //   75: getfield 237	com/tencent/mobileqq/msf/core/c/k:P	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   78: ifnull +55 -> 133
+    //   81: aload_0
+    //   82: getfield 237	com/tencent/mobileqq/msf/core/c/k:P	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   85: getfield 780	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ag;
+    //   88: ifnull +45 -> 133
+    //   91: aload_0
+    //   92: getfield 237	com/tencent/mobileqq/msf/core/c/k:P	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   95: getfield 780	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ag;
+    //   98: getfield 785	com/tencent/mobileqq/msf/core/ag:b	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   101: ifnull +32 -> 133
+    //   104: aload 7
+    //   106: ldc 129
+    //   108: aload_0
+    //   109: getfield 237	com/tencent/mobileqq/msf/core/c/k:P	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   112: getfield 780	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ag;
+    //   115: getfield 785	com/tencent/mobileqq/msf/core/ag:b	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   118: invokevirtual 790	com/tencent/mobileqq/msf/core/net/n:l	()Lcom/tencent/mobileqq/msf/core/net/m;
+    //   121: invokevirtual 793	com/tencent/mobileqq/msf/core/net/m:c	()Z
+    //   124: invokestatic 470	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   127: invokeinterface 427 3 0
+    //   132: pop
+    //   133: aload 7
+    //   135: ldc_w 795
+    //   138: invokestatic 797	com/tencent/mobileqq/msf/core/t:l	()Ljava/lang/String;
+    //   141: invokeinterface 427 3 0
+    //   146: pop
+    //   147: invokestatic 666	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getSystemNetworkType	()I
+    //   150: istore 10
+    //   152: aload 7
+    //   154: ldc_w 799
+    //   157: iload 10
+    //   159: invokestatic 371	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   162: invokeinterface 427 3 0
+    //   167: pop
+    //   168: aload 7
+    //   170: getstatic 676	com/tencent/qphone/base/BaseConstants:RDM_NoChangeFailCode	Ljava/lang/String;
+    //   173: invokeinterface 802 2 0
+    //   178: ifeq +333 -> 511
+    //   181: aload 7
+    //   183: getstatic 676	com/tencent/qphone/base/BaseConstants:RDM_NoChangeFailCode	Ljava/lang/String;
+    //   186: invokeinterface 435 2 0
+    //   191: pop
+    //   192: aload 7
+    //   194: ldc 144
+    //   196: getstatic 804	com/tencent/mobileqq/msf/core/ag:E	Ljava/lang/String;
+    //   199: invokeinterface 427 3 0
+    //   204: pop
+    //   205: aload 7
+    //   207: ldc_w 806
+    //   210: invokestatic 808	com/tencent/mobileqq/msf/core/ag:o	()Ljava/lang/String;
+    //   213: invokeinterface 427 3 0
+    //   218: pop
+    //   219: aload 7
+    //   221: ldc 20
+    //   223: invokeinterface 802 2 0
+    //   228: ifne +19 -> 247
+    //   231: aload 7
+    //   233: ldc 20
+    //   235: invokestatic 411	android/os/SystemClock:elapsedRealtime	()J
+    //   238: invokestatic 432	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   241: invokeinterface 427 3 0
+    //   246: pop
+    //   247: aload_0
+    //   248: getfield 237	com/tencent/mobileqq/msf/core/c/k:P	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   251: invokevirtual 812	com/tencent/mobileqq/msf/core/MsfCore:getSsoListManager	()Lcom/tencent/mobileqq/msf/core/a/c;
+    //   254: invokevirtual 816	com/tencent/mobileqq/msf/core/a/c:d	()Z
+    //   257: istore 11
+    //   259: aload_0
+    //   260: getfield 237	com/tencent/mobileqq/msf/core/c/k:P	Lcom/tencent/mobileqq/msf/core/MsfCore;
+    //   263: getfield 780	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ag;
+    //   266: getfield 785	com/tencent/mobileqq/msf/core/ag:b	Lcom/tencent/mobileqq/msf/core/net/n;
+    //   269: invokevirtual 817	com/tencent/mobileqq/msf/core/net/n:f	()I
+    //   272: istore 10
+    //   274: iload 11
+    //   276: ifeq +256 -> 532
+    //   279: iconst_1
+    //   280: invokestatic 371	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   283: astore 12
+    //   285: aload 7
+    //   287: ldc 32
+    //   289: aload 12
+    //   291: invokeinterface 427 3 0
+    //   296: pop
+    //   297: iload 10
+    //   299: iconst_2
+    //   300: if_icmpne +241 -> 541
+    //   303: iconst_1
+    //   304: invokestatic 371	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   307: astore 12
+    //   309: aload 7
+    //   311: ldc 39
+    //   313: aload 12
+    //   315: invokeinterface 427 3 0
+    //   320: pop
+    //   321: new 402	com/tencent/mobileqq/msf/sdk/RdmReq
+    //   324: dup
+    //   325: invokespecial 818	com/tencent/mobileqq/msf/sdk/RdmReq:<init>	()V
+    //   328: astore 12
+    //   330: aload 12
+    //   332: aload_1
+    //   333: putfield 452	com/tencent/mobileqq/msf/sdk/RdmReq:eventName	Ljava/lang/String;
+    //   336: aload 12
+    //   338: lload_3
+    //   339: putfield 424	com/tencent/mobileqq/msf/sdk/RdmReq:elapse	J
+    //   342: aload 12
+    //   344: lload 5
+    //   346: putfield 475	com/tencent/mobileqq/msf/sdk/RdmReq:size	J
+    //   349: aload 12
+    //   351: iload_2
+    //   352: putfield 467	com/tencent/mobileqq/msf/sdk/RdmReq:isSucceed	Z
+    //   355: aload 12
+    //   357: iload 8
+    //   359: putfield 478	com/tencent/mobileqq/msf/sdk/RdmReq:isRealTime	Z
+    //   362: aload 12
+    //   364: iload 9
+    //   366: putfield 508	com/tencent/mobileqq/msf/sdk/RdmReq:isMerge	Z
+    //   369: aload 12
+    //   371: aload 7
+    //   373: putfield 406	com/tencent/mobileqq/msf/sdk/RdmReq:params	Ljava/util/Map;
+    //   376: getstatic 169	com/tencent/mobileqq/msf/core/c/k:ab	Ljava/util/concurrent/LinkedBlockingQueue;
+    //   379: aload 12
+    //   381: invokevirtual 821	java/util/concurrent/LinkedBlockingQueue:offer	(Ljava/lang/Object;)Z
+    //   384: ifne -377 -> 7
+    //   387: invokestatic 281	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   390: ifeq +12 -> 402
+    //   393: ldc 60
+    //   395: iconst_2
+    //   396: ldc_w 823
+    //   399: invokestatic 307	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   402: getstatic 197	com/tencent/mobileqq/msf/core/c/k:af	Ljava/lang/Object;
+    //   405: astore_1
+    //   406: aload_1
+    //   407: monitorenter
+    //   408: getstatic 197	com/tencent/mobileqq/msf/core/c/k:af	Ljava/lang/Object;
+    //   411: invokevirtual 513	java/lang/Object:notifyAll	()V
+    //   414: aload_1
+    //   415: monitorexit
+    //   416: invokestatic 829	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   419: invokestatic 832	android/os/Looper:myLooper	()Landroid/os/Looper;
+    //   422: if_acmpeq -415 -> 7
+    //   425: getstatic 199	com/tencent/mobileqq/msf/core/c/k:ag	Ljava/lang/Object;
+    //   428: astore_1
+    //   429: aload_1
+    //   430: monitorenter
+    //   431: getstatic 199	com/tencent/mobileqq/msf/core/c/k:ag	Ljava/lang/Object;
+    //   434: ldc2_w 833
+    //   437: invokevirtual 838	java/lang/Object:wait	(J)V
+    //   440: getstatic 169	com/tencent/mobileqq/msf/core/c/k:ab	Ljava/util/concurrent/LinkedBlockingQueue;
+    //   443: aload 12
+    //   445: invokevirtual 821	java/util/concurrent/LinkedBlockingQueue:offer	(Ljava/lang/Object;)Z
+    //   448: ifne +18 -> 466
+    //   451: invokestatic 281	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   454: ifeq +12 -> 466
+    //   457: ldc 60
+    //   459: iconst_2
+    //   460: ldc_w 840
+    //   463: invokestatic 307	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   466: aload_1
+    //   467: monitorexit
+    //   468: return
+    //   469: astore 7
+    //   471: aload_1
+    //   472: monitorexit
+    //   473: aload 7
+    //   475: athrow
+    //   476: astore_1
+    //   477: invokestatic 281	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   480: ifeq -473 -> 7
+    //   483: ldc 60
+    //   485: iconst_2
+    //   486: new 226	java/lang/StringBuilder
+    //   489: dup
+    //   490: invokespecial 282	java/lang/StringBuilder:<init>	()V
+    //   493: ldc_w 444
+    //   496: invokevirtual 288	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   499: aload_1
+    //   500: invokevirtual 298	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   503: invokevirtual 304	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   506: aload_1
+    //   507: invokestatic 447	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   510: return
+    //   511: iload 10
+    //   513: ifne -321 -> 192
+    //   516: aload 7
+    //   518: ldc 141
+    //   520: ldc_w 842
+    //   523: invokeinterface 427 3 0
+    //   528: pop
+    //   529: goto -337 -> 192
+    //   532: iconst_0
+    //   533: invokestatic 371	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   536: astore 12
+    //   538: goto -253 -> 285
+    //   541: iconst_0
+    //   542: invokestatic 371	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   545: astore 12
+    //   547: goto -238 -> 309
+    //   550: astore 7
+    //   552: aload_1
+    //   553: monitorexit
+    //   554: aload 7
+    //   556: athrow
+    //   557: astore 7
+    //   559: aload 7
+    //   561: invokevirtual 843	java/lang/InterruptedException:printStackTrace	()V
+    //   564: goto -124 -> 440
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	567	0	this	k
+    //   0	567	2	paramBoolean1	boolean
+    //   0	567	3	paramLong1	long
+    //   0	567	5	paramLong2	long
+    //   0	567	7	paramMap	Map
+    //   0	567	8	paramBoolean2	boolean
+    //   0	567	9	paramBoolean3	boolean
+    //   150	362	10	i1	int
+    //   257	18	11	bool	boolean
+    //   283	263	12	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   431	440	469	finally
+    //   440	466	469	finally
+    //   466	468	469	finally
+    //   471	473	469	finally
+    //   559	564	469	finally
+    //   74	133	476	java/lang/Exception
+    //   133	192	476	java/lang/Exception
+    //   192	247	476	java/lang/Exception
+    //   247	274	476	java/lang/Exception
+    //   279	285	476	java/lang/Exception
+    //   285	297	476	java/lang/Exception
+    //   303	309	476	java/lang/Exception
+    //   309	321	476	java/lang/Exception
+    //   321	402	476	java/lang/Exception
+    //   402	408	476	java/lang/Exception
+    //   416	431	476	java/lang/Exception
+    //   473	476	476	java/lang/Exception
+    //   516	529	476	java/lang/Exception
+    //   532	538	476	java/lang/Exception
+    //   554	557	476	java/lang/Exception
+    //   408	416	550	finally
+    //   552	554	550	finally
+    //   431	440	557	java/lang/InterruptedException
   }
   
   public void a(boolean paramBoolean)
@@ -671,7 +886,7 @@ public class k
     {
       localHashMap = new HashMap();
       localHashMap.put("param_FailCode", String.valueOf(paramInt + 3300));
-      if (o()) {
+      if (p()) {
         a("dim.Msf.BG.PushQueryResult", paramBoolean, paramLong1, paramLong2, localHashMap, false, false);
       }
     }
@@ -705,7 +920,7 @@ public class k
         break label85;
       }
       localHashMap.put("param_FailCode", String.valueOf(paramInt + 3100));
-      if (o()) {
+      if (p()) {
         a("dim.Msf.BG.RigisterPushResult", paramBoolean1, paramLong1, paramLong2, localHashMap, false, false);
       }
     }
@@ -717,7 +932,7 @@ public class k
     return;
     label85:
     localHashMap.put("param_FailCode", String.valueOf(paramInt + 3200));
-    if (o())
+    if (p())
     {
       a("dim.Msf.BG.UnRigisterPushResult", paramBoolean1, paramLong1, paramLong2, localHashMap, false, false);
       return;
@@ -746,12 +961,12 @@ public class k
         localObject1 = (String)localObject1 + "|" + (String)localObject2;
         localObject2 = (com.tencent.mobileqq.msf.core.net.a)paramArrayList.get(paramArrayList.size() - 1);
         localObject2 = (String)localObject1 + "|" + ((com.tencent.mobileqq.msf.core.net.a)localObject2).g;
-        localObject1 = t.e();
+        localObject1 = com.tencent.mobileqq.msf.core.t.e();
         if ((localObject1 != null) && (((String)localObject1).length() >= 5))
         {
           localObject2 = (String)localObject2 + "|" + ((String)localObject1).substring(0, 3);
           localObject1 = (String)localObject2 + ":" + ((String)localObject1).substring(3, 5);
-          localObject2 = t.i();
+          localObject2 = com.tencent.mobileqq.msf.core.t.i();
           if (localObject2 == null) {
             break label582;
           }
@@ -910,7 +1125,7 @@ public class k
     try
     {
       localHashMap.put("param_uin", MsfService.getCore().getAccountCenter().i());
-      if (o())
+      if (p())
       {
         a("dim.Msf.BG.ConnClose", paramBoolean, paramLong1, 0, localHashMap, false, false);
         return;
@@ -932,6 +1147,20 @@ public class k
     localHashMap.put("ssolist", paramString);
     localHashMap.put("SSOListToConnectEndTime", "" + paramLong);
     a("msf_justGetSSOListButCannotConn", paramBoolean, paramLong, 0L, localHashMap, true, false);
+  }
+  
+  public void a(boolean paramBoolean1, long paramLong1, boolean paramBoolean2, long paramLong2, boolean paramBoolean3, String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("address", paramString);
+    localHashMap.put("dualCostV4", String.valueOf(paramLong1));
+    localHashMap.put("succV4", String.valueOf(paramBoolean2));
+    localHashMap.put("dualCostV6", String.valueOf(paramLong2));
+    localHashMap.put("succV6", String.valueOf(paramBoolean3));
+    localHashMap.put("succip", String.valueOf(paramString));
+    if (MsfService.getCore().getStatReporter() != null) {
+      MsfService.getCore().getStatReporter().a("EvtDual", paramBoolean1, 0L, 0L, localHashMap, false, false);
+    }
   }
   
   public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -997,7 +1226,7 @@ public class k
       localHashMap.put("param_tokenType", String.valueOf(paramString2));
       localHashMap.put("param_uin", paramString1);
       localHashMap.put("param_src", paramString3);
-      localHashMap.put("param_imei", t.d());
+      localHashMap.put("param_imei", com.tencent.mobileqq.msf.core.t.d());
       a("dim.Msf.RenewToken_3", paramBoolean, paramLong1, paramLong2, localHashMap, false, false);
       if ((paramInt != 0) && (MsfService.getCore().mtaReporter != null)) {
         MsfService.getCore().mtaReporter.a("dim.Msf.RenewToken_3", localHashMap);
@@ -1056,7 +1285,7 @@ public class k
     localHashMap.put("param_connResult", paramArrayList);
     if (!paramBoolean3)
     {
-      localHashMap.put("param_localIp", t.n());
+      localHashMap.put("param_localIp", com.tencent.mobileqq.msf.core.t.n());
       localHashMap.put("param_NetworkStatus", g());
     }
     if (paramBoolean1)
@@ -1071,7 +1300,7 @@ public class k
     }
     if (paramBoolean2)
     {
-      if (o())
+      if (p())
       {
         a("dim.Msf.BG.ConnDefaultElapsedTime", paramBoolean3, paramLong, 0, localHashMap, false, false);
         return;
@@ -1079,7 +1308,7 @@ public class k
       a("dim.Msf.ConnDefaultElapsedTime", paramBoolean3, paramLong, 0, localHashMap, false, false);
       return;
     }
-    if (o())
+    if (p())
     {
       if (i2 != 0)
       {
@@ -1109,7 +1338,7 @@ public class k
   
   void b()
   {
-    if (!this.ae.a) {
+    if (!this.ah.a) {
       QLog.d("MSF.C.StatReport", 1, "doCrashControl crash control is off..");
     }
     SharedPreferences localSharedPreferences;
@@ -1121,15 +1350,15 @@ public class k
     long l1 = localSharedPreferences.getLong("starttime", 0L);
     int i1 = localSharedPreferences.getInt("crashcount", 0);
     long l2 = System.currentTimeMillis();
-    this.af.append("doCrashControl startTime=").append(ag.format(new Date(l1))).append(",currenttime=").append(ag.format(new Date(l2))).append(",crashCount=").append(i1).append("\n");
-    if ((l1 <= 0L) || (l2 <= l1) || (i1 < 0) || (l2 - l1 > this.ae.b * 1000))
+    this.ai.append("doCrashControl startTime=").append(aj.format(new Date(l1))).append(",currenttime=").append(aj.format(new Date(l2))).append(",crashCount=").append(i1).append("\n");
+    if ((l1 <= 0L) || (l2 <= l1) || (i1 < 0) || (l2 - l1 > this.ah.b * 1000))
     {
       i1 = 1;
       l1 = l2;
     }
     for (;;)
     {
-      if (i1 > this.ae.c) {
+      if (i1 > this.ah.c) {
         this.Y = true;
       }
       if (this.Y)
@@ -1138,7 +1367,7 @@ public class k
         BaseApplication localBaseApplication = BaseApplication.getContext();
         localBaseApplication.stopService(new Intent(localBaseApplication, MsfService.class));
       }
-      this.af.append("doCrashControl shouldStopMsf=").append(this.Y).append("\n");
+      this.ai.append("doCrashControl shouldStopMsf=").append(this.Y).append("\n");
       localSharedPreferences.edit().putLong("starttime", l1).putInt("crashcount", i1).putBoolean("shouldStopMsf", this.Y).commit();
       return;
       i1 += 1;
@@ -1153,7 +1382,7 @@ public class k
       if (TextUtils.isEmpty(str)) {
         return;
       }
-      paramToServiceMsg = str + "_" + String.valueOf(System.currentTimeMillis()) + "_" + q.b(paramToServiceMsg) + "_" + q.a(paramFromServiceMsg);
+      paramToServiceMsg = str + "_" + String.valueOf(System.currentTimeMillis()) + "_" + com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg) + "_" + com.tencent.mobileqq.msf.service.t.a(paramFromServiceMsg);
       paramFromServiceMsg = new HashMap();
       paramFromServiceMsg.put("errmsg", paramToServiceMsg);
       b.a(BaseApplication.getContext()).a("msf_sendMsgToApp_processIsNull", paramFromServiceMsg, 0);
@@ -1186,6 +1415,29 @@ public class k
       catch (Throwable paramString)
       {
         paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    int i1 = this.P.sender.b.l().j();
+    String str = "EvtConn";
+    if (i1 == 1) {
+      str = "EvtConnV4";
+    }
+    for (;;)
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("address", paramString);
+      localHashMap.put("connCost", String.valueOf(paramLong));
+      localHashMap.put("supportIpfamily", String.valueOf(NetConnInfoCenter.getActiveNetIpFamily(false)));
+      if (MsfService.getCore().getStatReporter() != null) {
+        MsfService.getCore().getStatReporter().a(str, paramBoolean, 0L, 0L, localHashMap, false, false);
+      }
+      return;
+      if (i1 == 2) {
+        str = "EvtConnV6";
       }
     }
   }
@@ -1261,7 +1513,7 @@ public class k
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.StatReport", 2, "init RQD finished, cost=" + (System.currentTimeMillis() - l1));
       }
-      this.af.append("\nCurrent process id=").append(Process.myPid());
+      this.ai.append("\nCurrent process id=").append(Process.myPid());
       return;
     }
     catch (Throwable localThrowable)
@@ -1309,10 +1561,10 @@ public class k
       ANRReport.stopANRMonitor();
       W.start();
       U.set(true);
-      if (t.k == 0) {}
+      if (com.tencent.mobileqq.msf.core.t.k == 0) {}
       for (boolean bool = false;; bool = true)
       {
-        a("dim.Msf.IMEIReading", bool, t.k, 0L, null, false, false);
+        a("dim.Msf.IMEIReading", bool, com.tencent.mobileqq.msf.core.t.k, 0L, null, false, false);
         if (!QLog.isColorLevel()) {
           break;
         }

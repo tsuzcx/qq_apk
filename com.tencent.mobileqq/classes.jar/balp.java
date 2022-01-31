@@ -1,43 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x9e9.cmd0x9e9.RspBody;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
 
 class balp
-  extends mxi
+  implements Animation.AnimationListener
 {
-  balp(balh parambalh, balg parambalg) {}
+  balp(balo parambalo) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "requestGiftPoint. onResult error=" + paramInt + " data=" + paramArrayOfByte);
-      }
-      if (this.jdField_a_of_type_Balg != null) {
-        this.jdField_a_of_type_Balg.a(paramInt, "sso request error or callback is null.");
-      }
-    }
-    do
-    {
-      return;
-      paramBundle = new cmd0x9e9.RspBody();
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        this.jdField_a_of_type_Balg.a(paramBundle.int64_total_point.get() / 100L);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.i(".troop.send_gift", 2, "requestGiftPoint. error=" + QLog.getStackTraceString(paramArrayOfByte));
+    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(500);
+    paramAnimation.setFillAfter(true);
+    paramAnimation.setAnimationListener(new balq(this));
+    this.a.d.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     balp
  * JD-Core Version:    0.7.0.1
  */

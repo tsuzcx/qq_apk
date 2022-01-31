@@ -1,20 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rtu
-  implements ValueAnimator.AnimatorUpdateListener
+  extends pdi
 {
-  public rtu(TabLayoutCompat paramTabLayoutCompat) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public rtu(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    this.a.scrollTo(((Integer)paramValueAnimator.getAnimatedValue()).intValue(), 0);
+    super(paramString);
+  }
+  
+  public void a(pdc parampdc)
+  {
+    this.jdField_a_of_type_JavaLangObject = parampdc.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rtu
  * JD-Core Version:    0.7.0.1
  */

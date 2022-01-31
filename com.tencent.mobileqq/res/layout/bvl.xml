@@ -4,7 +4,7 @@
     <RelativeLayout android:id="@id/jp7" android:layout_width="fill_parent" android:layout_height="@dimen/b96" android:layout_marginTop="@dimen/n0" android:layout_alignParentTop="true">
         <ImageView android:id="@id/mb8" android:paddingRight="@dimen/n4" android:layout_width="wrap_content" android:layout_height="@dimen/nb" android:layout_marginLeft="16.0dip" android:src="@drawable/hh5" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
         <RelativeLayout android:id="@id/jvs" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="@dimen/nb" android:layout_marginLeft="@dimen/b96" android:layout_marginRight="@dimen/b96" android:layout_centerVertical="true">
-            <ImageView android:id="@id/mba" android:layout_width="21.0dip" android:layout_height="16.0dip" android:src="@drawable/hh6" android:layout_centerInParent="true" android:contentDescription="@string/fot" />
+            <ImageView android:id="@id/mba" android:layout_width="21.0dip" android:layout_height="16.0dip" android:src="@drawable/di6" android:layout_centerInParent="true" android:contentDescription="@string/fot" />
             <TextView android:textSize="@dimen/aw6" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/mb_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-3.5dip" android:layout_marginRight="15.0dip" android:text="@string/qyg" android:maxLines="1" android:layout_toLeftOf="@id/mba" android:layout_alignTop="@id/mba" />
             <TextView android:textSize="@dimen/aw6" android:textColor="@color/bp" android:ellipsize="end" android:id="@id/mb9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="-3.5dip" android:text="@string/qyh" android:maxLines="1" android:layout_toRightOf="@id/mba" android:layout_alignTop="@id/mba" />
         </RelativeLayout>
@@ -26,5 +26,5 @@
         <com.tencent.mobileqq.widget.OCRBottomTabView android:id="@id/fb2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" app:ocr_bottom_tab_image="@drawable/hul" app:ocr_bottom_tab_text="@string/lq" />
         <com.tencent.mobileqq.widget.OCRBottomTabView android:id="@id/dqm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" app:ocr_bottom_tab_image="@drawable/chk" app:ocr_bottom_tab_text="@string/w5n" />
     </LinearLayout>
-    <FrameLayout android:id="@id/ewk" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/mjd" android:background="#80000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

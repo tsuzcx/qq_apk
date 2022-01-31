@@ -1,26 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-
-public class bcpf
-  implements bhxc
+public abstract interface bcpf
 {
-  public bcpf(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
+  public abstract void c();
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      this.a.g = true;
-      View localView = this.a.a("map_key_troop_mem_recent_said");
-      if (localView != null) {
-        ProfileCardMoreInfoView.a(localView, this.a.a);
-      }
-    }
-  }
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcpf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.richmedia.capture.activity;
 
-import ajya;
-import bcql;
+import alpo;
+import com.tencent.mobileqq.widget.QQToast;
 
 class EditWebDanceMachineVideoActivity$1
   implements Runnable
@@ -10,12 +10,12 @@ class EditWebDanceMachineVideoActivity$1
   
   public void run()
   {
-    bcql.a(this.this$0, 1, ajya.a(2131703948), 0).a();
+    QQToast.a(this.this$0, 1, alpo.a(2131704320), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.activity.EditWebDanceMachineVideoActivity.1
  * JD-Core Version:    0.7.0.1
  */

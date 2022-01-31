@@ -24,20 +24,26 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View.OnClickListener;
 import android.widget.TextView.BufferType;
+import baig;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.BaseApplication;
-import wwj;
-import wwl;
-import wwn;
-import wwo;
-import wwu;
-import wwv;
-import www;
+import com.tencent.theme.ISkinIgnoreTypeface;
+import com.tencent.theme.TextHook;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import ydg;
+import ylc;
+import yle;
+import ylg;
+import ylh;
+import yln;
+import ylo;
+import ylp;
 
 public class AsyncRichTextView
   extends SafeTextView
-  implements Handler.Callback
+  implements Handler.Callback, ISkinIgnoreTypeface
 {
   private double jdField_a_of_type_Double = 1.0D;
   protected int a;
@@ -48,16 +54,16 @@ public class AsyncRichTextView
   protected View.OnClickListener a;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   private String jdField_a_of_type_JavaLangString;
-  protected wwj a;
-  protected wwl a;
-  protected wwn a;
+  protected ylc a;
+  protected yle a;
+  protected ylg a;
   private boolean jdField_a_of_type_Boolean = true;
   protected int b;
   private ColorStateList jdField_b_of_type_AndroidContentResColorStateList;
-  public wwn b;
+  public ylg b;
   private boolean jdField_b_of_type_Boolean;
   protected int c;
-  protected wwn c;
+  protected ylg c;
   private boolean c;
   private int d;
   private int e = -2147483648;
@@ -67,9 +73,9 @@ public class AsyncRichTextView
   {
     super(paramContext, null);
     this.jdField_b_of_type_Int = Color.parseColor("#CFB027");
-    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167018);
+    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167069);
     this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_Wwn = new wwo(this);
+    this.jdField_c_of_type_Ylg = new ylh(this);
     a(paramContext, null);
   }
   
@@ -77,9 +83,9 @@ public class AsyncRichTextView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_b_of_type_Int = Color.parseColor("#CFB027");
-    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167018);
+    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167069);
     this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_Wwn = new wwo(this);
+    this.jdField_c_of_type_Ylg = new ylh(this);
     a(paramContext, paramAttributeSet);
   }
   
@@ -87,37 +93,10 @@ public class AsyncRichTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_b_of_type_Int = Color.parseColor("#CFB027");
-    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167018);
+    this.jdField_a_of_type_AndroidContentResColorStateList = BaseApplicationImpl.getContext().getResources().getColorStateList(2131167069);
     this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_Wwn = new wwo(this);
+    this.jdField_c_of_type_Ylg = new ylh(this);
     a(paramContext, paramAttributeSet);
-  }
-  
-  @RequiresApi(api=16)
-  private void a()
-  {
-    if (Build.VERSION.SDK_INT < 16) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-      } while ((getEllipsize() != TextUtils.TruncateAt.END) || (getLayout() == null) || (getLineCount() <= getMaxLines()) || (getMaxLines() <= 0));
-      i = getLayout().getLineEnd(getMaxLines() - 1);
-    } while (i <= 1);
-    Object localObject = getText();
-    if ((localObject instanceof Spannable))
-    {
-      localObject = new SpannableStringBuilder(((CharSequence)localObject).subSequence(0, i - 1));
-      ((SpannableStringBuilder)localObject).append("...");
-    }
-    for (;;)
-    {
-      a(this, (CharSequence)localObject, null);
-      return;
-      localObject = ((CharSequence)localObject).subSequence(0, i - 1) + "...";
-    }
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
@@ -139,28 +118,28 @@ public class AsyncRichTextView
     }
   }
   
-  private void a(CharSequence paramCharSequence, ColorStateList paramColorStateList, int paramInt1, int paramInt2, wwn paramwwn, Drawable.Callback paramCallback)
+  private void a(CharSequence paramCharSequence, ColorStateList paramColorStateList, int paramInt1, int paramInt2, ylg paramylg, Drawable.Callback paramCallback)
   {
     this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
     this.jdField_b_of_type_AndroidContentResColorStateList = paramColorStateList;
     this.d = paramInt1;
-    this.jdField_a_of_type_Wwn = paramwwn;
+    this.jdField_a_of_type_Ylg = paramylg;
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = paramCallback;
-    paramCallback = new www();
+    paramCallback = new ylp();
     paramCallback.jdField_a_of_type_Float = ((int)(getTextSize() * this.jdField_a_of_type_Double));
     paramCallback.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
     paramCallback.jdField_a_of_type_JavaLangCharSequence = getText();
-    paramCharSequence = wwu.a(paramCallback, getContext(), paramCharSequence, paramColorStateList, paramInt1, this.e, paramInt2, paramwwn, this.jdField_a_of_type_Wwl, this.jdField_a_of_type_Wwj, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
+    paramCharSequence = yln.a(paramCallback, getContext(), paramCharSequence, paramColorStateList, paramInt1, this.e, paramInt2, paramylg, this.jdField_a_of_type_Yle, this.jdField_a_of_type_Ylc, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean);
     if ((paramCharSequence != null) && (paramCharSequence.jdField_a_of_type_Boolean)) {
-      if (paramwwn != null) {
+      if (paramylg != null) {
         setMovementMethod(getDefaultMovementMethod());
       }
     }
     for (;;)
     {
-      super.setText(a(paramCharSequence), null);
+      super.setText(new baig(a(paramCharSequence), 3, 16), null);
       return;
-      if ((paramCharSequence != null) && (paramCharSequence.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Wwj != null)) {
+      if ((paramCharSequence != null) && (paramCharSequence.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Ylc != null)) {
         setMovementMethod(getDefaultMovementMethod());
       }
     }
@@ -169,6 +148,68 @@ public class AsyncRichTextView
   protected Spannable a(Spannable paramSpannable)
   {
     return paramSpannable;
+  }
+  
+  @RequiresApi(api=16)
+  protected void a()
+  {
+    if (Build.VERSION.SDK_INT < 16) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+      } while ((getEllipsize() != TextUtils.TruncateAt.END) || (getLayout() == null) || (getLineCount() <= getMaxLines()) || (getMaxLines() <= 0));
+      i = getLayout().getLineEnd(getMaxLines() - 1);
+    } while (i <= 1);
+    int m = (int)Math.ceil(getPaint().measureText("...") / getTextSize());
+    Object localObject = getText().subSequence(0, i);
+    int j = 0;
+    if (j < m) {
+      if (((CharSequence)localObject).toString().endsWith("[/em]"))
+      {
+        Matcher localMatcher = ydg.g.matcher((CharSequence)localObject);
+        while (localMatcher.find())
+        {
+          int k = localMatcher.start();
+          int n = localMatcher.end();
+          if ((k < i) && (n == i)) {
+            i = k;
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      label165:
+      if (i >= 0) {
+        localObject = ((CharSequence)localObject).subSequence(0, i);
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        i -= 1;
+        break label165;
+        if ((localObject instanceof Spannable))
+        {
+          localObject = new SpannableStringBuilder((CharSequence)localObject);
+          ((SpannableStringBuilder)localObject).append("...");
+        }
+        for (;;)
+        {
+          setText((CharSequence)localObject, null);
+          return;
+          localObject = localObject + "...";
+        }
+      }
+    }
+  }
+  
+  public void c()
+  {
+    setTypeface(TextHook.getInstance().getSystemDefaultFont());
   }
   
   protected MovementMethod getDefaultMovementMethod()
@@ -182,7 +223,7 @@ public class AsyncRichTextView
     {
       paramMessage = (CharSequence)paramMessage.obj;
       if ((paramMessage != null) && (paramMessage.equals(this.jdField_a_of_type_JavaLangCharSequence))) {
-        a(paramMessage, this.jdField_b_of_type_AndroidContentResColorStateList, this.d, this.f, this.jdField_a_of_type_Wwn, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+        a(paramMessage, this.jdField_b_of_type_AndroidContentResColorStateList, this.d, this.f, this.jdField_a_of_type_Ylg, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
       }
     }
     return false;
@@ -232,9 +273,9 @@ public class AsyncRichTextView
     this.jdField_b_of_type_Int = Color.parseColor(paramString);
   }
   
-  public void setDefaultUserNameClickListener(wwn paramwwn)
+  public void setDefaultUserNameClickListener(ylg paramylg)
   {
-    this.jdField_c_of_type_Wwn = paramwwn;
+    this.jdField_c_of_type_Ylg = paramylg;
   }
   
   public void setNeedParseColor(boolean paramBoolean)
@@ -253,19 +294,19 @@ public class AsyncRichTextView
     super.setOnClickListener(paramOnClickListener);
   }
   
-  public void setOnCustomSchemaClickListener(wwj paramwwj)
+  public void setOnCustomSchemaClickListener(ylc paramylc)
   {
-    this.jdField_a_of_type_Wwj = paramwwj;
+    this.jdField_a_of_type_Ylc = paramylc;
   }
   
-  public void setOnCustomUrlClickListener(wwl paramwwl)
+  public void setOnCustomUrlClickListener(yle paramyle)
   {
-    this.jdField_a_of_type_Wwl = paramwwl;
+    this.jdField_a_of_type_Yle = paramyle;
   }
   
-  public void setOnUserNewClickListener(wwn paramwwn)
+  public void setOnUserNewClickListener(ylg paramylg)
   {
-    this.jdField_b_of_type_Wwn = paramwwn;
+    this.jdField_b_of_type_Ylg = paramylg;
   }
   
   public void setOrgText(String paramString)
@@ -282,12 +323,12 @@ public class AsyncRichTextView
   {
     if ((!TextUtils.isEmpty(paramCharSequence)) && ((paramCharSequence instanceof Spannable)))
     {
-      super.setText(paramCharSequence, paramBufferType);
+      super.setText(new baig(paramCharSequence, 3, 16), paramBufferType);
       return;
     }
     this.jdField_c_of_type_Boolean = true;
     setOrgText(String.valueOf(paramCharSequence));
-    a(paramCharSequence, this.jdField_a_of_type_AndroidContentResColorStateList, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_c_of_type_Wwn, null);
+    a(paramCharSequence, this.jdField_a_of_type_AndroidContentResColorStateList, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_c_of_type_Ylg, null);
   }
   
   public void setUrlColorRes(int paramInt)
@@ -297,7 +338,7 @@ public class AsyncRichTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.AsyncRichTextView
  * JD-Core Version:    0.7.0.1
  */

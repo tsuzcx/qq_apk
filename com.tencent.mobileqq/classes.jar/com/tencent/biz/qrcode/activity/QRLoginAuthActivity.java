@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode.activity;
 
-import akjv;
+import ambl;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -15,10 +15,10 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import axqy;
-import bbdj;
-import bbgu;
-import bcqf;
+import azmj;
+import bdcd;
+import bdfq;
+import bepp;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -28,14 +28,14 @@ import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import mqq.manager.WtloginManager;
 import mqq.observer.WtloginObserver;
-import naj;
-import wgo;
-import wgp;
-import wgq;
-import wgr;
-import whj;
-import wih;
-import wij;
+import ndd;
+import xvg;
+import xvh;
+import xvi;
+import xvj;
+import xwb;
+import xwz;
+import xxb;
 
 public class QRLoginAuthActivity
   extends QRLoginBaseActivity
@@ -51,10 +51,10 @@ public class QRLoginAuthActivity
   public ProgressBar a;
   protected RelativeLayout a;
   public TextView a;
-  public bcqf a;
+  public bepp a;
   public String a;
   private WtloginManager jdField_a_of_type_MqqManagerWtloginManager;
-  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new wgo(this);
+  private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new xvg(this);
   public boolean a;
   protected byte[] a;
   public int b;
@@ -71,7 +71,7 @@ public class QRLoginAuthActivity
   public QRLoginAuthActivity()
   {
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new wgr(this);
+    this.jdField_a_of_type_AndroidOsHandler = new xvj(this);
   }
   
   public static byte[] a(byte[] paramArrayOfByte, int paramInt)
@@ -158,15 +158,15 @@ public class QRLoginAuthActivity
   
   protected void a()
   {
-    super.setContentView(2131560128);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131369572));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131373403));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364611));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131377457));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131369737));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131371866));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365102));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131373404));
+    super.setContentView(2131560236);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131369835));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131373852));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131364689));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131377994));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370000));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372184));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365187));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)super.findViewById(2131373853));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
@@ -177,12 +177,12 @@ public class QRLoginAuthActivity
       return;
     }
     Object localObject;
-    if (!naj.a(this))
+    if (!ndd.a(this))
     {
-      localObject = bbdj.a(this, 230);
-      ((bbgu)localObject).setMessage(2131718915);
-      ((bbgu)localObject).setPositiveButton(2131694794, new wgq(this));
-      ((bbgu)localObject).show();
+      localObject = bdcd.a(this, 230);
+      ((bdfq)localObject).setMessage(2131719391);
+      ((bdfq)localObject).setPositiveButton(2131694951, new xvi(this));
+      ((bdfq)localObject).show();
     }
     if (paramString != null)
     {
@@ -191,25 +191,25 @@ public class QRLoginAuthActivity
     }
     else
     {
-      localObject = getString(2131718913);
+      localObject = getString(2131719389);
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130839393));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(2130839475));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetButton.setText(2131718912);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(2131719388);
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
   }
   
   protected void a(boolean paramBoolean)
   {
-    ((akjv)this.app.getManager(85)).b();
-    this.jdField_a_of_type_Bcqf = new bcqf(this, super.getTitleBarHeight());
-    this.jdField_a_of_type_Bcqf.c(2131717254);
-    this.jdField_a_of_type_Bcqf.setOnCancelListener(new wgp(this));
-    this.jdField_a_of_type_Bcqf.show();
-    Object localObject1 = wij.a(this.app.a());
+    ((ambl)this.app.getManager(85)).b();
+    this.jdField_a_of_type_Bepp = new bepp(this, super.getTitleBarHeight());
+    this.jdField_a_of_type_Bepp.c(2131717626);
+    this.jdField_a_of_type_Bepp.setOnCancelListener(new xvh(this));
+    this.jdField_a_of_type_Bepp.show();
+    Object localObject1 = xxb.a(this.app.a());
     Object localObject2 = ByteBuffer.allocate(localObject1.length + 4);
     ((ByteBuffer)localObject2).putShort((short)2);
     ((ByteBuffer)localObject2).putShort((short)localObject1.length);
@@ -279,7 +279,7 @@ public class QRLoginAuthActivity
       localIntent.setFlags(67108864);
       super.startActivity(localIntent);
     }
-    Toast.makeText(getApplicationContext(), 2131718914, 0).show();
+    Toast.makeText(getApplicationContext(), 2131719390, 0).show();
     if ((!TextUtils.isEmpty(this.e)) && ("1600000104".equals(this.e.trim())))
     {
       localIntent = new Intent("com.tencent.mobileqq.action.PC_STATUS_MANAGE");
@@ -324,17 +324,17 @@ public class QRLoginAuthActivity
   
   public void doOnDestroy()
   {
-    if ((this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing())) {
-      this.jdField_a_of_type_Bcqf.dismiss();
+    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
+      this.jdField_a_of_type_Bepp.dismiss();
     }
     super.doOnDestroy();
-    whj.a(this);
+    xwb.a(this);
   }
   
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (i == 2131364611) {
+    if (i == 2131364689) {
       if (this.jdField_b_of_type_Boolean)
       {
         paramView = new Intent(this, ScannerActivity.class);
@@ -349,22 +349,22 @@ public class QRLoginAuthActivity
     {
       return;
       a(false);
-      axqy.b(null, "dc00898", "", "", "0X800A46E", "0X800A46E", wih.a(this.jdField_b_of_type_Int), 0, "", "", "", "");
+      azmj.b(null, "dc00898", "", "", "0X800A46E", "0X800A46E", xwz.a(this.jdField_b_of_type_Int), 0, "", "", "", "");
       return;
-      if (i == 2131377457)
+      if (i == 2131377994)
       {
         a(true);
-        axqy.b(null, "dc00898", "", "", "0X800A46F", "0X800A46F", wih.a(this.jdField_b_of_type_Int), 0, "", "", "", "");
+        azmj.b(null, "dc00898", "", "", "0X800A46F", "0X800A46F", xwz.a(this.jdField_b_of_type_Int), 0, "", "", "", "");
         return;
       }
-    } while (i != 2131369092);
+    } while (i != 2131369324);
     finish();
     this.jdField_a_of_type_MqqManagerWtloginManager.cancelCode(getCurrentAccountUin(), 16L, this.jdField_a_of_type_ArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRLoginAuthActivity
  * JD-Core Version:    0.7.0.1
  */

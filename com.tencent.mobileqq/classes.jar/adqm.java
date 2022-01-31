@@ -1,36 +1,36 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.os.Message;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import mqq.os.MqqHandler;
 
-class adqm
-  implements adnx
+public class adqm
+  extends MqqHandler
 {
-  adqm(adqe paramadqe, adqq paramadqq, MessageForPoke paramMessageForPoke) {}
+  public adqm(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Adqq.b == adqe.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Adqe.a instanceof ChatHistoryActivity)) && (!adqe.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Adqq.c.setVisibility(0);
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+    case 107: 
+    default: 
       return;
-      this.jdField_a_of_type_Adqq.c.setVisibility(8);
+    case 106: 
+      this.a.finish();
+      return;
     }
+    int i = 0;
+    while (i < 6)
+    {
+      RegisterVerifyCodeActivity.a(this.a)[i].setText("");
+      i += 1;
+    }
+    RegisterVerifyCodeActivity.a(this.a)[0].requestFocus();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqm
  * JD-Core Version:    0.7.0.1
  */

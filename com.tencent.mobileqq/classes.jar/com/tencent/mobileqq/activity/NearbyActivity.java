@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.activity;
 
-import abnk;
-import abnl;
-import abnm;
-import abnp;
-import abnq;
-import abnr;
-import abns;
-import abnt;
-import ajsd;
-import ajya;
-import akbl;
-import akbm;
-import alyy;
+import adeo;
+import adep;
+import adeq;
+import ades;
+import adeu;
+import adev;
+import adew;
+import adex;
+import adey;
+import aljq;
+import alpo;
+import alta;
+import altb;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -40,29 +40,32 @@ import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aqjw;
-import arhj;
-import arhk;
-import atbg;
-import atbi;
-import atbq;
-import atbr;
-import atfz;
-import atga;
-import atym;
-import axqy;
-import axrc;
-import axsf;
-import axsg;
-import baxn;
-import bbbr;
-import bbkb;
-import bcaz;
-import bcdp;
-import bcdq;
-import bcil;
-import bcsc;
-import bfob;
+import anpx;
+import asdl;
+import asxx;
+import asxy;
+import ausf;
+import aush;
+import ausp;
+import ausq;
+import auwy;
+import auwz;
+import avpq;
+import azmj;
+import azmo;
+import aznr;
+import azns;
+import bcwh;
+import bdal;
+import bdcd;
+import bdfq;
+import bdiv;
+import beaa;
+import becq;
+import becr;
+import behm;
+import berl;
+import bhow;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
@@ -103,21 +106,21 @@ import org.json.JSONObject;
 
 public class NearbyActivity
   extends NearbyTitleBarActivity
-  implements Handler.Callback, bcdq, bcil, bcsc
+  implements Handler.Callback, becr, behm, berl
 {
   public static String a;
   int jdField_a_of_type_Int = -1;
   public long a;
-  abnt jdField_a_of_type_Abnt;
-  public akbl a;
-  protected akbm a;
+  adey jdField_a_of_type_Adey;
+  public alta a;
+  protected altb a;
   public Handler a;
   FragmentManager jdField_a_of_type_AndroidSupportV4AppFragmentManager;
-  ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new abnp(this);
+  ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new adeu(this);
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  atbq jdField_a_of_type_Atbq;
-  protected atga a;
+  ausp jdField_a_of_type_Ausp;
+  protected auwz a;
   RedTouch jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch;
   NonSwipeableViewPager jdField_a_of_type_ComTencentMobileqqWidgetNonSwipeableViewPager;
   public TabBarView a;
@@ -159,21 +162,21 @@ public class NearbyActivity
   {
     this.jdField_b_of_type_Boolean = false;
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidOsHandler = new bfob(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new bhow(Looper.getMainLooper(), this);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_g_of_type_Int = -1;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_h_of_type_Int = -1;
     this.jdField_i_of_type_Int = 1000;
-    this.jdField_b_of_type_AndroidOsHandler = new abns(this);
-    this.jdField_a_of_type_Atga = new abnl(this);
-    this.jdField_a_of_type_Akbm = new abnm(this);
+    this.jdField_b_of_type_AndroidOsHandler = new adex(this);
+    this.jdField_a_of_type_Auwz = new adep(this);
+    this.jdField_a_of_type_Altb = new adeq(this);
   }
   
   public static int a(ArrayList<NearbyActivity.TabInfo> paramArrayList)
   {
     paramArrayList.clear();
-    Object localObject = (String)atbi.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "key_tabs_array", "");
+    Object localObject = (String)aush.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "key_tabs_array", "");
     if (QLog.isColorLevel()) {
       QLog.d("nearby.NearbyActivity", 2, "initTabs:" + (String)localObject);
     }
@@ -282,13 +285,13 @@ public class NearbyActivity
         if (i2 != 0)
         {
           localObject = new NearbyActivity.TabInfo();
-          ((NearbyActivity.TabInfo)localObject).tabName = ajya.a(2131707107);
+          ((NearbyActivity.TabInfo)localObject).tabName = alpo.a(2131707479);
           ((NearbyActivity.TabInfo)localObject).tabIndex = 0;
           ((NearbyActivity.TabInfo)localObject).tabUrl = "https://nearby.qq.com/nearby-index/index.html?_wv=1031&_proxy=1&_wwv=128";
           ((NearbyActivity.TabInfo)localObject).tabType = 5;
           paramArrayList.add(localObject);
           localObject = new NearbyActivity.TabInfo();
-          ((NearbyActivity.TabInfo)localObject).tabName = ajya.a(2131707108);
+          ((NearbyActivity.TabInfo)localObject).tabName = alpo.a(2131707480);
           ((NearbyActivity.TabInfo)localObject).tabIndex = 1;
           ((NearbyActivity.TabInfo)localObject).tabUrl = "";
           ((NearbyActivity.TabInfo)localObject).tabType = 2;
@@ -325,7 +328,7 @@ public class NearbyActivity
   
   public static RedTouch a(Context paramContext, TabBarView paramTabBarView, int paramInt1, int paramInt2)
   {
-    paramInt1 = baxn.b(paramContext, paramContext.getResources().getDisplayMetrics().widthPixels / paramInt1);
+    paramInt1 = bcwh.b(paramContext, paramContext.getResources().getDisplayMetrics().widthPixels / paramInt1);
     return new RedTouch(paramContext, paramTabBarView.a(paramInt2)).a(53).d(4).c(paramInt1 / 2 - 8 - 20).a();
   }
   
@@ -335,8 +338,8 @@ public class NearbyActivity
     paramTabBarView.setTabTextSize(16);
     paramTabBarView.setSelectColor(Color.parseColor("#00aced"));
     paramTabBarView.setUnselectColor(Color.parseColor("#777777"));
-    paramTabBarView.setUnderLineHeight(baxn.a(paramContext, 3.0F));
-    paramTabBarView.setTabHeight(baxn.a(paramContext, 45.0F));
+    paramTabBarView.setUnderLineHeight(bcwh.a(paramContext, 3.0F));
+    paramTabBarView.setTabHeight(bcwh.a(paramContext, 45.0F));
     int i1 = paramArrayList.size();
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -1);
     localLayoutParams.gravity = 17;
@@ -387,9 +390,16 @@ public class NearbyActivity
     }
   }
   
+  private void h()
+  {
+    bdfq localbdfq = bdcd.a(this, 0, null, "地理位置信息已清除", null, "确定", new ades(this), null);
+    localbdfq.setCancelable(false);
+    localbdfq.show();
+  }
+  
   public int a()
   {
-    return 2131559323;
+    return 2131559374;
   }
   
   public int a(int paramInt)
@@ -405,15 +415,15 @@ public class NearbyActivity
     return 0;
   }
   
-  public bcaz a()
+  public beaa a()
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_Abnt != null)
+    if (this.jdField_a_of_type_Adey != null)
     {
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_Abnt.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment != null) {
-        localObject1 = this.jdField_a_of_type_Abnt.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.a;
+      if (this.jdField_a_of_type_Adey.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment != null) {
+        localObject1 = this.jdField_a_of_type_Adey.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment.a;
       }
     }
     return localObject1;
@@ -421,7 +431,7 @@ public class NearbyActivity
   
   public HotChatFragment a()
   {
-    return this.jdField_a_of_type_Abnt.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment;
+    return this.jdField_a_of_type_Adey.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment;
   }
   
   public NearbyBaseFragment a(int paramInt)
@@ -442,7 +452,7 @@ public class NearbyActivity
   
   public NearbyHybridFragment a()
   {
-    NearbyHybridFragment localNearbyHybridFragment = this.jdField_a_of_type_Abnt.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment;
+    NearbyHybridFragment localNearbyHybridFragment = this.jdField_a_of_type_Adey.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment;
     int i1;
     if ((localNearbyHybridFragment == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
@@ -457,7 +467,7 @@ public class NearbyActivity
         if ((localObject instanceof NearbyHybridFragment))
         {
           localNearbyHybridFragment = (NearbyHybridFragment)localObject;
-          this.jdField_a_of_type_Abnt.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment = localNearbyHybridFragment;
+          this.jdField_a_of_type_Adey.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment = localNearbyHybridFragment;
         }
       }
     }
@@ -474,7 +484,7 @@ public class NearbyActivity
   
   public NowLiveFragment a()
   {
-    return this.jdField_a_of_type_Abnt.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment;
+    return this.jdField_a_of_type_Adey.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment;
   }
   
   public void a()
@@ -489,19 +499,19 @@ public class NearbyActivity
     this.jdField_a_of_type_JavaUtilList.add(paramOnClickListener);
   }
   
-  public void a(aqjw paramaqjw)
+  public void a(asdl paramasdl)
   {
-    if (paramaqjw == null) {}
+    if (paramasdl == null) {}
     Object localObject;
     do
     {
       return;
       localObject = a(NearbyBaseFragment.jdField_b_of_type_Int);
       if (QLog.isColorLevel()) {
-        atbr.a("nearby.NearbyActivity", new Object[] { "updateTitlebar", localObject, paramaqjw.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment });
+        ausq.a("nearby.NearbyActivity", new Object[] { "updateTitlebar", localObject, paramasdl.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment });
       }
-    } while (localObject != paramaqjw.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment);
-    if (paramaqjw.jdField_b_of_type_Boolean)
+    } while (localObject != paramasdl.jdField_a_of_type_ComTencentMobileqqFragmentBaseFragment);
+    if (paramasdl.jdField_b_of_type_Boolean)
     {
       if (this.centerView.getVisibility() != 0) {
         this.centerView.setVisibility(0);
@@ -509,10 +519,10 @@ public class NearbyActivity
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 8) {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       }
-      if (!bbbr.a(paramaqjw.jdField_a_of_type_JavaLangString, getTextTitle())) {
-        setTitle(paramaqjw.jdField_a_of_type_JavaLangString);
+      if (!bdal.a(paramasdl.jdField_a_of_type_JavaLangString, getTextTitle())) {
+        setTitle(paramasdl.jdField_a_of_type_JavaLangString);
       }
-      if (!paramaqjw.jdField_a_of_type_Boolean) {
+      if (!paramasdl.jdField_a_of_type_Boolean) {
         break label411;
       }
       if (!isTitleProgressShowing()) {
@@ -521,49 +531,49 @@ public class NearbyActivity
     }
     for (;;)
     {
-      if (!paramaqjw.jdField_c_of_type_Boolean) {
+      if (!paramasdl.jdField_c_of_type_Boolean) {
         break label426;
       }
       if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0) {
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramaqjw.jdField_a_of_type_AndroidViewView$OnClickListener);
-      if ((AppSetting.d) && (paramaqjw.e != null)) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramaqjw.e);
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramasdl.jdField_a_of_type_AndroidViewView$OnClickListener);
+      if ((AppSetting.jdField_c_of_type_Boolean) && (paramasdl.e != null)) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(paramasdl.e);
       }
-      if (paramaqjw.jdField_a_of_type_Int > 0) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramaqjw.jdField_a_of_type_Int);
+      if (paramasdl.jdField_a_of_type_Int > 0) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramasdl.jdField_a_of_type_Int);
       }
       if (this.rightViewText.getVisibility() != 8) {
         this.rightViewText.setVisibility(8);
       }
       this.centerView.setClickable(true);
-      this.centerView.setOnClickListener(new abnq(this));
+      this.centerView.setOnClickListener(new adev(this));
       return;
       if (this.centerView.getVisibility() != 4) {
         this.centerView.setVisibility(4);
       }
-      if (!bbbr.a(paramaqjw.jdField_a_of_type_JavaLangString, getTextTitle())) {
-        setTitle(paramaqjw.jdField_a_of_type_JavaLangString);
+      if (!bdal.a(paramasdl.jdField_a_of_type_JavaLangString, getTextTitle())) {
+        setTitle(paramasdl.jdField_a_of_type_JavaLangString);
       }
       if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0) {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       }
-      if (paramaqjw.jdField_b_of_type_JavaLangString != null)
+      if (paramasdl.jdField_b_of_type_JavaLangString != null)
       {
-        localObject = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377438);
-        if (!bbbr.a(paramaqjw.jdField_b_of_type_JavaLangString, ((TextView)localObject).getText())) {
-          ((TextView)localObject).setText(paramaqjw.jdField_b_of_type_JavaLangString);
+        localObject = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377975);
+        if (!bdal.a(paramasdl.jdField_b_of_type_JavaLangString, ((TextView)localObject).getText())) {
+          ((TextView)localObject).setText(paramasdl.jdField_b_of_type_JavaLangString);
         }
       }
-      if (paramaqjw.jdField_c_of_type_JavaLangString == null) {
+      if (paramasdl.jdField_c_of_type_JavaLangString == null) {
         break;
       }
-      localObject = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377379);
-      if (bbbr.a(paramaqjw.jdField_c_of_type_JavaLangString, ((TextView)localObject).getText())) {
+      localObject = (TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377914);
+      if (bdal.a(paramasdl.jdField_c_of_type_JavaLangString, ((TextView)localObject).getText())) {
         break;
       }
-      ((TextView)localObject).setText(paramaqjw.jdField_c_of_type_JavaLangString);
+      ((TextView)localObject).setText(paramasdl.jdField_c_of_type_JavaLangString);
       break;
       label411:
       if (isTitleProgressShowing()) {
@@ -574,17 +584,17 @@ public class NearbyActivity
     if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 8) {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    if (TextUtils.isEmpty(paramaqjw.d)) {
+    if (TextUtils.isEmpty(paramasdl.d)) {
       if (this.rightViewText.getVisibility() != 8) {
         this.rightViewText.setVisibility(8);
       }
     }
     for (;;)
     {
-      if (!bbbr.a(paramaqjw.d, this.rightViewText.getText())) {
-        this.rightViewText.setText(paramaqjw.d);
+      if (!bdal.a(paramasdl.d, this.rightViewText.getText())) {
+        this.rightViewText.setText(paramasdl.d);
       }
-      this.rightViewText.setOnClickListener(paramaqjw.jdField_a_of_type_AndroidViewView$OnClickListener);
+      this.rightViewText.setOnClickListener(paramasdl.jdField_a_of_type_AndroidViewView$OnClickListener);
       break;
       if (this.rightViewText.getVisibility() != 0) {
         this.rightViewText.setVisibility(0);
@@ -594,7 +604,7 @@ public class NearbyActivity
   
   public void a(boolean paramBoolean)
   {
-    String str = ajsd.I;
+    String str = aljq.I;
     Intent localIntent = new Intent(this, MsgBoxListActivity.class);
     localIntent.putExtra("uin", str);
     localIntent.putExtra("uintype", 1001);
@@ -602,15 +612,15 @@ public class NearbyActivity
     localIntent.putExtra("tabs", this.jdField_a_of_type_JavaUtilArrayList);
     localIntent.putExtra("msgTabIndex", this.jdField_c_of_type_Int);
     localIntent.putExtra("mUnReadMsgNum", this.jdField_g_of_type_Int);
-    localIntent.putExtra("selfSet_leftViewText", ajya.a(2131707102));
+    localIntent.putExtra("selfSet_leftViewText", alpo.a(2131707474));
     startActivityForResult(localIntent, 10001);
     if (paramBoolean) {
-      overridePendingTransition(2130772211, 2130772211);
+      overridePendingTransition(2130772226, 2130772226);
     }
     if (QLog.isColorLevel()) {
       QLog.d("nearby.msgbox.tab", 2, "startMsgBoxListActivity");
     }
-    new axrc(null).a("dc00899").b("grp_lbs").c("msg_box").d("page_exp").a();
+    new azmo(null).a("dc00899").b("grp_lbs").c("msg_box").d("page_exp").a();
   }
   
   public boolean a()
@@ -628,16 +638,16 @@ public class NearbyActivity
       }
       return 0;
     }
-    return 2130838514;
+    return 2130838591;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNonSwipeableViewPager = ((NonSwipeableViewPager)findViewById(2131379344));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNonSwipeableViewPager = ((NonSwipeableViewPager)findViewById(2131380045));
     this.jdField_a_of_type_ComTencentMobileqqWidgetNonSwipeableViewPager.a(true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetNonSwipeableViewPager.setOnPageChangeListener(this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener);
     this.jdField_a_of_type_ComTencentMobileqqWidgetNonSwipeableViewPager.setPagingEnabled(false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131376796));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131377309));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this);
     a(this, this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView, this.jdField_a_of_type_JavaUtilArrayList);
     if ((this.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (this.jdField_c_of_type_Int >= 0) && (this.jdField_c_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())) {
@@ -652,7 +662,7 @@ public class NearbyActivity
       {
         if (((NearbyActivity.TabInfo)((Iterator)localObject).next()).tabType == 7)
         {
-          arhj.a.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
+          asxx.a.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
           this.jdField_b_of_type_ComTencentMobileqqRedtouchRedTouch = a(this, this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView, this.jdField_a_of_type_JavaUtilArrayList.size(), i1);
           this.e = i1;
           this.jdField_a_of_type_AndroidOsHandler.postDelayed(new NearbyActivity.3(this), 2000L);
@@ -662,12 +672,12 @@ public class NearbyActivity
       {
         if (this.titleRoot != null)
         {
-          this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.titleRoot.findViewById(2131375329).findViewById(2131368441));
-          this.centerView = ((TextView)this.titleRoot.findViewById(2131368472));
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.titleRoot.findViewById(2131377400));
+          this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.titleRoot.findViewById(2131375812).findViewById(2131368627));
+          this.centerView = ((TextView)this.titleRoot.findViewById(2131368659));
+          this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.titleRoot.findViewById(2131377935));
         }
         c();
-        i4 = ((Integer)atbi.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), "key_auto_enter_without_redot", Integer.valueOf(0))).intValue();
+        i4 = ((Integer)aush.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), "key_auto_enter_without_redot", Integer.valueOf(0))).intValue();
         i2 = 0;
         i1 = -1;
         while (i2 < this.jdField_a_of_type_JavaUtilArrayList.size())
@@ -682,8 +692,8 @@ public class NearbyActivity
       i1 += 1;
     }
     this.jdField_a_of_type_AndroidSupportV4AppFragmentManager = getSupportFragmentManager();
-    this.jdField_a_of_type_Abnt = new abnt(this, this.jdField_a_of_type_AndroidSupportV4AppFragmentManager);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNonSwipeableViewPager.setAdapter(this.jdField_a_of_type_Abnt);
+    this.jdField_a_of_type_Adey = new adey(this, this.jdField_a_of_type_AndroidSupportV4AppFragmentManager);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNonSwipeableViewPager.setAdapter(this.jdField_a_of_type_Adey);
     int i2 = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.jdField_a_of_type_Int;
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a().a(5) != null) {
       i2 = a(5);
@@ -739,7 +749,7 @@ public class NearbyActivity
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 1000L);
         this.jdField_b_of_type_Int = i2;
         if (QLog.isColorLevel()) {
-          atbr.a("MSG_INIT", new Object[] { Integer.valueOf(i1), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.jdField_a_of_type_Int), Integer.valueOf(NearbyBaseFragment.jdField_b_of_type_Int) });
+          ausq.a("MSG_INIT", new Object[] { Integer.valueOf(i1), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.jdField_a_of_type_Int), Integer.valueOf(NearbyBaseFragment.jdField_b_of_type_Int) });
         }
         return;
         i3 = i1;
@@ -765,17 +775,17 @@ public class NearbyActivity
   
   void c()
   {
-    setTitle(2131694529);
+    setTitle(2131694685);
     this.jdField_b_of_type_Boolean = getIntent().getBooleanExtra("abp_flag", this.jdField_b_of_type_Boolean);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("FROM_WHERE", this.jdField_a_of_type_Int);
     if ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Int == 0))
     {
-      setLeftViewName(2131720039);
+      setLeftViewName(2131720575);
       return;
     }
     if (this.jdField_a_of_type_Int == 1003)
     {
-      setLeftViewName(2131693271);
+      setLeftViewName(2131693372);
       return;
     }
     if (this.jdField_a_of_type_Int == 1004)
@@ -793,7 +803,7 @@ public class NearbyActivity
   
   public void d()
   {
-    this.jdField_a_of_type_Akbl.b();
+    this.jdField_a_of_type_Alta.a();
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -816,7 +826,7 @@ public class NearbyActivity
       {
         return;
         if ((paramInt1 == 1000) || (paramInt1 == 1001)) {
-          atym.a(this, paramInt1, paramInt2, paramIntent);
+          avpq.a(this, paramInt1, paramInt2, paramIntent);
         }
         if (paramInt1 != 10001) {
           break;
@@ -858,17 +868,22 @@ public class NearbyActivity
     long l1 = System.currentTimeMillis();
     this.jdField_c_of_type_Int = a(this.jdField_a_of_type_JavaUtilArrayList);
     boolean bool = super.doOnCreate(paramBundle);
+    if (getIntent().getBooleanExtra("key_from_location", false))
+    {
+      finish();
+      return true;
+    }
     try
     {
-      axqy.b(null, "dc00899", "grp_lbs", "", "entry", "open_nearby_act_total_tmp", 0, 0, Build.MODEL, Build.VERSION.SDK, "", "");
-      label52:
+      azmj.b(null, "dc00899", "grp_lbs", "", "entry", "open_nearby_act_total_tmp", 0, 0, Build.MODEL, Build.VERSION.SDK, "", "");
+      label72:
       if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface == null)
       {
         finish();
         QLog.e("nearby.NearbyActivity", 1, "doOnCreate app==null, goto finish");
         return false;
       }
-      this.jdField_a_of_type_Akbl = ((akbl)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3));
+      this.jdField_a_of_type_Alta = ((alta)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3));
       Object localObject1 = getIntent();
       paramBundle = (Bundle)localObject1;
       if (localObject1 == null) {
@@ -886,9 +901,9 @@ public class NearbyActivity
       {
         Object localObject2 = localObject1;
         if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          localObject2 = bbkb.e(this, this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin());
+          localObject2 = bdiv.e(this, this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin());
         }
-        if (bbbr.a(localObject2, bbkb.e(this, this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin()))) {
+        if (bdal.a(localObject2, bdiv.e(this, this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin()))) {
           break;
         }
         this.jdField_a_of_type_Int = 1;
@@ -919,7 +934,7 @@ public class NearbyActivity
           this.jdField_h_of_type_Long = paramBundle.getLongExtra("ENTER_TIME", l1);
           this.jdField_g_of_type_Long = l1;
           if (QLog.isDevelopLevel()) {
-            atbr.a("WebSpeedTrace", "mClickTime", new Object[] { "doOnCreate", Long.valueOf(this.jdField_h_of_type_Long) });
+            ausq.a("WebSpeedTrace", "mClickTime", new Object[] { "doOnCreate", Long.valueOf(this.jdField_h_of_type_Long) });
           }
         }
         if (i1 == 2)
@@ -927,22 +942,22 @@ public class NearbyActivity
           this.jdField_a_of_type_Long = paramBundle.getLongExtra("ENTER_TIME", l1);
           this.jdField_b_of_type_Long = l1;
           if (QLog.isDevelopLevel()) {
-            atbr.a("WebSpeedTrace", "mClickTime", new Object[] { "doOnCreate", Long.valueOf(this.jdField_h_of_type_Long) });
+            ausq.a("WebSpeedTrace", "mClickTime", new Object[] { "doOnCreate", Long.valueOf(this.jdField_h_of_type_Long) });
           }
         }
-        this.jdField_a_of_type_Atbq = new atbq(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "grp_lbs", "basic", "visit_time");
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.addObserver(this.jdField_a_of_type_Akbm);
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(this.jdField_a_of_type_Atga);
+        this.jdField_a_of_type_Ausp = new ausp(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "grp_lbs", "basic", "visit_time");
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.addObserver(this.jdField_a_of_type_Altb);
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(this.jdField_a_of_type_Auwz);
         d();
         if ((Build.VERSION.SDK_INT >= 23) && (checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != 0)) {
-          requestPermissions(new abnk(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+          requestPermissions(new adeo(this), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
         }
         return bool;
       }
     }
     catch (Exception paramBundle)
     {
-      break label52;
+      break label72;
     }
   }
   
@@ -963,18 +978,18 @@ public class NearbyActivity
           localException1.printStackTrace();
         }
       }
-      Object localObject = (atbg)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(219);
+      Object localObject = (ausf)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(219);
       if (localObject != null)
       {
-        ((atbg)localObject).a();
-        ((atbg)localObject).jdField_a_of_type_Boolean = true;
+        ((ausf)localObject).a();
+        ((ausf)localObject).jdField_a_of_type_Boolean = true;
       }
-      localObject = axsf.a(getClass(), hashCode());
+      localObject = aznr.a(getClass(), hashCode());
       if (localObject != null)
       {
         long l1 = SystemClock.elapsedRealtime();
-        long l2 = ((axsg)localObject).jdField_b_of_type_Long;
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a("CliOper", "", "", ((axsg)localObject).jdField_a_of_type_JavaLangString, ((axsg)localObject).jdField_a_of_type_JavaLangString, ((axsg)localObject).jdField_a_of_type_Int, 0, Long.toString(l1 - l2), "", "", "");
+        long l2 = ((azns)localObject).jdField_b_of_type_Long;
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a("CliOper", "", "", ((azns)localObject).jdField_a_of_type_JavaLangString, ((azns)localObject).jdField_a_of_type_JavaLangString, ((azns)localObject).jdField_a_of_type_Int, 0, Long.toString(l1 - l2), "", "", "");
       }
     }
     try
@@ -990,11 +1005,11 @@ public class NearbyActivity
       }
     }
     NearbyImgLoader.a().b();
-    if (this.jdField_a_of_type_Atbq != null) {
-      this.jdField_a_of_type_Atbq.b();
+    if (this.jdField_a_of_type_Ausp != null) {
+      this.jdField_a_of_type_Ausp.b();
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.b(this.jdField_a_of_type_Atga);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.jdField_a_of_type_Akbm);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.b(this.jdField_a_of_type_Auwz);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.jdField_a_of_type_Altb);
     f();
   }
   
@@ -1002,6 +1017,11 @@ public class NearbyActivity
   {
     super.doOnNewIntent(paramIntent);
     c();
+    if (paramIntent.getBooleanExtra("key_from_location", false))
+    {
+      h();
+      return;
+    }
     int i1 = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.jdField_a_of_type_Int;
     if (i1 >= 0)
     {
@@ -1010,7 +1030,7 @@ public class NearbyActivity
         QLog.i("nearby.NearbyActivity", 2, "doOnNewIntent setSelectedTab:" + i1);
       }
     }
-    atym.a(this, 1000, -1, paramIntent);
+    avpq.a(this, 1000, -1, paramIntent);
   }
   
   public void doOnPause()
@@ -1020,9 +1040,9 @@ public class NearbyActivity
     for (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.jdField_a_of_type_Int = this.jdField_b_of_type_Int;; this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.jdField_a_of_type_Int = 0)
     {
       if (QLog.isDevelopLevel()) {
-        atbr.a("Q.nearby", "doOnPause", new Object[] { Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.jdField_c_of_type_Boolean), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.jdField_a_of_type_Int) });
+        ausq.a("Q.nearby", "doOnPause", new Object[] { Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.jdField_c_of_type_Boolean), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.jdField_a_of_type_Int) });
       }
-      ((alyy)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(180)).b();
+      ((anpx)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(180)).b();
       NearbyBaseFragment localNearbyBaseFragment = a(this.jdField_a_of_type_ComTencentMobileqqWidgetNonSwipeableViewPager.getCurrentItem());
       if ((localNearbyBaseFragment instanceof NearbyHybridFragment))
       {
@@ -1036,12 +1056,12 @@ public class NearbyActivity
   public void doOnResume()
   {
     super.doOnResume();
-    this.jdField_a_of_type_Atbq.a();
+    this.jdField_a_of_type_Ausp.a();
     NearbyBaseFragment localNearbyBaseFragment = a(this.jdField_a_of_type_ComTencentMobileqqWidgetNonSwipeableViewPager.getCurrentItem());
     if ((localNearbyBaseFragment instanceof NearbyHybridFragment)) {
       ((NearbyHybridFragment)localNearbyBaseFragment).h();
     }
-    if ((this.jdField_b_of_type_ComTencentMobileqqRedtouchRedTouch != null) && (arhj.a.jdField_a_of_type_Int <= 0)) {
+    if ((this.jdField_b_of_type_ComTencentMobileqqRedtouchRedTouch != null) && (asxx.a.jdField_a_of_type_Int <= 0)) {
       a(this.jdField_b_of_type_ComTencentMobileqqRedtouchRedTouch, 0);
     }
   }
@@ -1069,16 +1089,16 @@ public class NearbyActivity
     SosoInterface.SosoLbsInfo localSosoLbsInfo = SosoInterface.b();
     if (localSosoLbsInfo == null)
     {
-      SosoInterface.a(new abnr(this, "NearbyProtocolCoder.Encounter"));
+      SosoInterface.a(new adew(this, "NearbyProtocolCoder.Encounter"));
       return;
     }
     this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Akbl.a(1, localSosoLbsInfo);
+    this.jdField_a_of_type_Alta.a(1, localSosoLbsInfo);
   }
   
   public void f()
   {
-    this.jdField_a_of_type_Akbl.a(2, null);
+    this.jdField_a_of_type_Alta.a(2, null);
     this.jdField_c_of_type_Boolean = true;
   }
   
@@ -1096,7 +1116,7 @@ public class NearbyActivity
   
   public void g()
   {
-    this.jdField_a_of_type_Akbl.a(3, null);
+    this.jdField_a_of_type_Alta.a(3, null);
   }
   
   public long getDetect302Time()
@@ -1106,12 +1126,12 @@ public class NearbyActivity
   
   public boolean getIsReloadUrl()
   {
-    bcaz localbcaz = a();
-    if (localbcaz == null) {}
-    for (boolean bool = false;; bool = localbcaz.getIsReloadUrl())
+    beaa localbeaa = a();
+    if (localbeaa == null) {}
+    for (boolean bool = false;; bool = localbeaa.getIsReloadUrl())
     {
       if (QLog.isDevelopLevel()) {
-        atbr.a("WebSpeedTrace", "getIsReloadUrl", new Object[] { Boolean.valueOf(bool) });
+        ausq.a("WebSpeedTrace", "getIsReloadUrl", new Object[] { Boolean.valueOf(bool) });
       }
       return bool;
     }
@@ -1119,12 +1139,12 @@ public class NearbyActivity
   
   public long getOpenUrlAfterCheckOfflineTime()
   {
-    bcaz localbcaz = a();
-    if (localbcaz == null) {}
-    for (long l1 = 0L;; l1 = localbcaz.getOpenUrlAfterCheckOfflineTime())
+    beaa localbeaa = a();
+    if (localbeaa == null) {}
+    for (long l1 = 0L;; l1 = localbeaa.getOpenUrlAfterCheckOfflineTime())
     {
       if (QLog.isDevelopLevel()) {
-        atbr.a("WebSpeedTrace", "getOpenUrlAfterCheckOfflineTime", new Object[] { Long.valueOf(l1) });
+        ausq.a("WebSpeedTrace", "getOpenUrlAfterCheckOfflineTime", new Object[] { Long.valueOf(l1) });
       }
       return l1;
     }
@@ -1132,12 +1152,12 @@ public class NearbyActivity
   
   public long getReadIndexFromOfflineTime()
   {
-    bcaz localbcaz = a();
-    if (localbcaz == null) {}
-    for (long l1 = 0L;; l1 = localbcaz.getReadIndexFromOfflineTime())
+    beaa localbeaa = a();
+    if (localbeaa == null) {}
+    for (long l1 = 0L;; l1 = localbeaa.getReadIndexFromOfflineTime())
     {
       if (QLog.isDevelopLevel()) {
-        atbr.a("WebSpeedTrace", "getReadIndexFromOfflineTime", new Object[] { Long.valueOf(l1) });
+        ausq.a("WebSpeedTrace", "getReadIndexFromOfflineTime", new Object[] { Long.valueOf(l1) });
       }
       return l1;
     }
@@ -1145,9 +1165,9 @@ public class NearbyActivity
   
   public JSONObject getX5Performance()
   {
-    bcaz localbcaz = a();
-    if (localbcaz != null) {
-      return localbcaz.mX5PerformanceJson;
+    beaa localbeaa = a();
+    if (localbeaa != null) {
+      return localbeaa.mX5PerformanceJson;
     }
     return null;
   }
@@ -1155,7 +1175,7 @@ public class NearbyActivity
   public long getgetWebViewTime()
   {
     if (QLog.isDevelopLevel()) {
-      atbr.a("WebSpeedTrace", "getgetWebViewTime", new Object[] { Long.valueOf(this.k) });
+      ausq.a("WebSpeedTrace", "getgetWebViewTime", new Object[] { Long.valueOf(this.k) });
     }
     return this.k;
   }
@@ -1163,7 +1183,7 @@ public class NearbyActivity
   public long getinitBrowserTime()
   {
     if (QLog.isDevelopLevel()) {
-      atbr.a("WebSpeedTrace", "getinitBrowserTime", new Object[] { Long.valueOf(this.m) });
+      ausq.a("WebSpeedTrace", "getinitBrowserTime", new Object[] { Long.valueOf(this.m) });
     }
     return this.m;
   }
@@ -1176,7 +1196,7 @@ public class NearbyActivity
   public long getinitTime()
   {
     if (QLog.isDevelopLevel()) {
-      atbr.a("WebSpeedTrace", "getinitTime", new Object[] { Long.valueOf(this.l) });
+      ausq.a("WebSpeedTrace", "getinitTime", new Object[] { Long.valueOf(this.l) });
     }
     return this.l;
   }
@@ -1185,7 +1205,7 @@ public class NearbyActivity
   {
     boolean bool = WebAccelerateHelper.isWebViewCache;
     if (QLog.isDevelopLevel()) {
-      atbr.a("WebSpeedTrace", "getisWebViewCache", new Object[] { Boolean.valueOf(bool) });
+      ausq.a("WebSpeedTrace", "getisWebViewCache", new Object[] { Boolean.valueOf(bool) });
     }
     return bool;
   }
@@ -1193,7 +1213,7 @@ public class NearbyActivity
   public long getmClickTime()
   {
     if (QLog.isDevelopLevel()) {
-      atbr.a("WebSpeedTrace", "getmClickTime", new Object[] { Long.valueOf(this.jdField_h_of_type_Long) });
+      ausq.a("WebSpeedTrace", "getmClickTime", new Object[] { Long.valueOf(this.jdField_h_of_type_Long) });
     }
     return this.jdField_h_of_type_Long;
   }
@@ -1201,19 +1221,19 @@ public class NearbyActivity
   public long getmOnCreateMilliTimeStamp()
   {
     if (QLog.isDevelopLevel()) {
-      atbr.a("WebSpeedTrace", "getmOnCreateMilliTimeStamp", new Object[] { Long.valueOf(this.jdField_g_of_type_Long) });
+      ausq.a("WebSpeedTrace", "getmOnCreateMilliTimeStamp", new Object[] { Long.valueOf(this.jdField_g_of_type_Long) });
     }
     return this.jdField_g_of_type_Long;
   }
   
   public boolean getmPerfFirstLoadTag()
   {
-    bcaz localbcaz = a();
-    if (localbcaz == null) {}
-    for (boolean bool = false;; bool = localbcaz.ismPerfFirstLoadTag())
+    beaa localbeaa = a();
+    if (localbeaa == null) {}
+    for (boolean bool = false;; bool = localbeaa.ismPerfFirstLoadTag())
     {
       if (QLog.isDevelopLevel()) {
-        atbr.a("WebSpeedTrace", "getmPerfFirstLoadTag", new Object[] { Boolean.valueOf(bool) });
+        ausq.a("WebSpeedTrace", "getmPerfFirstLoadTag", new Object[] { Boolean.valueOf(bool) });
       }
       return bool;
     }
@@ -1221,12 +1241,12 @@ public class NearbyActivity
   
   public long getmStartLoadUrlMilliTimeStamp()
   {
-    bcaz localbcaz = a();
-    if (localbcaz == null) {}
-    for (long l1 = 0L;; l1 = localbcaz.mStartLoadUrlMilliTimeStamp)
+    beaa localbeaa = a();
+    if (localbeaa == null) {}
+    for (long l1 = 0L;; l1 = localbeaa.mStartLoadUrlMilliTimeStamp)
     {
       if (QLog.isDevelopLevel()) {
-        atbr.a("WebSpeedTrace", "getmStartLoadUrlMilliTimeStamp", new Object[] { Long.valueOf(l1) });
+        ausq.a("WebSpeedTrace", "getmStartLoadUrlMilliTimeStamp", new Object[] { Long.valueOf(l1) });
       }
       return l1;
     }
@@ -1234,12 +1254,12 @@ public class NearbyActivity
   
   public long getmTimeBeforeLoadUrl()
   {
-    bcaz localbcaz = a();
-    if (localbcaz == null) {}
-    for (long l1 = 0L;; l1 = localbcaz.getmTimeBeforeLoadUrl())
+    beaa localbeaa = a();
+    if (localbeaa == null) {}
+    for (long l1 = 0L;; l1 = localbeaa.getmTimeBeforeLoadUrl())
     {
       if (QLog.isDevelopLevel()) {
-        atbr.a("WebSpeedTrace", "getmTimeBeforeLoadUrl", new Object[] { Long.valueOf(l1) });
+        ausq.a("WebSpeedTrace", "getmTimeBeforeLoadUrl", new Object[] { Long.valueOf(l1) });
       }
       return l1;
     }
@@ -1248,7 +1268,7 @@ public class NearbyActivity
   public long getonCreateTime()
   {
     if (QLog.isDevelopLevel()) {
-      atbr.a("WebSpeedTrace", "getonCreateTime", new Object[] { Long.valueOf(this.jdField_i_of_type_Long) });
+      ausq.a("WebSpeedTrace", "getonCreateTime", new Object[] { Long.valueOf(this.jdField_i_of_type_Long) });
     }
     return this.jdField_i_of_type_Long;
   }
@@ -1261,7 +1281,7 @@ public class NearbyActivity
   public long getviewInflateTime()
   {
     if (QLog.isDevelopLevel()) {
-      atbr.a("WebSpeedTrace", "getviewInflateTime", new Object[] { Long.valueOf(this.j) });
+      ausq.a("WebSpeedTrace", "getviewInflateTime", new Object[] { Long.valueOf(this.j) });
     }
     return this.j;
   }
@@ -1278,7 +1298,7 @@ public class NearbyActivity
       try
       {
         i1 = getIntent().getIntExtra("NEARBY_IS_HAS_ICON", 2);
-        axsf.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, getClass(), hashCode(), "0X80059D6", i1);
+        aznr.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, getClass(), hashCode(), "0X80059D6", i1);
       }
       catch (Throwable paramMessage)
       {
@@ -1312,12 +1332,12 @@ public class NearbyActivity
   
   public boolean isMainPageUseLocalFile()
   {
-    bcaz localbcaz = a();
-    if (localbcaz == null) {}
-    for (boolean bool = false;; bool = localbcaz.isMainPageUseLocalFile())
+    beaa localbeaa = a();
+    if (localbeaa == null) {}
+    for (boolean bool = false;; bool = localbeaa.isMainPageUseLocalFile())
     {
       if (QLog.isDevelopLevel()) {
-        atbr.a("WebSpeedTrace", "isMainPageUseLocalFile", new Object[] { Boolean.valueOf(bool) });
+        ausq.a("WebSpeedTrace", "isMainPageUseLocalFile", new Object[] { Boolean.valueOf(bool) });
       }
       return bool;
     }
@@ -1358,11 +1378,11 @@ public class NearbyActivity
         localNearbyBaseFragment.a();
       }
       if (QLog.isColorLevel()) {
-        atbr.a("onTabClicked", new Object[0]);
+        ausq.a("onTabClicked", new Object[0]);
       }
     }
     if (QLog.isColorLevel()) {
-      atbr.a("onTabSelected", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqWidgetNonSwipeableViewPager.getCurrentItem()), Integer.valueOf(this.jdField_h_of_type_Int) });
+      ausq.a("onTabSelected", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqWidgetNonSwipeableViewPager.getCurrentItem()), Integer.valueOf(this.jdField_h_of_type_Int) });
     }
     if ((this.jdField_h_of_type_Int >= 0) && (this.jdField_h_of_type_Int != paramInt2))
     {
@@ -1419,16 +1439,16 @@ public class NearbyActivity
   public String setLastActivityName()
   {
     if (this.jdField_b_of_type_Int == 2) {
-      return getString(2131694071);
+      return getString(2131694187);
     }
     return super.setLastActivityName();
   }
   
   public void setX5Performance(JSONObject paramJSONObject)
   {
-    bcaz localbcaz = a();
-    if (localbcaz != null) {
-      localbcaz.mX5PerformanceJson = paramJSONObject;
+    beaa localbeaa = a();
+    if (localbeaa != null) {
+      localbeaa.mX5PerformanceJson = paramJSONObject;
     }
   }
   
@@ -1455,7 +1475,7 @@ public class NearbyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NearbyActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,46 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class adgu
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adgu(AIOLongShotHelper paramAIOLongShotHelper) {}
+  public adgu(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AIOLongShotHelper.b(this.a, paramView);
-    AIOLongShotHelper.a("0X8009DE7");
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.f(this.a).setContentDescription(alpo.a(2131708033));
+    }
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131719109), "qqsetting_receivemsg_whenexit_key", paramBoolean);
+    SyncService.a(this.a, paramBoolean);
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
+    {
+      i = 1;
+      if (!paramBoolean) {
+        break label107;
+      }
+    }
+    label107:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      azmj.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, paramCompoundButton, "", "", "");
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgu
  * JD-Core Version:    0.7.0.1
  */

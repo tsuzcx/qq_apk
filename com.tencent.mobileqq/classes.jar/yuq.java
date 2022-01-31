@@ -1,130 +1,74 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.ark.open.ArkView;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtHandler.Options;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialView.2;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
-import java.lang.ref.WeakReference;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class yuq
-  implements yta
+public class yuq
 {
-  private ArkView jdField_a_of_type_ComTencentArkOpenArkView;
-  private yuj jdField_a_of_type_Yuj = new yuj();
+  private String a = "0";
+  private String b = "1";
+  private String c = yuh.c;
+  private String d = "1";
+  private String e = "1";
   
-  public yuq(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams)
+  public static yuq a(String paramString)
   {
-    ArkAppNotifyCenter.setNotify(yui.a().a().a, new WeakReference(this.jdField_a_of_type_Yuj));
-    this.jdField_a_of_type_ComTencentArkOpenArkView = a(paramContext, paramGdtInterstitialParams);
-  }
-  
-  private static ArkView a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams)
-  {
-    WeakReference localWeakReference = new WeakReference(paramContext);
-    if (paramGdtInterstitialParams != null) {}
-    for (String str1 = paramGdtInterstitialParams.a();; str1 = null)
+    yuq localyuq = new yuq();
+    if (paramString != null) {}
+    try
     {
-      yuc localyuc = yui.a().a();
-      String str2 = a(paramGdtInterstitialParams);
-      yxp.b("GdtInterstitialView", String.format("load appName:%s view:%s minver:%s", new Object[] { localyuc.a, localyuc.b, localyuc.c }));
-      long l = System.currentTimeMillis();
-      ArkView localArkView = new ArkView(paramContext, null);
-      localArkView.setBorderType(0);
-      localArkView.load(localyuc.a, localyuc.b, localyuc.c, str2, null, new yur(l, str1, localWeakReference, paramGdtInterstitialParams));
-      yyc.a(paramContext, paramGdtInterstitialParams);
-      return localArkView;
-    }
-  }
-  
-  private static String a(GdtInterstitialParams paramGdtInterstitialParams)
-  {
-    if ((paramGdtInterstitialParams == null) || (!paramGdtInterstitialParams.b()))
-    {
-      yxp.d("GdtInterstitialView", "getMetaData error");
-      return null;
-    }
-    String str;
-    if (paramGdtInterstitialParams.jdField_a_of_type_Int == 1) {
-      str = "vertical";
-    }
-    for (;;)
-    {
-      if (TextUtils.isEmpty(str))
+      paramString = new JSONObject(paramString);
+      if (paramString != null)
       {
-        yxp.d("GdtInterstitialView", "getMetaData error");
-        return null;
-        if ((paramGdtInterstitialParams.jdField_a_of_type_Int == 0) || (paramGdtInterstitialParams.jdField_a_of_type_Int == 8)) {
-          str = "horizontal";
-        }
+        localyuq.a = paramString.optString("subscribe_entrance_enable", "0");
+        localyuq.b = paramString.optString("is_open_sharing", "1");
+        localyuq.c = paramString.optString("subscribe_account_title", yuh.c);
+        localyuq.d = paramString.optString("newfollowlist", "1");
+        localyuq.e = paramString.optString("subscribe_publish_entrance_enable", "1");
       }
-      else
+      return localyuq;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
       {
-        try
-        {
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("screenType", str);
-          paramGdtInterstitialParams = yxo.a(paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a.info);
-          if ((paramGdtInterstitialParams != null) && (paramGdtInterstitialParams != JSONObject.NULL)) {
-            localJSONObject.put("adInfo", paramGdtInterstitialParams);
-          }
-          paramGdtInterstitialParams = new JSONObject();
-          paramGdtInterstitialParams.put("gdt", localJSONObject);
-          paramGdtInterstitialParams = paramGdtInterstitialParams.toString();
-          return paramGdtInterstitialParams;
-        }
-        catch (Throwable paramGdtInterstitialParams)
-        {
-          yxp.d("GdtInterstitialView", "getMetaData", paramGdtInterstitialParams);
-          return null;
-        }
+        paramString.printStackTrace();
+        paramString = null;
       }
-      str = null;
     }
   }
   
-  private static void b(int paramInt1, int paramInt2, String paramString)
+  public String a()
   {
-    AdThreadManager.INSTANCE.post(new GdtInterstitialView.2(paramString, paramInt1, paramInt2), 0);
+    return this.a;
   }
   
-  public View a()
+  public String b()
   {
-    return this.jdField_a_of_type_ComTencentArkOpenArkView;
+    return this.b;
   }
   
-  public void a(Context paramContext)
+  public String c()
   {
-    yxp.b("GdtInterstitialView", "pause");
-    if (this.jdField_a_of_type_ComTencentArkOpenArkView != null) {
-      this.jdField_a_of_type_ComTencentArkOpenArkView.onPause();
-    }
+    return this.c;
   }
   
-  public void b(Context paramContext)
+  public String d()
   {
-    yxp.b("GdtInterstitialView", "resume");
-    if (this.jdField_a_of_type_ComTencentArkOpenArkView != null) {
-      this.jdField_a_of_type_ComTencentArkOpenArkView.onResume();
-    }
+    return this.d;
   }
   
-  public void c(Context paramContext)
+  public String e()
   {
-    yxp.b("GdtInterstitialView", "destroy");
-    if (this.jdField_a_of_type_ComTencentArkOpenArkView != null) {
-      this.jdField_a_of_type_ComTencentArkOpenArkView.onDestroy();
-    }
-    ArkAppNotifyCenter.setNotify(yui.a().a().a, null);
+    return this.e;
+  }
+  
+  public String toString()
+  {
+    return "k =subscribe_entrance_enable , value = " + this.a + ",k =is_open_sharing , value = " + this.b + ",k =subscribe_account_title , value = " + this.c + ",k =subscribeAccountNewFollowListSwitch , value = " + this.d + ",k =subscribeAccountPublishEntranceSwitch , value = " + this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yuq
  * JD-Core Version:    0.7.0.1
  */

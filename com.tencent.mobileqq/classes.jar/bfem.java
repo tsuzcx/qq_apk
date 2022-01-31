@@ -1,30 +1,35 @@
-import android.os.SystemClock;
+import com.tencent.open.appcommon.JsWebWorker;
+import java.lang.reflect.Method;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-class bfem
-  implements bfbo
+public class bfem
 {
-  long jdField_a_of_type_Long;
+  public Class a;
+  public String a;
+  public Map<Integer, Object> a;
+  public Map<String, Method> b = new HashMap();
   
-  bfem(bfel parambfel, bfdf parambfdf, long paramLong) {}
+  public bfem(JsWebWorker paramJsWebWorker)
+  {
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Bfdf != null) {}
-    for (bfbq localbfbq = this.jdField_a_of_type_Bfdf.a();; localbfbq = null)
-    {
-      if ((localbfbq != null) && (localbfbq == this.jdField_a_of_type_Bfdf.b)) {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      }
-      if ((localbfbq != null) && (localbfbq == this.jdField_a_of_type_Bfdf.e)) {
-        this.jdField_a_of_type_Bfel.a(this.jdField_a_of_type_Bfdf, this.b, SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
-      }
-      return;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext()) {
+      localIterator.next();
     }
+    this.jdField_a_of_type_JavaUtilMap = null;
+    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfem
  * JD-Core Version:    0.7.0.1
  */

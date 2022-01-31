@@ -301,7 +301,23 @@
                 ]
             },
             {
-                "$includeComponet": "componet/separator.geojson"
+                "view_type": "UIView",
+                "view_id": "id_separator",
+                "margin_left": "6",
+                "margin_top": "3",
+                "default_visible": "YES",
+                "height": {
+                    "type": "absolutely",
+                    "value": "0.5"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "363"
+                },
+                "attributes": {
+                    "setFrameString:": "-1",
+                    "setBackgroundColorString:": "#E5E5E5"
+                }
             }
         ]
     }

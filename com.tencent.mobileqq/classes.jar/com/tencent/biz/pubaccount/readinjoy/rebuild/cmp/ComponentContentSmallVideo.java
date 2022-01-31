@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import pau;
-import pym;
+import pgd;
+import qfg;
 
 public class ComponentContentSmallVideo
   extends ComponentContentSmall
@@ -31,28 +31,28 @@ public class ComponentContentSmallVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559862, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559957, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.a = ((TextView)paramView.findViewById(2131365420));
+    this.a = ((TextView)paramView.findViewById(2131365504));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof pau))
+    if ((paramObject instanceof pgd))
     {
-      paramObject = ((pau)paramObject).a();
+      paramObject = ((pgd)paramObject).a();
       if (paramObject != null) {}
     }
     else
     {
       return;
     }
-    this.a.setText(pym.a(paramObject.mVideoDuration));
+    this.a.setText(qfg.a(paramObject.mVideoDuration));
   }
   
   public void b()
@@ -62,7 +62,7 @@ public class ComponentContentSmallVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallVideo
  * JD-Core Version:    0.7.0.1
  */

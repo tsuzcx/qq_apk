@@ -1,46 +1,32 @@
-import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
-import com.tencent.mobileqq.shortvideo.filter.QQTextEjectaFilter;
-import com.tencent.mobileqq.shortvideo.filter.QQTextEjectaFilter.EjectaTextureCallBack;
-import com.tencent.qg.StoryQGSurfaceView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
 
-class bjrz
-  implements QQTextEjectaFilter.EjectaTextureCallBack
+public final class bjrz
+  implements Parcelable.Creator<QzoneVerticalVideoTopicInfo>
 {
-  bjrz(bjry parambjry) {}
-  
-  public int[] onDrawFrame()
+  public QzoneVerticalVideoTopicInfo a(Parcel paramParcel)
   {
-    int[] arrayOfInt1 = new int[2];
-    int[] tmp5_4 = arrayOfInt1;
-    tmp5_4[0] = 0;
-    int[] tmp9_5 = tmp5_4;
-    tmp9_5[1] = 0;
-    tmp9_5;
-    int[] arrayOfInt2 = new int[2];
-    int[] tmp19_18 = arrayOfInt2;
-    tmp19_18[0] = 0;
-    int[] tmp23_19 = tmp19_18;
-    tmp23_19[1] = 0;
-    tmp23_19;
-    if (!this.a.b) {
-      return new int[0];
-    }
-    arrayOfInt1[0] = bjry.a(this.a).getCanvasTexture("offscreen_richard");
-    if (((bjry.a(this.a) != null) || (bjry.a(this.a).f)) && (!bjry.a(this.a)))
-    {
-      if (bjry.a(this.a) == 0) {
-        bjry.a(this.a, GlUtil.createTexture(3553, bjry.a(this.a)));
-      }
-      arrayOfInt1[1] = bjry.a(this.a);
-      arrayOfInt2[1] = 1;
-    }
-    bjry.a(this.a).setIsNeedReverseTexture(arrayOfInt2);
-    return arrayOfInt1;
+    QzoneVerticalVideoTopicInfo localQzoneVerticalVideoTopicInfo = new QzoneVerticalVideoTopicInfo();
+    QzoneVerticalVideoTopicInfo.a(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.b(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.c(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.d(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.e(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.f(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.g(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    QzoneVerticalVideoTopicInfo.h(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
+    return localQzoneVerticalVideoTopicInfo;
+  }
+  
+  public QzoneVerticalVideoTopicInfo[] a(int paramInt)
+  {
+    return new QzoneVerticalVideoTopicInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjrz
  * JD-Core Version:    0.7.0.1
  */

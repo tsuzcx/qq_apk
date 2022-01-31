@@ -1,66 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class arid
-  implements Manager
+class arid
+  implements atxr
 {
-  private QQAppInterface a;
+  arid(arhz paramarhz) {}
   
-  public arid(QQAppInterface paramQQAppInterface)
+  public void a(int paramInt)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a(String paramString)
-  {
-    int j = 0;
-    if (bbkk.a(paramString))
+    switch (paramInt)
     {
-      paramString = BaseApplicationImpl.getContext().getSharedPreferences("now_download_config", 4);
-      paramString.edit().putInt("key_now_download_engine", 0).commit();
-      paramString.edit().putInt("key_now_channel", 0).commit();
-      QLog.e("NowGeneralConfigManager", 4, "NowGeneralConfigManager----parseJson---downloadEngine = 0");
-      return;
     }
-    for (;;)
+    do
     {
-      try
+      do
       {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("now_download_engine"))
-        {
-          i = paramString.getInt("now_download_engine");
-          if (paramString.has("now_channel")) {
-            j = paramString.getInt("now_channel");
-          }
-          QLog.e("NowGeneralConfigManager", 4, "NowGeneralConfigManager----parseJson---downloadEngine = " + i + ", nowChannel = " + j);
-          paramString = BaseApplicationImpl.getContext().getSharedPreferences("now_download_config", 4);
-          paramString.edit().putInt("key_now_download_engine", i).commit();
-          paramString.edit().putInt("key_now_channel", j).commit();
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
         return;
-      }
-      int i = 0;
-    }
+        QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_GAIN");
+      } while (arhz.a(this.a));
+      arhz.b(this.a);
+      return;
+      QLog.i("FileBrowserPresenter<FileAssistant>", 1, "onFocusChange: MEDIAFOCUS_LOSS");
+    } while (!arhz.a(this.a));
+    arhz.a(this.a);
   }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arid
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,20 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class afxx
-  extends afxp
+  implements DialogInterface.OnClickListener
 {
-  public static final int[] a = { 2131690735 };
-  public static final int[] b = { 2131364094 };
+  public afxx(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public afxx(FragmentActivity paramFragmentActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramFragmentActivity);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afxx
  * JD-Core Version:    0.7.0.1
  */

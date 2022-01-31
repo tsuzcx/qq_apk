@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import java.util.List;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public abstract interface ajmd
+public class ajmd
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abstract List<TraceData> a();
+  public ajmd(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public abstract boolean a(List<TraceData> paramList);
-  
-  public abstract boolean b(List<TraceData> paramList);
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    NewFlowCameraActivity.a(this.a, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.etrump.mixlayout;
 
 import android.graphics.Typeface;
-import bbfj;
-import bblj;
+import bdee;
+import bdkd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import f;
+import fw;
+import fx;
 import g;
-import hn;
-import ho;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -16,11 +16,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class FontManager$5
   implements Runnable
 {
-  public FontManager$5(ho paramho, int paramInt1, int paramInt2, String paramString, int paramInt3, boolean paramBoolean) {}
+  public FontManager$5(fx paramfx, int paramInt1, int paramInt2, String paramString, int paramInt3, boolean paramBoolean) {}
   
   public void run()
   {
-    if (ho.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int)) != null) {
+    if (fx.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int)) != null) {
       if (QLog.isColorLevel()) {
         QLog.d("VasFont", 2, "asyncLoadFont font " + this.jdField_a_of_type_Int + " has loaded");
       }
@@ -38,14 +38,14 @@ public class FontManager$5
           do
           {
             return;
-            localObject = ho.a(this.jdField_a_of_type_Int, this.b);
+            localObject = fx.a(this.jdField_a_of_type_Int, this.b);
             if (!new File((String)localObject).exists()) {
               break label602;
             }
-            localObject = new hn(this.jdField_a_of_type_Int, (String)localObject);
-            ((hn)localObject).b = this.b;
+            localObject = new fw(this.jdField_a_of_type_Int, (String)localObject);
+            ((fw)localObject).b = this.b;
             if (this.b == 0) {
-              ((hn)localObject).b = 1;
+              ((fw)localObject).b = 1;
             }
             switch (this.b)
             {
@@ -71,48 +71,48 @@ public class FontManager$5
           return;
           try
           {
-            ((hn)localObject).jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(((hn)localObject).jdField_a_of_type_JavaLangString);
-            ho.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
-            bblj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            ho.a(this.this$0);
+            ((fw)localObject).jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(((fw)localObject).jdField_a_of_type_JavaLangString);
+            fx.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
+            bdkd.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            fx.a(this.this$0);
             return;
           }
           catch (Exception localException)
           {
             QLog.e("VasFont", 1, "getFontInfo createTypeface error: " + localException.getMessage());
-            ((hn)localObject).jdField_a_of_type_AndroidGraphicsTypeface = null;
+            ((fw)localObject).jdField_a_of_type_AndroidGraphicsTypeface = null;
             return;
           }
           if ((this.this$0.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_isFontLoaded(this.jdField_a_of_type_Int)) && (this.this$0.b.native_isFontLoaded(this.jdField_a_of_type_Int))) {
             break label444;
           }
-          if (this.this$0.a((hn)localObject, this.jdField_a_of_type_JavaLangString, this.c)) {
+          if (this.this$0.a((fw)localObject, this.jdField_a_of_type_JavaLangString, this.c)) {
             break;
           }
         } while (!QLog.isColorLevel());
         QLog.e("VasFont", 2, "doGetUserFont setActiveFont fail");
         return;
-        ETFont localETFont = new ETFont(((hn)localObject).jdField_a_of_type_Int, ((hn)localObject).jdField_a_of_type_JavaLangString, 1.0F);
-        ((hn)localObject).c = this.this$0.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_getVariantStyleComboCount(localETFont);
+        ETFont localETFont = new ETFont(((fw)localObject).jdField_a_of_type_Int, ((fw)localObject).jdField_a_of_type_JavaLangString, 1.0F);
+        ((fw)localObject).c = this.this$0.jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_getVariantStyleComboCount(localETFont);
         if (QLog.isColorLevel()) {
-          QLog.i("VasFont", 2, "asyncLoadFont: id=" + ((hn)localObject).jdField_a_of_type_Int + " styleCount=" + ((hn)localObject).c);
+          QLog.i("VasFont", 2, "asyncLoadFont: id=" + ((fw)localObject).jdField_a_of_type_Int + " styleCount=" + ((fw)localObject).c);
         }
-        ho.c = true;
-        ho.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
-        bblj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        ho.a(this.this$0);
+        fx.c = true;
+        fx.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
+        bdkd.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        fx.a(this.this$0);
         return;
       } while (!QLog.isColorLevel());
       QLog.e("VasFont", 2, "doGetUserFont fontEngine not init mIsFontEngineReady = " + ETEngine.getInstance().isEngineReady.get() + " mIsFontEngineInited = " + ETEngine.getInstance().isEngineInited.get());
       return;
-      g.a().a(this.jdField_a_of_type_Int, ((hn)localObject).jdField_a_of_type_JavaLangString);
-      ((hn)localObject).c = f.f(this.jdField_a_of_type_Int);
-      ((hn)localObject).b = 4;
-      ho.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
-      bblj.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      ho.a(this.this$0);
+      g.a().a(this.jdField_a_of_type_Int, ((fw)localObject).jdField_a_of_type_JavaLangString);
+      ((fw)localObject).c = f.f(this.jdField_a_of_type_Int);
+      ((fw)localObject).b = 4;
+      fx.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localObject);
+      bdkd.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      fx.a(this.this$0);
       return;
-      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_Boolean) || (bbfj.h(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication())) || (bbfj.c(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))) {
+      if ((this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_Boolean) || (bdee.h(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication())) || (bdee.c(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()))) {
         break;
       }
     } while (!QLog.isColorLevel());
@@ -127,7 +127,7 @@ public class FontManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.etrump.mixlayout.FontManager.5
  * JD-Core Version:    0.7.0.1
  */

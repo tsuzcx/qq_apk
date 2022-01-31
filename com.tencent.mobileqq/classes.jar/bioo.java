@@ -1,23 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bioo
-  implements Animator.AnimatorListener
+class bioo
+  implements DialogInterface.OnClickListener
 {
-  public bioo(AEMaterialPanel paramAEMaterialPanel) {}
+  bioo(bioj parambioj) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.a("0X8004857", 1);
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bioo
  * JD-Core Version:    0.7.0.1
  */

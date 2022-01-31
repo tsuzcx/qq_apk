@@ -12,10 +12,10 @@ import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.widget.EditText;
-import awcm;
-import awcn;
-import awco;
-import bckn;
+import axxp;
+import axxq;
+import axxr;
+import bejo;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.os.MqqHandler;
@@ -26,9 +26,9 @@ public class RichStatusEditText
   private static float jdField_a_of_type_Float = 1.0F;
   int jdField_a_of_type_Int = -1;
   private Context jdField_a_of_type_AndroidContentContext;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new awcm(this);
-  private awco jdField_a_of_type_Awco;
-  private bckn jdField_a_of_type_Bckn;
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new axxp(this);
+  private axxr jdField_a_of_type_Axxr;
+  private bejo jdField_a_of_type_Bejo;
   public boolean a;
   int b = -1;
   
@@ -79,15 +79,15 @@ public class RichStatusEditText
     paramInt = i;
     if (i == 0)
     {
-      bckn localbckn = a(i, true, false);
+      bejo localbejo = a(i, true, false);
       paramInt = i;
-      if (localbckn != null)
+      if (localbejo != null)
       {
         paramInt = i;
-        if (this.jdField_a_of_type_Awco != null)
+        if (this.jdField_a_of_type_Axxr != null)
         {
           paramInt = i;
-          if (!this.jdField_a_of_type_Awco.a(localbckn)) {
+          if (!this.jdField_a_of_type_Axxr.a(localbejo)) {
             paramInt = i + 1;
           }
         }
@@ -101,76 +101,76 @@ public class RichStatusEditText
     return getText();
   }
   
-  private bckn a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  private bejo a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = 0;
-    bckn[] arrayOfbckn = (bckn[])a().getSpans(0, getText().length(), bckn.class);
-    while (i < arrayOfbckn.length)
+    bejo[] arrayOfbejo = (bejo[])a().getSpans(0, getText().length(), bejo.class);
+    while (i < arrayOfbejo.length)
     {
-      bckn localbckn = arrayOfbckn[i];
-      int j = a().getSpanStart(localbckn);
-      int k = a().getSpanEnd(localbckn);
+      bejo localbejo = arrayOfbejo[i];
+      int j = a().getSpanStart(localbejo);
+      int k = a().getSpanEnd(localbejo);
       if ((paramInt > j) && (paramInt < k)) {
-        return localbckn;
+        return localbejo;
       }
       if ((paramBoolean1) && (paramInt == j)) {
-        return localbckn;
+        return localbejo;
       }
       if ((paramBoolean2) && (paramInt == k)) {
-        return localbckn;
+        return localbejo;
       }
       i += 1;
     }
     return null;
   }
   
-  private bckn a(bckn parambckn)
+  private bejo a(bejo parambejo)
   {
-    if (parambckn != null) {
-      parambckn.b(this);
+    if (parambejo != null) {
+      parambejo.b(this);
     }
-    return parambckn;
+    return parambejo;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_Bckn != null)
+    if (this.jdField_a_of_type_Bejo != null)
     {
-      this.jdField_a_of_type_Bckn.a(this);
-      this.jdField_a_of_type_Bckn = null;
+      this.jdField_a_of_type_Bejo.a(this);
+      this.jdField_a_of_type_Bejo = null;
     }
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    bckn[] arrayOfbckn = (bckn[])a().getSpans(paramInt1, paramInt1 + paramInt2, bckn.class);
+    bejo[] arrayOfbejo = (bejo[])a().getSpans(paramInt1, paramInt1 + paramInt2, bejo.class);
     paramInt1 = 0;
-    while (paramInt1 < arrayOfbckn.length)
+    while (paramInt1 < arrayOfbejo.length)
     {
-      bckn localbckn = arrayOfbckn[paramInt1];
-      if (this.jdField_a_of_type_Awco != null) {
-        this.jdField_a_of_type_Awco.a(localbckn);
+      bejo localbejo = arrayOfbejo[paramInt1];
+      if (this.jdField_a_of_type_Axxr != null) {
+        this.jdField_a_of_type_Axxr.a(localbejo);
       }
-      if (localbckn == this.jdField_a_of_type_Bckn) {
-        this.jdField_a_of_type_Bckn = null;
+      if (localbejo == this.jdField_a_of_type_Bejo) {
+        this.jdField_a_of_type_Bejo = null;
       }
-      a().removeSpan(localbckn);
+      a().removeSpan(localbejo);
       paramInt1 += 1;
     }
   }
   
   private int b(int paramInt, float paramFloat1, float paramFloat2)
   {
-    bckn localbckn1 = a(paramInt, false, true);
-    bckn localbckn2 = a(paramInt, true, false);
+    bejo localbejo1 = a(paramInt, false, true);
+    bejo localbejo2 = a(paramInt, true, false);
     int j;
-    if (localbckn1 != null)
+    if (localbejo1 != null)
     {
-      j = a().getSpanEnd(localbckn1);
+      j = a().getSpanEnd(localbejo1);
       if (paramInt != j) {
         return paramInt;
       }
-      if ((j != getText().length()) && (localbckn2 == null)) {
+      if ((j != getText().length()) && (localbejo2 == null)) {
         break label276;
       }
       this.jdField_a_of_type_Boolean = false;
@@ -188,14 +188,14 @@ public class RichStatusEditText
       if (k == j) {
         return k - 1;
       }
-      if (localbckn2 == null) {
+      if (localbejo2 == null) {
         break;
       }
-      i = a().getSpanStart(localbckn2);
+      i = a().getSpanStart(localbejo2);
       if (paramInt != i) {
         break;
       }
-      if ((i == 0) || (localbckn1 != null))
+      if ((i == 0) || (localbejo1 != null))
       {
         this.jdField_a_of_type_Boolean = false;
         getText().insert(i, " ");
@@ -215,11 +215,11 @@ public class RichStatusEditText
     }
   }
   
-  public awcn a(int paramInt)
+  public axxq a(int paramInt)
   {
     int k = getText().length();
     if ((paramInt < 0) || (paramInt > k)) {
-      return new awcn(k, k);
+      return new axxq(k, k);
     }
     ImageSpan[] arrayOfImageSpan = (ImageSpan[])a().getSpans(0, k, ImageSpan.class);
     int i1 = arrayOfImageSpan.length;
@@ -243,7 +243,7 @@ public class RichStatusEditText
       {
         k = m;
         continue;
-        return new awcn(i, k);
+        return new axxq(i, k);
       }
     }
   }
@@ -254,39 +254,39 @@ public class RichStatusEditText
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(bckn parambckn1, bckn parambckn2)
+  public void a(bejo parambejo1, bejo parambejo2)
   {
-    if (parambckn1 == this.jdField_a_of_type_Bckn) {
-      this.jdField_a_of_type_Bckn = parambckn2;
+    if (parambejo1 == this.jdField_a_of_type_Bejo) {
+      this.jdField_a_of_type_Bejo = parambejo2;
     }
-    int i = a().getSpanStart(parambckn1);
-    int j = a().getSpanEnd(parambckn1);
+    int i = a().getSpanStart(parambejo1);
+    int j = a().getSpanEnd(parambejo1);
     if ((i == -1) || (j == -1)) {
       return;
     }
-    a(parambckn1, false, false);
-    setSpan(parambckn2, i, j);
+    a(parambejo1, false, false);
+    setSpan(parambejo2, i, j);
   }
   
-  public void a(bckn parambckn, boolean paramBoolean1, boolean paramBoolean2)
+  public void a(bejo parambejo, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((this.jdField_a_of_type_Awco != null) && (paramBoolean2)) {
-      this.jdField_a_of_type_Awco.a(parambckn);
+    if ((this.jdField_a_of_type_Axxr != null) && (paramBoolean2)) {
+      this.jdField_a_of_type_Axxr.a(parambejo);
     }
-    if (this.jdField_a_of_type_Bckn == parambckn) {
-      this.jdField_a_of_type_Bckn = null;
+    if (this.jdField_a_of_type_Bejo == parambejo) {
+      this.jdField_a_of_type_Bejo = null;
     }
     if (!paramBoolean1) {
-      a().removeSpan(parambckn);
+      a().removeSpan(parambejo);
     }
     int i;
     int j;
     do
     {
       return;
-      i = a().getSpanStart(parambckn);
-      j = a().getSpanEnd(parambckn);
-      a().removeSpan(parambckn);
+      i = a().getSpanStart(parambejo);
+      j = a().getSpanEnd(parambejo);
+      a().removeSpan(parambejo);
     } while (i == -1);
     getText().replace(i, j, "", 0, 0);
   }
@@ -314,15 +314,15 @@ public class RichStatusEditText
   {
     if ((paramInt == 67) && (paramKeyEvent.getAction() == 0))
     {
-      if (this.jdField_a_of_type_Bckn != null)
+      if (this.jdField_a_of_type_Bejo != null)
       {
-        paramInt = a().getSpanStart(this.jdField_a_of_type_Bckn);
-        a(this.jdField_a_of_type_Bckn, true, true);
-        this.jdField_a_of_type_Bckn = null;
+        paramInt = a().getSpanStart(this.jdField_a_of_type_Bejo);
+        a(this.jdField_a_of_type_Bejo, true, true);
+        this.jdField_a_of_type_Bejo = null;
         setSelection(paramInt);
         setCursorVisible(true);
       }
-      bckn localbckn;
+      bejo localbejo;
       do
       {
         return true;
@@ -331,30 +331,30 @@ public class RichStatusEditText
           a(getSelectionStart(), getSelectionEnd() - getSelectionStart());
           return super.onKeyDown(paramInt, paramKeyEvent);
         }
-        localbckn = a(getSelectionStart(), false, true);
-        if (localbckn == null) {
+        localbejo = a(getSelectionStart(), false, true);
+        if (localbejo == null) {
           break;
         }
-      } while (!localbckn.a());
-      this.jdField_a_of_type_Bckn = a(localbckn);
+      } while (!localbejo.a());
+      this.jdField_a_of_type_Bejo = a(localbejo);
       setCursorVisible(false);
       return true;
     }
     if ((paramInt == 21) && (paramKeyEvent.getAction() == 0))
     {
-      if (this.jdField_a_of_type_Bckn != null)
+      if (this.jdField_a_of_type_Bejo != null)
       {
         setCursorVisible(true);
-        paramInt = a().getSpanStart(this.jdField_a_of_type_Bckn);
+        paramInt = a().getSpanStart(this.jdField_a_of_type_Bejo);
         setSelection(paramInt, paramInt);
         a();
         return true;
       }
     }
-    else if ((paramInt == 22) && (paramKeyEvent.getAction() == 0) && (this.jdField_a_of_type_Bckn != null))
+    else if ((paramInt == 22) && (paramKeyEvent.getAction() == 0) && (this.jdField_a_of_type_Bejo != null))
     {
       setCursorVisible(true);
-      paramInt = a().getSpanEnd(this.jdField_a_of_type_Bckn);
+      paramInt = a().getSpanEnd(this.jdField_a_of_type_Bejo);
       setSelection(paramInt, paramInt);
       a();
       return true;
@@ -375,14 +375,14 @@ public class RichStatusEditText
   {
     Object localObject;
     int i;
-    if ((paramInt1 != paramInt2) && (((bckn[])a().getSpans(Math.min(paramInt1, paramInt2), Math.max(paramInt1, paramInt2), bckn.class)).length != 0))
+    if ((paramInt1 != paramInt2) && (((bejo[])a().getSpans(Math.min(paramInt1, paramInt2), Math.max(paramInt1, paramInt2), bejo.class)).length != 0))
     {
       if ((paramInt1 != 0) || (paramInt2 != getText().length())) {
         break label207;
       }
       localObject = a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Int = ((awcn)localObject).jdField_a_of_type_Int;
-      this.b = ((awcn)localObject).b;
+      this.jdField_a_of_type_Int = ((axxq)localObject).jdField_a_of_type_Int;
+      this.b = ((axxq)localObject).b;
       i = 1;
     }
     for (;;)
@@ -407,7 +407,7 @@ public class RichStatusEditText
       if ((paramInt1 == paramInt2) && (paramInt1 == 0))
       {
         localObject = a(0, true, false);
-        if ((localObject != null) && (this.jdField_a_of_type_Awco != null) && (!this.jdField_a_of_type_Awco.a((bckn)localObject)))
+        if ((localObject != null) && (this.jdField_a_of_type_Axxr != null) && (!this.jdField_a_of_type_Axxr.a((bejo)localObject)))
         {
           i = 1;
           continue;
@@ -449,24 +449,24 @@ public class RichStatusEditText
     Object localObject = a(i, false, false);
     if (k == 0)
     {
-      if (this.jdField_a_of_type_Bckn != null) {
+      if (this.jdField_a_of_type_Bejo != null) {
         a();
       }
-      this.jdField_a_of_type_Bckn = ((bckn)localObject);
-      if (this.jdField_a_of_type_Bckn != null) {
+      this.jdField_a_of_type_Bejo = ((bejo)localObject);
+      if (this.jdField_a_of_type_Bejo != null) {
         setCursorVisible(false);
       }
     }
     for (;;)
     {
-      if ((localObject == null) && (this.jdField_a_of_type_Bckn != null)) {
+      if ((localObject == null) && (this.jdField_a_of_type_Bejo != null)) {
         paramMotionEvent.setAction(3);
       }
-      if (this.jdField_a_of_type_Bckn != null)
+      if (this.jdField_a_of_type_Bejo != null)
       {
-        bool = this.jdField_a_of_type_Bckn.a(this, paramMotionEvent);
+        bool = this.jdField_a_of_type_Bejo.a(this, paramMotionEvent);
         if ((k == 1) || (k == 3)) {
-          this.jdField_a_of_type_Bckn = null;
+          this.jdField_a_of_type_Bejo = null;
         }
       }
       if (k == 1)
@@ -489,15 +489,15 @@ public class RichStatusEditText
   
   public boolean performLongClick()
   {
-    if (this.jdField_a_of_type_Bckn != null) {
+    if (this.jdField_a_of_type_Bejo != null) {
       return true;
     }
     return super.performLongClick();
   }
   
-  public void setEditListener(awco paramawco)
+  public void setEditListener(axxr paramaxxr)
   {
-    this.jdField_a_of_type_Awco = paramawco;
+    this.jdField_a_of_type_Axxr = paramaxxr;
   }
   
   public void setSpan(ImageSpan paramImageSpan, int paramInt1, int paramInt2)
@@ -507,7 +507,7 @@ public class RichStatusEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.RichStatusEditText
  * JD-Core Version:    0.7.0.1
  */

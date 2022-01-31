@@ -1,78 +1,42 @@
-import android.app.PendingIntent;
-import android.app.PendingIntent.CanceledException;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment;
 
-class ahmd
-  implements ahly
+public class ahmd
+  extends ahga<ahjq>
 {
-  @Nullable
-  private ahma jdField_a_of_type_Ahma;
-  @NonNull
-  private final PendingIntent jdField_a_of_type_AndroidAppPendingIntent;
-  @NonNull
-  private final WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public ahmd(@NonNull PendingIntent paramPendingIntent, @NonNull QQAppInterface paramQQAppInterface)
+  public ahmd(TroopWithCommonFriendsFragment paramTroopWithCommonFriendsFragment, Context paramContext, int paramInt)
   {
-    this.jdField_a_of_type_AndroidAppPendingIntent = paramPendingIntent;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    super(paramContext, paramInt);
   }
   
-  public void a(@Nullable ahma paramahma)
+  protected void a(ahgk paramahgk, ahjq paramahjq, int paramInt)
   {
-    this.jdField_a_of_type_Ahma = paramahma;
+    TroopWithCommonFriendsFragment.a(this.a, paramahgk, paramahjq, paramInt);
   }
   
-  public boolean isNeedAutoCloseWhenAccountChange()
+  protected ahgk b(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
-    return true;
+    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
+    paramContext = new ahky(paramContext, paramViewGroup);
+    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131372910));
+    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131372900));
+    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131372907));
+    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372905));
+    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372911));
+    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131372909));
+    return paramContext;
   }
-  
-  public void onClose()
-  {
-    if (this.jdField_a_of_type_Ahma == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    ahkd.a(localQQAppInterface, this.jdField_a_of_type_Ahma);
-  }
-  
-  public void onEnter()
-  {
-    if (this.jdField_a_of_type_Ahma == null) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localQQAppInterface == null);
-    try
-    {
-      this.jdField_a_of_type_AndroidAppPendingIntent.send();
-      ahkd.a(localQQAppInterface, this.jdField_a_of_type_Ahma);
-      return;
-    }
-    catch (PendingIntent.CanceledException localCanceledException)
-    {
-      for (;;)
-      {
-        QLog.e("Q.recent.banner", 1, "send pending intent fail with " + this.jdField_a_of_type_AndroidAppPendingIntent + "\r\n" + localCanceledException);
-      }
-    }
-  }
-  
-  public void onOverride() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahmd
  * JD-Core Version:    0.7.0.1
  */

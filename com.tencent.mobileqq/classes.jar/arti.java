@@ -1,14 +1,36 @@
-public abstract interface arti
+import android.content.Context;
+import com.idlefish.flutterboost.interfaces.INativeRouter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+
+public class arti
+  implements INativeRouter
 {
-  public abstract void a(String paramString, int paramInt);
+  private static arti a;
   
-  public abstract void a(boolean paramBoolean);
+  public static arti a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new arti();
+      }
+      return a;
+    }
+    finally {}
+  }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  public void openContainer(Context paramContext, String paramString, Map<String, Object> paramMap1, int paramInt, Map<String, Object> paramMap2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QFlutter.router", 2, String.format("openContainer: %s", new Object[] { paramString }));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arti
  * JD-Core Version:    0.7.0.1
  */

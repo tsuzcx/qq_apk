@@ -1,26 +1,64 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCommentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCommentList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
 public class uoc
-  implements bctk
+  extends ups
 {
-  public uoc(QQStoryMainController paramQQStoryMainController) {}
+  int jdField_a_of_type_Int;
+  public final String a;
+  String b;
   
-  public void a(View paramView, int paramInt)
+  public uoc(unw paramunw, String paramString, int paramInt)
   {
-    if (paramInt == 1) {
-      this.a.jdField_a_of_type_Uoe.a();
+    this.jdField_a_of_type_JavaLangString = ume.a("StorySvc.get_comment_list");
+    this.b = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public upt a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetCommentList localRspGetCommentList = new qqstory_service.RspGetCommentList();
+    try
+    {
+      localRspGetCommentList.mergeFrom(paramArrayOfByte);
+      return new uod(this.jdField_a_of_type_Unw, localRspGetCommentList);
     }
-    while (paramInt != 7) {
-      return;
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wsv.d("Q.qqstory:GetCommentListRequest", "" + paramArrayOfByte);
     }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.m();
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetCommentList localReqGetCommentList = new qqstory_service.ReqGetCommentList();
+    localReqGetCommentList.vid.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqGetCommentList.latest_comment_id.set(this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory:GetCommentListRequest", 2, "getCommentListData by latest_comment_id: " + this.jdField_a_of_type_Int);
+    }
+    return localReqGetCommentList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetCommentListRequest{ vid=" + this.b + ", startCommentID=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uoc
  * JD-Core Version:    0.7.0.1
  */

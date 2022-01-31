@@ -1,32 +1,21 @@
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
-import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
-import com.tencent.smtt.sdk.WebChromeClient;
+import java.util.ArrayList;
+import org.json.JSONObject;
 
-class bfdl
-  extends WebChromeClient
+public class bfdl
 {
-  bfdl(bfdk parambfdk) {}
-  
-  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
-  {
-    if (paramConsoleMessage != null)
-    {
-      if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
-        break label51;
-      }
-      betc.d("AppBrandService", "consoleMessage.message()  line:" + paramConsoleMessage.lineNumber());
-    }
-    for (;;)
-    {
-      return super.onConsoleMessage(paramConsoleMessage);
-      label51:
-      betc.b("AppBrandService", "consoleMessage.message() " + paramConsoleMessage.message());
-    }
-  }
+  public int a;
+  public String a;
+  public ArrayList<bfdj> a;
+  public JSONObject a;
+  public int b = -1;
+  public int c = -1;
+  public int d = 1;
+  public int e = -1;
+  public int f = -1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfdl
  * JD-Core Version:    0.7.0.1
  */

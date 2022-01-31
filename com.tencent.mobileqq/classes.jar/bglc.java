@@ -1,30 +1,53 @@
+import android.content.Context;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+
 public class bglc
 {
-  private static final String[] a = { "B", "K", "M", "G" };
+  public static final String a = AppLoaderFactory.g().getMiniAppEnv().getContext().getFilesDir().getPath() + "/mini/";
+  public static final String b = a + "navigateback_appid";
   
-  public static final String a(long paramLong)
+  public static void a(String paramString)
   {
-    float f1 = 0.0F;
-    int i = 0;
-    while (paramLong >= 1024L)
+    Object localObject = new File(b);
+    do
     {
-      paramLong /= 1024L;
-      f1 = (float)(paramLong % 1024L);
-      i += 1;
-    }
-    if (f1 == 0.0F)
+      try
+      {
+        localObject = new BufferedWriter(new FileWriter((File)localObject));
+        QMLog.e("NavigateBackUtils", "getTagAppid exception!", paramString);
+      }
+      catch (Exception paramString)
+      {
+        try
+        {
+          ((BufferedWriter)localObject).write(paramString);
+          ((BufferedWriter)localObject).close();
+          return;
+        }
+        catch (Exception paramString)
+        {
+          continue;
+        }
+        paramString = paramString;
+        localObject = null;
+      }
+    } while (localObject == null);
+    try
     {
-      f1 = (float)paramLong;
-      return String.valueOf(paramLong) + a[i];
+      ((BufferedWriter)localObject).close();
+      return;
     }
-    f1 /= 1024.0F;
-    float f2 = (float)paramLong;
-    return String.format("%.2f", new Object[] { Float.valueOf(f1 + f2) }) + a[i];
+    catch (Exception paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bglc
  * JD-Core Version:    0.7.0.1
  */

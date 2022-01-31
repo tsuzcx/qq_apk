@@ -14,12 +14,12 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
-import betc;
-import bfda;
-import bfgh;
-import bfgl;
+import bhcq;
+import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
 import com.tencent.qqmini.sdk.runtime.core.page.PageWebview;
+import com.tencent.qqmini.sdk.utils.ColorUtils;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
@@ -28,7 +28,7 @@ public class WebEditText
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
   private int jdField_a_of_type_Int;
-  private bfda jdField_a_of_type_Bfda;
+  private bhcq jdField_a_of_type_Bhcq;
   private String jdField_a_of_type_JavaLangString = "normal";
   private WeakReference<PageWebview> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
@@ -43,7 +43,7 @@ public class WebEditText
   private int e;
   private int f;
   
-  public WebEditText(Context paramContext, bfda parambfda)
+  public WebEditText(Context paramContext, bhcq parambhcq)
   {
     super(paramContext);
     super.setBackgroundDrawable(null);
@@ -54,7 +54,7 @@ public class WebEditText
       super.setLineSpacing(0.0F, 1.0F);
     }
     super.setPadding(0, 0, 0, 0);
-    this.jdField_a_of_type_Bfda = parambfda;
+    this.jdField_a_of_type_Bhcq = parambhcq;
   }
   
   public int a()
@@ -127,7 +127,7 @@ public class WebEditText
         localObject2 = paramString.optJSONObject("style");
         if (localObject2 != null)
         {
-          f1 = bfgl.a((Context)localObject1);
+          f1 = DisplayUtil.getDensity((Context)localObject1);
           this.jdField_a_of_type_Int = ((int)(((JSONObject)localObject2).optInt("width") * f1));
           this.jdField_b_of_type_Int = ((int)(((JSONObject)localObject2).optInt("height") * f1));
           this.jdField_d_of_type_Int = ((int)(((JSONObject)localObject2).optInt("left") * f1));
@@ -140,13 +140,13 @@ public class WebEditText
           this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject2).optString("fontWeight", "normal");
           this.jdField_b_of_type_JavaLangString = ((JSONObject)localObject2).optString("color", "#FFFFFFFF");
           this.jdField_c_of_type_JavaLangString = ((JSONObject)localObject2).optString("backgroundColor", "#FFFFFFFF");
-          this.f = ((int)(bfgl.a(getContext()) * ((JSONObject)localObject2).optInt("marginBottom") + 0.5F));
+          this.f = ((int)(DisplayUtil.getDensity(getContext()) * ((JSONObject)localObject2).optInt("marginBottom") + 0.5F));
           this.jdField_d_of_type_JavaLangString = ((JSONObject)localObject2).optString("textAlign", "left");
         }
         paramNativeViewContainer = paramString.optString("placeholder");
         localObject1 = paramString.optJSONObject("placeholderStyle");
         if (localObject1 != null) {
-          super.setHintTextColor(bfgh.a(((JSONObject)localObject1).optString("color", "#FFFFFFFF")));
+          super.setHintTextColor(ColorUtils.parseColor(((JSONObject)localObject1).optString("color", "#FFFFFFFF")));
         }
         this.jdField_a_of_type_Boolean = paramString.optBoolean("adjustPosition");
         this.jdField_c_of_type_Boolean = paramString.optBoolean("confirmHold", false);
@@ -165,8 +165,8 @@ public class WebEditText
         if (i > 0) {
           setSelection(i);
         }
-        super.setTextColor(bfgh.a(this.jdField_b_of_type_JavaLangString));
-        super.setBackgroundColor(bfgh.a(this.jdField_c_of_type_JavaLangString));
+        super.setTextColor(ColorUtils.parseColor(this.jdField_b_of_type_JavaLangString));
+        super.setBackgroundColor(ColorUtils.parseColor(this.jdField_c_of_type_JavaLangString));
         super.setHint(paramNativeViewContainer);
         if (!"left".equals(this.jdField_d_of_type_JavaLangString)) {
           break label654;
@@ -254,10 +254,10 @@ public class WebEditText
   
   public void onGlobalLayout()
   {
-    if ((this.jdField_a_of_type_Bfda != null) && (this.jdField_a_of_type_Bfda.a(this.e)))
+    if ((this.jdField_a_of_type_Bhcq != null) && (this.jdField_a_of_type_Bhcq.a(this.e)))
     {
       super.requestFocus();
-      betc.a("WebEditText", "showSoftInput for inputId=" + this.e);
+      QMLog.d("WebEditText", "showSoftInput for inputId=" + this.e);
       InputMethodManager localInputMethodManager = (InputMethodManager)super.getContext().getSystemService("input_method");
       if (localInputMethodManager != null) {
         localInputMethodManager.showSoftInput(this, 0);
@@ -267,9 +267,9 @@ public class WebEditText
   
   public boolean onKeyPreIme(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (this.jdField_a_of_type_Bfda != null) && (this.jdField_a_of_type_Bfda.a()))
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (this.jdField_a_of_type_Bhcq != null) && (this.jdField_a_of_type_Bhcq.a()))
     {
-      this.jdField_a_of_type_Bfda.a(true);
+      this.jdField_a_of_type_Bhcq.a(true);
       return true;
     }
     return super.onKeyPreIme(paramInt, paramKeyEvent);
@@ -309,7 +309,7 @@ public class WebEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.widget.WebEditText
  * JD-Core Version:    0.7.0.1
  */

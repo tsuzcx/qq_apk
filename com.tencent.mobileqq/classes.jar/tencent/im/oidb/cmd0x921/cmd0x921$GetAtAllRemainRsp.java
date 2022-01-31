@@ -19,7 +19,7 @@ public final class cmd0x921$GetAtAllRemainRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x921.cmd0x921.GetAtAllRemainRsp
  * JD-Core Version:    0.7.0.1
  */

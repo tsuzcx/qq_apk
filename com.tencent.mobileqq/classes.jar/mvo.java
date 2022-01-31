@@ -1,13 +1,16 @@
-import android.view.View;
-import com.tencent.av.widget.stageview.StageEffectView;
-
-public abstract interface mvo
+public abstract class mvo
 {
-  public abstract void a(StageEffectView paramStageEffectView, View paramView, mvp parammvp);
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mvo
  * JD-Core Version:    0.7.0.1
  */

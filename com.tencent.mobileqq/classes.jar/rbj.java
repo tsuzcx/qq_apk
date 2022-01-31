@@ -1,38 +1,22 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 
 class rbj
-  extends oyd
+  extends RecyclerView.AdapterDataObserver
 {
-  rbj(ram paramram, String paramString, int paramInt1, BaseArticleInfo paramBaseArticleInfo, int paramInt2, View paramView, ViewGroup paramViewGroup)
-  {
-    super(paramString);
-  }
+  private rbj(raw paramraw) {}
   
-  public void a(oxx paramoxx)
+  public void onChanged() {}
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2) {}
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
   {
-    bfwu.a("ReadInJoyBaseAdapter.Viewtype " + this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_Ram.a(this.jdField_a_of_type_Int)) {
-      if ((olo.a(this.jdField_a_of_type_Ram.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) && (this.jdField_a_of_type_Ram.c != 56))
-      {
-        if ((paramoxx instanceof oxz)) {}
-      }
-      else {
-        while ((paramoxx instanceof oxz)) {
-          return;
-        }
-      }
-    }
-    if (paramoxx.a(this.jdField_a_of_type_Int)) {
-      this.jdField_a_of_type_JavaLangObject = paramoxx.a(this.b, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewViewGroup);
-    }
-    bfwu.a();
+    onItemRangeChanged(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rbj
  * JD-Core Version:    0.7.0.1
  */

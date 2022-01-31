@@ -1,35 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class zct
+class zct
+  implements View.OnClickListener
 {
-  private static int a = 3600;
+  zct(zcs paramzcs, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public static void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt >= 0) && (a != paramInt)) {
-      a = paramInt;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Zcs, -2);
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
-  {
-    if ("doOnReconnect".equals(paramString2))
-    {
-      if (a > 0)
-      {
-        long l1 = PatchSharedPreUtil.getLastTimePullPatchReconnect(BaseApplicationImpl.sApplication);
-        long l2 = System.currentTimeMillis();
-        if (Math.abs(l2 - l1) > a * 1000L)
-        {
-          andt.a(paramQQAppInterface, paramString1, paramInt, paramString2);
-          PatchSharedPreUtil.updateLastTimePullPatchReconnect(BaseApplicationImpl.sApplication, l2);
-        }
-      }
-      return;
-    }
-    andt.a(paramQQAppInterface, paramString1, paramInt, paramString2);
+    this.jdField_a_of_type_Zcs.dismiss();
   }
 }
 

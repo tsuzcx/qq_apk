@@ -1,25 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardShortVideoOption;
 
-class arzw
-  extends BroadcastReceiver
+public class arzw
+  implements View.OnClickListener
 {
-  arzw(arzv paramarzv) {}
+  public arzw(ForwardShortVideoOption paramForwardShortVideoOption) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (paramIntent == null) {}
-    while ((paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) || (arzv.a(this.a) == null)) {
-      return;
+    if (this.a.a != null) {
+      ForwardShortVideoOption.a(this.a);
     }
-    arzv.a(this.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arzw
  * JD-Core Version:    0.7.0.1
  */

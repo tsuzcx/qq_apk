@@ -1,25 +1,49 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusAnimationItemData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class rjz
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rjz(ProteusAnimationItemData paramProteusAnimationItemData) {}
+  public static int a;
+  public static int b = 1;
+  public static int c = 2;
+  public static int d = 3;
+  public static int e = 4;
+  public static int f = 1;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
+  public int n;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public rjz(int paramInt1, int paramInt2)
   {
-    ProteusAnimationItemData.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    if (ProteusAnimationItemData.a(this.a).getLayoutParams() != null) {
-      ProteusAnimationItemData.a(this.a).getLayoutParams().height = ProteusAnimationItemData.a(this.a);
+    this.m = paramInt1;
+    this.n = paramInt2;
+  }
+  
+  public HashMap<String, String> a()
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_hitCount", String.valueOf(this.g));
+    localHashMap.put("param_notHitCount", String.valueOf(this.h));
+    localHashMap.put("param_triggerCount", String.valueOf(this.i));
+    localHashMap.put("param_triggerHitCount", String.valueOf(this.j));
+    localHashMap.put("param_distinctTriggerHitCount", String.valueOf(this.k));
+    localHashMap.put("param_realTriggerHitCount", String.valueOf(this.l));
+    localHashMap.put("param_sceneType", String.valueOf(this.m));
+    localHashMap.put("param_strategy", String.valueOf(this.n));
+    if (QLog.isColorLevel()) {
+      QLog.i("wgs", 2, "VideoPreloadReportData getReportMap " + localHashMap.toString());
     }
-    ProteusAnimationItemData.a(this.a).requestLayout();
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rjz
  * JD-Core Version:    0.7.0.1
  */

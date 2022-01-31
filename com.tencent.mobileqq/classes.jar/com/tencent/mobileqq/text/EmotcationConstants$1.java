@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.text;
 
-import ayjv;
+import bahr;
 import java.io.File;
 
 public final class EmotcationConstants$1
@@ -16,12 +16,12 @@ public final class EmotcationConstants$1
     if (this.b.exists()) {
       this.b.delete();
     }
-    ayjv.a(this.c);
+    bahr.a(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.text.EmotcationConstants.1
  * JD-Core Version:    0.7.0.1
  */

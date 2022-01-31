@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import acwi;
-import bbjz;
+import aens;
+import bdit;
 
 class IntimateInfoShareHelper$1$1
   implements Runnable
@@ -10,12 +10,12 @@ class IntimateInfoShareHelper$1$1
   
   public void run()
   {
-    acwi.a(this.a.this$0).a();
+    aens.a(this.a.this$0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoShareHelper.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import acfb;
-import acfc;
-import aiqx;
-import ajxl;
-import ajya;
-import akfv;
-import ambd;
-import ambe;
-import ambg;
-import amcg;
-import amcl;
+import adwl;
+import adwm;
+import akii;
+import aloz;
+import alpo;
+import alxl;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -23,16 +18,21 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aqxi;
-import aqxj;
-import axbv;
-import bayh;
-import bbcm;
-import bbqd;
-import bbwt;
-import bbwu;
-import bbww;
-import bbwz;
+import ansc;
+import ansd;
+import ansf;
+import antf;
+import antk;
+import asnw;
+import asnx;
+import aywz;
+import bcxb;
+import bdbg;
+import bdox;
+import bdvu;
+import bdvv;
+import bdvx;
+import bdwa;
 import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -50,7 +50,7 @@ import com.tencent.mobileqq.vas.PendantInfo;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.util.LRULinkedHashMap;
-import ho;
+import fx;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -61,8 +61,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import mzb;
-import nau;
+import nbv;
+import ndq;
 
 public class TextPreviewSettingActivity
   extends IphoneTitleBarActivity
@@ -71,9 +71,9 @@ public class TextPreviewSettingActivity
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
-  bbwt jdField_a_of_type_Bbwt = new acfc(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
+  bdvu jdField_a_of_type_Bdvu = new adwm(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
   ExtensionInfo jdField_a_of_type_ComTencentMobileqqDataExtensionInfo = null;
-  private ho jdField_a_of_type_Ho;
+  private fx jdField_a_of_type_Fx;
   private String jdField_a_of_type_JavaLangString;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -90,18 +90,18 @@ public class TextPreviewSettingActivity
     Object localObject2 = ((BubbleManager)localObject3).a(this.jdField_a_of_type_Int, true);
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = amcg.a;
+      localObject1 = antf.a;
     }
     boolean bool;
     Object localObject4;
     if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(this.app.getAccount())))
     {
       bool = false;
-      localObject2 = (TextView)findViewById(2131363714);
-      if ((this.jdField_b_of_type_Int <= 0) || (localObject1 == amcg.a)) {
+      localObject2 = (TextView)findViewById(2131363770);
+      if ((this.jdField_b_of_type_Int <= 0) || (localObject1 == antf.a)) {
         break label409;
       }
-      localObject4 = (HashMap)ambe.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
+      localObject4 = (HashMap)ansd.a().jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(this.jdField_a_of_type_Int));
       if ((localObject4 != null) && (((HashMap)localObject4).size() > 0))
       {
         localObject4 = ((HashMap)localObject4).values().iterator();
@@ -110,49 +110,49 @@ public class TextPreviewSettingActivity
           if (!((Iterator)localObject4).hasNext()) {
             break;
           }
-        } while (!((amcl)((Iterator)localObject4).next()).b.equalsIgnoreCase("static"));
+        } while (!((antk)((Iterator)localObject4).next()).b.equalsIgnoreCase("static"));
       }
     }
     for (int i = 1;; i = 0)
     {
       if (i == 0)
       {
-        localObject4 = (TextView)super.findViewById(2131363709);
+        localObject4 = (TextView)super.findViewById(2131363765);
         if (localObject4 != null) {
-          ((TextView)localObject4).setText(getResources().getText(2131690003));
+          ((TextView)localObject4).setText(getResources().getText(2131690050));
         }
       }
-      ((ambg)localObject1).a(this.app, bool, true, false, (View)localObject2, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int);
+      ((ansf)localObject1).a(this.app, bool, true, false, (View)localObject2, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int);
       label224:
-      localObject3 = ((BubbleManager)localObject3).a(((ambg)localObject1).jdField_a_of_type_Int, true);
-      localObject2 = ajya.a(2131714881);
+      localObject3 = ((BubbleManager)localObject3).a(((ansf)localObject1).jdField_a_of_type_Int, true);
+      localObject2 = alpo.a(2131715253);
       if (bool)
       {
         i = Color.parseColor("#FFFFFF");
         label253:
-        localObject1 = new File(((ambg)localObject1).jdField_a_of_type_JavaLangString);
+        localObject1 = new File(((ansf)localObject1).jdField_a_of_type_JavaLangString);
         if ((localObject3 == null) || (!((File)localObject1).exists())) {
           break label549;
         }
-        localObject1 = ((ambd)localObject3).jdField_a_of_type_JavaLangString;
-        i = ((ambd)localObject3).jdField_b_of_type_Int;
+        localObject1 = ((ansc)localObject3).jdField_a_of_type_JavaLangString;
+        i = ((ansc)localObject3).jdField_b_of_type_Int;
       }
       for (;;)
       {
-        localObject2 = (TextView)findViewById(2131363710);
+        localObject2 = (TextView)findViewById(2131363766);
         ((TextView)localObject2).setText((CharSequence)localObject1);
         ((TextView)localObject2).setTextColor(i);
-        this.jdField_a_of_type_Ho = ((ho)this.app.getManager(42));
-        if (this.jdField_a_of_type_Ho != null) {}
-        for (bool = this.jdField_a_of_type_Ho.jdField_a_of_type_Boolean;; bool = false)
+        this.jdField_a_of_type_Fx = ((fx)this.app.getManager(42));
+        if (this.jdField_a_of_type_Fx != null) {}
+        for (bool = this.jdField_a_of_type_Fx.jdField_a_of_type_Boolean;; bool = false)
         {
-          localObject1 = (ImageView)findViewById(2131366561);
+          localObject1 = (ImageView)findViewById(2131366676);
           if (this.jdField_c_of_type_Int > 0)
           {
-            localObject2 = (aqxj)this.app.getManager(219);
-            localObject3 = ((aqxj)localObject2).a(this.jdField_c_of_type_Int);
-            if (((aqxi)localObject3).b != null) {
-              ((ImageView)localObject1).setImageBitmap(((aqxi)localObject3).b);
+            localObject2 = (asnx)this.app.getManager(219);
+            localObject3 = ((asnx)localObject2).a(this.jdField_c_of_type_Int);
+            if (((asnw)localObject3).b != null) {
+              ((ImageView)localObject1).setImageBitmap(((asnw)localObject3).b);
             }
           }
           label409:
@@ -161,11 +161,11 @@ public class TextPreviewSettingActivity
             return;
             bool = true;
             break;
-            ((ambg)localObject1).a(this.app, bool, true, false, (View)localObject2, false);
+            ((ansf)localObject1).a(this.app, bool, true, false, (View)localObject2, false);
             break label224;
             i = Color.parseColor("#808080");
             break label253;
-            ThreadManagerV2.excute(new TextPreviewSettingActivity.3(this, (aqxj)localObject2), 64, null, true);
+            ThreadManagerV2.excute(new TextPreviewSettingActivity.3(this, (asnx)localObject2), 64, null, true);
             return;
           }
           if (this.jdField_d_of_type_Int == -1)
@@ -178,7 +178,7 @@ public class TextPreviewSettingActivity
           }
           for (;;)
           {
-            localObject2 = getResources().getDrawable(2130846155);
+            localObject2 = getResources().getDrawable(2130846534);
             if (this.jdField_d_of_type_Int != 0) {
               ThreadManager.post(new TextPreviewSettingActivity.4(this), 8, null, true);
             }
@@ -194,10 +194,10 @@ public class TextPreviewSettingActivity
     }
   }
   
-  public static void a(int paramInt, QQAppInterface paramQQAppInterface, bbwt parambbwt)
+  public static void a(int paramInt, QQAppInterface paramQQAppInterface, bdvu parambdvu)
   {
-    File localFile = new File(ho.jdField_a_of_type_JavaLangString + File.separatorChar + paramInt + File.separatorChar + "fontname.png");
-    Object localObject2 = bbqd.a("fontAioImg");
+    File localFile = new File(fx.jdField_a_of_type_JavaLangString + File.separatorChar + paramInt + File.separatorChar + "fontname.png");
+    Object localObject2 = bdox.a("fontAioImg");
     Object localObject1 = localObject2;
     if (!TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = ((String)localObject2).replace("[id]", Integer.toString(paramInt));
@@ -207,29 +207,29 @@ public class TextPreviewSettingActivity
     }
     localObject2 = new Bundle();
     ((Bundle)localObject2).putInt("font_id", paramInt);
-    localObject1 = new bbwu((String)localObject1, localFile);
-    ((bbww)paramQQAppInterface.getManager(47)).a(1).a((bbwu)localObject1, parambbwt, (Bundle)localObject2);
+    localObject1 = new bdvv((String)localObject1, localFile);
+    ((bdvx)paramQQAppInterface.getManager(47)).a(1).a((bdvv)localObject1, parambdvu, (Bundle)localObject2);
   }
   
   private void a(AppInterface paramAppInterface)
   {
-    bayh localbayh;
+    bcxb localbcxb;
     if (paramAppInterface != null)
     {
-      localbayh = bayh.a(paramAppInterface, 1, 4, this.jdField_a_of_type_JavaLangString);
+      localbcxb = bcxb.a(paramAppInterface, 1, 4, this.jdField_a_of_type_JavaLangString);
       if ((this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.isPendantValid())) {
         break label139;
       }
       paramAppInterface = ((AvatarPendantManager)paramAppInterface.getManager(46)).a(this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId);
-      if (!bbcm.a(this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId)) {
+      if (!bdbg.a(this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId)) {
         break label115;
       }
       paramAppInterface = paramAppInterface.a(2, PendantInfo.g, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
     }
     for (;;)
     {
-      ((ImageView)findViewById(2131367376)).setImageDrawable(localbayh);
-      ((ImageView)findViewById(2131371365)).setImageDrawable(paramAppInterface);
+      ((ImageView)findViewById(2131367506)).setImageDrawable(localbcxb);
+      ((ImageView)findViewById(2131371681)).setImageDrawable(paramAppInterface);
       return;
       label115:
       paramAppInterface = paramAppInterface.a(1, PendantInfo.g, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
@@ -245,7 +245,7 @@ public class TextPreviewSettingActivity
     this.jdField_a_of_type_Int = localIntent.getIntExtra("bubbleId", 0);
     this.jdField_b_of_type_Int = localIntent.getIntExtra("bubbleDiyId", 0);
     if (this.jdField_b_of_type_Int == 0) {
-      this.jdField_b_of_type_Int = akfv.b(localIntent.getLongExtra("bubbleId", 0L));
+      this.jdField_b_of_type_Int = alxl.b(localIntent.getLongExtra("bubbleId", 0L));
     }
     this.jdField_c_of_type_Int = localIntent.getIntExtra("HiBoomId", 0);
     this.jdField_d_of_type_Int = localIntent.getIntExtra("fontId", 0);
@@ -256,10 +256,10 @@ public class TextPreviewSettingActivity
   
   private void c()
   {
-    Object localObject1 = (axbv)this.app.getManager(12);
+    Object localObject1 = (aywz)this.app.getManager(12);
     int i;
     if (localObject1 != null) {
-      if (((axbv)localObject1).a("100005.100006") != -1) {
+      if (((aywz)localObject1).a("100005.100006") != -1) {
         i = 1;
       }
     }
@@ -284,8 +284,8 @@ public class TextPreviewSettingActivity
       if (this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo != null)
       {
         l = this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId;
-        str = bbqd.a(this, "pendantDetail", String.valueOf(l), "mvip.gexinghua.mobile.faceaddon.client_tab_store");
-        localObject2 = aiqx.a().a;
+        str = bdox.a(this, "pendantDetail", String.valueOf(l), "mvip.gexinghua.mobile.faceaddon.client_tab_store");
+        localObject2 = akii.a().a;
         localObject3 = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("_");
         if (this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo == null) {
           break label369;
@@ -335,7 +335,7 @@ public class TextPreviewSettingActivity
         localObject1 = URLEncoder.encode((String)localObject1);
       }
       label554:
-      for (localObject1 = mzb.a(str, "stickerInfo=" + (String)localObject1);; localObject1 = str)
+      for (localObject1 = nbv.a(str, "stickerInfo=" + (String)localObject1);; localObject1 = str)
       {
         localIntent.putExtra("url", (String)localObject1);
         localIntent.putExtra("business", 512L);
@@ -357,10 +357,10 @@ public class TextPreviewSettingActivity
   private void d()
   {
     Intent localIntent = new Intent(this, QQBrowserActivity.class);
-    Object localObject1 = (axbv)this.app.getManager(12);
+    Object localObject1 = (aywz)this.app.getManager(12);
     boolean bool;
     if (localObject1 != null) {
-      if (((axbv)localObject1).a("100005.100003") != -1) {
+      if (((aywz)localObject1).a("100005.100003") != -1) {
         bool = true;
       }
     }
@@ -369,15 +369,15 @@ public class TextPreviewSettingActivity
       localIntent.putExtra("updateFlag", bool);
       localIntent.putExtra("scrollToBubble", true);
       localIntent.putExtra("individuation_url_type", 40301);
-      Object localObject2 = bbqd.a(this, "bubbleDetail", String.valueOf(this.jdField_a_of_type_Int), "mvip.gongneng.android.bubble.index_dynamic_tab");
-      localObject1 = ambe.a();
+      Object localObject2 = bdox.a(this, "bubbleDetail", String.valueOf(this.jdField_a_of_type_Int), "mvip.gongneng.android.bubble.index_dynamic_tab");
+      localObject1 = ansd.a();
       Object localObject4 = this.jdField_a_of_type_JavaLangString + "_" + this.jdField_b_of_type_Int;
       Object localObject3 = localObject2;
       String str;
       if (this.jdField_b_of_type_Int > 0)
       {
-        str = (String)((ambe)localObject1).jdField_a_of_type_JavaUtilMap.get(localObject4);
-        localObject4 = (HashMap)((ambe)localObject1).b.get(localObject4);
+        str = (String)((ansd)localObject1).jdField_a_of_type_JavaUtilMap.get(localObject4);
+        localObject4 = (HashMap)((ansd)localObject1).b.get(localObject4);
         localObject1 = localObject2;
         if (localObject4 != null)
         {
@@ -387,22 +387,22 @@ public class TextPreviewSettingActivity
             localObject3 = (String)((HashMap)localObject4).get("TL");
             localObject1 = localObject2;
             if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-              localObject1 = mzb.a((String)localObject2, "tl=" + (String)localObject3);
+              localObject1 = nbv.a((String)localObject2, "tl=" + (String)localObject3);
             }
             localObject3 = (String)((HashMap)localObject4).get("TR");
             localObject2 = localObject1;
             if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-              localObject2 = mzb.a((String)localObject1, "tr=" + (String)localObject3);
+              localObject2 = nbv.a((String)localObject1, "tr=" + (String)localObject3);
             }
             localObject1 = (String)((HashMap)localObject4).get("BL");
             localObject3 = localObject2;
             if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-              localObject3 = mzb.a((String)localObject2, "bl=" + (String)localObject1);
+              localObject3 = nbv.a((String)localObject2, "bl=" + (String)localObject1);
             }
             localObject2 = (String)((HashMap)localObject4).get("BR");
             localObject1 = localObject3;
             if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              localObject1 = mzb.a((String)localObject3, "br=" + (String)localObject2);
+              localObject1 = nbv.a((String)localObject3, "br=" + (String)localObject2);
             }
           }
         }
@@ -413,10 +413,10 @@ public class TextPreviewSettingActivity
       {
         try
         {
-          localObject2 = mzb.a((String)localObject1, "diyText=" + URLEncoder.encode(str, "UTF-8"));
+          localObject2 = nbv.a((String)localObject1, "diyText=" + URLEncoder.encode(str, "UTF-8"));
           localObject1 = localObject2;
           if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.i("TextPreviewSettingActivity", 2, "TextPreviewActivity bubble url: " + nau.b((String)localObject1, new String[0]));
+            com.tencent.qphone.base.util.QLog.i("TextPreviewSettingActivity", 2, "TextPreviewActivity bubble url: " + ndq.b((String)localObject1, new String[0]));
           }
           VasWebviewUtil.openQQBrowserWithoutAD(this, (String)localObject1, 64L, localIntent, false, -1);
           localObject1 = this.jdField_a_of_type_JavaLangString;
@@ -451,14 +451,14 @@ public class TextPreviewSettingActivity
       ((Intent)localObject).putExtra("fontId", this.jdField_c_of_type_Int);
       ((Intent)localObject).putExtra("fromAIO", true);
       ((Intent)localObject).putExtra("individuation_url_type", 40301);
-      VasWebviewUtil.openQQBrowserWithoutAD(this, bbqd.a(this, "fontDetail", String.valueOf(this.jdField_c_of_type_Int), "mvip.gexinghua.mobile.font.client_tab_store"), 4096L, (Intent)localObject, false, -1);
+      VasWebviewUtil.openQQBrowserWithoutAD(this, bdox.a(this, "fontDetail", String.valueOf(this.jdField_c_of_type_Int), "mvip.gexinghua.mobile.font.client_tab_store"), 4096L, (Intent)localObject, false, -1);
       VasWebviewUtil.reportCommercialDrainage(this.app.c(), "HighFont", "ClickDetail", "", 1, 0, 0, "", "" + this.jdField_c_of_type_Int, "");
       return;
     }
-    Object localObject = (axbv)this.app.getManager(12);
+    Object localObject = (aywz)this.app.getManager(12);
     boolean bool;
     if (localObject != null) {
-      if (((axbv)localObject).a("100005.100011") != -1) {
+      if (((aywz)localObject).a("100005.100011") != -1) {
         bool = true;
       }
     }
@@ -469,7 +469,7 @@ public class TextPreviewSettingActivity
       ((Intent)localObject).putExtra("fontId", this.jdField_d_of_type_Int);
       ((Intent)localObject).putExtra("fromAIO", true);
       ((Intent)localObject).putExtra("individuation_url_type", 40301);
-      VasWebviewUtil.openQQBrowserWithoutAD(this, bbqd.a(this, "fontDetail", String.valueOf(this.jdField_d_of_type_Int), "mvip.gexinghua.mobile.font.client_tab_store"), 4096L, (Intent)localObject, false, -1);
+      VasWebviewUtil.openQQBrowserWithoutAD(this, bdox.a(this, "fontDetail", String.valueOf(this.jdField_d_of_type_Int), "mvip.gexinghua.mobile.font.client_tab_store"), 4096L, (Intent)localObject, false, -1);
       localObject = this.jdField_a_of_type_JavaLangString;
       if (bool) {}
       for (int i = 1;; i = 0)
@@ -491,7 +491,7 @@ public class TextPreviewSettingActivity
     String str1;
     if (this.f == 0)
     {
-      str2 = bbqd.a(this, "aioNoMagicFontEntrance", null);
+      str2 = bdox.a(this, "aioNoMagicFontEntrance", null);
       str1 = str2;
       if (TextUtils.isEmpty(str2)) {
         str1 = "https://gxh.vip.qq.com/club/zb/font_effect_detail/html/aio-font-big.html?id=[id]&_wv=1027&_wvx=3";
@@ -509,7 +509,7 @@ public class TextPreviewSettingActivity
     {
       VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_JavaLangString, "bigtextpage", "font_size", "", 1, 0, 0, "", String.valueOf(this.f), "");
       return;
-      str2 = bbqd.a(this, "aioMagicFontEntrance", null);
+      str2 = bdox.a(this, "aioMagicFontEntrance", null);
       str1 = str2;
       if (!TextUtils.isEmpty(str2)) {
         break;
@@ -523,30 +523,30 @@ public class TextPreviewSettingActivity
   
   void a(int paramInt)
   {
-    Object localObject2 = (ho)this.app.getManager(42);
+    Object localObject2 = (fx)this.app.getManager(42);
     int i = paramInt;
     if (paramInt == 0) {
-      i = ((ho)localObject2).jdField_c_of_type_Int;
+      i = ((fx)localObject2).jdField_c_of_type_Int;
     }
-    Object localObject1 = getResources().getDrawable(2130846239);
+    Object localObject1 = getResources().getDrawable(2130846618);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    Object localObject3 = getResources().getDrawable(2130846239);
+    Object localObject3 = getResources().getDrawable(2130846618);
     localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject3);
     localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject3);
     switch (i)
     {
     default: 
-      localObject1 = (String)getResources().getText(2131690005);
-      localObject1 = getResources().getDrawable(2130846255);
+      localObject1 = (String)getResources().getText(2131690052);
+      localObject1 = getResources().getDrawable(2130846634);
     }
     for (;;)
     {
-      ((ImageView)findViewById(2131369730)).setImageDrawable((Drawable)localObject1);
+      ((ImageView)findViewById(2131369993)).setImageDrawable((Drawable)localObject1);
       return;
-      localObject3 = ((ho)localObject2).h;
+      localObject3 = ((fx)localObject2).h;
       try
       {
-        localObject2 = URLDrawable.getDrawable(((ho)localObject2).i, localURLDrawableOptions);
+        localObject2 = URLDrawable.getDrawable(((fx)localObject2).i, localURLDrawableOptions);
         localObject1 = localObject2;
       }
       catch (Exception localException)
@@ -567,7 +567,7 @@ public class TextPreviewSettingActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131558581);
+    super.setContentView(2131558612);
     paramBundle = getAppInterface();
     if (paramBundle == null)
     {
@@ -577,20 +577,20 @@ public class TextPreviewSettingActivity
       return false;
     }
     b();
-    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo = ((ajxl)paramBundle.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
-    setTitle(ajya.a(2131714872));
-    setContentBackgroundResource(2130838514);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371344);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131363704);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131366543);
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131369728);
+    this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo = ((aloz)paramBundle.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
+    setTitle(alpo.a(2131715244));
+    setContentBackgroundResource(2130838591);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131371660);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131363760);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131366651);
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131369991);
     a(paramBundle);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_d_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidOsHandler = new acfb(this, Looper.getMainLooper());
-    this.jdField_a_of_type_Ho = ((ho)paramBundle.getManager(42));
+    this.jdField_a_of_type_AndroidOsHandler = new adwl(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Fx = ((fx)paramBundle.getManager(42));
     a(this.f);
     return true;
   }
@@ -603,10 +603,10 @@ public class TextPreviewSettingActivity
     if (localObject != null) {
       ((WebProcessManager)localObject).e();
     }
-    localObject = ambe.a();
+    localObject = ansd.a();
     String str = this.jdField_a_of_type_JavaLangString + "_" + this.jdField_b_of_type_Int;
-    if ((this.jdField_b_of_type_Int > 0) && ((!((ambe)localObject).jdField_a_of_type_JavaUtilMap.containsKey(str)) || (!((ambe)localObject).b.containsKey(str)))) {
-      ThreadManager.post(new TextPreviewSettingActivity.2(this, (ambe)localObject, str), 5, null, false);
+    if ((this.jdField_b_of_type_Int > 0) && ((!((ansd)localObject).jdField_a_of_type_JavaUtilMap.containsKey(str)) || (!((ansd)localObject).b.containsKey(str)))) {
+      ThreadManager.post(new TextPreviewSettingActivity.2(this, (ansd)localObject, str), 5, null, false);
     }
   }
   
@@ -616,16 +616,16 @@ public class TextPreviewSettingActivity
     {
     default: 
       return;
-    case 2131371344: 
-    case 2131371352: 
+    case 2131371660: 
+    case 2131371668: 
       c();
       return;
-    case 2131363704: 
-    case 2131363709: 
+    case 2131363760: 
+    case 2131363765: 
       d();
       return;
-    case 2131366543: 
-    case 2131366553: 
+    case 2131366651: 
+    case 2131366668: 
       e();
       return;
     }
@@ -634,7 +634,7 @@ public class TextPreviewSettingActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewSettingActivity
  * JD-Core Version:    0.7.0.1
  */

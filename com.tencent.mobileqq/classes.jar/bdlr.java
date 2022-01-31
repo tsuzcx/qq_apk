@@ -1,1507 +1,633 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Resources;
-import android.graphics.Color;
 import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.business.base.appreport.AppReportReceiver;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.MyAppApi.1;
-import com.tencent.open.downloadnew.MyAppApi.13;
-import com.tencent.open.downloadnew.MyAppApi.14;
-import com.tencent.open.downloadnew.MyAppApi.17;
-import com.tencent.open.downloadnew.MyAppApi.18;
-import com.tencent.open.downloadnew.MyAppApi.19;
-import com.tencent.open.downloadnew.MyAppApi.3;
-import com.tencent.open.downloadnew.MyAppApi.4;
-import com.tencent.open.downloadnew.MyAppApi.5;
-import com.tencent.open.downloadnew.MyAppApi.7;
-import com.tencent.open.downloadnew.MyAppApi.8;
-import com.tencent.open.downloadnew.MyAppApi.9;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmassistant.st.SDKReportManager2;
-import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantsdk.ITMAssistantCallBackListener;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBTaskInfo;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
-import com.tencent.tmassistantsdk.internal.logreport.OuterCallReportModel;
-import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Map;
-import mqq.app.AppActivity;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.Proxy.Type;
+import java.net.URL;
 
 public class bdlr
 {
-  protected static bdlr a;
-  private final int a;
-  protected long a;
-  protected DialogInterface.OnClickListener a;
-  public bdmc a;
-  protected bdme a;
-  public bdmf a;
-  protected ITMAssistantCallBackListener a;
-  public TMAssistantCallYYBParamStruct a;
-  protected TMAssistantBaseCallYYB a;
-  public String a;
-  protected boolean a;
-  protected long b;
-  TMAssistantCallYYBParamStruct b;
-  protected boolean b;
-  protected final long c = 180000L;
-  protected boolean c;
-  public long d;
-  boolean d;
-  public boolean e;
-  private boolean f;
-  private boolean g;
+  private static Uri a;
+  public static String a;
+  public static String b = "ctwap";
+  public static String c = "cmnet";
+  public static String d = "cmwap";
+  public static String e = "uninet";
+  public static String f = "uniwap";
+  public static String g = "3gnet";
+  public static String h = "3gwap";
   
-  protected bdlr()
+  static
   {
-    this.jdField_a_of_type_ComTencentTmassistantsdkITMAssistantCallBackListener = new bdmd(this);
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 7090000;
+    jdField_a_of_type_AndroidNetUri = Uri.parse("content://telephony/carriers/preferapn");
+    jdField_a_of_type_JavaLangString = "ctnet";
+  }
+  
+  public static int a(byte paramByte)
+  {
+    return paramByte & 0xFF;
+  }
+  
+  public static long a(byte[] paramArrayOfByte, int paramInt)
+  {
+    if (paramArrayOfByte == null) {
+      return 0L;
+    }
+    return ((paramArrayOfByte[paramInt] & 0xFF) << 24) + ((paramArrayOfByte[(paramInt + 1)] & 0xFF) << 16) + ((paramArrayOfByte[(paramInt + 2)] & 0xFF) << 8) + ((paramArrayOfByte[(paramInt + 3)] & 0xFF) << 0);
+  }
+  
+  public static String a(long paramLong)
+  {
+    StringBuffer localStringBuffer = new StringBuffer(16);
+    int i = 3;
+    while (i >= 0)
+    {
+      localStringBuffer.append(0xFF & paramLong % 256L);
+      paramLong /= 256L;
+      if (i != 0) {
+        localStringBuffer.append('.');
+      }
+      i -= 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(String paramString)
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    if (paramString == null) {
+      return "";
+    }
+    paramString = paramString.toCharArray();
+    int j = paramString.length;
+    if (j == 0) {
+      return "";
+    }
+    int i = 0;
+    while (i < j)
+    {
+      if (paramString[i] == '%')
+      {
+        String str = String.valueOf(paramString, i + 1, 2);
+        try
+        {
+          int k = Integer.parseInt(str, 16);
+          c1 = (char)k;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            char c1 = ' ';
+          }
+        }
+        localStringBuffer.append(c1);
+        i += 3;
+        continue;
+      }
+      localStringBuffer.append(paramString[i]);
+      i += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    int i = paramString1.indexOf(paramString2, paramInt);
+    if (i == -1) {
+      return paramString1.substring(paramInt);
+    }
+    int j = paramString2.length();
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramString1.substring(paramInt, i)).append(paramString3).append(a(paramString1, i + j, paramString2, paramString3));
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null) || (paramString1.length() == 0) || (paramString2.length() == 0)) {
+      return "";
+    }
+    int i = paramString1.length();
+    int j = paramString2.indexOf(paramString1 + "=");
+    int k = paramString2.indexOf("&" + paramString1 + "=");
+    boolean bool = paramString2.startsWith(paramString1 + "=");
+    if (j != -1) {
+      i = i + j + 1;
+    }
+    for (;;)
+    {
+      j = paramString2.indexOf('&', i);
+      if (j != -1) {
+        break label172;
+      }
+      return paramString2.substring(i);
+      if (k != -1)
+      {
+        i = i + (k + 1) + 1;
+      }
+      else
+      {
+        if (!bool) {
+          break;
+        }
+        i += 1;
+      }
+    }
+    return "";
+    label172:
+    return paramString2.substring(i, j);
+  }
+  
+  public static String a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length * 2);
+    int i = 0;
+    if (i < paramArrayOfByte.length)
+    {
+      int k = paramArrayOfByte[i];
+      int j = (k & 0xF0) >>> 4;
+      k &= 0xF;
+      char c1;
+      if (j > 9)
+      {
+        c1 = (char)(j - 10 + 65);
+        label66:
+        if (k <= 9) {
+          break label111;
+        }
+      }
+      label111:
+      for (char c2 = (char)(k - 10 + 65);; c2 = (char)(k + 48))
+      {
+        localStringBuffer.append(c1).append(c2);
+        i += 1;
+        break;
+        c1 = (char)(j + 48);
+        break label66;
+      }
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    return b(paramArrayOfByte, paramInt1, paramInt2);
+  }
+  
+  public static HttpURLConnection a(String paramString1, String paramString2, int paramInt)
+  {
+    paramString2 = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(paramString2, paramInt));
+    return (HttpURLConnection)new URL(paramString1).openConnection(paramString2);
+  }
+  
+  public static short a(byte[] paramArrayOfByte, int paramInt)
+  {
+    if (paramArrayOfByte == null) {
+      return 0;
+    }
+    return (short)(((paramArrayOfByte[paramInt] & 0xFF) << 8) + ((paramArrayOfByte[(paramInt + 1)] & 0xFF) << 0));
+  }
+  
+  public static void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString)
+  {
+    a(paramInt1, paramArrayOfByte, paramInt2, paramInt3, paramString);
+  }
+  
+  public static void a(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2, String paramString)
+  {
+    int i = 0;
     try
     {
-      a();
-      d();
-      i();
+      byte[] arrayOfByte1 = new byte[paramInt2];
+      byte[] arrayOfByte2 = (paramLong + "").getBytes(paramString);
+      while (i < arrayOfByte1.length)
+      {
+        arrayOfByte1[i] = " ".getBytes(paramString)[0];
+        i += 1;
+      }
+      a(arrayOfByte1, paramInt2 - arrayOfByte2.length, arrayOfByte2, arrayOfByte2.length);
+      a(paramArrayOfByte, paramInt1, arrayOfByte1, arrayOfByte1.length);
       return;
     }
-    catch (Throwable localThrowable)
+    catch (Exception paramArrayOfByte) {}
+  }
+  
+  public static void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    paramArrayOfByte[paramInt1] = ((byte)(paramInt2 >> 8));
+    paramArrayOfByte[(paramInt1 + 1)] = ((byte)paramInt2);
+  }
+  
+  public static void a(byte[] paramArrayOfByte, int paramInt, long paramLong)
+  {
+    paramArrayOfByte[paramInt] = ((byte)(int)(paramLong >> 24));
+    paramArrayOfByte[(paramInt + 1)] = ((byte)(int)(paramLong >> 16));
+    paramArrayOfByte[(paramInt + 2)] = ((byte)(int)(paramLong >> 8));
+    paramArrayOfByte[(paramInt + 3)] = ((byte)(int)paramLong);
+  }
+  
+  public static void a(byte[] paramArrayOfByte, int paramInt, short paramShort)
+  {
+    paramArrayOfByte[paramInt] = ((byte)(paramShort >> 8));
+    paramArrayOfByte[(paramInt + 1)] = ((byte)paramShort);
+  }
+  
+  public static void a(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2)
+  {
+    a(paramArrayOfByte1, paramInt1, paramArrayOfByte2, 0, paramInt2);
+  }
+  
+  public static void a(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
+  {
+    System.arraycopy(paramArrayOfByte2, paramInt2, paramArrayOfByte1, paramInt1, paramInt3);
+  }
+  
+  public static byte[] a(int paramInt)
+  {
+    int i = (byte)(paramInt >> 24 & 0xFF);
+    int j = (byte)(paramInt >> 16 & 0xFF);
+    int k = (byte)(paramInt >> 8 & 0xFF);
+    return new byte[] { (byte)(paramInt & 0xFF), k, j, i };
+  }
+  
+  public static byte[] a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    int i = paramString.length();
+    paramString = paramString.toUpperCase();
+    if ((i % 2 != 0) || (i == 0)) {
+      return null;
+    }
+    int k = i / 2;
+    byte[] arrayOfByte = new byte[k];
+    i = 0;
+    if (i < k)
     {
+      int j = paramString.charAt(i * 2);
+      int m = paramString.charAt(i * 2 + 1);
+      if ((j >= 48) && (j <= 57))
+      {
+        j = (j - 48 << 4) + 0;
+        label84:
+        if ((m < 48) || (m > 57)) {
+          break label148;
+        }
+        j += m - 48;
+      }
       for (;;)
       {
-        bdii.c("MyAppApi", "MyAppApi init>>>", localThrowable);
+        arrayOfByte[i] = ((byte)j);
+        i += 1;
+        break;
+        if ((j >= 65) && (j <= 70))
+        {
+          j = (j - 65 + 10 << 4) + 0;
+          break label84;
+        }
+        return null;
+        label148:
+        if ((m < 65) || (m > 70)) {
+          break label176;
+        }
+        j += m - 65 + 10;
       }
+      label176:
+      return null;
     }
+    return arrayOfByte;
   }
   
-  private static Uri a(OuterCallReportModel paramOuterCallReportModel)
+  public static byte[] a(short paramShort)
   {
-    return Uri.parse("tmast://sdk_wake?jump_code=" + bdjq.a(bcyb.a().a(), null).a("Common_jump_code") + "&outerCallTime=" + paramOuterCallReportModel.mOuterCallTime + "&outerCallType=" + paramOuterCallReportModel.mOuterCallType + "&outerCallMode=" + paramOuterCallReportModel.mOuterCallMode + "&hostpname=com.tencent.mobileqq&hostversion=" + GlobalUtil.getAppVersionCode(bcyb.a().a()));
+    int i = (byte)(paramShort & 0xFF);
+    return new byte[] { (byte)(paramShort >> 8 & 0xFF), i };
   }
   
-  public static bdlr a()
+  public static long b(byte[] paramArrayOfByte, int paramInt)
   {
-    try
+    return ((paramArrayOfByte[(paramInt + 4)] & 0xFF) << 56) + ((paramArrayOfByte[(paramInt + 5)] & 0xFF) << 48) + ((paramArrayOfByte[(paramInt + 6)] & 0xFF) << 40) + ((paramArrayOfByte[(paramInt + 7)] & 0xFF) << 32) + ((paramArrayOfByte[paramInt] & 0xFF) << 24) + ((paramArrayOfByte[(paramInt + 1)] & 0xFF) << 16) + ((paramArrayOfByte[(paramInt + 2)] & 0xFF) << 8) + (paramArrayOfByte[(paramInt + 3)] & 0xFF);
+  }
+  
+  public static String b(long paramLong)
+  {
+    StringBuffer localStringBuffer = new StringBuffer(16);
+    int i = 3;
+    while (i >= 0)
     {
-      if (jdField_a_of_type_Bdlr == null) {
-        jdField_a_of_type_Bdlr = new bdlr();
+      localStringBuffer = localStringBuffer.insert(0, 0xFF & paramLong % 256L);
+      paramLong /= 256L;
+      if (i != 0) {
+        localStringBuffer.insert(0, '.');
       }
-      c();
-      bdlr localbdlr = jdField_a_of_type_Bdlr;
-      return localbdlr;
+      i -= 1;
     }
-    finally {}
+    return localStringBuffer.toString();
   }
   
-  public static int b()
+  public static String b(String paramString)
   {
-    return TMAssistantCallYYB_V2.getQQDownloadApiLevel(BaseApplicationImpl.getApplication());
-  }
-  
-  @NonNull
-  private static OuterCallReportModel b()
-  {
-    OuterCallReportModel localOuterCallReportModel = OuterCallReportModel.getDefaultModel();
-    localOuterCallReportModel.mOuterCallMode = 0;
-    localOuterCallReportModel.mOuterCallType = 1;
-    localOuterCallReportModel.mOuterCallTime = System.currentTimeMillis();
-    localOuterCallReportModel.mComponentName = "SplashActivity";
-    return localOuterCallReportModel;
-  }
-  
-  public static void c()
-  {
-    ThreadManager.executeOnSubThread(new MyAppApi.1());
-  }
-  
-  private static void c(OuterCallReportModel paramOuterCallReportModel)
-  {
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.setPackage("com.tencent.android.qqdownloader");
-    localIntent.setData(a(paramOuterCallReportModel));
-    localIntent.addFlags(32768);
-    if (!(bcyb.a().a() instanceof Activity)) {
-      localIntent.addFlags(268435456);
-    }
-    try
+    if (paramString == null) {}
+    for (;;)
     {
-      bcyb.a().a().startActivity(localIntent);
-      return;
+      return "nomatch";
+      try
+      {
+        if (paramString.startsWith(jdField_a_of_type_JavaLangString)) {
+          return jdField_a_of_type_JavaLangString;
+        }
+        if (paramString.startsWith(b)) {
+          return b;
+        }
+        if (paramString.startsWith(c)) {
+          return c;
+        }
+        if (paramString.startsWith(d)) {
+          return d;
+        }
+        if (paramString.startsWith(e)) {
+          return e;
+        }
+        if (paramString.startsWith(f)) {
+          return f;
+        }
+        if (paramString.startsWith(g)) {
+          return g;
+        }
+        if (paramString.startsWith(h))
+        {
+          paramString = h;
+          return paramString;
+        }
+      }
+      catch (Exception paramString) {}
     }
-    catch (SecurityException paramOuterCallReportModel)
-    {
-      paramOuterCallReportModel.printStackTrace();
-      return;
-    }
-    catch (ActivityNotFoundException paramOuterCallReportModel)
-    {
-      bdii.e("TAMST_WAKE", "activity not found error:" + paramOuterCallReportModel.getMessage());
-    }
-  }
-  
-  private static void d(OuterCallReportModel paramOuterCallReportModel)
-  {
-    GlobalUtil.getInstance().setContext(bcyb.a().a());
-    SDKReportManager2.getInstance().postReport(15, paramOuterCallReportModel.toString());
+    return "nomatch";
   }
   
   /* Error */
-  public static boolean d()
+  public static String b(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 142	bdlr:jdField_a_of_type_Bdlr	Lbdlr;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnull +10 -> 18
-    //   11: iconst_1
-    //   12: istore_0
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: iload_0
-    //   17: ireturn
-    //   18: iconst_0
-    //   19: istore_0
-    //   20: goto -7 -> 13
-    //   23: astore_1
-    //   24: ldc 2
-    //   26: monitorexit
-    //   27: aload_1
-    //   28: athrow
+    //   0: aconst_null
+    //   1: astore 6
+    //   3: aconst_null
+    //   4: astore 5
+    //   6: aconst_null
+    //   7: astore_3
+    //   8: ldc 90
+    //   10: astore 4
+    //   12: iload_2
+    //   13: iconst_2
+    //   14: iadd
+    //   15: newarray byte
+    //   17: astore 7
+    //   19: aload 7
+    //   21: iconst_0
+    //   22: iload_2
+    //   23: bipush 8
+    //   25: ishr
+    //   26: i2b
+    //   27: bastore
+    //   28: aload 7
+    //   30: iconst_1
+    //   31: iload_2
+    //   32: i2b
+    //   33: bastore
+    //   34: aload_0
+    //   35: iload_1
+    //   36: aload 7
+    //   38: iconst_2
+    //   39: iload_2
+    //   40: invokestatic 209	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
+    //   43: new 231	java/io/ByteArrayInputStream
+    //   46: dup
+    //   47: aload 7
+    //   49: invokespecial 234	java/io/ByteArrayInputStream:<init>	([B)V
+    //   52: astore_0
+    //   53: new 236	java/io/DataInputStream
+    //   56: dup
+    //   57: aload_0
+    //   58: invokespecial 239	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   61: astore_3
+    //   62: aload_3
+    //   63: invokevirtual 242	java/io/DataInputStream:readUTF	()Ljava/lang/String;
+    //   66: astore 5
+    //   68: aload 5
+    //   70: astore 4
+    //   72: aload_3
+    //   73: ifnull +7 -> 80
+    //   76: aload_3
+    //   77: invokevirtual 245	java/io/DataInputStream:close	()V
+    //   80: aload 4
+    //   82: astore_3
+    //   83: aload_0
+    //   84: ifnull +10 -> 94
+    //   87: aload_0
+    //   88: invokevirtual 246	java/io/ByteArrayInputStream:close	()V
+    //   91: aload 4
+    //   93: astore_3
+    //   94: aload_3
+    //   95: areturn
+    //   96: astore_0
+    //   97: aconst_null
+    //   98: astore 5
+    //   100: aload_3
+    //   101: astore_0
+    //   102: aload 5
+    //   104: astore_3
+    //   105: aload_3
+    //   106: ifnull +7 -> 113
+    //   109: aload_3
+    //   110: invokevirtual 245	java/io/DataInputStream:close	()V
+    //   113: aload 4
+    //   115: astore_3
+    //   116: aload_0
+    //   117: ifnull -23 -> 94
+    //   120: aload_0
+    //   121: invokevirtual 246	java/io/ByteArrayInputStream:close	()V
+    //   124: ldc 90
+    //   126: areturn
+    //   127: astore_0
+    //   128: ldc 90
+    //   130: areturn
+    //   131: astore_0
+    //   132: aconst_null
+    //   133: astore_0
+    //   134: aload 6
+    //   136: astore_3
+    //   137: aload_3
+    //   138: ifnull +7 -> 145
+    //   141: aload_3
+    //   142: invokevirtual 245	java/io/DataInputStream:close	()V
+    //   145: aload 4
+    //   147: astore_3
+    //   148: aload_0
+    //   149: ifnull -55 -> 94
+    //   152: aload_0
+    //   153: invokevirtual 246	java/io/ByteArrayInputStream:close	()V
+    //   156: ldc 90
+    //   158: areturn
+    //   159: astore_0
+    //   160: ldc 90
+    //   162: areturn
+    //   163: astore_3
+    //   164: aconst_null
+    //   165: astore_0
+    //   166: aload 5
+    //   168: astore 4
+    //   170: aload 4
+    //   172: ifnull +8 -> 180
+    //   175: aload 4
+    //   177: invokevirtual 245	java/io/DataInputStream:close	()V
+    //   180: aload_0
+    //   181: ifnull +7 -> 188
+    //   184: aload_0
+    //   185: invokevirtual 246	java/io/ByteArrayInputStream:close	()V
+    //   188: aload_3
+    //   189: athrow
+    //   190: astore_3
+    //   191: goto -111 -> 80
+    //   194: astore_0
+    //   195: aload 4
+    //   197: areturn
+    //   198: astore_3
+    //   199: goto -86 -> 113
+    //   202: astore_3
+    //   203: goto -58 -> 145
+    //   206: astore 4
+    //   208: goto -28 -> 180
+    //   211: astore_0
+    //   212: goto -24 -> 188
+    //   215: astore_3
+    //   216: aload 5
+    //   218: astore 4
+    //   220: goto -50 -> 170
+    //   223: astore 5
+    //   225: aload_3
+    //   226: astore 4
+    //   228: aload 5
+    //   230: astore_3
+    //   231: goto -61 -> 170
+    //   234: astore_3
+    //   235: aload 6
+    //   237: astore_3
+    //   238: goto -101 -> 137
+    //   241: astore 5
+    //   243: goto -106 -> 137
+    //   246: astore_3
+    //   247: aconst_null
+    //   248: astore_3
+    //   249: goto -144 -> 105
+    //   252: astore 5
+    //   254: goto -149 -> 105
     // Local variable table:
     //   start	length	slot	name	signature
-    //   12	8	0	bool	boolean
-    //   6	2	1	localbdlr	bdlr
-    //   23	5	1	localObject	Object
+    //   0	257	0	paramArrayOfByte	byte[]
+    //   0	257	1	paramInt1	int
+    //   0	257	2	paramInt2	int
+    //   7	141	3	localObject1	Object
+    //   163	26	3	localObject2	Object
+    //   190	1	3	localIOException1	java.io.IOException
+    //   198	1	3	localIOException2	java.io.IOException
+    //   202	1	3	localIOException3	java.io.IOException
+    //   215	11	3	localObject3	Object
+    //   230	1	3	localObject4	Object
+    //   234	1	3	localException1	Exception
+    //   237	1	3	localObject5	Object
+    //   246	1	3	localIOException4	java.io.IOException
+    //   248	1	3	localObject6	Object
+    //   10	186	4	str1	String
+    //   206	1	4	localIOException5	java.io.IOException
+    //   218	9	4	localObject7	Object
+    //   4	213	5	str2	String
+    //   223	6	5	localObject8	Object
+    //   241	1	5	localException2	Exception
+    //   252	1	5	localIOException6	java.io.IOException
+    //   1	235	6	localObject9	Object
+    //   17	31	7	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   3	7	23	finally
+    //   12	19	96	java/io/IOException
+    //   34	53	96	java/io/IOException
+    //   120	124	127	java/io/IOException
+    //   12	19	131	java/lang/Exception
+    //   34	53	131	java/lang/Exception
+    //   152	156	159	java/io/IOException
+    //   12	19	163	finally
+    //   34	53	163	finally
+    //   76	80	190	java/io/IOException
+    //   87	91	194	java/io/IOException
+    //   109	113	198	java/io/IOException
+    //   141	145	202	java/io/IOException
+    //   175	180	206	java/io/IOException
+    //   184	188	211	java/io/IOException
+    //   53	62	215	finally
+    //   62	68	223	finally
+    //   53	62	234	java/lang/Exception
+    //   62	68	241	java/lang/Exception
+    //   53	62	246	java/io/IOException
+    //   62	68	252	java/io/IOException
   }
   
-  private void i()
+  public static HttpURLConnection b(String paramString1, String paramString2, int paramInt)
   {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
-    localIntentFilter.addAction("android.intent.action.PACKAGE_REMOVED");
-    localIntentFilter.addAction("android.intent.action.PACKAGE_REPLACED");
-    bcyb.a().a().registerReceiver(new AppReportReceiver(), localIntentFilter);
-  }
-  
-  private static boolean i()
-  {
-    return (bdkw.i()) && (TMAssistantCallYYB_V1.getQQDownloadApiLevel(bcyb.a().a()) >= 7);
-  }
-  
-  public int a()
-  {
-    int i = TMAssistantCallYYB_V1.getQQDownloadApiLevel(bcyb.a().a());
-    if (!aney.a("com.tencent.android.qqdownloader", BaseActivity.sTopActivity)) {
-      i = 3;
-    }
-    return i;
-  }
-  
-  public int a(Bundle paramBundle)
-  {
-    int j = 1;
-    int i = j;
-    if (paramBundle != null)
-    {
-      i = j;
-      if (paramBundle.getInt(bdlb.k) == 3) {
-        i = 2;
-      }
-    }
-    return i;
-  }
-  
-  public long a(Bundle paramBundle)
-  {
-    try
-    {
-      bdii.c("MyAppApi", "--addDownloadTaskFromTmast--params = " + paramBundle);
-      if (paramBundle == null) {
-        return -1L;
-      }
-      paramBundle.getString("url");
-      long l = a().addDownloadTaskFromTmast(paramBundle);
-      return l;
-    }
-    catch (Exception paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
-    return -1L;
-  }
-  
-  protected long a(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    bdii.c("MyAppApi", "--addDownloadTaskFromTaskList--params = " + paramBundle + "autoDownload = " + paramBoolean1);
-    if (paramBundle == null) {
-      return -1L;
-    }
-    paramBundle = a(paramBundle);
-    this.jdField_b_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = paramBundle;
-    return a().addDownloadTaskFromTaskList(paramBundle, paramBoolean1, paramBoolean1);
-  }
-  
-  public DownloadInfo a(TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, Bundle paramBundle)
-  {
-    DownloadInfo localDownloadInfo = new DownloadInfo();
-    localDownloadInfo.jdField_c_of_type_Int = 1;
-    localDownloadInfo.jdField_c_of_type_JavaLangString = paramTMAssistantCallYYBParamStruct.SNGAppId;
-    localDownloadInfo.j = paramTMAssistantCallYYBParamStruct.taskAppId;
-    localDownloadInfo.e = paramTMAssistantCallYYBParamStruct.taskPackageName;
-    localDownloadInfo.k = paramTMAssistantCallYYBParamStruct.taskApkId;
-    localDownloadInfo.jdField_b_of_type_Int = paramTMAssistantCallYYBParamStruct.taskVersion;
-    localDownloadInfo.q = paramTMAssistantCallYYBParamStruct.recommendId;
-    localDownloadInfo.s = paramTMAssistantCallYYBParamStruct.channelId;
-    if (paramBundle != null)
-    {
-      localDownloadInfo.jdField_h_of_type_JavaLangString = paramBundle.getString(bdlb.i);
-      localDownloadInfo.f = paramBundle.getString(bdlb.l);
-      localDownloadInfo.jdField_d_of_type_JavaLangString = paramBundle.getString(bdlb.j);
-      localDownloadInfo.jdField_d_of_type_Int = paramBundle.getInt(bdlb.E);
-    }
-    return localDownloadInfo;
-  }
-  
-  public TMAssistantDownloadTaskInfo a(Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (!b())) {
-      return null;
-    }
-    paramBundle = a(paramBundle);
-    if (a() <= 2)
-    {
-      paramBundle = ((TMAssistantCallYYB_V1)a()).getDownloadTaskState(paramBundle);
-      if (paramBundle != null) {
-        return new TMAssistantDownloadTaskInfo(paramBundle.mUrl, paramBundle.mSavePath, paramBundle.mState, paramBundle.mReceiveDataLen, paramBundle.mTotalDataLen, paramBundle.mContentType);
-      }
-      return null;
-    }
-    paramBundle = ((TMAssistantCallYYB_V2)a()).getDownloadTaskState(paramBundle);
-    if (paramBundle != null) {
-      return new TMAssistantDownloadTaskInfo(paramBundle.mUrl, paramBundle.mSavePath, paramBundle.mState, paramBundle.mReceiveDataLen, paramBundle.mTotalDataLen, paramBundle.mContentType);
-    }
-    return null;
-  }
-  
-  protected TMAssistantCallYYBParamStruct a(Bundle paramBundle)
-  {
-    String str3 = paramBundle.getString(bdlb.b);
-    String str4 = paramBundle.getString(bdlb.jdField_c_of_type_JavaLangString);
-    String str5 = paramBundle.getString(bdlb.jdField_d_of_type_JavaLangString);
-    String str6 = paramBundle.getString(bdlb.f);
-    Object localObject = paramBundle.getString(bdlb.i);
-    int j = paramBundle.getInt(bdlb.e);
-    int i = j;
-    if (j == 0) {}
-    try
-    {
-      i = Integer.valueOf(paramBundle.getString(bdlb.e)).intValue();
-      String str2;
-      String str1;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        str2 = bdjr.a((String)localObject, "NEWYYB");
-        paramBundle.getString(bdlb.z);
-        localObject = paramBundle.getString(bdlb.B);
-        j = paramBundle.getInt(bdlb.A);
-        if (j != 1) {
-          break label418;
-        }
-        localObject = "ANDROIDQQ-gray";
-        str1 = "1";
-      }
-      for (;;)
-      {
-        bdii.b("State_Log", " channelId:" + (String)localObject);
-        localObject = new TMAssistantCallYYBParamStruct(str3, str4, str5, i, str2, str6, "", "", (String)localObject, str1);
-        if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(bcyb.a().a()) >= 6)
-        {
-          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_JS_DoDownloadAction", Long.valueOf(paramBundle.getLong("OuterCall_JS_DoDownloadAction", 0L)));
-          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_DownloadApi_DoDownloadAction", Long.valueOf(paramBundle.getLong("OuterCall_DownloadApi_DoDownloadAction", 0L)));
-          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_DownloadApi_DoDownloadActionByMyApp", Long.valueOf(paramBundle.getLong("OuterCall_DownloadApi_DoDownloadActionByMyApp", 0L)));
-          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_MyAppApi_HandleDownloadAction", Long.valueOf(paramBundle.getLong("OuterCall_MyAppApi_HandleDownloadAction", 0L)));
-          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_MyAppApi_StartToAppDetail", Long.valueOf(paramBundle.getLong("OuterCall_MyAppApi_StartToAppDetail", 0L)));
-          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_MyAppApi_StartToDownloadList", Long.valueOf(paramBundle.getLong("OuterCall_MyAppApi_StartToDownloadList", 0L)));
-        }
-        ((TMAssistantCallYYBParamStruct)localObject).source = paramBundle.getString("big_brother_source_key");
-        ((TMAssistantCallYYBParamStruct)localObject).recommendId = paramBundle.getString("recommendId");
-        bdii.b("MyAppApi", "recommendId:" + ((TMAssistantCallYYBParamStruct)localObject).recommendId);
-        return localObject;
-        str2 = bdjr.a((String)localObject, "YYB");
-        break;
-        label418:
-        if (TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localObject = "ANDROIDQQ";
-          str1 = j + "";
-        }
-        else
-        {
-          str1 = j + "";
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        i = j;
-      }
-    }
-  }
-  
-  public TMAssistantBaseCallYYB a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB == null) {
-        a();
-      }
-      TMAssistantBaseCallYYB localTMAssistantBaseCallYYB = this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB;
-      return localTMAssistantBaseCallYYB;
-    }
-    finally {}
-  }
-  
-  public String a()
-  {
-    if ((this.jdField_a_of_type_Bdmc != null) && (this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidOsBundle != null)) {
-      return this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidOsBundle.getString(bdlb.b);
-    }
-    return "";
-  }
-  
-  public void a()
-  {
-    if (a() <= 2) {}
-    for (this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB = TMAssistantCallYYB_V1.getInstance();; this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB = TMAssistantCallYYB_V2.getInstance())
-    {
-      this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB.initTMAssistantCallYYBApi(bcyb.a().a());
-      g();
-      return;
-    }
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.3(this, paramActivity));
-  }
-  
-  public void a(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener, String paramString2, boolean paramBoolean, Bundle paramBundle)
-  {
-    String str = paramBundle.getString(bdlb.p);
-    int i = paramBundle.getInt("dialogType");
-    int j = paramBundle.getInt("auto_start_yyb_download");
-    bdii.c("TIME-STATISTIC", "MyAppApi--showTipDialog");
-    bdii.c("MyAppApi", "-showTipDialog-");
-    if (paramActivity == null) {
-      return;
-    }
-    Resources localResources = paramActivity.getResources();
+    int i = "http://".length();
+    int j = paramString1.indexOf('/', i);
     Object localObject;
-    if (paramInt2 == 1) {
-      if (paramInt1 == 2)
-      {
-        paramInt1 = 1;
-        if (!TextUtils.isEmpty(str)) {
-          break label463;
-        }
-        localObject = bdkw.a(paramInt1, paramString2);
-        label86:
-        paramString2 = (String)localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {}
-        switch (paramInt1)
-        {
-        default: 
-          paramString2 = localResources.getString(2131691652);
-          label138:
-          if (((paramInt1 != 2) && (paramInt1 != 4)) || (!TextUtils.isEmpty(str))) {
-            break;
-          }
-        }
+    if (j < 0)
+    {
+      paramString1 = paramString1.substring(i);
+      localObject = "";
+      if (paramInt == 80) {
+        break label122;
       }
     }
-    for (;;)
+    label122:
+    for (paramString2 = new URL("http://" + paramString2 + ":" + paramInt + (String)localObject);; paramString2 = new URL("http://" + paramString2 + (String)localObject))
     {
-      try
-      {
-        paramString1 = String.format(paramString2, new Object[] { paramString1 });
-        localObject = localResources.getString(2131691672);
-        if ((paramInt2 == 1) && (i == 1))
-        {
-          paramString1 = localResources.getString(2131691673);
-          paramString2 = localResources.getString(2131691656);
-          localObject = new bdmf(paramActivity);
-          ((bdmf)localObject).b(2131691667, paramOnClickListener2, true);
-          if (!paramBoolean)
-          {
-            bool = true;
-            ((bdmf)localObject).a(2131691670, paramOnClickListener1, bool);
-            ((bdmf)localObject).a(paramString1);
-            ((bdmf)localObject).b(paramString2);
-            if (i == 1)
-            {
-              ((bdmf)localObject).b(2131691667, Color.parseColor("#D2D1D1"), paramOnClickListener2, true);
-              paramInt1 = Color.parseColor("#3AC8FF");
-              if (paramBoolean) {
-                continue;
-              }
-              paramBoolean = true;
-              ((bdmf)localObject).a(2131691670, paramInt1, paramOnClickListener1, paramBoolean);
-              ((bdmf)localObject).a(paramActivity.getResources().getDrawable(2130841365));
-              ((bdmf)localObject).a(Color.parseColor("#848484"));
-            }
-            ((bdmf)localObject).setCancelable(true);
-            ((bdmf)localObject).setOnCancelListener(paramOnCancelListener);
-            ((bdmf)localObject).setOnDismissListener(new bdlu(this));
-            if ((!(paramActivity instanceof AppActivity)) || (((AppActivity)paramActivity).isResume())) {
-              continue;
-            }
-            bdii.c("TIME-STATISTIC", "MyAppApi--showTipDialog---cancel !isResume");
-            return;
-            if ((paramInt1 == 12) && (!TextUtils.isEmpty(paramString1)))
-            {
-              paramInt1 = 2;
-              break;
-            }
-            paramInt1 = 1;
-            break;
-            if (paramInt1 == 2)
-            {
-              paramInt1 = 3;
-              break;
-            }
-            if ((paramInt1 == 12) && (!TextUtils.isEmpty(paramString1)))
-            {
-              paramInt1 = 4;
-              break;
-            }
-            paramInt1 = 3;
-            break;
-            label463:
-            localObject = str;
-            break label86;
-            paramString2 = localResources.getString(2131691652);
-            break label138;
-            paramString2 = localResources.getString(2131691653, new Object[] { paramString1 });
-            break label138;
-            paramString2 = localResources.getString(2131691654);
-            break label138;
-            paramString2 = localResources.getString(2131691655, new Object[] { paramString1 });
-          }
-        }
-      }
-      catch (Exception paramString2)
-      {
-        if (paramInt1 == 2)
-        {
-          paramString1 = localResources.getString(2131691652);
-          bdii.c("MyAppApi", " errorMsg = " + paramString2.getMessage());
-          continue;
-        }
-        paramString1 = localResources.getString(2131691654);
-        continue;
-        boolean bool = false;
-        continue;
-        paramBoolean = false;
-        continue;
-        try
-        {
-          if (!paramActivity.isFinishing())
-          {
-            ((bdmf)localObject).show();
-            axqy.b(null, "dc00898", "", "", "0X8008F7A", "0X8008F7A", 0, 0, "", "", "", "");
-            if (i == 1)
-            {
-              bdhz.a("6006", "0", "0", paramBundle.getString(bdlb.i), paramBundle.getString("pageId") + "_" + paramBundle.getString("moduleId") + "_" + paramBundle.getString(bdlb.f) + "_" + paramBundle.getString(bdlb.jdField_c_of_type_JavaLangString) + "_" + paramBundle.getString(bdlb.jdField_d_of_type_JavaLangString));
-              if (j == 1) {
-                ThreadManager.getUIHandler().post(new MyAppApi.13(this, paramOnClickListener1, (bdmf)localObject));
-              }
-            }
-          }
-        }
-        catch (Exception paramActivity)
-        {
-          paramActivity.printStackTrace();
-          continue;
-        }
-        bdii.c("TIME-STATISTIC", "MyAppApi--showTipDialog---complete");
-        this.jdField_a_of_type_Bdmf = ((bdmf)localObject);
-        return;
-        paramString2 = paramString1;
-        paramString1 = (String)localObject;
-        continue;
-      }
-      paramString1 = paramString2;
-    }
-  }
-  
-  protected void a(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    boolean bool = bdkw.d();
-    long l = bcyb.a().a();
-    int i;
-    if ((bool) && (l > 0L) && (l != this.jdField_d_of_type_Long))
-    {
-      i = 1;
-      if (i != 0) {
-        break label115;
-      }
-      if (this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct == null) {
-        break label106;
-      }
-      if (a() > 2) {
-        break label85;
-      }
-      ((TMAssistantCallYYB_V1)a()).startToAuthorized(paramActivity, this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
-      label74:
-      this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = null;
-    }
-    label85:
-    label106:
-    label115:
-    bdip localbdip;
-    do
-    {
-      return;
-      i = 0;
+      paramString2 = (HttpURLConnection)paramString2.openConnection();
+      paramString2.setRequestProperty("X-Online-Host", paramString1);
+      return paramString2;
+      localObject = paramString1.substring(i, j);
+      String str = paramString1.substring(j);
+      paramString1 = (String)localObject;
+      localObject = str;
       break;
-      ((TMAssistantCallYYB_V2)a()).startToAuthorized(paramActivity, this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
-      break label74;
-      bdii.e("MyAppApi", "startToAuthorizedDirect mLastAuthorizeParam = null, needCarryQQIdentity = false");
-      return;
-      localbdip = new bdip();
-      localbdip.a(new bdlv(this, localbdip, l, paramActivity, paramOnClickListener));
-    } while (!(paramActivity instanceof BaseActivity));
-    localbdip.a(((BaseActivity)paramActivity).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
-  }
-  
-  public void a(Activity paramActivity, Bundle paramBundle, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    bdii.c("TIME-STATISTIC", "MyAppApi--handleDownloadAction");
-    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(paramActivity) >= 6) {
-      paramBundle.putLong("OuterCall_MyAppApi_HandleDownloadAction", System.currentTimeMillis());
-    }
-    int i = -1;
-    try
-    {
-      j = a().checkQQDownloaderInstalled();
-      i = j;
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
-      {
-        boolean bool5;
-        DownloadInfo localDownloadInfo;
-        localException1.printStackTrace();
-        continue;
-        bool1 = false;
-      }
-      if (i == 2) {
-        break label307;
-      }
-    }
-    boolean bool2 = paramBundle.getBoolean(bdlb.g, false);
-    boolean bool3 = paramBundle.getBoolean(bdlb.jdField_h_of_type_JavaLangString, true);
-    int k = paramBundle.getInt(bdlb.n);
-    int j = paramBundle.getInt(bdlb.k);
-    String str3 = paramBundle.getString(bdlb.i);
-    String str2 = paramBundle.getString(bdlb.b);
-    int m = paramBundle.getInt("dialogType");
-    int n = paramBundle.getInt(bdlb.t, 0);
-    int i1 = paramBundle.getInt(bdlb.u, 0);
-    boolean bool4 = bdkw.e();
-    bool5 = bdkw.g();
-    bdii.c("OpenConfig-MyAppApi", " useMyAppFlag = " + bool4);
-    localDownloadInfo = bdle.a().a(str2);
-    boolean bool1;
-    if ((localDownloadInfo != null) && (localDownloadInfo.jdField_c_of_type_Int == 1))
-    {
-      bool1 = true;
-      if (((bool4) && (bool5)) || (bool1)) {
-        break label295;
-      }
-      if (paramOnClickListener != null)
-      {
-        bdii.a("MyAppApi", "allowMyApp=" + bool4 + " allowMyAppDownload=" + bool5 + " taskExist=" + bool1);
-        paramOnClickListener.onClick(null, 0);
-      }
-      bdjr.a("200", str3, str2);
-    }
-    for (;;)
-    {
-      return;
-      label295:
-      if (i == 1) {
-        label307:
-        if ((this.jdField_a_of_type_Bdmf != null) && (this.jdField_a_of_type_Bdmf.isShowing())) {
-          if (this.jdField_a_of_type_Bdmf.a() == paramActivity)
-          {
-            bdii.a("MyAppApi", "mTipDialog is showing return");
-            return;
-          }
-        }
-      }
-      try
-      {
-        this.jdField_a_of_type_Bdmf.dismiss();
-        label351:
-        for (this.jdField_a_of_type_Bdmf = null; (!bdkw.f()) || ((j != 2) && (j != 12)); this.jdField_a_of_type_Bdmf = null)
-        {
-          bdii.a("MyAppApi", "not allowShowDialog return actionCode = " + j);
-          if (paramOnClickListener != null) {
-            paramOnClickListener.onClick(null, 0);
-          }
-          bdjr.a("200", str3, str2);
-          return;
-        }
-        ThreadManager.getSubThreadHandler().post(new MyAppApi.5(this, str3, str2));
-        bool4 = bdkw.a();
-        bdly localbdly = new bdly(this, bool2, paramOnClickListener, paramBundle, k, bool4, paramActivity, str3, bool1, bool3, str2, m);
-        bdma localbdma = new bdma(this, paramOnClickListener, str3, str2);
-        bdlz localbdlz = new bdlz(this, str3, str2);
-        String str1 = null;
-        Object localObject = str1;
-        if (i1 > 0)
-        {
-          localObject = str1;
-          if (n > 0)
-          {
-            k = i1 - n;
-            localObject = str1;
-            if (k > 0) {
-              localObject = bdmo.a(k);
-            }
-          }
-        }
-        str1 = paramBundle.getString("source");
-        ThreadManager.getUIHandler().post(new MyAppApi.7(this, paramActivity, j, i, (String)localObject, localbdly, localbdma, localbdlz, str1, bool4, paramBundle));
-        ThreadManager.getSubThreadHandler().post(new MyAppApi.8(this, str3, str2));
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
-        return;
-        if (i != 0) {
-          continue;
-        }
-        if ((bdkw.h()) || (bool1))
-        {
-          paramOnClickListener = bdjr.a(str3, "YYB");
-          if (k == 0) {
-            a(paramActivity, paramBundle, bool2, bool3);
-          }
-          while ((localObject == null) && ((j == 2) || (j == 12)))
-          {
-            bdjr.a("202", paramOnClickListener, str2);
-            return;
-            a(paramActivity, paramBundle, bool2, bool3);
-          }
-          bdjr.a("200", paramOnClickListener, str2);
-          return;
-        }
-        if (paramOnClickListener != null) {
-          paramOnClickListener.onClick(null, 0);
-        }
-        bdjr.a("200", str3, str2);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        break label351;
-      }
     }
   }
   
-  public void a(Activity paramActivity, String paramString)
+  public static short b(byte[] paramArrayOfByte, int paramInt)
   {
-    bdii.c("NewUpgradeDialog", "preDownload called,get updateDetail info");
-    ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.18(this, paramActivity), 0L);
+    return (short)(((paramArrayOfByte[paramInt] & 0xFF) << 0) + ((paramArrayOfByte[(paramInt + 1)] & 0xFF) << 8));
   }
   
-  public void a(Activity paramActivity, String paramString, int paramInt)
+  public static void b(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2)
   {
-    bdii.c("MyAppApi", "downloadYyb");
-    if (paramInt == 1) {
-      bdkx.a("_1101070898");
-    }
-    if (this.jdField_a_of_type_Bdme == null)
-    {
-      this.jdField_a_of_type_Bdme = new bdme(this);
-      bdle.a().a(this.jdField_a_of_type_Bdme);
-    }
-    Object localObject = bdle.a().a("1101070898");
-    bdii.c("MyAppApi", "---startDownloadYYB---");
-    if (localObject != null)
-    {
-      if (paramInt == 1)
-      {
-        ((DownloadInfo)localObject).jdField_a_of_type_Boolean = false;
-        ((DownloadInfo)localObject).jdField_b_of_type_Boolean = true;
-      }
-      for (((DownloadInfo)localObject).jdField_h_of_type_Int = 1;; ((DownloadInfo)localObject).jdField_h_of_type_Int = 0)
-      {
-        ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString = paramString;
-        bdle.a().e((DownloadInfo)localObject);
-        bdle.a().a((DownloadInfo)localObject);
-        return;
-        ((DownloadInfo)localObject).jdField_a_of_type_Boolean = true;
-        ((DownloadInfo)localObject).jdField_b_of_type_Boolean = false;
-      }
-    }
-    String str = bdkw.a();
-    localObject = str;
-    if (TextUtils.isEmpty(str)) {
-      localObject = "http://a.app.qq.com/o/myapp-down?g_f=991310";
-    }
-    a(paramActivity, (String)localObject, paramString, paramInt, false);
+    a(paramArrayOfByte2, 0, paramArrayOfByte1, paramInt1, paramInt2);
   }
   
-  public void a(Activity paramActivity, String paramString1, String paramString2)
+  public static byte[] b(int paramInt)
   {
-    if (!"biz_src_yyb".equals(paramString2))
-    {
-      long l2 = bdkw.a();
-      l1 = l2;
-      if (l2 > 0L) {}
-    }
-    for (long l1 = 2000L;; l1 = 0L)
-    {
-      ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.17(this, paramActivity, paramString1), l1);
-      return;
-    }
+    return new byte[] { (byte)(paramInt >> 24 & 0xFF), (byte)(paramInt >> 16 & 0xFF), (byte)(paramInt >> 8 & 0xFF), (byte)(paramInt & 0xFF) };
   }
   
-  public void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  public static byte[] c(int paramInt)
   {
-    bdii.c("MyAppApi", "startDownloadYyb");
-    Bundle localBundle = new Bundle();
-    String str = paramString1;
-    if (TextUtils.isEmpty(paramString1)) {
-      str = "http://a.app.qq.com/o/myapp-down?g_f=991310";
-    }
-    localBundle.putString(bdlb.b, "1101070898");
-    localBundle.putString(bdlb.j, str);
-    localBundle.putString(bdlb.f, "com.tencent.android.qqdownloader");
-    localBundle.putInt(bdlb.k, 2);
-    localBundle.putString(bdlb.i, paramString2);
-    localBundle.putString(bdlb.l, bdmo.jdField_d_of_type_JavaLangString);
-    if (paramInt == 1) {
-      localBundle.putBoolean(bdlb.x, true);
-    }
-    for (;;)
-    {
-      localBundle.putInt(bdlb.C, paramInt);
-      localBundle.putString(bdlb.m, "yyb");
-      localBundle.putString(bdlb.jdField_c_of_type_JavaLangString, "5848");
-      localBundle.putBoolean(bdlb.g, true);
-      localBundle.putBoolean(bdlb.jdField_h_of_type_JavaLangString, paramBoolean);
-      localBundle.putInt(bdlb.n, 1);
-      bdkx.a(paramActivity, localBundle, "biz_src_yyb", null, 0);
-      return;
-      localBundle.putBoolean(bdlb.x, false);
-    }
-  }
-  
-  public void a(Activity paramActivity, String paramString, boolean paramBoolean)
-  {
-    ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.19(this, paramBoolean, paramActivity, paramString), 0L);
-  }
-  
-  protected void a(Context paramContext, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    bdii.c("TIME-STATISTIC", "MyAppApi--startToDownloadTaskList");
-    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(paramContext) >= 6) {
-      paramBundle.putLong("OuterCall_MyAppApi_StartToDownloadList", System.currentTimeMillis());
-    }
-    if ((paramBundle == null) || (paramContext == null)) {
-      return;
-    }
-    TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = a(paramBundle);
-    boolean bool = bdkw.d();
-    long l = bcyb.a().a();
-    int i;
-    if ((bool) && (l > 0L) && (l != this.jdField_d_of_type_Long)) {
-      i = 1;
-    }
-    Object localObject;
-    label296:
-    int j;
-    while ((i == 0) || (paramContext == null) || (!(paramContext instanceof BaseActivity)))
-    {
-      localObject = a(localTMAssistantCallYYBParamStruct, paramBundle);
-      bdle.a().e((DownloadInfo)localObject);
-      try
-      {
-        bdii.a("State_Log", "OpenSDK startToDownloadTaskList param SNGAppId=" + localTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + localTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + localTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + localTMAssistantCallYYBParamStruct.taskPackageName + " version=" + localTMAssistantCallYYBParamStruct.taskVersion + " uin=" + localTMAssistantCallYYBParamStruct.uin + " via=" + localTMAssistantCallYYBParamStruct.via);
-        bdii.c("TIME-STATISTIC", "mDownloadSdk.startToDownloadTaskList");
-        if (a() > 2) {
-          break label296;
-        }
-        ((TMAssistantCallYYB_V1)a()).startToDownloadTaskList(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2);
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        bdii.e("MyAppApi", "--startToDownloadTaskList--Exception = " + paramContext);
-        return;
-      }
-      i = 0;
-      continue;
-      i = paramBundle.getInt(bdlb.k);
-      j = a(paramBundle);
-      if (i != 3) {
-        break label400;
-      }
-      paramBoolean1 = false;
-      paramBoolean2 = false;
-    }
-    label400:
-    for (;;)
-    {
-      ((TMAssistantCallYYB_V2)a()).startToDownloadTaskList(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2, j);
-      return;
-      localObject = new bdip();
-      ((bdip)localObject).a(new bdlt(this, (bdip)localObject, localTMAssistantCallYYBParamStruct, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
-      if (!(paramContext instanceof BaseActivity)) {
-        break;
-      }
-      ((bdip)localObject).a(((BaseActivity)paramContext).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
-      return;
-    }
-  }
-  
-  public void a(Context paramContext, JSONArray paramJSONArray, int paramInt, String paramString1, String paramString2)
-  {
-    int j = 2;
-    if (paramJSONArray == null) {}
-    int k;
-    do
-    {
-      return;
-      k = paramJSONArray.length();
-    } while (k == 0);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < k)
-    {
-      JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
-      if (localJSONObject == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = new TMAssistantCallYYBParamStruct();
-        localTMAssistantCallYYBParamStruct.recommendId = localJSONObject.optString("recommendId");
-        localTMAssistantCallYYBParamStruct.channelId = localJSONObject.optString(bdlb.K);
-        localTMAssistantCallYYBParamStruct.taskPackageName = localJSONObject.optString(bdlb.f);
-        localTMAssistantCallYYBParamStruct.taskVersion = localJSONObject.optInt(bdlb.e);
-        localTMAssistantCallYYBParamStruct.via = localJSONObject.optString(bdlb.i);
-        localTMAssistantCallYYBParamStruct.taskApkId = localJSONObject.optString(bdlb.jdField_d_of_type_JavaLangString);
-        localTMAssistantCallYYBParamStruct.taskAppId = localJSONObject.optString(bdlb.jdField_c_of_type_JavaLangString);
-        localTMAssistantCallYYBParamStruct.SNGAppId = localJSONObject.optString(bdlb.jdField_c_of_type_JavaLangString);
-        if (TextUtils.isEmpty(localTMAssistantCallYYBParamStruct.SNGAppId)) {
-          localTMAssistantCallYYBParamStruct.SNGAppId = localJSONObject.optString(bdlb.b);
-        }
-        if (TextUtils.isEmpty(localTMAssistantCallYYBParamStruct.via)) {
-          localTMAssistantCallYYBParamStruct.via = paramString1;
-        }
-        localTMAssistantCallYYBParamStruct.source = paramString2;
-        localArrayList.add(localTMAssistantCallYYBParamStruct);
-      }
-    }
-    i = j;
-    if (paramInt == 2) {
-      i = 3;
-    }
-    ThreadManager.excute(new MyAppApi.9(this, paramContext, localArrayList, i, paramString1), 16, null, true);
-  }
-  
-  protected void a(String paramString)
-  {
-    bdle localbdle = bdle.a();
-    DownloadInfo localDownloadInfo = new DownloadInfo();
-    localDownloadInfo.jdField_c_of_type_JavaLangString = paramString;
-    localDownloadInfo.a(10);
-    if (localDownloadInfo != null) {
-      localbdle.a(10, localDownloadInfo);
-    }
-  }
-  
-  public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity)
-  {
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.14(this, paramString, paramOnClickListener, paramActivity));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.g = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      return;
-      this.jdField_d_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_JavaLangString = paramString;
-    } while (!this.jdField_d_of_type_Boolean);
-    SharedPreferences.Editor localEditor = bcyb.a().a().getSharedPreferences("showTost_pf", 0).edit();
-    localEditor.putBoolean("showToast", this.jdField_d_of_type_Boolean);
-    localEditor.putString("toast_msg", paramString);
-    localEditor.commit();
-  }
-  
-  protected boolean a()
-  {
-    return !TMAssistantCallYYB_V1.isExistActoin(this.jdField_a_of_type_Long);
-  }
-  
-  public boolean a(Context paramContext, Bundle paramBundle)
-  {
-    bdii.c("TIME-STATISTIC", "MyAppApi--startToWebView");
-    if (paramBundle == null) {
-      return false;
-    }
-    paramBundle = paramBundle.getString("url");
-    bdii.c("TIME-STATISTIC", "mDownloadSdk.startToAppDetail");
-    a().startToWebView(paramContext, paramBundle);
-    return true;
-  }
-  
-  public boolean a(Context paramContext, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    bdii.c("TIME-STATISTIC", "MyAppApi--startToAppDetail ");
-    if (paramBundle == null) {
-      return false;
-    }
-    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(paramContext) >= 6) {
-      paramBundle.putLong("OuterCall_MyAppApi_StartToAppDetail", System.currentTimeMillis());
-    }
-    TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = a(paramBundle);
-    if (!bdkx.b(localTMAssistantCallYYBParamStruct.SNGAppId)) {
-      return false;
-    }
-    boolean bool = bdkw.d();
-    long l = bcyb.a().a();
-    if ((bool) && (l > 0L) && (l != this.jdField_d_of_type_Long)) {}
-    for (int i = 1;; i = 0)
-    {
-      Object localObject;
-      if ((i == 0) || (paramContext == null) || (!(paramContext instanceof BaseActivity)))
-      {
-        localObject = a(localTMAssistantCallYYBParamStruct, paramBundle);
-        bdle.a().e((DownloadInfo)localObject);
-      }
-      for (;;)
-      {
-        try
-        {
-          bdii.a("State_Log", "OpenSDK startToAppDetail param SNGAppId=" + localTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + localTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + localTMAssistantCallYYBParamStruct.taskAppId + " source=" + localTMAssistantCallYYBParamStruct.source + " packageName=" + localTMAssistantCallYYBParamStruct.taskPackageName + " version=" + localTMAssistantCallYYBParamStruct.taskVersion + " uin=" + localTMAssistantCallYYBParamStruct.uin + " via=" + localTMAssistantCallYYBParamStruct.via + " autoDownload=" + paramBoolean1 + " autoInstall=" + paramBoolean2);
-          bdii.c("TIME-STATISTIC", "mDownloadSdk.startToAppDetail");
-          if (a() <= 2)
-          {
-            ((TMAssistantCallYYB_V1)a()).startToAppDetail(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2);
-          }
-          else
-          {
-            i = paramBundle.getInt(bdlb.k);
-            int j = a(paramBundle);
-            if (i == 3)
-            {
-              paramBoolean1 = false;
-              paramBoolean2 = false;
-              ((TMAssistantCallYYB_V2)a()).startToAppDetail(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2, j);
-            }
-          }
-        }
-        catch (Exception paramContext)
-        {
-          bdii.b("MyAppApi", "startToAppDetail err", paramContext);
-          return false;
-        }
-        localObject = new bdip();
-        ((bdip)localObject).a(new bdls(this, (bdip)localObject, localTMAssistantCallYYBParamStruct, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
-        if ((paramContext instanceof BaseActivity)) {
-          ((bdip)localObject).a(((BaseActivity)paramContext).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
-        }
-        return true;
-      }
-      return true;
-    }
-  }
-  
-  public long b(Bundle paramBundle)
-  {
-    try
-    {
-      bdii.c("MyAppApi", "--addDownloadTaskFromAppDetail--params = " + paramBundle);
-      if (paramBundle == null) {
-        return -1L;
-      }
-      String str = paramBundle.getString("url");
-      if (!TextUtils.isEmpty(str))
-      {
-        if ((str.startsWith("tmast")) || (str.startsWith("tpmast"))) {
-          return a().addDownloadTaskFromTmast(paramBundle);
-        }
-        long l = a().addDownloadTaskFromWebview(paramBundle);
-        return l;
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
-    return -1L;
-  }
-  
-  protected long b(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    bdii.c("MyAppApi", "--addDownloadTaskFromAppDetail--params = " + paramBundle + "autoDownload = " + paramBoolean1);
-    if (paramBundle == null) {
-      return -1L;
-    }
-    paramBundle = a(paramBundle);
-    this.jdField_b_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = paramBundle;
-    return a().addDownloadTaskFromAppDetail(paramBundle, paramBoolean1, paramBoolean1);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB = TMAssistantCallYYB_V2.getInstance();
-    this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB.initTMAssistantCallYYBApi(bcyb.a().a());
-    g();
-  }
-  
-  public void b(Activity paramActivity)
-  {
-    long l = System.currentTimeMillis() - this.jdField_b_of_type_Long;
-    bdii.c("MyAppApi", "judgeInstallFlag -- mInstalledFlag = " + this.jdField_a_of_type_Boolean + "mInstallTime = " + this.jdField_b_of_type_Long + " countTime =" + l);
-    int i;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if ((this.jdField_b_of_type_Long != -1L) && (l <= 180000L)) {
-        break label337;
-      }
-      i = 1;
-      if (!b()) {
-        break label404;
-      }
-      if (a()) {
-        break label342;
-      }
-      this.jdField_b_of_type_Boolean = false;
-      label107:
-      if ((!this.jdField_b_of_type_Boolean) && (i == 0))
-      {
-        if (this.jdField_a_of_type_Long != -1L) {
-          a().removeDownloadTask(this.jdField_a_of_type_Long);
-        }
-        if (!bdkw.h()) {
-          break label379;
-        }
-        if (this.jdField_a_of_type_Bdmc != null)
-        {
-          if (this.jdField_a_of_type_Bdmc.jdField_a_of_type_Int != 0) {
-            break label350;
-          }
-          a(paramActivity, this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bdmc.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bdmc.jdField_b_of_type_Boolean);
-        }
-      }
-    }
-    for (;;)
-    {
-      e();
-      if ((!this.jdField_d_of_type_Boolean) && (!b()))
-      {
-        paramActivity = bcyb.a().a().getSharedPreferences("showTost_pf", 0);
-        this.jdField_d_of_type_Boolean = paramActivity.getBoolean("showToast", false);
-        this.jdField_a_of_type_JavaLangString = paramActivity.getString("toast_msg", "");
-      }
-      if (this.jdField_d_of_type_Boolean)
-      {
-        if (!b()) {
-          new Handler(Looper.getMainLooper()).postDelayed(new MyAppApi.4(this), 2000L);
-        }
-        this.jdField_d_of_type_Boolean = false;
-        paramActivity = bcyb.a().a().getSharedPreferences("showTost_pf", 0).edit();
-        paramActivity.putBoolean("showToast", this.jdField_d_of_type_Boolean);
-        paramActivity.commit();
-      }
-      return;
-      label337:
-      i = 0;
-      break;
-      label342:
-      this.jdField_b_of_type_Boolean = true;
-      break label107;
-      label350:
-      a(paramActivity, this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bdmc.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bdmc.jdField_b_of_type_Boolean);
-      continue;
-      label379:
-      if ((i != 0) || (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null)) {
-        continue;
-      }
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-      continue;
-      try
-      {
-        label404:
-        if (new File(bcyb.a().a().getFilesDir() + File.separator + "yyb_via_info.txt").exists()) {
-          bcyb.a().a().deleteFile("yyb_via_info.txt");
-        }
-        label464:
-        if ((this.jdField_b_of_type_Boolean) || (i != 0)) {
-          continue;
-        }
-        if (this.jdField_a_of_type_Long != -1L) {
-          a().removeDownloadTask(this.jdField_a_of_type_Long);
-        }
-        if ((i != 0) || (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null)) {
-          continue;
-        }
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-      }
-      catch (Exception paramActivity)
-      {
-        break label464;
-      }
-    }
-  }
-  
-  public void b(Activity paramActivity, Bundle paramBundle, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(paramActivity) >= 6) {
-      paramBundle.putLong("OuterCall_MyAppApi_HandleDownloadAction", System.currentTimeMillis());
-    }
-    int i = -1;
-    try
-    {
-      j = a().checkQQDownloaderInstalled();
-      i = j;
-    }
-    catch (Exception localException)
-    {
-      int j;
-      boolean bool1;
-      boolean bool2;
-      int k;
-      int m;
-      String str2;
-      DownloadInfo localDownloadInfo;
-      for (;;)
-      {
-        boolean bool3;
-        boolean bool4;
-        String str1;
-        localException.printStackTrace();
-        continue;
-        j = 0;
-      }
-      if ((i != 2) && (i != 1)) {
-        break label244;
-      }
-      if (paramOnClickListener == null) {
-        break label233;
-      }
-      paramOnClickListener.onClick(null, 0);
-      bdjr.a("202", str2, localException);
-      return;
-      if ((!bdkw.h()) && (j == 0)) {
-        break label331;
-      }
-      if (k != 0) {
-        break label308;
-      }
-      a(paramActivity, paramBundle, bool1, bool2);
-      for (;;)
-      {
-        paramActivity = bdjr.a(str2, "YYB");
-        if ((localDownloadInfo != null) || ((m != 2) && (m != 12))) {
-          break;
-        }
-        bdjr.a("202", paramActivity, localException);
-        return;
-        a(paramActivity, paramBundle, bool1, bool2);
-      }
-      bdjr.a("200", paramActivity, localException);
-      return;
-      if (paramOnClickListener == null) {
-        break label343;
-      }
-      paramOnClickListener.onClick(null, 0);
-      bdjr.a("200", str2, localException);
-    }
-    bool1 = paramBundle.getBoolean(bdlb.g, false);
-    bool2 = paramBundle.getBoolean(bdlb.jdField_h_of_type_JavaLangString, true);
-    k = paramBundle.getInt(bdlb.n);
-    m = paramBundle.getInt(bdlb.k);
-    bool3 = bdkw.e();
-    bool4 = bdkw.g();
-    str1 = paramBundle.getString(bdlb.b);
-    str2 = paramBundle.getString(bdlb.i);
-    localDownloadInfo = bdle.a().a(str1);
-    if ((localDownloadInfo != null) && (localDownloadInfo.jdField_c_of_type_Int == 1))
-    {
-      j = 1;
-      bdii.c("OpenConfig-MyAppApi", " useMyAppFlag = " + bool3);
-      if (((bool3) && (bool4)) || (j != 0)) {
-        break label209;
-      }
-      if (paramOnClickListener != null) {
-        paramOnClickListener.onClick(null, 0);
-      }
-      bdjr.a("200", str2, str1);
-    }
-    label209:
-    label233:
-    label244:
-    return;
-  }
-  
-  public void b(String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity)
-  {
-    for (;;)
-    {
-      String str3;
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        String str1 = localJSONObject.optString("appid", "");
-        localJSONObject.optString("myAppid", "");
-        localJSONObject.optString("apkId", "");
-        Object localObject2 = localJSONObject.optString("versionCode", "");
-        String str2 = localJSONObject.optString("via", "");
-        localJSONObject.optString("appPackageName", "");
-        str3 = localJSONObject.optString("appName", ajya.a(2131707057));
-        localJSONObject.optString("channelId", "");
-        Object localObject1 = localJSONObject.optString("appAuthorizedStr", "");
-        Bundle localBundle = new Bundle();
-        paramString = (String)localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          paramString = "1";
-        }
-        int i = Integer.parseInt(paramString);
-        localBundle.putString(bdlb.b, localJSONObject.optString("appid", ""));
-        localBundle.putString(bdlb.jdField_c_of_type_JavaLangString, localJSONObject.optString("myAppid", ""));
-        localBundle.putString(bdlb.jdField_d_of_type_JavaLangString, localJSONObject.optString("apkId"));
-        localBundle.putInt(bdlb.e, i);
-        localBundle.putString(bdlb.f, localJSONObject.optString("appPackageName"));
-        localBundle.putString(bdlb.i, localJSONObject.optString("via"));
-        localBundle.putString(bdlb.l, localJSONObject.optString("appName"));
-        localBundle.putString(bdlb.z, localJSONObject.optString("channelId"));
-        localBundle.putString(bdlb.B, localJSONObject.optString("channel"));
-        localBundle.putString(bdlb.v, localJSONObject.optString("uin"));
-        this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = a(localBundle);
-        this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.actionFlag = "2";
-        if (b())
-        {
-          a(paramActivity, paramOnClickListener);
-          return;
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          paramString = (String)localObject1;
-          boolean bool = bdkw.a();
-          localObject1 = new bdlw(this, localBundle, bool, paramActivity, str2, paramOnClickListener, str1);
-          paramOnClickListener = new bdma(this, paramOnClickListener, str2, str1);
-          localObject2 = new bdlz(this, str2, str1);
-          localBundle.putString(bdlb.p, paramString);
-          a(paramActivity, 1, 1, "0", (DialogInterface.OnClickListener)localObject1, paramOnClickListener, (DialogInterface.OnCancelListener)localObject2, "biz_src_yyb", bool, localBundle);
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      paramString = str3 + ajya.a(2131707054);
-    }
-  }
-  
-  public boolean b()
-  {
-    boolean bool = true;
-    try
-    {
-      int i = a().checkQQDownloaderInstalled();
-      if ((i == 2) || (i == 1)) {
-        bool = false;
-      }
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      bdii.c("MyAppApi", "hasValidQQDownloader>>>", localException);
-    }
-    return false;
-  }
-  
-  public boolean b(Context paramContext, Bundle paramBundle)
-  {
-    if (paramBundle == null) {
-      return false;
-    }
-    bdii.c("TIME-STATISTIC", "mDownloadSdk.startToDownloadListWithParams");
-    a().startToDownloadTaskListWithParams(paramContext, paramBundle);
-    return true;
-  }
-  
-  public void c(Activity paramActivity)
-  {
-    new bdmp(paramActivity, null).execute(new Void[0]);
-  }
-  
-  public boolean c()
-  {
-    return (b()) && (bdkw.e()) && (bdkw.h());
-  }
-  
-  protected void d()
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
-    bdlx localbdlx = new bdlx(this);
-    bcyb.a().a().registerReceiver(localbdlx, localIntentFilter);
-  }
-  
-  public void d(Activity paramActivity)
-  {
-    if ((this.e) && (this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null))
-    {
-      if ((!a()) && (a().b()))
-      {
-        if (this.jdField_a_of_type_Long != -1L) {
-          a().removeDownloadTask(this.jdField_a_of_type_Long);
-        }
-        a(paramActivity, null);
-      }
-      this.e = false;
-      e();
-      return;
-    }
-    this.e = false;
-    this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = null;
-    e();
-  }
-  
-  protected void e()
-  {
-    bdii.c("MyAppApi", "clearInstallParam");
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-    this.jdField_a_of_type_Bdmc = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = null;
-  }
-  
-  public boolean e()
-  {
-    return a() > 2;
-  }
-  
-  public void f()
-  {
-    this.jdField_d_of_type_Long = 0L;
-  }
-  
-  public boolean f()
-  {
-    return this.g;
-  }
-  
-  protected void g()
-  {
-    a().registerListener(this.jdField_a_of_type_ComTencentTmassistantsdkITMAssistantCallBackListener);
-  }
-  
-  public boolean g()
-  {
-    boolean bool2 = false;
-    Object localObject = BaseActivity.sTopActivity.getPackageManager();
-    boolean bool1 = bool2;
-    if (localObject != null) {}
-    try
-    {
-      localObject = ((PackageManager)localObject).getPackageInfo("com.tencent.android.qqdownloader", 0);
-      bool1 = bool2;
-      if (localObject != null)
-      {
-        int i = ((PackageInfo)localObject).versionCode;
-        bool1 = bool2;
-        if (i >= 7090000) {
-          bool1 = true;
-        }
-      }
-      return bool1;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      localNameNotFoundException.printStackTrace();
-    }
-    return false;
-  }
-  
-  public void h()
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB.unregisterListener(this.jdField_a_of_type_ComTencentTmassistantsdkITMAssistantCallBackListener);
-      this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB.destroyQQDownloaderOpenSDK();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        try
-        {
-          jdField_a_of_type_Bdlr = null;
-          return;
-        }
-        finally {}
-        localException = localException;
-        bdii.a("MyAppApi", "onDestroy>>>", localException);
-      }
-    }
+    int i = (byte)(paramInt & 0xFF);
+    int j = (byte)(paramInt >> 8 & 0xFF);
+    int k = (byte)(paramInt >> 16 & 0xFF);
+    return new byte[] { (byte)(paramInt >> 24 & 0xFF), k, j, i };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdlr
  * JD-Core Version:    0.7.0.1
  */

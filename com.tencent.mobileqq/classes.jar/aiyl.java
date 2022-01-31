@@ -1,27 +1,26 @@
-public abstract interface aiyl
-  extends aivw
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+
+public class aiyl
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public aiyl(DrawHbFragment paramDrawHbFragment) {}
   
-  public abstract void a(Object paramObject);
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString1, String paramString2);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
+  public void onClick(View paramView)
+  {
+    if ((paramView instanceof TextView))
+    {
+      DrawHbFragment.a(this.a).setText(((TextView)paramView).getText().toString());
+      DrawHbFragment.a(this.a).c("draw.wrappacket.choose");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyl
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@
     </RelativeLayout>
     <LinearLayout android:orientation="vertical" android:id="@id/jon" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <TextView android:textSize="21.0sp" android:textColor="@color/yw" android:gravity="center_horizontal" android:id="@id/joo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/qsh" />
-        <TextView android:textSize="17.0sp" android:textColor="@color/db" android:gravity="center_horizontal" android:id="@id/aoi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/kd" android:gravity="center_horizontal" android:id="@id/aoi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip" />
     </LinearLayout>
     <RelativeLayout android:id="@id/dbj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignLeft="@id/dbi" android:layout_alignTop="@id/dbi" android:layout_alignRight="@id/dbi" android:layout_alignBottom="@id/dbi" android:layout_alignStart="@id/dbi" android:layout_alignEnd="@id/dbi">
         <LinearLayout android:orientation="vertical" android:id="@id/jpi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">

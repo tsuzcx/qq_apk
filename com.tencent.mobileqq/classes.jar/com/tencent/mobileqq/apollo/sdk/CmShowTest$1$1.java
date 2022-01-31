@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import ajgn;
-import ajgo;
+import akxz;
+import akya;
 
 public class CmShowTest$1$1
   implements Runnable
 {
-  public CmShowTest$1$1(ajgo paramajgo) {}
+  public CmShowTest$1$1(akya paramakya) {}
   
   public void run()
   {
-    ajgn.a(this.this$0.a);
+    akxz.a(this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.sdk.CmShowTest.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import azuw;
+import bbtf;
 import java.util.HashSet;
 
 public class TroopFileUploadMgr$9
   implements Runnable
 {
-  public TroopFileUploadMgr$9(azuw paramazuw) {}
+  public TroopFileUploadMgr$9(bbtf parambbtf) {}
   
   public void run()
   {
     HashSet localHashSet = new HashSet();
     this.this$0.a(1, localHashSet);
-    azuw.a(this.this$0, 1, new Object[] { localHashSet });
+    bbtf.a(this.this$0, 1, new Object[] { localHashSet });
   }
 }
 

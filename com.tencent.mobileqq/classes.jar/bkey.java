@@ -1,12 +1,17 @@
-import android.view.MotionEvent;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.weiyun.transmission.WeiyunTransmissionStatus;
 
-public abstract class bkey
+final class bkey
+  implements INetEventHandler
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    WeiyunTransmissionStatus.getInstance().onReceiveNetChanged(paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkey
  * JD-Core Version:    0.7.0.1
  */

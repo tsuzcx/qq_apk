@@ -1,24 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 class quu
-  implements DialogInterface.OnShowListener
+  implements quw
 {
-  quu(quo paramquo) {}
+  quu(qun paramqun, long paramLong, quv paramquv) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mDisLikeActionSheet onShow() on VideoChannel");
-    }
-    quo.a(this.a).getWindow().clearFlags(8);
+    List localList = qun.a(this.jdField_a_of_type_Qun, this.jdField_a_of_type_Long, qun.a(this.jdField_a_of_type_Qun));
+    this.jdField_a_of_type_Quv.a(localList);
+    qun.b(this.jdField_a_of_type_Qun).remove(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     quu
  * JD-Core Version:    0.7.0.1
  */

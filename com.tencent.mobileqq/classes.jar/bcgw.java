@@ -1,27 +1,61 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.animation.Transformation;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.util.LruCache;
+import com.tencent.qphone.base.util.QLog;
 
-class bcgw
-  implements bble<Integer>
+public class bcgw
+  extends Handler
 {
-  bcgw(bcgu parambcgu, int paramInt) {}
-  
-  public void a(bbky<Integer> parambbky, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void handleMessage(Message paramMessage)
   {
-    if (!this.jdField_a_of_type_Bcgu.jdField_a_of_type_Boolean) {}
-    do
+    if (paramMessage.what == 1001) {}
+    try
     {
+      paramMessage = (String)paramMessage.obj;
+      if (QLog.isColorLevel()) {
+        QLog.d("NonMainAppListViewFaceLoader", 2, "DecodeHandler handle MSG_DECODE_FACE_BITMAP uin:" + paramMessage);
+      }
+      Bitmap localBitmap1 = bdda.a((String)this.a.b.get(paramMessage), null);
+      if (localBitmap1 != null)
+      {
+        Bitmap localBitmap2 = this.a.a(localBitmap1);
+        if (localBitmap2 != null)
+        {
+          Message localMessage = Message.obtain();
+          Bundle localBundle = new Bundle();
+          localBundle.putParcelable("bmp", localBitmap2);
+          localBundle.putString("uin", paramMessage);
+          localMessage.obj = localBundle;
+          localMessage.what = 1002;
+          this.a.a.sendMessage(localMessage);
+          if (QLog.isColorLevel()) {
+            QLog.d("NonMainAppListViewFaceLoader", 2, "decodeFile, uin:" + paramMessage);
+          }
+        }
+        if ((localBitmap1 != null) && (!localBitmap1.isRecycled())) {
+          localBitmap1.recycle();
+        }
+      }
       return;
-      this.jdField_a_of_type_Bcgu.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
-      this.jdField_a_of_type_Bcgu.jdField_a_of_type_Int = paramInteger.intValue();
-    } while (this.jdField_a_of_type_Bcgu.jdField_a_of_type_Int != this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bcgu.jdField_a_of_type_Boolean = false;
+    }
+    catch (OutOfMemoryError paramMessage)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, OutOfMemoryError");
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("NonMainAppListViewFaceLoader", 2, "decodeFile, exception:" + paramMessage.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcgw
  * JD-Core Version:    0.7.0.1
  */

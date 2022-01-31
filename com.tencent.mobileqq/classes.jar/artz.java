@@ -1,74 +1,104 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.HashMap;
+import java.util.Map;
 
-class artz
-  extends arrh
+public class artz
 {
-  artz(arty paramarty) {}
-  
-  protected void a(int paramInt, String paramString)
+  public static Object a(Map<String, Object> paramMap, Class<?> paramClass)
   {
-    QLog.d("BaseListenTogetherPanel", 1, String.format("onJoinAndEnter [%d,%s] [%d,%s] resumed=[%b] ", new Object[] { Integer.valueOf(paramInt), paramString, Integer.valueOf(this.a.jdField_a_of_type_Arue.jdField_a_of_type_Int), this.a.jdField_a_of_type_Arue.jdField_a_of_type_JavaLangString, Boolean.valueOf(this.a.b) }));
-    if ((!this.a.b) || (this.a.jdField_a_of_type_Arue.jdField_a_of_type_Int != paramInt) || (!this.a.jdField_a_of_type_Arue.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString))) {
-      return;
+    Object localObject1 = null;
+    Object localObject2 = null;
+    int i = 0;
+    if (paramMap == null) {
+      return localObject2;
     }
-    paramString = ListenTogetherManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app).a(paramInt, paramString);
-    if ((paramString == null) || (this.a.jdField_a_of_type_Arue.b == 3))
+    localObject2 = localObject1;
+    for (;;)
     {
-      bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693838, 0).a();
-      return;
+      Field localField;
+      try
+      {
+        localObject1 = paramClass.newInstance();
+        localObject2 = localObject1;
+        Field[] arrayOfField = localObject1.getClass().getDeclaredFields();
+        localObject2 = localObject1;
+        int j = arrayOfField.length;
+        localObject2 = localObject1;
+        if (i >= j) {
+          break;
+        }
+        localField = arrayOfField[i];
+        localObject2 = localObject1;
+        int k = localField.getModifiers();
+        localObject2 = localObject1;
+        if (Modifier.isStatic(k)) {
+          break label195;
+        }
+        localObject2 = localObject1;
+        if (Modifier.isFinal(k)) {
+          break label195;
+        }
+        localObject2 = localObject1;
+        localField.setAccessible(true);
+        localObject2 = localObject1;
+        if (paramMap.containsKey(localField.getName()))
+        {
+          localObject2 = localObject1;
+          localField.set(localObject1, paramMap.get(localField.getName()));
+        }
+      }
+      catch (Exception paramMap)
+      {
+        paramMap.printStackTrace();
+        return localObject2;
+      }
+      localObject2 = localObject1;
+      QLog.e("QFlutter.ModelUtils", 1, String.format("mapToObject, %s.%s is null", new Object[] { paramClass.getSimpleName(), localField.getName() }));
+      label195:
+      i += 1;
     }
-    if (this.a.jdField_a_of_type_Arue.c != 2)
+  }
+  
+  public static Map a(Object paramObject)
+  {
+    Object localObject;
+    if (paramObject == null) {
+      localObject = null;
+    }
+    for (;;)
     {
-      bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693840, 0).a();
-      return;
+      return localObject;
+      localHashMap = new HashMap();
+      try
+      {
+        Field[] arrayOfField = paramObject.getClass().getDeclaredFields();
+        int j = arrayOfField.length;
+        int i = 0;
+        for (;;)
+        {
+          localObject = localHashMap;
+          if (i >= j) {
+            break;
+          }
+          localObject = arrayOfField[i];
+          ((Field)localObject).setAccessible(true);
+          localHashMap.put(((Field)localObject).getName(), ((Field)localObject).get(paramObject));
+          i += 1;
+        }
+        return localHashMap;
+      }
+      catch (Exception paramObject)
+      {
+        paramObject.printStackTrace();
+      }
     }
-    if (this.a.jdField_a_of_type_Arue.b == 4)
-    {
-      bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693843, 0).a();
-      return;
-    }
-    MusicInfo localMusicInfo = paramString.a();
-    ListenTogetherPlayFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramString, localMusicInfo, this.a.jdField_a_of_type_Arue.jdField_a_of_type_Boolean, null);
-  }
-  
-  protected void a(int paramInt, String paramString1, String paramString2)
-  {
-    arty.a(this.a, paramInt, paramString1, paramString2);
-  }
-  
-  protected void a(int paramInt, String paramString, boolean paramBoolean)
-  {
-    this.a.a(paramInt, paramString, paramBoolean);
-  }
-  
-  protected void a(ListenTogetherSession paramListenTogetherSession)
-  {
-    this.a.a(paramListenTogetherSession);
-  }
-  
-  protected void a(String paramString, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramString, paramInt1, paramInt2);
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    this.a.a(paramInt, paramString);
-  }
-  
-  protected void h(int paramInt, String paramString)
-  {
-    this.a.b(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     artz
  * JD-Core Version:    0.7.0.1
  */

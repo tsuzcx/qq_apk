@@ -1,78 +1,48 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.WeakReference;
 
 public class bbva
-  extends RemoteCommand
+  extends Handler
 {
-  public bbva()
+  private WeakReference<BeginnerGuideFragment> a;
+  
+  public bbva(BeginnerGuideFragment paramBeginnerGuideFragment, Looper paramLooper)
   {
-    super("running_plugin_cmd");
+    super(paramLooper);
+    this.a = new WeakReference(paramBeginnerGuideFragment);
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public void handleMessage(Message paramMessage)
   {
-    paramOnInvokeFinishLinstener = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramOnInvokeFinishLinstener != null) && ((paramOnInvokeFinishLinstener instanceof QQAppInterface))) {}
-    for (paramOnInvokeFinishLinstener = (QQAppInterface)paramOnInvokeFinishLinstener;; paramOnInvokeFinishLinstener = null)
+    super.handleMessage(paramMessage);
+    BeginnerGuideFragment localBeginnerGuideFragment = (BeginnerGuideFragment)this.a.get();
+    if (localBeginnerGuideFragment == null) {}
+    do
     {
-      switch (paramBundle.getInt("CommondType"))
+      return;
+      switch (paramMessage.what)
       {
+      default: 
+        return;
+      case 1110: 
+        if (QLog.isColorLevel()) {
+          QLog.d("BeginnerGuideFragment", 2, "parse config from network success");
+        }
+        break;
       }
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return null;
-              if (paramOnInvokeFinishLinstener == null) {
-                break;
-              }
-              paramOnInvokeFinishLinstener = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
-            } while (paramOnInvokeFinishLinstener == null);
-            try
-            {
-              Message localMessage = paramOnInvokeFinishLinstener.obtainMessage(1134043);
-              long l = paramBundle.getLong("runningState");
-              paramBundle = paramBundle.getString("cookieUrl");
-              JSONObject localJSONObject = new JSONObject();
-              localJSONObject.put("runningState", l);
-              localJSONObject.put("cookieUrl", paramBundle);
-              localMessage.obj = localJSONObject;
-              paramOnInvokeFinishLinstener.sendMessage(localMessage);
-              return null;
-            }
-            catch (JSONException paramBundle)
-            {
-              return null;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.e("SportRemoteCommond", 2, "showRunningBar null");
-          return null;
-        } while (paramOnInvokeFinishLinstener == null);
-        paramBundle = paramOnInvokeFinishLinstener.getHandler(Conversation.class);
-      } while (paramBundle == null);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134044), 1000L);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134040), 1000L);
-      paramBundle.sendMessageDelayed(paramBundle.obtainMessage(1134050), 1000L);
-      return null;
-    }
+    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String)));
+    BeginnerGuideFragment.a(localBeginnerGuideFragment, (String)paramMessage.obj, paramMessage.arg1);
+    return;
+    BeginnerGuideFragment.a(localBeginnerGuideFragment, paramMessage.what);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbva
  * JD-Core Version:    0.7.0.1
  */

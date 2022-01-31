@@ -1,173 +1,219 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint.FontMetricsInt;
-import android.os.Build.VERSION;
-import android.text.TextPaint;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.business.manager.EffectConfigBase;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lrw
-  extends lrx
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private final Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config;
-  protected Canvas a;
-  private Paint.FontMetricsInt jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private String jdField_a_of_type_JavaLangString = "";
-  private float b = 15.0F;
-  private int k = -1;
-  private int l = 2147483647;
-  private int m = 2147483647;
-  private int n = 2147483647;
+  private static float jdField_a_of_type_Float = -1.0F;
+  private static int jdField_a_of_type_Int;
+  private static final String jdField_a_of_type_JavaLangString = len.h() + "SKINCOLOR" + File.separator;
   
-  public lrw()
+  public static float a()
   {
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.k);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.b);
-    this.jdField_a_of_type_AndroidTextTextPaint.setShadowLayer(2.0F, 0.0F, 0.0F, -16777216);
-    this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt();
-    this.jdField_a_of_type_AndroidGraphicsBitmap$Config = Bitmap.Config.ARGB_8888;
-    a(false);
-  }
-  
-  protected Bitmap a()
-  {
-    Bitmap localBitmap = Bitmap.createBitmap(this.e, this.f, this.jdField_a_of_type_AndroidGraphicsBitmap$Config);
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(localBitmap);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.translate(0.0F, -this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.ascent);
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawText(this.jdField_a_of_type_JavaLangString, 0.0F, 0.0F, this.jdField_a_of_type_AndroidTextTextPaint);
-    return localBitmap;
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StringTexture", 2, "setTextSize textSize: " + paramFloat);
+    if (jdField_a_of_type_Float != -1.0F) {
+      return jdField_a_of_type_Float;
     }
-    this.b = paramFloat;
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.b);
-    this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetricsInt();
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    if (!d()) {
-      paramBitmap.recycle();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StringTexture", 2, "setText text: " + paramString);
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(lqo paramlqo, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if ((this.jdField_a_of_type_Float < 0.99F) && (Build.VERSION.SDK_INT >= 16)) {}
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      if (i != 0)
+      try
       {
-        paramlqo.a(3);
-        paramlqo.a(this.jdField_a_of_type_Float);
+        lrf locallrf = lrf.a();
+        if (locallrf == null) {
+          continue;
+        }
+        jdField_a_of_type_Float = locallrf.a();
+        lek.c("EffectBeautyTools", "mBeautyRatio:" + jdField_a_of_type_Float);
       }
-      paramlqo.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
-      if (i != 0) {
-        paramlqo.c();
+      catch (Exception localException)
+      {
+        lek.c("EffectBeautyTools", "getNewBeautyRatio Exception:" + localException);
+        jdField_a_of_type_Float = 1.0F;
+        continue;
       }
+      return jdField_a_of_type_Float;
+      jdField_a_of_type_Float = 1.0F;
+    }
+  }
+  
+  private static lry a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      lek.c("EffectBeautyTools", "parseConfig|content is empty.");
+      return null;
+    }
+    for (;;)
+    {
+      try
+      {
+        localJSONObject = new JSONObject(paramString).getJSONObject("skinColorFilter");
+      }
+      catch (JSONException localJSONException3)
+      {
+        JSONObject localJSONObject;
+        int i;
+        String str1;
+        String str2;
+        locallry = null;
+        continue;
+      }
+      try
+      {
+        i = Integer.valueOf(localJSONObject.getString("filterid")).intValue();
+        str1 = localJSONObject.getString("resurl");
+        str2 = localJSONObject.getString("md5");
+        locallry = new lry(i, str1, str2);
+        try
+        {
+          lek.c("EffectBeautyTools", "parseConfig:" + i + "|" + str1 + "|" + str2);
+          return locallry;
+        }
+        catch (JSONException localJSONException1) {}
+      }
+      catch (JSONException localJSONException4)
+      {
+        locallry = null;
+        continue;
+      }
+      try
+      {
+        localJSONException1.printStackTrace();
+        lek.c("EffectBeautyTools", "parseConfig failed. info = " + localJSONObject);
+        return locallry;
+      }
+      catch (JSONException localJSONException2)
+      {
+        localJSONException2.printStackTrace();
+        lek.c("EffectBeautyTools", "parseConfig|parse failed.context = " + paramString);
+        return locallry;
+      }
+    }
+  }
+  
+  private static void a()
+  {
+    SharedPreferences.Editor localEditor = EffectConfigBase.a(180, EffectConfigBase.c).edit();
+    localEditor.putInt("qav_effect_beauty_config_first_launch", 1);
+    localEditor.commit();
+  }
+  
+  public static void a(Context paramContext)
+  {
+    try
+    {
+      if (b())
+      {
+        a();
+        if (new File(jdField_a_of_type_JavaLangString).exists()) {
+          bdcs.a(jdField_a_of_type_JavaLangString);
+        }
+      }
+      paramContext = a(EffectConfigBase.b(180, EffectConfigBase.c));
+      if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.jdField_a_of_type_JavaLangString)))
+      {
+        Object localObject = new File(jdField_a_of_type_JavaLangString + "params.json");
+        lek.c("EffectBeautyTools", "preDownloadResource :" + ((File)localObject).exists());
+        if (!((File)localObject).exists())
+        {
+          localObject = new baps();
+          ((baps)localObject).jdField_a_of_type_Bapx = new lrx();
+          ((baps)localObject).jdField_a_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
+          ((baps)localObject).jdField_a_of_type_Int = 0;
+          ((baps)localObject).c = (len.h() + "skin_color.zip");
+          ((baps)localObject).a(paramContext);
+          lel.a().a((baqv)localObject);
+        }
+      }
+      return;
+    }
+    catch (Exception paramContext) {}
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
+  {
+    a(paramContext, paramString, EffectConfigBase.b(180, EffectConfigBase.c));
+    EffectConfigBase.a(180, EffectConfigBase.c, paramInt, paramString);
+    if (paramBoolean) {
+      a(paramContext);
+    }
+  }
+  
+  private static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    Object localObject = null;
+    if (!TextUtils.isEmpty(paramString1)) {}
+    for (paramContext = a(paramString1);; paramContext = null)
+    {
+      paramString1 = localObject;
+      if (!TextUtils.isEmpty(paramString2)) {
+        paramString1 = a(paramString2);
+      }
+      if (paramContext == null) {
+        bdcs.a(jdField_a_of_type_JavaLangString);
+      }
+      while ((paramString1 == null) || (paramContext.b.equals(paramString1.b))) {
+        return;
+      }
+      bdcs.a(jdField_a_of_type_JavaLangString);
       return;
     }
   }
   
-  public void c(int paramInt)
+  public static boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StringTexture", 2, "setTextColor textColor: " + paramInt);
+    if (jdField_a_of_type_Int != 0) {
+      return jdField_a_of_type_Int == 2;
     }
-    this.k = paramInt;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(this.k);
-  }
-  
-  public void d(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StringTexture", 2, "setMaxLength maxLength: " + paramInt);
-    }
-    this.n = paramInt;
-  }
-  
-  public void e()
-  {
-    int i = 1;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    for (;;)
     {
-      j = mqu.a(this.jdField_a_of_type_JavaLangString);
-      i = (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString));
-      if ((j <= this.n) && (i <= this.l)) {
-        break label302;
-      }
-    }
-    label302:
-    for (int j = 1;; j = 0)
-    {
-      if (j != 0)
+      try
       {
-        i = Math.min(Math.max((this.l - (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText("..."))) / (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText("M")), 1), this.n);
-        this.jdField_a_of_type_JavaLangString = (mqu.a(this.jdField_a_of_type_JavaLangString, 0, i) + "...");
-        i = (int)Math.ceil(this.jdField_a_of_type_AndroidTextTextPaint.measureText(this.jdField_a_of_type_JavaLangString));
+        lrf locallrf = lrf.a();
+        if ((locallrf == null) || (!locallrf.a()) || (!c())) {
+          continue;
+        }
+        jdField_a_of_type_Int = 2;
+        lek.c("EffectBeautyTools", "mIsSupportFlag:" + jdField_a_of_type_Int);
       }
-      j = this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.bottom - this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.top;
-      if (i <= 0) {
-        i = 1;
-      }
-      for (;;)
+      catch (Exception localException)
       {
-        if (j <= 0) {
-          j = 1;
-        }
-        for (;;)
-        {
-          b(i, j);
-          a(i, j);
-          if (QLog.isColorLevel()) {
-            QLog.d("StringTexture", 2, "refreshText width: " + this.e + ", height: " + this.f + ", maxLength: " + this.n + ", textSize: " + this.b + ", text: " + this.jdField_a_of_type_JavaLangString + ";mMetrics:=" + this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.toString());
-          }
-          return;
-          j = 1;
-        }
+        lek.c("EffectBeautyTools", "isSupportNewBeauty Exception:" + localException);
+        jdField_a_of_type_Int = 1;
+        continue;
       }
+      if (jdField_a_of_type_Int == 2) {
+        break;
+      }
+      return false;
+      jdField_a_of_type_Int = 1;
     }
   }
   
-  public void e(int paramInt)
+  private static boolean b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StringTexture", 2, "setWidth width: " + paramInt);
+    boolean bool = false;
+    int i = EffectConfigBase.a(180, EffectConfigBase.c).getInt("qav_effect_beauty_config_first_launch", 0);
+    lek.c("EffectBeautyTools", "getIsFirstLauncher:" + i);
+    if (i == 0) {
+      bool = true;
     }
-    if (paramInt > 0) {
-      this.l = paramInt;
-    }
+    return bool;
   }
   
-  public int j()
+  private static boolean c()
   {
-    return (int)Math.ceil(this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.descent - this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.ascent);
-  }
-  
-  public int k()
-  {
-    return Math.abs(this.jdField_a_of_type_AndroidGraphicsPaint$FontMetricsInt.ascent);
+    int i = EffectConfigBase.c(180, EffectConfigBase.c);
+    return (new File(jdField_a_of_type_JavaLangString + "params.json").exists()) && (i != 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lrw
  * JD-Core Version:    0.7.0.1
  */

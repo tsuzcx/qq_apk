@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.newshare.model;
 
-import trg;
-import tri;
+import vfy;
+import vga;
 
 public class JobExecutor$4
   implements Runnable
 {
-  public JobExecutor$4(tri paramtri, trg paramtrg) {}
+  public JobExecutor$4(vga paramvga, vfy paramvfy) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class JobExecutor$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.model.JobExecutor.4
  * JD-Core Version:    0.7.0.1
  */

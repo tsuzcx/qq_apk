@@ -1,41 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
 
-class bcqw
-  implements DialogInterface.OnDismissListener
+public class bcqw
+  implements azzg
 {
-  private WeakReference<DialogInterface.OnDismissListener> a;
+  public bcqw(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
   
-  public bcqw(DialogInterface.OnDismissListener paramOnDismissListener)
+  public void a()
   {
-    this.a = new WeakReference(paramOnDismissListener);
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (this.a == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneProgressDialog", 2, "CustomDismissListener mDismissLis, lis is null");
-      }
+    if (TroopGiftToAllSurfaceView.a(this.a).d == 0) {
+      this.a.a(1, TroopGiftToAllSurfaceView.a(this.a));
     }
-    do
+    for (;;)
     {
-      return;
-      DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
-      if (localOnDismissListener != null)
-      {
-        localOnDismissListener.onDismiss(paramDialogInterface);
-        return;
+      if ((TroopGiftToAllSurfaceView.a(this.a) instanceof VideoSprite)) {
+        ((VideoSprite)TroopGiftToAllSurfaceView.a(this.a)).c(TroopGiftToAllSurfaceView.a(this.a));
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("QzoneProgressDialog", 2, "CustomDismissListener, lis is null");
+      return;
+      this.a.a(0, TroopGiftToAllSurfaceView.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcqw
  * JD-Core Version:    0.7.0.1
  */

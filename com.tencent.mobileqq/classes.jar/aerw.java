@@ -1,24 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
 
 class aerw
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ImageAssetDelegate
 {
-  aerw(aert paramaert, View paramView, int paramInt1, int paramInt2) {}
+  aerw(aert paramaert) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    float f1 = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    float f2 = this.jdField_a_of_type_Int;
-    paramValueAnimator.height = ((int)(f1 * (this.b - this.jdField_a_of_type_Int) + f2));
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inScaled = true;
+    localOptions.inDensity = 320;
+    try
+    {
+      paramLottieImageAsset = bdda.a(aert.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
+      return paramLottieImageAsset;
+    }
+    catch (Exception paramLottieImageAsset)
+    {
+      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap error");
+      return null;
+    }
+    catch (OutOfMemoryError paramLottieImageAsset)
+    {
+      QLog.e("LottieAnimDirector", 1, "Delegate decode bitmap OOM");
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerw
  * JD-Core Version:    0.7.0.1
  */

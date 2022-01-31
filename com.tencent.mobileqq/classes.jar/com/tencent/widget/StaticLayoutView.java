@@ -8,13 +8,13 @@ import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import annk;
+import aper;
 
 public class StaticLayoutView
   extends View
 {
   private Layout jdField_a_of_type_AndroidTextLayout;
-  annk jdField_a_of_type_Annk;
+  aper jdField_a_of_type_Aper;
   
   public StaticLayoutView(Context paramContext)
   {
@@ -75,10 +75,10 @@ public class StaticLayoutView
           if (i == 1) {
             localObject1[0].onClick(this);
           }
-          if ((localObject1[0] instanceof annk)) {
-            ((annk)localObject1[0]).a(false);
+          if ((localObject1[0] instanceof aper)) {
+            ((aper)localObject1[0]).a(false);
           }
-          this.jdField_a_of_type_Annk = null;
+          this.jdField_a_of_type_Aper = null;
           postInvalidate();
         }
         for (;;)
@@ -86,19 +86,19 @@ public class StaticLayoutView
           return true;
           if (i == 0)
           {
-            if ((localObject1[0] instanceof annk))
+            if ((localObject1[0] instanceof aper))
             {
-              ((annk)localObject1[0]).a(true);
-              this.jdField_a_of_type_Annk = ((annk)localObject1[0]);
+              ((aper)localObject1[0]).a(true);
+              this.jdField_a_of_type_Aper = ((aper)localObject1[0]);
             }
             postInvalidate();
           }
         }
       }
-      if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_Annk != null))
+      if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_Aper != null))
       {
-        this.jdField_a_of_type_Annk.a(false);
-        this.jdField_a_of_type_Annk = null;
+        this.jdField_a_of_type_Aper.a(false);
+        this.jdField_a_of_type_Aper = null;
         postInvalidate();
       }
     }
@@ -113,7 +113,7 @@ public class StaticLayoutView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.StaticLayoutView
  * JD-Core Version:    0.7.0.1
  */

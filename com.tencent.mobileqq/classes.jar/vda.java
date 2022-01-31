@@ -1,23 +1,19 @@
-import android.os.Handler;
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
 
-class vda
-  implements uzu<uzb>
+public class vda
+  extends unf
 {
-  vda(vcz paramvcz, String paramString) {}
+  public qqstory_service.RspGetMusicListConfig a;
   
-  public void a(uzb paramuzb)
+  public vda(qqstory_service.RspGetMusicListConfig paramRspGetMusicListConfig)
   {
-    if ((paramuzb.a != null) && (TextUtils.equals(paramuzb.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
-    {
-      vcp.a(this.jdField_a_of_type_Vcz.a).a = paramuzb.a;
-      vcp.a(this.jdField_a_of_type_Vcz.a).sendMessage(vcp.a(this.jdField_a_of_type_Vcz.a).obtainMessage(0, vcp.a(this.jdField_a_of_type_Vcz.a)));
-    }
+    super(paramRspGetMusicListConfig.result);
+    this.a = paramRspGetMusicListConfig;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vda
  * JD-Core Version:    0.7.0.1
  */

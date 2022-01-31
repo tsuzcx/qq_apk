@@ -1,9 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
-import blbw;
+import bnng;
 
 class Game3DNativeEvent
-  implements blbw
+  implements bnng
 {
   public native void gestureEventNative(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
   
@@ -15,7 +15,7 @@ class Game3DNativeEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.ptvfilter.material.Game3DNativeEvent
  * JD-Core Version:    0.7.0.1
  */

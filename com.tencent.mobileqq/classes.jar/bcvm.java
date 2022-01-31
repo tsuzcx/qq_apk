@@ -1,22 +1,33 @@
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
 
-public class bcvm
-  implements alxj
+final class bcvm
+  implements DownloadParams.DecodeHandler
 {
-  public bcvm(ShareActionSheetV2 paramShareActionSheetV2) {}
-  
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
     if (paramBitmap == null) {
-      return;
+      paramDownloadParams = null;
     }
-    ShareActionSheetV2.a(this.a, paramString1, paramString2, paramBitmap);
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 3);
+    paramDownloadParams = (int[])localObject;
+    return bdda.e(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcvm
  * JD-Core Version:    0.7.0.1
  */

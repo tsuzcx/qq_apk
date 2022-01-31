@@ -1,99 +1,179 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
-class aldh
-  extends aleo
+public class aldh
 {
-  aldh(aldf paramaldf) {}
-  
-  public void a()
+  public static void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadSuccess ");
-    }
-    if (aldf.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadSuccess error mHandler is null ");
+    if (!alde.a()) {
       return;
     }
-    aldf.a(this.a).sendMessage(aldf.a(this.a).obtainMessage(3));
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("featureId", paramInt);
+    localBundle.putString("featureKey", paramString);
+    localBundle.putLong("endTime", SystemClock.uptimeMillis());
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      alde.a().b(paramInt, paramString, localBundle);
+      return;
+    }
+    a("action_end_trace", localBundle);
   }
   
-  public void a(int paramInt)
+  public static void a(int paramInt1, String paramString, int paramInt2, int paramInt3, long paramLong1, int paramInt4, long paramLong2, Object... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadError|error= " + paramInt);
-    }
-    if (aldf.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadError error mHandler is null ");
+    if (!alde.a()) {
       return;
     }
-    aldf.a(this.a).sendMessage(aldf.a(this.a).obtainMessage(5, Integer.valueOf(paramInt)));
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (paramLong2 != 0L)
+    StringBuilder localStringBuilder = new StringBuilder(paramVarArgs.length * 30);
+    int i = 0;
+    while (i < paramVarArgs.length)
     {
-      long l = 100L * paramLong1 / paramLong2;
-      if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "onDownloadProcess percent= " + l);
-      }
-      if (aldf.a(this.a) == null) {
-        QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onDownloadProcess error mHandler is null ");
-      }
+      localStringBuilder.append(paramVarArgs[i]);
+      i += 1;
     }
-    else
+    paramVarArgs = new Bundle();
+    paramVarArgs.putInt("featureId", paramInt1);
+    paramVarArgs.putString("featureKey", paramString);
+    paramVarArgs.putInt("spanId", paramInt2);
+    paramVarArgs.putInt("errCode", paramInt3);
+    if (paramLong1 > 0L) {}
+    for (long l = paramLong1;; l = System.currentTimeMillis())
     {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 4;
-    localMessage.arg1 = ((int)paramLong1);
-    localMessage.arg2 = ((int)paramLong2);
-    aldf.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "onConfigChanged!");
-    }
-    if (aldf.a(this.a) == null) {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mArCallback onConfigChanged error mHandler is null ");
-    }
-    do
-    {
-      return;
-      if (paramArConfigInfo != null)
+      paramVarArgs.putLong("timestamp", l);
+      if ((paramInt3 == 0) || (paramInt3 == -100))
       {
-        Message localMessage = Message.obtain();
-        localMessage.what = 1;
-        localMessage.obj = paramArConfigInfo;
-        aldf.a(this.a).sendMessage(localMessage);
+        l = paramLong1;
+        if (paramLong1 > 0L) {}
       }
-      if (paramArEffectConfig != null)
+      else
       {
-        paramArConfigInfo = Message.obtain();
-        paramArConfigInfo.what = 2;
-        paramArConfigInfo.obj = paramArEffectConfig;
-        aldf.a(this.a).sendMessage(paramArConfigInfo);
+        l = SystemClock.uptimeMillis();
       }
-    } while (paramARCommonConfigInfo == null);
-    paramArConfigInfo = Message.obtain();
-    paramArConfigInfo.what = 9;
-    paramArConfigInfo.obj = paramARCommonConfigInfo;
-    aldf.a(this.a).sendMessage(paramArConfigInfo);
+      paramVarArgs.putLong("serverTime", NetConnInfoCenter.getServerTimeMillis());
+      paramVarArgs.putLong("startTime", l);
+      paramVarArgs.putLong("endTime", l);
+      paramVarArgs.putString("msg", localStringBuilder.toString());
+      paramVarArgs.putInt("extKey", paramInt4);
+      paramVarArgs.putLong("extValue", paramLong2);
+      if (BaseApplicationImpl.sProcessId != 1) {
+        break;
+      }
+      alde.a().c(paramInt1, paramString, paramVarArgs);
+      return;
+    }
+    a("action_report_span", paramVarArgs);
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2)
+  {
+    if (!alde.a()) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("featureId", paramInt);
+    localBundle.putString("featureKey", paramString2);
+    localBundle.putString("tuid", paramString1);
+    localBundle.putLong("timestamp", System.currentTimeMillis());
+    localBundle.putLong("serverTime", NetConnInfoCenter.getServerTimeMillis());
+    localBundle.putLong("startTime", SystemClock.uptimeMillis());
+    localBundle.putLong("endTime", SystemClock.uptimeMillis());
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      alde.a().a(paramInt, paramString2, localBundle);
+      return;
+    }
+    a("action_begin_trace", localBundle);
+  }
+  
+  public static void a(int paramInt, String paramString, int... paramVarArgs)
+  {
+    int i = 0;
+    if (!alde.a()) {
+      return;
+    }
+    int j = 0;
+    int m = 0;
+    int k = 0;
+    while ((i < paramVarArgs.length) && (i < 3))
+    {
+      if (i == 0) {
+        k = paramVarArgs[i];
+      }
+      if (i == 1) {
+        m = paramVarArgs[i];
+      }
+      if (i == 2) {
+        j = paramVarArgs[i];
+      }
+      i += 1;
+    }
+    paramVarArgs = new Bundle();
+    paramVarArgs.putInt("featureId", paramInt);
+    paramVarArgs.putString("tuid", paramString);
+    paramVarArgs.putInt("extra1", k);
+    paramVarArgs.putInt("extra2", m);
+    paramVarArgs.putInt("extra3", j);
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      alde.a().a(paramInt, paramVarArgs);
+      return;
+    }
+    a("action_update_trace", paramVarArgs);
+  }
+  
+  public static void a(int paramInt, boolean paramBoolean)
+  {
+    if (!alde.a()) {
+      return;
+    }
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      alde.a().a(paramInt, paramBoolean);
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("featureId", paramInt);
+    localBundle.putBoolean("enable", paramBoolean);
+    a("action_enable_trace", localBundle);
+  }
+  
+  public static void a(aldb paramaldb)
+  {
+    if (!alde.a()) {
+      return;
+    }
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      alde.a().a(paramaldb);
+      return;
+    }
+    throw new IllegalArgumentException("config should init in PROCESS_QQ");
+  }
+  
+  private static void a(String paramString, Bundle paramBundle)
+  {
+    if (BaseApplicationImpl.sProcessId == 2)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("action", paramString);
+      localBundle.putBundle("bundle", paramBundle);
+      QIPCClientHelper.getInstance().callServer("cm_game_module", "action_cmshow_tracereport", localBundle, new aldi());
+    }
+    if (!apmy.a().a()) {
+      return;
+    }
+    paramBundle.putString("action", paramString);
+    paramString = apic.a("ipc_trace_report", "", 0, paramBundle);
+    apmy.a().a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldh
  * JD-Core Version:    0.7.0.1
  */

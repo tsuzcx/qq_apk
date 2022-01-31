@@ -1,59 +1,49 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity.1;
+import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aiip
-  extends Handler
+  extends awdn
 {
-  public aiip(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  public aiip(PhoneLaunchActivity.1 param1) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    switch (paramMessage.what)
+    PhoneLaunchActivity.a(this.a.this$0).setEnabled(true);
+    if (this.a.this$0.a != null)
     {
-    default: 
-    case 8193: 
-    case 8194: 
-      do
+      this.a.this$0.app.unRegistObserver(this.a.this$0.a);
+      this.a.this$0.a = null;
+    }
+    this.a.this$0.b();
+    if (paramBoolean)
+    {
+      Object localObject = this.a.this$0;
+      if ((PhoneLaunchActivity.a(this.a.this$0)) || (PhoneLaunchActivity.b(this.a.this$0)))
       {
-        do
-        {
-          do
-          {
-            return;
-            if (QQSpecialCareSettingActivity.a(this.a) == null)
-            {
-              QQSpecialCareSettingActivity.a(this.a, new bcqf(this.a, this.a.getTitleBarHeight()));
-              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
-                QQSpecialCareSettingActivity.a(this.a).a((String)paramMessage.obj);
-              }
-            }
-          } while ((this.a.isFinishing()) || (QQSpecialCareSettingActivity.a(this.a).isShowing()));
-          try
-          {
-            QQSpecialCareSettingActivity.a(this.a).show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-        } while (!QLog.isColorLevel());
-        QLog.e("QQSpecialCareSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
+        this.a.this$0.setResult(-1);
+        this.a.this$0.finish();
         return;
-      } while ((QQSpecialCareSettingActivity.a(this.a) == null) || (!QQSpecialCareSettingActivity.a(this.a).isShowing()));
-      QQSpecialCareSettingActivity.a(this.a).dismiss();
-      QQSpecialCareSettingActivity.a(this.a, null);
+      }
+      localObject = new Intent((Context)localObject, SettingActivity2.class);
+      if (PhoneLaunchActivity.c(this.a.this$0)) {
+        ((Intent)localObject).putExtra("kSrouce", 7);
+      }
+      this.a.this$0.startActivityForResult((Intent)localObject, 2);
+      this.a.this$0.setResult(-1);
+      this.a.this$0.finish();
       return;
     }
-    if (QQSpecialCareSettingActivity.a(this.a) != null) {
-      QQSpecialCareSettingActivity.a(this.a).cancel();
-    }
-    QQSpecialCareSettingActivity.a(this.a, bcql.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
+    this.a.this$0.a(alpo.a(2131708392));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiip
  * JD-Core Version:    0.7.0.1
  */

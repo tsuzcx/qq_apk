@@ -7,10 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import avvv;
+import axnu;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import vzl;
+import xod;
 
 public abstract class ProviderView
   extends FrameLayout
@@ -19,7 +19,7 @@ public abstract class ProviderView
   protected Handler a;
   protected View a;
   protected ViewGroup a;
-  protected avvv a;
+  protected axnu a;
   protected AppInterface a;
   protected QQSlidingTabView a;
   protected View b;
@@ -42,14 +42,14 @@ public abstract class ProviderView
   {
     if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2131560664, this, false);
+      paramBundle = LayoutInflater.from(getContext()).inflate(2131560840, this, false);
       addView(paramBundle);
-      this.jdField_b_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView = ((QQSlidingTabView)paramBundle.findViewById(2131372052));
-      this.jdField_c_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView = ((QQSlidingTabView)paramBundle.findViewById(2131372047));
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131372049));
+      this.jdField_b_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView = ((QQSlidingTabView)paramBundle.findViewById(2131372369));
+      this.jdField_c_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView = ((QQSlidingTabView)paramBundle.findViewById(2131372364));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131372366));
     }
     paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramBundle.height = vzl.a(getContext(), this.d);
+    paramBundle.height = xod.a(getContext(), this.d);
     this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramBundle);
     if (this.jdField_b_of_type_Boolean)
     {
@@ -62,7 +62,7 @@ public abstract class ProviderView
       if (this.jdField_c_of_type_Int != 1) {
         break label163;
       }
-      findViewById(2131372053).setVisibility(0);
+      findViewById(2131372370).setVisibility(0);
     }
     for (;;)
     {
@@ -89,7 +89,7 @@ public abstract class ProviderView
     return this.jdField_b_of_type_Boolean;
   }
   
-  public void aL_() {}
+  public void aM_() {}
   
   public void b(int paramInt)
   {
@@ -108,9 +108,9 @@ public abstract class ProviderView
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setProviderViewListener(avvv paramavvv)
+  public void setProviderViewListener(axnu paramaxnu)
   {
-    this.jdField_a_of_type_Avvv = paramavvv;
+    this.jdField_a_of_type_Axnu = paramaxnu;
   }
   
   public void setTabBarPosition(int paramInt)
@@ -120,7 +120,7 @@ public abstract class ProviderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.ProviderView
  * JD-Core Version:    0.7.0.1
  */

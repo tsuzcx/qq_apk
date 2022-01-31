@@ -1,22 +1,25 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.base.preload.PreloadQueue;
 
-public class ujo
+public final class ujo
 {
-  public List<String> a = new ArrayList();
-  public List<String> b = new ArrayList();
+  protected int a = 0;
   
-  public void a(String paramString)
+  public PreloadQueue a()
   {
-    if ((!TextUtils.isEmpty(paramString)) && (!this.b.contains(paramString))) {
-      this.b.add(paramString);
-    }
+    PreloadQueue localPreloadQueue = new PreloadQueue();
+    PreloadQueue.access$002(localPreloadQueue, this.a);
+    return localPreloadQueue;
+  }
+  
+  public ujo a(int paramInt)
+  {
+    this.a = paramInt;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujo
  * JD-Core Version:    0.7.0.1
  */

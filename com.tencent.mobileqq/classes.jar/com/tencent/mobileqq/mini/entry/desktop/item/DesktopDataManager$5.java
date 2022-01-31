@@ -1,112 +1,61 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.BaseApplication;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StGetDropdownAppListRsp;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import org.json.JSONObject;
 
-final class DesktopDataManager$5
-  implements Runnable
+class DesktopDataManager$5
+  implements MiniAppCmdInterface
 {
-  DesktopDataManager$5(List paramList) {}
+  DesktopDataManager$5(DesktopDataManager paramDesktopDataManager) {}
   
-  public void run()
+  public void onCmdListener(boolean paramBoolean, JSONObject arg2)
   {
-    Object localObject1 = MiniAppUtils.getAppInterface();
-    if (localObject1 != null)
+    long l = 0L;
+    if ((paramBoolean) && (??? != null))
     {
-      localObject1 = ((AppInterface)localObject1).getCurrentAccountUin();
-      localObject1 = BaseApplication.getContext().getSharedPreferences((String)localObject1 + "_" + "mini_app_desktop", 0);
-      LinkedHashSet localLinkedHashSet = new LinkedHashSet();
-      Iterator localIterator = this.val$appList.iterator();
-      int i = 0;
-      while (localIterator.hasNext())
+      l = ???.optLong("retCode");
+      String str = ???.optString("errMsg");
+      if (l != 0L)
       {
-        DesktopItemInfo localDesktopItemInfo = (DesktopItemInfo)localIterator.next();
-        if (localDesktopItemInfo != null)
+        QLog.e("DesktopDataManager", 1, "loadMoreMyApp, retCode = " + l + ", errMsg = " + str);
+        return;
+      }
+      INTERFACE.StGetDropdownAppListRsp localStGetDropdownAppListRsp = (INTERFACE.StGetDropdownAppListRsp)???.opt("response");
+      if (localStGetDropdownAppListRsp != null)
+      {
+        DesktopDataManager.access$1000(this.this$0, localStGetDropdownAppListRsp.modules.get());
+        DesktopDataManager.access$502(this.this$0, (COMM.StCommonExt)localStGetDropdownAppListRsp.extInfo.get());
+        if (localStGetDropdownAppListRsp.isFinished.get() == 1) {
+          paramBoolean = true;
+        }
+        synchronized (DesktopDataManager.access$700())
         {
-          if (localDesktopItemInfo.getModuleType() == 1) {
-            if ((localDesktopItemInfo instanceof DesktopAppInfo)) {
-              localLinkedHashSet.add(DesktopDataManager.access$1100(((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.appId, i, 1));
-            }
+          DesktopDataManager.access$808(this.this$0);
+          if ((!paramBoolean) && (DesktopDataManager.access$800(this.this$0) <= 4)) {
+            this.this$0.loadMoreMyApp((COMM.StCommonExt)localStGetDropdownAppListRsp.extInfo.get());
           }
-          for (;;)
-          {
-            i += 1;
-            break;
-            if ((localDesktopItemInfo instanceof DesktopAppModuleInfo))
-            {
-              localLinkedHashSet.add(DesktopDataManager.access$1200(((DesktopAppModuleInfo)localDesktopItemInfo).moduleTitle, i, 1));
-              continue;
-              if (localDesktopItemInfo.getModuleType() == 2)
-              {
-                if ((localDesktopItemInfo instanceof DesktopAppInfo)) {
-                  localLinkedHashSet.add(DesktopDataManager.access$1100(((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.appId, i, 2));
-                } else if ((localDesktopItemInfo instanceof DesktopAppModuleInfo)) {
-                  localLinkedHashSet.add(DesktopDataManager.access$1200(((DesktopAppModuleInfo)localDesktopItemInfo).moduleTitle, i, 2));
-                }
-              }
-              else if (localDesktopItemInfo.getModuleType() == 3)
-              {
-                if ((localDesktopItemInfo instanceof DesktopAppInfo)) {
-                  localLinkedHashSet.add(DesktopDataManager.access$1100(((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.appId, i, 3));
-                } else if ((localDesktopItemInfo instanceof DesktopAppModuleInfo)) {
-                  localLinkedHashSet.add(DesktopDataManager.access$1200(((DesktopAppModuleInfo)localDesktopItemInfo).moduleTitle, i, 3));
-                }
-              }
-              else if (localDesktopItemInfo.getModuleType() == 0)
-              {
-                if ((localDesktopItemInfo instanceof DesktopSearchInfo)) {
-                  localLinkedHashSet.add(DesktopDataManager.access$1100(((DesktopSearchInfo)localDesktopItemInfo).mAppInfo.appId, i, 0));
-                }
-              }
-              else
-              {
-                Object localObject2;
-                if ((localDesktopItemInfo.getModuleType() == 4) && ((localDesktopItemInfo instanceof DesktopRecommendModuleInfo)))
-                {
-                  localObject2 = (DesktopRecommendModuleInfo)localDesktopItemInfo;
-                  if ((((DesktopRecommendModuleInfo)localObject2).moduleInfo != null) && (((DesktopRecommendModuleInfo)localObject2).moduleInfo.title.get() != null)) {
-                    localLinkedHashSet.add(DesktopDataManager.access$1200(((DesktopRecommendModuleInfo)localObject2).moduleInfo.title.get(), i, localDesktopItemInfo.getModuleType()));
-                  }
-                }
-                else if ((localDesktopItemInfo.getModuleType() == 5) && ((localDesktopItemInfo instanceof DesktopFriendsPkModuleInfo)))
-                {
-                  localObject2 = (DesktopFriendsPkModuleInfo)localDesktopItemInfo;
-                  if ((((DesktopFriendsPkModuleInfo)localObject2).moduleInfo != null) && (((DesktopFriendsPkModuleInfo)localObject2).moduleInfo.title.get() != null)) {
-                    localLinkedHashSet.add(DesktopDataManager.access$1200(((DesktopFriendsPkModuleInfo)localObject2).moduleInfo.title.get(), i, localDesktopItemInfo.getModuleType()));
-                  }
-                }
-                else if ((localDesktopItemInfo.getModuleType() == 6) && ((localDesktopItemInfo instanceof DesktopPopularModuleInfo)))
-                {
-                  localLinkedHashSet.add(DesktopDataManager.access$1200(((DesktopPopularModuleInfo)localDesktopItemInfo).title, i, localDesktopItemInfo.getModuleType()));
-                }
-                else if ((localDesktopItemInfo.getModuleType() == 7) && ((localDesktopItemInfo instanceof DesktopDittoInfo)))
-                {
-                  localLinkedHashSet.add(DesktopDataManager.access$1200(((DesktopDittoInfo)localDesktopItemInfo).title, i, localDesktopItemInfo.getModuleType()));
-                }
-              }
-            }
-          }
+          QLog.d("DesktopDataManager", 1, "loadMoreMyApp, retCode = " + l + ", errMsg = " + str + ", isFinished: " + paramBoolean + ", requestCount: " + DesktopDataManager.access$800(this.this$0));
+          return;
+          paramBoolean = false;
         }
       }
-      ((SharedPreferences)localObject1).edit().putStringSet("key_mini_app_desktop_position_info", localLinkedHashSet).apply();
-      QLog.d("DesktopDataManager", 2, "setDesktopAppPositionInfoToSp, position info: " + localLinkedHashSet);
+      QLog.e("DesktopDataManager", 1, "loadMoreMyApp failed, response is null.");
+      return;
     }
+    if (??? != null) {
+      l = ???.optLong("retCode");
+    }
+    QLog.e("DesktopDataManager", 1, "loadMoreMyApp, isSuccess = " + paramBoolean + ", ret = " + ??? + ", retCode = " + l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,27 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.support.annotation.Nullable;
 
-public class bkuh
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class bkuh
+  implements bmac<Boolean>
 {
-  public bkuh(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  bkuh(bkuc parambkuc) {}
   
-  public void onGlobalLayout()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.a.f = this.a.a.getWidth();
-    this.a.g = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.f + ",mSurfaceViewHeight:" + this.a.g);
+    if (paramBoolean == null) {
+      return;
     }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    bkuc localbkuc = this.a;
+    if (!paramBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bkuc.a(localbkuc, bool);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkuh
  * JD-Core Version:    0.7.0.1
  */

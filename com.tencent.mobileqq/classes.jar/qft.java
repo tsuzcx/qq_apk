@@ -1,20 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
-import java.util.List;
-
-public class qft
-  extends osm
+public abstract interface qft
 {
-  public qft(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
-  
-  public void a(List<String> paramList, List<TopicInfo> paramList1)
-  {
-    ReadInJoyUgcSearchTopicFragment.a(this.a, paramList, paramList1);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qft
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.ViewGroup;
-import bbkk;
+import bdje;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
@@ -108,7 +108,7 @@ public class VideoPlugin
         ((CoverVideoView)localCoverView).setVisibility(0);
       }
       paramJSONObject = paramJSONObject.optString("src");
-      if (!bbkk.a(paramJSONObject)) {
+      if (!bdje.a(paramJSONObject)) {
         ((CoverVideoView)localCoverView).setVideoPath(paramJSONObject);
       }
     }
@@ -331,7 +331,7 @@ public class VideoPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.VideoPlugin
  * JD-Core Version:    0.7.0.1
  */

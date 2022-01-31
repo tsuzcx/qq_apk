@@ -1,13 +1,19 @@
-public class apqk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class apqk
+  implements DialogInterface.OnClickListener
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public long b;
+  apqk(apqf paramapqf) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apqk
  * JD-Core Version:    0.7.0.1
  */

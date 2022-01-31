@@ -1,10 +1,9 @@
 package com.tencent.mobileqq.mini.apkg;
 
-import ajya;
+import alpo;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bfgt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -22,6 +21,7 @@ import com.tencent.mobileqq.mini.utils.WxapkgUnpacker;
 import com.tencent.mobileqq.minigame.utils.GameWnsUtils;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.utils.MD5Utils;
 import java.io.File;
 import java.net.URL;
 import java.util.Iterator;
@@ -100,7 +100,7 @@ public class ApkgManager
   
   private void downloadApkgByResumableDownloader(MiniAppConfig paramMiniAppConfig, boolean paramBoolean, ApkgManager.OnGetApkgInfoListener paramOnGetApkgInfoListener, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    String str = PATH_WXAPKG_ROOT + File.separator + paramMiniAppConfig.config.appId + '_' + paramMiniAppConfig.config.version + ".qapkg";
+    String str = PATH_WXAPKG_ROOT + paramMiniAppConfig.config.appId + '_' + paramMiniAppConfig.config.version + ".qapkg";
     long l = System.currentTimeMillis();
     if (TextUtils.isEmpty(paramString2)) {
       if (paramOnGetApkgInfoListener != null)
@@ -113,7 +113,7 @@ public class ApkgManager
     {
       return;
       MiniReportManager.reportEventType(paramMiniAppConfig, 619, "0");
-      MiniappDownloadUtil.getInstance().downloadApkg(paramMiniAppConfig, false, paramString2, str, true, new ApkgManager.6(this, paramOnGetApkgInfoListener, paramMiniAppConfig, str, paramString1, paramString3, paramString4, l), Downloader.DownloadMode.StrictMode, getHeader(paramString2, paramMiniAppConfig));
+      MiniappDownloadUtil.getInstance().downloadApkg(paramMiniAppConfig, false, paramString2, str, true, new ApkgManager.6(this, paramOnGetApkgInfoListener, paramMiniAppConfig, str, paramString1, paramString3, paramString4, l), Downloader.DownloadMode.StrictMode, -1, 0L, getHeader(paramString2, paramMiniAppConfig), new ApkgManager.7(this, paramOnGetApkgInfoListener));
     } while (!paramBoolean);
     deleteOldPkg(paramMiniAppConfig, paramString1);
   }
@@ -328,7 +328,7 @@ public class ApkgManager
       paramOnGetApkgInfoListener.onGetApkgInfo(paramString1, 0, "");
       return;
     }
-    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, ajya.a(2131700288));
+    paramOnGetApkgInfoListener.onGetApkgInfo(null, 3, alpo.a(2131700657));
   }
   
   private void onInitApkgInfo(ApkgManager.OnInitApkgListener paramOnInitApkgListener, int paramInt, ApkgInfo paramApkgInfo, String paramString)
@@ -381,7 +381,7 @@ public class ApkgManager
     label178:
     if (!TextUtils.isEmpty(str1))
     {
-      str2 = PATH_WXAPKG_ROOT + File.separator + paramApkgInfo.appConfig.config.appId + '_' + paramApkgInfo.appConfig.config.version + ".qapkg";
+      str2 = PATH_WXAPKG_ROOT + paramApkgInfo.appConfig.config.appId + '_' + paramApkgInfo.appConfig.config.version + ".qapkg";
       MiniReportManager.reportEventType(paramApkgInfo.appConfig, 613, paramString, null, null, 0, "0", 0L, null);
       MiniappDownloadUtil.getInstance().downloadApkg(paramApkgInfo.appConfig, true, str1, str2, true, new ApkgManager.5(this, paramOnInitApkgListener, paramApkgInfo, paramString, str2), Downloader.DownloadMode.StrictMode, getHeader(str1, paramApkgInfo.appConfig));
       return;
@@ -391,14 +391,22 @@ public class ApkgManager
   
   public void getApkgInfoByConfig(MiniAppConfig paramMiniAppConfig, ApkgManager.OnInitApkgListener paramOnInitApkgListener)
   {
-    getApkgInfoByConfig(paramMiniAppConfig, true, paramOnInitApkgListener);
+    getApkgInfoByConfig(paramMiniAppConfig, true, paramOnInitApkgListener, null);
   }
   
-  public void getApkgInfoByConfig(MiniAppConfig paramMiniAppConfig, boolean paramBoolean, ApkgManager.OnInitApkgListener paramOnInitApkgListener)
+  public void getApkgInfoByConfig(MiniAppConfig paramMiniAppConfig, ApkgManager.OnInitApkgListener paramOnInitApkgListener, ApkgManager.OnFakeApkgListener paramOnFakeApkgListener)
+  {
+    getApkgInfoByConfig(paramMiniAppConfig, true, paramOnInitApkgListener, paramOnFakeApkgListener);
+  }
+  
+  public void getApkgInfoByConfig(MiniAppConfig paramMiniAppConfig, boolean paramBoolean, ApkgManager.OnInitApkgListener paramOnInitApkgListener, ApkgManager.OnFakeApkgListener paramOnFakeApkgListener)
   {
     long l = System.currentTimeMillis();
     MiniReportManager.reportEventType(paramMiniAppConfig, 12, null, null, null, 0);
-    getApkgInfoByConfig(paramMiniAppConfig, paramBoolean, new ApkgManager.1(this, paramOnInitApkgListener, l, paramMiniAppConfig));
+    if (paramOnFakeApkgListener != null) {
+      MiniReportManager.reportEventType(paramMiniAppConfig, 124, null, null, null, 0);
+    }
+    getApkgInfoByConfig(paramMiniAppConfig, paramBoolean, new ApkgManager.1(this, paramOnInitApkgListener, l, paramMiniAppConfig, paramOnFakeApkgListener));
   }
   
   public String getBasePageFrameStr()
@@ -440,16 +448,16 @@ public class ApkgManager
     QLog.i("ApkgManager", 1, "preloadFlutterPkg appid:" + paramMiniAppConfig.config.appId + " name:" + paramMiniAppConfig.config.name + " url:" + paramString);
     Object localObject = MiniSdkLauncher.convert(paramMiniAppConfig.config);
     if (((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).verType == 3) {}
-    for (localObject = new StringBuilder(PATH_APKG_TISSUE_ROOT).append(bfgt.c(((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).appId)).append("_").append(((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).version).toString() + "_maintmp"; new File((String)localObject).exists(); localObject = new StringBuilder(PATH_APKG_TISSUE_ROOT).append(((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).appId).append("_debug").toString() + "_maintmp") {
+    for (localObject = new StringBuilder(PATH_APKG_TISSUE_ROOT).append(MD5Utils.toMD5(((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).appId)).append("_").append(((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).version).toString() + "_maintmp"; new File((String)localObject).exists(); localObject = new StringBuilder(PATH_APKG_TISSUE_ROOT).append(((com.tencent.qqmini.sdk.launcher.model.MiniAppInfo)localObject).appId).append("_debug").toString() + "_maintmp") {
       return;
     }
-    String str = PATH_WXAPKG_ROOT + File.separator + paramMiniAppConfig.config.appId + '_' + paramMiniAppConfig.config.version + "_flutter1" + ".qapkg";
+    String str = PATH_WXAPKG_ROOT + paramMiniAppConfig.config.appId + '_' + paramMiniAppConfig.config.version + "_flutter1" + ".qapkg";
     MiniappDownloadUtil.getInstance().downloadApkg(paramMiniAppConfig, false, paramString, str, true, new ApkgManager.2(this, paramMiniAppConfig, str, (String)localObject), Downloader.DownloadMode.StrictMode, getHeader(paramString, paramMiniAppConfig));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgManager
  * JD-Core Version:    0.7.0.1
  */

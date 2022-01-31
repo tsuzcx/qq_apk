@@ -1,14 +1,37 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
-public abstract interface aiwi
+class aiwi
+  implements EIPCOnGetConnectionListener
 {
-  public abstract void a(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  aiwi(aiwh paramaiwh) {}
   
-  public abstract void b(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      aiwh.a(this.a, paramEIPCConnection.procName);
+    }
+    aiwh.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
+    }
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      aiwh.a(this.a, paramEIPCConnection.procName);
+    }
+    aiwh.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwi
  * JD-Core Version:    0.7.0.1
  */

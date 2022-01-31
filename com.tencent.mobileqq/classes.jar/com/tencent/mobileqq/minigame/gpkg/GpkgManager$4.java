@@ -15,7 +15,7 @@ import com.tencent.qphone.base.util.QLog;
 final class GpkgManager$4
   implements Downloader.DownloadListener
 {
-  GpkgManager$4(MiniAppConfig paramMiniAppConfig, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  GpkgManager$4(MiniAppConfig paramMiniAppConfig, GpkgManager.OnInitGpkgListener paramOnInitGpkgListener, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean) {}
   
   public void onDownloadCanceled(String paramString)
   {
@@ -90,14 +90,14 @@ final class GpkgManager$4
         l2 = GpkgManager.downloadDuration;
       }
       MiniReportManager.reportEventType(paramString, 620, null, String.valueOf(l1), null, 0, "1", l2, null);
-      GpkgManager.access$100(this.val$savePath, this.val$unPackFolderPath, this.val$gameConfig, this.val$listener, this.val$finalSubApkUrl, this.val$finalIndependentPath);
+      GpkgManager.access$100(GpkgManager.access$000(this.val$savePath), this.val$unPackFolderPath, this.val$gameConfig, this.val$listener, this.val$finalSubApkUrl, this.val$finalIndependentPath, this.val$isMiniGameProcess);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.gpkg.GpkgManager.4
  * JD-Core Version:    0.7.0.1
  */

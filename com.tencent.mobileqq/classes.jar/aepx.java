@@ -1,24 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import android.support.v4.util.LruCache;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.PAMessage;
 
-class aepx
-  implements bcix<oidb_0x8ed.RspBody>
+public class aepx
 {
-  aepx(aepe paramaepe) {}
+  public static LruCache<String, PAMessage> a = new LruCache(50);
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  public static PAMessage a(MessageRecord paramMessageRecord)
   {
-    if ((paramInt == 0) && (this.a.ac))
+    return a(paramMessageRecord.frienduin, paramMessageRecord.shmsgseq, paramMessageRecord.msgUid, paramMessageRecord.msgData);
+  }
+  
+  public static PAMessage a(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
+  {
+    String str = a(paramString, paramLong1, paramLong2);
+    PAMessage localPAMessage = (PAMessage)a.get(str);
+    paramString = localPAMessage;
+    if (localPAMessage == null)
     {
-      bcql.a(this.a.jdField_a_of_type_AndroidContentContext, 2, ajya.a(2131705127), 0).a();
-      bbkb.e(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
-      this.a.jdField_a_of_type_Atch.a(this.a.jdField_a_of_type_AndroidContentContext);
+      paramArrayOfByte = swh.a(paramArrayOfByte);
+      paramString = paramArrayOfByte;
+      if (paramArrayOfByte != null)
+      {
+        a.put(str, paramArrayOfByte);
+        paramString = paramArrayOfByte;
+      }
     }
+    return paramString;
+  }
+  
+  private static String a(String paramString, long paramLong1, long paramLong2)
+  {
+    return paramString + "&" + paramLong1 + "&" + paramLong2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aepx
  * JD-Core Version:    0.7.0.1
  */

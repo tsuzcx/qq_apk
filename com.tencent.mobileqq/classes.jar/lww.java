@@ -1,105 +1,54 @@
-import android.os.IBinder;
-import android.os.Parcel;
-
-class lww
-  implements lwu
+public class lww
+  extends lwt
 {
-  private IBinder a;
-  
-  lww(IBinder paramIBinder)
+  public void a(long paramLong)
   {
-    this.a = paramIBinder;
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    Parcel localParcel = Parcel.obtain();
-    try
+    paramLong -= this.a;
+    int j = 0;
+    float f2 = 1.0F;
+    int i;
+    float f1;
+    if ((paramLong > 2333L) && (paramLong < 2666L))
     {
-      localParcel.writeInterfaceToken("com.tencent.av.service.IQQServiceLocationCallback");
-      localParcel.writeInt(paramInt);
-      localParcel.writeString(paramString);
-      this.a.transact(1, localParcel, null, 1);
+      i = (int)(255L * (paramLong - 2333L) / 333L);
+      f1 = (0.5F * (float)(paramLong + 2666L) - 2333.0F) / 333.0F;
+    }
+    for (;;)
+    {
+      a(i);
+      b(f1);
       return;
-    }
-    finally
-    {
-      localParcel.recycle();
+      if ((paramLong >= 2666L) && (paramLong <= 3099L))
+      {
+        i = 255;
+        f1 = f2;
+      }
+      else
+      {
+        f1 = f2;
+        i = j;
+        if (paramLong > 3099L)
+        {
+          f1 = f2;
+          i = j;
+          if (paramLong < 3266L)
+          {
+            i = (int)(255L * (3266L - paramLong) / 167L);
+            f1 = (167.0F - (float)(3099L - paramLong) * 0.5F) / 167.0F;
+          }
+        }
+      }
     }
   }
   
-  /* Error */
-  public void a(boolean paramBoolean, com.tencent.av.service.LBSInfo paramLBSInfo)
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   5: astore 4
-    //   7: aload 4
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: iload_1
-    //   15: ifeq +47 -> 62
-    //   18: aload 4
-    //   20: iload_3
-    //   21: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   24: aload_2
-    //   25: ifnull +42 -> 67
-    //   28: aload 4
-    //   30: iconst_1
-    //   31: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   34: aload_2
-    //   35: aload 4
-    //   37: iconst_0
-    //   38: invokevirtual 52	com/tencent/av/service/LBSInfo:writeToParcel	(Landroid/os/Parcel;I)V
-    //   41: aload_0
-    //   42: getfield 15	lww:a	Landroid/os/IBinder;
-    //   45: iconst_2
-    //   46: aload 4
-    //   48: aconst_null
-    //   49: iconst_1
-    //   50: invokeinterface 42 5 0
-    //   55: pop
-    //   56: aload 4
-    //   58: invokevirtual 45	android/os/Parcel:recycle	()V
-    //   61: return
-    //   62: iconst_0
-    //   63: istore_3
-    //   64: goto -46 -> 18
-    //   67: aload 4
-    //   69: iconst_0
-    //   70: invokevirtual 33	android/os/Parcel:writeInt	(I)V
-    //   73: goto -32 -> 41
-    //   76: astore_2
-    //   77: aload 4
-    //   79: invokevirtual 45	android/os/Parcel:recycle	()V
-    //   82: aload_2
-    //   83: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	84	0	this	lww
-    //   0	84	1	paramBoolean	boolean
-    //   0	84	2	paramLBSInfo	com.tencent.av.service.LBSInfo
-    //   1	63	3	i	int
-    //   5	73	4	localParcel	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   7	14	76	finally
-    //   18	24	76	finally
-    //   28	41	76	finally
-    //   41	56	76	finally
-    //   67	73	76	finally
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    a(paramInt1 * 548 / 1500, paramInt2 - paramInt1 * 1032 / 1500, paramInt1 * 952 / 1500, paramInt2 - paramInt1 * 472 / 1500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lww
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajya;
+import alpo;
 import com.tencent.mobileqq.mini.widget.AuthDialog;
 
 class BaseJsPluginEngine$5$1
@@ -13,12 +13,12 @@ class BaseJsPluginEngine$5$1
     if ((this.this$1.this$0.authDialog == null) || (BaseJsPluginEngine.access$300(this.this$1.this$0))) {
       return;
     }
-    this.this$1.this$0.authDialog.show(this.this$1.val$miniIconUrl, this.this$1.val$miniAppName, this.this$1.val$authTitle, this.val$avatarUrl, this.val$nickName, this.this$1.val$authDesc, ajya.a(2131701008), new BaseJsPluginEngine.5.1.1(this), ajya.a(2131701012), new BaseJsPluginEngine.5.1.2(this));
+    this.this$1.this$0.authDialog.show(this.this$1.val$miniIconUrl, this.this$1.val$miniAppName, this.this$1.val$authTitle, this.val$avatarUrl, this.val$nickName, this.this$1.val$authDesc, alpo.a(2131701377), new BaseJsPluginEngine.5.1.1(this), alpo.a(2131701381), new BaseJsPluginEngine.5.1.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine.5.1
  * JD-Core Version:    0.7.0.1
  */

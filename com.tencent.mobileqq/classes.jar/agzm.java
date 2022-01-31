@@ -1,22 +1,19 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.IdiomHbFragment;
-import java.util.List;
+import android.view.View;
+import android.widget.TextView;
 
-public class agzm
-  implements agzo
+class agzm
 {
-  public agzm(IdiomHbFragment paramIdiomHbFragment) {}
+  public TextView a;
   
-  public void a(boolean paramBoolean, List<String> paramList)
+  public agzm(View paramView)
   {
-    this.a.c.setText(IdiomHbFragment.a(this.a, true));
-    this.a.c.setSelection(this.a.c.getText().length());
+    this.a = ((TextView)paramView.findViewById(2131377552));
+    paramView.setTag(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agzm
  * JD-Core Version:    0.7.0.1
  */

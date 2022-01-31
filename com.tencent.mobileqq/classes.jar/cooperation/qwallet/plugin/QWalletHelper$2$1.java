@@ -19,7 +19,7 @@ class QWalletHelper$2$1
     if (this.val$info != null) {
       try
       {
-        QWalletAnimDialog localQWalletAnimDialog = new QWalletAnimDialog(localActivity, 2131755269, this.val$info, this.this$0.val$reportSeq);
+        QWalletAnimDialog localQWalletAnimDialog = new QWalletAnimDialog(localActivity, 2131755273, this.val$info, this.this$0.val$reportSeq);
         localQWalletAnimDialog.setF2fRedpackInfo(this.this$0.val$uin, this.this$0.val$nickName, this.this$0.val$url);
         localQWalletAnimDialog.show();
         return;
@@ -34,7 +34,7 @@ class QWalletHelper$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

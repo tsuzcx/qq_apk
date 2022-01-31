@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import bbqt;
+import bdpn;
 
 class SignatureView$1
   implements Runnable
 {
-  SignatureView$1(SignatureView paramSignatureView, int paramInt, String paramString, bbqt parambbqt) {}
+  SignatureView$1(SignatureView paramSignatureView, int paramInt, String paramString, bdpn parambdpn) {}
   
   /* Error */
   public void run()
@@ -16,7 +16,7 @@ class SignatureView$1
     //   4: invokestatic 39	java/lang/Integer:toString	(I)Ljava/lang/String;
     //   7: aload_0
     //   8: getfield 20	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   11: invokestatic 44	bbqq:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   11: invokestatic 44	bdpk:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   14: astore 6
     //   16: new 46	java/io/File
     //   19: dup
@@ -39,7 +39,7 @@ class SignatureView$1
     //   55: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   58: return
     //   59: aload 6
-    //   61: invokestatic 74	bbdx:a	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   61: invokestatic 74	bdcs:a	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   64: astore_3
     //   65: aload_3
     //   66: invokevirtual 80	java/util/ArrayList:size	()I
@@ -95,12 +95,12 @@ class SignatureView$1
     //   157: getfield 110	com/tencent/mobileqq/activity/aio/item/SignatureView:jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable	Lcom/tencent/mobileqq/activity/aio/anim/VipPngPlayAnimationDrawable;
     //   160: astore 4
     //   162: aload_0
-    //   163: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bbqt	Lbbqt;
-    //   166: getfield 115	bbqt:jdField_c_of_type_Int	I
+    //   163: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bdpn	Lbdpn;
+    //   166: getfield 115	bdpn:jdField_c_of_type_Int	I
     //   169: ifeq +373 -> 542
     //   172: aload_0
-    //   173: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bbqt	Lbbqt;
-    //   176: getfield 115	bbqt:jdField_c_of_type_Int	I
+    //   173: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bdpn	Lbdpn;
+    //   176: getfield 115	bdpn:jdField_c_of_type_Int	I
     //   179: istore_1
     //   180: aload 4
     //   182: aload_3
@@ -117,13 +117,13 @@ class SignatureView$1
     //   206: astore 4
     //   208: aload_0
     //   209: getfield 16	com/tencent/mobileqq/activity/aio/item/SignatureView$1:this$0	Lcom/tencent/mobileqq/activity/aio/item/SignatureView;
-    //   212: getfield 124	com/tencent/mobileqq/activity/aio/item/SignatureView:jdField_a_of_type_Bbqt	Lbbqt;
-    //   215: getfield 127	bbqt:jdField_b_of_type_Int	I
+    //   212: getfield 124	com/tencent/mobileqq/activity/aio/item/SignatureView:jdField_a_of_type_Bdpn	Lbdpn;
+    //   215: getfield 127	bdpn:jdField_b_of_type_Int	I
     //   218: ifeq +330 -> 548
     //   221: aload_0
     //   222: getfield 16	com/tencent/mobileqq/activity/aio/item/SignatureView$1:this$0	Lcom/tencent/mobileqq/activity/aio/item/SignatureView;
-    //   225: getfield 124	com/tencent/mobileqq/activity/aio/item/SignatureView:jdField_a_of_type_Bbqt	Lbbqt;
-    //   228: getfield 127	bbqt:jdField_b_of_type_Int	I
+    //   225: getfield 124	com/tencent/mobileqq/activity/aio/item/SignatureView:jdField_a_of_type_Bdpn	Lbdpn;
+    //   228: getfield 127	bdpn:jdField_b_of_type_Int	I
     //   231: istore_1
     //   232: aload 4
     //   234: iload_1
@@ -208,50 +208,50 @@ class SignatureView$1
     //   405: ldc 205
     //   407: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   410: aload_0
-    //   411: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bbqt	Lbbqt;
-    //   414: getfield 206	bbqt:jdField_a_of_type_Int	I
+    //   411: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bdpn	Lbdpn;
+    //   414: getfield 206	bdpn:jdField_a_of_type_Int	I
     //   417: invokevirtual 201	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   420: ldc 208
     //   422: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   425: aload_0
-    //   426: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bbqt	Lbbqt;
-    //   429: getfield 209	bbqt:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   426: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bdpn	Lbdpn;
+    //   429: getfield 209	bdpn:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   432: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   435: ldc 211
     //   437: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   440: aload_0
-    //   441: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bbqt	Lbbqt;
-    //   444: getfield 214	bbqt:jdField_a_of_type_Float	F
+    //   441: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bdpn	Lbdpn;
+    //   444: getfield 214	bdpn:jdField_a_of_type_Float	F
     //   447: invokevirtual 217	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
     //   450: ldc 219
     //   452: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   455: aload_0
-    //   456: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bbqt	Lbbqt;
-    //   459: getfield 221	bbqt:jdField_b_of_type_Float	F
+    //   456: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bdpn	Lbdpn;
+    //   459: getfield 221	bdpn:jdField_b_of_type_Float	F
     //   462: invokevirtual 217	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
     //   465: ldc 223
     //   467: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   470: aload_0
-    //   471: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bbqt	Lbbqt;
-    //   474: getfield 225	bbqt:jdField_c_of_type_Float	F
+    //   471: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bdpn	Lbdpn;
+    //   474: getfield 225	bdpn:jdField_c_of_type_Float	F
     //   477: invokevirtual 217	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
     //   480: ldc 227
     //   482: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   485: aload_0
-    //   486: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bbqt	Lbbqt;
-    //   489: getfield 229	bbqt:d	F
+    //   486: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bdpn	Lbdpn;
+    //   489: getfield 229	bdpn:d	F
     //   492: invokevirtual 217	java/lang/StringBuilder:append	(F)Ljava/lang/StringBuilder;
     //   495: ldc 231
     //   497: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   500: aload_0
-    //   501: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bbqt	Lbbqt;
-    //   504: getfield 127	bbqt:jdField_b_of_type_Int	I
+    //   501: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bdpn	Lbdpn;
+    //   504: getfield 127	bdpn:jdField_b_of_type_Int	I
     //   507: invokevirtual 201	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   510: ldc 233
     //   512: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   515: aload_0
-    //   516: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bbqt	Lbbqt;
-    //   519: getfield 115	bbqt:jdField_c_of_type_Int	I
+    //   516: getfield 22	com/tencent/mobileqq/activity/aio/item/SignatureView$1:jdField_a_of_type_Bdpn	Lbdpn;
+    //   519: getfield 115	bdpn:jdField_c_of_type_Int	I
     //   522: invokevirtual 201	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   525: ldc 235
     //   527: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -368,7 +368,7 @@ class SignatureView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.SignatureView.1
  * JD-Core Version:    0.7.0.1
  */

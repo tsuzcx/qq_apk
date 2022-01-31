@@ -1,62 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity.2.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.lang.ref.WeakReference;
 
-public class nxm
-  extends osm
+class nxm
+  implements rqh
 {
-  public nxm(ReadinjoyJumpActivity paramReadinjoyJumpActivity) {}
+  private WeakReference<nxl> a;
   
-  public void a(String paramString)
+  public nxm(nxl paramnxl)
   {
-    super.a(paramString);
-    QLog.d("ReadinjoyJumpActivity", 1, "webCallback : " + paramString);
-    ThreadManager.getUIHandler().post(new ReadinjoyJumpActivity.2.1(this));
+    this.a = new WeakReference(paramnxl);
   }
   
-  public void a(boolean paramBoolean, List<Long> paramList, List<ArticleInfo> paramList1)
+  public void a()
   {
-    QLog.d("ReadinjoyJumpActivity", 1, "68b resp, succ : " + paramBoolean + ", ids : " + paramList + ", articles : " + paramList1);
-    if ((paramList == null) || (!paramList.contains(Long.valueOf(ReadinjoyJumpActivity.a(this.a))))) {}
-    do
-    {
+    nxl localnxl = (nxl)this.a.get();
+    if ((localnxl == null) || (!localnxl.b())) {
       return;
-      ThreadManager.getUIHandler().removeCallbacks(ReadinjoyJumpActivity.a(this.a));
-    } while ((ReadinjoyJumpActivity.a(this.a)) || (ReadinjoyJumpActivity.b(this.a)));
-    if ((paramBoolean) && (paramList1 != null) && (!paramList1.isEmpty()))
-    {
-      int i = 0;
-      while (i < paramList1.size())
-      {
-        paramList = (ArticleInfo)paramList1.get(i);
-        if (paramList.mArticleID == ReadinjoyJumpActivity.a(this.a))
-        {
-          ReadinjoyJumpActivity.a(this.a, paramList);
-          if ((onq.a(ReadinjoyJumpActivity.a(this.a)) == 0) && (onh.a(ReadinjoyJumpActivity.a(this.a).mArticleContentUrl, 0L, ReadinjoyJumpActivity.a(this.a))))
-          {
-            paramList = osg.a().a();
-            if (paramList != null)
-            {
-              paramList.a(ReadinjoyJumpActivity.a(this.a).mArticleContentUrl, ReadinjoyJumpActivity.a(this.a).innerUniqueID, ReadinjoyJumpActivity.a(this.a).publishUin + "", 1, this.a);
-              return;
-            }
-          }
-          ReadinjoyJumpActivity.b(this.a);
-          return;
-        }
-        i += 1;
-      }
     }
-    ReadinjoyJumpActivity.a(this.a);
+    nxl.a(localnxl).sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nxm
  * JD-Core Version:    0.7.0.1
  */

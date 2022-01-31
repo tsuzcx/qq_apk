@@ -1,254 +1,245 @@
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.graphics.Bitmap;
+import java.lang.reflect.Array;
 
 public class bdjc
 {
-  protected static bdjc a;
-  protected static final String a;
-  protected bdkn a;
-  protected HashMap<String, bdja> a;
-  
-  static
+  public static void a(Bitmap paramBitmap, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = bdjc.class.getName();
-  }
-  
-  protected bdjc()
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        if (this.jdField_a_of_type_Bdkn == null) {
-          this.jdField_a_of_type_Bdkn = bdki.a().a(bdja.class, 0L, "http_cache_table");
-        }
-        int j = this.jdField_a_of_type_Bdkn.a();
-        this.jdField_a_of_type_JavaUtilHashMap = new HashMap(j);
-        i = 0;
-        if (i < j)
-        {
-          bdja localbdja = (bdja)this.jdField_a_of_type_Bdkn.a(i);
-          if ((localbdja == null) || (localbdja.jdField_a_of_type_JavaLangString == null)) {
-            break label108;
-          }
-          this.jdField_a_of_type_JavaUtilHashMap.put(localbdja.jdField_a_of_type_JavaLangString, localbdja);
-        }
-      }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      }
+    if (paramInt < 1) {
       return;
-      label108:
+    }
+    int i12 = paramBitmap.getWidth();
+    int i13 = paramBitmap.getHeight();
+    int[] arrayOfInt1 = new int[i12 * i13];
+    paramBitmap.getPixels(arrayOfInt1, 0, i12, 0, 0, i12, i13);
+    int i11 = i12 - 1;
+    int i14 = i13 - 1;
+    int i = i12 * i13;
+    int i15 = paramInt + paramInt + 1;
+    int[] arrayOfInt2 = new int[i];
+    int[] arrayOfInt3 = new int[i];
+    int[] arrayOfInt4 = new int[i];
+    int[] arrayOfInt5 = new int[Math.max(i12, i13)];
+    i = i15 + 1 >> 1;
+    int j = i * i;
+    int[] arrayOfInt6 = new int[j * 256];
+    int i17 = arrayOfInt6.length;
+    i = 0;
+    while (i < j * 256)
+    {
+      arrayOfInt6[i] = (i / j);
       i += 1;
     }
-  }
-  
-  public static bdjc a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Bdjc == null) {
-        jdField_a_of_type_Bdjc = new bdjc();
-      }
-      bdjc localbdjc = jdField_a_of_type_Bdjc;
-      return localbdjc;
-    }
-    finally {}
-  }
-  
-  public long a(String paramString)
-  {
-    long l2 = 0L;
-    long l1 = l2;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      l1 = l2;
-      if (this.jdField_a_of_type_JavaUtilHashMap.size() != 0)
-      {
-        paramString = bdik.b(paramString);
-        l1 = l2;
-        if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) {
-          l1 = ((bdja)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).jdField_a_of_type_Long;
-        }
-      }
-    }
-    bdii.c(jdField_a_of_type_JavaLangString, "Get lastModify from cache. lastModify=" + l1);
-    return l1;
-  }
-  
-  public String a(String paramString)
-  {
-    String str2 = "\"\"";
-    String str1 = str2;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      str1 = str2;
-      if (this.jdField_a_of_type_JavaUtilHashMap.size() != 0)
-      {
-        paramString = bdik.b(paramString);
-        str1 = str2;
-        if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) {
-          str1 = ((bdja)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).jdField_b_of_type_JavaLangString;
-        }
-      }
-    }
-    bdii.c(jdField_a_of_type_JavaLangString, "Get ETag from cache. ETag=" + str1);
-    return str1;
-  }
-  
-  protected void a()
-  {
+    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { i15, 3 });
+    int i16 = paramInt + 1;
+    int i7 = 0;
+    i = 0;
+    int i6 = 0;
+    int i8;
+    int m;
+    int n;
+    int i1;
+    int i2;
+    int i3;
+    int i4;
+    int i5;
+    int k;
+    int i9;
+    int[] arrayOfInt7;
+    int i10;
     for (;;)
     {
-      try
+      if (i6 >= i13) {
+        break label739;
+      }
+      j = 0;
+      i8 = -paramInt;
+      m = 0;
+      n = 0;
+      i1 = 0;
+      i2 = 0;
+      i3 = 0;
+      i4 = 0;
+      i5 = 0;
+      k = 0;
+      if (i8 <= paramInt)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-        long l2 = System.currentTimeMillis();
-        long l1 = 9223372036854775807L;
-        String str = null;
-        if (localIterator.hasNext())
+        i9 = arrayOfInt1[(Math.min(i11, Math.max(i8, 0)) + i)];
+        arrayOfInt7 = arrayOfInt[(i8 + paramInt)];
+        arrayOfInt7[0] = ((0xFF0000 & i9) >> 16);
+        arrayOfInt7[1] = ((0xFF00 & i9) >> 8);
+        arrayOfInt7[2] = (i9 & 0xFF);
+        i9 = i16 - Math.abs(i8);
+        i5 += arrayOfInt7[0] * i9;
+        i4 += arrayOfInt7[1] * i9;
+        i3 += i9 * arrayOfInt7[2];
+        if (i8 > 0)
         {
-          bdja localbdja = (bdja)localIterator.next();
-          if (l2 - localbdja.jdField_b_of_type_Long >= 432000000L)
-          {
-            bdii.c(jdField_a_of_type_JavaLangString, "Clear out of date cache. urlkey=" + localbdja.jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_Bdkn.b("urlKey='" + localbdja.jdField_a_of_type_JavaLangString + "'");
-            localIterator.remove();
-          }
-          else if (l1 > localbdja.jdField_b_of_type_Long)
-          {
-            l1 = localbdja.jdField_b_of_type_Long;
-            str = localbdja.jdField_a_of_type_JavaLangString;
-          }
+          m += arrayOfInt7[0];
+          k += arrayOfInt7[1];
+          j += arrayOfInt7[2];
         }
-        else
+        for (;;)
         {
-          if (this.jdField_a_of_type_JavaUtilHashMap.size() >= 50)
-          {
-            bdii.c(jdField_a_of_type_JavaLangString, "Reached max cache count:50. Clear last cache data. urlKey=" + ((bdja)this.jdField_a_of_type_JavaUtilHashMap.get(str)).jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_JavaUtilHashMap.remove(str);
-            this.jdField_a_of_type_Bdkn.b("urlKey='" + str + "'");
-          }
-          return;
+          i8 += 1;
+          break;
+          i2 += arrayOfInt7[0];
+          i1 += arrayOfInt7[1];
+          n += arrayOfInt7[2];
         }
       }
-      finally {}
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      paramString = bdik.b(paramString);
-      if (paramString != null)
+      i8 = i4;
+      i10 = 0;
+      i4 = paramInt;
+      i9 = i5;
+      i5 = i3;
+      i3 = i10;
+      for (;;)
       {
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString);
-        this.jdField_a_of_type_Bdkn.b("urlKey='" + paramString + "'");
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
-  {
-    if (paramString1 != null) {}
-    for (;;)
-    {
-      try
-      {
-        if (("".equals(paramString1.trim())) || (paramString3 == null))
-        {
-          bdii.e(jdField_a_of_type_JavaLangString, "saveResponse error. params error\n url=" + paramString1 + "; ETag=" + paramString2 + "; lastModify=" + paramLong + "; response=" + paramString3);
-          return;
+        if (i3 >= i12) {
+          break label723;
         }
-        paramString2 = new bdja(paramString1, paramString2, paramLong, paramString3, paramString4);
-        paramString1 = bdik.b(paramString1);
-        if (this.jdField_a_of_type_Bdkn == null) {
+        if ((i9 >= i17) || (i8 >= i17) || (i5 >= i17)) {
           break;
         }
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
+        arrayOfInt2[i] = arrayOfInt6[i9];
+        arrayOfInt3[i] = arrayOfInt6[i8];
+        arrayOfInt4[i] = arrayOfInt6[i5];
+        arrayOfInt7 = arrayOfInt[((i4 - paramInt + i15) % i15)];
+        int i19 = arrayOfInt7[0];
+        int i18 = arrayOfInt7[1];
+        i10 = arrayOfInt7[2];
+        if (i6 == 0) {
+          arrayOfInt5[i3] = Math.min(i3 + paramInt + 1, i11);
+        }
+        int i20 = arrayOfInt1[(arrayOfInt5[i3] + i7)];
+        arrayOfInt7[0] = ((0xFF0000 & i20) >> 16);
+        arrayOfInt7[1] = ((0xFF00 & i20) >> 8);
+        arrayOfInt7[2] = (i20 & 0xFF);
+        m += arrayOfInt7[0];
+        k += arrayOfInt7[1];
+        j += arrayOfInt7[2];
+        i9 = i9 - i2 + m;
+        i8 = i8 - i1 + k;
+        i5 = i5 - n + j;
+        i4 = (i4 + 1) % i15;
+        arrayOfInt7 = arrayOfInt[(i4 % i15)];
+        i2 = i2 - i19 + arrayOfInt7[0];
+        i1 = i1 - i18 + arrayOfInt7[1];
+        n = n - i10 + arrayOfInt7[2];
+        m -= arrayOfInt7[0];
+        k -= arrayOfInt7[1];
+        j -= arrayOfInt7[2];
+        i += 1;
+        i3 += 1;
+      }
+      label723:
+      i7 += i12;
+      i6 += 1;
+    }
+    label739:
+    i = 0;
+    while (i < i12)
+    {
+      i5 = 0;
+      i7 = -paramInt * i12;
+      i6 = -paramInt;
+      i3 = 0;
+      n = 0;
+      i1 = 0;
+      i2 = 0;
+      j = 0;
+      m = 0;
+      k = 0;
+      i4 = 0;
+      if (i6 <= paramInt)
+      {
+        i8 = Math.max(0, i7) + i;
+        arrayOfInt7 = arrayOfInt[(i6 + paramInt)];
+        arrayOfInt7[0] = arrayOfInt2[i8];
+        arrayOfInt7[1] = arrayOfInt3[i8];
+        arrayOfInt7[2] = arrayOfInt4[i8];
+        i9 = i16 - Math.abs(i6);
+        i10 = arrayOfInt2[i8];
+        i11 = arrayOfInt3[i8];
+        i17 = arrayOfInt4[i8];
+        if (i6 > 0)
         {
-          this.jdField_a_of_type_Bdkn.b(paramString2, "urlKey='" + paramString1 + "'");
-          this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
-          bdii.c(jdField_a_of_type_JavaLangString, "Get 200, Save response data to cache. urlKey=" + paramString1);
-          return;
+          i3 += arrayOfInt7[0];
+          i4 += arrayOfInt7[1];
+          i5 += arrayOfInt7[2];
+        }
+        for (;;)
+        {
+          i8 = i7;
+          if (i6 < i14) {
+            i8 = i7 + i12;
+          }
+          i6 += 1;
+          j = i17 * i9 + j;
+          m = i11 * i9 + m;
+          k = i10 * i9 + k;
+          i7 = i8;
+          break;
+          i2 += arrayOfInt7[0];
+          i1 += arrayOfInt7[1];
+          n += arrayOfInt7[2];
         }
       }
-      catch (Exception paramString1)
+      i9 = m;
+      i10 = k;
+      i11 = 0;
+      k = i;
+      i6 = i5;
+      i7 = i4;
+      i8 = i3;
+      m = n;
+      n = i1;
+      i1 = i2;
+      i2 = paramInt;
+      i5 = i10;
+      i4 = i9;
+      i3 = j;
+      j = i11;
+      while (j < i13)
       {
-        paramString1.printStackTrace();
-        return;
-      }
-      a();
-      this.jdField_a_of_type_Bdkn.a(paramString2, 1);
-    }
-  }
-  
-  public String b(String paramString)
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      str1 = str2;
-      if (this.jdField_a_of_type_JavaUtilHashMap.size() != 0)
-      {
-        paramString = bdik.b(paramString);
-        str1 = str2;
-        if (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) != null) {
-          str1 = ((bdja)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).d;
+        arrayOfInt1[k] = (0xFF000000 | arrayOfInt6[i5] << 16 | arrayOfInt6[i4] << 8 | arrayOfInt6[i3]);
+        arrayOfInt7 = arrayOfInt[((i2 - paramInt + i15) % i15)];
+        i11 = arrayOfInt7[0];
+        i10 = arrayOfInt7[1];
+        i9 = arrayOfInt7[2];
+        if (i == 0) {
+          arrayOfInt5[j] = (Math.min(j + i16, i14) * i12);
         }
+        i17 = arrayOfInt5[j] + i;
+        arrayOfInt7[0] = arrayOfInt2[i17];
+        arrayOfInt7[1] = arrayOfInt3[i17];
+        arrayOfInt7[2] = arrayOfInt4[i17];
+        i8 += arrayOfInt7[0];
+        i7 += arrayOfInt7[1];
+        i6 += arrayOfInt7[2];
+        i5 = i5 - i1 + i8;
+        i4 = i4 - n + i7;
+        i3 = i3 - m + i6;
+        i2 = (i2 + 1) % i15;
+        arrayOfInt7 = arrayOfInt[i2];
+        i1 = i1 - i11 + arrayOfInt7[0];
+        n = n - i10 + arrayOfInt7[1];
+        m = m - i9 + arrayOfInt7[2];
+        i8 -= arrayOfInt7[0];
+        i7 -= arrayOfInt7[1];
+        i6 -= arrayOfInt7[2];
+        k += i12;
+        j += 1;
       }
+      i += 1;
     }
-    bdii.c(jdField_a_of_type_JavaLangString, "Get lastModify from cache. lastModify=" + str1);
-    return str1;
-  }
-  
-  public void b()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public String c(String paramString)
-  {
-    String str1 = "";
-    String str2 = str1;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      str2 = str1;
-      if (this.jdField_a_of_type_JavaUtilHashMap.size() != 0)
-      {
-        str2 = bdik.b(paramString);
-        paramString = str1;
-        if (this.jdField_a_of_type_JavaUtilHashMap.get(str2) != null) {
-          paramString = ((bdja)this.jdField_a_of_type_JavaUtilHashMap.get(str2)).c;
-        }
-        bdii.c(jdField_a_of_type_JavaLangString, "Get 304, Load response data from cache. urlKey=" + str2);
-        str2 = paramString;
-      }
-    }
-    return str2;
+    paramBitmap.setPixels(arrayOfInt1, 0, i12, 0, 0, i12, i13);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdjc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,29 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.widget.VideoView;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-final class bbzk
-  implements MediaPlayer.OnCompletionListener
+public class bbzk
+  extends RecyclerView.ItemDecoration
 {
-  bbzk(VideoView paramVideoView) {}
+  private int a;
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public bbzk(int paramInt)
   {
-    this.a.start();
+    this.a = paramInt;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    if (paramRecyclerView.getChildAdapterPosition(paramView) != 0) {
+      paramRect.top = this.a;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbzk
  * JD-Core Version:    0.7.0.1
  */

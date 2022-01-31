@@ -1,32 +1,24 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-
-class batl
-  implements akif
+public class batl
 {
-  public batm a;
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public int e;
   
-  private batl(batj parambatj) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public String toString()
   {
-    if ((this.jdField_a_of_type_Batm != null) && (paramTroopMemberInfo != null) && (TextUtils.equals(this.jdField_a_of_type_Batm.jdField_a_of_type_JavaLangString, paramTroopMemberInfo.memberuin)))
-    {
-      paramTroopMemberInfo = new ayjw(((TroopManager)this.jdField_a_of_type_Batj.a.getManager(52)).a(paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin), 13).a();
-      this.jdField_a_of_type_Batm.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopMemberInfo);
-      if (AppSetting.d) {
-        batj.a(this.jdField_a_of_type_Batj, this.jdField_a_of_type_Batm);
-      }
-    }
+    return "PttSliceInfoBean{encodeType=" + this.jdField_a_of_type_Int + ", isfirst=" + this.jdField_a_of_type_Boolean + ", isLast=" + this.jdField_b_of_type_Boolean + ", voiceId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", offset=" + this.jdField_b_of_type_Int + ", vegPos='" + this.d + '\'' + ", md5='" + this.c + '\'' + ", chatType='" + this.e + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     batl
  * JD-Core Version:    0.7.0.1
  */

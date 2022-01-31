@@ -1,21 +1,20 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.graphics.ColorMatrixColorFilter;
+import com.tencent.mobileqq.identification.IdentificationPoseReflect.3.1;
+import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYTReflectListener;
 
 public class astj
+  implements YtSDKKitFramework.IYTReflectListener
 {
-  public Button a;
-  public ImageView a;
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  
   astj(asti paramasti) {}
+  
+  public void onReflectEvent(ColorMatrixColorFilter paramColorMatrixColorFilter)
+  {
+    asti.a(this.a, new IdentificationPoseReflect.3.1(this, paramColorMatrixColorFilter));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     astj
  * JD-Core Version:    0.7.0.1
  */

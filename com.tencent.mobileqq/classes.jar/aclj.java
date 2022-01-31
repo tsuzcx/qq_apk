@@ -1,54 +1,34 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.text.style.ImageSpan;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class aclj
-  implements View.OnClickListener
+  extends ImageSpan
 {
-  public aclj(TroopRequestActivity paramTroopRequestActivity) {}
-  
-  public void onClick(View paramView)
+  public aclj(ChatSettingForTroop paramChatSettingForTroop, Drawable paramDrawable, int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L)) {
-      return;
-    }
-    TroopRequestActivity.c = l;
-    Bundle localBundle = TroopInfoActivity.a(this.a.jdField_a_of_type_JavaLangString, 4);
-    localBundle.putInt("t_s_f", 1001);
-    int i = this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get();
-    QQAppInterface localQQAppInterface;
-    String str;
-    if ((i == 2) || (i == 10) || (i == 12))
-    {
-      i = 1;
-      localQQAppInterface = this.a.app;
-      str = this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "";
-      if (i == 0) {
-        break label182;
-      }
-    }
-    label182:
-    for (paramView = "0";; paramView = "1")
-    {
-      axqy.b(localQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, str, paramView, "", "");
-      banb.a(this.a, localBundle, 2);
-      return;
-      i = 0;
-      break;
-    }
+    super(paramDrawable, paramInt);
+  }
+  
+  public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
+  {
+    paramCanvas.save();
+    paramCanvas.translate(azgq.a(5.0F), -azgq.a(2.0F));
+    super.draw(paramCanvas, paramCharSequence, paramInt1, paramInt2, paramFloat, paramInt3, paramInt4, paramInt5, paramPaint);
+    paramCanvas.restore();
+  }
+  
+  public Drawable getDrawable()
+  {
+    return super.getDrawable();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aclj
  * JD-Core Version:    0.7.0.1
  */

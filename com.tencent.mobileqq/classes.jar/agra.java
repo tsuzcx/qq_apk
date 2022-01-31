@@ -1,44 +1,43 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class agra
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public MessageForShortVideo a;
-  public String a;
-  public boolean a;
-  public String[] a;
-  public int b = -1;
-  public long b;
-  public String b;
-  public boolean b;
-  public long c;
-  public String c;
-  public boolean c;
-  public long d;
-  public boolean d;
-  public long e;
-  public boolean e;
+  public agra(TroopChatPie paramTroopChatPie) {}
   
-  public agra()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Long = -1L;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
-      return this.jdField_a_of_type_JavaLangString;
+    paramDialogInterface = (alzf)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if ((bdee.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null)) {
+      if (((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).c(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+        paramDialogInterface.l(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      }
     }
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaLangString = ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4");
-    return this.jdField_a_of_type_JavaLangString;
+    for (;;)
+    {
+      new azmo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_quitgrp").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
+      return;
+      paramDialogInterface.k(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      continue;
+      if (paramDialogInterface != null) {
+        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131694829, 0).a();
+      } else {
+        QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131692288, 0).a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agra
  * JD-Core Version:    0.7.0.1
  */

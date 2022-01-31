@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.app.message.messageclean;
 
-import akrs;
+import amhx;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import aptm;
-import axua;
+import armo;
+import azpt;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ public class ScanSpaceManager
 {
   public static final ArrayList<String> a;
   public long a;
-  private akrs jdField_a_of_type_Akrs;
+  private amhx jdField_a_of_type_Amhx;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private volatile boolean jdField_a_of_type_Boolean;
   public long b;
@@ -46,8 +46,8 @@ public class ScanSpaceManager
   
   private void c()
   {
-    String str1 = aptm.a().b();
-    String str2 = aptm.a().a();
+    String str1 = armo.a().b();
+    String str2 = armo.a().a();
     jdField_a_of_type_JavaUtilArrayList.clear();
     if (!TextUtils.isEmpty(str1))
     {
@@ -85,18 +85,18 @@ public class ScanSpaceManager
   {
     if (!this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Akrs != null)
+      if (this.jdField_a_of_type_Amhx != null)
       {
-        this.jdField_a_of_type_Akrs.b();
-        this.jdField_a_of_type_Akrs.a(0);
+        this.jdField_a_of_type_Amhx.b();
+        this.jdField_a_of_type_Amhx.a(0);
       }
-      axua.a().post(new ScanSpaceManager.ScanSpaceTask(this));
+      azpt.a().post(new ScanSpaceManager.ScanSpaceTask(this));
     }
   }
   
-  public void a(akrs paramakrs)
+  public void a(amhx paramamhx)
   {
-    this.jdField_a_of_type_Akrs = paramakrs;
+    this.jdField_a_of_type_Amhx = paramamhx;
   }
   
   public boolean a()
@@ -115,14 +115,14 @@ public class ScanSpaceManager
   public void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    axua.a();
+    azpt.a();
     jdField_a_of_type_JavaUtilArrayList.clear();
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
-    this.jdField_a_of_type_Akrs = null;
+    this.jdField_a_of_type_Amhx = null;
   }
   
   public long c()
@@ -141,12 +141,12 @@ public class ScanSpaceManager
     for (;;)
     {
       return false;
-      if (this.jdField_a_of_type_Akrs != null)
+      if (this.jdField_a_of_type_Amhx != null)
       {
-        this.jdField_a_of_type_Akrs.a(paramMessage.arg1);
+        this.jdField_a_of_type_Amhx.a(paramMessage.arg1);
         continue;
-        if (this.jdField_a_of_type_Akrs != null) {
-          this.jdField_a_of_type_Akrs.a(this.b, this.jdField_a_of_type_Long - this.b - this.c, this.c, this.jdField_a_of_type_Long);
+        if (this.jdField_a_of_type_Amhx != null) {
+          this.jdField_a_of_type_Amhx.a(this.b, this.jdField_a_of_type_Long - this.b - this.c, this.c, this.jdField_a_of_type_Long);
         }
       }
     }

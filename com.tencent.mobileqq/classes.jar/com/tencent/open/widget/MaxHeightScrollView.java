@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View.MeasureSpec;
 import android.widget.ScrollView;
-import baxn;
+import bcwh;
 
 public class MaxHeightScrollView
   extends ScrollView
@@ -36,7 +36,7 @@ public class MaxHeightScrollView
   
   private void a()
   {
-    this.a = (a(getContext()) - baxn.a(getContext(), 56.0F));
+    this.a = (a(getContext()) - bcwh.a(getContext(), 56.0F));
   }
   
   public int a()

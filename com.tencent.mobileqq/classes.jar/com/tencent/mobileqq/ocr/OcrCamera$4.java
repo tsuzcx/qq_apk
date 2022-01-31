@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.ocr;
 
-import ajya;
-import aubi;
-import bcql;
+import alpo;
+import avsm;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class OcrCamera$4
   implements Runnable
 {
-  public OcrCamera$4(aubi paramaubi) {}
+  public OcrCamera$4(avsm paramavsm) {}
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131707701), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), alpo.a(2131708073), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrCamera.4
  * JD-Core Version:    0.7.0.1
  */

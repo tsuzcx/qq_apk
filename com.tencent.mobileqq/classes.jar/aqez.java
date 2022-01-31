@@ -1,27 +1,17 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class aqez
-  extends Handler
+public class aqez
+  implements DialogInterface.OnClickListener
 {
-  aqez(aqes paramaqes) {}
+  public aqez(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 0) {
-      bcql.a(this.a.a, ajya.a(2131704815), 0).a();
-    }
-    while (1 != paramMessage.what) {
-      return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqez
  * JD-Core Version:    0.7.0.1
  */

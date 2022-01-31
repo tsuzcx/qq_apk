@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import albv;
-import aldt;
+import amsl;
+import amuj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -25,7 +25,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ARCommonConfigInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ARCommonConfigInfo> CREATOR = new aldt();
+  public static final Parcelable.Creator<ARCommonConfigInfo> CREATOR = new amuj();
   public static final long DEFAULT_AR_CLOUD_UPLOAD_CHECK_TIMEOUT = 5000L;
   public static final long DEFAULT_AR_CLOUD_UPLOAD_DELAY = 2000L;
   public static final long DEFAULT_AR_LOCAL_START_DELAY = 0L;
@@ -530,19 +530,19 @@ public class ARCommonConfigInfo
             break;
             if (str5.equalsIgnoreCase("Begin"))
             {
-              ((ARScanAR)localObject1).jdField_a_of_type_Long = albv.a(localException1.nextText());
+              ((ARScanAR)localObject1).jdField_a_of_type_Long = amsl.a(localException1.nextText());
             }
             else if (str5.equalsIgnoreCase("End"))
             {
-              ((ARScanAR)localObject1).jdField_b_of_type_Long = albv.a(localException1.nextText());
+              ((ARScanAR)localObject1).jdField_b_of_type_Long = amsl.a(localException1.nextText());
             }
             else if (str5.equalsIgnoreCase("UserGuideBeginTime"))
             {
-              ((ARScanAR)localObject1).jdField_c_of_type_Long = albv.a(localException1.nextText());
+              ((ARScanAR)localObject1).jdField_c_of_type_Long = amsl.a(localException1.nextText());
             }
             else if (str5.equalsIgnoreCase("UserGuideEndTime"))
             {
-              ((ARScanAR)localObject1).jdField_d_of_type_Long = albv.a(localException1.nextText());
+              ((ARScanAR)localObject1).jdField_d_of_type_Long = amsl.a(localException1.nextText());
             }
             else if (str5.equalsIgnoreCase("ActType"))
             {
@@ -776,7 +776,7 @@ public class ARCommonConfigInfo
               if (!((String)localObject1).equalsIgnoreCase("Begin")) {
                 break label1486;
               }
-              localARCommonConfigInfo.aRCloudBegin = albv.a(localException1.nextText());
+              localARCommonConfigInfo.aRCloudBegin = amsl.a(localException1.nextText());
             }
             label1486:
             while ((i != 3) || (!localException1.getName().equalsIgnoreCase("Cloud"))) {
@@ -787,7 +787,7 @@ public class ARCommonConfigInfo
                 break;
                 if (((String)localObject1).equalsIgnoreCase("End"))
                 {
-                  localARCommonConfigInfo.aRCloudEnd = albv.a(localException1.nextText());
+                  localARCommonConfigInfo.aRCloudEnd = amsl.a(localException1.nextText());
                 }
                 else
                 {
@@ -1060,7 +1060,7 @@ public class ARCommonConfigInfo
     //   188: invokevirtual 563	java/io/BufferedOutputStream:flush	()V
     //   191: aload 7
     //   193: aload 6
-    //   195: invokestatic 568	bbdx:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   195: invokestatic 568	bdcs:b	(Ljava/io/File;Ljava/io/File;)Z
     //   198: istore 4
     //   200: aload_1
     //   201: ifnull +7 -> 208
@@ -1280,7 +1280,7 @@ public class ARCommonConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,49 @@
-import android.view.View;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.NormalCardInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.OperationCardInfo;
+import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public class whd
-  implements xns
 {
-  public whd(ScannerActivity paramScannerActivity) {}
+  private qqstory_struct.OperationCardInfo jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo;
+  private CardItem.CardVideoInfo jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   
-  public void a(int paramInt)
+  public whd(qqstory_struct.OperationCardInfo paramOperationCardInfo)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.a.d = false;
-    ScannerActivity.a(this.a).setVisibility(8);
-    bbgu localbbgu = bbdj.a(this.a, 230);
-    if (paramInt == 2) {
-      localbbgu.setMessage(2131718907);
-    }
-    for (;;)
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo = paramOperationCardInfo;
+  }
+  
+  public whd(byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo = new qqstory_struct.OperationCardInfo();
+    try
     {
-      whe localwhe = new whe(this);
-      localbbgu.setPositiveButton(2131694794, localwhe);
-      localbbgu.setOnCancelListener(localwhe);
-      localbbgu.show();
+      this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.mergeFrom(paramArrayOfByte);
       return;
-      localbbgu.setMessage(2131718916);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wsv.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
     }
   }
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public CardItem.CardVideoInfo a()
   {
-    if (this.a.isFinishing()) {
-      return;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo == null)
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.card_info.story_video_info.size() == 0) {
+        return null;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo = new CardItem.CardVideoInfo((qqstory_struct.CardVideoInfo)this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_struct$OperationCardInfo.card_info.story_video_info.get(0));
     }
-    this.a.a.d = false;
-    String str = "QR_CODE";
-    if (ScannerActivity.a(this.a) != null) {
-      str = ScannerActivity.a(this.a).a();
-    }
-    ScannerActivity.a(this.a, paramInt1, str, paramString, paramInt2);
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelCardItem$CardVideoInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whd
  * JD-Core Version:    0.7.0.1
  */

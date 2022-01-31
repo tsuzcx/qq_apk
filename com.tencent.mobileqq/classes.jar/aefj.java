@@ -1,15 +1,17 @@
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
-class aefj
-  extends acuj
+public class aefj
+  implements DialogInterface.OnClickListener
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public aefj(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  aefj(aefg paramaefg) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,53 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import com.tencent.biz.qqstory.album.view.AlbumImageView;
+import java.util.List;
 
-public class ugg
+class ugg
+  extends Handler
 {
-  public int a;
-  public Drawable a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  
-  public ugg(View paramView)
+  public ugg(ugc paramugc, Looper paramLooper)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369261);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369260));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369252));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369249));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369259));
-    this.c = ((TextView)paramView.findViewById(2131361894));
-    this.jdField_a_of_type_Int = paramView.getContext().getResources().getDimensionPixelOffset(2131298781);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramView.getContext().getResources().getDrawable(2130839354);
+    super(paramLooper);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839348);
-    this.jdField_a_of_type_AndroidViewView.setPadding(this.jdField_a_of_type_AndroidViewView.getPaddingLeft(), this.jdField_a_of_type_AndroidViewView.getPaddingTop(), this.jdField_a_of_type_AndroidViewView.getPaddingRight(), this.jdField_a_of_type_AndroidViewView.getPaddingBottom());
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839354);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface(null, 1);
-    this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("");
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription("");
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.c.setVisibility(8);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      wsv.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop");
+    } while ((ugc.a(this.a) != 1) || (ugc.a(this.a) == null));
+    Object localObject = ugc.a(this.a);
+    int i = ugc.a(this.a, (List)localObject, ugc.c(this.a));
+    int j = ugc.a(this.a, (List)localObject, i + 1);
+    if ((((List)localObject).size() <= 1) || (i == j) || (i < 0))
+    {
+      ugc.b(this.a);
+      wsv.b("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, pick count not enougth , dont play loop");
+      return;
+    }
+    ugc.a(this.a, j);
+    paramMessage = (uer)((List)localObject).get(i);
+    localObject = (uer)((List)localObject).get(j);
+    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setVisibility(0);
+    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(paramMessage.a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, ugc.a(this.a));
+    this.a.jdField_a_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.setLocalDrawable(((uer)localObject).a, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, ugc.a(this.a));
+    paramMessage = AnimationUtils.loadAnimation(ugc.a(this.a), 2130772234);
+    paramMessage.setAnimationListener(new ugh(this));
+    this.a.jdField_b_of_type_ComTencentBizQqstoryAlbumViewAlbumImageView.startAnimation(paramMessage);
+    wsv.a("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "on receive msg play loop, start play loop , ani index = %d , rear index = %d", Integer.valueOf(i), Integer.valueOf(j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ugg
  * JD-Core Version:    0.7.0.1
  */

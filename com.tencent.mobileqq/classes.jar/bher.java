@@ -1,109 +1,91 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.tissue.v8rt.engine.ILog;
 
 public class bher
+  implements ILog
 {
-  final int jdField_a_of_type_Int;
-  final String jdField_a_of_type_JavaLangString;
-  final int jdField_b_of_type_Int;
-  final String jdField_b_of_type_JavaLangString;
-  final String c;
-  final String d;
+  String a = "MIV8RT";
   
-  private bher(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4)
+  public int d(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramString3;
-    this.d = paramString4;
+    QMLog.d(this.a + "/" + paramString1, paramString2, null);
+    return 0;
   }
   
-  public static bher a(@NonNull BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  public int d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    int j = 0;
-    Object localObject1 = "0";
-    Object localObject2 = "0";
-    Object localObject4 = paramAppInfo.buffer.get();
-    Object localObject3;
-    if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-      localObject3 = localObject1;
+    QMLog.d(this.a + "/" + paramString1, paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    QMLog.e(this.a + "/" + paramString1, paramString2);
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QMLog.e(this.a + "/" + paramString1, paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    QMLog.i(this.a + "/" + paramString1, paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QMLog.i(this.a + "/" + paramString1, paramString2, paramThrowable);
+    return 0;
+  }
+  
+  public void printNativeLog(int paramInt, String paramString1, String paramString2)
+  {
+    paramString1 = this.a + "/" + paramString1;
+    int i;
+    if (paramInt >= 100)
+    {
+      i = paramInt - 100 + 2;
+      if (i > 2) {
+        break label65;
+      }
+      QMLog.d(paramString1, paramString2);
     }
     for (;;)
     {
-      try
-      {
-        localObject4 = new JSONObject((String)localObject4);
-        localObject3 = localObject1;
-        localObject1 = ((JSONObject)localObject4).getString("trace_id");
-        localObject3 = localObject1;
-        i = ((JSONObject)localObject4).getInt("trace_num");
-        i += 1;
-        int k;
-        paramAppInfo.printStackTrace();
+      if (paramInt >= 100) {}
+      return;
+      i = paramInt;
+      break;
+      label65:
+      if (i == 3) {
+        QMLog.i(paramString1, paramString2);
+      } else if (i == 4) {
+        QMLog.w(paramString1, paramString2);
+      } else if (i == 5) {
+        QMLog.e(paramString1, paramString2);
       }
-      catch (Exception paramAppInfo)
-      {
-        try
-        {
-          localObject3 = ((JSONObject)localObject4).getString("ad_id");
-          localObject2 = localObject3;
-          k = paramAppInfo.uiAppId.get();
-          j = k;
-          localObject2 = localObject3;
-          return new bher((String)localObject1, i, (String)localObject2, j, "vab_red", "vab_red");
-        }
-        catch (Exception paramAppInfo)
-        {
-          break label123;
-        }
-        paramAppInfo = paramAppInfo;
-        i = 0;
-        localObject1 = localObject3;
-      }
-      label123:
-      continue;
-      int i = 0;
     }
   }
   
-  public String a()
+  public int w(String paramString1, String paramString2)
   {
-    return "trace_detail_ad_id=" + this.jdField_b_of_type_JavaLangString + "&trace_detail_app_id=" + this.jdField_b_of_type_Int;
+    QMLog.w(this.a + "/" + paramString1, paramString2);
+    return 0;
   }
   
-  public boolean equals(Object paramObject)
+  public int w(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (bher)paramObject;
-    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) && (this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) && (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int));
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_JavaLangString.hashCode();
-  }
-  
-  public String toString()
-  {
-    return "ReportKey{traceId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", traceNum=" + this.jdField_a_of_type_Int + ", adId=" + this.jdField_b_of_type_JavaLangString + ", appId=" + this.jdField_b_of_type_Int + '}';
+    QMLog.w(this.a + "/" + paramString1, paramString2, paramThrowable);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bher
  * JD-Core Version:    0.7.0.1
  */

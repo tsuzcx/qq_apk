@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import mqo;
+import mti;
 
 public class InviteUIChecker
 {
@@ -62,7 +62,7 @@ public class InviteUIChecker
         }
         QLog.i("InviteUIChecker", 2, "addInviteUITimeoutChecker session[" + str2 + "], task[" + paramVideoAppInterface + "], timeout[" + l1 + "]");
         return l1;
-        if (mqo.a()) {
+        if (mti.a()) {
           l1 = 1500L;
         }
       }
@@ -105,7 +105,7 @@ public class InviteUIChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.compat.InviteUIChecker
  * JD-Core Version:    0.7.0.1
  */

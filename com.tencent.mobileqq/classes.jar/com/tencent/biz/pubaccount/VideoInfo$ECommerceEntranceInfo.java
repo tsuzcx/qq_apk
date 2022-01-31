@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 import java.util.Arrays;
-import npg;
+import nso;
 
 public class VideoInfo$ECommerceEntranceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ECommerceEntranceInfo> CREATOR = new npg();
+  public static final Parcelable.Creator<ECommerceEntranceInfo> CREATOR = new nso();
   public int a;
   public UrlJumpInfo a;
   public String a;
@@ -98,7 +98,7 @@ public class VideoInfo$ECommerceEntranceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.ECommerceEntranceInfo
  * JD-Core Version:    0.7.0.1
  */

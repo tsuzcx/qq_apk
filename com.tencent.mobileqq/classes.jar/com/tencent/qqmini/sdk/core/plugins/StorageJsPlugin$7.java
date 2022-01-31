@@ -3,12 +3,12 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bekr;
+import bgkd;
 
 class StorageJsPlugin$7
   implements StorageJsPlugin.StorageTask
 {
-  StorageJsPlugin$7(StorageJsPlugin paramStorageJsPlugin, String paramString1, String paramString2, bekr parambekr) {}
+  StorageJsPlugin$7(StorageJsPlugin paramStorageJsPlugin, String paramString1, String paramString2, bgkd parambgkd) {}
   
   public String run()
   {
@@ -22,7 +22,7 @@ class StorageJsPlugin$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.StorageJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

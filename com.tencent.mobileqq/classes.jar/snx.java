@@ -1,30 +1,33 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class snx
-  implements TextWatcher
+class snx
+  implements DialogInterface.OnCancelListener
 {
-  public snx(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
+  snx(snu paramsnu, String paramString) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    PublicAccountImageCollectionCommentActivity.a(this.a, paramEditable.toString());
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
-      bcql.a(this.a, 0, this.a.getString(2131695554), 0).b(this.a.getTitleBarHeight());
+    paramDialogInterface = new JSONObject();
+    try
+    {
+      paramDialogInterface.put("index", snu.a(this.jdField_a_of_type_Snu));
+      paramDialogInterface.put("type", 1);
+      if (snu.a(this.jdField_a_of_type_Snu) != null) {
+        ((BridgeModule)snu.a(this.jdField_a_of_type_Snu).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
+      }
+      return;
     }
+    catch (JSONException paramDialogInterface) {}
   }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snx
  * JD-Core Version:    0.7.0.1
  */

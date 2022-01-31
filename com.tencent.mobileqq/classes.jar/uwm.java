@@ -1,41 +1,36 @@
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.List;
 
 public class uwm
-  extends uvs
+  extends QQUIEventReceiver<uvz, uzc>
 {
-  public List<uxm> b = new ArrayList();
-  public boolean e;
-  
-  public uwm(ErrorMessage paramErrorMessage)
+  public uwm(@NonNull uvz paramuvz)
   {
-    super(paramErrorMessage);
+    super(paramuvz);
   }
   
-  public String b()
+  public void a(@NonNull uvz paramuvz, @NonNull uzc paramuzc)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      uxm localuxm = (uxm)localIterator.next();
-      localStringBuilder.append("feedId:").append(localuxm.a().feedId);
-      localStringBuilder.append("unionId:").append(localuxm.a().getOwner().getUnionId());
+    if ((paramuzc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramuzc.jdField_a_of_type_JavaUtilList != null) && (!paramuzc.jdField_a_of_type_JavaUtilList.isEmpty())) {
+      paramuvz.a.b(paramuzc);
     }
-    return localStringBuilder.toString();
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver errorInfo: " + paramuzc.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", userUIItems = " + paramuzc.jdField_a_of_type_JavaUtilList);
   }
   
-  public String toString()
+  public Class acceptEventClass()
   {
-    return "FeedData{" + super.toString() + "mFeedItems=" + this.b + '}';
+    return uzc.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uwm
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.TextView;
-import bajf;
+import bcht;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Hashtable;
 import org.json.JSONException;
@@ -56,7 +56,7 @@ public class QLifeCommentActivity$ShopSelectReceiver
             if (this.a.a != null) {
               this.a.a.a = true;
             }
-            bajf.a.clear();
+            bcht.a.clear();
             this.a.jdField_e_of_type_JavaLangString = ("http://s.p.qq.com/cgi-bin/coupon_q/social/binary_upload.fcg?&sp=" + this.a.w + "&shopid=" + this.a.u);
             return;
           }

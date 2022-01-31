@@ -1,19 +1,38 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
-
-final class bawy
-  extends View.AccessibilityDelegate
+public class bawy
+  extends bawz
 {
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public int a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  
+  public bawy()
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    paramAccessibilityNodeInfo.setVisibleToUser(false);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" name:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" voiceLength:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" autoToText:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" type:").append(this.c).append(" audioPanel:").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bawy
  * JD-Core Version:    0.7.0.1
  */

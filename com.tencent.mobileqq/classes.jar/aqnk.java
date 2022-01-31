@@ -1,31 +1,21 @@
 import android.app.Activity;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
+import android.view.View;
 
 class aqnk
-  implements aqmb
+  implements bhqd
 {
-  aqnk(aqnj paramaqnj, URLDrawable paramURLDrawable, aqmi paramaqmi) {}
+  aqnk(aqnj paramaqnj, String paramString, bbpe parambbpe) {}
   
-  public void a(int paramInt, URLDrawable paramURLDrawable) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Aqnj.a.b.setVisibility(8);
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Aqnj.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      paramInt = this.jdField_a_of_type_ComTencentImageURLDrawable.getExifOrientation();
-      this.jdField_a_of_type_Aqmi.a = paramInt;
-      aqng.a(this.jdField_a_of_type_Aqnj.a.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentImageURLDrawable, paramInt);
-      return;
-    }
-    bcql.a(this.jdField_a_of_type_Aqnj.a.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Aqnj.a.jdField_a_of_type_AndroidAppActivity.getString(2131695341), 0).a();
+    azmj.b(this.jdField_a_of_type_Aqnj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A7F3", "0X800A7F3", 2, 0, "", "", "", "");
+    new bboe(Long.parseLong(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Aqnj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Aqnj.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Bbpe.a);
+    this.jdField_a_of_type_Aqnj.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqnk
  * JD-Core Version:    0.7.0.1
  */

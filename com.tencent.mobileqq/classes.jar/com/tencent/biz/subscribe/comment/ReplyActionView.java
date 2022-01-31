@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.comment;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -34,14 +34,14 @@ public class ReplyActionView
   
   private void a()
   {
-    Object localObject = LayoutInflater.from(getContext()).inflate(2131558663, this, true);
-    this.a = ((TextView)((View)localObject).findViewById(2131370435));
-    this.b = ((TextView)((View)localObject).findViewById(2131369143));
-    int i = actj.a(12.0F, getContext().getResources());
-    localObject = getResources().getDrawable(2130849692);
+    Object localObject = LayoutInflater.from(getContext()).inflate(2131558699, this, true);
+    this.a = ((TextView)((View)localObject).findViewById(2131370741));
+    this.b = ((TextView)((View)localObject).findViewById(2131369375));
+    int i = aekt.a(12.0F, getContext().getResources());
+    localObject = getResources().getDrawable(2130850162);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.a.setCompoundDrawables(null, null, (Drawable)localObject, null);
-    localObject = getResources().getDrawable(2130849693);
+    localObject = getResources().getDrawable(2130850163);
     ((Drawable)localObject).setBounds(0, 0, i, i);
     this.b.setCompoundDrawables(null, null, (Drawable)localObject, null);
   }
@@ -58,7 +58,7 @@ public class ReplyActionView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.ReplyActionView
  * JD-Core Version:    0.7.0.1
  */

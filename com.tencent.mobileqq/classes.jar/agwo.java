@@ -1,125 +1,128 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.PublicQuickPayManager.1;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import com.tencent.image.NativeGifImage;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.File;
 
 public class agwo
-  implements Manager
+  extends NativeGifImage
 {
-  public Context a;
-  private bbin jdField_a_of_type_Bbin;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private agxo jdField_a_of_type_Agxo;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private boolean jdField_a_of_type_Boolean;
+  private Paint b;
   
-  public agwo(QQAppInterface paramQQAppInterface)
+  public agwo(File paramFile, boolean paramBoolean, float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
   }
   
-  private void a(agwq paramagwq, int paramInt, String paramString1, String paramString2, String paramString3)
+  private void a(Canvas paramCanvas, Rect paramRect)
   {
-    if (paramagwq != null)
+    float f2 = 1.0F;
+    if ((QLog.isColorLevel()) && (!this.jdField_a_of_type_Boolean))
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("retCode", paramInt);
-      localBundle.putString("retMsg", paramString1);
-      localBundle.putString("payTime", paramString2);
-      localBundle.putString("orderId", paramString3);
-      paramagwq.a(localBundle);
+      QLog.d("ZhituManager", 2, " dst rect is " + paramRect + " but bitmap is " + getWidth() + " / " + getHeight());
+      this.jdField_a_of_type_Boolean = true;
     }
+    float f1 = paramRect.width() / getWidth();
+    if (Math.abs(f1 - 1.0F) < 0.01D)
+    {
+      f1 = f2;
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPaint = this.jdField_a_of_type_Agxo.jdField_a_of_type_AndroidGraphicsPaint;
+        this.b = this.jdField_a_of_type_Agxo.b;
+        f1 = f2;
+      }
+    }
+    for (;;)
+    {
+      int i = 0;
+      while (i < this.jdField_a_of_type_Agxo.jdField_a_of_type_ArrayOfFloat.length)
+      {
+        f2 = paramRect.top + this.jdField_a_of_type_Agxo.jdField_a_of_type_ArrayOfFloat[i] * f1;
+        if (this.b != null) {
+          paramCanvas.drawText(this.jdField_a_of_type_Agxo.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.b);
+        }
+        paramCanvas.drawText(this.jdField_a_of_type_Agxo.jdField_a_of_type_ArrayOfJavaLangString[i], paramRect.exactCenterX(), f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+        i += 1;
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_Agxo.jdField_a_of_type_AndroidGraphicsPaint);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Agxo.jdField_a_of_type_AndroidGraphicsPaint.getTextSize() * f1);
+        if (this.jdField_a_of_type_Agxo.b != null)
+        {
+          this.b = new Paint(this.jdField_a_of_type_Agxo.b);
+          this.b.setTextSize(this.jdField_a_of_type_Agxo.b.getTextSize() * f1);
+        }
+      }
+    }
+  }
+  
+  public int a()
+  {
+    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
+  }
+  
+  public Bitmap a()
+  {
+    return this.mCurrentFrameBitmap;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bbin != null) && (this.jdField_a_of_type_Bbin.isShowing())) {
-      this.jdField_a_of_type_Bbin.dismiss();
-    }
-    this.jdField_a_of_type_Bbin = bbdj.a(this.jdField_a_of_type_AndroidContentContext, ajya.a(2131708828), "", ajya.a(2131708829), new agwp(this), null, null);
-    this.jdField_a_of_type_Bbin.show();
+    getNextFrame();
+    applyNextFrame();
   }
   
-  public boolean a(String paramString, JSONObject paramJSONObject, agwq paramagwq)
+  public void a(agxo paramagxo)
   {
-    if ((paramJSONObject == null) || (TextUtils.isEmpty(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PublicQuickPayManager", 2, "jsonParams=" + paramJSONObject + ", puin=" + paramString);
-      }
-      return false;
-    }
-    if (!((agzd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245)).a(paramString))
-    {
-      a();
-      a(paramagwq, -4, "auth failed!", null, null);
-      return false;
-    }
-    String str1 = paramJSONObject.optString("appId");
-    paramString = paramJSONObject.optString("orderId");
-    Object localObject = paramJSONObject.optString("expireTime");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appId", str1);
-    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject)))
-    {
-      if (Long.parseLong((String)localObject) <= NetConnInfoCenter.getServerTimeMillis() / 1000L)
-      {
-        a();
-        a(paramagwq, -6, "expireTime overdue", null, null);
-        return false;
-      }
-      paramagwq = new PublicQuickPayManager.1(this, new Handler(), paramagwq, paramString);
-      localBundle.putParcelable("_qwallet_payresult_receiver", paramagwq);
-      paramString = "";
-      try
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("tokenId", paramJSONObject.optString("tokenId"));
-        String str2 = paramJSONObject.optString("bargainor_id", "0");
-        paramJSONObject = paramJSONObject.optString("channel", "other");
-        ((JSONObject)localObject).put("appInfo", "appid#" + str1 + "|bargainor_id#" + str2 + "|channel#" + paramJSONObject);
-        paramJSONObject = ((JSONObject)localObject).toString();
-        paramString = paramJSONObject;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
-      }
-      localBundle.putString("payparmas_json", paramString);
-      localBundle.putInt("payparmas_paytype", 9);
-      localBundle.putLong("vacreport_key_seq", VACDReportUtil.a(null, "qqwallet", "publicpaymsg.pay.result", "payinvoke", null, 0, null));
-      localBundle.putInt("pay_requestcode", 9);
-      PayBridgeActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseActivity.sTopActivity, paramagwq, 9, localBundle);
-      if (QLog.isColorLevel()) {
-        QLog.e("PublicQuickPayManager", 2, "open OpenPayActivity success");
-      }
-      return true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("PublicQuickPayManager", 2, "publicQuickPay parameters parse error");
-    }
-    a();
-    a(paramagwq, -4, "params parse error", null, null);
-    return false;
+    this.jdField_a_of_type_Agxo = paramagxo;
   }
   
-  public void onDestroy() {}
+  public void a(Canvas paramCanvas)
+  {
+    Rect localRect = new Rect(0, 0, paramCanvas.getWidth(), paramCanvas.getHeight());
+    if (QLog.isColorLevel()) {
+      QLog.d("ZhituManager", 2, "draw text to file dst rect is " + localRect + " and bitmap is " + getWidth() + " / " + getHeight());
+    }
+    a(paramCanvas, localRect);
+  }
+  
+  public int b()
+  {
+    return this.mMetaData[FRAME_COUNT_INDEX];
+  }
+  
+  public int c()
+  {
+    return this.mCurrentFrameIndex;
+  }
+  
+  public int d()
+  {
+    return this.mMetaData[WIDTH_INDEX];
+  }
+  
+  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
+  {
+    super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
+    a(paramCanvas, paramRect);
+  }
+  
+  public void drawFirstFrame(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
+  {
+    super.drawFirstFrame(paramCanvas, paramRect, paramPaint);
+    a(paramCanvas, paramRect);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agwo
  * JD-Core Version:    0.7.0.1
  */

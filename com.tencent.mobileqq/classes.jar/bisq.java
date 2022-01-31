@@ -1,21 +1,20 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.2.1;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qqfav.widget.LocationDetailActivity;
 
 public class bisq
-  implements bjos<Boolean>
+  implements View.OnClickListener
 {
-  bisq(bisp parambisp) {}
+  public bisq(LocationDetailActivity paramLocationDetailActivity) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    ThreadManager.getSubThreadHandler().post(new AEVideoStoryGIFTplViewModel.2.1(this));
+    this.a.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bisq
  * JD-Core Version:    0.7.0.1
  */

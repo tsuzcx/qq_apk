@@ -1,37 +1,209 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.text.format.DateFormat;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForQQStoryFeed;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
 
 public class aftw
-  implements View.OnClickListener
+  extends aekw
 {
-  public aftw(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  private static SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat;
+  private afty jdField_a_of_type_Afty;
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new aftx(this);
+  private MessageForQQStoryFeed jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public aftw(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    paramView = this.a.a.iterator();
-    while (paramView.hasNext()) {
-      ((EmoticonFromGroupEntity)paramView.next()).status = -1;
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+  }
+  
+  private View a(View paramView, afty paramafty)
+  {
+    View localView = paramView;
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558784, null);
+      paramafty.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView.findViewById(2131369181));
+      paramafty.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131368909));
+      paramafty.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368911));
+      paramafty.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378824));
+      paramafty.c = ((TextView)paramView.findViewById(2131378736));
+      paramafty.d = ((TextView)paramView.findViewById(2131378727));
+      paramafty.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368764));
+      b();
+      this.jdField_a_of_type_Afty.jdField_a_of_type_AndroidViewViewGroup.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      this.jdField_a_of_type_Afty.jdField_b_of_type_AndroidWidgetTextView.setText(b());
+      this.jdField_a_of_type_Afty.c.setText(a());
+      a();
+      a(paramView);
+      localView = paramView;
+      if (e)
+      {
+        paramafty.jdField_b_of_type_JavaLangStringBuilder = new StringBuilder();
+        localView = paramView;
+      }
     }
-    this.a.a.clear();
-    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
-    EmoticonGroupStoreFragment.b(this.a).setVisibility(0);
-    EmoticonGroupStoreFragment.a(this.a).a = false;
-    EmoticonGroupStoreFragment.a(this.a).a(false);
-    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
-    EmoticonGroupStoreFragment.e(this.a);
-    this.a.a(true);
-    this.a.resetLeftButton();
+    if (e)
+    {
+      localView.setContentDescription(null);
+      paramafty.jdField_b_of_type_JavaLangStringBuilder.setLength(0);
+    }
+    return localView;
+  }
+  
+  private URLDrawable a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    int i = aekt.a(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298796), this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = aekt.a(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298800), this.jdField_a_of_type_AndroidContentContext.getResources());
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mRequestWidth = j;
+    localURLDrawableOptions.mRequestHeight = i;
+    return URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+  }
+  
+  private CharSequence a()
+  {
+    long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mFeedTime;
+    return a(this.jdField_a_of_type_AndroidContentContext, l * 1000L);
+  }
+  
+  public static CharSequence a(Context paramContext, long paramLong)
+  {
+    if (jdField_a_of_type_JavaTextSimpleDateFormat == null) {
+      jdField_a_of_type_JavaTextSimpleDateFormat = (SimpleDateFormat)DateFormat.getDateFormat(paramContext);
+    }
+    jdField_a_of_type_JavaTextSimpleDateFormat.applyPattern(String.format("M%sd%s HH:mm", new Object[] { paramContext.getString(2131694457), paramContext.getString(2131691512) }));
+    return DateFormat.format(jdField_a_of_type_JavaTextSimpleDateFormat.toLocalizedPattern(), paramLong);
+  }
+  
+  private String a()
+  {
+    String str = bdal.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mFeedAddress, 10);
+    if (!TextUtils.isEmpty(str))
+    {
+      this.jdField_a_of_type_Afty.d.setText(str);
+      return str;
+    }
+    this.jdField_a_of_type_Afty.d.setVisibility(4);
+    this.jdField_a_of_type_Afty.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+    return str;
+  }
+  
+  private void a(View paramView)
+  {
+    if (e)
+    {
+      this.jdField_a_of_type_Afty.jdField_b_of_type_JavaLangStringBuilder.append(this.jdField_a_of_type_Afty.jdField_b_of_type_AndroidWidgetTextView.getText());
+      paramView.setContentDescription(this.jdField_a_of_type_Afty.jdField_b_of_type_JavaLangStringBuilder.toString());
+    }
+  }
+  
+  private boolean a(View paramView, MessageForQQStoryFeed paramMessageForQQStoryFeed)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.isEmpty())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QQStoryFeedItemBuilder", 2, "setFeedViewVisibility invoked. info: empty msg. ");
+      }
+      paramView.setVisibility(8);
+    }
+    return true;
+  }
+  
+  private CharSequence b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mMainText;
+  }
+  
+  private void b()
+  {
+    URLDrawable localURLDrawable = a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mCoverUrl);
+    if (localURLDrawable == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QQStoryFeedItemBuilder", 2, "setupCover invoked. info: drawable: " + localURLDrawable);
+      }
+      return;
+    }
+    this.jdField_a_of_type_Afty.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressMask(true);
+    int i = aekt.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_a_of_type_Afty.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(new float[] { i, i, i, i, 0.0F, 0.0F, 0.0F, 0.0F });
+    this.jdField_a_of_type_Afty.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable(localURLDrawable);
+  }
+  
+  private void b(View paramView)
+  {
+    paramView = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mUnionId;
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.mFeedId;
+    wta.a("aio_msg", "aio_clk", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed.frienduin });
+    vju.a(BaseActivity.sTopActivity, paramView, str, 1, 109, 1, this.jdField_a_of_type_Afty.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView);
+  }
+  
+  protected aekx a()
+  {
+    return new afty();
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, aekx paramaekx, View paramView, LinearLayout paramLinearLayout, aeov paramaeov)
+  {
+    if (!(paramMessageRecord instanceof MessageForQQStoryFeed))
+    {
+      paramMessageRecord = paramView;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("QQStoryFeedItemBuilder", 2, "getItemView Failed. info: wrong message type. ");
+        paramMessageRecord = paramView;
+      }
+    }
+    do
+    {
+      return paramMessageRecord;
+      paramMessageRecord = (MessageForQQStoryFeed)MessageForQQStoryFeed.class.cast(paramMessageRecord);
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed == null) {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed = new MessageForQQStoryFeed(paramMessageRecord);
+      }
+      if (this.jdField_a_of_type_Afty == null) {
+        this.jdField_a_of_type_Afty = ((afty)afty.class.cast(paramaekx));
+      }
+      paramaekx = a(paramView, this.jdField_a_of_type_Afty);
+      paramMessageRecord = paramaekx;
+    } while (this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Boolean = a(paramaekx, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQStoryFeed);
+    return paramaekx;
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bdlb[] a(View paramView)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aftw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.bgprobe;
 
-import amad;
+import anrc;
 
 public final class BackgroundProbeManager$1
   implements Runnable
 {
-  public BackgroundProbeManager$1(amad paramamad) {}
+  public BackgroundProbeManager$1(anrc paramanrc) {}
   
   public void run()
   {
-    amad.a(this.a);
+    anrc.a(this.a);
   }
 }
 

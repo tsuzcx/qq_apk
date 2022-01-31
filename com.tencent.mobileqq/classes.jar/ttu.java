@@ -1,20 +1,22 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import java.util.Comparator;
+import com.tencent.biz.qqcircle.comment.QCircleCommentBottomBar;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ttu
-  implements Comparator<QQUserUIItem>
+  implements ucl
 {
-  public ttu(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  public ttu(QCircleCommentBottomBar paramQCircleCommentBottomBar) {}
   
-  public int a(QQUserUIItem paramQQUserUIItem1, QQUserUIItem paramQQUserUIItem2)
+  public void a(int paramInt)
   {
-    return ajuh.a(paramQQUserUIItem1.mComparePartInt, paramQQUserUIItem1.mCompareSpell, paramQQUserUIItem2.mComparePartInt, paramQQUserUIItem2.mCompareSpell);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(tym.a("ext2", String.valueOf(paramInt)));
+    tyg.a(34, 2, QCircleCommentBottomBar.a(this.a), localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ttu
  * JD-Core Version:    0.7.0.1
  */

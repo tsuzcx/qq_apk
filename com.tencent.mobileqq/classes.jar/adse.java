@@ -1,28 +1,66 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class adse
-  implements apuv
+  extends baua
 {
-  adse(adqw paramadqw, String paramString) {}
+  adse(adsd paramadsd) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    paramView = new Intent(this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext, ChatHistoryFileActivity.class);
-    paramView.putExtra("uin", this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("uintype", this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    paramView.putExtra("uinname", this.jdField_a_of_type_Adqw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-    paramView.putExtra("com.tencent.mobileqq.ChatHistoryFileActivity.initial_tab", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Adqw.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    apue.a("0X800506C");
+    int i = paramMessage.what;
+    paramMessage = (baoj)paramMessage.obj;
+    if (paramMessage == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SendMultiPictureHelper", 2, "file is null");
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("SendMultiPictureHelper", 2, "transferListener status: " + i);
+        }
+        i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramMessage.p, paramMessage.i, paramMessage.b);
+      } while (this.a.jdField_d_of_type_Boolean);
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        if (paramMessage.d == 1005)
+        {
+          this.a.jdField_c_of_type_Boolean = true;
+          return;
+        }
+        if (paramMessage.d == 1003)
+        {
+          this.a.a();
+          return;
+        }
+        adsd.a(this.a, this.a.jdField_c_of_type_Int, this.a.jdField_a_of_type_JavaLangString, paramMessage.b);
+        return;
+      }
+      if (paramMessage.d == 1003)
+      {
+        if (this.a.jdField_a_of_type_Bdfq != null) {
+          this.a.jdField_a_of_type_Bdfq.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(100) }));
+        }
+        this.a.a();
+        return;
+      }
+      if (paramMessage.d == 1005)
+      {
+        this.a.a();
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Bdfq == null);
+    this.a.jdField_a_of_type_Bdfq.setMessage(String.format(this.a.jdField_d_of_type_JavaLangString, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(i) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adse
  * JD-Core Version:    0.7.0.1
  */

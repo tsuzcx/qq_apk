@@ -1,20 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.sharp.jni.TraeAudioManager.TraeAudioManagerLooper;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.open.downloadnew.common.NoticeParam;
 
-public class bflt
-  extends Handler
+public final class bflt
+  implements Parcelable.Creator<NoticeParam>
 {
-  public bflt(TraeAudioManager.TraeAudioManagerLooper paramTraeAudioManagerLooper) {}
-  
-  public void handleMessage(Message paramMessage)
+  public NoticeParam a(Parcel paramParcel)
   {
-    this.a.a(paramMessage);
+    return new NoticeParam(paramParcel);
+  }
+  
+  public NoticeParam[] a(int paramInt)
+  {
+    return new NoticeParam[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bflt
  * JD-Core Version:    0.7.0.1
  */

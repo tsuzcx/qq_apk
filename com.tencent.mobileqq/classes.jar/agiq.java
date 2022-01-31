@@ -1,29 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class agiq
-  implements DialogInterface.OnClickListener
+  extends agij
 {
-  public agiq(BindNumberActivity paramBindNumberActivity) {}
+  public Bitmap a;
+  public String b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agiq(String paramString)
   {
-    BindNumberActivity.a(this.a);
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.a.getIntent();
-    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
-      this.a.a("CliOper", "0X8005DE9", 1);
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      this.a = paramRedPacketInfo.icon;
+      this.b = paramRedPacketInfo.resPath;
     }
-    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
-      this.a.a("CliOper", "0X8005DE9", 2);
-    }
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (!TextUtils.isEmpty(this.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agiq
  * JD-Core Version:    0.7.0.1
  */

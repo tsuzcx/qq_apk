@@ -1,171 +1,32 @@
-import UserGrowth.downloadConfig;
-import UserGrowth.stGlobalConfig;
-import UserGrowth.stLinkConfig;
-import android.text.TextUtils;
-import cooperation.qzone.LocalMultiProcConfig;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher;
+import java.lang.ref.WeakReference;
 
 public class sjy
+  extends Handler
 {
-  private stGlobalConfig a;
+  private WeakReference a;
   
-  public static sjy a()
+  public sjy(ReadInJoyScrollViewSwitcher paramReadInJoyScrollViewSwitcher)
   {
-    return ska.a();
+    this.a = new WeakReference(paramReadInJoyScrollViewSwitcher);
   }
   
-  private boolean f()
+  public void handleMessage(Message paramMessage)
   {
-    return (this.a == null) || (this.a.linkConfig == null);
-  }
-  
-  private boolean g()
-  {
-    return (this.a == null) || (this.a.download == null);
-  }
-  
-  public int a()
-  {
-    if (this.a != null) {
-      return this.a.link_strategy_type;
-    }
-    return 1;
-  }
-  
-  public stGlobalConfig a()
-  {
-    return this.a;
-  }
-  
-  public String a()
-  {
-    if (!g()) {
-      return this.a.download.packageName;
-    }
-    return "";
-  }
-  
-  public void a(stGlobalConfig paramstGlobalConfig)
-  {
-    this.a = paramstGlobalConfig;
-    snb.d("WSGlobalConfigLog", "initGlobalConfig globalConfig:" + paramstGlobalConfig);
-  }
-  
-  public boolean a()
-  {
-    return (this.a == null) || (this.a.open_4g_autodownload != 0);
-  }
-  
-  public int b()
-  {
-    if (!f()) {
-      return this.a.linkConfig.callCount;
-    }
-    return 10000;
-  }
-  
-  public String b()
-  {
-    if (!g()) {
-      return this.a.download.downloadUrl;
-    }
-    return "";
-  }
-  
-  public boolean b()
-  {
-    if (!f()) {
-      return this.a.linkConfig.isOpenVideoPage;
-    }
-    return true;
-  }
-  
-  public int c()
-  {
-    if (!f()) {
-      return this.a.linkConfig.downloadCount;
-    }
-    return 10000;
-  }
-  
-  public String c()
-  {
-    if (!g()) {
-      return this.a.download.preloadDownloadUrl;
-    }
-    return "";
-  }
-  
-  public boolean c()
-  {
-    return (!g()) && (this.a.download.preload);
-  }
-  
-  public int d()
-  {
-    if (!g()) {
-      return this.a.download.vendorId;
-    }
-    return 0;
-  }
-  
-  public String d()
-  {
-    if (!g())
+    super.handleMessage(paramMessage);
+    paramMessage = (ReadInJoyScrollViewSwitcher)this.a.get();
+    if (paramMessage != null)
     {
-      if (TextUtils.isEmpty(this.a.download.qqDownloadUrl))
-      {
-        this.a.download.qqDownloadUrl = (skn.a() + "&versioncode=" + e());
-        snb.c("WeishiDownloadUtil", "服务器下发QQDownloadUrl失败，使用默认的:" + this.a.download.qqDownloadUrl);
-      }
-      snb.d("WeishiDownloadUtil", "服务器下发QQDownloadUrl: " + this.a.download.qqDownloadUrl);
-      return this.a.download.qqDownloadUrl;
+      paramMessage.a();
+      paramMessage.b();
     }
-    return skn.a();
-  }
-  
-  public boolean d()
-  {
-    return (!g()) && (this.a.download.appStoreSwitch);
-  }
-  
-  public int e()
-  {
-    if (!g()) {
-      return this.a.download.versionCode;
-    }
-    return 0;
-  }
-  
-  public String e()
-  {
-    if ((this.a != null) && (!TextUtils.isEmpty(this.a.encrypted_deviceid)))
-    {
-      LocalMultiProcConfig.putString("weishi_usergrowth", "encryptedDeviceId", this.a.encrypted_deviceid);
-      str = this.a.encrypted_deviceid;
-      snb.a("WSGlobalConfigLog", "LocalMultiProcConfig save encrypted_deviceid:" + str);
-      return str;
-    }
-    String str = LocalMultiProcConfig.getString("weishi_usergrowth", "encryptedDeviceId", "");
-    snb.a("WSGlobalConfigLog", "LocalMultiProcConfig load encrypted_deviceid:" + str);
-    return str;
-  }
-  
-  public boolean e()
-  {
-    return (!g()) && (this.a.download.enableRock);
-  }
-  
-  public int f()
-  {
-    if (this.a != null) {
-      return this.a.cache_size;
-    }
-    return 14;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sjy
  * JD-Core Version:    0.7.0.1
  */

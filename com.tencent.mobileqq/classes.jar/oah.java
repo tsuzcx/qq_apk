@@ -1,30 +1,23 @@
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class oah
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public SparseArray<oag> a = new SparseArray();
+  public oah(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public oah()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExposureSupplementUtil", 2, "create ExposureSupplementUtilManager");
+    if (!paramCompoundButton.isPressed()) {
+      return;
     }
-  }
-  
-  public oag a(int paramInt)
-  {
-    return (oag)this.a.get(paramInt);
-  }
-  
-  public void a(int paramInt, oag paramoag)
-  {
-    this.a.put(paramInt, paramoag);
+    ReadInJoySettingActivity.c(this.a, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oah
  * JD-Core Version:    0.7.0.1
  */

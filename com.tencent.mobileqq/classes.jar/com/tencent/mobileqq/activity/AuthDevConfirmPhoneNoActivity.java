@@ -7,9 +7,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import aoem;
-import aoeo;
-import aoes;
+import apwo;
+import apwq;
+import apwu;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -34,21 +34,21 @@ public class AuthDevConfirmPhoneNoActivity
   
   private void a()
   {
-    super.setContentView(2131560728);
-    setTitle(2131692141);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377103));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377102));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377145));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363506));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363580));
+    super.setContentView(2131560906);
+    setTitle(2131692212);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377624));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377623));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377666));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363547));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363625));
     if ((QLog.isColorLevel()) && ((this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null) || (this.jdField_c_of_type_AndroidWidgetTextView == null) || (this.jdField_a_of_type_AndroidWidgetButton == null) || (this.jdField_b_of_type_AndroidWidgetButton == null)))
     {
       QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "one or more controls is null! ");
       return;
     }
     onCreateRightView();
-    setRightButton(2131692114, this);
-    Object localObject = (TextView)findViewById(2131368429);
+    setRightButton(2131692183, this);
+    Object localObject = (TextView)findViewById(2131368613);
     if (localObject != null) {
       ((TextView)localObject).setVisibility(8);
     }
@@ -61,8 +61,8 @@ public class AuthDevConfirmPhoneNoActivity
     if (this.jdField_c_of_type_JavaLangString != null) {
       this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_c_of_type_JavaLangString);
     }
-    localObject = getString(2131692111);
-    String str = getString(2131692143);
+    localObject = getString(2131692180);
+    String str = getString(2131692214);
     this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject);
     this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -71,7 +71,7 @@ public class AuthDevConfirmPhoneNoActivity
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
     try
     {
-      aoes.a().a(null, this.app.getCurrentAccountUin(), 6);
+      apwu.a().a(null, this.app.getCurrentAccountUin(), 6);
       return;
     }
     catch (Exception localException) {}
@@ -116,7 +116,7 @@ public class AuthDevConfirmPhoneNoActivity
       localObject = ((Bundle)localObject).getString("resultMobileMask");
     } while (paramInt2 == 1);
     if (paramInt2 == 2) {
-      aoem.a().a(aoem.d);
+      apwo.a().a(apwo.d);
     }
     for (;;)
     {
@@ -128,8 +128,8 @@ public class AuthDevConfirmPhoneNoActivity
       return;
       if (paramInt2 == 3)
       {
-        aoem.a().a(aoem.c);
-        aoem.a().a(0L);
+        apwo.a().a(apwo.c);
+        apwo.a().a(0L);
       }
     }
   }
@@ -147,7 +147,7 @@ public class AuthDevConfirmPhoneNoActivity
     {
     default: 
       return;
-    case 2131363506: 
+    case 2131363547: 
       if (QLog.isColorLevel()) {
         QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "click confirm mobile phone button! ");
       }
@@ -155,7 +155,7 @@ public class AuthDevConfirmPhoneNoActivity
     }
     try
     {
-      aoes.a().a(null, this.app.getCurrentAccountUin(), 7);
+      apwu.a().a(null, this.app.getCurrentAccountUin(), 7);
       label71:
       paramView = new Intent(this, AuthDevVerifyCodeActivity.class);
       paramView.putExtra("phone_num", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile);
@@ -168,7 +168,7 @@ public class AuthDevConfirmPhoneNoActivity
       }
       try
       {
-        aoes.a().a(null, this.app.getCurrentAccountUin(), 8);
+        apwu.a().a(null, this.app.getCurrentAccountUin(), 8);
         label157:
         if (this.app != null) {
           this.app.sendWirelessMeibaoReq(1);
@@ -181,7 +181,7 @@ public class AuthDevConfirmPhoneNoActivity
           if ((TextUtils.isEmpty(this.d)) && (QLog.isColorLevel())) {
             QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "mUin is empty.");
           }
-          aoeo.a(this, this.f, this.d, aoeo.c, 1002, null);
+          apwq.a(this, this.f, this.d, apwq.c, 1002, null);
           return;
         }
         if (QLog.isColorLevel()) {
@@ -190,7 +190,7 @@ public class AuthDevConfirmPhoneNoActivity
         if ((TextUtils.isEmpty(this.d)) && (QLog.isColorLevel())) {
           QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "mUin is empty.");
         }
-        aoeo.a(this, this.d, this.d, aoeo.c, 1002, null);
+        apwq.a(this, this.d, this.d, apwq.c, 1002, null);
         return;
         if (QLog.isColorLevel()) {
           QLog.d("Q.devlock.AuthDevConfirmPhoneNoActivity", 2, "onClick right cancel button! ");
@@ -244,7 +244,7 @@ public class AuthDevConfirmPhoneNoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevConfirmPhoneNoActivity
  * JD-Core Version:    0.7.0.1
  */

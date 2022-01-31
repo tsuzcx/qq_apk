@@ -2,15 +2,15 @@ package dov.com.qq.im;
 
 import android.app.Activity;
 import android.view.WindowManager.BadTokenException;
-import bbgu;
-import bigp;
-import bjrl;
+import bdfq;
+import bkil;
+import bmcv;
 import com.tencent.qphone.base.util.QLog;
 
 public class QIMCameraCaptureUnit$2
   implements Runnable
 {
-  public QIMCameraCaptureUnit$2(bigp parambigp, String paramString) {}
+  public QIMCameraCaptureUnit$2(bkil parambkil, String paramString) {}
   
   public void run()
   {
@@ -21,10 +21,10 @@ public class QIMCameraCaptureUnit$2
     try
     {
       this.this$0.z();
-      if (!bigp.a(this.this$0).isShowing())
+      if (!bkil.a(this.this$0).isShowing())
       {
-        bigp.a(this.this$0).setCancelable(false);
-        bigp.a(this.this$0).show();
+        bkil.a(this.this$0).setCancelable(false);
+        bkil.a(this.this$0).show();
       }
       QLog.e("QIMCameraCaptureUnit", 2, "onCameraStarted error = " + this.a);
       return;
@@ -42,7 +42,7 @@ public class QIMCameraCaptureUnit$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.QIMCameraCaptureUnit.2
  * JD-Core Version:    0.7.0.1
  */

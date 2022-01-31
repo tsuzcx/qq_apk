@@ -1,19 +1,50 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import android.view.View;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
-class wlf
-  implements wlk
+public class wlf
+  extends wkj<wle>
 {
-  wlf(wle paramwle) {}
-  
-  public void a(View paramView, CertifiedAccountMeta.StFeed paramStFeed)
+  public wlf(@Nullable wkn paramwkn)
   {
-    this.a.d(paramStFeed);
+    super(paramwkn);
+  }
+  
+  protected JobSegment<wkm, wle> a()
+  {
+    return new wkz();
+  }
+  
+  protected JobSegment<Integer, wkm> a(wkl paramwkl)
+  {
+    return new wlg(paramwkl, this.a);
+  }
+  
+  protected wle a()
+  {
+    wkp localwkp = (wkp)urr.a(11);
+    List localList = localwkp.a();
+    wle localwle = new wle(new ErrorMessage());
+    localwle.jdField_b_of_type_JavaUtilList = localwkp.b(localList);
+    localwle.jdField_b_of_type_Boolean = true;
+    localwle.a = localwle.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localwle;
+  }
+  
+  protected wle a(ErrorMessage paramErrorMessage)
+  {
+    return new wle(paramErrorMessage);
+  }
+  
+  protected void a(List<String> paramList, boolean paramBoolean)
+  {
+    ((wkp)urr.a(11)).a(paramList, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wlf
  * JD-Core Version:    0.7.0.1
  */

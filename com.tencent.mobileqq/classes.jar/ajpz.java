@@ -1,31 +1,12 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.redtouch.RedTouch;
-
 public class ajpz
 {
-  public ajpx a;
-  public View a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public RedTouch a;
-  public ImageView b;
-  public RelativeLayout b;
-  public TextView b;
-  public ImageView c;
-  public RelativeLayout c;
-  public TextView c;
-  public ImageView d;
-  public ImageView e;
+  public int a;
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajpz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import azkm;
+import bbiv;
 
 public class ContactListAdapter$3
   implements Runnable
 {
-  public ContactListAdapter$3(azkm paramazkm) {}
+  public ContactListAdapter$3(bbiv parambbiv) {}
   
   public void run()
   {

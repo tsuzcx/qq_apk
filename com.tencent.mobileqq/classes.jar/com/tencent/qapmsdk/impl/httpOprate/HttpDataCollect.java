@@ -1,0 +1,184 @@
+package com.tencent.qapmsdk.impl.httpOprate;
+
+import com.tencent.qapmsdk.common.logger.Logger;
+import com.tencent.qapmsdk.common.network.NetworkWatcher;
+import com.tencent.qapmsdk.impl.api.data.TransactionData;
+import com.tencent.qapmsdk.impl.harvest.HttpLibType;
+import com.tencent.qapmsdk.impl.instrumentation.QAPMTransactionState;
+import com.tencent.qapmsdk.impl.instrumentation.QAPMTransactionStateUtil;
+import com.tencent.qapmsdk.impl.model.HttpDataModel;
+import com.tencent.qapmsdk.impl.util.TraceUtil;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeMap;
+import okhttp3.Headers;
+import okhttp3.HttpUrl;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+
+public class HttpDataCollect
+  implements IDataCollect
+{
+  private static final String TAG = "QAPM_Impl_HttpDataCollect";
+  private volatile boolean canCollect = true;
+  
+  private static void collectHead(QAPMTransactionState paramQAPMTransactionState, Request paramRequest)
+  {
+    QAPMTransactionStateUtil.processParamsFilter(paramQAPMTransactionState, paramQAPMTransactionState.getUrlParams());
+    paramRequest = new HttpDataCollect.1(paramRequest);
+    QAPMTransactionStateUtil.processHeaderParam(paramQAPMTransactionState.getUrl(), paramRequest, paramQAPMTransactionState);
+  }
+  
+  private static void collectOther(QAPMTransactionState paramQAPMTransactionState, Response paramResponse)
+  {
+    TransactionData localTransactionData = paramQAPMTransactionState.end();
+    if (localTransactionData != null)
+    {
+      if (paramQAPMTransactionState.getStatusCode() >= 400L)
+      {
+        TreeMap localTreeMap = new TreeMap();
+        paramResponse = paramResponse.headers();
+        if ((paramResponse != null) && (paramResponse.size() > 0))
+        {
+          Iterator localIterator = paramResponse.names().iterator();
+          while (localIterator.hasNext())
+          {
+            String str1 = (String)localIterator.next();
+            String str2 = paramResponse.get(str1);
+            if (str2 != null) {
+              localTreeMap.put(str1, str2);
+            }
+          }
+        }
+        paramResponse = "";
+        if (paramQAPMTransactionState.getException() != null) {
+          paramResponse = paramQAPMTransactionState.getException();
+        }
+        HttpDataModel.collectData(localTransactionData, localTreeMap, paramResponse);
+      }
+    }
+    else {
+      return;
+    }
+    HttpDataModel.collectData(localTransactionData);
+  }
+  
+  public static void collectResponseInfo(QAPMTransactionState paramQAPMTransactionState, String paramString, int paramInt1, int paramInt2)
+  {
+    if ((paramString != null) && (!"".equals(paramString))) {
+      paramQAPMTransactionState.setAppData(paramString);
+    }
+    paramQAPMTransactionState.setStatusCode(paramInt2);
+    if (paramInt1 >= 0)
+    {
+      paramQAPMTransactionState.setBytesReceived(paramInt1);
+      return;
+    }
+    paramQAPMTransactionState.setBytesReceived(0L);
+  }
+  
+  public boolean canCollect()
+  {
+    return TraceUtil.getCanMonitorHttp();
+  }
+  
+  public void collectException(QAPMTransactionState paramQAPMTransactionState, IOException paramIOException)
+  {
+    TransactionData localTransactionData;
+    if (canCollect())
+    {
+      Logger.INSTANCE.d(new String[] { "QAPM_Impl_HttpDataCollect", "okhttp3.0 ->httpError" });
+      QAPMTransactionStateUtil.setErrorCodeFromException(paramQAPMTransactionState, paramIOException);
+      if (!paramQAPMTransactionState.isComplete())
+      {
+        localTransactionData = paramQAPMTransactionState.end();
+        if (localTransactionData != null) {
+          break label49;
+        }
+      }
+    }
+    return;
+    label49:
+    localTransactionData.setHttpLibType(HttpLibType.OkHttp);
+    if (paramQAPMTransactionState.isError())
+    {
+      paramIOException = "";
+      if (paramQAPMTransactionState.getException() != null) {
+        paramIOException = paramQAPMTransactionState.getException();
+      }
+      Logger.INSTANCE.d(new String[] { "QAPM_Impl_HttpDataCollect", "okhttp3.0 ->error message:" + paramIOException });
+      HttpDataModel.collectData(localTransactionData, paramIOException);
+      return;
+    }
+    HttpDataModel.collectData(localTransactionData);
+  }
+  
+  public void collectRequest(Request paramRequest, QAPMTransactionState paramQAPMTransactionState)
+  {
+    Object localObject2;
+    Object localObject1;
+    if (canCollect())
+    {
+      localObject2 = paramRequest.url().toString();
+      localObject1 = null;
+      if ((localObject2 == null) || (!((String)localObject2).contains("?"))) {
+        break label131;
+      }
+      int i = ((String)localObject2).indexOf("?");
+      localObject1 = ((String)localObject2).substring(0, i);
+      String str = ((String)localObject2).substring(i + 1);
+      localObject2 = localObject1;
+      localObject1 = str;
+    }
+    label131:
+    for (;;)
+    {
+      paramQAPMTransactionState.setUrl((String)localObject2);
+      paramQAPMTransactionState.setUrlParams((String)localObject1);
+      paramQAPMTransactionState.setAllGetRequestParams((String)localObject1);
+      paramQAPMTransactionState.setMethodType(paramRequest.method());
+      QAPMTransactionStateUtil.setRequestMethod(paramQAPMTransactionState, paramRequest.method());
+      paramQAPMTransactionState.setCarrier(NetworkWatcher.INSTANCE.activeNetworkCarrier());
+      paramQAPMTransactionState.setHttpLibType(HttpLibType.OkHttp);
+      if (localObject2 != null) {
+        collectHead(paramQAPMTransactionState, paramRequest);
+      }
+      return;
+    }
+  }
+  
+  public void collectResponse(Response paramResponse, QAPMTransactionState paramQAPMTransactionState)
+  {
+    if (canCollect())
+    {
+      if (paramResponse == null) {
+        Logger.INSTANCE.e(new String[] { "QAPM_Impl_HttpDataCollect", "okhttp3.0 ->CallBack.onResponse(response) response is null " });
+      }
+    }
+    else {
+      return;
+    }
+    int i = paramResponse.code();
+    ResponseBody localResponseBody = paramResponse.body();
+    if (localResponseBody == null) {}
+    for (long l = 0L;; l = localResponseBody.contentLength())
+    {
+      collectResponseInfo(paramQAPMTransactionState, "", (int)l, i);
+      collectOther(paramQAPMTransactionState, paramResponse);
+      return;
+    }
+  }
+  
+  public boolean isCanCollect()
+  {
+    return this.canCollect;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.qapmsdk.impl.httpOprate.HttpDataCollect
+ * JD-Core Version:    0.7.0.1
+ */

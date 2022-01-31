@@ -1,27 +1,38 @@
-import com.tencent.av.ui.RedbagToolbar;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.qphone.base.util.QLog;
 
 public class mir
-  implements mpp
+  implements muo
 {
-  public mir(RedbagToolbar paramRedbagToolbar, moz parammoz) {}
+  public mir(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void a(boolean paramBoolean)
+  private void b()
   {
-    if (paramBoolean) {}
-    for (paramBoolean = this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.startActivity_SendRedBag(true);; paramBoolean = false)
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().ab) || (this.a.jdField_a_of_type_ComTencentAvVideoController.a().ac)) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (!paramBoolean)
-      {
-        this.jdField_a_of_type_Moz.a(false);
-        this.jdField_a_of_type_ComTencentAvUiRedbagToolbar.exitCurrentToolbar();
-      }
+      VideoMsgTools.a(this.a, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().g), bool, false);
       return;
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "MultiVideoMembersClickListener , Uin = " + paramLong + " , videoScr = " + paramInt1 + " , isNeedRequest " + paramBoolean + " , positon = " + paramInt2);
+    }
+    if ((paramInt2 == 7) && (paramBoolean)) {
+      b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mir
  * JD-Core Version:    0.7.0.1
  */

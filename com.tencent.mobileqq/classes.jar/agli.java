@@ -1,24 +1,30 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 
-public class agli
-  implements View.OnClickListener
+class agli
+  implements Animation.AnimationListener
 {
-  public agli(CameraPreviewActivity paramCameraPreviewActivity) {}
+  agli(aglh paramaglh) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.b) {
-      axqy.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
+    if (this.a.a.q != null)
+    {
+      paramAnimation = AnimationUtils.loadAnimation(this.a.a.a, 2130772224);
+      paramAnimation.setAnimationListener(this);
+      this.a.a.q.startAnimation(paramAnimation);
     }
-    this.a.finish();
-    bbbx.a(this.a, true, false);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agli
  * JD-Core Version:    0.7.0.1
  */

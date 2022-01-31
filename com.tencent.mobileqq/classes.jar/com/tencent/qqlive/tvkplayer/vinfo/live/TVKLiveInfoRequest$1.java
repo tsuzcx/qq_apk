@@ -16,7 +16,7 @@ class TVKLiveInfoRequest$1
   
   public void onFailure(IOException paramIOException)
   {
-    TVKLogUtil.w("MediaPlayerMgr[LiveCgiService.java]", "livecgi error = " + paramIOException.toString());
+    TVKLogUtil.w("MediaPlayerMgr[TVKLiveInfoRequest.java]", "livecgi error = " + paramIOException.toString());
     if (TVKLiveInfoRequest.access$000(this.this$0) <= 3)
     {
       if (TVKLiveInfoRequest.access$100(this.this$0) == TVKLiveInfoRequest.UrlState.MasterUrl) {
@@ -24,9 +24,9 @@ class TVKLiveInfoRequest$1
       }
       for (;;)
       {
-        TVKLogUtil.w("MediaPlayerMgr[LiveCgiService.java]", " change host, retry");
+        TVKLogUtil.w("MediaPlayerMgr[TVKLiveInfoRequest.java]", " change host, retry");
         TVKLiveInfoRequest.access$008(this.this$0);
-        TVKLogUtil.w("MediaPlayerMgr[LiveCgiService.java]", " retry count " + TVKLiveInfoRequest.access$000(this.this$0));
+        TVKLogUtil.w("MediaPlayerMgr[TVKLiveInfoRequest.java]", " retry count " + TVKLiveInfoRequest.access$000(this.this$0));
         this.this$0.execute();
         return;
         TVKLiveInfoRequest.access$102(this.this$0, TVKLiveInfoRequest.UrlState.MasterUrl);
@@ -47,7 +47,7 @@ class TVKLiveInfoRequest$1
       {
         if ((this.this$0.isServerTimeErr(paramHttpResponse)) && (TVKLiveInfoRequest.access$400(this.this$0) < 3))
         {
-          TVKLogUtil.w("MediaPlayerMgr[LiveCgiService.java]", String.format("[err85]On success:ResponseBody = %s,", new Object[] { paramHttpResponse }));
+          TVKLogUtil.w("MediaPlayerMgr[TVKLiveInfoRequest.java]", String.format("[err85]On success:ResponseBody = %s,", new Object[] { paramHttpResponse }));
           this.this$0.execute();
           TVKLiveInfoRequest.access$408(this.this$0);
           return;
@@ -62,7 +62,7 @@ class TVKLiveInfoRequest$1
         }
         catch (Throwable paramHttpResponse)
         {
-          TVKLogUtil.e("MediaPlayerMgr[LiveCgiService.java]", paramHttpResponse);
+          TVKLogUtil.e("MediaPlayerMgr[TVKLiveInfoRequest.java]", paramHttpResponse);
           return;
         }
         TVKLiveVideoInfo localTVKLiveVideoInfo;
@@ -70,7 +70,7 @@ class TVKLiveInfoRequest$1
       }
       catch (ParseException paramHttpResponse)
       {
-        TVKLogUtil.e("MediaPlayerMgr[LiveCgiService.java]", paramHttpResponse);
+        TVKLogUtil.e("MediaPlayerMgr[TVKLiveInfoRequest.java]", paramHttpResponse);
         localTVKLiveVideoInfo = new TVKLiveVideoInfo();
         localTVKLiveVideoInfo.setErrModule(10000);
         localTVKLiveVideoInfo.setErrInfo(paramHttpResponse.getMessage());
@@ -82,7 +82,7 @@ class TVKLiveInfoRequest$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.live.TVKLiveInfoRequest.1
  * JD-Core Version:    0.7.0.1
  */

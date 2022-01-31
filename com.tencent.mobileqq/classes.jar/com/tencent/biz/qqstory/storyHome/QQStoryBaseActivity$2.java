@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
 import android.graphics.drawable.ColorDrawable;
 import android.view.Window;
-import ved;
+import wsv;
 
 class QQStoryBaseActivity$2
   implements Runnable
@@ -16,7 +16,7 @@ class QQStoryBaseActivity$2
   {
     if (this.this$0.isFinishing())
     {
-      ved.d("Q.qqstory.QQStoryBaseActivity", "Activity has been destroy.");
+      wsv.d("Q.qqstory.QQStoryBaseActivity", "Activity has been destroy.");
       return;
     }
     if (this.this$0.jdField_a_of_type_AndroidAppDialog == null)
@@ -41,7 +41,7 @@ class QQStoryBaseActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity.2
  * JD-Core Version:    0.7.0.1
  */

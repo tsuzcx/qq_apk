@@ -1,29 +1,23 @@
-import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
 
-class qnq
-  extends npt
+public final class qnq
+  implements Parcelable.Creator<UgcVideo>
 {
-  private qnq(qnl paramqnl) {}
-  
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public UgcVideo a(Parcel paramParcel)
   {
-    qnl.b(this.a);
-    if (paramBoolean)
-    {
-      qnl.a(this.a, paramBundle.getString("VALUE_COOKIE", null));
-      paramBundle = paramBundle.getParcelableArrayList("VIDEO_RECOMMEND_LIST");
-      qnl.a(this.a, paramBundle);
-      if (qnl.a(this.a))
-      {
-        qnl.a(this.a);
-        qnl.a(this.a, false);
-      }
-    }
+    return new UgcVideo(paramParcel);
+  }
+  
+  public UgcVideo[] a(int paramInt)
+  {
+    return new UgcVideo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qnq
  * JD-Core Version:    0.7.0.1
  */

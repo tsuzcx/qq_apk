@@ -18,9 +18,9 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import betc;
-import bffx;
-import bfgl;
+import bhic;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import java.util.Iterator;
 import java.util.List;
 
@@ -39,7 +39,10 @@ public class MoreFragment
   
   private Intent a()
   {
-    return getActivity().getIntent();
+    if (getActivity() != null) {
+      return getActivity().getIntent();
+    }
+    return null;
   }
   
   private void a()
@@ -58,7 +61,7 @@ public class MoreFragment
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
   }
   
-  private void a(int paramInt, Bundle paramBundle)
+  private void a(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
       return;
@@ -71,7 +74,7 @@ public class MoreFragment
     localAnimationSet.setInterpolator(new DecelerateInterpolator());
     localAnimationSet.setDuration(200L);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new bffx(this, paramInt, paramBundle));
+    localAnimationSet.setAnimationListener(new bhic(this, paramInt, paramBoolean, paramBundle));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
   }
   
@@ -82,21 +85,30 @@ public class MoreFragment
   
   public void onClick(View paramView)
   {
+    boolean bool2 = false;
     int j = -1;
     int i;
-    if (paramView == this.jdField_a_of_type_AndroidViewView) {
+    boolean bool1;
+    if (paramView == this.jdField_a_of_type_AndroidViewView)
+    {
       i = 0;
+      bool1 = bool2;
     }
     for (;;)
     {
-      a(i, null);
+      a(i, bool1, null);
       return;
+      bool1 = bool2;
       i = j;
       if (paramView != this.jdField_a_of_type_AndroidWidgetTextView)
       {
+        bool1 = bool2;
         i = j;
-        if ((paramView instanceof MoreItemView)) {
-          i = ((MoreItemView)paramView).a();
+        if ((paramView instanceof MoreItemView))
+        {
+          paramView = ((MoreItemView)paramView).a();
+          i = paramView.jdField_a_of_type_Int;
+          bool1 = paramView.b;
         }
       }
     }
@@ -106,32 +118,34 @@ public class MoreFragment
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.jdField_a_of_type_Int = getActivity().getResources().getDisplayMetrics().heightPixels;
-    this.b = bfgl.d(getActivity());
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559305, paramViewGroup, false);
+    this.b = DisplayUtil.getStatusBarHeight(getActivity());
+    paramLayoutInflater = paramLayoutInflater.inflate(2131559354, paramViewGroup, false);
     if (paramLayoutInflater == null)
     {
       getActivity().finish();
       return null;
     }
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131362188);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131370301));
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131362208);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131370599));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     paramLayoutInflater.setOnClickListener(this);
     paramViewGroup = a();
     if (paramViewGroup == null)
     {
-      betc.c("MoreFragment", "Failed to create MoreFragment, intent is null");
-      getActivity().finish();
+      QMLog.w("MoreFragment", "Failed to create MoreFragment, intent is null");
+      if (getActivity() != null) {
+        getActivity().finish();
+      }
       return null;
     }
     if (paramViewGroup.getBooleanExtra("key_orientation_landscape", false)) {
-      getActivity().findViewById(16908290).setBackgroundResource(2130840810);
+      getActivity().findViewById(16908290).setBackgroundResource(2130840922);
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131370419));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramLayoutInflater.findViewById(2131370725));
     this.jdField_a_of_type_JavaUtilList = paramViewGroup.getParcelableArrayListExtra("key_more_item_list");
     if (this.jdField_a_of_type_JavaUtilList == null)
     {
-      betc.d("MoreFragment", "Failed to create MoreFragmentView. no items");
+      QMLog.e("MoreFragment", "Failed to create MoreFragmentView. no items");
       getActivity().finish();
     }
     for (;;)
@@ -154,7 +168,7 @@ public class MoreFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MoreFragment
  * JD-Core Version:    0.7.0.1
  */

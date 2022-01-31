@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import afpj;
+import ahna;
 import com.tencent.widget.XListView;
 
 class DeviceFragment$1
@@ -10,10 +10,10 @@ class DeviceFragment$1
   
   public void run()
   {
-    if ((this.this$0.jdField_a_of_type_Afpj != null) && (this.this$0.jdField_a_of_type_Afpj.getCount() > 0))
+    if ((this.this$0.jdField_a_of_type_Ahna != null) && (this.this$0.jdField_a_of_type_Ahna.getCount() > 0))
     {
-      int i = this.this$0.jdField_a_of_type_Afpj.a();
-      if ((i >= 0) && (i < this.this$0.jdField_a_of_type_Afpj.getCount())) {
+      int i = this.this$0.jdField_a_of_type_Ahna.a();
+      if ((i >= 0) && (i < this.this$0.jdField_a_of_type_Ahna.getCount())) {
         this.this$0.jdField_a_of_type_ComTencentWidgetXListView.setSelection(i);
       }
     }
@@ -21,7 +21,7 @@ class DeviceFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment.1
  * JD-Core Version:    0.7.0.1
  */

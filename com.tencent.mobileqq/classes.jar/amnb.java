@@ -1,19 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class amnb
-  implements bfxc
+  extends alko
 {
-  public amnb(IphonePickerView paramIphonePickerView) {}
-  
-  public void a(View paramView, int paramInt)
+  public amnb(QQAppInterface paramQQAppInterface)
   {
-    IphonePickerView.a(this.a, paramView, 1);
+    super(paramQQAppInterface);
   }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return alxz.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amnb
  * JD-Core Version:    0.7.0.1
  */

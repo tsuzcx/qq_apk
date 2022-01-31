@@ -1,23 +1,17 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcImage;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
 public class puo
-  extends puq
+  extends RecyclerView.ViewHolder
 {
-  public puo(Context paramContext, baxy parambaxy, ram paramram)
+  public puo(pug parampug, View paramView)
   {
-    super(paramContext, parambaxy, paramram);
-  }
-  
-  public pqq g()
-  {
-    this.jdField_a_of_type_Pqp = new ComponentContentUgcImage(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    super(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     puo
  * JD-Core Version:    0.7.0.1
  */

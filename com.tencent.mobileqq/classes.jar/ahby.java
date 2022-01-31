@@ -1,28 +1,30 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class ahby
-  implements myy
+  implements View.OnTouchListener
 {
-  public ahby(PreloadModule paramPreloadModule) {}
+  public ahby(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void loaded(String paramString, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadModule", 2, "checkUpByBusinessId loaded, code:" + paramInt);
+    paramMotionEvent = (InputMethodManager)this.a.getSystemService("input_method");
+    if (paramMotionEvent.isActive()) {
+      paramMotionEvent.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
-  }
-  
-  public void progress(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadModule", 2, "checkUpByBusinessId progress:" + paramInt);
-    }
+    this.a.a.clearFocus();
+    paramView = this.a.a.getText().toString();
+    this.a.a.setSelection(paramView.length());
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahby
  * JD-Core Version:    0.7.0.1
  */

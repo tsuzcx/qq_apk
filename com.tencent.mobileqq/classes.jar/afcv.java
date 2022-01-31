@@ -1,196 +1,116 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.net.URL;
 
 public class afcv
-  extends VasWebviewJsPlugin
+  extends aekw
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  public int a;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public afcv()
+  public afcv(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.mPluginNameSpace = "addContact_SecCheck";
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297969);
+    int i = paramContext.getResources().getDimensionPixelSize(2131297970);
+    this.f = i;
+    this.jdField_e_of_type_Int = i;
+    this.d = (paramContext.getResources().getDisplayMetrics().widthPixels - paramContext.getResources().getDimensionPixelSize(2131296314) * 2);
+    this.c = paramContext.getResources().getDimensionPixelSize(2131297968);
   }
   
-  private int a(Activity paramActivity, int paramInt)
+  private View a(View paramView, afcx paramafcx)
   {
-    WebViewFragment localWebViewFragment = this.mRuntime.a();
-    int i;
-    if ((paramActivity instanceof bcdq)) {
-      i = ((bcdq)paramActivity).switchRequestCode(this, (byte)paramInt);
-    }
-    do
+    View localView = paramView;
+    if (paramView == null)
     {
-      return i;
-      i = paramInt;
-    } while (localWebViewFragment == null);
-    return localWebViewFragment.switchRequestCode(this, (byte)paramInt);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558761, null);
+      paramafcx.jdField_b_of_type_AndroidViewView = localView.findViewById(2131364770);
+      paramafcx.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362389));
+      paramafcx.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362390));
+      paramafcx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)localView.findViewById(2131362387));
+      paramafcx.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362388));
+      paramafcx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(this.jdField_a_of_type_Int);
+      paramView = new bczy(-1, this.jdField_e_of_type_Int, this.f);
+      paramafcx.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
+    }
+    return localView;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
+  protected aekx a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactSecCheckWebPlugin", 2, "openSecCheckWeb, requestCode=" + paramInt + ", url=" + paramString1);
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    paramString2 = new Intent(paramContext, QQBrowserActivity.class);
-    paramString2.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
-    paramString2.putExtra("url", paramString1);
-    try
-    {
-      ((Activity)paramContext).startActivityForResult(paramString2, paramInt);
-      return;
-    }
-    catch (SecurityException paramQQAppInterface) {}
+    return new afcx(this);
   }
   
-  protected void a(String paramString)
+  protected View a(MessageRecord paramMessageRecord, aekx paramaekx, View paramView, LinearLayout paramLinearLayout, aeov paramaeov)
   {
-    try
+    paramLinearLayout = (MessageForAIOStoryVideo)paramMessageRecord;
+    paramaekx = (afcx)paramaekx;
+    paramView = a(paramView, paramaekx);
+    paramMessageRecord = (String)paramaekx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.getTag(2131373384);
+    if ((!TextUtils.isEmpty(paramLinearLayout.cover)) && (bdal.a(paramLinearLayout.cover, paramMessageRecord))) {}
+    for (int i = 0;; i = 1)
     {
-      paramString = new JSONObject(paramString).optString("ticket");
-      if (this.mRuntime.a() == null) {
-        return;
-      }
-      if (this.mRuntime.a() != null)
+      if (i != 0) {}
+      try
       {
-        Object localObject = this.mRuntime.a();
-        if (localObject != null)
+        paramMessageRecord = new URL(paramLinearLayout.cover);
+        if (paramMessageRecord != null)
         {
-          Intent localIntent = new Intent();
-          localIntent.putExtra("ticket", paramString);
-          ((Activity)localObject).setResult(-1, localIntent);
-          if (!((Activity)localObject).isFinishing()) {
-            ((Activity)localObject).finish();
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder().append("setTicket, ticket_len = ");
-            if (TextUtils.isEmpty(paramString)) {}
-            for (int i = 0;; i = paramString.length())
-            {
-              QLog.d("AddContactSecCheckWebPlugin", 2, i);
-              return;
-            }
-          }
+          bczi.a(paramaekx.jdField_a_of_type_AndroidWidgetImageView, paramLinearLayout.cover);
+          paramMessageRecord = URLDrawable.getDrawable(paramMessageRecord, this.d, this.c);
+          paramMessageRecord.setDecodeHandler(bcuq.s);
+          paramaekx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageDrawable(paramMessageRecord);
+          paramaekx.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setTag(2131373384, paramLinearLayout.cover);
         }
+        if (jdField_e_of_type_Boolean) {
+          paramView.setContentDescription(paramLinearLayout.text);
+        }
+        paramaekx.jdField_b_of_type_AndroidViewView.setOnClickListener(new afcw(this, paramLinearLayout));
+        return paramView;
       }
-      return;
-    }
-    catch (JSONException paramString) {}
-  }
-  
-  protected void b(String paramString)
-  {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("targetAct", 0);
-      this.jdField_a_of_type_JavaLangString = paramString.optString("callBackName", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, mTargetAct=" + this.jdField_a_of_type_Int + ", mCallBackName=" + this.jdField_a_of_type_JavaLangString);
-      }
-      if ((this.jdField_a_of_type_Int <= 0) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      catch (Exception paramMessageRecord)
       {
-        if (!QLog.isColorLevel()) {
-          return;
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ChatItemBuilder", 2, " AIOStoryVideoBuilder:  url has problem");
+          }
+          paramMessageRecord = null;
         }
-        QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, param is illeagal");
-        return;
       }
-      if ((this.mRuntime == null) || (this.mRuntime.a() == null))
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, runtime is null");
-        return;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("AddContactSecCheckWebPlugin", 2, "launchAct,", paramString);
-      return;
-    }
-    paramString = this.mRuntime.a();
-    Intent localIntent;
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      localIntent = new Intent(paramString, BindNumberActivity.class);
-      localIntent.putExtra("kSrouce", 21);
-      localIntent.putExtra("cmd_param_is_from_uni", true);
-      paramString.startActivityForResult(localIntent, a(paramString, 1));
-      return;
-    }
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      localIntent = new Intent(paramString, PhoneUnityBindInfoActivity.class);
-      localIntent.putExtra("kSrouce", 21);
-      localIntent.putExtra("kIsWeb", true);
-      paramString.startActivityForResult(localIntent, a(paramString, 2));
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ("addContact_SecCheck".equals(paramString2))
-    {
-      if ((!"setTicket".equals(paramString3)) || (paramVarArgs.length != 1)) {
-        break label36;
-      }
-      a(paramVarArgs[0]);
-    }
-    label36:
-    while ((!"launchAct".equals(paramString3)) || (paramVarArgs.length != 1)) {
-      return false;
-    }
-    b(paramVarArgs[0]);
-    return false;
-  }
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
   
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  public bdlb[] a(View paramView)
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactSecCheckWebPlugin", 2, "doOnActivityResult requestCode = " + paramByte + " resultCode = " + paramInt);
-    }
-    if (this.mRuntime.a() == null) {
-      return;
-    }
-    if (paramInt == -1) {
-      i = 1;
-    }
-    paramIntent = new JSONObject();
-    try
-    {
-      paramIntent.put("targetAct", paramByte);
-      paramIntent.put("status", i);
-      callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramIntent.toString() });
-      return;
-    }
-    catch (Exception paramIntent)
-    {
-      QLog.e("AddContactSecCheckWebPlugin", 1, "doOnActivityResult exception:", paramIntent);
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afcv
  * JD-Core Version:    0.7.0.1
  */

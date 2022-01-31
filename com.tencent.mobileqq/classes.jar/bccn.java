@@ -1,27 +1,21 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.animation.Transformation;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 class bccn
-  implements bble<Integer>
+  implements bcgm
 {
-  bccn(bccj parambccj, View paramView, int paramInt) {}
+  bccn(bccj parambccj, TroopChatPie paramTroopChatPie) {}
   
-  public void a(bbky<Integer> parambbky, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_Bccj.a.v) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
-      this.jdField_a_of_type_Bccj.a.d = paramInteger.intValue();
-    } while (this.jdField_a_of_type_Bccj.a.d != this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bccj.a.v = false;
+    if (!bcgk.a(paramInt)) {
+      this.jdField_a_of_type_Bccj.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie);
+    }
+    this.jdField_a_of_type_Bccj.e(bcgk.b(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bccn
  * JD-Core Version:    0.7.0.1
  */

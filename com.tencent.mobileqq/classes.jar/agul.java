@@ -1,38 +1,38 @@
 import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import mqq.util.WeakReference;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class agul
-  extends agsj
+  extends MSFServlet
 {
-  private agul(NewPhotoListActivity paramNewPhotoListActivity)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramNewPhotoListActivity);
-  }
-  
-  public static agsc b(NewPhotoListActivity paramNewPhotoListActivity)
-  {
-    if ((jdField_a_of_type_Agsc == null) || (jdField_a_of_type_Agsc.a.get() != paramNewPhotoListActivity)) {}
-    try
-    {
-      if ((jdField_a_of_type_Agsc == null) || (jdField_a_of_type_Agsc.a.get() != paramNewPhotoListActivity)) {
-        jdField_a_of_type_Agsc = new agul(paramNewPhotoListActivity);
-      }
-      return jdField_a_of_type_Agsc;
+    AppRuntime localAppRuntime = getAppRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof AppInterface))) {
+      agug.a((QQAppInterface)localAppRuntime).a(paramIntent, paramFromServiceMsg);
     }
-    finally {}
   }
   
-  protected void a(Intent paramIntent)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    super.a(paramIntent);
-    this.jdField_a_of_type_Agrz.b = 6291456;
-    paramIntent.putExtra("PhotoConst.SHOULD_SEND_RAW_PHOTO", true);
+    if (paramIntent == null)
+    {
+      QLog.e("StickerRecServlet", 1, "onSend : req is null");
+      return;
+    }
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("key_cmd"));
+    paramPacket.putSendData(paramIntent.getByteArrayExtra("key_body"));
+    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 6000L));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agul
  * JD-Core Version:    0.7.0.1
  */

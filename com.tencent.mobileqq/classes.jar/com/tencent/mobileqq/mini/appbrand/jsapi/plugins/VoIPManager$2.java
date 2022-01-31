@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bdsd;
-import bdsj;
+import bfra;
+import bfrg;
 
 class VoIPManager$2
-  implements bdsd
+  implements bfra
 {
   VoIPManager$2(VoIPManager paramVoIPManager) {}
   
@@ -13,7 +13,7 @@ class VoIPManager$2
     if (paramInt - 32 == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      bdsj.c("VoIPManager", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
+      bfrg.c("VoIPManager", String.format("isMultiVideoMsgSupport type=0x%X support=%s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) }));
       return bool;
     }
   }
@@ -25,7 +25,7 @@ class VoIPManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.VoIPManager.2
  * JD-Core Version:    0.7.0.1
  */

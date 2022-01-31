@@ -1,26 +1,21 @@
-import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.widget.ksong.KSongView;
+import java.util.List;
 
 public class agxj
-  extends bctf
 {
-  public agxj(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  @bcyl(a=String.class)
+  List<String> jdField_a_of_type_JavaUtilList;
+  String b;
   
-  public void a()
+  public String toString()
   {
-    super.a();
-    this.a.b = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a();
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.getResources().getDrawable(2130846391));
-    this.a.c.setText(ajya.a(2131713313));
+    return "ZhituReportRequest{, type=" + this.jdField_a_of_type_Int + ", md5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", text='" + bhma.a(this.b) + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agxj
  * JD-Core Version:    0.7.0.1
  */

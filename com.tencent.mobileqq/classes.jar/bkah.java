@@ -1,51 +1,66 @@
-import android.graphics.PointF;
-import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
 
-public class bkah
+class bkah
+  implements View.OnTouchListener
 {
-  public float a;
-  public int a;
-  public PointF a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public int d;
-  public int e;
+  private float jdField_a_of_type_Float;
+  boolean jdField_a_of_type_Boolean = false;
+  private float b;
   
-  public bkah(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    this(new PointF(0.0F, 0.0F), 1.0F, 0.0F, 0.0F, 0.0F, paramInt1, paramInt2, paramInt5, paramInt3, paramInt4);
-  }
+  bkah(bkae parambkae) {}
   
-  public bkah(PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.jdField_d_of_type_Float = paramFloat4;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_d_of_type_Int = paramInt4;
-    this.e = paramInt5;
-  }
-  
-  public static bkah a(@NonNull bkah parambkah)
-  {
-    return new bkah(parambkah.jdField_a_of_type_AndroidGraphicsPointF, parambkah.jdField_a_of_type_Float, parambkah.jdField_b_of_type_Float, parambkah.jdField_c_of_type_Float, parambkah.jdField_d_of_type_Float, parambkah.jdField_a_of_type_Int, parambkah.jdField_b_of_type_Int, parambkah.jdField_c_of_type_Int, parambkah.jdField_d_of_type_Int, parambkah.e);
-  }
-  
-  public String toString()
-  {
-    return "LayerParams{centerP=" + this.jdField_a_of_type_AndroidGraphicsPointF + ", scale=" + this.jdField_a_of_type_Float + ", rotate=" + this.jdField_b_of_type_Float + ", translateXValue=" + this.jdField_c_of_type_Float + ", translateYValue=" + this.jdField_d_of_type_Float + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", textColor=" + this.jdField_d_of_type_Int + ", textSize=" + this.e + '}';
+    float f1 = paramMotionEvent.getX();
+    float f2 = paramMotionEvent.getY();
+    if (paramMotionEvent.getActionMasked() == 6) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    boolean bool = bkae.a(this.jdField_a_of_type_Bkae).onTouchEvent(paramMotionEvent);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return bool;
+            this.jdField_a_of_type_Float = paramMotionEvent.getX();
+            this.b = paramMotionEvent.getY();
+          } while (bkae.a(this.jdField_a_of_type_Bkae) == null);
+          bkae.a(this.jdField_a_of_type_Bkae).a("onActionDown", new float[] { paramMotionEvent.getX(), paramMotionEvent.getY() });
+          return bool;
+        } while ((bkae.a(this.jdField_a_of_type_Bkae).isInProgress()) || (paramMotionEvent.getPointerCount() != 1) || (this.jdField_a_of_type_Boolean) || (bkae.a(this.jdField_a_of_type_Bkae) == null));
+        bkae.a(this.jdField_a_of_type_Bkae).a("onActionMove", new float[] { paramMotionEvent.getX(), paramMotionEvent.getY() });
+        return bool;
+        if ((Math.abs(this.jdField_a_of_type_Float - f1) > ViewConfiguration.getTouchSlop()) || (Math.abs(this.b - f2) > ViewConfiguration.getTouchSlop())) {
+          break;
+        }
+        paramView = bkae.a(this.jdField_a_of_type_Bkae, paramMotionEvent.getX(), paramMotionEvent.getY());
+        if (bkae.a(this.jdField_a_of_type_Bkae) != null) {
+          bkae.a(this.jdField_a_of_type_Bkae).a(paramView[0], paramView[1]);
+        }
+      } while (!bkae.d(this.jdField_a_of_type_Bkae));
+      bkar.a("ar_activity_click", "1");
+      bkae.c(this.jdField_a_of_type_Bkae, false);
+      return bool;
+      this.jdField_a_of_type_Boolean = false;
+    } while (bkae.a(this.jdField_a_of_type_Bkae) == null);
+    bkae.a(this.jdField_a_of_type_Bkae).a("onActionUp", new float[] { 0.0F, 0.0F });
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkah
  * JD-Core Version:    0.7.0.1
  */

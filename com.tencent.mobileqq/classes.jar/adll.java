@@ -1,50 +1,39 @@
-import com.tencent.ark.open.ArkAppInfo.AppTemplateView;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class adll
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public class adll
+  implements axmj
 {
-  protected WeakReference<adlj> a;
+  public adll(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public adll(WeakReference<adlj> paramWeakReference)
-  {
-    this.a = paramWeakReference;
-  }
+  public void a() {}
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void a(int paramInt) {}
+  
+  public void a(axmn paramaxmn) {}
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    paramObject = (adlj)this.a.get();
-    if (paramObject == null)
+    if (!paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ArkApp.ArkAppContainer", 1, "onGetAppPathByName.wrapper == null");
-      }
+      bdcd.a(this.a, 230, this.a.getString(2131698758), alpo.a(2131710734), new adlm(this), null).show();
       return;
     }
-    String str1 = paramObject.a(paramString);
-    if (paramAppPathInfo != null) {}
-    for (paramString = paramAppPathInfo.path;; paramString = null)
-    {
-      paramObject.a.getAppFromLocal = false;
-      paramObject.a.endOfGetApp = System.currentTimeMillis();
-      if ((paramAppPathInfo != null) && (paramAppPathInfo.appTempInfo != null))
-      {
-        String str2 = paramAppPathInfo.appTempInfo.template;
-        str2 = paramAppPathInfo.appTempInfo.templateView;
-        adlj.a(paramObject).view = str2;
-      }
-      adlj.a(paramAppPathInfo);
-      paramObject.a(paramString, paramInt, str1);
-      return;
-    }
+    QQIdentiferActivity.a(this.a).set(false);
+    QQIdentiferActivity.a(this.a).a();
   }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adll
  * JD-Core Version:    0.7.0.1
  */

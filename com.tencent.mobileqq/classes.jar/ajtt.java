@@ -1,81 +1,29 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import java.lang.ref.WeakReference;
 
-class ajtt
-  extends bbwt
+public class ajtt
+  implements DialogInterface.OnCancelListener
 {
-  ajtt(ajts paramajts) {}
+  private final WeakReference<Activity> a;
   
-  public void onDone(bbwu parambbwu)
+  public ajtt(Activity paramActivity)
   {
-    super.onDone(parambbwu);
-    parambbwu = parambbwu.a();
-    if ((parambbwu.containsKey("version")) && (parambbwu.containsKey("json_name")))
-    {
-      int i = parambbwu.getInt("version", -1);
-      parambbwu = parambbwu.getString("json_name");
-      if (bboe.e.d.equals(parambbwu))
-      {
-        Object localObject = new File(this.a.a.getApplication().getApplicationContext().getFilesDir(), bboe.e.a);
-        if ((((File)localObject).exists()) && (((File)localObject).isFile()))
-        {
-          localObject = bbdx.a((File)localObject);
-          try
-          {
-            localObject = new JSONObject((String)localObject);
-            long l = ((JSONObject)localObject).getLong("timestamp") / 1000L;
-            if (Math.abs(i - l) <= 5L)
-            {
-              bboe.a(this.a.a.getApplication().getApplicationContext(), parambbwu, i);
-              if (QLog.isColorLevel()) {
-                QLog.i("ClubContentUpdateHandler", 2, "json file update success!");
-              }
-              boolean bool1 = true;
-              if (((JSONObject)localObject).has("enableX5Report"))
-              {
-                boolean bool2 = ((JSONObject)localObject).getBoolean("enableX5Report");
-                bool1 = bool2;
-                if (QLog.isColorLevel())
-                {
-                  QLog.i("ClubContentUpdateHandler", 2, "json file got isEnableX5Report: " + bool2);
-                  bool1 = bool2;
-                }
-              }
-              parambbwu = this.a.a.getApplication().getApplicationContext().getSharedPreferences("WebView_X5_Report", 4);
-              parambbwu.edit().putBoolean("enableX5Report", bool1).commit();
-              parambbwu.edit().putLong("read_vas_asyncCookie", 0L).commit();
-            }
-            for (;;)
-            {
-              ajts.a(this.a, (JSONObject)localObject);
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.i("ClubContentUpdateHandler", 2, "json file update get old file!");
-              }
-            }
-            return;
-          }
-          catch (Exception parambbwu)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("ClubContentUpdateHandler", 2, "Parse webview josn Exception:" + parambbwu.toString());
-            }
-          }
-        }
-      }
+    this.a = new WeakReference(paramActivity);
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    Activity localActivity = (Activity)this.a.get();
+    if ((localActivity != null) && (!localActivity.isFinishing())) {
+      paramDialogInterface.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajtt
  * JD-Core Version:    0.7.0.1
  */

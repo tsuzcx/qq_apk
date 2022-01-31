@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Process;
-import bgwf;
-import bgwi;
+import bixe;
+import bixh;
 
 public class ReaderDefaultProxyActivity
   extends Activity
@@ -18,15 +18,15 @@ public class ReaderDefaultProxyActivity
     if (Build.VERSION.SDK_INT < 26) {
       setRequestedOrientation(1);
     }
-    bgwf.c(this.a, "[ReaderPlugin] 异常分支：自动重启Reader插件Activity的场景，finish不做任何处理 ");
-    bgwi.a(this, -1, "Recover failed activity=" + this.a);
+    bixe.c(this.a, "[ReaderPlugin] 异常分支：自动重启Reader插件Activity的场景，finish不做任何处理 ");
+    bixh.a(this, -1, "Recover failed activity=" + this.a);
     finish();
     Process.killProcess(Process.myPid());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.shadow.ReaderDefaultProxyActivity
  * JD-Core Version:    0.7.0.1
  */

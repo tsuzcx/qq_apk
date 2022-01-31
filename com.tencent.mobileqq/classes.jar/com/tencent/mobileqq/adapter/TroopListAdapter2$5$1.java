@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.adapter;
 
-import aipr;
+import akhc;
 
 class TroopListAdapter2$5$1
   implements Runnable
@@ -9,12 +9,12 @@ class TroopListAdapter2$5$1
   
   public void run()
   {
-    aipr.a(this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$5.this$0, this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$5.jdField_a_of_type_Aipy, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$5.jdField_a_of_type_Boolean);
+    akhc.a(this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$5.this$0, this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$5.jdField_a_of_type_Akhj, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$5.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.TroopListAdapter2.5.1
  * JD-Core Version:    0.7.0.1
  */

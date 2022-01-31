@@ -1,10 +1,23 @@
-public abstract interface bgii
+import com.tencent.qqmini.sdk.MiniSDK;
+import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+
+class bgii
+  implements bgjs
 {
-  public abstract void a(String paramString1, String paramString2);
+  bgii(bgih parambgih, MiniAppInfo paramMiniAppInfo) {}
+  
+  public void a() {}
+  
+  public void b()
+  {
+    MiniSDK.init(MiniAppEnv.g().getContext());
+    MiniSDK.startMiniApp(null, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgii
  * JD-Core Version:    0.7.0.1
  */

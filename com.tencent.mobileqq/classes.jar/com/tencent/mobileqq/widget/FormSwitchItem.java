@@ -19,8 +19,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import baww;
-import bcml;
+import bcvq;
+import beln;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.theme.ThemeUtil;
@@ -29,7 +29,7 @@ import com.tencent.widget.Switch;
 
 public class FormSwitchItem
   extends RelativeLayout
-  implements bcml
+  implements beln
 {
   private int jdField_a_of_type_Int;
   private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -56,8 +56,8 @@ public class FormSwitchItem
   public FormSwitchItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    int m = getResources().getDimensionPixelSize(2131298015);
-    int n = getResources().getDimensionPixelSize(2131296639);
+    int m = getResources().getDimensionPixelSize(2131298038);
+    int n = getResources().getDimensionPixelSize(2131296655);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.FormItem);
     this.h = paramContext.getDimensionPixelSize(3, m);
     this.g = paramContext.getDimensionPixelSize(2, n);
@@ -82,33 +82,33 @@ public class FormSwitchItem
   public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
   {
     if (paramBoolean) {
-      return paramResources.getDrawable(2130849248);
+      return paramResources.getDrawable(2130849679);
     }
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130849248);
+      return paramResources.getDrawable(2130849679);
     case 0: 
-      return paramResources.getDrawable(2130849248);
+      return paramResources.getDrawable(2130849679);
     case 1: 
-      return paramResources.getDrawable(2130849268);
+      return paramResources.getDrawable(2130849699);
     case 2: 
-      return paramResources.getDrawable(2130849262);
+      return paramResources.getDrawable(2130849693);
     }
-    return paramResources.getDrawable(2130849253);
+    return paramResources.getDrawable(2130849684);
   }
   
   private void a()
   {
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131366629);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131366747);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence)) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
-    int m = getContext().getResources().getDimensionPixelSize(2131296637);
+    int m = getContext().getResources().getDimensionPixelSize(2131296653);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, m);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166854));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166901));
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
     setLeftIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.i, this.j);
@@ -120,15 +120,15 @@ public class FormSwitchItem
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
     this.jdField_a_of_type_ComTencentWidgetSwitch = new Switch(getContext());
     this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_b_of_type_Boolean);
-    if ((AppSetting.d) && (Build.VERSION.SDK_INT >= 16))
+    if ((AppSetting.c) && (Build.VERSION.SDK_INT >= 16))
     {
-      baww.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
-      baww.a(this.jdField_a_of_type_ComTencentWidgetSwitch, false);
+      bcvq.a(this.jdField_a_of_type_AndroidWidgetTextView, false);
+      bcvq.a(this.jdField_a_of_type_ComTencentWidgetSwitch, false);
       if (TextUtils.isEmpty(getContentDescription())) {
         setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText());
       }
     }
-    this.jdField_a_of_type_ComTencentWidgetSwitch.setId(2131366628);
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setId(2131366746);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.rightMargin = this.h;
     localLayoutParams.addRule(11);
@@ -217,7 +217,7 @@ public class FormSwitchItem
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((AppSetting.d) && (this.jdField_a_of_type_ComTencentWidgetSwitch != null) && (this.jdField_a_of_type_ComTencentWidgetSwitch.getVisibility() == 0))
+    if ((AppSetting.c) && (this.jdField_a_of_type_ComTencentWidgetSwitch != null) && (this.jdField_a_of_type_ComTencentWidgetSwitch.getVisibility() == 0))
     {
       if (paramMotionEvent.getAction() == 0) {
         super.onTouchEvent(paramMotionEvent);
@@ -381,7 +381,7 @@ public class FormSwitchItem
       {
         this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166854));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131166901));
       }
     }
     else {

@@ -1,34 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPClientConnectListener;
+import android.content.Context;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 class asgk
-  implements EIPClientConnectListener
+  implements ViewSwitcher.ViewFactory
 {
-  asgk(asgj paramasgj) {}
+  asgk(asgi paramasgi) {}
   
-  public void connectFailed()
+  public View makeView()
   {
-    asgj.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "connectFailed");
-    }
-  }
-  
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      asgj.a(this.a, paramEIPCConnection.procName);
-    }
-    asgj.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "connectSuccess");
-    }
+    CornerImageView localCornerImageView = new CornerImageView(asgi.a(this.a));
+    localCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    localCornerImageView.setRadius(aekt.a(30.0F, asgi.a(this.a).getResources()) / 2);
+    return localCornerImageView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asgk
  * JD-Core Version:    0.7.0.1
  */

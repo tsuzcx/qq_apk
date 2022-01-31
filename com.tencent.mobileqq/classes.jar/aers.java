@@ -1,29 +1,19 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 class aers
-  extends ajxj
+  implements OnCompositionLoadedListener
 {
-  aers(aerj paramaerj) {}
+  aers(aerp paramaerp) {}
   
-  protected void onAddFriend(String paramString)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString))
-    {
-      Intent localIntent = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent();
-      localIntent.putExtra("uintype", 0);
-      aerj.b(this.a, localIntent);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString + "Q.nearby.follow", 2, "onAddFriend, addUin:" + paramString + "|updateSession");
-      }
-    }
+    aerp.a(this.a, paramLottieComposition);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aers
  * JD-Core Version:    0.7.0.1
  */

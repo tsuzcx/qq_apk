@@ -1,12 +1,23 @@
-public abstract interface bjhm
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastOneShow;
+
+public final class bjhm
+  implements Parcelable.Creator<BroadcastOneShow>
 {
-  public abstract void a(float paramFloat, String paramString, int paramInt);
+  public BroadcastOneShow a(Parcel paramParcel)
+  {
+    return new BroadcastOneShow(paramParcel);
+  }
   
-  public abstract void a(boolean paramBoolean, String paramString);
+  public BroadcastOneShow[] a(int paramInt)
+  {
+    return new BroadcastOneShow[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjhm
  * JD-Core Version:    0.7.0.1
  */

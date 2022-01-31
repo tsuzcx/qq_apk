@@ -1,23 +1,32 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class amyl
-  implements amxr
+public class amyl
+  extends amyj
 {
-  amyl(amyj paramamyj) {}
+  public static final amyl a;
+  public amyn a;
+  public amyp a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void a(Context paramContext)
+  static
   {
-    paramContext = bbex.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramContext, amyj.a(this.a));
-    if (paramContext != null) {
-      paramContext.c();
-    }
+    jdField_a_of_type_Amyl = new amyl(false);
+  }
+  
+  public amyl()
+  {
+    this.b = 128L;
+  }
+  
+  public amyl(boolean paramBoolean)
+  {
+    this.b = 128L;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyl
  * JD-Core Version:    0.7.0.1
  */

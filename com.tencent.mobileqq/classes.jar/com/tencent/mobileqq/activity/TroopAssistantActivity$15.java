@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import android.widget.TextView;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade;
 
 class TroopAssistantActivity$15
   implements Runnable
@@ -10,7 +10,7 @@ class TroopAssistantActivity$15
   
   public void run()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b();
+    int i = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b();
     String str;
     if (i > 99) {
       str = "99+";
@@ -29,7 +29,7 @@ class TroopAssistantActivity$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.15
  * JD-Core Version:    0.7.0.1
  */

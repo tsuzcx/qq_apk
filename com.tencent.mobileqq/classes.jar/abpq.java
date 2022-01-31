@@ -1,38 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.util.SparseIntArray;
 
 public class abpq
-  implements CompoundButton.OnCheckedChangeListener
+  implements abpp
 {
-  public abpq(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  private final SparseIntArray a = new SparseIntArray();
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public int a(int paramInt)
   {
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131718636), "qqsetting_lock_screen_whenexit_key", paramBoolean);
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    try
     {
-      axqy.b(localQQAppInterface, "CliOper", "", "", "0X80040D9", "0X80040D9", 0, 0, paramCompoundButton, "", "", "");
-      if (QLog.isDevelopLevel()) {
-        QLog.i("qqls", 4, "collectPerformance qqls setting isChecked=" + paramBoolean);
-      }
-      paramCompoundButton = new HashMap();
-      paramCompoundButton.put("param_ls_setting", paramBoolean + "");
-      axrn.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "qqlsSettingReprotTag", true, 0L, 0L, paramCompoundButton, "");
-      return;
+      paramInt = this.a.get(paramInt, 1);
+      return paramInt;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abpq
  * JD-Core Version:    0.7.0.1
  */

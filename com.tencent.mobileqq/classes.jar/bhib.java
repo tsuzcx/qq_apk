@@ -1,39 +1,36 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.qzone.panorama.widget.PanoramaLoadingBall;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qqmini.sdk.ui.MiniBaseFragment;
+import com.tencent.qqmini.sdk.ui.MiniFragmentActivity;
 
 public class bhib
-  extends Handler
 {
-  public bhib(PanoramaLoadingBall paramPanoramaLoadingBall, Looper paramLooper)
+  public static void a(Activity paramActivity, Intent paramIntent, Class<? extends MiniFragmentActivity> paramClass, Class<? extends MiniBaseFragment> paramClass1, int paramInt)
   {
-    super(paramLooper);
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.setClass(paramActivity, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramActivity.startActivityForResult(localIntent, paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static void a(Context paramContext, Intent paramIntent, Class<? extends MiniFragmentActivity> paramClass, Class<? extends MiniBaseFragment> paramClass1)
   {
-    super.handleMessage(paramMessage);
-    if ((paramMessage.what == 291) && (Build.VERSION.SDK_INT >= 11))
-    {
-      if (PanoramaLoadingBall.a(this.a)) {
-        PanoramaLoadingBall.a(this.a, 60.0F);
-      }
-      if (PanoramaLoadingBall.a(this.a) == 0) {
-        this.a.setRotationX(PanoramaLoadingBall.a(this.a));
-      }
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
     }
-    else
-    {
-      return;
-    }
-    this.a.setRotationY(PanoramaLoadingBall.a(this.a));
+    localIntent.setClass(paramContext, paramClass);
+    localIntent.putExtra("public_fragment_class", paramClass1.getName());
+    paramContext.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhib
  * JD-Core Version:    0.7.0.1
  */

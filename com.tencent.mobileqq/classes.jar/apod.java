@@ -1,42 +1,111 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.UUID;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResReloader.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import mqq.os.MqqHandler;
 
-class apod
-  implements aplk
+public class apod
+  implements Handler.Callback
 {
-  apod(apnq paramapnq) {}
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+  private apoe jdField_a_of_type_Apoe;
+  protected ArrayList<Integer> a;
+  private final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
+  
+  public apod(apoe paramapoe)
+  {
+    this.jdField_a_of_type_Apoe = paramapoe;
+  }
   
   public void a()
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Apkt.a();
-    azqv localazqv = bakx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity);
-    if ((TextUtils.isEmpty(apnq.a(this.a))) && (localazqv.a != null)) {
-      apnq.a(this.a, localazqv.a.toString());
-    }
-    azpv localazpv = new azpv(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
-    if (((localazqv.b == 3) || (localazqv.b == 2)) && (localazqv.a != null)) {
-      localazpv.a(localazqv.a);
-    }
-    localFileManagerEntity.status = 2;
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10001);
   }
   
-  public void b()
+  public void a(int paramInt)
   {
-    Object localObject = this.a.jdField_a_of_type_Apkt.a();
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
-    localObject = bakx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
-    if (!TextUtils.isEmpty(apnq.a(this.a)))
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    try
     {
-      localTroopFileTransferManager.a(UUID.fromString(apnq.a(this.a)));
-      apnq.a(this.a, (azqv)localObject);
+      if (this.jdField_a_of_type_JavaUtilArrayList == null)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        b();
+      }
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)))
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.add(0, Integer.valueOf(paramInt));
+        if (QLog.isColorLevel()) {
+          QLog.d("QQSysAndEmojiResReloader", 2, new Object[] { "addReloadDrawable idx:", Integer.valueOf(paramInt), " ,size:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) });
+        }
+      }
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+  }
+  
+  protected void b()
+  {
+    ThreadManager.getSubThreadHandler().post(new QQSysAndEmojiResReloader.1(this));
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return false;
+    } while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0));
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+          break label162;
+        }
+        i = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue();
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+        if (i <= -1) {
+          break;
+        }
+        if (this.jdField_a_of_type_Apoe != null) {
+          this.jdField_a_of_type_Apoe.a(i);
+        }
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10001, 300L);
+          return false;
+        }
+      }
+      finally
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("QQSysAndEmojiResReloader", 2, "finish reloading");
+      return false;
+      label162:
+      int i = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apod
  * JD-Core Version:    0.7.0.1
  */

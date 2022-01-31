@@ -1,101 +1,92 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nkr
-  extends WebViewClient
+  implements BusinessObserver
 {
-  protected WebViewPluginEngine a;
+  public nkr(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public nkr(WebViewPluginEngine paramWebViewPluginEngine)
-  {
-    this.a = paramWebViewPluginEngine;
-  }
-  
-  public void onLoadResource(WebView paramWebView, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("WEBVIEWCHECK", 2, "CustomWebView loadUrl url:" + paramString);
+      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "unfollow isSuccess:" + String.valueOf(paramBoolean));
     }
-    super.onLoadResource(paramWebView, paramString);
-  }
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    super.onPageFinished(paramWebView, paramString);
-    if (this.a != null) {
-      this.a.a(paramString, 8589934594L, null);
+    if (!paramBoolean) {
+      this.a.d(2131695727);
     }
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-    if (this.a != null) {
-      this.a.a(paramString, 8589934593L, null);
-    }
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WEBVIEWCHECK", 2, "CustomWebViewClient onReceivedError errorCode:" + paramInt + ", description:" + paramString1 + ", failingUrl:" + paramString2);
-    }
-    if (this.a != null) {
-      this.a.a(paramString2, 8589934595L, paramInt);
-    }
-  }
-  
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
-  {
-    if (this.a != null) {
+    for (;;)
+    {
+      paramBundle = this.a;
+      paramBundle.c -= 1;
+      if (this.a.c == 0) {
+        this.a.L();
+      }
+      return;
+      Object localObject = new JSONObject();
+      if (this.a.d != null) {}
       try
       {
-        paramWebView = (WebResourceResponse)this.a.a(paramString, 8L);
-        return paramWebView;
-      }
-      catch (Exception paramWebView)
-      {
-        QLog.e("WEBVIEWCHECK", 1, "shouldInterceptRequest error:" + paramWebView.toString());
-      }
-    }
-    return null;
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((this.a != null) && (this.a.a(paramString))) {
-      bool1 = true;
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (paramString == null);
-        if (paramString.startsWith("http")) {
-          break;
+        ((JSONObject)localObject).put("uin", this.a.d);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add("find.mp.qq.com");
+        localArrayList.add("post.mp.qq.com");
+        localArrayList.add("article.mp.qq.com");
+        atda.a("unfollow", (JSONObject)localObject, localArrayList, null);
+        if (!paramBoolean) {
+          break label350;
         }
-        bool1 = bool2;
-      } while (!paramString.startsWith("data:"));
-      bool1 = bool2;
-    } while (paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"));
-    CustomWebView.addContextLog(nau.b(paramString, new String[0]));
-    return false;
+        try
+        {
+          paramBundle = paramBundle.getByteArray("data");
+          if (paramBundle == null) {
+            continue;
+          }
+          localObject = new mobileqq_mp.UnFollowResponse();
+          ((mobileqq_mp.UnFollowResponse)localObject).mergeFrom(paramBundle);
+          if (((mobileqq_mp.RetInfo)((mobileqq_mp.UnFollowResponse)localObject).ret_info.get()).ret_code.get() == 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "unfollow success");
+            }
+            this.a.h();
+            nrt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.d, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
+            StructLongMessageDownloadProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d);
+            if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
+              continue;
+            }
+            ((bcic)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+          }
+        }
+        catch (Exception paramBundle) {}
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+        this.a.d(2131695727);
+      }
+      continue;
+      label350:
+      this.a.d(2131695727);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nkr
  * JD-Core Version:    0.7.0.1
  */

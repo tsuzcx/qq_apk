@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
-import betc;
+import bgkd;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class DataJsPlugin$6
   implements AsyncResult
 {
-  DataJsPlugin$6(DataJsPlugin paramDataJsPlugin, bekr parambekr) {}
+  DataJsPlugin$6(DataJsPlugin paramDataJsPlugin, bgkd parambgkd) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -18,7 +18,7 @@ class DataJsPlugin$6
       if (paramJSONObject != null) {}
       for (String str = paramJSONObject.toString();; str = "")
       {
-        betc.d("DataJsPlugin", str);
+        QMLog.e("DataJsPlugin", str);
         this.val$req.a(paramJSONObject);
         return;
       }
@@ -28,7 +28,7 @@ class DataJsPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.DataJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

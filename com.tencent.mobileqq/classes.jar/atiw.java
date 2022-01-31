@@ -1,83 +1,24 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
 public class atiw
+  implements DialogInterface.OnDismissListener
 {
-  private static atiw a = new atiw();
+  public atiw(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
-  public static atiw a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return a;
-  }
-  
-  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
-  {
-    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
-    {
-      ved.e("ImageLoader", "ImageView or uri is null.");
-      return;
+    if ((!ListenTogetherOverlayFragment.a(this.a)) && (!ListenTogetherOverlayFragment.a(this.a).isFinishing())) {
+      ListenTogetherOverlayFragment.a(this.a).finish();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageLoader", 2, "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
-    }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if ((paramInt1 > 0) && (paramInt2 > 0))
-    {
-      localURLDrawableOptions.mRequestWidth = paramInt1;
-      localURLDrawableOptions.mRequestHeight = paramInt2;
-    }
-    Drawable localDrawable = paramDrawable1;
-    if (paramDrawable1 == null) {
-      localDrawable = aywm.a;
-    }
-    localURLDrawableOptions.mFailedDrawable = localDrawable;
-    paramDrawable1 = paramDrawable2;
-    if (paramDrawable2 == null) {
-      paramDrawable1 = aywm.a;
-    }
-    localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
-    localURLDrawableOptions.mMemoryCacheKeySuffix = "now";
-    localURLDrawableOptions.mUseAutoScaleParams = false;
-    paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    if (paramBoolean) {
-      paramString.setDecodeHandler(bavw.a);
-    }
-    if (paramURLDrawableListener != null)
-    {
-      if (paramString.getStatus() != 1) {
-        break label208;
-      }
-      ved.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
-      paramURLDrawableListener.onLoadSuccessed(paramString);
-    }
-    for (;;)
-    {
-      paramString.setURLDrawableListener(paramURLDrawableListener);
-      paramImageView.setImageDrawable(paramString);
-      return;
-      label208:
-      ved.b("ImageLoader", "start load URLDrawable.");
-    }
-  }
-  
-  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener)
-  {
-    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, false);
-  }
-  
-  public void a(ImageView paramImageView, String paramString, Drawable paramDrawable1, Drawable paramDrawable2, URLDrawable.URLDrawableListener paramURLDrawableListener, boolean paramBoolean)
-  {
-    a(paramImageView, paramString, paramDrawable1, paramDrawable2, 0, 0, paramURLDrawableListener, paramBoolean);
+    ListenTogetherOverlayFragment.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atiw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.multicard.MultiCardItemFragment;
+import java.lang.ref.WeakReference;
 
-public class auiq
-  implements DialogInterface.OnClickListener
+class auiq
+  implements View.OnLongClickListener
 {
-  public auiq(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  auiq(auip paramauip) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public boolean onLongClick(View paramView)
+  {
+    if (this.a.a != null)
+    {
+      paramView = (MultiCardItemFragment)this.a.a.get();
+      if (paramView != null) {
+        paramView.a(this.a);
+      }
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auiq
  * JD-Core Version:    0.7.0.1
  */

@@ -22,20 +22,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import lcg;
-import lga;
-import lhv;
-import lhw;
-import lhx;
-import lic;
-import liq;
-import lpa;
-import lpb;
-import lpu;
-import mao;
+import lek;
+import lid;
+import ljy;
+import ljz;
+import lka;
+import lkf;
+import lkt;
+import lrd;
+import lre;
+import lsa;
+import mdd;
 
 public class MagicFaceDataEntity
-  extends lic
+  extends lkf
 {
   public int a;
   public Handler a;
@@ -43,9 +43,9 @@ public class MagicFaceDataEntity
   protected VideoAppInterface a;
   MagicFaceDataEntity.StopSelfDecorationRunnable jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$StopSelfDecorationRunnable;
   protected BitSet a;
-  protected lhv a;
-  lhw jdField_a_of_type_Lhw;
-  liq jdField_a_of_type_Liq;
+  protected ljy a;
+  ljz jdField_a_of_type_Ljz;
+  lkt jdField_a_of_type_Lkt;
   protected boolean a;
   int[] jdField_a_of_type_ArrayOfInt;
   protected boolean b;
@@ -53,10 +53,10 @@ public class MagicFaceDataEntity
   public MagicFaceDataEntity(VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
   {
     super(paramString3, paramString1, paramString2);
-    lcg.c("MagicFaceDataEntity", "MagicFaceDataEntity constructor:" + paramString1 + "|" + paramBoolean + "|" + paramInt);
+    lek.c("MagicFaceDataEntity", "MagicFaceDataEntity constructor:" + paramString1 + "|" + paramBoolean + "|" + paramInt);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.b = paramBoolean;
-    this.jdField_a_of_type_AndroidOsHandler = new lhx(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new lka(this, Looper.getMainLooper());
     this.jdField_a_of_type_ArrayOfInt = a();
     this.jdField_a_of_type_JavaUtilBitSet = new BitSet();
     if ((paramInt & 0x1) != 0) {
@@ -66,17 +66,17 @@ public class MagicFaceDataEntity
       this.jdField_a_of_type_JavaUtilBitSet.set(1);
     }
     this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    this.jdField_a_of_type_Liq = ((liq)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2));
-    this.jdField_a_of_type_Lhw = new lhw(this);
-    this.jdField_a_of_type_Lhv = new lhv(this);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Lhv);
+    this.jdField_a_of_type_Lkt = ((lkt)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(2));
+    this.jdField_a_of_type_Ljz = new ljz(this);
+    this.jdField_a_of_type_Ljy = new ljy(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Ljy);
     this.jdField_a_of_type_Int = 0;
   }
   
   @Nullable
   private PendantItem a(String paramString)
   {
-    Iterator localIterator = this.jdField_a_of_type_Liq.a(null).iterator();
+    Iterator localIterator = this.jdField_a_of_type_Lkt.a(null).iterator();
     PendantItem localPendantItem;
     do
     {
@@ -87,7 +87,7 @@ public class MagicFaceDataEntity
     } while (!paramString.equals(localPendantItem.getName()));
     for (;;)
     {
-      lcg.c("MagicFaceDataEntity", "getPtvTemplateInfo 1:" + paramString + "|" + localPendantItem);
+      lek.c("MagicFaceDataEntity", "getPtvTemplateInfo 1:" + paramString + "|" + localPendantItem);
       return localPendantItem;
       localPendantItem = null;
     }
@@ -96,15 +96,15 @@ public class MagicFaceDataEntity
   private void a(long paramLong, PendantItem paramPendantItem)
   {
     QLog.w("MagicFaceDataEntity", 1, "startSelfDecoration, info[" + paramPendantItem.getName() + "], seq[" + paramLong + "]");
-    this.jdField_a_of_type_Liq.a(paramLong, paramPendantItem);
+    this.jdField_a_of_type_Lkt.a(paramLong, paramPendantItem);
     if (!TextUtils.isEmpty(paramPendantItem.getName()))
     {
       String str = a(paramPendantItem.getName());
       MagicfaceDataPendantJason localMagicfaceDataPendantJason = (MagicfaceDataPendantJason)this.jdField_a_of_type_JavaUtilMap.get(str);
-      lcg.c("MagicFaceDataEntity", "startSelfDecoration 2:" + str + "|" + localMagicfaceDataPendantJason);
+      lek.c("MagicFaceDataEntity", "startSelfDecoration 2:" + str + "|" + localMagicfaceDataPendantJason);
       if ((localMagicfaceDataPendantJason != null) && (localMagicfaceDataPendantJason.duration > 0))
       {
-        lcg.c("MagicFaceDataEntity", "startSelfDecoration 3:" + localMagicfaceDataPendantJason.duration);
+        lek.c("MagicFaceDataEntity", "startSelfDecoration 3:" + localMagicfaceDataPendantJason.duration);
         int i = localMagicfaceDataPendantJason.duration;
         this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$StopSelfDecorationRunnable = new MagicFaceDataEntity.StopSelfDecorationRunnable(this, paramPendantItem);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$StopSelfDecorationRunnable, i);
@@ -123,15 +123,15 @@ public class MagicFaceDataEntity
   private void a(String paramString, byte[] paramArrayOfByte)
   {
     short s3 = 0;
-    lcg.c("MagicFaceDataEntity", "onReceiveFunChatExpData:" + paramString + "|" + paramArrayOfByte.length);
-    SparseArray localSparseArray = lpb.a(paramArrayOfByte);
+    lek.c("MagicFaceDataEntity", "onReceiveFunChatExpData:" + paramString + "|" + paramArrayOfByte.length);
+    SparseArray localSparseArray = lre.a(paramArrayOfByte);
     paramArrayOfByte = null;
-    Object localObject = (lpa)localSparseArray.get(1);
-    lpa locallpa = (lpa)localSparseArray.get(4);
+    Object localObject = (lrd)localSparseArray.get(1);
+    lrd locallrd = (lrd)localSparseArray.get(4);
     boolean bool;
-    if (locallpa != null)
+    if (locallrd != null)
     {
-      paramArrayOfByte = locallpa.a();
+      paramArrayOfByte = locallrd.a();
       bool = true;
     }
     for (;;)
@@ -141,13 +141,13 @@ public class MagicFaceDataEntity
       int i;
       if (paramArrayOfByte != null)
       {
-        localObject = (lpa)localSparseArray.get(3);
+        localObject = (lrd)localSparseArray.get(3);
         s2 = 320;
         s1 = 240;
         if (localObject == null) {
           break label260;
         }
-        localObject = ((lpa)localObject).a();
+        localObject = ((lrd)localObject).a();
         s2 = (short)(localObject[0] << 8 | localObject[1] & 0xFF);
         s1 = (short)(localObject[2] << 8 | localObject[3] & 0xFF);
         s3 = (short)(localObject[4] << 8 | localObject[5] & 0xFF);
@@ -157,7 +157,7 @@ public class MagicFaceDataEntity
       for (short s4 = (short)(localObject[7] & 0xFF | i << 8);; s4 = 0)
       {
         a(paramString, paramArrayOfByte, s1, s2, s3, s4, bool);
-        paramArrayOfByte = (lpa)localSparseArray.get(2);
+        paramArrayOfByte = (lrd)localSparseArray.get(2);
         if (paramArrayOfByte != null) {
           a(paramString, ByteBuffer.wrap(paramArrayOfByte.a()).getShort());
         }
@@ -165,7 +165,7 @@ public class MagicFaceDataEntity
         if (localObject == null) {
           break label266;
         }
-        paramArrayOfByte = ((lpa)localObject).a();
+        paramArrayOfByte = ((lrd)localObject).a();
         bool = false;
         break;
       }
@@ -219,7 +219,7 @@ public class MagicFaceDataEntity
     if (this.jdField_a_of_type_JavaUtilMap != null)
     {
       int i = this.jdField_a_of_type_JavaUtilMap.size();
-      lcg.c("MagicFaceDataEntity", "getPendantStartFrames 11:" + i);
+      lek.c("MagicFaceDataEntity", "getPendantStartFrames 11:" + i);
       if (i > 0)
       {
         int[] arrayOfInt = new int[i];
@@ -230,7 +230,7 @@ public class MagicFaceDataEntity
           Map.Entry localEntry = (Map.Entry)localIterator.next();
           String str = (String)localEntry.getKey();
           arrayOfInt[i] = ((MagicfaceDataPendantJason)localEntry.getValue()).startframe;
-          lcg.c("MagicFaceDataEntity", "getPendantStartFrames 22:" + str + "|" + arrayOfInt[i]);
+          lek.c("MagicFaceDataEntity", "getPendantStartFrames 22:" + str + "|" + arrayOfInt[i]);
           i += 1;
         }
         return arrayOfInt;
@@ -287,7 +287,7 @@ public class MagicFaceDataEntity
         continue;
         j = 0;
         localObject = null;
-        lcg.c("MagicFaceDataEntity", "getDecorateNameById: " + j + "|" + paramString + "|" + (String)localObject);
+        lek.c("MagicFaceDataEntity", "getDecorateNameById: " + j + "|" + paramString + "|" + (String)localObject);
         if (j != 1) {
           break;
         }
@@ -298,13 +298,13 @@ public class MagicFaceDataEntity
   
   private void b(String paramString)
   {
-    lcg.c("MagicFaceDataEntity", "reloadDecrateList 1:" + paramString);
+    lek.c("MagicFaceDataEntity", "reloadDecrateList 1:" + paramString);
     PtvTemplateManager.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(new MagicFaceDataEntity.1(this, paramString));
   }
   
   private void c(String paramString)
   {
-    lcg.c("MagicFaceDataEntity", "startSelfPendant 1:" + paramString);
+    lek.c("MagicFaceDataEntity", "startSelfPendant 1:" + paramString);
     StringBuilder localStringBuilder;
     if (paramString != null)
     {
@@ -339,7 +339,7 @@ public class MagicFaceDataEntity
         QLog.w("MagicFaceDataEntity", 1, "doStartSelfDecoration, seq[" + l + "], target[" + paramString + "]");
       }
       if (!paramString.isUsable()) {
-        this.jdField_a_of_type_Liq.a(l, paramString);
+        this.jdField_a_of_type_Lkt.a(l, paramString);
       }
     }
     else
@@ -388,13 +388,13 @@ public class MagicFaceDataEntity
   
   public void a()
   {
-    lcg.c("MagicFaceDataEntity", "start:" + this.jdField_a_of_type_JavaLangString + "|" + this);
+    lek.c("MagicFaceDataEntity", "start:" + this.jdField_a_of_type_JavaLangString + "|" + this);
     this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2).sendToTarget();
   }
   
   public void a(int paramInt)
   {
-    lcg.c("MagicFaceDataEntity", "processStartDecoration:" + this.jdField_a_of_type_JavaLangString + "|" + paramInt + "|" + this.jdField_a_of_type_JavaUtilBitSet.get(0) + "|" + this.jdField_a_of_type_JavaUtilBitSet.get(1));
+    lek.c("MagicFaceDataEntity", "processStartDecoration:" + this.jdField_a_of_type_JavaLangString + "|" + paramInt + "|" + this.jdField_a_of_type_JavaUtilBitSet.get(0) + "|" + this.jdField_a_of_type_JavaUtilBitSet.get(1));
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
     while (localIterator.hasNext())
     {
@@ -415,25 +415,25 @@ public class MagicFaceDataEntity
   
   public void a(int paramInt1, int paramInt2)
   {
-    lcg.c("MagicFaceDataEntity", "MagicFaceDataEntity run:" + paramInt1 + "|" + paramInt2 + "|");
+    lek.c("MagicFaceDataEntity", "MagicFaceDataEntity run:" + paramInt1 + "|" + paramInt2 + "|");
     this.d = paramInt1;
     if (a(paramInt1))
     {
-      lcg.c("MagicFaceDataEntity", " inPendantStartFrames:" + paramInt1);
+      lek.c("MagicFaceDataEntity", " inPendantStartFrames:" + paramInt1);
       this.jdField_a_of_type_AndroidOsHandler.obtainMessage(4, Integer.valueOf(paramInt1)).sendToTarget();
     }
   }
   
   protected void a(int paramInt, String paramString)
   {
-    lcg.c("MagicFaceDataEntity", "onReceiveFunChatExpCMD:" + paramInt + "|" + paramString);
+    lek.c("MagicFaceDataEntity", "onReceiveFunChatExpCMD:" + paramInt + "|" + paramString);
     if (paramString != null)
     {
-      lcg.c("MagicFaceDataEntity", "onReceiveFunChatExpCMD 22:" + paramInt + "|" + paramString + "|" + "START");
+      lek.c("MagicFaceDataEntity", "onReceiveFunChatExpCMD 22:" + paramInt + "|" + paramString + "|" + "START");
       if (!paramString.equals("START")) {
         break label133;
       }
-      lcg.c("MagicFaceDataEntity", "onReceiveFunChatExpCMD 33:" + paramInt + "|" + paramString);
+      lek.c("MagicFaceDataEntity", "onReceiveFunChatExpCMD 33:" + paramInt + "|" + paramString);
       c(paramInt);
     }
     label133:
@@ -446,27 +446,27 @@ public class MagicFaceDataEntity
   protected void a(PendantItem paramPendantItem)
   {
     long l = AudioHelper.b();
-    this.jdField_a_of_type_Liq.a(l, null);
+    this.jdField_a_of_type_Lkt.a(l, null);
   }
   
   protected void a(String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
-      mao.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1016);
+      mdd.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1016);
       return;
     }
-    mao.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1016, paramString);
+    mdd.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1016, paramString);
   }
   
   public void a(String paramString, int paramInt)
   {
-    lcg.c("MagicFaceDataEntity", "onReceiveVolume:" + paramString + "|" + paramInt);
+    lek.c("MagicFaceDataEntity", "onReceiveVolume:" + paramString + "|" + paramInt);
   }
   
   public void a(String paramString, byte[] paramArrayOfByte, short paramShort1, short paramShort2, short paramShort3, short paramShort4, boolean paramBoolean)
   {
-    lcg.c("MagicFaceDataEntity", "onReceivePeerFaceFeature:" + paramString + "|" + paramArrayOfByte.length);
+    lek.c("MagicFaceDataEntity", "onReceivePeerFaceFeature:" + paramString + "|" + paramArrayOfByte.length);
   }
   
   protected void a(boolean paramBoolean)
@@ -474,7 +474,7 @@ public class MagicFaceDataEntity
     if (paramBoolean) {}
     for (String str = "START";; str = "STOP")
     {
-      lcg.c("MagicFaceDataEntity", "requestFaceFeatureExp:" + paramBoolean + "|" + str);
+      lek.c("MagicFaceDataEntity", "requestFaceFeatureExp:" + paramBoolean + "|" + str);
       this.jdField_a_of_type_ComTencentAvVideoController.a(6, str);
       return;
     }
@@ -492,41 +492,41 @@ public class MagicFaceDataEntity
   
   public void b()
   {
-    lcg.c("MagicFaceDataEntity", "stop:" + this.jdField_a_of_type_JavaLangString);
+    lek.c("MagicFaceDataEntity", "stop:" + this.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3).sendToTarget();
   }
   
   protected void b(int paramInt)
   {
-    lga locallga = this.jdField_a_of_type_ComTencentAvVideoController.a();
+    lid locallid = this.jdField_a_of_type_ComTencentAvVideoController.a();
     Object localObject = BaseApplicationImpl.getContext();
     localObject = this.jdField_a_of_type_ComTencentAvVideoController.a((Context)localObject);
     if (localObject != null) {
-      ((lpu)localObject).c(paramInt);
+      ((lsa)localObject).c(paramInt);
     }
-    locallga.jdField_a_of_type_JavaUtilBitSet.clear(0);
+    locallid.jdField_a_of_type_JavaUtilBitSet.clear(0);
   }
   
   public void c()
   {
-    lcg.c("MagicFaceDataEntity", "processStart:" + this.jdField_a_of_type_JavaLangString + "|" + this);
-    this.jdField_a_of_type_Liq.a(-1041L, this.jdField_a_of_type_Lhw);
+    lek.c("MagicFaceDataEntity", "processStart:" + this.jdField_a_of_type_JavaLangString + "|" + this);
+    this.jdField_a_of_type_Lkt.a(-1041L, this.jdField_a_of_type_Ljz);
   }
   
   protected void c(int paramInt)
   {
-    lga locallga = this.jdField_a_of_type_ComTencentAvVideoController.a();
+    lid locallid = this.jdField_a_of_type_ComTencentAvVideoController.a();
     Object localObject = BaseApplicationImpl.getContext();
     localObject = this.jdField_a_of_type_ComTencentAvVideoController.a((Context)localObject);
     if (localObject != null) {
-      ((lpu)localObject).a(paramInt);
+      ((lsa)localObject).a(paramInt);
     }
-    locallga.jdField_a_of_type_JavaUtilBitSet.set(0);
+    locallid.jdField_a_of_type_JavaUtilBitSet.set(0);
   }
   
   public void d()
   {
-    lcg.c("MagicFaceDataEntity", "processStop:" + this.jdField_a_of_type_JavaLangString);
+    lek.c("MagicFaceDataEntity", "processStop:" + this.jdField_a_of_type_JavaLangString);
     if (a() != null) {
       a(null);
     }
@@ -536,13 +536,13 @@ public class MagicFaceDataEntity
       this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$StopSelfDecorationRunnable.run();
       this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicFaceDataEntity$StopSelfDecorationRunnable = null;
     }
-    this.jdField_a_of_type_Liq.b(-1042L, this.jdField_a_of_type_Lhw);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Lhv);
+    this.jdField_a_of_type_Lkt.b(-1042L, this.jdField_a_of_type_Ljz);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(this.jdField_a_of_type_Ljy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicFaceDataEntity
  * JD-Core Version:    0.7.0.1
  */

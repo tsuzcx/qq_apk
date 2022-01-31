@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import aitx;
+import aklj;
 import android.annotation.TargetApi;
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
@@ -34,8 +34,8 @@ public class InputGlobalLayoutListener
       if (paramView.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO != null) {
         paramInt1 = paramView.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.getHeight();
       }
-      if (paramView.jdField_a_of_type_Aitx != null) {
-        paramView.jdField_a_of_type_Aitx.a(paramInt1);
+      if (paramView.jdField_a_of_type_Aklj != null) {
+        paramView.jdField_a_of_type_Aklj.a(paramInt1);
       }
     }
   }
@@ -43,15 +43,15 @@ public class InputGlobalLayoutListener
   public void run()
   {
     BaseChatPie localBaseChatPie = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_Aitx == null)) {
+    if ((localBaseChatPie == null) || (localBaseChatPie.jdField_a_of_type_Aklj == null)) {
       return;
     }
-    localBaseChatPie.jdField_a_of_type_Aitx.c(this.jdField_a_of_type_Int);
+    localBaseChatPie.jdField_a_of_type_Aklj.c(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.InputGlobalLayoutListener
  * JD-Core Version:    0.7.0.1
  */

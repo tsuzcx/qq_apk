@@ -13,14 +13,14 @@ class BaseChatPie$11$1
   {
     if (this.a.this$0.j != null)
     {
-      this.a.this$0.j.setText(this.a.this$0.a.getResources().getString(2131690007));
+      this.a.this$0.j.setText(this.a.this$0.a.getResources().getString(2131690054));
       this.a.this$0.j.setTag(Integer.valueOf(1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.11.1
  * JD-Core Version:    0.7.0.1
  */

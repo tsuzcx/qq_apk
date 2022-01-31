@@ -1,12 +1,6 @@
-import android.view.View;
-
-public abstract interface ucs
-{
-  public abstract void a(View paramView, float paramFloat);
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ucs
  * JD-Core Version:    0.7.0.1
  */

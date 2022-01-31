@@ -8,7 +8,6 @@ import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 import org.json.JSONObject;
 
 class DataJsPlugin$13
@@ -18,13 +17,13 @@ class DataJsPlugin$13
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    Object localObject;
+    INTERFACE.StGetAuthListRsp localStGetAuthListRsp;
     if ((paramBoolean) && (paramJSONObject != null))
     {
       QLog.d("[mini] DataJsPlugin", 1, "getSetting-getAuthList suc, ret:" + paramJSONObject.toString());
-      localObject = paramJSONObject.opt("authList");
-      if ((localObject instanceof byte[])) {
-        paramJSONObject = new INTERFACE.StGetAuthListRsp();
+      paramJSONObject = paramJSONObject.opt("authList");
+      if ((paramJSONObject instanceof byte[])) {
+        localStGetAuthListRsp = new INTERFACE.StGetAuthListRsp();
       }
     }
     else
@@ -33,22 +32,21 @@ class DataJsPlugin$13
       {
         try
         {
-          paramJSONObject.mergeFrom((byte[])localObject);
-          localObject = paramJSONObject.auths.get();
-          paramJSONObject = paramJSONObject.settings.get();
-          this.val$authorizeCenter.updateAuthList((List)localObject, paramJSONObject);
+          localStGetAuthListRsp.mergeFrom((byte[])paramJSONObject);
+          paramJSONObject = localStGetAuthListRsp.settings.get();
+          this.val$authorizeCenter.updateAuthList(null, paramJSONObject);
           this.val$authorizeCenter.setAuthorizeSynchronized();
           int j = this.val$authorizeCenter.getAuthFlagFromAuthorize(this.val$finalScopeName);
           i = j;
           if (j == 1)
           {
             if (this.this$0.jsPluginEngine.apiAuthoritySilent()) {
-              break label271;
+              break label261;
             }
             paramJSONObject = this.this$0.jsPluginEngine;
             i = j;
             if (BaseJsPluginEngine.isAuthWhiteAppId(this.this$0.jsPluginEngine.appBrandRuntime.appId)) {
-              break label271;
+              break label261;
             }
           }
           if (i == 2)
@@ -67,7 +65,7 @@ class DataJsPlugin$13
         }
         QLog.e("[mini] DataJsPlugin", 1, "getSetting-getAuthList failed");
         return;
-        label271:
+        label261:
         int i = 2;
       }
     }
@@ -75,7 +73,7 @@ class DataJsPlugin$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.DataJsPlugin.13
  * JD-Core Version:    0.7.0.1
  */

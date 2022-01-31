@@ -1,26 +1,24 @@
-import android.media.MediaCodec.BufferInfo;
-import java.nio.ByteBuffer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.PeakAppInterface;
 
 class blch
+  implements View.OnClickListener
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public ByteBuffer a;
-  public int b;
+  blch(blcc paramblcc) {}
   
-  private blch()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocate(paramInt1 * paramInt2 * 3 / 2);
+    blcc.e(this.a);
+    blcc.b(this.a).setVisibility(8);
+    blev.a().a("CameraModuleSvc.GetPlayShowCatMatTree", "", 4);
+    PeakAppInterface.a.a(1010);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blch
  * JD-Core Version:    0.7.0.1
  */

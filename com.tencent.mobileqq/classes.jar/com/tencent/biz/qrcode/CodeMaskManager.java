@@ -1,6 +1,6 @@
 package com.tencent.biz.qrcode;
 
-import ajsd;
+import aljq;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Display;
 import android.view.WindowManager;
-import bbbm;
+import bdag;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
@@ -22,7 +22,7 @@ import java.util.Vector;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wfc;
+import xtu;
 
 public class CodeMaskManager
 {
@@ -39,9 +39,9 @@ public class CodeMaskManager
   
   static
   {
-    if (bbbm.a())
+    if (bdag.a())
     {
-      jdField_a_of_type_JavaLangString = ajsd.aW + "qbiz/qrcode/";
+      jdField_a_of_type_JavaLangString = aljq.aX + "qbiz/qrcode/";
       return;
     }
   }
@@ -148,7 +148,7 @@ public class CodeMaskManager
     //   48: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   51: astore 6
     //   53: aload 6
-    //   55: invokestatic 182	ayoi:c	(Ljava/lang/String;)Ljava/lang/String;
+    //   55: invokestatic 182	bame:c	(Ljava/lang/String;)Ljava/lang/String;
     //   58: astore 7
     //   60: new 184	java/io/FileInputStream
     //   63: dup
@@ -201,7 +201,7 @@ public class CodeMaskManager
     //   152: ldc 209
     //   154: aconst_null
     //   155: aconst_null
-    //   156: invokestatic 214	naj:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)[B
+    //   156: invokestatic 214	ndd:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)[B
     //   159: astore_2
     //   160: aload_2
     //   161: ifnull +11 -> 172
@@ -216,7 +216,7 @@ public class CodeMaskManager
     //   176: new 160	java/io/IOException
     //   179: dup
     //   180: ldc 219
-    //   182: invokestatic 224	ajya:a	(I)Ljava/lang/String;
+    //   182: invokestatic 224	alpo:a	(I)Ljava/lang/String;
     //   185: invokespecial 225	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   188: athrow
     //   189: astore 5
@@ -382,7 +382,7 @@ public class CodeMaskManager
     Bundle localBundle = new Bundle();
     if (paramInt == 1)
     {
-      localBundle.putInt("qrbkgRes", 2130842650);
+      localBundle.putInt("qrbkgRes", 2130842834);
       localBundle.putInt("bkgRes", 0);
       localBundle.putInt("nameClr", -16777216);
       localBundle.putInt("tipsClr", -8947849);
@@ -670,7 +670,7 @@ public class CodeMaskManager
     this.jdField_a_of_type_JavaUtilList.clear();
   }
   
-  public void a(wfc paramwfc, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void a(xtu paramxtu, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
     if (this.jdField_a_of_type_Boolean) {
       return;
@@ -693,7 +693,7 @@ public class CodeMaskManager
       for (;;)
       {
         this.jdField_a_of_type_AndroidOsBundle.putInt("type", 1);
-        paramwfc.a(a(this.jdField_a_of_type_AndroidOsBundle));
+        paramxtu.a(a(this.jdField_a_of_type_AndroidOsBundle));
         return;
         label150:
         if (paramInt == 1) {
@@ -714,18 +714,18 @@ public class CodeMaskManager
     Object localObject = (Bundle)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     if (((Bundle)localObject).getInt("type") == 1)
     {
-      paramwfc.a(a((Bundle)localObject));
+      paramxtu.a(a((Bundle)localObject));
       b();
       return;
     }
-    localObject = new CodeMaskManager.PrepareBundleTask(this, paramwfc, (Bundle)localObject);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new CodeMaskManager.2(this, (CodeMaskManager.PrepareBundleTask)localObject, paramwfc), 10000L);
+    localObject = new CodeMaskManager.PrepareBundleTask(this, paramxtu, (Bundle)localObject);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new CodeMaskManager.2(this, (CodeMaskManager.PrepareBundleTask)localObject, paramxtu), 10000L);
     ((CodeMaskManager.PrepareBundleTask)localObject).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qrcode.CodeMaskManager
  * JD-Core Version:    0.7.0.1
  */

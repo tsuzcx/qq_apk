@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo.slideshow;
 
 import android.app.Activity;
-import bcqf;
+import bepp;
 import com.tencent.qphone.base.util.QLog;
 
 class SlideProgressNotifier$1
@@ -14,12 +14,12 @@ class SlideProgressNotifier$1
     if (QLog.isColorLevel()) {
       QLog.d("QQProgressNotifier", 2, "SlideShowProgressUpdate : " + this.a + "%");
     }
-    SlideProgressNotifier.a(this.this$0).a(this.this$0.a.getString(2131699546) + " " + this.a + "%");
+    SlideProgressNotifier.a(this.this$0).a(this.this$0.a.getString(2131699901) + " " + this.a + "%");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.SlideProgressNotifier.1
  * JD-Core Version:    0.7.0.1
  */

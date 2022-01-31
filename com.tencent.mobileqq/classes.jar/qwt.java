@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo;
-
-public final class qwt
-  implements Parcelable.Creator<DiscoveryInfo>
+class qwt
+  implements qwj<qnz>
 {
-  public DiscoveryInfo a(Parcel paramParcel)
-  {
-    return new DiscoveryInfo(paramParcel);
-  }
+  qwt(qwp paramqwp) {}
   
-  public DiscoveryInfo[] a(int paramInt)
+  public boolean a(qnz paramqnz)
   {
-    return new DiscoveryInfo[paramInt];
+    return paramqnz.b <= ror.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qwt
  * JD-Core Version:    0.7.0.1
  */

@@ -3,14 +3,14 @@ package com.tencent.mobileqq.redtouch;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import avpp;
+import axhk;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RedAppInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<RedAppInfo> CREATOR = new avpp();
+  public static final Parcelable.Creator<RedAppInfo> CREATOR = new axhk();
   private int jdField_a_of_type_Int;
   private RedDisplayInfo jdField_a_of_type_ComTencentMobileqqRedtouchRedDisplayInfo;
   private String jdField_a_of_type_JavaLangString;
@@ -215,7 +215,7 @@ public class RedAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedAppInfo
  * JD-Core Version:    0.7.0.1
  */

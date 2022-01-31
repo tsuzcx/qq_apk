@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount;
 
 import android.text.TextUtils;
-import bhvy;
+import bjxj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.MessageMicro;
@@ -10,16 +10,16 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import nps;
-import npt;
-import onh;
+import ntb;
+import ntc;
+import ors;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.FeedsIdInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.ReqBody;
 
 public class VideoPlayRecommendHandler$6
   implements Runnable
 {
-  public VideoPlayRecommendHandler$6(nps paramnps, int paramInt1, int paramInt2, VideoInfo paramVideoInfo, String paramString, npt paramnpt) {}
+  public VideoPlayRecommendHandler$6(ntb paramntb, int paramInt1, int paramInt2, VideoInfo paramVideoInfo, String paramString, ntc paramntc) {}
   
   public void run()
   {
@@ -27,20 +27,20 @@ public class VideoPlayRecommendHandler$6
     {
       Object localObject1 = new oidb_0x6cf.ReqBody();
       long l = 0L;
-      Object localObject2 = onh.a();
+      Object localObject2 = ors.a();
       if (localObject2 != null) {
         l = ((QQAppInterface)localObject2).getLongAccountUin();
       }
       ((oidb_0x6cf.ReqBody)localObject1).uint64_uin.set(l);
       ((oidb_0x6cf.ReqBody)localObject1).uint32_req_times.set(this.jdField_a_of_type_Int);
-      ((oidb_0x6cf.ReqBody)localObject1).uint32_req_network.set(nps.a(this.this$0));
+      ((oidb_0x6cf.ReqBody)localObject1).uint32_req_network.set(ntb.a(this.this$0));
       ((oidb_0x6cf.ReqBody)localObject1).uint32_req_os.set(1);
-      ((oidb_0x6cf.ReqBody)localObject1).uint32_req_sim_type.set(bhvy.c());
+      ((oidb_0x6cf.ReqBody)localObject1).uint32_req_sim_type.set(bjxj.c());
       ((oidb_0x6cf.ReqBody)localObject1).uint32_req_source.set(this.b);
       ((oidb_0x6cf.ReqBody)localObject1).uint32_req_sub_source.set(5);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g))
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_g_of_type_JavaLangString))
       {
-        localObject2 = ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g);
+        localObject2 = ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_g_of_type_JavaLangString);
         ((oidb_0x6cf.ReqBody)localObject1).bytes_inner_id.set((ByteStringMicro)localObject2);
       }
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
@@ -53,13 +53,13 @@ public class VideoPlayRecommendHandler$6
         ((oidb_0x6cf.ReqBody)localObject1).uint32_is_ugc.set(1);
         localObject2 = new oidb_0x6cf.FeedsIdInfo();
         ((oidb_0x6cf.FeedsIdInfo)localObject2).uint64_feeds_id.set(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.d);
-        ((oidb_0x6cf.FeedsIdInfo)localObject2).uint32_feeds_type.set(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.k);
+        ((oidb_0x6cf.FeedsIdInfo)localObject2).uint32_feeds_type.set(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_g_of_type_Int);
         ((oidb_0x6cf.ReqBody)localObject1).ugc_feeds_info.set((MessageMicro)localObject2);
       }
       for (;;)
       {
         localObject1 = this.this$0.makeOIDBPkg("OidbSvc.0x6cf", 1743, 0, ((oidb_0x6cf.ReqBody)localObject1).toByteArray());
-        ((ToServiceMsg)localObject1).addAttribute("VALUE_OBSERVER_TAG", Integer.valueOf(this.jdField_a_of_type_Npt.hashCode()));
+        ((ToServiceMsg)localObject1).addAttribute("VALUE_OBSERVER_TAG", Integer.valueOf(this.jdField_a_of_type_Ntc.hashCode()));
         this.this$0.sendPbReq((ToServiceMsg)localObject1);
         if (!QLog.isColorLevel()) {
           break;
@@ -80,7 +80,7 @@ public class VideoPlayRecommendHandler$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoPlayRecommendHandler.6
  * JD-Core Version:    0.7.0.1
  */

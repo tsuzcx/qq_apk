@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.qphone.base.util.QLog;
-import lyn;
+import mbc;
 
 public class ShareChat$SharePanel$1
   extends ResultReceiver
 {
-  public ShareChat$SharePanel$1(lyn paramlyn, Handler paramHandler, long paramLong, int paramInt)
+  public ShareChat$SharePanel$1(mbc parammbc, Handler paramHandler, long paramLong, int paramInt)
   {
     super(paramHandler);
   }
@@ -17,7 +17,7 @@ public class ShareChat$SharePanel$1
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     QLog.w("ShareChat", 1, "shareToQzone.onReceiveResult, resultCode[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "]");
-    paramBundle = this.jdField_a_of_type_Lyn;
+    paramBundle = this.jdField_a_of_type_Mbc;
     int i = this.jdField_a_of_type_Int;
     if (paramInt == -1) {}
     for (paramInt = 2;; paramInt = 3)
@@ -29,7 +29,7 @@ public class ShareChat$SharePanel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.share.ShareChat.SharePanel.1
  * JD-Core Version:    0.7.0.1
  */

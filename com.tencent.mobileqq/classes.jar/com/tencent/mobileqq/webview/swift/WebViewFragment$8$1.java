@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift;
 
-import bcee;
-import bcfs;
+import bedf;
+import beet;
 
 class WebViewFragment$8$1
   implements Runnable
@@ -10,15 +10,15 @@ class WebViewFragment$8$1
   
   public void run()
   {
-    bcfs localbcfs = (bcfs)this.a.this$0.a.a(16);
-    if (localbcfs != null) {
-      localbcfs.a();
+    beet localbeet = (beet)this.a.this$0.a.a(16);
+    if (localbeet != null) {
+      localbeet.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewFragment.8.1
  * JD-Core Version:    0.7.0.1
  */

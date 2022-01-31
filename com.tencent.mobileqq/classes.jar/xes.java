@@ -1,165 +1,103 @@
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.Interpolator;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class xes
+class xes
+  extends xek<xeq>
 {
-  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
-  private final List<Animator> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private final xfc jdField_a_of_type_Xfc;
-  private boolean jdField_a_of_type_Boolean;
-  private final View[] jdField_a_of_type_ArrayOfAndroidViewView;
-  private boolean b;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367786);
+  private ImageView b = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367787);
+  private ImageView c = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370638);
+  private ImageView d = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370639);
   
-  public xes(xfc paramxfc, View... paramVarArgs)
+  private xes(xeq paramxeq, @NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Xfc = paramxfc;
-    this.jdField_a_of_type_ArrayOfAndroidViewView = paramVarArgs;
+    super(paramContext, paramViewGroup);
   }
   
-  protected float a(float paramFloat)
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_ArrayOfAndroidViewView[0].getContext().getResources().getDisplayMetrics().density * paramFloat;
+    return LayoutInflater.from(paramContext).inflate(2131561573, paramViewGroup, false);
   }
   
-  public View a()
+  void a(ImageView paramImageView, char paramChar)
   {
-    return this.jdField_a_of_type_ArrayOfAndroidViewView[0];
-  }
-  
-  public Interpolator a()
-  {
-    return this.jdField_a_of_type_AndroidViewAnimationInterpolator;
-  }
-  
-  protected List<Animator> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public xes a(long paramLong)
-  {
-    this.jdField_a_of_type_Xfc.a(paramLong);
-    return this;
-  }
-  
-  protected xes a(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramAnimator);
-    return this;
-  }
-  
-  public xes a(String paramString, float... paramVarArgs)
-  {
-    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
-    int j = arrayOfView.length;
-    int i = 0;
-    while (i < j)
+    switch (paramChar)
     {
-      View localView = arrayOfView[i];
-      this.jdField_a_of_type_JavaUtilList.add(ObjectAnimator.ofFloat(localView, paramString, a(paramVarArgs)));
-      i += 1;
+    default: 
+      return;
+    case '0': 
+      paramImageView.setImageResource(2130846162);
+      return;
+    case '1': 
+      paramImageView.setImageResource(2130846163);
+      return;
+    case '2': 
+      paramImageView.setImageResource(2130846164);
+      return;
+    case '3': 
+      paramImageView.setImageResource(2130846165);
+      return;
+    case '4': 
+      paramImageView.setImageResource(2130846166);
+      return;
+    case '5': 
+      paramImageView.setImageResource(2130846167);
+      return;
+    case '6': 
+      paramImageView.setImageResource(2130846168);
+      return;
+    case '7': 
+      paramImageView.setImageResource(2130846169);
+      return;
+    case '8': 
+      paramImageView.setImageResource(2130846170);
+      return;
     }
-    return this;
+    paramImageView.setImageResource(2130846171);
   }
   
-  public xes a(xez paramxez)
+  public void a(xeq paramxeq, int paramInt)
   {
-    this.jdField_a_of_type_Xfc.a(paramxez);
-    return this;
-  }
-  
-  public xes a(xfb paramxfb, float... paramVarArgs)
-  {
-    View[] arrayOfView = this.jdField_a_of_type_ArrayOfAndroidViewView;
-    int j = arrayOfView.length;
-    int i = 0;
-    while (i < j)
+    super.a(paramxeq, paramInt);
+    paramxeq = new SimpleDateFormat("HH:mm");
+    ((xeq)this.jdField_a_of_type_Xej).c = paramxeq.format(new Date());
+    wsv.b("TimeFilterData", "TimeFilterData time:" + ((xeq)this.jdField_a_of_type_Xej).c);
+    a(this.jdField_a_of_type_AndroidWidgetImageView, ((xeq)this.jdField_a_of_type_Xej).c.charAt(0));
+    a(this.b, ((xeq)this.jdField_a_of_type_Xej).c.charAt(1));
+    a(this.c, ((xeq)this.jdField_a_of_type_Xej).c.charAt(3));
+    a(this.d, ((xeq)this.jdField_a_of_type_Xej).c.charAt(4));
+    int i = xod.d(this.jdField_a_of_type_AndroidViewView.getContext());
+    if (((this.jdField_a_of_type_Xeq.a != null) && (this.jdField_a_of_type_Xeq.a.jdField_a_of_type_Int == 10)) || ((this.jdField_a_of_type_Xeq.a != null) && (this.jdField_a_of_type_Xeq.a.jdField_a_of_type_Int == 12)))
     {
-      View localView = arrayOfView[i];
-      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(a(paramVarArgs));
-      if (paramxfb != null) {
-        localValueAnimator.addUpdateListener(new xet(this, paramxfb, localView));
+      if (this.jdField_a_of_type_Xeq.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a() / this.jdField_a_of_type_Xeq.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b() > bdcb.k() / bdcb.l())
+      {
+        paramInt = (int)(bdcb.k() * this.jdField_a_of_type_Xeq.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.b() / this.jdField_a_of_type_Xeq.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a());
+        if (paramInt > i / 3 * 2 + bcwh.a(this.jdField_a_of_type_AndroidViewView.getContext(), 75.0F))
+        {
+          this.jdField_a_of_type_AndroidViewView.setPadding(0, i / 3 * 2, 0, 0);
+          return;
+        }
+        i = bcwh.a(this.jdField_a_of_type_AndroidViewView.getContext(), 75.0F);
+        this.jdField_a_of_type_AndroidViewView.setPadding(0, paramInt - i, 0, 0);
+        return;
       }
-      a(localValueAnimator);
-      i += 1;
+      this.jdField_a_of_type_AndroidViewView.setPadding(0, i / 3 * 2, 0, 0);
+      return;
     }
-    return this;
-  }
-  
-  public xes a(float... paramVarArgs)
-  {
-    return a("translationY", paramVarArgs);
-  }
-  
-  public xes a(View... paramVarArgs)
-  {
-    return this.jdField_a_of_type_Xfc.b(paramVarArgs);
-  }
-  
-  public xfc a()
-  {
-    return this.jdField_a_of_type_Xfc.a(new AccelerateInterpolator());
-  }
-  
-  public xfc a(float paramFloat)
-  {
-    return this.jdField_a_of_type_Xfc.a(new DecelerateInterpolator(paramFloat));
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  protected float[] a(float... paramVarArgs)
-  {
-    if (!this.b) {
-      return paramVarArgs;
-    }
-    float[] arrayOfFloat = new float[paramVarArgs.length];
-    int i = 0;
-    while (i < paramVarArgs.length)
-    {
-      arrayOfFloat[i] = a(paramVarArgs[i]);
-      i += 1;
-    }
-    return arrayOfFloat;
-  }
-  
-  public xes b(float... paramVarArgs)
-  {
-    return a("alpha", paramVarArgs);
-  }
-  
-  public xfc b()
-  {
-    this.jdField_a_of_type_Xfc.a();
-    return this.jdField_a_of_type_Xfc;
-  }
-  
-  public xes c(float... paramVarArgs)
-  {
-    return a(new xeu(this), paramVarArgs);
-  }
-  
-  public xes d(float... paramVarArgs)
-  {
-    return a(new xev(this), paramVarArgs);
+    this.jdField_a_of_type_AndroidViewView.setPadding(0, i / 3 * 2, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xes
  * JD-Core Version:    0.7.0.1
  */

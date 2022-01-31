@@ -1,39 +1,30 @@
-import com.tencent.mobileqq.utils.SendMessageHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 
-class aghl
-  extends akat
+public class aghl
+  extends aghi
 {
-  aghl(aghk paramaghk) {}
-  
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public aghl(QQAppInterface paramQQAppInterface, agia paramagia, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aemp paramaemp)
   {
-    if (aghk.a(this.a) != null) {
-      aghk.a(this.a).a(paramString1);
-    }
+    super(paramQQAppInterface, paramagia, paramQQWalletTransferMsgElem, paramInt, paramaemp);
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public boolean b()
   {
-    a(paramBoolean, paramString, paramLong, null);
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong, akaq paramakaq)
-  {
-    if (aghk.a(this.a) != null) {
-      aghk.a(this.a).a(paramString);
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
     }
-  }
-  
-  public void b(String paramString)
-  {
-    if (aghk.a(this.a) != null) {
-      aghk.a(this.a).a(paramString);
-    }
+    this.a.b.setVisibility(0);
+    this.a.b.setTextColor(-8947849);
+    this.a.b.setText("QQ企业红包");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aghl
  * JD-Core Version:    0.7.0.1
  */

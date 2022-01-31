@@ -1,30 +1,29 @@
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import java.util.Observable;
-import java.util.Observer;
-
 public class beow
-  implements Observer
 {
-  public beow(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void update(Observable paramObservable, Object paramObject)
+  public String toString()
   {
-    if (!(paramObject instanceof String)) {}
-    do
-    {
-      return;
-      if (("resetPlayer".equals((String)paramObject)) && (this.a.y))
-      {
-        this.a.g();
-        this.a.c();
-        return;
-      }
-    } while (!"resumePlayer".equals((String)paramObject));
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append("DataItem:position=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", type=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", coverUrl=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", feedId=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", vid=").append(this.c);
+    localStringBuilder.append(", jumpUrl=").append(this.d);
+    localStringBuilder.append(", spiritImageUrl=").append(this.e);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beow
  * JD-Core Version:    0.7.0.1
  */

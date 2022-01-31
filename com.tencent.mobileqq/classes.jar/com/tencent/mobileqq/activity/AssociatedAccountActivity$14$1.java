@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aajz;
+import acax;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class AssociatedAccountActivity$14$1
   implements Runnable
 {
-  public AssociatedAccountActivity$14$1(aajz paramaajz) {}
+  public AssociatedAccountActivity$14$1(acax paramacax) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class AssociatedAccountActivity$14$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.14.1
  * JD-Core Version:    0.7.0.1
  */

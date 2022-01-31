@@ -1,178 +1,124 @@
-import android.app.Activity;
-import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemMayKnowFriendData;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.HorizontalListView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.contacts.utils.ContactReportUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class ahoc
-  extends ahnw
+  extends aofy<ahqk>
 {
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new ahod(this);
-  protected String a;
-  private WeakReference<aint> jdField_a_of_type_JavaLangRefWeakReference;
+  public int a()
+  {
+    return 438;
+  }
   
-  ahoc()
+  @NonNull
+  public ahqk a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("RecentMayKnowFriendItemBuilder", 0, "RecentMayKnowFriendItemBuilder constructed");
+      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldOrDefaultContent");
     }
+    return new ahqk();
   }
   
-  public View a(int paramInt, Object paramObject, ahnr paramahnr, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpo paramahpo)
+  @Nullable
+  public ahqk a(aogf[] paramArrayOfaogf)
   {
-    paramOnLongClickListener = null;
-    paramViewGroup = paramOnLongClickListener;
-    if (paramView != null)
-    {
-      paramViewGroup = paramOnLongClickListener;
-      if ((paramView.getTag() instanceof ahoe)) {
-        paramViewGroup = (ahoe)paramView.getTag();
-      }
-    }
-    if (paramViewGroup == null)
-    {
-      paramViewGroup = (RecentItemMayKnowFriendData)paramObject;
-      paramView = new ahoe();
-      paramView.jdField_a_of_type_JavaLangString = paramViewGroup.curUin;
-      paramViewGroup = a(paramContext, 2131558870, paramView);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131374956));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramOnClickListener);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramViewGroup.findViewById(2131369841));
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(actj.a(9.0F, paramContext.getResources()));
-      paramOnLongClickListener = new aint((Activity)paramContext, paramahnr.a(), paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView, null, 25, 0);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        paramahpo = (aint)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramahpo != null) {
-          paramahpo.d();
-        }
-      }
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramOnLongClickListener);
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(paramOnLongClickListener);
-      paramViewGroup.setTag(paramView);
-      paramOnLongClickListener = paramView;
-      paramView = paramViewGroup;
-      this.jdField_a_of_type_JavaLangString = ThemeUtil.curThemeId;
-      if (AppSetting.d) {
-        paramView.setContentDescription(null);
-      }
-      if ((paramOnLongClickListener == null) || (!(paramObject instanceof RecentBaseData))) {
-        break label379;
-      }
-      a(paramView, (RecentBaseData)paramObject, paramContext, paramahnr.a());
-    }
-    for (;;)
-    {
-      a(paramContext, paramView, paramInt, paramObject, paramOnLongClickListener, paramOnClickListener);
-      paramView.setTag(-1, Integer.valueOf(paramInt));
-      paramOnLongClickListener.jdField_a_of_type_AndroidWidgetTextView.setTag(-1, Integer.valueOf(paramInt));
-      return paramView;
-      if ((!TextUtils.equals(this.jdField_a_of_type_JavaLangString, ThemeUtil.curThemeId)) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
-      {
-        paramOnLongClickListener = (aint)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramOnLongClickListener != null) {
-          paramOnLongClickListener.notifyDataSetChanged();
-        }
-      }
-      paramOnLongClickListener = paramViewGroup;
-      break;
-      label379:
-      if (paramOnLongClickListener == null) {}
-    }
-  }
-  
-  public void a()
-  {
-    Object localObject;
+    int j;
+    int i;
+    Object localObject1;
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder().append("destroy : ");
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-        break label84;
+      QLog.d("ReportExposeConfigProcessor", 2, "onParsed :" + paramArrayOfaogf);
+      if (paramArrayOfaogf != null)
+      {
+        j = paramArrayOfaogf.length;
+        i = 0;
+        while (i < j)
+        {
+          localObject1 = paramArrayOfaogf[i];
+          if (localObject1 != null) {
+            QLog.d("ReportExposeConfigProcessor", 2, "onParsed item: " + ((aogf)localObject1).a);
+          }
+          i += 1;
+        }
       }
     }
-    label84:
-    for (boolean bool = true;; bool = false)
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
     {
-      QLog.i("RecentMayKnowFriendItemBuilder", 0, bool);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+      j = paramArrayOfaogf.length;
+      i = 0;
+      while (i < j)
       {
-        localObject = (aint)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localObject != null) {
-          ((aint)localObject).d();
+        Object localObject2 = paramArrayOfaogf[i];
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((aogf)localObject2).a))) {
+          try
+          {
+            localObject1 = new ahqk();
+            localObject2 = new JSONObject(((aogf)localObject2).a);
+            if (((JSONObject)localObject2).has("enable")) {
+              ((ahqk)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).getBoolean("enable");
+            }
+            if (((JSONObject)localObject2).has("interval")) {
+              ((ahqk)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("interval");
+            }
+            return localObject1;
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("ReportExposeConfigProcessor", 1, localThrowable, new Object[0]);
+          }
         }
-        this.jdField_a_of_type_JavaLangRefWeakReference = null;
+        i += 1;
       }
-      return;
+    }
+    return null;
+  }
+  
+  public Class<ahqk> a()
+  {
+    return ahqk.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
     }
   }
   
-  public void a(View paramView, RecentBaseData paramRecentBaseData, Context paramContext, QQAppInterface paramQQAppInterface)
+  public void a(ahqk paramahqk)
   {
-    if ((paramView == null) || (paramRecentBaseData == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView|param invalidate");
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "onUpdate");
     }
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof ahoe)) {}
-    for (paramView = (ahoe)localObject;; paramView = null)
-    {
-      if (paramView == null)
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView|holder is null, tag = " + localObject);
-        return;
-      }
-      if (!(paramRecentBaseData instanceof RecentItemMayKnowFriendData)) {
-        break;
-      }
-      paramRecentBaseData = (RecentItemMayKnowFriendData)paramRecentBaseData;
-      if (QLog.isColorLevel()) {
-        QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView");
-      }
-      if ((TextUtils.isEmpty(paramRecentBaseData.curUin)) || (paramRecentBaseData.curUin.equals(paramView.jdField_a_of_type_JavaLangString))) {
-        break;
-      }
-      paramContext = new aint((Activity)paramContext, paramQQAppInterface, paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView, null, 25, 0);
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        paramQQAppInterface = (aint)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (paramQQAppInterface != null) {
-          paramQQAppInterface.d();
-        }
-      }
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-      paramView.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(paramContext);
-      paramView.jdField_a_of_type_JavaLangString = paramRecentBaseData.curUin;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("RecentMayKnowFriendItemBuilder", 0, "updateView1");
-      return;
+    if (paramahqk != null) {
+      ContactReportUtils.a(paramahqk);
     }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahoc
  * JD-Core Version:    0.7.0.1
  */

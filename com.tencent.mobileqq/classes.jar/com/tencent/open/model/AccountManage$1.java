@@ -1,14 +1,14 @@
 package com.tencent.open.model;
 
 import android.os.Bundle;
-import bdnq;
+import bfmn;
 import java.lang.ref.WeakReference;
 import mqq.observer.SSOAccountObserver;
 
 public class AccountManage$1
   implements Runnable
 {
-  public AccountManage$1(bdnq parambdnq, WeakReference paramWeakReference, String paramString1, String paramString2, int paramInt, Bundle paramBundle) {}
+  public AccountManage$1(bfmn parambfmn, WeakReference paramWeakReference, String paramString1, String paramString2, int paramInt, Bundle paramBundle) {}
   
   public void run()
   {

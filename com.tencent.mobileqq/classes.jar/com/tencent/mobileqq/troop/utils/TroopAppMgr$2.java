@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aukp;
-import baiz;
+import awbw;
+import bchl;
 import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -11,27 +11,27 @@ import java.util.List;
 public class TroopAppMgr$2
   implements Runnable
 {
-  public TroopAppMgr$2(baiz parambaiz, aukp paramaukp, int paramInt, ArrayList paramArrayList) {}
+  public TroopAppMgr$2(bchl parambchl, awbw paramawbw, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {
     if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_Aukp.a(TroopAIOAppInfo.class);
+      localObject = this.jdField_a_of_type_Awbw.a(TroopAIOAppInfo.class);
       this.this$0.a(".troop.troop_appVASH", "before updateEntity(" + this.jdField_a_of_type_Int + ")", (List)localObject);
     }
     Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (((Iterator)localObject).hasNext())
     {
       TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)((Iterator)localObject).next();
-      this.this$0.a(this.jdField_a_of_type_Aukp, localTroopAIOAppInfo);
+      this.this$0.a(this.jdField_a_of_type_Awbw, localTroopAIOAppInfo);
     }
     if (QLog.isColorLevel())
     {
-      localObject = this.jdField_a_of_type_Aukp.a(TroopAIOAppInfo.class);
+      localObject = this.jdField_a_of_type_Awbw.a(TroopAIOAppInfo.class);
       this.this$0.a(".troop.troop_appVASH", "after updateEntity(" + this.jdField_a_of_type_Int + ")", (List)localObject);
     }
-    this.jdField_a_of_type_Aukp.a();
+    this.jdField_a_of_type_Awbw.a();
   }
 }
 

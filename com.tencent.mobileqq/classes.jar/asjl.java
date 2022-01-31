@@ -1,16 +1,16 @@
-import org.json.JSONObject;
+import android.app.Activity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
 
-public class asjl
+public abstract interface asjl
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
+  public abstract void a(MessageRecord paramMessageRecord, Activity paramActivity);
+  
+  public abstract void a(QQGameMsgInfo paramQQGameMsgInfo, Activity paramActivity, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asjl
  * JD-Core Version:    0.7.0.1
  */

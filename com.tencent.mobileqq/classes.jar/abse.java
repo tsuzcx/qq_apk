@@ -1,34 +1,66 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class abse
-  implements auve
+  extends QIPCModule
 {
-  public abse(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  private static abse a;
   
-  public void a(int paramInt, String paramString)
+  public abse(String paramString)
   {
-    if (paramInt == 0) {
-      if (ProfileActivity.AllInOne.b(this.a.a))
-      {
-        paramInt = 1;
-        axqy.b(this.a.app, "CliOper", "", "", "0X80050E7", "0X80050E7", paramInt, 0, "", "", "", "");
-        axqy.b(null, "dc00898", "", "", "0X800A4FD", "0X800A4FD", 0, 0, "", "0", "0", "");
-      }
+    super(paramString);
+  }
+  
+  public static abse a()
+  {
+    if (a == null) {}
+    try
+    {
+      a = new abse("HardCoderModule");
+      return a;
     }
-    while (paramInt != 2) {
-      for (;;)
-      {
-        return;
-        paramInt = 2;
-      }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    EIPCResult localEIPCResult = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("HardCoder.QQManager", 2, "onCall action = " + paramString);
     }
-    axqy.b(null, "dc00898", "", "", "0X800A4FE", "0X800A4FE", 0, 0, "", "0", "0", "");
+    if (paramString.equals("start"))
+    {
+      paramInt = paramBundle.getInt("key_delay");
+      i = paramBundle.getInt("key_cpu");
+      j = paramBundle.getInt("key_io");
+      k = paramBundle.getInt("key_bind");
+      m = paramBundle.getInt("key_timeout");
+      n = paramBundle.getInt("key_scene");
+      l = paramBundle.getLong("key_action");
+      paramString = paramBundle.getString("key_tag");
+      localEIPCResult = EIPCResult.createResult(abrz.a().a(paramInt, i, j, k, m, n, l, Process.myTid(), paramString), null);
+    }
+    while (!paramString.equals("stop"))
+    {
+      int i;
+      int j;
+      int k;
+      int m;
+      int n;
+      long l;
+      return localEIPCResult;
+    }
+    paramInt = paramBundle.getInt("key_code");
+    abrz.a().a(paramInt);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abse
  * JD-Core Version:    0.7.0.1
  */

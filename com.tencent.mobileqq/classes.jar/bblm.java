@@ -1,30 +1,17 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.URLThemeImageView;
 
-public final class bblm
-  implements DialogInterface.OnClickListener
+class bblm
 {
-  public bblm(boolean paramBoolean, Context paramContext, String paramString1, String paramString2, int paramInt) {}
+  public ViewGroup a;
+  public ImageView a;
+  public TextView a;
+  public URLThemeImageView a;
+  public TextView b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      paramDialogInterface.putExtra("url", String.format(aexl.jdField_a_of_type_JavaLangString, new Object[] { this.jdField_a_of_type_JavaLangString, "group_aio_popup" }));
-      paramDialogInterface.putExtra("hide_operation_bar", true);
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
-    }
-    for (;;)
-    {
-      axqy.b(null, "dc00898", "", "", "qq_vip", this.b, this.jdField_a_of_type_Int, 0, "", "", "", "");
-      return;
-      akig.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "group_aio_popup");
-    }
-  }
+  bblm(bblf parambblf) {}
 }
 
 

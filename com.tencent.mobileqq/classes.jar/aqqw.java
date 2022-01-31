@@ -1,72 +1,56 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
-public abstract class aqqw
-  implements aqrk
+class aqqw
+  extends aqqt
 {
-  public Context a;
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public FullPopData a;
-  public FullPopVideoView a;
-  private String a;
-  public boolean a;
-  public ImageView b;
-  private String b;
-  public boolean b;
-  public ImageView c;
-  private boolean c;
-  public ImageView d;
+  private long jdField_a_of_type_Long;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  private aqqr jdField_a_of_type_Aqqr;
+  private bbtj jdField_a_of_type_Bbtj = new aqqx(this);
+  private String jdField_a_of_type_JavaLangString;
+  private UUID jdField_a_of_type_JavaUtilUUID;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
   
-  public aqqw(Context paramContext, FullPopData paramFullPopData, String paramString1, String paramString2, boolean paramBoolean)
+  private aqqw(aqpv paramaqpv, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData = paramFullPopData;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramaqpv);
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFilePath", this.jdField_b_of_type_JavaLangString);
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter begin filename " + this.jdField_a_of_type_JavaLangString);
   }
   
-  public void a()
+  void a(String paramString, int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (String str = "205929";; str = "205927")
-    {
-      aqsr.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, str, this.jdField_c_of_type_Boolean);
-      return;
-    }
-  }
-  
-  public void a(View... paramVarArgs)
-  {
-    if ((paramVarArgs == null) || (paramVarArgs.length < 6)) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramVarArgs[0]);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramVarArgs[1]);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[2]);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[3]);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramVarArgs[4]);
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView = ((FullPopVideoView)paramVarArgs[5]);
-    this.d = ((ImageView)paramVarArgs[6]);
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter stopped WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView.setOnClickListener(new aqqx(this));
+    bbtf.a().a(this.jdField_a_of_type_JavaUtilUUID, null);
+  }
+  
+  void a(String paramString, int paramInt, aqqr paramaqqr)
+  {
+    if (paramaqqr == null)
+    {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run but callback is null filename " + this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    this.jdField_a_of_type_Aqqr = paramaqqr;
+    this.jdField_b_of_type_Long = Long.parseLong(paramString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", String.valueOf(this.jdField_b_of_type_Long));
+    this.jdField_a_of_type_JavaUtilUUID = UUID.randomUUID();
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "TroopUploadTaskExcuter run WorkerId[" + this.jdField_a_of_type_JavaUtilUUID + "] filename " + this.jdField_a_of_type_JavaLangString);
+    bbtf.a().a(this.jdField_a_of_type_JavaUtilUUID, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bbtj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqw
  * JD-Core Version:    0.7.0.1
  */

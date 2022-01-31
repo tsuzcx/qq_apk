@@ -1,25 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-class xix
-  extends BroadcastReceiver
+public abstract interface xix
 {
-  xix(xiq paramxiq) {}
+  public abstract void a();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
-    {
-      xiq.a(this.a, paramIntent);
-      xiq.d(this.a);
-      xiq.c(this.a);
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(SlideItemInfo paramSlideItemInfo);
+  
+  public abstract void c_(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xix
  * JD-Core Version:    0.7.0.1
  */

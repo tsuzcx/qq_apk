@@ -2,7 +2,7 @@ package com.tencent.mobileqq.profile.stickynote.vas;
 
 import QC.GetSuixintieSigFontRsp;
 import android.os.Handler;
-import bbdx;
+import bdcs;
 import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 
@@ -13,7 +13,7 @@ class StickyNoteShopLayout$2
   
   public void run()
   {
-    byte[] arrayOfByte = bbdx.a(StickyNoteShopLayout.a + '_' + StickyNoteShopLayout.a(this.this$0));
+    byte[] arrayOfByte = bdcs.a(StickyNoteShopLayout.a + '_' + StickyNoteShopLayout.a(this.this$0));
     if (arrayOfByte != null)
     {
       GetSuixintieSigFontRsp localGetSuixintieSigFontRsp = new GetSuixintieSigFontRsp();
@@ -24,7 +24,7 @@ class StickyNoteShopLayout$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout.2
  * JD-Core Version:    0.7.0.1
  */

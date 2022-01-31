@@ -1,38 +1,20 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-class aesh
-  implements bfph
+public class aesh
+  implements azzg
 {
-  aesh(aert paramaert) {}
+  public aesh(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    if (this.a.ah) {
-      return;
-    }
-    this.a.ah = true;
-    if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0))
-    {
-      this.a.A(2131695620);
-      paramInt = this.a.jdField_a_of_type_ArrayOfInt[0];
-      if (paramInt == 0) {
-        this.a.b(true, 0);
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      this.a.b(false, paramInt);
-      continue;
-      this.a.A(2131695620);
-      this.a.b(true, 0);
-    }
+    azzo localazzo = new azzo(new azzf[] { new azzn(300, 0.1F, 1.1F), new azzn(100, 1.2F, 0.9F), new azzn(100, 0.9F, 1.0F) });
+    this.a.c.a(new azzf[] { localazzo });
+    this.a.b.a(new azzf[] { new azzn(300, 0.0F, 1.0F) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesh
  * JD-Core Version:    0.7.0.1
  */

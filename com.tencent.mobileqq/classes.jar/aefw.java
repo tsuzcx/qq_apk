@@ -1,40 +1,25 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 
 public class aefw
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public aefw(PEPanel paramPEPanel) {}
+  public aefw(UpgradeActivity paramUpgradeActivity, bdef parambdef, int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((PEPanel.a(this.a) != null) && (QLog.isColorLevel())) {
-      QLog.d("PokeEmo.PEPanel", 2, String.format(" playLottieAnim onAnimationEnd listView.visibility = %d ", new Object[] { Integer.valueOf(PEPanel.a(this.a).getVisibility()) }));
-    }
-    if ((PEPanel.a(this.a) != null) && (PEPanel.a(this.a).getVisibility() != 0)) {
-      PEPanel.a(this.a).setVisibility(0);
-    }
+    this.jdField_a_of_type_Bdef.d();
+    bdii.c(true);
+    bdii.c(this.jdField_a_of_type_Int);
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity, amlp.a().a(), false, true, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity.finish();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.setListViewVisibile(8);
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefw
  * JD-Core Version:    0.7.0.1
  */

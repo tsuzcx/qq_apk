@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount;
 
-import oou;
 import org.json.JSONObject;
-import osx;
+import otf;
+import oxp;
 
 public final class PublicAccountReportUtils$2
   implements Runnable
@@ -15,10 +15,10 @@ public final class PublicAccountReportUtils$2
     {
       int j = new JSONObject(this.a).getInt("channel_id");
       int i = 2;
-      if (oou.c(j)) {
+      if (otf.c(j)) {
         i = 0;
       }
-      osx.e(i);
+      oxp.e(i);
       return;
     }
     catch (Exception localException)
@@ -29,7 +29,7 @@ public final class PublicAccountReportUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.PublicAccountReportUtils.2
  * JD-Core Version:    0.7.0.1
  */

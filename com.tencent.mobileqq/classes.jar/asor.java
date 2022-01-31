@@ -1,19 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class asor
-  implements DialogInterface.OnClickListener
+public class asor
+  extends asot
 {
-  asor(asoj paramasoj) {}
+  public String a = "";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public asor(String paramString1, String paramString2, String paramString3)
   {
-    paramDialogInterface.dismiss();
+    super("plugin", paramString1, paramString2);
+    this.a = paramString3;
+  }
+  
+  @Deprecated
+  public void a()
+  {
+    super.a();
+  }
+  
+  @Deprecated
+  public void b()
+  {
+    super.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asor
  * JD-Core Version:    0.7.0.1
  */

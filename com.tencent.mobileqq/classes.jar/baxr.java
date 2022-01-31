@@ -1,18 +1,40 @@
-import android.view.Choreographer.FrameCallback;
+import com.qq.taf.jce.HexUtil;
+import java.util.ArrayList;
 
-class baxr
-  implements Choreographer.FrameCallback
+public class baxr
+  extends baxq
 {
-  baxr(baxq parambaxq) {}
+  public int a;
+  public String a;
+  public ArrayList<basp> a;
+  public byte[] a;
+  public String b;
+  public ArrayList<basp> b;
+  public byte[] b;
+  public String c;
   
-  public void doFrame(long paramLong)
+  public baxr()
   {
-    baxq.a(this.a, paramLong);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(super.toString());
+    localStringBuilder.append(" mUkey:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mIpList:").append(this.jdField_a_of_type_JavaUtilArrayList.toString());
+    localStringBuilder.append(" mIpv6List:").append(this.jdField_b_of_type_JavaUtilArrayList.toString());
+    localStringBuilder.append(" md5:").append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
+    localStringBuilder.append(" aesKey:").append(HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baxr
  * JD-Core Version:    0.7.0.1
  */

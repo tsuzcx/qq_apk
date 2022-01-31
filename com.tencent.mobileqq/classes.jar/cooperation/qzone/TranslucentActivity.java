@@ -1,53 +1,57 @@
 package cooperation.qzone;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcqf;
-import bglh;
-import bglq;
-import bhbl;
+import bepp;
+import bimg;
+import bimp;
+import bjcs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AndroidOreoUtils;
 
 public class TranslucentActivity
   extends Activity
 {
   private void a(Intent paramIntent)
   {
-    bcqf localbcqf;
-    if (!((bglh)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(27)).isPlugininstalled("qzone_plugin.apk"))
+    bepp localbepp;
+    if (!((bimg)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(27)).isPlugininstalled("qzone_plugin.apk"))
     {
-      localbcqf = new bcqf(this, getResources().getDimensionPixelSize(2131298865));
-      localbcqf.a(ajya.a(2131715080));
-      localbcqf.setOnDismissListener(new bhbl(this));
+      localbepp = new bepp(this, getResources().getDimensionPixelSize(2131298914));
+      localbepp.a(alpo.a(2131715452));
+      localbepp.setOnDismissListener(new bjcs(this));
     }
     for (;;)
     {
       String str = QzonePluginProxyActivity.a(paramIntent);
       paramIntent.putExtra("userQqResources", 2);
-      bglq localbglq = new bglq(0);
-      localbglq.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
-      localbglq.d = "QZone";
-      localbglq.jdField_a_of_type_JavaLangString = "";
-      localbglq.e = str;
-      localbglq.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
-      localbglq.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localbglq.jdField_b_of_type_Int = -1;
-      localbglq.jdField_a_of_type_AndroidAppDialog = localbcqf;
-      localbglq.c = 10000;
-      localbglq.f = null;
-      bglh.a(this, localbglq);
-      if (localbcqf == null) {
+      bimp localbimp = new bimp(0);
+      localbimp.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
+      localbimp.d = "QZone";
+      localbimp.jdField_a_of_type_JavaLangString = "";
+      localbimp.e = str;
+      localbimp.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
+      localbimp.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localbimp.jdField_b_of_type_Int = -1;
+      localbimp.jdField_a_of_type_AndroidAppDialog = localbepp;
+      localbimp.c = 10000;
+      localbimp.f = null;
+      bimg.a(this, localbimp);
+      if (localbepp == null) {
         finish();
       }
       return;
-      localbcqf = null;
+      localbepp = null;
     }
   }
   
@@ -58,6 +62,12 @@ public class TranslucentActivity
   
   public void onCreate(Bundle paramBundle)
   {
+    AndroidOreoUtils localAndroidOreoUtils = new AndroidOreoUtils(this);
+    if ((Build.VERSION.SDK_INT == 26) && (getApplicationInfo().targetSdkVersion >= 27) && (localAndroidOreoUtils.isTranslucentOrFloating()))
+    {
+      boolean bool = localAndroidOreoUtils.fixOrientation();
+      QLog.i("TranslucentActivity", 1, "onCreate fixOrientation when Oreo, result = " + bool);
+    }
     super.onCreate(paramBundle);
     paramBundle = super.getIntent();
     if (!TextUtils.isEmpty(QzonePluginProxyActivity.a(paramBundle))) {
@@ -67,7 +77,7 @@ public class TranslucentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.TranslucentActivity
  * JD-Core Version:    0.7.0.1
  */

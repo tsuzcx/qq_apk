@@ -11,6 +11,7 @@ import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.openrender.AEOpenRenderConfig;
 import com.tencent.aekit.openrender.AEOpenRenderConfig.DRAW_MODE;
 import com.tencent.aekit.openrender.UniformParam.Float2fParam;
+import com.tencent.aekit.openrender.UniformParam.Float4fParam;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.UniformParam.FloatsParam;
 import com.tencent.aekit.openrender.UniformParam.IntParam;
@@ -22,8 +23,6 @@ import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.camerasdk.avreport.LogUtils;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.manager.FaceOffFilterManager;
@@ -44,12 +43,12 @@ public class FaceOffFilter
   extends VideoFilterBase
 {
   private static final int CHANGE_BITMAP = 1;
-  public static final String FRAGMENT_SHADER = "//Need Sync FaceOffFragmentShaderExt.dat\n\nprecision highp float;\nvarying vec2 canvasCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvarying vec2 noseTextureCoordinate;\nvarying float pointVisValue;\nvarying float opacityValue;\n\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform sampler2D inputImageTexture3;\nuniform sampler2D inputImageTexture4;\nuniform sampler2D inputImageTexture5;\nuniform sampler2D inputImageTexture6;\nuniform sampler2D inputImageTexture7;\n\nuniform float alpha;\nuniform int enableFaceOff;\nuniform float enableNoseOcclusion;\nuniform float enableAlphaFromGray;\nuniform float enableAlphaFromGrayNew;\nuniform int blendMode;\nuniform int blendIris;\nuniform float level1;\nuniform float level2;\n\nuniform vec2 size;\nuniform vec2 center1;\nuniform vec2 center2;\nuniform float radius1;\nuniform float radius2;\n\nuniform int leftEyeClosed; // deprecated\nuniform int rightEyeClosed; // deprecated\nuniform float leftEyeCloseAlpha;\nuniform float rightEyeCloseAlpha;\n\nvec3 blendColorWithMode(vec4 texColor, vec4 canvasColor, int colorBlendMode)\n{\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    vec3 resultFore = texColor.rgb;\n    if (colorBlendMode <= 1){ //default, since used most, put on top\n\n    } else if (colorBlendMode == 2) {  //multiply\n        resultFore = canvasColor.rgb * texColor.rgb;\n    } else if (colorBlendMode == 3){    //screen\n        resultFore = vOne - (vOne - canvasColor.rgb) * (vOne - texColor.rgb);\n    } else if (colorBlendMode == 4){    //overlay\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (canvasColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (canvasColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (canvasColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 5){    //hardlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (texColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 6){    //softlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb + canvasColor.rgb * canvasColor.rgb * (vOne - 2.0 * texColor.rgb);\n        if (texColor.r >= 0.5) {\n            resultFore.r = 2.0 * canvasColor.r * (1.0 - texColor.r) + (2.0 * texColor.r - 1.0) * sqrt(canvasColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 2.0 * canvasColor.g * (1.0 - texColor.g) + (2.0 * texColor.g - 1.0) * sqrt(canvasColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 2.0 * canvasColor.b * (1.0 - texColor.b) + (2.0 * texColor.b - 1.0) * sqrt(canvasColor.b);\n        }\n    } else if (colorBlendMode == 7){    //divide\n        resultFore = vOne;\n        if (texColor.r > 0.0) {\n            resultFore.r = canvasColor.r / texColor.r;\n        }\n        if (texColor.g > 0.0) {\n            resultFore.g = canvasColor.g / texColor.g;\n        }\n        if (texColor.b > 0.0) {\n            resultFore.b = canvasColor.b / texColor.b;\n        }\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 8){    //add\n        resultFore = canvasColor.rgb + texColor.rgb;\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 9){    //substract\n        resultFore = canvasColor.rgb - texColor.rgb;\n        resultFore = max(vZero, resultFore);\n    } else if (colorBlendMode == 10){   //diff\n        resultFore = abs(canvasColor.rgb - texColor.rgb);\n    } else if (colorBlendMode == 11){   //darken\n        resultFore = min(canvasColor.rgb, texColor.rgb);\n    } else if (blendMode == 12){   //lighten\n        resultFore = max(canvasColor.rgb, texColor.rgb);\n    }\n    return resultFore;\n}\n\nvec4 blendColor(vec4 texColor, vec4 canvasColor) {\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    //revert pre multiply\n    if(texColor.a > 0.0){\n       texColor.rgb = texColor.rgb / texColor.a;\n    }\n    vec3 resultFore = texColor.rgb;\n    if (blendMode <= 12) {\n        resultFore = blendColorWithMode(texColor, canvasColor, blendMode);\n    } else if (blendMode == 13){   //highlight for lips\n        if (texColor.a > 0.0001) {\n            if(canvasColor.r >= level1) {\n                texColor.rgb = vec3(1.0, 1.0, 1.0);\n                //if(canvasColor.r < 0.6) {\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05;\n                //}\n            } else if (canvasColor.r >= level2) {\n               if (level1 > level2) {\n                   float f = (canvasColor.r - level2) / (level1 - level2);\n                   texColor.rgb = texColor.rgb + (vOne - texColor.rgb) * f;\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05 * f;\n               }\n            }\n        }\n        resultFore = canvasColor.rgb * texColor.rgb;\n        resultFore = clamp(resultFore, 0.0001, 0.9999);\n    } else if (blendMode == 14){   // iris\n         vec2 curPos = vec2(canvasCoordinate.x * size.x, canvasCoordinate.y * size.y);\n         float dist1 = sqrt((curPos.x - center1.x) * (curPos.x - center1.x) + (curPos.y - center1.y) * (curPos.y - center1.y));\n         float dist2 = sqrt((curPos.x - center2.x) * (curPos.x - center2.x) + (curPos.y - center2.y) * (curPos.y - center2.y));\n         if (dist1 < radius1 && leftEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center1.x) / radius1 / 2.0;\n             float _y = (curPos.y - center1.y) / radius1 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * leftEyeCloseAlpha;\n         } else if (dist2 < radius2 && rightEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center2.x) / radius2 / 2.0;\n             float _y = (curPos.y - center2.y) / radius2 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * rightEyeCloseAlpha;\n         } else {\n            texColor.a = 0.0;\n         }\n         //resultFore = texColor.rgb;\n         //texColor.a = 1.0;\n    }\n    //pre multiply for glBlendFunc\n    vec4 resultColor = vec4(resultFore * texColor.a, texColor.a);\n    return resultColor;\n}\n\nvoid main(void) {\n    vec4 canvasColor = texture2D(inputImageTexture, canvasCoordinate);\n    vec4 texColor = texture2D(inputImageTexture2, textureCoordinate);\n\n        if (texColor.a > 0.0) {\n            texColor = texColor / vec4(texColor.a, texColor.a, texColor.a, 1.0);\n        }\n        if(enableAlphaFromGray > 0.0){\n            vec4 grayColor = texture2D(inputImageTexture3, grayTextureCoordinate);\n            vec4 maskColor = texture2D(inputImageTexture5, grayTextureCoordinate);\n            float grayAlpha = (1.0 - mix(maskColor.r, grayColor.r, enableAlphaFromGrayNew));\n            texColor.a = texColor.a * grayAlpha * alpha;\n        } else {\n            texColor.a = texColor.a * alpha;\n        }\n\n    float confidence = smoothstep(0.7, 1.0, pointVisValue) * opacityValue;\n\n    texColor.a = texColor.a * confidence;\n\n        vec4 screenNoseColor = texture2D(inputImageTexture7, canvasCoordinate);\n        texColor.a = texColor.a * mix(1.0, screenNoseColor.a, enableNoseOcclusion); \n\n//    if(confidence >= 0.0){\n//            texColor.a = texColor.a * confidence;\n//    }\n\n    texColor.rgb = texColor.rgb * texColor.a;\n\n    gl_FragColor = blendColor(texColor, canvasColor);\n    //gl_FragColor = vec4(canvasColor.rgb * opacityValue, 1.0);\n }\n";
+  public static final String FRAGMENT_SHADER = "//Need Sync FaceOffFragmentShaderExt.dat\n\nprecision highp float;\nvarying vec2 canvasCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvarying vec2 modelTextureCoordinate;\nvarying float pointVisValue;\nvarying float opacityValue;\n\nuniform sampler2D inputImageTexture;\nuniform sampler2D inputImageTexture2;\nuniform sampler2D inputImageTexture3;\nuniform sampler2D inputImageTexture4;\nuniform sampler2D inputImageTexture5;\nuniform sampler2D inputImageTexture6;\nuniform sampler2D inputImageTexture7;\n\nuniform float alpha;\nuniform int enableFaceOff;\nuniform float enableNoseOcclusion;\nuniform float enableAlphaFromGray;\nuniform float enableAlphaFromGrayNew;\nuniform int blendMode;\nuniform int blendIris;\nuniform float level1;\nuniform float level2;\n\nuniform vec2 size;\nuniform vec2 center1;\nuniform vec2 center2;\nuniform float radius1;\nuniform float radius2;\n\nuniform int leftEyeClosed; // deprecated\nuniform int rightEyeClosed; // deprecated\nuniform float leftEyeCloseAlpha;\nuniform float rightEyeCloseAlpha;\nuniform float useMaterialLipsMask;\nuniform float useLipsRGBA;\nuniform vec4 lipsRGBA; \n\nvec3 blendColorWithMode(vec4 texColor, vec4 canvasColor, int colorBlendMode)\n{\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    vec3 resultFore = texColor.rgb;\n    if (colorBlendMode <= 1){ //default, since used most, put on top\n\n    } else if (colorBlendMode == 2) {  //multiply\n        resultFore = canvasColor.rgb * texColor.rgb;\n    } else if (colorBlendMode == 3){    //screen\n        resultFore = vOne - (vOne - canvasColor.rgb) * (vOne - texColor.rgb);\n    } else if (colorBlendMode == 4){    //overlay\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (canvasColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (canvasColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (canvasColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 5){    //hardlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb;\n        if (texColor.r >= 0.5) {\n            resultFore.r = 1.0 - 2.0 * (1.0 - canvasColor.r) * (1.0 - texColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 1.0 - 2.0 * (1.0 - canvasColor.g) * (1.0 - texColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 1.0 - 2.0 * (1.0 - canvasColor.b) * (1.0 - texColor.b);\n        }\n    } else if (colorBlendMode == 6){    //softlight\n        resultFore = 2.0 * canvasColor.rgb * texColor.rgb + canvasColor.rgb * canvasColor.rgb * (vOne - 2.0 * texColor.rgb);\n        if (texColor.r >= 0.5) {\n            resultFore.r = 2.0 * canvasColor.r * (1.0 - texColor.r) + (2.0 * texColor.r - 1.0) * sqrt(canvasColor.r);\n        }\n        if (texColor.g >= 0.5) {\n            resultFore.g = 2.0 * canvasColor.g * (1.0 - texColor.g) + (2.0 * texColor.g - 1.0) * sqrt(canvasColor.g);\n        }\n        if (texColor.b >= 0.5) {\n            resultFore.b = 2.0 * canvasColor.b * (1.0 - texColor.b) + (2.0 * texColor.b - 1.0) * sqrt(canvasColor.b);\n        }\n    } else if (colorBlendMode == 7){    //divide\n        resultFore = vOne;\n        if (texColor.r > 0.0) {\n            resultFore.r = canvasColor.r / texColor.r;\n        }\n        if (texColor.g > 0.0) {\n            resultFore.g = canvasColor.g / texColor.g;\n        }\n        if (texColor.b > 0.0) {\n            resultFore.b = canvasColor.b / texColor.b;\n        }\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 8){    //add\n        resultFore = canvasColor.rgb + texColor.rgb;\n        resultFore = min(vOne, resultFore);\n    } else if (colorBlendMode == 9){    //substract\n        resultFore = canvasColor.rgb - texColor.rgb;\n        resultFore = max(vZero, resultFore);\n    } else if (colorBlendMode == 10){   //diff\n        resultFore = abs(canvasColor.rgb - texColor.rgb);\n    } else if (colorBlendMode == 11){   //darken\n        resultFore = min(canvasColor.rgb, texColor.rgb);\n    } else if (blendMode == 12){   //lighten\n        resultFore = max(canvasColor.rgb, texColor.rgb);\n    }\n    return resultFore;\n}\n\nvec4 blendColor(vec4 texColor, vec4 canvasColor) {\n    vec3 vOne = vec3(1.0, 1.0, 1.0);\n    vec3 vZero = vec3(0.0, 0.0, 0.0);\n    //revert pre multiply\n    if(texColor.a > 0.0){\n       texColor.rgb = texColor.rgb / texColor.a;\n    }\n    vec3 resultFore = texColor.rgb;\n    if (blendMode <= 12) {\n        resultFore = blendColorWithMode(texColor, canvasColor, blendMode);\n    } else if (blendMode == 13){   //highlight for lips\n        if (texColor.a > 0.0001) {\n            if(canvasColor.r >= level1) {\n                texColor.rgb = vec3(1.0, 1.0, 1.0);\n                //if(canvasColor.r < 0.6) {\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05;\n                //}\n            } else if (canvasColor.r >= level2) {\n               if (level1 > level2) {\n                   float f = (canvasColor.r - level2) / (level1 - level2);\n                   texColor.rgb = texColor.rgb + (vOne - texColor.rgb) * f;\n                   canvasColor.rgb = canvasColor.rgb + (vOne - canvasColor.rgb) * 0.05 * f;\n               }\n            }\n        }\n        resultFore = canvasColor.rgb * texColor.rgb;\n        resultFore = clamp(resultFore, 0.0001, 0.9999);\n    } else if (blendMode == 14){   // iris\n         vec2 curPos = vec2(canvasCoordinate.x * size.x, canvasCoordinate.y * size.y);\n         float dist1 = sqrt((curPos.x - center1.x) * (curPos.x - center1.x) + (curPos.y - center1.y) * (curPos.y - center1.y));\n         float dist2 = sqrt((curPos.x - center2.x) * (curPos.x - center2.x) + (curPos.y - center2.y) * (curPos.y - center2.y));\n         if (dist1 < radius1 && leftEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center1.x) / radius1 / 2.0;\n             float _y = (curPos.y - center1.y) / radius1 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * leftEyeCloseAlpha;\n         } else if (dist2 < radius2 && rightEyeCloseAlpha >= 0.01) {\n             float _x = (curPos.x - center2.x) / radius2 / 2.0;\n             float _y = (curPos.y - center2.y) / radius2 / 2.0;\n             vec4 irisColor = texture2D(inputImageTexture4, vec2(_x * 0.72 + 0.5, _y * 0.72 + 0.5));\n             if (irisColor.a > 0.0) {\n                 irisColor = irisColor / vec4(irisColor.a, irisColor.a, irisColor.a, 1.0);\n             }\n             resultFore = blendColorWithMode(irisColor, canvasColor, blendIris);\n             texColor.a = texColor.a * irisColor.a * rightEyeCloseAlpha;\n         } else {\n            texColor.a = 0.0;\n         }\n         //resultFore = texColor.rgb;\n         //texColor.a = 1.0;\n    }\n    //pre multiply for glBlendFunc\n    vec4 resultColor = vec4(resultFore * texColor.a, texColor.a);\n    return resultColor;\n}\n\nvoid main(void) {\n    vec4 canvasColor = texture2D(inputImageTexture, canvasCoordinate);\n    vec4 texColor = texture2D(inputImageTexture2, textureCoordinate);\n\n    float grayAlpha = 1.0; \n    if (texColor.a > 0.0) {\n        texColor = texColor / vec4(texColor.a, texColor.a, texColor.a, 1.0);\n    }\n    if(enableAlphaFromGray > 0.0){\n        vec4 grayColor = texture2D(inputImageTexture3, grayTextureCoordinate);\n        grayAlpha = 1.0 - grayColor.r;\n    }\n    if (useMaterialLipsMask > 0.0) { \n        vec4 lipsColor = texture2D(inputImageTexture5, modelTextureCoordinate);\n        if (lipsColor.g > 0.01) { \n           texColor = mix(texColor, lipsRGBA, useLipsRGBA); \n           grayAlpha = mix(lipsColor.g, lipsColor.r, enableAlphaFromGrayNew); \n        } \n    } \n    texColor.a = texColor.a * alpha * grayAlpha; \n\n    float confidence = smoothstep(0.7, 1.0, pointVisValue) * opacityValue;\n\n    texColor.a = texColor.a * confidence;\n\n        vec4 screenNoseColor = texture2D(inputImageTexture7, canvasCoordinate);\n        texColor.a = texColor.a * mix(1.0, screenNoseColor.a, enableNoseOcclusion); \n\n//    if(confidence >= 0.0){\n//            texColor.a = texColor.a * confidence;\n//    }\n\n    texColor.rgb = texColor.rgb * texColor.a;\n\n    gl_FragColor = blendColor(texColor, canvasColor);\n    //gl_FragColor = vec4(canvasColor.rgb * opacityValue, 1.0);\n }\n";
   private static final int MERGE_BITMAP = 1;
   private static final int NONE_BITMAP = -1;
   private static final int NORMAL_BITMAP = 1;
   private static final String TAG = FaceOffFilter.class.getSimpleName();
-  public static final String VERTEX_SHADER = "attribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nattribute vec2 inputGrayTextureCoordinate;\nattribute vec2 inputNoseTextureCoordinate;\nattribute float pointsVisValue;\nattribute float opacity;\nvarying vec2 canvasCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvarying vec2 noseTextureCoordinate;\nvarying float pointVisValue;\nvarying float opacityValue;\n\nuniform vec2 canvasSize;\nuniform float positionRotate;\n\nvoid main(){\n    vec4 framePos = position;\n\n    gl_Position = framePos;\n    canvasCoordinate = vec2(framePos.x * 0.5 + 0.5, framePos.y * 0.5 + 0.5);\n    textureCoordinate = inputTextureCoordinate;\n    grayTextureCoordinate = inputGrayTextureCoordinate;\n    noseTextureCoordinate = inputNoseTextureCoordinate;\n    pointVisValue = pointsVisValue;\n    opacityValue = opacity;\n}\n";
+  public static final String VERTEX_SHADER = "attribute vec4 position;\nattribute vec2 inputTextureCoordinate;\nattribute vec2 inputGrayTextureCoordinate;\nattribute vec2 inputModelTextureCoordinate;\nattribute float pointsVisValue;\nattribute float opacity;\nvarying vec2 canvasCoordinate;\nvarying vec2 textureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvarying vec2 modelTextureCoordinate;\nvarying float pointVisValue;\nvarying float opacityValue;\n\nuniform vec2 canvasSize;\nuniform float positionRotate;\n\nvoid main(){\n    vec4 framePos = position;\n\n    gl_Position = framePos;\n    canvasCoordinate = vec2(framePos.x * 0.5 + 0.5, framePos.y * 0.5 + 0.5);\n    textureCoordinate = inputTextureCoordinate;\n    grayTextureCoordinate = inputGrayTextureCoordinate;\n    modelTextureCoordinate = inputModelTextureCoordinate;\n    pointVisValue = pointsVisValue;\n    opacityValue = opacity;\n}\n";
   private static final PointF ZERO_POINT = new PointF(0.0F, 0.0F);
   private byte[] data = null;
   private int faceBitmapType = -1;
@@ -72,6 +71,7 @@ public class FaceOffFilter
   private boolean isFaceImageReady;
   private boolean isGrayImageReady;
   private boolean isIrisImageReady;
+  private boolean isLipsStyleMaskReady;
   private boolean isleftCheekChange = false;
   private boolean isleftEyeShadowChange = false;
   private boolean islipsChange = false;
@@ -90,7 +90,7 @@ public class FaceOffFilter
   private int lipsIndex = 0;
   byte[] mData = null;
   private Bitmap mergeBitmap = null;
-  private float[] noseVertices = new float[FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_V2 * 3 * 2];
+  private float[] modelVertices = new float[FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_V2 * 3 * 2];
   private float[] opacity = new float[''];
   private float percent1 = 0.05F;
   private float percent2 = 0.15F;
@@ -107,8 +107,6 @@ public class FaceOffFilter
   private double sumr = 0.0D;
   private float[] texVertices = new float[FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_V2 * 3 * 2];
   protected int[] texture = new int[6];
-  private TriggerCtrlItem triggerCtrlItem;
-  private boolean triggered;
   
   public FaceOffFilter(FaceItem paramFaceItem, String paramString)
   {
@@ -116,7 +114,6 @@ public class FaceOffFilter
     this.item = paramFaceItem;
     this.dataPath = paramString;
     this.sequenceMode = TextUtils.isEmpty(paramFaceItem.faceExchangeImage);
-    this.triggerCtrlItem = new TriggerCtrlItem(paramFaceItem);
     initParams();
   }
   
@@ -374,8 +371,7 @@ public class FaceOffFilter
       return true;
     }
     Object localObject2 = VideoMemoryManager.getInstance().loadImage(this.item.featureType);
-    Object localObject3 = VideoMemoryManager.getInstance().loadImage(FaceOffUtil.FEATURE_TYPE.MASK);
-    Bitmap localBitmap = VideoMemoryManager.getInstance().loadImage(FaceOffUtil.FEATURE_TYPE.NOSE_MASK);
+    Bitmap localBitmap = VideoMemoryManager.getInstance().loadImage(FaceOffUtil.FEATURE_TYPE.LIPS_MASK);
     Object localObject1 = localObject2;
     if (!BitmapUtils.isLegal((Bitmap)localObject2))
     {
@@ -384,20 +380,12 @@ public class FaceOffFilter
         localObject1 = FaceOffUtil.getGrayBitmap(this.item.featureType);
       }
     }
-    localObject2 = localObject3;
-    if (!BitmapUtils.isLegal((Bitmap)localObject3))
-    {
-      localObject2 = localObject3;
-      if (VideoMemoryManager.getInstance().isForceLoadFromSdCard()) {
-        localObject2 = FaceOffUtil.getGrayBitmap(FaceOffUtil.FEATURE_TYPE.MASK);
-      }
-    }
-    localObject3 = localBitmap;
+    localObject2 = localBitmap;
     if (!BitmapUtils.isLegal(localBitmap))
     {
-      localObject3 = localBitmap;
+      localObject2 = localBitmap;
       if (VideoMemoryManager.getInstance().isForceLoadFromSdCard()) {
-        localObject3 = FaceOffUtil.getGrayBitmap(FaceOffUtil.FEATURE_TYPE.NOSE_MASK);
+        localObject2 = FaceOffUtil.getGrayBitmap(FaceOffUtil.FEATURE_TYPE.LIPS_MASK);
       }
     }
     VideoMemoryManager.getInstance().getSampleSize();
@@ -408,10 +396,12 @@ public class FaceOffFilter
       this.grayImageHeight = ((Bitmap)localObject1).getHeight();
       initGrayTexCoords();
       addParam(new UniformParam.TextureParam("inputImageTexture3", this.texture[1], 33987));
-      GlUtil.loadTexture(this.texture[3], (Bitmap)localObject2);
-      addParam(new UniformParam.TextureParam("inputImageTexture5", this.texture[3], 33989));
-      GlUtil.loadTexture(this.texture[5], (Bitmap)localObject3);
-      addParam(new UniformParam.TextureParam("inputImageTexture6", this.texture[5], 33990));
+      if (this.item.grayScale == 2)
+      {
+        GlUtil.loadTexture(this.texture[3], (Bitmap)localObject2);
+        addParam(new UniformParam.TextureParam("inputImageTexture5", this.texture[3], 33989));
+        addParam(new UniformParam.FloatParam("useMaterialLipsMask", 1.0F));
+      }
       this.isGrayImageReady = true;
     }
     return this.isGrayImageReady;
@@ -443,6 +433,29 @@ public class FaceOffFilter
       this.isIrisImageReady = true;
     }
     return this.isIrisImageReady;
+  }
+  
+  private void initLipsStyleMaskImage()
+  {
+    if (this.item.grayScale == 1) {}
+    Bitmap localBitmap1;
+    do
+    {
+      do
+      {
+        return;
+      } while ((TextUtils.isEmpty(this.item.lipsStyleMask)) || (this.isLipsStyleMaskReady));
+      Bitmap localBitmap2 = VideoMemoryManager.getInstance().loadImage(this.item.id, this.item.lipsStyleMask);
+      localBitmap1 = localBitmap2;
+      if (BitmapUtils.isLegal(localBitmap2)) {
+        break;
+      }
+      localBitmap1 = VideoMemoryManager.getInstance().loadImage(this.item.faceExchangeImage, this.item.lipsStyleMask);
+    } while (!BitmapUtils.isLegal(localBitmap1));
+    GlUtil.loadTexture(this.texture[3], localBitmap1);
+    addParam(new UniformParam.TextureParam("inputImageTexture5", this.texture[3], 33989));
+    addParam(new UniformParam.FloatParam("useMaterialLipsMask", 1.0F));
+    this.isLipsStyleMaskReady = true;
   }
   
   private boolean isFaceExchangeImageDir(String paramString)
@@ -576,17 +589,10 @@ public class FaceOffFilter
   
   private void updateMouthOpenFactor(List<PointF> paramList)
   {
-    float f2;
-    if (this.item.grayScale == 2)
-    {
-      f1 = AlgoUtils.getDistance((PointF)paramList.get(65), (PointF)paramList.get(66));
-      f2 = AlgoUtils.getDistance((PointF)paramList.get(73), (PointF)paramList.get(81));
-      if (f1 <= 0.0F) {
-        break label115;
-      }
-    }
-    label115:
-    for (float f1 = Math.max(0.0F, Math.min(1.0F, (f2 - f1 * 0.1F) / (f1 * 0.1F)));; f1 = 0.0F)
+    float f1 = AlgoUtils.getDistance((PointF)paramList.get(65), (PointF)paramList.get(66));
+    float f2 = AlgoUtils.getDistance((PointF)paramList.get(73), (PointF)paramList.get(81));
+    if (f1 > 0.0F) {}
+    for (f1 = Math.max(0.0F, Math.min(1.0F, (f2 - f1 * 0.1F) / (f1 * 0.1F)));; f1 = 0.0F)
     {
       addParam(new UniformParam.FloatParam("enableAlphaFromGrayNew", Math.min(1.0F, f1 + 0.002F)));
       return;
@@ -638,7 +644,7 @@ public class FaceOffFilter
     super.initAttribParams();
     initFaceTexCoords();
     initGrayTexCoords();
-    initNoseTexCoords();
+    initModelTexCoords();
     setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLES);
     setCoordNum(FaceOffUtil.NO_HOLE_TRIANGLE_COUNT_V2 * 3);
   }
@@ -780,9 +786,9 @@ public class FaceOffFilter
     setTexCords(FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.genPoints(this.item.facePoints), 2.0F, 0.0F, this.item.faceExchangeImageFullFace), this.faceImageWidth, this.faceImageHeight, this.texVertices));
   }
   
-  protected void initNoseTexCoords()
+  protected void initModelTexCoords()
   {
-    addAttribParam("inputNoseTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.genPoints(Arrays.asList(FaceOffUtil.COSMETIC_MODEL_IMAGE_FACEPOINTS)), 2.0F, 0.0F, this.item.faceExchangeImageFullFace), 800, 1067, this.noseVertices));
+    addAttribParam("inputModelTextureCoordinate", FaceOffUtil.initMaterialFaceTexCoords_v2(FaceOffUtil.getFullCoords_v2(FaceOffUtil.genPoints(Arrays.asList(FaceOffUtil.COSMETIC_MODEL_IMAGE_FACEPOINTS)), 2.0F, 0.0F, this.item.faceExchangeImageFullFace), 800, 1067, this.modelVertices));
   }
   
   public void initParams()
@@ -803,13 +809,17 @@ public class FaceOffFilter
     addParam(new UniformParam.FloatParam("enableAlphaFromGray", this.item.grayScale));
     addAttribParam("pointsVisValue", this.pointVisVertices);
     addAttribParam("opacity", this.pointOpacity);
-    if (this.item.grayScale > 0) {
-      addParam(new UniformParam.FloatParam("enableAlphaFromGrayNew", 1.0F));
+    addParam(new UniformParam.FloatParam("enableAlphaFromGrayNew", 0.0F));
+    addParam(new UniformParam.IntParam("blendMode", this.item.blendMode));
+    addParam(new UniformParam.IntParam("blendIris", this.item.blendIris));
+    addParam(new UniformParam.FloatParam("useMaterialLipsMask", 0.0F));
+    if ((this.item.lipsRGBA != null) && (this.item.lipsRGBA.length == 4))
+    {
+      addParam(new UniformParam.FloatParam("useLipsRGBA", 1.0F));
+      addParam(new UniformParam.Float4fParam("lipsRGBA", this.item.lipsRGBA[0], this.item.lipsRGBA[1], this.item.lipsRGBA[2], this.item.lipsRGBA[3]));
     }
     for (;;)
     {
-      addParam(new UniformParam.IntParam("blendMode", this.item.blendMode));
-      addParam(new UniformParam.IntParam("blendIris", this.item.blendIris));
       if (this.item.blendMode == 13)
       {
         addParam(new UniformParam.FloatParam("level1", 0.0F));
@@ -821,11 +831,11 @@ public class FaceOffFilter
       this.isIrisImageReady = false;
       addParam(new UniformParam.TextureParam("inputImageTexture4", 0, 33988));
       float[] arrayOfFloat = new float[2];
-      float[] tmp468_467 = arrayOfFloat;
-      tmp468_467[0] = 0.0F;
-      float[] tmp472_468 = tmp468_467;
-      tmp472_468[1] = 0.0F;
-      tmp472_468;
+      float[] tmp560_559 = arrayOfFloat;
+      tmp560_559[0] = 0.0F;
+      float[] tmp564_560 = tmp560_559;
+      tmp564_560[1] = 0.0F;
+      tmp564_560;
       addParam(new UniformParam.FloatsParam("center1", arrayOfFloat));
       addParam(new UniformParam.FloatsParam("center2", arrayOfFloat));
       addParam(new UniformParam.FloatsParam("size", arrayOfFloat));
@@ -836,14 +846,15 @@ public class FaceOffFilter
       addParam(new UniformParam.FloatParam("leftEyeCloseAlpha", 1.0F));
       addParam(new UniformParam.FloatParam("rightEyeCloseAlpha", 1.0F));
       return;
-      addParam(new UniformParam.FloatParam("enableAlphaFromGrayNew", 0.0F));
+      addParam(new UniformParam.FloatParam("useLipsRGBA", 0.0F));
+      addParam(new UniformParam.Float4fParam("lipsRGBA", 0.0F, 0.0F, 0.0F, 0.0F));
     }
     this.isIrisImageReady = true;
   }
   
   public boolean isRenderReady()
   {
-    return (this.triggered) && (this.isFaceImageReady) && (this.isGrayImageReady);
+    return (this.isFaceImageReady) && (this.isGrayImageReady);
   }
   
   public float[] mat4RotationYXZ(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -909,9 +920,13 @@ public class FaceOffFilter
   
   public void reset()
   {
-    this.triggerCtrlItem.reset();
     this.sameBitmap = false;
     this.faceBitmapType = -1;
+  }
+  
+  public void resetLastFrameIndex()
+  {
+    this.lastIndex = -1;
   }
   
   public void setCosAlpha(float paramFloat)
@@ -927,19 +942,25 @@ public class FaceOffFilter
     this.data = paramArrayOfByte;
   }
   
-  public void setRenderForBitmap(boolean paramBoolean)
+  public void updateFrameIndex(int paramInt)
   {
-    this.triggerCtrlItem.setRenderForBitmap(paramBoolean);
-  }
-  
-  public void setTriggerWords(String paramString)
-  {
-    this.triggerCtrlItem.setTriggerWords(paramString);
-  }
-  
-  public TRIGGERED_STATUS updateActionTriggered(PTDetectInfo paramPTDetectInfo)
-  {
-    return this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
+    if ((!initGrayImage()) || (!initIrisImage()) || (!initDefaultImage())) {}
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        if (!this.sequenceMode) {
+          break;
+        }
+      } while (paramInt == this.lastIndex);
+      i = getNextFrame(paramInt);
+    } while (i <= 0);
+    addParam(new UniformParam.TextureParam("inputImageTexture2", i, 33986));
+    this.lastIndex = paramInt;
+    return;
+    initFaceImage();
   }
   
   public void updatePointParams(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat)
@@ -1043,70 +1064,60 @@ public class FaceOffFilter
     }
   }
   
-  public void updatePreview(Object paramObject, int paramInt1, int paramInt2)
+  public void updatePreview(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 0;
+    int i = 1;
     int j = 1;
+    List localList;
+    float[] arrayOfFloat;
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
-      updateActionTriggered(paramObject);
-      if ((!this.triggerCtrlItem.isTriggered()) || (CollectionUtils.isEmpty(paramObject.facePoints))) {
-        break label73;
-      }
-    }
-    label73:
-    for (boolean bool = true;; bool = false)
-    {
-      this.triggered = bool;
-      if (this.triggered) {
-        break;
-      }
-      this.lastIndex = -1;
-      this.triggerCtrlItem.reset();
-      return;
-    }
-    List localList = VideoMaterialUtil.copyList(paramObject.facePoints);
-    this.faceIndex = paramInt2;
-    float[] arrayOfFloat;
-    if (paramInt1 != this.faceCount)
-    {
-      this.isChangeFirstFace = true;
-      this.faceCount = paramInt1;
-      this.isFaceImageReady = false;
-      arrayOfFloat = paramObject.pointsVis;
-      updateMouthOpenFactor(localList);
-      LogUtils.d(TAG, "phoneAngle = " + paramObject.phoneAngle + "  src = " + paramObject.realPhoneAngle);
-      if ((paramObject.realPhoneAngle != 90.0F) && (paramObject.realPhoneAngle != 270.0F)) {
-        break label320;
-      }
-      int k = Float.valueOf(paramObject.realPhoneAngle - paramObject.phoneAngle).intValue();
-      if (k != 0)
+      if (!CollectionUtils.isEmpty(paramObject.facePoints))
       {
-        paramInt1 = j;
-        paramInt2 = i;
-        if (k != 90) {}
-      }
-      else
-      {
-        paramInt1 = -1;
-        paramInt2 = i;
+        localList = VideoMaterialUtil.copyList(paramObject.facePoints);
+        this.faceIndex = paramInt2;
+        if (paramInt1 == this.faceCount) {
+          break label256;
+        }
+        this.isChangeFirstFace = true;
+        this.faceCount = paramInt1;
+        this.isFaceImageReady = false;
+        arrayOfFloat = paramObject.pointsVis;
+        updateMouthOpenFactor(localList);
+        LogUtils.d(TAG, "phoneAngle = " + paramObject.phoneAngle + "  src = " + paramObject.realPhoneAngle);
+        if ((paramObject.realPhoneAngle != 90.0F) && (paramObject.realPhoneAngle != 270.0F)) {
+          break label264;
+        }
+        paramInt2 = Float.valueOf(paramObject.realPhoneAngle - paramObject.phoneAngle).intValue();
+        if (paramInt2 != 0)
+        {
+          paramInt1 = j;
+          if (paramInt2 != 90) {}
+        }
+        else
+        {
+          paramInt1 = -1;
+        }
+        paramInt2 = 0;
       }
     }
     for (;;)
     {
       updatePointParams(localList, arrayOfFloat, paramInt1 * paramObject.faceAngles[paramInt2]);
       changeMakeup(this.pointVis);
-      updateTextureParams(paramObject.timestamp);
+      updateFrameIndex(paramInt3);
+      initLipsStyleMaskImage();
       if (paramObject.noseOcclusionFrame == null) {
-        break label371;
+        break label315;
       }
       addParam(new UniformParam.TextureParam("inputImageTexture7", paramObject.noseOcclusionFrame.getTextureId(), 33991));
       addParam(new UniformParam.FloatParam("enableNoseOcclusion", 1.0F));
       return;
+      label256:
       this.isChangeFirstFace = false;
       break;
-      label320:
+      label264:
       paramInt1 = Float.valueOf(paramObject.phoneAngle - paramObject.realPhoneAngle).intValue();
       if ((paramInt1 == 90) || (paramInt1 == 180) || (paramInt1 == -180))
       {
@@ -1116,41 +1127,14 @@ public class FaceOffFilter
       else
       {
         paramInt2 = 1;
-        paramInt1 = j;
+        paramInt1 = i;
       }
     }
-    label371:
+    label315:
     addParam(new UniformParam.FloatParam("enableNoseOcclusion", 0.0F));
   }
   
-  public void updateRandomGroupValue(int paramInt)
-  {
-    this.triggerCtrlItem.setRandomGroupValue(paramInt);
-  }
-  
-  public void updateTextureParams(long paramLong)
-  {
-    if ((!initGrayImage()) || (!initIrisImage()) || (!initDefaultImage())) {}
-    int i;
-    int j;
-    do
-    {
-      do
-      {
-        return;
-        if (!this.sequenceMode) {
-          break;
-        }
-        this.triggerCtrlItem.updateFrameIndex(paramLong);
-        i = this.triggerCtrlItem.getFrameIndex();
-      } while (i == this.lastIndex);
-      j = getNextFrame(i);
-    } while (j <= 0);
-    addParam(new UniformParam.TextureParam("inputImageTexture2", j, 33986));
-    this.lastIndex = i;
-    return;
-    initFaceImage();
-  }
+  public void updateRandomGroupValue(int paramInt) {}
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {

@@ -1,266 +1,79 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.data.FullPopData;
-import com.tencent.mobileqq.gamecenter.view.FullPopVideoView;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqsr
+class aqsr
+  implements bkgy
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private aqrk jdField_a_of_type_Aqrk;
-  private FullPopData jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData;
-  private FullPopVideoView jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView;
-  private String jdField_a_of_type_JavaLangString;
-  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
-  public boolean a;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private String jdField_b_of_type_JavaLangString;
-  public boolean b;
-  private ImageView c;
-  public boolean c;
-  private ImageView d;
+  aqsr(aqsk paramaqsk, FileManagerEntity paramFileManagerEntity) {}
   
-  public aqsr(Context paramContext, MessageRecord paramMessageRecord)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = aqsv.a(paramMessageRecord);
-    this.jdField_b_of_type_JavaLangString = aqsv.a(paramMessageRecord, 0);
-    a();
-  }
+  public void a(String paramString) {}
   
-  public aqsr(Context paramContext, QQGameMsgInfo paramQQGameMsgInfo)
+  public void a(String paramString, long paramLong, bkgj parambkgj, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramQQGameMsgInfo.paMsgid;
-    this.jdField_b_of_type_JavaLangString = paramQQGameMsgInfo.gameAppId;
-    a();
-  }
-  
-  public static Bitmap a(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    if (apvd.b(paramString1)) {
-      return aqsu.a(paramString1 + "/" + paramString2, paramInt1, paramInt2);
-    }
-    return null;
-  }
-  
-  public static File a(String paramString1, String paramString2)
-  {
-    paramString1 = new File(paramString1 + "/" + paramString2);
-    if (paramString1.exists()) {
-      return paramString1;
-    }
-    return null;
-  }
-  
-  private void a()
-  {
-    Object localObject1 = aqsw.a();
-    Object localObject2;
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    if (paramBoolean)
     {
-      localObject1 = ((String)localObject1).split("-");
-      int j = localObject1.length;
-      int i = 0;
-      while (i < j)
-      {
-        localObject2 = localObject1[i];
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          this.jdField_a_of_type_JavaUtilList.add(localObject2);
-        }
-        i += 1;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        localObject1 = new StringBuffer();
-        localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          str = (String)((Iterator)localObject2).next();
-          ((StringBuffer)localObject1).append(" " + str);
-        }
-        QLog.d("FullPopBussiness", 1, "<getFullPopIdList>  fullPopIdsb=" + ((StringBuffer)localObject1).toString());
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      String str;
-      return;
-    }
-    QLog.d("FullPopBussiness", 1, "<getFullPopIdList>  fullPopIdList is null");
-  }
-  
-  private void a(String paramString)
-  {
-    String str = aqsw.a();
-    if (!TextUtils.isEmpty(str)) {
-      aqsw.a(str + paramString + "-");
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FullPopBussiness", 1, "<saveFullPopIdList>  id=" + paramString);
-      }
-      return;
-      aqsw.a(paramString + "-");
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
-  {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
-    {
-      HashMap localHashMap = new HashMap();
-      yoa.a(localHashMap, paramString1);
-      localHashMap.put(Integer.valueOf(1), paramString2);
-      localHashMap.put(Integer.valueOf(2), paramString1);
-      if (paramBoolean) {
-        localHashMap.put(Integer.valueOf(24), Integer.valueOf(1));
-      }
-      yoa.a(ajac.a(), "769", paramString3, paramString2, "76906", "1", "160", localHashMap);
-    }
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366865));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366866));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366863));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366867));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366864));
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView = ((FullPopVideoView)paramView.findViewById(2131379005));
-    this.d = ((ImageView)paramView.findViewById(2131367963));
-  }
-  
-  public void a(AppInterface paramAppInterface, MessageRecord paramMessageRecord, QQGameMsgInfo paramQQGameMsgInfo)
-  {
-    if (((paramQQGameMsgInfo == null) && (paramMessageRecord == null)) || (paramAppInterface == null)) {}
-    label319:
-    for (;;)
-    {
-      return;
-      int i = aqsu.b();
-      if ((i != 1) && (i != 4) && (i != 6))
-      {
+      if (parambkgj.jdField_a_of_type_Int == 2) {
         if (QLog.isColorLevel()) {
-          QLog.d("FullPopBussiness", 1, "currentType is:" + i);
+          QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is onStarted");
         }
       }
-      else
-      {
-        long l1 = aqsw.a();
-        long l2 = aqsu.a() * 24 * 60 * 60 * 1000;
-        long l3 = System.currentTimeMillis();
-        if (QLog.isColorLevel())
-        {
-          QLog.d("FullPopBussiness", 1, "lastFullPopExtTime is:" + l1);
-          QLog.d("FullPopBussiness", 1, "fullPopInterval is:" + l2);
-          QLog.d("FullPopBussiness", 1, "nowTime is:" + l3);
-        }
-        if (l1 > l3)
-        {
-          aqsw.a(0L);
-          return;
-        }
-        if ((l1 < 0L) || (l2 < 0L) || (l3 - l1 <= l2)) {
-          break label355;
-        }
-        Object localObject = null;
-        if (paramMessageRecord != null) {
-          paramMessageRecord = aqsw.a(paramMessageRecord);
-        }
-        for (;;)
-        {
-          if (paramMessageRecord == null) {
-            break label319;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("FullPopBussiness", 1, "<checkFullPopRes> fullPopData.id:" + paramMessageRecord.id);
-          }
-          if (!this.jdField_a_of_type_JavaUtilList.contains(paramMessageRecord.id)) {
-            break label321;
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("FullPopBussiness", 1, "the full pop is already played.");
-          return;
-          paramMessageRecord = localObject;
-          if (paramQQGameMsgInfo != null) {
-            paramMessageRecord = paramQQGameMsgInfo.fullPopData;
-          }
-        }
-      }
-    }
-    label321:
-    if (QLog.isColorLevel()) {
-      QLog.d("FullPopBussiness", 1, "the full pop is not played.");
-    }
-    aqsw.a(paramAppInterface, paramMessageRecord.resUrl, new aqss(this, paramMessageRecord), false);
-    return;
-    label355:
-    if (QLog.isColorLevel()) {
-      QLog.d("FullPopBussiness", 1, "full pop is lose efficacy because time");
-    }
-    a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, "205930", true);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (TVK_SDKMgr.isInstalled(this.jdField_a_of_type_AndroidContentContext)) {
-      if (a())
-      {
-        if (Build.VERSION.SDK_INT < 21) {
-          break label158;
-        }
-        this.jdField_a_of_type_Aqrk = new aqrf(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, paramBoolean);
-        this.jdField_a_of_type_Aqrk.a(new View[] { this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_b_of_type_AndroidWidgetImageView, this.jdField_c_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqGamecenterViewFullPopVideoView, this.d });
-        this.jdField_a_of_type_Aqrk.b();
-        this.jdField_b_of_type_Boolean = true;
-        a(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData.id);
-        a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, "205926", paramBoolean);
-      }
-    }
-    label158:
-    while (!QLog.isColorLevel()) {
-      for (;;)
+      do
       {
         return;
-        this.jdField_a_of_type_Aqrk = new aqqy(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, paramBoolean);
+        if (parambkgj.jdField_a_of_type_Int == 5)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is fail");
+          }
+          paramString = new Bundle();
+          paramString.putString("taskId", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.miniAppDownloadId);
+          paramString.putInt("errorCode", parambkgj.jdField_b_of_type_Int);
+          paramString.putString("errorMsg", parambkgj.jdField_a_of_type_JavaLangString);
+          QIPCServerHelper.getInstance().callClient(aqxc.jdField_a_of_type_JavaLangString, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Fail", paramString, null);
+          this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+          this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
+          this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+          this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+          this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aqsk.jdField_b_of_type_Long, this.jdField_a_of_type_Aqsk.c, this.jdField_a_of_type_Aqsk.e, this.jdField_a_of_type_Aqsk.jdField_a_of_type_Int, 36, null, parambkgj.jdField_b_of_type_Int, parambkgj.jdField_a_of_type_JavaLangString);
+          return;
+        }
+      } while (parambkgj.jdField_a_of_type_Int != 4);
+      if (QLog.isColorLevel()) {
+        QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is onSucceed");
       }
+      paramString = new Bundle();
+      paramString.putString("taskId", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.miniAppDownloadId);
+      paramString.putString("filePath", parambkgj.jdField_b_of_type_JavaLangString);
+      QIPCServerHelper.getInstance().callClient(aqxc.jdField_a_of_type_JavaLangString, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Suc", paramString, null);
+      this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(parambkgj.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 1.0F;
+      this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
+      this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(3);
+      this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
+      this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = arni.a(this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
+      this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aqsk.jdField_b_of_type_Long, this.jdField_a_of_type_Aqsk.c, this.jdField_a_of_type_Aqsk.e, this.jdField_a_of_type_Aqsk.jdField_a_of_type_Int, 35, null, 0, null);
+      return;
     }
-    QLog.d("FullPopBussiness", 1, "TVK_SDKMgr is not isInstalled");
-  }
-  
-  public boolean a()
-  {
-    return (!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFullPopData != null) && (this.jdField_c_of_type_Boolean);
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun download is process");
+    }
+    paramString = new Bundle();
+    paramString.putString("taskId", this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.miniAppDownloadId);
+    paramString.putInt("progress", (int)((float)parambkgj.jdField_b_of_type_Long / (float)parambkgj.jdField_a_of_type_Long * 100.0F));
+    paramString.putLong("currSize", parambkgj.jdField_b_of_type_Long);
+    paramString.putLong("totalSize", parambkgj.jdField_a_of_type_Long);
+    QIPCServerHelper.getInstance().callClient(aqxc.jdField_a_of_type_JavaLangString, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Progress", paramString, null);
+    this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = ((float)this.jdField_a_of_type_Aqsk.jdField_a_of_type_Long / (float)this.jdField_a_of_type_Aqsk.d);
+    this.jdField_a_of_type_Aqsk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aqsk.jdField_b_of_type_Long, this.jdField_a_of_type_Aqsk.c, this.jdField_a_of_type_Aqsk.e, this.jdField_a_of_type_Aqsk.jdField_a_of_type_Int, 16, null, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqsr
  * JD-Core Version:    0.7.0.1
  */

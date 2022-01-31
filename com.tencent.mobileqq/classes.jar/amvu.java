@@ -1,74 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class amvu
-  extends ampa<amvv>
+public abstract interface amvu
 {
-  public static amvv a()
-  {
-    return (amvv)ampl.a().a(564);
-  }
+  public abstract String a();
   
-  public int a()
-  {
-    return 564;
-  }
+  public abstract List<String> a();
   
-  @NonNull
-  public amvv a(int paramInt)
-  {
-    return new amvv();
-  }
+  public abstract String b();
   
-  @Nullable
-  public amvv a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph == null) || (paramArrayOfamph.length == 0)) {
-      return null;
-    }
-    paramArrayOfamph = paramArrayOfamph[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor onParsed, content:" + paramArrayOfamph);
-    }
-    return amvv.a(paramArrayOfamph);
-  }
-  
-  public Class<amvv> a()
-  {
-    return amvv.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amvv paramamvv)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTitleConfProcessor", 2, "RichTitleConfProcessor update.");
-    }
-    if (paramamvv != null) {
-      awbu.a = (int)(paramamvv.a * 60.0D * 60.0D);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract String c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvu
  * JD-Core Version:    0.7.0.1
  */

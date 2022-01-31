@@ -1,21 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class adgo
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public adgo(AIOLongShotHelper paramAIOLongShotHelper) {}
+  public adgo(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AIOLongShotHelper.c(this.a, paramView);
-    AIOLongShotHelper.a("0X8009DEC");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgo
  * JD-Core Version:    0.7.0.1
  */

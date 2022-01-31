@@ -1,27 +1,63 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil.10.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.Closeable;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
-public final class sgh
-  implements BusinessObserver
+public class sgh
 {
-  sgh(QQAppInterface paramQQAppInterface) {}
+  public static volatile sgk a = new sgk(BaseApplicationImpl.getContext(), "proteus");
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static long a(InputStream paramInputStream, OutputStream paramOutputStream)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
+    return a(paramInputStream, paramOutputStream, 8024);
+  }
+  
+  public static long a(InputStream paramInputStream, OutputStream paramOutputStream, int paramInt)
+  {
+    byte[] arrayOfByte = new byte[paramInt];
+    for (long l = 0L;; l += paramInt)
+    {
+      paramInt = paramInputStream.read(arrayOfByte);
+      if (-1 == paramInt) {
+        break;
+      }
+      paramOutputStream.write(arrayOfByte, 0, paramInt);
     }
-    ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountUtil.10.1(this, paramBoolean, paramBundle), 10L);
+    return l;
+  }
+  
+  public static void a(Closeable paramCloseable)
+  {
+    if (paramCloseable != null) {}
+    try
+    {
+      paramCloseable.close();
+      return;
+    }
+    catch (IOException paramCloseable) {}
+  }
+  
+  public static boolean a(File paramFile)
+  {
+    if (paramFile == null) {
+      return false;
+    }
+    if (!paramFile.exists()) {
+      try
+      {
+        boolean bool = paramFile.mkdirs();
+        return bool;
+      }
+      finally {}
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sgh
  * JD-Core Version:    0.7.0.1
  */

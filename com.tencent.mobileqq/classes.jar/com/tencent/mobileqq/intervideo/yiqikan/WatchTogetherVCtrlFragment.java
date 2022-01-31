@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import arlj;
-import bbdj;
-import bbdt;
-import bbgu;
+import atbx;
+import bdcd;
+import bdco;
+import bdfq;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 
@@ -23,10 +23,10 @@ public class WatchTogetherVCtrlFragment
       QLog.e("WatchTogetherVCtrlFragment", 1, "activity is null");
       return paramLayoutInflater;
     }
-    paramBundle = bbdj.a(paramViewGroup, "请下载QQ新版本查看");
-    paramBundle.setPositiveButton(2131694794, new bbdt());
+    paramBundle = bdcd.a(paramViewGroup, "请下载QQ新版本查看");
+    paramBundle.setPositiveButton(2131694951, new bdco());
     paramBundle.show();
-    paramBundle.setOnDismissListener(new arlj(this, paramViewGroup));
+    paramBundle.setOnDismissListener(new atbx(this, paramViewGroup));
     return paramLayoutInflater;
   }
 }

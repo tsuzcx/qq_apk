@@ -1,44 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.wadl.WadlJsBridgeCallBack.2;
 
 public class bfny
+  implements DialogInterface.OnClickListener
 {
-  private static Handler a;
+  public bfny(WadlJsBridgeCallBack.2 param2) {}
   
-  public static void a(Runnable paramRunnable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if (a == null) {
-        a = new Handler(Looper.getMainLooper());
-      }
-      a.post(paramRunnable);
-      return;
-    }
-    finally {}
-  }
-  
-  public static void a(Runnable paramRunnable, long paramLong)
-  {
-    try
-    {
-      if (a == null) {
-        a = new Handler(Looper.getMainLooper());
-      }
-      a.postDelayed(paramRunnable, paramLong);
-      return;
-    }
-    finally {}
-  }
-  
-  public static boolean a()
-  {
-    return Looper.getMainLooper().getThread() == Thread.currentThread();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfny
  * JD-Core Version:    0.7.0.1
  */

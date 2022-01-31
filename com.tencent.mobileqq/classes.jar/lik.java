@@ -1,17 +1,27 @@
+import android.content.Context;
+import android.media.AudioManager;
+import java.lang.reflect.Method;
+
 public class lik
 {
-  int a;
-  int b;
+  static int a = 0;
+  static int b = 0;
   
-  public lik(int paramInt1, int paramInt2)
+  public static boolean a(Context paramContext)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    try
+    {
+      paramContext = (AudioManager)paramContext.getSystemService("audio");
+      boolean bool = Boolean.parseBoolean(paramContext.getClass().getMethod("isWiredHeadsetOn", new Class[0]).invoke(paramContext, (Object[])null).toString());
+      return bool;
+    }
+    catch (Exception paramContext) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lik
  * JD-Core Version:    0.7.0.1
  */

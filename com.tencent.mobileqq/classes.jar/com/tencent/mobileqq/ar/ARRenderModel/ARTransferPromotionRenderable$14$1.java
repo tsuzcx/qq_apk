@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import alal;
-import alan;
-import axqy;
+import amrb;
+import amrd;
+import azmj;
 
 class ARTransferPromotionRenderable$14$1
   implements Runnable
@@ -11,12 +11,12 @@ class ARTransferPromotionRenderable$14$1
   
   public void run()
   {
-    axqy.b(null, "dc00898", "", "", "0X80098D0", "0X80098D0", 0, 0, alal.a(this.a.this$0).a, "", "", "");
+    azmj.b(null, "dc00898", "", "", "0X80098D0", "0X80098D0", 0, 0, amrb.a(this.a.this$0).a, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.14.1
  * JD-Core Version:    0.7.0.1
  */

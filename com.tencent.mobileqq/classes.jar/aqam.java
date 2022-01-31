@@ -1,45 +1,26 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
 
 public class aqam
-  extends QIPCModule
+  extends RecyclerView.AdapterDataObserver
 {
-  private static volatile aqam a;
+  public aqam(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  private aqam(String paramString)
+  public void onChanged()
   {
-    super(paramString);
-  }
-  
-  public static aqam a()
-  {
-    if (a == null) {}
-    try
+    if (this.a.jdField_a_of_type_Aqay.a() == 0)
     {
-      if (a == null) {
-        a = new aqam("FlutterMainQIPCModule");
-      }
-      return a;
+      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Aqaz);
+      return;
     }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if ("ACTION_INSTALL_ENGINE".equals(paramString))
-    {
-      aqac.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), new aqan(this));
-      return EIPCResult.createSuccessResult(null);
-    }
-    return null;
+    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Aqaz);
+    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(this.a.jdField_a_of_type_Aqaz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqam
  * JD-Core Version:    0.7.0.1
  */

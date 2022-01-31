@@ -6,15 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import behq;
-import behw;
-import bekr;
-import bekz;
-import betc;
+import bgho;
+import bgkd;
+import bgkk;
 import com.tencent.qqmini.sdk.core.MiniAppEnv;
+import com.tencent.qqmini.sdk.core.auth.AuthState;
 import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -192,48 +192,48 @@ public class TelephonyJsPlugin
     }
     catch (Throwable paramString1)
     {
-      betc.d("TelephonyJsPlugin", paramString1.getMessage(), paramString1);
+      QMLog.e("TelephonyJsPlugin", paramString1.getMessage(), paramString1);
     }
   }
   
-  public String addPhoneContact(bekr parambekr)
+  public String addPhoneContact(bgkd parambgkd)
   {
-    bekz.a(new TelephonyJsPlugin.2(this, parambekr));
-    return parambekr.a();
+    bgkk.a(new TelephonyJsPlugin.2(this, parambgkd));
+    return parambgkd.a();
   }
   
-  public void getPhoneNumber(bekr parambekr)
+  public void getPhoneNumber(bgkd parambgkd)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambekr.b).optJSONObject("data");
+      JSONObject localJSONObject = new JSONObject(parambgkd.b).optJSONObject("data");
       String str = localJSONObject.optString("api_name", "");
       localJSONObject.optBoolean("with_credentials", true);
       if ("webapi_getuserwxphone".equals(str))
       {
-        if (MiniAppEnv.g().getAuthSate(this.mMiniAppContext.a().appId).a(parambekr.a))
+        if (MiniAppEnv.g().getAuthSate(this.mMiniAppContext.a().appId).isPermissionGranted(parambgkd.a))
         {
-          ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getPhoneNumber(this.mMiniAppContext.a().appId, new TelephonyJsPlugin.1(this, parambekr));
+          ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getPhoneNumber(this.mMiniAppContext.a().appId, new TelephonyJsPlugin.1(this, parambgkd));
           return;
         }
-        parambekr.b();
+        parambgkd.b();
         return;
       }
     }
-    catch (JSONException parambekr)
+    catch (JSONException parambgkd)
     {
-      betc.d("TelephonyJsPlugin", "handleNativeRequest", parambekr);
+      QMLog.e("TelephonyJsPlugin", "handleNativeRequest", parambgkd);
     }
   }
   
-  public void handleMakePhoneCall(bekr parambekr)
+  public void handleMakePhoneCall(bgkd parambgkd)
   {
     j = 0;
     i = j;
-    if (!TextUtils.isEmpty(parambekr.b)) {}
+    if (!TextUtils.isEmpty(parambgkd.b)) {}
     try
     {
-      Object localObject = new JSONObject(parambekr.b).optString("phoneNumber");
+      Object localObject = new JSONObject(parambgkd.b).optString("phoneNumber");
       if (TextUtils.isEmpty((CharSequence)localObject)) {
         break label111;
       }
@@ -252,15 +252,15 @@ public class TelephonyJsPlugin
     }
     if (i != 0)
     {
-      parambekr.a();
+      parambgkd.a();
       return;
     }
-    parambekr.b();
+    parambgkd.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.TelephonyJsPlugin
  * JD-Core Version:    0.7.0.1
  */

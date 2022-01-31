@@ -1,20 +1,10 @@
-import com.tencent.mobileqq.statistics.LocalCrashCollector;
-import java.io.File;
-import java.io.FilenameFilter;
-
-public class axqj
-  implements FilenameFilter
+public abstract interface axqj
 {
-  public axqj(LocalCrashCollector paramLocalCrashCollector) {}
-  
-  public boolean accept(File paramFile, String paramString)
-  {
-    return !paramString.contains("CrashInfoSummary.txt");
-  }
+  public abstract void a(axpl paramaxpl, axqz paramaxqz, axrl paramaxrl, axre paramaxre);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axqj
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
 import android.content.IntentFilter;
-import behp;
-import behq;
-import bekr;
-import bekx;
-import beln;
-import betc;
+import bghn;
+import bgho;
+import bgkd;
+import bgki;
+import bgld;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 public class NetworkJsPlugin
@@ -30,7 +30,7 @@ public class NetworkJsPlugin
   
   private String getCurrentTypeDesc()
   {
-    switch (beln.a(this.mContext))
+    switch (bgld.a(this.mContext))
     {
     default: 
       return "unkown";
@@ -46,28 +46,28 @@ public class NetworkJsPlugin
     return "wifi";
   }
   
-  public String getNetworkType(bekr parambekr)
+  public String getNetworkType(bgkd parambgkd)
   {
     Object localObject = new JSONObject();
     try
     {
       ((JSONObject)localObject).put("networkType", getCurrentTypeDesc());
-      localObject = bekx.a(parambekr.jdField_a_of_type_JavaLangString, (JSONObject)localObject).toString();
-      parambekr.jdField_a_of_type_Behp.a(parambekr.b, (String)localObject);
+      localObject = bgki.a(parambgkd.jdField_a_of_type_JavaLangString, (JSONObject)localObject).toString();
+      parambgkd.jdField_a_of_type_Bghn.a(parambgkd.b, (String)localObject);
       return localObject;
     }
     catch (Throwable localThrowable)
     {
-      betc.d("NetworkJsPlugin", localThrowable.getMessage(), localThrowable);
-      String str = bekx.b(parambekr.jdField_a_of_type_JavaLangString, null).toString();
-      parambekr.jdField_a_of_type_Behp.a(parambekr.b, str);
+      QMLog.e("NetworkJsPlugin", localThrowable.getMessage(), localThrowable);
+      String str = bgki.b(parambgkd.jdField_a_of_type_JavaLangString, null).toString();
+      parambgkd.jdField_a_of_type_Bghn.a(parambgkd.b, str);
     }
     return "";
   }
   
-  public void onCreate(behq parambehq)
+  public void onCreate(bgho parambgho)
   {
-    super.onCreate(parambehq);
+    super.onCreate(parambgho);
     if ((this.mContext != null) && (!this.mRegister))
     {
       this.mReceiver = new NetworkJsPlugin.ConnectionChangeReceiver(this);
@@ -88,13 +88,13 @@ public class NetworkJsPlugin
     }
     catch (Throwable localThrowable)
     {
-      betc.d("NetworkJsPlugin", "fail unregisterReceiver", localThrowable);
+      QMLog.e("NetworkJsPlugin", "fail unregisterReceiver", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.NetworkJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,46 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
 
-class akax
-  extends bbwt
+public class akax
+  implements bhuy
 {
-  akax(akaw paramakaw) {}
+  public akax(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onDone(bbwu parambbwu)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    super.onDone(parambbwu);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg.MessageRoamManager", 2, "onDone status: " + parambbwu.f + ", url: " + parambbwu.a);
-    }
-    int i = parambbwu.a.indexOf("?");
-    String str;
-    if (i == -1)
-    {
-      str = parambbwu.a;
-      if (!akav.a.contains(str)) {
-        break label105;
-      }
-      this.a.a(parambbwu);
-    }
-    label105:
-    do
-    {
-      return;
-      str = parambbwu.a.substring(0, i - 1);
-      break;
-      if ("http://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json".equals(str))
-      {
-        this.a.b(parambbwu);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("Q.roammsg.MessageRoamManager", 2, "onDone unkonw url: " + parambbwu.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
+    if (bdee.d(this.a))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(true);
+      this.a.jdField_a_of_type_Boolean = true;
+      ((axfe)this.a.app.getManager(91)).a();
+      return true;
+    }
+    paramView = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2000, 0, 0);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 1000L);
+    return true;
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akax
  * JD-Core Version:    0.7.0.1
  */

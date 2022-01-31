@@ -1,85 +1,156 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchHistoryManager.1;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class aqao
-  extends QIPCModule
+  implements Handler.Callback
 {
-  private static volatile aqao a;
-  public static volatile boolean a;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private int jdField_a_of_type_Int;
+  private bhoe jdField_a_of_type_Bhoe = new bhoe(ThreadManager.getFileThreadLooper(), this);
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  WeakReference<aqap> b;
   
-  private aqao(String paramString)
+  public aqao(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    super(paramString);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Int = paramInt;
+    ThreadManager.postImmediately(new ExtendFriendSearchHistoryManager.1(this), null, true);
   }
   
-  public static aqao a()
+  private void b()
   {
-    if (jdField_a_of_type_Aqao == null) {}
-    try
+    ??? = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (??? == null) {}
+    do
     {
-      if (jdField_a_of_type_Aqao == null) {
-        jdField_a_of_type_Aqao = new aqao("FlutterSubQIPCModule");
-      }
-      return jdField_a_of_type_Aqao;
-    }
-    finally {}
-  }
-  
-  public static void a()
-  {
-    if (!jdField_a_of_type_Boolean) {}
-    try
-    {
-      QIPCClientHelper.getInstance().register(a());
-      jdField_a_of_type_Boolean = true;
       return;
-    }
-    catch (Exception localException)
+      ??? = bdcs.a(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.jdField_a_of_type_Int), ((QQAppInterface)???).getCurrentAccountUin() }));
+    } while (this.jdField_a_of_type_Boolean);
+    if ((??? != null) && ((??? instanceof List))) {}
+    for (??? = (List)???;; ??? = null)
     {
-      QLog.d("FlutterSubQIPCModule", 1, "register", localException);
-    }
-  }
-  
-  public static void b()
-  {
-    try
-    {
-      if (QIPCClientHelper.getInstance().getClient() != null)
+      Object localObject2 = ???;
+      if (??? == null) {
+        localObject2 = new ArrayList();
+      }
+      synchronized (jdField_a_of_type_JavaLangObject)
       {
-        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
-        jdField_a_of_type_Boolean = false;
+        if (this.jdField_a_of_type_Boolean) {
+          break label201;
+        }
+        this.jdField_a_of_type_JavaUtilList.addAll((Collection)localObject2);
+        if (this.jdField_a_of_type_JavaUtilList.size() > 10) {
+          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        }
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("FlutterSubQIPCModule", 1, "unregister", localException);
+      this.jdField_a_of_type_Boolean = true;
+      label201:
+      for (int i = 1;; i = 0)
+      {
+        if ((i == 0) || (this.b == null) || (this.b.get() == null)) {
+          break;
+        }
+        ((aqap)this.b.get()).b();
+        return;
+      }
     }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  private void c()
   {
-    if ("ACTION_INSTALL_RESULT".equals(paramString))
-    {
-      boolean bool1 = paramBundle.getBoolean("KEY_INSTALL_RESULT");
-      paramString = paramBundle.getString("KEY_INSTALL_DIR");
-      boolean bool2 = paramBundle.getBoolean("KEY_IS_ENGINE_EXIST");
-      boolean bool3 = paramBundle.getBoolean("KEY_IS_APP_EXIST");
-      if (QLog.isColorLevel()) {
-        QLog.d("FlutterSubQIPCModule", 2, String.format("install finish isSuccess: %s, engineDir: %s, isEngineExist: %s, isAppExist: %s", new Object[] { Boolean.valueOf(bool1), paramString, Boolean.valueOf(bool2), Boolean.valueOf(bool3) }));
-      }
-      aqai.a(bool1, paramString, bool2, bool3);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface == null) {
+      return;
     }
-    return null;
+    bdcs.a(String.format("%s_%s_%s", new Object[] { "extend_frd_search_history", Integer.valueOf(this.jdField_a_of_type_Int), localQQAppInterface.getCurrentAccountUin() }), this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a()
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_Boolean = true;
+      if ((this.b != null) && (this.b.get() != null)) {
+        ((aqap)this.b.get()).b();
+      }
+      if (!this.jdField_a_of_type_Bhoe.hasMessages(0)) {
+        this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(0, 300L);
+      }
+      return;
+    }
+  }
+  
+  public void a(aqap paramaqap)
+  {
+    if (paramaqap != null)
+    {
+      this.b = new WeakReference(paramaqap);
+      return;
+    }
+    this.b = null;
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return;
+      if (!this.jdField_a_of_type_Boolean) {
+        b();
+      }
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_JavaUtilList.contains(paramString)) {
+          this.jdField_a_of_type_JavaUtilList.remove(paramString);
+        }
+        this.jdField_a_of_type_JavaUtilList.add(0, paramString);
+        if (this.jdField_a_of_type_JavaUtilList.size() > 10) {
+          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        }
+        if ((this.b != null) && (this.b.get() != null)) {
+          ((aqap)this.b.get()).b();
+        }
+        if (this.jdField_a_of_type_Bhoe.hasMessages(0)) {
+          continue;
+        }
+        this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(0, 300L);
+        return;
+      }
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqao
  * JD-Core Version:    0.7.0.1
  */

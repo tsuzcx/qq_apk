@@ -1,1102 +1,600 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.Process;
-import android.os.RemoteException;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager.2;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class wxr
+  extends wwe
 {
-  static int jdField_a_of_type_Int;
-  private static String jdField_a_of_type_JavaLangString;
-  protected static wxr a;
-  ajsy jdField_a_of_type_Ajsy;
-  protected ServiceConnection a;
-  final Messenger jdField_a_of_type_AndroidOsMessenger = new Messenger(new wxu(this));
-  SparseArray<ajte> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  List<ajte> jdField_a_of_type_JavaUtilList = new ArrayList();
-  Map<Integer, wxt> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  myi jdField_a_of_type_Myi;
-  myl jdField_a_of_type_Myl;
-  private wxt jdField_a_of_type_Wxt;
-  Messenger jdField_b_of_type_AndroidOsMessenger = null;
-  private HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap = new HashMap();
-  List<Message> jdField_b_of_type_JavaUtilList = new ArrayList();
-  AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private double jdField_a_of_type_Double;
+  public int a;
+  private ajxy jdField_a_of_type_Ajxy;
+  private ajxz jdField_a_of_type_Ajxz;
+  private double b;
   
-  private wxr()
+  /* Error */
+  private int a(PublishParam paramPublishParam)
   {
-    this.jdField_a_of_type_AndroidContentServiceConnection = new wxs(this);
+    // Byte code:
+    //   0: new 25	azgc
+    //   3: dup
+    //   4: invokespecial 26	azgc:<init>	()V
+    //   7: astore 9
+    //   9: aconst_null
+    //   10: astore 12
+    //   12: new 28	java/io/File
+    //   15: dup
+    //   16: aload_1
+    //   17: getfield 34	com/tencent/biz/qqstory/takevideo/publish/PublishParam:j	Ljava/lang/String;
+    //   20: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
+    //   23: invokevirtual 41	java/io/File:getParentFile	()Ljava/io/File;
+    //   26: invokevirtual 45	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   29: astore 10
+    //   31: aload_1
+    //   32: getfield 48	com/tencent/biz/qqstory/takevideo/publish/PublishParam:c	Ljava/lang/String;
+    //   35: astore 13
+    //   37: aload_1
+    //   38: getfield 34	com/tencent/biz/qqstory/takevideo/publish/PublishParam:j	Ljava/lang/String;
+    //   41: astore_1
+    //   42: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   45: ifeq +29 -> 74
+    //   48: ldc 56
+    //   50: iconst_2
+    //   51: new 58	java/lang/StringBuilder
+    //   54: dup
+    //   55: invokespecial 59	java/lang/StringBuilder:<init>	()V
+    //   58: ldc 61
+    //   60: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: aload 10
+    //   65: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   71: invokestatic 72	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   74: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   77: lstore 7
+    //   79: aload_0
+    //   80: new 80	ajxz
+    //   83: dup
+    //   84: invokespecial 81	ajxz:<init>	()V
+    //   87: putfield 83	wxr:jdField_a_of_type_Ajxz	Lajxz;
+    //   90: aload_1
+    //   91: invokestatic 88	bdcs:b	(Ljava/lang/String;)Z
+    //   94: ifne +23 -> 117
+    //   97: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   100: ifeq +11 -> 111
+    //   103: ldc 56
+    //   105: iconst_2
+    //   106: ldc 90
+    //   108: invokestatic 72	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   111: sipush -300
+    //   114: istore_2
+    //   115: iload_2
+    //   116: ireturn
+    //   117: aload 13
+    //   119: invokestatic 88	bdcs:b	(Ljava/lang/String;)Z
+    //   122: ifne +21 -> 143
+    //   125: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   128: ifeq +11 -> 139
+    //   131: ldc 56
+    //   133: iconst_2
+    //   134: ldc 92
+    //   136: invokestatic 72	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   139: sipush -301
+    //   142: ireturn
+    //   143: aload_1
+    //   144: aload 9
+    //   146: invokestatic 97	azgb:a	(Ljava/lang/String;Lazgc;)I
+    //   149: istore_3
+    //   150: iload_3
+    //   151: ifeq +38 -> 189
+    //   154: iload_3
+    //   155: istore_2
+    //   156: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   159: ifeq -44 -> 115
+    //   162: ldc 56
+    //   164: iconst_2
+    //   165: new 58	java/lang/StringBuilder
+    //   168: dup
+    //   169: invokespecial 59	java/lang/StringBuilder:<init>	()V
+    //   172: ldc 99
+    //   174: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: iload_3
+    //   178: invokevirtual 102	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   181: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   184: invokestatic 72	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   187: iload_3
+    //   188: ireturn
+    //   189: aload 9
+    //   191: getfield 105	azgc:a	[I
+    //   194: iconst_3
+    //   195: iaload
+    //   196: sipush 500
+    //   199: iadd
+    //   200: sipush 1000
+    //   203: idiv
+    //   204: istore 5
+    //   206: aload 9
+    //   208: getfield 105	azgc:a	[I
+    //   211: iconst_2
+    //   212: iaload
+    //   213: istore 6
+    //   215: aload 9
+    //   217: getfield 105	azgc:a	[I
+    //   220: iconst_0
+    //   221: iaload
+    //   222: istore 4
+    //   224: aload 9
+    //   226: getfield 105	azgc:a	[I
+    //   229: iconst_1
+    //   230: iaload
+    //   231: istore_2
+    //   232: iload 6
+    //   234: bipush 90
+    //   236: if_icmpeq +13 -> 249
+    //   239: iload_2
+    //   240: istore_3
+    //   241: iload 6
+    //   243: sipush 270
+    //   246: if_icmpne +14 -> 260
+    //   249: aload 9
+    //   251: getfield 105	azgc:a	[I
+    //   254: iconst_0
+    //   255: iaload
+    //   256: istore_3
+    //   257: iload_2
+    //   258: istore 4
+    //   260: aload 13
+    //   262: aload_0
+    //   263: getfield 18	wxr:jdField_a_of_type_Double	D
+    //   266: aload_0
+    //   267: getfield 107	wxr:b	D
+    //   270: invokestatic 112	bdda:a	(Ljava/lang/String;DD)Z
+    //   273: pop
+    //   274: new 28	java/io/File
+    //   277: dup
+    //   278: aload 13
+    //   280: invokespecial 37	java/io/File:<init>	(Ljava/lang/String;)V
+    //   283: astore_1
+    //   284: new 114	java/io/FileInputStream
+    //   287: dup
+    //   288: aload 13
+    //   290: invokespecial 115	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   293: astore 10
+    //   295: aload 10
+    //   297: astore 9
+    //   299: aload 10
+    //   301: aload_1
+    //   302: invokevirtual 118	java/io/File:length	()J
+    //   305: invokestatic 124	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   308: astore_1
+    //   309: aload 10
+    //   311: astore 9
+    //   313: aload_1
+    //   314: invokestatic 130	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   317: astore 11
+    //   319: aload 11
+    //   321: astore 12
+    //   323: aload 12
+    //   325: astore 11
+    //   327: aload_1
+    //   328: astore 9
+    //   330: aload 10
+    //   332: ifnull +15 -> 347
+    //   335: aload 10
+    //   337: invokevirtual 133	java/io/FileInputStream:close	()V
+    //   340: aload_1
+    //   341: astore 9
+    //   343: aload 12
+    //   345: astore 11
+    //   347: aload 11
+    //   349: invokestatic 139	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   352: ifeq +124 -> 476
+    //   355: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   358: ifeq +11 -> 369
+    //   361: ldc 56
+    //   363: iconst_2
+    //   364: ldc 141
+    //   366: invokestatic 72	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   369: sipush -302
+    //   372: ireturn
+    //   373: astore 9
+    //   375: aload 9
+    //   377: invokevirtual 144	java/io/IOException:printStackTrace	()V
+    //   380: aload 12
+    //   382: astore 11
+    //   384: aload_1
+    //   385: astore 9
+    //   387: goto -40 -> 347
+    //   390: astore 11
+    //   392: aconst_null
+    //   393: astore 10
+    //   395: aconst_null
+    //   396: astore_1
+    //   397: aload 10
+    //   399: astore 9
+    //   401: aload 11
+    //   403: invokevirtual 145	java/io/FileNotFoundException:printStackTrace	()V
+    //   406: aload 12
+    //   408: astore 11
+    //   410: aload_1
+    //   411: astore 9
+    //   413: aload 10
+    //   415: ifnull -68 -> 347
+    //   418: aload 10
+    //   420: invokevirtual 133	java/io/FileInputStream:close	()V
+    //   423: aload 12
+    //   425: astore 11
+    //   427: aload_1
+    //   428: astore 9
+    //   430: goto -83 -> 347
+    //   433: astore 9
+    //   435: aload 9
+    //   437: invokevirtual 144	java/io/IOException:printStackTrace	()V
+    //   440: aload 12
+    //   442: astore 11
+    //   444: aload_1
+    //   445: astore 9
+    //   447: goto -100 -> 347
+    //   450: astore_1
+    //   451: aconst_null
+    //   452: astore 9
+    //   454: aload 9
+    //   456: ifnull +8 -> 464
+    //   459: aload 9
+    //   461: invokevirtual 133	java/io/FileInputStream:close	()V
+    //   464: aload_1
+    //   465: athrow
+    //   466: astore 9
+    //   468: aload 9
+    //   470: invokevirtual 144	java/io/IOException:printStackTrace	()V
+    //   473: goto -9 -> 464
+    //   476: aload 11
+    //   478: ldc 147
+    //   480: invokestatic 152	com/tencent/mobileqq/shortvideo/ShortVideoUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   483: astore_1
+    //   484: aload 13
+    //   486: aload_1
+    //   487: invokestatic 155	bdcs:c	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   490: ifeq +86 -> 576
+    //   493: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   496: ifeq +38 -> 534
+    //   499: ldc 56
+    //   501: iconst_2
+    //   502: new 58	java/lang/StringBuilder
+    //   505: dup
+    //   506: invokespecial 59	java/lang/StringBuilder:<init>	()V
+    //   509: ldc 157
+    //   511: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   514: invokestatic 78	java/lang/System:currentTimeMillis	()J
+    //   517: lload 7
+    //   519: lsub
+    //   520: l2d
+    //   521: ldc2_w 158
+    //   524: ddiv
+    //   525: invokevirtual 162	java/lang/StringBuilder:append	(D)Ljava/lang/StringBuilder;
+    //   528: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   531: invokestatic 72	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   534: aload_0
+    //   535: getfield 83	wxr:jdField_a_of_type_Ajxz	Lajxz;
+    //   538: aload_1
+    //   539: putfield 164	ajxz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   542: aload_0
+    //   543: getfield 83	wxr:jdField_a_of_type_Ajxz	Lajxz;
+    //   546: aload 9
+    //   548: putfield 167	ajxz:jdField_a_of_type_ArrayOfByte	[B
+    //   551: aload_0
+    //   552: getfield 83	wxr:jdField_a_of_type_Ajxz	Lajxz;
+    //   555: iload 4
+    //   557: putfield 169	ajxz:jdField_a_of_type_Int	I
+    //   560: aload_0
+    //   561: getfield 83	wxr:jdField_a_of_type_Ajxz	Lajxz;
+    //   564: iload_3
+    //   565: putfield 171	ajxz:b	I
+    //   568: aload_0
+    //   569: iload 5
+    //   571: putfield 172	wxr:jdField_a_of_type_Int	I
+    //   574: iconst_0
+    //   575: ireturn
+    //   576: aload_1
+    //   577: invokestatic 88	bdcs:b	(Ljava/lang/String;)Z
+    //   580: ifne +64 -> 644
+    //   583: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   586: ifeq +38 -> 624
+    //   589: ldc 56
+    //   591: iconst_2
+    //   592: new 58	java/lang/StringBuilder
+    //   595: dup
+    //   596: invokespecial 59	java/lang/StringBuilder:<init>	()V
+    //   599: ldc 174
+    //   601: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   604: aload 13
+    //   606: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   609: ldc 176
+    //   611: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   614: aload_1
+    //   615: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   618: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   621: invokestatic 72	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   624: sipush -301
+    //   627: ireturn
+    //   628: astore_1
+    //   629: goto -175 -> 454
+    //   632: astore 11
+    //   634: aconst_null
+    //   635: astore_1
+    //   636: goto -239 -> 397
+    //   639: astore 11
+    //   641: goto -244 -> 397
+    //   644: aload 13
+    //   646: astore_1
+    //   647: goto -154 -> 493
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	650	0	this	wxr
+    //   0	650	1	paramPublishParam	PublishParam
+    //   114	144	2	i	int
+    //   149	416	3	j	int
+    //   222	334	4	k	int
+    //   204	366	5	m	int
+    //   213	34	6	n	int
+    //   77	441	7	l	long
+    //   7	335	9	localObject1	java.lang.Object
+    //   373	3	9	localIOException1	java.io.IOException
+    //   385	44	9	localObject2	java.lang.Object
+    //   433	3	9	localIOException2	java.io.IOException
+    //   445	15	9	localPublishParam	PublishParam
+    //   466	81	9	localIOException3	java.io.IOException
+    //   29	390	10	localObject3	java.lang.Object
+    //   317	66	11	localObject4	java.lang.Object
+    //   390	12	11	localFileNotFoundException1	java.io.FileNotFoundException
+    //   408	69	11	localObject5	java.lang.Object
+    //   632	1	11	localFileNotFoundException2	java.io.FileNotFoundException
+    //   639	1	11	localFileNotFoundException3	java.io.FileNotFoundException
+    //   10	431	12	localObject6	java.lang.Object
+    //   35	610	13	str	java.lang.String
+    // Exception table:
+    //   from	to	target	type
+    //   335	340	373	java/io/IOException
+    //   284	295	390	java/io/FileNotFoundException
+    //   418	423	433	java/io/IOException
+    //   284	295	450	finally
+    //   459	464	466	java/io/IOException
+    //   299	309	628	finally
+    //   313	319	628	finally
+    //   401	406	628	finally
+    //   299	309	632	java/io/FileNotFoundException
+    //   313	319	639	java/io/FileNotFoundException
   }
   
-  public static String a()
+  private void a(Activity paramActivity, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam)
   {
-    if (jdField_a_of_type_JavaLangString != null) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    int i = Process.myPid();
-    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if ((localObject == null) || (((List)localObject).size() <= 0)) {
-      return null;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-      if (localRunningAppProcessInfo.pid == i)
-      {
-        localObject = localRunningAppProcessInfo.processName;
-        jdField_a_of_type_JavaLangString = (String)localObject;
-        return localObject;
-      }
-    }
-    return null;
+    ThreadManager.post(new EditWebVideoPartManager.2(this, paramEditSource, paramPublishParam, paramActivity), 5, null, true);
   }
   
-  public static wxr a()
+  /* Error */
+  private void b()
   {
-    if (jdField_a_of_type_Wxr == null) {}
-    try
-    {
-      if (jdField_a_of_type_Wxr == null) {
-        jdField_a_of_type_Wxr = new wxr();
-      }
-      return jdField_a_of_type_Wxr;
-    }
-    finally {}
+    // Byte code:
+    //   0: invokestatic 211	com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:a	()Lcom/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;
+    //   3: astore 10
+    //   5: invokestatic 216	com/tencent/mobileqq/shortvideo/VideoEnvironment:d	()Z
+    //   8: ifeq +234 -> 242
+    //   11: ldc 218
+    //   13: iconst_0
+    //   14: invokestatic 224	cooperation/qzone/thread/QzoneHandlerThreadFactory:getHandlerThread	(Ljava/lang/String;Z)Lcooperation/qzone/thread/QzoneBaseThread;
+    //   17: new 226	com/tencent/biz/qqstory/takevideo/EditWebVideoPartManager$3
+    //   20: dup
+    //   21: aload_0
+    //   22: aload 10
+    //   24: invokespecial 229	com/tencent/biz/qqstory/takevideo/EditWebVideoPartManager$3:<init>	(Lwxr;Lcom/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr;)V
+    //   27: invokevirtual 234	cooperation/qzone/thread/QzoneBaseThread:post	(Ljava/lang/Runnable;)V
+    //   30: invokestatic 216	com/tencent/mobileqq/shortvideo/VideoEnvironment:d	()Z
+    //   33: ifeq +208 -> 241
+    //   36: lconst_0
+    //   37: lstore 6
+    //   39: aload 10
+    //   41: getfield 237	com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:a	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   44: astore 9
+    //   46: aload 9
+    //   48: monitorenter
+    //   49: aload 10
+    //   51: getfield 237	com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:a	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   54: invokevirtual 242	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   57: istore 8
+    //   59: lload 6
+    //   61: lstore 4
+    //   63: iload 8
+    //   65: ifne +103 -> 168
+    //   68: lload 6
+    //   70: lstore_2
+    //   71: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   74: ifeq +14 -> 88
+    //   77: lload 6
+    //   79: lstore_2
+    //   80: ldc 56
+    //   82: iconst_2
+    //   83: ldc 244
+    //   85: invokestatic 246	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   88: lload 6
+    //   90: lstore_2
+    //   91: invokestatic 251	android/os/SystemClock:elapsedRealtime	()J
+    //   94: lstore 4
+    //   96: lload 6
+    //   98: lstore_2
+    //   99: aload 10
+    //   101: getfield 237	com/tencent/mobileqq/activity/richmedia/state/RMVideoStateMgr:a	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   104: ldc2_w 252
+    //   107: invokevirtual 259	java/lang/Object:wait	(J)V
+    //   110: lload 6
+    //   112: lstore_2
+    //   113: invokestatic 251	android/os/SystemClock:elapsedRealtime	()J
+    //   116: lload 4
+    //   118: lsub
+    //   119: lstore 6
+    //   121: lload 6
+    //   123: lstore 4
+    //   125: lload 6
+    //   127: lstore_2
+    //   128: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   131: ifeq +37 -> 168
+    //   134: lload 6
+    //   136: lstore_2
+    //   137: ldc 56
+    //   139: iconst_2
+    //   140: new 58	java/lang/StringBuilder
+    //   143: dup
+    //   144: invokespecial 59	java/lang/StringBuilder:<init>	()V
+    //   147: ldc_w 261
+    //   150: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   153: lload 6
+    //   155: invokevirtual 264	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   158: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   161: invokestatic 246	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   164: lload 6
+    //   166: lstore 4
+    //   168: aload 9
+    //   170: monitorexit
+    //   171: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   174: ifeq +12 -> 186
+    //   177: ldc 56
+    //   179: iconst_2
+    //   180: ldc_w 266
+    //   183: invokestatic 246	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   186: lload 4
+    //   188: ldc2_w 267
+    //   191: lcmp
+    //   192: ifge +49 -> 241
+    //   195: bipush 30
+    //   197: lload 4
+    //   199: l2i
+    //   200: isub
+    //   201: istore_1
+    //   202: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   205: ifeq +29 -> 234
+    //   208: ldc 56
+    //   210: iconst_2
+    //   211: new 58	java/lang/StringBuilder
+    //   214: dup
+    //   215: invokespecial 59	java/lang/StringBuilder:<init>	()V
+    //   218: ldc_w 270
+    //   221: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   224: iload_1
+    //   225: invokevirtual 102	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   228: invokevirtual 68	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   231: invokestatic 246	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   234: iload_1
+    //   235: i2l
+    //   236: lstore_2
+    //   237: lload_2
+    //   238: invokestatic 275	java/lang/Thread:sleep	(J)V
+    //   241: return
+    //   242: invokestatic 280	azdx:a	()Lazdx;
+    //   245: invokevirtual 283	azdx:a	()Lcom/tencent/maxvideo/mediadevice/AVCodec;
+    //   248: invokevirtual 289	com/tencent/maxvideo/mediadevice/AVCodec:recordSubmit	()I
+    //   251: pop
+    //   252: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   255: ifeq -225 -> 30
+    //   258: ldc 56
+    //   260: iconst_2
+    //   261: ldc_w 291
+    //   264: invokestatic 246	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   267: goto -237 -> 30
+    //   270: astore 9
+    //   272: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   275: ifeq +12 -> 287
+    //   278: ldc 56
+    //   280: iconst_2
+    //   281: ldc_w 293
+    //   284: invokestatic 246	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   287: aload 9
+    //   289: invokevirtual 294	java/lang/UnsatisfiedLinkError:printStackTrace	()V
+    //   292: goto -262 -> 30
+    //   295: astore 10
+    //   297: lload_2
+    //   298: lstore 4
+    //   300: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   303: ifeq -135 -> 168
+    //   306: ldc 56
+    //   308: iconst_2
+    //   309: ldc_w 296
+    //   312: aload 10
+    //   314: invokestatic 300	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   317: lload_2
+    //   318: lstore 4
+    //   320: goto -152 -> 168
+    //   323: astore 10
+    //   325: aload 9
+    //   327: monitorexit
+    //   328: aload 10
+    //   330: athrow
+    //   331: astore 9
+    //   333: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   336: ifeq -95 -> 241
+    //   339: ldc 56
+    //   341: iconst_2
+    //   342: ldc_w 302
+    //   345: aload 9
+    //   347: invokestatic 300	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   350: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	351	0	this	wxr
+    //   201	34	1	i	int
+    //   70	248	2	l1	long
+    //   61	258	4	l2	long
+    //   37	128	6	l3	long
+    //   57	7	8	bool	boolean
+    //   44	125	9	localAtomicBoolean	java.util.concurrent.atomic.AtomicBoolean
+    //   270	56	9	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
+    //   331	15	9	localInterruptedException1	java.lang.InterruptedException
+    //   3	97	10	localRMVideoStateMgr	com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr
+    //   295	18	10	localInterruptedException2	java.lang.InterruptedException
+    //   323	6	10	localObject	java.lang.Object
+    // Exception table:
+    //   from	to	target	type
+    //   242	267	270	java/lang/UnsatisfiedLinkError
+    //   71	77	295	java/lang/InterruptedException
+    //   80	88	295	java/lang/InterruptedException
+    //   91	96	295	java/lang/InterruptedException
+    //   99	110	295	java/lang/InterruptedException
+    //   113	121	295	java/lang/InterruptedException
+    //   128	134	295	java/lang/InterruptedException
+    //   137	164	295	java/lang/InterruptedException
+    //   49	59	323	finally
+    //   71	77	323	finally
+    //   80	88	323	finally
+    //   91	96	323	finally
+    //   99	110	323	finally
+    //   113	121	323	finally
+    //   128	134	323	finally
+    //   137	164	323	finally
+    //   168	171	323	finally
+    //   300	317	323	finally
+    //   325	328	323	finally
+    //   237	241	331	java/lang/InterruptedException
   }
   
-  public int a(wxt paramwxt)
+  protected SimpleObserver<xgs> a(xgs paramxgs)
   {
-    int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramwxt);
-    return i;
-  }
-  
-  public myi a()
-  {
-    if (this.jdField_a_of_type_Myi == null) {
-      this.jdField_a_of_type_Myi = new myi(this);
-    }
-    return this.jdField_a_of_type_Myi;
-  }
-  
-  public myl a()
-  {
-    if (this.jdField_a_of_type_Myl == null) {
-      this.jdField_a_of_type_Myl = new myl(this);
-    }
-    return this.jdField_a_of_type_Myl;
-  }
-  
-  public wxt a(int paramInt)
-  {
-    return (wxt)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+    return new wxs(this, paramxgs);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndAdd(1) == 0)
-    {
-      BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-      localBaseApplication.bindService(new Intent(localBaseApplication, TroopMemberApiService.class), this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("com.tencent.biz.troop.TroopMemberApiClient", 2, "Binding...");
-      }
+    super.a();
+  }
+  
+  public void a(ajxy paramajxy)
+  {
+    if (paramajxy != null) {
+      this.jdField_a_of_type_Ajxy = paramajxy;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("fontSize", paramInt);
-    a(53, localBundle);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("topicId", paramInt1);
-    localBundle.putInt("followInfo", paramInt2);
-    a(106, localBundle);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("subCmd", 1);
-    localBundle.putInt("effectId", paramInt1);
-    localBundle.putInt("svipLevel", paramInt2);
-    localBundle.putInt("svipType", paramInt3);
-    localBundle.putString("effectName", paramString);
-    a(85, localBundle);
-  }
-  
-  public void a(int paramInt1, long paramLong, String paramString1, String paramString2, int paramInt2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("roomid", paramLong);
-    localBundle.putInt("roomType", paramInt1);
-    localBundle.putString("vasname", paramString1);
-    localBundle.putString("userdata", paramString2);
-    localBundle.putInt("fromid", paramInt2);
-    a(32, localBundle);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    Message localMessage = Message.obtain(null, paramInt);
-    localMessage.replyTo = this.jdField_a_of_type_AndroidOsMessenger;
-    localMessage.setData(paramBundle);
-    if (this.jdField_b_of_type_AndroidOsMessenger == null) {
-      try
-      {
-        this.jdField_b_of_type_JavaUtilList.add(localMessage);
-        return;
-      }
-      finally {}
-    }
-    try
-    {
-      this.jdField_b_of_type_AndroidOsMessenger.send(localMessage);
-      return;
-    }
-    catch (RemoteException paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle, ajte paramajte)
-  {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
-    int i = jdField_a_of_type_Int + 1;
-    jdField_a_of_type_Int = i;
-    localSparseArray.append(i, paramajte);
-    paramBundle.putString("processName", a());
-    paramBundle.putInt("req_seq", jdField_a_of_type_Int);
-    a(paramInt, paramBundle);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle, wxt paramwxt)
-  {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("seq", a(paramwxt));
-    localBundle.putString("processName", a());
-    a(paramInt, localBundle);
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2, Bundle paramBundle)
-  {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("uploadType", paramInt);
-    localBundle.putString("url", paramString1);
-    localBundle.putString("originUrl", paramString2);
-    a(140, localBundle);
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("callback", paramString4);
-    localBundle.putInt("seq", a(paramwxt));
-    localBundle.putInt("appid", paramInt);
-    localBundle.putString("openGroupId", paramString1);
-    localBundle.putString("token", paramString2);
-    localBundle.putString("url", paramString3);
-    a(28, localBundle);
-  }
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("from", paramString1);
-    localBundle.putString("pluginId", paramString2);
-    localBundle.putString("startParam", paramString3);
-    localBundle.putInt("action", paramInt);
-    localBundle.putInt("seq", a(paramwxt));
-    a(79, localBundle);
-  }
-  
-  public void a(int paramInt, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("appId", paramInt);
-    localBundle.putInt("seq", a(paramwxt));
-    a(44, localBundle);
-  }
-  
-  public void a(long paramLong)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("roomId", paramLong);
-    a(88, localBundle);
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("followUin", paramLong);
-    localBundle.putInt("followInfo", paramInt);
-    a(117, localBundle);
-  }
-  
-  public void a(long paramLong1, String paramString1, String paramString2, long paramLong2, int paramInt, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("troopCode", paramLong1);
-    localBundle.putString("filePath", paramString1);
-    localBundle.putString("fileName", paramString2);
-    localBundle.putLong("fileSize", paramLong2);
-    localBundle.putInt("busid", paramInt);
-    localBundle.putInt("seq", a(paramwxt));
-    a(20, localBundle);
-  }
-  
-  public void a(long paramLong, long[] paramArrayOfLong)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLongArray("troopUinList", paramArrayOfLong);
-    localBundle.putLong("troopPubAccountUin", paramLong);
-    a(45, localBundle);
-  }
-  
-  public void a(ajte paramajte)
-  {
-    if (paramajte == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "RegisterObserver key:" + paramajte.hashCode());
-      }
-    } while (this.jdField_a_of_type_JavaUtilList.contains(paramajte));
-    this.jdField_a_of_type_JavaUtilList.add(paramajte);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    a(114, paramBundle);
-  }
-  
-  public void a(Integer paramInteger1, Integer paramInteger2, Integer paramInteger3, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwxt));
-    localBundle.putInt("start", paramInteger1.intValue());
-    localBundle.putInt("msgType", paramInteger2.intValue());
-    localBundle.putInt("count", paramInteger3.intValue());
-    a(127, localBundle);
-  }
-  
-  public void a(Integer paramInteger1, Integer paramInteger2, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("clearType", paramInteger1.intValue());
-    localBundle.putInt("msgType", paramInteger2.intValue());
-    localBundle.putString("uin", paramString);
-    a(128, localBundle);
-  }
-  
-  public void a(Integer paramInteger1, String paramString, Integer paramInteger2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("deleteType", paramInteger1.intValue());
-    localBundle.putInt("msgType", paramInteger2.intValue());
-    localBundle.putString("uin", paramString);
-    a(129, localBundle);
-  }
-  
-  public void a(Integer paramInteger, String paramString1, String paramString2, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwxt));
-    localBundle.putInt("appid", paramInteger.intValue());
-    localBundle.putString("openId", paramString1);
-    localBundle.putString("token", paramString2);
-    a(60, localBundle);
-  }
-  
-  public void a(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    localBundle.putString("processName", a());
-    a(39, localBundle);
-  }
-  
-  public void a(String paramString, byte paramByte, long paramLong, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    localBundle.putByte("cIsGetGroupAlbum", paramByte);
-    localBundle.putLong("dwTimeStamp", paramLong);
-    localBundle.putInt("cStatOption", paramInt);
-    a(37, localBundle);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("TroopMngTest", 4, String.format("getGroupInfoReq [%s]", new Object[] { paramString }));
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("troopUin", Long.parseLong(paramString));
-    localBundle.putInt("flag", paramInt);
-    a(51, localBundle);
-  }
-  
-  public void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, String paramString5, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", paramString1);
-    localBundle.putInt("type", paramInt1);
-    localBundle.putInt("msgfrom", paramInt2);
-    localBundle.putString("senderUin", paramString2);
-    localBundle.putString("chatId", paramString3);
-    localBundle.putString("source", paramString4);
-    localBundle.putString("originUrl", paramString5);
-    a(119, localBundle, paramwxt);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putInt("statOption", paramInt);
-    localBundle.putString("authKey", paramString2);
-    a(69, localBundle);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("roomId", paramString1);
-    localBundle.putInt("isGroupCode", paramInt);
-    localBundle.putString("action", paramString2);
-    localBundle.putString("fromId", paramString3);
-    localBundle.putString("backType", paramString4);
-    localBundle.putString("openType", paramString5);
-    localBundle.putString("extra", paramString6);
-    a(94, localBundle);
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, wxt paramwxt1, wxt paramwxt2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("pic_local_path", paramString1);
-    localBundle.putInt("is_showProgress_tips", paramInt);
-    localBundle.putString("pic_puin", paramString2);
-    localBundle.putInt("seq1", a(paramwxt2));
-    localBundle.putInt("seq", a(paramwxt1));
-    localBundle.putBoolean("is_pic_or_voice", paramBoolean);
-    a(21, localBundle);
-  }
-  
-  public void a(String paramString1, long paramLong, int paramInt1, String paramString2, int paramInt2, String paramString3, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putLong("bubbleId", paramLong);
-    localBundle.putInt("headId", paramInt1);
-    localBundle.putString("nickName", paramString2);
-    localBundle.putInt("expireTime", paramInt2);
-    localBundle.putString("rankColor", paramString3);
-    localBundle.putInt("seq", a(paramwxt));
-    a(13, localBundle);
-  }
-  
-  public void a(String paramString1, long paramLong1, String paramString2, String paramString3, long paramLong2, long paramLong3, int paramInt, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("skinId", paramString1);
-    localBundle.putString("skinUrl", paramString2);
-    localBundle.putString("skinName", paramString3);
-    localBundle.putLong("skinSeq", paramLong1);
-    localBundle.putLong("startTime", paramLong2);
-    localBundle.putLong("endTime", paramLong3);
-    localBundle.putInt("volumeIsOn", paramInt);
-    localBundle.putInt("seq", a(paramwxt));
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient setReadinjoySkin skinId = " + paramString1);
-    }
-    a(109, localBundle);
-  }
-  
-  public void a(String paramString1, long paramLong1, String paramString2, String paramString3, long paramLong2, long paramLong3, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("skinId", paramString1);
-    localBundle.putString("skinUrl", paramString2);
-    localBundle.putString("skinName", paramString3);
-    localBundle.putLong("skinSeq", paramLong1);
-    localBundle.putLong("startTime", paramLong2);
-    localBundle.putLong("endTime", paramLong3);
-    localBundle.putInt("seq", a(paramwxt));
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient startLoadReadinjoySkin skinId = " + paramString1);
-    }
-    a(107, localBundle);
-  }
-  
-  public void a(String paramString, AIOImageData paramAIOImageData, int paramInt, wxt paramwxt)
-  {
-    if (paramString == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    localBundle.putString("filePath", paramAIOImageData.h);
-    localBundle.putString("fileName", paramAIOImageData.g);
-    localBundle.putInt("busId", paramAIOImageData.c);
-    localBundle.putInt("size", paramInt);
-    int i = a(paramwxt);
-    localBundle.putInt("seq", i);
-    paramString = paramAIOImageData.h + "/" + paramInt;
-    this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i));
-    a(58, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("opn", paramString2);
-    a(31, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("memberUin", paramString2);
-    localBundle.putInt("titleId", paramInt);
-    a(29, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt, String paramString3, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("callback", paramString3);
-    localBundle.putInt("seq", a(paramwxt));
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("troopName", paramString2);
-    localBundle.putInt("troopTypeId", paramInt);
-    a(19, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("path", paramString1);
-    localBundle.putString("troopUin", paramString2);
-    localBundle.putInt("msgTailType", paramInt);
-    localBundle.putInt("seq", a(paramwxt));
-    a(87, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString1);
-    localBundle.putString("uin", paramString2);
-    localBundle.putString("nick", paramString3);
-    a(96, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appType", paramString1);
-    localBundle.putString("openType", paramString2);
-    localBundle.putString("uri", paramString3);
-    localBundle.putString("action", paramString4);
-    localBundle.putString("pluginPackageName", paramString5);
-    localBundle.putString("pluginParams", paramString6);
-    a(67, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("packageName", paramString1);
-    localBundle.putString("pluginId", paramString2);
-    localBundle.putString("versionCode", paramString3);
-    localBundle.putInt("seq", a(paramwxt));
-    a(78, localBundle);
-  }
-  
-  public void a(String paramString1, String paramString2, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("groupCode", paramString1);
-    localBundle.putString("groupMemberUin", paramString2);
-    localBundle.putInt("seq", a(paramwxt));
-    a(72, localBundle);
-  }
-  
-  public void a(String paramString, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwxt));
-    localBundle.putString("troopUin", paramString);
-    localBundle.putString("processName", a());
-    a(59, localBundle);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    localBundle.putBoolean("isChecked", paramBoolean);
-    a(36, localBundle);
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("subCmd", 2);
-    localBundle.putStringArrayList("statusList", paramArrayList);
-    a(85, localBundle);
-  }
-  
-  public void a(ArrayList<String> paramArrayList, wxt paramwxt)
-  {
-    int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("tinyIdList", paramArrayList);
-    localBundle.putInt("seq", i);
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramwxt);
-    a(102, localBundle);
-  }
-  
-  public void a(wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwxt));
-    localBundle.putString("processName", a());
-    a(81, localBundle);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isTroopAppListChanged", paramBoolean);
-    a(30, localBundle);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isTroopProfileAppListChanged", paramBoolean);
-    localBundle.putString("profileAppListChangedTroopUin", paramString);
-    a(105, localBundle);
-  }
-  
-  public void a(byte[] paramArrayOfByte, String paramString, int paramInt1, int paramInt2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("xmlData", paramArrayOfByte);
-    localBundle.putString("friendUin", paramString);
-    localBundle.putInt("directionFlag", paramInt1);
-    localBundle.putInt("from", paramInt2);
-    a(73, localBundle);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) {
-      QLog.e("com.tencent.biz.troop.TroopMemberApiClient", 1, "call unbind but didn't bind", new Throwable());
-    }
-    for (;;)
-    {
-      return;
-      BaseApplication localBaseApplication;
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(-1) == 0)
-      {
-        localBaseApplication = BaseApplicationImpl.getContext();
-        if (this.jdField_b_of_type_AndroidOsMessenger == null) {}
-      }
-      try
-      {
-        Message localMessage = Message.obtain(null, 2);
-        localMessage.replyTo = this.jdField_a_of_type_AndroidOsMessenger;
-        Bundle localBundle = new Bundle();
-        localBundle.putString("processName", a());
-        localMessage.obj = localBundle;
-        this.jdField_b_of_type_AndroidOsMessenger.send(localMessage);
-        label94:
-        localBaseApplication.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-        this.jdField_b_of_type_AndroidOsMessenger = null;
-        try
-        {
-          this.jdField_b_of_type_JavaUtilList.clear();
-          this.jdField_a_of_type_JavaUtilMap.clear();
-          a().a();
-          if (QLog.isColorLevel()) {
-            QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "Unbinding...");
-          }
-          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 0) {
-            continue;
-          }
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-          QLog.e("com.tencent.biz.troop.TroopMemberApiClient", 1, "call unbind but didn't bind", new Throwable());
-          return;
-        }
-        finally {}
-      }
-      catch (RemoteException localRemoteException)
-      {
-        break label94;
-      }
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("reqUserSetEnableAlbumScan", paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("UserEnableAlbumScan", 2, "TroopMemberApiClient setUserEnableAlbumScan value = " + paramInt);
-    }
-    a(123, localBundle);
-  }
-  
-  public void b(ajte paramajte)
-  {
-    if (paramajte == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "unRegisterObserver key:" + paramajte.hashCode());
-      }
-    } while (!this.jdField_a_of_type_JavaUtilList.contains(paramajte));
-    this.jdField_a_of_type_JavaUtilList.remove(paramajte);
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    a(146, paramBundle);
-  }
-  
-  public void b(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    a(34, localBundle);
-  }
-  
-  public void b(String paramString, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("uin", paramString);
-    localBundle.putInt("index", paramInt);
-    a(95, localBundle);
-  }
-  
-  public void b(String paramString1, int paramInt, String paramString2, boolean paramBoolean, wxt paramwxt1, wxt paramwxt2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("pic_server_id", paramString1);
-    localBundle.putInt("is_showProgress_tips", paramInt);
-    localBundle.putString("pic_puin", paramString2);
-    localBundle.putBoolean("is_pic_or_voice", paramBoolean);
-    localBundle.putInt("seq1", a(paramwxt2));
-    localBundle.putInt("seq", a(paramwxt1));
-    a(22, localBundle);
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1))) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("gcode", paramString1);
-    localBundle.putString("anId", paramString2);
-    a(7, localBundle);
-  }
-  
-  public void b(String paramString1, String paramString2, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("memUin", paramString2);
-    localBundle.putInt("serviceType", paramInt);
-    a(70, localBundle);
-  }
-  
-  public void b(String paramString1, String paramString2, String paramString3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString1);
-    localBundle.putString("uin", paramString2);
-    localBundle.putString("nick", paramString3);
-    a(99, localBundle);
-  }
-  
-  public void b(String paramString1, String paramString2, String paramString3, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("chatType", paramString2);
-    localBundle.putString("callback", paramString3);
-    localBundle.putInt("seq", a(paramwxt));
-    a(111, localBundle);
-  }
-  
-  public void b(String paramString1, String paramString2, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("rewardId", paramString2);
-    localBundle.putInt("seq", a(paramwxt));
-    a(55, localBundle);
-  }
-  
-  public void b(String paramString, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwxt));
-    localBundle.putString("hashName", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("allen", 2, "此时发送请求");
-    }
-    a(66, localBundle);
-  }
-  
-  public void b(String paramString, boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    localBundle.putBoolean("isChecked", paramBoolean);
-    a(118, localBundle);
-  }
-  
-  public void b(ArrayList<String> paramArrayList)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("preloadList", paramArrayList);
-    a(103, localBundle);
-  }
-  
-  public void b(wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwxt));
-    a(84, localBundle);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("force_install_new", paramBoolean);
-    a(91, localBundle);
-  }
-  
-  public void c()
-  {
-    a(6, null);
-  }
-  
-  public void c(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    a(35, localBundle);
-  }
-  
-  public void c(String paramString, int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("schoolName", paramString);
-    localBundle.putInt("isValid", paramInt);
-    a(74, localBundle);
-  }
-  
-  public void c(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("pluginPackageName", paramString1);
-    localBundle.putString("appType", paramString2);
-    a(71, localBundle);
-  }
-  
-  public void c(String paramString1, String paramString2, String paramString3, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("appid", paramString1);
-    localBundle.putString("openid", paramString2);
-    localBundle.putString("troopuin", paramString3);
-    a(144, localBundle, paramwxt);
-  }
-  
-  public void c(String paramString1, String paramString2, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("path", paramString1);
-    localBundle.putString("photoPath", paramString2);
-    localBundle.putInt("seq", a(paramwxt));
-    a(75, localBundle);
-  }
-  
-  public void c(String paramString, wxt paramwxt)
-  {
-    if (paramwxt == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(paramString)) {
-      localBundle.putString("callback", paramString);
-    }
-    localBundle.putInt("seq", a(paramwxt));
-    a(15, localBundle);
-  }
-  
-  public void c(String paramString, boolean paramBoolean)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString);
-    localBundle.putBoolean("isOpen", paramBoolean);
-    a(143, localBundle);
-  }
-  
-  public void c(wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwxt));
-    a(76, localBundle);
-  }
-  
-  public void d()
-  {
-    a(93, new Bundle());
-  }
-  
-  public void d(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString);
-    a(98, localBundle);
-  }
-  
-  public void d(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("troopCode", paramString2);
-    a(41, localBundle);
-  }
-  
-  public void d(String paramString1, String paramString2, wxt paramwxt)
-  {
-    int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString1);
-    localBundle.putString("rid", paramString2);
-    localBundle.putInt("seq", i);
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramwxt);
-    a(101, localBundle);
-  }
-  
-  public void d(String paramString, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwxt));
-    localBundle.putString("content", paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient sendToComputer");
-    }
-    a(120, localBundle);
-  }
-  
-  public void d(wxt paramwxt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("getReadinjoyShareToWxConfig", 2, "get config");
-    }
-    a(113, null, paramwxt);
-  }
-  
-  public void e()
-  {
-    a(77, new Bundle());
-  }
-  
-  public void e(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("fromId", paramString);
-    a(147, localBundle);
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("localFilePath", paramString1);
-    localBundle.putString("fileDisPlayName", paramString2);
-    a(47, localBundle);
-  }
-  
-  public void e(String paramString1, String paramString2, wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("skinId", paramString1);
-    localBundle.putString("skinUrl", paramString2);
-    localBundle.putInt("seq", a(paramwxt));
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient cancelLoadReadinjoySkin skinId = " + paramString1);
-    }
-    a(108, localBundle);
-  }
-  
-  public void e(wxt paramwxt)
-  {
-    a(126, new Bundle(), paramwxt);
-  }
-  
-  public void f()
-  {
-    a(27, new Bundle());
-  }
-  
-  public void f(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("from", paramString);
-    a(125, localBundle);
-  }
-  
-  public void f(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString1);
-    localBundle.putString("uin", paramString2);
-    a(97, localBundle);
-  }
-  
-  public void f(wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwxt));
-    a(52, localBundle);
-  }
-  
-  public void g()
-  {
-    a(92, null);
-  }
-  
-  public void g(String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("from", paramString);
-    a(142, localBundle);
-  }
-  
-  public void g(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString1);
-    localBundle.putString("uin", paramString2);
-    a(100, localBundle);
-  }
-  
-  public void g(wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwxt));
-    a(80, localBundle);
-  }
-  
-  public void h()
-  {
-    this.jdField_a_of_type_Wxt = null;
-  }
-  
-  public void h(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopUin", paramString1);
-    localBundle.putString("type", paramString2);
-    a(115, localBundle);
-  }
-  
-  public void h(wxt paramwxt)
-  {
-    this.jdField_a_of_type_Wxt = paramwxt;
-  }
-  
-  public void i()
-  {
-    a(89, null);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("uin", paramString1);
-    localBundle.putString("nick", paramString2);
-    a(141, localBundle);
-  }
-  
-  public void i(wxt paramwxt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramwxt));
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient getReadinjoyCurrentSkin");
-    }
-    a(110, localBundle);
-  }
-  
-  public void j()
-  {
-    a(104, new Bundle());
-  }
-  
-  public void j(wxt paramwxt)
-  {
-    a(139, new Bundle(), paramwxt);
-    AdReporterForAnalysis.reportForAPIInvoked(BaseApplicationImpl.getApplication(), true, "com.tencent.biz.troop.TroopMemberApiClient#gdtGetCurrentUserInfo(Callback)", "");
-  }
-  
-  public void k()
-  {
-    a(122, new Bundle());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxr
  * JD-Core Version:    0.7.0.1
  */

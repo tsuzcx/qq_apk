@@ -1,24 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
+import android.os.Bundle;
+import android.util.SparseArray;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+import com.tencent.qqmini.sdk.manager.EngineChannel;
+import com.tencent.qqmini.sdk.manager.EngineManager.2;
 
 public class bgry
-  implements DialogInterface.OnDismissListener
+  implements bgrw
 {
-  public bgry(QfavJumpActivity paramQfavJumpActivity) {}
+  public bgry(EngineManager.2 param2) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    if (QfavJumpActivity.a(this.a))
-    {
-      QfavJumpActivity.a(this.a, false);
-      this.a.finish();
+    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
+    bgrt localbgrt = (bgrt)bgrx.b(this.a.this$0).get(this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
+    if (localbgrt != null) {
+      localbgrt.b(this);
+    }
+  }
+  
+  public void a(float paramFloat, String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putFloat("engineInstallerProgress", paramFloat);
+    localBundle.putString("engineInstallerMessage", paramString);
+    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(53, localBundle);
+  }
+  
+  public void b()
+  {
+    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(52, null);
+  }
+  
+  public void c()
+  {
+    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
+    bgrt localbgrt = (bgrt)bgrx.b(this.a.this$0).get(this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
+    if (localbgrt != null) {
+      localbgrt.b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgry
  * JD-Core Version:    0.7.0.1
  */

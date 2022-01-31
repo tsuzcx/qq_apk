@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.video.multivideo;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import qxt;
+import rni;
 
 public class MultiVideoLoadingFooter
   extends FrameLayout
@@ -18,21 +18,21 @@ public class MultiVideoLoadingFooter
   public MultiVideoLoadingFooter(Context paramContext)
   {
     super(paramContext);
-    inflate(paramContext, 2131560060, this);
-    addOnLayoutChangeListener(new qxt(this));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369500));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369509));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131369506));
+    inflate(paramContext, 2131560161, this);
+    addOnLayoutChangeListener(new rni(this));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131369762));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369771));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131369768));
     a(1);
   }
   
   private String a(int paramInt)
   {
     if (paramInt == 1) {
-      return ajya.a(2131716256);
+      return alpo.a(2131716628);
     }
     if (paramInt == 2) {
-      return ajya.a(2131716253);
+      return alpo.a(2131716625);
     }
     return null;
   }
@@ -55,7 +55,7 @@ public class MultiVideoLoadingFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoLoadingFooter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.qphone.base.util.QLog;
 
 public class aigz
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public aigz(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public aigz(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      float f = Float.valueOf(paramValueAnimator.getAnimatedValue().toString()).floatValue();
-      if ((this.a.a.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
-        this.a.a.setAlpha(f);
-      }
-      if ((this.a.c.getVisibility() == 0) && (Math.abs(this.a.a.getAlpha() - f) >= 0.02F)) {
-        this.a.c.setAlpha(Float.valueOf(f).floatValue());
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BindNumberActivity", 2, "new user guild confirm unbind");
     }
+    this.a.a("dc00898", "0X8009F16", 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.b(this.a.jdField_a_of_type_JavaLangString, this.a.c, 0, this.a.jdField_a_of_type_Boolean, this.a.b);
+    this.a.a(2131719773, 1000L, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigz
  * JD-Core Version:    0.7.0.1
  */

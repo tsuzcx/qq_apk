@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.hiboom;
 
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForHiBoom;
 
 class HiBoomTextView$2
@@ -20,7 +20,7 @@ class HiBoomTextView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomTextView.2
  * JD-Core Version:    0.7.0.1
  */

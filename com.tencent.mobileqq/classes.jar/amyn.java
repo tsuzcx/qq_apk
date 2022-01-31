@@ -1,54 +1,39 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.RectF;
 
-class amyn
-  implements amxr
+public class amyn
 {
-  amyn(amyj paramamyj) {}
+  public int a;
+  public RectF a;
+  public String a;
+  amym[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public void a(Context paramContext)
+  public amyn()
   {
-    try
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_c_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",sessionId:").append(this.jdField_c_of_type_JavaLangString).append(",moreUrl:").append(this.d);
+    int i = 0;
+    while ((this.jdField_a_of_type_ArrayOfAmym != null) && (i < this.jdField_a_of_type_ArrayOfAmym.length))
     {
-      Intent localIntent;
-      if (new JSONObject(amyj.a(this.a)).getInt("showlocalfile") == 1)
-      {
-        localIntent = new Intent(paramContext, LocalFileBrowserActivity.class);
-        if (localIntent != null) {}
-      }
-      else
-      {
-        return;
-      }
-      try
-      {
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("category", 23);
-        localIntent.putExtra("bundle", localBundle);
-        localIntent.putExtra("localSdCardfile", 0);
-        paramContext.startActivity(localIntent);
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-      return;
+      localStringBuilder.append("\n{index=").append(i).append(":").append(this.jdField_a_of_type_ArrayOfAmym[i].toString()).append("}\n");
+      i += 1;
     }
-    catch (JSONException paramContext)
-    {
-      paramContext.printStackTrace();
-    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyn
  * JD-Core Version:    0.7.0.1
  */

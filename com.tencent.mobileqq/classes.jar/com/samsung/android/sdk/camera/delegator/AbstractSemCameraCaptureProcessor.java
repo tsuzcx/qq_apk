@@ -39,7 +39,7 @@ public abstract class AbstractSemCameraCaptureProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.samsung.android.sdk.camera.delegator.AbstractSemCameraCaptureProcessor
  * JD-Core Version:    0.7.0.1
  */

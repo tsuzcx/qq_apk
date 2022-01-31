@@ -1,66 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pts.nativemodule.IPTSLoadFeeds;
+import com.tencent.qphone.base.util.QLog;
 
 public class pwj
-  implements View.OnClickListener
+  implements IPTSLoadFeeds
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  qbb jdField_a_of_type_Qbb;
-  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
-  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
-  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
-  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView[] jdField_b_of_type_ArrayOfAndroidWidgetImageView;
-  ImageView[] c;
+  private final String jdField_a_of_type_JavaLangString = "PTSLoadFeedsModule";
+  private pvj jdField_a_of_type_Pvj = new pwk(this);
   
-  private pwj(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
-  
-  public void onClick(View paramView)
+  public pwj()
   {
-    boolean bool = true;
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131366528: 
-      i = 0;
-      if (i < this.jdField_a_of_type_Qbb.a.size()) {
-        if (((RecommendFollowInfo)this.jdField_a_of_type_Qbb.a.get(i)).isFollowed) {
-          break;
-        }
-      }
-      break;
-    }
-    for (int i = 0;; i = 1)
-    {
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup;
-      List localList = this.jdField_a_of_type_Qbb.a;
-      if (i == 0) {}
-      for (;;)
-      {
-        paramView.a(localList, bool);
-        return;
-        i += 1;
-        break;
-        bool = false;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.a((RecommendFollowInfo)paramView.getTag());
-      return;
+    pvi.a().a(this.jdField_a_of_type_Pvj);
+  }
+  
+  public void loadFeeds(long paramLong1, long paramLong2, int paramInt, long paramLong3)
+  {
+    oxd localoxd = (oxd)((QQAppInterface)ors.a()).getManager(163);
+    QLog.i("PTSLoadFeedsModule", 1, "[loadFeeds], channelID = " + paramLong1 + ", limitCount = " + paramInt);
+    if (localoxd != null) {
+      localoxd.a().a((int)paramLong1, paramInt, 9223372036854775807L, true, paramLong3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pwj
  * JD-Core Version:    0.7.0.1
  */

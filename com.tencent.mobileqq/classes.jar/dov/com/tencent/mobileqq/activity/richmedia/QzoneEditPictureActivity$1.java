@@ -1,8 +1,8 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
-import avte;
-import bkpx;
-import bkrf;
+import axld;
+import bnbh;
+import bncp;
 
 public class QzoneEditPictureActivity$1
   implements Runnable
@@ -11,14 +11,14 @@ public class QzoneEditPictureActivity$1
   
   public void run()
   {
-    bfma.a = true;
-    avte.b();
-    bkrf.a().a(this.this$0.a(), new bkpx(this), true);
+    bhmu.a = true;
+    axld.b();
+    bncp.a().a(this.this$0.a(), new bnbh(this), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity.1
  * JD-Core Version:    0.7.0.1
  */

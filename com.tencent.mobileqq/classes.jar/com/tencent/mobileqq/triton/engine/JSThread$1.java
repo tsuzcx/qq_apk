@@ -1,24 +1,27 @@
 package com.tencent.mobileqq.triton.engine;
 
+import android.view.Choreographer;
+import android.view.Choreographer.FrameCallback;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class JSThread$1
-  implements Runnable
+  implements Choreographer.FrameCallback
 {
   JSThread$1(JSThread paramJSThread) {}
   
-  public void run()
+  public void doFrame(long paramLong)
   {
-    JSThread.access$000(this.this$0).decrementAndGet();
-    JSThread.IListener localIListener = JSThread.access$100(this.this$0);
-    if (localIListener != null) {
-      localIListener.onVSync();
+    if (JSThread.access$000(this.this$0).get() < 1)
+    {
+      JSThread.access$000(this.this$0).incrementAndGet();
+      JSThread.access$200(this.this$0).postRunnable(new JSThread.CallbackMainLoop(this.this$0, paramLong));
     }
+    Choreographer.getInstance().postFrameCallback(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.JSThread.1
  * JD-Core Version:    0.7.0.1
  */

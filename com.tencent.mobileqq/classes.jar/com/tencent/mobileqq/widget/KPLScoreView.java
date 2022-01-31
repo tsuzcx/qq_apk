@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.text.SpannableString;
@@ -41,15 +41,15 @@ public class KPLScoreView
   
   private void a()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560803, this, true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370607));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378232));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376717));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131378235));
-    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131374701));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131378233));
-    this.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375524));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidWidgetLinearLayout.findViewById(2131378234));
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560986, this, true);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370915));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131378800));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131377227));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidWidgetLinearLayout.findViewById(2131378803));
+    this.jdField_c_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375163));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131378801));
+    this.jdField_d_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131376012));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidWidgetLinearLayout.findViewById(2131378802));
   }
   
   public void setKplValue(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -110,7 +110,7 @@ public class KPLScoreView
       j = this.jdField_b_of_type_AndroidWidgetTextView.getMeasuredWidth();
       k = this.jdField_c_of_type_AndroidWidgetTextView.getMeasuredWidth();
       m = this.jdField_d_of_type_AndroidWidgetTextView.getMeasuredWidth();
-      i = (((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay().getWidth() - (i + j + k + m) - actj.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 3;
+      i = (((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay().getWidth() - (i + j + k + m) - aekt.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources())) / 3;
       paramString1 = new LinearLayout.LayoutParams(-2, -2);
       paramString1.setMargins(i, 0, 0, 0);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramString1);

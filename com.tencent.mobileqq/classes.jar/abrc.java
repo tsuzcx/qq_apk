@@ -1,21 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import android.os.AsyncTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 class abrc
-  implements DialogInterface.OnCancelListener
+  extends AsyncTask<Void, Void, Void>
 {
-  abrc(abra paramabra) {}
+  abrc(abrb paramabrb) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  protected Void a(Void... paramVarArgs)
   {
-    this.a.a.setResult(4003);
-    this.a.a.finish();
+    paramVarArgs = abrb.a(this.a).iterator();
+    while (paramVarArgs.hasNext()) {
+      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
+    }
+    abrb.a(this.a).clear();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abrc
  * JD-Core Version:    0.7.0.1
  */

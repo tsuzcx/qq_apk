@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vip;
 
-import akjc;
+import amas;
 import android.content.Context;
 import android.text.TextUtils;
-import bbwo;
+import bdvp;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -14,7 +14,7 @@ import mqq.os.MqqHandler;
 public class AioVipKeywordHelper$1
   implements Runnable
 {
-  public AioVipKeywordHelper$1(bbwo parambbwo, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, String paramString, ChatMessage paramChatMessage, boolean paramBoolean) {}
+  public AioVipKeywordHelper$1(bdvp parambdvp, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Context paramContext, String paramString, ChatMessage paramChatMessage, boolean paramBoolean) {}
   
   public void run()
   {
@@ -36,7 +36,7 @@ public class AioVipKeywordHelper$1
         if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 0) {}
         for (boolean bool = true;; bool = false)
         {
-          localObject2 = bbwo.a((bbwo)localObject1, localContext, (String)localObject2, bool);
+          localObject2 = bdvp.a((bdvp)localObject1, localContext, (String)localObject2, bool);
           if ((localObject2 != null) && (localObject2.length != 0)) {
             break;
           }
@@ -84,7 +84,7 @@ public class AioVipKeywordHelper$1
             }
             this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
             this.this$0.x = localContext;
-            ((akjc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(86)).a(localContext);
+            ((amas)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(86)).a(localContext);
             ThreadManager.getUIHandler().postDelayed(new AioVipKeywordHelper.1.1(this, localContext), this.this$0.d);
             return;
           }
@@ -96,7 +96,7 @@ public class AioVipKeywordHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.AioVipKeywordHelper.1
  * JD-Core Version:    0.7.0.1
  */

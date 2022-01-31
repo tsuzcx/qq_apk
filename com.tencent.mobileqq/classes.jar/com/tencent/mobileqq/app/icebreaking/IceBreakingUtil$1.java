@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.icebreaking;
 
-import aknx;
+import amfl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class IceBreakingUtil$1
@@ -10,19 +10,19 @@ public final class IceBreakingUtil$1
   
   public void run()
   {
-    if (aknx.b(this.jdField_a_of_type_Int)) {
-      aknx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    if (amfl.b(this.jdField_a_of_type_Int)) {
+      amfl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
     }
     do
     {
       return;
-      if (aknx.c(this.jdField_a_of_type_Int))
+      if (amfl.c(this.jdField_a_of_type_Int))
       {
-        aknx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+        amfl.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
         return;
       }
-    } while (!aknx.d(this.jdField_a_of_type_Int));
-    aknx.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    } while (!amfl.d(this.jdField_a_of_type_Int));
+    amfl.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
   }
 }
 

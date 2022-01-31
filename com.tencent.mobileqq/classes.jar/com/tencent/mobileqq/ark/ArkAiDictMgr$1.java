@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ark;
 
-import alri;
+import ania;
 
 public final class ArkAiDictMgr$1
   implements Runnable
@@ -9,7 +9,7 @@ public final class ArkAiDictMgr$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAiDictMgr.1
  * JD-Core Version:    0.7.0.1
  */

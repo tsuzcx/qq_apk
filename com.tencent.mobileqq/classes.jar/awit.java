@@ -1,16 +1,16 @@
+import com.tencent.mobileqq.portal.PortalManager.TimerConfig;
 import java.util.Comparator;
 
-final class awit
-  implements Comparator<awij>
+public final class awit
+  implements Comparator<PortalManager.TimerConfig>
 {
-  public int a(awij paramawij1, awij paramawij2)
+  public int a(PortalManager.TimerConfig paramTimerConfig1, PortalManager.TimerConfig paramTimerConfig2)
   {
-    long l1 = paramawij1.c();
-    long l2 = paramawij2.c();
-    if (l1 < l2) {
+    long l = paramTimerConfig1.uiBegin - paramTimerConfig2.uiBegin;
+    if (l > 0L) {
       return 1;
     }
-    if (l1 > l2) {
+    if (l < 0L) {
       return -1;
     }
     return 0;
@@ -18,7 +18,7 @@ final class awit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awit
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.subscribe.event.SharePanelShowStateEvent;
-
 class wuy
-  implements DialogInterface.OnDismissListener
+  extends ayym
 {
-  wuy(wux paramwux) {}
+  wuy(wus paramwus) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    wpt.a().a(new SharePanelShowStateEvent(false));
+    wsv.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
+    this.a.ag_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wuy
  * JD-Core Version:    0.7.0.1
  */

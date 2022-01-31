@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.history;
 
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.LinkedHashMap;
-import mqq.os.MqqHandler;
 
 class ChatHistoryC2CFileFragment$1
   implements Runnable
@@ -14,14 +14,14 @@ class ChatHistoryC2CFileFragment$1
     if (this.a) {}
     for (LinkedHashMap localLinkedHashMap = ChatHistoryC2CFileFragment.a(this.this$0);; localLinkedHashMap = ChatHistoryC2CFileFragment.b(this.this$0))
     {
-      ThreadManager.getUIHandler().post(new ChatHistoryC2CFileFragment.1.1(this, localLinkedHashMap));
+      ThreadManagerV2.getUIHandlerV2().post(new ChatHistoryC2CFileFragment.1.1(this, localLinkedHashMap));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,44 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import java.net.URLEncoder;
 
-class ahkm
+public class ahkm
   implements View.OnClickListener
 {
-  ahkm(ahkd paramahkd) {}
+  public ahkm(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
   
   public void onClick(View paramView)
   {
-    ahkd.a(this.a).app.a().a("0X800474F", 1);
-    bgnk.a(ahkd.a(this.a), 4, null);
-    axqy.a(ahkd.a(this.a).app, "dc00898", "", "", "0X8009EE5", "0X8009EE5", 3, 0, "", "", "", "");
+    if (!bdee.g(this.a.jdField_a_of_type_AndroidAppActivity))
+    {
+      QQToast.a(this.a, 1, this.a.getString(2131692309), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    paramView = ((TextView)paramView).getText().toString();
+    Object localObject = new Intent(this.a.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", "http://qqweb.qq.com/m/relativegroup/index.html?_bid=165&_wv=4194304&source=qun_tag&keyword=" + URLEncoder.encode(paramView));
+    ((Intent)localObject).putExtra("hide_operation_bar", true);
+    ((Intent)localObject).putExtra("hide_more_button", true);
+    this.a.startActivity((Intent)localObject);
+    localObject = this.a.app;
+    String str = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_Boolean) {}
+    for (paramView = "0";; paramView = "1")
+    {
+      azmj.b((QQAppInterface)localObject, "P_CliOper", "Grp_join", "", "person_data", "Clk_quntag", 0, 0, str, paramView, "", "");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,23 @@
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
 public class adbv
+  implements azwv
 {
-  public String a;
-  public boolean a;
+  public adbv(Leba paramLeba) {}
   
-  public adbv(String paramString, boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public String toString()
-  {
-    return "ResultBean{rtext='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isFinish=" + this.jdField_a_of_type_Boolean + '}';
+    QLog.i("Q.lebatab.leba", 1, "StudyModeChange onChange " + paramBoolean);
+    if (this.a.a.a() != null) {
+      this.a.a.a().c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbv
  * JD-Core Version:    0.7.0.1
  */

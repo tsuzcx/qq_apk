@@ -1,22 +1,10 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ChatActivity;
-
-final class aspu
-  implements asqb
+public abstract interface aspu
 {
-  aspu(Context paramContext) {}
-  
-  public void a(Intent paramIntent)
-  {
-    if ((this.a instanceof ChatActivity)) {
-      ((ChatActivity)this.a).a(paramIntent);
-    }
-  }
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aspu
  * JD-Core Version:    0.7.0.1
  */

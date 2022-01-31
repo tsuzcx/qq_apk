@@ -2,17 +2,17 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
 import android.os.Bundle;
-import benn;
-import betc;
-import bfhk;
+import bgnf;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ChannelProxy;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
 import org.json.JSONObject;
 
 final class QQFriendJsPlugin$2
   implements AsyncResult
 {
-  QQFriendJsPlugin$2(String paramString1, String paramString2, MiniAppProxy paramMiniAppProxy, Context paramContext, QQFriendJsPlugin.IAddFriendCallBack paramIAddFriendCallBack) {}
+  QQFriendJsPlugin$2(String paramString1, String paramString2, ChannelProxy paramChannelProxy, Context paramContext, QQFriendJsPlugin.IAddFriendCallBack paramIAddFriendCallBack) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -32,12 +32,12 @@ final class QQFriendJsPlugin$2
           paramJSONObject = new Bundle();
           paramJSONObject.putString("openId", this.val$openId);
           paramJSONObject.putString("appId", this.val$appId);
-          if (!this.val$miniAppProxy.startAddFriendActivity(this.val$context, this.val$appId, this.val$openId))
+          if (!this.val$channelProxy.startAddFriendActivity(this.val$context, this.val$appId, this.val$openId))
           {
-            benn.a(this.val$context, 0, "暂不支持在" + bfhk.a(this.val$context) + "中添加好友", 1);
+            bgnf.a(this.val$context, 0, "暂不支持在" + QUAUtil.getApplicationName(this.val$context) + "中添加好友", 1);
             if (this.val$addFriendCallBack != null)
             {
-              betc.d("QQFriendJsPlugin", "app not implement");
+              QMLog.e("QQFriendJsPlugin", "app not implement");
               this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, "app not implement");
             }
           }
@@ -50,21 +50,21 @@ final class QQFriendJsPlugin$2
         {
           for (;;)
           {
-            betc.a("QQFriendJsPlugin", " doAddFriend() exception e = " + paramJSONObject);
+            QMLog.d("QQFriendJsPlugin", " doAddFriend() exception e = " + paramJSONObject);
           }
         }
       } while (this.val$addFriendCallBack == null);
-      betc.d("QQFriendJsPlugin", "getSettingByOpenId failed");
+      QMLog.e("QQFriendJsPlugin", "getSettingByOpenId failed");
       this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, "auth deny");
       return;
     }
-    betc.d("QQFriendJsPlugin", "getUserSetting failed");
+    QMLog.e("QQFriendJsPlugin", "getUserSetting failed");
     this.val$addFriendCallBack.onAddFriendCallBack("addFriend", false, "network err");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.QQFriendJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

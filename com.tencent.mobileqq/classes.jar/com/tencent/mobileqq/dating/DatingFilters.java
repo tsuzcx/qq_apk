@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.dating;
 
-import ajya;
+import alpo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anmh;
+import apdo;
 import appoint.define.appoint_define.LocaleInfo;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.io.UnsupportedEncodingException;
@@ -12,7 +12,7 @@ import java.io.UnsupportedEncodingException;
 public class DatingFilters
   implements Parcelable
 {
-  public static final Parcelable.Creator<DatingFilters> CREATOR = new anmh();
+  public static final Parcelable.Creator<DatingFilters> CREATOR = new apdo();
   public static final int[] a;
   public static final String[] a;
   public static final int[] b;
@@ -29,11 +29,11 @@ public class DatingFilters
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajya.a(2131702856), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { alpo.a(2131703228), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
     jdField_a_of_type_ArrayOfInt = new int[] { 0, 22, 26, 35, 120 };
     jdField_b_of_type_ArrayOfInt = new int[] { 0, 18, 23, 27, 36 };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { ajya.a(2131702854), ajya.a(2131702860), ajya.a(2131702859), ajya.a(2131702857), ajya.a(2131702855) };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { ajya.a(2131702862), ajya.a(2131702864), ajya.a(2131702861), ajya.a(2131702858), ajya.a(2131702853), ajya.a(2131702863) };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { alpo.a(2131703226), alpo.a(2131703232), alpo.a(2131703231), alpo.a(2131703229), alpo.a(2131703227) };
+    jdField_c_of_type_ArrayOfJavaLangString = new String[] { alpo.a(2131703234), alpo.a(2131703236), alpo.a(2131703233), alpo.a(2131703230), alpo.a(2131703225), alpo.a(2131703235) };
   }
   
   private DatingFilters(Parcel paramParcel)
@@ -151,7 +151,7 @@ public class DatingFilters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingFilters
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,26 @@
-import android.graphics.Point;
-import android.graphics.Rect;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.QQPermissionCallback;
 
 public class auuq
-  implements Comparator<Rect>
+  implements QQPermissionCallback
 {
-  Point jdField_a_of_type_AndroidGraphicsPoint;
+  public auuq(GameRoomTransActivity paramGameRoomTransActivity) {}
   
-  public auuq(TagCloudView paramTagCloudView, Point paramPoint)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+    QQToast.a(this.a, alpo.a(2131705443), 0).a();
+    this.a.finish();
   }
   
-  public int a(Rect paramRect1, Rect paramRect2)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramRect1 = new Point((int)(paramRect1.width() * 0.5F + paramRect1.left), (int)(paramRect1.height() * 0.5F + paramRect1.top));
-    paramRect2 = new Point((int)(paramRect2.width() * 0.5F + paramRect2.left), (int)(paramRect2.height() * 0.5F + paramRect2.top));
-    return TagCloudView.a(paramRect1, this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramRect2, this.jdField_a_of_type_AndroidGraphicsPoint);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auuq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,114 +1,55 @@
+import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import mqq.observer.BusinessObserver;
 
-class bayw
-  implements bayy
+public class bayw
+  implements BusinessObserver
 {
-  bayw(bayv parambayv) {}
+  public bayw(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public void a(int paramInt, List<bayz> paramList)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramInt != 1) || (paramList == null) || (paramList.isEmpty())) {
-      return;
-    }
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder(200);
-      localStringBuilder.append("fetchInfoBatch size:").append(paramList.size()).append("  [");
-    }
+    localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    String str = "";
+    paramInt = -1;
+    if (paramBoolean) {}
     for (;;)
     {
-      ArrayList localArrayList = new ArrayList(paramList.size());
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      try
       {
-        bayz localbayz = (bayz)paramList.next();
-        if ((localbayz != null) && (localbayz.jdField_a_of_type_Int == 1) && (localbayz.a()))
-        {
-          if ((localbayz.jdField_a_of_type_JavaLangString != null) && (localbayz.jdField_a_of_type_JavaLangString.length() > 0)) {
-            localArrayList.add(localbayz.jdField_a_of_type_JavaLangString);
-          }
-          if (localStringBuilder != null) {
-            localStringBuilder.append(localbayz.jdField_a_of_type_JavaLangString).append(",");
-          }
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          continue;
         }
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        int i = localWebSsoResponseBody.ret.get();
+        paramInt = i;
+        paramBundle = str;
       }
-      if ((QLog.isColorLevel()) && (localStringBuilder != null))
+      catch (Exception paramBundle)
       {
-        localStringBuilder.append("]");
-        QLog.i("FetchBuddyAndTroopNameHelper", 2, localStringBuilder.toString());
+        paramBundle = localContext.getString(2131696745, new Object[] { Integer.valueOf(9992) });
+        continue;
       }
-      paramList = (FriendListHandler)bayv.a(this.a).a(1);
-      if (paramList == null) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("TribeVideoListPlayerFragment", 2, "reportVV: retCode = " + paramInt + ", errMsg = " + paramBundle);
       }
-      paramList.a(localArrayList, false);
       return;
-      localStringBuilder = null;
+      paramBundle = localContext.getString(2131696745, new Object[] { Integer.valueOf(9991) });
+      continue;
+      paramBundle = localContext.getString(2131696745, new Object[] { Integer.valueOf(9992) });
     }
-  }
-  
-  public void a(bayz parambayz)
-  {
-    if ((parambayz == null) || (!parambayz.a())) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("FetchBuddyAndTroopNameHelper", 2, bbkk.a(new Object[] { "fetchInfo()", parambayz.toString() }));
-              }
-              if (parambayz.jdField_a_of_type_Int != 2) {
-                break;
-              }
-              localObject = (akhp)bayv.a(this.a).a(20);
-            } while (localObject == null);
-            ((akhp)localObject).m(parambayz.jdField_a_of_type_JavaLangString);
-            return;
-            if (parambayz.jdField_a_of_type_Int != 1) {
-              break;
-            }
-            localObject = (FriendListHandler)bayv.a(this.a).a(1);
-          } while (localObject == null);
-          ((FriendListHandler)localObject).b(parambayz.jdField_a_of_type_JavaLangString);
-          return;
-          if (parambayz.jdField_a_of_type_Int != 3) {
-            break;
-          }
-          localObject = (akhp)bayv.a(this.a).a(20);
-        } while (localObject == null);
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(parambayz.jdField_a_of_type_JavaLangString);
-        if ((parambayz.jdField_a_of_type_AndroidOsBundle != null) && (parambayz.jdField_a_of_type_AndroidOsBundle.getInt(bbcz.jdField_a_of_type_JavaLangString) == bbcz.b))
-        {
-          ((akhp)localObject).a(parambayz.b, localArrayList, false, parambayz.jdField_a_of_type_AndroidOsBundle);
-          return;
-        }
-        ((akhp)localObject).a(parambayz.b, (String)parambayz.jdField_a_of_type_JavaLangObject, localArrayList);
-        return;
-      } while (parambayz.jdField_a_of_type_Int != 4);
-      localObject = (FriendListHandler)bayv.a(this.a).a(1);
-    } while (localObject == null);
-    ((FriendListHandler)localObject).a(parambayz.jdField_a_of_type_JavaLangString, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bayw
  * JD-Core Version:    0.7.0.1
  */

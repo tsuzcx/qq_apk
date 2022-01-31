@@ -1,120 +1,143 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.renderscript.Allocation;
-import android.renderscript.Element;
-import android.renderscript.RenderScript;
-import android.renderscript.ScriptIntrinsicBlur;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.commonsdk.util.HexUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
 
 public class araw
 {
-  public static boolean a;
+  private final long jdField_a_of_type_Long;
+  private final String jdField_a_of_type_JavaLangString;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private final String jdField_b_of_type_JavaLangString;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  private byte[] c;
+  private byte[] d;
   
-  @TargetApi(17)
-  public static Bitmap a(Bitmap paramBitmap, float paramFloat, Context paramContext)
+  public araw(String paramString1, String paramString2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4)
   {
-    paramContext = RenderScript.create(paramContext);
-    Allocation localAllocation1 = Allocation.createFromBitmap(paramContext, paramBitmap);
-    Allocation localAllocation2 = Allocation.createTyped(paramContext, localAllocation1.getType());
-    ScriptIntrinsicBlur localScriptIntrinsicBlur = ScriptIntrinsicBlur.create(paramContext, Element.U8_4(paramContext));
-    localScriptIntrinsicBlur.setRadius(paramFloat);
-    localScriptIntrinsicBlur.setInput(localAllocation1);
-    localScriptIntrinsicBlur.forEach(localAllocation2);
-    localAllocation2.copyTo(paramBitmap);
-    localAllocation1.destroy();
-    localAllocation2.destroy();
-    localScriptIntrinsicBlur.destroy();
-    paramContext.destroy();
-    return paramBitmap;
-  }
-  
-  private static String a()
-  {
-    String str = ajsd.aW + "HotPicVideo" + File.separator;
-    File localFile = new File(str);
-    if (!localFile.exists())
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    if (!TextUtils.isEmpty(paramString2))
     {
-      localFile.mkdirs();
-      QLog.d("TAG", 2, "mkdirs here");
-    }
-    return str;
-  }
-  
-  public static String a(long paramLong)
-  {
-    return new SimpleDateFormat("mm:ss").format(Long.valueOf(paramLong));
-  }
-  
-  public static String a(String paramString)
-  {
-    try
-    {
-      paramString = bdik.d(paramString);
-      paramString = a() + paramString;
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("TAG", 2, "getStorageDir, Exception");
-        paramString.printStackTrace();
+      this.jdField_b_of_type_JavaLangString = paramString2;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        break label84;
       }
     }
-    return null;
-  }
-  
-  public static List<File> a(File paramFile)
-  {
-    LinkedList localLinkedList = new LinkedList();
-    File[] arrayOfFile = paramFile.listFiles();
-    paramFile = localLinkedList;
-    if (arrayOfFile != null)
+    label84:
+    for (this.jdField_a_of_type_Long = new File(this.jdField_a_of_type_JavaLangString).length();; this.jdField_a_of_type_Long = 0L)
     {
-      paramFile = Arrays.asList(arrayOfFile);
-      Collections.sort(paramFile, new aray(null));
+      this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte1;
+      this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte2;
+      this.c = paramArrayOfByte3;
+      this.d = paramArrayOfByte4;
+      return;
+      this.jdField_b_of_type_JavaLangString = arni.a(paramString1);
+      break;
     }
-    return paramFile;
   }
   
-  public static boolean a()
+  public long a()
   {
-    if (!a)
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    this.d = paramArrayOfByte;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mFilePath is null");
+      }
+    }
+    do
     {
-      TVK_SDKMgr.initSdk(BaseApplicationImpl.getApplication(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-      a = true;
-      QLog.d("HotVideoUtils", 2, " init sdk here");
-    }
-    return true;
-  }
-  
-  public static boolean a(String paramString, long paramLong)
-  {
-    paramString = new File(a(paramString));
-    if (!paramString.exists()) {}
-    while (paramString.length() != paramLong) {
       return false;
-    }
+      if (0L != this.jdField_a_of_type_Long) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("ExcitingTransfer.FileInfo<FileAssistant>", 2, "mFileSize is 0");
+    return false;
     return true;
   }
   
-  public static boolean b()
+  public byte[] a()
   {
-    return TVK_SDKMgr.isInstalled(BaseApplicationImpl.getApplication());
+    return this.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public byte[] b()
+  {
+    return this.jdField_b_of_type_ArrayOfByte;
+  }
+  
+  public byte[] c()
+  {
+    return this.c;
+  }
+  
+  public byte[] d()
+  {
+    return this.d;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("mFilePath:").append(this.jdField_a_of_type_JavaLangString).append(" mFileName:").append(this.jdField_b_of_type_JavaLangString).append(" mFileSize:").append(this.jdField_a_of_type_Long).append(" mBufSha3:");
+    if (this.c != null)
+    {
+      str = HexUtil.bytes2HexStr(this.c);
+      localStringBuilder = localStringBuilder.append(str).append(" mBufSha:");
+      if (this.d == null) {
+        break label157;
+      }
+      str = HexUtil.bytes2HexStr(this.d);
+      label90:
+      localStringBuilder = localStringBuilder.append(str).append(" mBuf10MMdd5:");
+      if (this.jdField_b_of_type_ArrayOfByte == null) {
+        break label163;
+      }
+      str = HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte);
+      label116:
+      localStringBuilder = localStringBuilder.append(str).append(" mBufMdd5:");
+      if (this.jdField_a_of_type_ArrayOfByte == null) {
+        break label169;
+      }
+    }
+    label157:
+    label163:
+    label169:
+    for (String str = HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte);; str = "")
+    {
+      return str;
+      str = "";
+      break;
+      str = "";
+      break label90;
+      str = "";
+      break label116;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     araw
  * JD-Core Version:    0.7.0.1
  */

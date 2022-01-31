@@ -167,7 +167,7 @@ public class ViewTransformer
       this.mHeadView = getChildAt(0);
       this.mSubView = getChildAt(1);
     }
-    this.anim = AnimationUtils.loadAnimation(this.mContext, 2130772190);
+    this.anim = AnimationUtils.loadAnimation(this.mContext, 2130772201);
     this.anim.setAnimationListener(this);
     setAnimation(this.anim);
     startAnimation(this.anim);
@@ -175,7 +175,7 @@ public class ViewTransformer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.ViewTransformer
  * JD-Core Version:    0.7.0.1
  */

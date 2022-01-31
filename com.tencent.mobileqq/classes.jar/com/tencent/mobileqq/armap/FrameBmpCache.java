@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.armap;
 
-import alxe;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -9,6 +8,7 @@ import android.graphics.BitmapFactory.Options;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import anod;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.MemoryManager;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -20,10 +20,10 @@ public class FrameBmpCache
 {
   public int a;
   private long jdField_a_of_type_Long = 1000 / this.jdField_a_of_type_Int;
-  private alxe jdField_a_of_type_Alxe;
   Resources jdField_a_of_type_AndroidContentResResources;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   public MQLruCache<String, Object> a;
+  private anod jdField_a_of_type_Anod;
   volatile FrameBmpCache.CancelAbleRunnable jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$CancelAbleRunnable;
   Object jdField_a_of_type_JavaLangObject = new Object();
   LinkedList<FrameBmpCache.CancelAbleRunnable> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
@@ -214,8 +214,8 @@ public class FrameBmpCache
       }
       this.jdField_c_of_type_Int = (this.jdField_a_of_type_JavaUtilList.size() - 1);
       this.jdField_b_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Alxe != null) {
-        this.jdField_a_of_type_Alxe.a(null);
+      if (this.jdField_a_of_type_Anod != null) {
+        this.jdField_a_of_type_Anod.a(null);
       }
     } while (!this.jdField_d_of_type_Boolean);
     return (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(this.jdField_a_of_type_JavaUtilList.get(a(this.jdField_c_of_type_Int)));
@@ -299,9 +299,9 @@ public class FrameBmpCache
     this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Int / 2.0F));
   }
   
-  public void a(alxe paramalxe)
+  public void a(anod paramanod)
   {
-    this.jdField_a_of_type_Alxe = paramalxe;
+    this.jdField_a_of_type_Anod = paramanod;
   }
   
   public void a(List<String> paramList)
@@ -352,7 +352,7 @@ public class FrameBmpCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.armap.FrameBmpCache
  * JD-Core Version:    0.7.0.1
  */

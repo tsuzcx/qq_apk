@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.res.AssetManager;
 import android.text.TextUtils;
+import android.util.Log;
 import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.openrender.AEOpenRenderConfig;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
@@ -24,6 +25,7 @@ public abstract class Feature
   private Object initLock = new Object();
   protected boolean isInited = false;
   protected boolean isSoFilesLoaded = false;
+  private String pendingErrorMessage = "";
   private String resourceDirOverrideFeatureManager;
   private String soDirOverrideFeatureManager;
   
@@ -43,7 +45,7 @@ public abstract class Feature
         for (;;)
         {
           if (i >= j) {
-            break label78;
+            break label83;
           }
           boolean bool = localObject[i].equals(paramModelInfo.fileName);
           if (bool) {
@@ -56,6 +58,7 @@ public abstract class Feature
       catch (IOException paramModelInfo)
       {
         paramModelInfo.printStackTrace();
+        setPendingErrorMessage(paramModelInfo);
         return false;
       }
     }
@@ -137,6 +140,7 @@ public abstract class Feature
     catch (Exception localException)
     {
       localException.printStackTrace();
+      setPendingErrorMessage(localException);
     }
     return null;
   }
@@ -179,6 +183,7 @@ public abstract class Feature
     catch (Exception paramString)
     {
       paramString.printStackTrace();
+      setPendingErrorMessage(paramString);
       return false;
     }
     catch (Error paramString)
@@ -202,6 +207,7 @@ public abstract class Feature
     catch (Exception paramString)
     {
       paramString.printStackTrace();
+      setPendingErrorMessage(paramString);
       return false;
     }
     catch (Error paramString)
@@ -373,6 +379,11 @@ public abstract class Feature
   
   public abstract String getName();
   
+  public String getPendingErrorMessage()
+  {
+    return this.pendingErrorMessage;
+  }
+  
   public String getResourceDirOverrideFeatureManager()
   {
     return this.resourceDirOverrideFeatureManager;
@@ -385,6 +396,11 @@ public abstract class Feature
     return this.soDirOverrideFeatureManager;
   }
   
+  public boolean hasError()
+  {
+    return !TextUtils.isEmpty(this.pendingErrorMessage);
+  }
+  
   public boolean init()
   {
     if (!this.isInited) {}
@@ -394,6 +410,7 @@ public abstract class Feature
       if (!bool3) {}
       try
       {
+        setPendingErrorMessage(null);
         boolean bool2 = true & copyAssetsModelsToLocalPath(getModelInfos());
         boolean bool1 = bool2;
         if (FeatureManager.isEnableResourceCheck()) {
@@ -406,6 +423,7 @@ public abstract class Feature
         for (;;)
         {
           AEOpenRenderConfig.checkStrictMode(false, localUnsatisfiedLinkError.toString());
+          setPendingErrorMessage(localUnsatisfiedLinkError);
           this.isInited = false;
         }
       }
@@ -545,6 +563,16 @@ public abstract class Feature
   public boolean reloadModel()
   {
     return true;
+  }
+  
+  protected void setPendingErrorMessage(Throwable paramThrowable)
+  {
+    if (paramThrowable == null)
+    {
+      this.pendingErrorMessage = "";
+      return;
+    }
+    this.pendingErrorMessage = Log.getStackTraceString(paramThrowable);
   }
   
   public void setResourceDirOverrideFeatureManager(String paramString)

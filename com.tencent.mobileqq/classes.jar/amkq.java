@@ -1,87 +1,74 @@
-import android.app.Activity;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class amkq
-  extends GestureDetector.SimpleOnGestureListener
+  extends alko
 {
-  public amkq(SwipePostTableLayout paramSwipePostTableLayout) {}
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  bjxo jdField_a_of_type_Bjxo = null;
+  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public amkq(QQAppInterface paramQQAppInterface)
   {
-    int i = 0;
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    ColorNote localColorNote;
-    if ((SwipePostTableLayout.a(this.a) != null) && (SwipePostTableLayout.a(this.a).getColorNote() != null)) {
-      localColorNote = SwipePostTableLayout.a(this.a).getColorNote();
-    }
-    for (boolean bool = SwipePostTableLayout.a(this.a).a(localColorNote.getServiceType(), localColorNote.getSubType());; bool = false)
+    super(paramQQAppInterface);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bjxo != null)
     {
-      float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-      float f2 = paramMotionEvent1.getY();
-      float f3 = paramMotionEvent2.getY();
-      if ((f1 == 0.0F) || (!this.a.jdField_a_of_type_Boolean) || (paramFloat1 < 200.0F)) {
-        return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      }
-      f2 = Math.abs((f2 - f3) / f1);
-      if ((SwipePostTableLayout.a(this.a) == null) || (SwipePostTableLayout.a(this.a).a())) {
-        i = 1;
-      }
-      if ((f1 < 0.0F) && (f2 < 0.5F))
-      {
-        if (!bool) {
-          break label276;
-        }
-        if (i == 0) {
-          break label254;
-        }
-        this.a.jdField_a_of_type_Amkl.sendEmptyMessage(1);
-        this.a.postInvalidate();
-      }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Amkp != null) {
-          this.a.jdField_a_of_type_Amkp.a();
-        }
-        return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-        label254:
-        SwipePostTableLayout.a(this.a, true);
-        SwipePostTableLayout.a(this.a).a();
-        break;
-        label276:
-        if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
-        {
-          this.a.c = true;
-          if (i != 0)
-          {
-            this.a.d();
-          }
-          else
-          {
-            SwipePostTableLayout.b(this.a, true);
-            SwipePostTableLayout.a(this.a).a();
-          }
-        }
-        else if (i != 0)
-        {
-          this.a.d();
-        }
-        else
-        {
-          SwipePostTableLayout.b(this.a, true);
-          SwipePostTableLayout.a(this.a).a();
-        }
-      }
+      this.jdField_a_of_type_Bjxo.a();
+      this.jdField_a_of_type_Bjxo = null;
     }
   }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ReadInJoyHandler", 2, "readInJoyFeedsMsgNotify, isSuccess=" + paramBoolean1 + ",isNewMsgCome=" + paramBoolean2 + ",reason=" + paramInt);
+    }
+    notifyUI(1, paramBoolean1, new Object[] { Boolean.valueOf(paramBoolean2), Integer.valueOf(paramInt) });
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyHandler", 2, "handleOnlinePushReadInJoyFeedsMsg");
+    }
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null) {
+      this.allowCmdSet = new HashSet();
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return amks.class;
+  }
+  
+  public void onDestroy()
+  {
+    a();
+    super.onDestroy();
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkq
  * JD-Core Version:    0.7.0.1
  */

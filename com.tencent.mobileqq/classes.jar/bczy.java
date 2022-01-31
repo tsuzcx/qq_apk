@@ -1,34 +1,73 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.open.agent.BindGroupFragment;
-import com.tencent.widget.AdapterView;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class bczy
-  implements bfpt
+  extends Drawable
 {
-  public bczy(BindGroupFragment paramBindGroupFragment) {}
+  private int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private int b;
+  private int c;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public bczy(int paramInt1, int paramInt2, int paramInt3)
   {
-    paramAdapterView = ((bczq)paramView.getTag()).a;
-    if (paramAdapterView.isThirdAppBind())
+    if ((paramInt2 > 0) && (paramInt3 > 0))
     {
-      BindGroupFragment.b(this.a, ajya.a(2131701126));
-      return;
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.jdField_a_of_type_AndroidGraphicsPath = bczv.a(this.b, this.c);
     }
-    if (paramAdapterView.isNewTroop())
-    {
-      BindGroupFragment.a(this.a, ajya.a(2131701112), paramAdapterView.troopuin);
-      return;
-    }
-    BindGroupFragment.a(this.a, ajya.a(2131701115));
-    ((akhp)BindGroupFragment.a(this.a).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.a)).intValue(), Integer.valueOf(BindGroupFragment.b(this.a)).intValue(), Long.valueOf(paramAdapterView.troopuin).longValue(), BindGroupFragment.c(this.a));
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
   }
+  
+  public void draw(@NonNull Canvas paramCanvas)
+  {
+    Rect localRect = getBounds();
+    int i = localRect.right - localRect.left;
+    int j = localRect.bottom - localRect.top;
+    if ((i != this.b) && (j != this.c))
+    {
+      this.b = i;
+      this.c = j;
+      this.jdField_a_of_type_AndroidGraphicsPath = bczv.a(this.b, this.c);
+    }
+    paramCanvas.save();
+    paramCanvas.translate(localRect.left, localRect.top);
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.restore();
+  }
+  
+  public int getOpacity()
+  {
+    switch (this.jdField_a_of_type_Int >>> 24)
+    {
+    default: 
+      return -3;
+    case 255: 
+      return -1;
+    }
+    return -2;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bczy
  * JD-Core Version:    0.7.0.1
  */

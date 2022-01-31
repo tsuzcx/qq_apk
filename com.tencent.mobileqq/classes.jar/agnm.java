@@ -1,31 +1,29 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class agnm
-  implements agmh
+  implements nbs
 {
-  agnm(agnl paramagnl, int paramInt) {}
+  agnm(agmy paramagmy) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void loaded(String paramString, int paramInt)
   {
-    if (bkpv.a(this.jdField_a_of_type_Agnl.a, paramLocalMediaInfo))
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a + "Q.hotchat.aio_post_list_plugin", 2, "checkUpByBusinessId:2586|param:" + paramString + "|code:" + paramInt);
+    }
+    paramString = this.a;
+    if ((paramInt == 0) || (8 == paramInt) || (5 == paramInt)) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (PhotoListActivity.l(this.jdField_a_of_type_Agnl.a))
-      {
-        PhotoListActivity.a(this.jdField_a_of_type_Agnl.a, paramLocalMediaInfo);
-        xhb.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
-        return;
-      }
-      this.jdField_a_of_type_Agnl.a.f();
-      this.jdField_a_of_type_Agnl.a.a(paramLocalMediaInfo, this.jdField_a_of_type_Int);
+      agmy.b(paramString, bool);
       return;
     }
-    this.jdField_a_of_type_Agnl.a.f();
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agnm
  * JD-Core Version:    0.7.0.1
  */

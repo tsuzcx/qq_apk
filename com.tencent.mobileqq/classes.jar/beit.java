@@ -1,70 +1,27 @@
-import java.io.FilterOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.FrameLayout;
 
 class beit
-  extends FilterOutputStream
+  extends Handler
 {
-  private beit(beis parambeis, OutputStream paramOutputStream)
+  beit(beis parambeis, Looper paramLooper)
   {
-    super(paramOutputStream);
+    super(paramLooper);
   }
   
-  public void close()
+  public void handleMessage(Message paramMessage)
   {
-    try
-    {
-      this.out.close();
-      return;
+    if (paramMessage.what == 1) {
+      this.a.a(0.0F, 0 - beis.a(this.a).getHeight(), true);
     }
-    catch (IOException localIOException)
-    {
-      beis.a(this.a, true);
-    }
-  }
-  
-  public void flush()
-  {
-    try
-    {
-      this.out.flush();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      beis.a(this.a, true);
-    }
-  }
-  
-  public void write(int paramInt)
-  {
-    try
-    {
-      this.out.write(paramInt);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      beis.a(this.a, true);
-    }
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      this.out.write(paramArrayOfByte, paramInt1, paramInt2);
-      return;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      beis.a(this.a, true);
-    }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beit
  * JD-Core Version:    0.7.0.1
  */

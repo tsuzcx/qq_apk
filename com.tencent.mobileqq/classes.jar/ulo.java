@@ -1,31 +1,45 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class ulo
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tjs>
+class ulo
+  implements awfy
 {
-  public ulo(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  ulo(uln paramuln) {}
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    return null;
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tjs paramtjs)
+  public void a(awfz paramawfz) {}
+  
+  public void b(awfz paramawfz)
   {
-    if (!paramQQStoryShareGroupProfileActivity.g) {
+    if (paramawfz.jdField_b_of_type_Int == 0)
+    {
+      this.a.jdField_a_of_type_Ukt.c = paramawfz.jdField_b_of_type_JavaLangString;
+      this.a.jdField_a_of_type_Ukt.a = paramawfz.c;
+      this.a.b();
+      uln.a(this.a, new ErrorMessage());
       return;
     }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramtjs);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tjs.class;
+    if ((paramawfz.jdField_b_of_type_Int == bato.a(940010)) && (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 2))
+    {
+      uln.a(this.a);
+      wsv.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "retry load file");
+      return;
+    }
+    this.a.b();
+    paramawfz = new ErrorMessage(paramawfz.jdField_b_of_type_Int, paramawfz.a);
+    paramawfz.extraMsg = "upload";
+    uln.a(this.a, paramawfz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ulo
  * JD-Core Version:    0.7.0.1
  */

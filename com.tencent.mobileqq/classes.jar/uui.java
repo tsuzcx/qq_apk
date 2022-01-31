@@ -1,28 +1,46 @@
-import android.content.Context;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.MsgTabWorkThreadHandler.1;
+import java.util.ArrayList;
+import java.util.Set;
 
 public class uui
-  extends vdi
+  extends Handler
 {
-  public uui(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public uui(uuc paramuuc, Looper paramLooper)
   {
-    super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
+    super(paramLooper);
   }
   
-  protected void S_()
+  public void handleMessage(Message paramMessage)
   {
-    wco localwco = a().a("FeedSegment");
-    if ((localwco != null) && (localwco.a() == 0))
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      this.a = true;
-      return;
     }
-    this.a = false;
+    do
+    {
+      do
+      {
+        return;
+        removeMessages(1);
+        wsv.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_LOAD_USER_ITEM_FROM_UI");
+        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilSet);
+        this.a.jdField_a_of_type_JavaUtilSet.clear();
+      } while (!uuc.a(this.a, paramMessage, false));
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new MsgTabNodeListLoader.MsgTabWorkThreadHandler.1(this));
+      return;
+      wsv.b("Q.qqstory.msgTab.MsgTabNodeListLoader.workHandler", "handleMessage() MSG_SCHEDULE_REQUIRE_USER_ITEM");
+      paramMessage = (String)paramMessage.obj;
+    } while (this.a.jdField_a_of_type_JavaUtilSet.contains(paramMessage));
+    this.a.jdField_a_of_type_JavaUtilSet.add(paramMessage);
+    sendEmptyMessageDelayed(1, 2500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uui
  * JD-Core Version:    0.7.0.1
  */

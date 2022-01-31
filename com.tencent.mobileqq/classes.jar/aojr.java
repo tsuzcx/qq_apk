@@ -1,52 +1,61 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
 public class aojr
-  extends aojp
+  extends aofy<aojq>
 {
-  public aojr(aojo paramaojo, aojc paramaojc)
+  public int a()
   {
-    super(paramaojo, paramaojc);
-    this.jdField_a_of_type_Int = 2;
+    return 614;
+  }
+  
+  @NonNull
+  public aojq a(int paramInt)
+  {
+    return new aojq();
+  }
+  
+  @Nullable
+  public aojq a(aogf[] paramArrayOfaogf)
+  {
+    QLog.i("LebaQzoneStyleProcessor", 1, "[onParsed] config");
+    return aojq.a(paramArrayOfaogf);
+  }
+  
+  public Class<aojq> a()
+  {
+    return aojq.class;
   }
   
   public void a(int paramInt)
   {
-    super.a(paramInt);
-    this.jdField_a_of_type_Aojc.a();
-    this.jdField_a_of_type_Aojc.a().a(paramInt);
+    QLog.i("LebaQzoneStyleProcessor", 1, "[onReqFailed] failCode=" + paramInt);
   }
   
-  public boolean a(int paramInt1, int paramInt2)
+  public void a(aojq paramaojq)
   {
-    super.a(paramInt1, paramInt2);
-    switch (paramInt1)
-    {
-    default: 
-      return false;
-    case 103: 
-      this.jdField_a_of_type_Aojc.a().a();
-    case 104: 
-      this.jdField_a_of_type_Aojo.a(0, paramInt2);
-    case 105: 
-      for (;;)
-      {
-        return true;
-        this.jdField_a_of_type_Aojo.a(0, paramInt2);
-      }
-    }
-    this.jdField_a_of_type_Aojc.a().a();
-    this.jdField_a_of_type_Aojo.a(0, paramInt2);
-    this.jdField_a_of_type_Aojo.b(paramInt1, paramInt2);
+    QLog.i("LebaQzoneStyleProcessor", 1, "[onUpdate]");
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
     return false;
   }
   
-  public void b()
+  public boolean c()
   {
-    super.b();
-    this.jdField_a_of_type_Aojc.a().a();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aojr
  * JD-Core Version:    0.7.0.1
  */

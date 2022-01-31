@@ -1,43 +1,43 @@
 package com.tencent.mobileqq.activity;
 
 import ActionMsg.MsgBody;
-import aaqf;
-import aaqh;
-import aaqi;
-import aaqj;
-import aaqk;
-import aaql;
-import aaqm;
-import aaqn;
-import aaqo;
-import aaqp;
-import aaqq;
-import aaqr;
-import aaqs;
-import aaqt;
-import aaqu;
-import aaqv;
-import aaqw;
-import aaqx;
-import aaqz;
-import aara;
-import aarb;
-import aarc;
-import aard;
-import aare;
-import aarf;
-import aaro;
-import aarq;
-import actj;
-import acts;
-import ager;
-import ajsd;
-import ajxl;
-import akat;
-import akaw;
-import akdh;
-import akpx;
-import akte;
+import abot;
+import achd;
+import achf;
+import achg;
+import achh;
+import achi;
+import achj;
+import achk;
+import achl;
+import achm;
+import achn;
+import acho;
+import achp;
+import achq;
+import achr;
+import achs;
+import acht;
+import achu;
+import achv;
+import achx;
+import achy;
+import achz;
+import acia;
+import acib;
+import acic;
+import acid;
+import acim;
+import acio;
+import aekt;
+import aelc;
+import aicw;
+import aljq;
+import aloz;
+import alsi;
+import alsl;
+import aluw;
+import amjj;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -73,35 +73,35 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
-import aobp;
-import aoze;
-import aukp;
-import aukq;
-import aumb;
-import axqy;
-import aywk;
-import bazh;
-import bazl;
-import bbbu;
-import bbcf;
-import bbcz;
-import bbdj;
-import bbdv;
-import bbdx;
-import bbfd;
-import bbfh;
-import bbfj;
-import bbgu;
-import bcqf;
-import bcql;
-import bfni;
-import bfnk;
-import bfos;
-import bfpc;
-import bfpp;
+import aptm;
+import aqsc;
+import awbw;
+import awbx;
+import awdi;
+import azmj;
+import bauj;
+import bcyb;
+import bcyf;
+import bdao;
+import bdaz;
+import bdbt;
+import bdcd;
+import bdcq;
+import bdcs;
+import bddy;
+import bdec;
+import bdee;
+import bdfq;
+import bepp;
+import bhoc;
+import bhoe;
+import bhpo;
+import bhpy;
+import bhql;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -112,13 +112,13 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.TipsBar;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
@@ -138,29 +138,29 @@ public class ChatHistory
   public float a;
   public int a;
   protected long a;
-  public aarf a;
-  public aaro a;
-  public aarq a;
-  protected acts a;
-  public ager a;
-  protected akat a;
-  protected akte a;
+  public acid a;
+  public acim a;
+  public acio a;
+  protected aelc a;
+  public aicw a;
+  protected alsi a;
+  protected amjj a;
   public Dialog a;
   public AnimationDrawable a;
   protected Sensor a;
   public SensorManager a;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aaqf(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new achd(this);
   public Handler a;
   View jdField_a_of_type_AndroidViewView;
   protected Button a;
   public EditText a;
   public ImageView a;
   public TextView a;
-  protected aukp a;
-  public aumb a;
-  bazl jdField_a_of_type_Bazl;
-  public bcqf a;
-  bfos jdField_a_of_type_Bfos = new aaqw(this);
+  protected awbw a;
+  public awdi a;
+  bcyf jdField_a_of_type_Bcyf;
+  public bepp a;
+  bhpo jdField_a_of_type_Bhpo = new achu(this);
   protected AudioPlayer a;
   public SessionInfo a;
   public TipsBar a;
@@ -178,7 +178,7 @@ public class ChatHistory
   protected Button b;
   public ImageView b;
   TextView b;
-  protected bcqf b;
+  protected bepp b;
   public String b;
   protected boolean b;
   public int c;
@@ -210,14 +210,14 @@ public class ChatHistory
     this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
     this.jdField_b_of_type_Long = 0L;
     this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_Aumb = null;
+    this.jdField_a_of_type_Awdi = null;
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_MqqOsMqqHandler = new bfnk(this.jdField_a_of_type_AndroidOsHandler$Callback);
-    this.jdField_a_of_type_AndroidOsHandler = new aaqr(this);
-    this.jdField_a_of_type_Aaro = new aaro(this);
-    this.jdField_a_of_type_Akat = new aaqt(this);
-    this.jdField_a_of_type_Akte = new aaqu(this);
-    this.jdField_a_of_type_Acts = new aaqv(this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new bhoe(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    this.jdField_a_of_type_AndroidOsHandler = new achp(this);
+    this.jdField_a_of_type_Acim = new acim(this);
+    this.jdField_a_of_type_Alsi = new achr(this);
+    this.jdField_a_of_type_Amjj = new achs(this);
+    this.jdField_a_of_type_Aelc = new acht(this);
   }
   
   public static final int a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, StringBuilder paramStringBuilder)
@@ -232,14 +232,14 @@ public class ChatHistory
     if (paramInt == 0)
     {
       paramQQAppInterface = new StringBuilder(" msgtype ");
-      paramQQAppInterface.append(akpx.b());
+      paramQQAppInterface.append(abot.b());
       paramQQAppInterface.append(" and isValid=1 ");
     }
-    for (paramQQAppInterface = bbfd.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), localSQLiteDatabase, "", paramQQAppInterface.toString(), ""); paramQQAppInterface == null; paramQQAppInterface = bbfd.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), localSQLiteDatabase, paramQQAppInterface.toString()))
+    for (paramQQAppInterface = bddy.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), localSQLiteDatabase, "", paramQQAppInterface.toString(), ""); paramQQAppInterface == null; paramQQAppInterface = bddy.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), localSQLiteDatabase, paramQQAppInterface.toString()))
     {
       return 0;
       paramQQAppInterface = new StringBuilder(" where msgtype ");
-      paramQQAppInterface.append(akpx.b());
+      paramQQAppInterface.append(abot.b());
       paramQQAppInterface.append(" and isValid=1 ");
     }
     paramQQAppInterface = localSQLiteDatabase.a(paramQQAppInterface.toString(), null);
@@ -318,28 +318,28 @@ public class ChatHistory
         QLog.i("ChatHistory", 2, "pageIndex = " + n);
       }
     } while (n < 0);
-    this.jdField_a_of_type_Aarf.jdField_c_of_type_Int = ((paramInt - 1) % 8);
+    this.jdField_a_of_type_Acid.jdField_c_of_type_Int = ((paramInt - 1) % 8);
     this.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(n));
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
   }
   
   public MsgBody a(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    if (((paramInt2 != -1003) && (paramInt2 != -1032) && (paramInt2 != -1031) && (paramInt2 != 201)) || ((paramInt1 == 1001) || (paramInt1 == 10002) || (bbbu.a(paramInt2)) || (paramInt2 == -3001) || (paramInt2 == -30002) || (paramInt2 == -30003))) {
-      return bbbu.a(paramString);
+    if (((paramInt2 != -1003) && (paramInt2 != -1032) && (paramInt2 != -1031) && (paramInt2 != 201)) || ((paramInt1 == 1001) || (paramInt1 == 10002) || (bdao.a(paramInt2)) || (paramInt2 == -3001) || (paramInt2 == -30002) || (paramInt2 == -30003))) {
+      return bdao.a(paramString);
     }
     if (paramInt2 == -2009)
     {
       localMsgBody = new MsgBody();
-      boolean bool = bbfh.b(paramInt3);
-      localMsgBody.msg = bbfh.a(aywk.a(paramString), this, bool, false);
+      boolean bool = bdec.b(paramInt3);
+      localMsgBody.msg = bdec.a(bauj.a(paramString), this, bool, false);
       localMsgBody.action = null;
       return localMsgBody;
     }
     if (paramInt2 == -2016)
     {
       localMsgBody = new MsgBody();
-      localMsgBody.msg = bbfh.a(this.app, aywk.a(paramString), this, this.jdField_b_of_type_JavaLangString, null, this.jdField_a_of_type_Int);
+      localMsgBody.msg = bdec.a(this.app, bauj.a(paramString), this, this.jdField_b_of_type_JavaLangString, null, this.jdField_a_of_type_Int);
       localMsgBody.action = null;
       return localMsgBody;
     }
@@ -364,7 +364,7 @@ public class ChatHistory
         break;
       }
       paramString3 = " where " + paramString3;
-      paramString2 = bbfd.b(paramString2, paramString1, localSQLiteDatabase, paramString3);
+      paramString2 = bddy.b(paramString2, paramString1, localSQLiteDatabase, paramString3);
     } while (paramString2 == null);
     paramString2.append(" t left join TroopMemberInfo m on t.senderuin=m.memberuin and t.frienduin=m.troopuin");
     for (;;)
@@ -413,7 +413,7 @@ public class ChatHistory
         if (paramString1.indexOf("mr_discusssion_") != -1)
         {
           paramString3 = " where " + paramString3;
-          paramString2 = bbfd.b(paramString2, paramString1, localSQLiteDatabase, paramString3);
+          paramString2 = bddy.b(paramString2, paramString1, localSQLiteDatabase, paramString3);
           if (paramString2 == null) {
             break;
           }
@@ -429,7 +429,7 @@ public class ChatHistory
           }
           continue;
         }
-        paramString2 = bbfd.a(paramString2, paramString1, localSQLiteDatabase, paramString3, null);
+        paramString2 = bddy.a(paramString2, paramString1, localSQLiteDatabase, paramString3, null);
         if (paramString2 != null) {
           try
           {
@@ -447,21 +447,21 @@ public class ChatHistory
     }
   }
   
-  public aukp a()
+  public awbw a()
   {
-    if ((this.jdField_a_of_type_Aukp == null) || (!this.jdField_a_of_type_Aukp.a())) {}
+    if ((this.jdField_a_of_type_Awbw == null) || (!this.jdField_a_of_type_Awbw.a())) {}
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if ((this.jdField_a_of_type_Aukp == null) || (!this.jdField_a_of_type_Aukp.a())) {
-        this.jdField_a_of_type_Aukp = this.app.getEntityManagerFactory().createMessageRecordEntityManager();
+      if ((this.jdField_a_of_type_Awbw == null) || (!this.jdField_a_of_type_Awbw.a())) {
+        this.jdField_a_of_type_Awbw = this.app.getEntityManagerFactory().createMessageRecordEntityManager();
       }
-      return this.jdField_a_of_type_Aukp;
+      return this.jdField_a_of_type_Awbw;
     }
   }
   
   protected String a()
   {
-    String str = bbcz.h(this.app, this.app.getCurrentAccountUin());
+    String str = bdbt.h(this.app, this.app.getCurrentAccountUin());
     if ((str != null) && (!str.trim().equals(""))) {
       return str;
     }
@@ -499,7 +499,7 @@ public class ChatHistory
       if (!TextUtils.isEmpty(paramAbsStructMsg.mSourceName))
       {
         localStringBuffer.append(paramAbsStructMsg.mSourceName);
-        localStringBuffer.append(" " + getString(2131719813) + " ");
+        localStringBuffer.append(" " + getString(2131720339) + " ");
         if (!TextUtils.isEmpty(paramAbsStructMsg.mContentTitle)) {
           localStringBuffer.append(paramAbsStructMsg.mContentTitle);
         }
@@ -513,10 +513,10 @@ public class ChatHistory
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar = new TipsBar(getActivity());
     this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setBarType(4);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setTipsIcon(getActivity().getResources().getDrawable(2130838101));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setTipsIcon(getActivity().getResources().getDrawable(2130838157));
     localRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar, localLayoutParams);
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(localRelativeLayout);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setOnClickListener(new aaqz(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setOnClickListener(new achx(this));
     this.jdField_c_of_type_AndroidWidgetTextView = this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.a();
     this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
   }
@@ -525,12 +525,12 @@ public class ChatHistory
   {
     if (paramInt > 0)
     {
-      Cursor localCursor = this.jdField_a_of_type_Aarf.getCursor();
+      Cursor localCursor = this.jdField_a_of_type_Acid.getCursor();
       if (localCursor != null) {
         localCursor.requery();
       }
     }
-    if ((this.jdField_a_of_type_Int == 0) && (((CheckBox)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131364976)).isChecked()))
+    if ((this.jdField_a_of_type_Int == 0) && (((CheckBox)this.jdField_b_of_type_AndroidAppDialog.findViewById(2131365061)).isChecked()))
     {
       j();
       this.app.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
@@ -587,7 +587,7 @@ public class ChatHistory
   
   public void a(int paramInt, String paramString)
   {
-    bcql.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
+    QQToast.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -597,7 +597,7 @@ public class ChatHistory
   
   protected void a(Bundle paramBundle)
   {
-    Intent localIntent = actj.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = aekt.a(new Intent(this, SplashActivity.class), null);
     localIntent.putExtras(new Bundle(paramBundle));
     startActivity(localIntent);
   }
@@ -618,16 +618,16 @@ public class ChatHistory
     }
   }
   
-  public void a(ImageView paramImageView, aobp paramaobp)
+  public void a(ImageView paramImageView, aptm paramaptm)
   {
-    if ((paramImageView != null) && (paramaobp != null) && (paramaobp.b()))
+    if ((paramImageView != null) && (paramaptm != null) && (paramaptm.b()))
     {
-      paramaobp = paramaobp.a("fromAIO", true);
+      paramaptm = paramaptm.a("fromAIO", true);
       Drawable localDrawable = paramImageView.getDrawable();
       if ((localDrawable instanceof URLDrawable)) {
-        aobp.b((URLDrawable)localDrawable);
+        aptm.b((URLDrawable)localDrawable);
       }
-      paramImageView.setImageDrawable(paramaobp);
+      paramImageView.setImageDrawable(paramaptm);
     }
   }
   
@@ -642,12 +642,12 @@ public class ChatHistory
     }
     for (;;)
     {
-      bfpc localbfpc = (bfpc)bfpp.a(this, null);
-      localbfpc.a(getResources().getString(2131696396));
-      localbfpc.a(2131691507, 3);
-      localbfpc.c(2131690596);
-      localbfpc.a(new aaqx(this, paramMessageRecord, localbfpc));
-      localbfpc.show();
+      bhpy localbhpy = (bhpy)bhql.a(this, null);
+      localbhpy.a(getResources().getString(2131696568));
+      localbhpy.a(2131691561, 3);
+      localbhpy.c(2131690648);
+      localbhpy.a(new achv(this, paramMessageRecord, localbhpy));
+      localbhpy.show();
       return;
       label110:
       QLog.d("Q.msg.delmsg", 2, "startDelMsg is called,mr is null");
@@ -656,28 +656,28 @@ public class ChatHistory
   
   public void a(String paramString)
   {
-    View localView = getLayoutInflater().inflate(2131558980, null);
+    View localView = getLayoutInflater().inflate(2131559017, null);
     if (1 == this.jdField_a_of_type_Int)
     {
-      ((TextView)localView.findViewById(2131377046)).setText(2131691041);
-      localView.findViewById(2131364976).setVisibility(8);
+      ((TextView)localView.findViewById(2131377567)).setText(2131691094);
+      localView.findViewById(2131365061).setVisibility(8);
     }
     for (;;)
     {
       if (!isFinishing())
       {
-        this.jdField_b_of_type_AndroidAppDialog = bbdj.a(this, 230).setTitle(getString(2131691522)).setPositiveButton(getString(2131691507), new aaqn(this, paramString)).setNegativeButton(getString(2131690573), new aaqm(this)).addView(localView);
+        this.jdField_b_of_type_AndroidAppDialog = bdcd.a(this, 230).setTitle(getString(2131691577)).setPositiveButton(getString(2131691561), new achl(this, paramString)).setNegativeButton(getString(2131690624), new achk(this)).addView(localView);
         this.jdField_b_of_type_AndroidAppDialog.show();
       }
       return;
       if (3000 == this.jdField_a_of_type_Int)
       {
-        ((TextView)localView.findViewById(2131377046)).setText(2131691040);
-        localView.findViewById(2131364976).setVisibility(8);
+        ((TextView)localView.findViewById(2131377567)).setText(2131691093);
+        localView.findViewById(2131365061).setVisibility(8);
       }
       else if ((1001 == this.jdField_a_of_type_Int) || (10002 == this.jdField_a_of_type_Int) || (1000 == this.jdField_a_of_type_Int) || (10004 == this.jdField_a_of_type_Int) || (1020 == this.jdField_a_of_type_Int) || (1004 == this.jdField_a_of_type_Int))
       {
-        localView.findViewById(2131364976).setVisibility(8);
+        localView.findViewById(2131365061).setVisibility(8);
       }
     }
   }
@@ -685,17 +685,17 @@ public class ChatHistory
   @SuppressLint({"NewApi"})
   protected void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131369275));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131369510));
     c();
     a();
-    this.jdField_a_of_type_Aarf = new aarf(this, this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Aarf);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_Bfos);
+    this.jdField_a_of_type_Acid = new acid(this, this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Acid);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(this.jdField_a_of_type_Bhpo);
     this.jdField_a_of_type_ComTencentWidgetXListView.setEdgeEffectEnabled(false);
     if (Build.VERSION.SDK_INT >= 9) {
       this.jdField_a_of_type_ComTencentWidgetXListView.setOverscrollFooter(null);
     }
-    this.jdField_a_of_type_Aarf.a(paramString, paramInt, this.jdField_e_of_type_Int);
+    this.jdField_a_of_type_Acid.a(paramString, paramInt, this.jdField_e_of_type_Int);
   }
   
   boolean a(int paramInt)
@@ -705,7 +705,7 @@ public class ChatHistory
     }
     this.jdField_b_of_type_Boolean = true;
     int n = (paramInt - 1) / 8;
-    this.jdField_a_of_type_Aarf.jdField_c_of_type_Int = ((paramInt - 1) % 8);
+    this.jdField_a_of_type_Acid.jdField_c_of_type_Int = ((paramInt - 1) % 8);
     this.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(n + 1));
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
     return true;
@@ -713,24 +713,24 @@ public class ChatHistory
   
   public void b()
   {
-    View localView1 = findViewById(2131377450);
-    View localView2 = findViewById(2131375493);
+    View localView1 = findViewById(2131377987);
+    View localView2 = findViewById(2131375981);
     int n = localView1.getHeight();
-    this.jdField_a_of_type_Ager = new ager(this, this.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.jdField_a_of_type_Aicw = new aicw(this, this.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -n);
     localTranslateAnimation1.setDuration(200L);
     localTranslateAnimation1.setFillAfter(true);
     TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -n, 0.0F);
     localTranslateAnimation2.setDuration(200L);
-    localTranslateAnimation1.setAnimationListener(new aara(this, localView2, localView1));
-    localTranslateAnimation2.setAnimationListener(new aarb(this, localView2, n));
-    this.jdField_a_of_type_Ager.setOnDismissListener(new aarc(this, localView2, n, localView1, localTranslateAnimation2));
+    localTranslateAnimation1.setAnimationListener(new achy(this, localView2, localView1));
+    localTranslateAnimation2.setAnimationListener(new achz(this, localView2, n));
+    this.jdField_a_of_type_Aicw.setOnDismissListener(new acia(this, localView2, n, localView1, localTranslateAnimation2));
     localView2.startAnimation(localTranslateAnimation1);
   }
   
   public void b(int paramInt)
   {
-    bcql.a(getActivity(), paramInt, 0).b(getResources().getDimensionPixelSize(2131298865));
+    QQToast.a(getActivity(), paramInt, 0).b(getResources().getDimensionPixelSize(2131298914));
   }
   
   public void b(ImageView paramImageView)
@@ -738,19 +738,19 @@ public class ChatHistory
     if (paramImageView != null)
     {
       this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-      paramImageView.setImageDrawable(getResources().getDrawable(2130846223));
+      paramImageView.setImageDrawable(getResources().getDrawable(2130846602));
     }
   }
   
-  public void b(ImageView paramImageView, aobp paramaobp)
+  public void b(ImageView paramImageView, aptm paramaptm)
   {
-    if ((paramImageView != null) && (paramaobp != null) && (paramaobp.b()))
+    if ((paramImageView != null) && (paramaptm != null) && (paramaptm.b()))
     {
-      paramaobp = paramaobp.a("fromAIO", true);
-      if ((paramaobp instanceof URLDrawable)) {
-        aobp.a((URLDrawable)paramaobp);
+      paramaptm = paramaptm.a("fromAIO", true);
+      if ((paramaptm instanceof URLDrawable)) {
+        aptm.a((URLDrawable)paramaptm);
       }
-      paramImageView.setImageDrawable(paramaobp);
+      paramImageView.setImageDrawable(paramaptm);
     }
   }
   
@@ -782,7 +782,7 @@ public class ChatHistory
     //   15: if_icmpeq +10 -> 25
     //   18: iload_2
     //   19: sipush 3000
-    //   22: if_icmpne +514 -> 536
+    //   22: if_icmpne +505 -> 527
     //   25: aload_1
     //   26: iload_2
     //   27: invokestatic 168	com/tencent/mobileqq/data/MessageRecord:getOldTableName	(Ljava/lang/String;I)Ljava/lang/String;
@@ -792,10 +792,10 @@ public class ChatHistory
     //   35: aload_0
     //   36: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   39: invokevirtual 144	com/tencent/mobileqq/app/QQAppInterface:b	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   42: invokestatic 927	bbfd:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/app/SQLiteDatabase;)Ljava/lang/StringBuilder;
+    //   42: invokestatic 927	bddy:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/app/SQLiteDatabase;)Ljava/lang/StringBuilder;
     //   45: astore 6
     //   47: aload 6
-    //   49: ifnull +1252 -> 1301
+    //   49: ifnull +1262 -> 1311
     //   52: aload_0
     //   53: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   56: invokevirtual 144	com/tencent/mobileqq/app/QQAppInterface:b	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
@@ -811,7 +811,7 @@ public class ChatHistory
     //   76: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   79: aload_1
     //   80: iconst_1
-    //   81: invokestatic 930	bbcz:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;I)Ljava/lang/String;
+    //   81: invokestatic 930	bdbt:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;I)Ljava/lang/String;
     //   84: astore_1
     //   85: aload 10
     //   87: new 146	java/lang/StringBuilder
@@ -835,10 +835,10 @@ public class ChatHistory
     //   129: invokevirtual 480	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   132: pop
     //   133: aload 8
-    //   135: ifnull +358 -> 493
+    //   135: ifnull +349 -> 484
     //   138: aload 8
     //   140: invokeinterface 938 1 0
-    //   145: ifeq +348 -> 493
+    //   145: ifeq +339 -> 484
     //   148: aload 7
     //   150: astore 6
     //   152: aload 8
@@ -855,19 +855,19 @@ public class ChatHistory
     //   187: astore_1
     //   188: iconst_1
     //   189: iload_2
-    //   190: if_icmpne +437 -> 627
+    //   190: if_icmpne +428 -> 618
     //   193: aload_0
     //   194: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   197: aload_0
     //   198: getfield 286	com/tencent/mobileqq/activity/ChatHistory:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   201: invokestatic 950	com/tencent/mobileqq/data/TroopInfo:isQidianPrivateTroop	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Z
-    //   204: ifeq +390 -> 594
+    //   204: ifeq +381 -> 585
     //   207: aload_0
     //   208: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   211: aload_0
     //   212: getfield 286	com/tencent/mobileqq/activity/ChatHistory:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   215: aload_1
-    //   216: invokestatic 953	bbcz:h	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   216: invokestatic 953	bdbt:h	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   219: astore_1
     //   220: aload 8
     //   222: aload 8
@@ -876,8 +876,8 @@ public class ChatHistory
     //   232: invokeinterface 941 2 0
     //   237: istore_3
     //   238: iload_3
-    //   239: invokestatic 956	bbfh:a	(I)Z
-    //   242: ifeq +430 -> 672
+    //   239: invokestatic 956	bdec:a	(I)Z
+    //   242: ifeq +421 -> 663
     //   245: aload_0
     //   246: invokevirtual 958	com/tencent/mobileqq/activity/ChatHistory:a	()Ljava/lang/String;
     //   249: astore 9
@@ -890,7 +890,7 @@ public class ChatHistory
     //   268: ldc_w 960
     //   271: invokeinterface 207 2 0
     //   276: invokeinterface 941 2 0
-    //   281: ifgt +397 -> 678
+    //   281: ifgt +388 -> 669
     //   284: aload 8
     //   286: aload 8
     //   288: ldc_w 961
@@ -901,28 +901,28 @@ public class ChatHistory
     //   303: astore 6
     //   305: aload_1
     //   306: ifnull +17 -> 323
-    //   309: new 963	aykk
+    //   309: new 963	baig
     //   312: dup
     //   313: aload_1
     //   314: iconst_3
-    //   315: invokespecial 966	aykk:<init>	(Ljava/lang/CharSequence;I)V
-    //   318: invokevirtual 967	aykk:a	()Ljava/lang/String;
+    //   315: invokespecial 966	baig:<init>	(Ljava/lang/CharSequence;I)V
+    //   318: invokevirtual 967	baig:a	()Ljava/lang/String;
     //   321: astore 6
     //   323: aload 6
     //   325: astore 7
     //   327: aload 6
-    //   329: ifnull +76 -> 405
+    //   329: ifnull +67 -> 396
     //   332: aload 6
     //   334: astore 7
     //   336: aload 6
     //   338: invokevirtual 399	java/lang/String:length	()I
-    //   341: ifle +64 -> 405
+    //   341: ifle +55 -> 396
     //   344: aload 6
     //   346: astore 7
     //   348: aload_0
     //   349: aload 6
     //   351: invokevirtual 969	com/tencent/mobileqq/activity/ChatHistory:b	(Ljava/lang/String;)Z
-    //   354: ifeq +51 -> 405
+    //   354: ifeq +42 -> 396
     //   357: aload 6
     //   359: ldc_w 971
     //   362: invokevirtual 974	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
@@ -934,434 +934,451 @@ public class ChatHistory
     //   375: aload 7
     //   377: arraylength
     //   378: iconst_2
-    //   379: if_icmpge +862 -> 1241
+    //   379: if_icmpge +853 -> 1232
     //   382: iconst_1
     //   383: istore_3
-    //   384: iload_3
-    //   385: iconst_1
-    //   386: if_icmpeq +10 -> 396
-    //   389: iload_3
-    //   390: ldc_w 977
-    //   393: if_icmpne +862 -> 1255
-    //   396: aload_0
-    //   397: ldc_w 978
-    //   400: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
-    //   403: astore 7
-    //   405: new 146	java/lang/StringBuilder
-    //   408: dup
-    //   409: invokespecial 299	java/lang/StringBuilder:<init>	()V
-    //   412: aload_0
-    //   413: iload 4
-    //   415: i2l
-    //   416: ldc2_w 979
-    //   419: lmul
-    //   420: invokevirtual 982	com/tencent/mobileqq/activity/ChatHistory:a	(J)Ljava/lang/String;
-    //   423: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   426: ldc_w 984
-    //   429: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   432: aload 9
-    //   434: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   437: ldc_w 986
-    //   440: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   443: aload 7
-    //   445: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   448: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   451: astore 6
-    //   453: aload 10
-    //   455: new 146	java/lang/StringBuilder
-    //   458: dup
-    //   459: invokespecial 299	java/lang/StringBuilder:<init>	()V
-    //   462: aload 6
-    //   464: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   467: ldc_w 988
-    //   470: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   473: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   476: invokevirtual 480	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
-    //   479: pop
-    //   480: aload_1
-    //   481: astore 6
-    //   483: aload 8
-    //   485: invokeinterface 991 1 0
-    //   490: ifne -338 -> 152
-    //   493: aload 8
-    //   495: ifnull +10 -> 505
-    //   498: aload 8
-    //   500: invokeinterface 220 1 0
+    //   384: goto +933 -> 1317
+    //   387: aload_0
+    //   388: ldc_w 977
+    //   391: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
+    //   394: astore 7
+    //   396: new 146	java/lang/StringBuilder
+    //   399: dup
+    //   400: invokespecial 299	java/lang/StringBuilder:<init>	()V
+    //   403: aload_0
+    //   404: iload 4
+    //   406: i2l
+    //   407: ldc2_w 978
+    //   410: lmul
+    //   411: invokevirtual 981	com/tencent/mobileqq/activity/ChatHistory:a	(J)Ljava/lang/String;
+    //   414: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   417: ldc_w 983
+    //   420: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   423: aload 9
+    //   425: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   428: ldc_w 985
+    //   431: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   434: aload 7
+    //   436: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   439: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   442: astore 6
+    //   444: aload 10
+    //   446: new 146	java/lang/StringBuilder
+    //   449: dup
+    //   450: invokespecial 299	java/lang/StringBuilder:<init>	()V
+    //   453: aload 6
+    //   455: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   458: ldc_w 987
+    //   461: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   464: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   467: invokevirtual 480	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   470: pop
+    //   471: aload_1
+    //   472: astore 6
+    //   474: aload 8
+    //   476: invokeinterface 990 1 0
+    //   481: ifne -329 -> 152
+    //   484: aload 8
+    //   486: ifnull +10 -> 496
+    //   489: aload 8
+    //   491: invokeinterface 220 1 0
+    //   496: aload_0
+    //   497: new 992	com/tencent/mobileqq/activity/ChatHistory$21
+    //   500: dup
+    //   501: aload_0
+    //   502: getstatic 997	aljq:aY	Ljava/lang/String;
     //   505: aload_0
-    //   506: new 993	com/tencent/mobileqq/activity/ChatHistory$21
-    //   509: dup
-    //   510: aload_0
-    //   511: getstatic 998	ajsd:aX	Ljava/lang/String;
-    //   514: aload_0
-    //   515: getfield 68	com/tencent/mobileqq/activity/ChatHistory:jdField_a_of_type_JavaLangStringBuffer	Ljava/lang/StringBuffer;
-    //   518: invokevirtual 489	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   521: aload 10
-    //   523: invokevirtual 489	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   526: invokestatic 1003	bbdx:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
-    //   529: invokespecial 1006	com/tencent/mobileqq/activity/ChatHistory$21:<init>	(Lcom/tencent/mobileqq/activity/ChatHistory;Z)V
-    //   532: invokevirtual 1010	com/tencent/mobileqq/activity/ChatHistory:runOnUiThread	(Ljava/lang/Runnable;)V
-    //   535: return
-    //   536: new 146	java/lang/StringBuilder
-    //   539: dup
-    //   540: invokespecial 299	java/lang/StringBuilder:<init>	()V
-    //   543: ldc_w 1012
-    //   546: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   549: invokestatic 156	akpx:b	()Ljava/lang/String;
-    //   552: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   555: ldc_w 1014
-    //   558: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   561: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   564: astore 6
-    //   566: aload_1
-    //   567: iload_2
-    //   568: invokestatic 168	com/tencent/mobileqq/data/MessageRecord:getOldTableName	(Ljava/lang/String;I)Ljava/lang/String;
-    //   571: aload_1
-    //   572: iload_2
-    //   573: invokestatic 171	com/tencent/mobileqq/data/MessageRecord:getTableName	(Ljava/lang/String;I)Ljava/lang/String;
-    //   576: aload_0
-    //   577: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   580: invokevirtual 144	com/tencent/mobileqq/app/QQAppInterface:b	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   583: aload 6
-    //   585: aconst_null
-    //   586: invokestatic 415	bbfd:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/app/SQLiteDatabase;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   589: astore 6
-    //   591: goto -544 -> 47
-    //   594: ldc_w 1016
-    //   597: iconst_2
-    //   598: anewarray 84	java/lang/Object
-    //   601: dup
-    //   602: iconst_0
-    //   603: aload_0
-    //   604: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   607: aload_0
-    //   608: getfield 286	com/tencent/mobileqq/activity/ChatHistory:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   611: aload_1
-    //   612: invokestatic 953	bbcz:h	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   615: aastore
-    //   616: dup
-    //   617: iconst_1
-    //   618: aload_1
-    //   619: aastore
-    //   620: invokestatic 1019	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   623: astore_1
-    //   624: goto -404 -> 220
-    //   627: sipush 3000
-    //   630: iload_2
-    //   631: if_icmpne +33 -> 664
-    //   634: ldc_w 1016
-    //   637: iconst_2
-    //   638: anewarray 84	java/lang/Object
-    //   641: dup
-    //   642: iconst_0
-    //   643: aload_0
-    //   644: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   647: aload_1
-    //   648: iconst_0
-    //   649: invokestatic 930	bbcz:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;I)Ljava/lang/String;
-    //   652: aastore
-    //   653: dup
-    //   654: iconst_1
-    //   655: aload_1
-    //   656: aastore
-    //   657: invokestatic 1019	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   660: astore_1
-    //   661: goto -441 -> 220
-    //   664: aload_0
-    //   665: getfield 1021	com/tencent/mobileqq/activity/ChatHistory:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   668: astore_1
-    //   669: goto -449 -> 220
-    //   672: aload_1
-    //   673: astore 9
-    //   675: goto -424 -> 251
-    //   678: aload 8
-    //   680: aload 8
-    //   682: ldc_w 1023
-    //   685: invokeinterface 207 2 0
-    //   690: invokeinterface 941 2 0
-    //   695: istore 5
-    //   697: iload 5
-    //   699: sipush -2007
-    //   702: if_icmpne +14 -> 716
-    //   705: aload_0
-    //   706: ldc_w 1024
-    //   709: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
-    //   712: astore_1
-    //   713: goto -411 -> 302
-    //   716: iload 5
-    //   718: sipush -2058
-    //   721: if_icmpne +14 -> 735
-    //   724: aload_0
-    //   725: ldc_w 1025
-    //   728: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
-    //   731: astore_1
-    //   732: goto -430 -> 302
-    //   735: iload 5
-    //   737: sipush -2039
-    //   740: if_icmpne +50 -> 790
-    //   743: aload 8
-    //   745: aload 8
-    //   747: ldc_w 1027
-    //   750: invokeinterface 207 2 0
-    //   755: invokeinterface 1031 2 0
-    //   760: astore_1
-    //   761: new 1033	com/tencent/mobileqq/data/MessageForApollo
-    //   764: dup
-    //   765: invokespecial 1034	com/tencent/mobileqq/data/MessageForApollo:<init>	()V
-    //   768: astore 6
-    //   770: aload 6
-    //   772: aload_1
-    //   773: putfield 1037	com/tencent/mobileqq/data/MessageForApollo:msgData	[B
-    //   776: aload 6
-    //   778: invokevirtual 1040	com/tencent/mobileqq/data/MessageForApollo:parse	()V
-    //   781: aload 6
-    //   783: invokestatic 1045	com/tencent/mobileqq/apollo/utils/ApolloUtil:a	(Lcom/tencent/mobileqq/data/MessageForApollo;)Ljava/lang/String;
-    //   786: astore_1
-    //   787: goto -485 -> 302
-    //   790: iload 5
-    //   792: sipush -2011
-    //   795: if_icmpne +31 -> 826
-    //   798: aload_0
-    //   799: aload 8
-    //   801: aload 8
-    //   803: ldc_w 1027
-    //   806: invokeinterface 207 2 0
-    //   811: invokeinterface 1031 2 0
-    //   816: invokestatic 1050	axva:a	([B)Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
-    //   819: invokevirtual 1052	com/tencent/mobileqq/activity/ChatHistory:a	(Lcom/tencent/mobileqq/structmsg/AbsStructMsg;)Ljava/lang/String;
-    //   822: astore_1
-    //   823: goto -521 -> 302
-    //   826: iload 5
-    //   828: sipush -2020
-    //   831: if_icmpne +58 -> 889
-    //   834: iload_3
-    //   835: invokestatic 956	bbfh:a	(I)Z
-    //   838: ifeq +34 -> 872
-    //   841: aload_0
-    //   842: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   845: invokevirtual 1056	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   848: ldc_w 1057
-    //   851: iconst_1
-    //   852: anewarray 84	java/lang/Object
-    //   855: dup
-    //   856: iconst_0
-    //   857: aload_0
-    //   858: getfield 853	com/tencent/mobileqq/activity/ChatHistory:jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
-    //   861: getfield 1061	com/tencent/mobileqq/activity/aio/SessionInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   864: aastore
-    //   865: invokevirtual 1066	com/tencent/qphone/base/util/BaseApplication:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
-    //   868: astore_1
-    //   869: goto -567 -> 302
-    //   872: aload_0
-    //   873: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   876: invokevirtual 1056	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   879: ldc_w 1067
-    //   882: invokevirtual 1068	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
-    //   885: astore_1
-    //   886: goto -584 -> 302
-    //   889: aload 6
-    //   891: astore_1
-    //   892: iload 5
-    //   894: sipush -2006
-    //   897: if_icmpeq -417 -> 480
-    //   900: iload 5
-    //   902: sipush -2000
-    //   905: if_icmpne +13 -> 918
-    //   908: ldc_w 1069
-    //   911: invokestatic 1073	ajya:a	(I)Ljava/lang/String;
-    //   914: astore_1
-    //   915: goto -613 -> 302
-    //   918: iload 5
-    //   920: sipush -2002
-    //   923: if_icmpne +13 -> 936
-    //   926: ldc_w 1074
-    //   929: invokestatic 1073	ajya:a	(I)Ljava/lang/String;
-    //   932: astore_1
-    //   933: goto -631 -> 302
-    //   936: iload 5
-    //   938: sipush -2022
-    //   941: if_icmpne +13 -> 954
-    //   944: ldc_w 1075
-    //   947: invokestatic 1073	ajya:a	(I)Ljava/lang/String;
-    //   950: astore_1
-    //   951: goto -649 -> 302
-    //   954: iload 5
-    //   956: sipush -2071
-    //   959: if_icmpne +14 -> 973
-    //   962: aload_0
-    //   963: ldc_w 1076
-    //   966: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
-    //   969: astore_1
-    //   970: goto -668 -> 302
-    //   973: iload 5
-    //   975: sipush -7001
-    //   978: if_icmpne +14 -> 992
-    //   981: aload_0
-    //   982: ldc_w 1077
-    //   985: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
-    //   988: astore_1
-    //   989: goto -687 -> 302
-    //   992: iload 5
-    //   994: sipush -1035
-    //   997: if_icmpne +202 -> 1199
-    //   1000: new 146	java/lang/StringBuilder
-    //   1003: dup
-    //   1004: invokespecial 299	java/lang/StringBuilder:<init>	()V
-    //   1007: astore_1
-    //   1008: aload 8
-    //   1010: aload 8
-    //   1012: ldc_w 1027
-    //   1015: invokeinterface 207 2 0
-    //   1020: invokeinterface 1031 2 0
-    //   1025: astore 7
-    //   1027: new 1079	localpb/richMsg/MixedMsg$Msg
-    //   1030: dup
-    //   1031: invokespecial 1080	localpb/richMsg/MixedMsg$Msg:<init>	()V
-    //   1034: astore 6
-    //   1036: aload 6
-    //   1038: aload 7
-    //   1040: invokevirtual 1084	localpb/richMsg/MixedMsg$Msg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   1043: pop
-    //   1044: aload 6
-    //   1046: getfield 1088	localpb/richMsg/MixedMsg$Msg:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1049: invokevirtual 1094	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   1052: invokeinterface 1099 1 0
-    //   1057: ifgt +51 -> 1108
-    //   1060: aload 8
-    //   1062: ifnull -527 -> 535
-    //   1065: aload 8
-    //   1067: invokeinterface 220 1 0
-    //   1072: return
-    //   1073: astore 6
-    //   1075: invokestatic 298	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1078: ifeq +12 -> 1090
-    //   1081: ldc 61
-    //   1083: iconst_2
-    //   1084: ldc_w 1101
-    //   1087: invokestatic 307	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1090: aload_1
-    //   1091: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1094: astore_1
-    //   1095: goto -793 -> 302
-    //   1098: astore 7
-    //   1100: aload 7
-    //   1102: invokevirtual 1104	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
-    //   1105: goto -61 -> 1044
-    //   1108: aload 6
-    //   1110: getfield 1088	localpb/richMsg/MixedMsg$Msg:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1113: invokevirtual 1094	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   1116: invokeinterface 1099 1 0
-    //   1121: istore 5
-    //   1123: iconst_0
-    //   1124: istore_3
-    //   1125: iload_3
-    //   1126: iload 5
-    //   1128: if_icmpge -38 -> 1090
-    //   1131: aload 6
-    //   1133: getfield 1088	localpb/richMsg/MixedMsg$Msg:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   1136: invokevirtual 1094	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
-    //   1139: iload_3
-    //   1140: invokeinterface 1107 2 0
-    //   1145: checkcast 1109	localpb/richMsg/MixedMsg$Elem
-    //   1148: astore 7
-    //   1150: aload 7
-    //   1152: getfield 1113	localpb/richMsg/MixedMsg$Elem:textMsg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1155: invokevirtual 1118	com/tencent/mobileqq/pb/PBStringField:has	()Z
-    //   1158: ifeq +19 -> 1177
-    //   1161: aload_1
-    //   1162: aload 7
-    //   1164: getfield 1113	localpb/richMsg/MixedMsg$Elem:textMsg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   1167: invokevirtual 1120	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   1170: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1173: pop
-    //   1174: goto +133 -> 1307
-    //   1177: aload 7
-    //   1179: getfield 1124	localpb/richMsg/MixedMsg$Elem:picMsg	Llocalpb/richMsg/RichMsg$PicRec;
-    //   1182: invokevirtual 1127	localpb/richMsg/RichMsg$PicRec:has	()Z
-    //   1185: ifeq +122 -> 1307
-    //   1188: aload_1
-    //   1189: ldc_w 1129
-    //   1192: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1195: pop
-    //   1196: goto +111 -> 1307
-    //   1199: new 213	java/lang/String
-    //   1202: dup
-    //   1203: aload 8
-    //   1205: aload 8
-    //   1207: ldc_w 1027
-    //   1210: invokeinterface 207 2 0
-    //   1215: invokeinterface 1031 2 0
-    //   1220: ldc_w 1131
-    //   1223: invokespecial 1134	java/lang/String:<init>	([BLjava/lang/String;)V
-    //   1226: astore_1
-    //   1227: goto -925 -> 302
-    //   1230: astore_1
-    //   1231: aload_1
-    //   1232: invokevirtual 1135	java/lang/Exception:printStackTrace	()V
-    //   1235: aload 6
-    //   1237: astore_1
-    //   1238: goto -936 -> 302
-    //   1241: aload 7
-    //   1243: iconst_2
-    //   1244: aaload
-    //   1245: invokestatic 1140	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   1248: invokevirtual 1143	java/lang/Integer:intValue	()I
-    //   1251: istore_3
-    //   1252: goto -868 -> 384
-    //   1255: aload 6
-    //   1257: astore 7
-    //   1259: iload_3
-    //   1260: iconst_2
-    //   1261: if_icmpne -856 -> 405
-    //   1264: new 146	java/lang/StringBuilder
-    //   1267: dup
-    //   1268: invokespecial 299	java/lang/StringBuilder:<init>	()V
-    //   1271: ldc_w 477
-    //   1274: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1277: aload_0
-    //   1278: ldc_w 1144
-    //   1281: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
-    //   1284: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1287: ldc_w 485
-    //   1290: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1293: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1296: astore 7
-    //   1298: goto -893 -> 405
-    //   1301: aconst_null
-    //   1302: astore 8
-    //   1304: goto -1234 -> 70
-    //   1307: iload_3
-    //   1308: iconst_1
-    //   1309: iadd
-    //   1310: istore_3
-    //   1311: goto -186 -> 1125
+    //   506: getfield 68	com/tencent/mobileqq/activity/ChatHistory:jdField_a_of_type_JavaLangStringBuffer	Ljava/lang/StringBuffer;
+    //   509: invokevirtual 489	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   512: aload 10
+    //   514: invokevirtual 489	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   517: invokestatic 1002	bdcs:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   520: invokespecial 1005	com/tencent/mobileqq/activity/ChatHistory$21:<init>	(Lcom/tencent/mobileqq/activity/ChatHistory;Z)V
+    //   523: invokevirtual 1009	com/tencent/mobileqq/activity/ChatHistory:runOnUiThread	(Ljava/lang/Runnable;)V
+    //   526: return
+    //   527: new 146	java/lang/StringBuilder
+    //   530: dup
+    //   531: invokespecial 299	java/lang/StringBuilder:<init>	()V
+    //   534: ldc_w 1011
+    //   537: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   540: invokestatic 156	abot:b	()Ljava/lang/String;
+    //   543: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   546: ldc_w 1013
+    //   549: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   552: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   555: astore 6
+    //   557: aload_1
+    //   558: iload_2
+    //   559: invokestatic 168	com/tencent/mobileqq/data/MessageRecord:getOldTableName	(Ljava/lang/String;I)Ljava/lang/String;
+    //   562: aload_1
+    //   563: iload_2
+    //   564: invokestatic 171	com/tencent/mobileqq/data/MessageRecord:getTableName	(Ljava/lang/String;I)Ljava/lang/String;
+    //   567: aload_0
+    //   568: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   571: invokevirtual 144	com/tencent/mobileqq/app/QQAppInterface:b	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   574: aload 6
+    //   576: aconst_null
+    //   577: invokestatic 415	bddy:a	(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mobileqq/app/SQLiteDatabase;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   580: astore 6
+    //   582: goto -535 -> 47
+    //   585: ldc_w 1015
+    //   588: iconst_2
+    //   589: anewarray 84	java/lang/Object
+    //   592: dup
+    //   593: iconst_0
+    //   594: aload_0
+    //   595: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   598: aload_0
+    //   599: getfield 286	com/tencent/mobileqq/activity/ChatHistory:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   602: aload_1
+    //   603: invokestatic 953	bdbt:h	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   606: aastore
+    //   607: dup
+    //   608: iconst_1
+    //   609: aload_1
+    //   610: aastore
+    //   611: invokestatic 1018	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   614: astore_1
+    //   615: goto -395 -> 220
+    //   618: sipush 3000
+    //   621: iload_2
+    //   622: if_icmpne +33 -> 655
+    //   625: ldc_w 1015
+    //   628: iconst_2
+    //   629: anewarray 84	java/lang/Object
+    //   632: dup
+    //   633: iconst_0
+    //   634: aload_0
+    //   635: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   638: aload_1
+    //   639: iconst_0
+    //   640: invokestatic 930	bdbt:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;I)Ljava/lang/String;
+    //   643: aastore
+    //   644: dup
+    //   645: iconst_1
+    //   646: aload_1
+    //   647: aastore
+    //   648: invokestatic 1018	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   651: astore_1
+    //   652: goto -432 -> 220
+    //   655: aload_0
+    //   656: getfield 1020	com/tencent/mobileqq/activity/ChatHistory:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   659: astore_1
+    //   660: goto -440 -> 220
+    //   663: aload_1
+    //   664: astore 9
+    //   666: goto -415 -> 251
+    //   669: aload 8
+    //   671: aload 8
+    //   673: ldc_w 1022
+    //   676: invokeinterface 207 2 0
+    //   681: invokeinterface 941 2 0
+    //   686: istore 5
+    //   688: iload 5
+    //   690: sipush -2007
+    //   693: if_icmpne +14 -> 707
+    //   696: aload_0
+    //   697: ldc_w 1023
+    //   700: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
+    //   703: astore_1
+    //   704: goto -402 -> 302
+    //   707: iload 5
+    //   709: sipush -2058
+    //   712: if_icmpne +14 -> 726
+    //   715: aload_0
+    //   716: ldc_w 1024
+    //   719: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
+    //   722: astore_1
+    //   723: goto -421 -> 302
+    //   726: iload 5
+    //   728: sipush -2039
+    //   731: if_icmpne +50 -> 781
+    //   734: aload 8
+    //   736: aload 8
+    //   738: ldc_w 1026
+    //   741: invokeinterface 207 2 0
+    //   746: invokeinterface 1030 2 0
+    //   751: astore_1
+    //   752: new 1032	com/tencent/mobileqq/data/MessageForApollo
+    //   755: dup
+    //   756: invokespecial 1033	com/tencent/mobileqq/data/MessageForApollo:<init>	()V
+    //   759: astore 6
+    //   761: aload 6
+    //   763: aload_1
+    //   764: putfield 1036	com/tencent/mobileqq/data/MessageForApollo:msgData	[B
+    //   767: aload 6
+    //   769: invokevirtual 1039	com/tencent/mobileqq/data/MessageForApollo:parse	()V
+    //   772: aload 6
+    //   774: invokestatic 1044	com/tencent/mobileqq/apollo/utils/ApolloUtil:a	(Lcom/tencent/mobileqq/data/MessageForApollo;)Ljava/lang/String;
+    //   777: astore_1
+    //   778: goto -476 -> 302
+    //   781: iload 5
+    //   783: sipush -2011
+    //   786: if_icmpne +31 -> 817
+    //   789: aload_0
+    //   790: aload 8
+    //   792: aload 8
+    //   794: ldc_w 1026
+    //   797: invokeinterface 207 2 0
+    //   802: invokeinterface 1030 2 0
+    //   807: invokestatic 1049	azqu:a	([B)Lcom/tencent/mobileqq/structmsg/AbsStructMsg;
+    //   810: invokevirtual 1051	com/tencent/mobileqq/activity/ChatHistory:a	(Lcom/tencent/mobileqq/structmsg/AbsStructMsg;)Ljava/lang/String;
+    //   813: astore_1
+    //   814: goto -512 -> 302
+    //   817: iload 5
+    //   819: sipush -2020
+    //   822: if_icmpne +58 -> 880
+    //   825: iload_3
+    //   826: invokestatic 956	bdec:a	(I)Z
+    //   829: ifeq +34 -> 863
+    //   832: aload_0
+    //   833: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   836: invokevirtual 1055	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   839: ldc_w 1056
+    //   842: iconst_1
+    //   843: anewarray 84	java/lang/Object
+    //   846: dup
+    //   847: iconst_0
+    //   848: aload_0
+    //   849: getfield 853	com/tencent/mobileqq/activity/ChatHistory:jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo	Lcom/tencent/mobileqq/activity/aio/SessionInfo;
+    //   852: getfield 1060	com/tencent/mobileqq/activity/aio/SessionInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   855: aastore
+    //   856: invokevirtual 1065	com/tencent/qphone/base/util/BaseApplication:getString	(I[Ljava/lang/Object;)Ljava/lang/String;
+    //   859: astore_1
+    //   860: goto -558 -> 302
+    //   863: aload_0
+    //   864: getfield 281	com/tencent/mobileqq/activity/ChatHistory:app	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   867: invokevirtual 1055	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   870: ldc_w 1066
+    //   873: invokevirtual 1067	com/tencent/qphone/base/util/BaseApplication:getString	(I)Ljava/lang/String;
+    //   876: astore_1
+    //   877: goto -575 -> 302
+    //   880: aload 6
+    //   882: astore_1
+    //   883: iload 5
+    //   885: sipush -2006
+    //   888: if_icmpeq -417 -> 471
+    //   891: iload 5
+    //   893: sipush -2000
+    //   896: if_icmpne +13 -> 909
+    //   899: ldc_w 1068
+    //   902: invokestatic 1072	alpo:a	(I)Ljava/lang/String;
+    //   905: astore_1
+    //   906: goto -604 -> 302
+    //   909: iload 5
+    //   911: sipush -2002
+    //   914: if_icmpne +13 -> 927
+    //   917: ldc_w 1073
+    //   920: invokestatic 1072	alpo:a	(I)Ljava/lang/String;
+    //   923: astore_1
+    //   924: goto -622 -> 302
+    //   927: iload 5
+    //   929: sipush -2022
+    //   932: if_icmpne +13 -> 945
+    //   935: ldc_w 1074
+    //   938: invokestatic 1072	alpo:a	(I)Ljava/lang/String;
+    //   941: astore_1
+    //   942: goto -640 -> 302
+    //   945: iload 5
+    //   947: sipush -2071
+    //   950: if_icmpne +14 -> 964
+    //   953: aload_0
+    //   954: ldc_w 1075
+    //   957: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
+    //   960: astore_1
+    //   961: goto -659 -> 302
+    //   964: iload 5
+    //   966: sipush -7001
+    //   969: if_icmpne +14 -> 983
+    //   972: aload_0
+    //   973: ldc_w 1076
+    //   976: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
+    //   979: astore_1
+    //   980: goto -678 -> 302
+    //   983: iload 5
+    //   985: sipush -1035
+    //   988: if_icmpne +202 -> 1190
+    //   991: new 146	java/lang/StringBuilder
+    //   994: dup
+    //   995: invokespecial 299	java/lang/StringBuilder:<init>	()V
+    //   998: astore_1
+    //   999: aload 8
+    //   1001: aload 8
+    //   1003: ldc_w 1026
+    //   1006: invokeinterface 207 2 0
+    //   1011: invokeinterface 1030 2 0
+    //   1016: astore 7
+    //   1018: new 1078	localpb/richMsg/MixedMsg$Msg
+    //   1021: dup
+    //   1022: invokespecial 1079	localpb/richMsg/MixedMsg$Msg:<init>	()V
+    //   1025: astore 6
+    //   1027: aload 6
+    //   1029: aload 7
+    //   1031: invokevirtual 1083	localpb/richMsg/MixedMsg$Msg:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   1034: pop
+    //   1035: aload 6
+    //   1037: getfield 1087	localpb/richMsg/MixedMsg$Msg:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1040: invokevirtual 1093	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1043: invokeinterface 1098 1 0
+    //   1048: ifgt +51 -> 1099
+    //   1051: aload 8
+    //   1053: ifnull -527 -> 526
+    //   1056: aload 8
+    //   1058: invokeinterface 220 1 0
+    //   1063: return
+    //   1064: astore 6
+    //   1066: invokestatic 298	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1069: ifeq +12 -> 1081
+    //   1072: ldc 61
+    //   1074: iconst_2
+    //   1075: ldc_w 1100
+    //   1078: invokestatic 307	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1081: aload_1
+    //   1082: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1085: astore_1
+    //   1086: goto -784 -> 302
+    //   1089: astore 7
+    //   1091: aload 7
+    //   1093: invokevirtual 1103	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
+    //   1096: goto -61 -> 1035
+    //   1099: aload 6
+    //   1101: getfield 1087	localpb/richMsg/MixedMsg$Msg:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1104: invokevirtual 1093	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1107: invokeinterface 1098 1 0
+    //   1112: istore 5
+    //   1114: iconst_0
+    //   1115: istore_3
+    //   1116: iload_3
+    //   1117: iload 5
+    //   1119: if_icmpge -38 -> 1081
+    //   1122: aload 6
+    //   1124: getfield 1087	localpb/richMsg/MixedMsg$Msg:elems	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   1127: invokevirtual 1093	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   1130: iload_3
+    //   1131: invokeinterface 1106 2 0
+    //   1136: checkcast 1108	localpb/richMsg/MixedMsg$Elem
+    //   1139: astore 7
+    //   1141: aload 7
+    //   1143: getfield 1112	localpb/richMsg/MixedMsg$Elem:textMsg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1146: invokevirtual 1117	com/tencent/mobileqq/pb/PBStringField:has	()Z
+    //   1149: ifeq +19 -> 1168
+    //   1152: aload_1
+    //   1153: aload 7
+    //   1155: getfield 1112	localpb/richMsg/MixedMsg$Elem:textMsg	Lcom/tencent/mobileqq/pb/PBStringField;
+    //   1158: invokevirtual 1119	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
+    //   1161: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1164: pop
+    //   1165: goto +167 -> 1332
+    //   1168: aload 7
+    //   1170: getfield 1123	localpb/richMsg/MixedMsg$Elem:picMsg	Llocalpb/richMsg/RichMsg$PicRec;
+    //   1173: invokevirtual 1126	localpb/richMsg/RichMsg$PicRec:has	()Z
+    //   1176: ifeq +156 -> 1332
+    //   1179: aload_1
+    //   1180: ldc_w 1128
+    //   1183: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1186: pop
+    //   1187: goto +145 -> 1332
+    //   1190: new 213	java/lang/String
+    //   1193: dup
+    //   1194: aload 8
+    //   1196: aload 8
+    //   1198: ldc_w 1026
+    //   1201: invokeinterface 207 2 0
+    //   1206: invokeinterface 1030 2 0
+    //   1211: ldc_w 1130
+    //   1214: invokespecial 1133	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   1217: astore_1
+    //   1218: goto -916 -> 302
+    //   1221: astore_1
+    //   1222: aload_1
+    //   1223: invokevirtual 1134	java/lang/Exception:printStackTrace	()V
+    //   1226: aload 6
+    //   1228: astore_1
+    //   1229: goto -927 -> 302
+    //   1232: aload 7
+    //   1234: iconst_2
+    //   1235: aaload
+    //   1236: invokestatic 1139	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   1239: invokevirtual 1142	java/lang/Integer:intValue	()I
+    //   1242: istore_3
+    //   1243: goto +74 -> 1317
+    //   1246: aload 6
+    //   1248: astore 7
+    //   1250: iload_3
+    //   1251: iconst_2
+    //   1252: if_icmpne -856 -> 396
+    //   1255: new 146	java/lang/StringBuilder
+    //   1258: dup
+    //   1259: invokespecial 299	java/lang/StringBuilder:<init>	()V
+    //   1262: ldc_w 477
+    //   1265: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1268: aload_0
+    //   1269: ldc_w 1143
+    //   1272: invokevirtual 500	com/tencent/mobileqq/activity/ChatHistory:getString	(I)Ljava/lang/String;
+    //   1275: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1278: ldc_w 485
+    //   1281: invokevirtual 160	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1284: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1287: astore 7
+    //   1289: goto -893 -> 396
+    //   1292: astore 7
+    //   1294: ldc 61
+    //   1296: iconst_1
+    //   1297: ldc 173
+    //   1299: aload 7
+    //   1301: invokestatic 1146	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   1304: aload 6
+    //   1306: astore 7
+    //   1308: goto -912 -> 396
+    //   1311: aconst_null
+    //   1312: astore 8
+    //   1314: goto -1244 -> 70
+    //   1317: iload_3
+    //   1318: iconst_1
+    //   1319: if_icmpeq -932 -> 387
+    //   1322: iload_3
+    //   1323: ldc_w 1147
+    //   1326: if_icmpne -80 -> 1246
+    //   1329: goto -942 -> 387
+    //   1332: iload_3
+    //   1333: iconst_1
+    //   1334: iadd
+    //   1335: istore_3
+    //   1336: goto -220 -> 1116
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1314	0	this	ChatHistory
-    //   0	1314	1	paramString	String
-    //   0	1314	2	paramInt	int
-    //   237	1074	3	n	int
-    //   168	246	4	i1	int
-    //   695	434	5	i2	int
-    //   45	1000	6	localObject1	Object
-    //   1073	183	6	localException	Exception
-    //   2	1037	7	localObject2	Object
-    //   1098	3	7	localInvalidProtocolBufferMicroException	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   1148	149	7	localObject3	Object
-    //   68	1235	8	localCursor	Cursor
-    //   249	425	9	str	String
-    //   11	511	10	localStringBuffer	StringBuffer
+    //   0	1339	0	this	ChatHistory
+    //   0	1339	1	paramString	String
+    //   0	1339	2	paramInt	int
+    //   237	1099	3	n	int
+    //   168	237	4	i1	int
+    //   686	434	5	i2	int
+    //   45	991	6	localObject1	Object
+    //   1064	241	6	localException1	Exception
+    //   2	1028	7	localObject2	Object
+    //   1089	3	7	localInvalidProtocolBufferMicroException	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   1139	149	7	localObject3	Object
+    //   1292	8	7	localException2	Exception
+    //   1306	1	7	localObject4	Object
+    //   68	1245	8	localCursor	Cursor
+    //   249	416	9	str	String
+    //   11	502	10	localStringBuffer	StringBuffer
     // Exception table:
     //   from	to	target	type
-    //   1008	1036	1073	java/lang/Exception
-    //   1036	1044	1073	java/lang/Exception
-    //   1044	1060	1073	java/lang/Exception
-    //   1065	1072	1073	java/lang/Exception
-    //   1100	1105	1073	java/lang/Exception
-    //   1108	1123	1073	java/lang/Exception
-    //   1131	1174	1073	java/lang/Exception
-    //   1177	1196	1073	java/lang/Exception
-    //   1036	1044	1098	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   1199	1227	1230	java/lang/Exception
+    //   999	1027	1064	java/lang/Exception
+    //   1027	1035	1064	java/lang/Exception
+    //   1035	1051	1064	java/lang/Exception
+    //   1056	1063	1064	java/lang/Exception
+    //   1091	1096	1064	java/lang/Exception
+    //   1099	1114	1064	java/lang/Exception
+    //   1122	1165	1064	java/lang/Exception
+    //   1168	1187	1064	java/lang/Exception
+    //   1027	1035	1089	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   1190	1218	1221	java/lang/Exception
+    //   375	382	1292	java/lang/Exception
+    //   387	396	1292	java/lang/Exception
+    //   1232	1243	1292	java/lang/Exception
+    //   1255	1289	1292	java/lang/Exception
   }
   
   public boolean b(String paramString)
@@ -1395,30 +1412,30 @@ public class ChatHistory
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = ((RelativeLayout)View.inflate(this, 2131562360, null));
-    int n = (int)bbdv.a(this, 6.0F);
+    this.jdField_a_of_type_AndroidViewView = ((RelativeLayout)View.inflate(this, 2131562564, null));
+    int n = (int)bdcq.a(this, 6.0F);
     Object localObject = new RelativeLayout(this);
     ((RelativeLayout)localObject).setPadding(0, n, 0, n);
-    ((RelativeLayout)localObject).setBackgroundResource(2130849228);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131298606));
+    ((RelativeLayout)localObject).setBackgroundResource(2130849659);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, getResources().getDimensionPixelSize(2131298634));
     ((RelativeLayout)localObject).addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView((View)localObject);
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131363479).setVisibility(8);
-    localObject = (EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131365763);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131363520).setVisibility(8);
+    localObject = (EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131365849);
     ((EditText)localObject).setFocusableInTouchMode(false);
     ((EditText)localObject).setCursorVisible(false);
-    ((EditText)localObject).setOnClickListener(new aard(this));
+    ((EditText)localObject).setOnClickListener(new acib(this));
     setLayerType(this.jdField_a_of_type_AndroidViewView);
   }
   
   protected void c(String paramString)
   {
-    if (this.jdField_b_of_type_Bcqf == null) {
-      this.jdField_b_of_type_Bcqf = new bcqf(this, getTitleBarHeight());
+    if (this.jdField_b_of_type_Bepp == null) {
+      this.jdField_b_of_type_Bepp = new bepp(this, getTitleBarHeight());
     }
-    this.jdField_b_of_type_Bcqf.setCancelable(true);
-    this.jdField_b_of_type_Bcqf.a(paramString);
-    this.jdField_b_of_type_Bcqf.show();
+    this.jdField_b_of_type_Bepp.setCancelable(true);
+    this.jdField_b_of_type_Bepp.a(paramString);
+    this.jdField_b_of_type_Bepp.show();
   }
   
   public boolean c(String paramString)
@@ -1426,7 +1443,7 @@ public class ChatHistory
     o();
     MediaPlayerManager.a(this.app).a(true);
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = new AudioPlayer(this, this.jdField_a_of_type_Acts);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = new AudioPlayer(this, this.jdField_a_of_type_Aelc);
     }
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(paramString);
     if (QLog.isColorLevel()) {
@@ -1440,29 +1457,29 @@ public class ChatHistory
   
   public void d()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367806));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367807));
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131690726));
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(getString(2131690725));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aare(this));
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new aaqh(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367940));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367941));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getString(2131690778));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(getString(2131690777));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new acic(this));
+    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new achf(this));
     this.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848549);
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848977);
     if (this.jdField_c_of_type_Int == 1)
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840184);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840287);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377054));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377575));
     this.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_c_of_type_Int));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365466));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131365550));
     this.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.jdField_d_of_type_Int));
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().length());
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aaqi(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363746));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aaqj(this));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363745));
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new aaqk(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new achg(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363802));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new achh(this));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131363801));
+    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new achi(this));
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
@@ -1473,15 +1490,15 @@ public class ChatHistory
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aaql(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new achj(this));
       return;
       if ((this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Int != 3000))
       {
-        ajxl localajxl = (ajxl)this.app.getManager(51);
-        if ((localajxl == null) || (!localajxl.b(String.valueOf(this.jdField_b_of_type_JavaLangString))))
+        aloz localaloz = (aloz)this.app.getManager(51);
+        if ((localaloz == null) || (!localaloz.b(String.valueOf(this.jdField_b_of_type_JavaLangString))))
         {
           if (QLog.isColorLevel()) {
-            QLog.e("ChatHistory", 2, "--mSyncHistory button: fm is null or the uin is not my friend: fm:" + localajxl);
+            QLog.e("ChatHistory", 2, "--mSyncHistory button: fm is null or the uin is not my friend: fm:" + localaloz);
           }
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
         }
@@ -1498,7 +1515,7 @@ public class ChatHistory
     do
     {
       return;
-      this.jdField_a_of_type_Aarf.getCursor().requery();
+      this.jdField_a_of_type_Acid.getCursor().requery();
       return;
     } while (-1 != paramInt2);
     a(paramIntent.getExtras());
@@ -1508,11 +1525,11 @@ public class ChatHistory
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    addObserver(this.jdField_a_of_type_Akat);
+    addObserver(this.jdField_a_of_type_Alsi);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)getResources().getDrawable(2130772320));
-    this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)getResources().getDrawable(2130772321));
-    this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)getResources().getDrawable(2130772244));
+    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)getResources().getDrawable(2130772336));
+    this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)getResources().getDrawable(2130772337));
+    this.jdField_c_of_type_AndroidGraphicsDrawableAnimationDrawable = ((AnimationDrawable)getResources().getDrawable(2130772259));
     paramBundle = getIntent().getExtras();
     this.jdField_b_of_type_JavaLangString = paramBundle.getString("uin");
     this.jdField_a_of_type_Int = paramBundle.getInt("uintype");
@@ -1521,8 +1538,8 @@ public class ChatHistory
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString = paramBundle.getString("troop_uin");
-    setContentViewNoTitle(2131558771);
-    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131375493);
+    setContentViewNoTitle(2131558807);
+    LinearLayout localLinearLayout = (LinearLayout)findViewById(2131375981);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       localLinearLayout.setFitsSystemWindows(true);
@@ -1535,17 +1552,17 @@ public class ChatHistory
     }
     init(getIntent());
     this.app.setHandler(getClass(), this.jdField_a_of_type_MqqOsMqqHandler);
-    this.jdField_a_of_type_Aumb = ((aumb)this.app.getManager(201));
+    this.jdField_a_of_type_Awdi = ((awdi)this.app.getManager(201));
     a(9, false);
     m();
     a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int);
     q();
     if (this.app.a() != null) {
-      this.app.a().a(this.jdField_a_of_type_Akte);
+      this.app.a().a(this.jdField_a_of_type_Amjj);
     }
     this.app.a().f();
-    this.jdField_a_of_type_Bazl = new bazl(this);
-    this.jdField_a_of_type_Bazl.a((int)(150.0F * this.jdField_a_of_type_Float), (int)(100.0F * this.jdField_a_of_type_Float));
+    this.jdField_a_of_type_Bcyf = new bcyf(this);
+    this.jdField_a_of_type_Bcyf.a((int)(150.0F * this.jdField_a_of_type_Float), (int)(100.0F * this.jdField_a_of_type_Float));
     s();
     return true;
   }
@@ -1553,28 +1570,28 @@ public class ChatHistory
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Aarf != null) {
-      this.jdField_a_of_type_Aarf.a();
+    if (this.jdField_a_of_type_Acid != null) {
+      this.jdField_a_of_type_Acid.a();
     }
     if (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
       this.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this);
     }
-    if ((this.jdField_a_of_type_Aukp != null) && (this.jdField_a_of_type_Aukp.a()))
+    if ((this.jdField_a_of_type_Awbw != null) && (this.jdField_a_of_type_Awbw.a()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistory", 2, "ChatHistory : close entityManager.");
       }
-      this.jdField_a_of_type_Aukp.a();
-      this.jdField_a_of_type_Aukp = null;
+      this.jdField_a_of_type_Awbw.a();
+      this.jdField_a_of_type_Awbw = null;
     }
     n();
     r();
     if (QLog.isColorLevel()) {
-      QLog.i("ChatHistory", 2, "onDestroy() mCurPlayingPttInfo = " + this.jdField_a_of_type_Aarq);
+      QLog.i("ChatHistory", 2, "onDestroy() mCurPlayingPttInfo = " + this.jdField_a_of_type_Acio);
     }
-    if ((this.jdField_a_of_type_Aarq != null) && (!this.jdField_a_of_type_Aarq.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_Acio != null) && (!this.jdField_a_of_type_Acio.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_Aarq.d();
+      this.jdField_a_of_type_Acio.d();
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
       this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable = null;
       this.jdField_b_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
@@ -1584,16 +1601,16 @@ public class ChatHistory
     }
     this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
     this.app.removeHandler(getClass());
-    removeObserver(this.jdField_a_of_type_Akat);
+    removeObserver(this.jdField_a_of_type_Alsi);
     if (this.app.a() != null) {
-      this.app.a().b(this.jdField_a_of_type_Akte);
+      this.app.a().b(this.jdField_a_of_type_Amjj);
     }
     this.app.a().f();
     try
     {
-      this.jdField_a_of_type_Bazl.a().a();
+      this.jdField_a_of_type_Bcyf.a().a();
       label251:
-      findViewById(2131375493).clearAnimation();
+      findViewById(2131375981).clearAnimation();
       return;
     }
     catch (Exception localException)
@@ -1614,10 +1631,10 @@ public class ChatHistory
   public void doOnPause()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("ChatHistory", 2, "onPause() mCurPlayingPttInfo = " + this.jdField_a_of_type_Aarq);
+      QLog.i("ChatHistory", 2, "onPause() mCurPlayingPttInfo = " + this.jdField_a_of_type_Acio);
     }
-    if ((this.jdField_a_of_type_Aarq != null) && (!this.jdField_a_of_type_Aarq.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_Aarq.d();
+    if ((this.jdField_a_of_type_Acio != null) && (!this.jdField_a_of_type_Acio.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_Acio.d();
     }
     ApngImage.pauseByTag(0);
     ApngImage.pauseAll();
@@ -1642,7 +1659,7 @@ public class ChatHistory
     this.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.jdField_d_of_type_Int));
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
     this.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_c_of_type_Int));
-    this.jdField_a_of_type_Aarf.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_e_of_type_Int);
+    this.jdField_a_of_type_Acid.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_e_of_type_Int);
   }
   
   public void f()
@@ -1669,33 +1686,33 @@ public class ChatHistory
     this.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.jdField_d_of_type_Int));
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
     this.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(this.jdField_c_of_type_Int));
-    this.jdField_a_of_type_Aarf.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_e_of_type_Int);
+    this.jdField_a_of_type_Acid.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_e_of_type_Int);
   }
   
   public void h()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(4, getResources().getString(2131719807)).sendToTarget();
+    this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(4, getResources().getString(2131720333)).sendToTarget();
     this.app.a().a((short)1, (byte)1);
   }
   
   public void i()
   {
-    akaw localakaw = (akaw)this.app.getManager(92);
-    if (localakaw != null)
+    alsl localalsl = (alsl)this.app.getManager(92);
+    if (localalsl != null)
     {
       long l1 = NetConnInfoCenter.getServerTime();
-      this.app.a().a(this.jdField_b_of_type_JavaLangString, l1 - 604800L, 0L, l1, (short)0, 0L, 1, null, localakaw.b(), false, 0, false);
+      this.app.a().a(this.jdField_b_of_type_JavaLangString, l1 - 604800L, 0L, l1, (short)0, 0L, 1, null, localalsl.b(), false, 0, false);
     }
   }
   
   protected void j()
   {
-    if (!bbfj.d(this.app.getApplication().getApplicationContext()))
+    if (!bdee.d(this.app.getApplication().getApplicationContext()))
     {
-      bcql.a(getApplicationContext(), 2131691526, 1).a();
+      QQToast.a(getApplicationContext(), 2131691581, 1).a();
       return;
     }
-    c(getApplication().getResources().getString(2131691527));
+    c(getApplication().getResources().getString(2131691582));
     this.app.a().c(this.jdField_b_of_type_JavaLangString);
   }
   
@@ -1714,8 +1731,8 @@ public class ChatHistory
     }
     for (;;)
     {
-      boolean bool = bbdx.a(ajsd.aX, this.jdField_a_of_type_JavaLangStringBuffer, ".txt");
-      this.jdField_c_of_type_AndroidAppDialog = bbdj.a(this, 230, getString(2131691045), getString(2131691045) + ajsd.aX + this.jdField_a_of_type_JavaLangStringBuffer.toString(), new aaqo(this), new aaqp(this));
+      boolean bool = bdcs.a(aljq.aY, this.jdField_a_of_type_JavaLangStringBuffer, ".txt");
+      this.jdField_c_of_type_AndroidAppDialog = bdcd.a(this, 230, getString(2131691098), getString(2131691098) + aljq.aY + this.jdField_a_of_type_JavaLangStringBuffer.toString(), new achm(this), new achn(this));
       if (!bool) {
         break label230;
       }
@@ -1727,26 +1744,26 @@ public class ChatHistory
       this.jdField_a_of_type_JavaLangStringBuffer.append(this.jdField_b_of_type_JavaLangString + ".txt");
     }
     label230:
-    b(getString(2131692217));
+    b(getString(2131692293));
   }
   
   public void l()
   {
-    this.jdField_c_of_type_AndroidAppDialog = bbdj.a(this, 230, getString(2131719809), getString(2131720283), new aaqq(this), new aaqs(this));
+    this.jdField_c_of_type_AndroidAppDialog = bdcd.a(this, 230, getString(2131720335), getString(2131720819), new acho(this), new achq(this));
     this.jdField_c_of_type_AndroidAppDialog.show();
   }
   
   protected void m()
   {
-    String str = getResources().getString(2131690714);
+    String str = getResources().getString(2131690766);
     if (this.jdField_a_of_type_Int == 0) {
-      if (this.jdField_b_of_type_JavaLangString.equals(String.valueOf(ajsd.G)))
+      if (this.jdField_b_of_type_JavaLangString.equals(String.valueOf(aljq.G)))
       {
-        this.jdField_c_of_type_JavaLangString = getResources().getString(2131719985);
-        if (!this.jdField_b_of_type_JavaLangString.equals(String.valueOf(ajsd.G))) {
+        this.jdField_c_of_type_JavaLangString = getResources().getString(2131720520);
+        if (!this.jdField_b_of_type_JavaLangString.equals(String.valueOf(aljq.G))) {
           break label365;
         }
-        str = getResources().getString(2131719985);
+        str = getResources().getString(2131720520);
       }
     }
     label365:
@@ -1758,9 +1775,9 @@ public class ChatHistory
       setTitle(str);
       this.jdField_d_of_type_JavaLangString = a();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_d_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
-      this.leftView = ((TextView)findViewById(2131368429));
+      this.leftView = ((TextView)findViewById(2131368613));
       return;
-      this.jdField_c_of_type_JavaLangString = bbcz.a(this.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString, bbcz.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 3);
+      this.jdField_c_of_type_JavaLangString = bdbt.a(this.app, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString, bdbt.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 3);
       break;
       if (this.jdField_a_of_type_Int == 1)
       {
@@ -1768,15 +1785,15 @@ public class ChatHistory
       }
       else if ((this.jdField_a_of_type_Int == 1000) || (this.jdField_a_of_type_Int == 1020) || (this.jdField_a_of_type_Int == 1001) || (this.jdField_a_of_type_Int == 10002) || (this.jdField_a_of_type_Int == 10004) || (this.jdField_a_of_type_Int == 1004))
       {
-        this.jdField_c_of_type_JavaLangString = bbcz.i(this.app, this.jdField_b_of_type_JavaLangString);
+        this.jdField_c_of_type_JavaLangString = bdbt.i(this.app, this.jdField_b_of_type_JavaLangString);
       }
       else if (this.jdField_a_of_type_Int == 3000)
       {
-        this.jdField_c_of_type_JavaLangString = bbcz.d(this.app, this.jdField_b_of_type_JavaLangString);
+        this.jdField_c_of_type_JavaLangString = bdbt.d(this.app, this.jdField_b_of_type_JavaLangString);
       }
       else if (this.jdField_a_of_type_Int == 1024)
       {
-        PublicAccountInfo localPublicAccountInfo = ((akdh)this.app.getManager(56)).b(this.jdField_b_of_type_JavaLangString);
+        PublicAccountInfo localPublicAccountInfo = ((aluw)this.app.getManager(56)).b(this.jdField_b_of_type_JavaLangString);
         if (localPublicAccountInfo != null) {
           this.jdField_c_of_type_JavaLangString = localPublicAccountInfo.name;
         }
@@ -1813,13 +1830,13 @@ public class ChatHistory
     try
     {
       if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
-        bfni.b(this.jdField_a_of_type_AndroidWidgetEditText);
+        bhoc.b(this.jdField_a_of_type_AndroidWidgetEditText);
       }
       setResult(-1);
-      if ((this.jdField_a_of_type_Ager != null) && (this.jdField_a_of_type_Ager.a()))
+      if ((this.jdField_a_of_type_Aicw != null) && (this.jdField_a_of_type_Aicw.a()))
       {
-        this.jdField_a_of_type_Ager.show();
-        this.jdField_a_of_type_Ager.a(false);
+        this.jdField_a_of_type_Aicw.show();
+        this.jdField_a_of_type_Aicw.a(false);
         return true;
       }
     }
@@ -1842,7 +1859,7 @@ public class ChatHistory
     }
     for (;;)
     {
-      localTextView.setText(2131718804);
+      localTextView.setText(2131719278);
       this.jdField_a_of_type_AndroidWidgetTextView = localTextView;
       return localTextView;
       this.rightViewText.setVisibility(0);
@@ -1852,7 +1869,7 @@ public class ChatHistory
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
     boolean bool2 = true;
-    if (actj.b()) {}
+    if (aekt.b()) {}
     boolean bool1;
     label26:
     label61:
@@ -1876,9 +1893,9 @@ public class ChatHistory
         bool1 = bool2;
         paramSensorEvent.a(bool1);
       }
-    } while (AppSetting.jdField_d_of_type_Boolean);
+    } while (AppSetting.jdField_c_of_type_Boolean);
     if (this.jdField_e_of_type_Boolean) {}
-    for (int n = 2131719795;; n = 2131719798)
+    for (int n = 2131720321;; n = 2131720324)
     {
       b(n);
       return;
@@ -1894,7 +1911,7 @@ public class ChatHistory
   
   public void p()
   {
-    bbcf.b(2131230731, false);
+    bdaz.b(2131230731, false);
   }
   
   protected void q()
@@ -1920,11 +1937,11 @@ public class ChatHistory
   {
     try
     {
-      if (this.jdField_b_of_type_Bcqf != null)
+      if (this.jdField_b_of_type_Bepp != null)
       {
-        this.jdField_b_of_type_Bcqf.dismiss();
-        this.jdField_b_of_type_Bcqf.cancel();
-        this.jdField_b_of_type_Bcqf = null;
+        this.jdField_b_of_type_Bepp.dismiss();
+        this.jdField_b_of_type_Bepp.cancel();
+        this.jdField_b_of_type_Bepp = null;
       }
       return;
     }
@@ -1946,7 +1963,7 @@ public class ChatHistory
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistory", 2, "AIO_chatlog arg:" + this.k);
       }
-      axqy.b(this.app, "CliOper", "", "", "AIO", "AIO_chatlog", this.k, 0, String.valueOf(this.k), "", "", "");
+      azmj.b(this.app, "CliOper", "", "", "AIO", "AIO_chatlog", this.k, 0, String.valueOf(this.k), "", "", "");
       return;
       this.k = 0;
       continue;
@@ -1962,12 +1979,12 @@ public class ChatHistory
       return;
     }
     this.jdField_c_of_type_Boolean = true;
-    axqy.b(this.app, "CliOper", "", "", "0X8005690", "0X8005690", this.k, 0, "", "", "", "");
+    azmj.b(this.app, "CliOper", "", "", "0X8005690", "0X8005690", this.k, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory
  * JD-Core Version:    0.7.0.1
  */

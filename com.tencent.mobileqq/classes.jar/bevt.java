@@ -1,106 +1,103 @@
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppBaseInfo;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.io.File;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
 
 public class bevt
-  extends berk
 {
-  public HashMap<String, String> a;
-  public JSONObject a;
-  
-  public bevt(String paramString, MiniAppBaseInfo paramMiniAppBaseInfo)
+  public static int a(Context paramContext, String paramString)
   {
-    super(paramString, paramMiniAppBaseInfo);
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("kwsjt_" + paramString, -1);
   }
   
-  public static bevt a(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo)
+  public static long a(Context paramContext, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (!new File(paramString1).exists())) {
-      return null;
-    }
-    paramString1 = new bevt(paramString1, paramMiniAppInfo);
-    paramString1.a(paramString2);
-    return paramString1;
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("kwslcdt_" + paramString, -1L);
   }
   
-  private static HashMap<String, String> a(JSONArray paramJSONArray)
+  public static String a(Context paramContext)
   {
-    HashMap localHashMap = new HashMap();
-    if (paramJSONArray != null)
-    {
-      int i = 0;
-      while (i < paramJSONArray.length())
-      {
-        Object localObject = paramJSONArray.optJSONObject(i);
-        if (localObject != null)
-        {
-          String str = ((JSONObject)localObject).optString("name");
-          localObject = ((JSONObject)localObject).optString("root");
-          if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-            localHashMap.put(str, localObject);
-          }
-        }
-        i += 1;
-      }
-    }
-    return localHashMap;
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("kwsbddbw", null);
   }
   
-  public void a(String paramString)
+  public static String a(Context paramContext, String paramString)
   {
-    if (paramString != null) {}
-    for (;;)
-    {
-      try
-      {
-        this.b = belh.b(new File(e() + "/" + paramString, "game.json"));
-        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(this.b);
-        JSONArray localJSONArray = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("subpackages");
-        paramString = localJSONArray;
-        if (localJSONArray == null) {
-          paramString = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("subPackages");
-        }
-        this.jdField_a_of_type_JavaUtilHashMap = a(paramString);
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
-      this.b = belh.b(new File(e(), "game.json"));
-    }
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("kwsg_" + paramString, "");
   }
   
-  public void a(String paramString, bevs parambevs)
+  public static void a(Context paramContext, String paramString)
   {
-    bevk.a(beqy.a().a(), this, paramString, parambevs);
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putString("kwsbddbw", paramString);
+    paramContext.apply();
   }
   
-  public String c(String paramString)
+  public static void a(Context paramContext, String paramString, int paramInt)
   {
-    if (bely.a(paramString)) {
-      return "";
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
-        return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      }
-      if (this.jdField_a_of_type_JavaUtilHashMap.containsValue(paramString)) {
-        return paramString;
-      }
-    }
-    return "";
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putInt("kwscdf_" + paramString, paramInt);
+    paramContext.apply();
+  }
+  
+  public static void a(Context paramContext, String paramString1, int paramInt, String paramString2)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putInt("kwsjt_" + paramString1, paramInt);
+    paramContext.putString("kwsjhu_" + paramString1, paramString2);
+    paramContext.apply();
+  }
+  
+  public static void a(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putLong("kwslcdt_" + paramString, paramLong);
+    paramContext.apply();
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putString("kwsg_" + paramString1, paramString2);
+    paramContext.apply();
+  }
+  
+  public static int b(Context paramContext, String paramString)
+  {
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("kwscdf_" + paramString, 24);
+  }
+  
+  public static long b(Context paramContext, String paramString)
+  {
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("kwslftjt_" + paramString, -1L);
+  }
+  
+  public static String b(Context paramContext, String paramString)
+  {
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getString("kwsjhu_" + paramString, null);
+  }
+  
+  public static void b(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putLong("kwslftjt_" + paramString, paramLong);
+    paramContext.apply();
+  }
+  
+  public static long c(Context paramContext, String paramString)
+  {
+    return PreferenceManager.getDefaultSharedPreferences(paramContext).getLong("kwsrgrt_" + paramString, -1L);
+  }
+  
+  public static void c(Context paramContext, String paramString, long paramLong)
+  {
+    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
+    paramContext.putLong("kwsrgrt_" + paramString, paramLong);
+    paramContext.apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bevt
  * JD-Core Version:    0.7.0.1
  */

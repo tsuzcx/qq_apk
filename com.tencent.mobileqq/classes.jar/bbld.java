@@ -1,14 +1,9 @@
-import android.graphics.PointF;
+import java.util.List;
 
-final class bbld
-  implements bblf<PointF>
+public class bbld
 {
-  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
-  {
-    float f1 = paramPointF1.x;
-    float f2 = paramPointF1.y;
-    return new PointF(f1 + (paramPointF2.x - f1) * paramFloat, f2 + (paramPointF2.y - f2) * paramFloat);
-  }
+  public String a;
+  public List<Integer> a;
 }
 
 

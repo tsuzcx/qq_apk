@@ -1,49 +1,50 @@
-import java.security.MessageDigest;
-
 public class bchd
 {
-  private static char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  private String c;
+  public int d;
   
-  public static String a(String paramString)
+  public String a()
   {
-    try
-    {
-      paramString = a(paramString.getBytes(), "SHA1");
-      return paramString;
+    if ((this.jdField_a_of_type_Int & 0x4) == 4) {
+      return "classteacher";
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    if ((this.jdField_a_of_type_Int & 0x8) == 8) {
+      return "teacher";
     }
-    return "";
+    if ((this.jdField_a_of_type_Int & 0x1) == 1) {
+      return "owner";
+    }
+    if ((this.jdField_a_of_type_Int & 0x2) == 2) {
+      return "admin";
+    }
+    return "other";
   }
   
-  private static String a(byte[] paramArrayOfByte)
+  public void a(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 2);
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      localStringBuilder.append(a[((paramArrayOfByte[i] & 0xF0) >>> 4)]);
-      localStringBuilder.append(a[(paramArrayOfByte[i] & 0xF)]);
-      i += 1;
-    }
-    return localStringBuilder.toString();
+    this.jdField_c_of_type_JavaLangString = bchc.a(paramString, "").trim().replaceAll("\\s+", " ");
   }
   
-  private static String a(byte[] paramArrayOfByte, String paramString)
+  public String b()
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return "";
-    }
-    paramString = MessageDigest.getInstance(paramString);
-    paramString.update(paramArrayOfByte, 0, paramArrayOfByte.length);
-    return a(paramString.digest());
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "KeywordResult{msgId=" + this.jdField_a_of_type_Long + ", troopUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", userRole=" + this.jdField_a_of_type_Int + ", action=" + this.jdField_b_of_type_Int + ", keyword='" + this.jdField_b_of_type_JavaLangString + '\'' + ", startPos=" + this.jdField_c_of_type_Int + ", endPos=" + this.d + ", content=" + this.jdField_c_of_type_JavaLangString + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bchd
  * JD-Core Version:    0.7.0.1
  */

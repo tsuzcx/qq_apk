@@ -1,48 +1,48 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
-public class ancd
+public abstract class ancd
 {
-  private int a = -1;
+  public long a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
   
-  public static ancd a(amph[] paramArrayOfamph)
+  public ancd()
   {
-    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
-      paramArrayOfamph = null;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = "0";
+    this.jdField_c_of_type_JavaLangString = "0";
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public abstract void a(AppInterface paramAppInterface, Bundle paramBundle);
+  
+  public final void b(AppInterface paramAppInterface, Bundle paramBundle)
+  {
+    if (paramBundle == null) {
+      return;
     }
-    ancd localancd;
-    do
+    this.jdField_a_of_type_Long = paramBundle.getLong("RecoglizeMask", 0L);
+    this.jdField_b_of_type_JavaLangString = paramBundle.getString("H5Source", "0");
+    this.jdField_c_of_type_JavaLangString = paramBundle.getString("version", "0");
+    if (!paramBundle.getBoolean("disablecloud", false)) {}
+    for (boolean bool = true;; bool = false)
     {
-      return paramArrayOfamph;
-      localancd = new ancd();
-      try
-      {
-        localancd.a = new JSONObject(paramArrayOfamph[0].a).getInt("show_limit");
-        return localancd;
-      }
-      catch (JSONException localJSONException)
-      {
-        paramArrayOfamph = localancd;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("TencentDocHistoryTabToastBean", 1, "exception = " + localJSONException.toString());
-    return localancd;
-  }
-  
-  public int a()
-  {
-    return this.a;
-  }
-  
-  public boolean a()
-  {
-    return this.a == 0;
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_c_of_type_Boolean = paramBundle.getBoolean("is_from_h5_entry", false);
+      this.jdField_b_of_type_Boolean = false;
+      a(paramAppInterface, paramBundle);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancd
  * JD-Core Version:    0.7.0.1
  */

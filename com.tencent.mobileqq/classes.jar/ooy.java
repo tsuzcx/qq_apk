@@ -1,60 +1,71 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
 public class ooy
-  implements AladdinConfigHandler
+  extends ViewBase
 {
-  private static long a(String paramString, long paramLong)
+  private ReadInJoyCommentLikeView a;
+  
+  public ooy(VafContext paramVafContext)
   {
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      return l;
-    }
-    catch (NumberFormatException paramString)
-    {
-      QLog.d("FeedsPreloadConfigHandler", 2, "parseStringToLong, e ", paramString);
-    }
-    return paramLong;
+    super(paramVafContext);
+    this.a = new ReadInJoyCommentLikeView(paramVafContext.getContext());
   }
   
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  public void a(opg paramopg)
   {
-    paramString = oof.a(paramString);
-    Iterator localIterator = paramString.keySet().iterator();
-    while (localIterator.hasNext())
+    this.a.setOnLikeListener(paramopg);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.a.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.a.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.a;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.a.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.a.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.a.setVisibility(0);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      String str1 = (String)localIterator.next();
-      String str2 = (String)paramString.get(str1);
-      QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "key = ", str1, ", value = ", str2 });
-      if (TextUtils.equals("switch", str1)) {
-        bhvy.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(TextUtils.equals("1", str2)));
-      } else if (TextUtils.equals("preload_interval", str1)) {
-        bhvy.a("sp_key_readinjoy_feeds_preload_interval", Long.valueOf(a(str2, 30L)));
-      } else if (TextUtils.equals("last_enter_kandian", str1)) {
-        bhvy.a("sp_key_readinjoy_feeds_preload_last_enter_kd_day", Long.valueOf(a(str2, 90L)));
-      } else if (TextUtils.equals("preload_time_limit", str1)) {
-        bhvy.a("sp_key_readinjoy_feeds_preload_time_limit", Long.valueOf(a(str2, 10L)));
-      } else if (TextUtils.equals("loading_time", str1)) {
-        bhvy.a("sp_key_readinjoy_feeds_preload_loading_time", Long.valueOf(a(str2, 50L)));
-      }
+    default: 
+      return super.setAttribute(paramInt, paramObject);
+    }
+    if (((paramObject instanceof omt)) && (((omt)paramObject).a != null)) {
+      this.a.a(((omt)paramObject).a);
     }
     return true;
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("FeedsPreloadConfigHandler", 1, new Object[] { "onWipeConfig, id = ", Integer.valueOf(paramInt) });
-    bhvy.a("sp_key_readinjoy_feeds_preload_switch", Boolean.valueOf(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ooy
  * JD-Core Version:    0.7.0.1
  */

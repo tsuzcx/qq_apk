@@ -1,29 +1,16 @@
 public class amot
 {
-  private String a;
-  
-  public amot(String paramString, int paramInt1, int paramInt2)
-  {
-    this.a = paramString;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof amot))) {}
-    while (!toString().equals(paramObject.toString())) {
-      return false;
-    }
-    return true;
-  }
-  
-  public String toString()
-  {
-    return this.a;
-  }
+  public int a = 2;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amot
  * JD-Core Version:    0.7.0.1
  */

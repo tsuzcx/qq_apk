@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import auko;
+import awbv;
 import java.io.Externalizable;
 import org.json.JSONObject;
 
 public abstract class TroopBarAbsDataEntity
-  extends auko
+  extends awbv
   implements Externalizable
 {
   public String id;
@@ -16,7 +16,7 @@ public abstract class TroopBarAbsDataEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopBarAbsDataEntity
  * JD-Core Version:    0.7.0.1
  */

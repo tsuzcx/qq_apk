@@ -1,93 +1,45 @@
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.beacon.event.UserAction;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class lhq
 {
-  static long jdField_a_of_type_Long;
-  static String jdField_a_of_type_JavaLangString = "EffectFilterTools";
-  static boolean jdField_a_of_type_Boolean;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public static void a(VideoAppInterface paramVideoAppInterface)
+  public lhq(VideoAppInterface paramVideoAppInterface)
   {
-    if (paramVideoAppInterface.a(1))
-    {
-      paramVideoAppInterface = (FilterItem)((lhp)paramVideoAppInterface.a(1)).a();
-      a(paramVideoAppInterface);
-      lcg.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + paramVideoAppInterface + "|" + jdField_a_of_type_Boolean);
-      if (!jdField_a_of_type_Boolean) {
-        break label77;
-      }
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lhr(this);
+  }
+  
+  public void a()
+  {
+    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
+    localIntentFilter.addAction("tencent.video.q2v.AnnimateDownloadFinish");
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter) != null) {
+      this.jdField_a_of_type_Boolean = true;
     }
-    label77:
-    for (paramVideoAppInterface = "0X80076B2";; paramVideoAppInterface = "0X80076B1")
-    {
-      a(paramVideoAppInterface);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("GVipFunCallMonitor", 2, "regist vipFunCall " + this.jdField_a_of_type_Boolean);
     }
   }
   
-  static void a(FilterItem paramFilterItem)
+  public void b()
   {
-    long l1 = System.currentTimeMillis();
-    lcg.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + paramFilterItem + "|" + jdField_a_of_type_Long);
-    if ((paramFilterItem != null) && (!paramFilterItem.isEmptyFilter()))
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (jdField_a_of_type_Long != 0L)
-      {
-        long l2 = l1 - jdField_a_of_type_Long;
-        lcg.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter:" + l2);
-        if (l2 > 5000L)
-        {
-          jdField_a_of_type_Boolean = true;
-          a(paramFilterItem, l2 / 1000L);
-        }
-      }
-      lcg.c(jdField_a_of_type_JavaLangString, "DataReport onUserdFilter 33:" + jdField_a_of_type_Long);
-    }
-    jdField_a_of_type_Long = l1;
-  }
-  
-  public static void a(FilterItem paramFilterItem, long paramLong)
-  {
-    paramFilterItem = paramFilterItem.getId();
-    lcg.c(jdField_a_of_type_JavaLangString, "DataReport onStateReport:" + paramFilterItem + "|" + paramLong);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("filterName", paramFilterItem);
-    localHashMap.put("duration", String.valueOf(paramLong));
-    UserAction.onUserAction("actAVFunChatFilter", true, -1L, -1L, localHashMap, true);
-    try
-    {
-      UserAction.flushObjectsToDB(true);
-      return;
-    }
-    catch (Exception paramFilterItem)
-    {
-      lcg.e(jdField_a_of_type_JavaLangString, paramFilterItem.getMessage());
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    axqy.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    lcg.c(jdField_a_of_type_JavaLangString, "DataReport onSupport:" + paramBoolean);
-    if (paramBoolean) {}
-    for (String str = "0X80076AF";; str = "0X80076B0")
-    {
-      a(str);
-      return;
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lhq
  * JD-Core Version:    0.7.0.1
  */

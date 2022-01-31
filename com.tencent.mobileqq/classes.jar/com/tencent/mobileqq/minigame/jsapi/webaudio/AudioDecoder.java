@@ -10,6 +10,7 @@ import android.media.MediaFormat;
 import android.os.Build.VERSION;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
+import com.tencent.mobileqq.minigame.utils.GameLog;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -18,31 +19,34 @@ public class AudioDecoder
 {
   private static final long DEFAULT_TIMEOUT = 2000L;
   private static final String TAG = "AudioDecoder";
+  private int decodeId = -1;
+  private boolean isFirst = true;
   private MediaCodec mediaCodec;
   private MediaExtractor mediaExtractor;
   private MediaFormat oformat;
+  private AudioDecoder.onDecodeProcessListener onDecodeProcessListener;
   
   @RequiresApi(api=16)
   private byte[] doDecode()
   {
+    int k = 0;
     int i = 0;
     ByteBuffer[] arrayOfByteBuffer = this.mediaCodec.getInputBuffers();
     Object localObject1 = this.mediaCodec.getOutputBuffers();
     MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    int k = 0;
     int j = 0;
     if ((k != 0) || (j == 0)) {}
-    label438:
-    label441:
-    label444:
+    label533:
+    label536:
+    label539:
     for (;;)
     {
       try
       {
         int m = this.mediaCodec.dequeueInputBuffer(2000L);
         if (m < 0) {
-          break label444;
+          break label539;
         }
         ByteBuffer localByteBuffer = arrayOfByteBuffer[m];
         int n = this.mediaExtractor.readSampleData(localByteBuffer, 0);
@@ -63,21 +67,26 @@ public class AudioDecoder
         long l = this.mediaExtractor.getSampleTime();
         this.mediaCodec.queueInputBuffer(m, 0, n, l, 0);
         this.mediaExtractor.advance();
-        break label444;
+        break label539;
         if (localBufferInfo.size == 0) {
-          break label441;
+          break label536;
         }
         localByteBuffer = localObject1[m];
         byte[] arrayOfByte = new byte[localBufferInfo.size];
         localByteBuffer.get(arrayOfByte);
+        if (this.onDecodeProcessListener != null)
+        {
+          this.onDecodeProcessListener.onDecodeProcess(arrayOfByte, this.oformat, this.isFirst, false);
+          this.isFirst = false;
+        }
         i = arrayOfByte.length + i;
         localByteArrayOutputStream.write(arrayOfByte);
         this.mediaCodec.releaseOutputBuffer(m, false);
         if ((localBufferInfo.flags & 0x4) == 0) {
-          break label438;
+          break label533;
         }
         k = 1;
-        break label447;
+        break label542;
         if (m == -3)
         {
           localObject1 = this.mediaCodec.getOutputBuffers();
@@ -85,7 +94,7 @@ public class AudioDecoder
         else
         {
           if (m != -2) {
-            break label450;
+            break label545;
           }
           this.oformat = this.mediaCodec.getOutputFormat();
           Log.i("AudioDecoder", "output format has changed to " + this.oformat);
@@ -124,11 +133,16 @@ public class AudioDecoder
           continue;
         }
       }
+      if (this.onDecodeProcessListener != null)
+      {
+        this.onDecodeProcessListener.onDecodeProcess(null, this.oformat, false, true);
+        GameLog.getInstance().d("decodeWebAudioData", "decodeId:" + this.decodeId + " totalLen:" + i);
+      }
       localObject1 = localByteArrayOutputStream.toByteArray();
-      break label447;
+      break label542;
     }
-    label447:
-    label450:
+    label542:
+    label545:
     for (;;)
     {
       break;
@@ -218,8 +232,9 @@ public class AudioDecoder
   }
   
   @RequiresApi(api=16)
-  public byte[] decodeByPath(String paramString)
+  public byte[] decodeByPath(String paramString, int paramInt)
   {
+    this.decodeId = paramInt;
     if ((initMediaExtractor(paramString)) && (initMediaCodec())) {
       return doDecode();
     }
@@ -227,8 +242,9 @@ public class AudioDecoder
   }
   
   @RequiresApi(api=23)
-  public byte[] decodeInMemory(byte[] paramArrayOfByte)
+  public byte[] decodeInMemory(byte[] paramArrayOfByte, int paramInt)
   {
+    this.decodeId = paramInt;
     if ((initMediaExtractor(paramArrayOfByte)) && (initMediaCodec())) {
       return doDecode();
     }
@@ -269,10 +285,15 @@ public class AudioDecoder
     }
     return this.oformat.getInteger("sample-rate");
   }
+  
+  public void setOnDecodeProcessListener(AudioDecoder.onDecodeProcessListener paramonDecodeProcessListener)
+  {
+    this.onDecodeProcessListener = paramonDecodeProcessListener;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.webaudio.AudioDecoder
  * JD-Core Version:    0.7.0.1
  */

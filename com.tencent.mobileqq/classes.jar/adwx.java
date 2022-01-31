@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.TranslucentTRansferFragment;
 
-class adwx
-  implements View.OnClickListener
+public class adwx
+  implements DialogInterface.OnDismissListener
 {
-  adwx(adww paramadww) {}
+  public adwx(TranslucentTRansferFragment paramTranslucentTRansferFragment) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramView = this.a.a(paramView);
-    this.a.a.b(paramView);
-    this.a.a.d();
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adwx
  * JD-Core Version:    0.7.0.1
  */

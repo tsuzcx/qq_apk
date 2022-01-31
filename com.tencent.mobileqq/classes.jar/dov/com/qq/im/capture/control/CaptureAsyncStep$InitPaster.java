@@ -1,9 +1,9 @@
 package dov.com.qq.im.capture.control;
 
-import bjal;
-import bjav;
-import bjfl;
-import bktc;
+import bllv;
+import blmf;
+import blqw;
+import bnem;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 
 public class CaptureAsyncStep$InitPaster
@@ -11,16 +11,16 @@ public class CaptureAsyncStep$InitPaster
 {
   public int a()
   {
-    bktc.a(bjal.a());
-    bjfl localbjfl = (bjfl)bjav.a().c(4);
-    localbjfl.i();
-    localbjfl.d();
+    bnem.a(bllv.a());
+    blqw localblqw = (blqw)blmf.a().c(4);
+    localblqw.i();
+    localblqw.d();
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.control.CaptureAsyncStep.InitPaster
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,42 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class airu
-  implements INetInfoHandler
+public class airu
+  extends BroadcastReceiver
 {
-  public void onNetMobile2None() {}
+  public airu(SendHbActivity paramSendHbActivity) {}
   
-  public void onNetMobile2Wifi(String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ajom.a("onNetMobile2Wifi");
+    if ("com.qwallet.report".equals(paramIntent.getAction()))
+    {
+      int i = paramIntent.getIntExtra("type", 0);
+      QLog.i("SendHbActivity", 2, "onReceive type = " + i);
+      if (999 == i) {
+        break label53;
+      }
+    }
+    label53:
+    do
+    {
+      do
+      {
+        return;
+        paramContext = paramIntent.getBundleExtra("params");
+      } while (paramContext == null);
+      QLog.i("SendHbActivity", 2, "onReceive bundle = " + paramContext.toString());
+      paramContext = paramContext.getString("from");
+    } while ((this.a.isFinishing()) || (!"video".equals(paramContext)));
+    this.a.finish();
   }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    ajom.a("onNetNone2Wifi");
-  }
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     airu
  * JD-Core Version:    0.7.0.1
  */

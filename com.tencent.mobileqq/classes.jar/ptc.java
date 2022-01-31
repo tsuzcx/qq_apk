@@ -1,60 +1,28 @@
-import android.content.Context;
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentVerticalSmallVideo;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import com.tencent.image.URLDrawable.DownloadListener;
 
 public class ptc
-  extends pqq
+  implements URLDrawable.DownloadListener
 {
-  public ptc(Context paramContext, baxy parambaxy, ram paramram)
+  public ptc(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
+  
+  public void onFileDownloadFailed(int paramInt)
   {
-    super(paramContext, parambaxy, paramram);
+    ysi localysi = new ysi(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842359));
+    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localysi, 0, 1, 17);
+    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
   }
   
-  public pqq a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return g();
-  }
+  public void onFileDownloadStarted() {}
   
-  public pqq d()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new Exception("buildComponent() must after buildComponent()!");
-    }
-    ComponentContentVerticalSmallVideo localComponentContentVerticalSmallVideo = (ComponentContentVerticalSmallVideo)this.jdField_a_of_type_Pqp;
-    Pair localPair;
-    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pbf)))
-    {
-      localPair = omr.a(((pbf)this.jdField_a_of_type_JavaLangObject).f(), ((pbf)this.jdField_a_of_type_JavaLangObject).e());
-      if (!onh.s(((pbf)this.jdField_a_of_type_JavaLangObject).a())) {
-        break label105;
-      }
-      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(-2, -2));
-    }
-    for (;;)
-    {
-      a(localComponentContentVerticalSmallVideo);
-      return this;
-      label105:
-      localComponentContentVerticalSmallVideo.setLayoutParams(new AbsListView.LayoutParams(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue()));
-    }
-  }
-  
-  public pqq e()
-  {
-    return null;
-  }
-  
-  public pqq g()
-  {
-    this.jdField_a_of_type_Pqp = new ComponentContentVerticalSmallVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
-  }
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ptc
  * JD-Core Version:    0.7.0.1
  */

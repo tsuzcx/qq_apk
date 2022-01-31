@@ -1,166 +1,235 @@
+import android.app.Activity;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.util.PlayModeInteractViewUtils.1;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.LocalMultiProcConfig;
+import feedcloud.FeedCloudMeta.StTagInfo;
+import feedcloud.FeedCloudMeta.StUser;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import mqq.app.AppActivity;
+import mqq.app.AppRuntime;
+import qqcircle.QQCircleFeedBase.StBusiInfoData;
 
 public class tsp
+  extends tvg
+  implements View.OnClickListener
 {
-  public static void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem, wdi paramwdi, float paramFloat)
+  private int jdField_a_of_type_Int = 2;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private bepp jdField_a_of_type_Bepp;
+  private FeedCloudMeta.StTagInfo jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo;
+  private FeedCloudMeta.StUser jdField_a_of_type_FeedcloudFeedCloudMeta$StUser;
+  private tst jdField_a_of_type_Tst = new tst(this, null);
+  private boolean jdField_a_of_type_Boolean;
+  
+  public tsp(FeedCloudMeta.StUser paramStUser)
   {
-    if (paramInt == ((Integer)paramwdi.a().getTag(2131373384)).intValue())
-    {
-      tld.a(paramString, paramStoryVideoItem.mVid, (int)paramFloat);
-      new StringBuilder().append(paramwdi.a()[0]).append(";").append(String.valueOf((int)paramFloat));
-    }
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser = paramStUser;
   }
   
-  public static void a(wdk paramwdk, wdj paramwdj, FrameLayout paramFrameLayout, wcy paramwcy, int paramInt, StoryVideoItem paramStoryVideoItem)
+  private void b()
   {
-    if (paramStoryVideoItem == null)
-    {
-      ved.c("Q.qqstory.PlayModeInteractViewUtils", "preparePollView error!", new IllegalArgumentException("storyVideoItem is null"));
-      return;
-    }
-    ved.a("Q.qqstory.PlayModeInteractViewUtils", "preparePollView %s index = %d", paramStoryVideoItem.mVid, Integer.valueOf(paramInt));
-    paramFrameLayout.setVisibility(4);
-    if (paramStoryVideoItem.getInteractLayout() == null)
-    {
-      ved.b("Q.qqstory.PlayModeInteractViewUtils", "preparePollView %s don't have poll view layout", paramStoryVideoItem.mVid);
-      return;
-    }
-    paramFrameLayout.removeAllViews();
-    paramwcy.a(false);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-    new FrameLayout.LayoutParams(-2, -2);
-    paramFrameLayout.addView(paramwcy.a(), localLayoutParams);
-    paramFrameLayout.forceLayout();
-    b(paramwdk, paramwdj, paramFrameLayout, paramwcy, paramInt, paramStoryVideoItem, false);
+    bdcd.a(a(), 230, a().getResources().getString(2131698354), null, 2131690648, 2131698331, new tsq(this), new tsr(this)).show();
   }
   
-  public static void a(wdk paramwdk, wdj paramwdj, wcy paramwcy, StoryVideoItem paramStoryVideoItem)
+  private void c()
   {
-    if (paramStoryVideoItem == null) {
-      ved.c("Q.qqstory.PlayModeInteractViewUtils", "bindPollView error! holder is null!", new IllegalArgumentException("arg storyVideoItem is null"));
-    }
-    while (!(paramwcy instanceof wdi)) {
+    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo == null) {
       return;
     }
-    b(paramwdk, paramwdj, paramwcy, paramStoryVideoItem);
-  }
-  
-  public static void b(wdk paramwdk, wdj paramwdj, FrameLayout paramFrameLayout, wcy paramwcy, int paramInt, StoryVideoItem paramStoryVideoItem)
-  {
-    ved.a("Q.qqstory.PlayModeInteractViewUtils", "showPollView %s index = %d", paramStoryVideoItem.mVid, Integer.valueOf(paramInt));
-    b(paramwdk, paramwdj, paramFrameLayout, paramwcy, paramInt, paramStoryVideoItem, true);
-  }
-  
-  private static void b(wdk paramwdk, wdj paramwdj, FrameLayout paramFrameLayout, wcy paramwcy, int paramInt, StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
-  {
-    tei localtei = paramStoryVideoItem.getInteractLayout();
-    if (localtei == null) {
-      ved.b("Q.qqstory.PlayModeInteractViewUtils", "onInitPollView video has no poll attributes, not a poll video item");
-    }
-    View localView;
-    int i;
-    int j;
-    int k;
-    int m;
-    float f1;
-    float f2;
-    float f3;
-    do
+    Object localObject = QzoneConfig.getInstance().getConfig("QZoneSetting", "QcircleCertifyTagUrl", "https://h5.qzone.qq.com/v2/wezone/auth?type={type}&busitype=1&groupname={groupname}&_wv=3&_proxy=1");
+    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagType.get() == 2) {}
+    for (int i = 0;; i = 1)
     {
-      return;
-      ved.b("Q.qqstory.PlayModeInteractViewUtils", "initPollView %d", Integer.valueOf(paramInt));
-      localView = paramwcy.a();
-      localView.setTag(2131373384, Integer.valueOf(paramInt));
-      i = localtei.b;
-      j = localtei.c;
-      k = localtei.d;
-      m = localtei.e;
-      f1 = localtei.f;
-      f2 = localtei.g;
-      f3 = localtei.h;
-      String[] arrayOfString = localtei.a;
-      if ((arrayOfString == null) || (arrayOfString.length == 0))
+      localObject = ((String)localObject).replace("{type}", String.valueOf(i));
+      try
       {
-        ved.c("Q.qqstory.PlayModeInteractViewUtils", "onInitPollView poll [contents] attributes illegal or missing!");
-        return;
+        String str = ((String)localObject).replace("{groupname}", URLEncoder.encode(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get(), "utf-8"));
+        localObject = str;
       }
-      ved.b("Q.qqstory.PlayModeInteractViewUtils", "[%d]Using json poll layout screen_size(%d, %d) poll_size(%d, %d) center(%.1f, %.1f) rotation(%.1f)", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3) });
-      paramwcy.a(arrayOfString);
-      if (paramFrameLayout.getWidth() != 0) {
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        for (;;)
+        {
+          QLog.e("QCirclePublishFeedPart", 1, "goToH5CertifyTag encodeTag failed.", localUnsupportedEncodingException);
+        }
+      }
+      tqs.a(a(), (String)localObject);
+      return;
+    }
+  }
+  
+  private void d()
+  {
+    boolean bool = false;
+    this.jdField_a_of_type_AndroidWidgetImageView.setClickable(false);
+    this.jdField_a_of_type_Bepp.show();
+    long l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+    if (LocalMultiProcConfig.getInt4Uin("_qq_circle_publish", 0, l) == 1) {
+      bool = true;
+    }
+    QLog.i("QCirclePublishFeedPart", 1, "plus button clicked. hasDraft=" + bool);
+    if (bool)
+    {
+      localBundle = new Bundle();
+      localStBusiInfoData = new QQCircleFeedBase.StBusiInfoData();
+      localStBusiInfoData.schoolInfos.set(tqg.a());
+      localStBusiInfoData.companyInfos.set(tqg.b());
+      localBundle.putByteArray("key_qcircle_publish_busi_info", localStBusiInfoData.toByteArray());
+      tqs.a(a(), localBundle, String.valueOf(l), this.jdField_a_of_type_Int);
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("key_qcircle_entrance_type", 3);
+    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo != null)
+    {
+      localBundle.putString("key_qcircle_publish_default_tag_id", this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagId.get());
+      localBundle.putString("key_qcircle_publish_default_tag_name", this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get());
+    }
+    QQCircleFeedBase.StBusiInfoData localStBusiInfoData = new QQCircleFeedBase.StBusiInfoData();
+    localStBusiInfoData.schoolInfos.set(tqg.a());
+    localStBusiInfoData.companyInfos.set(tqg.b());
+    localBundle.putByteArray("key_qcircle_publish_busi_info", localStBusiInfoData.toByteArray());
+    tqs.a(a(), localBundle, null, this.jdField_a_of_type_Int);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.performClick();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372520));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
+    if ((this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser != null) && (tra.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser))) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bepp = new bepp(a());
+      return;
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+  }
+  
+  public void a(FeedCloudMeta.StTagInfo paramStTagInfo)
+  {
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = paramStTagInfo;
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    super.a(paramString, paramObject);
+    if (TextUtils.equals(paramString, "tab_changed")) {
+      if ((paramObject instanceof Integer))
+      {
+        i = ((Integer)paramObject).intValue();
+        if (i != 1) {
+          break label42;
+        }
+        this.jdField_a_of_type_Int = 2;
+      }
+    }
+    label42:
+    while ((!TextUtils.equals(paramString, "tab_rsp")) || (!(paramObject instanceof FeedCloudMeta.StTagInfo)))
+    {
+      int i;
+      do
+      {
+        return;
+      } while (i != 6);
+      this.jdField_a_of_type_Int = 3;
+      return;
+    }
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo = ((FeedCloudMeta.StTagInfo)paramObject);
+  }
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  {
+    super.onActivityCreated(paramActivity, paramBundle);
+    paramBundle = new IntentFilter();
+    paramBundle.addAction("action_update_native_auth_info");
+    paramActivity.registerReceiver(this.jdField_a_of_type_Tst, paramBundle);
+  }
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    paramActivity.unregisterReceiver(this.jdField_a_of_type_Tst);
+    super.onActivityDestroyed(paramActivity);
+  }
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    super.onActivityResumed(paramActivity);
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      tyj.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 14, 1L, 0L, String.valueOf(tra.b(this.jdField_a_of_type_Int)));
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    super.onActivityStopped(paramActivity);
+    this.jdField_a_of_type_Bepp.dismiss();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    paramView = tqg.a();
+    ArrayList localArrayList = tqg.b();
+    int i = tra.a(a(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo, paramView, localArrayList);
+    if (i == 0) {
+      b();
+    }
+    for (;;)
+    {
+      tyj.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 14, 2L, 0L, String.valueOf(tra.b(this.jdField_a_of_type_Int)));
+      return;
+      if (i == 1) {
         break;
       }
-    } while (!paramBoolean);
-    paramFrameLayout.post(new PlayModeInteractViewUtils.1(paramwdk, paramwdj, paramFrameLayout, paramwcy, paramInt, paramStoryVideoItem));
-    return;
-    paramInt = paramFrameLayout.getWidth();
-    int n = paramFrameLayout.getHeight();
-    paramwcy.a(localtei.b, localtei.c, paramInt, n, localtei.d, localtei.e, localtei.f, localtei.g, localtei.h);
-    paramwcy.a();
-    a(paramwdk, paramwdj, paramwcy, paramStoryVideoItem);
-    localView.setVisibility(0);
-    paramFrameLayout.setVisibility(0);
-    ved.b("Q.qqstory.PlayModeInteractViewUtils", "onInitPollView src=(w=%d, h=%d), poll=(x=%.2f, y=%.2f, w=%d, h=%d), r=%.2f, dst(%d, %d)", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(k), Integer.valueOf(m), Float.valueOf(f3), Integer.valueOf(paramInt), Integer.valueOf(n) });
-    ved.a("Q.qqstory.PlayModeInteractViewUtils", "onInitPollView view(%d, %d) parent(%d, %d)", Integer.valueOf(localView.getLeft()), Integer.valueOf(localView.getTop()), Integer.valueOf(paramFrameLayout.getLeft()), Integer.valueOf(paramFrameLayout.getRight()));
-  }
-  
-  private static void b(wdk paramwdk, wdj paramwdj, wcy paramwcy, StoryVideoItem paramStoryVideoItem)
-  {
-    ved.b("Q.qqstory.PlayModeInteractViewUtils", "bindRateView, vid=%s, rateResult=%s, totalScore=%s, totalCount=%s", paramStoryVideoItem.mVid, Integer.valueOf(paramStoryVideoItem.mRateResult), Long.valueOf(paramStoryVideoItem.mTotalScore), Integer.valueOf(paramStoryVideoItem.mTotalRateCount));
-    if (!(paramwcy instanceof wdi)) {
-      return;
-    }
-    paramwcy = (wdi)paramwcy;
-    boolean bool = TextUtils.equals(paramStoryVideoItem.mOwnerUid, QQStoryContext.a().b());
-    if (paramStoryVideoItem.mRateResult > 0)
-    {
-      paramwcy.b(false);
-      paramwcy.a(paramStoryVideoItem.mRateResult);
-      paramwcy.a(null);
-      if (paramStoryVideoItem.mTotalRateCount > 0)
-      {
-        paramwcy.a(true);
-        paramwcy.a(paramStoryVideoItem.mTotalScore, paramStoryVideoItem.mTotalRateCount);
-        if (bool)
-        {
-          paramwcy.a(paramwdj, true);
-          return;
-        }
-        paramwcy.a(null, false);
-        return;
+      if (Build.VERSION.SDK_INT >= 23) {
+        ((AppActivity)a()).requestPermissions(new tss(this), 0, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
+      } else {
+        d();
       }
-      paramwcy.a(false);
-      return;
     }
-    if (StoryVideoItem.isFakeVid(paramStoryVideoItem.mVid))
-    {
-      paramwcy.b(false);
-      paramwcy.a(0.0F);
-      paramwcy.a(null);
-      paramwcy.a(false);
-      return;
-    }
-    paramwcy.b(true);
-    paramwcy.a(0.0F);
-    paramwcy.a(paramwdk);
-    if ((bool) && (paramStoryVideoItem.mTotalRateCount > 0))
-    {
-      paramwcy.a(true);
-      paramwcy.a(paramStoryVideoItem.mTotalScore, paramStoryVideoItem.mTotalRateCount);
-      paramwcy.a(paramwdj, true);
-      return;
-    }
-    paramwcy.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsp
  * JD-Core Version:    0.7.0.1
  */

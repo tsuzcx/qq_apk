@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
-import axlk;
+import azgq;
 
 public class NestViewPager
   extends QQViewPager
@@ -59,7 +59,7 @@ public class NestViewPager
       if ((!this.jdField_a_of_type_Boolean) || (i <= k)) {
         break label184;
       }
-      if ((j / i >= 0.6F) || (this.jdField_a_of_type_Int <= (int)(axlk.jdField_a_of_type_Int * 0.1F))) {
+      if ((j / i >= 0.6F) || (this.jdField_a_of_type_Int <= (int)(azgq.jdField_a_of_type_Int * 0.1F))) {
         break label192;
       }
     }

@@ -1,33 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.PromotionEntry;
+import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
 
 public class augc
-  implements View.OnTouchListener
+  implements alsq
 {
-  public augc(PromotionEntry paramPromotionEntry) {}
+  public augc(MultiAIOFragment paramMultiAIOFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString, int paramInt)
   {
-    if (PromotionEntry.a(this.a) == null) {}
-    do
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        PromotionEntry.a(this.a).setAlpha(255);
-        return false;
-      }
-    } while (paramMotionEvent.getAction() != 0);
-    PromotionEntry.a(this.a).setAlpha(100);
-    return false;
+    MultiAIOFragment.a(this.a).a(paramString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     augc
  * JD-Core Version:    0.7.0.1
  */

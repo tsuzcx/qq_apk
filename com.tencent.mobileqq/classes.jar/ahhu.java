@@ -1,47 +1,40 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ahhu
-  implements EIPCResultCallback
+public class ahhu
+  extends ahgy
+  implements View.OnClickListener
 {
-  ahhu(ahhs paramahhs) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public ahhu(Context paramContext, QQAppInterface paramQQAppInterface, akgy paramakgy, avqe paramavqe)
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null)) {}
-    try
+    super(paramContext, paramQQAppInterface, paramakgy, paramavqe);
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    ahhv localahhv;
+    if ((paramView == null) || (!(paramView.getTag() instanceof ahhv)))
     {
-      String str = paramEIPCResult.data.getString("key1");
-      paramEIPCResult = paramEIPCResult.data.getString("key2");
-      if (QLog.isColorLevel()) {
-        QLog.i("springHb_SpringFestivalRedpacketJsPlugin", 2, "[init] getEmergencyInfo ori prefix:" + str + ",emerUrl:" + paramEIPCResult);
-      }
-      if (bbft.d.matcher(str).matches()) {
-        ahhs.a(this.a, str);
-      }
-      if (bbft.d.matcher(paramEIPCResult).matches()) {
-        ahhs.b(this.a, paramEIPCResult);
-      }
+      localahhv = new ahhv();
+      paramView = LayoutInflater.from(this.a).inflate(2131561106, null);
+      paramView.setTag(localahhv);
     }
-    catch (Throwable paramEIPCResult)
+    for (;;)
     {
-      for (;;)
-      {
-        paramEIPCResult.printStackTrace();
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("springHb_SpringFestivalRedpacketJsPlugin", 2, "[init] getEmergencyInfo final prefix:" + ahhs.a(this.a) + ",mEmerUrl:" + ahhs.b(this.a));
+      paramView.setOnClickListener(this);
+      return paramView;
+      localahhv = (ahhv)paramView.getTag();
     }
   }
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahhu
  * JD-Core Version:    0.7.0.1
  */

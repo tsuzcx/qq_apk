@@ -1,45 +1,41 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.widget.RoundImageView;
+import com.tencent.qphone.base.util.QLog;
 
 class aocq
-  implements DialogInterface.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  aocq(aocn paramaocn) {}
+  aocq(aoco paramaoco, RoundImageView paramRoundImageView, aoxp paramaoxp, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getString(2131719975);
-    bbrk.a(null, this.a.jdField_a_of_type_AndroidContentContext, "mvip.g.a.bq_tz", 3, "1450000515", "CJCLUBT", paramDialogInterface, "", false, true);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
-    {
-      if (EmojiStickerManager.a().a != 0) {
-        break label103;
-      }
-      paramInt = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentDanmakuRender", 2, "onLoadCanceled : " + this.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommentDanmakuRender", 2, "onLoadFailed : " + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null)
     {
-      VasWebviewUtil.reportCommercialDrainage(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c(), "Stick", "ClickSVIPTip", String.valueOf(paramInt), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      return;
-      label103:
-      if (EmojiStickerManager.a().a == 1) {
-        paramInt = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
-        paramInt = 3;
-      } else {
-        paramInt = -1;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setImageDrawable(paramURLDrawable);
+      this.jdField_a_of_type_Aoxp.c(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aocq
  * JD-Core Version:    0.7.0.1
  */

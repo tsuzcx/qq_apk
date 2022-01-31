@@ -1,38 +1,16 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
 
-class atsj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class atsj
+  extends atsr<TimerTaskManager, Void>
 {
-  atsj(atsc paramatsc) {}
-  
-  public void onGlobalLayout()
+  protected TimerTaskManager a(Void paramVoid)
   {
-    Object localObject = new Rect();
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getWindow().getDecorView().getRootView().getHeight() - ((Rect)localObject).bottom;
-    if (i <= 0) {}
-    int j;
-    do
-    {
-      return;
-      j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getScrollY();
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getCurrentFocus();
-    } while ((localObject == null) || (!(localObject instanceof EditText)) || (((View)localObject).getParent() == null));
-    int k = ((ViewGroup)((View)localObject).getParent()).getBottom();
-    int m = this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getMeasuredHeight();
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollBy(0, k + i - m - j);
+    return new TimerTaskManager();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,23 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinListener;
+import java.util.ArrayList;
 
 public class osp
-  implements ThreadFactory
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final ThreadGroup jdField_a_of_type_JavaLangThreadGroup;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+  public static ArrayList<AladdinListener> a = new ArrayList();
   
-  public osp()
+  public static void a(AladdinListener paramAladdinListener)
   {
-    Object localObject = System.getSecurityManager();
-    if (localObject != null) {}
-    for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
-    {
-      this.jdField_a_of_type_JavaLangThreadGroup = ((ThreadGroup)localObject);
-      this.jdField_a_of_type_JavaLangString = "readinjoy-common-";
-      return;
-    }
+    a.add(paramAladdinListener);
   }
   
-  public Thread newThread(Runnable paramRunnable)
+  public static void b(AladdinListener paramAladdinListener)
   {
-    paramRunnable = new Thread(this.jdField_a_of_type_JavaLangThreadGroup, paramRunnable, this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement(), 0L);
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
-    }
-    if (paramRunnable.getPriority() != 5) {
-      paramRunnable.setPriority(5);
-    }
-    return paramRunnable;
+    a.remove(paramAladdinListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     osp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package cooperation.qqreader.host.colornote;
 
-import amgv;
+import anxw;
 import com.tencent.mobileqq.colornote.data.ColorNote;
 
 class ReaderColorNoteController$2
-  implements amgv
+  implements anxw
 {
   ReaderColorNoteController$2(ReaderColorNoteController paramReaderColorNoteController, IReaderServiceInfo paramIReaderServiceInfo) {}
   
@@ -15,7 +15,7 @@ class ReaderColorNoteController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.host.colornote.ReaderColorNoteController.2
  * JD-Core Version:    0.7.0.1
  */

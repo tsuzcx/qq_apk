@@ -2,8 +2,8 @@ package dov.com.qq.im;
 
 import android.os.Handler;
 import android.os.Message;
-import avte;
-import axle;
+import axld;
+import azgk;
 import com.tencent.qphone.base.util.QLog;
 
 class QIMEffectCameraCaptureUnit$3
@@ -14,7 +14,7 @@ class QIMEffectCameraCaptureUnit$3
   public void run()
   {
     Handler localHandler;
-    if ((axle.d()) && (axle.a(this.this$0.a())))
+    if ((azgk.d()) && (azgk.a(this.this$0.a())))
     {
       i = 1;
       localHandler = this.this$0.a;
@@ -28,7 +28,7 @@ class QIMEffectCameraCaptureUnit$3
       localHandler.obtainMessage(1001, i, 0).sendToTarget();
       if (this.a)
       {
-        boolean bool = avte.b();
+        boolean bool = axld.b();
         if (QLog.isColorLevel()) {
           QLog.d("QIMEffectCameraCaptureUnit", 2, new Object[] { "onNotifyFilterReady soLoaded: ", Boolean.valueOf(bool) });
         }
@@ -41,7 +41,7 @@ class QIMEffectCameraCaptureUnit$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.QIMEffectCameraCaptureUnit.3
  * JD-Core Version:    0.7.0.1
  */

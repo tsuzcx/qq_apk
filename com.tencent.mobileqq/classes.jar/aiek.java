@@ -1,29 +1,25 @@
-import android.content.Intent;
-import android.view.View;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-public class aiek
-  implements View.OnClickListener
+class aiek
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aiek(SelectMemberActivity paramSelectMemberActivity) {}
+  aiek(aiej paramaiej) {}
   
-  public void onClick(View paramView)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if (this.a.d == 27)
+    if (aiej.a(this.a) != null)
     {
-      this.a.a.putParcelableArrayListExtra("result_set", this.a.e);
-      ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
-      this.a.setResult(-1, this.a.a);
+      aiej.a(this.a).onClick(aiej.a(this.a));
+      return true;
     }
-    this.a.finish();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiek
  * JD-Core Version:    0.7.0.1
  */

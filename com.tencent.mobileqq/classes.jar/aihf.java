@@ -1,20 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.os.Handler;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aihf
-  implements DialogInterface.OnClickListener
+  extends awdn
 {
-  public aihf(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public aihf(BindVerifyActivity paramBindVerifyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void c(boolean paramBoolean, int paramInt)
   {
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("BindVerifyActivity", 2, "onVerifyBindSms [" + paramBoolean + ", " + paramInt + "]");
+    }
+    BindVerifyActivity.a(this.a, false);
+    BindVerifyActivity.a(this.a).removeMessages(4);
+    this.a.b();
+    if (!paramBoolean)
+    {
+      this.a.a("dc00898", "0X8009F19", 0);
+      this.a.a(1, this.a.getString(2131719221));
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(BindVerifyActivity.b(this.a));
+      BindVerifyActivity.b(this.a, null);
+      return;
+      if ((paramInt == 0) || (paramInt == 106))
+      {
+        this.a.a();
+      }
+      else if (paramInt == 213)
+      {
+        this.a.a("dc00898", "0X8009F19", 0);
+        this.a.a(1, alpo.a(2131701516));
+        BindVerifyActivity.a(this.a).setEnabled(true);
+      }
+      else
+      {
+        this.a.a("dc00898", "0X8009F19", 0);
+        String str = alpo.a(2131701511);
+        if (paramInt == 107) {
+          str = alpo.a(2131701513);
+        }
+        this.a.a(alpo.a(2131701517), str);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aihf
  * JD-Core Version:    0.7.0.1
  */

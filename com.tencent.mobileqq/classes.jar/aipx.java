@@ -1,49 +1,62 @@
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
 
 public class aipx
-  implements Comparator<aipz>
+  extends Handler
 {
-  private int a(aipz paramaipz)
+  aipx(aipw paramaipw, Looper paramLooper)
   {
-    if ((a(paramaipz) == 0L) || (paramaipz.jdField_a_of_type_Int == 4)) {
-      return paramaipz.jdField_a_of_type_Int + 3;
-    }
-    return paramaipz.jdField_a_of_type_Int;
+    super(paramLooper);
   }
   
-  private long a(aipz paramaipz)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramaipz.jdField_a_of_type_Auko instanceof TroopInfo)) {
-      return ((TroopInfo)paramaipz.jdField_a_of_type_Auko).lastMsgTime;
+    int i = paramMessage.what;
+    boolean bool;
+    if (paramMessage.arg1 == 1)
+    {
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("PasswdRedBagManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
+      }
+      if (bool) {
+        break label56;
+      }
     }
-    if ((paramaipz.jdField_a_of_type_Auko instanceof DiscussionInfo)) {
-      return ((DiscussionInfo)paramaipz.jdField_a_of_type_Auko).lastMsgTime;
+    for (;;)
+    {
+      return;
+      bool = false;
+      break;
+      label56:
+      if ((i == 1) || (i == 0))
+      {
+        ThreadManager.getFileThreadHandler().post(new PasswdRedBagManager.1.1(this, i));
+        paramMessage = (List)paramMessage.obj;
+        if (paramMessage != null)
+        {
+          paramMessage = paramMessage.iterator();
+          while (paramMessage.hasNext())
+          {
+            oidb_0x438.RedBagInfo localRedBagInfo = (oidb_0x438.RedBagInfo)paramMessage.next();
+            this.a.a(localRedBagInfo);
+          }
+        }
+      }
     }
-    return 0L;
-  }
-  
-  public int a(aipz paramaipz1, aipz paramaipz2)
-  {
-    if ((paramaipz1 == null) && (paramaipz2 == null)) {
-      return 0;
-    }
-    if (paramaipz1 == null) {
-      return -1;
-    }
-    if (paramaipz2 == null) {
-      return 1;
-    }
-    if (a(paramaipz1) == a(paramaipz2)) {
-      return (int)(a(paramaipz2) - a(paramaipz1));
-    }
-    return a(paramaipz1) - a(paramaipz2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
-public class afsy
-  implements ValueAnimator.AnimatorUpdateListener
+class afsy
+  implements ImageAssetDelegate
 {
-  public afsy(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
+  afsy(afsx paramafsx) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    this.a.h = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.invalidate();
+    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afsy
  * JD-Core Version:    0.7.0.1
  */

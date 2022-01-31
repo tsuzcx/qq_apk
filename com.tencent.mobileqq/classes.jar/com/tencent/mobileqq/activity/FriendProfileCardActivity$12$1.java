@@ -1,25 +1,28 @@
 package com.tencent.mobileqq.activity;
 
-import abdk;
-import android.os.Message;
-import bfob;
+import acuh;
+import aloz;
+import awmk;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
 
 public class FriendProfileCardActivity$12$1
   implements Runnable
 {
-  public FriendProfileCardActivity$12$1(abdk paramabdk, Card paramCard) {}
+  public FriendProfileCardActivity$12$1(acuh paramacuh) {}
   
   public void run()
   {
-    boolean bool = this.jdField_a_of_type_Abdk.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet, this.jdField_a_of_type_ComTencentMobileqqDataCard.diyComplicatedInfo, this.jdField_a_of_type_ComTencentMobileqqDataCard.cardId);
-    Message localMessage = this.jdField_a_of_type_Abdk.a.b.obtainMessage(13, Boolean.valueOf(bool));
-    this.jdField_a_of_type_Abdk.a.b.sendMessage(localMessage);
+    Card localCard = ((aloz)this.a.a.app.getManager(51)).b(this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
+    this.a.a.a.jdField_a_of_type_ComTencentMobileqqDataCard = localCard;
+    if (localCard != null) {
+      this.a.a.runOnUiThread(new FriendProfileCardActivity.12.1.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileCardActivity.12.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,31 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
 
-class ucc
-  implements ude
+public class ucc
+  extends ClickableSpan
 {
-  ucc(ubz paramubz, StoryVideoItem paramStoryVideoItem) {}
+  public ucc(QCirclePushAsyncTextView paramQCirclePushAsyncTextView) {}
   
-  public void a_(ucz paramucz)
+  public void onClick(@NonNull View paramView)
   {
-    if (this.jdField_a_of_type_Ubz.isCanceled()) {
-      return;
+    if (QCirclePushAsyncTextView.a(this.a) != null) {
+      QCirclePushAsyncTextView.a(this.a).b();
     }
-    ved.a(this.jdField_a_of_type_Ubz.a.a, "onPrepared, [videoView=%d]", Integer.valueOf(System.identityHashCode(paramucz)));
-    VideoViewVideoHolder.a(this.jdField_a_of_type_Ubz.a, "VP", SystemClock.uptimeMillis());
-    this.jdField_a_of_type_Ubz.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(-16777216);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ucc
  * JD-Core Version:    0.7.0.1
  */

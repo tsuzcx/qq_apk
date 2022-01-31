@@ -1,38 +1,38 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import acxs;
+import aepf;
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.provider.MediaStore.Images.Media;
-import bbdx;
+import bdcs;
 import com.tencent.qphone.base.util.QLog;
-import gr;
+import fa;
 import java.io.File;
-import vfl;
-import vfn;
-import vix;
+import wud;
+import wuf;
+import wxp;
 
 public class EditPicSave$2$1
   implements Runnable
 {
-  public EditPicSave$2$1(vfn paramvfn, String paramString) {}
+  public EditPicSave$2$1(wuf paramwuf, String paramString) {}
   
   public void run()
   {
     try
     {
-      String str = acxs.a();
+      String str = aepf.a();
       File localFile = new File(str);
-      if (bbdx.a(new File(this.jdField_a_of_type_JavaLangString), localFile))
+      if (bdcs.a(new File(this.jdField_a_of_type_JavaLangString), localFile))
       {
         Object localObject = new BitmapFactory.Options();
         ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
         BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject);
         localObject = ((BitmapFactory.Options)localObject).outMimeType;
-        int i = gr.a(str);
+        int i = fa.a(str);
         ContentValues localContentValues = new ContentValues(7);
         localContentValues.put("title", localFile.getName());
         localContentValues.put("_display_name", localFile.getName());
@@ -41,8 +41,8 @@ public class EditPicSave$2$1
         localContentValues.put("orientation", Integer.valueOf(i));
         localContentValues.put("_data", str);
         localContentValues.put("_size", Long.valueOf(localFile.length()));
-        if (this.jdField_a_of_type_Vfn.a.a.getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, localContentValues) == null) {
-          MediaStore.Images.Media.insertImage(this.jdField_a_of_type_Vfn.a.a.getActivity().getContentResolver(), str, localFile.getName(), null);
+        if (this.jdField_a_of_type_Wuf.a.a.getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, localContentValues) == null) {
+          MediaStore.Images.Media.insertImage(this.jdField_a_of_type_Wuf.a.a.getActivity().getContentResolver(), str, localFile.getName(), null);
         }
       }
       return;
@@ -56,7 +56,7 @@ public class EditPicSave$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditPicSave.2.1
  * JD-Core Version:    0.7.0.1
  */

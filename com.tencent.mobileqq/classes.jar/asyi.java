@@ -1,30 +1,14 @@
-import java.util.Comparator;
-
-final class asyi
-  implements Comparator<String>
+public abstract interface asyi
 {
-  public int a(String paramString1, String paramString2)
-  {
-    if ((paramString1 != null) && (paramString2 != null)) {
-      if (paramString1.length() <= paramString2.length()) {}
-    }
-    while (paramString1 != null)
-    {
-      return -1;
-      if (paramString1.length() >= paramString2.length()) {
-        break;
-      }
-      return 1;
-    }
-    if (paramString2 != null) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(long paramLong1, long paramLong2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asyi
  * JD-Core Version:    0.7.0.1
  */

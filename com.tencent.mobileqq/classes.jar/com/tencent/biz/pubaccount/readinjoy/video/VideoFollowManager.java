@@ -11,8 +11,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import qoi;
-import qwy;
+import rdm;
+import rmn;
 
 public class VideoFollowManager
 {
@@ -21,15 +21,15 @@ public class VideoFollowManager
   private VideoFeedsPlayManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private List<VideoInfo> jdField_a_of_type_JavaUtilList;
-  private qwy jdField_a_of_type_Qwy;
+  private rmn jdField_a_of_type_Rmn;
   
-  public VideoFollowManager(Activity paramActivity, QQAppInterface paramQQAppInterface, qwy paramqwy, VideoFeedsPlayManager paramVideoFeedsPlayManager, List<VideoInfo> paramList, int paramInt)
+  public VideoFollowManager(Activity paramActivity, QQAppInterface paramQQAppInterface, rmn paramrmn, VideoFeedsPlayManager paramVideoFeedsPlayManager, List<VideoInfo> paramList, int paramInt)
   {
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager = paramVideoFeedsPlayManager;
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Qwy = paramqwy;
+    this.jdField_a_of_type_Rmn = paramrmn;
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
   }
   
@@ -42,7 +42,7 @@ public class VideoFollowManager
     do
     {
       return;
-      qoi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramBoolean);
+      rdm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramBoolean);
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       paramBoolean = false;
       while (localIterator.hasNext())
@@ -64,7 +64,7 @@ public class VideoFollowManager
         }
       }
       if (paramBoolean) {
-        this.jdField_a_of_type_Qwy.a(paramString);
+        this.jdField_a_of_type_Rmn.a(paramString);
       }
     } while (!QLog.isColorLevel());
     QLog.d("VideoFollowHelper", 2, "followPubAccount() isDataChanged=" + paramBoolean);
@@ -81,10 +81,10 @@ public class VideoFollowManager
       if (paramVideoInfo.j.equals(paramString))
       {
         bool1 = bool2;
-        if (!paramVideoInfo.jdField_k_of_type_Boolean) {
+        if (!paramVideoInfo.o) {
           bool1 = true;
         }
-        paramVideoInfo.jdField_k_of_type_Boolean = true;
+        paramVideoInfo.o = true;
       }
     }
     return bool1;
@@ -96,7 +96,7 @@ public class VideoFollowManager
     if (QLog.isColorLevel()) {
       QLog.d("VideoFollowHelper", 2, "innerSubscribeColume() columeid=" + i);
     }
-    qoi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i);
+    rdm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i);
     paramVideoInfo = this.jdField_a_of_type_JavaUtilList.iterator();
     while (paramVideoInfo.hasNext())
     {
@@ -106,10 +106,10 @@ public class VideoFollowManager
         localVideoInfo.a.jdField_a_of_type_Boolean = true;
         VideoColumnInfo localVideoColumnInfo = localVideoInfo.a;
         localVideoColumnInfo.jdField_c_of_type_Int += 1;
-        this.jdField_a_of_type_Qwy.b(localVideoInfo);
+        this.jdField_a_of_type_Rmn.b(localVideoInfo);
       }
     }
-    this.jdField_a_of_type_Qwy.b(i);
+    this.jdField_a_of_type_Rmn.b(i);
   }
   
   public void a(VideoInfo paramVideoInfo)
@@ -117,15 +117,15 @@ public class VideoFollowManager
     if (paramVideoInfo.e()) {
       if (!paramVideoInfo.a.jdField_a_of_type_Boolean) {}
     }
-    while (paramVideoInfo.jdField_k_of_type_Boolean)
+    while (paramVideoInfo.o)
     {
       return;
       c(paramVideoInfo);
-      qoi.a(this.jdField_a_of_type_AndroidAppActivity, paramVideoInfo.a.jdField_c_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo);
+      rdm.a(this.jdField_a_of_type_AndroidAppActivity, paramVideoInfo.a.jdField_c_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("VideoFollowHelper", 2, "followPubAccount onClick() puin=" + paramVideoInfo.j + ", isFollowed=" + paramVideoInfo.jdField_k_of_type_Boolean + ", pname=" + paramVideoInfo.jdField_k_of_type_JavaLangString);
+      QLog.d("VideoFollowHelper", 2, "followPubAccount onClick() puin=" + paramVideoInfo.j + ", isFollowed=" + paramVideoInfo.o + ", pname=" + paramVideoInfo.k);
     }
     a(paramVideoInfo.j, paramVideoInfo.b);
   }
@@ -140,7 +140,7 @@ public class VideoFollowManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFollowManager
  * JD-Core Version:    0.7.0.1
  */

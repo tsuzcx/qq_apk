@@ -1,236 +1,339 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzonePluginProxyActivity;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.qq.im.capture.mode.CaptureModeController;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import java.util.ArrayList;
-import java.util.List;
+import cooperation.buscard.BuscardPluginRemoteCommand.1;
 import mqq.app.AppRuntime;
 
 public class bihr
-  extends QIMEffectCameraCaptureUnit
+  extends RemoteCommand
 {
-  private boolean a;
-  private int d;
-  private String l;
+  boolean a = true;
   
-  public bihr(bjrl parambjrl, bjrk parambjrk)
+  public bihr(String paramString, boolean paramBoolean)
   {
-    super(parambjrl, parambjrk);
-    this.jdField_a_of_type_Bjrd = new bjrd(10004, 8, 2);
-    this.jdField_a_of_type_Int = 6;
+    super(paramString);
+    this.a = paramBoolean;
   }
   
-  private void b(Activity paramActivity)
+  public static Bitmap a(String paramString, Resources paramResources, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("newflag", true);
-    localIntent.putExtra("refer", "schemeActiveFeeds");
-    QzonePluginProxyActivity.a(localIntent, "com.qzone.feed.ui.activity.QZoneFriendFeedActivity");
-    localIntent.addFlags(805306368);
-    bgyp.c(paramActivity, localAppRuntime.getAccount(), localIntent, -1);
-  }
-  
-  public int a()
-  {
-    return 2131560546;
-  }
-  
-  public View a()
-  {
-    View localView = super.a();
-    this.b.setOnClickListener(this);
-    this.b.setVisibility(0);
-    return localView;
-  }
-  
-  protected List<View> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.b);
-    return localArrayList;
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    Activity localActivity;
-    Object localObject2;
-    Object localObject1;
-    switch (paramInt1)
+    long l1 = System.currentTimeMillis();
+    Object localObject = xxb.a(paramString, -1);
+    int m = ((gs)localObject).a();
+    paramString = new int[m * m];
+    int i = 0;
+    while (i < m)
     {
-    default: 
-    case 10004: 
-      do
+      int j = 0;
+      if (j < m)
       {
-        do
+        if (((gs)localObject).a(j, i)) {}
+        for (int k = -16777216;; k = 16777215)
         {
-          return;
-        } while (paramInt2 != -1);
-        localActivity = this.jdField_a_of_type_Bjrl.a();
-        paramInt1 = paramIntent.getIntExtra("forward_to_someplace_from_shoot_quick", 0);
-        if (paramInt1 != 1002) {
+          paramString[(i * m + j)] = k;
+          j += 1;
           break;
         }
-        b(localActivity);
-        localObject2 = paramIntent.getStringExtra("forward_source_to_qzone");
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label570;
-        }
-        localObject1 = paramIntent.getStringExtra("set_user_callback");
-      } while (localObject1 == null);
+      }
+      i += 1;
     }
-    for (;;)
+    localObject = Bitmap.createBitmap(m, m, Bitmap.Config.ARGB_8888);
+    ((Bitmap)localObject).setPixels(paramString, 0, m, 0, 0, m, m);
+    try
     {
-      boolean bool;
-      try
+      paramString = Bitmap.createBitmap(paramInt1, paramInt1, Bitmap.Config.ARGB_8888);
+      if (paramString == null)
       {
-        localObject1 = Class.forName((String)localObject1).newInstance();
-        if (!(localObject1 instanceof ahua)) {
-          break label564;
-        }
-        localObject1 = (ahua)localObject1;
-        ((ahua)localObject1).c_((String)localObject2);
-        localObject2 = paramIntent.getStringExtra("key_content");
-        bool = paramIntent.getBooleanExtra("forward_to_qzone_to_enable_edit", false);
-        biig.a(this.jdField_a_of_type_Bjrl.a(), paramIntent, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, this.jdField_a_of_type_Bjrk, null, (ahua)localObject1, (String)localObject2, 1, null, bool, null, false);
-        localActivity.finish();
-        if (this.jdField_a_of_type_Bjao != null)
+        ((Bitmap)localObject).recycle();
+        return null;
+      }
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      for (;;)
+      {
+        System.gc();
+        try
         {
-          this.jdField_a_of_type_Bjao.l();
-          this.jdField_a_of_type_Bjao.n();
+          paramString = Bitmap.createBitmap(paramInt1, paramInt1, Bitmap.Config.ARGB_8888);
         }
-        this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.b(false);
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        localObject2 = null;
-        localObject1 = localObject2;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("QIMQuickShootEffectCameraCaptureUnit", 2, "initComponentParamData:exp =" + localThrowable);
-        localObject1 = localObject2;
-        continue;
-      }
-      if (paramInt1 == 1003)
-      {
-        paramIntent = ((PublishParam)paramIntent.getParcelableExtra(PublishParam.a)).c;
-        localObject1 = new Intent(localActivity, QQStoryMainActivity.class);
-        ((Intent)localObject1).putExtra("new_video_extra_info", paramIntent);
-        localActivity.startActivity((Intent)localObject1);
-        localActivity.finish();
-      }
-      else
-      {
-        biig.a(this.jdField_a_of_type_Bjrl.a(), paramIntent, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, this.jdField_a_of_type_Bjrk, new bihs(this, localActivity, paramIntent));
-        continue;
-        if ((paramInt2 == -1) && (paramIntent != null))
+        catch (OutOfMemoryError paramString)
         {
-          localObject1 = this.jdField_a_of_type_Bjrl.a();
-          paramInt1 = paramIntent.getIntExtra("forward_to_someplace_from_shoot_quick", 0);
-          if (paramInt1 == 1002)
-          {
-            b((Activity)localObject1);
-            paramIntent.putExtra("open_leba_tab_fragment", true);
-            ((Activity)localObject1).setResult(-1, paramIntent);
-            ((Activity)localObject1).finish();
-            return;
+          if (QLog.isColorLevel()) {
+            QLog.w("com.tencent.nfc.buscard.remotecommand", 2, paramString.getMessage());
           }
-          if (paramInt1 != 1003) {
+          return null;
+        }
+      }
+      Canvas localCanvas = new Canvas(paramString);
+      localCanvas.drawBitmap((Bitmap)localObject, null, new Rect(paramInt2, paramInt2, paramInt1 - paramInt2, paramInt1 - paramInt2), null);
+      if (paramBoolean)
+      {
+        paramInt1 = (paramInt1 - 60) / 2;
+        Paint localPaint = new Paint();
+        localPaint.setAntiAlias(true);
+        Rect localRect = new Rect(paramInt1, paramInt1, paramInt1 + 60, 60 + paramInt1);
+        paramResources = bcwc.a(paramResources, 2130843152);
+        if (paramResources != null)
+        {
+          localCanvas.drawBitmap(paramResources, null, localRect, localPaint);
+          paramResources.recycle();
+        }
+      }
+      ((Bitmap)localObject).recycle();
+      long l2 = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d("com.tencent.nfc.buscard.remotecommand", 2, "getQrCode cost time:" + (l2 - l1));
+      }
+    }
+    return paramString;
+  }
+  
+  private Bundle a(Bundle paramBundle1, Bundle paramBundle2, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  {
+    if (paramBundle1 == null) {
+      return paramBundle2;
+    }
+    if (paramBundle2 == null) {}
+    label179:
+    label227:
+    label742:
+    for (Bundle localBundle = new Bundle();; localBundle = paramBundle2)
+    {
+      paramBundle2 = paramBundle1.getString("cmd");
+      int i;
+      int j;
+      Object localObject1;
+      if (!TextUtils.isEmpty(paramBundle2))
+      {
+        if (!paramBundle2.equals("getQrCode")) {
+          break label227;
+        }
+        paramBundle2 = paramBundle1.getString("sharelink");
+        i = paramBundle1.getInt("imgsize");
+        j = paramBundle1.getInt("margin");
+        bool1 = paramBundle1.getBoolean("showlogo");
+        if (!TextUtils.isEmpty(paramBundle2))
+        {
+          localObject1 = bctc.a(paramBundle2, BaseApplicationImpl.getContext().getResources(), i, j, bool1);
+          if (localObject1 != null) {
+            localBundle.putString("path", xxb.a(BaseApplicationImpl.getContext(), paramBundle2.hashCode() + "", (Bitmap)localObject1));
+          }
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        paramBundle2 = new StringBuilder().append("dispatchRemoteCmd,req=").append(paramBundle1).append("; rsp=");
+        if (localBundle == null) {
+          break label755;
+        }
+        paramBundle1 = localBundle.toString();
+        paramBundle1 = paramBundle2.append(paramBundle1).append(";mIsSynchronized=").append(this.a).append("; linstener is null=");
+        if (paramOnInvokeFinishLinstener == null) {
+          break label762;
+        }
+      }
+      label619:
+      label748:
+      label755:
+      label762:
+      for (boolean bool1 = true;; bool1 = false)
+      {
+        QLog.d("BuscardPluginRemoteCommand", 2, bool1);
+        return localBundle;
+        if (paramBundle2.equals("genQrCode"))
+        {
+          paramBundle2 = paramBundle1.getString("qrcontent");
+          i = paramBundle1.getInt("imgsize");
+          j = paramBundle1.getInt("margin");
+          bool1 = paramBundle1.getBoolean("showlogo");
+          if (TextUtils.isEmpty(paramBundle2)) {
             break;
           }
-          paramIntent = ((PublishParam)paramIntent.getParcelableExtra(PublishParam.a)).c;
-          localObject2 = new Intent((Context)localObject1, QQStoryMainActivity.class);
-          ((Intent)localObject2).putExtra("new_video_extra_info", paramIntent);
-          ((Activity)localObject1).startActivity((Intent)localObject2);
-          ((Activity)localObject1).finish();
-          return;
-        }
-        if (paramInt2 != 0) {
+          localBundle.putParcelable("qrcode", a(paramBundle2, BaseApplicationImpl.getContext().getResources(), i, j, bool1));
           break;
         }
-        bool = false;
-        if (paramIntent != null) {
-          bool = paramIntent.getBooleanExtra("mark_from_artfilter_bridge_activity", false);
-        }
-        if ((bool) || (paramIntent != null) || (!(this.jdField_a_of_type_Bjrl.a() instanceof SplashActivity))) {
-          break;
-        }
-        if (this.jdField_a_of_type_Bjao != null)
+        if (paramBundle2.equals("location"))
         {
-          this.jdField_a_of_type_Bjao.l();
-          this.jdField_a_of_type_Bjao.n();
+          SosoInterface.a(new bihs(this, 3, true, true, 300000L, false, false, "buscardLocation", localBundle, paramOnInvokeFinishLinstener));
+          break;
         }
-        this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.b(false);
-        return;
-        label564:
-        localObject1 = null;
-        continue;
-        label570:
-        localObject1 = null;
+        Object localObject2;
+        if (paramBundle2.equals("publicAccount"))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("BuscardPluginRemoteCommand", 2, "publicAccount.");
+          }
+          if (a() == null) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("BuscardPluginRemoteCommand", 2, "publicAccount.enter");
+          }
+          localObject1 = paramBundle1.getString("publicAccount_uin");
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder().append("publicAccount.enter, publicAccount_uin=");
+            if (localObject1 == null) {
+              break label461;
+            }
+          }
+          for (paramBundle2 = (Bundle)localObject1;; paramBundle2 = "null")
+          {
+            QLog.d("BuscardPluginRemoteCommand", 2, paramBundle2);
+            syb.a(a(), a().getApp(), (String)localObject1, new biht(this, localBundle, paramOnInvokeFinishLinstener));
+            break;
+          }
+        }
+        if (!paramBundle2.equals("queryPublicAccount")) {
+          break;
+        }
+        paramBundle2 = paramBundle1.getString("publicAccount_uin");
+        boolean bool2;
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder().append("publicAccount.queryPublicAccount, publicAccount_uin=");
+          if (paramBundle2 != null)
+          {
+            localObject1 = paramBundle2;
+            QLog.d("BuscardPluginRemoteCommand", 2, (String)localObject1);
+          }
+        }
+        else
+        {
+          boolean bool3 = false;
+          bool1 = false;
+          bool2 = bool3;
+          if (a() != null)
+          {
+            bool2 = bool3;
+            if (!TextUtils.isEmpty(paramBundle2))
+            {
+              localObject2 = (aluw)a().getManager(56);
+              if (localObject2 != null) {
+                bool1 = ((aluw)localObject2).a(Long.valueOf(paramBundle2));
+              }
+              bool2 = bool1;
+              if (QLog.isColorLevel())
+              {
+                StringBuilder localStringBuilder = new StringBuilder().append("publicAccount.queryPublicAccount, publicAccount_uin=");
+                if (paramBundle2 == null) {
+                  break label734;
+                }
+                localObject1 = paramBundle2;
+                localObject1 = localStringBuilder.append((String)localObject1).append(";PublicAccountDataManager not null=");
+                if (localObject2 == null) {
+                  break label742;
+                }
+                bool2 = true;
+                QLog.d("BuscardPluginRemoteCommand", 2, bool2);
+                bool2 = bool1;
+              }
+            }
+          }
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder().append("publicAccount.queryPublicAccount, publicAccount_uin=");
+            if (paramBundle2 == null) {
+              break label748;
+            }
+          }
+        }
+        for (;;)
+        {
+          QLog.d("BuscardPluginRemoteCommand", 2, paramBundle2 + ";isFlow=" + bool2);
+          localBundle.putBoolean("isFollowed", bool2);
+          break;
+          localObject1 = "null";
+          break label513;
+          localObject1 = "null";
+          break label619;
+          bool2 = false;
+          break label642;
+          paramBundle2 = "null";
+        }
+        paramBundle1 = "null";
+        break label179;
       }
     }
   }
   
-  public void a(avuo paramavuo)
+  private QQAppInterface a()
   {
-    super.a(paramavuo);
-    bjre localbjre = new bjrg(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a()).a(2).b(101).a();
-    this.jdField_a_of_type_Bjrd.a(localbjre);
-    bkvh.a(this.jdField_a_of_type_Bjrl.a(), paramavuo, this.jdField_a_of_type_Bjrd, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int);
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+      return (QQAppInterface)localAppRuntime;
+    }
+    return null;
   }
   
-  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
+  public static void a()
   {
-    super.a(paramVideoCaptureResult, paramLocalMediaInfo);
-    bjrh localbjrh = new bjrj().a(101).b(2).a();
-    this.jdField_a_of_type_Bjrd.a(localbjrh);
-    a(paramLocalMediaInfo);
-    bkvh.a(this.jdField_a_of_type_Bjrl.a(), paramVideoCaptureResult, paramLocalMediaInfo, this.jdField_a_of_type_Bjrd, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int);
-  }
-  
-  public void h()
-  {
-    super.h();
-    this.b.setVisibility(8);
-  }
-  
-  public void n()
-  {
-    super.n();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a(102, this.d, this.l);
+    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
+    if ((localPluginCommunicationHandler != null) && (!localPluginCommunicationHandler.containsCmd("com.tencent.nfc.buscard.remotecommand"))) {
+      localPluginCommunicationHandler.register(new bihr("com.tencent.nfc.buscard.remotecommand", true));
+    }
+    if ((localPluginCommunicationHandler != null) && (!localPluginCommunicationHandler.containsCmd("com.tencent.nfc.buscard.remotecommand.async"))) {
+      localPluginCommunicationHandler.register(new bihr("com.tencent.nfc.buscard.remotecommand.async", false));
     }
   }
   
-  public void o()
+  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
-    Bundle localBundle = this.jdField_a_of_type_Bjrl.a().getIntent().getExtras();
-    this.jdField_a_of_type_Boolean = localBundle.getBoolean("ARG_UNFOLD_DD", false);
-    this.d = localBundle.getInt("ARG_DD_CATEGORY_ID");
-    this.l = localBundle.getString("ARG_DD_ITEM_ID");
+    if (paramBundle == null) {
+      return null;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("ipc_async_req_seq", paramBundle.getLong("ipc_async_req_seq"));
+    try
+    {
+      if ((!this.a) && (Thread.currentThread() != Looper.getMainLooper().getThread()))
+      {
+        new Handler(Looper.getMainLooper()).post(new BuscardPluginRemoteCommand.1(this, paramBundle, localBundle, paramOnInvokeFinishLinstener));
+        return localBundle;
+      }
+      paramOnInvokeFinishLinstener = a(paramBundle, localBundle, paramOnInvokeFinishLinstener);
+      return paramOnInvokeFinishLinstener;
+    }
+    catch (Exception paramOnInvokeFinishLinstener)
+    {
+      if (!QLog.isColorLevel()) {
+        break label128;
+      }
+    }
+    paramOnInvokeFinishLinstener = new StringBuilder().append("params=");
+    if (paramBundle != null) {}
+    for (paramBundle = paramBundle.toString();; paramBundle = "null")
+    {
+      QLog.d("BuscardPluginRemoteCommand", 2, paramBundle);
+      label128:
+      return localBundle;
+    }
+  }
+  
+  public boolean isSynchronized()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bihr
  * JD-Core Version:    0.7.0.1
  */

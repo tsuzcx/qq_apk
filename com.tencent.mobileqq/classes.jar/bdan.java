@@ -1,137 +1,228 @@
-import android.content.Intent;
-import android.widget.Toast;
-import com.tencent.open.agent.ChallengeBragBase;
-import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
-import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.SocketTimeoutException;
-import org.apache.http.conn.ConnectTimeoutException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.SystemClock;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class bdan
-  implements bdje
 {
-  public bdan(ChallengeBragBase paramChallengeBragBase) {}
+  private static bdan jdField_a_of_type_Bdan = new bdan();
+  private HashMap<String, HashSet<Long>> jdField_a_of_type_JavaUtilHashMap;
+  private HashSet<Object> jdField_a_of_type_JavaUtilHashSet;
+  private HashMap<Object, MessageForShortVideo> jdField_b_of_type_JavaUtilHashMap;
+  private HashSet<Object> jdField_b_of_type_JavaUtilHashSet;
   
-  protected void a(Intent paramIntent)
+  public static bdan a()
   {
-    int i = paramIntent.getIntExtra("key_error_code", -6);
-    if (i != 0)
-    {
-      Toast.makeText(this.a, paramIntent.getStringExtra("key_error_msg"), 0).show();
-      bdii.e("qqBaseActivity", "onSendChallengeComplete error:{KEY_ERROR_CODE:" + i + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
-    }
-    this.a.setResult(-1, paramIntent);
-    this.a.finish();
+    return jdField_a_of_type_Bdan;
   }
   
-  public void a(Exception paramException)
+  public MessageForShortVideo a(Object paramObject)
   {
-    this.a.d();
-    bdii.c("qqBaseActivity", "SendChallenge exception." + paramException.getMessage(), paramException);
-    Intent localIntent = new Intent();
-    if ((paramException instanceof ConnectTimeoutException))
-    {
-      localIntent.putExtra("key_error_code", -7);
-      localIntent.putExtra("key_error_msg", bdjm.e);
+    if ((paramObject != null) && (this.jdField_b_of_type_JavaUtilHashMap != null)) {
+      return (MessageForShortVideo)this.jdField_b_of_type_JavaUtilHashMap.get(paramObject);
     }
+    return null;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      this.jdField_a_of_type_JavaUtilHashMap = null;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashSet != null)
+    {
+      this.jdField_a_of_type_JavaUtilHashSet.clear();
+      this.jdField_a_of_type_JavaUtilHashSet = null;
+    }
+    if (this.jdField_b_of_type_JavaUtilHashSet != null)
+    {
+      this.jdField_b_of_type_JavaUtilHashSet.clear();
+      this.jdField_b_of_type_JavaUtilHashSet = null;
+    }
+    if (this.jdField_b_of_type_JavaUtilHashMap != null)
+    {
+      this.jdField_b_of_type_JavaUtilHashMap.clear();
+      this.jdField_b_of_type_JavaUtilHashMap = null;
+    }
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    if (paramLong == 0L) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    HashSet localHashSet2 = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    HashSet localHashSet1 = localHashSet2;
+    if (localHashSet2 == null)
+    {
+      localHashSet1 = new HashSet();
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localHashSet1);
+    }
+    localHashSet1.add(Long.valueOf(paramLong));
+  }
+  
+  public void a(ChatXListView paramChatXListView)
+  {
+    if ((this.jdField_a_of_type_JavaUtilHashSet == null) || (this.jdField_a_of_type_JavaUtilHashSet.size() == 0)) {
+      return;
+    }
+    long l1 = SystemClock.uptimeMillis();
+    HashSet localHashSet = new HashSet();
+    int i = paramChatXListView.getFirstVisiblePosition();
+    int k = paramChatXListView.getLastVisiblePosition();
+    int j = paramChatXListView.getHeaderViewsCount();
+    if (i > j) {}
     for (;;)
     {
-      a(localIntent);
+      if ((i < j) || (i > k)) {
+        break label147;
+      }
+      try
+      {
+        ChatMessage localChatMessage = (ChatMessage)paramChatXListView.getAdapter().getItem(i);
+        if ((localChatMessage != null) && ((localChatMessage instanceof MessageForShortVideo)))
+        {
+          long l2 = localChatMessage.uniseq;
+          if (this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(l2))) {
+            localHashSet.add(Long.valueOf(l2));
+          }
+        }
+      }
+      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+      {
+        for (;;)
+        {
+          localIndexOutOfBoundsException.printStackTrace();
+        }
+      }
+      i += 1;
+      continue;
+      i = j;
+    }
+    label147:
+    this.jdField_a_of_type_JavaUtilHashSet = localHashSet;
+    QLog.d("ShortVideoUtils", 2, "markVisibleView cost time: " + (SystemClock.uptimeMillis() - l1));
+  }
+  
+  public void a(MessageRecord paramMessageRecord, String paramString)
+  {
+    if (paramMessageRecord == null) {
       return;
-      if ((paramException instanceof SocketTimeoutException))
-      {
-        localIntent.putExtra("key_error_code", -8);
-        localIntent.putExtra("key_error_msg", bdjm.f);
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    HashSet localHashSet2 = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    HashSet localHashSet1 = localHashSet2;
+    if (localHashSet2 == null)
+    {
+      localHashSet1 = new HashSet();
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localHashSet1);
+    }
+    localHashSet1.add(Long.valueOf(paramMessageRecord.uniseq));
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    if (this.jdField_b_of_type_JavaUtilHashSet == null) {
+      this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
+    }
+    this.jdField_b_of_type_JavaUtilHashSet.add(paramObject);
+  }
+  
+  public void a(Object paramObject, MessageForShortVideo paramMessageForShortVideo)
+  {
+    if ((paramObject != null) && (paramMessageForShortVideo != null))
+    {
+      if (this.jdField_b_of_type_JavaUtilHashMap == null) {
+        this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
       }
-      else if ((paramException instanceof MalformedURLException))
-      {
-        localIntent.putExtra("key_error_code", -3);
-        localIntent.putExtra("key_error_msg", "访问url有误!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.HttpStatusException))
-      {
-        localIntent.putExtra("key_error_code", -10);
-        localIntent.putExtra("key_error_msg", "Http返回码异常!");
-      }
-      else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
-      {
-        localIntent.putExtra("key_error_code", -9);
-        localIntent.putExtra("key_error_msg", bdjm.g);
-      }
-      else if ((paramException instanceof IOException))
-      {
-        localIntent.putExtra("key_error_code", -2);
-        localIntent.putExtra("key_error_msg", bdjm.a);
-      }
-      else
-      {
-        localIntent.putExtra("key_error_code", -6);
-        localIntent.putExtra("key_error_msg", bdjm.d);
-      }
+      this.jdField_b_of_type_JavaUtilHashMap.put(paramObject, paramMessageForShortVideo);
     }
   }
   
-  public void a(JSONObject paramJSONObject)
+  public void a(Object paramObject, boolean paramBoolean)
   {
-    int i = 0;
-    try
-    {
-      this.a.d();
-      int j = paramJSONObject.getInt("ret");
-      String str = paramJSONObject.getString("msg");
-      Object localObject;
-      if (j == 0)
-      {
-        localObject = null;
-        if (!"action_brag".equals(this.a.p)) {
-          break label131;
-        }
-        localObject = "ANDROIDQQ.BRAG.ASSISTANT";
-        i = 2131690936;
-      }
-      for (;;)
-      {
-        if (localObject != null)
-        {
-          bdjr.a("400", (String)localObject, this.a.c);
-          Toast.makeText(this.a, i, 0).show();
-        }
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("key_error_code", j);
-        ((Intent)localObject).putExtra("key_error_msg", str);
-        ((Intent)localObject).putExtra("key_response", paramJSONObject.toString());
-        a((Intent)localObject);
-        return;
-        label131:
-        if ("action_challenge".equals(this.a.p))
-        {
-          localObject = "ANDROIDQQ.PK.ASSISTANT";
-          i = 2131690937;
-        }
-      }
+    if (paramObject == null) {
       return;
     }
-    catch (JSONException paramJSONObject)
+    if (this.jdField_a_of_type_JavaUtilHashSet == null) {
+      this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    }
+    if (paramBoolean)
     {
-      bdii.c("qqBaseActivity", "SendChallenge exception." + paramJSONObject.getMessage(), paramJSONObject);
-      paramJSONObject = new Intent();
-      paramJSONObject.putExtra("key_error_code", -4);
-      paramJSONObject.putExtra("key_error_msg", bdjm.b);
-      a(paramJSONObject);
+      this.jdField_a_of_type_JavaUtilHashSet.add(paramObject);
       return;
     }
-    catch (Exception paramJSONObject)
+    this.jdField_a_of_type_JavaUtilHashSet.remove(paramObject);
+  }
+  
+  public boolean a(long paramLong, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      a(paramJSONObject);
+      paramString = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (paramString == null) {}
     }
+    for (boolean bool = paramString.contains(Long.valueOf(paramLong));; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOSingleReporter", 2, "hasReported(): uniseq=" + paramLong + " result = " + bool);
+      }
+      return bool;
+    }
+  }
+  
+  public boolean a(MessageRecord paramMessageRecord, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    {
+      paramString = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (paramString == null) {}
+    }
+    for (boolean bool = paramString.contains(Long.valueOf(paramMessageRecord.uniseq));; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOSingleReporter", 2, "hasReported(): mr.uniseq=" + paramMessageRecord.uniseq + " result = " + bool);
+      }
+      return bool;
+    }
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_JavaUtilHashSet != null) {
+      bool = this.jdField_a_of_type_JavaUtilHashSet.contains(paramObject);
+    }
+    return bool;
+  }
+  
+  public boolean b(Object paramObject)
+  {
+    boolean bool = false;
+    if (this.jdField_b_of_type_JavaUtilHashSet != null) {
+      bool = this.jdField_b_of_type_JavaUtilHashSet.contains(paramObject);
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdan
  * JD-Core Version:    0.7.0.1
  */

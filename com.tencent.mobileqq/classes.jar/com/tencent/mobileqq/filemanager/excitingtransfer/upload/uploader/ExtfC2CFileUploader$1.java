@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.upload.uploader;
 
-import aphw;
+import arau;
 import java.util.TimerTask;
 
 public class ExtfC2CFileUploader$1
   extends TimerTask
 {
-  public ExtfC2CFileUploader$1(aphw paramaphw) {}
+  public ExtfC2CFileUploader$1(arau paramarau) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ExtfC2CFileUploader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.upload.uploader.ExtfC2CFileUploader.1
  * JD-Core Version:    0.7.0.1
  */

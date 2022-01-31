@@ -1,73 +1,178 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitConfigHelper;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.YtSDKKitFrameworkWorkMode;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.app.MobileQQ;
 
 public class ardb
+  extends ardj
 {
-  private static ardb jdField_a_of_type_Ardb;
-  private static final String jdField_a_of_type_JavaLangString = ardb.class.getSimpleName();
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private JSONObject b;
+  protected long a;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  protected boolean a;
+  protected boolean b;
   
-  public static ardb a()
+  public ardb(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
-    try
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+    if ((1 == c()) || (2 == c())) {
+      this.jdField_a_of_type_Boolean = arni.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getBaseContext(), paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize);
+    }
+    this.jdField_a_of_type_Long = 3145728L;
+    if (3 == c())
     {
-      if (jdField_a_of_type_Ardb == null) {
-        jdField_a_of_type_Ardb = new ardb();
+      bool1 = bool2;
+      if (arni.b(this)) {}
+    }
+    else
+    {
+      if ((6 != c()) || (d() != 1) || (!bdcs.b(g()))) {
+        break label119;
       }
-      ardb localardb = jdField_a_of_type_Ardb;
-      return localardb;
     }
-    finally {}
+    label119:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.b = bool1;
+      return;
+    }
   }
   
-  private YtSDKKitFramework.YtSDKKitFrameworkWorkMode a(int paramInt)
+  public int a()
   {
-    YtSDKKitFramework.YtSDKKitFrameworkWorkMode localYtSDKKitFrameworkWorkMode = YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
-    switch (paramInt)
-    {
-    default: 
-      return localYtSDKKitFrameworkWorkMode;
-    case 0: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_UNKNOWN;
-    case 1: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_OCR_TYPE;
-    case 2: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_SILENT_TYPE;
-    case 3: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTION_TYPE;
-    case 4: 
-      return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_REFLECT_TYPE;
-    }
-    return YtSDKKitFramework.YtSDKKitFrameworkWorkMode.YT_FW_ACTREFLECT_TYPE;
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType;
   }
   
-  public int a(String paramString1, String paramString2)
+  public long a()
   {
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramString1).getJSONObject("sdk_settings");
-      this.b = new JSONObject(paramString2).getJSONObject("ui_basic_config");
-      return 0;
-    }
-    catch (JSONException paramString1)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "initWithConfig error " + paramString1.getMessage());
-    }
-    return -1;
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
   }
   
-  public JSONObject a(int paramInt)
+  public FileManagerEntity a()
   {
-    return YtSDKKitConfigHelper.getSDKConfig(a(paramInt), this.jdField_a_of_type_OrgJsonJSONObject);
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  }
+  
+  public WeiYunFileInfo a()
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("EntityFileViewerAdapter", 4, "getWeiyunInfo should not be called on EntityFileViewAdapter");
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
+  }
+  
+  public String b()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 5)
+    {
+      localObject1 = localObject2;
+      if (arof.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
+      }
+    }
+    return localObject1;
+  }
+  
+  public int c()
+  {
+    int j = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType();
+    int i;
+    if (2 != j)
+    {
+      i = j;
+      if (5 != j) {}
+    }
+    else
+    {
+      i = j;
+      if (arof.b(g())) {
+        i = 3;
+      }
+    }
+    return i;
+  }
+  
+  public long c()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.srvTime;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
+  }
+  
+  public int d()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isZipInnerFile) && (arof.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath()))) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status;
+  }
+  
+  public String d()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
+  }
+  
+  public int e()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType;
+  }
+  
+  public String e()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
+  }
+  
+  public String f()
+  {
+    if (arof.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
+      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath;
+  }
+  
+  public String g()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
+  }
+  
+  public String h()
+  {
+    if (arof.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())) {
+      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strThumbPath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardb
  * JD-Core Version:    0.7.0.1
  */

@@ -88,7 +88,7 @@ public final class operation_addfavour_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_addfavour_req
  * JD-Core Version:    0.7.0.1
  */

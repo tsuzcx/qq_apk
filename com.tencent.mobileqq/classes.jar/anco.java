@@ -1,41 +1,26 @@
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class anco
+  implements DialogInterface.OnClickListener
 {
-  public String a = ajya.a(2131714832);
-  public String b = ajya.a(2131714839);
-  public String c = ajya.a(2131714835);
-  public String d = ajya.a(2131714837);
-  public String e = ajya.a(2131714830);
+  public anco(ARScanEntryView paramARScanEntryView) {}
   
-  public static anco a(amph[] paramArrayOfamph)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
-      return null;
-    }
-    anco localanco = new anco();
-    try
-    {
-      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].a).optJSONObject("MyFileNameConfig");
-      localanco.a = paramArrayOfamph.optString("tdfileTabName");
-      localanco.b = paramArrayOfamph.optString("wyfileTabName");
-      localanco.c = paramArrayOfamph.optString("tdlistTabviewName");
-      localanco.d = paramArrayOfamph.optString("createTXDocTitle");
-      localanco.e = paramArrayOfamph.optString("safeShareToastWording");
-      return localanco;
-    }
-    catch (JSONException paramArrayOfamph)
-    {
-      QLog.e("TencentDocMyFileNameBean", 1, paramArrayOfamph.getLocalizedMessage(), paramArrayOfamph);
-    }
-    return localanco;
+    Activity localActivity = (Activity)this.a.a;
+    Intent localIntent = new Intent("android.settings.LOCATION_SOURCE_SETTINGS");
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_sacan");
+    localActivity.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anco
  * JD-Core Version:    0.7.0.1
  */

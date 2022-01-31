@@ -1,43 +1,22 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 
-class rxf
-  implements bfph
+public class rxf
+  implements View.OnClickListener
 {
-  rxf(rxe paramrxe, String paramString) {}
+  public rxf(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    paramView = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        paramView.put("index", paramInt);
-        if ((!this.jdField_a_of_type_Rxe.a) || (paramInt != 0)) {
-          continue;
-        }
-        paramView.put("type", 2);
-        if (rxe.a(this.jdField_a_of_type_Rxe) != null) {
-          ((BridgeModule)rxe.a(this.jdField_a_of_type_Rxe).get()).invokeCallJS(this.jdField_a_of_type_JavaLangString, paramView);
-        }
-      }
-      catch (JSONException paramView)
-      {
-        continue;
-      }
-      rxe.a(this.jdField_a_of_type_Rxe).dismiss();
-      return;
-      paramView.put("type", 0);
-    }
+    PublicTransFragmentActivity.a(this.a.a(), ReadInJoyChannelPanelFragment.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxf
  * JD-Core Version:    0.7.0.1
  */

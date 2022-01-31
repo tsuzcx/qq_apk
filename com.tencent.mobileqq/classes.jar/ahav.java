@@ -1,25 +1,27 @@
-import Wallet.PopDialog;
-import Wallet.SkinInfo;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.BubbleLayout;
 
 class ahav
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.ViewHolder
 {
-  ahav(ahat paramahat, ahan paramahan) {}
+  public ImageView a;
+  public TextView a;
+  public BubbleLayout a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahav(View paramView)
   {
-    paramDialogInterface = this.jdField_a_of_type_Ahan.a.pop_dialog.right_url;
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      bgxb.a(ahaq.a(this.jdField_a_of_type_Ahat.a), paramDialogInterface);
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372163));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372162));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactBubbleLayout = ((BubbleLayout)paramView.findViewById(2131372161));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahav
  * JD-Core Version:    0.7.0.1
  */

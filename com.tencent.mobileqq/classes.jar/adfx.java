@@ -1,47 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-public final class adfx
+class adfx
+  implements DialogInterface.OnDismissListener
 {
-  public HashMap<String, String> a = new HashMap();
+  adfx(adfw paramadfw) {}
   
-  private void a(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ECommerceDataReportConfigProcessor", 2, "configText : " + paramString);
-      }
-      try
-      {
-        paramString = new JSONObject(paramString);
-        Iterator localIterator = paramString.keys();
-        while (localIterator.hasNext())
-        {
-          String str1 = (String)localIterator.next();
-          if (!TextUtils.isEmpty(str1))
-          {
-            String str2 = paramString.optString(str1, "");
-            if (!TextUtils.isEmpty(str2)) {
-              this.a.put(str1, str2);
-            }
-          }
-        }
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("ECommerceDataReportConfigProcessor", 1, paramString, new Object[0]);
-      }
-    }
+    this.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adfx
  * JD-Core Version:    0.7.0.1
  */

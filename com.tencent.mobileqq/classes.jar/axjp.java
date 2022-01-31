@@ -1,136 +1,171 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.widget.CircleProgress;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.List;
 
 public class axjp
+  extends BaseAdapter
 {
-  private static int jdField_a_of_type_Int;
-  private static volatile boolean jdField_a_of_type_Boolean;
-  private static long[] jdField_a_of_type_ArrayOfLong = new long[20];
-  private static int jdField_b_of_type_Int;
-  private static volatile boolean jdField_b_of_type_Boolean;
-  private static long[] jdField_b_of_type_ArrayOfLong = new long[20];
-  private static int jdField_c_of_type_Int;
-  private static long[] jdField_c_of_type_ArrayOfLong = new long[20];
-  private static int jdField_d_of_type_Int;
-  private static long[] jdField_d_of_type_ArrayOfLong = new long[20];
+  public int a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public String a;
+  List<axkn> jdField_a_of_type_JavaUtilList;
   
-  public static void a()
+  public axjp(Context paramContext)
   {
-    if ((jdField_c_of_type_Int == 20) && (!jdField_a_of_type_Boolean))
+    this.jdField_a_of_type_JavaLangString = "SubtitleProviderGridAdapter";
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(axkn paramaxkn, View paramView)
+  {
+    if ((paramaxkn == null) || (paramView == null)) {}
+    do
     {
-      if (!jdField_b_of_type_Boolean) {}
-      for (int i = 1;; i = 0)
+      return;
+      paramView = (ImageView)paramView.findViewById(2131364860);
+    } while (paramView == null);
+    if ((paramaxkn != null) && (paramaxkn.jdField_a_of_type_Axko != null) && (paramaxkn.jdField_a_of_type_Axko.d != 2) && (!paramaxkn.jdField_b_of_type_Boolean))
+    {
+      paramView.setImageResource(2130845529);
+      paramView.setVisibility(0);
+      return;
+    }
+    paramView.setVisibility(8);
+  }
+  
+  public void a(List<axkn> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if ((paramList != null) && (QLog.isColorLevel())) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "SubtitleProviderGridAdapter setData size = " + paramList.size());
+    }
+  }
+  
+  public void b(axkn paramaxkn, View paramView)
+  {
+    if ((paramaxkn == null) || (paramView == null)) {}
+    do
+    {
+      return;
+      CircleProgress localCircleProgress = (CircleProgress)paramView.findViewById(2131377216);
+      paramView = (ImageView)paramView.findViewById(2131368195);
+      if (paramaxkn.jdField_b_of_type_Boolean)
       {
-        jdField_b_of_type_Boolean = true;
-        jdField_a_of_type_Boolean = true;
-        l = 0L;
-        j = 0;
-        while (j < jdField_c_of_type_Int)
-        {
-          l += jdField_c_of_type_ArrayOfLong[j];
-          d1 = jdField_c_of_type_ArrayOfLong[j] / 1000.0D;
-          QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[FrameBuffer]temp=" + d1 + "ms framefpsOnce=" + 1000.0D / d1);
-          j += 1;
+        localCircleProgress.setVisibility(0);
+        if (paramaxkn.jdField_a_of_type_Axko != null) {
+          localCircleProgress.setProgress(paramaxkn.jdField_a_of_type_Axko.e);
         }
+        paramView.setVisibility(8);
+        return;
       }
-      double d1 = l / 1000.0D / 20.0D;
-      if (QLog.isColorLevel()) {
-        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[FrameBuffer]avg=" + d1 + "ms avgfps=" + 1000.0D / d1);
-      }
-      if (i != 0) {
-        axjn.a("sv_preprocess_frame_buffer", d1);
-      }
-      long l = 0L;
-      int j = 0;
-      while (j < jdField_d_of_type_Int)
-      {
-        l += jdField_d_of_type_ArrayOfLong[j];
-        d1 = jdField_d_of_type_ArrayOfLong[j] / 1000.0D;
-        QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[ClipVideo]temp=" + d1 + "ms ClipVideoFpsOnce=" + 1000.0D / d1);
-        j += 1;
-      }
-      d1 = l / 1000.0D / 20.0D;
-      if (QLog.isColorLevel()) {
-        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[ClipVideo]avg=" + d1 + "ms avgfps=" + 1000.0D / d1);
-      }
-      if (i != 0) {
-        axjn.a("sv_preprocess_clip_video", d1);
-      }
-      l = 0L;
-      j = 0;
-      while (j < 20)
-      {
-        d1 = (jdField_b_of_type_ArrayOfLong[j] - jdField_a_of_type_ArrayOfLong[j]) / 1000.0D;
-        l = (l + d1);
-        QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[TotalTime]temp=" + d1 + "ms InputfpsOnce=" + 1000.0D / d1);
-        j += 1;
-      }
-      d1 = l / 20L;
-      QLog.d("SVFilterPreprocessFpsTest", 4, "SVFilterPreprocessFpsTest[TotalTime]avg=" + d1 + "ms avgInputfps_Process=" + 1000.0D / d1);
-      if (i != 0) {
-        axjn.a("sv_preprocess_total_time", d1);
-      }
-      d1 = (jdField_b_of_type_ArrayOfLong[19] - jdField_a_of_type_ArrayOfLong[0]) / 1000.0D / 20.0D;
-      if (QLog.isColorLevel()) {
-        QLog.d("SVFilterPreprocessFpsTest", 2, "SVFilterPreprocessFpsTest[TotalTime]avg=" + d1 + "ms avgInputfps_Camera=" + 1000.0D / d1);
-      }
+      localCircleProgress.setVisibility(8);
+    } while (this.jdField_a_of_type_Int != paramaxkn.jdField_a_of_type_Int);
+    paramView.setVisibility(0);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null) {
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560861, paramViewGroup, false);
     }
-  }
-  
-  public static void a(long paramLong)
-  {
-    if (jdField_a_of_type_Int < 20)
+    paramView = (TextView)localView.findViewById(2131366356);
+    Object localObject2 = (ImageView)localView.findViewById(2131368195);
+    paramViewGroup = (ImageView)localView.findViewById(2131367808);
+    ImageView localImageView = (ImageView)localView.findViewById(2131364860);
+    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131368476);
+    Object localObject1 = (CircleProgress)localView.findViewById(2131377216);
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166901);
+    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165332);
+    ((CircleProgress)localObject1).setStrokeWidth(2.0F);
+    ((CircleProgress)localObject1).setBgAndProgressColor(30, i, 100, j);
+    localObject1 = (axkn)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.jdField_a_of_type_Int == ((axkn)localObject1).jdField_a_of_type_Int)
     {
-      long[] arrayOfLong = jdField_a_of_type_ArrayOfLong;
-      int i = jdField_a_of_type_Int;
-      jdField_a_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
+      paramInt = 1;
+      localView.setTag(localObject1);
+      if ((AbsListView.LayoutParams)localView.getLayoutParams() == null) {
+        localView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+      }
+      if (!((axkn)localObject1).a()) {
+        break label290;
+      }
+      ((ImageView)localObject2).setVisibility(8);
+      if (paramInt == 0) {
+        break label271;
+      }
+      paramViewGroup.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845464));
     }
-  }
-  
-  public static void b()
-  {
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
-    jdField_c_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public static void b(long paramLong)
-  {
-    if (jdField_b_of_type_Int < 20)
+    for (;;)
     {
-      long[] arrayOfLong = jdField_b_of_type_ArrayOfLong;
-      int i = jdField_b_of_type_Int;
-      jdField_b_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
+      paramViewGroup.setContentDescription(alpo.a(2131715056));
+      localImageView.setVisibility(8);
+      paramView.setVisibility(0);
+      paramView.setText("");
+      return localView;
+      paramInt = 0;
+      break;
+      label271:
+      paramViewGroup.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845465));
     }
-  }
-  
-  public static void c(long paramLong)
-  {
-    if (jdField_c_of_type_Int < 20)
+    label290:
+    if (paramInt != 0)
     {
-      long[] arrayOfLong = jdField_c_of_type_ArrayOfLong;
-      int i = jdField_c_of_type_Int;
-      jdField_c_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
+      ((ImageView)localObject2).setVisibility(0);
+      paramView.setShadowLayer(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166854));
+      localRelativeLayout.setVisibility(8);
     }
-  }
-  
-  public static void d(long paramLong)
-  {
-    if (jdField_d_of_type_Int < 20)
+    for (;;)
     {
-      long[] arrayOfLong = jdField_d_of_type_ArrayOfLong;
-      int i = jdField_d_of_type_Int;
-      jdField_d_of_type_Int = i + 1;
-      arrayOfLong[i] = paramLong;
+      localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845457);
+      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845457);
+      b((axkn)localObject1, localView);
+      localObject2 = URLDrawable.getDrawable(((axkn)localObject1).jdField_a_of_type_JavaLangString, URLDrawable.URLDrawableOptions.obtain());
+      ((URLDrawable)localObject2).startDownload();
+      paramViewGroup.setImageDrawable((Drawable)localObject2);
+      paramViewGroup.setContentDescription(((axkn)localObject1).jdField_b_of_type_JavaLangString);
+      paramView.setText(((axkn)localObject1).jdField_b_of_type_JavaLangString);
+      paramView.setVisibility(8);
+      a((axkn)localObject1, localView);
+      return localView;
+      ((ImageView)localObject2).setVisibility(8);
+      paramView.setShadowLayer(3.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166854));
+      localRelativeLayout.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axjp
  * JD-Core Version:    0.7.0.1
  */

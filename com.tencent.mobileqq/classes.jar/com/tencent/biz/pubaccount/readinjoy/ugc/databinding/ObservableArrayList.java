@@ -2,15 +2,15 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.databinding;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import qgs;
-import qgv;
-import qgw;
+import qsi;
+import qsl;
+import qsm;
 
 public class ObservableArrayList<T>
   extends ArrayList<T>
-  implements qgv<T>
+  implements qsl<T>
 {
-  private transient qgs a = new qgs();
+  private transient qsi a = new qsi();
   
   private void a(int paramInt1, int paramInt2)
   {
@@ -58,12 +58,12 @@ public class ObservableArrayList<T>
     return bool;
   }
   
-  public void addOnListChangedCallback(qgw paramqgw)
+  public void addOnListChangedCallback(qsm paramqsm)
   {
     if (this.a == null) {
-      this.a = new qgs();
+      this.a = new qsi();
     }
-    this.a.a(paramqgw);
+    this.a.a(paramqsm);
   }
   
   public void clear()
@@ -93,10 +93,10 @@ public class ObservableArrayList<T>
     return false;
   }
   
-  public void removeOnListChangedCallback(qgw paramqgw)
+  public void removeOnListChangedCallback(qsm paramqsm)
   {
     if (this.a != null) {
-      this.a.b(paramqgw);
+      this.a.b(paramqsm);
     }
   }
   
@@ -117,7 +117,7 @@ public class ObservableArrayList<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList
  * JD-Core Version:    0.7.0.1
  */

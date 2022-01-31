@@ -2,16 +2,16 @@ package com.tencent.mobileqq.emosm.web;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import anud;
+import apll;
 
 public class EmojiIPCAlarmer
 {
   private volatile Handler jdField_a_of_type_AndroidOsHandler;
-  anud jdField_a_of_type_Anud;
+  apll jdField_a_of_type_Apll;
   
-  public EmojiIPCAlarmer(anud paramanud)
+  public EmojiIPCAlarmer(apll paramapll)
   {
-    this.jdField_a_of_type_Anud = paramanud;
+    this.jdField_a_of_type_Apll = paramapll;
   }
   
   public Runnable a(int paramInt, long paramLong)
@@ -37,7 +37,7 @@ public class EmojiIPCAlarmer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer
  * JD-Core Version:    0.7.0.1
  */

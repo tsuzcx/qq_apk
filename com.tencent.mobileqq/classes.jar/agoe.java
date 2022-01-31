@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-
-public class agoe
-  implements DialogInterface.OnClickListener
+class agoe
+  extends amab
 {
-  public agoe(PhotoPreviewActivity paramPhotoPreviewActivity, Runnable paramRunnable) {}
+  agoe(agnz paramagnz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangRunnable.run();
+    agnz.a(this.a, paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agoe
  * JD-Core Version:    0.7.0.1
  */

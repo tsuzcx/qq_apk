@@ -9,16 +9,16 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import baxn;
+import bcwh;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.List;
 import java.util.Set;
-import nol;
-import npu;
-import onh;
+import nrt;
+import ntd;
 import org.json.JSONObject;
-import ram;
+import ors;
+import rqj;
 import tencent.im.oidb.articlesummary.articlesummary.ChannelInfo;
 
 public class ReadInJoyVideoInfoViewGroup
@@ -79,7 +79,7 @@ public class ReadInJoyVideoInfoViewGroup
       i += 1;
       j = k;
       break;
-      Object localObject2 = onh.a(localChannelInfo);
+      Object localObject2 = ors.a(localChannelInfo);
       k = j;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         continue;
@@ -89,19 +89,19 @@ public class ReadInJoyVideoInfoViewGroup
       int m = ((ReadInJoyVideoTopicTextView)localObject1).a();
       k = m;
       if (i != 0) {
-        k = m + baxn.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
+        k = m + bcwh.a(this.jdField_a_of_type_AndroidContentContext, 10.0F);
       }
       JSONObject localJSONObject;
-      if (j > baxn.a(this.jdField_a_of_type_AndroidContentContext, 1.0F) + k)
+      if (j > bcwh.a(this.jdField_a_of_type_AndroidContentContext, 1.0F) + k)
       {
         localObject2 = new LinearLayout.LayoutParams(-2, -2);
         if (i != 0) {
-          ((LinearLayout.LayoutParams)localObject2).setMargins(baxn.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, 0, 0);
+          ((LinearLayout.LayoutParams)localObject2).setMargins(bcwh.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0, 0, 0);
         }
-        ((ReadInJoyVideoTopicTextView)localObject1).setId(2131374775);
+        ((ReadInJoyVideoTopicTextView)localObject1).setId(2131375238);
         ((ReadInJoyVideoTopicTextView)localObject1).setTag(localChannelInfo);
-        if ((this.jdField_a_of_type_AndroidWidgetBaseAdapter instanceof ram)) {
-          ((ReadInJoyVideoTopicTextView)localObject1).setOnClickListener((ram)this.jdField_a_of_type_AndroidWidgetBaseAdapter);
+        if ((this.jdField_a_of_type_AndroidWidgetBaseAdapter instanceof rqj)) {
+          ((ReadInJoyVideoTopicTextView)localObject1).setOnClickListener((rqj)this.jdField_a_of_type_AndroidWidgetBaseAdapter);
         }
         ((ReadInJoyVideoTopicTextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
         addView((View)localObject1);
@@ -124,7 +124,7 @@ public class ReadInJoyVideoInfoViewGroup
         label408:
         for (localObject2 = "0X80088BA";; localObject2 = "0X8007BE5")
         {
-          nol.a(null, "", (String)localObject1, (String)localObject2, 0, 0, "2", "", localChannelInfo.uint32_channel_id.get() + "", npu.a("", "", "", "", localJSONObject), false);
+          nrt.a(null, "", (String)localObject1, (String)localObject2, 0, 0, "2", "", localChannelInfo.uint32_channel_id.get() + "", ntd.a("", "", "", "", localJSONObject), false);
           k = j - k;
           break;
           localObject1 = "0X8007BE5";
@@ -165,7 +165,7 @@ public class ReadInJoyVideoInfoViewGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyVideoInfoViewGroup
  * JD-Core Version:    0.7.0.1
  */

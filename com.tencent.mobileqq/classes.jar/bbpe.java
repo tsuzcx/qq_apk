@@ -1,39 +1,81 @@
-import android.content.res.Resources;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import java.util.UUID;
 
-class bbpe
-  implements MediaPlayer.OnCompletionListener
+public class bbpe
 {
-  bbpe(bbpd parambbpd, AudioManager paramAudioManager) {}
+  public int a;
+  public long a;
+  public String a;
+  public UUID a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public long e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
+  public String i;
+  public String j;
   
-  public void onCompletion(MediaPlayer arg1)
+  public bbpe()
   {
-    synchronized (this.jdField_a_of_type_Bbpd.jdField_a_of_type_JavaLangObject)
+    this.jdField_b_of_type_Int = 7;
+  }
+  
+  public bbpe(bbpe parambbpe)
+  {
+    a(parambbpe);
+  }
+  
+  public void a(bbpe parambbpe)
+  {
+    this.jdField_b_of_type_Int = 7;
+    if (parambbpe != null)
     {
-      ???.release();
-      this.jdField_a_of_type_Bbpd.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-      this.jdField_a_of_type_Bbpd.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Bbpd.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-      this.jdField_a_of_type_Bbpd.c.setImageDrawable(this.jdField_a_of_type_Bbpd.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getResources().getDrawable(2130846178));
-      this.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(this.jdField_a_of_type_Bbpd.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener);
-    }
-    synchronized (this.jdField_a_of_type_Bbpd.jdField_a_of_type_Bbpk)
-    {
-      this.jdField_a_of_type_Bbpd.jdField_a_of_type_Bbpk.jdField_a_of_type_Int = 6;
-      return;
-      ??? = finally;
-      throw ???;
+      this.jdField_a_of_type_JavaUtilUUID = parambbpe.jdField_a_of_type_JavaUtilUUID;
+      this.jdField_a_of_type_Int = parambbpe.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Long = parambbpe.jdField_a_of_type_Long;
+      this.jdField_b_of_type_Long = parambbpe.jdField_b_of_type_Long;
+      this.jdField_b_of_type_Int = parambbpe.jdField_b_of_type_Int;
+      this.jdField_c_of_type_Int = parambbpe.jdField_c_of_type_Int;
+      this.jdField_c_of_type_Long = parambbpe.jdField_c_of_type_Long;
+      this.jdField_d_of_type_Long = parambbpe.jdField_d_of_type_Long;
+      this.jdField_a_of_type_JavaLangString = parambbpe.jdField_a_of_type_JavaLangString;
+      this.jdField_b_of_type_JavaLangString = parambbpe.jdField_b_of_type_JavaLangString;
+      this.jdField_c_of_type_JavaLangString = parambbpe.jdField_c_of_type_JavaLangString;
+      this.jdField_d_of_type_JavaLangString = parambbpe.jdField_d_of_type_JavaLangString;
+      this.jdField_e_of_type_Int = parambbpe.jdField_e_of_type_Int;
+      this.f = parambbpe.f;
+      this.jdField_g_of_type_Int = parambbpe.jdField_g_of_type_Int;
+      this.jdField_e_of_type_JavaLangString = parambbpe.jdField_e_of_type_JavaLangString;
+      this.jdField_g_of_type_JavaLangString = parambbpe.jdField_g_of_type_JavaLangString;
+      this.jdField_h_of_type_Int = parambbpe.jdField_h_of_type_Int;
+      this.jdField_h_of_type_JavaLangString = parambbpe.jdField_h_of_type_JavaLangString;
+      this.jdField_i_of_type_JavaLangString = parambbpe.jdField_i_of_type_JavaLangString;
+      this.jdField_b_of_type_Boolean = parambbpe.jdField_b_of_type_Boolean;
+      this.j = parambbpe.j;
+      this.jdField_i_of_type_Int = parambbpe.jdField_i_of_type_Int;
+      this.jdField_c_of_type_Boolean = parambbpe.jdField_c_of_type_Boolean;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbpe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.av.share.AVSchema;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
 public class lyf
-  extends akil
 {
-  public String a;
+  private static volatile lyf jdField_a_of_type_Lyf;
+  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  private lyf(AVSchema paramAVSchema) {}
-  
-  protected void a(boolean paramBoolean)
+  private lyf()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onUpdateTroopList, isSuccess[" + paramBoolean + "]");
-    }
+    this.jdField_a_of_type_JavaUtilMap.put("request", new String("-1"));
+    this.jdField_a_of_type_JavaUtilMap.put("update", new String("-1"));
+    this.jdField_a_of_type_JavaUtilMap.put("load", new String("-1"));
   }
   
-  protected void a(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
+  public static lyf a()
   {
-    long l = AudioHelper.b();
-    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.a("onGetSimpleTroopInfoResult", l)) {}
-    do
+    if (jdField_a_of_type_Lyf == null) {}
+    try
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramTroopInfo == null);
-        paramString = paramTroopInfo.troopuin;
-      } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)));
-      QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, isSuc[" + paramBoolean + "], enum_verify_status[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyd.a + "], seq[" + l + "]");
-      this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyd.b = paramTroopInfo.troopname;
-    } while (this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_Lyd.a != 0);
-    if (ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lyg(this, l)))
+      if (jdField_a_of_type_Lyf == null) {
+        jdField_a_of_type_Lyf = new lyf();
+      }
+      return jdField_a_of_type_Lyf;
+    }
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    try
     {
-      this.jdField_a_of_type_ComTencentAvShareAVSchema.b(l, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, String.valueOf(paramInt));
       return;
     }
-    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.jdField_a_of_type_JavaLangString, 1, "onGetSimpleTroopInfoResult, 等权限确认, seq[" + l + "]");
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lyf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,20 @@
-import java.util.List;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
 public class ulx
-  extends ute
+  implements ulq
 {
-  protected final int a;
-  protected final String a;
+  public ulx(StoryVideoUploadTask paramStoryVideoUploadTask, ulw paramulw) {}
   
-  public ulx(String paramString1, int paramInt, String paramString2)
+  public void a(ulp paramulp)
   {
-    super(paramString1, paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected tjd a(String paramString, List<String> paramList)
-  {
-    return new tlj(paramString, paramList);
-  }
-  
-  protected tje a()
-  {
-    return new uly(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c);
+    this.jdField_a_of_type_Ulw.k = ((ulk)paramulp).b;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ulx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,9 @@
-import MConch.SCPullConchs;
-import MWIFI.SCGet3rdCloudCheck;
-
-public class bcwt
-{
-  public SCPullConchs a;
-  public SCGet3rdCloudCheck a;
-}
+public abstract interface bcwt
+  extends bcwv
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcwt
  * JD-Core Version:    0.7.0.1
  */

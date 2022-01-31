@@ -1,27 +1,57 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
 
 class aylw
-  implements bbqp
+  implements View.OnLongClickListener
 {
-  aylw(aylu paramaylu) {}
+  aylw(aylv paramaylv, ayjl paramayjl) {}
   
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public boolean onLongClick(View paramView)
   {
-    if (paramQQAppInterface != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOMusicSkin", 2, "onCompleted, scid:" + paramString1);
-      }
-      this.a.a();
-    }
+    paramView = new AlertDialog.Builder(paramView.getContext());
+    paramView.setTitle(alpo.a(2131702939));
+    long l = ((ayjh)this.jdField_a_of_type_Ayjl).b();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = SearchConfigManager.contactSearchPinyinBaseBit;
+    int j = SearchConfigManager.contactSearchPinyinBaseBit;
+    localStringBuilder.append("拼音匹配：");
+    localStringBuilder.append((9223372036854775807L << i & l) >> j);
+    localStringBuilder.append('\n');
+    i = SearchConfigManager.contactSearchRecentBaseBit;
+    j = SearchConfigManager.contactSearchRecentBaseBit;
+    int k = SearchConfigManager.contactSearchRecentBaseBit;
+    localStringBuilder.append("最近联系人排序：");
+    localStringBuilder.append((9223372036854775807L >> 63 - (i + 10) & l & 9223372036854775807L << j) >> k);
+    localStringBuilder.append('\n');
+    i = SearchConfigManager.contactSearchIndexBaseBit;
+    j = SearchConfigManager.contactSearchIndexBaseBit;
+    k = SearchConfigManager.contactSearchIndexBaseBit;
+    localStringBuilder.append("字符串匹配度：");
+    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
+    localStringBuilder.append('\n');
+    i = SearchConfigManager.contactSearchTypeBaseBit;
+    j = SearchConfigManager.contactSearchTypeBaseBit;
+    k = SearchConfigManager.contactSearchTypeBaseBit;
+    localStringBuilder.append("数据类型：");
+    localStringBuilder.append((9223372036854775807L >> 63 - (i + 8) & l & 9223372036854775807L << j) >> k);
+    localStringBuilder.append('\n');
+    i = SearchConfigManager.contactSearchFieldBaseBit;
+    j = SearchConfigManager.contactSearchFieldBaseBit;
+    k = SearchConfigManager.contactSearchFieldBaseBit;
+    localStringBuilder.append("字段类型：");
+    localStringBuilder.append((l & 9223372036854775807L >> 63 - (i + 8) & 9223372036854775807L << j) >> k);
+    localStringBuilder.append('\n');
+    paramView.setMessage(localStringBuilder.toString());
+    paramView.create().show();
+    return false;
   }
-  
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aylw
  * JD-Core Version:    0.7.0.1
  */

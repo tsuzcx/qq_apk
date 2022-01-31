@@ -1,146 +1,78 @@
-import android.content.Context;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.qphone.base.util.MD5;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 public class aewz
-  extends aewd
 {
-  public Emoticon a;
-  private String a;
+  int jdField_a_of_type_Int = 2;
+  public List<aeww> a;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public aewz(Emoticon paramEmoticon)
+  public aewz()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataEmoticon = paramEmoticon;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public int a()
+  public List<aeww> a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.exposeNum;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    aeww localaeww = new aeww();
+    localaeww.a((aeww)localArrayList.get(localArrayList.size() - 1));
+    this.jdField_a_of_type_JavaUtilList.add(localaeww);
+    this.jdField_a_of_type_Boolean = true;
+    return localArrayList;
   }
   
-  public URLDrawable.URLDrawableOptions a()
+  public void a()
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isAPNG)
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+      return;
+    }
+    aeww localaeww = (aeww)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
+    localaeww.a.a(localaeww.b);
+    localaeww.c.a(localaeww.d);
+    localaeww.b.a(localaeww.d);
+    this.jdField_a_of_type_JavaUtilList.add(localaeww);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    aeww localaeww = new aeww();
+    localaeww.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.jdField_a_of_type_JavaUtilList.add(localaeww);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    aeww localaeww1 = new aeww();
+    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerRecLocalData", 2, "getURLDrawableOptions: APNG so loaded use apng image");
-      }
-      localURLDrawableOptions.mUseApngImage = true;
-      localURLDrawableOptions.mPlayGifImage = false;
-      localURLDrawableOptions.mMemoryCacheKeySuffix = "useAPNG";
+      a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+      return false;
     }
-    return localURLDrawableOptions;
-  }
-  
-  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
-  {
-    if (paramURL == null) {
-      paramURL = null;
-    }
-    do
+    aeww localaeww2 = (aeww)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1);
+    localaeww1.a.a(localaeww2.b);
+    localaeww1.c.a(localaeww2.d);
+    localaeww1.b.a((localaeww1.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (localaeww1.c.b + paramFloat2) / 2.0F, (localaeww1.c.c + paramFloat3) / 2.0F, (localaeww1.c.jdField_a_of_type_Long + paramLong) / 2L);
+    localaeww1.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.jdField_a_of_type_JavaUtilList.add(localaeww1);
+    if (this.jdField_a_of_type_Boolean)
     {
-      return paramURL;
-      paramURLDrawableOptions = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
-      paramURL = paramURLDrawableOptions;
-    } while (paramURLDrawableOptions.getStatus() == 1);
-    paramURLDrawableOptions.setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-    return paramURLDrawableOptions;
-  }
-  
-  public URL a()
-  {
-    try
-    {
-      URL localURL1 = new URL("emotion_pic", "fromAIO", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId + "_" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
-      if (localURL1 == null)
-      {
-        QLog.e("StickerRecLocalData", 1, "StickerLocalRecData getURL url = null");
-        return null;
-      }
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaUtilList.remove(0);
     }
-    catch (MalformedURLException localMalformedURLException)
-    {
-      URL localURL2;
-      for (;;)
-      {
-        QLog.e("StickerRecLocalData", 1, "StickerLocalRecData getURL url exception e = " + localMalformedURLException.getMessage());
-        localURL2 = null;
-      }
-      return localURL2;
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    ((askf)paramQQAppInterface.getManager(14)).a(this);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    super.a(paramQQAppInterface, paramContext, paramSessionInfo);
-    aanz.a(paramQQAppInterface, paramContext, paramSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isNewSoundEmoticon())) {
-      askf.a(paramQQAppInterface, "0X800A932", paramSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
-    }
-    ((askf)paramQQAppInterface.getManager(14)).b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.clickNum;
-  }
-  
-  public String b()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isAPNG) {}
-    for (Object localObject = anzr.t.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);; localObject = anzr.s.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId))
-    {
-      localObject = MD5.getFileMd5((String)localObject);
-      if (localObject == null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaLangString = MD5.toMD5((byte[])localObject);
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString.toLowerCase();
-      }
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    return null;
-  }
-  
-  public int c()
-  {
-    return 2;
-  }
-  
-  public String c()
-  {
-    if (d()) {
-      return "d-";
-    }
-    return "b-";
-  }
-  
-  public boolean d()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString() != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString().isEmpty());
+    return this.jdField_a_of_type_JavaUtilList.size() > this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar;
 
-import ajya;
-import aldo;
+import alpo;
+import amue;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
@@ -18,7 +18,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import android.view.animation.LinearInterpolator;
-import bbll;
+import bdkf;
 
 public abstract class ScanningData
 {
@@ -293,7 +293,7 @@ public abstract class ScanningData
   {
     this.jdField_c_of_type_Float = 1.0F;
     this.jdField_g_of_type_Float = 1.0F;
-    this.jdField_e_of_type_JavaLangString = ajya.a(2131713523);
+    this.jdField_e_of_type_JavaLangString = alpo.a(2131713895);
     this.jdField_f_of_type_JavaLangString = "YANG YANG";
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a();
@@ -321,7 +321,7 @@ public abstract class ScanningData
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_b_of_type_AndroidGraphicsPaint.setDither(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(aldo.jdField_b_of_type_Int);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(amue.jdField_b_of_type_Int);
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -420,7 +420,7 @@ public abstract class ScanningData
   {
     if (this.jdField_a_of_type_AndroidAnimationObjectAnimator == null)
     {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCWidth", new float[] { bbll.a(5.0F) * this.jdField_c_of_type_Float, aldo.jdField_c_of_type_Int * this.jdField_c_of_type_Float });
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCWidth", new float[] { bdkf.a(5.0F) * this.jdField_c_of_type_Float, amue.jdField_c_of_type_Int * this.jdField_c_of_type_Float });
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(600L);
     }
@@ -577,7 +577,7 @@ public abstract class ScanningData
   {
     if (this.jdField_n_of_type_AndroidAnimationObjectAnimator == null)
     {
-      this.jdField_n_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCWidth", new float[] { aldo.jdField_c_of_type_Int * this.jdField_c_of_type_Float, aldo.jdField_h_of_type_Int * this.jdField_c_of_type_Float });
+      this.jdField_n_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this, "bCWidth", new float[] { amue.jdField_c_of_type_Int * this.jdField_c_of_type_Float, amue.jdField_h_of_type_Int * this.jdField_c_of_type_Float });
       this.jdField_n_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_n_of_type_AndroidAnimationObjectAnimator.setDuration(600L);
     }
@@ -839,49 +839,49 @@ public abstract class ScanningData
   
   public void b()
   {
-    this.jdField_f_of_type_Float = aldo.I;
-    this.jdField_i_of_type_Float = aldo.jdField_h_of_type_Int;
-    this.jdField_n_of_type_Float = aldo.jdField_i_of_type_Int;
-    this.jdField_B_of_type_Float = aldo.L;
-    this.jdField_E_of_type_Float = aldo.jdField_c_of_type_Int;
-    this.L = aldo.G;
-    this.O = aldo.H;
-    this.P = aldo.jdField_b_of_type_Int;
-    this.X = aldo.G;
-    this.Y = aldo.jdField_c_of_type_Int;
-    this.ag = aldo.G;
-    this.ai = aldo.jdField_u_of_type_Int;
-    this.am = aldo.jdField_q_of_type_Int;
-    this.an = aldo.jdField_b_of_type_Int;
-    this.ay = aldo.jdField_c_of_type_Int;
-    this.aB = aldo.jdField_k_of_type_Int;
-    this.aH = aldo.x;
-    this.aD = aldo.C;
-    this.aE = aldo.jdField_u_of_type_Int;
-    this.aL = aldo.x;
-    this.aM = aldo.x;
-    this.aN = aldo.jdField_p_of_type_Int;
-    this.aP = aldo.jdField_r_of_type_Int;
-    this.aQ = aldo.jdField_r_of_type_Int;
-    this.aR = aldo.jdField_j_of_type_Int;
-    this.aH = aldo.jdField_r_of_type_Int;
-    this.aS = aldo.jdField_k_of_type_Int;
-    this.aT = aldo.jdField_m_of_type_Int;
+    this.jdField_f_of_type_Float = amue.I;
+    this.jdField_i_of_type_Float = amue.jdField_h_of_type_Int;
+    this.jdField_n_of_type_Float = amue.jdField_i_of_type_Int;
+    this.jdField_B_of_type_Float = amue.L;
+    this.jdField_E_of_type_Float = amue.jdField_c_of_type_Int;
+    this.L = amue.G;
+    this.O = amue.H;
+    this.P = amue.jdField_b_of_type_Int;
+    this.X = amue.G;
+    this.Y = amue.jdField_c_of_type_Int;
+    this.ag = amue.G;
+    this.ai = amue.jdField_u_of_type_Int;
+    this.am = amue.jdField_q_of_type_Int;
+    this.an = amue.jdField_b_of_type_Int;
+    this.ay = amue.jdField_c_of_type_Int;
+    this.aB = amue.jdField_k_of_type_Int;
+    this.aH = amue.x;
+    this.aD = amue.C;
+    this.aE = amue.jdField_u_of_type_Int;
+    this.aL = amue.x;
+    this.aM = amue.x;
+    this.aN = amue.jdField_p_of_type_Int;
+    this.aP = amue.jdField_r_of_type_Int;
+    this.aQ = amue.jdField_r_of_type_Int;
+    this.aR = amue.jdField_j_of_type_Int;
+    this.aH = amue.jdField_r_of_type_Int;
+    this.aS = amue.jdField_k_of_type_Int;
+    this.aT = amue.jdField_m_of_type_Int;
     this.aU = 0.0F;
-    this.aX = aldo.jdField_m_of_type_Int;
-    this.aY = aldo.jdField_b_of_type_Int;
-    this.bb = aldo.jdField_a_of_type_Int;
-    this.bd = aldo.A;
-    this.be = aldo.jdField_o_of_type_Int;
-    this.bf = aldo.f;
-    this.bh = aldo.jdField_d_of_type_Int;
-    this.bI = aldo.F;
-    this.bK = aldo.jdField_e_of_type_Int;
-    this.bL = aldo.jdField_h_of_type_Int;
-    this.bP = aldo.y;
-    this.bS = aldo.jdField_c_of_type_Int;
-    this.bV = aldo.jdField_v_of_type_Int;
-    this.bW = aldo.D;
+    this.aX = amue.jdField_m_of_type_Int;
+    this.aY = amue.jdField_b_of_type_Int;
+    this.bb = amue.jdField_a_of_type_Int;
+    this.bd = amue.A;
+    this.be = amue.jdField_o_of_type_Int;
+    this.bf = amue.f;
+    this.bh = amue.jdField_d_of_type_Int;
+    this.bI = amue.F;
+    this.bK = amue.jdField_e_of_type_Int;
+    this.bL = amue.jdField_h_of_type_Int;
+    this.bP = amue.y;
+    this.bS = amue.jdField_c_of_type_Int;
+    this.bV = amue.jdField_v_of_type_Int;
+    this.bW = amue.D;
   }
   
   public abstract void c();
@@ -1073,15 +1073,15 @@ public abstract class ScanningData
   
   public void x()
   {
-    this.jdField_f_of_type_Float = aldo.I;
-    this.jdField_i_of_type_Float = aldo.jdField_h_of_type_Int;
+    this.jdField_f_of_type_Float = amue.I;
+    this.jdField_i_of_type_Float = amue.jdField_h_of_type_Int;
     this.jdField_j_of_type_Float = 234.0F;
     this.jdField_k_of_type_Float = 36.0F;
     this.jdField_l_of_type_Float = 54.0F;
     this.jdField_m_of_type_Float = 216.0F;
     this.jdField_a_of_type_Int = Color.argb(255, 30, 255, 236);
     this.jdField_b_of_type_Int = Color.argb(255, 0, 191, 255);
-    this.jdField_n_of_type_Float = aldo.jdField_i_of_type_Int;
+    this.jdField_n_of_type_Float = amue.jdField_i_of_type_Int;
     this.jdField_o_of_type_Float = ((this.jdField_j_of_type_Float + this.jdField_m_of_type_Float) / 2.0F);
     this.jdField_p_of_type_Float = ((this.jdField_k_of_type_Float + this.jdField_l_of_type_Float) / 2.0F);
     this.jdField_c_of_type_Int = Color.argb(255, 30, 255, 236);
@@ -1089,18 +1089,18 @@ public abstract class ScanningData
     this.jdField_e_of_type_Int = Color.argb(255, 30, 255, 236);
     this.jdField_v_of_type_Float = 0.0F;
     this.jdField_u_of_type_Float = 0.0F;
-    this.jdField_B_of_type_Float = aldo.L;
-    this.jdField_E_of_type_Float = aldo.jdField_c_of_type_Int;
+    this.jdField_B_of_type_Float = amue.L;
+    this.jdField_E_of_type_Float = amue.jdField_c_of_type_Int;
     this.F = 160.0F;
     this.G = 290.0F;
     this.H = 340.0F;
     this.I = 110.0F;
     this.jdField_g_of_type_Int = -1;
     this.J = 102.0F;
-    this.K = aldo.M;
-    this.L = aldo.G;
-    this.O = aldo.H;
-    this.P = aldo.jdField_b_of_type_Int;
+    this.K = amue.M;
+    this.L = amue.G;
+    this.O = amue.H;
+    this.P = amue.jdField_b_of_type_Int;
     this.Q = 32.0F;
     this.R = 138.0F;
     this.S = 272.0F;
@@ -1109,8 +1109,8 @@ public abstract class ScanningData
     this.V = 258.0F;
     this.jdField_h_of_type_Int = -1;
     this.W = 0.0F;
-    this.X = aldo.G;
-    this.Y = aldo.jdField_c_of_type_Int;
+    this.X = amue.G;
+    this.Y = amue.jdField_c_of_type_Int;
     this.Z = 60.0F;
     this.aa = 100.0F;
     this.ab = 300.0F;
@@ -1119,12 +1119,12 @@ public abstract class ScanningData
     this.ae = 220.0F;
     this.jdField_i_of_type_Int = -1;
     this.af = 0.0F;
-    this.ag = aldo.G;
-    this.ai = aldo.jdField_u_of_type_Int;
+    this.ag = amue.G;
+    this.ai = amue.jdField_u_of_type_Int;
     this.jdField_j_of_type_Int = -1;
     this.aj = 0.0F;
-    this.am = aldo.jdField_q_of_type_Int;
-    this.an = aldo.jdField_b_of_type_Int;
+    this.am = amue.jdField_q_of_type_Int;
+    this.an = amue.jdField_b_of_type_Int;
     this.ao = 183.0F;
     this.ap = 267.0F;
     this.aq = 93.0F;
@@ -1135,78 +1135,78 @@ public abstract class ScanningData
     this.av = 87.0F;
     this.jdField_k_of_type_Int = -1;
     this.aw = 0.0F;
-    this.ay = aldo.jdField_c_of_type_Int;
+    this.ay = amue.jdField_c_of_type_Int;
     this.jdField_l_of_type_Int = -1;
     this.az = 0.0F;
-    this.aB = aldo.jdField_k_of_type_Int;
+    this.aB = amue.jdField_k_of_type_Int;
     this.jdField_m_of_type_Int = -1;
-    this.aH = aldo.x;
-    this.aD = aldo.C;
-    this.aE = aldo.jdField_u_of_type_Int;
-    this.aL = aldo.x;
-    this.aM = aldo.x;
-    this.aN = aldo.jdField_p_of_type_Int;
-    this.aP = aldo.jdField_r_of_type_Int;
-    this.aQ = aldo.jdField_r_of_type_Int;
-    this.aR = aldo.jdField_j_of_type_Int;
-    this.aH = aldo.jdField_r_of_type_Int;
-    this.aS = aldo.jdField_k_of_type_Int;
-    this.aT = aldo.jdField_m_of_type_Int;
+    this.aH = amue.x;
+    this.aD = amue.C;
+    this.aE = amue.jdField_u_of_type_Int;
+    this.aL = amue.x;
+    this.aM = amue.x;
+    this.aN = amue.jdField_p_of_type_Int;
+    this.aP = amue.jdField_r_of_type_Int;
+    this.aQ = amue.jdField_r_of_type_Int;
+    this.aR = amue.jdField_j_of_type_Int;
+    this.aH = amue.jdField_r_of_type_Int;
+    this.aS = amue.jdField_k_of_type_Int;
+    this.aT = amue.jdField_m_of_type_Int;
     this.aU = 0.0F;
-    this.aX = aldo.jdField_m_of_type_Int;
-    this.aY = aldo.jdField_b_of_type_Int;
+    this.aX = amue.jdField_m_of_type_Int;
+    this.aY = amue.jdField_b_of_type_Int;
     this.jdField_n_of_type_Int = Color.argb(102, 0, 0, 0);
     this.aZ = 270.0F;
     this.ba = 40.0F;
-    this.bb = aldo.jdField_a_of_type_Int;
-    this.bd = aldo.A;
-    this.be = aldo.jdField_o_of_type_Int;
-    this.bf = aldo.f;
-    this.bh = aldo.jdField_d_of_type_Int;
+    this.bb = amue.jdField_a_of_type_Int;
+    this.bd = amue.A;
+    this.be = amue.jdField_o_of_type_Int;
+    this.bf = amue.f;
+    this.bh = amue.jdField_d_of_type_Int;
     this.bj = 0.0F;
     this.bk = 0.0F;
-    this.bl = aldo.K;
-    this.bm = aldo.C;
+    this.bl = amue.K;
+    this.bm = amue.C;
     this.jdField_p_of_type_Int = Color.argb(229, 255, 255, 255);
     this.jdField_q_of_type_Int = Color.argb(229, 255, 255, 255);
     this.jdField_r_of_type_Int = Color.argb(127, 255, 255, 255);
-    this.bn = aldo.jdField_i_of_type_Int;
-    this.bo = aldo.jdField_s_of_type_Int;
-    this.bw = aldo.z;
-    this.bp = aldo.jdField_s_of_type_Int;
-    this.bq = aldo.jdField_s_of_type_Int;
-    this.br = aldo.jdField_g_of_type_Int;
-    this.bs = aldo.jdField_g_of_type_Int;
-    this.bx = aldo.jdField_s_of_type_Int;
-    this.bt = aldo.jdField_j_of_type_Int;
-    this.bu = aldo.jdField_p_of_type_Int;
-    this.bv = aldo.jdField_s_of_type_Int;
-    this.by = aldo.jdField_s_of_type_Int;
-    this.bz = aldo.jdField_r_of_type_Int;
-    this.bA = aldo.jdField_p_of_type_Int;
-    this.bB = aldo.jdField_n_of_type_Int;
+    this.bn = amue.jdField_i_of_type_Int;
+    this.bo = amue.jdField_s_of_type_Int;
+    this.bw = amue.z;
+    this.bp = amue.jdField_s_of_type_Int;
+    this.bq = amue.jdField_s_of_type_Int;
+    this.br = amue.jdField_g_of_type_Int;
+    this.bs = amue.jdField_g_of_type_Int;
+    this.bx = amue.jdField_s_of_type_Int;
+    this.bt = amue.jdField_j_of_type_Int;
+    this.bu = amue.jdField_p_of_type_Int;
+    this.bv = amue.jdField_s_of_type_Int;
+    this.by = amue.jdField_s_of_type_Int;
+    this.bz = amue.jdField_r_of_type_Int;
+    this.bA = amue.jdField_p_of_type_Int;
+    this.bB = amue.jdField_n_of_type_Int;
     this.jdField_s_of_type_Int = Color.argb(255, 119, 119, 119);
-    this.bC = aldo.jdField_h_of_type_Int;
-    this.bD = aldo.jdField_r_of_type_Int;
-    this.bE = aldo.jdField_e_of_type_Int;
+    this.bC = amue.jdField_h_of_type_Int;
+    this.bD = amue.jdField_r_of_type_Int;
+    this.bE = amue.jdField_e_of_type_Int;
     this.jdField_t_of_type_Int = Color.argb(76, 0, 104, 144);
-    this.bF = aldo.jdField_l_of_type_Int;
-    this.bG = aldo.jdField_i_of_type_Int;
+    this.bF = amue.jdField_l_of_type_Int;
+    this.bG = amue.jdField_i_of_type_Int;
     this.bH = 0.0F;
-    this.bI = aldo.F;
-    this.bK = aldo.jdField_e_of_type_Int;
+    this.bI = amue.F;
+    this.bK = amue.jdField_e_of_type_Int;
     this.jdField_u_of_type_Int = -1;
-    this.bL = aldo.jdField_h_of_type_Int;
+    this.bL = amue.jdField_h_of_type_Int;
     this.jdField_v_of_type_Int = -1;
     this.bM = 120.0F;
-    this.bP = aldo.y;
-    this.bS = aldo.jdField_c_of_type_Int;
+    this.bP = amue.y;
+    this.bS = amue.jdField_c_of_type_Int;
     this.jdField_w_of_type_Int = -1;
     this.bT = 0.0F;
     this.bU = 0.0F;
-    this.bV = aldo.jdField_v_of_type_Int;
-    this.bW = aldo.D;
-    this.jdField_w_of_type_Float = aldo.jdField_k_of_type_Int;
+    this.bV = amue.jdField_v_of_type_Int;
+    this.bW = amue.D;
+    this.jdField_w_of_type_Float = amue.jdField_k_of_type_Int;
     this.aV = 0.0F;
     this.aW = 0.0F;
     this.bc = 0.0F;
@@ -1259,7 +1259,7 @@ public abstract class ScanningData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ScanningData
  * JD-Core Version:    0.7.0.1
  */

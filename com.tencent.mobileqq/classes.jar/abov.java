@@ -1,23 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class abov
-  extends BroadcastReceiver
+final class abov
+  implements Comparator<MessageRecord>
 {
-  public abov(NotificationActivity paramNotificationActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if ((paramIntent.getAction().equals("com.tencent.mobileqq.closeNotification")) && (NotificationActivity.a(this.a) == 5)) {
-      this.a.finish();
-    }
+    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abov
  * JD-Core Version:    0.7.0.1
  */

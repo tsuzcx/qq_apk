@@ -1,22 +1,12 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.media.MediaFormat;
 
-public class bgwo
+public abstract interface bgwo
 {
-  public int a;
-  public Drawable a;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public int b;
-  public Drawable b;
+  public abstract void a(byte[] paramArrayOfByte, MediaFormat paramMediaFormat, boolean paramBoolean1, boolean paramBoolean2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgwo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,46 @@
-import android.view.View;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class awnw
-  implements awoh
+  extends allb
 {
-  protected int a;
-  private String a;
-  public List<awoi> a;
+  public awnw(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity) {}
   
-  public awnw(List<awoi> paramList, String paramString, int paramInt)
+  public void reqShoppingInfo(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public String a()
-  {
-    return ajya.a(2131705396);
-  }
-  
-  public List<awoi> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    awsq.a(null, 0, this.jdField_a_of_type_Int, "0X8009D47", 0, 0, null, null);
-    String str = awwa.a("pages/search-results/search-results?mode=search&q=" + this.jdField_a_of_type_JavaLangString);
-    str = awwa.a("https://m.q.qq.com/a/p/1108291530?via=2005_2&referer=2005&s=" + str);
-    str = "mqqapi://microapp/open?url=" + str;
-    MiniAppLauncher.startMiniApp(paramView.getContext(), str, 2005, null);
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "user binding shoppingNo = " + paramString1 + "Threadid=" + Thread.currentThread().getId());
+    }
+    if ((this.a.app == null) || (this.a.isFinishing())) {}
+    do
+    {
+      return;
+      this.a.app.removeObserver(this);
+      this.a.b = null;
+    } while (!paramBoolean);
+    if ("0".equals(paramString1))
+    {
+      paramString1 = this.a.a;
+      paramString2 = this.a.a;
+      paramString1 = paramString1.getSharedPreferences("is_binding_shop", 0).edit();
+      paramString1.putBoolean(this.a.e, false);
+      paramString1.commit();
+      return;
+    }
+    paramString1 = this.a.a;
+    paramString2 = this.a.a;
+    paramString1 = paramString1.getSharedPreferences("is_binding_shop", 0).edit();
+    paramString1.putBoolean(this.a.e, true);
+    paramString1.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awnw
  * JD-Core Version:    0.7.0.1
  */

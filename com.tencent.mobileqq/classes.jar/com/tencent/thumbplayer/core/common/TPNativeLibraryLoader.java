@@ -5,8 +5,8 @@ import android.text.TextUtils;
 
 public class TPNativeLibraryLoader
 {
-  private static final String DEFAULT_LIB_PLAYER_CORE_VERSION = "2.0.8.1057.min";
-  private static final String MAIN_PLAYER_CORE_VERSION = "2.0.8";
+  private static final String DEFAULT_LIB_PLAYER_CORE_VERSION = "2.3.1.1013.min";
+  private static final String MAIN_PLAYER_CORE_VERSION = "2.3.1";
   private static boolean mIsLibLoaded = false;
   private static Object mIsLibLoadedLock = new Object();
   private static ITPNativeLibraryExternalLoader mLibLoader = null;
@@ -29,9 +29,9 @@ public class TPNativeLibraryLoader
     }
     catch (Throwable localThrowable)
     {
-      TPNativeLog.printLog(2, "getPlayerCoreVersion: *.so is not loaded yet, return the hard-coded version number:2.0.8.1057.min");
+      TPNativeLog.printLog(2, "getPlayerCoreVersion: *.so is not loaded yet, return the hard-coded version number:2.3.1.1013.min");
     }
-    return "2.0.8.1057.min";
+    return "2.3.1.1013.min";
   }
   
   /* Error */
@@ -107,20 +107,23 @@ public class TPNativeLibraryLoader
   
   private static boolean loadLib(Context paramContext)
   {
+    if ((TPSystemInfo.getCpuArchitecture() == 3) || (TPSystemInfo.getCpuArchitecture() == 4) || (TPSystemInfo.getCpuArchitecture() == 0)) {
+      return false;
+    }
     String str = "TPCore-master" + "";
     if (mLibLoader != null) {}
     boolean bool2;
-    for (boolean bool1 = mLibLoader.loadLib(str, "2.0.8.1057.min");; bool1 = loadLibDefault(str, paramContext))
+    for (boolean bool1 = mLibLoader.loadLib(str, "2.3.1.1013.min");; bool1 = loadLibDefault(str, paramContext))
     {
       bool2 = bool1;
       if (bool1)
       {
         paramContext = getPlayerCoreVersion();
-        bool1 = isMatchJavaAndPlayerCore("2.0.8", paramContext);
+        bool1 = isMatchJavaAndPlayerCore("2.3.1", paramContext);
         bool2 = bool1;
         if (!bool1)
         {
-          TPNativeLog.printLog(4, "nativePlayerCoreVer(" + paramContext + ") doesn't match javaPlayerCoreVer:(" + "2.0.8" + ")");
+          TPNativeLog.printLog(4, "nativePlayerCoreVer(" + paramContext + ") doesn't match javaPlayerCoreVer:(" + "2.3.1" + ")");
           bool2 = bool1;
         }
       }
@@ -146,7 +149,7 @@ public class TPNativeLibraryLoader
     //   5: new 60	java/lang/StringBuilder
     //   8: dup
     //   9: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   12: ldc 123
+    //   12: ldc 129
     //   14: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   17: aload_0
     //   18: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -155,18 +158,18 @@ public class TPNativeLibraryLoader
     //   27: iload_3
     //   28: istore_2
     //   29: aload_0
-    //   30: invokestatic 129	java/lang/System:loadLibrary	(Ljava/lang/String;)V
+    //   30: invokestatic 135	java/lang/System:loadLibrary	(Ljava/lang/String;)V
     //   33: iconst_1
     //   34: istore_2
     //   35: iconst_2
     //   36: new 60	java/lang/StringBuilder
     //   39: dup
     //   40: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   43: ldc 131
+    //   43: ldc 137
     //   45: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: aload_0
     //   49: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: ldc 133
+    //   52: ldc 139
     //   54: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   57: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   60: invokestatic 52	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;)V
@@ -182,7 +185,7 @@ public class TPNativeLibraryLoader
     //   74: ifnull +92 -> 166
     //   77: iload_2
     //   78: istore_3
-    //   79: invokestatic 139	com/tencent/thumbplayer/core/common/TPSystemInfo:getCpuArchitecture	()I
+    //   79: invokestatic 105	com/tencent/thumbplayer/core/common/TPSystemInfo:getCpuArchitecture	()I
     //   82: bipush 6
     //   84: if_icmplt +82 -> 166
     //   87: iload_2
@@ -328,7 +331,7 @@ public class TPNativeLibraryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPNativeLibraryLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,9 @@ import android.opengl.EGLContext;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
-import avyy;
-import avyz;
-import awai;
+import axqx;
+import axqy;
+import axsh;
 import com.tencent.qphone.base.util.QLog;
 
 @TargetApi(18)
@@ -16,8 +16,8 @@ public class EglHandlerThread
 {
   private EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private avyy jdField_a_of_type_Avyy;
-  private avyz jdField_a_of_type_Avyz;
+  private axqx jdField_a_of_type_Axqx;
+  private axqy jdField_a_of_type_Axqy;
   private boolean jdField_a_of_type_Boolean;
   
   public EglHandlerThread(String paramString, EGLContext paramEGLContext)
@@ -37,14 +37,14 @@ public class EglHandlerThread
       {
         return;
       } while (!this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_Avyz != null)
+      if (this.jdField_a_of_type_Axqy != null)
       {
-        this.jdField_a_of_type_Avyz.a();
-        this.jdField_a_of_type_Avyz = null;
+        this.jdField_a_of_type_Axqy.a();
+        this.jdField_a_of_type_Axqy = null;
       }
-    } while (this.jdField_a_of_type_Avyy == null);
-    this.jdField_a_of_type_Avyy.a();
-    this.jdField_a_of_type_Avyy = null;
+    } while (this.jdField_a_of_type_Axqx == null);
+    this.jdField_a_of_type_Axqx.a();
+    this.jdField_a_of_type_Axqx = null;
   }
   
   public Handler a()
@@ -63,10 +63,10 @@ public class EglHandlerThread
     {
       super.onLooperPrepared();
       this.jdField_a_of_type_AndroidOsHandler = new Handler(getLooper());
-      this.jdField_a_of_type_Avyy = new avyy(this.jdField_a_of_type_AndroidOpenglEGLContext, 1);
-      this.jdField_a_of_type_Avyz = new avyz(this.jdField_a_of_type_Avyy);
-      this.jdField_a_of_type_Avyz.a(64, 64);
-      this.jdField_a_of_type_Avyz.b();
+      this.jdField_a_of_type_Axqx = new axqx(this.jdField_a_of_type_AndroidOpenglEGLContext, 1);
+      this.jdField_a_of_type_Axqy = new axqy(this.jdField_a_of_type_Axqx);
+      this.jdField_a_of_type_Axqy.a(64, 64);
+      this.jdField_a_of_type_Axqy.b();
       this.jdField_a_of_type_Boolean = true;
       return;
     }
@@ -74,7 +74,7 @@ public class EglHandlerThread
     {
       this.jdField_a_of_type_Boolean = false;
       QLog.e("EglHandlerThread", 2, localException, new Object[0]);
-      awai.a(localException);
+      axsh.a(localException);
     }
   }
   
@@ -99,7 +99,7 @@ public class EglHandlerThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.encoder.EglHandlerThread
  * JD-Core Version:    0.7.0.1
  */

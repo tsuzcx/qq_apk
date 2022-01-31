@@ -1,26 +1,101 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.qphone.base.util.QLog;
 
 public class achg
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public achg(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog, long paramLong1, int paramInt, long paramLong2, long paramLong3, String paramString) {}
+  public achg(ChatHistory paramChatHistory) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if ((paramCharSequence != null) && (paramCharSequence.length() != 0)) {}
+    for (;;)
+    {
+      try
+      {
+        paramInt1 = Integer.valueOf(paramCharSequence.toString()).intValue();
+        if ((paramCharSequence.length() <= 1) || (paramCharSequence.charAt(0) != '0')) {
+          break label421;
+        }
+        paramCharSequence = String.valueOf(paramInt1);
+        paramInt2 = 1;
+        if ((paramInt1 < 1) || (paramInt1 > this.a.c)) {
+          paramCharSequence = paramCharSequence.subSequence(0, paramCharSequence.length() - 1).toString();
+        }
+      }
+      catch (Exception localException1)
+      {
+        try
+        {
+          paramInt1 = Integer.valueOf(paramCharSequence.toString()).intValue();
+          paramInt2 = 1;
+          continue;
+          localException1 = localException1;
+          paramInt1 = this.a.c;
+        }
+        catch (Exception paramCharSequence)
+        {
+          paramInt1 = this.a.c;
+          paramCharSequence = String.valueOf(paramInt1);
+          continue;
+        }
+      }
+      if (paramInt2 != 0) {}
+      try
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(Math.max(0, paramCharSequence.length() - 1));
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.toString());
+        paramCharSequence = this.a;
+        if (paramInt1 < this.a.c)
+        {
+          paramCharSequence.d = paramInt1;
+          if (this.a.d < this.a.c) {
+            break label369;
+          }
+          this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
+          this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130848977);
+          if (this.a.d > 1) {
+            break label395;
+          }
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840287);
+          this.a.e = ((this.a.d - 1) * 8);
+          this.a.jdField_a_of_type_Acid.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+        }
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          QLog.e("ChatHistory", 1, "current s:" + paramCharSequence);
+          continue;
+          paramInt1 = this.a.c;
+          continue;
+          label369:
+          this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
+          this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838929);
+          continue;
+          label395:
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838928);
+        }
+      }
+      label421:
+      paramInt2 = 0;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.finish();
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_Akhp.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mPoiId, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mRichFingerMemo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achg
  * JD-Core Version:    0.7.0.1
  */

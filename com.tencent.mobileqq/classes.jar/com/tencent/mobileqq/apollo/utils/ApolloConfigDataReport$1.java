@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import airx;
-import ajmp;
+import akji;
+import alec;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class ApolloConfigDataReport$1
@@ -14,12 +14,12 @@ public final class ApolloConfigDataReport$1
     if (this.a == null) {
       return;
     }
-    ((airx)this.a.getManager(153)).a("https://cmshow.gtimg.cn/xydata/cmshow/app/terminalCmConfig/xydata.json", ApolloUtil.b, new ajmp(this));
+    ((akji)this.a.getManager(153)).a("https://cmshow.gtimg.cn/xydata/cmshow/app/terminalCmConfig/xydata.json", ApolloUtil.b, new alec(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.1
  * JD-Core Version:    0.7.0.1
  */

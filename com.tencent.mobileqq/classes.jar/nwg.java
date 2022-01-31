@@ -1,23 +1,44 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
 public class nwg
-  implements myy
+  extends Handler
 {
-  public nwg(ReadInJoyNewFeedsActivity.2 param2) {}
+  private WeakReference<nwc> a;
   
-  public void loaded(String paramString, int paramInt)
+  public nwg(nwc paramnwc)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2378 html web resource finish");
-    }
+    this.a = new WeakReference(paramnwc);
   }
   
-  public void progress(int paramInt) {}
+  public void handleMessage(Message paramMessage)
+  {
+    nwc localnwc = (nwc)this.a.get();
+    if (localnwc == null) {}
+    do
+    {
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        case 1: 
+          nwc.a(localnwc);
+          return;
+        }
+      } while (nwc.a(localnwc) == null);
+      nwc.a(localnwc).a(nwc.a(localnwc));
+      return;
+    } while (nwc.a(localnwc) == null);
+    nwc.a(localnwc).b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nwg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,38 @@
-import android.animation.ValueAnimator;
-import android.graphics.Canvas;
-import android.graphics.PointF;
 import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public abstract class vpp
+public class vpp
+  extends QQUIEventReceiver<vpm, vaa>
 {
-  public ValueAnimator a;
-  public PointF a;
-  public boolean b = true;
-  public boolean c;
-  public boolean d;
-  public int e;
-  public boolean e;
-  public boolean f;
-  public float j = 1.0F;
-  public float k;
-  public float l;
-  public float m;
-  public float n;
-  public float o;
-  public float p = 1.0F;
-  
-  public vpp(@NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
+  public vpp(@NonNull vpm paramvpm)
   {
-    this.a = new PointF(paramPointF.x, paramPointF.y);
-    this.j = paramFloat1;
-    this.k = paramFloat2;
-    this.l = paramFloat3;
-    this.m = paramFloat4;
-    this.n = paramFloat5;
-    this.o = paramFloat6;
-    this.b = paramBoolean;
+    super(paramvpm);
   }
   
-  public vpp(vpp paramvpp, float paramFloat)
+  public void a(@NonNull vpm paramvpm, @NonNull vaa paramvaa)
   {
-    this.a = new PointF(paramvpp.a.x * paramFloat, paramvpp.a.y * paramFloat);
-    paramvpp.j *= paramFloat;
-    this.k = paramvpp.k;
-    paramvpp.l *= paramFloat;
-    paramvpp.m *= paramFloat;
-    this.n = paramvpp.n;
-    this.o = paramvpp.o;
-    this.b = paramvpp.b;
+    if ((paramvaa.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramvaa.jdField_a_of_type_JavaUtilList == null)) {
+      return;
+    }
+    if (vpm.b(paramvpm))
+    {
+      vpm.b(paramvpm, true);
+      wsv.b("VideoCoverListGroupHolder", "base info return , notify list while idle");
+      return;
+    }
+    paramvpm.d();
+    wsv.b("VideoCoverListGroupHolder", "base info return , notify list now");
   }
   
-  public void a(Canvas paramCanvas) {}
+  public Class acceptEventClass()
+  {
+    return vaa.class;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vpp
  * JD-Core Version:    0.7.0.1
  */

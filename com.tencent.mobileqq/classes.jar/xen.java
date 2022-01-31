@@ -1,50 +1,42 @@
-import android.os.SystemClock;
+import android.content.Context;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.ttpic.baseutils.log.LogUtils;
+import android.view.ViewGroup;
 
-public final class xen
+public class xen
+  extends xej
 {
-  private static Pair<String, Long> a;
+  @NonNull
+  public final usm a;
+  @NonNull
+  public final String c;
   
-  public static boolean a(@NonNull String paramString)
+  public xen(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull usm paramusm)
   {
-    if ((a != null) && (TextUtils.equals(paramString, (CharSequence)a.first))) {}
-    long l;
-    for (Long localLong = (Long)a.second;; localLong = null)
-    {
-      l = SystemClock.elapsedRealtime();
-      if ((localLong == null) || (l - localLong.longValue() >= 1000L)) {
-        break;
-      }
-      LogUtils.w("FastClickUtils", "fast click ,tag  = " + paramString + ", intervalTime = " + (l - localLong.longValue()));
-      return true;
-    }
-    a = new Pair(paramString, Long.valueOf(l));
-    return false;
+    super(paramInt1, paramString1, paramInt2);
+    this.c = paramString2;
+    this.a = paramusm;
   }
   
-  public static boolean a(@NonNull String paramString, long paramLong)
+  @NonNull
+  public Class<? extends xek> a()
   {
-    if ((a != null) && (TextUtils.equals(paramString, (CharSequence)a.first))) {}
-    long l;
-    for (Long localLong = (Long)a.second;; localLong = null)
-    {
-      l = SystemClock.elapsedRealtime();
-      if ((localLong == null) || (l - localLong.longValue() >= paramLong)) {
-        break;
-      }
-      LogUtils.w("FastClickUtils", "fast click ,tag  = " + paramString + ", intervalTime = " + (l - localLong.longValue()));
-      return true;
-    }
-    a = new Pair(paramString, Long.valueOf(l));
-    return false;
+    return xep.class;
+  }
+  
+  @NonNull
+  public xek a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new xep(paramContext, paramViewGroup, null);
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xen
  * JD-Core Version:    0.7.0.1
  */

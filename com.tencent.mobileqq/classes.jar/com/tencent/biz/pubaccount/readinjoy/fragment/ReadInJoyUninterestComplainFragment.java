@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import ajya;
+import alpo;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -27,11 +27,11 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import nmc;
-import nyd;
-import oas;
-import onh;
-import qgo;
+import noy;
+import obk;
+import oef;
+import ors;
+import qqu;
 
 public class ReadInJoyUninterestComplainFragment
   extends IphoneTitleBarFragment
@@ -47,48 +47,48 @@ public class ReadInJoyUninterestComplainFragment
   private void a(String paramString1, String paramString2)
   {
     Bundle localBundle = new Bundle();
-    localBundle.putString(nmc.a, paramString2);
-    localBundle.putString(nmc.b, paramString1);
+    localBundle.putString(noy.a, paramString2);
+    localBundle.putString(noy.b, paramString1);
     switch (this.jdField_a_of_type_Int)
     {
     default: 
       return;
     case 1: 
       paramString1 = (AdvertisementInfo)this.jdField_a_of_type_AndroidOsParcelable;
-      if (onh.a(paramString1)) {}
-      for (int i = nmc.Q;; i = nmc.L)
+      if (ors.a(paramString1)) {}
+      for (int i = noy.Q;; i = noy.L)
       {
-        nmc.a(new nyd().a(getActivity()).a(nmc.c).b(i).a(paramString1).a(localBundle).a());
+        noy.a(new obk().a(getActivity()).a(noy.c).b(i).a(paramString1).a(localBundle).a());
         return;
       }
     case 2: 
       paramString1 = (VideoAdInfo)this.jdField_a_of_type_AndroidOsParcelable;
-      nmc.a(new nyd().a(getActivity()).a(nmc.c).b(nmc.P).a(nmc.a(paramString1)).a(paramString1).a(localBundle).a());
+      noy.a(new obk().a(getActivity()).a(noy.c).b(noy.P).a(noy.a(paramString1)).a(paramString1).a(localBundle).a());
       return;
     }
     paramString1 = (AdData)this.jdField_a_of_type_AndroidOsParcelable;
-    nmc.a(new nyd().a(getActivity()).a(nmc.c).b(nmc.K).a(oas.a(paramString1)).a(localBundle).a());
+    noy.a(new obk().a(getActivity()).a(noy.c).b(noy.K).a(oef.a(paramString1)).a(localBundle).a());
   }
   
   private void b()
   {
     this.vg.a(true);
     if (this.leftView != null) {
-      this.leftView.setText(ajya.a(2131712808));
+      this.leftView.setText(alpo.a(2131713180));
     }
-    setTitle(ajya.a(2131712825));
-    if (ThemeUtil.isInNightMode(onh.a())) {
-      View.inflate(getActivity(), 2131559985, this.titleRoot);
+    setTitle(alpo.a(2131713197));
+    if (ThemeUtil.isInNightMode(ors.a())) {
+      View.inflate(getActivity(), 2131560084, this.titleRoot);
     }
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131364583));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131364661));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131364789));
-    this.b = ((EditText)this.mContentView.findViewById(2131371436));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131376653));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131364870));
+    this.b = ((EditText)this.mContentView.findViewById(2131371752));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.mContentView.findViewById(2131377163));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -183,7 +183,7 @@ public class ReadInJoyUninterestComplainFragment
   
   public int getContentLayoutId()
   {
-    return 2131560043;
+    return 2131560144;
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -213,7 +213,7 @@ public class ReadInJoyUninterestComplainFragment
   public void onResume()
   {
     super.onResume();
-    qgo.a(this);
+    qqu.a(this);
     ThreadManager.getUIHandler().postDelayed(new ReadInJoyUninterestComplainFragment.1(this), 300L);
   }
   
@@ -221,7 +221,7 @@ public class ReadInJoyUninterestComplainFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment
  * JD-Core Version:    0.7.0.1
  */

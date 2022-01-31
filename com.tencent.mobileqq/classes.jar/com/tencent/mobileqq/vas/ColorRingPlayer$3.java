@@ -2,12 +2,12 @@ package com.tencent.mobileqq.vas;
 
 import android.media.MediaPlayer;
 import android.os.Handler;
-import bbpd;
+import bdnx;
 
 public class ColorRingPlayer$3
   implements Runnable
 {
-  public ColorRingPlayer$3(bbpd parambbpd) {}
+  public ColorRingPlayer$3(bdnx parambdnx) {}
   
   public void run()
   {
@@ -49,7 +49,7 @@ public class ColorRingPlayer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorRingPlayer.3
  * JD-Core Version:    0.7.0.1
  */

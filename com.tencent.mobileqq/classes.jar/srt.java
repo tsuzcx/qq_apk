@@ -1,34 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.widget.TextView;
+import android.widget.Toast;
 
-class srt
-  implements CompoundButton.OnCheckedChangeListener
+public class srt
 {
-  srt(srs paramsrs) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static Toast a(Context paramContext, CharSequence paramCharSequence, int paramInt)
   {
-    if (paramBoolean)
-    {
-      srs.a(this.a);
-      if (srs.a(this.a)) {
-        vei.a("video_shoot_slides", "clk_setting_on", 0, 0, new String[0]);
-      }
-    }
-    for (;;)
-    {
-      srs.a(this.a, paramBoolean);
-      return;
-      srs.b(this.a);
-      if (srs.a(this.a)) {
-        vei.a("video_shoot_slides", "clk_setting_close", 0, 0, new String[0]);
-      }
-    }
+    Toast localToast = new Toast(paramContext);
+    localToast.setDuration(paramInt);
+    paramContext = (TextView)LayoutInflater.from(paramContext).inflate(2131562516, null);
+    localToast.setView(paramContext);
+    paramContext.setText(paramCharSequence);
+    localToast.setGravity(17, 0, 0);
+    return localToast;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srt
  * JD-Core Version:    0.7.0.1
  */

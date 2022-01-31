@@ -1,32 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class ahjg
-  implements ValueAnimator.AnimatorUpdateListener
+class ahjg
+  extends allb
 {
-  public ahjg(RecordMicView paramRecordMicView) {}
+  ahjg(ahjd paramahjd) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = RecordMicView.a(this.a).iterator();
-    while (paramValueAnimator.hasNext())
+    if (paramBoolean)
     {
-      ahjh localahjh = (ahjh)paramValueAnimator.next();
-      localahjh.jdField_c_of_type_Float = (localahjh.f + (localahjh.g - localahjh.f) * f);
-      localahjh.d = (localahjh.h + (localahjh.i - localahjh.h) * f);
-      localahjh.e = (localahjh.j + (localahjh.k - localahjh.j) * f);
-      localahjh.a = (localahjh.b + (int)((localahjh.jdField_c_of_type_Int - localahjh.b) * f));
+      QQToast.a(ahjd.a(this.a), 2131699558, 3000).a();
+      if (ahjd.a(this.a) != 23) {
+        this.a.a(true);
+      }
+      return;
     }
-    this.a.invalidate();
+    QQToast.a(ahjd.a(this.a), 2131699557, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjg
  * JD-Core Version:    0.7.0.1
  */

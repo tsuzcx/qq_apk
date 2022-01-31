@@ -1,101 +1,171 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.biz.widgets.TabLayout;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
+import mqq.app.AppRuntime;
+import org.json.JSONObject;
 
-class ntm
-  extends osm
+public class ntm
+  implements aoga<String>
 {
-  ntm(nth paramnth) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
+  private String jdField_b_of_type_JavaLangString = "";
+  private boolean jdField_b_of_type_Boolean;
+  private String c = "";
   
-  public void a(float paramFloat, int paramInt)
+  public static ntm a()
   {
-    super.a(paramFloat, paramInt);
-    paramFloat /= paramInt;
-    nth.a(this.a).setY((1.0F - paramFloat) * nth.a(this.a).getHeight() * 0.03F);
+    ntm localntm = new ntm();
+    localntm.jdField_a_of_type_JavaLangString = swy.jdField_a_of_type_JavaLangString;
+    localntm.jdField_b_of_type_JavaLangString = swy.jdField_b_of_type_JavaLangString;
+    localntm.c = swy.c;
+    localntm.jdField_a_of_type_Boolean = swy.d;
+    return localntm;
   }
   
-  public void a(TabChannelCoverInfo paramTabChannelCoverInfo)
+  private ntm a(ntm paramntm, String paramString)
   {
-    int i = 1;
-    super.a(paramTabChannelCoverInfo);
-    if (paramTabChannelCoverInfo != null)
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
-      QLog.d("ReadInJoyChannelViewPagerController", 2, new Object[] { "onChannelTabSelected, channelID = ", Integer.valueOf(paramTabChannelCoverInfo.mChannelCoverId), ", channelName = ", paramTabChannelCoverInfo.mChannelCoverName });
-      nth.a(this.a);
-      if (bhvy.z())
+      return this;
+      try
       {
-        nth.b(this.a, paramTabChannelCoverInfo);
-        nth.b(this.a, nth.a(this.a, nth.a(this.a)));
+        paramString = new JSONObject(paramString);
+        if (paramString.has("pacenter_url")) {
+          this.jdField_a_of_type_JavaLangString = paramntm.jdField_a_of_type_JavaLangString;
+        }
+        if (paramString.has("pacategory_url")) {
+          this.jdField_b_of_type_JavaLangString = paramntm.jdField_b_of_type_JavaLangString;
+        }
+        if (paramString.has("readinjoy_search_url")) {
+          this.c = paramntm.c;
+        }
+        if (paramString.has("image_collection_comment")) {
+          this.jdField_a_of_type_Boolean = paramntm.jdField_a_of_type_Boolean;
+        }
+        if (paramntm.jdField_b_of_type_Boolean)
+        {
+          this.jdField_b_of_type_Boolean = true;
+          return this;
+        }
       }
-      nth.a(paramTabChannelCoverInfo.mChannelCoverId, 1);
-      this.a.c(paramTabChannelCoverInfo.mChannelCoverId);
-    }
-    try
-    {
-      paramTabChannelCoverInfo = new ono().a("source", "303").a(paramTabChannelCoverInfo.mChannelCoverId);
-      if (nsp.a()) {}
-      for (;;)
+      catch (Exception paramntm)
       {
-        nth.a("0X8009B94", "", paramTabChannelCoverInfo.b("style", i).a());
-        return;
-        i = 0;
+        if (QLog.isColorLevel()) {
+          QLog.e("PublicAccountCenterUrlConfProcessor", 2, "checkPublicAccountCenterUrlConfigData error", paramntm);
+        }
+        paramntm.printStackTrace();
       }
-      return;
     }
-    catch (JSONException paramTabChannelCoverInfo)
-    {
-      QLog.d("ReadInJoyChannelViewPagerController", 2, "report click channel bar exception, e = ", paramTabChannelCoverInfo);
-    }
+    return this;
   }
   
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  public static ntm a(aogf[] paramArrayOfaogf)
   {
-    super.a(paramBoolean1, paramInt, paramList, paramBoolean2);
-    paramInt = this.a.b();
-    nth.a(this.a, paramInt);
-    nth.a(this.a).a();
-  }
-  
-  public void a(boolean paramBoolean, List<TabChannelCoverInfo> paramList)
-  {
+    Object localObject = new ntm();
     int i = 0;
-    if (paramList != null) {
-      i = paramList.size();
-    }
-    QLog.d("ReadInJoyChannelViewPagerController", 2, new Object[] { "onIndependentMainChannelListupdate, success = ", Boolean.valueOf(paramBoolean), ", size = ", Integer.valueOf(i) });
-    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0)) {
-      nth.a(this.a, paramList);
-    }
-  }
-  
-  public void ap_()
-  {
-    super.ap_();
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    int i = 8;
-    nth.a(this.a, paramBoolean);
-    if (!ooq.a())
+    String str;
+    for (;;)
     {
-      ImageView localImageView = nth.a(this.a);
-      if (paramBoolean) {
-        i = 0;
+      if (i >= paramArrayOfaogf.length) {
+        return localObject;
       }
-      localImageView.setVisibility(i);
-      return;
+      str = paramArrayOfaogf[i].jdField_a_of_type_JavaLangString;
+      try
+      {
+        ntm localntm = ((ntm)localObject).a((ntm)aogt.a(str, ntm.class), str);
+        localObject = localntm;
+      }
+      catch (QStorageInstantiateException localQStorageInstantiateException)
+      {
+        for (;;)
+        {
+          QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + str, localQStorageInstantiateException);
+        }
+      }
+      i += 1;
     }
-    nth.a(this.a).setVisibility(8);
+    return localObject;
+  }
+  
+  public void a()
+  {
+    swy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    swy.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    swy.c = this.c;
+    swy.d = this.jdField_a_of_type_Boolean;
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool3 = true;
+    for (;;)
+    {
+      boolean bool2;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        String str1 = paramString.getString("pacenter_url");
+        String str2 = paramString.getString("pacategory_url");
+        if (!swy.a(str1)) {
+          break label156;
+        }
+        this.jdField_a_of_type_JavaLangString = str1;
+        bool1 = true;
+        if (swy.a(str2))
+        {
+          this.jdField_b_of_type_JavaLangString = str2;
+          bool1 = true;
+        }
+        bool2 = bool1;
+        if (paramString.has("readinjoy_search_url"))
+        {
+          str1 = paramString.getString("readinjoy_search_url");
+          bool2 = bool1;
+          if (swy.a(str1))
+          {
+            this.c = str1;
+            bool2 = true;
+          }
+        }
+        if (paramString.has("image_collection_comment"))
+        {
+          this.jdField_a_of_type_Boolean = paramString.getBoolean("image_collection_comment");
+          bool1 = bool3;
+          this.jdField_b_of_type_Boolean = bool1;
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PublicAccountCenterUrlConfProcessor", 2, "checkPublicAccountCenterUrlConfigData error", paramString);
+        }
+        paramString.printStackTrace();
+        this.jdField_b_of_type_Boolean = false;
+        return;
+      }
+      boolean bool1 = bool2;
+      continue;
+      label156:
+      bool1 = false;
+    }
+  }
+  
+  public void b()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      swy.c((QQAppInterface)localAppRuntime);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ntm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.data.fts.FTSMessage;
-import java.util.HashSet;
-import java.util.List;
+import android.util.Pair;
+import java.util.Comparator;
 
-public class awmg
+class awmg
+  implements Comparator<Pair<Long, String>>
 {
-  public int a;
-  public long a;
-  public HashSet<Long> a;
-  public List<FTSMessage> a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
+  public int a(Pair<Long, String> paramPair1, Pair<Long, String> paramPair2)
+  {
+    return awmf.a((CharSequence)paramPair1.second) - awmf.a((CharSequence)paramPair2.second);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awmg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,37 @@
-import android.view.View;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupSelectionFragment;
+import QC.SetFontBubbleRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import java.lang.ref.WeakReference;
 
 public class asnh
-  implements bctk
+  extends alxo
 {
-  public asnh(MsgBackupSelectionFragment paramMsgBackupSelectionFragment) {}
+  private WeakReference<BaseChatPie> a;
   
-  public void a(View paramView, int paramInt)
+  public asnh(BaseChatPie paramBaseChatPie)
   {
-    int i = 2;
-    if (paramInt == 1)
-    {
-      asoi.a("MsgBackup.MsgBackupSelectionFragment", "click cancel btn mfrom = %d,  pcHandler = %b", new Object[] { Integer.valueOf(MsgBackupSelectionFragment.a(this.a)), Boolean.valueOf(aslg.c) });
-      if (MsgBackupSelectionFragment.a(this.a) != 0) {
-        break label79;
-      }
-      paramInt = i;
-      if (MsgBackupSelectionFragment.a(this.a)) {
-        paramInt = 3;
-      }
-      asog.a("0X800A242", paramInt);
+    this.a = new WeakReference(paramBaseChatPie);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
+    if (localBaseChatPie != null) {
+      asnd.a(localBaseChatPie.a).a(localBaseChatPie, paramBundle);
     }
-    for (;;)
-    {
-      this.a.onBackEvent();
-      return;
-      label79:
-      if ((aslg.c) && (askv.a().a() == 1)) {
-        asog.a("0X800A266", 5);
-      }
+  }
+  
+  public void a(boolean paramBoolean, SetFontBubbleRsp paramSetFontBubbleRsp, int paramInt)
+  {
+    BaseChatPie localBaseChatPie = (BaseChatPie)this.a.get();
+    if (localBaseChatPie != null) {
+      asnd.a(localBaseChatPie.a).a(localBaseChatPie, paramBoolean, paramSetFontBubbleRsp, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asnh
  * JD-Core Version:    0.7.0.1
  */

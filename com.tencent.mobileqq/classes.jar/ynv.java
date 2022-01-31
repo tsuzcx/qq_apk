@@ -1,19 +1,19 @@
-import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
-import com.tencent.qphone.base.util.QLog;
-
-public class ynv
-  implements yoq
+class ynv
+  extends yok
 {
-  public ynv(GameCenterActivity.GameCenterFragment paramGameCenterFragment) {}
-  
-  public void a(int paramInt, String paramString)
+  public ynv(ynm paramynm, yol paramyol, String paramString)
   {
-    QLog.i("GameCenterFragment", 1, "removeShotMask code=" + paramInt);
+    super(paramynm, paramyol, paramString);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Yol.b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ynv
  * JD-Core Version:    0.7.0.1
  */

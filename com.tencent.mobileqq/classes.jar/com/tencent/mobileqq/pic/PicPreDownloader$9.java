@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.pic;
 
-import auom;
+import awfu;
 import com.tencent.mobileqq.data.MessageForStructing;
 
 class PicPreDownloader$9
@@ -10,12 +10,12 @@ class PicPreDownloader$9
   
   public void run()
   {
-    auom.a(this.a, this.this$0.a);
+    awfu.a(this.a, this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloader.9
  * JD-Core Version:    0.7.0.1
  */

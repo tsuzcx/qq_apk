@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import java.util.Comparator;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import mqq.os.MqqHandler;
 
-class ajtx
-  implements Comparator<BaseAddress>
+public class ajtx
+  extends MqqHandler
 {
-  ajtx(ajtw paramajtw) {}
+  public ajtx(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
+  public void handleMessage(Message paramMessage)
   {
-    int j = paramBaseAddress1.pinyinFirst.compareTo(paramBaseAddress2.pinyinFirst);
-    int i = j;
-    if (j == 0) {
-      i = paramBaseAddress1.pinyinAll.compareTo(paramBaseAddress2.pinyinAll);
+    switch (paramMessage.what)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
     }
-    return i;
+    ContactsInnerFrame.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajtx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,22 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.pluginsdk.PluginUtils;
-import com.tencent.qphone.base.util.QLog;
-import dalvik.system.DexClassLoader;
-import java.io.File;
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import java.util.List;
 
-class xjk
-  implements myz
+public class xjk
+  extends xjh
 {
-  xjk(xjj paramxjj, long paramLong, Context paramContext, boolean paramBoolean, myz parammyz) {}
-  
-  public void loaded(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ViewPluginManager", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ViewPluginManager", 4, "transToLocalUrl transUrl:" + paramString);
-    }
-    this.jdField_a_of_type_Xjj.d = mzb.a(this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangString);
-    String str = mzh.a(this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_Xjj.b;
-    try
-    {
-      Object localObject = new File(this.jdField_a_of_type_Xjj.c);
-      if (!this.jdField_a_of_type_Xjj.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.jdField_a_of_type_Xjj.a(this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangString), "-1").equals(this.jdField_a_of_type_Xjj.d))
-      {
-        if (!((File)localObject).exists()) {
-          break label379;
-        }
-        bbdx.a(((File)localObject).getAbsolutePath());
-        this.jdField_a_of_type_Xjj.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.jdField_a_of_type_Xjj.a(this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangString), mzb.a(this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangString)).commit();
-        ((File)localObject).mkdirs();
-      }
-      for (;;)
-      {
-        if (!((File)localObject).exists()) {
-          ((File)localObject).mkdirs();
-        }
-        localObject = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Xjj.b).getCanonicalPath();
-        this.jdField_a_of_type_Xjj.jdField_a_of_type_JavaLangClassLoader = new DexClassLoader(str, this.jdField_a_of_type_Xjj.c, (String)localObject, this.jdField_a_of_type_AndroidContentContext.getClassLoader());
-        this.jdField_a_of_type_Xjj.jdField_a_of_type_Xje = new xje(this.jdField_a_of_type_AndroidContentContext, 0, str, null, null, this.jdField_a_of_type_Boolean);
-        if (this.jdField_a_of_type_Myz == null) {
-          break;
-        }
-        this.jdField_a_of_type_Myz.loaded(paramInt, paramString);
-        return;
-        label379:
-        ((File)localObject).mkdirs();
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ViewPluginManager", 2, "create classloader failed:" + paramString.toString());
-      }
-    }
-  }
+  public int a;
+  public Activity a;
+  public Handler a;
+  public String a;
+  public List<SlideItemInfo> a;
+  public xjl a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjk
  * JD-Core Version:    0.7.0.1
  */

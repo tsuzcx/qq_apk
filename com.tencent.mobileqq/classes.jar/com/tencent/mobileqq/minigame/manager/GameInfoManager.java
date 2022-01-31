@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.minigame.manager;
 
 import android.text.TextUtils;
-import bhel;
+import bjfv;
 import com.tencent.mobileqq.mini.apkg.FirstPageInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -20,30 +20,16 @@ public class GameInfoManager
   public static final String EVENT_APP_ENTER_BACKGROUND = "onAppEnterBackground";
   public static final String EVENT_APP_ENTER_FOREGROUND = "onAppEnterForeground";
   public static final String GAME_STOP = "onAppStop";
-  private static final String TAG = "GameInfoManager";
-  private static GameInfoManager instance;
+  private final String TAG = toString();
   private GameInfoManager.LaunchOptions launchOptions;
   private MiniGamePkg miniGamePkg;
-  
-  public static GameInfoManager g()
-  {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new GameInfoManager();
-      }
-      return instance;
-    }
-    finally {}
-  }
   
   public String getAppId()
   {
     if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null)) {
       return this.miniGamePkg.appConfig.config.appId;
     }
-    QZLog.e("GameInfoManager", "getAppId() error");
+    QZLog.e(this.TAG, "getAppId() error");
     return null;
   }
   
@@ -52,11 +38,11 @@ public class GameInfoManager
     if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null))
     {
       if (QZLog.isColorLevel()) {
-        QZLog.i("GameInfoManager", 2, "getAppId() = " + this.miniGamePkg.appConfig.config.appId);
+        QZLog.i(this.TAG, 2, "getAppId() = " + this.miniGamePkg.appConfig.config.appId);
       }
       return this.miniGamePkg.appConfig.config.name;
     }
-    QZLog.e("GameInfoManager", "getAppId() error");
+    QZLog.e(this.TAG, "getAppId() error");
     return null;
   }
   
@@ -72,7 +58,7 @@ public class GameInfoManager
   {
     if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null))
     {
-      QLog.i("GameInfoManager", 1, "getExtendData = " + this.miniGamePkg.appConfig.config.extendData);
+      QLog.i(this.TAG, 1, "getExtendData = " + this.miniGamePkg.appConfig.config.extendData);
       if (!TextUtils.isEmpty(this.miniGamePkg.appConfig.config.extendData)) {}
     }
     else
@@ -86,7 +72,7 @@ public class GameInfoManager
   {
     if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.launchParam != null))
     {
-      QZLog.i("GameInfoManager", 1, "getFromMiniAppId = " + this.miniGamePkg.appConfig.launchParam.fromMiniAppId);
+      QZLog.i(this.TAG, 1, "getFromMiniAppId = " + this.miniGamePkg.appConfig.launchParam.fromMiniAppId);
       if (!TextUtils.isEmpty(this.miniGamePkg.appConfig.launchParam.fromMiniAppId)) {}
     }
     else
@@ -129,7 +115,7 @@ public class GameInfoManager
   {
     if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.launchParam != null))
     {
-      QLog.i("GameInfoManager", 1, "getNavigateExtData = " + this.miniGamePkg.appConfig.launchParam.navigateExtData);
+      QLog.i(this.TAG, 1, "getNavigateExtData = " + this.miniGamePkg.appConfig.launchParam.navigateExtData);
       if (!TextUtils.isEmpty(this.miniGamePkg.appConfig.launchParam.navigateExtData)) {}
     }
     else
@@ -142,7 +128,7 @@ public class GameInfoManager
   public JSONObject getOnShowParam()
   {
     JSONObject localJSONObject = new JSONObject();
-    Object localObject2 = g().getQueryPath();
+    Object localObject2 = getQueryPath();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new JSONObject();
@@ -181,20 +167,20 @@ public class GameInfoManager
             }
             catch (Exception localException4)
             {
-              GameLog.getInstance().e("GameInfoManager", "onForeground exception put referrerInfo string :" + localException4);
+              GameLog.getInstance().e(this.TAG, "onForeground exception put referrerInfo string :" + localException4);
             }
             localException1 = localException1;
-            GameLog.getInstance().e("GameInfoManager", "onForeground exception put query string :" + localException1);
+            GameLog.getInstance().e(this.TAG, "onForeground exception put query string :" + localException1);
             continue;
             localException2 = localException2;
-            GameLog.getInstance().e("GameInfoManager", "onForeground exception put scene string :" + localException2);
+            GameLog.getInstance().e(this.TAG, "onForeground exception put scene string :" + localException2);
           }
         }
         catch (Exception localException3)
         {
           for (;;)
           {
-            GameLog.getInstance().e("GameInfoManager", "onForeground exception put shareTicket string :" + localException3);
+            GameLog.getInstance().e(this.TAG, "onForeground exception put shareTicket string :" + localException3);
           }
         }
       }
@@ -206,7 +192,7 @@ public class GameInfoManager
   {
     if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.config != null) && (this.miniGamePkg.appConfig.config.firstPage != null))
     {
-      QLog.i("GameInfoManager", 1, "getQueryPath = " + this.miniGamePkg.appConfig.config.firstPage.pagePath);
+      QLog.i(this.TAG, 1, "getQueryPath = " + this.miniGamePkg.appConfig.config.firstPage.pagePath);
       if ("miniGamePath".equals(this.miniGamePkg.appConfig.config.firstPage.pagePath)) {
         return new JSONObject();
       }
@@ -219,7 +205,7 @@ public class GameInfoManager
   {
     if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.launchParam != null))
     {
-      QLog.i("GameInfoManager", 1, "getScene = " + this.miniGamePkg.appConfig.launchParam.scene);
+      QLog.i(this.TAG, 1, "getScene = " + this.miniGamePkg.appConfig.launchParam.scene);
       return this.miniGamePkg.appConfig.launchParam.scene;
     }
     return 1001;
@@ -229,7 +215,7 @@ public class GameInfoManager
   {
     if ((this.miniGamePkg != null) && (this.miniGamePkg.appConfig != null) && (this.miniGamePkg.appConfig.launchParam != null))
     {
-      QLog.i("GameInfoManager", 1, "getShareTicket = " + this.miniGamePkg.appConfig.launchParam.shareTicket);
+      QLog.i(this.TAG, 1, "getShareTicket = " + this.miniGamePkg.appConfig.launchParam.shareTicket);
       if (!TextUtils.isEmpty(this.miniGamePkg.appConfig.launchParam.shareTicket)) {}
     }
     else
@@ -271,12 +257,12 @@ public class GameInfoManager
     this.miniGamePkg = paramMiniGamePkg;
     try
     {
-      bhel.a(getMiniAppSimpleInfo());
+      bjfv.a(getMiniAppSimpleInfo());
       return;
     }
     catch (Throwable paramMiniGamePkg)
     {
-      QZLog.e("GameInfoManager", "MiniAppInfoReportManager.setMiniAppInfo() error", paramMiniGamePkg);
+      QZLog.e(this.TAG, "MiniAppInfoReportManager.setMiniAppInfo() error", paramMiniGamePkg);
     }
   }
   
@@ -289,7 +275,7 @@ public class GameInfoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameInfoManager
  * JD-Core Version:    0.7.0.1
  */

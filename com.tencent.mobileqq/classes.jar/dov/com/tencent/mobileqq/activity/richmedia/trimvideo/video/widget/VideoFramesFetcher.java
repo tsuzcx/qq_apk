@@ -1,33 +1,33 @@
 package dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import bksf;
-import bksj;
-import bksl;
-import bksp;
+import bndp;
+import bndt;
+import bndv;
+import bndz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class VideoFramesFetcher
-  implements bksl
+  implements bndv
 {
   private static long jdField_a_of_type_Long;
   private volatile int jdField_a_of_type_Int;
-  private bksf jdField_a_of_type_Bksf;
-  private BlockingQueue<bksp> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private ConcurrentHashMap<Integer, bksp> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private bndp jdField_a_of_type_Bndp;
+  private BlockingQueue<bndz> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private ConcurrentHashMap<Integer, bndz> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private volatile boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
   
-  private bksj b(int paramInt)
+  private bndt b(int paramInt)
   {
     if (!a()) {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFramesFetcher", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    bksp localbksp2;
+    bndz localbndz2;
     do
     {
       return null;
@@ -35,10 +35,10 @@ public class VideoFramesFetcher
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          bksp localbksp1 = (bksp)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          bndz localbndz1 = (bndz)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localbksp1.jdField_a_of_type_Long = l;
+          localbndz1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -49,13 +49,13 @@ public class VideoFramesFetcher
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localbksp2 = new bksp(this, l, paramInt, paramInt + this.b);
+      localbndz2 = new bndz(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localbksp2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localbndz2);
     return null;
   }
   
-  public bksj a(int paramInt)
+  public bndt a(int paramInt)
   {
     if ((!a()) || (paramInt < 0))
     {
@@ -64,8 +64,8 @@ public class VideoFramesFetcher
       }
       return null;
     }
-    if (this.jdField_a_of_type_Bksf.a(paramInt)) {
-      return this.jdField_a_of_type_Bksf.a(paramInt);
+    if (this.jdField_a_of_type_Bndp.a(paramInt)) {
+      return this.jdField_a_of_type_Bndp.a(paramInt);
     }
     return b(this.b * paramInt);
   }
@@ -96,7 +96,7 @@ public class VideoFramesFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,28 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class bitc
+  implements DialogInterface.OnDismissListener
 {
-  public static final List<bitd> a;
-  public static final int[] a;
+  public bitc(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
   
-  static
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 1, 2, 3, 4, 5 };
-    jdField_a_of_type_JavaUtilList = new ArrayList(Arrays.asList(new bitd[] { new bitd("#ffffff", "#000000"), new bitd("#000000", "#ffffff"), new bitd("#ff596a", "#ffffff"), new bitd("#ffcc00", "#b96300"), new bitd("#64ecde", "#1d70c0"), new bitd("#8173ff", "#ffffff") }));
+    if (this.a.a)
+    {
+      this.a.setResult(1001);
+      QQIndividualityBridgeActivity.a(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bitc
  * JD-Core Version:    0.7.0.1
  */

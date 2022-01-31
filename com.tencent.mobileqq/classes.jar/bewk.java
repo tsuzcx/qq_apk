@@ -1,24 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqmini.sdk.minigame.manager.MiniGameAuthorizeManager.3.1;
+import android.os.Bundle;
 
 public class bewk
-  implements View.OnClickListener
+  extends bewj
 {
-  public bewk(MiniGameAuthorizeManager.3.1 param1) {}
-  
-  public void onClick(View paramView)
+  public bewk(Bundle paramBundle)
   {
-    if (bewh.a(this.a.a.a) != null)
-    {
-      bewh.a(this.a.a.a).b(true);
-      bewh.a(this.a.a.a).dismiss();
+    super(paramBundle);
+  }
+  
+  public String a(String paramString1, String paramString2)
+  {
+    paramString1 = this.a.getBundle(paramString1);
+    if (paramString1 != null) {
+      return paramString1.getString(paramString2);
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bewk
  * JD-Core Version:    0.7.0.1
  */

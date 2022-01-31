@@ -1,33 +1,41 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.widget.MaxHeightScrollView;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.util.FaceInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class bcyp
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class bcyp
+  extends alnl
 {
-  public bcyp(AuthorityActivity paramAuthorityActivity) {}
+  bcyp(bcyo parambcyo) {}
   
-  public void onGlobalLayout()
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
   {
-    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
+    }
+    if ((this.a.b) || (this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramFaceInfo == null)) {}
+    while ((paramFaceInfo.b != this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b) || (!this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a.equals(paramFaceInfo.a))) {
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Alnl != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_Alnl);
+    }
+    if (paramBoolean)
     {
-      i = AuthorityActivity.a(this.a).a();
-      int j = DisplayUtil.getNavigationBarHeight(this.a);
-      AuthorityActivity.a(this.a).setMaxHeight(i - j);
+      paramFaceInfo = this.a.b();
+      if (paramFaceInfo != null)
+      {
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramFaceInfo);
+        return;
+      }
+      this.a.a();
+      return;
     }
-    int i = ((View)this.a.findViewById(2131375493).getParent()).getTop();
-    if (i > 0) {
-      AuthorityActivity.a(this.a).setMaxHeight(AuthorityActivity.a(this.a).a() - i);
-    }
-    AuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcyp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,21 @@
-import Wallet.RedPackGrapInfo;
-import android.animation.Animator;
-import android.support.v7.widget.RecyclerView;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetAvailableListListener;
-import java.util.List;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
-public class agys
-  implements IRedPacket.OnGetAvailableListListener
+public final class agys
+  implements DialogInterface.OnClickListener
 {
-  public agys(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public agys(Context paramContext) {}
   
-  public void OnGetAvailableList(List<RedPackGrapInfo> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-      TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-    }
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null)
-      {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
-        TroopUnAccalimedRedPacketList.a(this.a).setText(ajya.a(2131715807));
-      }
-    }
-    do
-    {
-      return;
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(0);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).setVisibility(8);
-      }
-      if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
-        TroopUnAccalimedRedPacketList.a(this.a).a(paramList);
-      }
-    } while (TroopUnAccalimedRedPacketList.a(this.a) == null);
-    TroopUnAccalimedRedPacketList.a(this.a).start();
+    ((BlessSelectMemberActivity)this.a).f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agys
  * JD-Core Version:    0.7.0.1
  */

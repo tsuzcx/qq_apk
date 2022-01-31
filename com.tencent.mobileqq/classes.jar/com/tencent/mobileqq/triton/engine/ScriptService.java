@@ -4,6 +4,7 @@ import android.os.SystemClock;
 import com.tencent.mobileqq.triton.jni.JNICaller.TTEngine;
 import com.tencent.mobileqq.triton.render.RenderContext;
 import com.tencent.mobileqq.triton.sdk.IQQEnv;
+import com.tencent.mobileqq.triton.sdk.ITTEngine.IListener;
 import com.tencent.mobileqq.triton.touch.TouchEventManager;
 import com.tencent.mobileqq.triton.utils.FpsStabilizer;
 import java.util.concurrent.TimeUnit;
@@ -16,6 +17,7 @@ public class ScriptService
   private static final boolean LOG_LOOPER_TIME_COST = false;
   private static final String TAG = "ScriptService";
   private static long mCurrentDrawCallCount = 0L;
+  private boolean firstFrame;
   private int mDrawCallsSinceLastLiveLog = 0;
   private final TTEngine mEngine;
   private final FpsStabilizer mFpsStabilizer = new FpsStabilizer();
@@ -84,6 +86,9 @@ public class ScriptService
   public void onExit()
   {
     JNICaller.TTEngine.nativeDiposeTTApp(this.mEngine);
+    if (this.mEngine.getEngineListener() != null) {
+      this.mEngine.getEngineListener().onExit();
+    }
   }
   
   public void onPause()
@@ -105,8 +110,11 @@ public class ScriptService
   public void onResume()
   {
     TTLog.i("ScriptService", "============onResume==============");
-    if (this.mJSThread != null) {
+    this.firstFrame = true;
+    if (this.mJSThread != null)
+    {
       this.mJSThread.onResume();
+      this.mEngine.getQQEnv().reportDC04902("game_start", 0L);
     }
   }
   
@@ -120,44 +128,43 @@ public class ScriptService
     this.mFpsStabilizer.setTargetFps(paramInt);
   }
   
-  public boolean onVSync()
+  public boolean onVSync(long paramLong)
   {
-    long l3 = System.nanoTime();
-    long l2 = l3 - this.mLastDrawTimeNanos;
+    System.nanoTime();
+    long l2 = paramLong - this.mLastDrawTimeNanos;
     long l1 = l2;
     if (l2 > FRAME_MAX_DURATION_NANOS) {
       l1 = TimeUnit.SECONDS.toNanos(1L) / this.mEngine.getTargetFPS();
     }
-    this.mLastDrawTimeNanos = l3;
-    this.mTotalDrawTimeNanos = (l1 + this.mTotalDrawTimeNanos);
-    if (this.mFpsStabilizer.shouldDoFrame(this.mTotalDrawTimeNanos))
+    if (this.mFpsStabilizer.shouldDoFrame(paramLong))
     {
-      this.mEngine.getQQEnv().reportDC04902("game_start", 0L);
+      this.mLastDrawTimeNanos = paramLong;
+      this.mEngine.getQQEnv().updateDisplayFrameTime(paramLong, this.firstFrame);
+      this.firstFrame = false;
+      this.mEngine.getQQEnv().reportDC04902("draw_frame", l1 / 1000000L);
       if (this.mEngine.getRenderContext() == null) {
-        break label205;
+        break label188;
       }
     }
-    label205:
+    label188:
     for (TouchEventManager localTouchEventManager = this.mEngine.getRenderContext().getTouchEventManager();; localTouchEventManager = null)
     {
       if (localTouchEventManager != null) {
         localTouchEventManager.flushTouchEvents();
       }
-      JNICaller.TTEngine.nativeOnVSync(this.mEngine, this.mTotalDrawTimeNanos);
+      JNICaller.TTEngine.nativeOnVSync(this.mEngine, paramLong);
       JNICaller.TTEngine.nativeCanvasPresent(this.mEngine);
       mCurrentDrawCallCount = JNICaller.TTEngine.nativeGetCurrentFrameDrawCallCount(this.mEngine);
-      l1 = (System.nanoTime() - l3) / 1000000L;
-      this.mEngine.getQQEnv().reportDC04902("draw_frame", l1);
       this.mVSyncsSinceLastLiveLog += 1;
       this.mDrawCallsSinceLastLiveLog = ((int)(this.mDrawCallsSinceLastLiveLog + mCurrentDrawCallCount));
-      printLiveLog(l3);
+      printLiveLog(paramLong);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.ScriptService
  * JD-Core Version:    0.7.0.1
  */

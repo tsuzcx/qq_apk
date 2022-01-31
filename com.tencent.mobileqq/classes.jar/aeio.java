@@ -1,56 +1,49 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGridItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import java.util.ArrayList;
 
 public class aeio
-  extends auoo
+  extends alox
 {
-  public aeio(AIOImageProviderService paramAIOImageProviderService, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString) {}
+  public aeio(ActivateFriendGrid paramActivateFriendGrid) {}
   
-  public void a(int paramInt, aunw paramaunw)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aeje;
-    if (localObject != null)
-    {
-      if (paramaunw.jdField_a_of_type_Int != 0) {
-        break label139;
-      }
-      ((aeje)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramaunw.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    }
+    int i = 0;
     for (;;)
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aeir;
-      if (localObject != null)
+      if (i < ActivateFriendGrid.a(this.a).size())
       {
-        if (paramaunw.jdField_a_of_type_Int != 0) {
-          break;
+        String str = String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin);
+        if (paramString.equals(str))
+        {
+          paramString = bdbt.b(ActivateFriendGrid.a(this.a), str, false);
+          ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(paramString);
         }
-        ((aeir)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramaunw.jdField_a_of_type_Boolean);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString);
       }
-      return;
-      label139:
-      ((aeje)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramaunw.jdField_a_of_type_Aunr.jdField_a_of_type_JavaLangString + ", desc:" + paramaunw.jdField_a_of_type_Aunr.b, paramaunw.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
+      else
+      {
+        return;
+      }
+      i += 1;
     }
-    ((aeir)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramaunw.jdField_a_of_type_Aunr.jdField_a_of_type_JavaLangString + ", desc:" + paramaunw.jdField_a_of_type_Aunr.b, paramaunw.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, "I:E");
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aeje;
-    if (localObject != null) {
-      ((aeje)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
-    }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_Aeir;
-    if (localObject != null) {
-      ((aeir)localObject).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
+    int i = 0;
+    while (i < ActivateFriendGrid.a(this.a).size())
+    {
+      String str = bdbt.j(ActivateFriendGrid.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin));
+      ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(str);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeio
  * JD-Core Version:    0.7.0.1
  */

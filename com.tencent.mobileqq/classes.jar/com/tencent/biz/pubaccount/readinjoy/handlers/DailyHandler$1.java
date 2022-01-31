@@ -3,15 +3,15 @@ package com.tencent.biz.pubaccount.readinjoy.handlers;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import nol;
+import nrt;
 import org.json.JSONObject;
-import oxy;
-import qao;
+import pdd;
+import qkk;
 
 public class DailyHandler$1
   implements Runnable
 {
-  public DailyHandler$1(oxy paramoxy, ArrayList paramArrayList) {}
+  public DailyHandler$1(pdd parampdd, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -27,12 +27,12 @@ public class DailyHandler$1
           j = this.a.size() - 1;
           if (j >= i)
           {
-            localObject2 = (qao)this.a.get(j);
-            if ((localObject2 == null) || (((qao)localObject2).a == null)) {
+            localObject2 = (qkk)this.a.get(j);
+            if ((localObject2 == null) || (((qkk)localObject2).a == null)) {
               break label220;
             }
-            ((StringBuilder)localObject1).append(((qao)localObject2).a.mArticleID + "_");
-            ((StringBuilder)localObject1).append(((qao)localObject2).a.mJumpType);
+            ((StringBuilder)localObject1).append(((qkk)localObject2).a.mArticleID + "_");
+            ((StringBuilder)localObject1).append(((qkk)localObject2).a.mJumpType);
             if (j == i) {
               break label220;
             }
@@ -42,7 +42,7 @@ public class DailyHandler$1
           localObject1 = ((StringBuilder)localObject1).toString();
           Object localObject2 = new JSONObject();
           ((JSONObject)localObject2).put("epList", localObject1);
-          nol.a(null, null, "0X8009CCA", "0X8009CCA", 0, 0, "", "", "", ((JSONObject)localObject2).toString(), false);
+          nrt.a(null, null, "0X8009CCA", "0X8009CCA", 0, 0, "", "", "", ((JSONObject)localObject2).toString(), false);
           this.a.clear();
           return;
         }
@@ -61,7 +61,7 @@ public class DailyHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.handlers.DailyHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,98 @@
-import android.util.Log;
-import com.tencent.aekit.openrender.internal.Frame;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class lrg
 {
-  private int jdField_a_of_type_Int;
-  public Frame a;
-  private String jdField_a_of_type_JavaLangString = "RefFrame-" + Integer.toHexString(hashCode());
-  public List<lrh> a;
+  private static lrg jdField_a_of_type_Lrg;
+  int jdField_a_of_type_Int = 0;
   
-  private lrg(Frame paramFrame)
+  public static lrg a()
   {
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = paramFrame;
-  }
-  
-  private lrg(Frame paramFrame, List<lrh> paramList)
-  {
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = paramFrame;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public static lrg a(Frame paramFrame)
-  {
-    return new lrg(paramFrame);
-  }
-  
-  public static lrg a(Frame paramFrame, List<lrh> paramList)
-  {
-    return new lrg(paramFrame, paramList);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.unlock();
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_Int == 0)
+    try
     {
-      b();
-      return;
+      lrg locallrg;
+      if (jdField_a_of_type_Lrg != null)
+      {
+        locallrg = jdField_a_of_type_Lrg;
+        return locallrg;
+      }
+      return null;
     }
-    b(1);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int += paramInt;
+    finally
+    {
+      try
+      {
+        jdField_a_of_type_Lrg = new lrg();
+        locallrg = jdField_a_of_type_Lrg;
+        return locallrg;
+      }
+      catch (Exception localException) {}
+      localObject = finally;
+    }
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty());
+    boolean bool = false;
+    if (lim.a(BaseApplicationImpl.getContext()).a("sharp/EffectFilterDeviceConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
   }
   
-  void b(int paramInt)
+  public boolean b()
   {
-    if (paramInt > this.jdField_a_of_type_Int) {
-      Log.e(this.jdField_a_of_type_JavaLangString, "unlock: count=" + paramInt + ", ref=" + this.jdField_a_of_type_Int);
+    boolean bool = false;
+    if (lim.a(BaseApplicationImpl.getContext()).a("sharp/qavGestureConfig/isClose", 0) == 0) {
+      bool = true;
     }
-    do
-    {
-      return;
-      this.jdField_a_of_type_Int -= paramInt;
-    } while (this.jdField_a_of_type_Int != 0);
-    b();
+    return bool;
+  }
+  
+  public boolean c()
+  {
+    boolean bool = false;
+    if (lim.a(BaseApplicationImpl.getContext()).a("sharp/qavRedbagConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean d()
+  {
+    boolean bool = false;
+    if (lim.a(BaseApplicationImpl.getContext()).a("sharp/qavScreenRecoder/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean e()
+  {
+    boolean bool = false;
+    if (lim.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/isClose", 0) == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public boolean f()
+  {
+    return lim.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDeviceConfig/enable", 0) == 1;
+  }
+  
+  public boolean g()
+  {
+    return lim.a(BaseApplicationImpl.getContext()).a("sharp/CameraFocusMethod/isUseSelfDev", 0) == 1;
+  }
+  
+  public boolean h()
+  {
+    return 1 == lim.a(BaseApplicationImpl.getContext()).a("sharp/EffectFaceDetectInversion/Inversion", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lrg
  * JD-Core Version:    0.7.0.1
  */

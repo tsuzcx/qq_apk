@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bjup;
+import bmfz;
 import java.io.File;
 
 public class EditTakePhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new bjup();
+  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new bmfz();
   public final double a;
   public final int a;
   @NonNull
@@ -92,7 +92,7 @@ public class EditTakePhotoSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditTakePhotoSource
  * JD-Core Version:    0.7.0.1
  */

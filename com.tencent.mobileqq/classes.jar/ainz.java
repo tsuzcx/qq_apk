@@ -1,25 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.MayKnowRecommend;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ainz
+class ainz
+  implements DialogInterface.OnClickListener
 {
-  public int a = 1;
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public MayKnowRecommend a;
-  public String a;
-  public boolean a;
-  public TextView b;
-  public String b;
-  public TextView c;
-  public TextView d;
+  ainz(ainy paramainy) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ainz
  * JD-Core Version:    0.7.0.1
  */

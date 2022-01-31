@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.thumbnail;
 
-import azuh;
-import azul;
-import azun;
+import bbsq;
+import bbsu;
+import bbsw;
 
 public class TroopFileThumbnailMgr$1
   implements Runnable
 {
-  public TroopFileThumbnailMgr$1(azun paramazun) {}
+  public TroopFileThumbnailMgr$1(bbsw parambbsw) {}
   
   public void run()
   {
-    azun.a(this.this$0).b();
-    azun.a(this.this$0).b();
+    bbsw.a(this.this$0).b();
+    bbsw.a(this.this$0).b();
   }
 }
 

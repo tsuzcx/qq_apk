@@ -1,18 +1,23 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
 
-public final class svt
+public class svt
 {
-  public StoryVideoItem a;
-  public StoryVideoItem b;
+  private static int a;
   
-  public String toString()
+  public static void a()
   {
-    return "{mFakeStoryVideoItem=" + this.a + ", mSucStoryVideoItem=" + this.b + '}';
+    a = AbstractGifImage.DoAccumulativeRunnable.DELAY;
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
+  }
+  
+  public static void b()
+  {
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     svt
  * JD-Core Version:    0.7.0.1
  */

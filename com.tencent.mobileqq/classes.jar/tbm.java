@@ -1,21 +1,26 @@
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+
 public class tbm
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  public tbm(WSHomeFragment paramWSHomeFragment) {}
   
-  public tbm(int paramInt, String paramString1, String paramString2, String paramString3)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
+    {
+      tlo.d("WSHomeFragment", str + ", bundle: " + paramBundle.toString());
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tbm
  * JD-Core Version:    0.7.0.1
  */

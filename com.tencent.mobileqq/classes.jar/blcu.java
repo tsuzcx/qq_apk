@@ -1,18 +1,21 @@
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
+
 public class blcu
+  implements bleg
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public int c;
-  public int d;
-  public int e;
+  public blcu(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
+  
+  public void a(int paramInt)
+  {
+    AEVideoShelfEditFragment.c(this.a, AEVideoShelfEditFragment.c(this.a));
+    AEVideoShelfEditFragment.c(this.a, paramInt);
+    AEVideoShelfEditFragment.a(this.a, paramInt);
+    AEVideoShelfEditFragment.d(this.a, paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blcu
  * JD-Core Version:    0.7.0.1
  */

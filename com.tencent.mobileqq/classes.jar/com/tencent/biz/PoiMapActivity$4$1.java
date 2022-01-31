@@ -4,12 +4,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.LinearLayout;
-import mwm;
+import mzf;
 
 public class PoiMapActivity$4$1
   implements Runnable
 {
-  public PoiMapActivity$4$1(mwm parammwm) {}
+  public PoiMapActivity$4$1(mzf parammzf) {}
   
   public void run()
   {

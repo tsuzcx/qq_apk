@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import bbbp;
+import bdaj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class TroopReportor$1
@@ -10,12 +10,12 @@ public final class TroopReportor$1
   
   public void run()
   {
-    bbbp.a("Grp_edu", this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, new String[] { this.jdField_a_of_type_ArrayOfJavaLangString[0], bbbp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), this.jdField_a_of_type_ArrayOfJavaLangString[2], this.jdField_a_of_type_ArrayOfJavaLangString[3] });
+    bdaj.a("Grp_edu", this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, new String[] { this.jdField_a_of_type_ArrayOfJavaLangString[0], bdaj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), this.jdField_a_of_type_ArrayOfJavaLangString[2], this.jdField_a_of_type_ArrayOfJavaLangString[3] });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.TroopReportor.1
  * JD-Core Version:    0.7.0.1
  */

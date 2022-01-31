@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ark;
 
-import alsy;
+import anjr;
 import java.util.HashMap;
 
 public class ArkAppCenterEvent$Observers
-  extends HashMap<String, alsy>
+  extends HashMap<String, anjr>
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAppCenterEvent.Observers
  * JD-Core Version:    0.7.0.1
  */

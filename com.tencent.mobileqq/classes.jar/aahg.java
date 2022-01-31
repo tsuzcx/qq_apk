@@ -1,30 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.ad.tangram.ark.AdArkAdapter.Callback;
 
-public class aahg
-  implements bfph
+class aahg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aahg(AddFriendVerifyActivity paramAddFriendVerifyActivity, bfpc parambfpc) {}
+  aahg(aahe paramaahe, AdArkAdapter.Callback paramCallback) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onGlobalLayout()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1001));
-      continue;
-      agqq.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1);
+    if (this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback != null) {
+      this.jdField_a_of_type_ComTencentAdTangramArkAdArkAdapter$Callback.onGlobalLayout(aahe.a(this.jdField_a_of_type_Aahe));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahg
  * JD-Core Version:    0.7.0.1
  */

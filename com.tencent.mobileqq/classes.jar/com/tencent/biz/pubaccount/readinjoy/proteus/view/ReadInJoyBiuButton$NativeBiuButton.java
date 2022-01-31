@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.proteus.view;
 
 import android.content.Context;
 import android.widget.ImageView;
-import pkq;
+import pqy;
 
 public class ReadInJoyBiuButton$NativeBiuButton
   extends ImageView
 {
-  pkq a;
+  pqy a;
   
   public ReadInJoyBiuButton$NativeBiuButton(Context paramContext)
   {
@@ -30,14 +30,14 @@ public class ReadInJoyBiuButton$NativeBiuButton
     super.onDetachedFromWindow();
   }
   
-  public void setOnAttachedListener(pkq parampkq)
+  public void setOnAttachedListener(pqy parampqy)
   {
-    this.a = parampkq;
+    this.a = parampqy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyBiuButton.NativeBiuButton
  * JD-Core Version:    0.7.0.1
  */

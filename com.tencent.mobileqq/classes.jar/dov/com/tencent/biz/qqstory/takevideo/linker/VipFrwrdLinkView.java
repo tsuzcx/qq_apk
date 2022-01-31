@@ -6,9 +6,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import teo;
-import tep;
-import ved;
+import utg;
+import uth;
+import wsv;
 
 public class VipFrwrdLinkView
   extends FrameLayout
@@ -17,20 +17,20 @@ public class VipFrwrdLinkView
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private teo jdField_a_of_type_Teo;
+  private utg jdField_a_of_type_Utg;
   
   public VipFrwrdLinkView(Context paramContext)
   {
     super(paramContext);
-    inflate(paramContext, 2131559012, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365499));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365496));
+    inflate(paramContext, 2131559051, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365584));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365581));
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
   void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131699526, new Object[] { paramString1 }));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131699881, new Object[] { paramString1 }));
     if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (paramString2 != null)) {
       paramString1 = URLDrawable.URLDrawableOptions.obtain();
     }
@@ -38,7 +38,7 @@ public class VipFrwrdLinkView
     {
       this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(paramString2, paramString1);
       this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      ved.b(getClass().getName(), "setIconURlDrawable:" + paramString2);
+      wsv.b(getClass().getName(), "setIconURlDrawable:" + paramString2);
       return;
     }
     catch (IllegalArgumentException paramString1)
@@ -47,18 +47,18 @@ public class VipFrwrdLinkView
     }
   }
   
-  public void setLinkInfo(teo paramteo)
+  public void setLinkInfo(utg paramutg)
   {
-    this.jdField_a_of_type_Teo = paramteo;
-    if (this.jdField_a_of_type_Teo.a == null) {
+    this.jdField_a_of_type_Utg = paramutg;
+    if (this.jdField_a_of_type_Utg.a == null) {
       return;
     }
-    a(this.jdField_a_of_type_Teo.a.f, this.jdField_a_of_type_Teo.a.g);
+    a(this.jdField_a_of_type_Utg.a.f, this.jdField_a_of_type_Utg.a.g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.linker.VipFrwrdLinkView
  * JD-Core Version:    0.7.0.1
  */

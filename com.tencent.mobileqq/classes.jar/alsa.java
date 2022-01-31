@@ -1,38 +1,53 @@
-import java.util.LinkedHashMap;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.msf.service.protocol.security.CustomSigContent;
+import com.tencent.msf.service.protocol.security.RespondCustomSig;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.observer.AccountObserver;
 
 public class alsa
+  extends AccountObserver
 {
-  public String a;
-  public LinkedHashMap<String, String> a;
-  public String b = "";
-  public String c = "1.0.0.1";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
-  public String h = "";
-  public String i = "";
+  public alsa(MessageHandler paramMessageHandler, String paramString) {}
   
-  public alsa()
+  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (!(paramObject instanceof alsa)) {}
-    do
+    if ((paramBoolean) && (paramHashMap != null))
     {
-      return false;
-      paramObject = (alsa)paramObject;
-    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.b.equals(paramObject.b)) || (!this.h.equals(paramObject.h)) || (!this.jdField_a_of_type_JavaUtilLinkedHashMap.equals(paramObject.jdField_a_of_type_JavaUtilLinkedHashMap)));
-    return true;
+      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
+      if ((paramHashMap == null) || (paramHashMap.SigList == null)) {
+        return;
+      }
+      int i = 0;
+      while (i < paramHashMap.SigList.size())
+      {
+        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
+        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
+        {
+          localObject = new String(((CustomSigContent)localObject).SigContent);
+          OpenID localOpenID = new OpenID();
+          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
+          localOpenID.openID = ((String)localObject);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a().b(localOpenID);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(this.jdField_a_of_type_JavaLangString, localOpenID);
+          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.notifyUI(1, true, localOpenID);
+        }
+        i += 1;
+      }
+    }
+    if (paramBoolean) {}
+    for (paramHashMap = "0";; paramHashMap = "1")
+    {
+      bfdq.a().a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.app.getAccount(), "", this.jdField_a_of_type_JavaLangString, "41", "19", paramHashMap, "", "", "4", false);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alsa
  * JD-Core Version:    0.7.0.1
  */

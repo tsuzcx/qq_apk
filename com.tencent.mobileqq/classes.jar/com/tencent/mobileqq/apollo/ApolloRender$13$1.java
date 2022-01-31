@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.apollo;
 
-import aisy;
+import akkk;
 
 public class ApolloRender$13$1
   extends IApolloRunnableTask
 {
-  public ApolloRender$13$1(aisy paramaisy, int paramInt1, int paramInt2) {}
+  public ApolloRender$13$1(akkk paramakkk, int paramInt1, int paramInt2) {}
   
   public String a()
   {
@@ -19,7 +19,7 @@ public class ApolloRender$13$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.13.1
  * JD-Core Version:    0.7.0.1
  */

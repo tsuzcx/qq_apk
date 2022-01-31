@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.report;
 
-import betc;
-import beyq;
-import beyr;
+import bgxl;
+import bgxm;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -18,32 +18,32 @@ public final class MiniAppReportManager2$2
     {
       try
       {
-        beyq.a(false);
+        bgxl.a(false);
         long l = System.currentTimeMillis();
-        Iterator localIterator = beyq.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+        Iterator localIterator = bgxl.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
         if (localIterator.hasNext())
         {
           Object localObject = (Map.Entry)localIterator.next();
           String str = (String)((Map.Entry)localObject).getKey();
-          localObject = (beyr)((Map.Entry)localObject).getValue();
-          if ((((beyr)localObject).jdField_d_of_type_Int == 0) && (l - ((beyr)localObject).jdField_d_of_type_Long > beyq.jdField_a_of_type_Long)) {
-            beyq.a((beyr)localObject);
+          localObject = (bgxm)((Map.Entry)localObject).getValue();
+          if ((((bgxm)localObject).jdField_d_of_type_Int == 0) && (l - ((bgxm)localObject).jdField_d_of_type_Long > bgxl.jdField_a_of_type_Long)) {
+            bgxl.a((bgxm)localObject);
           }
-          if (((beyr)localObject).jdField_d_of_type_Int == 0) {
+          if (((bgxm)localObject).jdField_d_of_type_Int == 0) {
             i = 1;
           }
         }
         else
         {
           if (i != 0) {
-            beyq.b();
+            bgxl.b();
           }
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        betc.d("MiniAppReportManager2", "", localThrowable);
+        QMLog.e("MiniAppReportManager2", "", localThrowable);
         return;
       }
     }
@@ -51,7 +51,7 @@ public final class MiniAppReportManager2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniAppReportManager2.2
  * JD-Core Version:    0.7.0.1
  */

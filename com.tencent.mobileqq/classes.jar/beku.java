@@ -1,72 +1,49 @@
-import android.text.TextUtils;
-import android.util.Log;
-import com.tencent.qqmini.sdk.manager.EngineVersion;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.widget.DraggableGridView;
 
 public class beku
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public static bekt a;
-  public static String a = "1.2.0";
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public static boolean a(String paramString)
+  public beku(DraggableGridView paramDraggableGridView, int paramInt1, int paramInt2)
   {
-    String str = a;
-    return a(paramString, new String[] { "libtv8rt.so", "libflutter.so", "libapp.so" }, str);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  public static boolean a(String paramString1, String[] paramArrayOfString, String paramString2)
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(paramString1))
-    {
-      Log.w("Tissue", "basePath is empty");
-      return false;
+    if (DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView) != null) {
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(paramView, this.jdField_a_of_type_Int, this.b);
     }
-    Object localObject = new File(paramString1);
-    if ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()))
-    {
-      Log.w("Tissue", localObject + " not exists or not a dir");
-      return false;
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if (DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView) != null) {
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, this.b);
     }
-    localObject = EngineVersion.a(((File)localObject).getName());
-    betc.b("Tissue", "currentVersion:" + localObject + ",requiredVersion:" + paramString2);
-    if ((localObject != null) && (EngineVersion.a(((EngineVersion)localObject).b, paramString2) >= 0)) {}
-    for (boolean bool = true;; bool = false)
+    if ((DraggableGridView.c(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)) && (!DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)))
     {
-      if (!bool)
-      {
-        betc.b("Tissue", "versionCheck:" + bool);
-        return false;
-      }
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramString2 = new File(paramString1, paramArrayOfString[i]);
-        if (!paramString2.exists())
-        {
-          Log.w("Tissue", paramString2.getAbsolutePath() + " not exists");
-          return false;
-        }
-        if (!paramString2.isFile())
-        {
-          Log.w("Tissue", paramString2.getAbsolutePath() + " not a file");
-          return false;
-        }
-        if (!paramString2.canRead())
-        {
-          Log.w("Tissue", paramString2.getAbsolutePath() + " not readable");
-          return false;
-        }
-        i += 1;
-      }
-      Log.i("Tissue", paramString1 + " is fine");
-      return true;
+      this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.a((View)paramView.getParent(), paramView);
+      paramView.setVisibility(4);
+      paramView.setPressed(false);
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, this.jdField_a_of_type_Int);
+      DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, this.b);
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x = DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView);
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y = DraggableGridView.c(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView);
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, true);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beku
  * JD-Core Version:    0.7.0.1
  */

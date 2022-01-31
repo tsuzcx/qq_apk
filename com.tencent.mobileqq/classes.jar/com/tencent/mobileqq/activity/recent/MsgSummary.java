@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahqt;
+import ajic;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -9,10 +9,10 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
-import aykk;
+import baig;
 import com.tencent.qphone.base.util.QLog;
 
-@ahqt
+@ajic
 public class MsgSummary
 {
   public static final int EMOJI_DEFAULT = 0;
@@ -59,7 +59,7 @@ public class MsgSummary
         if (this.nState != 2) {
           continue;
         }
-        paramContext = ((Resources)localObject1).getDrawable(2130848514);
+        paramContext = ((Resources)localObject1).getDrawable(2130848942);
         i = j + "F ".length();
         if (paramContext != null)
         {
@@ -81,7 +81,7 @@ public class MsgSummary
       paramContext = localStringBuffer;
       if (this.nState == 1)
       {
-        paramContext = ((Resources)localObject1).getDrawable(2130848515);
+        paramContext = ((Resources)localObject1).getDrawable(2130848943);
         i = "S ".length();
         i = j + i;
         continue;
@@ -114,7 +114,7 @@ public class MsgSummary
             try
             {
               if (this.nState == 2) {
-                paramContext = ((Resources)localObject1).getDrawable(2130848514);
+                paramContext = ((Resources)localObject1).getDrawable(2130848942);
               }
               for (;;)
               {
@@ -135,7 +135,7 @@ public class MsgSummary
                 break label326;
                 paramContext = localObject2;
                 if (this.nState == 1) {
-                  paramContext = ((Resources)localObject1).getDrawable(2130848515);
+                  paramContext = ((Resources)localObject1).getDrawable(2130848943);
                 }
               }
             }
@@ -182,15 +182,15 @@ public class MsgSummary
       {
         if (this.nState == 2)
         {
-          localObject1 = localResources.getDrawable(2130848514);
+          localObject1 = localResources.getDrawable(2130848942);
           if (paramInt <= 0) {
             break label618;
           }
-          paramInt = paramContext.getResources().getColor(2131166955);
-          if (!(this.strContent instanceof aykk)) {
+          paramInt = paramContext.getResources().getColor(2131167006);
+          if (!(this.strContent instanceof baig)) {
             break label369;
           }
-          paramContext = (aykk)this.strContent;
+          paramContext = (baig)this.strContent;
           localObject3 = (ImageSpan[])paramContext.getSpans(0, 1, ImageSpan.class);
           if (localObject3.length > 0) {
             paramContext.removeSpan(localObject3[0]);
@@ -199,7 +199,7 @@ public class MsgSummary
           if (this.nState != 2) {
             break label332;
           }
-          paramContext = ((aykk)localObject3).a("F ", true, new int[0]);
+          paramContext = ((baig)localObject3).a("F ", true, new int[0]);
           if (this.suffix == null) {
             break label615;
           }
@@ -229,7 +229,7 @@ public class MsgSummary
         if (this.nState != 1) {
           continue;
         }
-        localObject1 = localResources.getDrawable(2130848515);
+        localObject1 = localResources.getDrawable(2130848943);
         continue;
         localObject2 = null;
       }
@@ -245,7 +245,7 @@ public class MsgSummary
       paramContext = (Context)localObject3;
       if (this.nState == 1)
       {
-        paramContext = ((aykk)localObject3).a("S ", true, new int[0]);
+        paramContext = ((baig)localObject3).a("S ", true, new int[0]);
         continue;
         label358:
         paramInt = 0;
@@ -344,7 +344,7 @@ public class MsgSummary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.MsgSummary
  * JD-Core Version:    0.7.0.1
  */

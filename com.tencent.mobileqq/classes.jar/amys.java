@@ -1,104 +1,53 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class amys
 {
-  @NonNull
-  public final amyt a;
-  @NonNull
-  public final amyt b;
-  @NonNull
-  public final amyt c;
-  
-  private amys()
-  {
-    this(a(null, ""), a(null, ""), a(null, ""));
-  }
-  
-  private amys(amyt paramamyt1, amyt paramamyt2, amyt paramamyt3)
-  {
-    this.a = paramamyt1;
-    this.b = paramamyt2;
-    this.c = paramamyt3;
-    if (QLog.isColorLevel()) {
-      QLog.d("KC.ConfigProcessor", 1, toString());
-    }
-  }
-  
-  @NonNull
-  public static amys a()
-  {
-    return new amys();
-  }
-  
-  @NonNull
-  public static amys a(@Nullable String paramString)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = new JSONObject(paramString);
-        return new amys(a(paramString, "AIO"), a(paramString, "group"), a(paramString, "download"));
-      }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        QLog.e("KC.ConfigProcessor", 1, "json parse error:" + paramString);
-        paramString = null;
-      }
-    }
-  }
-  
-  @NonNull
-  private static amyt a(JSONObject paramJSONObject, String paramString)
-  {
-    boolean bool = false;
-    if ((paramJSONObject != null) && (!TextUtils.isEmpty(paramString))) {
-      try
-      {
-        Object localObject = paramJSONObject.optJSONObject(paramString);
-        paramJSONObject = ((JSONObject)localObject).optString("content", null);
-        JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("keyWords");
-        localObject = ((JSONObject)localObject).optJSONArray("actionUrls");
-        String[] arrayOfString1 = new String[localJSONArray.length()];
-        String[] arrayOfString2 = new String[localJSONArray.length()];
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          arrayOfString1[i] = localJSONArray.optString(i, null);
-          arrayOfString2[i] = ((JSONArray)localObject).optString(i, null);
-          i += 1;
-        }
-        if (paramJSONObject != null) {
-          bool = true;
-        }
-        paramJSONObject = new amyt(paramString, bool, paramJSONObject, arrayOfString1, arrayOfString2);
-        return paramJSONObject;
-      }
-      catch (Exception paramJSONObject)
-      {
-        QLog.e("KC.ConfigProcessor", 1, "json parse error:" + paramJSONObject);
-      }
-    }
-    return new amyt();
-  }
+  public double a;
+  public int a;
+  public amyo a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g = "";
   
   public String toString()
   {
-    return "KingCardConfig{aio=" + this.a + ", group=" + this.b + ", download=" + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder().append("result:{sclass:");
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      str = this.jdField_a_of_type_JavaLangString;
+      localStringBuilder = localStringBuilder.append(str).append(",").append("sItemId:");
+      if (this.jdField_a_of_type_Amyo == null) {
+        break label230;
+      }
+      str = this.jdField_a_of_type_Amyo.jdField_a_of_type_JavaLangString;
+      label56:
+      localStringBuilder = localStringBuilder.append(str).append(",").append("dProb:").append(this.jdField_a_of_type_Double).append(",").append("sTitle:").append(this.d).append(",").append("sWiki:").append(this.e).append(",").append("sJumpUrl:").append(this.f).append(",").append("sCdbRes:");
+      if (this.jdField_a_of_type_ArrayOfByte == null) {
+        break label236;
+      }
+    }
+    label230:
+    label236:
+    for (String str = new String(this.jdField_a_of_type_ArrayOfByte);; str = "")
+    {
+      return str + "," + "isAutoJump:" + this.jdField_a_of_type_Boolean + "," + "iNeedCheckLBS:" + this.c + "," + "imageId:" + this.g + "}";
+      str = "";
+      break;
+      str = "";
+      break label56;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amys
  * JD-Core Version:    0.7.0.1
  */

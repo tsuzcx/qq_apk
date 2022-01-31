@@ -1,47 +1,38 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import com.tencent.biz.qqcircle.widgets.QCircleExpandableTextView;
+import com.tencent.biz.subscribe.widget.textview.AsyncRichTextView;
 
-public abstract class uag
+public class uag
+  extends Animation
 {
-  public abstract Activity a();
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
   
-  public abstract OpenPlayerBuilder.Data a();
+  private uag(QCircleExpandableTextView paramQCircleExpandableTextView, int paramInt1, int paramInt2)
+  {
+    setDuration(paramQCircleExpandableTextView.b);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
   
-  public abstract XViewPager a();
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    super.applyTransformation(paramFloat, paramTransformation);
+    int i = (int)((this.b - this.jdField_a_of_type_Int) * paramFloat + this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.a.setMaxHeight(i - this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.e);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.getLayoutParams().height = i;
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleExpandableTextView.requestLayout();
+  }
   
-  public abstract String a(String paramString);
-  
-  public abstract twl a();
-  
-  public abstract two a();
-  
-  public abstract tzy a();
-  
-  public abstract uar a();
-  
-  public abstract void a();
-  
-  public abstract void a(Intent paramIntent);
-  
-  public abstract void a(ssv paramssv);
-  
-  public abstract void a(tyw paramtyw);
-  
-  public abstract void a(uaz paramuaz);
-  
-  public abstract boolean a();
-  
-  public abstract void b(ssv paramssv);
-  
-  public abstract void b(tyw paramtyw);
-  
-  public abstract boolean b();
+  public boolean willChangeBounds()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uag
  * JD-Core Version:    0.7.0.1
  */

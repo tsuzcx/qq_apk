@@ -1,19 +1,19 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
-import betc;
-import bfau;
+import bgzp;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.SenderListener;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class ChannelProxyDefault$4
   implements MiniAppProxy.SenderListener
 {
-  ChannelProxyDefault$4(ChannelProxyDefault paramChannelProxyDefault, bfau parambfau, AsyncResult paramAsyncResult) {}
+  ChannelProxyDefault$4(ChannelProxyDefault paramChannelProxyDefault, bgzp parambgzp, AsyncResult paramAsyncResult) {}
   
   public boolean onReply(int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    betc.c("ChannelProxyDefault", "recvData " + this.val$request + ",retCode = " + paramInt);
+    QMLog.w("ChannelProxyDefault", "recvData " + this.val$request + ",retCode = " + paramInt);
     if (paramInt == 0) {
       if (this.val$result != null)
       {
@@ -43,7 +43,7 @@ class ChannelProxyDefault$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.ChannelProxyDefault.4
  * JD-Core Version:    0.7.0.1
  */

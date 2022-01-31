@@ -1,37 +1,22 @@
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+import org.json.JSONObject;
 
-public class aksa
-  implements Comparator<String>
+class aksa
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  private aksa(MsgLruCache paramMsgLruCache) {}
+  aksa(akry paramakry, JSONObject paramJSONObject, aksy paramaksy) {}
   
-  public int a(String paramString1, String paramString2)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    paramString1 = this.a.getOriginal(paramString1);
-    paramString2 = this.a.getOriginal(paramString2);
-    if ((paramString1 == null) || (paramString1.isEmpty())) {
-      return 1;
+    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
+      akry.a(this.jdField_a_of_type_Akry, this.jdField_a_of_type_Aksy, this.jdField_a_of_type_OrgJsonJSONObject);
     }
-    if ((paramString2 == null) || (paramString2.isEmpty())) {
-      return -1;
-    }
-    long l1 = ((MessageRecord)paramString1.get(paramString1.size() - 1)).time;
-    long l2 = ((MessageRecord)paramString2.get(paramString2.size() - 1)).time;
-    if (l1 > l2) {
-      return 1;
-    }
-    if (l1 == l2) {
-      return 0;
-    }
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksa
  * JD-Core Version:    0.7.0.1
  */

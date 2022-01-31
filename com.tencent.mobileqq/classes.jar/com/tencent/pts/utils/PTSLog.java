@@ -64,7 +64,7 @@ public class PTSLog
     if (sPTSLogger != null) {
       return sPTSLogger.isColorLevel();
     }
-    return true;
+    return false;
   }
   
   public static boolean isDebug()
@@ -72,7 +72,7 @@ public class PTSLog
     if (sPTSLogger != null) {
       return sPTSLogger.isDebug();
     }
-    return true;
+    return false;
   }
   
   public static void registerLogger(PTSLogger paramPTSLogger)
@@ -108,7 +108,7 @@ public class PTSLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.utils.PTSLog
  * JD-Core Version:    0.7.0.1
  */

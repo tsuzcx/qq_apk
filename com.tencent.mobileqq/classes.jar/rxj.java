@@ -1,33 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
 
-public class rxj
-  implements DialogInterface.OnDismissListener
+public final class rxj
+  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.EntranceIconInfo>
 {
-  public rxj(BridgeModule paramBridgeModule, String paramString) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo a(Parcel paramParcel)
   {
-    paramDialogInterface = new JSONObject();
-    try
-    {
-      paramDialogInterface.put("type", -1);
-      paramDialogInterface.put("action", "close");
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramDialogInterface);
-      }
-      return;
-    }
-    catch (JSONException paramDialogInterface) {}
+    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo(paramParcel);
+  }
+  
+  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo[] a(int paramInt)
+  {
+    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxj
  * JD-Core Version:    0.7.0.1
  */

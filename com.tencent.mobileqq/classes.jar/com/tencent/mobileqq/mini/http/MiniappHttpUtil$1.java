@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.mini.http;
 
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.Headers;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
-import java.util.Map;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 final class MiniappHttpUtil$1
   implements Callback
@@ -16,7 +15,7 @@ final class MiniappHttpUtil$1
   
   MiniappHttpUtil$1(String paramString, HttpCallBack paramHttpCallBack) {}
   
-  public void onFailure(Request paramRequest, IOException paramIOException)
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
     QLog.e("MiniappHttpUtil", 1, "httpConnect err url:" + this.val$url, paramIOException);
     if ("Canceled".equals(paramIOException.getLocalizedMessage()))
@@ -28,20 +27,20 @@ final class MiniappHttpUtil$1
     this.val$callBack.httpCallBack(MiniappHttpUtil.getRetCodeFrom(paramIOException, -1), null, null);
   }
   
-  public void onResponse(Response paramResponse)
+  public void onResponse(Call paramCall, Response paramResponse)
   {
     if (this.canceled) {
       return;
     }
     int i = paramResponse.code();
-    Map localMap = paramResponse.headers().toMultimap();
-    this.val$callBack.headersReceived(i, localMap);
-    this.val$callBack.httpCallBack(i, paramResponse.body().bytes(), localMap);
+    paramCall = paramResponse.headers().toMultimap();
+    this.val$callBack.headersReceived(i, paramCall);
+    this.val$callBack.httpCallBack(i, paramResponse.body().bytes(), paramCall);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.http.MiniappHttpUtil.1
  * JD-Core Version:    0.7.0.1
  */

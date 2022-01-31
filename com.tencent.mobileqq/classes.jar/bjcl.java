@@ -1,42 +1,121 @@
-import com.tencent.common.app.AppInterface;
+import android.view.View;
+import android.view.ViewGroup;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.CaptureTemplateManager.2;
 
 public class bjcl
-  implements aysc
 {
-  public bjcl(CaptureTemplateManager.2 param2) {}
+  private static bjcl a;
+  public bizd<String> a;
+  public bizd<String> b = new bizd(10);
+  public bizd<String> c = new bizd(10);
   
-  public void onResp(aysz paramaysz)
+  private bjcl()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CaptureTemplateManager", 2, "onResp url: " + this.a.c + " resultcode: " + paramaysz.c);
-    }
-    boolean bool = false;
-    if (paramaysz.jdField_a_of_type_Int == 0)
+    this.jdField_a_of_type_Bizd = new bizd(5);
+  }
+  
+  public static bjcl a()
+  {
+    try
     {
-      bool = bjck.a(this.a.this$0, this.a.a, this.a.b);
-      if (bool)
-      {
-        ayxs localayxs = (ayxs)this.a.this$0.a().getManager(193);
-        if (localayxs.a()) {
-          localayxs.a(this.a.c, paramaysz.jdField_a_of_type_Long);
-        }
+      if (jdField_a_of_type_Bjcl == null) {
+        jdField_a_of_type_Bjcl = new bjcl();
       }
+      bjcl localbjcl = jdField_a_of_type_Bjcl;
+      return localbjcl;
     }
-    if (!bool) {
-      bjck.a(this.a.this$0, this.a.a);
+    finally {}
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("activityNameQueue:\n");
+    if (this.jdField_a_of_type_Bizd != null) {
+      localStringBuilder.append(this.jdField_a_of_type_Bizd).append("\n");
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("CaptureTemplateManager", 2, "onResp url: " + this.a.c + " downloadSuccess " + bool);
+    localStringBuilder.append(" \n activityEventQueue:\n");
+    if (this.b != null) {
+      localStringBuilder.append(this.b);
+    }
+    localStringBuilder.append(" \n userActionQueue:\n");
+    if (this.c != null) {
+      localStringBuilder.append(this.c);
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public void a(String paramString)
+  {
+    if ((paramString != null) && (this.jdField_a_of_type_Bizd != null))
+    {
+      if (this.jdField_a_of_type_Bizd.a()) {
+        this.jdField_a_of_type_Bizd.a();
+      }
+      this.jdField_a_of_type_Bizd.a(paramString);
     }
   }
   
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
+  public void a(String paramString, View paramView)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[Actvity] ").append(paramString);
+    if (paramView != null) {
+      localStringBuilder.append("  click view  id:0x").append(Integer.toHexString(paramView.getId()));
+    }
+    c(localStringBuilder.toString());
+  }
+  
+  public void a(String paramString, ViewGroup paramViewGroup, View paramView, int paramInt, long paramLong)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[Actvity] ").append(paramString);
+    if (paramViewGroup != null) {
+      localStringBuilder.append("parent id: ").append(paramViewGroup.getId());
+    }
+    if (paramView != null) {
+      localStringBuilder.append("view id: ").append(paramView.getId());
+    }
+    localStringBuilder.append(" onItemclick view  position:0x").append(Integer.toHexString(paramInt));
+    localStringBuilder.append(" id").append(paramLong);
+    a().c(localStringBuilder.toString());
+  }
+  
+  public void b(String paramString)
+  {
+    if ((paramString != null) && (this.b != null))
+    {
+      if (this.b.a()) {
+        this.b.a();
+      }
+      this.b.a(paramString);
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    if (paramString != null) {}
+    try
+    {
+      if (this.c != null)
+      {
+        if (this.c.a()) {
+          this.c.a();
+        }
+        this.c.a(paramString);
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.w("RDMEtraMsgCollector", 2, "", paramString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bjcl
  * JD-Core Version:    0.7.0.1
  */

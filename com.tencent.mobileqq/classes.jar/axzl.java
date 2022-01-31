@@ -1,219 +1,225 @@
-import android.content.Context;
-import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureHandler.RspGetHistorySig;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.richstatus.HistorySignItem;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class axzl
-  extends axup
-  implements View.OnClickListener
+  extends alye
 {
-  public String S;
-  public String T;
-  public String U;
-  public int k;
-  public int l;
+  private axzl(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public axzl()
+  protected void d(boolean paramBoolean, Object arg2)
   {
-    this.a = "textButton";
-    b(32);
-    c(32);
+    int i = 0;
+    Object localObject1;
+    Object localObject3;
+    if (paramBoolean)
+    {
+      ??? = (Bundle)???;
+      paramBoolean = ???.getBoolean("firstFlag", false);
+      localObject1 = ???.getString("feedid");
+      boolean bool = ???.getBoolean("overFlag", true);
+      localObject3 = ???.getStringArrayList("uins");
+      SignatureHistoryFragment.a(this.a).put(localObject1, Boolean.valueOf(bool));
+      ??? = (ArrayList)SignatureHistoryFragment.b(this.a).get(localObject1);
+      if (localObject3 != null) {}
+    }
+    else
+    {
+      return;
+    }
+    SignatureHistoryFragment.b(this.a).put(localObject1, ???);
+    for (;;)
+    {
+      RichStatus localRichStatus;
+      synchronized (SignatureHistoryFragment.b(this.a))
+      {
+        if (i >= SignatureHistoryFragment.b(this.a).size()) {
+          break label246;
+        }
+        localRichStatus = ((HistorySignItem)SignatureHistoryFragment.b(this.a).get(i)).richStatus;
+        if (!localRichStatus.feedsId.equals(localObject1)) {
+          break label299;
+        }
+        if (paramBoolean) {
+          localRichStatus.mUins = null;
+        }
+        if (localRichStatus.mUins != null)
+        {
+          localObject1 = ((ArrayList)localObject3).iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break label246;
+          }
+          localObject3 = (String)((Iterator)localObject1).next();
+          if (localRichStatus.mUins.contains(localObject3)) {
+            continue;
+          }
+          localRichStatus.mUins.add(localObject3);
+        }
+      }
+      localRichStatus.mUins = ((List)localObject3);
+      label246:
+      if (SignatureHistoryFragment.a(this.a) != null)
+      {
+        SignatureHistoryFragment.a(this.a).removeMessages(1);
+        Message localMessage = SignatureHistoryFragment.a(this.a).obtainMessage(1);
+        SignatureHistoryFragment.a(this.a).sendMessageDelayed(localMessage, 500L);
+      }
+      return;
+      label299:
+      i += 1;
+    }
   }
   
-  private LinearLayout a(Context paramContext)
+  protected void g(boolean paramBoolean, Object paramObject)
   {
-    paramContext = new LinearLayout(paramContext);
-    paramContext.setOrientation(0);
-    paramContext.setGravity(16);
-    paramContext.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-    paramContext.setId(2131378374);
-    return paramContext;
+    int i = ((Integer)paramObject).intValue();
+    if (SignatureHistoryFragment.a(this.a) != null)
+    {
+      SignatureHistoryFragment.a(this.a).removeMessages(3);
+      paramObject = SignatureHistoryFragment.a(this.a).obtainMessage(3);
+      paramObject.arg1 = i;
+      SignatureHistoryFragment.a(this.a).sendMessageDelayed(paramObject, 500L);
+    }
   }
   
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  protected void h(boolean paramBoolean, Object paramObject)
   {
-    if (paramView != null) {
-      paramContext = (axzm)paramView.getTag();
+    if ((SignatureHistoryFragment.a(this.a) != null) && (SignatureHistoryFragment.a(this.a).isShowing())) {
+      SignatureHistoryFragment.a(this.a).dismiss();
+    }
+    if (paramBoolean)
+    {
+      long l = ((Long)paramObject).longValue();
+      if (SignatureHistoryFragment.a(this.a) != null)
+      {
+        SignatureHistoryFragment.a(this.a).id = l;
+        SignatureHistoryFragment.a(this.a).timeStamp = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
+        SignatureHistoryFragment.a(this.a, SignatureHistoryFragment.a(this.a));
+        SignatureHistoryFragment.a(this.a, null);
+        if (SignatureHistoryFragment.a(this.a) != null) {
+          SignatureHistoryFragment.a(this.a).notifyDataSetChanged();
+        }
+      }
+      return;
+    }
+    paramObject = SignatureHistoryFragment.a(this.a).obtainMessage();
+    paramObject.what = 4;
+    paramObject.arg1 = 1;
+    SignatureHistoryFragment.a(this.a).sendMessage(paramObject);
+  }
+  
+  protected void i(boolean paramBoolean, Object paramObject)
+  {
+    if ((SignatureHistoryFragment.a(this.a) != null) && (SignatureHistoryFragment.a(this.a).isShowing())) {
+      SignatureHistoryFragment.a(this.a).dismiss();
+    }
+    if (paramBoolean)
+    {
+      paramBoolean = SignatureHistoryFragment.a(this.a, SignatureHistoryFragment.a(this.a));
+      SignatureHistoryFragment.a(this.a, null);
+      if ((SignatureHistoryFragment.a(this.a) != null) && (paramBoolean)) {
+        SignatureHistoryFragment.a(this.a).notifyDataSetChanged();
+      }
+      return;
+    }
+    paramObject = SignatureHistoryFragment.a(this.a).obtainMessage();
+    paramObject.what = 4;
+    paramObject.arg1 = 2;
+    SignatureHistoryFragment.a(this.a).sendMessage(paramObject);
+  }
+  
+  protected void j(boolean paramBoolean, Object paramObject)
+  {
+    SignatureHistoryFragment.c(this.a, paramBoolean);
+    int i;
+    if (paramBoolean)
+    {
+      paramObject = (SignatureHandler.RspGetHistorySig)paramObject;
+      boolean bool = paramObject.over;
+      if ((this.a.getActivity() != null) && (this.a.getActivity().app != null)) {
+        this.a.getActivity().app.b(true, true);
+      }
+      if ((paramObject != null) && (paramObject.historySignItems != null))
+      {
+        paramObject = paramObject.historySignItems;
+        if ((SignatureHistoryFragment.c(this.a)) && (SignatureHistoryFragment.b(this.a).size() > 0)) {
+          SignatureHistoryFragment.b(this.a).clear();
+        }
+        if (SignatureHistoryFragment.b(this.a).size() > 0)
+        {
+          Iterator localIterator = paramObject.iterator();
+          RichStatus localRichStatus1 = ((HistorySignItem)SignatureHistoryFragment.b(this.a).get(SignatureHistoryFragment.b(this.a).size() - 1)).richStatus;
+          if (localRichStatus1 != null) {
+            while (localIterator.hasNext())
+            {
+              RichStatus localRichStatus2 = ((HistorySignItem)localIterator.next()).richStatus;
+              if ((localRichStatus2.time <= localRichStatus1.time) && ((localRichStatus2.time != localRichStatus1.time) || (!Arrays.equals(localRichStatus2.encode(), localRichStatus1.encode())))) {
+                break;
+              }
+              localIterator.remove();
+            }
+          }
+        }
+        SignatureHistoryFragment.b(this.a).addAll(SignatureHistoryFragment.b(this.a).size(), paramObject);
+        paramObject = this.a;
+        if (!bool)
+        {
+          i = 1;
+          SignatureHistoryFragment.a(paramObject, i);
+        }
+      }
+      else
+      {
+        label285:
+        if (SignatureHistoryFragment.b(this.a).size() != 0) {
+          break label367;
+        }
+        paramObject = this.a;
+        if (!paramBoolean) {
+          break label362;
+        }
+        i = 3;
+        label309:
+        SignatureHistoryFragment.a(paramObject, i);
+      }
     }
     for (;;)
     {
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTag(this);
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTextColor(c());
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.requestLayout();
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTypeface(Typeface.DEFAULT, d());
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTextSize(b() / 2);
-      if (!TextUtils.isEmpty(this.S)) {
-        paramContext.jdField_a_of_type_AndroidWidgetTextView.setText(this.S);
+      if (SignatureHistoryFragment.a(this.a) != null) {
+        SignatureHistoryFragment.a(this.a).notifyDataSetChanged();
       }
-      try
-      {
-        if (!TextUtils.isEmpty(this.T))
-        {
-          paramBundle = URLDrawable.getDrawable(this.T, this.k, this.k, null, null);
-          paramBundle.setAutoDownload(true);
-          paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
-        }
-        if (!TextUtils.isEmpty(this.U))
-        {
-          paramBundle = URLDrawable.getDrawable(this.U, this.l, this.l, null, null);
-          paramBundle.setAutoDownload(true);
-          paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
-        }
-      }
-      catch (Exception paramContext)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructMsg", 2, " URLDrawable.exception illegal url : " + paramContext.getMessage());
-          }
-        }
-      }
-      if ((this.c != null) && (!this.c.equals("")))
-      {
-        paramView.setClickable(true);
-        paramView.setOnClickListener(this);
-      }
-      return paramView;
-      paramView = new axzm(this);
-      paramView.jdField_a_of_type_AndroidWidgetLinearLayout = a(paramContext);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-      paramView.b = new ImageView(paramContext);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-      paramContext = new LinearLayout.LayoutParams(-2, -2);
-      paramContext.gravity = 16;
-      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView.jdField_a_of_type_AndroidWidgetImageView, paramContext);
-      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView.jdField_a_of_type_AndroidWidgetTextView, paramContext);
-      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView.b, paramContext);
-      paramView.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(paramView);
-      paramBundle = paramView.jdField_a_of_type_AndroidWidgetLinearLayout;
-      paramContext = paramView;
-      paramView = paramBundle;
-    }
-  }
-  
-  public String a()
-  {
-    return "TextButton";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.S = axau.a(paramObjectInput.readUTF(), false);
-    this.T = axau.a(paramObjectInput.readUTF(), false);
-    this.U = axau.a(paramObjectInput.readUTF(), false);
-    this.b = axau.a(paramObjectInput.readUTF(), false);
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.S == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.T != null) {
-        break label86;
-      }
-      str = "";
-      label32:
-      paramObjectOutput.writeUTF(str);
-      if (this.U != null) {
-        break label94;
-      }
-      str = "";
-      label49:
-      paramObjectOutput.writeUTF(str);
-      if (this.b != null) {
-        break label102;
-      }
-    }
-    label86:
-    label94:
-    label102:
-    for (String str = "";; str = this.b)
-    {
-      paramObjectOutput.writeUTF(str);
       return;
-      str = axau.a(this.S, false);
+      i = 0;
       break;
-      str = this.T;
-      break label32;
-      str = this.U;
-      break label49;
+      if (!SignatureHistoryFragment.c(this.a)) {
+        break label285;
+      }
+      SignatureHistoryFragment.a(this.a, 3);
+      break label285;
+      label362:
+      i = 2;
+      break label309;
+      label367:
+      SignatureHistoryFragment.a(this.a).setVisible(false, false);
     }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, this.a);
-    if (!TextUtils.isEmpty(this.S)) {
-      paramXmlSerializer.attribute(null, "text", this.S);
-    }
-    if (!TextUtils.isEmpty(this.T)) {
-      paramXmlSerializer.attribute(null, "leftImage", this.T);
-    }
-    if (!TextUtils.isEmpty(this.U)) {
-      paramXmlSerializer.attribute(null, "rightImage", this.U);
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      paramXmlSerializer.attribute(null, "url", this.b);
-    }
-    paramXmlSerializer.endTag(null, this.a);
-  }
-  
-  public boolean a(axwg paramaxwg)
-  {
-    if (paramaxwg == null) {
-      return true;
-    }
-    this.b = paramaxwg.a("url");
-    this.T = paramaxwg.a("leftImage");
-    this.U = paramaxwg.a("rightImage");
-    this.S = axau.a(paramaxwg.a("text"), false);
-    return true;
-  }
-  
-  public int b()
-  {
-    return 26;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.k = paramInt;
-  }
-  
-  public int c()
-  {
-    return -16777216;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.l = paramInt;
-  }
-  
-  public int d()
-  {
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axzl
  * JD-Core Version:    0.7.0.1
  */

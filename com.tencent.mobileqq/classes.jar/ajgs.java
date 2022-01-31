@@ -1,196 +1,173 @@
-import android.annotation.TargetApi;
-import android.os.Bundle;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.os.Looper;
+import android.provider.Settings.System;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
+import java.util.HashMap;
 
 public class ajgs
 {
-  public static int a;
-  private ajgb jdField_a_of_type_Ajgb;
-  private ajgq jdField_a_of_type_Ajgq;
-  private ApolloTextureView jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView;
-  private int b;
+  private static ajgs jdField_a_of_type_Ajgs;
+  private long jdField_a_of_type_Long;
+  public aipo a;
+  private String jdField_a_of_type_JavaLangString = "yyyy-MM-dd";
+  private StringBuffer jdField_a_of_type_JavaLangStringBuffer = new StringBuffer(25);
+  private HashMap<String, HashMap<String, String>> jdField_a_of_type_JavaUtilHashMap;
+  private HashMap<String, Boolean> b = new HashMap();
   
-  public ajgs(CmShowRenderView paramCmShowRenderView)
+  private ajgs()
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = paramCmShowRenderView;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    d();
+    Object localObject3 = null;
+    Object localObject1 = localObject3;
+    if (localBaseApplicationImpl != null) {
+      localObject1 = localBaseApplicationImpl.getContentResolver();
+    }
+    try
+    {
+      localObject1 = Settings.System.getString((ContentResolver)localObject1, "date_format");
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+      for (this.jdField_a_of_type_JavaLangString = ((String)localObject1);; this.jdField_a_of_type_JavaLangString = "yyyy-MM-dd")
+      {
+        this.jdField_a_of_type_Aipo = new aipo(Looper.getMainLooper());
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject2 = localObject3;
+      }
+    }
   }
   
-  public static void a(ArrayList<String> paramArrayList, int[] paramArrayOfInt)
+  public static ajgs a()
   {
-    QLog.i("CmShow_RenderViewController", 1, "CmShow_ preLoadRes start");
-    Bundle localBundle = new Bundle();
-    localBundle.putIntArray("actionIds", paramArrayOfInt);
-    localBundle.putStringArrayList("uins", paramArrayList);
-    QIPCClientHelper.getInstance().callServer("cm_game_module", "action_render_view_preload_res", localBundle, new ajgt());
+    if (jdField_a_of_type_Ajgs == null) {}
+    try
+    {
+      if (jdField_a_of_type_Ajgs == null) {
+        jdField_a_of_type_Ajgs = new ajgs();
+      }
+      return jdField_a_of_type_Ajgs;
+    }
+    finally {}
+  }
+  
+  private boolean a()
+  {
+    if (System.currentTimeMillis() >= this.jdField_a_of_type_Long)
+    {
+      d();
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      return false;
+    }
+    return true;
+  }
+  
+  private void d()
+  {
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.add(5, 1);
+    localCalendar.set(10, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    this.jdField_a_of_type_Long = localCalendar.getTimeInMillis();
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String a(String arg1, long paramLong)
+  {
+    HashMap localHashMap = (HashMap)this.jdField_a_of_type_JavaUtilHashMap.get(???);
+    if ((localHashMap == null) || (!a()))
+    {
+      localHashMap = new HashMap();
+      this.jdField_a_of_type_JavaUtilHashMap.put(???, localHashMap);
+      ??? = null;
+    }
+    for (;;)
+    {
+      String str = ???;
+      if (??? == null) {}
+      synchronized (this.jdField_a_of_type_JavaLangStringBuffer)
+      {
+        str = bdjj.a(this.jdField_a_of_type_JavaLangStringBuffer, 1000L * paramLong, true, this.jdField_a_of_type_JavaLangString);
+        if (QLog.isDevelopLevel()) {
+          QLog.i("Q.recent", 4, "getMsgDisplayTime, " + this.jdField_a_of_type_JavaLangStringBuffer.toString() + "," + str);
+        }
+        localHashMap.put(String.valueOf(paramLong), str);
+        return str;
+        ??? = (String)localHashMap.get(String.valueOf(paramLong));
+        if (??? == null) {
+          localHashMap.clear();
+        }
+      }
+    }
   }
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmShow_RenderViewController", 2, "onResume");
-    }
-    if ((a()) && (this.jdField_a_of_type_Ajgb != null)) {
-      this.jdField_a_of_type_Ajgb.b();
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Ajgb != null) {
-      this.jdField_a_of_type_Ajgb.a(paramInt1, paramInt2);
-    }
-  }
-  
-  public void a(ajfx paramajfx)
-  {
-    if (this.jdField_a_of_type_Ajgq != null) {
-      this.jdField_a_of_type_Ajgq.a(paramajfx);
-    }
-    if (this.jdField_a_of_type_Ajgb != null) {
-      this.jdField_a_of_type_Ajgb.a(paramajfx);
-    }
-  }
-  
-  public void a(CmShowRenderView.PlayActionConfig paramPlayActionConfig)
-  {
-    if (this.jdField_a_of_type_Ajgb != null) {
-      this.jdField_a_of_type_Ajgb.a(paramPlayActionConfig);
-    }
-  }
-  
-  @TargetApi(14)
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmShow_RenderViewController", 2, "initApolloSurfaceView");
-    }
-    int i = ajfh.b(3);
-    ajlo.a(i);
-    ajlo.a(i, 100);
-    this.jdField_a_of_type_Ajgb = new ajgb(paramString);
-    this.jdField_a_of_type_Ajgq = new ajgq(this.jdField_a_of_type_Ajgb, 0);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.init(this.jdField_a_of_type_Ajgq);
-    this.jdField_a_of_type_Ajgb.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
-    i = ajfh.a();
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setInitHeight(i);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (this.jdField_a_of_type_Ajgb != null) {
-      this.jdField_a_of_type_Ajgb.a(paramString, paramInt);
-    }
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.jdField_a_of_type_Ajgb != null) {
-      this.jdField_a_of_type_Ajgb.a(paramString, paramInt1, paramInt2, paramInt3);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_Ajgb != null) {
-      this.jdField_a_of_type_Ajgb.a(paramString1, paramString2);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, float paramFloat, int paramInt, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_Ajgb != null) {
-      this.jdField_a_of_type_Ajgb.a(paramString1, paramString2, paramFloat, paramInt, paramBundle);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_Ajgb != null) {
-      this.jdField_a_of_type_Ajgb.a(paramString1, paramString2, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Aipo != null) {
+      this.jdField_a_of_type_Aipo.g();
     }
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Ajgb != null) {
-      this.jdField_a_of_type_Ajgb.a(paramString, paramBoolean);
-    }
+    this.b.put(paramString, Boolean.valueOf(paramBoolean));
   }
   
-  public void a(List<String> paramList, boolean paramBoolean)
+  public boolean a(String paramString)
   {
-    if (this.jdField_a_of_type_Ajgb != null) {
-      this.jdField_a_of_type_Ajgb.a(paramList, paramBoolean);
+    boolean bool = false;
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
+      if (TextUtils.isEmpty(paramString)) {
+        break label43;
+      }
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null;
+    label43:
+    for (this.jdField_a_of_type_JavaLangString = paramString;; this.jdField_a_of_type_JavaLangString = "yyyy-MM-dd")
+    {
+      bool = true;
+      if (this.jdField_a_of_type_JavaUtilHashMap != null) {
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+      }
+      return bool;
+    }
   }
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmShow_RenderViewController", 2, "onPause");
-    }
-    if ((a()) && (this.jdField_a_of_type_Ajgb != null)) {
-      this.jdField_a_of_type_Ajgb.a();
+    if (this.jdField_a_of_type_Aipo != null) {
+      this.jdField_a_of_type_Aipo.d();
     }
   }
   
-  public void b(String paramString)
+  public boolean b(String paramString)
   {
-    if (this.jdField_a_of_type_Ajgb != null) {
-      this.jdField_a_of_type_Ajgb.a(paramString);
-    }
+    return this.b.containsKey(paramString);
   }
   
   public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmShow_RenderViewController", 2, "onDestroy ");
+    if (this.jdField_a_of_type_Aipo != null) {
+      this.jdField_a_of_type_Aipo.e();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null)
-    {
-      ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender();
-      if (localApolloRender != null) {
-        localApolloRender.queueDestroy();
-      }
-    }
-    if (this.jdField_a_of_type_Ajgb != null)
-    {
-      this.jdField_a_of_type_Ajgb.c();
-      this.jdField_a_of_type_Ajgb = null;
-    }
-    if (!a())
-    {
-      QLog.e("CmShow_RenderViewController", 1, new Object[] { "[onDestory] isViewAvailable:", Boolean.valueOf(a()) });
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(8);
-      if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getParent() instanceof ViewGroup)) {
-        ((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getParent()).removeView(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = null;
-    }
-    this.b = 0;
-    ajfs.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgs
  * JD-Core Version:    0.7.0.1
  */

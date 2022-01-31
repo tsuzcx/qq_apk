@@ -1,17 +1,17 @@
-import com.tencent.ark.ArkEnvironmentManager.IDataReport;
-import com.tencent.ark.open.ArkAppReport;
-
-final class alvw
-  implements ArkEnvironmentManager.IDataReport
+class alvw
+  implements mag
 {
-  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
+  alvw(alvt paramalvt) {}
+  
+  public void a(maf parammaf)
   {
-    ArkAppReport.platformEventReport(paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
+    parammaf.a(this.a.a);
+    parammaf.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alvw
  * JD-Core Version:    0.7.0.1
  */

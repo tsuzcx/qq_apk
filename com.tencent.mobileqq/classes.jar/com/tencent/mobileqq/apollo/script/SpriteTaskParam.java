@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.script;
 
-import ajfg;
-import ajfj;
+import akws;
+import akwv;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -11,11 +11,11 @@ import java.util.ArrayList;
 public class SpriteTaskParam
   implements Parcelable
 {
-  public static final Parcelable.Creator<SpriteTaskParam> CREATOR = new ajfg();
+  public static final Parcelable.Creator<SpriteTaskParam> CREATOR = new akws();
   public float a;
   public int a;
   public long a;
-  public ajfj a;
+  public akwv a;
   public Bundle a;
   public String a;
   public ArrayList<Integer> a;
@@ -113,7 +113,7 @@ public class SpriteTaskParam
     localStringBuffer.append(", mActionList=").append(this.jdField_a_of_type_JavaUtilArrayList);
     localStringBuffer.append(", mBackgroundActionList=").append(this.jdField_b_of_type_JavaUtilArrayList);
     localStringBuffer.append(", mExtendJson='").append(this.jdField_d_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mBridgeImp=").append(this.jdField_a_of_type_Ajfj);
+    localStringBuffer.append(", mBridgeImp=").append(this.jdField_a_of_type_Akwv);
     localStringBuffer.append(", mRscType=").append(this.k);
     localStringBuffer.append(", mActionJs='").append(this.jdField_e_of_type_JavaLangString).append('\'');
     localStringBuffer.append('}');
@@ -163,7 +163,7 @@ public class SpriteTaskParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteTaskParam
  * JD-Core Version:    0.7.0.1
  */

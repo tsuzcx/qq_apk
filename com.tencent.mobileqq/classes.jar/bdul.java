@@ -1,16 +1,23 @@
-class bdul
-  implements bfqj
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vashealth.SportManager.3.1;
+import mqq.observer.BusinessObserver;
+
+public class bdul
+  implements BusinessObserver
 {
   bdul(bduj parambduj) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a = null;
+    if (paramBoolean) {
+      ThreadManager.post(new SportManager.3.1(this, paramBundle.getString("StepInfoJSON")), 5, null, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdul
  * JD-Core Version:    0.7.0.1
  */

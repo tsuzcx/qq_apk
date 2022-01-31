@@ -1,67 +1,34 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.funchat.zimu.ZimuViewMotion;
+import java.lang.ref.WeakReference;
 
-public class mrb
+public final class mrb
+  extends Handler
 {
-  public static Drawable a(Resources paramResources, int paramInt)
+  WeakReference<ZimuViewMotion> a;
+  
+  public mrb(ZimuViewMotion paramZimuViewMotion)
   {
-    return a(paramResources, paramInt, 2131165905, true, 2130841489, 2131165908, null);
+    this.a = new WeakReference(paramZimuViewMotion);
   }
   
-  private static Drawable a(Resources paramResources, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4, Drawable paramDrawable)
+  public void handleMessage(Message paramMessage)
   {
-    Drawable localDrawable = paramResources.getDrawable(paramInt1);
-    Object localObject;
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      localObject = mtp.a(paramResources, paramInt1, paramInt2);
-      ((Drawable)localObject).setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      localDrawable = paramResources.getDrawable(paramInt3);
-      paramResources = mtp.a(paramResources, paramInt3, paramInt4);
-      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      if (paramDrawable != null) {
-        break label138;
-      }
-      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject });
-      paramResources.setLayerInset(0, 0, 0, 0, 0);
-      paramResources.setLayerInset(1, 0, 0, 0, 0);
     }
-    for (;;)
+    do
     {
-      paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-      return paramResources;
-      localObject = localDrawable;
-      break;
-      label138:
-      paramResources = new LayerDrawable(new Drawable[] { paramResources, localObject, paramDrawable });
-      paramResources.setLayerInset(0, 0, 0, 0, 0);
-      paramResources.setLayerInset(1, 0, 0, 0, 0);
-      paramResources.setLayerInset(2, 0, 0, 0, 0);
-    }
-  }
-  
-  public static Drawable a(Resources paramResources, int paramInt, Drawable paramDrawable, boolean paramBoolean)
-  {
-    return a(paramResources, paramInt, 2131165905, paramBoolean, 2130841489, 2131165908, paramDrawable);
-  }
-  
-  public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
-  {
-    return a(paramResources, paramInt, 2131165905, paramBoolean, 2130841489, 2131165908, null);
-  }
-  
-  public static Drawable b(Resources paramResources, int paramInt)
-  {
-    Drawable localDrawable = paramResources.getDrawable(paramInt);
-    paramResources = mtp.a(paramResources, paramInt, 2131165905);
-    paramResources.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    return paramResources;
+      return;
+      paramMessage = (ZimuViewMotion)this.a.get();
+    } while (paramMessage == null);
+    paramMessage.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mrb
  * JD-Core Version:    0.7.0.1
  */

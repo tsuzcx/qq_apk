@@ -1,22 +1,57 @@
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-
 public class lxc
-  extends akat
+  extends lwt
 {
-  public lxc(QQServiceForAV paramQQServiceForAV) {}
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
   
-  protected void a()
+  public lxc()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    if (localQQAppInterface != null) {
-      new bgkq(localQQAppInterface).a(new lxd(this));
+    a(255);
+  }
+  
+  public void a(long paramLong)
+  {
+    int i = (int)((paramLong - this.a) % 4000L * this.h / 2000L - this.c);
+    a(this.g, i, this.g + this.b, this.c + i);
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.e != paramInt)
+    {
+      this.e = paramInt;
+      c();
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.b = (paramInt1 * 70 / 160);
+    this.c = (paramInt1 * 70 / 160);
+    this.d = (paramInt1 * 5 / 160);
+    this.f = paramInt1;
+    this.h = (this.c + paramInt2);
+    c();
+  }
+  
+  public void c()
+  {
+    if (this.e == 0) {}
+    for (int i = this.d;; i = this.f - this.d - this.b)
+    {
+      this.g = i;
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxc
  * JD-Core Version:    0.7.0.1
  */

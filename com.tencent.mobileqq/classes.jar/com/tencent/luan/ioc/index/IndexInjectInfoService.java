@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract interface IndexInjectInfoService
 {
-  public abstract List<ProvideMethod> getAllDeclareProvideMethods(Class<?> paramClass);
+  public abstract List<ProvideMethod<?>> getAllDeclareProvideMethods(Class<?> paramClass);
   
   public abstract InjectMethod getAllInjectMethods(Class<?> paramClass);
   
@@ -15,7 +15,7 @@ public abstract interface IndexInjectInfoService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.luan.ioc.index.IndexInjectInfoService
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,100 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
+import android.database.DataSetObserver;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 
-public class avop
-  extends avpi<ReceiptMessageDetailFragment>
+class avop
+  extends BaseAdapter
 {
-  public avop(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  final BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
+  final avot jdField_a_of_type_Avot;
+  
+  avop(avot paramavot, BaseAdapter paramBaseAdapter)
   {
-    super(paramReceiptMessageDetailFragment);
+    this.jdField_a_of_type_Avot = paramavot;
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean areAllItemsEnabled()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback onRes: " + paramInt);
-    }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback succ");
-      }
-      paramBundle = new oidb_0x986.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = paramBundle.uint32_read_uin_num.get();
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, 2147483647, true);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "fetch read member fail on invalid data");
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
-    }
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
-    return;
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.areAllItemsEnabled();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount();
+  }
+  
+  public View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getDropDownView(paramInt, paramView, paramViewGroup);
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItem(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemId(paramInt);
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemViewType(paramInt);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(paramInt, paramView, paramViewGroup);
+    this.jdField_a_of_type_Avot.a(paramViewGroup, paramView, paramInt);
+    return paramView;
+  }
+  
+  public int getViewTypeCount()
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.getViewTypeCount();
+  }
+  
+  public boolean hasStableIds()
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.hasStableIds();
+  }
+  
+  public boolean isEmpty()
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.isEmpty();
+  }
+  
+  public boolean isEnabled(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidWidgetBaseAdapter.isEnabled(paramInt);
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
+  }
+  
+  public void notifyDataSetInvalidated()
+  {
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetInvalidated();
+  }
+  
+  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter.registerDataSetObserver(paramDataSetObserver);
+  }
+  
+  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter.unregisterDataSetObserver(paramDataSetObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avop
  * JD-Core Version:    0.7.0.1
  */

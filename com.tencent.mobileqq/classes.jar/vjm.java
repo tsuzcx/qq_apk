@@ -1,44 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-public class vjm
-  implements View.OnClickListener
+class vjm
+  implements vlf
 {
-  protected long a;
-  protected View a;
-  public vjn a;
+  vjm(vjl paramvjl) {}
   
-  public vjm(vjn paramvjn, View paramView)
+  public void a()
   {
-    this.jdField_a_of_type_Vjn = paramvjn;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    paramView.setOnClickListener(this);
+    vjl.a(this.a);
   }
   
-  private boolean a()
+  public void a(vld paramvld, String paramString, boolean paramBoolean)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = l1 - this.jdField_a_of_type_Long;
-    if ((l2 > 0L) && (l2 < 2000L)) {
-      return true;
-    }
-    this.jdField_a_of_type_Long = l1;
-    return false;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (!a())
-    {
-      vei.a("home_page", "clk_shoot", 0, 0, new String[0]);
-      this.jdField_a_of_type_Vjn.a();
-    }
-    ayvp.g();
+    wsv.d("Q.qqstory.playernew.StoryPlayerImpl", "onGroupDataDelete, groupId=%s, vid=%s", new Object[] { paramvld.a, paramString });
+    vjl.a(this.a).a(paramvld, paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjm
  * JD-Core Version:    0.7.0.1
  */

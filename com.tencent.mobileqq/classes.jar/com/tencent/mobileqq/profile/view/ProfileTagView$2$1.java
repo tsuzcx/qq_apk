@@ -5,8 +5,8 @@ import android.graphics.PointF;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import ausw;
-import auuy;
+import awki;
+import awmk;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.profile.ProfileLabelInfo;
@@ -37,19 +37,19 @@ class ProfileTagView$2$1
       Object localObject1;
       for (;;)
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.jdField_a_of_type_ArrayOfAndroidViewView[k] == null))
+        if ((this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.jdField_a_of_type_ArrayOfAndroidViewView[k] == null))
         {
           localObject2 = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.jdField_a_of_type_ArrayOfAndroidViewView;
-          localObject1 = View.inflate(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.getContext(), 2131561660, null);
+          localObject1 = View.inflate(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.getContext(), 2131561848, null);
           localObject2[k] = localObject1;
           localObject2 = new RatioLayout.LayoutParams(-2, -2, 0.5F, 0.5F, 0.5F, 0.5F);
           this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
           ((View)localObject1).setVisibility(4);
-          ((View)localObject1).setTag(new ausw(32, null));
-          ((View)localObject1).setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.jdField_a_of_type_Auuy.jdField_a_of_type_AndroidViewView$OnClickListener);
-          ((View)localObject1).setId(2131373677);
-          ((View)localObject1).setTag(2131373677, Integer.valueOf(-1));
-          ((View)localObject1).setTag(2131373679, Integer.valueOf(ProfileTagView.a().length - 1));
+          ((View)localObject1).setTag(new awki(32, null));
+          ((View)localObject1).setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.jdField_a_of_type_Awmk.jdField_a_of_type_AndroidViewView$OnClickListener);
+          ((View)localObject1).setId(2131374130);
+          ((View)localObject1).setTag(2131374130, Integer.valueOf(-1));
+          ((View)localObject1).setTag(2131374132, Integer.valueOf(ProfileTagView.a().length - 1));
         }
         j = 0;
         while (j < k)
@@ -77,8 +77,8 @@ class ProfileTagView$2$1
           this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.jdField_a_of_type_ArrayOfAndroidViewView[j] = localObject1;
           this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.jdField_a_of_type_ComTencentMobileqqWidgetRatioLayout.addView((View)localObject1);
           ((VipTagView)localObject1).setGravity(17);
-          ((VipTagView)localObject1).setTag(2131373677, Integer.valueOf(j));
-          ((VipTagView)localObject1).setTag(2131373679, Integer.valueOf(ProfileTagView.a()[j]));
+          ((VipTagView)localObject1).setTag(2131374130, Integer.valueOf(j));
+          ((VipTagView)localObject1).setTag(2131374132, Integer.valueOf(ProfileTagView.a()[j]));
           ((VipTagView)localObject1).setTextColor(-1);
         }
         VipTagView localVipTagView = (VipTagView)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.jdField_a_of_type_ArrayOfAndroidViewView[j];
@@ -91,11 +91,11 @@ class ProfileTagView$2$1
           label575:
           localVipTagView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           localVipTagView.setLabelAndPraise(((ProfileLabelInfo)localObject2).labelName, ((ProfileLabelInfo)localObject2).likeNum.intValue());
-          localVipTagView.setTag(2131373678, ((ProfileLabelInfo)localObject2).labelId);
-          if ((!this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.a(localVipTagView)) || (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)) {
+          localVipTagView.setTag(2131374131, ((ProfileLabelInfo)localObject2).labelId);
+          if ((!this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.a(localVipTagView)) || (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a == 0)) {
             break label715;
           }
-          localVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.getResources().getColor(2131166439), this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.getResources().getColor(2131166437));
+          localVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.getResources().getColor(2131166486), this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.getResources().getColor(2131166484));
         }
         for (;;)
         {
@@ -105,16 +105,16 @@ class ProfileTagView$2$1
           localVipTagView.setVisibility(4);
           break label575;
           label715:
-          localVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.getResources().getColor(2131166438), this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.getResources().getColor(2131166436));
+          localVipTagView.setTagColor(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.getResources().getColor(2131166485), this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.getResources().getColor(2131166483));
         }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.a((int)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.this$0.a((int)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView$2.jdField_a_of_type_Awmk.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ProfileTagView.2.1
  * JD-Core Version:    0.7.0.1
  */

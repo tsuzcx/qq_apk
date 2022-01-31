@@ -1,37 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
-
-class ayxi
-  implements EIPCOnGetConnectionListener
+public abstract interface ayxi
 {
-  ayxi(ayxg paramayxg) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      ayxg.a(this.a, paramEIPCConnection.procName);
-    }
-    ayxg.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "onConnectBind");
-    }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      ayxg.a(this.a, paramEIPCConnection.procName);
-    }
-    ayxg.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("InnerDns", 2, "onConnectUnbind");
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayxi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
 class arbh
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  arbh(arbb paramarbb) {}
+  arbh(arbg paramarbg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
-    arbb.a(this.a);
-    QLog.d("PresenceInterfaceImpl", 2, "User allowed downd");
+    if (ImmersiveUtils.isSupporImmersive() == 1) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbh
  * JD-Core Version:    0.7.0.1
  */

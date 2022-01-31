@@ -1,51 +1,100 @@
-public class lky
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import java.util.Map;
+
+final class lky
+  implements Handler.Callback
 {
-  private int jdField_a_of_type_Int;
-  private byte[] jdField_a_of_type_ArrayOfByte = new byte[512];
-  private int b;
-  
-  public lky()
+  public boolean handleMessage(Message paramMessage)
   {
-    int i = 0;
-    while (i < 512)
+    Bundle localBundle = paramMessage.getData();
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ArrayOfByte[i] = 0;
-      i += 1;
     }
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-  }
-  
-  public void a(byte paramByte)
-  {
-    this.jdField_a_of_type_ArrayOfByte[this.jdField_a_of_type_Int] = paramByte;
-    this.jdField_a_of_type_Int += 1;
-    this.b += 1;
-  }
-  
-  public void a(int paramInt)
-  {
-    int i = (byte)(paramInt & 0xFF);
-    int j = (byte)(paramInt >> 8 & 0xFF);
-    int k = (byte)(paramInt >> 16 & 0xFF);
-    int m = (byte)(paramInt >> 24 & 0xFF);
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    paramInt = this.jdField_a_of_type_Int;
-    System.arraycopy(new byte[] { m, k, j, i }, 0, arrayOfByte, paramInt, 4);
-    this.jdField_a_of_type_Int += 4;
-    this.b += 4;
-  }
-  
-  public byte[] a()
-  {
-    byte[] arrayOfByte = new byte[this.b];
-    System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, arrayOfByte, 0, this.b);
-    return arrayOfByte;
+    do
+    {
+      do
+      {
+        long l1;
+        int i;
+        long l2;
+        boolean bool;
+        do
+        {
+          do
+          {
+            do
+            {
+              return false;
+            } while (lkx.a() == null);
+            lkx.c();
+            lkx.a(24, lkx.b());
+            try
+            {
+              lkx.a().sendEmptyMessageDelayed(1, 5000L);
+              return false;
+            }
+            catch (NullPointerException paramMessage)
+            {
+              paramMessage.printStackTrace();
+              return false;
+            }
+            l1 = localBundle.getLong("roomId");
+            i = localBundle.getInt("node");
+            l2 = localBundle.getLong("value");
+            bool = localBundle.getBoolean("isNode");
+            lkx.a(i, true);
+          } while (lkx.a(i, true, bool));
+          if ((bool) && (lkx.a(33, true)))
+          {
+            lek.b("VideoNodeManager", "--> TempSeesion THE node_session_close has write !!  this node  be rejected !!   node = " + lkw.a(i));
+            return false;
+          }
+          lkx.a(i + "", l2 + "", bool);
+          lkx.a(i, l2, true);
+          lek.b("VideoNodeManager", "reportToTempSeesionRecord ,roomId = " + l1 + "  node = " + lkw.a(i) + ", value = " + l2 + "   isNode = " + bool);
+          return false;
+          l1 = localBundle.getLong("roomId");
+          i = localBundle.getInt("node");
+          l2 = localBundle.getLong("value");
+          bool = localBundle.getBoolean("isNode");
+          lkx.a(i, false);
+        } while (lkx.a(i, false, bool));
+        if ((bool) && (lkx.a(33, false)))
+        {
+          lek.b("VideoNodeManager", "--> THE node_session_close has write !!  this node  be rejected !!   node = " + lkw.a(i));
+          return false;
+        }
+        if (lkx.a(i)) {
+          lek.a("VideoNodeManager", "reportToHandler  roomId = " + l1 + "  node = " + lkw.a(i) + ",  value = " + l2 + "   isNode = " + bool);
+        }
+        lkx.b(i + "", l2 + "", bool);
+        lkx.a(i, l2, false);
+        return false;
+        paramMessage = lkx.a();
+        if (!TextUtils.isEmpty(paramMessage))
+        {
+          lek.a("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TO_SERVER detail = " + paramMessage);
+          azlj.a(null, "dc03209", paramMessage);
+          lkx.e();
+        }
+      } while ((lkx.a() == null) || (lkx.a().size() == 0));
+      lkx.j();
+      return false;
+      paramMessage = lkx.b();
+      lek.b("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TEMP_RECORD_TO_SERVER detail = " + paramMessage);
+    } while (TextUtils.isEmpty(paramMessage));
+    azlj.a(null, "dc03209", paramMessage);
+    lkx.f();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lky
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import azmk;
-import bjuq;
+import bbkt;
+import bmga;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
 
 public class EditTakeVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditTakeVideoSource> CREATOR = new bjuq();
+  public static final Parcelable.Creator<EditTakeVideoSource> CREATOR = new bmga();
   @NonNull
   public final LocalMediaInfo a;
   @NonNull
@@ -25,7 +25,7 @@ public class EditTakeVideoSource
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(azmk.class.getClassLoader()));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(bbkt.class.getClassLoader()));
     this.c = paramParcel.readString();
   }
   
@@ -94,7 +94,7 @@ public class EditTakeVideoSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource
  * JD-Core Version:    0.7.0.1
  */

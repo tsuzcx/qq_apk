@@ -1,39 +1,23 @@
-import Wallet.AcsPullMsgRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 
 public class acsc
-  implements acss
+  extends BroadcastReceiver
 {
-  public acsc(ReminderListFragment paramReminderListFragment) {}
+  public acsc(FavEmosmManageActivity paramFavEmosmManageActivity) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBoolean)
-    {
-      paramBundle = (AcsPullMsgRsp)paramBundle.getSerializable("rsp");
-      if (paramBundle != null)
-      {
-        paramBundle = paramBundle.msgs;
-        if ((paramBundle != null) && (!paramBundle.isEmpty()))
-        {
-          ArrayList localArrayList = new ArrayList(paramBundle.size());
-          ReminderListFragment.a(this.a, paramBundle, localArrayList, true);
-          return;
-        }
-        ReminderListFragment.b(this.a);
-        return;
-      }
-      ReminderListFragment.b(this.a);
-      return;
+    if (FavEmosmManageActivity.a(this.a) != null) {
+      FavEmosmManageActivity.a(this.a).a(paramContext, paramIntent);
     }
-    ReminderListFragment.a(this.a, ajya.a(2131713389));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsc
  * JD-Core Version:    0.7.0.1
  */

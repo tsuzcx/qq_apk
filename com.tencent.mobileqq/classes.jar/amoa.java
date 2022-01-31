@@ -1,99 +1,34 @@
-import android.graphics.Paint;
-import android.text.TextUtils;
-import android.util.Pair;
-import java.util.ArrayList;
-import java.util.Random;
+import com.tencent.qphone.base.util.QLog;
 
-public class amoa
+public abstract class amoa
+  implements alkr
 {
-  public static int a;
-  private static Paint a;
-  public static Random a;
+  public abstract void a(amwl paramamwl);
   
-  static
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    jdField_a_of_type_Int = 12;
-    jdField_a_of_type_JavaUtilRandom = new Random();
-    jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  }
-  
-  public static float a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
+    if (QLog.isColorLevel()) {
+      QLog.d("ARLBSObserver", 2, "type=" + paramInt + ", isSuccess=" + paramBoolean);
+    }
+    switch (paramInt)
     {
-      jdField_a_of_type_AndroidGraphicsPaint.setTextSize(36.0F);
-      return jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString) / 36.0F;
+    default: 
+      return;
     }
-    return 1.0F;
-  }
-  
-  private static boolean a(int paramInt)
-  {
-    return ((paramInt >= 19968) && (paramInt <= 40959)) || (paramInt == 65292) || (paramInt == 12290) || (paramInt == 65281) || (paramInt == 8220) || (paramInt == 8221) || (paramInt == 65288) || (paramInt == 65289) || (paramInt == 126) || (paramInt == 65311);
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    int i = 0;
-    for (;;)
+    try
     {
-      if (i >= paramString.length()) {
-        break label37;
-      }
-      if (!a(paramString.codePointAt(i))) {
-        break;
-      }
-      i += 1;
+      a((amwl)paramObject);
+      return;
     }
-    label37:
-    return true;
-  }
-  
-  private static boolean b(String paramString, ArrayList<Pair<String, Float>> paramArrayList)
-  {
-    paramString = paramString.trim();
-    int j = -1;
-    boolean bool = true;
-    int i = 0;
-    if (i < paramString.length())
+    catch (Exception paramObject)
     {
-      String str;
-      if (a(paramString.codePointAt(i)))
-      {
-        str = paramString.substring(i, i + 1);
-        paramArrayList.add(new Pair(str, Float.valueOf(a(str))));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        int k = j;
-        if (j == -1) {
-          k = i;
-        }
-        if (i + 1 < paramString.length())
-        {
-          j = k;
-          if (!a(paramString.codePointAt(i + 1))) {}
-        }
-        else
-        {
-          str = paramString.substring(k, i + 1);
-          paramArrayList.add(new Pair(str, Float.valueOf(a(str))));
-          j = -1;
-        }
-        bool = false;
-      }
+      a(new amwl());
     }
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amoa
  * JD-Core Version:    0.7.0.1
  */

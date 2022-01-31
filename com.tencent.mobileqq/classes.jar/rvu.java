@@ -1,31 +1,13 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.qphone.base.util.QLog;
-
 public class rvu
-  extends AnimatorListenerAdapter
 {
-  public rvu(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout, View paramView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.jdField_a_of_type_AndroidViewView.setLayerType(0, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-  }
+  public int a;
+  public int b;
+  public int c;
+  public int d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rvu
  * JD-Core Version:    0.7.0.1
  */

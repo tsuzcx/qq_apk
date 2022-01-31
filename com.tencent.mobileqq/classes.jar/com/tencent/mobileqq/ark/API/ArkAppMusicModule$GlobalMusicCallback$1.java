@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
-import alpt;
-import alpu;
+import angk;
+import angl;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,23 +9,23 @@ import java.util.Iterator;
 public class ArkAppMusicModule$GlobalMusicCallback$1
   implements Runnable
 {
-  public ArkAppMusicModule$GlobalMusicCallback$1(alpu paramalpu, int paramInt) {}
+  public ArkAppMusicModule$GlobalMusicCallback$1(angl paramangl, int paramInt) {}
   
   public void run()
   {
-    Iterator localIterator = alpt.a.iterator();
+    Iterator localIterator = angk.a.iterator();
     while (localIterator.hasNext())
     {
-      alpt localalpt = (alpt)((WeakReference)localIterator.next()).get();
-      if (localalpt != null) {
-        localalpt.a(this.a);
+      angk localangk = (angk)((WeakReference)localIterator.next()).get();
+      if (localangk != null) {
+        localangk.a(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.1
  * JD-Core Version:    0.7.0.1
  */

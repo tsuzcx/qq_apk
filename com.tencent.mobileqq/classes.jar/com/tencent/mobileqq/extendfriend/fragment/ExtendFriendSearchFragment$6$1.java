@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import aoih;
-import aoiz;
+import aqal;
+import aqay;
 import com.tencent.qphone.base.util.QLog;
 
 public class ExtendFriendSearchFragment$6$1
   implements Runnable
 {
-  public ExtendFriendSearchFragment$6$1(aoih paramaoih) {}
+  public ExtendFriendSearchFragment$6$1(aqal paramaqal) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class ExtendFriendSearchFragment$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.6.1
  * JD-Core Version:    0.7.0.1
  */

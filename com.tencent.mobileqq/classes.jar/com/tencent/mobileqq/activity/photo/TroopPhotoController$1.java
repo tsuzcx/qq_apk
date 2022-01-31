@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agle;
-import agqi;
-import bana;
+import aiiy;
+import ailh;
+import bcln;
 
 public class TroopPhotoController$1
   implements Runnable
 {
-  public TroopPhotoController$1(agqi paramagqi, agle paramagle, bana parambana) {}
+  public TroopPhotoController$1(ailh paramailh, aiiy paramaiiy, bcln parambcln) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_Agle, this.jdField_a_of_type_Bana);
+    this.this$0.a(this.jdField_a_of_type_Aiiy, this.jdField_a_of_type_Bcln);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.TroopPhotoController.1
  * JD-Core Version:    0.7.0.1
  */

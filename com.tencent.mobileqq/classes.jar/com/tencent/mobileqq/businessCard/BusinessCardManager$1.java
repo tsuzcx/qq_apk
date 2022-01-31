@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard;
 
-import amdj;
+import anuj;
 import com.tencent.mobileqq.businessCard.data.BusinessCard;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class BusinessCardManager$1
   implements Runnable
 {
-  public BusinessCardManager$1(amdj paramamdj) {}
+  public BusinessCardManager$1(anuj paramanuj) {}
   
   public void run()
   {
@@ -36,7 +36,7 @@ public class BusinessCardManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.BusinessCardManager.1
  * JD-Core Version:    0.7.0.1
  */

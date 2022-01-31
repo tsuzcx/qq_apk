@@ -1,19 +1,88 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import java.util.Comparator;
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.common.galleryactivity.AbstractImageAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.1;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.2;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.3;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
 
-class avez
-  implements Comparator<QCallRecord>
+public class avez
+  extends AbstractImageAdapter
+  implements avff
 {
-  avez(avex paramavex) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  private avff jdField_a_of_type_Avff;
   
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  public avez(Context paramContext)
   {
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(int paramInt)
+  {
+    int i = ndd.a();
+    if ((i != 1) && (i != 4)) {}
+    avfd localavfd;
+    do
+    {
+      return;
+      localavfd = (avfd)getItem(paramInt + 1);
+      if (localavfd != null) {
+        localavfd.a();
+      }
+      localavfd = (avfd)getItem(paramInt - 1);
+    } while (localavfd == null);
+    localavfd.a();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.1(this, paramInt1, paramInt2));
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.3(this, paramInt, paramBoolean));
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    ((avfd)getItem(paramInt)).a(paramView, paramInt, this);
+  }
+  
+  public void a(avff paramavff)
+  {
+    this.jdField_a_of_type_Avff = paramavff;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new PicBrowserGalleryAdapter.2(this, paramInt1, paramInt2));
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView != null) {
+      return paramView;
+    }
+    paramView = (avfd)getItem(paramInt);
+    paramViewGroup = paramView.a;
+    if (((this.jdField_a_of_type_AndroidContentContext instanceof PicBrowserActivity)) && (((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).b)) {
+      ((PicBrowserActivity)this.jdField_a_of_type_AndroidContentContext).app.a().b(paramViewGroup.a);
+    }
+    paramView = paramView.a(paramInt, this.jdField_a_of_type_AndroidOsHandler, this);
+    paramView.setTag(2131296390, Boolean.valueOf(true));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avez
  * JD-Core Version:    0.7.0.1
  */

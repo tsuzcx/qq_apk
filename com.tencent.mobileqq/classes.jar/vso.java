@@ -1,135 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
-import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tribe.async.async.JobContext;
+import android.app.AlertDialog.Builder;
+import android.content.Context;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class vso
-  extends vsn<vsa, vsa>
+  implements vuc
 {
-  public final String a;
-  private boolean a;
+  public vso(TextureVideoView paramTextureVideoView) {}
   
-  public vso(String paramString)
+  public boolean a(vtz paramvtz, int paramInt1, int paramInt2)
   {
-    this(true, paramString);
-  }
-  
-  public vso(boolean paramBoolean)
-  {
-    this(paramBoolean, null);
-  }
-  
-  public vso(boolean paramBoolean, String paramString)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void a(JobContext paramJobContext, vsa paramvsa)
-  {
-    boolean bool2 = false;
-    int i = 1;
-    String str = this.jdField_a_of_type_JavaLangString;
-    paramJobContext = str;
-    if (str == null) {
-      paramJobContext = vsq.a(paramvsa.jdField_a_of_type_Int, paramvsa.jdField_b_of_type_JavaLangString, ".jpg");
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "Error: " + paramInt1 + "," + paramInt2);
     }
-    if ((this.jdField_a_of_type_Boolean) && (paramvsa.jdField_a_of_type_Boolean)) {
-      ved.b("Q.qqstory.publish.edit.MergePicSegment", "merge has doodle");
+    this.a.jdField_a_of_type_Int = -1;
+    this.a.b = -1;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
     }
-    boolean bool1;
-    for (;;)
+    if ((this.a.jdField_a_of_type_Vuc != null) && (this.a.jdField_a_of_type_Vuc.a(paramvtz, paramInt1, paramInt2))) {}
+    while (this.a.getWindowToken() == null) {
+      return true;
+    }
+    this.a.getContext().getResources();
+    if (paramInt1 == 200) {}
+    for (paramInt1 = 17039381;; paramInt1 = 17039377)
     {
-      try
-      {
-        bool1 = vxv.a(vxv.c(paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_AndroidGraphicsBitmap, paramvsa.jdField_a_of_type_Vse.jdField_b_of_type_AndroidGraphicsBitmap), paramJobContext);
-        i = 0;
-        bool2 = true;
-        avtd.d = bool2;
-        if ((i != 0) || (bool1)) {
-          break;
-        }
-        ved.e("Q.qqstory.publish.edit.MergePicSegment", "save err");
-        super.notifyError(new ErrorMessage(-1, ajya.a(2131706562)));
-        return;
+      paramvtz = TextureVideoView.a(this.a);
+      if (paramvtz == null) {
+        break;
       }
-      catch (Throwable paramJobContext)
-      {
-        ved.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
-        paramJobContext = null;
-        bool1 = false;
-        continue;
-      }
-      if (paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_Int > 0)
-      {
-        ved.b("Q.qqstory.publish.edit.MergePicSegment", "merge use display");
-        try
-        {
-          bool1 = vxv.a(paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_AndroidGraphicsBitmap, paramJobContext);
-          i = 0;
-          bool2 = true;
-        }
-        catch (Throwable paramJobContext)
-        {
-          for (;;)
-          {
-            ved.e("Q.qqstory.publish.edit.MergePicSegment", "merge err: " + paramJobContext);
-            paramJobContext = null;
-            bool1 = false;
-          }
-        }
-      }
-      else
-      {
-        ved.b("Q.qqstory.publish.edit.MergePicSegment", "merge use origin");
-        paramJobContext = paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_JavaLangString;
-        vej.b("0X80075C9");
-        paramvsa.jdField_a_of_type_Vse.jdField_b_of_type_Boolean = true;
-        bool1 = false;
-      }
+      new AlertDialog.Builder(paramvtz).setMessage(paramInt1).setPositiveButton(17039376, new vsp(this)).setCancelable(false).show();
+      return true;
     }
-    paramvsa.jdField_a_of_type_Vse.jdField_b_of_type_JavaLangString = paramJobContext;
-    paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_Boolean = bool1;
-    if ((paramvsa.jdField_a_of_type_Int == 3) && (bool1)) {
-      a(paramvsa, paramvsa.jdField_a_of_type_Vse.jdField_a_of_type_JavaLangString, paramJobContext);
-    }
-    super.notifyResult(paramvsa);
-  }
-  
-  public void a(vsa paramvsa, String paramString1, String paramString2)
-  {
-    double d1;
-    double d2;
-    if (((paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditTakePhotoSource)) && (((EditTakePhotoSource)paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b != 4.9E-324D) && (((EditTakePhotoSource)paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a != 4.9E-324D))
-    {
-      d1 = ((EditTakePhotoSource)paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).b;
-      d2 = ((EditTakePhotoSource)paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
-      if (!TextUtils.isEmpty(paramString1)) {
-        if (!bhol.a(paramString1, paramString2)) {
-          bhol.b(paramString2, d2, d1);
-        }
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        bhol.b(paramString2, d2, d1);
-        return;
-      } while ((!(paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a instanceof EditLocalPhotoSource)) || (TextUtils.isEmpty(paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a())) || (bhol.a(paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a.a(), paramString2)));
-      paramvsa = ((EditLocalPhotoSource)paramvsa.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a).a;
-    } while (paramvsa == null);
-    bhol.a(paramString2, paramvsa.longitude / 1000000.0D, paramvsa.latitude / 1000000.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vso
  * JD-Core Version:    0.7.0.1
  */

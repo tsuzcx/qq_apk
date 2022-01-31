@@ -1,20 +1,12 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.1.1.1;
-
-public class barp
-  implements aybj
+public abstract interface barp
 {
-  public barp(TroopGiftAnimationController.1 param1) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void a()
-  {
-    this.a.this$0.a.post(new TroopGiftAnimationController.1.1.1(this));
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     barp
  * JD-Core Version:    0.7.0.1
  */

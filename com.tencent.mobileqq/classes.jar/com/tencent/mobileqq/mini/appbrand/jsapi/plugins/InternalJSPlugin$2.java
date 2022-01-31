@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 
 class InternalJSPlugin$2
@@ -11,6 +12,9 @@ class InternalJSPlugin$2
   {
     if (paramBoolean)
     {
+      if ((this.this$0.jsPluginEngine.appBrandRuntime instanceof AppBrandRuntime)) {
+        ((AppBrandRuntime)this.this$0.jsPluginEngine.appBrandRuntime).onPauseByOpenUrl();
+      }
       this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$eventName, null, this.val$callbackId);
       return;
     }
@@ -19,7 +23,7 @@ class InternalJSPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.InternalJSPlugin.2
  * JD-Core Version:    0.7.0.1
  */

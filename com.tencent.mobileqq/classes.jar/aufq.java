@@ -1,22 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewGroup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aufq
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  aufq(aufj paramaufj) {}
+  aufq(aufi paramaufi) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (aufj.a(this.a) != null) {
-      aufj.a(this.a).setVisibility(0);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aufq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,28 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.animation.AlphaAnimation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class aqfk
-  extends Handler
+public class aqfk
+  implements View.OnClickListener
 {
-  aqfk(aqfd paramaqfd) {}
+  public aqfk(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString, View paramView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == 0) {
-      bcql.a(this.a.a, ajya.a(2131704826), 0).a();
-    }
-    while (1 != paramMessage.what) {
-      return;
-    }
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.app.getPreferences().edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    paramView = new AlphaAnimation(1.0F, 0.0F);
+    paramView.setDuration(500L);
+    paramView.setAnimationListener(new aqfl(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqfk
  * JD-Core Version:    0.7.0.1
  */

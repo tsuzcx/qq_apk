@@ -10,12 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import uiz;
-import ved;
+import vxr;
+import wsv;
 
 public class StoryPlayerWebToolFragment
   extends PublicBaseFragment
-  implements uiz
+  implements vxr
 {
   private View jdField_a_of_type_AndroidViewView;
   private StoryPlayerWebFragment jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment;
@@ -51,23 +51,23 @@ public class StoryPlayerWebToolFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561334, null);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561524, null);
     paramViewGroup = getChildFragmentManager();
     paramLayoutInflater = getArguments().getString("url");
     paramViewGroup = paramViewGroup.beginTransaction();
     paramBundle = new Intent();
     paramBundle.putExtra("url", paramLayoutInflater);
     paramBundle.putExtra("isFullScreen", true);
-    ved.a("StoryPlayerWebToolFragment", "initPromoteFragment() with url: %s", paramLayoutInflater);
+    wsv.a("StoryPlayerWebToolFragment", "initPromoteFragment() with url: %s", paramLayoutInflater);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment = StoryPlayerWebFragment.a(paramBundle);
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment.a(this);
-    paramViewGroup.replace(2131379385, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment).commit();
+    paramViewGroup.replace(2131380100, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetStoryPlayerWebFragment).commit();
     return this.jdField_a_of_type_AndroidViewView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebToolFragment
  * JD-Core Version:    0.7.0.1
  */

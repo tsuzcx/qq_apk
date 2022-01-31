@@ -1,91 +1,92 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.observer.BusinessObserver;
 
-public class sze
-  extends taw
+class sze
+  implements BusinessObserver
 {
-  public static final String a;
-  public static final String b = sxm.a("StorySvc.del_feed_comment");
-  public static final String c = sxm.a("StorySvc.get_comment_list");
-  protected int a;
-  protected szs a;
-  protected boolean a;
-  private String d;
+  sze(szc paramszc, Intent paramIntent) {}
   
-  static
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    jdField_a_of_type_JavaLangString = sxm.a("StorySvc.add_feed_comment");
-  }
-  
-  public sze(szs paramszs)
-  {
-    this.jdField_a_of_type_Szs = paramszs;
-  }
-  
-  public static void a(CommentEntry paramCommentEntry, tbc paramtbc)
-  {
-    paramCommentEntry = new szi(paramCommentEntry, paramtbc);
-    paramtbc = new szj(paramtbc);
-    tay.a().a(paramCommentEntry, paramtbc);
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    long l = System.currentTimeMillis();
-    Object localObject1 = null;
-    try
+    szc.c(this.jdField_a_of_type_Szc);
+    if (paramBoolean) {}
+    for (;;)
     {
-      Object localObject2 = new JSONObject();
-      ((JSONObject)localObject2).putOpt("vid", paramString3);
-      ((JSONObject)localObject2).putOpt("feedid", paramString4);
-      ((JSONObject)localObject2).putOpt("pvid", paramString5);
-      ((JSONObject)localObject2).putOpt("styles", new JSONArray(paramString6));
-      localObject2 = ((JSONObject)localObject2).toString();
-      localObject1 = localObject2;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      try
       {
-        QLog.e("Q.qqstory:FeedCommentDataProvider", 2, "addGamePKComment jsonException " + localJSONException);
+        Object localObject = paramBundle.getByteArray("data");
+        if (localObject != null)
+        {
+          paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+          paramBundle.mergeFrom((byte[])localObject);
+          if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
+          {
+            localAndroidInfo = paramBundle.androidInfo;
+            localObject = zbj.a(paramBundle.iconsURL, 16);
+            Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.sourceUrl != null) {
+              continue;
+            }
+            paramBundle = "";
+            localIntent.putExtra("struct_share_key_source_url", paramBundle);
+            localIntent = this.jdField_a_of_type_AndroidContentIntent;
+            paramBundle = (Bundle)localObject;
+            if (localObject == null) {
+              paramBundle = "";
+            }
+            localIntent.putExtra("struct_share_key_source_icon", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.messagetail != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_name", paramBundle);
+            localObject = this.jdField_a_of_type_AndroidContentIntent;
+            if (localAndroidInfo.packName != null) {
+              continue;
+            }
+            paramBundle = "";
+            ((Intent)localObject).putExtra("struct_share_key_source_a_action_data", paramBundle);
+          }
+        }
       }
+      catch (Exception paramBundle)
+      {
+        GetAppInfoProto.AndroidInfo localAndroidInfo;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("WebShareHelper", 2, paramBundle.getMessage());
+        continue;
+        this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+        szc.a(this.jdField_a_of_type_Szc).startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      }
+      paramBundle = azqu.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+      if (paramBundle != null) {
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("WebShareHelper", 2, "build struct msg fail");
+      }
+      return;
+      paramBundle = localAndroidInfo.sourceUrl.get();
+      continue;
+      paramBundle = localAndroidInfo.messagetail.get();
+      continue;
+      paramBundle = localAndroidInfo.packName.get();
     }
-    a(paramString1, null, paramString2, l, paramInt, localObject1, 4, new szf(paramString1, paramInt, l, paramString2, paramString3, paramString4, paramString5, paramString6));
-  }
-  
-  public static void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, String paramString4, int paramInt2, tbc paramtbc)
-  {
-    paramString1 = new szg(paramString1, paramString2, paramString3, paramLong, paramInt1, paramString4, paramInt2, paramtbc);
-    paramString2 = new szh(paramtbc);
-    tay.a().a(paramString1, paramString2);
-  }
-  
-  public static void b(CommentEntry paramCommentEntry, tbc paramtbc)
-  {
-    paramCommentEntry = new szg(paramCommentEntry, paramtbc);
-    paramtbc = new szh(paramtbc);
-    tay.a().a(paramCommentEntry, paramtbc);
-  }
-  
-  public void a()
-  {
-    a(this.jdField_a_of_type_Szs.a.feedId, 0);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    paramString = new szk(this, paramString, paramInt);
-    szl localszl = new szl(this);
-    tay.a().a(paramString, localszl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sze
  * JD-Core Version:    0.7.0.1
  */

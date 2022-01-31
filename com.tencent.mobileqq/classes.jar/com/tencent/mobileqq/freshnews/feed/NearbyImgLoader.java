@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.freshnews.feed;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -9,8 +9,8 @@ import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.Display;
 import android.view.WindowManager;
-import aqkd;
-import ayst;
+import asds;
+import baqq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -25,8 +25,8 @@ public class NearbyImgLoader
   private static NearbyImgLoader jdField_a_of_type_ComTencentMobileqqFreshnewsFeedNearbyImgLoader = new NearbyImgLoader();
   public static int b;
   public static int c;
-  ayst jdField_a_of_type_Ayst = new ayst();
-  ArrayList<aqkd> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  baqq jdField_a_of_type_Baqq = new baqq();
+  ArrayList<asds> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public List<URL> a;
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   
@@ -34,7 +34,7 @@ public class NearbyImgLoader
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     int i = ((WindowManager)localBaseApplication.getSystemService("window")).getDefaultDisplay().getWidth();
-    b = (i - actj.a(2.0F, localBaseApplication.getResources())) / 2;
+    b = (i - aekt.a(2.0F, localBaseApplication.getResources())) / 2;
     jdField_a_of_type_Int = i;
     c = localBaseApplication.getResources().getDisplayMetrics().densityDpi;
   }
@@ -323,7 +323,7 @@ public class NearbyImgLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.freshnews.feed.NearbyImgLoader
  * JD-Core Version:    0.7.0.1
  */

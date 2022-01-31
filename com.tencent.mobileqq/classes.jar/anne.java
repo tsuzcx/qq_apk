@@ -1,23 +1,48 @@
-import android.os.Message;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class anne
-  implements auwx
 {
-  anne(annd paramannd, int paramInt) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d = annd.a();
   
-  public void a(int paramInt1, auww paramauww, int paramInt2, String paramString)
+  public anne()
   {
-    if (this.jdField_a_of_type_Annd.a.hasMessages(0))
+    this.jdField_a_of_type_JavaLangString = "android";
+  }
+  
+  public String toString()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.jdField_a_of_type_Annd.a.removeMessages(0);
-      this.jdField_a_of_type_Annd.a.obtainMessage(0, this.jdField_a_of_type_Int, 0).sendToTarget();
+      localJSONObject.put("os", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("app", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("url", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("result", this.jdField_a_of_type_Int);
+      localJSONObject.put("scene", this.jdField_b_of_type_Int);
+      localJSONObject.put("type", this.jdField_c_of_type_Int);
+      localJSONObject.put("ver", this.d);
+      return localJSONObject.toString();
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("ArkApp.ArkSecurityReporter", 1, "ArkSafe.report exception=", localJSONException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anne
  * JD-Core Version:    0.7.0.1
  */

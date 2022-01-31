@@ -1,32 +1,45 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBlackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class vat
-  implements wck
+  extends unk<vcr>
 {
-  public void a(SegmentList paramSegmentList)
+  public static final String a = ume.a("StorySvc.get_user_black_status");
+  public String b;
+  
+  public String a()
   {
-    if (!(paramSegmentList instanceof MystoryListView)) {
-      throw new IllegalArgumentException("arg should match type!");
+    return a;
+  }
+  
+  public unf a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetBlackList localRspGetBlackList = new qqstory_service.RspGetBlackList();
+    try
+    {
+      localRspGetBlackList.mergeFrom(paramArrayOfByte);
+      return new vcr(localRspGetBlackList);
     }
-    paramSegmentList = (MystoryListView)paramSegmentList;
-    Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
-    Object localObject = paramSegmentList.jdField_a_of_type_Vaq;
-    boolean bool = paramSegmentList.a();
-    paramSegmentList.a(sxm.a(localActivity, 5));
-    paramSegmentList.a(new vcp(localActivity, (vaq)localObject));
-    paramSegmentList.a(new vco(localActivity));
-    paramSegmentList.a(new vcf(localActivity));
-    localObject = new vba(localActivity, localActivity, 10, (vaq)localObject, bool);
-    paramSegmentList.a((wco)localObject);
-    paramSegmentList.a(new vdi(localActivity, "FeedSegment", ajya.a(2131707064) + ssf.a + "\n拍摄一段视频，分享眼前的世界", 2130845704, 2130845705));
-    ((vba)localObject).e_(true);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetBlackList localReqGetBlackList = new qqstory_service.ReqGetBlackList();
+    localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqGetBlackList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vat
  * JD-Core Version:    0.7.0.1
  */

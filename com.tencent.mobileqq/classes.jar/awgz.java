@@ -1,12 +1,14 @@
-public abstract interface awgz
+public final class awgz
+  extends awgp
 {
-  public abstract void a(int paramInt);
-  
-  public abstract boolean a(String paramString);
+  protected int c()
+  {
+    return 508;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awgz
  * JD-Core Version:    0.7.0.1
  */

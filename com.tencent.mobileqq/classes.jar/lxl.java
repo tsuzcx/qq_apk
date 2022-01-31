@@ -1,42 +1,73 @@
-import android.content.Intent;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
 public class lxl
-  implements birs
+  extends lwt
 {
-  final WeakReference<QQServiceForAV> a;
+  public int b;
   
-  lxl(QQServiceForAV paramQQServiceForAV)
+  protected float a(int paramInt1, int paramInt2)
   {
-    this.a = new WeakReference(paramQQServiceForAV);
+    return this.b + paramInt1;
   }
   
-  public void a(int paramInt, long paramLong1, long paramLong2) {}
-  
-  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
+  public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQServiceForAV", 2, "PTULibpagDownloadCallback onAEResDownloadResult, package[" + paramInt1 + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt2 + "]");
-    }
-    Object localObject = (QQServiceForAV)this.a.get();
-    if (localObject != null)
+    paramLong -= this.a;
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (paramLong <= 3733L)
     {
-      localObject = (QQAppInterface)((QQServiceForAV)localObject).a();
-      Intent localIntent = new Intent("tencent.video.q2v.ptuLibpagDownloadRet");
-      localIntent.putExtra("packageIdx", paramInt1);
-      localIntent.putExtra("isDownloaded", paramBoolean);
-      localIntent.putExtra("errorType", paramInt2);
-      ((QQAppInterface)localObject).getApp().sendBroadcast(localIntent);
+      paramLong = paramLong * 3L % 2800L / 3L;
+      if ((paramLong < 0L) || (paramLong >= 133L)) {
+        break label65;
+      }
+      f1 = (float)(-3L * paramLong) / 100.0F;
     }
+    for (;;)
+    {
+      a(f1);
+      return;
+      label65:
+      if ((paramLong >= 133L) && (paramLong < 266L))
+      {
+        f1 = (float)(3L * paramLong) / 50.0F - 12.0F;
+      }
+      else if ((paramLong >= 266L) && (paramLong < 400L))
+      {
+        f1 = (float)(-3L * paramLong) / 50.0F + 20.0F;
+      }
+      else if ((paramLong >= 400L) && (paramLong < 533L))
+      {
+        f1 = (float)(3L * paramLong) / 50.0F - 28.0F;
+      }
+      else
+      {
+        f1 = f2;
+        if (paramLong >= 533L)
+        {
+          f1 = f2;
+          if (paramLong < 666L) {
+            f1 = (float)(-3L * paramLong) / 100.0F + 20.0F;
+          }
+        }
+      }
+    }
+  }
+  
+  protected float b(int paramInt1, int paramInt2)
+  {
+    return paramInt2;
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramInt3 = paramInt1 * 102 / 160;
+    paramInt4 = paramInt1 * 140 / 160;
+    this.b = (paramInt1 * 24 / 160);
+    a((paramInt1 - paramInt3) / 2, (paramInt2 - paramInt4) / 2, (paramInt3 + paramInt1) / 2, (paramInt4 + paramInt2) / 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxl
  * JD-Core Version:    0.7.0.1
  */

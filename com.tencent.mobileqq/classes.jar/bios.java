@@ -1,16 +1,20 @@
-public abstract interface bios
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class bios
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a();
+  bios(bioj parambioj, xwj paramxwj) {}
   
-  public abstract void a(bire parambire);
-  
-  public abstract void b();
-  
-  public abstract void c();
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.jdField_a_of_type_Xwj.a();
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bios
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,49 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.data.BmqqAccountType;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.vashealth.VideoCallBack;
 import com.tencent.qphone.base.util.QLog;
 
 public class bdup
-  extends ajto
+  extends Handler
 {
-  public bdup(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public bdup(VideoCallBack paramVideoCallBack, bepp parambepp, String paramString, Activity paramActivity) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a();
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
+    switch (paramMessage.what)
     {
-      this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqDataCard = ((Card)paramObject);
-      if (QidianProfileCardActivity.b(this.a)) {
-        this.a.a(this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqDataCard.vQzoneCoverInfo);
-      }
     }
-  }
-  
-  protected void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
-  {
-    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianProfileCardActivity", 2, "onGetAccountType isSuccess: " + paramBoolean + " | type: " + paramBmqqAccountType + " | cardInfo.allinone.uin: " + this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-    }
-    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_Auuy != null) && (this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)))
-    {
-      this.a.c = paramBmqqAccountType.getAccountType();
-      this.a.b();
-      if (this.a.c == 1) {
-        this.a.jdField_a_of_type_Bduf.b(this.a, paramBmqqAccountType);
-      }
-    }
-    else
+    int i;
+    do
     {
       return;
-    }
-    this.a.a();
+      if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
+        this.jdField_a_of_type_Bepp.dismiss();
+      }
+      i = paramMessage.arg1;
+      if (i != 0) {
+        break;
+      }
+      paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+      Intent localIntent = new Intent();
+      localIntent.putExtra("video_dir", paramMessage);
+      localIntent.putExtra("thumb_dir", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidAppActivity.setResult(1, localIntent);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+    } while (!QLog.isColorLevel());
+    QLog.i("VideoCallBack", 2, "encode success: " + paramMessage);
+    return;
+    this.jdField_a_of_type_AndroidAppActivity.setResult(2);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    QLog.e("VideoCallBack", 1, "error! ret = " + i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdup
  * JD-Core Version:    0.7.0.1
  */

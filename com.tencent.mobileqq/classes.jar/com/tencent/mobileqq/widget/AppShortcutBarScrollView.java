@@ -3,12 +3,12 @@ package com.tencent.mobileqq.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.HorizontalScrollView;
-import bcjv;
+import beiw;
 
 public class AppShortcutBarScrollView
   extends HorizontalScrollView
 {
-  protected bcjv a;
+  protected beiw a;
   
   public AppShortcutBarScrollView(Context paramContext)
   {
@@ -33,9 +33,9 @@ public class AppShortcutBarScrollView
     }
   }
   
-  public void setOnScrollChangedListener(bcjv parambcjv)
+  public void setOnScrollChangedListener(beiw parambeiw)
   {
-    this.a = parambcjv;
+    this.a = parambeiw;
   }
 }
 

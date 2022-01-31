@@ -1,14 +1,19 @@
-import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract interface ajrx
+public class ajrx
 {
-  public abstract void a();
+  public AtomicBoolean a;
+  public boolean a;
   
-  public abstract void a(int paramInt, Bitmap paramBitmap);
+  private ajrx(CameraFilterGLView paramCameraFilterGLView)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajrx
  * JD-Core Version:    0.7.0.1
  */

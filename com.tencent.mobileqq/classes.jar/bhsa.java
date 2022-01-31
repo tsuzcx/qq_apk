@@ -1,29 +1,26 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver;
+import com.tencent.widget.DynamicGridView;
 
 public class bhsa
-  extends bhsh
+  implements bhsh
 {
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private int jdField_a_of_type_Int;
+  private int b;
+  
+  public bhsa(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
   {
-    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
-    while (!"jumpQQCleanPage".equalsIgnoreCase(paramString3)) {
-      return false;
-    }
-    if (this.a.mRuntime.a() != null)
-    {
-      QQSettingCleanActivity.a(this.a.mRuntime.a());
-      return true;
-    }
-    QLog.e("jumpCleanPage", 2, "call activity with null runtime");
-    return false;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new bhsb(this, paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhsa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,98 +1,19 @@
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ofz
-  implements TextWatcher
+class ofz
+  implements View.OnClickListener
 {
-  public ofz(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  ofz(ofx paramofx) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    int i;
-    label51:
-    label86:
-    aezl localaezl;
-    if ((paramEditable instanceof odp))
-    {
-      i = ((odp)paramEditable).a();
-      if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
-      {
-        if (this.a.jdField_c_of_type_Int - i >= -99) {
-          break label236;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("-99");
-      }
-      if (i - this.a.jdField_c_of_type_Int <= 0) {
-        break label261;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FF4222"));
-      this.a.jdField_c_of_type_Boolean = true;
-      ReadInJoyCommentComponentFragment.a(this.a);
-      localaezl = ReadInJoyCommentComponentFragment.a(this.a);
-      if (localaezl != null)
-      {
-        i = paramEditable.toString().trim().length();
-        if (i > 0) {
-          break label294;
-        }
-        this.a.f.setVisibility(8);
-      }
-    }
-    for (;;)
-    {
-      if ((i <= 0) || (paramEditable.length() > 24) || (!localaezl.a(paramEditable))) {
-        break label308;
-      }
-      if (ReadInJoyCommentComponentFragment.a(this.a))
-      {
-        localaezl.a(ReadInJoyCommentComponentFragment.a(this.a).app, paramEditable, null, 7220, false);
-        this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(84);
-        this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(84, 10000L);
-      }
-      this.a.f.setImageResource(2130842264);
-      return;
-      i = paramEditable.length();
-      break;
-      label236:
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.valueOf(this.a.jdField_c_of_type_Int - i));
-      break label51;
-      label261:
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131165534));
-      this.a.jdField_c_of_type_Boolean = false;
-      break label86;
-      label294:
-      this.a.f.setVisibility(0);
-    }
-    label308:
-    localaezl.c();
-    ReadInJoyCommentComponentFragment.a(this.a, false);
-    this.a.f.setSelected(false);
-    this.a.f.setImageResource(2130842613);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (ReadInJoyCommentComponentFragment.b(this.a)) {
-      ReadInJoyCommentComponentFragment.c(this.a, false);
-    }
-    while ((!ReadInJoyCommentComponentFragment.c(this.a)) || (paramInt3 != 1) || (paramInt2 != 0) || (!paramCharSequence.toString().substring(paramInt1, paramInt1 + 1).equals("@"))) {
-      return;
-    }
-    this.a.b("2");
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofz
  * JD-Core Version:    0.7.0.1
  */

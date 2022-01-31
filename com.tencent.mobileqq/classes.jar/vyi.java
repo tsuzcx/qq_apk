@@ -1,21 +1,25 @@
-import java.io.Closeable;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.qqstory.settings.QGSettingFragment;
 
-public final class vyi
+public class vyi
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public static void a(Closeable paramCloseable)
+  public vyi(QGSettingFragment paramQGSettingFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (paramCloseable != null) {}
-    try
+    if (paramBoolean)
     {
-      paramCloseable.close();
+      QGSettingFragment.b(true);
       return;
     }
-    catch (Exception paramCloseable) {}
+    QGSettingFragment.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyi
  * JD-Core Version:    0.7.0.1
  */

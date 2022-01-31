@@ -1,23 +1,18 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ.8;
-
-public class alpq
-  implements ArkAppCacheMgr.OnGetAppIcon
+class alpq
+  implements almm
 {
-  public alpq(ArkAppModuleReg.ModuleQQ.8 param8, bbgu parambbgu) {}
+  alpq(alpp paramalpp) {}
   
-  public void callback(String paramString, Bitmap paramBitmap)
+  public void a(boolean paramBoolean)
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_Bbgu.findViewById(2131365105)).setImageBitmap(paramBitmap);
+    if (paramBoolean) {
+      this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alpq
  * JD-Core Version:    0.7.0.1
  */

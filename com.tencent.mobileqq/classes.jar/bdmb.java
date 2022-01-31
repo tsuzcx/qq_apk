@@ -1,91 +1,82 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.tmassistantsdk.internal.openSDK.TMAssistantBaseCallYYB;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-public class bdmb
-  extends bdmp
+public final class bdmb
 {
-  bdmc jdField_a_of_type_Bdmc;
-  
-  public bdmb(bdlr parambdlr, Activity paramActivity, bdmc parambdmc)
+  public static Object a(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_Bdmc = parambdmc;
+    paramString = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
+    paramString.setAccessible(true);
+    return paramString.invoke(paramObject, paramArrayOfObject);
   }
   
-  protected void a(Boolean paramBoolean)
+  public static Object a(Object paramObject, String paramString, Object[] paramArrayOfObject)
   {
-    a();
-    if (paramBoolean.booleanValue())
+    return a(paramObject, paramString, a(paramArrayOfObject), paramArrayOfObject);
+  }
+  
+  public static Object a(String paramString1, Object paramObject, String paramString2)
+  {
+    paramString1 = Class.forName(paramString1).getDeclaredField(paramString2);
+    paramString1.setAccessible(true);
+    return paramString1.get(paramObject);
+  }
+  
+  public static Object a(String paramString1, String paramString2)
+  {
+    return a(paramString1, paramString2, (Object[])null);
+  }
+  
+  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject)
+  {
+    return a(paramString1, paramString2, paramArrayOfObject, a(paramArrayOfObject));
+  }
+  
+  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass)
+  {
+    paramString1 = Class.forName(paramString1);
+    return paramString1.getDeclaredMethod(paramString2, paramArrayOfClass).invoke(paramString1, paramArrayOfObject);
+  }
+  
+  private static Class<?>[] a(Object[] paramArrayOfObject)
+  {
+    Object localObject = (Class[])null;
+    if (paramArrayOfObject != null)
     {
-      if (bdmo.a())
+      Class[] arrayOfClass = new Class[paramArrayOfObject.length];
+      int i = 0;
+      int j = paramArrayOfObject.length;
+      localObject = arrayOfClass;
+      if (i < j)
       {
-        this.jdField_a_of_type_Bdlr.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Bdlr.jdField_b_of_type_Boolean = false;
-        long l = -1L;
-        switch (this.jdField_a_of_type_Bdmc.jdField_a_of_type_Int)
+        if (paramArrayOfObject[i] != null)
         {
-        case 1: 
-        default: 
-          l = this.jdField_a_of_type_Bdlr.a(this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bdmc.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bdmc.jdField_b_of_type_Boolean);
+          arrayOfClass[i] = paramArrayOfObject[i].getClass();
+          label45:
+          if (arrayOfClass[i] != Integer.class) {
+            break label77;
+          }
+          arrayOfClass[i] = Integer.TYPE;
         }
         for (;;)
         {
-          this.jdField_a_of_type_Bdlr.jdField_a_of_type_Long = l;
-          this.jdField_a_of_type_Bdlr.jdField_b_of_type_Long = System.currentTimeMillis();
-          if ((paramBoolean.booleanValue()) && (this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidOsBundle != null))
-          {
-            paramBoolean = bdjr.a(this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidOsBundle.getString(bdlb.i), "NEWYYB");
-            bdjr.a("311", paramBoolean, this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidOsBundle.getString(bdlb.b));
-            Context localContext = bcyb.a().a();
-            if (localContext != null) {
-              bdjr.a(localContext, "312", paramBoolean, this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidOsBundle.getString(bdlb.b));
-            }
-          }
-          if ((this.jdField_a_of_type_Bdlr.jdField_a_of_type_Bdmf != null) && (this.jdField_a_of_type_Bdlr.jdField_a_of_type_Bdmf.isShowing())) {
-            this.jdField_a_of_type_Bdlr.jdField_a_of_type_Bdmf.dismiss();
-          }
-          return;
-          this.jdField_a_of_type_Bdlr.e = true;
-          if (this.jdField_a_of_type_Bdlr.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
-          {
-            l = this.jdField_a_of_type_Bdlr.a().addDownloadTaskFromAuthorize(this.jdField_a_of_type_Bdlr.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
-          }
-          else
-          {
-            bdii.e("MyAppApi", "CopyAndInstallTask->onPostExecute mLastAuthorizeParam = null");
-            continue;
-            l = this.jdField_a_of_type_Bdlr.b(this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bdmc.jdField_a_of_type_Boolean, this.jdField_a_of_type_Bdmc.jdField_b_of_type_Boolean);
-            continue;
-            l = this.jdField_a_of_type_Bdlr.b(this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidOsBundle);
+          i += 1;
+          break;
+          arrayOfClass[i] = String.class;
+          break label45;
+          label77:
+          if (arrayOfClass[i] == Boolean.class) {
+            arrayOfClass[i] = Boolean.TYPE;
           }
         }
       }
-      if (this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-      }
-      this.jdField_a_of_type_Bdlr.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-      return;
     }
-    if (this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-    }
-    this.jdField_a_of_type_Bdlr.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-  }
-  
-  protected void onCancelled()
-  {
-    super.onCancelled();
-    if (this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_Bdmc.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdmb
  * JD-Core Version:    0.7.0.1
  */

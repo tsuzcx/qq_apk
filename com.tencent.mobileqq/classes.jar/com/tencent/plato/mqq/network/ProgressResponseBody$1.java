@@ -1,6 +1,6 @@
 package com.tencent.plato.mqq.network;
 
-import com.squareup.okhttp.ResponseBody;
+import okhttp3.ResponseBody;
 import okio.Buffer;
 import okio.ForwardingSource;
 import okio.Source;
@@ -41,7 +41,7 @@ class ProgressResponseBody$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.plato.mqq.network.ProgressResponseBody.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,29 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
-class bitg
-  extends RecyclerView.OnScrollListener
+public class bitg
+  extends bitw
 {
-  bitg(bitf parambitf) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public bitg(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    bitf.a(this.a).notifyDataSetChanged();
+    super(paramContext);
+  }
+  
+  public void onBackPressed()
+  {
+    if (this.a.a) {
+      super.onBackPressed();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bitg
  * JD-Core Version:    0.7.0.1
  */

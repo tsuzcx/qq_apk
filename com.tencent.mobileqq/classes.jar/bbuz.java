@@ -1,76 +1,61 @@
-import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import javax.annotation.Nullable;
 
-class bbuz
-  implements Handler.Callback
+public class bbuz
+  extends aofy<bbuy>
 {
-  bbuz(bbuw parambbuw) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public int a()
   {
-    if (paramMessage.what == 1)
-    {
-      paramMessage = bbuw.a();
-      int i = paramMessage.getInt("timer2_interval", 0);
-      int m = paramMessage.getInt("timer2_retry_times", 0);
-      int j = paramMessage.getInt("timer2_start_hour", 0);
-      int k = paramMessage.getInt("timer2_end_hour", 0);
-      if ((bbut.a == 0L) || (NetConnInfoCenter.getServerTimeMillis() - bbut.a < i))
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i);
-        return true;
-      }
-      if (this.a.jdField_a_of_type_Int >= m)
-      {
-        QLog.i("SportManager", 2, "retry time enough cancel task.");
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-        return true;
-      }
-      paramMessage = Calendar.getInstance();
-      paramMessage.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-      m = paramMessage.get(11);
-      if (m >= j)
-      {
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += 1;
-        this.a.a("timer2 callback report1");
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, i + 2000);
-        return true;
-        if (m >= k) {
-          break;
-        }
-        paramMessage.set(11, 0);
-        paramMessage.set(12, 0);
-        paramMessage.set(13, 0);
-        paramMessage.set(14, 0);
-        if (bbut.a - paramMessage.getTimeInMillis() > 0L)
-        {
-          QLog.i("SportManager", 2, "already report cancel task.");
-          this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-          return true;
-        }
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += 1;
-        this.a.a("timer2 callback report2");
-      }
-      QLog.i("SportManager", 2, "over time cancel task.");
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      return true;
+    return 605;
+  }
+  
+  @NonNull
+  public bbuy a(int paramInt)
+  {
+    QLog.d("PublishHwkThirdPartyEntryConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new bbuy();
+  }
+  
+  @Nullable
+  public bbuy a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return bbuy.a(paramArrayOfaogf[0].a);
     }
-    return false;
+    return null;
+  }
+  
+  public Class<bbuy> a()
+  {
+    return bbuy.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("PublishHwkThirdPartyEntryConfig.config", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public void a(bbuy parambbuy) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbuz
  * JD-Core Version:    0.7.0.1
  */

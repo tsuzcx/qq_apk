@@ -1,73 +1,225 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.biz.widgets.ScannerView;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.text.TextUtils;
+import android.util.TypedValue;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import java.util.Locale;
 
 public class xnq
-  extends Handler
+  extends xno
+  implements View.OnTouchListener
 {
-  public xnq(ScannerView paramScannerView) {}
+  public static final int[] a;
+  public static final int[] b;
+  public static final int[] c = { 2130844178, 2130844181 };
+  public static final int[] d = { 2131377676, 2131377677 };
+  int jdField_a_of_type_Int;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public boolean a;
+  TextView b;
   
-  public void handleMessage(Message paramMessage)
+  static
   {
-    if (paramMessage.what == 9)
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131363647, 2131363648 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130844177, 2130844180 };
+  }
+  
+  public xnq(xnt paramxnt, View paramView, int paramInt)
+  {
+    super(paramxnt, paramView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(jdField_a_of_type_ArrayOfInt[paramInt]));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(d[paramInt]));
+    paramView.setOnTouchListener(this);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public CharSequence a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView.getText();
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format(Locale.getDefault(), "%.0f%%", new Object[] { Float.valueOf(paramFloat) }));
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    if (TextUtils.isEmpty(paramCharSequence)) {}
+    for (CharSequence localCharSequence = this.jdField_a_of_type_AndroidWidgetTextView.getHint();; localCharSequence = paramCharSequence)
     {
-      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131690591), 1);
-      paramMessage.setGravity(17, 0, 0);
-      paramMessage.show();
-    }
-    Object localObject;
-    do
-    {
-      return;
-      localObject = ScannerView.a(this.a);
-      if (localObject != null) {}
-      switch (paramMessage.what)
+      int j;
+      int k;
+      float[] arrayOfFloat1;
+      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0)
       {
-      case 3: 
-      case 4: 
-      case 5: 
-      case 6: 
-      default: 
-        localObject = ScannerView.a(this.a);
-        if (localObject != null) {}
-        switch (paramMessage.what)
-        {
-        default: 
-          localObject = ScannerView.a(this.a);
+        j = 1;
+        if (j == 0) {
+          break label201;
         }
-        break;
+        k = xod.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 72.5F);
+        arrayOfFloat1 = new float[3];
+        float[] tmp55_53 = arrayOfFloat1;
+        tmp55_53[0] = 21.0F;
+        float[] tmp60_55 = tmp55_53;
+        tmp60_55[1] = 18.0F;
+        float[] tmp65_60 = tmp60_55;
+        tmp65_60[2] = 14.0F;
+        tmp65_60;
       }
-    } while (localObject == null);
-    switch (paramMessage.what)
+      int i;
+      int n;
+      for (;;)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(k);
+        float[] arrayOfFloat2 = new float[localCharSequence.length()];
+        Paint localPaint = new Paint(this.jdField_a_of_type_AndroidWidgetTextView.getPaint());
+        i = 0;
+        if (i >= arrayOfFloat1.length) {
+          break label335;
+        }
+        localPaint.setTextSize(TypedValue.applyDimension(1, arrayOfFloat1[i], this.jdField_a_of_type_AndroidWidgetTextView.getResources().getDisplayMetrics()));
+        localPaint.getTextWidths(localCharSequence.toString(), arrayOfFloat2);
+        n = 0;
+        int i1 = arrayOfFloat2.length;
+        int m = 0;
+        while (m < i1)
+        {
+          float f = arrayOfFloat2[m];
+          n = (int)(n + f);
+          m += 1;
+        }
+        j = 0;
+        break;
+        label201:
+        k = xod.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 84.0F);
+        arrayOfFloat1 = new float[2];
+        float[] tmp222_220 = arrayOfFloat1;
+        tmp222_220[0] = 28.0F;
+        float[] tmp227_222 = tmp222_220;
+        tmp227_222[1] = 21.0F;
+        tmp227_222;
+      }
+      if ((n <= k) || (i == arrayOfFloat1.length - 1))
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, arrayOfFloat1[i]);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+        wsv.a("Q.qqstory.widget.PollWidgetUtils", "text size = %s", Float.valueOf(arrayOfFloat1[i]));
+      }
+      for (;;)
+      {
+        paramCharSequence = xni.a(this.jdField_a_of_type_AndroidWidgetTextView, 2);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+        if ((j != 0) && (i == arrayOfFloat1.length - 1)) {
+          this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(1, 20.0F);
+        }
+        return;
+        i += 1;
+        break;
+        label335:
+        i = -1;
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-    default: 
+      this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130844125);
       return;
     }
-    if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue())) {}
-    for (boolean bool = true;; bool = false)
+    this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
+  }
+  
+  public CharSequence b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView.getHint();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    c(paramBoolean);
+    super.b(paramBoolean);
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      ((xnt)localObject).a(bool);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(jdField_b_of_type_ArrayOfInt[this.jdField_a_of_type_Int]);
+      this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(0.01F, 0.0F, 2.0F, -35568);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+      this.jdField_b_of_type_AndroidWidgetTextView.setShadowLayer(0.01F, 0.0F, 2.0F, -35568);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
       return;
-      ((xnu)localObject).a(String.valueOf(paramMessage.obj));
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+      this.jdField_b_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-16777216);
       return;
-      ((xnu)localObject).c();
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(c[this.jdField_a_of_type_Int]);
+    }
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    c(this.jdField_b_of_type_Boolean);
+  }
+  
+  public void e(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0))
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      a(this.jdField_a_of_type_AndroidWidgetTextView.getText());
+    }
+    while ((paramBoolean) || (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)) {
       return;
-      ((xnu)localObject).b();
-      return;
-      ((xnu)localObject).a();
-      return;
-      ((xns)localObject).a(String.valueOf(paramMessage.obj), 1, 1);
-      return;
-      ((xns)localObject).a(1);
-      return;
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    a(this.jdField_a_of_type_AndroidWidgetTextView.getText());
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((a()) || (this.jdField_a_of_type_Xnn == null) || (!this.jdField_a_of_type_Xnt.a())) {
+      return paramView.onTouchEvent(paramMotionEvent);
+    }
+    switch (paramMotionEvent.getActionMasked())
+    {
+    }
+    for (;;)
+    {
+      return paramView.onTouchEvent(paramMotionEvent);
+      c(true);
+      continue;
+      c(false);
+      continue;
+      if ((paramMotionEvent.getX() < 0.0F) || (paramMotionEvent.getX() > paramView.getWidth()) || (paramMotionEvent.getY() < 0.0F) || (paramMotionEvent.getY() > paramView.getHeight())) {
+        c(false);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xnq
  * JD-Core Version:    0.7.0.1
  */

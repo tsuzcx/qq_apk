@@ -1,25 +1,28 @@
-import java.io.File;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.component.ComponentPageView;
 
-final class tvk
-  implements stv
+public class tvk
+  extends RecyclerView.OnScrollListener
 {
-  tvk(File paramFile, String paramString) {}
+  public tvk(ComponentPageView paramComponentPageView) {}
   
-  public void a(stt paramstt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    String str = paramstt.b;
-    if (str != null)
-    {
-      if ((paramstt.a) && (this.jdField_a_of_type_JavaIoFile.exists()) && (!suj.a(this.jdField_a_of_type_JavaIoFile))) {
-        this.jdField_a_of_type_JavaIoFile.delete();
-      }
-      tvh.a(new tvn(this.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), ""));
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {
+      ComponentPageView.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvk
  * JD-Core Version:    0.7.0.1
  */

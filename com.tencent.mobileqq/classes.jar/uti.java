@@ -1,84 +1,102 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadGroupList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-class uti
-  extends QQUIEventReceiver<ute, tjj>
+public class uti
 {
-  public uti(ute paramute)
-  {
-    super(paramute);
-  }
+  public int a;
+  public List<String> a;
+  public int b;
+  public List<String> b;
   
-  public void a(ute paramute, tjj paramtjj)
+  public uti(qqstory_struct.VideoSpreadGroupList paramVideoSpreadGroupList)
   {
-    if (!TextUtils.equals(paramtjj.jdField_a_of_type_JavaLangString, paramute.c)) {}
-    do
+    if (paramVideoSpreadGroupList == null) {}
+    for (;;)
     {
-      do
+      return;
+      this.jdField_a_of_type_Int = paramVideoSpreadGroupList.visibility_type.get();
+      int k;
+      int i;
+      if ((paramVideoSpreadGroupList.group_list != null) && (paramVideoSpreadGroupList.group_list.has()))
       {
-        return;
-        paramute.b(paramute.b);
-      } while ((paramtjj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (!paramtjj.e));
-      if (paramtjj.c) {
-        paramute.a.clear();
+        k = paramVideoSpreadGroupList.group_list.size();
+        this.jdField_a_of_type_JavaUtilList = new ArrayList(k);
+        i = 0;
+        while (i < k)
+        {
+          this.jdField_a_of_type_JavaUtilList.add(String.valueOf(((Long)paramVideoSpreadGroupList.group_list.get(i)).longValue()));
+          i += 1;
+        }
       }
-      paramtjj = paramtjj.jdField_a_of_type_JavaUtilList;
-    } while (paramtjj == null);
-    paramtjj = paramtjj.iterator();
-    label72:
-    VideoCollectionItem localVideoCollectionItem;
-    Object localObject1;
-    ArrayList localArrayList;
-    Object localObject2;
-    if (paramtjj.hasNext())
-    {
-      localVideoCollectionItem = (VideoCollectionItem)paramtjj.next();
-      localObject1 = new ArrayList();
-      localArrayList = new ArrayList(localVideoCollectionItem.videoVidList);
-      localObject2 = new ArrayList();
-      Iterator localIterator = localVideoCollectionItem.videoItemList.iterator();
-      while (localIterator.hasNext()) {
-        ((ArrayList)localObject2).add(((StoryVideoItem)localIterator.next()).mVid);
-      }
-      localArrayList.removeAll((Collection)localObject2);
-    }
-    int j;
-    for (int i = 0;; i = j)
-    {
-      if (i < localArrayList.size())
+      this.jdField_b_of_type_Int = paramVideoSpreadGroupList.visibility_sharegroup_type.get();
+      if ((paramVideoSpreadGroupList.share_group_list != null) && (paramVideoSpreadGroupList.share_group_list.has()))
       {
-        j = Math.min(localArrayList.size(), i + 20);
-        if (i < j) {}
+        k = paramVideoSpreadGroupList.share_group_list.size();
+        this.jdField_b_of_type_JavaUtilList = new ArrayList(k);
+        i = j;
+        while (i < k)
+        {
+          this.jdField_b_of_type_JavaUtilList.add(((ByteStringMicro)paramVideoSpreadGroupList.share_group_list.get(i)).toStringUtf8());
+          i += 1;
+        }
       }
-      else
-      {
-        localObject1 = new tjb((List)localObject1);
-        ((tjb)localObject1).a("Q.qqstory.memories:MemoryDataPuller");
-        paramute.a.put(localVideoCollectionItem.collectionId, localObject1);
-        break label72;
-        break;
-      }
-      localObject2 = localArrayList.subList(i, j);
-      ((List)localObject1).add(paramute.a(localVideoCollectionItem.collectionId, (List)localObject2));
     }
   }
   
-  public Class acceptEventClass()
+  public uti(List<String> paramList)
   {
-    return tjj.class;
+    if (paramList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_b_of_type_Int = 2;
+  }
+  
+  public static boolean a(uti paramuti)
+  {
+    return (paramuti == null) || (paramuti.jdField_a_of_type_JavaUtilList == null) || (paramuti.jdField_a_of_type_JavaUtilList.isEmpty());
+  }
+  
+  public qqstory_struct.VideoSpreadGroupList a()
+  {
+    qqstory_struct.VideoSpreadGroupList localVideoSpreadGroupList = new qqstory_struct.VideoSpreadGroupList();
+    localVideoSpreadGroupList.setHasFlag(false);
+    Iterator localIterator;
+    String str;
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      localVideoSpreadGroupList.visibility_type.set(this.jdField_a_of_type_Int);
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        str = (String)localIterator.next();
+        localVideoSpreadGroupList.group_list.add(Long.valueOf(str));
+      }
+      localVideoSpreadGroupList.setHasFlag(true);
+    }
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (!this.jdField_b_of_type_JavaUtilList.isEmpty()))
+    {
+      localVideoSpreadGroupList.visibility_sharegroup_type.set(this.jdField_b_of_type_Int);
+      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        str = (String)localIterator.next();
+        localVideoSpreadGroupList.share_group_list.add(ByteStringMicro.copyFromUtf8(str));
+      }
+      localVideoSpreadGroupList.setHasFlag(true);
+    }
+    return localVideoSpreadGroupList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uti
  * JD-Core Version:    0.7.0.1
  */

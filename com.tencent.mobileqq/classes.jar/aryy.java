@@ -1,161 +1,52 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForLocationShare;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import msf.msgcomm.msg_comm.Msg;
-import msf.msgcomm.msg_comm.MsgHead;
-import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype31;
-import tencent.im.msg.im_msg_body.CommonElem;
-import tencent.im.msg.im_msg_body.Elem;
 
-public class aryy
+class aryy
+  extends nac
 {
-  public static List<MessageRecord> a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
-  {
-    return paramQQAppInterface.a().a(paramString, paramInt, new int[] { -2076 }, 5);
-  }
+  aryy(arys paramarys, String paramString1, String paramString2, String paramString3) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, boolean paramBoolean)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    paramString = b(paramQQAppInterface, paramInt, paramString);
-    if (paramString != null)
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramInt = 0;
-      if (paramInt < paramString.size())
-      {
-        MessageRecord localMessageRecord = (MessageRecord)paramString.get(paramInt);
-        if ((localMessageRecord instanceof MessageForLocationShare))
-        {
-          if (paramInt != paramString.size() - 1) {
-            break label69;
-          }
-          a(paramQQAppInterface, localMessageRecord, paramBoolean);
-        }
-        for (;;)
-        {
-          paramInt += 1;
-          break;
-          label69:
-          a(paramQQAppInterface, localMessageRecord, false);
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationMessageUtil", 2, new Object[] { "updateAllLbsMsgState: invoked. ", " lbsMsgs: ", paramString, " lbsMsgs.size(): ", Integer.valueOf(paramString.size()) });
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean)
-  {
-    MessageForLocationShare localMessageForLocationShare;
-    if ((paramMessageRecord instanceof MessageForLocationShare))
-    {
-      localMessageForLocationShare = (MessageForLocationShare)paramMessageRecord;
-      if (localMessageForLocationShare.isSharingLocation == paramBoolean) {
-        break label79;
-      }
-      localMessageForLocationShare.isSharingLocation = paramBoolean;
-      paramQQAppInterface.a().a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq, localMessageForLocationShare.convertToMsgData());
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationMessageUtil", 2, new Object[] { "updateMsgSharingState: invoked. updateMsgContentByUniseq to false ", " locationShare: ", localMessageForLocationShare });
-      }
-      return;
-      label79:
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationMessageUtil", 2, "updateMsgSharingState: invoked. state ok, no need update. ");
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationMessageUtil", 2, new Object[] { "onDecodeC2cLbsCloseRoomMessage: invoked. ", " friendUin: ", paramString });
-    }
-    aryz.a(paramQQAppInterface, 0, paramString, false);
-    a(paramQQAppInterface, 0, paramString, false);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg, boolean paramBoolean, azml paramazml)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LocationMessageUtil", 2, new Object[] { "decodePBMsgElems_LbsShareMsg: invoked. ", "elems = [" + paramList + "], msgRecords = [" + paramList1 + "], logBuilder = [" + paramStringBuilder + "], msg = [" + paramMsg + "]" });
-    }
-    if ((paramList == null) || (paramList.size() == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("LocationMessageUtil", 2, "decodePBMsgElems_LbsShareMsg msg decode failed");
-      }
-    }
-    do
-    {
-      return;
-      if (paramBoolean)
-      {
-        if (paramQQAppInterface.getLongAccountUin() == paramMsg.msg_head.to_uin.get()) {}
-        for (paramQQAppInterface = paramMsg.msg_head.from_uin.get() + "";; paramQQAppInterface = paramMsg.msg_head.to_uin.get() + "")
-        {
-          paramList = paramList.iterator();
-          while (paramList.hasNext())
-          {
-            paramMsg = (im_msg_body.Elem)paramList.next();
-            if ((paramMsg.common_elem.has()) && (paramMsg.common_elem.uint32_service_type.get() == 31) && (paramMsg.common_elem.bytes_pb_elem.has())) {
-              try
-              {
-                new hummer_commelem.MsgElemInfo_servtype31().mergeFrom(paramMsg.common_elem.bytes_pb_elem.get().toByteArray());
-              }
-              catch (InvalidProtocolBufferMicroException paramMsg)
-              {
-                QLog.e("LocationMessageUtil", 1, "decodePBMsgElems_LbsShareMsg: failed. ", paramMsg);
-              }
-            }
-          }
-        }
-      }
-      if (paramazml != null) {}
-      for (paramQQAppInterface = paramazml.a;; paramQQAppInterface = paramMsg.msg_head.to_uin.get() + "") {
+      arzy.a("KEY_STAGE_2_IMAGE_B77", bool);
+      if (paramBundle == null) {
         break;
       }
-      if (QLog.isColorLevel()) {
-        paramStringBuilder.append("elemType:LbsShareMsg;\n");
+      long l = paramBundle.getLong("0xb77_9_sendTime", -1L);
+      QLog.d("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "handleGetMessageState currentRequestTime =", Long.valueOf(arys.a(this.jdField_a_of_type_Arys)), ", sendStamp = ", Long.valueOf(l) });
+      if ((l != -1L) && (l == arys.a(this.jdField_a_of_type_Arys))) {
+        break;
       }
-      paramList = (MessageForLocationShare)axas.a(-2076);
-      paramList.msgtype = -2076;
-      paramList.msg = BaseApplicationImpl.context.getString(2131719753);
-      paramList.isSharingLocation = true;
-      paramList.frienduin = paramQQAppInterface;
-      paramList.parse();
-      paramList1.add(paramList);
-    } while (!QLog.isColorLevel());
-    paramStringBuilder.append("LbsShareMsg.msg: ").append(paramList.toString() + "\n").append("\n");
+      arys.a(this.jdField_a_of_type_Arys, arys.e(), this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    azmj.b(null, "dc00898", "", "", "0X8009C94", "0X8009C94", 0, 0, "" + paramInt, "4", this.b, this.c);
+    QLog.d("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "大图发送消息后客户端收到回调=0X8009C94, errorCode=", Integer.valueOf(paramInt), ", fileType=4, toType=", this.b, ", title=", this.c });
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      paramArrayOfByte = ForwardUtils.a(paramArrayOfByte);
+      arys.a(this.jdField_a_of_type_Arys, (String)paramArrayOfByte[2], this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    arys.a(this.jdField_a_of_type_Arys, "", this.jdField_a_of_type_JavaLangString);
   }
   
-  public static List<MessageRecord> b(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  public boolean a(int paramInt, String paramString, Bundle paramBundle)
   {
-    return paramQQAppInterface.a().a(paramString, paramInt, 9223372036854775807L, 3, 9223372036854775807L, new int[] { -2076 }, 2147483647);
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    aryz.a(paramQQAppInterface, 1, paramString, false);
-    a(paramQQAppInterface, 1, paramString, false);
+    if (!TextUtils.isEmpty(paramString)) {
+      QLog.e("ForwardOption.ForwardSdkShareOption", 1, new Object[] { "onError msg =", paramString });
+    }
+    return super.a(paramInt, paramString, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aryy
  * JD-Core Version:    0.7.0.1
  */

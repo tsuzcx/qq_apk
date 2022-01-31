@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.microapp.b;
 
-import bbkk;
+import bdje;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -25,7 +25,7 @@ public final class d
     e locale;
     if ((this.c != null) && (this.c.a()))
     {
-      if (!bbkk.a(this.c.f))
+      if (!bdje.a(this.c.f))
       {
         if (this.c.d == null) {
           this.c.d = new HashMap();
@@ -62,7 +62,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,18 @@
-public abstract interface aezt
+import android.view.MotionEvent;
+
+class aezt
+  implements beld
 {
-  public abstract void a(afac paramafac);
+  aezt(aezp paramaezp) {}
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return aezp.a(this.a, paramMotionEvent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezt
  * JD-Core Version:    0.7.0.1
  */

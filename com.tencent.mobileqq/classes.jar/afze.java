@@ -1,32 +1,68 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AppGuideTipsConfig;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTimDouFuGuide;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class afze
-  implements View.OnClickListener
+public class afze
+  extends aekw
 {
-  afze(afzd paramafzd) {}
-  
-  public void onClick(View paramView)
+  public afze(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    this.a.a.g = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131691961);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.a.d.setVisibility(8);
-    this.a.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131368429));
-    this.a.a.d.setVisibility(0);
-    this.a.a.d.setOnClickListener(this.a.a.b);
-    if (this.a.a.jdField_a_of_type_Agau != null) {
-      this.a.a.jdField_a_of_type_Agau.a();
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+  }
+  
+  protected aekx a()
+  {
+    return new afzg(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, aekx paramaekx, View paramView, LinearLayout paramLinearLayout, aeov paramaeov)
+  {
+    paramLinearLayout = (afzg)paramaekx;
+    paramaekx = paramView;
+    if (paramView == null)
+    {
+      paramaekx = LayoutInflater.from(this.a).inflate(2131558820, null);
+      paramLinearLayout.b = ((TextView)paramaekx.findViewById(2131377884));
+      paramLinearLayout.c = ((TextView)paramaekx.findViewById(2131364770));
     }
+    if ((paramMessageRecord != null) && ((paramMessageRecord instanceof MessageForTimDouFuGuide)))
+    {
+      paramMessageRecord = ((MessageForTimDouFuGuide)paramMessageRecord).config;
+      if (paramMessageRecord != null)
+      {
+        paramLinearLayout.b.setText(paramMessageRecord.tipsHighLight);
+        paramView = new SpannableString(paramMessageRecord.tipsMsg + alpo.a(2131715316));
+        int i = paramView.length();
+        paramView.setSpan(new ForegroundColorSpan(paramaekx.getResources().getColor(2131166913)), i - 4, i, 33);
+        paramLinearLayout.c.setText(paramView);
+        paramaekx.setOnClickListener(new afzf(this, paramMessageRecord));
+      }
+    }
+    return paramaekx;
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bdlb[] a(View paramView)
+  {
+    return new bdkz().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afze
  * JD-Core Version:    0.7.0.1
  */

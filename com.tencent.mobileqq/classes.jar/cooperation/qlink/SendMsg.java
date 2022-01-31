@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bgoz;
+import bipy;
 import com.tencent.qphone.base.util.QLog;
 
 public class SendMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator<SendMsg> CREATOR = new bgoz();
+  public static final Parcelable.Creator<SendMsg> CREATOR = new bipy();
   int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = -1L;
   public final Bundle a;
@@ -91,7 +91,7 @@ public class SendMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qlink.SendMsg
  * JD-Core Version:    0.7.0.1
  */

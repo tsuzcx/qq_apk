@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import bcql;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 class QQIdentiferLegacy$2
   implements Runnable
@@ -10,12 +10,12 @@ class QQIdentiferLegacy$2
   
   public void run()
   {
-    bcql.a(QQIdentiferLegacy.a(this.this$0), this.a, 1).b(QQIdentiferLegacy.a(this.this$0).getTitleBarHeight());
+    QQToast.a(QQIdentiferLegacy.a(this.this$0), this.a, 1).b(QQIdentiferLegacy.a(this.this$0).getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacy.2
  * JD-Core Version:    0.7.0.1
  */

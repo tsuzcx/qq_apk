@@ -1,45 +1,47 @@
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.io.File;
 
-final class aduj
-  implements DialogInterface.OnClickListener
+public class aduj
+  implements View.OnClickListener
 {
-  aduj(Emoticon paramEmoticon, Context paramContext, QQAppInterface paramQQAppInterface, int paramInt) {}
+  public aduj(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    boolean bool;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4)
+    this.a.b(3);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.b);
+    if (this.a.a().booleanValue())
     {
-      bool = true;
-      EmojiHomeUiPlugin.openEmojiDetailPage((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, false, bool);
-      if (adue.a != null)
+      this.a.b();
+      paramView = ThemeUtil.getThemeVoiceRootPath();
+      if (paramView != null)
       {
-        if (7 != this.jdField_a_of_type_Int) {
-          break label80;
+        paramView = new File(paramView + File.separatorChar + "message.mp3");
+        if (paramView.exists())
+        {
+          this.a.b();
+          this.a.a(Uri.fromFile(paramView));
         }
-        adue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, adue.a.frienduin, "ep_mall", "Clk_pkg_forward", 0);
       }
     }
-    label80:
-    while (6 != this.jdField_a_of_type_Int)
+    else
     {
       return;
-      bool = false;
-      break;
     }
-    adue.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, adue.a.frienduin, "ep_mall", "Clk_collect_more", 0);
+    this.a.b();
+    this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230721));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aduj
  * JD-Core Version:    0.7.0.1
  */

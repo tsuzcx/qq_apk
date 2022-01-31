@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_APP_PAY.MiniAppMidasPay.StMiniCheckOfferIdRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -73,7 +73,7 @@ public class MiniAppCheckOfferIdServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_pay.MiniCheckOfferId");
-      paramPacket.putSendData(bbma.a((byte[])localObject1));
+      paramPacket.putSendData(bdku.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       if (QLog.isColorLevel()) {
         QLog.d("MiniAppCheckOfferIdServlet", 2, "onSend. intent: " + paramIntent.toString());
@@ -95,7 +95,7 @@ public class MiniAppCheckOfferIdServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppCheckOfferIdServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,26 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
 public class sio
-  extends Handler
+  implements siv
 {
-  public sio(SwipeBackLayout paramSwipeBackLayout) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void handleMessage(Message paramMessage)
+  public sio(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView, int paramInt1, int paramInt2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (SwipeBackLayout.a(this.a));
-      SwipeBackLayout.a(this.a, true);
-    } while (!(this.a.a instanceof Activity));
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
-    }
-    this.a.c = true;
-    ((Activity)this.a.a).finish();
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new sip(this, paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sio
  * JD-Core Version:    0.7.0.1
  */

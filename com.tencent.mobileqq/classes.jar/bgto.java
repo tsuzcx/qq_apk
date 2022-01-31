@@ -1,35 +1,40 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.manager.EngineChannel;
+import com.tencent.qqmini.sdk.minigame.GameRuntimeLoader;
 
 public final class bgto
-  extends WtloginObserver
+  implements bgqh<GameRuntimeLoader>
 {
-  public bgto(Handler.Callback paramCallback) {}
-  
-  public void OnException(String paramString, int paramInt)
+  public GameRuntimeLoader a(Context paramContext, Bundle paramBundle)
   {
-    paramString = Message.obtain();
-    paramString.what = 1001;
-    if (this.a != null) {
-      this.a.handleMessage(paramString);
+    paramContext = new GameRuntimeLoader(paramContext, null);
+    if (paramBundle != null)
+    {
+      paramBundle = (EngineChannel)paramBundle.getParcelable("engineChannel");
+      if (paramBundle != null) {
+        paramContext.setEngineChannel(paramBundle);
+      }
     }
+    return paramContext;
   }
   
-  public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
+  public void a(Bundle paramBundle) {}
+  
+  public boolean a(Bundle paramBundle)
   {
-    paramString = Message.obtain();
-    paramString.what = 1000;
-    if (this.a != null) {
-      this.a.handleMessage(paramString);
-    }
+    return true;
+  }
+  
+  public boolean a(MiniAppInfo paramMiniAppInfo)
+  {
+    return (paramMiniAppInfo != null) && (paramMiniAppInfo.isEngineTypeMiniGame());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgto
  * JD-Core Version:    0.7.0.1
  */

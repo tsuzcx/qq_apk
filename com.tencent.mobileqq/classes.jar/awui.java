@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
-
-public class awui
-  extends awut
+public abstract interface awui
 {
-  public awui(GroupSearchEngine paramGroupSearchEngine, awuu paramawuu, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramawuu, paramString, paramInt);
-  }
+  public abstract void a(awug paramawug, awuh paramawuh);
   
-  public awoh a(List<awoi> paramList, String paramString)
-  {
-    return new bgqv(paramList, paramString);
-  }
+  public abstract void b(awug paramawug, awuh paramawuh);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awui
  * JD-Core Version:    0.7.0.1
  */

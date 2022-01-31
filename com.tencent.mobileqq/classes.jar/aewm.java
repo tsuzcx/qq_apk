@@ -1,89 +1,107 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecCacheEntity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.List;
-import org.apache.http.Header;
-
-class aewm
-  implements URLDrawableDownListener
+public class aewm
+  implements aewi
 {
-  aewm(aewl paramaewl) {}
+  public static final aewj<aewm> a;
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private float b;
+  private float c;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadCancelled");
+    jdField_a_of_type_Aewj = new aewn();
+  }
+  
+  public aewm() {}
+  
+  public aewm(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public aewm(aewg paramaewg)
+  {
+    paramaewg.a();
+    this.jdField_a_of_type_Float = paramaewg.a();
+    this.b = paramaewg.a();
+    this.c = paramaewg.a();
+    this.jdField_a_of_type_Long = paramaewg.a();
+  }
+  
+  public aewm(aewm paramaewm)
+  {
+    if (paramaewm != null) {
+      a(paramaewm.a(), paramaewm.b(), paramaewm.c(), 0L);
     }
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public float a()
   {
-    aewl.a(this.a, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.e("StickerRecBarAdapter", 2, "drawableListener onLoadFialed:" + paramURLDrawable.getURL(), paramThrowable);
-    }
+    return this.jdField_a_of_type_Float;
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public long a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerRecBarAdapter", 2, "drawableListener onLoadInterrupted");
-    }
+    return this.jdField_a_of_type_Long;
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void a(float paramFloat)
   {
-    l2 = -1L;
-    try
-    {
-      Object localObject = paramURLDrawable.getHeader("report_key_start_download");
-      l1 = l2;
-      if (localObject != null)
-      {
-        localObject = ((Header)localObject).getValue();
-        l1 = l2;
-        if (localObject != null)
-        {
-          l1 = Long.parseLong((String)localObject);
-          long l3 = System.currentTimeMillis();
-          l1 = l3 - l1;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        long l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("StickerRecBarAdapter", 2, "onLoadSuccessed:get start download time");
-          l1 = l2;
-        }
-      }
-    }
-    aewl.a(this.a, paramURLDrawable, l1);
-    paramView = paramView.getTag();
-    if (aexb.b((aewf)paramView))
-    {
-      paramView = (aewv)paramView;
-      if ((aexb.b(paramView)) && (!aewl.a(this.a).contains(paramView.j())))
-      {
-        aewl.a(this.a).add(paramView.j());
-        paramURLDrawable = paramView.l();
-        aewl.a(this.a).add(new StickerRecCacheEntity(paramURLDrawable, System.currentTimeMillis(), paramView.j()));
-      }
-    }
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    this.c = paramFloat3;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(aewg paramaewg, int paramInt)
+  {
+    paramaewg.a(1);
+    paramaewg.a(this.jdField_a_of_type_Float);
+    paramaewg.a(this.b);
+    paramaewg.a(this.c);
+    paramaewg.a(this.jdField_a_of_type_Long);
+  }
+  
+  public float b()
+  {
+    return this.b;
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.b = paramFloat;
+  }
+  
+  public float c()
+  {
+    return this.c;
+  }
+  
+  public void c(float paramFloat)
+  {
+    this.c = paramFloat;
+  }
+  
+  public void d(float paramFloat)
+  {
+    this.jdField_a_of_type_Float *= paramFloat;
+    this.b *= paramFloat;
+    this.c *= paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewm
  * JD-Core Version:    0.7.0.1
  */

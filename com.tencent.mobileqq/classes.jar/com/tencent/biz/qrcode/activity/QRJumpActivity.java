@@ -4,20 +4,20 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcqf;
+import bepp;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URLDecoder;
 import mqq.app.NewIntent;
-import wfj;
-import wgm;
-import wgn;
+import xub;
+import xve;
+import xvf;
 
 public class QRJumpActivity
   extends BaseActivity
 {
-  protected bcqf a;
+  protected bepp a;
   
   public boolean doOnCreate(Bundle paramBundle)
   {
@@ -33,9 +33,9 @@ public class QRJumpActivity
     if (isFinishing()) {
       return false;
     }
-    this.a = new bcqf(this, super.getTitleBarHeight());
-    this.a.c(2131717254);
-    this.a.setOnCancelListener(new wgm(this));
+    this.a = new bepp(this, super.getTitleBarHeight());
+    this.a.c(2131717626);
+    this.a.setOnCancelListener(new xve(this));
     this.a.show();
     String str1;
     try
@@ -105,8 +105,8 @@ public class QRJumpActivity
       if (QLog.isColorLevel()) {
         QLog.i("QRJumpActivity", 2, String.format("JumpUrl authSig=%s oriUrl=%s", new Object[] { paramBundle, str3 }));
       }
-      paramBundle = new wgn(this, (String)localObject1, paramBundle, this, str1);
-      localObject1 = new NewIntent(this, wfj.class);
+      paramBundle = new xvf(this, (String)localObject1, paramBundle, this, str1);
+      localObject1 = new NewIntent(this, xub.class);
       ((NewIntent)localObject1).putExtra("d", str1);
       ((NewIntent)localObject1).putExtra("cmd", "QRCodeSvc.decode");
       ((NewIntent)localObject1).putExtra("bqq", "1");
@@ -137,7 +137,7 @@ public class QRJumpActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRJumpActivity
  * JD-Core Version:    0.7.0.1
  */

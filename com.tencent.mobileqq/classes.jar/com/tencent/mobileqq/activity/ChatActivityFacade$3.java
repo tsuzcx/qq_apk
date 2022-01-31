@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import aanz;
+import acex;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import mqq.app.NewIntent;
-import mqu;
-import xgy;
+import mto;
+import yvr;
 
 public final class ChatActivityFacade$3
   implements Runnable
@@ -17,21 +17,21 @@ public final class ChatActivityFacade$3
   public void run()
   {
     NewIntent localNewIntent;
-    if (aanz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true))
+    if (acex.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true))
     {
-      long l = aanz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      long l = acex.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       QLog.i("ChatActivityFacade.QZoneStoryFeeds", 1, "lastTime: " + l);
-      localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), xgy.class);
+      localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), yvr.class);
       localNewIntent.putExtra("key_last_aio_story_create_time", l);
     }
     try
     {
-      localNewIntent.putExtra("key_friend_uid", mqu.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
-      aanz.a().jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      aanz.a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      localNewIntent.setObserver(aanz.a());
+      localNewIntent.putExtra("key_friend_uid", mto.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+      acex.a().jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      acex.a().jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+      localNewIntent.setObserver(acex.a());
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-      aanz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "key_last_req_aio_story_feed_time");
+      acex.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "key_last_req_aio_story_feed_time");
       return;
     }
     catch (Exception localException)
@@ -45,7 +45,7 @@ public final class ChatActivityFacade$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,24 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
-public class afbl
+class afbl
   implements View.OnClickListener
 {
-  public afbl(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  afbl(afbk paramafbk) {}
   
   public void onClick(View paramView)
   {
-    if (BlessSelectMemberActivity.a() != null) {
-      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
     }
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
-    }
+    afbk.a(this.a, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afbl
  * JD-Core Version:    0.7.0.1
  */

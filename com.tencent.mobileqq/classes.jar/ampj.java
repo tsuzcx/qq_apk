@@ -1,44 +1,75 @@
-final class ampj
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
+import java.util.TreeMap;
+
+public class ampj
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b;
-  private final String c;
+  static String a;
   
-  public ampj(int paramInt, String paramString1, long paramLong, String paramString2)
+  public static String a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramString2;
-    this.c = (this.jdField_a_of_type_Int + "-" + this.jdField_a_of_type_JavaLangString + "-" + this.jdField_a_of_type_Long);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (!(paramObject instanceof ampj)) {}
-    do
+    if (a == null) {
+      if (!bdag.a()) {
+        break label56;
+      }
+    }
+    label56:
+    for (String str = bduw.a(aljq.aX) + "pddata/prd/" + "ar_promotion" + File.separator;; str = BaseApplicationImpl.getApplication().getFilesDir() + "/pddata/prd/" + "ar_promotion" + File.separator)
     {
-      return false;
-      paramObject = (ampj)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long));
-    return true;
+      a = str;
+      return a;
+    }
   }
   
-  public int hashCode()
+  public static String a(ampd paramampd)
   {
-    return this.c.hashCode();
+    if (paramampd == null) {
+      return null;
+    }
+    paramampd = (ampe)paramampd.a().get(Integer.valueOf(0));
+    if (paramampd == null) {
+      return null;
+    }
+    return a(paramampd);
   }
   
-  public String toString()
+  public static String a(ampe paramampe)
   {
-    return "Entry{type=" + this.jdField_a_of_type_Int + ", key='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin=" + this.jdField_a_of_type_Long + ", path='" + this.b + '\'' + '}';
+    return paramampe.d + "entry" + File.separator;
+  }
+  
+  private static String a(String paramString, int paramInt)
+  {
+    return a() + paramString + File.separator + paramInt + File.separator;
+  }
+  
+  public static String a(String paramString1, int paramInt, String paramString2)
+  {
+    return a(paramString1, paramInt) + paramString2 + ".zip";
+  }
+  
+  public static String b(ampd paramampd)
+  {
+    paramampd = (ampe)paramampd.a().get(Integer.valueOf(0));
+    if (paramampd == null) {
+      return null;
+    }
+    return b(paramampd);
+  }
+  
+  public static String b(ampe paramampe)
+  {
+    return paramampe.d + "guide" + File.separator;
+  }
+  
+  public static final String b(String paramString1, int paramInt, String paramString2)
+  {
+    return a(paramString1, paramInt) + paramString2 + File.separator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampj
  * JD-Core Version:    0.7.0.1
  */

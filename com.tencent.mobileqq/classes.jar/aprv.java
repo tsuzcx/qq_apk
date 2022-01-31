@@ -1,12 +1,17 @@
-import java.util.List;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.ProgressButton;
 
-public abstract interface aprv<M>
+public class aprv
+  extends apow
 {
-  public abstract void a(List<M> paramList, int paramInt, apsb paramapsb);
+  public TextView a;
+  public URLImageView a;
+  public ProgressButton a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aprv
  * JD-Core Version:    0.7.0.1
  */

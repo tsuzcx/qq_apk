@@ -1,56 +1,34 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.qun.group_effect.group_effect.EffectInfo;
-import tencent.qun.group_effect.group_effect.UserConfig;
-import tencent.qun.group_effect.group_effect_commu.TEffectDetail;
-
 public class azrk
 {
-  public int a;
-  public long a;
   public String a;
-  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public group_effect_commu.TEffectDetail a()
+  public azrk(String paramString)
   {
-    group_effect_commu.TEffectDetail localTEffectDetail = new group_effect_commu.TEffectDetail();
-    Object localObject = new group_effect.UserConfig();
-    ((group_effect.UserConfig)localObject).effect_id.set(this.jdField_a_of_type_Int);
-    ((group_effect.UserConfig)localObject).group_code.set(this.jdField_a_of_type_Long);
-    localObject = ((group_effect.UserConfig)localObject).status;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (long l = 1L;; l = 0L)
-    {
-      ((PBUInt64Field)localObject).set(l);
-      new group_effect.EffectInfo().name.set(this.jdField_a_of_type_JavaLangString);
-      return localTEffectDetail;
-    }
+    this(null, null, null, null, null, null, null, paramString);
   }
   
-  public void a(group_effect_commu.TEffectDetail paramTEffectDetail)
+  public azrk(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    group_effect.UserConfig localUserConfig = (group_effect.UserConfig)paramTEffectDetail.st_userconfig.get();
-    paramTEffectDetail = (group_effect.EffectInfo)paramTEffectDetail.st_effectinfo.get();
-    this.jdField_a_of_type_Int = localUserConfig.effect_id.get();
-    this.jdField_a_of_type_JavaLangString = paramTEffectDetail.name.get();
-    this.jdField_a_of_type_Long = localUserConfig.group_code.get();
-    if (localUserConfig.status.get() != 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
-  public String toString()
-  {
-    return "{groupCode: " + this.jdField_a_of_type_Long + ", effectId: " + this.jdField_a_of_type_Int + ", isOn: " + this.jdField_a_of_type_Boolean + "}";
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+    this.f = paramString6;
+    this.g = paramString7;
+    this.h = paramString8;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azrk
  * JD-Core Version:    0.7.0.1
  */

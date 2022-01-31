@@ -1,27 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
 
-public class aspc
-  extends AnimatorListenerAdapter
+public abstract interface aspc
 {
-  public aspc(MultiAIOFragment paramMultiAIOFragment) {}
+  public abstract void a(Animation paramAnimation);
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    MultiAIOFragment.d(this.a);
-  }
+  public abstract void a(HeartLayout paramHeartLayout, float paramFloat1, float paramFloat2);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiAIOFragment.d(this.a);
-  }
+  public abstract void b(Animation paramAnimation);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aspc
  * JD-Core Version:    0.7.0.1
  */

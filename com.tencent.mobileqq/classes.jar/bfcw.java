@@ -1,49 +1,46 @@
-import android.content.Context;
+import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea;
+import android.view.View.OnTouchListener;
+import com.tencent.open.agent.SwitchAccountActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class bfcw
-  implements View.OnFocusChangeListener
+  implements View.OnTouchListener
 {
-  public bfcw(MiniAppTextArea paramMiniAppTextArea) {}
+  protected GestureDetector.SimpleOnGestureListener a;
+  protected GestureDetector a;
+  View jdField_a_of_type_AndroidViewView;
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public bfcw(SwitchAccountActivity paramSwitchAccountActivity)
   {
-    if (!MiniAppTextArea.a(this.a))
+    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bfcx(this);
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("AccountManage", 2, "action = " + i);
+    }
+    if (i == 0)
     {
-      if (!paramBoolean) {
-        break label98;
-      }
-      localInputMethodManager = (InputMethodManager)MiniAppTextArea.a(this.a).getContext().getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.showSoftInput(paramView, 0);
-      }
-      if (MiniAppTextArea.b(this.a))
-      {
-        i = MiniAppTextArea.a(this.a);
-        j = MiniAppTextArea.b(this.a);
-        k = MiniAppTextArea.c(this.a);
-        MiniAppTextArea.a(this.a, i - j - k);
+      this.jdField_a_of_type_AndroidViewView = paramView;
+      if (this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a == true) {
+        this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = false;
       }
     }
-    label98:
-    while (!MiniAppTextArea.b(this.a))
-    {
-      InputMethodManager localInputMethodManager;
-      int i;
-      int j;
-      int k;
-      return;
-    }
-    MiniAppTextArea.a(this.a);
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfcw
  * JD-Core Version:    0.7.0.1
  */

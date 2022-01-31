@@ -1,12 +1,69 @@
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScanTask;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
-public abstract interface azuq
+public class azuq
 {
-  public abstract void a(long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask);
+  public static View a(Context paramContext, View paramView, aeov paramaeov, Bundle paramBundle)
+  {
+    paramaeov = paramContext.getResources();
+    int i;
+    label37:
+    Object localObject;
+    if (paramBundle.getInt("longMsgHolderType", -1) == 1)
+    {
+      i = 1;
+      if ((paramView == null) || (!(paramView instanceof RelativeLayout))) {
+        break label237;
+      }
+      ((RelativeLayout)paramView).removeAllViews();
+      paramView = (RelativeLayout)paramView;
+      paramView.setLayoutParams(new RelativeLayout.LayoutParams(-1, aekt.a(75.0F, paramaeov)));
+      paramBundle = new RelativeLayout(paramContext);
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject).addRule(13);
+      paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject);
+      localObject = new ImageView(paramContext);
+      paramContext = new TextView(paramContext);
+      if (i == 0) {
+        break label249;
+      }
+      ((ImageView)localObject).setImageResource(2130841353);
+      paramContext.setText(paramaeov.getString(2131696900));
+    }
+    for (;;)
+    {
+      ((ImageView)localObject).setId(2131377077);
+      ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(aekt.a(23.5F, paramaeov), aekt.a(22.5F, paramaeov)));
+      paramBundle.addView((View)localObject);
+      paramContext.setTextSize(2, 14.0F);
+      paramContext.setTextColor(Color.parseColor("#777777"));
+      localObject = new RelativeLayout.LayoutParams(-2, -2);
+      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131377077);
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = aekt.a(7.5F, paramaeov);
+      paramBundle.addView(paramContext, (ViewGroup.LayoutParams)localObject);
+      return paramView;
+      i = 0;
+      break;
+      label237:
+      paramView = new RelativeLayout(paramContext);
+      break label37;
+      label249:
+      ((ImageView)localObject).setImageResource(2130841352);
+      paramContext.setText(paramaeov.getString(2131696899));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azuq
  * JD-Core Version:    0.7.0.1
  */

@@ -13,14 +13,14 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import wbi;
-import wbj;
+import xqa;
+import xqb;
 
 public class EmptySupportViewPager
   extends ViewPager
 {
-  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new wbi(this);
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new wbj(this);
+  private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver = new xqa(this);
+  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new xqb(this);
   public List<ViewPager.OnPageChangeListener> a;
   public Set<Pair<View, Boolean>> a;
   
@@ -98,7 +98,7 @@ public class EmptySupportViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.EmptySupportViewPager
  * JD-Core Version:    0.7.0.1
  */

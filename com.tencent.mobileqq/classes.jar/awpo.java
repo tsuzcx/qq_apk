@@ -1,111 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
-import pb.unify.search.UnifySearchCommon.ResultItem;
+import QC.UniBusiSimpleItemDetail;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class awpo
-  extends awor
+class awpo
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private int d;
-  private String j;
+  awpo(awpn paramawpn, UniBusiSimpleItemDetail paramUniBusiSimpleItemDetail) {}
   
-  public awpo(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
+  public void onClick(View paramView)
   {
-    super(paramString, paramLong, paramList, paramResultItem, paramInt);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if ((awpn.a(this.jdField_a_of_type_Awpn) == 5) && (awpn.a(this.jdField_a_of_type_Awpn) != null) && ((awpn.a(this.jdField_a_of_type_Awpn) instanceof StickyNotePublishFragment)) && (!((StickyNotePublishFragment)awpn.a(this.jdField_a_of_type_Awpn)).a()))
+    {
+      QQToast.a(awpn.a(this.jdField_a_of_type_Awpn), alpo.a(2131715513), 0).a();
       return;
     }
-    try
+    awpn.a(this.jdField_a_of_type_Awpn, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId);
+    if (9 == awpn.a(this.jdField_a_of_type_Awpn)) {}
+    for (paramView = "1";; paramView = "2")
     {
-      this.d = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("appid");
+      VasWebviewUtil.reportCommercialDrainage("friend_wall", "item_click", "", 0, "", paramView);
+      this.jdField_a_of_type_Awpn.notifyDataSetChanged();
+      awpn.a(this.jdField_a_of_type_Awpn, this.jdField_a_of_type_QCUniBusiSimpleItemDetail);
+      awpn.a(this.jdField_a_of_type_Awpn, true);
+      this.jdField_a_of_type_Awpn.a(awpn.a(this.jdField_a_of_type_Awpn), this.jdField_a_of_type_QCUniBusiSimpleItemDetail.itemId, this.jdField_a_of_type_QCUniBusiSimpleItemDetail.feeType, this.jdField_a_of_type_Awpn.a);
       return;
     }
-    catch (JSONException paramString)
-    {
-      QLog.e(c, 2, "parseLayoutExtensions exception:" + paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(String paramString)
-  {
-    this.j = paramString;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public String d()
-  {
-    return this.j;
-  }
-  
-  public String e()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public int f()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int g()
-  {
-    return this.d;
-  }
-  
-  public int h()
-  {
-    return this.jdField_b_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awpo
  * JD-Core Version:    0.7.0.1
  */

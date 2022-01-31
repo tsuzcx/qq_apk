@@ -1,23 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
+import java.util.LinkedHashMap;
 
-public final class anis
-  implements Parcelable.Creator<IntimateInfo.CommonTroopInfo>
+public class anis
 {
-  public IntimateInfo.CommonTroopInfo a(Parcel paramParcel)
+  public String a;
+  public LinkedHashMap<String, String> a;
+  public String b = "";
+  public String c = "1.0.0.1";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  
+  public anis()
   {
-    return new IntimateInfo.CommonTroopInfo(paramParcel);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   }
   
-  public IntimateInfo.CommonTroopInfo[] a(int paramInt)
+  public boolean equals(Object paramObject)
   {
-    return new IntimateInfo.CommonTroopInfo[paramInt];
+    if (!(paramObject instanceof anis)) {}
+    do
+    {
+      return false;
+      paramObject = (anis)paramObject;
+    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.b.equals(paramObject.b)) || (!this.h.equals(paramObject.h)) || (!this.jdField_a_of_type_JavaUtilLinkedHashMap.equals(paramObject.jdField_a_of_type_JavaUtilLinkedHashMap)));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anis
  * JD-Core Version:    0.7.0.1
  */

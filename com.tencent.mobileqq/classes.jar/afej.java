@@ -1,37 +1,26 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import com.tencent.widget.SwipListView;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class afej
-  implements aiob
+class afej
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public afej(AddContactsView paramAddContactsView) {}
+  afej(afei paramafei) {}
   
-  public void a()
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled");
+    if (paramBitmap != null)
+    {
+      this.a.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
     }
-    this.a.b.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onRecommendsAvailable");
-    }
-    this.a.b.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afej
  * JD-Core Version:    0.7.0.1
  */

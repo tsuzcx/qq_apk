@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-
-public class aror
-  implements DialogInterface.OnCancelListener
+class aror
+  implements army
 {
-  public aror(UiApiPlugin paramUiApiPlugin, String paramString) {}
+  aror(aroq paramaroq) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString + "({button: -1})");
+    cx.b(this.a.a, 0);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aror
  * JD-Core Version:    0.7.0.1
  */

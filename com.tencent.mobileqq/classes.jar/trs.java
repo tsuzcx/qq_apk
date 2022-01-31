@@ -1,46 +1,29 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StReply;
 
-class trs
-  implements AdapterView.OnItemClickListener
+public class trs
 {
-  trs(trr paramtrr) {}
+  public FeedCloudMeta.StComment a;
+  public FeedCloudMeta.StFeed a;
+  public FeedCloudMeta.StReply a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public trs(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment)
   {
-    if (trr.a(this.a).a().isShowing()) {
-      trr.a(this.a).a().dismiss();
-    }
-    int i = ((bbjv)paramView.getTag()).a.c;
-    if ((i == 9) || (i == 10)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131720917;
-      }
-    }
-    for (;;)
-    {
-      if (paramInt != -1)
-      {
-        wij.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131720918;
-        }
-      }
-      else
-      {
-        this.a.a(i);
-        return;
-      }
-      paramInt = -1;
-    }
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
+  }
+  
+  public trs(FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StComment paramStComment, FeedCloudMeta.StReply paramStReply)
+  {
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment = paramStComment;
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply = paramStReply;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trs
  * JD-Core Version:    0.7.0.1
  */

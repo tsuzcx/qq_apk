@@ -1,49 +1,39 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class adlp
-  extends Handler
+public class adlp
+  extends BroadcastReceiver
 {
-  adlp(adlo paramadlo, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adlp(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramMessage.obj == null)
+    paramContext = paramIntent.getAction();
+    if (("tencent.av.v2q.StartVideoChat".equals(paramContext)) || ("tencent.av.v2q.AvSwitch".equals(paramContext)))
     {
-      switch (paramMessage.what)
+      i = paramIntent.getIntExtra("sessionType", 0);
+      QLog.d("qq_Identification.act", 1, "received video chat broadcast: " + i);
+      if ((i == 2) || (i == 4))
       {
-      default: 
-        return;
-      case 4: 
-        adlo.a(this.a);
-        return;
+        QQIdentiferActivity.a(this.a, 204, atdf.a);
+        QQIdentiferActivity.a(this.a, 204, atdf.a);
+        this.a.finish();
       }
-      adlo.a(this.a, true);
-      return;
     }
-    WeakReference localWeakReference = (WeakReference)paramMessage.obj;
-    switch (paramMessage.what)
+    while (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramContext))
     {
-    default: 
-      return;
-    case 1: 
-      adlo.a(this.a, localWeakReference);
-      return;
-    case 2: 
-      adlo.b(this.a, localWeakReference);
+      int i;
       return;
     }
-    adlo.c(this.a, localWeakReference);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlp
  * JD-Core Version:    0.7.0.1
  */

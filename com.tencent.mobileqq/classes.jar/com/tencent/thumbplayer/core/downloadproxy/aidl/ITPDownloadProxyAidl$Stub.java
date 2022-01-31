@@ -103,13 +103,13 @@ public abstract class ITPDownloadProxyAidl$Stub
       }
     case 5: 
       paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
-      paramParcel1 = getPlayUrl(paramParcel1.readInt());
+      paramParcel1 = getPlayUrl(paramParcel1.readInt(), paramParcel1.readInt());
       paramParcel2.writeNoException();
       paramParcel2.writeString(paramParcel1);
       return true;
     case 6: 
       paramParcel1.enforceInterface("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
-      paramParcel1 = getClipPlayUrl(paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel1 = getClipPlayUrl(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
       paramParcel2.writeNoException();
       paramParcel2.writeString(paramParcel1);
       return true;
@@ -176,7 +176,7 @@ public abstract class ITPDownloadProxyAidl$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl.Stub
  * JD-Core Version:    0.7.0.1
  */

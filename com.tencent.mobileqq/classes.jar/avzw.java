@@ -1,51 +1,30 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUAlphaBlendFilter;
-import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
-import com.tencent.ttpic.openapi.filter.GPUOESBaseFilter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.data.AutoReplyText;
+import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
 
 public class avzw
+  implements View.OnClickListener
 {
-  public static GPUBaseFilter a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return new GPUBaseFilter();
-    case 101: 
-      return new GPUBaseFilter();
-    case 102: 
-      return new GPUOESBaseFilter();
-    case 0: 
-      return new avzy();
-    case 7: 
-      return new awaa();
-    case 5: 
-      return new awac();
-    case 6: 
-      return new awad();
-    case 4: 
-      return new avzz();
-    case 106: 
-      return new awab();
-    }
-    return new GPUAlphaBlendFilter();
-  }
+  public avzw(AutoReplyEditActivity paramAutoReplyEditActivity) {}
   
-  public static boolean a(int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    awak.a(AutoReplyEditActivity.a(this.a), false);
+    String str = String.valueOf(AutoReplyEditActivity.a(this.a).getText());
+    if (AutoReplyEditActivity.a(this.a) != null) {}
+    for (paramView = AutoReplyEditActivity.a(this.a).getRawText(); !str.equals(paramView); paramView = "")
     {
-    case 1: 
-    case 2: 
-    case 3: 
-    default: 
-      return false;
+      AutoReplyEditActivity.a(this.a);
+      return;
     }
-    return true;
+    AutoReplyEditActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avzw
  * JD-Core Version:    0.7.0.1
  */

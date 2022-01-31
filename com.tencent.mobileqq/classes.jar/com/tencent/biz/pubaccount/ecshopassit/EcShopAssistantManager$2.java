@@ -2,16 +2,16 @@ package com.tencent.biz.pubaccount.ecshopassit;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import bbkc;
+import bdiw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.Set;
-import nqn;
+import ntw;
 
 public class EcShopAssistantManager$2
   implements Runnable
 {
-  public EcShopAssistantManager$2(nqn paramnqn) {}
+  public EcShopAssistantManager$2(ntw paramntw) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class EcShopAssistantManager$2
     {
       Object[] arrayOfObject = this.this$0.jdField_a_of_type_JavaUtilSet.toArray();
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        bbkc.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "ec_shop_assist_new_unread_list", arrayOfObject).commit();
+        bdiw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "ec_shop_assist_new_unread_list", arrayOfObject).commit();
       }
       return;
     }
@@ -27,7 +27,7 @@ public class EcShopAssistantManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager.2
  * JD-Core Version:    0.7.0.1
  */

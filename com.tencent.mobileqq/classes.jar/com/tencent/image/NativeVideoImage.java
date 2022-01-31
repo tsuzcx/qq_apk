@@ -229,7 +229,7 @@ public class NativeVideoImage
     {
       try
       {
-        int i = ShortVideoSoLoad.LoadExtractedShortVideoSo("AVCodec", paramContext);
+        int i = ShortVideoSoLoad.LoadExtractedShortVideo("AVCodec");
         if (i != 0) {
           continue;
         }

@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.data.Friends;
+import java.util.ArrayList;
 
-class qho
+public class qho
 {
+  public float a;
   public int a;
-  public Friends a;
+  public long a;
+  public String a;
+  public ArrayList<qhn> a;
+  public long b;
+  public String b;
+  public long c;
   
-  public qho(Friends paramFriends, int paramInt)
+  public qho(qhl paramqhl) {}
+  
+  public String toString()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataFriends = paramFriends;
-    this.jdField_a_of_type_Int = paramInt;
+    return "\nGestureEvent{direction=" + this.jdField_a_of_type_Int + ", deltaFromLastScroll=" + this.jdField_a_of_type_Long + ", scrollDistance=" + this.jdField_b_of_type_Long + ", scrollMills=" + this.c + ", scrollSpeed=" + this.jdField_a_of_type_Float + ", scrollDownAndUpCoordinate='" + this.jdField_a_of_type_JavaLangString + '\'' + ", clickCoordinate='" + this.jdField_b_of_type_JavaLangString + '\'' + ", scrollStateInfos=" + this.jdField_a_of_type_JavaUtilArrayList + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qho
  * JD-Core Version:    0.7.0.1
  */

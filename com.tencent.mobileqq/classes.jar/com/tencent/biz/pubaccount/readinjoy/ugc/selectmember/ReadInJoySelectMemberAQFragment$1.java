@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember;
 
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ReadInJoySelectMemberAQFragment$1
   implements Runnable
@@ -13,12 +13,12 @@ class ReadInJoySelectMemberAQFragment$1
       return;
     }
     this.this$0.a();
-    bcql.a(this.this$0.getActivity(), 1, this.this$0.getString(this.a), 0).b(ReadInJoySelectMemberAQFragment.a(this.this$0));
+    QQToast.a(this.this$0.getActivity(), 1, this.this$0.getString(this.a), 0).b(ReadInJoySelectMemberAQFragment.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberAQFragment.1
  * JD-Core Version:    0.7.0.1
  */

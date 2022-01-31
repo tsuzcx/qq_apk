@@ -3,7 +3,7 @@ package com.tencent.mobileqq.profile.PersonalityLabel;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import auui;
+import awlu;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.io.Serializable;
@@ -12,7 +12,7 @@ import tencent.im.label.comm.PersonalityTagComm.PraiseUserInfo;
 public class PersonalityLabelZan
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<PersonalityLabelZan> CREATOR = new auui();
+  public static final Parcelable.Creator<PersonalityLabelZan> CREATOR = new awlu();
   public static final String TAG = "PersonalityLabelPhoto";
   public String nick;
   public long uin;
@@ -64,7 +64,7 @@ public class PersonalityLabelZan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelZan
  * JD-Core Version:    0.7.0.1
  */

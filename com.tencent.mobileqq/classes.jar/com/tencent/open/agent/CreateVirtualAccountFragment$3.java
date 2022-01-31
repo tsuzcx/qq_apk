@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 
 class CreateVirtualAccountFragment$3
   implements Runnable
@@ -9,20 +9,20 @@ class CreateVirtualAccountFragment$3
   
   public void run()
   {
-    bcql localbcql = new bcql(this.this$0.getActivity());
+    QQToast localQQToast = new QQToast(this.this$0.getActivity());
     if (this.jdField_a_of_type_Boolean)
     {
-      localbcql.a(bcql.a(2));
-      localbcql.b(2);
+      localQQToast.a(QQToast.a(2));
+      localQQToast.b(2);
     }
     for (;;)
     {
-      localbcql.d(2000);
-      localbcql.a(this.jdField_a_of_type_JavaLangString);
-      localbcql.a();
+      localQQToast.d(2000);
+      localQQToast.a(this.jdField_a_of_type_JavaLangString);
+      localQQToast.a();
       return;
-      localbcql.a(bcql.a(1));
-      localbcql.b(1);
+      localQQToast.a(QQToast.a(1));
+      localQQToast.b(1);
     }
   }
 }

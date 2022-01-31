@@ -1,6 +1,6 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import actj;
+import aekt;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -8,45 +8,45 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bjvq;
-import bjvr;
-import bkvi;
+import bmha;
+import bmhb;
+import bngs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import dov.com.qq.im.capture.text.DynamicTextConfigManager;
-import vei;
+import wta;
 
 public class EditVideoDTextFace$1
   implements Runnable
 {
-  public EditVideoDTextFace$1(bjvq parambjvq, DynamicTextConfigManager paramDynamicTextConfigManager) {}
+  public EditVideoDTextFace$1(bmha parambmha, DynamicTextConfigManager paramDynamicTextConfigManager) {}
   
   public void run()
   {
     if (this.this$0.d()) {
       return;
     }
-    bjvq.a(this.this$0, LayoutInflater.from(this.this$0.a()).inflate(2131561225, null));
-    RelativeLayout localRelativeLayout = (RelativeLayout)this.this$0.a(2131363764);
-    EditText localEditText = (EditText)bjvq.a(this.this$0).findViewById(2131365469);
-    View localView = bjvq.a(this.this$0).findViewById(2131369237);
-    localEditText.setText(" " + bjvq.a(this.this$0));
+    bmha.a(this.this$0, LayoutInflater.from(this.this$0.a()).inflate(2131561415, null));
+    RelativeLayout localRelativeLayout = (RelativeLayout)this.this$0.a(2131363820);
+    EditText localEditText = (EditText)bmha.a(this.this$0).findViewById(2131365553);
+    View localView = bmha.a(this.this$0).findViewById(2131369470);
+    localEditText.setText(" " + bmha.a(this.this$0));
     localEditText.setSelection(0);
-    localEditText.setOnTouchListener(new bjvr(this));
+    localEditText.setOnTouchListener(new bmhb(this));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(12);
     Resources localResources = BaseApplicationImpl.getContext().getResources();
-    int j = actj.a(200.0F, localResources);
+    int j = aekt.a(200.0F, localResources);
     int i;
-    if (bkvi.b())
+    if (bngs.b())
     {
-      int k = this.a.a - actj.a(48.0F, localResources);
+      int k = this.a.a - aekt.a(48.0F, localResources);
       i = k;
       if (k <= 0)
       {
         i = k;
         if (k > 300) {
-          i = actj.a(66.0F, localResources);
+          i = aekt.a(66.0F, localResources);
         }
       }
       i += j;
@@ -54,16 +54,16 @@ public class EditVideoDTextFace$1
     for (;;)
     {
       localLayoutParams.bottomMargin = i;
-      localLayoutParams.leftMargin = actj.a(12.0F, localResources);
+      localLayoutParams.leftMargin = aekt.a(12.0F, localResources);
       i = localResources.getDisplayMetrics().widthPixels;
       localView.getLayoutParams().width = (i - localLayoutParams.leftMargin * 2);
-      localRelativeLayout.addView(bjvq.a(this.this$0), localLayoutParams);
+      localRelativeLayout.addView(bmha.a(this.this$0), localLayoutParams);
       localEditText.setFocusable(true);
       localEditText.setFocusableInTouchMode(true);
       localEditText.requestFocus();
       localEditText.setSelection(0);
-      bjvq.a(this.this$0, localEditText);
-      vei.a("video_edit_text", "exp_textWording", 0, 0, new String[] { this.this$0.a, "", "", "" });
+      bmha.a(this.this$0, localEditText);
+      wta.a("video_edit_text", "exp_textWording", 0, 0, new String[] { this.this$0.a, "", "", "" });
       return;
       i = j;
     }
@@ -71,7 +71,7 @@ public class EditVideoDTextFace$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoDTextFace.1
  * JD-Core Version:    0.7.0.1
  */

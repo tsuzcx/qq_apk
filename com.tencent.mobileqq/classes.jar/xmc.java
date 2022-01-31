@@ -1,180 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
-class xmc
-  extends InputStream
+public class xmc
+  extends wkj<wle>
 {
-  BufferedInputStream jdField_a_of_type_JavaIoBufferedInputStream;
-  ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream;
-  HttpURLConnection jdField_a_of_type_JavaNetHttpURLConnection;
-  BufferedInputStream b;
-  
-  public xmc(xmb paramxmb, BufferedInputStream paramBufferedInputStream1, BufferedInputStream paramBufferedInputStream2, ByteArrayOutputStream paramByteArrayOutputStream, HttpURLConnection paramHttpURLConnection)
+  public xmc(@Nullable wkn paramwkn)
   {
-    this.jdField_a_of_type_JavaIoBufferedInputStream = paramBufferedInputStream1;
-    this.b = paramBufferedInputStream2;
-    if (paramByteArrayOutputStream != null) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaIoByteArrayOutputStream = paramByteArrayOutputStream;
-      this.jdField_a_of_type_JavaNetHttpURLConnection = paramHttpURLConnection;
-      return;
-      paramByteArrayOutputStream = new ByteArrayOutputStream();
-    }
+    super(paramwkn);
   }
   
-  public void close()
+  protected JobSegment<wkm, wle> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PubAccountWebViewHttpBridge", 2, "now close memory stream and socket stream!");
-    }
-    try
-    {
-      if (this.jdField_a_of_type_JavaIoBufferedInputStream != null)
-      {
-        this.jdField_a_of_type_JavaIoBufferedInputStream.close();
-        this.jdField_a_of_type_JavaIoBufferedInputStream = null;
-      }
-      if (this.b != null)
-      {
-        this.b.close();
-        this.b = null;
-      }
-      if (this.jdField_a_of_type_JavaNetHttpURLConnection != null) {
-        this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
-      }
-      this.jdField_a_of_type_Xmb.a = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    return new wkz();
   }
   
-  public int read()
+  protected JobSegment<Integer, wkm> a(wkl paramwkl)
   {
-    int j;
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null))
-    {
-      j = -1;
-      return j;
-    }
-    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null) {}
-    for (int i = this.jdField_a_of_type_JavaIoBufferedInputStream.read();; i = -1)
-    {
-      j = i;
-      if (i != -1) {
-        break;
-      }
-      j = i;
-      if (this.b == null) {
-        break;
-      }
-      return this.b.read();
-    }
+    return new xmd(paramwkl);
   }
   
-  public int read(byte[] paramArrayOfByte)
+  protected wle a()
   {
-    int i;
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null))
-    {
-      i = -1;
-      return i;
-    }
-    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null)
-    {
-      i = this.jdField_a_of_type_JavaIoBufferedInputStream.read(paramArrayOfByte);
-      j = i;
-      if (QLog.isColorLevel()) {
-        QLog.i("PubAccountWebViewHttpBridge", 2, "now read data from memory buffer second: " + i);
-      }
-    }
-    for (int j = i;; j = -1)
-    {
-      i = j;
-      if (j != -1) {
-        break;
-      }
-      i = j;
-      if (this.b == null) {
-        break;
-      }
-      j = this.b.read(paramArrayOfByte);
-      i = j;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("PubAccountWebViewHttpBridge", 2, "now read data from socket stream second: " + j);
-      return j;
-    }
+    wkp localwkp = (wkp)urr.a(11);
+    List localList = localwkp.b();
+    wle localwle = new wle(new ErrorMessage());
+    localwle.jdField_b_of_type_JavaUtilList = localwkp.b(localList);
+    localwle.jdField_b_of_type_Boolean = true;
+    localwle.a = localwle.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localwle;
   }
   
-  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  protected wle a(ErrorMessage paramErrorMessage)
   {
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null)) {
-      return -1;
-    }
-    int i = paramArrayOfByte.length;
-    if (((paramInt1 | paramInt2) < 0) || (paramInt1 > i) || (i - paramInt1 < paramInt2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountWebViewHttpBridge", 2, "buffer three, error");
-      }
-      throw new ArrayIndexOutOfBoundsException();
-    }
-    int j = 0;
-    label65:
-    if (j < paramInt2) {}
-    for (;;)
-    {
-      int k;
-      try
-      {
-        if (this.jdField_a_of_type_JavaIoBufferedInputStream == null) {
-          break label162;
-        }
-        i = this.jdField_a_of_type_JavaIoBufferedInputStream.read();
-        k = i;
-        if (i == -1)
-        {
-          k = i;
-          if (this.b != null) {
-            k = this.b.read();
-          }
-        }
-        if (k == -1)
-        {
-          if (j == 0) {
-            break;
-          }
-          return j;
-        }
-      }
-      catch (IOException paramArrayOfByte)
-      {
-        if (j != 0) {
-          return j;
-        }
-        throw paramArrayOfByte;
-      }
-      paramArrayOfByte[(paramInt1 + j)] = ((byte)k);
-      j += 1;
-      break label65;
-      return paramInt2;
-      label162:
-      i = -1;
-    }
+    return new wle(paramErrorMessage);
+  }
+  
+  protected void a(List<String> paramList, boolean paramBoolean)
+  {
+    ((wkp)urr.a(11)).b(paramList, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xmc
  * JD-Core Version:    0.7.0.1
  */

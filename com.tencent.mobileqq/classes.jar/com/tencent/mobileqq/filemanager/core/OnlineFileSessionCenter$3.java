@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import apbc;
+import aqua;
 
 public class OnlineFileSessionCenter$3
   implements Runnable
 {
-  public OnlineFileSessionCenter$3(apbc paramapbc, int paramInt) {}
+  public OnlineFileSessionCenter$3(aqua paramaqua, int paramInt) {}
   
   public void run()
   {

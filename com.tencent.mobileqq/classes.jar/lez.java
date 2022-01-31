@@ -1,64 +1,33 @@
-import android.content.IntentFilter;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-
 public class lez
 {
-  public static String a;
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  lfa jdField_a_of_type_Lfa;
-  boolean jdField_a_of_type_Boolean = false;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public String h;
   
-  static
+  public String toString()
   {
-    jdField_a_of_type_JavaLangString = "GAudioMsgReceiver";
-  }
-  
-  public lez(VideoAppInterface paramVideoAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Lfa = new lfa(paramVideoAppInterface);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Lfa);
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "regist QQGAudioMsg Receiver");
-    }
-    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.MultiVideo");
-    localIntentFilter.addAction("tencent.video.q2v.AddDiscussMember");
-    localIntentFilter.addAction("tencent.video.q2v.SwitchToMultiAudo");
-    localIntentFilter.addAction("tencent.video.q2v.GroupSystemMsg");
-    localIntentFilter.addAction("tencent.video.q2v.SelectMember");
-    localIntentFilter.addAction("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoGift");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoLevelUpgrade");
-    localIntentFilter.addAction("tencent.video.q2v.GvideoMemUntInvite");
-    localIntentFilter.addAction("tencent.video.q2v.close_invite_msg_box_by_invite_id");
-    localIntentFilter.addAction("tencent.video.q2v.randomMultiOwnerOnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.random1V1OnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.avreportOnlinePush");
-    localIntentFilter.addAction("tencent.video.q2v.AudioTransPush");
-    localIntentFilter.addAction("tencent.video.q2v.AudioEngineReady");
-    localIntentFilter.addAction("tencent.video.q2v.GroupInfoChanged");
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Lfa, localIntentFilter) != null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin=").append(this.jdField_a_of_type_JavaLangString).append(", nick=").append(this.jdField_b_of_type_JavaLangString).append(", level=").append(this.jdField_c_of_type_JavaLangString).append(", distance=").append(this.jdField_d_of_type_JavaLangString).append(", age=").append(this.jdField_a_of_type_Int).append(", gender=").append(this.jdField_b_of_type_Int).append(", isFollowed=").append(this.jdField_a_of_type_Boolean).append(", logoUrl=").append(this.jdField_e_of_type_JavaLangString).append(", hint=").append(this.jdField_f_of_type_JavaLangString).append(",likeState=").append(this.jdField_c_of_type_Int).append(",showTime=").append(this.jdField_d_of_type_Int).append(",vipFee=").append(this.jdField_e_of_type_Int).append(",vipLevel=").append(this.jdField_f_of_type_Int).append(",desc=").append(this.jdField_g_of_type_JavaLangString).append(",selfUserType=").append(this.jdField_g_of_type_Int).append(",threeWord=").append(this.h).append(",tinyId=").append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lez
  * JD-Core Version:    0.7.0.1
  */

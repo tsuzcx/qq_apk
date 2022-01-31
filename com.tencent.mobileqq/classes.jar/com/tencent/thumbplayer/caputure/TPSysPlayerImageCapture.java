@@ -66,7 +66,7 @@ public class TPSysPlayerImageCapture
       {
         TPLogUtil.e("TPSysPlayerImageCapture", localException);
         TPLogUtil.e("TPSysPlayerImageCapture", "doRealCaptureImage, Exception: " + localException.toString());
-        paramCaptureMsg.lis.onCaptureFailed(TPSysPlayerImageCapture.CaptureMsg.access$000(paramCaptureMsg), 1000001);
+        paramCaptureMsg.lis.onCaptureFailed(TPSysPlayerImageCapture.CaptureMsg.access$100(paramCaptureMsg), 1000001);
         return;
         long l1 = System.currentTimeMillis();
         if (this.mRetriever != null)
@@ -77,21 +77,21 @@ public class TPSysPlayerImageCapture
         this.mRetriever = new MediaMetadataRetriever();
         if (Build.VERSION.SDK_INT >= 14)
         {
-          if (TPSysPlayerImageCapture.CaptureMsg.access$100(paramCaptureMsg) != null) {
-            this.mRetriever.setDataSource(TPSysPlayerImageCapture.CaptureMsg.access$100(paramCaptureMsg));
+          if (TPSysPlayerImageCapture.CaptureMsg.access$200(paramCaptureMsg) != null) {
+            this.mRetriever.setDataSource(TPSysPlayerImageCapture.CaptureMsg.access$200(paramCaptureMsg));
           }
         }
         else
         {
-          Bitmap localBitmap = this.mRetriever.getFrameAtTime(TPSysPlayerImageCapture.CaptureMsg.access$300(paramCaptureMsg) * 1000L, 2);
+          Bitmap localBitmap = this.mRetriever.getFrameAtTime(TPSysPlayerImageCapture.CaptureMsg.access$400(paramCaptureMsg) * 1000L, 2);
           long l2 = System.currentTimeMillis();
           if (localBitmap == null) {
             break label272;
           }
-          paramCaptureMsg.lis.onCaptureSucceed(TPSysPlayerImageCapture.CaptureMsg.access$000(paramCaptureMsg), TPSysPlayerImageCapture.CaptureMsg.access$300(paramCaptureMsg), TPSysPlayerImageCapture.CaptureMsg.access$400(paramCaptureMsg), TPSysPlayerImageCapture.CaptureMsg.access$500(paramCaptureMsg), localBitmap, l2 - l1);
+          paramCaptureMsg.lis.onCaptureSucceed(TPSysPlayerImageCapture.CaptureMsg.access$100(paramCaptureMsg), TPSysPlayerImageCapture.CaptureMsg.access$400(paramCaptureMsg), TPSysPlayerImageCapture.CaptureMsg.access$500(paramCaptureMsg), TPSysPlayerImageCapture.CaptureMsg.access$600(paramCaptureMsg), localBitmap, l2 - l1);
           return;
         }
-        this.mRetriever.setDataSource(TPSysPlayerImageCapture.CaptureMsg.access$200(paramCaptureMsg), new HashMap());
+        this.mRetriever.setDataSource(TPSysPlayerImageCapture.CaptureMsg.access$300(paramCaptureMsg), new HashMap());
         continue;
       }
       finally
@@ -103,7 +103,7 @@ public class TPSysPlayerImageCapture
         }
       }
       label272:
-      paramCaptureMsg.lis.onCaptureFailed(TPSysPlayerImageCapture.CaptureMsg.access$000(paramCaptureMsg), 1000001);
+      paramCaptureMsg.lis.onCaptureFailed(TPSysPlayerImageCapture.CaptureMsg.access$100(paramCaptureMsg), 1000001);
     }
   }
   
@@ -116,13 +116,13 @@ public class TPSysPlayerImageCapture
       TPLogUtil.i("TPSysPlayerImageCapture", "captureImageWithPosition, Lenovo+K900 no incompatible");
       return -1;
     }
-    TPSysPlayerImageCapture.CaptureMsg localCaptureMsg = new TPSysPlayerImageCapture.CaptureMsg(this);
-    TPSysPlayerImageCapture.CaptureMsg.access$002(localCaptureMsg, this.mBaseID);
-    TPSysPlayerImageCapture.CaptureMsg.access$102(localCaptureMsg, paramFileDescriptor);
-    TPSysPlayerImageCapture.CaptureMsg.access$202(localCaptureMsg, paramString);
-    TPSysPlayerImageCapture.CaptureMsg.access$302(localCaptureMsg, paramLong);
-    TPSysPlayerImageCapture.CaptureMsg.access$402(localCaptureMsg, paramInt1);
-    TPSysPlayerImageCapture.CaptureMsg.access$502(localCaptureMsg, paramInt2);
+    TPSysPlayerImageCapture.CaptureMsg localCaptureMsg = new TPSysPlayerImageCapture.CaptureMsg(null);
+    TPSysPlayerImageCapture.CaptureMsg.access$102(localCaptureMsg, this.mBaseID);
+    TPSysPlayerImageCapture.CaptureMsg.access$202(localCaptureMsg, paramFileDescriptor);
+    TPSysPlayerImageCapture.CaptureMsg.access$302(localCaptureMsg, paramString);
+    TPSysPlayerImageCapture.CaptureMsg.access$402(localCaptureMsg, paramLong);
+    TPSysPlayerImageCapture.CaptureMsg.access$502(localCaptureMsg, paramInt1);
+    TPSysPlayerImageCapture.CaptureMsg.access$602(localCaptureMsg, paramInt2);
     localCaptureMsg.lis = paramCaptureMediaImageListener;
     paramString = new Message();
     paramString.what = 1;
@@ -135,7 +135,7 @@ public class TPSysPlayerImageCapture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.caputure.TPSysPlayerImageCapture
  * JD-Core Version:    0.7.0.1
  */

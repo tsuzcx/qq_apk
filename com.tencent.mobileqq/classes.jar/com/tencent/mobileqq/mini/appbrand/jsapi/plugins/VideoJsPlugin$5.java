@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import bhoh;
+import bjps;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +27,7 @@ class VideoJsPlugin$5
     if (localFile.exists()) {
       localFile.delete();
     }
-    if (bhoh.a(new File(this.val$info.path), localFile))
+    if (bjps.a(new File(this.val$info.path), localFile))
     {
       this.val$info.path = str;
       VideoJsPlugin.access$700(this.this$0, this.val$info, this.val$changeSize);
@@ -40,7 +40,7 @@ class VideoJsPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.VideoJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class ApolloPandora
-  extends auko
+  extends awbv
 {
   public static final int BOX_TYPE_BEAN = 3;
   public static final int BOX_TYPE_CARD = 1;
@@ -18,7 +18,7 @@ public class ApolloPandora
   public short hadStolen;
   public String mBoxTipUrl;
   public long queryInterval;
-  @aumc
+  @awdj
   public String uin;
   public long updateTime;
   
@@ -33,7 +33,7 @@ public class ApolloPandora
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.ApolloPandora
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,44 @@
-import com.tencent.mobileqq.activity.selectmember.TroopDiscussionTroop;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aifo
-  extends ajse
+  extends aifb
 {
-  public aifo(TroopDiscussionTroop paramTroopDiscussionTroop) {}
-  
-  protected void a(int paramInt)
+  public aifo(Context paramContext, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopDiscussionTroop", 2, "onCacheInited " + paramInt);
-      }
-    } while (TroopDiscussionTroop.a(this.a) == null);
-    TroopDiscussionTroop.a(this.a).c();
+    super(paramContext, paramSessionInfo, paramQQAppInterface);
+  }
+  
+  protected boolean b()
+  {
+    return true;
+  }
+  
+  protected void g()
+  {
+    this.e = true;
+    super.g();
+  }
+  
+  protected void u()
+  {
+    super.u();
+  }
+  
+  protected void v()
+  {
+    super.v();
+  }
+  
+  protected void y()
+  {
+    this.a = "MiniPieForTroop";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aifo
  * JD-Core Version:    0.7.0.1
  */

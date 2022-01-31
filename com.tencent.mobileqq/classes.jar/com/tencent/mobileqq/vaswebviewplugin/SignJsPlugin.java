@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import ajsd;
+import aljq;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anqq;
-import bcdp;
+import aphy;
+import becq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ public class SignJsPlugin
   private static final byte REQUEST_LOCATION = 100;
   private static final String TAG = "SignJsPlugin";
   private final String SIGNATURE_SYNC_IMG_TEMP_FILE = this.SIGNATURE_SYNC_IMG_TEMP_PATH + "temp.png";
-  private final String SIGNATURE_SYNC_IMG_TEMP_PATH = ajsd.bV + "temp/";
+  private final String SIGNATURE_SYNC_IMG_TEMP_PATH = aljq.bW + "temp/";
   private BrowserAppInterface browserApp;
   private EIPCResultCallback getSignatureCallback = new SignJsPlugin.1(this);
   private boolean isSync;
@@ -350,11 +350,11 @@ public class SignJsPlugin
     //   439: ldc_w 395
     //   442: aload 16
     //   444: aload_0
-    //   445: getfield 399	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mOnRemoteResp	Lanqq;
-    //   448: getfield 404	anqq:key	I
+    //   445: getfield 399	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mOnRemoteResp	Laphy;
+    //   448: getfield 404	aphy:key	I
     //   451: aload_0
     //   452: getfield 344	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mReqBundle	Landroid/os/Bundle;
-    //   455: invokestatic 409	anqu:a	(Ljava/lang/String;Ljava/lang/String;ILandroid/os/Bundle;)Landroid/os/Bundle;
+    //   455: invokestatic 409	apic:a	(Ljava/lang/String;Ljava/lang/String;ILandroid/os/Bundle;)Landroid/os/Bundle;
     //   458: iconst_0
     //   459: iconst_1
     //   460: invokespecial 413	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:sendRemoteReq	(Landroid/os/Bundle;ZZ)V
@@ -363,18 +363,18 @@ public class SignJsPlugin
     //   469: aload 4
     //   471: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   474: ifeq +279 -> 753
-    //   477: invokestatic 420	bgyw:a	()Lbgyw;
+    //   477: invokestatic 420	bizt:a	()Lbizt;
     //   480: astore 13
     //   482: aload 13
     //   484: aload_0
     //   485: getfield 422	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:browserApp	Lcom/tencent/mobileqq/app/BrowserAppInterface;
     //   488: invokevirtual 427	com/tencent/mobileqq/app/BrowserAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   491: putfield 429	bgyw:a	Ljava/lang/String;
+    //   491: putfield 429	bizt:a	Ljava/lang/String;
     //   494: aload 13
     //   496: aload_0
     //   497: getfield 422	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:browserApp	Lcom/tencent/mobileqq/app/BrowserAppInterface;
     //   500: invokevirtual 432	com/tencent/mobileqq/app/BrowserAppInterface:getCurrentNickname	()Ljava/lang/String;
-    //   503: putfield 435	bgyw:b	Ljava/lang/String;
+    //   503: putfield 435	bizt:b	Ljava/lang/String;
     //   506: aload_0
     //   507: aload 16
     //   509: putfield 437	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mLocationCallback	Ljava/lang/String;
@@ -387,8 +387,8 @@ public class SignJsPlugin
     //   523: invokestatic 212	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   526: ifeq +50 -> 576
     //   529: aload_0
-    //   530: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   533: invokevirtual 442	bcdp:a	()Lcom/tencent/common/app/AppInterface;
+    //   530: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   533: invokevirtual 442	becq:a	()Lcom/tencent/common/app/AppInterface;
     //   536: invokevirtual 448	com/tencent/common/app/AppInterface:getPreferences	()Landroid/content/SharedPreferences;
     //   539: new 60	java/lang/StringBuilder
     //   542: dup
@@ -396,8 +396,8 @@ public class SignJsPlugin
     //   546: ldc 11
     //   548: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   551: aload_0
-    //   552: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   555: invokevirtual 442	bcdp:a	()Lcom/tencent/common/app/AppInterface;
+    //   552: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   555: invokevirtual 442	becq:a	()Lcom/tencent/common/app/AppInterface;
     //   558: invokevirtual 449	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   561: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   564: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -433,12 +433,12 @@ public class SignJsPlugin
     //   638: aload_1
     //   639: invokevirtual 357	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   642: aload_0
-    //   643: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   646: invokevirtual 279	bcdp:a	()Landroid/app/Activity;
+    //   643: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   646: invokevirtual 279	becq:a	()Landroid/app/Activity;
     //   649: aload 13
     //   651: ldc_w 464
     //   654: aload 5
-    //   656: invokestatic 469	bgyp:a	(Landroid/app/Activity;Lbgyw;ILandroid/os/Bundle;)V
+    //   656: invokestatic 469	bizm:a	(Landroid/app/Activity;Lbizt;ILandroid/os/Bundle;)V
     //   659: goto +2611 -> 3270
     //   662: astore_1
     //   663: aload 16
@@ -487,8 +487,8 @@ public class SignJsPlugin
     //   764: new 236	android/content/Intent
     //   767: dup
     //   768: aload_0
-    //   769: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   772: invokevirtual 279	bcdp:a	()Landroid/app/Activity;
+    //   769: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   772: invokevirtual 279	becq:a	()Landroid/app/Activity;
     //   775: ldc_w 480
     //   778: invokespecial 483	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   781: astore_1
@@ -552,11 +552,11 @@ public class SignJsPlugin
     //   905: ldc_w 502
     //   908: aload 16
     //   910: aload_0
-    //   911: getfield 399	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mOnRemoteResp	Lanqq;
-    //   914: getfield 404	anqq:key	I
+    //   911: getfield 399	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mOnRemoteResp	Laphy;
+    //   914: getfield 404	aphy:key	I
     //   917: aload_0
     //   918: getfield 344	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mReqBundle	Landroid/os/Bundle;
-    //   921: invokestatic 409	anqu:a	(Ljava/lang/String;Ljava/lang/String;ILandroid/os/Bundle;)Landroid/os/Bundle;
+    //   921: invokestatic 409	apic:a	(Ljava/lang/String;Ljava/lang/String;ILandroid/os/Bundle;)Landroid/os/Bundle;
     //   924: iconst_0
     //   925: iconst_1
     //   926: invokespecial 413	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:sendRemoteReq	(Landroid/os/Bundle;ZZ)V
@@ -605,7 +605,7 @@ public class SignJsPlugin
     //   1035: aconst_null
     //   1036: ldc_w 516
     //   1039: iconst_3
-    //   1040: invokestatic 519	bgyp:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
+    //   1040: invokestatic 519	bizm:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
     //   1043: goto +2227 -> 3270
     //   1046: iconst_0
     //   1047: istore 9
@@ -629,7 +629,7 @@ public class SignJsPlugin
     //   1083: istore 6
     //   1085: aload 5
     //   1087: iconst_2
-    //   1088: invokestatic 525	bbco:decode	(Ljava/lang/String;I)[B
+    //   1088: invokestatic 525	bdbi:decode	(Ljava/lang/String;I)[B
     //   1091: astore 20
     //   1093: aconst_null
     //   1094: astore_1
@@ -734,26 +734,26 @@ public class SignJsPlugin
     //   1303: istore 6
     //   1305: aload_0
     //   1306: getfield 82	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:SIGNATURE_SYNC_IMG_TEMP_FILE	Ljava/lang/String;
-    //   1309: invokestatic 568	bbdx:a	(Ljava/lang/String;)Z
+    //   1309: invokestatic 568	bdcs:a	(Ljava/lang/String;)Z
     //   1312: ifeq +595 -> 1907
     //   1315: iload 11
     //   1317: istore 6
     //   1319: aload_0
     //   1320: getfield 82	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:SIGNATURE_SYNC_IMG_TEMP_FILE	Ljava/lang/String;
-    //   1323: invokestatic 571	bbdx:f	(Ljava/lang/String;)Z
+    //   1323: invokestatic 570	bdcs:e	(Ljava/lang/String;)Z
     //   1326: ifeq +581 -> 1907
     //   1329: iload 11
     //   1331: istore 6
-    //   1333: new 573	java/util/ArrayList
+    //   1333: new 572	java/util/ArrayList
     //   1336: dup
-    //   1337: invokespecial 574	java/util/ArrayList:<init>	()V
+    //   1337: invokespecial 573	java/util/ArrayList:<init>	()V
     //   1340: astore_1
     //   1341: iload 11
     //   1343: istore 6
     //   1345: aload_1
     //   1346: aload_0
     //   1347: getfield 82	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:SIGNATURE_SYNC_IMG_TEMP_FILE	Ljava/lang/String;
-    //   1350: invokevirtual 577	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   1350: invokevirtual 576	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   1353: pop
     //   1354: iload 11
     //   1356: istore 6
@@ -766,11 +766,11 @@ public class SignJsPlugin
     //   1372: new 60	java/lang/StringBuilder
     //   1375: dup
     //   1376: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   1379: ldc_w 579
+    //   1379: ldc_w 578
     //   1382: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1385: aload_1
     //   1386: iconst_0
-    //   1387: invokevirtual 582	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   1387: invokevirtual 581	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   1390: checkcast 173	java/lang/String
     //   1393: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1396: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
@@ -779,12 +779,12 @@ public class SignJsPlugin
     //   1403: istore 6
     //   1405: iconst_1
     //   1406: istore 7
-    //   1408: ldc_w 583
-    //   1411: invokestatic 588	ajya:a	(I)Ljava/lang/String;
+    //   1408: ldc_w 582
+    //   1411: invokestatic 587	alpo:a	(I)Ljava/lang/String;
     //   1414: aload_1
     //   1415: ldc_w 516
     //   1418: iconst_3
-    //   1419: invokestatic 519	bgyp:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
+    //   1419: invokestatic 519	bizm:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
     //   1422: iconst_1
     //   1423: istore 7
     //   1425: iload 7
@@ -798,19 +798,19 @@ public class SignJsPlugin
     //   1446: ifeq +13 -> 1459
     //   1449: ldc_w 512
     //   1452: iconst_4
-    //   1453: ldc_w 590
+    //   1453: ldc_w 589
     //   1456: invokestatic 190	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1459: aload 19
     //   1461: aconst_null
     //   1462: ldc_w 516
     //   1465: iconst_3
-    //   1466: invokestatic 519	bgyp:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
+    //   1466: invokestatic 519	bizm:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
     //   1469: goto +1801 -> 3270
     //   1472: astore_1
     //   1473: iload 11
     //   1475: istore 6
     //   1477: aload_1
-    //   1478: invokevirtual 593	java/io/IOException:printStackTrace	()V
+    //   1478: invokevirtual 592	java/io/IOException:printStackTrace	()V
     //   1481: goto -180 -> 1301
     //   1484: astore_1
     //   1485: iconst_0
@@ -819,12 +819,12 @@ public class SignJsPlugin
     //   1490: istore 6
     //   1492: ldc_w 512
     //   1495: iconst_2
-    //   1496: ldc_w 595
+    //   1496: ldc_w 594
     //   1499: invokestatic 324	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1502: iload 7
     //   1504: istore 6
     //   1506: aload_1
-    //   1507: invokevirtual 596	java/lang/IllegalArgumentException:printStackTrace	()V
+    //   1507: invokevirtual 595	java/lang/IllegalArgumentException:printStackTrace	()V
     //   1510: iload 7
     //   1512: ifne +1758 -> 3270
     //   1515: aload 19
@@ -836,13 +836,13 @@ public class SignJsPlugin
     //   1531: ifeq +13 -> 1544
     //   1534: ldc_w 512
     //   1537: iconst_4
-    //   1538: ldc_w 590
+    //   1538: ldc_w 589
     //   1541: invokestatic 190	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1544: aload 19
     //   1546: aconst_null
     //   1547: ldc_w 516
     //   1550: iconst_3
-    //   1551: invokestatic 519	bgyp:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
+    //   1551: invokestatic 519	bizm:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
     //   1554: goto +1716 -> 3270
     //   1557: astore 14
     //   1559: aload 17
@@ -852,7 +852,7 @@ public class SignJsPlugin
     //   1566: aload_1
     //   1567: astore 13
     //   1569: aload 14
-    //   1571: invokevirtual 593	java/io/IOException:printStackTrace	()V
+    //   1571: invokevirtual 592	java/io/IOException:printStackTrace	()V
     //   1574: aload 15
     //   1576: ifnull +12 -> 1588
     //   1579: iload 11
@@ -880,7 +880,7 @@ public class SignJsPlugin
     //   1628: iload 11
     //   1630: istore 6
     //   1632: aload_1
-    //   1633: invokevirtual 593	java/io/IOException:printStackTrace	()V
+    //   1633: invokevirtual 592	java/io/IOException:printStackTrace	()V
     //   1636: goto -335 -> 1301
     //   1639: astore_1
     //   1640: iload 9
@@ -889,12 +889,12 @@ public class SignJsPlugin
     //   1646: istore 6
     //   1648: ldc_w 512
     //   1651: iconst_2
-    //   1652: ldc_w 598
+    //   1652: ldc_w 597
     //   1655: invokestatic 324	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1658: iload 7
     //   1660: istore 6
     //   1662: aload_1
-    //   1663: invokevirtual 599	java/lang/Exception:printStackTrace	()V
+    //   1663: invokevirtual 598	java/lang/Exception:printStackTrace	()V
     //   1666: iload 7
     //   1668: ifne +1602 -> 3270
     //   1671: aload 19
@@ -906,13 +906,13 @@ public class SignJsPlugin
     //   1687: ifeq +13 -> 1700
     //   1690: ldc_w 512
     //   1693: iconst_4
-    //   1694: ldc_w 590
+    //   1694: ldc_w 589
     //   1697: invokestatic 190	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1700: aload 19
     //   1702: aconst_null
     //   1703: ldc_w 516
     //   1706: iconst_3
-    //   1707: invokestatic 519	bgyp:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
+    //   1707: invokestatic 519	bizm:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
     //   1710: goto +1560 -> 3270
     //   1713: astore_1
     //   1714: aload 5
@@ -948,12 +948,12 @@ public class SignJsPlugin
     //   1779: istore 6
     //   1781: ldc_w 512
     //   1784: iconst_2
-    //   1785: ldc_w 601
+    //   1785: ldc_w 600
     //   1788: invokestatic 324	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   1791: iload 7
     //   1793: istore 6
     //   1795: aload_1
-    //   1796: invokevirtual 602	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   1796: invokevirtual 601	java/lang/OutOfMemoryError:printStackTrace	()V
     //   1799: iload 7
     //   1801: ifne +1469 -> 3270
     //   1804: aload 19
@@ -965,19 +965,19 @@ public class SignJsPlugin
     //   1820: ifeq +13 -> 1833
     //   1823: ldc_w 512
     //   1826: iconst_4
-    //   1827: ldc_w 590
+    //   1827: ldc_w 589
     //   1830: invokestatic 190	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1833: aload 19
     //   1835: aconst_null
     //   1836: ldc_w 516
     //   1839: iconst_3
-    //   1840: invokestatic 519	bgyp:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
+    //   1840: invokestatic 519	bizm:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
     //   1843: goto +1427 -> 3270
     //   1846: astore 5
     //   1848: iload 11
     //   1850: istore 6
     //   1852: aload 5
-    //   1854: invokevirtual 593	java/io/IOException:printStackTrace	()V
+    //   1854: invokevirtual 592	java/io/IOException:printStackTrace	()V
     //   1857: goto -91 -> 1766
     //   1860: astore_1
     //   1861: iload 6
@@ -991,13 +991,13 @@ public class SignJsPlugin
     //   1882: ifeq +13 -> 1895
     //   1885: ldc_w 512
     //   1888: iconst_4
-    //   1889: ldc_w 590
+    //   1889: ldc_w 589
     //   1892: invokestatic 190	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1895: aload 19
     //   1897: aconst_null
     //   1898: ldc_w 516
     //   1901: iconst_3
-    //   1902: invokestatic 519	bgyp:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
+    //   1902: invokestatic 519	bizm:a	(Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;I)V
     //   1905: aload_1
     //   1906: athrow
     //   1907: iload 8
@@ -1013,41 +1013,41 @@ public class SignJsPlugin
     //   1929: new 60	java/lang/StringBuilder
     //   1932: dup
     //   1933: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   1936: ldc_w 604
+    //   1936: ldc_w 603
     //   1939: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1942: aload_0
     //   1943: getfield 82	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:SIGNATURE_SYNC_IMG_TEMP_FILE	Ljava/lang/String;
-    //   1946: invokestatic 568	bbdx:a	(Ljava/lang/String;)Z
+    //   1946: invokestatic 568	bdcs:a	(Ljava/lang/String;)Z
     //   1949: invokevirtual 541	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1952: ldc_w 606
+    //   1952: ldc_w 605
     //   1955: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1958: aload_0
     //   1959: getfield 82	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:SIGNATURE_SYNC_IMG_TEMP_FILE	Ljava/lang/String;
-    //   1962: invokestatic 571	bbdx:f	(Ljava/lang/String;)Z
+    //   1962: invokestatic 570	bdcs:e	(Ljava/lang/String;)Z
     //   1965: invokevirtual 541	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   1968: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1971: invokestatic 258	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   1974: iload 8
     //   1976: istore 7
     //   1978: goto -553 -> 1425
-    //   1981: ldc_w 608
+    //   1981: ldc_w 607
     //   1984: aload 4
     //   1986: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1989: ifeq +31 -> 2020
     //   1992: aload_0
-    //   1993: ldc_w 610
+    //   1993: ldc_w 609
     //   1996: aload 16
     //   1998: aload_0
-    //   1999: getfield 399	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mOnRemoteResp	Lanqq;
-    //   2002: getfield 404	anqq:key	I
+    //   1999: getfield 399	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mOnRemoteResp	Laphy;
+    //   2002: getfield 404	aphy:key	I
     //   2005: aload_0
     //   2006: getfield 344	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mReqBundle	Landroid/os/Bundle;
-    //   2009: invokestatic 409	anqu:a	(Ljava/lang/String;Ljava/lang/String;ILandroid/os/Bundle;)Landroid/os/Bundle;
+    //   2009: invokestatic 409	apic:a	(Ljava/lang/String;Ljava/lang/String;ILandroid/os/Bundle;)Landroid/os/Bundle;
     //   2012: iconst_0
     //   2013: iconst_1
     //   2014: invokespecial 413	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:sendRemoteReq	(Landroid/os/Bundle;ZZ)V
     //   2017: goto +1253 -> 3270
-    //   2020: ldc_w 612
+    //   2020: ldc_w 611
     //   2023: aload 4
     //   2025: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2028: ifeq +41 -> 2069
@@ -1055,7 +1055,7 @@ public class SignJsPlugin
     //   2034: ifeq +12 -> 2046
     //   2037: ldc 34
     //   2039: iconst_2
-    //   2040: ldc_w 612
+    //   2040: ldc_w 611
     //   2043: invokestatic 190	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2046: aload_0
     //   2047: aconst_null
@@ -1070,20 +1070,20 @@ public class SignJsPlugin
     //   2062: aastore
     //   2063: invokespecial 178	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   2066: goto +1204 -> 3270
-    //   2069: ldc_w 614
+    //   2069: ldc_w 613
     //   2072: aload 4
     //   2074: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2077: ifeq +109 -> 2186
     //   2080: aload_1
-    //   2081: ldc_w 616
+    //   2081: ldc_w 615
     //   2084: invokevirtual 500	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   2087: istore 6
     //   2089: aload_1
-    //   2090: ldc_w 618
+    //   2090: ldc_w 617
     //   2093: invokevirtual 500	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   2096: istore 7
     //   2098: aload_1
-    //   2099: ldc_w 620
+    //   2099: ldc_w 619
     //   2102: invokevirtual 500	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   2105: istore 8
     //   2107: aload_1
@@ -1095,25 +1095,25 @@ public class SignJsPlugin
     //   2120: invokevirtual 320	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   2123: astore 5
     //   2125: aload_1
-    //   2126: ldc_w 622
+    //   2126: ldc_w 621
     //   2129: invokevirtual 500	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   2132: istore 10
     //   2134: aload_0
-    //   2135: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   2138: invokevirtual 625	bcdp:a	()Lcom/tencent/mobileqq/webview/swift/WebViewFragment;
+    //   2135: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   2138: invokevirtual 624	becq:a	()Lcom/tencent/mobileqq/webview/swift/WebViewFragment;
     //   2141: astore_1
     //   2142: aload_1
-    //   2143: instanceof 627
+    //   2143: instanceof 626
     //   2146: ifeq +22 -> 2168
     //   2149: aload_1
-    //   2150: checkcast 627	com/tencent/mobileqq/richstatus/SignatureEditFragment
+    //   2150: checkcast 626	com/tencent/mobileqq/richstatus/SignatureEditFragment
     //   2153: iload 6
     //   2155: iload 7
     //   2157: iload 8
     //   2159: iload 9
     //   2161: aload 5
     //   2163: iload 10
-    //   2165: invokevirtual 630	com/tencent/mobileqq/richstatus/SignatureEditFragment:a	(IIIILjava/lang/String;I)V
+    //   2165: invokevirtual 629	com/tencent/mobileqq/richstatus/SignatureEditFragment:a	(IIIILjava/lang/String;I)V
     //   2168: aload_0
     //   2169: aload 16
     //   2171: iconst_1
@@ -1124,84 +1124,84 @@ public class SignJsPlugin
     //   2179: aastore
     //   2180: invokespecial 178	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   2183: goto +1087 -> 3270
-    //   2186: ldc_w 632
+    //   2186: ldc_w 631
     //   2189: aload 4
     //   2191: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2194: ifeq +298 -> 2492
     //   2197: aload_0
     //   2198: aload 16
     //   2200: putfield 97	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mGetSigInfoCallback	Ljava/lang/String;
-    //   2203: invokestatic 637	awek:a	()Lawek;
-    //   2206: getfield 640	awek:a	Lcom/tencent/mobileqq/richstatus/RichStatus;
+    //   2203: invokestatic 636	axzn:a	()Laxzn;
+    //   2206: getfield 639	axzn:a	Lcom/tencent/mobileqq/richstatus/RichStatus;
     //   2209: ifnonnull +23 -> 2232
-    //   2212: invokestatic 646	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
-    //   2215: ldc_w 648
-    //   2218: getstatic 652	hy:e	Ljava/lang/String;
+    //   2212: invokestatic 645	com/tencent/mobileqq/qipc/QIPCClientHelper:getInstance	()Lcom/tencent/mobileqq/qipc/QIPCClientHelper;
+    //   2215: ldc_w 647
+    //   2218: getstatic 651	gh:e	Ljava/lang/String;
     //   2221: aconst_null
     //   2222: aload_0
     //   2223: getfield 89	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:getSignatureCallback	Leipc/EIPCResultCallback;
-    //   2226: invokevirtual 656	com/tencent/mobileqq/qipc/QIPCClientHelper:callServer	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Leipc/EIPCResultCallback;)V
+    //   2226: invokevirtual 655	com/tencent/mobileqq/qipc/QIPCClientHelper:callServer	(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Leipc/EIPCResultCallback;)V
     //   2229: goto +1041 -> 3270
-    //   2232: invokestatic 637	awek:a	()Lawek;
-    //   2235: getfield 640	awek:a	Lcom/tencent/mobileqq/richstatus/RichStatus;
+    //   2232: invokestatic 636	axzn:a	()Laxzn;
+    //   2235: getfield 639	axzn:a	Lcom/tencent/mobileqq/richstatus/RichStatus;
     //   2238: astore 5
     //   2240: new 103	org/json/JSONObject
     //   2243: dup
     //   2244: invokespecial 104	org/json/JSONObject:<init>	()V
     //   2247: astore_1
     //   2248: aload_1
-    //   2249: ldc_w 616
+    //   2249: ldc_w 615
     //   2252: aload 5
-    //   2254: getfield 661	com/tencent/mobileqq/richstatus/RichStatus:tplId	I
+    //   2254: getfield 660	com/tencent/mobileqq/richstatus/RichStatus:tplId	I
     //   2257: invokevirtual 116	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   2260: pop
     //   2261: aload_1
-    //   2262: ldc_w 618
+    //   2262: ldc_w 617
     //   2265: aload 5
-    //   2267: getfield 663	com/tencent/mobileqq/richstatus/RichStatus:fontId	I
+    //   2267: getfield 662	com/tencent/mobileqq/richstatus/RichStatus:fontId	I
     //   2270: invokevirtual 116	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   2273: pop
     //   2274: aload_1
-    //   2275: ldc_w 620
+    //   2275: ldc_w 619
     //   2278: aload 5
-    //   2280: getfield 665	com/tencent/mobileqq/richstatus/RichStatus:fontType	I
+    //   2280: getfield 664	com/tencent/mobileqq/richstatus/RichStatus:fontType	I
     //   2283: invokevirtual 116	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   2286: pop
     //   2287: aload_1
     //   2288: ldc_w 366
     //   2291: aload 5
-    //   2293: getfield 667	com/tencent/mobileqq/richstatus/RichStatus:actionId	I
+    //   2293: getfield 666	com/tencent/mobileqq/richstatus/RichStatus:actionId	I
     //   2296: invokevirtual 116	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   2299: pop
     //   2300: aload 5
-    //   2302: getfield 669	com/tencent/mobileqq/richstatus/RichStatus:actionText	Ljava/lang/String;
+    //   2302: getfield 668	com/tencent/mobileqq/richstatus/RichStatus:actionText	Ljava/lang/String;
     //   2305: invokestatic 212	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   2308: ifne +158 -> 2466
     //   2311: aload_1
-    //   2312: ldc_w 671
+    //   2312: ldc_w 670
     //   2315: aload 5
-    //   2317: getfield 669	com/tencent/mobileqq/richstatus/RichStatus:actionText	Ljava/lang/String;
+    //   2317: getfield 668	com/tencent/mobileqq/richstatus/RichStatus:actionText	Ljava/lang/String;
     //   2320: invokevirtual 137	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   2323: pop
-    //   2324: invokestatic 637	awek:a	()Lawek;
+    //   2324: invokestatic 636	axzn:a	()Laxzn;
     //   2327: aload 5
-    //   2329: getfield 661	com/tencent/mobileqq/richstatus/RichStatus:tplId	I
-    //   2332: invokevirtual 674	awek:a	(I)Lbbqs;
+    //   2329: getfield 660	com/tencent/mobileqq/richstatus/RichStatus:tplId	I
+    //   2332: invokevirtual 673	axzn:a	(I)Lbdpm;
     //   2335: astore 13
     //   2337: aload 13
-    //   2339: getfield 679	bbqs:a	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   2342: invokevirtual 683	java/util/concurrent/atomic/AtomicBoolean:get	()Z
+    //   2339: getfield 678	bdpm:a	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   2342: invokevirtual 682	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   2345: ifeq +137 -> 2482
     //   2348: aload 5
-    //   2350: getfield 687	com/tencent/mobileqq/richstatus/RichStatus:mStickerInfos	Ljava/util/ArrayList;
+    //   2350: getfield 686	com/tencent/mobileqq/richstatus/RichStatus:mStickerInfos	Ljava/util/ArrayList;
     //   2353: ifnull +919 -> 3272
     //   2356: aload 5
-    //   2358: getfield 687	com/tencent/mobileqq/richstatus/RichStatus:mStickerInfos	Ljava/util/ArrayList;
-    //   2361: invokevirtual 688	java/util/ArrayList:isEmpty	()Z
+    //   2358: getfield 686	com/tencent/mobileqq/richstatus/RichStatus:mStickerInfos	Ljava/util/ArrayList;
+    //   2361: invokevirtual 687	java/util/ArrayList:isEmpty	()Z
     //   2364: ifeq +914 -> 3278
     //   2367: goto +905 -> 3272
     //   2370: aload_1
-    //   2371: ldc_w 690
+    //   2371: ldc_w 689
     //   2374: iload 6
     //   2376: invokevirtual 116	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   2379: pop
@@ -1229,7 +1229,7 @@ public class SignJsPlugin
     //   2418: aload 5
     //   2420: invokevirtual 174	org/json/JSONObject:toString	()Ljava/lang/String;
     //   2423: aastore
-    //   2424: invokevirtual 691	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   2424: invokevirtual 690	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   2427: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2430: ifeq +840 -> 3270
     //   2433: ldc 34
@@ -1237,7 +1237,7 @@ public class SignJsPlugin
     //   2436: new 60	java/lang/StringBuilder
     //   2439: dup
     //   2440: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   2443: ldc_w 693
+    //   2443: ldc_w 692
     //   2446: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   2449: aload 5
     //   2451: invokevirtual 174	org/json/JSONObject:toString	()Ljava/lang/String;
@@ -1246,23 +1246,23 @@ public class SignJsPlugin
     //   2460: invokestatic 190	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2463: goto +807 -> 3270
     //   2466: aload_1
-    //   2467: ldc_w 671
+    //   2467: ldc_w 670
     //   2470: aload 5
-    //   2472: invokevirtual 696	com/tencent/mobileqq/richstatus/RichStatus:getPlainText	()Ljava/lang/String;
+    //   2472: invokevirtual 695	com/tencent/mobileqq/richstatus/RichStatus:getPlainText	()Ljava/lang/String;
     //   2475: invokevirtual 137	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   2478: pop
     //   2479: goto -155 -> 2324
     //   2482: aload 13
-    //   2484: getfield 699	bbqs:g	I
+    //   2484: getfield 698	bdpm:g	I
     //   2487: istore 6
     //   2489: goto -119 -> 2370
-    //   2492: ldc_w 701
+    //   2492: ldc_w 700
     //   2495: aload 4
     //   2497: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2500: ifeq +32 -> 2532
     //   2503: aload_0
     //   2504: aload_1
-    //   2505: ldc_w 703
+    //   2505: ldc_w 702
     //   2508: invokevirtual 320	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   2511: putfield 206	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mOpenFontCallback	Ljava/lang/String;
     //   2514: aload_0
@@ -1275,7 +1275,7 @@ public class SignJsPlugin
     //   2525: aastore
     //   2526: invokespecial 178	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   2529: goto +741 -> 3270
-    //   2532: ldc_w 705
+    //   2532: ldc_w 704
     //   2535: aload 4
     //   2537: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2540: ifeq +34 -> 2574
@@ -1283,43 +1283,43 @@ public class SignJsPlugin
     //   2544: aload 16
     //   2546: putfield 220	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mPublishCallback	Ljava/lang/String;
     //   2549: aload_0
-    //   2550: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   2553: invokevirtual 625	bcdp:a	()Lcom/tencent/mobileqq/webview/swift/WebViewFragment;
+    //   2550: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   2553: invokevirtual 624	becq:a	()Lcom/tencent/mobileqq/webview/swift/WebViewFragment;
     //   2556: astore_1
     //   2557: aload_1
-    //   2558: instanceof 627
+    //   2558: instanceof 626
     //   2561: ifeq +709 -> 3270
     //   2564: aload_1
-    //   2565: checkcast 627	com/tencent/mobileqq/richstatus/SignatureEditFragment
-    //   2568: invokevirtual 708	com/tencent/mobileqq/richstatus/SignatureEditFragment:aM_	()V
+    //   2565: checkcast 626	com/tencent/mobileqq/richstatus/SignatureEditFragment
+    //   2568: invokevirtual 707	com/tencent/mobileqq/richstatus/SignatureEditFragment:aN_	()V
     //   2571: goto +699 -> 3270
-    //   2574: ldc_w 710
+    //   2574: ldc_w 709
     //   2577: aload 4
     //   2579: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2582: ifeq +72 -> 2654
     //   2585: aload_0
-    //   2586: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   2589: invokevirtual 625	bcdp:a	()Lcom/tencent/mobileqq/webview/swift/WebViewFragment;
+    //   2586: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   2589: invokevirtual 624	becq:a	()Lcom/tencent/mobileqq/webview/swift/WebViewFragment;
     //   2592: astore_1
     //   2593: aload_1
-    //   2594: instanceof 627
+    //   2594: instanceof 626
     //   2597: ifeq +18 -> 2615
     //   2600: aload_1
-    //   2601: checkcast 627	com/tencent/mobileqq/richstatus/SignatureEditFragment
+    //   2601: checkcast 626	com/tencent/mobileqq/richstatus/SignatureEditFragment
     //   2604: astore_1
-    //   2605: invokestatic 637	awek:a	()Lawek;
+    //   2605: invokestatic 636	axzn:a	()Laxzn;
     //   2608: aload_1
-    //   2609: getfield 711	com/tencent/mobileqq/richstatus/SignatureEditFragment:a	Lcom/tencent/mobileqq/richstatus/RichStatus;
-    //   2612: invokevirtual 714	awek:b	(Lcom/tencent/mobileqq/richstatus/RichStatus;)V
+    //   2609: getfield 710	com/tencent/mobileqq/richstatus/SignatureEditFragment:a	Lcom/tencent/mobileqq/richstatus/RichStatus;
+    //   2612: invokevirtual 713	axzn:b	(Lcom/tencent/mobileqq/richstatus/RichStatus;)V
     //   2615: aload_0
-    //   2616: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   2619: invokevirtual 279	bcdp:a	()Landroid/app/Activity;
+    //   2616: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   2619: invokevirtual 279	becq:a	()Landroid/app/Activity;
     //   2622: aload_0
-    //   2623: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   2626: invokevirtual 442	bcdp:a	()Lcom/tencent/common/app/AppInterface;
+    //   2623: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   2626: invokevirtual 442	becq:a	()Lcom/tencent/common/app/AppInterface;
     //   2629: iconst_1
     //   2630: ldc_w 451
-    //   2633: invokestatic 719	bblj:a	(Landroid/app/Activity;Lcom/tencent/common/app/AppInterface;ILjava/lang/String;)V
+    //   2633: invokestatic 718	bdkd:a	(Landroid/app/Activity;Lcom/tencent/common/app/AppInterface;ILjava/lang/String;)V
     //   2636: aload_0
     //   2637: aload 16
     //   2639: iconst_1
@@ -1330,65 +1330,65 @@ public class SignJsPlugin
     //   2647: aastore
     //   2648: invokespecial 178	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   2651: goto +619 -> 3270
-    //   2654: ldc_w 721
+    //   2654: ldc_w 720
     //   2657: aload 4
     //   2659: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2662: ifeq +40 -> 2702
     //   2665: aload_1
-    //   2666: ldc_w 723
+    //   2666: ldc_w 722
     //   2669: iconst_0
-    //   2670: invokevirtual 726	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   2670: invokevirtual 725	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
     //   2673: istore 12
     //   2675: aload_0
-    //   2676: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   2679: invokevirtual 625	bcdp:a	()Lcom/tencent/mobileqq/webview/swift/WebViewFragment;
+    //   2676: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   2679: invokevirtual 624	becq:a	()Lcom/tencent/mobileqq/webview/swift/WebViewFragment;
     //   2682: astore_1
     //   2683: aload_1
-    //   2684: instanceof 627
+    //   2684: instanceof 626
     //   2687: ifeq +583 -> 3270
     //   2690: aload_1
-    //   2691: checkcast 627	com/tencent/mobileqq/richstatus/SignatureEditFragment
+    //   2691: checkcast 626	com/tencent/mobileqq/richstatus/SignatureEditFragment
     //   2694: iload 12
-    //   2696: invokevirtual 730	com/tencent/mobileqq/richstatus/SignatureEditFragment:c	(Z)V
+    //   2696: invokevirtual 729	com/tencent/mobileqq/richstatus/SignatureEditFragment:c	(Z)V
     //   2699: goto +571 -> 3270
-    //   2702: ldc_w 732
+    //   2702: ldc_w 731
     //   2705: aload 4
     //   2707: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2710: ifeq +95 -> 2805
     //   2713: aload_1
-    //   2714: ldc_w 734
+    //   2714: ldc_w 733
     //   2717: iconst_m1
-    //   2718: invokevirtual 737	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   2718: invokevirtual 736	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   2721: istore 6
     //   2723: aload_1
-    //   2724: ldc_w 618
+    //   2724: ldc_w 617
     //   2727: iconst_m1
-    //   2728: invokevirtual 737	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   2728: invokevirtual 736	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   2731: istore 7
     //   2733: new 108	android/os/Bundle
     //   2736: dup
     //   2737: invokespecial 459	android/os/Bundle:<init>	()V
     //   2740: astore 5
     //   2742: aload 5
-    //   2744: ldc_w 739
+    //   2744: ldc_w 738
     //   2747: aload_1
     //   2748: ldc 159
-    //   2750: ldc_w 741
-    //   2753: invokevirtual 743	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   2750: ldc_w 740
+    //   2753: invokevirtual 742	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   2756: invokevirtual 357	android/os/Bundle:putString	(Ljava/lang/String;Ljava/lang/String;)V
     //   2759: aload_0
-    //   2760: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   2763: invokevirtual 279	bcdp:a	()Landroid/app/Activity;
+    //   2760: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   2763: invokevirtual 279	becq:a	()Landroid/app/Activity;
     //   2766: aload_0
-    //   2767: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   2770: invokevirtual 442	bcdp:a	()Lcom/tencent/common/app/AppInterface;
+    //   2767: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   2770: invokevirtual 442	becq:a	()Lcom/tencent/common/app/AppInterface;
     //   2773: iconst_0
-    //   2774: ldc_w 745
+    //   2774: ldc_w 744
     //   2777: iconst_m1
     //   2778: iload 6
     //   2780: iload 7
     //   2782: aload 5
-    //   2784: invokestatic 748	bblj:a	(Landroid/app/Activity;Lcom/tencent/common/app/AppInterface;ILjava/lang/String;IIILandroid/os/Bundle;)V
+    //   2784: invokestatic 747	bdkd:a	(Landroid/app/Activity;Lcom/tencent/common/app/AppInterface;ILjava/lang/String;IIILandroid/os/Bundle;)V
     //   2787: aload_0
     //   2788: aload 16
     //   2790: iconst_1
@@ -1399,13 +1399,13 @@ public class SignJsPlugin
     //   2798: aastore
     //   2799: invokespecial 178	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   2802: goto +468 -> 3270
-    //   2805: ldc_w 750
+    //   2805: ldc_w 749
     //   2808: aload 4
     //   2810: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2813: ifeq +32 -> 2845
     //   2816: aload_0
     //   2817: aload_1
-    //   2818: ldc_w 752
+    //   2818: ldc_w 751
     //   2821: invokevirtual 320	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   2824: putfield 232	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mContentChangeCallback	Ljava/lang/String;
     //   2827: aload_0
@@ -1418,16 +1418,16 @@ public class SignJsPlugin
     //   2838: aastore
     //   2839: invokespecial 178	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   2842: goto +428 -> 3270
-    //   2845: ldc_w 754
+    //   2845: ldc_w 753
     //   2848: aload 4
     //   2850: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2853: ifeq +76 -> 2929
     //   2856: aload_0
-    //   2857: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   2860: invokevirtual 625	bcdp:a	()Lcom/tencent/mobileqq/webview/swift/WebViewFragment;
+    //   2857: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   2860: invokevirtual 624	becq:a	()Lcom/tencent/mobileqq/webview/swift/WebViewFragment;
     //   2863: astore_1
     //   2864: aload_1
-    //   2865: instanceof 627
+    //   2865: instanceof 626
     //   2868: ifeq +42 -> 2910
     //   2871: aload_0
     //   2872: aload 16
@@ -1435,14 +1435,14 @@ public class SignJsPlugin
     //   2875: anewarray 173	java/lang/String
     //   2878: dup
     //   2879: iconst_0
-    //   2880: ldc_w 756
+    //   2880: ldc_w 755
     //   2883: iconst_1
     //   2884: anewarray 245	java/lang/Object
     //   2887: dup
     //   2888: iconst_0
     //   2889: aload_1
-    //   2890: checkcast 627	com/tencent/mobileqq/richstatus/SignatureEditFragment
-    //   2893: invokevirtual 758	com/tencent/mobileqq/richstatus/SignatureEditFragment:a	()I
+    //   2890: checkcast 626	com/tencent/mobileqq/richstatus/SignatureEditFragment
+    //   2893: invokevirtual 757	com/tencent/mobileqq/richstatus/SignatureEditFragment:a	()I
     //   2896: invokestatic 251	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   2899: aastore
     //   2900: invokestatic 255	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
@@ -1455,27 +1455,27 @@ public class SignJsPlugin
     //   2914: anewarray 173	java/lang/String
     //   2917: dup
     //   2918: iconst_0
-    //   2919: ldc_w 760
+    //   2919: ldc_w 759
     //   2922: aastore
     //   2923: invokespecial 178	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   2926: goto +344 -> 3270
-    //   2929: ldc_w 762
+    //   2929: ldc_w 761
     //   2932: aload 4
     //   2934: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2937: ifeq +83 -> 3020
     //   2940: aload_1
-    //   2941: ldc_w 764
+    //   2941: ldc_w 763
     //   2944: invokevirtual 500	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   2947: istore 6
     //   2949: aload_1
-    //   2950: ldc_w 766
+    //   2950: ldc_w 765
     //   2953: invokevirtual 320	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   2956: astore_1
     //   2957: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   2960: ifeq +31 -> 2991
     //   2963: ldc 34
     //   2965: iconst_2
-    //   2966: ldc_w 768
+    //   2966: ldc_w 767
     //   2969: iconst_2
     //   2970: anewarray 245	java/lang/Object
     //   2973: dup
@@ -1505,23 +1505,23 @@ public class SignJsPlugin
     //   3013: aastore
     //   3014: invokespecial 178	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   3017: goto +253 -> 3270
-    //   3020: ldc_w 770
+    //   3020: ldc_w 769
     //   3023: aload 4
     //   3025: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   3028: ifeq +242 -> 3270
     //   3031: aload_1
-    //   3032: ldc_w 764
+    //   3032: ldc_w 763
     //   3035: invokevirtual 500	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   3038: istore 6
     //   3040: aload_1
-    //   3041: ldc_w 766
+    //   3041: ldc_w 765
     //   3044: invokevirtual 320	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   3047: astore 5
     //   3049: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3052: ifeq +32 -> 3084
     //   3055: ldc 34
     //   3057: iconst_2
-    //   3058: ldc_w 772
+    //   3058: ldc_w 771
     //   3061: iconst_2
     //   3062: anewarray 245	java/lang/Object
     //   3065: dup
@@ -1536,7 +1536,7 @@ public class SignJsPlugin
     //   3078: invokestatic 255	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   3081: invokestatic 258	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   3084: aload 5
-    //   3086: invokestatic 775	awga:a	(Ljava/lang/String;)Z
+    //   3086: invokestatic 774	aybd:a	(Ljava/lang/String;)Z
     //   3089: ifeq +97 -> 3186
     //   3092: iload 6
     //   3094: iflt +92 -> 3186
@@ -1553,16 +1553,16 @@ public class SignJsPlugin
     //   3118: iload 6
     //   3120: invokevirtual 351	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   3123: aload_1
-    //   3124: ldc_w 777
+    //   3124: ldc_w 776
     //   3127: iconst_1
     //   3128: invokevirtual 351	android/os/Bundle:putInt	(Ljava/lang/String;I)V
     //   3131: aload_0
-    //   3132: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   3135: invokevirtual 442	bcdp:a	()Lcom/tencent/common/app/AppInterface;
+    //   3132: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   3135: invokevirtual 442	becq:a	()Lcom/tencent/common/app/AppInterface;
     //   3138: astore 5
     //   3140: aload_0
-    //   3141: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbcdp;
-    //   3144: invokevirtual 279	bcdp:a	()Landroid/app/Activity;
+    //   3141: getfield 273	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mRuntime	Lbecq;
+    //   3144: invokevirtual 279	becq:a	()Landroid/app/Activity;
     //   3147: astore 13
     //   3149: aload 13
     //   3151: ifnull +17 -> 3168
@@ -1573,7 +1573,7 @@ public class SignJsPlugin
     //   3162: aconst_null
     //   3163: aload_1
     //   3164: iconst_m1
-    //   3165: invokestatic 782	com/tencent/mobileqq/richstatus/SignTextEditFragment:a	(Landroid/app/Activity;Lcom/tencent/mobileqq/richstatus/RichStatus;Ljava/lang/String;Landroid/os/Bundle;I)V
+    //   3165: invokestatic 781	com/tencent/mobileqq/richstatus/SignTextEditFragment:a	(Landroid/app/Activity;Lcom/tencent/mobileqq/richstatus/RichStatus;Ljava/lang/String;Landroid/os/Bundle;I)V
     //   3168: aload_0
     //   3169: aload 16
     //   3171: iconst_1
@@ -1885,32 +1885,32 @@ public class SignJsPlugin
     //   1: aload_1
     //   2: iload_2
     //   3: iload_3
-    //   4: invokespecial 788	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:onActivityResult	(Landroid/content/Intent;BI)V
+    //   4: invokespecial 787	com/tencent/mobileqq/vaswebviewplugin/VasWebviewJsPlugin:onActivityResult	(Landroid/content/Intent;BI)V
     //   7: aconst_null
     //   8: astore 9
     //   10: aload_1
     //   11: ifnonnull +13 -> 24
     //   14: ldc 34
     //   16: iconst_1
-    //   17: ldc_w 790
+    //   17: ldc_w 789
     //   20: invokestatic 324	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   23: return
     //   24: aload 9
     //   26: astore 8
     //   28: aload_1
-    //   29: invokevirtual 794	android/content/Intent:getExtras	()Landroid/os/Bundle;
+    //   29: invokevirtual 793	android/content/Intent:getExtras	()Landroid/os/Bundle;
     //   32: ifnonnull +51 -> 83
     //   35: aload 9
     //   37: astore 8
     //   39: ldc 34
     //   41: iconst_1
-    //   42: ldc_w 796
+    //   42: ldc_w 795
     //   45: invokestatic 324	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   48: return
     //   49: astore_1
     //   50: ldc 34
     //   52: iconst_1
-    //   53: ldc_w 798
+    //   53: ldc_w 797
     //   56: invokestatic 324	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   59: aload 8
     //   61: invokestatic 212	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -1923,7 +1923,7 @@ public class SignJsPlugin
     //   75: iconst_0
     //   76: ldc 198
     //   78: aastore
-    //   79: invokevirtual 691	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   79: invokevirtual 690	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   82: return
     //   83: aload 9
     //   85: astore 8
@@ -1944,19 +1944,19 @@ public class SignJsPlugin
     //   117: ifeq +13 -> 130
     //   120: ldc 34
     //   122: iconst_1
-    //   123: ldc_w 800
+    //   123: ldc_w 799
     //   126: invokestatic 324	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   129: return
     //   130: aload_1
-    //   131: ldc_w 802
-    //   134: invokevirtual 806	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
-    //   137: checkcast 808	cooperation/qzone/LbsDataV2$PoiInfo
+    //   131: ldc_w 801
+    //   134: invokevirtual 805	android/content/Intent:getParcelableExtra	(Ljava/lang/String;)Landroid/os/Parcelable;
+    //   137: checkcast 807	cooperation/qzone/LbsDataV2$PoiInfo
     //   140: astore_1
     //   141: aload_1
     //   142: ifnonnull +116 -> 258
     //   145: ldc 34
     //   147: iconst_1
-    //   148: ldc_w 810
+    //   148: ldc_w 809
     //   151: invokestatic 324	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   154: aload 12
     //   156: ldc 106
@@ -1972,7 +1972,7 @@ public class SignJsPlugin
     //   173: aload 12
     //   175: invokevirtual 174	org/json/JSONObject:toString	()Ljava/lang/String;
     //   178: aastore
-    //   179: invokevirtual 691	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   179: invokevirtual 690	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   182: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   185: ifeq -162 -> 23
     //   188: ldc 34
@@ -1980,7 +1980,7 @@ public class SignJsPlugin
     //   191: new 60	java/lang/StringBuilder
     //   194: dup
     //   195: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   198: ldc_w 812
+    //   198: ldc_w 811
     //   201: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: aload 12
     //   206: invokevirtual 174	org/json/JSONObject:toString	()Ljava/lang/String;
@@ -1993,7 +1993,7 @@ public class SignJsPlugin
     //   222: astore 8
     //   224: ldc 34
     //   226: iconst_1
-    //   227: ldc_w 814
+    //   227: ldc_w 813
     //   230: aload_1
     //   231: invokestatic 196	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   234: aload 8
@@ -2007,11 +2007,11 @@ public class SignJsPlugin
     //   250: iconst_0
     //   251: ldc 198
     //   253: aastore
-    //   254: invokevirtual 691	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   254: invokevirtual 690	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   257: return
     //   258: aload_0
     //   259: aload_1
-    //   260: getfield 817	cooperation/qzone/LbsDataV2$PoiInfo:poiId	Ljava/lang/String;
+    //   260: getfield 816	cooperation/qzone/LbsDataV2$PoiInfo:poiId	Ljava/lang/String;
     //   263: putfield 439	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:mCachePoiId	Ljava/lang/String;
     //   266: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   269: ifeq +32 -> 301
@@ -2037,15 +2037,15 @@ public class SignJsPlugin
     //   314: invokespecial 104	org/json/JSONObject:<init>	()V
     //   317: astore 8
     //   319: aload_1
-    //   320: getfield 820	cooperation/qzone/LbsDataV2$PoiInfo:poiName	Ljava/lang/String;
-    //   323: ldc_w 821
-    //   326: invokestatic 588	ajya:a	(I)Ljava/lang/String;
+    //   320: getfield 819	cooperation/qzone/LbsDataV2$PoiInfo:poiName	Ljava/lang/String;
+    //   323: ldc_w 820
+    //   326: invokestatic 587	alpo:a	(I)Ljava/lang/String;
     //   329: invokevirtual 301	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   332: ifne +29 -> 361
     //   335: aload 8
     //   337: ldc_w 338
     //   340: aload_1
-    //   341: getfield 820	cooperation/qzone/LbsDataV2$PoiInfo:poiName	Ljava/lang/String;
+    //   341: getfield 819	cooperation/qzone/LbsDataV2$PoiInfo:poiName	Ljava/lang/String;
     //   344: invokevirtual 137	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   347: pop
     //   348: aload 12
@@ -2077,7 +2077,7 @@ public class SignJsPlugin
     //   406: astore 8
     //   408: ldc 34
     //   410: iconst_1
-    //   411: ldc_w 823
+    //   411: ldc_w 822
     //   414: invokestatic 324	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   417: return
     //   418: aload 9
@@ -2085,13 +2085,13 @@ public class SignJsPlugin
     //   422: aload_1
     //   423: ldc 17
     //   425: lconst_0
-    //   426: invokevirtual 827	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   426: invokevirtual 826	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
     //   429: lstore 4
     //   431: aload 9
     //   433: astore 8
     //   435: aload_1
     //   436: ldc 20
-    //   438: invokevirtual 830	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   438: invokevirtual 829	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   441: astore 10
     //   443: aload 10
     //   445: ifnonnull +340 -> 785
@@ -2102,13 +2102,13 @@ public class SignJsPlugin
     //   457: aload_1
     //   458: ldc 23
     //   460: lconst_0
-    //   461: invokevirtual 827	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
+    //   461: invokevirtual 826	android/content/Intent:getLongExtra	(Ljava/lang/String;J)J
     //   464: lstore 6
     //   466: aload 9
     //   468: astore 8
     //   470: aload_1
     //   471: ldc 26
-    //   473: invokevirtual 830	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   473: invokevirtual 829	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
     //   476: astore 11
     //   478: aload 11
     //   480: astore_1
@@ -2138,7 +2138,7 @@ public class SignJsPlugin
     //   524: aload 12
     //   526: invokevirtual 174	org/json/JSONObject:toString	()Ljava/lang/String;
     //   529: aastore
-    //   530: invokevirtual 691	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   530: invokevirtual 690	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   533: aload 9
     //   535: astore 8
     //   537: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -2150,7 +2150,7 @@ public class SignJsPlugin
     //   550: new 60	java/lang/StringBuilder
     //   553: dup
     //   554: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   557: ldc_w 832
+    //   557: ldc_w 831
     //   560: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   563: aload 12
     //   565: invokevirtual 174	org/json/JSONObject:toString	()Ljava/lang/String;
@@ -2175,7 +2175,7 @@ public class SignJsPlugin
     //   608: aload 13
     //   610: ldc_w 366
     //   613: lload 4
-    //   615: invokestatic 837	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   615: invokestatic 836	java/lang/Long:toString	(J)Ljava/lang/String;
     //   618: invokevirtual 137	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   621: pop
     //   622: aload 9
@@ -2190,7 +2190,7 @@ public class SignJsPlugin
     //   641: aload 13
     //   643: ldc_w 374
     //   646: lload 6
-    //   648: invokestatic 837	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   648: invokestatic 836	java/lang/Long:toString	(J)Ljava/lang/String;
     //   651: invokevirtual 137	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   654: pop
     //   655: aload 9
@@ -2232,7 +2232,7 @@ public class SignJsPlugin
     //   724: aload 12
     //   726: invokevirtual 174	org/json/JSONObject:toString	()Ljava/lang/String;
     //   729: aastore
-    //   730: invokevirtual 691	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   730: invokevirtual 690	com/tencent/mobileqq/vaswebviewplugin/SignJsPlugin:callJs	(Ljava/lang/String;[Ljava/lang/String;)V
     //   733: aload 9
     //   735: astore 8
     //   737: invokestatic 184	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -2244,7 +2244,7 @@ public class SignJsPlugin
     //   750: new 60	java/lang/StringBuilder
     //   753: dup
     //   754: invokespecial 61	java/lang/StringBuilder:<init>	()V
-    //   757: ldc_w 832
+    //   757: ldc_w 831
     //   760: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   763: aload 12
     //   765: invokevirtual 174	org/json/JSONObject:toString	()Ljava/lang/String;

@@ -1,69 +1,28 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.view.LayoutInflater;
-import android.view.Window;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class wdo
-  extends Dialog
+class wdo
+  extends SimpleJob
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public wdo(Context paramContext)
+  wdo(wdn paramwdn, String paramString, wdq paramwdq, boolean paramBoolean)
   {
-    super(paramContext);
-    super.requestWindowFeature(1);
-    super.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561195, null);
-    super.setCanceledOnTouchOutside(true);
-    super.setContentView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131367254));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131367252));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367282));
-    paramContext = new ScaleAnimation(1.0F, 1.6F, 1.0F, 1.6F, 1, 0.5F, 1, 0.5F);
-    paramContext.setDuration(1000L);
-    paramContext.setRepeatCount(-1);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.8F, 0.0F);
-    localAlphaAnimation.setDuration(1000L);
-    localAlphaAnimation.setRepeatCount(-1);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localAlphaAnimation);
-    localAnimationSet.addAnimation(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localAnimationSet);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnTouchListener(new wdp(this));
+    super(paramString);
   }
   
-  private void a()
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(300L);
-    localAlphaAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(localAlphaAnimation);
-    localAlphaAnimation.setAnimationListener(new wdq(this));
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_a_of_type_Wdn.a();
+    this.jdField_a_of_type_Wdn.b();
+    ((uqo)urr.a(17)).a(this.jdField_a_of_type_Wdq.a, wdn.a(this.jdField_a_of_type_Wdn).a, wdn.a(this.jdField_a_of_type_Wdn).a(), this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Wdn.a("Q.qqstory.detail:CommentListPageLoader");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdo
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,11 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import baxz;
+import bcwt;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class CorpReq$3
-  implements baxz
+  implements bcwt
 {
   CorpReq$3(CorpReq paramCorpReq, QQAppInterface paramQQAppInterface, String paramString, CorpResp paramCorpResp) {}
   
@@ -21,7 +21,7 @@ class CorpReq$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.CorpReq.3
  * JD-Core Version:    0.7.0.1
  */

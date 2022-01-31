@@ -134,6 +134,8 @@ public abstract interface TVK_IMediaPlayer
   
   public abstract void setExtractFrameModeInfo(boolean paramBoolean, HashSet<Integer> paramHashSet);
   
+  public abstract void setHttpBufferRange(int paramInt1, int paramInt2);
+  
   public abstract void setLoopback(boolean paramBoolean);
   
   public abstract void setNextLoopVideoInfo(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo, String paramString);
@@ -214,7 +216,7 @@ public abstract interface TVK_IMediaPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

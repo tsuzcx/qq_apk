@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import aivv;
-import ajbk;
+import aknh;
+import aksw;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -39,14 +39,14 @@ class CmGameCmdChannel$RequestRunable
       Iterator localIterator = localCmGameCmdChannel.a.iterator();
       while (localIterator.hasNext())
       {
-        aivv localaivv = ((ajbk)localIterator.next()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        if (localaivv != null)
+        aknh localaknh = ((aksw)localIterator.next()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+        if (localaknh != null)
         {
-          if (localaivv.jdField_a_of_type_Boolean) {
+          if (localaknh.jdField_a_of_type_Boolean) {
             localIterator.remove();
           }
-          if (localaivv.b) {
-            localCmGameCmdChannel.a(0, this.jdField_a_of_type_JavaLangString, localaivv.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+          if (localaknh.b) {
+            localCmGameCmdChannel.a(0, this.jdField_a_of_type_JavaLangString, localaknh.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
           }
         }
       }
@@ -55,7 +55,7 @@ class CmGameCmdChannel$RequestRunable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel.RequestRunable
  * JD-Core Version:    0.7.0.1
  */

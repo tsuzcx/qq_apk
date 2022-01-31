@@ -1,44 +1,19 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract class bkiq<T extends bkip>
+class bkiq
+  implements DialogInterface.OnClickListener
 {
-  protected int a;
-  public final View a;
-  public T a;
+  bkiq(bkil parambkil) {}
   
-  protected bkiq(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      throw new NullPointerException("onCreateView can not return null");
-    }
-  }
-  
-  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Bkip = null;
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a(T paramT, int paramInt)
-  {
-    this.jdField_a_of_type_Bkip = paramT;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_Bkip != null) && (this.jdField_a_of_type_Bkip.a());
+    this.a.a.a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkiq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.minigame.jsapi.widgets;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -10,10 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.minigame.manager.GameLoadManager;
 import com.tencent.mobileqq.minigame.utils.DpUtil;
 import com.tencent.mobileqq.minigame.utils.GameLog;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,7 +22,6 @@ public class KeyboardLayout
   private Button mConfirmBT;
   private boolean mConfirmHold;
   private EditText mInputET;
-  private ITTEngine mTTEngine = GameLoadManager.g().getGameEngine();
   
   public KeyboardLayout(Context paramContext)
   {
@@ -41,18 +38,18 @@ public class KeyboardLayout
     localLayoutParams.leftMargin = DpUtil.dip2px(getContext(), 4.0F);
     localLayoutParams.rightMargin = DpUtil.dip2px(getContext(), 2.0F);
     localLayoutParams.topMargin = DpUtil.dip2px(getContext(), 2.0F);
-    this.mConfirmBT.setText(ajya.a(2131705951));
+    this.mConfirmBT.setText(alpo.a(2131706323));
     this.mConfirmBT.setTextColor(-1);
-    this.mConfirmBT.setBackgroundResource(2130840675);
+    this.mConfirmBT.setBackgroundResource(2130840785);
     this.mConfirmBT.setMinHeight(0);
     this.mConfirmBT.setMinimumHeight(0);
     this.mConfirmBT.setPadding(DpUtil.dip2px(getContext(), 10.0F), DpUtil.dip2px(getContext(), 5.0F), DpUtil.dip2px(getContext(), 10.0F), DpUtil.dip2px(getContext(), 5.0F));
     addView(this.mConfirmBT, localLayoutParams);
-    this.mConfirmBT.setId(2131370267);
+    this.mConfirmBT.setId(2131370564);
     localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(0, this.mConfirmBT.getId());
     localLayoutParams.leftMargin = DpUtil.dip2px(getContext(), 4.0F);
-    this.mInputET.setBackgroundResource(2130840678);
+    this.mInputET.setBackgroundResource(2130840788);
     addView(this.mInputET, localLayoutParams);
     setBackgroundColor(-1);
     setPadding(0, DpUtil.dip2px(getContext(), 5.0F), 0, DpUtil.dip2px(getContext(), 2.0F));
@@ -94,11 +91,11 @@ public class KeyboardLayout
           boolean bool2 = paramString.optBoolean("confirmHold", false);
           String str = paramString.optString("confirmType");
           int i = 6;
-          paramString = ajya.a(2131705950);
+          paramString = alpo.a(2131706322);
           if ("send".equals(str))
           {
             i = 4;
-            paramString = ajya.a(2131705949);
+            paramString = alpo.a(2131706321);
             this.mInputET.setText((CharSequence)localObject);
             if (j >= 0)
             {
@@ -119,20 +116,20 @@ public class KeyboardLayout
             if ("search".equals(str))
             {
               i = 3;
-              paramString = ajya.a(2131705952);
+              paramString = alpo.a(2131706324);
               continue;
             }
             if ("next".equals(str))
             {
               i = 5;
-              paramString = ajya.a(2131705948);
+              paramString = alpo.a(2131706320);
               continue;
             }
             if (!"go".equals(str)) {
               continue;
             }
             i = 2;
-            paramString = ajya.a(2131705947);
+            paramString = alpo.a(2131706319);
             continue;
           }
           this.mInputET.setFilters(new InputFilter[0]);
@@ -151,7 +148,7 @@ public class KeyboardLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.widgets.KeyboardLayout
  * JD-Core Version:    0.7.0.1
  */

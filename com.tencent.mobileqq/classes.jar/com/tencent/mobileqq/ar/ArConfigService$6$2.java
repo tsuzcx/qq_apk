@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar;
 
-import albr;
+import amsh;
 
 public class ArConfigService$6$2
   implements Runnable
 {
-  public ArConfigService$6$2(albr paramalbr) {}
+  public ArConfigService$6$2(amsh paramamsh) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ArConfigService$6$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArConfigService.6.2
  * JD-Core Version:    0.7.0.1
  */

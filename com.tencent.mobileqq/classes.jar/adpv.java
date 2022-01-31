@@ -1,74 +1,50 @@
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class adpv
-  implements View.OnClickListener
+  extends AccountObserver
 {
-  public adpv(FlashPicItemBuilder paramFlashPicItemBuilder) {}
+  public adpv(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  public void onClick(View paramView)
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
-    long l = SystemClock.uptimeMillis();
-    if (l - FlashPicItemBuilder.a(this.a) < 800L) {}
-    adpy localadpy;
-    label169:
-    for (;;)
-    {
-      return;
-      FlashPicItemBuilder.a(this.a, l);
-      localadpy = (adpy)actj.a(paramView);
-      if (localadpy != null)
-      {
-        Object localObject2 = localadpy.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-        Object localObject1 = null;
-        paramView = localObject1;
-        if (localObject2 != null)
-        {
-          localObject2 = this.a.a.a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq);
-          paramView = localObject1;
-          if ((localObject2 instanceof MessageForPic)) {
-            paramView = (MessageForPic)localObject2;
-          }
-        }
-        if (paramView != null)
-        {
-          if (ajyi.a(paramView)) {}
-          for (boolean bool = ajyi.b(paramView);; bool = ajwb.b(paramView))
-          {
-            if (bool) {
-              break label169;
-            }
-            if (localadpy.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 0) {
-              break label171;
-            }
-            if (localadpy.jdField_a_of_type_ComTencentImageURLDrawable.isDownloadStarted()) {
-              break;
-            }
-            localadpy.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
-            return;
-          }
-        }
-      }
+    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte, paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginFailed ");
     }
-    label171:
-    if (localadpy.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2)
-    {
-      localadpy.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
-      return;
+    RegisterChooseLoginActivity.a(this.a);
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    super.onLoginSuccess(paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginSuccess ");
     }
-    FlashPicItemBuilder.a(this.a, paramView, localadpy.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder$FlashPicAIOThumbView);
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    super.onLoginTimeout(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginTimeout ");
+    }
+    RegisterChooseLoginActivity.a(this.a);
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onUserCancel ");
+    }
+    RegisterChooseLoginActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpv
  * JD-Core Version:    0.7.0.1
  */

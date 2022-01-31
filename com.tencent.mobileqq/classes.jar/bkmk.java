@@ -1,20 +1,14 @@
-import android.graphics.Bitmap;
-
-class bkmk
-  implements alxj
+public class bkmk
+  extends bklz
 {
-  bkmk(bkmi parambkmi) {}
-  
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  protected bkmp a()
   {
-    if (bkmi.a(this.a) != null) {
-      bkmi.a(this.a).a(paramString1, 4, paramString2, paramBitmap);
-    }
+    return bkms.a(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkmk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
 class apce
-  extends apbm
+  implements DialogInterface.OnKeyListener
 {
-  public apce(apbi paramapbi)
-  {
-    super(paramapbi);
-  }
+  apce(apcd paramapcd) {}
   
-  protected String a()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    return "StateRefuseByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    apbi.b(this.jdField_a_of_type_Apbi, 11, 6);
-    apbi.c(this.jdField_a_of_type_Apbi, 11, 6);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + "->StateRefuseByPC)");
-    this.jdField_a_of_type_Apbm = new apcc(this.jdField_a_of_type_Apbi);
+    return (paramInt == 84) || (paramInt == 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apce
  * JD-Core Version:    0.7.0.1
  */

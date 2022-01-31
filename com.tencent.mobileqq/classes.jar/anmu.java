@@ -1,80 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.open.delegate.IArkDelegateSetup;
+import java.util.ArrayList;
 
-public class anmu
-  extends anmy
+final class anmu
+  extends IArkDelegateSetup
 {
-  public anmu(MsgBoxListActivity paramMsgBoxListActivity) {}
-  
-  protected void a(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  public ArrayList<String> onGetPredownloadApp()
   {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 1);
-      }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(ajsd.al, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(ajsd.al, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, ajsd.al, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            ahpd.b(this.a.app, ajsd.al, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(ajsd.al, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
-      }
-    }
+    return null;
   }
   
-  protected void b(boolean paramBoolean1, String paramString, int paramInt, long paramLong, boolean paramBoolean2, Bundle paramBundle)
+  public void reportEvent(String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
   {
-    if (!paramBoolean1) {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgBoxListActivity", 2, "onGetInteractLastFeed = false");
-      }
-    }
-    for (;;)
-    {
-      return;
-      if (paramBoolean2) {
-        this.a.app.a().addMessage(paramString, 0, paramInt, paramLong, 2);
-      }
-      while (!this.a.isFinishing())
-      {
-        this.a.a();
-        return;
-        if (this.a.app.a().isInMsgBoxRecentList(ajsd.am, this.a.jdField_a_of_type_Int))
-        {
-          paramInt = this.a.app.a().a(ajsd.am, this.a.jdField_a_of_type_Int);
-          this.a.app.a().a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int, ajsd.am, this.a.app.getCurrentAccountUin());
-          if (paramInt > 0)
-          {
-            ahpd.b(this.a.app, ajsd.am, this.a.jdField_a_of_type_Int);
-            this.a.app.a().a(ajsd.am, this.a.jdField_a_of_type_Int, true, true);
-          }
-        }
-      }
-    }
+    azlc.a(null, paramString1, paramString2, paramString3, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString4, paramString5);
+  }
+  
+  public void setupArkEnvironment(boolean paramBoolean)
+  {
+    anmp.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmu
  * JD-Core Version:    0.7.0.1
  */

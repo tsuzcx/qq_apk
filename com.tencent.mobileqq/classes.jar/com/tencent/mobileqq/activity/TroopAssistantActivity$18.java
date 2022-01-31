@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import axqy;
+import azmj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collections;
 import java.util.List;
@@ -56,7 +56,7 @@ class TroopAssistantActivity$18
     }
     catch (Exception localException1)
     {
-      axqy.b(this.this$0.app, "P_CliOper", "BizTechReport", "", "troop_assistant", "load_data_failed", 0, 0, localException1.toString(), "", "", "");
+      azmj.b(this.this$0.app, "P_CliOper", "BizTechReport", "", "troop_assistant", "load_data_failed", 0, 0, localException1.toString(), "", "", "");
       if (QLog.isColorLevel()) {
         QLog.i("TroopAssistantActivity", 2, "refreshTroopList exception:" + localException1.toString());
       }
@@ -65,7 +65,7 @@ class TroopAssistantActivity$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.18
  * JD-Core Version:    0.7.0.1
  */

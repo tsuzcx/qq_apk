@@ -1,66 +1,47 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
-import android.graphics.drawable.BitmapDrawable;
+import android.content.Context;
 import android.text.TextUtils;
-import android.view.ViewGroup;
-import behq;
-import bekr;
-import benn;
-import benv;
-import betc;
+import bgho;
+import bgkd;
+import bgmu;
+import com.tencent.qqmini.sdk.utils.ColorUtils;
 
 class UIJsPlugin$1
   implements Runnable
 {
-  UIJsPlugin$1(UIJsPlugin paramUIJsPlugin, String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean, bekr parambekr) {}
+  UIJsPlugin$1(UIJsPlugin paramUIJsPlugin, String paramString1, String paramString2, String paramString3, String paramString4, bgkd parambgkd, boolean paramBoolean, String paramString5, String paramString6) {}
   
   public void run()
   {
-    if ("loading".equals(this.val$icon))
+    Object localObject = this.this$0.mMiniAppContext.a();
+    bgmu localbgmu;
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
-      if (UIJsPlugin.access$000(this.this$0) == null) {
-        UIJsPlugin.access$002(this.this$0, new benv(this.this$0.mMiniAppContext.a(), (ViewGroup)this.this$0.mMiniAppContext.a().findViewById(16908290)));
-      }
-      for (;;)
-      {
-        UIJsPlugin.access$000(this.this$0).a(0, this.val$icon, this.val$imagePath, this.val$title, this.val$duration, this.val$mask);
-        this.val$req.a();
-        return;
-        UIJsPlugin.access$000(this.this$0).a();
+      localbgmu = new bgmu((Context)localObject, 2131755761);
+      localbgmu.setContentView(2131559342);
+      if (!TextUtils.isEmpty(this.val$title)) {
+        break label131;
       }
     }
-    for (;;)
+    label131:
+    for (localObject = null;; localObject = this.val$title)
     {
-      try
-      {
-        UIJsPlugin.access$102(this.this$0, new benn(this.this$0.mMiniAppContext.a()));
-        if (TextUtils.isEmpty(this.val$imagePath)) {
-          break label236;
-        }
-        BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.val$imagePath);
-        UIJsPlugin.access$100(this.this$0).a(localBitmapDrawable);
-        UIJsPlugin.access$100(this.this$0).a(this.val$title);
-        UIJsPlugin.access$100(this.this$0).c(this.val$duration);
-        UIJsPlugin.access$100(this.this$0).a();
+      localbgmu.a((String)localObject).a(this.val$content);
+      localbgmu.b(this.val$confirmText, ColorUtils.parseColor(this.val$confirmColor), new UIJsPlugin.1.1(this));
+      if (this.val$showCancel) {
+        localbgmu.a(this.val$cancelText, ColorUtils.parseColor(this.val$cancelColor), new UIJsPlugin.1.2(this));
       }
-      catch (Throwable localThrowable)
-      {
-        betc.d("UIJsPlugin", "showToastView error.", localThrowable);
-      }
-      break;
-      label236:
-      if ("none".equals(this.val$icon)) {
-        UIJsPlugin.access$100(this.this$0).b(-1);
-      } else {
-        UIJsPlugin.access$100(this.this$0).a(benv.a(this.val$icon));
-      }
+      localbgmu.setCanceledOnTouchOutside(false);
+      localbgmu.show();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.UIJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

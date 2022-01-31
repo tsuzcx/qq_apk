@@ -1,43 +1,39 @@
-class avyu
-  implements avxp
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.onlinestatus.AccountPanel.15.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
+
+public class avyu
+  implements Observer
 {
-  avyu(avyt paramavyt) {}
+  avyu(avyo paramavyo) {}
   
-  public void a(int paramInt, Throwable paramThrowable)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    ved.d("FlowEdit_VideoFlowDecodeWrapper", paramThrowable, "onDecodeError: %d", new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void b(long paramLong)
-  {
-    ved.a("FlowEdit_VideoFlowDecodeWrapper", "onDecodeSeekTo: %d", Long.valueOf(paramLong));
-  }
-  
-  public void f()
-  {
-    ved.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeStart: ");
-  }
-  
-  public void g()
-  {
-    ved.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeFinish: ");
-  }
-  
-  public void i()
-  {
-    ved.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeCancel: ");
-  }
-  
-  public void l()
-  {
-    ved.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeRepeat: ");
+    if ((avyo.a(this.a) == null) || (avyo.a(this.a).isFinishing()) || (avyo.a(this.a) == null)) {
+      QLog.d("AccountPanel", 1, String.format("mObserver update return", new Object[0]));
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("AccountPanel", 2, "update");
+        }
+      } while (!(paramObject instanceof String[]));
+      paramObservable = (String[])paramObject;
+    } while ((paramObservable.length != 2) || (!aljq.x.equals(paramObservable[0])));
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountPanel", 2, "update() -> before update");
+    }
+    avyo.a(this.a).runOnUiThread(new AccountPanel.15.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avyu
  * JD-Core Version:    0.7.0.1
  */

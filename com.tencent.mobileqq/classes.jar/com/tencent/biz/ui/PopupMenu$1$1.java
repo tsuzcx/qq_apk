@@ -1,12 +1,12 @@
 package com.tencent.biz.ui;
 
-import xec;
-import xed;
+import ysv;
+import ysw;
 
 public class PopupMenu$1$1
   implements Runnable
 {
-  public PopupMenu$1$1(xed paramxed) {}
+  public PopupMenu$1$1(ysw paramysw) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class PopupMenu$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.ui.PopupMenu.1.1
  * JD-Core Version:    0.7.0.1
  */

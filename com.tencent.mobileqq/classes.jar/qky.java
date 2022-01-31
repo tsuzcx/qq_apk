@@ -1,49 +1,48 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordInfo;
+import tencent.im.oidb.articlesummary.articlesummary.HotWordItem;
 
-final class qky
-  implements bbxm
+public class qky
 {
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public List<qkz> a;
+  
+  public static qky a(articlesummary.HotWordInfo paramHotWordInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(qkx.a, 2, "queryKingCardType()#callback postQuery, sucess=" + paramBoolean1 + " isKingCard=" + paramBoolean2 + " product=" + paramInt);
-    }
-    if (paramBoolean1)
+    qky localqky = new qky();
+    if (paramHotWordInfo.rpt_hot_word_item.has())
     {
-      qkx.a(paramInt);
-      try
+      localqky.a = new ArrayList(paramHotWordInfo.rpt_hot_word_item.size());
+      paramHotWordInfo = paramHotWordInfo.rpt_hot_word_item.get().iterator();
+      while (paramHotWordInfo.hasNext())
       {
-        JSONObject localJSONObject = qkx.b();
-        if (localJSONObject != null) {}
-        try
-        {
-          qkx.b().put("simCardType", qkx.a());
-          if (QLog.isColorLevel()) {
-            QLog.d(qkx.a, 2, "queryKingCardType()#callback postQuery, update jsonStr ");
-          }
-          return;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.e(qkx.a, 2, "queryKingCardType()#callback postQuery, update json error ", localJSONException);
-            }
-          }
-        }
-        return;
+        qkz localqkz = qkz.a((articlesummary.HotWordItem)paramHotWordInfo.next());
+        localqky.a.add(localqkz);
       }
-      finally {}
     }
+    return localqky;
+  }
+  
+  public byte[] a()
+  {
+    articlesummary.HotWordInfo localHotWordInfo = new articlesummary.HotWordInfo();
+    if (this.a.size() > 0)
+    {
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(((qkz)localIterator.next()).a());
+      }
+      localHotWordInfo.rpt_hot_word_item.set(localArrayList);
+    }
+    return localHotWordInfo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qky
  * JD-Core Version:    0.7.0.1
  */

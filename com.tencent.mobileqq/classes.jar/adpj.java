@@ -1,19 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.MessageForFile;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
-class adpj
-  implements bcwm
+public class adpj
+  implements DialogInterface.OnClickListener
 {
-  adpj(adpg paramadpg, MessageForFile paramMessageForFile, Context paramContext) {}
+  public adpj(RegisterActivity paramRegisterActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    apug.a(this.jdField_a_of_type_Adpg.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpj
  * JD-Core Version:    0.7.0.1
  */

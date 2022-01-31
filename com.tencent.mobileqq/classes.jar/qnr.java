@@ -1,37 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 
-class qnr
-  extends osm
+public final class qnr
+  implements Parcelable.Creator<UrlJumpInfo>
 {
-  private qnr(qnl paramqnl) {}
-  
-  public void f(boolean paramBoolean)
+  public UrlJumpInfo a(Parcel paramParcel)
   {
-    qnl.b(this.a, paramBoolean);
-    if (paramBoolean) {
-      this.a.d();
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsFloatWindowManager", 2, "onVideoFeedsFloatingWindowVisibilityChange: " + paramBoolean);
-      }
-      return;
-      this.a.e();
-    }
+    return new UrlJumpInfo(paramParcel);
   }
   
-  public void i()
+  public UrlJumpInfo[] a(int paramInt)
   {
-    this.a.f();
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsFloatWindowManager", 2, "onVideoFeedsFloatingWindowDismiss");
-    }
+    return new UrlJumpInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qnr
  * JD-Core Version:    0.7.0.1
  */

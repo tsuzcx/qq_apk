@@ -1,28 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
 public class aqhj
   implements View.OnClickListener
 {
-  public aqhj(CommonTabFragment paramCommonTabFragment) {}
+  public aqhj(FilePreviewActivity paramFilePreviewActivity) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.a == null) || (this.a.a.mWebview == null)) {}
-    do
-    {
-      return;
-      paramView = this.a.a.mWebview.getPluginEngine();
-    } while (paramView == null);
-    paramView.a(this.a.a.mWebview.getUrl(), 8589934606L, null);
+    azmj.b(this.a.app, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
+    FilePreviewActivity.a(this.a, bacb.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131720680), false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhj
  * JD-Core Version:    0.7.0.1
  */

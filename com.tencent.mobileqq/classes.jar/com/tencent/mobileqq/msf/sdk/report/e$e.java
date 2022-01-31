@@ -2,7 +2,7 @@ package com.tencent.mobileqq.msf.sdk.report;
 
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
-import com.tencent.mobileqq.msf.sdk.k;
+import com.tencent.mobileqq.msf.sdk.l;
 import com.tencent.qphone.base.util.QLog;
 
 public class e$e
@@ -24,7 +24,7 @@ public class e$e
     if (!MsfServiceSdk.isUseNewProxy) {
       return;
     }
-    k.a(e.b, false);
+    l.a(e.b, false);
   }
   
   private void g()

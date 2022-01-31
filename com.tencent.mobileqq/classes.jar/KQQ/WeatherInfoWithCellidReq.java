@@ -68,7 +68,7 @@ public final class WeatherInfoWithCellidReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     KQQ.WeatherInfoWithCellidReq
  * JD-Core Version:    0.7.0.1
  */

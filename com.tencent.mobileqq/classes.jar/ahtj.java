@@ -1,58 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahtj
-  implements View.OnTouchListener
+class ahtj
+  extends BroadcastReceiver
 {
-  public ahtj(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  ahtj(ahti paramahti) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = paramMotionEvent.getAction();
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    if (i == 0) {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(null);
-    }
-    do
+    if (paramIntent.getBooleanExtra("recording_time_out", false))
     {
-      return false;
-      if (i == 2)
-      {
-        if (f < this.a.jdField_b_of_type_Int * -1)
-        {
-          this.a.a(false, false);
-          return true;
-        }
-        this.a.a(true, false);
-        return true;
-      }
-      if (i == 3)
-      {
-        this.a.a(false, true);
-        return false;
-      }
-    } while (i != 1);
-    if (f < this.a.jdField_b_of_type_Int * -1)
-    {
-      this.a.l = false;
-      this.a.a(false, true);
+      QQToast.a(this.a.mRuntime.a(), 2131699370, 0).a();
+      QLog.e("FaceUnblockCameraJsApiPlugin", 1, "FaceUnlock record timeout!");
+      return;
     }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(2131692635);
-      return false;
-      this.a.l = true;
-      this.a.a(true, true);
-    }
+    paramContext = paramIntent.getStringExtra("target_media_url");
+    ahti.a(this.a, paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ahbf;
+import aivk;
 import android.os.Bundle;
-import bbwt;
-import bbwu;
-import bbwz;
+import bdvu;
+import bdvv;
+import bdwa;
 import com.tencent.util.Pair;
 import java.io.File;
 import java.util.Iterator;
@@ -13,12 +13,12 @@ import java.util.List;
 public class PreloadComDownloader$3
   implements Runnable
 {
-  public PreloadComDownloader$3(ahbf paramahbf, DownloadParam paramDownloadParam, bbwt parambbwt, Bundle paramBundle) {}
+  public PreloadComDownloader$3(aivk paramaivk, DownloadParam paramDownloadParam, bdvu parambdvu, Bundle paramBundle) {}
   
   public void run()
   {
-    bbwu localbbwu = new bbwu(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url, new File(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePath));
-    localbbwu.f = "QwalletPreload";
+    bdvv localbdvv = new bdvv(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.url, new File(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.filePath));
+    localbdvv.f = "QwalletPreload";
     if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.headers != null)
     {
       Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam.headers.iterator();
@@ -26,18 +26,18 @@ public class PreloadComDownloader$3
       {
         Pair localPair = (Pair)localIterator.next();
         if (localPair != null) {
-          localbbwu.a((String)localPair.first, (String)localPair.second);
+          localbdvv.a((String)localPair.first, (String)localPair.second);
         }
       }
     }
-    if (ahbf.a(this.this$0) != null) {
-      ahbf.a(this.this$0).a(localbbwu, this.jdField_a_of_type_Bbwt, this.jdField_a_of_type_AndroidOsBundle);
+    if (aivk.a(this.this$0) != null) {
+      aivk.a(this.this$0).a(localbdvv, this.jdField_a_of_type_Bdvu, this.jdField_a_of_type_AndroidOsBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader.3
  * JD-Core Version:    0.7.0.1
  */

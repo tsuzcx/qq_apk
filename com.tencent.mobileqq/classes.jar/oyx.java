@@ -1,34 +1,38 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.oidb_0xc90.RspBody;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
 
-class oyx
-  extends mxg
+public class oyx
+  implements olx
 {
-  oyx(oyv paramoyv, rod paramrod) {}
+  public oyx(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    if (!paramBoolean)
     {
-      paramBundle = new oidb_0xc90.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (this.jdField_a_of_type_Rod != null) {
-        this.jdField_a_of_type_Rod.a(true, paramInt, paramBundle);
-      }
+      this.a.onBackEvent();
       return;
     }
-    catch (Exception paramArrayOfByte)
+    this.a.a(this.a.a);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(oyv.a, 2, "requestNewCommunityMsg onResult(), exception = " + QLog.getStackTraceString(paramArrayOfByte));
+    default: 
+      return;
     }
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oyx
  * JD-Core Version:    0.7.0.1
  */

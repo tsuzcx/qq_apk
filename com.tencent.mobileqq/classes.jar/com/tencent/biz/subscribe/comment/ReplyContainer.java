@@ -2,7 +2,7 @@ package com.tencent.biz.subscribe.comment;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import ajya;
+import alpo;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.util.List;
-import wop;
+import yde;
 
 public class ReplyContainer
   extends LinearLayout
@@ -24,7 +24,7 @@ public class ReplyContainer
   private int jdField_a_of_type_Int;
   private CertifiedAccountMeta.StComment jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
   private ReplyActionView jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView;
-  private wop jdField_a_of_type_Wop;
+  private yde jdField_a_of_type_Yde;
   private int b;
   private int c;
   
@@ -81,11 +81,11 @@ public class ReplyContainer
     int j = localList.size();
     if (j > 0) {
       if (paramInt <= 0) {
-        break label441;
+        break label442;
       }
     }
     label286:
-    label441:
+    label442:
     for (paramInt = Math.min(j, paramInt);; paramInt = j)
     {
       this.c = paramInt;
@@ -97,7 +97,7 @@ public class ReplyContainer
         CertifiedAccountMeta.StReply localStReply = (CertifiedAccountMeta.StReply)localList.get(i);
         ReplyView localReplyView = new ReplyView(getContext());
         localReplyView.setPosition(i);
-        localReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Wop);
+        localReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_Yde);
         localReplyView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
         localReplyView.setClickable(true);
         localReplyView.setFocusable(true);
@@ -115,7 +115,7 @@ public class ReplyContainer
           this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setOnClickListener(this);
         }
         if (paramInt <= this.b) {
-          break label326;
+          break label327;
         }
         if (paramInt != j) {
           break label286;
@@ -128,17 +128,17 @@ public class ReplyContainer
         addView(this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView);
         setVisibility(0);
         return;
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(ajya.a(2131713406));
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alpo.a(2131713778));
         this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(0);
+        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
         continue;
-        label326:
+        label327:
         if (j > paramInt)
         {
           paramInt = j - paramInt;
           if (paramInt > 0)
           {
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(ajya.a(2131713404) + paramInt + ajya.a(2131713405));
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(alpo.a(2131713776) + paramInt + alpo.a(2131713777));
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
           }
@@ -164,13 +164,13 @@ public class ReplyContainer
       do
       {
         return;
-      } while (this.jdField_a_of_type_Wop == null);
-      this.jdField_a_of_type_Wop.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment);
+      } while (this.jdField_a_of_type_Yde == null);
+      this.jdField_a_of_type_Yde.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment);
       return;
-    } while (this.jdField_a_of_type_Wop == null);
+    } while (this.jdField_a_of_type_Yde == null);
     CertifiedAccountMeta.StComment localStComment = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
     int i = getHeight() / this.c;
-    this.jdField_a_of_type_Wop.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
+    this.jdField_a_of_type_Yde.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
   }
   
   public boolean onLongClick(View paramView)
@@ -183,9 +183,9 @@ public class ReplyContainer
     this.b = paramInt;
   }
   
-  public void setOnCommentElementClickListener(wop paramwop)
+  public void setOnCommentElementClickListener(yde paramyde)
   {
-    this.jdField_a_of_type_Wop = paramwop;
+    this.jdField_a_of_type_Yde = paramyde;
   }
   
   public void setPosition(int paramInt)
@@ -195,7 +195,7 @@ public class ReplyContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.ReplyContainer
  * JD-Core Version:    0.7.0.1
  */

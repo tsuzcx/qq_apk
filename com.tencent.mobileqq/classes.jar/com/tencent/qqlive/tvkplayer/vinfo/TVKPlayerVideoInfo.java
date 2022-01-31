@@ -61,6 +61,7 @@ public class TVKPlayerVideoInfo
   private transient Map<String, Object> mAdParamsMap;
   private Map<String, String> mAdReportInfoMap;
   private Map<String, String> mAdRequestParamMap;
+  public int mBusiPlatform;
   private String mCid = "";
   private Map<String, String> mConfigMap;
   private transient WeakReference<Object> mExtraObject;
@@ -221,6 +222,11 @@ public class TVKPlayerVideoInfo
     return this.mExtraRequestParamsMap;
   }
   
+  public int getPlatform()
+  {
+    return this.mBusiPlatform;
+  }
+  
   public int getPlayType()
   {
     return this.mPlayType;
@@ -335,6 +341,11 @@ public class TVKPlayerVideoInfo
     this.mAdRequestParamMap.put("livepid", paramString);
   }
   
+  public void setPlatform(int paramInt)
+  {
+    this.mBusiPlatform = paramInt;
+  }
+  
   public void setPlayType(int paramInt)
   {
     this.mPlayType = paramInt;
@@ -362,7 +373,7 @@ public class TVKPlayerVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerVideoInfo
  * JD-Core Version:    0.7.0.1
  */

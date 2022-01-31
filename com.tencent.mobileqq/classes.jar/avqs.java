@@ -1,12 +1,18 @@
-import com.tencent.mobileqq.remind.widget.WheelView;
-
-public abstract interface avqs
+public abstract class avqs
+  implements alkr
 {
-  public abstract long a(WheelView[] paramArrayOfWheelView, int[] paramArrayOfInt);
+  protected void a(Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if ((105 == paramInt) && (paramBoolean)) {
+      a(paramObject);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avqs
  * JD-Core Version:    0.7.0.1
  */

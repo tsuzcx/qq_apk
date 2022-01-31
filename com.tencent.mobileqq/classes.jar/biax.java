@@ -1,29 +1,17 @@
-import cooperation.qzone.util.QZLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class biax
+class biax
+  extends RecyclerView.ViewHolder
 {
-  public static int a = 2;
-  public static int b = 1;
-  public static int c = 4;
-  
-  public static void a(String paramString1, String paramString2)
+  biax(biau parambiau, View paramView)
   {
-    QZLog.d(paramString1, c, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    QZLog.d(paramString1, b, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    QZLog.e(paramString1, paramString2, null);
+    super(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biax
  * JD-Core Version:    0.7.0.1
  */

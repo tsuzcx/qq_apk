@@ -1,27 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.bigbrother.JumpConfirmFragment;
+import com.tencent.mobileqq.haoliyou.JefsClass;
 
-class anrh
-  implements anqs
+public class anrh
+  implements DialogInterface.OnClickListener
 {
-  anrh(anrc paramanrc) {}
+  public anrh(JumpConfirmFragment paramJumpConfirmFragment) {}
   
-  public void a(List<anyh> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = paramList;
-    if (paramList == null) {
-      localObject = new ArrayList();
-    }
-    if (anrc.a(this.a) != null) {
-      anrc.a(this.a).obtainMessage(206, localObject).sendToTarget();
+    JefsClass.getInstance().b(JumpConfirmFragment.a(this.a), JumpConfirmFragment.a(this.a), JumpConfirmFragment.b(this.a));
+    if (JumpConfirmFragment.b(this.a) == null) {}
+    for (paramDialogInterface = "";; paramDialogInterface = JumpConfirmFragment.b(this.a))
+    {
+      azmj.b(null, "dc00898", "", "", "0X8009C5A", "0X8009C5A", 0, 0, "1", "", paramDialogInterface, "");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anrh
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mobileqq.mini.entry;
 
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ public class MiniAppExposureManager
   public static final String TAG = "MiniAppExposureManager";
   private Map<String, MiniAppExposureManager.BaseExposureReport> duplicateItemMap = new HashMap();
   private List<MiniAppExposureManager.BaseExposureReport> reportItemList = new ArrayList();
+  private List<MiniAppExposureManager.BaseExposureReport> searchItemList = new ArrayList();
   
   public MiniAppExposureManager(QQAppInterface paramQQAppInterface) {}
   
@@ -35,10 +37,23 @@ public class MiniAppExposureManager
     this.reportItemList.add(paramBaseExposureReport);
   }
   
+  public void addSearchItemAndCheckReport(MiniAppExposureManager.BaseExposureReport paramBaseExposureReport)
+  {
+    this.searchItemList.add(paramBaseExposureReport);
+    if (searchReportCheck()) {
+      submitSearchReportData();
+    }
+  }
+  
   public void clear()
   {
     this.reportItemList.clear();
     this.duplicateItemMap.clear();
+  }
+  
+  public void clearSearchItemData()
+  {
+    this.searchItemList.clear();
   }
   
   public Map<String, MiniAppExposureManager.BaseExposureReport> getDuplicateItemMap()
@@ -49,6 +64,11 @@ public class MiniAppExposureManager
   public List<MiniAppExposureManager.BaseExposureReport> getReportItemList()
   {
     return this.reportItemList;
+  }
+  
+  public List<MiniAppExposureManager.BaseExposureReport> getSearchItemList()
+  {
+    return this.searchItemList;
   }
   
   public void onDestroy()
@@ -64,10 +84,23 @@ public class MiniAppExposureManager
       this.duplicateItemMap.put(paramString, paramBaseExposureReport);
     }
   }
+  
+  public boolean searchReportCheck()
+  {
+    return this.searchItemList.size() >= 20;
+  }
+  
+  public void submitSearchReportData()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(getSearchItemList());
+    MiniProgramLpReportDC04239.exposureReport(localArrayList);
+    clearSearchItemData();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppExposureManager
  * JD-Core Version:    0.7.0.1
  */

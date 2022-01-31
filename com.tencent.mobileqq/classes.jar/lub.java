@@ -1,319 +1,220 @@
-import android.media.MediaPlayer;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.opengl.GLES20;
+import com.tencent.av.opengl.program.TextureProgram;
+import com.tencent.av.opengl.utils.AVGLUtils;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
 public class lub
-  implements mnu
 {
-  private int jdField_a_of_type_Int;
-  public MediaPlayer a;
-  public VideoController a;
-  public VideoAppInterface a;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
-  public luf a;
-  public luh a;
-  private mnf jdField_a_of_type_Mnf;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private static int jdField_a_of_type_Int = -1;
+  private static lub jdField_a_of_type_Lub;
+  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  boolean jdField_a_of_type_Boolean = true;
+  private int b;
+  private int c;
+  private int d = jdField_a_of_type_Int;
+  private int e = jdField_a_of_type_Int;
+  private int f = jdField_a_of_type_Int;
+  private int g = jdField_a_of_type_Int;
   
-  public lub(VideoAppInterface paramVideoAppInterface, boolean paramBoolean)
+  private int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    QLog.i("AVRedPacketMusicPlayer", 1, "AVRedPacketMusicPlayer usePcm=" + paramBoolean);
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.b = paramBoolean;
-    if (!min.f())
+    int i = this.d;
+    if (this.d == jdField_a_of_type_Int)
     {
-      QLog.i("AVRedPacketMusicPlayer", 1, "AVRedPacketMusicPlayer system not support, using mp3");
-      this.b = false;
+      int[] arrayOfInt = new int[1];
+      GLES20.glGenFramebuffers(1, arrayOfInt, 0);
+      i = arrayOfInt[0];
+    }
+    for (;;)
+    {
+      GLES20.glBindFramebuffer(36160, i);
+      GLES20.glBindTexture(3553, paramInt3);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+      GLES20.glBindTexture(3553, 0);
+      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt3, 0);
+      GLES20.glBindFramebuffer(36160, 0);
+      return i;
     }
   }
   
-  private String a(int paramInt)
+  public static lub a()
   {
-    moy localmoy = mpv.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a();
-    if (!localmoy.c) {
-      return null;
+    if (jdField_a_of_type_Lub == null) {
+      jdField_a_of_type_Lub = new lub();
     }
-    switch (paramInt)
-    {
-    case 6: 
-    default: 
-      return null;
-    case 1: 
-      return a(localmoy.b, "321go");
-    case 2: 
-      return a(localmoy.b, "cool");
-    case 3: 
-      return a(localmoy.b, "perfect");
-    case 4: 
-      return a(localmoy.b, "miss");
-    case 5: 
-      return a(localmoy.b, "excellent");
-    }
-    return a(localmoy.b, "background" + this.jdField_a_of_type_Int);
+    return jdField_a_of_type_Lub;
   }
   
-  private String a(String paramString1, String paramString2)
+  private int b(int paramInt1, int paramInt2, int paramInt3)
   {
-    paramString2 = new StringBuilder().append(paramString1).append(paramString2);
-    if (this.b) {}
-    for (paramString1 = ".pcm";; paramString1 = ".mp3") {
-      return paramString1;
+    int i = this.f;
+    if (this.f == jdField_a_of_type_Int)
+    {
+      int[] arrayOfInt = new int[1];
+      GLES20.glGenFramebuffers(1, arrayOfInt, 0);
+      i = arrayOfInt[0];
     }
+    for (;;)
+    {
+      GLES20.glBindFramebuffer(36160, i);
+      GLES20.glBindTexture(3553, paramInt3);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10242, 33071.0F);
+      GLES20.glTexParameterf(3553, 10243, 33071.0F);
+      GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+      GLES20.glBindTexture(3553, 0);
+      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt3, 0);
+      GLES20.glBindFramebuffer(36160, 0);
+      return i;
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_JavaNioFloatBuffer != null) {
+      return;
+    }
+    float[] arrayOfFloat = new float[8];
+    arrayOfFloat[0] = (-0.5F + 0.0F);
+    arrayOfFloat[1] = (-0.5F + 0.0F);
+    arrayOfFloat[2] = (0.5F + 0.0F);
+    arrayOfFloat[3] = (-0.5F + 0.0F);
+    arrayOfFloat[4] = (-0.5F + 0.0F);
+    arrayOfFloat[5] = (0.5F + 0.0F);
+    arrayOfFloat[6] = (0.5F + 0.0F);
+    arrayOfFloat[7] = (0.5F + 0.0F);
+    ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
+    localByteBuffer.order(ByteOrder.nativeOrder());
+    this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
+    this.jdField_a_of_type_JavaNioFloatBuffer.put(arrayOfFloat);
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+  }
+  
+  private void c()
+  {
+    if (this.g == jdField_a_of_type_Int)
+    {
+      int[] arrayOfInt = new int[1];
+      GLES20.glGenTextures(1, arrayOfInt, 0);
+      this.g = arrayOfInt[0];
+    }
+    this.f = b(this.b, this.c, this.g);
+  }
+  
+  private void d()
+  {
+    if (this.e == jdField_a_of_type_Int)
+    {
+      int[] arrayOfInt = new int[1];
+      GLES20.glGenTextures(1, arrayOfInt, 0);
+      this.e = arrayOfInt[0];
+    }
+    this.d = a(this.b, this.c, this.e);
   }
   
   public void a()
   {
-    try
+    if (this.d != jdField_a_of_type_Int)
     {
-      if (this.b)
-      {
-        this.jdField_a_of_type_ComTencentAvVideoController.a().E = false;
-        this.jdField_a_of_type_ComTencentAvVideoController.a(1, null);
-        QLog.i("AVRedPacketMusicPlayer", 1, "release unregisterDAudioDataCallbackAll, mix=" + this.jdField_a_of_type_ComTencentAvVideoController.a().D);
-        int i = this.jdField_a_of_type_ComTencentAvVideoController.b(3, this.jdField_a_of_type_ComTencentAvVideoController.a().D);
-        QLog.i("AVRedPacketMusicPlayer", 1, "release unregisterDAudioDataCallbackAll, ret3=" + i);
-        this.jdField_a_of_type_ComTencentAvVideoController.a().D = false;
-        this.jdField_a_of_type_ComTencentAvVideoController.a().C = false;
-        if (this.jdField_a_of_type_Mnf != null) {
-          this.jdField_a_of_type_Mnf.c();
-        }
-        this.jdField_a_of_type_Mnf = null;
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList = null;
-        this.jdField_a_of_type_Boolean = false;
-        return;
-        if (this.jdField_a_of_type_Luf != null)
-        {
-          this.jdField_a_of_type_Luf.a();
-          this.jdField_a_of_type_Luf = null;
-        }
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-        {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-          this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-        }
-      }
-      return;
+      GLES20.glDeleteFramebuffers(2, new int[] { this.d, this.f }, 0);
+      GLES20.glDeleteTextures(2, new int[] { this.e, this.g }, 0);
     }
-    catch (Exception localException)
+    this.d = jdField_a_of_type_Int;
+    this.e = jdField_a_of_type_Int;
+    this.f = jdField_a_of_type_Int;
+    this.g = jdField_a_of_type_Int;
+  }
+  
+  public void a(lsv paramlsv, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      QLog.e("AVRedPacketMusicPlayer", 1, "setGameFinish exception", localException);
+      paramlsv = ltu.a(0);
+      GLES20.glUseProgram(paramlsv.a());
+      GLES20.glActiveTexture(33984);
+      GLES20.glBindTexture(3553, this.g);
+      GLES20.glUniform1i(paramlsv.a()[4].jdField_a_of_type_Int, 0);
+      GLES20.glUniform1f(paramlsv.a()[2].jdField_a_of_type_Int, 1.0F);
     }
   }
   
-  public void a(int paramInt)
+  public void a(lsv paramlsv, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, float[] paramArrayOfFloat, int paramInt8, int paramInt9)
   {
-    if (this.b) {
-      if (this.jdField_a_of_type_Mnf != null)
-      {
-        if (paramInt != 7) {
-          break label28;
-        }
-        this.jdField_a_of_type_Mnf.a();
-      }
-    }
-    label28:
-    do
+    if ((this.b != paramInt1 * 2) || (this.d == jdField_a_of_type_Int))
     {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Mnf.b();
-        return;
-        if (paramInt != 7) {
-          break;
-        }
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-        {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("AVRedPacketMusicPlayer", 2, "stopMusic, mediaPlayer is null");
-      return;
-      if (this.jdField_a_of_type_Luf != null)
-      {
-        String str = a(paramInt);
-        this.jdField_a_of_type_Luf.a(str);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AVRedPacketMusicPlayer", 2, "stopMusic, soundPoolHelper is null");
-  }
-  
-  public void a(int paramInt, moy parammoy)
-  {
-    if ((parammoy == null) || (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentAvVideoController == null))
-    {
-      QLog.i("AVRedPacketMusicPlayer", 1, "init ,configInfo == null || mHasInit || mVideoController == null");
-      return;
+      this.b = (paramInt1 * 2);
+      this.c = (paramInt2 * 2);
+      d();
+      c();
+      b();
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = paramInt;
-    String str1 = a(parammoy.b, "321go");
-    String str2 = a(parammoy.b, "cool");
-    String str3 = a(parammoy.b, "perfect");
-    String str4 = a(parammoy.b, "miss");
-    String str5 = a(parammoy.b, "excellent");
-    parammoy = a(parammoy.b, "background" + this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.i("AVRedPacketMusicPlayer", 2, "init ,bgFilePath = " + parammoy);
-    }
-    if (this.b)
-    {
-      this.jdField_a_of_type_Mnf = new mnf(4096);
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(6);
-      this.jdField_a_of_type_JavaUtilArrayList.add(str1);
-      this.jdField_a_of_type_JavaUtilArrayList.add(str2);
-      this.jdField_a_of_type_JavaUtilArrayList.add(str3);
-      this.jdField_a_of_type_JavaUtilArrayList.add(str4);
-      this.jdField_a_of_type_JavaUtilArrayList.add(str5);
-      this.jdField_a_of_type_JavaUtilArrayList.add(parammoy);
-      this.jdField_a_of_type_ComTencentAvVideoController.a(1, this);
-      this.jdField_a_of_type_ComTencentAvVideoController.a().E = true;
-      if (this.jdField_a_of_type_ComTencentAvVideoController.a().A)
-      {
-        paramInt = this.jdField_a_of_type_ComTencentAvVideoController.a(3, true);
-        i = this.jdField_a_of_type_ComTencentAvVideoController.a(3, 48000, 1, 16);
-        QLog.d("AVRedPacketMusicPlayer", 1, "init, registerDAudioDataCallback, mix = true, ret3=" + paramInt + ", set3=" + i);
-        this.jdField_a_of_type_ComTencentAvVideoController.a().C = true;
-        this.jdField_a_of_type_ComTencentAvVideoController.a().D = true;
-        return;
-      }
-      paramInt = this.jdField_a_of_type_ComTencentAvVideoController.a(3, false);
-      int i = this.jdField_a_of_type_ComTencentAvVideoController.a(3, 48000, 1, 16);
-      QLog.d("AVRedPacketMusicPlayer", 1, "init, registerDAudioDataCallback, mix = false, ret3=" + paramInt + ", set3=" + i);
-      this.jdField_a_of_type_ComTencentAvVideoController.a().C = false;
-      this.jdField_a_of_type_ComTencentAvVideoController.a().D = false;
-      return;
-    }
-    this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setAudioStreamType(0);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(parammoy);
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(true);
-      long l1 = System.currentTimeMillis();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
-      long l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("AVRedPacketMusicPlayer", 2, "init, mediaPlayer.prepare cost = " + (l2 - l1));
-      }
-      parammoy = new ArrayList();
-      parammoy.add(str1);
-      parammoy.add(str2);
-      parammoy.add(str3);
-      parammoy.add(str4);
-      parammoy.add(str5);
-      this.jdField_a_of_type_Luf = new luf(parammoy, 0);
-      return;
-    }
-    catch (Exception parammoy)
-    {
-      for (;;)
-      {
-        QLog.e("AVRedPacketMusicPlayer", 1, "init  exception", parammoy);
-      }
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketMusicPlayer", 2, "playMusic, musicType = " + paramInt + ",loop = " + paramBoolean);
-    }
-    String str;
-    if (this.b) {
-      if (this.jdField_a_of_type_Mnf != null)
-      {
-        str = a(paramInt);
-        if (paramInt != 7) {
-          break label75;
-        }
-        this.jdField_a_of_type_Mnf.a(str);
-      }
-    }
-    label75:
-    do
-    {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Mnf.b(str);
-        return;
-        if (paramInt != 7) {
-          break;
-        }
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-        {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("AVRedPacketMusicPlayer", 2, "playMusic, mediaPlayer is null");
-      return;
-      if (this.jdField_a_of_type_Luf != null)
-      {
-        str = a(paramInt);
-        this.jdField_a_of_type_Luf.a(str, paramBoolean);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AVRedPacketMusicPlayer", 2, "playMusic, soundPoolHelper is null");
-  }
-  
-  public void a(VideoController paramVideoController)
-  {
-    this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
-  }
-  
-  public void a(luh paramluh)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      QLog.i("AVRedPacketMusicPlayer", 1, "preloadMusic MusicPlayer not init, return");
-    }
-    do
-    {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Luh = paramluh;
-        if (!this.b) {
-          break;
-        }
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_Mnf != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-        {
-          paramluh = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-          while (paramluh.hasNext())
-          {
-            String str = (String)paramluh.next();
-            this.jdField_a_of_type_Mnf.a(str);
-          }
-        }
-      } while (this.jdField_a_of_type_Luh == null);
-      this.jdField_a_of_type_Luh.a();
-      return;
-    } while (this.jdField_a_of_type_Luf == null);
-    this.jdField_a_of_type_Luf.a(new luc(this));
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if ((this.b) && (this.jdField_a_of_type_Mnf != null)) {
-      this.jdField_a_of_type_Mnf.a(paramArrayOfByte, paramInt2);
-    }
+    GLES20.glBindFramebuffer(36160, this.d);
+    GLES20.glViewport(0, 0, this.b, this.c);
+    GLES20.glClearColor(0.4F, 0.4F, 0.4F, 1.0F);
+    GLES20.glClear(16640);
+    TextureProgram localTextureProgram = ltu.a(2);
+    ltw[] arrayOfltw = localTextureProgram.a();
+    GLES20.glUseProgram(localTextureProgram.a());
+    GLES20.glUniform1f(localTextureProgram.a()[7].jdField_a_of_type_Int, paramInt1);
+    GLES20.glUniform1f(localTextureProgram.a()[8].jdField_a_of_type_Int, paramInt2);
+    GLES20.glUniformMatrix4fv(localTextureProgram.a()[9].jdField_a_of_type_Int, 1, false, paramArrayOfFloat, 0);
+    GLES20.glUniform1i(localTextureProgram.a()[10].jdField_a_of_type_Int, paramInt8);
+    GLES20.glUniform1i(localTextureProgram.a()[11].jdField_a_of_type_Int, paramInt9);
+    lsw.a(false);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, paramInt5);
+    GLES20.glUniform1i(arrayOfltw[4].jdField_a_of_type_Int, 0);
+    GLES20.glActiveTexture(33985);
+    GLES20.glBindTexture(3553, paramInt6);
+    GLES20.glUniform1i(arrayOfltw[5].jdField_a_of_type_Int, 1);
+    GLES20.glActiveTexture(33986);
+    GLES20.glBindTexture(3553, paramInt7);
+    GLES20.glUniform1i(arrayOfltw[6].jdField_a_of_type_Int, 2);
+    GLES20.glUniform1f(arrayOfltw[2].jdField_a_of_type_Int, 1.0F);
+    GLES20.glUniformMatrix4fv(arrayOfltw[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixV, 0);
+    GLES20.glUniformMatrix4fv(arrayOfltw[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
+    GLES20.glVertexAttribPointer(arrayOfltw[0].jdField_a_of_type_Int, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioFloatBuffer);
+    GLES20.glEnableVertexAttribArray(arrayOfltw[0].jdField_a_of_type_Int);
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glDisableVertexAttribArray(arrayOfltw[0].jdField_a_of_type_Int);
+    GLES20.glBindFramebuffer(36160, this.f);
+    GLES20.glViewport(0, 0, this.b, this.c);
+    GLES20.glClearColor(0.4F, 0.4F, 0.4F, 1.0F);
+    GLES20.glClear(16640);
+    localTextureProgram = ltu.a(3);
+    arrayOfltw = localTextureProgram.a();
+    GLES20.glUseProgram(localTextureProgram.a());
+    GLES20.glUniform1f(localTextureProgram.a()[7].jdField_a_of_type_Int, paramInt1);
+    GLES20.glUniform1f(localTextureProgram.a()[8].jdField_a_of_type_Int, paramInt2);
+    GLES20.glUniformMatrix4fv(localTextureProgram.a()[9].jdField_a_of_type_Int, 1, false, paramArrayOfFloat, 0);
+    GLES20.glUniform1i(localTextureProgram.a()[10].jdField_a_of_type_Int, paramInt8);
+    GLES20.glUniform1i(localTextureProgram.a()[11].jdField_a_of_type_Int, paramInt9);
+    lsw.a(false);
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.e);
+    GLES20.glUniform1i(arrayOfltw[4].jdField_a_of_type_Int, 0);
+    GLES20.glUniform1f(arrayOfltw[2].jdField_a_of_type_Int, 1.0F);
+    GLES20.glUniformMatrix4fv(arrayOfltw[1].jdField_a_of_type_Int, 1, false, AVGLUtils.matrixV, 0);
+    GLES20.glUniformMatrix4fv(arrayOfltw[3].jdField_a_of_type_Int, 1, false, AVGLUtils.matrix, 0);
+    GLES20.glVertexAttribPointer(arrayOfltw[0].jdField_a_of_type_Int, 2, 5126, false, 8, this.jdField_a_of_type_JavaNioFloatBuffer);
+    GLES20.glEnableVertexAttribArray(arrayOfltw[0].jdField_a_of_type_Int);
+    GLES20.glDrawArrays(5, 0, 4);
+    GLES20.glDisableVertexAttribArray(arrayOfltw[0].jdField_a_of_type_Int);
+    GLES20.glBindFramebuffer(36160, 0);
+    GLES20.glViewport(0, 0, paramInt3, paramInt4);
+    a(paramlsv, paramInt1, paramInt2, paramInt5, paramInt6, paramInt7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lub
  * JD-Core Version:    0.7.0.1
  */

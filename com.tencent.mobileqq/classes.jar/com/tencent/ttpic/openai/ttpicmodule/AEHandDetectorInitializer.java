@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import com.tencent.ttpic.model.SizeI;
 import com.tencent.ttpic.openapi.initializer.Feature;
 import com.tencent.ttpic.openapi.initializer.ModelInfo;
-import com.tencent.ttpic.openapi.initializer.RapidNetSDKInitializer;
+import com.tencent.ttpic.openapi.initializer.RapidNetGestureInitializer;
 import com.tencent.ttpic.openapi.initializer.SharedLibraryInfo;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import java.util.ArrayList;
@@ -18,32 +18,25 @@ public class AEHandDetectorInitializer
   private static final String HAND_CLASSIFY_MODEL_NAME = "shufflenet_cleandata2_1016_iter_60000.onnx.opt.onnx";
   private static final String HAND_DETECT_MODEL_NAME = "20191030_blazeNet_from_40_selfie_rotate90_celian_wailian_60.onnx.opt.onnx";
   private static final String HAND_KEYPOINTS_MODEL_NAME = "tracking+keypoint_v2.onnx.opt.onnx";
+  private static final String HAND_PRE_DETECT_MODEL_NAME = "20191231_blazenet_thin_maxpool_preDet_binaryhand_multiscale_softmax_ckpt_99.onnx.opt.onnx";
   private static final String HAND_TRACK_MODEL_NAME = "tracking_v1.onnx.opt.onnx";
   public static final SizeI NET_SIZE = new SizeI(128, 128);
   private static final String TAG = "AEHandDetectInitializer";
-  private static final ModelInfo[] rapidBigModels = { new ModelInfo(true, "aehanddetect", "20191030_blazeNet_from_40_selfie_rotate90_celian_wailian_60.onnx.opt.onnx.rapidmodel"), new ModelInfo(true, "aehanddetect", "20191030_blazeNet_from_40_selfie_rotate90_celian_wailian_60.onnx.opt.onnx.rapidproto"), new ModelInfo(true, "aehanddetect", "tracking_v1.onnx.opt.onnx.rapidmodel"), new ModelInfo(true, "aehanddetect", "tracking_v1.onnx.opt.onnx.rapidproto"), new ModelInfo(true, "aehanddetect", "tracking+keypoint_v2.onnx.opt.onnx.rapidmodel"), new ModelInfo(true, "aehanddetect", "tracking+keypoint_v2.onnx.opt.onnx.rapidproto"), new ModelInfo(true, "aehanddetect", "shufflenet_cleandata2_1016_iter_60000.onnx.opt.onnx.rapidmodel"), new ModelInfo(true, "aehanddetect", "shufflenet_cleandata2_1016_iter_60000.onnx.opt.onnx.rapidproto") };
+  private static final ModelInfo[] rapidBigModels = { new ModelInfo(true, "aehanddetect", "20191231_blazenet_thin_maxpool_preDet_binaryhand_multiscale_softmax_ckpt_99.onnx.opt.onnx.rapidmodel"), new ModelInfo(true, "aehanddetect", "20191231_blazenet_thin_maxpool_preDet_binaryhand_multiscale_softmax_ckpt_99.onnx.opt.onnx.rapidproto"), new ModelInfo(true, "aehanddetect", "20191030_blazeNet_from_40_selfie_rotate90_celian_wailian_60.onnx.opt.onnx.rapidmodel"), new ModelInfo(true, "aehanddetect", "20191030_blazeNet_from_40_selfie_rotate90_celian_wailian_60.onnx.opt.onnx.rapidproto"), new ModelInfo(true, "aehanddetect", "tracking_v1.onnx.opt.onnx.rapidmodel"), new ModelInfo(true, "aehanddetect", "tracking_v1.onnx.opt.onnx.rapidproto"), new ModelInfo(true, "aehanddetect", "tracking+keypoint_v2.onnx.opt.onnx.rapidmodel"), new ModelInfo(true, "aehanddetect", "tracking+keypoint_v2.onnx.opt.onnx.rapidproto"), new ModelInfo(true, "aehanddetect", "shufflenet_cleandata2_1016_iter_60000.onnx.opt.onnx.rapidmodel"), new ModelInfo(true, "aehanddetect", "shufflenet_cleandata2_1016_iter_60000.onnx.opt.onnx.rapidproto") };
   private AEHandDetectImpl mHandDetectImpl;
   
   private boolean initModelSync()
   {
-    if (FeatureManager.Features.RAPID_NET.isModelLoaded(3)) {
+    if (FeatureManager.Features.RAPID_NET_GESTURE.isModelLoaded(3)) {
       return true;
     }
-    return FeatureManager.Features.RAPID_NET.loadRapidModelFrom(getFinalResourcesDir(), new ArrayList(Arrays.asList(new String[] { "20191030_blazeNet_from_40_selfie_rotate90_celian_wailian_60.onnx.opt.onnx", "tracking_v1.onnx.opt.onnx", "tracking+keypoint_v2.onnx.opt.onnx", "shufflenet_cleandata2_1016_iter_60000.onnx.opt.onnx" })), false, true, 2, RapidNetSDKInitializer.RAPID_NET_TYPE_CPU_LIB, 3);
+    return FeatureManager.Features.RAPID_NET_GESTURE.loadRapidModelFrom(getFinalResourcesDir(), new ArrayList(Arrays.asList(new String[] { "20191231_blazenet_thin_maxpool_preDet_binaryhand_multiscale_softmax_ckpt_99.onnx.opt.onnx", "20191030_blazeNet_from_40_selfie_rotate90_celian_wailian_60.onnx.opt.onnx", "tracking_v1.onnx.opt.onnx", "tracking+keypoint_v2.onnx.opt.onnx", "shufflenet_cleandata2_1016_iter_60000.onnx.opt.onnx" })), false, true, 2, 0, 3);
   }
   
   public boolean destroyImpl()
   {
     this.mHandDetectImpl.destroy();
     return true;
-  }
-  
-  public Bitmap forward(Bitmap paramBitmap, int paramInt)
-  {
-    if (!isFunctionReady()) {
-      return paramBitmap;
-    }
-    return FeatureManager.Features.RAPID_NET.forward(paramBitmap, 2, true, false, paramInt);
   }
   
   public SizeI getCurrentSize()
@@ -80,7 +73,7 @@ public class AEHandDetectorInitializer
   
   public boolean initImpl()
   {
-    if (!FeatureManager.Features.RAPID_NET.init()) {}
+    if (!FeatureManager.Features.RAPID_NET_GESTURE.init()) {}
     do
     {
       return false;
@@ -92,12 +85,12 @@ public class AEHandDetectorInitializer
   
   public boolean isFunctionReady()
   {
-    return (this.isInited) && (FeatureManager.Features.RAPID_NET.isModelLoaded(3));
+    return (this.isInited) && (FeatureManager.Features.RAPID_NET_GESTURE.isModelLoaded(3));
   }
   
   public boolean reloadModel()
   {
-    if (FeatureManager.Features.RAPID_NET.isModelLoaded(3)) {
+    if (FeatureManager.Features.RAPID_NET_GESTURE.isModelLoaded(3)) {
       return true;
     }
     return initModelSync();
@@ -108,7 +101,7 @@ public class AEHandDetectorInitializer
     if (!isFunctionReady()) {
       return null;
     }
-    return FeatureManager.Features.RAPID_NET.retrieveGestureBoxAndType(paramBitmap, paramBoolean);
+    return FeatureManager.Features.RAPID_NET_GESTURE.retrieveGestureBoxAndType(paramBitmap, paramBoolean);
   }
   
   public float[] retrieveGestureInfo(Bitmap paramBitmap, boolean paramBoolean)
@@ -116,7 +109,7 @@ public class AEHandDetectorInitializer
     if (!isFunctionReady()) {
       return null;
     }
-    return FeatureManager.Features.RAPID_NET.retrieveGestureInfo(paramBitmap, paramBoolean);
+    return FeatureManager.Features.RAPID_NET_GESTURE.retrieveGestureInfo(paramBitmap, paramBoolean);
   }
 }
 

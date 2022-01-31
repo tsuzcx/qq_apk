@@ -1,34 +1,55 @@
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class arst
-  implements bfph
+public class arst
+  extends MSFServlet
 {
-  arst(arss paramarss, bfpc parambfpc, boolean paramBoolean) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_Bfpc.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      switch (paramInt)
-      {
-      }
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Arss.b(false);
+      arsu localarsu = (arsu)arsm.a().a("sso_channel");
+      if (localarsu == null) {
+        break;
+      }
+      localarsu.a(paramIntent, paramFromServiceMsg);
       return;
-      arrn.a(BaseActivity.sTopActivity, this.jdField_a_of_type_Arss.a().e, this.jdField_a_of_type_Arss.a().b);
-      continue;
-      this.jdField_a_of_type_Arss.g();
-      continue;
-      this.jdField_a_of_type_Arss.g();
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+    QLog.d("QFlutterFlutterServlet", 1, "ssoChannel is null");
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arst
  * JD-Core Version:    0.7.0.1
  */

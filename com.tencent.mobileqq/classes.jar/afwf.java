@@ -1,74 +1,31 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public abstract class afwf
+class afwf
+  implements bhqd
 {
-  protected afyi a;
-  protected FragmentActivity a;
-  protected View a;
-  protected String a;
+  afwf(afwe paramafwe, MessageForShortVideo paramMessageForShortVideo, afwk paramafwk, bhpy parambhpy) {}
   
-  public afwf(FragmentActivity paramFragmentActivity)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
-  }
-  
-  public abstract int a();
-  
-  public FragmentManager a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getSupportFragmentManager();
-  }
-  
-  protected View a(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
-  }
-  
-  public BaseActivity a()
-  {
-    return this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.findViewById(2131375493);
-    f();
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(afyi paramafyi)
-  {
-    this.jdField_a_of_type_Afyi = paramafyi;
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Afyi = null;
-  }
-  
-  public void e() {}
-  
-  protected void f()
-  {
-    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("SissionUin");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
+        this.jdField_a_of_type_Afwe.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Afwk);
+      } else {
+        this.jdField_a_of_type_Afwe.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_Afwk);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afwf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,32 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
-public class aszu
+class aszu
+  implements ActionCallback
 {
-  public int a;
-  public LinearLayout a;
-  public TextView a;
-  public URLImageView a;
-  public RedTouch a;
-  public URLImageView b;
-  public URLImageView c;
+  aszu(aszs paramaszs) {}
+  
+  public void onResult(String paramString)
+  {
+    try
+    {
+      i = Integer.parseInt(paramString);
+      if (aszs.a(this.a) != null) {
+        aszs.a(this.a).a(i, "");
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszu
  * JD-Core Version:    0.7.0.1
  */

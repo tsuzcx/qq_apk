@@ -1,44 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.ClipboardManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public class aida
-  implements DialogInterface.OnClickListener
+class aida
+  implements View.OnClickListener
 {
-  public aida(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  aida(aicw paramaicw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
+    int i = paramView.getId();
+    if (QLog.isColorLevel()) {
+      QLog.i(aicw.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
     }
-    boolean bool;
-    do
-    {
+    Object localObject = this.a.jdField_a_of_type_Aicu;
+    if (this.a.jdField_a_of_type_Aicu == null) {
       return;
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
-      if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-        break;
-      }
-      bool = true;
-      paramDialogInterface.setChecked(bool);
-      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d != 32);
-    if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (paramDialogInterface = "friendsfinder.all.confirm";; paramDialogInterface = "friendsfinder.all.cancel")
-    {
-      ahiw.a(0, paramDialogInterface);
-      return;
-      bool = false;
-      break;
     }
+    switch (i)
+    {
+    default: 
+      return;
+    case 2131364910: 
+      ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(((aicu)localObject).a.msg);
+      return;
+    }
+    paramView = new Bundle();
+    paramView.putInt("forward_type", -1);
+    paramView.putString("forward_text", ((aicu)localObject).a.msg);
+    localObject = new Intent();
+    ((Intent)localObject).putExtras(paramView);
+    arum.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aida
  * JD-Core Version:    0.7.0.1
  */

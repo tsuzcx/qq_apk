@@ -16,6 +16,7 @@ import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPTrackInfo;
 import com.tencent.thumbplayer.api.TPVideoInfo;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
+import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
 import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
 import com.tencent.thumbplayer.utils.TPLogUtil;
 import com.tencent.thumbplayer.utils.TPReadWriteLock;
@@ -212,15 +213,16 @@ public class TPPlayerInternal
               return;
               paramMessage = (TPThreadSwitchCommons.TPSubTitleParams)paramMessage.obj;
             } while (paramMessage == null);
-            this.mTPSwitchThreadListener.handleAddSubTitle(paramMessage.url, paramMessage.mimeType, paramMessage.name);
+            this.mTPSwitchThreadListener.handleAddSubTitle(paramMessage.url, paramMessage.mimeType, paramMessage.name, paramMessage.downloadParamData);
             return;
             paramMessage = (TPThreadSwitchCommons.TPAudioTrackSourceParams)paramMessage.obj;
           } while (paramMessage == null);
-          this.mTPSwitchThreadListener.handleAddAudioSource(paramMessage.url, paramMessage.name);
+          this.mTPSwitchThreadListener.handleAddAudioSource(paramMessage.url, paramMessage.name, paramMessage.dlParamData);
           return;
           this.mTPSwitchThreadListener.handleSelectTrack(paramMessage.arg1, paramMessage.arg2);
           return;
           this.mTPSwitchThreadListener.handleDeselectTrack(paramMessage.arg1, paramMessage.arg2);
+          return;
           this.mTPSwitchThreadListener.handlePrepareAsync();
           return;
           this.mTPSwitchThreadListener.handleStart();
@@ -255,10 +257,10 @@ public class TPPlayerInternal
       } while (paramMessage == null);
       if (!TextUtils.isEmpty(paramMessage.url))
       {
-        this.mTPSwitchThreadListener.handleSwitchDef(paramMessage.url, paramMessage.defID, paramMessage.videoInfo);
+        this.mTPSwitchThreadListener.handleSwitchDef(paramMessage.url, paramMessage.defID, paramMessage.videoInfo, paramMessage.mode);
         return;
       }
-      this.mTPSwitchThreadListener.handleSwitchDef(paramMessage.mediaAsset, paramMessage.defID, paramMessage.videoInfo);
+      this.mTPSwitchThreadListener.handleSwitchDef(paramMessage.mediaAsset, paramMessage.defID, paramMessage.videoInfo, paramMessage.mode);
       return;
     case 32: 
       this.mTPSwitchThreadListener.handleSelectProgram(paramMessage.arg1, paramMessage.arg2);
@@ -545,33 +547,32 @@ public class TPPlayerInternal
     }
   }
   
-  void addAudioTrackSource(String paramString1, String paramString2)
+  void addAudioTrackSource(String paramString1, String paramString2, TPDownloadParamData paramTPDownloadParamData)
   {
     TPThreadSwitchCommons.TPAudioTrackSourceParams localTPAudioTrackSourceParams = new TPThreadSwitchCommons.TPAudioTrackSourceParams();
     localTPAudioTrackSourceParams.url = paramString1;
     localTPAudioTrackSourceParams.name = paramString2;
+    localTPAudioTrackSourceParams.dlParamData = paramTPDownloadParamData;
     internalMessage(7, 0, 0, localTPAudioTrackSourceParams, true, false, 0L);
   }
   
-  void addSubtitleSource(String paramString1, String paramString2, String paramString3)
+  void addSubtitleSource(String paramString1, String paramString2, String paramString3, TPDownloadParamData paramTPDownloadParamData)
   {
     TPThreadSwitchCommons.TPSubTitleParams localTPSubTitleParams = new TPThreadSwitchCommons.TPSubTitleParams();
     localTPSubTitleParams.url = paramString1;
     localTPSubTitleParams.mimeType = paramString2;
     localTPSubTitleParams.name = paramString3;
+    localTPSubTitleParams.downloadParamData = paramTPDownloadParamData;
     internalMessage(6, 0, 0, localTPSubTitleParams, true, false, 0L);
   }
   
   void captureVideo(TPCaptureParams paramTPCaptureParams, TPCaptureCallBack paramTPCaptureCallBack)
   {
-    writeLockIfNeed();
     TPLogUtil.i("TPThumbPlayer[TPPlayerInternal.java]", "api call : captureVideo");
     TPThreadSwitchCommons.TPVideoCaptureParams localTPVideoCaptureParams = new TPThreadSwitchCommons.TPVideoCaptureParams();
     localTPVideoCaptureParams.callBack = paramTPCaptureCallBack;
     localTPVideoCaptureParams.params = paramTPCaptureParams;
     internalMessage(30, 0, 0, localTPVideoCaptureParams, true, false, 0L);
-    internalWLockWait("captureVideo", 500L);
-    unWriteLockIfNeed();
   }
   
   void deselectTrack(int paramInt, long paramLong)
@@ -778,14 +779,14 @@ public class TPPlayerInternal
     internalMessage(70, 0, 0, null, false, false, 0L);
   }
   
-  public void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+  public void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
   {
-    TPPlayerMsg.TPDownLoadProgressInfo localTPDownLoadProgressInfo = new TPPlayerMsg.TPDownLoadProgressInfo();
-    localTPDownLoadProgressInfo.playableDurationMS = paramInt1;
-    localTPDownLoadProgressInfo.downloadSpeedKBps = paramInt2;
-    localTPDownLoadProgressInfo.currentDownloadSize = paramLong1;
-    localTPDownLoadProgressInfo.totalFileSize = paramLong2;
-    internalMessage(83, 0, 0, localTPDownLoadProgressInfo, false, false, 0L);
+    paramString = new TPPlayerMsg.TPDownLoadProgressInfo();
+    paramString.playableDurationMS = paramInt1;
+    paramString.downloadSpeedKBps = paramInt2;
+    paramString.currentDownloadSize = paramLong1;
+    paramString.totalFileSize = paramLong2;
+    internalMessage(83, 0, 0, paramString, false, false, 0L);
   }
   
   public void onDownloadProtocolUpdate(String paramString1, String paramString2)
@@ -951,21 +952,23 @@ public class TPPlayerInternal
     unWriteLockIfNeed();
   }
   
-  void switchDefinition(ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo)
+  void switchDefinition(ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt)
   {
     TPThreadSwitchCommons.TPSwitchDefParams localTPSwitchDefParams = new TPThreadSwitchCommons.TPSwitchDefParams();
     localTPSwitchDefParams.mediaAsset = paramITPMediaAsset;
     localTPSwitchDefParams.defID = paramLong;
     localTPSwitchDefParams.videoInfo = paramTPVideoInfo;
+    localTPSwitchDefParams.mode = paramInt;
     internalMessage(31, 0, 0, localTPSwitchDefParams, true, true, 0L);
   }
   
-  void switchDefinition(String paramString, long paramLong, TPVideoInfo paramTPVideoInfo)
+  void switchDefinition(String paramString, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt)
   {
     TPThreadSwitchCommons.TPSwitchDefParams localTPSwitchDefParams = new TPThreadSwitchCommons.TPSwitchDefParams();
     localTPSwitchDefParams.url = paramString;
     localTPSwitchDefParams.defID = paramLong;
     localTPSwitchDefParams.videoInfo = paramTPVideoInfo;
+    localTPSwitchDefParams.mode = paramInt;
     internalMessage(31, 0, 0, localTPSwitchDefParams, true, true, 0L);
   }
   
@@ -976,7 +979,7 @@ public class TPPlayerInternal
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.TPPlayerInternal
  * JD-Core Version:    0.7.0.1
  */

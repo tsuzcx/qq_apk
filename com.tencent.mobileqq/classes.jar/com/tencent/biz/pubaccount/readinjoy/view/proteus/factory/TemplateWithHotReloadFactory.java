@@ -22,17 +22,17 @@ public class TemplateWithHotReloadFactory
     }
   }
   
-  public void createTemplate(int paramInt, String paramString, ViewBean paramViewBean)
+  public void createTemplate(int paramInt, String paramString, ViewBean paramViewBean, Map<String, Object> paramMap)
   {
     if (ProteusParserWithHotReload.getInstance().isSupportHotReload())
     {
-      TemplateBean localTemplateBean = new TemplateBean(paramInt, paramString);
-      localTemplateBean.setViewBean(paramViewBean);
-      this.nameTemplateMap.put(paramString, localTemplateBean);
-      onAddTemplate(paramString, localTemplateBean);
+      paramMap = new TemplateBean(paramInt, paramString, paramMap);
+      paramMap.setViewBean(paramViewBean);
+      this.nameTemplateMap.put(paramString, paramMap);
+      onAddTemplate(paramString, paramMap);
       return;
     }
-    super.createTemplate(paramInt, paramString, paramViewBean);
+    super.createTemplate(paramInt, paramString, paramViewBean, paramMap);
   }
   
   public void createViewTemplate(JSONObject paramJSONObject, ComplementFileStringLoader paramComplementFileStringLoader)
@@ -60,21 +60,20 @@ public class TemplateWithHotReloadFactory
       ProteusParserWithHotReload.getInstance().createViewTemplateFromFile(paramContext, this, paramString2);
       return;
     }
-    catch (JSONException paramContext)
+    catch (IOException paramContext)
     {
       paramContext.printStackTrace();
       return;
     }
-    catch (IOException paramContext)
+    catch (JSONException paramContext)
     {
-      label11:
-      break label11;
+      paramContext.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.TemplateWithHotReloadFactory
  * JD-Core Version:    0.7.0.1
  */

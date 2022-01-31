@@ -3,21 +3,23 @@ package com.tencent.qqmini.sdk.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import betc;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.AndroidOUIWrapperUtil;
 
 public class MiniFragmentActivity
   extends FragmentActivity
 {
   private MiniBaseFragment a;
   
-  private MiniBaseFragment a()
+  private MiniBaseFragment b()
   {
     Object localObject = getIntent().getStringExtra("public_fragment_class");
-    if (betc.a()) {
-      betc.a("MiniFragmentActivity", "creating fragment " + (String)localObject);
+    if (QMLog.isColorLevel()) {
+      QMLog.d("MiniFragmentActivity", "creating fragment " + (String)localObject);
     }
     try
     {
@@ -27,24 +29,38 @@ public class MiniFragmentActivity
     }
     catch (Exception localException)
     {
-      betc.d("MiniFragmentActivity", "create fragment error", localException);
+      QMLog.e("MiniFragmentActivity", "create fragment error", localException);
     }
     return null;
   }
   
+  public MiniBaseFragment a()
+  {
+    return this.a;
+  }
+  
   public boolean doOnCreate(Bundle paramBundle)
   {
-    this.a = a();
-    setContentView(2131559297);
+    this.a = b();
+    setContentView(2131559345);
     if (this.a == null)
     {
       finish();
       return false;
     }
     paramBundle = getSupportFragmentManager().beginTransaction();
-    paramBundle.replace(2131366662, this.a);
+    paramBundle.replace(2131366780, this.a);
     paramBundle.commit();
     return true;
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    MiniBaseFragment localMiniBaseFragment = a();
+    if (localMiniBaseFragment != null) {
+      localMiniBaseFragment.onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
   }
   
   public void onCreate(@Nullable Bundle paramBundle)
@@ -65,7 +81,14 @@ public class MiniFragmentActivity
     }
     catch (Exception paramIntent)
     {
-      betc.c("MiniFragmentActivity", "Failed to request window feature", paramIntent);
+      QMLog.w("MiniFragmentActivity", "Failed to request window feature", paramIntent);
+    }
+  }
+  
+  public void setRequestedOrientation(int paramInt)
+  {
+    if (!AndroidOUIWrapperUtil.isTranslucentOrFloating(this)) {
+      super.setRequestedOrientation(paramInt);
     }
   }
   
@@ -90,7 +113,7 @@ public class MiniFragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MiniFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

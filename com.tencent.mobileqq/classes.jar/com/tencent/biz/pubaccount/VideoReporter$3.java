@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount;
 
-import akpx;
-import axzs;
+import abot;
+import azvm;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import nol;
+import nrt;
 import org.json.JSONObject;
-import set;
+import swn;
 
 public final class VideoReporter$3
   implements Runnable
@@ -21,8 +21,8 @@ public final class VideoReporter$3
     if ((this.a.msgtype == -2011) && (!this.a.isSend()))
     {
       l1 = System.currentTimeMillis();
-      localaxzs = set.a(this.a);
-      if (localaxzs != null) {
+      localazvm = swn.a(this.a);
+      if (localazvm != null) {
         localObject1 = "";
       }
     }
@@ -31,9 +31,9 @@ public final class VideoReporter$3
       try
       {
         localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put("vid", localaxzs.U);
+        ((JSONObject)localObject2).put("vid", localazvm.U);
         ((JSONObject)localObject2).put("os", "1");
-        if (!akpx.c(this.a.istroop)) {
+        if (!abot.d(this.a.istroop)) {
           continue;
         }
         ((JSONObject)localObject2).put("aiotype", i);
@@ -46,14 +46,14 @@ public final class VideoReporter$3
         long l2;
         localException.printStackTrace();
         continue;
-        String str = localaxzs.Z;
+        String str = localazvm.Z;
         continue;
       }
-      if (localaxzs.Z != null) {
+      if (localazvm.Z != null) {
         continue;
       }
       localObject2 = "0";
-      nol.a(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "2", (String)localObject2, (String)localObject1, false);
+      nrt.a(null, "", "0X80077DF", "0X80077DF", 0, 0, "0", "2", (String)localObject2, (String)localObject1, false);
       l2 = System.currentTimeMillis();
       if (QLog.isColorLevel()) {
         QLog.d("VideoReporter", 2, "reportVideoStructMsgRecv cost = " + (l2 - l1) + "ms");
@@ -77,7 +77,7 @@ public final class VideoReporter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoReporter.3
  * JD-Core Version:    0.7.0.1
  */

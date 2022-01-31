@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahkd;
-import ahkz;
+import ajbm;
+import ajci;
 
 public class BannerManager$27$1
   implements Runnable
 {
-  public BannerManager$27$1(ahkz paramahkz) {}
+  public BannerManager$27$1(ajci paramajci) {}
   
   public void run()
   {
-    ahkd.a(this.a.a, true);
+    ajbm.a(this.a.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.BannerManager.27.1
  * JD-Core Version:    0.7.0.1
  */

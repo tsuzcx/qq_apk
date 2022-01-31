@@ -1,15 +1,15 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.view.View;
-import bekr;
-import beny;
-import beod;
-import betc;
+import bgkd;
+import bgob;
+import bgog;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class TelephonyJsPlugin$2$1
-  implements beod
+  implements bgog
 {
-  TelephonyJsPlugin$2$1(TelephonyJsPlugin.2 param2, beny parambeny) {}
+  TelephonyJsPlugin$2$1(TelephonyJsPlugin.2 param2, bgob parambgob) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -29,13 +29,13 @@ class TelephonyJsPlugin$2$1
     }
     catch (Exception paramView)
     {
-      betc.d("TelephonyJsPlugin", this.this$1.val$req.a + " error.", paramView);
+      QMLog.e("TelephonyJsPlugin", this.this$1.val$req.a + " error.", paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.TelephonyJsPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,39 @@
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForVIPDonate;
+import com.tencent.mobileqq.data.VIPDonateMsg;
+import com.tencent.qphone.base.util.QLog;
 
 class agbs
-  extends apwz
+  implements View.OnClickListener
 {
-  agbs(agbq paramagbq) {}
+  agbs(agbr paramagbr) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    if ((agbq.a(this.a)) && (agbq.a(this.a) != null))
-    {
-      if (paramView.getId() != 2131365459) {
-        break label43;
-      }
-      agbq.a(this.a).a(1);
-    }
-    label43:
-    do
-    {
+    if (this.a.a()) {
       return;
-      if (paramView.getId() == 2131365464)
-      {
-        agbq.a(this.a).a(3);
-        return;
-      }
-      if (paramView.getId() == 2131365460)
-      {
-        agbq.a(this.a).a(2);
-        return;
-      }
-    } while (paramView.getId() != 2131365458);
-    agbq.a(this.a).a(4);
+    }
+    paramView = (MessageForVIPDonate)((agbt)aekt.a(paramView)).a;
+    Object localObject = paramView.donateMsg;
+    if ((localObject != null) && (!TextUtils.isEmpty(((VIPDonateMsg)localObject).jumpUrl)))
+    {
+      paramView = paramView.donateMsg.jumpUrl;
+      localObject = new Intent(agbr.a(this.a), QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramView);
+      agbr.a(this.a).startActivity((Intent)localObject);
+      return;
+    }
+    QLog.e("VIPDonateMsgItemBuilder", 1, "donatemsg jumpurl empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbs
  * JD-Core Version:    0.7.0.1
  */

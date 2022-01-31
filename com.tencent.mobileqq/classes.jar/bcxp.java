@@ -1,55 +1,70 @@
-import android.content.Context;
-import android.text.TextUtils;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class bcxp
 {
-  public Context a;
-  public bcxm a;
-  private Map<String, Object> a;
+  private bcxr jdField_a_of_type_Bcxr;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public bcxp(Context paramContext, bcxm parambcxm)
+  public bcxp(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Bcxm = parambcxm;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public Object a(String paramString)
+  private bcxr a()
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (TextUtils.isEmpty(paramString)) {
-      return localObject2;
+    bcxr localbcxr = new bcxr(new bcxq(this));
+    if (QLog.isColorLevel()) {
+      QLog.i("FetchInfoListManager", 2, "createFetchInfoListManager fm: " + localbcxr);
     }
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
-    }
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
-      return this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    }
-    if (TextUtils.equals(paramString, "intchk")) {
-      localObject1 = new bcxs(this);
-    }
-    for (;;)
+    return localbcxr;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Bcxr != null)
     {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject1);
-      return localObject1;
-      if (TextUtils.equals(paramString, "app_scan")) {
-        localObject1 = new bcxr(this);
-      } else if (TextUtils.equals(paramString, "sig_check")) {
-        localObject1 = new bcxu(this);
-      }
+      this.jdField_a_of_type_Bcxr.a();
+      this.jdField_a_of_type_Bcxr = null;
     }
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Bcxr == null) {
+      this.jdField_a_of_type_Bcxr = a();
+    }
+    this.jdField_a_of_type_Bcxr.a(2, paramString, null, null, null);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Bcxr == null) {
+      this.jdField_a_of_type_Bcxr = a();
+    }
+    this.jdField_a_of_type_Bcxr.a(3, paramString1, paramString2, paramString3, paramBundle);
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.jdField_a_of_type_Bcxr == null) {
+      this.jdField_a_of_type_Bcxr = a();
+    }
+    this.jdField_a_of_type_Bcxr.a(1, paramString, null, null, null);
+  }
+  
+  public void c(String paramString)
+  {
+    if (this.jdField_a_of_type_Bcxr == null) {
+      this.jdField_a_of_type_Bcxr = a();
+    }
+    this.jdField_a_of_type_Bcxr.a(4, paramString, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcxp
  * JD-Core Version:    0.7.0.1
  */

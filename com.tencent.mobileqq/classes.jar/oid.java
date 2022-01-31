@@ -1,42 +1,61 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInjoyFriendsBiuComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
+import java.util.ArrayList;
 
-public final class oid
-  implements Parcelable.Creator<AnchorData>
+public class oid
+  implements View.OnClickListener
 {
-  public AnchorData a(Parcel paramParcel)
+  public oid(ReadInjoyFriendsBiuComponentFragment paramReadInjoyFriendsBiuComponentFragment) {}
+  
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    AnchorData localAnchorData = new AnchorData();
-    localAnchorData.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localAnchorData.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localAnchorData.jdField_a_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label67;
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.doOnBackPressed();
+    Object localObject2;
+    for (Object localObject1 = paramView.getTag();; localObject2 = null) {
+      for (;;)
+      {
+        try
+        {
+          i = Integer.valueOf(localObject1.toString()).intValue();
+          if ((i < 0) || (i >= this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
+            break;
+          }
+          localObject1 = (MultiBiuSameContent)this.a.jdField_a_of_type_JavaUtilArrayList.get(i);
+          switch (paramView.getId())
+          {
+          default: 
+            return;
+          }
+        }
+        catch (Exception localException)
+        {
+          int i = -1;
+          continue;
+          if (localException == null) {
+            continue;
+          }
+          paramView = ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a);
+          ReadInjoyFriendsBiuComponentFragment.a(this.a, paramView);
+          ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.b, "0X800953D", localException.c);
+          return;
+        }
+        if (localException != null)
+        {
+          paramView = ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.c, localException.b);
+          ReadInjoyFriendsBiuComponentFragment.a(this.a, paramView);
+          ReadInjoyFriendsBiuComponentFragment.a(this.a, localException.a, localException.b, "0X800953C", localException.c);
+          return;
+        }
       }
     }
-    label67:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localAnchorData.jdField_b_of_type_Boolean = bool1;
-      return localAnchorData;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public AnchorData[] a(int paramInt)
-  {
-    return new AnchorData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oid
  * JD-Core Version:    0.7.0.1
  */

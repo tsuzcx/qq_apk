@@ -1,250 +1,126 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import com.tencent.av.redpacket.AVRedPacketManager;
+import android.content.Context;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
 
 public class luq
-  extends lum
 {
-  public Canvas a;
-  public Paint a;
-  public luu a;
-  public boolean a;
-  public lvm[] a;
-  public int b;
-  public Paint b;
-  public Rect b;
-  public lvm b;
-  public lvm[] b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  private int jdField_a_of_type_Int;
+  private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
+  private final lur jdField_a_of_type_Lur;
+  private final boolean jdField_a_of_type_Boolean;
+  private final lur b;
   
-  public luq(luu paramluu)
+  public luq(Context paramContext)
   {
-    this.jdField_b_of_type_ArrayOfLvm = new lvm[4];
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    Bitmap localBitmap = Bitmap.createBitmap(252, 148, Bitmap.Config.ARGB_8888);
-    this.jdField_a_of_type_Luu = paramluu;
-    this.jdField_a_of_type_Lvm = new lvm(localBitmap);
-    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(localBitmap);
-    a(-10.0F);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    this(paramContext, null);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public luq(Context paramContext, Interpolator paramInterpolator)
   {
-    this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_b_of_type_AndroidGraphicsPaint);
-    if (paramInt1 > 2)
-    {
-      this.jdField_b_of_type_AndroidGraphicsRect.set(0, 13, 37, 59);
-      if (this.jdField_a_of_type_ArrayOfLvm != null)
-      {
-        if (paramInt1 < 10) {
-          break label239;
-        }
-        if (this.jdField_a_of_type_ArrayOfLvm[(paramInt1 / 10)] != null) {
-          this.jdField_a_of_type_ArrayOfLvm[(paramInt1 / 10)].a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-        }
-        this.jdField_b_of_type_AndroidGraphicsRect.set(37, 13, 74, 59);
-        if (this.jdField_a_of_type_ArrayOfLvm[(paramInt1 % 10)] != null) {
-          this.jdField_a_of_type_ArrayOfLvm[(paramInt1 % 10)].a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-        }
-        this.jdField_b_of_type_AndroidGraphicsRect.set(74, 0, 229, 59);
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_b_of_type_Lvm != null) {
-        this.jdField_b_of_type_Lvm.a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      this.jdField_b_of_type_AndroidGraphicsRect.set(0, 59, 252, 148);
-      paramInt1 = (paramInt2 - 80) / 10;
-      if ((paramInt1 >= 0) && (paramInt1 < this.jdField_b_of_type_ArrayOfLvm.length) && (this.jdField_b_of_type_ArrayOfLvm[paramInt1] != null)) {
-        this.jdField_b_of_type_ArrayOfLvm[paramInt1].a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      return;
-      label239:
-      if (this.jdField_a_of_type_ArrayOfLvm[paramInt1] != null) {
-        this.jdField_a_of_type_ArrayOfLvm[paramInt1].a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      this.jdField_b_of_type_AndroidGraphicsRect.set(37, 0, 192, 59);
-    }
+    this(paramContext, paramInterpolator, true);
   }
   
-  public void a(long paramLong)
+  public luq(Context paramContext, Interpolator paramInterpolator, boolean paramBoolean)
   {
-    paramLong -= this.jdField_a_of_type_Long;
-    int k = 0;
-    int j = 0;
-    int i;
-    float f1;
-    if (this.jdField_a_of_type_Boolean) {
-      if ((paramLong > 0L) && (paramLong < 100L))
-      {
-        i = (int)(255L * paramLong / 100L);
-        if (paramLong > 200L) {
-          break label141;
-        }
-        f1 = 0.0055F * (float)paramLong + 0.0F;
-      }
-    }
-    for (;;)
-    {
-      a(i);
-      b(f1);
-      return;
-      if ((paramLong >= 100L) && (paramLong <= 1250L))
-      {
-        i = 255;
-        break;
-      }
-      i = j;
-      if (paramLong <= 1250L) {
-        break;
-      }
-      i = j;
-      if (paramLong >= 1350L) {
-        break;
-      }
-      i = (int)(255L * (paramLong - 1350L) / -100L);
-      break;
-      label141:
-      if ((paramLong > 200L) && (paramLong <= 300L))
-      {
-        f1 = -0.001F * (float)paramLong + 1.3F;
-      }
-      else if ((paramLong > 300L) && (paramLong <= 1150L))
-      {
-        f1 = 1.0F;
-      }
-      else if ((paramLong > 1150L) && (paramLong <= 1250L))
-      {
-        f1 = 0.001F * (float)paramLong - 0.15F;
-      }
-      else if ((paramLong > 1250L) && (paramLong <= 1350L))
-      {
-        f1 = -0.011F * (float)paramLong + 14.85F;
-      }
-      else
-      {
-        f1 = 0.0F;
-        continue;
-        if (paramLong < 100L) {
-          i = (int)(255L * paramLong / 100L);
-        }
-        for (;;)
-        {
-          if (paramLong > 200L) {
-            break label357;
-          }
-          f1 = 0.0055F * (float)paramLong + 0.0F;
-          break;
-          if ((paramLong >= 100L) && (paramLong <= 650L))
-          {
-            i = 255;
-          }
-          else
-          {
-            i = k;
-            if (paramLong > 650L)
-            {
-              i = k;
-              if (paramLong < 750L) {
-                i = (int)(255L * (paramLong - 750L) / -100L);
-              }
-            }
-          }
-        }
-        label357:
-        if ((paramLong > 200L) && (paramLong <= 300L)) {
-          f1 = -0.001F * (float)paramLong + 1.3F;
-        } else if ((paramLong > 300L) && (paramLong <= 550L)) {
-          f1 = 1.0F;
-        } else if ((paramLong > 550L) && (paramLong <= 650L)) {
-          f1 = 0.001F * (float)paramLong + 0.45F;
-        } else if ((paramLong > 650L) && (paramLong <= 750L)) {
-          f1 = -0.011F * (float)paramLong + 8.25F;
-        } else {
-          f1 = 0.0F;
-        }
-      }
-    }
-  }
-  
-  public void a(AVRedPacketManager paramAVRedPacketManager, lvm[] paramArrayOflvm)
-  {
-    this.jdField_b_of_type_ArrayOfLvm[0] = new lvm(paramAVRedPacketManager.a("qav_redpacket_score_80.png"));
-    this.jdField_b_of_type_ArrayOfLvm[1] = new lvm(paramAVRedPacketManager.a("qav_redpacket_score_90.png"));
-    this.jdField_b_of_type_ArrayOfLvm[2] = new lvm(paramAVRedPacketManager.a("qav_redpacket_score_100.png"));
-    this.jdField_b_of_type_ArrayOfLvm[3] = new lvm(paramAVRedPacketManager.a("qav_redpacket_score_110.png"));
-    this.jdField_b_of_type_Lvm = new lvm(paramAVRedPacketManager.a("qav_redpacket_score_combo.png"));
-    this.jdField_a_of_type_ArrayOfLvm = paramArrayOflvm;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
+    this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
     this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Lur = new lur();
+    this.b = new lur();
+    lur.a(paramContext);
   }
   
-  public void b()
+  public final int a()
   {
-    super.b();
-    lvm[] arrayOflvm = this.jdField_b_of_type_ArrayOfLvm;
-    int j = arrayOflvm.length;
-    int i = 0;
-    while (i < j)
+    return lur.a(this.jdField_a_of_type_Lur);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Lur.a();
+    this.b.a();
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Lur.a(paramInt1, paramInt3, paramInt5);
+    this.b.a(paramInt2, paramInt4, paramInt5);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
+  {
+    if ((this.jdField_a_of_type_Boolean) && (!a()))
     {
-      lvm locallvm = arrayOflvm[i];
-      if (locallvm != null) {
-        locallvm.a();
+      float f1 = lur.a(this.jdField_a_of_type_Lur);
+      float f2 = lur.a(this.b);
+      if ((Math.signum(paramInt3) == Math.signum(f1)) && (Math.signum(paramInt4) == Math.signum(f2)))
+      {
+        paramInt3 = (int)(f1 + paramInt3);
+        paramInt4 = (int)(paramInt4 + f2);
       }
-      i += 1;
     }
-    if (this.jdField_b_of_type_Lvm != null) {
-      this.jdField_b_of_type_Lvm.a();
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = 1;
+      this.jdField_a_of_type_Lur.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
+      this.b.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
+      return;
     }
-    this.jdField_a_of_type_ArrayOfLvm = null;
-    this.jdField_a_of_type_Luu = null;
-    this.jdField_b_of_type_ArrayOfLvm = null;
-    this.jdField_b_of_type_Lvm = null;
-    this.jdField_a_of_type_AndroidGraphicsCanvas = null;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    this.jdField_b_of_type_AndroidGraphicsPaint = null;
-    this.jdField_b_of_type_AndroidGraphicsRect = null;
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void a(boolean paramBoolean)
   {
-    this.jdField_b_of_type_Int = (paramInt1 * 104 / 750);
-    this.c = (paramInt1 * 123 / 750);
-    this.d = (paramInt1 * 252 / 750);
-    this.e = (paramInt1 * 148 / 750);
-    this.f = (paramInt1 * 10 / 750);
+    lur.a(this.jdField_a_of_type_Lur, lur.a(this.b, paramBoolean));
   }
   
-  public void c()
+  public final boolean a()
   {
-    Rect localRect = this.jdField_a_of_type_Luu.a();
-    int j = localRect.left - this.jdField_b_of_type_Int;
-    int i = j;
-    if (j < this.f) {
-      i = this.f;
+    return (lur.a(this.jdField_a_of_type_Lur)) && (lur.a(this.b));
+  }
+  
+  public final int b()
+  {
+    return lur.b(this.jdField_a_of_type_Lur);
+  }
+  
+  public boolean b()
+  {
+    if (a()) {
+      return false;
     }
-    j = localRect.top - this.c;
-    a(i, j, this.d + i, this.e + j);
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      long l = AnimationUtils.currentAnimationTimeMillis() - lur.a(this.jdField_a_of_type_Lur);
+      int i = lur.c(this.jdField_a_of_type_Lur);
+      if (l < i)
+      {
+        float f = (float)l / i;
+        if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {}
+        for (f = lus.a(f);; f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f))
+        {
+          this.jdField_a_of_type_Lur.a(f);
+          this.b.a(f);
+          break;
+        }
+      }
+      a();
+      continue;
+      if ((!lur.a(this.jdField_a_of_type_Lur)) && (!this.jdField_a_of_type_Lur.b()) && (!this.jdField_a_of_type_Lur.a())) {
+        this.jdField_a_of_type_Lur.a();
+      }
+      if ((!lur.a(this.b)) && (!this.b.b()) && (!this.b.a())) {
+        this.b.a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     luq
  * JD-Core Version:    0.7.0.1
  */

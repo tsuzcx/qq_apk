@@ -2,8 +2,8 @@ package com.tencent.thumbplayer.core.drm;
 
 public final class TPMediaDrmProxy$ProvisionRequest
 {
-  byte[] mData = null;
-  String mDefaultUrl = null;
+  byte[] mData;
+  String mDefaultUrl;
   
   TPMediaDrmProxy$ProvisionRequest(String paramString, byte[] paramArrayOfByte)
   {
@@ -13,7 +13,7 @@ public final class TPMediaDrmProxy$ProvisionRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.drm.TPMediaDrmProxy.ProvisionRequest
  * JD-Core Version:    0.7.0.1
  */

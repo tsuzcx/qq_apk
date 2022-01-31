@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import atel;
-import aukp;
+import auvk;
+import awbw;
 
 public class WerewolvesDataManager$3
   implements Runnable
 {
-  public WerewolvesDataManager$3(atel paramatel, RecentInviteUser paramRecentInviteUser) {}
+  public WerewolvesDataManager$3(auvk paramauvk, RecentInviteUser paramRecentInviteUser) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class WerewolvesDataManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager.3
  * JD-Core Version:    0.7.0.1
  */

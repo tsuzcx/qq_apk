@@ -1,7 +1,7 @@
 package com.rookery.translate.model;
 
 import android.content.Context;
-import lbj;
+import ldn;
 
 public final class TranslateCache$1
   implements Runnable
@@ -10,12 +10,12 @@ public final class TranslateCache$1
   
   public void run()
   {
-    lbj.a(this.a);
+    ldn.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.rookery.translate.model.TranslateCache.1
  * JD-Core Version:    0.7.0.1
  */

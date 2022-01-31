@@ -3,15 +3,15 @@ package com.tencent.mobileqq.widget;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import bcnq;
-import bcnr;
+import bems;
+import bemt;
 import com.tencent.image.URLImageView;
 
 public class MosaicURLImageView
   extends URLImageView
-  implements bcnr
+  implements bemt
 {
-  private bcnq a;
+  private bems a;
   
   public MosaicURLImageView(Context paramContext)
   {
@@ -28,12 +28,12 @@ public class MosaicURLImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void b(Canvas paramCanvas)
+  public void a(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
   }
   
-  public void c(Canvas paramCanvas)
+  public void b(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
   }
@@ -58,12 +58,12 @@ public class MosaicURLImageView
     super.onDraw(paramCanvas);
   }
   
-  public void setMosaicEffect(bcnq parambcnq)
+  public void setMosaicEffect(bems parambems)
   {
     if (this.a != null) {
       this.a.a(null);
     }
-    this.a = parambcnq;
+    this.a = parambems;
     if (this.a != null) {
       this.a.a(this);
     }

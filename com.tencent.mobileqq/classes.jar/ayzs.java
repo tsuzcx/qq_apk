@@ -1,40 +1,32 @@
-import com.qq.taf.jce.HexUtil;
-import java.util.ArrayList;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
 
 public class ayzs
-  extends ayzr
+  implements INetInfoHandler
 {
-  public int a;
-  public String a;
-  public ArrayList<ayuq> a;
-  public byte[] a;
-  public String b;
-  public ArrayList<ayuq> b;
-  public byte[] b;
-  public String c;
+  public ayzs(ShortVideoResourceManager paramShortVideoResourceManager) {}
   
-  public ayzs()
+  public void onNetMobile2None()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    ShortVideoResourceManager.a(this.a);
   }
   
-  public String toString()
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(super.toString());
-    localStringBuilder.append(" mUkey:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" mIpList:").append(this.jdField_a_of_type_JavaUtilArrayList.toString());
-    localStringBuilder.append(" mIpv6List:").append(this.jdField_b_of_type_JavaUtilArrayList.toString());
-    localStringBuilder.append(" md5:").append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    localStringBuilder.append(" aesKey:").append(HexUtil.bytes2HexStr(this.jdField_b_of_type_ArrayOfByte));
-    return localStringBuilder.toString();
+    ShortVideoResourceManager.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayzs
  * JD-Core Version:    0.7.0.1
  */

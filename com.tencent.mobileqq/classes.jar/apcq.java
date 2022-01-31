@@ -1,19 +1,16 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
 class apcq
-  extends apbu
+  implements DialogInterface.OnClickListener
 {
-  public apcq(apbi paramapbi)
-  {
-    super(paramapbi);
-  }
+  apcq(apco paramapco) {}
   
-  protected String a()
-  {
-    return "StateUploadoneWhenPause";
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apcq
  * JD-Core Version:    0.7.0.1
  */

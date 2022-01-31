@@ -1,51 +1,20 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class odz
-  extends BaseAdapter
+final class odz
+  implements DialogInterface.OnClickListener
 {
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<MultiBiuSameContent> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  odz(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public odz(Context paramContext, ArrayList<MultiBiuSameContent> paramArrayList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramArrayList;
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {}
-    for (paramView = new oea(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment, this.jdField_a_of_type_AndroidContentContext);; paramView = (oea)paramView.getTag())
-    {
-      paramView.a((MultiBiuSameContent)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt);
-      return paramView.a();
-    }
+    paramDialogInterface.dismiss();
+    this.a.onClick(paramDialogInterface, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     odz
  * JD-Core Version:    0.7.0.1
  */

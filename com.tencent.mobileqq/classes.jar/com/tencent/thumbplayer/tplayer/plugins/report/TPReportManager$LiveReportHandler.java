@@ -1,6 +1,6 @@
 package com.tencent.thumbplayer.tplayer.plugins.report;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import com.tencent.thumbplayer.utils.TPLogUtil;
 import com.tencent.thumbplayer.utils.TPProperties;
 
@@ -50,7 +50,7 @@ class TPReportManager$LiveReportHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportManager.LiveReportHandler
  * JD-Core Version:    0.7.0.1
  */

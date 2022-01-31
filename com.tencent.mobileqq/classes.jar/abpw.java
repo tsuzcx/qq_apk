@@ -1,49 +1,49 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.util.Base64;
+import java.security.Key;
+import java.security.KeyFactory;
+import java.security.spec.X509EncodedKeySpec;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.DESKeySpec;
+import javax.crypto.spec.IvParameterSpec;
 
 public class abpw
-  implements Handler.Callback
 {
-  public abpw(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public static String a = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQD3ywzb5M1Acw/gPd4869if4PlW\rhH8ekZvuoW3JYzxzeI1Rb5ENlEErZFUFvQrdTtapycinwjtQUHpgJBkAYxe8fI8k\ralWhJxQAOJZxIVPiZcPzGl4kaPkGHonKhT1md+FwoFGfosNbccQ4RcvUT/iSuqPh\rFd9e4fbNnLf9pPf5LQIDAQAB";
   
-  public boolean handleMessage(Message paramMessage)
+  public static String a(String paramString)
   {
-    for (;;)
+    Object localObject = Base64.decode(a, 0);
+    localObject = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec((byte[])localObject));
+    Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+    localCipher.init(1, (Key)localObject);
+    return Base64.encodeToString(localCipher.doFinal(paramString.getBytes()), 2);
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    int j = paramString.length();
+    int i = 0;
+    while (i < paramInt - j % paramInt)
     {
-      try
-      {
-        int i = paramMessage.what;
-        switch (i)
-        {
-        default: 
-          bool = false;
-          return bool;
-        }
-      }
-      finally {}
-      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.g(this.a).setChecked(bool);
-      break label163;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.a(this.a, paramMessage);
-      break label163;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.b(this.a, paramMessage);
-      break label163;
-      bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.h(this.a).setChecked(bool);
-      break label163;
-      NotifyPushSettingActivity.i(this.a).setChecked(((Boolean)paramMessage.obj).booleanValue());
-      label163:
-      bool = true;
+      paramString = paramString + " ";
+      i += 1;
     }
+    return paramString;
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    paramString1 = new DESKeySpec(paramString1.getBytes());
+    paramString1 = SecretKeyFactory.getInstance("DES").generateSecret(paramString1);
+    Cipher localCipher = Cipher.getInstance("DES/CBC/NoPadding");
+    localCipher.init(1, paramString1, new IvParameterSpec("12345678".getBytes()));
+    return Base64.encodeToString(localCipher.doFinal(a(paramString2, localCipher.getBlockSize()).getBytes()), 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abpw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,61 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.SurfaceTexture;
+import android.opengl.GLSurfaceView;
+import android.opengl.GLSurfaceView.Renderer;
+import android.util.Size;
+import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
+import java.nio.FloatBuffer;
 
-public class anbv
+public abstract interface anbv
+  extends GLSurfaceView.Renderer
 {
-  private Map<String, List<anbw>> a = new HashMap();
+  public abstract int a();
   
-  public static anbv a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
-      return null;
-    }
-    localanbv = new anbv();
-    try
-    {
-      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].a);
-      Iterator localIterator = paramArrayOfamph.keys();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        JSONArray localJSONArray = paramArrayOfamph.getJSONArray(str);
-        ArrayList localArrayList = new ArrayList();
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          localArrayList.add(anbw.a(localJSONArray.getJSONObject(i)));
-          i += 1;
-        }
-        localanbv.a.put(str, localArrayList);
-      }
-      return localanbv;
-    }
-    catch (JSONException paramArrayOfamph)
-    {
-      QLog.e("TencentDocEditConvertConfigBean", 1, "parse fail", paramArrayOfamph);
-    }
-  }
+  public abstract long a();
   
-  public Map<String, List<anbw>> a()
-  {
-    return this.a;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, SurfaceTexture paramSurfaceTexture, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  
+  public abstract void a(int paramInt, Object paramObject);
+  
+  public abstract void a(int paramInt, float[] paramArrayOfFloat);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(amqt paramamqt);
+  
+  public abstract void a(amqx paramamqx);
+  
+  public abstract void a(andf paramandf);
+  
+  public abstract void a(VideoRecordController paramVideoRecordController);
+  
+  public abstract void a(FloatBuffer paramFloatBuffer, Size paramSize);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(amqw paramamqw);
+  
+  public abstract boolean a(GLSurfaceView paramGLSurfaceView, Context paramContext);
+  
+  public abstract boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2);
+  
+  public abstract void b();
+  
+  public abstract void b(long paramLong);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbv
  * JD-Core Version:    0.7.0.1
  */

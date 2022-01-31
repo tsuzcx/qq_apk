@@ -1,57 +1,252 @@
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.appstore.report.AppCenterReporter.1;
+import com.tencent.open.appstore.report.AppCenterReporter.2;
+import com.tencent.open.appstore.report.AppCenterReporter.3;
+import com.tencent.open.appstore.report.AppCenterReporter.4;
+import com.tencent.open.appstore.report.AppCenterReporter.5;
+import com.tencent.open.appstore.report.AppCenterReporter.6;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.replacemonitor.MonitorStep;
+import com.tencent.replacemonitor.MonitorTask;
+import com.tencent.replacemonitor.replace.ReplaceMonitor;
+import com.tencent.tmassistant.st.SDKReportManager2;
+import com.tencent.tmassistantbase.util.GlobalUtil;
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bfgx
 {
-  public static boolean a(String paramString)
+  private static MonitorTask a(DownloadInfo paramDownloadInfo)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!b(paramString)) && (!c(paramString))) {
-      return false;
+    MonitorTask localMonitorTask = new MonitorTask();
+    localMonitorTask.appName = paramDownloadInfo.f;
+    localMonitorTask.packageName = paramDownloadInfo.e;
+    localMonitorTask.versionCode = paramDownloadInfo.jdField_b_of_type_Int;
+    localMonitorTask.fileMd5 = paramDownloadInfo.p;
+    try
+    {
+      localMonitorTask.yybApkId = Long.parseLong(paramDownloadInfo.k);
+      localMonitorTask.yybAppId = Long.parseLong(paramDownloadInfo.c);
+      label62:
+      localMonitorTask.downloadUrl = paramDownloadInfo.d;
+      localMonitorTask.additionalId = paramDownloadInfo.jdField_b_of_type_JavaLangString;
+      localMonitorTask.filePath = paramDownloadInfo.l;
+      localMonitorTask.traceId = paramDownloadInfo.x;
+      localMonitorTask.externalParams = new HashMap();
+      localMonitorTask.externalParams.put("via", paramDownloadInfo.h);
+      return localMonitorTask;
     }
-    return true;
+    catch (Throwable localThrowable)
+    {
+      break label62;
+    }
   }
   
-  public static boolean b(String paramString)
+  private static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.startsWith("https://m.q.qq.com/a/")) && (!paramString.startsWith("http://m.q.qq.com/a/"))) {
-      return false;
-    }
-    return true;
+    return bfha.a().i(paramString5).k(paramString1).j(paramString2).l(paramString3).m(paramString4).b();
   }
   
-  public static boolean c(String paramString)
+  public static void a(int paramInt, String paramString)
   {
-    return (e(paramString)) || (d(paramString)) || (f(paramString));
+    bfhg.b("AppCenterReporter", "[report] type=" + paramInt + "\ndata=" + paramString);
+    SDKReportManager2.getInstance().postReport(paramInt, paramString);
   }
   
-  public static boolean d(String paramString)
+  public static void a(bfha parambfha)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return paramString.startsWith("mqqapi://miniapp/open?");
+    parambfha = parambfha.a();
+    bfhg.b("AppCenterReporter", "[reportExposure] type=3002\ndata=" + parambfha);
+    SDKReportManager2.getInstance().postReport(3002, parambfha);
   }
   
-  private static boolean e(String paramString)
+  public static void a(DownloadInfo paramDownloadInfo)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    return paramString.startsWith("mqqapi://microapp/open?");
+    ThreadManager.excute(new AppCenterReporter.1(paramDownloadInfo), 16, null, true);
   }
   
-  private static boolean f(String paramString)
+  public static void a(DownloadInfo paramDownloadInfo, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    ThreadManager.excute(new AppCenterReporter.5(paramDownloadInfo, paramInt), 16, null, true);
+  }
+  
+  public static void a(DownloadInfo paramDownloadInfo, int paramInt, String paramString)
+  {
+    ThreadManager.excute(new AppCenterReporter.3(paramDownloadInfo, paramInt, paramString), 16, null, true);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    paramString1 = a(paramString1, paramString2, paramString3, paramString4, paramString5);
+    bfhg.b("AppCenterReporter", "[reportNormalExposure] type=3001\ndata=" + paramString1);
+    SDKReportManager2.getInstance().postReport(3001, paramString1);
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    bfhg.b("AppCenterReporter", ">notifyInstallFinish " + paramString + "|" + paramBoolean);
+    ThreadManager.excute(new AppCenterReporter.6(paramString, paramBoolean), 16, null, true);
+  }
+  
+  private static long b(String paramString)
+  {
+    if (aowf.a(paramString, bexd.a().a())) {}
+    try
+    {
+      long l = new File(GlobalUtil.getInstance().getContext().getPackageManager().getPackageInfo(paramString, 0).applicationInfo.sourceDir).length();
+      return l;
     }
-    return paramString.startsWith("mqqapi://miniapp/adopen");
+    catch (Throwable paramString)
+    {
+      label77:
+      break label77;
+    }
+    bfhg.b("AppCenterReporter", "[getInstalledAppFileSize]" + paramString + ": NOT INSTALLED!");
+    return 0L;
+  }
+  
+  public static void b(bfha parambfha)
+  {
+    parambfha = parambfha.a();
+    bfhg.b("AppCenterReporter", "[reportClick] type=3003\ndata=" + parambfha);
+    SDKReportManager2.getInstance().postReport(3003, parambfha);
+  }
+  
+  public static void b(DownloadInfo paramDownloadInfo)
+  {
+    ThreadManager.excute(new AppCenterReporter.2(paramDownloadInfo), 16, null, true);
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    paramString1 = a(paramString1, paramString2, paramString3, paramString4, paramString5) + "|" + bfha.a().d() + "|" + "200";
+    bfhg.b("AppCenterReporter", "[reportClick] type=3003\ndata=" + paramString1);
+    SDKReportManager2.getInstance().postReport(3003, paramString1);
+  }
+  
+  private static String c(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo == null) {
+      return "";
+    }
+    return bfha.a().i(paramDownloadInfo.o).k(paramDownloadInfo.t).j(paramDownloadInfo.u).l(paramDownloadInfo.v).m(paramDownloadInfo.h).b();
+  }
+  
+  public static void c(DownloadInfo paramDownloadInfo)
+  {
+    g(paramDownloadInfo);
+    ThreadManager.excute(new AppCenterReporter.4(paramDownloadInfo), 16, null, true);
+  }
+  
+  private static String d(DownloadInfo paramDownloadInfo)
+  {
+    if (paramDownloadInfo == null) {
+      return "";
+    }
+    return bfha.a().a(paramDownloadInfo.f).b(paramDownloadInfo.e).a(paramDownloadInfo.jdField_b_of_type_Int).c(paramDownloadInfo.c).d(paramDownloadInfo.k).e(paramDownloadInfo.r).f(paramDownloadInfo.s).g(paramDownloadInfo.d).h(paramDownloadInfo.q).c();
+  }
+  
+  public static void d(DownloadInfo paramDownloadInfo)
+  {
+    bfhg.b("AppCenterReporter", ">tryInitMonitorTask info:" + paramDownloadInfo);
+    if (paramDownloadInfo == null) {
+      return;
+    }
+    MonitorTask localMonitorTask = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    bfhg.b("AppCenterReporter", ">tryInitMonitorTask info=" + paramDownloadInfo);
+    if (localMonitorTask == null) {}
+    for (paramDownloadInfo = a(paramDownloadInfo);; paramDownloadInfo = localMonitorTask)
+    {
+      ReplaceMonitor.get().addTask(paramDownloadInfo);
+      return;
+      if (TextUtils.isEmpty(localMonitorTask.filePath)) {
+        localMonitorTask.filePath = paramDownloadInfo.l;
+      }
+      bfhg.b("AppCenterReporter", ">tryInitMonitorTask 已有task2:" + localMonitorTask);
+    }
+  }
+  
+  public static void e(DownloadInfo paramDownloadInfo)
+  {
+    bfhg.b("AppCenterReporter", ">downloadSuccCheck info:" + paramDownloadInfo);
+    if (paramDownloadInfo == null) {
+      return;
+    }
+    MonitorTask localMonitorTask2 = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    MonitorTask localMonitorTask1;
+    if (localMonitorTask2 == null)
+    {
+      localMonitorTask1 = a(paramDownloadInfo);
+      ReplaceMonitor.get().addTask(localMonitorTask1);
+    }
+    for (;;)
+    {
+      bfhg.b("AppCenterReporter", ">downloadSuccCheck task:" + localMonitorTask1);
+      if (localMonitorTask1 == null) {
+        break;
+      }
+      ReplaceMonitor.get().execSync(localMonitorTask1, MonitorStep.DOWNLOADING);
+      return;
+      localMonitorTask1 = localMonitorTask2;
+      if (TextUtils.isEmpty(localMonitorTask2.filePath))
+      {
+        localMonitorTask2.filePath = paramDownloadInfo.l;
+        localMonitorTask1 = localMonitorTask2;
+      }
+    }
+  }
+  
+  public static void f(DownloadInfo paramDownloadInfo)
+  {
+    bfhg.b("AppCenterReporter", ">deleteCheck info:" + paramDownloadInfo);
+    if (paramDownloadInfo == null) {}
+    do
+    {
+      return;
+      paramDownloadInfo = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    } while (paramDownloadInfo == null);
+    ReplaceMonitor.get().deleteTask(paramDownloadInfo);
+  }
+  
+  public static void g(DownloadInfo paramDownloadInfo)
+  {
+    bfhg.b("AppCenterReporter", ">installStartCheck ,info:" + paramDownloadInfo);
+    if (paramDownloadInfo == null) {
+      return;
+    }
+    MonitorTask localMonitorTask2 = ReplaceMonitor.get().getTask(paramDownloadInfo.jdField_b_of_type_JavaLangString);
+    MonitorTask localMonitorTask1;
+    if (localMonitorTask2 == null)
+    {
+      localMonitorTask1 = a(paramDownloadInfo);
+      ReplaceMonitor.get().addTask(localMonitorTask1);
+    }
+    for (;;)
+    {
+      bfhg.b("AppCenterReporter", ">installStartCheck task:" + localMonitorTask1);
+      if (localMonitorTask1 == null) {
+        break;
+      }
+      ReplaceMonitor.get().execSync(localMonitorTask1, MonitorStep.BEFORE_INSTALL);
+      return;
+      localMonitorTask1 = localMonitorTask2;
+      if (TextUtils.isEmpty(localMonitorTask2.filePath))
+      {
+        localMonitorTask2.filePath = paramDownloadInfo.l;
+        localMonitorTask1 = localMonitorTask2;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfgx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,21 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-public class rdt
-  extends oyd
+final class rdt
+  extends AnimatorListenerAdapter
 {
-  public rdt(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, View paramView, ArticleInfo paramArticleInfo, int paramInt)
-  {
-    super(paramString);
-  }
+  rdt(View paramView) {}
   
-  public void a(oxx paramoxx)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramoxx.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Int);
+    super.onAnimationEnd(paramAnimator);
+    this.a.setTag(2131362578, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdt
  * JD-Core Version:    0.7.0.1
  */

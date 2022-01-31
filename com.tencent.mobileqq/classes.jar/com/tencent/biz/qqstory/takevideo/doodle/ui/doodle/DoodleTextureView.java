@@ -8,17 +8,17 @@ import com.tencent.mobileqq.apollo.GLTextureView;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
-import vng;
-import voc;
-import vol;
+import xby;
+import xcu;
+import xdd;
 
 @TargetApi(14)
 public class DoodleTextureView
   extends GLTextureView
-  implements GLSurfaceView.Renderer, vng
+  implements GLSurfaceView.Renderer, xby
 {
   int jdField_a_of_type_Int = 320;
-  voc jdField_a_of_type_Voc;
+  xcu jdField_a_of_type_Xcu;
   int b = 480;
   
   public DoodleTextureView(Context paramContext)
@@ -38,8 +38,8 @@ public class DoodleTextureView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Voc != null) {
-      this.jdField_a_of_type_Voc.c(paramInt);
+    if (this.jdField_a_of_type_Xcu != null) {
+      this.jdField_a_of_type_Xcu.c(paramInt);
     }
   }
   
@@ -63,8 +63,8 @@ public class DoodleTextureView
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if (this.jdField_a_of_type_Voc != null) {
-      this.jdField_a_of_type_Voc.e();
+    if (this.jdField_a_of_type_Xcu != null) {
+      this.jdField_a_of_type_Xcu.e();
     }
   }
   
@@ -73,9 +73,9 @@ public class DoodleTextureView
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
-    if (this.jdField_a_of_type_Voc != null)
+    if (this.jdField_a_of_type_Xcu != null)
     {
-      paramGL10 = (vol)this.jdField_a_of_type_Voc.a(102);
+      paramGL10 = (xdd)this.jdField_a_of_type_Xcu.a(102);
       if (paramGL10 != null) {
         paramGL10.a(paramInt1, paramInt2);
       }
@@ -84,8 +84,8 @@ public class DoodleTextureView
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if (this.jdField_a_of_type_Voc != null) {
-      this.jdField_a_of_type_Voc.d();
+    if (this.jdField_a_of_type_Xcu != null) {
+      this.jdField_a_of_type_Xcu.d();
     }
   }
   
@@ -95,16 +95,16 @@ public class DoodleTextureView
     return true;
   }
   
-  public void setOpController(voc paramvoc)
+  public void setOpController(xcu paramxcu)
   {
-    this.jdField_a_of_type_Voc = paramvoc;
-    this.jdField_a_of_type_Voc.a(this);
+    this.jdField_a_of_type_Xcu = paramxcu;
+    this.jdField_a_of_type_Xcu.a(this);
     super.queueEvent(new DoodleTextureView.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troopgift.TroopGiftPanel;
+import android.view.MotionEvent;
 
-public class xcw
-  implements View.OnClickListener
+public abstract class xcw
 {
-  public xcw(TroopGiftPanel paramTroopGiftPanel) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.e();
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xcw
  * JD-Core Version:    0.7.0.1
  */

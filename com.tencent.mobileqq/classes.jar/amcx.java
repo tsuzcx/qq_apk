@@ -1,57 +1,31 @@
-import android.os.Build.VERSION;
-import java.util.AbstractCollection;
-import java.util.ArrayDeque;
-import java.util.concurrent.ArrayBlockingQueue;
+import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
 
-public class amcx<T>
+public class amcx
+  extends alox
 {
-  final AbstractCollection<T> a;
+  private amcx(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
   
-  public amcx(int paramInt)
+  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      this.a = new ArrayDeque();
-      return;
+    int i = 0;
+    if (!paramBoolean1) {
+      this.a.a(6);
     }
-    this.a = new ArrayBlockingQueue(30);
-  }
-  
-  public T a()
-  {
-    if (Build.VERSION.SDK_INT >= 9)
+    for (;;)
     {
-      if ((this.a instanceof ArrayDeque)) {
-        return ((ArrayDeque)this.a).poll();
+      if (i != 0) {
+        this.a.a(7);
+      }
+      return;
+      if (paramBoolean2) {
+        i = 1;
       }
     }
-    else if ((this.a instanceof ArrayBlockingQueue)) {
-      return ((ArrayBlockingQueue)this.a).poll();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(T paramT)
-  {
-    if (Build.VERSION.SDK_INT >= 9) {
-      if ((this.a instanceof ArrayDeque)) {
-        ((ArrayDeque)this.a).offer(paramT);
-      }
-    }
-    while (!(this.a instanceof ArrayBlockingQueue)) {
-      return;
-    }
-    ((ArrayBlockingQueue)this.a).offer(paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amcx
  * JD-Core Version:    0.7.0.1
  */

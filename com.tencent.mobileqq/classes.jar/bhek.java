@@ -1,16 +1,16 @@
-import android.text.TextUtils;
-
-public class bhek
-  extends bheh
+final class bhek
+  implements com.tencent.smtt.sdk.ValueCallback
 {
-  public boolean a()
+  bhek(android.webkit.ValueCallback paramValueCallback) {}
+  
+  public void onReceiveValue(Object paramObject)
   {
-    return (this.jdField_a_of_type_Int > 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+    this.a.onReceiveValue(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhek
  * JD-Core Version:    0.7.0.1
  */

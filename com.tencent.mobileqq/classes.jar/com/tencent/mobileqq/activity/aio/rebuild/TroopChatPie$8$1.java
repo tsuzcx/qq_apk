@@ -11,13 +11,13 @@ class TroopChatPie$8$1
   
   public void run()
   {
-    this.a.this$0.jdField_a_of_type_AndroidWidgetToast = ChatActivityUtils.a(this.a.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131689922));
+    this.a.this$0.jdField_a_of_type_AndroidWidgetToast = ChatActivityUtils.a(this.a.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131689969));
     this.a.this$0.jdField_a_of_type_AndroidWidgetToast.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.8.1
  * JD-Core Version:    0.7.0.1
  */

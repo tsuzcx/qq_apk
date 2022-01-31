@@ -1,21 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-
-public class akvz
+public abstract interface akvz
 {
-  public static boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LinkStarDebugProcessor.", 2, "handleLinkStarNotifyPush. linkStarMsgType=" + paramInt + " reservedData=" + paramArrayOfByte1 + " data=" + paramArrayOfByte2);
-    }
-    switch (paramInt)
-    {
-    }
-    return true;
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvz
  * JD-Core Version:    0.7.0.1
  */

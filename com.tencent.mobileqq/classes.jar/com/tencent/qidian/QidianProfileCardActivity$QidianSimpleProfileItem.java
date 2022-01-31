@@ -3,12 +3,12 @@ package com.tencent.qidian;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bdvf;
+import bfva;
 
 public class QidianProfileCardActivity$QidianSimpleProfileItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<QidianSimpleProfileItem> CREATOR = new bdvf();
+  public static final Parcelable.Creator<QidianSimpleProfileItem> CREATOR = new bfva();
   public int a;
   public String a;
   public boolean a;
@@ -66,7 +66,7 @@ public class QidianProfileCardActivity$QidianSimpleProfileItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem
  * JD-Core Version:    0.7.0.1
  */

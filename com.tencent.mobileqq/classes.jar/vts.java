@@ -1,23 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
 
-class vts
-  implements View.OnClickListener
+public class vts
+  implements vtp
 {
-  vts(vtr paramvtr, vtu paramvtu) {}
+  public vts(MediaPlayer paramMediaPlayer) {}
   
-  public void onClick(View paramView)
+  public void a(vtn paramvtn)
   {
-    if (vtr.a(this.jdField_a_of_type_Vtr) != null) {
-      vtr.a(this.jdField_a_of_type_Vtr).a((SlideItemInfo)this.jdField_a_of_type_Vtu.a.getTag());
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Vtl.b() < 2000000L) && (!this.a.jdField_a_of_type_Vtl.b()))
+    {
+      this.a.e = true;
+      this.a.jdField_a_of_type_Vtt.sendMessage(this.a.jdField_a_of_type_Vtt.obtainMessage(200, 701, 0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vts
  * JD-Core Version:    0.7.0.1
  */

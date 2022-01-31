@@ -1,140 +1,99 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.content.Context;
-import android.view.View;
-import android.widget.ListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTodayStoryVidList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
 
 class wns
-  implements wop
+  implements uni<vaq, vco>
 {
-  wns(wni paramwni) {}
+  wns(wnr paramwnr, qqstory_service.ReqTodayStoryVidList paramReqTodayStoryVidList, String paramString) {}
   
-  public void a(View paramView, int paramInt1, int paramInt2, Object paramObject)
+  public void a(@NonNull vaq paramvaq, @Nullable vco paramvco, @NonNull ErrorMessage paramErrorMessage)
   {
-    switch (paramInt1)
+    if (paramErrorMessage.isFail())
     {
+      if (this.jdField_a_of_type_Wnr.jdField_a_of_type_Wor != null) {
+        this.jdField_a_of_type_Wnr.jdField_a_of_type_Wor.a(paramErrorMessage);
+      }
+      return;
     }
-    do
+    if (paramvco == null)
     {
-      do
+      this.jdField_a_of_type_Wnr.jdField_a_of_type_Wnt.jdField_a_of_type_Int = paramErrorMessage.errorCode;
+      if (this.jdField_a_of_type_Wnr.jdField_a_of_type_Wos != null)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            return;
-                          } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StUser)));
-                          paramView = (CertifiedAccountMeta.StUser)paramObject;
-                        } while (paramView.type.get() != 1);
-                        wis.a(wni.a(this.a), paramView);
-                        return;
-                      } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StComment)));
-                      paramView = (CertifiedAccountMeta.StComment)paramObject;
-                      QLog.d(wni.a(), 1, "click comment, feedId: " + wni.a(this.a).id + " commentId: " + paramView.id);
-                      wni.a(this.a, paramView, null);
-                      return;
-                    } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-                    paramObject = (Object[])paramObject;
-                  } while ((paramObject.length <= 1) || (paramObject[0] == null) || (paramObject[1] == null) || (!(paramObject[0] instanceof CertifiedAccountMeta.StComment)) || (!(paramObject[1] instanceof CertifiedAccountMeta.StReply)));
-                  paramView = (CertifiedAccountMeta.StComment)paramObject[0];
-                  paramObject = (CertifiedAccountMeta.StReply)paramObject[1];
-                  QLog.d(wni.a(), 1, "click reply, feedId: " + wni.a(this.a).id + " commentId: " + paramView.id + " replyId: " + paramObject.id);
-                  wni.a(this.a, paramView, paramObject);
-                  return;
-                } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StComment)));
-                paramView = (CertifiedAccountMeta.StComment)paramObject;
-                wni.a(this.a).b(paramView);
-                return;
-              } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-              paramView = (Object[])paramObject;
-            } while ((paramView.length <= 1) || (paramView[0] == null));
-            paramObject = (CertifiedAccountMeta.StComment)paramView[0];
-            paramInt1 = wni.a(this.a).a(paramObject);
-          } while ((paramInt1 < 0) || (paramView[1] == null));
-          int i = ((Integer)paramView[1]).intValue();
-          this.a.a.setSelectionFromTop(paramInt2, i * (paramInt1 * -1));
-          return;
-        } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StComment)));
-        paramView = (CertifiedAccountMeta.StComment)paramObject;
-        wni.a(this.a, wni.a(this.a).a(wni.a(this.a), paramView));
-        wni.c(this.a, true);
+        this.jdField_a_of_type_Wnr.jdField_a_of_type_Wos.a(this.jdField_a_of_type_Wnr.a());
         return;
-      } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-      paramView = (Object[])paramObject;
-    } while ((paramView.length <= 1) || (paramView[0] == null) || (paramView[1] == null));
-    paramObject = (CertifiedAccountMeta.StComment)paramView[0];
-    wni.a(this.a).a(wni.a(this.a), paramObject, (CertifiedAccountMeta.StReply)paramView[1]);
-    wni.c(this.a, true);
-  }
-  
-  public void b(View paramView, int paramInt1, int paramInt2, Object paramObject)
-  {
-    switch (paramInt1)
-    {
+      }
+      wsv.d("GetMyStoryVideoListStep", "finish callBack is null");
+      return;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramObject == null) || (!(paramObject instanceof CertifiedAccountMeta.StComment)));
-        paramView = (CertifiedAccountMeta.StComment)paramObject;
-        wni.a(this.a, new wmc(wni.a(this.a), false, true));
-        wni.a(this.a).a(wni.b(this.a).getString(2131691303), 0, new wnt(this, paramView));
-        if (wni.a(this.a, paramView.postUser)) {
-          wni.a(this.a).a(wni.d(this.a).getString(2131691501), 1, new wnu(this, paramView));
-        }
-        for (;;)
-        {
-          wni.a(this.a).a(wni.f(this.a).getString(2131690596));
-          wni.a(this.a).show();
-          return;
-          wni.a(this.a).a(wni.e(this.a).getString(2131718744), 6, new wnv(this, paramView));
-        }
-      } while ((paramObject == null) || (!(paramObject instanceof Object[])));
-      paramObject = (Object[])paramObject;
-    } while ((paramObject.length <= 1) || (paramObject[0] == null) || (paramObject[1] == null) || (!(paramObject[0] instanceof CertifiedAccountMeta.StComment)) || (!(paramObject[1] instanceof CertifiedAccountMeta.StReply)));
-    paramView = (CertifiedAccountMeta.StComment)paramObject[0];
-    paramObject = (CertifiedAccountMeta.StReply)paramObject[1];
-    wni.a(this.a, new wmc(wni.g(this.a), false, true));
-    wni.a(this.a).a(wni.h(this.a).getString(2131691303), 0, new wnw(this, paramObject));
-    if (wni.a(this.a, paramObject.postUser)) {
-      wni.a(this.a).a(wni.j(this.a).getString(2131691501), 1, new wnx(this, paramView, paramObject));
-    }
+    paramvaq = new qqstory_service.RspTodayStoryVidList();
     for (;;)
     {
-      wni.a(this.a).a(wni.l(this.a).getString(2131690596));
-      wni.a(this.a).show();
-      return;
-      wni.a(this.a).a(wni.k(this.a).getString(2131718744), 6, new wny(this, paramView, paramObject));
+      try
+      {
+        paramvaq.mergeFrom(paramvco.a);
+        paramvco = paramvaq.vid_list.get().listIterator();
+        paramErrorMessage = paramvaq.feed_id.get().toStringUtf8();
+        if (!TextUtils.isEmpty(paramErrorMessage)) {
+          this.jdField_a_of_type_Wnr.jdField_a_of_type_Wnt.jdField_a_of_type_JavaLangString = paramErrorMessage;
+        }
+        paramErrorMessage = this.jdField_a_of_type_Wnr.jdField_a_of_type_Wnt;
+        if (paramvaq.share_to_discover.get() == 1)
+        {
+          bool = true;
+          paramErrorMessage.jdField_a_of_type_Boolean = bool;
+          ((urk)urr.a(10)).b("qqstory_my_story_have_contributed", Integer.valueOf(paramvaq.share_to_discover.get()));
+          if (!paramvco.hasNext()) {
+            break;
+          }
+          this.jdField_a_of_type_Wnr.jdField_a_of_type_Wnt.jdField_a_of_type_JavaUtilArrayList.add(((ByteStringMicro)paramvco.next()).toStringUtf8());
+          continue;
+        }
+        boolean bool = false;
+      }
+      catch (InvalidProtocolBufferMicroException paramvaq)
+      {
+        wsv.c("GetMyStoryVideoListStep", "协议返回错误, RspGetBatchUserVidList", paramvaq);
+        if (this.jdField_a_of_type_Wnr.jdField_a_of_type_Wos != null)
+        {
+          this.jdField_a_of_type_Wnr.jdField_a_of_type_Wos.a(this.jdField_a_of_type_Wnr.a());
+          return;
+        }
+        wsv.d("GetMyStoryVideoListStep", "finish callBack is null");
+        return;
+      }
     }
+    if ((!paramvaq.is_end.has()) || (paramvaq.is_end.get() == 1))
+    {
+      if (this.jdField_a_of_type_Wnr.jdField_a_of_type_Wos != null)
+      {
+        this.jdField_a_of_type_Wnr.jdField_a_of_type_Wos.a(this.jdField_a_of_type_Wnr.a());
+        return;
+      }
+      wsv.d("GetMyStoryVideoListStep", "finish callBack is null");
+      return;
+    }
+    paramvco = new qqstory_service.ReqTodayStoryVidList();
+    paramvco.date.set(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$ReqTodayStoryVidList.date.get());
+    paramvco.cookie.set(paramvaq.cookie.get());
+    ung.a().a(new vaq(this.jdField_a_of_type_JavaLangString, paramvco, null), this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wns
  * JD-Core Version:    0.7.0.1
  */

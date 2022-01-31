@@ -1,23 +1,17 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-final class bgye
-  implements View.OnClickListener
+class bgye
 {
-  bgye(Dialog paramDialog, Context paramContext, String paramString) {}
+  public int a;
+  public String a;
   
-  public void onClick(View paramView)
+  public bgye(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidAppDialog != null) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgye
  * JD-Core Version:    0.7.0.1
  */

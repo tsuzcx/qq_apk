@@ -1,12 +1,12 @@
 package com.tencent.qqprotect.qsec;
 
-import bfit;
-import bfje;
+import bhjn;
+import bhjy;
 
 public class FilterManager$1
   implements Runnable
 {
-  public FilterManager$1(bfit parambfit, bfje parambfje) {}
+  public FilterManager$1(bhjn parambhjn, bhjy parambhjy) {}
   
   public void run()
   {

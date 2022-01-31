@@ -1,66 +1,33 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.widget.ARMapHongBaoListView;
 
-public class uwv
-  extends ste<uwq, tae>
+class uwv
+  implements View.OnLayoutChangeListener
 {
-  public uwv(uwq paramuwq)
-  {
-    super(paramuwq);
-  }
+  uwv(uwn paramuwn, urk paramurk) {}
   
-  public void a(@NonNull uwq paramuwq, @NonNull tae paramtae)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (((uwq.a(paramuwq) == 12) && (paramtae.jdField_a_of_type_Int == 3)) || ((uwq.a(paramuwq) == 10) && (paramtae.jdField_a_of_type_Int == 0) && (paramtae.b != 1))) {
-      return;
-    }
-    Object localObject = paramuwq.a(paramtae.jdField_a_of_type_JavaLangString);
-    if (localObject == null)
+    wsv.b(uwn.b(), "onLayoutChange");
+    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && ((this.jdField_a_of_type_Uwn.d) || (this.jdField_a_of_type_Uwn.e)) && (!this.jdField_a_of_type_Uwn.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.mForStory))
     {
-      ved.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { paramtae.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    if (!(localObject instanceof uvh))
-    {
-      ved.d("Q.qqstory.home.data.HomeFeedPresenter", "that is not commentLike type!! feedId:%s", new Object[] { paramtae.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    localObject = (uvh)localObject;
-    if ((paramtae.b == 1) || (paramtae.b == 2))
-    {
-      if (paramtae.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null) {
-        ((CommentLikeFeedItem)((uvh)localObject).a).mCommentCount = paramtae.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
-      }
-      ((uvh)localObject).a(((tbw)tcz.a(17)).a(paramtae.jdField_a_of_type_JavaLangString, false), true);
-      ved.a("Q.qqstory.home.data.HomeFeedPresenter", "feedId %s comment update after count:%d", paramtae.jdField_a_of_type_JavaLangString, Integer.valueOf(((uvh)localObject).b().size()));
-    }
-    for (;;)
-    {
-      uwq.a(paramuwq).b(paramtae.jdField_a_of_type_JavaLangString);
-      return;
-      if (paramtae.b == 3)
+      wsv.b(uwn.b(), "first show node, showStoryNode");
+      if (this.jdField_a_of_type_Uwn.d)
       {
-        if (paramtae.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
-        {
-          ((CommentLikeFeedItem)((uvh)localObject).a).mHadLike = paramtae.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike;
-          ((CommentLikeFeedItem)((uvh)localObject).a).mLikeCount = paramtae.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount;
-        }
-        ((uvh)localObject).b(((tcl)tcz.a(15)).a(paramtae.jdField_a_of_type_JavaLangString, false), true);
+        this.jdField_a_of_type_Uwn.d = false;
+        this.jdField_a_of_type_Urk.b("first_show_node", Boolean.valueOf(false));
+      }
+      this.jdField_a_of_type_Uwn.e = false;
+      if (this.jdField_a_of_type_Uwn.a()) {
+        this.jdField_a_of_type_Uwn.jdField_a_of_type_Uvz.a("exp_story", 4);
       }
     }
   }
-  
-  public Class acceptEventClass()
-  {
-    return tae.class;
-  }
-  
-  public void b(@NonNull uwq paramuwq, @NonNull tae paramtae) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uwv
  * JD-Core Version:    0.7.0.1
  */

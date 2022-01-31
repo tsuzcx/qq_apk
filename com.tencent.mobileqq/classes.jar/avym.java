@@ -1,25 +1,35 @@
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder;
-import java.util.Comparator;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 public class avym
-  implements Comparator<avxs>
+  extends AccountObserver
 {
-  public avym(Mp4FlowReEncoder paramMp4FlowReEncoder) {}
+  public avym(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public int a(avxs paramavxs1, avxs paramavxs2)
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    if (paramavxs2.a() > paramavxs1.a()) {
-      return -1;
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountOnlineStateActivity", 2, "onOnlineStatusChanged, isSuccess: " + paramBoolean1 + " , mIsUpdateStatus: " + AccountOnlineStateActivity.a(this.a) + ", isUserSet: " + paramBoolean2);
     }
-    if (paramavxs2.a() == paramavxs1.a()) {
-      return 0;
+    if (AccountOnlineStateActivity.a(this.a))
+    {
+      AccountOnlineStateActivity.a(this.a, false);
+      if (paramBoolean1) {
+        AccountOnlineStateActivity.a(this.a, true, 0);
+      }
     }
-    return 1;
+    else
+    {
+      return;
+    }
+    AccountOnlineStateActivity.a(this.a, false, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avym
  * JD-Core Version:    0.7.0.1
  */

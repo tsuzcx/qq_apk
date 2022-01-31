@@ -70,9 +70,9 @@ class TPDownloadProxyClient$1
     this.val$playListener.onDownloadFinish();
   }
   
-  public void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
+  public void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
   {
-    this.val$playListener.onDownloadProgressUpdate(paramInt1, paramInt2, paramLong1, paramLong2);
+    this.val$playListener.onDownloadProgressUpdate(paramInt1, paramInt2, paramLong1, paramLong2, paramString);
   }
   
   public void onDownloadProtocolUpdate(String paramString1, String paramString2)
@@ -121,7 +121,7 @@ class TPDownloadProxyClient$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.client.TPDownloadProxyClient.1
  * JD-Core Version:    0.7.0.1
  */

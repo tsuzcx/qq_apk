@@ -1,21 +1,19 @@
-class aeoy
-  extends ayfn
+import android.content.DialogInterface;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
+
+public class aeoy
+  extends bdco
 {
-  aeoy(aeom paramaeom) {}
+  public aeoy(PlusPanel paramPlusPanel) {}
   
-  public void a(boolean paramBoolean, Object[] paramArrayOfObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ayfx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aeom.e(this.a), paramBoolean, paramArrayOfObject);
-  }
-  
-  public void b(boolean paramBoolean, Object[] paramArrayOfObject)
-  {
-    ayfx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, aeom.f(this.a), paramBoolean, paramArrayOfObject);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeoy
  * JD-Core Version:    0.7.0.1
  */

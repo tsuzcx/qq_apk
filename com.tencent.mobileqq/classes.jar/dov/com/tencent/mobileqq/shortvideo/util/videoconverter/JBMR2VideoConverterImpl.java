@@ -1,24 +1,24 @@
 package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 
 import android.annotation.TargetApi;
-import bldj;
-import bldl;
+import bnot;
+import bnov;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.io.File;
 
 @TargetApi(18)
 public class JBMR2VideoConverterImpl
-  implements bldl
+  implements bnov
 {
   boolean a = false;
   boolean b = false;
   
-  public boolean a(File paramFile, bldj parambldj, boolean paramBoolean)
+  public boolean a(File paramFile, bnot parambnot, boolean paramBoolean)
   {
     if (!this.a)
     {
       this.a = true;
-      paramFile = new JBMR2VideoConverterImpl.Converter(this, paramFile, parambldj);
+      paramFile = new JBMR2VideoConverterImpl.Converter(this, paramFile, parambnot);
       if (!paramBoolean)
       {
         ThreadManagerV2.excute(paramFile, 16, null, false);
@@ -32,7 +32,7 @@ public class JBMR2VideoConverterImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.videoconverter.JBMR2VideoConverterImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.gif.giftext.fragment.AEGIFTextEditFragment.7.1;
 
-final class bkzt
-  implements aysc
+public class bkzt
+  implements View.OnClickListener
 {
-  bkzt(String paramString1, String paramString2, bkzu parambkzu) {}
+  bkzt(bkzl parambkzl) {}
   
-  public void onResp(aysz paramaysz)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bkzs.b(), 2, "onResp resultcode: " + paramaysz.c + " threadid=" + Thread.currentThread().getId());
-    }
-    if ((paramaysz.c == 200) && (bkzs.a(this.jdField_a_of_type_JavaLangString, this.b))) {
-      if (this.jdField_a_of_type_Bkzu != null) {
-        this.jdField_a_of_type_Bkzu.a();
-      }
-    }
-    while (this.jdField_a_of_type_Bkzu == null) {
-      return;
-    }
-    this.jdField_a_of_type_Bkzu.b();
-  }
-  
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
-  {
-    if (this.jdField_a_of_type_Bkzu != null) {
-      this.jdField_a_of_type_Bkzu.a(paramLong1, paramLong2);
-    }
+    bkzl.b(this.a);
+    new Handler().postDelayed(new AEGIFTextEditFragment.7.1(this), 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkzt
  * JD-Core Version:    0.7.0.1
  */

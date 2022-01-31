@@ -1,96 +1,63 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class amvh
+public abstract class amvh
+  extends Binder
+  implements amvg
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  
-  public static amvh a(amph[] paramArrayOfamph)
+  public amvh()
   {
-    amvh localamvh = new amvh();
-    int j;
-    int i;
-    try
-    {
-      j = paramArrayOfamph.length;
-      i = 0;
-    }
-    catch (Throwable paramArrayOfamph)
-    {
-      boolean bool;
-      QLog.d("QQSysAndEmojiConfProcessor", 2, "parse S$EConfBean failed!", paramArrayOfamph);
-    }
-    Object localObject = ((amph)localObject).a;
-    bool = TextUtils.isEmpty((CharSequence)localObject);
-    if (!bool)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject((String)localObject);
-        if (localJSONObject.has("config_url")) {
-          localamvh.a = localJSONObject.optString("config_url");
-        }
-        if (localJSONObject.has("config_md5")) {
-          localamvh.b = localJSONObject.optString("config_md5");
-        }
-        if (localJSONObject.has("android_sysface_res_url")) {
-          localamvh.c = localJSONObject.optString("android_sysface_res_url");
-        }
-        if (localJSONObject.has("android_sysface_res_md5")) {
-          localamvh.d = localJSONObject.optString("android_sysface_res_md5");
-        }
-        if (localJSONObject.has("emoji_res_url")) {
-          localamvh.e = localJSONObject.optString("emoji_res_url");
-        }
-        if (localJSONObject.has("emoji_res_md5")) {
-          localamvh.f = localJSONObject.optString("emoji_res_md5");
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("QQSysAndEmojiConfProcessor", 2, "parse S$EConfBean: " + (String)localObject);
-      }
-    }
-    label255:
-    for (;;)
-    {
-      return localamvh;
-      for (;;)
-      {
-        if (i >= j) {
-          break label255;
-        }
-        localObject = paramArrayOfamph[i];
-        if (localObject != null) {
-          break;
-        }
-        i += 1;
-      }
-    }
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArSoCallback");
   }
   
-  public String toString()
+  public static amvg a(IBinder paramIBinder)
   {
-    new StringBuilder().append(", mConfigUrl:").append(this.a).append(", mConfigMD5:").append(this.b).append(", mSysFaceUrl").append(this.c).append(", mSysFaceMD5").append(this.d).append(", mEmojiUrl").append(this.e).append(", mEmojiMD5").append(this.f);
-    return super.toString();
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof amvg))) {
+      return (amvg)localIInterface;
+    }
+    return new amvi(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      b();
+      paramParcel2.writeNoException();
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+    a(paramParcel1.readInt());
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvh
  * JD-Core Version:    0.7.0.1
  */

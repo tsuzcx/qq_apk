@@ -1,38 +1,22 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 
-class mhg
-  implements DialogInterface.OnClickListener
+public class mhg
+  implements DialogInterface.OnCancelListener
 {
-  mhg(mha parammha) {}
+  public mhg(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    mha.a(this.a, false);
-    if (paramInt == 1)
-    {
-      axqy.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
-      this.a.c();
-      if (!muc.a(mha.a(this.a))) {
-        mha.a(this.a).a(mha.a(this.a));
-      }
-    }
-    while (paramInt != 0)
-    {
-      return;
-      mha.a(this.a).b(mha.a(this.a));
-      return;
-    }
-    mha.a(this.a, mha.a(this.a).a().v);
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, "onClickCancel", true, null, -1);
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.b("onClickCancel");
+    bdfc.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mhg
  * JD-Core Version:    0.7.0.1
  */

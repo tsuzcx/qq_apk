@@ -1,61 +1,32 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.os.Handler;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
-public class aowj
-  extends MSFServlet
+class aowj
+  implements View.OnClickListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTransferServlet<FileAssistant>", 2, "onReceive called");
-    }
-    if (paramIntent == null)
-    {
-      QLog.e("FileTransferServlet<FileAssistant>", 1, "onReceive : req is null");
-      return;
-    }
-    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
-    localQQAppInterface.a().a(paramIntent, paramFromServiceMsg);
-  }
+  aowj(aowg paramaowg, String paramString) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileTransferServlet<FileAssistant>", 2, "onSend called");
-    }
-    if (paramIntent == null) {
-      QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : req is null");
-    }
-    do
+    aowg.a(this.jdField_a_of_type_Aowg).removeCallbacks(aowg.a(this.jdField_a_of_type_Aowg));
+    aowg.a(this.jdField_a_of_type_Aowg).run();
+    int i = aowg.a(this.jdField_a_of_type_Aowg).a.getSelectionStart();
+    paramView = aowg.a(this.jdField_a_of_type_Aowg).a.getEditableText();
+    if ((i < 0) || (i >= paramView.length()))
     {
+      paramView.append(this.jdField_a_of_type_JavaLangString);
       return;
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent == null) {
-        break;
-      }
-      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-      paramPacket.putSendData(paramIntent.getWupBuffer());
-      paramPacket.setTimeout(paramIntent.getTimeout());
-      paramPacket.addAttribute("fastresend", Boolean.valueOf(true));
-    } while (paramIntent.isNeedCallback());
-    paramPacket.setNoResponse();
-    return;
-    QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : toMsg is null");
+    }
+    paramView.insert(i, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aowj
  * JD-Core Version:    0.7.0.1
  */

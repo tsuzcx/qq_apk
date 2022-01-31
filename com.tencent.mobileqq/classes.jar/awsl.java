@@ -1,51 +1,55 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.LayerDrawable;
+import android.os.Handler;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.profile.view.helper.HeartRiseLayerDrawable.1;
 
-class awsl
-  implements View.OnClickListener
+public class awsl
+  extends LayerDrawable
 {
-  awsl(awsc paramawsc, Context paramContext, awph paramawph) {}
-  
-  public void onClick(View paramView)
+  public awsl(int paramInt, Resources paramResources)
   {
-    paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    awwa.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Awph.a.jdField_a_of_type_JavaLangString);
-    awix localawix;
-    JSONObject localJSONObject;
-    if (awiw.b.containsKey(this.jdField_a_of_type_Awph))
+    super(awsm.a(paramInt, paramResources, a(paramResources)));
+  }
+  
+  public static Bitmap a(Resources paramResources)
+  {
+    Paint localPaint = new Paint();
+    localPaint.setColor(paramResources.getColor(2131166487));
+    Bitmap localBitmap = Bitmap.createBitmap(126, 126, Bitmap.Config.ARGB_4444);
+    localBitmap.setDensity(paramResources.getDisplayMetrics().densityDpi);
+    paramResources = new Canvas(localBitmap);
+    paramResources.rotate(45.0F);
+    paramResources.translate(0.0F, -88.0F);
+    paramResources.drawRect(56, 56, 126, 126, localPaint);
+    paramResources.drawCircle(56, 91, 35, localPaint);
+    paramResources.drawCircle(91, 56, 35, localPaint);
+    return localBitmap;
+  }
+  
+  public void a(Handler paramHandler, int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    if (i < getNumberOfLayers())
     {
-      localawix = (awix)awiw.b.get(this.jdField_a_of_type_Awph);
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("project", awsq.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localawix.jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "web");
-      awsq.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localawix.jdField_a_of_type_Long + "").obj2(localawix.b).ver1(localawix.jdField_a_of_type_JavaLangString).ver2(awsq.a(this.jdField_a_of_type_Awph.c)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + awiw.jdField_a_of_type_Long));
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      HeartRiseLayerDrawable.1 local1 = new HeartRiseLayerDrawable.1(this, i, paramInt1, paramInt2);
+      if (i % 2 == 0) {}
+      for (long l = i * 200;; l = i * 130)
       {
-        QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "e = " + localJSONException);
+        paramHandler.postDelayed(local1, l);
+        i += 1;
+        break;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awsl
  * JD-Core Version:    0.7.0.1
  */

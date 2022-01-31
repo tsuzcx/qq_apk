@@ -1,29 +1,65 @@
-import android.view.View;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMonitorValue;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class wsy
-  implements bfph
+public class wsy
+  extends unk
 {
-  wsy(wsw paramwsw, String paramString1, String paramString2, wth paramwth, bfpc parambfpc) {}
+  public String a;
+  private int c;
+  private int d;
   
-  public void OnClick(View paramView, int paramInt)
+  public String a()
   {
-    switch (paramInt)
+    return ume.a("StoryMonitorSvc.client_monitor_report");
+  }
+  
+  public unf a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspMonitorValue localRspMonitorValue = new qqstory_service.RspMonitorValue();
+    try
     {
+      localRspMonitorValue.mergeFrom(paramArrayOfByte);
+      return new wsz(localRspMonitorValue);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+    return null;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqMonitorValue localReqMonitorValue = new qqstory_service.ReqMonitorValue();
+    localReqMonitorValue.ID.set(this.c);
+    if (this.d > 0) {
+      localReqMonitorValue.Value.set(this.d);
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      do
-      {
-        return;
-      } while (xen.a("subScribe_delete_draft"));
-      this.jdField_a_of_type_Wsw.a(this.jdField_a_of_type_JavaLangString, this.b, new wsz(this));
+      if (this.a != null) {
+        localReqMonitorValue.errmsg.set(ByteStringMicro.copyFromUtf8(this.a));
+      }
+      return localReqMonitorValue.toByteArray();
+      localReqMonitorValue.Value.set(1);
     }
+  }
+  
+  public String toString()
+  {
+    return "MonitorValueRequest{ID=" + this.c + ", value=" + this.d + ", msg=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsy
  * JD-Core Version:    0.7.0.1
  */

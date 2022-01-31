@@ -8,8 +8,8 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Proxy;
-import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
+import androidx.annotation.RequiresApi;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Locale;
@@ -457,7 +457,7 @@ public class TPNetworkChangeMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.TPNetworkChangeMonitor
  * JD-Core Version:    0.7.0.1
  */

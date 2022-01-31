@@ -1,241 +1,287 @@
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import appoint.define.appoint_define.RichText;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.app.MobileQQ;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class apei
 {
-  public static boolean a;
-  public static boolean b;
-  public static boolean c = true;
-  private static boolean d = true;
-  private static boolean e = true;
-  QQAppInterface a;
+  public static final Pattern a = Pattern.compile("\\{\\{(.\\d+):(.\\d?)\\}\\}", 2);
   
-  public apei(QQAppInterface paramQQAppInterface, apuu paramapuu, long paramLong)
+  public static baig a(appoint_define.RichText paramRichText)
   {
-    this.a = paramQQAppInterface;
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("OfflineFileConfigV2", 0).edit();
-    paramQQAppInterface.clear();
-    Object localObject1 = (HashMap)paramapuu.a().get("OnlinePreView");
-    Object localObject2 = ((HashMap)localObject1).keySet().iterator();
-    Object localObject3;
-    Object localObject4;
-    Object localObject5;
-    String str1;
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (String)((Iterator)localObject2).next();
-      localObject4 = (HashMap)((HashMap)localObject1).get(localObject3);
-      localObject5 = ((HashMap)localObject4).keySet().iterator();
-      while (((Iterator)localObject5).hasNext())
-      {
-        str1 = (String)((Iterator)localObject5).next();
-        String str2 = String.valueOf(((HashMap)localObject4).get(str1));
-        paramQQAppInterface.putString(("OnlinePreView" + (String)localObject3 + str1).toLowerCase(), str2);
-      }
-    }
-    paramapuu = (HashMap)paramapuu.a().get("OfflineConfig");
-    localObject1 = paramapuu.keySet().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (String)((Iterator)localObject1).next();
-      localObject3 = paramapuu.get(localObject2);
-      if ((localObject3 instanceof HashMap))
-      {
-        localObject3 = (HashMap)localObject3;
-        localObject4 = ((HashMap)localObject3).keySet().iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          localObject5 = (String)((Iterator)localObject4).next();
-          str1 = String.valueOf(((HashMap)localObject3).get(localObject5));
-          paramQQAppInterface.putString(("OfflineConfig" + (String)localObject2 + (String)localObject5).toLowerCase(), str1);
-        }
-      }
-      else if ((localObject3 instanceof String))
-      {
-        paramQQAppInterface.putString(("OfflineConfig" + (String)localObject2).toLowerCase(), (String)localObject3);
-      }
-    }
-    paramQQAppInterface.putLong("FileOnlinePreviewVersionKey", paramLong);
-    long l = awzy.a();
-    paramQQAppInterface.putLong("FMConfigUpdateLastTime", l);
-    paramQQAppInterface.commit();
-    QLog.i("FMConfig<FileAssistant>", 1, "commit Config data, time[" + l + "], ver[" + paramLong + "]");
+    return a(paramRichText, 16);
   }
   
-  public static int a()
+  public static baig a(appoint_define.RichText paramRichText, int paramInt)
   {
-    int i;
-    try
+    return a(asdq.a(paramRichText), paramInt);
+  }
+  
+  public static baig a(String paramString, int paramInt)
+  {
+    return new baig(paramString, 5, paramInt);
+  }
+  
+  public static String a(String paramString)
+  {
+    if (paramString == null)
     {
-      i = Integer.parseInt(b(BaseApplicationImpl.getContext(), "TimAioCount"));
-      if ((i != 0) && (TextUtils.isEmpty(a()))) {
-        return 0;
-      }
+      paramString = "";
+      return paramString;
     }
-    catch (Exception localException)
+    for (;;)
     {
       for (;;)
       {
-        i = 0;
+        Object localObject3;
+        Object localObject4;
+        int i;
+        try
+        {
+          localObject5 = new JSONObject(paramString);
+          localObject3 = ((JSONObject)localObject5).optString("content");
+          localObject4 = localObject3;
+        }
+        catch (JSONException localJSONException1)
+        {
+          Object localObject5;
+          Object localObject1;
+          String str;
+          localObject4 = paramString;
+        }
+        try
+        {
+          if (((JSONObject)localObject5).has("audio_list"))
+          {
+            localObject1 = localObject3;
+            localObject4 = localObject3;
+            if (((JSONObject)localObject5).optJSONArray("audio_list").length() > 0)
+            {
+              localObject4 = localObject3;
+              localObject1 = (String)localObject3 + alpo.a(2131707321);
+            }
+            localObject3 = a.matcher((CharSequence)localObject1);
+            paramString = (String)localObject1;
+            if (!((Matcher)localObject3).find()) {
+              break;
+            }
+            paramString = ((Matcher)localObject3).group(1);
+            localObject1 = ((String)localObject1).replace(((Matcher)localObject3).group(0), paramString);
+            continue;
+          }
+          localObject4 = localObject3;
+          if (((JSONObject)localObject5).has("video_list"))
+          {
+            localObject1 = localObject3;
+            localObject4 = localObject3;
+            if (((JSONObject)localObject5).optJSONArray("video_list").length() > 0)
+            {
+              localObject4 = localObject3;
+              localObject1 = (String)localObject3 + alpo.a(2131707322);
+            }
+          }
+          else
+          {
+            localObject4 = localObject3;
+            if (((JSONObject)localObject5).has("pic_list"))
+            {
+              localObject1 = localObject3;
+              localObject4 = localObject3;
+              if (((JSONObject)localObject5).optJSONArray("pic_list").length() > 0)
+              {
+                localObject4 = localObject3;
+                localObject1 = (String)localObject3 + alpo.a(2131707320);
+              }
+            }
+            else
+            {
+              localObject1 = localObject3;
+              localObject4 = localObject3;
+              if (((JSONObject)localObject5).has("post_array"))
+              {
+                localObject4 = localObject3;
+                localObject5 = ((JSONObject)localObject5).optJSONArray("post_array");
+                i = 0;
+              }
+            }
+          }
+        }
+        catch (JSONException localJSONException2)
+        {
+          label406:
+          Object localObject2;
+          break label406;
+          i += 1;
+          localObject3 = localJSONException2;
+        }
+      }
+      localObject1 = localObject3;
+      localObject4 = localObject3;
+      if (i < ((JSONArray)localObject5).length())
+      {
+        localObject4 = localObject3;
+        str = ((JSONArray)localObject5).optJSONObject(i).optString("type");
+        localObject4 = localObject3;
+        if (TextUtils.isEmpty(str))
+        {
+          localObject1 = localObject3;
+          break label450;
+        }
+        localObject4 = localObject3;
+        if (str.equals("qqmusic"))
+        {
+          localObject4 = localObject3;
+          localObject1 = (String)localObject3 + alpo.a(2131707318);
+          break label450;
+        }
+        localObject4 = localObject3;
+        localObject1 = localObject3;
+        if (!str.equals("audio")) {
+          break label450;
+        }
+        localObject4 = localObject3;
+        localObject1 = (String)localObject3 + alpo.a(2131707319);
+        break label450;
+        localObject2 = localObject4;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("Q..msgbox.util", 2, "getTribeJsonContent content:" + paramString);
+          localObject2 = localObject4;
+        }
       }
     }
-    return i;
-  }
-  
-  public static long a()
-  {
-    long l1 = Long.parseLong(apug.c("OfflineConfigFlowSize"));
-    try
-    {
-      long l2 = Long.parseLong(b(BaseApplicationImpl.getContext(), "FlowSize"));
-      l1 = l2;
-    }
-    catch (Exception localException)
-    {
-      label23:
-      break label23;
-    }
-    return l1 * 1024L + 1L;
-  }
-  
-  public static String a()
-  {
-    Object localObject1 = "";
-    try
-    {
-      localObject2 = b(BaseApplicationImpl.getContext(), "TimGuideUrl");
-      localObject1 = localObject2;
-    }
-    catch (Exception localException)
-    {
-      Object localObject2;
-      label14:
-      break label14;
-    }
-    localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = "http://mma.qq.com/tim/timoffice/office.html";
-    }
-    return localObject2;
-  }
-  
-  public static String a(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getSharedPreferences("OfflineFileConfigV2", 0).getString(paramString.toLowerCase(), null);
-    if ((paramContext != null) && (paramContext.length() > 0)) {
-      return paramContext;
-    }
-    return apug.c(paramString);
-  }
-  
-  public static String a(Context paramContext, String paramString1, String paramString2)
-  {
-    return a(paramContext, "OnlinePreView", apvd.a(paramString1).replace(".", ""), paramString2);
-  }
-  
-  public static String a(Context paramContext, String paramString1, String paramString2, String paramString3)
-  {
-    return a(paramContext, paramString1 + paramString2 + paramString3);
   }
   
   public static boolean a()
   {
-    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131695322), "qqsetting_auto_receive_pic_key", true);
-    QLog.i("FMConfig<FileAssistant>", 1, "PreloadThumb switch is[" + bool + "]");
-    return bool;
+    return "0".equals(BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4).getString("nearby_settings_greetings_receive", "0"));
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public static boolean a(int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
   {
-    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.c(), 0).getBoolean("https_c2c_up", false);
+    return ((!a()) || (paramInt1 != 1001) || (a(paramInt2, paramString))) && (!paramBoolean);
   }
   
-  public static long b()
+  public static boolean a(int paramInt, String paramString)
   {
-    long l1 = Long.parseLong(apug.c("OfflineConfigFlowTime"));
-    try
-    {
-      long l2 = Long.parseLong(b(BaseApplicationImpl.getContext(), "FlowTime"));
-      l1 = l2;
+    return (paramInt == -2053) && (!paramString.equals(String.valueOf(1822701914L + aljq.l))) && (!paramString.equals("1822701914"));
+  }
+  
+  public static boolean a(QQMessageFacade.Message paramMessage, QQAppInterface paramQQAppInterface)
+  {
+    MessageRecord localMessageRecord = null;
+    if (paramMessage.msgtype == -2011) {
+      localMessageRecord = paramQQAppInterface.a(1001).a(aljq.I, 1001, paramMessage.uniseq);
     }
-    catch (Exception localException)
-    {
-      label25:
-      break label25;
+    return a(paramMessage.istroop, paramMessage.msgtype, a(localMessageRecord), paramMessage.senderuin);
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {
+      return false;
     }
-    return l1 * 60L;
-  }
-  
-  public static String b(Context paramContext, String paramString)
-  {
-    return a(paramContext, "OfflineConfig", paramString, "");
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.c(), 0).getBoolean("https_c2c_down", false);
-  }
-  
-  public static long c()
-  {
-    long l1 = Long.parseLong(apug.c("OfflineConfigFtnThumbMaxSize"));
-    try
+    if ((paramMessageRecord instanceof MessageForStructing))
     {
-      long l2 = Long.parseLong(b(BaseApplicationImpl.getContext(), "FtnThumbMaxSize"));
-      l1 = l2;
+      MessageForStructing localMessageForStructing = (MessageForStructing)paramMessageRecord;
+      if ((localMessageForStructing.structingMsg == null) || (localMessageForStructing.structingMsg.mMsgServiceID != 98)) {}
     }
-    catch (Exception localException)
+    for (int i = 1;; i = 0) {
+      return (i != 0) || (paramMessageRecord.msgtype == -2070);
+    }
+  }
+  
+  public static String b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      str1 = "";
+    }
+    do
     {
-      label25:
-      break label25;
+      return str1;
+      str1 = paramString;
+    } while (paramString.indexOf("/") == -1);
+    int i = 0;
+    String str1 = paramString;
+    for (;;)
+    {
+      try
+      {
+        if (i >= bahu.a.length) {
+          break label277;
+        }
+        str1 = paramString;
+        str2 = paramString;
+        if (paramString.indexOf('\024' + bahu.a[i]) == -1) {
+          break label268;
+        }
+        str1 = paramString;
+        str2 = paramString.replace('\024' + bahu.a[i], "\024" + (char)i);
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        paramString = new StringBuilder().append("TextUtils:");
+        if (str1.length() <= 200) {
+          break label258;
+        }
+        i = 200;
+        QLog.e("Q..msgbox.util", 2, str1.substring(0, i));
+        str2 = str1;
+      }
+      str1 = paramString;
+      String str2 = paramString;
+      if (i < bahu.a.length)
+      {
+        str2 = paramString;
+        str1 = paramString;
+        if (paramString.indexOf(bahu.a[i]) != -1)
+        {
+          str1 = paramString;
+          str2 = paramString.replace(bahu.a[i], "\024" + (char)i);
+        }
+        i += 1;
+        paramString = str2;
+      }
+      else
+      {
+        return str2;
+        label258:
+        i = str1.length() - 1;
+        continue;
+        label268:
+        i += 1;
+        paramString = str2;
+        break;
+        label277:
+        i = 0;
+      }
     }
-    return l1 * 1024L;
   }
   
-  public static boolean c(QQAppInterface paramQQAppInterface)
+  public static boolean b(MessageRecord paramMessageRecord)
   {
-    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.c(), 0).getBoolean("https_c2czip_down", false);
-  }
-  
-  public static boolean d(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.c(), 0).getBoolean("https_c2c_thumb", false);
-  }
-  
-  public static boolean e(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.c(), 0).getBoolean("https_disc_up", false);
-  }
-  
-  public static boolean f(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.c(), 0).getBoolean("https_disc_down", false);
-  }
-  
-  public static boolean g(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.c(), 0).getBoolean("https_disczip_down", false);
-  }
-  
-  public static boolean h(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences("file_config_" + paramQQAppInterface.c(), 0).getBoolean("https_disc_thumb", false);
+    return a(paramMessageRecord.istroop, paramMessageRecord.msgtype, a(paramMessageRecord), paramMessageRecord.senderuin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apei
  * JD-Core Version:    0.7.0.1
  */

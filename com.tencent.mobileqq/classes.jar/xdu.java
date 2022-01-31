@@ -1,35 +1,50 @@
-import android.content.res.Resources;
-import android.os.Handler;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.PopupWindow.OnDismissListener;
-import android.widget.TextView;
-import com.tencent.biz.ui.CustomMenuBar;
+import java.util.List;
 
 public class xdu
-  implements PopupWindow.OnDismissListener
+  extends xdr<xdl>
+  implements View.OnClickListener
 {
-  public xdu(CustomMenuBar paramCustomMenuBar, ImageView paramImageView, TextView paramTextView) {}
-  
-  public void onDismiss()
+  public xdu(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842656);
-    if (CustomMenuBar.a()) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131165957));
+    super(paramContext);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_Xdi == null) {
+      return paramView;
     }
-    for (;;)
+    if (paramView == null) {}
+    for (paramView = new xdv(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((xdl)this.jdField_a_of_type_Xdi).a(), ((xdl)this.jdField_a_of_type_Xdi).a(), this);; paramView = (xdv)paramView)
     {
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = true;
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable, 50L);
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131165956));
+      paramView.a((xdl)this.jdField_a_of_type_Xdi, paramInt, getCount());
+      return paramView;
     }
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = ((Integer)paramView.getTag(2131377387)).intValue();
+    xdm localxdm = (xdm)((xdl)this.jdField_a_of_type_Xdi).a.get(i);
+    paramView = (ImageView)paramView;
+    Boolean localBoolean = (Boolean)paramView.getTag(2131377365);
+    if ((localBoolean != null) && (localBoolean.booleanValue()))
+    {
+      localxdm.a = paramView.getDrawable();
+      this.jdField_a_of_type_Xdk.a(localxdm);
+      return;
+    }
+    wsv.b("LocationFaceAdapter", "ImageView drawable has not been downloaded.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdu
  * JD-Core Version:    0.7.0.1
  */

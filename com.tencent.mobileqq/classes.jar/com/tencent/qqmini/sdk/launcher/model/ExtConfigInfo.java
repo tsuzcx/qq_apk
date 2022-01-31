@@ -7,12 +7,11 @@ import NS_MINI_USERAUTH.MiniUserAuth.StUserAuthScope;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import berr;
-import betc;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,7 +22,8 @@ import org.json.JSONObject;
 public class ExtConfigInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ExtConfigInfo> CREATOR = new berr();
+  public static final Parcelable.Creator<ExtConfigInfo> CREATOR = new ExtConfigInfo.1();
+  private static final String TAG = "ExtConfigInfo";
   public ArrayList<ApiScopeEntry> apiScopeEntries = new ArrayList();
   public String configKey;
   public String configVersion;
@@ -31,7 +31,7 @@ public class ExtConfigInfo
   
   public ExtConfigInfo() {}
   
-  public ExtConfigInfo(Parcel paramParcel)
+  protected ExtConfigInfo(Parcel paramParcel)
   {
     this.configKey = paramParcel.readString();
     this.configVersion = paramParcel.readString();
@@ -67,7 +67,7 @@ public class ExtConfigInfo
     }
     catch (Exception paramStExtConfigInfo)
     {
-      betc.d("ExtConfigInfo", "merge from error", paramStExtConfigInfo);
+      QMLog.e("ExtConfigInfo", "merge from error", paramStExtConfigInfo);
     }
     for (;;)
     {
@@ -140,7 +140,7 @@ public class ExtConfigInfo
     }
     catch (Exception localException)
     {
-      betc.d("ExtConfigInfo", "toJson error", localException);
+      QMLog.e("ExtConfigInfo", "toJson error", localException);
       return localJSONObject;
     }
     JSONArray localJSONArray2 = new JSONArray();
@@ -175,7 +175,7 @@ public class ExtConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.ExtConfigInfo
  * JD-Core Version:    0.7.0.1
  */

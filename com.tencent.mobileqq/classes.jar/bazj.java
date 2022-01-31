@@ -1,12 +1,17 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
-public abstract interface bazj
+public class bazj
+  extends bazi
 {
-  public abstract Drawable a();
+  public bazj(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
+  {
+    super(paramTribeVideoListPlayerFragment, paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bazj
  * JD-Core Version:    0.7.0.1
  */

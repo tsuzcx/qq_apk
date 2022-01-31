@@ -1,41 +1,22 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
-import java.util.List;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.widget.SwipListView;
 
 class ahbq
-  implements ahbr
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
   ahbq(ahbp paramahbp) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onGlobalLayout()
   {
-    int i = 1;
-    ahbp localahbp = this.a;
-    localahbp.jdField_a_of_type_Int += 1;
-    if (paramInt == 0)
-    {
-      this.a.jdField_a_of_type_JavaUtilHashMap.put(paramPathResult.url, paramPathResult);
-      if ((this.a.jdField_a_of_type_Int >= this.a.jdField_a_of_type_JavaUtilList.size()) && (this.a.jdField_a_of_type_Ahbs != null))
-      {
-        paramPathResult = this.a.jdField_a_of_type_Ahbs;
-        if (!this.a.jdField_a_of_type_Boolean) {
-          break label118;
-        }
-      }
-    }
-    label118:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramPathResult.a(paramInt, this.a.jdField_a_of_type_JavaUtilHashMap);
-      return;
-      this.a.jdField_a_of_type_Boolean = true;
-      break;
-    }
+    this.a.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a.setListViewHeightBasedOnChildren(this.a.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahbq
  * JD-Core Version:    0.7.0.1
  */

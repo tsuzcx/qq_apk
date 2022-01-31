@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bcdp;
+import becq;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class SuitUIPlugin
@@ -13,7 +13,7 @@ public class SuitUIPlugin
     super.OnActivityCreate();
     WebViewFragment localWebViewFragment = this.mRuntime.a();
     if (localWebViewFragment != null) {
-      localWebViewFragment.h = super.decodeUrl(localWebViewFragment.h);
+      localWebViewFragment.g = super.decodeUrl(localWebViewFragment.g);
     }
   }
   

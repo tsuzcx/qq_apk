@@ -16,7 +16,7 @@ public final class richtext$Picture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.protofile.group_homework.richtext.Picture
  * JD-Core Version:    0.7.0.1
  */

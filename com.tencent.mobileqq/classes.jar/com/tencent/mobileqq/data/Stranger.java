@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aulz;
-import aumc;
+import awbv;
+import awdg;
+import awdj;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="uin")
 public class Stranger
-  extends auko
+  extends awbv
 {
   public static final int GENDER_FEMALE = 1;
   public static final int GENDER_MALE = 0;
@@ -21,9 +21,9 @@ public class Stranger
   public String name;
   public String remark;
   public long time;
-  @aulz
+  @awdg
   public boolean uiSelected;
-  @aumc
+  @awdj
   public String uin;
   
   public static boolean copyInfo(Stranger paramStranger1, Stranger paramStranger2)
@@ -47,7 +47,7 @@ public class Stranger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.Stranger
  * JD-Core Version:    0.7.0.1
  */

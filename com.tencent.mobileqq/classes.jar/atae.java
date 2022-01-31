@@ -1,23 +1,40 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
+import android.os.Bundle;
+import java.util.concurrent.CountDownLatch;
 
-public class atae
-  implements INetEventHandler
+class atae
+  implements asvc
 {
-  private int jdField_a_of_type_Int = -1;
+  atae(atad paramatad, asuy paramasuy, Bundle[] paramArrayOfBundle, CountDownLatch paramCountDownLatch) {}
   
-  public atae(NearbyJsInterface paramNearbyJsInterface) {}
-  
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    int i = naj.a();
-    NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, this.jdField_a_of_type_Int, i);
-    this.jdField_a_of_type_Int = i;
+    if (paramBoolean)
+    {
+      paramString = new Bundle();
+      paramString.putString("authid", this.jdField_a_of_type_Asuy.a().b);
+      paramString.putString("authKey", this.jdField_a_of_type_Asuy.a().jdField_a_of_type_JavaLangString);
+      paramString.putLong("accountUpdateTime", this.jdField_a_of_type_Asuy.a().jdField_a_of_type_Long);
+      paramString.putString("payToken", this.jdField_a_of_type_Asuy.a().c);
+      Bundle localBundle = new Bundle();
+      localBundle.putBundle("data", paramString);
+      localBundle.putBoolean("isSuccess", true);
+      localBundle.putInt("code", paramInt);
+      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = localBundle;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+      return;
+      paramString = new Bundle();
+      paramString.putBoolean("isSuccess", false);
+      paramString.putInt("code", paramInt);
+      this.jdField_a_of_type_ArrayOfAndroidOsBundle[0] = paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atae
  * JD-Core Version:    0.7.0.1
  */

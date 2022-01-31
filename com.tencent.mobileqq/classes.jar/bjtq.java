@@ -1,23 +1,17 @@
-class bjtq
-  implements adgw
+public class bjtq
 {
-  bjtq(bjtp parambjtp) {}
+  public int a;
+  public int b;
   
-  public void a()
+  public bjtq(int paramInt1, int paramInt2)
   {
-    this.a.a.a.a(-1, bjto.a(this.a.a), 2130772028, 0, false);
-    bjto.a(this.a.a, null);
-  }
-  
-  public void b()
-  {
-    this.a.a.a.a(-1, bjto.a(this.a.a), 2130772028, 0, false);
-    bjto.a(this.a.a, null);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjtq
  * JD-Core Version:    0.7.0.1
  */

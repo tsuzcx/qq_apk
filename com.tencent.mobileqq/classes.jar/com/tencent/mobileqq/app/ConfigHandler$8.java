@@ -1,26 +1,26 @@
 package com.tencent.mobileqq.app;
 
-import acyp;
-import ajud;
+import aeqc;
+import allq;
 import com.tencent.qphone.base.util.QLog;
 import protocol.KQQConfig.GetResourceRespInfo;
 
 public class ConfigHandler$8
   implements Runnable
 {
-  public ConfigHandler$8(ajud paramajud, GetResourceRespInfo paramGetResourceRespInfo) {}
+  public ConfigHandler$8(allq paramallq, GetResourceRespInfo paramGetResourceRespInfo) {}
   
   public void run()
   {
-    if (!ajud.a(this.this$0, this.a.strPkgName, 10000L)) {
+    if (!allq.a(this.this$0, this.a.strPkgName, 10000L)) {
       if (QLog.isColorLevel()) {
         QLog.d("eggs", 2, "handleUpdateEggsActions dpc aio_eggs is false");
       }
     }
-    while (acyp.a().a() != null) {
+    while (aeqc.a().a() != null) {
       return;
     }
-    acyp.a().a(this.this$0.app.getApplication());
+    aeqc.a().a(this.this$0.app.getApplication());
   }
 }
 

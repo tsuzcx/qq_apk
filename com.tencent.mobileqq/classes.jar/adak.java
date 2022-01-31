@@ -1,10 +1,16 @@
-public abstract interface adak
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.InterestLabelTextView;
+
+public class adak
 {
-  public abstract void a();
+  public ImageView a;
+  public TextView a;
+  public InterestLabelTextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adak
  * JD-Core Version:    0.7.0.1
  */

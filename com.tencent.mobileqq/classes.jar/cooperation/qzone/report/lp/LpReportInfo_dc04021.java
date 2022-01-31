@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import bgyi;
+import bizf;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +12,7 @@ public class LpReportInfo_dc04021
   public long idleCallback;
   public long intimeCallback;
   public long noCallback;
-  private String qua = bgyi.a();
+  private String qua = bizf.a();
   public long totalDuration;
   public long touchScrollCallback;
   
@@ -37,7 +37,7 @@ public class LpReportInfo_dc04021
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc04021
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,19 @@
-class bjoj<K, V>
-  extends bjom<K, V>
+public abstract class bjoj
 {
-  bjoj(bjok<K, V> parambjok1, bjok<K, V> parambjok2)
-  {
-    super(parambjok1, parambjok2);
-  }
+  public static bjoj a = new bjok();
   
-  bjok<K, V> a(bjok<K, V> parambjok)
-  {
-    return parambjok.b;
-  }
+  public abstract int a();
   
-  bjok<K, V> b(bjok<K, V> parambjok)
+  public abstract String a();
+  
+  public String toString()
   {
-    return parambjok.a;
+    return a() + ':' + a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjoj
  * JD-Core Version:    0.7.0.1
  */

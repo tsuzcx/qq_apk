@@ -1,67 +1,52 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.SeekBar;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.ArrayList;
+import android.hardware.camera2.CameraCaptureSession;
+import android.hardware.camera2.CameraCaptureSession.StateCallback;
+import android.hardware.camera2.CaptureRequest;
+import android.hardware.camera2.CaptureRequest.Builder;
+import android.support.annotation.NonNull;
+import com.samsung.android.sdk.camera.SCameraCaptureProcessor;
+import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import java.util.concurrent.Semaphore;
 
 public class azaz
-  extends Handler
+  extends CameraCaptureSession.StateCallback
 {
-  public azaz(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, Looper paramLooper)
+  public azaz(Camera2Control paramCamera2Control) {}
+  
+  public void onConfigureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession)
   {
-    super(paramLooper);
+    azbl.a(2, "[Camera2]startPreview onConfigureFailed!");
+    Camera2Control.c(this.a, false);
+    Camera2Control.a(this.a).release();
+    if (this.a.jdField_a_of_type_Azbg != null) {
+      this.a.jdField_a_of_type_Azbg.a(-202);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onConfigured(@NonNull CameraCaptureSession paramCameraCaptureSession)
   {
-    super.handleMessage(paramMessage);
-    paramMessage = (azbj)paramMessage.obj;
-    long l1;
-    long l2;
-    azcb localazcb;
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())
+    azbl.a(1, "[Camera2]startPreview onConfigured!");
+    Camera2Control.c(this.a, true);
+    Camera2Control.a(this.a, paramCameraCaptureSession);
+    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
+    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AE_MODE, Integer.valueOf(1));
+    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE, Camera2Control.a(this.a));
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      l1 = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
-      l2 = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
-      paramMessage.jdField_a_of_type_AndroidWidgetSeekBar.setMax((int)l1);
-      paramMessage.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)l2);
-      this.a.b(paramMessage);
-      paramMessage = (azby)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramMessage.jdField_a_of_type_Int);
-      if ((paramMessage instanceof azcb))
-      {
-        localazcb = (azcb)paramMessage;
-        if ((!this.a.d) && (l2 >= l1 * 0.8D))
-        {
-          this.a.d = true;
-          if (localazcb.h == 0) {
-            break label271;
-          }
-          paramMessage = "" + localazcb.h;
-          if (localazcb.c != 31) {
-            break label277;
-          }
-        }
-      }
+      Camera2Control.a(this.a, Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a)));
+      this.a.jdField_a_of_type_AndroidHardwareCamera2CameraCaptureSession$CaptureCallback = Camera2Control.a(this.a).createCaptureCallback(Camera2Control.a(this.a), Camera2Control.a(this.a));
     }
-    label271:
-    label277:
-    for (String str = "1";; str = "2")
+    for (;;)
     {
-      axqy.b(null, "dc00899", "Grp_tribe", "", "video_player", "vv_active", this.a.c, 0, localazcb.d, "" + localazcb.b, paramMessage, str);
-      if (this.a.h < l1 - 100L) {
-        this.a.h = ((int)l2);
-      }
+      Camera2Control.a(this.a);
+      Camera2Control.a(this.a).release();
       return;
-      paramMessage = "";
-      break;
+      Camera2Control.b(this.a, Camera2Control.a(this.a).build());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azaz
  * JD-Core Version:    0.7.0.1
  */

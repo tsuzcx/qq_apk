@@ -1,103 +1,183 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.webkit.MimeTypeMap;
-import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
+import org.json.JSONObject;
 
-public final class bdnv
+public class bdnv
+  implements Manager
 {
-  public static Intent a(Context paramContext, File paramFile)
+  bdvu jdField_a_of_type_Bdvu = new bdnw(this, "param_WIFIColorRingDownloadFlow", "param_XGColorRingDownloadFlow");
+  private bdvx jdField_a_of_type_Bdvx;
+  public bdwb a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public bdnv(QQAppInterface paramQQAppInterface)
   {
-    if ((paramContext == null) || (paramFile == null) || (!paramFile.isFile())) {
-      return null;
-    }
-    String str = paramFile.getName().toLowerCase().trim();
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.addFlags(268435456);
-    if (a(str, paramContext.getResources().getStringArray(2130968625))) {
-      localIntent.setDataAndType(Uri.fromFile(paramFile), "image/*");
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Bdvx = ((bdvx)paramQQAppInterface.getManager(47));
+  }
+  
+  public static Bitmap a(long paramLong)
+  {
+    if (paramLong == 0L) {}
     for (;;)
     {
-      FileProvider7Helper.intentCompatForN(paramContext, localIntent);
-      return localIntent;
-      if (a(str, paramContext.getResources().getStringArray(2130968631)))
+      return null;
+      Object localObject = a(paramLong, 1);
+      if (new File((String)localObject).exists())
       {
-        localIntent.setDataAndType(Uri.parse(paramFile.toString()).buildUpon().encodedAuthority("com.android.htmlfileprovider").scheme("content").encodedPath(paramFile.toString()).build(), "text/html");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968622)))
-      {
-        localIntent.addFlags(67108864);
-        localIntent.putExtra("oneshot", 0);
-        localIntent.putExtra("configchange", 0);
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "audio/*");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968630)))
-      {
-        localIntent.addFlags(67108864);
-        localIntent.putExtra("oneshot", 0);
-        localIntent.putExtra("configchange", 0);
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "video/*");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968629)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "text/plain");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968628)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/pdf");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968632)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/msword");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968624)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-excel");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968626)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/vnd.ms-powerpoint");
-      }
-      else if (a(str, paramContext.getResources().getStringArray(2130968623)))
-      {
-        localIntent.setDataAndType(Uri.fromFile(paramFile), "application/x-chm");
-      }
-      else
-      {
-        str = MimeTypeMap.getSingleton().getMimeTypeFromExtension(str.substring(str.lastIndexOf(".") + 1).toLowerCase().trim());
-        localIntent.setDataAndType(Uri.fromFile(paramFile), str);
+        try
+        {
+          localObject = BitmapFactory.decodeFile((String)localObject);
+          return localObject;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError) {}
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorRingManager", 2, "getCoverBitmap OOM.");
+        }
       }
     }
   }
   
-  public static boolean a(String paramString, String[] paramArrayOfString)
+  public static String a(long paramLong, int paramInt)
   {
-    boolean bool2 = false;
-    int j = paramArrayOfString.length;
-    int i = 0;
+    if (paramLong == 0L) {}
+    do
+    {
+      return "";
+      if (paramInt == 2) {
+        return bdnu.a + File.separator + paramLong + File.separator + "config.txt";
+      }
+      if (paramInt == 1) {
+        return bdnu.a + File.separator + paramLong + File.separator + "cover.jpg";
+      }
+    } while (paramInt != 3);
+    return bdnu.a + File.separator + paramLong + File.separator + "ring.mp3";
+  }
+  
+  public static String a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2)
+  {
+    Object localObject = "";
+    if (paramInt2 == 3)
+    {
+      localObject = bdyi.a(paramAppRuntime, 0, null).getString("_3_" + paramInt1, null);
+      paramAppRuntime = (AppRuntime)localObject;
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        paramAppRuntime = bdox.a("colorringAudio");
+      }
+    }
     for (;;)
     {
-      boolean bool1 = bool2;
-      if (i < j)
+      localObject = paramAppRuntime;
+      if (paramAppRuntime != null) {
+        localObject = paramAppRuntime.replace("[id]", String.valueOf(paramInt1));
+      }
+      return localObject;
+      if (paramInt2 == 2)
       {
-        if (paramString.endsWith(paramArrayOfString[i])) {
-          bool1 = true;
+        paramAppRuntime = bdox.a("colorringConfig");
+      }
+      else
+      {
+        paramAppRuntime = (AppRuntime)localObject;
+        if (paramInt2 == 1) {
+          paramAppRuntime = bdox.a("colorringCover");
         }
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+  }
+  
+  public static JSONObject a(long paramLong)
+  {
+    Object localObject = new File(bdnu.a + File.separator + paramLong + File.separator + "config.txt");
+    try
+    {
+      localObject = bdcs.a((File)localObject);
+      if (localObject != null)
+      {
+        localObject = new JSONObject((String)localObject);
+        return localObject;
+      }
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static void a(String paramString1, int paramInt, String paramString2) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Bdvx.a(1).a(true, a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2));
+  }
+  
+  public void a(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorRingManager", 2, ">>startDownload, id=" + paramInt1);
+    }
+    if (paramInt1 == 0) {}
+    label284:
+    do
+    {
+      return;
+      String str = a(paramInt1, paramInt2);
+      File localFile = new File(str);
+      if ((localFile.exists()) && (localFile.isFile())) {}
+      Bundle localBundle;
+      for (boolean bool = true;; bool = false)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorRingManager", 2, "startDownload exists(), id=" + paramInt1 + ", resType=ring3,, isIPC=" + paramBoolean + ", srcType=" + paramInt3 + ", fileExist=" + bool);
+        }
+        if ((bool) && (!paramBoolean)) {
+          break;
+        }
+        localBundle = new Bundle();
+        localBundle.putInt("callId", paramInt1);
+        localBundle.putString("path", str);
+        localBundle.putBoolean("isIPC", paramBoolean);
+        localBundle.putInt("resourceType", paramInt2);
+        localBundle.putInt("srcType", paramInt3);
+        localBundle.putString("path", str);
+        localBundle.putString("colorType", paramString);
+        paramString = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt1, paramInt2);
+        if (!bool) {
+          break label284;
+        }
+        localBundle.putBoolean("isExists", true);
+        paramString = new bdvv(paramString, localFile);
+        paramString.a(3);
+        paramString.a = 0;
+        paramString.a(localBundle);
+        this.jdField_a_of_type_Bdvu.onDone(paramString);
+        return;
+      }
+      paramString = new bdvv(paramString, new File(str + ".tmp"));
+      paramString.e = 3145728L;
+      paramString.b = true;
+      this.jdField_a_of_type_Bdvx.a(1).a(paramString, this.jdField_a_of_type_Bdvu, localBundle);
+    } while (!QLog.isColorLevel());
+    QLog.d("ColorRingManager", 2, "<<startDownload, id=" + paramInt1);
+  }
+  
+  public void onDestroy()
+  {
+    this.jdField_a_of_type_Bdwb = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdnv
  * JD-Core Version:    0.7.0.1
  */

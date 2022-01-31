@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import anqi;
+import aphq;
 
 public class PttSilkAndChangeVoiceSoData
   extends XmlData
 {
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public boolean amrV5So;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public boolean amrV7So;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public boolean amrV8So;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public boolean mipsSo;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public String version = "";
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public boolean x86So;
   
   public String getSharedPreferencesName()
@@ -30,7 +30,7 @@ public class PttSilkAndChangeVoiceSoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.PttSilkAndChangeVoiceSoData
  * JD-Core Version:    0.7.0.1
  */

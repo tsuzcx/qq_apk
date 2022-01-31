@@ -1,6 +1,6 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import betc;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -21,18 +21,18 @@ class BannerAdPlugin$5
       localHttpURLConnection.setInstanceFollowRedirects(true);
       localHttpURLConnection.connect();
       int i = localHttpURLConnection.getResponseCode();
-      betc.b("BannerAdPlugin", "reportBannerAd rspCode" + i);
+      QMLog.i("BannerAdPlugin", "reportBannerAd rspCode" + i);
       return;
     }
     catch (Throwable localThrowable)
     {
-      betc.b("BannerAdPlugin", "reportBannerAd error, url = " + this.val$reportUrl, localThrowable);
+      QMLog.i("BannerAdPlugin", "reportBannerAd error, url = " + this.val$reportUrl, localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.BannerAdPlugin.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
-import android.content.Intent;
-
 public abstract interface bejd
 {
-  public abstract boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent);
+  public abstract void a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bejd
  * JD-Core Version:    0.7.0.1
  */

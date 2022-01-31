@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
-
-public final class alkt
-  implements Parcelable.Creator<ArWebInfo>
+public class alkt
 {
-  public ArWebInfo a(Parcel paramParcel)
-  {
-    return new ArWebInfo(paramParcel);
-  }
-  
-  public ArWebInfo[] a(int paramInt)
-  {
-    return new ArWebInfo[paramInt];
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alkt
  * JD-Core Version:    0.7.0.1
  */

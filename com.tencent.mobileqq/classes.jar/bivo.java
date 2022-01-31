@@ -1,19 +1,20 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class bivo
-  implements FilenameFilter
+public final class bivo
 {
-  bivo(bivn parambivn) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  public static int a()
   {
-    return paramString.startsWith("frame");
+    return bixc.a(BaseApplicationImpl.context);
+  }
+  
+  public static boolean a()
+  {
+    return (bixc.b(BaseApplicationImpl.context) == 1) || (bixc.c(BaseApplicationImpl.context));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bivo
  * JD-Core Version:    0.7.0.1
  */

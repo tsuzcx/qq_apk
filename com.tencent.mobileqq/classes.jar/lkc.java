@@ -1,26 +1,114 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.camera.CameraUtils;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.1;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.2;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.3;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.4;
+import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.5;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class lkc
-  implements ljz
+public abstract class lkc
 {
-  public lkc(CameraUtils paramCameraUtils) {}
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  String jdField_a_of_type_JavaLangString;
+  public WeakReference<lkd> a;
+  public lkf a;
+  public volatile boolean a;
+  WeakReference<lke> b;
   
-  public void a(long paramLong1, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong2, boolean paramBoolean)
+  public lkc()
   {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
+    this.jdField_a_of_type_Boolean = false;
+    c();
+  }
+  
+  public abstract int a();
+  
+  public void a()
+  {
+    d();
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Lkf.a();
+    }
+    try
     {
-      this.a.a("onPreviewData_" + paramLong1);
-      if (this.a.jdField_a_of_type_Boolean) {
-        this.a.a(-1019L, "onPreviewData_" + paramLong1);
-      }
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramLong1, paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramLong2, paramBoolean);
+      new Thread(new MagicfaceBaseDecoder.1(this)).start();
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("MagicfaceBaseDecoder", 1, "startDecoder err:" + localOutOfMemoryError.getMessage());
     }
   }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new MagicfaceBaseDecoder.3(this, paramString, paramInt));
+    }
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new MagicfaceBaseDecoder.4(this, paramString, paramBoolean));
+    }
+  }
+  
+  public void a(lkd paramlkd)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramlkd);
+  }
+  
+  public void a(lke paramlke)
+  {
+    if (paramlke != null)
+    {
+      this.b = new WeakReference(paramlke);
+      return;
+    }
+    this.b = null;
+  }
+  
+  public void a(lkf paramlkf)
+  {
+    this.jdField_a_of_type_Lkf = paramlkf;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Lkf.b();
+  }
+  
+  public void b(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new MagicfaceBaseDecoder.2(this, paramString));
+    }
+  }
+  
+  protected void c() {}
+  
+  protected void c(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new MagicfaceBaseDecoder.5(this, paramString));
+    }
+  }
+  
+  protected void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lkc
  * JD-Core Version:    0.7.0.1
  */

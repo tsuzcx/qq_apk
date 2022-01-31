@@ -1,25 +1,19 @@
-import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-public abstract class ajdx
+public abstract interface ajdx
 {
-  abstract int a(Context paramContext);
+  public abstract void a(View paramView, RecentBaseData paramRecentBaseData, String paramString, boolean paramBoolean);
   
-  abstract String a();
+  public abstract void a(View paramView, Object paramObject);
   
-  abstract void a();
+  public abstract void a(RecentBaseData paramRecentBaseData, String paramString);
   
-  void a(String paramString1, String paramString2, ajdy paramajdy)
-  {
-    if (("destroy".equals(paramString2)) && (paramajdy != null))
-    {
-      a();
-      paramajdy.a(this);
-    }
-  }
+  public abstract void a(String paramString1, RecentBaseData paramRecentBaseData, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajdx
  * JD-Core Version:    0.7.0.1
  */

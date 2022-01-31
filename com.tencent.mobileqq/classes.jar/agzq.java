@@ -1,30 +1,22 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment.2.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment;
 
 public class agzq
-  implements View.OnClickListener
+  implements bhqd
 {
-  public agzq(LingHbFragment paramLingHbFragment) {}
+  public agzq(TroopAIOEmotionFragment paramTroopAIOEmotionFragment, bhpy parambhpy) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramView instanceof TextView))
-    {
-      paramView = ((TextView)paramView).getText().toString();
-      QLog.i("LingHbFragment", 2, "choice: " + paramView);
-      this.a.c.setText(paramView);
-      this.a.a.post(new LingHbFragment.2.1(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopAIOEmotionFragment.b();
+    if (this.jdField_a_of_type_Bhpy.isShowing()) {
+      this.jdField_a_of_type_Bhpy.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agzq
  * JD-Core Version:    0.7.0.1
  */

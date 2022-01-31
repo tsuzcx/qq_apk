@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
+import com.tencent.mobileqq.Doraemon.monitor.APIQuotaItem;
+import java.util.HashMap;
 
-public class abuu
-  implements Comparator<ChatMessage>
+public abstract interface abuu
 {
-  public abuu(QQLSActivity paramQQLSActivity) {}
+  public abstract void a(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2);
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
-  {
-    if (paramChatMessage1.time == paramChatMessage2.time) {
-      return 0;
-    }
-    if (paramChatMessage1.time > paramChatMessage2.time) {
-      return 1;
-    }
-    return -1;
-  }
+  public abstract void a(String paramString, HashMap<String, APIQuotaItem> paramHashMap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abuu
  * JD-Core Version:    0.7.0.1
  */

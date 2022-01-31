@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.entry.desktop.widget;
 
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import aywm;
+import baul;
 import com.tencent.ditto.area.DittoHost;
 import com.tencent.ditto.shell.LayoutAttrSet;
 import com.tencent.ditto.widget.DittoImageArea;
@@ -36,8 +36,8 @@ public class DesktopDittoImageArea
       return;
     }
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mFailedDrawable = aywm.a;
-    localURLDrawableOptions.mLoadingDrawable = aywm.a;
+    localURLDrawableOptions.mFailedDrawable = baul.a;
+    localURLDrawableOptions.mLoadingDrawable = baul.a;
     localURLDrawableOptions.mRequestWidth = getWidth();
     localURLDrawableOptions.mRequestHeight = getHeight();
     if (((String)localObject).endsWith(".gif")) {
@@ -67,7 +67,7 @@ public class DesktopDittoImageArea
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DesktopDittoImageArea
  * JD-Core Version:    0.7.0.1
  */

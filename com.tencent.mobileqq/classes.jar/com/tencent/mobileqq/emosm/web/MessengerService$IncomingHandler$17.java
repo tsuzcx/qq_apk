@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.emosm.web;
 
-import ajxo;
+import alpc;
 import android.os.Bundle;
 import android.text.TextUtils;
-import ansu;
-import answ;
-import anuq;
-import aukq;
-import bbea;
+import apkc;
+import apke;
+import aply;
+import awbx;
+import bdcv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.mobileqq.data.CustomEmotionData;
@@ -24,13 +24,13 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$17
   implements Runnable
 {
-  public MessengerService$IncomingHandler$17(anuq paramanuq, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$17(aply paramaply, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = (answ)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
-    Object localObject3 = ((answ)localObject2).a();
+    Object localObject2 = (apke)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(149);
+    Object localObject3 = ((apke)localObject2).a();
     HashSet localHashSet;
     int i;
     if (localObject3 != null) {
@@ -95,13 +95,13 @@ public class MessengerService$IncomingHandler$17
           j = i + 1;
           if ((!((CustomEmotionData)localObject4).isMarkFace) && (TextUtils.isEmpty(((CustomEmotionData)localObject4).md5)) && (!TextUtils.isEmpty(((CustomEmotionData)localObject4).emoPath)))
           {
-            ((CustomEmotionData)localObject4).md5 = bbea.a(MD5.getFileMd5(((CustomEmotionData)localObject4).emoPath));
-            ((answ)localObject2).b((CustomEmotionBase)localObject4);
+            ((CustomEmotionData)localObject4).md5 = bdcv.a(MD5.getFileMd5(((CustomEmotionData)localObject4).emoPath));
+            ((apke)localObject2).b((CustomEmotionBase)localObject4);
           }
           if ((TextUtils.isEmpty(((CustomEmotionData)localObject4).url)) || (!((CustomEmotionData)localObject4).url.contains("qto_"))) {
             continue;
           }
-          localObject4 = ajxo.a(((CustomEmotionData)localObject4).url);
+          localObject4 = alpc.a(((CustomEmotionData)localObject4).url);
           i = j;
           if (!TextUtils.isEmpty((CharSequence)localObject4))
           {
@@ -119,13 +119,13 @@ public class MessengerService$IncomingHandler$17
     do
     {
       Object localObject1;
-      localHashSet.addAll(ajxo.a);
+      localHashSet.addAll(alpc.a);
       localObject2 = localHashSet.iterator();
       while (((Iterator)localObject2).hasNext()) {
         ((JSONArray)localObject1).put((String)((Iterator)localObject2).next());
       }
       localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("remainNum", ansu.a - i);
+      ((JSONObject)localObject2).put("remainNum", apkc.a - i);
       ((JSONObject)localObject2).put("uid", localObject1);
       this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
       this.jdField_a_of_type_AndroidOsBundle.putString("data", ((JSONObject)localObject2).toString());
@@ -134,7 +134,7 @@ public class MessengerService$IncomingHandler$17
       try
       {
         localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("remainNum", ansu.a);
+        ((JSONObject)localObject1).put("remainNum", apkc.a);
         ((JSONObject)localObject1).put("uid", new JSONArray());
         this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
         this.jdField_a_of_type_AndroidOsBundle.putString("data", ((JSONObject)localObject1).toString());
@@ -148,7 +148,7 @@ public class MessengerService$IncomingHandler$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.17
  * JD-Core Version:    0.7.0.1
  */

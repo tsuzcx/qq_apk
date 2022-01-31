@@ -1,141 +1,62 @@
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
-import com.tencent.biz.subscribe.event.SimpleBaseEvent;
-import com.tencent.biz.subscribe.event.SubDraftChangeEvent;
-import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.GamePKCommentReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.ArrayList;
+import java.util.List;
 
 public class wlq
-  extends woz<SubscribeDraftBean>
-  implements wpv
+  extends QQUIEventReceiver<wli, upe>
 {
-  public static int a;
-  public static String a;
-  private int jdField_b_of_type_Int = ImmersiveUtils.a(19.0F);
-  private String jdField_b_of_type_JavaLangString;
-  private int c = ImmersiveUtils.a(3.0F);
-  
-  static
+  public wlq(@NonNull wli paramwli)
   {
-    jdField_a_of_type_JavaLangString = "SubscribeDraftAdapter";
-    jdField_a_of_type_Int = ImmersiveUtils.a(4.0F);
+    super(paramwli);
   }
   
-  public wlq(Bundle paramBundle)
+  public void a(@NonNull wli paramwli, @NonNull upe paramupe)
   {
-    super(paramBundle);
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public int a(int paramInt)
-  {
-    return 2;
-  }
-  
-  public ArrayList<Class> a()
-  {
+    if ((TextUtils.isEmpty(paramupe.jdField_a_of_type_JavaLangString)) || (paramupe.jdField_a_of_type_Int == 0) || (paramupe.jdField_a_of_type_Long == 0L) || (TextUtils.isEmpty(paramupe.b)))
+    {
+      wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "receive not eligible gamepk event. event.feedId = %s, event.commentId = %d, event.commentFakeId = %d, event.content = %s.", new Object[] { paramupe.jdField_a_of_type_JavaLangString, Integer.valueOf(paramupe.jdField_a_of_type_Int), Long.valueOf(paramupe.jdField_a_of_type_Long), paramupe.b });
+      return;
+    }
+    Object localObject1 = paramwli.a(paramupe.jdField_a_of_type_JavaLangString);
+    if ((localObject1 == null) || (!(localObject1 instanceof wmg)))
+    {
+      wsv.d("Q.qqstory.home.data.HomeFeedPresenter", "storyHomeFeed is null or it's not a VideoListHomeFeed. feedId = %s", new Object[] { paramupe.jdField_a_of_type_JavaLangString });
+      return;
+    }
+    Object localObject2 = (wmg)localObject1;
+    localObject1 = wew.a(paramupe.jdField_a_of_type_JavaLangString, paramupe.jdField_a_of_type_Int, paramupe.jdField_a_of_type_Long, paramupe.b, paramupe.c, paramupe.d, paramupe.e, paramupe.f);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(SubDraftChangeEvent.class);
-    return localArrayList;
-  }
-  
-  protected void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0) {
-      paramRect.left = jdField_a_of_type_Int;
+    localArrayList.add(localObject1);
+    ((wmg)localObject2).a(localArrayList, false);
+    localObject2 = (CommentLikeFeedItem)((wmg)localObject2).a;
+    ((CommentLikeFeedItem)localObject2).mCommentCount += 1;
+    if (wli.a((CommentLikeFeedItem)localObject2)) {
+      ((CommentLikeFeedItem)localObject2).mFriendCommentCount += 1;
     }
-    for (paramRect.right = (this.c / 2);; paramRect.right = jdField_a_of_type_Int)
+    for (;;)
     {
-      paramRect.bottom = this.jdField_b_of_type_Int;
+      wli.a(paramwli).b(paramupe.jdField_a_of_type_JavaLangString);
+      ThreadManager.post(new HomeFeedPresenter.GamePKCommentReceiver.1(this, (CommentLikeFeedItem)localObject2, (CommentEntry)localObject1, paramupe), 5, null, false);
+      wli.a((CommentLikeFeedItem)localObject2, (CommentEntry)localObject1);
       return;
-      paramRect.left = (this.c / 2);
+      ((CommentLikeFeedItem)localObject2).mFanCommentCount += 1;
     }
   }
   
-  public void a(Bundle paramBundle) {}
-  
-  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  public Class acceptEventClass()
   {
-    if ((paramSimpleBaseEvent instanceof SubDraftChangeEvent)) {
-      b();
-    }
-  }
-  
-  public void a(wpk paramwpk)
-  {
-    if ((paramwpk.d()) || (paramwpk.c())) {
-      b();
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public void b()
-  {
-    if ((a() != null) && (a() != null) && (((PublicFragmentActivity)a()).app != null))
-    {
-      this.jdField_b_of_type_JavaLangString = ((PublicFragmentActivity)a()).app.getAccount();
-      if (wsw.a().a(this.jdField_b_of_type_JavaLangString)) {
-        wsw.a().a(this.jdField_b_of_type_JavaLangString, new wlr(this));
-      }
-    }
-    else
-    {
-      return;
-    }
-    a();
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((paramViewHolder instanceof wls)) {
-      ((wls)paramViewHolder).a((SubscribeDraftBean)b().get(paramInt));
-    }
-  }
-  
-  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
-  {
-    return new wls(this, new SubScribeDraftItemView(paramViewGroup.getContext(), this));
-  }
-  
-  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onDetachedFromRecyclerView(paramRecyclerView);
-    wpt.a().b(this);
-  }
-  
-  public void onViewAttachedToWindow(RecyclerView.ViewHolder paramViewHolder)
-  {
-    super.onViewAttachedToWindow(paramViewHolder);
-    wpt.a().a(this);
+    return upe.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wlq
  * JD-Core Version:    0.7.0.1
  */

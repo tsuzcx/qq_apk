@@ -1,91 +1,18 @@
-import android.graphics.Color;
-import android.text.TextUtils;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import android.view.View;
 
-public class axzi
-  extends axur
+class axzi
+  implements bhrf
 {
-  String ai;
+  axzi(axzh paramaxzh, View paramView) {}
   
-  public axzi()
+  public void a()
   {
-    this(null);
-  }
-  
-  public axzi(String paramString)
-  {
-    super(paramString, "remark");
-  }
-  
-  public String a()
-  {
-    return "Remark";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.ai = paramObjectInput.readUTF();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.ai == null) {}
-    for (String str = "";; str = this.ai)
-    {
-      paramObjectOutput.writeUTF(str);
-      return;
-    }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    super.a(paramXmlSerializer);
-    if (!TextUtils.isEmpty(this.ai)) {
-      paramXmlSerializer.attribute(null, "url", this.ai);
-    }
-  }
-  
-  public boolean a(axwg paramaxwg)
-  {
-    if (paramaxwg == null) {
-      return true;
-    }
-    this.ai = paramaxwg.a("bgColor");
-    return super.a(paramaxwg);
-  }
-  
-  public int b()
-  {
-    return 1;
-  }
-  
-  public int c()
-  {
-    return 2131378322;
-  }
-  
-  public int e()
-  {
-    return Color.rgb(128, 128, 128);
-  }
-  
-  public int f()
-  {
-    return 24;
-  }
-  
-  public String g()
-  {
-    return this.ai;
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axzi
  * JD-Core Version:    0.7.0.1
  */

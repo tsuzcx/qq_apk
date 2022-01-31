@@ -1,62 +1,29 @@
-import android.view.View;
-import com.tencent.widget.ListView;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
-public class wdf
-  implements bfub
+class wdf
+  extends avqs
 {
-  private CopyOnWriteArraySet<bfub> a = new CopyOnWriteArraySet();
+  wdf(wde paramwde) {}
   
-  public wdf(bfub parambfub)
+  protected void a(Object paramObject)
   {
-    if (parambfub != null) {
-      this.a.add(parambfub);
-    }
-  }
-  
-  public void a(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bfub)localIterator.next()).a(paramInt, paramView, paramListView);
-    }
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.iterator();
-    boolean bool = false;
-    if (localIterator.hasNext())
+    if ((paramObject != null) && ((paramObject instanceof oidb_0x791.RedDotInfo)))
     {
-      bfub localbfub = (bfub)localIterator.next();
-      if ((bool) || (localbfub.a(paramInt, paramView, paramListView))) {}
-      for (bool = true;; bool = false) {
-        break;
+      paramObject = (oidb_0x791.RedDotInfo)paramObject;
+      if (paramObject.uint32_appid.get() == 21)
+      {
+        int i = paramObject.uint32_number.get();
+        int j = paramObject.uint32_last_time.get();
+        this.a.a.a(i, j);
       }
-    }
-    return bool;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bfub)localIterator.next()).b(paramInt, paramView, paramListView);
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      ((bfub)localIterator.next()).c(paramInt, paramView, paramListView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ancx
-  extends ampa<ancw>
+  implements anbs
 {
-  public static ancw a()
-  {
-    return (ancw)ampl.a().a(348);
-  }
+  public ancx(ARScanEntryView paramARScanEntryView) {}
   
-  public int a()
+  public void a()
   {
-    return 348;
-  }
-  
-  @NonNull
-  public ancw a(int paramInt)
-  {
-    return new ancw();
-  }
-  
-  @Nullable
-  public ancw a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return ancw.a(paramArrayOfamph);
+    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResDownloadComplete ;" + this.a.m);
+    if (!this.a.m) {
+      return;
     }
-    return null;
+    ARScanEntryView.a(this.a, 100);
+    ARScanEntryView.a(this.a).removeMessages(324);
+    ARScanEntryView.a(this.a).sendEmptyMessage(324);
+    this.a.k();
   }
   
-  public Class<ancw> a()
+  public void a(int paramInt)
   {
-    return ancw.class;
+    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResUpdateProgress " + paramInt + ";" + this.a.m);
+    if (!this.a.m) {
+      return;
+    }
+    ARScanEntryView.a(this.a, paramInt);
+    ARScanEntryView.a(this.a);
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(ancw paramancw) {}
-  
-  public int b()
+  public void b()
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    this.a.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,33 @@
-import android.content.Context;
-import android.support.v4.view.ViewCompat;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
 
-public class aing<T>
-  extends anth<T>
-  implements View.OnClickListener
+public class aing
+  extends aimb
 {
-  private DragSortListView a;
+  boolean a;
   
-  public aing(Context paramContext, List<T> paramList, DragSortListView paramDragSortListView)
+  protected aing(AlbumListFragment paramAlbumListFragment)
   {
-    super(paramContext, paramList);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView = paramDragSortListView;
+    super(paramAlbumListFragment);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void initData(Intent paramIntent)
   {
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131560784, null);
-    }
-    paramViewGroup.setVisibility(0);
-    paramViewGroup.findViewById(2131375998).setVisibility(8);
-    paramView = (TextView)paramViewGroup.findViewById(2131367204);
-    Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    paramView.setText(localGroups.group_name);
-    ViewCompat.setImportantForAccessibility(paramViewGroup.findViewById(2131367208), 1);
-    paramViewGroup.setContentDescription(localGroups.group_name + ajya.a(2131705349));
-    if ((bfnz.n()) && (AppSetting.d)) {
-      paramViewGroup.setOnClickListener(this);
-    }
-    return paramViewGroup;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (AppSetting.d) {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.f();
+    super.initData(paramIntent);
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("PhotoConst.IS_FROM_QZONE_AND_NEED_FILTER_RECENT_IMAGES", false);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Aima.recentImagesMaxCount = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_MAX_COUNT", 100);
+      this.jdField_a_of_type_Aima.recentImagesLimitSize = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_LIMIT_SIZE", 0);
+      this.jdField_a_of_type_Aima.recentImagesLimitWidth = paramIntent.getIntExtra("PhotoConst.RECENT_IMAGES_LIMIT_WIDTH", -1);
+      this.jdField_a_of_type_Aima.recentImagesBlockPaths = paramIntent.getStringArrayListExtra("PhotoConst.RECENT_IMAGES_BLOCK_PATHS");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aing
  * JD-Core Version:    0.7.0.1
  */

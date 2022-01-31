@@ -1,22 +1,12 @@
 public abstract interface bkwk
 {
-  public abstract void a();
+  public abstract void a(bkwh parambkwh, long paramLong1, long paramLong2);
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void c(boolean paramBoolean);
+  public abstract void a(bkwh parambkwh, String paramString, boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkwk
  * JD-Core Version:    0.7.0.1
  */

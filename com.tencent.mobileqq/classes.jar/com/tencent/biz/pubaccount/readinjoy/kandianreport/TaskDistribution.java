@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONObject;
-import sgg;
+import syb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class TaskDistribution
@@ -44,7 +44,7 @@ public class TaskDistribution
   {
     paramString = getAttrList(paramString);
     TaskManager.getInstance();
-    sgg.a(80, TaskManager.scriptVersion, paramString);
+    syb.a(80, TaskManager.scriptVersion, paramString);
   }
   
   public static void test()
@@ -55,7 +55,7 @@ public class TaskDistribution
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskDistribution
  * JD-Core Version:    0.7.0.1
  */

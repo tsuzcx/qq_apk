@@ -1,67 +1,74 @@
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp;
+import com.tencent.mobileqq.earlydownload.xmldata.WebpSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.util.WebpSoLoader;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public class aphp
-  extends aphu
+  extends apgu
 {
-  ExcitingTransferUploaderRp jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp;
-  final String jdField_a_of_type_JavaLangString = "ExcitingTransfer.ExtfGroupSenderRP<FileAssistant>";
+  QQAppInterface b = null;
   
   public aphp(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface);
+    super("qq.android.pic.webp.so", paramQQAppInterface);
+    this.b = paramQQAppInterface;
   }
   
-  protected int a()
+  public int a()
   {
-    return 2;
+    return 10056;
   }
   
-  protected String a(boolean paramBoolean)
+  public Class<? extends XmlData> a()
   {
-    return "actGroupXTFUploadSender";
+    return WebpSoData.class;
   }
   
-  protected HashMap<String, String> a()
+  public String a()
   {
-    HashMap localHashMap = super.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp != null)
+    return "QWebpSoDownloadDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_nResult));
-      localHashMap.put("param_IsBigData", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_bIsBigData));
-      localHashMap.put("param_HttpTime", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_u64HttpTime));
-      localHashMap.put("param_SrvReturCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_nSrvReturCode));
-      localHashMap.put("param_TransferSpeed", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_u64TransferSpeed));
-      localHashMap.put("param_TransferSize", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_u64TransferSize));
-      localHashMap.put("param_ServerIp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_strServerIp));
-      localHashMap.put("param_ServerPort", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_wServerPort));
-      localHashMap.put("param_FileUrl", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp.m_strFileUrl));
+      if (QLog.isColorLevel()) {
+        QLog.d("QWebpSoDownloadHandler", 2, "onDownload success: " + paramString);
+      }
+      String str = WebpSoLoader.a(BaseApplicationImpl.getContext());
+      if (!TextUtils.isEmpty(str)) {
+        bdcs.a(paramString, str, false);
+      }
     }
-    for (;;)
+    catch (Exception localException)
     {
-      QLog.i("ExcitingTransfer.ExtfGroupSenderRP<FileAssistant>", 1, "Id[" + this.d + "] >>> GroupSenderDataReport:act=" + a(false) + localHashMap.toString());
-      return localHashMap;
-      localHashMap.put("param_IsBigData", String.valueOf(false));
-      localHashMap.put("param_HttpTime", String.valueOf(0));
-      localHashMap.put("param_SrvReturCode", String.valueOf(0));
-      localHashMap.put("param_TransferSpeed", String.valueOf(0));
-      localHashMap.put("param_TransferSize", String.valueOf(0));
-      localHashMap.put("param_ServerIp", String.valueOf(0));
-      localHashMap.put("param_ServerPort", String.valueOf(0));
-      localHashMap.put("param_FileUrl", "");
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QWebpSoDownloadHandler", 2, localException.getMessage());
+        }
+      }
     }
+    super.a(paramString);
   }
   
-  public void a(ExcitingTransferUploaderRp paramExcitingTransferUploaderRp)
+  public boolean a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploaderRp = paramExcitingTransferUploaderRp;
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aphp
  * JD-Core Version:    0.7.0.1
  */

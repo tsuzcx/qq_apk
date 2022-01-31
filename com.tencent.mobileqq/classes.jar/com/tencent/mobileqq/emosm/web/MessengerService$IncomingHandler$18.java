@@ -2,12 +2,12 @@ package com.tencent.mobileqq.emosm.web;
 
 import android.os.Bundle;
 import android.os.Message;
-import answ;
-import ansx;
-import anua;
-import anuq;
-import auko;
-import aukp;
+import apke;
+import apkf;
+import apli;
+import aply;
+import awbv;
+import awbw;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
@@ -26,7 +26,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$18
   extends IPicDownloadListener
 {
-  public MessengerService$IncomingHandler$18(anuq paramanuq, JSONObject paramJSONObject1, JSONObject paramJSONObject2, int paramInt, Bundle paramBundle, MessengerService paramMessengerService, Map paramMap, answ paramansw, aukp paramaukp, anua paramanua, QQAppInterface paramQQAppInterface) {}
+  public MessengerService$IncomingHandler$18(aply paramaply, JSONObject paramJSONObject1, JSONObject paramJSONObject2, int paramInt, Bundle paramBundle, MessengerService paramMessengerService, Map paramMap, apke paramapke, awbw paramawbw, apli paramapli, QQAppInterface paramQQAppInterface) {}
   
   public void onDone(List<CustomEmotionData> paramList1, List<CustomEmotionData> paramList2)
   {
@@ -61,7 +61,7 @@ public class MessengerService$IncomingHandler$18
               localObject2 = (VipComicFavorEmoStructMsgInfo)this.val$emoStructMsgInfoMap.get(((CustomEmotionData)localObject1).md5);
               this.val$fdb.a((CustomEmotionBase)localObject1);
               if (localObject2 != null) {
-                this.val$entityManager.b((auko)localObject2);
+                this.val$entityManager.b((awbv)localObject2);
               }
             }
           }
@@ -101,14 +101,14 @@ public class MessengerService$IncomingHandler$18
       if (paramList2 != null) {
         paramList2.obtainMessage(10).sendToTarget();
       }
-      paramList2 = (ansx)this.val$qqApp.getManager(103);
+      paramList2 = (apkf)this.val$qqApp.getManager(103);
     } while (paramList2 == null);
     paramList2.b(paramList1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.18
  * JD-Core Version:    0.7.0.1
  */

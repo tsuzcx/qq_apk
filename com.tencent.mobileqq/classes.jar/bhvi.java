@@ -1,23 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.widget.RedTouchExtendButton.RedInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.PinnedHeadAndFootExpandableListView;
 
-public final class bhvi
-  implements Parcelable.Creator<RedTouchExtendButton.RedInfo>
+public class bhvi
+  implements View.OnTouchListener
 {
-  public RedTouchExtendButton.RedInfo a(Parcel paramParcel)
-  {
-    return new RedTouchExtendButton.RedInfo(paramParcel);
-  }
+  public bhvi(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView) {}
   
-  public RedTouchExtendButton.RedInfo[] a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new RedTouchExtendButton.RedInfo[paramInt];
+    if (paramMotionEvent.getAction() == 1)
+    {
+      long l = this.a.a(this.a.getFirstVisiblePosition());
+      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
+      {
+        int i = ExpandableListView.c(l);
+        if ((this.a.jdField_a_of_type_Bhsq == null) || (!this.a.jdField_a_of_type_Bhsq.a(this.a, paramView, i, this.a.jdField_a_of_type_Bhvk.getGroupId(i)))) {
+          this.a.b(i);
+        }
+      }
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhvi
  * JD-Core Version:    0.7.0.1
  */

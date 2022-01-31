@@ -1,65 +1,56 @@
-import android.content.Context;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.armap.sensor.rotation.Matrix4;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-public abstract class alyb
-  extends alya
+public class alyb
+  extends QIPCModule
 {
-  public int a;
-  protected alyk a;
-  protected Context a;
-  public Matrix4 a;
-  public float[] b = new float[3];
-  public float[] c = new float[3];
+  private static alyb a;
   
-  public alyb(Context paramContext, int paramInt, SensorManager paramSensorManager, alxt paramalxt)
+  private alyb()
   {
-    super(paramSensorManager, paramalxt);
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
-    this.jdField_a_of_type_Int = 2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a(paramContext);
+    super("SignInModule");
   }
   
-  private void a(Context paramContext)
+  public static alyb a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4 = new Matrix4();
-    this.jdField_a_of_type_Alyk = new alyk();
+    if (a == null) {
+      a = new alyb();
+    }
+    return a;
   }
   
-  protected void a(float[] paramArrayOfFloat)
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if ((this.jdField_a_of_type_Alxt == null) || (paramArrayOfFloat == null)) {}
-    do
+    paramInt = paramBundle.getInt("type", 1);
+    int i = paramBundle.getInt("result", 2);
+    int j = paramBundle.getInt("day", 1);
+    if (QLog.isColorLevel()) {
+      QLog.i("DailySignIn", 2, "SignInModule onCall type = " + paramInt + ",result = " + i + ",day = " + j);
+    }
+    if (i == 0)
     {
-      do
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (paramString != null)
       {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4.set(paramArrayOfFloat);
-        this.jdField_a_of_type_Alyk.a(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationMatrix4, 0, this.c);
-        if (this.jdField_a_of_type_Int == 1)
-        {
-          this.jdField_a_of_type_Alxt.updateAzimuth(this.c[0]);
-          return;
+        paramString.getPreferences();
+        paramString = (alkv)paramString.a(2);
+        if (QLog.isColorLevel()) {
+          QLog.i("DailySignIn", 2, "get oidb0x922 by web");
         }
-        this.b[0] = this.c[1];
-        this.b[1] = (-this.c[0]);
-        this.b[2] = (-this.c[2]);
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          this.jdField_a_of_type_Alxt.updateRotation(this.b[0], this.b[1], this.b[2]);
-          return;
-        }
-      } while ((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3));
-      this.jdField_a_of_type_Alxt.updateRotation(this.b[0], this.b[1], this.b[2]);
-    } while ((this.jdField_a_of_type_Int != 3) || (paramArrayOfFloat.length != 16));
-    this.jdField_a_of_type_Alxt.onRotationUpdateOriginal(paramArrayOfFloat);
+        paramString.c(0);
+        paramString.n();
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alyb
  * JD-Core Version:    0.7.0.1
  */

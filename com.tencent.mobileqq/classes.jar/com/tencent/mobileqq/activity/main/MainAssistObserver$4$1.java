@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.main;
 
-import agda;
-import bgyp;
+import aibf;
+import bizm;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class MainAssistObserver$4$1
   implements Runnable
 {
-  public MainAssistObserver$4$1(agda paramagda, QQAppInterface paramQQAppInterface) {}
+  public MainAssistObserver$4$1(aibf paramaibf, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    bgyp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "MainAssistObserver");
+    bizm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "MainAssistObserver");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.4.1
  * JD-Core Version:    0.7.0.1
  */

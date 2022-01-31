@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vas;
 import android.content.Context;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import bbsw;
+import bdrt;
 import com.tencent.mobileqq.vas.avatar.VasAvatar;
 import com.tencent.qqconnect.wtlogin.Login;
 
@@ -14,14 +14,14 @@ public class AvatarItemView
   {
     super(paramContext);
     paramContext = new VasAvatar(paramContext);
-    paramContext.setLoader(null, new bbsw(Login.a, -1, "small", 0L));
+    paramContext.setLoader(null, new bdrt(Login.a, -1, "small", 0L));
     paramContext.setScaleType(ImageView.ScaleType.CENTER_CROP);
     paramContext.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.AvatarItemView
  * JD-Core Version:    0.7.0.1
  */

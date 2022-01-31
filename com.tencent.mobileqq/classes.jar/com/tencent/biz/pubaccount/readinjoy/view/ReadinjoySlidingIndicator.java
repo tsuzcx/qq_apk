@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import actj;
-import ajya;
+import aekt;
+import alpo;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -29,11 +29,11 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.qphone.base.util.QLog;
-import nua;
-import rgj;
-import rgk;
-import rgl;
-import rgm;
+import nxf;
+import rwf;
+import rwg;
+import rwh;
+import rwi;
 
 @TargetApi(14)
 public class ReadinjoySlidingIndicator
@@ -45,7 +45,7 @@ public class ReadinjoySlidingIndicator
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private rgm jdField_a_of_type_Rgm;
+  private rwi jdField_a_of_type_Rwi;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private int jdField_b_of_type_Int;
   private LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
@@ -90,7 +90,7 @@ public class ReadinjoySlidingIndicator
     b();
     a(paramContext);
     if (Build.VERSION.SDK_INT >= 14) {
-      setAccessibilityDelegate(new rgj(this));
+      setAccessibilityDelegate(new rwf(this));
     }
   }
   
@@ -102,7 +102,7 @@ public class ReadinjoySlidingIndicator
   
   private void a(int paramInt1, String paramString, int paramInt2)
   {
-    int k = nua.d;
+    int k = nxf.d;
     TextView localTextView = new TextView(getContext());
     localTextView.setGravity(17);
     localTextView.setMaxLines(1);
@@ -186,7 +186,7 @@ public class ReadinjoySlidingIndicator
       {
         localObject = ValueAnimator.ofInt(new int[] { ((View)localObject).getLeft(), localView.getLeft() });
         ((ValueAnimator)localObject).setDuration(200L);
-        ((ValueAnimator)localObject).addUpdateListener(new rgk(this));
+        ((ValueAnimator)localObject).addUpdateListener(new rwg(this));
         ((ValueAnimator)localObject).start();
       }
       return;
@@ -201,10 +201,10 @@ public class ReadinjoySlidingIndicator
     {
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
       d();
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848495);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(actj.a(7.0F, getResources()), actj.a(7.0F, getResources()));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130848922);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(aekt.a(7.0F, getResources()), aekt.a(7.0F, getResources()));
       localLayoutParams.gravity = 16;
-      localLayoutParams.leftMargin = (-actj.a(11.0F, getResources()));
+      localLayoutParams.leftMargin = (-aekt.a(11.0F, getResources()));
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     }
     return this.jdField_a_of_type_AndroidWidgetImageView;
@@ -225,14 +225,14 @@ public class ReadinjoySlidingIndicator
       a(k, this.jdField_a_of_type_ArrayOfJavaLangString[k], this.jdField_b_of_type_ArrayOfInt[k]);
       k += 1;
     }
-    getViewTreeObserver().addOnGlobalLayoutListener(new rgl(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new rwh(this));
   }
   
   public void a(int paramInt)
   {
     RedTouch localRedTouch = (RedTouch)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(paramInt);
-    if ((localRedTouch != null) && (localRedTouch.a())) {
-      localRedTouch.b();
+    if ((localRedTouch != null) && (localRedTouch.b())) {
+      localRedTouch.d();
     }
   }
   
@@ -262,8 +262,8 @@ public class ReadinjoySlidingIndicator
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Rgm != null) {
-        this.jdField_a_of_type_Rgm.a(this.c, this.jdField_b_of_type_Int, paramBoolean2);
+      if (this.jdField_a_of_type_Rwi != null) {
+        this.jdField_a_of_type_Rwi.a(this.c, this.jdField_b_of_type_Int, paramBoolean2);
       }
       return;
       label87:
@@ -275,7 +275,7 @@ public class ReadinjoySlidingIndicator
   public boolean a(int paramInt)
   {
     RedTouch localRedTouch = (RedTouch)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(this.jdField_b_of_type_ArrayOfInt[paramInt]);
-    return (localRedTouch != null) && (localRedTouch.a());
+    return (localRedTouch != null) && (localRedTouch.b());
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -290,7 +290,7 @@ public class ReadinjoySlidingIndicator
   
   public void setAccessibilityMsg()
   {
-    if (AppSetting.d)
+    if (AppSetting.c)
     {
       int k = 0;
       while (k < this.jdField_a_of_type_Int)
@@ -298,10 +298,10 @@ public class ReadinjoySlidingIndicator
         View localView = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(k);
         if (localView != null)
         {
-          String str2 = this.jdField_a_of_type_ArrayOfJavaLangString[k] + ajya.a(2131712982);
+          String str2 = this.jdField_a_of_type_ArrayOfJavaLangString[k] + alpo.a(2131713354);
           String str1 = str2;
           if (k == this.jdField_b_of_type_Int) {
-            str1 = str2 + ajya.a(2131713128);
+            str1 = str2 + alpo.a(2131713500);
           }
           localView.setContentDescription(str1);
         }
@@ -315,9 +315,9 @@ public class ReadinjoySlidingIndicator
     a(paramInt, paramBoolean, false);
   }
   
-  public void setOnIndicatorChangeListener(rgm paramrgm)
+  public void setOnIndicatorChangeListener(rwi paramrwi)
   {
-    this.jdField_a_of_type_Rgm = paramrgm;
+    this.jdField_a_of_type_Rwi = paramrwi;
   }
   
   public void setOverScrollMode(int paramInt)
@@ -337,7 +337,7 @@ public class ReadinjoySlidingIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator
  * JD-Core Version:    0.7.0.1
  */

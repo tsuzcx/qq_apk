@@ -1,34 +1,36 @@
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-@SuppressLint({"HandlerLeak"})
-class qns
-  extends Handler
+public class qns
 {
-  private qns(qnl paramqnl) {}
-  
-  public void handleMessage(Message paramMessage)
+  private static qla a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    switch (paramMessage.what)
+    switch (paramInt)
     {
+    default: 
+      return null;
+    case 0: 
+      return new qko(paramBaseArticleInfo);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsFloatWindowManager", 2, "floating window msg time out: " + paramMessage.what);
-      }
-      return;
-      qnl.b(this.a);
-      continue;
-      this.a.h();
+    return new qnp(paramBaseArticleInfo);
+  }
+  
+  public static qla a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (a(paramBaseArticleInfo)) {
+      return a(1, paramBaseArticleInfo);
     }
+    return a(0, paramBaseArticleInfo);
+  }
+  
+  public static boolean a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    return ((paramBaseArticleInfo instanceof ArticleInfo)) && (!rqj.q((ArticleInfo)paramBaseArticleInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qns
  * JD-Core Version:    0.7.0.1
  */

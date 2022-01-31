@@ -1,39 +1,28 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.QQIdentiferActivity;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import java.lang.ref.WeakReference;
+import java.util.HashSet;
+import java.util.Iterator;
 
-public class abud
-  implements avuk
+final class abud
+  extends BroadcastReceiver
 {
-  public abud(QQIdentiferActivity paramQQIdentiferActivity) {}
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(avuo paramavuo) {}
-  
-  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!paramBoolean)
+    Iterator localIterator = abuc.a().iterator();
+    while (localIterator.hasNext())
     {
-      bbdj.a(this.a, 230, this.a.getString(2131698463), ajya.a(2131710362), new abue(this), null).show();
-      return;
+      abuc localabuc = (abuc)((WeakReference)localIterator.next()).get();
+      if (localabuc != null) {
+        localabuc.a(paramContext, paramIntent);
+      }
     }
-    QQIdentiferActivity.a(this.a).set(false);
-    QQIdentiferActivity.a(this.a).a();
   }
-  
-  public void b() {}
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abud
  * JD-Core Version:    0.7.0.1
  */

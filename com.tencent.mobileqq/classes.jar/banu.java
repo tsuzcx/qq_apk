@@ -1,17 +1,22 @@
-import android.view.View;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import android.graphics.Bitmap;
+import java.net.URL;
 
-public class banu
+class banu
+  implements baux
 {
-  public View a;
-  public URLImageView a;
+  public bant a;
   
-  public banu(AvatarWallViewPagerAdapter paramAvatarWallViewPagerAdapter) {}
+  banu(bans parambans) {}
+  
+  public Bitmap getBitmap(URL paramURL)
+  {
+    this.jdField_a_of_type_Bant = this.jdField_a_of_type_Bans.a(paramURL);
+    return bans.a(this.jdField_a_of_type_Bans, this.jdField_a_of_type_Bant);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     banu
  * JD-Core Version:    0.7.0.1
  */

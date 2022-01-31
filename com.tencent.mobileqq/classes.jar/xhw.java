@@ -1,70 +1,147 @@
-import android.text.TextUtils;
-import java.util.List;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class xhw
+  extends BaseAdapter
 {
-  private static xhx jdField_a_of_type_Xhx = new xhx();
-  private xhr jdField_a_of_type_Xhr = new xhq();
-  private xhr b = new xhz();
+  protected Context a;
+  protected QQAppInterface a;
+  protected ArrayList<xhy> a;
+  protected xhx a;
   
-  public static xhw a()
+  public xhw(Context paramContext, ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
   {
-    return (xhw)jdField_a_of_type_Xhx.getInstance();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = vhj.a();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilArrayList = xhy.a(paramArrayList, paramArrayList1);
   }
   
-  public asbc a(String paramString1, String paramString2)
+  public ArrayList<String> a()
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
+    ArrayList localArrayList = new ArrayList();
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      return null;
-      if ("LRC".equals(paramString2.toUpperCase())) {
-        return this.jdField_a_of_type_Xhr.a(paramString1);
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        xhy localxhy = (xhy)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+        if ((localxhy.jdField_a_of_type_Boolean) && (!localArrayList.contains(localxhy.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin))) {
+          localArrayList.add(localxhy.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
+        }
+        i += 1;
       }
-    } while (!"QRC".equals(paramString2.toUpperCase()));
-    return this.b.a(paramString1);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.publish.edit.ShareToGrouopAdapter", 2, "selectTroopUinList" + localArrayList);
+    }
+    return localArrayList;
   }
   
-  public asbe a(asbc paramasbc, long paramLong)
+  public void a(xhx paramxhx)
   {
+    this.jdField_a_of_type_Xhx = paramxhx;
+  }
+  
+  public void a(xhy paramxhy)
+  {
+    if ((this.jdField_a_of_type_Xhx == null) || (this.jdField_a_of_type_Xhx.a(a(), paramxhy))) {
+      if (paramxhy.jdField_a_of_type_Boolean) {
+        break label63;
+      }
+    }
+    label63:
+    for (boolean bool = true;; bool = false)
+    {
+      paramxhy.jdField_a_of_type_Boolean = bool;
+      notifyDataSetChanged();
+      if (this.jdField_a_of_type_Xhx != null) {
+        this.jdField_a_of_type_Xhx.a(a());
+      }
+      return;
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    xhy localxhy = (xhy)getItem(paramInt);
+    TroopInfo localTroopInfo = localxhy.jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
     Object localObject;
-    if (paramasbc == null)
+    Drawable localDrawable;
+    if (paramView != null)
     {
-      localObject = null;
-      return localObject;
-    }
-    List localList = paramasbc.a();
-    if (localList == null) {
-      return null;
-    }
-    int j = localList.size();
-    if (j < 1) {
-      return null;
-    }
-    int i = 0;
-    label43:
-    if (i < j - 1)
-    {
-      paramasbc = (asbe)localList.get(i);
-      localObject = (asbe)localList.get(i + 1);
-      if ((paramLong < paramasbc.a) || (((asbe)localObject).a < paramLong)) {}
+      localObject = (wph)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
+      localObject = (ImageView)paramView.a(2131367315);
+      localDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localTroopInfo.troopuin);
+      if (localDrawable != null) {
+        break label154;
+      }
+      ((ImageView)localObject).setImageBitmap(bdda.f());
     }
     for (;;)
     {
-      localObject = paramasbc;
-      if (paramasbc != null) {
-        break;
+      ((TextView)paramView.a(2131367360)).setText(localTroopInfo.getTroopName());
+      ((CheckBox)paramView.a(2131364259)).setChecked(localxhy.jdField_a_of_type_Boolean);
+      if (getCount() > 1) {
+        break label164;
       }
-      return (asbe)localList.get(j - 1);
-      i += 1;
-      break label43;
-      paramasbc = null;
+      paramViewGroup.setBackgroundResource(2130839253);
+      return paramViewGroup;
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560504, null);
+      paramView = new wph(paramViewGroup);
+      paramViewGroup.setTag(paramView);
+      break;
+      label154:
+      ((ImageView)localObject).setImageDrawable(localDrawable);
     }
+    label164:
+    if (paramInt == 0)
+    {
+      paramViewGroup.setBackgroundResource(2130839269);
+      return paramViewGroup;
+    }
+    if (paramInt == getCount() - 1)
+    {
+      paramViewGroup.setBackgroundResource(2130839260);
+      return paramViewGroup;
+    }
+    paramViewGroup.setBackgroundResource(2130839263);
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xhw
  * JD-Core Version:    0.7.0.1
  */

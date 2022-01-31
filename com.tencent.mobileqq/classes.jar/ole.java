@@ -1,25 +1,31 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
-final class ole
-  extends akuo
+public class ole
+  implements oma
 {
-  ole(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public ole(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  
+  public void a()
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (ReadInJoyCommentListFragment.a(this.a) != null) {
+      ReadInJoyCommentListFragment.a(this.a).a();
+    }
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    old.a(false);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (QLog.isColorLevel())) {
-      QLog.d("GalleryReportedUtils", 2, "get Location: info = " + paramSosoLbsInfo.toString());
+    switch (paramView.getId())
+    {
+    default: 
+      return;
     }
+    this.a.a(false, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ole
  * JD-Core Version:    0.7.0.1
  */

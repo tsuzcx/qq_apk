@@ -1,9 +1,9 @@
 package com.tencent.ttpic.openapi.model;
 
 import com.google.android.filament.Engine;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
+import com.tencent.ttpic.trigger.TriggerCtrlItem;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,11 +22,13 @@ public class NodeItemJava
   public int countTriggerType;
   public List<AnimojiExpressionJava> expressionConfigList = new ArrayList();
   public Map<String, Integer> expressionOrderList = new HashMap();
+  public String externalTriggerWords;
   public int frameDuration = 83;
   public int frames = 1;
   public String material;
   public String modelId;
   public String name;
+  public int needFaceMesh = 0;
   public boolean needShow = true;
   public int playCount = 0;
   public int rotateRequied = 0;
@@ -78,15 +80,9 @@ public class NodeItemJava
     return PTFaceAttr.PTExpression.FACE_DETECT.value;
   }
   
-  public void reset()
-  {
-    this.triggerCtrlItem.reset();
-  }
+  public void reset() {}
   
-  public void updateActionTriggered(PTDetectInfo paramPTDetectInfo)
-  {
-    this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
-  }
+  public void updateActionTriggered(PTDetectInfo paramPTDetectInfo) {}
 }
 
 

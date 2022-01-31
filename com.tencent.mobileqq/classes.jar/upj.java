@@ -1,49 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
-class upj
-  implements syq<tmi, tof>
+public class upj
+  implements View.OnFocusChangeListener
 {
-  upj(upi paramupi, JobContext paramJobContext, String paramString) {}
+  public upj(StoryInputBarView paramStoryInputBarView) {}
   
-  public void a(@NonNull tmi paramtmi, @Nullable tof paramtof, @NonNull ErrorMessage paramErrorMessage)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
-    {
-      ved.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "segment cancel on net respond");
+    if (!paramBoolean) {
+      this.a.a();
+    }
+    while (this.a.jdField_a_of_type_Boolean) {
       return;
     }
-    if ((paramtof == null) || (paramErrorMessage.isFail()))
+    this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidViewView, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, this.a.jdField_a_of_type_Wdj.jdField_a_of_type_Boolean);
+    this.a.jdField_a_of_type_Wdj.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+    paramView = this.a;
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {}
+    for (paramBoolean = true;; paramBoolean = false)
     {
-      ved.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for feature request");
-      upi.a(this.jdField_a_of_type_Upi, paramErrorMessage);
-      return;
-    }
-    if (paramtof.a != null)
-    {
-      paramtmi = paramtof.a.iterator();
-      do
-      {
-        if (!paramtmi.hasNext()) {
-          break;
-        }
-        paramtof = (tec)paramtmi.next();
-      } while (!paramtof.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString));
-    }
-    for (int i = paramtof.c;; i = 0)
-    {
-      upi.a(this.jdField_a_of_type_Upi, Integer.valueOf(i));
+      paramView.jdField_a_of_type_Boolean = paramBoolean;
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upj
  * JD-Core Version:    0.7.0.1
  */

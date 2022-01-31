@@ -1,27 +1,21 @@
-import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-
 public class aoin
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aoin(ExtendFriendSquareFragment paramExtendFriendSquareFragment, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public aoin(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {
-      return;
-    }
-    int i = (int)((1.0F - ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F) * -this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.j);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoin
  * JD-Core Version:    0.7.0.1
  */

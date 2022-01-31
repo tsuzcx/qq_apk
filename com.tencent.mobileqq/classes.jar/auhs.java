@@ -1,19 +1,27 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
+import java.util.Comparator;
 
-class auhs
-  implements View.OnClickListener
+public class auhs
+  implements Comparator<View>
 {
-  auhs(auhk paramauhk) {}
-  
-  public void onClick(View paramView)
+  public int a(View paramView1, View paramView2)
   {
-    bbpo.a(auhk.a(this.a), "panel");
+    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
+    {
+      if (paramView1.a) {
+        return 1;
+      }
+      return -1;
+    }
+    return paramView1.b - paramView2.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auhs
  * JD-Core Version:    0.7.0.1
  */

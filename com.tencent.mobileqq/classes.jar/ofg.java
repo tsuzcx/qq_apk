@@ -1,19 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-
-class ofg
-  implements ViewBase.OnClickListener
+public abstract interface ofg
 {
-  ofg(ofb paramofb) {}
-  
-  public void onClick(ViewBase paramViewBase)
-  {
-    ofa.a(this.a.jdField_a_of_type_Ohs, this.a.jdField_a_of_type_Oif);
-  }
+  public abstract nor a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofg
  * JD-Core Version:    0.7.0.1
  */

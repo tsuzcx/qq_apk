@@ -1,21 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
-
 public class aszw
-  extends BroadcastReceiver
 {
-  public aszw(NearbyJsInterface paramNearbyJsInterface) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    this.a.tribePersonalDataModify();
-  }
+  public static int a;
+  public static String a;
+  public static String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszw
  * JD-Core Version:    0.7.0.1
  */

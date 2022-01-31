@@ -1,79 +1,53 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class aojn
-  extends ampa<aoju>
+  extends aofy<aojm>
 {
-  public static aoju a()
-  {
-    return (aoju)ampl.a().a(532);
-  }
-  
   public int a()
   {
-    return 532;
+    return 414;
   }
   
   @NonNull
-  public aoju a(int paramInt)
+  public aojm a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("LimitChatOnPlusConfProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new aoju();
+    return new aojm();
   }
   
   @Nullable
-  public aoju a(amph[] paramArrayOfamph)
+  public aojm a(aogf[] paramArrayOfaogf)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LimitChatOnPlusConfProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
     {
+      aojm localaojm = aojm.a(paramArrayOfaogf[0].a);
       if (QLog.isColorLevel()) {
-        QLog.d("LimitChatOnPlusConfProcessor", 2, "onParsed " + paramArrayOfamph.length);
+        QLog.d("GlobalSearchConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
       }
-      return aoju.a(paramArrayOfamph[0]);
+      return localaojm;
     }
     return null;
   }
   
-  public Class<aoju> a()
+  public Class<aojm> a()
   {
-    return aoju.class;
+    return aojm.class;
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt) {}
+  
+  public void a(aojm paramaojm)
   {
+    com.tencent.mobileqq.search.util.SearchConfigManager.needSeparate = paramaojm.a();
     if (QLog.isColorLevel()) {
-      QLog.e("LimitChatOnPlusConfProcessor", 2, "onReqFailed " + paramInt);
+      QLog.d("GlobalSearchConfProcessor", 2, "onUpdate " + paramaojm.toString());
     }
   }
   
-  public void a(aoju paramaoju)
+  public boolean a()
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramaoju == null) {
-        break label73;
-      }
-    }
-    label73:
-    for (paramaoju = paramaoju.toString();; paramaoju = " empty")
-    {
-      QLog.d("LimitChatOnPlusConfProcessor", 2, paramaoju);
-      paramaoju = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramaoju instanceof QQAppInterface)) {
-        ((aoeu)((QQAppInterface)paramaoju).getManager(264)).b();
-      }
-      return;
-    }
+    return false;
   }
   
   public int b()
@@ -93,7 +67,7 @@ public class aojn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aojn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,92 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-class ayrh
-  implements ITransCallbackForReport
+public class ayrh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  ayrh(ayrf paramayrf) {}
+  private int jdField_a_of_type_Int;
+  private final View jdField_a_of_type_AndroidViewView;
+  private final List<ayri> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private boolean jdField_a_of_type_Boolean;
+  private int b = 200;
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public ayrh(View paramView)
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    this(paramView, false);
+  }
+  
+  public ayrh(View paramView, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramView.getViewTreeObserver().addOnGlobalLayoutListener(this);
+  }
+  
+  private void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      ayri localayri = (ayri)localIterator.next();
+      if (localayri != null) {
+        localayri.onSoftKeyboardClosed();
+      }
+    }
+  }
+  
+  private void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      ayri localayri = (ayri)localIterator.next();
+      if (localayri != null) {
+        localayri.onSoftKeyboardOpened(paramInt);
+      }
+    }
+  }
+  
+  public void a(ayri paramayri)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramayri);
+  }
+  
+  public void b(ayri paramayri)
+  {
+    this.jdField_a_of_type_JavaUtilList.remove(paramayri);
+  }
+  
+  public void onGlobalLayout()
+  {
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    int i = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() - (localRect.bottom - localRect.top) - ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidViewView.getContext());
+    if (QLog.isColorLevel()) {
+      QLog.d("SoftKeyboardStateHelper", 2, "onGlobalLayout , activityRootView.Height = " + this.jdField_a_of_type_AndroidViewView.getRootView().getHeight() + " heightDiff = " + i + " (r.bottom - r.top) = " + (localRect.bottom - localRect.top));
+    }
+    if ((!this.jdField_a_of_type_Boolean) && (i > this.b))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      a(i);
+    }
+    while ((!this.jdField_a_of_type_Boolean) || (i >= this.b)) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayrh
  * JD-Core Version:    0.7.0.1
  */

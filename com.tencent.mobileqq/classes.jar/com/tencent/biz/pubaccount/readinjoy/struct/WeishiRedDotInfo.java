@@ -9,12 +9,12 @@ import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import qea;
+import qnx;
 
 public class WeishiRedDotInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiRedDotInfo> CREATOR = new qea();
+  public static final Parcelable.Creator<WeishiRedDotInfo> CREATOR = new qnx();
   private String jdField_a_of_type_JavaLangString = "";
   private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   private String b = "";
@@ -94,7 +94,7 @@ public class WeishiRedDotInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo
  * JD-Core Version:    0.7.0.1
  */

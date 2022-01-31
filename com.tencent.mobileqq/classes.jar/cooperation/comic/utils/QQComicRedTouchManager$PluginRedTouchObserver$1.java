@@ -1,12 +1,12 @@
 package cooperation.comic.utils;
 
-import bgjg;
+import bike;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQComicRedTouchManager$PluginRedTouchObserver$1
   implements Runnable
 {
-  public QQComicRedTouchManager$PluginRedTouchObserver$1(bgjg parambgjg) {}
+  public QQComicRedTouchManager$PluginRedTouchObserver$1(bike parambike) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class QQComicRedTouchManager$PluginRedTouchObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver.1
  * JD-Core Version:    0.7.0.1
  */

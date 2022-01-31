@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
 import java.util.List;
-import xla;
+import yzt;
 
 public final class NewerGuidePlugin$RecommendedListResp
   implements Parcelable
 {
-  public static final Parcelable.Creator<RecommendedListResp> CREATOR = new xla();
+  public static final Parcelable.Creator<RecommendedListResp> CREATOR = new yzt();
   public int a;
   public long a;
   public List<NewerGuidePlugin.PhoneInfo> a;
@@ -45,7 +45,7 @@ public final class NewerGuidePlugin$RecommendedListResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.RecommendedListResp
  * JD-Core Version:    0.7.0.1
  */

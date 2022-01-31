@@ -1,7 +1,7 @@
 {
     "ReadInjoy_topic_recommend_pgc_multi_cell":{
         
-        "view_type":"cell",
+        "view_type":"container",
         "layout_type":"layout_relative",
         "height":{
             "type":"wrap_content"

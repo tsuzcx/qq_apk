@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import auko;
+import awbv;
 
 public class SquareBannerEntry
-  extends auko
+  extends awbv
 {
   public String bannerId;
   public String imageUrl;
@@ -11,7 +11,7 @@ public class SquareBannerEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.SquareBannerEntry
  * JD-Core Version:    0.7.0.1
  */

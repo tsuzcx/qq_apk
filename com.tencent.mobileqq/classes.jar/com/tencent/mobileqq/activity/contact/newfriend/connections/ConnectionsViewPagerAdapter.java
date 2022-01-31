@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.newfriend.connections;
 
-import aflw;
+import ahjb;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -15,9 +15,9 @@ public class ConnectionsViewPagerAdapter
 {
   private SimpleArrayMap<Integer, ConnectionsExplorationClidFragment> jdField_a_of_type_AndroidSupportV4UtilSimpleArrayMap = new SimpleArrayMap(10);
   protected QQAppInterface a;
-  private ArrayList<aflw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ArrayList<ahjb> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public ConnectionsViewPagerAdapter(FragmentManager paramFragmentManager, QQAppInterface paramQQAppInterface, ArrayList<aflw> paramArrayList)
+  public ConnectionsViewPagerAdapter(FragmentManager paramFragmentManager, QQAppInterface paramQQAppInterface, ArrayList<ahjb> paramArrayList)
   {
     super(paramFragmentManager);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
@@ -26,23 +26,23 @@ public class ConnectionsViewPagerAdapter
     }
   }
   
-  private aflw a(int paramInt)
+  private ahjb a(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (aflw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      return (ahjb)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
     return null;
   }
   
   public ConnectionsExplorationClidFragment a(int paramInt)
   {
-    aflw localaflw = a(paramInt);
+    ahjb localahjb = a(paramInt);
     ConnectionsExplorationClidFragment localConnectionsExplorationClidFragment = new ConnectionsExplorationClidFragment();
-    if (localaflw != null)
+    if (localahjb != null)
     {
-      localConnectionsExplorationClidFragment.a(localaflw.a);
+      localConnectionsExplorationClidFragment.a(localahjb.a);
       localConnectionsExplorationClidFragment.b(paramInt);
-      if (localaflw.a != 23) {
+      if (localahjb.a != 23) {
         break label68;
       }
     }
@@ -69,7 +69,7 @@ public class ConnectionsViewPagerAdapter
     }
   }
   
-  public void a(ArrayList<aflw> paramArrayList)
+  public void a(ArrayList<ahjb> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
@@ -103,7 +103,7 @@ public class ConnectionsViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

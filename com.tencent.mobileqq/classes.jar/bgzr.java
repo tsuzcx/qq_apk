@@ -1,71 +1,68 @@
-import android.os.FileObserver;
-import android.os.Handler;
-import android.util.Pair;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageReq;
+import NS_MINI_CLOUDSTORAGE.CloudStorage.StRemoveUserCloudStorageRsp;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
-class bgzr
-  extends FileObserver
+public class bgzr
+  extends bgzp
 {
-  bgzr(bgzo parambgzo, String paramString, int paramInt)
+  private CloudStorage.StRemoveUserCloudStorageReq a = new CloudStorage.StRemoveUserCloudStorageReq();
+  
+  public bgzr(String[] paramArrayOfString, String paramString)
   {
-    super(paramString, paramInt);
+    int j = paramArrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      String str = paramArrayOfString[i];
+      this.a.keyList.add(str);
+      i += 1;
+    }
+    this.a.appid.set(paramString);
   }
   
-  public void onEvent(int paramInt, String paramString)
+  protected String a()
   {
-    if (!"qzone_startup_monitor".equals(paramString))
+    return "mini_app_cloudstorage";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    CloudStorage.StRemoveUserCloudStorageRsp localStRemoveUserCloudStorageRsp = new CloudStorage.StRemoveUserCloudStorageRsp();
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneStartupMonitor", 2, "path:" + paramString + ",非监控文件：" + "qzone_startup_monitor");
+      localStRemoveUserCloudStorageRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStRemoveUserCloudStorageRsp != null) {
+        return new JSONObject();
       }
-      return;
+      QMLog.d("ProtoBufRequest", "onResponse fail.rsp = null");
+      return null;
     }
-    switch (paramInt & 0xFFF)
+    catch (Exception paramArrayOfByte)
     {
-    default: 
-      return;
-    case 256: 
-      paramInt = QzoneConfig.getInstance().getConfig("QZoneSetting", "startupFailTimeout", 60000);
-      bgzo.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneStartupMonitor", 2, "如果" + paramInt + "ms 后，未收到启动成功的消息，则认为启动失败");
-      }
-      bgzo.a(this.a).sendEmptyMessageDelayed(1, paramInt);
-      return;
+      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneStartupMonitor", 2, "启动成功，清理超时，并校验odex和上报");
-    }
-    bgzo.a(this.a).removeMessages(1);
-    paramString = bgzo.a(BaseApplicationImpl.getApplication(), "qzone_plugin.apk");
-    if (paramString != null) {}
-    for (paramInt = ((Integer)paramString.first).intValue();; paramInt = 0)
-    {
-      bgzo.a(this.a, true);
-      bgzo.a(this.a, paramInt, bgzo.a(this.a), LocalMultiProcConfig.getInt("key_recovery_count", 0));
-      LocalMultiProcConfig.putInt("key_recovery_count", 0);
-      return;
-    }
+    return null;
   }
   
-  public void startWatching()
+  protected byte[] a()
   {
-    super.startWatching();
-    QLog.i("QZoneStartupMonitor", 1, "startWatching");
+    return this.a.toByteArray();
   }
   
-  public void stopWatching()
+  protected String b()
   {
-    super.stopWatching();
-    QLog.i("QZoneStartupMonitor", 1, "stopWatching");
+    return "RemoveUserCloudStorage";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgzr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,62 @@
-import java.util.HashMap;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class oae
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private static HashMap<Integer, Integer> a = new HashMap();
+  public oae(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  static
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    a.put(Integer.valueOf(1105), Integer.valueOf(4));
-    a.put(Integer.valueOf(1106), Integer.valueOf(3));
-    a.put(Integer.valueOf(1107), Integer.valueOf(4));
-    a.put(Integer.valueOf(1103), Integer.valueOf(101));
-    a.put(Integer.valueOf(1104), Integer.valueOf(102));
-    a.put(Integer.valueOf(1108), Integer.valueOf(103));
-    a.put(Integer.valueOf(1109), Integer.valueOf(104));
-  }
-  
-  public static int a(int paramInt)
-  {
-    if (a.containsKey(Integer.valueOf(paramInt))) {
-      return ((Integer)a.get(Integer.valueOf(paramInt))).intValue();
+    ReadInJoySettingActivity.c(this.a, paramBoolean);
+    int i;
+    label51:
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
+    {
+      QQToast.a(this.a.getBaseContext(), 2, 2131719039, 2000).a();
+      ReadInJoySettingActivity.a(this.a).setText(2131719038);
+      if (!paramBoolean) {
+        break label149;
+      }
+      i = 1;
+      bjxj.e(i);
+      bjxj.a(paramBoolean);
+      bjxj.a(true);
+      localQQAppInterface = this.a.a;
+      if (!paramBoolean) {
+        break label154;
+      }
+      paramCompoundButton = "0X8008236";
+      label80:
+      if (!paramBoolean) {
+        break label160;
+      }
     }
-    return 0;
+    label149:
+    label154:
+    label160:
+    for (String str = "0X8008236";; str = "0X8008235")
+    {
+      nrt.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
+      return;
+      QQToast.a(this.a.getBaseContext(), 2, 2131719037, 2000).a();
+      ReadInJoySettingActivity.a(this.a).setText(2131719041);
+      break;
+      i = 0;
+      break label51;
+      paramCompoundButton = "0X8008235";
+      break label80;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oae
  * JD-Core Version:    0.7.0.1
  */

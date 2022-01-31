@@ -1,16 +1,16 @@
 package com.tencent.util.notification;
 
-import bfoi;
+import bhpd;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NotifyIdManager$1
   implements Runnable
 {
-  public NotifyIdManager$1(bfoi parambfoi) {}
+  public NotifyIdManager$1(bhpd parambhpd) {}
   
   public void run()
   {
-    bfoi.a(this.this$0).set(false);
+    bhpd.a(this.this$0).set(false);
   }
 }
 

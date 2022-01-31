@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import amnr;
+import aoep;
 import com.tencent.qphone.base.util.QLog;
 
 class MessageHandler$16
@@ -12,8 +12,8 @@ class MessageHandler$16
   {
     try
     {
-      amnr.b(this.this$0.app, false);
-      amnr.a(this.this$0.app, false);
+      aoep.b(this.this$0.app, false);
+      aoep.a(this.this$0.app, false);
       this.this$0.e(this.a);
       return;
     }

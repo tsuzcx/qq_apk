@@ -1,26 +1,30 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
-public class agon
-  implements View.OnClickListener
+class agon
+  extends ause
 {
-  public agon(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  agon(agoj paramagoj) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, String paramString2, Object paramObject)
   {
-    if (PhotoPreviewActivity.a(this.a) == null)
-    {
-      PhotoPreviewActivity.a(this.a, bbdj.a(this.a, 0, this.a.getString(2131718415), null, this.a.getString(2131718413), this.a.getString(2131718414), new agoo(this), new agop(this)));
-      PhotoPreviewActivity.a(this.a).setCanceledOnTouchOutside(false);
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.a.jdField_a_of_type_JavaLangString, 4, "onAutoInput, [" + paramString1 + "," + paramString2 + "," + paramObject + "," + System.currentTimeMillis() + "]");
     }
-    PhotoPreviewActivity.a(this.a).show();
+    if (!"tag_nearby_chat".equals(paramString1)) {}
+    while ((TextUtils.isEmpty(paramString2)) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx == null)) {
+      return;
+    }
+    this.a.aE();
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText(paramString2);
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.selectAll();
+    this.a.g = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agon
  * JD-Core Version:    0.7.0.1
  */

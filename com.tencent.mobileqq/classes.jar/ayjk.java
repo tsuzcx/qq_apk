@@ -1,28 +1,22 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import java.util.List;
 
-class ayjk
-  implements View.OnTouchListener
+public abstract interface ayjk
+  extends ayjj
 {
-  ayjk(ayjh paramayjh) {}
+  public abstract int a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      bfni.b(paramView);
-      this.a.d();
-    }
-  }
+  public abstract String a();
+  
+  public abstract List<ayjl> a();
+  
+  public abstract void a(View paramView);
+  
+  public abstract String b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayjk
  * JD-Core Version:    0.7.0.1
  */

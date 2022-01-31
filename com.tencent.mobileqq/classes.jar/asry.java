@@ -1,27 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.hotpic.HotPicData;
 
-public class asry
-  extends AnimatorListenerAdapter
+public abstract interface asry
 {
-  public asry(MultiCardFragment paramMultiCardFragment) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    super.onAnimationCancel(paramAnimator);
-    MultiCardFragment.c(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    MultiCardFragment.c(this.a);
-  }
+  public abstract void a(HotPicData paramHotPicData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asry
  * JD-Core Version:    0.7.0.1
  */

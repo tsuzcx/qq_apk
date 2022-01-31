@@ -15,14 +15,14 @@ class CommonSuspensionGestureLayout$4
     this.this$0.addView(CommonSuspensionGestureLayout.a(this.this$0));
     FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)CommonSuspensionGestureLayout.a(this.this$0).getLayoutParams();
     localLayoutParams.gravity = 80;
-    localLayoutParams.bottomMargin = CommonSuspensionGestureLayout.a(this.this$0);
+    localLayoutParams.bottomMargin = CommonSuspensionGestureLayout.a(CommonSuspensionGestureLayout.a(this.this$0));
     CommonSuspensionGestureLayout.a(this.this$0).setLayoutParams(localLayoutParams);
-    this.this$0.b();
+    this.this$0.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout.4
  * JD-Core Version:    0.7.0.1
  */

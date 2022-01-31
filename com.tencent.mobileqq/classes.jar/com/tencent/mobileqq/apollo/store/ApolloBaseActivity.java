@@ -7,12 +7,12 @@ import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbfj;
-import bcfh;
-import bcfo;
-import bcih;
-import bcij;
-import bcil;
+import bdee;
+import beei;
+import beep;
+import behi;
+import behk;
+import behm;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
@@ -24,18 +24,18 @@ import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import xlb;
+import yzu;
 
 public class ApolloBaseActivity
   extends AbsBaseWebViewActivity
-  implements bcih, bcij, bcil
+  implements behi, behk, behm
 {
   private static int b;
   protected int a;
   protected long a;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   protected String a;
-  private xlb jdField_a_of_type_Xlb;
+  private yzu jdField_a_of_type_Yzu;
   private boolean jdField_a_of_type_Boolean = true;
   protected TouchWebView b;
   protected long f;
@@ -54,14 +54,14 @@ public class ApolloBaseActivity
   
   private void d()
   {
-    if ((this.jdField_a_of_type_Xlb == null) && (this.jdField_b_of_type_ComTencentBizUiTouchWebView != null))
+    if ((this.jdField_a_of_type_Yzu == null) && (this.jdField_b_of_type_ComTencentBizUiTouchWebView != null))
     {
       Object localObject = this.jdField_b_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
       if (localObject != null)
       {
         localObject = ((WebViewPluginEngine)localObject).a("offline");
-        if ((localObject != null) && ((localObject instanceof xlb))) {
-          this.jdField_a_of_type_Xlb = ((xlb)localObject);
+        if ((localObject != null) && ((localObject instanceof yzu))) {
+          this.jdField_a_of_type_Yzu = ((yzu)localObject);
         }
       }
     }
@@ -76,7 +76,7 @@ public class ApolloBaseActivity
       this.jdField_h_of_type_Boolean = true;
       try
       {
-        k = bbfj.a(getApplicationContext());
+        k = bdee.a(getApplicationContext());
         switch (k)
         {
         default: 
@@ -240,8 +240,8 @@ public class ApolloBaseActivity
   public long getOpenUrlAfterCheckOfflineTime()
   {
     d();
-    if (this.jdField_a_of_type_Xlb != null) {
-      return this.jdField_a_of_type_Xlb.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_Yzu != null) {
+      return this.jdField_a_of_type_Yzu.jdField_a_of_type_Long;
     }
     return 0L;
   }
@@ -249,8 +249,8 @@ public class ApolloBaseActivity
   public long getReadIndexFromOfflineTime()
   {
     d();
-    if (this.jdField_a_of_type_Xlb != null) {
-      return this.jdField_a_of_type_Xlb.b;
+    if (this.jdField_a_of_type_Yzu != null) {
+      return this.jdField_a_of_type_Yzu.b;
     }
     return 0L;
   }
@@ -333,8 +333,8 @@ public class ApolloBaseActivity
   public boolean isMainPageUseLocalFile()
   {
     d();
-    if (this.jdField_a_of_type_Xlb != null) {
-      return this.jdField_a_of_type_Xlb.e;
+    if (this.jdField_a_of_type_Yzu != null) {
+      return this.jdField_a_of_type_Yzu.e;
     }
     return false;
   }
@@ -356,18 +356,18 @@ public class ApolloBaseActivity
     a(getIntent());
     super.onCreate(paramBundle);
     jdField_b_of_type_Int += 1;
-    if ((this.jdField_b_of_type_ComTencentBizUiTouchWebView != null) && (Build.VERSION.SDK_INT >= 14) && (bcfh.a.length >= 1))
+    if ((this.jdField_b_of_type_ComTencentBizUiTouchWebView != null) && (Build.VERSION.SDK_INT >= 14) && (beei.a.length >= 1))
     {
-      int k = bcfh.a[1];
+      int k = beei.a[1];
       paramBundle = this.jdField_b_of_type_ComTencentBizUiTouchWebView.getSettings();
       if (paramBundle != null) {
         paramBundle.setTextZoom(k);
       }
     }
-    if ((this.jdField_a_of_type_Bcfo != null) && (this.mRuntime != null) && (this.mRuntime.getLongAccountUin() != 0L) && (bcfo.d != 0))
+    if ((this.jdField_a_of_type_Beep != null) && (this.mRuntime != null) && (this.mRuntime.getLongAccountUin() != 0L) && (beep.d != 0))
     {
-      paramBundle = this.jdField_a_of_type_Bcfo;
-      if (this.mRuntime.getLongAccountUin() % bcfo.d != 6L) {
+      paramBundle = this.jdField_a_of_type_Beep;
+      if (this.mRuntime.getLongAccountUin() % beep.d != 6L) {
         break label147;
       }
     }
@@ -384,7 +384,7 @@ public class ApolloBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloBaseActivity
  * JD-Core Version:    0.7.0.1
  */

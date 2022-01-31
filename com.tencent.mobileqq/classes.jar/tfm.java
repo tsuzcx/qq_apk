@@ -1,23 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class tfm
-  implements syq<tha, thb>
+  implements View.OnTouchListener
 {
   tfm(tfk paramtfk) {}
   
-  public void a(@NonNull tha paramtha, @Nullable thb paramthb, @NonNull ErrorMessage paramErrorMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "requestQQStoryGuide onCmdRespond = " + paramthb + " ,errorMsg = " + paramErrorMessage);
-    }
+    tfk.a(this.a).onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tfm
  * JD-Core Version:    0.7.0.1
  */

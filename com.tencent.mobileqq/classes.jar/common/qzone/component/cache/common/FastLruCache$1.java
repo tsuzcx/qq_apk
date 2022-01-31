@@ -1,13 +1,13 @@
 package common.qzone.component.cache.common;
 
-import bggp;
+import bihn;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
 public class FastLruCache$1
   extends LinkedHashMap<K, V>
 {
-  public FastLruCache$1(bggp parambggp, int paramInt1, float paramFloat, boolean paramBoolean, int paramInt2)
+  public FastLruCache$1(bihn parambihn, int paramInt1, float paramFloat, boolean paramBoolean, int paramInt2)
   {
     super(paramInt1, paramFloat, paramBoolean);
   }
@@ -19,7 +19,7 @@ public class FastLruCache$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     common.qzone.component.cache.common.FastLruCache.1
  * JD-Core Version:    0.7.0.1
  */

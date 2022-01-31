@@ -1,10 +1,14 @@
-public abstract interface aiae
+import com.tencent.mobileqq.activity.leba.QzoneFrame;
+
+public abstract class aiae
 {
-  public abstract void a(float paramFloat1, float paramFloat2);
+  public aiae(QzoneFrame paramQzoneFrame) {}
+  
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiae
  * JD-Core Version:    0.7.0.1
  */

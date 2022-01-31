@@ -1,20 +1,65 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aosr
-  implements DialogInterface.OnClickListener
+  extends aofy<aosq>
 {
-  public aosr(QfileLocalFileAppTabView.1.1 param1) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static aosq a()
   {
-    paramDialogInterface.dismiss();
+    return (aosq)aogj.a().a(334);
+  }
+  
+  public int a()
+  {
+    return 334;
+  }
+  
+  @NonNull
+  public aosq a(int paramInt)
+  {
+    return new aosq();
+  }
+  
+  @Nullable
+  public aosq a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return aosq.a(paramArrayOfaogf);
+    }
+    return null;
+  }
+  
+  public Class<aosq> a()
+  {
+    return aosq.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("TencentDocAIOPlusPanelEntryConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
+  }
+  
+  public void a(aosq paramaosq) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aosr
  * JD-Core Version:    0.7.0.1
  */

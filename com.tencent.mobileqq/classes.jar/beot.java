@@ -1,96 +1,82 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnVideoPreparedListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.1;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.2;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.7.3;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NowShowVideoInfo;
+import com.tencent.mobileqq.data.ProfilePhotoWall;
+import com.tencent.mobileqq.data.QZonePhotoInfo;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.widget.ProfileCardNewPhotoWallView;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class beot
-  implements VideoPlayerProxy.OnVideoPreparedListener
+  implements View.OnClickListener
 {
-  public beot(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
+  public beot(ProfileCardNewPhotoWallView paramProfileCardNewPhotoWallView, ProfilePhotoWall paramProfilePhotoWall, int paramInt) {}
   
-  public void onVideoPrepared(VideoPlayerProxy paramVideoPlayerProxy)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    if (!this.a.jdField_a_of_type_Boolean) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataProfilePhotoWall instanceof NowShowVideoInfo))
+    {
+      localObject1 = (NowShowVideoInfo)this.jdField_a_of_type_ComTencentMobileqqDataProfilePhotoWall;
+      localObject2 = new Intent(paramView.getContext(), QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("hide_more_button", true);
+      ((Intent)localObject2).putExtra("hide_operation_bar", true);
+      ((Intent)localObject2).putExtra("url", ((NowShowVideoInfo)localObject1).mJumpUrl);
+      paramView.getContext().startActivity((Intent)localObject2);
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "NOW", "", "qq_zlk", "replay_click", 0, 0, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_JavaLangString, "", "", "");
       return;
     }
-    if (!this.a.jdField_a_of_type_Behp.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
-      MiniAppVideoPlayer.a(this.a, "waiting");
-    }
-    for (;;)
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_AndroidAppActivity, TroopAvatarWallPreviewActivity.class);
+    Object localObject1 = new Bundle();
+    ((Bundle)localObject1).putInt("index", this.jdField_a_of_type_Int);
+    Object localObject2 = new ArrayList();
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_JavaUtilLinkedList.size())
     {
-      MiniAppVideoPlayer.b(this.a, false);
-      MiniAppVideoPlayer.b(this.a, false);
-      this.a.jdField_a_of_type_Boolean = true;
-      if (!MiniAppVideoPlayer.a(this.a)) {
-        break;
+      Object localObject3 = (ProfilePhotoWall)this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_JavaUtilLinkedList.get(i);
+      if ((localObject3 instanceof QZonePhotoInfo))
+      {
+        ((ArrayList)localObject2).add(((ProfilePhotoWall)localObject3).getOriginUrl());
+        localObject3 = (QZonePhotoInfo)localObject3;
+        localArrayList1.add(((QZonePhotoInfo)localObject3).photoId);
+        localArrayList2.add(((QZonePhotoInfo)localObject3).time + "");
       }
-      if (MiniAppVideoPlayer.a(this.a).isPlaying()) {
-        MiniAppVideoPlayer.a(this.a).pause();
-      }
-      bejn.c().post(new MiniAppVideoPlayer.7.1(this));
-      MiniAppVideoPlayer.c(this.a, false);
+      i += 1;
+    }
+    ((Bundle)localObject1).putStringArrayList("seqNum", (ArrayList)localObject2);
+    ((Bundle)localObject1).putBoolean("from_photo_wall", true);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_JavaLangString))
+    {
+      ((Bundle)localObject1).putBoolean("delete_ability", true);
+      ((Bundle)localObject1).putStringArrayList("photoIds", localArrayList1);
+      ((Bundle)localObject1).putStringArrayList("photoTimes", localArrayList2);
+    }
+    ((Bundle)localObject1).putBoolean("SHOW_MENU", true);
+    ((Bundle)localObject1).putBoolean("IS_EDIT", false);
+    ((Bundle)localObject1).putBoolean("is_use_path", true);
+    ((Bundle)localObject1).putBoolean("is_show_action", true);
+    ((Bundle)localObject1).putBoolean("is_not_show_index", true);
+    paramView.putExtras((Bundle)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_JavaLangString))
+    {
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006A80", "0X8006A80", 0, 0, "", "", "", "");
       return;
-      try
-      {
-        paramVideoPlayerProxy = new JSONObject();
-        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
-        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-        this.a.jdField_a_of_type_Behp.a("onVideoWaiting", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-      }
-      catch (JSONException paramVideoPlayerProxy)
-      {
-        paramVideoPlayerProxy.printStackTrace();
-      }
     }
-    MiniAppVideoPlayer.a(this.a).start();
-    this.a.postDelayed(new MiniAppVideoPlayer.7.2(this), 200L);
-    if (!this.a.jdField_a_of_type_Behp.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService"))
-    {
-      MiniAppVideoPlayer.a(this.a, "play");
-      MiniAppVideoPlayer.e(this.a);
-      bejn.c().post(new MiniAppVideoPlayer.7.3(this));
-      paramVideoPlayerProxy = new StringBuilder().append("onVideoPrepared: ").append(MiniAppVideoPlayer.a(this.a).getDuration()).append(" ").append(MiniAppVideoPlayer.a(this.a).getCurrentPostion()).append(" ");
-      if (Looper.getMainLooper().getThread() != Thread.currentThread()) {
-        break label464;
-      }
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        Log.i("MiniAppVideoPlayer", bool);
-        MiniAppVideoPlayer.a(this.a, 200L);
-        return;
-        try
-        {
-          paramVideoPlayerProxy = new JSONObject();
-          paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
-          paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-          this.a.jdField_a_of_type_Behp.a("onVideoPlay", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-          betc.a("MiniAppVideoPlayer", "OnVideoPreparedListener - onVideoPrepared evaluateSubcribeJS onVideoPlay = " + paramVideoPlayerProxy.toString());
-        }
-        catch (JSONException paramVideoPlayerProxy)
-        {
-          paramVideoPlayerProxy.printStackTrace();
-        }
-      }
-      break;
-      label464:
-      bool = false;
-    }
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006A94", "0X8006A94", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beot
  * JD-Core Version:    0.7.0.1
  */

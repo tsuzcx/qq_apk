@@ -1,28 +1,20 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.haoliyou.JefsClass.8;
+
 public class aslz
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  public aslz(JefsClass.8 param8) {}
   
-  public aslx a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new aslx(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null);
-  }
-  
-  public aslz a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public aslz a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aslz
  * JD-Core Version:    0.7.0.1
  */

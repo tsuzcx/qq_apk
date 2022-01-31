@@ -20,7 +20,7 @@ public class LocalCache$ACacheManager
   private final Map<File, Long> lastUsageDates = Collections.synchronizedMap(new HashMap());
   private final long sizeLimit;
   
-  private LocalCache$ACacheManager(LocalCache paramLocalCache, File paramFile, long paramLong, int paramInt)
+  private LocalCache$ACacheManager(File paramFile, long paramLong, int paramInt)
   {
     this.cacheDir = paramFile;
     this.sizeLimit = paramLong;
@@ -151,7 +151,7 @@ public class LocalCache$ACacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.LocalCache.ACacheManager
  * JD-Core Version:    0.7.0.1
  */

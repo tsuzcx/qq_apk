@@ -1,27 +1,19 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import mqq.util.WeakReference;
+import java.util.Comparator;
 
-class agto
-  implements agmh
+final class agto
+  implements Comparator<agtj>
 {
-  agto(agtn paramagtn) {}
-  
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public int a(agtj paramagtj1, agtj paramagtj2)
   {
-    if (bkpv.a((Activity)this.a.a.get(), paramLocalMediaInfo))
-    {
-      agtn.a(this.a, paramLocalMediaInfo);
-      xhb.a("mystatus_localupload", "pic_select", 0, 0, new String[0]);
-      return;
+    if ((paramagtj1 == null) || (paramagtj2 == null)) {
+      return 0;
     }
-    ((NewPhotoListActivity)this.a.a.get()).d();
+    return Float.compare(paramagtj1.a(), paramagtj2.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agto
  * JD-Core Version:    0.7.0.1
  */

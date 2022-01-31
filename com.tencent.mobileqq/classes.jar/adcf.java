@@ -1,35 +1,32 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditScrollerView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public class adcf
-  implements Animator.AnimatorListener
+class adcf
+  implements Animation.AnimationListener
 {
-  public adcf(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt) {}
+  adcf(adce paramadce, boolean paramBoolean) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView) != null)
+    if ((this.jdField_a_of_type_Boolean) && (adce.a(this.jdField_a_of_type_Adce) != null) && (adce.a(this.jdField_a_of_type_Adce).size() >= 2)) {
+      adce.a(this.jdField_a_of_type_Adce).sendEmptyMessageDelayed(1688002, 1400L);
+    }
+    if (adce.a(this.jdField_a_of_type_Adce) != null)
     {
-      if (this.jdField_a_of_type_Int == 0) {
-        VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView).j();
-      }
+      adce.a(this.jdField_a_of_type_Adce).a();
+      adce.a(this.jdField_a_of_type_Adce, null);
     }
-    else {
-      return;
-    }
-    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView).k();
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcf
  * JD-Core Version:    0.7.0.1
  */

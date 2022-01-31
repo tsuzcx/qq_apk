@@ -1,156 +1,93 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.QQLSUnlockActivity;
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import org.json.JSONObject;
 
 public class abuo
-  extends Handler
+  extends abul
 {
-  public abuo(QQLSActivity paramQQLSActivity, Looper paramLooper)
+  private boolean a(absf paramabsf)
   {
-    super(paramLooper);
+    Object localObject = null;
+    if ((this.jdField_a_of_type_Abum.a() instanceof behg)) {
+      localObject = (behg)this.jdField_a_of_type_Abum.a();
+    }
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((behg)localObject).a();
+    if (localObject == null) {
+      return false;
+    }
+    ((zbj)localObject).a(paramabsf);
+    return true;
   }
   
-  public void handleMessage(Message paramMessage)
+  private boolean a(JSONObject paramJSONObject)
   {
-    switch (paramMessage.what)
+    behg localbehg = null;
+    if ((this.jdField_a_of_type_Abum.a() instanceof behg)) {
+      localbehg = (behg)this.jdField_a_of_type_Abum.a();
+    }
+    if (localbehg == null) {
+      return false;
+    }
+    Bundle localBundle = new Bundle();
+    String str1 = paramJSONObject.optString("title");
+    String str2 = paramJSONObject.optString("desc");
+    String str3 = paramJSONObject.optString("shareUrl");
+    paramJSONObject = paramJSONObject.optString("imageUrl");
+    String str4 = this.jdField_a_of_type_Absi.a().b;
+    if (!TextUtils.isEmpty(str4))
+    {
+      localBundle.putString("source_name", str4);
+      localBundle.putString("source_icon", this.jdField_a_of_type_Absi.a().e);
+    }
+    localBundle.putInt("extra_url_info_from", 1);
+    return localbehg.a(str1, str2, str3, paramJSONObject, localBundle);
+  }
+  
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull absf paramabsf)
+  {
+    switch (paramInt)
     {
     default: 
-    case 5: 
-    case 6: 
-    case 4: 
-    case 3: 
-    case 1: 
-    case 2: 
-    case 16: 
-    case 7: 
-    case 8: 
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-      do
-      {
-        boolean bool;
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                } while (QQLSActivity.b(this.a));
-                if (hasMessages(5)) {
-                  removeMessages(5);
-                }
-                QQLSActivity.b(this.a);
-                if (QQLSActivity.a(this.a) != null) {
-                  ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
-                }
-                QQLSActivity.b(this.a).setVisibility(0);
-                paramMessage = obtainMessage(3);
-                if (hasMessages(3)) {
-                  removeMessages(3);
-                }
-                sendMessageDelayed(paramMessage, 1200L);
-                return;
-              } while (QQLSActivity.b(this.a));
-              if (hasMessages(6)) {
-                removeMessages(6);
-              }
-              QQLSActivity.b(this.a);
-              if (QQLSActivity.a(this.a) != null) {
-                ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(QQLSActivity.a(this.a).getWindowToken(), 0);
-              }
-              QQLSActivity.a(this.a).setVisibility(0);
-              paramMessage = obtainMessage(4);
-              if (hasMessages(4)) {
-                removeMessages(4);
-              }
-              sendMessageDelayed(paramMessage, 1200L);
-              return;
-              QQLSActivity.a(this.a).setVisibility(4);
-              return;
-              QQLSActivity.b(this.a).setVisibility(4);
-              return;
-              this.a.c();
-              if (QLog.isColorLevel()) {
-                QLog.d("QQLSActivity", 2, "message send finish");
-              }
-              QQLSActivity.a(this.a);
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("QQLSActivity", 2, "message finish activity finish");
-              }
-              this.a.finish();
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.d("QQLSActivity", 2, "message finish activity finish, enter aio");
-              }
-              this.a.finish();
-              return;
-            } while ((QQLSActivity.c(this.a)) || (!QQLSActivity.d(this.a)));
-            if (QLog.isColorLevel()) {
-              QLog.d("QQLSActivity", 2, "sensor don't callback 1000ms later");
-            }
-            QQLSActivity.c(this.a);
-            return;
-            this.a.a();
-            return;
-          } while (QQLSActivity.a(this.a));
-          axqy.b(QQLSActivity.a(this.a), "CliOper", "", "", "0X800444B", "0X800444B", 0, 0, "", "", "", "");
-          paramMessage = new Intent(this.a, QQLSUnlockActivity.class);
-          this.a.startActivity(paramMessage);
-          return;
-          paramMessage = new Intent(this.a, QQLSActivity.class);
-          paramMessage.addFlags(131072);
-          this.a.startActivity(paramMessage);
-          return;
-          bool = QQLSActivity.e(this.a);
-          if (QLog.isColorLevel()) {
-            QLog.d("QQLSActivity", 2, "LS MSG_CHECKISLOCK" + bool);
-          }
-        } while (bool);
-        this.a.finish();
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "check sensor HasCallBack ====" + QQLSActivity.c(this.a));
-        }
-        if (QQLSActivity.c(this.a))
-        {
-          QQLSActivity.d(this.a);
-          return;
-        }
-      } while (!QQLSActivity.d(this.a));
-      QQLSActivity.c(this.a);
-      return;
-    case 13: 
-      QQLSActivity.e(this.a);
-      return;
-    case 14: 
-      QQLSActivity.a(this.a, false);
-      return;
-    case 15: 
-      QQLSActivity.f(this.a);
-      return;
+      return false;
+    case 25: 
+      if (a(paramJSONObject)) {
+        abvm.a(paramabsf, absh.a);
+      }
+      break;
     }
-    this.a.a.a(QQLSActivity.a(this.a), (String)paramMessage.obj, 1008, false, -1, false);
-    this.a.b();
+    for (;;)
+    {
+      return true;
+      abvm.a(paramabsf, -1, "");
+      continue;
+      abvm.a(paramabsf, absh.a);
+      paramString = this.jdField_a_of_type_Absi.a();
+      if ((paramString == null) || (paramString.isFinishing()))
+      {
+        QLog.e("WVUIModule", 1, "execute activity is null or finish");
+        return false;
+      }
+      paramString.finish();
+      continue;
+      abvm.a(paramabsf, absh.a);
+      continue;
+      if (a(paramabsf)) {
+        abvm.a(paramabsf, absh.a);
+      } else {
+        abvm.a(paramabsf, -1, "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abuo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,86 +1,87 @@
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.view.ApolloGameProcessBar;
+
 public class algv
-  extends algo
+  extends bdfq
 {
-  public int a;
-  public String a;
-  public algw[] a;
-  public int b = -1;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e = 0;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ApolloGameProcessBar jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar;
   
-  public algv()
+  public algv(Context paramContext)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfAlgw = null;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 0;
+    super(paramContext, 2131755199);
+    a(paramContext);
   }
   
-  public static boolean a(algv paramalgv)
+  @TargetApi(16)
+  private void a(Context paramContext)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramalgv != null)
-    {
-      bool1 = bool2;
-      if (paramalgv.jdField_a_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (paramalgv.b == 0)
-        {
-          bool1 = bool2;
-          if (paramalgv.jdField_a_of_type_ArrayOfAlgw != null)
-          {
-            bool1 = bool2;
-            if (paramalgv.jdField_a_of_type_ArrayOfAlgw[0].jdField_c_of_type_Int == 0)
-            {
-              bool1 = bool2;
-              if (paramalgv.jdField_a_of_type_ArrayOfAlgw[0].a != null) {
-                bool1 = true;
-              }
-            }
-          }
-        }
-      }
+    LinearLayout localLinearLayout = new LinearLayout(paramContext);
+    Object localObject = new FrameLayout.LayoutParams(-2, -2, 17);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar = new ApolloGameProcessBar(paramContext, 2130838496, 2130838498);
+    localObject = new LinearLayout.LayoutParams(aekt.a(80.0F, paramContext.getResources()), aekt.a(80.0F, paramContext.getResources()));
+    ((LinearLayout.LayoutParams)localObject).setMargins(aekt.a(60.5F, paramContext.getResources()), 0, aekt.a(60.5F, paramContext.getResources()), 0);
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localLinearLayout.addView(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar);
+    localObject = new TextView(paramContext);
+    ((TextView)localObject).setText(alpo.a(2131700760));
+    ((TextView)localObject).setTextSize(16.0F);
+    ((TextView)localObject).setTextColor(Color.parseColor("#ababab"));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    localLayoutParams.setMargins(0, aekt.a(10.0F, paramContext.getResources()), 0, 0);
+    localLayoutParams.gravity = 1;
+    ((TextView)localObject).setLayoutParams(localLayoutParams);
+    localLinearLayout.addView((View)localObject);
+    this.jdField_a_of_type_AndroidWidgetButton = new Button(paramContext);
+    this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131700751));
+    this.jdField_a_of_type_AndroidWidgetButton.setTextSize(14.0F);
+    this.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#ffffff"));
+    this.jdField_a_of_type_AndroidWidgetButton.setBackground(paramContext.getResources().getDrawable(2130838497));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new algw(this));
+    localObject = new LinearLayout.LayoutParams(aekt.a(100.0F, paramContext.getResources()), aekt.a(30.0F, paramContext.getResources()));
+    ((LinearLayout.LayoutParams)localObject).setMargins(0, aekt.a(35.0F, paramContext.getResources()), 0, 0);
+    ((LinearLayout.LayoutParams)localObject).gravity = 1;
+    this.jdField_a_of_type_AndroidWidgetButton.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetButton);
+    getWindow().setDimAmount(0.85F);
+    getWindow().setGravity(17);
+    setContentView(localLinearLayout);
+    setCanceledOnTouchOutside(false);
+    setCancelable(false);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new algx(this));
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(paramOnClickListener);
     }
-    return bool1;
   }
   
-  public byte[] a()
+  public void setProgress(int paramInt)
   {
-    return this.jdField_a_of_type_ArrayOfAlgw[0].a;
-  }
-  
-  public String toString()
-  {
-    if (this.jdField_a_of_type_ArrayOfAlgw != null)
-    {
-      String str1 = "ImageTags{";
-      int i = 0;
-      for (;;)
-      {
-        str2 = str1;
-        if (i >= this.jdField_a_of_type_ArrayOfAlgw.length) {
-          break;
-        }
-        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfAlgw[i];
-        i += 1;
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar != null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloGameProcessBar.setProgress(paramInt);
     }
-    String str2 = "null";
-    return "ARCloudSceneRecogResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algv
  * JD-Core Version:    0.7.0.1
  */

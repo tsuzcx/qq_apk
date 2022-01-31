@@ -1,75 +1,46 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
-public class amua
-  extends ampa<amub>
+class amua
+  extends amvh
 {
-  public int a()
-  {
-    return 530;
-  }
+  amua(amtv paramamtv) {}
   
-  @NonNull
-  public amub a(int paramInt)
-  {
-    return new amub();
-  }
-  
-  @Nullable
-  public amub a(amph[] paramArrayOfamph)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PicShareToWXConfigProcessor", 2, "onParsed");
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadSuccess");
     }
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
-    {
-      paramArrayOfamph = paramArrayOfamph[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("PicShareToWXConfigProcessor", 2, "onParsed, content:" + paramArrayOfamph);
-      }
-      return amub.a(paramArrayOfamph);
-    }
-    return new amub();
-  }
-  
-  public Class a()
-  {
-    return amub.class;
+    Message localMessage = amtv.a(this.a).obtainMessage();
+    localMessage.what = 100;
+    localMessage.sendToTarget();
   }
   
   public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PicShareToWXConfigProcessor", 2, "onReqFailed");
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadProcess process=" + paramInt);
     }
+    Message localMessage = amtv.a(this.a).obtainMessage();
+    localMessage.what = 102;
+    localMessage.arg1 = paramInt;
+    localMessage.sendToTarget();
   }
   
-  public void a(amub paramamub)
+  public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PicShareToWXConfigProcessor", 2, "onUpdate");
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onArSoDownloadFail");
     }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    Message localMessage = amtv.a(this.a).obtainMessage();
+    localMessage.what = 101;
+    localMessage.sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amua
  * JD-Core Version:    0.7.0.1
  */

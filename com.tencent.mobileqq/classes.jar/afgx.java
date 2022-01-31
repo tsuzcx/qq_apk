@@ -1,26 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceSingleStruct;
 
-public class afgx
-  implements afdr
+class afgx
+  implements army
 {
-  public afgx(TroopView paramTroopView) {}
+  afgx(afgw paramafgw, MessageForDeviceSingleStruct paramMessageForDeviceSingleStruct) {}
   
-  public void a(View paramView, int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "AddContactTroopClassifyAdapter.onItemClickListener onItemClick. position:" + paramInt);
-    }
-    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
-    TroopView.b(this.a, paramInt);
-    TroopView.a(this.a).setCurrentItem(paramInt, false);
+    ((ztk)this.jdField_a_of_type_Afgw.a.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
+    afgv.a(this.jdField_a_of_type_Afgw.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceSingleStruct);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afgx
  * JD-Core Version:    0.7.0.1
  */

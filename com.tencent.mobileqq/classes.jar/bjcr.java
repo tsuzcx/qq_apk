@@ -1,82 +1,56 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
 public class bjcr
-  implements Cloneable
 {
-  public int a;
+  public final int a;
+  public final long a;
   public String a;
-  public List<MusicItemInfo> a;
-  public boolean a;
-  public boolean b = true;
+  public final int b;
+  public final long b;
+  public final int c;
+  public final long c;
+  public final int d;
+  public final long d;
+  public final long e;
+  public final long f;
   
-  public bjcr() {}
-  
-  public bjcr(JSONObject paramJSONObject)
+  private bjcr(ByteBuffer paramByteBuffer, int paramInt)
   {
-    if (paramJSONObject.has("categoryName")) {
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("categoryName");
-    }
-    if (paramJSONObject.has("tagid")) {
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("tagid");
-    }
-    if (paramJSONObject.has("enabled")) {
-      this.b = paramJSONObject.getBoolean("enabled");
-    }
-    this.jdField_a_of_type_Boolean = "1".equals(paramJSONObject.optString("random_position"));
-    if (paramJSONObject.has("content"))
+    switch (paramInt)
     {
-      paramJSONObject = paramJSONObject.getJSONArray("content");
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      while (i < paramJSONObject.length())
-      {
-        MusicItemInfo localMusicItemInfo = new MusicItemInfo(paramJSONObject.optString(i));
-        localMusicItemInfo.mTagName = this.jdField_a_of_type_JavaLangString;
-        localArrayList.add(localMusicItemInfo);
-        i += 1;
-      }
-      this.jdField_a_of_type_JavaUtilList = localArrayList;
+    default: 
+      throw new IOException("Unexpected elf class: " + paramInt);
+    case 1: 
+      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_c_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_d_of_type_Long = paramByteBuffer.getInt();
+      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
+      this.e = paramByteBuffer.getInt();
     }
-  }
-  
-  public bjcr a()
-  {
-    try
+    for (this.f = paramByteBuffer.getInt();; this.f = paramByteBuffer.getLong())
     {
-      bjcr localbjcr = (bjcr)super.clone();
-      return localbjcr;
+      this.jdField_a_of_type_JavaLangString = null;
+      return;
+      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_a_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_b_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_c_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_d_of_type_Long = paramByteBuffer.getLong();
+      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
+      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
+      this.e = paramByteBuffer.getLong();
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      localCloneNotSupportedException.printStackTrace();
-    }
-    return null;
-  }
-  
-  public MusicItemInfo a(int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        MusicItemInfo localMusicItemInfo = (MusicItemInfo)localIterator.next();
-        if (localMusicItemInfo.mItemId == paramInt) {
-          return localMusicItemInfo;
-        }
-      }
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjcr
  * JD-Core Version:    0.7.0.1
  */

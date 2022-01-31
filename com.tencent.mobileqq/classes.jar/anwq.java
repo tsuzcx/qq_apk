@@ -1,119 +1,25 @@
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiBaseInfo;
-import com.tencent.mobileqq.emoticon.QQSysAndEmojiBaseInfo.QQEmoConfigItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.PreviewCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.PreviewCallbackForward.1;
 
 public class anwq
-  extends QQSysAndEmojiBaseInfo
+  implements Camera.PreviewCallback
 {
-  public int a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilHashMap != null) && (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt)))) {}
-    for (int i = Integer.parseInt(((QQSysAndEmojiBaseInfo.QQEmoConfigItem)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt))).QCid);; i = -1)
-    {
-      int j = i;
-      if (i == -1)
-      {
-        j = i;
-        if (paramInt >= 0)
-        {
-          j = i;
-          if (paramInt < ayjy.d.length) {
-            j = ayjy.d[paramInt];
-          }
-        }
-      }
-      return j;
-    }
-  }
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final anwg jdField_a_of_type_Anwg;
+  private final anwh jdField_a_of_type_Anwh;
   
-  public ArrayList<Integer> a()
+  @TargetApi(8)
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList;
-    }
-    ArrayList localArrayList = new ArrayList(anyf.b);
-    int i = 0;
-    while (i < anyf.b)
-    {
-      localArrayList.add(Integer.valueOf(i));
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    Object localObject = a();
-    if (localObject != null)
-    {
-      JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("emoji");
-      if (localJSONArray != null)
-      {
-        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-        }
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-        }
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        long l = System.currentTimeMillis();
-        int i = 0;
-        for (;;)
-        {
-          if (i < localJSONArray.length())
-          {
-            localObject = null;
-            try
-            {
-              JSONObject localJSONObject = localJSONArray.getJSONObject(i);
-              localObject = localJSONObject;
-              localObject = (QQSysAndEmojiBaseInfo.QQEmoConfigItem)arma.a((JSONObject)localObject, QQSysAndEmojiBaseInfo.QQEmoConfigItem.class);
-            }
-            catch (JSONException localJSONException)
-            {
-              try
-              {
-                int j = Integer.parseInt(((QQSysAndEmojiBaseInfo.QQEmoConfigItem)localObject).AQLid);
-                this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localObject);
-                if (!a((QQSysAndEmojiBaseInfo.QQEmoConfigItem)localObject)) {
-                  this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(j));
-                }
-                i += 1;
-                continue;
-                localJSONException = localJSONException;
-                localJSONException.printStackTrace();
-              }
-              catch (NumberFormatException localNumberFormatException)
-              {
-                for (;;)
-                {
-                  QLog.d("QQSysAndEmojiBaseInfo", 1, new Object[] { "error occur in emoji AQLid:", ((QQSysAndEmojiBaseInfo.QQEmoConfigItem)localObject).AQLid });
-                }
-              }
-            }
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QQSysAndEmojiBaseInfo", 2, new Object[] { "emoji configItem:", Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()), " ,orderlist:", Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
-        }
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    axqy.b(null, "dc00898", "", "", "0X800A7A3", "0X800A7A3", a(paramInt1), 0, String.valueOf(paramInt2), "", "", "");
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PreviewCallbackForward.1(this, paramArrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwq
  * JD-Core Version:    0.7.0.1
  */

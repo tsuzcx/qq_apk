@@ -6,14 +6,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.text.TextUtils;
-import avpr;
-import biam;
-import bian;
+import axhn;
+import bkcj;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.statistics.UEC;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.Foreground;
+import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
 public class RedTouchLifeTimeManager
@@ -21,7 +22,7 @@ public class RedTouchLifeTimeManager
 {
   private static RedTouchLifeTimeManager jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchLifeTimeManager;
   private long jdField_a_of_type_Long;
-  Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new avpr(this);
+  Application.ActivityLifecycleCallbacks jdField_a_of_type_AndroidAppApplication$ActivityLifecycleCallbacks = new axhn(this);
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private String b;
@@ -62,16 +63,16 @@ public class RedTouchLifeTimeManager
     this.jdField_a_of_type_Boolean = false;
     long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
     QLog.i("RedTouchLifeTimeManager", 1, "triggleReport time = " + l + " class name " + this.jdField_a_of_type_JavaLangString);
-    bian localbian = new bian();
-    localbian.d = 133;
-    localbian.jdField_e_of_type_Int = ((int)l);
-    localbian.g = String.valueOf(this.c);
-    localbian.b = String.valueOf(this.d);
-    localbian.jdField_a_of_type_Int = 1;
-    localbian.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
-    localbian.jdField_e_of_type_JavaLangString = "vab_red";
-    localbian.f = "vab_red";
-    biam.a().a(localbian);
+    bkcj localbkcj = new bkcj();
+    localbkcj.d = 133;
+    localbkcj.jdField_e_of_type_Int = ((int)l);
+    localbkcj.g = String.valueOf(this.c);
+    localbkcj.b = String.valueOf(this.d);
+    localbkcj.jdField_a_of_type_Int = 1;
+    localbkcj.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
+    localbkcj.jdField_e_of_type_JavaLangString = "vab_red";
+    localbkcj.f = "vab_red";
+    ThreadManager.getSubThreadHandler().post(new RedTouchLifeTimeManager.1(this, localbkcj));
   }
   
   public void a(String paramString)
@@ -112,7 +113,7 @@ public class RedTouchLifeTimeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchLifeTimeManager
  * JD-Core Version:    0.7.0.1
  */

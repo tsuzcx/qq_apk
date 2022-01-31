@@ -1,63 +1,39 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.biz.coupon.CouponActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
 
 public class naw
-  extends WebViewPlugin
 {
-  public naw()
-  {
-    this.mPluginNameSpace = "coupon";
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void a(String paramString)
+  public byte[] a()
   {
-    Activity localActivity = this.mRuntime.a();
-    int i;
-    if ((localActivity instanceof CouponActivity))
+    if (TextUtils.isEmpty(this.a)) {}
+    do
     {
-      localObject = (CouponActivity)localActivity;
-      i = ((CouponActivity)localObject).a;
-      if ((i & 0x8) != 0)
+      return null;
+      try
       {
-        paramString = new Intent();
-        paramString.putExtra("toPage", 2);
-        ((CouponActivity)localObject).setResult(-1, paramString);
-        ((CouponActivity)localObject).superFinish();
+        byte[] arrayOfByte = this.a.getBytes("ISO-8859-1");
+        return arrayOfByte;
       }
-    }
-    else
-    {
-      return;
-    }
-    Object localObject = new Intent(localActivity, CouponActivity.class);
-    ((Intent)localObject).putExtra("from", (i | 0xA) & 0xE);
-    if (!TextUtils.isEmpty(paramString)) {
-      ((Intent)localObject).putExtra("jsonParams", paramString);
-    }
-    localActivity.startActivity((Intent)localObject);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ("coupon".equals(paramString2))
-    {
-      if (("goToCouponHomePage".equals(paramString3)) && (paramVarArgs.length == 1))
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
-        a(paramVarArgs[0]);
-        paramJsBridgeListener.a(null);
+        localUnsupportedEncodingException.printStackTrace();
       }
-      return true;
-    }
-    return false;
+    } while (!QLog.isColorLevel());
+    QLog.d("AnonymousChatHelper", 2, "getByteAnId UnsupportedEncodingException");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     naw
  * JD-Core Version:    0.7.0.1
  */

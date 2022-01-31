@@ -1,25 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoLayerUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 
-class mhh
-  implements View.OnClickListener
+public class mhh
+  implements DialogInterface.OnDismissListener
 {
-  mhh(mha parammha) {}
+  public mhh(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!mha.a(this.a))
-    {
-      this.a.c();
-      mha.a(this.a).a.c(0L);
-    }
+    this.a.b("onDismiss");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mhh
  * JD-Core Version:    0.7.0.1
  */

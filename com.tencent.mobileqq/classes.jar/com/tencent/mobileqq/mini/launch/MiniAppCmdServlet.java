@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Process;
 import android.os.RemoteException;
 import android.text.TextUtils;
-import betq;
+import bgrx;
 import com.tencent.mobileqq.mini.apkg.ApkgMainProcessManager;
 import com.tencent.mobileqq.mini.apkg.BaseLibManager;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
@@ -136,11 +136,11 @@ public class MiniAppCmdServlet
         QLog.i("MiniAppCmdServlet", 1, "[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:" + i);
       } while ((i != 0) && (i != 1));
       paramBundle = new Bundle();
-      Object localObject = betq.a();
+      Object localObject = bgrx.a();
       if (i == 1) {}
       for (i = j;; i = 3)
       {
-        paramBundle.putParcelable("engineChannel", ((betq)localObject).a(i));
+        paramBundle.putParcelable("engineChannel", ((bgrx)localObject).a(i));
         if (paramCmdCallback == null) {
           break;
         }
@@ -171,7 +171,7 @@ public class MiniAppCmdServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.MiniAppCmdServlet
  * JD-Core Version:    0.7.0.1
  */

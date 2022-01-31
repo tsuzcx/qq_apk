@@ -1,18 +1,56 @@
-import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class yzv
-  implements zbb
+class yzv
+  implements nbs
 {
-  public yzv(GdtCanvasPictureComponentView paramGdtCanvasPictureComponentView) {}
+  yzv(yzu paramyzu) {}
   
-  public void a(boolean paramBoolean)
+  public void loaded(String paramString, int paramInt)
   {
-    GdtCanvasPictureComponentView.a(this.a, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.i("OfflinePluginQQ", 2, "-->offline:checkOfflineUp. result: " + paramString + ", code: " + paramInt);
+    }
+    if (paramInt == 9)
+    {
+      try
+      {
+        localObject = new JSONObject(paramString);
+        paramString = (String)localObject;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          Object localObject;
+          localJSONException.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.i("OfflinePluginQQ", 2, "-->offline:checkUp loaded err:" + paramString);
+          }
+          paramString = null;
+        }
+      }
+      localObject = this.a.a.obtainMessage();
+      ((Message)localObject).arg1 = 3;
+      ((Message)localObject).obj = paramString;
+      this.a.a.sendMessage((Message)localObject);
+    }
+    while (paramInt != -1) {
+      return;
+    }
+    paramString = this.a.a.obtainMessage();
+    paramString.arg1 = 2;
+    this.a.a.sendMessage(paramString);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzv
  * JD-Core Version:    0.7.0.1
  */

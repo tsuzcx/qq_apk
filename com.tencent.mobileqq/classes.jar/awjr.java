@@ -1,30 +1,62 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.activity.ContactSearchComponentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.qphone.base.BaseConstants;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class awjr
-  implements View.OnTouchListener
 {
-  public awjr(ContactSearchComponentActivity paramContactSearchComponentActivity) {}
+  private static HashMap<Long, awjs> a = new HashMap();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(int paramInt1, int paramInt2)
   {
-    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(this.a.a)))
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+    localHashMap.put("business_type", String.valueOf(paramInt1));
+    localHashMap.put("prediction_step", String.valueOf(paramInt2));
+    azmz.a(BaseApplication.getContext()).a(null, "actPredictionData", true, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
+  {
+    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
+    long l;
+    do
     {
-      paramView = this.a.getActivity();
-      if (paramView != null) {
-        paramView.finish();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPredictionEvaluator", 2, "msgViewedInAIO, size=" + a.size());
       }
-    }
-    return false;
+      l = System.currentTimeMillis();
+    } while ((a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq))) || (a.size() >= 24));
+    paramQQAppInterface = new awjs(paramQQAppInterface, paramMessageForShortVideo, l, 0L);
+    a.put(Long.valueOf(paramMessageForShortVideo.uniseq), paramQQAppInterface);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, MessageForShortVideo paramMessageForShortVideo)
+  {
+    if (paramMessageForShortVideo.getBitValue(1) == 1) {}
+    long l;
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("ShortVideoPredictionEvaluator", 2, "msgClicked, size=" + a.size());
+        }
+        l = System.currentTimeMillis();
+      } while (!a.containsKey(Long.valueOf(paramMessageForShortVideo.uniseq)));
+      paramQQAppInterface = (awjs)a.remove(Long.valueOf(paramMessageForShortVideo.uniseq));
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.a(l);
+    paramQQAppInterface.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awjr
  * JD-Core Version:    0.7.0.1
  */

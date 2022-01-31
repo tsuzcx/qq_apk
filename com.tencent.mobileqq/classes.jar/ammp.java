@@ -1,29 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ammp
-  extends ajzk
 {
-  public ammp(LocationSelectActivity paramLocationSelectActivity) {}
-  
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
+  public static boolean a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if (paramLBSInfo != null) {}
-    for (paramLBSInfo = paramLBSInfo.a(); Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_Long) > 1200L; paramLBSInfo = null)
-    {
-      this.a.a(paramBoolean, paramLBSInfo);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("LinkStarDebugProcessor.", 2, "handleLinkStarNotifyPush. linkStarMsgType=" + paramInt + " reservedData=" + paramArrayOfByte1 + " data=" + paramArrayOfByte2);
     }
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1000);
-    localMessage.obj = new Object[] { Boolean.valueOf(paramBoolean), paramLBSInfo };
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1200L);
+    switch (paramInt)
+    {
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,21 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity.ConfessBrowserFragment;
 
-public class aeus
-  implements baos
+class aeus
+  implements View.OnClickListener
 {
-  public aeus(TroopChatPie paramTroopChatPie) {}
+  aeus(aeur paramaeur) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (this.a.g.equals(paramString)))
-    {
-      TroopChatPie.b(this.a, true);
-      paramString = (adjp)this.a.a(23);
-      if (paramString != null) {
-        paramString.a(true);
-      }
-    }
-    do
-    {
-      return;
-      TroopChatPie.b(this.a, false);
-      paramString = (adjp)this.a.a(23);
-    } while (paramString == null);
-    paramString.a(false);
+    this.a.a.a().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeus
  * JD-Core Version:    0.7.0.1
  */

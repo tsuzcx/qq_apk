@@ -1,20 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 
 class bhuc
-  extends BroadcastReceiver
+  implements View.OnKeyListener
 {
-  bhuc(bhty parambhty) {}
+  bhuc(bhua parambhua) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    bhty.a(this.a, paramIntent);
+    this.a.c();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhuc
  * JD-Core Version:    0.7.0.1
  */

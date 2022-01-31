@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acof
-  implements DialogInterface.OnClickListener
+  extends apxc
 {
-  public acof(UpgradeActivity paramUpgradeActivity) {}
+  public acof(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean)
   {
-    this.a.finish();
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acof
  * JD-Core Version:    0.7.0.1
  */

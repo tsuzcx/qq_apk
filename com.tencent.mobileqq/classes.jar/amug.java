@@ -1,41 +1,29 @@
+import com.tencent.mobileqq.ar.ScanningData;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class amug
+  implements avwy
 {
-  private int a;
+  public amug(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData) {}
   
-  public static amug a(String paramString)
+  public void a()
   {
-    if (paramString == null) {}
-    do
-    {
-      return null;
-      try
-      {
-        amug localamug = new amug();
-        localamug.a = new JSONObject(paramString).optInt("pttWithTextSwitch", -1);
-        return localamug;
-      }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("PttWithTextSwitchBean", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanningSurfaceView", 2, "onContentClick wikiurl = " + this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
+    }
+    ScanningSurfaceView.b(this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView, this.jdField_a_of_type_ComTencentMobileqqArScanningData.c);
+    azmj.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
   }
   
-  public boolean a()
+  public void b()
   {
-    return this.a == 1;
-  }
-  
-  public String toString()
-  {
-    return "open:" + this.a;
+    this.jdField_a_of_type_ComTencentMobileqqArScanningSurfaceView.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amug
  * JD-Core Version:    0.7.0.1
  */

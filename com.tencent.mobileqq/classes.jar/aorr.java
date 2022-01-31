@@ -1,22 +1,47 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelFileTabView.1;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aorr
-  implements Comparator<Long>
+  extends aopw<aorq>
 {
-  public aorr(QfileLocalFileDelFileTabView.1 param1) {}
-  
-  public int a(Long paramLong1, Long paramLong2)
+  public int a()
   {
-    if (paramLong1.equals(paramLong2)) {
-      return 1;
-    }
-    return (int)(paramLong1.longValue() - paramLong2.longValue());
+    return 359;
+  }
+  
+  @NonNull
+  public aorq a()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    fx.a();
+    bdiv.a(localQQAppInterface.getApp(), localQQAppInterface.c(), "vas_font_switch_config", "reset");
+    return new aorq();
+  }
+  
+  @NonNull
+  public aorq a(aogf[] paramArrayOfaogf)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    fx.a(paramArrayOfaogf[0].a);
+    bdiv.a(localQQAppInterface.getApp(), localQQAppInterface.c(), "vas_font_switch_config", paramArrayOfaogf[0].a);
+    return new aorq();
+  }
+  
+  public Class<aorq> a()
+  {
+    return aorq.class;
+  }
+  
+  @NonNull
+  public aorq b()
+  {
+    return new aorq();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aorr
  * JD-Core Version:    0.7.0.1
  */

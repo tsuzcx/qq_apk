@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.emoticonview;
 
-import aocs;
+import apup;
 
 public class SystemAndEmojiAdapter$1
   implements Runnable
 {
-  public SystemAndEmojiAdapter$1(aocs paramaocs, EmoticonMainPanel paramEmoticonMainPanel) {}
+  public SystemAndEmojiAdapter$1(apup paramapup, int paramInt) {}
   
   public void run()
   {
-    if (this.a != null) {
-      this.a.t();
-    }
+    this.this$0.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiAdapter.1
  * JD-Core Version:    0.7.0.1
  */

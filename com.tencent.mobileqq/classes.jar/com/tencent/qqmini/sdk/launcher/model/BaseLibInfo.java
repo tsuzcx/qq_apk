@@ -4,32 +4,31 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bere;
-import bern;
-import betc;
+import bgqv;
 import com.tencent.qqmini.sdk.launcher.annotation.JsonORM;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.Serializable;
 import org.json.JSONObject;
 
 public class BaseLibInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<BaseLibInfo> CREATOR = new bern();
+  public static final Parcelable.Creator<BaseLibInfo> CREATOR = new BaseLibInfo.1();
   public static final String KEY_1 = "key1";
   public static final String KEY_2 = "key2";
   public static final String KEY_3 = "key3";
   public static final String KEY_4 = "key4";
   public static final String KEY_5 = "key5";
   public static final String LOG_TAG = "BaseLibInfo";
-  @bere(a="key4")
+  @bgqv(a="key4")
   public String baseLibDesc;
-  @bere(a="key2")
+  @bgqv(a="key2")
   public String baseLibKey;
-  @bere(a="key5")
+  @bgqv(a="key5")
   public int baseLibType;
-  @bere(a="key1")
+  @bgqv(a="key1")
   public String baseLibUrl;
-  @bere(a="key3")
+  @bgqv(a="key3")
   public String baseLibVersion;
   
   public BaseLibInfo() {}
@@ -63,7 +62,7 @@ public class BaseLibInfo
       }
       catch (Exception paramJSONObject)
       {
-        betc.d("BaseLibInfo", "BaseLibInfo create from json failed ", paramJSONObject);
+        QMLog.e("BaseLibInfo", "BaseLibInfo create from json failed ", paramJSONObject);
         return null;
       }
     }
@@ -134,7 +133,7 @@ public class BaseLibInfo
     }
     catch (Exception localException)
     {
-      betc.d("BaseLibInfo", "BaseLibInfo convert to json failed ", localException);
+      QMLog.e("BaseLibInfo", "BaseLibInfo convert to json failed ", localException);
     }
     return localJSONObject;
   }
@@ -155,7 +154,7 @@ public class BaseLibInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.BaseLibInfo
  * JD-Core Version:    0.7.0.1
  */

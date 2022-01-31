@@ -1,29 +1,23 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import java.lang.ref.WeakReference;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class afph
-  implements View.OnLongClickListener
+  extends afpq
 {
-  private WeakReference<afpc> a;
-  
-  public afph(afpc paramafpc)
+  afph(aflj paramaflj)
   {
-    this.a = new WeakReference(paramafpc);
+    super(paramaflj, null);
   }
   
-  public boolean onLongClick(View paramView)
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    afpc localafpc = (afpc)this.a.get();
-    if (localafpc != null) {
-      return localafpc.onLongClick(paramView);
-    }
-    return false;
+    return new QQStoryItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afph
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
 import android.content.SharedPreferences;
-import bfhm;
 import com.tencent.qqmini.sdk.ui.MoreItem;
+import com.tencent.qqmini.sdk.utils.StorageUtil;
 import java.util.ArrayList;
 
 public class MoreItemList
@@ -21,12 +21,12 @@ public class MoreItemList
   
   private static boolean getEnableDebug(String paramString)
   {
-    return bfhm.a().getBoolean(paramString + "_debug", false);
+    return StorageUtil.getPreference().getBoolean(paramString + "_debug", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.MoreItemList
  * JD-Core Version:    0.7.0.1
  */

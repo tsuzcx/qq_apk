@@ -1,44 +1,26 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class taf
-  extends taw
+final class taf
+  implements bevy
 {
-  public static final String a;
-  public static final String b = sxm.a("StorySvc.like_feed");
-  protected tak a;
-  private boolean a;
-  protected String c;
-  
-  static
+  public void a(BaseResp paramBaseResp)
   {
-    jdField_a_of_type_JavaLangString = sxm.a("StorySvc.feed_like_list_715");
-  }
-  
-  public taf(tak paramtak, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Tak = paramtak;
-    this.c = this.jdField_a_of_type_Tak.a.feedId;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static void a(CommentLikeFeedItem paramCommentLikeFeedItem, boolean paramBoolean, int paramInt1, int paramInt2)
-  {
-    tay.a().a(new tai(paramCommentLikeFeedItem.feedId, paramBoolean, paramInt1, paramInt2), new taj());
-  }
-  
-  public void a()
-  {
-    a(this.c, this.jdField_a_of_type_Boolean);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    tay.a().a(new tag(this, paramString, paramBoolean), new tah(this));
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720019, 1).a();
+    case -2: 
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), 2, 2131720038, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     taf
  * JD-Core Version:    0.7.0.1
  */

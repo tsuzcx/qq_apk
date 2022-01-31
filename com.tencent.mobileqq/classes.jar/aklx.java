@@ -1,24 +1,46 @@
-import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
+import com.tencent.mobileqq.apollo.FriendCardApolloViewController;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aklx
-  extends ajxj
+  extends bdqc
 {
-  private aklx(GetGeneralSettings paramGetGeneralSettings) {}
+  private java.lang.ref.WeakReference<FriendCardApolloViewController> a;
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public aklx(FriendCardApolloViewController paramFriendCardApolloViewController)
   {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      this.a.a.a = 3;
-      this.a.a(7);
-      return;
+    this.a = new mqq.util.WeakReference(paramFriendCardApolloViewController);
+  }
+  
+  protected void onGetExploreMsg(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean) {
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendCardApolloViewController", 1, "[onGetExploreMsg] get info end");
+        }
+        paramObject = new JSONObject((String)paramObject);
+        if (paramObject.optInt("entry_id", -1) != 2) {
+          return;
+        }
+        FriendCardApolloViewController localFriendCardApolloViewController = (FriendCardApolloViewController)this.a.get();
+        if (localFriendCardApolloViewController == null) {
+          return;
+        }
+        FriendCardApolloViewController.a(localFriendCardApolloViewController, paramObject.optString("icon_url"));
+        QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] iconUrl:" + FriendCardApolloViewController.a(localFriendCardApolloViewController));
+        return;
+      }
+      catch (Exception paramObject) {}
+    } else if (QLog.isColorLevel()) {
+      QLog.d("FriendCardApolloViewController", 2, "[onGetExploreMsg] result:" + paramBoolean);
     }
-    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aklx
  * JD-Core Version:    0.7.0.1
  */

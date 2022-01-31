@@ -1,61 +1,23 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
 
-public abstract class aeji
-  extends Binder
-  implements aejh
+public class aeji
+  implements View.OnClickListener
 {
-  public aeji()
-  {
-    attachInterface(this, "com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-  }
+  public aeji(ReminderListFragment paramReminderListFragment) {}
   
-  public static aejh a(IBinder paramIBinder)
+  public void onClick(View paramView)
   {
-    if (paramIBinder == null) {
-      return null;
+    if (ReminderListFragment.a(this.a) != null) {
+      ReminderListFragment.a(this.a).dismiss();
     }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-    if ((localIInterface != null) && ((localIInterface instanceof aejh))) {
-      return (aejh)localIInterface;
-    }
-    return new aejj(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      a((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      b((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-    c((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeji
  * JD-Core Version:    0.7.0.1
  */

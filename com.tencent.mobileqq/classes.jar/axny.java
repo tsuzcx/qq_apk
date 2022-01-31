@@ -1,20 +1,10 @@
-public abstract class axny
+public abstract interface axny
 {
-  public Object a;
-  public boolean a;
-  
-  protected axny(Object paramObject)
-  {
-    this.a = paramObject;
-  }
-  
-  protected abstract void a();
-  
-  protected abstract void a(axnx paramaxnx);
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axny
  * JD-Core Version:    0.7.0.1
  */

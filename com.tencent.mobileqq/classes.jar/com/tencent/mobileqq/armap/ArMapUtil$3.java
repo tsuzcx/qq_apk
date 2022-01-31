@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import axrn;
+import azmz;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.HashMap;
 
@@ -14,14 +14,14 @@ public final class ArMapUtil$3
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("preloadFileCount", String.valueOf(i));
-      axrn.a(BaseApplicationImpl.getContext()).a("", "ARMAP_OFFLINE_ENTER", true, 0L, 0L, localHashMap, "", false);
+      azmz.a(BaseApplicationImpl.getContext()).a("", "ARMAP_OFFLINE_ENTER", true, 0L, 0L, localHashMap, "", false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ArMapUtil.3
  * JD-Core Version:    0.7.0.1
  */

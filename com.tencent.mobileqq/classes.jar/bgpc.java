@@ -1,41 +1,24 @@
-import android.app.Dialog;
-import android.view.Window;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.MotionEvent;
 
-public class bgpc
+public abstract interface bgpc
 {
-  private static void b(String paramString)
-  {
-    Dialog localDialog = new Dialog(BaseApplicationImpl.getApplication(), 2131755791);
-    localDialog.getWindow().setType(2003);
-    localDialog.setContentView(2131558883);
-    TextView localTextView = (TextView)localDialog.findViewById(2131365150);
-    if (localTextView != null) {
-      localTextView.setText("dump文件保存地址");
-    }
-    localTextView = (TextView)localDialog.findViewById(2131365146);
-    if ((localTextView != null) && (paramString != null)) {
-      localTextView.setText(paramString);
-    }
-    localTextView = (TextView)localDialog.findViewById(2131365135);
-    if (localTextView != null)
-    {
-      localTextView.setText(2131690596);
-      localTextView.setOnClickListener(new bgpe(localDialog));
-    }
-    localTextView = (TextView)localDialog.findViewById(2131365141);
-    if (localTextView != null)
-    {
-      localTextView.setText(2131691547);
-      localTextView.setOnClickListener(new bgpf(localDialog, paramString));
-    }
-    localDialog.show();
-  }
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract void a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  
+  public abstract void b(MotionEvent paramMotionEvent);
+  
+  public abstract void b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  
+  public abstract void c(MotionEvent paramMotionEvent);
+  
+  public abstract void c(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2);
+  
+  public abstract void d(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgpc
  * JD-Core Version:    0.7.0.1
  */

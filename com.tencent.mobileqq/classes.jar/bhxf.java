@@ -1,18 +1,12 @@
-class bhxf
-  implements ajuz
+import com.tencent.widget.SwitchExtend;
+
+public abstract interface bhxf
 {
-  bhxf(bhxe parambhxe) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
+  public abstract boolean a(SwitchExtend paramSwitchExtend);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhxf
  * JD-Core Version:    0.7.0.1
  */

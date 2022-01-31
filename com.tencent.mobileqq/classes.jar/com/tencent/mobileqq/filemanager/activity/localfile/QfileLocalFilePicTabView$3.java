@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import apug;
+import arni;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -21,7 +21,7 @@ class QfileLocalFilePicTabView$3
     if (((List)localObject).contains(this.a) == true) {
       return;
     }
-    int j = apug.a((List)localObject, this.a.b());
+    int j = arni.a((List)localObject, this.a.b());
     int i = j;
     if (j < 0) {
       i = 0;
@@ -32,7 +32,7 @@ class QfileLocalFilePicTabView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView.3
  * JD-Core Version:    0.7.0.1
  */

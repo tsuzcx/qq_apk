@@ -1,32 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyScrollViewSwitcher;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.widget.AdapterView;
 
 public class rtl
-  extends Handler
+  extends pdi
 {
-  private WeakReference a;
-  
-  public rtl(ReadInJoyScrollViewSwitcher paramReadInJoyScrollViewSwitcher)
+  public rtl(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = new WeakReference(paramReadInJoyScrollViewSwitcher);
+    super(paramString);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(pdc parampdc)
   {
-    super.handleMessage(paramMessage);
-    paramMessage = (ReadInJoyScrollViewSwitcher)this.a.get();
-    if (paramMessage != null)
-    {
-      paramMessage.a();
-      paramMessage.b();
-    }
+    parampdc.a(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rtl
  * JD-Core Version:    0.7.0.1
  */

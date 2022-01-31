@@ -1,212 +1,47 @@
-import android.app.Dialog;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ark.image.PhotoPreviewLogicArk.1.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.CountDownProgressBar;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class anmo
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  public anmo(HotChatFlashPicActivity paramHotChatFlashPicActivity) {}
+  anmo(anmn paramanmn) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.hotchat", 2, "handleMessage,msg:" + paramMessage.what);
-    }
-    Object localObject;
-    switch (paramMessage.what)
+    ((NewPhotoPreviewActivity)this.a.mActivity).sendBtn.setClickable(false);
+    if (anmn.a(this.a).selectedPhotoList.size() > 0)
     {
-    case 6: 
-    default: 
-    case 1: 
-    case 0: 
-    case 2: 
-    case 3: 
-      do
+      if (QLog.isColorLevel())
       {
-        int i;
-        do
+        paramView = new StringBuilder(anmn.b(this.a).selectedPhotoList.size() * 128);
+        int i = 0;
+        while (i < anmn.c(this.a).selectedPhotoList.size())
         {
-          return false;
-          HotChatFlashPicActivity.a(this.a).setVisibility(0);
-          HotChatFlashPicActivity.a(this.a).setOnTouchListener(this.a);
-          HotChatFlashPicActivity.b(this.a).setVisibility(0);
-          HotChatFlashPicActivity.a(this.a).setImageResource(2130842032);
-          if (HotChatFlashPicActivity.b(this.a)) {
-            HotChatFlashPicActivity.a(this.a).setText(2131693353);
-          }
-          while (HotChatFlashPicActivity.a(this.a).a())
-          {
-            HotChatFlashPicActivity.a(this.a).b();
-            return false;
-            HotChatFlashPicActivity.a(this.a).setText(2131690972);
-          }
-          localObject = (String)paramMessage.obj;
-          if (!TextUtils.isEmpty((CharSequence)localObject))
-          {
-            paramMessage = new File((String)localObject);
-            if ((!((String)localObject).endsWith(HotChatFlashPicActivity.a(this.a).c)) && (HotChatFlashPicActivity.a(this.a).d))
-            {
-              if (!HotChatFlashPicActivity.a(this.a).b)
-              {
-                HotChatFlashPicActivity.a(this.a, true);
-                HotChatFlashPicActivity.a(this.a).a(HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Long, HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Int, 2);
-                return false;
-              }
-              HotChatFlashPicActivity.a(this.a).sendEmptyMessage(1);
-              return false;
-            }
-            localObject = URLDrawable.URLDrawableOptions.obtain();
-            DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
-            ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = localDisplayMetrics.widthPixels;
-            ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = localDisplayMetrics.heightPixels;
-            ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = aywm.a;
-            ((URLDrawable.URLDrawableOptions)localObject).mUseExifOrientation = true;
-            ((URLDrawable.URLDrawableOptions)localObject).mUseMemoryCache = false;
-            paramMessage = URLDrawable.getDrawable(paramMessage, (URLDrawable.URLDrawableOptions)localObject);
-            HotChatFlashPicActivity.a(this.a).setTag(paramMessage);
-            HotChatFlashPicActivity.a(this.a).setVisibility(0);
-            HotChatFlashPicActivity.a(this.a).setOnTouchListener(this.a);
-            if (HotChatFlashPicActivity.c(this.a)) {
-              HotChatFlashPicActivity.b(this.a).setVisibility(0);
-            }
-            HotChatFlashPicActivity.c(this.a, true);
-            HotChatFlashPicActivity.a(this.a).setImageResource(2130842034);
-            if (HotChatFlashPicActivity.b(this.a)) {
-              HotChatFlashPicActivity.a(this.a).setText(2131693357);
-            }
-            while (HotChatFlashPicActivity.a(this.a).a())
-            {
-              HotChatFlashPicActivity.a(this.a).b();
-              return false;
-              HotChatFlashPicActivity.a(this.a).setText(2131690982);
-            }
-          }
-          HotChatFlashPicActivity.a(this.a).sendEmptyMessage(1);
-          return false;
-          i = paramMessage.arg1;
-        } while ((!HotChatFlashPicActivity.a(this.a).a()) || (HotChatFlashPicActivity.a(this.a).d));
-        HotChatFlashPicActivity.a(this.a).a(i);
-        return false;
-      } while (HotChatFlashPicActivity.d(this.a));
-      HotChatFlashPicActivity.d(this.a, true);
-      HotChatFlashPicActivity.b(this.a).setVisibility(8);
-      if (HotChatFlashPicActivity.a(this.a).getTag() != null)
-      {
-        HotChatFlashPicActivity.a(this.a).setVisibility(0);
-        HotChatFlashPicActivity.a(this.a).setImageDrawable((URLDrawable)HotChatFlashPicActivity.a(this.a).getTag());
-      }
-      HotChatFlashPicActivity.a(this.a).setVisibility(0);
-      HotChatFlashPicActivity.a(this.a).a();
-      HotChatFlashPicActivity.a(this.a).b(HotChatFlashPicActivity.a(this.a));
-      return false;
-    case 4: 
-      if (HotChatFlashPicActivity.b(this.a)) {
-        if (HotChatFlashPicActivity.a(this.a) >= 2) {
-          paramMessage = this.a.getString(2131693356);
+          paramView.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), anmn.d(this.a).selectedPhotoList.get(i) }));
+          i += 1;
         }
+        QLog.d("PhotoPreviewLogicArk", 2, paramView.toString());
       }
-      break;
+      ThreadManagerV2.executeOnSubThread(new PhotoPreviewLogicArk.1.1(this));
     }
     for (;;)
     {
-      HotChatFlashPicActivity.a(this.a, bbdj.a(this.a, paramMessage, 0, 2131719551, null, new anmp(this)));
-      if (this.a.isFinishing()) {
-        break;
-      }
-      HotChatFlashPicActivity.d(this.a, false);
-      HotChatFlashPicActivity.a(this.a).setVisibility(8);
-      HotChatFlashPicActivity.a(this.a).setVisibility(8);
-      HotChatFlashPicActivity.a(this.a).setVisibility(8);
-      HotChatFlashPicActivity.a(this.a).show();
-      return false;
-      paramMessage = this.a.getString(2131693355);
-      continue;
-      if (HotChatFlashPicActivity.a(this.a) == 2)
-      {
-        paramMessage = this.a.getString(2131690980);
-        localObject = paramMessage;
-        if (!HotChatFlashPicActivity.e(this.a))
-        {
-          if (HotChatFlashPicActivity.b(this.a) == 0)
-          {
-            axqy.b(this.a.app, "dc00898", "", "", "0X80069A3", "0X80069A3", 0, 0, "", "", "", "");
-            continue;
-          }
-          if (HotChatFlashPicActivity.b(this.a) == 3000)
-          {
-            axqy.b(this.a.app, "dc00898", "", "", "0X80069A4", "0X80069A4", 0, 0, "", "", "", "");
-            continue;
-          }
-          localObject = paramMessage;
-          if (HotChatFlashPicActivity.b(this.a) == 1) {
-            axqy.b(this.a.app, "dc00898", "", "", "0X80069A5", "0X80069A5", 0, 0, "", "", "", "");
-          }
-        }
-      }
-      else if (HotChatFlashPicActivity.a(this.a) < 2)
-      {
-        paramMessage = this.a.getString(2131690974);
-        localObject = paramMessage;
-        if (!HotChatFlashPicActivity.e(this.a))
-        {
-          if (HotChatFlashPicActivity.b(this.a) == 0)
-          {
-            axqy.b(this.a.app, "dc00898", "", "", "0X80069A0", "0X80069A0", 0, 0, "", "", "", "");
-            continue;
-          }
-          if (HotChatFlashPicActivity.b(this.a) == 3000)
-          {
-            axqy.b(this.a.app, "dc00898", "", "", "0X80069A1", "0X80069A1", 0, 0, "", "", "", "");
-            continue;
-          }
-          localObject = paramMessage;
-          if (HotChatFlashPicActivity.b(this.a) == 1) {
-            axqy.b(this.a.app, "dc00898", "", "", "0X80069A2", "0X80069A2", 0, 0, "", "", "", "");
-          }
-        }
-      }
-      else
-      {
-        paramMessage = HotChatFlashPicActivity.e(this.a);
-        continue;
-        HotChatFlashPicActivity.a(this.a, (Bitmap)paramMessage.obj);
-        return false;
-        if ((HotChatFlashPicActivity.a(this.a).a()) || (HotChatFlashPicActivity.c(this.a))) {
-          break;
-        }
-        HotChatFlashPicActivity.a(this.a).a();
-        HotChatFlashPicActivity.a(this.a).a(HotChatFlashPicActivity.c(this.a));
-        return false;
-        if ((HotChatFlashPicActivity.a(this.a) == null) || (HotChatFlashPicActivity.a(this.a).getBitmap() == null)) {
-          break;
-        }
-        HotChatFlashPicActivity.a(this.a).getBitmap().recycle();
-        HotChatFlashPicActivity.a(this.a, null);
-        return false;
-      }
-      paramMessage = (Message)localObject;
+      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
+      return;
+      anmg.a().a("callbackArk", null, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmo
  * JD-Core Version:    0.7.0.1
  */

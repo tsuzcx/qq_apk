@@ -1,11 +1,27 @@
 public class amzw
 {
-  public String a = "https://club.vip.qq.com/profile/music?_proxy=1";
-  public String b = "https://club.vip.qq.com/profile/music/player?_wv=131072&_fv=0&_proxy=1";
+  public int a()
+  {
+    return 0;
+  }
+  
+  public void a() {}
+  
+  public void a(amzx paramamzx) {}
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzw
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,14 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import wdx;
-import web;
+import xsp;
+import xst;
 
 public class RecyclerViewWithHeaderFooter
   extends RecyclerView
 {
   private final List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private web jdField_a_of_type_Web;
+  private xst jdField_a_of_type_Xst;
   public boolean a;
   private final List<View> b = new ArrayList();
   
@@ -73,17 +73,17 @@ public class RecyclerViewWithHeaderFooter
     }
     else
     {
-      localObject = new wdx(paramAdapter);
+      localObject = new xsp(paramAdapter);
       paramAdapter = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramAdapter.hasNext()) {
-        ((wdx)localObject).a((View)paramAdapter.next());
+        ((xsp)localObject).a((View)paramAdapter.next());
       }
       paramAdapter = this.b.iterator();
       while (paramAdapter.hasNext()) {
-        ((wdx)localObject).b((View)paramAdapter.next());
+        ((xsp)localObject).b((View)paramAdapter.next());
       }
-      if (this.jdField_a_of_type_Web != null) {
-        ((wdx)localObject).a(this.jdField_a_of_type_Web);
+      if (this.jdField_a_of_type_Xst != null) {
+        ((xsp)localObject).a(this.jdField_a_of_type_Xst);
       }
     }
     super.setAdapter((RecyclerView.Adapter)localObject);
@@ -91,7 +91,7 @@ public class RecyclerViewWithHeaderFooter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.xrecyclerview.RecyclerViewWithHeaderFooter
  * JD-Core Version:    0.7.0.1
  */

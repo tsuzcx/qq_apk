@@ -1,32 +1,37 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class ambo
+  implements BusinessObserver
 {
-  public int a;
-  public ambp a;
-  public amcr a;
-  public Bitmap a;
-  public Rect a;
-  public Boolean a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b = "";
-  public boolean b;
-  public int c;
+  public void a() {}
   
-  public ambo()
+  public void a(int paramInt) {}
+  
+  public void b() {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    switch (paramInt)
+    {
+    case 111: 
+    case 112: 
+    case 114: 
+    default: 
+      return;
+    case 113: 
+      a(paramBundle.getInt("key_rt_type"));
+      return;
+    case 115: 
+      a();
+      return;
+    }
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ambo
  * JD-Core Version:    0.7.0.1
  */

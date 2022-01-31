@@ -1,28 +1,36 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbVideoView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-
-public class ahhn
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+class ahhn
+  extends bhxd
 {
-  public ahhn(SpringHbVideoView paramSpringHbVideoView) {}
-  
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  ahhn(ahhl paramahhl, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    QLog.i("springHb_SpringHbVideoView", 1, "mVideoPlayer is prepare");
-    SpringHbVideoView.a(this.a, true);
-    if (SpringHbVideoView.a(this.a) != null) {
-      SpringHbVideoView.a(this.a).a();
-    }
-    if (SpringHbVideoView.a(this.a)) {
-      this.a.a();
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public void a(int paramInt, Object paramObject, bhxc[] paramArrayOfbhxc)
+  {
+    paramInt = 0;
+    if ((paramArrayOfbhxc == null) || (paramArrayOfbhxc.length <= 0)) {}
+    for (;;)
+    {
+      return;
+      if (paramArrayOfbhxc.length < 0)
+      {
+        paramArrayOfbhxc[0].b = 0;
+        paramArrayOfbhxc[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfbhxc.length)
+      {
+        paramArrayOfbhxc[paramInt].b = -1;
+        paramArrayOfbhxc[paramInt].a = -1;
+        paramInt += 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahhn
  * JD-Core Version:    0.7.0.1
  */

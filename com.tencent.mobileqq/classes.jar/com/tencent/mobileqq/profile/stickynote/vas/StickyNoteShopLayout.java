@@ -14,12 +14,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import auxy;
-import auxz;
-import auya;
-import auyb;
-import axlk;
-import bbxb;
+import awpk;
+import awpl;
+import awpm;
+import awpn;
+import azgq;
+import bdwc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -31,12 +31,14 @@ public class StickyNoteShopLayout
   implements View.OnClickListener
 {
   public static final String a;
-  private int jdField_a_of_type_Int;
-  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new auxz(this);
+  public int a;
+  private RecyclerView.OnScrollListener jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener = new awpl(this);
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private auyb jdField_a_of_type_Auyb;
+  private awpn jdField_a_of_type_Awpn;
   private boolean jdField_a_of_type_Boolean;
-  private String b = "";
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString = "";
+  private int c;
   
   static
   {
@@ -46,18 +48,21 @@ public class StickyNoteShopLayout
   public StickyNoteShopLayout(@NonNull Context paramContext)
   {
     super(paramContext);
+    this.jdField_a_of_type_Int = 2;
     c();
   }
   
   public StickyNoteShopLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Int = 2;
     c();
   }
   
   public StickyNoteShopLayout(@NonNull Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.jdField_a_of_type_Int = 2;
     c();
   }
   
@@ -85,22 +90,23 @@ public class StickyNoteShopLayout
   
   private void c()
   {
-    View.inflate(getContext(), 2131561026, this);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131376513));
+    View.inflate(getContext(), 2131561212, this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)findViewById(2131377013));
     StaggeredGridLayoutManager localStaggeredGridLayoutManager = new StaggeredGridLayoutManager(3, 1);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(localStaggeredGridLayoutManager);
-    this.jdField_a_of_type_Auyb = new auyb(getContext(), null);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Auyb);
+    this.jdField_a_of_type_Awpn = new awpn(getContext(), null);
+    this.jdField_a_of_type_Awpn.a(this);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Awpn);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$OnScrollListener);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setBackgroundColor(-1);
-    findViewById(2131378152).setOnClickListener(this);
-    findViewById(2131367851).setOnClickListener(this);
+    findViewById(2131378710).setOnClickListener(this);
+    findViewById(2131367986).setOnClickListener(this);
     a();
   }
   
   public int a(int paramInt)
   {
-    if (paramInt > axlk.b / 4) {}
+    if (paramInt > azgq.jdField_b_of_type_Int / 4) {}
     for (;;)
     {
       ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
@@ -108,38 +114,55 @@ public class StickyNoteShopLayout
       setMinimumHeight(localLayoutParams.height);
       setLayoutParams(localLayoutParams);
       return paramInt;
-      paramInt = axlk.b / 3;
+      paramInt = azgq.jdField_b_of_type_Int / 3;
     }
+  }
+  
+  public awpn a()
+  {
+    return this.jdField_a_of_type_Awpn;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Auyb);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Awpn);
   }
   
   public void a(int paramInt)
   {
     setVisibility(paramInt);
-    if (this.jdField_a_of_type_Auyb.getItemCount() == 0) {
+    if (this.jdField_a_of_type_Awpn.getItemCount() == 0) {
       a(false);
     }
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Auyb.a();
+    this.jdField_a_of_type_Awpn.a();
   }
   
   public void a(boolean paramBoolean)
   {
-    QLog.d("StickyNoteShopLayout", 2, " appId:" + this.jdField_a_of_type_Int + " mIsLoadLast:" + this.jdField_a_of_type_Boolean + " isLoadMore:" + paramBoolean + " mStrAttachInfo:" + this.b);
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    QLog.d("StickyNoteShopLayout", 2, " appId:" + this.jdField_b_of_type_Int + " mIsLoadLast:" + this.jdField_a_of_type_Boolean + " isLoadMore:" + paramBoolean + " mStrAttachInfo:" + this.jdField_b_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Boolean) {
+      break label68;
+    }
+    label68:
+    while ((this.jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_Awpn.a() >= 30) && (paramBoolean)) {
       return;
-      new bbxb("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetSuixintieSigFontReq").a("getSuixintieSigFont", new GetSuixintieSigFontReq(bbxb.a(), this.jdField_a_of_type_Int, 0, "", this.b), new GetSuixintieSigFontRsp(), new auxy(this, paramBoolean), false);
-    } while (paramBoolean);
-    ThreadManagerV2.executeOnFileThread(new StickyNoteShopLayout.2(this));
+    }
+    bdwc localbdwc = new bdwc("QC.HomepageLogicServer.HomepageLogicObj", "QcHomePageLogic.GetSuixintieSigFontReq");
+    GetSuixintieSigFontReq localGetSuixintieSigFontReq = new GetSuixintieSigFontReq(bdwc.a(), this.jdField_b_of_type_Int, this.c, "", this.jdField_b_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (String str = "getSuixintieSigFont";; str = "getExtendFriendSigFont")
+    {
+      localbdwc.a(str, localGetSuixintieSigFontReq, new GetSuixintieSigFontRsp(), new awpk(this, paramBoolean), false);
+      if (paramBoolean) {
+        break;
+      }
+      ThreadManagerV2.executeOnFileThread(new StickyNoteShopLayout.2(this));
+      return;
+    }
   }
   
   public void b()
@@ -154,7 +177,7 @@ public class StickyNoteShopLayout
     {
     default: 
       return;
-    case 2131378152: 
+    case 2131378710: 
       a(false);
       return;
     }
@@ -163,25 +186,35 @@ public class StickyNoteShopLayout
   
   public void setAppId(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Auyb != null) {
-      this.jdField_a_of_type_Auyb.a(paramInt);
+    this.jdField_b_of_type_Int = paramInt;
+    if (this.jdField_a_of_type_Awpn != null) {
+      this.jdField_a_of_type_Awpn.a(paramInt);
     }
   }
   
   public void setItemId(int paramInt)
   {
-    this.jdField_a_of_type_Auyb.b(paramInt);
+    this.jdField_a_of_type_Awpn.c(paramInt);
   }
   
-  public void setShopCallback(auya paramauya)
+  public void setShopCallback(awpm paramawpm)
   {
-    this.jdField_a_of_type_Auyb.a(paramauya);
+    this.jdField_a_of_type_Awpn.a(paramawpm);
+  }
+  
+  public void setUseId(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void setUsingItem(int paramInt)
+  {
+    this.c = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout
  * JD-Core Version:    0.7.0.1
  */

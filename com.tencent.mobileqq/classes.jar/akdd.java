@@ -1,966 +1,1077 @@
-import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Build.VERSION;
-import android.os.Looper;
-import android.os.Process;
-import android.os.SystemClock;
-import com.tencent.commonsdk.pool.ByteArrayPool;
-import com.tencent.commonsdk.pool.RecyclablePool;
-import com.tencent.commonsdk.util.StringUtils;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.RandomAccessFile;
+import android.text.TextUtils;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.image.ApngImage;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.contact.SimpleTextView;
+import com.tencent.mobileqq.adapter.BuddyListAdapter.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.mobileqq.olympic.OlympicManager;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.theme.SkinEngine;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.SingleLineTextView;
+import com.tencent.widget.SwipPinnedHeaderExpandableListView;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import mqq.app.AppRuntime;
 
 public class akdd
+  extends akgw
+  implements akhz, View.OnClickListener, View.OnLongClickListener, bhwz
 {
-  public static int a;
-  public static long a;
-  public static akdf a;
-  private static final RecyclablePool jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool = new RecyclablePool(akdf.class, 30);
-  private static Map<String, akdf> jdField_a_of_type_JavaUtilMap;
-  static int[] jdField_a_of_type_ArrayOfInt;
-  public static int b;
-  private static long jdField_b_of_type_Long;
-  static int[] jdField_b_of_type_ArrayOfInt;
-  private static long c;
+  private static final akdj jdField_a_of_type_Akdj = new akdj(null);
+  public int a;
+  private akdh jdField_a_of_type_Akdh = new akdh(this);
+  private akdi jdField_a_of_type_Akdi = new akdi(this);
+  private final aloz jdField_a_of_type_Aloz;
+  private SparseArray<List<akhx>> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
+  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private final axzt jdField_a_of_type_Axzt;
+  private bhpo jdField_a_of_type_Bhpo;
+  private SimpleTextView jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView;
+  final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private PhoneContactManagerImp jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private OlympicManager jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager;
+  private ArrayList<Object> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int = 0;
+  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new akdf(this);
+  private SimpleTextView jdField_b_of_type_ComTencentMobileqqActivityContactSimpleTextView;
+  private final boolean jdField_b_of_type_Boolean;
+  private final int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean = true;
+  private int d = -1;
   
-  static
+  public akdd(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, SwipPinnedHeaderExpandableListView paramSwipPinnedHeaderExpandableListView, View.OnClickListener paramOnClickListener)
   {
-    jdField_a_of_type_Akdf = a();
-    jdField_a_of_type_JavaUtilMap = new HashMap(30);
-    jdField_a_of_type_ArrayOfInt = new int[17];
-    jdField_b_of_type_ArrayOfInt = new int[17];
-    jdField_b_of_type_Int = -1;
-  }
-  
-  @SuppressLint({"NewApi"})
-  public static final int a()
-  {
-    if (jdField_b_of_type_Int == -1) {
-      if (Build.VERSION.SDK_INT < 17) {
-        break label28;
-      }
-    }
-    label28:
-    for (jdField_b_of_type_Int = Runtime.getRuntime().availableProcessors();; jdField_b_of_type_Int = b()) {
-      return jdField_b_of_type_Int;
-    }
-  }
-  
-  public static long a(String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString == null) {
-      return -1L;
-    }
-    long l = ((Long)paramString[1]).longValue();
-    return ((Long)paramString[2]).longValue() + l;
-  }
-  
-  public static akdf a()
-  {
-    return (akdf)jdField_a_of_type_ComTencentCommonsdkPoolRecyclablePool.obtain(akdf.class);
-  }
-  
-  private static final RandomAccessFile a(String paramString)
-  {
-    try
+    super(paramBaseActivity, paramQQAppInterface, paramSwipPinnedHeaderExpandableListView);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Axzt = ((axzt)paramQQAppInterface.getManager(15));
+    this.jdField_a_of_type_Aloz = ((aloz)paramQQAppInterface.getManager(51));
+    this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp = ((PhoneContactManagerImp)paramQQAppInterface.getManager(11));
+    this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager = ((OlympicManager)paramQQAppInterface.getManager(167));
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+    this.jdField_c_of_type_Int = ((int)bdcq.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 12.0F));
+    notifyDataSetChanged();
+    if ((Build.MODEL.equals("Lenovo A366t")) && (Build.VERSION.SDK_INT == 10)) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (paramString.equals("-2")) {
-        return new RandomAccessFile("/proc/stat", "r");
-      }
-      if (paramString.equals("-1"))
-      {
-        paramString = new RandomAccessFile("/proc/" + Process.myPid() + "/stat", "r");
-        return paramString;
-      }
+      this.jdField_b_of_type_Boolean = bool;
+      return;
     }
-    catch (FileNotFoundException paramString)
-    {
-      paramString.printStackTrace();
-      return null;
-      paramString = new RandomAccessFile("/proc/" + Process.myPid() + "/task/" + paramString + "/stat", "r");
-      return paramString;
-    }
-    catch (OutOfMemoryError paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
   }
   
-  /* Error */
-  public static final String a(int paramInt)
+  private void a(akdg paramakdg, Groups paramGroups, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    // Byte code:
-    //   0: new 108	java/lang/StringBuilder
-    //   3: dup
-    //   4: iload_0
-    //   5: bipush 110
-    //   7: imul
-    //   8: invokespecial 140	java/lang/StringBuilder:<init>	(I)V
-    //   11: astore_3
-    //   12: ldc 106
-    //   14: getstatic 31	akdd:jdField_a_of_type_Akdf	Lakdf;
-    //   17: iconst_0
-    //   18: invokestatic 143	akdd:a	(Ljava/lang/String;Lakdf;Z)V
-    //   21: ldc 145
-    //   23: new 108	java/lang/StringBuilder
-    //   26: dup
-    //   27: invokespecial 110	java/lang/StringBuilder:<init>	()V
-    //   30: ldc 147
-    //   32: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: getstatic 31	akdd:jdField_a_of_type_Akdf	Lakdf;
-    //   38: getfield 149	akdf:jdField_a_of_type_Long	J
-    //   41: invokevirtual 152	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   44: ldc 154
-    //   46: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: getstatic 31	akdd:jdField_a_of_type_Akdf	Lakdf;
-    //   52: getfield 156	akdf:jdField_b_of_type_Long	J
-    //   55: invokevirtual 152	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   58: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   61: invokestatic 162	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   64: pop
-    //   65: new 164	java/io/BufferedReader
-    //   68: dup
-    //   69: new 166	java/io/InputStreamReader
-    //   72: dup
-    //   73: invokestatic 60	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   76: new 108	java/lang/StringBuilder
-    //   79: dup
-    //   80: invokespecial 110	java/lang/StringBuilder:<init>	()V
-    //   83: ldc 168
-    //   85: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: iload_0
-    //   89: invokevirtual 124	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   92: ldc 170
-    //   94: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: invokevirtual 174	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
-    //   103: invokevirtual 180	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   106: invokespecial 183	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   109: invokespecial 186	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   112: astore_2
-    //   113: aload_2
-    //   114: invokevirtual 189	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   117: astore_1
-    //   118: aload_1
-    //   119: ifnull +46 -> 165
-    //   122: aload_3
-    //   123: aload_1
-    //   124: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: ldc 191
-    //   129: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: pop
-    //   133: goto -20 -> 113
-    //   136: astore_1
-    //   137: iconst_0
-    //   138: ifeq +11 -> 149
-    //   141: new 193	java/lang/NullPointerException
-    //   144: dup
-    //   145: invokespecial 194	java/lang/NullPointerException:<init>	()V
-    //   148: athrow
-    //   149: iconst_0
-    //   150: ifeq +11 -> 161
-    //   153: new 193	java/lang/NullPointerException
-    //   156: dup
-    //   157: invokespecial 194	java/lang/NullPointerException:<init>	()V
-    //   160: athrow
-    //   161: aconst_null
-    //   162: astore_2
-    //   163: aload_2
-    //   164: areturn
-    //   165: ldc 106
-    //   167: getstatic 31	akdd:jdField_a_of_type_Akdf	Lakdf;
-    //   170: iconst_0
-    //   171: invokestatic 143	akdd:a	(Ljava/lang/String;Lakdf;Z)V
-    //   174: ldc 145
-    //   176: new 108	java/lang/StringBuilder
-    //   179: dup
-    //   180: invokespecial 110	java/lang/StringBuilder:<init>	()V
-    //   183: ldc 147
-    //   185: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   188: getstatic 31	akdd:jdField_a_of_type_Akdf	Lakdf;
-    //   191: getfield 149	akdf:jdField_a_of_type_Long	J
-    //   194: invokevirtual 152	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   197: ldc 154
-    //   199: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: getstatic 31	akdd:jdField_a_of_type_Akdf	Lakdf;
-    //   205: getfield 156	akdf:jdField_b_of_type_Long	J
-    //   208: invokevirtual 152	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   211: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   214: invokestatic 162	android/util/Log:d	(Ljava/lang/String;Ljava/lang/String;)I
-    //   217: pop
-    //   218: aload_3
-    //   219: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   222: astore_1
-    //   223: iconst_0
-    //   224: ifeq +11 -> 235
-    //   227: new 193	java/lang/NullPointerException
-    //   230: dup
-    //   231: invokespecial 194	java/lang/NullPointerException:<init>	()V
-    //   234: athrow
-    //   235: aload_1
-    //   236: astore_2
-    //   237: iconst_0
-    //   238: ifeq -75 -> 163
-    //   241: new 193	java/lang/NullPointerException
-    //   244: dup
-    //   245: invokespecial 194	java/lang/NullPointerException:<init>	()V
-    //   248: athrow
-    //   249: astore_2
-    //   250: aload_1
-    //   251: areturn
-    //   252: astore_1
-    //   253: iconst_0
-    //   254: ifeq +11 -> 265
-    //   257: new 193	java/lang/NullPointerException
-    //   260: dup
-    //   261: invokespecial 194	java/lang/NullPointerException:<init>	()V
-    //   264: athrow
-    //   265: iconst_0
-    //   266: ifeq +11 -> 277
-    //   269: new 193	java/lang/NullPointerException
-    //   272: dup
-    //   273: invokespecial 194	java/lang/NullPointerException:<init>	()V
-    //   276: athrow
-    //   277: aload_1
-    //   278: athrow
-    //   279: astore_2
-    //   280: goto -45 -> 235
-    //   283: astore_1
-    //   284: goto -135 -> 149
-    //   287: astore_1
-    //   288: goto -127 -> 161
-    //   291: astore_2
-    //   292: goto -27 -> 265
-    //   295: astore_2
-    //   296: goto -19 -> 277
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	299	0	paramInt	int
-    //   117	7	1	str1	String
-    //   136	1	1	localException1	Exception
-    //   222	29	1	str2	String
-    //   252	26	1	localObject1	Object
-    //   283	1	1	localException2	Exception
-    //   287	1	1	localException3	Exception
-    //   112	125	2	localObject2	Object
-    //   249	1	2	localException4	Exception
-    //   279	1	2	localException5	Exception
-    //   291	1	2	localException6	Exception
-    //   295	1	2	localException7	Exception
-    //   11	208	3	localStringBuilder	StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   0	113	136	java/lang/Exception
-    //   113	118	136	java/lang/Exception
-    //   122	133	136	java/lang/Exception
-    //   165	223	136	java/lang/Exception
-    //   241	249	249	java/lang/Exception
-    //   0	113	252	finally
-    //   113	118	252	finally
-    //   122	133	252	finally
-    //   165	223	252	finally
-    //   227	235	279	java/lang/Exception
-    //   141	149	283	java/lang/Exception
-    //   153	161	287	java/lang/Exception
-    //   257	265	291	java/lang/Exception
-    //   269	277	295	java/lang/Exception
-  }
-  
-  public static final List<String> a(int paramInt, boolean paramBoolean)
-  {
-    Object localObject1 = new HashMap();
-    Object localObject2;
+    if (paramakdg == null) {
+      return;
+    }
+    if (!paramakdg.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+      paramakdg.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+    }
+    Object localObject2 = paramakdg.jdField_a_of_type_JavaLangStringBuilder;
+    Object localObject1 = localObject2;
     int i;
-    Object localObject3;
-    if (paramBoolean)
+    if (AppSetting.jdField_c_of_type_Boolean)
     {
-      localObject1 = Thread.currentThread().getThreadGroup();
-      localObject2 = new Thread[((ThreadGroup)localObject1).activeCount()];
-      ((ThreadGroup)localObject1).enumerate((Thread[])localObject2);
-      localObject1 = new HashMap(localObject2.length);
-      int j = localObject2.length;
-      i = 0;
-      while (i < j)
+      if (localObject2 == null)
       {
-        localObject3 = localObject2[i];
-        if (localObject3 != null) {
-          ((Map)localObject1).put(((Thread)localObject3).getName(), localObject3);
-        }
-        i += 1;
+        localObject1 = new StringBuilder(24);
+        ((StringBuilder)localObject1).append(paramGroups.group_name + " 分组");
       }
+    }
+    else
+    {
+      paramakdg.jdField_a_of_type_Int = paramInt1;
+      paramakdg.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramGroups.group_name);
+      paramakdg.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setVisibility(8);
+      paramakdg.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      paramakdg.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+      i = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramGroups.group_id);
+      paramInt1 = getChildrenCount(paramInt1);
+      if (paramGroups.group_id != 1005) {
+        break label363;
+      }
+      paramakdg.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setText(paramInt1 + "");
+      if (AppSetting.jdField_c_of_type_Boolean) {
+        ((StringBuilder)localObject1).append("共" + paramInt1 + "个常用群聊");
+      }
+      if (paramInt2 != 0) {
+        break label535;
+      }
+      if (!this.jdField_a_of_type_ComTencentWidgetExpandableListView.c(paramakdg.jdField_a_of_type_Int)) {
+        break label470;
+      }
+      paramInt1 = 2;
     }
     for (;;)
     {
-      localObject2 = new ArrayList(jdField_a_of_type_JavaUtilMap.size() / 2);
-      localObject3 = jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (((Iterator)localObject3).hasNext())
+      label237:
+      localObject2 = paramakdg.jdField_a_of_type_AndroidWidgetCheckBox;
+      boolean bool;
+      if (paramInt1 == 2)
       {
-        Object localObject4 = (String)((Iterator)localObject3).next();
-        akdf localakdf = (akdf)jdField_a_of_type_JavaUtilMap.get(localObject4);
-        if (localakdf.jdField_a_of_type_Int >= paramInt)
+        bool = true;
+        label251:
+        ((CheckBox)localObject2).setChecked(bool);
+        if (AppSetting.jdField_c_of_type_Boolean)
         {
-          if (paramBoolean) {}
-          StringBuilder localStringBuilder;
-          for (i = 300;; i = 50)
-          {
-            localStringBuilder = new StringBuilder(i);
-            localStringBuilder.append(localakdf.jdField_a_of_type_JavaLangString).append("_").append((String)localObject4).append(":").append(localakdf.jdField_a_of_type_Int).append("\r\n");
-            if (!paramBoolean) {
-              break;
-            }
-            localObject4 = (Thread)((Map)localObject1).get(localakdf.jdField_a_of_type_JavaLangString);
-            if (localObject4 != null) {
-              localStringBuilder.append(Arrays.toString(((Thread)localObject4).getStackTrace()));
-            }
-            localObject4 = StringUtils.getStringValue(localStringBuilder);
-            if (localObject4 == null) {
-              break label308;
-            }
-            ((List)localObject2).add(StringUtils.newStringWithData((char[])localObject4));
-            break;
+          if (!paramakdg.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+            break label481;
           }
-          label308:
-          ((List)localObject2).add(localStringBuilder.toString());
+          ((StringBuilder)localObject1).append(" 已展开");
         }
       }
-      if (paramBoolean) {
-        ((List)localObject2).add(Arrays.toString(Looper.getMainLooper().getThread().getStackTrace()));
-      }
-      return localObject2;
-    }
-  }
-  
-  public static void a(akdf paramakdf)
-  {
-    paramakdf.recycle();
-  }
-  
-  private static void a(String paramString, akdf paramakdf, boolean paramBoolean)
-  {
-    try
-    {
-      Object[] arrayOfObject = a(paramString);
-      long l1;
-      if (arrayOfObject != null)
-      {
-        paramString = (String)arrayOfObject[0];
-        l1 = ((Long)arrayOfObject[1]).longValue();
-      }
-      for (long l2 = ((Long)arrayOfObject[2]).longValue();; l2 = -100L)
-      {
-        if (paramBoolean)
-        {
-          paramakdf.jdField_a_of_type_Long = l1;
-          paramakdf.jdField_b_of_type_Long = l2;
-          paramakdf.jdField_a_of_type_JavaLangString = paramString;
-          return;
-        }
-        if (paramakdf.jdField_a_of_type_Long == -100L)
-        {
-          paramakdf.c = -100L;
-          paramakdf.d = -100L;
-          return;
-        }
-        paramakdf.c = (l1 - paramakdf.jdField_a_of_type_Long);
-        paramakdf.d = (l2 - paramakdf.jdField_b_of_type_Long);
-        return;
-        l1 = -100L;
-        paramString = null;
-      }
-      return;
-    }
-    catch (Exception paramString) {}
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    byte[] arrayOfByte = ByteArrayPool.getGenericInstance().getBuf(1024);
-    try
-    {
-      localObject1 = a("-2");
-      if (localObject1 == null) {
-        break label117;
-      }
-      jdField_b_of_type_Long = ((Long)localObject1[1]).longValue();
-      c = ((Long)localObject1[2]).longValue();
-    }
-    catch (Exception localException)
-    {
       for (;;)
       {
-        Object localObject1;
-        localException.printStackTrace();
+        paramakdg.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setContentDescription(((StringBuilder)localObject1).toString());
+        bcvq.a(paramakdg.jdField_a_of_type_AndroidWidgetCheckBox, false);
+        if ((paramGroups.group_id != 1002) || (this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d() != this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d())) {
+          break label502;
+        }
+        if (!paramBoolean) {
+          break label493;
+        }
+        this.jdField_b_of_type_ComTencentMobileqqActivityContactSimpleTextView = paramakdg.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView;
         return;
-        jdField_b_of_type_Long = -1L;
-        c = -1L;
-      }
-    }
-    finally
-    {
-      ByteArrayPool.getGenericInstance().returnBuf(arrayOfByte);
-    }
-    a("-1", jdField_a_of_type_Akdf, true);
-    if (paramBoolean)
-    {
-      localObject1 = jdField_a_of_type_JavaUtilMap.values().iterator();
-      while (((Iterator)localObject1).hasNext()) {
-        a((akdf)((Iterator)localObject1).next());
-      }
-      label117:
-      jdField_a_of_type_JavaUtilMap.clear();
-      String[] arrayOfString = a(Process.myPid());
-      if (arrayOfString != null)
-      {
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
+        ((StringBuilder)localObject2).delete(0, ((StringBuilder)localObject2).length());
+        localObject1 = localObject2;
+        break;
+        label363:
+        SimpleTextView localSimpleTextView = paramakdg.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView;
+        if (this.jdField_b_of_type_Boolean) {}
+        for (localObject2 = "%d / %d";; localObject2 = "%d/%d")
         {
-          String str = arrayOfString[i];
-          akdf localakdf = a();
-          a(str, localakdf, true);
-          jdField_a_of_type_JavaUtilMap.put(str, localakdf);
+          localSimpleTextView.setText(String.format((String)localObject2, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt1) }));
+          if (!AppSetting.jdField_c_of_type_Boolean) {
+            break;
+          }
+          ((StringBuilder)localObject1).append("在线" + i + "人，共" + paramInt1 + "人");
+          break;
+        }
+        label470:
+        paramInt1 = 1;
+        break label237;
+        bool = false;
+        break label251;
+        label481:
+        ((StringBuilder)localObject1).append(" 已折叠");
+      }
+      label493:
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView = paramakdg.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView;
+      return;
+      label502:
+      if (this.jdField_b_of_type_ComTencentMobileqqActivityContactSimpleTextView == paramakdg.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView) {
+        this.jdField_b_of_type_ComTencentMobileqqActivityContactSimpleTextView = null;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView != paramakdg.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView) {
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView = null;
+      return;
+      label535:
+      paramInt1 = paramInt2;
+    }
+  }
+  
+  private void a(ArrayList<Object> paramArrayList, SparseArray<List<akhx>> paramSparseArray, SparseIntArray paramSparseIntArray)
+  {
+    Groups localGroups1 = new Groups();
+    localGroups1.group_id = 1004;
+    localGroups1.group_name = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131717857);
+    localGroups1.group_friend_count = 1;
+    localGroups1.seqid = 0;
+    paramArrayList.add(localGroups1);
+    ArrayList localArrayList1 = new ArrayList();
+    aloz localaloz = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+    Object localObject2 = null;
+    Object localObject1;
+    Object localObject3;
+    if (localaloz != null)
+    {
+      localObject1 = localaloz.c();
+      if (localObject1 != null)
+      {
+        localObject2 = localObject1;
+        if (((List)localObject1).size() != 0) {}
+      }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder().append("group list is ");
+          if (localObject1 != null) {
+            break label438;
+          }
+          localObject2 = "null";
+          label139:
+          QLog.d("BuddyListAdapter", 2, (String)localObject2);
+        }
+        if (localObject1 != null) {
+          break label697;
+        }
+        localObject1 = new ArrayList();
+      }
+    }
+    label285:
+    label438:
+    label694:
+    label697:
+    for (;;)
+    {
+      paramArrayList.remove(localGroups1);
+      localObject2 = localObject1;
+      Iterator localIterator1 = ((List)localObject2).iterator();
+      int i = 0;
+      Groups localGroups2;
+      label254:
+      ArrayList localArrayList2;
+      int j;
+      Friends localFriends;
+      int k;
+      Object localObject4;
+      if (localIterator1.hasNext())
+      {
+        localGroups2 = (Groups)localIterator1.next();
+        paramArrayList.add(localGroups2);
+        localObject1 = localaloz.a(String.valueOf(localGroups2.group_id));
+        if (localObject1 == null)
+        {
+          localObject1 = new ArrayList();
+          localArrayList2 = new ArrayList(((List)localObject1).size());
+          Iterator localIterator2 = ((List)localObject1).iterator();
+          localObject2 = null;
+          j = 0;
+          if (!localIterator2.hasNext()) {
+            break label555;
+          }
+          localObject3 = (awbv)localIterator2.next();
+          localFriends = (Friends)localObject3;
+          k = bdbt.a(localFriends.detalStatusFlag, localFriends.iTermType);
+          localObject4 = this.jdField_a_of_type_Aloz.a(localFriends.uin);
+          if ((localObject4 == null) || (((SpecialCareInfo)localObject4).globalSwitch == 0)) {
+            break label694;
+          }
+          localArrayList1.add(akhs.a(4, (awbv)localObject3, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity));
+          if ((k == 0) || (k == 6)) {
+            break label694;
+          }
           i += 1;
         }
       }
+      for (;;)
+      {
+        if (((Friends)localObject3).gathtertype == 1)
+        {
+          break label285;
+          localObject1 = localObject2;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("BuddyListAdapter", 2, "FriendManager is null");
+          localObject1 = localObject2;
+          break;
+          localObject2 = "empty";
+          break label139;
+          localObject1 = new ArrayList((Collection)localObject1);
+          break label254;
+        }
+        if ((k != 0) && (k != 6)) {
+          j += 1;
+        }
+        for (;;)
+        {
+          for (;;)
+          {
+            localObject3 = akhs.a(0, (awbv)localObject3, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+            ((akhx)localObject3).a(this);
+            try
+            {
+              localObject4 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+              boolean bool = localFriends.uin.equals(localObject4);
+              if (bool) {
+                localObject2 = localObject3;
+              }
+            }
+            catch (Throwable localThrowable)
+            {
+              localThrowable.printStackTrace();
+              localArrayList2.add(localObject3);
+            }
+          }
+          break label285;
+          a(localArrayList2);
+          if (localObject2 != null) {
+            localArrayList2.add(0, localObject2);
+          }
+          paramSparseIntArray.put(localGroups2.group_id, j);
+          paramSparseArray.put(localGroups2.group_id, localArrayList2);
+          if (QLog.isColorLevel()) {
+            QLog.d("BuddyListAdapter", 2, "groupId: " + localGroups2.group_id + " num: " + ((List)localObject1).size());
+          }
+          break;
+          a(localArrayList1);
+          paramSparseIntArray.put(1004, i);
+          paramSparseArray.put(1004, localArrayList1);
+          localGroups1.group_friend_count = localArrayList1.size();
+          return;
+        }
+      }
     }
-    ByteArrayPool.getGenericInstance().returnBuf(arrayOfByte);
   }
   
-  /* Error */
-  public static Object[] a(String paramString)
+  private void a(List<akhx> paramList)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_1
-    //   2: aload_0
-    //   3: invokestatic 343	akdd:a	(Ljava/lang/String;)Ljava/io/RandomAccessFile;
-    //   6: astore 21
-    //   8: invokestatic 315	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   11: sipush 1024
-    //   14: invokevirtual 319	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
-    //   17: astore 22
-    //   19: aload 21
-    //   21: lconst_0
-    //   22: invokevirtual 347	java/io/RandomAccessFile:seek	(J)V
-    //   25: aload 21
-    //   27: aload 22
-    //   29: invokevirtual 351	java/io/RandomAccessFile:read	([B)I
-    //   32: istore 4
-    //   34: iconst_0
-    //   35: istore_3
-    //   36: goto +663 -> 699
-    //   39: iload_2
-    //   40: istore_1
-    //   41: iload_2
-    //   42: iload 4
-    //   44: if_icmpge +691 -> 735
-    //   47: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   50: iload_3
-    //   51: iload_2
-    //   52: iastore
-    //   53: iload_2
-    //   54: istore_1
-    //   55: goto +680 -> 735
-    //   58: iload_1
-    //   59: iload 4
-    //   61: if_icmpge +696 -> 757
-    //   64: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   67: iload_3
-    //   68: iload_1
-    //   69: iastore
-    //   70: goto +687 -> 757
-    //   73: iload_3
-    //   74: bipush 17
-    //   76: if_icmpne +558 -> 634
-    //   79: ldc 89
-    //   81: aload_0
-    //   82: invokevirtual 95	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   85: ifne +236 -> 321
-    //   88: new 91	java/lang/String
-    //   91: dup
-    //   92: aload 22
-    //   94: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   97: iconst_1
-    //   98: iaload
-    //   99: iconst_1
-    //   100: iadd
-    //   101: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   104: iconst_1
-    //   105: iaload
-    //   106: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   109: iconst_1
-    //   110: iaload
-    //   111: isub
-    //   112: iconst_1
-    //   113: isub
-    //   114: invokespecial 354	java/lang/String:<init>	([BII)V
-    //   117: astore 23
-    //   119: new 91	java/lang/String
-    //   122: dup
-    //   123: aload 22
-    //   125: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   128: bipush 13
-    //   130: iaload
-    //   131: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   134: bipush 13
-    //   136: iaload
-    //   137: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   140: bipush 13
-    //   142: iaload
-    //   143: isub
-    //   144: invokespecial 354	java/lang/String:<init>	([BII)V
-    //   147: invokestatic 357	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   150: lstore 5
-    //   152: new 91	java/lang/String
-    //   155: dup
-    //   156: aload 22
-    //   158: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   161: bipush 15
-    //   163: iaload
-    //   164: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   167: bipush 15
-    //   169: iaload
-    //   170: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   173: bipush 15
-    //   175: iaload
-    //   176: isub
-    //   177: invokespecial 354	java/lang/String:<init>	([BII)V
-    //   180: invokestatic 357	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   183: lstore 7
-    //   185: new 91	java/lang/String
-    //   188: dup
-    //   189: aload 22
-    //   191: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   194: bipush 14
-    //   196: iaload
-    //   197: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   200: bipush 14
-    //   202: iaload
-    //   203: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   206: bipush 14
-    //   208: iaload
-    //   209: isub
-    //   210: invokespecial 354	java/lang/String:<init>	([BII)V
-    //   213: invokestatic 357	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   216: lstore 9
-    //   218: new 91	java/lang/String
-    //   221: dup
-    //   222: aload 22
-    //   224: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   227: bipush 16
-    //   229: iaload
-    //   230: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   233: bipush 16
-    //   235: iaload
-    //   236: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   239: bipush 16
-    //   241: iaload
-    //   242: isub
-    //   243: invokespecial 354	java/lang/String:<init>	([BII)V
-    //   246: invokestatic 357	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   249: lstore 11
-    //   251: aload 23
-    //   253: ifnull +50 -> 303
-    //   256: iconst_3
-    //   257: anewarray 4	java/lang/Object
-    //   260: astore_0
-    //   261: aload_0
-    //   262: iconst_0
-    //   263: aload 23
-    //   265: aastore
-    //   266: aload_0
-    //   267: iconst_1
-    //   268: lload 5
-    //   270: lload 7
-    //   272: ladd
-    //   273: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   276: aastore
-    //   277: aload_0
-    //   278: iconst_2
-    //   279: lload 9
-    //   281: lload 11
-    //   283: ladd
-    //   284: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   287: aastore
-    //   288: invokestatic 315	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   291: aload 22
-    //   293: invokevirtual 335	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   296: aload 21
-    //   298: invokevirtual 364	java/io/RandomAccessFile:close	()V
-    //   301: aload_0
-    //   302: areturn
-    //   303: invokestatic 315	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   306: aload 22
-    //   308: invokevirtual 335	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   311: aload 21
-    //   313: invokevirtual 364	java/io/RandomAccessFile:close	()V
-    //   316: aconst_null
-    //   317: areturn
-    //   318: astore_0
-    //   319: aconst_null
-    //   320: areturn
-    //   321: new 91	java/lang/String
-    //   324: dup
-    //   325: aload 22
-    //   327: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   330: iconst_4
-    //   331: iaload
-    //   332: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   335: iconst_4
-    //   336: iaload
-    //   337: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   340: iconst_4
-    //   341: iaload
-    //   342: isub
-    //   343: invokespecial 354	java/lang/String:<init>	([BII)V
-    //   346: invokestatic 357	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   349: lstore 5
-    //   351: new 91	java/lang/String
-    //   354: dup
-    //   355: aload 22
-    //   357: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   360: iconst_1
-    //   361: iaload
-    //   362: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   365: iconst_1
-    //   366: iaload
-    //   367: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   370: iconst_1
-    //   371: iaload
-    //   372: isub
-    //   373: invokespecial 354	java/lang/String:<init>	([BII)V
-    //   376: invokestatic 357	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   379: lstore 7
-    //   381: new 91	java/lang/String
-    //   384: dup
-    //   385: aload 22
-    //   387: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   390: iconst_2
-    //   391: iaload
-    //   392: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   395: iconst_2
-    //   396: iaload
-    //   397: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   400: iconst_2
-    //   401: iaload
-    //   402: isub
-    //   403: invokespecial 354	java/lang/String:<init>	([BII)V
-    //   406: invokestatic 357	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   409: lstore 9
-    //   411: new 91	java/lang/String
-    //   414: dup
-    //   415: aload 22
-    //   417: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   420: iconst_3
-    //   421: iaload
-    //   422: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   425: iconst_3
-    //   426: iaload
-    //   427: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   430: iconst_3
-    //   431: iaload
-    //   432: isub
-    //   433: invokespecial 354	java/lang/String:<init>	([BII)V
-    //   436: invokestatic 357	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   439: lstore 11
-    //   441: new 91	java/lang/String
-    //   444: dup
-    //   445: aload 22
-    //   447: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   450: iconst_5
-    //   451: iaload
-    //   452: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   455: iconst_5
-    //   456: iaload
-    //   457: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   460: iconst_5
-    //   461: iaload
-    //   462: isub
-    //   463: invokespecial 354	java/lang/String:<init>	([BII)V
-    //   466: invokestatic 357	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   469: lstore 13
-    //   471: new 91	java/lang/String
-    //   474: dup
-    //   475: aload 22
-    //   477: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   480: bipush 6
-    //   482: iaload
-    //   483: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   486: bipush 6
-    //   488: iaload
-    //   489: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   492: bipush 6
-    //   494: iaload
-    //   495: isub
-    //   496: invokespecial 354	java/lang/String:<init>	([BII)V
-    //   499: invokestatic 357	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   502: lstore 15
-    //   504: new 91	java/lang/String
-    //   507: dup
-    //   508: aload 22
-    //   510: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   513: bipush 7
-    //   515: iaload
-    //   516: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   519: bipush 7
-    //   521: iaload
-    //   522: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   525: bipush 7
-    //   527: iaload
-    //   528: isub
-    //   529: invokespecial 354	java/lang/String:<init>	([BII)V
-    //   532: invokestatic 357	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   535: lstore 17
-    //   537: new 91	java/lang/String
-    //   540: dup
-    //   541: aload 22
-    //   543: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   546: bipush 8
-    //   548: iaload
-    //   549: getstatic 42	akdd:jdField_b_of_type_ArrayOfInt	[I
-    //   552: bipush 8
-    //   554: iaload
-    //   555: getstatic 40	akdd:jdField_a_of_type_ArrayOfInt	[I
-    //   558: bipush 8
-    //   560: iaload
-    //   561: isub
-    //   562: invokespecial 354	java/lang/String:<init>	([BII)V
-    //   565: invokestatic 357	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   568: lstore 19
-    //   570: iconst_3
-    //   571: anewarray 4	java/lang/Object
-    //   574: astore_0
-    //   575: aload_0
-    //   576: iconst_0
-    //   577: ldc_w 366
-    //   580: aastore
-    //   581: aload_0
-    //   582: iconst_1
-    //   583: lload 5
-    //   585: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   588: aastore
-    //   589: aload_0
-    //   590: iconst_2
-    //   591: lload 7
-    //   593: lload 9
-    //   595: ladd
-    //   596: lload 11
-    //   598: ladd
-    //   599: lload 13
-    //   601: ladd
-    //   602: lload 15
-    //   604: ladd
-    //   605: lload 17
-    //   607: ladd
-    //   608: lload 19
-    //   610: ladd
-    //   611: invokestatic 361	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   614: aastore
-    //   615: invokestatic 315	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   618: aload 22
-    //   620: invokevirtual 335	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   623: aload 21
-    //   625: invokevirtual 364	java/io/RandomAccessFile:close	()V
-    //   628: aload_0
-    //   629: areturn
-    //   630: astore 21
-    //   632: aload_0
-    //   633: areturn
-    //   634: invokestatic 315	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   637: aload 22
-    //   639: invokevirtual 335	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   642: aload 21
-    //   644: invokevirtual 364	java/io/RandomAccessFile:close	()V
-    //   647: aconst_null
-    //   648: areturn
-    //   649: astore_0
-    //   650: invokestatic 315	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   653: aload 22
-    //   655: invokevirtual 335	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   658: aload 21
-    //   660: invokevirtual 364	java/io/RandomAccessFile:close	()V
-    //   663: goto -16 -> 647
-    //   666: astore_0
-    //   667: goto -20 -> 647
-    //   670: astore_0
-    //   671: invokestatic 315	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   674: aload 22
-    //   676: invokevirtual 335	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   679: aload 21
-    //   681: invokevirtual 364	java/io/RandomAccessFile:close	()V
-    //   684: aload_0
-    //   685: athrow
-    //   686: astore 21
-    //   688: aload_0
-    //   689: areturn
-    //   690: astore_0
-    //   691: goto -44 -> 647
-    //   694: astore 21
-    //   696: goto -12 -> 684
-    //   699: iload_1
-    //   700: iload 4
-    //   702: if_icmpge -629 -> 73
-    //   705: iload_3
-    //   706: bipush 17
-    //   708: if_icmpge -635 -> 73
-    //   711: iload_1
-    //   712: istore_2
-    //   713: iload_2
-    //   714: iload 4
-    //   716: if_icmpge -677 -> 39
-    //   719: aload 22
-    //   721: iload_2
-    //   722: baload
-    //   723: bipush 32
-    //   725: if_icmpne -686 -> 39
-    //   728: iload_2
-    //   729: iconst_1
-    //   730: iadd
-    //   731: istore_2
-    //   732: goto -19 -> 713
-    //   735: iload_1
-    //   736: iload 4
-    //   738: if_icmpge -680 -> 58
-    //   741: aload 22
-    //   743: iload_1
-    //   744: baload
-    //   745: bipush 32
-    //   747: if_icmpeq -689 -> 58
-    //   750: iload_1
-    //   751: iconst_1
-    //   752: iadd
-    //   753: istore_1
-    //   754: goto -19 -> 735
-    //   757: iload_3
-    //   758: iconst_1
-    //   759: iadd
-    //   760: istore_3
-    //   761: goto -62 -> 699
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	764	0	paramString	String
-    //   1	753	1	i	int
-    //   39	693	2	j	int
-    //   35	726	3	k	int
-    //   32	707	4	m	int
-    //   150	434	5	l1	long
-    //   183	409	7	l2	long
-    //   216	378	9	l3	long
-    //   249	348	11	l4	long
-    //   469	131	13	l5	long
-    //   502	101	15	l6	long
-    //   535	71	17	l7	long
-    //   568	41	19	l8	long
-    //   6	618	21	localRandomAccessFile	RandomAccessFile
-    //   630	50	21	localException1	Exception
-    //   686	1	21	localException2	Exception
-    //   694	1	21	localException3	Exception
-    //   17	725	22	arrayOfByte	byte[]
-    //   117	147	23	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   311	316	318	java/lang/Exception
-    //   623	628	630	java/lang/Exception
-    //   19	34	649	java/lang/Exception
-    //   47	53	649	java/lang/Exception
-    //   64	70	649	java/lang/Exception
-    //   79	251	649	java/lang/Exception
-    //   256	261	649	java/lang/Exception
-    //   266	288	649	java/lang/Exception
-    //   321	575	649	java/lang/Exception
-    //   581	615	649	java/lang/Exception
-    //   658	663	666	java/lang/Exception
-    //   19	34	670	finally
-    //   47	53	670	finally
-    //   64	70	670	finally
-    //   79	251	670	finally
-    //   256	261	670	finally
-    //   266	288	670	finally
-    //   321	575	670	finally
-    //   581	615	670	finally
-    //   296	301	686	java/lang/Exception
-    //   642	647	690	java/lang/Exception
-    //   679	684	694	java/lang/Exception
+    try
+    {
+      Collections.sort(paramList, jdField_a_of_type_Akdj);
+      return;
+    }
+    catch (Exception paramList)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("BuddyListAdapter", 2, "", paramList);
+    }
   }
   
-  private static final String[] a(long paramLong)
+  private void c()
   {
-    File localFile = new File("/proc/" + paramLong + "/task");
-    if ((localFile.exists()) && (localFile.isDirectory())) {
-      return localFile.list();
+    int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
+      if ((localObject != null) && ((localObject instanceof akhw)))
+      {
+        localObject = (akhw)localObject;
+        if ((TextUtils.isEmpty(((akhw)localObject).jdField_b_of_type_ComTencentWidgetSingleLineTextView.a().toString())) && ((((akhw)localObject).jdField_a_of_type_JavaLangObject instanceof Friends))) {
+          a((Friends)((akhw)localObject).jdField_a_of_type_JavaLangObject, (akhw)localObject);
+        }
+      }
+      i += 1;
+    }
+  }
+  
+  private void d()
+  {
+    int k = 0;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).getString("700_sp_key_last_expanded", "700_sp_key_last_expanded");
+    if (QLog.isColorLevel()) {
+      QLog.d("BuddyListAdapter", 2, "readExpand=" + (String)localObject);
+    }
+    HashSet localHashSet = new HashSet();
+    int i;
+    if (((String)localObject).equalsIgnoreCase("700_sp_key_last_expanded"))
+    {
+      i = 0;
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        if (getGroupType(i) == 0)
+        {
+          localObject = (Groups)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+          if (((Groups)localObject).group_friend_count > 0) {
+            localHashSet.add(Integer.valueOf(((Groups)localObject).group_id));
+          }
+        }
+      }
+      else
+      {
+        i = k;
+        if (localHashSet.size() == 0)
+        {
+          this.jdField_c_of_type_Boolean = true;
+          i = k;
+        }
+      }
+    }
+    int m;
+    int j;
+    for (;;)
+    {
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        if ((getGroupType(i) == 0) && (localHashSet.contains(Integer.valueOf(((Groups)this.jdField_a_of_type_JavaUtilArrayList.get(i)).group_id)))) {
+          this.jdField_a_of_type_ComTencentWidgetExpandableListView.a(i);
+        }
+        i += 1;
+        continue;
+        i += 1;
+        break;
+        i = k;
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          localObject = ((String)localObject).split("_");
+          m = localObject.length;
+          j = 0;
+        }
+      }
+    }
+    for (;;)
+    {
+      i = k;
+      if (j >= m) {
+        break;
+      }
+      String str = localObject[j];
+      try
+      {
+        localHashSet.add(Integer.valueOf(Integer.parseInt(str)));
+        label290:
+        j += 1;
+        continue;
+        return;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        break label290;
+      }
+    }
+  }
+  
+  private void g()
+  {
+    StringBuffer localStringBuffer = new StringBuffer();
+    int j = getGroupCount();
+    if (j <= 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BuddyListAdapter", 2, "no data. don't save group");
+      }
+      return;
+    }
+    int i = 0;
+    while (i < j)
+    {
+      if (getGroupType(i) == 0)
+      {
+        Groups localGroups = (Groups)getGroup(i);
+        if (this.jdField_a_of_type_ComTencentWidgetExpandableListView.c(i))
+        {
+          localStringBuffer.append(localGroups.group_id);
+          localStringBuffer.append("_");
+        }
+      }
+      i += 1;
+    }
+    if (localStringBuffer.length() > 0) {
+      localStringBuffer.deleteCharAt(localStringBuffer.length() - 1);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("BuddyListAdapter", 2, "saveExpanded=" + localStringBuffer.toString());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit().putString("700_sp_key_last_expanded", localStringBuffer.toString()).commit();
+  }
+  
+  public int a()
+  {
+    return 2131558879;
+  }
+  
+  String a(Friends paramFriends, akhw paramakhw)
+  {
+    if ((this.jdField_a_of_type_Axzt == null) || (this.jdField_a_of_type_Aloz == null)) {
+      return null;
+    }
+    ExtensionInfo localExtensionInfo = this.jdField_a_of_type_Aloz.a(paramFriends.uin);
+    Object localObject = null;
+    boolean bool;
+    label65:
+    int j;
+    label98:
+    int k;
+    if ((localExtensionInfo != null) && (!TextUtils.isEmpty(localExtensionInfo.feedContent)))
+    {
+      i = 1;
+      if (localExtensionInfo != null)
+      {
+        if (this.jdField_b_of_type_Int == 0) {
+          break label285;
+        }
+        bool = true;
+        localObject = localExtensionInfo.getRichStatus(bool);
+      }
+      if ((localObject == null) || (localObject == RichStatus.getEmptyStatus()) || (((RichStatus)localObject).isEmpty())) {
+        break label291;
+      }
+      j = 1;
+      if ((j == 0) || (TextUtils.isEmpty(((RichStatus)localObject).actionText))) {
+        break label297;
+      }
+      k = 1;
+      label117:
+      if ((i == 0) || ((localExtensionInfo.feedTime <= localExtensionInfo.richTime) && (j != 0))) {
+        break label413;
+      }
+      paramFriends = new String(localExtensionInfo.feedContent);
+      paramakhw.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
+      if (localExtensionInfo.feedType != 2) {
+        break label322;
+      }
+      paramakhw.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      if (TextUtils.isEmpty(localExtensionInfo.feedPhotoUrl)) {
+        break label303;
+      }
+      bczi.a(paramakhw.jdField_b_of_type_AndroidWidgetImageView, localExtensionInfo.feedPhotoUrl, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130849605));
+    }
+    for (;;)
+    {
+      paramakhw.c.setVisibility(8);
+      paramakhw.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      localObject = null;
+      if (localExtensionInfo == null)
+      {
+        paramakhw.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+        paramakhw.c.setVisibility(8);
+      }
+      paramakhw.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendText((String)localObject, 1);
+      paramakhw.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setText(paramFriends);
+      return paramFriends;
+      i = 0;
+      break;
+      label285:
+      bool = false;
+      break label65;
+      label291:
+      j = 0;
+      break label98;
+      label297:
+      k = 0;
+      break label117;
+      label303:
+      paramakhw.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(SkinEngine.getInstances().getDefaultThemeDrawable(2130849605));
+    }
+    label322:
+    paramakhw.c.setVisibility(0);
+    localObject = paramakhw.c;
+    if (localExtensionInfo.feedType == 1)
+    {
+      i = 2130848971;
+      label349:
+      ((ImageView)localObject).setBackgroundResource(i);
+      localObject = paramakhw.jdField_a_of_type_ComTencentImageURLImageView;
+      if (!localExtensionInfo.feedHasPhoto) {
+        break label407;
+      }
+    }
+    label407:
+    for (int i = 0;; i = 8)
+    {
+      ((URLImageView)localObject).setVisibility(i);
+      paramakhw.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramakhw.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      localObject = null;
+      break;
+      i = 2130848969;
+      break label349;
+    }
+    label413:
+    if (k != 0)
+    {
+      ((RichStatus)localObject).enableSummaryCached = paramFriends.isFriend();
+      paramFriends = this.jdField_a_of_type_Axzt.a(((RichStatus)localObject).actionId, 200);
+      paramFriends = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), paramFriends);
+      i = this.jdField_c_of_type_Int;
+      paramFriends.setBounds(0, 0, Math.round(paramFriends.getIntrinsicWidth() * 1.0F / paramFriends.getIntrinsicHeight() * i), i);
+      paramakhw.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(paramFriends, null);
+    }
+    for (;;)
+    {
+      String str = ((RichStatus)localObject).getActionAndData();
+      paramFriends = ((RichStatus)localObject).getPlainText();
+      paramakhw.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+      paramakhw.c.setVisibility(8);
+      paramakhw.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramakhw.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(null);
+      localObject = str;
+      break;
+      if (j == 0)
+      {
+        localObject = RichStatus.getEmptyStatus();
+        paramakhw.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
+      }
+    }
+  }
+  
+  public void a()
+  {
+    super.notifyDataSetChanged();
+  }
+  
+  public void a(View paramView)
+  {
+    if (paramView != null)
+    {
+      paramView = paramView.getTag(-1);
+      if (!(paramView instanceof Integer)) {}
+    }
+    for (int i = ((Integer)paramView).intValue();; i = -1)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+    }
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    Groups localGroups = (Groups)getGroup(paramInt);
+    if (!(paramView.getTag() instanceof akdg))
+    {
+      localObject = new akdg();
+      ((akdg)localObject).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131368762));
+      ((akdg)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131367341));
+      ((akdg)localObject).jdField_a_of_type_ComTencentWidgetSingleLineTextView.setDefaultTextColor(-8355712);
+      ((akdg)localObject).jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131378908));
+      ((akdg)localObject).jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView = ((SimpleTextView)paramView.findViewById(2131364709));
+      ((akdg)localObject).jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setDefaultTextColor(1711276032);
+      ((akdg)localObject).jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131368853));
+      paramView.setTag(localObject);
+    }
+    for (paramView = (View)localObject;; paramView = (akdg)paramView.getTag())
+    {
+      a(paramView, localGroups, paramInt, true, 0);
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTypeface(Typeface.SANS_SERIF);
+      if (!ThemeUtil.isNowThemeIsDefaultCache(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false)) {
+        break;
+      }
+      paramView.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setTextColor(-5196865);
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColorStateList(2131166979);
+    paramView.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setTextColor((ColorStateList)localObject);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      FrameHelperActivity.c(paramBoolean);
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(View paramView)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return false;
+    }
+    if ((paramView.getTag() instanceof akhw))
+    {
+      paramView = (akhw)paramView.getTag();
+      if ((paramView.jdField_a_of_type_JavaLangObject instanceof Friends))
+      {
+        paramView = (Friends)paramView.jdField_a_of_type_JavaLangObject;
+        if ((paramView.uin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) || (bdal.b(paramView.uin))) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  
+  public void b()
+  {
+    g();
+    aupk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int c()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public void e() {}
+  
+  public void f()
+  {
+    g();
+    aupk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    super.f();
+  }
+  
+  public Object getChild(int paramInt1, int paramInt2)
+  {
+    if (getGroupType(paramInt1) == 0)
+    {
+      Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1);
+      return ((List)this.jdField_a_of_type_AndroidUtilSparseArray.get(localGroups.group_id)).get(paramInt2);
     }
     return null;
   }
   
-  private static final int b()
+  public long getChildId(int paramInt1, int paramInt2)
   {
-    try
-    {
-      int i = new File("/sys/devices/system/cpu/").listFiles(new akde()).length;
-      return i;
+    Object localObject = getChild(paramInt1, paramInt2);
+    long l2 = 0L;
+    if ((localObject instanceof Friends)) {
+      localObject = (Friends)localObject;
     }
-    catch (Exception localException) {}
-    return 1;
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    byte[] arrayOfByte = ByteArrayPool.getGenericInstance().getBuf(1024);
-    for (;;)
+    do
     {
-      try
+      long l1;
+      do
       {
-        Object localObject1 = a("-2");
-        if (localObject1 != null)
+        try
         {
-          l1 = ((Long)localObject1[1]).longValue();
-          l2 = ((Long)localObject1[2]).longValue();
-          l1 = l1 + l2 - c - jdField_b_of_type_Long;
-          a("-1", jdField_a_of_type_Akdf, false);
-          if (paramBoolean)
+          l1 = Long.parseLong(((Friends)localObject).uin);
+          return l1;
+        }
+        catch (Throwable localThrowable1)
+        {
+          for (;;)
           {
-            localObject1 = jdField_a_of_type_JavaUtilMap.keySet().iterator();
-            if (((Iterator)localObject1).hasNext())
-            {
-              String str = (String)((Iterator)localObject1).next();
-              akdf localakdf = (akdf)jdField_a_of_type_JavaUtilMap.get(str);
-              a(str, localakdf, false);
-              localakdf.jdField_a_of_type_Int = ((int)(100L * (localakdf.d + localakdf.c) / l1));
-              continue;
+            if (QLog.isColorLevel()) {
+              QLog.i("BuddyListAdapter", 2, QLog.getStackTraceString(localThrowable1));
             }
+            l1 = 0L;
           }
         }
-        long l1 = -1L;
-      }
-      catch (Exception localException)
+        if ((localThrowable1 instanceof PublicAccountInfo)) {
+          return ((PublicAccountInfo)localThrowable1).uin;
+        }
+        l1 = l2;
+      } while (!(localThrowable1 instanceof PhoneContact));
+      PhoneContact localPhoneContact = (PhoneContact)localThrowable1;
+      try
       {
-        return;
-        jdField_a_of_type_Int = (int)(100L * (l2 - c) / l1);
-        jdField_a_of_type_Akdf.jdField_a_of_type_Int = ((int)(100L * (jdField_a_of_type_Akdf.d + jdField_a_of_type_Akdf.c) / l1));
-        jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        return;
+        l1 = Long.parseLong(localPhoneContact.mobileNo);
+        return l1;
       }
-      finally
+      catch (Throwable localThrowable2)
       {
-        ByteArrayPool.getGenericInstance().returnBuf(arrayOfByte);
+        l1 = l2;
       }
-      long l2 = -1L;
+    } while (!QLog.isColorLevel());
+    QLog.i("BuddyListAdapter", 2, QLog.getStackTraceString(localThrowable2));
+    return 0L;
+  }
+  
+  public int getChildType(int paramInt1, int paramInt2)
+  {
+    if (getGroupType(paramInt1) == 0)
+    {
+      if (((Groups)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).group_id == 1002) {
+        return 1;
+      }
+      return 0;
+    }
+    return 99;
+  }
+  
+  public int getChildTypeCount()
+  {
+    return 6;
+  }
+  
+  public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    bhxr.a("getChildView");
+    akhx localakhx = (akhx)getChild(paramInt1, paramInt2);
+    if (localakhx == null) {}
+    for (paramView = null;; paramView = localakhx.a(paramInt1, paramInt2, paramView, paramViewGroup, this.jdField_a_of_type_AndroidViewView$OnClickListener))
+    {
+      if (paramView != null)
+      {
+        a((akia)paramView.getTag(), null);
+        if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+          paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        }
+        paramView.setOnLongClickListener(this.jdField_a_of_type_Akdi);
+      }
+      bhxr.a();
+      return paramView;
+    }
+  }
+  
+  public int getChildrenCount(int paramInt)
+  {
+    if (getGroupType(paramInt) == 1) {
+      return 0;
+    }
+    paramInt = ((Groups)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).group_id;
+    List localList = (List)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localList == null) {}
+    for (paramInt = 0;; paramInt = localList.size()) {
+      return paramInt;
+    }
+  }
+  
+  public Object getGroup(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public int getGroupCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public long getGroupId(int paramInt)
+  {
+    if (getGroupType(paramInt) == 0) {
+      return ((Groups)getGroup(paramInt)).group_id;
+    }
+    return 1000L;
+  }
+  
+  public int getGroupType(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      QLog.e("BuddyListAdapter", 1, "getGroupType illegal, groupPosition =" + paramInt + ", size=" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+    while ((this.jdField_a_of_type_JavaUtilArrayList.get(paramInt) instanceof String)) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public int getGroupTypeCount()
+  {
+    return 2;
+  }
+  
+  public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = 1;
+    if (getGroupType(paramInt) == 1)
+    {
+      if (paramView == null)
+      {
+        paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131558876, paramViewGroup, false);
+        paramViewGroup = (SingleLineTextView)paramView.findViewById(2131378697);
+        paramViewGroup.setDefaultTextColor(-8355712);
+        paramView.setTag(paramViewGroup);
+      }
+      for (;;)
+      {
+        localObject = (String)getGroup(paramInt);
+        paramViewGroup.setText("");
+        return paramView;
+        paramViewGroup = (SingleLineTextView)paramView.getTag();
+      }
+    }
+    Object localObject = (Groups)getGroup(paramInt);
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2131558879, paramViewGroup, false);
+      paramViewGroup = new akdg();
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131367341));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131368762));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView = ((SimpleTextView)paramView.findViewById(2131364709));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setDefaultTextColor(1711276032);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131368853));
+      paramViewGroup.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131378908));
+      paramView.setTag(paramViewGroup);
+      if (!ThemeUtil.isNowThemeIsDefaultCache(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false)) {
+        break label293;
+      }
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setTextColor(-5196865);
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(this.jdField_a_of_type_Akdh);
+      paramView.setOnLongClickListener(this.jdField_a_of_type_Akdi);
+      if (paramBoolean) {
+        i = 2;
+      }
+      a(paramViewGroup, (Groups)localObject, paramInt, false, i);
+      return paramView;
+      paramViewGroup = (akdg)paramView.getTag();
+      break;
+      label293:
+      ColorStateList localColorStateList = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getColorStateList(2131166979);
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView.setTextColor(localColorStateList);
+    }
+  }
+  
+  public boolean hasStableIds()
+  {
+    return false;
+  }
+  
+  public boolean isChildSelectable(int paramInt1, int paramInt2)
+  {
+    return true;
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BuddyListAdapter", 2, "notifyDataSetChanged");
+    }
+    ThreadManager.postImmediately(new BuddyListAdapter.1(this), null, true);
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = (akdg)paramView.getTag();
+    if (this.jdField_a_of_type_ComTencentWidgetExpandableListView.c(paramView.jdField_a_of_type_Int))
+    {
+      this.jdField_a_of_type_ComTencentWidgetExpandableListView.b(paramView.jdField_a_of_type_Int);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentWidgetExpandableListView.a(paramView.jdField_a_of_type_Int);
+    ((axfe)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(91)).a();
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    Object localObject1;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localObject1 = paramView.getTag();
+      if (localObject1 != null) {
+        if ((localObject1 instanceof akdg))
+        {
+          localObject1 = new bdkz();
+          ((bdkz)localObject1).a(0, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getString(2131693327));
+          bdbk.a(paramView, (bdkz)localObject1, this.jdField_b_of_type_AndroidViewView$OnClickListener, null);
+          bool1 = true;
+        }
+      }
+    }
+    for (;;)
+    {
+      return bool1;
+      if (!(localObject1 instanceof akia)) {
+        break;
+      }
+      Object localObject2 = ((akia)localObject1).jdField_a_of_type_JavaLangObject;
+      if ((localObject2 == null) || (!(localObject2 instanceof Friends))) {
+        break;
+      }
+      paramView = (bhpy)bhql.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null);
+      localObject1 = (aloz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+      localObject2 = (Friends)localObject2;
+      localObject1 = ((aloz)localObject1).a(((Friends)localObject2).uin);
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c().equals(((Friends)localObject2).uin))
+      {
+        bool1 = bool2;
+        if (localObject1 != null)
+        {
+          if (((SpecialCareInfo)localObject1).globalSwitch == 0) {
+            bool1 = bool2;
+          }
+        }
+        else {
+          label188:
+          if (!bool1) {
+            break label240;
+          }
+        }
+        label240:
+        for (int i = 2131691118;; i = 2131691119)
+        {
+          for (;;)
+          {
+            paramView.b(i);
+            paramView.c(2131690648);
+            paramView.a(new akde(this, bool1, (Friends)localObject2, paramView));
+            try
+            {
+              paramView.show();
+            }
+            catch (Exception paramView) {}
+          }
+          break;
+          bool1 = true;
+          break label188;
+        }
+        bool1 = false;
+      }
+    }
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.jdField_a_of_type_Bhpo != null) {
+      this.jdField_a_of_type_Bhpo.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    super.onScrollStateChanged(paramAbsListView, paramInt);
+    if (paramInt == 0)
+    {
+      c();
+      abqw.a().a("list_g_contacts", false);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Bhpo != null) {
+        this.jdField_a_of_type_Bhpo.onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      if (paramInt != 0) {
+        ApngImage.pauseByTag(3);
+      }
+      if (paramInt == 0) {
+        ApngImage.playByTag(3);
+      }
+      return;
+      abqw.a().a("list_g_contacts");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdd
  * JD-Core Version:    0.7.0.1
  */

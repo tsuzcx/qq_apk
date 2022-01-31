@@ -1,16 +1,20 @@
-import android.graphics.Bitmap;
-import android.graphics.Color;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 
 public class asbf
+  implements View.OnClickListener
 {
-  public int a = 1;
-  public Bitmap a;
-  public int b = Color.parseColor("#FFFF0000");
-  public int c;
+  public asbf(IphoneTitleBarFragment paramIphoneTitleBarFragment) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.onBackEvent();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asbf
  * JD-Core Version:    0.7.0.1
  */

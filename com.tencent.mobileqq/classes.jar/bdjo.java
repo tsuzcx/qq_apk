@@ -1,66 +1,25 @@
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class bdjo
 {
-  protected static bdjo a;
-  protected ArrayList<bdjn> a;
-  
-  public static bdjo a()
+  public static void a(Activity paramActivity, long paramLong)
   {
-    try
-    {
-      if (jdField_a_of_type_Bdjo == null)
-      {
-        jdField_a_of_type_Bdjo = new bdjo();
-        jdField_a_of_type_Bdjo.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      bdjo localbdjo = jdField_a_of_type_Bdjo;
-      return localbdjo;
+    if (QLog.isColorLevel()) {
+      QLog.d("troopbar_share", 2, "notifySDKCanceled:" + paramLong);
     }
-    finally {}
+    arys.a(paramActivity, false, "shareToTroopBar", paramLong);
   }
   
-  public ArrayList<bdjn> a()
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    return jdField_a_of_type_Bdjo.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(bdjn parambdjn)
-  {
-    int j = jdField_a_of_type_Bdjo.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    while (i < j)
-    {
-      if ((bdjn)jdField_a_of_type_Bdjo.jdField_a_of_type_JavaUtilArrayList.get(i) == parambdjn) {
-        return;
-      }
-      i += 1;
-    }
-    jdField_a_of_type_Bdjo.jdField_a_of_type_JavaUtilArrayList.add(parambdjn);
-  }
-  
-  public void b(bdjn parambdjn)
-  {
-    int j = jdField_a_of_type_Bdjo.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        if ((bdjn)jdField_a_of_type_Bdjo.jdField_a_of_type_JavaUtilArrayList.get(i) == parambdjn) {
-          jdField_a_of_type_Bdjo.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        }
-      }
-      else {
-        return;
-      }
-      i += 1;
-    }
+    azmj.b(paramQQAppInterface, "P_CliOper", "Grp_share", "", "to_tribe", paramString1, 0, 0, paramString2, "1", null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdjo
  * JD-Core Version:    0.7.0.1
  */

@@ -77,7 +77,7 @@ public final class newest_feeds_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp
  * JD-Core Version:    0.7.0.1
  */

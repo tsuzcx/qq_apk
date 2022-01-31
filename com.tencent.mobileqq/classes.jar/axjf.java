@@ -1,136 +1,46 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.tencent.util.BinderWarpper;
 
-public class axjf
+class axjf
+  implements ServiceConnection
 {
-  public static axjf a;
-  private final int jdField_a_of_type_Int = 20;
-  private long jdField_a_of_type_Long;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
-  private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean;
-  private long jdField_d_of_type_Long;
-  private volatile boolean jdField_d_of_type_Boolean;
-  private long e;
-  private long f;
-  private long g;
+  axjf(axje paramaxje) {}
   
-  public static axjf a()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    if (jdField_a_of_type_Axjf == null) {}
+    axjd.a("PTV.RichmediaClient", "onServiceConnected");
+    this.a.b = new Messenger(paramIBinder);
+    paramComponentName = Message.obtain(null, 1);
+    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
+    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_Axja.asBinder());
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
+    paramComponentName.setData(localBundle);
     try
     {
-      if (jdField_a_of_type_Axjf == null) {
-        jdField_a_of_type_Axjf = new axjf();
-      }
-      return jdField_a_of_type_Axjf;
-    }
-    finally {}
-  }
-  
-  private void f()
-  {
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Long = 0L;
-    this.e = 0L;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_d_of_type_Boolean) {
-      this.f = System.currentTimeMillis();
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 1;
-    if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int <= 20))
-    {
-      this.jdField_b_of_type_Int += 1;
-      if (QLog.isColorLevel()) {
-        QLog.i("GestureMonitorManager", 2, "start " + this.jdField_b_of_type_Int + "");
-      }
-    }
-    do
-    {
+      this.a.b.send(paramComponentName);
       return;
-      if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int > 20))
-      {
-        e();
-        f();
-        return;
-      }
-    } while (this.jdField_d_of_type_Boolean);
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      paramBoolean1 = true;
-      this.jdField_d_of_type_Boolean = paramBoolean1;
-      if (!this.jdField_d_of_type_Boolean) {
-        break label133;
-      }
     }
-    for (;;)
+    catch (RemoteException paramComponentName)
     {
-      this.jdField_b_of_type_Int = i;
-      return;
-      paramBoolean1 = false;
-      break;
-      label133:
-      i = 0;
+      axjd.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
     }
   }
   
-  public void b()
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (this.jdField_d_of_type_Boolean)
-    {
-      this.f = (System.currentTimeMillis() - this.f);
-      this.jdField_a_of_type_Long += this.f;
-      if (QLog.isColorLevel()) {
-        QLog.i("GestureMonitorManager", 2, "GestureMonitorManager TotalDetetcorConsumer[startPreview] " + this.f + "ms");
-      }
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_d_of_type_Boolean) {
-      this.g = System.currentTimeMillis();
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_d_of_type_Boolean)
-    {
-      this.g = (System.currentTimeMillis() - this.g);
-      this.jdField_d_of_type_Long += this.g;
-      if (QLog.isColorLevel()) {
-        QLog.i("GestureMonitorManager", 2, "GestureMonitorManager GestureDrawConsumer[GestureDraw] " + this.g + "ms");
-      }
-    }
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("GestureMonitorManagerdoReport", 2, "GestureMonitorManager check Frame numbers[+20],[StartPreview:" + this.jdField_a_of_type_Long + "ms],[FaceDetector Aysn childThread:" + this.jdField_c_of_type_Long + "ms],ms],[FaceDraw:" + this.jdField_b_of_type_Long + "ms],[GestureDetector Aysn childThread:" + this.e + "ms],ms],[GestureDraw:" + this.jdField_d_of_type_Long + "ms]");
-    }
+    this.a.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axjf
  * JD-Core Version:    0.7.0.1
  */

@@ -25,6 +25,7 @@ public class WtloginHelper$HelperThread
   long[] mDwSubAppidList;
   long mDwSubDstAppid;
   int mEncrypt;
+  byte[] mExtraData;
   int mExtraFlag = 1;
   long mExtraUin = -1L;
   WFastLoginInfo mFastLoginInfo;
@@ -157,13 +158,14 @@ public class WtloginHelper$HelperThread
     setName("Wtlogin_" + paramString2);
   }
   
-  WtloginHelper$HelperThread(WtloginHelper paramWtloginHelper1, WtloginHelper paramWtloginHelper2, Handler paramHandler, String paramString1, long paramLong, WUserSigInfo paramWUserSigInfo, String paramString2)
+  WtloginHelper$HelperThread(WtloginHelper paramWtloginHelper1, WtloginHelper paramWtloginHelper2, Handler paramHandler, String paramString1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte, String paramString2)
   {
     this.mHelper = paramWtloginHelper2;
     this.mHandler = paramHandler;
     this.mUserAccount = paramString1;
     this.mSmsAppid = paramLong;
     this.mUserSigInfo = paramWUserSigInfo;
+    this.mExtraData = paramArrayOfByte;
     setName("Wtlogin_" + paramString2);
   }
   
@@ -215,6 +217,18 @@ public class WtloginHelper$HelperThread
     this.mUserInput = paramArrayOfByte;
     this.mUserSigInfo = paramWUserSigInfo;
     this.mST = paramArrayOfByte1;
+    setName("Wtlogin_" + paramString2);
+  }
+  
+  WtloginHelper$HelperThread(WtloginHelper paramWtloginHelper1, WtloginHelper paramWtloginHelper2, Handler paramHandler, String paramString1, byte[] paramArrayOfByte1, WUserSigInfo paramWUserSigInfo, byte[][] paramArrayOfByte, byte[] paramArrayOfByte2, String paramString2)
+  {
+    this.mHelper = paramWtloginHelper2;
+    this.mHandler = paramHandler;
+    this.mUserAccount = paramString1;
+    this.mUserInput = paramArrayOfByte1;
+    this.mUserSigInfo = paramWUserSigInfo;
+    this.mST = paramArrayOfByte;
+    this.mExtraData = paramArrayOfByte2;
     setName("Wtlogin_" + paramString2);
   }
   
@@ -428,13 +442,13 @@ public class WtloginHelper$HelperThread
             }
             if (this.mReqType == 3)
             {
-              i = WtloginHelper.access$900(this.mHelper, this.mUserAccount, this.mSmsAppid, this.mUserSigInfo, 1);
+              i = WtloginHelper.access$900(this.mHelper, this.mUserAccount, this.mSmsAppid, this.mUserSigInfo, this.mExtraData, 1);
               this.mHandler.post(new WtloginHelper.HelperThread.5(this, k, i));
               continue;
             }
             if (this.mReqType == 4)
             {
-              i = WtloginHelper.access$1000(this.mHelper, this.mUserAccount, this.mUserInput, this.mUserSigInfo, this.mST, 1);
+              i = WtloginHelper.access$1000(this.mHelper, this.mUserAccount, this.mUserInput, this.mUserSigInfo, this.mST, this.mExtraData, 1);
               this.mHandler.post(new WtloginHelper.HelperThread.6(this, k, i));
               continue;
             }

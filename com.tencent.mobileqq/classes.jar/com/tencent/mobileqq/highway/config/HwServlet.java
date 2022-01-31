@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import com.tencent.mobileqq.highway.ipv6.Ipv6Config;
 import com.tencent.mobileqq.highway.openup.OpenUpConfig;
 import com.tencent.mobileqq.highway.openup.SessionInfo;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.ReqBody;
@@ -57,7 +58,8 @@ public class HwServlet
   private static final int CMD_ID_GET_CONFIG = 181;
   private static final int CMD_ID_REPORT_TRAFFIC = 182;
   private static final String CMD_PIC_UP = "LongConn.OffPicUp";
-  private static final int HIGHWAY_SERVICE_TYPE = 10;
+  public static final int HIGHWAY_SERVICE_HTTPS = 21;
+  public static final int HIGHWAY_SERVICE_TYPE = 10;
   private static final String PARAM_FLAG = "flag";
   private static final String PARAM_IP = "ip";
   private static final String PARAM_NETWORKTYPE = "networktype";
@@ -71,6 +73,59 @@ public class HwServlet
   public static WeakReference<HwServlet.OnGetConfigListener> mGetConfigListener;
   private static AtomicBoolean mHasStart = new AtomicBoolean(false);
   private static String mUin;
+  
+  private HwConfig generateConfig(subcmd0x501.SubCmd0x501Rspbody.SrvAddrs paramSrvAddrs)
+  {
+    HwConfig localHwConfig = new HwConfig();
+    localHwConfig.ipList = new ArrayList();
+    localHwConfig.netSegConfList = new ArrayList();
+    localHwConfig.shortVideoSegConfList = new ArrayList();
+    Object localObject1 = paramSrvAddrs.rpt_msg_addrs.get();
+    int i;
+    Object localObject2;
+    Object localObject3;
+    int j;
+    boolean bool;
+    if ((localObject1 != null) && (((List)localObject1).size() != 0))
+    {
+      i = 0;
+      if (i < ((List)localObject1).size())
+      {
+        localObject2 = (subcmd0x501.SubCmd0x501Rspbody.IpAddr)((List)localObject1).get(i);
+        localObject3 = localHwConfig.ipList;
+        String str = spliceCircleUrl(((subcmd0x501.SubCmd0x501Rspbody.IpAddr)localObject2).uint32_ip.get());
+        j = ((subcmd0x501.SubCmd0x501Rspbody.IpAddr)localObject2).uint32_port.get();
+        if (((subcmd0x501.SubCmd0x501Rspbody.IpAddr)localObject2).uint32_same_isp.get() == 1) {}
+        for (bool = true;; bool = false)
+        {
+          ((ArrayList)localObject3).add(new EndPoint(str, j, bool));
+          i += 1;
+          break;
+        }
+      }
+    }
+    localHwConfig.ipv6List = new ArrayList();
+    paramSrvAddrs = paramSrvAddrs.rpt_msg_addrs_v6.get();
+    if ((paramSrvAddrs != null) && (paramSrvAddrs.size() != 0))
+    {
+      i = 0;
+      if (i < paramSrvAddrs.size())
+      {
+        localObject1 = (subcmd0x501.SubCmd0x501Rspbody.Ip6Addr)paramSrvAddrs.get(i);
+        localObject2 = localHwConfig.ipv6List;
+        localObject3 = spliceIpv6Url(((subcmd0x501.SubCmd0x501Rspbody.Ip6Addr)localObject1).bytes_ip6.get().toByteArray());
+        j = ((subcmd0x501.SubCmd0x501Rspbody.Ip6Addr)localObject1).uint32_port.get();
+        if (((subcmd0x501.SubCmd0x501Rspbody.Ip6Addr)localObject1).uint32_same_isp.get() == 1) {}
+        for (bool = true;; bool = false)
+        {
+          ((ArrayList)localObject2).add(new EndPoint((String)localObject3, j, bool));
+          i += 1;
+          break;
+        }
+      }
+    }
+    return localHwConfig;
+  }
   
   public static void getConfig(AppRuntime paramAppRuntime, String paramString)
   {
@@ -93,6 +148,46 @@ public class HwServlet
     paramOnGetConfigListener.putExtra("param_req_type", 181);
     paramOnGetConfigListener.putExtra("param_uin", Long.parseLong(paramString));
     paramAppRuntime.startServlet(paramOnGetConfigListener);
+  }
+  
+  private void handleIpv6Cfg(subcmd0x501.RspBody paramRspBody)
+  {
+    int n = 1;
+    int m = 0;
+    int j;
+    int i;
+    if (paramRspBody.msg_subcmd_0x501_rsp_body.uint32_fmt_policy.has())
+    {
+      j = paramRspBody.msg_subcmd_0x501_rsp_body.uint32_fmt_policy.get();
+      i = 1;
+    }
+    for (;;)
+    {
+      int k;
+      if (paramRspBody.msg_subcmd_0x501_rsp_body.uint32_bigdata_policy.has())
+      {
+        k = paramRspBody.msg_subcmd_0x501_rsp_body.uint32_bigdata_policy.get();
+        i = 1;
+      }
+      for (;;)
+      {
+        if (paramRspBody.msg_subcmd_0x501_rsp_body.uint32_conn_attempt_delay.has())
+        {
+          m = paramRspBody.msg_subcmd_0x501_rsp_body.uint32_conn_attempt_delay.get();
+          i = n;
+        }
+        for (;;)
+        {
+          if (i != 0) {
+            Ipv6Config.updateCfgFromSrv(BaseApplication.getContext(), j, k, m);
+          }
+          return;
+        }
+        k = 0;
+      }
+      i = 0;
+      j = 0;
+    }
   }
   
   public static boolean isNetworkTypeMobile(int paramInt)
@@ -138,7 +233,7 @@ public class HwServlet
         catch (Exception localException2)
         {
           int i;
-          break label185;
+          break label186;
         }
         localException1 = localException1;
         i = 0;
@@ -160,7 +255,7 @@ public class HwServlet
       if (i == 0) {
         i = 1;
       } else {
-        label185:
+        label186:
         localException1.printStackTrace();
       }
     }
@@ -186,6 +281,7 @@ public class HwServlet
     paramIntent.uint32_request_flag.set(3);
     Object localObject = new ArrayList();
     ((List)localObject).add(Integer.valueOf(10));
+    ((List)localObject).add(Integer.valueOf(21));
     paramIntent.rpt_uint32_service_types.set((List)localObject);
     paramIntent.uint32_plat.set(9);
     localObject = new subcmd0x501.ReqBody();
@@ -212,124 +308,81 @@ public class HwServlet
       }
       return;
     }
-    localObject1 = ConfigManager.getInstance(null, null);
-    paramIntent = new subcmd0x501.RspBody();
+    paramIntent = ConfigManager.getInstance(null, null);
+    localObject1 = new subcmd0x501.RspBody();
     for (;;)
     {
+      Object localObject3;
+      int i;
       try
       {
         paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
         Object localObject2 = new byte[paramFromServiceMsg.getInt() - 4];
         paramFromServiceMsg.get((byte[])localObject2);
-        paramIntent.mergeFrom((byte[])localObject2);
-        paramFromServiceMsg = (subcmd0x501.SubCmd0x501Rspbody)paramIntent.msg_subcmd_0x501_rsp_body.get();
+        ((subcmd0x501.RspBody)localObject1).mergeFrom((byte[])localObject2);
+        paramFromServiceMsg = (subcmd0x501.SubCmd0x501Rspbody)((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.get();
         SessionInfo.updateSessionInfo(paramFromServiceMsg.bytes_httpconn_sig_session.get().toByteArray(), paramFromServiceMsg.bytes_session_key.get().toByteArray(), paramString);
         paramFromServiceMsg = paramFromServiceMsg.rpt_msg_httpconn_addrs.get();
         if ((paramFromServiceMsg == null) || (paramFromServiceMsg.size() == 0)) {
-          break label994;
+          break label753;
         }
         paramFromServiceMsg = paramFromServiceMsg.iterator();
         if (!paramFromServiceMsg.hasNext()) {
-          break label985;
+          break;
         }
-        localObject2 = (subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)paramFromServiceMsg.next();
-        if (((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject2).uint32_service_type.get() != 10) {
-          continue;
+        localObject3 = (subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)paramFromServiceMsg.next();
+        i = ((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject3).uint32_service_type.get();
+        if (i != 10) {
+          break label721;
         }
-        paramFromServiceMsg = new HwConfig();
-        paramFromServiceMsg.ipList = new ArrayList();
-        paramFromServiceMsg.netSegConfList = new ArrayList();
-        paramFromServiceMsg.shortVideoSegConfList = new ArrayList();
-        Object localObject3 = ((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject2).rpt_msg_addrs.get();
-        int i;
-        Object localObject4;
-        ArrayList localArrayList;
-        String str;
-        int j;
+        localObject2 = generateConfig((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject3);
+        localObject3 = ((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject3).rpt_msg_netsegconf.get();
+        subcmd0x501.SubCmd0x501Rspbody.NetSegConf localNetSegConf;
         if ((localObject3 != null) && (((List)localObject3).size() != 0))
         {
           i = 0;
           if (i < ((List)localObject3).size())
           {
-            localObject4 = (subcmd0x501.SubCmd0x501Rspbody.IpAddr)((List)localObject3).get(i);
-            localArrayList = paramFromServiceMsg.ipList;
-            str = spliceCircleUrl(((subcmd0x501.SubCmd0x501Rspbody.IpAddr)localObject4).uint32_ip.get());
-            j = ((subcmd0x501.SubCmd0x501Rspbody.IpAddr)localObject4).uint32_port.get();
-            if (((subcmd0x501.SubCmd0x501Rspbody.IpAddr)localObject4).uint32_same_isp.get() != 1) {
-              break label1003;
-            }
-            bool = true;
-            localArrayList.add(new EndPoint(str, j, bool));
+            localNetSegConf = (subcmd0x501.SubCmd0x501Rspbody.NetSegConf)((List)localObject3).get(i);
+            ((HwConfig)localObject2).netSegConfList.add(new HwNetSegConf(localNetSegConf.uint32_net_type.get(), localNetSegConf.uint32_segsize.get(), localNetSegConf.uint32_segnum.get(), localNetSegConf.uint32_curconnnum.get()));
             i += 1;
             continue;
           }
         }
-        paramFromServiceMsg.ipv6List = new ArrayList();
-        localObject3 = ((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject2).rpt_msg_addrs_v6.get();
-        if ((localObject3 != null) && (((List)localObject3).size() != 0))
+        if (paramIntent != null)
         {
-          i = 0;
-          if (i < ((List)localObject3).size())
+          paramIntent.onSrvAddrSsoGet((HwConfig)localObject2, paramAppRuntime, paramString);
+          if (((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.msg_ip_learn_conf.has())
           {
-            localObject4 = (subcmd0x501.SubCmd0x501Rspbody.Ip6Addr)((List)localObject3).get(i);
-            localArrayList = paramFromServiceMsg.ipv6List;
-            str = spliceIpv6Url(((subcmd0x501.SubCmd0x501Rspbody.Ip6Addr)localObject4).bytes_ip6.get().toByteArray());
-            j = ((subcmd0x501.SubCmd0x501Rspbody.Ip6Addr)localObject4).uint32_port.get();
-            if (((subcmd0x501.SubCmd0x501Rspbody.Ip6Addr)localObject4).uint32_same_isp.get() != 1) {
-              break label1009;
-            }
-            bool = true;
-            localArrayList.add(new EndPoint(str, j, bool));
-            i += 1;
-            continue;
-          }
-        }
-        localObject2 = ((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject2).rpt_msg_netsegconf.get();
-        if ((localObject2 != null) && (((List)localObject2).size() != 0))
-        {
-          i = 0;
-          if (i < ((List)localObject2).size())
-          {
-            localObject3 = (subcmd0x501.SubCmd0x501Rspbody.NetSegConf)((List)localObject2).get(i);
-            paramFromServiceMsg.netSegConfList.add(new HwNetSegConf(((subcmd0x501.SubCmd0x501Rspbody.NetSegConf)localObject3).uint32_net_type.get(), ((subcmd0x501.SubCmd0x501Rspbody.NetSegConf)localObject3).uint32_segsize.get(), ((subcmd0x501.SubCmd0x501Rspbody.NetSegConf)localObject3).uint32_segnum.get(), ((subcmd0x501.SubCmd0x501Rspbody.NetSegConf)localObject3).uint32_curconnnum.get()));
-            i += 1;
-            continue;
-          }
-        }
-        if (localObject1 != null)
-        {
-          ((ConfigManager)localObject1).onSrvAddrSsoGet(paramFromServiceMsg, paramAppRuntime, paramString);
-          if (paramIntent.msg_subcmd_0x501_rsp_body.msg_ip_learn_conf.has())
-          {
-            paramAppRuntime = (subcmd0x501.SubCmd0x501Rspbody.IpLearnConf)paramIntent.msg_subcmd_0x501_rsp_body.msg_ip_learn_conf.get();
-            if ((paramAppRuntime.uint32_refresh_cached_ip.has()) && (paramAppRuntime.uint32_refresh_cached_ip.get() == 1) && (localObject1 != null)) {
+            localObject3 = (subcmd0x501.SubCmd0x501Rspbody.IpLearnConf)((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.msg_ip_learn_conf.get();
+            if ((((subcmd0x501.SubCmd0x501Rspbody.IpLearnConf)localObject3).uint32_refresh_cached_ip.has()) && (((subcmd0x501.SubCmd0x501Rspbody.IpLearnConf)localObject3).uint32_refresh_cached_ip.get() == 1) && (paramIntent != null)) {
               IpContainer.refreshIpLearning();
             }
-            if ((paramAppRuntime.uint32_enable_ip_learn.has()) && (paramAppRuntime.uint32_enable_ip_learn.get() == 1)) {
+            if ((((subcmd0x501.SubCmd0x501Rspbody.IpLearnConf)localObject3).uint32_enable_ip_learn.has()) && (((subcmd0x501.SubCmd0x501Rspbody.IpLearnConf)localObject3).uint32_enable_ip_learn.get() == 1)) {
               com.tencent.mobileqq.highway.iplearning.IpLearningImpl.sEnableIpLearning = 1;
             }
           }
           else
           {
-            if (paramIntent.msg_subcmd_0x501_rsp_body.msg_dyn_timeout_conf.has()) {
-              BdhSegTimeoutUtil.updateFromSrv((subcmd0x501.SubCmd0x501Rspbody.DynTimeOutConf)paramIntent.msg_subcmd_0x501_rsp_body.msg_dyn_timeout_conf.get());
+            if (((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.msg_dyn_timeout_conf.has()) {
+              BdhSegTimeoutUtil.updateFromSrv((subcmd0x501.SubCmd0x501Rspbody.DynTimeOutConf)((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.msg_dyn_timeout_conf.get());
             }
-            if (paramIntent.msg_subcmd_0x501_rsp_body.msg_open_up_conf.has()) {
-              OpenUpConfig.updateFromSrv((subcmd0x501.SubCmd0x501Rspbody.OpenUpConf)paramIntent.msg_subcmd_0x501_rsp_body.msg_open_up_conf.get());
+            if (((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.msg_open_up_conf.has()) {
+              OpenUpConfig.updateFromSrv((subcmd0x501.SubCmd0x501Rspbody.OpenUpConf)((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.msg_open_up_conf.get());
             }
-            if (!paramIntent.msg_subcmd_0x501_rsp_body.msg_short_video_conf.has()) {
-              break label955;
+            if (!((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.msg_short_video_conf.has()) {
+              break label681;
             }
-            paramAppRuntime = ((subcmd0x501.SubCmd0x501Rspbody.ShortVideoConf)paramIntent.msg_subcmd_0x501_rsp_body.msg_short_video_conf.get()).rpt_msg_netsegconf.get();
-            if ((paramAppRuntime == null) || (paramAppRuntime.size() == 0)) {
-              break label945;
+            localObject3 = ((subcmd0x501.SubCmd0x501Rspbody.ShortVideoConf)((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.msg_short_video_conf.get()).rpt_msg_netsegconf.get();
+            if ((localObject3 == null) || (((List)localObject3).size() == 0)) {
+              break label670;
             }
             i = 0;
-            if (i >= paramAppRuntime.size()) {
-              break label945;
+            if (i >= ((List)localObject3).size()) {
+              break label670;
             }
-            paramString = (subcmd0x501.SubCmd0x501Rspbody.NetSegConf)paramAppRuntime.get(i);
-            paramFromServiceMsg.shortVideoSegConfList.add(new HwNetSegConf(paramString.uint32_net_type.get(), paramString.uint32_segsize.get(), paramString.uint32_segnum.get(), paramString.uint32_curconnnum.get()));
+            localNetSegConf = (subcmd0x501.SubCmd0x501Rspbody.NetSegConf)((List)localObject3).get(i);
+            ((HwConfig)localObject2).shortVideoSegConfList.add(new HwNetSegConf(localNetSegConf.uint32_net_type.get(), localNetSegConf.uint32_segsize.get(), localNetSegConf.uint32_segnum.get(), localNetSegConf.uint32_curconnnum.get()));
             i += 1;
             continue;
           }
@@ -347,26 +400,23 @@ public class HwServlet
         return;
       }
       continue;
-      label945:
-      VideoUpConfigInfo.updateFromSrc(paramIntent.msg_subcmd_0x501_rsp_body.msg_short_video_conf);
-      label955:
-      if (!paramIntent.msg_subcmd_0x501_rsp_body.msg_ptv_conf.has()) {
-        break;
+      label670:
+      VideoUpConfigInfo.updateFromSrc(((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.msg_short_video_conf);
+      label681:
+      if (((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.msg_ptv_conf.has()) {
+        PTVUpConfigInfo.updateFromSrc((subcmd0x501.SubCmd0x501Rspbody.PTVConf)((subcmd0x501.RspBody)localObject1).msg_subcmd_0x501_rsp_body.msg_ptv_conf.get());
       }
-      PTVUpConfigInfo.updateFromSrc((subcmd0x501.SubCmd0x501Rspbody.PTVConf)paramIntent.msg_subcmd_0x501_rsp_body.msg_ptv_conf.get());
-      return;
-      label985:
-      BdhLogUtil.LogEvent("C", "HwServlet.respGetIPList() cannot find HwServlet.HIGHWAY_SERVICE_TYPE");
-      return;
-      label994:
-      BdhLogUtil.LogEvent("C", "HwServlet.respGetIPList() srvAddrList == null || srvAddrList.size() == 0");
-      return;
-      label1003:
-      bool = false;
+      handleIpv6Cfg((subcmd0x501.RspBody)localObject1);
       continue;
-      label1009:
-      bool = false;
+      label721:
+      if (i == 21) {
+        paramIntent.onOtherTypeSrvAddrGet(generateConfig((subcmd0x501.SubCmd0x501Rspbody.SrvAddrs)localObject3), paramAppRuntime, i);
+      }
     }
+    BdhLogUtil.LogEvent("C", "HwServlet.respGetIPList() cannot find HwServlet.HIGHWAY_SERVICE_TYPE");
+    return;
+    label753:
+    BdhLogUtil.LogEvent("C", "HwServlet.respGetIPList() srvAddrList == null || srvAddrList.size() == 0");
   }
   
   public static String spliceCircleUrl(int paramInt)

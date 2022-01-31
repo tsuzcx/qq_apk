@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 
-public class aiaj
-  implements axlu
+public abstract interface aiaj
 {
-  public aiaj(CameraFilterGLView paramCameraFilterGLView) {}
+  public abstract void a();
   
-  public void a()
-  {
-    CameraFilterGLView.b(this.a);
-  }
+  public abstract void a(BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiaj
  * JD-Core Version:    0.7.0.1
  */

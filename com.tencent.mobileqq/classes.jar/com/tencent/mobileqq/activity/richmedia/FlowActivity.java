@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahub;
+import ajll;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ public abstract class FlowActivity
     this.jdField_a_of_type_Boolean = true;
   }
   
-  protected ahub a()
+  protected ajll a()
   {
     return null;
   }
@@ -37,7 +37,7 @@ public abstract class FlowActivity
     if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131296953));
+    this.jdField_a_of_type_Int = paramBundle.getInt("flow_camera_height", (int)getResources().getDimension(2131296969));
   }
   
   protected abstract void a(ViewGroup paramViewGroup);
@@ -65,17 +65,17 @@ public abstract class FlowActivity
     getWindow().addFlags(512);
     paramBundle = getIntent().getExtras();
     if (paramBundle == null) {
-      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131296953));
+      this.jdField_a_of_type_Int = ((int)getResources().getDimension(2131296969));
     }
     a(paramBundle);
     setContentView(2131558444);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)a(2131366492));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)$(2131366598));
     if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
       a(this.jdField_a_of_type_AndroidViewViewGroup);
     }
     paramBundle = a();
     if (paramBundle != null) {
-      paramBundle.a((ViewGroup)a(2131366472));
+      paramBundle.a((ViewGroup)$(2131366578));
     }
   }
   
@@ -112,7 +112,7 @@ public abstract class FlowActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.FlowActivity
  * JD-Core Version:    0.7.0.1
  */

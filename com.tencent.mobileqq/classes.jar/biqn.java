@@ -1,20 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.RelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class biqn
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnDismissListener
 {
-  biqn(biqk parambiqk) {}
+  biqn(biqi parambiqi) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.a().setVisibility(8);
+    if (!this.a.b) {
+      biqi.a(this.a, 1);
+    }
+    this.a.b = false;
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biqn
  * JD-Core Version:    0.7.0.1
  */

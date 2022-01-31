@@ -1,22 +1,16 @@
-public class wpf
+class wpf
+  implements woo
 {
-  public Object a;
-  public boolean a;
+  wpf(wou paramwou) {}
   
-  public wpf(Object paramObject)
+  public void a()
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public wpf(Object paramObject, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    wsv.d("Q.qqstory.home.StoryListPresenter", "ParallelStepExecutor finish requestAllDataFromNet steps");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpf
  * JD-Core Version:    0.7.0.1
  */

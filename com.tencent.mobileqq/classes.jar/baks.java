@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.theme.diy.ResData;
 
-public class baks
+public abstract interface baks
 {
-  public int a;
-  public String a;
-  
-  public baks(TroopFileTransferManager paramTroopFileTransferManager) {}
+  public abstract int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baks
  * JD-Core Version:    0.7.0.1
  */

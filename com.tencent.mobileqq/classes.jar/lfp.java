@@ -1,57 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.app.InviteMemberObserver.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 
 public class lfp
-  implements Observer
+  implements DialogInterface.OnClickListener
 {
-  Handler a = null;
+  public lfp(VideoController paramVideoController, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  private void a(Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("qav.GAudioUIObserver", 2, "OnUpdate，msgType = " + i);
-    }
-    if (paramObject.length < 4)
+    if (!this.jdField_a_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("qav.GAudioUIObserver", 2, "quit for message length");
+      this.jdField_a_of_type_ComTencentAvVideoController.a("onHowling_click", this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Long, true, false);
+      if (this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+        this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(108) });
       }
-      return;
     }
-    switch (i)
-    {
-    default: 
-      return;
+    if (this.b) {
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_Mwk.d();
     }
-    a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (ArrayList)paramObject[3]);
-  }
-  
-  protected void a(long paramLong1, long paramLong2, ArrayList<ldr> paramArrayList) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
-    {
-      if (this.a == null) {
-        this.a = new Handler(paramObservable);
-      }
-      this.a.post(new InviteMemberObserver.1(this, paramObject));
-      return;
-    }
-    a(paramObject);
+    azmj.b(null, "CliOper", "", "", "0x8006993", "0x8006993", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.teamwork;
 
 import android.graphics.BitmapFactory.Options;
-import aydp;
-import ayrp;
-import bbdh;
-import bbef;
+import babm;
+import bapk;
+import bdcb;
+import bdda;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
 public class TeamWorkForceShare$ImageRequestTask
   implements Runnable
 {
-  private aydp jdField_a_of_type_Aydp;
+  private babm jdField_a_of_type_Babm;
   private String jdField_a_of_type_JavaLangString;
   
-  public TeamWorkForceShare$ImageRequestTask(TeamWorkForceShare paramTeamWorkForceShare, String paramString, aydp paramaydp)
+  public TeamWorkForceShare$ImageRequestTask(TeamWorkForceShare paramTeamWorkForceShare, String paramString, babm parambabm)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aydp = paramaydp;
+    this.jdField_a_of_type_Babm = parambabm;
   }
   
   /* Error */
   private void a()
   {
     // Byte code:
-    //   0: new 28	ayrp
+    //   0: new 28	bapk
     //   3: dup
-    //   4: invokespecial 29	ayrp:<init>	()V
+    //   4: invokespecial 29	bapk:<init>	()V
     //   7: astore_3
-    //   8: new 31	ayff
+    //   8: new 31	badc
     //   11: dup
     //   12: aload_0
-    //   13: invokespecial 34	ayff:<init>	(Lcom/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask;)V
+    //   13: invokespecial 34	badc:<init>	(Lcom/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask;)V
     //   16: astore 4
     //   18: new 36	com/tencent/image/DownloadParams
     //   21: dup
@@ -52,7 +52,7 @@ public class TeamWorkForceShare$ImageRequestTask
     //   55: dup
     //   56: aload_0
     //   57: getfield 20	com/tencent/mobileqq/teamwork/TeamWorkForceShare$ImageRequestTask:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   60: invokestatic 57	ayoi:d	(Ljava/lang/String;)Ljava/lang/String;
+    //   60: invokestatic 57	bame:d	(Ljava/lang/String;)Ljava/lang/String;
     //   63: invokespecial 58	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   66: astore_2
     //   67: aload_2
@@ -61,7 +61,7 @@ public class TeamWorkForceShare$ImageRequestTask
     //   70: aload_2
     //   71: aload 5
     //   73: aload 4
-    //   75: invokevirtual 61	ayrp:a	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
+    //   75: invokevirtual 61	bapk:a	(Ljava/io/OutputStream;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/io/File;
     //   78: pop
     //   79: aload_2
     //   80: ifnull +7 -> 87
@@ -141,10 +141,10 @@ public class TeamWorkForceShare$ImageRequestTask
     //   66	93	2	localFileOutputStream3	java.io.FileOutputStream
     //   169	12	2	localObject2	Object
     //   190	1	2	localObject3	Object
-    //   7	63	3	localayrp	ayrp
+    //   7	63	3	localbapk	bapk
     //   94	28	3	localException4	java.lang.Exception
     //   194	1	3	localException5	java.lang.Exception
-    //   16	58	4	localayff	ayff
+    //   16	58	4	localbadc	badc
     //   25	47	5	localDownloadParams	com.tencent.image.DownloadParams
     // Exception table:
     //   from	to	target	type
@@ -166,7 +166,7 @@ public class TeamWorkForceShare$ImageRequestTask
     if (!paramBoolean) {
       return false;
     }
-    Object localObject2 = ayrp.a(this.jdField_a_of_type_JavaLangString);
+    Object localObject2 = bapk.a(this.jdField_a_of_type_JavaLangString);
     if (localObject2 != null)
     {
       QLog.d(TeamWorkForceShare.a(), 1, "file exist");
@@ -174,14 +174,14 @@ public class TeamWorkForceShare$ImageRequestTask
       localOptions.inJustDecodeBounds = true;
       try
       {
-        bbef.a(((File)localObject2).getAbsolutePath(), localOptions);
-        if (localOptions.outWidth > bbdh.i()) {
-          localOptions.inSampleSize = ((int)(bbdh.i() / localOptions.outWidth));
+        bdda.a(((File)localObject2).getAbsolutePath(), localOptions);
+        if (localOptions.outWidth > bdcb.i()) {
+          localOptions.inSampleSize = ((int)(bdcb.i() / localOptions.outWidth));
         }
         localOptions.inJustDecodeBounds = false;
         try
         {
-          localObject2 = bbef.a(((File)localObject2).getAbsolutePath(), localOptions);
+          localObject2 = bdda.a(((File)localObject2).getAbsolutePath(), localOptions);
           localObject1 = localObject2;
         }
         catch (OutOfMemoryError localOutOfMemoryError1)
@@ -192,8 +192,8 @@ public class TeamWorkForceShare$ImageRequestTask
             QLog.d(TeamWorkForceShare.a(), 1, "oom, url = " + this.jdField_a_of_type_JavaLangString);
           }
         }
-        if (this.jdField_a_of_type_Aydp != null) {
-          this.jdField_a_of_type_Aydp.a(localObject1);
+        if (this.jdField_a_of_type_Babm != null) {
+          this.jdField_a_of_type_Babm.a(localObject1);
         }
         return true;
       }
@@ -208,8 +208,8 @@ public class TeamWorkForceShare$ImageRequestTask
     if (paramBoolean)
     {
       QLog.d(TeamWorkForceShare.a(), 1, "file not exist, url = " + this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Aydp != null) {
-        this.jdField_a_of_type_Aydp.a(null);
+      if (this.jdField_a_of_type_Babm != null) {
+        this.jdField_a_of_type_Babm.a(null);
       }
     }
     return false;
@@ -224,7 +224,7 @@ public class TeamWorkForceShare$ImageRequestTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkForceShare.ImageRequestTask
  * JD-Core Version:    0.7.0.1
  */

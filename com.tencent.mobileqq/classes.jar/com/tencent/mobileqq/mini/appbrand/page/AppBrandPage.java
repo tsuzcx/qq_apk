@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import amgv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -14,8 +13,9 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bbll;
-import benn;
+import anxw;
+import bdkf;
+import bgnf;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
@@ -81,7 +81,7 @@ public class AppBrandPage
   private NavigationBar navBar;
   private ViewGroup rootView;
   private TabBarView tabView;
-  private benn toast;
+  private bgnf toast;
   private ToastView toastView;
   private Map<String, WebviewContainer> webViewMap = new HashMap();
   
@@ -92,12 +92,12 @@ public class AppBrandPage
   
   private int getDefaultNaviBarHeight()
   {
-    return bbll.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext());
+    return bdkf.b(44.0F) + ImmersiveUtils.getStatusBarHeight(getContext());
   }
   
   private int getDefaultTabBarHeight()
   {
-    return bbll.b(54.0F);
+    return bdkf.b(54.0F);
   }
   
   private String getLoadedUrl(String paramString1, String paramString2)
@@ -249,14 +249,14 @@ public class AppBrandPage
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
     localRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(-1, DisplayUtil.getRealHeight(getContext())));
     this.centerLayout = new FrameLayout(getContext());
-    this.centerLayout.setId(2131364701);
+    this.centerLayout.setId(2131364780);
     this.centerLayout.setBackgroundColor(-1);
     this.tabView = new TabBarView(getContext());
-    this.tabView.setId(2131376791);
+    this.tabView.setId(2131377304);
     this.tabView.setOnTabItemClickListener(this.appBrandPageContainer);
     this.tabView.setVisibility(8);
     this.navBar = new NavigationBar(getContext());
-    this.navBar.setId(2131370669);
+    this.navBar.setId(2131370980);
     return localRelativeLayout;
   }
   
@@ -514,7 +514,7 @@ public class AppBrandPage
         {
           paramString1 = (AppBrandUI)this.appBrandRuntime.activity;
           localObject2 = paramString1.getAppUIProxy();
-          setServiceInfo((amgv)localObject2);
+          setServiceInfo((anxw)localObject2);
           if ((localObject2 instanceof AppUIProxy)) {
             setPostTab(((AppUIProxy)localObject2).mPostTable);
           }
@@ -629,6 +629,9 @@ public class AppBrandPage
     if (getCurrentWebviewContainer() != null) {
       getCurrentWebviewContainer().notifyPageBackground();
     }
+    if (this.miniAIOEntryView != null) {
+      this.miniAIOEntryView.onPause();
+    }
     MiniAppBannerIPCModule.notifyEnterBackground(this.apkgInfo);
   }
   
@@ -637,6 +640,9 @@ public class AppBrandPage
     super.onPageForeground();
     if (getCurrentWebviewContainer() != null) {
       getCurrentWebviewContainer().notifyPageForeground();
+    }
+    if (this.miniAIOEntryView != null) {
+      this.miniAIOEntryView.onResume();
     }
     MiniAppBannerIPCModule.notifyEnterForeground(this.apkgInfo);
   }
@@ -751,17 +757,17 @@ public class AppBrandPage
     }
     for (;;)
     {
-      benn localbenn;
+      bgnf localbgnf;
       try
       {
-        localbenn = new benn(getContext());
+        localbgnf = new bgnf(getContext());
         if (!TextUtils.isEmpty(paramString2))
         {
-          localbenn.a(new BitmapDrawable(paramString2));
-          localbenn.a(paramCharSequence);
-          localbenn.c(paramInt2);
-          localbenn.a();
-          this.toast = localbenn;
+          localbgnf.a(new BitmapDrawable(paramString2));
+          localbgnf.a(paramCharSequence);
+          localbgnf.c(paramInt2);
+          localbgnf.a();
+          this.toast = localbgnf;
           return;
         }
       }
@@ -771,9 +777,9 @@ public class AppBrandPage
         return;
       }
       if ("none".equals(paramString1)) {
-        localbenn.b(-1);
+        localbgnf.b(-1);
       } else {
-        localbenn.a(ToastView.getIconRes(paramString1));
+        localbgnf.a(ToastView.getIconRes(paramString1));
       }
     }
   }
@@ -904,7 +910,7 @@ public class AppBrandPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.AppBrandPage
  * JD-Core Version:    0.7.0.1
  */

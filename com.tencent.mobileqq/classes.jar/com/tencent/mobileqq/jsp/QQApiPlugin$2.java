@@ -5,24 +5,24 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.text.TextUtils;
-import arne;
+import atdu;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import nam;
+import ndi;
 
 public class QQApiPlugin$2
   implements Runnable
 {
-  public QQApiPlugin$2(arne paramarne, String paramString1, String paramString2, String paramString3, Activity paramActivity, ApplicationInfo paramApplicationInfo) {}
+  public QQApiPlugin$2(atdu paramatdu, String paramString1, String paramString2, String paramString3, Activity paramActivity, ApplicationInfo paramApplicationInfo) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQApi", 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
     }
-    String str = nam.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
+    String str = ndi.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, null);
     if (QLog.isColorLevel()) {
       QLog.d("QQApi", 2, "shareMsgToSina path:" + str);
     }
@@ -44,7 +44,7 @@ public class QQApiPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.QQApiPlugin.2
  * JD-Core Version:    0.7.0.1
  */

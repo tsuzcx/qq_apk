@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.view;
 
-import afpc;
+import ahmt;
 import android.content.Context;
 import android.util.AttributeSet;
-import bcos;
+import benu;
 import com.tencent.mobileqq.widget.PinnedDividerListView;
 
 public class AlphabetPinnedHeaderListView
@@ -28,16 +28,16 @@ public class AlphabetPinnedHeaderListView
   
   public void setChildViewCanAction(boolean paramBoolean)
   {
-    bcos localbcos = a();
-    if ((localbcos instanceof afpc)) {
-      ((afpc)localbcos).a(paramBoolean);
+    benu localbenu = a();
+    if ((localbenu instanceof ahmt)) {
+      ((ahmt)localbenu).a(paramBoolean);
     }
     this.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.view.AlphabetPinnedHeaderListView
  * JD-Core Version:    0.7.0.1
  */

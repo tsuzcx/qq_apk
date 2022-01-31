@@ -1,18 +1,18 @@
 package com.tencent.mm.hardcoder;
 
-import aabg;
+import absd;
 
 public final class HardCoderManager$1
   extends Thread
 {
   public void run()
   {
-    aabg.a(aabg.b());
+    absd.a(absd.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HardCoderManager.1
  * JD-Core Version:    0.7.0.1
  */

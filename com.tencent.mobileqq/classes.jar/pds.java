@@ -1,46 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONObject;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
 
-public class pds
+class pds
+  implements Animation.AnimationListener
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  pds(pdr parampdr, ImageView paramImageView, boolean paramBoolean) {}
+  
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    JSONObject localJSONObject1 = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    String str;
-    if (paramBaseArticleInfo.mSinglePicture != null)
-    {
-      str = paramBaseArticleInfo.mSinglePicture.getFile();
-      localJSONObject2.put("article_small_imge_url", str);
-      localJSONObject1.put("id_article_small_imge", localJSONObject2);
-      pek.a(paramBaseArticleInfo, localJSONObject1, true);
-      oar.b(paramBaseArticleInfo, localJSONObject1);
-      pek.b(paramBaseArticleInfo, localJSONObject1);
-      pek.e(paramBaseArticleInfo, localJSONObject1);
-      pek.m(paramBaseArticleInfo, localJSONObject1);
-      pek.g(paramBaseArticleInfo, localJSONObject1);
-      pek.aa(paramBaseArticleInfo, localJSONObject1);
-      if (!nmc.a(paramBaseArticleInfo)) {
-        break label125;
-      }
-      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_location_cell");
-    }
-    for (;;)
-    {
-      localJSONObject1.put("id_small_cell_container", new JSONObject());
-      pek.a(localJSONObject1, paramBaseArticleInfo);
-      return localJSONObject1;
-      str = null;
-      break;
-      label125:
-      localJSONObject1.put("style_ID", "ReadInjoy_ad_small_cell");
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(pdr.a(this.jdField_a_of_type_Pdr, this.jdField_a_of_type_Boolean));
+    paramAnimation.setInterpolator(new AnticipateInterpolator());
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pds
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,31 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
-import bejl;
-import bekr;
-import bfgz;
+import bgjm;
+import bgkd;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.utils.MiniLog;
 import java.io.IOException;
 
 class FileJsPlugin$5
   implements FileJsPlugin.FileTask
 {
-  FileJsPlugin$5(FileJsPlugin paramFileJsPlugin, String paramString1, bekr parambekr, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
+  FileJsPlugin$5(FileJsPlugin paramFileJsPlugin, String paramString1, bgkd parambgkd, String paramString2, String paramString3, byte[] paramArrayOfByte) {}
   
   public String run()
   {
     if (!FileJsPlugin.access$300(this.this$0, this.val$encoding)) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "invalid encoding " + this.val$encoding);
     }
-    if (bejl.a().a(this.val$filePath) != 2) {
+    if (bgjm.a().a(this.val$filePath) != 2) {
       return FileJsPlugin.access$100(this.this$0, this.val$req, null, "permission denied, open " + this.val$filePath);
     }
-    String str = bejl.a().c(this.val$filePath);
+    String str = bgjm.a().c(this.val$filePath);
     if (!TextUtils.isEmpty(str))
     {
       if (str.contains("miniprogramLog"))
       {
-        bfgz.a(this.this$0.mMiniAppInfo.appId, this.val$data);
+        MiniLog.writeMiniLog(this.this$0.mMiniAppInfo.appId, this.val$data);
         return FileJsPlugin.access$200(this.this$0, this.val$req, null);
       }
       try
@@ -46,7 +46,7 @@ class FileJsPlugin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.FileJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

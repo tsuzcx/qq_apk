@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -42,7 +42,7 @@ public class PttAudioChangeView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.d);
     this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode);
-    this.c = actj.a(paramInt, getContext().getResources());
+    this.c = aekt.a(paramInt, getContext().getResources());
   }
   
   public void a()
@@ -102,7 +102,7 @@ public class PttAudioChangeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttAudioChangeView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,28 @@
-import android.content.Intent;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.CompressInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.music.SongInfo;
 
-public abstract interface aunf
+class aunf
+  extends aumi
 {
-  public abstract aunp a(Intent paramIntent);
+  aunf(aund paramaund) {}
   
-  public abstract aunp a(MessageForPic paramMessageForPic, int paramInt, String paramString1, String paramString2, String paramString3);
+  public void onPlaySongChanged(SongInfo paramSongInfo)
+  {
+    if (aund.a(this.a) != null) {
+      aund.a(this.a, aund.a(this.a).a());
+    }
+  }
   
-  public abstract auod a(Intent paramIntent);
-  
-  public abstract CompressInfo a(Intent paramIntent);
-  
-  public abstract ArrayList<aunp> a(MessageForMixedMsg paramMessageForMixedMsg, int paramInt, String paramString1, String paramString2, String paramString3);
+  public void onPlayStateChanged(int paramInt)
+  {
+    aund.a(this.a, paramInt);
+    if (paramInt == 2) {
+      aund.a(this.a, aund.a(this.a).c());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aunf
  * JD-Core Version:    0.7.0.1
  */

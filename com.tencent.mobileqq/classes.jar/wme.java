@@ -1,84 +1,81 @@
-import android.annotation.TargetApi;
-import android.app.Dialog;
-import android.content.Context;
-import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.view.Window;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.List;
 
-public class wme
-  extends Dialog
+public abstract class wme<T extends FeedItem>
 {
-  public wme(@NonNull Context paramContext, int paramInt)
+  protected T a;
+  public boolean b;
+  
+  public wme(@NonNull T paramT)
   {
-    super(paramContext, paramInt);
+    xmh.a(paramT);
+    this.a = paramT;
   }
   
-  @TargetApi(19)
-  public void b()
+  public static wme a(int paramInt)
   {
-    int i = 0;
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      if (Build.VERSION.SDK_INT < 21) {
-        break label84;
-      }
-      if ((getWindow() != null) && (getWindow().getDecorView() != null))
-      {
-        getWindow().clearFlags(67108864);
-        getWindow().getDecorView().setSystemUiVisibility(1280);
-        getWindow().addFlags(-2147483648);
-        getWindow().setStatusBarColor(0);
-        break label83;
-        break label83;
-        break label83;
-      }
+    FeedItem localFeedItem = FeedItem.createFeedItemByType(paramInt);
+    if (localFeedItem == null) {
+      return null;
     }
-    label74:
-    Object localObject = getWindow();
-    if (localObject == null) {}
-    label188:
-    for (;;)
+    return localFeedItem.generateHomeFeed();
+  }
+  
+  public T a()
+  {
+    return this.a;
+  }
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt, vap paramvap, vaj paramvaj, vam paramvam);
+  
+  public abstract boolean a(qqstory_struct.StoryFeed paramStoryFeed);
+  
+  public abstract void b();
+  
+  public List<StoryVideoItem> d()
+  {
+    return new ArrayList(0);
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      label83:
-      return;
-      label84:
-      if (getWindow() == null) {
-        break label74;
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-      getWindow().addFlags(67108864);
-      break label74;
-      localObject = ((Window)localObject).getDecorView();
-      if (!(localObject instanceof ViewGroup)) {
-        break;
+      paramObject = (wme)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
       }
-      localObject = ((ViewGroup)localObject).getChildAt(0);
-      if (!(localObject instanceof ViewGroup)) {
-        break;
-      }
-      int j = ((ViewGroup)localObject).getChildCount();
-      for (;;)
-      {
-        if (i >= j) {
-          break label188;
-        }
-        View localView = ((ViewGroup)localObject).getChildAt(i);
-        if ((localView == null) || (localView.getId() == 16908290)) {
-          break;
-        }
-        if (!(localView instanceof ViewStub)) {
-          localView.setAlpha(0.0F);
-        }
-        i += 1;
-      }
+    } while (paramObject.a == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
     }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return this.a.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wme
  * JD-Core Version:    0.7.0.1
  */

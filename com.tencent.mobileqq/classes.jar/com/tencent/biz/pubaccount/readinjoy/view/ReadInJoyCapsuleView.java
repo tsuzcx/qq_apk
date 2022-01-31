@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
@@ -83,8 +83,8 @@ public class ReadInJoyCapsuleView
     this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2, 17);
-    localLayoutParams.leftMargin = actj.a(12.0F, paramContext.getResources());
-    localLayoutParams.rightMargin = actj.a(12.0F, paramContext.getResources());
+    localLayoutParams.leftMargin = aekt.a(12.0F, paramContext.getResources());
+    localLayoutParams.rightMargin = aekt.a(12.0F, paramContext.getResources());
     addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
   }
   
@@ -167,7 +167,7 @@ public class ReadInJoyCapsuleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyCapsuleView
  * JD-Core Version:    0.7.0.1
  */

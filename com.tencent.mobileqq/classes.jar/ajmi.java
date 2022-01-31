@@ -1,62 +1,57 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.MessageQueue.IdleHandler;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
+import com.tencent.mobileqq.app.BaseActivity2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.BlockingQueue;
 
 public class ajmi
+  implements MessageQueue.IdleHandler
 {
-  public int a;
-  public long a;
-  public ajmh a;
-  public Map<Integer, Long> a;
-  public BlockingQueue<ajmf> a;
-  public boolean a;
-  public long b;
-  public long c;
+  public ajmi(NewFlowCameraActivity paramNewFlowCameraActivity, boolean paramBoolean, SharedPreferences paramSharedPreferences) {}
   
-  public ajmi(int paramInt)
+  public boolean queueIdle()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{").append("spanId:").append(this.jdField_a_of_type_Int).append(",result:").append(this.jdField_a_of_type_Ajmh);
-    Iterator localIterator;
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    if (azcw.d(azcw.b))
     {
-      localStringBuilder.append(",extra:[");
-      localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
-        if (QLog.isColorLevel()) {
-          localStringBuilder.append("{").append(localEntry.getKey()).append(",").append(localEntry.getValue()).append("}");
-        } else {
-          localStringBuilder.append("{").append(localEntry.getKey()).append("}");
-        }
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.i("PEAK_CAMERA", 2, "hit in black list! needChangeNewSurfaceView ");
       }
-      localStringBuilder.append("]");
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue != null)
+    View localView = BaseActivity2.$(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131366495);
+    if (localView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(localView);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.F();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.c();
+    if ((!NewFlowCameraActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (!NewFlowCameraActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity))) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+    }
+    for (;;)
     {
-      localStringBuilder.append(",anno:[");
-      localIterator = this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append(((ajmf)localIterator.next()).toString());
+      if (QLog.isColorLevel()) {
+        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
       }
-      localStringBuilder.append("]");
+      NewFlowCameraActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false);
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("sp_is_cancel_from_music_key", true).commit();
+      NewFlowCameraActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, false);
+      return false;
+      if ((NewFlowCameraActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (!NewFlowCameraActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity)) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+      } else {
+        QLog.d("PTV.NewFlowCameraActivity", 2, "onResume from select music and do nothing in 1");
+      }
     }
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmi
  * JD-Core Version:    0.7.0.1
  */

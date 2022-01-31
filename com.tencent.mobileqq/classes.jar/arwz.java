@@ -1,38 +1,74 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.View.OnHoverListener;
-import android.view.accessibility.AccessibilityManager;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.PoiSlideBottomPanel;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
 public class arwz
-  implements View.OnHoverListener
 {
-  public arwz(LocationPickFragment paramLocationPickFragment) {}
+  public View a;
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public TextView b;
+  public TextView c;
   
-  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
+  public void a(Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    paramMotionEvent = (AccessibilityManager)this.a.getActivity().getSystemService("accessibility");
-    if ((paramMotionEvent != null) && (paramMotionEvent.isTouchExplorationEnabled()))
-    {
-      if (paramView.requestFocus()) {
-        ((InputMethodManager)this.a.getActivity().getSystemService("input_method")).showSoftInput(paramView, 1);
-      }
-      if (!LocationPickFragment.a(this.a).b())
-      {
-        LocationPickFragment.a(this.a).setDisplayFromType(3);
-        LocationPickFragment.a(this.a).a();
-      }
-      axqy.b(null, "CliOper", "", "", "0X800A95E", "0X800A95E", 0, 0, "", "0", "0", "");
+    if (paramDrawable == null) {
+      return;
     }
-    return false;
+    if (paramBoolean1)
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.addRule(13);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      if (!paramBoolean2)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bdkf.a(140.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+        if (paramInt >= 2) {
+          break;
+        }
+        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
+        return;
+        this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxWidth(bdkf.a(120.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bdkf.a(120.0F));
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+      }
+      if (paramInt == 2)
+      {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839725);
+        return;
+      }
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839726);
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramDrawable, null, null, null);
+    if (paramDrawable != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arwz
  * JD-Core Version:    0.7.0.1
  */

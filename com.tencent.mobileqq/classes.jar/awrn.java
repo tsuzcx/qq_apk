@@ -1,93 +1,58 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.graphics.PointF;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
 
 public class awrn
-  extends awsa
+  implements awqn
 {
-  private Drawable a;
+  public awrn(ProfileTagView paramProfileTagView) {}
   
-  public awrn(baxy parambaxy)
+  public void a()
   {
-    super(parambaxy);
-  }
-  
-  private void a(awwr paramawwr, TextView paramTextView, boolean paramBoolean)
-  {
-    if (paramBoolean)
+    ProfileTagView.a(this.a, 2);
+    Object localObject1;
+    if (this.a.jdField_b_of_type_AndroidGraphicsPointF != null)
     {
-      if (this.a == null)
+      localObject1 = this.a.jdField_a_of_type_ArrayOfAndroidViewView;
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
       {
-        this.a = paramawwr.a().getContext().getResources().getDrawable(2130841310);
-        this.a.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
-      }
-      paramTextView.setCompoundDrawables(null, null, this.a, null);
-      return;
-    }
-    paramTextView.setCompoundDrawables(null, null, null, null);
-  }
-  
-  private void b(awwr paramawwr, awoi paramawoi)
-  {
-    TextView localTextView = paramawwr.a();
-    Context localContext;
-    boolean bool;
-    if ((localTextView != null) && (paramawoi != null))
-    {
-      localContext = localTextView.getContext();
-      if (!(paramawoi instanceof awpm)) {
-        break label73;
-      }
-      paramawoi = ((awpm)paramawoi).a();
-      if ((paramawoi != null) && (localContext != null))
-      {
-        if (paramawoi.certifiedGrade <= 0L) {
-          break label68;
+        Object localObject2 = localObject1[i];
+        if ((localObject2 != null) && (localObject2.getVisibility() != 8))
+        {
+          RatioLayout.LayoutParams localLayoutParams = (RatioLayout.LayoutParams)localObject2.getLayoutParams();
+          if (localLayoutParams != null)
+          {
+            localLayoutParams.a = this.a.jdField_b_of_type_AndroidGraphicsPointF.x;
+            localLayoutParams.b = this.a.jdField_b_of_type_AndroidGraphicsPointF.y;
+            localObject2.setLayoutParams(localLayoutParams);
+          }
         }
-        bool = true;
-        a(paramawwr, localTextView, bool);
+        i += 1;
+      }
+      this.a.e();
+    }
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      localObject1 = (FrameLayout)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(16908290);
+      if (localObject1 != null)
+      {
+        this.a.jdField_b_of_type_AndroidGraphicsDrawableDrawable = ((FrameLayout)localObject1).getBackground();
+        if (!bdrw.a(this.a.jdField_b_of_type_AndroidGraphicsDrawableDrawable)) {
+          ((FrameLayout)localObject1).setBackgroundDrawable(null);
+        }
       }
     }
-    label68:
-    label73:
-    do
-    {
-      do
-      {
-        return;
-        bool = false;
-        break;
-      } while (!(paramawoi instanceof awnm));
-      paramawoi = (awnm)paramawoi;
-    } while ((paramawoi == null) || (localContext == null));
-    a(paramawwr, localTextView, paramawoi.b());
-  }
-  
-  protected void a(awwr paramawwr, awoi paramawoi)
-  {
-    super.a(paramawwr, paramawoi);
-    if ((paramawoi instanceof awpm))
-    {
-      Object localObject = (awpm)paramawoi;
-      PublicAccountInfo localPublicAccountInfo = ((awpm)localObject).a();
-      if ((localPublicAccountInfo != null) && (localPublicAccountInfo.displayNumber != null) && (localPublicAccountInfo.displayNumber.equalsIgnoreCase(((awpm)localObject).a())))
-      {
-        localObject = new SpannableString(localPublicAccountInfo.name);
-        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-16734752), 0, localPublicAccountInfo.name.length(), 33);
-        paramawwr.a().setText((CharSequence)localObject);
-      }
-    }
-    b(paramawwr, paramawoi);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awrn
  * JD-Core Version:    0.7.0.1
  */

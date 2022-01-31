@@ -1,78 +1,114 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
-class bdln
-  implements EIPCResultCallback
+public class bdln
 {
-  bdln(bdlm parambdlm) {}
+  public int a;
+  private ArrayList<LinkedList<bdlo>> a;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public bdln()
   {
-    bdii.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback...");
-    if (paramEIPCResult == null) {
-      return;
-    }
-    Object localObject1 = paramEIPCResult.data;
-    if (localObject1 == null)
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    int i = 0;
+    while (i < 3)
     {
-      bdii.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback data is null...");
-      return;
+      this.jdField_a_of_type_JavaUtilArrayList.add(new LinkedList());
+      i += 1;
     }
-    paramEIPCResult = ((Bundle)localObject1).getString("PackageName");
-    int i = ((Bundle)localObject1).getInt("VersionCode");
-    bdlm.a(this.a).put(bdlm.a(this.a, paramEIPCResult, i), Boolean.valueOf(false));
-    String str1 = ((Bundle)localObject1).getString("Code");
-    boolean bool = ((Bundle)localObject1).getBoolean("IsSuccess");
-    bdii.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback pkgName|" + paramEIPCResult + " versionCode|" + i + " isSuc|" + bool + " code|" + str1);
-    for (;;)
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public bdlo a(boolean paramBoolean)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      bdku localbdku;
-      Bundle localBundle;
-      try
+      if (((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).size() != 0)
       {
-        localObject1 = bdlm.a(this.a, paramEIPCResult, i);
-        String str2 = (String)bdlm.a(this.a).get(localObject1);
-        Object localObject2 = (List)bdlm.b(this.a).get(localObject1);
-        if (localObject2 == null) {
-          break label315;
-        }
-        localObject2 = ((List)localObject2).iterator();
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        localbdku = (bdku)((Iterator)localObject2).next();
-        if (localbdku == null) {
-          continue;
-        }
-        localBundle = new Bundle();
-        if (TextUtils.isEmpty(str2))
+        if (paramBoolean)
         {
-          localbdku.a(paramEIPCResult, i, str1, bool, localBundle);
-          continue;
+          bdlo localbdlo = (bdlo)((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).remove(0);
+          this.jdField_a_of_type_Int -= 1;
+          return localbdlo;
         }
-        localBundle.putString(bdlb.a, str2);
+        return (bdlo)((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get(0);
       }
-      finally {}
-      localbdku.a(paramEIPCResult, i, str1, bool, localBundle);
+      i += 1;
     }
-    bdlm.b(this.a).remove(localObject1);
-    for (;;)
+    return null;
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      int j = 0;
+      while (j < ((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).size())
+      {
+        localStringBuilder.append(bdbi.encodeToString(((bdlo)((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).get(j)).b().getBytes(), 0));
+        localStringBuilder.append("\r\n");
+        j += 1;
+      }
+      i += 1;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      ((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).clear();
+      i += 1;
+    }
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(bdlo parambdlo)
+  {
+    if (parambdlo == null) {}
+    int i;
+    do
     {
       return;
-      label315:
-      bdii.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback getCodeListener is null");
+      i = parambdlo.b() - 200;
+    } while ((i < 0) || (i >= this.jdField_a_of_type_JavaUtilArrayList.size()));
+    ((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).add(parambdlo);
+    this.jdField_a_of_type_Int += 1;
+  }
+  
+  public boolean a(bdlo parambdlo)
+  {
+    boolean bool2 = false;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        if (((LinkedList)this.jdField_a_of_type_JavaUtilArrayList.get(i)).remove(parambdlo))
+        {
+          this.jdField_a_of_type_Int -= 1;
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdln
  * JD-Core Version:    0.7.0.1
  */

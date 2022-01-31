@@ -1,18 +1,14 @@
-import dov.com.qq.im.capture.view.MusicProviderView;
-
 public class bjkl
-  extends bjdt
 {
-  public bjkl(MusicProviderView paramMusicProviderView) {}
-  
-  public void b()
-  {
-    this.a.a(false);
-  }
+  public float a;
+  public int a;
+  private bjkm jdField_a_of_type_Bjkm;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjkl
  * JD-Core Version:    0.7.0.1
  */

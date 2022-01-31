@@ -1,22 +1,16 @@
-import android.view.View;
-import java.util.List;
+import java.util.Vector;
 
-public abstract interface awoh
-  extends awog
+public class awoh
 {
-  public abstract int a();
-  
-  public abstract String a();
-  
-  public abstract List<awoi> a();
-  
-  public abstract void a(View paramView);
-  
-  public abstract String b();
+  public String a;
+  public Vector<String> a;
+  public String b;
+  public String c;
+  public String d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awoh
  * JD-Core Version:    0.7.0.1
  */

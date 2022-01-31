@@ -1,52 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class aosk
-  implements View.OnClickListener
+public class aosk
 {
-  aosk(aosj paramaosj, View paramView) {}
+  private String jdField_a_of_type_JavaLangString = alpo.a(2131715218);
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String b = "";
   
-  public void onClick(View paramView)
+  public static aosk a(aogf[] paramArrayOfaogf)
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((localObject instanceof aoqa))
-    {
-      localObject = (FileInfo)((aoqa)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-      if (paramView.getId() != 2131364978) {
-        break label149;
-      }
-      paramView = (bfpc)bfpp.a(this.jdField_a_of_type_Aosj.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, null);
-      paramView.a(ajya.a(2131709630));
-      paramView.a(ajya.a(2131709626), 3);
-      paramView.d(ajya.a(2131709627));
-      paramView.a(new aosl(this, (FileInfo)localObject, paramView));
-      paramView.show();
+    int i = 0;
+    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
+      return null;
     }
-    label149:
-    while (paramView.getId() != 2131366634)
+    aosk localaosk = new aosk();
+    try
     {
-      do
+      paramArrayOfaogf = new JSONObject(paramArrayOfaogf[0].jdField_a_of_type_JavaLangString);
+      JSONArray localJSONArray = paramArrayOfaogf.getJSONArray("suffix");
+      while (i < localJSONArray.length())
       {
-        return;
-        if ((localObject instanceof aosv))
-        {
-          localObject = (FileInfo)((aosv)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "unknow Object");
-      return;
+        localaosk.jdField_a_of_type_JavaUtilList.add(localJSONArray.getString(i));
+        i += 1;
+      }
+      localaosk.jdField_a_of_type_JavaLangString = paramArrayOfaogf.getString("title");
+      localaosk.b = paramArrayOfaogf.getString("desc");
+      return localaosk;
     }
-    paramView = apug.a((FileInfo)localObject);
-    apvm.a(QfileBaseLocalFileTabView.a(this.jdField_a_of_type_Aosj.a), this.jdField_a_of_type_Aosj.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramView);
+    catch (JSONException paramArrayOfaogf)
+    {
+      paramArrayOfaogf.printStackTrace();
+    }
+    return localaosk;
+  }
+  
+  public List<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aosk
  * JD-Core Version:    0.7.0.1
  */

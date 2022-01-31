@@ -1,41 +1,36 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.GuardManager;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class akcr
-  extends ajxz
+class akcr
+  implements View.OnClickListener
 {
-  protected void a()
-  {
-    super.a();
-    if (this.d >= ajxx.a().a / 12000L)
-    {
-      CoreService.stopTempService();
-      this.a.c();
-      this.d = 0L;
-    }
-  }
+  akcr(akcq paramakcq, aign paramaign, int paramInt) {}
   
-  protected void a(String paramString)
+  public void onClick(View paramView)
   {
-    GuardManager localGuardManager = this.a;
-    if ("com.tencent.mobileqq".equals(paramString)) {}
-    for (int i = 2;; i = 3)
+    paramView = new Intent(this.jdField_a_of_type_Akcq.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Aign.b);
+    paramView.putExtra("isShowAd", false);
+    this.jdField_a_of_type_Akcq.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    if ((this.jdField_a_of_type_Akcq.jdField_a_of_type_AndroidContentContext instanceof AvatarPendantActivity)) {
+      ((AvatarPendantActivity)this.jdField_a_of_type_Akcq.jdField_a_of_type_AndroidContentContext).a = -1L;
+    }
+    if (this.jdField_a_of_type_Int == 1)
     {
-      localGuardManager.a(i, paramString);
+      VasWebviewUtil.reportCommercialDrainage("", "faceaddon", "0X8008486", "", 1, 0, 0, "", "", "");
       return;
     }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    this.a.b();
-    CoreService.startTempService();
+    azmj.b(this.jdField_a_of_type_Akcq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006334", "0X8006334", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akcr
  * JD-Core Version:    0.7.0.1
  */

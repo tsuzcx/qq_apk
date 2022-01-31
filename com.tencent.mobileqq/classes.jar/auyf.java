@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-class auyf
-  implements DialogInterface.OnClickListener
+public abstract interface auyf
 {
-  auyf(auyb paramauyb) {}
+  @Deprecated
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    auyb.a(this.a, false);
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(VideoData paramVideoData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auyf
  * JD-Core Version:    0.7.0.1
  */

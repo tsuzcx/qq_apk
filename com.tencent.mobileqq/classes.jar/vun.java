@@ -1,35 +1,19 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
 
-public class vun
-  extends vup
+class vun
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  public int a;
-  public long a;
-  public SlideItemInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public boolean c;
-  private boolean e;
+  vun(vuj paramvuj, vuf paramvuf) {}
   
-  public vun() {}
-  
-  public vun(long paramLong1, SlideItemInfo paramSlideItemInfo, int paramInt1, int paramInt2, long paramLong2, vuo paramvuo, boolean paramBoolean)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_b_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo = paramSlideItemInfo;
-    this.jdField_a_of_type_JavaLangString = paramSlideItemInfo.b;
-    this.jdField_a_of_type_Vuo = paramvuo;
-    this.e = paramBoolean;
+    this.jdField_a_of_type_Vuf.a(this.jdField_a_of_type_Vuj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vun
  * JD-Core Version:    0.7.0.1
  */

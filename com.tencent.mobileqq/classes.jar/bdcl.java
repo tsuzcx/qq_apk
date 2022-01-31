@@ -1,22 +1,20 @@
+import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.open.agent.OpenCardContainer;
 
-public class bdcl
+final class bdcl
   implements View.OnClickListener
 {
-  public bdcl(OpenCardContainer paramOpenCardContainer) {}
+  bdcl(DialogInterface.OnClickListener paramOnClickListener, bdfq parambdfq) {}
   
   public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView.setMainAccountSelect(true);
-    this.a.jdField_a_of_type_Bdct.a();
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdfq, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdcl
  * JD-Core Version:    0.7.0.1
  */

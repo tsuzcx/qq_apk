@@ -1,21 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.GrayTipsSpan;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
+import java.io.File;
+import java.io.FileFilter;
 
-public class anjk
-  implements View.OnClickListener
+public final class anjk
+  implements FileFilter
 {
-  public anjk(MessageForNewGrayTips paramMessageForNewGrayTips, GrayTipsSpan paramGrayTipsSpan) {}
-  
-  public void onClick(View paramView)
+  public boolean accept(File paramFile)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForNewGrayTips.click(paramView, this.jdField_a_of_type_ComTencentMobileqqDataGrayTipsSpan.url);
+    return (paramFile.getName().startsWith("hc_")) || (paramFile.getName().startsWith(".hc_"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anjk
  * JD-Core Version:    0.7.0.1
  */

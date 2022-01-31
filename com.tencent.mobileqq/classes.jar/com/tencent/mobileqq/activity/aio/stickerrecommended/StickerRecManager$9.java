@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import aewu;
-import aexb;
+import agtz;
+import agug;
 import android.text.TextUtils;
-import aukp;
+import awbw;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Iterator;
@@ -12,12 +12,12 @@ import java.util.List;
 public class StickerRecManager$9
   implements Runnable
 {
-  public StickerRecManager$9(aexb paramaexb) {}
+  public StickerRecManager$9(agug paramagug) {}
   
   public void run()
   {
     int i = 0;
-    Object localObject = new File(aewu.a);
+    Object localObject = new File(agtz.a);
     long l1 = 0L;
     localObject = ((File)localObject).listFiles();
     long l2 = l1;
@@ -52,7 +52,7 @@ public class StickerRecManager$9
       {
         localObject = new String[1];
         localObject[0] = String.valueOf(l1 - 86400000L);
-        Iterator localIterator = aexb.a(this.this$0).a(StickerRecCacheEntity.class, StickerRecCacheEntity.class.getSimpleName(), false, "lastTime<?", (String[])localObject, "", "", "", "").iterator();
+        Iterator localIterator = agug.a(this.this$0).a(StickerRecCacheEntity.class, StickerRecCacheEntity.class.getSimpleName(), false, "lastTime<?", (String[])localObject, "", "", "", "").iterator();
         while (localIterator.hasNext())
         {
           StickerRecCacheEntity localStickerRecCacheEntity = (StickerRecCacheEntity)localIterator.next();
@@ -69,12 +69,12 @@ public class StickerRecManager$9
     }
     QLog.d("StickerRecManager", 2, "clearOverdueStickerCache error", localException);
     return;
-    aexb.a(this.this$0).a(StickerRecCacheEntity.class.getSimpleName(), "lastTime<?", localException);
+    agug.a(this.this$0).a(StickerRecCacheEntity.class.getSimpleName(), "lastTime<?", localException);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecManager.9
  * JD-Core Version:    0.7.0.1
  */

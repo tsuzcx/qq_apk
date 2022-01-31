@@ -1,181 +1,203 @@
-import com.tencent.beacon.event.UserAction;
-import java.util.HashMap;
-import java.util.Map;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class mlo
+  extends mll
 {
-  static int jdField_a_of_type_Int;
-  static long jdField_a_of_type_Long;
-  public static String a;
-  static boolean jdField_a_of_type_Boolean;
-  static int jdField_b_of_type_Int;
-  static String jdField_b_of_type_JavaLangString = "0";
-  static boolean jdField_b_of_type_Boolean;
-  static int jdField_c_of_type_Int;
-  static String jdField_c_of_type_JavaLangString = "actAVFunChatVoiceChange";
-  static boolean jdField_c_of_type_Boolean;
-  static boolean d;
+  private int a;
   
-  static
+  public mlo(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    jdField_a_of_type_JavaLangString = "VoiceChangeDataReport";
+    super(paramContext, paramVideoAppInterface);
+    this.jdField_a_of_type_Int = ((int)bdcq.a(paramContext, 100.0F));
   }
   
-  public static void a(int paramInt, long paramLong)
+  public int a()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("typeid", paramInt + "");
-    localHashMap.put("duration", paramLong + "");
-    UserAction.onUserAction(jdField_c_of_type_JavaLangString, true, -1L, -1L, localHashMap, true);
-    lcg.a(jdField_a_of_type_JavaLangString, String.format("reportVoiceChange voiceType = %s, duration = %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
+    return 1;
   }
   
-  public static void a(int paramInt, String paramString)
+  public void a(lid paramlid, mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4)
   {
-    lcg.a(jdField_a_of_type_JavaLangString, String.format("onConnected sessionType = %s, roomid = %s", new Object[] { Integer.valueOf(paramInt), paramString }));
-    d = true;
-    jdField_b_of_type_JavaLangString = paramString;
-    if ((paramInt == 1) || (paramInt == 3))
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      return;
+    }
+    paramArrayOfmgp[0].a(0, 0, 0, 0);
+    paramArrayOfmgp[0].b(0, 0, paramInt1, paramInt2);
+    paramArrayOfmgp[0].d(-15197410);
+    int i;
+    if (paramlid.C == 2)
     {
-      if (jdField_a_of_type_Int != 0) {
-        jdField_b_of_type_Int = jdField_a_of_type_Int;
+      paramArrayOfmgp[0].a(Boolean.valueOf(false));
+      paramArrayOfmgp[1].a(Boolean.valueOf(true));
+      paramArrayOfmgp[2].a(Boolean.valueOf(true));
+      paramArrayOfmgp[3].a(Boolean.valueOf(true));
+      paramArrayOfmgp[4].a(Boolean.valueOf(true));
+      if ((!paramArrayOfmgp[0].f()) || ((paramInt3 != 0) && (paramInt3 != 180)) || (paramArrayOfmgp[0].k())) {
+        break label471;
       }
-      jdField_a_of_type_Boolean = true;
+      if (paramInt3 == 0) {
+        paramArrayOfmgp[0].a(0, 0, 0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297630));
+      }
     }
-    while ((paramInt != 2) && (paramInt != 4)) {
-      return;
+    else
+    {
+      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299005);
+      if (paramInt4 == 0) {
+        break label528;
+      }
     }
-    if (jdField_a_of_type_Int != 0) {
-      jdField_c_of_type_Int = jdField_a_of_type_Int;
+    label519:
+    label528:
+    for (paramInt3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299006);; paramInt3 = i)
+    {
+      int k = (paramInt1 - i * 2) / 4;
+      int j = paramInt2 - k - paramInt3 - paramInt4;
+      paramInt3 = paramInt2 - paramInt3 - paramInt4;
+      if (paramBoolean)
+      {
+        paramInt1 = paramArrayOfmgp[1].b().left;
+        paramInt2 = paramArrayOfmgp[1].b().right;
+        label244:
+        paramArrayOfmgp[1].b(paramInt1, j, paramInt2, paramInt3);
+        if (!paramBoolean) {
+          break label501;
+        }
+        paramInt2 = paramArrayOfmgp[2].b().left;
+        paramInt1 = paramArrayOfmgp[2].b().right;
+        label283:
+        paramArrayOfmgp[2].b(paramInt2, j, paramInt1, paramInt3);
+        if (!paramBoolean) {
+          break label510;
+        }
+        paramInt1 = paramArrayOfmgp[3].b().left;
+        paramInt2 = paramArrayOfmgp[3].b().right;
+        label322:
+        paramArrayOfmgp[3].b(paramInt1, j, paramInt2, paramInt3);
+        if (!paramBoolean) {
+          break label519;
+        }
+        paramInt2 = paramArrayOfmgp[4].b().left;
+        paramInt1 = paramArrayOfmgp[4].b().right;
+      }
+      for (;;)
+      {
+        paramArrayOfmgp[4].b(paramInt2, j, paramInt1, paramInt3);
+        paramArrayOfmgp[1].d(-15197410);
+        paramArrayOfmgp[2].d(-15197410);
+        paramArrayOfmgp[3].d(-15197410);
+        paramArrayOfmgp[4].d(-15197410);
+        paramArrayOfmgp[1].a(2, 3, 3, 3);
+        paramArrayOfmgp[2].a(2, 3, 2, 3);
+        paramArrayOfmgp[3].a(2, 3, 2, 3);
+        paramArrayOfmgp[4].a(3, 3, 2, 3);
+        return;
+        paramArrayOfmgp[0].a(0, this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297630), 0, 0);
+        break;
+        label471:
+        paramArrayOfmgp[0].a(0, 0, 0, 0);
+        break;
+        paramInt2 = paramInt1 - i;
+        paramInt1 = paramInt1 - k - i;
+        break label244;
+        label501:
+        paramInt2 = paramInt1 - k;
+        break label283;
+        label510:
+        paramInt1 = paramInt2 - k;
+        break label322;
+        paramInt2 = paramInt1 - k;
+      }
     }
-    jdField_b_of_type_Boolean = true;
   }
   
-  public static void a(String paramString1, String paramString2)
+  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    lcg.a(jdField_a_of_type_JavaLangString, String.format("reportClickEvent key = %s, type = %s, roomid = %s", new Object[] { paramString1, paramString2, jdField_b_of_type_JavaLangString }));
-    axqy.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, "", jdField_b_of_type_JavaLangString, "");
-  }
-  
-  public static void a(lga paramlga)
-  {
-    if ((!jdField_c_of_type_Boolean) || (!d)) {
+    int n = 0;
+    if (this.jdField_a_of_type_AndroidContentContext == null) {}
+    while (paramArrayOfmgp == null) {
       return;
     }
-    if ((paramlga.d == 1) || (paramlga.d == 2)) {
-      if (jdField_a_of_type_Boolean)
-      {
-        if (jdField_b_of_type_Int == 0) {
-          a("0X8007DC3", "");
-        }
-      }
-      else if (jdField_b_of_type_Boolean)
-      {
-        if (jdField_c_of_type_Int != 0) {
-          break label115;
-        }
-        a("0X8007DC5", "");
-      }
+    int i1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299007);
+    int i2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299004);
+    int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299005);
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131299006);
+    if (paramInt5 == 0) {
+      i = m;
     }
     for (;;)
     {
-      a(paramlga, 0);
-      jdField_c_of_type_Boolean = false;
-      d = false;
-      jdField_b_of_type_JavaLangString = "0";
-      return;
-      a("0X8007DC2", jdField_b_of_type_Int + "");
-      break;
-      label115:
-      a("0X8007DC4", jdField_c_of_type_Int + "");
-      continue;
-      if ((paramlga.d == 3) || (paramlga.d == 4)) {
-        if (paramlga.C == 1)
-        {
-          if (jdField_a_of_type_Boolean)
-          {
-            if (jdField_b_of_type_Int != 0) {
-              break label209;
-            }
-            a("0X8007E67", "");
-          }
-          for (;;)
-          {
-            if (!jdField_b_of_type_Boolean) {
-              break label236;
-            }
-            if (jdField_c_of_type_Int != 0) {
-              break label238;
-            }
-            a("0X8007E69", "");
-            break;
-            label209:
-            a("0X8007E68", jdField_b_of_type_Int + "");
-          }
-          label236:
-          continue;
-          label238:
-          a("0X8007E6A", jdField_c_of_type_Int + "");
+      int j;
+      int k;
+      switch (paramInt1)
+      {
+      default: 
+        j = 0;
+        k = 0;
+        m = 0;
+        i = n;
+      }
+      for (;;)
+      {
+        paramArrayOfmgp[1].b(m, k, j, i);
+        llm.b(i2, i1);
+        llm.a(m, k);
+        llm.a(paramInt1);
+        if (!QLog.isColorLevel()) {
+          break;
         }
-        else if (paramlga.C == 10)
-        {
-          if (jdField_a_of_type_Boolean)
-          {
-            if (jdField_b_of_type_Int != 0) {
-              break label317;
-            }
-            a("0X8007E63", "");
-          }
-          for (;;)
-          {
-            if (!jdField_b_of_type_Boolean) {
-              break label344;
-            }
-            if (jdField_c_of_type_Int != 0) {
-              break label346;
-            }
-            a("0X8007E65", "");
-            break;
-            label317:
-            a("0X8007E64", jdField_b_of_type_Int + "");
-          }
-          label344:
-          continue;
-          label346:
-          a("0X8007E66", jdField_c_of_type_Int + "");
-        }
+        QLog.w("OriginScreenLayout", 1, "setSmallVideoViewLayout, position[" + paramInt1 + "], width[" + paramInt2 + "], height[" + paramInt3 + "], layout[" + m + ", " + k + ", " + j + ", " + i + "], topOffset[" + paramInt4 + "], bottomOffset[" + paramInt5 + "], mGlSmallViewTopOffset[" + this.jdField_a_of_type_Int + "]");
+        return;
+        j = m + i1;
+        k = i + paramInt4;
+        i = k + i2;
+        continue;
+        m = paramInt2 - i1 - m;
+        j = m + i1;
+        k = i + paramInt4;
+        i = k + i2;
+        continue;
+        j = m + i1;
+        k = paramInt3 - i2 - i - paramInt5;
+        i = k + i2;
+        continue;
+        m = paramInt2 - i1 - m;
+        j = m + i1;
+        k = paramInt3 - i2 - i - paramInt5;
+        i = k + i2;
       }
     }
   }
   
-  public static void a(lga paramlga, int paramInt)
+  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
   {
-    lcg.a(jdField_a_of_type_JavaLangString, String.format("updateReportData sessionType = %d, voiceType = %d", new Object[] { Integer.valueOf(paramlga.d), Integer.valueOf(paramInt) }));
-    long l = System.currentTimeMillis();
-    if (jdField_a_of_type_Int != 0) {
-      a(jdField_a_of_type_Int, (l - jdField_a_of_type_Long) / 1000L);
-    }
-    jdField_a_of_type_Int = paramInt;
-    jdField_a_of_type_Long = l;
-    if ((paramlga.d == 1) || (paramlga.d == 3))
+    paramArrayOfmgp[0].a(0, 0, 0, 0);
+    paramArrayOfmgp[0].b(0, 0, paramInt1, paramInt2);
+    paramArrayOfmgp[0].d(-15197410);
+    paramArrayOfmgp[1].a(3, 3, 3, 3);
+    paramArrayOfmgp[1].d(-15197410);
+    a(paramArrayOfmgp, paramInt3, paramInt1, paramInt2, paramInt4, paramInt5);
+  }
+  
+  public boolean a()
+  {
+    mey localmey = new mey(null);
+    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
-      if (jdField_a_of_type_Int != 0) {
-        jdField_b_of_type_Int = jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(8004), localmey });
+      if (QLog.isDevelopLevel()) {
+        QLog.w("OriginScreenLayout", 1, "canSwitchView, mCanSwitch[" + localmey.jdField_b_of_type_Boolean + "], mBlockName[" + localmey.jdField_b_of_type_JavaLangString + "]");
       }
-      jdField_a_of_type_Boolean = true;
     }
-    while ((paramlga.d != 2) && (paramlga.d != 4)) {
-      return;
-    }
-    if (jdField_a_of_type_Int != 0) {
-      jdField_c_of_type_Int = jdField_a_of_type_Int;
-    }
-    jdField_b_of_type_Boolean = true;
+    return !localmey.jdField_b_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mlo
  * JD-Core Version:    0.7.0.1
  */

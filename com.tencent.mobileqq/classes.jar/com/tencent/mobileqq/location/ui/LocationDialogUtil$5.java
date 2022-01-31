@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.location.ui;
 
 import android.content.res.Resources;
-import arvm;
-import arvy;
-import bbdj;
-import bbgu;
+import atmi;
+import atmu;
+import bdcd;
+import bdfq;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public final class LocationDialogUtil$5
@@ -14,13 +14,13 @@ public final class LocationDialogUtil$5
   
   public void run()
   {
-    bbgu localbbgu = bbdj.a(this.a, 230, null, this.a.getResources().getString(2131719612), 2131690596, 2131694794, new arvy(this), null);
-    arvm.a(this.a, localbbgu);
+    bdfq localbdfq = bdcd.a(this.a, 230, null, this.a.getResources().getString(2131720144), 2131690648, 2131694951, new atmu(this), null);
+    atmi.a(this.a, localbdfq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationDialogUtil.5
  * JD-Core Version:    0.7.0.1
  */

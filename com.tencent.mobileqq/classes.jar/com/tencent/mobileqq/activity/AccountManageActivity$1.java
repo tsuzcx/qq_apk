@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ajxl;
+import aloz;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -15,9 +15,9 @@ class AccountManageActivity$1
     {
       if (this.this$0.app != null)
       {
-        ajxl localajxl = (ajxl)this.this$0.app.getManager(51);
-        if (localajxl != null) {
-          AccountManageActivity.a(this.this$0, localajxl.b(this.this$0.app.getCurrentAccountUin()));
+        aloz localaloz = (aloz)this.this$0.app.getManager(51);
+        if (localaloz != null) {
+          AccountManageActivity.a(this.this$0, localaloz.b(this.this$0.app.getCurrentAccountUin()));
         }
       }
       return;
@@ -34,7 +34,7 @@ class AccountManageActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,12 @@
-public abstract interface alrw
+public class alrw
 {
-  public abstract void a(byte[] paramArrayOfByte);
+  public long a;
+  public long b;
+  public long c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alrw
  * JD-Core Version:    0.7.0.1
  */

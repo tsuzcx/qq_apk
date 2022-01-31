@@ -10,7 +10,7 @@
     <permission description="申请使用你的系统相册" id="scope.writePhotosAlbum" name="保存视频或图片到你的相册" />
     <permission description="申请使用你的摄像头" id="scope.camera" name="相机功能" />
     <permission description="申请修改你的个人资料如昵称、头像" id="scope.personalize" name="修改资料" />
-    <permission description="申请发送订阅消息" description-reject="暂不接收" id="scope.appMsgSubscribed" name="小程序订阅消息" />
+    <permission description="申请发送订阅消息" description-reject="暂不接收" id="setting.appMsgSubscribed" name="小程序订阅消息" />
     <permission id="scope.getPhoneNumber" name="获取你的电话号码" />
     <permission description="允许该小程序向我发起加好友请求" id="setting.addFriend" name="向我发起加好友请求" />
     <permission built-in="true" description="系统位置权限" id="android.permission.ACCESS_FINE_LOCATION" name="系统位置权限" />
@@ -77,7 +77,7 @@
         <request-permission>scope.qqrun</request-permission>
     </event>
     <event name="subscribeAppMsg">
-        <request-permission>scope.appMsgSubscribed</request-permission>
+        <request-permission>setting.appMsgSubscribed</request-permission>
     </event>
     <event name="Personalize">
         <request-permission>scope.personalize</request-permission>

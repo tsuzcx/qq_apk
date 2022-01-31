@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.main;
 
-import agcc;
+import aiaf;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 public class CommonLoadingView
   extends FrameLayout
 {
-  private agcc jdField_a_of_type_Agcc;
+  private aiaf jdField_a_of_type_Aiaf;
   private boolean jdField_a_of_type_Boolean = true;
   
   public CommonLoadingView(Context paramContext)
@@ -33,20 +33,20 @@ public class CommonLoadingView
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Agcc != null) {
-        this.jdField_a_of_type_Agcc.c();
+      if (this.jdField_a_of_type_Aiaf != null) {
+        this.jdField_a_of_type_Aiaf.c();
       }
     }
   }
   
-  public void setOnFirstDrawListener(agcc paramagcc)
+  public void setOnFirstDrawListener(aiaf paramaiaf)
   {
-    this.jdField_a_of_type_Agcc = paramagcc;
+    this.jdField_a_of_type_Aiaf = paramaiaf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.CommonLoadingView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
 import com.tencent.qphone.base.util.QLog;
-import voc;
-import vol;
+import xcu;
+import xdd;
 
 class DoodleTextureView$2
   implements Runnable
@@ -14,9 +14,9 @@ class DoodleTextureView$2
     if (this.this$0.a != null)
     {
       this.this$0.a.g();
-      vol localvol = (vol)this.this$0.a.a(102);
-      if (localvol != null) {
-        localvol.b();
+      xdd localxdd = (xdd)this.this$0.a.a(102);
+      if (localxdd != null) {
+        localxdd.b();
       }
     }
     if (QLog.isColorLevel()) {
@@ -26,7 +26,7 @@ class DoodleTextureView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,8 @@
 package cooperation.readinjoy;
 
-import bhvy;
+import bjxj;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
-import nol;
-import org.json.JSONObject;
 
 public final class ReadInJoyHelper$4
   implements Runnable
@@ -13,84 +11,65 @@ public final class ReadInJoyHelper$4
   
   public void run()
   {
-    Object localObject1 = bhvy.a("remote_kd_tab_switch");
-    Object localObject2 = bhvy.a("local_kd_tab_switch");
-    int k;
-    int n;
+    int m = 0;
+    int n = -1;
+    Object localObject2 = bjxj.a("remote_kd_tab_switch");
+    Object localObject1 = bjxj.a("local_kd_tab_switch");
+    int j;
     int i1;
-    label63:
-    int m;
-    if (bhvy.i())
+    int i2;
+    label69:
+    int k;
+    if (bjxj.i())
     {
-      k = 1;
-      n = bhvy.a("local_kd_tab_switch").intValue();
-      i1 = bhvy.a("local_kd_tab_switch_prefix").intValue();
-      if (!(localObject1 instanceof Boolean)) {
-        break label285;
-      }
-      if (!((Boolean)localObject1).booleanValue()) {
-        break label280;
-      }
-      i = 1;
-      m = i;
-      label66:
-      localObject1 = bhvy.a("local_kd_tab_has_set");
+      j = 1;
+      i1 = bjxj.a("local_kd_tab_switch").intValue();
+      i2 = bjxj.a("local_kd_tab_switch_prefix").intValue();
       if (!(localObject2 instanceof Boolean)) {
-        break label346;
+        break label233;
       }
       if (!((Boolean)localObject2).booleanValue()) {
-        break label291;
+        break label228;
       }
+      i = 1;
+      k = i;
+      label71:
+      localObject2 = bjxj.a("local_kd_tab_has_set");
+      if (!(localObject1 instanceof Boolean)) {
+        break label244;
+      }
+      i = m;
+      if (!((Boolean)localObject1).booleanValue()) {}
     }
-    label280:
-    label285:
-    label291:
-    label346:
+    label228:
+    label233:
+    label238:
+    label244:
     for (int i = 1;; i = -1)
     {
-      label94:
-      if ((localObject1 instanceof Boolean)) {
-        if (((Boolean)localObject1).booleanValue()) {}
-      }
-      for (int j = -1;; j = -1) {
-        for (;;)
-        {
-          localObject2 = new JSONObject();
-          try
-          {
-            ((JSONObject)localObject2).put("ui_cache_switch", String.valueOf(n));
-            ((JSONObject)localObject2).put("db_cache_switch", String.valueOf(i1));
-            bhvy.a((JSONObject)localObject2);
-            nol.a(null, this.a.getAccount(), "0X8009663", "0X8009663", 0, 0, String.valueOf(i), String.valueOf(j), String.valueOf(k), ((JSONObject)localObject2).toString(), false);
-            QLog.d("ReadInJoyHelper", 1, this.a.getAccount() + " ui_switch:" + k + "  ui_cache_switch:" + n + "  db_cache_switch:" + i1 + "  remote_switch:" + m + " localSwitch:" + i + "  userHasSet:" + localObject1);
-            return;
-            k = 0;
-            break;
-            i = 0;
-            break label63;
-            m = -1;
-            break label66;
-            i = 0;
-            break label94;
-            j = i;
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ReadInJoyHelper", 2, "only kandian tab switch, report error:" + localException.toString());
-              }
-            }
-          }
+      m = n;
+      if ((localObject2 instanceof Boolean)) {
+        if (((Boolean)localObject2).booleanValue()) {
+          break label238;
         }
+      }
+      for (m = n;; m = i)
+      {
+        QLog.d("ReadInJoyHelper", 1, this.a.getAccount() + " ui_switch:" + j + "  ui_cache_switch:" + i1 + "  db_cache_switch:" + i2 + "  remote_switch:" + k + " localSwitch:" + i + "  userHasSet:" + localObject2 + "  user_switch: " + m);
+        return;
+        j = 0;
+        break;
+        i = 0;
+        break label69;
+        k = -1;
+        break label71;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.readinjoy.ReadInJoyHelper.4
  * JD-Core Version:    0.7.0.1
  */

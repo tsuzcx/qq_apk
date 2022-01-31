@@ -1,56 +1,31 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.InterestSwitchEditActivity;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.qq.android.dexposed.XC_MethodHook;
+import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
+import com.tencent.mobileqq.config.QConfigureException;
+import com.tencent.qphone.base.util.QLog;
 
-public class aogr
-  implements View.OnClickListener
+final class aogr
+  extends XC_MethodHook
 {
-  public aogr(ExtendFriendBaseFragment paramExtendFriendBaseFragment) {}
-  
-  public void onClick(View paramView)
+  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
   {
-    switch (paramView.getId())
+    try
     {
-    default: 
-      return;
-    case 2131363534: 
-      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      paramMethodHookParam = aogm.a();
+      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save")) && (!paramMethodHookParam.contains("android.app.SharedPreferencesImpl"))) {
+        aogm.a(new QConfigureException(paramMethodHookParam), "Can not parse xml beyond QConfigManager when app starting.", "QConfigWatchDog_Xml");
       }
-      if (!this.a.jdField_a_of_type_Boolean)
-      {
-        axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092EC", "0X80092EC", 0, 0, "", "", "", "");
-        return;
-      }
-      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092E9", "0X80092E9", 0, 0, "", "", "", "");
       return;
     }
-    if (!this.a.jdField_a_of_type_Boolean) {
-      PublicFragmentActivity.a(this.a.getActivity(), ExtendFriendEditFragment.class, 1033);
-    }
-    for (;;)
+    catch (Exception paramMethodHookParam)
     {
-      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      }
-      if (this.a.jdField_a_of_type_Boolean) {
-        break;
-      }
-      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092EB", "0X80092EB", 0, 0, "", "", "", "");
-      return;
-      paramView = InterestSwitchEditActivity.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-      this.a.startActivityForResult(paramView, 2);
+      while (!QLog.isColorLevel()) {}
+      QLog.d("QConfigWatchDog", 2, "hook xml exception.", paramMethodHookParam);
     }
-    axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092E8", "0X80092E8", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aogr
  * JD-Core Version:    0.7.0.1
  */

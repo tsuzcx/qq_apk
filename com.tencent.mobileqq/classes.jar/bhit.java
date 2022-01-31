@@ -1,68 +1,33 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class bhit
-  extends Binder
-  implements bhis
+class bhit
+  implements bhkm
 {
-  public bhit()
-  {
-    attachInterface(this, "cooperation.qzone.plugin.OnQZonePluginInstallListner");
-  }
+  bhit(bhis parambhis) {}
   
-  public static bhis a(IBinder paramIBinder)
+  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-    if ((localIInterface != null) && ((localIInterface instanceof bhis))) {
-      return (bhis)localIInterface;
-    }
-    return new bhiu(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    if ((paramObject1 != null) && ((paramObject1 instanceof String)) && (paramObject2 != null) && ((paramObject2 instanceof byte[])))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      a(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      a(paramParcel1.readString(), paramParcel1.readFloat(), paramParcel1.readLong());
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-      b(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.CSP", 2, String.format("Cookie: %08X, cmd: %s", new Object[] { Long.valueOf(paramLong1), paramObject1 }));
+      }
+      if (paramLong1 == 0L) {
+        break label99;
+      }
+      this.a.a((String)paramObject1, (byte[])paramObject2, new bhiw(this.a, paramLong1));
     }
-    paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZonePluginInstallListner");
-    a(paramParcel1.readString(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    for (;;)
+    {
+      return 0;
+      label99:
+      this.a.a((String)paramObject1, (byte[])paramObject2, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhit
  * JD-Core Version:    0.7.0.1
  */

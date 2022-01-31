@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.text.TextUtils;
-import bbdx;
+import bdcs;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import java.util.Map;
 
@@ -17,13 +17,13 @@ class ShortVideoRealItemBuilder$4
       if (ShortVideoRealItemBuilder.a().size() == 0) {
         RMVideoStateMgr.c(this.a);
       }
-      bbdx.a(this.a);
+      bdcs.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.4
  * JD-Core Version:    0.7.0.1
  */

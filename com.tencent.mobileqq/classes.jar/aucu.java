@@ -1,36 +1,51 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 
 public class aucu
-  extends FlingGestureHandler
 {
-  boolean a = true;
+  private int jdField_a_of_type_Int;
+  private MsgBackupUserData jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public aucu(Activity paramActivity)
+  public auct a()
   {
-    super(paramActivity);
+    return new auct(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData, this.jdField_a_of_type_Int);
   }
   
-  public void a(boolean paramBoolean)
+  public aucu a(int paramInt)
   {
-    this.a = paramBoolean;
-    if (!b()) {
-      a();
-    }
-    this.mTopLayout.setInterceptTouchFlag(paramBoolean);
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public void flingLToR()
+  public aucu a(MsgBackupUserData paramMsgBackupUserData)
   {
-    if (this.a) {
-      super.flingLToR();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupUserData = paramMsgBackupUserData;
+    return this;
+  }
+  
+  public aucu a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public aucu b(String paramString)
+  {
+    this.b = paramString;
+    return this;
+  }
+  
+  public aucu c(String paramString)
+  {
+    this.c = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aucu
  * JD-Core Version:    0.7.0.1
  */

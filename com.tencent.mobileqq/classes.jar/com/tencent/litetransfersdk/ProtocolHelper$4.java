@@ -1,6 +1,6 @@
 package com.tencent.litetransfersdk;
 
-import aptx;
+import armz;
 
 class ProtocolHelper$4
   implements Runnable
@@ -9,12 +9,12 @@ class ProtocolHelper$4
   
   public void run()
   {
-    aptx.a(2131693944);
+    armz.a(2131694060);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.litetransfersdk.ProtocolHelper.4
  * JD-Core Version:    0.7.0.1
  */

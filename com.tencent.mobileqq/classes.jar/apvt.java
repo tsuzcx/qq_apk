@@ -1,18 +1,16 @@
-class apvt
-  implements aptw
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+public class apvt
 {
-  apvt(apvs paramapvs) {}
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void a()
-  {
-    eo.b(this.a.a, 0);
-  }
-  
-  public void b() {}
+  public apvt(apvp paramapvp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,80 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForMyEnterTroop;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class advd
-  extends actm
+  extends alox
 {
-  public advd(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
+  public advd(SubAccountBindActivity paramSubAccountBindActivity) {}
+  
+  void a(String paramString, int paramInt)
   {
-    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+    ThreadManager.getFileThreadHandler().post(new SubAccountBindActivity.5.1(this, paramString, paramInt));
   }
   
-  protected actn a()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    return new adve(this);
-  }
-  
-  protected View a(MessageRecord paramMessageRecord, actn paramactn, View paramView, LinearLayout paramLinearLayout, acxj paramacxj)
-  {
-    paramLinearLayout = (adve)paramactn;
-    paramactn = paramView;
-    if (paramView == null)
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {}
+    for (;;)
     {
-      paramactn = LayoutInflater.from(this.a).inflate(2131558782, null);
-      paramLinearLayout.b = ((TextView)paramactn.findViewById(2131367153));
-    }
-    paramLinearLayout.b.setMovementMethod(null);
-    paramLinearLayout.b.setGravity(17);
-    if ((paramMessageRecord instanceof MessageForMyEnterTroop))
-    {
-      paramMessageRecord = (MessageForMyEnterTroop)paramMessageRecord;
-      paramMessageRecord = this.a.getString(2131697478);
-      paramLinearLayout.b.setText(paramMessageRecord);
-      paramView = this.a.getResources().getColorStateList(2131165359);
-      if (paramView != null) {
-        paramLinearLayout.b.setTextColor(paramView);
+      return;
+      int i;
+      if (SubAccountBindActivity.a(this.a) != null) {
+        i = SubAccountBindActivity.a(this.a).getChildCount();
       }
-      paramactn.setContentDescription(paramMessageRecord);
+      while (j < SubAccountBindActivity.a(this.a).size())
+      {
+        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
+        {
+          a(paramString, j);
+          return;
+        }
+        j += 1;
+        continue;
+        i = 0;
+      }
     }
-    return paramactn;
   }
   
-  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
-  
-  public bbmh[] a(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    return null;
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {}
+    for (;;)
+    {
+      return;
+      int i;
+      if (SubAccountBindActivity.a(this.a) != null) {
+        i = SubAccountBindActivity.a(this.a).getChildCount();
+      }
+      while (j < SubAccountBindActivity.a(this.a).size())
+      {
+        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
+        {
+          TextView localTextView1 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131370958);
+          TextView localTextView2 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131361822);
+          localTextView1.setText(bdbt.h(this.a.app, paramString));
+          localTextView2.setText(paramString);
+          a(paramString, j);
+          return;
+        }
+        j += 1;
+        continue;
+        i = 0;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,87 +1,166 @@
-import android.content.SharedPreferences;
+import android.content.Intent;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
 import android.text.TextUtils;
-import com.tencent.av.so.DownloadInfo;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.av.service.RecvGVideoLevelInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.List;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class lzw
+  extends amab
 {
-  public static int a(DownloadInfo paramDownloadInfo)
+  public lzw(QQServiceForAV paramQQServiceForAV) {}
+  
+  protected void a(boolean paramBoolean, long paramLong1, int paramInt1, List<oidb_0x899.memberlist> paramList, long paramLong2, int paramInt2, String paramString)
   {
-    int i = 1;
-    if (paramDownloadInfo == null) {}
-    do
+    QLog.w("QQServiceForAV", 1, "onOIDB0X899_0_Ret, isSuccess[" + paramBoolean + "], troopuin[" + paramLong1 + "], nFlag[" + paramInt1 + "], lStartUin[" + paramLong2 + "], result[" + paramInt2 + "], strErrorMsg[" + paramString + "]");
+    paramString = (QQAppInterface)this.a.a();
+    if ((paramBoolean) && (paramInt1 == 2))
     {
-      return 11;
-      if (!TextUtils.isEmpty(paramDownloadInfo.MD5_so_wxvoiceembedqqegg)) {
-        break;
+      if (TextUtils.isEmpty(this.a.c)) {
+        this.a.c = paramString.getCurrentAccountUin();
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavSo", 4, String.format("getEnableFlag, %s", new Object[] { paramDownloadInfo }));
-    return 11;
-    if (paramDownloadInfo.enable) {
-      if ((b(paramDownloadInfo)) && (a(paramDownloadInfo))) {}
+      paramLong2 = Long.valueOf(this.a.c).longValue();
+      label152:
+      oidb_0x899.memberlist localmemberlist;
+      if (paramList == null)
+      {
+        paramInt1 = 0;
+        paramInt2 = 0;
+        if (paramInt2 >= paramInt1) {
+          break label237;
+        }
+        localmemberlist = (oidb_0x899.memberlist)paramList.get(paramInt2);
+        if ((localmemberlist != null) && (localmemberlist.uint64_member_uin.has())) {
+          break label210;
+        }
+      }
+      for (;;)
+      {
+        paramInt2 += 1;
+        break label152;
+        paramInt1 = paramList.size();
+        break;
+        label210:
+        if (localmemberlist.uint64_member_uin.get() == paramLong2) {
+          this.a.a(paramLong1, paramLong2);
+        }
+      }
+      label237:
+      paramList = paramString;
+      if (paramString == null) {
+        paramList = (QQAppInterface)this.a.a();
+      }
+      paramList.removeObserver(this.a.jdField_a_of_type_Amab);
     }
-    for (i = 11;; i = 2) {
-      return i;
-    }
   }
   
-  public static String a()
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4, int paramInt5, long paramLong)
   {
-    return b();
-  }
-  
-  public static String a(String paramString)
-  {
-    return "795";
-  }
-  
-  public static boolean a(DownloadInfo paramDownloadInfo)
-  {
-    String str1 = paramDownloadInfo.MD5_zip_model;
-    paramDownloadInfo = a() + paramDownloadInfo.filename_model_wxvoiceembed;
-    String str2 = DownloadInfo.getSP().getString("model_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equalsIgnoreCase(str1)))
+    paramString3 = (QQAppInterface)this.a.a();
+    if (paramBoolean)
     {
-      QLog.i("QavSo", 1, String.format("isModelReady, spMd5[%s], zipMd5[%s]", new Object[] { str2, str1 }));
-      return false;
+      paramString4 = new Intent();
+      paramString4.setAction("tencent.video.v2q.hide.webConfig");
+      paramString4.putExtra("troopUin", paramString1);
+      paramString4.putExtra("color", paramInt1);
+      paramString4.putExtra("url", paramString2);
+      paramString4.putExtra("grayFlag", paramInt2);
+      paramString3.getApp().sendBroadcast(paramString4);
     }
-    if (!bbdx.a(paramDownloadInfo))
-    {
-      QLog.i("QavSo", 1, String.format("isModelReady, file no exist, fileName[%s]", new Object[] { paramDownloadInfo }));
-      return false;
-    }
-    return true;
+    paramString3.removeObserver(this.a.jdField_a_of_type_Amab);
   }
   
-  public static String b()
+  protected void a(boolean paramBoolean1, String paramString, int paramInt1, boolean paramBoolean2, boolean paramBoolean3, int paramInt2, int paramInt3)
   {
-    return UpdateAvSo.a() + "qavso" + a("") + File.separator;
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    String str = localQQAppInterface.getApp().getString(paramInt1);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, String.format("onJoinOrExitOpenTroop --> success: %b, troopUin: %s, errorTips: %s isJoin: %b , visitorSpeakEnabled: %b, speakInterval: %d, startSpeakInterval: %d", new Object[] { Boolean.valueOf(paramBoolean1), paramString, str, Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
+    }
+    if (paramBoolean2)
+    {
+      Intent localIntent = new Intent();
+      localIntent.setAction("tencent.video.q2v.JoinOpenGroup");
+      localIntent.putExtra("troopUin", paramString);
+      localIntent.putExtra("success", paramBoolean1);
+      localIntent.putExtra("errorTips", str);
+      localIntent.putExtra("visitorSpeakEnabled", paramBoolean3);
+      localIntent.putExtra("speakInterval", paramInt2);
+      localIntent.putExtra("startSpeakInterval", paramInt3);
+      localQQAppInterface.getApp().sendBroadcast(localIntent);
+    }
+    localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Amab);
   }
   
-  public static boolean b(DownloadInfo paramDownloadInfo)
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    String str1 = paramDownloadInfo.MD5_zip_so;
-    paramDownloadInfo = b() + paramDownloadInfo.filename_so_wxvoiceembedqqegg;
-    String str2 = DownloadInfo.getSP().getString("so_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equalsIgnoreCase(str1)))
-    {
-      QLog.i("QavSo", 1, String.format("isSoReady, spMd5[%s], zipMd5[%s]", new Object[] { str2, str1 }));
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.video.follow", 2, "QQServiceForAV, onGetFollowStatus:" + paramBoolean1 + "," + paramString + "," + paramBoolean2);
     }
-    if (!bbdx.a(paramDownloadInfo))
+    synchronized (this.a.jdField_a_of_type_AndroidOsRemoteCallbackList)
     {
-      QLog.i("QavSo", 1, String.format("isSoReady, file no exist, fileNameSoWxVoiceEmbedQQEgg[%s]", new Object[] { paramDownloadInfo }));
-      return false;
+      int j = this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.beginBroadcast();
+      int i = 0;
+      if (i < j)
+      {
+        if (paramBoolean2) {}
+        for (String str = "1";; str = "2") {
+          try
+          {
+            ((lzd)this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a(paramBoolean1, paramString, str, "getFollowStatus");
+            i += 1;
+          }
+          catch (RemoteException paramString)
+          {
+            if (!QLog.isColorLevel()) {
+              break label168;
+            }
+            QLog.e("nearby.video.follow", 2, "QQServiceForAV, onGetFollowStatus:" + paramString.toString());
+          }
+        }
+      }
+      label168:
+      this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.finishBroadcast();
+      return;
     }
-    return true;
+  }
+  
+  protected void a(RecvGVideoLevelInfo[] paramArrayOfRecvGVideoLevelInfo)
+  {
+    synchronized (this.a.jdField_a_of_type_AndroidOsRemoteCallbackList)
+    {
+      int j = this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.beginBroadcast();
+      int i = 0;
+      for (;;)
+      {
+        if (i < j) {
+          try
+          {
+            ((lzd)this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.getBroadcastItem(i)).a(paramArrayOfRecvGVideoLevelInfo);
+            i += 1;
+          }
+          catch (RemoteException paramArrayOfRecvGVideoLevelInfo)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("QQServiceForAV", 2, "callBack RemoteException", paramArrayOfRecvGVideoLevelInfo);
+            }
+          }
+        }
+      }
+      this.a.jdField_a_of_type_AndroidOsRemoteCallbackList.finishBroadcast();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lzw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,39 @@
-import android.view.View;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
-class sav
-  implements bfph
+public class sav
+  implements sai
 {
-  sav(sau paramsau, sat paramsat, int paramInt, bfpc parambfpc) {}
+  public static final String a;
+  private static String b = "WebFastLikeDislikeCreator";
+  private saw a;
   
-  public void OnClick(View paramView, int paramInt)
+  static
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-    }
-    sau.a(this.jdField_a_of_type_Sau, this.jdField_a_of_type_Sat);
-    paramInt = this.jdField_a_of_type_Sat.b;
-    int i = this.jdField_a_of_type_Sat.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_Sat.jdField_a_of_type_Int != 1) {
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      long l = saz.a().a(this.jdField_a_of_type_Sat);
-      axqy.b(sau.a(this.jdField_a_of_type_Sau), "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_Sat.jdField_a_of_type_JavaLangString, "0X80067F2", "0X80067F2", 0, 0, "" + (this.jdField_a_of_type_Int + 1), "" + l, "" + i, "" + paramInt);
-      break;
-    }
+    jdField_a_of_type_JavaLangString = alpo.a(2131717264);
+  }
+  
+  public int a(BaseData paramBaseData)
+  {
+    return 19;
+  }
+  
+  public sah a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Saw = new saw(this, paramContext, LayoutInflater.from(paramContext).inflate(2131560015, null), paramBaseData);
+    return this.jdField_a_of_type_Saw;
+  }
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    return paramBaseData.s == 21;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sav
  * JD-Core Version:    0.7.0.1
  */

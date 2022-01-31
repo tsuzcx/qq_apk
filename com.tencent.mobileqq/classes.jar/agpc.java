@@ -1,24 +1,23 @@
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.image.RegionDrawableData;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 
-public abstract interface agpc
+class agpc
+  implements View.OnClickListener
 {
-  public abstract View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup);
+  agpc(agot paramagot) {}
   
-  public abstract void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup);
-  
-  public abstract void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData);
-  
-  public abstract void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup);
-  
-  public abstract void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean);
-  
-  public abstract void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public void onClick(View paramView)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
+      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8004EFC", "0X8004EFC", 0, 0, "", "", "" + this.a.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId, "");
+    }
+    this.a.x();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agpc
  * JD-Core Version:    0.7.0.1
  */

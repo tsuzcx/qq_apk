@@ -1,62 +1,38 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
-import com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout;
-import com.tencent.mobileqq.activity.aio.item.PttAudioChangeView;
-import com.tencent.mobileqq.activity.aio.item.PttAudioPlayView;
-import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import java.util.List;
 
 public class adws
-  extends acuj
+  implements PopupWindow.OnDismissListener
 {
-  public acxj a;
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public VoicePrintUtils.VoicePrintView a;
-  public BreathAnimationLayout a;
-  public PttAudioChangeView a;
-  public PttAudioPlayView a;
-  public PttAudioWaveView a;
-  public StringBuilder a;
-  private boolean a;
-  public ImageView b;
-  public TextView b;
-  public PttAudioChangeView b;
-  public ImageView c;
-  public ImageView d;
-  public ImageView e;
-  public ImageView f;
+  public adws(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void a()
+  public void onDismiss()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioPlayView.a();
+    this.a.a = null;
+    Object localObject;
+    if ((TextPreviewTranslateActivity.b(this.a) != null) && (TextPreviewTranslateActivity.b(this.a).size() > 1))
+    {
+      localObject = this.a.getResources();
+      if (!TextPreviewTranslateActivity.a(this.a)) {
+        break label76;
+      }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView.b();
+    label76:
+    for (int i = 2130845157;; i = 2130845668)
+    {
+      localObject = ((Resources)localObject).getDrawable(i);
+      TextPreviewTranslateActivity.b(this.a).setCompoundDrawablesWithIntrinsicBounds(null, null, null, (Drawable)localObject);
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioChangeView.a();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adws
  * JD-Core Version:    0.7.0.1
  */

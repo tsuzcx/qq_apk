@@ -1,240 +1,374 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.1;
-import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.2;
-import com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer.3;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.music.QzoneMusicHelper;
-import eipc.EIPCResult;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class arsh
-  extends QIPCModule
+  implements Manager
 {
-  private arsh()
+  private int jdField_a_of_type_Int = 0;
+  private String jdField_a_of_type_JavaLangString = "";
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = 0;
+  private String jdField_b_of_type_JavaLangString = alpo.a(2131713829);
+  private boolean jdField_b_of_type_Boolean;
+  private String jdField_c_of_type_JavaLangString = alpo.a(2131713830);
+  private boolean jdField_c_of_type_Boolean;
+  
+  public arsh(QQAppInterface paramQQAppInterface)
   {
-    super("ListenTogetherIPCModuleMainServer");
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_b_of_type_Boolean = bdiv.B(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
   }
   
-  public static arsh a()
+  public static arsh a(QQAppInterface paramQQAppInterface)
   {
-    return arsi.a();
+    return (arsh)paramQQAppInterface.getManager(286);
   }
   
-  private EIPCResult a(String paramString, Bundle paramBundle, int paramInt)
+  private static ArrayList a(ArrayList<Integer> paramArrayList)
   {
-    if ((!"action_status_changed".equals(paramString)) || (paramBundle == null)) {}
+    Object localObject = new LinkedHashSet();
+    Iterator localIterator = paramArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((LinkedHashSet)localObject).add(Integer.valueOf(((Integer)localIterator.next()).intValue()));
+    }
+    paramArrayList.clear();
+    localObject = ((LinkedHashSet)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      paramArrayList.add(((Iterator)localObject).next());
+    }
+    return paramArrayList;
+  }
+  
+  private void a(SharedPreferences paramSharedPreferences, String paramString)
+  {
+    paramSharedPreferences = paramSharedPreferences.getString(paramString + "_" + "rich_text_chat_config_content", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTextChatManager", 2, "get content from sp:" + paramSharedPreferences);
+    }
+    if (!TextUtils.isEmpty(paramSharedPreferences)) {
+      a(paramSharedPreferences);
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(2));
+    QLog.d("RichTextChatManager", 2, "updateHiBoomSwith: enable=" + bool);
+    paramQQAppInterface = (asnx)paramQQAppInterface.getManager(219);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(bool);
+    }
+  }
+  
+  private boolean a(String paramString)
+  {
+    label239:
     for (;;)
     {
-      return null;
-      paramBundle = paramBundle.getString("data");
       try
       {
-        paramBundle = new JSONObject(paramBundle);
-        if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
-        {
-          localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          if (QLog.isColorLevel()) {
-            QLog.d("ListenTogetherIPCModuleMainServer", 2, "statusChanged action:" + paramString + " data=" + paramBundle + " app:" + localQQAppInterface);
-          }
-          if ((localQQAppInterface == null) || (paramBundle == null)) {
-            continue;
-          }
-          ((ListenTogetherManager)localQQAppInterface.getManager(331)).a(paramBundle);
-          paramString = new EIPCResult();
-          paramString.code = 0;
-          return paramString;
+        paramString = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = paramString.optInt("first_insatll_entry", 0);
+        if ((this.jdField_a_of_type_Int < 0) || (this.jdField_a_of_type_Int >= 5)) {
+          this.jdField_a_of_type_Int = 0;
         }
-      }
-      catch (JSONException paramBundle)
-      {
-        for (;;)
+        Object localObject1 = new ArrayList();
+        Object localObject2 = paramString.optJSONArray("enrty_orders");
+        int i;
+        if (localObject2 != null)
         {
-          QLog.i("ListenTogetherIPCModuleMainServer", 1, "statusChanged error:" + paramBundle.getMessage());
-          paramBundle = null;
-          continue;
-          QQAppInterface localQQAppInterface = null;
-        }
-      }
-    }
-  }
-  
-  public static void a(JSONObject paramJSONObject)
-  {
-    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 2, "callWebClientStatusChanged data:" + paramJSONObject + "  isToolRunning:" + bool);
-    }
-    if (bool)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("data", paramJSONObject.toString());
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "ListenTogetherIPCModuleWebClient", "action_status_changed", localBundle, null);
-    }
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    boolean bool2 = false;
-    int i = 0;
-    boolean bool1 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
-    }
-    if (paramBundle == null) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
-    }
-    for (;;)
-    {
-      return null;
-      if ("action_status_changed".equals(paramString)) {
-        return a(paramString, paramBundle, paramInt);
-      }
-      if ("isOpener".equals(paramString))
-      {
-        paramString = new Bundle();
-        paramString.putBoolean("result", aylu.a().a());
-        paramString = EIPCResult.createResult(0, paramString);
-        if (paramInt > 0)
-        {
-          callbackResult(paramInt, paramString);
-          return null;
-        }
-      }
-      else if ("isShowAtmosphere".equals(paramString))
-      {
-        try
-        {
-          paramString = new JSONObject(paramBundle.getString("data")).optString("uin");
-          paramBundle = new Bundle();
-          if ((aylu.a().a()) || (aylu.a().a(paramString))) {
-            break label609;
-          }
-          label220:
-          paramBundle.putBoolean("result", bool1);
-          paramString = EIPCResult.createResult(0, paramBundle);
-          if (paramInt > 0)
+          i = 0;
+          if (i < ((JSONArray)localObject2).length())
           {
-            callbackResult(paramInt, paramString);
-            return null;
+            int j = ((JSONArray)localObject2).getInt(i);
+            if ((j < 0) || (j >= 5)) {
+              break label239;
+            }
+            ((ArrayList)localObject1).add(Integer.valueOf(j));
+            break label239;
           }
         }
-        catch (JSONException paramString)
+        this.jdField_a_of_type_JavaUtilArrayList.clear();
+        this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject1);
+        a(this.jdField_a_of_type_JavaUtilArrayList);
+        localObject1 = paramString.optString("zhitu_title");
+        localObject2 = paramString.optString("zhitu_legal_wording");
+        if (paramString.optInt("zhitu_legal_switch") == 1)
         {
-          QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_IS_SHOW_ATMOSPHERE: ", paramString);
-          return null;
-        }
-      }
-    }
-    if ("setPlayerId".equals(paramString)) {
-      try
-      {
-        paramInt = new JSONObject(paramBundle.getString("data")).optInt("id");
-        aylx.a().a(paramInt);
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_PLAYERID: ", paramString);
-        return null;
-      }
-    }
-    if ("setThemeEnabled".equals(paramString)) {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle.getString("data"));
-        paramString = paramBundle.optString("uin");
-        paramInt = paramBundle.optInt("id");
-        paramBundle = aylu.a();
-        bool1 = bool2;
-        if (paramInt == 1) {
-          bool1 = true;
-        }
-        paramBundle.a(paramString, bool1);
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_THEME_ENABLED: ", paramString);
-        return null;
-      }
-    }
-    if ("showFloatView".equals(paramString)) {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle.getString("data"));
-        paramString = paramBundle.optString("uin");
-        paramBundle = paramBundle.optString("coverUrl");
-        ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.1(this, paramString, paramBundle));
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-    }
-    if ("pauseFloatView".equals(paramString))
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.2(this));
-      return null;
-    }
-    if ("changeMusicList".equals(paramString)) {}
-    for (;;)
-    {
-      SongInfo localSongInfo;
-      try
-      {
-        paramString = new JSONObject(paramBundle.getString("data"));
-        int j = paramString.optInt("playType");
-        int k = paramString.optInt("index");
-        paramString = paramString.getJSONArray("songList");
-        paramBundle = new SongInfo[paramString.length()];
-        paramInt = i;
-        if (paramInt < paramString.length())
-        {
-          localSongInfo = QzoneMusicHelper.convertSongInfo(paramString.getJSONObject(paramInt));
-          if (localSongInfo.a != 0L) {
-            break label615;
+          bool = true;
+          this.jdField_c_of_type_Boolean = bool;
+          this.jdField_b_of_type_Int = paramString.optInt("zhitu_style", 0);
+          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+            this.jdField_b_of_type_JavaLangString = ((String)localObject1);
           }
-          localSongInfo.a = paramInt;
-          break label615;
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            this.jdField_c_of_type_JavaLangString = ((String)localObject2);
+          }
+          this.jdField_a_of_type_Boolean = true;
+          return true;
         }
-        QQPlayerService.a(paramBundle, j, k);
-        return null;
+        boolean bool = false;
+        continue;
+        i += 1;
       }
       catch (JSONException paramString)
       {
-        paramString.printStackTrace();
-        return null;
+        if (QLog.isColorLevel()) {
+          QLog.e("RichTextChatManager", 2, paramString, new Object[0]);
+        }
+        this.jdField_a_of_type_Boolean = true;
+        return false;
       }
-      if (!"stopMusicBox".equals(paramString)) {
-        break;
-      }
-      ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.3(this));
-      return null;
-      label609:
-      bool1 = true;
-      break label220;
-      label615:
-      paramBundle[paramInt] = localSongInfo;
-      paramInt += 1;
     }
   }
+  
+  public int a()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public int a(QQAppInterface paramQQAppInterface, ArrayList<Integer> paramArrayList)
+  {
+    int j = bdiv.aK(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTextChatManager", 2, "last Memoried Tab:" + j);
+    }
+    int i;
+    if (j == -1) {
+      if (!bdiv.A(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin()))
+      {
+        i = paramArrayList.indexOf(Integer.valueOf(a(paramQQAppInterface)));
+        bdiv.r(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), true);
+        if (QLog.isColorLevel()) {
+          QLog.d("RichTextChatManager", 2, "Accourding to : selectedTab:" + j);
+        }
+        if (i == -1) {}
+      }
+    }
+    do
+    {
+      return i;
+      return 0;
+      return 0;
+      j = paramArrayList.indexOf(Integer.valueOf(j));
+      if (QLog.isColorLevel()) {
+        QLog.d("RichTextChatManager", 2, "Accourding to orderlist, currentTabPosition:" + j);
+      }
+      i = j;
+    } while (-1 != j);
+    return 0;
+  }
+  
+  public int a(AppRuntime paramAppRuntime)
+  {
+    a(paramAppRuntime);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public ArrayList<Integer> a(AppRuntime paramAppRuntime)
+  {
+    a(paramAppRuntime);
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Integer paramInteger, ConfigurationService.Config paramConfig)
+  {
+    int i = 0;
+    int k = paramConfig.version.get();
+    int j = bdiv.aI(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
+    int m = bdiv.aJ(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
+    int n = AppSetting.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTextChatManager", 1, String.format("received richTextChat remote version: %d, localVersion: %d ,originalAppId:%d, currentAppId:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(m), Integer.valueOf(n) }));
+    }
+    if (m != n) {
+      bdiv.Z(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount(), n);
+    }
+    for (;;)
+    {
+      if (k != i)
+      {
+        paramInteger = aova.b(paramConfig, i, paramInteger.intValue());
+        if (QLog.isColorLevel()) {
+          QLog.d("RichTextChatManager", 1, "content:" + paramInteger);
+        }
+        if (TextUtils.isEmpty(paramInteger)) {
+          break label218;
+        }
+        if (!a(paramInteger)) {
+          break label202;
+        }
+        bdiv.f(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount(), k, paramInteger);
+        a(paramQQAppInterface);
+      }
+      label202:
+      label218:
+      while (!QLog.isColorLevel())
+      {
+        do
+        {
+          return;
+        } while (!QLog.isColorLevel());
+        QLog.d("RichTextChatManager", 1, "config content parse error , do nothing");
+        return;
+      }
+      QLog.d("RichTextChatManager", 1, "config content is null , do nothing");
+      return;
+      i = j;
+    }
+  }
+  
+  public void a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime != null)
+    {
+      String str = paramAppRuntime.getAccount();
+      if ((!this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_JavaLangString.equals(str)))
+      {
+        SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(paramAppRuntime.getApplication());
+        if (localSharedPreferences.contains(str + "_" + "rich_text_chat_config_version"))
+        {
+          a(localSharedPreferences, str);
+          if ((paramAppRuntime instanceof QQAppInterface)) {
+            a((QQAppInterface)paramAppRuntime);
+          }
+        }
+        this.jdField_a_of_type_JavaLangString = str;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RichTextChatManager", 2, "first install entry:" + this.jdField_a_of_type_Int + " mOder:" + this.jdField_a_of_type_JavaUtilArrayList);
+    }
+  }
+  
+  public void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    bdiv.s(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    Object localObject = a(paramQQAppInterface).a(paramQQAppInterface);
+    if (((ArrayList)localObject).size() <= 0) {
+      return false;
+    }
+    FlashChatManager localFlashChatManager = (FlashChatManager)paramQQAppInterface.getManager(217);
+    localObject = ((ArrayList)localObject).iterator();
+    int k = 0;
+    if (((Iterator)localObject).hasNext())
+    {
+      int i = ((Integer)((Iterator)localObject).next()).intValue();
+      if (i == 1) {
+        if (localFlashChatManager.a().size() > 0)
+        {
+          i = 1;
+          label83:
+          k = i | k;
+        }
+      }
+    }
+    for (;;)
+    {
+      break;
+      int j = 0;
+      break label83;
+      if (j == 2)
+      {
+        asnx.a(paramQQAppInterface);
+        k = asnx.b() | k;
+      }
+      else if (j == 0)
+      {
+        k |= 0x1;
+      }
+      else if (j == 3)
+      {
+        k = 1;
+      }
+      else if (j == 4)
+      {
+        k = 1;
+        continue;
+        return k;
+      }
+    }
+  }
+  
+  public boolean a(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = a(paramAppRuntime);
+    boolean bool2;
+    if (paramAppRuntime != null)
+    {
+      paramAppRuntime = paramAppRuntime.iterator();
+      boolean bool1 = false;
+      bool2 = bool1;
+      if (!paramAppRuntime.hasNext()) {
+        break label50;
+      }
+      if (((Integer)paramAppRuntime.next()).intValue() != 0) {
+        break label52;
+      }
+      bool1 = true;
+    }
+    label50:
+    label52:
+    for (;;)
+    {
+      break;
+      bool2 = false;
+      return bool2;
+    }
+  }
+  
+  public String b()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public boolean b(QQAppInterface paramQQAppInterface)
+  {
+    return (a(paramQQAppInterface)) && (this.jdField_b_of_type_Boolean);
+  }
+  
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arsh
  * JD-Core Version:    0.7.0.1
  */

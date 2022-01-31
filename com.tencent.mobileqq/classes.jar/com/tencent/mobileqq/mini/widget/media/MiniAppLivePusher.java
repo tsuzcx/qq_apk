@@ -12,8 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bbkk;
-import bhom;
+import bdje;
+import bjpx;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
 import com.tencent.mobileqq.mini.reuse.MiniappDownloadUtil;
@@ -174,7 +174,7 @@ public class MiniAppLivePusher
   
   private void initPusherView()
   {
-    this.tXCloudVideoView = bhom.a("com.tencent.rtmp.ui.TXCloudVideoView", bhom.a(new Class[] { Context.class }), new Object[] { getContext() });
+    this.tXCloudVideoView = bjpx.a("com.tencent.rtmp.ui.TXCloudVideoView", bjpx.a(new Class[] { Context.class }), new Object[] { getContext() });
     if (this.tXCloudVideoView == null)
     {
       QLog.e("MiniAppLivePusher", 1, "tXCloudVideoView is null?! ");
@@ -252,8 +252,8 @@ public class MiniAppLivePusher
     this.hasSetUp = true;
     setTag("MiniAppLivePusher");
     this.context = paramContext;
-    this.rootView = LayoutInflater.from(paramContext).inflate(2131559264, null);
-    this.pusherContainer = ((FrameLayout)this.rootView.findViewById(2131372170));
+    this.rootView = LayoutInflater.from(paramContext).inflate(2131559308, null);
+    this.pusherContainer = ((FrameLayout)this.rootView.findViewById(2131372494));
     addView(this.rootView);
   }
   
@@ -292,6 +292,7 @@ public class MiniAppLivePusher
   {
     boolean bool2 = false;
     QLog.d("MiniAppLivePusher", 2, "operateLivePusher json: " + paramString);
+    Object localObject;
     if (this.livePusherJSAdapter != null)
     {
       if ("playBGM".equals(paramString))
@@ -299,11 +300,11 @@ public class MiniAppLivePusher
         if (paramJSONObject != null)
         {
           this.needToStopDownloadBGM = false;
-          String str1 = String.valueOf(this.downloadTaskId.getAndIncrement());
-          String str2 = paramJSONObject.optString("url");
-          this.downloadMap.put(str1, str2);
-          String str3 = MiniAppFileManager.getInstance().getTmpPathByUrl(str2);
-          MiniappDownloadUtil.getInstance().download(str2, str3, true, new MiniAppLivePusher.5(this, str1, str2, str3, paramJSONObject, paramString), Downloader.DownloadMode.FastMode, null);
+          localObject = String.valueOf(this.downloadTaskId.getAndIncrement());
+          String str1 = paramJSONObject.optString("url");
+          this.downloadMap.put(localObject, str1);
+          String str2 = MiniAppFileManager.getInstance().getTmpPathByUrl(str1);
+          MiniappDownloadUtil.getInstance().download(str1, str2, true, new MiniAppLivePusher.5(this, (String)localObject, str1, str2, paramJSONObject, paramString), Downloader.DownloadMode.FastMode, null);
         }
         paramString = ApiUtil.wrapCallbackOk("operateLivePusher", null);
         this.serviceWebview.evaluateCallbackJs(paramInt, paramString.toString());
@@ -363,25 +364,37 @@ public class MiniAppLivePusher
       int i = this.livePusherJSAdapter.startDumpAudioData(paramString);
       QLog.d("MiniAppLivePusher", 2, "recordResult:" + i);
       if (i == 0) {
-        paramJSONObject = new JSONObject();
+        localObject = new JSONObject();
       }
       for (;;)
       {
         try
         {
-          paramJSONObject.put("tempFilePath", paramString);
-          this.tempAudioFilePath = paramString;
-          paramString = ApiUtil.wrapCallbackOk("operateLivePusher", paramJSONObject);
-          this.serviceWebview.evaluateCallbackJs(paramInt, paramString.toString());
-          this.handler.postDelayed(this.stopDumpRunnable, l);
-          QLog.d("MiniAppLivePusher", 2, "recordResult:" + i);
-          return;
+          paramJSONObject = MiniAppFileManager.getInstance().getWxFilePath(paramString);
+          paramString = paramJSONObject;
+          paramJSONObject.printStackTrace();
         }
-        catch (JSONException localJSONException)
+        catch (JSONException paramJSONObject)
         {
-          localJSONException.printStackTrace();
-          continue;
+          try
+          {
+            QLog.d("MiniAppLivePusher", 2, "recordFile transformed:" + paramString);
+            ((JSONObject)localObject).put("tempFilePath", paramString);
+            this.tempAudioFilePath = paramString;
+            paramString = ApiUtil.wrapCallbackOk("operateLivePusher", (JSONObject)localObject);
+            this.serviceWebview.evaluateCallbackJs(paramInt, paramString.toString());
+            this.handler.postDelayed(this.stopDumpRunnable, l);
+            QLog.d("MiniAppLivePusher", 2, "recordResult:" + i);
+            return;
+          }
+          catch (JSONException paramJSONObject)
+          {
+            break label578;
+          }
+          paramJSONObject = paramJSONObject;
         }
+        label578:
+        continue;
         if (i == -1)
         {
           paramString = ApiUtil.wrapCallbackFail("operateLivePusher", null, "LivePusher is recording");
@@ -413,7 +426,7 @@ public class MiniAppLivePusher
       paramString = new JSONObject();
       try
       {
-        if (!bbkk.a(this.tempAudioFilePath))
+        if (!bdje.a(this.tempAudioFilePath))
         {
           paramString.put("tempFilePath", this.tempAudioFilePath);
           this.tempAudioFilePath = null;
@@ -473,7 +486,7 @@ public class MiniAppLivePusher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppLivePusher
  * JD-Core Version:    0.7.0.1
  */

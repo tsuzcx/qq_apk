@@ -1,85 +1,50 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.ImageView.ScaleType;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView;
+import com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView.MovingImg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import qqcircle.QQCircleFeedBase.StPolyLike;
 
 public class ubr
-  extends JobSegment<uas, String>
+  implements Animator.AnimatorListener
 {
-  private ubr(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public ubr(QCirclePolymorphicAniView paramQCirclePolymorphicAniView, ytt paramytt, View paramView, QCirclePolymorphicAniView.MovingImg paramMovingImg, ubx paramubx) {}
   
-  protected void a(JobContext paramJobContext, uas paramuas)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ved.b(this.a.jdField_a_of_type_JavaLangString, "CheckDataSegment runSegment");
-    if (this.a.jdField_a_of_type_Uas.a())
-    {
-      ved.b(this.a.jdField_a_of_type_JavaLangString, "isLoadingData, show loading view");
-      VideoViewVideoHolder.a(this.a, 2);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-      this.a.jdField_a_of_type_Ucz.a(8);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.a.b.setVisibility(8);
-      notifyError(new ErrorMessage(0, "isLoadingData"));
-      return;
+    if (this.jdField_a_of_type_Ytt != null) {
+      this.jdField_a_of_type_Ytt.a();
     }
-    if (this.a.jdField_a_of_type_Uas.b())
+    if ((this.jdField_a_of_type_AndroidViewView instanceof URLImageView))
     {
-      ved.b(this.a.jdField_a_of_type_JavaLangString, "showPage, show error view, because this is a error data = %s", this.a.jdField_a_of_type_Uas.a());
-      VideoViewVideoHolder.b(this.a, this.a.jdField_a_of_type_Uas.a().errorCode);
-      VideoViewVideoHolder.a(this.a, false);
-      ved.d(this.a.jdField_a_of_type_JavaLangString, "isErrorData, hide loading view. subErrorCode=%d", new Object[] { Integer.valueOf(VideoViewVideoHolder.a(this.a)) });
-      if (VideoViewVideoHolder.a(this.a) == 97000000)
-      {
-        VideoViewVideoHolder.c(this.a, 4);
-        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "PLAY_DATA_NO_VID"));
-        return;
-      }
-      VideoViewVideoHolder.c(this.a, 9);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "isErrorData"));
-      return;
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicAniView$MovingImg.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramAnimator = URLDrawable.URLDrawableOptions.obtain();
+      paramAnimator.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130843565);
+      paramAnimator.mRequestWidth = this.jdField_a_of_type_AndroidViewView.getWidth();
+      paramAnimator.mRequestHeight = this.jdField_a_of_type_AndroidViewView.getHeight();
+      tql.a(this.jdField_a_of_type_Ubx.a().polyIconUrl.get(), (URLImageView)this.jdField_a_of_type_AndroidViewView, paramAnimator, false);
     }
-    if (StoryVideoItem.isFakeVid(this.a.jdField_a_of_type_Uas.jdField_a_of_type_JavaLangString))
-    {
-      paramJobContext = ((tcw)tcz.a(5)).b(this.a.jdField_a_of_type_Uas.jdField_a_of_type_JavaLangString);
-      if (paramJobContext != null)
-      {
-        VideoViewVideoHolder.a(this.a, paramJobContext);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramuas = (String)this.a.jdField_a_of_type_AndroidWidgetImageView.getTag();
-        if (!TextUtils.equals(this.a.jdField_a_of_type_Uas.jdField_a_of_type_JavaLangString, paramuas))
-        {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(this.a.jdField_a_of_type_Uas.jdField_a_of_type_JavaLangString);
-          tsr.a(this.a.jdField_a_of_type_AndroidWidgetImageView, paramJobContext.mVideoLocalThumbnailPath, paramJobContext.getThumbUrl(), VideoViewVideoHolder.a(this.a), this.a.jdField_a_of_type_Ttd);
-        }
-        ved.d(this.a.jdField_a_of_type_JavaLangString, "showPage, show error view, because this is fake vid = %s", new Object[] { this.a.jdField_a_of_type_Uas.jdField_a_of_type_JavaLangString });
-        VideoViewVideoHolder.c(this.a, 5);
-        VideoViewVideoHolder.a(this.a, false);
-        notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "isFakeData"));
-        return;
-      }
-      VideoViewVideoHolder.c(this.a, 11);
-      VideoViewVideoHolder.a(this.a, false);
-      notifyError(new ErrorMessage(VideoViewVideoHolder.b(this.a), "Fake Vid No Data"));
-      return;
-    }
-    notifyResult(this.a.jdField_a_of_type_Uas.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicAniView.removeAllViews();
+    this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePolymorphicAniView.setVisibility(8);
+    QLog.d("QCirclePolymorphicAniView", 1, "poly ani end");
   }
   
-  public void onCancel()
-  {
-    super.onCancel();
-    ved.b(this.a.jdField_a_of_type_JavaLangString, "CheckDataSegment onCancel");
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubr
  * JD-Core Version:    0.7.0.1
  */

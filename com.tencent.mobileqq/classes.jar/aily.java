@@ -1,64 +1,75 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.data.Friends;
-import java.util.Comparator;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class aily
-  implements Comparator<aiqm>
+public class aily
+  extends ailq
 {
-  public int a(aiqm paramaiqm1, aiqm paramaiqm2)
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private ImageView b;
+  
+  public void a()
   {
-    paramaiqm1 = (Friends)paramaiqm1.a;
-    paramaiqm2 = (Friends)paramaiqm2.a;
-    int i = a(paramaiqm1);
-    int j = a(paramaiqm2);
-    if (i == j) {
-      return ajuh.a(paramaiqm1.mComparePartInt, paramaiqm1.mCompareSpell, paramaiqm2.mComparePartInt, paramaiqm2.mCompareSpell);
-    }
-    return i - j;
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.b = null;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
   }
   
-  public int a(Friends paramFriends)
+  public void a(int paramInt)
   {
-    int i = 16384;
-    int k = bbcz.a(paramFriends.detalStatusFlag, paramFriends.iTermType);
-    int j;
-    if ((k != 6) && (k != 0))
-    {
-      j = 65536;
-      label32:
-      if (!axmv.b()) {
-        break label100;
-      }
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
     }
-    for (;;)
-    {
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        return j | i | (int)paramFriends.getLastLoginType();
-        j = 131072;
-        break label32;
-        label100:
-        if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-          i = 4096;
-        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) {
-          i = 8192;
-        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ)) {
-          i = 12288;
-        }
-        break;
-      }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramInt == 0) {
+      b(8);
     }
-    return j | i | 0x1;
-    return j | i | 0x2;
-    return j | i | 0x3;
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
+      ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365826)).setText(paramString);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372238));
+    this.b = ((ImageView)paramView.findViewById(2131372237));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131372239));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    }
+    return false;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.b != null) {
+      this.b.setVisibility(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aily
  * JD-Core Version:    0.7.0.1
  */

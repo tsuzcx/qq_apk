@@ -1,31 +1,48 @@
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 
-class tac
-  extends tph
+public class tac
 {
-  tac(szz paramszz) {}
+  private almg jdField_a_of_type_Almg;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public tac(AppInterface paramAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Almg = new tad(this);
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Almg);
+    }
+  }
   
   public void a()
   {
-    super.a();
-    szy.a(this.a.a, null);
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Almg);
+    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
   }
   
-  public void a(int paramInt)
+  public void a(String paramString)
   {
-    super.a(paramInt);
-    vei.a("home_page", "suc_share", 1, paramInt, new String[] { vei.b(this.a.a.a) + "", vei.a(this.a.a.a) + "", this.a.a.a.feedId });
-  }
-  
-  public void b(int paramInt)
-  {
-    super.b(paramInt);
-    vei.a("home_page", "share_chanel", 1, paramInt, new String[] { vei.b(this.a.a.a) + "", vei.a(this.a.a.a) + "", this.a.a.a.feedId });
+    if (TextUtils.isEmpty(paramString)) {}
+    allz localallz;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null);
+      localallz = (allz)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(8);
+    } while (localallz == null);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    localallz.a(paramString, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tac
  * JD-Core Version:    0.7.0.1
  */

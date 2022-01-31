@@ -54,18 +54,19 @@ public class TPMediaCodecVideoDecoder
     return this.mMimeType;
   }
   
-  public boolean initDecoder(String paramString, int paramInt1, int paramInt2)
+  public boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     return false;
   }
   
-  public boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, Surface paramSurface)
+  public boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, Surface paramSurface, int paramInt4)
   {
     this.mMimeType = paramString;
     this.mVideoWidth = paramInt1;
     this.mVideoHeight = paramInt2;
     this.mRotation = paramInt3;
     this.mSurface = paramSurface;
+    this.mDrmType = paramInt4;
     return true;
   }
   
@@ -79,6 +80,12 @@ public class TPMediaCodecVideoDecoder
     paramTPFrameInfo.cropRight = this.mCropRight;
     paramTPFrameInfo.cropTop = this.mCropTop;
     paramTPFrameInfo.cropBottom = this.mCropBottom;
+  }
+  
+  void processOutputConfigData(@NonNull MediaCodec paramMediaCodec, int paramInt, @NonNull MediaCodec.BufferInfo paramBufferInfo, @NonNull TPFrameInfo paramTPFrameInfo)
+  {
+    paramTPFrameInfo.errCode = 0;
+    processOutputBuffer(paramMediaCodec, paramInt, paramBufferInfo, paramTPFrameInfo);
   }
   
   void processOutputFormatChanged(@NonNull MediaFormat paramMediaFormat)
@@ -117,7 +124,7 @@ public class TPMediaCodecVideoDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPMediaCodecVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

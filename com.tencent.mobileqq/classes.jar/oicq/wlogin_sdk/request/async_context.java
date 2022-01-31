@@ -10,6 +10,7 @@ import oicq.wlogin_sdk.tlv_type.tlv_t174;
 import oicq.wlogin_sdk.tlv_type.tlv_t17b;
 import oicq.wlogin_sdk.tlv_type.tlv_t402;
 import oicq.wlogin_sdk.tlv_type.tlv_t403;
+import oicq.wlogin_sdk.tlv_type.tlv_t543;
 import oicq.wlogin_sdk.tlv_type.tlv_t546;
 import oicq.wlogin_sdk.tools.ErrMsg;
 
@@ -44,6 +45,7 @@ public class async_context
   public tlv_t17b _t17b = new tlv_t17b();
   public tlv_t402 _t402 = new tlv_t402();
   public tlv_t403 _t403 = new tlv_t403();
+  public tlv_t543 _t543 = new tlv_t543();
   public tlv_t546 _t546 = new tlv_t546();
   public byte[] _tgtgt_key = new byte[16];
   public byte[] _tmp_no_pic_sig = new byte[0];

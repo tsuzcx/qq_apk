@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import android.os.Message;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
-class vic
-  implements avtm
+public class vic
+  implements ujr
 {
-  vic(vhz paramvhz, boolean paramBoolean) {}
+  public vic(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public void a()
+  public void a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Vhz.a = new vid(this, "NewStoryTakeVideoActivity");
-    SosoInterface.a(this.jdField_a_of_type_Vhz.a);
+    Message localMessage = Message.obtain();
+    localMessage.obj = paramString;
+    localMessage.what = 65543;
+    FollowCaptureLauncher.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void a(String paramString, int paramInt, ErrorMessage paramErrorMessage)
+  {
+    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    FollowCaptureLauncher.a(this.a).sendEmptyMessage(65544);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vic
  * JD-Core Version:    0.7.0.1
  */

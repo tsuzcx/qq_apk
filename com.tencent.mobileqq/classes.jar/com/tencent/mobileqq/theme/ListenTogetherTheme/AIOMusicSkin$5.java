@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.theme.ListenTogetherTheme;
 
 import android.os.Handler;
-import aylu;
-import bbtg;
+import bajq;
+import bdsd;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import mqq.os.MqqHandler;
 public class AIOMusicSkin$5
   implements Runnable
 {
-  public AIOMusicSkin$5(aylu paramaylu) {}
+  public AIOMusicSkin$5(bajq parambajq) {}
   
   public void run()
   {
@@ -19,14 +19,14 @@ public class AIOMusicSkin$5
     boolean bool2;
     if (this.this$0.c())
     {
-      bool2 = aylu.a(aylu.b(this.this$0));
+      bool2 = bajq.a(bajq.b(this.this$0));
       bool1 = bool2;
       if (!bool2)
       {
         if (QLog.isColorLevel()) {
-          QLog.i("AIOMusicSkin", 2, "download themeId:" + aylu.b(this.this$0));
+          QLog.i("AIOMusicSkin", 2, "download themeId:" + bajq.b(this.this$0));
         }
-        bbtg.a.download(null, aylu.b(this.this$0), aylu.a(this.this$0), false);
+        bdsd.a.download(null, bajq.b(this.this$0), bajq.a(this.this$0), false);
       }
     }
     for (boolean bool1 = bool2;; bool1 = false)
@@ -41,7 +41,7 @@ public class AIOMusicSkin$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.AIOMusicSkin.5
  * JD-Core Version:    0.7.0.1
  */

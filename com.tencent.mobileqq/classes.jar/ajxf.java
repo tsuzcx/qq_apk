@@ -1,29 +1,25 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.FriendListHandler;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.CommonlyUsedTroop;
+import java.util.Comparator;
 
 public class ajxf
-  extends MqqHandler
+  implements Comparator<CommonlyUsedTroop>
 {
-  public ajxf(FriendListHandler paramFriendListHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  protected ajxf(ajxc paramajxc) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
+      return 1;
     }
-    FriendListHandler.a(this.a);
+    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxf
  * JD-Core Version:    0.7.0.1
  */

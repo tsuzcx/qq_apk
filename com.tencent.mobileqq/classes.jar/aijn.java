@@ -1,46 +1,47 @@
 import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.activity.photo.MediaPlayHelper.2;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import java.util.HashMap;
 
 public class aijn
-  implements bfub
+  implements TVK_SDKMgr.InstallListener
 {
-  public aijn(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public aijn(MediaPlayHelper.2 param2) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
-  }
+  public void onInstallProgress(float paramFloat) {}
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void onInstalledFailed(int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-    if (bbfj.d(this.a))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(true);
-      this.a.jdField_a_of_type_Boolean = true;
-      ((avnj)this.a.app.getManager(91)).a();
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d(aijm.a(this.a.this$0), 2, "onInstalledFailed:" + paramInt);
     }
-    paramView = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(2000, 0, 0);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramView, 1000L);
-    return true;
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "MediaPlayHelper");
+    localHashMap.put("param_erroCode", String.valueOf(paramInt));
+    localHashMap.put("param_result", "0");
+    azmz.a(BaseApplication.getContext()).a(null, "actInstallTVK", false, 0L, 0L, localHashMap, "");
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView)
+  public void onInstalledSuccessed()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+    if (QLog.isColorLevel()) {
+      QLog.d(aijm.a(this.a.this$0), 2, "onInstalledSuccessed");
+    }
+    if ((this.a.this$0.b != null) && (this.a.this$0.a != null)) {
+      this.a.this$0.a.sendEmptyMessage(6);
+    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_entrance", "MediaPlayHelper");
+    localHashMap.put("param_erroCode", "0");
+    localHashMap.put("param_result", "1");
+    azmz.a(BaseApplication.getContext()).a(null, "actInstallTVK", true, 0L, 0L, localHashMap, "");
   }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijn
  * JD-Core Version:    0.7.0.1
  */

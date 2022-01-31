@@ -1,35 +1,32 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
-class bjfb
-  implements URLDrawable.URLDrawableListener
+public class bjfb
 {
-  bjfb(bjfa parambjfa, String paramString, URLDrawable paramURLDrawable, bjcu parambjcu) {}
+  private final Object jdField_a_of_type_JavaLangObject;
+  private final List<Integer> jdField_a_of_type_JavaUtilList;
+  private boolean jdField_a_of_type_Boolean;
+  private Object b;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public bjfb(bjfb parambjfb, Object paramObject)
   {
-    bjfa.a.remove(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureComboInformationPaster", 2, "applyApngInfoPaster onLoadFialed");
-    }
+    this.jdField_a_of_type_JavaUtilList = parambjfb.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = parambjfb.jdField_a_of_type_Boolean;
+    this.b = this.jdField_a_of_type_JavaLangObject;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  private bjfb(Object paramObject)
   {
-    bjfa.a.remove(this.jdField_a_of_type_JavaLangString);
-    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
-    bjfa.a(this.jdField_a_of_type_Bjfa, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_Bjcu);
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = true;
+    this.b = this.jdField_a_of_type_JavaLangObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjfb
  * JD-Core Version:    0.7.0.1
  */

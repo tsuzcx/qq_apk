@@ -1,22 +1,55 @@
-class axtr
+import android.app.Activity;
+import android.app.KeyguardManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+
+public class axtr
+  extends BroadcastReceiver
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
+  Activity jdField_a_of_type_AndroidAppActivity;
+  boolean jdField_a_of_type_Boolean = true;
   
-  axtr(axtp paramaxtp, String paramString)
+  public axtr(Activity paramActivity)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public String a()
+  public boolean a(Context paramContext)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    boolean bool = true;
+    paramIntent = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_ON".equals(paramIntent)) {
+      if (!a(paramContext)) {
+        this.jdField_a_of_type_Boolean = bool;
+      }
+    }
+    for (;;)
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this);
+        this.jdField_a_of_type_AndroidAppActivity.finish();
+      }
+      return;
+      bool = false;
+      break;
+      if ("android.intent.action.SCREEN_OFF".equals(paramIntent)) {
+        this.jdField_a_of_type_Boolean = false;
+      } else if ("android.intent.action.USER_PRESENT".equals(paramIntent)) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axtr
  * JD-Core Version:    0.7.0.1
  */

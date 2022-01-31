@@ -1,6 +1,6 @@
 package com.tencent.qg.qq;
 
-import aabq;
+import absn;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Display;
@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import bdtm;
+import bfth;
 import com.tencent.mobileqq.miniapp.ui.MiniAppBaseFragment;
 import com.tencent.qg.sdk.QGGLSurfaceView;
 import com.tencent.qg.sdk.doraemon.DoraemonApiWrapper;
@@ -27,10 +27,10 @@ public class GameDemoFragment
     this.jdField_a_of_type_ArrayOfJavaLangString = getArguments().getStringArray("key_run_js");
     getActivity().getWindowManager().getDefaultDisplay().getWidth();
     getActivity().getWindowManager().getDefaultDisplay().getHeight();
-    aabq.a(getActivity(), 3, a());
+    absn.a(getActivity(), 3, a());
     this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView = new QGGLSurfaceView(getActivity());
     this.jdField_a_of_type_ComTencentQgSdkDoraemonDoraemonApiWrapper = new DoraemonApiWrapperMockImpl(this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView);
-    this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView.setQGEventListener(new bdtm(this));
+    this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView.setQGEventListener(new bfth(this));
     return this.jdField_a_of_type_ComTencentQgSdkQGGLSurfaceView;
   }
   
@@ -46,7 +46,7 @@ public class GameDemoFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qg.qq.GameDemoFragment
  * JD-Core Version:    0.7.0.1
  */

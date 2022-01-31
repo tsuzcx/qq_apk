@@ -1,57 +1,107 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gamecenter.appointment.GameCenterCheck;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class aacp
-  extends aacn
+public class aacp
+  implements INetEventHandler
 {
-  public aacp(aabi paramaabi, long paramLong)
+  public static int a;
+  private static aacp jdField_a_of_type_Aacp;
+  private static BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  public static boolean a;
+  public static boolean b;
+  boolean c = false;
+  boolean d = false;
+  
+  static
   {
-    super(paramaabi, 0, paramLong);
+    jdField_a_of_type_Int = 100;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public static void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
+      QLog.d("GameCenterBroadcastReceiver", 2, "registerReceiver");
     }
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
+    if (jdField_a_of_type_Aacp == null) {
+      jdField_a_of_type_Aacp = new aacp();
     }
-    this.jdField_a_of_type_Boolean = false;
-    if (paramInt == 0)
+    if (jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
+      jdField_a_of_type_AndroidContentBroadcastReceiver = new aacq();
+    }
+    if (!jdField_a_of_type_Boolean)
     {
-      double d1 = paramSosoLbsInfo.a.jdField_a_of_type_Double;
-      double d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
-      double d3 = paramSosoLbsInfo.a.jdField_b_of_type_Float;
-      double d4 = paramSosoLbsInfo.a.jdField_a_of_type_Float;
-      double d5 = paramSosoLbsInfo.a.e;
-      paramSosoLbsInfo = new JSONObject();
-      try
-      {
-        paramSosoLbsInfo.put("latitude", d1);
-        paramSosoLbsInfo.put("longitude", d2);
-        paramSosoLbsInfo.put("speed", d3);
-        paramSosoLbsInfo.put("accuracy", d4);
-        paramSosoLbsInfo.put("altitude", d5);
-        paramSosoLbsInfo.put("verticalAccuracy", 0.0D);
-        paramSosoLbsInfo.put("horizontalAccuracy", d4);
-        aaep.a(this.jdField_a_of_type_Aabi, paramSosoLbsInfo);
-        return;
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("DoraemonOpenAPI.sensor", 2, localJSONException.getMessage(), localJSONException);
-          }
-        }
+      jdField_a_of_type_Boolean = true;
+      AppNetConnInfo.registerNetChangeReceiver(BaseApplicationImpl.getApplication(), jdField_a_of_type_Aacp);
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.BATTERY_CHANGED");
+      localIntentFilter.addAction("android.intent.action.ACTION_POWER_CONNECTED");
+      localIntentFilter.addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
+      BaseApplicationImpl.getContext().registerReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    }
+  }
+  
+  public static void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterBroadcastReceiver", 2, "unRegisterReceiver");
+    }
+    if (jdField_a_of_type_Aacp != null)
+    {
+      AppNetConnInfo.unregisterNetEventHandler(jdField_a_of_type_Aacp);
+      jdField_a_of_type_Aacp = null;
+    }
+    if (jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+    {
+      BaseApplicationImpl.getContext().unregisterReceiver(jdField_a_of_type_AndroidContentBroadcastReceiver);
+      jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    }
+    jdField_a_of_type_Boolean = false;
+  }
+  
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      if (QLog.isColorLevel()) {
+        QLog.i("GameCenterBroadcastReceiver", 2, "no net");
       }
     }
-    aaep.a(this.jdField_a_of_type_Aabi, paramInt, "error " + paramInt);
+    do
+    {
+      return;
+      if (!AppNetConnInfo.isMobileConn()) {
+        break;
+      }
+    } while (this.d);
+    if (QLog.isColorLevel()) {
+      bfnq.c("GameCenterBroadcastReceiver", "mobile connect");
+    }
+    for (;;)
+    {
+      this.c = false;
+      return;
+      if (AppNetConnInfo.isWifiConn())
+      {
+        if (this.c) {
+          break;
+        }
+        this.c = true;
+        if (QLog.isColorLevel()) {
+          bfnq.c("GameCenterBroadcastReceiver", "wifi connect");
+        }
+        GameCenterCheck.b();
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        bfnq.c("GameCenterBroadcastReceiver", "no connect");
+      }
+    }
   }
 }
 

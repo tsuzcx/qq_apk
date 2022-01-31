@@ -1,71 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import android.text.TextPaint;
+import android.widget.TextView;
 
 class avzi
-  extends Handler
+  extends Editable.Factory
 {
-  protected WeakReference<avzh> a;
+  avzi(avzg paramavzg, TextView paramTextView) {}
   
-  public avzi(avzh paramavzh1, Looper paramLooper, avzh paramavzh2)
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramavzh2);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    avzh localavzh = (avzh)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localavzh == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("HWAudioEncoder", 2, "AudioEncodeHandler.handleMessage: encoder is null");
-      }
-      return;
+    if ((paramCharSequence instanceof baiq)) {
+      return (Editable)paramCharSequence;
     }
-    int i = paramMessage.what;
-    switch (i)
-    {
-    default: 
-      throw new RuntimeException("Unhandled msg what=" + i);
-    case 1: 
-      paramMessage = (Object[])paramMessage.obj;
-      try
-      {
-        localavzh.a((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
-        avzh.a(this.jdField_a_of_type_Avzh);
-        return;
-      }
-    case 2: 
-      this.jdField_a_of_type_Avzh.a();
-      return;
-    case 3: 
-      paramMessage = (String)paramMessage.obj;
-      try
-      {
-        avzh.a(this.jdField_a_of_type_Avzh, paramMessage);
-        return;
-      }
-      catch (Exception paramMessage)
-      {
-        QLog.e("HWAudioEncoder", 1, "AudioEncodeHandler start fail.", paramMessage);
-        avzh.a(this.jdField_a_of_type_Avzh);
-        return;
-      }
-    }
-    this.jdField_a_of_type_Avzh.b();
+    return new baiq(paramCharSequence, 3, (int)(this.jdField_a_of_type_AndroidWidgetTextView.getTextSize() / this.jdField_a_of_type_AndroidWidgetTextView.getPaint().density));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avzi
  * JD-Core Version:    0.7.0.1
  */

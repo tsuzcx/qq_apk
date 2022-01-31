@@ -1,48 +1,50 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class aqlf
-  implements aqld
+  implements View.OnClickListener
 {
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    a(paramString1, paramString2, paramString3, null);
-  }
+  public aqlf(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void a(String paramString1, String paramString2, String paramString3, Throwable paramThrowable)
+  public void onClick(View paramView)
   {
-    if ("i".equals(paramString2)) {
-      if (QLog.isColorLevel()) {
-        QLog.i(paramString1, 2, paramString3, paramThrowable);
-      }
-    }
-    do
+    if (paramView == null)
     {
-      do
-      {
-        return;
-        if (!"d".equals(paramString2)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(paramString1, 2, paramString3, paramThrowable);
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
+      }
       return;
-      if ("w".equals(paramString2))
-      {
-        QLog.w(paramString1, 2, paramString3, paramThrowable);
-        return;
+    }
+    FileInfo localFileInfo = (FileInfo)paramView.getTag();
+    if (localFileInfo != null)
+    {
+      if (this.a.jdField_a_of_type_Aqiz != null) {
+        this.a.jdField_a_of_type_Aqiz.a(null);
       }
-      if ("e".equals(paramString2))
-      {
-        QLog.e(paramString1, 2, paramString3, paramThrowable);
-        return;
+      if (!arof.c(localFileInfo.c())) {
+        break label99;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i(paramString1, 2, paramString3, paramThrowable);
+      this.a.a(localFileInfo);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Aqiz.a(Integer.valueOf(-1));
+      paramView.setVisibility(4);
+      this.a.f();
+      return;
+      label99:
+      String str = QfileBaseLocalFileTabView.a(this.a).getString(2131692488);
+      armz.a(arni.d(localFileInfo.d()) + str);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqlf
  * JD-Core Version:    0.7.0.1
  */

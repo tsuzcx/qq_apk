@@ -1,103 +1,57 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
-import com.tencent.mobileqq.multicard.RecommendPerson;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager;
+import com.tencent.mobileqq.jsp.FaceDetectForThirdPartyManager.AppConf;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import eipc.EIPCResult;
+import mqq.observer.BusinessObserver;
 
-public class astf
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+class astf
+  implements BusinessObserver
 {
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  public List<RecommendPerson> a;
-  public List<astg> b;
+  astf(aste paramaste, FaceDetectForThirdPartyManager paramFaceDetectForThirdPartyManager, int paramInt, QQAppInterface paramQQAppInterface) {}
   
-  public astf(aste paramaste, View paramView, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super(paramView);
-    this.jdField_a_of_type_JavaUtilList = ((List)paramaste.a.get(Integer.valueOf(paramInt)));
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
+    if ((paramInt == 17) && (paramBoolean) && (paramBundle != null))
     {
-      return;
-      this.b = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378399));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375462));
-      paramView = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramView.hasNext())
-      {
-        Object localObject = (RecommendPerson)paramView.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopMemberRecommend.Adapter", 2, "ActiveViewHolder, person.uin =" + ((RecommendPerson)localObject).uin + " size() = " + this.jdField_a_of_type_JavaUtilList.size());
-        }
-        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext()).inflate(2131562558, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-        RelativeLayout localRelativeLayout = (RelativeLayout)((View)localObject).findViewById(2131375463);
-        ImageView localImageView = (ImageView)((View)localObject).findViewById(2131368719);
-        TextView localTextView1 = (TextView)((View)localObject).findViewById(2131378400);
-        TextView localTextView2 = (TextView)((View)localObject).findViewById(2131378401);
-        Button localButton = (Button)((View)localObject).findViewById(2131363687);
-        a(actj.a(85.0F, aste.a(paramaste).getResources()), this.jdField_a_of_type_JavaUtilList.size(), localRelativeLayout);
-        astg localastg = new astg(this);
-        localastg.jdField_a_of_type_AndroidWidgetRelativeLayout = localRelativeLayout;
-        localastg.jdField_a_of_type_AndroidWidgetImageView = localImageView;
-        localastg.jdField_a_of_type_AndroidWidgetTextView = localTextView1;
-        localastg.b = localTextView2;
-        localastg.jdField_a_of_type_AndroidWidgetButton = localButton;
-        this.b.add(localastg);
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
-      }
-    }
-  }
-  
-  private void a(int paramInt1, int paramInt2, RelativeLayout paramRelativeLayout)
-  {
-    if (paramInt2 > 1)
-    {
-      int i = bbll.a();
-      paramInt2 = (i - paramInt2 * paramInt1) / (paramInt2 * paramInt2);
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
-      localLayoutParams.leftMargin = paramInt2;
-      localLayoutParams.rightMargin = paramInt2;
-      paramRelativeLayout.setLayoutParams(localLayoutParams);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopMemberRecommend.Adapter", 2, "onCreateViewHolder, rlWidth =" + paramInt1 + " screenWidth =" + i + " margin = " + paramInt2);
-      }
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      do
-      {
+      paramInt = paramBundle.getInt("app_id", 0);
+      QLog.d("qqidentification_server", 1, "onReceive appid = " + paramInt);
+      if (paramInt == 0) {
         return;
-      } while (aste.a(this.jdField_a_of_type_Aste) == null);
-      aste.a(this.jdField_a_of_type_Aste).a((RecyclerView.ViewHolder)paramView.getTag(2131375463), (RecommendPerson)paramView.getTag(2131363687));
+      }
+      FaceDetectForThirdPartyManager.AppConf localAppConf = (FaceDetectForThirdPartyManager.AppConf)paramBundle.getSerializable("FaceRecognition.AppConf");
+      if (this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager != null) {
+        this.jdField_a_of_type_ComTencentMobileqqJspFaceDetectForThirdPartyManager.a(paramInt, localAppConf);
+      }
+      this.jdField_a_of_type_Aste.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramBundle));
       return;
-    } while (aste.a(this.jdField_a_of_type_Aste) == null);
-    aste.a(this.jdField_a_of_type_Aste).b((RecyclerView.ViewHolder)paramView.getTag(2131375463), (RecommendPerson)paramView.getTag(2131363687));
+    }
+    if (paramInt != 15)
+    {
+      this.jdField_a_of_type_Aste.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(-102, null));
+      if (paramInt != 17) {
+        break label186;
+      }
+      if (paramBundle != null) {
+        break label180;
+      }
+    }
+    label180:
+    for (paramBundle = "1";; paramBundle = "2")
+    {
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009D63", "0X8009D63", 0, 0, paramBundle, "", "", "");
+      return;
+      this.jdField_a_of_type_Aste.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(15, null));
+      break;
+    }
+    label186:
+    QLog.e("qqidentification_server", 1, "requestThirdPartyInfo unexpected error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     astf
  * JD-Core Version:    0.7.0.1
  */

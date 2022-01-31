@@ -1,69 +1,75 @@
-import android.os.IBinder;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bbni
+public class bbni
+  extends bbnf
 {
-  private static Class<?> jdField_a_of_type_JavaLangClass;
-  private static Method jdField_a_of_type_JavaLangReflectMethod;
-  private static Method b;
-  private static Method c;
-  private static Method d;
-  
-  static
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    try
-    {
-      jdField_a_of_type_JavaLangClass = Class.forName("android.os.ServiceManager");
-      jdField_a_of_type_JavaLangReflectMethod = jdField_a_of_type_JavaLangClass.getDeclaredMethod("getService", new Class[] { String.class });
-      b = jdField_a_of_type_JavaLangClass.getDeclaredMethod("addService", new Class[] { String.class, IBinder.class });
-      c = jdField_a_of_type_JavaLangClass.getDeclaredMethod("checkService", new Class[] { String.class });
-      d = jdField_a_of_type_JavaLangClass.getDeclaredMethod("listServices", new Class[0]);
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      localClassNotFoundException.printStackTrace();
-      return;
-    }
-    catch (SecurityException localSecurityException)
-    {
-      localSecurityException.printStackTrace();
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      localNoSuchMethodException.printStackTrace();
-    }
-  }
-  
-  public static IBinder a(String paramString)
-  {
-    return (IBinder)a(jdField_a_of_type_JavaLangReflectMethod, new Object[] { paramString });
-  }
-  
-  private static Object a(Method paramMethod, Object... paramVarArgs)
-  {
-    try
-    {
-      paramMethod = paramMethod.invoke(null, paramVarArgs);
-      return paramMethod;
-    }
-    catch (IllegalArgumentException paramMethod)
-    {
-      paramMethod.printStackTrace();
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
       return null;
     }
-    catch (IllegalAccessException paramMethod)
+    Object localObject;
+    try
     {
-      paramMethod.printStackTrace();
+      localObject = paramJSONObject.getJSONArray("content");
+      if (((JSONArray)localObject).length() <= 0) {
+        break label333;
+      }
+      localObject = ((JSONArray)localObject).getJSONObject(0);
+      int i = ((JSONObject)localObject).getInt("type");
+      if (i == 5)
+      {
+        if (((JSONObject)localObject).has("file_path")) {
+          localTroopFeedItem.linkUrl = ((JSONObject)localObject).getString("file_path");
+        }
+        localTroopFeedItem.type = 131;
+        if (((JSONObject)localObject).has("sharesize")) {
+          localTroopFeedItem.ex_1 = ("" + ((JSONObject)localObject).getLong("sharesize"));
+        }
+        boolean bool = ((JSONObject)localObject).has("bus_id");
+        if (bool) {}
+        try
+        {
+          localTroopFeedItem.content = ("" + ((JSONObject)localObject).getLong("bus_id"));
+          if (((JSONObject)localObject).has("sharefile")) {
+            localTroopFeedItem.title = ((JSONObject)localObject).getString("sharefile");
+          }
+          if (((JSONObject)localObject).has("shareexpire")) {
+            localTroopFeedItem.shareExpire = ((JSONObject)localObject).getLong("shareexpire");
+          }
+          if (!((JSONObject)localObject).has("sharefromuin")) {
+            break label333;
+          }
+          localTroopFeedItem.shareFromUin = ((JSONObject)localObject).getString("sharefromuin");
+        }
+        catch (JSONException paramJSONObject)
+        {
+          for (;;)
+          {
+            localTroopFeedItem.content = ("" + ((JSONObject)localObject).getString("bus_id"));
+          }
+        }
+      }
+      if (i != 4) {
+        break label333;
+      }
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
       return null;
     }
-    catch (InvocationTargetException paramMethod)
-    {
-      paramMethod.printStackTrace();
-    }
-    return null;
+    localTroopFeedItem.type = 132;
+    localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+    localTroopFeedItem.title = ((JSONObject)localObject).getString("musicname");
+    localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("musicid");
+    localTroopFeedItem.picPath = ((JSONObject)localObject).getString("pic_url");
+    label333:
+    return localTroopFeedItem;
   }
 }
 

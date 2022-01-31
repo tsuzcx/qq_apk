@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.mini.servlet;
 
 import NS_MINI_INTERFACE.INTERFACE.StBatchGetContactRsp;
+import aano;
 import android.content.Intent;
 import android.os.Bundle;
-import bbma;
+import bdku;
 import mqq.app.Packet;
-import yxo;
 
 public class MiniAppBatchGetContactServlet
   extends MiniAppAbstractServlet
@@ -25,7 +25,7 @@ public class MiniAppBatchGetContactServlet
     localStBatchGetContactRsp.mergeFrom(paramArrayOfByte);
     if (paramBundle.getLong("retCode") == 0L)
     {
-      paramArrayOfByte = yxo.a(localStBatchGetContactRsp);
+      paramArrayOfByte = aano.a(localStBatchGetContactRsp);
       if (paramArrayOfByte != null) {
         paramBundle.putString("contact_list", paramArrayOfByte.toString());
       }
@@ -44,14 +44,14 @@ public class MiniAppBatchGetContactServlet
       arrayOfByte1 = new byte[4];
     }
     paramPacket.setSSOCommand("LightAppSvc.mini_app_info.BatchGetContact");
-    paramPacket.putSendData(bbma.a(arrayOfByte1));
+    paramPacket.putSendData(bdku.a(arrayOfByte1));
     paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
     super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppBatchGetContactServlet
  * JD-Core Version:    0.7.0.1
  */

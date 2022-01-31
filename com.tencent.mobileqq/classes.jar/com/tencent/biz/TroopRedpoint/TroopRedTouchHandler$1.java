@@ -1,15 +1,15 @@
 package com.tencent.biz.TroopRedpoint;
 
-import mxn;
+import nag;
 
 public class TroopRedTouchHandler$1
   implements Runnable
 {
-  public TroopRedTouchHandler$1(mxn parammxn) {}
+  public TroopRedTouchHandler$1(nag paramnag) {}
   
   public void run()
   {
-    mxn.a(this.this$0);
+    nag.a(this.this$0);
   }
 }
 

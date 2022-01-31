@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aulz;
-import aumc;
-import bbbr;
+import awbv;
+import awdg;
+import awdj;
+import bdal;
 import com.tencent.mobileqq.medalwall.MedalID;
 import java.util.ArrayList;
 
 public class MedalInfo
-  extends auko
+  extends awbv
 {
-  @aulz
+  @awdg
   public static final int READ_STATE_DEFAULT = 0;
-  @aulz
+  @awdg
   public static final int READ_STATE_LOCAL_READ = 2;
-  @aulz
+  @awdg
   public static final int READ_STATE_UNREAD = 1;
-  @aumc
+  @awdj
   public int iId;
   public int iLevel;
   public int iLevelCount;
@@ -54,23 +54,23 @@ public class MedalInfo
     }
     long l2 = this.lObtainTimeLevel1;
     long l1 = l2;
-    if (bbbr.b(l2, this.lObtainTimeLevel2) < 0) {
+    if (bdal.b(l2, this.lObtainTimeLevel2) < 0) {
       l1 = this.lObtainTimeLevel2;
     }
     l2 = l1;
-    if (bbbr.b(l1, this.lObtainTimeLevel3) < 0) {
+    if (bdal.b(l1, this.lObtainTimeLevel3) < 0) {
       l2 = this.lObtainTimeLevel3;
     }
     long l3 = paramMedalInfo.lObtainTimeLevel1;
     l1 = l3;
-    if (bbbr.b(l3, paramMedalInfo.lObtainTimeLevel2) < 0) {
+    if (bdal.b(l3, paramMedalInfo.lObtainTimeLevel2) < 0) {
       l1 = paramMedalInfo.lObtainTimeLevel2;
     }
     l3 = l1;
-    if (bbbr.b(l1, paramMedalInfo.lObtainTimeLevel3) < 0) {
+    if (bdal.b(l1, paramMedalInfo.lObtainTimeLevel3) < 0) {
       l3 = paramMedalInfo.lObtainTimeLevel3;
     }
-    if (bbbr.b(l2, l3) > 0) {}
+    if (bdal.b(l2, l3) > 0) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -173,7 +173,7 @@ public class MedalInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.MedalInfo
  * JD-Core Version:    0.7.0.1
  */

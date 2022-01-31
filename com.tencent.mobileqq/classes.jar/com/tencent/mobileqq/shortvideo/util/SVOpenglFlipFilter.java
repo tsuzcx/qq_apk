@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import aiay;
-import aiba;
+import ajsi;
+import ajsk;
 import android.annotation.TargetApi;
 import android.opengl.EGL14;
 import android.opengl.EGLContext;
@@ -69,7 +69,7 @@ public class SVOpenglFlipFilter
   
   public void a(String paramString)
   {
-    this.c = aiba.a("precision highp float;\nattribute vec4 position;\nattribute vec2 textureCoordinateIn;\nvarying   vec2 textureCoordinateOut;\nvoid main()\n{\ntextureCoordinateOut = textureCoordinateIn;\ngl_Position = position;\n}\n", paramString);
+    this.c = ajsk.a("precision highp float;\nattribute vec4 position;\nattribute vec2 textureCoordinateIn;\nvarying   vec2 textureCoordinateOut;\nvoid main()\n{\ntextureCoordinateOut = textureCoordinateIn;\ngl_Position = position;\n}\n", paramString);
     if (this.c == 0) {
       throw new SVOpenglFlipFilter.EGLCreateProgramException("initOpenGlAtrribute:createShaderProgram = 0");
     }
@@ -77,7 +77,7 @@ public class SVOpenglFlipFilter
     this.e = GLES20.glGetAttribLocation(this.c, "position");
     this.f = GLES20.glGetAttribLocation(this.c, "textureCoordinateIn");
     this.d = GLES20.glGetUniformLocation(this.c, "inputImageTexture");
-    aiay.a(this.jdField_a_of_type_ArrayOfInt, this.e, this.f);
+    ajsi.a(this.jdField_a_of_type_ArrayOfInt, this.e, this.f);
     b("createSquareVtx");
     GLES20.glDisable(2929);
     GLES20.glDisable(2884);
@@ -102,7 +102,7 @@ public class SVOpenglFlipFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.SVOpenglFlipFilter
  * JD-Core Version:    0.7.0.1
  */

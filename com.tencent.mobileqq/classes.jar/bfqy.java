@@ -1,29 +1,16 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.widget.DynamicGridView;
-
-public class bfqy
-  extends AnimatorListenerAdapter
+public abstract interface bfqy
 {
-  public bfqy(DynamicGridView paramDynamicGridView, View paramView) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, false);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, this.jdField_a_of_type_AndroidViewView);
-  }
+  public abstract void a(long paramLong1, long paramLong2, byte[] paramArrayOfByte);
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, true);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
-  }
+  public abstract void a(bfqw parambfqw);
+  
+  public abstract void a(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfqy
  * JD-Core Version:    0.7.0.1
  */

@@ -7,14 +7,14 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
-import aoea;
-import blcq;
+import apwc;
+import bnoa;
 import com.tencent.mobileqq.activity.photo.DragGallery;
 
 public class EmotionGallery
   extends DragGallery
 {
-  private aoea a;
+  private apwc a;
   
   public EmotionGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,47 +35,47 @@ public class EmotionGallery
     if (paramInt > paramFloat) {}
     for (paramFloat /= paramInt;; paramFloat = Math.min(1.5F, paramFloat / paramInt))
     {
-      setMaxScale((float)blcq.a / paramInt);
+      setMaxScale((float)bnoa.a / paramInt);
       return paramFloat;
     }
   }
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Aoea != null)
+    if (this.jdField_a_of_type_Apwc != null)
     {
-      float f = a(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Aoea.c(f);
+      float f = a();
+      this.jdField_a_of_type_Apwc.c(f);
     }
     return super.onDoubleTap(paramMotionEvent);
   }
   
   public boolean onScaleBegin(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Aoea != null) {
-      this.jdField_a_of_type_Aoea.b();
+    if (this.jdField_a_of_type_Apwc != null) {
+      this.jdField_a_of_type_Apwc.b();
     }
     return super.onScaleBegin(paramScaleGestureDetector);
   }
   
   public void onScaleEnd(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (this.jdField_a_of_type_Aoea != null)
+    if (this.jdField_a_of_type_Apwc != null)
     {
-      float f = a(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Aoea.b(f);
+      float f = a();
+      this.jdField_a_of_type_Apwc.b(f);
     }
     super.onScaleEnd(paramScaleGestureDetector);
   }
   
-  public void setOnScaleChangeListener(aoea paramaoea)
+  public void setOnScaleChangeListener(apwc paramapwc)
   {
-    this.jdField_a_of_type_Aoea = paramaoea;
+    this.jdField_a_of_type_Apwc = paramapwc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.EmotionGallery
  * JD-Core Version:    0.7.0.1
  */

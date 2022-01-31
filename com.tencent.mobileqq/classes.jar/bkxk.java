@@ -1,23 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.1;
+import dov.com.qq.im.ae.gif.AEVideoStoryGIFTplViewModel.3.2;
+import mqq.os.MqqHandler;
 
-class bkxk
-  implements View.OnClickListener
+public class bkxk
+  implements bkvx
 {
-  bkxk(bkxj parambkxj) {}
+  bkxk(bkxi parambkxi) {}
   
-  public void onClick(View paramView)
+  public void a(MetaMaterial paramMetaMaterial)
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
-    }
+    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.1(this, paramMetaMaterial));
+  }
+  
+  public void a(MetaMaterial paramMetaMaterial, int paramInt)
+  {
+    bkxi.a(this.a).a(new bkwc(paramMetaMaterial, 1, paramInt));
+  }
+  
+  public void b(MetaMaterial paramMetaMaterial)
+  {
+    ThreadManager.getUIHandler().post(new AEVideoStoryGIFTplViewModel.3.2(this, paramMetaMaterial));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkxk
  * JD-Core Version:    0.7.0.1
  */

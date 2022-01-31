@@ -1,0 +1,21 @@
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+
+public class aciu
+  implements acje
+{
+  public aciu(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      bkfg.a(this.a);
+    }
+    return false;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     aciu
+ * JD-Core Version:    0.7.0.1
+ */

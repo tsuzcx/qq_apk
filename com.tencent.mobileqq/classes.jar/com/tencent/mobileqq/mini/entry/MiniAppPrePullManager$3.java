@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.mini.entry;
 
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.mini.sdk.MiniAppController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import org.json.JSONObject;
@@ -8,7 +11,7 @@ import org.json.JSONObject;
 class MiniAppPrePullManager$3
   implements MiniAppCmdInterface
 {
-  MiniAppPrePullManager$3(MiniAppPrePullManager paramMiniAppPrePullManager, String paramString, MiniAppPrePullManager.IPrePullListener paramIPrePullListener) {}
+  MiniAppPrePullManager$3(MiniAppPrePullManager paramMiniAppPrePullManager, String paramString, boolean paramBoolean, MiniAppPrePullManager.IPrePullListener paramIPrePullListener) {}
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -21,6 +24,15 @@ class MiniAppPrePullManager$3
         localMiniAppInfoPrePullWrapper.setLink(this.val$finalLink);
         localMiniAppInfoPrePullWrapper.setPullTimeStamp(System.currentTimeMillis());
         MiniAppPrePullManager.access$200().put(this.val$finalLink, localMiniAppInfoPrePullWrapper);
+        if (this.val$withPackageAndCachePreload)
+        {
+          ??? = (MiniAppInfo)paramJSONObject.opt("appInfo");
+          if (??? != null)
+          {
+            MiniAppController.preloadPackage((MiniAppInfo)???);
+            MiniAppUtils.preFetchAppCacheData(BaseApplicationImpl.getApplication(), (MiniAppInfo)???);
+          }
+        }
         if (this.val$prePullListener != null) {
           this.val$prePullListener.onPrePullCallback(true, paramJSONObject);
         }
@@ -36,7 +48,7 @@ class MiniAppPrePullManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppPrePullManager.3
  * JD-Core Version:    0.7.0.1
  */

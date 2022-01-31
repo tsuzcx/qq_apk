@@ -1,23 +1,67 @@
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.Iterator;
+import java.util.List;
 
 public class ufa
-  implements uex
+  extends JobSegment<List<ueq>, List<ueq>>
 {
-  public ufa(MediaPlayer paramMediaPlayer) {}
+  private ufe a;
   
-  public void a(uev paramuev)
+  public ufa(ufe paramufe)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Uet.b() < 2000000L) && (!this.a.jdField_a_of_type_Uet.b()))
+    this.a = paramufe;
+  }
+  
+  protected void a(JobContext paramJobContext, List<ueq> paramList)
+  {
+    int i = 1;
+    wsv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", "start runSegment piccount=%d", new Object[] { Integer.valueOf(paramList.size()) });
+    if (paramList.isEmpty())
     {
-      this.a.e = true;
-      this.a.jdField_a_of_type_Ufb.sendMessage(this.a.jdField_a_of_type_Ufb.obtainMessage(200, 701, 0));
+      notifyResult(paramList);
+      return;
     }
+    paramJobContext = paramList.iterator();
+    while (paramJobContext.hasNext()) {
+      ((ueq)paramJobContext.next()).a(this.a);
+    }
+    uef.a(paramList);
+    uef localuef = (uef)urr.a(30);
+    udx localudx = localuef.a();
+    paramJobContext = paramList;
+    if (!this.a.a())
+    {
+      paramJobContext = paramList;
+      if (paramList.size() > localudx.a())
+      {
+        wsv.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.Album2DBSegment", "we scan album=" + paramList.size() + " ,but we only need " + localudx.a());
+        paramJobContext = paramList.subList(0, localudx.a());
+      }
+    }
+    if (localuef.a(paramJobContext, this.a.a()))
+    {
+      long l2;
+      for (long l1 = ((ueq)paramJobContext.get(0)).e(); i < paramJobContext.size(); l1 = l2)
+      {
+        long l3 = ((ueq)paramJobContext.get(i)).e();
+        l2 = l1;
+        if (l3 > l1) {
+          l2 = l3;
+        }
+        i += 1;
+      }
+      this.a.a(((ueq)paramJobContext.get(0)).e());
+      notifyResult(paramJobContext);
+      return;
+    }
+    notifyError(new ErrorMessage(3, "save to db occur error!"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ufa
  * JD-Core Version:    0.7.0.1
  */

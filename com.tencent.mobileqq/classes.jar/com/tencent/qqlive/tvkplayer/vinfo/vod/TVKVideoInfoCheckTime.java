@@ -20,7 +20,7 @@ import org.xml.sax.InputSource;
 public class TVKVideoInfoCheckTime
 {
   private static int CURRENT_HOST_URL_RETRY_MAX_COUNT = 3;
-  private static final String TAG = "VideoInfo[TVKCGICheckTime]";
+  private static final String TAG = "MediaPlayerMgr[TVKVideoInfoCheckTime]";
   private static TVKVideoInfoCheckTime mCheckTime;
   public static long mElapsedRealTime;
   public static String mRandKey;
@@ -57,7 +57,7 @@ public class TVKVideoInfoCheckTime
       this.mCurrentHostUrlRetryCount += 1;
       this.mRetryTime += 1;
       Map localMap = getRequestParams();
-      TVKLogUtil.i("VideoInfo[TVKCGICheckTime]", "[VideoInfo][checkTime] request time:" + this.mCurrentHostUrlRetryCount);
+      TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoCheckTime]", "[VideoInfo][checkTime] request time:" + this.mCurrentHostUrlRetryCount);
       this.mstartRequestMS = SystemClock.elapsedRealtime();
       TVKVideoInfoHttpProcessor.getInstance().addToRequestQueue(this.mCurrentHostUrlRetryCount, getCheckTimeUrl(), localMap, getHeaders(), this.mCheckTimeCb);
       return;
@@ -124,14 +124,14 @@ public class TVKVideoInfoCheckTime
         mServerTime = TVKUtils.optLong(localNodeList.item(0).getFirstChild().getNodeValue(), 0L);
         mRandKey = ((NodeList)localObject).item(0).getFirstChild().getNodeValue();
         mElapsedRealTime = SystemClock.elapsedRealtime();
-        TVKLogUtil.i("VideoInfo[TVKCGICheckTime]", "[VideoInfo][TVKCGICheckTime]serverTime:" + mServerTime + " randKey:" + mRandKey + " elapsedRealTime:" + mElapsedRealTime);
+        TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoCheckTime]", "[VideoInfo][TVKCGICheckTime]serverTime:" + mServerTime + " randKey:" + mRandKey + " elapsedRealTime:" + mElapsedRealTime);
         this.mIsSuccess = true;
         return true;
       }
     }
     catch (Exception paramString)
     {
-      TVKLogUtil.i("VideoInfo[TVKCGICheckTime]", "[VideoInfo][checkTime]parse xml error:" + paramString.toString());
+      TVKLogUtil.i("MediaPlayerMgr[TVKVideoInfoCheckTime]", "[VideoInfo][checkTime]parse xml error:" + paramString.toString());
       return false;
     }
     return false;
@@ -152,7 +152,7 @@ public class TVKVideoInfoCheckTime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKVideoInfoCheckTime
  * JD-Core Version:    0.7.0.1
  */

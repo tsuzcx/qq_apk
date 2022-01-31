@@ -1,29 +1,59 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ArkBabyqCardInfo;
-import com.tencent.mobileqq.data.MessageForArkBabyqReply;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1.1.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 import java.lang.ref.WeakReference;
 
 public class anie
-  implements adml
+  implements anip
 {
-  public anie(ArkBabyqCardInfo paramArkBabyqCardInfo) {}
+  public anie(ArkAiDictUpdateMgr.1 param1, aoim paramaoim, anir paramanir, aoia paramaoia) {}
   
-  public void a()
+  public void a(boolean paramBoolean)
   {
-    if ((this.a.mBabyQReplyMsg != null) && (this.a.mBabyQReplyMsg.get() != null))
+    if (!paramBoolean)
     {
-      Object localObject = (MessageForArkBabyqReply)this.a.mBabyQReplyMsg.get();
-      localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      if (localObject != null) {
-        localObject = (altf)((QQAppInterface)localObject).a(95);
+      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, one task failed, dict-id=%s", new Object[] { anid.a(this.jdField_a_of_type_Aoim) }));
+      this.jdField_a_of_type_Anir.jdField_a_of_type_Boolean = false;
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_Anir)
+      {
+        anir localanir2 = this.jdField_a_of_type_Anir;
+        int i = localanir2.jdField_a_of_type_Int - 1;
+        localanir2.jdField_a_of_type_Int = i;
+        if (i != 0) {
+          return;
+        }
+        if (this.jdField_a_of_type_Anir.jdField_a_of_type_Boolean)
+        {
+          ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, all success");
+          anid.a(this.jdField_a_of_type_Aoia);
+          anid.b(this.jdField_a_of_type_Aoia);
+          ania.b((AppInterface)anid.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0).get());
+          try
+          {
+            anid.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
+            if (anid.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0))
+            {
+              anid.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
+              ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, pending update task exists, wait 5 second and update");
+              ArkAppCenter.a().postToMainThreadDelayed(new ArkAiDictUpdateMgr.1.1.1(this), 5000L);
+            }
+            return;
+          }
+          finally {}
+        }
       }
+      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, one or more tasks failed.");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anie
  * JD-Core Version:    0.7.0.1
  */

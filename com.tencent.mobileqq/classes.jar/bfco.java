@@ -1,54 +1,64 @@
-import android.view.View;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.CardContainer;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class bfco
+public class bfco
+  extends Handler
 {
-  public int a(int paramInt)
+  public bfco(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
   {
-    return paramInt;
+    super(paramLooper);
   }
   
-  public int a(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    return 0;
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramMessage = (Bitmap)paramMessage.obj;
+          } while (paramMessage == null);
+          paramMessage = bfdz.a(this.a, paramMessage, 50, 50);
+          localMessage = Message.obtain();
+          localMessage.what = 1002;
+          localMessage.obj = paramMessage;
+          this.a.b.sendMessage(localMessage);
+          return;
+          paramMessage = (String)paramMessage.obj;
+        } while (TextUtils.isEmpty(paramMessage));
+        paramMessage = AuthorityActivity.a(paramMessage);
+      } while (paramMessage == null);
+      Message localMessage = Message.obtain();
+      localMessage.what = 1003;
+      localMessage.obj = paramMessage;
+      this.a.b.sendMessage(localMessage);
+      return;
+      QLog.i("Q.quicklogin.QuickLoginAuthorityActivity", 1, "--> handler message GET_ACCOUNT_LIST");
+    } while (this.a.a.a == null);
+    this.a.a.a.c();
+    paramMessage = Message.obtain();
+    paramMessage.what = 1006;
+    this.a.b.sendMessage(paramMessage);
   }
-  
-  public int a(View paramView, int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(View paramView, float paramFloat1, float paramFloat2) {}
-  
-  public void a(View paramView, int paramInt) {}
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public abstract boolean a(View paramView, int paramInt);
-  
-  public int b(View paramView)
-  {
-    return 0;
-  }
-  
-  public int b(View paramView, int paramInt1, int paramInt2)
-  {
-    return 0;
-  }
-  
-  public void b(int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfco
  * JD-Core Version:    0.7.0.1
  */

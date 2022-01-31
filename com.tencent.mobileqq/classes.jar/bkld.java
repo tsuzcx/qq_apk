@@ -1,77 +1,70 @@
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.tribe.TribeVideoPublishParams;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import java.lang.ref.WeakReference;
 
 public class bkld
+  extends bkis
 {
-  public final int a;
-  public long a;
-  public bklj a;
-  public bkll a;
-  public final PublishVideoEntry a;
-  public TribeVideoPublishParams a;
-  public LpReportInfo_pf00064 a;
-  public final EditVideoParams.EditSource a;
-  public final EditVideoParams a;
-  public PublishParam a;
-  public String a;
-  public WeakReference<View> a;
-  public boolean a;
-  public int b = 1;
-  public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
+  private bkml jdField_a_of_type_Bkml;
+  private bmcu jdField_a_of_type_Bmcu;
+  private bmcv jdField_a_of_type_Bmcv;
   
-  public bkld(EditVideoParams paramEditVideoParams)
+  public bkld(bmcv parambmcv, bmcu parambmcu)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry = new PublishVideoEntry();
-    this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo_pf00064 = new LpReportInfo_pf00064();
-    this.jdField_a_of_type_ComTencentMobileqqTribeTribeVideoPublishParams = new TribeVideoPublishParams();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams = paramEditVideoParams;
-    this.jdField_a_of_type_Int = paramEditVideoParams.jdField_a_of_type_Int;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource = paramEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoLabel = paramEditVideoParams.a("story_default_label");
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Bmcv = parambmcv;
+    this.jdField_a_of_type_Bmcu = parambmcu;
   }
   
   public View a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    return null;
+    return this.jdField_a_of_type_Bmcv.a().getLayoutInflater().inflate(2131558551, null);
   }
   
-  public void a(View paramView)
+  public void a()
   {
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_JavaLangRefWeakReference = null;
-      return;
-    }
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    Intent localIntent = this.jdField_a_of_type_Bmcv.a().getIntent();
+    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 9);
+    localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM_VIDEO", 1);
+    localIntent.putExtra("PhotoConst.IS_SINGLE_MODE", false);
+    localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 7);
+    this.jdField_a_of_type_Bkml = new bkml();
+    this.jdField_a_of_type_Bmcv.a().getFragmentManager().beginTransaction().add(2131366415, this.jdField_a_of_type_Bkml).commit();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Bklj.jdField_a_of_type_Int > 0);
+    if (this.jdField_a_of_type_Bmcv == null) {
+      return false;
+    }
+    if ((this.jdField_a_of_type_Bkml != null) && (this.jdField_a_of_type_Bkml.a != null)) {
+      this.jdField_a_of_type_Bkml.a.a(null);
+    }
+    return true;
   }
   
-  public String toString()
+  public void e()
   {
-    return "GenerateContext{, businessId='" + this.jdField_a_of_type_Int + '\'' + '}';
+    super.e();
+    this.jdField_a_of_type_Bmcv.a().finish();
+  }
+  
+  public void p()
+  {
+    super.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkld
  * JD-Core Version:    0.7.0.1
  */

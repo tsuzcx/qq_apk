@@ -1,37 +1,55 @@
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.lang.ref.WeakReference;
 
-final class mta
-  implements aysb
+public class mta
 {
-  public void a(aysy paramaysy, aysz paramaysz)
+  public long a;
+  public VideoAppInterface a;
+  public WeakReference<mrt> b;
+  public final String i = "AVRedBag_" + getClass().getSimpleName() + "_" + this.jdField_a_of_type_Long;
+  
+  mta(mrt parammrt)
   {
-    if ((paramaysy == null) || (paramaysz == null)) {}
-    ayrx localayrx;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramaysy instanceof ayrx));
-      localayrx = (ayrx)paramaysy;
-      localayrx.jdField_a_of_type_Long += paramaysz.c;
-      paramaysz.c = 0L;
-      paramaysz = "bytes=" + localayrx.jdField_a_of_type_Long + "-";
-      localayrx.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
-      paramaysz = localayrx.jdField_a_of_type_JavaLangString;
-      if (paramaysz.contains("range="))
-      {
-        paramaysz = paramaysz.substring(0, paramaysz.lastIndexOf("range="));
-        localayrx.jdField_a_of_type_JavaLangString = (paramaysz + "range=" + localayrx.jdField_a_of_type_Long);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("ScoreManager", 1, "IBreakDownFix. url = " + ((ayrx)paramaysy).jdField_a_of_type_JavaLangString + ", offset=" + localayrx.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Long = AudioHelper.b();
+    this.b = new WeakReference(parammrt);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = parammrt.a();
+  }
+  
+  public AVActivity a()
+  {
+    mrt localmrt = (mrt)this.b.get();
+    if (localmrt != null) {
+      return localmrt.a();
+    }
+    return null;
+  }
+  
+  public mrt a()
+  {
+    mrt localmrt = (mrt)this.b.get();
+    if (localmrt == null) {
+      QLog.d(this.i, 1, "getRedBagMgr[" + getClass().getName() + "] is null");
+    }
+    return localmrt;
+  }
+  
+  protected void finalize()
+  {
+    QLog.d(this.i, 1, "finalize, " + toString());
+    super.finalize();
+  }
+  
+  public String toString()
+  {
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mta
  * JD-Core Version:    0.7.0.1
  */

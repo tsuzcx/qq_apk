@@ -1,20 +1,25 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.VideoControlUI;
 
-class mmd
-  implements TextWatcher
+public class mmd
+  implements View.OnTouchListener
 {
-  mmd(mmb parammmb) {}
+  public mmd(VideoControlUI paramVideoControlUI) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (this.a.a != null) {
+      return this.a.a.onTouchEvent(paramMotionEvent);
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmd
  * JD-Core Version:    0.7.0.1
  */

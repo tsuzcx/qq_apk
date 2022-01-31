@@ -1,36 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
-import org.json.JSONException;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager.6;
+import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class qzk
-  implements bfso
+  implements bcgo
 {
-  public qzk(ChannelClassificationListView paramChannelClassificationListView) {}
+  public qzk(ReadInJoyWebDataManager.6 param6) {}
   
-  public void onScrollStateChanged(int paramInt)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    JSONObject localJSONObject;
-    if (paramInt == 4098) {
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("channelid", ChannelClassificationListView.a(this.a));
-      nol.a(null, onh.a() + "", "0X8009934", "0X8009934", 0, 0, "", "", "", localJSONObject.toString(), false);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+    QLog.w("ReadInJoyWebDataManager", 2, Long.toString(Thread.currentThread().getId()));
+    if (paramJSONObject != null) {}
+    while (!QLog.isColorLevel()) {
+      try
       {
-        localJSONException.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.w("ReadInJoyWebDataManager", 2, "sendLog result:" + paramJSONObject.toString());
+        }
+        return;
+      }
+      catch (Exception paramJSONObject)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.w("ReadInJoyWebDataManager", 2, "sendLog result Exception :" + paramJSONObject);
+        return;
       }
     }
+    QLog.w("ReadInJoyWebDataManager", 2, "sendLog result null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qzk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,22 @@
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.recent.AppletsFolderManager.2;
-import java.util.ArrayList;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class ahka
-  implements bfph
+  implements View.OnClickListener
 {
-  public ahka(AppletsFolderManager.2 param2) {}
+  public ahka(NotificationView paramNotificationView, structmsg.SystemMsg paramSystemMsg) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (ahjx.a(this.a.this$0)) {
-      return;
-    }
-    ahjx.a(this.a.this$0, true);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ahjx.a(this.a.this$0).dismiss();
-      return;
-      paramView = new ArrayList();
-      akwy localakwy = new akwy();
-      localakwy.a(Integer.valueOf(this.a.a).intValue());
-      localakwy.a(Integer.valueOf(this.a.b).intValue());
-      localakwy.b(0);
-      paramView.add(localakwy.a());
-      ahjx.a(this.a.this$0).a(paramView);
-      bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131700619), 0).a();
-    }
+    awnk.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationView.jdField_a_of_type_Ahjp.a(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahka
  * JD-Core Version:    0.7.0.1
  */

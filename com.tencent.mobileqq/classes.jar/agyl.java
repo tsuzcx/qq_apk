@@ -1,34 +1,33 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.view.KeyEvent;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class agyl
-  implements TextView.OnEditorActionListener
+  extends BroadcastReceiver
 {
-  public agyl(TransactionActivity paramTransactionActivity) {}
+  public agyl(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (BlessSelectMemberActivity.d(this.a) == 9003) && (BlessSelectMemberActivity.e(this.a) == 32))
     {
-      if (TransactionActivity.a(this.a).isEnabled()) {
-        TransactionActivity.a(this.a).performClick();
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessSelectMemberActivity", 2, "ACTION_START_VIDEO_CHAT from BLESS_WEB");
       }
-      if (TransactionActivity.a(this.a) != null) {
-        ((InputMethodManager)TransactionActivity.a(this.a).getSystemService("input_method")).hideSoftInputFromWindow(TransactionActivity.c(this.a).getWindowToken(), 0);
-      }
+      paramContext = new Intent("tencent.video.q2v.startUploadPTV");
+      paramContext.putExtra("broadcastType", 1);
+      this.a.app.getApp().sendBroadcast(paramContext);
+      this.a.finish();
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agyl
  * JD-Core Version:    0.7.0.1
  */

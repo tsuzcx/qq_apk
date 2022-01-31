@@ -79,6 +79,7 @@ public class VRecyclerList
   private VRefreshViewGroup mRealParentView;
   private RecycleViewItemDecoration mRecycleViewItemDecoration;
   private int mSnapOffset = 0;
+  private boolean mSnapOffsetUsable = true;
   private VRecyclerList.RVUpdateOps updateOps = new VRecyclerList.RVUpdateOps(this);
   
   public VRecyclerList(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
@@ -165,7 +166,7 @@ public class VRecyclerList
   {
     VRecyclerView localVRecyclerView = (VRecyclerView)getHostView();
     if (localVRecyclerView == null) {}
-    while (localVRecyclerView.getFirstVisibleItemPosition() != 0) {
+    while ((localVRecyclerView.getFirstVisibleItemPosition() != 0) || (!this.mSnapOffsetUsable)) {
       return paramFloat;
     }
     return paramFloat + localVRecyclerView.getSnapOffset();
@@ -211,25 +212,30 @@ public class VRecyclerList
   
   private void dealChildMarginWith(DomObject paramDomObject, FrameLayout.LayoutParams paramLayoutParams)
   {
-    int i = getDomObject().indexOf(paramDomObject);
-    if (!this.isCaluteSnapOffset)
-    {
-      if (getDomObject().getAttributes().containsKey("stickyOffset")) {
-        this.mSnapOffset = ((int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("stickyOffset"), 750));
-      }
-      this.isCaluteSnapOffset = true;
-    }
-    if (this.mSnapOffset != 0)
-    {
-      if (i != 0) {
-        break label82;
-      }
-      paramLayoutParams.setMargins(0, this.mSnapOffset, 0, 0);
-    }
-    label82:
+    if (!isVertical()) {}
+    int i;
     do
     {
-      return;
+      do
+      {
+        return;
+        i = getDomObject().indexOf(paramDomObject);
+        if (!this.isCaluteSnapOffset)
+        {
+          if (getDomObject().getAttributes().containsKey("stickyOffset")) {
+            this.mSnapOffset = ((int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("stickyOffset"), 750));
+          }
+          if (getDomObject().getAttributes().containsKey("stickyOffsetUsable")) {
+            this.mSnapOffsetUsable = ((Boolean)getDomObject().getAttributes().get("stickyOffsetUsable")).booleanValue();
+          }
+          this.isCaluteSnapOffset = true;
+        }
+      } while ((this.mSnapOffset == 0) || (!this.mSnapOffsetUsable));
+      if (i == 0)
+      {
+        paramLayoutParams.setMargins(0, this.mSnapOffset, 0, 0);
+        return;
+      }
       if ((i == 1) && (((VRecyclerViewAdapter)((VRecyclerView)getHostView()).getAdapter()).isRecycleHasHeader()))
       {
         paramLayoutParams.setMargins(0, this.mSnapOffset, 0, 0);
@@ -267,7 +273,7 @@ public class VRecyclerList
       if ("horizontal".equals(ViolaUtils.getString(localDomObject.getAttributes().get("direction"), null))) {
         this.mOrientation = 0;
       }
-      return new LinearLayoutManager(paramContext, this.mOrientation, false);
+      return new LinearLayoutManager(paramContext, this.mOrientation, isReverse());
     }
     return new LinearLayoutManager(paramContext);
   }
@@ -774,6 +780,11 @@ public class VRecyclerList
     return this.mOrientation == 0;
   }
   
+  public boolean isReverse()
+  {
+    return ViolaUtils.getBoolean(getDomObject().getAttributes().get("reverse"));
+  }
+  
   public boolean isVertical()
   {
     return this.mOrientation == 1;
@@ -941,16 +952,27 @@ public class VRecyclerList
     }
   }
   
-  public void onScroll(VRecyclerView paramVRecyclerView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onScroll(VRecyclerView paramVRecyclerView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
     if (this.mOrientation == 1) {
       tryScrollEvent(paramVRecyclerView, paramInt3, paramInt4);
     }
-    if (isCompatMode()) {
-      ((VListCompat)getCompator()).onScroll();
+    if (isCompatMode())
+    {
+      paramVRecyclerView = (VListCompat)getCompator();
+      if (!paramBoolean) {
+        break label59;
+      }
+      paramVRecyclerView.onOverScroll(paramInt1, paramInt2);
     }
-    listFireScrollEvent("scroll", paramInt1, paramInt2);
-    onRichGestureScroll(paramInt1, paramInt2);
+    for (;;)
+    {
+      listFireScrollEvent("scroll", paramInt1, paramInt2);
+      onRichGestureScroll(paramInt1, paramInt2);
+      return;
+      label59:
+      paramVRecyclerView.onScroll();
+    }
   }
   
   public void onScrollEnd(VRecyclerView paramVRecyclerView, int paramInt1, int paramInt2)
@@ -1307,7 +1329,7 @@ public class VRecyclerList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.component.VRecyclerList
  * JD-Core Version:    0.7.0.1
  */

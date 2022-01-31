@@ -1,26 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyProteusFamilyListViewGroup;
 
 public class ruq
-  implements rut
+  extends oxe
 {
-  public ruq(ChannelTopBanner paramChannelTopBanner) {}
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.e();
-      return;
-    }
-    this.a.d();
-  }
+  public ruq(ReadInJoyProteusFamilyListViewGroup paramReadInJoyProteusFamilyListViewGroup) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ruq
  * JD-Core Version:    0.7.0.1
  */

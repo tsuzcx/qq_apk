@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
-public final class pba
-  implements Parcelable.Creator<ReadInJoyDraftboxItem>
+public class pba
+  implements Animation.AnimationListener
 {
-  public ReadInJoyDraftboxItem a(Parcel paramParcel)
+  public pba(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new ReadInJoyDraftboxItem(paramParcel);
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
+    ReadInJoySelfFragment.b(this.a).setAnimation(null);
   }
   
-  public ReadInJoyDraftboxItem[] a(int paramInt)
-  {
-    return new ReadInJoyDraftboxItem[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pba
  * JD-Core Version:    0.7.0.1
  */

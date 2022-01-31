@@ -1,28 +1,36 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
-import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView.1;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.SwapViews;
 
-public class aiyz
-  implements View.OnClickListener
+public final class aiyz
+  implements Animation.AnimationListener
 {
-  public aiyz(CmGameLoadingView.1 param1) {}
+  private final View jdField_a_of_type_AndroidViewView;
+  private final boolean jdField_a_of_type_Boolean;
+  private final View b;
   
-  public void onClick(View paramView)
+  private aiyz(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment, boolean paramBoolean, View paramView1, View paramView2)
   {
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131702085));
-    this.a.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.this$0.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
-    this.a.this$0.setProgressViewVisibility(true);
-    this.a.a.a(2);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidViewView = paramView1;
+    this.b = paramView2;
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    DrawRedpacketPannelPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment).post(new DrawRedpacketPannelPreviewFragment.SwapViews(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawDrawRedpacketPannelPreviewFragment, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidViewView, this.b));
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyz
  * JD-Core Version:    0.7.0.1
  */

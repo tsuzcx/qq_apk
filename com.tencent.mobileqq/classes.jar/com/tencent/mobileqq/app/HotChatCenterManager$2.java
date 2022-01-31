@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import ajyd;
-import aukp;
+import alpr;
+import awbw;
 import com.tencent.mobileqq.data.HotChatItemData;
 
 public class HotChatCenterManager$2
   implements Runnable
 {
-  public HotChatCenterManager$2(ajyd paramajyd, aukp paramaukp, HotChatItemData paramHotChatItemData) {}
+  public HotChatCenterManager$2(alpr paramalpr, awbw paramawbw, HotChatItemData paramHotChatItemData) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aukp.b(this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData);
+    this.jdField_a_of_type_Awbw.b(this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData);
   }
 }
 

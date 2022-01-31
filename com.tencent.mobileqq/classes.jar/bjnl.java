@@ -1,44 +1,53 @@
-class bjnl
-  implements bjnn
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.share.QZoneShareActivity;
+import cooperation.qzone.share.QZoneShareActivity.4.1;
+import cooperation.qzone.share.QZoneShareActivity.4.2;
+import eipc.EIPCClient;
+import java.util.Map;
+import org.json.JSONObject;
+
+public class bjnl
+  implements MiniAppCmdInterface
 {
-  private final bjnk a;
+  public bjnl(QZoneShareActivity paramQZoneShareActivity) {}
   
-  bjnl(bjnk parambjnk)
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.a = parambjnk;
-  }
-  
-  public void a(bjns parambjns, bjnp parambjnp)
-  {
-    switch (parambjnp.a)
+    if ((paramBoolean) && (paramJSONObject != null))
     {
-    default: 
-      return;
-    case 0: 
-      this.a.a(parambjns);
-      return;
-    case 1: 
-      this.a.b(parambjns);
-      return;
-    case 2: 
-      this.a.c(parambjns);
-      return;
-    case 3: 
-      this.a.d(parambjns);
-      return;
-    case 4: 
-      this.a.e(parambjns);
-      return;
-    case 5: 
-      this.a.f(parambjns);
+      String str = paramJSONObject.optString("jump_url");
+      QZoneShareActivity.a(this.a, paramJSONObject.optBoolean("needShareCallBack"));
+      if ((QZoneShareActivity.a(this.a) != null) && (QZoneShareActivity.a(this.a).a != null)) {
+        QZoneShareActivity.a(this.a).a.put("xcxFakeLink", str);
+      }
+      if (!QZoneShareActivity.a(this.a)) {
+        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
+      }
+      QZoneShareActivity.c(this.a);
+      this.a.runOnUiThread(new QZoneShareActivity.4.1(this));
       return;
     }
-    throw new IllegalArgumentException("ON_ANY must not been send by anybody");
+    long l = -1L;
+    if (paramJSONObject != null)
+    {
+      QZoneShareActivity.a(this.a, paramJSONObject.optBoolean("needShareCallBack"));
+      l = paramJSONObject.optLong("retCode");
+    }
+    for (paramJSONObject = paramJSONObject.optString("errMsg");; paramJSONObject = null)
+    {
+      if (!QZoneShareActivity.a(this.a)) {
+        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
+      }
+      this.a.runOnUiThread(new QZoneShareActivity.4.2(this, l, paramJSONObject));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjnl
  * JD-Core Version:    0.7.0.1
  */

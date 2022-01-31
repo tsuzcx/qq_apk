@@ -1,21 +1,17 @@
-import com.tencent.biz.PoiMapActivity;
-
-public class mxd
-  extends mxc
+class mxd<Data>
 {
-  public String a;
-  public String b;
-  public String c;
-  public int d;
+  final mxc jdField_a_of_type_Mxc;
+  final Data[] jdField_a_of_type_ArrayOfJavaLangObject;
   
-  public mxd(PoiMapActivity paramPoiMapActivity)
+  mxd(mxc parammxc, Data... paramVarArgs)
   {
-    super(paramPoiMapActivity);
+    this.jdField_a_of_type_Mxc = parammxc;
+    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxd
  * JD-Core Version:    0.7.0.1
  */

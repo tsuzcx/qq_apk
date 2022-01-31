@@ -1,30 +1,77 @@
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.ArrayList;
 import java.util.List;
 
-class vit
-  implements bfos
+public class vit
+  extends BaseAdapter
 {
-  int jdField_a_of_type_Int = 0;
+  Context jdField_a_of_type_AndroidContentContext;
+  List<TroopInfo> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  vit(vir paramvir) {}
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public vit(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView, Context paramContext)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void a(List<TroopInfo> paramList)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == vir.a(this.jdField_a_of_type_Vir, vir.a(this.jdField_a_of_type_Vir)).a().size()) && (!vir.a(this.jdField_a_of_type_Vir, vir.a(this.jdField_a_of_type_Vir)).a()))
+    if (paramList != null)
     {
-      paramAbsListView = vir.a(this.jdField_a_of_type_Vir);
-      vir.a(this.jdField_a_of_type_Vir, vir.a(this.jdField_a_of_type_Vir)).b(paramAbsListView);
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
+    }
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject = (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (paramView == null)
+    {
+      paramViewGroup = new viu(this);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561627, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367555));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371142));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((TroopInfo)localObject).getTroopName());
+      localObject = vhj.a().a(((TroopInfo)localObject).troopuin);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      return paramView;
+      paramViewGroup = (viu)paramView.getTag();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vit
  * JD-Core Version:    0.7.0.1
  */

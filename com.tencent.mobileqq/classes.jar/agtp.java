@@ -1,38 +1,77 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.biz.videostory.video.FrameVideoHelper;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import android.content.Context;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-class agtp
-  implements agmh
+public abstract class agtp
+  implements agtk
 {
-  agtp(agtn paramagtn, Intent paramIntent, ArrayList paramArrayList) {}
-  
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public URLDrawable.URLDrawableOptions a()
   {
-    if (bkpv.a((Activity)this.jdField_a_of_type_Agtn.a.get(), paramLocalMediaInfo))
-    {
-      if ((agtn.a(this.jdField_a_of_type_Agtn) != null) && (paramLocalMediaInfo.mDuration > agtn.a(this.jdField_a_of_type_Agtn).c))
-      {
-        ((NewPhotoListActivity)this.jdField_a_of_type_Agtn.a.get()).d();
-        this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
-        PhotoUtils.a((Activity)this.jdField_a_of_type_Agtn.a.get(), this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
-        return;
-      }
-      new FrameVideoHelper(paramLocalMediaInfo.path, paramLocalMediaInfo.mediaWidth, paramLocalMediaInfo.mediaHeight, paramLocalMediaInfo.mDuration).a(new agtq(this, paramLocalMediaInfo));
-      xhb.a("mystatus_localupload", "video_select", 0, 0, new String[0]);
-      return;
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mExtraInfo = this;
+    return localURLDrawableOptions;
+  }
+  
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  {
+    if (paramURL == null) {
+      return null;
     }
-    ((NewPhotoListActivity)this.jdField_a_of_type_Agtn.a.get()).d();
+    paramURL = URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
+    paramURL.setTag(new int[] { 0, 0, (int)paramURLDrawableOptions.mGifRoundCorner });
+    return paramURL;
+  }
+  
+  public URL a()
+  {
+    try
+    {
+      URL localURL1 = new URL("sticker_recommended_pic", "fromAIO", ((agua)this).f());
+      if (localURL1 == null)
+      {
+        QLog.e("SimpleRemoteEmoticon", 1, "getURL url = null");
+        return null;
+      }
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      URL localURL2;
+      for (;;)
+      {
+        QLog.e("SimpleRemoteEmoticon", 1, "getURL create url exception e = " + localMalformedURLException.getMessage());
+        localURL2 = null;
+      }
+      return localURL2;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface) {}
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public String c()
+  {
+    return "z-";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agtp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,19 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afjf
-  extends RecyclerView.ViewHolder
+class afjf
+  implements DialogInterface.OnClickListener
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray;
-  private View jdField_a_of_type_AndroidViewView;
+  afjf(afje paramafje, bdfq parambdfq) {}
   
-  public afjf(Context paramContext, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  }
-  
-  public static afjf a(Context paramContext, View paramView)
-  {
-    return new afjf(paramContext, paramView);
-  }
-  
-  public static afjf a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
-  {
-    return new afjf(paramContext, LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false));
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
+    this.jdField_a_of_type_Bdfq.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afjf
  * JD-Core Version:    0.7.0.1
  */

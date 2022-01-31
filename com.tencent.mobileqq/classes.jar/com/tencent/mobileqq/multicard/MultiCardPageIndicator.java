@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.multicard;
 
-import actj;
-import ahnr;
+import aekt;
+import ajfa;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -29,24 +29,24 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.OverScroller;
-import asqa;
-import asqo;
-import asqx;
-import asqz;
-import asre;
-import asrf;
-import asrg;
-import asrh;
-import asri;
-import asrl;
-import asrq;
-import assp;
-import assq;
-import assr;
-import asss;
-import baxy;
-import baxz;
-import bbef;
+import augz;
+import auhn;
+import auhw;
+import auhy;
+import auid;
+import auie;
+import auif;
+import auig;
+import auih;
+import auik;
+import auin;
+import aujm;
+import aujn;
+import aujo;
+import aujp;
+import bcws;
+import bcwt;
+import bdda;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -64,7 +64,7 @@ import java.util.List;
 
 public class MultiCardPageIndicator
   extends HorizontalScrollView
-  implements asqz, baxz
+  implements auhy, bcwt
 {
   private static float jdField_b_of_type_Float = 1.0F;
   private static float jdField_c_of_type_Float = 1.333F;
@@ -75,26 +75,26 @@ public class MultiCardPageIndicator
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private asqo jdField_a_of_type_Asqo;
-  private asqx jdField_a_of_type_Asqx;
-  private asre jdField_a_of_type_Asre;
-  private asrg jdField_a_of_type_Asrg;
-  private asrh jdField_a_of_type_Asrh;
-  private asri jdField_a_of_type_Asri;
-  private asrq jdField_a_of_type_Asrq;
-  private baxy jdField_a_of_type_Baxy;
+  private auhn jdField_a_of_type_Auhn;
+  private auhw jdField_a_of_type_Auhw;
+  private auid jdField_a_of_type_Auid;
+  private auif jdField_a_of_type_Auif;
+  private auig jdField_a_of_type_Auig;
+  private auih jdField_a_of_type_Auih;
+  private auin jdField_a_of_type_Auin;
+  private bcws jdField_a_of_type_Bcws;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private IcsLinearLayout jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout;
   private MultiAIOBaseViewPager jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOBaseViewPager;
   private Runnable jdField_a_of_type_JavaLangRunnable;
   private Hashtable<String, Bitmap> jdField_a_of_type_JavaUtilHashtable = new Hashtable();
-  private List<asrf> jdField_a_of_type_JavaUtilList;
+  private List<auie> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
-  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new assp(this);
+  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new aujm(this);
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int = -1;
   private boolean jdField_c_of_type_Boolean;
@@ -125,17 +125,17 @@ public class MultiCardPageIndicator
   
   private Drawable a(String paramString)
   {
-    if (this.jdField_a_of_type_Baxy == null)
+    if (this.jdField_a_of_type_Bcws == null)
     {
-      this.jdField_a_of_type_Baxy = new baxy(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_Baxy.a(this);
+      this.jdField_a_of_type_Bcws = new bcws(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.jdField_a_of_type_Bcws.a(this);
     }
-    Bitmap localBitmap = this.jdField_a_of_type_Baxy.a(1, paramString, 0, (byte)4);
+    Bitmap localBitmap = this.jdField_a_of_type_Bcws.a(1, paramString, 0, (byte)4);
     if (localBitmap != null) {
       return new BitmapDrawable(localBitmap);
     }
-    if (!this.jdField_a_of_type_Baxy.a()) {
-      this.jdField_a_of_type_Baxy.a(paramString, 200, false, 1, true, (byte)0, 4);
+    if (!this.jdField_a_of_type_Bcws.a()) {
+      this.jdField_a_of_type_Bcws.a(paramString, 200, false, 1, true, (byte)0, 4);
     }
     return null;
   }
@@ -145,10 +145,10 @@ public class MultiCardPageIndicator
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
     setHorizontalScrollBarEnabled(false);
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout = new IcsLinearLayout(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new assq(this), new Handler(Looper.getMainLooper()));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), new aujn(this), new Handler(Looper.getMainLooper()));
     addView(this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout, new ViewGroup.LayoutParams(-2, -1));
     g();
-    this.jdField_a_of_type_Asqx.a(new assr(this));
+    this.jdField_a_of_type_Auhw.a(new aujo(this));
     h();
   }
   
@@ -163,8 +163,8 @@ public class MultiCardPageIndicator
   private void a(View paramView, boolean paramBoolean)
   {
     paramView = paramView.getTag();
-    if ((paramView instanceof asss)) {}
-    for (paramView = (asss)paramView;; paramView = null)
+    if ((paramView instanceof aujp)) {}
+    for (paramView = (aujp)paramView;; paramView = null)
     {
       if (paramView != null)
       {
@@ -182,30 +182,30 @@ public class MultiCardPageIndicator
     }
   }
   
-  private void a(asss paramasss, asrl paramasrl, Drawable paramDrawable)
+  private void a(aujp paramaujp, auik paramauik, Drawable paramDrawable)
   {
-    if ((paramasss == null) || (paramasrl == null)) {
+    if ((paramaujp == null) || (paramauik == null)) {
       return;
     }
     if (paramDrawable == null)
     {
-      paramasrl.a();
-      paramDrawable = a(paramasrl.a());
+      paramauik.a();
+      paramDrawable = a(paramauik.a());
     }
     for (;;)
     {
       Drawable localDrawable = paramDrawable;
       if (paramDrawable == null) {
-        localDrawable = bbef.b();
+        localDrawable = bdda.b();
       }
-      b(paramasss, paramasrl, localDrawable);
+      b(paramaujp, paramauik, localDrawable);
       return;
     }
   }
   
-  private void b(asss paramasss, asrl paramasrl, Drawable paramDrawable)
+  private void b(aujp paramaujp, auik paramauik, Drawable paramDrawable)
   {
-    if ((paramasss == null) || (paramasrl == null))
+    if ((paramaujp == null) || (paramauik == null))
     {
       if (QLog.isColorLevel()) {
         QLog.i("TabPageIndicator", 2, "holder|param invalidate");
@@ -216,39 +216,39 @@ public class MultiCardPageIndicator
       QLog.d("MultiCardFragment", 2, "getView position: ");
     }
     boolean bool;
-    if (a(paramasrl.a()))
+    if (a(paramauik.a()))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("TabPageIndicator", 2, "bindview user:" + paramasrl.a());
+        QLog.i("TabPageIndicator", 2, "bindview user:" + paramauik.a());
       }
-      int n = ((Integer)ahnr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramasrl.a(), paramasrl.a()).first).intValue();
+      int n = ((Integer)ajfa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramauik.a(), paramauik.a()).first).intValue();
       int m = n;
       if (n == 103) {
         m = 1;
       }
-      ThemeRecentDynamicAvatarView localThemeRecentDynamicAvatarView = paramasss.jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView;
+      ThemeRecentDynamicAvatarView localThemeRecentDynamicAvatarView = paramaujp.jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView;
       QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      paramasrl = paramasrl.a();
+      paramauik = paramauik.a();
       if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.a() == 1)
       {
         bool = true;
         label162:
-        localThemeRecentDynamicAvatarView.setFaceDrawable(localQQAppInterface, paramDrawable, m, paramasrl, 100, false, bool, 0);
+        localThemeRecentDynamicAvatarView.setFaceDrawable(localQQAppInterface, paramDrawable, m, paramauik, 100, false, bool, 0);
       }
     }
     for (;;)
     {
-      paramasss.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      paramasss.jdField_a_of_type_JavaLangString = String.valueOf(0);
-      paramasss.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(4);
+      paramaujp.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      paramaujp.jdField_a_of_type_JavaLangString = String.valueOf(0);
+      paramaujp.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setVisibility(4);
       if ((!"1103".equals(ThemeUtil.curThemeId)) && (!"2920".equals(ThemeUtil.curThemeId))) {
         break;
       }
-      paramasss.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837937);
+      paramaujp.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837993);
       return;
       bool = false;
       break label162;
-      paramasss.jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView.setImageDrawable(paramDrawable);
+      paramaujp.jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView.setImageDrawable(paramDrawable);
     }
   }
   
@@ -306,9 +306,9 @@ public class MultiCardPageIndicator
       int m = 0;
       while (m < n)
       {
-        asrf localasrf = (asrf)this.jdField_a_of_type_JavaUtilList.get(m);
-        if (localasrf != null) {
-          localasrf.a(paramInt);
+        auie localauie = (auie)this.jdField_a_of_type_JavaUtilList.get(m);
+        if (localauie != null) {
+          localauie.a(paramInt);
         }
         m += 1;
       }
@@ -350,9 +350,9 @@ public class MultiCardPageIndicator
     {
       Field localField = HorizontalScrollView.class.getDeclaredField("mScroller");
       localField.setAccessible(true);
-      asqx localasqx = new asqx(getContext());
-      localField.set(this, localasqx);
-      this.jdField_a_of_type_Asqx = ((asqx)localasqx);
+      auhw localauhw = new auhw(getContext());
+      localField.set(this, localauhw);
+      this.jdField_a_of_type_Auhw = ((auhw)localauhw);
       return;
     }
     catch (Exception localException)
@@ -368,7 +368,7 @@ public class MultiCardPageIndicator
       Field localField = HorizontalScrollView.class.getDeclaredField("mMaximumVelocity");
       localField.setAccessible(true);
       int m = localField.getInt(this);
-      this.j = asqa.a(getContext(), m);
+      this.j = augz.a(getContext(), m);
       localField.set(this, Integer.valueOf(this.j));
       return;
     }
@@ -416,30 +416,30 @@ public class MultiCardPageIndicator
     if (QLog.isColorLevel()) {
       QLog.d("MultiCardFragment", 2, "getView position: " + paramInt);
     }
-    if (this.jdField_a_of_type_Asrq == null)
+    if (this.jdField_a_of_type_Auin == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("MultiCardFragment", 2, "getView position: " + paramInt);
       }
       return null;
     }
-    asrl localasrl = this.jdField_a_of_type_Asrq.a(paramInt);
-    asss localasss = new asss();
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558562, null);
-    localasss.jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView = ((ThemeRecentDynamicAvatarView)localView.findViewById(2131376810));
-    localasss.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131378606));
-    localasss.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362791));
-    localasss.jdField_a_of_type_Int = paramInt;
-    localView.setTag(localasss);
+    auik localauik = this.jdField_a_of_type_Auin.a(paramInt);
+    aujp localaujp = new aujp();
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558593, null);
+    localaujp.jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView = ((ThemeRecentDynamicAvatarView)localView.findViewById(2131377323));
+    localaujp.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)localView.findViewById(2131379223));
+    localaujp.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362823));
+    localaujp.jdField_a_of_type_Int = paramInt;
+    localView.setTag(localaujp);
     StringBuilder localStringBuilder = new StringBuilder();
-    Drawable localDrawable2 = a(localasrl.a());
+    Drawable localDrawable2 = a(localauik.a());
     Drawable localDrawable1 = localDrawable2;
     if (localDrawable2 == null) {
-      localDrawable1 = bbef.b();
+      localDrawable1 = bdda.b();
     }
-    b(localasss, localasrl, localDrawable1);
-    localStringBuilder.append(localasrl.b());
-    if (AppSetting.d) {
+    b(localaujp, localauik, localDrawable1);
+    localStringBuilder.append(localauik.b());
+    if (AppSetting.jdField_c_of_type_Boolean) {
       localView.setContentDescription(localStringBuilder.toString());
     }
     return localView;
@@ -466,15 +466,15 @@ public class MultiCardPageIndicator
       QLog.d("TabPageIndicator", 2, "onPageSelected() called with: position = [" + paramInt + "]");
     }
     setCurrentItem(paramInt);
-    if (this.jdField_a_of_type_Asqo != null) {
-      this.jdField_a_of_type_Asqo.a(paramInt);
+    if (this.jdField_a_of_type_Auhn != null) {
+      this.jdField_a_of_type_Auhn.a(paramInt);
     }
   }
   
   public void a(int paramInt1, float paramFloat, int paramInt2)
   {
-    if (this.jdField_a_of_type_Asqo != null) {
-      this.jdField_a_of_type_Asqo.a(paramInt1, paramFloat, paramInt2);
+    if (this.jdField_a_of_type_Auhn != null) {
+      this.jdField_a_of_type_Auhn.a(paramInt1, paramFloat, paramInt2);
     }
     paramInt1 = (int)((paramInt1 + paramFloat) * this.g);
     if (b())
@@ -486,19 +486,19 @@ public class MultiCardPageIndicator
     }
   }
   
-  public void a(asrf paramasrf)
+  public void a(auie paramauie)
   {
     if (this.jdField_a_of_type_JavaUtilList == null) {
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    this.jdField_a_of_type_JavaUtilList.add(paramasrf);
+    this.jdField_a_of_type_JavaUtilList.add(paramauie);
   }
   
   public void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramFragmentActivity;
-    this.f = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimensionPixelSize(2131298095);
+    this.f = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDimensionPixelSize(2131298118);
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.setPadding(this.f, 0, this.f, 0);
     this.e = getResources().getDisplayMetrics().widthPixels;
   }
@@ -521,7 +521,7 @@ public class MultiCardPageIndicator
   
   protected boolean a(int paramInt)
   {
-    return (paramInt == 0) || (paramInt == 1000) || (paramInt == 1004) || (paramInt == 1003) || (paramInt == 10004) || (paramInt == 1021) || (paramInt == 1022) || (paramInt == 1023);
+    return (paramInt == 0) || (paramInt == 1000) || (paramInt == 1004) || (paramInt == 1003) || (paramInt == 10004) || (paramInt == 1021) || (paramInt == 1022) || (paramInt == 1023) || (paramInt == 10008);
   }
   
   public void b()
@@ -551,8 +551,8 @@ public class MultiCardPageIndicator
     if (QLog.isColorLevel()) {
       QLog.d("TabPageIndicator", 2, " onPageScrollStateChanged  state = " + paramInt);
     }
-    if (this.jdField_a_of_type_Asqo != null) {
-      this.jdField_a_of_type_Asqo.b(paramInt);
+    if (this.jdField_a_of_type_Auhn != null) {
+      this.jdField_a_of_type_Auhn.b(paramInt);
     }
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(this.d);
     if (localObject == null) {}
@@ -560,8 +560,8 @@ public class MultiCardPageIndicator
     {
       return;
       localObject = ((View)localObject).getTag();
-    } while (!(localObject instanceof asss));
-    localObject = (asss)localObject;
+    } while (!(localObject instanceof aujp));
+    localObject = (aujp)localObject;
     switch (paramInt)
     {
     }
@@ -589,16 +589,16 @@ public class MultiCardPageIndicator
   {
     int n = 1;
     this.jdField_a_of_type_Boolean = false;
-    int m = this.jdField_a_of_type_Asqx.getFinalX();
+    int m = this.jdField_a_of_type_Auhw.getFinalX();
     super.computeScroll();
-    if ((this.jdField_a_of_type_Asqx.getFinalX() < m) && (QLog.isColorLevel())) {
+    if ((this.jdField_a_of_type_Auhw.getFinalX() < m) && (QLog.isColorLevel())) {
       QLog.d("TabPageIndicator", 2, "computeScroll() called afterComputeFinalX < beforeComputeFinalX");
     }
     requestLayout();
     if (this.h == 2)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("TabPageIndicator", 2, "computeScroll() ScrollX = " + getScrollX() + ", Scroller.FinialX = " + this.jdField_a_of_type_Asqx.getFinalX());
+        QLog.d("TabPageIndicator", 2, "computeScroll() ScrollX = " + getScrollX() + ", Scroller.FinialX = " + this.jdField_a_of_type_Auhw.getFinalX());
       }
       if (this.jdField_a_of_type_Boolean) {
         break label311;
@@ -658,10 +658,10 @@ public class MultiCardPageIndicator
   
   public void d()
   {
-    if (this.jdField_a_of_type_Baxy != null)
+    if (this.jdField_a_of_type_Bcws != null)
     {
-      this.jdField_a_of_type_Baxy.d();
-      this.jdField_a_of_type_Baxy = null;
+      this.jdField_a_of_type_Bcws.d();
+      this.jdField_a_of_type_Bcws = null;
     }
   }
   
@@ -675,8 +675,8 @@ public class MultiCardPageIndicator
       QLog.d("TabPageIndicator", 2, "dispatchTouchEvent() called with: ev = [" + paramMotionEvent + "], handled = " + bool);
     }
     if (bool) {
-      if (this.jdField_a_of_type_Asri != null) {
-        this.jdField_a_of_type_Asri.b(this, paramMotionEvent);
+      if (this.jdField_a_of_type_Auih != null) {
+        this.jdField_a_of_type_Auih.b(this, paramMotionEvent);
       }
     }
     switch (paramMotionEvent.getActionMasked())
@@ -703,11 +703,11 @@ public class MultiCardPageIndicator
       setScrollState(2);
       invalidate();
       return bool;
-      this.jdField_a_of_type_Asqx.forceFinished(true);
-      if (this.jdField_a_of_type_Asre != null)
+      this.jdField_a_of_type_Auhw.forceFinished(true);
+      if (this.jdField_a_of_type_Auid != null)
       {
         int m = (int)this.jdField_a_of_type_Float;
-        this.jdField_a_of_type_Asre.a(m);
+        this.jdField_a_of_type_Auid.a(m);
       }
     }
   }
@@ -715,7 +715,7 @@ public class MultiCardPageIndicator
   public void e()
   {
     this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.removeAllViews();
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_Asrq.a();
+    this.jdField_b_of_type_Int = this.jdField_a_of_type_Auin.a();
     int m = 0;
     while (m < this.jdField_b_of_type_Int)
     {
@@ -747,8 +747,8 @@ public class MultiCardPageIndicator
     {
       i3 = getWidth() - getPaddingRight() - getPaddingLeft();
       i4 = getChildAt(0).getWidth();
-      this.jdField_a_of_type_Asqx.fling(getScrollX(), getScrollY(), paramInt, 0, 0, Math.max(0, i4 - i3), 0, 0, i3 / 2, 0);
-      n = this.jdField_a_of_type_Asqx.getFinalX();
+      this.jdField_a_of_type_Auhw.fling(getScrollX(), getScrollY(), paramInt, 0, 0, Math.max(0, i4 - i3), 0, 0, i3 / 2, 0);
+      n = this.jdField_a_of_type_Auhw.getFinalX();
       if (this.g != 0) {
         break;
       }
@@ -786,21 +786,21 @@ public class MultiCardPageIndicator
       i1 = paramInt;
       paramInt = i2;
       if (QLog.isColorLevel()) {
-        QLog.d("TabPageIndicator", 2, "fling() called mPendingFinalX = [" + this.k + "], currentFinalX = [" + this.jdField_a_of_type_Asqx.getFinalX() + "]");
+        QLog.d("TabPageIndicator", 2, "fling() called mPendingFinalX = [" + this.k + "], currentFinalX = [" + this.jdField_a_of_type_Auhw.getFinalX() + "]");
       }
-      i2 = Math.abs(this.jdField_a_of_type_Asqx.getFinalX() - this.k);
+      i2 = Math.abs(this.jdField_a_of_type_Auhw.getFinalX() - this.k);
       if ((paramInt != 2147483647) && (i2 > paramInt + 1)) {
         QLog.e("TabPageIndicator", 1, "fling: error state deltaDistance " + i2 + ", lastDeltaDistance = " + paramInt);
       }
       while (i2 == 0)
       {
-        this.jdField_a_of_type_Asqx.forceFinished(true);
+        this.jdField_a_of_type_Auhw.forceFinished(true);
         setScrollState(2);
         super.fling(i1);
         if (!QLog.isColorLevel()) {
           break;
         }
-        QLog.d("TabPageIndicator", 2, "fling() called with: velocityX = [" + i1 + "], final ScrollX = " + this.jdField_a_of_type_Asqx.getFinalX() + ", exec time = " + (SystemClock.uptimeMillis() - l) + " ms");
+        QLog.d("TabPageIndicator", 2, "fling() called with: velocityX = [" + i1 + "], final ScrollX = " + this.jdField_a_of_type_Auhw.getFinalX() + ", exec time = " + (SystemClock.uptimeMillis() - l) + " ms");
         return;
         if (f1 - m >= 0.5F)
         {
@@ -814,8 +814,8 @@ public class MultiCardPageIndicator
         n = 1;
         break label268;
       }
-      while (!this.jdField_a_of_type_Asqx.isFinished()) {
-        this.jdField_a_of_type_Asqx.forceFinished(true);
+      while (!this.jdField_a_of_type_Auhw.isFinished()) {
+        this.jdField_a_of_type_Auhw.forceFinished(true);
       }
       if (bool) {
         if (n != 0) {
@@ -827,7 +827,7 @@ public class MultiCardPageIndicator
         if (QLog.isColorLevel()) {
           QLog.d("TabPageIndicator", 2, "fling() called with: try " + m + ", velocityX = [" + paramInt + "], deltaVelocity = " + i2 + ", deltaDistance = " + i2);
         }
-        this.jdField_a_of_type_Asqx.fling(getScrollX(), getScrollY(), paramInt, 0, 0, Math.max(0, i4 - i3), 0, 0, i3 / 2, 0);
+        this.jdField_a_of_type_Auhw.fling(getScrollX(), getScrollY(), paramInt, 0, 0, Math.max(0, i4 - i3), 0, 0, i3 / 2, 0);
         i1 = i2;
         m += 1;
         i2 = paramInt;
@@ -908,7 +908,7 @@ public class MultiCardPageIndicator
     {
       if (paramInt1 < paramInt2)
       {
-        paramBitmap = this.jdField_a_of_type_Asrq.a(paramInt1);
+        paramBitmap = this.jdField_a_of_type_Auin.a(paramInt1);
         if (paramBitmap == null)
         {
           break label429;
@@ -916,12 +916,12 @@ public class MultiCardPageIndicator
           break;
         }
         Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetIcsLinearLayout.getChildAt(paramInt1).getTag();
-        if (!(localObject1 instanceof asss)) {
+        if (!(localObject1 instanceof aujp)) {
           break label429;
         }
-        localObject1 = (asss)localObject1;
+        localObject1 = (aujp)localObject1;
         int m = paramBitmap.a();
-        m = ((Integer)ahnr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, m, paramBitmap.a()).first).intValue();
+        m = ((Integer)ajfa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, m, paramBitmap.a()).first).intValue();
         if (m == -2147483648) {
           break label429;
         }
@@ -930,7 +930,7 @@ public class MultiCardPageIndicator
         if (localObject2 == null) {
           break label429;
         }
-        a((asss)localObject1, paramBitmap, new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), (Bitmap)localObject2));
+        a((aujp)localObject1, paramBitmap, new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources(), (Bitmap)localObject2));
         bool = true;
         break label429;
       }
@@ -970,11 +970,11 @@ public class MultiCardPageIndicator
       for (f1 = Math.min((float)(Math.cos(f1 * 1.570796326794897D) * (jdField_c_of_type_Float - jdField_b_of_type_Float) + d1), jdField_c_of_type_Float);; f1 = jdField_b_of_type_Float)
       {
         localObject = ((View)localObject).getTag();
-        if ((localObject instanceof asss))
+        if ((localObject instanceof aujp))
         {
-          localObject = (asss)localObject;
-          ((asss)localObject).jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView.setScaleX(f1);
-          ((asss)localObject).jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView.setScaleY(f1);
+          localObject = (aujp)localObject;
+          ((aujp)localObject).jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView.setScaleX(f1);
+          ((aujp)localObject).jdField_a_of_type_ComTencentWidgetThemeRecentDynamicAvatarView.setScaleY(f1);
         }
         paramInt1 += 1;
         break;
@@ -1011,7 +1011,7 @@ public class MultiCardPageIndicator
       bool = false;
       break;
       label137:
-      this.g = actj.a(56.0F, getResources());
+      this.g = aekt.a(56.0F, getResources());
     }
   }
   
@@ -1108,14 +1108,14 @@ public class MultiCardPageIndicator
     this.jdField_c_of_type_Int = paramInt;
   }
   
-  public void setMultiCardContext(asrq paramasrq)
+  public void setMultiCardContext(auin paramauin)
   {
-    this.jdField_a_of_type_Asrq = paramasrq;
+    this.jdField_a_of_type_Auin = paramauin;
   }
   
-  public void setOnActionUpNotFling(asre paramasre)
+  public void setOnActionUpNotFling(auid paramauid)
   {
-    this.jdField_a_of_type_Asre = paramasre;
+    this.jdField_a_of_type_Auid = paramauid;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
@@ -1124,19 +1124,19 @@ public class MultiCardPageIndicator
     this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public void setOnPageChangeListener(asqo paramasqo)
+  public void setOnPageChangeListener(auhn paramauhn)
   {
-    this.jdField_a_of_type_Asqo = paramasqo;
+    this.jdField_a_of_type_Auhn = paramauhn;
   }
   
-  public void setOnTabClickListener(asrg paramasrg)
+  public void setOnTabClickListener(auif paramauif)
   {
-    this.jdField_a_of_type_Asrg = paramasrg;
+    this.jdField_a_of_type_Auif = paramauif;
   }
   
-  public void setOnTabReselectedListener(asrh paramasrh)
+  public void setOnTabReselectedListener(auig paramauig)
   {
-    this.jdField_a_of_type_Asrh = paramasrh;
+    this.jdField_a_of_type_Auig = paramauig;
   }
   
   public void setScrollState(int paramInt)
@@ -1148,9 +1148,9 @@ public class MultiCardPageIndicator
     e(paramInt);
   }
   
-  public void setTouchEventConsumer(asri paramasri)
+  public void setTouchEventConsumer(auih paramauih)
   {
-    this.jdField_a_of_type_Asri = paramasri;
+    this.jdField_a_of_type_Auih = paramauih;
   }
   
   public void setViewPager(MultiAIOBaseViewPager paramMultiAIOBaseViewPager)
@@ -1190,7 +1190,7 @@ public class MultiCardPageIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardPageIndicator
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-final class war
-  extends waa
+class war
+  extends SimpleJob<Object>
 {
-  war(waa paramwaa) {}
-  
-  public void onFailure(String paramString)
+  war(waq paramwaq, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
-    }
-    this.a.onFailure(paramString);
-    vei.a("music_composite", "music_clip", 0, 1, new String[0]);
+    super(paramString);
   }
   
-  public void onStart()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    super.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    paramString = String.valueOf(System.currentTimeMillis() - this.b);
-    vei.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
-    if (QLog.isColorLevel()) {
-      QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "音乐截取成功耗时：" + paramString);
+    if (this.a.a == null) {
+      this.a.a = new wat(this.a, this.a.c);
     }
+    this.a.d = "";
+    waq.a(this.a);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     war
  * JD-Core Version:    0.7.0.1
  */

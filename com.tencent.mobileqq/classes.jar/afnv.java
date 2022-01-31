@@ -1,32 +1,22 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.10.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afnv
-  extends akil
+class afnv
+  extends afpq
 {
-  public afnv(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  afnv(aflj paramaflj)
   {
-    if (1 == paramInt1) {
-      ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.10.1(this, paramString));
-    }
+    super(paramaflj, null);
   }
   
-  protected void b(boolean paramBoolean, List<RecommendTroopItem> paramList)
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if ((paramBoolean) && (paramList != null)) {
-      this.a.a(paramList);
-    }
+    return new afsp(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afnv
  * JD-Core Version:    0.7.0.1
  */

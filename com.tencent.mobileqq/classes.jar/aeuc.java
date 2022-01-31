@@ -1,20 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class aeuc
-  implements DialogInterface.OnClickListener
+  implements TextWatcher
 {
-  public aeuc(TroopChatPie paramTroopChatPie) {}
+  public aeuc(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.a.H();
+    if (VoiceTextEditPanel.a(this.a).get() == 5)
+    {
+      VoiceTextEditPanel.a(this.a, paramEditable.toString());
+      if (!bdje.a(VoiceTextEditPanel.a(this.a))) {
+        break label55;
+      }
+      this.a.setSendEnable(false);
+    }
+    for (;;)
+    {
+      this.a.c();
+      return;
+      label55:
+      this.a.setSendEnable(true);
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuc
  * JD-Core Version:    0.7.0.1
  */

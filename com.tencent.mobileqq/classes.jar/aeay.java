@@ -1,30 +1,27 @@
-import android.content.Context;
-import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.MessageForStarLeague;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
-class aeay
-  implements View.OnClickListener
+public class aeay
+  implements View.OnTouchListener
 {
-  aeay(aeax paramaeax) {}
+  public aeay(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    MessageForStarLeague localMessageForStarLeague = (MessageForStarLeague)((aeaz)actj.a(paramView)).a;
-    if (!asjk.a((BaseActivity)paramView.getContext(), localMessageForStarLeague.actionUrl, localMessageForStarLeague))
+    if (paramMotionEvent.getAction() == 1)
     {
-      Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-      localIntent.putExtra("url", localMessageForStarLeague.actionUrl);
-      paramView.getContext().startActivity(localIntent);
+      this.a.j();
+      paramView = this.a.n;
+      this.a.a("Clk_find", paramView, "");
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeay
  * JD-Core Version:    0.7.0.1
  */

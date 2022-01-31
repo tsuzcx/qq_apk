@@ -1,86 +1,32 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.Foreground;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
 public class amax
-  implements amaf, amak
+  implements DialogInterface.OnClickListener
 {
-  @Nullable
-  private Object jdField_a_of_type_JavaLangObject;
-  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  public amax(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2) {}
   
-  amax(Context paramContext, @Nullable amaf paramamaf)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangObject = paramamaf;
-  }
-  
-  amax(Context paramContext, @Nullable amak paramamak)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
-    this.jdField_a_of_type_JavaLangObject = paramamak;
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof amak)) {
-      ((amak)this.jdField_a_of_type_JavaLangObject).a(paramBoolean, paramInt1, paramInt2, paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
-  {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof amaf)) {
-      ((amaf)this.jdField_a_of_type_JavaLangObject).a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
-    }
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof amaf)) {
-      return ((amaf)this.jdField_a_of_type_JavaLangObject).a();
-    }
-    return false;
-  }
-  
-  void b(boolean paramBoolean, int paramInt1, int paramInt2, String paramString)
-  {
-    QLog.d("TeleScreenListenerWrapper", 1, "jump | jump: " + paramInt1 + ", errCode: " + paramInt2 + ", errMsg: " + paramString);
-    a(paramBoolean, paramInt1, paramInt2, paramString);
-  }
-  
-  void b(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString1, String paramString2)
-  {
-    QLog.d("TeleScreenListenerWrapper", 1, "download | pass: " + paramBoolean2 + ", errCode: " + paramInt + ", errMsg: " + paramString1);
-    a(paramBoolean1, paramBoolean2, paramInt, paramString1, paramString2);
-    if (((this.jdField_a_of_type_JavaLangObject instanceof amaf)) && (!((amaf)this.jdField_a_of_type_JavaLangObject).a())) {}
-    Context localContext;
-    do
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramInt = this.jdField_a_of_type_Int;
+    int i = this.jdField_b_of_type_Int;
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
     {
-      return;
-      localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localContext == null) || (!paramBoolean1) || (paramBoolean2) || (TextUtils.isEmpty(paramString2)));
-    Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString2);
-    if ((localContext instanceof Activity)) {}
-    for (paramString1 = (Activity)localContext; paramString1 == null; paramString1 = Foreground.getTopActivity())
-    {
-      localIntent.addFlags(268435456);
-      localContext.startActivity(localIntent);
+      VideoMsgTools.a(localQQAppInterface, paramInt, i, bool, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, null, true, new Object[0]);
+      paramDialogInterface.dismiss();
+      mtq.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause, this.jdField_a_of_type_Boolean);
       return;
     }
-    paramString1.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amax
  * JD-Core Version:    0.7.0.1
  */

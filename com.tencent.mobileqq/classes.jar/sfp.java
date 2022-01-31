@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
 
-class sfp
-  implements View.OnClickListener
+public class sfp
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  sfp(sfk paramsfk, String paramString) {}
+  public sfp(ZImageView paramZImageView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Sfk.j();
-    this.jdField_a_of_type_Sfk.o = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Sfk.a.dismiss();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.setAlpha(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sfp
  * JD-Core Version:    0.7.0.1
  */

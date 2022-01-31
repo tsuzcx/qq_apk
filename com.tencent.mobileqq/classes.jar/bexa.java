@@ -1,33 +1,33 @@
-import com.tencent.qqmini.sdk.minigame.ui.GameUIProxy;
-
 public class bexa
-  implements bexj
 {
-  public bexa(GameUIProxy paramGameUIProxy) {}
+  private static bexa a;
   
-  public void a()
+  public static bexa a()
   {
-    betc.d("UIProxy", "home pressed!");
-    beqf.a().a(2053, new Object[0]);
+    try
+    {
+      if (a == null) {
+        a = new bexa();
+      }
+      bexa localbexa = a;
+      return localbexa;
+    }
+    finally {}
   }
   
-  public void a(boolean paramBoolean) {}
-  
-  public void b()
+  public void a(String paramString)
   {
-    betc.d("UIProxy", "rencent task to front!");
-    beqf.a().a(2053, new Object[0]);
+    bfjq.a(paramString);
   }
   
-  public void c()
+  public void b(String paramString)
   {
-    betc.d("UIProxy", "screen off");
-    beqf.a().a(2053, new Object[0]);
+    bfjq.b(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexa
  * JD-Core Version:    0.7.0.1
  */

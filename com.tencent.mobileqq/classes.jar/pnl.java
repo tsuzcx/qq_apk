@@ -1,21 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.ProteusRecycleView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.SideBarView;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
 
-public class pnl
-  implements ValueAnimator.AnimatorUpdateListener
+class pnl
+  implements View.OnAttachStateChangeListener
 {
-  public pnl(ProteusRecycleView paramProteusRecycleView) {}
+  pnl(pnh parampnh) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onViewAttachedToWindow(View paramView) {}
+  
+  public void onViewDetachedFromWindow(View paramView)
   {
-    this.a.setPadding(0, 0, (int)ProteusRecycleView.a(this.a).a(), 0);
+    if (pnh.a(this.a) != null)
+    {
+      pnh.a(this.a).b();
+      pnh.a(this.a, null);
+    }
+    if (pnh.a(this.a) != null)
+    {
+      pnh.a(this.a).a();
+      pnh.a(this.a, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pnl
  * JD-Core Version:    0.7.0.1
  */

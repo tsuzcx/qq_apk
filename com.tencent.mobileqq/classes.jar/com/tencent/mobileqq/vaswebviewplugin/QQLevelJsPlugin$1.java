@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import aylo;
+import bajk;
 
 class QQLevelJsPlugin$1
-  extends aylo
+  extends bajk
 {
   QQLevelJsPlugin$1(QQLevelJsPlugin paramQQLevelJsPlugin, String paramString) {}
   

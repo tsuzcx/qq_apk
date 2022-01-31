@@ -1,19 +1,41 @@
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class awtl
+public class awtl
+  extends bica
 {
-  int jdField_a_of_type_Int = -1;
-  WeakReference<awtc> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public awtl(int paramInt, awtc paramawtc)
+  public int a(Context paramContext, long paramLong)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramawtc);
+    this.b = bdee.a(BaseApplication.getContext());
+    if (!this.a) {
+      switch (this.b)
+      {
+      default: 
+        this.c = 4096;
+      }
+    }
+    for (;;)
+    {
+      if (paramLong < 102400L) {
+        this.c *= 4;
+      }
+      if (paramLong - this.c <= this.c / 2) {
+        this.c = ((int)paramLong);
+      }
+      return this.c;
+      this.c = 32768;
+      continue;
+      this.c = 32768;
+      continue;
+      this.c = 16384;
+      continue;
+      this.c = 8192;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awtl
  * JD-Core Version:    0.7.0.1
  */

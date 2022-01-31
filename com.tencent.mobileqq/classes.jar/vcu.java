@@ -1,23 +1,59 @@
-import android.os.Handler;
-import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoTarget;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class vcu
-  implements uzu<uzb>
+public class vcu
+  extends unf
 {
-  vcu(vcp paramvcp, String paramString) {}
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public int b;
+  public List<String> b;
   
-  public void a(uzb paramuzb)
+  public vcu(qqstory_service.RspBannerVideoList paramRspBannerVideoList)
   {
-    if ((paramuzb.a != null) && (TextUtils.equals(paramuzb.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
+    super(paramRspBannerVideoList.result);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    if ((paramRspBannerVideoList.video_list.has()) && (!paramRspBannerVideoList.video_list.isEmpty()))
     {
-      vcp.a(this.jdField_a_of_type_Vcp).a = paramuzb.a;
-      vcp.a(this.jdField_a_of_type_Vcp).sendMessage(vcp.a(this.jdField_a_of_type_Vcp).obtainMessage(0, vcp.a(this.jdField_a_of_type_Vcp)));
+      Iterator localIterator = paramRspBannerVideoList.video_list.get().iterator();
+      while (localIterator.hasNext())
+      {
+        qqstory_struct.VideoTarget localVideoTarget = (qqstory_struct.VideoTarget)localIterator.next();
+        this.jdField_a_of_type_JavaUtilList.add(localVideoTarget.vid.get().toStringUtf8());
+        this.jdField_b_of_type_JavaUtilList.add(localVideoTarget.feed_id.get().toStringUtf8());
+      }
+    }
+    if (paramRspBannerVideoList.is_end.has()) {
+      if (paramRspBannerVideoList.is_end.get() != 1) {
+        break label202;
+      }
+    }
+    label202:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      if (paramRspBannerVideoList.next_cookie.has()) {
+        this.jdField_a_of_type_JavaLangString = paramRspBannerVideoList.next_cookie.get().toStringUtf8();
+      }
+      if (paramRspBannerVideoList.total_count.has()) {
+        this.jdField_b_of_type_Int = paramRspBannerVideoList.total_count.get();
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vcu
  * JD-Core Version:    0.7.0.1
  */

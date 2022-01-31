@@ -1,41 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.CoverCacheData;
-import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
-import cooperation.qzone.model.CoverCacheData.PackageInfo;
+import com.tencent.qqmini.sdk.core.widget.NavigationBar;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage;
+import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
 
-public final class bhez
-  implements Parcelable.Creator<CoverCacheData>
+class bhez
+  implements bghv<Void>
 {
-  public CoverCacheData a(Parcel paramParcel)
-  {
-    CoverCacheData localCoverCacheData = new CoverCacheData();
-    if (paramParcel != null)
-    {
-      localCoverCacheData.jdField_a_of_type_Long = paramParcel.readLong();
-      localCoverCacheData.jdField_a_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_c_of_type_JavaLangString = paramParcel.readString();
-      localCoverCacheData.jdField_a_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$PackageInfo = ((CoverCacheData.PackageInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-      localCoverCacheData.jdField_a_of_type_CooperationQzoneModelCoverCacheData$GameCoverInfo = ((CoverCacheData.GameCoverInfo)paramParcel.readParcelable(getClass().getClassLoader()));
-      localCoverCacheData.jdField_a_of_type_JavaUtilArrayList = paramParcel.readArrayList(getClass().getClassLoader());
-      localCoverCacheData.jdField_a_of_type_Int = paramParcel.readInt();
-      localCoverCacheData.jdField_b_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_c_of_type_JavaUtilHashMap = paramParcel.readHashMap(getClass().getClassLoader());
-      localCoverCacheData.jdField_b_of_type_Int = paramParcel.readInt();
-    }
-    return localCoverCacheData;
-  }
+  bhez(bhex parambhex, int paramInt) {}
   
-  public CoverCacheData[] a(int paramInt)
+  public Void a(bghl parambghl)
   {
+    parambghl = parambghl.a();
+    if (!(parambghl instanceof AppBrandPageContainer)) {
+      QMLog.d("Action", "Page is invalid");
+    }
+    do
+    {
+      do
+      {
+        return null;
+        parambghl = ((AppBrandPageContainer)parambghl).a();
+      } while ((parambghl == null) || (parambghl.a() == null));
+      parambghl.a().a((byte)1);
+    } while (this.jdField_a_of_type_Int != 100);
+    parambghl.a().a((byte)2);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhez
  * JD-Core Version:    0.7.0.1
  */

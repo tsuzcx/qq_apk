@@ -297,8 +297,8 @@ public class ScreenJsPlugin$ScreenShotListenManager
     this.mStartListenTime = System.currentTimeMillis();
     this.mInternalObserver = new ScreenJsPlugin.ScreenShotListenManager.MediaContentObserver(this, MediaStore.Images.Media.INTERNAL_CONTENT_URI, this.mUiHandler);
     this.mExternalObserver = new ScreenJsPlugin.ScreenShotListenManager.MediaContentObserver(this, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, this.mUiHandler);
-    this.mContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.INTERNAL_CONTENT_URI, false, this.mInternalObserver);
-    this.mContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, false, this.mExternalObserver);
+    this.mContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.INTERNAL_CONTENT_URI, true, this.mInternalObserver);
+    this.mContext.getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, this.mExternalObserver);
   }
   
   public void stopListen()
@@ -335,7 +335,7 @@ public class ScreenJsPlugin$ScreenShotListenManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.ScreenJsPlugin.ScreenShotListenManager
  * JD-Core Version:    0.7.0.1
  */

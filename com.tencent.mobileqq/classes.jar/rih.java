@@ -1,26 +1,16 @@
-import android.graphics.drawable.ColorDrawable;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.1;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-
-public class rih
-  implements InvocationHandler
+class rih
+  implements rim
 {
-  public rih(FastWebActivity.1 param1) {}
+  rih(rig paramrig) {}
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public void a()
   {
-    this.a.this$0.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-    FastWebActivity.a(this.a.this$0).setMaskBackGroundDrawable(new ColorDrawable(0));
-    return null;
+    rig.a(this.a, true, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rih
  * JD-Core Version:    0.7.0.1
  */

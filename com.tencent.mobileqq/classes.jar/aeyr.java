@@ -1,30 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-class aeyr
+public class aeyr
   implements View.OnClickListener
 {
-  aeyr(aeyq paramaeyq) {}
+  public aeyr(AIOLongShotHelper paramAIOLongShotHelper) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent();
-    paramView.putExtra("is_from_conversation", true);
-    paramView.putExtra("bookid", aeyq.a(this.a));
-    paramView.putExtra("book_new_id", aeyq.b(this.a));
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramView);
-    localIntent.putExtra("readtype", "15");
-    localIntent.setClassName(aeyq.a(this.a), "cooperation.qqreader.QRBridgeActivity");
-    localIntent.addFlags(268435456);
-    aeyq.a(this.a).startActivity(localIntent);
+    AIOLongShotHelper.a(this.a).performClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeyr
  * JD-Core Version:    0.7.0.1
  */

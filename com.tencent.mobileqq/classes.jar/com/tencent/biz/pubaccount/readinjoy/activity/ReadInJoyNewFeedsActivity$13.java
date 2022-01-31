@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import bbbm;
+import bdag;
 
 class ReadInJoyNewFeedsActivity$13
   implements Runnable
@@ -9,13 +9,13 @@ class ReadInJoyNewFeedsActivity$13
   
   public void run()
   {
-    bbbm.b();
+    bdag.b();
     this.this$0.runOnUiThread(new ReadInJoyNewFeedsActivity.13.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.13
  * JD-Core Version:    0.7.0.1
  */

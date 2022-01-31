@@ -2,23 +2,23 @@ package com.tencent.biz.qqstory.database;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import auko;
-import aulz;
+import awbv;
+import awdg;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoCommentInfo;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import myv;
+import nbp;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ssi;
-import ved;
+import uha;
+import wsv;
 
 public class CommentEntry
-  extends auko
-  implements ssi
+  extends awbv
+  implements uha
 {
   public static final int COMMENT_TYPE_CAPTURE_TOGETHER = 5;
   public static final int COMMENT_TYPE_COMMON = 0;
@@ -45,7 +45,7 @@ public class CommentEntry
   public int commentId = (int)(this.fakeId / 1000L - 1400000000.0D);
   public int commentType = 0;
   public String content;
-  @aulz
+  @awdg
   private JSONObject extraJson;
   public String extras;
   public long fakeId = System.currentTimeMillis();
@@ -149,7 +149,7 @@ public class CommentEntry
     {
       for (;;)
       {
-        ved.c("CommentEntry", "getExtraJson error", localException);
+        wsv.c("CommentEntry", "getExtraJson error", localException);
         this.extraJson = new JSONObject();
       }
     }
@@ -163,7 +163,7 @@ public class CommentEntry
   
   public boolean isReply()
   {
-    return ((!TextUtils.isEmpty(this.replierUnionId)) && (!this.replierUnionId.equals("0"))) || (myv.a(this.replyUin));
+    return ((!TextUtils.isEmpty(this.replierUnionId)) && (!this.replierUnionId.equals("0"))) || (nbp.a(this.replyUin));
   }
   
   public boolean putExtra(String paramString, Object paramObject)
@@ -177,7 +177,7 @@ public class CommentEntry
     }
     catch (JSONException paramString)
     {
-      ved.c("PublishVideoEntry", "putStringExtra error", paramString);
+      wsv.c("PublishVideoEntry", "putStringExtra error", paramString);
     }
     return false;
   }
@@ -212,7 +212,7 @@ public class CommentEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.CommentEntry
  * JD-Core Version:    0.7.0.1
  */

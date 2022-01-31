@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.troop.createNewTroop.AbsNewTroopBaseView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
 
-class bbjr
-  implements View.OnClickListener
+public class bbjr
+  extends AnimatorListenerAdapter
 {
-  bbjr(bbjq parambbjq) {}
+  public bbjr(NewTroopCreateActivity paramNewTroopCreateActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a.isShowing())
-    {
-      this.a.a.cancel();
-      this.a.a.dismiss();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView.a(this.a.jdField_a_of_type_Boolean);
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import ajya;
-import aznv;
+import alpo;
+import bbme;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
@@ -19,7 +19,7 @@ public class MessageForTroopReward
   public int expiredTimeStamp;
   public String md5;
   public String mediaPath = "";
-  public aznv resq;
+  public bbme resq;
   public String rewardContent = "";
   public int rewardCreateTime;
   public String rewardId = "";
@@ -181,7 +181,7 @@ public class MessageForTroopReward
   
   public String getSummaryMsg()
   {
-    return ajya.a(2131706596) + this.rewardContent;
+    return alpo.a(2131706968) + this.rewardContent;
   }
   
   public boolean isSupportReply()
@@ -368,7 +368,7 @@ public class MessageForTroopReward
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForTroopReward
  * JD-Core Version:    0.7.0.1
  */

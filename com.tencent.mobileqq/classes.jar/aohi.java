@@ -1,30 +1,71 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aohi
-  implements View.OnTouchListener
 {
-  public aohi(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  protected String a = "";
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public aohi() {}
+  
+  public aohi(String paramString)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (paramString != null) {
+      this.a = paramString;
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+  }
+  
+  public aohj a()
+  {
+    if ((this instanceof aohj)) {
+      return (aohj)this;
     }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIDictConfBean object");
+    return null;
+  }
+  
+  public aohk a()
+  {
+    if ((this instanceof aohk)) {
+      return (aohk)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordConfBean object");
+    return null;
+  }
+  
+  public aohl a()
+  {
+    if ((this instanceof aohl)) {
+      return (aohl)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkAIKeyWordSDKShareConfBean object");
+    return null;
+  }
+  
+  public aohm a()
+  {
+    if ((this instanceof aohm)) {
+      return (aohm)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkMsgAIDisableConfBean object");
+    return null;
+  }
+  
+  public aohn a()
+  {
+    if ((this instanceof aohn)) {
+      return (aohn)this;
+    }
+    QLog.e("ArkConfBean", 1, "this object is not a ArkPlatformConfigBean object");
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aohi
  * JD-Core Version:    0.7.0.1
  */

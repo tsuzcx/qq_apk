@@ -1,81 +1,95 @@
-import android.text.TextUtils;
-import com.tencent.image.QQLiveDrawable.ErrorInfo;
-import com.tencent.image.QQLiveDrawable.OnDownloadListener;
-import com.tencent.image.QQLiveDrawable.OnStateListener;
-import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.lang.ref.WeakReference;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.weaknet.WeakNetHelper.1;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class srr
-  implements QQLiveDrawable.OnDownloadListener, QQLiveDrawable.OnStateListener
+public class srr
 {
-  WeakReference<srk> a;
-  
-  public srr(srk paramsrk)
+  static long a()
   {
-    this.a = new WeakReference(paramsrk);
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(152);
+    int i;
+    if (localAladdinConfig != null)
+    {
+      i = localAladdinConfig.getIntegerFromString("toast_delay_time", 5000);
+      QLog.d("WeakNetHelper", 1, new Object[] { "getToastDelayTime, toastDelayTime = ", Integer.valueOf(i) });
+      if (i < 3000) {
+        QLog.d("WeakNetHelper", 1, new Object[] { "getToastDelayTime, toast config time is unreasonable, don't use it, toastDelayTime = ", Integer.valueOf(i) });
+      }
+    }
+    else
+    {
+      QLog.d("WeakNetHelper", 1, new Object[] { "getToastDelayTime, default time = ", Integer.valueOf(5000) });
+      return 5000L;
+    }
+    return i;
   }
   
-  public void OnDownload(String paramString1, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, String paramString2)
+  public static void a(String paramString1, String paramString2)
   {
-    int i = -1;
-    if ((this.a.get() == null) || (srk.a((srk)this.a.get()) != 2)) {
-      ved.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore download result");
-    }
-    while (TextUtils.isEmpty(paramString2)) {
-      return;
-    }
-    if ((paramString2.contains("\"callBackType\":\"4\"")) && (srk.b((srk)this.a.get()) != -1))
-    {
-      ved.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 4");
-      if (bbfj.d(BaseApplication.getContext())) {
-        break label209;
-      }
-      srk.a((srk)this.a.get());
-    }
-    for (;;)
-    {
-      srk.a((srk)this.a.get(), i);
-      ((srk)this.a.get()).a();
-      return;
-      if ((!paramString2.contains("\"callBackType\":\"7\"")) || (srk.b((srk)this.a.get()) == 0)) {
-        break;
-      }
-      ved.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 7");
-      srk.a((srk)this.a.get(), 0);
-      ((srk)this.a.get()).a();
-      return;
-      label209:
-      i = -2;
-    }
+    ThreadManager.getSubThreadHandler().post(new WeakNetHelper.1(paramString1, paramString2));
   }
   
-  public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
+  public static boolean a()
   {
-    if ((this.a.get() == null) || (srk.a((srk)this.a.get()) != 2)) {
-      ved.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore onStateChange");
-    }
-    while (paramInt != 5) {
-      return;
-    }
-    if ((paramObject instanceof QQLiveDrawable.ErrorInfo))
+    Object localObject = BaseActivity.sTopActivity;
+    if ((localObject instanceof SplashActivity))
     {
-      paramString = (QQLiveDrawable.ErrorInfo)paramObject;
-      if ((paramString.model != 122) || (paramString.what != 204)) {}
+      boolean bool = ReadinjoyTabFrame.c_();
+      if (bool) {}
+      for (localObject = "YES";; localObject = "NO")
+      {
+        QLog.d("WeakNetHelper", 1, new Object[] { "isAbleToShowToast: ", localObject, ", tab." });
+        return bool;
+      }
     }
-    for (paramInt = -1;; paramInt = -2)
+    if ((localObject instanceof ReadInJoyNewFeedsActivity))
     {
-      ved.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "onStateChange state=STATE_ERROR , set play state = %d", new Object[] { Integer.valueOf(paramInt) });
-      srk.a((srk)this.a.get());
-      srk.a((srk)this.a.get(), paramInt);
-      ((srk)this.a.get()).a();
-      return;
+      QLog.d("WeakNetHelper", 1, "isAbleToShowToast: YES");
+      return true;
     }
+    if (((localObject instanceof ReadInJoyVideoSubChannelActivity)) || ((localObject instanceof ReadInJoyChannelActivity)))
+    {
+      QLog.d("WeakNetHelper", 1, "isAbleToShowToast: YES, sub channel.");
+      return true;
+    }
+    QLog.d("WeakNetHelper", 1, "isAbleToShowToast: NO, not SplashActivity or ReadInJoyNewFeedsActivity, not sub channel activity.");
+    return false;
+  }
+  
+  static boolean a(ToServiceMsg paramToServiceMsg)
+  {
+    if (paramToServiceMsg != null)
+    {
+      Boolean localBoolean = (Boolean)paramToServiceMsg.getAttribute("isFeedsPreload");
+      if ((localBoolean != null) && (localBoolean.booleanValue()))
+      {
+        QLog.d("WeakNetHelper", 1, "isNeedToShowToast: NO, feeds preload request.");
+        return false;
+      }
+      paramToServiceMsg = (Long)paramToServiceMsg.getAttribute(pgp.d);
+      if ((paramToServiceMsg != null) && (paramToServiceMsg.longValue() == -1L))
+      {
+        QLog.d("WeakNetHelper", 1, "isNeedToShowToast: YES.");
+        return true;
+      }
+    }
+    QLog.d("WeakNetHelper", 1, "isNeedToShowToast: NO.");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srr
  * JD-Core Version:    0.7.0.1
  */

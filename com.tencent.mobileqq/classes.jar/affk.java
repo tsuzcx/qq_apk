@@ -1,129 +1,42 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 class affk
-  extends ajxj
+  implements View.OnClickListener
 {
-  affk(affj paramaffj) {}
+  affk(affh paramaffh) {}
   
-  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(affj.a, 2, "onSearchFriendResult  searchType = " + paramInt1 + " isSuccess = " + paramBoolean1);
-    }
-    int i;
-    if (paramInt1 == 87)
+    paramView = (MessageForArkFlashChat)paramView.getTag();
+    arru localarru;
+    String str1;
+    if (paramView != null)
     {
-      this.a.b();
-      i = 1;
+      localarru = ((FlashChatManager)this.a.a.getManager(217)).a;
+      str1 = localarru.c;
+      String str2 = localarru.f;
+      String str3 = localarru.g;
+      if (QLog.isColorLevel()) {
+        QLog.d("FlashChat", 2, "mSourceOnClickListener clickAppMsg url = " + str1 + ", actionData = " + str2 + ", actionDataA = " + str3);
+      }
+      if (!this.a.a(str1, str2, str3)) {
+        break label116;
+      }
     }
-    for (;;)
-    {
-      Object localObject;
-      if (affj.a(this.a) != null)
-      {
-        localObject = affj.a(this.a);
-        if (i != 0) {
-          label81:
-          ((affl)localObject).a(paramInt1, paramBoolean1, paramObject, paramInt2, paramString);
-        }
-      }
-      else
-      {
-        label95:
-        do
-        {
-          do
-          {
-            return;
-            if (paramInt1 != 88) {
-              break;
-            }
-          } while (paramLong != affj.a(this.a));
-          this.a.b();
-          if (paramBoolean2) {
-            break;
-          }
-        } while (affj.a(this.a) == null);
-        affj.a(this.a).a(affj.a(this.a), paramBoolean1, new ArrayList(), paramInt2, paramString);
-        return;
-        if (!paramBoolean1) {}
-      }
-      for (;;)
-      {
-        try
-        {
-          localObject = (ArrayList)paramObject;
-          if ((localObject != null) && (affj.a(this.a) != 80000005) && (((ArrayList)localObject).size() == 1)) {
-            affj.a(this.a, ((afgv)((ArrayList)localObject).get(0)).jdField_b_of_type_Int);
-          }
-          if ((localObject == null) || (((ArrayList)localObject).size() < 1)) {
-            break label582;
-          }
-          localObject = ((ArrayList)localObject).iterator();
-          if (!((Iterator)localObject).hasNext()) {
-            break label570;
-          }
-          afgv localafgv = (afgv)((Iterator)localObject).next();
-          if (localafgv.a != 80000003) {
-            continue;
-          }
-          i = 0;
-          if (i >= localafgv.jdField_b_of_type_JavaUtilList.size()) {
-            break label576;
-          }
-          ((AccountSearchPb.record)localafgv.jdField_b_of_type_JavaUtilList.get(i)).number.set(i + 1);
-          i += 1;
-          continue;
-          if (i == 0) {
-            break label582;
-          }
-          if (affj.a(this.a) != 80000005) {
-            nol.a(affj.a(this.a), "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D96", "0X8005D96", 0, 0, affj.b(this.a) + "", "", this.a.b, "", false);
-          } else {
-            nol.a(affj.a(this.a), "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D94", "0X8005D94", 0, 0, "", "", this.a.b, "", false);
-          }
-        }
-        catch (Exception paramObject)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e(affj.a, 2, "", paramObject);
-          }
-        }
-        if (affj.a(this.a) == null) {
-          break label95;
-        }
-        affj.a(this.a).a(affj.a(this.a), paramBoolean1, new ArrayList(), paramInt2, paramString);
-        return;
-        if (QLog.isColorLevel())
-        {
-          QLog.d(affj.a, 2, "search failed error msg = " + paramString);
-          i = 0;
-          break;
-          this.a.b();
-        }
-        i = 0;
-        break;
-        paramInt1 = affj.a(this.a);
-        break label81;
-        label570:
-        i = 0;
-        continue;
-        label576:
-        i = 1;
-      }
-      label582:
-      i = 0;
+    label116:
+    while (!this.a.a(str1, localarru.b, paramView)) {
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     affk
  * JD-Core Version:    0.7.0.1
  */

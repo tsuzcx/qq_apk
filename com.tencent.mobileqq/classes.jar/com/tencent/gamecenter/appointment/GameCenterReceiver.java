@@ -1,22 +1,22 @@
 package com.tencent.gamecenter.appointment;
 
+import aacs;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import bicy;
+import bkeu;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import ynz;
 
 public class GameCenterReceiver
   extends BroadcastReceiver
 {
   static GameCenterReceiver jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver;
   public static boolean a;
-  List<ynz> jdField_a_of_type_JavaUtilList = new ArrayList();
+  List<aacs> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   /* Error */
   public static void a()
@@ -113,6 +113,19 @@ public class GameCenterReceiver
     //   122	148	158	java/lang/Throwable
   }
   
+  public static void a(aacs paramaacs)
+  {
+    if (jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver == null) {}
+    while ((paramaacs == null) || (jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver.jdField_a_of_type_JavaUtilList.contains(paramaacs))) {
+      return;
+    }
+    synchronized (jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver.jdField_a_of_type_JavaUtilList)
+    {
+      jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver.jdField_a_of_type_JavaUtilList.add(paramaacs);
+      return;
+    }
+  }
+  
   private void a(Intent paramIntent)
   {
     if (paramIntent == null) {
@@ -134,19 +147,6 @@ public class GameCenterReceiver
       paramIntent = paramIntent.split(":");
     } while (paramIntent.length < 2);
     ThreadManagerV2.excute(new GameCenterReceiver.1(this, paramIntent[1], paramString), 16, null, true);
-  }
-  
-  public static void a(ynz paramynz)
-  {
-    if (jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver == null) {}
-    while ((paramynz == null) || (jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver.jdField_a_of_type_JavaUtilList.contains(paramynz))) {
-      return;
-    }
-    synchronized (jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver.jdField_a_of_type_JavaUtilList)
-    {
-      jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterReceiver.jdField_a_of_type_JavaUtilList.add(paramynz);
-      return;
-    }
   }
   
   /* Error */
@@ -211,7 +211,7 @@ public class GameCenterReceiver
       }
       if ("android.intent.action.SCREEN_OFF".equals(paramContext))
       {
-        bicy.a().a(false, -1L);
+        bkeu.a().a(false, -1L);
         return;
       }
       if (("android.intent.action.PACKAGE_ADDED".equals(paramContext)) || ("android.intent.action.PACKAGE_REMOVED".equals(paramContext)))
@@ -225,7 +225,7 @@ public class GameCenterReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gamecenter.appointment.GameCenterReceiver
  * JD-Core Version:    0.7.0.1
  */

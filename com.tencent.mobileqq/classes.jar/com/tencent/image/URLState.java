@@ -542,83 +542,77 @@ public final class URLState
     //   138: if_acmpeq -123 -> 15
     //   141: invokestatic 702	android/os/Looper:myLooper	()Landroid/os/Looper;
     //   144: invokestatic 132	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   147: if_acmpne +91 -> 238
+    //   147: if_acmpne +9 -> 156
     //   150: aload_0
     //   151: aload_1
     //   152: invokevirtual 759	com/tencent/image/URLState:onResult	(Ljava/lang/Object;)V
     //   155: return
-    //   156: astore_1
-    //   157: getstatic 124	com/tencent/image/URLState:DOWNLOAD_ASYNC	Ljava/lang/Object;
-    //   160: ifnull +17 -> 177
-    //   163: invokestatic 702	android/os/Looper:myLooper	()Landroid/os/Looper;
-    //   166: invokestatic 132	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   169: if_acmpne +50 -> 219
-    //   172: aload_0
-    //   173: aconst_null
-    //   174: invokevirtual 759	com/tencent/image/URLState:onResult	(Ljava/lang/Object;)V
-    //   177: aload_1
-    //   178: athrow
-    //   179: astore_2
-    //   180: aload_2
-    //   181: getstatic 124	com/tencent/image/URLState:DOWNLOAD_ASYNC	Ljava/lang/Object;
-    //   184: if_acmpeq -169 -> 15
-    //   187: aload_2
-    //   188: astore_1
-    //   189: invokestatic 702	android/os/Looper:myLooper	()Landroid/os/Looper;
-    //   192: invokestatic 132	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   195: if_acmpeq -45 -> 150
-    //   198: getstatic 137	com/tencent/image/URLState:UI_HANDLER	Landroid/os/Handler;
-    //   201: astore_1
-    //   202: new 761	com/tencent/image/URLState$PostOnResult
-    //   205: dup
-    //   206: aload_0
-    //   207: aload_2
-    //   208: invokespecial 762	com/tencent/image/URLState$PostOnResult:<init>	(Lcom/tencent/image/URLState;Ljava/lang/Object;)V
-    //   211: astore_2
-    //   212: aload_1
-    //   213: aload_2
-    //   214: invokevirtual 721	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   217: pop
-    //   218: return
-    //   219: getstatic 137	com/tencent/image/URLState:UI_HANDLER	Landroid/os/Handler;
-    //   222: new 761	com/tencent/image/URLState$PostOnResult
-    //   225: dup
-    //   226: aload_0
-    //   227: aconst_null
-    //   228: invokespecial 762	com/tencent/image/URLState$PostOnResult:<init>	(Lcom/tencent/image/URLState;Ljava/lang/Object;)V
-    //   231: invokevirtual 721	android/os/Handler:post	(Ljava/lang/Runnable;)Z
-    //   234: pop
-    //   235: goto -58 -> 177
-    //   238: getstatic 137	com/tencent/image/URLState:UI_HANDLER	Landroid/os/Handler;
-    //   241: astore_2
-    //   242: new 761	com/tencent/image/URLState$PostOnResult
-    //   245: dup
-    //   246: aload_0
-    //   247: aload_1
-    //   248: invokespecial 762	com/tencent/image/URLState$PostOnResult:<init>	(Lcom/tencent/image/URLState;Ljava/lang/Object;)V
-    //   251: astore_3
-    //   252: aload_2
-    //   253: astore_1
-    //   254: aload_3
-    //   255: astore_2
-    //   256: goto -44 -> 212
+    //   156: getstatic 137	com/tencent/image/URLState:UI_HANDLER	Landroid/os/Handler;
+    //   159: new 761	com/tencent/image/URLState$PostOnResult
+    //   162: dup
+    //   163: aload_0
+    //   164: aload_1
+    //   165: invokespecial 762	com/tencent/image/URLState$PostOnResult:<init>	(Lcom/tencent/image/URLState;Ljava/lang/Object;)V
+    //   168: invokevirtual 721	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   171: pop
+    //   172: return
+    //   173: astore_1
+    //   174: aload_1
+    //   175: getstatic 124	com/tencent/image/URLState:DOWNLOAD_ASYNC	Ljava/lang/Object;
+    //   178: if_acmpeq -163 -> 15
+    //   181: invokestatic 702	android/os/Looper:myLooper	()Landroid/os/Looper;
+    //   184: invokestatic 132	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   187: if_acmpne +9 -> 196
+    //   190: aload_0
+    //   191: aload_1
+    //   192: invokevirtual 759	com/tencent/image/URLState:onResult	(Ljava/lang/Object;)V
+    //   195: return
+    //   196: getstatic 137	com/tencent/image/URLState:UI_HANDLER	Landroid/os/Handler;
+    //   199: new 761	com/tencent/image/URLState$PostOnResult
+    //   202: dup
+    //   203: aload_0
+    //   204: aload_1
+    //   205: invokespecial 762	com/tencent/image/URLState$PostOnResult:<init>	(Lcom/tencent/image/URLState;Ljava/lang/Object;)V
+    //   208: invokevirtual 721	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   211: pop
+    //   212: return
+    //   213: astore_1
+    //   214: getstatic 124	com/tencent/image/URLState:DOWNLOAD_ASYNC	Ljava/lang/Object;
+    //   217: ifnull +17 -> 234
+    //   220: invokestatic 702	android/os/Looper:myLooper	()Landroid/os/Looper;
+    //   223: invokestatic 132	android/os/Looper:getMainLooper	()Landroid/os/Looper;
+    //   226: if_acmpne +10 -> 236
+    //   229: aload_0
+    //   230: aconst_null
+    //   231: invokevirtual 759	com/tencent/image/URLState:onResult	(Ljava/lang/Object;)V
+    //   234: aload_1
+    //   235: athrow
+    //   236: getstatic 137	com/tencent/image/URLState:UI_HANDLER	Landroid/os/Handler;
+    //   239: new 761	com/tencent/image/URLState$PostOnResult
+    //   242: dup
+    //   243: aload_0
+    //   244: aconst_null
+    //   245: invokespecial 762	com/tencent/image/URLState$PostOnResult:<init>	(Lcom/tencent/image/URLState;Ljava/lang/Object;)V
+    //   248: invokevirtual 721	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   251: pop
+    //   252: goto -18 -> 234
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	259	0	this	URLState
-    //   0	259	1	paramArrayOfHeader	Header[]
-    //   0	259	2	paramCookieStore	CookieStore
-    //   0	259	3	paramObject1	Object
-    //   0	259	4	paramBoolean1	boolean
-    //   0	259	5	paramBoolean2	boolean
-    //   0	259	6	paramBoolean3	boolean
-    //   0	259	7	paramBoolean4	boolean
-    //   0	259	8	paramFloat	float
-    //   0	259	9	paramBoolean5	boolean
-    //   0	259	10	paramObject2	Object
+    //   0	255	0	this	URLState
+    //   0	255	1	paramArrayOfHeader	Header[]
+    //   0	255	2	paramCookieStore	CookieStore
+    //   0	255	3	paramObject1	Object
+    //   0	255	4	paramBoolean1	boolean
+    //   0	255	5	paramBoolean2	boolean
+    //   0	255	6	paramBoolean3	boolean
+    //   0	255	7	paramBoolean4	boolean
+    //   0	255	8	paramFloat	float
+    //   0	255	9	paramBoolean5	boolean
+    //   0	255	10	paramObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   118	134	156	finally
-    //   118	134	179	java/lang/Throwable
+    //   118	134	173	java/lang/Throwable
+    //   118	134	213	finally
   }
   
   public int getChangingConfigurations()

@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.task;
 
-import bffk;
+import bhhp;
 
 public class MainThreadTask$1
   implements Runnable
 {
-  public MainThreadTask$1(bffk parambffk) {}
+  public MainThreadTask$1(bhhp parambhhp) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class MainThreadTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.MainThreadTask.1
  * JD-Core Version:    0.7.0.1
  */

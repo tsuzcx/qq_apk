@@ -137,7 +137,7 @@ public class SystemInfoManager
           localJSONObject1.put("SDKVersion", "0.1.0");
           localJSONObject1.put("benchmarkLevel", this.mTritonEngine.getQQEnv().getBenchmarkLevel());
           localJSONObject1.put("version", this.mTritonEngine.getQQEnv().getPlatformVersion());
-          localJSONObject1.put("SDKVersion", "1.1.2.1581929008032");
+          localJSONObject1.put("SDKVersion", "1.1.2.1586762639354");
           localJSONObject1.put("AppPlatform", this.mTritonEngine.getQQEnv().getPlatformName());
           JSONObject localJSONObject2 = new JSONObject();
           j = DisplayUtil.dip2px(this.appContext, 9.0F);
@@ -169,7 +169,7 @@ public class SystemInfoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.triton.utils.SystemInfoManager
  * JD-Core Version:    0.7.0.1
  */

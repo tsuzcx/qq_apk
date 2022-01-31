@@ -1,135 +1,98 @@
-import android.graphics.Color;
-import android.support.annotation.ColorInt;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import java.util.Arrays;
-
-public final class bbns
+public class bbns
 {
-  private final int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  @Nullable
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private final int b;
-  private final int c;
-  private final int d;
-  private final int e;
-  private int f;
-  private int g;
-  
-  public bbns(@ColorInt int paramInt1, int paramInt2)
+  public static int a(String paramString)
   {
-    this.jdField_a_of_type_Int = Color.red(paramInt1);
-    this.b = Color.green(paramInt1);
-    this.c = Color.blue(paramInt1);
-    this.d = paramInt1;
-    this.e = paramInt2;
-  }
-  
-  private void a()
-  {
-    int j;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      i = bbnm.a(-1, this.d, 4.5F);
-      j = bbnm.a(-1, this.d, 3.0F);
-      if ((i != -1) && (j != -1))
-      {
-        this.g = bbnm.b(-1, i);
-        this.f = bbnm.b(-1, j);
-        this.jdField_a_of_type_Boolean = true;
-      }
+    int i = -1;
+    if (paramString.equals("SCANNING")) {
+      i = 0;
     }
-    else
-    {
-      return;
-    }
-    int m = bbnm.a(-16777216, this.d, 4.5F);
-    int k = bbnm.a(-16777216, this.d, 3.0F);
-    if ((m != -1) && (k != -1))
-    {
-      this.g = bbnm.b(-16777216, m);
-      this.f = bbnm.b(-16777216, k);
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    if (i != -1)
-    {
-      i = bbnm.b(-1, i);
-      this.g = i;
-      if (j == -1) {
-        break label175;
-      }
-    }
-    label175:
-    for (int i = bbnm.b(-1, j);; i = bbnm.b(-16777216, k))
-    {
-      this.f = i;
-      this.jdField_a_of_type_Boolean = true;
-      return;
-      i = bbnm.b(-16777216, m);
-      break;
-    }
-  }
-  
-  @ColorInt
-  public int a()
-  {
-    return this.d;
-  }
-  
-  @NonNull
-  public float[] a()
-  {
-    if (this.jdField_a_of_type_ArrayOfFloat == null) {
-      this.jdField_a_of_type_ArrayOfFloat = new float[3];
-    }
-    bbnm.a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_ArrayOfFloat);
-    return this.jdField_a_of_type_ArrayOfFloat;
-  }
-  
-  public int b()
-  {
-    return this.e;
-  }
-  
-  @ColorInt
-  public int c()
-  {
-    a();
-    return this.f;
-  }
-  
-  @ColorInt
-  public int d()
-  {
-    a();
-    return this.g;
-  }
-  
-  public boolean equals(@Nullable Object paramObject)
-  {
-    if (this == paramObject) {}
     do
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      return i;
+      if (paramString.equals("UPLOADING")) {
+        return 1;
       }
-      paramObject = (bbns)paramObject;
-    } while ((this.e == paramObject.e) && (this.d == paramObject.d));
-    return false;
+      if (paramString.equals("UPLOAD_SUSPEND")) {
+        return 2;
+      }
+      if (paramString.equals("UPLOAD_INTERRUPT")) {
+        return 3;
+      }
+      if (paramString.equals("FORWARDING")) {
+        return 4;
+      }
+      if (paramString.equals("FORWARD_FAILED")) {
+        return 5;
+      }
+      if (paramString.equals("UPLOADED")) {
+        return 6;
+      }
+      if (paramString.equals("NOT_DOWNLOAD")) {
+        return 7;
+      }
+      if (paramString.equals("DOWNLOADING")) {
+        return 8;
+      }
+      if (paramString.equals("DOWNLOAD_SUSPEND")) {
+        return 9;
+      }
+      if (paramString.equals("DOWNLOAD_INTERRUPT")) {
+        return 10;
+      }
+      if (paramString.equals("DOWNLOADED")) {
+        return 11;
+      }
+      if (paramString.equals("DELETED")) {
+        return 12;
+      }
+    } while (!paramString.equals("OTHER_UPLOADING"));
+    return 13;
   }
   
-  public int hashCode()
+  public static String a(int paramInt)
   {
-    return this.d * 31 + this.e;
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 0: 
+      return "SCANNING";
+    case 1: 
+      return "UPLOADING";
+    case 2: 
+      return "UPLOAD_SUSPEND";
+    case 3: 
+      return "UPLOAD_INTERRUPT";
+    case 4: 
+      return "FORWARDING";
+    case 5: 
+      return "FORWARD_FAILED";
+    case 6: 
+      return "UPLOADED";
+    case 7: 
+      return "NOT_DOWNLOAD";
+    case 8: 
+      return "DOWNLOADING";
+    case 9: 
+      return "DOWNLOAD_SUSPEND";
+    case 10: 
+      return "DOWNLOAD_INTERRUPT";
+    case 11: 
+      return "DOWNLOADED";
+    case 12: 
+      return "DELETED";
+    }
+    return "OTHER_UPLOADING";
   }
   
-  @NonNull
-  public String toString()
+  public static boolean a(int paramInt)
   {
-    return getClass().getSimpleName() + " [RGB: #" + Integer.toHexString(a()) + ']' + " [HSL: " + Arrays.toString(a()) + ']' + " [Population: " + this.e + ']' + " [Title Text: #" + Integer.toHexString(c()) + ']' + " [Body Text: #" + Integer.toHexString(d()) + ']';
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3);
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt == 8) || (paramInt == 10) || (paramInt == 9);
   }
 }
 

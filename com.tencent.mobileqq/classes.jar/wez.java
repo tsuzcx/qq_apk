@@ -1,19 +1,27 @@
-final class wez
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper.3.1;
+
+public class wez
+  implements View.OnFocusChangeListener
 {
-  public float a;
-  public float b;
-  public float c;
+  wez(wew paramwew) {}
   
-  public wez(float paramFloat1, float paramFloat2, float paramFloat3)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
+    if (!paramBoolean) {
+      this.a.b();
+    }
+    while (wew.a(this.a)) {
+      return;
+    }
+    new Handler().postDelayed(new DetailCommentHelper.3.1(this), 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wez
  * JD-Core Version:    0.7.0.1
  */

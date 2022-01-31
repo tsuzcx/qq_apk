@@ -4,7 +4,7 @@ import NS_COMM.COMM.StCommonExt;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -32,7 +32,7 @@ public class MiniAppGetAuthListServlet
           continue;
         }
         PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bbma.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bdku.b(paramFromServiceMsg.getWupBuffer()));
         if (QLog.isColorLevel()) {
           QLog.d("MiniAppGetAuthListServlet", 2, "onReceive. inform MiniAppDelUserAppServlet resultcode success.");
         }
@@ -72,7 +72,7 @@ public class MiniAppGetAuthListServlet
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_user_info.GetAuthList");
-      paramPacket.putSendData(bbma.a((byte[])localObject1));
+      paramPacket.putSendData(bdku.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
       return;
@@ -91,7 +91,7 @@ public class MiniAppGetAuthListServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetAuthListServlet
  * JD-Core Version:    0.7.0.1
  */

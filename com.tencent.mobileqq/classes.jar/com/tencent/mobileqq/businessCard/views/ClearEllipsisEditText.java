@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.businessCard.views;
 
-import amex;
-import amey;
 import android.content.Context;
 import android.graphics.Rect;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
+import anvx;
+import anvy;
 import com.tencent.mobileqq.widget.ClearableEditText;
 import com.tencent.qphone.base.util.QLog;
 
@@ -87,8 +87,8 @@ public class ClearEllipsisEditText
   
   private void a()
   {
-    addTextChangedListener(new amex(this));
-    setOnTouchListener(new amey(this));
+    addTextChangedListener(new anvx(this));
+    setOnTouchListener(new anvy(this));
   }
   
   public String a()
@@ -153,7 +153,7 @@ public class ClearEllipsisEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText
  * JD-Core Version:    0.7.0.1
  */

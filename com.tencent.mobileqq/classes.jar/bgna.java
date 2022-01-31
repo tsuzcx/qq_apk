@@ -1,59 +1,38 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qappcenter.remote.SendMsg;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.view.View;
+import com.tencent.qqmini.sdk.log.QMLog;
 
-public abstract class bgna
-  extends Binder
-  implements bgmz
+class bgna
 {
-  public bgna()
-  {
-    attachInterface(this, "cooperation.qappcenter.remote.IServiceHandler");
-  }
+  private int jdField_a_of_type_Int = 0;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public static bgmz a(IBinder paramIBinder)
+  private void a()
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qappcenter.remote.IServiceHandler");
-    if ((localIInterface != null) && ((localIInterface instanceof bgmz))) {
-      return (bgmz)localIInterface;
-    }
-    return new bgnb(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qappcenter.remote.IServiceHandler");
-      return true;
+      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
+      if ((localDrawable instanceof GradientDrawable)) {
+        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
+      }
     }
-    paramParcel1.enforceInterface("cooperation.qappcenter.remote.IServiceHandler");
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    else
     {
-      a(paramParcel1);
-      paramParcel2.writeNoException();
-      return true;
+      return;
     }
+    QMLog.w("BrandColorManager", "set band border-color fail");
+  }
+  
+  void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgna
  * JD-Core Version:    0.7.0.1
  */

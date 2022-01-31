@@ -1,35 +1,18 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper.1.1;
+import com.tencent.mobileqq.nativememorymonitor.library.ExternalProvider;
 
-class apbn
-  extends apbm
+public final class apbn
+  implements ExternalProvider
 {
-  public apbn(apbi paramapbi)
+  public void onSoLoad(String paramString1, String paramString2)
   {
-    super(paramapbi);
-  }
-  
-  protected String a()
-  {
-    return "StateCancelUploadWhenChangeToOff";
-  }
-  
-  protected boolean a()
-  {
-    if (this.jdField_a_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
-    }
-    apbi.b(this.jdField_a_of_type_Apbi, 11, 9);
-    apbi.c(this.jdField_a_of_type_Apbi, 11, 9);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + "->StateCancelUploadWhenRecv)");
-    this.jdField_a_of_type_Apbm = new apbp(this.jdField_a_of_type_Apbi);
-    return true;
+    ThreadManager.excute(new NativeMonitorConfigHelper.1.1(this, paramString1, paramString2), 64, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apbn
  * JD-Core Version:    0.7.0.1
  */

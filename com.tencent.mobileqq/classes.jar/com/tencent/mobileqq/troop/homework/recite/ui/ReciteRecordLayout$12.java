@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.recite.ui;
 
-import azzx;
+import bbyg;
 
 class ReciteRecordLayout$12
   implements Runnable

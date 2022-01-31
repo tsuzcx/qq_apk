@@ -1,15 +1,35 @@
-class alik
-  implements aysc
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public class alik
+  implements alit
 {
-  alik(alii paramalii) {}
+  public alik(ApolloPanel paramApolloPanel) {}
   
-  public void onResp(aysz paramaysz) {}
+  public void a(ApolloPanelGuideView paramApolloPanelGuideView)
+  {
+    ApolloPanel.e(this.a);
+    if (!ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip"))
+    {
+      ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip");
+      ApolloPanel.a(this.a, ApolloPanel.a(this.a), 49, this.a.getResources().getString(2131690163), 5);
+    }
+  }
   
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
+  public void b(ApolloPanelGuideView paramApolloPanelGuideView)
+  {
+    ApolloPanel.e(this.a);
+    paramApolloPanelGuideView = (bdpx)this.a.a.a.a(71);
+    paramApolloPanelGuideView.a(new alil(this, paramApolloPanelGuideView));
+    paramApolloPanelGuideView.c("guide_page", 1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alik
  * JD-Core Version:    0.7.0.1
  */

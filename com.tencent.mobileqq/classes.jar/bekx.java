@@ -1,168 +1,82 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.graphics.Point;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.mobileqq.widget.MeasureGridView;
+import com.tencent.widget.ListView;
 
-public final class bekx
+public class bekx
+  implements Animation.AnimationListener
 {
-  public static JSONObject a(String paramString, JSONObject paramJSONObject)
+  private int jdField_a_of_type_Int;
+  private Point jdField_a_of_type_AndroidGraphicsPoint;
+  private boolean jdField_a_of_type_Boolean;
+  private Point b;
+  
+  public bekx(DraggableGridView paramDraggableGridView, Point paramPoint1, Point paramPoint2, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString))
+    this.jdField_a_of_type_AndroidGraphicsPoint = new Point(paramPoint1);
+    this.b = new Point(paramPoint2);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = 0;
+    DraggableGridView.b(paramDraggableGridView, true);
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    int i = this.jdField_a_of_type_Int - 1;
+    this.jdField_a_of_type_Int = i;
+    if (i <= 0)
     {
-      paramString = paramJSONObject;
-      if (paramJSONObject == null) {
-        paramString = new JSONObject();
-      }
-      return paramString;
-    }
-    if (paramJSONObject == null) {
-      try
+      i = 0;
+      while (i < DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).getChildCount())
       {
-        JSONObject localJSONObject = new JSONObject();
-        paramJSONObject = localJSONObject;
-        label63:
-        for (;;) {}
-      }
-      catch (Exception paramString)
-      {
-        try
+        paramAnimation = DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).getChildAt(i);
+        if ((paramAnimation instanceof MeasureGridView))
         {
-          paramJSONObject.put("errMsg", paramString + ":ok");
-          for (;;)
+          paramAnimation = (GridView)paramAnimation;
+          int j = 0;
+          if (j < paramAnimation.getChildCount())
           {
-            return paramJSONObject;
-            paramString = paramString;
+            paramAnimation.getChildAt(j).clearAnimation();
+            if ((((Integer)paramAnimation.getTag()).intValue() == DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y) && (j == DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x) && (!this.jdField_a_of_type_Boolean)) {
+              paramAnimation.getChildAt(j).setVisibility(4);
+            }
+            for (;;)
+            {
+              j += 1;
+              break;
+              paramAnimation.getChildAt(j).setVisibility(0);
+            }
           }
         }
-        catch (Exception paramString)
-        {
-          break label63;
-        }
+        i += 1;
       }
+      if (!this.jdField_a_of_type_Boolean) {
+        break label216;
+      }
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x);
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).set(-1, -1);
     }
-  }
-  
-  /* Error */
-  public static JSONObject a(String paramString1, JSONObject paramJSONObject, String paramString2)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokestatic 14	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4: ifeq +19 -> 23
-    //   7: aload_1
-    //   8: astore_0
-    //   9: aload_1
-    //   10: ifnonnull +11 -> 21
-    //   13: new 16	org/json/JSONObject
-    //   16: dup
-    //   17: invokespecial 20	org/json/JSONObject:<init>	()V
-    //   20: astore_0
-    //   21: aload_0
-    //   22: areturn
-    //   23: aload_1
-    //   24: ifnonnull +89 -> 113
-    //   27: new 16	org/json/JSONObject
-    //   30: dup
-    //   31: invokespecial 20	org/json/JSONObject:<init>	()V
-    //   34: astore_3
-    //   35: aload_3
-    //   36: astore_1
-    //   37: new 24	java/lang/StringBuilder
-    //   40: dup
-    //   41: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   44: aload_0
-    //   45: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: ldc 43
-    //   50: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   53: astore_3
-    //   54: aload_2
-    //   55: invokestatic 14	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   58: ifeq +24 -> 82
-    //   61: ldc 45
-    //   63: astore_0
-    //   64: aload_1
-    //   65: ldc 22
-    //   67: aload_3
-    //   68: aload_0
-    //   69: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   75: invokevirtual 39	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   78: pop
-    //   79: goto +37 -> 116
-    //   82: new 24	java/lang/StringBuilder
-    //   85: dup
-    //   86: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   89: ldc 47
-    //   91: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   94: aload_2
-    //   95: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   101: astore_0
-    //   102: goto -38 -> 64
-    //   105: astore_0
-    //   106: goto +10 -> 116
-    //   109: astore_0
-    //   110: goto +6 -> 116
-    //   113: goto -76 -> 37
-    //   116: aload_1
-    //   117: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	118	0	paramString1	String
-    //   0	118	1	paramJSONObject	JSONObject
-    //   0	118	2	paramString2	String
-    //   34	34	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   27	35	105	java/lang/Exception
-    //   37	61	109	java/lang/Exception
-    //   64	79	109	java/lang/Exception
-    //   82	102	109	java/lang/Exception
-  }
-  
-  public static JSONObject b(String paramString, JSONObject paramJSONObject)
-  {
-    return a(paramString, paramJSONObject, null);
-  }
-  
-  public static JSONObject c(String paramString, JSONObject paramJSONObject)
-  {
-    if (TextUtils.isEmpty(paramString))
+    for (;;)
     {
-      paramString = paramJSONObject;
-      if (paramJSONObject == null) {
-        paramString = new JSONObject();
-      }
-      return paramString;
-    }
-    if (paramJSONObject == null) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        paramJSONObject = localJSONObject;
-        label63:
-        for (;;) {}
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          paramJSONObject.put("errMsg", paramString + ":cancel cancel");
-          for (;;)
-          {
-            return paramJSONObject;
-            paramString = paramString;
-          }
-        }
-        catch (Exception paramString)
-        {
-          break label63;
-        }
-      }
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).notifyDataSetChanged();
+      DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, false);
+      return;
+      label216:
+      DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_AndroidGraphicsPoint.y, this.jdField_a_of_type_AndroidGraphicsPoint.x, this.b.y, this.b.x);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bekx
  * JD-Core Version:    0.7.0.1
  */

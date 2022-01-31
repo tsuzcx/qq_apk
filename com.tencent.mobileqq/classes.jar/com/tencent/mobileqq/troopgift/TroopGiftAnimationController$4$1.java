@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troopgift;
 
-import baro;
-import bars;
+import bcqi;
+import bcqm;
 
 public class TroopGiftAnimationController$4$1
   implements Runnable
 {
-  public TroopGiftAnimationController$4$1(bars parambars) {}
+  public TroopGiftAnimationController$4$1(bcqm parambcqm) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class TroopGiftAnimationController$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.4.1
  * JD-Core Version:    0.7.0.1
  */

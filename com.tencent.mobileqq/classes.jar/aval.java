@@ -1,41 +1,42 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.profile.view.ShimmerLinearLayout;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aval
-  implements ValueAnimator.AnimatorUpdateListener
+  implements AdapterView.OnItemLongClickListener
 {
-  final int jdField_a_of_type_Int;
-  private WeakReference<ShimmerLinearLayout> jdField_a_of_type_JavaLangRefWeakReference;
-  final int b;
-  final int c;
-  final int d;
+  public aval(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  private aval(ShimmerLinearLayout paramShimmerLinearLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramShimmerLinearLayout);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f1 = Math.max(0.0F, Math.min(1.0F, ((Float)paramValueAnimator.getAnimatedValue()).floatValue()));
-    paramValueAnimator = (ShimmerLinearLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramValueAnimator != null)
+    paramAdapterView = (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt);
+    if (paramAdapterView == null) {
+      return true;
+    }
+    paramLong = Long.parseLong(this.a.a.getCurrentAccountUin());
+    if (paramAdapterView.c == paramLong)
     {
-      int i = (int)(this.jdField_a_of_type_Int * (1.0F - f1) + this.c * f1);
-      float f2 = this.b;
-      paramValueAnimator.a(i, (int)(f1 * this.d + f2 * (1.0F - f1)));
+      this.a.c(paramAdapterView);
+      return true;
+    }
+    if (ShortVideoCommentsView.a(this.a).c == paramLong) {
+      this.a.e(paramAdapterView);
+    }
+    for (;;)
+    {
+      return false;
+      this.a.d(paramAdapterView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aval
  * JD-Core Version:    0.7.0.1
  */

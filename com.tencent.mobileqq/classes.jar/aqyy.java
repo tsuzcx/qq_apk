@@ -1,48 +1,82 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.hotpic.HotPicTagInfo;
+import android.content.Context;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
 import java.util.List;
 
-public class aqyy
+public abstract class aqyy
+  extends ayjm
 {
-  private SparseArray<HotPicTagInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private ArrayList<HotPicTagInfo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  protected int a;
+  protected Bundle a;
+  protected String a;
   
-  public int a()
+  public aqyy(String paramString, int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public HotPicTagInfo a(int paramInt)
+  public String a()
   {
-    return (HotPicTagInfo)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public List<HotPicTagInfo> a()
+  public List<ayjl> a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
+    return new ArrayList(0);
   }
   
-  public void a()
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public void a(HotPicTagInfo paramHotPicTagInfo)
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramHotPicTagInfo);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramHotPicTagInfo.tagId, paramHotPicTagInfo);
+    int i = d();
+    if (i == 1) {
+      if (paramView.getId() == 2131366299) {
+        b(paramView);
+      }
+    }
+    while (i <= 1)
+    {
+      return;
+      c(paramView);
+      return;
+    }
+    d(paramView);
   }
   
-  public HotPicTagInfo b(int paramInt)
+  public boolean a()
   {
-    return (HotPicTagInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return false;
   }
+  
+  protected abstract void b(View paramView);
+  
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  protected abstract void c(View paramView);
+  
+  public int d()
+  {
+    return 0;
+  }
+  
+  public abstract String d();
+  
+  protected abstract void d(View paramView);
+  
+  public abstract int e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqyy
  * JD-Core Version:    0.7.0.1
  */

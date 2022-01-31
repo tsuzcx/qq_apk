@@ -1,388 +1,231 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.theme.DarkModeManager.3;
-import com.tencent.mobileqq.theme.DarkModeManager.6;
-import com.tencent.mobileqq.theme.ThemeSwitcher;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
-import org.jetbrains.annotations.Nullable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import pb.unite.search.DynamicSearch.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItemGroup;
 
 public class aylh
+  implements aylg<ayjk>
 {
-  private static boolean a;
-  private static boolean b;
-  
-  private static SharedPreferences a()
+  public List<ayjk> a(Object... paramVarArgs)
   {
-    Object localObject2 = null;
-    try
-    {
-      Object localObject3 = BaseApplicationImpl.getApplication();
-      Object localObject1 = localObject2;
-      if (localObject3 != null)
-      {
-        localObject3 = ((BaseApplicationImpl)localObject3).getRuntime();
-        localObject1 = localObject2;
-        if (localObject3 != null) {
-          localObject1 = ((AppRuntime)localObject3).getApplication().getSharedPreferences("DarkModeManagerdark_mode_ui", 4);
-        }
-      }
-      return localObject1;
+    if ((paramVarArgs == null) || (paramVarArgs.length < 3)) {
+      return null;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("DarkModeManager", 2, "getSharedPreferences error!: ", localThrowable);
+    String str1 = "";
+    if ((paramVarArgs[0] instanceof String)) {
+      str1 = (String)paramVarArgs[0];
     }
-    return null;
-  }
-  
-  private static void a()
-  {
-    if (axmv.b()) {}
-    for (String str = "2920";; str = "1103")
-    {
-      QLog.d("DarkModeManager", 1, "switchToNightMode themeID=" + str);
-      ThemeSwitcher.a(str, "202", null);
-      return;
-    }
-  }
-  
-  public static void a(Activity paramActivity, String paramString, aylm paramaylm)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing()))
-    {
-      QLog.e("DarkModeManager", 2, "showThemeDarkModeTips error!: ");
-      return;
-    }
-    paramActivity = bbdj.a(paramActivity, 0, null, paramActivity.getString(2131719377), paramActivity.getString(2131690596), paramActivity.getString(2131691035), new aylk(paramaylm), new ayll(paramaylm));
-    paramActivity.show();
-    paramActivity.setCancelable(false);
-    a("0X800A5C9");
-  }
-  
-  public static void a(aymo paramaymo)
-  {
-    if (b()) {
-      if ((BaseApplicationImpl.getApplication().getApplicationContext().getResources().getConfiguration().uiMode & 0x30) == 32)
-      {
-        bool1 = true;
-        bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("DarkModeManager", 2, "updateDarkModeStatus isNightMode  = " + bool2 + ", isDarkMode = " + bool1);
-        }
-        b(bool1, bool2, paramaymo);
-      }
-    }
-    while ((!b) || (BaseApplicationImpl.isCurrentVersionFirstLaunch)) {
-      for (;;)
-      {
-        boolean bool2;
-        return;
-        boolean bool1 = false;
-      }
-    }
-    d();
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "report() called with: key = [" + paramString + "]");
-    }
-    axqy.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      a("0X800A3E8");
-    }
-    SharedPreferences localSharedPreferences;
-    for (;;)
-    {
-      a = paramBoolean;
-      localSharedPreferences = a();
-      if (localSharedPreferences != null) {
-        break;
-      }
-      return;
-      a("0X800A3E7");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "updateModeStatus isOpened  = " + a);
-    }
-    localSharedPreferences.edit().putBoolean("dark_switch_key", a).apply();
-  }
-  
-  public static void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity == null) || (localBaseActivity.isFinishing()))
-    {
-      QLog.e("DarkModeManager", 2, "showDarkModeTips error!: ");
-      return;
-    }
-    String str = localBaseActivity.getString(2131719380);
-    if (!paramBoolean1) {
-      str = localBaseActivity.getString(2131719376);
-    }
-    paramString1 = bbdj.a(localBaseActivity, 0, null, str, localBaseActivity.getString(2131690596), localBaseActivity.getString(2131691035), new ayli(paramBoolean1, paramBoolean2), new aylj(paramString1, paramString2));
-    paramString1.show();
-    paramString1.setCancelable(false);
-    c();
-    a("0X800A5B4");
-  }
-  
-  public static boolean a()
-  {
-    return Build.VERSION.SDK_INT >= 29;
-  }
-  
-  public static boolean a(Activity paramActivity, String paramString, aylm paramaylm)
-  {
-    if ((paramActivity == null) || (paramActivity.isFinishing())) {}
-    while (!b()) {
-      return false;
-    }
-    boolean bool2;
-    label40:
-    boolean bool1;
-    if ((paramActivity.getResources().getConfiguration().uiMode & 0x30) == 32)
-    {
-      bool2 = true;
-      bool1 = ThemeUtil.isNowThemeIsNight(null, false, paramString);
-      if (TextUtils.isEmpty(paramString))
-      {
-        if (ThemeUtil.isNowThemeIsNight(null, false, null)) {
-          break label136;
-        }
-        bool1 = true;
-      }
-      label65:
-      if (bool2 == bool1) {
-        break label139;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "userSetThemeAction isNightMode  = " + bool1 + ", isDarkMode = " + bool2);
-      }
-      if (Looper.getMainLooper() != Looper.myLooper()) {
-        break label141;
-      }
-      a(paramActivity, paramString, paramaylm);
-    }
-    for (;;)
-    {
-      return true;
-      bool2 = false;
-      break label40;
-      label136:
-      bool1 = false;
-      break label65;
-      label139:
-      break;
-      label141:
-      ThreadManager.getUIHandler().post(new DarkModeManager.6(paramActivity, paramString, paramaylm));
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (b()) {
-      if ((BaseApplicationImpl.getApplication().getApplicationContext().getResources().getConfiguration().uiMode & 0x30) != 32) {
-        break label85;
-      }
-    }
-    label85:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = ThemeUtil.isNowThemeIsNight(null, false, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "updateDarkModeStatus isNightMode  = " + bool2 + ", isDarkMode = " + bool1);
-      }
-      if (bool1 != bool2) {
-        break;
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(String paramString1, String paramString2)
-  {
-    if (a())
-    {
-      localBaseActivity = BaseActivity.sTopActivity;
-      if ((localBaseActivity != null) && (!localBaseActivity.isFinishing())) {}
-    }
-    while (!QLog.isColorLevel())
-    {
-      boolean bool1;
-      boolean bool2;
-      do
-      {
-        do
-        {
-          BaseActivity localBaseActivity;
-          return false;
-          if ((localBaseActivity.getResources().getConfiguration().uiMode & 0x30) != 32) {
-            break;
-          }
-          bool1 = true;
-          bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
-          if (QLog.isColorLevel()) {
-            QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme isNightMode  = " + bool2 + ", isDarkMode = " + bool1 + ", isCurrentVersionFirstLaunch = " + BaseApplicationImpl.isCurrentVersionFirstLaunch);
-          }
-        } while (bool1 == bool2);
-        if ((!d()) && (amry.e()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme dialog will show!");
-          }
-          if (Looper.getMainLooper() == Looper.myLooper()) {
-            a(bool1, bool2, paramString1, paramString2);
-          }
-          for (;;)
-          {
-            return true;
-            bool1 = false;
-            break;
-            ThreadManager.getUIHandler().post(new DarkModeManager.3(bool1, bool2, paramString1, paramString2));
-          }
-        }
-      } while (!b());
-      b(bool1, bool2, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme iscalled! switch is opened, so switch theme!");
-      }
-      return true;
-    }
-    QLog.d("DarkModeManager", 2, "afterDownloadRoamTheme iscalled! the system version is lower 29! so do not dialog!");
-    return false;
-  }
-  
-  @Nullable
-  private static QQAppInterface b()
-  {
-    Object localObject = BaseApplicationImpl.getApplication();
-    if (localObject != null)
-    {
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if ((localObject instanceof QQAppInterface)) {
-        return (QQAppInterface)localObject;
-      }
-    }
-    return null;
-  }
-  
-  private static void b()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null)
-    {
-      a = localSharedPreferences.getBoolean("dark_switch_key", false);
-      return;
-    }
-    a = true;
-  }
-  
-  private static void b(aymo paramaymo)
-  {
     Object localObject;
-    if (axmv.b())
+    int i;
+    ArrayList localArrayList1;
+    Iterator localIterator;
+    if ((paramVarArgs[1] instanceof List))
     {
-      int i = axmv.d();
-      localObject = axmq.b[i];
+      localObject = (List)paramVarArgs[1];
+      i = -1;
+      if ((paramVarArgs[2] instanceof Integer)) {
+        i = ((Integer)paramVarArgs[2]).intValue();
+      }
+      localArrayList1 = new ArrayList(((List)localObject).size());
+      localIterator = ((List)localObject).iterator();
     }
+    label920:
     for (;;)
     {
-      QLog.d("DarkModeManager", 1, "closedNightMode is called, will set themeID=" + (String)localObject);
-      ThemeSwitcher.a((String)localObject, "202", paramaymo);
-      return;
-      localObject = aymn.a(b());
-      String str = ((Bundle)localObject).getString("themeID");
-      QLog.d("DarkModeManager", 1, "closedNightMode, pre themeID=" + str + ",version=" + ((Bundle)localObject).getString("version"));
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = "1000";
+      label448:
+      label1223:
+      if (localIterator.hasNext())
+      {
+        DynamicSearch.ResultItemGroup localResultItemGroup = (DynamicSearch.ResultItemGroup)localIterator.next();
+        long l3 = localResultItemGroup.group_mask.get();
+        String str2 = localResultItemGroup.group_name.get().toStringUtf8();
+        paramVarArgs = localResultItemGroup.rpt_highlight_words.get();
+        ArrayList localArrayList2 = new ArrayList(paramVarArgs.size());
+        paramVarArgs = paramVarArgs.iterator();
+        for (;;)
+        {
+          if (paramVarArgs.hasNext())
+          {
+            localArrayList2.add(((ByteStringMicro)paramVarArgs.next()).toStringUtf8());
+            continue;
+            localObject = new ArrayList();
+            break;
+          }
+        }
+        List localList = localResultItemGroup.result_items.get();
+        ArrayList localArrayList3 = new ArrayList(localList.size());
+        boolean bool1;
+        String str3;
+        String str4;
+        long l1;
+        int j;
+        if (localResultItemGroup.hide_title.get() == 1)
+        {
+          bool1 = true;
+          str3 = localResultItemGroup.group_footer_name.get().toStringUtf8();
+          str4 = localResultItemGroup.group_footer_jump_url.get().toStringUtf8();
+          l1 = localList.size();
+          j = 0;
+        }
+        label371:
+        boolean bool2;
+        for (;;)
+        {
+          if (j >= localList.size()) {
+            break label1102;
+          }
+          paramVarArgs = (DynamicSearch.ResultItem)localList.get(j);
+          localObject = paramVarArgs.sub_result_items.get();
+          int m = ((List)localObject).size() + 1;
+          ArrayList localArrayList4 = new ArrayList(m);
+          localArrayList4.add(paramVarArgs);
+          localArrayList4.addAll((Collection)localObject);
+          int k = 0;
+          if (k < m)
+          {
+            DynamicSearch.ResultItem localResultItem = (DynamicSearch.ResultItem)localArrayList4.get(k);
+            paramVarArgs = localResultItem.result_id.get().toStringUtf8();
+            bool2 = localResultItem.layout_id.has();
+            localObject = localResultItem.name.get().toStringUtf8();
+            long l2;
+            String str5;
+            String str6;
+            String str7;
+            if (localResultItem.group_mask.has())
+            {
+              l2 = localResultItem.group_mask.get();
+              str5 = localResultItem.pic_url.get().toStringUtf8();
+              str6 = localResultItem.jmp_url.get().toStringUtf8();
+              str7 = localResultItem.extension.get().toStringUtf8();
+              if (!bool2) {
+                break label920;
+              }
+              localObject = null;
+              paramVarArgs = (Object[])localObject;
+              switch (localResultItem.layout_id.get())
+              {
+              default: 
+                paramVarArgs = (Object[])localObject;
+              case 5: 
+              case 10: 
+                label583:
+                if ((paramVarArgs != null) && (paramVarArgs.b()))
+                {
+                  paramVarArgs.r = localResultItem.seporator_type.get();
+                  paramVarArgs.a = bool1;
+                  localArrayList3.add(paramVarArgs);
+                  l2 = l1;
+                }
+                break;
+              }
+            }
+            for (;;)
+            {
+              k += 1;
+              l1 = l2;
+              break label371;
+              bool1 = false;
+              break;
+              l2 = l3;
+              break label448;
+              paramVarArgs = new ayjs(str1, l3, localArrayList2, localResultItem, i);
+              break label583;
+              paramVarArgs = new ayko(str1, l3, localArrayList2, localResultItem, i);
+              break label583;
+              paramVarArgs = new ayjt(str1, l3, localArrayList2, localResultItem, i);
+              break label583;
+              paramVarArgs = new aykb(str1, l3, localArrayList2, localResultItem, i);
+              break label583;
+              paramVarArgs = new aykk(str1, l3, localArrayList2, localResultItem, i);
+              break label583;
+              paramVarArgs = new aykh(str1, l3, localArrayList2, localResultItem, i);
+              break label583;
+              paramVarArgs = new ayki(str1, l3, localArrayList2, localResultItem, i);
+              break label583;
+              paramVarArgs = new ayjy(str1, l3, localArrayList2, localResultItem, i);
+              break label583;
+              paramVarArgs = new ayjw(str1, l3, localArrayList2, localResultItem, i);
+              break label583;
+              paramVarArgs = new ayjz(str1, l3, localArrayList2, localResultItem, i);
+              break label583;
+              paramVarArgs = new aykj(str1, l3, localArrayList2, localResultItem, i);
+              break label583;
+              paramVarArgs = new aykg(str1, l3, localArrayList2, localResultItem, i);
+              break label583;
+              paramVarArgs = new ayke(str1, l3, localArrayList2, localResultItem, i);
+              break label583;
+              l2 = l1 - 1L;
+              continue;
+              if (!ayrd.b(l2))
+              {
+                QLog.e("Q.uniteSearch.NetBaseParser", 1, "itemGroupMask is not valid. mask=" + l2);
+                l2 = l1;
+              }
+              else if (l2 == 2073745984L)
+              {
+                paramVarArgs = new ayku(str1, str7, -4, str5);
+                paramVarArgs.r = localResultItem.seporator_type.get();
+                localArrayList3.add(paramVarArgs);
+                l2 = l1;
+              }
+              else
+              {
+                paramVarArgs = new ayij(str1, paramVarArgs, (String)localObject, str5, str6, str7, l2, localArrayList2, i);
+                l2 = l1;
+                if (paramVarArgs != null)
+                {
+                  paramVarArgs.r = localResultItem.seporator_type.get();
+                  paramVarArgs.c = bool1;
+                  paramVarArgs.g = j;
+                  paramVarArgs.h = j;
+                  paramVarArgs.a = i;
+                  localArrayList3.add(paramVarArgs);
+                  l2 = l1;
+                }
+              }
+            }
+          }
+          j += 1;
+        }
+        label1102:
+        if (l1 > 0L)
+        {
+          l1 = localResultItemGroup.total_result_count.get();
+          paramVarArgs = localResultItemGroup.more_url.get().toStringUtf8();
+          localObject = localResultItemGroup.more_name.get().toStringUtf8();
+          if (localResultItemGroup.highlight_title_keyword.get() == 1)
+          {
+            bool2 = true;
+            if (localResultItemGroup.hide_title_blank_view.get() != 1) {
+              break label1223;
+            }
+          }
+          for (boolean bool3 = true;; bool3 = false)
+          {
+            localArrayList1.add(new ayii(str1, l3, str2, localArrayList3, l1, paramVarArgs, (String)localObject, localArrayList2, bool1, bool2, bool3, str3, str4));
+            break;
+            bool2 = false;
+            break label1159;
+          }
+        }
       }
     }
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    b = paramBoolean;
-  }
-  
-  private static void b(boolean paramBoolean1, boolean paramBoolean2, aymo paramaymo)
-  {
-    if ((paramBoolean1) && (!paramBoolean2)) {
-      a();
-    }
-    while ((paramBoolean1) || (!paramBoolean2)) {
-      return;
-    }
-    b(paramaymo);
-  }
-  
-  public static boolean b()
-  {
-    return (a()) && (c());
-  }
-  
-  private static void c()
-  {
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "setShownPromtFlag is called!");
-    }
-    localSharedPreferences.edit().putBoolean("dialog_has_shown_key", true).apply();
-  }
-  
-  public static boolean c()
-  {
-    
-    if (QLog.isColorLevel()) {
-      QLog.d("DarkModeManager", 2, "getDarkModeSwitch isOpened  = " + a);
-    }
-    return a;
-  }
-  
-  private static void d()
-  {
-    a("1000", "204");
-  }
-  
-  private static boolean d()
-  {
-    boolean bool = false;
-    SharedPreferences localSharedPreferences = a();
-    if (localSharedPreferences != null) {
-      bool = localSharedPreferences.getBoolean("dialog_has_shown_key", false);
-    }
-    return bool;
+    label1159:
+    return localArrayList1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aylh
  * JD-Core Version:    0.7.0.1
  */

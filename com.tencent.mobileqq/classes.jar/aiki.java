@@ -1,23 +1,14 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLImageView;
 
-public class aiki
-  implements alxj
+class aiki
 {
-  public aiki(SessionClearFragment paramSessionClearFragment) {}
+  public URLImageView a;
   
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForUser onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
-    }
-    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
-  }
+  private aiki(aikg paramaikg) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiki
  * JD-Core Version:    0.7.0.1
  */

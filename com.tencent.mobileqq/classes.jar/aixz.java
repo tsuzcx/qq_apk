@@ -1,24 +1,17 @@
-import android.util.LruCache;
-
-class aixz
-  extends LruCache<String, aiya>
+public class aixz
 {
-  aixz(aixy paramaixy, int paramInt)
-  {
-    super(paramInt);
-  }
+  float jdField_a_of_type_Float;
+  String jdField_a_of_type_JavaLangString;
   
-  protected int a(String paramString, aiya paramaiya)
+  public aixz(String paramString, float paramFloat)
   {
-    if ((paramaiya == null) || (paramaiya.a == null)) {
-      return 0;
-    }
-    return paramaiya.a.length;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixz
  * JD-Core Version:    0.7.0.1
  */

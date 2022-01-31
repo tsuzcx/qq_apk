@@ -1,64 +1,67 @@
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Looper;
-import android.view.LayoutInflater;
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
+import android.os.Build.VERSION;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
 import com.tencent.qphone.base.util.QLog;
 
+@TargetApi(11)
 public class akyi
+  extends EditText
+  implements ActionMode.Callback
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private volatile boolean jdField_a_of_type_Boolean;
-  
   public akyi(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
+    super(paramContext);
+    super.setLongClickable(false);
+    super.setTextIsSelectable(false);
+    super.setImeOptions(268435456);
+    if (Build.VERSION.SDK_INT >= 11) {
+      super.setCustomSelectionActionModeCallback(this);
+    }
   }
   
-  private void a()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560641, null));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131379511));
-  }
-  
-  public void a(RelativeLayout paramRelativeLayout)
-  {
-    QLog.d("ARTransferPromotionUIContainer", 2, "attachToRootViewGroup");
-    if (this.jdField_a_of_type_Boolean) {
+    try
+    {
+      super.setSelection(paramInt);
       return;
     }
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    localLayoutParams.addRule(12);
-    localLayoutParams.bottomMargin = actj.a(57.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    paramRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, localLayoutParams);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void b(RelativeLayout paramRelativeLayout)
-  {
-    QLog.d("ARTransferPromotionUIContainer", 2, "disattachFromRootViewGroup");
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      return;
+    catch (Exception localException)
+    {
+      QLog.e("ApolloDiyTextActivity", 1, localException.getMessage());
     }
-    paramRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  {
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public boolean onTextContextMenuItem(int paramInt)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyi
  * JD-Core Version:    0.7.0.1
  */

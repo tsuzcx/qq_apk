@@ -1,41 +1,23 @@
-import android.view.ViewGroup;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import dov.com.qq.im.ae.camera.ui.panel.AEBeautyProviderView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.SendMsg;
 
-public class bioe
-  implements SeekBar.OnSeekBarChangeListener
+public final class bioe
+  implements Parcelable.Creator<SendMsg>
 {
-  public bioe(AEBeautyProviderView paramAEBeautyProviderView) {}
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public SendMsg a(Parcel paramParcel)
   {
-    if (AEBeautyProviderView.a(this.a) != null)
-    {
-      AEBeautyProviderView.a(this.a).b(paramInt);
-      this.a.b.setText("+" + String.format("%.1f", new Object[] { Float.valueOf(paramInt / 10.0F) }));
-    }
+    return new SendMsg(paramParcel);
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public SendMsg[] a(int paramInt)
   {
-    AEBeautyProviderView.a(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((AEBeautyProviderView.c(this.a) != null) && ((AEBeautyProviderView.c(this.a) instanceof ViewGroup))) {
-      ((ViewGroup)AEBeautyProviderView.c(this.a)).setMotionEventSplittingEnabled(true);
-    }
-    AEBeautyProviderView.b(this.a, paramSeekBar.getProgress());
-    bizx.a().e(paramSeekBar.getProgress());
-    AEBeautyProviderView.b(this.a, AEBeautyProviderView.b(this.a), AEBeautyProviderView.a(this.a));
+    return new SendMsg[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bioe
  * JD-Core Version:    0.7.0.1
  */

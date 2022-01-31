@@ -1,39 +1,42 @@
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.dataline.activities.PrinterSubOptionActivity;
+import java.util.List;
 
-public class cw
-  extends aoun
+class cw
+  implements View.OnClickListener
 {
-  public cw(LiteActivity paramLiteActivity) {}
+  cw(cv paramcv) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(LiteActivity.a, 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.app.a().a(paramLong2);
-    if (paramString1 == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e(LiteActivity.a, 2, "OnFileTransferEnd faild, get entity is faild, sessionId[" + String.valueOf(paramLong2) + "]");
-      }
-    }
-    do
+    paramView = (TextView)paramView.findViewById(2131364021);
+    cu localcu;
+    if (paramView != null)
     {
-      return;
-      if (paramBoolean)
-      {
-        apug.a(paramLong2);
-        return;
+      localcu = (cu)this.a.a.b.get(((Integer)paramView.getTag()).intValue());
+      if (localcu.jdField_a_of_type_Long == 0L) {
+        break label143;
       }
-    } while ((paramString1.nOpType != 4) && (paramString1.nOpType != 6));
-    apug.a(paramLong2, paramInt2, paramString2);
+    }
+    label143:
+    for (paramView = this.a.a.a.a.a(localcu.jdField_a_of_type_Long);; paramView = this.a.a.a.a.b(localcu.jdField_a_of_type_JavaLangString))
+    {
+      this.a.a.a.a.a = paramView;
+      paramView = new Intent();
+      paramView.putExtra("sPrinterName", localcu.jdField_a_of_type_JavaLangString);
+      paramView.putExtra("sPrintDin", localcu.jdField_a_of_type_Long);
+      this.a.a.setResult(-1, paramView);
+      this.a.a.finish();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cw
  * JD-Core Version:    0.7.0.1
  */

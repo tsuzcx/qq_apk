@@ -12,14 +12,14 @@ class MiniAppVideoPlayer$15$1
   {
     ((CoverVideoView)this.a.this$0.getParent()).setLayoutParams(MiniAppVideoPlayer.a(this.a.this$0));
     if (this.a.this$0.getParent().getParent() != null) {
-      ((ViewGroup)this.a.this$0.getParent().getParent()).scrollTo(0, MiniAppVideoPlayer.i(this.a.this$0));
+      ((ViewGroup)this.a.this$0.getParent().getParent()).scrollTo(0, MiniAppVideoPlayer.k(this.a.this$0));
     }
     this.a.this$0.D = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.15.1
  * JD-Core Version:    0.7.0.1
  */

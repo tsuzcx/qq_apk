@@ -1,176 +1,86 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.OpenID;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.AppActivity;
-import mqq.manager.Manager;
-import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class aikv
-  implements Manager, BusinessObserver
+final class aikv
+  implements absf
 {
-  public static String a;
-  private aikw jdField_a_of_type_Aikw;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean;
+  aikv(QQAppInterface paramQQAppInterface, String paramString1, Activity paramActivity, String paramString2, String paramString3, String paramString4, Intent paramIntent) {}
   
-  public aikv(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    paramQQAppInterface = BaseApplicationImpl.getContext();
-    jdField_a_of_type_JavaLangString = paramQQAppInterface.getFilesDir().getAbsoluteFile() + File.separator + "WeatherResource";
-    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("weather_resources", 0);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this);
-  }
-  
-  public long a()
-  {
-    long l = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("key_weather_res_version", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("weatherManager", 2, "getConfigVersion version=" + l);
-    }
-    return l;
-  }
-  
-  public void a(long paramLong)
+  public void onComplete()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("weatherManager", 2, "updateResourceVersion version=" + paramLong);
+      QLog.d("SdkDynamicAvatarSettingHelper", 2, "check api, onComplete");
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_weather_res_version", paramLong).commit();
   }
   
-  public void a(aikw paramaikw)
+  public void onFailure(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Aikw = paramaikw;
-  }
-  
-  public void a(AppActivity paramAppActivity)
-  {
-    if ((ajzt.c()) && (!this.jdField_a_of_type_Boolean))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("weatherManager", 2, "updateWeatherInfo  from  LocaleManager.isLocaleUpdatedByUser()");
-      }
-      this.jdField_a_of_type_Boolean = true;
-      aikx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramAppActivity);
+    if (QLog.isColorLevel()) {
+      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
     }
-    Long localLong;
-    do
-    {
-      return;
-      localLong = Long.valueOf(BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0).getLong("drawer_last_success_time", 0L));
-      if (QLog.isColorLevel()) {
-        QLog.d("weatherManager", 2, "updateWeatherInfo successTime:" + localLong + ",currentTime:" + System.currentTimeMillis());
-      }
-    } while (Math.abs(System.currentTimeMillis() - localLong.longValue()) <= 3600000L);
-    aikx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramAppActivity);
   }
   
-  public boolean a(long paramLong, String paramString)
+  public void onPermission(int paramInt)
   {
-    boolean bool = true;
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
+    }
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFB", "0X8009DFB", 0, 0, this.jdField_a_of_type_JavaLangString, "2", "", "");
+    aikt.a(this.jdField_a_of_type_AndroidAppActivity, alpo.a(2131713975), this.b, this.c, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SdkDynamicAvatarSettingHelper", 2, "check api, onSuccess");
+    }
+    if (aikt.a(this.d))
     {
-      bbdx.a(jdField_a_of_type_JavaLangString, false);
-      bbdx.a(paramString, jdField_a_of_type_JavaLangString, false);
-      if (bool)
+      paramJSONObject = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("open_id");
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramJSONObject)))
       {
-        a(paramLong);
-        return bool;
-      }
-    }
-    catch (Exception paramString)
-    {
-      do
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.e("weatherManager", 2, "pareseRulesFromZip : delete and uncompress Exception=>", paramString);
+        OpenID localOpenID = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString);
+        if (localOpenID == null) {}
+        while (paramJSONObject.equals(localOpenID.openID)) {
+          try
+          {
+            long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+            long l2 = System.currentTimeMillis();
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(l1, paramJSONObject, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), new aikw(this, l2));
+            return;
           }
-          bool = false;
+          catch (Exception paramJSONObject)
+          {
+            QLog.e("SdkDynamicAvatarSettingHelper", 1, "checkOpenidDiff exception=", paramJSONObject);
+            return;
+          }
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("weatherManager", 2, "pareseRulesFromZip : delete and uncompressZip failure, parse from Res");
+        aikt.b(this.jdField_a_of_type_AndroidAppActivity);
+        return;
+      }
+      QLog.e("SdkDynamicAvatarSettingHelper", 1, "checkOpenid, openId null");
+      return;
     }
-    return bool;
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFB", "0X8009DFB", 0, 0, this.jdField_a_of_type_JavaLangString, "3", "", "");
+    aikt.a(this.jdField_a_of_type_AndroidAppActivity, alpo.a(2131713979), this.b, this.c, this.jdField_a_of_type_JavaLangString);
   }
   
-  public void onDestroy()
+  public void onTrigger(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.unRegistObserver(this);
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBundle == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("weatherManager", 2, new Object[] { "WeatherManager onReceive type:" + paramInt, ",bundle:", paramBundle });
-      }
-    } while ((paramInt != 6666) && (paramInt != 8888));
-    int j;
-    SharedPreferences.Editor localEditor;
-    if (paramBoolean)
-    {
-      String str1 = paramBundle.getString("KEY_TEMPER");
-      String str2 = paramBundle.getString("area_info");
-      int i = paramBundle.getInt("adcode");
-      String str3 = paramBundle.getString("o_wea_code");
-      j = paramBundle.getInt("show_flag");
-      if (QLog.isColorLevel()) {
-        QLog.d("WeatherSetting", 2, "onReceive show_flag:" + j + ",temp:" + str1 + ",area_name" + str2 + "adcode" + i + ",o_wea_code" + str3);
-      }
-      localEditor = BaseApplicationImpl.getContext().getSharedPreferences("public_account_weather", 0).edit();
-      if (j != 1) {
-        break label421;
-      }
-      if ((str1 != null) && (!str1.equals("")) && (!TextUtils.isEmpty(str2)))
-      {
-        Long localLong = Long.valueOf(System.currentTimeMillis());
-        localEditor.putLong("pa_send_time", localLong.longValue());
-        localEditor.putString("cur_temp", str1);
-        localEditor.putString("cur_code", str3);
-        localEditor.putString("cur_city", str2);
-        localEditor.putInt("cur_adcode", i);
-        localEditor.putBoolean("show_flag", true);
-        localEditor.putLong("drawer_last_success_time", localLong.longValue());
-        localEditor.putString("drawer_cur_city", str2);
-        localEditor.putString("drawer_cur_temp", str1);
-        localEditor.putInt("drawer_cur_adcode", i);
-        localEditor.putString("drawer_cur_code", str3);
-        localEditor.putBoolean("drawer_show_flag", true);
-      }
-    }
-    for (;;)
-    {
-      localEditor.commit();
-      if (this.jdField_a_of_type_Aikw == null) {
-        break;
-      }
-      this.jdField_a_of_type_Aikw.a(paramInt, paramBoolean, paramBundle);
-      return;
-      label421:
-      if (j == 0) {
-        localEditor.putBoolean("show_flag", false);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("SdkDynamicAvatarSettingHelper", 2, "check api, onTrigger");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aikv
  * JD-Core Version:    0.7.0.1
  */

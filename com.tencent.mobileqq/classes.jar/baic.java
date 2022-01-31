@@ -1,13 +1,22 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.graphics.Paint;
+import android.support.annotation.NonNull;
 
-public abstract interface baic
+class baic
+  extends baif
 {
-  public abstract void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle);
+  baic(String paramString)
+  {
+    super(4, paramString);
+  }
+  
+  float a(@NonNull Paint paramPaint)
+  {
+    return 0.0F;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baic
  * JD-Core Version:    0.7.0.1
  */

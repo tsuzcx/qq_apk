@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aegs;
-import aeic;
-import aeiy;
-import agqv;
+import agdi;
+import ages;
+import agfq;
+import ailt;
 import mqq.os.MqqHandler;
 
 public class AIOGalleryScene$5
   implements Runnable
 {
-  public AIOGalleryScene$5(aegs paramaegs) {}
+  public AIOGalleryScene$5(agdi paramagdi) {}
   
   public void run()
   {
     this.this$0.c(false);
     this.this$0.a(false);
-    if ((this.this$0.jdField_a_of_type_Aeic.a() != null) && ((this.this$0.jdField_a_of_type_Aeic.a().a instanceof AIOShortVideoData))) {
-      aegs.a(this.this$0, true);
+    if ((this.this$0.jdField_a_of_type_Ages.a() != null) && ((this.this$0.jdField_a_of_type_Ages.a().a instanceof AIOShortVideoData))) {
+      agdi.a(this.this$0, true);
     }
-    if (this.this$0.jdField_a_of_type_Agqv.c())
+    if (this.this$0.jdField_a_of_type_Ailt.c())
     {
       this.this$0.u();
       this.this$0.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.this$0.b);
@@ -29,7 +29,7 @@ public class AIOGalleryScene$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.5
  * JD-Core Version:    0.7.0.1
  */

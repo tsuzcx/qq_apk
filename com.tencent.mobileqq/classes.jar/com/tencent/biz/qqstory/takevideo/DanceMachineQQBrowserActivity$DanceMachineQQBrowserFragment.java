@@ -8,10 +8,10 @@ import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import axim;
-import axlk;
-import bcfx;
-import bfob;
+import azds;
+import azgq;
+import beey;
+import bhow;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
@@ -19,40 +19,32 @@ import com.tencent.mobileqq.richmedia.capture.view.FadedButton;
 import com.tencent.mobileqq.widget.WebViewProgressBar;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import ven;
-import vkc;
-import vkd;
-import vke;
+import wtf;
+import wyu;
+import wyv;
+import wyw;
 
 public class DanceMachineQQBrowserActivity$DanceMachineQQBrowserFragment
   extends QQTranslucentBrowserActivity.QQTranslucentBrowserFragment
-  implements Handler.Callback, vkd
+  implements Handler.Callback, wyv
 {
-  bfob jdField_a_of_type_Bfob = new bfob(this);
+  bhow jdField_a_of_type_Bhow = new bhow(this);
   private String jdField_a_of_type_JavaLangString;
-  private vke jdField_a_of_type_Vke;
+  private wyw jdField_a_of_type_Wyw;
   private String b;
   private String c;
   
   private void a(RelativeLayout paramRelativeLayout)
   {
     FadedButton localFadedButton = new FadedButton(getActivity());
-    localFadedButton.setBackgroundResource(2130845089);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(axlk.a(40.0F), axlk.a(40.0F));
+    localFadedButton.setBackgroundResource(2130845454);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(azgq.a(40.0F), azgq.a(40.0F));
     localLayoutParams.addRule(12, -1);
     localLayoutParams.addRule(14, -1);
-    localLayoutParams.bottomMargin = axlk.a(35.0F);
+    localLayoutParams.bottomMargin = azgq.a(35.0F);
     localFadedButton.setLayoutParams(localLayoutParams);
-    localFadedButton.setOnClickListener(new ven(this));
+    localFadedButton.setOnClickListener(new wtf(this));
     paramRelativeLayout.addView(localFadedButton);
-  }
-  
-  public void U_()
-  {
-    this.jdField_a_of_type_Vke.a("share_VIDEO", null, null, null);
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "onShareVideoClick");
-    }
   }
   
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
@@ -61,7 +53,7 @@ public class DanceMachineQQBrowserActivity$DanceMachineQQBrowserFragment
     if (QLog.isColorLevel()) {
       QLog.d("DanceMachineQQBrowserActivity", 2, "onReceivedError ,   errorCode : " + paramInt + " errorDetail : " + paramString1 + " errorURL : " + paramString2);
     }
-    this.jdField_a_of_type_Bfob.removeMessages(12);
+    this.jdField_a_of_type_Bhow.removeMessages(12);
     getActivity().finish();
   }
   
@@ -73,7 +65,7 @@ public class DanceMachineQQBrowserActivity$DanceMachineQQBrowserFragment
     }
     this.jdField_a_of_type_ComTencentBizUiTouchWebView.setVisibility(0);
     a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer);
-    this.jdField_a_of_type_Bfob.removeMessages(12);
+    this.jdField_a_of_type_Bhow.removeMessages(12);
   }
   
   public void a(String paramString1, String paramString2)
@@ -81,7 +73,15 @@ public class DanceMachineQQBrowserActivity$DanceMachineQQBrowserFragment
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, new Object[] { "onBattleClick shareWebUrl : " + paramString1, " rank : " + paramString2 });
     }
-    this.jdField_a_of_type_Vke.a("share_PK", paramString1, paramString2, this.c);
+    this.jdField_a_of_type_Wyw.a("share_PK", paramString1, paramString2, this.c);
+  }
+  
+  public void ac_()
+  {
+    this.jdField_a_of_type_Wyw.a("share_VIDEO", null, null, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "onShareVideoClick");
+    }
   }
   
   @TargetApi(11)
@@ -89,7 +89,7 @@ public class DanceMachineQQBrowserActivity$DanceMachineQQBrowserFragment
   {
     int i = super.d(paramBundle);
     if (super.getWebView() != null) {
-      this.jdField_a_of_type_Bcfx.a.setVisibility(8);
+      this.jdField_a_of_type_Beey.a.setVisibility(8);
     }
     return i;
   }
@@ -118,24 +118,24 @@ public class DanceMachineQQBrowserActivity$DanceMachineQQBrowserFragment
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    this.jdField_a_of_type_Vke.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Wyw.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Bfob.sendEmptyMessageDelayed(12, 30000L);
+    this.jdField_a_of_type_Bhow.sendEmptyMessageDelayed(12, 30000L);
     paramBundle = a().getExtras();
     this.b = paramBundle.getString("KEY_AUDIO_FILE_PATH");
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("KEY_VIDEO_FILE_PATH");
     this.c = paramBundle.getString("dance_machine_score", "0");
-    this.jdField_a_of_type_Vke = new vke();
-    this.jdField_a_of_type_Vke.a(getActivity(), this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    axim.o = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("KEY_AUDIO_CHANNEL", axim.o);
-    axim.n = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("KEY_BITRATE", axim.n);
-    axim.p = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("KEY_AUDIO_FORMAT", axim.p);
-    axim.q = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("KEY_SAMPLE_RATE", axim.q);
-    vkc.a().a(this);
+    this.jdField_a_of_type_Wyw = new wyw();
+    this.jdField_a_of_type_Wyw.a(getActivity(), this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    azds.o = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("KEY_AUDIO_CHANNEL", azds.o);
+    azds.n = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("KEY_BITRATE", azds.n);
+    azds.p = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("KEY_AUDIO_FORMAT", azds.p);
+    azds.q = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("KEY_SAMPLE_RATE", azds.q);
+    wyu.a().a(this);
     if (QLog.isColorLevel()) {
       QLog.d("DanceMachineQQBrowserActivity", 2, "fragment onCreate : " + System.currentTimeMillis());
     }
@@ -144,13 +144,13 @@ public class DanceMachineQQBrowserActivity$DanceMachineQQBrowserFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Vke.a();
-    vkc.a().a();
+    this.jdField_a_of_type_Wyw.a();
+    wyu.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,31 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class acgn
-  implements View.OnClickListener
+public final class acgn
+  implements bdvt
 {
-  public acgn(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
+  public acgn(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
   
-  public void onClick(View paramView)
+  public void callback(int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
     }
-    TroopDisbandActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      this.a.onClick(null, 0);
+      return;
+    }
+    this.b.onClick(null, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acgn
  * JD-Core Version:    0.7.0.1
  */

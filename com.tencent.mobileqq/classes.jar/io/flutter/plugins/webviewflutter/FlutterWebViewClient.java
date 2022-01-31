@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.util.Log;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -25,7 +26,7 @@ class FlutterWebViewClient
   private WebViewClient internalCreateWebViewClient()
   {
     Log.i("FlutterWebView", "create internalCreateWebViewClient");
-    return new FlutterWebViewClient.1(this);
+    return new FlutterWebViewClient.2(this);
   }
   
   private void notifyOnNavigationRequest(String paramString, Map<String, String> paramMap, WebView paramWebView, boolean paramBoolean)
@@ -39,6 +40,13 @@ class FlutterWebViewClient
       return;
     }
     this.methodChannel.invokeMethod("navigationRequest", localHashMap);
+  }
+  
+  private void notifyTitleChange(WebView paramWebView, String paramString1, String paramString2)
+  {
+    paramWebView = new HashMap();
+    paramWebView.put("webviewtitle", paramString2);
+    this.methodChannel.invokeMethod("onTitleNotify", paramWebView);
   }
   
   private void onPageFinished(WebView paramWebView, String paramString)
@@ -68,6 +76,11 @@ class FlutterWebViewClient
     return true;
   }
   
+  WebChromeClient createWebChromeClient()
+  {
+    return new FlutterWebViewClient.1(this);
+  }
+  
   WebViewClient createWebViewClient(boolean paramBoolean)
   {
     this.hasNavigationDelegate = paramBoolean;
@@ -79,7 +92,7 @@ class FlutterWebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     io.flutter.plugins.webviewflutter.FlutterWebViewClient
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,35 @@
-import android.os.Bundle;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class pch
-  implements wxt
+public class pch
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  pch(pcf parampcf, String paramString) {}
+  public pch(VideoView paramVideoView) {}
   
-  public void a(Bundle paramBundle)
+  public void onGlobalLayout()
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReadInJoyWebviewPlugin", 4, "receive notifyLoadSkin callback resp:" + paramBundle.toString());
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
+    if ((VideoView.a(this.a) == VideoView.b) && (!this.a.a))
     {
-      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId")).put("rate", paramBundle.getInt("rate"));
-      this.jdField_a_of_type_Pcf.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      QLog.w("ReadInJoyWebviewPlugin", 1, "notifyLoadSkin error " + paramBundle.toString());
-      this.jdField_a_of_type_Pcf.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
+      if ((this.a.isShown()) && (VideoView.a(this.a).get() != 3))
+      {
+        VideoView.a(this.a).set(3);
+        QLog.d("gifvideo.VideoView", 1, "show to play");
+        this.a.c();
+      }
+      if ((!this.a.isShown()) && (VideoView.a(this.a).get() != 5))
+      {
+        VideoView.a(this.a).set(5);
+        QLog.d("gifvideo.VideoView", 1, "unshow to stop");
+        this.a.b();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pch
  * JD-Core Version:    0.7.0.1
  */

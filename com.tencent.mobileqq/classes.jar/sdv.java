@@ -1,44 +1,35 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController.ViewPagerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.RollViewPager;
 
-class sdv
-  extends ozf
+public class sdv
+  extends Handler
 {
-  sdv(sds paramsds) {}
-  
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public sdv(ReadInJoyDiandianHeaderController paramReadInJoyDiandianHeaderController, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryShareHelper", 2, "handleDoFavoriteResult isSuccess = " + paramBoolean + ", operationType = " + paramInt + ", cid = " + paramString2);
-    }
-    if (TextUtils.isEmpty(paramString1)) {}
-    while (!sds.a(this.a).contains(paramString1)) {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (ReadInJoyDiandianHeaderController.a(this.a)) {}
+    while (ReadInJoyDiandianHeaderController.a(this.a).getCount() <= 1) {
       return;
     }
-    paramString2 = new bcql(sds.a(this.a));
-    paramString2.d(2000);
-    if (paramBoolean)
-    {
-      paramString2.a(bcql.a(2));
-      paramString2.c(2131692325);
-      paramString2.b(sds.a(this.a).getResources().getDimensionPixelSize(2131298865) - (int)bbdv.a(sds.a(this.a), 5.0F));
-    }
-    for (;;)
-    {
-      sds.a(this.a).remove(paramString1);
-      return;
-      paramString2.a(bcql.a(1));
-      paramString2.c(2131692326);
-      paramString2.b(sds.a(this.a).getResources().getDimensionPixelSize(2131298865) - (int)bbdv.a(sds.a(this.a), 5.0F));
-    }
+    paramMessage = this.a;
+    paramMessage.jdField_a_of_type_Int += 1;
+    this.a.jdField_a_of_type_Int %= ReadInJoyDiandianHeaderController.a(this.a).getCount();
+    ReadInJoyDiandianHeaderController.a(this.a).setCurrentItem(this.a.jdField_a_of_type_Int, true);
+    nrt.a(null, "", "0X8009827", "0X8009827", 0, 0, "", "", "", "", false);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 3000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdv
  * JD-Core Version:    0.7.0.1
  */

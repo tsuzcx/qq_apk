@@ -1,27 +1,42 @@
-import android.view.View;
-import com.tencent.mobileqq.data.MessageForTroopStory;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 
-class aeeo
-  implements bfph
+public class aeeo
+  extends alox
 {
-  aeeo(aeen paramaeen, MessageForTroopStory paramMessageForTroopStory, bfpc parambfpc) {}
+  public aeeo(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    switch (paramInt)
-    {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
+      this.a.a.notifyDataSetChanged();
     }
-    for (;;)
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      this.jdField_a_of_type_Bfpc.dismiss();
+      paramString = this.a.a.a(paramString);
+      if (paramString != null) {
+        break label28;
+      }
+    }
+    label28:
+    Friends localFriends;
+    do
+    {
       return;
-      vwq.a(this.jdField_a_of_type_Aeen.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory).f();
-    }
+      localFriends = ((aloz)this.a.app.getManager(51)).e(paramString.a);
+    } while (localFriends == null);
+    this.a.a(paramString, localFriends);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeeo
  * JD-Core Version:    0.7.0.1
  */

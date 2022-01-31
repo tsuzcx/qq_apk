@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import nnu;
+import azmg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 class Conversation$22
   implements Runnable
@@ -9,12 +11,30 @@ class Conversation$22
   
   public void run()
   {
-    nnu.a().a(this.this$0.a);
+    int i = azmg.a();
+    try
+    {
+      MqqHandler localMqqHandler = this.this$0.a;
+      if ((i >= 0) && (localMqqHandler != null))
+      {
+        localMqqHandler.removeMessages(1134061);
+        localMqqHandler.sendEmptyMessageDelayed(1134061, i * 1000L);
+      }
+      return;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      for (;;)
+      {
+        QLog.e("Q.recent", 1, localNullPointerException, new Object[0]);
+        Object localObject = null;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.22
  * JD-Core Version:    0.7.0.1
  */

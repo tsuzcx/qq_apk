@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.io.Serializable;
-import pbh;
+import pgs;
 
 public class ReadInJoyUserInfoModule$Request0xb81Params$AccountInfoReq
   implements Serializable
@@ -10,11 +10,11 @@ public class ReadInJoyUserInfoModule$Request0xb81Params$AccountInfoReq
   private long friendStatus;
   private long uin;
   
-  private ReadInJoyUserInfoModule$Request0xb81Params$AccountInfoReq(pbh parampbh)
+  private ReadInJoyUserInfoModule$Request0xb81Params$AccountInfoReq(pgs parampgs)
   {
-    this.accountType = pbh.a(parampbh);
-    this.uin = pbh.a(parampbh);
-    this.friendStatus = pbh.b(parampbh);
+    this.accountType = pgs.a(parampgs);
+    this.uin = pgs.a(parampgs);
+    this.friendStatus = pgs.b(parampgs);
   }
   
   public String toString()
@@ -24,7 +24,7 @@ public class ReadInJoyUserInfoModule$Request0xb81Params$AccountInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq
  * JD-Core Version:    0.7.0.1
  */

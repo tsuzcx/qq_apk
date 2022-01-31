@@ -202,7 +202,7 @@ public abstract class SonicRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicRuntime
  * JD-Core Version:    0.7.0.1
  */

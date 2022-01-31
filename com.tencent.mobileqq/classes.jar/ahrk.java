@@ -1,22 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ahrk
-  implements DialogInterface.OnDismissListener
 {
-  public ahrk(LoginView paramLoginView) {}
+  private BaseActivity a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ahrk(BaseActivity paramBaseActivity)
   {
-    LoginView.f(this.a, false);
-    LoginView.g(this.a, false);
-    axqy.a(this.a.a, "new_reg_805", "log_page", "can_clk", "", 1, "");
+    this.a = paramBaseActivity;
+  }
+  
+  public bhpy a(AdapterView.OnItemClickListener paramOnItemClickListener)
+  {
+    bhpy localbhpy = (bhpy)bhql.a(this.a, null);
+    GridView localGridView = (GridView)View.inflate(this.a, 2131562775, null);
+    localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837562));
+    localGridView.setAdapter(new ahrm(this, null));
+    localGridView.setOnItemClickListener(paramOnItemClickListener);
+    localbhpy.a(localGridView);
+    localbhpy.c(2131690648);
+    return localbhpy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrk
  * JD-Core Version:    0.7.0.1
  */

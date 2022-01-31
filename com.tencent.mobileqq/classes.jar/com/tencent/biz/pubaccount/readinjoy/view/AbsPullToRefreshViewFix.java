@@ -19,12 +19,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import bfzv;
+import bias;
 import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
 import com.tencent.qphone.base.util.QLog;
-import rqn;
-import rqs;
-import vzl;
+import sgm;
+import sgr;
+import xod;
 
 public abstract class AbsPullToRefreshViewFix
   extends LinearLayout
@@ -35,8 +35,8 @@ public abstract class AbsPullToRefreshViewFix
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private Handler jdField_a_of_type_AndroidOsHandler;
   protected View a;
-  private bfzv jdField_a_of_type_Bfzv;
-  protected rqn a;
+  private bias jdField_a_of_type_Bias;
+  protected sgm a;
   protected boolean a;
   private float jdField_b_of_type_Float = -1.0F;
   private int jdField_b_of_type_Int = 0;
@@ -110,7 +110,7 @@ public abstract class AbsPullToRefreshViewFix
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.jdField_a_of_type_AndroidViewView = a();
     this.jdField_b_of_type_AndroidViewView = b();
-    this.g = vzl.a(getContext(), 15.0F);
+    this.g = xod.a(getContext(), 15.0F);
     this.e = ViewConfiguration.get(getContext()).getScaledMaximumFlingVelocity();
     a(this.jdField_a_of_type_AndroidViewView);
     setWillNotDraw(false);
@@ -120,7 +120,7 @@ public abstract class AbsPullToRefreshViewFix
   private void b(int paramInt)
   {
     int i = 0;
-    if (this.jdField_a_of_type_Bfzv == null) {}
+    if (this.jdField_a_of_type_Bias == null) {}
     do
     {
       return;
@@ -131,7 +131,7 @@ public abstract class AbsPullToRefreshViewFix
       }
     } while (this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Bfzv.a(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_Bias.a(this.jdField_a_of_type_AndroidViewView);
     return;
     paramInt = 100 - Math.abs((int)(b() * 1.0F / -this.jdField_c_of_type_Int * 100.0F));
     if (paramInt < 0) {
@@ -139,16 +139,16 @@ public abstract class AbsPullToRefreshViewFix
     }
     while (!this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_Bfzv.a(this.jdField_a_of_type_AndroidViewView, paramInt);
+      this.jdField_a_of_type_Bias.a(this.jdField_a_of_type_AndroidViewView, paramInt);
       return;
       if (this.jdField_a_of_type_Boolean) {
         break;
       }
-      this.jdField_a_of_type_Bfzv.a(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Bias.a(this.jdField_a_of_type_AndroidViewView);
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Bfzv.a(this.jdField_a_of_type_AndroidViewView, false);
+        this.jdField_a_of_type_Bias.a(this.jdField_a_of_type_AndroidViewView, false);
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0), 1000L);
       }
       this.jdField_a_of_type_Boolean = false;
@@ -156,7 +156,7 @@ public abstract class AbsPullToRefreshViewFix
       return;
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_a_of_type_Bfzv.a(this.jdField_a_of_type_AndroidViewView, true);
+        this.jdField_a_of_type_Bias.a(this.jdField_a_of_type_AndroidViewView, true);
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0), 0L);
       }
       this.jdField_a_of_type_Boolean = false;
@@ -217,26 +217,26 @@ public abstract class AbsPullToRefreshViewFix
   
   protected int a()
   {
-    return vzl.a(getContext(), 60.0F);
+    return xod.a(getContext(), 60.0F);
   }
   
   protected abstract View a();
   
-  protected rqn a()
+  protected sgm a()
   {
     return a(0);
   }
   
-  public rqn a(int paramInt)
+  public sgm a(int paramInt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("AbsPullToRefreshView2", 1, "setAnimType animType = " + paramInt);
     }
-    if ((this.jdField_a_of_type_Rqn != null) && ((this.jdField_a_of_type_Rqn instanceof ReadInJoySkinAnimManager))) {
-      this.jdField_a_of_type_Rqn.d();
+    if ((this.jdField_a_of_type_Sgm != null) && ((this.jdField_a_of_type_Sgm instanceof ReadInJoySkinAnimManager))) {
+      this.jdField_a_of_type_Sgm.d();
     }
-    this.jdField_a_of_type_Rqn = rqs.a(getContext(), paramInt);
-    return this.jdField_a_of_type_Rqn;
+    this.jdField_a_of_type_Sgm = sgr.a(getContext(), paramInt);
+    return this.jdField_a_of_type_Sgm;
   }
   
   public void a()
@@ -276,9 +276,9 @@ public abstract class AbsPullToRefreshViewFix
     }
   }
   
-  protected void a(bfzv parambfzv)
+  protected void a(bias parambias)
   {
-    this.jdField_a_of_type_Bfzv = parambfzv;
+    this.jdField_a_of_type_Bias = parambias;
   }
   
   protected void a(boolean paramBoolean) {}
@@ -513,7 +513,7 @@ public abstract class AbsPullToRefreshViewFix
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.AbsPullToRefreshViewFix
  * JD-Core Version:    0.7.0.1
  */

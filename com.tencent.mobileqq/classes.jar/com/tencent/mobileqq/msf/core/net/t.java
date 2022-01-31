@@ -57,7 +57,7 @@ class t
           continue;
         }
         QLog.d("MSF.C.NetConnTag", 2, "tcpdump end Sleep for 10 minutes");
-        n.o();
+        n.p();
         n.b(this.a, true);
         return;
         continue;

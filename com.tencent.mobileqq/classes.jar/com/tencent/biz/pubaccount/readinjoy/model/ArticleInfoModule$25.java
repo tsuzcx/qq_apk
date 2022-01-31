@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import aukp;
+import awbw;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.qphone.base.util.QLog;
-import ozo;
+import pew;
 
 public class ArticleInfoModule$25
   implements Runnable
 {
-  public ArticleInfoModule$25(ozo paramozo, ArticleInfo paramArticleInfo) {}
+  public ArticleInfoModule$25(pew parampew, ArticleInfo paramArticleInfo) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ArticleInfoModule$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule.25
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="uin")
 public class ShieldListInfo
-  extends auko
+  extends awbv
 {
   public static final int SHIELD_LIST_DEFAULT_SRC_SUB_ID = 0;
   public static final int SHIELD_LIST_INFO_FLAG_IS_SHIELD = 1;
@@ -31,12 +31,14 @@ public class ShieldListInfo
   public static final int SHIELD_LIST_SOURCE_ID_WPA = 10;
   public static final int SHIELD_LIST_SOURCE_LIGHTALK = 27;
   public static final int SHIELD_LIST_SOURCE_LIMIT_CHAT = 159;
+  public static final int SHIELD_LIST_SOURCE_MATCH_CAMPUS_CHAT = 166;
   public static final int SHIELD_LIST_SOURCE_MATCH_CHAT = 163;
   public static final int SHIELD_LIST_SOURCE_MOVIE_TICKET = 153;
+  public static final int SHIELD_LIST_SOURCE_QQ_CIRCLE = 165;
   public int flags;
   public int source_id;
   public int source_sub_id;
-  @aumc
+  @awdj
   public String uin;
   
   public static int AIO_TYPE_2_SOURCE_ID(int paramInt)
@@ -84,8 +86,12 @@ public class ShieldListInfo
       return 159;
     case 1044: 
       return 163;
+    case 1045: 
+      return 166;
+    case 1036: 
+      return 2164;
     }
-    return 2164;
+    return 165;
   }
   
   public static int SOURCE_ID_2_AIO_TYPE(int paramInt)
@@ -130,8 +136,12 @@ public class ShieldListInfo
       return 1037;
     case 163: 
       return 1044;
+    case 166: 
+      return 1045;
+    case 2164: 
+      return 1036;
     }
-    return 1036;
+    return 10008;
   }
   
   private void shieldMsg(boolean paramBoolean)
@@ -151,7 +161,7 @@ public class ShieldListInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ShieldListInfo
  * JD-Core Version:    0.7.0.1
  */

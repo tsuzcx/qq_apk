@@ -1,65 +1,98 @@
-import android.graphics.Canvas;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionCenterView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
-import java.util.Random;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import java.util.List;
 
 public class qpt
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public float b;
-  public int b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
-  public float g = 0.8F;
-  public float h = 0.4F;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<Long> jdField_a_of_type_JavaUtilList;
   
-  public qpt(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView)
+  public qpt(Context paramContext, List<Long> paramList)
   {
-    this.jdField_a_of_type_Int = 360;
-    b();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  private void b()
+  public int getCount()
   {
-    c();
-    a();
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
   }
   
-  private void c()
+  public Object getItem(int paramInt)
   {
-    if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) {}
-    for (int i = this.jdField_b_of_type_Int;; i = VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView).nextInt() * (this.jdField_a_of_type_Int - this.jdField_b_of_type_Int) + this.jdField_b_of_type_Int)
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt)) {
+      return null;
+    }
+    if (paramView == null)
     {
-      double d1 = Math.toRadians(i);
-      this.e = ((float)(0.9F * Math.cos(d1)));
-      this.f = ((float)(0.9F * Math.sin(d1)));
-      return;
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560091, paramViewGroup, false);
+      paramViewGroup = new qpu();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375991));
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131368782));
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131378845));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      if (paramViewGroup != null)
+      {
+        long l = ((Long)this.jdField_a_of_type_JavaUtilList.get(paramInt)).longValue();
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(l);
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setNickNameByUin(l);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131375287, Integer.valueOf(paramInt));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+      }
+      return paramView;
+      if ((paramView.getTag() instanceof qpu)) {
+        paramViewGroup = (qpu)paramView.getTag();
+      } else {
+        paramViewGroup = null;
+      }
     }
   }
   
-  protected void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Float = (VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a) - VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a).getWidth() / 2);
-    this.jdField_b_of_type_Float = (VideoFeedsLikeAnimate.b(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a) - VideoFeedsLikeAnimate.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a).getHeight() / 2);
-    this.c = this.jdField_a_of_type_Float;
-    this.d = this.jdField_b_of_type_Float;
+    switch (paramView.getId())
+    {
+    }
+    int i;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramView.getTag(2131375287) == null);
+      i = ((Integer)paramView.getTag(2131375287)).intValue();
+    } while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= i));
+    olt.a(String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)), this.jdField_a_of_type_AndroidContentContext);
   }
-  
-  public void a(float paramFloat)
-  {
-    this.c = (this.jdField_a_of_type_Float + this.e * (float)VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView) * paramFloat);
-    this.d = (this.jdField_b_of_type_Float + this.f * (float)VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView) * paramFloat);
-  }
-  
-  public void a(Canvas paramCanvas) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qpt
  * JD-Core Version:    0.7.0.1
  */

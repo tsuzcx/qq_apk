@@ -18,17 +18,17 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
-import azmk;
-import baxn;
-import bbbx;
-import bbdv;
-import bbly;
-import bblz;
+import bbkt;
+import bcwh;
+import bdar;
+import bdcq;
+import bdks;
+import bdkt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 import com.tencent.mobileqq.troop.data.AudioInfo;
 import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -39,14 +39,14 @@ import java.util.Collection;
 
 public class PublishItemContainer
   extends CustomHorizontalScrollView
-  implements View.OnClickListener, bblz
+  implements View.OnClickListener, bdkt
 {
   protected Activity a;
   protected Drawable a;
   protected View a;
   protected LinearLayout a;
-  public azmk a;
-  private bbly jdField_a_of_type_Bbly;
+  public bbkt a;
+  private bdks jdField_a_of_type_Bdks;
   protected CharSequence a;
   protected ArrayList<String> a;
   private boolean jdField_a_of_type_Boolean;
@@ -59,23 +59,23 @@ public class PublishItemContainer
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846926);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130847294);
     this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
-    this.jdField_a_of_type_JavaLangCharSequence = BaseApplication.getContext().getResources().getText(2131718308);
+    this.jdField_a_of_type_JavaLangCharSequence = BaseApplication.getContext().getResources().getText(2131718683);
     this.jdField_b_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     addView(this.jdField_b_of_type_AndroidWidgetLinearLayout);
     paramAttributeSet = new FrameLayout.LayoutParams(-1, -2);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setOrientation(0);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setGravity(16);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramAttributeSet);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 0, (int)bbdv.a(paramContext, 7.0F));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setPadding(0, 0, 0, (int)bdcq.a(paramContext, 7.0F));
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
     paramContext = new LinearLayout.LayoutParams(-1, -2);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(16);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramContext);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559719, null);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559778, null);
     a(this.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
@@ -91,7 +91,7 @@ public class PublishItemContainer
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
     setVisibility(8);
-    this.jdField_a_of_type_Azmk = null;
+    this.jdField_a_of_type_Bbkt = null;
     this.g = 0;
   }
   
@@ -102,23 +102,23 @@ public class PublishItemContainer
   
   protected void a(View paramView)
   {
-    Object localObject = paramView.findViewById(2131367975);
-    URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131378718);
-    localURLImageView.setImageResource(2130847613);
+    Object localObject = paramView.findViewById(2131368112);
+    URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131379336);
+    localURLImageView.setImageResource(2130847995);
     ((View)localObject).setVisibility(8);
     localURLImageView.setAdjustViewBounds(false);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localURLImageView.getLayoutParams();
-    localLayoutParams.width = ((int)bbdv.a(getContext(), 50.0F));
-    localLayoutParams.height = ((int)bbdv.a(getContext(), 50.0F));
+    localLayoutParams.width = ((int)bdcq.a(getContext(), 50.0F));
+    localLayoutParams.height = ((int)bdcq.a(getContext(), 50.0F));
     localLayoutParams.addRule(9);
     localLayoutParams.addRule(15);
     localURLImageView.setOnClickListener(this);
     localObject = (RelativeLayout.LayoutParams)((View)localObject).getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).topMargin = baxn.a(getContext(), 2.0F);
-    ((RelativeLayout.LayoutParams)localObject).rightMargin = baxn.a(getContext(), 2.0F);
-    localObject = new LinearLayout.LayoutParams((int)bbdv.a(getContext(), 60.0F), (int)bbdv.a(getContext(), 67.0F));
-    ((LinearLayout.LayoutParams)localObject).rightMargin = baxn.a(getContext(), 2.0F);
-    ((LinearLayout.LayoutParams)localObject).topMargin = baxn.a(getContext(), 4.0F);
+    ((RelativeLayout.LayoutParams)localObject).topMargin = bcwh.a(getContext(), 2.0F);
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = bcwh.a(getContext(), 2.0F);
+    localObject = new LinearLayout.LayoutParams((int)bdcq.a(getContext(), 60.0F), (int)bdcq.a(getContext(), 67.0F));
+    ((LinearLayout.LayoutParams)localObject).rightMargin = bcwh.a(getContext(), 2.0F);
+    ((LinearLayout.LayoutParams)localObject).topMargin = bcwh.a(getContext(), 4.0F);
     paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
   
@@ -130,17 +130,17 @@ public class PublishItemContainer
     Object localObject2;
     if ((paramView != null) && (!TextUtils.isEmpty(paramString)))
     {
-      localView = paramView.findViewById(2131367975);
-      localURLImageView = (URLImageView)paramView.findViewById(2131378718);
+      localView = paramView.findViewById(2131368112);
+      localURLImageView = (URLImageView)paramView.findViewById(2131379336);
       localURLImageView.setAdjustViewBounds(false);
       localObject1 = (RelativeLayout.LayoutParams)localURLImageView.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject1).width = ((int)bbdv.a(getContext(), 50.0F));
-      ((RelativeLayout.LayoutParams)localObject1).height = ((int)bbdv.a(getContext(), 50.0F));
+      ((RelativeLayout.LayoutParams)localObject1).width = ((int)bdcq.a(getContext(), 50.0F));
+      ((RelativeLayout.LayoutParams)localObject1).height = ((int)bdcq.a(getContext(), 50.0F));
       ((RelativeLayout.LayoutParams)localObject1).addRule(9);
       ((RelativeLayout.LayoutParams)localObject1).addRule(15);
       localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
-      localLayoutParams.topMargin = baxn.a(getContext(), 2.0F);
-      localLayoutParams.rightMargin = baxn.a(getContext(), 2.0F);
+      localLayoutParams.topMargin = bcwh.a(getContext(), 2.0F);
+      localLayoutParams.rightMargin = bcwh.a(getContext(), 2.0F);
       localObject2 = new File(paramString);
     }
     for (Object localObject1 = null;; localObject1 = localObject2)
@@ -178,10 +178,10 @@ public class PublishItemContainer
       localURLImageView.setTag(paramString);
       localURLImageView.setOnClickListener(this);
       paramString = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-      paramString.rightMargin = baxn.a(getContext(), 2.0F);
-      paramString.topMargin = baxn.a(getContext(), 5.0F);
-      paramString.width = ((int)bbdv.a(getContext(), 60.0F));
-      paramString.height = ((int)bbdv.a(getContext(), 67.0F));
+      paramString.rightMargin = bcwh.a(getContext(), 2.0F);
+      paramString.topMargin = bcwh.a(getContext(), 5.0F);
+      paramString.width = ((int)bdcq.a(getContext(), 60.0F));
+      paramString.height = ((int)bdcq.a(getContext(), 67.0F));
       paramView.setLayoutParams(paramString);
       return;
       localObject2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -206,13 +206,13 @@ public class PublishItemContainer
     }
   }
   
-  public boolean a(int paramInt, azmk paramazmk)
+  public boolean a(int paramInt, bbkt parambbkt)
   {
     if (this.g == 1) {
       this.jdField_a_of_type_JavaUtilArrayList.clear();
     }
-    if (paramazmk == null) {}
-    for (View localView = null; localView == null; localView = paramazmk.getView(getContext(), this)) {
+    if (parambbkt == null) {}
+    for (View localView = null; localView == null; localView = parambbkt.getView(getContext(), this)) {
       return false;
     }
     this.jdField_a_of_type_Boolean = false;
@@ -220,7 +220,7 @@ public class PublishItemContainer
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
     setVisibility(0);
-    this.jdField_a_of_type_Azmk = paramazmk;
+    this.jdField_a_of_type_Bbkt = parambbkt;
     this.g = paramInt;
     return true;
   }
@@ -234,7 +234,7 @@ public class PublishItemContainer
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!TextUtils.isEmpty(paramString)))
     {
       this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-      View localView = LayoutInflater.from(getContext()).inflate(2131559719, null);
+      View localView = LayoutInflater.from(getContext()).inflate(2131559778, null);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
       a(localView, paramString);
       this.g = 1;
@@ -287,7 +287,7 @@ public class PublishItemContainer
           i = 0;
           while (i < k - j)
           {
-            localObject = paramArrayList.inflate(2131559719, null);
+            localObject = paramArrayList.inflate(2131559778, null);
             this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
             i += 1;
           }
@@ -309,24 +309,24 @@ public class PublishItemContainer
   
   public void b()
   {
-    if ((this.g != 2) || (!(this.jdField_a_of_type_Azmk instanceof AudioInfo))) {}
+    if ((this.g != 2) || (!(this.jdField_a_of_type_Bbkt instanceof AudioInfo))) {}
     AudioInfo localAudioInfo;
     do
     {
       return;
-      localAudioInfo = (AudioInfo)this.jdField_a_of_type_Azmk;
-      localAudioInfo.mAudioIcon.setImageResource(2130848908);
+      localAudioInfo = (AudioInfo)this.jdField_a_of_type_Bbkt;
+      localAudioInfo.mAudioIcon.setImageResource(2130849339);
       localObject = new Intent("key_audio_playing_action");
       ((Intent)localObject).putExtra("audio_local_path", localAudioInfo.path);
       BaseApplication.getContext().sendBroadcast((Intent)localObject);
-    } while (this.jdField_a_of_type_Bbly != null);
-    this.jdField_a_of_type_Bbly = new bbly(localAudioInfo.path, new Handler(), localAudioInfo.getAudioType());
-    this.jdField_a_of_type_Bbly.a(getContext());
-    this.jdField_a_of_type_Bbly.b();
-    this.jdField_a_of_type_Bbly.a(this);
-    this.jdField_a_of_type_Bbly.c();
+    } while (this.jdField_a_of_type_Bdks != null);
+    this.jdField_a_of_type_Bdks = new bdks(localAudioInfo.path, new Handler(), localAudioInfo.getAudioType());
+    this.jdField_a_of_type_Bdks.a(getContext());
+    this.jdField_a_of_type_Bdks.b();
+    this.jdField_a_of_type_Bdks.a(this);
+    this.jdField_a_of_type_Bdks.c();
     this.jdField_b_of_type_Boolean = true;
-    Object localObject = (AnimationDrawable)BaseApplicationImpl.getApplication().getResources().getDrawable(2130772169);
+    Object localObject = (AnimationDrawable)BaseApplicationImpl.getApplication().getResources().getDrawable(2130772171);
     localAudioInfo.mAudioIcon.setImageDrawable((Drawable)localObject);
     ((AnimationDrawable)localObject).start();
   }
@@ -335,22 +335,22 @@ public class PublishItemContainer
   
   public void c()
   {
-    if (this.jdField_a_of_type_Bbly != null)
+    if (this.jdField_a_of_type_Bdks != null)
     {
-      this.jdField_a_of_type_Bbly.f();
-      this.jdField_a_of_type_Bbly = null;
+      this.jdField_a_of_type_Bdks.f();
+      this.jdField_a_of_type_Bdks = null;
       this.jdField_b_of_type_Boolean = false;
-      if ((this.jdField_a_of_type_Azmk instanceof AudioInfo)) {}
+      if ((this.jdField_a_of_type_Bbkt instanceof AudioInfo)) {}
     }
     else
     {
       return;
     }
-    AudioInfo localAudioInfo = (AudioInfo)this.jdField_a_of_type_Azmk;
+    AudioInfo localAudioInfo = (AudioInfo)this.jdField_a_of_type_Bbkt;
     if ((localAudioInfo.mAudioIcon.getDrawable() instanceof AnimationDrawable)) {
       ((AnimationDrawable)localAudioInfo.mAudioIcon.getDrawable()).stop();
     }
-    localAudioInfo.mAudioIcon.setImageResource(2130848908);
+    localAudioInfo.mAudioIcon.setImageResource(2130849339);
   }
   
   public void onClick(View paramView)
@@ -365,7 +365,7 @@ public class PublishItemContainer
       paramView = new Intent("key_audio_delete_action");
       BaseApplication.getContext().sendBroadcast(paramView);
       this.g = 0;
-      this.jdField_a_of_type_Azmk = null;
+      this.jdField_a_of_type_Bbkt = null;
       return;
       paramView = (String)paramView.getTag();
       int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramView);
@@ -387,12 +387,12 @@ public class PublishItemContainer
       {
         paramView = (String)paramView.getTag();
         i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramView);
-        bbbx.a();
-        paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, PhotoPreviewActivity.class);
+        bdar.a();
+        paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, NewPhotoPreviewActivity.class);
         paramView.putExtra("ALBUM_ID", "$RecentAlbumId");
         paramView.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
         paramView.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", this.jdField_a_of_type_AndroidAppActivity.getClass().getName());
-        paramView.putExtra("back_btn_text", this.jdField_a_of_type_AndroidAppActivity.getString(2131697511));
+        paramView.putExtra("back_btn_text", this.jdField_a_of_type_AndroidAppActivity.getString(2131697686));
         paramView.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", this.jdField_a_of_type_JavaUtilArrayList);
         paramView.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
         paramView.putExtra("PhotoConst.MAXUM_SELECTED_NUM", this.jdField_a_of_type_JavaUtilArrayList.size());
@@ -403,13 +403,13 @@ public class PublishItemContainer
         paramView.putExtra("PhotoConst.IS_OVERLOAD", false);
         paramView.addFlags(603979776);
         getContext().startActivity(paramView);
-        bbbx.a(this.jdField_a_of_type_AndroidAppActivity, false, true);
+        bdar.anim(this.jdField_a_of_type_AndroidAppActivity, false, true);
         return;
       }
       paramView = new Intent("key_photo_add_action");
       BaseApplication.getContext().sendBroadcast(paramView);
       return;
-      if (this.jdField_a_of_type_Bbly != null) {
+      if (this.jdField_a_of_type_Bdks != null) {
         break;
       }
       b();
@@ -432,8 +432,8 @@ public class PublishItemContainer
     if (this.g == 2)
     {
       View localView2 = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0);
-      View localView1 = localView2.findViewById(2131362852);
-      localView2 = localView2.findViewById(2131362853);
+      View localView1 = localView2.findViewById(2131362887);
+      localView2 = localView2.findViewById(2131362888);
       if ((localView1 != null) && (localView2 != null))
       {
         localView1.setEnabled(paramBoolean);

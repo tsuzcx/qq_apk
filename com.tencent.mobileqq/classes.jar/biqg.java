@@ -1,29 +1,34 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Toast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqdataline.DatalineBridgeActivity;
 
 public class biqg
-  extends RecyclerView.ViewHolder
 {
-  public Button a;
-  public EditText a;
-  public ImageView a;
-  public boolean a;
-  
-  public biqg(bipy parambipy, View paramView)
+  public static void a(Context paramContext, Bundle paramBundle, String paramString)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131365515));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365268));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131375167));
-    this.jdField_a_of_type_Boolean = false;
+    if (paramContext == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("QQProxyForQlink", 2, "[QLINK] QQ - startQlink failed context=null!");
+      }
+      Toast.makeText(BaseApplication.getContext(), alpo.a(2131711078), 0).show();
+      return;
+    }
+    Intent localIntent = new Intent(paramContext, DatalineBridgeActivity.class);
+    localIntent.putExtra("componetname", paramString);
+    if (paramBundle != null) {
+      localIntent.putExtra("_param_", paramBundle);
+    }
+    paramContext.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biqg
  * JD-Core Version:    0.7.0.1
  */

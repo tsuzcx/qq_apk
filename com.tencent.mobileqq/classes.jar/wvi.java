@@ -1,38 +1,86 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanGood;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.commodity.CommodityBean;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
 
 public class wvi
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public wvi(CommodityItemView paramCommodityItemView) {}
+  private int jdField_a_of_type_Int;
+  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  private wvh jdField_a_of_type_Wvh;
+  private boolean jdField_a_of_type_Boolean;
+  private final int jdField_b_of_type_Int = 5;
+  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
+  private boolean jdField_b_of_type_Boolean;
   
-  public void onClick(View paramView)
+  public wvi(wvh paramwvh)
   {
-    if ((this.a.a() != null) && (!CommodityItemView.a(this.a))) {
-      if (!(this.a.a() instanceof CommodityBean)) {
-        break label120;
-      }
-    }
-    label120:
-    for (paramView = ((CommodityBean)this.a.a()).mUrl;; paramView = ((CertifiedAccountMeta.StYouZanGood)this.a.a()).url.get())
+    this.jdField_a_of_type_Wvh = paramwvh;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_Wvh == null) {}
+    do
     {
-      if (CommodityItemView.a(this.a) != null) {
-        xhb.a(CommodityItemView.a(this.a).poster.id.get(), "auth_" + wux.a(this.a.a()), "clk_goods", 0, 0, new String[0]);
-      }
-      wis.a(paramView, 8002);
-      return;
+      do
+      {
+        float f;
+        do
+        {
+          do
+          {
+            return true;
+            f = paramMotionEvent.getY();
+            switch (paramMotionEvent.getAction() & 0xFF)
+            {
+            case 3: 
+            case 4: 
+            default: 
+              return true;
+            case 0: 
+              this.jdField_a_of_type_Int = ((int)f);
+              this.jdField_a_of_type_Boolean = false;
+              this.jdField_b_of_type_Boolean = false;
+              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+              return true;
+            }
+          } while (paramMotionEvent.getPointerCount() > 2);
+          if (this.jdField_b_of_type_Boolean)
+          {
+            this.jdField_a_of_type_Wvh.a(paramMotionEvent);
+            return true;
+          }
+          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_Wvh.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
+        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
+        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
+        return true;
+        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
+          this.jdField_a_of_type_Boolean = true;
+        }
+      } while (!this.jdField_b_of_type_Boolean);
+      this.jdField_a_of_type_Wvh.a(paramMotionEvent);
+      return true;
+    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
+    this.jdField_a_of_type_Wvh.a(paramMotionEvent);
+    return true;
+    if (!this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Wvh.onClick(paramView);
     }
+    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
+      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
+    }
+    this.jdField_a_of_type_Wvh.a(paramMotionEvent);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvi
  * JD-Core Version:    0.7.0.1
  */

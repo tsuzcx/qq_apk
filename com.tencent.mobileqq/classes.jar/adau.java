@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
+import com.tencent.mobileqq.activity.JumpActivity;
 
-class adau
-  implements aybj
+public class adau
+  implements acgy
 {
-  adau(adas paramadas) {}
+  public adau(JumpActivity paramJumpActivity) {}
   
   public void a()
   {
-    aybp localaybp = new aybp(3000, 360, 0);
-    localaybp.a = true;
-    this.a.a.e.a(new aybi[] { localaybp });
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adau
  * JD-Core Version:    0.7.0.1
  */

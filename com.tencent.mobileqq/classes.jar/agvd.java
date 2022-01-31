@@ -1,53 +1,92 @@
-import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import java.util.Iterator;
+import java.util.List;
 
-class agvd
-  implements View.OnClickListener
+public class agvd
 {
-  agvd(agvc paramagvc) {}
-  
-  public void onClick(View paramView)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramView = new Intent();
-    int i = ((NewPhotoPreviewActivity)this.a.a.get()).a();
-    if ((agvc.a(this.a).a == null) || (agvc.b(this.a).a.size() == 0)) {
-      if ((agvc.a(this.a).a != null) && (i != -1))
-      {
-        ArrayList localArrayList = new ArrayList();
-        String str = (String)agvc.b(this.a).a.get(i);
-        if (TextUtils.isEmpty(str)) {
-          break label181;
-        }
-        localArrayList.add(str);
-        paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", localArrayList);
-        axqy.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, "1", "", "", "");
-      }
-    }
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      return;
+      c(paramQQAppInterface, paramString);
+      MessageRecord localMessageRecord = ayvw.a(-1026);
+      long l = ayvc.a();
+      localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1026, 0, l);
+      localMessageRecord.isread = true;
+      paramQQAppInterface.a().a(localMessageRecord, localMessageRecord.selfuin);
+      azmj.b(paramQQAppInterface, "CliOper", "", "", "0X8004C56", "0X8004C56", 0, 0, "", "", "", "");
+    } while (!QLog.isColorLevel());
+    QLog.d("GatherContactsTipsHelper", 2, "insertUncommonlyUsedContactsTips success, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, List<String> paramList)
+  {
+    if ((paramQQAppInterface == null) || (paramList == null) || (paramList.isEmpty())) {}
     for (;;)
     {
-      ((NewPhotoPreviewActivity)this.a.a.get()).setResult(-1, paramView);
-      ((NewPhotoPreviewActivity)this.a.a.get()).finish();
       return;
-      label181:
-      if (QLog.isColorLevel())
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        a(paramQQAppInterface, (String)paramList.next());
+      }
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      return;
+      c(paramQQAppInterface, paramString);
+      MessageRecord localMessageRecord = ayvw.a(-1027);
+      long l = ayvc.a();
+      localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1027, 0, l);
+      localMessageRecord.isread = true;
+      paramQQAppInterface.a().a(localMessageRecord, localMessageRecord.selfuin);
+      azmj.b(paramQQAppInterface, "CliOper", "", "", "0X8004C57", "0X8004C57", 0, 0, "", "", "", "");
+    } while (!QLog.isColorLevel());
+    QLog.d("GatherContactsTipsHelper", 2, "insertUncommonlyUsedContactsCancelSetTips success, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString);
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, List<String> paramList)
+  {
+    if ((paramQQAppInterface == null) || (paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        b(paramQQAppInterface, (String)paramList.next());
+      }
+    }
+  }
+  
+  public static void c(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Iterator localIterator = paramQQAppInterface.a().b(paramString, 0).iterator();
+    while (localIterator.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+      if ((localMessageRecord.msgtype == -1026) || (localMessageRecord.msgtype == -1027))
       {
-        QLog.d("PhotoPreviewActivity", 2, "sendBtn click currentPath is null");
-        continue;
-        paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", agvc.c(this.a).a);
-        axqy.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, String.valueOf(agvc.d(this.a).a.size()), "", "", "");
+        paramQQAppInterface.a().b(paramString, 0, localMessageRecord.uniseq);
+        if (QLog.isColorLevel()) {
+          QLog.d("GatherContactsTipsHelper", 2, "deleteUncommonlyUsedContactsAndCancelTips, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString + " msgtype:" + localMessageRecord.msgtype);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agvd
  * JD-Core Version:    0.7.0.1
  */

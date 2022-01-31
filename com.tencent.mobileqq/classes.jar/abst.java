@@ -1,34 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class abst
-  implements View.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  abst(abss paramabss) {}
+  abst(absp paramabsp, abso paramabso, absg paramabsg, JSONObject paramJSONObject, absf paramabsf) {}
   
-  public void onClick(View paramView)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramView = paramView.getTag();
-    if ((paramView instanceof absr))
-    {
-      paramView = (absr)paramView;
-      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
-      {
-        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
-        this.a.a.a(this.a.a.a.size());
-        this.a.notifyDataSetChanged();
-        abss.a(this.a, paramView);
-        axqy.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
-      }
-    }
+    this.jdField_a_of_type_Absp.d();
+    QLog.i("DoraemonOpenAPI.apiMgr", 1, "cancel " + this.jdField_a_of_type_Abso.a);
+    absp.c(this.jdField_a_of_type_Absp, 4, this.jdField_a_of_type_Absg, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Absf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abst
  * JD-Core Version:    0.7.0.1
  */

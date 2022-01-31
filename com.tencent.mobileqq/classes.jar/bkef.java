@@ -1,40 +1,26 @@
-import android.graphics.Bitmap;
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
 
-public abstract interface bkef
+class bkef
+  implements IBinder.DeathRecipient
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
+  bkef(bkee parambkee) {}
   
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
-  
-  public abstract void a(bkgh parambkgh);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract void b(int paramInt, Object paramObject);
-  
-  public abstract void b(String paramString);
-  
-  public abstract boolean b();
-  
-  public abstract void o();
-  
-  public abstract void p();
-  
-  public abstract void q();
-  
-  public abstract void r();
-  
-  public abstract void s();
-  
-  public abstract void t();
+  public void binderDied()
+  {
+    bfnq.c("WadlProxyServiceManager", "wadl download process is died!");
+    bkee.a(this.a).asBinder().unlinkToDeath(bkee.a(this.a), 0);
+    bkee.a(this.a, null);
+    if ((bkee.a(this.a) != null) && (bkee.a(this.a).a()))
+    {
+      bfnq.c("WadlProxyServiceManager", "download process died restart service");
+      this.a.b();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkef
  * JD-Core Version:    0.7.0.1
  */

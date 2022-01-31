@@ -1,27 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-
-class azfn
-  implements bfph
+public class azfn
 {
-  azfn(azfm paramazfm, bfpc parambfpc) {}
-  
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      this.jdField_a_of_type_Azfm.a.a(this.jdField_a_of_type_Azfm.a.a);
-    }
-  }
+  public float a = 1.0F;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public int d;
+  public int e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azfn
  * JD-Core Version:    0.7.0.1
  */

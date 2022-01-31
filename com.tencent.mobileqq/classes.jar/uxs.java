@@ -1,85 +1,26 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.view.View;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public abstract class uxs
-  implements uxt
+public class uxs
+  extends ugz
 {
-  protected Activity a;
+  public boolean a;
+  public boolean b;
+  public boolean c = true;
+  public boolean d;
   
-  public Activity a()
+  public uxs(ErrorMessage paramErrorMessage)
   {
-    return this.a;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
   }
   
-  public View a(int paramInt)
+  public String toString()
   {
-    Activity localActivity = this.a;
-    if (localActivity != null) {
-      return localActivity.findViewById(paramInt);
-    }
-    ved.e(getClass().getSimpleName(), "findViewById can not access after detach");
-    return null;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt)
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.setContentView(paramInt);
-      return;
-    }
-    ved.e(getClass().getSimpleName(), "setContentView can not access after detach");
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(int paramInt, Intent paramIntent)
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.setResult(paramInt, paramIntent);
-      return;
-    }
-    ved.e(getClass().getSimpleName(), "finish can not access after detach");
-  }
-  
-  public void a(@NonNull Activity paramActivity)
-  {
-    this.a = paramActivity;
-  }
-  
-  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d()
-  {
-    this.a = null;
-  }
-  
-  public void e()
-  {
-    Activity localActivity = this.a;
-    if (localActivity != null)
-    {
-      localActivity.finish();
-      return;
-    }
-    ved.e(getClass().getSimpleName(), "finish can not access after detach");
+    return "{\"_class\":\"BasePageLoaderEvent\", \"errorInfo\":\"" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + "\", \"isEnd\":\"" + this.jdField_a_of_type_Boolean + "\", \"isLocalData\":\"" + this.b + "\", \"isFirstPage\":\"" + this.c + "\"}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxs
  * JD-Core Version:    0.7.0.1
  */

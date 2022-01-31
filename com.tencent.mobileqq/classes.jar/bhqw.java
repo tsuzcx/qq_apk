@@ -1,45 +1,39 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class bhqw
-  extends bhsh
+class bhqw
+  extends bhpy
 {
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  bhqw(Context paramContext)
   {
-    if ((!paramString2.equals("qqexplive")) || (this.a == null)) {}
-    while (TextUtils.isEmpty(paramString3)) {
-      return false;
-    }
-    QLog.i("QZoneECLiveJsPlugin", 2, "ec_live_jsbridge, dispatch method callback linkchain, " + paramString3);
-    try
-    {
-      paramJsBridgeListener = new Intent("com.tencent.mobileqq.action.ACTION_EC_LIVE_DISPATCH_EVENT");
-      paramJsBridgeListener.putExtra("event", paramString3);
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-      {
-        paramString1 = new JSONObject(paramVarArgs[0]);
-        if (paramString1 != null) {
-          paramJsBridgeListener.putExtra("data", paramString1.toString());
-        }
-      }
-      BaseApplicationImpl.getContext().sendBroadcast(paramJsBridgeListener, "com.tencent.msg.permission.pushnotify");
-      return true;
-    }
-    catch (Throwable paramJsBridgeListener)
-    {
-      QLog.e("QZoneECLiveJsPlugin", 1, "qz_livevideo_jsbridge, dispatch method callback linkchain exception", paramJsBridgeListener);
-    }
-    return false;
+    super(paramContext);
+    f();
+  }
+  
+  private void f()
+  {
+    LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(getContext()).inflate(2131559015, null);
+    localLinearLayout.findViewById(2131368697).setOnClickListener(new bhqx(this));
+    String str = getContext().getString(2131690338);
+    TextView localTextView = (TextView)localLinearLayout.findViewById(2131378668);
+    SpannableString localSpannableString = new SpannableString(str);
+    localSpannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#1B90EE")), str.length() - 3, str.length() - 1, 33);
+    localSpannableString.setSpan(new bhqy(getContext(), null), str.length() - 3, str.length() - 1, 33);
+    localTextView.setText(localSpannableString);
+    localTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    a(localLinearLayout);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhqw
  * JD-Core Version:    0.7.0.1
  */

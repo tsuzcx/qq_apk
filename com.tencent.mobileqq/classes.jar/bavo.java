@@ -1,65 +1,48 @@
+import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogReq;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.1;
+import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.2;
 
-public class bavo
+public abstract class bavo
 {
-  public QQAppInterface a;
-  public BusinessObserver a;
+  static final String TAG = "PreDownload.Task";
+  protected QQAppInterface app;
+  protected bavr ctrl;
+  public String key;
+  protected Handler subHandler;
+  public Object userData;
   
-  public bavo(QQAppInterface paramQQAppInterface)
+  protected bavo(QQAppInterface paramQQAppInterface, String paramString)
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new bavp(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.key = paramString;
+    this.app = paramQQAppInterface;
+    this.ctrl = ((bavr)this.app.getManager(193));
+    this.subHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
   
-  public String a(int paramInt, JSONObject paramJSONObject)
+  public final void cancel()
   {
-    JSONObject localJSONObject2 = new JSONObject();
-    try
-    {
-      localJSONObject2.put("status", paramInt);
-      JSONObject localJSONObject1 = paramJSONObject;
-      if (paramJSONObject == null) {
-        localJSONObject1 = new JSONObject();
-      }
-      localJSONObject2.put("data", localJSONObject1);
-    }
-    catch (JSONException paramJSONObject)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("UnifiedDebugReporter", 2, "reportStatus: exception=" + paramJSONObject.getMessage());
-        }
-      }
-    }
-    return localJSONObject2.toString();
+    this.subHandler.post(new AbsPreDownloadTask.2(this));
   }
   
-  public void a(long paramLong, int paramInt, JSONObject paramJSONObject)
+  public abstract void realCancel();
+  
+  public abstract void realStart();
+  
+  public final void start()
   {
-    RemoteDebugReportMsg.RemoteLogReq localRemoteLogReq = new RemoteDebugReportMsg.RemoteLogReq();
-    localRemoteLogReq.str_seq.set(String.valueOf(paramLong));
-    localRemoteLogReq.str_data.set(a(paramInt, paramJSONObject));
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), bavn.class);
-    localNewIntent.putExtra("extra_cmd", "ClubDebugging.report");
-    localNewIntent.putExtra("extra_data", localRemoteLogReq.toByteArray());
-    localNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("UnifiedDebugReporter", 2, "reportStatus: seq=" + paramLong + ", statusCode=" + paramInt + ", data=" + paramJSONObject);
-    }
+    this.subHandler.post(new AbsPreDownloadTask.1(this));
+  }
+  
+  public String toString()
+  {
+    return super.toString() + "[" + this.key + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bavo
  * JD-Core Version:    0.7.0.1
  */

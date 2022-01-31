@@ -1,92 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class nhv
-  implements BusinessObserver
+class nhv
+  implements View.OnClickListener
 {
-  public nhv(AccountDetailActivity paramAccountDetailActivity) {}
+  nhv(nhu paramnhu, Dialog paramDialog) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "unfollow isSuccess:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.d(2131695569);
-    }
-    for (;;)
-    {
-      paramBundle = this.a;
-      paramBundle.c -= 1;
-      if (this.a.c == 0) {
-        this.a.L();
-      }
-      return;
-      Object localObject = new JSONObject();
-      if (this.a.d != null) {}
-      try
-      {
-        ((JSONObject)localObject).put("uin", this.a.d);
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add("find.mp.qq.com");
-        localArrayList.add("post.mp.qq.com");
-        localArrayList.add("article.mp.qq.com");
-        armm.a("unfollow", (JSONObject)localObject, localArrayList, null);
-        if (!paramBoolean) {
-          break label350;
-        }
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle == null) {
-            continue;
-          }
-          localObject = new mobileqq_mp.UnFollowResponse();
-          ((mobileqq_mp.UnFollowResponse)localObject).mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)((mobileqq_mp.UnFollowResponse)localObject).ret_info.get()).ret_code.get() == 0)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "unfollow success");
-            }
-            this.a.h();
-            nol.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.d, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
-            StructLongMessageDownloadProcessor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.d);
-            if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
-              continue;
-            }
-            ((bajo)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
-          }
-        }
-        catch (Exception paramBundle) {}
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-        this.a.d(2131695569);
-      }
-      continue;
-      label350:
-      this.a.d(2131695569);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nhv
  * JD-Core Version:    0.7.0.1
  */

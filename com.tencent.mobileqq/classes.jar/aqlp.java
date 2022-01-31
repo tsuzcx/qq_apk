@@ -1,47 +1,20 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.MessageForFuDai;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
 
 public class aqlp
-  implements adif, Handler.Callback
+  implements DialogInterface.OnClickListener
 {
-  private BaseChatPie a;
+  public aqlp(QfileLocalFileAppTabView.1.1 param1) {}
   
-  public aqlp(BaseChatPie paramBaseChatPie)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramBaseChatPie;
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 12: 
-    case 13: 
-      aqlq.e();
-      return;
-    }
-    aqlq.f();
-  }
-  
-  void a(MessageForFuDai paramMessageForFuDai) {}
-  
-  public int[] a()
-  {
-    return new int[] { 2, 11, 12, 13, 14 };
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqlp
  * JD-Core Version:    0.7.0.1
  */

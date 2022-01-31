@@ -1,128 +1,42 @@
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.2;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.core.ViolaEnvironment;
 
 public class sra
+  implements smq
 {
-  public List<sra> a;
-  public srb a;
-  private boolean a;
-  
-  public sra()
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Srb = new srb();
-    this.jdField_a_of_type_Srb.jdField_a_of_type_Int = 0;
-    srb.a(this.jdField_a_of_type_Srb, 0);
-    this.jdField_a_of_type_Srb.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  public sra(String paramString, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    String str = paramString.substring(0, paramInt1);
-    this.jdField_a_of_type_Srb = new srb();
-    this.jdField_a_of_type_Srb.jdField_a_of_type_JavaLangString = str;
-    this.jdField_a_of_type_Srb.jdField_a_of_type_Int = paramInt1;
-    srb.a(this.jdField_a_of_type_Srb, paramInt2);
-    if (paramInt1 < paramString.length())
-    {
-      paramString = new sra(paramString, paramInt1 + 1, paramInt2);
-      this.jdField_a_of_type_JavaUtilList.add(paramString);
-    }
-  }
-  
-  public int a()
-  {
-    int j;
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      j = srb.a(this.jdField_a_of_type_Srb);
-    }
-    Iterator localIterator;
-    int i;
-    do
-    {
-      return j;
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      i = 0;
-      j = i;
-    } while (!localIterator.hasNext());
-    sra localsra = (sra)localIterator.next();
-    if (!localsra.jdField_a_of_type_Boolean) {
-      i = localsra.a() + i;
-    }
-    for (;;)
-    {
-      break;
-    }
-  }
-  
-  public List<sra> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-      localArrayList.add(this);
-    }
-    for (;;)
-    {
-      return localArrayList;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        sra localsra = (sra)localIterator.next();
-        if (!localsra.jdField_a_of_type_Boolean) {
-          if (localsra.jdField_a_of_type_JavaUtilList.size() == 0) {
-            localArrayList.add(localsra);
-          } else {
-            localArrayList.addAll(localsra.a());
-          }
-        }
-      }
-    }
-  }
+  public sra(ViolaBaseView.2 param2, long paramLong) {}
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = true;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((sra)localIterator.next()).a();
+    if (ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0) != null) {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0).b();
     }
+    ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0, 1);
+    QLog.e(ViolaBaseView.a(), 2, "ThreadManager 执行 onViolaSDKError");
   }
   
-  public boolean a(String paramString, int paramInt)
+  public void a(long paramLong)
   {
-    if ((this.jdField_a_of_type_Srb.jdField_a_of_type_Int != 0) && ((paramString.length() <= this.jdField_a_of_type_Srb.jdField_a_of_type_Int) || (!TextUtils.equals(this.jdField_a_of_type_Srb.jdField_a_of_type_JavaLangString, String.valueOf(paramString.substring(0, this.jdField_a_of_type_Srb.jdField_a_of_type_Int)))))) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.d(ViolaBaseView.a(), 2, "ThreadManager 执行 onViolaSDKSucc");
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (((sra)localIterator.next()).a(paramString, paramInt))
-      {
-        paramString = this.jdField_a_of_type_Srb;
-        srb.a(paramString, srb.a(paramString) + paramInt);
-        return true;
-      }
+    if (ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0) != null) {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0).a();
     }
-    paramString = new sra(paramString, this.jdField_a_of_type_Srb.jdField_a_of_type_Int + 1, paramInt);
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    paramString = this.jdField_a_of_type_Srb;
-    srb.a(paramString, srb.a(paramString) + paramInt);
-    return true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mNodeBean: ").append(this.jdField_a_of_type_Srb).append(" ");
-    localStringBuilder.append("child count:").append(this.jdField_a_of_type_JavaUtilList.size());
-    return localStringBuilder.toString();
+    if (paramLong != 0L)
+    {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0).addReportData(ViolaEnvironment.TIME_SDK_MAIN, Long.toString(paramLong));
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0).addReportData(ViolaEnvironment.TIME_SDK_INIT, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0, true);
+    ViolaBaseView.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView$2.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sra
  * JD-Core Version:    0.7.0.1
  */

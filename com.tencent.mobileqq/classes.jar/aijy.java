@@ -1,39 +1,45 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.SpecialCareUtils.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
 
 public class aijy
+  implements View.OnClickListener
 {
-  public static void a(Activity paramActivity, String paramString, int paramInt)
-  {
-    if ((paramInt == 3) && (apzv.a().a()))
-    {
-      localObject = new HashMap();
-      ((Map)localObject).put("uin", paramString);
-      ((Map)localObject).put("from", Integer.valueOf(3));
-      aqal.a(paramActivity, "SpecialCareFriendSettingPage", (Map)localObject);
-      return;
-    }
-    Object localObject = new Intent(paramActivity, QQSpecialCareSettingActivity.class);
-    ((Intent)localObject).putExtra("key_friend_uin", paramString);
-    ((Intent)localObject).putExtra("key_start_from", 3);
-    paramActivity.startActivity((Intent)localObject);
-  }
+  public aijy(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new SpecialCareUtils.1(paramQQAppInterface), 1000L);
+    int i = 1;
+    paramView = this.a.a;
+    boolean bool;
+    String str;
+    if (!this.a.a.isChecked())
+    {
+      bool = true;
+      paramView.setChecked(bool);
+      this.a.d = this.a.a.isChecked();
+      this.a.i = 2;
+      paramView = this.a;
+      str = this.a.getCurrentAccountUin();
+      if (!this.a.d) {
+        break label92;
+      }
+    }
+    for (;;)
+    {
+      bdiv.E(paramView, str, i);
+      return;
+      bool = false;
+      break;
+      label92:
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijy
  * JD-Core Version:    0.7.0.1
  */

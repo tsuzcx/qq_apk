@@ -1,31 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationClidFragment;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aflt
-  implements bfvx
+class aflt
+  extends afpq
 {
-  public aflt(ConnectionsExplorationClidFragment paramConnectionsExplorationClidFragment) {}
-  
-  public void a(View paramView)
+  aflt(aflj paramaflj)
   {
-    paramView = this.a.getParentFragment();
-    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
-      ((ConnectionsExplorationFragment)paramView).a(false);
-    }
+    super(paramaflj, null);
   }
   
-  public void b(View paramView)
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    paramView = this.a.getParentFragment();
-    if ((paramView != null) && ((paramView instanceof ConnectionsExplorationFragment))) {
-      ((ConnectionsExplorationFragment)paramView).a(true);
-    }
+    return new afcv(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aflt
  * JD-Core Version:    0.7.0.1
  */

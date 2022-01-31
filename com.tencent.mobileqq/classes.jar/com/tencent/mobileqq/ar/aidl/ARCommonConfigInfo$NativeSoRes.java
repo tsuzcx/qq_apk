@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import aldu;
+import amuk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ARCommonConfigInfo$NativeSoRes
   implements Parcelable
 {
-  public static final Parcelable.Creator<NativeSoRes> CREATOR = new aldu();
+  public static final Parcelable.Creator<NativeSoRes> CREATOR = new amuk();
   public long a;
   public String a;
   public String b = "";
@@ -58,7 +58,7 @@ public class ARCommonConfigInfo$NativeSoRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes
  * JD-Core Version:    0.7.0.1
  */

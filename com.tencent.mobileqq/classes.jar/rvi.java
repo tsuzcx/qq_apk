@@ -1,22 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class rvi
-  extends AnimatorListenerAdapter
+public abstract interface rvi
 {
-  public rvi(TickerView paramTickerView) {}
+  public abstract int a();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    TickerView.a(this.a).a();
-    TickerView.a(this.a);
-    this.a.invalidate();
-  }
+  public abstract View a(ViewGroup paramViewGroup);
+  
+  public abstract void a();
+  
+  public abstract void a(boolean paramBoolean, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rvi
  * JD-Core Version:    0.7.0.1
  */

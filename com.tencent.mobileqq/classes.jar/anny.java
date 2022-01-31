@@ -1,32 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 
 class anny
-  extends Handler
+  extends bhnr
 {
-  anny(annw paramannw, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  anny(annx paramannx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (annw.a(this.a));
-    QLog.e("CameraHelper", 1, "checkPermission uncertain");
-    annw.a(this.a, false, 1830004);
+    this.a.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anny
  * JD-Core Version:    0.7.0.1
  */

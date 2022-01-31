@@ -1,64 +1,59 @@
 import android.content.SharedPreferences;
-import android.os.Build.VERSION;
-import com.tencent.aekit.api.standard.AEModule;
-import com.tencent.aekit.api.standard.AEModuleConfig;
-import com.tencent.aekit.api.standard.AEModuleConfig.Builder;
-import com.tencent.aekit.api.standard.ai.AIManager;
-import com.tencent.aekit.openrender.AEOpenRenderConfig;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.Resources;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.sveffects.SLog;
-import com.tencent.sveffects.SdkContext;
-import com.tencent.ttpic.openai.ttpicmodule.AEHandDetector;
-import com.tencent.ttpic.openapi.ttpicmodule.PTEmotionDetector;
-import com.tencent.ttpic.openapi.ttpicmodule.PTSegmenter;
-import com.tencent.ttpic.openapi.ttpicmodule.module_hair_segment.PTHairSegmenter;
-import com.tencent.ttpic.openapi.ttpicmodule.module_sky_segment.PTSkySegmenter;
-import com.tencent.ttpic.openapi.util.CfConfig;
-import com.tencent.ttpic.video.AECoderFactory;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.VipComicHelper.1;
+import java.lang.ref.WeakReference;
+import mqq.app.MobileQQ;
 
 public class biik
+  implements nbs
 {
-  private static boolean a;
+  public biik(VipComicHelper.1 param1) {}
   
-  public static boolean a()
+  public void loaded(String paramString, int paramInt)
   {
-    if (a) {
-      return true;
+    int j = 0;
+    paramString = (QQAppInterface)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramString == null) {
+      return;
     }
-    if (!b())
+    if (QLog.isColorLevel()) {
+      QLog.d("ComicHelper", 2, "Finish update offline pkg. code = " + paramInt + ", entry = " + this.a.jdField_a_of_type_Int);
+    }
+    switch (paramInt)
     {
-      SLog.e("AEKitForQQ", "sdk version Limited!");
-      return false;
     }
-    bfma.a();
-    String str = SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    SharedPreferences localSharedPreferences = bjaa.a().a();
-    AEOpenRenderConfig.setEnableStrictMode(false);
-    AEModule.initialize(localBaseApplication, AEModuleConfig.newBuilder().setLoadSo(false).setLutDir(null).setModelDir(str).setSoDir(str).setLicense("youtusdk_mqq.licence").setPreferences(localSharedPreferences).setEnableDebug(false).setFramebufferFetchEnable(false).setEnableResourceCheck(false).setEnableProfiler(false).setEnableDefaultBasic3(false).build());
-    AECoderFactory.setAEDecoder(new biil());
-    AECoderFactory.setAEEncoder(new biim());
-    AIManager.registerDetector(AEHandDetector.class);
-    AIManager.registerDetector(PTHairSegmenter.class);
-    AIManager.registerDetector(PTSkySegmenter.class);
-    AIManager.registerDetector(PTSegmenter.class);
-    AIManager.registerDetector(PTEmotionDetector.class);
-    CfConfig.setDecryptListener(new biin());
-    a = true;
-    return true;
+    for (int i = 0;; i = 1)
+    {
+      Object localObject = paramString.getApplication().getSharedPreferences("vip_comic_file", 4);
+      int k = ((SharedPreferences)localObject).getInt("totalOfflinePkgDownloadCount", 0);
+      if (i != 0) {
+        j = k + 1;
+      }
+      if (j != k) {
+        ((SharedPreferences)localObject).edit().putInt("totalOfflinePkgDownloadCount", j).apply();
+      }
+      if (i == 0) {
+        break;
+      }
+      long l = NetConnInfoCenter.getServerTime();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramInt + "|");
+      ((StringBuilder)localObject).append(j + "|");
+      ((StringBuilder)localObject).append(l + "|");
+      ((StringBuilder)localObject).append("|||||");
+      azlj.a(paramString, "sendtdbank|b_sng_qqvip_qqcomic|offlinePkgDownload", ((StringBuilder)localObject).toString(), true);
+      return;
+    }
   }
   
-  public static boolean b()
-  {
-    return (AEModule.isAeKitSupportVersion()) && (Build.VERSION.SDK_INT >= 21);
-  }
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biik
  * JD-Core Version:    0.7.0.1
  */

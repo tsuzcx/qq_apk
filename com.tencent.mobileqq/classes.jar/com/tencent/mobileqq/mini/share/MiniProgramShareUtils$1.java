@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.share;
 
-import abtq;
+import adky;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
-import aqbe;
-import bbgo;
+import arum;
+import bdfk;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -23,7 +23,7 @@ import org.json.JSONObject;
 final class MiniProgramShareUtils$1
   extends CmdCallback.Stub
 {
-  MiniProgramShareUtils$1(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, JSONObject paramJSONObject, boolean paramBoolean, int paramInt1, int paramInt2, Activity paramActivity, int paramInt3, EntryModel paramEntryModel, ShareChatModel paramShareChatModel) {}
+  MiniProgramShareUtils$1(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, JSONObject paramJSONObject, boolean paramBoolean, int paramInt1, int paramInt2, Activity paramActivity, String paramString6, int paramInt3, int paramInt4, EntryModel paramEntryModel, ShareChatModel paramShareChatModel) {}
   
   public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {
@@ -53,16 +53,20 @@ final class MiniProgramShareUtils$1
       {
         paramBundle.putBoolean("miniAppNeedOnlyPreview", paramBoolean);
         paramBundle.putInt("miniAppShareFrom", this.val$miniAppShareFrom);
-        paramBundle.putAll(bbgo.a(this.val$arkAppName, this.val$arkViewId, this.val$arkAppVersion, (String)localObject, this.val$activity.getResources().getDisplayMetrics().scaledDensity, null, null));
+        paramBundle.putAll(bdfk.a(this.val$arkAppName, this.val$arkViewId, this.val$arkAppVersion, (String)localObject, this.val$activity.getResources().getDisplayMetrics().scaledDensity, null, null));
         paramBundle.putInt("forward_type", 27);
         paramBundle.putBoolean("forwardDirect", true);
+        paramBundle.putString("miniAppShareAppid", this.val$appid);
+        paramBundle.putInt("miniAppShareAppType", this.val$reportAppType);
+        paramBundle.putInt("miniAppShareScene", this.val$miniAppShareFrom);
+        paramBundle.putInt("miniAppShareType", this.val$shareTarget);
         if (this.val$shareTarget != 6) {
           break;
         }
         localObject = new Intent();
         ((Intent)localObject).putExtra("public_fragment_window_feature", 1);
         ((Intent)localObject).putExtras(paramBundle);
-        abtq.a(this.val$activity, (Intent)localObject, PublicTransFragmentActivity.class, MiniShareQuicklySendPanelFragment.class);
+        adky.a(this.val$activity, (Intent)localObject, PublicTransFragmentActivity.class, MiniShareQuicklySendPanelFragment.class);
         return;
       }
       if (this.val$entryModel != null)
@@ -85,10 +89,10 @@ final class MiniProgramShareUtils$1
       ((Intent)localObject).putExtras(paramBundle);
       if (this.val$miniAppShareFrom == 12)
       {
-        aqbe.a(this.val$activity, (Intent)localObject, 100500, "applet");
+        arum.a(this.val$activity, (Intent)localObject, 100500, "applet");
         return;
       }
-      aqbe.a(this.val$activity, (Intent)localObject);
+      arum.a(this.val$activity, (Intent)localObject);
       return;
     }
     if (this.val$shareType == 5)
@@ -122,7 +126,7 @@ final class MiniProgramShareUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramShareUtils.1
  * JD-Core Version:    0.7.0.1
  */

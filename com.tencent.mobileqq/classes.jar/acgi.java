@@ -1,28 +1,6 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-
-public class acgi
-  extends lno
-{
-  public acgi(TroopAssistantActivity paramTroopAssistantActivity) {}
-  
-  protected void a(int paramInt, long paramLong)
-  {
-    this.a.c();
-  }
-  
-  protected void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    this.a.c();
-  }
-  
-  protected void b(int paramInt, long paramLong)
-  {
-    this.a.c();
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acgi
  * JD-Core Version:    0.7.0.1
  */

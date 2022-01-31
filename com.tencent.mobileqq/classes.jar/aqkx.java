@@ -1,49 +1,36 @@
-import com.tencent.mobileqq.fts.entity.FTSEntity;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.7.1;
+import com.tencent.mobileqq.filemanager.widget.QfileTabBarView;
 
 public class aqkx
+  extends aqnl
 {
-  private int jdField_a_of_type_Int;
-  private Class<? extends FTSEntity> jdField_a_of_type_JavaLangClass;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  aqky[] jdField_a_of_type_ArrayOfAqky;
-  private String b;
+  public aqkx(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public aqkw a()
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangClass == null) {
-      throw new IllegalArgumentException("entityClazz must not be null.");
+    super.a(paramLong1, paramLong2, paramString, paramInt);
+    this.a.a.a();
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (FileAssistantActivity.a(this.a)) {
+      return;
     }
-    return new aqkw(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_ArrayOfAqky, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    this.a.runOnUiThread(new FileAssistantActivity.7.1(this, paramBoolean));
   }
   
-  public aqkx a(int paramInt)
+  protected void b(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public aqkx a(Class<? extends FTSEntity> paramClass)
-  {
-    this.jdField_a_of_type_JavaLangClass = paramClass;
-    return this;
-  }
-  
-  public aqkx a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public aqkx a(aqky... paramVarArgs)
-  {
-    this.jdField_a_of_type_ArrayOfAqky = paramVarArgs;
-    return this;
+    if (!FileAssistantActivity.a(this.a)) {
+      armz.a(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkx
  * JD-Core Version:    0.7.0.1
  */

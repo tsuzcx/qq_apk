@@ -1,31 +1,24 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.widget.QQBlurView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class aeyi
-  implements View.OnAttachStateChangeListener
+  implements DialogInterface.OnClickListener
 {
-  aeyi(aeyh paramaeyh) {}
+  aeyi(aeyh paramaeyh, BaseActivity paramBaseActivity) {}
   
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (aeyh.a(this.a) != null) {
-      aeyh.a(this.a).d();
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    aeyh.a(null);
+    if (aeyh.a(this.jdField_a_of_type_Aeyh) != null) {
+      aeyh.a(this.jdField_a_of_type_Aeyh).b();
     }
-    if (aeyh.a(this.a) != null)
-    {
-      aeyh.a(this.a).c();
-      aeyh.a(this.a, null);
-    }
-    aeyh.a(this.a).removeOnAttachStateChangeListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeyi
  * JD-Core Version:    0.7.0.1
  */

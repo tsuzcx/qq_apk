@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pushdialog;
 
-import auko;
-import aulz;
+import awbv;
+import awdg;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -18,20 +18,20 @@ import tencent.im.s2c.msgtype0x210.submsgtype0x122.submsgtype0x122.MsgBody;
 import tencent.im.s2c.msgtype0x210.submsgtype0x122.submsgtype0x122.TemplParam;
 
 public class PushDialogTemplate
-  extends auko
+  extends awbv
 {
-  @aulz
+  @awdg
   private static final byte[] KV_SEPARATOR = { 64, 33 };
-  @aulz
+  @awdg
   private static final byte[] PARAM_SEPARATOR = { 35, 33 };
-  @aulz
+  @awdg
   private static final String TAG = "PushDialogTemplate";
   public long busi_id;
   public long busi_type;
   public int c2c_type;
   public int ctrl_flag;
   public int friend_banned_flag = -1;
-  @aulz
+  @awdg
   private List<submsgtype0x122.TemplParam> mParamList;
   public long mUin;
   public byte[] reserv;
@@ -236,7 +236,7 @@ public class PushDialogTemplate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pushdialog.PushDialogTemplate
  * JD-Core Version:    0.7.0.1
  */

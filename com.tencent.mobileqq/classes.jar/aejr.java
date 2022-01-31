@@ -1,21 +1,22 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
 
 public class aejr
-  extends RecyclerView.OnScrollListener
+  implements View.OnClickListener
 {
-  public aejr(PhotoListPanel paramPhotoListPanel) {}
+  public aejr(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(View paramView)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    this.a.l = paramInt;
+    azmj.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aejr
  * JD-Core Version:    0.7.0.1
  */

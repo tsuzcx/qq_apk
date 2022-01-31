@@ -4,9 +4,9 @@ import android.os.Build.VERSION;
 import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
-import bcfx;
+import beey;
 import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
-import nuw;
+import nya;
 
 public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
   implements Runnable
@@ -15,14 +15,14 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
   
   public void run()
   {
-    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.this$0.jdField_a_of_type_Bcfx.c != null)) {
-      this.this$0.jdField_a_of_type_Bcfx.c.setBackgroundColor(-1);
+    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.this$0.jdField_a_of_type_Beey.c != null)) {
+      this.this$0.jdField_a_of_type_Beey.c.setBackgroundColor(-1);
     }
     if (this.this$0.jdField_a_of_type_AndroidWidgetImageView != null)
     {
       if (Build.VERSION.SDK_INT >= 14)
       {
-        this.this$0.jdField_a_of_type_AndroidWidgetImageView.animate().alpha(0.0F).setDuration(200L).setListener(new nuw(this));
+        this.this$0.jdField_a_of_type_AndroidWidgetImageView.animate().alpha(0.0F).setDuration(200L).setListener(new nya(this));
         this.this$0.jdField_a_of_type_AndroidWidgetImageView.animate().start();
       }
     }
@@ -34,7 +34,7 @@ public class ReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2
  * JD-Core Version:    0.7.0.1
  */

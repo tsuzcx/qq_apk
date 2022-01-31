@@ -4,12 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageButton;
-import audl;
+import avup;
 
 public class EyeButton
   extends ImageButton
 {
-  private audl a;
+  private avup a;
   
   public EyeButton(Context paramContext)
   {
@@ -45,14 +45,14 @@ public class EyeButton
     }
   }
   
-  public void setLonTouchListener(audl paramaudl)
+  public void setLonTouchListener(avup paramavup)
   {
-    this.a = paramaudl;
+    this.a = paramavup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.EyeButton
  * JD-Core Version:    0.7.0.1
  */

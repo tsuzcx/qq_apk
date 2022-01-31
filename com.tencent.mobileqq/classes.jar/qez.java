@@ -1,32 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation.1.1;
 
 public class qez
-  implements spa
+  implements Animation.AnimationListener
 {
-  public qez(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public qez(ComponentSocialOperation paramComponentSocialOperation) {}
   
-  public void a(URL paramURL, int paramInt) {}
-  
-  public void a(URL paramURL, Throwable paramThrowable) {}
-  
-  public void a(URL paramURL, rpd paramrpd)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment cover download success");
-    }
-    ReadInJoyDeliverVideoActivity.c(this.a, ShortVideoPreviewActivity.a(paramrpd.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment local cover is " + ReadInJoyDeliverVideoActivity.a(this.a));
-    }
-    this.a.setRightViewTextDisable(1);
+    this.a.a.post(new ComponentSocialOperation.1.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qez
  * JD-Core Version:    0.7.0.1
  */

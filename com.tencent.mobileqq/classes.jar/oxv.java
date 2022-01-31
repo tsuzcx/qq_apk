@@ -1,29 +1,19 @@
-import android.text.TextUtils;
-
-class oxv
+final class oxv
+  implements oxx
 {
-  public String a;
-  public String b;
-  
-  oxv(String paramString1, String paramString2)
+  public void l()
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    osm.a(9, "", "", "", "");
   }
   
-  public boolean a()
+  public void m()
   {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
-  }
-  
-  public String toString()
-  {
-    return "[insertArticleInfo] algorithmID = " + this.a + ", rowKey = " + this.b;
+    osm.a(9, "", "", "", "", oxs.c, "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oxv
  * JD-Core Version:    0.7.0.1
  */

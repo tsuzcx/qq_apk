@@ -1,79 +1,56 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.location.ui.LocationShareFragment;
+import com.tencent.qphone.base.util.QLog;
 
 class atqk
-  implements bdld
+  implements betn
 {
-  atqk(atpk paramatpk) {}
+  bdfq jdField_a_of_type_Bdfq;
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void installSucceed(String paramString1, String paramString2)
+  atqk(atqj paramatqj, BaseActivity paramBaseActivity, atlh paramatlh) {}
+  
+  public boolean a()
   {
-    this.a.jdField_a_of_type_Int = 4;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-    if (atpk.a(this.a) != null) {
-      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "install_done", 0, 0, atpk.a(this.a).uin, "", "yes", "android");
+    if ((this.jdField_a_of_type_Atqj.a.isBackground_Pause) || (this.jdField_a_of_type_Atqj.a.isBackground_Stop)) {
+      atqj.a(this.jdField_a_of_type_Atqj, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Atlh);
     }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    if (this.a.jdField_a_of_type_Atum != null) {
-      this.a.jdField_a_of_type_Atum.a(5);
-    }
-    if (atpk.a(this.a) != null) {
-      axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_done", 0, 0, atpk.a(this.a).uin, "", "yes", "android");
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    this.a.jdField_a_of_type_Int = 2;
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    this.a.jdField_a_of_type_Int = 1;
-    if ((paramList != null) && (paramList.size() > 0))
+    for (;;)
     {
-      paramList = (DownloadInfo)paramList.get(0);
-      Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-      localMessage.what = 2;
-      localMessage.arg1 = paramList.f;
-      localMessage.sendToTarget();
-      if ((paramList.f == 0) && (atpk.a(this.a) != null)) {
-        axqy.b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "P_CliOper", "Grp_qiqiqun", "", "qiqi_qq_mob_nearby", "download_begin", 0, 0, atpk.a(this.a).uin, "", "yes", "android");
+      azmj.b(null, "CliOper", "", "", "0X800A978", "0X800A978", 0, 0, "", "0", "0", "");
+      return true;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Bdfq = atmi.a(this.jdField_a_of_type_Atlh.a(), this.jdField_a_of_type_Atlh.a());
+        this.jdField_a_of_type_Boolean = true;
+        if (this.jdField_a_of_type_Bdfq != null) {
+          this.jdField_a_of_type_Bdfq.setOnDismissListener(new atql(this));
+        }
       }
     }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public boolean a(int paramInt1, int paramInt2)
   {
-    this.a.jdField_a_of_type_Int = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationFloatWindowManager", 2, new Object[] { "onEnterClick: invoked. ", " centerX: ", Integer.valueOf(paramInt1), " centerY: ", Integer.valueOf(paramInt2) });
+    }
+    LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Atlh.a(), this.jdField_a_of_type_Atlh.a(), 4);
+    atpw.e();
+    if (this.jdField_a_of_type_Bdfq != null) {}
+    try
+    {
+      this.jdField_a_of_type_Bdfq.dismiss();
+      return false;
+    }
+    catch (Exception localException) {}
+    return false;
   }
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atqk
  * JD-Core Version:    0.7.0.1
  */

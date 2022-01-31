@@ -1,53 +1,60 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class uik
-  extends QQUIEventReceiver<uhw, tth>
+class uik
+  implements uni<vby, vdj>
 {
-  public uik(@NonNull uhw paramuhw)
-  {
-    super(paramuhw);
-  }
+  uik(uid paramuid, String paramString, Object paramObject, AtomicBoolean paramAtomicBoolean1, AtomicBoolean paramAtomicBoolean2) {}
   
-  public void a(@NonNull uhw paramuhw, @NonNull tth paramtth)
+  public void a(@NonNull vby arg1, @Nullable vdj paramvdj, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (!TextUtils.equals(paramtth.b, String.valueOf(paramuhw.hashCode()))) {
-      return;
-    }
-    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramuhw.a()).a();
-    if (localVideoViewVideoHolder != null) {
-      localVideoViewVideoHolder.c(false);
-    }
-    paramuhw.l();
-    if (paramtth.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    if ((paramErrorMessage.isSuccess()) && (paramvdj != null))
     {
-      ved.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramtth.jdField_a_of_type_JavaLangString);
-      if (paramtth.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
+      wsv.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url success , vid : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+      ??? = (uro)urr.a(5);
+      if (paramvdj.a != null)
       {
-        ttf.a().a(paramuhw.b(), paramtth.jdField_a_of_type_JavaLangString);
-        return;
+        paramErrorMessage = paramvdj.a.iterator();
+        while (paramErrorMessage.hasNext()) {
+          ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
+        }
       }
-      ttf.a().a(paramuhw.b(), paramtth.jdField_a_of_type_JavaLangString, paramtth.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramuhw.hashCode());
-      return;
+      paramvdj.a = ???.a(paramvdj.a);
+      ((uid)urr.a(28)).a(paramvdj.b);
+      this.jdField_a_of_type_Uid.c(this.jdField_a_of_type_JavaLangString, 0);
     }
-    ved.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
-    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131706888), 0).a();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tth.class;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        try
+        {
+          if (this.b.get()) {
+            this.jdField_a_of_type_JavaLangObject.notifyAll();
+          }
+          return;
+          wsv.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url fail , vid : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+        }
+        catch (Exception paramvdj)
+        {
+          for (;;)
+          {
+            wsv.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary lock error");
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uik
  * JD-Core Version:    0.7.0.1
  */

@@ -18,6 +18,7 @@ public abstract interface ITPNativePlayerMessageCallback
   public static final int ERROR_DEMUXER_BUFFERING_TIMEOUT = 1103;
   public static final int ERROR_DEMUXER_NETWORK = 1101;
   public static final int ERROR_DEMUXER_OTHERS = 1100;
+  public static final int ERROR_DEMUXER_PREPARE_TIMEOUT = 1104;
   public static final int ERROR_DEMUXER_STREAM = 1102;
   public static final int ERROR_GENERAL = 1001;
   public static final int ERROR_OK = 1000;
@@ -25,6 +26,8 @@ public abstract interface ITPNativePlayerMessageCallback
   public static final int ERROR_PROCESS_VIDEO_OTHERS = 1600;
   public static final int ERROR_RENDERER_OTHERS = 1300;
   public static final int INFO_LONG0_AUDIO_HW_DECODING_SLOW = 206;
+  public static final int INFO_LONG0_AUDIO_PASSTHROUGH_START = 210;
+  public static final int INFO_LONG0_AUDIO_PASSTHROUGH_STOP = 211;
   public static final int INFO_LONG0_AUDIO_SW_DECODING_SLOW = 205;
   public static final int INFO_LONG0_BUFFERING_END = 201;
   public static final int INFO_LONG0_BUFFERING_START = 200;
@@ -43,10 +46,12 @@ public abstract interface ITPNativePlayerMessageCallback
   public static final int INFO_LONG1_AUDIO_DECODER_TYPE = 203;
   public static final int INFO_LONG1_CLIP_EOS = 152;
   public static final int INFO_LONG1_VIDEO_DECODER_TYPE = 204;
+  public static final int INFO_LONG2_VIDEO_DROP_FRAME_EVENT = 209;
   public static final int INFO_LONG2_VIDEO_RESOLUTION_CHANGE = 250;
   public static final int INFO_OBJECT_PRIVATE_HLS_TAG = 501;
   public static final int INFO_OBJECT_SUBTITLE_TEXT = 502;
   public static final int INFO_OBJECT_VIDEO_CROP = 500;
+  public static final int INFO_OBJECT_VIDEO_SEI_INFO = 503;
   
   public abstract void onASyncCallResult(int paramInt1, long paramLong, int paramInt2, int paramInt3);
   
@@ -58,7 +63,7 @@ public abstract interface ITPNativePlayerMessageCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback
  * JD-Core Version:    0.7.0.1
  */

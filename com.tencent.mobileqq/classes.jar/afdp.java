@@ -1,32 +1,21 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.data.MessageForPic;
 
 public class afdp
-  extends RecyclerView.ItemDecoration
+  extends aelt
 {
-  private int a;
-  private int b;
+  public TextView a;
+  public URLDrawable a;
+  public ChatThumbView a;
+  public MessageForPic a;
   
-  public afdp(int paramInt1, int paramInt2)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.right = this.a;
-    if (paramRecyclerView.getChildPosition(paramView) == 0) {
-      paramRect.left = this.b;
-    }
-  }
+  public afdp(afdo paramafdo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afdp
  * JD-Core Version:    0.7.0.1
  */

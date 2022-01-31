@@ -1,25 +1,56 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
 
-class xgl
-  implements Downloader.DownloadListener
+public abstract class xgl
 {
-  xgl(xgj paramxgj, xft paramxft, String paramString) {}
+  protected final int a;
+  protected Context a;
+  protected final String a;
+  protected xgm a;
+  protected boolean a;
+  protected boolean b;
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public xgl(Context paramContext, String paramString, int paramInt)
   {
-    xgj.a(this.jdField_a_of_type_Xgj, this.jdField_a_of_type_Xft, xgg.a().b(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public abstract int a();
+  
+  public abstract int a(int paramInt);
+  
+  public abstract View a(int paramInt, ViewGroup paramViewGroup);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, View paramView);
+  
+  public void a(xgm paramxgm)
+  {
+    this.jdField_a_of_type_Xgm = paramxgm;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgl
  * JD-Core Version:    0.7.0.1
  */

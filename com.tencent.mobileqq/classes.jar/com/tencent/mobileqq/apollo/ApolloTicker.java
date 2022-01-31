@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import airx;
-import aiwr;
+import akji;
+import akod;
 import android.view.View;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ public class ApolloTicker
   public boolean mTickerUseGlobalTimer;
   public boolean mTimerAlive;
   public long ticker;
-  private Map<Long, aiwr> tickerMap = new HashMap();
+  private Map<Long, akod> tickerMap = new HashMap();
   
   public ApolloTicker()
   {
@@ -29,9 +29,9 @@ public class ApolloTicker
   private Timer getTimer()
   {
     Object localObject = ApolloUtil.a();
-    if ((this.mTickerUseGlobalTimer) && (localObject != null) && (((airx)localObject).jdField_a_of_type_JavaUtilTimer != null))
+    if ((this.mTickerUseGlobalTimer) && (localObject != null) && (((akji)localObject).jdField_a_of_type_JavaUtilTimer != null))
     {
-      localObject = ((airx)localObject).jdField_a_of_type_JavaUtilTimer;
+      localObject = ((akji)localObject).jdField_a_of_type_JavaUtilTimer;
       this.mTimerAlive = true;
       QLog.i("sava_ApolloTicker", 1, "get global Timer ");
       return localObject;
@@ -48,12 +48,12 @@ public class ApolloTicker
     {
       Timer localTimer = getTimer();
       localObject = new ApolloTicker.NativeDrawTask(this, (View)localObject, paramLong, 2L);
-      aiwr localaiwr = new aiwr();
-      localaiwr.jdField_a_of_type_JavaUtilTimer = localTimer;
-      localaiwr.jdField_a_of_type_Int = 1;
-      localaiwr.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask = ((ApolloTicker.NativeDrawTask)localObject);
+      akod localakod = new akod();
+      localakod.jdField_a_of_type_JavaUtilTimer = localTimer;
+      localakod.jdField_a_of_type_Int = 1;
+      localakod.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask = ((ApolloTicker.NativeDrawTask)localObject);
       localTimer.scheduleAtFixedRate((TimerTask)localObject, 0L, 16L);
-      this.tickerMap.put(Long.valueOf(paramLong), localaiwr);
+      this.tickerMap.put(Long.valueOf(paramLong), localakod);
       return;
     }
     catch (Throwable localThrowable)
@@ -67,13 +67,13 @@ public class ApolloTicker
     if (QLog.isColorLevel()) {
       QLog.d("sava_ApolloTicker", 2, "disposeTicker ticker = " + paramLong + ",thread=" + Thread.currentThread().getId());
     }
-    aiwr localaiwr = (aiwr)this.tickerMap.get(Long.valueOf(paramLong));
-    if (localaiwr == null)
+    akod localakod = (akod)this.tickerMap.get(Long.valueOf(paramLong));
+    if (localakod == null)
     {
       QLog.e("sava_ApolloTicker", 1, "[disposeTicker], null error. ticker:" + paramLong);
       return;
     }
-    Timer localTimer = localaiwr.jdField_a_of_type_JavaUtilTimer;
+    Timer localTimer = localakod.jdField_a_of_type_JavaUtilTimer;
     if (!this.mTimerAlive) {
       if (localTimer != null)
       {
@@ -83,29 +83,29 @@ public class ApolloTicker
     }
     for (;;)
     {
-      localaiwr.jdField_a_of_type_JavaUtilTimer = null;
-      localaiwr = (aiwr)this.tickerMap.remove(Long.valueOf(paramLong));
+      localakod.jdField_a_of_type_JavaUtilTimer = null;
+      localakod = (akod)this.tickerMap.remove(Long.valueOf(paramLong));
       return;
-      if (localaiwr.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask != null) {
-        localaiwr.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask.cancel();
+      if (localakod.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask != null) {
+        localakod.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask.cancel();
       }
     }
   }
   
   public float getDuration(long paramLong)
   {
-    aiwr localaiwr = (aiwr)this.tickerMap.get(Long.valueOf(paramLong));
-    if (localaiwr != null) {
-      return localaiwr.jdField_a_of_type_Int / 60.0F;
+    akod localakod = (akod)this.tickerMap.get(Long.valueOf(paramLong));
+    if (localakod != null) {
+      return localakod.jdField_a_of_type_Int / 60.0F;
     }
     return 0.0F;
   }
   
   public int getInterval(long paramLong)
   {
-    aiwr localaiwr = (aiwr)this.tickerMap.get(Long.valueOf(paramLong));
-    if (localaiwr != null) {
-      return localaiwr.jdField_a_of_type_Int;
+    akod localakod = (akod)this.tickerMap.get(Long.valueOf(paramLong));
+    if (localakod != null) {
+      return localakod.jdField_a_of_type_Int;
     }
     return 1;
   }
@@ -114,28 +114,28 @@ public class ApolloTicker
   
   public void pauseTicker(long paramLong)
   {
-    aiwr localaiwr;
+    akod localakod;
     try
     {
-      localaiwr = (aiwr)this.tickerMap.get(Long.valueOf(paramLong));
-      if (localaiwr == null)
+      localakod = (akod)this.tickerMap.get(Long.valueOf(paramLong));
+      if (localakod == null)
       {
         QLog.e("sava_ApolloTicker", 1, "[pauseTicker], null error. ticker:" + paramLong);
         return;
       }
       String str = "";
-      if (localaiwr.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask != null) {
-        str = localaiwr.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask.a();
+      if (localakod.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask != null) {
+        str = localakod.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask.a();
       }
       QLog.d("sava_ApolloTicker", 1, new Object[] { "pauseTicker ticker = ", Long.valueOf(paramLong), ",thread=", Long.valueOf(Thread.currentThread().getId()), ",intervalFps:", str });
-      if (localaiwr.jdField_a_of_type_JavaUtilTimer == null) {
+      if (localakod.jdField_a_of_type_JavaUtilTimer == null) {
         return;
       }
       if (!this.mTimerAlive)
       {
-        localaiwr.jdField_a_of_type_JavaUtilTimer.cancel();
-        localaiwr.jdField_a_of_type_JavaUtilTimer.purge();
-        localaiwr.jdField_a_of_type_JavaUtilTimer = null;
+        localakod.jdField_a_of_type_JavaUtilTimer.cancel();
+        localakod.jdField_a_of_type_JavaUtilTimer.purge();
+        localakod.jdField_a_of_type_JavaUtilTimer = null;
         return;
       }
     }
@@ -144,8 +144,8 @@ public class ApolloTicker
       QLog.e("sava_ApolloTicker", 2, "pause ticker error=" + localThrowable.toString());
       return;
     }
-    if (localaiwr.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask != null) {
-      localaiwr.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask.cancel();
+    if (localakod.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask != null) {
+      localakod.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask.cancel();
     }
   }
   
@@ -155,24 +155,24 @@ public class ApolloTicker
     {
       try
       {
-        aiwr localaiwr = (aiwr)this.tickerMap.get(Long.valueOf(paramLong));
-        if (localaiwr == null)
+        akod localakod = (akod)this.tickerMap.get(Long.valueOf(paramLong));
+        if (localakod == null)
         {
           QLog.e("sava_ApolloTicker", 1, "[resumeTicker], null error. ticker:" + paramLong);
           return;
         }
         View localView = ApolloRender.getRenderViewByThreadId();
-        int i = localaiwr.jdField_a_of_type_Int;
-        if ((localView == null) || (localaiwr.jdField_a_of_type_JavaUtilTimer != null)) {
+        int i = localakod.jdField_a_of_type_Int;
+        if ((localView == null) || (localakod.jdField_a_of_type_JavaUtilTimer != null)) {
           break;
         }
-        if (localaiwr.jdField_a_of_type_JavaUtilTimer != null)
+        if (localakod.jdField_a_of_type_JavaUtilTimer != null)
         {
           if (!this.mTimerAlive)
           {
-            localaiwr.jdField_a_of_type_JavaUtilTimer.cancel();
-            localaiwr.jdField_a_of_type_JavaUtilTimer.purge();
-            localaiwr.jdField_a_of_type_JavaUtilTimer = null;
+            localakod.jdField_a_of_type_JavaUtilTimer.cancel();
+            localakod.jdField_a_of_type_JavaUtilTimer.purge();
+            localakod.jdField_a_of_type_JavaUtilTimer = null;
           }
         }
         else
@@ -181,8 +181,8 @@ public class ApolloTicker
           ApolloTicker.NativeDrawTask localNativeDrawTask = new ApolloTicker.NativeDrawTask(this, localView, paramLong, i);
           Timer localTimer = getTimer();
           localTimer.scheduleAtFixedRate(localNativeDrawTask, 0L, i * 16);
-          localaiwr.jdField_a_of_type_JavaUtilTimer = localTimer;
-          localaiwr.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask = localNativeDrawTask;
+          localakod.jdField_a_of_type_JavaUtilTimer = localTimer;
+          localakod.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask = localNativeDrawTask;
           if ((localView == null) || (!(localView instanceof ApolloTextureView))) {
             break;
           }
@@ -204,13 +204,13 @@ public class ApolloTicker
   public void setInterval(long paramLong, int paramInt)
   {
     if (paramInt == 1) {}
-    aiwr localaiwr;
+    akod localakod;
     do
     {
       return;
       this.mInterval = paramInt;
-      localaiwr = (aiwr)this.tickerMap.get(Long.valueOf(paramLong));
-      if (localaiwr == null)
+      localakod = (akod)this.tickerMap.get(Long.valueOf(paramLong));
+      if (localakod == null)
       {
         QLog.e("sava_ApolloTicker", 1, "setInterval tickerInfo null");
         return;
@@ -218,21 +218,21 @@ public class ApolloTicker
       localObject = ApolloRender.getRenderViewByThreadId();
     } while (localObject == null);
     QLog.d("sava_ApolloTicker", 1, "ScheduledExecutorService setInterval call = " + paramInt + " thread=" + Thread.currentThread().getId());
-    Timer localTimer = localaiwr.jdField_a_of_type_JavaUtilTimer;
+    Timer localTimer = localakod.jdField_a_of_type_JavaUtilTimer;
     if ((!this.mTimerAlive) && (localTimer != null))
     {
       localTimer.cancel();
       localTimer.purge();
     }
-    if (localaiwr.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask != null) {
-      localaiwr.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask.cancel();
+    if (localakod.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask != null) {
+      localakod.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask.cancel();
     }
     Object localObject = new ApolloTicker.NativeDrawTask(this, (View)localObject, paramLong, paramInt);
     localTimer = getTimer();
     localTimer.scheduleAtFixedRate((TimerTask)localObject, 0L, paramInt * 16);
-    localaiwr.jdField_a_of_type_JavaUtilTimer = localTimer;
-    localaiwr.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask = ((ApolloTicker.NativeDrawTask)localObject);
-    localaiwr.jdField_a_of_type_Int = paramInt;
+    localakod.jdField_a_of_type_JavaUtilTimer = localTimer;
+    localakod.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask = ((ApolloTicker.NativeDrawTask)localObject);
+    localakod.jdField_a_of_type_Int = paramInt;
   }
   
   public void setRenderView(View paramView)
@@ -240,9 +240,9 @@ public class ApolloTicker
     Iterator localIterator = this.tickerMap.values().iterator();
     while (localIterator.hasNext())
     {
-      aiwr localaiwr = (aiwr)localIterator.next();
-      if ((localaiwr != null) && (localaiwr.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask != null)) {
-        localaiwr.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask.a(paramView);
+      akod localakod = (akod)localIterator.next();
+      if ((localakod != null) && (localakod.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask != null)) {
+        localakod.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker$NativeDrawTask.a(paramView);
       }
     }
     QLog.i("sava_ApolloTicker", 1, "setRenderView size:" + this.tickerMap.size());
@@ -250,7 +250,7 @@ public class ApolloTicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloTicker
  * JD-Core Version:    0.7.0.1
  */

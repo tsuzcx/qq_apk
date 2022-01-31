@@ -1,24 +1,28 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
 
 public class aiso
-  implements Manager
+  implements View.OnClickListener
 {
-  public static String a = "ApolloNativeSSOReqMgr";
+  public aiso(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public aiso(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "[ApolloNativeSSOReqMgr]");
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    if (TroopUnAccalimedRedPacketList.a(this.a) != null) {
+      ajaf.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.back", "", "");
+    }
+    if (this.a.a != null) {
+      this.a.a.dismiss();
     }
   }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiso
  * JD-Core Version:    0.7.0.1
  */

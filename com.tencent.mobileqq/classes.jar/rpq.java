@@ -1,21 +1,58 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import android.view.View;
+import android.widget.PopupWindow;
+import java.util.List;
 
 public class rpq
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rpq(ZImageView paramZImageView) {}
+  private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
+  private List<bhwf> jdField_a_of_type_JavaUtilList;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public float a(int paramInt)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.setAlpha(i);
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      f1 = f2;
+      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+        f1 = ((bhwf)this.jdField_a_of_type_JavaUtilList.get(paramInt)).a();
+      }
+    }
+    return f1;
+  }
+  
+  public rpq a(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(paramView, 83, 0, 0);
+    }
+    return this;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+      this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) && (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing());
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpq
  * JD-Core Version:    0.7.0.1
  */

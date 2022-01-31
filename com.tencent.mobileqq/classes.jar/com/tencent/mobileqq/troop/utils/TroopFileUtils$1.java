@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public final class TroopFileUtils$1

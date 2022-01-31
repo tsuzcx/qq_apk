@@ -2,12 +2,12 @@ package com.tencent.mobileqq.fts;
 
 import android.os.Looper;
 import android.text.TextUtils;
-import aqkw;
-import aqld;
-import aqle;
-import aqll;
-import aqlm;
-import aqln;
+import asem;
+import aset;
+import aseu;
+import asfb;
+import asfc;
+import asfd;
 import com.tencent.mobileqq.fts.entity.FTSEntity;
 import java.io.File;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class FTSDatabase
 {
-  private static aqld jdField_a_of_type_Aqld = new aqle();
+  private static aset jdField_a_of_type_Aset = new aseu();
   private boolean jdField_a_of_type_Boolean;
   private boolean b = true;
   
@@ -28,14 +28,14 @@ public class FTSDatabase
     }
   }
   
-  public static aqld a()
+  public static aset a()
   {
-    return jdField_a_of_type_Aqld;
+    return jdField_a_of_type_Aset;
   }
   
-  public static void a(aqld paramaqld)
+  public static void a(aset paramaset)
   {
-    jdField_a_of_type_Aqld = paramaqld;
+    jdField_a_of_type_Aset = paramaset;
   }
   
   private void b()
@@ -66,7 +66,7 @@ public class FTSDatabase
   
   private synchronized native boolean updateNative(String paramString, int[] paramArrayOfInt, byte[]... paramVarArgs);
   
-  public List<FTSEntity> a(aqkw paramaqkw)
+  public List<FTSEntity> a(asem paramasem)
   {
     b();
     if (!d()) {
@@ -77,7 +77,7 @@ public class FTSDatabase
     {
       return null;
       Object localObject1 = new ArrayList();
-      localObject3 = aqln.a(paramaqkw, (List)localObject1);
+      localObject3 = asfd.a(paramasem, (List)localObject1);
       int[] arrayOfInt = new int[((List)localObject1).size()];
       int i = 0;
       while (i < ((List)localObject1).size())
@@ -96,7 +96,7 @@ public class FTSDatabase
         {
           localObject1 = ((List)localObject1).iterator();
           while (((Iterator)localObject1).hasNext()) {
-            ((List)localObject3).add(aqln.a((Map)((Iterator)localObject1).next(), paramaqkw.a));
+            ((List)localObject3).add(asfd.a((Map)((Iterator)localObject1).next(), paramasem.a));
           }
         }
       }
@@ -167,7 +167,7 @@ public class FTSDatabase
       log("Q.fts.troop.FTSDatabase", "w", "init failed because so is not available.");
       return;
     }
-    aqlm.a(new File(paramString));
+    asfc.a(new File(paramString));
     try
     {
       log("Q.fts.troop.FTSDatabase", "i", Thread.currentThread().getName() + " native initNative V2");
@@ -219,7 +219,7 @@ public class FTSDatabase
       return bool2;
       ArrayList localArrayList1 = new ArrayList();
       ArrayList localArrayList2 = new ArrayList();
-      paramFTSEntity = aqln.a(paramFTSEntity, localArrayList2, localArrayList1);
+      paramFTSEntity = asfd.a(paramFTSEntity, localArrayList2, localArrayList1);
       int[] arrayOfInt = new int[localArrayList2.size()];
       int i = 0;
       while (i < localArrayList2.size())
@@ -267,7 +267,7 @@ public class FTSDatabase
     String str2;
     for (;;)
     {
-      str2 = aqln.a(paramClass, aqll.a(), bool1, bool2, bool3);
+      str2 = asfd.a(paramClass, asfb.a(), bool1, bool2, bool3);
       try
       {
         bool4 = execSQLNative(str2);
@@ -283,7 +283,7 @@ public class FTSDatabase
           String str1 = getErrorMsg();
           Object localObject = str1;
           log("Q.fts.troop.FTSDatabase", "e", "Can't create virtual table. " + (String)localObject);
-          if (!aqll.a())
+          if (!asfb.a())
           {
             log("Q.fts.troop.FTSDatabase", "e", "createTable failed." + (String)localObject);
             return false;
@@ -409,7 +409,7 @@ public class FTSDatabase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fts.FTSDatabase
  * JD-Core Version:    0.7.0.1
  */

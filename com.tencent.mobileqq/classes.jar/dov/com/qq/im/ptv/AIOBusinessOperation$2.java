@@ -4,7 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.ImageView;
-import bjph;
+import bmar;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.theme.SkinnableBitmapDrawable;
 import mqq.os.MqqHandler;
@@ -16,15 +16,15 @@ public final class AIOBusinessOperation$2
   
   public void run()
   {
-    int i = bjph.a(this.jdField_a_of_type_JavaLangString);
+    int i = bmar.a(this.jdField_a_of_type_JavaLangString);
     if (i == 0)
     {
-      bjph.a(this.jdField_a_of_type_AndroidWidgetImageView.getResources(), this.jdField_a_of_type_JavaLangString);
-      i = bjph.a(this.jdField_a_of_type_JavaLangString);
+      bmar.a(this.jdField_a_of_type_AndroidWidgetImageView.getResources(), this.jdField_a_of_type_JavaLangString);
+      i = bmar.a(this.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
-      Object localObject = this.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130843621);
+      Object localObject = this.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130843980);
       boolean bool;
       if ((localObject instanceof BitmapDrawable))
       {
@@ -35,7 +35,7 @@ public final class AIOBusinessOperation$2
       {
         if (localObject != null)
         {
-          localObject = bjph.a((Bitmap)localObject, i);
+          localObject = bmar.a((Bitmap)localObject, i);
           ThreadManager.getUIHandler().post(new AIOBusinessOperation.2.1(this, (Bitmap)localObject, bool));
         }
         return;
@@ -55,7 +55,7 @@ public final class AIOBusinessOperation$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ptv.AIOBusinessOperation.2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,10 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import behp;
-import behq;
-import bekr;
+import bghn;
+import bgho;
+import bgjd;
+import bgkd;
 import java.util.BitSet;
 import java.util.Iterator;
 import java.util.List;
@@ -178,9 +179,17 @@ public class WifiJsPlugin
   public void checkPermission(WifiJsPlugin.LocationPermissionListener paramLocationPermissionListener)
   {
     if (this.mActivity == null) {}
+    Activity localActivity;
+    do
+    {
+      return;
+      localActivity = this.mMiniAppContext.a();
+    } while ((localActivity == null) || (paramLocationPermissionListener == null));
+    bgjd.a().a(new WifiJsPlugin.3(this, paramLocationPermissionListener));
+    localActivity.requestPermissions(new String[] { "android.permission.ACCESS_FINE_LOCATION" }, 9528);
   }
   
-  public String connectWifi(bekr parambekr)
+  public String connectWifi(bgkd parambgkd)
   {
     if (this.wifiManager != null) {
       if (!this.wifiManager.isWifiEnabled()) {}
@@ -189,7 +198,7 @@ public class WifiJsPlugin
     {
       try
       {
-        Object localObject1 = new JSONObject(parambekr.b);
+        Object localObject1 = new JSONObject(parambgkd.b);
         if (localObject1 != null)
         {
           String str = ((JSONObject)localObject1).optString("SSID");
@@ -197,7 +206,7 @@ public class WifiJsPlugin
           localObject1 = ((JSONObject)localObject1).optString("password");
           Iterator localIterator = this.wifiManager.getScanResults().iterator();
           if (!localIterator.hasNext()) {
-            break label210;
+            break label211;
           }
           ScanResult localScanResult = (ScanResult)localIterator.next();
           if (!localScanResult.SSID.equals(str)) {
@@ -211,7 +220,7 @@ public class WifiJsPlugin
             if (i != -1) {
               this.wifiManager.enableNetwork(i, true);
             }
-            parambekr.a();
+            parambgkd.a();
             return "";
           }
         }
@@ -221,16 +230,16 @@ public class WifiJsPlugin
         localThrowable.printStackTrace();
         Object localObject2 = null;
         continue;
-        parambekr.a(":invalid network id");
+        parambgkd.a(":invalid network id");
         continue;
-        parambekr.a(":invalid data");
+        parambgkd.a(":invalid data");
         continue;
       }
-      parambekr.a(":wifi is disable");
+      parambgkd.a(":wifi is disable");
       continue;
-      parambekr.a(":not invoke startWifi");
+      parambgkd.a(":not invoke startWifi");
       continue;
-      label210:
+      label211:
       int i = 0;
     }
   }
@@ -295,7 +304,7 @@ public class WifiJsPlugin
     }
   }
   
-  public String getConnectedWifi(bekr parambekr)
+  public String getConnectedWifi(bgkd parambgkd)
   {
     JSONObject localJSONObject;
     if (this.wifiManager != null) {
@@ -308,7 +317,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject.put("errCode", 0);
-        parambekr.a(localJSONObject);
+        parambgkd.a(localJSONObject);
         return "";
       }
       catch (JSONException localJSONException1)
@@ -320,7 +329,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject.put("errCode", 12005);
-        parambekr.a(localJSONObject, ":wifi is disable");
+        parambgkd.a(localJSONObject, ":wifi is disable");
       }
       catch (JSONException localJSONException2)
       {
@@ -333,7 +342,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject.put("errCode", 12000);
-        parambekr.a(localJSONObject, ":not invoke startWifi");
+        parambgkd.a(localJSONObject, ":not invoke startWifi");
       }
       catch (JSONException localJSONException3)
       {
@@ -360,7 +369,7 @@ public class WifiJsPlugin
     return 0;
   }
   
-  public String getWifiList(bekr parambekr)
+  public String getWifiList(bgkd parambgkd)
   {
     JSONArray localJSONArray;
     JSONObject localJSONObject1;
@@ -379,8 +388,8 @@ public class WifiJsPlugin
       {
         localJSONObject1.put("wifiList", localJSONArray);
         localJSONObject2.put("errCode", 0);
-        parambekr.a(localJSONObject2);
-        parambekr.a.a("onGetWifiList", localJSONObject1.toString(), 0);
+        parambgkd.a(localJSONObject2);
+        parambgkd.a.a("onGetWifiList", localJSONObject1.toString(), 0);
         return "";
       }
       catch (JSONException localJSONException3)
@@ -392,7 +401,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject1.put("errCode", 12005);
-        parambekr.a(localJSONObject1, ":wifi is disable");
+        parambgkd.a(localJSONObject1, ":wifi is disable");
       }
       catch (JSONException localJSONException1)
       {
@@ -405,7 +414,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject1.put("errCode", 12000);
-        parambekr.a(localJSONObject1, ":not invoke startWifi");
+        parambgkd.a(localJSONObject1, ":not invoke startWifi");
       }
       catch (JSONException localJSONException2)
       {
@@ -422,10 +431,10 @@ public class WifiJsPlugin
     return getSecurityMode(paramScanResult) > 1;
   }
   
-  public void onCreate(behq parambehq)
+  public void onCreate(bgho parambgho)
   {
-    super.onCreate(parambehq);
-    this.mActivity = parambehq.a();
+    super.onCreate(parambgho);
+    this.mActivity = parambgho.a();
   }
   
   public void onDestroy()
@@ -434,7 +443,7 @@ public class WifiJsPlugin
     this.wifiReceiver = null;
   }
   
-  public String startWifi(bekr parambekr)
+  public String startWifi(bgkd parambgkd)
   {
     JSONObject localJSONObject;
     if (Build.VERSION.SDK_INT >= 23) {
@@ -449,7 +458,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject.put("errCode", 0);
-        parambekr.a(localJSONObject);
+        parambgkd.a(localJSONObject);
         registerWifiReceiver();
         return "";
       }
@@ -458,14 +467,14 @@ public class WifiJsPlugin
         localJSONException1.printStackTrace();
         continue;
       }
-      checkPermission(new WifiJsPlugin.2(this, parambekr));
+      checkPermission(new WifiJsPlugin.2(this, parambgkd));
       continue;
       this.wifiManager = ((WifiManager)this.mContext.getApplicationContext().getSystemService("wifi"));
       localJSONObject = new JSONObject();
       try
       {
         localJSONObject.put("errCode", 0);
-        parambekr.a(localJSONObject);
+        parambgkd.a(localJSONObject);
         registerWifiReceiver();
       }
       catch (JSONException localJSONException2)
@@ -478,7 +487,7 @@ public class WifiJsPlugin
     }
   }
   
-  public String stopWifi(bekr parambekr)
+  public String stopWifi(bgkd parambgkd)
   {
     JSONObject localJSONObject1;
     if (this.wifiManager != null)
@@ -491,7 +500,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject1.put("errCode", 0);
-        parambekr.a();
+        parambgkd.a();
         unregisterWifiReceiver();
         return "";
       }
@@ -504,7 +513,7 @@ public class WifiJsPlugin
       try
       {
         localJSONObject2.put("errCode", 12000);
-        parambekr.a(":not invoke startWifi");
+        parambgkd.a(":not invoke startWifi");
       }
       catch (JSONException localJSONException2)
       {
@@ -518,7 +527,7 @@ public class WifiJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.WifiJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -28,7 +28,7 @@ public final class UserData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     KQQ.UserData
  * JD-Core Version:    0.7.0.1
  */

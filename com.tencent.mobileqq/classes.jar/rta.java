@@ -1,26 +1,21 @@
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNinePicDeliverDynamicGridView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class rta
-  implements rtj
+  extends pdi
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  public rta(ReadInJoyNinePicDeliverDynamicGridView paramReadInJoyNinePicDeliverDynamicGridView, int paramInt1, int paramInt2)
+  public rta(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    super(paramString);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void a(pdc parampdc)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new rtb(this, ReadInJoyNinePicDeliverDynamicGridView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyNinePicDeliverDynamicGridView), paramInt1, paramInt2));
+    parampdc.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rta
  * JD-Core Version:    0.7.0.1
  */

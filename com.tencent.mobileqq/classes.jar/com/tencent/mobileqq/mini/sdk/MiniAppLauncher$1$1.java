@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.sdk;
 
-import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 import org.json.JSONObject;
 
 class MiniAppLauncher$1$1
@@ -14,15 +14,15 @@ class MiniAppLauncher$1$1
     if (this.val$ret != null)
     {
       String str = this.val$ret.optString("errMsg");
-      bcql.a(BaseApplicationImpl.getContext(), 1, str, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, str, 0).a();
       return;
     }
-    bcql.a(BaseApplicationImpl.getContext(), 1, 2131695210, 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131695368, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppLauncher.1.1
  * JD-Core Version:    0.7.0.1
  */

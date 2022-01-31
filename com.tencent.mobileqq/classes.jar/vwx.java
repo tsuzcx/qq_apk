@@ -1,97 +1,59 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class vwx
+class vwx
+  implements DialogInterface.OnClickListener
 {
-  public View a;
-  public TextView a;
-  public View b;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
+  vwx(vwo paramvwo, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem, wkv paramwkv) {}
   
-  public vwx(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377526));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364924));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370379));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378946));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369214);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369216);
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131369217);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131369215);
-  }
-  
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
-  {
-    Object localObject = vxy.a(paramTroopStoryItemInfo.publishTime);
-    if (TextUtils.isEmpty(localObject[0]))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localObject[1]);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      if ((paramInt > 0) && (((TroopStoryItemInfo)this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.get(paramInt - 1)).itemType == 0))
-      {
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
-      while (paramTroopStoryItemInfo.publishCount == 0)
-      {
-        this.jdField_d_of_type_AndroidWidgetTextView.setText(ajya.a(2131715798));
-        return;
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(localObject[1]);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(localObject[0]);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    if ((paramInt > 0) && (((TroopStoryItemInfo)this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.get(paramInt - 1)).itemType == 0))
+    switch (paramInt)
     {
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(0);
+    case 0: 
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_Vwo.a("");
+    if (StoryVideoItem.isFakeVid(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
+    {
+      ((ukd)urr.a(3)).c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      paramDialogInterface = new uqw(new ErrorMessage(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
+      paramDialogInterface.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+      if (paramDialogInterface.a == 0L) {
+        paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
+      }
+      uht.a().dispatch(paramDialogInterface);
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      break;
-      this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramTroopStoryItemInfo.publishCount).append("个小视频");
-    if (paramTroopStoryItemInfo.dayCommentCount > 0)
-    {
-      ((StringBuilder)localObject).append(" 评论").append(paramTroopStoryItemInfo.dayCommentCount);
-      if (paramTroopStoryItemInfo.dayLikeCount > 0) {
-        ((StringBuilder)localObject).append("·");
+      wta.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      return;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType == 2)
+      {
+        ((xlf)vhj.a().getManager(208)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0, false, new vwy(this));
+      }
+      else
+      {
+        this.jdField_a_of_type_Wkv.a(this.jdField_a_of_type_Vwo.a.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        this.jdField_a_of_type_Wkv.a(this.jdField_a_of_type_Vwo.a.b, 1, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        new uyc().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
       }
     }
-    if (paramTroopStoryItemInfo.dayLikeCount > 0)
-    {
-      if (paramTroopStoryItemInfo.dayCommentCount <= 0) {
-        ((StringBuilder)localObject).append(" ");
-      }
-      ((StringBuilder)localObject).append("赞").append(paramTroopStoryItemInfo.dayLikeCount);
-    }
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vwx
  * JD-Core Version:    0.7.0.1
  */

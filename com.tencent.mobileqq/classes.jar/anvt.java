@@ -1,71 +1,80 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import java.io.File;
-import java.net.HttpURLConnection;
+import android.view.View;
 
-public class anvt
+public final class anvt
 {
-  public final int a;
-  public final File a;
-  public final String a;
-  public HttpURLConnection a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public String f = "";
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  
-  public anvt(String paramString, File paramFile, int paramInt)
+  public static void a(View paramView, float paramFloat)
   {
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_b_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith(HttpDownloadUtil.jdField_a_of_type_JavaLangString))) {
-      this.jdField_b_of_type_Boolean = true;
+    if (anvs.a)
+    {
+      anvs.a(paramView).a(paramFloat);
+      return;
     }
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Int = paramInt;
+    anvu.c(paramView, paramFloat);
   }
   
-  public String a()
+  public static void b(View paramView, float paramFloat)
   {
-    return this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + ".tmp";
+    if (anvs.a)
+    {
+      anvs.a(paramView).d(paramFloat);
+      return;
+    }
+    anvu.d(paramView, paramFloat);
   }
   
-  public void a()
+  public static void c(View paramView, float paramFloat)
   {
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ArrayOfByte = null;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_e_of_type_Int = 0;
-    this.h = null;
-    this.i = null;
-    this.g = null;
-    this.k = null;
-    this.j = null;
-    this.d = null;
-    this.jdField_a_of_type_Boolean = false;
+    if (anvs.a)
+    {
+      anvs.a(paramView).e(paramFloat);
+      return;
+    }
+    anvu.e(paramView, paramFloat);
+  }
+  
+  public static void d(View paramView, float paramFloat)
+  {
+    if (anvs.a)
+    {
+      anvs.a(paramView).b(paramFloat);
+      return;
+    }
+    anvu.a(paramView, paramFloat);
+  }
+  
+  public static void e(View paramView, float paramFloat)
+  {
+    if (anvs.a)
+    {
+      anvs.a(paramView).c(paramFloat);
+      return;
+    }
+    anvu.b(paramView, paramFloat);
+  }
+  
+  public static void f(View paramView, float paramFloat)
+  {
+    if (anvs.a)
+    {
+      anvs.a(paramView).g(paramFloat);
+      return;
+    }
+    anvu.f(paramView, paramFloat);
+  }
+  
+  public static void g(View paramView, float paramFloat)
+  {
+    if (anvs.a)
+    {
+      anvs.a(paramView).h(paramFloat);
+      return;
+    }
+    anvu.g(paramView, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvt
  * JD-Core Version:    0.7.0.1
  */

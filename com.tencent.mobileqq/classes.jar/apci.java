@@ -1,34 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
 
-class apci
-  extends apbm
+public class apci
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public apci(apbi paramapbi)
-  {
-    super(paramapbi);
-  }
+  public apci(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  protected String a()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return "StateSaveToWeiYunByPCWhenToOffFailed";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
+    if (!paramBoolean) {
+      apde.a().a();
     }
-    apbi.b(this.jdField_a_of_type_Apbi, 11, 7);
-    apbi.c(this.jdField_a_of_type_Apbi, 11, 7);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + "->StateSaveToWeiYunByPC)");
-    this.jdField_a_of_type_Apbm = new apcg(this.jdField_a_of_type_Apbi);
+    apde.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apci
  * JD-Core Version:    0.7.0.1
  */

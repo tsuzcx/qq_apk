@@ -1,24 +1,50 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class baej
-  implements View.OnClickListener
+public class baej
 {
-  baej(baei parambaei) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView)
+  public static baej a(JSONObject paramJSONObject)
   {
-    paramView = new Intent(baei.a(this.a), QQBrowserActivity.class);
-    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
-    baei.a(this.a).startActivity(paramView);
+    if (paramJSONObject != null) {
+      try
+      {
+        if ((paramJSONObject.has("retcode")) && (paramJSONObject.getInt("retcode") == 0) && (paramJSONObject.has("data")))
+        {
+          baej localbaej = new baej();
+          paramJSONObject = paramJSONObject.getJSONObject("data");
+          if (paramJSONObject != null)
+          {
+            localbaej.jdField_a_of_type_JavaLangString = paramJSONObject.optString("url");
+            localbaej.jdField_b_of_type_JavaLangString = paramJSONObject.optString("title");
+            localbaej.jdField_a_of_type_Int = paramJSONObject.optInt("localPadId");
+            localbaej.c = paramJSONObject.optString("localPadId");
+            localbaej.d = paramJSONObject.optString("doc_id");
+            localbaej.jdField_b_of_type_Int = paramJSONObject.optInt("doc_type");
+            localbaej.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isCache");
+          }
+          return localbaej;
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        QLog.e("ImportFormData", 1, paramJSONObject.getLocalizedMessage(), paramJSONObject);
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baej
  * JD-Core Version:    0.7.0.1
  */

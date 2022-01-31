@@ -1,21 +1,17 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
-public class bked
-  implements bkbp
+public abstract interface bked
 {
-  public bked(DoodleLayout paramDoodleLayout) {}
+  public abstract void onQueryCallback(ArrayList<WadlResult> paramArrayList);
   
-  public void a(List<bkbm> paramList, DoodleView paramDoodleView)
-  {
-    paramList.add(this.a.jdField_a_of_type_Bkbi);
-    paramList.add(this.a.jdField_a_of_type_Bkau);
-  }
+  public abstract void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList);
+  
+  public abstract void onWadlTaskStatusChanged(WadlResult paramWadlResult);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bked
  * JD-Core Version:    0.7.0.1
  */

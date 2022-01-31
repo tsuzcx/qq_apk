@@ -1,23 +1,39 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class afzb
-  implements bajw
+class afzb
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
+  afzb(afyz paramafyz, int paramInt) {}
   
-  public afzb(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
+    paramView = new Intent(this.jdField_a_of_type_Afyz.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("individuation_url_type", 40303);
+    String str = bdox.a(this.jdField_a_of_type_Afyz.jdField_a_of_type_AndroidContentContext, "call", "mvip.gongneng.anroid.individuation.web");
+    str = str + "&funcallId=" + this.jdField_a_of_type_Int;
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Afyz.jdField_a_of_type_AndroidContentContext, str, 524288L, paramView, true, -1);
+    int i = ((alxl)this.jdField_a_of_type_Afyz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).g();
+    if (i == 2) {
+      i = 0;
+    }
+    for (;;)
+    {
+      azmj.b(this.jdField_a_of_type_Afyz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004A25", "0X8004A25", 0, 0, "" + i, "", "", "");
+      return;
+      if (i == 3) {
+        i = 2;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afzb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,26 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.TMG.utils.QLog;
 
-public class abvk
-  extends BroadcastReceiver
+class abvk
+  implements DialogInterface.OnCancelListener
 {
-  public abvk(QQMapActivity paramQQMapActivity) {}
+  abvk(abvh paramabvh, DialogInterface.OnCancelListener paramOnCancelListener) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.p) && (!this.a.q) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.k) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.k) == 21))
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
-      }
-      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
-      QQMapActivity.a(this.a, paramContext);
-      this.a.q = true;
+      QLog.e("SdkAuthDialog", 1, "cancelListener is null");
+      return;
     }
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener.onCancel(paramDialogInterface);
+    azmj.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abvk
  * JD-Core Version:    0.7.0.1
  */

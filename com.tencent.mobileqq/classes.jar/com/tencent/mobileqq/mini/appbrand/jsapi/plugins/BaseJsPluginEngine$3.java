@@ -3,6 +3,7 @@ package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class BaseJsPluginEngine$3
@@ -17,24 +18,35 @@ class BaseJsPluginEngine$3
     }
     if (paramJSONObject != null)
     {
-      if (paramJSONObject.optLong("retCode") == -101510007L) {
+      if (paramJSONObject.optLong("retCode") == -101510007L) {}
+      try
+      {
+        paramJSONObject.put("SubscribeAppMsgCode", -2);
         this.this$0.callbackJsEventFail(this.val$webview, "subscribeAppMsg", paramJSONObject, "no login", this.val$callbackId);
+        return;
       }
+      catch (JSONException localJSONException)
+      {
+        JSONObject localJSONObject;
+        QLog.e("BaseJsPluginEngine", 1, "reqGrantSubscribeApiPermission - authorizeListener get a JSONException:", localJSONException);
+        this.this$0.callbackJsEventFail(this.val$webview, "subscribeAppMsg", paramJSONObject, this.val$callbackId);
+        return;
+      }
+      if (paramBoolean)
+      {
+        localJSONObject = new JSONObject();
+        localJSONObject.put("SubscribeAppMsgCode", 1);
+        this.this$0.callbackJsEventOK(this.val$webview, "subscribeAppMsg", localJSONObject, this.val$callbackId);
+        return;
+      }
+      paramJSONObject.put("SubscribeAppMsgCode", -2);
+      this.this$0.callbackJsEventFail(this.val$webview, "subscribeAppMsg", paramJSONObject, this.val$callbackId);
     }
-    else {
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.this$0.callbackJsEventOK(this.val$webview, "subscribeAppMsg", null, this.val$callbackId);
-      return;
-    }
-    this.this$0.callbackJsEventFail(this.val$webview, "subscribeAppMsg", paramJSONObject, this.val$callbackId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine.3
  * JD-Core Version:    0.7.0.1
  */

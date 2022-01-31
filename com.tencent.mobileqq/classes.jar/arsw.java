@@ -1,38 +1,46 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
-import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
+import android.text.TextUtils;
+import com.tencent.mobileqq.flutter.channel.model.RequestPacket;
+import com.tencent.qphone.base.util.QLog;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.MethodCodec;
+import io.flutter.plugin.common.StandardMethodCodec;
+import java.util.Map;
 
-class arsw
-  implements Animator.AnimatorListener
+public abstract class arsw
+  implements MethodChannel.MethodCallHandler
 {
-  arsw(arss paramarss, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public static final MethodCodec a = StandardMethodCodec.INSTANCE;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  protected abstract void a(RequestPacket paramRequestPacket, MethodChannel.Result paramResult);
+  
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
   {
-    this.jdField_a_of_type_Arss.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Arss.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
-    this.jdField_a_of_type_Arss.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_Arss.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
-    this.jdField_a_of_type_Arss.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    String str = paramMethodCall.method;
+    QLog.d("SSOChannelHandler", 1, String.format("onMethodCall: %s", new Object[] { str }));
+    if (TextUtils.isEmpty(str))
+    {
+      paramResult.notImplemented();
+      return;
+    }
+    if (str.equals("sendRequest"))
+    {
+      paramMethodCall = paramMethodCall.argument("req");
+      if ((paramMethodCall instanceof Map))
+      {
+        a(RequestPacket.fromMap((Map)paramMethodCall), paramResult);
+        return;
+      }
+      paramResult.notImplemented();
+      return;
+    }
+    paramResult.notImplemented();
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Arss.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Int, this.b);
-    this.jdField_a_of_type_Arss.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a(this.c, this.d);
-    this.jdField_a_of_type_Arss.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a();
-    this.jdField_a_of_type_Arss.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.a();
-    this.jdField_a_of_type_Arss.jdField_a_of_type_AndroidAnimationValueAnimator = null;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arsw
  * JD-Core Version:    0.7.0.1
  */

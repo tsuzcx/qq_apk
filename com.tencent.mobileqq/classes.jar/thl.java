@@ -1,27 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class thl
-  extends QQUIEventReceiver<thh, tce>
 {
-  public thl(@NonNull thh paramthh)
-  {
-    super(paramthh);
-  }
-  
-  public void a(@NonNull thh paramthh, @NonNull tce paramtce)
-  {
-    paramthh.a.b(paramtce);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tce.class;
-  }
+  public int a = 0;
+  public long a;
+  public View a;
+  public ViewGroup a;
+  public String a;
+  public thf a;
+  public tho a;
+  public thp a;
+  public thy a;
+  public boolean a;
+  public int b;
+  public boolean b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thl
  * JD-Core Version:    0.7.0.1
  */

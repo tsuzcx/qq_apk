@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.view.View;
-import asua;
+import aukx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
@@ -49,17 +49,17 @@ class MainFragment$2
           ((View)MainFragment.a(this.this$0).get("动态")).setSoundEffectsEnabled(bool);
         }
       }
-      if (asua.a().a()) {
+      if (aukx.a().a()) {
         break;
       }
-      asua.a().a(MainFragment.a(this.this$0));
+      aukx.a().a(MainFragment.a(this.this$0));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MainFragment.2
  * JD-Core Version:    0.7.0.1
  */

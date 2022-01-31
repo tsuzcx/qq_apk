@@ -1,25 +1,24 @@
-import com.tencent.mobileqq.data.CommonlyUsedTroop;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import mqq.app.QQPermissionCallback;
 
-public class aifv
-  implements Comparator<CommonlyUsedTroop>
+class aifv
+  implements QQPermissionCallback
 {
-  protected aifv(aifs paramaifs) {}
+  aifv(aift paramaift) {}
   
-  public int a(CommonlyUsedTroop paramCommonlyUsedTroop1, CommonlyUsedTroop paramCommonlyUsedTroop2)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramCommonlyUsedTroop1.addedTimestamp < paramCommonlyUsedTroop2.addedTimestamp) {
-      return 1;
-    }
-    if (paramCommonlyUsedTroop1.addedTimestamp > paramCommonlyUsedTroop2.addedTimestamp) {
-      return -1;
-    }
-    return 0;
+    bdcd.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a.a = ProfileActivity.a(this.a.a, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aifv
  * JD-Core Version:    0.7.0.1
  */

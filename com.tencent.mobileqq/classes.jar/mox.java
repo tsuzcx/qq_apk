@@ -1,21 +1,20 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagConfig.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class mox
-  extends lgg
+class mox
+  implements TextWatcher
 {
   mox(mov parammov) {}
   
-  protected void a()
-  {
-    ThreadManager.post(new AVRedBagConfig.2.1(this), 10, null, true);
-    this.a.a.b(this);
-  }
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mox
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,21 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
-import java.util.ArrayList;
-import javax.annotation.Nonnull;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.nearby.widget.AutoScrollImageView;
 
 public class avoy
-  extends FragmentPagerAdapter
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> jdField_a_of_type_JavaUtilArrayList;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> b;
+  public avoy(AutoScrollImageView paramAutoScrollImageView) {}
   
-  private avoy(FragmentManager paramFragmentManager)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramFragmentManager);
-  }
-  
-  public void a(@Nonnull ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> paramArrayList1, @Nonnull ArrayList<ReceiptMessageReadMemberListFragment.MemberInfo> paramArrayList2, @Nonnull String[] paramArrayOfString)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList1;
-    this.b = paramArrayList2;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-  }
-  
-  public int getCount()
-  {
-    return 2;
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return ReceiptMessageReadMemberListFragment.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ArrayOfJavaLangString[1]);
-    case 0: 
-      return ReceiptMessageReadMemberListFragment.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
-    }
-    return ReceiptMessageReadMemberListFragment.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString[1]);
+    AutoScrollImageView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avoy
  * JD-Core Version:    0.7.0.1
  */

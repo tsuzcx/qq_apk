@@ -1,39 +1,43 @@
-import android.opengl.GLES20;
-import javax.microedition.khronos.opengles.GL11;
-
 public class lqq
-  implements lqr
 {
-  public int a()
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e;
+  public boolean f;
+  
+  public lqq()
   {
-    int[] arrayOfInt = new int[1];
-    arrayOfInt[0] = 0;
-    GLES20.glGenTextures(1, arrayOfInt, 0);
-    lsq.a();
-    return arrayOfInt[0];
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 4L;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void a(int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public boolean equals(Object paramObject)
   {
-    GLES20.glGenBuffers(paramInt1, paramArrayOfInt, paramInt2);
-    lsq.a();
+    if ((paramObject != null) && ((paramObject instanceof lqq)))
+    {
+      paramObject = (lqq)paramObject;
+      if (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long) {
+        return true;
+      }
+    }
+    return false;
   }
   
-  public void a(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public String toString()
   {
-    GLES20.glDeleteTextures(paramInt1, paramArrayOfInt, paramInt2);
-    lsq.a();
-  }
-  
-  public void b(GL11 paramGL11, int paramInt1, int[] paramArrayOfInt, int paramInt2)
-  {
-    GLES20.glDeleteBuffers(paramInt1, paramArrayOfInt, paramInt2);
-    lsq.a();
+    return "Uin[" + this.jdField_a_of_type_Long + "], VideoSrcType[" + this.jdField_a_of_type_Int + "], isBig[" + this.jdField_a_of_type_Boolean + "], isRender[" + this.jdField_b_of_type_Boolean + "], isNeedRequest[" + this.c + "], hasRecvData[" + this.d + "], inviteId[" + this.jdField_a_of_type_JavaLangString + "], isMirror[" + this.f + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lqq
  * JD-Core Version:    0.7.0.1
  */

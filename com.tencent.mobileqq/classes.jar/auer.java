@@ -1,49 +1,137 @@
-import android.graphics.Matrix;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.view.Gravity;
-import com.tencent.mobileqq.ocr.view.gesture.Settings;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Map;
 
 public class auer
+  extends aueo
 {
-  private static final Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-  private static final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private static final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private static final Rect b = new Rect();
-  
-  public static void a(Matrix paramMatrix, Settings paramSettings, Rect paramRect)
+  public auer(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramSettings.e(), paramSettings.f());
-    paramMatrix.mapRect(jdField_a_of_type_AndroidGraphicsRectF);
-    int i = Math.round(jdField_a_of_type_AndroidGraphicsRectF.width());
-    int j = Math.round(jdField_a_of_type_AndroidGraphicsRectF.height());
-    jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramSettings.a(), paramSettings.b());
-    Gravity.apply(paramSettings.g(), i, j, jdField_a_of_type_AndroidGraphicsRect, paramRect);
+    super(paramMsgBackupResEntity);
   }
   
-  public static void a(auep paramauep, Settings paramSettings, Rect paramRect)
+  public aucn a()
   {
-    paramauep.a(jdField_a_of_type_AndroidGraphicsMatrix);
-    a(jdField_a_of_type_AndroidGraphicsMatrix, paramSettings, paramRect);
+    boolean bool2 = false;
+    MsgBackupResEntity localMsgBackupResEntity = this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity;
+    aucn localaucn = new aucn();
+    String str1 = b(localMsgBackupResEntity);
+    if (str1 == null)
+    {
+      a("getResDownloadObject realPath is null");
+      localaucn.jdField_a_of_type_Boolean = false;
+      return localaucn;
+    }
+    String str2 = a(str1);
+    boolean bool3 = a(str2);
+    boolean bool4 = a(str1);
+    if (QLog.isColorLevel()) {
+      a("getResDownloadObject,entity:" + localMsgBackupResEntity.toLogString() + " tempPath:" + str2 + " exist:" + bool3 + " realPath:" + str1 + " exist:" + bool4);
+    }
+    boolean bool1 = bool2;
+    if (!bool3)
+    {
+      bool1 = bool2;
+      if (!bool4) {
+        bool1 = true;
+      }
+    }
+    localaucn.jdField_a_of_type_Boolean = bool1;
+    localaucn.jdField_a_of_type_JavaLangString = str2;
+    return localaucn;
   }
   
-  public static void a(Settings paramSettings, Point paramPoint)
+  public String a()
   {
-    a(paramSettings, b);
-    Gravity.apply(paramSettings.g(), 0, 0, b, jdField_a_of_type_AndroidGraphicsRect);
-    paramPoint.set(jdField_a_of_type_AndroidGraphicsRect.left, jdField_a_of_type_AndroidGraphicsRect.top);
+    String str = b(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity);
+    if (TextUtils.isEmpty(str))
+    {
+      a("getTempPath realPath is null");
+      return null;
+    }
+    return a(str);
   }
   
-  public static void a(Settings paramSettings, Rect paramRect)
+  public String a(MsgBackupResEntity paramMsgBackupResEntity)
   {
-    jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramSettings.a(), paramSettings.b());
-    Gravity.apply(paramSettings.g(), paramSettings.c(), paramSettings.d(), jdField_a_of_type_AndroidGraphicsRect, paramRect);
+    String str1 = (String)this.jdField_a_of_type_JavaUtilMap.get("md5");
+    String str2 = (String)this.jdField_a_of_type_JavaUtilMap.get("isOriginal");
+    int i;
+    if (str2 != null) {
+      if (!str2.equals("0")) {
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      int j = paramMsgBackupResEntity.msgSubType;
+      if (j == 1) {
+        if (i == 0) {
+          paramMsgBackupResEntity = "chatimg";
+        }
+      }
+      for (;;)
+      {
+        if (!TextUtils.isEmpty(str1))
+        {
+          try
+          {
+            paramMsgBackupResEntity = bame.d(new URL(paramMsgBackupResEntity, null, str1).toString());
+            return paramMsgBackupResEntity;
+          }
+          catch (MalformedURLException paramMsgBackupResEntity)
+          {
+            paramMsgBackupResEntity.printStackTrace();
+          }
+          i = 0;
+          break;
+          paramMsgBackupResEntity = "chatraw";
+          continue;
+          if (j == 2) {
+            paramMsgBackupResEntity = "chatimg";
+          } else if (j == 3) {
+            paramMsgBackupResEntity = "chatthumb";
+          } else {
+            return null;
+          }
+        }
+      }
+      return null;
+      i = 1;
+    }
+  }
+  
+  public String a(String paramString)
+  {
+    try
+    {
+      paramString = paramString.substring(a());
+      paramString = aufb.jdField_a_of_type_JavaLangString + paramString;
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public String b()
+  {
+    return a(this.jdField_a_of_type_ComTencentMobileqqMsgbackupDataMsgBackupResEntity);
+  }
+  
+  public String b(MsgBackupResEntity paramMsgBackupResEntity)
+  {
+    return a(paramMsgBackupResEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auer
  * JD-Core Version:    0.7.0.1
  */

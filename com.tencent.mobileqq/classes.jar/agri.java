@@ -1,26 +1,18 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.data.QQAlbumInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-public abstract interface agri
+public class agri
+  extends amaj
 {
-  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup);
+  public agri(TroopChatPie paramTroopChatPie) {}
   
-  public abstract String a();
-  
-  public abstract List<LocalMediaInfo> a(Context paramContext, int paramInt1, int paramInt2, aglv paramaglv, int paramInt3, boolean paramBoolean, ArrayList<String> paramArrayList);
-  
-  public abstract List<QQAlbumInfo> a(List<QQAlbumInfo> paramList1, List<QQAlbumInfo> paramList2, int paramInt);
-  
-  public abstract void a(int paramInt);
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    this.a.e(65536);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agri
  * JD-Core Version:    0.7.0.1
  */

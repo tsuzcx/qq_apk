@@ -1,42 +1,37 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import java.lang.ref.WeakReference;
 
 class aplz
-  implements aptw
+  extends VasQuickUpdateManager.CallBacker
 {
   aplz(aply paramaply) {}
   
-  public void a()
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    int i = this.a.a.i();
-    int j = this.a.a.d();
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (i == 6) {
-      if (j == 0) {
-        localQQAppInterface.a().b(this.a.a.d());
-      }
-    }
-    for (;;)
+    paramString2 = (MessengerService)this.a.a.get();
+    if (paramString2 == null) {}
+    do
     {
-      if (this.a.a.jdField_a_of_type_Apnf != null) {
-        this.a.a.jdField_a_of_type_Apnf.d();
-      }
-      return;
-      localQQAppInterface.a().a(this.a.a.d());
-      continue;
-      if (j == 0) {
-        localQQAppInterface.a().a(this.a.a.d());
-      } else {
-        localQQAppInterface.a().b(this.a.a.jdField_a_of_type_Apkt.a());
-      }
-    }
+      do
+      {
+        return;
+      } while ((paramLong != 15L) || (!paramString1.startsWith("card.")));
+      paramString1 = new Bundle();
+    } while ((this == null) || (this.a.a.get() == null) || (paramString2.d == null));
+    paramString2.d.putString("cmd", "card_download");
+    paramString1.putInt("result", paramInt1);
+    paramString1.putString("message", paramString3);
+    paramString2.d.putBundle("response", paramString1);
+    paramString2.a(paramString2.d);
+    paramString2.d = null;
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aplz
  * JD-Core Version:    0.7.0.1
  */

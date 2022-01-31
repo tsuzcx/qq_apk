@@ -1,16 +1,21 @@
-public abstract interface aiym
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
+
+public class aiym
+  implements View.OnClickListener
 {
-  public abstract void a();
+  public aiym(DrawHbFragment paramDrawHbFragment) {}
   
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void d();
+  public void onClick(View paramView)
+  {
+    DrawHbFragment.b(this.a).c("draw.wrappacket.random");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiym
  * JD-Core Version:    0.7.0.1
  */

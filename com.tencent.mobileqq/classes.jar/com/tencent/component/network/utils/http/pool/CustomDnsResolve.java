@@ -3,6 +3,7 @@ package com.tencent.component.network.utils.http.pool;
 import android.text.TextUtils;
 import com.tencent.component.network.downloader.strategy.IPStrategy;
 import com.tencent.component.network.module.base.QDLog;
+import com.tencent.component.network.module.common.DnsService;
 import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -75,12 +76,24 @@ public class CustomDnsResolve
     if (isIPDirectEnable(paramString)) {
       return getDirectIpList(paramString);
     }
-    return InetAddress.getAllByName(paramString);
+    return resolveByDns(paramString);
+  }
+  
+  public InetAddress[] resolveByDns(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return new InetAddress[0];
+    }
+    paramString = DnsService.getInstance().getDomainIP(paramString);
+    if (TextUtils.isEmpty(paramString)) {
+      return new InetAddress[0];
+    }
+    return new InetAddress[] { InetAddress.getByName(paramString) };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.utils.http.pool.CustomDnsResolve
  * JD-Core Version:    0.7.0.1
  */

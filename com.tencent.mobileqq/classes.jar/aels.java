@@ -1,24 +1,15 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class aels
+public abstract interface aels
 {
-  public String a;
+  public abstract void a(View paramView, MotionEvent paramMotionEvent);
   
-  public aels(String paramString)
-  {
-    this.a = paramString;
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
+  public abstract void a(View paramView, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aels
  * JD-Core Version:    0.7.0.1
  */

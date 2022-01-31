@@ -7,6 +7,7 @@ import org.json.JSONObject;
 public class SoConfig$SoDetailInfo
   implements Serializable
 {
+  public long crc = -1L;
   public String md5;
   public String url;
   public String ver;
@@ -14,28 +15,31 @@ public class SoConfig$SoDetailInfo
   public static SoDetailInfo create(JSONObject paramJSONObject, String paramString)
   {
     if (paramJSONObject == null) {}
-    String str;
+    String str1;
+    String str2;
     do
     {
       return null;
-      str = paramJSONObject.optString("url");
-      paramJSONObject = paramJSONObject.optString("md5");
-    } while ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramJSONObject)));
-    SoDetailInfo localSoDetailInfo = new SoDetailInfo();
-    localSoDetailInfo.md5 = paramJSONObject;
-    localSoDetailInfo.url = str;
-    localSoDetailInfo.ver = paramString;
-    return localSoDetailInfo;
+      str1 = paramJSONObject.optString("url");
+      str2 = paramJSONObject.optString("md5");
+    } while ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)));
+    long l = paramJSONObject.optLong("so_crc", -1L);
+    paramJSONObject = new SoDetailInfo();
+    paramJSONObject.md5 = str2;
+    paramJSONObject.url = str1;
+    paramJSONObject.ver = paramString;
+    paramJSONObject.crc = l;
+    return paramJSONObject;
   }
   
   public String toString()
   {
-    return "SDInfo{url='" + this.url + '\'' + ", md5='" + this.md5 + '\'' + ", v='" + this.ver + '\'' + '}';
+    return "SDInfo{url='" + this.url + '\'' + ", md5='" + this.md5 + '\'' + ", v='" + this.ver + '\'' + ", c='" + this.crc + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.soload.config.SoConfig.SoDetailInfo
  * JD-Core Version:    0.7.0.1
  */

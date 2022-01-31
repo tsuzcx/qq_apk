@@ -1,20 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
 public class acht
-  implements View.OnClickListener
+  implements aelc
 {
-  public acht(TroopInfoActivity paramTroopInfoActivity) {}
+  public acht(ChatHistory paramChatHistory) {}
   
-  public void onClick(View paramView)
+  public void a(AudioPlayer paramAudioPlayer)
   {
-    this.a.d();
+    this.a.p();
+    if (this.a.jdField_a_of_type_Acio != null) {
+      this.a.jdField_a_of_type_Acio.d();
+    }
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
   }
+  
+  public void a(AudioPlayer paramAudioPlayer, int paramInt)
+  {
+    this.a.b(2131695363);
+    this.a.setVolumeControlStream(3);
+    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+  }
+  
+  public void b(AudioPlayer paramAudioPlayer, int paramInt)
+  {
+    this.a.setVolumeControlStream(paramInt);
+  }
+  
+  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
+  
+  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acht
  * JD-Core Version:    0.7.0.1
  */

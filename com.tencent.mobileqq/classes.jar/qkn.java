@@ -1,25 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
 
-class qkn
-  implements View.OnClickListener
+public final class qkn
+  implements Parcelable.Creator<ColumnInfo>
 {
-  qkn(qkl paramqkl) {}
-  
-  public void onClick(View paramView)
+  public ColumnInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "mShareActionSheet cancle button OnClick");
-    }
-    if (qkl.a(this.a).isShowing()) {
-      qkl.a(this.a).dismiss();
-    }
+    return new ColumnInfo(paramParcel);
+  }
+  
+  public ColumnInfo[] a(int paramInt)
+  {
+    return new ColumnInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qkn
  * JD-Core Version:    0.7.0.1
  */

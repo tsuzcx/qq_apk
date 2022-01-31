@@ -17,7 +17,7 @@ class UIJsPlugin$13
     //   3: getfield 19	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin;
     //   6: getfield 42	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin:jsPluginEngine	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine;
     //   9: invokevirtual 48	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/BaseJsPluginEngine:getActivityContext	()Lcom/tencent/mobileqq/app/BaseActivity;
-    //   12: invokestatic 54	bfpc:a	(Landroid/content/Context;)Lbfpc;
+    //   12: invokestatic 54	bhpy:a	(Landroid/content/Context;)Lbhpy;
     //   15: astore 10
     //   17: new 56	org/json/JSONObject
     //   20: dup
@@ -59,7 +59,7 @@ class UIJsPlugin$13
     //   115: aload 11
     //   117: ldc 103
     //   119: invokevirtual 106	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   122: invokevirtual 109	bfpc:a	(Ljava/lang/CharSequence;ILjava/lang/String;)V
+    //   122: invokevirtual 109	bhpy:a	(Ljava/lang/CharSequence;ILjava/lang/String;)V
     //   125: iload_1
     //   126: iconst_1
     //   127: iadd
@@ -101,32 +101,32 @@ class UIJsPlugin$13
     //   203: return
     //   204: aload 10
     //   206: ldc 127
-    //   208: invokestatic 131	ajya:a	(I)Ljava/lang/String;
-    //   211: invokevirtual 135	bfpc:d	(Ljava/lang/CharSequence;)V
+    //   208: invokestatic 131	alpo:a	(I)Ljava/lang/String;
+    //   211: invokevirtual 135	bhpy:d	(Ljava/lang/CharSequence;)V
     //   214: aload 10
-    //   216: invokevirtual 138	bfpc:show	()V
+    //   216: invokevirtual 138	bhpy:show	()V
     //   219: aload 10
     //   221: iconst_1
-    //   222: invokevirtual 142	bfpc:c	(Z)V
+    //   222: invokevirtual 142	bhpy:c	(Z)V
     //   225: aload 10
     //   227: new 144	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$1
     //   230: dup
     //   231: aload_0
     //   232: invokespecial 147	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$1:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13;)V
-    //   235: invokevirtual 150	bfpc:a	(Lbfpj;)V
+    //   235: invokevirtual 150	bhpy:a	(Lbhqf;)V
     //   238: aload 10
     //   240: new 152	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$2
     //   243: dup
     //   244: aload_0
     //   245: invokespecial 153	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$2:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13;)V
-    //   248: invokevirtual 157	bfpc:setOnCancelListener	(Landroid/content/DialogInterface$OnCancelListener;)V
+    //   248: invokevirtual 157	bhpy:setOnCancelListener	(Landroid/content/DialogInterface$OnCancelListener;)V
     //   251: aload 10
     //   253: new 159	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$3
     //   256: dup
     //   257: aload_0
     //   258: aload 10
-    //   260: invokespecial 162	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$3:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13;Lbfpc;)V
-    //   263: invokevirtual 165	bfpc:a	(Lbfph;)V
+    //   260: invokespecial 162	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13$3:<init>	(Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13;Lbhpy;)V
+    //   263: invokevirtual 165	bhpy:a	(Lbhqd;)V
     //   266: return
     //   267: aload_0
     //   268: getfield 19	com/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin$13:this$0	Lcom/tencent/mobileqq/mini/appbrand/jsapi/plugins/UIJsPlugin;
@@ -530,7 +530,7 @@ class UIJsPlugin$13
     //   854	229	7	bool2	boolean
     //   856	236	8	bool3	boolean
     //   858	242	9	bool4	boolean
-    //   15	91	10	localbfpc	bfpc
+    //   15	91	10	localbhpy	bhpy
     //   171	88	10	localJSONException1	org.json.JSONException
     //   341	28	10	localJSONObject	org.json.JSONObject
     //   406	28	10	localJSONException2	org.json.JSONException
@@ -584,7 +584,7 @@ class UIJsPlugin$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.UIJsPlugin.13
  * JD-Core Version:    0.7.0.1
  */

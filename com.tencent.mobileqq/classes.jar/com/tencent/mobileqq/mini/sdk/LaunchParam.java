@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import java.util.Map;
 
 public class LaunchParam
   implements Parcelable
@@ -30,9 +29,11 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_ARK_INNER_TEMPLATE_MESSAGE = 2061;
   public static final int LAUNCH_SCENE_ARK_SEARCH_OPEN_CARD = 2075;
   public static final int LAUNCH_SCENE_ARK_UNKNOWN = 2059;
+  public static final int LAUNCH_SCENE_BIGINSERTPAGE = 4005;
   public static final int LAUNCH_SCENE_COLOR_NOTE = 1131;
   public static final int LAUNCH_SCENE_CONTACTS = 2006;
   public static final int LAUNCH_SCENE_DESKTOP_BOUTIQUE_RECOMMEND = 3008;
+  public static final int LAUNCH_SCENE_DESKTOP_DITTO_FEEDS = 3016;
   public static final int LAUNCH_SCENE_DESKTOP_DITTO_QUICK_MATCH = 3013;
   public static final int LAUNCH_SCENE_DESKTOP_DITTO_RECOMMEND = 3012;
   public static final int LAUNCH_SCENE_DESKTOP_EVERYONE_PLAYING = 3007;
@@ -56,6 +57,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_LEBA = 2007;
   public static final int LAUNCH_SCENE_LEBA_MINIAPP = 2050;
   public static final int LAUNCH_SCENE_MAIN_ENTRY = 1001;
+  public static final int LAUNCH_SCENE_MINIAPP_ECSHOP = 4003;
   public static final int LAUNCH_SCENE_MINI_APP_PROFILE = 1024;
   public static final int LAUNCH_SCENE_MINI_APP_SUBSCRIBE = 2085;
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_ALBUM = 1049;
@@ -63,6 +65,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_MINI_CODE_FROM_SCAN = 1047;
   public static final int LAUNCH_SCENE_NAVIGATE_FROM_MINI_APP = 1038;
   public static final int LAUNCH_SCENE_OPEN_BY_MINI_APP = 1037;
+  public static final int LAUNCH_SCENE_PENDANTHOLDER = 4004;
   public static final int LAUNCH_SCENE_PROFILE_CARD = 2062;
   public static final int LAUNCH_SCENE_PUBLIC_ACCOUNT_MEMNU = 1035;
   public static final int LAUNCH_SCENE_PUBLIC_ACCOUNT_MESSAGE_CARD = 1074;
@@ -78,7 +81,7 @@ public class LaunchParam
   public static final int LAUNCH_SCENE_QZONE_FRIEND_PLAYING_THIRD = 2090;
   public static final int LAUNCH_SCENE_QZONE_SHUOSHUO_LIST = 2060;
   public static final int LAUNCH_SCENE_QZONE_SWEET_WIDGET = 2088;
-  public static final int LAUNCH_SCENE_SAFE_MINIAPP_SCHEME = 2089;
+  public static final int LAUNCH_SCENE_SAFE_MINIAPP_SCHEME = 2098;
   public static final int LAUNCH_SCENE_SCHEME = 2016;
   public static final int LAUNCH_SCENE_SEARCH = 2005;
   public static final int LAUNCH_SCENE_SEARCH_HAS_USED = 1027;
@@ -114,7 +117,7 @@ public class LaunchParam
   public long launchClickTimeMillis;
   public String miniAppId;
   public String navigateExtData;
-  public Map<String, String> reportData;
+  public String reportData;
   public int scene = 9999;
   public String shareTicket;
   public int tempState = 0;
@@ -210,11 +213,7 @@ public class LaunchParam
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("LaunchParam{scene=").append(this.scene).append(", miniAppId='").append(this.miniAppId).append('\'').append(", extraKey='").append(this.extraKey).append('\'').append(", entryPath='").append(this.entryPath).append('\'').append(", extendData='").append(this.extendData).append('\'').append(", navigateExtData='").append(this.navigateExtData).append('\'').append(", fromMiniAppId='").append(this.fromMiniAppId).append('\'').append(", fakeUrl='").append(this.fakeUrl).append('\'').append(", timestamp=").append(this.timestamp).append(", launchClickTimeMillis=").append(this.launchClickTimeMillis).append(", tempState=").append(this.tempState).append(", shareTicket=").append(this.shareTicket).append(", envVersion=").append(this.envVersion).append(", reportData=");
-    if (this.reportData != null) {}
-    for (int i = this.reportData.size();; i = 0) {
-      return i + ", fromBackToMiniApp=" + this.fromBackToMiniApp + ", fromEnvVersion=" + this.fromEnvVersion + '}';
-    }
+    return "LaunchParam{scene=" + this.scene + ", miniAppId='" + this.miniAppId + '\'' + ", extraKey='" + this.extraKey + '\'' + ", entryPath='" + this.entryPath + '\'' + ", extendData='" + this.extendData + '\'' + ", navigateExtData='" + this.navigateExtData + '\'' + ", fromMiniAppId='" + this.fromMiniAppId + '\'' + ", fakeUrl='" + this.fakeUrl + '\'' + ", timestamp=" + this.timestamp + ", launchClickTimeMillis=" + this.launchClickTimeMillis + ", tempState=" + this.tempState + ", shareTicket=" + this.shareTicket + ", envVersion=" + this.envVersion + ", reportData=" + this.reportData + ", fromBackToMiniApp=" + this.fromBackToMiniApp + ", fromEnvVersion=" + this.fromEnvVersion + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -230,7 +229,7 @@ public class LaunchParam
     paramParcel.writeLong(this.timestamp);
     paramParcel.writeString(this.shareTicket);
     paramParcel.writeString(this.envVersion);
-    paramParcel.writeMap(this.reportData);
+    paramParcel.writeString(this.reportData);
     paramParcel.writeString(this.extendData);
     paramParcel.writeParcelable(this.entryModel, paramInt);
     paramParcel.writeInt(this.fromBackToMiniApp);
@@ -240,7 +239,7 @@ public class LaunchParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.LaunchParam
  * JD-Core Version:    0.7.0.1
  */

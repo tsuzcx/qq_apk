@@ -1,26 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnCaptureImageListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.17;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class beon
-  implements VideoPlayerProxy.OnCaptureImageListener
+  implements View.OnClickListener
 {
-  public beon(MiniAppVideoPlayer.17 param17) {}
+  public beon(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
   
-  public void onCaptureImageFailed(VideoPlayerProxy paramVideoPlayerProxy) {}
-  
-  public void onCaptureImageSucceed(VideoPlayerProxy paramVideoPlayerProxy, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-      MiniAppVideoPlayer.a(this.a.this$0, Bitmap.createBitmap(paramBitmap));
-    }
+    ProfileCardMoreInfoView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beon
  * JD-Core Version:    0.7.0.1
  */

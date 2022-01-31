@@ -1,69 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 
-public class anbf
+public final class anbf
+  implements Parcelable.Creator<ArFeatureInfo>
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  
-  public static anbf a(amph[] paramArrayOfamph)
+  public ArFeatureInfo a(Parcel paramParcel)
   {
-    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
-      paramArrayOfamph = null;
-    }
-    anbf localanbf;
-    for (;;)
-    {
-      return paramArrayOfamph;
-      localanbf = new anbf();
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfamph[0].jdField_a_of_type_JavaLangString);
-        if (localJSONObject.has("AndroidGroupListJumpURL"))
-        {
-          localanbf.jdField_a_of_type_JavaLangString = localJSONObject.getString("AndroidGroupListJumpURL");
-          if (QLog.isColorLevel()) {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig mAndroidGroupListJumpURL = " + localanbf.jdField_a_of_type_JavaLangString);
-          }
-        }
-        paramArrayOfamph = localanbf;
-        if (localJSONObject.has("AndroidGroupListWebEnable"))
-        {
-          localanbf.jdField_a_of_type_Boolean = localJSONObject.getBoolean("AndroidGroupListWebEnable");
-          paramArrayOfamph = localanbf;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig AndroidGroupListWebEnable = " + localanbf.jdField_a_of_type_Boolean);
-            return localanbf;
-          }
-        }
-      }
-      catch (JSONException paramArrayOfamph)
-      {
-        paramArrayOfamph.printStackTrace();
-      }
-    }
-    return localanbf;
+    return new ArFeatureInfo(paramParcel);
   }
   
-  public String a()
+  public ArFeatureInfo[] a(int paramInt)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      return null;
-    }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    return new ArFeatureInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbf
  * JD-Core Version:    0.7.0.1
  */

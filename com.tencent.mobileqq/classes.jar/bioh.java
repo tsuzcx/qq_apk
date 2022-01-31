@@ -1,20 +1,59 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qlink.SendMsg;
 
-class bioh
-  implements View.OnClickListener
+public abstract class bioh
+  extends Binder
+  implements biog
 {
-  bioh(biog parambiog, bioj parambioj) {}
-  
-  public void onClick(View paramView)
+  public bioh()
   {
-    int i = this.jdField_a_of_type_Bioj.getLayoutPosition();
-    biog.a(this.jdField_a_of_type_Biog).a(this.jdField_a_of_type_Bioj.itemView, i);
+    attachInterface(this, "cooperation.qlink.IQlinkService");
+  }
+  
+  public static biog a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qlink.IQlinkService");
+    if ((localIInterface != null) && ((localIInterface instanceof biog))) {
+      return (biog)localIInterface;
+    }
+    return new bioi(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("cooperation.qlink.IQlinkService");
+      return true;
+    }
+    paramParcel1.enforceInterface("cooperation.qlink.IQlinkService");
+    if (paramParcel1.readInt() != 0) {}
+    for (paramParcel1 = (SendMsg)SendMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bioh
  * JD-Core Version:    0.7.0.1
  */

@@ -2,14 +2,14 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bekr;
-import betc;
+import bgkd;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class StorageJsPlugin$6
   implements StorageJsPlugin.StorageTask
 {
-  StorageJsPlugin$6(StorageJsPlugin paramStorageJsPlugin, String paramString, bekr parambekr) {}
+  StorageJsPlugin$6(StorageJsPlugin paramStorageJsPlugin, String paramString, bgkd parambgkd) {}
   
   public String run()
   {
@@ -24,7 +24,7 @@ class StorageJsPlugin$6
       }
       catch (Exception localException)
       {
-        betc.d("StorageJsPlugin", this.val$req.a + " result error." + localException);
+        QMLog.e("StorageJsPlugin", this.val$req.a + " result error." + localException);
         return this.val$req.a("json error");
       }
     }
@@ -33,7 +33,7 @@ class StorageJsPlugin$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.StorageJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

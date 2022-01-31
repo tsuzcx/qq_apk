@@ -1,113 +1,72 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.pluginsdk.IStatisticsUploader;
-import com.tencent.qphone.base.BaseConstants;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Random;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class axqr
-  implements IStatisticsUploader
 {
-  public static final Random a = new Random();
+  public final int a;
+  public final long a;
+  private List<axpr> a;
+  private int b;
+  public final long b;
+  private int c;
   
-  public static void a(String paramString, int paramInt, long paramLong)
+  public axqr(int paramInt, long paramLong1, long paramLong2)
   {
-    if (a.nextInt(1000) != 0) {}
-    do
-    {
-      do
-      {
-        return;
-        localObject1 = new HashMap();
-        ((HashMap)localObject1).put(BaseConstants.RDM_NoChangeFailCode, String.valueOf(paramInt));
-        ((HashMap)localObject1).put("plugin_name", paramString);
-        ((HashMap)localObject1).put("cost", String.valueOf(paramLong));
-        ((HashMap)localObject1).put("result", String.valueOf(paramInt));
-        localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      } while (localObject2 == null);
-      Object localObject2 = ((AppRuntime)localObject2).getAccount();
-      axrn.a(MobileQQ.sMobileQQ).a((String)localObject2, "actPluginDexa2OatInfo", false, paramLong, 0L, (HashMap)localObject1, null);
-    } while (!QLog.isColorLevel());
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append("uploadDexOatInfo pluginId ");
-    ((StringBuilder)localObject1).append(paramString);
-    ((StringBuilder)localObject1).append(" ");
-    ((StringBuilder)localObject1).append(String.valueOf(paramInt));
-    ((StringBuilder)localObject1).append(" ");
-    ((StringBuilder)localObject1).append(paramLong);
-    QLog.d("PluginStatisticsCollector", 2, ((StringBuilder)localObject1).toString());
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
   }
   
-  public void uploadStartupFailure(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  private void a()
   {
-    boolean bool = false;
-    if ("success".equals(paramString5)) {
-      bool = true;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((axpr)localIterator.next()).b();
     }
-    String str = paramString5;
-    if (paramString5 != null)
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  private void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((axpr)localIterator.next()).c();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public int a(float paramFloat)
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.size();
+    if (i >= 6)
     {
-      str = paramString5;
-      if (paramString5.contains(ClassNotFoundException.class.getName()))
-      {
-        float f = bbdx.a();
-        str = "GetAvailableInnernalMemorySize:" + f + "__" + paramString5;
+      axpr localaxpr1 = (axpr)this.jdField_a_of_type_JavaUtilList.get(0);
+      axpr localaxpr2 = (axpr)this.jdField_a_of_type_JavaUtilList.get(i - 1);
+      float f = (float)(localaxpr2.b() - localaxpr1.b()) * 1000.0F / (i - 1);
+      paramFloat = (float)(Math.abs(localaxpr2.a()) - Math.abs(localaxpr1.a())) / ((i - 1) * paramFloat);
+      f = 1.1F * f;
+      if (f < paramFloat) {
+        return 1;
       }
+      i = (int)Math.floor(f / (f - paramFloat));
+      wsv.a("FlowEdit_VideoFlowDecodeTask", "averageDecodeTime = %.1f us, averagePlayTime = %.1f us, dropRate = %d", Float.valueOf(f), Float.valueOf(paramFloat), Integer.valueOf(i));
+      return Math.min(8, i);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginStatisticsCollector", 2, "uploadStartupFailure result = " + bool + ", pluginName = " + paramString2 + ", extraInfo = " + str);
-    }
-    if (!bool)
-    {
-      paramString5 = new HashMap();
-      paramString5.put(BaseConstants.RDM_NoChangeFailCode, "");
-      paramString5.put("plugin_name", paramString2);
-      paramString5.put("plugin_loc", paramString3);
-      paramString5.put("plugin_activity", paramString4);
-      paramString5.put("plugin_extra_info", str);
-      axrn.a(paramContext).a(paramString1, "actPluginStartupFailure", bool, 0L, 0L, paramString5, null);
-    }
-    paramString3 = new HashMap();
-    paramString3.put(BaseConstants.RDM_NoChangeFailCode, "");
-    paramString3.put("plugin_name", paramString2);
-    axrn.a(paramContext).a(paramString1, "actPluginStartupResult", bool, 0L, 0L, paramString3, null);
+    return 1;
   }
   
-  public void uploadStartupSpeedInfo(Context paramContext, Intent paramIntent)
+  public String toString()
   {
-    long l1 = paramIntent.getLongExtra("launchTotal", 0L);
-    long l2 = paramIntent.getLongExtra("pluginApkCost", 0L);
-    long l3 = paramIntent.getLongExtra("pluginOatCost", 0L);
-    long l4 = paramIntent.getLongExtra("pluginDownloadCost", 0L);
-    long l5 = paramIntent.getLongExtra("pluginLibCost", 0L);
-    long l6 = paramIntent.getLongExtra("pluginLoaderCost", 0L);
-    String str1 = paramIntent.getStringExtra("launchComponent");
-    String str2 = paramIntent.getStringExtra("launchProcName");
-    String str3 = paramIntent.getStringExtra("pluginsdk_selfuin");
-    String str4 = paramIntent.getStringExtra("pluginsdk_pluginName");
-    String str5 = paramIntent.getStringExtra("pluginsdk_pluginLocation");
-    String str6 = paramIntent.getStringExtra("pluginsdk_pluginpath");
-    paramIntent = paramIntent.getStringExtra("pluginsdk_launchActivity");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    localHashMap.put("plugin_name", str4);
-    localHashMap.put("plugin_loc", str5);
-    localHashMap.put("plugin_activity", paramIntent);
-    localHashMap.put("plugin_extra_info", str6);
-    localHashMap.put("pluginOatCost", String.valueOf(l3));
-    localHashMap.put("pluginApkCost", String.valueOf(l2));
-    localHashMap.put("pluginLoaderCost", String.valueOf(l6));
-    localHashMap.put("launchTotal", String.valueOf(l1));
-    axrn.a(paramContext).a(str3, "actPluginSpeedInfoV2", false, l1, 0L, localHashMap, null);
-    QLog.d("plugin_tag", 1, "uploadStartupSpeedInfo  " + str5 + ", launchTotal " + l1 + ", apkCost " + l2 + ", dex2OatCost " + l3 + ", libCost " + l5 + ", downloadCost " + l4 + ", loaderCost " + l6 + ", launchComponent " + str1 + ", procName " + str2);
+    return "DecodeSegmentInfo{Index=" + this.jdField_a_of_type_Int + ", StartUs=" + this.jdField_a_of_type_Long + ", EndUs=" + this.jdField_b_of_type_Long + ", Size=" + this.jdField_a_of_type_JavaUtilList.size() + ", Decoding=" + this.jdField_b_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axqr
  * JD-Core Version:    0.7.0.1
  */

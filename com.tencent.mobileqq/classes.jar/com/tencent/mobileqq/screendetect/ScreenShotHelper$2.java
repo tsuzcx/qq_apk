@@ -21,7 +21,7 @@ public final class ScreenShotHelper$2
       if (!((Activity)localObject).hasWindowFocus()) {
         break label60;
       }
-      localObject = ((ViewGroup)((Activity)localObject).getWindow().getDecorView().getRootView()).findViewById(2131375640);
+      localObject = ((ViewGroup)((Activity)localObject).getWindow().getDecorView().getRootView()).findViewById(2131376132);
       if (localObject != null) {
         ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView((View)localObject);
       }
@@ -38,7 +38,7 @@ public final class ScreenShotHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotHelper.2
  * JD-Core Version:    0.7.0.1
  */

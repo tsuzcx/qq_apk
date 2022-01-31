@@ -1,27 +1,88 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.business.sougou.WordMatchManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class anuc
-  implements ajte
+  implements bcgo
 {
-  public void a(Object paramObject) {}
+  public anuc(WordMatchManager paramWordMatchManager) {}
   
-  public void b(Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    switch (paramInt)
+    int i = 1;
+    if (paramJSONObject != null) {}
+    try
     {
-    case 3: 
-    default: 
-      return;
-    case 2: 
-      a(paramObject);
-      return;
+      int j = paramJSONObject.getInt("retcode");
+      if (j != 0) {
+        i = 0;
+      }
+      if (i == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(failed)| type:" + paramInt + ",time:" + System.currentTimeMillis());
+        }
+        this.a.a(false);
+        return;
+      }
     }
-    b(paramObject);
+    catch (JSONException paramBundle)
+    {
+      paramBundle = paramBundle;
+      paramBundle.printStackTrace();
+      paramBundle = new anud();
+      try
+      {
+        if (paramJSONObject.has("result"))
+        {
+          paramJSONObject = paramJSONObject.getJSONObject("result");
+          if (paramJSONObject.has("id")) {
+            paramBundle.c = paramJSONObject.getString("id");
+          }
+          if (paramJSONObject.has("md5")) {
+            paramBundle.jdField_a_of_type_JavaLangString = paramJSONObject.getString("md5");
+          }
+          if (paramJSONObject.has("type")) {
+            paramBundle.jdField_a_of_type_Int = paramJSONObject.getInt("type");
+          }
+          if (paramJSONObject.has("need_flag")) {
+            paramBundle.jdField_b_of_type_Int = paramJSONObject.getInt("need_flag");
+          }
+          if (paramJSONObject.has("delay")) {
+            paramBundle.jdField_a_of_type_Long = paramJSONObject.getLong("delay");
+          }
+          if (paramJSONObject.has("base_md5")) {
+            paramBundle.jdField_b_of_type_JavaLangString = paramJSONObject.getString("base_md5");
+          }
+        }
+      }
+      catch (JSONException paramJSONObject)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot parse json error | type:" + paramInt + ",time:" + System.currentTimeMillis());
+          }
+        }
+        this.a.a(paramBundle);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(".business.sougou.DicFileDownloader", 2, "requestGetDictOrNot cgi end(success) | type:" + paramInt + ",time:" + System.currentTimeMillis());
+      }
+      if (paramBundle.jdField_a_of_type_Int != paramInt)
+      {
+        this.a.a(false);
+        return;
+      }
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anuc
  * JD-Core Version:    0.7.0.1
  */

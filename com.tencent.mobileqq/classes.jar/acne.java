@@ -1,42 +1,35 @@
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.data.AppShareID;
+import mqq.os.MqqHandler;
 
 public class acne
-  extends ajxj
+  extends alls
 {
-  public acne(TroopTransferActivity paramTroopTransferActivity) {}
+  public acne(Conversation paramConversation) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void a(Boolean paramBoolean1, Boolean paramBoolean2, String paramString1, String paramString2, String paramString3)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
-      this.a.a.notifyDataSetChanged();
+    if ((!paramBoolean1.booleanValue()) && (paramBoolean2.booleanValue()) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008272", "0X8008272", 0, 0, "", "", "", "");
+      if (!this.a.h) {
+        this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1134068, new String[] { paramString1, paramString2, paramString3 }).sendToTarget();
+      }
     }
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
-    {
-      paramString = this.a.a.a(paramString);
-      if (paramString != null) {
-        break label28;
-      }
+    if (paramBoolean) {
+      this.a.a(0L);
     }
-    label28:
-    Friends localFriends;
-    do
-    {
-      return;
-      localFriends = ((ajxl)this.a.app.getManager(51)).e(paramString.a);
-    } while (localFriends == null);
-    this.a.a(paramString, localFriends);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acne
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import android.text.TextUtils;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.ad.tangram.statistics.a;
+import com.tencent.ad.tangram.statistics.b;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,7 +40,7 @@ public class AdAppReceiver
       this.data.remove(paramContext);
       if (AdClickUtil.isValidForApp(paramIntent))
       {
-        a.reportAsync(new WeakReference(paramIntent.activity.get()), paramIntent.ad, 286);
+        b.reportAsync(new WeakReference(paramIntent.activity.get()), paramIntent.ad, 286);
         AdReporterForAnalysis.reportForAppInstalled(paramIntent);
       }
     } while ((!AdClickUtil.isValidForApp(paramIntent)) || (TextUtils.isEmpty(paramIntent.ad.getAppDeeplink())));

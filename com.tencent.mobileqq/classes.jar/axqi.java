@@ -1,24 +1,25 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.annotation.TargetApi;
+import android.os.Looper;
+import android.support.annotation.NonNull;
 
-public final class axqi
+@TargetApi(18)
+public class axqi
+  extends axrn
 {
-  public static void a(Context paramContext, boolean paramBoolean)
+  @NonNull
+  protected axrp a(Looper paramLooper)
   {
-    paramContext = paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).edit();
-    paramContext.putBoolean("SUPPORT_MTA", paramBoolean);
-    paramContext.commit();
+    return new axrp(this, paramLooper, this);
   }
   
-  public static boolean a(Context paramContext, boolean paramBoolean)
+  public void a(Runnable paramRunnable)
   {
-    return paramContext.getSharedPreferences("LIGHT_DPC_CFG", 4).getBoolean("SUPPORT_MTA", paramBoolean);
+    this.a.post(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axqi
  * JD-Core Version:    0.7.0.1
  */

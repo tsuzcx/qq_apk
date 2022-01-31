@@ -1,6 +1,8 @@
 package com.tencent.open.appcommon.js;
 
-import ajya;
+import aacp;
+import aact;
+import alpo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,21 +10,21 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.Toast;
-import anqu;
-import anvq;
-import bdfx;
-import bdfy;
-import bdfz;
-import bdgf;
-import bdii;
-import bdjn;
-import bdjo;
-import bdkx;
-import bdlb;
-import bdle;
-import bdlr;
-import bdmk;
-import bdml;
+import apic;
+import apmy;
+import bfev;
+import bfew;
+import bfex;
+import bffd;
+import bfhg;
+import bfil;
+import bfim;
+import bfju;
+import bfjy;
+import bfkb;
+import bfko;
+import bflh;
+import bfli;
 import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
@@ -40,25 +42,23 @@ import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ynw;
-import yoa;
 
 public class DownloadInterface
   extends BaseInterface
-  implements bdjn
+  implements bfil
 {
   public static final String PLUGIN_NAMESPACE = "q_download";
   private static final String TAG = "DownloadInterface";
   protected String jsCallBackMethod = "";
-  bdgf lastActionRecord = null;
-  protected bdml listener;
+  bffd lastActionRecord = null;
+  protected bfli listener;
   protected Activity mActivity;
   protected Handler mHandler;
   protected final WebView webview;
   
   public DownloadInterface(Activity paramActivity, WebView paramWebView)
   {
-    bdii.c("DownloadInterface", "init in");
+    bfhg.c("DownloadInterface", "init in");
     this.mActivity = paramActivity;
     this.webview = paramWebView;
     this.mHandler = new Handler(Looper.getMainLooper());
@@ -67,9 +67,9 @@ public class DownloadInterface
     }
     for (;;)
     {
-      bdle.a().a(paramWebView);
-      bdjo.a().a(this);
-      bdii.c("DownloadInterface", "init out");
+      bfkb.a().a(paramWebView);
+      bfim.a().a(this);
+      bfhg.c("DownloadInterface", "init out");
       return;
       paramWebView = localObject;
       if ((paramActivity instanceof BaseActivity)) {
@@ -131,12 +131,12 @@ public class DownloadInterface
         localArrayList.add(localDownloadInfo);
         i += 1;
       }
-      bdkx.a(localArrayList, new bdfx(this, paramString));
+      bfju.a(localArrayList, new bfev(this, paramString));
       return;
     }
     catch (JSONException paramJSONArray)
     {
-      bdii.c("DownloadInterface", "innerQueryDownloadInfo>>>", paramJSONArray);
+      bfhg.c("DownloadInterface", "innerQueryDownloadInfo>>>", paramJSONArray);
     }
   }
   
@@ -144,12 +144,12 @@ public class DownloadInterface
   {
     try
     {
-      bdkx.a(paramString1, new bdfy(this, paramString2));
+      bfju.a(paramString1, new bfew(this, paramString2));
       return;
     }
     catch (Exception paramString1)
     {
-      bdii.c("DownloadInterface", "innerQueryDownloadInfoByVia Exception>>>", paramString1);
+      bfhg.c("DownloadInterface", "innerQueryDownloadInfoByVia Exception>>>", paramString1);
     }
   }
   
@@ -160,7 +160,7 @@ public class DownloadInterface
     if (TextUtils.isEmpty(str2)) {
       str1 = getSourceInfoFromActivity(paramActivity);
     }
-    bdii.c("DownloadInterface", ">parseCurrentPageId " + str1);
+    bfhg.c("DownloadInterface", ">parseCurrentPageId " + str1);
     return str1;
   }
   
@@ -171,7 +171,7 @@ public class DownloadInterface
     if (TextUtils.isEmpty(str)) {
       paramJSONObject = getSourceInfoFromActivity(paramActivity);
     }
-    bdii.b("DownloadInterface", ">parseSourceType sourceType=" + paramJSONObject);
+    bfhg.b("DownloadInterface", ">parseSourceType sourceType=" + paramJSONObject);
     return paramJSONObject;
   }
   
@@ -180,7 +180,7 @@ public class DownloadInterface
     if (!hasRight()) {
       return;
     }
-    bdkx.a(paramString1, paramString2, true);
+    bfju.a(paramString1, paramString2, true);
   }
   
   public void cancelNotification(String paramString)
@@ -188,7 +188,7 @@ public class DownloadInterface
     if (!hasRight()) {
       return;
     }
-    bdle.a().a(paramString);
+    bfkb.a().a(paramString);
   }
   
   public void checkUpdate(String paramString)
@@ -198,7 +198,7 @@ public class DownloadInterface
   
   public void checkUpdate(String paramString1, String paramString2)
   {
-    bdii.c("DownloadInterface", "enter checkUpdate json=" + paramString1 + ", guid = " + paramString2);
+    bfhg.c("DownloadInterface", "enter checkUpdate json=" + paramString1 + ", guid = " + paramString2);
     if (!hasRight()) {
       return;
     }
@@ -225,18 +225,18 @@ public class DownloadInterface
         }
         if (this.listener == null)
         {
-          this.listener = new bdfz(this, paramString1);
-          bdmk.a().a(this.listener);
-          bdmk.a().a(paramString2);
+          this.listener = new bfex(this, paramString1);
+          bflh.a().a(this.listener);
+          bflh.a().a(paramString2);
           return;
         }
       }
       catch (JSONException paramString1)
       {
-        bdii.c("DownloadInterface", "httpRequest JSONException", paramString1);
+        bfhg.c("DownloadInterface", "httpRequest JSONException", paramString1);
         return;
       }
-      ((bdfz)this.listener).b(paramString1);
+      ((bfex)this.listener).b(paramString1);
     }
   }
   
@@ -248,7 +248,7 @@ public class DownloadInterface
       int i = 0;
       while (i < paramString.length())
       {
-        yoa.b(paramString.get(i).toString(), "DELAY_LIST");
+        aact.b(paramString.get(i).toString(), "DELAY_LIST");
         i += 1;
       }
       jsCallBack("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.delDelayDownloadTasks',{\"result\" : 0 });}void(0);");
@@ -256,7 +256,7 @@ public class DownloadInterface
     }
     catch (Exception paramString)
     {
-      bdii.c("DownloadInterface", "delDelayDownloadTasks>>>", paramString);
+      bfhg.c("DownloadInterface", "delDelayDownloadTasks>>>", paramString);
     }
   }
   
@@ -265,21 +265,21 @@ public class DownloadInterface
     if (!hasRight()) {
       return;
     }
-    bdkx.b(paramString1, paramString2, true);
+    bfju.b(paramString1, paramString2, true);
   }
   
   public void destroy()
   {
-    bdii.c("DownloadInterface", "destroy");
-    bdjo.a().b(this);
-    if (bdmk.a()) {
-      bdmk.a().b(this.listener);
+    bfhg.c("DownloadInterface", "destroy");
+    bfim.a().b(this);
+    if (bflh.a()) {
+      bflh.a().b(this.listener);
     }
   }
   
   public int doDownloadAction(String paramString)
   {
-    bdii.c("TIME-STATISTIC", "DownloadInterface--doDownloadAction");
+    bfhg.c("TIME-STATISTIC", "DownloadInterface--doDownloadAction");
     if (!hasRight()) {
       return -1;
     }
@@ -299,32 +299,32 @@ public class DownloadInterface
         localObject = localJSONObject.optString("appid");
         if (1 == i)
         {
-          yoa.c((String)localObject, "DELAY_LIST");
-          yoa.a((String)localObject, paramString, "DELAY_APPID_DETAIL_");
-          ynw.a();
-          sendRemoteReq(anqu.a("gamecenter_delaydownload", "callback", 0, null), false, false);
+          aact.c((String)localObject, "DELAY_LIST");
+          aact.a((String)localObject, paramString, "DELAY_APPID_DETAIL_");
+          aacp.a();
+          sendRemoteReq(apic.a("gamecenter_delaydownload", "callback", 0, null), false, false);
           return 0;
         }
         if (i == 0) {
-          yoa.b((String)localObject, "DELAY_LIST");
+          aact.b((String)localObject, "DELAY_LIST");
         }
       }
-      localBundle.putString(bdlb.b, localJSONObject.optString("appid"));
-      localBundle.putString(bdlb.j, localJSONObject.optString("url"));
-      localBundle.putString(bdlb.f, localJSONObject.optString("packageName"));
-      localBundle.putInt(bdlb.k, localJSONObject.optInt("actionCode"));
-      localBundle.putString(bdlb.i, localJSONObject.optString("via"));
-      localBundle.putString(bdlb.l, localJSONObject.optString("appName"));
-      localBundle.putBoolean(bdlb.r, changeIntToBoolean(localJSONObject.optInt("showNetworkDialog")));
-      localBundle.putString(bdlb.D, localJSONObject.optString("iconUrl"));
-      localBundle.putInt(bdlb.H, localJSONObject.optInt("showNotification"));
-      localBundle.putBoolean(bdlb.J, changeIntToBoolean(localJSONObject.optInt("isAutoInstallBySdk")));
-      localBundle.putString(bdlb.I, localJSONObject.optString("extraData"));
-      localBundle.putString(bdlb.F, localJSONObject.optString("downloadStyle"));
-      localBundle.putString(bdlb.G, localJSONObject.optString("downloadSize"));
-      localBundle.putString(bdlb.p, localJSONObject.optString("wording"));
-      paramString = localJSONObject.optString(bdlb.B);
-      bdii.d("DownloadInterface", " feedChannel:" + paramString);
+      localBundle.putString(bfjy.b, localJSONObject.optString("appid"));
+      localBundle.putString(bfjy.j, localJSONObject.optString("url"));
+      localBundle.putString(bfjy.f, localJSONObject.optString("packageName"));
+      localBundle.putInt(bfjy.k, localJSONObject.optInt("actionCode"));
+      localBundle.putString(bfjy.i, localJSONObject.optString("via"));
+      localBundle.putString(bfjy.l, localJSONObject.optString("appName"));
+      localBundle.putBoolean(bfjy.r, changeIntToBoolean(localJSONObject.optInt("showNetworkDialog")));
+      localBundle.putString(bfjy.D, localJSONObject.optString("iconUrl"));
+      localBundle.putInt(bfjy.H, localJSONObject.optInt("showNotification"));
+      localBundle.putBoolean(bfjy.J, changeIntToBoolean(localJSONObject.optInt("isAutoInstallBySdk")));
+      localBundle.putString(bfjy.I, localJSONObject.optString("extraData"));
+      localBundle.putString(bfjy.F, localJSONObject.optString("downloadStyle"));
+      localBundle.putString(bfjy.G, localJSONObject.optString("downloadSize"));
+      localBundle.putString(bfjy.p, localJSONObject.optString("wording"));
+      paramString = localJSONObject.optString(bfjy.B);
+      bfhg.d("DownloadInterface", " feedChannel:" + paramString);
       if (TextUtils.isEmpty(paramString)) {
         break label1044;
       }
@@ -338,14 +338,14 @@ public class DownloadInterface
       int i;
       Object localObject;
       boolean bool;
-      bdii.c("DownloadInterface", "JSONException", paramString);
+      bfhg.c("DownloadInterface", "JSONException", paramString);
       return -1;
     }
     catch (NumberFormatException paramString)
     {
       for (;;)
       {
-        bdii.c("DownloadInterface", "Exception", paramString);
+        bfhg.c("DownloadInterface", "Exception", paramString);
         continue;
         paramString = null;
         continue;
@@ -354,19 +354,19 @@ public class DownloadInterface
         paramString = "";
       }
     }
-    bdii.d("DownloadInterface", " finalFeedChannel:" + paramString);
-    localBundle.putString(bdlb.B, paramString);
+    bfhg.d("DownloadInterface", " finalFeedChannel:" + paramString);
+    localBundle.putString(bfjy.B, paramString);
     paramString = localJSONObject.optString("via");
     localObject = localJSONObject.optString("appid");
     i = localJSONObject.optInt("actionCode");
     if (this.lastActionRecord == null)
     {
-      this.lastActionRecord = new bdgf((String)localObject, paramString, i);
+      this.lastActionRecord = new bffd((String)localObject, paramString, i);
       label539:
       if (localJSONObject.optInt("actionCode") == 12)
       {
         bool = changeIntToBoolean(localJSONObject.optInt("updateType"));
-        localBundle.putBoolean(bdlb.o, bool);
+        localBundle.putBoolean(bfjy.o, bool);
         bool = localJSONObject.has("updateData");
         if (!bool) {}
       }
@@ -402,17 +402,17 @@ public class DownloadInterface
           paramString.sigMd5 = ((JSONObject)localObject).optString("sigMd5");
           paramString.url = ((JSONObject)localObject).optString("url");
           i = localJSONObject.optInt("myAppConfig");
-          localBundle.putString(bdlb.c, localJSONObject.optString("myAppId"));
-          localBundle.putString(bdlb.d, localJSONObject.optString("apkId"));
-          localBundle.putInt(bdlb.e, localJSONObject.optInt("versionCode"));
-          localBundle.putInt(bdlb.n, localJSONObject.optInt("toPageType"));
-          localBundle.putBoolean(bdlb.g, changeIntToBoolean(localJSONObject.optInt("isAutoDownload")));
-          localBundle.putBoolean(bdlb.h, changeIntToBoolean(localJSONObject.optInt("isAutoInstall")));
-          localBundle.putBoolean(bdlb.x, localJSONObject.optBoolean("bolckNotify"));
+          localBundle.putString(bfjy.c, localJSONObject.optString("myAppId"));
+          localBundle.putString(bfjy.d, localJSONObject.optString("apkId"));
+          localBundle.putInt(bfjy.e, localJSONObject.optInt("versionCode"));
+          localBundle.putInt(bfjy.n, localJSONObject.optInt("toPageType"));
+          localBundle.putBoolean(bfjy.g, changeIntToBoolean(localJSONObject.optInt("isAutoDownload")));
+          localBundle.putBoolean(bfjy.h, changeIntToBoolean(localJSONObject.optInt("isAutoInstall")));
+          localBundle.putBoolean(bfjy.x, localJSONObject.optBoolean("bolckNotify"));
           localObject = parseSourceType(this.mActivity, localJSONObject);
           localBundle.putString("big_brother_ref_source_key", parseCurrentPageId(this.mActivity));
-          bdii.c("DownloadInterface", "doDownloadAction object " + localJSONObject.toString());
-          bdkx.a(this.mActivity, localBundle, (String)localObject, paramString, i);
+          bfhg.c("DownloadInterface", "doDownloadAction object " + localJSONObject.toString());
+          bfju.a(this.mActivity, localBundle, (String)localObject, paramString, i);
           return 0;
         }
         catch (Exception localException)
@@ -443,7 +443,7 @@ public class DownloadInterface
           break label539;
         }
         return 0;
-        bdii.c("DownloadInterface", "enter doDownloadAction updateData json");
+        bfhg.c("DownloadInterface", "enter doDownloadAction updateData json");
       }
     }
   }
@@ -460,7 +460,7 @@ public class DownloadInterface
       paramString = new JSONObject(paramString);
       Object localObject = paramString.optString("downloadUrl");
       paramString = paramString.optString("callback");
-      localObject = bdle.a().a((String)localObject);
+      localObject = bfkb.a().a((String)localObject);
       if (localObject == null) {
         return -1;
       }
@@ -476,7 +476,7 @@ public class DownloadInterface
     }
     catch (JSONException paramString)
     {
-      bdii.c("DownloadInterface", "JSONException", paramString);
+      bfhg.c("DownloadInterface", "JSONException", paramString);
     }
     return -1;
   }
@@ -486,20 +486,20 @@ public class DownloadInterface
     try
     {
       paramString = new JSONObject(paramString);
-      bdii.c("DownloadInterface", "doDownloadAction object " + paramString.toString());
+      bfhg.c("DownloadInterface", "doDownloadAction object " + paramString.toString());
       paramString = paramString.optString("via");
-      bdlr.a().a(this.mActivity, paramString, "biz_src_yyb");
+      bfko.a().a(this.mActivity, paramString, "biz_src_yyb");
       return;
     }
     catch (Exception paramString)
     {
-      bdii.c("DownloadInterface", "doWifiDownloadAction>>>", paramString);
+      bfhg.c("DownloadInterface", "doWifiDownloadAction>>>", paramString);
     }
   }
   
   public void getDelayDownloadTasks()
   {
-    Object localObject = yoa.a("DELAY_LIST");
+    Object localObject = aact.a("DELAY_LIST");
     JSONArray localJSONArray = new JSONArray();
     JSONObject localJSONObject = new JSONObject();
     if (!TextUtils.isEmpty((CharSequence)localObject))
@@ -521,7 +521,7 @@ public class DownloadInterface
           {
             for (;;)
             {
-              bdii.c("DownloadInterface", "getDelayDownloadTasks>>>", localJSONException);
+              bfhg.c("DownloadInterface", "getDelayDownloadTasks>>>", localJSONException);
             }
           }
         }
@@ -532,7 +532,7 @@ public class DownloadInterface
   
   public String getDownloadVersion()
   {
-    return bdkx.a() + "";
+    return bfju.a() + "";
   }
   
   public String getInterfaceName()
@@ -555,7 +555,7 @@ public class DownloadInterface
     }
     catch (Exception paramString)
     {
-      bdii.c("DownloadInterface", "query>>>", paramString);
+      bfhg.c("DownloadInterface", "query>>>", paramString);
     }
   }
   
@@ -568,7 +568,7 @@ public class DownloadInterface
     }
     catch (JSONException paramString1)
     {
-      bdii.c("DownloadInterface", "query>>>", paramString1);
+      bfhg.c("DownloadInterface", "query>>>", paramString1);
     }
   }
   
@@ -582,7 +582,7 @@ public class DownloadInterface
     }
     catch (Exception paramString)
     {
-      bdii.c("DownloadInterface", "query>>>", paramString);
+      bfhg.c("DownloadInterface", "query>>>", paramString);
     }
   }
   
@@ -593,7 +593,7 @@ public class DownloadInterface
   
   public void installYYB()
   {
-    bdlr.a().c(this.mActivity);
+    bfko.a().c(this.mActivity);
   }
   
   public void jsCallBack(String paramString)
@@ -611,39 +611,39 @@ public class DownloadInterface
       paramString = new JSONObject(paramString);
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
-      bdkx.a(this.mActivity, localBundle);
+      bfju.a(this.mActivity, localBundle);
       return 0;
     }
     catch (JSONException paramString)
     {
       for (;;)
       {
-        bdii.c("DownloadInterface", "JSONException", paramString);
+        bfhg.c("DownloadInterface", "JSONException", paramString);
       }
     }
   }
   
   public void registerDownloadCallBackListener(String paramString)
   {
-    bdii.c("DownloadInterface", "enter registerDownloadCallBackListener");
+    bfhg.c("DownloadInterface", "enter registerDownloadCallBackListener");
     this.jsCallBackMethod = paramString;
   }
   
   protected void sendRemoteReq(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!anvq.a().a())
+    if (!apmy.a().a())
     {
       if (paramBoolean2) {
-        Toast.makeText(BaseApplicationImpl.getApplication(), ajya.a(2131703513), 0).show();
+        Toast.makeText(BaseApplicationImpl.getApplication(), alpo.a(2131703885), 0).show();
       }
       return;
     }
     if (paramBoolean1)
     {
-      anvq.a().b(paramBundle);
+      apmy.a().b(paramBundle);
       return;
     }
-    anvq.a().a(paramBundle);
+    apmy.a().a(paramBundle);
   }
   
   public int setDownloaderFirstOpenPage(String paramString)
@@ -658,17 +658,17 @@ public class DownloadInterface
       localBundle.putString("url", paramString.optString("url"));
       long l1 = paramString.optLong("starttime");
       long l2 = paramString.optLong("endtime");
-      bdii.c("DownloadInterface", l1 + "|" + l2 + "|" + (System.currentTimeMillis() - l1));
+      bfhg.c("DownloadInterface", l1 + "|" + l2 + "|" + (System.currentTimeMillis() - l1));
       localBundle.putLong("startTime", l1);
       localBundle.putLong("endTime", l2);
-      bdkx.a(localBundle);
+      bfju.a(localBundle);
       return 0;
     }
     catch (JSONException paramString)
     {
       for (;;)
       {
-        bdii.c("DownloadInterface", "JSONException", paramString);
+        bfhg.c("DownloadInterface", "JSONException", paramString);
       }
     }
   }
@@ -683,14 +683,14 @@ public class DownloadInterface
       paramString = new JSONObject(paramString);
       Bundle localBundle = new Bundle();
       localBundle.putString("url", paramString.optString("url"));
-      bdkx.b(localBundle);
+      bfju.b(localBundle);
       return 0;
     }
     catch (JSONException paramString)
     {
       for (;;)
       {
-        bdii.c("DownloadInterface", "JSONException", paramString);
+        bfhg.c("DownloadInterface", "JSONException", paramString);
       }
     }
   }

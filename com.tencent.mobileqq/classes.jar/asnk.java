@@ -1,42 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment;
+import QC.BubbleRecommendRsp;
+import QC.CommonRsp;
+import QC.FontRecommendRsp;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class asnk
-  implements DialogInterface.OnClickListener
+  extends alxo
 {
-  public asnk(MsgBackupTransportFragment paramMsgBackupTransportFragment) {}
+  public asnk(FontBubblePanelView paramFontBubblePanelView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, BubbleRecommendRsp paramBubbleRecommendRsp)
   {
-    paramInt = asnz.a().a();
-    if (1 == paramInt)
+    if (FontBubblePanelView.a(this.a) == 4)
     {
-      this.a.l();
-      if (this.a.a) {
-        asog.a("0X800A253", 3);
+      if ((paramBoolean) && (paramBubbleRecommendRsp.vItems.size() > 0)) {
+        FontBubblePanelView.a(this.a, paramBubbleRecommendRsp);
       }
     }
-    while (2 != paramInt)
+    else {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("onGetBubbleRecommend failed, ");
+    if ((paramBubbleRecommendRsp != null) && (paramBubbleRecommendRsp.stRet != null))
     {
-      return;
-      asog.a("0X800A253", 1);
-      return;
+      localStringBuilder.append("ret:");
+      localStringBuilder.append(paramBubbleRecommendRsp.stRet.ret);
+      localStringBuilder.append("err:");
+      localStringBuilder.append(paramBubbleRecommendRsp.stRet.err);
     }
-    if (this.a.d) {
-      asog.a("0X800A244", 2);
-    }
-    for (;;)
+    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
+  }
+  
+  public void a(boolean paramBoolean, FontRecommendRsp paramFontRecommendRsp)
+  {
+    if (FontBubblePanelView.a(this.a) == 3)
     {
-      this.a.l();
-      return;
-      asog.a("0X800A244", 1);
+      if ((paramBoolean) && (paramFontRecommendRsp.vItems.size() > 0)) {
+        FontBubblePanelView.a(this.a, paramFontRecommendRsp);
+      }
     }
+    else {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("onGetFontRecommend failed, ");
+    if ((paramFontRecommendRsp != null) && (paramFontRecommendRsp.stRet != null))
+    {
+      localStringBuilder.append("ret:");
+      localStringBuilder.append(paramFontRecommendRsp.stRet.ret);
+      localStringBuilder.append("err:");
+      localStringBuilder.append(paramFontRecommendRsp.stRet.err);
+    }
+    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asnk
  * JD-Core Version:    0.7.0.1
  */

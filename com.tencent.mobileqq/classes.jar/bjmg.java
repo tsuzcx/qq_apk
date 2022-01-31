@@ -1,57 +1,55 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-import java.lang.reflect.Field;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportReq;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossReportRsp;
+import NS_MOBILE_QBOSS_PROTO.tMobileQbossFeedBackInfo;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class bjmg
-  extends Scroller
+  extends QzoneExternalRequest
 {
-  private int a = 750;
+  private JceStruct a;
   
-  public bjmg(Context paramContext)
+  public bjmg(ArrayList<tMobileQbossFeedBackInfo> paramArrayList)
   {
-    super(paramContext);
+    MobileQbossReportReq localMobileQbossReportReq = new MobileQbossReportReq();
+    localMobileQbossReportReq.vecMobileQbossFeedBackInfo = paramArrayList;
+    this.a = localMobileQbossReportReq;
   }
   
-  public bjmg(Context paramContext, Interpolator paramInterpolator)
+  public static MobileQbossReportRsp a(byte[] paramArrayOfByte)
   {
-    super(paramContext, paramInterpolator);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public void a(ViewPager paramViewPager)
-  {
-    try
-    {
-      Field localField = ViewPager.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      localField.set(paramViewPager, this);
-      return;
+    if (paramArrayOfByte == null) {
+      paramArrayOfByte = null;
     }
-    catch (Exception paramViewPager)
+    MobileQbossReportRsp localMobileQbossReportRsp;
+    do
     {
-      paramViewPager.printStackTrace();
-    }
+      return paramArrayOfByte;
+      localMobileQbossReportRsp = (MobileQbossReportRsp)decode(paramArrayOfByte, "report");
+      paramArrayOfByte = localMobileQbossReportRsp;
+    } while (localMobileQbossReportRsp != null);
+    return null;
   }
   
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public String getCmdString()
   {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+    return "QzoneNewService.mobileqboss.report";
   }
   
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public JceStruct getReq()
   {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "report";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjmg
  * JD-Core Version:    0.7.0.1
  */

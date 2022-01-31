@@ -1,53 +1,25 @@
-import com.tencent.qqprotect.qsec.QSecFramework;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
 
 final class bfjv
-  implements bfiq
+  implements DialogInterface.OnClickListener
 {
-  public bfjy a;
+  bfjv(Bundle paramBundle, String paramString, ApkUpdateDetail paramApkUpdateDetail) {}
   
-  bfjv(bfjt parambfjt) {}
-  
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Bfjy.jdField_b_of_type_JavaLangString == null) || (this.jdField_a_of_type_Bfjy.jdField_b_of_type_JavaLangString.contains("..")))
-    {
-      this.jdField_a_of_type_Bfjy.d = 15;
-      return;
-    }
-    Object localObject = new File(this.jdField_a_of_type_Bfjy.jdField_b_of_type_JavaLangString);
-    if (!((File)localObject).exists())
-    {
-      this.jdField_a_of_type_Bfjy.d = 12;
-      return;
-    }
-    this.jdField_a_of_type_Bfjy.jdField_a_of_type_Bfkj = new bfkj();
-    if ((this.jdField_a_of_type_Bfjy.jdField_b_of_type_Int == 2) || (this.jdField_a_of_type_Bfjy.jdField_b_of_type_Int == 1)) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 1) && (!bfkw.a((File)localObject, null)))
-      {
-        this.jdField_a_of_type_Bfjy.d = 10;
-        return;
-      }
-      localObject = new Object[1];
-      this.jdField_a_of_type_Bfjy.d = QSecFramework.a(2L, this.jdField_a_of_type_Bfjy.jdField_b_of_type_Int, this.jdField_a_of_type_Bfjy.jdField_a_of_type_Int, 0L, this.jdField_a_of_type_Bfjy.jdField_b_of_type_JavaLangString, null, null, (Object[])localObject);
-      if ((localObject[0] == null) || (!(localObject[0] instanceof Integer))) {
-        break;
-      }
-      this.jdField_a_of_type_Bfjy.f = ((Integer)localObject[0]).intValue();
-      return;
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Bfjy.d = 26;
+    bfju.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
+    azmj.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
+    paramDialogInterface = this.jdField_a_of_type_AndroidOsBundle.getString(bfjy.f) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bfjy.c) + "_" + this.jdField_a_of_type_AndroidOsBundle.getString(bfjy.d);
+    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101 + "|" + paramDialogInterface;
+    bfef.a().a(25, paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfjv
  * JD-Core Version:    0.7.0.1
  */

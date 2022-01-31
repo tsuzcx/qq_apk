@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
 import android.text.InputFilter;
 import android.text.InputFilter.LengthFilter;
 import android.widget.EditText;
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.microapp.appbrand.page.WebviewContainer;
 import org.json.JSONObject;
 
@@ -41,7 +41,7 @@ public class MiniAppTextArea
     }
     String str = paramJSONObject.optString("placeholder");
     JSONObject localJSONObject2 = paramJSONObject.optJSONObject("placeholderStyle");
-    if (!bbkk.a(str))
+    if (!bdje.a(str))
     {
       setHint(str);
       setHintTextColor(Color.parseColor(localJSONObject2.optString("color")));
@@ -54,7 +54,7 @@ public class MiniAppTextArea
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.MiniAppTextArea
  * JD-Core Version:    0.7.0.1
  */

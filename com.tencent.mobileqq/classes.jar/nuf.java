@@ -1,32 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import android.view.View;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopAdHandler.3.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-class nuf
-  implements ree
+public final class nuf
+  implements aanz
 {
-  private WeakReference<nua> a;
+  nuf(AppInterface paramAppInterface) {}
   
-  nuf(nua paramnua)
+  public void reportImpression(View paramView)
   {
-    this.a = new WeakReference(paramnua);
-  }
-  
-  public void a(ChannelCoverInfo paramChannelCoverInfo)
-  {
-    nua localnua = (nua)this.a.get();
-    if (((localnua == null) || (nua.a(localnua).a())) && (QLog.isColorLevel()))
-    {
-      QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("EcshopAdHandler", 1, "--> reportImpression");
     }
-    localnua.a(paramChannelCoverInfo);
+    if (paramView == null) {}
+    do
+    {
+      return;
+      paramView = paramView.getTag(2131364184);
+    } while (paramView == null);
+    ThreadManagerV2.executeOnSubThread(new EcshopAdHandler.3.1(this, paramView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nuf
  * JD-Core Version:    0.7.0.1
  */

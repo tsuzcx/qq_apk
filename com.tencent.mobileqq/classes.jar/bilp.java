@@ -1,37 +1,10 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class bilp
-  extends Handler
+public abstract interface bilp
 {
-  bilp(bill parambill, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      xhb.a("mystatus_shoot", "comp_recomm", 0, 0, new String[0]);
-      paramMessage = paramMessage.getData();
-      int i = paramMessage.getInt("sceneLvOne");
-      paramMessage = paramMessage.getString("sceneName");
-      this.a.a(i, paramMessage, true);
-      return;
-    }
-    xhb.a("mystatus_shoot", "exp_recomm", 0, 0, new String[0]);
-    this.a.d();
-  }
+  public abstract void a(bilo parambilo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bilp
  * JD-Core Version:    0.7.0.1
  */

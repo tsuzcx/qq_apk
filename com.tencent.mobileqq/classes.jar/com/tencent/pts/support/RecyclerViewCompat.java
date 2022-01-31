@@ -108,7 +108,7 @@ public class RecyclerViewCompat
     return super.fling(j, k);
   }
   
-  public RecyclerViewCompat.OnFlingListener getOnFlingListener()
+  public RecyclerViewCompat.OnFlingListener getOnFlingListenerCompat()
   {
     return this.mOnFlingListener;
   }
@@ -118,14 +118,14 @@ public class RecyclerViewCompat
     super.setAdapter(paramAdapter);
   }
   
-  public void setOnFlingListener(RecyclerViewCompat.OnFlingListener paramOnFlingListener)
+  public void setOnFlingListenerCompat(RecyclerViewCompat.OnFlingListener paramOnFlingListener)
   {
     this.mOnFlingListener = paramOnFlingListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.support.RecyclerViewCompat
  * JD-Core Version:    0.7.0.1
  */

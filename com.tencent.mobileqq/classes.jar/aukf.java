@@ -1,183 +1,85 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.ContactCard;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class aukf
-  extends aula
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public aukf()
-  {
-    this.a = 12;
-  }
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public List<RecommendPerson> a;
+  public List<aukg> b;
   
-  public auko a(auko paramauko, Cursor paramCursor, boolean paramBoolean, aukz paramaukz)
+  public aukf(aukb paramaukb, View paramView, int paramInt)
   {
-    boolean bool = true;
-    paramBoolean = true;
-    paramauko = (ContactCard)paramauko;
-    if (paramaukz == null)
-    {
-      paramauko.mobileNo = paramCursor.getString(paramCursor.getColumnIndex("mobileNo"));
-      paramauko.nationCode = paramCursor.getString(paramCursor.getColumnIndex("nationCode"));
-      paramauko.mobileCode = paramCursor.getString(paramCursor.getColumnIndex("mobileCode"));
-      paramauko.strContactName = paramCursor.getString(paramCursor.getColumnIndex("strContactName"));
-      paramauko.nickName = paramCursor.getString(paramCursor.getColumnIndex("nickName"));
-      paramauko.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
-      paramauko.bSex = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bSex")));
-      paramauko.bAge = ((byte)paramCursor.getShort(paramCursor.getColumnIndex("bAge")));
-      paramauko.strProvince = paramCursor.getString(paramCursor.getColumnIndex("strProvince"));
-      paramauko.strCity = paramCursor.getString(paramCursor.getColumnIndex("strCity"));
-      paramauko.strCountry = paramCursor.getString(paramCursor.getColumnIndex("strCountry"));
-      if (1 == paramCursor.getShort(paramCursor.getColumnIndex("bindQQ"))) {}
-      for (;;)
-      {
-        paramauko.bindQQ = paramBoolean;
-        return paramauko;
-        paramBoolean = false;
-      }
-    }
-    int i = paramCursor.getColumnIndex("mobileNo");
-    if (i == -1)
-    {
-      paramaukz.a(new NoColumnError("mobileNo", String.class));
-      i = paramCursor.getColumnIndex("nationCode");
-      if (i != -1) {
-        break label673;
-      }
-      paramaukz.a(new NoColumnError("nationCode", String.class));
-      label313:
-      i = paramCursor.getColumnIndex("mobileCode");
-      if (i != -1) {
-        break label688;
-      }
-      paramaukz.a(new NoColumnError("mobileCode", String.class));
-      label347:
-      i = paramCursor.getColumnIndex("strContactName");
-      if (i != -1) {
-        break label703;
-      }
-      paramaukz.a(new NoColumnError("strContactName", String.class));
-      label381:
-      i = paramCursor.getColumnIndex("nickName");
-      if (i != -1) {
-        break label718;
-      }
-      paramaukz.a(new NoColumnError("nickName", String.class));
-      label415:
-      i = paramCursor.getColumnIndex("uin");
-      if (i != -1) {
-        break label733;
-      }
-      paramaukz.a(new NoColumnError("uin", String.class));
-      label449:
-      i = paramCursor.getColumnIndex("bSex");
-      if (i != -1) {
-        break label748;
-      }
-      paramaukz.a(new NoColumnError("bSex", Byte.TYPE));
-      label484:
-      i = paramCursor.getColumnIndex("bAge");
-      if (i != -1) {
-        break label764;
-      }
-      paramaukz.a(new NoColumnError("bAge", Byte.TYPE));
-      label519:
-      i = paramCursor.getColumnIndex("strProvince");
-      if (i != -1) {
-        break label780;
-      }
-      paramaukz.a(new NoColumnError("strProvince", String.class));
-      label553:
-      i = paramCursor.getColumnIndex("strCity");
-      if (i != -1) {
-        break label795;
-      }
-      paramaukz.a(new NoColumnError("strCity", String.class));
-      label587:
-      i = paramCursor.getColumnIndex("strCountry");
-      if (i != -1) {
-        break label810;
-      }
-      paramaukz.a(new NoColumnError("strCountry", String.class));
-    }
+    super(paramView);
+    this.jdField_a_of_type_JavaUtilList = ((List)paramaukb.a.get(Integer.valueOf(paramInt)));
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
     for (;;)
     {
-      i = paramCursor.getColumnIndex("bindQQ");
-      if (i != -1) {
-        break label825;
+      return;
+      this.b = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379010));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375951));
+      paramaukb = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramaukb.hasNext())
+      {
+        paramView = (RecommendPerson)paramaukb.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopMemberRecommend.Adapter", 2, "CommonViewHolder, person.uin =" + paramView.uin + " size() = " + this.jdField_a_of_type_JavaUtilList.size());
+        }
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext()).inflate(2131562763, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+        RelativeLayout localRelativeLayout = (RelativeLayout)paramView.findViewById(2131375952);
+        ImageView localImageView = (ImageView)paramView.findViewById(2131368936);
+        TextView localTextView1 = (TextView)paramView.findViewById(2131379011);
+        TextView localTextView2 = (TextView)paramView.findViewById(2131379012);
+        Button localButton = (Button)paramView.findViewById(2131363744);
+        aukg localaukg = new aukg(this);
+        localaukg.jdField_a_of_type_AndroidWidgetRelativeLayout = localRelativeLayout;
+        localaukg.jdField_a_of_type_AndroidWidgetImageView = localImageView;
+        localaukg.jdField_a_of_type_AndroidWidgetTextView = localTextView1;
+        localaukg.b = localTextView2;
+        localaukg.jdField_a_of_type_AndroidWidgetButton = localButton;
+        this.b.add(localaukg);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView);
       }
-      paramaukz.a(new NoColumnError("bindQQ", Boolean.TYPE));
-      return paramauko;
-      paramauko.mobileNo = paramCursor.getString(i);
-      break;
-      label673:
-      paramauko.nationCode = paramCursor.getString(i);
-      break label313;
-      label688:
-      paramauko.mobileCode = paramCursor.getString(i);
-      break label347;
-      label703:
-      paramauko.strContactName = paramCursor.getString(i);
-      break label381;
-      label718:
-      paramauko.nickName = paramCursor.getString(i);
-      break label415;
-      label733:
-      paramauko.uin = paramCursor.getString(i);
-      break label449;
-      label748:
-      paramauko.bSex = ((byte)paramCursor.getShort(i));
-      break label484;
-      label764:
-      paramauko.bAge = ((byte)paramCursor.getShort(i));
-      break label519;
-      label780:
-      paramauko.strProvince = paramCursor.getString(i);
-      break label553;
-      label795:
-      paramauko.strCity = paramCursor.getString(i);
-      break label587;
-      label810:
-      paramauko.strCountry = paramCursor.getString(i);
     }
-    label825:
-    if (1 == paramCursor.getShort(i)) {}
-    for (paramBoolean = bool;; paramBoolean = false)
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-      paramauko.bindQQ = paramBoolean;
-      return paramauko;
     }
-  }
-  
-  public String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,mobileNo TEXT UNIQUE ,nationCode TEXT ,mobileCode TEXT ,strContactName TEXT ,nickName TEXT ,uin TEXT ,bSex INTEGER ,bAge INTEGER ,strProvince TEXT ,strCity TEXT ,strCountry TEXT ,bindQQ INTEGER)");
-    return localStringBuilder.toString();
-  }
-  
-  public void a(auko paramauko, ContentValues paramContentValues)
-  {
-    paramauko = (ContactCard)paramauko;
-    paramContentValues.put("mobileNo", paramauko.mobileNo);
-    paramContentValues.put("nationCode", paramauko.nationCode);
-    paramContentValues.put("mobileCode", paramauko.mobileCode);
-    paramContentValues.put("strContactName", paramauko.strContactName);
-    paramContentValues.put("nickName", paramauko.nickName);
-    paramContentValues.put("uin", paramauko.uin);
-    paramContentValues.put("bSex", Byte.valueOf(paramauko.bSex));
-    paramContentValues.put("bAge", Byte.valueOf(paramauko.bAge));
-    paramContentValues.put("strProvince", paramauko.strProvince);
-    paramContentValues.put("strCity", paramauko.strCity);
-    paramContentValues.put("strCountry", paramauko.strCountry);
-    paramContentValues.put("bindQQ", Boolean.valueOf(paramauko.bindQQ));
+    do
+    {
+      do
+      {
+        return;
+      } while (aukb.a(this.jdField_a_of_type_Aukb) == null);
+      aukb.a(this.jdField_a_of_type_Aukb).a((RecyclerView.ViewHolder)paramView.getTag(2131375950), (RecommendPerson)paramView.getTag(2131363743));
+      return;
+    } while (aukb.a(this.jdField_a_of_type_Aukb) == null);
+    aukb.a(this.jdField_a_of_type_Aukb).b((RecyclerView.ViewHolder)paramView.getTag(2131375950), (RecommendPerson)paramView.getTag(2131363743));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aukf
  * JD-Core Version:    0.7.0.1
  */

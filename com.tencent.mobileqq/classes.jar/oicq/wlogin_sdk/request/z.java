@@ -112,7 +112,7 @@ public class z
     localObject17 = ((tlv_t141)localObject17).get_tlv_141(t.C, t.D, t.F);
     localObject18 = ((tlv_t8)localObject18).get_tlv_8(0, t.u, 0);
     localObject19 = ((tlv_t147)localObject19).get_tlv_147(paramLong4, t.G, t.H);
-    byte[] arrayOfByte = ((tlv_t177)localObject8).get_tlv_177(1582559746L, "6.0.0.2423");
+    byte[] arrayOfByte = ((tlv_t177)localObject8).get_tlv_177(1585297161L, "6.0.0.2424");
     localObject8 = new byte[0];
     if ((paramArrayOfByte4 != null) && (paramArrayOfByte4.length > 0)) {
       paramArrayOfLong = ((tlv_t108)localObject32).get_tlv_108(paramArrayOfByte4);
@@ -237,7 +237,7 @@ public class z
                               paramInt1 = paramInt1 + 1 + 1;
                               util.LOGI("nopicsig tlv521", "");
                               paramLong3 = System.currentTimeMillis();
-                              localObject20 = ((tlv_t544)localObject20).get_tlv_544(this.a, paramLong2, t.A.length, t.A, "6.0.0.2423".length(), "6.0.0.2423", this.u);
+                              localObject20 = ((tlv_t544)localObject20).get_tlv_544(this.a, paramLong2, t.A.length, t.A, "6.0.0.2424".length(), "6.0.0.2424", this.u);
                               paramLong4 = System.currentTimeMillis();
                               util.LOGI("nopicsig tlv544 cost:" + (paramLong4 - paramLong3), "");
                               try

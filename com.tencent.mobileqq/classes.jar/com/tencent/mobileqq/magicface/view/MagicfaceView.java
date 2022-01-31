@@ -5,15 +5,15 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import asdw;
-import asdz;
+import atuw;
+import atuz;
 
 public class MagicfaceView
   extends SurfaceView
-  implements SurfaceHolder.Callback, asdw
+  implements SurfaceHolder.Callback, atuw
 {
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  private asdz jdField_a_of_type_Asdz;
+  private atuz jdField_a_of_type_Atuz;
   public volatile boolean a;
   private volatile boolean b;
   
@@ -280,9 +280,9 @@ public class MagicfaceView
     this.b = paramBoolean;
   }
   
-  public void setSurfaceCreatelistener(asdz paramasdz)
+  public void setSurfaceCreatelistener(atuz paramatuz)
   {
-    this.jdField_a_of_type_Asdz = paramasdz;
+    this.jdField_a_of_type_Atuz = paramatuz;
   }
   
   public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
@@ -290,8 +290,8 @@ public class MagicfaceView
   public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
     this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Asdz != null) {
-      this.jdField_a_of_type_Asdz.a();
+    if (this.jdField_a_of_type_Atuz != null) {
+      this.jdField_a_of_type_Atuz.a();
     }
   }
   
@@ -299,7 +299,7 @@ public class MagicfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.view.MagicfaceView
  * JD-Core Version:    0.7.0.1
  */

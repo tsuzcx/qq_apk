@@ -1,47 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.20;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistoryImageView.DownloadAndSaveTask;
 
 public class acjp
-  extends mxj
+  implements DialogInterface.OnClickListener
 {
-  public acjp(TroopMemberListActivity.20 param20) {}
+  public acjp(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    do
+    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
     {
-      for (;;)
-      {
-        return;
-        try
-        {
-          paramBundle = new oidb_cmd0x74f.RspBody();
-          paramBundle.mergeFrom(paramArrayOfByte);
-          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
-          {
-            TroopMemberListActivity.a(this.a.this$0, paramBundle.range.get());
-            TroopMemberListActivity.c(this.a.this$0);
-            TroopMemberListActivity.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
-            return;
-          }
-        }
-        catch (Exception paramArrayOfByte) {}
+      this.a.jdField_a_of_type_AndroidAppDialog.cancel();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryImageView$DownloadAndSaveTask.a(false);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopMemberListActivityget_troop_member", 2, "initListView, get0x74f：failed");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acjp
  * JD-Core Version:    0.7.0.1
  */

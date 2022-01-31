@@ -1,77 +1,113 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.PointF;
 
-class llo
-  extends BroadcastReceiver
+public class llo
 {
-  llo(lln paramlln) {}
+  int jdField_a_of_type_Int = 0;
+  String jdField_a_of_type_JavaLangString = null;
+  volatile boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = 0;
+  String jdField_b_of_type_JavaLangString = null;
+  int c = 0;
+  int d = 0;
+  int e = 0;
+  int f = 0;
+  int g = 0;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public PointF a(PointF paramPointF)
   {
-    if (paramIntent.getAction().equalsIgnoreCase("SmartDevice_ReceiveSharpMsg"))
+    if ((!a()) || (paramPointF == null)) {
+      return null;
+    }
+    float f1 = paramPointF.x * this.d;
+    float f2 = paramPointF.y * this.c;
+    float f4 = this.jdField_a_of_type_Int;
+    float f3 = this.jdField_b_of_type_Int;
+    f4 = (f4 + f1) / this.f;
+    f3 = (f3 + f2) / this.e;
+    llm.a("getSmallPointInBigScreen: " + f1 + "|" + f2 + "|" + f4 + "|" + f3 + "|" + this.jdField_a_of_type_Int + "|" + this.jdField_b_of_type_Int);
+    return new PointF(f4, f3);
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.g = paramInt;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    int i;
+    int j;
+    if (this.jdField_b_of_type_JavaLangString != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(lln.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp msg");
+      i = 1;
+      if ((this.e <= 0) || (this.f <= 0)) {
+        break label60;
       }
-      paramContext = paramIntent.getBundleExtra("msgData");
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getByteArray("value");
-        if (paramContext != null) {
-          this.a.jdField_a_of_type_Llm.a(0L, paramContext, null);
-        }
+      j = 1;
+      label25:
+      if ((this.c <= 0) || (this.d <= 0)) {
+        break label65;
       }
     }
-    label154:
-    int i;
-    do
+    label60:
+    label65:
+    for (int k = 1;; k = 0)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                if (!paramIntent.getAction().equalsIgnoreCase("SmartDevice_ReceiveSharpAckMsg")) {
-                  break label154;
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.d(lln.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp ack msg");
-                }
-                if (!paramIntent.getBooleanExtra("timeout", false)) {
-                  break;
-                }
-              } while (!QLog.isColorLevel());
-              QLog.d(lln.jdField_a_of_type_JavaLangString, 2, "recv broadcast : smartdevice receive sharp timeout msg");
-              return;
-              paramContext = paramIntent.getBundleExtra("msgData");
-            } while (paramContext == null);
-            paramContext = paramContext.getByteArray("value");
-          } while (paramContext == null);
-          this.a.jdField_a_of_type_Llm.b(0L, paramContext, null);
-          return;
-        } while (!paramIntent.getAction().equals("SmartDevice_DeviceUnBindRst"));
-        paramContext = paramIntent.getExtras();
-      } while (paramContext == null);
-      i = paramContext.getInt("deviceoprstcode");
-      paramContext = Long.valueOf(paramContext.getLong("deviceopdin", 0L));
-    } while ((i != 0) || (paramContext.longValue() == 0L) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a() == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a() == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d == null) || (!this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().d.equals(String.valueOf(paramContext))));
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1000);
+      if ((i == 0) || (j == 0) || (k == 0)) {
+        break label70;
+      }
+      return true;
+      i = 0;
+      break;
+      j = 0;
+      break label25;
+    }
+    label70:
+    return false;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.c = paramInt1;
+    this.d = paramInt2;
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    this.e = paramInt1;
+    this.f = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     llo
  * JD-Core Version:    0.7.0.1
  */

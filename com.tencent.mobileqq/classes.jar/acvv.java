@@ -1,30 +1,33 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class acvv
+  implements aqdi
 {
-  public long a;
-  public String a;
+  public acvv(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public boolean a()
+  public void a()
   {
-    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+    aqcz.a(this.a);
   }
   
-  @NonNull
-  public String toString()
+  public void a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("MutualMarkPushGrayTipInfo{");
-    localStringBuilder.append("notifyTime:").append(this.jdField_a_of_type_Long).append(", ");
-    localStringBuilder.append("grayTipTemplate:").append(this.jdField_a_of_type_JavaLangString).append(", ");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    aqcz.a(this.a, this.a.getString(paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    aqcz.a(this.a, paramString1, paramString2);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
+  {
+    aqcz.a(this.a, paramBoolean, paramInt, paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acvv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,82 +1,56 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.highway.api.HighwayConfBean;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class ayro
-  extends ampa<HighwayConfBean>
+  extends aytk
 {
-  public int a()
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  public ayro(View paramView)
   {
-    return 15;
+    super(paramView);
   }
   
-  @NonNull
-  public HighwayConfBean a(int paramInt)
+  public ayro(ViewGroup paramViewGroup, int paramInt)
   {
-    HighwayConfBean localHighwayConfBean = new HighwayConfBean();
-    if (QLog.isColorLevel()) {
-      QLog.d("HighwayConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
-    }
-    return localHighwayConfBean;
+    super(paramViewGroup, paramInt);
   }
   
-  @Nullable
-  public HighwayConfBean a(amph[] paramArrayOfamph)
+  protected void a()
   {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    super.a();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.b.findViewById(2131376749));
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131378922);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    View localView;
+    if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      HighwayConfBean localHighwayConfBean = HighwayConfBean.parse(paramArrayOfamph[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("HighwayConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
+      localView = this.jdField_a_of_type_AndroidViewView;
+      if (!paramBoolean) {
+        break label24;
       }
-      return localHighwayConfBean;
     }
-    return null;
-  }
-  
-  public Class<HighwayConfBean> a()
-  {
-    return HighwayConfBean.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("HighwayConfProcessor", 2, "onReqFailed " + paramInt);
+    label24:
+    for (int i = 0;; i = 8)
+    {
+      localView.setVisibility(i);
+      return;
     }
   }
   
-  public void a(HighwayConfBean paramHighwayConfBean)
+  public TextView e()
   {
-    HighwayConfBean.updateHighwayConf((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramHighwayConfBean);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    return this.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayro
  * JD-Core Version:    0.7.0.1
  */

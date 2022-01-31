@@ -1,21 +1,25 @@
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
 
-class ahdu
-  implements Comparator<ahdv>
+public class ahdu
+  implements ahfn
 {
-  ahdu(ahdt paramahdt) {}
+  public ahdu(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public int a(ahdv paramahdv1, ahdv paramahdv2)
+  public void a(String paramString)
   {
-    if (paramahdv2.a - paramahdv1.a > 0.0F) {
-      return 1;
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = 80000001;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_history", 0, 0, "", "", paramString, "");
+      this.a.a(paramString, false);
     }
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahdu
  * JD-Core Version:    0.7.0.1
  */

@@ -3,13 +3,13 @@ package com.tencent.mobileqq.util;
 import android.annotation.TargetApi;
 import android.os.Handler;
 import android.view.Choreographer;
-import baxq;
+import bcwk;
 import com.tencent.qphone.base.util.QLog;
 
 public class FPSCalculator$2
   implements Runnable
 {
-  public FPSCalculator$2(baxq parambaxq) {}
+  public FPSCalculator$2(bcwk parambcwk) {}
   
   @TargetApi(16)
   public void run()
@@ -18,11 +18,11 @@ public class FPSCalculator$2
     {
       try
       {
-        if (baxq.a(this.this$0) == null) {
+        if (bcwk.a(this.this$0) == null) {
           continue;
         }
-        baxq.a(this.this$0).removeFrameCallback(baxq.a(this.this$0));
-        baxq.a(this.this$0).postFrameCallback(baxq.a(this.this$0));
+        bcwk.a(this.this$0).removeFrameCallback(bcwk.a(this.this$0));
+        bcwk.a(this.this$0).postFrameCallback(bcwk.a(this.this$0));
       }
       catch (Exception localException)
       {
@@ -32,15 +32,15 @@ public class FPSCalculator$2
         QLog.d("FPSCalculator", 2, "Choreographer.getInstance", localException);
         continue;
       }
-      baxq.a(this.this$0).removeCallbacks(baxq.a(this.this$0));
+      bcwk.a(this.this$0).removeCallbacks(bcwk.a(this.this$0));
       return;
-      baxq.a(this.this$0, Choreographer.getInstance());
+      bcwk.a(this.this$0, Choreographer.getInstance());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.FPSCalculator.2
  * JD-Core Version:    0.7.0.1
  */

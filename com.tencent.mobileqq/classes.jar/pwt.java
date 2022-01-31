@@ -1,58 +1,64 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.os.HandlerThread;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.pts.core.PTSThreadUtil;
+import com.tencent.pts.ui.PTSNodeFactory;
+import com.tencent.pts.utils.PTSLog;
+import com.tencent.qphone.base.util.QLog;
 
 public class pwt
-  extends ClickableSpan
-  implements rfp
 {
-  private int jdField_a_of_type_Int = -1;
-  private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  boolean jdField_a_of_type_Boolean;
-  
-  public pwt(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader, ArticleInfo paramArticleInfo, int paramInt)
+  public static void a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
-    this.jdField_a_of_type_Int = paramInt;
+    pxb.a.a();
+    pwu.a().a();
   }
   
-  public void a(boolean paramBoolean)
+  private static void a(Context paramContext)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_AndroidTextTextPaint != null) {
-      updateDrawState(this.jdField_a_of_type_AndroidTextTextPaint);
-    }
+    Intent localIntent = new Intent();
+    String str = pvw.a().a("3978");
+    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppName", "daily_feeds");
+    pvy.a().getClass();
+    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppPath", str);
+    QLog.i("PTSHelper", 1, "[jumpToPTSDailyPage], dailyAppPath = " + str);
+    PublicFragmentActivity.a(paramContext, localIntent, PTSFragment.class);
   }
   
-  public void onClick(View paramView)
+  public static boolean a(Context paramContext)
   {
-    onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2, false, 6, false);
-    ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.a.a.e());
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    this.jdField_a_of_type_AndroidTextTextPaint = paramTextPaint;
-    this.jdField_a_of_type_AndroidTextTextPaint.setColor(Color.parseColor("#285c95"));
-    paramTextPaint = this.jdField_a_of_type_AndroidTextTextPaint;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = this.jdField_a_of_type_Int;; i = Color.parseColor("#F8F8F8"))
+    if (!pxb.a.b()) {}
+    do
     {
-      paramTextPaint.bgColor = i;
-      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(actj.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcOriginalHeader.getResources()));
-      this.jdField_a_of_type_AndroidTextTextPaint.setUnderlineText(false);
-      return;
-    }
+      return false;
+      int i = otf.b();
+      if (!otf.a(i))
+      {
+        QLog.i("PTSHelper", 1, "[isAbleToJumpNewPTSDailyPage], it is not normal daily channel, channelID = " + i);
+        return false;
+      }
+    } while ((!pvy.a().a()) || (!pvw.a().a("daily_feeds")));
+    a(paramContext);
+    return true;
   }
+  
+  public static void b()
+  {
+    PTSLog.registerLogger(new pwv());
+    PTSNodeFactory.registerNodeBuilder("img", new pws());
+    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("readinjoy-common-pts-sub", 0);
+    localHandlerThread.start();
+    PTSThreadUtil.registerSubHandlerThread(localHandlerThread);
+  }
+  
+  static void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pwt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-final class ajbw
-  implements EIPCResultCallback
+class ajbw
+  implements View.OnClickListener
 {
-  ajbw(long paramLong) {}
+  ajbw(ajbm paramajbm) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("respData");
-    ajac.a().callbackFromRequest(this.a, 0, "cs.on_get_open_key.local", paramEIPCResult);
+    if (bhou.e()) {
+      ajbm.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
+    }
+    for (;;)
+    {
+      azmj.a(ajbm.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 1, 0, "", "", "", "");
+      return;
+      ajbm.a(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbw
  * JD-Core Version:    0.7.0.1
  */

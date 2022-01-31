@@ -1,34 +1,54 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import java.util.Map;
-import javax.annotation.Nullable;
+import android.text.TextUtils;
+import android.widget.Button;
+import android.widget.TextView;
 
-public abstract interface aynr
+public class aynr
+  extends aylv
 {
-  public abstract int a();
+  public aynr(bcws parambcws, aylz paramaylz)
+  {
+    super(parambcws, paramaylz);
+  }
   
-  public abstract bbgu a();
+  public void b(ayjl paramayjl, ayru paramayru)
+  {
+    super.b(paramayjl, paramayru);
+    if (TextUtils.isEmpty(paramayjl.c()))
+    {
+      paramayru.c().setVisibility(8);
+      ((aytn)paramayru).a().setVisibility(0);
+      if (paramayru.b() != null)
+      {
+        paramayjl = ((aykv)paramayjl).d();
+        if (!TextUtils.isEmpty(paramayjl)) {
+          break label127;
+        }
+        paramayru.b().setVisibility(8);
+      }
+    }
+    for (;;)
+    {
+      paramayru.d().setVisibility(8);
+      return;
+      paramayru.c().setVisibility(0);
+      paramayru.c().setText(paramayjl.c());
+      ((aytn)paramayru).a().setVisibility(8);
+      break;
+      label127:
+      paramayru.b().setVisibility(0);
+      paramayru.b().setText(paramayjl);
+    }
+  }
   
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, ayno> paramMap, @Nullable Bundle paramBundle);
-  
-  public abstract void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt);
-  
-  public abstract void a(ayno paramayno, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject);
-  
-  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, ayno> paramMap, @Nullable Bundle paramBundle);
-  
-  public abstract boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, ayno> paramMap, @Nullable Bundle paramBundle);
-  
-  public abstract boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, @Nullable Map<String, ayno> paramMap, @Nullable Bundle paramBundle);
+  protected void c(ayjl paramayjl, ayru paramayru)
+  {
+    super.c(paramayjl, paramayru);
+    ((aytn)paramayru).a().setOnClickListener(new ayns(this, paramayjl));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aynr
  * JD-Core Version:    0.7.0.1
  */

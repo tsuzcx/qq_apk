@@ -1,30 +1,17 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView;
-import com.tencent.biz.subscribe.widget.commodity.CommodityItemView.1.1;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class wvh
-  implements ImageLoader.ImageLoadListener
+public abstract interface wvh
 {
-  public wvh(CommodityItemView paramCommodityItemView) {}
+  public abstract void a(MotionEvent paramMotionEvent);
   
-  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions) {}
+  public abstract boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2);
   
-  public void onImageFailed(String paramString, ImageLoader.Options paramOptions) {}
-  
-  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
-  {
-    if (CommodityItemView.a(this.a) != null) {
-      this.a.post(new CommodityItemView.1.1(this, paramDrawable));
-    }
-  }
-  
-  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions) {}
+  public abstract void onClick(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvh
  * JD-Core Version:    0.7.0.1
  */

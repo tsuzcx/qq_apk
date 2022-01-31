@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.activity;
 
 import android.app.Activity;
-import aoph;
+import aqif;
 import java.util.TimerTask;
 
 public class MPFileVerifyPwdView$3$1
   extends TimerTask
 {
-  public MPFileVerifyPwdView$3$1(aoph paramaoph) {}
+  public MPFileVerifyPwdView$3$1(aqif paramaqif) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class MPFileVerifyPwdView$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView.3.1
  * JD-Core Version:    0.7.0.1
  */

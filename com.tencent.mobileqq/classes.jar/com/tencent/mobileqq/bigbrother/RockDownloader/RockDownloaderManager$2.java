@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import amaq;
-import amar;
+import anrp;
+import anrq;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 
 public class RockDownloaderManager$2
@@ -9,12 +9,12 @@ public class RockDownloaderManager$2
 {
   public void run()
   {
-    amar.a(new RockDownloadInfo("biz_src_kandian", "com.tencent.now"), new amaq(this));
+    anrq.a(new RockDownloadInfo("biz_src_kandian", "com.tencent.now"), new anrp(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2
  * JD-Core Version:    0.7.0.1
  */

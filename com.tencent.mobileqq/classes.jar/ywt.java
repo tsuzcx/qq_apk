@@ -1,54 +1,29 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView.1.1;
 
-class ywt
-  implements yxe
+public class ywt
+  implements ywr
 {
-  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
+  public ywt(SingleLyricView paramSingleLyricView) {}
+  
+  public void a()
   {
-    Object localObject = null;
-    if (paramywk != null) {}
-    for (paramVarArgs = paramywk.a(); (paramywk == null) || (paramVarArgs == null); paramVarArgs = null)
-    {
-      yxp.d("GdtCarrierJsCallHandler", "handleJsCallRequest error");
-      return true;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("carrier", yys.a(paramVarArgs));
-    }
-    catch (JSONException localJSONException)
-    {
-      try
-      {
-        for (;;)
-        {
-          paramywk.callJs(paramString, new String[] { localJSONObject.toString() });
-          paramString = localObject;
-          if (paramywk != null) {
-            paramString = paramywk.a();
-          }
-          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getCarrier", paramString);
-          return true;
-          localJSONException = localJSONException;
-          yxp.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", localJSONException);
-        }
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
-        {
-          yxp.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", paramString);
-        }
-      }
-    }
+    SingleLyricView.a(this.a).b();
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a.post(new SingleLyricView.1.1(this, paramLong));
+  }
+  
+  public void b()
+  {
+    SingleLyricView.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ywt
  * JD-Core Version:    0.7.0.1
  */

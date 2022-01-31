@@ -1,55 +1,33 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
 
 public class apvl
+  implements aubp<EmoticonPackage>
 {
-  private final byte jdField_a_of_type_Byte = 0;
-  private final int jdField_a_of_type_Int = 20;
-  private final String jdField_a_of_type_JavaLangString = "PrivacyInfoUtil";
-  private final ArrayList<byte[]> jdField_a_of_type_JavaUtilArrayList = new ArrayList(10);
-  private HashMap<Long, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final byte[] jdField_a_of_type_ArrayOfByte = "gavinhuangdaydayup_happy".getBytes();
-  private final byte jdField_b_of_type_Byte = 0;
-  private final String jdField_b_of_type_JavaLangString = "DESede/ECB/PKCS5Padding";
-  private final byte[] jdField_b_of_type_ArrayOfByte = "doscarlettmarryrenzzhang".getBytes();
-  private final byte jdField_c_of_type_Byte = 1;
-  private final String jdField_c_of_type_JavaLangString = "random";
-  private final byte[] jdField_c_of_type_ArrayOfByte = "wangpeilin_georgewangson".getBytes();
-  private final byte jdField_d_of_type_Byte = 0;
-  private final byte[] jdField_d_of_type_ArrayOfByte = "georgebirthdayis19790526".getBytes();
-  private final byte[] e = "qlinkwillthebestfunction".getBytes();
-  private final byte[] f = "qqwillbebetterthanwechat".getBytes();
-  private final byte[] g = "whowillbethenextbigtiger".getBytes();
-  private final byte[] h = "whenwillwefindmahang_370".getBytes();
-  private final byte[] i = "whenwillchinagetworldcap".getBytes();
-  private byte[] j;
+  public apvl(AIOEmotionFragment paramAIOEmotionFragment, QQAppInterface paramQQAppInterface) {}
   
-  public apvl()
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_b_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_c_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_d_of_type_ArrayOfByte);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.e);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.f);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.g);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.h);
-    this.jdField_a_of_type_JavaUtilArrayList.add(this.i);
-  }
-  
-  public void a(String paramString)
-  {
-    if (paramString != null) {}
-    for (paramString = paramString.getBytes();; paramString = null)
+    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.name != null) && ((paramEmoticonPackage.mobileFeetype != 0) || (paramEmoticonPackage.downloadCount != 0)))
     {
-      this.j = paramString;
+      int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getInt("emosm_json_last_download_timestamp", 0);
+      int j = (int)(System.currentTimeMillis() / 1000L);
+      if ((j - i > 86400) || (j < i))
+      {
+        AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
+        return;
+      }
+      afqr.a(6, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticonPackage, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.b, this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment.a, null, true);
       return;
     }
+    AIOEmotionFragment.a(this.jdField_a_of_type_ComTencentMobileqqEmotionintegrateAIOEmotionFragment, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvl
  * JD-Core Version:    0.7.0.1
  */

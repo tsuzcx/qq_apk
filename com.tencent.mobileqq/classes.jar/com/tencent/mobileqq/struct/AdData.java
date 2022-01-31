@@ -45,18 +45,18 @@ public class AdData
     switch (paramInt)
     {
     default: 
-      paramString = BaseApplicationImpl.getContext().getString(2131696348);
+      paramString = BaseApplicationImpl.getContext().getString(2131696520);
     }
     for (;;)
     {
       return paramString;
-      paramString = BaseApplicationImpl.getContext().getString(2131698818);
+      paramString = BaseApplicationImpl.getContext().getString(2131699116);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131691089);
+      paramString = BaseApplicationImpl.getContext().getString(2131691142);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131699146);
+      paramString = BaseApplicationImpl.getContext().getString(2131699492);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131693289);
+      paramString = BaseApplicationImpl.getContext().getString(2131693390);
     }
   }
   
@@ -268,7 +268,7 @@ public class AdData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.struct.AdData
  * JD-Core Version:    0.7.0.1
  */

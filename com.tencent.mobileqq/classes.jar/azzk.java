@@ -1,31 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-
 public class azzk
-  implements DialogInterface.OnClickListener
+  extends azzf
 {
-  public azzk(ReciteRecordLayout paramReciteRecordLayout) {}
+  private int f;
+  private int g;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public azzk(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.a.jdField_a_of_type_Bbgu.isShowing()) {
-      this.a.jdField_a_of_type_Bbgu.dismiss();
+    super(paramInt1, 16, 0);
+    this.f = paramInt2;
+    this.g = paramInt3;
+  }
+  
+  protected void a(int paramInt, float paramFloat)
+  {
+    this.b = ((int)(this.f + (this.g - this.f) * paramFloat));
+    if (this.g - this.f > 0) {
+      if (this.b >= this.g) {
+        this.b = this.g;
+      }
     }
-    if (!bbfj.g(this.a.jdField_a_of_type_AndroidContentContext)) {
-      this.a.jdField_a_of_type_Bbgu.show();
-    }
-    do
+    for (;;)
     {
+      super.a(paramInt, paramFloat);
       return;
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    } while (ReciteRecordLayout.a(this.a) == null);
-    ReciteRecordLayout.a(this.a).f();
+      if (this.b <= this.g) {
+        this.b = this.g;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azzk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
 public class anpw
-  extends anpn
+  implements alkr
 {
-  public anpw(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.early.precover", paramQQAppInterface);
-  }
+  protected void a(boolean paramBoolean1, anpr paramanpr, Long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2) {}
   
-  public int a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return 10045;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return PrecoverData.class;
-  }
-  
-  public String a()
-  {
-    return "actEarlyPrecover";
-  }
-  
-  public void a(XmlData paramXmlData)
-  {
-    super.a(paramXmlData);
-    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof PrecoverData))) {
-      QLog.d("PrecoverHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
+    boolean bool = false;
+    int j = -1;
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public String b()
-  {
-    return "prd";
-  }
-  
-  public boolean i()
-  {
-    File localFile = new File(c());
-    return (localFile != null) && (localFile.exists());
-  }
-  
-  public boolean j()
-  {
-    File localFile = new File(d());
-    return (localFile != null) && (localFile.exists());
+    Object[] arrayOfObject = (Object[])paramObject;
+    paramObject = null;
+    long l = -1L;
+    int i;
+    if ((arrayOfObject != null) && (arrayOfObject.length == 6))
+    {
+      paramObject = (anpr)arrayOfObject[0];
+      l = ((Long)arrayOfObject[1]).longValue();
+      paramInt = ((Integer)arrayOfObject[2]).intValue();
+      i = ((Integer)arrayOfObject[3]).intValue();
+      j = ((Integer)arrayOfObject[4]).intValue();
+      bool = ((Boolean)arrayOfObject[5]).booleanValue();
+    }
+    for (;;)
+    {
+      a(paramBoolean, paramObject, Long.valueOf(l), paramInt, i, j, bool);
+      return;
+      i = -1;
+      paramInt = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpw
  * JD-Core Version:    0.7.0.1
  */

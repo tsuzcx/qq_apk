@@ -1,17 +1,16 @@
-import android.view.View;
-
-public abstract class bfug
-  extends bfxe
+class bfug
+  implements bhrf
 {
-  public abstract int a();
+  bfug(bfue parambfue) {}
   
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract boolean a(int paramInt);
+  public void a()
+  {
+    this.a.a = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfug
  * JD-Core Version:    0.7.0.1
  */

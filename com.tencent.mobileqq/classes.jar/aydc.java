@@ -1,156 +1,93 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aydc
+class aydc
+  implements zcb
 {
-  private static aydc jdField_a_of_type_Aydc;
-  private long jdField_a_of_type_Long = -1L;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<Long, structmsg.StructMsg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private long b = -1L;
+  aydc(aydb paramaydb) {}
   
-  public static aydc a()
+  public void a(HotWordSearchEntryDataModel.HotSearchItem paramHotSearchItem)
   {
-    if (jdField_a_of_type_Aydc == null) {
-      jdField_a_of_type_Aydc = new aydc();
-    }
-    return jdField_a_of_type_Aydc;
-  }
-  
-  public int a(QQAppInterface paramQQAppInterface)
-  {
-    int i = 0;
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      i = paramQQAppInterface.getInt("sp_unread_friendsys_count", 0);
-    }
-    return i;
-  }
-  
-  public long a()
-  {
-    return this.b;
-  }
-  
-  public long a(QQAppInterface paramQQAppInterface)
-  {
-    long l = 0L;
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      l = paramQQAppInterface.getLong("sp_oldest_friendmsg", 0L);
-    }
-    return l;
-  }
-  
-  public structmsg.StructMsg a(Long paramLong)
-  {
-    structmsg.StructMsg localStructMsg = null;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      localStructMsg = (structmsg.StructMsg)this.jdField_a_of_type_JavaUtilHashMap.get(paramLong);
-    }
-    return localStructMsg;
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_Aydc = null;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.b = paramLong;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendSystemMsgController", 2, "setUnReadFriendSystemMsgNum count = " + paramInt, new Throwable("debug"));
-    }
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putInt("sp_unread_friendsys_count", paramInt).commit();
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putLong("sp_oldest_friendmsg", paramLong).commit();
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      paramQQAppInterface.edit().putBoolean("sp_is_sysmsg_over", paramBoolean).commit();
-    }
-  }
-  
-  public void a(Long paramLong, structmsg.StructMsg paramStructMsg)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    Object localObject;
+    HotWordSearchEntryDataModel.HotSearchItem localHotSearchItem;
+    if (paramHotSearchItem != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendSystemMsgController", 2, "putStructMsgToMap key=" + paramLong);
+      localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        localHotSearchItem = (HotWordSearchEntryDataModel.HotSearchItem)((Iterator)localObject).next();
+      } while (!TextUtils.equals(paramHotSearchItem.title, localHotSearchItem.title));
+    }
+    for (;;)
+    {
+      if (localHotSearchItem == null) {
+        return;
       }
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramLong, paramStructMsg);
+      localObject = localHotSearchItem.jumpUrl;
+      paramHotSearchItem = (HotWordSearchEntryDataModel.HotSearchItem)localObject;
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        if (this.a.jdField_a_of_type_Int != 10) {
+          break label382;
+        }
+        paramHotSearchItem = ayra.a(localHotSearchItem.recallWord, 5, "kandian_hotword");
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.uniteSearch.HotWordSearchEntryModel", 2, "open Browser append suffix url = " + paramHotSearchItem);
+        }
+        aydb.a(this.a, paramHotSearchItem, localHotSearchItem.recallWord);
+        ayrd.a("hot_list", "clk_hot_list", new String[] { localHotSearchItem.title, String.valueOf(this.a.jdField_a_of_type_Int), String.valueOf(this.a.jdField_a_of_type_JavaUtilList.indexOf(localHotSearchItem) + 1) });
+        paramHotSearchItem = new JSONObject();
+        try
+        {
+          paramHotSearchItem.put("project", aynt.a());
+          paramHotSearchItem.put("event_src", "client");
+          paramHotSearchItem.put("experiment_id", aynt.b);
+          localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("hot_list").action("clk_hot_list");
+          if (this.a.jdField_a_of_type_Int == 3)
+          {
+            i = 21;
+            aynt.a(null, localReportModelDC02528.ver2(aynt.a(i)).ver4(localHotSearchItem.title).ver7(paramHotSearchItem.toString()).session_id(((QQAppInterface)localObject).getCurrentAccountUin() + this.a.jdField_a_of_type_Long));
+            aynt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, SearchEntryFragment.a(this.a.jdField_a_of_type_Int), "0X8009D28", 0, 0, null, null);
+            ((alxs)((QQAppInterface)ors.a()).getManager(299)).a(localHotSearchItem.recallWord);
+            return;
+            label382:
+            paramHotSearchItem = ayra.b(this.a.jdField_a_of_type_Int);
+            paramHotSearchItem = ayra.a(localHotSearchItem.recallWord, 5, paramHotSearchItem);
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            QLog.e("Q.uniteSearch.HotWordSearchEntryModel", 2, "e = " + localJSONException);
+            continue;
+            int i = this.a.jdField_a_of_type_Int;
+          }
+        }
+      }
+      localHotSearchItem = null;
     }
-  }
-  
-  public void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface.a(new FriendSystemMsgController.1(this, paramQQAppInterface, paramBoolean));
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if ((this.jdField_a_of_type_JavaLangString != null) && (!this.jdField_a_of_type_JavaLangString.equals(paramQQAppInterface.getCurrentAccountUin()))) {
-      this.jdField_a_of_type_Boolean = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("friend_system_msg_nomore_msg", false);
-    }
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public boolean b(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool = false;
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      bool = paramQQAppInterface.getBoolean("sp_is_sysmsg_over", false);
-    }
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aydc
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity.qwallet.report;
 
 import VACDReport.ReportHeader;
 import VACDReport.ReportItem;
-import ahik;
-import ahiw;
+import aizt;
+import ajaf;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -27,7 +27,7 @@ public class VACDReportReceiver
     Object localObject1;
     if ((paramReportItem != null) && (!TextUtils.isEmpty(paramReportItem.failReason)) && (paramReportItem.step != null) && (paramReportItem.step.equals("crash")) && ((paramReportItem.result == 668814) || (paramReportItem.result == 668815)))
     {
-      localObject1 = ahiw.a();
+      localObject1 = ajaf.a();
       if (localObject1 != null) {
         break label60;
       }
@@ -89,14 +89,14 @@ public class VACDReportReceiver
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if ((localObject instanceof QQAppInterface))
     {
-      localObject = (ahik)((QQAppInterface)localObject).getManager(148);
+      localObject = (aizt)((QQAppInterface)localObject).getManager(148);
       if (localObject == null) {
         return;
       }
       if (!"vacdReport_step:start".equals(str)) {
         break label157;
       }
-      ((ahik)localObject).a(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
+      ((aizt)localObject).a(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
     }
     for (;;)
     {
@@ -104,11 +104,11 @@ public class VACDReportReceiver
       return;
       label157:
       if ("vacdReport_step:add".equals(str)) {
-        ((ahik)localObject).a(l, paramIntent.getStringExtra("vacdReport_extra:sKey"), localReportItem);
+        ((aizt)localObject).a(l, paramIntent.getStringExtra("vacdReport_extra:sKey"), localReportItem);
       } else if ("vacdReport_step:end".equals(str)) {
-        ((ahik)localObject).a(l, localReportItem);
+        ((aizt)localObject).a(l, localReportItem);
       } else if ("vacdReport_step:single".equals(str)) {
-        ((ahik)localObject).b(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
+        ((aizt)localObject).b(paramIntent.getStringExtra("vacdReport_extra:sKey"), (ReportHeader)paramIntent.getSerializableExtra("vacdReport_extra:header"), localReportItem);
       }
     }
   }
@@ -122,7 +122,7 @@ public class VACDReportReceiver
       do
       {
         return;
-      } while (ahiw.a() == null);
+      } while (ajaf.a() == null);
       bool = paramBundle.getBoolean("isRealName", false);
     } while (!QLog.isColorLevel());
     QLog.i("VACDReport", 2, "onRealName isRealName:" + bool);
@@ -146,7 +146,7 @@ public class VACDReportReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.report.VACDReportReceiver
  * JD-Core Version:    0.7.0.1
  */

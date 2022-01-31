@@ -1,7 +1,7 @@
 package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
-import betc;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class NavigationJsPlugin$1
   implements Runnable
@@ -19,13 +19,13 @@ class NavigationJsPlugin$1
     }
     catch (Throwable localThrowable)
     {
-      betc.d("NavigationJsPlugin", "Failed to moveTaskBack");
+      QMLog.e("NavigationJsPlugin", "Failed to moveTaskBack");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.NavigationJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
 
-class amby
-  extends AnimatorListenerAdapter
+public class amby
+  implements View.OnClickListener
 {
-  amby(ambv paramambv, ObjectAnimator paramObjectAnimator) {}
+  public amby(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_Ambv.c != null) {
-      this.jdField_a_of_type_Ambv.c.setVisibility(0);
-    }
-    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
+    ambq.a(NewFriendVerifyBlockedListFragment.a(this.a).app).c(NewFriendVerifyBlockedListFragment.a(this.a).app.getCurrentAccountUin());
+    azmj.b(null, "dc00898", "", "", "0X800A3A9", "0X800A3A9", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amby
  * JD-Core Version:    0.7.0.1
  */

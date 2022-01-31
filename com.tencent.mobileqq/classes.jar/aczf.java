@@ -1,79 +1,32 @@
-import android.os.AsyncTask;
 import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
+import android.os.Message;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class aczf
-  extends AsyncTask<Long, Void, Void>
+  extends Handler
 {
-  private Object jdField_a_of_type_JavaLangObject;
+  public aczf(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public aczf(FriendProfileCardBgDrawable paramFriendProfileCardBgDrawable, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  protected Void a(Long... paramVarArgs)
-  {
-    for (;;)
-    {
-      try
-      {
-        l1 = paramVarArgs[0].longValue();
-        long l2 = paramVarArgs[1].longValue();
-        paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.a(this.jdField_a_of_type_JavaLangObject, (int)l2);
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.d)
-        {
-          paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler;
-          FriendProfileCardBgDrawable localFriendProfileCardBgDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable;
-          if (FriendProfileCardBgDrawable.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable) != null) {
-            break label203;
-          }
-          l1 = 1000L;
-          paramVarArgs.postDelayed(localFriendProfileCardBgDrawable, l1);
-          return null;
-        }
-        if ((paramVarArgs != null) && (!isCancelled()))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = paramVarArgs;
-          l2 = SystemClock.uptimeMillis();
-          if (l2 < l1)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable, l1 - l2);
-            return null;
-          }
-        }
-      }
-      catch (OutOfMemoryError paramVarArgs)
-      {
-        QLog.e("FriendProfileCardBgDrawable", 4, "", paramVarArgs);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
-        return null;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable);
-        return null;
-      }
-      catch (Throwable paramVarArgs)
-      {
-        QLog.e("FriendProfileCardBgDrawable", 1, "", paramVarArgs);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.b = null;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Boolean = true;
-      }
-      return null;
-      label203:
-      long l1 = 0L;
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "mWaitingDialogControlHandler operationFinished = " + GroupManagerActivity.b(this.a));
     }
-  }
-  
-  protected void a(Void paramVoid)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimFriendProfileCardBgDrawable.jdField_a_of_type_Aczf = null;
+    GroupManagerActivity.b(this.a, true);
+    if (GroupManagerActivity.b(this.a))
+    {
+      this.a.a(true);
+      return;
+    }
+    paramMessage = GroupManagerActivity.a(this.a).obtainMessage(0);
+    GroupManagerActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
+    GroupManagerActivity.c(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aczf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,61 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Color;
-import android.view.View;
+import NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_REQ;
+import NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_RSP;
+import NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO;
+import android.os.Build.VERSION;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.common.config.AppSetting;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
-final class bjjq
-  implements ValueAnimator.AnimatorUpdateListener
+public class bjjq
+  extends QzoneExternalRequest
 {
-  final int jdField_a_of_type_Int = Color.red(this.d);
-  final int b = Color.green(this.d);
-  final int c = Color.blue(this.d);
+  public JceStruct a;
   
-  bjjq(int paramInt, View paramView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public bjjq(long paramLong, ArrayList<UPDATE_INFO> paramArrayList1, ArrayList<UPDATE_INFO> paramArrayList2)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.argb(i, this.jdField_a_of_type_Int, this.b, this.c));
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    SQ_CLIENT_UPDATE_REQ localSQ_CLIENT_UPDATE_REQ = new SQ_CLIENT_UPDATE_REQ();
+    localSQ_CLIENT_UPDATE_REQ.qua = bizf.a();
+    localSQ_CLIENT_UPDATE_REQ.version = AppSetting.f();
+    localSQ_CLIENT_UPDATE_REQ.apiLevel = Build.VERSION.SDK_INT;
+    localSQ_CLIENT_UPDATE_REQ.triggerType = 1;
+    localSQ_CLIENT_UPDATE_REQ.vPlugin = paramArrayList1;
+    localSQ_CLIENT_UPDATE_REQ.vModule = paramArrayList2;
+    this.a = localSQ_CLIENT_UPDATE_REQ;
+  }
+  
+  public static SQ_CLIENT_UPDATE_RSP a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    paramArrayOfByte = decode(paramArrayOfByte, "mqBatchUpdate");
+    if ((paramArrayOfByte instanceof SQ_CLIENT_UPDATE_RSP)) {
+      return (SQ_CLIENT_UPDATE_RSP)paramArrayOfByte;
+    }
+    return null;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.update.mqBatchUpdate";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "mqBatchUpdate";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjjq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package cooperation.qqpim;
 
-import ajya;
+import alpo;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -10,16 +10,16 @@ import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.view.Window;
-import bcqf;
-import bcql;
-import bfnk;
-import bgsy;
-import bgsz;
-import bgta;
-import bgth;
+import bepp;
+import bhoe;
+import bitx;
+import bity;
+import bitz;
+import biug;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,9 +28,9 @@ public class QQPimBridgeActivity
   implements Handler.Callback
 {
   public static long a;
-  private bcqf jdField_a_of_type_Bcqf;
-  private bfnk jdField_a_of_type_Bfnk;
-  bgth jdField_a_of_type_Bgth = new bgsz(this);
+  private bepp jdField_a_of_type_Bepp;
+  private bhoe jdField_a_of_type_Bhoe;
+  biug jdField_a_of_type_Biug = new bity(this);
   private QQPimPluginLoadRunnable jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable;
   
   public static boolean a(Context paramContext)
@@ -54,22 +54,22 @@ public class QQPimBridgeActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131167087);
+    getWindow().setBackgroundDrawableResource(2131167138);
     if (System.currentTimeMillis() - jdField_a_of_type_Long < 800L)
     {
       finish();
       return true;
     }
-    this.jdField_a_of_type_Bfnk = new bfnk(this);
+    this.jdField_a_of_type_Bhoe = new bhoe(this);
     jdField_a_of_type_Long = System.currentTimeMillis();
-    this.jdField_a_of_type_Bcqf = new bcqf(this, super.getResources().getDimensionPixelSize(2131298865));
-    this.jdField_a_of_type_Bcqf.a(ajya.a(2131710628));
-    this.jdField_a_of_type_Bcqf.setCanceledOnTouchOutside(false);
-    this.jdField_a_of_type_Bcqf.setOnDismissListener(new bgsy(this));
+    this.jdField_a_of_type_Bepp = new bepp(this, super.getResources().getDimensionPixelSize(2131298914));
+    this.jdField_a_of_type_Bepp.a(alpo.a(2131711000));
+    this.jdField_a_of_type_Bepp.setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_Bepp.setOnDismissListener(new bitx(this));
     if (this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable != null) {
       this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable.a();
     }
-    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_Bgth);
+    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_Biug);
     ThreadManager.postImmediately(this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable, null, true);
     return true;
   }
@@ -77,10 +77,10 @@ public class QQPimBridgeActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if ((this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing()))
+    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing()))
     {
-      this.jdField_a_of_type_Bcqf.dismiss();
-      this.jdField_a_of_type_Bcqf = null;
+      this.jdField_a_of_type_Bepp.dismiss();
+      this.jdField_a_of_type_Bepp = null;
     }
     sTopActivity = null;
   }
@@ -102,44 +102,44 @@ public class QQPimBridgeActivity
           do
           {
             return false;
-          } while ((isFinishing()) || (this.jdField_a_of_type_Bcqf == null));
-          this.jdField_a_of_type_Bcqf.a(ajya.a(2131710630));
-          this.jdField_a_of_type_Bcqf.show();
+          } while ((isFinishing()) || (this.jdField_a_of_type_Bepp == null));
+          this.jdField_a_of_type_Bepp.a(alpo.a(2131711002));
+          this.jdField_a_of_type_Bepp.show();
           return false;
         } while (isFinishing());
         int i = paramMessage.arg1;
-        int j = super.getResources().getDimensionPixelSize(2131298865);
-        paramMessage = ajya.a(2131710631);
+        int j = super.getResources().getDimensionPixelSize(2131298914);
+        paramMessage = alpo.a(2131711003);
         if (-4 == i) {
-          paramMessage = ajya.a(2131710632);
+          paramMessage = alpo.a(2131711004);
         }
         for (;;)
         {
-          bcql.a(this.app.getApp(), 1, paramMessage, 0).b(j);
+          QQToast.a(this.app.getApp(), 1, paramMessage, 0).b(j);
           finish();
           return false;
           if ((-5 == i) || (-1 == i) || (-3 == i) || (-2 == i)) {
-            paramMessage = ajya.a(2131710627);
+            paramMessage = alpo.a(2131710999);
           } else if (-6 == i) {
-            paramMessage = ajya.a(2131710629);
+            paramMessage = alpo.a(2131711001);
           }
         }
       } while (isFinishing());
       localBundle = getIntent().getExtras();
-      if (bgta.i.equals(localBundle.getString(bgta.o)))
+      if (bitz.i.equals(localBundle.getString(bitz.o)))
       {
         paramMessage = localObject1;
         if (!a(getApplicationContext())) {
-          paramMessage = this.jdField_a_of_type_Bcqf;
+          paramMessage = this.jdField_a_of_type_Bepp;
         }
         QQPimPluginProxyActivity.a(this, localBundle, paramMessage);
         finish();
         return false;
       }
-    } while (!bgta.j.equals(localBundle.getString(bgta.o)));
+    } while (!bitz.j.equals(localBundle.getString(bitz.o)));
     paramMessage = localObject2;
     if (!a(getApplicationContext())) {
-      paramMessage = this.jdField_a_of_type_Bcqf;
+      paramMessage = this.jdField_a_of_type_Bepp;
     }
     QQPimPluginProxyActivity.b(this, localBundle, paramMessage);
     finish();
@@ -153,7 +153,7 @@ public class QQPimBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqpim.QQPimBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

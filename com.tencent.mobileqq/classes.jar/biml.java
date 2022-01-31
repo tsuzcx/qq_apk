@@ -1,21 +1,22 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListPart.6.1;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
 
-public class biml
-  implements bjos<Boolean>
+final class biml
+  implements bimn
 {
-  biml(bima parambima) {}
-  
-  public void a(@Nullable Boolean paramBoolean)
+  public void a(boolean paramBoolean, Context paramContext, bimp parambimp)
   {
-    ThreadManager.getFileThreadHandler().postAtFrontOfQueue(new AEBottomListPart.6.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      bimg.f(paramContext, parambimp);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biml
  * JD-Core Version:    0.7.0.1
  */

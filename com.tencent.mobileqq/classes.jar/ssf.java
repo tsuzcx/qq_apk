@@ -1,77 +1,48 @@
-import android.annotation.TargetApi;
-import com.tencent.common.config.AppSetting;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.text.TextUtils;
+import android.webkit.URLUtil;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.SquareImageView;
 
-@TargetApi(14)
 public class ssf
+  implements yvn<CertifiedAccountRead.StGetMainPageRsp>
 {
-  public static final Boolean a;
-  public static final String a;
-  public static boolean a;
-  public static final String b;
-  public static final String c;
-  public static final String d;
-  public static final String e;
-  public static final String f;
-  public static final String g;
-  public static final String h;
-  public static final String i;
-  public static final String j;
-  public static final String k;
-  public static final String l;
-  public static final String m;
-  public static final String n;
-  public static final String o;
-  public static final String p;
-  public static final String q;
-  public static final String r;
-  public static final String s;
-  public static final String t;
-  public static final String u;
+  public ssf(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  static
+  private void a(CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    jdField_a_of_type_JavaLangString = ajya.a(2131710823);
-    b = ajya.a(2131710820);
-    jdField_a_of_type_Boolean = AppSetting.a().contains("r");
-    c = ahvy.jdField_a_of_type_JavaLangString + "/qqstory/";
-    d = c + "debug/";
-    e = c + "upload/";
-    f = e + ".music/";
-    g = c + ".tmp/";
-    h = g + "download/preload/";
-    i = g + "download/mine/";
-    j = g + ".tmp/";
-    k = j + "watermark/";
-    l = j + "merge/";
-    m = j + "audio/";
-    n = j + "video/";
-    o = j + "slideshow/";
-    p = j + "textfilter/";
-    q = j + "pk/result/";
-    r = k + "source/";
-    s = k + "doodle/";
-    t = k + "composite/";
-    u = k + "download/";
-    jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
+    CertifiedAccountMeta.StUser localStUser = (CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get();
+    ServiceAccountFolderActivityNew.a(this.a, localStUser.id.get());
+    String str = localStUser.icon.get();
+    if ((!TextUtils.isEmpty(paramStGetMainPageRsp.user.icon.get())) && (URLUtil.isNetworkUrl(str)))
+    {
+      ServiceAccountFolderActivityNew.a(this.a).setImageURL(str);
+      ServiceAccountFolderActivityNew.a(this.a).setOnClickListener(new ssg(this, localStUser));
+    }
   }
   
-  public static String a(int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    switch (paramInt)
+    if (paramBoolean)
     {
-    default: 
-      return "UNKNOWN";
-    case 0: 
-      return "VIDEO";
-    case 1: 
-      return "MASK_PIC";
+      if (paramStGetMainPageRsp != null)
+      {
+        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
+        wsv.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage success");
+        a(paramStGetMainPageRsp);
+        ServiceAccountFolderActivityNew.a(this.a);
+        ServiceAccountFolderActivityNew.a(this.a, paramStGetMainPageRsp);
+      }
+      return;
     }
-    return "THUMBNAIL";
+    wsv.c("ServiceAccountFolderActivityNew", "sendRequest GetMainPage error retCode:" + paramLong + ",errMsg:" + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ssf
  * JD-Core Version:    0.7.0.1
  */

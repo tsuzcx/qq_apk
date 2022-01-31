@@ -1,55 +1,71 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.TMG.opengl.GraphicRendererMgr;
-import com.tencent.TMG.sdk.AVContext;
-import com.tencent.TMG.sdk.AVVideoCtrl;
-import com.tencent.TMG.utils.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class airn
-  implements SurfaceHolder.Callback
+  extends BroadcastReceiver
 {
-  airn(airm paramairm) {}
+  public airn(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramSurfaceHolder.getSurface() == null) {
-      return;
-    }
-    paramSurfaceHolder.setFixedSize(paramInt2, paramInt3);
-    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceChanged");
-  }
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
-  {
-    if (GraphicRendererMgr.getInstance() != null)
+    int i;
+    if (paramIntent != null)
     {
-      ajla.a(airm.a(this.a)).a().setRenderMgrAndHolder(GraphicRendererMgr.getInstance(), paramSurfaceHolder);
-      ajla.a(airm.a(this.a)).a().getVideoCtrl().setLocalVideoPreviewCallback(new airo(this));
-      ajla.a(airm.a(this.a)).a().getVideoCtrl().setRemoteVideoPreviewCallback(new airp(this));
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label79;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("RedPacketKSongFragment", 2, "receive action_recv_video_request");
+      }
+      i = 1;
     }
     for (;;)
     {
-      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceCreated");
+      if (i != 0)
+      {
+        if ((!this.a.b) || (!this.a.c) || (this.a.a.getVisibility() != 0)) {
+          break label151;
+        }
+        this.a.a();
+      }
+      label79:
+      while (!this.a.d)
+      {
+        return;
+        if (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+          break label188;
+        }
+        paramContext = (TelephonyManager)this.a.getActivity().getSystemService("phone");
+        if (QLog.isColorLevel()) {
+          QLog.d("RedPacketKSongFragment", 2, "receive action_phone_state_changed|call_state_ringing" + paramContext.getCallState());
+        }
+        if (paramContext.getCallState() != 1) {
+          break label188;
+        }
+        i = 1;
+        break;
+      }
+      label151:
+      if (QLog.isColorLevel()) {
+        QLog.d("RedPacketKSongFragment", 2, "receive pause action");
+      }
+      this.a.b(alpo.a(2131713707));
       return;
-      QLog.e("AVCameraCaptureModel", 0, "GraphicRendererMgr is null, so can't load");
+      label188:
+      i = 0;
     }
-  }
-  
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    paramSurfaceHolder = this.a.a();
-    if (paramSurfaceHolder == null)
-    {
-      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed avCtrl == null");
-      return;
-    }
-    paramSurfaceHolder.enableCamera(0, false, new airq(this));
-    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     airn
  * JD-Core Version:    0.7.0.1
  */

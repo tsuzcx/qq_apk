@@ -1,64 +1,103 @@
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.vas.avatar.AvatarLayout;
+import friendlist.GetOnlineInfoResp;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 public class acdv
-  extends akhb
+  extends alox
 {
-  public acdv(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public acdv(BaseChatPie paramBaseChatPie) {}
   
-  protected void a(boolean paramBoolean, ayay paramayay)
+  protected void onAddFriend(String paramString)
   {
-    if ((paramBoolean) && (paramayay != null) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.length() >= 5))
-    {
-      paramayay = paramayay.c();
-      if ((paramayay != null) && (!paramayay.contains(this.a.jdField_a_of_type_JavaLangString))) {}
-    }
-    else
-    {
-      return;
-    }
-    paramayay = (ayaq)this.a.app.getManager(62);
-    SubAccountUgActivity.a(this.a, paramayay, this.a.jdField_a_of_type_JavaLangString);
+    BaseChatPie.a(this.a, paramString);
   }
   
-  protected void c(boolean paramBoolean, ayay paramayay)
+  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() isSucc=" + paramBoolean + " currentActivity subUin=" + this.a.jdField_a_of_type_JavaLangString);
-      if (paramayay != null) {
-        QLog.d("SUB_ACCOUNT", 2, "SubAccountUgActivity.onUnBindSubAccount() mainAccount=" + paramayay.b + " subAccount=" + paramayay.c + " errType=" + paramayay.jdField_a_of_type_Int + " errMsg=" + paramayay.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if ((paramayay == null) || (this.a.jdField_a_of_type_JavaLangString == null) || ((this.a.jdField_a_of_type_JavaLangString != null) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramayay.c)))) {}
-    do
-    {
-      return;
-      this.a.c();
-      if (this.a.b)
-      {
-        this.a.b = false;
-        if (paramBoolean)
-        {
-          this.a.a();
-          this.a.c(this.a.getString(2131719925));
-          return;
-        }
-        this.a.b(this.a.getString(2131719921));
-        return;
-      }
-    } while (!paramBoolean);
-    paramayay = (ayaq)this.a.app.getManager(62);
-    Pair localPair = paramayay.a(this.a.jdField_a_of_type_JavaLangString, 1);
-    paramayay.a(this.a.app, this.a, localPair, new acdw(this, paramayay, localPair));
+    BaseChatPie.b(this.a, paramBoolean, paramString1, paramString2);
   }
+  
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  {
+    BaseChatPie.c(this.a, paramBoolean, paramObject);
+  }
+  
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  {
+    if (TextUtils.equals(paramString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) {
+      this.a.D();
+    }
+  }
+  
+  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
+  {
+    BaseChatPie.a(this.a, paramObject);
+  }
+  
+  protected void onGetStoreFace(boolean paramBoolean, HashSet<String> paramHashSet)
+  {
+    AvatarLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, paramHashSet);
+  }
+  
+  protected void onGetStrangerInfo(boolean paramBoolean, Object paramObject)
+  {
+    BaseChatPie.b(this.a, paramBoolean, paramObject);
+  }
+  
+  protected void onQueryUinSafetyFlag(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
+  {
+    BaseChatPie.a(this.a, paramBoolean, paramLong, paramInt1, paramInt2);
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  {
+    BaseChatPie.a(this.a, paramBoolean, paramString1, paramString2);
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    BaseChatPie.b(this.a, paramBoolean);
+  }
+  
+  protected void onUpdateC2ChatStatus(boolean paramBoolean, HashMap<String, String> paramHashMap)
+  {
+    BaseChatPie.a(this.a, paramHashMap);
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    AvatarLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, Arrays.asList(new String[] { paramString }));
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    BaseChatPie.a(this.a, paramBoolean, paramObject);
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    BaseChatPie.a(this.a, paramString, paramBoolean);
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    this.a.D();
+  }
+  
+  protected void onUpdateRecentList() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdv
  * JD-Core Version:    0.7.0.1
  */

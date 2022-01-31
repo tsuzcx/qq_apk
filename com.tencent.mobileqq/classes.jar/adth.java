@@ -1,23 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.ShortcutRouterActivity;
 
 public class adth
-  implements bcnl
+  implements DialogInterface.OnDismissListener
 {
-  public adth(LightVideoItemBuilder paramLightVideoItemBuilder, adtj paramadtj) {}
+  public adth(ShortcutRouterActivity paramShortcutRouterActivity) {}
   
-  public void a(String paramString)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Adtj.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Adtj.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
-      this.jdField_a_of_type_Adtj.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adth
  * JD-Core Version:    0.7.0.1
  */

@@ -1,126 +1,69 @@
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.tablequery.ReportData.ReqBody;
+import com.tencent.mobileqq.tablequery.ReportData.ReqMqqParam;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.app.NewIntent;
+import mqq.manager.Manager;
+import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class babf
-  extends babq
+  implements Manager
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public String c;
+  private babg a;
   
-  public babf(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
+  public void a(QQAppInterface paramQQAppInterface, ReportData.ReqBody paramReqBody)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramString3;
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
-    for (this.g = 0;; this.g = 3)
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-      try
-      {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("type", "voice");
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("path", this.jdField_a_of_type_JavaLangString);
-        }
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("url", this.jdField_b_of_type_JavaLangString);
-        }
-        if (this.jdField_a_of_type_Int > 0) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("time", this.jdField_a_of_type_Int);
-        }
-        if (this.jdField_b_of_type_Int > 0) {
-          this.jdField_a_of_type_OrgJsonJSONObject.put("size", this.jdField_b_of_type_Int);
-        }
-        return;
-      }
-      catch (JSONException paramString1)
-      {
-        paramString1.printStackTrace();
-      }
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApp(), babh.class);
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(3380);
+    localOIDBSSOPkg.uint32_service_type.set(2);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramReqBody.toByteArray()));
+    localNewIntent.setObserver(this.a);
+    localNewIntent.putExtra("RequestBytes", localOIDBSSOPkg.toByteArray());
+    paramQQAppInterface.startServlet(localNewIntent);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4)
+  {
+    ReportData.ReqMqqParam localReqMqqParam = new ReportData.ReqMqqParam();
+    localReqMqqParam.department.set(paramString2);
+    localReqMqqParam.opername.set(paramString3);
+    localReqMqqParam.action.set(paramString4);
+    if (this.a == null) {
+      this.a = new babg();
     }
-  }
-  
-  public babf(JSONObject paramJSONObject)
-  {
-    a(paramJSONObject);
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("path");
-    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("url");
-    this.jdField_a_of_type_Int = paramJSONObject.optInt("time");
-    this.jdField_b_of_type_Int = paramJSONObject.optInt("size");
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-    {
-      this.g = 0;
-      return;
-    }
-    this.g = 3;
-  }
-  
-  public boolean a()
-  {
-    return naj.a(this.jdField_b_of_type_JavaLangString);
-  }
-  
-  public int b()
-  {
-    return 3;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
     try
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("path", paramString);
+      paramString2 = new ReportData.ReqBody();
+      paramString3 = new ArrayList();
+      paramString3.add(paramString1);
+      paramString2.reportId.set(paramString3);
+      paramString2.type.set(paramInt);
+      paramString1 = new ArrayList();
+      paramString1.add(localReqMqqParam);
+      paramString2.params.set(paramString1);
+      a(paramQQAppInterface, paramString2);
       return;
     }
-    catch (JSONException paramString)
+    catch (Exception paramQQAppInterface)
     {
-      paramString.printStackTrace();
+      QLog.e("TableQueryManager", 1, paramQQAppInterface.toString());
     }
   }
   
-  public void c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put("url", paramString);
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-      {
-        this.g = 0;
-        return;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-      this.g = 3;
-    }
-  }
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     babf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,35 @@
-import com.tencent.av.ui.VideoLayerUI;
+import android.widget.RelativeLayout;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
 
 public class mkt
-  implements lso
+  implements mkx
 {
-  public mkt(VideoLayerUI paramVideoLayerUI, mdz parammdz, boolean paramBoolean) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void a()
+  public mkt(QavPanel paramQavPanel) {}
+  
+  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Mdz.o(true);
-    this.jdField_a_of_type_Mdz.a(-1044L, this.jdField_a_of_type_Boolean);
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_Mdz, this.jdField_a_of_type_Boolean);
+    if (!this.jdField_a_of_type_Boolean) {
+      mti.a("0X800A567", 0);
+    }
+    if ((paramRelativeLayout instanceof QavBeautyMenuPanel)) {
+      ((QavBeautyMenuPanel)paramRelativeLayout).a(paramLong, paramBoolean);
+    }
+  }
+  
+  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if ((paramRelativeLayout instanceof QavBeautyMenuPanel)) {
+      ((QavBeautyMenuPanel)paramRelativeLayout).b(paramLong, paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mkt
  * JD-Core Version:    0.7.0.1
  */

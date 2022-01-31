@@ -1,33 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin.7;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.homework.arithmetic.data.HWGuideItem;
 
-public class bbud
-  implements TVK_SDKMgr.InstallListener
+public final class bbud
+  implements Parcelable.Creator<HWGuideItem>
 {
-  public bbud(HealthBusinessPlugin.7 param7) {}
-  
-  public void onInstallProgress(float paramFloat)
+  public HWGuideItem a(Parcel paramParcel)
   {
-    this.a.this$0.c = ((int)(100.0F * paramFloat));
-    this.a.this$0.b.sendEmptyMessage(2);
+    return new HWGuideItem(paramParcel);
   }
   
-  public void onInstalledFailed(int paramInt)
+  public HWGuideItem[] a(int paramInt)
   {
-    this.a.this$0.d = paramInt;
-    this.a.this$0.b.sendEmptyMessage(1);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    this.a.this$0.b.sendEmptyMessage(0);
+    return new HWGuideItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbud
  * JD-Core Version:    0.7.0.1
  */

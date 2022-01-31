@@ -1,25 +1,20 @@
-import android.annotation.TargetApi;
-import android.os.Looper;
-import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.onlinestatus.AccountOnlineStateActivity;
 
-@TargetApi(18)
 public class avyj
-  extends avzo
+  implements View.OnClickListener
 {
-  @NonNull
-  protected avzq a(Looper paramLooper)
-  {
-    return new avzq(this, paramLooper, this);
-  }
+  public avyj(AccountOnlineStateActivity paramAccountOnlineStateActivity) {}
   
-  public void a(Runnable paramRunnable)
+  public void onClick(View paramView)
   {
-    this.a.post(paramRunnable);
+    AccountOnlineStateActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avyj
  * JD-Core Version:    0.7.0.1
  */

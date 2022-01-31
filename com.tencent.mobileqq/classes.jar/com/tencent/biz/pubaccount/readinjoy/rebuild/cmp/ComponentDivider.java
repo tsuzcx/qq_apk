@@ -7,17 +7,17 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import pau;
-import pqp;
-import pqy;
-import puy;
-import pym;
+import pgd;
+import pxk;
+import pxt;
+import qbs;
+import qfg;
 
 public class ComponentDivider
   extends View
-  implements pqp
+  implements pxk
 {
-  puy a;
+  qbs a;
   
   public ComponentDivider(Context paramContext)
   {
@@ -46,16 +46,16 @@ public class ComponentDivider
   private void a(Context paramContext, Object paramObject)
   {
     b(paramContext);
-    if ((paramObject instanceof pau))
+    if ((paramObject instanceof pgd))
     {
-      this.a.a((pau)paramObject);
+      this.a.a((pgd)paramObject);
       b();
     }
   }
   
   private void b(Context paramContext)
   {
-    this.a = new puy();
+    this.a = new qbs();
     a(paramContext);
     a();
   }
@@ -64,20 +64,20 @@ public class ComponentDivider
   
   public void a(Context paramContext)
   {
-    setBackgroundColor(getContext().getResources().getColor(2131166737));
+    setBackgroundColor(getContext().getResources().getColor(2131166784));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pau))
+    if ((paramObject instanceof pgd))
     {
-      this.a.a((pau)paramObject);
-      if ((((pau)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
+      this.a.a((pgd)paramObject);
+      if ((((pgd)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
       {
         paramObject = (LinearLayout.LayoutParams)getLayoutParams();
         paramObject.leftMargin = Utils.dp2px(6.0D);
         paramObject.rightMargin = Utils.dp2px(6.0D);
-        setBackgroundColor(getContext().getResources().getColor(2131165577));
+        setBackgroundColor(getContext().getResources().getColor(2131165613));
       }
       if (this.a.a.e()) {
         setVisibility(0);
@@ -90,22 +90,22 @@ public class ComponentDivider
     setVisibility(8);
   }
   
-  public void a(pqy parampqy)
+  public void a(pxt parampxt)
   {
-    this.a.a(parampqy);
+    this.a.a(parampxt);
   }
   
   public void b()
   {
-    pau localpau = this.a.a;
+    pgd localpgd = this.a.a;
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
-    pym.a(getContext(), localpau, localLayoutParams);
+    qfg.a(getContext(), localpgd, localLayoutParams);
     setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import bcnp;
+import bemr;
 
 public class MonitorSizeChangeRelativeLayout
   extends RelativeLayout
 {
-  private bcnp a;
+  private bemr a;
   
   public MonitorSizeChangeRelativeLayout(Context paramContext)
   {
@@ -28,9 +28,9 @@ public class MonitorSizeChangeRelativeLayout
     }
   }
   
-  public void setCallBack(bcnp parambcnp)
+  public void setCallBack(bemr parambemr)
   {
-    this.a = parambcnp;
+    this.a = parambemr;
   }
 }
 

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.managers;
 
-import asek;
-import auko;
-import aukp;
-import aukq;
+import atvk;
+import awbv;
+import awbw;
+import awbx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DraftTextInfo;
 
 public class DraftTextManager$2
   implements Runnable
 {
-  public DraftTextManager$2(asek paramasek, DraftTextInfo paramDraftTextInfo, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  public DraftTextManager$2(atvk paramatvk, DraftTextInfo paramDraftTextInfo, QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class DraftTextManager$2
     localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
     try
     {
-      ((aukp)localObject3).b((auko)localObject1);
+      ((awbw)localObject3).b((awbv)localObject1);
       return;
     }
     catch (Exception localException)
@@ -32,13 +32,13 @@ public class DraftTextManager$2
     }
     finally
     {
-      ((aukp)localObject3).a();
+      ((awbw)localObject3).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.managers.DraftTextManager.2
  * JD-Core Version:    0.7.0.1
  */

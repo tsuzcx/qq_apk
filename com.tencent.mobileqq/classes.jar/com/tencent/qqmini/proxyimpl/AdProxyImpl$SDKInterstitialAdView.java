@@ -1,6 +1,9 @@
 package com.tencent.qqmini.proxyimpl;
 
+import aajy;
+import aano;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtHandler.Options;
@@ -8,11 +11,10 @@ import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsInterstitialAdView;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.InterstitialADLisener;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import yuh;
-import yxo;
 
 class AdProxyImpl$SDKInterstitialAdView
   extends AdProxy.AbsInterstitialAdView
@@ -25,7 +27,7 @@ class AdProxyImpl$SDKInterstitialAdView
   String mEntryPath;
   String mGdtCookie;
   AdProxy.InterstitialADLisener mInterstitialAdListener;
-  yuh mInterstitialAdView;
+  aajy mInterstitialAdView;
   String mPosid;
   String mRefer;
   String mReportData;
@@ -51,7 +53,7 @@ class AdProxyImpl$SDKInterstitialAdView
   
   private GdtHandler.Options getClickOption(JSONObject paramJSONObject)
   {
-    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
+    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
     paramJSONObject = new GdtHandler.Options();
     paramJSONObject.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
     paramJSONObject.jdField_a_of_type_Boolean = true;
@@ -98,6 +100,21 @@ class AdProxyImpl$SDKInterstitialAdView
     this.this$0.requestAdInfo((Activity)localObject, this.mUin, this.mPosid, this.mAppid, this.SHARE_RATE, this.mAdType, this.mDeviceOrientation, this.mGdtCookie, this.mEntryPath, this.mReportData, this.mRefer, this.mVia, new AdProxyImpl.SDKInterstitialAdView.1(this, (Activity)localObject));
   }
   
+  public void onClose(Activity paramActivity, int paramInt, Intent paramIntent)
+  {
+    try
+    {
+      if ((this.mInterstitialAdView != null) && (paramActivity != null)) {
+        this.mInterstitialAdView.a(paramActivity, paramInt, paramIntent);
+      }
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      QMLog.i("AdProxyImpl", "onClose", paramActivity);
+    }
+  }
+  
   public boolean show(Activity paramActivity)
   {
     if ((this.mInterstitialAdView != null) && (paramActivity != null))
@@ -113,7 +130,7 @@ class AdProxyImpl$SDKInterstitialAdView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKInterstitialAdView
  * JD-Core Version:    0.7.0.1
  */

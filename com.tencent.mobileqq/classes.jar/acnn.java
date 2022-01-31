@@ -1,78 +1,77 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.39.1;
+import com.tencent.mobileqq.activity.Conversation.39.2;
+import com.tencent.mobileqq.activity.Conversation.39.3;
+import com.tencent.mobileqq.activity.Conversation.39.4;
+import com.tencent.mobileqq.activity.Conversation.39.5;
+import com.tencent.mobileqq.activity.Conversation.39.6;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class acnn
-  extends aims
+  extends lpr
 {
-  private List<acnq> jdField_a_of_type_JavaUtilList;
+  public acnn(Conversation paramConversation) {}
   
-  public acnn(List<acnq> paramList)
+  protected void a(int paramInt, long paramLong)
   {
-    super(paramList, paramList.app, paramList.b, 1, true);
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    paramInt = mww.c(paramInt);
+    this.a.a(8, Long.toString(paramLong), paramInt);
   }
   
-  public int getCount()
+  protected void a(int paramInt, long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    paramInt = mww.c(paramInt);
+    this.a.a(8, Long.toString(paramLong1), paramInt);
+    this.a.b(paramLong1);
+    this.a.a(new Conversation.39.1(this, paramLong1));
+  }
+  
+  protected void a(int paramInt, String paramString1, String paramString2)
+  {
+    this.a.a(8, paramString1, paramInt);
+    this.a.a(new Conversation.39.4(this));
+  }
+  
+  protected void a(String paramString)
+  {
+    super.a(paramString);
+    this.a.a(new Conversation.39.6(this));
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    super.a(paramString1, paramString2);
+    if (!this.a.f) {
+      return;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    this.a.a(new Conversation.39.5(this));
   }
   
-  public Object getItem(int paramInt)
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void b(int paramInt, long paramLong)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    paramInt = mww.c(paramInt);
+    this.a.a(8, Long.toString(paramLong), paramInt);
+  }
+  
+  protected void b(int paramInt, long paramLong1, long paramLong2)
+  {
+    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
+      this.a.a(new Conversation.39.2(this, paramLong1));
     }
-    return null;
   }
   
-  public long getItemId(int paramInt)
+  protected void c(int paramInt, long paramLong1, long paramLong2)
   {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    acnq localacnq;
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getLayoutInflater().inflate(2131562411, paramViewGroup, false);
-      paramViewGroup = new acns(null);
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131368583));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378265));
-      ((TextView)paramView.findViewById(2131378356)).setText("");
-      paramView.setTag(paramViewGroup);
-      localacnq = (acnq)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      if ((TextUtils.isEmpty(localacnq.e)) || (localacnq.e.equals(localacnq.b))) {
-        break label203;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacnq.b + "(" + localacnq.e + ")");
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_JavaLangString = localacnq.jdField_a_of_type_JavaLangString;
-      paramViewGroup.jdField_a_of_type_Acnq = localacnq;
-      paramViewGroup.c.setImageBitmap(a(1, localacnq.jdField_a_of_type_JavaLangString));
-      return paramView;
-      paramViewGroup = (acns)paramView.getTag();
-      break;
-      label203:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localacnq.b);
+    if (paramLong2 == Long.valueOf(this.a.a.getCurrentAccountUin()).longValue()) {
+      this.a.a(new Conversation.39.3(this, paramLong1));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acnn
  * JD-Core Version:    0.7.0.1
  */

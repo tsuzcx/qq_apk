@@ -1,103 +1,102 @@
-import android.annotation.SuppressLint;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
-import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.smtt.sdk.ValueCallback;
-import com.tencent.smtt.sdk.WebChromeClient.FileChooserParams;
-import com.tencent.smtt.sdk.WebSettings;
-import com.tencent.smtt.sdk.WebView;
-
-class bcdv
-  extends nkb
+public class bcdv
 {
-  bcdv(bcdu parambcdu) {}
+  public String a;
+  public boolean a;
   
-  @SuppressLint({"InflateParams"})
-  public View getVideoLoadingProgressView()
+  public bcdv()
   {
-    if (this.a.a != null) {
-      return this.a.a.b();
-    }
-    return null;
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
+  /* Error */
+  public static bcdv a(String paramString)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramString, paramGeolocationPermissionsCallback);
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: ifnull +113 -> 114
+    //   4: new 2	bcdv
+    //   7: dup
+    //   8: invokespecial 20	bcdv:<init>	()V
+    //   11: astore_2
+    //   12: new 22	org/json/JSONObject
+    //   15: dup
+    //   16: aload_0
+    //   17: invokespecial 25	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   20: astore_3
+    //   21: aload_3
+    //   22: ldc 27
+    //   24: invokevirtual 31	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   27: iconst_1
+    //   28: if_icmpne +62 -> 90
+    //   31: iconst_1
+    //   32: istore_1
+    //   33: aload_2
+    //   34: iload_1
+    //   35: putfield 33	bcdv:jdField_a_of_type_Boolean	Z
+    //   38: aload_2
+    //   39: aload_3
+    //   40: ldc 35
+    //   42: invokevirtual 39	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   45: putfield 15	bcdv:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   48: invokestatic 45	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   51: ifeq +37 -> 88
+    //   54: ldc 47
+    //   56: iconst_2
+    //   57: new 49	java/lang/StringBuilder
+    //   60: dup
+    //   61: invokespecial 50	java/lang/StringBuilder:<init>	()V
+    //   64: ldc 52
+    //   66: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: aload_0
+    //   70: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: ldc 58
+    //   75: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: aload_2
+    //   79: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: invokestatic 69	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   88: aload_2
+    //   89: areturn
+    //   90: iconst_0
+    //   91: istore_1
+    //   92: goto -59 -> 33
+    //   95: astore_3
+    //   96: aconst_null
+    //   97: astore_2
+    //   98: ldc 47
+    //   100: iconst_1
+    //   101: ldc 71
+    //   103: aload_3
+    //   104: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   107: goto -59 -> 48
+    //   110: astore_3
+    //   111: goto -13 -> 98
+    //   114: aconst_null
+    //   115: astore_2
+    //   116: goto -68 -> 48
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	119	0	paramString	String
+    //   32	60	1	bool	boolean
+    //   11	105	2	localbcdv	bcdv
+    //   20	20	3	localJSONObject	org.json.JSONObject
+    //   95	9	3	localException1	java.lang.Exception
+    //   110	1	3	localException2	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   4	12	95	java/lang/Exception
+    //   12	31	110	java/lang/Exception
+    //   33	48	110	java/lang/Exception
   }
   
-  public void onHideCustomView()
+  public String toString()
   {
-    if (this.a.a != null) {
-      this.a.a.v();
-    }
-  }
-  
-  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramWebView, paramString1, paramString2, paramJsResult);
-    }
-    return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
-  }
-  
-  public void onProgressChanged(WebView paramWebView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewWrapper", 2, "onProgressChanged:" + paramInt);
-    }
-    if (this.a.a != null) {
-      this.a.a.a(paramWebView, paramInt);
-    }
-    if ((paramInt > 30) && (!paramWebView.getSettings().getLoadsImagesAutomatically())) {
-      paramWebView.getSettings().setLoadsImagesAutomatically(true);
-    }
-  }
-  
-  public void onReceivedTitle(WebView paramWebView, String paramString)
-  {
-    if (this.a.a != null) {
-      this.a.a.b(paramWebView, paramString);
-    }
-  }
-  
-  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramView, paramInt, paramCustomViewCallback);
-    }
-  }
-  
-  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramView, 10, paramCustomViewCallback);
-    }
-  }
-  
-  public boolean onShowFileChooser(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
-  {
-    if ((paramValueCallback != null) && (this.a.a != null)) {
-      return this.a.a.a(paramValueCallback, paramFileChooserParams);
-    }
-    return super.onShowFileChooser(paramWebView, paramValueCallback, paramFileChooserParams);
-  }
-  
-  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramValueCallback, paramString1, paramString2);
-    }
+    return "[displayOrNot:" + this.jdField_a_of_type_Boolean + ",title:" + this.jdField_a_of_type_JavaLangString + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcdv
  * JD-Core Version:    0.7.0.1
  */

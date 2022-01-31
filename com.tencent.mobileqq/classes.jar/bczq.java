@@ -1,16 +1,12 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.graphics.Bitmap;
 
-public class bczq
-  extends aimt
+public abstract interface bczq
 {
-  public TextView a;
-  public TroopInfo a;
-  public TextView b;
+  public abstract void a(Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bczq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,36 @@
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.qphone.base.util.QLog;
 
-public class yos
+class yos
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private static yos jdField_a_of_type_Yos;
-  private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newFixedThreadPool(5);
+  yos(yom paramyom, int paramInt) {}
   
-  public static yos a()
+  public void onGlobalLayout()
   {
-    if (jdField_a_of_type_Yos == null) {
-      jdField_a_of_type_Yos = new yos();
+    this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    int i = this.jdField_a_of_type_Yom.b - this.jdField_a_of_type_Yom.jdField_a_of_type_Int - this.jdField_a_of_type_Int * 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "maxHeight = " + i);
     }
-    return jdField_a_of_type_Yos;
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(paramRunnable);
+    if (this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidViewView.getMeasuredHeight() > i)
+    {
+      localLayoutParams.height = (i - 5);
+      this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+    }
+    if ((this.jdField_a_of_type_Yom.jdField_a_of_type_Bbnq != null) && (this.jdField_a_of_type_Yom.d) && (this.jdField_a_of_type_Yom.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller() != null)) {
+      this.jdField_a_of_type_Yom.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getOverScroller().a(0, 0, 0, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yos
  * JD-Core Version:    0.7.0.1
  */

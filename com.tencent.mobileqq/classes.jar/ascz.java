@@ -1,14 +1,14 @@
+import com.tencent.image.URLImageView;
+
 public class ascz
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
+  public URLImageView a;
+  
+  public ascz(ascx paramascx) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ascz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.Comparator;
 
-public class arnb
-  extends WebViewPlugin
+final class arnb
+  implements Comparator<FileInfo>
 {
-  public static final String a = arnb.class.getSimpleName();
-  
-  public arnb()
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    this.mPluginNameSpace = "MixSearchWeb";
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return false;
-    }
-    if (!"MixSearchWeb".equals(paramString2)) {
-      return false;
-    }
-    if (("setSearchBarWord".equals(paramString3)) && ((this.mRuntime.a() instanceof MixSearchWebFragment))) {
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        ((MixSearchWebFragment)this.mRuntime.a()).a(paramJsBridgeListener.optString("searchWord"), paramJsBridgeListener.optString("placeholder"));
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        QLog.e(a, 1, "handleJsRequest: e = " + paramJsBridgeListener);
-      }
-    }
-    return false;
+    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arnb
  * JD-Core Version:    0.7.0.1
  */

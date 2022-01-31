@@ -9,6 +9,7 @@ import com.tencent.ttpic.openapi.model.FaceActionCounter;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun;
 import com.tencent.ttpic.openapi.model.cosfun.CosFun.CosFunGroupItem;
+import com.tencent.ttpic.trigger.TriggerManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -31,10 +32,11 @@ public class CosFunFilterGroup
   private int randomItemIndex = -1;
   private int startInterval;
   private long startTime = -1L;
+  private TriggerManager triggerManager;
   private Set<Integer> triggeredExpression;
   private VideoMaterial videoMaterial;
   
-  public CosFunFilterGroup(VideoMaterial paramVideoMaterial)
+  public CosFunFilterGroup(VideoMaterial paramVideoMaterial, TriggerManager paramTriggerManager)
   {
     this.videoMaterial = paramVideoMaterial;
     this.cosFun = paramVideoMaterial.getCosFun();
@@ -43,6 +45,7 @@ public class CosFunFilterGroup
       this.animTotalDuration = (this.cosFun.getTipsAnimFrames() * this.cosFun.getTipsAnimFrameDuration());
       this.startInterval = this.cosFun.getStartInterval();
     }
+    this.triggerManager = paramTriggerManager;
     initCosGroup();
   }
   
@@ -86,7 +89,7 @@ public class CosFunFilterGroup
         while (((Iterator)localObject).hasNext())
         {
           CosFun.CosFunGroupItem localCosFunGroupItem = (CosFun.CosFunGroupItem)((Iterator)localObject).next();
-          this.cosFunGroupItemList.add(new CosFunGroupItem(this.videoMaterial.getDataPath(), localCosFunGroupItem, this.randomItemIndex));
+          this.cosFunGroupItemList.add(new CosFunGroupItem(this.videoMaterial.getDataPath(), localCosFunGroupItem, this.randomItemIndex, this.triggerManager));
         }
       }
     }

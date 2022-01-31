@@ -1,143 +1,45 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.pb.now.ilive_short_video_label.GetShortVideoVideoLabelRsp;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.AppRuntime;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class avdr
+class avdr
+  implements auzh
 {
-  public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
-  {
-    for (;;)
-    {
-      try
-      {
-        ayxs localayxs = (ayxs)paramQQAppInterface.getManager(193);
-        if (localayxs.a())
-        {
-          int i = 2;
-          String str = "qboss_splash_ad_res_png";
-          if (paramInt == 2)
-          {
-            i = 1;
-            str = "qboss_splash_ad_res_video";
-            j = 10082;
-            QLog.i("QSplash@QbossSplashUtil", 1, "downloadPicAGifAVideoRes request adid" + paramString1);
-            HashMap localHashMap = new HashMap();
-            localHashMap.put("qbossSplashresAppid", paramString1);
-            a("qbossSplashrequest", localHashMap);
-            localayxs.a(j, "vas", paramString2, 0, paramString2, paramString3 + ".splashtemp", i, 0, true, new avds(paramQQAppInterface, str, paramString1, paramString3, paramInt, paramString4, paramString2));
-          }
-        }
-        else
-        {
-          QLog.i("QSplash@QbossSplashUtil", 1, "ctrl.isEnable() = false");
-          return;
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        return;
-      }
-      int j = 10081;
-    }
-  }
+  avdr(avcw paramavcw) {}
   
-  public static void a(QQAppInterface paramQQAppInterface, Collection<avdv> paramCollection)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    for (;;)
-    {
-      avdv localavdv;
-      try
-      {
-        paramCollection = paramCollection.iterator();
-        if (!paramCollection.hasNext()) {
-          break label156;
-        }
-        localavdv = (avdv)paramCollection.next();
-        if (!localavdv.b())
-        {
-          QLog.i("QSplash@QbossSplashDownloadManager", 1, "adEntry should not requestRes");
-          continue;
-        }
-        switch (localavdv.a)
-        {
-        }
-      }
-      finally {}
-      a(paramQQAppInterface, localavdv.jdField_b_of_type_JavaLangString, localavdv.e, localavdv.h, 0, localavdv.k);
-      continue;
-      a(paramQQAppInterface, localavdv.jdField_b_of_type_JavaLangString, localavdv.e, localavdv.h, 2, localavdv.k);
-      continue;
-      a(paramQQAppInterface, localavdv.jdField_b_of_type_JavaLangString, localavdv.e, localavdv.h, 1, localavdv.k);
-      continue;
-      label156:
-      return;
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    Object localObject = avdq.a(BaseApplicationImpl.getContext(), paramString1);
-    paramString1 = ((SharedPreferences)localObject).edit();
-    QLog.i("QSplash@QbossSplashDownloadManager", 1, "pic or gif download succ! MD5 checkok");
-    boolean bool = ((SharedPreferences)localObject).getBoolean("qboss_exposure_is_low_device_limit_", false);
-    QLog.i("QSplash@QbossSplashDownloadManager", 1, "isLowerDeviceLimit = " + bool);
-    if (!bool)
-    {
-      paramString1.putBoolean("qboss_splash_ad_is_limited_" + paramString2, true);
-      localObject = avdu.a;
-      if ((localObject != null) && (((HashMap)localObject).containsKey(paramString2))) {
-        ((avdv)((HashMap)localObject).get(paramString2)).jdField_b_of_type_Boolean = true;
-      }
-    }
-    paramString1.apply();
-  }
-  
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    try
-    {
-      if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount())))
-      {
-        axrn.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramString, true, 0L, 0L, paramHashMap, null, false);
-        if (QLog.isColorLevel()) {
-          QLog.i("QSplash@QbossSplashDownloadManager", 2, "reportqbossSplashBeacon, tagName  " + paramString);
-        }
-      }
-      return;
-    }
-    catch (Exception paramString) {}
-  }
-  
-  private static void b(String paramString1, AppInterface paramAppInterface, String paramString2)
-  {
-    if (paramAppInterface == null) {
-      return;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      paramBundle = new oidb_0xada.RspBody();
     }
     try
     {
-      paramAppInterface = (ayxs)paramAppInterface.getManager(193);
-      if (paramAppInterface.a()) {
-        paramAppInterface.a(paramString1, -1L);
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.i("PlayOperationViewModel", 2, "queryVideoState err_msg:   " + paramBundle.err_msg.get());
       }
-      paramString1 = new HashMap();
-      paramString1.put("qbossSplashresAppid", paramString2);
-      a("qbossSplashDownloadFailed", paramString1);
+      if (paramBundle.busi_buf.has())
+      {
+        paramArrayOfByte = new ilive_short_video_label.GetShortVideoVideoLabelRsp();
+        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
+        this.a.a(paramArrayOfByte);
+      }
       return;
     }
-    catch (Exception paramString1) {}
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avdr
  * JD-Core Version:    0.7.0.1
  */

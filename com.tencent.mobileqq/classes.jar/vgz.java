@@ -1,26 +1,13 @@
-import android.graphics.Bitmap;
-
-class vgz
-  extends vjr
+public class vgz
 {
-  public Bitmap a;
-  public Bitmap b;
-  
-  public vgz(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  public static boolean a(int paramInt)
   {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
-  }
-  
-  public vgz(vjr paramvjr, Bitmap paramBitmap1, Bitmap paramBitmap2)
-  {
-    this(paramvjr.jdField_c_of_type_Int, paramvjr.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
+    return paramInt > 1000;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,15 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
 
-class aqci
-  implements View.OnClickListener
+public abstract interface aqci<V extends View>
 {
-  aqci(aqcg paramaqcg) {}
+  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase);
   
-  public void onClick(View paramView)
-  {
-    this.a.D();
-    aqcg.a(this.a);
-  }
+  public abstract void b(PullToRefreshBase<V> paramPullToRefreshBase);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqci
  * JD-Core Version:    0.7.0.1
  */

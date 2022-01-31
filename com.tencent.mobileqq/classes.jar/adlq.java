@@ -1,21 +1,24 @@
-import android.os.Handler;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import mqq.app.QQPermissionCallback;
 
-class adlq
-  implements akoa
+public class adlq
+  implements QQPermissionCallback
 {
-  adlq(adlo paramadlo) {}
+  public adlq(QQIdentiferLegacy paramQQIdentiferLegacy) {}
   
-  public void a(int paramInt, xot paramxot) {}
-  
-  public void a(long paramLong)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    adlo.a("onLowMemory");
-    adlo.a().sendMessage(adlo.a().obtainMessage(5));
+    bdcd.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QQIdentiferLegacy.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlq
  * JD-Core Version:    0.7.0.1
  */

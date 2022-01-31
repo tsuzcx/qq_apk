@@ -1,20 +1,23 @@
-import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
 
-class atih
-  extends mxi
+public final class atih
+  implements Parcelable.Creator<ListenTogetherSession>
 {
-  atih(atib paramatib, atii paramatii) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public ListenTogetherSession a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_Atii != null) {
-      this.jdField_a_of_type_Atii.a(paramInt, paramArrayOfByte, paramBundle);
-    }
+    return new ListenTogetherSession(paramParcel, null);
+  }
+  
+  public ListenTogetherSession[] a(int paramInt)
+  {
+    return new ListenTogetherSession[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atih
  * JD-Core Version:    0.7.0.1
  */

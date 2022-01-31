@@ -1,26 +1,14 @@
-import android.widget.TextView;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-class bgum
-  implements bgln
+public abstract interface bgum
 {
-  bgum(bgui parambgui) {}
+  public abstract void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong);
   
-  public void a(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      bgwf.a("ReaderSplashImpl", "jumpToPlugin: openPlugin: failed");
-      if (bgui.a(this.a) != null) {
-        bgui.a(this.a).setText("跳转失败，请返回重试");
-      }
-      return;
-    }
-    bgwf.d("ReaderSplashImpl", "jumpToPlugin: openPlugin: succeed");
-  }
+  public abstract void onInitGpkgInfo(int paramInt, bgun parambgun, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgum
  * JD-Core Version:    0.7.0.1
  */

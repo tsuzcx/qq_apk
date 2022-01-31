@@ -13,9 +13,9 @@ import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.trigger.TriggerCtrlItem;
 import com.tencent.ttpic.util.SensorUtil;
 import java.io.File;
 import java.util.ArrayList;
@@ -69,7 +69,6 @@ public class SkyboxFilter
     super("attribute vec3 vposition;\n\nuniform mat4 uMVPMatrix;\n\nvarying vec3 cubeTextureCoordinate;\n\nvoid main()\n{\n    gl_Position = uMVPMatrix * vec4(vposition, 1.0);\n    gl_Position = gl_Position.xyww;\n\n    cubeTextureCoordinate = vposition;\n//    cubeTextureCoordinate.z = -vposition.z;\n    cubeTextureCoordinate.y = -vposition.y;\n    cubeTextureCoordinate.x = -vposition.x;\n}\n", "precision highp float;\n\nuniform samplerCube inputCubeTexture;\n\nvarying vec3 cubeTextureCoordinate;\n\nvoid main()\n{\n    gl_FragColor = textureCube(inputCubeTexture, cubeTextureCoordinate);\n//    gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);\n}\n");
     this.dataPath = paramString;
     this.stickerItem = paramStickerItem;
-    this.triggerCtrlItem = new TriggerCtrlItem(paramStickerItem);
     addAttribParam(new AttributeParam("vposition", vVertices, 3, true));
     setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLES);
     setCoordNum(36);
@@ -130,12 +129,11 @@ public class SkyboxFilter
   
   private int nextCount(long paramLong1, long paramLong2)
   {
-    return this.triggerCtrlItem.getFrameIndexElapse(paramLong1, paramLong2);
+    return this.triggerCtrlItem.getFrameIndexElapse();
   }
   
   private int nextFrame(PTDetectInfo paramPTDetectInfo, int paramInt)
   {
-    this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
     this.isCurTrigged = this.triggerCtrlItem.isTriggered();
     paramInt = this.triggerCtrlItem.getFrameIndex();
     String str5 = this.dataPath + File.separator + this.stickerItem.id + File.separator;
@@ -373,20 +371,22 @@ public class SkyboxFilter
     this.sensorUtil.stop();
   }
   
+  public String getItemId()
+  {
+    return this.stickerItem.id;
+  }
+  
   public Frame render(Frame paramFrame, PTDetectInfo paramPTDetectInfo, int paramInt)
   {
     paramInt = nextFrame(paramPTDetectInfo, paramInt);
     if (!this.isCurTrigged) {}
-    AIAttr localAIAttr;
     do
     {
       return paramFrame;
-      localAIAttr = paramPTDetectInfo.aiAttr;
-    } while ((localAIAttr == null) || (localAIAttr.getSurfaceTime() <= 0L) || (localAIAttr.getNextSurfaceTime() <= 0L));
-    System.arraycopy(this.sensorUtil.centerUp(localAIAttr.getSurfaceTime()), 0, this.mCenterUp, 0, 6);
-    long l1 = localAIAttr.getNextSurfaceTime();
-    long l2 = localAIAttr.getSurfaceTime();
-    this.skyBitmapUtil.decode(nextCount(paramPTDetectInfo.timestamp, l1 - l2), lookSides(localAIAttr.getNextSurfaceTime()));
+      paramPTDetectInfo = paramPTDetectInfo.aiAttr;
+    } while ((paramPTDetectInfo == null) || (paramPTDetectInfo.getSurfaceTime() <= 0L) || (paramPTDetectInfo.getNextSurfaceTime() <= 0L));
+    System.arraycopy(this.sensorUtil.centerUp(paramPTDetectInfo.getSurfaceTime()), 0, this.mCenterUp, 0, 6);
+    this.skyBitmapUtil.decode(this.triggerCtrlItem.getFrameIndexElapse(), lookSides(paramPTDetectInfo.getNextSurfaceTime()));
     this.shader.bind();
     GLES20.glActiveTexture(33987);
     GLES20.glBindTexture(34067, this.tex[0]);
@@ -395,6 +395,11 @@ public class SkyboxFilter
     initMVP(paramFrame.width, paramFrame.height);
     GLES20.glUniformMatrix4fv(this.mMVPMatrixHandle, 1, false, this.mMVPMatrix, 0);
     return super.render(paramFrame);
+  }
+  
+  public void setTriggerCtrlItem(TriggerCtrlItem paramTriggerCtrlItem)
+  {
+    this.triggerCtrlItem = paramTriggerCtrlItem;
   }
 }
 

@@ -1,35 +1,32 @@
-import android.os.Bundle;
+import com.tencent.biz.common.offline.BidDownloader;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
 
-final class ncf
-  implements BusinessObserver
+public class ncf
+  extends bavo
 {
-  ncf(QQAppInterface paramQQAppInterface, nch paramnch) {}
+  public BidDownloader a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ncf(QQAppInterface paramQQAppInterface, String paramString, BidDownloader paramBidDownloader)
   {
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        ncd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Nch);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
-      }
-      this.jdField_a_of_type_Nch.a("");
-      return;
-    }
-    this.jdField_a_of_type_Nch.a("");
+    super(paramQQAppInterface, paramString);
+    this.a = paramBidDownloader;
+  }
+  
+  protected void realCancel()
+  {
+    QLog.i(ncc.a, 1, "cancel predown bid=" + this.a.a);
+  }
+  
+  protected void realStart()
+  {
+    QLog.i(ncc.a, 1, "start predown bid=" + this.a.a);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncf
  * JD-Core Version:    0.7.0.1
  */

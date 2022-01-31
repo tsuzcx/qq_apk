@@ -2,22 +2,22 @@ package com.tencent.mobileqq.data;
 
 import NS_MOBILE_NEWEST_FEEDS.feed_info;
 import NS_MOBILE_NEWEST_FEEDS.newest_feeds_rsp;
-import abxn;
-import acuo;
-import aktf;
+import adov;
+import aely;
+import amjk;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anii;
-import anjy;
-import aukp;
-import aukq;
-import bgyl;
-import bgyp;
+import aozp;
+import apbf;
+import awbw;
+import awbx;
+import bizi;
+import bizm;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.qzone.FeedInfo;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -43,7 +43,7 @@ public class FeedsManager
   private static Map<String, String> showStatusUIns = new ConcurrentHashMap();
   private static Map<String, Long> tokenMap = new ConcurrentHashMap();
   private QQAppInterface app;
-  private aukp em;
+  private awbw em;
   Map<String, FeedInfo> feedInfoCache = new ConcurrentHashMap();
   private volatile boolean hasRequest;
   private volatile boolean inited;
@@ -56,9 +56,9 @@ public class FeedsManager
     intCache();
   }
   
-  private bgyl buildRequest(HashMap<Long, Long> paramHashMap)
+  private bizi buildRequest(HashMap<Long, Long> paramHashMap)
   {
-    return new bgyl(this.app.getLongAccountUin(), paramHashMap);
+    return new bizi(this.app.getLongAccountUin(), paramHashMap);
   }
   
   public static String convertAtStruct(String paramString)
@@ -172,7 +172,7 @@ public class FeedsManager
   
   private void intCache()
   {
-    ThreadManagerV2.excute(new FeedsManager.1(this), 32, new anii(this), true);
+    ThreadManagerV2.excute(new FeedsManager.1(this), 32, new aozp(this), true);
   }
   
   public static boolean isShowStatus(String paramString)
@@ -217,7 +217,7 @@ public class FeedsManager
       }
     }
     if (!this.feedInfoCache.isEmpty()) {
-      this.app.notifyObservers(abxn.class, 10000, true, null);
+      this.app.notifyObservers(adov.class, 10000, true, null);
     }
   }
   
@@ -226,9 +226,9 @@ public class FeedsManager
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Laukp;
-    //   4: invokevirtual 403	aukp:a	()Laukr;
-    //   7: invokevirtual 407	aukr:a	()V
+    //   1: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lawbw;
+    //   4: invokevirtual 403	awbw:a	()Lawby;
+    //   7: invokevirtual 407	awby:a	()V
     //   10: aload_1
     //   11: invokevirtual 307	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   14: astore_1
@@ -240,9 +240,9 @@ public class FeedsManager
     //   30: checkcast 320	com/tencent/mobileqq/data/qzone/FeedInfo
     //   33: astore_2
     //   34: aload_0
-    //   35: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Laukp;
+    //   35: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lawbw;
     //   38: aload_2
-    //   39: invokevirtual 411	aukp:b	(Lauko;)V
+    //   39: invokevirtual 411	awbw:b	(Lawbv;)V
     //   42: goto -27 -> 15
     //   45: astore_1
     //   46: invokestatic 256	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -253,26 +253,26 @@ public class FeedsManager
     //   57: aload_1
     //   58: invokestatic 413	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   61: aload_0
-    //   62: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Laukp;
-    //   65: invokevirtual 403	aukp:a	()Laukr;
-    //   68: invokevirtual 415	aukr:b	()V
+    //   62: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lawbw;
+    //   65: invokevirtual 403	awbw:a	()Lawby;
+    //   68: invokevirtual 415	awby:b	()V
     //   71: iconst_0
     //   72: ireturn
     //   73: aload_0
-    //   74: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Laukp;
-    //   77: invokevirtual 403	aukp:a	()Laukr;
-    //   80: invokevirtual 418	aukr:c	()V
+    //   74: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lawbw;
+    //   77: invokevirtual 403	awbw:a	()Lawby;
+    //   80: invokevirtual 418	awby:c	()V
     //   83: aload_0
-    //   84: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Laukp;
-    //   87: invokevirtual 403	aukp:a	()Laukr;
-    //   90: invokevirtual 415	aukr:b	()V
+    //   84: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lawbw;
+    //   87: invokevirtual 403	awbw:a	()Lawby;
+    //   90: invokevirtual 415	awby:b	()V
     //   93: iconst_1
     //   94: ireturn
     //   95: astore_1
     //   96: aload_0
-    //   97: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Laukp;
-    //   100: invokevirtual 403	aukp:a	()Laukr;
-    //   103: invokevirtual 415	aukr:b	()V
+    //   97: getfield 56	com/tencent/mobileqq/data/FeedsManager:em	Lawbw;
+    //   100: invokevirtual 403	awbw:a	()Lawby;
+    //   103: invokevirtual 415	awby:b	()V
     //   106: aload_1
     //   107: athrow
     // Local variable table:
@@ -316,7 +316,7 @@ public class FeedsManager
   {
     int i = 0;
     ArrayList localArrayList = new ArrayList();
-    int k = bgyp.f();
+    int k = bizm.f();
     if (k <= 0)
     {
       QLog.w("FeedsManager", 1, "wns  下发的最大请求个数是 小于0，");
@@ -361,7 +361,7 @@ public class FeedsManager
   public String getSummary(String paramString)
   {
     Object localObject = null;
-    if (bgyp.o())
+    if (bizm.o())
     {
       QLog.i("FeedsManager", 2, "getSummary 下发配置隐藏新动态");
       return localObject;
@@ -422,7 +422,7 @@ public class FeedsManager
       paramString.isExpose = true;
       paramString = new LpReportInfo_pf00064(722, 1, 1);
       LpReportManager.getInstance().reportToPF00064(paramString, false, false);
-      paramString = (acuo)this.app.getManager(282);
+      paramString = (aely)this.app.getManager(282);
       if (paramString != null) {
         paramString.a(1, 2);
       }
@@ -457,7 +457,7 @@ public class FeedsManager
   
   public void updateQzoneFeeds()
   {
-    if (bgyp.o()) {
+    if (bizm.o()) {
       QLog.i("FeedsManager", 2, "updateQzoneFeeds 下发配置隐藏新动态");
     }
     do
@@ -493,7 +493,7 @@ public class FeedsManager
           localHashMap.put(localLong, Long.valueOf(l));
         }
       }
-      localObject = new QzoneCommonIntent(this.app.getApp(), anjy.class);
+      localObject = new QzoneCommonIntent(this.app.getApp(), apbf.class);
     }
     catch (Throwable localThrowable)
     {
@@ -501,18 +501,18 @@ public class FeedsManager
       return;
     }
     ((QzoneCommonIntent)localObject).setObserver(this);
-    bgyl localbgyl = buildRequest(localThrowable);
+    bizi localbizi = buildRequest(localThrowable);
     if (QLog.isColorLevel()) {
-      QLog.i("FeedsManager", 2, String.valueOf(localbgyl));
+      QLog.i("FeedsManager", 2, String.valueOf(localbizi));
     }
-    ((QzoneCommonIntent)localObject).setRequest(localbgyl);
+    ((QzoneCommonIntent)localObject).setRequest(localbizi);
     this.app.startServlet((NewIntent)localObject);
     saveLastReqTime(System.currentTimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.FeedsManager
  * JD-Core Version:    0.7.0.1
  */

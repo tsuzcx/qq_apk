@@ -1,31 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
 
-class nss
-  implements Animator.AnimatorListener
+public final class nss
+  implements Parcelable.Creator<VideoInfo.InterruptedWeishiAd>
 {
-  nss(nsp paramnsp) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public VideoInfo.InterruptedWeishiAd a(Parcel paramParcel)
   {
-    nsp.a(false);
+    return new VideoInfo.InterruptedWeishiAd(paramParcel);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public VideoInfo.InterruptedWeishiAd[] a(int paramInt)
   {
-    nsp.a(false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    nsp.a(true);
+    return new VideoInfo.InterruptedWeishiAd[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nss
  * JD-Core Version:    0.7.0.1
  */

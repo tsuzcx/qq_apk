@@ -1,175 +1,217 @@
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyDropFrameHelper.2;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessReporter.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.NetworkState;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ntv
-  implements otf
 {
-  private Map<Integer, Double> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private nty jdField_a_of_type_Nty = new nty();
-  private Map<Integer, List<ntx>> b = new HashMap();
-  private Map<String, List<Double>> c = new HashMap();
+  private static List<List<String>> a;
+  private static List<Map<String, Integer>> b;
   
-  private ntv()
+  public static void a()
   {
-    ota.a(this);
-    bhwh.a().a(this.jdField_a_of_type_Nty);
-  }
-  
-  private int a(String paramString)
-  {
-    if ("list_new_kandian".equals(paramString)) {
-      return 0;
-    }
-    if ("list_subscript".equals(paramString)) {
-      return 70;
-    }
-    if ((paramString != null) && (paramString.contains("list_kandian_channel_"))) {
-      return Integer.parseInt(paramString.substring(paramString.indexOf("list_kandian_channel_")));
-    }
-    if ("list_comment_kandian".equals(paramString)) {
-      return 6666;
-    }
-    if ("proteus_family_feeds".equals(paramString)) {
-      return 8888;
-    }
-    if ("list_kandian_native_web".equals(paramString)) {
-      return 5555;
-    }
-    if ("list_kandian_daily_new".equals(paramString)) {
-      return 9999;
-    }
-    return -1;
-  }
-  
-  public static ntv a()
-  {
-    return ntw.a();
-  }
-  
-  private JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("proteus_bid", bhvy.a("default_feeds_proteus_offline_bid"));
-    localJSONObject.put("cpu_type", bbdh.g());
-    localJSONObject.put("cpu_frequency", bbdh.a());
-    localJSONObject.put("cache_memory", bbdh.d());
-    localJSONObject.put("device_model", bbdh.d());
-    localJSONObject.put("os_version", bbdh.e());
-    if (NetworkState.isWifiConn()) {}
-    for (int i = 1;; i = 2)
+    if ((b != null) || (a != null)) {}
+    do
     {
-      localJSONObject.put("network_type", i);
-      localJSONObject.put("package_name", "8.3.0.4480");
-      return localJSONObject;
+      return;
+      b = new ArrayList();
+      a = new ArrayList();
+      localObject1 = new File(ntw.f);
+    } while ((!((File)localObject1).exists()) || (!((File)localObject1).isFile()));
+    Object localObject1 = bdcs.a((File)localObject1);
+    for (;;)
+    {
+      int i;
+      try
+      {
+        localObject1 = new JSONArray((String)localObject1);
+        i = 0;
+        if (i >= ((JSONArray)localObject1).length()) {
+          break;
+        }
+        Object localObject2 = ((JSONArray)localObject1).getJSONObject(0);
+        if (((JSONObject)localObject2).getInt("repflag") != 0)
+        {
+          Object localObject3 = new ArrayList();
+          HashMap localHashMap = new HashMap();
+          JSONArray localJSONArray = ((JSONObject)localObject2).getJSONArray("entrance");
+          int j = 0;
+          if (j < localJSONArray.length())
+          {
+            ((List)localObject3).add(localJSONArray.getString(j));
+            j += 1;
+            continue;
+          }
+          a.add(localObject3);
+          localObject2 = ((JSONObject)localObject2).getJSONArray("report");
+          j = 0;
+          if (j < ((JSONArray)localObject2).length())
+          {
+            localObject3 = ((JSONArray)localObject2).getJSONObject(j);
+            localHashMap.put(((JSONObject)localObject3).getString("urlprefix"), Integer.valueOf(((JSONObject)localObject3).getInt("tvalue")));
+            j += 1;
+            continue;
+          }
+          b.add(localHashMap);
+        }
+      }
+      catch (Exception localException)
+      {
+        QLog.e("BusinessReporter", 1, "parse report json error:" + localException);
+        return;
+      }
+      i += 1;
     }
   }
   
-  private void a(String paramString, double paramDouble)
+  public static void a(CustomWebView paramCustomWebView)
   {
-    ThreadManager.executeOnSubThread(new ReadInJoyDropFrameHelper.2(this, paramString, paramDouble));
+    String str;
+    WebViewPlugin localWebViewPlugin;
+    if ((paramCustomWebView != null) && (paramCustomWebView.getPluginEngine() != null))
+    {
+      str = paramCustomWebView.getUrl();
+      paramCustomWebView = paramCustomWebView.getPluginEngine();
+      localWebViewPlugin = paramCustomWebView.a("JD_REPORT");
+      if (localWebViewPlugin != null) {
+        break label75;
+      }
+      if (a()) {
+        break label54;
+      }
+      ThreadManager.post(new BusinessReporter.1(str, paramCustomWebView), 5, null, true);
+    }
+    label54:
+    while (!a(str)) {
+      return;
+    }
+    paramCustomWebView.a(new String[] { "JD_REPORT" });
+    return;
+    label75:
+    ((yyp)localWebViewPlugin).b(str);
+  }
+  
+  public static void a(AppInterface paramAppInterface, String paramString1, String paramString2)
+  {
+    if ((!(paramAppInterface instanceof BrowserAppInterface)) || (TextUtils.isEmpty(paramString1)) || (b == null)) {}
+    String str;
+    do
+    {
+      return;
+      str = Uri.parse(paramString2).getHost();
+    } while (TextUtils.isEmpty(str));
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    Object localObject1 = null;
+    Object localObject2 = localObject1;
+    if (i < a.size())
+    {
+      localObject2 = ((List)a.get(i)).iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        if (str.contains((String)((Iterator)localObject2).next())) {
+          localObject1 = (Map)b.get(i);
+        }
+      }
+    }
+    for (int j = 1;; j = 0)
+    {
+      if (j != 0)
+      {
+        localObject2 = localObject1;
+        if ((localObject2 == null) || (((Map)localObject2).isEmpty())) {
+          break;
+        }
+        localObject1 = ((Map)localObject2).entrySet().iterator();
+      }
+      for (;;)
+      {
+        if (!((Iterator)localObject1).hasNext()) {
+          break label346;
+        }
+        localObject2 = (Map.Entry)((Iterator)localObject1).next();
+        str = (String)((Map.Entry)localObject2).getKey();
+        i = ((Integer)((Map.Entry)localObject2).getValue()).intValue();
+        if (!TextUtils.isEmpty(str))
+        {
+          if (paramString1.startsWith("https://" + str))
+          {
+            localObject2 = (nup)paramAppInterface.getBusinessHandler(0);
+            if (localObject2 == null) {
+              break label339;
+            }
+            ((nup)localObject2).a(i, null, paramString2, null, null, 0L, false);
+            return;
+            i += 1;
+            break;
+          }
+          localStringBuilder.setLength(0);
+          if (paramString1.startsWith("http://" + str))
+          {
+            localObject2 = (nup)paramAppInterface.getBusinessHandler(0);
+            if (localObject2 != null)
+            {
+              ((nup)localObject2).a(i, null, paramString2, null, null, 0L, false);
+              return;
+            }
+          }
+          label339:
+          localStringBuilder.setLength(0);
+        }
+      }
+      label346:
+      break;
+    }
   }
   
   public static boolean a()
   {
-    boolean bool = ((Boolean)bhvy.a("sp_key_readinjoy_feeds_drop_frame_switch", Boolean.valueOf(true))).booleanValue();
-    QLog.d("ReadInJoyDropFrameHelper", 1, "ReadInJoyDropFrameHelper | Report enable :" + bool);
-    return bool;
+    return a != null;
   }
   
-  public void a(int paramInt, ntx paramntx)
+  public static boolean a(String paramString)
   {
-    if (this.b != null) {
-      if (!this.b.containsKey(Integer.valueOf(paramInt))) {
-        break label74;
-      }
+    if ((a == null) || (a.isEmpty()) || (TextUtils.isEmpty(paramString))) {
+      return false;
     }
-    label74:
-    for (Object localObject = (List)this.b.get(Integer.valueOf(paramInt));; localObject = new ArrayList())
+    paramString = Uri.parse(paramString).getHost();
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    Iterator localIterator2;
+    do
     {
-      if (!((List)localObject).contains(paramntx)) {
-        ((List)localObject).add(paramntx);
-      }
-      this.b.put(Integer.valueOf(paramInt), localObject);
-      return;
-    }
-  }
-  
-  public void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
-  {
-    if (!a()) {
-      return;
-    }
-    int i = a(paramString);
-    double d = (paramArrayOfLong[0] * 16.699999999999999D + paramArrayOfLong[1] * 16.699999999999999D * 1.5D + paramArrayOfLong[2] * 16.699999999999999D * 3.0D + paramArrayOfLong[3] * 16.699999999999999D * 6.0D) / paramLong2;
-    if (d < 1.0D) {}
-    for (;;)
-    {
-      QLog.d("ReadInJoyDropFrameHelper", 1, "caculateFeedsFlunency | channelId " + i + " fluencyVal " + d);
-      if (this.c != null)
+      Iterator localIterator1 = a.iterator();
+      while (!localIterator2.hasNext())
       {
-        if (this.c.get(String.valueOf(i)) == null) {
-          this.c.put(String.valueOf(i), new ArrayList());
+        if (!localIterator1.hasNext()) {
+          break;
         }
-        QLog.d("ReadInJoyDropFrameHelper", 1, "addFluency into reportMap | channelId " + i + " fluencyVal " + d);
-        ((List)this.c.get(String.valueOf(i))).add(Double.valueOf(d));
+        localIterator2 = ((List)localIterator1.next()).iterator();
       }
-      if (this.jdField_a_of_type_JavaUtilMap == null) {
-        break;
-      }
-      return;
-      d = 1.0D;
-    }
-  }
-  
-  public void b(int paramInt, ntx paramntx)
-  {
-    if ((this.b != null) && (this.b.get(Integer.valueOf(paramInt)) != null)) {
-      ((List)this.b.get(Integer.valueOf(paramInt))).remove(paramntx);
-    }
-  }
-  
-  public void l() {}
-  
-  public void m()
-  {
-    if ((this.c == null) || (this.c.isEmpty()))
-    {
-      QLog.d("ReadInJoyDropFrameHelper", 2, "background | reportMap is empty");
-      return;
-    }
-    QLog.d("ReadInJoyDropFrameHelper", 2, "background | reporFeeds Fluency");
-    Iterator localIterator1 = this.c.keySet().iterator();
-    while (localIterator1.hasNext())
-    {
-      String str = (String)localIterator1.next();
-      List localList = (List)this.c.get(str);
-      if ((localList != null) && (localList.size() > 0))
-      {
-        Iterator localIterator2 = new ArrayList(localList).iterator();
-        while (localIterator2.hasNext())
-        {
-          Double localDouble = (Double)localIterator2.next();
-          a(str, localDouble.doubleValue());
-          QLog.d("ReadInJoyDropFrameHelper", 2, "background | reportFeedsFluency channelid " + str + " fluencyVal " + localDouble);
-        }
-        localList.clear();
-      }
-    }
-    saf.a();
+    } while (!paramString.contains((String)localIterator2.next()));
+    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ntv
  * JD-Core Version:    0.7.0.1
  */

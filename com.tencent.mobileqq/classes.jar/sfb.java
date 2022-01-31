@@ -1,31 +1,16 @@
-import java.io.FilterOutputStream;
-import java.io.OutputStream;
+import java.util.Comparator;
 
-class sfb
-  extends FilterOutputStream
+final class sfb
+  implements Comparator<byte[]>
 {
-  int jdField_a_of_type_Int = 0;
-  
-  public sfb(sfa paramsfa, OutputStream paramOutputStream)
+  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    super(paramOutputStream);
-  }
-  
-  public void write(int paramInt)
-  {
-    this.jdField_a_of_type_Int += 1;
-    this.out.write(paramInt);
-  }
-  
-  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int += paramInt2;
-    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+    return paramArrayOfByte1.length - paramArrayOfByte2.length;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sfb
  * JD-Core Version:    0.7.0.1
  */

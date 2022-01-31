@@ -1,19 +1,22 @@
-import java.util.List;
-
-public class bivi
-  extends bjne
+class bivi
+  implements biuw
 {
-  private bjor<List<String>> a = new bjor();
-  private bjor<bist> b = new bjor();
+  bivi(bivh parambivh) {}
   
-  public bjor<bist> a()
+  public void a()
   {
-    return this.b;
+    if (bivh.a(this.a) != null) {
+      bivh.a(this.a);
+    }
+    while (bivh.a(this.a) == null) {
+      return;
+    }
+    bivh.a(this.a, bivh.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bivi
  * JD-Core Version:    0.7.0.1
  */

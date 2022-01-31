@@ -211,7 +211,7 @@ public class QbSdk
         TbsLog.e("QbSdk", "QbSdk.init failure!");
         return false;
       }
-      Object localObject3 = ReflectionUtils.invokeInstance(sExtensionObj, "canLoadX5Core", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(43739) });
+      Object localObject3 = ReflectionUtils.invokeInstance(sExtensionObj, "canLoadX5Core", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(43752) });
       if (localObject3 != null)
       {
         if ((localObject3 instanceof String))
@@ -1369,7 +1369,7 @@ public class QbSdk
       TbsLog.i("QbSdk", "getJarFilesAndLibraryPath sExtensionObj is null");
       return false;
     }
-    Bundle localBundle = (Bundle)ReflectionUtils.invokeInstance(sExtensionObj, "canLoadX5CoreAndNotLoadSo", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(43739) });
+    Bundle localBundle = (Bundle)ReflectionUtils.invokeInstance(sExtensionObj, "canLoadX5CoreAndNotLoadSo", new Class[] { Integer.TYPE }, new Object[] { Integer.valueOf(43752) });
     if (localBundle == null)
     {
       TbsLog.i("QbSdk", "getJarFilesAndLibraryPath bundle is null and coreverison is " + TbsInstaller.getInstance().getTbsCoreInstalledVerWithNew(true, paramContext));
@@ -1453,7 +1453,7 @@ public class QbSdk
   
   public static int getTbsSdkVersion()
   {
-    return 43739;
+    return 43752;
   }
   
   public static int getTbsVersion(Context paramContext)
@@ -1518,7 +1518,7 @@ public class QbSdk
     TbsLog.initIfNeed(paramContext);
     if (!sIsVersionPrinted)
     {
-      TbsLog.i("QbSdk", "svn revision: jnizz; SDK_VERSION_CODE: 43739; SDK_VERSION_NAME: 4.3.0.1190");
+      TbsLog.i("QbSdk", "svn revision: jnizz; SDK_VERSION_CODE: 43752; SDK_VERSION_NAME: 4.3.0.1203");
       sIsVersionPrinted = true;
     }
     if ((mIsSysWebViewForced) && (!paramBoolean))
@@ -1986,13 +1986,13 @@ public class QbSdk
         if (!initForX5DisableConfig(paramContext)) {
           break;
         }
-        paramContext = ReflectionUtils.invokeInstance(sExtensionObj, "isX5Disabled", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(43739), Integer.valueOf(paramInt2) });
+        paramContext = ReflectionUtils.invokeInstance(sExtensionObj, "isX5Disabled", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(43752), Integer.valueOf(paramInt2) });
         if (paramContext == null) {
           break label153;
         }
         return ((Boolean)paramContext).booleanValue();
       }
-      paramContext = ReflectionUtils.invokeInstance(sExtensionObj, "isX5Disabled", new Class[] { Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(43739) });
+      paramContext = ReflectionUtils.invokeInstance(sExtensionObj, "isX5Disabled", new Class[] { Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(43752) });
     } while (paramContext == null);
     return ((Boolean)paramContext).booleanValue();
   }
@@ -2007,7 +2007,7 @@ public class QbSdk
       return true;
     }
     i = TbsInstaller.getInstance().getTbsCoreInstalledVerInNolock(paramContext);
-    paramContext = ReflectionUtils.invokeInstance(sExtensionObj, "isX5DisabledSync", new Class[] { Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(i), Integer.valueOf(43739) });
+    paramContext = ReflectionUtils.invokeInstance(sExtensionObj, "isX5DisabledSync", new Class[] { Integer.TYPE, Integer.TYPE }, new Object[] { Integer.valueOf(i), Integer.valueOf(43752) });
     if (paramContext != null) {
       return ((Boolean)paramContext).booleanValue();
     }
@@ -2405,7 +2405,11 @@ public class QbSdk
     }
     if (paramString != null)
     {
-      Object localObject = paramString.substring(paramString.lastIndexOf(".") + 1, paramString.length());
+      String str = paramString.substring(paramString.lastIndexOf(".") + 1, paramString.length());
+      Object localObject = str;
+      if (str != null) {
+        localObject = str.toLowerCase();
+      }
       if ("apk".equalsIgnoreCase((String)localObject))
       {
         paramHashMap = new Intent("android.intent.action.VIEW");
@@ -3183,7 +3187,7 @@ public class QbSdk
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.QbSdk
  * JD-Core Version:    0.7.0.1
  */

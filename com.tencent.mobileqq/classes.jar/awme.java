@@ -1,33 +1,25 @@
+import android.graphics.Point;
+import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
 import java.util.Comparator;
 
-class awme
-  implements Comparator<awmg>
+public class awme
+  implements Comparator<awlz>
 {
-  awme(awmb paramawmb) {}
+  Point jdField_a_of_type_AndroidGraphicsPoint;
   
-  public int a(awmg paramawmg1, awmg paramawmg2)
+  public awme(TagCloudView paramTagCloudView, Point paramPoint)
   {
-    int j = Long.signum(paramawmg1.jdField_a_of_type_Int - paramawmg2.jdField_a_of_type_Int);
-    int i = j;
-    if (j == 0)
-    {
-      j = Long.signum(paramawmg1.b - paramawmg2.b);
-      i = j;
-      if (j == 0)
-      {
-        j = Long.signum(paramawmg1.c - paramawmg2.c);
-        i = j;
-        if (j == 0) {
-          i = Long.signum(-paramawmg1.jdField_a_of_type_Long + paramawmg2.jdField_a_of_type_Long);
-        }
-      }
-    }
-    return i;
+    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
+  }
+  
+  public int a(awlz paramawlz1, awlz paramawlz2)
+  {
+    return TagCloudView.a(paramawlz1.a(), this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramawlz2.a(), this.jdField_a_of_type_AndroidGraphicsPoint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awme
  * JD-Core Version:    0.7.0.1
  */

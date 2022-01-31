@@ -1,77 +1,68 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.async.JobContext;
-import java.lang.ref.WeakReference;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.os.Build.VERSION;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 public class vsl
-  extends vsn<vsa, vsa>
+  implements vue
 {
-  private final int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private final WeakReference<vhy> jdField_a_of_type_JavaLangRefWeakReference;
+  public vsl(TextureVideoView paramTextureVideoView) {}
   
-  public vsl(String paramString, vhy paramvhy, int paramInt)
+  @TargetApi(15)
+  public void a_(vtz paramvtz)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvhy);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  protected void a(JobContext paramJobContext, vsa paramvsa)
-  {
-    ved.a("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "start generate thumb ... mVideoIndex = %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    vsg localvsg = paramvsa.jdField_a_of_type_Vsg;
-    int i = localvsg.c;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      paramJobContext = (vhy)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    }
-    while (paramJobContext != null)
+    if (this.a.jdField_a_of_type_Vtz == null) {}
+    label282:
+    do
     {
-      Bitmap localBitmap = paramJobContext.a(this.jdField_a_of_type_Int);
-      if (localBitmap != null)
+      int i;
+      do
       {
-        try
+        do
         {
-          String str2 = this.jdField_a_of_type_JavaLangString;
-          String str1 = str2;
-          if (str2 == null) {
-            str1 = vsq.a(paramvsa.jdField_a_of_type_Int, paramvsa.b, ".jpg");
-          }
-          i = new vsi(localBitmap, str1, localvsg.jdField_a_of_type_Int, localvsg.jdField_b_of_type_Int, i, localvsg.jdField_a_of_type_Float, localvsg.jdField_a_of_type_Double, localvsg.jdField_b_of_type_Double, paramvsa.jdField_a_of_type_Int).a(new Void[0]).intValue();
-          paramJobContext.a(localBitmap);
-          if (i != 0) {
-            break label217;
-          }
-          paramvsa.jdField_a_of_type_JavaLangString = str1;
-          paramvsa.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = str1;
-          ved.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb success ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-          super.notifyResult(paramvsa);
           return;
-        }
-        finally
-        {
-          paramJobContext.a(localBitmap);
-        }
-        paramJobContext = null;
-        continue;
-        label217:
-        ved.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ...", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, ajya.a(2131705687) + this.jdField_a_of_type_Int));
-      }
-      else
-      {
-        ved.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... EditVideoPlayerExport generateVideoFrameBitmap return null", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-        super.notifyError(new ErrorMessage(-1, ajya.a(2131705692) + this.jdField_a_of_type_Int));
+          this.a.jdField_a_of_type_Int = 2;
+          TextureVideoView localTextureVideoView1 = this.a;
+          TextureVideoView localTextureVideoView2 = this.a;
+          this.a.jdField_d_of_type_Boolean = true;
+          localTextureVideoView2.c = true;
+          localTextureVideoView1.jdField_b_of_type_Boolean = true;
+          if (this.a.jdField_a_of_type_Vue != null) {
+            this.a.jdField_a_of_type_Vue.a_(this.a.jdField_a_of_type_Vtz);
+          }
+          if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+            this.a.jdField_a_of_type_AndroidWidgetMediaController.setEnabled(true);
+          }
+          this.a.jdField_d_of_type_Int = paramvtz.c();
+          this.a.e = paramvtz.d();
+          i = this.a.g;
+          if (i != 0) {
+            this.a.seekTo(i);
+          }
+          if ((this.a.jdField_d_of_type_Int == 0) || (this.a.e == 0)) {
+            break label282;
+          }
+          if (Build.VERSION.SDK_INT >= 15) {
+            this.a.getSurfaceTexture().setDefaultBufferSize(this.a.jdField_d_of_type_Int, this.a.e);
+          }
+          if (this.a.jdField_b_of_type_Int != 3) {
+            break;
+          }
+          this.a.start();
+        } while (this.a.jdField_a_of_type_AndroidWidgetMediaController == null);
+        this.a.jdField_a_of_type_AndroidWidgetMediaController.show();
         return;
-      }
-    }
-    ved.d("Q.qqstory.publish.edit.HWEncodeGenerateThumbSegment", "generate %d thumb failed ... can not find EditVideoPlayerExport", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    super.notifyError(new ErrorMessage(-1, ajya.a(2131705688) + this.jdField_a_of_type_Int));
+      } while ((this.a.isPlaying()) || ((i == 0) && (this.a.getCurrentPosition() <= 0)) || (this.a.jdField_a_of_type_AndroidWidgetMediaController == null));
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.show(0);
+      return;
+    } while (this.a.jdField_b_of_type_Int != 3);
+    this.a.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vsl
  * JD-Core Version:    0.7.0.1
  */

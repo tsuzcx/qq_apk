@@ -1,24 +1,24 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import bekj;
+import bgid;
 import com.tencent.qqmini.sdk.core.widget.TabBar;
 
 class AppBrandPage$2
   implements Runnable
 {
-  AppBrandPage$2(AppBrandPage paramAppBrandPage, boolean paramBoolean, bekj parambekj) {}
+  AppBrandPage$2(AppBrandPage paramAppBrandPage, boolean paramBoolean, bgid parambgid) {}
   
   public void run()
   {
     if (AppBrandPage.a(this.this$0) != null) {
       AppBrandPage.a(this.this$0).a(this.jdField_a_of_type_Boolean);
     }
-    this.jdField_a_of_type_Bekj.a();
+    this.jdField_a_of_type_Bgid.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.AppBrandPage.2
  * JD-Core Version:    0.7.0.1
  */

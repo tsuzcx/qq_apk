@@ -1,407 +1,262 @@
-import ConfigPush.DomainIpChannel;
-import ConfigPush.DomainIpInfo;
-import ConfigPush.DomainIpList;
-import ConfigPush.FileStoragePushFSSvcList;
-import ConfigPush.FileStorageServerListInfo;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.os.Process;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.BusinessCommonConfig;
+import com.tencent.mobileqq.utils.confighandler.DefaultConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
 import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.TreeMap;
+import mqq.manager.Manager;
 
 public class ampg
+  implements Manager
 {
-  private static String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private static Hashtable<String, ArrayList<String>>[] jdField_a_of_type_ArrayOfJavaUtilHashtable;
-  private static boolean[] jdField_a_of_type_ArrayOfBoolean;
-  public static final String[][] a;
-  private static String[] b;
+  ampa jdField_a_of_type_Ampa = null;
+  ampk jdField_a_of_type_Ampk = null;
+  private ampo jdField_a_of_type_Ampo;
+  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
+  final String jdField_a_of_type_JavaLangString;
+  String b;
   
-  static
+  public ampg(AppInterface paramAppInterface)
   {
-    int i = 0;
-    String[] arrayOfString = { "buluo_qq_com_2g", "buluo_qq_com_3g", "buluo_qq_com_4g", "buluo_qq_com_wifi" };
-    jdField_a_of_type_Array2dOfJavaLangString = new String[][] { { "q_qlogo_cn_2g", "q_qlogo_cn_3g", "q_qlogo_cn_4g", "q_qlogo_cn_wifi" }, { "p_qlogo_cn_2g", "p_qlogo_cn_3g", "p_plogo_cn_4g", "p_plogo_cn_wifi" }, { "p_qpic_cn_2g", "p_qpic_cn_3g", "p_qpic_cn_4g", "p_qpic_cn_wifi" }, { "pgdt_gtimg_cn_2g", "pgdt_gtimg_cn_3g", "pgdt_gtimg_cn_4g", "pgdt_gtimg_cn_wifi" }, { "sqimg_qq_com_2g", "sqimg_qq_com_3g", "sqimg_qq_com_4g", "sqimg_qq_com_wifi" }, { "download_wegame_qq_com_2g", "download_wegame_qq_com_3g", "download_wegame_qq_com_4g", "download_wegame_qq_com_wifi" }, { "wfqqreader_3g_qq_cn_2g", "wfqqreader_3g_qq_cn_3g", "wfqqreader_3g_qq_cn_4g", "wfqqreader_3g_qq_cn_wifi" }, arrayOfString };
-    jdField_a_of_type_ArrayOfBoolean = new boolean[13];
-    jdField_a_of_type_ArrayOfJavaLangString = new String[14];
-    b = new String[14];
-    jdField_a_of_type_ArrayOfJavaUtilHashtable = new Hashtable[11];
-    while (i <= 7)
+    long l = AudioHelper.b();
+    this.jdField_a_of_type_JavaLangString = ("ARPromotion_" + l);
+    this.b = paramAppInterface.getAccount();
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "PromotionMgr, mUin[" + this.b + "]");
+    this.jdField_a_of_type_Ampk = new ampk(l);
+  }
+  
+  public PromotionConfigInfo a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo == null) && (AudioHelper.d()))
     {
-      jdField_a_of_type_ArrayOfJavaUtilHashtable[i] = new Hashtable(4);
-      i += 1;
+      QLog.w(ampn.jdField_a_of_type_JavaLangString, 1, "getConfigInfo, AR配置还未初始化", new Throwable("打印调用栈"));
+      throw new IllegalArgumentException("AR配置还未初始化");
     }
-    i = 8;
-    while (i < 11)
-    {
-      jdField_a_of_type_ArrayOfJavaUtilHashtable[i] = new Hashtable(3);
-      i += 1;
+    return this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
+  }
+  
+  public void a(ampm paramampm)
+  {
+    if (this.jdField_a_of_type_Ampk != null) {
+      this.jdField_a_of_type_Ampk.a(paramampm);
     }
   }
   
-  public static String a()
+  public void a(AppInterface paramAppInterface)
   {
-    String str = String.valueOf(bbfj.a(BaseApplicationImpl.getApplication().getApplicationContext()));
-    if ((str.equals(b[12])) && (!TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[12]))) {
-      return jdField_a_of_type_ArrayOfJavaLangString[12];
+    if (a("doOnReconnect", paramAppInterface, null)) {
+      return;
     }
-    Object localObject = ayqh.a().a(12);
-    if ((localObject == null) || (((ArrayList)localObject).isEmpty())) {
-      return null;
-    }
-    localObject = (FileStorageServerListInfo)((ArrayList)localObject).get((int)(Math.random() * ((ArrayList)localObject).size() + 1.0D));
-    if (localObject == null) {
-      return null;
-    }
-    b[12] = str;
-    jdField_a_of_type_ArrayOfJavaLangString[12] = ((FileStorageServerListInfo)localObject).sIP;
-    return jdField_a_of_type_ArrayOfJavaLangString[12];
+    b(paramAppInterface);
   }
   
-  public static String a(int paramInt)
+  public void a(AppInterface paramAppInterface, String paramString)
   {
-    int i = bbfj.a(BaseApplicationImpl.getApplication().getApplicationContext());
-    if (i == 1) {
-      i = 3;
-    }
-    while ((jdField_a_of_type_Array2dOfJavaLangString[paramInt][i].equals(b[paramInt])) && (!TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[paramInt])))
-    {
-      return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-      if (i == 2)
+    if (this.jdField_a_of_type_Ampk != null) {
+      if (a())
       {
-        i = 0;
-      }
-      else if (i == 3)
-      {
-        i = 1;
-      }
-      else if (i == 4)
-      {
-        i = 2;
-      }
-      else
-      {
-        QLog.i("PicIPManager", 1, "getIpList netType unknown netType=" + i);
-        return null;
+        PromotionConfigInfo localPromotionConfigInfo = a();
+        this.jdField_a_of_type_Ampk.a(localPromotionConfigInfo);
+        this.jdField_a_of_type_Ampk.a(paramAppInterface, false, paramString, 0);
       }
     }
-    int j;
-    if (jdField_a_of_type_ArrayOfBoolean[paramInt] == 0)
+    do
     {
-      localObject = BaseApplicationImpl.getApplication().getSharedPreferences("QQHeadIPList", 4);
-      if (localObject == null) {
-        return null;
-      }
-      j = 0;
-      while (j <= 3)
+      return;
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestDownload, 配置还未初始化");
+      return;
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestDownload, 下载器为空");
+    } while (!AudioHelper.d());
+    throw new IllegalArgumentException(alpo.a(2131708896));
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString, PromotionConfigInfo paramPromotionConfigInfo)
+  {
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder().append("onGetEntryConfig, from server, configInfo[");
+    if (paramPromotionConfigInfo != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.w(str, 1, bool + "]");
+      if (paramPromotionConfigInfo != null)
       {
-        String str = ((SharedPreferences)localObject).getString(jdField_a_of_type_Array2dOfJavaLangString[paramInt][j], null);
-        if (!TextUtils.isEmpty(str))
+        a(paramPromotionConfigInfo);
+        if (this.jdField_a_of_type_Ampo != null)
         {
-          String[] arrayOfString = str.split("\\|");
-          if ((arrayOfString != null) && (arrayOfString.length > 0))
-          {
-            ArrayList localArrayList = new ArrayList();
-            int k = 0;
-            while (k < arrayOfString.length)
-            {
-              localArrayList.add(arrayOfString[k]);
-              k += 1;
-            }
-            jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].put(jdField_a_of_type_Array2dOfJavaLangString[paramInt][j], localArrayList);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.i("PicIPManager", 2, "getIpList array=" + str);
-          }
+          this.jdField_a_of_type_Ampo.clean();
+          this.jdField_a_of_type_Ampo = null;
         }
-        j += 1;
       }
-      jdField_a_of_type_ArrayOfBoolean[paramInt] = true;
+      if (!a("onGetConfig", paramQQAppInterface, null)) {
+        break;
+      }
+      return;
     }
-    Object localObject = (ArrayList)jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].get(jdField_a_of_type_Array2dOfJavaLangString[paramInt][i]);
-    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
-    {
-      j = (int)(Math.random() * ((ArrayList)localObject).size());
-      jdField_a_of_type_ArrayOfJavaLangString[paramInt] = ((String)((ArrayList)localObject).get(j));
-      b[paramInt] = jdField_a_of_type_Array2dOfJavaLangString[paramInt][i];
-    }
-    return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+    a(paramString);
+    b(paramQQAppInterface);
   }
   
-  public static void a()
+  public void a(QQAppInterface paramQQAppInterface, String paramString, DefaultConfigInfo paramDefaultConfigInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PicIPManager", 2, "resetInitedFlag.");
+    if (!a()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365还没加载");
     }
-    int i = 0;
-    while (i <= 7)
+    int i;
+    do
     {
-      jdField_a_of_type_ArrayOfBoolean[i] = false;
-      i += 1;
-    }
-  }
-  
-  public static void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList, QQAppInterface paramQQAppInterface)
-  {
-    int i = bbfj.a(BaseApplicationImpl.getApplication().getApplicationContext());
-    int j;
-    SharedPreferences localSharedPreferences;
-    if (i == 1)
-    {
-      j = 3;
-      if (QLog.isColorLevel()) {
-        QLog.i("PicIPManager", 2, "saveQQHeadIpList netType=" + i);
-      }
-      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("QQHeadIPList", 4);
-      if (localSharedPreferences == null) {
-        break label777;
-      }
-    }
-    label777:
-    for (Object localObject1 = localSharedPreferences.edit();; localObject1 = null)
-    {
-      i = 0;
-      Object localObject2;
-      for (;;)
+      return;
+      paramDefaultConfigInfo = a();
+      if (paramDefaultConfigInfo == null)
       {
-        if (i <= 7)
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365为null");
+        return;
+      }
+      i = bdkx.a(this.b);
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onGetResConfig, 365已经加载了, [" + paramDefaultConfigInfo.config364Version + "], ver[" + i + "]");
+      if (TextUtils.equals(paramString, "test")) {
+        i = -1;
+      }
+    } while (i == paramDefaultConfigInfo.config364Version);
+    a(null);
+    a(paramQQAppInterface, null, null);
+  }
+  
+  void a(PromotionConfigInfo paramPromotionConfigInfo)
+  {
+    if (paramPromotionConfigInfo == null) {}
+    for (;;)
+    {
+      try
+      {
+        if (AudioHelper.d())
         {
-          localObject2 = (ArrayList)jdField_a_of_type_ArrayOfJavaUtilHashtable[i].get(Integer.valueOf(j));
-          if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty())) {
-            ((ArrayList)localObject2).clear();
-          }
-          if (localObject1 != null) {
-            ((SharedPreferences.Editor)localObject1).putString(jdField_a_of_type_Array2dOfJavaLangString[i][j], "");
-          }
-          jdField_a_of_type_ArrayOfJavaLangString[i] = null;
-          b[i] = null;
-          i += 1;
-          continue;
-          if (i == 2)
-          {
-            j = 0;
-            break;
-          }
-          if (i == 3)
-          {
-            j = 1;
-            break;
-          }
-          if (i == 4)
-          {
-            j = 2;
-            break;
-          }
-          QLog.i("PicIPManager", 1, "saveQQHeadIpList netType unknown netType=" + i);
+          localThrowable = new Throwable("打印调用栈");
+          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setConfigInfo, old[" + this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo + "], new[" + paramPromotionConfigInfo + "]", localThrowable);
+          this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = paramPromotionConfigInfo;
+          this.jdField_a_of_type_Ampo = null;
           return;
         }
       }
-      if (localObject1 != null) {
-        ((SharedPreferences.Editor)localObject1).commit();
-      }
-      if ((paramFileStoragePushFSSvcList != null) && (paramFileStoragePushFSSvcList.domainIpChannel != null) && (paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists != null))
-      {
-        paramFileStoragePushFSSvcList = paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists.iterator();
-        while (paramFileStoragePushFSSvcList.hasNext())
-        {
-          localObject1 = (DomainIpList)paramFileStoragePushFSSvcList.next();
-          if ((((DomainIpList)localObject1).vIplist != null) && (((DomainIpList)localObject1).vIplist.size() != 0))
-          {
-            localObject2 = new StringBuilder();
-            i = 0;
-            while (i < ((DomainIpList)localObject1).vIplist.size())
-            {
-              ((StringBuilder)localObject2).append(bbfj.a(((DomainIpInfo)((DomainIpList)localObject1).vIplist.get(i)).uIp));
-              if (i < ((DomainIpList)localObject1).vIplist.size() - 1) {
-                ((StringBuilder)localObject2).append("|");
-              }
-              i += 1;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("PicIPManager", 2, "saveQQHeadIpList.uDomain_type=" + ((DomainIpList)localObject1).uDomain_type + ".strBuilder=" + ((StringBuilder)localObject2).toString());
-            }
-            if (((DomainIpList)localObject1).uDomain_type == 8) {
-              i = 0;
-            }
-            ArrayList localArrayList;
-            for (;;)
-            {
-              if ((((DomainIpList)localObject1).vIplist == null) || (((DomainIpList)localObject1).vIplist.size() == 0)) {
-                break label664;
-              }
-              localObject2 = new StringBuilder();
-              localArrayList = new ArrayList();
-              int k = 0;
-              while (k < ((DomainIpList)localObject1).vIplist.size())
-              {
-                String str = bbfj.a(((DomainIpInfo)((DomainIpList)localObject1).vIplist.get(k)).uIp);
-                localArrayList.add(str);
-                ((StringBuilder)localObject2).append(str);
-                if (k < ((DomainIpList)localObject1).vIplist.size() - 1) {
-                  ((StringBuilder)localObject2).append("|");
-                }
-                k += 1;
-              }
-              if (((DomainIpList)localObject1).uDomain_type == 9)
-              {
-                i = 1;
-              }
-              else if (((DomainIpList)localObject1).uDomain_type == 10)
-              {
-                i = 2;
-              }
-              else if (((DomainIpList)localObject1).uDomain_type == 11)
-              {
-                i = 3;
-              }
-              else if (((DomainIpList)localObject1).uDomain_type == 12)
-              {
-                i = 4;
-              }
-              else if (((DomainIpList)localObject1).uDomain_type == 13)
-              {
-                i = 5;
-              }
-              else if (((DomainIpList)localObject1).uDomain_type == 14)
-              {
-                i = 6;
-              }
-              else
-              {
-                if (((DomainIpList)localObject1).uDomain_type != 15) {
-                  break;
-                }
-                i = 7;
-              }
-            }
-            label664:
-            continue;
-            jdField_a_of_type_ArrayOfJavaUtilHashtable[i].put(jdField_a_of_type_Array2dOfJavaLangString[i][j], localArrayList);
-            if (QLog.isColorLevel()) {
-              QLog.i("PicIPManager", 2, "saveQQHeadIpList.sIpList=" + localArrayList + ",sb=" + ((StringBuilder)localObject2).toString());
-            }
-            if (localSharedPreferences != null) {
-              localSharedPreferences.edit().putString(jdField_a_of_type_Array2dOfJavaLangString[i][j], ((StringBuilder)localObject2).toString()).commit();
-            }
-          }
-        }
-      }
-      paramQQAppInterface.a().d();
-      return;
+      finally {}
+      Throwable localThrowable = null;
     }
   }
   
-  public static String b()
+  void a(String paramString)
   {
-    String str = String.valueOf(bbfj.a(BaseApplicationImpl.getApplication().getApplicationContext()));
-    if ((str.equals(b[13])) && (!TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[13]))) {
-      return jdField_a_of_type_ArrayOfJavaLangString[13];
+    if (this.jdField_a_of_type_Ampk != null) {
+      this.jdField_a_of_type_Ampk.b();
     }
-    Object localObject = ayqh.a().a(14);
-    if ((localObject == null) || (((ArrayList)localObject).isEmpty())) {
-      return null;
-    }
-    localObject = (FileStorageServerListInfo)((ArrayList)localObject).get((int)(Math.random() * ((ArrayList)localObject).size() + 1.0D));
-    if (localObject == null) {
-      return null;
-    }
-    b[13] = str;
-    jdField_a_of_type_ArrayOfJavaLangString[13] = ((FileStorageServerListInfo)localObject).sIP;
-    return jdField_a_of_type_ArrayOfJavaLangString[13];
+    BusinessCommonConfig.sendConfigUpdateNotify(2, paramString);
   }
   
-  public static String b(int paramInt)
+  public boolean a()
   {
-    String str1 = String.valueOf(bbdh.e());
-    if ((str1.equals(b[paramInt])) && (!TextUtils.isEmpty(jdField_a_of_type_ArrayOfJavaLangString[paramInt]))) {
-      return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-    }
-    String str2;
-    Object localObject1;
-    if (jdField_a_of_type_ArrayOfBoolean[paramInt] == 0)
+    for (;;)
     {
-      str2 = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadDirectIP");
-      if (QLog.isColorLevel()) {
-        QLog.i("PicIPManager", 2, "getQzoneIp " + str2);
-      }
-      if (TextUtils.isEmpty(str2)) {
-        return null;
-      }
-      localObject1 = "";
-      if (paramInt == 10) {
-        localObject1 = ".*qzonestyle.gtimg.cn";
-      }
-      while (TextUtils.isEmpty((CharSequence)localObject1))
+      try
       {
-        return null;
-        if (paramInt == 8) {
-          localObject1 = "ugc.qpic.cn";
-        } else if (paramInt == 9) {
-          localObject1 = "a[0-9].qpic.cn";
-        } else if (paramInt == 11) {
-          localObject1 = ".*qzs.qq.com";
+        if (this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo != null)
+        {
+          bool = true;
+          return bool;
         }
       }
+      finally {}
+      boolean bool = false;
+    }
+  }
+  
+  boolean a(String paramString, AppInterface paramAppInterface, ampi paramampi)
+  {
+    if ((a()) && (ampf.a != -1)) {
+      return false;
+    }
+    Object localObject2 = this.jdField_a_of_type_Ampo;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      if ((TextUtils.isEmpty(this.b)) && (paramAppInterface != null)) {
+        this.b = paramAppInterface.getCurrentAccountUin();
+      }
+      localObject1 = new ampo(this.jdField_a_of_type_JavaLangString, this.b, paramAppInterface);
+      this.jdField_a_of_type_Ampo = ((ampo)localObject1);
+    }
+    if (((ampo)localObject1).isNeedRunTask())
+    {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "异步加载config[" + paramString + "]");
+      localObject2 = new ArrayList();
+      ((ArrayList)localObject2).add(localObject1);
+      bdjf.requestSyncTask(null, (ArrayList)localObject2, new amph(this, paramAppInterface, paramString, paramampi));
     }
     for (;;)
     {
-      int i;
-      try
-      {
-        localObject1 = new JSONObject(str2).getJSONArray((String)localObject1);
-        i = 0;
-        if (i < ((JSONArray)localObject1).length())
-        {
-          Object localObject2 = ((JSONArray)localObject1).getJSONObject(i);
-          str2 = ((JSONObject)localObject2).getString("apn");
-          localObject2 = ((JSONObject)localObject2).getString("ip");
-          ArrayList localArrayList2 = (ArrayList)jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].get(str2);
-          if (localArrayList2 == null)
-          {
-            localArrayList2 = new ArrayList();
-            localArrayList2.add(localObject2);
-            jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].put(str2, localArrayList2);
-          }
-          else
-          {
-            localArrayList2.add(localObject2);
-          }
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        if (QLog.isDevelopLevel()) {
-          localJSONException.printStackTrace();
-        }
-      }
-      for (;;)
-      {
-        ArrayList localArrayList1 = (ArrayList)jdField_a_of_type_ArrayOfJavaUtilHashtable[paramInt].get(str1);
-        if ((localArrayList1 == null) || (localArrayList1.isEmpty())) {
-          break;
-        }
-        i = (int)(Math.random() * localArrayList1.size());
-        jdField_a_of_type_ArrayOfJavaLangString[paramInt] = ((String)localArrayList1.get(i));
-        b[paramInt] = str1;
-        return jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-        jdField_a_of_type_ArrayOfBoolean[paramInt] = true;
-      }
-      return null;
-      i += 1;
+      return true;
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "异步加载config[" + paramString + "], 已经在加载中");
     }
+  }
+  
+  public void b(ampm paramampm)
+  {
+    if (this.jdField_a_of_type_Ampk != null) {
+      this.jdField_a_of_type_Ampk.b(paramampm);
+    }
+  }
+  
+  void b(AppInterface paramAppInterface)
+  {
+    PromotionConfigInfo localPromotionConfigInfo1 = a();
+    if (AudioHelper.e()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestPreDownload, PromotionConfigInfo[" + localPromotionConfigInfo1 + "], isDevicesSupport[" + ampf.a() + "]");
+    }
+    if (!ampf.a()) {}
+    while ((localPromotionConfigInfo1 == null) || (!localPromotionConfigInfo1.mainswitch) || (localPromotionConfigInfo1.operationInfos.size() == 0)) {
+      return;
+    }
+    c(paramAppInterface);
+    PromotionConfigInfo localPromotionConfigInfo2 = a();
+    this.jdField_a_of_type_Ampk.a(localPromotionConfigInfo2);
+    this.jdField_a_of_type_Ampk.a(paramAppInterface, true, localPromotionConfigInfo1.activityid, 0);
+  }
+  
+  void c(AppInterface paramAppInterface)
+  {
+    azem.b();
+    if (this.jdField_a_of_type_Ampa == null) {
+      this.jdField_a_of_type_Ampa = new ampa();
+    }
+    this.jdField_a_of_type_Ampa.a(paramAppInterface);
+  }
+  
+  public void onDestroy()
+  {
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onDestroy, ThreadID[" + Thread.currentThread().getId() + "], Tid[" + Process.myTid() + "]");
+    if (this.jdField_a_of_type_Ampo != null)
+    {
+      this.jdField_a_of_type_Ampo.clean();
+      this.jdField_a_of_type_Ampo = null;
+    }
+    if (this.jdField_a_of_type_Ampk != null)
+    {
+      this.jdField_a_of_type_Ampk.a();
+      this.jdField_a_of_type_Ampk = null;
+    }
+    if (this.jdField_a_of_type_Ampa != null)
+    {
+      this.jdField_a_of_type_Ampa.a();
+      this.jdField_a_of_type_Ampa = null;
+    }
+    a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampg
  * JD-Core Version:    0.7.0.1
  */

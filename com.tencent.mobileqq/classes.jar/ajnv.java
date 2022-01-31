@@ -1,58 +1,27 @@
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.2;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.4;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.6;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
 
-public final class ajnv
-  implements aabi
+public class ajnv
+  extends Handler
 {
-  final String jdField_a_of_type_JavaLangString = "https://open.hudong.qq.com/devtool/authorize";
-  
-  public ajnv(int paramInt1, int paramInt2, String paramString1, String paramString2) {}
-  
-  private String[] a(int paramInt)
+  public ajnv(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment, Looper paramLooper)
   {
-    return new String[] { "Content-Type", "application/x-www-form-urlencoded", "Content-Length", "" + paramInt, "Cookie", "uin=" + this.jdField_b_of_type_JavaLangString + ";skey=" + this.c };
+    super(paramLooper);
   }
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    paramString = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=2";
-    ThreadManager.post(new ApolloGameUtil.6.6(this, paramString, a(paramString.length()), new ajny(this)), 8, null, false);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    String str = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=0";
-    ThreadManager.post(new ApolloGameUtil.6.2(this, str, a(str.length()), new ajnw(this)), 8, null, false);
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    QLog.d("ApolloGameUtil", 2, new Object[] { "get openid and accessToken on Success result = ", paramJSONObject.toString() });
-    try
-    {
-      String str = paramJSONObject.optString("openid");
-      paramJSONObject = paramJSONObject.optString("access_token");
-      paramJSONObject = "openID=" + str + "&&accesstoken=" + paramJSONObject + "&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=1";
-      ThreadManager.post(new ApolloGameUtil.6.4(this, paramJSONObject, a(paramJSONObject.length()), new ajnx(this)), 8, null, false);
-      return;
-    }
-    catch (Exception paramJSONObject)
-    {
-      QLog.e("ApolloGameUtil", 2, "getOpenIdAndAccessToken failed ", paramJSONObject);
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == 10) {
+      postDelayed(QzoneSlideShowPreparingFragment.a(this.a), 200L);
     }
   }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajnv
  * JD-Core Version:    0.7.0.1
  */

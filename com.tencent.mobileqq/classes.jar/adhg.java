@@ -1,23 +1,33 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.AdapterView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
-class adhg
-  implements bfpt
+public class adhg
+  implements View.OnClickListener
 {
-  adhg(adhf paramadhf) {}
+  public adhg(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramAdapterView = (agep)adhf.a(this.a).a.getItem(paramInt - 1);
-    adhf.a(this.a, paramAdapterView);
-    adhf.a(this.a).dismiss();
-    axqy.b(adhf.a(this.a).a, "dc00898", "", "", "0X800A417", "0X800A417", 0, 0, "", "", "", "");
+    if (NotifyPushSettingActivity.a(this.a) == null)
+    {
+      NotifyPushSettingActivity.a(this.a, new adhm(this.a, this.a.app, NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a)));
+      adhm.a(NotifyPushSettingActivity.a(this.a), NotifyPushSettingActivity.a(this.a));
+    }
+    if (NotifyPushSettingActivity.a(this.a))
+    {
+      int i = (int)NetConnInfoCenter.getServerTime();
+      int j = SettingCloneUtil.readValueForInt(this.a.getApplicationContext(), null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", 2147483647);
+      NotifyPushSettingActivity.a(this.a).a(j - i);
+    }
+    NotifyPushSettingActivity.a(this.a).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adhg
  * JD-Core Version:    0.7.0.1
  */

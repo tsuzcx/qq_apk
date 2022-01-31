@@ -1,35 +1,19 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acee
-  implements bcnj
+class acee
+  implements DialogInterface.OnClickListener
 {
-  public acee(SubLoginActivity paramSubLoginActivity) {}
+  acee(acec paramacec) {}
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      int[] arrayOfInt = new int[2];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = arrayOfInt[1];
-      SubLoginActivity.a(this.a).getLocationInWindow(arrayOfInt);
-      paramInt1 = paramInt1 - arrayOfInt[1] + SubLoginActivity.a(this.a).getHeight() - paramInt2;
-      if (paramInt1 > 0) {
-        SubLoginActivity.a(this.a).setPadding(SubLoginActivity.a(this.a).getPaddingLeft(), SubLoginActivity.a(this.a).getPaddingTop() - paramInt1, SubLoginActivity.a(this.a).getPaddingRight(), SubLoginActivity.a(this.a).getPaddingBottom());
-      }
-      SubLoginActivity.b(this.a).setVisibility(8);
-      return;
-    }
-    SubLoginActivity.b(this.a).setVisibility(0);
-    SubLoginActivity.a(this.a).setPadding(0, 0, 0, 0);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acee
  * JD-Core Version:    0.7.0.1
  */

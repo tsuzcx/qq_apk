@@ -18,9 +18,9 @@ public class NearbyMsgFragment
 {
   public NearbyActivity a;
   
-  public void aT_()
+  public void aU_()
   {
-    super.aT_();
+    super.aU_();
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     if (QLog.isColorLevel()) {
       QLog.i("nearby.NearbyMsgFragment", 2, "onPageSelected， startMsgBoxListActivity");
@@ -62,7 +62,7 @@ public class NearbyMsgFragment
     }
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131560861, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131561044, paramViewGroup, false);
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a == this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.tabIndex))
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a(false);
@@ -116,7 +116,7 @@ public class NearbyMsgFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyMsgFragment
  * JD-Core Version:    0.7.0.1
  */

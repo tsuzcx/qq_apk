@@ -1,88 +1,30 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicWaveformManager.2;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public class blbr
+public abstract interface blbr
 {
-  private int jdField_a_of_type_Int;
-  private blbp jdField_a_of_type_Blbp;
-  private blbq jdField_a_of_type_Blbq = new blbs(this);
-  private MusicItemInfo jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new MusicWaveformManager.2(this);
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  public abstract void a(VideoMaterial paramVideoMaterial);
   
-  public static boolean a()
-  {
-    return ("Meizu".equals(Build.MANUFACTURER)) && (Build.VERSION.SDK_INT <= 22);
-  }
+  public abstract void a(boolean paramBoolean);
   
-  private void b()
-  {
-    this.jdField_a_of_type_Blbp = new blbp();
-    this.jdField_a_of_type_Boolean = true;
-    ThreadManager.postImmediately(this.jdField_a_of_type_JavaLangRunnable, null, true);
-  }
+  public abstract void b();
   
-  public float a(int paramInt)
-  {
-    if ((this.b) && (this.c)) {
-      return 0.5F;
-    }
-    if ((this.b) && (this.jdField_a_of_type_Blbp != null) && (this.jdField_a_of_type_Blbp.jdField_a_of_type_Boolean) && (paramInt >= this.jdField_a_of_type_Int)) {
-      return this.jdField_a_of_type_Blbp.a(paramInt - this.jdField_a_of_type_Int);
-    }
-    return -1.0F;
-  }
+  public abstract void b(boolean paramBoolean);
   
-  public void a()
-  {
-    if (!this.b) {
-      return;
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Blbp != null) {
-      this.jdField_a_of_type_Blbp = null;
-    }
-    this.b = false;
-  }
+  public abstract void c();
   
-  public void a(MusicItemInfo paramMusicItemInfo, int paramInt)
-  {
-    if (paramMusicItemInfo == null) {
-      a();
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!this.b) {
-          break;
-        }
-      } while ((paramMusicItemInfo.equals(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo)) && (this.jdField_a_of_type_Int <= paramInt) && (paramMusicItemInfo.musicStart == this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicStart) && (paramMusicItemInfo.musicEnd == this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.musicEnd));
-      a();
-      this.b = true;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo = paramMusicItemInfo.copy();
-      this.jdField_a_of_type_Blbp = null;
-      this.jdField_a_of_type_Int = paramInt;
-      if (!a()) {
-        break;
-      }
-      this.c = true;
-    } while (!QLog.isColorLevel());
-    QLog.e("MusicWaveformManager", 2, "musicSoundFile create give up, is rubbish Meizu");
-    return;
-    b();
-  }
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blbr
  * JD-Core Version:    0.7.0.1
  */

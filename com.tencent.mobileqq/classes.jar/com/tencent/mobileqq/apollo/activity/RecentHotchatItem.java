@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.apollo.activity;
 
-import ajmu;
-import ajya;
-import akpb;
+import abol;
+import aleh;
+import alpo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import axqy;
-import bame;
-import banb;
-import bane;
-import bbcz;
+import azmj;
+import bckr;
+import bclo;
+import bclr;
+import bdbt;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.AioPushData;
 import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.mobileqq.data.HotChatItemData;
@@ -27,7 +27,7 @@ import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import myb;
+import nav;
 
 public class RecentHotchatItem
   extends RecentBaseData
@@ -109,11 +109,11 @@ public class RecentHotchatItem
       localObject1 = paramQQAppInterface.a();
       if (localObject1 != null)
       {
-        this.mUnreadNum = ((akpb)localObject1).a(localMessage.frienduin, localMessage.istroop);
-        if ((bame.a((String)localObject4)) || (bame.c((String)localObject4)))
+        this.mUnreadNum = ((abol)localObject1).a(localMessage.frienduin, localMessage.istroop);
+        if ((bckr.a((String)localObject4)) || (bckr.c((String)localObject4)))
         {
-          this.mMsgExtroInfo = BaseApplicationImpl.getContext().getString(2131720284);
-          this.mExtraInfoColor = paramContext.getResources().getColor(2131166931);
+          this.mMsgExtroInfo = BaseApplicationImpl.getContext().getString(2131720820);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131166979);
         }
         j = this.mMenuFlag;
         localObject1 = (TroopManager)paramQQAppInterface.getManager(52);
@@ -143,7 +143,7 @@ public class RecentHotchatItem
         long l1;
         if (TextUtils.isEmpty((CharSequence)localObject3))
         {
-          this.mTitleName = bbcz.a(paramQQAppInterface, (String)localObject4, true);
+          this.mTitleName = bdbt.a(paramQQAppInterface, (String)localObject4, true);
           localObject4 = a();
           if ((localMessage != null) && (TextUtils.isEmpty(localMessage.nickName))) {
             localMessage.nickName = localMessage.senderuin;
@@ -177,23 +177,23 @@ public class RecentHotchatItem
         this.mIsGroupVideoNotify = paramQQAppInterface.a().b(l1);
         if (this.mIsGroupVideoNotify)
         {
-          localObject1 = (bane)paramQQAppInterface.getManager(164);
-          if ((localObject1 != null) && (((bane)localObject1).a(a()) == 2)) {
+          localObject1 = (bclr)paramQQAppInterface.getManager(164);
+          if ((localObject1 != null) && (((bclr)localObject1).a(a()) == 2)) {
             this.mIsGroupVideoNotify = false;
           }
         }
         if ((this.mIsGroupVideoNotify) && (TextUtils.isEmpty(this.mMsgExtroInfo)))
         {
-          this.mMsgExtroInfo = paramQQAppInterface.getApp().getString(2131698052);
-          this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131166955);
+          this.mMsgExtroInfo = paramQQAppInterface.getApp().getString(2131698229);
+          this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167006);
         }
         if ((this.mIsGroupVideoNotify) && (!bool))
         {
           localObject1 = String.valueOf(l1);
-          axqy.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, (String)localObject1, "" + banb.a(paramQQAppInterface, (String)localObject1), "", "");
+          azmj.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, (String)localObject1, "" + bclo.a(paramQQAppInterface, (String)localObject1), "", "");
         }
-        if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (localMessage != null) && (localObject4 != null) && (myb.a(localMessage))) {
-          this.mLastMsg = ((MsgSummary)localObject4).a(paramContext, paramContext.getResources().getString(2131697495), -1);
+        if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (localMessage != null) && (localObject4 != null) && (nav.a(localMessage))) {
+          this.mLastMsg = ((MsgSummary)localObject4).a(paramContext, paramContext.getResources().getString(2131697670), -1);
         }
         this.mMenuFlag &= 0xFFFFFF0F;
         j = this.mMenuFlag;
@@ -210,11 +210,11 @@ public class RecentHotchatItem
           if (QLog.isColorLevel()) {
             QLog.d("RecentHotchatItem", 2, "[update] kicked out");
           }
-          paramQQAppInterface = ajya.a(2131713166);
+          paramQQAppInterface = alpo.a(2131713538);
           ((MsgSummary)localObject4).a();
           this.mLastMsg = ((MsgSummary)localObject4).a(paramContext, paramQQAppInterface, -1);
           this.mUnreadFlag = 0;
-          if (!AppSetting.d) {
+          if (!AppSetting.c) {
             break label1119;
           }
           paramQQAppInterface = new StringBuilder(24);
@@ -244,7 +244,7 @@ public class RecentHotchatItem
             break label758;
           }
           this.mMsgExtroInfo = "";
-          this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131166955);
+          this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167006);
           localObject1 = this.mGameData.wording;
           ((MsgSummary)localObject4).a();
           this.mLastMsg = ((MsgSummary)localObject4).a(paramContext, (String)localObject1, -1);
@@ -261,7 +261,7 @@ public class RecentHotchatItem
           if ((e()) && (!c()))
           {
             this.mMsgExtroInfo = "";
-            this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131166955);
+            this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131167006);
             paramQQAppInterface = this.mGameData.wording;
             ((MsgSummary)localObject4).a();
             this.mLastMsg = ((MsgSummary)localObject4).a(paramContext, paramQQAppInterface, -1);
@@ -300,10 +300,10 @@ public class RecentHotchatItem
   {
     if ((this.mOriginalData != null) && (this.mOriginalData.mGameId <= 0) && (!TextUtils.isEmpty(this.mOriginalData.mHotChatCode)) && (paramQQAppInterface != null))
     {
-      Object localObject = (ajmu)paramQQAppInterface.getManager(155);
+      Object localObject = (aleh)paramQQAppInterface.getManager(155);
       if (localObject != null)
       {
-        localObject = ((ajmu)localObject).a(this.mOriginalData.mHotChatCode);
+        localObject = ((aleh)localObject).a(this.mOriginalData.mHotChatCode);
         if (localObject != null) {
           this.mOriginalData.mGameId = ((ApolloGameData)localObject).gameId;
         }
@@ -311,7 +311,7 @@ public class RecentHotchatItem
     }
     if ((paramQQAppInterface != null) && (c() > 0))
     {
-      paramQQAppInterface = (ajmu)paramQQAppInterface.getManager(155);
+      paramQQAppInterface = (aleh)paramQQAppInterface.getManager(155);
       if (paramQQAppInterface != null) {
         this.mGameData = paramQQAppInterface.a(c(), c());
       }
@@ -356,7 +356,7 @@ public class RecentHotchatItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.activity.RecentHotchatItem
  * JD-Core Version:    0.7.0.1
  */

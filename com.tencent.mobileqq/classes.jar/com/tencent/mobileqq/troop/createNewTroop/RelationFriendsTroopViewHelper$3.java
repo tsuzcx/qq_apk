@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import azlm;
-import azlq;
-import azls;
+import bbjv;
+import bbjz;
+import bbkb;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.PinnedFooterExpandableListView;
@@ -11,11 +11,11 @@ import java.util.ArrayList;
 public class RelationFriendsTroopViewHelper$3
   implements Runnable
 {
-  public RelationFriendsTroopViewHelper$3(azlq paramazlq, String paramString) {}
+  public RelationFriendsTroopViewHelper$3(bbjz parambbjz, String paramString) {}
   
   public void run()
   {
-    ArrayList localArrayList1 = this.this$0.jdField_a_of_type_Azlm.a(this.a);
+    ArrayList localArrayList1 = this.this$0.jdField_a_of_type_Bbjv.a(this.a);
     if (localArrayList1 == null) {
       QLog.i("RelationFriendsTroopViewHelper", 1, "updateRelationFriends searchend result null,uin:" + this.a);
     }
@@ -30,7 +30,7 @@ public class RelationFriendsTroopViewHelper$3
       QLog.i("RelationFriendsTroopViewHelper", 1, "updateRelationFriends startsearch uin:" + this.a + ",resultsize:" + localArrayList1.size());
       localArrayList2 = new ArrayList();
       localArrayList3 = new ArrayList();
-      localArrayList3.addAll(azlq.a(this.this$0).b());
+      localArrayList3.addAll(bbjz.a(this.this$0).b());
       i = 0;
       j = 0;
       if (i < localArrayList1.size())

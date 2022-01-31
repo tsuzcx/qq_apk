@@ -1,16 +1,23 @@
 import android.view.View;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.View.OnClickListener;
 
-public class atox
-  implements atyh
+class atox
+  implements View.OnClickListener
 {
-  public atox(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  atox(atov paramatov) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(View paramView)
+  {
+    if (this.a.a.a()) {
+      return;
+    }
+    atof.a(this.a.a, null);
+    azmj.b(null, "CliOper", "", "", "0X800A96B", "0X800A96B", 0, 0, "0", "0", "0", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atox
  * JD-Core Version:    0.7.0.1
  */

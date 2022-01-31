@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import aczm;
+import aera;
 import android.graphics.drawable.Drawable;
 import java.util.Collection;
 import java.util.Iterator;
@@ -23,8 +23,8 @@ public class PendantInfo$AnimationLruCache
     {
       Drawable localDrawable = (Drawable)localIterator.next();
       localDrawable.setCallback(null);
-      if ((localDrawable instanceof aczm)) {
-        ((aczm)localDrawable).a();
+      if ((localDrawable instanceof aera)) {
+        ((aera)localDrawable).a();
       }
     }
     super.clear();
@@ -36,8 +36,8 @@ public class PendantInfo$AnimationLruCache
     {
       paramEntry = (Drawable)paramEntry.getValue();
       paramEntry.setCallback(null);
-      if ((paramEntry instanceof aczm)) {
-        ((aczm)paramEntry).a();
+      if ((paramEntry instanceof aera)) {
+        ((aera)paramEntry).a();
       }
       return true;
     }
@@ -46,7 +46,7 @@ public class PendantInfo$AnimationLruCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.PendantInfo.AnimationLruCache
  * JD-Core Version:    0.7.0.1
  */

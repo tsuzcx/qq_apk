@@ -1,24 +1,21 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.widget.LinearLayout;
 
 class prx
-  implements View.OnTouchListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  prx(prt paramprt, LinearLayout paramLinearLayout) {}
+  prx(prr paramprr) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-    }
-    return false;
+    prr.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    prr.a(this.a).requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     prx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.PublicAccountHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
-class ngp
-  implements View.OnClickListener
+public class ngp
+  implements DialogInterface.OnDismissListener
 {
-  ngp(nfr paramnfr, String paramString, nms paramnms) {}
+  public ngp(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    nfr.c(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_JavaLangString);
-    PublicAccountHandler.a(this.jdField_a_of_type_Nfr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Nfr.jdField_a_of_type_JavaLangString, "Grp_tribe", "interest_data", "Clk_msg");
-    nfr.a(this.jdField_a_of_type_Nfr, this.jdField_a_of_type_Nms.jdField_a_of_type_JavaLangString);
+    this.a.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ngp
  * JD-Core Version:    0.7.0.1
  */

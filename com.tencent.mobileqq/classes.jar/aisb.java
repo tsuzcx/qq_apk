@@ -1,22 +1,55 @@
-import com.tencent.mobileqq.DrawerPushItem;
-import java.util.Comparator;
+import Wallet.PfaFriendRsp;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-class aisb
-  implements Comparator<DrawerPushItem>
+final class aisb
+  extends Handler
 {
-  aisb(airx paramairx) {}
-  
-  public int a(DrawerPushItem paramDrawerPushItem1, DrawerPushItem paramDrawerPushItem2)
+  aisb(Looper paramLooper)
   {
-    if (paramDrawerPushItem2.priority == paramDrawerPushItem1.priority) {
-      return paramDrawerPushItem1.sub_priority - paramDrawerPushItem2.sub_priority;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool2 = true;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    return paramDrawerPushItem1.priority - paramDrawerPushItem2.priority;
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramMessage.obj != null)
+    {
+      localObject1 = localObject2;
+      if ((paramMessage.obj instanceof PfaFriendRsp)) {
+        localObject1 = (PfaFriendRsp)paramMessage.obj;
+      }
+    }
+    boolean bool1;
+    if (paramMessage.arg1 == 1)
+    {
+      bool1 = true;
+      if (paramMessage.arg2 != 1) {
+        break label93;
+      }
+    }
+    for (;;)
+    {
+      aisa.a(bool1, (PfaFriendRsp)localObject1, bool2);
+      return;
+      bool1 = false;
+      break;
+      label93:
+      bool2 = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aisb
  * JD-Core Version:    0.7.0.1
  */

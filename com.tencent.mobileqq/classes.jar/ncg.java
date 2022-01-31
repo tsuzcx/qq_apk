@@ -1,14 +1,24 @@
-import tencent.im.oidb.cmd0x79a.oidb_0x79a.RspBody;
-
-public abstract interface ncg
+public class ncg
+  implements nck
 {
-  public abstract void a();
+  public void a(Runnable paramRunnable)
+  {
+    new Thread(paramRunnable).start();
+  }
   
-  public abstract void a(oidb_0x79a.RspBody paramRspBody);
+  public void b(Runnable paramRunnable)
+  {
+    new Thread(paramRunnable).start();
+  }
+  
+  public void c(Runnable paramRunnable)
+  {
+    new Thread(paramRunnable).start();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ncg
  * JD-Core Version:    0.7.0.1
  */

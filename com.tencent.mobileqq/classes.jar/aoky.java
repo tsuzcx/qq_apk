@@ -1,29 +1,53 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class aoky
-  implements View.OnClickListener
+public class aoky
+  implements aoga<String>
 {
-  aoky(Context paramContext, Dialog paramDialog) {}
+  public boolean a;
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("url", "https://ti.qq.com/extend-friend/?_wv=536870912");
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    axqy.b(null, "dc00898", "", "", "kuolie", "0X80097DE", 0, 0, "", "", "", "");
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    boolean bool = false;
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config content is empty");
     }
+    for (;;)
+    {
+      return;
+      QLog.i("OpenSdkSwitchConfig", 1, "OpenVirtual.switch.config.parse=" + paramString);
+      try
+      {
+        if (new JSONObject(paramString).optInt("enable", 0) == 1) {
+          bool = true;
+        }
+        this.a = bool;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("OpenSdkSwitchConfig", 2, new Object[] { "OpenVirtual.switch.config.parse=", toString() });
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config.getException.", paramString);
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("OpenSdkSwitchConfig={");
+    localStringBuilder.append("enable:").append(this.a);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoky
  * JD-Core Version:    0.7.0.1
  */

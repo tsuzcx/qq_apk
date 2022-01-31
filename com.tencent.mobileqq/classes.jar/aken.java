@@ -1,24 +1,14 @@
-import java.util.concurrent.atomic.AtomicBoolean;
-import msf.msgcomm.msg_comm.Msg;
+import android.widget.TextView;
 
-class aken
+public class aken
 {
-  public long a;
-  public AtomicBoolean a;
-  public msg_comm.Msg a;
-  public long b;
-  
-  public aken(msg_comm.Msg paramMsg, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
+  public int a;
+  public TextView a;
+  public TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aken
  * JD-Core Version:    0.7.0.1
  */

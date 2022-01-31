@@ -1,34 +1,35 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.widget.GridListView;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.text.TextPaint;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
 public class bcmp
-  extends DataSetObserver
+  extends TextView
 {
-  public bcmp(GridListView paramGridListView) {}
-  
-  public void onChanged()
+  public bcmp(FollowImageTextView paramFollowImageTextView, Context paramContext)
   {
-    if (this.a.jdField_a_of_type_Bcms != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_Bcms.getCount());
-    }
-    if (this.a.jdField_a_of_type_Bcmt != null) {
-      this.a.jdField_a_of_type_Bcmt.notifyDataSetChanged();
-    }
+    super(paramContext);
   }
   
-  public void onInvalidated()
+  protected void onDraw(Canvas paramCanvas)
   {
-    if (this.a.jdField_a_of_type_Bcms != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_Bcms.getCount());
+    if (FollowImageTextView.a(this.a))
+    {
+      super.onDraw(paramCanvas);
+      return;
     }
-    if (this.a.jdField_a_of_type_Bcmt != null) {
-      this.a.jdField_a_of_type_Bcmt.notifyDataSetInvalidated();
-    }
+    Object localObject = getPaint();
+    ((TextPaint)localObject).setColor(getCurrentTextColor());
+    ((TextPaint)localObject).drawableState = getDrawableState();
+    localObject = FollowImageTextView.a(this.a);
+    ((bcms)localObject).a(FollowImageTextView.a(this.a) - 1);
+    ((bcms)localObject).a(paramCanvas);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcmp
  * JD-Core Version:    0.7.0.1
  */

@@ -3,23 +3,22 @@ package com.tencent.qqmini.sdk.launcher.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bese;
 
 public class PreCacheInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<PreCacheInfo> CREATOR = new bese();
-  public long a;
-  public String a;
-  public String b;
+  public static final Parcelable.Creator<PreCacheInfo> CREATOR = new PreCacheInfo.1();
+  public long expireTime;
+  public String getDataUrl;
+  public String preCacheKey;
   
   public PreCacheInfo() {}
   
   public PreCacheInfo(String paramString1, String paramString2, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    this.getDataUrl = paramString1;
+    this.preCacheKey = paramString2;
+    this.expireTime = paramLong;
   }
   
   public int describeContents()
@@ -29,19 +28,19 @@ public class PreCacheInfo
   
   public String toString()
   {
-    return "getDataUrl:" + this.jdField_a_of_type_JavaLangString + "  preCacheKey:" + this.b + "  expireTime:" + this.jdField_a_of_type_Long;
+    return "getDataUrl:" + this.getDataUrl + "  preCacheKey:" + this.preCacheKey + "  expireTime:" + this.expireTime;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.b);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
+    paramParcel.writeString(this.getDataUrl);
+    paramParcel.writeString(this.preCacheKey);
+    paramParcel.writeLong(this.expireTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.PreCacheInfo
  * JD-Core Version:    0.7.0.1
  */

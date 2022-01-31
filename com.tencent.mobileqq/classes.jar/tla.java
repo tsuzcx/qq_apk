@@ -1,24 +1,22 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
 
 public class tla
-  extends ssh
+  implements DialogInterface.OnClickListener
 {
-  public final String a;
+  public tla(OuterInterceptManager.1 param1) {}
   
-  public tla(ErrorMessage paramErrorMessage, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public String toString()
-  {
-    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + "} ";
+    if (this.a.a != null) {
+      this.a.a.d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tla
  * JD-Core Version:    0.7.0.1
  */

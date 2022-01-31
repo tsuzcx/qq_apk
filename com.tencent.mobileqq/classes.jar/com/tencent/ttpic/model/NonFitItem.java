@@ -7,7 +7,6 @@ public class NonFitItem
   extends StickerItem
 {
   public int clickMode;
-  public int triggerMode;
   
   public String toString()
   {

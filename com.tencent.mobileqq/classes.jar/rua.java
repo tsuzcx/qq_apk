@@ -1,20 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 
-class rua
-  extends AnimatorListenerAdapter
+public abstract interface rua
 {
-  rua(rty paramrty, int paramInt) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_Rty.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Rty.jdField_a_of_type_Float = 0.0F;
-  }
+  public abstract void a(ChannelCoverInfo paramChannelCoverInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rua
  * JD-Core Version:    0.7.0.1
  */

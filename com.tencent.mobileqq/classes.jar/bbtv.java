@@ -1,76 +1,107 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import mqq.manager.Manager;
 
 public class bbtv
-  implements SeekBar.OnSeekBarChangeListener
+  implements Manager
 {
-  public bbtv(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString) {}
+  private long a;
+  public bbtu a;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public bbtv(QQAppInterface paramQQAppInterface) {}
+  
+  public bbtu a(long paramLong, boolean paramBoolean, TroopChatPie paramTroopChatPie, String paramString)
   {
-    Iterator localIterator;
-    if (((paramSeekBar.getProgress() == paramSeekBar.getMax()) || (this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int > paramSeekBar.getProgress())) && (!this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b)) {
-      localIterator = this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.keySet().iterator();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopClassControllerMan", 2, "updateTroopAioClassUI troopClassType" + paramLong + ", currentTroopClassType" + this.jdField_a_of_type_Long);
     }
-    while (localIterator.hasNext())
+    if ((paramLong != this.jdField_a_of_type_Long) && (this.jdField_a_of_type_Bbtu != null)) {
+      this.jdField_a_of_type_Bbtu.a(false, paramTroopChatPie, paramBoolean);
+    }
+    this.jdField_a_of_type_Bbtu = a(paramTroopChatPie, paramString);
+    if (this.jdField_a_of_type_Bbtu != null) {
+      this.jdField_a_of_type_Bbtu.a(true, paramTroopChatPie, paramBoolean);
+    }
+    for (;;)
     {
-      Object localObject1 = (String)localIterator.next();
-      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject1)).seekTo(0);
-      paramSeekBar.setProgress(0);
-      ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(localObject1)).pause();
-      Object localObject2 = (FrameLayout)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_JavaUtilHashMap.get(localObject1);
-      localObject1 = (SeekBar)((FrameLayout)localObject2).findViewById(2131375776);
-      TextView localTextView1 = (TextView)((FrameLayout)localObject2).findViewById(2131373124);
-      TextView localTextView2 = (TextView)((FrameLayout)localObject2).findViewById(2131373123);
-      ImageView localImageView1 = (ImageView)((FrameLayout)localObject2).findViewById(2131373122);
-      ImageView localImageView2 = (ImageView)((FrameLayout)localObject2).findViewById(2131373121);
-      localObject2 = (TextView)((FrameLayout)localObject2).findViewById(2131373120);
-      localImageView1.setImageResource(2130848227);
-      localImageView1.setVisibility(0);
-      ((SeekBar)localObject1).setVisibility(4);
-      localTextView1.setVisibility(4);
-      localTextView2.setVisibility(4);
-      localImageView2.setVisibility(4);
-      ((TextView)localObject2).setVisibility(4);
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = 0;
-      continue;
-      this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = paramSeekBar.getProgress();
+      this.jdField_a_of_type_Long = paramLong;
+      return this.jdField_a_of_type_Bbtu;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopClassControllerMan", 2, "currenTroopClassController is null!!!");
+      }
     }
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  public bbtu a(TroopChatPie paramTroopChatPie, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "onStartTrackingTouch");
+    if (TroopInfo.isHomeworkTroop(paramTroopChatPie.a, paramString))
+    {
+      if (!(this.jdField_a_of_type_Bbtu instanceof bccj)) {
+        this.jdField_a_of_type_Bbtu = new bccj(paramTroopChatPie.a, paramTroopChatPie.a(), paramTroopChatPie);
+      }
+      this.jdField_a_of_type_Long = 32L;
+    }
+    for (;;)
+    {
+      return this.jdField_a_of_type_Bbtu;
+      if (TroopInfo.isFansTroop(paramTroopChatPie.a, paramString))
+      {
+        this.jdField_a_of_type_Long = 27L;
+      }
+      else
+      {
+        this.jdField_a_of_type_Bbtu = null;
+        this.jdField_a_of_type_Long = 0L;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopClassControllerMan", 2, "getControllerByTroopUin null " + paramString);
+        }
+      }
     }
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public void a()
   {
-    int i = paramSeekBar.getProgress();
-    long l = ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).getDuration();
-    i = (int)(i / 100.0D * l);
-    ((TVK_IMediaPlayer)this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.d.get(this.jdField_a_of_type_JavaLangString)).seekTo(i);
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int = paramSeekBar.getProgress();
-    this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "mLastprogressTime1:" + this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_e_of_type_Int);
+    if (this.jdField_a_of_type_Bbtu != null) {
+      this.jdField_a_of_type_Bbtu.c();
     }
   }
+  
+  public void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Bbtu instanceof bccj)) {
+      this.jdField_a_of_type_Bbtu.a(bcgk.b(paramInt));
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Bbtu != null) {
+      this.jdField_a_of_type_Bbtu.b(paramBoolean);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Bbtu != null) {
+      this.jdField_a_of_type_Bbtu.b();
+    }
+    this.jdField_a_of_type_Bbtu = null;
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Bbtu != null) {
+      this.jdField_a_of_type_Bbtu.a();
+    }
+  }
+  
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbtv
  * JD-Core Version:    0.7.0.1
  */

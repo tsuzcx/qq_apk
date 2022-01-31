@@ -2,15 +2,15 @@ package com.tencent.biz.pubaccount.readinjoy.presenter;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import pau;
-import pdg;
-import pdk;
-import ram;
+import pgd;
+import pji;
+import pjm;
+import rqj;
 
 public class ReadInJoyHeaderPresenter$3$1
   implements Runnable
 {
-  public ReadInJoyHeaderPresenter$3$1(pdk parampdk) {}
+  public ReadInJoyHeaderPresenter$3$1(pjm parampjm) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ReadInJoyHeaderPresenter$3$1
     int i = 0;
     while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      localArrayList.add(((pau)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
+      localArrayList.add(((pgd)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).a());
       i += 1;
     }
     StringBuilder localStringBuilder;
@@ -33,14 +33,14 @@ public class ReadInJoyHeaderPresenter$3$1
     for (String str = "null";; str = this.a.b.toString())
     {
       QLog.d("ReadInJoyHeaderPresenter", 2, str);
-      pdg.a(this.a.jdField_a_of_type_Pdg).a(this.a.jdField_a_of_type_Int, localArrayList, this.a.b, this.a.jdField_a_of_type_JavaLangObject);
+      pji.a(this.a.jdField_a_of_type_Pji).a(this.a.jdField_a_of_type_Int, localArrayList, this.a.b, this.a.jdField_a_of_type_JavaLangObject);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyHeaderPresenter.3.1
  * JD-Core Version:    0.7.0.1
  */

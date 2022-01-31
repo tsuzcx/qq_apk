@@ -1,23 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class acff
-  implements audy
+public final class acff
+  implements DialogInterface.OnClickListener
 {
-  public acff(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
+  public acff(long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, acgy paramacgy, acgz paramacgz, BaseActivity paramBaseActivity, boolean paramBoolean) {}
   
-  public void a(int paramInt, audz paramaudz)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!TextUtils.isEmpty(TextPreviewTranslateActivity.a(this.a))) && (!TextPreviewTranslateActivity.a(this.a).equals(paramaudz.b)))
+    if (paramInt == 1)
     {
-      TextPreviewTranslateActivity.a(this.a, paramaudz.b);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.c(this.a), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acgy, this.jdField_a_of_type_Acgz);
+      return;
     }
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Boolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acff
  * JD-Core Version:    0.7.0.1
  */

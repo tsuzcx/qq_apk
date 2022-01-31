@@ -1,26 +1,27 @@
-import android.util.Property;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Matrix;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
-class bknl
-  extends Property<bknf, Float>
+public class bknl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bknl(bknf parambknf, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public bknl(AECropperImageView paramAECropperImageView, Matrix paramMatrix, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
   
-  public Float a(bknf parambknf)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return Float.valueOf(bknf.b(parambknf));
-  }
-  
-  public void a(bknf parambknf, Float paramFloat)
-  {
-    bknf.a(parambknf, paramFloat);
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.getImageMatrix();
+    float f2 = AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView, this.jdField_a_of_type_AndroidGraphicsMatrix, 2);
+    float f3 = AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView, this.jdField_a_of_type_AndroidGraphicsMatrix, 5);
+    paramValueAnimator.postTranslate(this.jdField_a_of_type_Float * f1 - (f2 - this.b), f1 * this.c - (f3 - this.d));
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.setImageMatrix(paramValueAnimator);
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bknl
  * JD-Core Version:    0.7.0.1
  */

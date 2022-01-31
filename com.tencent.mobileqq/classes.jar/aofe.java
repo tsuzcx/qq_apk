@@ -1,61 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.ExtendFriendResourceDownloader.4;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import java.util.Comparator;
 
-public class aofe
-  implements aysc
+class aofe
+  implements Comparator<Rect>
 {
-  public aofe(ExtendFriendResourceDownloader.4 param4) {}
+  aofe(aofb paramaofb) {}
   
-  public void onResp(aysz paramaysz)
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    int i = 0;
-    aoey localaoey = (aoey)paramaysz.jdField_a_of_type_Aysy.a();
-    if (localaoey != null)
+    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
+    do
     {
-      if (paramaysz.jdField_a_of_type_Int == 0) {
-        break label147;
+      return -1;
+      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
+        return 1;
       }
-      QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener file failed. errorCode: " + paramaysz.b + ", errorMsg: " + paramaysz.jdField_a_of_type_JavaLangString + ", file: " + localaoey.b);
+    } while (paramRect1.width() > paramRect2.width());
+    if (paramRect1.width() < paramRect2.width()) {
+      return 1;
     }
-    for (;;)
-    {
-      if ((i != 0) && (aofa.a(this.a.this$0, localaoey)))
-      {
-        ((aoet)aofa.a(this.a.this$0).a(127)).notifyUI(8, true, Boolean.valueOf(true));
-        QLog.i("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener  needNotifyUi  .");
-      }
-      aofa.a(this.a.this$0, localaoey);
-      return;
-      label147:
-      if (!localaoey.c.equalsIgnoreCase(SecUtil.getFileMd5(paramaysz.jdField_a_of_type_Aysy.c)))
-      {
-        QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener file failed: " + localaoey.b + "md5 is not match. ：" + SecUtil.getFileMd5(paramaysz.jdField_a_of_type_Aysy.c) + " infomd5:" + localaoey.c);
-        bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener resFile success. file: " + localaoey.jdField_a_of_type_JavaLangString + localaoey.b);
-        }
-        String str = aojm.c();
-        boolean bool = aofa.b(this.a.this$0, paramaysz.jdField_a_of_type_Aysy.c, str);
-        i = bool;
-        if (!bool)
-        {
-          QLog.e("ExtendFriendResourceDownloader", 2, "LimitChatDownloaderListener  unzip file failed.");
-          i = bool;
-        }
-      }
-    }
+    return 0;
   }
-  
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aofe
  * JD-Core Version:    0.7.0.1
  */

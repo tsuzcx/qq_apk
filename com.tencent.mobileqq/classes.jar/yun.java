@@ -1,31 +1,89 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
-class yun
-  implements yuf
+public class yun
+  extends aofy<yum>
 {
-  yun(yul paramyul) {}
-  
-  public void a(yuc paramyuc)
+  private void a(String paramString1, String paramString2)
   {
-    yxp.b("GdtInterstitialPreDownloader", String.format("onPreDownloaded appName:%s view:%s minVersion:%s", new Object[] { paramyuc.a, paramyuc.b, paramyuc.c }));
-    yyc.a(BaseApplicationImpl.getApplication(), yul.a(yul.a()), 0, -2147483648);
+    QLog.d("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onUpdate() apply new widget config");
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      yuh.a().a("KEY_BOOLEAN_APPLY_WIDGET_CONFIG", Boolean.valueOf(true));
+      yuh.a().a("KEY_VS_ENTRANCE_WIDGET_MD5", paramString1);
+      yuh.a().a("KEY_VS_ENTRANCE_WIDGET_CONTENT", paramString2);
+    }
   }
   
-  public void a(yuc paramyuc, int paramInt)
+  public int a()
   {
-    yxp.b("GdtInterstitialPreDownloader", String.format("onStatusChanged appName:%s view:%s minVersion:%s status:%d", new Object[] { paramyuc.a, paramyuc.b, paramyuc.c, Integer.valueOf(paramInt) }));
-    yyc.a(BaseApplicationImpl.getApplication(), yul.a(yul.a()), paramInt);
+    return 474;
   }
   
-  public void a(yuc paramyuc, int paramInt1, int paramInt2)
+  public Class<yum> a()
   {
-    yxp.d("GdtInterstitialPreDownloader", String.format("onFailedToPreDownload appName:%s view:%s minVersion:%s error:%d arkError:%d", new Object[] { paramyuc.a, paramyuc.b, paramyuc.c, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    yyc.a(BaseApplicationImpl.getApplication(), yul.a(yul.a()), paramInt1, paramInt2);
+    return yum.class;
+  }
+  
+  @NonNull
+  public yum a(int paramInt)
+  {
+    return new yum();
+  }
+  
+  @Nullable
+  public yum a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    {
+      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      yum localyum = yum.a(paramArrayOfaogf[0].a);
+      if (localyum == null)
+      {
+        QLog.e("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed error!");
+        return null;
+      }
+      String str = (String)yuh.a().a("KEY_VS_ENTRANCE_WIDGET_MD5", "");
+      if ((!TextUtils.isEmpty(localyum.b())) && (!localyum.b().equals(str)))
+      {
+        yuz.a().a(localyum);
+        a(localyum.b(), paramArrayOfaogf[0].a);
+      }
+      return localyum;
+    }
+    QLog.e("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onParsed conf content is null!");
+    return null;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(yum paramyum)
+  {
+    if (paramyum != null) {
+      QLog.i("Q.videostory.config.VSEntranceWidgetProcessor", 2, "onUpdate:" + paramyum.toString());
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yun
  * JD-Core Version:    0.7.0.1
  */

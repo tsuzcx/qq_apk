@@ -1,89 +1,126 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.net.URL;
-import java.util.Map;
+import android.graphics.Bitmap;
+import android.media.MediaMetadataRetriever;
+import android.util.SparseArray;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.capture.SystemCaptureProxy.1;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.capture.SystemCaptureProxy.2;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.capture.SystemCaptureProxy.3;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
-class qsf
-  extends qjz
+public class qsf
+  implements qsa
 {
-  qsf(qrt paramqrt) {}
+  private int jdField_a_of_type_Int;
+  private MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever = new MediaMetadataRetriever();
+  private SparseArray<qry> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private String jdField_a_of_type_JavaLangString;
+  private Set<qrv> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private volatile boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
+  private volatile boolean jdField_b_of_type_Boolean;
+  private int c;
   
-  public bbjs a(Integer paramInteger)
+  private int a(int paramInt)
   {
-    Object localObject;
-    if (22 == paramInteger.intValue())
-    {
-      localObject = new shb();
-      ((shb)localObject).jdField_a_of_type_JavaLangString = qrt.a(this.jdField_a_of_type_Qrt).getResources().getString(2131696717);
-      ((shb)localObject).jdField_b_of_type_Boolean = true;
-      ((shb)localObject).jdField_b_of_type_Int = 2130842585;
-      ((shb)localObject).c = a(paramInteger.intValue());
-      ((shb)localObject).jdField_b_of_type_JavaLangString = "";
-      return localObject;
-    }
-    if (121 == paramInteger.intValue())
-    {
-      localObject = new shb();
-      ((shb)localObject).jdField_a_of_type_JavaLangString = ajya.a(2131716211);
-      ((shb)localObject).jdField_b_of_type_Int = 2130842117;
-      ((shb)localObject).jdField_b_of_type_Boolean = true;
-      ((shb)localObject).c = a(paramInteger.intValue());
-      ((shb)localObject).jdField_b_of_type_JavaLangString = "";
-      return localObject;
-    }
-    if (24 == paramInteger.intValue())
-    {
-      shb localshb = new shb();
-      localshb.jdField_a_of_type_JavaLangString = qoi.a(qrt.a(this.jdField_a_of_type_Qrt).k);
-      localshb.jdField_b_of_type_Boolean = false;
-      localshb.c = 24;
-      localshb.jdField_b_of_type_JavaLangString = "";
-      localObject = bbef.b();
-      if (!TextUtils.isEmpty(qrt.a(this.jdField_a_of_type_Qrt).j)) {
-        paramInteger = bayh.a(qrt.a(this.jdField_a_of_type_Qrt), 1, qrt.a(this.jdField_a_of_type_Qrt).j, 3, (Drawable)localObject, (Drawable)localObject);
-      }
-      for (;;)
-      {
-        localshb.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramInteger;
-        return localshb;
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
-        localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-        try
-        {
-          if (TextUtils.isEmpty(qrt.a(this.jdField_a_of_type_Qrt).E)) {}
-          for (paramInteger = new URL("http://post.mp.qq.com/kan/video/201197226-1955dc60def689ah-j0032zp3bhx.html?_wv=2281701505&sig=2556997e505f84ff05decf79e0d001af&time=1573267470&iid=MzczOTc1NDQ5OQ==&sourcefrom=0");; paramInteger = new URL(qrt.a(this.jdField_a_of_type_Qrt).E))
-          {
-            paramInteger = URLDrawable.getDrawable(paramInteger, localURLDrawableOptions);
-            paramInteger.setDecodeHandler(bavw.a);
-            break;
-          }
-        }
-        catch (Exception paramInteger)
-        {
-          paramInteger = (Integer)localObject;
-        }
-      }
-    }
-    return super.a(paramInteger);
+    return Integer.parseInt(this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.extractMetadata(paramInt));
   }
   
-  protected void a()
+  private Bitmap a(MediaMetadataRetriever paramMediaMetadataRetriever, qrw paramqrw)
   {
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(45), Integer.valueOf(22));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(22), Integer.valueOf(121));
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(24), Integer.valueOf(24));
-    super.a();
+    try
+    {
+      paramMediaMetadataRetriever = paramMediaMetadataRetriever.getFrameAtTime(paramqrw.c * 1000, 0);
+      return paramMediaMetadataRetriever;
+    }
+    catch (Throwable paramMediaMetadataRetriever)
+    {
+      QLog.e("SystemCaptureProxy", 1, "getFrameAtTime failed for captureTask" + paramqrw.c, paramMediaMetadataRetriever);
+    }
+    return null;
   }
+  
+  private void d()
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.setDataSource(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Int = a(9);
+      this.jdField_b_of_type_Int = a(18);
+      this.c = a(19);
+      ThreadManager.getUIHandler().post(new SystemCaptureProxy.3(this));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  private void e()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+    while (localIterator.hasNext())
+    {
+      qrv localqrv = (qrv)localIterator.next();
+      if (localqrv != null) {
+        localqrv.a(this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_Int);
+      }
+    }
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_Boolean = true;
+    if (this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever != null) {
+      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.release();
+    }
+  }
+  
+  public void a(int paramInt, ISuperPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
+  
+  public void a(String paramString, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    ThreadManager.executeOnFileThread(new SystemCaptureProxy.1(this));
+  }
+  
+  public void a(qrv paramqrv)
+  {
+    this.jdField_a_of_type_JavaUtilSet.add(paramqrv);
+  }
+  
+  public void a(qrw paramqrw, qry paramqry)
+  {
+    try
+    {
+      ThreadManager.executeOnFileThread(new SystemCaptureProxy.2(this, paramqrw, paramqry));
+      return;
+    }
+    finally
+    {
+      paramqrw = finally;
+      throw paramqrw;
+    }
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qsf
  * JD-Core Version:    0.7.0.1
  */

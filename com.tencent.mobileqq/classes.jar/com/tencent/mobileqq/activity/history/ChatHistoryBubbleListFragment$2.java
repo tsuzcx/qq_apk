@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.history;
 
-import bamv;
+import bcli;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -28,7 +28,7 @@ class ChatHistoryBubbleListFragment$2
       ThreadManager.getUIHandler().post(new ChatHistoryBubbleListFragment.2.1(this, (List)localObject));
       return;
     }
-    bamv.a("chat_history", "target_404", String.valueOf(this.this$0.jdField_c_of_type_Long), String.valueOf(this.this$0.jdField_c_of_type_Int), "", "");
+    bcli.a("chat_history", "target_404", String.valueOf(this.this$0.jdField_c_of_type_Long), String.valueOf(this.this$0.jdField_c_of_type_Int), "", "");
     if (QLog.isColorLevel()) {
       QLog.e("chatHistory.troop.msgList", 2, "msg not found, fallback to loadData");
     }
@@ -37,7 +37,7 @@ class ChatHistoryBubbleListFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBubbleListFragment.2
  * JD-Core Version:    0.7.0.1
  */

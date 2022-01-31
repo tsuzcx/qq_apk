@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bcnq;
-import bcnr;
+import bems;
+import bemt;
 
 public class CommonImageView
   extends ImageView
-  implements bcnr
+  implements bemt
 {
-  private bcnq a;
+  private bems a;
   
   public CommonImageView(Context paramContext)
   {
@@ -29,12 +29,12 @@ public class CommonImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void b(Canvas paramCanvas)
+  public void a(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
   }
   
-  public void c(Canvas paramCanvas)
+  public void b(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
   }
@@ -59,15 +59,15 @@ public class CommonImageView
     super.onDraw(paramCanvas);
   }
   
-  public void setMosaicEffect(bcnq parambcnq)
+  public void setMosaicEffect(bems parambems)
   {
-    bcnq localbcnq = this.a;
-    if (localbcnq != null) {
-      localbcnq.a(null);
+    bems localbems = this.a;
+    if (localbems != null) {
+      localbems.a(null);
     }
-    this.a = parambcnq;
-    if (parambcnq != null) {
-      parambcnq.a(this);
+    this.a = parambems;
+    if (parambems != null) {
+      parambems.a(this);
     }
     invalidate();
   }

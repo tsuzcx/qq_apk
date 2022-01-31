@@ -3,7 +3,7 @@ package com.tencent.mobileqq.troop.widget;
 import android.graphics.Bitmap;
 import android.util.Pair;
 import android.widget.ImageView;
-import baog;
+import bcmt;
 
 class HotChatPostItemView$1$1$1
   implements Runnable

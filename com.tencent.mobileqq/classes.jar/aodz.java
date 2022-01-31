@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.data.MessageForPic;
+import android.view.View;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
 
-public abstract interface aodz
+public class aodz
+  implements bhxz
 {
-  public abstract void a(int paramInt, MessageForPic paramMessageForPic);
+  public aodz(IphonePickerView paramIphonePickerView) {}
   
-  public abstract void a(boolean paramBoolean, MessageForPic paramMessageForPic);
+  public void a(View paramView, int paramInt)
+  {
+    IphonePickerView.a(this.a, paramView, 1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodz
  * JD-Core Version:    0.7.0.1
  */

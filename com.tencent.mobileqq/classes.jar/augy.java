@@ -1,21 +1,36 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.os.Build.VERSION;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class augy
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public augy(ScanIconAnimateView paramScanIconAnimateView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static void a()
   {
-    this.a.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
+    if (Build.VERSION.SDK_INT > 25)
+    {
+      Runtime.getRuntime().gc();
+      Runtime.getRuntime().gc();
+      Runtime.getRuntime().runFinalization();
+    }
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < 2)
+      {
+        ArrayList localArrayList = new ArrayList();
+        do
+        {
+          localArrayList.add(new WeakReference(new byte[100]));
+        } while (((WeakReference)localArrayList.get((int)(Math.random() * localArrayList.size()))).get() != null);
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     augy
  * JD-Core Version:    0.7.0.1
  */

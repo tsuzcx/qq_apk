@@ -1,49 +1,33 @@
-import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForShakeWindow;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.pb.troop.bindgame.GCBindGroup.GCBindGroupSsoServerRsp;
 import com.tencent.qphone.base.util.QLog;
 
-class adzb
-  implements View.OnClickListener
+public class adzb
+  extends nac
 {
-  adzb(adza paramadza) {}
+  public adzb(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.shakemsg", 2, "shake msg onClick() is called");
-    }
-    actj.n = true;
-    if (this.a.a()) {
-      return;
-    }
-    if (SystemClock.uptimeMillis() - adza.a(this.a) < 3000L)
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      QLog.d("Q.msg.shakemsg", 2, "shake return cause:too much click in a very short time!");
+      paramBundle = new GCBindGroup.GCBindGroupSsoServerRsp();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.a.a(paramBundle);
       return;
     }
-    paramView = (MessageForShakeWindow)actj.a(paramView);
-    if (((this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity)) || ((this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)))
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      FragmentActivity localFragmentActivity = (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext;
-      adza.a(this.a, SystemClock.uptimeMillis());
-      localFragmentActivity.getChatFragment().a().ar();
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
-      return;
+      QLog.e("Q.troopinfo", 1, "parse game bind status failed");
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramView.frienduin, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzb
  * JD-Core Version:    0.7.0.1
  */

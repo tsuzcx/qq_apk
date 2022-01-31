@@ -1,23 +1,24 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
-public class yoe
-  implements TouchWebView.OnScrollChangedListener
+class yoe
+  extends yoh
 {
-  public yoe(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
-  
-  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  yoe(ynx paramynx, ynu paramynu, String paramString)
   {
-    if (GameCenterAPIJavaScript.access$000(this.a) != null) {
-      GameCenterAPIJavaScript.access$000(this.a).scrollBy(0, paramInt2 - paramInt4);
+    super(paramynx.a);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
     }
+    this.jdField_a_of_type_Ynu.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yoe
  * JD-Core Version:    0.7.0.1
  */

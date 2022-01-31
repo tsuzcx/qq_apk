@@ -1,21 +1,15 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import java.util.ArrayList;
 
-public class anrk
+public abstract class anrk
 {
-  public View a;
-  public ImageView a;
-  public URLImageView a;
-  public View b;
-  public ImageView b;
-  public View c;
+  public abstract void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt);
   
-  public anrk(anrc paramanrc) {}
+  public abstract void a(ArrayList<RockDownloadInfo> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anrk
  * JD-Core Version:    0.7.0.1
  */

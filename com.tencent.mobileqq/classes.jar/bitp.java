@@ -1,42 +1,19 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView;
-import dov.com.qq.im.ae.gif.giftext.DrawableImageView;
+import android.os.Bundle;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
 
 class bitp
-  extends RecyclerView.ViewHolder
+  extends amam
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private AEGIFOutlineTextView jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView;
-  private DrawableImageView jdField_a_of_type_DovComQqImAeGifGiftextDrawableImageView;
-  private ImageView b;
+  bitp(bito parambito) {}
   
-  public bitp(bitj parambitj, View paramView)
+  public void a()
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363647));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131372826));
-    this.jdField_a_of_type_DovComQqImAeGifGiftextDrawableImageView = ((DrawableImageView)paramView.findViewById(2131362166));
-    this.b = ((ImageView)paramView.findViewById(2131362167));
-    this.jdField_a_of_type_DovComQqImAeGifGiftextAEGIFOutlineTextView = ((AEGIFOutlineTextView)paramView.findViewById(2131371163));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837927);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837640);
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 2, new Bundle());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bitp
  * JD-Core Version:    0.7.0.1
  */

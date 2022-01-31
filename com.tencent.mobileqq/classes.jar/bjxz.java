@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
 
-public abstract interface bjxz
+class bjxz
+  implements DialogInterface.OnShowListener
 {
-  public abstract void a();
+  bjxz(bjxx parambjxx, bepp parambepp) {}
   
-  public abstract void a(TroopBarPOI paramTroopBarPOI);
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    this.jdField_a_of_type_Bepp.hide();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjxz
  * JD-Core Version:    0.7.0.1
  */

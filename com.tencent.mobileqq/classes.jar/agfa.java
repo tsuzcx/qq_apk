@@ -1,18 +1,21 @@
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 class agfa
-  implements bfqj
+  implements View.OnClickListener
 {
-  agfa(agez paramagez, View paramView) {}
+  agfa(aget paramaget) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    this.a.a(((TextView)paramView).getText().toString());
+    this.a.w();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agfa
  * JD-Core Version:    0.7.0.1
  */

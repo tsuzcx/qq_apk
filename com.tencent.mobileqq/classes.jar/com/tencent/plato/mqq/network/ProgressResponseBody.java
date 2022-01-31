@@ -1,9 +1,8 @@
 package com.tencent.plato.mqq.network;
 
 import android.support.annotation.Nullable;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.ResponseBody;
-import java.io.IOException;
+import okhttp3.MediaType;
+import okhttp3.ResponseBody;
 import okio.BufferedSource;
 import okio.Okio;
 import okio.Source;
@@ -36,9 +35,9 @@ public class ProgressResponseBody
       long l = this.mResponseBody.contentLength();
       return l;
     }
-    catch (IOException localIOException)
+    catch (Exception localException)
     {
-      localIOException.printStackTrace();
+      localException.printStackTrace();
     }
     return 0L;
   }
@@ -56,11 +55,11 @@ public class ProgressResponseBody
       this.mBufferedSource = Okio.buffer(source(this.mResponseBody.source()));
       return this.mBufferedSource;
     }
-    catch (IOException localIOException)
+    catch (Exception localException)
     {
       for (;;)
       {
-        localIOException.printStackTrace();
+        localException.printStackTrace();
       }
     }
   }
@@ -72,7 +71,7 @@ public class ProgressResponseBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.plato.mqq.network.ProgressResponseBody
  * JD-Core Version:    0.7.0.1
  */

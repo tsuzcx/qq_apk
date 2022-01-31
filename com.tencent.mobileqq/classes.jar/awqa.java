@@ -1,60 +1,40 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadTaskCallback;
 
-public class awqa
-  extends awqb
+class awqa
+  implements IUploadTaskCallback
 {
-  String a = null;
+  awqa(awpz paramawpz) {}
   
-  awoh a(afgv paramafgv, List<awoi> paramList, String paramString1, boolean paramBoolean, String paramString2)
+  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
   {
-    awni localawni;
-    if (paramList != null)
+    this.a.f = 1002;
+    this.a.jdField_a_of_type_Int = paramInt;
+    this.a.c = paramString;
+    this.a.a(1002, new Object[0]);
+  }
+  
+  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2) {}
+  
+  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt)
+  {
+    if (this.a.f != paramInt)
     {
-      localawni = (awni)paramList.get(0);
-      if ((localawni != null) && (localawni.a() != null))
-      {
-        String str = localawni.a().hotword.get();
-        nol.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006F74", "0X8006F74", 0, 0, localawni.a(), str, String.valueOf(localawni.a().hotword_type.get()), "");
-      }
-      if ((localawni == null) || (localawni.a() == null)) {
-        break label166;
-      }
-    }
-    for (;;)
-    {
-      if ((localawni != null) && (localawni.a() != null)) {
-        nol.a(null, "CliOper", "", "", "0X8006535", "0X8006535", 0, 0, "", "", paramString1, String.valueOf(localawni.a().account_id.get()));
-      }
-      awvz.a(110);
-      this.a = paramString2;
-      return new awnh(paramafgv, paramList, paramString1, paramString2);
-      label166:
-      if (paramList.size() > 1) {
-        localawni = (awni)paramList.get(1);
-      } else {
-        localawni = null;
-      }
+      this.a.f = paramInt;
+      this.a.a(this.a.f, new Object[0]);
     }
   }
   
-  awoi a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  public void onUploadSucceed(AbstractUploadTask paramAbstractUploadTask, Object paramObject)
   {
-    return new awni(paramhotwordrecord, paramString1, paramCharSequence1, paramString2, paramCharSequence2);
-  }
-  
-  awoi a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
-  {
-    return new awni(paramrecord, paramString, paramCharSequence);
+    this.a.f = 1001;
+    this.a.jdField_a_of_type_JavaLangObject = paramObject;
+    this.a.a(1001, new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awqa
  * JD-Core Version:    0.7.0.1
  */

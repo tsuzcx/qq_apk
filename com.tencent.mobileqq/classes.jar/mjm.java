@@ -1,33 +1,18 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.ui.VideoControlUI;
-
-public class mjm
-  extends Handler
+class mjm
+  implements bhtl
 {
-  public mjm(VideoControlUI paramVideoControlUI, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  mjm(mjk parammjk) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onScrollStateChanged(int paramInt)
   {
-    String str = (String)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 256: 
-      mao.a(this.a.a, 1037, str);
-      return;
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(0L);
     }
-    mao.a(this.a.a, 1036, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mjm
  * JD-Core Version:    0.7.0.1
  */

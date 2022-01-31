@@ -1,118 +1,229 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.database.sqlite.SQLiteException;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.fts.FTSTroop;
+import com.tencent.mobileqq.data.fts.TroopIndex;
+import com.tencent.mobileqq.fts.FTSDatabase;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class asel
 {
-  private static asel jdField_a_of_type_Asel;
-  private int jdField_a_of_type_Int = 1;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  
-  private asel()
+  public static int a(FTSDatabase paramFTSDatabase, String paramString)
   {
-    if (NetConnInfoCenter.socketConnState == 4) {
-      this.jdField_a_of_type_Int = 2;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LoadingStateManager", 2, "LoadingStateManager init loadingstate = " + this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public static asel a()
-  {
-    if (jdField_a_of_type_Asel == null) {
-      jdField_a_of_type_Asel = new asel();
-    }
-    return jdField_a_of_type_Asel;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a()
-  {
-    jdField_a_of_type_Asel = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(FromServiceMsg paramFromServiceMsg, QQAppInterface paramQQAppInterface)
-  {
-    if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getAttribute("_tag_socket") == null)) {}
-    do
+    paramString = "SELECT cursor FROM " + paramString + " WHERE id=1;";
+    try
     {
-      do
+      int i = c(paramFTSDatabase, paramString);
+      return i;
+    }
+    catch (SQLiteException paramFTSDatabase) {}
+    return -1;
+  }
+  
+  public static int a(FTSDatabase paramFTSDatabase, ArrayList<FTSEntity> paramArrayList, String paramString, int paramInt)
+  {
+    if ((paramArrayList == null) || (paramArrayList.isEmpty()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: entities == null");
+      }
+      return -1;
+    }
+    long l1 = System.currentTimeMillis();
+    int k = a(paramFTSDatabase, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.fts.FTSDatabaseHelper", 2, "FTSDatabaseHelper.queryCursorTable = " + k + " cost:" + (System.currentTimeMillis() - l1));
+    }
+    if (k == -1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: syncCursor == -1");
+      }
+      return -1;
+    }
+    if (!paramFTSDatabase.b())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.FTSDatabaseHelper", 2, "batchTransToDatabase: beginTransaction failed");
+      }
+      return -1;
+    }
+    int i = 0;
+    long l3 = 0L;
+    long l2 = 0L;
+    l1 = 0L;
+    boolean bool1 = true;
+    int j = 0;
+    long l4;
+    TroopIndex localTroopIndex;
+    if (j < paramArrayList.size())
+    {
+      l4 = System.currentTimeMillis();
+      FTSTroop localFTSTroop = (FTSTroop)paramArrayList.get(j);
+      localTroopIndex = new TroopIndex(localFTSTroop.mType, localFTSTroop.mTroopUin, localFTSTroop.mMemberUin, localFTSTroop.mMemberName, localFTSTroop.mMemberCard, localFTSTroop.mMemberNick);
+      localTroopIndex.preWrite();
+      switch (localFTSTroop.mOpt)
       {
-        do
-        {
-          return;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("LoadingStateManager", 2, "notifyIsNotIllegalNetWork mShowIllegalNetworkBar=" + this.jdField_a_of_type_Boolean);
-            QLog.d("LoadingStateManager", 2, "changeConversationLoadingState mShowErrorNetworkBar=" + this.b);
-          }
-        } while ((!this.jdField_a_of_type_Boolean) && (!this.b));
-        if (!this.b) {
+      default: 
+        l4 = l3;
+        l3 = l1;
+        l1 = l4;
+        label268:
+        if (bool1) {
           break;
         }
-        paramFromServiceMsg = paramQQAppInterface.getHandler(Conversation.class);
-      } while (paramFromServiceMsg == null);
-      paramFromServiceMsg.obtainMessage(10002, null).sendToTarget();
-      return;
-      if (!c()) {
-        a(0);
       }
+    }
+    for (;;)
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("LoadingStateManager", 2, "notifyIsNotIllegalNetWork");
+        QLog.d("Q.fts.FTSDatabaseHelper", 2, String.format("batchTransToDatabase: insert count = %d, insertCost=%d, delCost=%d, updateCost=%d", new Object[] { Integer.valueOf(i), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l1) }));
       }
-      paramFromServiceMsg = paramQQAppInterface.getHandler(Conversation.class);
-    } while (paramFromServiceMsg == null);
-    paramFromServiceMsg.obtainMessage(1134012, null).sendToTarget();
+      i = paramInt;
+      if (paramInt == -1) {
+        i = paramArrayList.size();
+      }
+      label400:
+      long l5;
+      if ((bool1) && (paramArrayList.size() != 0) && (i != 0))
+      {
+        bool1 = paramFTSDatabase.a("UPDATE " + paramString + " SET cursor=" + (k + i) + " WHERE id=1;");
+        boolean bool2 = bool1;
+        if (bool1)
+        {
+          l1 = System.currentTimeMillis();
+          bool1 = paramFTSDatabase.c();
+          l1 = System.currentTimeMillis() - l1;
+          if (!QLog.isColorLevel())
+          {
+            bool2 = bool1;
+            if (l1 <= 30000L) {}
+          }
+          else
+          {
+            QLog.d("Q.fts.FTSDatabaseHelper", 1, "commitTransaction cost=" + l1 + " success=" + bool1);
+            bool2 = bool1;
+          }
+        }
+        if (bool2)
+        {
+          return k + i;
+          bool1 = paramFTSDatabase.a(localTroopIndex);
+          l5 = System.currentTimeMillis();
+          i += 1;
+          l4 = l1 + (l5 - l4);
+          l1 = l3;
+          l3 = l4;
+          break label268;
+          bool1 = a(paramFTSDatabase, localTroopIndex);
+          l5 = System.currentTimeMillis();
+          l2 += l5 - l4;
+          l4 = l1;
+          l1 = l3;
+          l3 = l4;
+          break label268;
+          bool1 = a(paramFTSDatabase, localTroopIndex);
+          if (!bool1) {
+            break label650;
+          }
+          bool1 = paramFTSDatabase.a(localTroopIndex);
+        }
+      }
+      label650:
+      for (;;)
+      {
+        l5 = System.currentTimeMillis();
+        l4 = l3 + (l5 - l4);
+        l3 = l1;
+        l1 = l4;
+        break label268;
+        j += 1;
+        l4 = l3;
+        l3 = l1;
+        l1 = l4;
+        break;
+        return k;
+        break label400;
+      }
+      l4 = l1;
+      l1 = l3;
+      l3 = l4;
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public static boolean a(FTSDatabase paramFTSDatabase, TroopIndex paramTroopIndex)
   {
-    this.b = paramBoolean;
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    localStringBuilder.append("DELETE FROM " + paramTroopIndex.getTableName() + " WHERE " + paramTroopIndex.getTableName() + " MATCH 'type:");
+    localStringBuilder.append(paramTroopIndex.type);
+    localStringBuilder.append(" ext1:");
+    localStringBuilder.append(paramTroopIndex.ext1);
+    if (!TextUtils.isEmpty(paramTroopIndex.ext6))
+    {
+      localStringBuilder.append(" ext6:");
+      localStringBuilder.append(paramTroopIndex.ext6);
+    }
+    localStringBuilder.append("';");
+    return paramFTSDatabase.a(localStringBuilder.toString());
   }
   
-  public boolean a()
+  public static boolean a(FTSDatabase paramFTSDatabase, String paramString)
   {
-    return this.jdField_a_of_type_Boolean;
+    paramFTSDatabase = paramFTSDatabase.a("SELECT name FROM sqlite_master WHERE type='table' AND name='" + paramString + "'", new int[] { 3 });
+    return (paramFTSDatabase != null) && (paramFTSDatabase.size() > 0);
   }
   
-  public void b(boolean paramBoolean)
+  public static int b(FTSDatabase paramFTSDatabase, String paramString)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    paramString = "SELECT COUNT(*) FROM " + paramString;
+    try
+    {
+      int i = c(paramFTSDatabase, paramString);
+      return i;
+    }
+    catch (SQLiteException paramFTSDatabase) {}
+    return -1;
   }
   
-  public boolean b()
+  public static boolean b(FTSDatabase paramFTSDatabase, String paramString)
   {
-    return (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2);
+    if (!paramFTSDatabase.b()) {}
+    do
+    {
+      return false;
+      paramFTSDatabase.a("CREATE TABLE IF NOT EXISTS " + paramString + "(id INTEGER PRIMARY KEY AUTOINCREMENT, cursor INTEGER);");
+      paramFTSDatabase.a("INSERT INTO " + paramString + "(cursor) VALUES(0);");
+    } while (!paramFTSDatabase.c());
+    return true;
   }
   
-  public boolean c()
+  public static int c(FTSDatabase paramFTSDatabase, String paramString)
   {
-    return this.jdField_a_of_type_Int == 3;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Int == 4;
+    paramFTSDatabase = paramFTSDatabase.a(paramString, new int[] { 1 });
+    if ((paramFTSDatabase == null) || (paramFTSDatabase.size() != 1)) {
+      throw new SQLiteException("No result or result size != 1");
+    }
+    paramFTSDatabase = (Map)paramFTSDatabase.get(0);
+    if ((paramFTSDatabase == null) || (paramFTSDatabase.size() != 1)) {
+      throw new SQLiteException("No column or column count != 1");
+    }
+    try
+    {
+      int i = ((Long)paramFTSDatabase.values().toArray()[0]).intValue();
+      return i;
+    }
+    catch (Exception paramFTSDatabase)
+    {
+      throw new SQLiteException("No column or column count != 1");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asel
  * JD-Core Version:    0.7.0.1
  */

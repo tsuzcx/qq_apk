@@ -1,108 +1,57 @@
-import android.os.Bundle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import android.os.Handler;
+import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class bahm
-  extends bbwt
+class bahm
+  extends bago
 {
-  bahm(bahf parambahf) {}
+  bahm(bahd parambahd) {}
   
-  public void onDone(bbwu parambbwu)
+  public void a(boolean paramBoolean1, int paramInt1, String arg3, List<GPadInfo> paramList, int paramInt2, boolean paramBoolean2)
   {
-    bahr localbahr = new bahr();
-    Bundle localBundle = parambbwu.a();
-    String str1 = localBundle.getString("GiftAnimationId");
-    String str2 = localBundle.getString("TroopUin");
-    int i = localBundle.getInt("GiftAnimationType");
-    boolean bool = localBundle.getBoolean("GiftIsInteract");
-    localbahr.jdField_a_of_type_Boolean = true;
-    localbahr.jdField_a_of_type_JavaLangString = str1;
-    bahs.a().setChanged();
-    bahs.a().notifyObservers(localbahr);
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAnimationControlManager", 2, "onDone Id=" + str1 + " task:" + parambbwu);
-    }
-    axqy.b(null, "P_CliOper", "P_CliOper", "", "troop_gift_animation", "download", 0, parambbwu.a, str1, "", "", "");
-    if (parambbwu.a == 0)
-    {
-      parambbwu = new File(balu.a(str1, i, bool));
-      if (parambbwu.exists()) {}
-      try
+    ??? = this.a;
+    ???.jdField_a_of_type_Int -= 1;
+    if ((paramBoolean1) && (paramInt1 == 0)) {
+      for (;;)
       {
-        bbdx.a(parambbwu.getAbsolutePath(), ajsd.ct, false);
-        parambbwu.delete();
-        this.a.jdField_a_of_type_JavaUtilHashMap.put(str1, Integer.valueOf(3));
-        axqy.b(null, "P_CliOper", "Grp_flower", "", "grp_aio", "anime_suc", 1, 0, str2, "", "", "");
-        if (((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) || (this.a.jdField_a_of_type_AndroidAppActivity != null)) && (!bahf.jdField_a_of_type_JavaLangString.equals(this.a.b))) {}
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        parambbwu.delete();
+        synchronized (this.a.jdField_a_of_type_JavaLangObject)
+        {
+          if (this.a.jdField_a_of_type_JavaUtilList != null)
+          {
+            this.a.jdField_a_of_type_JavaUtilList.clear();
+            this.a.c = paramInt2;
+            this.a.e = paramBoolean2;
+            if (paramList == null) {
+              break;
+            }
+            this.a.jdField_b_of_type_Int = paramList.size();
+          }
+        }
+        synchronized (this.a.jdField_a_of_type_JavaLangObject)
+        {
+          this.a.jdField_a_of_type_JavaUtilList.addAll(paramList);
+          ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
+          return;
+          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
+          continue;
+          paramList = finally;
+          throw paramList;
+        }
       }
     }
-    this.a.jdField_a_of_type_JavaUtilHashMap.put(localObject, Integer.valueOf(4));
-    i = bbfj.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication());
-    if (i == 1) {
-      i = 0;
-    }
-    for (;;)
+    if (this.a.jdField_b_of_type_Boolean) {}
+    for (??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);; ??? = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5))
     {
-      if ((!(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aerj)) && (!(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof aeqb))) {
-        break label428;
-      }
-      akbj.a("gift_aio", "fail_cartoon", str2, "", "", "");
-      break;
-      if (i == 2) {
-        i = 3;
-      } else if (i == 3) {
-        i = 2;
-      } else if (i == 4) {
-        i = 1;
-      } else {
-        i = 4;
-      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(???);
+      return;
     }
-    label428:
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
-    {
-      parambbwu = "0";
-      label441:
-      if (!myb.a().a(str2)) {
-        break label521;
-      }
-    }
-    label521:
-    for (int j = 2;; j = 1)
-    {
-      axqy.b(null, "P_CliOper", "Grp_flower", "", "grp_aio", "anime_fail", j, 0, str2, localObject + "", parambbwu, i + "");
-      break;
-      parambbwu = "1";
-      break label441;
-    }
-  }
-  
-  public boolean onStart(bbwu parambbwu)
-  {
-    String str = parambbwu.a().getString("GiftAnimationId");
-    bahr localbahr = new bahr();
-    localbahr.jdField_a_of_type_Boolean = false;
-    localbahr.jdField_a_of_type_JavaLangString = str;
-    bahs.a().setChanged();
-    bahs.a().notifyObservers(localbahr);
-    return super.onStart(parambbwu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bahm
  * JD-Core Version:    0.7.0.1
  */

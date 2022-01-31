@@ -1,21 +1,16 @@
-import android.content.Context;
-import com.tencent.ad.tangram.net.AdNet;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
 
-public class yxr
+public abstract interface yxr
 {
-  public static int a(Context paramContext)
-  {
-    return AdNet.getType(paramContext);
-  }
+  public abstract void a(int paramInt, VsMusicItemInfo paramVsMusicItemInfo);
   
-  public static boolean a(Context paramContext)
-  {
-    return bbfj.d(paramContext);
-  }
+  public abstract void a(int paramInt, yxv paramyxv);
+  
+  public abstract void a(VsMusicItemInfo paramVsMusicItemInfo, int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yxr
  * JD-Core Version:    0.7.0.1
  */

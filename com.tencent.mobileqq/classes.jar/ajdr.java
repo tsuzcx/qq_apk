@@ -1,23 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.DrawerFrame;
 
-class ajdr
-  implements DialogInterface.OnKeyListener
+public class ajdr
+  implements View.OnClickListener
 {
-  ajdr(ajdq paramajdq, ajdy paramajdy) {}
+  public ajdr(DrawerFrame paramDrawerFrame) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4) {
-      this.jdField_a_of_type_Ajdq.a(this.jdField_a_of_type_Ajdy);
-    }
-    return true;
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajdr
  * JD-Core Version:    0.7.0.1
  */

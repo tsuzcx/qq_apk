@@ -15,4 +15,5 @@
 	<business id="c57534" path="qc.vip.qq.com" author="sluckyliu" info="PCG平台与内容事业群/社交娱乐产品部/波洞星球产品中心"/>
 	<business id="ee632a" path="com.tencent.pcg.qzone.qqcps" author="yinghaowang" info="PCG平台与内容事业群/社交平台产品部/增值研发中心/前台开发组/前台开发二组"/>
 	<business id="cd9fb2" path="h5.qzone.qq.com.biz_src_liwu" author="bookerchen" info="礼物商城"/>
+	<business id="8b5c3a" path="com.tencent.mobileqq.app.soso.SosoInterface#getOaid" author="greekchen" info="社交产品部/手Q 定位模块"/>
 </list>

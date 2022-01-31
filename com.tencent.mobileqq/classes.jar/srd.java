@@ -1,60 +1,64 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.mobileqq.pb.PBInt32Field;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class srd
+  implements smr
 {
-  private double a;
-  private double b;
+  public srd(ViolaBaseView paramViolaBaseView, String paramString1, String paramString2, srg paramsrg) {}
   
-  public srd(double paramDouble1, double paramDouble2)
+  public void a()
   {
-    this.a = paramDouble1;
-    this.b = paramDouble2;
-  }
-  
-  public double a()
-  {
-    return this.a;
-  }
-  
-  public qqstory_struct.GpsMsg a()
-  {
-    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
-    localGpsMsg.setHasFlag(true);
-    localGpsMsg.lat.set((int)(a() * 1000000.0D));
-    localGpsMsg.lng.set((int)(b() * 1000000.0D));
-    return localGpsMsg;
-  }
-  
-  public double b()
-  {
-    return this.b;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
+    String str1 = ncb.a(this.jdField_a_of_type_JavaLangString);
+    str1 = str1 + this.jdField_a_of_type_JavaLangString + File.separator;
+    String str2 = nbv.d(this.b);
+    if (new File(str1 + str2).exists()) {
+      if (QLog.isColorLevel()) {
+        QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess js exists [url:" + this.b + "]");
+      }
     }
-    if (!(paramObject instanceof srd)) {
-      return false;
+    do
+    {
+      for (;;)
+      {
+        str1 = smk.a(this.b);
+        if (TextUtils.isEmpty(str1)) {
+          break;
+        }
+        if (this.jdField_a_of_type_Srg != null) {
+          this.jdField_a_of_type_Srg.a(str1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess and jsSource succ [url:" + this.b + "]");
+        }
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess js no exists [url:" + this.b + "]");
+        }
+      }
+      if (this.jdField_a_of_type_Srg != null) {
+        this.jdField_a_of_type_Srg.a();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e(ViolaBaseView.a(), 2, "downloadOfflineSuccess but js null [url:" + this.b + "]");
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Srg != null) {
+      this.jdField_a_of_type_Srg.a();
     }
-    return (((srd)paramObject).a == this.a) && (((srd)paramObject).b == this.b);
-  }
-  
-  public int hashCode()
-  {
-    return "Gps".hashCode() + (int)(this.a * 1000000.0D) + (int)(this.b * 1000000.0D);
-  }
-  
-  public String toString()
-  {
-    return "Gps{lat=" + this.a + ", lng=" + this.b + '}';
+    if (QLog.isColorLevel()) {
+      QLog.e(ViolaBaseView.a(), 2, "downloadOfflineFailed [url:" + this.b + "]");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srd
  * JD-Core Version:    0.7.0.1
  */

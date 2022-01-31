@@ -1,43 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.1;
-import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel.9.2;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity.4.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class adcd
-  implements INetInfoHandler
+  extends alww
 {
-  public adcd(VoiceTextEditPanel paramVoiceTextEditPanel) {}
+  public adcd(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onNetMobile2None()
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextEditPanel", 2, "onNetMobile2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
+    if (QLog.isDevelopLevel()) {
+      QLog.i("Q.lebatab.mgr", 4, "notifyLebaViewItemsReloaded");
     }
-    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.1(this));
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VoiceTextEditPanel", 2, "onNetWifi2None isSttNetFinish=" + VoiceTextEditPanel.a(this.a).get());
+    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {
+      return;
     }
-    VoiceTextEditPanel.a(this.a).post(new VoiceTextEditPanel.9.2(this));
+    paramObject = aiab.a().a();
+    this.a.runOnUiThread(new LebaListMgrActivity.4.1(this, paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcd
  * JD-Core Version:    0.7.0.1
  */

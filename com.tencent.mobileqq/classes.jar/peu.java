@@ -1,26 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.Comparator;
 
 class peu
-  implements ViewBase.OnClickListener
+  implements Comparator<AdvertisementInfo>
 {
-  peu(pet parampet, pau parampau, Container paramContainer) {}
+  peu(pes parampes) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
   {
-    paramViewBase = this.jdField_a_of_type_Pau.a();
-    String str = paramViewBase.mSocialFeedInfo.a.f;
-    onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
-    ram.a(paramViewBase, (int)paramViewBase.mChannelID);
-    shu.a(paramViewBase);
+    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     peu
  * JD-Core Version:    0.7.0.1
  */

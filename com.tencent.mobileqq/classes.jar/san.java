@@ -1,67 +1,93 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StYouZanShop;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import android.content.Intent;
-import android.os.Build.VERSION;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommonBottomData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class san
+class san
+  extends sah
   implements View.OnClickListener
 {
-  public san(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
+  private View b = this.jdField_a_of_type_AndroidViewView.findViewById(2131363397);
+  private View c = this.jdField_a_of_type_AndroidViewView.findViewById(2131363411);
+  private View d = this.jdField_a_of_type_AndroidViewView.findViewById(2131364578);
+  
+  public san(sal paramsal, View paramView, BaseData paramBaseData)
+  {
+    super(paramView, paramBaseData);
+    this.d.setOnClickListener(this);
+  }
+  
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    int i = 0;
+    paramBaseData1 = (CommonBottomData)paramBaseData2;
+    if ((paramBaseData1.s == 14) && (paramBaseData1.b))
+    {
+      this.d.setVisibility(0);
+      if (!paramBaseData1.a) {
+        break label148;
+      }
+      this.c.setVisibility(0);
+      if (paramBaseData2.s != 14) {
+        break label123;
+      }
+      this.c.getLayoutParams().height = bcwh.a(this.c.getContext(), 6.0F);
+      label78:
+      paramBaseData1 = (LinearLayout.LayoutParams)this.b.getLayoutParams();
+      if (paramBaseData2.s != 14) {
+        break label160;
+      }
+    }
+    for (;;)
+    {
+      paramBaseData1.rightMargin = i;
+      paramBaseData1.leftMargin = i;
+      return;
+      this.d.setVisibility(8);
+      break;
+      label123:
+      this.c.getLayoutParams().height = bcwh.a(this.c.getContext(), 10.0F);
+      break label78;
+      label148:
+      this.c.setVisibility(8);
+      break label78;
+      label160:
+      i = bcwh.a(this.b.getContext(), 12.0F);
+    }
+  }
   
   public void onClick(View paramView)
   {
-    if (xen.a("service_account_folder_publish_feed_button", 2000L)) {
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 23) {}
-    for (boolean bool = akwf.a(this.a);; bool = true)
+    ArticleInfo localArticleInfo;
+    int i;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.s == 14)
     {
-      if (!bool)
-      {
-        bbdj.b(this.a);
-        return;
+      paramView = (BaseActivity)this.jdField_a_of_type_AndroidViewView.getContext();
+      if ((paramView != null) && ((paramView instanceof FastWebActivity))) {
+        ((FastWebActivity)paramView).a();
       }
-      paramView = new Intent();
-      paramView.putExtra("postUin", ServiceAccountFolderActivityNew.a(this.a));
-      paramView.putExtra("sourceFrom", 2);
-      String str;
-      if ((ServiceAccountFolderActivityNew.a(this.a) != null) && (ServiceAccountFolderActivityNew.a(this.a).user.youZhan.size() > 0))
-      {
-        if (((CertifiedAccountMeta.StYouZanShop)ServiceAccountFolderActivityNew.a(this.a).user.youZhan.get(0)).type.get() > 1)
-        {
-          bool = true;
-          paramView.putExtra("has_shop", bool);
-        }
+      localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b;
+      i = (int)localArticleInfo.mChannelID;
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.a.c()) {
+        break label84;
       }
-      else
-      {
-        bgyp.a(this.a.getActivity(), paramView, 0);
-        str = ((CertifiedAccountMeta.StUser)ServiceAccountFolderActivityNew.a(this.a).user.get()).id.get();
-        if (ServiceAccountFolderActivityNew.a(this.a) != 0) {
-          break label217;
-        }
-      }
-      label217:
-      for (paramView = "auth_follow";; paramView = "auth_discover")
-      {
-        xhb.a(str, paramView, "post_clk", 0, 0, new String[] { "", "" });
-        return;
-        bool = false;
-        break;
-      }
+    }
+    label84:
+    for (paramView = "2";; paramView = "1")
+    {
+      sdn.a(localArticleInfo, "0X800900A", ors.a(localArticleInfo, i, paramView));
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     san
  * JD-Core Version:    0.7.0.1
  */

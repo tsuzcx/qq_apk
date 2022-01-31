@@ -2,14 +2,14 @@ package com.tencent.biz.qqstory.shareGroup.infocard.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import umj;
-import umt;
+import wbb;
+import wbl;
 
 public class ShareGroupsListView
   extends MyMemoriesListView
 {
-  public umj a;
-  umt a;
+  public wbb a;
+  wbl a;
   
   public ShareGroupsListView(Context paramContext)
   {
@@ -28,22 +28,22 @@ public class ShareGroupsListView
   
   protected void a() {}
   
-  public void setListAdapter(umj paramumj)
+  public void setListAdapter(wbb paramwbb)
   {
-    super.setListAdapter(paramumj);
-    this.jdField_a_of_type_Umj = paramumj;
+    super.setListAdapter(paramwbb);
+    this.jdField_a_of_type_Wbb = paramwbb;
   }
   
-  public void setUIEventListener(umt paramumt)
+  public void setUIEventListener(wbl paramwbl)
   {
-    this.jdField_a_of_type_Umt = paramumt;
-    this.jdField_a_of_type_Umj.a(paramumt);
-    super.setListener(paramumt, paramumt);
+    this.jdField_a_of_type_Wbl = paramwbl;
+    this.jdField_a_of_type_Wbb.a(paramwbl);
+    super.setListener(paramwbl, paramwbl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView
  * JD-Core Version:    0.7.0.1
  */

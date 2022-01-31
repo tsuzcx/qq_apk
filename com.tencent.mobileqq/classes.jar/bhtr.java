@@ -1,21 +1,18 @@
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelper;
+import android.widget.PopupWindow.OnDismissListener;
 
-public final class bhtr
-  implements ThreadPool.Job<Object>
+class bhtr
+  implements PopupWindow.OnDismissListener
 {
-  public bhtr(String paramString1, String paramString2) {}
+  bhtr(bhtq parambhtq) {}
   
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public void onDismiss()
   {
-    QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$100().a(QzoneZipCacheHelper.access$000(this.a, this.b)), true);
-    return null;
+    this.a.a(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhtr
  * JD-Core Version:    0.7.0.1
  */

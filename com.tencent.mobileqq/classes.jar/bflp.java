@@ -1,127 +1,126 @@
+import android.app.Notification;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
+import android.content.res.ColorStateList;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.RemoteViews;
+import android.widget.TextView;
 
-public abstract class bflp
+public class bflp
 {
-  bflp(TraeAudioManager paramTraeAudioManager) {}
+  protected float a;
+  protected DisplayMetrics a;
+  protected Integer a;
+  protected final String a;
+  protected float b;
+  protected Integer b;
+  protected final String b;
   
-  public abstract String a();
-  
-  String a(int paramInt)
+  bflp(bfln parambfln, Context paramContext)
   {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
-    }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_OFF";
-      continue;
-      str = "STATE_TURNING_ON";
-      continue;
-      str = "STATE_ON";
-      continue;
-      str = "STATE_TURNING_OFF";
-    }
+    this.jdField_a_of_type_Float = 14.0F;
+    this.jdField_b_of_type_Float = 16.0F;
+    this.jdField_a_of_type_JavaLangString = "SearchForText";
+    this.jdField_b_of_type_JavaLangString = "SearchForTitle";
+    this.jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
+    ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
+    a(paramContext);
   }
   
-  public abstract void a();
-  
-  abstract void a(Context paramContext, Intent paramIntent);
-  
-  public void a(Context paramContext, Intent paramIntent, bflq parambflq)
+  public float a()
   {
-    if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(paramIntent.getAction()))
-    {
-      int i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
-      int j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_STATE", -1);
-      if (QLog.isColorLevel()) {
-        QLog.w("TraeAudioManager", 2, "BT ACTION_STATE_CHANGED|   EXTRA_STATE " + a(i));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("TraeAudioManager", 2, "BT ACTION_STATE_CHANGED|   EXTRA_PREVIOUS_STATE " + a(j));
-      }
-      if (i == 10)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("TraeAudioManager", 2, "    BT off");
-        }
-        parambflq.a("DEVICE_BLUETOOTHHEADSET", false);
-      }
-      while ((i != 12) || (!QLog.isColorLevel())) {
-        return;
-      }
-      QLog.w("TraeAudioManager", 2, "BT OFF-->ON,Visiable it...");
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public Integer a()
+  {
+    return this.jdField_a_of_type_JavaLangInteger;
+  }
+  
+  protected void a(Context paramContext)
+  {
+    if ((this.jdField_a_of_type_JavaLangInteger != null) && (this.jdField_b_of_type_JavaLangInteger != null)) {
       return;
     }
-    a(paramContext, paramIntent);
+    try
+    {
+      Notification localNotification = new Notification();
+      localNotification.setLatestEventInfo(paramContext, "SearchForTitle", "SearchForText", null);
+      paramContext = (ViewGroup)localNotification.contentView.apply(paramContext, null);
+      a(paramContext);
+      b(paramContext);
+      return;
+    }
+    catch (Exception paramContext) {}
   }
   
-  abstract void a(IntentFilter paramIntentFilter);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Context paramContext, bflq parambflq);
-  
-  String b(int paramInt)
+  protected boolean a(ViewGroup paramViewGroup)
   {
-    String str;
-    switch (paramInt)
+    int j = paramViewGroup.getChildCount();
+    int i = 0;
+    while (i < j)
     {
-    default: 
-      str = "unknow";
+      if ((paramViewGroup.getChildAt(i) instanceof TextView))
+      {
+        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
+        if ("SearchForTitle".equals(localTextView.getText().toString()))
+        {
+          this.jdField_b_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.jdField_b_of_type_Float = localTextView.getTextSize();
+          this.jdField_b_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          return true;
+        }
+      }
+      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (a((ViewGroup)paramViewGroup.getChildAt(i))))
+      {
+        return true;
+      }
+      i += 1;
     }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "SCO_AUDIO_STATE_DISCONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTING";
-      continue;
-      str = "SCO_AUDIO_STATE_ERROR";
-    }
+    return false;
   }
   
-  public void b(IntentFilter paramIntentFilter)
+  public float b()
   {
-    paramIntentFilter.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_CONNECTED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_DISCONNECTED");
-    a(paramIntentFilter);
+    return this.jdField_b_of_type_Float;
   }
   
-  String c(int paramInt)
+  public Integer b()
   {
-    String str;
-    switch (paramInt)
+    return this.jdField_b_of_type_JavaLangInteger;
+  }
+  
+  protected boolean b(ViewGroup paramViewGroup)
+  {
+    int j = paramViewGroup.getChildCount();
+    int i = 0;
+    while (i < j)
     {
-    default: 
-      str = "unknow";
+      if ((paramViewGroup.getChildAt(i) instanceof TextView))
+      {
+        TextView localTextView = (TextView)paramViewGroup.getChildAt(i);
+        if ("SearchForText".equals(localTextView.getText().toString()))
+        {
+          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(localTextView.getTextColors().getDefaultColor());
+          this.jdField_a_of_type_Float = localTextView.getTextSize();
+          this.jdField_a_of_type_Float /= this.jdField_a_of_type_AndroidUtilDisplayMetrics.scaledDensity;
+          return true;
+        }
+      }
+      else if (((paramViewGroup.getChildAt(i) instanceof ViewGroup)) && (b((ViewGroup)paramViewGroup.getChildAt(i))))
+      {
+        return true;
+      }
+      i += 1;
     }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_DISCONNECTED";
-      continue;
-      str = "STATE_CONNECTING";
-      continue;
-      str = "STATE_CONNECTED";
-      continue;
-      str = "STATE_DISCONNECTING";
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bflp
  * JD-Core Version:    0.7.0.1
  */

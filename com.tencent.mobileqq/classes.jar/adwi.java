@@ -1,17 +1,22 @@
-class adwi
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+
+public class adwi
+  implements anuh
 {
-  public int a;
-  public long a;
-  public int b;
+  public adwi(TextPreviewActivity paramTextPreviewActivity) {}
   
-  adwi(adwf paramadwf)
+  public void a(anui paramanui)
   {
-    this.jdField_a_of_type_Long = -1L;
+    this.a.jdField_a_of_type_Anui = paramanui;
+    if (this.a.i != 0) {
+      paramanui.a(this.a.i);
+    }
+    this.a.i = paramanui.a(1, this.a.e, 3, this.a.jdField_a_of_type_Anuf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adwi
  * JD-Core Version:    0.7.0.1
  */

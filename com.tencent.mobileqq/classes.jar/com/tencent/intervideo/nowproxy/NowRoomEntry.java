@@ -258,17 +258,20 @@ public class NowRoomEntry
         {
           XLog.i("NowPluginManager | NowRoomEntry", "nowsdk 灯塔初始化");
           if (this.mInitData != null) {
-            break label117;
+            break label139;
           }
         }
       }
     }
-    label117:
+    label139:
     for (String str = "0";; str = this.mInitData.mAppID)
     {
       BeaconAdapter.registerTunnel(new TunnelInfo("00000QCKA83QV1AA", "1.0.0", str));
       this.isInitBeacon = true;
       l1 = SdkBizAbilityImpl.getInstance().putActionCallback(paramActionCallback);
+      if (!AppidConfig.isQQPlugin(this.mInitData.mAppID)) {
+        l1 = SdkBizAbilityImpl.getInstance().putActionCallback(paramActionCallback);
+      }
       NowSchemeUtil.doActionByScheme(this.mGlobalContext, paramString, paramBundle, l1);
       return;
     }
@@ -745,7 +748,7 @@ public class NowRoomEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.NowRoomEntry
  * JD-Core Version:    0.7.0.1
  */

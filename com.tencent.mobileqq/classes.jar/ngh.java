@@ -1,46 +1,33 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.now.NowVideoView;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ngh
-  extends ajxj
+public class ngh
+  extends Handler
 {
-  ngh(nfr paramnfr) {}
+  public ngh(NowVideoView paramNowVideoView) {}
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_a_of_type_AndroidViewViewGroup == null) {}
-    label134:
-    for (;;)
+    switch (paramMessage.what)
     {
-      return;
-      int j = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildCount();
-      int i = 0;
-      for (;;)
-      {
-        if (i >= j) {
-          break label134;
-        }
-        View localView = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
-        if (((localView.getTag() instanceof String)) && ((localView instanceof ImageView)) && (((String)localView.getTag()).equals(paramString)))
-        {
-          ((ImageView)localView).setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString));
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onUpdateTroopHead:" + paramString);
-          return;
-        }
-        i += 1;
-      }
     }
+    do
+    {
+      do
+      {
+        return;
+      } while ((this.a.jdField_a_of_type_Nga == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null));
+      this.a.jdField_a_of_type_Nga.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, true);
+      return;
+    } while ((this.a.jdField_a_of_type_Nga == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.a.jdField_a_of_type_Boolean) || (this.a.d != 2));
+    this.a.jdField_a_of_type_Nga.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ngh
  * JD-Core Version:    0.7.0.1
  */

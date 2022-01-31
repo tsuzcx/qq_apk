@@ -1,16 +1,39 @@
-import android.webkit.ValueCallback;
+import java.lang.reflect.Method;
 
-public abstract interface behp
+public class behp
 {
-  public abstract void a(int paramInt, String paramString);
+  public static Class a(ClassLoader paramClassLoader, String paramString)
+  {
+    try
+    {
+      paramClassLoader = paramClassLoader.loadClass(paramString);
+      return paramClassLoader;
+    }
+    catch (ClassNotFoundException paramClassLoader)
+    {
+      paramClassLoader.printStackTrace();
+    }
+    return null;
+  }
   
-  public abstract void a(String paramString, ValueCallback paramValueCallback);
-  
-  public abstract void a(String paramString1, String paramString2, int paramInt);
+  public static Method a(Class paramClass, String paramString, Class[] paramArrayOfClass)
+  {
+    try
+    {
+      paramClass = paramClass.getDeclaredMethod(paramString, paramArrayOfClass);
+      paramClass.setAccessible(true);
+      return paramClass;
+    }
+    catch (NoSuchMethodException paramClass)
+    {
+      paramClass.printStackTrace();
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     behp
  * JD-Core Version:    0.7.0.1
  */

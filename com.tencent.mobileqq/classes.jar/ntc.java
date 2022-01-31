@@ -1,44 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
 public class ntc
-  extends Handler
+  implements alkr
 {
-  private WeakReference<nsy> a;
+  protected void a(boolean paramBoolean, Bundle paramBundle) {}
   
-  public ntc(nsy paramnsy)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a = new WeakReference(paramnsy);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    nsy localnsy = (nsy)this.a.get();
-    if (localnsy == null) {}
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 1: 
-          nsy.a(localnsy);
-          return;
-        }
-      } while (nsy.a(localnsy) == null);
-      nsy.a(localnsy).a(nsy.a(localnsy));
+      paramObject = (Bundle)paramObject;
+      if (paramObject.getInt("VALUE_OBSERVER_TAG") == hashCode()) {}
+    }
+    while (!QLog.isColorLevel())
+    {
       return;
-    } while (nsy.a(localnsy) == null);
-    nsy.a(localnsy).b();
+      try
+      {
+        a(paramBoolean, paramObject);
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        paramObject.printStackTrace();
+        return;
+      }
+    }
+    QLog.e("VideoPlayRecommendObserver", 2, "onUpdate: error, data null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ntc
  * JD-Core Version:    0.7.0.1
  */

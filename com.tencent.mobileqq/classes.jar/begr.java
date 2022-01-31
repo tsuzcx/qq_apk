@@ -1,24 +1,10 @@
-public abstract class begr
+public abstract interface begr
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(int paramInt, String[] paramArrayOfString);
-  
-  public abstract void a(boolean paramBoolean, int paramInt);
-  
-  public abstract void a(String[] paramArrayOfString);
-  
-  public abstract void b(int paramInt, String paramString);
-  
-  public abstract void b(boolean paramBoolean, int paramInt);
-  
-  public abstract void c(int paramInt, String paramString);
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     begr
  * JD-Core Version:    0.7.0.1
  */

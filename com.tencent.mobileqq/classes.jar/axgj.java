@@ -1,85 +1,69 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Handler;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class axgj
+  implements aweh
 {
-  private axgk<Integer, axgl> a;
-  protected String a;
+  private int jdField_a_of_type_Int;
+  private WeakReference<ReceiptMessageDetailFragment> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public axgj()
+  public axgj(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    this.jdField_a_of_type_Axgk = new axgk(this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReceiptMessageDetailFragment);
   }
   
-  public void a(int paramInt)
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(awei paramawei)
   {
-    try
-    {
-      ArrayList localArrayList = this.jdField_a_of_type_Axgk.a(Integer.valueOf(paramInt));
-      if (localArrayList != null) {
-        localArrayList.clear();
-      }
+    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localReceiptMessageDetailFragment == null) {
       return;
     }
-    finally {}
-  }
-  
-  public void a(int paramInt, Object... paramVarArgs)
-  {
-    try
+    if ((paramawei.b == 0) && (paramawei.a != null))
     {
-      Object localObject = this.jdField_a_of_type_Axgk.a(Integer.valueOf(paramInt));
-      if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+      MessageRecord localMessageRecord = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_JavaLangString, ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).jdField_a_of_type_Int, ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment));
+      Object localObject = localMessageRecord;
+      if (localMessageRecord == null)
       {
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          axgl localaxgl = (axgl)((Iterator)localObject).next();
-          if (localaxgl != null) {
-            localaxgl.a(this, paramInt, paramVarArgs);
-          }
-        }
+        localObject = new MessageForStructing();
+        ((MessageRecord)localObject).senderuin = "0";
+        ((MessageRecord)localObject).uniseq = ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment);
       }
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(axgl paramaxgl)
-  {
-    try
-    {
-      this.jdField_a_of_type_Axgk.a(paramaxgl);
-      return;
-    }
-    finally
-    {
-      paramaxgl = finally;
-      throw paramaxgl;
-    }
-  }
-  
-  public void a(axgl paramaxgl, int... paramVarArgs)
-  {
-    try
-    {
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
+      paramawei = ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a().a(paramawei.a, null, (MessageRecord)localObject, null);
+      if ((paramawei != null) && (!paramawei.isEmpty()))
       {
-        int k = paramVarArgs[i];
-        this.jdField_a_of_type_Axgk.a(Integer.valueOf(k), paramaxgl);
-        i += 1;
+        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(10);
+        return;
       }
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
       return;
     }
-    finally {}
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "ReceiptMessageDownloadCallBack onDownload, download msg fail with code: " + paramawei.b);
+    }
+    int i = this.jdField_a_of_type_Int + 1;
+    this.jdField_a_of_type_Int = i;
+    if (i <= 3)
+    {
+      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(0);
+      return;
+    }
+    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(11);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axgj
  * JD-Core Version:    0.7.0.1
  */

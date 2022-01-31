@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import kotlin.Metadata;
 
-class awhp
-  implements Comparator<awng>
-{
-  awhp(awhn paramawhn) {}
-  
-  public int a(awng paramawng1, awng paramawng2)
-  {
-    paramawng1 = paramawng1.c;
-    paramawng2 = paramawng2.c;
-    return ChnToSpell.a(paramawng1, 2).compareTo(ChnToSpell.a(paramawng2, 2));
-  }
-}
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/pluspanel/AIOPlusPanelStudyModeAppInfoOrderConfigProcessor$Companion;", "", "()V", "CONFIG_ID", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class awhp {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awhp
  * JD-Core Version:    0.7.0.1
  */

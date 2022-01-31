@@ -1,33 +1,41 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Iterator;
+import java.util.List;
 
-public class uij
-  extends ste<uhw, tae>
+class uij
+  implements uni<vby, vdj>
 {
-  public uij(uhw paramuhw)
-  {
-    super(paramuhw);
-  }
+  uij(uid paramuid, uim paramuim, String paramString) {}
   
-  public void a(@NonNull uhw paramuhw, @NonNull tae paramtae)
+  public void a(@NonNull vby paramvby, @Nullable vdj paramvdj, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramuhw.a != null) && (TextUtils.equals(paramuhw.a.b, paramtae.a)))
+    wsv.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response " + paramvdj);
+    if ((paramErrorMessage.isFail()) || (paramvdj == null))
     {
-      ved.a(this.TAG, "receive feed info change event. %s.", paramtae.toString());
-      paramuhw.i();
+      wsv.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
+      this.jdField_a_of_type_Uim.a(true);
+      return;
     }
+    paramvby = (uro)urr.a(5);
+    if (paramvdj.a != null)
+    {
+      paramErrorMessage = paramvdj.a.iterator();
+      while (paramErrorMessage.hasNext()) {
+        ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
+      }
+    }
+    paramvdj.a = paramvby.a(paramvdj.a);
+    ((uid)urr.a(28)).a(paramvdj.b);
+    this.jdField_a_of_type_Uid.c(this.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_Uim.a(true);
   }
-  
-  public Class acceptEventClass()
-  {
-    return tae.class;
-  }
-  
-  public void b(@NonNull uhw paramuhw, @NonNull tae paramtae) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uij
  * JD-Core Version:    0.7.0.1
  */

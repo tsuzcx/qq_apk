@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import agzz;
-import ahcw;
-import ahiw;
+import aitw;
+import aixa;
+import ajaf;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,9 +11,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import bbkk;
-import bgxb;
-import bgxi;
+import bdje;
+import bixy;
+import biyf;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -26,7 +26,7 @@ public class KSongFragment
   implements View.OnClickListener
 {
   private long jdField_a_of_type_Long;
-  private ahcw jdField_a_of_type_Ahcw;
+  private aixa jdField_a_of_type_Aixa;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private KSongFragment.KsongBundleInfo jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo = new KSongFragment.KsongBundleInfo();
   
@@ -34,7 +34,7 @@ public class KSongFragment
   {
     try
     {
-      if (!bbkk.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.biz_params))
+      if (!bdje.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.biz_params))
       {
         JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.biz_params);
         this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.song_id = localJSONObject.optString("song_id");
@@ -71,14 +71,14 @@ public class KSongFragment
     localMap.put("feedsid", this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.song_id);
     localMap.put("bus_type", "2");
     localMap.put("total_num", str1);
-    localMap.put("total_amount", bgxb.a(str2));
+    localMap.put("total_amount", bixy.a(str2));
     localMap.put("channel", "" + this.channel);
     this.mLogic.a(localMap);
   }
   
   public int a()
   {
-    return 2131561520;
+    return 2131561711;
   }
   
   protected String a()
@@ -89,18 +89,18 @@ public class KSongFragment
   public void a()
   {
     b();
-    this.jdField_a_of_type_Ahcw = ((ahcw)this.mQApp.getManager(273));
-    this.jdField_a_of_type_Ahcw.b("3001");
+    this.jdField_a_of_type_Aixa = ((aixa)this.mQApp.getManager(273));
+    this.jdField_a_of_type_Aixa.b("3001");
   }
   
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    bgxi.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364208));
+    biyf.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131364271));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    ahiw.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.6F);
+    ajaf.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.6F);
     c();
     if (QLog.isColorLevel()) {
       QLog.i("KSongFragment", 2, "biz_params: " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.biz_params);
@@ -148,7 +148,7 @@ public class KSongFragment
     {
       try
       {
-        this.jdField_a_of_type_Ahcw.a("3001");
+        this.jdField_a_of_type_Aixa.a("3001");
         this.mActivity.c("ksong.wrappacket.choosesong");
         if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentKSongFragment$KsongBundleInfo.pick_entry))
         {
@@ -207,7 +207,7 @@ public class KSongFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.fragment.KSongFragment
  * JD-Core Version:    0.7.0.1
  */

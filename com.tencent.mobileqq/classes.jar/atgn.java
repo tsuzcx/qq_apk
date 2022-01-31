@@ -1,21 +1,21 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fpsreport.FPSXListView;
+import java.util.List;
 
 public class atgn
-  implements AudioManager.OnAudioFocusChangeListener
 {
-  public atgn(SmallVideoFragment paramSmallVideoFragment) {}
-  
-  public void onAudioFocusChange(int paramInt)
-  {
-    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (SmallVideoFragment.a(this.a))) {
-      this.a.a();
-    }
-  }
+  public Context a;
+  public View a;
+  public atgp a;
+  public QQAppInterface a;
+  public FPSXListView a;
+  public List<aovj> a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atgn
  * JD-Core Version:    0.7.0.1
  */

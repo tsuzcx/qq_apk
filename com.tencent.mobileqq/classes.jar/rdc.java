@@ -1,22 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.Map;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 
-public class rdc
-  extends oyd
+class rdc
+  implements DialogInterface.OnClickListener
 {
-  public rdc(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap, boolean paramBoolean)
-  {
-    super(paramString);
-  }
+  rdc(rcz paramrcz, boolean paramBoolean) {}
   
-  public void a(oxx paramoxx)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramoxx.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!rcz.a(this.jdField_a_of_type_Rcz)) {}
+    }
+    while (!(rcz.a(this.jdField_a_of_type_Rcz) instanceof Activity))
+    {
+      return;
+      this.jdField_a_of_type_Rcz.b();
+      return;
+    }
+    oee.b(rcz.a(this.jdField_a_of_type_Rcz));
+    odv.a(rcz.a(this.jdField_a_of_type_Rcz), rcz.a(this.jdField_a_of_type_Rcz).o, rcz.a(this.jdField_a_of_type_Rcz).p, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdc
  * JD-Core Version:    0.7.0.1
  */

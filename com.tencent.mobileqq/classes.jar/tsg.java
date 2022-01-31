@@ -1,36 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class tsg
-  implements Parcelable.Creator
+class tsg
+  implements MediaPlayer.OnPreparedListener
 {
-  public StoryPushMsg a(Parcel paramParcel)
-  {
-    int i = paramParcel.readInt();
-    Object localObject = paramParcel.readString();
-    String str1 = paramParcel.readString();
-    long l = paramParcel.readLong();
-    String str2 = paramParcel.readString();
-    String str3 = paramParcel.readString();
-    int j = paramParcel.readInt();
-    String str4 = paramParcel.readString();
-    String str5 = paramParcel.readString();
-    String str6 = paramParcel.readString();
-    paramParcel = paramParcel.readBundle();
-    localObject = new StoryPushMsg(i, (String)localObject, str1, l, str3, str4, j, str5, str6, str2);
-    ((StoryPushMsg)localObject).a = paramParcel;
-    return localObject;
-  }
+  tsg(tsf paramtsf) {}
   
-  public StoryPushMsg[] a(int paramInt)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    return new StoryPushMsg[paramInt];
+    QLog.d("QCircleFolderSplashPart", 1, "videoView onPrepared!");
+    paramMediaPlayer.start();
+    paramMediaPlayer.setOnInfoListener(new tsh(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsg
  * JD-Core Version:    0.7.0.1
  */

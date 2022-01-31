@@ -1,125 +1,165 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.mobileqq.widget.share.ShareActionSheetV2;
-import com.tencent.mobileqq.widget.share.Validator.1;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class bcvw
+public abstract class bcvw
+  extends Drawable
 {
-  private ShareActionSheetV2 jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2;
-  private boolean jdField_a_of_type_Boolean;
+  protected int a;
+  protected ColorFilter a;
+  protected Drawable a;
+  protected boolean a;
+  protected int b;
+  protected Drawable b;
+  protected Drawable c;
   
-  public bcvw(ShareActionSheetV2 paramShareActionSheetV2)
+  protected bcvw(Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2 = paramShareActionSheetV2;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable1;
+    this.c = paramDrawable2;
   }
   
-  private void a(String paramString)
+  public Bitmap a()
   {
-    new Handler(Looper.getMainLooper()).post(new Validator.1(this, paramString));
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof BitmapDrawable))) {
+      return ((BitmapDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getBitmap();
+    }
+    return null;
   }
   
-  private boolean b()
+  public Drawable a()
   {
-    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return null;
+    case 0: 
+      return this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+    case 1: 
+      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    }
+    return this.c;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      localDrawable.draw(paramCanvas);
+    }
+  }
+  
+  public int getIntrinsicHeight()
+  {
     int i = 0;
-    while (i < arrayOfList.length)
-    {
-      Iterator localIterator = arrayOfList[i].iterator();
-      while (localIterator.hasNext()) {
-        if (!((bbjs)localIterator.next()).c()) {
-          return false;
-        }
-      }
-      i += 1;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getIntrinsicHeight();
     }
-    return true;
+    return i;
   }
   
-  private boolean c()
+  public int getIntrinsicWidth()
   {
-    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
     int i = 0;
-    while (i < arrayOfList.length)
-    {
-      Iterator localIterator = arrayOfList[i].iterator();
-      while (localIterator.hasNext()) {
-        if (!((bbjs)localIterator.next()).b()) {
-          return false;
-        }
-      }
-      i += 1;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getIntrinsicWidth();
     }
-    return true;
+    return i;
   }
   
-  private boolean d()
+  public int getMinimumHeight()
   {
-    List[] arrayOfList = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a();
     int i = 0;
-    while (i < arrayOfList.length)
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getMinimumHeight();
+    }
+    return i;
+  }
+  
+  public int getMinimumWidth()
+  {
+    int i = 0;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getMinimumWidth();
+    }
+    return i;
+  }
+  
+  public int getOpacity()
+  {
+    int i = 0;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      i = localDrawable.getOpacity();
+    }
+    return i;
+  }
+  
+  protected void onBoundsChange(Rect paramRect)
+  {
+    if (this.jdField_a_of_type_Int == 1)
     {
-      Iterator localIterator = arrayOfList[i].iterator();
-      while (localIterator.hasNext()) {
-        if (!((bbjs)localIterator.next()).a()) {
-          return false;
-        }
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), bczs.a(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
+      if (this.jdField_b_of_type_Int != -1) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(this.jdField_b_of_type_Int);
       }
-      i += 1;
+      invalidateSelf();
     }
-    return true;
+    Drawable localDrawable;
+    do
+    {
+      return;
+      localDrawable = a();
+    } while (localDrawable == null);
+    localDrawable.setBounds(paramRect);
   }
   
-  private boolean e()
+  public void setAlpha(int paramInt)
   {
-    Context localContext = this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheetV2.a;
-    if ((localContext instanceof Activity)) {
-      return !TextUtils.isEmpty(((Activity)localContext).getIntent().getStringExtra("big_brother_source_key"));
+    this.jdField_b_of_type_Int = paramInt;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      localDrawable.setAlpha(paramInt);
     }
-    return false;
   }
   
-  public boolean a()
+  public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (!this.jdField_a_of_type_Boolean) {
-      return true;
+    super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      localDrawable.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    if (!e())
-    {
-      a("share component no biz id");
-      bool1 = false;
-    }
-    if (!d())
-    {
-      a("share component icon invalid");
-      bool1 = false;
-    }
-    if (!c())
-    {
-      a("share component label invalid");
-      bool1 = false;
-    }
-    if (!b())
-    {
-      a("share component item invalid");
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      return bool1;
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsColorFilter = paramColorFilter;
+    Drawable localDrawable = a();
+    if (localDrawable != null) {
+      localDrawable.setColorFilter(paramColorFilter);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcvw
  * JD-Core Version:    0.7.0.1
  */

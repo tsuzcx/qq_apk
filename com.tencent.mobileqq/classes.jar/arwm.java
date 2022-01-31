@@ -1,33 +1,17 @@
 class arwm
-  implements arwi
+  implements bdjb
 {
-  arwm(arwj paramarwj) {}
+  arwm(arwl paramarwl) {}
   
-  public void a(int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      arwj.b(this.a);
-      return;
-    case 1: 
-      arwj.c(this.a);
-      return;
-    case 2: 
-      arwj.a(this.a);
-      return;
-    case 3: 
-      arwj.d(this.a);
-      return;
-    }
-    arwj.e(this.a);
+    arwl.a(this.a, bdiz.a(paramInt));
+    arwl.a(this.a).height = arwl.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arwm
  * JD-Core Version:    0.7.0.1
  */

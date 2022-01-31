@@ -1,70 +1,31 @@
-import android.content.Context;
-import android.graphics.Rect;
-import android.text.Layout;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class vyq
+class vyq
+  extends nac
 {
-  public static int a(Rect[] paramArrayOfRect, int paramInt1, int paramInt2)
+  vyq(vym paramvym, boolean paramBoolean) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    int i = 0;
-    if ((paramArrayOfRect == null) || (paramArrayOfRect.length == 0)) {
-      i = -1;
-    }
-    Rect localRect;
-    do
+    if (paramInt != 0)
     {
-      return i;
-      localRect = paramArrayOfRect[0];
-    } while ((paramInt2 >= 0) && (paramInt2 <= localRect.bottom) && (paramInt1 >= 0) && (paramInt1 <= localRect.right));
-    int j = 1;
-    for (;;)
-    {
-      if (j >= paramArrayOfRect.length) {
-        break label110;
-      }
-      localRect = paramArrayOfRect[j];
-      if ((paramInt2 >= localRect.top) && (paramInt2 <= localRect.bottom) && (paramInt1 >= localRect.left))
+      paramArrayOfByte = this.a;
+      if (!this.b) {}
+      for (boolean bool = true;; bool = false)
       {
-        i = j;
-        if (paramInt1 <= localRect.right) {
-          break;
-        }
-      }
-      j += 1;
-    }
-    label110:
-    return -1;
-  }
-  
-  public static String a(TextView paramTextView, int paramInt)
-  {
-    Layout localLayout = paramTextView.getLayout();
-    String str = paramTextView.getText().toString();
-    paramTextView = str;
-    if (localLayout != null)
-    {
-      paramTextView = str;
-      if (localLayout.getLineCount() > paramInt) {
-        paramTextView = str.substring(0, localLayout.getLineStart(paramInt));
+        paramArrayOfByte.a(5, bool);
+        this.a.a(0, this.a.a.getString(2131721084));
+        return;
       }
     }
-    return paramTextView;
-  }
-  
-  public static vyr a(Context paramContext, int paramInt1, int paramInt2, String paramString)
-  {
-    return new vzb(paramContext);
-  }
-  
-  public static float[] a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    return new float[] { (float)(paramFloat1 * Math.cos(paramFloat3 * 3.141592653589793D / 180.0D)) - (float)(paramFloat2 * Math.sin(paramFloat3 * 3.141592653589793D / 180.0D)), (float)(paramFloat1 * Math.sin(paramFloat3 * 3.141592653589793D / 180.0D)) + (float)(paramFloat2 * Math.cos(paramFloat3 * 3.141592653589793D / 180.0D)) };
+    ((uhl)this.a.a.app.getManager(181)).c(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyq
  * JD-Core Version:    0.7.0.1
  */

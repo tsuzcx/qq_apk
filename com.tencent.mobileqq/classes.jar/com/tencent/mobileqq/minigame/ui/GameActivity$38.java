@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.os.Build;
-import android.os.Build.VERSION;
-import axqn;
-import bbll;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Properties;
 
 class GameActivity$38
   implements Runnable
@@ -15,17 +12,20 @@ class GameActivity$38
   
   public void run()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.this$0.getCurrentAccountUin()).append("-").append(GameActivity.access$4900(this.this$0)).append("-").append(bbll.a()).append("-").append(Build.BRAND).append("-").append(Build.MODEL).append("-").append(Build.VERSION.SDK_INT);
-    Properties localProperties = new Properties();
-    localProperties.put("detail_ino", localStringBuilder.toString());
-    axqn.a(BaseApplicationImpl.getContext()).reportKVEvent("minigame_density_info", localProperties);
-    QLog.i("[minigame] GameActivity", 1, localStringBuilder.toString());
+    Bundle localBundle = new Bundle();
+    localBundle.putString("miniAppID", GameActivity.access$5600(this.this$0).appId);
+    localBundle.putString("param_proc_name", BaseApplicationImpl.getApplication().getQQProcessName());
+    localBundle.putString("param_proc_modulename", "mini_app_client_module");
+    this.this$0.onProcessForeGround(localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("[minigame] GameActivity", 1, "onResume--onRefreshMiniBadge");
+    }
+    this.this$0.onRefreshMiniBadge(localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.38
  * JD-Core Version:    0.7.0.1
  */

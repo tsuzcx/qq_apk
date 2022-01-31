@@ -1,28 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
-class auty
-  implements DialogInterface.OnClickListener
+public class auty
+  implements behy<oidb_0x8e4.RspBody>
 {
-  auty(autv paramautv, View paramView, PersonalityLabelInfo paramPersonalityLabelInfo) {}
+  public auty(GameRoomInviteActivity paramGameRoomInviteActivity, auum paramauum) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    if ((paramInt == 0) && (paramRspBody != null))
+    {
+      paramRspBody = this.jdField_a_of_type_Auum;
+      if (!this.jdField_a_of_type_Auum.a)
+      {
+        bool = true;
+        paramRspBody.a = bool;
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
+        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a.notifyDataSetChanged();
+      }
     }
-    paramDialogInterface = (autu)this.jdField_a_of_type_AndroidViewView.getTag(2131364978);
-    if (paramDialogInterface != null) {
-      this.jdField_a_of_type_Autv.a.a(paramDialogInterface.e, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
+    while (paramRspBody == null) {
+      for (;;)
+      {
+        return;
+        boolean bool = false;
+      }
     }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(paramInt, paramRspBody, alpo.a(2131705516));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auty
  * JD-Core Version:    0.7.0.1
  */

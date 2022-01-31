@@ -4,13 +4,13 @@ import android.text.TextUtils;
 import com.tencent.biz.qqstory.database.PromoteTaskEntry;
 import java.util.Collections;
 import java.util.List;
-import tbq;
-import tcx;
+import uqi;
+import urp;
 
 public class DebugPromoteTaskCode$4
   implements Runnable
 {
-  public DebugPromoteTaskCode$4(tbq paramtbq, String paramString1, String paramString2) {}
+  public DebugPromoteTaskCode$4(uqi paramuqi, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ public class DebugPromoteTaskCode$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.4
  * JD-Core Version:    0.7.0.1
  */

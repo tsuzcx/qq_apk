@@ -1,21 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView.1.1.1;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-
-public class rfd
-  implements aycb
+public abstract interface rfd
 {
-  public rfd(ReadInJoySkinGuideView.1 param1) {}
+  public abstract void a();
   
-  public void a(aybe paramaybe)
-  {
-    this.a.this$0.a.post(new ReadInJoySkinGuideView.1.1.1(this, paramaybe));
-  }
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(Object paramObject, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfd
  * JD-Core Version:    0.7.0.1
  */

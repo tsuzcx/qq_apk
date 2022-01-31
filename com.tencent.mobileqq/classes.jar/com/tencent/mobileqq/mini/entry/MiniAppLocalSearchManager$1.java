@@ -1,55 +1,54 @@
 package com.tencent.mobileqq.mini.entry;
 
-import aukp;
-import aukq;
-import aukr;
+import awbv;
+import awbw;
+import awbx;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
 
 class MiniAppLocalSearchManager$1
   implements Runnable
 {
-  MiniAppLocalSearchManager$1(MiniAppLocalSearchManager paramMiniAppLocalSearchManager, List paramList) {}
+  MiniAppLocalSearchManager$1(MiniAppLocalSearchManager paramMiniAppLocalSearchManager, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {
-    localObject1 = MiniAppLocalSearchManager.access$000();
+    Object localObject1 = MiniAppLocalSearchManager.access$000();
     if (localObject1 == null) {
-      QLog.e("MiniAppLocalSearchManager", 2, "getLocalSearchData, app is null.");
+      QLog.e("MiniAppLocalSearchManager", 2, "updateDataToDB, app is null.");
     }
-    aukp localaukp;
-    do
+    for (;;)
     {
       return;
-      QLog.i("MiniAppLocalSearchManager", 1, "removeAllLocalSearchData");
-      localaukp = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-    } while (localaukp == null);
-    localObject1 = localaukp.a();
-    try
-    {
-      ((aukr)localObject1).a();
-      localaukp.b(" DELETE FROM MiniAppLocalSearchEntity ");
-      ((aukr)localObject1).c();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      localObject1 = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+      if (localObject1 != null)
       {
-        localException.printStackTrace();
-        ((aukr)localObject1).b();
+        localObject2 = MiniAppLocalSearchEntity.class.getSimpleName();
+        Object localObject3 = this.val$miniAppInfo.appId;
+        String str = this.val$miniAppInfo.appId;
+        localObject2 = ((awbw)localObject1).a(MiniAppLocalSearchEntity.class, (String)localObject2, false, "appId = ?", new String[] { localObject3 }, null, null, null, str);
+        if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
+          break;
+        }
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (MiniAppLocalSearchEntity)((Iterator)localObject2).next();
+          ((MiniAppLocalSearchEntity)localObject3).showMask = 1;
+          MiniAppLocalSearchManager.access$100(this.this$0, (awbw)localObject1, (awbv)localObject3);
+        }
       }
     }
-    finally
-    {
-      ((aukr)localObject1).b();
-    }
-    MiniAppLocalSearchManager.access$100(this.this$0, this.val$entities);
+    Object localObject2 = new MiniAppLocalSearchEntity(this.val$miniAppInfo.appId, this.val$miniAppInfo.name, this.val$miniAppInfo.iconUrl, this.val$miniAppInfo.desc, 1);
+    MiniAppLocalSearchManager.access$100(this.this$0, (awbw)localObject1, (awbv)localObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppLocalSearchManager.1
  * JD-Core Version:    0.7.0.1
  */

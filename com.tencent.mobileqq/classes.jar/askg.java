@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
-import java.util.List;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
 
-class askg
-  implements askr<Integer, List<EmoticonPackage>>
+public class askg
+  extends Handler
 {
-  askg(askf paramaskf) {}
+  public askg(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public List<EmoticonPackage> a(Integer paramInteger)
+  public void handleMessage(Message paramMessage)
   {
-    return this.a.a(paramInteger.intValue());
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      this.a.a(paramMessage.what, paramMessage.arg1, paramMessage.arg2, (String)paramMessage.obj);
+      return;
+    }
+    QQGameFeedWebFragment.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     askg
  * JD-Core Version:    0.7.0.1
  */

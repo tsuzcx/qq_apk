@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.leba.widget.LebaRoundLayout android:id="@id/ifh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/a7v" android:background="#fff5f6fa" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center_horizontal" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginBottom="4.0dip" android:src="@drawable/e8w" android:scaleType="centerInside" />
+    </LinearLayout>
+</com.tencent.mobileqq.leba.widget.LebaRoundLayout>

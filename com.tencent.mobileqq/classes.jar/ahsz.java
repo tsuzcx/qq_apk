@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahsz
-  implements bfpj
+class ahsz
+  implements DialogInterface.OnClickListener
 {
-  public ahsz(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  ahsz(ahsh paramahsh) {}
   
-  public void onDismiss()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String str = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + ajya.a(2131703652);
-    bhbe.a().c(str);
+    if (paramInt == 0) {
+      ahsh.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsz
  * JD-Core Version:    0.7.0.1
  */

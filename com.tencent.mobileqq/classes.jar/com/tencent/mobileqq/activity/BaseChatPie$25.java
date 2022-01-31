@@ -13,7 +13,7 @@ class BaseChatPie$25
   {
     if (this.this$0.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 1)
     {
-      this.this$0.aC();
+      this.this$0.aE();
       this.this$0.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this, 100L);
       return;
     }
@@ -22,7 +22,7 @@ class BaseChatPie$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.25
  * JD-Core Version:    0.7.0.1
  */

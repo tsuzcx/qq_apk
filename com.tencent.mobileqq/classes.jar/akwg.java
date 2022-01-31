@@ -1,25 +1,20 @@
-import android.util.Log;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.utils.PokeBigResHandler.NetEngine.1;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class akwg
-  implements aysc
+class akwg
+  implements akzr
 {
-  public void onResp(aysz paramaysz)
-  {
-    if (paramaysz.jdField_a_of_type_Int == 0) {
-      ThreadManagerV2.excute(new PokeBigResHandler.NetEngine.1(this, paramaysz.jdField_a_of_type_Aysy.c), 64, null, true);
-    }
-  }
+  akwg(akwd paramakwd, boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2) {}
   
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    Log.e("Ron", "req:[" + paramaysy.toString() + "\n curOffset" + paramLong1 + "\n totalLen" + paramLong2 + "]");
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Akwd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, this.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akwg
  * JD-Core Version:    0.7.0.1
  */

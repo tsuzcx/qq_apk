@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRLoginAuthActivity;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
 
-public class wgp
-  implements DialogInterface.OnCancelListener
+class wgp
+  extends vdz
 {
-  public wgp(QRLoginAuthActivity paramQRLoginAuthActivity) {}
+  wgp(wgn paramwgn, FeedItem paramFeedItem) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void a()
   {
-    this.a.finish();
+    super.a();
+    wgn.a(this.jdField_a_of_type_Wgn, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    wta.a("home_page", "suc_share", 2, paramInt, new String[] { wta.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", wta.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgp
  * JD-Core Version:    0.7.0.1
  */

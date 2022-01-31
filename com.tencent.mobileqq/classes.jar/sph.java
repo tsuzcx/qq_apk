@@ -1,23 +1,19 @@
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
+
 public class sph
-  extends spi
+  implements spj
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
+  public sph(BridgeModule paramBridgeModule) {}
   
-  public sph(int paramInt)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    super(paramInt);
-    this.g = 6;
+    this.a.invokeCallJS(paramString, paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sph
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.ar;
 
-import alcs;
-import alct;
+import amti;
+import amtj;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class FramePerformanceMonitor
 {
   private int jdField_a_of_type_Int = 1000;
-  private alcs jdField_a_of_type_Alcs;
-  private alct jdField_a_of_type_Alct = new alct(100);
+  private amti jdField_a_of_type_Amti;
+  private amtj jdField_a_of_type_Amtj = new amtj(100);
   private FramePerformanceMonitor.CurrentRunnable jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$CurrentRunnable;
   
   public void a()
   {
     b();
-    if (this.jdField_a_of_type_Alcs == null) {
+    if (this.jdField_a_of_type_Amti == null) {
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor$CurrentRunnable = new FramePerformanceMonitor.CurrentRunnable(this, null);
@@ -27,14 +27,14 @@ public class FramePerformanceMonitor
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(alcs paramalcs)
+  public void a(amti paramamti)
   {
-    this.jdField_a_of_type_Alcs = paramalcs;
+    this.jdField_a_of_type_Amti = paramamti;
   }
   
   public boolean a(long paramLong)
   {
-    return this.jdField_a_of_type_Alct.a(paramLong);
+    return this.jdField_a_of_type_Amtj.a(paramLong);
   }
   
   public void b()
@@ -48,7 +48,7 @@ public class FramePerformanceMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.FramePerformanceMonitor
  * JD-Core Version:    0.7.0.1
  */

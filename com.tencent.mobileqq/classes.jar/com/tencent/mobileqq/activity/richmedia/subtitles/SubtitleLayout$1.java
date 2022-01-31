@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
-import ahyb;
-import ahyi;
+import ajpl;
+import ajps;
 import com.tencent.qphone.base.util.QLog;
 
 class SubtitleLayout$1
@@ -20,7 +20,7 @@ class SubtitleLayout$1
       SubtitleLayout.a(this.this$0, null);
       return;
     }
-    ahyb.a().a(true, false);
+    ajpl.a().a(true, false);
     this.this$0.a();
     if (this.this$0.a != 0)
     {
@@ -35,7 +35,7 @@ class SubtitleLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout.1
  * JD-Core Version:    0.7.0.1
  */

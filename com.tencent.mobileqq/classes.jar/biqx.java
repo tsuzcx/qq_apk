@@ -1,36 +1,49 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class biqx
-  implements bizb
+final class biqx
+  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  biqx(biqw parambiqw, ToServiceMsg paramToServiceMsg) {}
+  biqx(Runnable paramRunnable) {}
   
-  public void a(int paramInt)
+  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
   {
-    biqw.a(this.jdField_a_of_type_Biqw, null, null);
-  }
-  
-  public void a(Bitmap paramBitmap)
-  {
-    if (paramBitmap != null)
+    if (paramPluginManagerClient == null) {}
+    try
     {
-      paramBitmap = biqw.a(this.jdField_a_of_type_Biqw.mApp.getApp(), paramBitmap);
-      if ((paramBitmap == null) || (paramBitmap.length() < 1))
-      {
-        biqw.a(this.jdField_a_of_type_Biqw, null, null);
-        return;
-      }
-      biqw.a(this.jdField_a_of_type_Biqw, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, paramBitmap);
+      ThreadManager.post(this.a, 5, null, false);
       return;
     }
-    biqw.a(this.jdField_a_of_type_Biqw, null, null);
+    catch (Exception paramPluginManagerClient) {}
+    if (paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("qqfav", 2, "qqfav.apk already installed.");
+      }
+      biqv.a().set(true);
+      try
+      {
+        ThreadManager.post(this.a, 5, null, false);
+        return;
+      }
+      catch (Exception paramPluginManagerClient)
+      {
+        return;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "installing plugin qqfav.apk");
+    }
+    paramPluginManagerClient.installPlugin("qqfav.apk", new biqy(this));
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     biqx
  * JD-Core Version:    0.7.0.1
  */

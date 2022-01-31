@@ -1,41 +1,46 @@
-public class bkbu
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_PAIR.sweet_pair_byebye_req;
+import android.content.Intent;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+
+class bkbu
+  extends QzoneExternalRequest
 {
-  private int jdField_a_of_type_Int;
-  private bkbp jdField_a_of_type_Bkbp = new bkbo();
-  private int b;
+  bkbu(bkbt parambkbt, Intent paramIntent) {}
   
-  public bkbs a()
+  public String getCmdString()
   {
-    return new bkbs(this, null);
+    return "SweetQzoneService.sweet_pair_byebye";
   }
   
-  public bkbu a(int paramInt)
+  public JceStruct getReq()
   {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_Int = paramInt;
+    sweet_pair_byebye_req localsweet_pair_byebye_req = new sweet_pair_byebye_req();
+    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    {
+      long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("friendUin", -1L);
+      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
+      localsweet_req_comm.opuin = l1;
+      localsweet_req_comm.uin = l1;
+      localsweet_req_comm.loveuin = l2;
+      localsweet_req_comm.qua = bizf.a();
+      localsweet_req_comm.pf = 1;
+      localsweet_req_comm.src = 3;
+      localsweet_pair_byebye_req.req_comm = localsweet_req_comm;
     }
-    return this;
+    return localsweet_pair_byebye_req;
   }
   
-  public bkbu a(bkbp parambkbp)
+  public String uniKey()
   {
-    if (parambkbp != null) {
-      this.jdField_a_of_type_Bkbp = parambkbp;
-    }
-    return this;
-  }
-  
-  public bkbu b(int paramInt)
-  {
-    if (paramInt > 0) {
-      this.b = paramInt;
-    }
-    return this;
+    return "sweet_pair_byebye";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkbu
  * JD-Core Version:    0.7.0.1
  */

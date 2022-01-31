@@ -6,6 +6,8 @@
         <enum name="i_b" value="2" />
     </attr>
     <attr name="b" format="reference" />
+    <attr name="zo" format="dimension" />
+    <attr name="zp" format="dimension" />
     <attr name="k9" format="integer" />
     <attr name="c" format="reference|dimension" />
     <attr name="d" format="reference|dimension" />
@@ -24,6 +26,7 @@
     <attr name="q" format="dimension" />
     <attr name="r" format="integer" />
     <attr name="s" format="reference|color" />
+    <attr name="zq" format="boolean" />
     <attr name="t" format="reference|color" />
     <attr name="u" format="reference|color" />
     <attr name="w9" format="dimension" />
@@ -68,10 +71,18 @@
     <attr name="an" format="reference|color" />
     <attr name="ao" format="reference|color" />
     <attr name="ap" format="reference|color" />
+    <attr name="zr" format="boolean" />
+    <attr name="zs" format="float|dimension" />
+    <attr name="zt" format="float|dimension" />
     <attr name="aq" format="reference" />
     <attr name="ar" format="boolean" />
     <attr name="as" format="color" />
+    <attr name="zu" format="color" />
+    <attr name="zv" format="float|dimension" />
+    <attr name="zw" format="float|dimension" />
+    <attr name="zx" format="integer" />
     <attr name="at" format="dimension" />
+    <attr name="zy" format="float|dimension" />
     <attr name="au" format="reference|color" />
     <attr name="av" format="reference|color" />
     <attr name="aw" format="dimension" />
@@ -156,6 +167,8 @@
     <attr name="cj" format="reference|color" />
     <attr name="ck" format="reference|color" />
     <attr name="cl" format="dimension" />
+    <attr name="zz" format="color" />
+    <attr name="a00" format="float|dimension" />
     <attr name="cn" format="integer" />
     <attr name="co" format="reference|dimension" />
     <attr name="cp" format="integer" />
@@ -203,12 +216,17 @@
     <attr name="dq" format="reference|color" />
     <attr name="cm" format="color" />
     <attr name="fa" format="color" />
+    <attr name="a01" format="dimension" />
+    <attr name="a02" format="dimension" />
+    <attr name="a03" format="color" />
+    <attr name="a04" format="dimension" />
     <attr name="content" format="reference|string" />
     <attr name="dr" format="dimension" />
     <attr name="ds" format="dimension" />
     <attr name="dt" format="dimension" />
     <attr name="du" format="dimension" />
     <attr name="dv" format="dimension" />
+    <attr name="a05" format="float" />
     <attr name="dw" format="dimension" />
     <attr name="dx" format="color" />
     <attr name="dy" format="dimension" />
@@ -217,6 +235,7 @@
     <attr name="e0" format="dimension" />
     <attr name="e1" format="dimension" />
     <attr name="e2" format="integer" />
+    <attr name="a06" format="integer" />
     <attr name="e3" format="boolean" />
     <attr name="e4" format="reference|color" />
     <attr name="e5" format="dimension" />
@@ -229,6 +248,8 @@
     <attr name="e_" format="integer" />
     <attr name="ea" format="reference" />
     <attr name="eb" format="integer" />
+    <attr name="a07" format="dimension" />
+    <attr name="a08" format="dimension" />
     <attr name="ec" format="boolean" />
     <attr name="ed">
         <enum name="faa" value="0" />
@@ -303,6 +324,7 @@
         <enum name="abp" value="0" />
     </attr>
     <attr name="fg" format="float" />
+    <attr name="a09" format="boolean" />
     <attr name="fh" format="boolean" />
     <attr name="fi" format="boolean" />
     <attr name="fj" format="boolean" />
@@ -310,10 +332,12 @@
     <attr name="fm" format="integer" />
     <attr name="fn" format="dimension" />
     <attr name="fo" format="reference" />
+    <attr name="a0_" format="integer" />
     <attr name="fp" format="color" />
     <attr name="fq" format="string" />
     <attr name="fr" format="dimension" />
     <attr name="fs" format="reference" />
+    <attr name="a0a" format="string" />
     <attr name="ft" format="color" />
     <attr name="fu" format="reference|color" />
     <attr name="fv" format="reference|color" />
@@ -344,6 +368,7 @@
         <enum name="fcr" value="9" />
         <enum name="iok" value="8" />
     </attr>
+    <attr name="a0b" format="boolean" />
     <attr name="g8" format="integer" />
     <attr name="g9" format="integer" />
     <attr name="g_" format="float" />
@@ -448,10 +473,14 @@
         <flag name="j1f" value="0x00800003" />
         <flag name="jsv" value="0x00000030" />
     </attr>
+    <attr name="a0c" format="color" />
+    <attr name="a0d" format="float" />
+    <attr name="a0e" format="dimension" />
     <attr name="gz" format="reference|color" />
     <attr name="h0" format="dimension" />
     <attr name="h1" format="color" />
     <attr name="h2" format="float" />
+    <attr name="a0f" format="string" />
     <attr name="h3" format="dimension" />
     <attr name="h4" format="dimension" />
     <attr name="icon" format="reference" />
@@ -639,6 +668,7 @@
     <attr name="k8" format="reference" />
     <attr name="k_" format="integer" />
     <attr name="ka" format="string" />
+    <attr name="a0g" format="integer" />
     <attr name="kb" format="dimension" />
     <attr name="kc" format="integer" />
     <attr name="kd" format="integer" min="0" />
@@ -656,6 +686,7 @@
     <attr name="kq" format="string" />
     <attr name="kr" format="reference|color" />
     <attr name="ks" format="string" />
+    <attr name="a0h" format="dimension" />
     <attr name="kt" format="dimension" />
     <attr name="ku" format="reference|color" />
     <attr name="kv" format="reference|color" />
@@ -693,6 +724,7 @@
     <attr name="lk" format="reference|color" />
     <attr name="ll" format="reference|color" />
     <attr name="lm" format="reference|dimension" />
+    <attr name="a0i" format="string" />
     <attr name="ln" format="reference|color" />
     <attr name="lo" format="color" />
     <attr name="lp" format="integer" min="0">
@@ -708,6 +740,7 @@
     <attr name="lu" format="dimension" />
     <attr name="lv" format="boolean" />
     <attr name="lw" format="dimension" />
+    <attr name="a0j" format="color" />
     <attr name="lx" format="reference" />
     <attr name="ly">
         <enum name="enr" value="3" />
@@ -850,6 +883,7 @@
     <attr name="oa" format="reference|dimension" />
     <attr name="ob" format="reference|dimension" />
     <attr name="oc" format="reference|boolean" />
+    <attr name="a0k" format="dimension" />
     <attr name="od" format="integer" />
     <attr name="oe" format="color" />
     <attr name="of" format="dimension" />
@@ -860,6 +894,7 @@
     <attr name="ok" format="color" />
     <attr name="ol" format="color" />
     <attr name="om" format="dimension" />
+    <attr name="a0l" format="integer" />
     <attr name="on" format="integer" />
     <attr name="oo" format="integer" />
     <attr name="op" format="integer" />
@@ -896,6 +931,7 @@
     <attr name="pf" format="reference" />
     <attr name="pg" format="reference" />
     <attr name="ph" format="reference|color" />
+    <attr name="a0m" format="boolean" />
     <attr name="pi" format="reference" />
     <attr name="pj" format="dimension" />
     <attr name="z3" format="dimension" />
@@ -943,9 +979,13 @@
     </attr>
     <attr name="pq" format="reference|color" />
     <attr name="pr" format="dimension" />
+    <attr name="a0n" format="color" />
+    <attr name="a0o" format="dimension" />
     <attr name="ps" format="color" />
     <attr name="pt" format="dimension" />
     <attr name="pu" format="integer" />
+    <attr name="a0p" format="color" />
+    <attr name="a0q" format="integer" />
     <attr name="pv" format="color" />
     <attr name="pw" format="dimension" />
     <attr name="px" format="dimension" />
@@ -1002,6 +1042,7 @@
     <attr name="qt" format="dimension" />
     <attr name="qu" format="reference" />
     <attr name="qv" format="integer" />
+    <attr name="a0r" format="boolean" />
     <attr name="qw" format="string" />
     <attr name="qx" format="float" />
     <attr name="qy" format="reference|color" />
@@ -1014,6 +1055,7 @@
     <attr name="xf" format="dimension" />
     <attr name="xg" format="float" />
     <attr name="r5" format="boolean" />
+    <attr name="a0s" format="float" />
     <attr name="r6" format="dimension" />
     <attr name="r7" format="integer" />
     <attr name="r8" format="integer" />
@@ -1187,6 +1229,7 @@
     <attr name="uq" format="color" />
     <attr name="ur" format="dimension" />
     <attr name="us" format="color" />
+    <attr name="a0t" format="string" />
     <attr name="ut" format="reference" />
     <attr name="uu" format="boolean" />
     <attr name="uv" format="reference|color" />
@@ -1200,6 +1243,19 @@
         <enum name="km_" value="0" />
     </attr>
     <attr name="uz" format="reference" />
+    <attr name="a0u" format="float" />
+    <attr name="a0v" format="float" />
+    <attr name="a0w" format="boolean" />
+    <attr name="a0x" format="color" />
+    <attr name="a0y" format="color" />
+    <attr name="a0z" format="dimension" />
+    <attr name="a10" format="color" />
+    <attr name="a11" format="integer" />
+    <attr name="a12" format="integer" />
+    <attr name="a13" format="dimension" />
+    <attr name="a14" format="boolean" />
+    <attr name="a15" format="boolean" />
+    <attr name="a16" format="boolean" />
     <attr name="v0" format="color" />
     <attr name="v1" format="color" />
     <attr name="v2" format="dimension" />

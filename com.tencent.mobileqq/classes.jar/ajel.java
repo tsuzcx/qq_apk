@@ -1,19 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-class ajel
-  implements DialogInterface.OnClickListener
+public abstract interface ajel
 {
-  ajel(ajei paramajei) {}
+  public abstract void l();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ajei.a(this.a);
-  }
+  public abstract void n();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajel
  * JD-Core Version:    0.7.0.1
  */

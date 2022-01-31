@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import acye;
-import adqe;
-import adwj;
+import aepr;
+import afij;
+import afsw;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -10,25 +10,25 @@ import java.util.Map;
 public class GivingHeartItemBuilder$5
   implements Runnable
 {
-  public GivingHeartItemBuilder$5(adqe paramadqe) {}
+  public GivingHeartItemBuilder$5(afij paramafij) {}
   
   public void run()
   {
-    Object localObject = adwj.a(this.this$0.b, adqe.a(this.this$0));
+    Object localObject = afsw.a(this.this$0.b, afij.a(this.this$0));
     if (((ArrayList)localObject).size() > 0)
     {
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        acye localacye = (acye)((Iterator)localObject).next();
-        adqe.a(this.this$0).put(Integer.valueOf(localacye.b), Integer.valueOf(localacye.c));
+        aepr localaepr = (aepr)((Iterator)localObject).next();
+        afij.a(this.this$0).put(Integer.valueOf(localaepr.b), Integer.valueOf(localaepr.c));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

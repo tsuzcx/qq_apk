@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import apcw;
-import apcy;
+import aqvu;
+import aqvw;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 public class ThumbDownloadManager$3
   implements Runnable
 {
-  public ThumbDownloadManager$3(apcw paramapcw) {}
+  public ThumbDownloadManager$3(aqvu paramaqvu) {}
   
   public void run()
   {
-    if (apcw.a(this.this$0).size() >= 8) {}
-    while (apcw.a(this.this$0).size() == 0) {
+    if (aqvu.a(this.this$0).size() >= 8) {}
+    while (aqvu.a(this.this$0).size() == 0) {
       return;
     }
-    apcy localapcy = (apcy)apcw.a(this.this$0).get(0);
-    if (localapcy == null)
+    aqvw localaqvw = (aqvw)aqvu.a(this.this$0).get(0);
+    if (localaqvw == null)
     {
-      apcw.a(this.this$0).remove(0);
-      apcw.a(this.this$0);
+      aqvu.a(this.this$0).remove(0);
+      aqvu.a(this.this$0);
       return;
     }
-    apcw.a(this.this$0).remove(localapcy);
-    apcw.a(this.this$0, localapcy);
-    apcw.b(this.this$0, localapcy);
+    aqvu.a(this.this$0).remove(localaqvw);
+    aqvu.a(this.this$0, localaqvw);
+    aqvu.b(this.this$0, localaqvw);
   }
 }
 

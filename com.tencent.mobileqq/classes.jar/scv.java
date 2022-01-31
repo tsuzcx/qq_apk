@@ -1,16 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.List;
 
-class scv
-  implements View.OnClickListener
+public abstract interface scv
 {
-  scv(scr paramscr) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a(boolean paramBoolean, List<BaseData> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     scv
  * JD-Core Version:    0.7.0.1
  */

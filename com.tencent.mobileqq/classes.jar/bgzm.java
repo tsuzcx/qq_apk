@@ -1,50 +1,75 @@
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.msf.service.protocol.security.CustomSigContent;
-import com.tencent.msf.service.protocol.security.RespondCustomSig;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.observer.AccountObserver;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_SHARE.MiniProgramShare.StGetGroupShareInfoReq;
+import NS_MINI_SHARE.MiniProgramShare.StGetGroupShareInfoRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
-final class bgzm
-  extends AccountObserver
+public class bgzm
+  extends bgzp
 {
-  bgzm(String paramString, ajte paramajte) {}
+  private MiniProgramShare.StGetGroupShareInfoReq a = new MiniProgramShare.StGetGroupShareInfoReq();
   
-  public void onChangeToken(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  public bgzm(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2)
   {
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
-      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
-        break label30;
-      }
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
     }
-    for (;;)
+    this.a.appid.set(paramString1);
+    this.a.shareTicket.set(paramString2);
+  }
+  
+  protected String a()
+  {
+    return "mini_app_share";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    MiniProgramShare.StGetGroupShareInfoRsp localStGetGroupShareInfoRsp = new MiniProgramShare.StGetGroupShareInfoRsp();
+    try
     {
-      return;
-      label30:
-      int i = 0;
-      while (i < paramHashMap.SigList.size())
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStGetGroupShareInfoRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if (localStGetGroupShareInfoRsp != null)
       {
-        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
-        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
-        {
-          localObject = new String(((CustomSigContent)localObject).SigContent);
-          OpenID localOpenID = new OpenID();
-          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
-          localOpenID.openID = ((String)localObject);
-          if (this.jdField_a_of_type_Ajte != null) {
-            this.jdField_a_of_type_Ajte.onUpdate(1, true, localOpenID);
-          }
-        }
-        i += 1;
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("response", localStGetGroupShareInfoRsp);
+        paramArrayOfByte.put("resultCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        return paramArrayOfByte;
       }
+      QMLog.d("MiniAppGetGroupShareInfoRequest", "onResponse fail.rsp = null");
+      return null;
     }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("MiniAppGetGroupShareInfoRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetGroupShareInfo";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgzm
  * JD-Core Version:    0.7.0.1
  */

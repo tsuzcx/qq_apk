@@ -10,14 +10,14 @@ class ChildLockCircle$2
   public void run()
   {
     ViewGroup localViewGroup = (ViewGroup)this.this$0.getParent();
-    if ((localViewGroup != null) && (localViewGroup.findViewById(2131372227) != null)) {
+    if ((localViewGroup != null) && (localViewGroup.findViewById(2131372583) != null)) {
       localViewGroup.removeView(this.this$0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.widget.ChildLockCircle.2
  * JD-Core Version:    0.7.0.1
  */

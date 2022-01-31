@@ -2,10 +2,10 @@ package com.tencent.open.adapter;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import bcyb;
-import bdfk;
-import bdid;
-import bdii;
+import bexd;
+import bfei;
+import bfhb;
+import bfhg;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -39,7 +39,7 @@ public class OpenAppClient$GetVkeyRunnable
   
   public void run()
   {
-    if (!bdid.d(bcyb.a().a())) {}
+    if (!bfhb.d(bexd.a().a())) {}
     while (this.jdField_a_of_type_MqqAppAppRuntime == null) {
       return;
     }
@@ -50,13 +50,13 @@ public class OpenAppClient$GetVkeyRunnable
     }
     for (;;)
     {
-      if ((str1 != null) && (!str1.equals(String.valueOf(bcyb.a().a())))) {
-        bcyb.a().a(Long.valueOf(str1).longValue());
+      if ((str1 != null) && (!str1.equals(String.valueOf(bexd.a().a())))) {
+        bexd.a().a(Long.valueOf(str1).longValue());
       }
       if (!TextUtils.isEmpty(str2))
       {
-        bdii.b(OpenAppClient.jdField_a_of_type_JavaLangString, "Get skey success");
-        bcyb.a().a(str2);
+        bfhg.b(OpenAppClient.jdField_a_of_type_JavaLangString, "Get skey success");
+        bexd.a().a(str2);
       }
       OpenAppClient.jdField_a_of_type_Boolean = false;
       switch (this.jdField_a_of_type_Int)
@@ -64,14 +64,14 @@ public class OpenAppClient$GetVkeyRunnable
       default: 
         return;
       case 1: 
-        bdfk.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, str1, str2);
+        bfei.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, str1, str2);
         return;
         if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof BrowserAppInterface)) {
           str1 = ((BrowserAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getAccount();
         }
         break;
       case 2: 
-        bdfk.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, str1, str2);
+        bfei.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, str1, str2);
         return;
         str1 = null;
       }

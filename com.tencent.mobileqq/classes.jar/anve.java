@@ -1,41 +1,50 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import ProfileLogic.QC.setUserProfileRsp;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
-class anve
-  implements MiniAppLauncher.MiniAppLaunchListener
+public class anve
+  extends alxo
 {
-  anve(anuq paramanuq, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public anve(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  public void e(boolean paramBoolean, Object paramObject)
   {
-    Bundle localBundle;
-    if (paramBundle != null) {
-      localBundle = new Bundle();
-    }
-    try
+    if ((paramBoolean) && ((paramObject instanceof setUserProfileRsp)))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("ret", paramBundle.getLong("retCode", 0L));
-      if (!paramBoolean) {
-        localJSONObject.put("msg", paramBundle.getString("errMsg"));
+      i = ((setUserProfileRsp)paramObject).ret;
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, "mSvipObserver: [setUserProfileRsp] ret=" + i);
       }
-      localBundle.putString("result", localJSONObject.toString());
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (i == 0)
+      {
+        if (this.a.app != null)
+        {
+          paramObject = new ProfileActivity.AllInOne(this.a.app.getCurrentAccountUin(), 0);
+          paramObject.g = 1;
+          paramObject.h = 8;
+          ProfileActivity.b(this.a, paramObject);
+          QQToast.a(this.a, 0, 2131721087, 0).a();
+        }
+        this.a.finish();
+      }
+    }
+    while (!"profilelogic.setUserProfile".equals(paramObject))
+    {
+      int i;
+      return;
+      QQToast.a(this.a, 1, 2131721084, 0).a();
       return;
     }
-    catch (Throwable paramBundle)
-    {
-      QLog.e("launchMiniAppById", 1, "launchMiniAppById error,", paramBundle);
-    }
+    QQToast.a(this.a, 1, 2131721084, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anve
  * JD-Core Version:    0.7.0.1
  */

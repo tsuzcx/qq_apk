@@ -1,94 +1,49 @@
-import java.util.ArrayList;
+import android.graphics.Path;
+import android.graphics.PathMeasure;
+import android.graphics.PointF;
 
-public abstract interface lol
+public abstract class lol
+  extends lob
 {
-  public abstract long a(int paramInt1, int paramInt2, long paramLong);
+  protected Path a;
+  protected PathMeasure a;
   
-  public abstract lga a();
+  public lol()
+  {
+    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(this.jdField_a_of_type_AndroidGraphicsPath, false);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2);
+  public abstract void a();
   
-  public abstract void a(int paramInt1, long paramLong, int paramInt2, int paramInt3);
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    super.a(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
+  }
   
-  public abstract void a(int paramInt1, long paramLong1, long paramLong2, int paramInt2);
+  public void b(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, (this.jdField_a_of_type_AndroidGraphicsPointF.x + paramFloat1) / 2.0F, (this.jdField_a_of_type_AndroidGraphicsPointF.y + paramFloat2) / 2.0F);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
+  }
   
-  public abstract void a(int paramInt1, long paramLong1, long paramLong2, long[] paramArrayOfLong, boolean paramBoolean, int paramInt2, int paramInt3);
-  
-  public abstract void a(int paramInt, long paramLong, int... paramVarArgs);
-  
-  public abstract void a(int paramInt, ArrayList<lnp> paramArrayList);
-  
-  public abstract void a(long paramLong, int paramInt);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString);
-  
-  public abstract void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean);
-  
-  public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong1, long paramLong2, String paramString);
-  
-  public abstract void a(long paramLong1, long paramLong2, ArrayList<loh> paramArrayList);
-  
-  public abstract void a(long paramLong1, long paramLong2, byte[] paramArrayOfByte);
-  
-  public abstract void a(long paramLong, ArrayList<lnp> paramArrayList, int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong1, boolean paramBoolean, long paramLong2);
-  
-  public abstract void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void a(long paramLong, long[] paramArrayOfLong, int paramInt1, int paramInt2);
-  
-  public abstract void a(long paramLong1, long[] paramArrayOfLong, int paramInt1, int paramInt2, long paramLong2, int paramInt3);
-  
-  public abstract void a(lnp paramlnp, long paramLong1, int paramInt1, int paramInt2, long paramLong2, int... paramVarArgs);
-  
-  public abstract void b(int paramInt, long paramLong);
-  
-  public abstract void b(int paramInt1, long paramLong, int paramInt2);
-  
-  public abstract void b(int paramInt1, long paramLong, int paramInt2, int paramInt3);
-  
-  public abstract void b(int paramInt1, long paramLong1, long paramLong2, int paramInt2);
-  
-  public abstract void b(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void b(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString);
-  
-  public abstract void b(long paramLong1, long paramLong2, String paramString);
-  
-  public abstract void b(long paramLong, ArrayList<lnp> paramArrayList);
-  
-  public abstract void c(int paramInt1, long paramLong1, long paramLong2, int paramInt2);
-  
-  public abstract void c(long paramLong, int paramInt1, int paramInt2);
-  
-  public abstract void c(ArrayList<lne> paramArrayList);
-  
-  public abstract void d(long paramLong);
-  
-  public abstract void e(int paramInt1, long paramLong, int paramInt2);
-  
-  public abstract void f(int paramInt);
-  
-  public abstract void f(long paramLong);
-  
-  public abstract void g(long paramLong);
-  
-  public abstract void g(byte[] paramArrayOfByte);
-  
-  public abstract void h(int paramInt);
-  
-  public abstract void y();
-  
-  public abstract void z();
+  public void c(float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
+    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
+    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
+    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
+    a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lol
  * JD-Core Version:    0.7.0.1
  */

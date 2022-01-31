@@ -10,6 +10,7 @@ public class AESmooth
 {
   private static final String TAG = "AESmoothV5";
   private int exposureLevel;
+  private boolean isOverall = false;
   private float lookUpIntensity;
   private String lookUpPath;
   private PTFaceAttr mFaceAttr;
@@ -21,11 +22,11 @@ public class AESmooth
   private void configFilter()
   {
     int i;
-    if ((!this.mIsVeryLowEndDevice) && (this.mFaceAttr.getCurve() != null))
+    if ((!this.mIsVeryLowEndDevice) && (this.mFaceAttr != null) && (this.mFaceAttr.getCurve() != null))
     {
       i = 1;
       if (i == 0) {
-        break label58;
+        break label65;
       }
       this.mSmoothFilter.updateToneCurveTexture(this.mFaceAttr.getCurve(), this.mIsTakePhoto);
     }
@@ -35,7 +36,7 @@ public class AESmooth
       return;
       i = 0;
       break;
-      label58:
+      label65:
       this.mSmoothFilter.resetToneCurveTexture();
     }
   }
@@ -113,6 +114,12 @@ public class AESmooth
     this.mSmoothFilter.setLookUpLeftPath(paramString);
   }
   
+  public void setOverallSmooth(boolean paramBoolean)
+  {
+    this.isOverall = paramBoolean;
+    this.mSmoothFilter.setOverall(this.isOverall);
+  }
+  
   public void setSharpenSize(int paramInt1, int paramInt2)
   {
     if (this.mSmoothFilter != null) {
@@ -140,7 +147,7 @@ public class AESmooth
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.aekit.api.standard.filter.AESmooth
  * JD-Core Version:    0.7.0.1
  */

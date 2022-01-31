@@ -1,25 +1,66 @@
+import android.os.IBinder;
 import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlParams;
 
-public final class bicg
-  implements Parcelable.Creator<WadlParams>
+class bicg
+  implements bice
 {
-  public WadlParams a(Parcel paramParcel)
+  private IBinder a;
+  
+  bicg(IBinder paramIBinder)
   {
-    WadlParams localWadlParams = new WadlParams("");
-    localWadlParams.a(paramParcel);
-    return localWadlParams;
+    this.a = paramIBinder;
   }
   
-  public WadlParams[] a(int paramInt)
+  public String a()
   {
-    return new WadlParams[paramInt];
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      String str = localParcel2.readString();
+      return str;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      int i = localParcel2.readInt();
+      if (i != 0) {
+        bool = true;
+      }
+      return bool;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bicg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.minigame.ui;
 
 import android.content.Context;
-import bial;
+import bkch;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
 import mqq.util.WeakReference;
 
 class MiniGameAdBannerPopup$GetAdCallback
-  implements bial
+  implements bkch
 {
   private final WeakReference<Context> context;
   private final MiniAppConfig miniAppConfig;
@@ -29,7 +29,7 @@ class MiniGameAdBannerPopup$GetAdCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGameAdBannerPopup.GetAdCallback
  * JD-Core Version:    0.7.0.1
  */

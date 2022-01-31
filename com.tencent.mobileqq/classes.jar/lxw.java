@@ -1,14 +1,10 @@
-import android.os.Binder;
-import com.tencent.av.service.UtilsServiceForAV;
-
-public class lxw
-  extends Binder
+public abstract interface lxw
 {
-  public lxw(UtilsServiceForAV paramUtilsServiceForAV) {}
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxw
  * JD-Core Version:    0.7.0.1
  */

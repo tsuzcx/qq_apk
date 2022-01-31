@@ -1,56 +1,21 @@
-import android.content.Context;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.net.URL;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import java.util.Comparator;
 
-public abstract class aewd
-  implements aewf
+public class aewd
+  implements Comparator
 {
-  private boolean a;
+  public aewd(LoadDataJob paramLoadDataJob) {}
   
-  public URLDrawable.URLDrawableOptions a()
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    return URLDrawable.URLDrawableOptions.obtain();
-  }
-  
-  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
-  {
-    if (paramURL == null) {
-      return null;
-    }
-    return URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
-  {
-    this.a = true;
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public boolean b()
-  {
-    return this.a;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    paramObject1 = (aewp)paramObject1;
+    paramObject2 = (aewp)paramObject2;
+    return paramObject1.a - paramObject2.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aewd
  * JD-Core Version:    0.7.0.1
  */

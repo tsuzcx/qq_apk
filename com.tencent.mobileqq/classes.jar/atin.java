@@ -1,36 +1,22 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-final class atin
-  implements URLDrawable.URLDrawableListener
+public class atin
+  implements bhqf
 {
-  atin(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, atiu paramatiu) {}
+  public atin(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, atjn paramatjn) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onDismiss()
   {
-    ved.c("ShortVideoShareUtil", "onLoadCanceled --");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    atij.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, null, this.jdField_a_of_type_Atiu);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    ved.c("ShortVideoShareUtil", "onLoadProgressed --" + paramInt);
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = atij.a(paramURLDrawable);
-    atij.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, paramURLDrawable, this.jdField_a_of_type_Atiu);
+    this.jdField_a_of_type_Atjn.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atin
  * JD-Core Version:    0.7.0.1
  */

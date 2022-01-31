@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/mve" android:background="#7f000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <ImageView android:id="@id/mv7" android:layout_width="244.0dip" android:layout_height="338.0dip" />
+        <com.tencent.mobileqq.widget.presseffect.PressEffectImageView android:id="@id/mv_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:src="@drawable/eoi" android:layout_below="@id/mv7" android:layout_centerHorizontal="true" />
+        <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="17.0dip" android:textColor="#ff613610" android:gravity="center" android:id="@id/mvd" android:paddingBottom="15.0dip" android:layout_width="207.0dip" android:layout_height="74.0dip" android:text="@string/wm9" android:layout_alignBottom="@id/mv7" android:layout_centerHorizontal="true" />
+        <LinearLayout android:id="@id/mv8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="160.0dip" android:layout_centerHorizontal="true">
+            <TextView android:textSize="50.0dip" android:textStyle="bold" android:textColor="#ffffecc6" android:id="@id/mv9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0.68" android:fontFamily="sans-serif-light" />
+            <TextView android:textSize="16.0dip" android:textColor="#ffffecc6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wm6" />
+        </LinearLayout>
+        <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="14.0dip" android:textColor="#ffffecc6" android:id="@id/mva" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/wmc" android:layout_below="@id/mv8" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

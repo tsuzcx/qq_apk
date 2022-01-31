@@ -1,49 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
+import org.jetbrains.annotations.NotNull;
 
-public class quk
+public final class quk
+  extends ohk
 {
-  public static int a;
-  public static int b = 1;
-  public static int c = 2;
-  public static int d = 3;
-  public static int e = 4;
-  public static int f = 1;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
+  @NotNull
+  private UgcVideo a;
   
-  public quk(int paramInt1, int paramInt2)
+  public quk(@NotNull UgcVideo paramUgcVideo)
   {
-    this.m = paramInt1;
-    this.n = paramInt2;
+    this.a = paramUgcVideo;
   }
   
-  public HashMap<String, String> a()
+  @NotNull
+  public final UgcVideo a()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_hitCount", String.valueOf(this.g));
-    localHashMap.put("param_notHitCount", String.valueOf(this.h));
-    localHashMap.put("param_triggerCount", String.valueOf(this.i));
-    localHashMap.put("param_triggerHitCount", String.valueOf(this.j));
-    localHashMap.put("param_distinctTriggerHitCount", String.valueOf(this.k));
-    localHashMap.put("param_realTriggerHitCount", String.valueOf(this.l));
-    localHashMap.put("param_sceneType", String.valueOf(this.m));
-    localHashMap.put("param_strategy", String.valueOf(this.n));
-    if (QLog.isColorLevel()) {
-      QLog.i("wgs", 2, "VideoPreloadReportData getReportMap " + localHashMap.toString());
-    }
-    return localHashMap;
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     quk
  * JD-Core Version:    0.7.0.1
  */

@@ -32,8 +32,8 @@ public class POIAdapter
     this.mInflater = LayoutInflater.from(paramContext);
     this.blueColor = Color.rgb(0, 121, 255);
     ThemeUtil.getCurrentThemeInfo().getString("themeId");
-    this.textGray = paramContext.getResources().getColor(2131166928);
-    this.textBlack = paramContext.getResources().getColor(2131166854);
+    this.textGray = paramContext.getResources().getColor(2131166975);
+    this.textBlack = paramContext.getResources().getColor(2131166901);
   }
   
   public void addPoiList(List<LBSShare.POI> paramList, boolean paramBoolean)
@@ -77,10 +77,10 @@ public class POIAdapter
     if (paramView == null)
     {
       paramViewGroup = new POIAdapter.PoiItemViewHolder();
-      paramView = this.mInflater.inflate(2131561565, null);
-      paramViewGroup.nameTextView = ((TextView)paramView.findViewById(2131370660));
-      paramViewGroup.addrTextView = ((TextView)paramView.findViewById(2131362128));
-      paramViewGroup.chooseView = paramView.findViewById(2131375799);
+      paramView = this.mInflater.inflate(2131561757, null);
+      paramViewGroup.nameTextView = ((TextView)paramView.findViewById(2131370971));
+      paramViewGroup.addrTextView = ((TextView)paramView.findViewById(2131362135));
+      paramViewGroup.chooseView = paramView.findViewById(2131376296);
       paramViewGroup.chooseView.setVisibility(4);
       paramViewGroup.detailView = paramView;
       paramView.setTag(paramViewGroup);
@@ -132,7 +132,7 @@ public class POIAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.POIAdapter
  * JD-Core Version:    0.7.0.1
  */

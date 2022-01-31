@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import ajsd;
-import akhm;
-import akta;
-import aktm;
+import aljq;
+import alzc;
+import amjf;
+import amjr;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.util.Log;
-import axnx;
-import axrn;
+import azjg;
+import azmz;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ims.signature.SignatureKickData;
@@ -40,11 +40,11 @@ public class AutomatorFinish
     int i = 1;
     jdField_a_of_type_Long = System.currentTimeMillis();
     long l = jdField_a_of_type_Long - this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Long;
-    axnx.jdField_c_of_type_Int |= 0x20;
+    azjg.jdField_c_of_type_Int |= 0x20;
     this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Long = 0L;
     Object localObject = new HashMap();
-    ((HashMap)localObject).put("param_threadOpId", String.valueOf(akhm.a().a()));
-    axrn.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(null, "actQQInit", true, l, this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b, (HashMap)localObject, null);
+    ((HashMap)localObject).put("param_threadOpId", String.valueOf(alzc.a().a()));
+    azmz.a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(null, "actQQInit", true, l, this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b, (HashMap)localObject, null);
     Log.i("AutoMonitor", "QQInitialize, cost=" + l + ", totalFailCount=" + this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b);
     try
     {
@@ -52,7 +52,7 @@ public class AutomatorFinish
       if (i != 0) {}
       try
       {
-        axrn.a(BaseApplicationImpl.sApplication).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.c(), "qqDetectAttack", true, 0L, 0L, null, null);
+        azmz.a(BaseApplicationImpl.sApplication).a(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.c(), "qqDetectAttack", true, 0L, 0L, null, null);
         localObject = BaseApplicationImpl.sApplication.getSharedPreferences("QQDetectAttack", 0);
         i = ((SharedPreferences)localObject).getInt("AttackCount", 0);
         if (i >= 10)
@@ -65,11 +65,11 @@ public class AutomatorFinish
           int j = BaseApplicationImpl.sApplication.getSharedPreferences("SecSig", 0).getInt("SecResEntry", -1);
           localSignatureKickData.u32_check_result.set(j & 0x12);
           Resources localResources = BaseApplicationImpl.sApplication.getResources();
-          localSignatureKickData.str_right_button.set(localResources.getString(2131691920));
+          localSignatureKickData.str_right_button.set(localResources.getString(2131691975));
           localSignatureKickData.str_url.set("http://im.qq.com");
           localIntent.putExtra("data", localSignatureKickData.toByteArray());
-          localIntent.putExtra("title", localResources.getString(2131720277));
-          localIntent.putExtra("msg", localResources.getString(2131698934));
+          localIntent.putExtra("title", localResources.getString(2131720813));
+          localIntent.putExtra("msg", localResources.getString(2131699232));
           MsfSdkUtils.updateSimpleAccount(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.getCurrentAccountUin(), false);
           BaseApplicationImpl.sApplication.setSortAccountList(MsfSdkUtils.getLoginedAccountList());
           this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.logout(true);
@@ -77,17 +77,17 @@ public class AutomatorFinish
           BaseApplicationImpl.sApplication.startActivity(localIntent);
         }
         ((SharedPreferences)localObject).edit().putInt("AttackCount", i + 1).commit();
-        localObject = new File(ajsd.aV + "/tencent/MobileQQ/data/wifi");
+        localObject = new File(aljq.aW + "/tencent/MobileQQ/data/wifi");
         if (((File)localObject).exists()) {
           ((File)localObject).delete();
         }
-        if (axnx.jdField_c_of_type_Boolean)
+        if (azjg.jdField_c_of_type_Boolean)
         {
-          localObject = (aktm)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().a(2);
+          localObject = (amjr)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().a(2);
           if (QLog.isColorLevel()) {
             QLog.d("Perf", 0, "after automator finish,fts get the troop list");
           }
-          ((aktm)localObject).f();
+          ((amjr)localObject).f();
         }
       }
       catch (Throwable localThrowable2)

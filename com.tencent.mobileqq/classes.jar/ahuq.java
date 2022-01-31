@@ -1,53 +1,34 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahuq
-  extends OrientationEventListener
+  implements alsn
 {
-  public ahuq(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
+  public ahuq(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment) {}
+  
+  public void a(alsn paramalsn) {}
+  
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    super(paramContext);
+    if (QLog.isColorLevel()) {
+      QLog.d(ChatHistoryC2CDateFragment.b(), 2, "onGetRoamMsgForDate " + paramBoolean);
+    }
+    this.a.o();
+    if (paramBoolean)
+    {
+      ThreadManagerV2.executeOnSubThread(new ChatHistoryC2CDateFragment.3.1(this));
+      return;
+    }
+    this.a.c(this.a.getString(2131690774));
   }
   
-  public void onOrientationChanged(int paramInt)
-  {
-    NewFlowCameraActivity.a(this.a).a(paramInt);
-    if (this.a.j) {}
-    do
-    {
-      return;
-      if (paramInt == -1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PTV.NewFlowCameraActivity", 2, "OrientationEventListener unknown");
-        }
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 315) || (paramInt < 45))
-      {
-        this.a.o = 90;
-        return;
-      }
-      if ((paramInt > 45) && (paramInt < 135))
-      {
-        this.a.o = 180;
-        return;
-      }
-      if ((paramInt > 135) && (paramInt < 225))
-      {
-        this.a.o = 270;
-        return;
-      }
-    } while ((paramInt <= 225) || (paramInt >= 315));
-    this.a.o = 0;
-  }
+  public void b(int paramInt1, int paramInt2, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahuq
  * JD-Core Version:    0.7.0.1
  */

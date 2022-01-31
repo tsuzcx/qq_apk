@@ -1,57 +1,36 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class auqd
-  extends ampa<auqe>
+final class auqd
+  implements DialogInterface.OnClickListener
 {
-  public int a()
-  {
-    return 495;
-  }
+  auqd(String paramString, int paramInt, Activity paramActivity) {}
   
-  @NonNull
-  public auqe a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new auqe();
-  }
-  
-  @Nullable
-  public auqe a(amph[] paramArrayOfamph)
-  {
-    auqe localauqe = new auqe();
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null)) {
-      auqe.a(localauqe, paramArrayOfamph[0].a);
+    paramDialogInterface = this.jdField_a_of_type_JavaLangString + "&from=" + this.jdField_a_of_type_Int;
+    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", paramDialogInterface);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.nearby.tribeAppDownload", 2, "open download page, url=" + paramDialogInterface);
     }
-    return localauqe;
-  }
-  
-  public Class<auqe> a()
-  {
-    return auqe.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(auqe paramauqe) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    if (this.jdField_a_of_type_Int == 1) {
+      azmj.b(null, "dc00899", "grp_lbs", "", "app_down", "msg_down", 0, 0, "", "", "", "");
+    }
+    while (this.jdField_a_of_type_Int != 2) {
+      return;
+    }
+    azmj.b(null, "dc00899", "grp_lbs", "", "app_down", "pic_down", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auqd
  * JD-Core Version:    0.7.0.1
  */

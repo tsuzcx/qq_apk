@@ -1,65 +1,39 @@
-import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.ArtFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.BeautyResource;
-import com.tencent.mobileqq.shortvideo.resource.GestureGameResource;
-import com.tencent.mobileqq.shortvideo.resource.GestureResource;
-import com.tencent.mobileqq.shortvideo.resource.LowLightResource;
-import com.tencent.mobileqq.shortvideo.resource.PtuFilterResource;
-import com.tencent.mobileqq.shortvideo.resource.Resources;
-import com.tencent.mobileqq.shortvideo.resource.SensorResource;
-import com.tencent.mobileqq.shortvideo.resource.SpecialAVFilterResource;
+import com.tencent.open.model.AppInfo;
+import java.util.List;
 
 public class bfml
-  implements Resources
+  implements alkr
 {
-  public SpecialAVFilterResource getAVFilterResource()
-  {
-    return new bfmn();
-  }
+  protected void a(boolean paramBoolean, List<AppInfo> paramList) {}
   
-  public ArtFilterResource getArtFilterResource()
-  {
-    return new bfmc();
-  }
+  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString) {}
   
-  public AVFilterResource getAvFilterResource()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return new bfmb();
-  }
-  
-  public BeautyResource getBeautyResource()
-  {
-    return new bfmd();
-  }
-  
-  public GestureResource getGestureResource()
-  {
-    return new bfmg();
-  }
-  
-  public LowLightResource getLowLightResource()
-  {
-    return new bfmi();
-  }
-  
-  public PtuFilterResource getPtuFilterResource()
-  {
-    return new bfmj();
-  }
-  
-  public SensorResource getSensorResource()
-  {
-    return new bfmm();
-  }
-  
-  public GestureGameResource geteGestureGameResource()
-  {
-    return new bfmf();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      if (paramBoolean)
+      {
+        a(paramBoolean, (List)paramObject, null);
+        return;
+      }
+      a(paramBoolean, null, (String)paramObject);
+      return;
+    }
+    if (paramBoolean)
+    {
+      a(paramBoolean, (List)paramObject);
+      return;
+    }
+    a(paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfml
  * JD-Core Version:    0.7.0.1
  */

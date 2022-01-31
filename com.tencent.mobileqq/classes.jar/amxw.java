@@ -1,107 +1,28 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.YTFace.model.FaceStatus;
 
 public class amxw
-  extends ampa<amxu>
 {
-  public int a()
-  {
-    return 85;
-  }
+  public float a;
+  public int a;
+  public FaceStatus a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  @NonNull
-  public amxu a(int paramInt)
+  public String toString()
   {
-    return new amxu();
-  }
-  
-  @Nullable
-  public amxu a(amph[] paramArrayOfamph)
-  {
-    QLog.i("QFileDownloadConfigProcessor", 1, "onParsed");
-    if (paramArrayOfamph != null) {
-      try
-      {
-        if (paramArrayOfamph.length > 0)
-        {
-          paramArrayOfamph = (amxu)ampv.a(paramArrayOfamph[0].jdField_a_of_type_JavaLangString, amxu.class);
-          return paramArrayOfamph;
-        }
-      }
-      catch (QStorageInstantiateException paramArrayOfamph)
-      {
-        QLog.e("QFileDownloadConfigProcessor", 1, "onParsed : error " + paramArrayOfamph.getMessage());
-      }
-    }
-    return null;
-  }
-  
-  public Class<amxu> a()
-  {
-    return amxu.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("QFileDownloadConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
-  }
-  
-  public void a(amxu paramamxu)
-  {
-    if ((paramamxu != null) && (paramamxu.jdField_a_of_type_JavaUtilHashMap != null))
-    {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label156;
-      }
-    }
-    label156:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
-      {
-        if (!TextUtils.isEmpty(paramamxu.jdField_a_of_type_JavaLangString))
-        {
-          SharedPreferences.Editor localEditor = ((QQAppInterface)localObject).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject).c(), 0).edit();
-          localEditor.putString("qfile_file_auto_download", paramamxu.jdField_a_of_type_JavaLangString);
-          localEditor.apply();
-          QLog.i("QFileDownloadConfigProcessor", 1, "save download config [" + paramamxu.jdField_a_of_type_JavaLangString + "]");
-        }
-        localObject = (aoww)((QQAppInterface)localObject).getManager(317);
-        if (localObject != null) {
-          ((aoww)localObject).a(paramamxu.jdField_a_of_type_JavaUtilHashMap);
-        }
-      }
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    return "FaceInfo{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", tracked=" + this.jdField_a_of_type_Boolean + ", lostCount=" + this.c + ", faceType=" + this.jdField_a_of_type_Int + ", faceStatus=" + this.jdField_a_of_type_ComTencentYTFaceModelFaceStatus + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxw
  * JD-Core Version:    0.7.0.1
  */

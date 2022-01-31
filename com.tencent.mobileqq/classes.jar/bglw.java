@@ -1,17 +1,48 @@
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask;
+import com.tencent.qqmini.sdk.core.utils.thread.AsyncTask.SerialExecutor.1;
+import com.tencent.qqmini.sdk.core.utils.thread.internel.ArrayDeque;
+import java.util.concurrent.Executor;
 
-class bglw
-  implements FilenameFilter
+public class bglw
+  implements Executor
 {
-  public boolean accept(File paramFile, String paramString)
+  final ArrayDeque<Runnable> jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque = new ArrayDeque();
+  Runnable jdField_a_of_type_JavaLangRunnable;
+  
+  public void a()
   {
-    return paramString.endsWith(this.a);
+    try
+    {
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque.poll();
+      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
+      if (localRunnable != null) {
+        AsyncTask.a.execute(this.jdField_a_of_type_JavaLangRunnable);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void execute(Runnable paramRunnable)
+  {
+    try
+    {
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreUtilsThreadInternelArrayDeque.offer(new AsyncTask.SerialExecutor.1(this, paramRunnable));
+      if (this.jdField_a_of_type_JavaLangRunnable == null) {
+        a();
+      }
+      return;
+    }
+    finally
+    {
+      paramRunnable = finally;
+      throw paramRunnable;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bglw
  * JD-Core Version:    0.7.0.1
  */

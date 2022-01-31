@@ -1,105 +1,218 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.webdownload.DownloadURLCheck.RspDownloadUrlCheckRecmd;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
 
-class aoyg
-  implements BusinessObserver
+public class aoyg
 {
-  aoyg(aoyf paramaoyf, String paramString, long paramLong, boolean paramBoolean) {}
+  private static boolean jdField_c_of_type_Boolean = true;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean = true;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int;
+  private float jdField_d_of_type_Float;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean;
+  private float jdField_e_of_type_Float;
+  private int jdField_e_of_type_Int;
+  private float jdField_f_of_type_Float;
+  private int jdField_f_of_type_Int;
+  private int g;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public aoyg()
   {
-    Object localObject = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("UniformDownloadMgr<FileAssistant>", 2, "handleCheck, success: " + paramBoolean + ", canceled: " + aoyf.a(this.jdField_a_of_type_Aoyf));
+    DisplayMetrics localDisplayMetrics = aowq.a().a().a().getDisplayMetrics();
+    int i = localDisplayMetrics.widthPixels;
+    int j = localDisplayMetrics.heightPixels;
+    if (this.jdField_d_of_type_Boolean) {
+      this.g = Math.max(i, j);
     }
-    Activity localActivity = (Activity)aoyf.a(this.jdField_a_of_type_Aoyf).get();
-    if ((aoyf.a(this.jdField_a_of_type_Aoyf)) || (localActivity == null) || (localActivity.isFinishing())) {
-      return;
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("param_url", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("_filesize", this.jdField_a_of_type_Long);
-    localIntent.putExtra("big_brother_source_key", localActivity.getIntent().getStringExtra("big_brother_source_key"));
-    DownloadURLCheck.RspDownloadUrlCheckRecmd localRspDownloadUrlCheckRecmd;
-    if (paramBoolean)
+    for (this.jdField_f_of_type_Int = Math.min(i, j);; this.jdField_f_of_type_Int = Math.max(i, j))
     {
-      paramBundle = paramBundle.getByteArray("extra_data");
-      if (paramBundle != null) {
-        localRspDownloadUrlCheckRecmd = new DownloadURLCheck.RspDownloadUrlCheckRecmd();
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localRspDownloadUrlCheckRecmd.mergeFrom(paramBundle);
-        if (localRspDownloadUrlCheckRecmd.err_code.has())
-        {
-          if (localRspDownloadUrlCheckRecmd.err_code.get() != 0) {
-            continue;
-          }
-          paramInt = 1;
-          if (QLog.isColorLevel()) {
-            QLog.d("UniformDownloadMgr<FileAssistant>", 2, "handleCheck, code: " + localRspDownloadUrlCheckRecmd.err_code.get());
-          }
-          if (paramInt != 0)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("UniformDownloadMgr<FileAssistant>", 2, "start download from yyb");
-            }
-            if ((!localRspDownloadUrlCheckRecmd.is_white_url.has()) || (!localRspDownloadUrlCheckRecmd.is_white_url.get())) {
-              continue;
-            }
-            paramBoolean = true;
-            localIntent.putExtra("param_in_white_list", paramBoolean);
-            if (!localRspDownloadUrlCheckRecmd.pkg_name.has()) {
-              continue;
-            }
-            paramBundle = localRspDownloadUrlCheckRecmd.pkg_name.get();
-            localIntent.putExtra("param_pkg_name", paramBundle);
-            paramBundle = localObject;
-            if (localRspDownloadUrlCheckRecmd.extra_info.has()) {
-              paramBundle = localRspDownloadUrlCheckRecmd.extra_info.get();
-            }
-            localIntent.putExtra("param_ext_info", paramBundle);
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        QLog.e("UniformDownloadMgr<FileAssistant>", 1, paramBundle, new Object[0]);
-        continue;
-        this.jdField_a_of_type_Aoyf.a.sendEmptyMessage(2);
-      }
-      abtq.a(localActivity, localIntent, PublicFragmentActivity.class, ApkFileDownloadFragment.class);
-      if (!this.jdField_a_of_type_Boolean) {
-        continue;
-      }
-      localActivity.finish();
+      c(8000);
+      b(12);
+      a(3);
+      a(1.5F);
+      d(1);
+      c(5.0F);
+      b(5.0F);
+      b(true);
+      c(true);
+      d(16.0F);
+      e(0.0F);
+      f(5.0F);
+      g(4.0F);
       return;
-      paramInt = 0;
-      continue;
-      paramBoolean = false;
-      continue;
-      paramBundle = null;
+      this.g = Math.min(i, j);
     }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public static boolean a()
+  {
+    return jdField_c_of_type_Boolean;
+  }
+  
+  public float a()
+  {
+    return this.jdField_b_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_d_of_type_Int = aozh.a(paramFloat);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public float b()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.jdField_b_of_type_Float = aozh.a(paramFloat);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = aozh.a(paramInt);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public float c()
+  {
+    return this.jdField_c_of_type_Float;
+  }
+  
+  public int c()
+  {
+    return this.jdField_d_of_type_Int;
+  }
+  
+  public void c(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = aozh.a(paramFloat);
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public float d()
+  {
+    return this.jdField_d_of_type_Float;
+  }
+  
+  public int d()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void d(float paramFloat)
+  {
+    this.jdField_c_of_type_Float = aozh.a(paramFloat);
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_e_of_type_Int = aozh.a(paramInt);
+  }
+  
+  public void d(boolean paramBoolean)
+  {
+    if (this.jdField_d_of_type_Boolean != paramBoolean)
+    {
+      int i = this.jdField_f_of_type_Int;
+      this.jdField_f_of_type_Int = this.g;
+      this.g = i;
+    }
+    this.jdField_d_of_type_Boolean = paramBoolean;
+  }
+  
+  public float e()
+  {
+    return this.jdField_e_of_type_Float;
+  }
+  
+  public int e()
+  {
+    return this.jdField_f_of_type_Int;
+  }
+  
+  public void e(float paramFloat)
+  {
+    this.jdField_d_of_type_Float = paramFloat;
+  }
+  
+  public float f()
+  {
+    return this.jdField_f_of_type_Float;
+  }
+  
+  public int f()
+  {
+    return this.g;
+  }
+  
+  public void f(float paramFloat)
+  {
+    this.jdField_e_of_type_Float = aozh.a(paramFloat);
+  }
+  
+  public int g()
+  {
+    return this.jdField_e_of_type_Int;
+  }
+  
+  public void g(float paramFloat)
+  {
+    this.jdField_f_of_type_Float = aozh.a(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyg
  * JD-Core Version:    0.7.0.1
  */

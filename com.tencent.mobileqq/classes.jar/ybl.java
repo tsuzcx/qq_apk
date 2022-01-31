@@ -1,100 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.device.msg.data.MessageForDevPtt;
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoReplyRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class ybl
+class ybl
+  implements yvn<CertifiedAccountWrite.StDoReplyRsp>
 {
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2, String paramString3, long paramLong)
-  {
-    byte[] arrayOfByte = new byte[3];
-    bbmx.a(paramString1.length(), arrayOfByte, 0, 3, "utf-8");
-    paramString2 = (MessageForDevPtt)axas.b(paramQQAppInterface, paramString2, paramString3, paramInt);
-    paramString2.url = paramString1;
-    paramString2.fileSize = -3L;
-    paramString2.itemType = 2;
-    if ((ayaj.a(paramInt)) && (ayaj.a(paramQQAppInterface))) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramString2.sttAbility = paramInt;
-      paramString2.longPttVipFlag = 0;
-      paramString2.c2cViaOffline = true;
-      paramString2.msg = paramString2.getSummary();
-      paramString2.issend = 1;
-      paramString2.isread = false;
-      paramString2.serial();
-      paramQQAppInterface.a().a(paramString2, paramQQAppInterface.getCurrentAccountUin());
-      return paramString2;
-    }
-  }
+  ybl(ybg paramybg, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public void a(Session paramSession, String paramString, long paramLong, int paramInt, float paramFloat)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoReplyRsp paramStDoReplyRsp)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    MessageRecord localMessageRecord;
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      localMessageRecord = ((QQAppInterface)localObject).a().a(paramString, paramInt, paramLong);
-      if (localMessageRecord != null) {
-        break label43;
-      }
-    }
-    label43:
-    MessageForDevPtt localMessageForDevPtt;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(localMessageRecord instanceof MessageForDevPtt));
-      localMessageForDevPtt = (MessageForDevPtt)localMessageRecord;
-      localMessageForDevPtt.fileSessionId = paramSession.uSessionID;
-      localMessageForDevPtt.serial();
-      ((QQAppInterface)localObject).a().a(paramString, paramInt, localMessageRecord.uniseq, localMessageForDevPtt.msgData);
-    } while (!QLog.isColorLevel());
-    QLog.d("DeviceAudioMsg", 2, "updatemsg msg.uniseq:" + localMessageRecord.uniseq + " ===> filesize:" + localMessageForDevPtt.fileSize);
-  }
-  
-  public void a(Session paramSession, String paramString, long paramLong, int paramInt, boolean paramBoolean)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    MessageRecord localMessageRecord;
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (QQAppInterface)localObject;
-      localMessageRecord = ((QQAppInterface)localObject).a().a(paramString, paramInt, paramLong);
-      if (localMessageRecord != null) {
-        break label43;
-      }
-    }
-    label43:
-    while (!(localMessageRecord instanceof MessageForDevPtt)) {
-      return;
-    }
-    MessageForDevPtt localMessageForDevPtt = (MessageForDevPtt)localMessageRecord;
-    localMessageForDevPtt.url = paramSession.strFilePathSrc;
-    localMessageForDevPtt.itemType = 2;
-    localMessageForDevPtt.issend = 1;
-    if (paramBoolean) {
-      localMessageForDevPtt.fileSize = paramSession.uFileSizeSrc;
-    }
-    for (localMessageRecord.extraflag = 32770;; localMessageRecord.extraflag = 32768)
-    {
-      localMessageForDevPtt.msg = localMessageForDevPtt.getSummary();
-      localMessageForDevPtt.serial();
-      ((QQAppInterface)localObject).a().a(paramString, paramInt, localMessageRecord.uniseq, localMessageForDevPtt.msgData);
-      return;
-      localMessageForDevPtt.fileSize = -1L;
-    }
+    uht.a().dispatch(this.jdField_a_of_type_Ybg.a(new Object[] { Integer.valueOf(4), Long.valueOf(paramLong), paramString, paramStDoReplyRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.id.get(), Integer.valueOf(this.jdField_a_of_type_Ybg.hashCode()) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ybl
  * JD-Core Version:    0.7.0.1
  */

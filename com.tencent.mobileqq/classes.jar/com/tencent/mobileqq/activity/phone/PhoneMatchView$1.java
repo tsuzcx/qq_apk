@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.phone;
 
-import agko;
+import aiir;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -12,19 +12,19 @@ public class PhoneMatchView$1
   
   public void run()
   {
-    this.this$0.a(2131719292, 1000L, true);
+    this.this$0.a(2131719773, 1000L, true);
     PhoneMatchView.a(this.this$0).sendEmptyMessageDelayed(0, 15000L);
-    if (this.this$0.jdField_a_of_type_Aumg == null)
+    if (this.this$0.jdField_a_of_type_Awdn == null)
     {
-      this.this$0.jdField_a_of_type_Aumg = new agko(this);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.this$0.jdField_a_of_type_Aumg);
+      this.this$0.jdField_a_of_type_Awdn = new aiir(this);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.this$0.jdField_a_of_type_Awdn);
     }
     ThreadManager.excute(new PhoneMatchView.1.2(this), 16, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneMatchView.1
  * JD-Core Version:    0.7.0.1
  */

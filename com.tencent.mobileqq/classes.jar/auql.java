@@ -1,31 +1,32 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.NearbyFakeActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class auql
-  implements ValueAnimator.AnimatorUpdateListener
+public class auql
+  extends Handler
 {
-  auql(auqk paramauqk, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
+  public auql(NearbyFakeActivity paramNearbyFakeActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramValueAnimator.getAnimatedValue() == null) {}
-    float f;
-    do
+    switch (paramMessage.what)
     {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
       return;
-      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
-      int i = (int)(-auqk.a(this.jdField_a_of_type_Auqk) * f);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    } while (!this.jdField_a_of_type_Auqk.f);
-    this.b.setAlpha(1.0F - f);
+      if (QLog.isColorLevel()) {
+        QLog.i("NearbyFakeActivity", 2, "procPreload time out");
+      }
+      NearbyFakeActivity.a(this.a, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auql
  * JD-Core Version:    0.7.0.1
  */

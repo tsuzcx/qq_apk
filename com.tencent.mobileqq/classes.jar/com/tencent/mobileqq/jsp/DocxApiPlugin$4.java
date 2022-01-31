@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.jsp;
 
-import armk;
-import ayfg;
+import atcy;
+import badd;
 
 public class DocxApiPlugin$4
   implements Runnable
 {
-  public DocxApiPlugin$4(armk paramarmk, String paramString) {}
+  public DocxApiPlugin$4(atcy paramatcy, String paramString) {}
   
   public void run()
   {
-    ayfg.a(this.a);
+    badd.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin.4
  * JD-Core Version:    0.7.0.1
  */

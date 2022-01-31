@@ -1,27 +1,34 @@
+import android.app.Activity;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import java.lang.ref.WeakReference;
+import android.os.SystemClock;
 
 class bkij
   extends Handler
 {
-  private WeakReference<bkii> a;
-  
-  public bkij(WeakReference<bkii> paramWeakReference)
+  public bkij(Looper paramLooper)
   {
-    this.a = paramWeakReference;
+    super(paramLooper);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    if (this.a.get() != null) {
-      bkii.a((bkii)this.a.get());
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 3000: 
+      bkif.c((Activity)paramMessage.obj, paramMessage.arg1);
+      return;
     }
+    bkif.a(null);
+    bkif.a(SystemClock.uptimeMillis());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkij
  * JD-Core Version:    0.7.0.1
  */

@@ -1,129 +1,30 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.animation.Interpolator;
 
-public final class annw
+class annw
+  implements Interpolator
 {
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private final WebViewPlugin jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin;
-  private String jdField_a_of_type_JavaLangString;
+  annw(annv paramannv) {}
   
-  public annw(WebViewPlugin paramWebViewPlugin)
+  public float getInterpolation(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin = paramWebViewPlugin;
-  }
-  
-  private AppActivity a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null)
-    {
-      localObject = null;
-      if (localObject != null) {
-        break label38;
-      }
+    if (paramFloat < 0.2094D) {
+      return (float)(-34.0D * (paramFloat - 0.18D) * (paramFloat - 0.18D) + 1.08D);
     }
-    label38:
-    for (Object localObject = null;; localObject = ((bcdp)localObject).a())
-    {
-      if (!(localObject instanceof AppActivity)) {
-        break label46;
-      }
-      return (AppActivity)localObject;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime;
-      break;
+    if (paramFloat < 0.404D) {
+      return (float)(5.9D * (paramFloat - 0.34D) * (paramFloat - 0.34D) + 0.95D);
     }
-    label46:
-    return null;
-  }
-  
-  private void a(boolean paramBoolean, int paramInt)
-  {
-    String str = this.jdField_a_of_type_JavaLangString;
-    Object localObject1;
-    if (!TextUtils.isEmpty(str)) {
-      localObject1 = "";
+    if (paramFloat < 0.6045D) {
+      return (float)(-3.0D * (paramFloat - 0.53D) * (paramFloat - 0.53D) + 1.02D);
     }
-    try
-    {
-      Object localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("granted", paramBoolean);
-      ((JSONObject)localObject2).put("errorCode", paramInt);
-      ((JSONObject)localObject2).put("cmd", "onPermissionResult");
-      localObject2 = ((JSONObject)localObject2).toString();
-      localObject1 = localObject2;
+    if (paramFloat < 0.8064D) {
+      return (float)((paramFloat - 0.72D) * (paramFloat - 0.72D) + 0.99D);
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("CameraHelper", 1, "onPermissionResult error", localJSONException);
-      }
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(str, new String[] { localObject1 });
-    }
-  }
-  
-  private boolean a()
-  {
-    AppActivity localAppActivity = a();
-    return (Build.VERSION.SDK_INT < 23) || (localAppActivity == null) || (localAppActivity.checkSelfPermission("android.permission.CAMERA") == 0);
-  }
-  
-  private void b()
-  {
-    AppActivity localAppActivity = a();
-    if (localAppActivity == null) {
-      return;
-    }
-    localAppActivity.requestPermissions(new annx(this), 1819, new String[] { "android.permission.CAMERA" });
-    if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new anny(this, Looper.getMainLooper());
-    }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 10000L);
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-    c();
-    this.jdField_a_of_type_AndroidOsHandler = null;
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("CameraHelper", 1, "checkPermission failed, callback is invalid.");
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) {
-      return false;
-    }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    if (a())
-    {
-      a(true, 0);
-      return true;
-    }
-    b();
-    return false;
+    return (float)(-0.3D * (paramFloat - 0.915D) * (paramFloat - 0.915D) + 1.001D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annw
  * JD-Core Version:    0.7.0.1
  */

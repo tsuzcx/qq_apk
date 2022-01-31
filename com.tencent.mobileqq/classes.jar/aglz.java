@@ -1,25 +1,54 @@
-final class aglz
-  extends aglv
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+
+public class aglz
+  extends alsi
 {
-  public boolean a(String paramString)
+  aglz(aglv paramaglv) {}
+  
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    if (!super.a(paramString)) {}
-    do
-    {
-      return false;
-      paramString = agmm.a(paramString);
-    } while ((paramString != null) && ("image".equals(paramString[0])) && (agmm.a(paramString[1])));
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d(aglv.g, 2, "[onUpdateSendMsgError], errMsg:" + paramString2 + ",replyCode:" + paramInt2);
+    }
+    ThreadManager.getUIHandler().post(new GameMsgChatPie.4.1(this, paramString2));
   }
   
-  public boolean b()
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    return false;
+    a(paramBoolean, paramString, paramLong, null);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong, alsf paramalsf)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.a.a)) {
+      return;
+    }
+    this.a.u = true;
+    this.a.a(262144, paramalsf, paramLong);
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgSend", 4, "delay 100ms, starting upadte ui");
+    }
+    this.a.e(131072);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.e(65536);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aglz
  * JD-Core Version:    0.7.0.1
  */

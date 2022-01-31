@@ -1,18 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class okh
-  implements ViewBase.IBuilder
+public abstract interface okh
 {
-  public ViewBase build(VafContext paramVafContext)
-  {
-    return new okg(paramVafContext);
-  }
+  public abstract void a(ArticleInfo paramArticleInfo, int paramInt1, String paramString1, JSONObject paramJSONObject, String paramString2, JSONArray paramJSONArray, int paramInt2);
+  
+  public abstract void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okh
  * JD-Core Version:    0.7.0.1
  */

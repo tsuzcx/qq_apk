@@ -1,23 +1,28 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
-import java.util.List;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast;
 
-public abstract interface aryo
+class aryo
+  extends Handler
 {
-  public abstract void a(LocationRoom.Venue paramVenue);
+  aryo(aryh paramaryh) {}
   
-  public abstract void a(LatLng paramLatLng);
-  
-  public abstract void a(LatLng paramLatLng, float paramFloat, List<String> paramList);
-  
-  public abstract void a(boolean paramBoolean, Point paramPoint);
-  
-  public abstract void a(boolean paramBoolean, aryp paramaryp);
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 0) {
+      QQToast.a(this.a.a, alpo.a(2131705187), 0).a();
+    }
+    while (1 != paramMessage.what) {
+      return;
+    }
+    this.a.a.setResult(-1);
+    this.a.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aryo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import ahon;
+import ajfw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.List;
 
@@ -11,12 +11,12 @@ class Conversation$3
   
   public void run()
   {
-    ahon.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, 15);
+    ajfw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, 15);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ahpj;
+import ajgs;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mxu;
+import nan;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
@@ -31,16 +31,16 @@ public class RecentItemTencentDocsAssistantData
       QLog.d("RecentItemTencentDocsAssistantData", 2, "RecentItemTencentDocsAssistantData update");
     }
     super.a(paramQQAppInterface, paramContext);
-    this.mTitleName = paramContext.getString(2131720193);
+    this.mTitleName = paramContext.getString(2131720729);
     this.mMsgExtroInfo = "";
-    oidb_0x791.RedDotInfo localRedDotInfo = ((mxu)paramQQAppInterface.getManager(70)).a(46, false);
+    oidb_0x791.RedDotInfo localRedDotInfo = ((nan)paramQQAppInterface.getManager(70)).a(46, false);
     if (localRedDotInfo == null)
     {
       this.mUnreadNum = 0;
       this.mDisplayTime = 0L;
       this.mShowTime = "";
-      this.mLastMsg = paramContext.getString(2131720194);
-      if (AppSetting.d)
+      this.mLastMsg = paramContext.getString(2131720730);
+      if (AppSetting.c)
       {
         paramQQAppInterface = new StringBuilder();
         paramQQAppInterface.append(this.mTitleName).append(",");
@@ -132,10 +132,10 @@ public class RecentItemTencentDocsAssistantData
           QLog.e("RecentItemTencentDocsAssistantData", 1, "RecentItemTencentDocsAssistantData update error" + paramQQAppInterface.getMessage());
           localObject2 = localObject1;
           continue;
-          this.mLastMsg = paramContext.getString(2131720194);
+          this.mLastMsg = paramContext.getString(2131720730);
         }
         if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
-          this.mShowTime = ahpj.a().a(a(), this.mDisplayTime);
+          this.mShowTime = ajgs.a().a(a(), this.mDisplayTime);
         }
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           continue;
@@ -162,7 +162,7 @@ public class RecentItemTencentDocsAssistantData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemTencentDocsAssistantData
  * JD-Core Version:    0.7.0.1
  */

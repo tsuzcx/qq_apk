@@ -1,20 +1,37 @@
 package cooperation.qzone.stickynote;
 
-import bhnr;
+import android.os.Handler;
+import bjdh;
+import bjpc;
+import bjpd;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzonePluginProxyActivity;
 
-class QzoneStickyNoteManager$1$1
+public class QzoneStickyNoteManager$1$1
   implements Runnable
 {
-  QzoneStickyNoteManager$1$1(QzoneStickyNoteManager.1 param1) {}
+  public QzoneStickyNoteManager$1$1(bjpd parambjpd) {}
   
   public void run()
   {
-    this.a.this$0.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentWidgetListView, this.a.jdField_a_of_type_ComTencentMobileqqDataCard);
+    try
+    {
+      QzonePluginProxyActivity.a(this.a.jdField_a_of_type_AndroidAppActivity);
+      boolean bool = bjdh.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((bjdh.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (bool)) {
+        bjpc.a(this.a.jdField_a_of_type_Bjpc).post(new QzoneStickyNoteManager.1.1.1(this));
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.w("QzoneStickyNoteManager", 1, "tryLoadQzonePlugin: failed to load qzone plugin");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.stickynote.QzoneStickyNoteManager.1.1
  * JD-Core Version:    0.7.0.1
  */

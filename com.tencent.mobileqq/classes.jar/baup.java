@@ -1,24 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
-class baup
-  implements baus
+public class baup
+  extends NativeGifImage
 {
-  baup(baui parambaui) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public baup(bauo parambauo, File paramFile, boolean paramBoolean, float paramFloat)
   {
-    if (paramBoolean)
-    {
-      this.a.d = paramString;
-      baui.e(this.a);
+    super(paramFile, paramBoolean, false, 0, 0, paramFloat);
+  }
+  
+  public void executeNewTask()
+  {
+    if (this.mCurrentFrameIndex >= 1) {
       return;
     }
-    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131715791), 0).a();
+    super.executeNewTask();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baup
  * JD-Core Version:    0.7.0.1
  */

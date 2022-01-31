@@ -1,27 +1,22 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
-import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView.1;
+import com.tencent.image.URLDrawableHandler;
 
 public class baue
-  implements Animator.AnimatorListener
 {
-  public baue(PhantomPicView.1 param1) {}
+  public int a;
+  public URLDrawableHandler a;
+  public String a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public String toString()
   {
-    this.a.this$0.c();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUrlFromMsg:" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mStartDownOffset:" + this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baue
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.view.CircularProgressBar;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class auzc
-  extends Handler
+class auzc
+  extends nab
 {
-  public auzc(CircularProgressBar paramCircularProgressBar) {}
+  auzc(auza paramauza, auzh paramauzh) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.invalidate();
-    if (CircularProgressBar.a(this.a))
-    {
-      CircularProgressBar.a(this.a, CircularProgressBar.a(this.a) + CircularProgressBar.b(this.a));
-      if (CircularProgressBar.a(this.a) > 360) {
-        CircularProgressBar.a(this.a, 0);
-      }
-      CircularProgressBar.a(this.a).sendEmptyMessageDelayed(0, CircularProgressBar.c(this.a));
+    QLog.i("reportPlay", 1, " reportPlay code:" + paramInt);
+    if (this.jdField_a_of_type_Auzh != null) {
+      this.jdField_a_of_type_Auzh.a(paramInt, paramArrayOfByte, paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auzc
  * JD-Core Version:    0.7.0.1
  */

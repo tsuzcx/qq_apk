@@ -329,132 +329,133 @@ public class Utils
   public static boolean isHeifFile(String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: new 298	java/io/File
-    //   6: dup
-    //   7: aload_0
-    //   8: invokespecial 309	java/io/File:<init>	(Ljava/lang/String;)V
-    //   11: astore_0
-    //   12: new 363	java/io/RandomAccessFile
-    //   15: dup
-    //   16: aload_0
-    //   17: ldc_w 365
-    //   20: invokespecial 368	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   23: astore 5
-    //   25: aload 5
-    //   27: astore_0
-    //   28: getstatic 58	com/tencent/image/Utils:HEIF_SIGNATURE	[B
-    //   31: arraylength
-    //   32: newarray byte
-    //   34: astore 6
-    //   36: aload 5
-    //   38: astore_0
-    //   39: aload 5
-    //   41: aload 6
-    //   43: invokevirtual 369	java/io/RandomAccessFile:read	([B)I
-    //   46: pop
-    //   47: iconst_0
-    //   48: istore_1
-    //   49: aload 5
-    //   51: astore_0
-    //   52: iload_1
-    //   53: getstatic 58	com/tencent/image/Utils:HEIF_SIGNATURE	[B
-    //   56: arraylength
-    //   57: if_icmpge +36 -> 93
-    //   60: aload 6
-    //   62: iload_1
-    //   63: baload
-    //   64: istore_2
-    //   65: aload 5
-    //   67: astore_0
-    //   68: getstatic 58	com/tencent/image/Utils:HEIF_SIGNATURE	[B
-    //   71: iload_1
-    //   72: baload
-    //   73: istore_3
-    //   74: iload_2
-    //   75: iload_3
-    //   76: if_icmpeq +10 -> 86
-    //   79: aload 5
-    //   81: invokevirtual 370	java/io/RandomAccessFile:close	()V
-    //   84: iconst_0
-    //   85: ireturn
-    //   86: iload_1
-    //   87: iconst_1
-    //   88: iadd
-    //   89: istore_1
-    //   90: goto -41 -> 49
-    //   93: iconst_1
-    //   94: istore 4
-    //   96: aload 5
-    //   98: invokevirtual 370	java/io/RandomAccessFile:close	()V
-    //   101: iconst_1
-    //   102: ireturn
-    //   103: astore_0
-    //   104: aload_0
-    //   105: invokevirtual 373	java/lang/Exception:printStackTrace	()V
-    //   108: iload 4
+    //   0: new 298	java/io/File
+    //   3: dup
+    //   4: aload_0
+    //   5: invokespecial 309	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore_0
+    //   9: new 363	java/io/RandomAccessFile
+    //   12: dup
+    //   13: aload_0
+    //   14: ldc_w 365
+    //   17: invokespecial 368	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   20: astore 4
+    //   22: aload 4
+    //   24: astore_0
+    //   25: getstatic 58	com/tencent/image/Utils:HEIF_SIGNATURE	[B
+    //   28: arraylength
+    //   29: newarray byte
+    //   31: astore 5
+    //   33: aload 4
+    //   35: astore_0
+    //   36: aload 4
+    //   38: aload 5
+    //   40: invokevirtual 369	java/io/RandomAccessFile:read	([B)I
+    //   43: pop
+    //   44: iconst_0
+    //   45: istore_1
+    //   46: aload 4
+    //   48: astore_0
+    //   49: iload_1
+    //   50: getstatic 58	com/tencent/image/Utils:HEIF_SIGNATURE	[B
+    //   53: arraylength
+    //   54: if_icmpge +43 -> 97
+    //   57: aload 5
+    //   59: iload_1
+    //   60: baload
+    //   61: istore_2
+    //   62: aload 4
+    //   64: astore_0
+    //   65: getstatic 58	com/tencent/image/Utils:HEIF_SIGNATURE	[B
+    //   68: iload_1
+    //   69: baload
+    //   70: istore_3
+    //   71: iload_2
+    //   72: iload_3
+    //   73: if_icmpeq +17 -> 90
+    //   76: aload 4
+    //   78: invokevirtual 370	java/io/RandomAccessFile:close	()V
+    //   81: iconst_0
+    //   82: ireturn
+    //   83: astore_0
+    //   84: aload_0
+    //   85: invokevirtual 373	java/lang/Exception:printStackTrace	()V
+    //   88: iconst_0
+    //   89: ireturn
+    //   90: iload_1
+    //   91: iconst_1
+    //   92: iadd
+    //   93: istore_1
+    //   94: goto -48 -> 46
+    //   97: aload 4
+    //   99: invokevirtual 370	java/io/RandomAccessFile:close	()V
+    //   102: iconst_1
+    //   103: ireturn
+    //   104: astore_0
+    //   105: aload_0
+    //   106: invokevirtual 373	java/lang/Exception:printStackTrace	()V
+    //   109: iconst_1
     //   110: ireturn
-    //   111: astore 6
+    //   111: astore 5
     //   113: aconst_null
-    //   114: astore 5
-    //   116: aload 5
+    //   114: astore 4
+    //   116: aload 4
     //   118: astore_0
-    //   119: aload 6
+    //   119: aload 5
     //   121: invokevirtual 374	java/io/IOException:printStackTrace	()V
-    //   124: aload 5
+    //   124: aload 4
     //   126: invokevirtual 370	java/io/RandomAccessFile:close	()V
     //   129: iconst_0
     //   130: ireturn
     //   131: astore_0
-    //   132: goto -28 -> 104
-    //   135: astore 5
-    //   137: aconst_null
-    //   138: astore_0
-    //   139: aload_0
-    //   140: invokevirtual 370	java/io/RandomAccessFile:close	()V
-    //   143: aload 5
-    //   145: athrow
-    //   146: astore_0
-    //   147: aload_0
-    //   148: invokevirtual 373	java/lang/Exception:printStackTrace	()V
-    //   151: goto -8 -> 143
-    //   154: astore_0
-    //   155: goto -51 -> 104
-    //   158: astore 5
-    //   160: goto -21 -> 139
-    //   163: astore 6
-    //   165: goto -49 -> 116
+    //   132: aload_0
+    //   133: invokevirtual 373	java/lang/Exception:printStackTrace	()V
+    //   136: iconst_0
+    //   137: ireturn
+    //   138: astore 4
+    //   140: aconst_null
+    //   141: astore_0
+    //   142: aload_0
+    //   143: invokevirtual 370	java/io/RandomAccessFile:close	()V
+    //   146: aload 4
+    //   148: athrow
+    //   149: astore_0
+    //   150: aload_0
+    //   151: invokevirtual 373	java/lang/Exception:printStackTrace	()V
+    //   154: goto -8 -> 146
+    //   157: astore 4
+    //   159: goto -17 -> 142
+    //   162: astore 5
+    //   164: goto -48 -> 116
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	168	0	paramString	String
-    //   48	42	1	i	int
-    //   64	13	2	j	int
-    //   73	4	3	k	int
-    //   1	108	4	bool	boolean
-    //   23	102	5	localRandomAccessFile	java.io.RandomAccessFile
-    //   135	9	5	localObject1	Object
-    //   158	1	5	localObject2	Object
-    //   34	27	6	arrayOfByte	byte[]
-    //   111	9	6	localIOException1	IOException
-    //   163	1	6	localIOException2	IOException
+    //   0	167	0	paramString	String
+    //   45	49	1	i	int
+    //   61	13	2	j	int
+    //   70	4	3	k	int
+    //   20	105	4	localRandomAccessFile	java.io.RandomAccessFile
+    //   138	9	4	localObject1	Object
+    //   157	1	4	localObject2	Object
+    //   31	27	5	arrayOfByte	byte[]
+    //   111	9	5	localIOException1	IOException
+    //   162	1	5	localIOException2	IOException
     // Exception table:
     //   from	to	target	type
-    //   96	101	103	java/lang/Exception
-    //   12	25	111	java/io/IOException
+    //   76	81	83	java/lang/Exception
+    //   97	102	104	java/lang/Exception
+    //   9	22	111	java/io/IOException
     //   124	129	131	java/lang/Exception
-    //   12	25	135	finally
-    //   139	143	146	java/lang/Exception
-    //   79	84	154	java/lang/Exception
-    //   28	36	158	finally
-    //   39	47	158	finally
-    //   52	60	158	finally
-    //   68	74	158	finally
-    //   119	124	158	finally
-    //   28	36	163	java/io/IOException
-    //   39	47	163	java/io/IOException
-    //   52	60	163	java/io/IOException
-    //   68	74	163	java/io/IOException
+    //   9	22	138	finally
+    //   142	146	149	java/lang/Exception
+    //   25	33	157	finally
+    //   36	44	157	finally
+    //   49	57	157	finally
+    //   65	71	157	finally
+    //   119	124	157	finally
+    //   25	33	162	java/io/IOException
+    //   36	44	162	java/io/IOException
+    //   49	57	162	java/io/IOException
+    //   65	71	162	java/io/IOException
   }
 }
 

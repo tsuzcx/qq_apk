@@ -1,14 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import NS_MOBILE_EXTRA.mobile_get_urlinfo_req;
+import QMF_PROTOCAL.RetryInfo;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
-final class ateb
-  implements DialogInterface.OnClickListener
+public class ateb
+  extends QzoneExternalRequest
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  private JceStruct a;
+  
+  public ateb(String paramString)
+  {
+    mobile_get_urlinfo_req localmobile_get_urlinfo_req = new mobile_get_urlinfo_req();
+    localmobile_get_urlinfo_req.url = paramString;
+    this.a = localmobile_get_urlinfo_req;
+  }
+  
+  public String getCmdString()
+  {
+    return "QzoneNewService.getUrlInfo";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public Object getRetryInfo()
+  {
+    return new RetryInfo((short)0, 0, System.currentTimeMillis());
+  }
+  
+  public String uniKey()
+  {
+    return "getUrlInfo";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ateb
  * JD-Core Version:    0.7.0.1
  */

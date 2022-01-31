@@ -1,41 +1,25 @@
-import android.view.View;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class adyp
+public class adyp
+  implements nfd
 {
-  private Map<Integer, LinkedList<View>> a = new HashMap();
+  public adyp(TroopInfoActivity paramTroopInfoActivity) {}
   
-  View a(int paramInt)
+  public void a()
   {
-    LinkedList localLinkedList = (LinkedList)this.a.get(Integer.valueOf(paramInt));
-    if (localLinkedList == null) {
-      return null;
-    }
-    return (View)localLinkedList.poll();
+    TroopInfoActivity.a(this.a, true, 0L, "", this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
   }
   
-  void a()
+  public void a(String paramString)
   {
-    this.a.clear();
-  }
-  
-  void a(int paramInt, View paramView)
-  {
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(Integer.valueOf(paramInt));
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
-    {
-      localLinkedList1 = new LinkedList();
-      this.a.put(Integer.valueOf(paramInt), localLinkedList1);
-    }
-    localLinkedList1.add(paramView);
+    this.a.j();
+    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyp
  * JD-Core Version:    0.7.0.1
  */

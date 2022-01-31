@@ -1,20 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
 
-class aqce
-  implements DialogInterface.OnClickListener
+public class aqce
+  implements aqcj
 {
-  aqce(aqcc paramaqcc) {}
+  public aqce(PullToRefreshBase paramPullToRefreshBase) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.a.finish();
+    PullToRefreshBase.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqce
  * JD-Core Version:    0.7.0.1
  */

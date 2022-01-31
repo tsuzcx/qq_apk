@@ -1,21 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.ClassLoaderCreator;
+import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState;
 
-class auhq
-  extends aujb
+public final class auhq
+  implements Parcelable.ClassLoaderCreator<MultiAIOBaseViewPager.SavedState>
 {
-  auhq(auhk paramauhk) {}
-  
-  public void a(int paramInt)
+  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountPanel", 2, "onBatteryChanged updateOnlineStatusItem");
-    }
-    auhk.a(this.a).b();
+    return new MultiAIOBaseViewPager.SavedState(paramParcel, null);
+  }
+  
+  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  {
+    return new MultiAIOBaseViewPager.SavedState(paramParcel, paramClassLoader);
+  }
+  
+  public MultiAIOBaseViewPager.SavedState[] a(int paramInt)
+  {
+    return new MultiAIOBaseViewPager.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auhq
  * JD-Core Version:    0.7.0.1
  */

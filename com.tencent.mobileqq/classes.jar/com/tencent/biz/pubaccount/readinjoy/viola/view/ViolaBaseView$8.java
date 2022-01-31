@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import mzb;
-import onh;
+import nbv;
+import ors;
 
 class ViolaBaseView$8
   implements Runnable
@@ -10,12 +10,12 @@ class ViolaBaseView$8
   
   public void run()
   {
-    mzb.a(this.a, onh.a());
+    nbv.a(this.a, ors.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,30 @@
-class akis
+public class akis
 {
-  public long a;
+  public int a;
   public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d = -1;
   
-  akis(akin paramakin, String paramString, long paramLong)
+  public akis()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akis
  * JD-Core Version:    0.7.0.1
  */

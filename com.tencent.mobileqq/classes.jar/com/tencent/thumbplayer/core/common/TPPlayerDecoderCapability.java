@@ -8,7 +8,9 @@ public class TPPlayerDecoderCapability
   private static String TAG = "TPPlayerDecoderCapability";
   private long mNativeContext = 0L;
   
-  private static native boolean _addVCodecBlacklist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecBlackPropertyRange paramTPVCodecBlackPropertyRange);
+  private static native boolean _addVCodecBlacklist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecPropertyRange paramTPVCodecPropertyRange);
+  
+  private static native boolean _addVCodecWhitelist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecPropertyRange paramTPVCodecPropertyRange);
   
   private static native HashMap<Integer, TPCodecCapability.TPVCodecMaxCapability> _getDecoderMaxCapabilityMap(int paramInt);
   
@@ -19,16 +21,30 @@ public class TPPlayerDecoderCapability
     return true;
   }
   
-  public static boolean addVCodecBlacklist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecBlackPropertyRange paramTPVCodecBlackPropertyRange)
+  public static boolean addVCodecBlacklist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecPropertyRange paramTPVCodecPropertyRange)
   {
     try
     {
-      boolean bool = _addVCodecBlacklist(paramInt1, paramInt2, paramTPVCodecBlackPropertyRange);
+      boolean bool = _addVCodecBlacklist(paramInt1, paramInt2, paramTPVCodecPropertyRange);
       return bool;
     }
-    catch (Throwable paramTPVCodecBlackPropertyRange)
+    catch (Throwable paramTPVCodecPropertyRange)
     {
-      TPNativeLog.printLog(4, paramTPVCodecBlackPropertyRange.getMessage());
+      TPNativeLog.printLog(4, paramTPVCodecPropertyRange.getMessage());
+    }
+    return false;
+  }
+  
+  public static boolean addVCodecWhitelist(int paramInt1, int paramInt2, TPCodecCapability.TPVCodecPropertyRange paramTPVCodecPropertyRange)
+  {
+    try
+    {
+      boolean bool = _addVCodecWhitelist(paramInt1, paramInt2, paramTPVCodecPropertyRange);
+      return bool;
+    }
+    catch (Throwable paramTPVCodecPropertyRange)
+    {
+      TPNativeLog.printLog(4, paramTPVCodecPropertyRange.getMessage());
     }
     return false;
   }
@@ -144,7 +160,7 @@ public class TPPlayerDecoderCapability
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPPlayerDecoderCapability
  * JD-Core Version:    0.7.0.1
  */

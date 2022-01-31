@@ -1,14 +1,14 @@
 package com.tencent.open.downloadnew;
 
 import android.content.Context;
-import bdlr;
+import bfko;
 import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
 import java.util.ArrayList;
 
 public class MyAppApi$9
   implements Runnable
 {
-  public MyAppApi$9(bdlr parambdlr, Context paramContext, ArrayList paramArrayList, int paramInt, String paramString) {}
+  public MyAppApi$9(bfko parambfko, Context paramContext, ArrayList paramArrayList, int paramInt, String paramString) {}
   
   public void run()
   {

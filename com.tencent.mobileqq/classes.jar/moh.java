@@ -1,34 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.ui.funchat.zimu.ZimuViewMotion;
-import java.lang.ref.WeakReference;
-
-public final class moh
-  extends Handler
+public class moh
 {
-  WeakReference<ZimuViewMotion> a;
-  
-  public moh(ZimuViewMotion paramZimuViewMotion)
-  {
-    this.a = new WeakReference(paramZimuViewMotion);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (ZimuViewMotion)this.a.get();
-    } while (paramMessage == null);
-    paramMessage.e();
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     moh
  * JD-Core Version:    0.7.0.1
  */

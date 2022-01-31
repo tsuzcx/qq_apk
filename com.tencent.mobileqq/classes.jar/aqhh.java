@@ -1,13 +1,29 @@
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.applets.data.AppletItem;
+import android.widget.ImageView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 
-public abstract interface aqhh
+public class aqhh
+  implements arpc
 {
-  public abstract void a(CompoundButton paramCompoundButton, boolean paramBoolean, AppletItem paramAppletItem);
+  public aqhh(FilePreviewActivity paramFilePreviewActivity) {}
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      FilePreviewActivity.a(this.a, bacb.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131720680), false));
+      return;
+    }
+    bacb.a(this.a.app, this.a, "<FileAssistant>FilePreviewActivity", FilePreviewActivity.a(this.a));
+  }
+  
+  public void a(ImageView paramImageView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class aiid
-  extends MqqHandler
+  implements DialogInterface.OnDismissListener
 {
-  public aiid(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public aiid(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
-    this.a.c.setText(paramMessage);
+    if (this.a.a != null) {
+      this.a.a.setOnDismissListener(null);
+    }
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiid
  * JD-Core Version:    0.7.0.1
  */

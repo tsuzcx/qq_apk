@@ -1,103 +1,136 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.List;
 
 public class apvb
-  implements Animation.AnimationListener
+  extends NativeGifImage
 {
-  public static int a;
-  public static int b;
-  View jdField_a_of_type_AndroidViewView;
-  apvc jdField_a_of_type_Apvc;
-  List<apvc> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
-  int[] jdField_a_of_type_ArrayOfInt = new int[1];
+  boolean a = false;
+  private boolean b = true;
+  private boolean c;
+  private boolean d;
   
-  public apvb(View paramView)
+  public apvb(File paramFile, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  private void b(apvc paramapvc)
-  {
-    this.jdField_a_of_type_Apvc = paramapvc;
-    Animation localAnimation = (Animation)paramapvc.jdField_a_of_type_JavaLangObject;
-    localAnimation.setDuration(paramapvc.b);
-    localAnimation.setAnimationListener(this);
+    super(paramFile, paramBoolean, true, 0, 0, 0.0F);
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
-        continue;
-      }
-      synchronized (this.jdField_a_of_type_ArrayOfInt)
-      {
-        apvc localapvc = (apvc)this.jdField_a_of_type_JavaUtilList.get(0);
-        this.jdField_a_of_type_JavaUtilList.remove(0);
-        if ((localapvc == null) || ((localapvc.jdField_a_of_type_Boolean == true) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) || ((!localapvc.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) || (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4)))) {
-          continue;
-        }
-        this.jdField_a_of_type_AndroidViewView.setAnimation((Animation)localapvc.jdField_a_of_type_JavaLangObject);
-        this.jdField_a_of_type_AndroidViewView.startAnimation((Animation)localapvc.jdField_a_of_type_JavaLangObject);
-        return;
-      }
-    }
-  }
-  
-  public void a(apvc paramapvc)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    }
-    synchronized (this.jdField_a_of_type_ArrayOfInt)
-    {
-      this.jdField_a_of_type_JavaUtilList.add(paramapvc);
-      b(paramapvc);
-      return;
+    this.b = true;
+    if ((QLog.isColorLevel()) && (this.a)) {
+      QLog.d("VoiceGifImage", 2, "getNextFrame start");
     }
   }
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_ArrayOfInt)
-    {
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_AndroidViewView.clearAnimation();
-      return;
+    this.b = false;
+    this.c = true;
+    if ((QLog.isColorLevel()) && (this.a)) {
+      QLog.d("VoiceGifImage", 2, "getNextFrame stop");
     }
   }
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void doApplyNextFrame()
   {
-    if (this.jdField_a_of_type_Apvc.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    if ((QLog.isColorLevel()) && (this.a)) {
+      QLog.d("VoiceGifImage", 2, "doApplyNextFrame");
     }
-    for (;;)
+    super.doApplyNextFrame();
+    if (this.d)
     {
-      this.jdField_a_of_type_Boolean = false;
-      a();
-      return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.d = false;
+      this.c = false;
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = true;
+    initHandlerAndRunnable();
+    if ((!this.b) && (this.mFirstFrameBitmap != null)) {
+      if (this.mFirstFrameBitmap != null)
+      {
+        paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
+        if ((QLog.isColorLevel()) && (this.a)) {
+          QLog.d("VoiceGifImage", 2, "VoiceGifImage draw !running ");
+        }
+      }
+    }
+    label57:
+    do
+    {
+      do
+      {
+        do
+        {
+          break label57;
+          break label57;
+          do
+          {
+            return;
+          } while ((!QLog.isColorLevel()) || (!this.a));
+          QLog.d("VoiceGifImage", 2, "VoiceGifImage draw !running, mFirstFrameBitmap is null");
+          return;
+          if (!this.c) {
+            break;
+          }
+          if (this.mFirstFrameBitmap != null) {
+            paramCanvas.drawBitmap(this.mFirstFrameBitmap, null, paramRect, paramPaint);
+          }
+          for (;;)
+          {
+            if (sPaused) {
+              break label161;
+            }
+            executeNewTask();
+            if ((!QLog.isColorLevel()) || (!this.a)) {
+              break;
+            }
+            QLog.d("VoiceGifImage", 2, "VoiceGifImage draw restart  !sPaused");
+            return;
+            if ((QLog.isColorLevel()) && (this.a)) {
+              QLog.d("VoiceGifImage", 2, "VoiceGifImage draw restart, mFirstFrameBitmap is null");
+            }
+          }
+        } while (this.mIsInPendingAction);
+        sPendingActions.add(new WeakReference(this));
+        this.mIsInPendingAction = true;
+      } while ((!QLog.isColorLevel()) || (!this.a));
+      QLog.d("VoiceGifImage", 2, "VoiceGifImage draw !mIsInPendingAction  !mIsInPendingAction");
+      return;
+      super.draw(paramCanvas, paramRect, paramPaint, paramBoolean);
+    } while ((!QLog.isColorLevel()) || (!this.a));
+    label161:
+    QLog.d("VoiceGifImage", 2, "VoiceGifImage draw else");
+  }
+  
+  public void getNextFrame()
+  {
+    try
+    {
+      if (this.c)
+      {
+        this.d = true;
+        super.reset();
+        if ((QLog.isColorLevel()) && (this.a)) {
+          QLog.d("VoiceGifImage", 2, "getNextFrame restart");
+        }
+      }
+      super.getNextFrame();
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvb
  * JD-Core Version:    0.7.0.1
  */

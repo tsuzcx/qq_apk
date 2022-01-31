@@ -1,183 +1,425 @@
-import android.opengl.GLES20;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.widgets.HotWordTipsContainer;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener2;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.HotWordSearchEntryModel.4;
+import com.tencent.mobileqq.search.HotWordSearchEntryModel.5;
+import com.tencent.mobileqq.search.HotWordSearchEntryModel.7;
+import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.GIFInfo;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import mqq.os.MqqHandler;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aydb
+  extends aycm
+  implements View.OnClickListener
 {
-  public static int a(int paramInt, String paramString)
+  protected static int b;
+  public Context a;
+  public View a;
+  protected RelativeLayout a;
+  protected TextView a;
+  protected HotWordTipsContainer a;
+  public URLImageView a;
+  protected QQAppInterface a;
+  protected HotWordSearchEntryDataModel a;
+  protected List<HotWordSearchEntryDataModel.HotSearchItem> a;
+  zcb a;
+  public boolean a;
+  protected View b;
+  protected TextView b;
+  protected URLImageView b;
+  private boolean b;
+  protected View c;
+  protected TextView c;
+  private boolean c;
+  
+  static
   {
-    paramInt = GLES20.glCreateShader(paramInt);
-    if (paramInt == 0) {
-      throw new RuntimeException("Error create shader.");
-    }
-    int[] arrayOfInt = new int[1];
-    GLES20.glShaderSource(paramInt, paramString);
-    GLES20.glCompileShader(paramInt);
-    GLES20.glGetShaderiv(paramInt, 35713, arrayOfInt, 0);
-    if (arrayOfInt[0] == 0)
-    {
-      GLES20.glDeleteShader(paramInt);
-      throw new RuntimeException("Error compile shader: " + GLES20.glGetShaderInfoLog(paramInt));
-    }
-    return paramInt;
+    jdField_b_of_type_Int = -1;
   }
   
-  public static int a(String paramString1, String paramString2)
+  public aydb(int paramInt, boolean paramBoolean)
   {
-    int i = a(35633, paramString1);
-    int j = a(35632, paramString2);
-    int k = GLES20.glCreateProgram();
-    if (k == 0) {
-      throw new RuntimeException("Error create program.");
-    }
-    GLES20.glAttachShader(k, i);
-    GLES20.glAttachShader(k, j);
-    GLES20.glLinkProgram(k);
-    paramString1 = new int[1];
-    GLES20.glGetProgramiv(k, 35714, paramString1, 0);
-    if (paramString1[0] == 0)
-    {
-      GLES20.glDeleteProgram(k);
-      throw new RuntimeException("Error linking program: " + GLES20.glGetProgramInfoLog(k));
-    }
-    GLES20.glDeleteShader(i);
-    GLES20.glDeleteShader(j);
-    return k;
+    super(paramInt);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Zcb = new aydc(this);
+    this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
-  /* Error */
-  public static String a(android.content.Context paramContext, String paramString)
+  public static void a(Context paramContext, URLImageView paramURLImageView, String paramString1, String paramString2, aydh paramaydh)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: new 93	java/io/InputStreamReader
-    //   5: dup
-    //   6: aload_0
-    //   7: invokevirtual 99	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   10: invokevirtual 105	android/content/res/Resources:getAssets	()Landroid/content/res/AssetManager;
-    //   13: aload_1
-    //   14: invokevirtual 111	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   17: invokespecial 114	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   20: astore_1
-    //   21: aload_1
-    //   22: astore_0
-    //   23: new 116	java/io/BufferedReader
-    //   26: dup
-    //   27: aload_1
-    //   28: invokespecial 119	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   31: astore_2
-    //   32: aload_1
-    //   33: astore_0
-    //   34: new 38	java/lang/StringBuilder
-    //   37: dup
-    //   38: invokespecial 41	java/lang/StringBuilder:<init>	()V
-    //   41: astore 4
-    //   43: aload_1
-    //   44: astore_0
-    //   45: aload_2
-    //   46: invokevirtual 122	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   49: astore 5
-    //   51: aload 5
-    //   53: ifnull +47 -> 100
-    //   56: aload_1
-    //   57: astore_0
-    //   58: aload 4
-    //   60: aload 5
-    //   62: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   65: pop
-    //   66: aload_1
-    //   67: astore_0
-    //   68: aload 4
-    //   70: bipush 10
-    //   72: invokevirtual 125	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   75: pop
-    //   76: goto -33 -> 43
-    //   79: astore_2
-    //   80: aload_1
-    //   81: astore_0
-    //   82: aload_2
-    //   83: invokevirtual 128	java/lang/Exception:printStackTrace	()V
-    //   86: aload_3
-    //   87: astore_0
-    //   88: aload_1
-    //   89: ifnull +9 -> 98
-    //   92: aload_1
-    //   93: invokevirtual 131	java/io/InputStreamReader:close	()V
-    //   96: aload_3
-    //   97: astore_0
-    //   98: aload_0
-    //   99: areturn
-    //   100: aload_1
-    //   101: astore_0
-    //   102: aload 4
-    //   104: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: astore_2
-    //   108: aload_2
-    //   109: astore_0
-    //   110: aload_1
-    //   111: ifnull -13 -> 98
-    //   114: aload_1
-    //   115: invokevirtual 131	java/io/InputStreamReader:close	()V
-    //   118: aload_2
-    //   119: areturn
-    //   120: astore_0
-    //   121: aload_2
-    //   122: areturn
-    //   123: astore_1
-    //   124: aconst_null
-    //   125: astore_0
-    //   126: aload_0
-    //   127: ifnull +7 -> 134
-    //   130: aload_0
-    //   131: invokevirtual 131	java/io/InputStreamReader:close	()V
-    //   134: aload_1
-    //   135: athrow
-    //   136: astore_0
-    //   137: aconst_null
-    //   138: areturn
-    //   139: astore_0
-    //   140: goto -6 -> 134
-    //   143: astore_1
-    //   144: goto -18 -> 126
-    //   147: astore_2
-    //   148: aconst_null
-    //   149: astore_1
-    //   150: goto -70 -> 80
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	153	0	paramContext	android.content.Context
-    //   0	153	1	paramString	String
-    //   31	15	2	localBufferedReader	java.io.BufferedReader
-    //   79	4	2	localException1	java.lang.Exception
-    //   107	15	2	str1	String
-    //   147	1	2	localException2	java.lang.Exception
-    //   1	96	3	localObject	Object
-    //   41	62	4	localStringBuilder	java.lang.StringBuilder
-    //   49	12	5	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   23	32	79	java/lang/Exception
-    //   34	43	79	java/lang/Exception
-    //   45	51	79	java/lang/Exception
-    //   58	66	79	java/lang/Exception
-    //   68	76	79	java/lang/Exception
-    //   102	108	79	java/lang/Exception
-    //   114	118	120	java/io/IOException
-    //   2	21	123	finally
-    //   92	96	136	java/io/IOException
-    //   130	134	139	java/io/IOException
-    //   23	32	143	finally
-    //   34	43	143	finally
-    //   45	51	143	finally
-    //   58	66	143	finally
-    //   68	76	143	finally
-    //   82	86	143	finally
-    //   102	108	143	finally
-    //   2	21	147	java/lang/Exception
+    if ((paramContext == null) || (paramURLImageView == null) || (TextUtils.isEmpty(paramString1))) {}
+    for (;;)
+    {
+      return;
+      paramURLImageView = new SoftReference(paramURLImageView);
+      ColorDrawable localColorDrawable = new ColorDrawable();
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
+      localURLDrawableOptions.mFailedDrawable = localColorDrawable;
+      localURLDrawableOptions.mPlayGifImage = true;
+      localURLDrawableOptions.mUseMemoryCache = false;
+      if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+        localColorDrawable.setColor(paramContext.getResources().getColor(2131167167));
+      }
+      for (paramContext = URLDrawable.getDrawable(paramString2, localURLDrawableOptions); paramContext != null; paramContext = URLDrawable.getDrawable(paramString1, localURLDrawableOptions))
+      {
+        paramURLImageView = new aydf(paramURLImageView, paramContext, paramaydh);
+        paramContext.setURLDrawableListener(paramURLImageView);
+        if (paramContext.getStatus() != 1) {
+          break label159;
+        }
+        paramURLImageView.onLoadSuccessed(paramContext);
+        return;
+        localColorDrawable.setColor(paramContext.getResources().getColor(2131167166));
+      }
+    }
+    label159:
+    ThreadManager.getFileThreadHandler().post(new HotWordSearchEntryModel.7(paramContext));
+  }
+  
+  private void a(HotWordSearchEntryDataModel.GIFInfo paramGIFInfo)
+  {
+    if (paramGIFInfo == null) {
+      return;
+    }
+    ayde localayde = new ayde(this, paramGIFInfo);
+    this.jdField_a_of_type_AndroidViewView.post(new HotWordSearchEntryModel.4(this, paramGIFInfo, localayde));
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  private void a(String paramString1, String paramString2)
+  {
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      localbddb = bdds.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString1);
+      if (localbddb != null)
+      {
+        localbddb.c();
+        aydw.jdField_a_of_type_Boolean = true;
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        bddb localbddb;
+        return;
+        if ((paramString1.startsWith("http://")) || (paramString1.startsWith("https://")))
+        {
+          ayrd.a(this.jdField_a_of_type_AndroidContentContext, paramString2, paramString1);
+          aydw.jdField_a_of_type_Boolean = true;
+          return;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.uniteSearch.HotWordSearchEntryModel", 2, "OnTipClickListener jumpUrl is illegal");
+      return;
+    }
+    QLog.d("Q.uniteSearch.HotWordSearchEntryModel", 2, "OnTipClickListener jumpUrl is empty");
+  }
+  
+  public static boolean a(HotWordSearchEntryDataModel.GIFInfo paramGIFInfo)
+  {
+    if ((paramGIFInfo == null) || (TextUtils.isEmpty(paramGIFInfo.hotSearchGifID)) || (TextUtils.isEmpty(paramGIFInfo.hotSearchGifUrl))) {}
+    Object localObject;
+    int i;
+    do
+    {
+      do
+      {
+        return false;
+        localObject = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
+      } while (TextUtils.equals(((SharedPreferences)localObject).getString("HotWordSearchEntryModel.psk_hot_search_last_show_id", ""), paramGIFInfo.hotSearchGifID));
+      i = ((SharedPreferences)localObject).getInt("HotWordSearchEntryModel.psk_hot_search_try_time", 0);
+      localObject = ((SharedPreferences)localObject).getString("HotWordSearchEntryModel.psk_hot_search_try_id", "");
+    } while ((TextUtils.equals(paramGIFInfo.hotSearchGifID, (CharSequence)localObject)) && (i >= 2));
+    return true;
+  }
+  
+  public View a(Context paramContext, QQAppInterface paramQQAppInterface, ViewGroup paramViewGroup, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramBundle = paramQQAppInterface;
+    if (paramQQAppInterface == null) {
+      if (!(paramContext instanceof BaseActivity)) {
+        break label283;
+      }
+    }
+    label283:
+    for (paramViewGroup = ((BaseActivity)paramContext).getAppRuntime();; paramViewGroup = null)
+    {
+      paramBundle = paramQQAppInterface;
+      if ((paramViewGroup instanceof QQAppInterface)) {
+        paramBundle = (QQAppInterface)paramViewGroup;
+      }
+      if (paramBundle == null) {
+        return new View(paramContext);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBundle;
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560760, null);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131377891));
+      this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377929));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377972));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370743));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373480));
+      this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
+      this.jdField_a_of_type_ComTencentBizWidgetsHotWordTipsContainer = ((HotWordTipsContainer)this.jdField_a_of_type_AndroidViewView.findViewById(2131377844));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365361);
+      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131365362);
+      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367760));
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentBizWidgetsHotWordTipsContainer.setOnTipsClickListener(this.jdField_a_of_type_Zcb);
+        return this.jdField_a_of_type_AndroidViewView;
+        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      }
+    }
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(new HotWordSearchEntryModel.5(this, new HotWordSearchEntryDataModel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_Int, this.jdField_c_of_type_Boolean)), 5, null, true);
+  }
+  
+  public void a(ayjg paramayjg)
+  {
+    Object localObject = new ColorDrawable();
+    URLDrawable.URLDrawableOptions localURLDrawableOptions;
+    if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
+    {
+      ((ColorDrawable)localObject).setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167167));
+      localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      localObject = "http://res.imtt.qq.com/res_mtt/KDhotword/xiaohuomiao.png";
+      if (!TextUtils.isEmpty(paramayjg.b)) {
+        localObject = paramayjg.b;
+      }
+      if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
+        break label208;
+      }
+      localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
+      label87:
+      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+      if (TextUtils.isEmpty(paramayjg.jdField_a_of_type_JavaLangString)) {
+        break label217;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramayjg.jdField_a_of_type_JavaLangString);
+      label116:
+      if (TextUtils.isEmpty(paramayjg.c)) {
+        break label233;
+      }
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramayjg.c);
+      label137:
+      if ((paramayjg.jdField_a_of_type_Int != 1) || (TextUtils.isEmpty(paramayjg.e))) {
+        break label245;
+      }
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new aydd(this, paramayjg));
+      return;
+      ((ColorDrawable)localObject).setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167166));
+      break;
+      label208:
+      localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
+      break label87;
+      label217:
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131706006));
+      break label116;
+      label233:
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      break label137;
+      label245:
+      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+  }
+  
+  public void a(ayks paramayks)
+  {
+    b(paramayks);
+  }
+  
+  public void b()
+  {
+    super.b();
+  }
+  
+  public void b(ayks paramayks)
+  {
+    Object localObject = (HotWordSearchEntryDataModel)paramayks;
+    if ((localObject == null) || (((HotWordSearchEntryDataModel)localObject).jdField_a_of_type_JavaUtilList == null) || (((HotWordSearchEntryDataModel)localObject).jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)localObject);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(((HotWordSearchEntryDataModel)localObject).jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentBizWidgetsHotWordTipsContainer.a((HotWordSearchEntryDataModel)localObject, this.jdField_a_of_type_Int);
+    if (((HotWordSearchEntryDataModel)localObject).jdField_a_of_type_Ayjg == null) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+    }
+    int j;
+    int i;
+    for (;;)
+    {
+      if ((!this.jdField_b_of_type_Boolean) && (a(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo)) && (this.jdField_a_of_type_Int == 10)) {
+        a(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo);
+      }
+      paramayks = (Boolean)SearchEntryFragment.a.get(Integer.valueOf(1));
+      if ((paramayks != null) && (paramayks.booleanValue())) {
+        break;
+      }
+      paramayks = new StringBuilder("");
+      if (((HotWordSearchEntryDataModel)localObject).jdField_a_of_type_JavaUtilList.size() <= 0) {
+        break label299;
+      }
+      j = ((HotWordSearchEntryDataModel)localObject).jdField_a_of_type_JavaUtilList.size();
+      i = 0;
+      while (i < j - 1)
+      {
+        paramayks.append(((HotWordSearchEntryDataModel.HotSearchItem)((HotWordSearchEntryDataModel)localObject).jdField_a_of_type_JavaUtilList.get(i)).title).append("::");
+        i += 1;
+      }
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      a(((HotWordSearchEntryDataModel)localObject).jdField_a_of_type_Ayjg);
+    }
+    paramayks.append(((HotWordSearchEntryDataModel.HotSearchItem)((HotWordSearchEntryDataModel)localObject).jdField_a_of_type_JavaUtilList.get(j - 1)).title);
+    label299:
+    ayrd.a("hot_list", "exp_hot_list", new String[] { paramayks.toString(), String.valueOf(this.jdField_a_of_type_Int) });
+    SearchEntryFragment.a.put(Integer.valueOf(1), Boolean.valueOf(true));
+    localObject = new StringBuilder();
+    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    {
+      i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size() - 1)
+      {
+        ((StringBuilder)localObject).append(((HotWordSearchEntryDataModel.HotSearchItem)this.jdField_a_of_type_JavaUtilList.get(i)).title).append("::");
+        i += 1;
+      }
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1));
+    }
+    localObject = new JSONObject();
+    try
+    {
+      ((JSONObject)localObject).put("project", aynt.a());
+      ((JSONObject)localObject).put("event_src", "client");
+      ((JSONObject)localObject).put("experiment_id", aynt.b);
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("hot_list").action("exp_hot_list");
+      if (this.jdField_a_of_type_Int == 3)
+      {
+        i = 21;
+        aynt.a(null, localReportModelDC02528.ver2(aynt.a(i)).ver4(paramayks.toString()).ver7(((JSONObject)localObject).toString()).session_id(localQQAppInterface.getCurrentAccountUin() + this.jdField_a_of_type_Long));
+        aynt.a(localQQAppInterface, 0, SearchEntryFragment.a(this.jdField_a_of_type_Int), "0X8009D27", 0, 0, null, null);
+        return;
+      }
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("Q.uniteSearch.HotWordSearchEntryModel", 2, "e = " + localJSONException);
+        continue;
+        i = this.jdField_a_of_type_Int;
+      }
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentImageURLImageView.getVisibility() != 8)
+    {
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel != null) && (this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_Ayjg != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_Ayjg.e))) {
+      a(this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.jdField_a_of_type_Ayjg.e, "");
+    }
+    for (;;)
+    {
+      paramView = new JSONObject();
+      try
+      {
+        paramView.put("project", aynt.a());
+        paramView.put("event_src", "client");
+        ayrd.a("hot_list", "clk_qq_index", new String[] { "", String.valueOf(this.jdField_a_of_type_Int) });
+        ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("hot_list").action("clk_qq_index");
+        if (this.jdField_a_of_type_Int == 3)
+        {
+          i = 21;
+          aynt.a(null, localReportModelDC02528.ver2(aynt.a(i)).ver7(paramView.toString()).session_id(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + this.jdField_a_of_type_Long));
+          aynt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, SearchEntryFragment.a(this.jdField_a_of_type_Int), "0X8009D28", 0, 0, null, null);
+          return;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("Q.uniteSearch.HotWordSearchEntryModel", 2, "qq_index_text jumpUrl is illegal");
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          QLog.e("Q.uniteSearch.HotWordSearchEntryModel", 2, "e = " + localJSONException);
+          continue;
+          int i = this.jdField_a_of_type_Int;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aydb
  * JD-Core Version:    0.7.0.1
  */

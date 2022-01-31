@@ -1,88 +1,47 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.wifi.QWifiListFragment;
+import com.tencent.mobileqq.wifi.QWifiSecurityFragment;
+import com.wifisdk.ui.api.BaseFragImplManager;
+import com.wifisdk.ui.fragments.BaseFragmentImpl;
 
-final class bevr
-  implements bevq, bevs
+public class bevr
+  extends BaseFragImplManager
 {
-  private int jdField_a_of_type_Int;
-  private final bevs jdField_a_of_type_Bevs;
-  private bevt jdField_a_of_type_Bevt;
-  private String jdField_a_of_type_JavaLangString;
-  private Throwable jdField_a_of_type_JavaLangThrowable;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
-  
-  bevr(bevs parambevs)
+  public void finishFragImpl(BaseFragmentImpl paramBaseFragmentImpl)
   {
-    this.jdField_a_of_type_Bevs = parambevs;
-  }
-  
-  private void a()
-  {
-    bevs localbevs;
-    bevt localbevt;
-    if ((this.jdField_a_of_type_Boolean) && (this.b)) {
-      if (!this.c)
-      {
-        localbevs = this.jdField_a_of_type_Bevs;
-        localbevt = this.jdField_a_of_type_Bevt;
-        if (this.jdField_a_of_type_JavaLangThrowable == null) {
-          break label79;
-        }
+    paramBaseFragmentImpl = paramBaseFragmentImpl.getFragment();
+    if (paramBaseFragmentImpl != null)
+    {
+      paramBaseFragmentImpl = paramBaseFragmentImpl.getActivity();
+      if (paramBaseFragmentImpl != null) {
+        paramBaseFragmentImpl.finish();
       }
     }
-    label79:
-    for (String str = this.jdField_a_of_type_JavaLangThrowable.getMessage();; str = "download plugin fail")
-    {
-      localbevs.onInitGpkgInfo(2022, localbevt, str);
-      this.jdField_a_of_type_Bevs.onInitGpkgInfo(this.jdField_a_of_type_Int, this.jdField_a_of_type_Bevt, this.jdField_a_of_type_JavaLangString);
-      return;
-    }
   }
   
-  public void a(boolean paramBoolean, Throwable paramThrowable)
+  public void switchFragImpl(Context paramContext, int paramInt1, int paramInt2, Intent paramIntent)
   {
-    try
+    Object localObject = null;
+    if (paramInt2 == 1) {
+      localObject = new QWifiListFragment();
+    }
+    while (localObject == null)
     {
-      this.b = true;
-      this.c = paramBoolean;
-      this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-      a();
       return;
+      if (paramInt2 == 2) {
+        localObject = new QWifiSecurityFragment();
+      }
     }
-    finally
-    {
-      paramThrowable = finally;
-      throw paramThrowable;
-    }
-  }
-  
-  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
-  {
-    this.jdField_a_of_type_Bevs.onDownloadGpkgProgress(paramMiniAppInfo, paramFloat, paramLong);
-  }
-  
-  public void onInitGpkgInfo(int paramInt, bevt parambevt, String paramString)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_Bevt = parambevt;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      a();
-      return;
-    }
-    finally
-    {
-      parambevt = finally;
-      throw parambevt;
-    }
+    PublicFragmentActivity.a(paramContext, paramIntent, localObject.getClass());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bevr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,27 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.data.ApolloActionData;
+
 public class alic
+  implements View.OnClickListener
 {
-  public double a;
-  public int a;
-  public alhy a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g = "";
+  public alic(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData, int paramInt, String paramString1, String paramString2) {}
   
-  public String toString()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("result:{sclass:");
-    if (this.jdField_a_of_type_JavaLangString != null)
+    if (ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel) != null)
     {
-      str = this.jdField_a_of_type_JavaLangString;
-      localStringBuilder = localStringBuilder.append(str).append(",").append("sItemId:");
-      if (this.jdField_a_of_type_Alhy == null) {
-        break label230;
-      }
-      str = this.jdField_a_of_type_Alhy.jdField_a_of_type_JavaLangString;
-      label56:
-      localStringBuilder = localStringBuilder.append(str).append(",").append("dProb:").append(this.jdField_a_of_type_Double).append(",").append("sTitle:").append(this.d).append(",").append("sWiki:").append(this.e).append(",").append("sJumpUrl:").append(this.f).append(",").append("sCdbRes:");
-      if (this.jdField_a_of_type_ArrayOfByte == null) {
-        break label236;
-      }
-    }
-    label230:
-    label236:
-    for (String str = new String(this.jdField_a_of_type_ArrayOfByte);; str = "")
-    {
-      return str + "," + "isAutoJump:" + this.jdField_a_of_type_Boolean + "," + "iNeedCheckLBS:" + this.c + "," + "imageId:" + this.g + "}";
-      str = "";
-      break;
-      str = "";
-      break label56;
+      paramView = new alhk();
+      paramView.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData;
+      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel).c(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a, paramView);
+      akji.a(124, String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alic
  * JD-Core Version:    0.7.0.1
  */

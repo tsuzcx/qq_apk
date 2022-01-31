@@ -1,65 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.viola.core.ViolaInstance;
-import com.tencent.viola.core.ViolaInstance.ViolaPageListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class rzo
-  implements ViolaInstance.ViolaPageListener
+  implements aobn
 {
-  public rzo(ViolaBaseView paramViolaBaseView) {}
+  public rzo(FastWebActivity paramFastWebActivity) {}
   
-  public void onComponentTopIndex(View paramView, float paramFloat)
+  public void a()
   {
-    if (((ViolaBaseView.a(this.a) instanceof ViolaFragment)) && (((ViolaFragment)ViolaBaseView.a(this.a)).a() != null)) {
-      ((ViolaFragment)ViolaBaseView.a(this.a)).a().a(paramView, paramFloat);
-    }
+    FastWebActivity.b(this.a, true);
+    QLog.d(FastWebActivity.a(this.a), 1, "onPageSwipeClose");
   }
   
-  public void onDispatchTouchEvent(String paramString, int paramInt1, MotionEvent paramMotionEvent, int paramInt2)
+  public void b()
   {
-    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef())) {
-      ViolaBaseView.b(this.a, paramInt2);
-    }
-  }
-  
-  public void onScroll(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
-  {
-    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef()))
+    if (FastWebActivity.a(this.a) == 0L)
     {
-      ViolaBaseView.b(this.a, paramInt5);
-      ViolaBaseView.b(this.a, true);
-      if (ViolaBaseView.a(this.a) != null) {
-        ViolaBaseView.a(this.a).a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramBoolean);
-      }
+      FastWebActivity.a(this.a, NetConnInfoCenter.getServerTime());
+      QLog.d(FastWebActivity.a(this.a), 1, "onPageSwipeNotClose time :" + FastWebActivity.a(this.a));
     }
-  }
-  
-  public void onScrollStateChanged(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (ViolaBaseView.a(this.a) != null) {
-      ViolaBaseView.a(this.a).a(paramString, paramInt1);
-    }
-    if (paramString.equals(ViolaBaseView.a(this.a).getMasterListRef()))
-    {
-      ViolaBaseView.b(this.a, paramInt2);
-      ViolaBaseView.b(this.a, true);
-    }
-  }
-  
-  public void pageOpenSuccess()
-  {
-    ViolaBaseView.a(this.a, 3);
-    ThreadManager.post(new ViolaBaseView.10.1(this), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzo
  * JD-Core Version:    0.7.0.1
  */

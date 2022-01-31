@@ -1,9 +1,11 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.minigame.gpkg.GpkgManager.OnInitGpkgListener;
 import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
-import com.tencent.mobileqq.minigame.manager.GameLoadManager;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.mobileqq.triton.sdk.bridge.ITTJSRuntime;
@@ -15,14 +17,14 @@ class SubpackageJsPlugin$3
 {
   private float lastProgress;
   
-  SubpackageJsPlugin$3(SubpackageJsPlugin paramSubpackageJsPlugin, String paramString, WeakReference paramWeakReference, int paramInt) {}
+  SubpackageJsPlugin$3(SubpackageJsPlugin paramSubpackageJsPlugin, GameRuntimeLoader paramGameRuntimeLoader, String paramString, WeakReference paramWeakReference, int paramInt) {}
   
   public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong)
   {
     if (paramFloat - this.lastProgress > 0.01F)
     {
       this.lastProgress = paramFloat;
-      paramMiniAppInfo = GameLoadManager.g().getGameEngine();
+      paramMiniAppInfo = GameRuntimeLoaderManager.g().getBindRuntimeLoader(this.this$0.jsPluginEngine.appBrandRuntime.activity).getGameEngine();
       if (paramMiniAppInfo == null) {
         GameLog.getInstance().e("SubpackageJsPlugin", "loadSubPackage onInitGpkgInfo but ttEngine is null");
       }
@@ -36,7 +38,7 @@ class SubpackageJsPlugin$3
   
   public void onInitGpkgInfo(int paramInt, MiniGamePkg paramMiniGamePkg, String paramString)
   {
-    ITTEngine localITTEngine = GameLoadManager.g().getGameEngine();
+    ITTEngine localITTEngine = this.val$currentLoader.getGameEngine();
     if (localITTEngine == null)
     {
       GameLog.getInstance().e("SubpackageJsPlugin", "loadSubPackage onInitGpkgInfo but ttEngine is null");
@@ -54,7 +56,7 @@ class SubpackageJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.SubpackageJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

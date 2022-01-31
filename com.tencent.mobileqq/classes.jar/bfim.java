@@ -1,22 +1,66 @@
-final class bfim
+import java.util.ArrayList;
+
+public class bfim
 {
-  int jdField_a_of_type_Int;
-  bfjb jdField_a_of_type_Bfjb;
-  bfjc jdField_a_of_type_Bfjc;
-  String jdField_a_of_type_JavaLangString = "";
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  protected static bfim a;
+  protected ArrayList<bfil> a;
   
-  public String toString()
+  public static bfim a()
   {
-    return "[EntryId:" + this.jdField_a_of_type_Int + ",UseCache:" + this.jdField_a_of_type_Boolean + ",rightnow:" + this.jdField_b_of_type_Boolean + ",Retry:" + this.jdField_b_of_type_Int + ",localKey:" + this.jdField_a_of_type_JavaLangString + ",content:" + this.jdField_a_of_type_Bfjb.toString() + "]";
+    try
+    {
+      if (jdField_a_of_type_Bfim == null)
+      {
+        jdField_a_of_type_Bfim = new bfim();
+        jdField_a_of_type_Bfim.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      bfim localbfim = jdField_a_of_type_Bfim;
+      return localbfim;
+    }
+    finally {}
+  }
+  
+  public ArrayList<bfil> a()
+  {
+    return jdField_a_of_type_Bfim.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(bfil parambfil)
+  {
+    int j = jdField_a_of_type_Bfim.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      if ((bfil)jdField_a_of_type_Bfim.jdField_a_of_type_JavaUtilArrayList.get(i) == parambfil) {
+        return;
+      }
+      i += 1;
+    }
+    jdField_a_of_type_Bfim.jdField_a_of_type_JavaUtilArrayList.add(parambfil);
+  }
+  
+  public void b(bfil parambfil)
+  {
+    int j = jdField_a_of_type_Bfim.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        if ((bfil)jdField_a_of_type_Bfim.jdField_a_of_type_JavaUtilArrayList.get(i) == parambfil) {
+          jdField_a_of_type_Bfim.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        }
+      }
+      else {
+        return;
+      }
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfim
  * JD-Core Version:    0.7.0.1
  */

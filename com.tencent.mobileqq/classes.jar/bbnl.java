@@ -1,168 +1,395 @@
-import java.util.Arrays;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.TroopNotificationCache;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import com.tencent.qphone.base.util.MD5;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Observable;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import mqq.app.MobileQQ;
+import mqq.manager.TicketManager;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bbnl
+public class bbnl
+  extends Observable
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
+  public static String a;
+  public static int b;
+  public static String b;
+  public static int c;
+  public static String c;
+  public static int d;
+  public static String d;
+  public static String e;
+  public static String f = "filterID";
+  public static String g = "src";
+  public int a;
+  public Handler a;
+  public bcgo a;
+  public QQAppInterface a;
+  protected TroopFeedItem a;
+  public Long a;
+  public LinkedHashMap<String, Integer> a;
+  public List<TroopFeedItem> a;
+  public JSONObject a;
+  public JSONObject b;
   
-  bbnl(bbnj parambbnj, int paramInt1, int paramInt2)
+  static
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    a();
+    jdField_a_of_type_JavaLangString = "controlType";
+    jdField_b_of_type_JavaLangString = "controlInfo";
+    jdField_b_of_type_Int = 1;
+    jdField_c_of_type_JavaLangString = "compress";
+    jdField_c_of_type_Int = 1;
+    jdField_d_of_type_JavaLangString = "validTime";
+    e = "needFilter";
+    jdField_d_of_type_Int = 1;
   }
   
-  final int a()
+  public bbnl(QQAppInterface paramQQAppInterface, Long paramLong)
   {
-    return (this.e - this.d + 1) * (this.g - this.f + 1) * (this.i - this.h + 1);
+    this.jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+    this.jdField_a_of_type_AndroidOsHandler = new bbnm(this, Looper.getMainLooper());
+    this.jdField_a_of_type_Bcgo = new bbnn(this);
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangLong = paramLong;
   }
   
-  final bbnl a()
+  public static void a(Context paramContext, QQAppInterface paramQQAppInterface, int paramInt, bcgo parambcgo)
   {
-    if (!a()) {
-      throw new IllegalStateException("Can not split a box with only 1 color");
-    }
-    int j = d();
-    bbnl localbbnl = new bbnl(this.jdField_a_of_type_Bbnj, j + 1, this.b);
-    this.b = j;
-    a();
-    return localbbnl;
-  }
-  
-  final bbns a()
-  {
-    int i1 = 0;
-    int[] arrayOfInt1 = this.jdField_a_of_type_Bbnj.a;
-    int[] arrayOfInt2 = this.jdField_a_of_type_Bbnj.b;
-    int n = this.jdField_a_of_type_Int;
-    int j = 0;
-    int k = 0;
-    int m = 0;
-    while (n <= this.b)
+    Object localObject1 = (TicketManager)paramQQAppInterface.getManager(2);
+    paramQQAppInterface = paramQQAppInterface.getCurrentAccountUin();
+    Object localObject2 = ((TicketManager)localObject1).getSkey(paramQQAppInterface);
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putString("Cookie", "uin=o" + paramQQAppInterface + ";skey=" + (String)localObject2);
+    try
     {
-      int i2 = arrayOfInt1[n];
-      int i3 = arrayOfInt2[i2];
-      i1 += i3;
-      m += bbnj.a(i2) * i3;
-      k += bbnj.b(i2) * i3;
-      j += bbnj.c(i2) * i3;
-      n += 1;
+      localObject2 = new JSONObject();
+      ((JSONObject)localObject2).put("posid", "8020205751015455");
+      ((JSONObject)localObject2).put("adposcount", 1);
+      ((JSONObject)localObject2).put("count", 1);
+      ((JSONObject)localObject2).put("posw", 100);
+      ((JSONObject)localObject2).put("posh", 200);
+      ((JSONObject)localObject2).put("uin", paramQQAppInterface);
+      ((JSONObject)localObject2).put("muidtype", 1);
+      ((JSONObject)localObject2).put("muid", MD5.toMD5(bdcb.a()));
+      ((JSONObject)localObject2).put("carrier", bdcb.e());
+      ((JSONObject)localObject2).put("conn", ndd.a());
+      ((JSONObject)localObject2).put("c_os", "android");
+      ((JSONObject)localObject2).put("c_osver", Build.VERSION.RELEASE);
+      ((JSONObject)localObject2).put("datatype", 2);
+      ((JSONObject)localObject2).put("c_devicetype", 1);
+      paramQQAppInterface = String.format("http://web.qun.qq.com/cgi-bin/announce/get_ad?&cnt=1&ext=%S", new Object[] { URLEncoder.encode(((JSONObject)localObject2).toString()) });
+      if (paramQQAppInterface != null)
+      {
+        localObject2 = new HashMap();
+        ((HashMap)localObject2).put("BUNDLE", localObject1);
+        ((HashMap)localObject2).put("CONTEXT", paramContext);
+        new bcgn(paramQQAppInterface, "GET", parambcgo, paramInt, null, true).execute(new HashMap[] { localObject2 });
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopFeedsDataManager", 2, "get requstTroopNotify from server start: " + System.currentTimeMillis());
+        }
+        return;
+      }
     }
-    return new bbns(bbnj.a(Math.round(m / i1), Math.round(k / i1), Math.round(j / i1)), i1);
-  }
-  
-  final void a()
-  {
-    int[] arrayOfInt1 = this.jdField_a_of_type_Bbnj.a;
-    int[] arrayOfInt2 = this.jdField_a_of_type_Bbnj.b;
-    int n = -2147483648;
-    int i5 = 0;
-    int m = this.jdField_a_of_type_Int;
-    int i6 = -2147483648;
-    int j = 2147483647;
-    int k = 2147483647;
-    int i3 = 2147483647;
-    int i2 = -2147483648;
-    while (m <= this.b)
+    catch (Exception paramQQAppInterface)
     {
-      int i1 = arrayOfInt1[m];
-      int i9 = i5 + arrayOfInt2[i1];
-      int i8 = bbnj.a(i1);
-      int i7 = bbnj.b(i1);
-      i5 = bbnj.c(i1);
-      i1 = i6;
-      if (i8 > i6) {
-        i1 = i8;
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("requstTroopNotifyAd", 2, "get ad exera fail, " + paramQQAppInterface);
+        }
+        paramQQAppInterface = null;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.e("requstTroopNotifyAd", 2, "get adURL ERROR empty!!!!");
+        }
       }
-      int i4 = i3;
-      if (i8 < i3) {
-        i4 = i8;
-      }
-      i3 = i2;
-      if (i7 > i2) {
-        i3 = i7;
-      }
-      i8 = k;
-      if (i7 < k) {
-        i8 = i7;
-      }
-      i2 = n;
-      if (i5 > n) {
-        i2 = i5;
-      }
-      k = j;
-      if (i5 < j) {
-        k = i5;
-      }
-      m += 1;
-      i5 = i9;
-      n = i2;
-      i2 = i3;
-      i6 = i1;
-      j = k;
-      k = i8;
-      i3 = i4;
     }
-    this.d = i3;
-    this.e = i6;
-    this.f = k;
-    this.g = i2;
-    this.h = j;
-    this.i = n;
-    this.c = i5;
   }
   
-  final boolean a()
+  public TroopFeedItem a()
   {
-    return b() > 1;
-  }
-  
-  final int b()
-  {
-    return this.b + 1 - this.jdField_a_of_type_Int;
-  }
-  
-  final int c()
-  {
-    int j = this.e - this.d;
-    int k = this.g - this.f;
-    int m = this.i - this.h;
-    if ((j >= k) && (j >= m)) {
-      return -3;
+    List localList = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a("" + this.jdField_a_of_type_JavaLangLong);
+    if (localList == null) {
+      return this.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem;
     }
-    if ((k >= j) && (k >= m)) {
-      return -2;
-    }
-    return -1;
-  }
-  
-  final int d()
-  {
-    int j = c();
-    int[] arrayOfInt1 = this.jdField_a_of_type_Bbnj.a;
-    int[] arrayOfInt2 = this.jdField_a_of_type_Bbnj.b;
-    bbnj.a(arrayOfInt1, j, this.jdField_a_of_type_Int, this.b);
-    Arrays.sort(arrayOfInt1, this.jdField_a_of_type_Int, this.b + 1);
-    bbnj.a(arrayOfInt1, j, this.jdField_a_of_type_Int, this.b);
-    int m = this.c / 2;
-    j = this.jdField_a_of_type_Int;
-    int k = 0;
-    while (j <= this.b)
+    int j = localList.size() - 1;
+    label282:
+    label425:
+    label492:
+    label497:
+    label502:
+    label509:
+    for (;;)
     {
-      k += arrayOfInt2[arrayOfInt1[j]];
-      if (k >= m) {
-        return Math.min(this.b - 1, j);
+      TroopNotificationCache localTroopNotificationCache;
+      if (j >= 0)
+      {
+        localTroopNotificationCache = (TroopNotificationCache)localList.get(j);
+        if (localTroopNotificationCache == null) {}
       }
-      j += 1;
+      else
+      {
+        try
+        {
+          TroopFeedItem localTroopFeedItem = new TroopFeedItem();
+          int i;
+          Object localObject;
+          bbno localbbno;
+          if (localTroopNotificationCache.serviceID == 27)
+          {
+            localTroopFeedItem.tag = alpo.a(2131715694);
+            localTroopFeedItem.type = 5;
+            i = 0;
+            localTroopFeedItem.id = localTroopNotificationCache.feedsId;
+            localTroopFeedItem.orginType = localTroopNotificationCache.feedType;
+            localTroopFeedItem.feedTime = ("" + localTroopNotificationCache.time);
+            localTroopFeedItem.currentUin = localTroopNotificationCache.currentUin;
+            localTroopFeedItem.troopUin = ("" + localTroopNotificationCache.troopUin);
+            localObject = new ByteArrayInputStream(azsd.a(localTroopNotificationCache.xmlBytes, i));
+            localbbno = new bbno(this);
+            SAXParserFactory.newInstance().newSAXParser().parse((InputStream)localObject, localbbno);
+            ((InputStream)localObject).close();
+            if (localTroopNotificationCache.serviceID == 20)
+            {
+              localTroopFeedItem.title = localbbno.jdField_a_of_type_JavaLangString;
+              localTroopFeedItem.content = "";
+              localTroopFeedItem.picPath = localbbno.jdField_b_of_type_JavaLangString;
+              localTroopFeedItem.linkUrl = localbbno.jdField_d_of_type_JavaLangString;
+              if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem == null) || (localTroopNotificationCache.serviceID == 27)) {
+                this.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = localTroopFeedItem;
+              }
+              i = localTroopNotificationCache.serviceID;
+              if (i != 27) {
+                break label509;
+              }
+              return this.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem;
+            }
+          }
+          else
+          {
+            if ((localTroopNotificationCache.serviceID != 20) || (localTroopNotificationCache.ctrlStr == null)) {
+              break label492;
+            }
+            localObject = new JSONObject(localTroopNotificationCache.ctrlStr);
+            if ((!((JSONObject)localObject).has(jdField_a_of_type_JavaLangString)) || (((JSONObject)localObject).getInt(jdField_a_of_type_JavaLangString) != jdField_b_of_type_Int)) {
+              break label502;
+            }
+            localObject = ((JSONObject)localObject).getJSONObject(jdField_b_of_type_JavaLangString);
+            if (((JSONObject)localObject).getInt(jdField_c_of_type_JavaLangString) != jdField_c_of_type_Int) {
+              break label497;
+            }
+            i = 1;
+            long l = Long.parseLong(((JSONObject)localObject).getString(jdField_d_of_type_JavaLangString));
+            if (ayvc.a() > l) {
+              return null;
+            }
+          }
+          for (;;)
+          {
+            localTroopFeedItem.tag = alpo.a(2131715695);
+            localTroopFeedItem.type = 133;
+            break;
+            localTroopFeedItem.title = localTroopNotificationCache.title;
+            localTroopFeedItem.content = localbbno.jdField_c_of_type_JavaLangString;
+            break label282;
+            i = 0;
+            break;
+            i = 0;
+            break label425;
+            i = 0;
+          }
+          j -= 1;
+        }
+        catch (Exception localException) {}
+      }
     }
-    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a(List<TroopFeedItem> paramList)
+  {
+    localJSONArray = new JSONArray();
+    try
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        TroopFeedItem localTroopFeedItem = (TroopFeedItem)paramList.next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("fid", localTroopFeedItem.id);
+        localJSONObject.put("mod_time", Long.parseLong(localTroopFeedItem.feedTime));
+        localJSONArray.put(localJSONObject);
+      }
+      return localJSONArray.toString();
+    }
+    catch (JSONException paramList)
+    {
+      return "";
+    }
+    catch (NumberFormatException paramList)
+    {
+      return "";
+    }
+    catch (Exception paramList)
+    {
+      return "";
+    }
+  }
+  
+  public List<TroopFeedItem> a(List<String> paramList, List<TroopFeedItem> paramList1)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 1;
+    Object localObject1;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem != null)
+    {
+      localObject1 = paramList1.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (TroopFeedItem)((Iterator)localObject1).next();
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem != null) && (((TroopFeedItem)localObject2).id.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem.id))) {
+          this.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = ((TroopFeedItem)localObject2);
+        }
+      }
+      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem);
+      i = 0;
+    }
+    paramList = paramList.iterator();
+    do
+    {
+      if (paramList.hasNext())
+      {
+        localObject1 = (String)paramList.next();
+        if (i > 0) {}
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem = null;
+        return localArrayList;
+      }
+    } while ((this.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem != null) && (((String)localObject1).equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem.id)));
+    Object localObject2 = paramList1.iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      TroopFeedItem localTroopFeedItem = (TroopFeedItem)((Iterator)localObject2).next();
+      if (((String)localObject1).equalsIgnoreCase(localTroopFeedItem.id))
+      {
+        localArrayList.add(localTroopFeedItem);
+        i -= 1;
+      }
+    }
+    for (;;)
+    {
+      break;
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    }
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramString == null) {}
+    do
+    {
+      return;
+      Object localObject2 = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      String str = ((TicketManager)localObject2).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("qid", "" + this.jdField_a_of_type_JavaLangLong);
+      ((Bundle)localObject2).putString("fid", "" + paramString);
+      ((Bundle)localObject2).putString("bkn", "" + bclo.b(str));
+      ((Bundle)localObject2).putString("ver", "8.3.3");
+      ((Bundle)localObject2).putString("platform", "1");
+      ((Bundle)localObject2).putString("Cookie", "uin=o" + (String)localObject1 + ";skey=" + str);
+      localObject1 = new HashMap();
+      ((HashMap)localObject1).put("BUNDLE", localObject2);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
+      ((HashMap)localObject1).put("CONTEXT", MobileQQ.getContext());
+      new bcgn("https://web.qun.qq.com/cgi-bin/announce/get_feed", "GET", this.jdField_a_of_type_Bcgo, paramInt, null, true).execute(new HashMap[] { localObject1 });
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopFeedsDataManager", 2, "getNoticeFromServer start: " + System.currentTimeMillis() + ", feedId: " + paramString);
+  }
+  
+  public void a(String paramString, Integer paramInteger)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "setTroopNotificationCenterAutoPullDownFlag, troopUin:" + this.jdField_a_of_type_JavaLangLong + ",feedsId:" + paramString + ",status:" + paramInteger);
+      }
+    } while (paramInteger.intValue() != 1);
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString, paramInteger);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
+  }
+  
+  public void b(int paramInt)
+  {
+    Object localObject2 = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    String str = ((TicketManager)localObject2).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localObject2 = new Bundle();
+    ((Bundle)localObject2).putString("qid", "" + this.jdField_a_of_type_JavaLangLong);
+    ((Bundle)localObject2).putString("ft", "23");
+    ((Bundle)localObject2).putString("bkn", "" + bclo.b(str));
+    ((Bundle)localObject2).putString("ni", "1");
+    if (paramInt == 1003) {
+      ((Bundle)localObject2).putString("is_getinst", "1");
+    }
+    ((Bundle)localObject2).putString("n", "1");
+    ((Bundle)localObject2).putString("i", "1");
+    ((Bundle)localObject2).putString("s", "-1");
+    ((Bundle)localObject2).putString("log_read", "1");
+    ((Bundle)localObject2).putString("ver", "" + AppSetting.a());
+    ((Bundle)localObject2).putString("platform", "1");
+    ((Bundle)localObject2).putString("Cookie", "uin=o" + (String)localObject1 + ";skey=" + str);
+    localObject1 = new HashMap();
+    ((HashMap)localObject1).put("BUNDLE", localObject2);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
+    ((HashMap)localObject1).put("CONTEXT", MobileQQ.getContext());
+    new bcgn("https://web.qun.qq.com/cgi-bin/announce/get_t_list", "GET", this.jdField_a_of_type_Bcgo, paramInt, null, true).execute(new HashMap[] { localObject1 });
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopFeedsDataManager", 2, "getRecentNoticeFromServer start: " + System.currentTimeMillis());
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
   }
 }
 

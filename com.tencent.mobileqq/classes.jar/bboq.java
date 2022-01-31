@@ -1,43 +1,28 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.HorizontalListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bboq
-  extends RecyclerView.ViewHolder
-  implements AdapterView.OnItemClickListener
+class bboq
+  implements DialogInterface.OnClickListener
 {
-  bboj jdField_a_of_type_Bboj;
-  bboo jdField_a_of_type_Bboo;
-  bbop jdField_a_of_type_Bbop;
-  HorizontalListView jdField_a_of_type_ComTencentWidgetHorizontalListView;
+  bboq(bboe parambboe, bbnr parambbnr) {}
   
-  public bboq(View paramView, bboo parambboo, bbop parambbop, bboj parambboj)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramView.findViewById(2131364385));
-    this.jdField_a_of_type_Bbop = parambbop;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_Bbop);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this);
-    this.jdField_a_of_type_Bboo = parambboo;
-    this.jdField_a_of_type_Bboj = parambboj;
-  }
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    this.jdField_a_of_type_Bbop.a(paramInt);
-    this.jdField_a_of_type_Bboj.a(-1);
-    if (this.jdField_a_of_type_Bboo != null)
+    switch (paramInt)
     {
-      paramAdapterView = new bbol(2, null, ((Integer)this.jdField_a_of_type_Bbop.getItem(paramInt)).intValue(), null);
-      this.jdField_a_of_type_Bboo.a(paramAdapterView);
+    case 0: 
+    default: 
+      return;
     }
+    if (bboe.a(this.jdField_a_of_type_Bboe) != 0) {
+      bcil.a(this.jdField_a_of_type_Bboe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Bboe.jdField_a_of_type_Long).b(this.jdField_a_of_type_Bbnr);
+    }
+    azmj.b(this.jdField_a_of_type_Bboe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Grp", "Cancel_pause_upload", 0, 0, "", this.jdField_a_of_type_Bboe.jdField_a_of_type_Long + "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bboq
  * JD-Core Version:    0.7.0.1
  */

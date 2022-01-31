@@ -1,10 +1,10 @@
 package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 
-import ahvy;
+import ajni;
 import android.os.Bundle;
-import aukp;
-import aukr;
-import bbkb;
+import awbw;
+import awby;
+import bdiv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ public class ShortVideoTravellerManager
 {
   public static final String a;
   Bundle jdField_a_of_type_AndroidOsBundle;
-  private aukp jdField_a_of_type_Aukp;
+  private awbw jdField_a_of_type_Awbw;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Object jdField_a_of_type_JavaLangObject;
   WeakReference<MessengerService> jdField_a_of_type_JavaLangRefWeakReference;
@@ -32,7 +32,7 @@ public class ShortVideoTravellerManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = ahvy.jdField_a_of_type_JavaLangString + "/tencent/qim/travellervideos/";
+    jdField_a_of_type_JavaLangString = ajni.jdField_a_of_type_JavaLangString + "/tencent/qim/travellervideos/";
   }
   
   private void a(List<ShortVideoTravellerManager.TravellerVideoItem> paramList)
@@ -45,23 +45,23 @@ public class ShortVideoTravellerManager
     do
     {
       return;
-      this.jdField_a_of_type_Aukp.a(ShortVideoTravellerManager.TravellerVideoItem.class);
-      aukr localaukr = this.jdField_a_of_type_Aukp.a();
+      this.jdField_a_of_type_Awbw.a(ShortVideoTravellerManager.TravellerVideoItem.class);
+      awby localawby = this.jdField_a_of_type_Awbw.a();
       try
       {
-        localaukr.a();
+        localawby.a();
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
           ShortVideoTravellerManager.TravellerVideoItem localTravellerVideoItem = (ShortVideoTravellerManager.TravellerVideoItem)paramList.next();
-          this.jdField_a_of_type_Aukp.b(localTravellerVideoItem);
+          this.jdField_a_of_type_Awbw.b(localTravellerVideoItem);
         }
       }
       finally
       {
-        localaukr.b();
+        localawby.b();
       }
-      localaukr.b();
+      localawby.b();
     } while (!QLog.isColorLevel());
     QLog.d("ShortVideoTravellerManager", 2, "saveVideoListToDB");
   }
@@ -94,7 +94,7 @@ public class ShortVideoTravellerManager
         paramString = finally;
         throw paramString;
       }
-      bbkb.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
+      bdiv.e(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramInt, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
       if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
         this.jdField_a_of_type_JavaUtilArrayList.clear();
       }
@@ -146,7 +146,7 @@ public class ShortVideoTravellerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.util.videoconverter.ShortVideoTravellerManager
  * JD-Core Version:    0.7.0.1
  */

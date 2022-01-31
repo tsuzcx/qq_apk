@@ -1,52 +1,54 @@
-import com.qq.taf.jce.HexUtil;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import java.util.HashMap;
 
 public class ayyy
-  extends ayza
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public int e;
-  
-  public String toString()
+  public static void a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(" name:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(" width:");
-    localStringBuilder.append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(" height:");
-    localStringBuilder.append(this.d);
-    localStringBuilder.append(" size:");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(" isRaw:");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append(" isContant:");
-    localStringBuilder.append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append(" md5:");
-    localStringBuilder.append(HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
-    localStringBuilder.append(" picType:");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" busiType:");
-    localStringBuilder.append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("typeHotPic:");
-    localStringBuilder.append(this.e);
-    localStringBuilder.append("transferUrl:");
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    return localStringBuilder.toString();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("waite", "" + paramInt);
+    azmz.a(VideoEnvironment.a()).a(null, "sv_waite_record_count", true, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    a("sv_resource_download_base", paramInt1, paramInt2);
+  }
+  
+  private static void a(String paramString, int paramInt1, int paramInt2)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("type", "" + paramInt1);
+    localHashMap.put("error", "" + paramInt2);
+    azmz.a(VideoEnvironment.a()).a(null, paramString, true, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void a(String paramString, long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+    localHashMap.put("MODEL", Build.MODEL);
+    localHashMap.put("SDK_INT", "" + Build.VERSION.SDK_INT);
+    localHashMap.put("cost", "" + paramLong);
+    azmz.a(VideoEnvironment.a()).a(null, paramString, true, 0L, 0L, localHashMap, "");
+  }
+  
+  public static void b(int paramInt1, int paramInt2)
+  {
+    a("sv_resource_download_qzone", paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayyy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,15 @@
-import android.app.Dialog;
-import android.os.Handler;
-import java.util.HashMap;
+import android.animation.Animator;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
 
-class aetf
-  extends bdvm
+public abstract interface aetf
 {
-  aetf(aert paramaert) {}
+  public abstract void a(Animator paramAnimator, int paramInt);
   
-  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
-  {
-    if ((!paramBoolean) || (paramHashMap == null))
-    {
-      this.a.E(2);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
-    }
-    if (((Integer)paramHashMap.get("result")).intValue() == 0)
-    {
-      this.a.E(1);
-      this.a.a.sendEmptyMessageDelayed(10, 3000L);
-      return;
-    }
-    this.a.ao = true;
-    this.a.bE();
-    if ((aert.a(this.a) != null) && (aert.a(this.a).isShowing())) {
-      aert.a(this.a).dismiss();
-    }
-    this.a.bF();
-  }
-  
-  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
-  {
-    if ((!paramBoolean) || (paramHashMap == null)) {
-      return;
-    }
-    this.a.ar = true;
-    this.a.aq = ((Boolean)paramHashMap.get("result")).booleanValue();
-    this.a.bE();
-    this.a.bF();
-  }
+  public abstract void a(LottieDrawable paramLottieDrawable, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetf
  * JD-Core Version:    0.7.0.1
  */

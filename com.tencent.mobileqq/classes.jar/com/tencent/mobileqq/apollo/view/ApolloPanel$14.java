@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.view;
 
-import bcql;
 import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ApolloPanel$14
   implements Runnable
@@ -11,13 +11,13 @@ class ApolloPanel$14
   public void run()
   {
     if ((this.this$0.a != null) && (this.this$0.a.a != null)) {
-      bcql.a(this.this$0.a.a, 2, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Int);
+      QQToast.a(this.this$0.a.a, 2, this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloPanel.14
  * JD-Core Version:    0.7.0.1
  */

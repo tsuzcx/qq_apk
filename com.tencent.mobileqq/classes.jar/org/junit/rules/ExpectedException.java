@@ -96,7 +96,7 @@ public class ExpectedException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     org.junit.rules.ExpectedException
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.content.Context;
 
-public class bjkp
-  implements DialogInterface.OnClickListener
+class bjkp
+  extends bjke
 {
-  public bjkp(MusicProviderView paramMusicProviderView) {}
+  bjkp(bjko parambjko, bjjy parambjjy, Context paramContext, bjjz parambjjz) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString) {}
+  
+  public void a(String paramString, float paramFloat, long paramLong) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if (paramInt == 2)
+    {
+      this.jdField_a_of_type_Bjjy.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjjz);
+      return;
+    }
+    this.jdField_a_of_type_Bjjy.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjjz);
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_Bjjy.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjjz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjkp
  * JD-Core Version:    0.7.0.1
  */

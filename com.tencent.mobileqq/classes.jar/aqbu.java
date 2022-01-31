@@ -1,27 +1,33 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-
 public class aqbu
-  extends aqbe
+  extends aqbr
 {
-  public aqbu(Intent paramIntent)
+  public aqbu(aqbq paramaqbq, aqbb paramaqbb)
   {
-    super(paramIntent);
+    super(paramaqbq, paramaqbb);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  protected boolean c()
+  public void a(int paramInt)
   {
-    Intent localIntent = actj.a(new Intent(this.jdField_a_of_type_AndroidAppActivity, SplashActivity.class), null);
-    localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, localIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    return false;
+    super.a(paramInt);
+    this.jdField_a_of_type_Aqbb.a();
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+    switch (paramInt1)
+    {
+    default: 
+      return false;
+    }
+    this.jdField_a_of_type_Aqbq.a(2, paramInt2);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbu
  * JD-Core Version:    0.7.0.1
  */

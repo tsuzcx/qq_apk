@@ -1,48 +1,67 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import org.json.JSONObject;
-import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
-class ovb
-  implements View.OnClickListener
+public class ovb
 {
-  ovb(ouy paramouy, ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private List<ovc> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private HashMap<String, String> b = new HashMap();
   
-  public void onClick(View paramView)
+  public int a()
   {
-    paramView = new Intent(this.jdField_a_of_type_Ouy.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_Ouy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.bytes_attachment_jump_url.get().toStringUtf8());
-    this.jdField_a_of_type_Ouy.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    paramView = old.a(this.jdField_a_of_type_Ouy.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ouy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyPicWaterFallFragment.a(), 3, this.jdField_a_of_type_Ouy.a(), (ArticleInfo)this.jdField_a_of_type_Ouy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    try
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public String a(int paramInt, String paramString)
+  {
+    String str2 = "";
+    ovc localovc = a(paramInt);
+    String str1 = str2;
+    if (localovc != null)
     {
-      paramView.put("exptime", System.currentTimeMillis());
-      paramView.put("proxy_bytes", this.jdField_a_of_type_Ouy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.galleryReprotExdData);
-      paramView.put("operation_id", this.jdField_a_of_type_Ouy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mGalleryFeedsInfo.bytes_operation_id.get().toStringUtf8());
-      olf localolf = new olf(this.jdField_a_of_type_Ouy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-      localolf.e = String.valueOf(this.jdField_a_of_type_Ouy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleID);
-      localolf.f = String.valueOf(this.jdField_a_of_type_Ouy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mStrategyId);
-      localolf.g = paramView.toString();
-      localolf.a = String.valueOf(this.jdField_a_of_type_Ouy.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.publishUin);
-      localolf.b = "0X8009A7B";
-      localolf.c = "0X8009A7B";
-      old.a(localolf);
-      return;
+      str1 = str2;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        if (!"style_ID".equalsIgnoreCase(paramString)) {
+          break label46;
+        }
+        str1 = localovc.jdField_a_of_type_JavaLangString;
+      }
     }
-    catch (Exception paramView) {}
+    return str1;
+    label46:
+    return (String)localovc.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public String a(String paramString)
+  {
+    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public ovc a(int paramInt)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramInt >= 0)
+    {
+      localObject1 = localObject2;
+      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+        localObject1 = (ovc)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      }
+    }
+    return localObject1;
+  }
+  
+  public String b(String paramString)
+  {
+    return (String)this.b.get(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ovb
  * JD-Core Version:    0.7.0.1
  */

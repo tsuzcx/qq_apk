@@ -1,31 +1,28 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import com.tencent.mobileqq.widget.SquareImageView;
 
 public class asnn
-  extends asnv<MessageRecord>
+  extends RecyclerView.ViewHolder
 {
-  public asnn(MessageRecord paramMessageRecord)
-  {
-    super(paramMessageRecord);
-    this.a = (this.a + "." + paramMessageRecord.getClass().getSimpleName());
-  }
+  public ImageView a;
+  public TextView a;
+  public SquareImageView a;
   
-  protected int a()
+  public asnn(FontBubblePanelView paramFontBubblePanelView, View paramView)
   {
-    return 0;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131366682));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370958));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131379168));
   }
-  
-  public List<MsgBackupResEntity> a()
-  {
-    return null;
-  }
-  
-  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asnn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,90 +1,247 @@
-import java.util.Comparator;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.business.manager.pendant.EffectPendantTools.1;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.av.opengl.effects.AEFilterSupport;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQTemplateParser;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.FabbyMvPart;
+import com.tencent.ttpic.openapi.filter.FabbyParts;
+import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import java.io.File;
+import java.util.Iterator;
 import java.util.List;
 
 public class lkt
+  extends lkq
 {
-  public static final Object a;
-  public static final Comparator<lkt> a;
-  private static lkt b;
-  private static int c;
-  public int a;
-  public aykr a;
-  private lkt a;
-  public int b;
+  private lks a;
+  public String d;
   
-  static
+  public lkt(VideoAppInterface paramVideoAppInterface)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_JavaUtilComparator = new lku();
+    super(paramVideoAppInterface);
+    this.jdField_a_of_type_Lks = null;
   }
   
-  private lkt(aykr paramaykr, int paramInt1, int paramInt2)
+  public static int a(PendantItem paramPendantItem, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Aykr = paramaykr;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public static lkt a(aykr paramaykr, int paramInt1, int paramInt2)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    if ((paramPendantItem != null) || (paramBoolean)) {}
+    switch (AEFilterSupport.a())
     {
-      if (jdField_b_of_type_Lkt != null)
+    case 5: 
+    case 6: 
+    default: 
+      return 0;
+    case 3: 
+      return 3;
+    case 4: 
+      return 4;
+    }
+    return 5;
+  }
+  
+  public static boolean a(VideoMaterial paramVideoMaterial)
+  {
+    if (paramVideoMaterial != null)
+    {
+      if (paramVideoMaterial.getFabbyParts() != null)
       {
-        lkt locallkt = jdField_b_of_type_Lkt;
-        jdField_b_of_type_Lkt = locallkt.jdField_a_of_type_Lkt;
-        locallkt.a(paramaykr, paramInt1, paramInt2);
-        c -= 1;
-        return locallkt;
+        paramVideoMaterial = paramVideoMaterial.getFabbyParts().getParts().iterator();
+        FabbyMvPart localFabbyMvPart;
+        do
+        {
+          if (!paramVideoMaterial.hasNext()) {
+            break;
+          }
+          localFabbyMvPart = (FabbyMvPart)paramVideoMaterial.next();
+        } while ((localFabbyMvPart.bgItem == null) || (localFabbyMvPart.bgItem.name == null) || (!localFabbyMvPart.bgItem.name.endsWith("_360")));
+        return true;
       }
-      return new lkt(paramaykr, paramInt1, paramInt2);
+    }
+    else {
+      return false;
+    }
+    return false;
+  }
+  
+  public int a()
+  {
+    return 106;
+  }
+  
+  public VideoMaterial a(String paramString)
+  {
+    VideoMaterial localVideoMaterial = QQTemplateParser.parseVideoMaterial(paramString, "params");
+    localVideoMaterial.setDataPath(paramString);
+    return localVideoMaterial;
+  }
+  
+  public lkr a(int paramInt1, int paramInt2)
+  {
+    lkr locallkr = super.a(paramInt1, paramInt2);
+    if ((this.jdField_a_of_type_Lks != null) && (locallkr != null) && (locallkr.a != null))
+    {
+      boolean bool = lko.a().b();
+      if ((!a(locallkr.a)) || (bool)) {
+        this.jdField_a_of_type_Lks.a(0);
+      }
+    }
+    return locallkr;
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    long l = AudioHelper.b();
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 4, "MuteByOthers, seq[" + l + "], fromMuteKey[" + paramInt + "], data[" + paramString + "]");
+    }
+    if (paramInt == b()) {}
+    do
+    {
+      do
+      {
+        return;
+        if (paramInt != 3003) {
+          break;
+        }
+      } while (!"creativecop".equals(paramString));
+      a(l, "0");
+      return;
+    } while ((paramInt != 3001) && (paramInt != 3004));
+    a(l, "0");
+  }
+  
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      paramString1 = (PendantItem)a();
+    } while ((paramString1 == null) || (TextUtils.isEmpty(paramString1.getId())));
+    a(paramLong, null);
+  }
+  
+  public void a(lks paramlks)
+  {
+    this.jdField_a_of_type_Lks = paramlks;
+  }
+  
+  public boolean a(long paramLong, PendantItem paramPendantItem)
+  {
+    boolean bool = super.a(paramLong, paramPendantItem);
+    if ((bool) && (paramPendantItem != null) && (!TextUtils.equals("0", paramPendantItem.getId())))
+    {
+      localObject = (ljq)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(12);
+      if (localObject != null) {
+        ((ljq)localObject).a(3002, paramPendantItem.getId());
+      }
+    }
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (paramPendantItem == null) {}
+    for (Object localObject = null;; localObject = paramPendantItem.getId())
+    {
+      lku.a(str, (String)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.i(this.jdField_a_of_type_JavaLangString, 2, "setCurrentItem, item[" + paramPendantItem + "]");
+      }
+      return bool;
     }
   }
   
-  private void a(aykr paramaykr, int paramInt1, int paramInt2)
+  protected boolean a(PendantItem paramPendantItem)
   {
-    this.jdField_a_of_type_Lkt = null;
-    this.jdField_a_of_type_Aykr = paramaykr;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  public static void a(List<lkt> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {}
+    int j = 1;
+    if ((a() <= 0) || (paramPendantItem == null) || (TextUtils.isEmpty(paramPendantItem.getId())))
+    {
+      lek.e(this.jdField_a_of_type_JavaLangString, "isTemplateUsable:" + a() + "|");
+      return false;
+    }
+    if (TextUtils.isEmpty(paramPendantItem.getResurl())) {
+      return true;
+    }
+    File localFile = new File(a(paramPendantItem));
+    boolean bool = localFile.exists();
+    Object localObject1;
+    long l1;
+    Object localObject2;
+    if (!bool)
+    {
+      localObject1 = len.b() + paramPendantItem.getName();
+      localFile = new File((String)localObject1);
+      if (localFile.exists())
+      {
+        l1 = System.currentTimeMillis();
+        localObject1 = SecUtil.getFileMd5((String)localObject1);
+        long l2 = System.currentTimeMillis();
+        localObject2 = paramPendantItem.getMd5();
+        lek.c(this.jdField_a_of_type_JavaLangString, "isTemplateUsable :" + (String)localObject1 + "|" + (String)localObject2 + "|" + (l2 - l1));
+        bool = ((String)localObject2).equalsIgnoreCase((String)localObject1);
+      }
+    }
     for (;;)
     {
-      return;
-      int i = paramList.size() - 1;
-      while (i >= 0)
+      int i;
+      if (bool)
       {
-        lkt locallkt = (lkt)paramList.remove(i);
-        if (locallkt != null) {
-          locallkt.a();
+        localObject1 = c(paramPendantItem);
+        localObject2 = new File((String)localObject1, "params.json");
+        l1 = ((File)localObject2).length();
+        if (((((File)localObject2).exists()) && (l1 < 1L)) || (!((File)localObject2).exists()))
+        {
+          i = 1;
+          if (i == 0) {
+            break label370;
+          }
+          localObject1 = new File((String)localObject1, "params.dat");
+          l1 = ((File)localObject1).length();
+          if (((File)localObject1).exists())
+          {
+            i = j;
+            if (l1 < 1L) {}
+          }
+          else
+          {
+            if (((File)localObject1).exists()) {
+              break label362;
+            }
+            i = j;
+          }
         }
-        i -= 1;
+      }
+      label362:
+      label370:
+      for (;;)
+      {
+        if (i != 0)
+        {
+          ThreadManager.post(new EffectPendantTools.1(this, localFile, paramPendantItem), 5, null, false);
+          return false;
+          i = 0;
+          break;
+          i = 0;
+          continue;
+        }
+        return bool;
       }
     }
   }
   
-  public void a()
+  public int b()
   {
-    a(null, -1, -1);
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (c < 50)
-      {
-        this.jdField_a_of_type_Lkt = jdField_b_of_type_Lkt;
-        jdField_b_of_type_Lkt = this;
-        c += 1;
-      }
-      return;
-    }
+    return 3002;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lkt
  * JD-Core Version:    0.7.0.1
  */

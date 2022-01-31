@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping.StylePagerAdapter;
-import com.tencent.mobileqq.widget.ProfileCardScrollImageView;
+import android.os.Bundle;
 
-public class auzg
+class auzg
+  extends nab
 {
-  public ProfileCardScrollImageView a;
+  auzg(auza paramauza, auzh paramauzh) {}
   
-  public auzg(PhotoViewForShopping.StylePagerAdapter paramStylePagerAdapter) {}
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (this.jdField_a_of_type_Auzh != null) {
+      this.jdField_a_of_type_Auzh.a(paramInt, paramArrayOfByte, paramBundle);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auzg
  * JD-Core Version:    0.7.0.1
  */

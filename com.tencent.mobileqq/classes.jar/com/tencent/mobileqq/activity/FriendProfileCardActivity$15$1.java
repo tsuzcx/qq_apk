@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import abdn;
+import acum;
+import awmk;
 
 public class FriendProfileCardActivity$15$1
   implements Runnable
 {
-  public FriendProfileCardActivity$15$1(abdn paramabdn) {}
+  public FriendProfileCardActivity$15$1(acum paramacum) {}
   
   public void run()
   {
-    this.a.a.c();
-    this.a.a.H();
+    this.a.a.a(false, false, this.a.a.a.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileCardActivity.15.1
  * JD-Core Version:    0.7.0.1
  */

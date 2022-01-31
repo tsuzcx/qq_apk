@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import aakj;
+import acbh;
 import android.view.View;
 import android.widget.ImageView;
-import bayh;
+import bcxb;
 
 public class AssociatedAccountManageActivity$8$1
   implements Runnable
 {
-  public AssociatedAccountManageActivity$8$1(aakj paramaakj, String paramString, View paramView) {}
+  public AssociatedAccountManageActivity$8$1(acbh paramacbh, String paramString, View paramView) {}
   
   public void run()
   {
     try
     {
-      bayh localbayh = bayh.a(this.jdField_a_of_type_Aakj.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
-      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367679);
+      bcxb localbcxb = bcxb.a(this.jdField_a_of_type_Acbh.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
+      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367808);
       if (localImageView != null) {
-        localImageView.setImageDrawable(localbayh);
+        localImageView.setImageDrawable(localbcxb);
       }
       return;
     }
@@ -29,7 +29,7 @@ public class AssociatedAccountManageActivity$8$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.8.1
  * JD-Core Version:    0.7.0.1
  */

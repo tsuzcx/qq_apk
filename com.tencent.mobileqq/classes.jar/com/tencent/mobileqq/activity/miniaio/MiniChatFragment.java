@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import acur;
-import aggw;
-import aghd;
-import aghk;
+import aemb;
+import aifb;
+import aifi;
+import aifp;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -32,7 +32,7 @@ public class MiniChatFragment
 {
   private float jdField_a_of_type_Float = 0.85F;
   int jdField_a_of_type_Int;
-  protected aggw a;
+  protected aifb a;
   protected SessionInfo a;
   
   public MiniChatFragment()
@@ -93,7 +93,7 @@ public class MiniChatFragment
       }
       ((Window)localObject).setAttributes(localLayoutParams);
       localObject = ((Window)localObject).getDecorView();
-      if (aghk.a())
+      if (aifp.a())
       {
         this.jdField_a_of_type_Float = a(paramActivity).getFloatExtra("minaio_scaled_ration", 0.95F);
         ((View)localObject).setScaleX(this.jdField_a_of_type_Float);
@@ -125,8 +125,8 @@ public class MiniChatFragment
   
   public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_Aggw != null) {
-      this.jdField_a_of_type_Aggw.r();
+    if (this.jdField_a_of_type_Aifb != null) {
+      this.jdField_a_of_type_Aifb.r();
     }
     return true;
   }
@@ -157,9 +157,9 @@ public class MiniChatFragment
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.f = paramBundle.getIntExtra("key_mini_from", 0);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Acur = new acur();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Acur.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130848971);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Acur.jdField_a_of_type_AndroidContentResColorStateList = getResources().getColorStateList(2131165272);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aemb = new aemb();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aemb.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849402);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Aemb.jdField_a_of_type_AndroidContentResColorStateList = getResources().getColorStateList(2131165304);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Int = ChatTextSizeSettingActivity.a(getActivity());
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_b_of_type_Long = paramBundle.getLongExtra("key_mini_aio_msg_shmsgseq", 0L);
       int i = paramBundle.getIntExtra("key_mini_from", 0);
@@ -180,15 +180,15 @@ public class MiniChatFragment
           paramBundle.putInt("key_mini_msgtab_businame", i);
           this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a(paramBundle);
         }
-        this.jdField_a_of_type_Aggw = aghd.a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, getActivity().app);
-        if (this.jdField_a_of_type_Aggw != null) {
+        this.jdField_a_of_type_Aifb = aifi.a(getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, getActivity().app);
+        if (this.jdField_a_of_type_Aifb != null) {
           break;
         }
         getActivity().finish();
         return null;
       }
-      paramViewGroup = this.jdField_a_of_type_Aggw.a(paramLayoutInflater, null, paramViewGroup);
-      this.jdField_a_of_type_Aggw.a();
+      paramViewGroup = this.jdField_a_of_type_Aifb.a(paramLayoutInflater, null, paramViewGroup);
+      this.jdField_a_of_type_Aifb.a();
       paramLayoutInflater = paramViewGroup;
     } while (paramViewGroup != null);
     getActivity().finish();
@@ -198,62 +198,62 @@ public class MiniChatFragment
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Aggw != null) {
-      this.jdField_a_of_type_Aggw.p();
+    if (this.jdField_a_of_type_Aifb != null) {
+      this.jdField_a_of_type_Aifb.p();
     }
   }
   
   public void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
-    if (this.jdField_a_of_type_Aggw != null) {
-      this.jdField_a_of_type_Aggw.j();
+    if (this.jdField_a_of_type_Aifb != null) {
+      this.jdField_a_of_type_Aifb.j();
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Aggw != null) {
-      this.jdField_a_of_type_Aggw.m();
+    if (this.jdField_a_of_type_Aifb != null) {
+      this.jdField_a_of_type_Aifb.m();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Aggw != null) {
-      this.jdField_a_of_type_Aggw.k();
+    if (this.jdField_a_of_type_Aifb != null) {
+      this.jdField_a_of_type_Aifb.k();
     }
   }
   
   public void onStart()
   {
     super.onStart();
-    if (this.jdField_a_of_type_Aggw != null) {
-      this.jdField_a_of_type_Aggw.n();
+    if (this.jdField_a_of_type_Aifb != null) {
+      this.jdField_a_of_type_Aifb.n();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_Aggw != null) {
-      this.jdField_a_of_type_Aggw.o();
+    if (this.jdField_a_of_type_Aifb != null) {
+      this.jdField_a_of_type_Aifb.o();
     }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_a_of_type_Aggw != null) {
-      this.jdField_a_of_type_Aggw.c(paramBoolean);
+    if (this.jdField_a_of_type_Aifb != null) {
+      this.jdField_a_of_type_Aifb.c(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatFragment
  * JD-Core Version:    0.7.0.1
  */

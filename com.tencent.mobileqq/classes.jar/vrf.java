@@ -1,27 +1,77 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog.6.1;
+import android.os.Bundle;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.view.accessibility.AccessibilityRecordCompat;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
 public class vrf
-  implements tbz<tbu>
+  extends AccessibilityDelegateCompat
 {
-  public vrf(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  public vrf(XViewPager paramXViewPager) {}
   
-  public void a(boolean paramBoolean, tbu paramtbu)
+  private boolean a()
   {
-    ved.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
-    if ((paramBoolean) && (paramtbu != null))
+    return (XViewPager.a(this.a) != null) && (XViewPager.a(this.a).getCount() > 1);
+  }
+  
+  public void onInitializeAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  {
+    super.onInitializeAccessibilityEvent(paramView, paramAccessibilityEvent);
+    paramAccessibilityEvent.setClassName(XViewPager.class.getName());
+    paramView = AccessibilityRecordCompat.obtain();
+    paramView.setScrollable(a());
+    if ((paramAccessibilityEvent.getEventType() == 4096) && (XViewPager.a(this.a) != null))
     {
-      ved.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramtbu);
-      this.a.a.post(new EditVideoMusicDialog.6.1(this, paramtbu));
-      return;
+      paramView.setItemCount(XViewPager.a(this.a).getCount());
+      paramView.setFromIndex(XViewPager.a(this.a));
+      paramView.setToIndex(XViewPager.a(this.a));
     }
-    ved.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
+  }
+  
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    paramAccessibilityNodeInfoCompat.setClassName(XViewPager.class.getName());
+    paramAccessibilityNodeInfoCompat.setScrollable(a());
+    if (this.a.canScrollHorizontally(1)) {
+      paramAccessibilityNodeInfoCompat.addAction(4096);
+    }
+    if (this.a.canScrollHorizontally(-1)) {
+      paramAccessibilityNodeInfoCompat.addAction(8192);
+    }
+  }
+  
+  public boolean performAccessibilityAction(View paramView, int paramInt, Bundle paramBundle)
+  {
+    if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
+      return true;
+    }
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 4096: 
+      if (this.a.canScrollHorizontally(1))
+      {
+        this.a.setCurrentItem(XViewPager.a(this.a) + 1);
+        return true;
+      }
+      return false;
+    }
+    if (this.a.canScrollHorizontally(-1))
+    {
+      this.a.setCurrentItem(XViewPager.a(this.a) - 1);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vrf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,34 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
 
-public final class andi
-  extends ampa<andh>
+public class andi
+  extends AnimatorListenerAdapter
 {
-  public static void b()
+  public andi(QRScanEntryView paramQRScanEntryView, View paramView, boolean paramBoolean) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    QLog.d("TdsReaderView_TdsReaderConfigProcessor", 1, "initConfig");
-    andh.a(false, (andh)ampl.a().a(482));
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
   }
   
-  public int a()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    return 482;
-  }
-  
-  @NonNull
-  public andh a(int paramInt)
-  {
-    QLog.w("TdsReaderView_TdsReaderConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    return new andh();
-  }
-  
-  @Nullable
-  public andh a(amph[] paramArrayOfamph)
-  {
-    return andh.a(paramArrayOfamph);
-  }
-  
-  public Class<andh> a()
-  {
-    return andh.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.e("TdsReaderView_TdsReaderConfigProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void a(andh paramandh)
-  {
-    QLog.w("TdsReaderView_TdsReaderConfigProcessor", 1, "onUpdate");
-    andh.a(true, paramandh);
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return true;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andi
  * JD-Core Version:    0.7.0.1
  */

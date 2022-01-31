@@ -1,245 +1,128 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v4.util.ArrayMap;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.2;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.3;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.4;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.5;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.6;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.7;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.String;Ljava.lang.Object;>;
+import java.util.concurrent.Executor;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bcgn
+  extends bfhu<HashMap<String, Object>, Void, JSONObject>
 {
-  private static bcgn jdField_a_of_type_Bcgn;
-  public static final Object a;
-  public int a;
-  final bcge jdField_a_of_type_Bcge = new bcge(new bcgo(this));
-  public boolean a;
-  public int b = 0;
+  protected int a;
+  protected Bundle a;
+  protected bcgo a;
+  protected boolean a;
   
-  static
+  public bcgn(String paramString1, String paramString2, bcgo parambcgo, int paramInt, Bundle paramBundle)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
+    super(paramString1, paramString2);
+    this.jdField_a_of_type_Bcgo = parambcgo;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public static bcgn a()
+  public bcgn(String paramString1, String paramString2, bcgo parambcgo, int paramInt, Bundle paramBundle, boolean paramBoolean)
   {
-    if (jdField_a_of_type_Bcgn == null) {}
-    try
+    super(paramString1, paramString2);
+    this.jdField_a_of_type_Bcgo = parambcgo;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
+  {
+    if (isCancelled()) {
+      return null;
+    }
+    Object localObject = paramVarArgs[0];
+    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
     {
-      if (jdField_a_of_type_Bcgn == null) {
-        jdField_a_of_type_Bcgn = new bcgn();
-      }
-      return jdField_a_of_type_Bcgn;
+      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
+      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
     }
-    finally {}
-  }
-  
-  public static void b()
-  {
-    long l = System.currentTimeMillis();
-    if (WebViewPluginEngine.a == null) {
-      ThreadManager.postImmediately(new SwiftWebAccelerator.7(l), null, false);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("WebLog_SwiftWebAccelerator", 2, "preCreateWebViewPluginEngine preload success");
-  }
-  
-  public int a()
-  {
-    return this.b;
-  }
-  
-  public int a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Int |= 0x1;
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject != null) {
-      localObject = ((AppRuntime)localObject).getAccount();
-    }
-    for (boolean bool = BaseApplicationImpl.sApplication.getSharedPreferences("sp_x5_config_" + (String)localObject, 4).getBoolean("key_x5_init_sub_thread", true);; bool = true)
+    for (;;)
     {
-      long l = System.currentTimeMillis();
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment start! " + bool);
-      if (bool)
+      try
       {
-        ThreadManager.postImmediately(new SwiftWebAccelerator.3(this, l, paramBundle), null, false);
-        return -1;
-      }
-      bcgp.b();
-      bcfo.X = System.currentTimeMillis() - l;
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "initX5Environment on main thread, cost " + bcfo.X + "ms.");
-      return 1;
-    }
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "switch 2 RealWorld and cancel state machine schedule.");
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Bcge.b();
-    }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        Bundle localBundle = paramBundle;
-        if (paramBundle == null) {
-          localBundle = new Bundle();
-        }
-        this.b = localBundle.getInt("_accelerator_mode_", 0);
-        this.jdField_a_of_type_Bcge.b();
-        this.jdField_a_of_type_Bcge.a(localBundle);
-        QLog.i("WebLog_SwiftWebAccelerator", 1, "smartSchedule restart and new mode is " + this.b + ".");
-        return;
-      }
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "smartSchedule say no because is in real world now.");
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new SwiftWebAccelerator.2(this, paramBundle));
-  }
-  
-  public int b(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Int |= 0x2;
-    long l = System.currentTimeMillis();
-    SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication).a(true);
-    bcfo.Y = System.currentTimeMillis() - l;
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "doMainStep_CreateWebView:create webview cost " + bcfo.Y + "ms.");
-    return 1;
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Int |= 0x400;
-    ThreadManager.postImmediately(new SwiftWebAccelerator.5(this, System.currentTimeMillis(), paramBundle), null, false);
-  }
-  
-  public int c(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Int |= 0x4;
-    long l = System.currentTimeMillis();
-    Object localObject = (String)WebAccelerateHelper.getInstance().getWebViewFeatureConfigs().get("preloadUrl");
-    paramBundle = (Bundle)localObject;
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      if (!((String)localObject).startsWith("http:"))
-      {
-        paramBundle = (Bundle)localObject;
-        if (!((String)localObject).startsWith("https:")) {}
-      }
-      else
-      {
-        paramBundle = (Bundle)localObject;
-        if (((String)localObject).startsWith("http:"))
+        Bundle localBundle = new Bundle();
+        String str1 = ((Bundle)localObject).getString("Cookie");
+        String str2 = ((Bundle)localObject).getString("Referer");
+        String str3 = ((Bundle)localObject).getString("Host");
+        if (str1 != null)
         {
-          localObject = ((String)localObject).replace("http:", "https:");
-          paramBundle = (Bundle)localObject;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("WebLog_SwiftWebAccelerator", 2, "WarnUpWebView replace https");
-            paramBundle = (Bundle)localObject;
+          localBundle.putString("Cookie", str1);
+          ((Bundle)localObject).remove("Cookie");
+        }
+        if (str2 != null)
+        {
+          localBundle.putString("Referer", str2);
+          ((Bundle)localObject).remove("Referer");
+        }
+        if (str3 != null)
+        {
+          localBundle.putString("Host", str3);
+          ((Bundle)localObject).remove(str3);
+        }
+        localObject = new JSONObject(ndd.a(paramVarArgs, this.jdField_a_of_type_JavaLangString, this.b, (Bundle)localObject, localBundle));
+        paramVarArgs = (HashMap<String, Object>[])localObject;
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          paramVarArgs = (HashMap<String, Object>[])localObject;
+          if (((JSONObject)localObject).getInt("retcode") == 0) {
+            paramVarArgs = ((JSONObject)localObject).getJSONObject("result");
           }
         }
-        localObject = SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication);
-        Intent localIntent = new Intent();
-        localIntent.putExtra("ignoreLoginWeb", true);
-        ((SwiftReuseTouchWebView)localObject).setIntent(localIntent);
-        ((SwiftReuseTouchWebView)localObject).loadUrlOriginal(paramBundle);
-        new Handler(Looper.getMainLooper()).postDelayed(new SwiftWebAccelerator.4(this, (SwiftReuseTouchWebView)localObject), 300L);
       }
-    }
-    bcfo.Z = System.currentTimeMillis() - l;
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "tendocpreload doMainStep_WarnUpWebView:load " + paramBundle + ", cost " + bcfo.Z + "ms.");
-    return 1;
-  }
-  
-  public void c(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Int |= 0x800;
-    ThreadManager.postImmediately(new SwiftWebAccelerator.6(this, System.currentTimeMillis()), null, false);
-  }
-  
-  public int d(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Int |= 0x10;
-    long l = System.currentTimeMillis();
-    Object localObject2 = (String)WebAccelerateHelper.getInstance().getWebViewFeatureConfigs().get("preloadUrl");
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-      if (!((String)localObject2).startsWith("http:"))
+      catch (IOException paramVarArgs)
       {
-        localObject1 = localObject2;
-        if (!((String)localObject2).startsWith("https:")) {}
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
       }
-      else
+      catch (JSONException paramVarArgs)
       {
-        paramBundle = (Bundle)localObject2;
-        if (((String)localObject2).startsWith("http:"))
-        {
-          localObject1 = ((String)localObject2).replace("http:", "https:");
-          paramBundle = (Bundle)localObject1;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("WebLog_SwiftWebAccelerator", 2, "SetCookie replace https");
-            paramBundle = (Bundle)localObject1;
-          }
-        }
-        localObject2 = SwiftBrowserCookieMonster.a(paramBundle);
-        localObject1 = paramBundle;
-        if (localObject2 != null)
-        {
-          ((SwiftBrowserCookieMonster)localObject2).a(paramBundle, null, null, null);
-          localObject1 = paramBundle;
-        }
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
       }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+      }
+      return paramVarArgs;
+      paramVarArgs = null;
     }
-    QLog.i("WebLog_SwiftWebAccelerator", 1, "doMainStep_SetCookie:pre set cookie(" + (String)localObject1 + "), cost " + (System.currentTimeMillis() - l) + "ms.");
-    return 1;
   }
   
-  public void d(Bundle paramBundle)
+  @SuppressLint({"InlinedApi", "NewApi"})
+  public void a(HashMap<String, Object> paramHashMap)
   {
-    this.jdField_a_of_type_Int |= 0x1000;
-    b();
-  }
-  
-  public int e(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Int |= 0x8;
-    long l = System.currentTimeMillis();
-    if (WebAccelerateHelper.preloadBrowserView == null)
+    Executor localExecutor = a();
+    if (localExecutor != null)
     {
-      WebAccelerateHelper.preInflaterBrowserView();
-      bcfo.aa = System.currentTimeMillis() - l;
-      QLog.i("WebLog_SwiftWebAccelerator", 1, "doMainStep_CreateBrowserView, cost = " + bcfo.aa + "ms.");
-      return 1;
+      executeOnExecutor(localExecutor, new HashMap[] { paramHashMap });
+      return;
     }
-    return 0;
+    execute(new HashMap[] { paramHashMap });
+  }
+  
+  protected void a(JSONObject paramJSONObject)
+  {
+    if (isCancelled()) {}
+    while (this.jdField_a_of_type_Bcgo == null) {
+      return;
+    }
+    this.jdField_a_of_type_Bcgo.a(paramJSONObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcgn
  * JD-Core Version:    0.7.0.1
  */

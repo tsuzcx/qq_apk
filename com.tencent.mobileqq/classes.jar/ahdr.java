@@ -1,21 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-public class ahdr
-  implements View.OnClickListener
+public final class ahdr
+  implements MessageQueue.IdleHandler
 {
-  public ahdr(ChooseItemView paramChooseItemView, View.OnClickListener paramOnClickListener) {}
+  final SearchContactsActivity a;
   
-  public void onClick(View paramView)
+  public ahdr(SearchContactsActivity paramSearchContactsActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    this.a = paramSearchContactsActivity;
+  }
+  
+  public boolean queueIdle()
+  {
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahdr
  * JD-Core Version:    0.7.0.1
  */

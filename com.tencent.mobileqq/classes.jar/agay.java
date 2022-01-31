@@ -1,26 +1,32 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class agay
-  implements TextWatcher
+final class agay
+  implements nbs
 {
-  public agay(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public void loaded(String paramString, int paramInt)
   {
-    paramEditable = this.a.a.getText().toString().trim();
-    this.a.e(paramEditable);
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopSignItemBuilder", 2, "checkUpByBusinessId:2833|param:" + paramString + "|code:" + paramInt);
+    }
+    if ((paramInt == 0) && (paramString == null))
+    {
+      paramString = agau.a.entrySet().iterator();
+      while (paramString.hasNext()) {
+        ((agaz)((Map.Entry)paramString.next()).getValue()).a(paramInt);
+      }
+      agau.a.clear();
+    }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agay
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,28 @@
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
-import com.tencent.mobileqq.listentogether.ListenTogetherSession;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class arrc
-  extends akil
+  implements View.OnClickListener
 {
-  public arrc(ListenTogetherManager paramListenTogetherManager) {}
+  public arrc(SendBottomBar paramSendBottomBar) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    QLog.i("ListenTogether.Manager", 1, "onTroopManagerSuccess result: " + paramInt2 + " troopUin: " + paramString);
-    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2)))
+    if (SendBottomBar.a(this.a).isChecked())
     {
-      String str = arrn.a(1, paramString);
-      if (ListenTogetherManager.a(this.a).equals(str))
-      {
-        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
-        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
-        arqq.a(ListenTogetherManager.a(this.a), paramString, false);
-        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
-        this.a.a(1, paramString, false);
-      }
+      SendBottomBar.b(this.a, true);
+      arng.a("0X800942B");
+      return;
     }
-  }
-  
-  protected void b(String paramString, int paramInt)
-  {
-    QLog.i("ListenTogether.Manager", 1, "onPassiveExit troopUin: " + paramString);
-    String str = arrn.a(1, paramString);
-    if (ListenTogetherManager.a(this.a).equals(str))
-    {
-      ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
-      ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
-      arqq.a(ListenTogetherManager.a(this.a), paramString, false);
-      this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
-      this.a.a(1, paramString, false);
-    }
+    SendBottomBar.c(this.a, false);
+    SendBottomBar.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arrc
  * JD-Core Version:    0.7.0.1
  */

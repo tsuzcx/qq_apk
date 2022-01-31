@@ -1,28 +1,34 @@
-import org.xmlpull.v1.XmlSerializer;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class akhs
-  extends axws
+public class akhs
 {
-  akhs(String paramString)
+  public static akhx a(int paramInt, awbv paramawbv, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    super(paramString);
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "picture");
-    if (this.S == null) {}
-    for (String str = "";; str = this.S)
-    {
-      paramXmlSerializer.attribute(null, "cover", str);
-      paramXmlSerializer.endTag(null, "picture");
-      return;
+    if (paramInt == 0) {
+      return new akhv(paramQQAppInterface, paramContext, paramawbv);
     }
+    if (paramInt == 5) {
+      return new akht(paramQQAppInterface, paramContext, paramawbv);
+    }
+    if (paramInt == 1) {
+      return new akib(paramQQAppInterface, paramContext, paramawbv);
+    }
+    if (paramInt == 2) {
+      return new akid(paramQQAppInterface, paramContext, paramawbv, 2);
+    }
+    if (paramInt == 3) {
+      return new akid(paramQQAppInterface, paramContext, paramawbv, 3);
+    }
+    if (paramInt == 4) {
+      return new akhv(paramQQAppInterface, paramContext, paramawbv);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhs
  * JD-Core Version:    0.7.0.1
  */

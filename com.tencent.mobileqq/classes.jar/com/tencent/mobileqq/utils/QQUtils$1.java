@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import bcql;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
 public final class QQUtils$1
   implements Runnable
@@ -10,12 +10,12 @@ public final class QQUtils$1
   
   public void run()
   {
-    bcql.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQUtils.1
  * JD-Core Version:    0.7.0.1
  */

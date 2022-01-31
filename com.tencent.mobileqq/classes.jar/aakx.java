@@ -1,106 +1,75 @@
-import QQService.SvcDevLoginInfo;
-import QQService.SvcRspGetDevLoginInfo;
 import android.text.TextUtils;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.MobileQQ;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.gdtad.views.video.GdtVideoData;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class aakx
-  extends ajxj
 {
-  public aakx(AuthDevActivity paramAuthDevActivity) {}
+  private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+  private GdtMotiveVideoPageData jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData;
+  private GdtVideoData jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
+  private qq_ad_get.QQAdGetRsp.AdInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
   
-  protected void onDelAuthDevResult(boolean paramBoolean, String paramString, int paramInt)
+  public aakx(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onDelAuthDevResult.isSuccess=" + paramBoolean + " errorMsg=" + paramString + " index=" + paramInt);
-    }
-    AuthDevActivity.c(this.a);
-    if (paramBoolean)
-    {
-      if ((paramInt > -1) && (paramInt < AuthDevActivity.a(this.a).size()))
-      {
-        paramString = (SvcDevLoginInfo)AuthDevActivity.a(this.a).get(paramInt);
-        if (Arrays.equals(NetConnInfoCenter.GUID, paramString.vecGuid))
-        {
-          this.a.app.updateSubAccountLogin(this.a.app.getAccount(), false);
-          this.a.app.getApplication().refreAccountList();
-          bbak.a(this.a, this.a.app, true);
-          return;
-        }
-        if (paramInt < AuthDevActivity.a(this.a).size())
-        {
-          AuthDevActivity.a(this.a).remove(paramInt);
-          AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
-        }
-      }
-      bcql.a(this.a.getApplicationContext(), 2, this.a.getString(2131692124), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if (TextUtils.isEmpty(paramString))
-    {
-      bcql.a(this.a.getApplicationContext(), 1, this.a.getString(2131692123), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    bcql.a(this.a.getApplicationContext(), 1, paramString, 0).b(this.a.getTitleBarHeight());
+    aanp.a("GdtMotiveVideoModel", "[GdtMotiveVideoModel]\n" + paramGdtMotiveVideoPageData.adsContent);
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData = paramGdtMotiveVideoPageData;
+    b(paramGdtMotiveVideoPageData);
+    a(paramGdtMotiveVideoPageData);
   }
   
-  protected void onGetAuthDevResult(boolean paramBoolean, SvcRspGetDevLoginInfo paramSvcRspGetDevLoginInfo)
+  private void a(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
   {
-    AuthDevActivity.a(this.a).setVisibility(8);
-    if (!AuthDevActivity.a(this.a)) {
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData = new GdtVideoData();
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setAd(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setPlayScene(11);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setUrl(paramGdtMotiveVideoPageData.url);
+  }
+  
+  private void b(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
+  {
+    if (TextUtils.isEmpty(paramGdtMotiveVideoPageData.adsContent))
+    {
+      aanp.d("GdtMotiveVideoModel", "[adJson==null error]");
       return;
     }
-    if ((paramBoolean) && (paramSvcRspGetDevLoginInfo != null) && (paramSvcRspGetDevLoginInfo.iResult == 0))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.success");
-      }
-      AuthDevActivity.a(this.a, paramSvcRspGetDevLoginInfo.vecAuthLoginDevInfo);
-      if (QLog.isColorLevel())
-      {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "------------------------------------------------------------------------------");
-        paramSvcRspGetDevLoginInfo = AuthDevActivity.a(this.a).iterator();
-        while (paramSvcRspGetDevLoginInfo.hasNext())
-        {
-          SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)paramSvcRspGetDevLoginInfo.next();
-          if (localSvcDevLoginInfo != null) {
-            QLog.d("Q.devlock.AuthDevActivity", 2, "SvcDevLoginInfo.iAppId=" + localSvcDevLoginInfo.iAppId + " iLoginTime=" + localSvcDevLoginInfo.iLoginTime + " strLoginLocation=" + localSvcDevLoginInfo.strLoginLocation + " iLoginPlatform=" + localSvcDevLoginInfo.iLoginPlatform + " strDeviceName=" + localSvcDevLoginInfo.strDeviceName + " strDeviceTypeInfo" + localSvcDevLoginInfo.strDeviceTypeInfo);
-          }
-        }
-        QLog.d("Q.devlock.AuthDevActivity", 2, "------------------------------------------------------------------------------");
-      }
-      AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
+      this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent))));
       return;
     }
-    if (QLog.isColorLevel())
+    catch (Throwable paramGdtMotiveVideoPageData)
     {
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.isSuccess=" + paramBoolean);
-      if (paramSvcRspGetDevLoginInfo != null) {
-        break label312;
-      }
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.data is null");
+      aanp.d("GdtMotiveVideoModel", "GdtMotiveVideoModel error]", paramGdtMotiveVideoPageData);
     }
-    for (;;)
-    {
-      AuthDevActivity.a(this.a).setVisibility(4);
-      bcql.a(this.a, 1, this.a.getString(2131692140), 0).b(this.a.getTitleBarHeight());
-      return;
-      label312:
-      QLog.d("Q.devlock.AuthDevActivity", 2, "onGetAuthDevResult.data.iResult=" + paramSvcRspGetDevLoginInfo.iResult);
-    }
+  }
+  
+  public GdtAd a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+  }
+  
+  public GdtMotiveVideoPageData a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData;
+  }
+  
+  public GdtVideoData a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
+  }
+  
+  public qq_ad_get.QQAdGetRsp.AdInfo a()
+  {
+    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aakx
  * JD-Core Version:    0.7.0.1
  */

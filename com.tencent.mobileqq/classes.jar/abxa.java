@@ -1,35 +1,77 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
 
 public class abxa
-  extends akuo
+  implements TextWatcher
 {
-  public abxa(QQSettingMe paramQQSettingMe, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public abxa(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
+      AddAccountActivity.a(this.a, null);
     }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    String str;
+    SimpleAccount localSimpleAccount;
+    for (;;)
     {
-      paramInt = (int)(paramSosoLbsInfo.a.a * 1000000.0D);
-      int i = (int)(paramSosoLbsInfo.a.b * 1000000.0D);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "onLocationFinish latitude:" + paramInt + ",longtitude:" + i);
+      return;
+      if (paramCharSequence != null)
+      {
+        str = paramCharSequence.toString();
+        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
+          break;
+        }
+        paramInt1 = 0;
+        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
+        {
+          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
+          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
+            break label110;
+          }
+          paramInt1 += 1;
+        }
       }
-      aikx.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, i, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    }
+    label110:
+    if (this.a.app == null)
+    {
+      paramCharSequence = localSimpleAccount.getUin();
+      label126:
+      if (!str.equals(paramCharSequence)) {
+        break label198;
+      }
+      if ((localSimpleAccount == null) || (!localSimpleAccount.isLogined())) {
+        break label200;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("!@#ewaGbhkc$!!=");
+      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setClearButtonVisible(false);
+      return;
+      paramCharSequence = this.a.app.b(localSimpleAccount.getUin());
+      break label126;
+      label198:
+      break;
+      label200:
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxa
  * JD-Core Version:    0.7.0.1
  */

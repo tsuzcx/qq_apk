@@ -1,52 +1,69 @@
-import android.support.annotation.NonNull;
+import android.annotation.TargetApi;
 import android.text.TextUtils;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
 
+@TargetApi(14)
 public class uln
-  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, tka>
+  extends ulp
 {
-  public uln(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public String a;
+  public ukt a;
+  public String b;
+  
+  public uln(String paramString1, String paramString2)
   {
-    super(paramQQStoryShareGroupProfileActivity);
+    this.jdField_a_of_type_Ukt = new ukt();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
   }
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull tka paramtka)
+  private void c()
   {
-    if ((TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.b)) && (!TextUtils.isEmpty(paramQQStoryShareGroupProfileActivity.c)) && (paramtka.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (!paramtka.jdField_a_of_type_JavaUtilList.isEmpty()))
+    baub localbaub = new baub();
+    localbaub.jdField_a_of_type_Awfy = new ulo(this);
+    localbaub.i = this.jdField_b_of_type_JavaLangString;
+    localbaub.jdField_a_of_type_Boolean = true;
+    localbaub.jdField_b_of_type_Int = 196609;
+    QQStoryContext.a();
+    localbaub.jdField_b_of_type_JavaLangString = QQStoryContext.a().c();
+    localbaub.c = "";
+    localbaub.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+    QQStoryContext.a();
+    QQStoryContext.a().a().a(localbaub);
+  }
+  
+  protected void a()
+  {
+    if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!xmx.c(this.jdField_b_of_type_JavaLangString)))
     {
-      paramtka = paramtka.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramtka.hasNext())
+      Object localObject = ((ulc)urr.a(14)).a(this.jdField_a_of_type_JavaLangString);
+      if (((ulf)localObject).a.isSuccess())
       {
-        umu localumu = (umu)paramtka.next();
-        if (paramQQStoryShareGroupProfileActivity.c.equals(localumu.a))
+        this.jdField_b_of_type_JavaLangString = ((ulf)localObject).jdField_b_of_type_JavaLangString;
+        if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (!xmx.c(this.jdField_b_of_type_JavaLangString)))
         {
-          paramQQStoryShareGroupProfileActivity.b = localumu.b;
-          if (QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity)) {
-            break label111;
-          }
+          wsv.d("Q.qqstory.publish.upload:StoryVideoFileObject  ", "end composite success but file not exist:%s", new Object[] { this.jdField_b_of_type_JavaLangString });
+          localObject = new ErrorMessage(940006, String.format("end composite success but file not exist:%s", new Object[] { this.jdField_b_of_type_JavaLangString }));
+          ((ErrorMessage)localObject).extraMsg = "composite";
+          super.notifyResult(localObject);
         }
       }
+      else
+      {
+        ((ulf)localObject).a.extraMsg = "composite";
+        super.notifyResult(((ulf)localObject).a);
+        return;
+      }
     }
-    label111:
-    for (boolean bool = true;; bool = false)
-    {
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, bool);
-      return;
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return tka.class;
+    ukp.a().b(this.jdField_a_of_type_JavaLangString);
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uln
  * JD-Core Version:    0.7.0.1
  */

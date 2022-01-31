@@ -1,19 +1,240 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.subtitles.EncodeRunnable;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 class ajpn
-  implements DialogInterface.OnClickListener
+  extends axtk
 {
   ajpn(ajpl paramajpl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(long paramLong, int paramInt)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d(ajpl.a(), 2, "onSessionClose sessionid:" + paramLong + " result:" + paramInt);
+    }
+    synchronized (this.a)
+    {
+      if (ajpl.a(this.a) == null) {
+        return;
+      }
+      if (ajpl.a(this.a).jdField_a_of_type_Long != paramLong) {
+        return;
+      }
+    }
+    ajpl.a(this.a, false);
+    ajpl.a(this.a).jdField_b_of_type_Int = 0;
+    ajpl.c(this.a);
+  }
+  
+  protected void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ajpl.a(), 2, "onTranslate:  sessionid:" + paramLong + " startseq:" + paramInt1 + " endseq:" + paramInt2 + "[" + paramInt2 * 1.0F + "] status:" + paramInt3 + " CN:" + paramString1 + " EN:" + paramString2);
+    }
+    if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2))) {
+      return;
+    }
+    paramInt2 *= 2;
+    ajpo localajpo = null;
+    synchronized (this.a)
+    {
+      if (ajpl.a(this.a) == null) {
+        return;
+      }
+    }
+    if (ajpl.a(this.a).jdField_a_of_type_Long != paramLong)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(ajpl.a(), 2, "onTranslate, session not match:" + paramLong + "-" + ajpl.a(this.a).jdField_a_of_type_Long);
+      }
+      return;
+    }
+    if (!this.a.a()) {
+      return;
+    }
+    if (ajpl.a(this.a).jdField_a_of_type_JavaLangRefWeakReference != null) {
+      localajpo = (ajpo)ajpl.a(this.a).jdField_a_of_type_JavaLangRefWeakReference.get();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(ajpl.a(), 2, "onTranslate, :  localtime:" + ajpl.a(this.a).c);
+    }
+    ajqt localajqt = (ajqt)ajpl.a(this.a).jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt1));
+    long l1;
+    label460:
+    long l2;
+    if (localajqt == null)
+    {
+      l1 = (int)(paramInt2 * 1.0F) * 20 * ajpl.a(this.a).jdField_a_of_type_Int - 500;
+      paramLong = System.currentTimeMillis() - ajpl.a(this.a).c - 500L;
+      if (!QLog.isColorLevel()) {
+        break label751;
+      }
+      QLog.d(ajpl.a(), 2, "onTranslate startiem: " + l1 + "-" + paramLong);
+      break label751;
+      localajqt = new ajqt(paramLong, paramInt1, paramInt2);
+      ajpl.a(this.a).jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt1), localajqt);
+      l1 = paramLong;
+      paramLong = (int)(paramInt2 * 1.0F) * 20 * ajpl.a(this.a).jdField_a_of_type_Int;
+      l2 = System.currentTimeMillis() - ajpl.a(this.a).c - 500L;
+      if (!QLog.isColorLevel()) {
+        break label776;
+      }
+      QLog.d(ajpl.a(), 2, "onTranslate endtime: " + paramLong + "-" + l2);
+      break label776;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(ajpl.a(), 2, "onTranslate, starttime-endtime: " + l1 + "-" + l2);
+      }
+      if (localajpo != null) {
+        if (paramInt3 != 2) {
+          break label739;
+        }
+      }
+      label739:
+      for (boolean bool = true;; bool = false)
+      {
+        localajpo.a(l1, l2, paramString1, paramString2, bool);
+        if (!ajpl.a(this.a)) {
+          break;
+        }
+        paramString1 = String.valueOf(System.currentTimeMillis() - ajpl.a(this.a));
+        paramString2 = new HashMap();
+        paramString2.put("startTranslateCost", paramString1);
+        if (QLog.isColorLevel()) {
+          QLog.d("PeakAudioTransHandler", 2, "startTranslateCost:" + paramString1);
+        }
+        azmz.a(BaseApplicationImpl.getApplication()).a(null, "actSubtitleTranslate", true, 0L, 0L, paramString2, null);
+        ajpl.a(this.a, false);
+        return;
+        l1 = localajqt.jdField_a_of_type_Long;
+        break label460;
+      }
+      for (;;)
+      {
+        break label786;
+        for (;;)
+        {
+          break;
+          label751:
+          if (l1 > paramLong) {
+            l1 = paramLong;
+          }
+        }
+        paramLong = l1;
+        if (l1 >= 0L) {
+          break;
+        }
+        paramLong = 0L;
+        break;
+        label776:
+        if (paramLong > l2) {
+          paramLong = l2;
+        }
+      }
+      label786:
+      l2 = paramLong;
+      if (paramLong <= l1) {
+        l2 = 1000L + l1;
+      }
+    }
+  }
+  
+  protected void a(long paramLong, int paramInt1, int paramInt2, axoi paramaxoi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ajpl.a(), 2, "onSessionOpen sessionid:" + paramLong + " combineNum:" + paramInt1 + " heratbeat:" + paramInt2 + ",endPoint = " + paramaxoi);
+    }
+    synchronized (this.a)
+    {
+      if (ajpl.a(this.a) == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(ajpl.a(), 2, "TransContext is null");
+        }
+        return;
+      }
+      if (ajpl.a(this.a).jdField_b_of_type_Int != 1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(ajpl.a(), 2, "onSessionOpen state error:" + ajpl.a(this.a).jdField_b_of_type_Int);
+        }
+        return;
+      }
+    }
+    if ((ajpl.a(this.a).jdField_a_of_type_Long != -1L) && (QLog.isColorLevel())) {
+      QLog.d(ajpl.a(), 2, "onSessionOpen, old session not closed " + ajpl.a(this.a).jdField_a_of_type_Long);
+    }
+    ajpl.a(this.a).jdField_a_of_type_Long = paramLong;
+    ajpl.a(this.a).jdField_a_of_type_Int = paramInt1;
+    ajpl.a(this.a).jdField_b_of_type_Int = 3;
+    ajpl.a(this.a).jdField_a_of_type_Axoi = paramaxoi;
+    if (ajpl.a(this.a).jdField_b_of_type_Boolean) {
+      ajpl.b(this.a);
+    }
+    if (ajpl.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable != null) {
+      ajpl.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable.a(paramLong, paramInt1);
+    }
+    for (;;)
+    {
+      ajpl.a(this.a, ajpl.a(this.a), true, paramInt2);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(ajpl.a(), 2, "onSessionOpen encoderunnable error" + paramLong);
+      }
+    }
+  }
+  
+  protected void b(long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ajpl.a(), 2, "onSessionChanged sessionid:" + paramLong + " combinenum:" + paramInt);
+    }
+    synchronized (this.a)
+    {
+      if (ajpl.a(this.a) == null) {
+        return;
+      }
+      if ((ajpl.a(this.a).jdField_a_of_type_Long == paramLong) && (ajpl.a(this.a).jdField_a_of_type_Int != paramInt))
+      {
+        ajpl.a(this.a).jdField_a_of_type_Int = paramInt;
+        if (ajpl.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable != null) {
+          ajpl.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesEncodeRunnable.a(paramLong, paramInt);
+        }
+      }
+      return;
+    }
+  }
+  
+  protected void c(long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(ajpl.a(), 2, "onSessionError sessionid:" + paramLong + " result:" + paramInt);
+    }
+    synchronized (this.a)
+    {
+      if (ajpl.a(this.a) == null) {
+        return;
+      }
+      if ((ajpl.a(this.a).jdField_a_of_type_Long != -1L) && (ajpl.a(this.a).jdField_a_of_type_Long != paramLong)) {
+        return;
+      }
+    }
+    if ((ajpl.a(this.a).jdField_a_of_type_Long != paramLong) && (ajpl.a(this.a).jdField_a_of_type_JavaLangRefWeakReference == null)) {
+      return;
+    }
+    ajpl.a(this.a).jdField_b_of_type_Int = 0;
+    ajpl.c(this.a);
+    ajpl.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajpn
  * JD-Core Version:    0.7.0.1
  */

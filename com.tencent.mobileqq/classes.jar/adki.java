@@ -1,80 +1,61 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import com.tencent.mobileqq.data.IntimateInfo;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-class adki
-  extends aqkn
+public class adki
+  implements View.OnClickListener
 {
-  adki(adke paramadke) {}
+  public adki(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  protected void a(boolean paramBoolean, HashMap<Long, IntimateInfo> paramHashMap, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos");
-    }
-    if ((this.a.jdField_a_of_type_Asrs != null) && (this.a.jdField_a_of_type_Asrs.a() == 1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, in card mode, return");
-      }
-    }
-    do
+    switch (paramView.getId())
     {
-      return;
-      if (this.a.jdField_a_of_type_Asrs != null) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mViewDelegate == null :" + adke.a(this.a));
-      }
-    } while (adke.a(this.a));
-    paramObject = null;
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      long l1 = 0L;
-      try
+    default: 
+    case 2131368613: 
+    case 2131368644: 
+    case 2131363871: 
+      Object localObject;
+      do
       {
-        long l2 = Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue();
-        l1 = l2;
-      }
-      catch (NumberFormatException paramObject)
-      {
-        for (;;)
-        {
-          QLog.e("intimate_relationship", 2, "valueOf string err ");
+        return;
+        this.a.finish();
+        return;
+        adkx.a(this.a);
+        nrt.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573A", "0X800573A", 0, 0, "", "", "", "", false);
+        paramView = (axho)this.a.app.getManager(36);
+        localObject = paramView.a("101000.101001");
+        if ((localObject != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() == 1)) {
+          azmj.b(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X80060E3", "0X80060E3", 0, 0, "", "", "", "");
         }
-      }
-    }
-    for (paramHashMap = (IntimateInfo)paramHashMap.get(Long.valueOf(l1));; paramHashMap = paramObject)
-    {
-      if (paramHashMap == null) {
-        break label272;
-      }
-      paramObject = adke.a(this.a).obtainMessage();
-      paramObject.what = 0;
-      paramObject.obj = paramHashMap;
-      adke.a(this.a).removeMessages(0);
-      adke.a(this.a).sendMessage(paramObject);
+        paramView.b("101000.101001");
+        return;
+        localObject = (String)paramView.getTag(-1);
+        paramView = (String)paramView.getTag(-2);
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramView))) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.w("PublicAccountListActivity", 2, "onClick - uin = " + (String)localObject + ", name = " + paramView);
       return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("intimate_relationship", 2, "onGetGroupIntimateInfos, mode: " + this.a.jdField_a_of_type_Asrs.a());
-      break;
-      QLog.e("intimate_relationship", 2, "onGetGroupIntimateInfos failed !");
+      ndv.a(this.a.app, this.a, paramView, (String)localObject, "IvrEnterpriseDetailEngineFalse");
+      return;
+    case 2131372426: 
+      adkx.a(this.a, (String)this.a.d.getTag());
+      nrt.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573D", "0X800573D", 0, 0, "", "", "", "", false);
+      return;
     }
-    label272:
-    paramHashMap = adke.a(this.a).obtainMessage();
-    paramHashMap.what = 1;
-    paramHashMap.obj = this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131693622);
-    adke.a(this.a).sendMessage(paramHashMap);
+    adkx.a(this.a, (String)this.a.d.getTag());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adki
  * JD-Core Version:    0.7.0.1
  */

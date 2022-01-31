@@ -1,56 +1,32 @@
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnControllerClickListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo.RecommadInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import org.json.JSONException;
 
 public class bbvy
-  implements TVK_IMediaPlayer.OnControllerClickListener
+  implements View.OnClickListener
 {
-  public bbvy(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  public bbvy(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void onAttationClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
-  
-  public void onBackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player onBackClick");
-    }
-    this.a.setResult(0);
-    this.a.finish();
-  }
-  
-  public void onBackOnFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player onBackOnFullScreenClick");
-    }
-    if (this.a.getRequestedOrientation() == 0)
+    bhoc.b(paramView);
+    try
     {
-      this.a.setRequestedOrientation(1);
+      this.a.i();
       return;
     }
-    this.a.setResult(0);
-    this.a.finish();
-  }
-  
-  public void onCacheClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
-  
-  public void onFeedbackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
-  
-  public void onFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipVideoPlayActivity", 2, "video player onFullScreenClick--------------");
+    catch (JSONException paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", paramView);
     }
-    this.a.setRequestedOrientation(0);
   }
-  
-  public void onReopenClick(TVK_NetVideoInfo.RecommadInfo paramRecommadInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbvy
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,9 @@ package com.tencent.biz.pubaccount.weishi_new.report;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bbdh;
-import bdjp;
-import bgyi;
+import bdcb;
+import bfin;
+import bizf;
 import com.tencent.beacon.event.UserAction;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.ROMUtil;
@@ -15,151 +15,133 @@ import cooperation.qzone.LocalMultiProcConfig;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AppRuntime;
-import snf;
-import vzw;
+import tjx;
+import tlv;
+import xoo;
 
 public class WSStatisticsBaseCollector
 {
-  private static final String KEY_SESSION_ID = "key_session_id";
-  private static final String KEY_SESSION_STAMP = "key_session_stamp";
-  private static String mExtendInfo;
-  private static String mOperationId;
-  private static String mPushId;
-  private static String mSceneFrom;
-  private static String mSessionId;
-  private static String mSessionStamp;
-  private static String mSopName;
-  private static String mTestId;
+  private static final String APP_VERSION = DeviceUtils.getVersionName(BaseApplicationImpl.getContext());
+  public static final String KEY_REF_PAGE_ID = "key_ref_page_id";
+  private static final String SCREEN_RES = ;
+  private static final String UI_VERSION = ROMUtil.getRomName() + ROMUtil.getRomVersion();
+  private String mExtendInfo;
+  private String mOperationId;
+  private String mPushId;
+  private String mSceneFrom;
+  private String mSopName;
+  private String mTestId;
   
-  public static Map<String, String> getBaseParams()
+  private String getExtendInfo()
+  {
+    return this.mExtendInfo;
+  }
+  
+  private String getOperationId()
+  {
+    return this.mOperationId;
+  }
+  
+  private String getPushId()
+  {
+    return this.mPushId;
+  }
+  
+  private String getRefPageId()
+  {
+    if (TextUtils.isEmpty(tjx.b)) {
+      return LocalMultiProcConfig.getString("weishi_usergrowth", "key_ref_page_id", "");
+    }
+    return tjx.b;
+  }
+  
+  private String getSceneFrom()
+  {
+    return this.mSceneFrom;
+  }
+  
+  private String getTestId()
+  {
+    return this.mTestId;
+  }
+  
+  public Map<String, String> getBaseParams()
   {
     HashMap localHashMap = new HashMap(38);
     localHashMap.put("qimei", UserAction.getQIMEI());
-    localHashMap.put("imsi", bbdh.b());
-    localHashMap.put("imei", bdjp.c());
-    localHashMap.put("mac", bdjp.a());
+    localHashMap.put("imsi", bdcb.b());
+    localHashMap.put("imei", bfin.c());
+    localHashMap.put("mac", bfin.a());
     localHashMap.put("dev_brand", GlobalUtil.getInstance().getBrand());
     localHashMap.put("dev_model", Build.MODEL);
     localHashMap.put("os", "Android");
-    localHashMap.put("screen_res", bdjp.e());
+    localHashMap.put("screen_res", SCREEN_RES);
     localHashMap.put("operating_system_version", Build.VERSION.RELEASE);
-    localHashMap.put("ui_version", ROMUtil.getRomName() + ROMUtil.getRomVersion());
-    localHashMap.put("app_ver", DeviceUtils.getVersionName(BaseApplicationImpl.getContext()));
-    localHashMap.put("wifiBssid", snf.e());
+    localHashMap.put("ui_version", UI_VERSION);
+    localHashMap.put("app_ver", APP_VERSION);
+    localHashMap.put("wifiBssid", tlv.e());
     localHashMap.put("push_id", getPushId());
     localHashMap.put("ip", DeviceUtils.getLocalIpAddress());
-    localHashMap.put("session_id", getSessionId());
-    localHashMap.put("session_stamp", getSessionStamp());
+    localHashMap.put("session_id", WSPublicAccReport.getInstance().getSessionId());
+    localHashMap.put("session_stamp", WSPublicAccReport.getInstance().getSessionStamp());
     localHashMap.put("sop_name", getSopName());
-    localHashMap.put("qua", bgyi.a());
-    localHashMap.put("android_id", bbdh.f());
-    localHashMap.put("qq", snf.a().getAccount());
-    if (vzw.a(BaseApplicationImpl.getApplication())) {}
+    localHashMap.put("qua", bizf.a());
+    localHashMap.put("android_id", bdcb.f());
+    localHashMap.put("qq", tlv.a().getAccount());
+    if (xoo.a(BaseApplicationImpl.getApplication())) {}
     for (String str = "1";; str = "0")
     {
       localHashMap.put("if_install_weishi", str);
-      localHashMap.put("person_id", "");
+      localHashMap.put("person_id", tlv.f());
       localHashMap.put("time", String.valueOf(System.currentTimeMillis()));
-      localHashMap.put("network_type", snf.d());
+      localHashMap.put("network_type", tlv.d());
       localHashMap.put("extended_fields", getExtendInfo());
       localHashMap.put("scenes_from", getSceneFrom());
       localHashMap.put("operation_id", getOperationId());
       localHashMap.put("test_id", getTestId());
+      localHashMap.put("ref_page_id", getRefPageId());
       return localHashMap;
     }
   }
   
-  private static String getExtendInfo()
+  public String getSopName()
   {
-    return mExtendInfo;
+    return this.mSopName;
   }
   
-  private static String getOperationId()
+  public void setExtendInfo(String paramString)
   {
-    return mOperationId;
+    this.mExtendInfo = paramString;
   }
   
-  public static String getPushId()
+  public void setOperationId(String paramString)
   {
-    return mPushId;
+    this.mOperationId = paramString;
   }
   
-  private static String getSceneFrom()
+  public void setPushId(String paramString)
   {
-    return mSceneFrom;
+    this.mPushId = paramString;
   }
   
-  private static String getSessionId()
+  public void setSceneFrom(String paramString)
   {
-    if (TextUtils.isEmpty(mSessionId)) {
-      return LocalMultiProcConfig.getString("weishi_usergrowth", "key_session_id", "");
-    }
-    return mSessionId;
+    this.mSceneFrom = paramString;
   }
   
-  private static String getSessionStamp()
+  public void setSopName(String paramString)
   {
-    if (TextUtils.isEmpty(mSessionStamp)) {
-      return LocalMultiProcConfig.getString("weishi_usergrowth", "key_session_stamp", "");
-    }
-    return mSessionStamp;
+    this.mSopName = paramString;
   }
   
-  private static String getSopName()
+  public void setTestId(String paramString)
   {
-    return mSopName;
-  }
-  
-  private static String getTestId()
-  {
-    return mTestId;
-  }
-  
-  public static void setExtendInfo(String paramString)
-  {
-    mExtendInfo = paramString;
-  }
-  
-  public static void setOperationId(String paramString)
-  {
-    mOperationId = paramString;
-  }
-  
-  public static void setPushId(String paramString)
-  {
-    mPushId = paramString;
-  }
-  
-  public static void setSceneFrom(String paramString)
-  {
-    mSceneFrom = paramString;
-  }
-  
-  public static void setSessionId(String paramString)
-  {
-    mSessionId = paramString;
-    LocalMultiProcConfig.putString("weishi_usergrowth", "key_session_id", mSessionId);
-  }
-  
-  public static void setSessionStamp(String paramString)
-  {
-    mSessionStamp = paramString;
-    LocalMultiProcConfig.putString("weishi_usergrowth", "key_session_stamp", mSessionStamp);
-  }
-  
-  public static void setSopName(String paramString)
-  {
-    mSopName = paramString;
-  }
-  
-  public static void setTestId(String paramString)
-  {
-    mTestId = paramString;
+    this.mTestId = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsBaseCollector
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,13 @@ import android.widget.EditText;
 import com.tencent.mobileqq.minigame.api.ApiUtil;
 import com.tencent.mobileqq.minigame.jsapi.callbacks.PluginResultCallback;
 import com.tencent.mobileqq.minigame.jsapi.widgets.KeyboardLayout;
-import com.tencent.mobileqq.minigame.manager.GameLoadManager;
 import com.tencent.mobileqq.minigame.utils.GameLog;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import org.json.JSONObject;
 
 public class KeyboardHandler
 {
   private static final String TAG = "KeyboardHandler";
   private static KeyboardHandler mInstance;
-  private ITTEngine mTTEngine = GameLoadManager.g().getGameEngine();
   
   public static KeyboardHandler get()
   {
@@ -110,7 +107,7 @@ public class KeyboardHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.manager.KeyboardHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,12 @@
-import android.content.Context;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuNoIconLayout;
-import com.tencent.widget.BubblePopupWindow;
-
 public class bbmj
-  extends TextView
 {
-  public bbmj(QQCustomMenuNoIconLayout paramQQCustomMenuNoIconLayout, Context paramContext)
-  {
-    super(paramContext);
-  }
-  
-  public boolean performClick()
-  {
-    boolean bool = super.performClick();
-    this.a.a.b();
-    return bool;
-  }
+  public int a;
+  public long a;
+  public bbme a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
 }
 
 

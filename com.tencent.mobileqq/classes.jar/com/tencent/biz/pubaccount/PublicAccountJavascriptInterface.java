@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount;
 
-import ajsd;
-import ajya;
-import akdh;
+import aljq;
+import alpo;
+import aluw;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -21,30 +21,30 @@ import android.os.Looper;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import android.widget.ProgressBar;
-import apvd;
-import aukp;
-import aukq;
-import axqy;
-import bbco;
-import bbdj;
-import bbea;
-import bbeg;
-import bbex;
-import bbfj;
-import bbgu;
-import bbqd;
-import bbvj;
-import bccb;
-import bccw;
-import bcdp;
-import bcfc;
-import bcfh;
-import bcfx;
-import bcid;
-import bcie;
-import bcij;
-import bcil;
-import bfnt;
+import arof;
+import awbw;
+import awbx;
+import azmj;
+import bdbi;
+import bdcd;
+import bdcv;
+import bddb;
+import bdds;
+import bdee;
+import bdfq;
+import bdox;
+import bduw;
+import bebc;
+import bebx;
+import becq;
+import beed;
+import beei;
+import beey;
+import behe;
+import behf;
+import behk;
+import behm;
+import bhoo;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -82,42 +82,42 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppActivity;
-import nau;
-import nnh;
-import nni;
-import nnj;
-import nnk;
-import nnl;
-import nnm;
-import nnn;
-import nno;
-import nnp;
-import nnq;
-import nnr;
-import nns;
+import ndq;
+import nqp;
+import nqq;
+import nqr;
+import nqs;
+import nqt;
+import nqu;
+import nqv;
+import nqw;
+import nqx;
+import nqy;
+import nqz;
+import nra;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sgg;
+import syb;
 
 public class PublicAccountJavascriptInterface
-  extends bccb
+  extends bebc
 {
   private static long jdField_a_of_type_Long;
   public static final String a;
   protected static HashMap<String, String> a;
   public Activity a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new nnj(this);
-  bbgu jdField_a_of_type_Bbgu;
-  private bcij jdField_a_of_type_Bcij;
-  private bcil jdField_a_of_type_Bcil;
-  protected List<nns> a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new nqr(this);
+  bdfq jdField_a_of_type_Bdfq;
+  private behk jdField_a_of_type_Behk;
+  private behm jdField_a_of_type_Behm;
+  protected List<nra> a;
   public boolean a;
   boolean b = false;
   
   static
   {
-    jdField_a_of_type_JavaLangString = bbvj.a(ajsd.aW + "pubaccount/");
+    jdField_a_of_type_JavaLangString = bduw.a(aljq.aX + "pubaccount/");
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
@@ -133,8 +133,8 @@ public class PublicAccountJavascriptInterface
       return null;
     }
     localObject = ((AppInterface)localObject).getEntityManagerFactory(((AppInterface)localObject).getAccount()).createEntityManager();
-    paramString1 = (CouponH5Data)((aukp)localObject).a(CouponH5Data.class, "mHost = ? AND mPath = ? AND mKey = ?", new String[] { paramString1, paramString2, paramString3 });
-    ((aukp)localObject).a();
+    paramString1 = (CouponH5Data)((awbw)localObject).a(CouponH5Data.class, "mHost = ? AND mPath = ? AND mKey = ?", new String[] { paramString1, paramString2, paramString3 });
+    ((awbw)localObject).a();
     if (paramString1 != null) {}
     for (paramString1 = paramString1.mData;; paramString1 = null) {
       return paramString1;
@@ -508,20 +508,20 @@ public class PublicAccountJavascriptInterface
       return;
     }
     localObject = ((AppInterface)localObject).getEntityManagerFactory(((AppInterface)localObject).getAccount()).createEntityManager();
-    paramString = ((aukp)localObject).a(CouponH5Data.class, false, "mHost = ?", new String[] { paramString }, null, null, null, null);
+    paramString = ((awbw)localObject).a(CouponH5Data.class, false, "mHost = ?", new String[] { paramString }, null, null, null, null);
     if (paramString != null)
     {
       paramString = paramString.iterator();
       while (paramString.hasNext()) {
-        ((aukp)localObject).b((CouponH5Data)paramString.next());
+        ((awbw)localObject).b((CouponH5Data)paramString.next());
       }
     }
-    ((aukp)localObject).a();
+    ((awbw)localObject).a();
   }
   
   private void a(String paramString, long paramLong)
   {
-    ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new nnn(this, paramString, paramLong), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new nqv(this, paramString, paramLong), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
   }
   
   private void a(String paramString1, String paramString2)
@@ -531,15 +531,15 @@ public class PublicAccountJavascriptInterface
       return;
     }
     localObject = ((AppInterface)localObject).getEntityManagerFactory(((AppInterface)localObject).getAccount()).createEntityManager();
-    paramString1 = ((aukp)localObject).a(CouponH5Data.class, false, "mHost = ? AND mPath = ?", new String[] { paramString1, paramString2 }, null, null, null, null);
+    paramString1 = ((awbw)localObject).a(CouponH5Data.class, false, "mHost = ? AND mPath = ?", new String[] { paramString1, paramString2 }, null, null, null, null);
     if (paramString1 != null)
     {
       paramString1 = paramString1.iterator();
       while (paramString1.hasNext()) {
-        ((aukp)localObject).b((CouponH5Data)paramString1.next());
+        ((awbw)localObject).b((CouponH5Data)paramString1.next());
       }
     }
-    ((aukp)localObject).a();
+    ((awbw)localObject).a();
   }
   
   private void a(String paramString1, String paramString2, String paramString3)
@@ -549,11 +549,11 @@ public class PublicAccountJavascriptInterface
       return;
     }
     localObject = ((AppInterface)localObject).getEntityManagerFactory(((AppInterface)localObject).getAccount()).createEntityManager();
-    paramString1 = (CouponH5Data)((aukp)localObject).a(CouponH5Data.class, "mHost = ? AND mPath = ? AND mKey = ?", new String[] { paramString1, paramString2, paramString3 });
+    paramString1 = (CouponH5Data)((awbw)localObject).a(CouponH5Data.class, "mHost = ? AND mPath = ? AND mKey = ?", new String[] { paramString1, paramString2, paramString3 });
     if (paramString1 != null) {
-      ((aukp)localObject).b(paramString1);
+      ((awbw)localObject).b(paramString1);
     }
-    ((aukp)localObject).a();
+    ((awbw)localObject).a();
   }
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -563,16 +563,16 @@ public class PublicAccountJavascriptInterface
       return;
     }
     localObject = ((AppInterface)localObject).getEntityManagerFactory(((AppInterface)localObject).getAccount()).createEntityManager();
-    CouponH5Data localCouponH5Data = (CouponH5Data)((aukp)localObject).a(CouponH5Data.class, "mHost = ? AND mPath = ? AND mKey = ?", new String[] { paramString1, paramString2, paramString3 });
+    CouponH5Data localCouponH5Data = (CouponH5Data)((awbw)localObject).a(CouponH5Data.class, "mHost = ? AND mPath = ? AND mKey = ?", new String[] { paramString1, paramString2, paramString3 });
     if (localCouponH5Data == null) {
-      ((aukp)localObject).a(new CouponH5Data(paramString1, paramString2, paramString3, paramString4));
+      ((awbw)localObject).a(new CouponH5Data(paramString1, paramString2, paramString3, paramString4));
     }
     for (;;)
     {
-      ((aukp)localObject).a();
+      ((awbw)localObject).a();
       return;
       localCouponH5Data.mData = paramString4;
-      ((aukp)localObject).a(localCouponH5Data);
+      ((awbw)localObject).a(localCouponH5Data);
     }
   }
   
@@ -581,13 +581,13 @@ public class PublicAccountJavascriptInterface
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbcdp;
-    //   4: invokevirtual 316	bcdp:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
+    //   1: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbecq;
+    //   4: invokevirtual 316	becq:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
     //   7: ifnonnull +4 -> 11
     //   10: return
     //   11: aload_0
-    //   12: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbcdp;
-    //   15: invokevirtual 88	bcdp:a	()Lcom/tencent/common/app/AppInterface;
+    //   12: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbecq;
+    //   15: invokevirtual 88	becq:a	()Lcom/tencent/common/app/AppInterface;
     //   18: astore 7
     //   20: aload 7
     //   22: ifnull +864 -> 886
@@ -785,7 +785,7 @@ public class PublicAccountJavascriptInterface
     //   441: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   444: aload 7
     //   446: invokevirtual 93	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
-    //   449: invokestatic 398	bbea:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   449: invokestatic 398	bdcv:b	(Ljava/lang/String;)Ljava/lang/String;
     //   452: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   455: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   458: invokespecial 399	java/io/File:<init>	(Ljava/lang/String;)V
@@ -812,7 +812,7 @@ public class PublicAccountJavascriptInterface
     //   499: dup
     //   500: aload_1
     //   501: aload 6
-    //   503: invokestatic 398	bbea:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   503: invokestatic 398	bdcv:b	(Ljava/lang/String;)Ljava/lang/String;
     //   506: invokespecial 408	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   509: astore 6
     //   511: aload 6
@@ -831,7 +831,7 @@ public class PublicAccountJavascriptInterface
     //   534: dup
     //   535: aload 6
     //   537: aload 5
-    //   539: invokestatic 398	bbea:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   539: invokestatic 398	bdcv:b	(Ljava/lang/String;)Ljava/lang/String;
     //   542: invokespecial 408	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   545: astore 5
     //   547: aload_1
@@ -1087,8 +1087,8 @@ public class PublicAccountJavascriptInterface
         if (!(this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
           break label292;
         }
-        if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
-          this.jdField_a_of_type_Bbgu.dismiss();
+        if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {
+          this.jdField_a_of_type_Bdfq.dismiss();
         }
         str = "";
         localObject = this.mRuntime.a();
@@ -1097,7 +1097,7 @@ public class PublicAccountJavascriptInterface
         }
         localObject = "";
         if (this.mRuntime.a() != null) {
-          localObject = nau.b(this.mRuntime.a().getUrl());
+          localObject = ndq.b(this.mRuntime.a().getUrl());
         }
         if (!getLocationPermissionGrant(str, (String)localObject)) {
           break;
@@ -1112,12 +1112,12 @@ public class PublicAccountJavascriptInterface
     } while (!QLog.isColorLevel());
     QLog.d("PAjs", 2, "already ask");
     return;
-    this.jdField_a_of_type_Bbgu = bbdj.a(this.jdField_a_of_type_AndroidAppActivity, 0);
-    this.jdField_a_of_type_Bbgu.setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131720871, new Object[] { localObject }));
-    this.jdField_a_of_type_Bbgu.setPositiveButton(2131720895, new nno(this, paramBoolean, paramString1, paramString2, str, (String)localObject));
-    this.jdField_a_of_type_Bbgu.setNegativeButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131720899), new nnp(this, paramString2));
-    this.jdField_a_of_type_Bbgu.setOnCancelListener(new nnq(this, paramString2));
-    this.jdField_a_of_type_Bbgu.show();
+    this.jdField_a_of_type_Bdfq = bdcd.a(this.jdField_a_of_type_AndroidAppActivity, 0);
+    this.jdField_a_of_type_Bdfq.setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131721416, new Object[] { localObject }));
+    this.jdField_a_of_type_Bdfq.setPositiveButton(2131721440, new nqw(this, paramBoolean, paramString1, paramString2, str, (String)localObject));
+    this.jdField_a_of_type_Bdfq.setNegativeButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131721450), new nqx(this, paramString2));
+    this.jdField_a_of_type_Bdfq.setOnCancelListener(new nqy(this, paramString2));
+    this.jdField_a_of_type_Bdfq.show();
     return;
     label292:
     callJs(paramString2, new String[] { "-4", "{}" });
@@ -1138,7 +1138,7 @@ public class PublicAccountJavascriptInterface
     {
       MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
       localMessageDigest.update(paramString.getBytes("UTF-8"));
-      paramString = bbea.a(localMessageDigest.digest());
+      paramString = bdcv.a(localMessageDigest.digest());
       localMessageDigest.reset();
       return paramString;
     }
@@ -1155,7 +1155,7 @@ public class PublicAccountJavascriptInterface
   
   private String b(String paramString1, String paramString2)
   {
-    return bfnt.a(paramString1, paramString2);
+    return bhoo.a(paramString1, paramString2);
   }
   
   private void b(String paramString1, String paramString2, JSONObject paramJSONObject)
@@ -1200,7 +1200,7 @@ public class PublicAccountJavascriptInterface
       label96:
       break label96;
     }
-    ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new nnh(this, paramBoolean, i, bool1, paramString2, l1), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+    ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).requestPermissions(new nqp(this, paramBoolean, i, bool1, paramString2, l1), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
   }
   
   private static long c()
@@ -1276,7 +1276,7 @@ public class PublicAccountJavascriptInterface
         if (((arrayOfByte[0] & 0xFF) == 255) && ((arrayOfByte[1] & 0xFF) == 216))
         {
           paramString = "data:image/jpeg;base64,";
-          return paramString + bbco.encodeToString(arrayOfByte, 2);
+          return paramString + bdbi.encodeToString(arrayOfByte, 2);
           paramString = (String)localObject;
           if ((arrayOfByte[0] & 0xFF) != 71) {
             continue;
@@ -1307,27 +1307,27 @@ public class PublicAccountJavascriptInterface
   
   private String c(String paramString1, String paramString2)
   {
-    return bfnt.b(paramString1, paramString2);
+    return bhoo.b(paramString1, paramString2);
   }
   
   public static void deleteAllH5Data(AppInterface paramAppInterface)
   {
-    aukp localaukp = paramAppInterface.getEntityManagerFactory(paramAppInterface.getAccount()).createEntityManager();
-    Object localObject1 = localaukp.a(CouponH5Data.class);
+    awbw localawbw = paramAppInterface.getEntityManagerFactory(paramAppInterface.getAccount()).createEntityManager();
+    Object localObject1 = localawbw.a(CouponH5Data.class);
     if (localObject1 != null)
     {
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (CouponH5Data)((Iterator)localObject1).next();
-        localObject2 = new File(jdField_a_of_type_JavaLangString + "/" + bbea.b(paramAppInterface.getAccount()) + "/" + ((CouponH5Data)localObject2).mHost);
+        localObject2 = new File(jdField_a_of_type_JavaLangString + "/" + bdcv.b(paramAppInterface.getAccount()) + "/" + ((CouponH5Data)localObject2).mHost);
         if (((File)localObject2).exists()) {
-          apvd.a((File)localObject2);
+          arof.a((File)localObject2);
         }
       }
     }
-    localaukp.a(CouponH5Data.class);
-    localaukp.a();
+    localawbw.a(CouponH5Data.class);
+    localawbw.a();
   }
   
   public static boolean getLocationPermissionGrant(String paramString1, String paramString2)
@@ -1365,8 +1365,8 @@ public class PublicAccountJavascriptInterface
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbcdp;
-    //   4: invokevirtual 88	bcdp:a	()Lcom/tencent/common/app/AppInterface;
+    //   1: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbecq;
+    //   4: invokevirtual 88	becq:a	()Lcom/tencent/common/app/AppInterface;
     //   7: astore 6
     //   9: aload 6
     //   11: ifnonnull +7 -> 18
@@ -1480,7 +1480,7 @@ public class PublicAccountJavascriptInterface
     //   253: aload_2
     //   254: aload 5
     //   256: aload 4
-    //   258: invokestatic 800	naj:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)Ljava/lang/String;
+    //   258: invokestatic 800	ndd:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;Landroid/os/Bundle;)Ljava/lang/String;
     //   261: astore_1
     //   262: aload_1
     //   263: areturn
@@ -1552,8 +1552,8 @@ public class PublicAccountJavascriptInterface
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbcdp;
-    //   4: invokevirtual 88	bcdp:a	()Lcom/tencent/common/app/AppInterface;
+    //   1: getfield 83	com/tencent/biz/pubaccount/PublicAccountJavascriptInterface:mRuntime	Lbecq;
+    //   4: invokevirtual 88	becq:a	()Lcom/tencent/common/app/AppInterface;
     //   7: astore 6
     //   9: aload 6
     //   11: ifnonnull +4 -> 15
@@ -1746,7 +1746,7 @@ public class PublicAccountJavascriptInterface
     //   419: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   422: aload 6
     //   424: invokevirtual 93	com/tencent/common/app/AppInterface:getAccount	()Ljava/lang/String;
-    //   427: invokestatic 398	bbea:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   427: invokestatic 398	bdcv:b	(Ljava/lang/String;)Ljava/lang/String;
     //   430: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   433: ldc_w 395
     //   436: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -1755,12 +1755,12 @@ public class PublicAccountJavascriptInterface
     //   444: ldc_w 395
     //   447: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   450: aload 5
-    //   452: invokestatic 398	bbea:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   452: invokestatic 398	bdcv:b	(Ljava/lang/String;)Ljava/lang/String;
     //   455: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   458: ldc_w 395
     //   461: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   464: aload 7
-    //   466: invokestatic 398	bbea:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   466: invokestatic 398	bdcv:b	(Ljava/lang/String;)Ljava/lang/String;
     //   469: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   472: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   475: invokespecial 399	java/io/File:<init>	(Ljava/lang/String;)V
@@ -2036,10 +2036,10 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      Object localObject = sgg.a(paramString);
+      Object localObject = syb.a(paramString);
       if (localObject != null)
       {
-        paramString = (bcfh)super.getBrowserComponent(4);
+        paramString = (beei)super.getBrowserComponent(4);
         if (((JSONObject)localObject).has("pageType"))
         {
           int j = ((JSONObject)localObject).getInt("pageType");
@@ -2051,11 +2051,11 @@ public class PublicAccountJavascriptInterface
             while (i < ((JSONArray)localObject).length())
             {
               JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-              nnr localnnr = new nnr();
-              localnnr.jdField_a_of_type_Int = localJSONObject.optInt("itemType");
-              localnnr.jdField_a_of_type_JavaLangString = localJSONObject.optString("itemName");
-              localnnr.b = localJSONObject.optString("itemActionData");
-              localArrayList.add(localnnr);
+              nqz localnqz = new nqz();
+              localnqz.jdField_a_of_type_Int = localJSONObject.optInt("itemType");
+              localnqz.jdField_a_of_type_JavaLangString = localJSONObject.optString("itemName");
+              localnqz.b = localJSONObject.optString("itemActionData");
+              localArrayList.add(localnqz);
               i += 1;
             }
           }
@@ -2152,7 +2152,7 @@ public class PublicAccountJavascriptInterface
           break label489;
         }
         a(str1, str2);
-        apvd.a(new File(jdField_a_of_type_JavaLangString + "/" + bbea.b(localAppInterface.getAccount()) + "/" + str1 + "/" + bbea.b(str2)));
+        arof.a(new File(jdField_a_of_type_JavaLangString + "/" + bdcv.b(localAppInterface.getAccount()) + "/" + str1 + "/" + bdcv.b(str2)));
       }
       for (;;)
       {
@@ -2162,7 +2162,7 @@ public class PublicAccountJavascriptInterface
         return;
         label489:
         a(str1, str2, str3);
-        apvd.a(new File(jdField_a_of_type_JavaLangString + "/" + bbea.b(localAppInterface.getAccount()) + "/" + str1 + "/" + bbea.b(str2) + "/" + bbea.b(str3)));
+        arof.a(new File(jdField_a_of_type_JavaLangString + "/" + bdcv.b(localAppInterface.getAccount()) + "/" + str1 + "/" + bdcv.b(str2) + "/" + bdcv.b(str3)));
       }
     }
   }
@@ -2224,7 +2224,7 @@ public class PublicAccountJavascriptInterface
           str = "defaulthost";
         }
         a(str);
-        apvd.a(new File(jdField_a_of_type_JavaLangString + "/" + bbea.b(localAppInterface.getAccount()) + "/" + str));
+        arof.a(new File(jdField_a_of_type_JavaLangString + "/" + bdcv.b(localAppInterface.getAccount()) + "/" + str));
         callJs(paramString2, new String[] { "{ret:0, response:" + localJSONObject1.toString() + "}" });
         return;
       }
@@ -2240,10 +2240,10 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      Object localObject = sgg.a(paramString);
+      Object localObject = syb.a(paramString);
       if (localObject != null)
       {
-        paramString = (bcfh)super.getBrowserComponent(4);
+        paramString = (beei)super.getBrowserComponent(4);
         if (((JSONObject)localObject).has("enable"))
         {
           localObject = ((JSONObject)localObject).getString("enable");
@@ -2273,17 +2273,17 @@ public class PublicAccountJavascriptInterface
     if (QLog.isColorLevel()) {
       QLog.d("PAjs", 2, "enableScreenshot->enable:" + paramString);
     }
-    bcfc localbcfc = (bcfc)super.getBrowserComponent(64);
-    if (localbcfc != null)
+    beed localbeed = (beed)super.getBrowserComponent(64);
+    if (localbeed != null)
     {
       if ("1".equals(paramString)) {
-        localbcfc.b("");
+        localbeed.b("");
       }
     }
     else {
       return;
     }
-    localbcfc.a();
+    localbeed.a();
   }
   
   public void enableShareDianDian(String paramString)
@@ -2293,10 +2293,10 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      Object localObject = sgg.a(paramString);
+      Object localObject = syb.a(paramString);
       if (localObject != null)
       {
-        paramString = (bcfh)super.getBrowserComponent(4);
+        paramString = (beei)super.getBrowserComponent(4);
         if (((JSONObject)localObject).has("enable"))
         {
           String str = ((JSONObject)localObject).getString("enable");
@@ -2346,19 +2346,19 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      paramString = sgg.a(paramString);
+      paramString = syb.a(paramString);
       if ((paramString != null) && (paramString.has("enable")))
       {
         paramString = paramString.getString("enable");
-        bcfh localbcfh = (bcfh)super.getBrowserComponent(4);
-        if (localbcfh != null)
+        beei localbeei = (beei)super.getBrowserComponent(4);
+        if (localbeei != null)
         {
           if ("1".equals(paramString))
           {
-            localbcfh.a(true);
+            localbeei.a(true);
             return;
           }
-          localbcfh.a(false);
+          localbeei.a(false);
           return;
         }
       }
@@ -2373,7 +2373,7 @@ public class PublicAccountJavascriptInterface
   
   public void getJson(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    callJs("clientCallback", new String[] { nau.a("{'r': -102, 'msg': 'no such method'}"), nau.a(paramString4) });
+    callJs("clientCallback", new String[] { ndq.a("{'r': -102, 'msg': 'no such method'}"), ndq.a(paramString4) });
   }
   
   public void getLocation(String paramString)
@@ -2441,14 +2441,14 @@ public class PublicAccountJavascriptInterface
           }
           localObject2 = "";
           if (this.mRuntime.a() != null) {
-            localObject2 = nau.a(this.mRuntime.a().getUrl(), 2);
+            localObject2 = ndq.a(this.mRuntime.a().getUrl(), 2);
           }
         } while (TextUtils.isEmpty(paramString));
         if (!(this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity)) {
           break label577;
         }
-        if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
-          this.jdField_a_of_type_Bbgu.dismiss();
+        if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {
+          this.jdField_a_of_type_Bdfq.dismiss();
         }
         if (!getLocationPermissionGrant((String)localObject1, (String)localObject2)) {
           break;
@@ -2463,12 +2463,12 @@ public class PublicAccountJavascriptInterface
     } while (!QLog.isColorLevel());
     QLog.d("PAjs", 2, "already ask");
     return;
-    this.jdField_a_of_type_Bbgu = bbdj.a(this.jdField_a_of_type_AndroidAppActivity, 0);
-    this.jdField_a_of_type_Bbgu.setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131720871, new Object[] { localObject2 }));
-    this.jdField_a_of_type_Bbgu.setPositiveButton(2131720895, new nnk(this, paramString, l, (String)localObject1, (String)localObject2));
-    this.jdField_a_of_type_Bbgu.setNegativeButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131720899), new nnl(this, paramString));
-    this.jdField_a_of_type_Bbgu.setOnCancelListener(new nnm(this, paramString));
-    this.jdField_a_of_type_Bbgu.show();
+    this.jdField_a_of_type_Bdfq = bdcd.a(this.jdField_a_of_type_AndroidAppActivity, 0);
+    this.jdField_a_of_type_Bdfq.setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131721416, new Object[] { localObject2 }));
+    this.jdField_a_of_type_Bdfq.setPositiveButton(2131721440, new nqs(this, paramString, l, (String)localObject1, (String)localObject2));
+    this.jdField_a_of_type_Bdfq.setNegativeButton(this.jdField_a_of_type_AndroidAppActivity.getString(2131721450), new nqt(this, paramString));
+    this.jdField_a_of_type_Bdfq.setOnCancelListener(new nqu(this, paramString));
+    this.jdField_a_of_type_Bdfq.show();
     return;
     label577:
     callJs(paramString, new String[] { "-4", "{}" });
@@ -2481,7 +2481,7 @@ public class PublicAccountJavascriptInterface
   
   public int getNetworkState()
   {
-    return bbfj.b(BaseApplication.getContext());
+    return bdee.b(BaseApplication.getContext());
   }
   
   public String getNetworkType()
@@ -2532,13 +2532,13 @@ public class PublicAccountJavascriptInterface
   
   public void getPageLoadStamp(String paramString)
   {
-    if (this.jdField_a_of_type_Bcij != null)
+    if (this.jdField_a_of_type_Behk != null)
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Bcij.b())) {}
-      for (String str = this.jdField_a_of_type_Bcij.b();; str = "")
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Behk.b())) {}
+      for (String str = this.jdField_a_of_type_Behk.b();; str = "")
       {
-        if (this.jdField_a_of_type_Bcil != null) {
-          callJs(paramString, new String[] { "{ret:0, onCreateTime:" + this.jdField_a_of_type_Bcil.getmOnCreateMilliTimeStamp() + ", startLoadUrlTime:" + this.jdField_a_of_type_Bcil.getmStartLoadUrlMilliTimeStamp() + ", url:'" + str + "'}" });
+        if (this.jdField_a_of_type_Behm != null) {
+          callJs(paramString, new String[] { "{ret:0, onCreateTime:" + this.jdField_a_of_type_Behm.getmOnCreateMilliTimeStamp() + ", startLoadUrlTime:" + this.jdField_a_of_type_Behm.getmStartLoadUrlMilliTimeStamp() + ", url:'" + str + "'}" });
         }
         return;
       }
@@ -2570,15 +2570,15 @@ public class PublicAccountJavascriptInterface
   public void hideLoading()
   {
     Object localObject = this.mRuntime.a(this.mRuntime.a());
-    if ((localObject != null) && ((localObject instanceof bcie))) {
-      ((bcie)localObject).a();
+    if ((localObject != null) && ((localObject instanceof behf))) {
+      ((behf)localObject).a();
     }
     do
     {
       return;
-      localObject = (bcfx)super.getBrowserComponent(2);
-    } while ((localObject == null) || (((bcfx)localObject).a == null));
-    ((bcfx)localObject).a.setVisibility(8);
+      localObject = (beey)super.getBrowserComponent(2);
+    } while ((localObject == null) || (((beey)localObject).a == null));
+    ((beey)localObject).a.setVisibility(8);
   }
   
   public void isFollowUin(String paramString1, String paramString2)
@@ -2610,9 +2610,9 @@ public class PublicAccountJavascriptInterface
         }
       }
     }
-    Object localObject = (akdh)((AppInterface)localObject).getManager(56);
+    Object localObject = (aluw)((AppInterface)localObject).getManager(56);
     if (localObject != null) {}
-    for (boolean bool = ((akdh)localObject).a(Long.valueOf(paramString1));; bool = false)
+    for (boolean bool = ((aluw)localObject).a(Long.valueOf(paramString1));; bool = false)
     {
       localJSONObject.put("follow", bool);
       callJs(paramString2, new String[] { "{ret:0, response:" + localJSONObject.toString() + "}" });
@@ -2646,10 +2646,10 @@ public class PublicAccountJavascriptInterface
         str3 = ((JSONObject)localObject).getString("callback");
       }
       localObject = this.mRuntime.a(this.mRuntime.a());
-      if ((localObject != null) && ((localObject instanceof bcid))) {
-        ((bcid)localObject).a(str4, str5, str6, str7, paramString, str1, str2, str3);
+      if ((localObject != null) && ((localObject instanceof behe))) {
+        ((behe)localObject).a(str4, str5, str6, str7, paramString, str1, str2, str3);
       }
-      axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_sys_30", "share_click", 0, 0, str4, "", "", "");
+      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "mp_msg_sys_30", "share_click", 0, 0, str4, "", "", "");
       return;
     }
     catch (JSONException paramString)
@@ -2667,13 +2667,13 @@ public class PublicAccountJavascriptInterface
     if (jdField_a_of_type_Long == 0L) {
       ThreadManager.executeOnNetWorkThread(new PublicAccountJavascriptInterface.1(this));
     }
-    bccw localbccw = this.mRuntime.a(this.mRuntime.a());
-    if ((localbccw != null) && ((localbccw instanceof bcij))) {
-      this.jdField_a_of_type_Bcij = ((bcij)localbccw);
+    bebx localbebx = this.mRuntime.a(this.mRuntime.a());
+    if ((localbebx != null) && ((localbebx instanceof behk))) {
+      this.jdField_a_of_type_Behk = ((behk)localbebx);
     }
-    localbccw = this.mRuntime.a(this.mRuntime.a());
-    if ((localbccw != null) && ((localbccw instanceof bcil))) {
-      this.jdField_a_of_type_Bcil = ((bcil)localbccw);
+    localbebx = this.mRuntime.a(this.mRuntime.a());
+    if ((localbebx != null) && ((localbebx instanceof behm))) {
+      this.jdField_a_of_type_Behm = ((behm)localbebx);
     }
   }
   
@@ -2683,9 +2683,9 @@ public class PublicAccountJavascriptInterface
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      nns localnns = (nns)localIterator.next();
-      if (!localnns.isCancelled()) {
-        localnns.cancel(true);
+      nra localnra = (nra)localIterator.next();
+      if (!localnra.isCancelled()) {
+        localnra.cancel(true);
       }
     }
     this.jdField_a_of_type_JavaUtilList.clear();
@@ -2693,8 +2693,8 @@ public class PublicAccountJavascriptInterface
     if (this.b) {
       this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
     }
-    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
-      this.jdField_a_of_type_Bbgu.dismiss();
+    if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {
+      this.jdField_a_of_type_Bdfq.dismiss();
     }
     super.onDestroy();
   }
@@ -2703,7 +2703,7 @@ public class PublicAccountJavascriptInterface
   {
     if ("com.tencent.mobileqq.activity.ChatBubbleSettingActivity".equals(paramString))
     {
-      VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_AndroidAppActivity, bbqd.a(this.jdField_a_of_type_AndroidAppActivity, "bubble", ""), 64L, null, false, -1);
+      VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_AndroidAppActivity, bdox.a(this.jdField_a_of_type_AndroidAppActivity, "bubble", ""), 64L, null, false, -1);
       return;
     }
     Intent localIntent = new Intent();
@@ -2718,7 +2718,7 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      paramString = sgg.a(paramString);
+      paramString = syb.a(paramString);
       if (paramString != null)
       {
         long l = paramString.getLong("puin");
@@ -2848,35 +2848,35 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      bcfc localbcfc = (bcfc)super.getBrowserComponent(64);
-      paramString = sgg.a(paramString);
+      beed localbeed = (beed)super.getBrowserComponent(64);
+      paramString = syb.a(paramString);
       String str;
       if ((paramString != null) && (paramString.has("title")))
       {
         str = paramString.getString("title");
-        if (localbcfc != null) {
-          localbcfc.c(str);
+        if (localbeed != null) {
+          localbeed.c(str);
         }
       }
       if ((paramString != null) && (paramString.has("shareUrl")))
       {
         str = paramString.getString("shareUrl");
-        if (localbcfc != null) {
-          localbcfc.e(str);
+        if (localbeed != null) {
+          localbeed.e(str);
         }
       }
       if ((paramString != null) && (paramString.has("sinaShareTitle")))
       {
         str = paramString.getString("sinaShareTitle");
-        if (localbcfc != null) {
-          localbcfc.d(str);
+        if (localbeed != null) {
+          localbeed.d(str);
         }
       }
       if ((paramString != null) && (paramString.has("shareActionSheetTitle")))
       {
         paramString = paramString.optJSONArray("shareActionSheetTitle");
-        if (localbcfc != null) {
-          localbcfc.a(paramString);
+        if (localbeed != null) {
+          localbeed.a(paramString);
         }
       }
       return;
@@ -2893,15 +2893,15 @@ public class PublicAccountJavascriptInterface
   {
     boolean bool1 = "true".equals(paramString3);
     boolean bool2 = "true".equals(paramString4);
-    paramString3 = bbdj.a(this.jdField_a_of_type_AndroidAppActivity, 0);
+    paramString3 = bdcd.a(this.jdField_a_of_type_AndroidAppActivity, 0);
     paramString3.setTitle(paramString1);
     paramString3.setMessage(paramString2);
-    paramString1 = new nni(this, paramString6, paramString5);
+    paramString1 = new nqq(this, paramString6, paramString5);
     if (bool2) {
-      paramString3.setNegativeButton(ajya.a(2131708762), paramString1);
+      paramString3.setNegativeButton(alpo.a(2131709134), paramString1);
     }
     if (bool1) {
-      paramString3.setPositiveButton(ajya.a(2131708798), paramString1);
+      paramString3.setPositiveButton(alpo.a(2131709170), paramString1);
     }
     try
     {
@@ -2914,15 +2914,15 @@ public class PublicAccountJavascriptInterface
   public void showLoading()
   {
     Object localObject = this.mRuntime.a(this.mRuntime.a());
-    if ((localObject != null) && ((localObject instanceof bcie))) {
-      ((bcie)localObject).b();
+    if ((localObject != null) && ((localObject instanceof behf))) {
+      ((behf)localObject).b();
     }
     do
     {
       return;
-      localObject = (bcfx)super.getBrowserComponent(2);
-    } while ((localObject == null) || (((bcfx)localObject).a == null));
-    ((bcfx)localObject).a.setVisibility(0);
+      localObject = (beey)super.getBrowserComponent(2);
+    } while ((localObject == null) || (((beey)localObject).a == null));
+    ((beey)localObject).a.setVisibility(0);
   }
   
   public void showProfile(String paramString)
@@ -3060,7 +3060,7 @@ public class PublicAccountJavascriptInterface
             if (!(localObject3 instanceof QQAppInterface)) {
               break label768;
             }
-            bbex.a((QQAppInterface)localObject3, this.jdField_a_of_type_AndroidAppActivity, paramString).c();
+            bdds.a((QQAppInterface)localObject3, this.jdField_a_of_type_AndroidAppActivity, paramString).c();
             break;
             paramString = "";
             break label626;
@@ -3079,7 +3079,7 @@ public class PublicAccountJavascriptInterface
     }
     try
     {
-      localObject = sgg.a(paramString);
+      localObject = syb.a(paramString);
       if ((localObject == null) || (!((JSONObject)localObject).has("image_url"))) {
         break label151;
       }
@@ -3104,11 +3104,11 @@ public class PublicAccountJavascriptInterface
     if ((localObject != null) && (((JSONObject)localObject).has("isGif")))
     {
       bool = ((JSONObject)localObject).getBoolean("isGif");
-      localObject = (bcfc)super.getBrowserComponent(64);
+      localObject = (beed)super.getBrowserComponent(64);
       if (localObject == null) {
         return;
       }
-      ((bcfc)localObject).a(paramString, bool);
+      ((beed)localObject).a(paramString, bool);
     }
     label151:
   }
@@ -3134,7 +3134,7 @@ public class PublicAccountJavascriptInterface
       if (localObject1 == null) {
         break label277;
       }
-      localObject1 = (PublicAccountInfo)((aukp)localObject1).a(PublicAccountInfo.class, "uin = ?", new String[] { paramString1 });
+      localObject1 = (PublicAccountInfo)((awbw)localObject1).a(PublicAccountInfo.class, "uin = ?", new String[] { paramString1 });
     }
     for (;;)
     {
@@ -3154,11 +3154,11 @@ public class PublicAccountJavascriptInterface
       {
         PublicAccountHandler.a(localAppInterface, paramString1, "Pb_account_lifeservice", "mp_msg_sys_5", "addpage_hot");
         return;
-        localObject2 = (akdh)localAppInterface.getManager(56);
+        localObject2 = (aluw)localAppInterface.getManager(56);
         if (localObject2 == null) {
           break;
         }
-        localObject1 = ((akdh)localObject2).b(paramString1);
+        localObject1 = ((aluw)localObject2).b(paramString1);
         break;
         paramString2 = new Intent((Context)localObject2, AccountDetailActivity.class);
         paramString2.putExtra("uin", paramString1);
@@ -3192,7 +3192,7 @@ public class PublicAccountJavascriptInterface
       if (localObject1 == null) {
         break label318;
       }
-      localObject1 = (PublicAccountInfo)((aukp)localObject1).a(PublicAccountInfo.class, "uin = ?", new String[] { paramString1 });
+      localObject1 = (PublicAccountInfo)((awbw)localObject1).a(PublicAccountInfo.class, "uin = ?", new String[] { paramString1 });
     }
     for (;;)
     {
@@ -3212,11 +3212,11 @@ public class PublicAccountJavascriptInterface
       {
         PublicAccountHandler.a(localAppInterface, paramString1, "Pb_account_lifeservice", "mp_msg_sys_5", "addpage_hot");
         return;
-        localObject2 = (akdh)localAppInterface.getManager(56);
+        localObject2 = (aluw)localAppInterface.getManager(56);
         if (localObject2 == null) {
           break;
         }
-        localObject1 = ((akdh)localObject2).b(paramString1);
+        localObject1 = ((aluw)localObject2).b(paramString1);
         break;
         paramString2 = new Intent((Context)localObject2, AccountDetailActivity.class);
         paramString2.putExtra("uin", paramString1);
@@ -3247,7 +3247,7 @@ public class PublicAccountJavascriptInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.PublicAccountJavascriptInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,22 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+
 public class bbwf
+  implements View.OnClickListener
 {
-  public static String a(int paramInt)
+  public bbwf(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    default: 
-      return "UNKNOW";
-    case 100: 
-      return "AIO_SHORT_BUBBLE";
-    }
-    return "AIO_LONG_BUBBLE";
+    bhoc.b(paramView);
+    this.a.getActivity().doOnBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbwf
  * JD-Core Version:    0.7.0.1
  */

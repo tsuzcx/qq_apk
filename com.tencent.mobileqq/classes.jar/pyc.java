@@ -1,29 +1,26 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericPullAnimatorView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONObject;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class pyc
-  implements View.OnClickListener
+class pyc
+  implements View.OnTouchListener
 {
-  public pyc(ComponentPolymericPullAnimatorView paramComponentPolymericPullAnimatorView, ArticleInfo paramArticleInfo, JSONObject paramJSONObject) {}
+  pyc(pxx parampxx, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    onh.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericPullAnimatorView.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.d);
-    String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId + "";
-    if (onh.o(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {}
-    for (paramView = "1";; paramView = "2")
+    if (paramMotionEvent.getAction() == 0)
     {
-      nol.a(null, "CliOper", "", "", "0X800982B", "0X800982B", 0, 0, str, paramView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId + "", this.jdField_a_of_type_OrgJsonJSONObject.toString(), false);
-      return;
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.b.setDuplicateParentStateEnabled(true);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pyc
  * JD-Core Version:    0.7.0.1
  */

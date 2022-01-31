@@ -5,14 +5,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bjav;
-import bjbw;
-import bjby;
-import bjcb;
-import bjci;
-import bjcj;
-import bjcx;
-import bkrf;
+import blmf;
+import blng;
+import blni;
+import blnl;
+import blns;
+import blnt;
+import bloi;
+import bncp;
 import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.qphone.base.util.QLog;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class QIMFilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<QIMFilterCategoryItem> CREATOR = new bjcx();
+  public static final Parcelable.Creator<QIMFilterCategoryItem> CREATOR = new bloi();
   public int a;
   public String a;
   public ArrayList<String> a;
@@ -78,7 +78,7 @@ public class QIMFilterCategoryItem
     while (paramQIMFilterCategoryItem.hasNext())
     {
       Object localObject = (String)paramQIMFilterCategoryItem.next();
-      localObject = bkrf.a().a((String)localObject);
+      localObject = bncp.a().a((String)localObject);
       if ((localObject != null) && (((FilterDesc)localObject).id == 9)) {
         return true;
       }
@@ -94,7 +94,7 @@ public class QIMFilterCategoryItem
       while (paramQIMFilterCategoryItem.hasNext())
       {
         Object localObject = (String)paramQIMFilterCategoryItem.next();
-        localObject = bkrf.a().a((String)localObject);
+        localObject = bncp.a().a((String)localObject);
         if ((localObject != null) && (((FilterDesc)localObject).id == 1011)) {
           return true;
         }
@@ -106,14 +106,14 @@ public class QIMFilterCategoryItem
   public int a()
   {
     int j = -1;
-    Iterator localIterator = ((bjcb)bjav.a(5)).a(this).b.iterator();
+    Iterator localIterator = ((blnl)blmf.a(5)).a(this).b.iterator();
     if (localIterator.hasNext())
     {
-      bjbw localbjbw = (bjbw)localIterator.next();
-      if (!(localbjbw instanceof bjby)) {
+      blng localblng = (blng)localIterator.next();
+      if (!(localblng instanceof blni)) {
         break label93;
       }
-      j = ((bjby)localbjbw).a.id;
+      j = ((blni)localblng).a.id;
     }
     label93:
     for (;;)
@@ -138,31 +138,6 @@ public class QIMFilterCategoryItem
       localCloneNotSupportedException.printStackTrace();
     }
     return null;
-  }
-  
-  public String a()
-  {
-    String str = "";
-    Iterator localIterator = ((bjcb)bjav.a(5)).a(this).b.iterator();
-    bjbw localbjbw;
-    if (localIterator.hasNext())
-    {
-      localbjbw = (bjbw)localIterator.next();
-      if (!(localbjbw instanceof bjby)) {
-        break label106;
-      }
-      if (TextUtils.isEmpty(str)) {
-        str = ((bjby)localbjbw).a.display;
-      }
-    }
-    label106:
-    for (;;)
-    {
-      break;
-      str = str + " " + ((bjby)localbjbw).a.display;
-      continue;
-      return str;
-    }
   }
   
   public JSONObject a()
@@ -212,7 +187,7 @@ public class QIMFilterCategoryItem
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      String[] arrayOfString = bjci.a;
+      String[] arrayOfString = blns.a;
       int k = arrayOfString.length;
       int j = 0;
       while (j < k)
@@ -247,7 +222,7 @@ public class QIMFilterCategoryItem
     while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)) {
       return false;
     }
-    if (QQAVImageFilterConstants.getFilterType(bkrf.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0)).id) == 0) {}
+    if (QQAVImageFilterConstants.getFilterType(bncp.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0)).id) == 0) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -298,7 +273,7 @@ public class QIMFilterCategoryItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.data.QIMFilterCategoryItem
  * JD-Core Version:    0.7.0.1
  */

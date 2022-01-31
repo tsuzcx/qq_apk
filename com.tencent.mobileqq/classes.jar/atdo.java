@@ -1,94 +1,43 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
+import org.json.JSONObject;
 
 public class atdo
-  extends BaseAdapter
+  implements QQPermissionCallback
 {
-  private atdo(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public atdo(MediaApiPlugin paramMediaApiPlugin, Intent paramIntent, Context paramContext, String paramString, JSONObject paramJSONObject, boolean paramBoolean, BasePluginActivity paramBasePluginActivity) {}
   
-  public int getCount()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.a.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.a.jdField_a_of_type_JavaUtilList.size()) {
-      return Math.min(i, this.a.jdField_a_of_type_Int);
-    }
+    QLog.d(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, "User requestPermissions RECORD_AUDIO denied");
+    bdcd.a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkBasePluginActivity.getOutActivity(), paramArrayOfString, paramArrayOfInt);
   }
   
-  public Object getItem(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.a.jdField_a_of_type_JavaUtilList != null) {
-      return (atdn)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    String str;
-    bayh localbayh;
-    if (paramView == null)
+    try
     {
-      paramView = LayoutInflater.from(this.a).inflate(2131559331, paramViewGroup, false);
-      paramViewGroup = new atdq(this.a, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366930));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366931));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131366929));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367458);
-      paramView.setTag(paramViewGroup);
-      bciq localbciq = (bciq)this.a.app.a(107);
-      atdn localatdn = (atdn)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-      str = localatdn.jdField_a_of_type_JavaLangString;
-      if ((!((ajxl)this.a.app.getManager(51)).b(((atdn)this.a.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaLangString)) && (!this.a.app.getCurrentAccountUin().equals(str))) {
-        break label314;
-      }
-      localbayh = bayh.a(this.a.app, 1, str);
-      label201:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localbayh);
-      localbciq.a(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView, str, "%s");
-      if (!localatdn.jdField_a_of_type_Boolean) {
-        break label335;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      label239:
-      if ((!this.a.jdField_a_of_type_Boolean) || (localatdn.jdField_a_of_type_JavaLangString.equals(this.a.app.getCurrentAccountUin()))) {
-        break label346;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(new atdp(this, paramInt, localbciq));
+      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, (byte)1);
+      MediaApiPlugin.a(this.jdField_a_of_type_AndroidContentContext).edit().putString("camera_photo_path", this.jdField_a_of_type_JavaLangString).putString("getMediaParam", this.jdField_a_of_type_OrgJsonJSONObject.toString()).putBoolean("calledFromOpenApi", this.jdField_a_of_type_Boolean).commit();
+      return;
     }
-    for (;;)
+    catch (Exception paramArrayOfString)
     {
-      paramViewGroup.jdField_a_of_type_Int = 1;
-      return paramView;
-      paramViewGroup = (atdq)paramView.getTag();
-      break;
-      label314:
-      localbayh = bayh.b(this.a.app, 200, str, 3);
-      break label201;
-      label335:
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      break label239;
-      label346:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
+      QLog.e(MediaApiPlugin.jdField_a_of_type_JavaLangString, 1, paramArrayOfString, new Object[0]);
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131690645, 0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atdo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
+import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnCompletionListener;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.8.1;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.8.2;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
 public class bgox
-  implements DialogInterface.OnClickListener
+  implements VideoPlayerProxy.OnCompletionListener
 {
-  public bgox(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, String paramString1, String paramString2) {}
+  public bgox(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompletion(VideoPlayerProxy paramVideoPlayerProxy)
   {
-    Intent localIntent = AddFriendLogicActivity.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.app.getApp().getApplicationContext(), 1, this.jdField_a_of_type_JavaLangString, null, 3002, 14, this.b, null, null, ajya.a(2131710034), null);
-    localIntent.putExtra("_FROM_QLINK_", true);
-    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
+    if (this.a.c) {
+      ThreadManager.c().post(new MiniAppVideoPlayer.8.1(this));
+    }
+    if (!this.a.jdField_a_of_type_Bghn.getClass().getName().equals("com.tencent.qqmini.sdk.runtime.core.service.AppBrandService")) {
+      MiniAppVideoPlayer.a(this.a, "ended");
+    }
+    for (;;)
+    {
+      ThreadManager.c().post(new MiniAppVideoPlayer.8.2(this));
+      return;
+      try
+      {
+        paramVideoPlayerProxy = new JSONObject();
+        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
+        paramVideoPlayerProxy.put("videoId", this.a.jdField_a_of_type_Long);
+        this.a.jdField_a_of_type_Bghn.a("onVideoEnded", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
+        QMLog.d("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoEnded = " + paramVideoPlayerProxy.toString());
+      }
+      catch (Exception paramVideoPlayerProxy)
+      {
+        paramVideoPlayerProxy.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgox
  * JD-Core Version:    0.7.0.1
  */

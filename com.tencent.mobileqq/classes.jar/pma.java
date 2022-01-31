@@ -1,142 +1,37 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import android.text.format.DateUtils;
-import android.util.Log;
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.ImageView.ScaleType;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInjoyApngImageView.1;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image.ImageBase;
-import java.util.Date;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class pma
-  extends ImageBase
+class pma
+  implements ViewBase.OnClickListener
 {
-  private Drawable a;
-  public NativeReadInjoyImageView a;
+  pma(plx paramplx, int paramInt, pgd parampgd, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
   
-  public pma(VafContext paramVafContext)
+  public void onClick(ViewBase paramViewBase)
   {
-    super(paramVafContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#00000000"));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView = new NativeReadInjoyImageView(paramVafContext.getContext());
-  }
-  
-  private static long a(Date paramDate1, Date paramDate2)
-  {
-    return Math.abs((paramDate1.getTime() - paramDate2.getTime()) / 86400000L);
-  }
-  
-  private void a(String paramString)
-  {
-    Log.d("DEBUG_LOADIMG", "real loadimg");
-    new Handler(Looper.getMainLooper()).postDelayed(new ReadInjoyApngImageView.1(this, paramString), 1500L);
-  }
-  
-  public int getComMeasuredHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView;
-  }
-  
-  public void loadImage(String paramString)
-  {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("http")))
+    int i;
+    rqj localrqj;
+    if (this.jdField_a_of_type_Int == 1154)
     {
-      Log.d("DEBUG_LOADIMG", "loadimg begin");
-      if (DateUtils.isToday(bbkb.b("search_word_prefix_ug_weishi_opt_day_show_time"))) {
-        break label163;
-      }
-      Log.d("DEBUG_LOADIMG", "loadimg not in a day");
-      bbkb.a("search_word_prefix_ug_weishi_opt_day_show_time", System.currentTimeMillis());
-      if (a(new Date(System.currentTimeMillis()), new Date(bbkb.b("search_word_prefix_ug_weishi_opt_week_first_show_time"))) > 7L)
-      {
-        Log.d("DEBUG_LOADIMG", "loadimg after 7 days");
-        bbkb.a("search_word_prefix_ug_weishi_opt_week_first_show_time", System.currentTimeMillis());
-        bbkb.a("search_word_prefix_ug_weishi_opt_week_first_show_count", 1);
-        a(paramString);
+      i = 1;
+      localrqj = this.jdField_a_of_type_Pgd.a();
+      if (i == 0) {
+        break label42;
       }
     }
-    else
+    label42:
+    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
     {
+      localrqj.b(paramViewBase);
       return;
+      i = 0;
+      break;
     }
-    Log.d("DEBUG_LOADIMG", "loadimg in 7 days");
-    if (bbkb.a("search_word_prefix_ug_weishi_opt_week_first_show_count") < 3)
-    {
-      Log.d("DEBUG_LOADIMG", "loadimg in 7 days, less than 3");
-      bbkb.a("search_word_prefix_ug_weishi_opt_week_first_show_count", bbkb.a("search_word_prefix_ug_weishi_opt_week_first_show_count") + 1);
-      a(paramString);
-      return;
-    }
-    Log.d("DEBUG_LOADIMG", "loadimg in 7 days, more than 3");
-    return;
-    label163:
-    Log.d("DEBUG_LOADIMG", "loadimg in a day");
-  }
-  
-  public void onComDraw(Canvas paramCanvas)
-  {
-    super.onComDraw(paramCanvas);
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.measureComponent(paramInt1, paramInt2);
-  }
-  
-  public void onParseValueFinished()
-  {
-    super.onParseValueFinished();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setPadding(this.mPaddingLeft, this.mPaddingTop, this.mPaddingRight, this.mPaddingBottom);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setScaleType((ImageView.ScaleType)ImageBase.IMAGE_SCALE_TYPE.get(this.mScaleType, ImageView.ScaleType.CENTER_CROP));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setCorner(this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
-    loadImage(this.mSrc);
-    refresh();
-  }
-  
-  public void reset()
-  {
-    super.reset();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageSrc(null);
-    this.mSrc = null;
-  }
-  
-  public void setBitmap(Bitmap paramBitmap, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageBitmap(paramBitmap);
-  }
-  
-  public void setImageDrawable(Drawable paramDrawable, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeReadInjoyImageView.setImageDrawable(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pma
  * JD-Core Version:    0.7.0.1
  */

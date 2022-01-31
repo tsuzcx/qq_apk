@@ -1,44 +1,51 @@
-import com.tencent.mobileqq.location.data.LocationRoom;
-import com.tencent.mobileqq.location.window.FloatMapWidget;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.data.OpenID;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import java.util.List;
 
-public class arzb
-  implements TencentMap.OnMapLoadedCallback
+class arzb
+  extends ndm
 {
-  public arzb(FloatMapWidget paramFloatMapWidget) {}
+  arzb(arys paramarys) {}
   
-  public void onMapLoaded()
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    Object localObject = FloatMapWidget.a(this.a).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("FloatMapWidget", 2, new Object[] { "[map][init]onMapLoaded invoked. selfItem: ", ((aruk)localObject).a() });
-    }
-    if (((aruk)localObject).a() != null)
+    if ((this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.a.j)) {}
+    do
     {
-      localObject = FloatMapWidget.b(this.a).a();
-      if (QLog.isColorLevel()) {
-        QLog.d("FloatMapWidget", 2, new Object[] { "onMapLoaded: invoked. ", " venue: ", localObject });
-      }
-      if ((FloatMapWidget.c(this.a).d().size() != 1) || (localObject != null)) {
-        break label136;
-      }
-      this.a.a(false, null);
-    }
-    for (;;)
-    {
-      FloatMapWidget.a(this.a, true);
-      FloatMapWidget.a(this.a);
       return;
-      label136:
-      this.a.b();
-    }
+      this.a.x();
+      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver success");
+        }
+        if (!paramOpenID.openID.equals(this.a.h))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->onGetOpenId--openid doesn't equal current openid");
+          }
+          this.a.L();
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver fail");
+      }
+    } while (!arys.a(this.a));
+    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
+    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aruc.e.intValue());
+    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arzb
  * JD-Core Version:    0.7.0.1
  */

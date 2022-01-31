@@ -1,21 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.voicechanger.common.audio.VoiceTextRecognizer.VRErrorListener;
+import java.util.ArrayList;
 
-class blal
-  implements VoiceTextRecognizer.VRErrorListener
+public class blal
 {
-  blal(blak paramblak) {}
-  
-  public void onError(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ShortVideoVoiceRecognizer", 1, "VoiceTextRecognizer error! errorCode = " + paramInt);
-    }
-  }
+  public ArrayList<String> a = new ArrayList();
+  public ArrayList<String> b = new ArrayList();
+  public ArrayList<String> c = new ArrayList();
+  public ArrayList<Integer> d = new ArrayList();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blal
  * JD-Core Version:    0.7.0.1
  */

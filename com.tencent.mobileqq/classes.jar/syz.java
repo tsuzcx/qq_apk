@@ -1,26 +1,103 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.Context;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class syz
-  extends SimpleJob<Void>
 {
-  public syz(QQStoryCmdHandler paramQQStoryCmdHandler, String paramString, sys paramsys)
+  public static int a()
   {
-    super(paramString);
+    return ((Integer)bjxj.a("readinjoy_user_data_switch", Integer.valueOf(0))).intValue();
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public static void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_Sys);
-    return null;
+    bjxj.a("readinjoy_user_data_switch", Integer.valueOf(paramInt));
+  }
+  
+  public static void a(Context paramContext, int paramInt, Runnable paramRunnable)
+  {
+    int k = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_switch", 0);
+    String str = Aladdin.getConfig(232).getString("user_data_alert_content", paramContext.getString(2131719077));
+    int j = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_interval", 1);
+    int i = ((Integer)bjxj.a("readinjoy_user_data_state", Integer.valueOf(0))).intValue();
+    long l1 = ((Long)bjxj.a("readinjoy_user_data_time", Long.valueOf(0L))).longValue();
+    int m = ((Integer)bjxj.a("readinjoy_user_data_switch", Integer.valueOf(1))).intValue();
+    long l2;
+    if ((k == 1) && (m == 1))
+    {
+      l2 = System.currentTimeMillis();
+      if (l2 - l1 < j * 86400000L) {
+        break label329;
+      }
+      i = 0;
+    }
+    label329:
+    for (;;)
+    {
+      if ((1 << paramInt & i) == 0)
+      {
+        bjxj.a("readinjoy_user_data_time", Long.valueOf(l2));
+        bjxj.a("readinjoy_user_data_state", Integer.valueOf(i | 1 << paramInt));
+        bdfq localbdfq = bdcd.a(paramContext, 230);
+        localbdfq.setTitle(null);
+        localbdfq.setMessage(str);
+        localbdfq.setPositiveButton(paramContext.getString(2131721440), new sza(paramInt, j, paramRunnable));
+        localbdfq.setNegativeButton(paramContext.getString(2131721449), new szb(paramInt, j, paramRunnable));
+        localbdfq.show();
+        paramContext = new JSONObject();
+        if (paramInt == 1) {
+          paramInt = 0;
+        }
+      }
+      do
+      {
+        do
+        {
+          try
+          {
+            for (;;)
+            {
+              paramContext.put("exp_src", paramInt);
+              paramContext.put("user_data_alert_interval", j);
+              nrt.a(null, "", "0X800A808", "0X800A808", 0, 0, "", "", "", paramContext.toString(), false);
+              return;
+              paramInt = 1;
+            }
+          }
+          catch (JSONException paramRunnable)
+          {
+            for (;;)
+            {
+              paramRunnable.printStackTrace();
+            }
+          }
+        } while (paramRunnable == null);
+        paramRunnable.run();
+        return;
+      } while (paramRunnable == null);
+      paramRunnable.run();
+      return;
+    }
+  }
+  
+  public static int b()
+  {
+    int i = Aladdin.getConfig(232).getIntegerFromString("user_data_alert_switch", 0);
+    int j = Aladdin.getConfig(232).getIntegerFromString("user_data_switch_switch", 0);
+    if ((i == 0) && (j == 0)) {
+      return 0;
+    }
+    if (a() == 0) {
+      return 1;
+    }
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     syz
  * JD-Core Version:    0.7.0.1
  */

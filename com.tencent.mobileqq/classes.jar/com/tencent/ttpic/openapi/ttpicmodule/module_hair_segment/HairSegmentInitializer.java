@@ -4,7 +4,8 @@ import android.graphics.Bitmap;
 import com.tencent.ttpic.model.SizeI;
 import com.tencent.ttpic.openapi.initializer.Feature;
 import com.tencent.ttpic.openapi.initializer.ModelInfo;
-import com.tencent.ttpic.openapi.initializer.RapidNetSDKInitializer;
+import com.tencent.ttpic.openapi.initializer.RapidNetSegCpuInitializer;
+import com.tencent.ttpic.openapi.initializer.RapidNetSegGpuInitializer;
 import com.tencent.ttpic.openapi.initializer.SharedLibraryInfo;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ttpic.openapi.ttpicmodule.HairSegmentImpl;
@@ -27,30 +28,32 @@ public class HairSegmentInitializer
   
   private boolean initModelSync(boolean paramBoolean)
   {
-    if (FeatureManager.Features.RAPID_NET.isModelLoaded(1)) {
-      return true;
-    }
-    RapidNetSDKInitializer localRapidNetSDKInitializer = FeatureManager.Features.RAPID_NET;
-    String str2 = getFinalResourcesDir();
-    String str1;
-    if (paramBoolean)
-    {
-      str1 = "hair_v2_deconv_k4_depthwise_192x256_799999_softmax_iter.onnx.opt.onnx";
-      if (!paramBoolean) {
-        break label80;
-      }
+    if (paramBoolean) {
+      if (!FeatureManager.Features.RAPID_NET_SEG_CPU.isModelLoaded(1)) {}
     }
     boolean bool;
-    label80:
-    for (int i = RapidNetSDKInitializer.RAPID_NET_TYPE_CPU_LIB;; i = RapidNetSDKInitializer.RAPID_NET_TYPE_GPU_LIB)
+    while (FeatureManager.Features.RAPID_NET_SEG_GPU.isModelLoaded(1))
     {
-      bool = localRapidNetSDKInitializer.loadRapidModelFrom(str2, str1, false, true, 0, i, 1);
-      if ((bool) || (paramBoolean)) {
-        return bool;
+      return true;
+      localObject = FeatureManager.Features.RAPID_NET_SEG_CPU;
+      str2 = getFinalResourcesDir();
+      if (paramBoolean) {}
+      for (str1 = "hair_v2_deconv_k4_depthwise_192x256_799999_softmax_iter.onnx.opt.onnx";; str1 = "hair_v2_deconv_k4_320x320_299_softmax_concat4_iter.onnx.opt.onnx")
+      {
+        bool = ((RapidNetSegCpuInitializer)localObject).loadRapidModelFrom(str2, str1, false, true, 0, 0, 1);
+        if ((bool) || (paramBoolean)) {
+          break;
+        }
+        this.useSmallModel = true;
+        return initModelSync(true);
       }
-      this.useSmallModel = true;
-      return initModelSync(true);
-      str1 = "hair_v2_deconv_k4_320x320_299_softmax_concat4_iter.onnx.opt.onnx";
+    }
+    Object localObject = FeatureManager.Features.RAPID_NET_SEG_GPU;
+    String str2 = getFinalResourcesDir();
+    if (paramBoolean) {}
+    for (String str1 = "hair_v2_deconv_k4_depthwise_192x256_799999_softmax_iter.onnx.opt.onnx";; str1 = "hair_v2_deconv_k4_320x320_299_softmax_concat4_iter.onnx.opt.onnx")
+    {
+      bool = ((RapidNetSegGpuInitializer)localObject).loadRapidModelFrom(str2, str1, false, true, 0, 1, 1);
       break;
     }
     return bool;
@@ -66,7 +69,10 @@ public class HairSegmentInitializer
     if (!isFunctionReady()) {
       return paramBitmap;
     }
-    return FeatureManager.Features.RAPID_NET.forward(paramBitmap, 0, this.useSmallModel, this.useSmallModel, paramInt);
+    if (this.useSmallModel) {}
+    for (paramBitmap = FeatureManager.Features.RAPID_NET_SEG_CPU.forward(paramBitmap, 1, this.useSmallModel, this.useSmallModel, paramInt);; paramBitmap = FeatureManager.Features.RAPID_NET_SEG_GPU.forward(paramBitmap, 1, this.useSmallModel, this.useSmallModel, paramInt)) {
+      return paramBitmap;
+    }
   }
   
   public SizeI getCurrentSize()
@@ -112,7 +118,7 @@ public class HairSegmentInitializer
   
   public boolean initImpl()
   {
-    if (!FeatureManager.Features.RAPID_NET.init()) {}
+    if ((!FeatureManager.Features.RAPID_NET_SEG_GPU.init()) || (!FeatureManager.Features.RAPID_NET_SEG_CPU.init())) {}
     do
     {
       return false;
@@ -124,13 +130,19 @@ public class HairSegmentInitializer
   
   public boolean isFunctionReady()
   {
-    return (this.isInited) && (FeatureManager.Features.RAPID_NET.isModelLoaded(1));
+    return (this.isInited) && (((FeatureManager.Features.RAPID_NET_SEG_CPU.isModelLoaded(1)) && (this.useSmallModel)) || ((FeatureManager.Features.RAPID_NET_SEG_GPU.isModelLoaded(1)) && (!this.useSmallModel)));
   }
   
   public boolean reloadModel()
   {
-    if (FeatureManager.Features.RAPID_NET.isModelLoaded(1)) {
-      return true;
+    if (this.useSmallModel)
+    {
+      if (!FeatureManager.Features.RAPID_NET_SEG_CPU.isModelLoaded(1)) {}
+    }
+    else {
+      while (FeatureManager.Features.RAPID_NET_SEG_GPU.isModelLoaded(1)) {
+        return true;
+      }
     }
     return initModelSync(this.useSmallModel);
   }

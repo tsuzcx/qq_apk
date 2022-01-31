@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import bghu;
-import bghz;
+import biis;
+import biix;
 import com.tencent.mobileqq.app.automator.Automator;
 
 class QQComicStep$2$1
@@ -11,8 +11,8 @@ class QQComicStep$2$1
   
   public void run()
   {
-    bghu.a(this.a.this$0.a.app);
-    bghz.a(this.a.this$0.a.app);
+    biis.a(this.a.this$0.a.app);
+    biix.a(this.a.this$0.a.app);
   }
 }
 

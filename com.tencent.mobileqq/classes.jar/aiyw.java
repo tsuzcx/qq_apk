@@ -1,25 +1,37 @@
-import java.util.List;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiyw
+  implements aiyb
 {
-  public int a;
-  public long a;
-  public String a;
-  public List<String> a;
-  public String b;
+  public aiyw(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public aiyw(List<String> paramList, int paramInt, String paramString1, long paramLong, String paramString2)
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramString2;
+    if (QLog.isColorLevel()) {
+      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineBegin---");
+    }
+    DrawRedpacketPannelPreviewFragment.a(this.a, false);
+    DrawRedpacketPannelPreviewFragment.a(this.a);
+    DrawRedpacketPannelPreviewFragment.c(this.a).setTextColor(Color.parseColor("#878B99"));
+    DrawRedpacketPannelPreviewFragment.c(this.a).setText(alpo.a(2131703915));
   }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(DrawRedpacketPannelPreviewFragment.a, 2, "---onLineFinish---");
+    }
+    DrawRedpacketPannelPreviewFragment.c(this.a);
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyw
  * JD-Core Version:    0.7.0.1
  */

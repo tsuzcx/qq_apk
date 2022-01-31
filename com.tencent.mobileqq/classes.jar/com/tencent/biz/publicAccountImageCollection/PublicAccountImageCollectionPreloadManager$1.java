@@ -1,13 +1,13 @@
 package com.tencent.biz.publicAccountImageCollection;
 
 import com.tencent.qphone.base.util.QLog;
-import nmy;
-import sow;
+import npu;
+import tpr;
 
 class PublicAccountImageCollectionPreloadManager$1
   implements Runnable
 {
-  PublicAccountImageCollectionPreloadManager$1(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, sow paramsow) {}
+  PublicAccountImageCollectionPreloadManager$1(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, tpr paramtpr) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ class PublicAccountImageCollectionPreloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager.1
  * JD-Core Version:    0.7.0.1
  */

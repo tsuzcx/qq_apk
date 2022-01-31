@@ -1,46 +1,23 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.PopupWindow;
-import java.lang.ref.WeakReference;
+import android.database.DataSetObserver;
 
-public class bhvc
-  extends PopupWindow
+class bhvc
+  extends DataSetObserver
 {
-  private WeakReference<Context> a;
+  bhvc(bhvb parambhvb) {}
   
-  public bhvc(Context paramContext)
+  public void onChanged()
   {
-    super(paramContext);
-    this.a = new WeakReference(paramContext);
+    this.a.notifyDataSetChanged();
   }
   
-  public void showAsDropDown(View paramView)
+  public void onInvalidated()
   {
-    if (this.a.get() == null) {
-      return;
-    }
-    super.showAsDropDown(paramView);
-  }
-  
-  public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
-  {
-    if (this.a.get() == null) {
-      return;
-    }
-    super.showAsDropDown(paramView, paramInt1, paramInt2);
-  }
-  
-  public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.get() == null) {
-      return;
-    }
-    super.showAtLocation(paramView, paramInt1, paramInt2, paramInt3);
+    this.a.notifyDataSetInvalidated();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhvc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,48 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import axqy;
+import android.content.SharedPreferences;
+import azmj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.SecUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import mqq.app.MobileQQ;
 
 public class ReportLoginInfo
   extends AsyncStep
 {
+  private String b = "mark_time_";
+  private String c = "byte_data_time_stamp";
+  
+  private String a(String paramString)
+  {
+    int i = 0;
+    try
+    {
+      Object localObject = MessageDigest.getInstance("MD5");
+      ((MessageDigest)localObject).update(paramString.getBytes(Charset.forName("US-ASCII")), 0, paramString.length());
+      paramString = new StringBuilder();
+      localObject = ((MessageDigest)localObject).digest();
+      int j = localObject.length;
+      while (i < j)
+      {
+        paramString.append(String.format("%02x", new Object[] { Integer.valueOf(localObject[i] & 0xFF) }));
+        i += 1;
+      }
+      paramString = paramString.toString();
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return "";
+  }
+  
   private void b()
   {
     try
@@ -20,9 +52,11 @@ public class ReportLoginInfo
       if (str2 == null) {
         str1 = "";
       }
-      axqy.a(this.a.app, "dc00899", "TSTViewTime", str1, "AChanged", "2", 0, 0, SecUtil.toHexString(NetConnInfoCenter.GUID), "", "", "");
+      str2 = a(str1);
+      long l = this.a.app.getApplication().getSharedPreferences(this.b + str2, 0).getLong(this.c, 0L);
+      azmj.a(this.a.app, "dc00899", "TSTViewTime", str1, "AChanged", "2", 0, 0, SecUtil.toHexString(NetConnInfoCenter.GUID), "", "", String.valueOf(l));
       if (QLog.isColorLevel()) {
-        QLog.d("ReportLoginInfo", 2, "---> report login! --- uin: " + str1 + " Guid: " + SecUtil.toHexString(NetConnInfoCenter.GUID));
+        QLog.d("ReportLoginInfo", 2, "---> report login! --- uin: " + str1 + " Guid: " + SecUtil.toHexString(NetConnInfoCenter.GUID) + " reportID： " + l);
       }
       return;
     }

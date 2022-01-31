@@ -1,21 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
+import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment;
+import com.tencent.widget.ListView;
+import java.util.List;
 
 public class aygw
-  implements DialogInterface.OnClickListener
+  extends aygv<aygz, aytk>
 {
-  public aygw(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aygw(FTSEntitySearchDetailFragment paramFTSEntitySearchDetailFragment, ListView paramListView, bcws parambcws, List paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
   {
-    this.a.getActivity().finish();
+    super(paramListView, parambcws, paramList, paramString, paramFTSEntitySearchDetailActivity);
+  }
+  
+  protected aymg a(int paramInt)
+  {
+    return new aymd(FTSEntitySearchDetailFragment.a(this.a));
+  }
+  
+  protected ayrv a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new ayrq(paramViewGroup, 2131562588);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aygw
  * JD-Core Version:    0.7.0.1
  */

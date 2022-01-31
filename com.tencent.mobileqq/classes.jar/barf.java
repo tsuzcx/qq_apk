@@ -1,59 +1,49 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.CheckConErroObserver;
 
 public class barf
-  extends barg
+  extends CheckConErroObserver
 {
-  public barf(bard parambard, int paramInt)
+  barh jdField_a_of_type_Barh;
+  bari jdField_a_of_type_Bari;
+  
+  public barf(ProtoReqManager paramProtoReqManager, bari parambari, barh parambarh)
   {
-    super(parambard, paramInt);
+    this.jdField_a_of_type_Bari = parambari;
+    this.jdField_a_of_type_Barh = parambarh;
   }
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (a(this.jdField_a_of_type_Bard.a)) {
-      return;
-    }
-    e();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      c();
-    }
-  }
-  
-  public void c()
-  {
-    boolean bool = true;
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("isVideo", 0);
-    if (this.b != null)
+    if (paramBundle != null)
     {
-      localBundle.putInt("result", 1);
-      localBundle.putString("url", this.b);
+      Object localObject = paramBundle.getString("msf_con_erro");
+      paramBundle = (Bundle)localObject;
+      if (localObject == null) {
+        paramBundle = "";
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.richmedia.ProtoReqManager", 2, "CheckConErroObserverImp.onReceive -> msfConErro: " + paramBundle);
+      }
+      if (this.jdField_a_of_type_Bari != null)
+      {
+        localObject = this.jdField_a_of_type_Bari.a;
+        if (localObject != null) {
+          ((FromServiceMsg)localObject).addAttribute("_tag_socket_connerror", paramBundle);
+        }
+      }
     }
-    for (;;)
-    {
-      bare.a().a(bool, this.jdField_a_of_type_Int, localBundle);
-      return;
-      localBundle.putInt("result", 0);
-      localBundle.putString("error", "");
-      bool = false;
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction != null) {
-      this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.cancelTransaction();
+    if (this.jdField_a_of_type_Barh.a != null) {
+      this.jdField_a_of_type_Barh.a.a(this.jdField_a_of_type_Bari, this.jdField_a_of_type_Barh);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     barf
  * JD-Core Version:    0.7.0.1
  */

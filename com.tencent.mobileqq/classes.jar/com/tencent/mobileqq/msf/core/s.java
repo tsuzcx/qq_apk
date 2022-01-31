@@ -4,11 +4,9 @@ import android.os.Build;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.a.a;
 import com.tencent.mobileqq.msf.core.c.e;
-import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.quic.QuicWrapper;
 import com.tencent.mobileqq.msf.sdk.utils.MonitorSocketStat;
-import com.tencent.mobileqq.msf.service.g;
-import com.tencent.mobileqq.msf.service.h;
+import com.tencent.mobileqq.msf.service.j;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Properties;
@@ -16,7 +14,7 @@ import java.util.Properties;
 class s
   extends Thread
 {
-  s(MsfCore paramMsfCore, k paramk, boolean paramBoolean, int paramInt1, int paramInt2) {}
+  s(MsfCore paramMsfCore, com.tencent.mobileqq.msf.core.c.k paramk, boolean paramBoolean, int paramInt1, int paramInt2) {}
   
   public void run()
   {
@@ -32,19 +30,19 @@ class s
       if (this.a.c())
       {
         this.e.statReporter = this.a;
-        if (g.f)
+        if (j.f)
         {
           QLog.d("MSF.C.MsfCore", 1, "MSF_Alive_Log do report JobScheduler alive MSF to rdm in msfcore init");
-          g.a(true);
+          j.a(true);
         }
         this.e.store.reportLoadCfgTempFile();
       }
       QLog.d("MSF.C.MsfCore", 1, "init beacon Cost=" + (SystemClock.elapsedRealtime() - l));
       l = SystemClock.elapsedRealtime();
-      if (h.a)
+      if (com.tencent.mobileqq.msf.service.k.a)
       {
         QLog.d("MSF.C.MsfCore", 1, "MSF_Alive_REPORT_Log do report MSF alive to bigT in msfcore init");
-        h.a(null);
+        com.tencent.mobileqq.msf.service.k.a(null);
       }
       QLog.d("MSF.C.MsfCore", 1, "init BigT Cost=" + (SystemClock.elapsedRealtime() - l));
       l = SystemClock.elapsedRealtime();

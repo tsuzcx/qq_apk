@@ -1,131 +1,210 @@
-import android.app.Activity;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.MultiWindowAIOHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.MultiWindowAIOHelper.3;
+import com.tencent.mobileqq.activity.aio.helper.MultiWindowAIOHelper.4;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import java.util.List;
 
 public class afaw
+  implements afal
 {
-  public static String a = "BlessJsApiUtils";
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new MultiWindowAIOHelper.1(this);
   
-  public static void a(Activity paramActivity, String paramString1, String paramString2)
+  public afaw(BaseChatPie paramBaseChatPie)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString1.trim())))
-    {
-      bcql.a(paramActivity, 2131690497, 1).a();
-      return;
-    }
-    Intent localIntent = new Intent(paramActivity, BlessSelectMemberActivity.class);
-    localIntent.putExtra("param_type", 9003);
-    localIntent.putExtra("param_entrance", 15);
-    localIntent.putExtra("param_only_friends", true);
-    localIntent.putExtra("param_donot_need_contacts", true);
-    localIntent.putExtra("param_title", paramActivity.getString(2131690514));
-    localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131691035));
-    localIntent.putExtra("param_exit_animation", 1);
-    localIntent.putExtra("param_blesstype", 1);
-    localIntent.putExtra("param_blessword_content", paramString1);
-    localIntent.putExtra("param_web_callback", paramString2);
-    paramActivity.startActivity(localIntent);
-    paramActivity.overridePendingTransition(2130771992, 2130771993);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
   }
   
-  public static boolean a(AppInterface paramAppInterface)
+  private int a()
   {
-    boolean bool = VideoEnvironment.b(paramAppInterface);
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d(a, 2, "isMobileSupportPTV fasle");
+    augx localaugx = a();
+    if (localaugx == null) {
+      return -1;
     }
-    return bool;
+    return localaugx.c();
   }
   
-  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, String paramString12)
+  private augx a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "startBlessPtvActivity , supportVideo:" + paramString1 + ", supportPhoto:" + paramString2 + ", cameramode:" + paramString3 + ", unfoldDDStr:" + paramString5 + ", dDCategoryName:" + paramString6 + ", dDItemID:" + paramString7 + ", unfoldFilter:" + paramString9 + ", filterCategoryName:" + paramString10 + ", filterItemID:" + paramString11 + ", callback:" + paramString12);
-    }
-    boolean bool1 = "1".equals(paramString1);
-    boolean bool2 = "1".equals(paramString2);
-    if ("1".equals(paramString3)) {}
-    boolean bool3;
-    boolean bool4;
-    boolean bool5;
-    boolean bool6;
-    for (int i = 2;; i = 1)
-    {
-      bool3 = "1".equals(paramString4);
-      bool4 = "1".equals(paramString8);
-      bool5 = "1".equals(paramString5);
-      bool6 = "1".equals(paramString9);
-      if (avte.a()) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i(a, 2, "supportMediaCodec = false");
-      }
-      bcql.a(paramActivity, paramActivity.getString(2131690511), 0).a();
-      return false;
-    }
-    paramAppInterface = biid.a(bool1, bool2, i, true, bool3, bool5, paramString6, paramString7, bool4, bool6, paramString10, paramString11, biid.e, "", "", null, "", "", "", "", null);
-    paramString1 = new Intent(paramActivity, StoryTransitionActivity.class);
-    paramString1.putExtras(paramAppInterface);
-    paramString1.putExtra(biid.p, true);
-    paramString1.putExtra("jump_action", 7);
-    paramActivity.startActivity(paramString1);
-    return true;
-  }
-  
-  public static boolean b(AppInterface paramAppInterface)
-  {
-    boolean bool = axle.c();
-    if ((!bool) && (QLog.isColorLevel())) {
-      QLog.d(a, 2, "issupportFilterSo false");
-    }
-    return bool;
-  }
-  
-  public static boolean c(AppInterface paramAppInterface)
-  {
-    boolean bool = true;
-    if (paramAppInterface.getCurrentAccountUin() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i(a, 2, "isAccLoginSuccess false.");
-      }
-    }
+    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a();
+    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {}
+    int i;
     do
     {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!a(paramAppInterface));
-        if (axle.a(BaseApplicationImpl.getContext()) == 1) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(a, 2, "PtvFilterSoLoad getFilterSoState is false");
-      return false;
-    } while (!avte.a());
-    if (ShortVideoUtils.a()) {}
-    for (;;)
+      return null;
+      i = localBaseActivity.getIntent().getIntExtra("KEY_MULTI_WINDOW_AIO_CONTEXT_ID", -1);
+    } while (i == -1);
+    return ((augw)localBaseActivity.app.getManager(325)).b(i);
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  }
+  
+  private void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiWindowAIOHelper", 2, "onShowFirst() called");
+    }
+  }
+  
+  private void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiWindowAIOHelper", 2, "onCreate() called");
+    }
+    Object localObject = a();
+    if ((localObject != null) && (((augx)localObject).a()))
     {
-      return bool;
-      ShortVideoUtils.a(paramAppInterface);
-      if (!ShortVideoUtils.a()) {
-        bool = false;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+      if (localObject != null) {
+        ((ChatXListView)localObject).setOnLayoutListener(new afax(this));
       }
     }
+  }
+  
+  private void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiWindowAIOHelper", 2, "onStart() called");
+    }
+  }
+  
+  private void f()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiWindowAIOHelper", 2, "onResume() called");
+    }
+  }
+  
+  private void g()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiWindowAIOHelper", 2, "onShow() called");
+    }
+  }
+  
+  private void h()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  private void i() {}
+  
+  private void j()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiWindowAIOHelper", 2, "tryRestoreListViewState() called");
+    }
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Aelz;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject1 = ((aelz)localObject1).a();
+      i = a();
+      if ((localObject1 != null) && (((List)localObject1).size() == i))
+      {
+        localObject1 = a();
+        if ((localObject1 != null) && (((augx)localObject1).a()))
+        {
+          localObject2 = ((augx)localObject1).a();
+          if (localObject2 != null)
+          {
+            localObject2 = ((auhb)localObject2).a();
+            if (localObject2 != null) {
+              break label100;
+            }
+            QLog.e("MultiWindowAIOHelper", 1, "tryRestoreListViewState: listView == null");
+          }
+        }
+      }
+    }
+    return;
+    label100:
+    int i = ((ListView)localObject2).getLastVisiblePosition();
+    View localView = ((ListView)localObject2).getChildAt(((ListView)localObject2).getChildCount() - 1);
+    int j = ((ListView)localObject2).getBottom() - localView.getBottom();
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiWindowAIOHelper", 2, "tryRestoreListViewState() anchorPosition = " + i + ", specifyBottom = " + j);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.setOnLayoutListener(null);
+    this.jdField_a_of_type_AndroidOsHandler.post(new MultiWindowAIOHelper.3(this, i, j));
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new MultiWindowAIOHelper.4(this, (augx)localObject1), 350L);
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Aelz != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Aelz.d();
+    }
+    long l = SystemClock.elapsedRealtime();
+    if (l - this.jdField_a_of_type_Long >= 1000L)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 300L);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("MultiWindowAIOHelper", 2, "AIO start multi window!  but list idle time lower 2s!  please wait... dif time = " + (l - this.jdField_a_of_type_Long));
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 5: 
+    case 9: 
+    case 10: 
+    case 12: 
+    case 13: 
+    default: 
+      return;
+    case 2: 
+      d();
+      return;
+    case 3: 
+      e();
+      return;
+    case 4: 
+      f();
+    case 6: 
+      c();
+      return;
+    case 7: 
+      g();
+      return;
+    case 8: 
+      h();
+      return;
+    case 11: 
+      i();
+      return;
+    }
+    b();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 2, 4, 6, 7, 8, 11, 14 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afaw
  * JD-Core Version:    0.7.0.1
  */

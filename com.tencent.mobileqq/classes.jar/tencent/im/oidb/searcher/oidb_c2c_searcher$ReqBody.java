@@ -25,7 +25,7 @@ public final class oidb_c2c_searcher$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.searcher.oidb_c2c_searcher.ReqBody
  * JD-Core Version:    0.7.0.1
  */

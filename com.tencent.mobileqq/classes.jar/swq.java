@@ -1,51 +1,26 @@
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
 
-public class swq
-  implements waj
+public final class swq
+  implements Parcelable.Creator<ProfileParams>
 {
-  private swr jdField_a_of_type_Swr;
-  
-  public swq(swp paramswp, swr paramswr)
+  public ProfileParams a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Swr = paramswr;
+    swr localswr = new swr();
+    localswr.a(paramParcel.readString()).a(paramParcel.readInt()).b(paramParcel.readString()).c(paramParcel.readString()).d(paramParcel.readString()).a((ProfileParams.CurLoginUsr)paramParcel.readParcelable(ProfileParams.CurLoginUsr.CREATOR.getClass().getClassLoader()));
+    return localswr.a();
   }
   
-  public void onFailure(String paramString)
+  public ProfileParams[] a(int paramInt)
   {
-    ved.e(swp.a, "fail to execute ffmpeg command. error message : %s.", new Object[] { paramString });
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    swp.a(this.jdField_a_of_type_Swp);
-    if (swp.b(this.jdField_a_of_type_Swp) == 0)
-    {
-      ved.b(swp.a, "all ffmpeg commands have already finished. start clearing cache.");
-      swp.a(this.jdField_a_of_type_Swp);
-    }
-  }
-  
-  public void onProgress(String paramString) {}
-  
-  public void onStart()
-  {
-    ved.b(swp.a, "start executing ffmpeg commands.");
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    if (vyf.a(BaseApplication.getContext(), this.jdField_a_of_type_Swr.d, this.jdField_a_of_type_Swr.e))
-    {
-      ved.b(swp.a, "save video to album success.");
-      vei.a("video_edit", "video_save_local", 0, 0, new String[0]);
-      return;
-    }
-    ved.e(swp.a, "save video to album failed.");
+    return new ProfileParams[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     swq
  * JD-Core Version:    0.7.0.1
  */

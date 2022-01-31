@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
-import axrn;
+import azmz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,7 +23,7 @@ public final class ReadInJoyUtils$7
         String str = localIterator.next().toString();
         localHashMap.put(str, this.jdField_a_of_type_OrgJsonJSONObject.optString(str));
       }
-      axrn.a(this.jdField_a_of_type_MqqAppAppRuntime.getApplication()).a(null, "actKanDianViolaPageDataNew", this.jdField_a_of_type_Boolean, -1L, -1L, localException, null, true);
+      azmz.a(this.jdField_a_of_type_MqqAppAppRuntime.getApplication()).a(null, "actKanDianViolaPageDataNew", this.jdField_a_of_type_Boolean, -1L, -1L, localException, null, true);
     }
     catch (Exception localException)
     {
@@ -34,7 +34,7 @@ public final class ReadInJoyUtils$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.7
  * JD-Core Version:    0.7.0.1
  */

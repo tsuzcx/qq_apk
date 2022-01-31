@@ -1,42 +1,31 @@
-import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
 
 public class uya
 {
   public int a;
-  public Drawable a;
+  public long a;
   public String a;
-  public uxw a;
-  public int b;
   
-  public String a()
+  public uya(uxx paramuxx, String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      return "?";
+    this.jdField_a_of_type_JavaLangString = "";
+    paramuxx = ((ure)urr.a(19)).a(paramString);
+    if (paramuxx != null) {
+      a(paramuxx);
     }
-    if (this.jdField_a_of_type_Uxw == null) {
-      return this.jdField_a_of_type_JavaLangString;
-    }
-    return uyl.a(new Object[] { this.jdField_a_of_type_JavaLangString, "/", this.jdField_a_of_type_Uxw.a() });
   }
   
-  public boolean equals(Object paramObject)
+  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
   {
-    return a().equals(((uya)paramObject).a());
-  }
-  
-  public int hashCode()
-  {
-    return a().hashCode();
-  }
-  
-  public String toString()
-  {
-    return a();
+    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
+    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
+    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uya
  * JD-Core Version:    0.7.0.1
  */

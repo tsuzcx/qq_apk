@@ -1,316 +1,119 @@
-import android.text.TextUtils;
-import com.tencent.ad.tangram.net.AdHttp;
-import com.tencent.ad.tangram.net.AdHttp.Params;
-import com.tencent.ad.tangram.thread.AdThreadManager;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.views.canvas.GdtCanvasData;
-import com.tencent.gdtad.views.form.GdtFormData;
-import com.tencent.gdtad.views.form.framework.GdtFormItemData;
-import com.tencent.gdtad.views.xijing.GdtDMPReportUtil.1;
-import com.tencent.gdtad.views.xijing.GdtDMPReportUtil.2;
-import com.tencent.gdtad.views.xijing.GdtDMPReportUtil.3;
-import com.tencent.gdtad.views.xijing.GdtTextData;
-import java.io.UnsupportedEncodingException;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.text.InputFilter;
+import android.text.InputFilter.LengthFilter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 
 public class zcc
+  extends bdfq
 {
-  private static AdHttp.Params a(byte[] paramArrayOfByte)
+  protected EditText a;
+  
+  protected zcc(Context paramContext, int paramInt)
   {
-    AdHttp.Params localParams = new AdHttp.Params();
-    localParams.setUrl("https://h5.gdt.qq.com/player/actionset/report");
-    localParams.method = "POST";
-    localParams.contentType = "application/json";
-    localParams.referer = "http://fv.gdt.qq.com";
-    localParams.connectTimeoutMillis = 5000;
-    localParams.readTimeoutMillis = 5000;
-    localParams.requestData = paramArrayOfByte;
-    return localParams;
+    super(paramContext, paramInt);
   }
   
-  private static JSONObject a(GdtAd paramGdtAd)
+  public static zcc a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    if ((paramGdtAd == null) || (!paramGdtAd.isValid()))
-    {
-      yxp.d("GdtDMPReportUtil", "getActionParamsForDownload error");
-      return null;
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("app_id", paramGdtAd.getAppId());
-      return localJSONObject;
-    }
-    catch (JSONException paramGdtAd)
-    {
-      yxp.d("GdtDMPReportUtil", "getActionParamsForDownload", paramGdtAd);
-    }
-    return null;
+    zcc localzcc = new zcc(paramContext, 2131755801);
+    localzcc.setContentView(2131558943);
+    localzcc.setTitle(paramString1);
+    localzcc.setMessage(paramString2);
+    localzcc.a(paramInt1, paramOnClickListener2);
+    localzcc.b(paramInt2, paramOnClickListener1);
+    localzcc.setCanceledOnTouchOutside(false);
+    paramString1 = new EditText(paramContext);
+    paramString1.setSingleLine();
+    paramString1.setFilters(new InputFilter[] { new InputFilter.LengthFilter(120) });
+    paramString1.setBackgroundResource(2130843301);
+    paramString1.setPadding(20, 0, 20, 0);
+    paramString1.setHeight(aekt.a(37.0F, paramContext.getResources()));
+    paramString1.setTextSize(1, 14.0F);
+    paramString2 = new LinearLayout.LayoutParams(-1, aekt.a(37.0F, paramContext.getResources()));
+    paramString2.topMargin = aekt.a(11.0F, paramContext.getResources());
+    paramString1.setLayoutParams(paramString2);
+    localzcc.a(paramString1);
+    return localzcc;
   }
   
-  private static JSONObject a(GdtAd paramGdtAd, GdtFormData paramGdtFormData)
+  public zcc a(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
-    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (paramGdtFormData == null) || (!paramGdtFormData.isValid()))
+    if (paramOnClickListener == null)
     {
-      yxp.d("GdtDMPReportUtil", "getActionParamsForUpload error");
-      return null;
+      this.lBtn.setVisibility(8);
+      return this;
     }
-    GdtCanvasData localGdtCanvasData = yzf.a(paramGdtAd);
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramGdtAd = new JSONObject();
-        i = 0;
-        if (i < paramGdtFormData.getSize())
-        {
-          localObject = paramGdtFormData.getItem(i);
-          if ((localObject == null) || (!((GdtFormItemData)localObject).isValid())) {
-            yxp.d("GdtDMPReportUtil", "getActionParamsForUpload error");
-          } else {
-            paramGdtAd.put(((GdtFormItemData)localObject).title.text, ((GdtFormItemData)localObject).getResult());
-          }
-        }
-      }
-      catch (JSONException paramGdtAd)
-      {
-        yxp.d("GdtDMPReportUtil", "getActionParamsForUpload", paramGdtAd);
-        return null;
-      }
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("component_id", paramGdtFormData.formId);
-      ((JSONObject)localObject).put("component_type", 1);
-      ((JSONObject)localObject).put("bundle", paramGdtAd);
-      if (localGdtCanvasData != null)
-      {
-        if (!TextUtils.isEmpty(localGdtCanvasData.commonPageId)) {
-          ((JSONObject)localObject).put("common_page_id", localGdtCanvasData.commonPageId);
-        }
-        if (!TextUtils.isEmpty(localGdtCanvasData.name)) {
-          ((JSONObject)localObject).put("page_name", localGdtCanvasData.name);
-        }
-        if (localGdtCanvasData.pageId != -2147483648L) {
-          ((JSONObject)localObject).put("page_id", localGdtCanvasData.pageId);
-        }
-        if (!TextUtils.isEmpty(localGdtCanvasData.pageType)) {
-          ((JSONObject)localObject).put("page_type", localGdtCanvasData.pageType);
-        }
-        if (!TextUtils.isEmpty(localGdtCanvasData.pageUrl)) {
-          ((JSONObject)localObject).put("page_url", localGdtCanvasData.pageUrl);
-        }
-      }
-      paramGdtFormData = new JSONObject();
-      paramGdtFormData.put("form_info", paramGdtAd.toString());
-      paramGdtAd = new JSONObject();
-      paramGdtAd.put("custom_info", paramGdtFormData.toString());
-      paramGdtAd.put("leads_standard_form_info", ((JSONObject)localObject).toString());
-      return paramGdtAd;
-      i += 1;
-    }
+    this.lBtn.setText(paramInt);
+    this.lBtn.setContentDescription(getContext().getString(paramInt));
+    this.lBtn.setVisibility(0);
+    this.lBtn.setOnClickListener(new zcd(this, paramOnClickListener));
+    setSeperatorState();
+    return this;
   }
   
-  public static JSONObject a(GdtAd paramGdtAd, JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3)
+  protected void a(EditText paramEditText)
   {
-    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (paramGdtAd.actionSetId == -2147483648L) || (paramGdtAd.getAdvertiserId() == -2147483648L) || (TextUtils.isEmpty(paramGdtAd.getTraceId())))
-    {
-      yxp.d("GdtDMPReportUtil", "getRequestData error");
-      return null;
-    }
-    try
-    {
-      long l = System.currentTimeMillis();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("click_id", paramGdtAd.getTraceId());
-      JSONObject localJSONObject1 = new JSONObject();
-      localJSONObject1.put("action_time", l / 1000L);
-      localJSONObject1.put("action_type", paramString1);
-      if (!TextUtils.isEmpty(paramString2)) {
-        localJSONObject1.put("custom_action", paramString2);
-      }
-      if ((paramJSONObject != null) && (paramJSONObject != JSONObject.NULL)) {
-        localJSONObject1.put("action_param", paramJSONObject);
-      }
-      localJSONObject1.put("user_action_set_id", paramGdtAd.actionSetId);
-      localJSONObject1.put("url", paramString3);
-      localJSONObject1.put("trace", localJSONObject2);
-      paramJSONObject = new JSONArray();
-      paramJSONObject.put(0, localJSONObject1);
-      paramString1 = new JSONObject();
-      paramString1.put("account_id", paramGdtAd.getAdvertiserId());
-      paramString1.put("actions", paramJSONObject);
-      paramString1.put("signature", paramGdtAd.getTraceId() + l);
-      return paramString1;
-    }
-    catch (JSONException paramGdtAd)
-    {
-      yxp.d("GdtDMPReportUtil", "getRequestData", paramGdtAd);
-    }
-    return null;
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
+    localLayoutParams.bottomMargin = aekt.a(16.0F, getContext().getResources());
+    localLayoutParams.topMargin = aekt.a(8.0F, getContext().getResources());
+    ((RelativeLayout.LayoutParams)this.title.getLayoutParams()).bottomMargin = aekt.a(5.0F, getContext().getResources());
+    addView(paramEditText);
+    this.a = paramEditText;
   }
   
-  public static zaf a(GdtAd paramGdtAd, GdtFormData paramGdtFormData)
+  public void a(String paramString, int paramInt)
   {
-    paramGdtFormData = a(paramGdtAd, paramGdtFormData);
-    paramGdtAd = a(a(paramGdtAd, paramGdtFormData, "RESERVATION", null, "http://fv.gdt.qq.com"));
-    if ((paramGdtFormData == null) || (paramGdtFormData == JSONObject.NULL) || (paramGdtAd == null) || (paramGdtAd.length <= 0))
+    if (paramString != null)
     {
-      yxp.d("GdtDMPReportUtil", "reportUpload error");
-      return new zaf(4, -1, null);
+      this.text.setText(paramString);
+      this.text.setTextSize(1, 16.0F);
+      this.text.setGravity(1);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+      localLayoutParams.topMargin = 0;
+      localLayoutParams.bottomMargin = aekt.a(9.0F, getContext().getResources());
+      this.text.setLayoutParams(localLayoutParams);
+      this.text.setContentDescription(paramString);
+      this.text.setVisibility(0);
+      this.text.setTextColor(paramInt);
+      ((RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams()).topMargin = 0;
+      return;
     }
-    int i = 0;
-    for (;;)
-    {
-      if (i < 3)
-      {
-        paramGdtFormData = a(paramGdtAd);
-        if (paramGdtFormData != null) {}
-      }
-      else
-      {
-        yxp.d("GdtDMPReportUtil", "reportUpload error");
-        return new zaf(4, -1, null);
-      }
-      AdHttp.send(paramGdtFormData);
-      if (paramGdtFormData.isSuccess()) {
-        return new zaf(1, -1, null);
-      }
-      i += 1;
-    }
+    this.text.setVisibility(8);
   }
   
-  public static void a(GdtAd paramGdtAd)
+  public zcc b(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
-    AdThreadManager.INSTANCE.post(new GdtDMPReportUtil.1(paramGdtAd), 4);
-  }
-  
-  public static byte[] a(JSONObject paramJSONObject)
-  {
-    if ((paramJSONObject == null) || (paramJSONObject == JSONObject.NULL)) {
-      return null;
-    }
-    try
+    if (paramOnClickListener == null)
     {
-      paramJSONObject = paramJSONObject.toString().getBytes("UTF-8");
-      return paramJSONObject;
+      this.rBtn.setVisibility(8);
+      return this;
     }
-    catch (UnsupportedEncodingException paramJSONObject)
-    {
-      yxp.d("GdtDMPReportUtil", "getRequestData", paramJSONObject);
-    }
-    return null;
+    this.rBtn.setText(paramInt);
+    this.rBtn.setContentDescription(getContext().getString(paramInt));
+    this.rBtn.setVisibility(0);
+    this.rBtn.setOnClickListener(new zce(this, paramOnClickListener));
+    setSeperatorState();
+    return this;
   }
   
-  public static void b(GdtAd paramGdtAd)
+  public EditText getEditText()
   {
-    AdThreadManager.INSTANCE.post(new GdtDMPReportUtil.2(paramGdtAd), 4);
+    return this.a;
   }
   
-  public static void c(GdtAd paramGdtAd)
+  public String getInputValue()
   {
-    AdThreadManager.INSTANCE.post(new GdtDMPReportUtil.3(paramGdtAd), 4);
-  }
-  
-  private static boolean d(GdtAd paramGdtAd)
-  {
-    paramGdtAd = a(a(paramGdtAd, a(paramGdtAd), "CUSTOM", "DOWNLOAD_CLICK", "http://fv.gdt.qq.com"));
-    if ((paramGdtAd == null) || (paramGdtAd.length <= 0)) {
-      yxp.d("GdtDMPReportUtil", "reportAppBtnClick error");
-    }
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < 3)
-      {
-        AdHttp.Params localParams = a(paramGdtAd);
-        AdHttp.send(localParams);
-        if ((localParams != null) && (localParams.isSuccess()))
-        {
-          yxp.b("GdtDMPReportUtil", "reportAppBtnClick success");
-          return true;
-        }
-        yxp.d("GdtDMPReportUtil", "reportAppBtnClick error");
-        i += 1;
-      }
-    }
-  }
-  
-  private static boolean e(GdtAd paramGdtAd)
-  {
-    if ((paramGdtAd == null) || (TextUtils.isEmpty(paramGdtAd.getCanvas()))) {}
-    for (;;)
-    {
-      return false;
-      Object localObject1 = new JSONObject();
-      int i;
-      try
-      {
-        Object localObject2 = new JSONObject(paramGdtAd.getCanvas()).getJSONObject("content").getJSONObject("pageConfig");
-        String str = ((JSONObject)localObject2).getString("pageId");
-        localObject2 = ((JSONObject)localObject2).getString("pageUrl");
-        if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
-          continue;
-        }
-        ((JSONObject)localObject1).put("object", "product");
-        ((JSONObject)localObject1).put("page_id", str);
-        ((JSONObject)localObject1).put("page_url", localObject2);
-        paramGdtAd = a(a(paramGdtAd, (JSONObject)localObject1, "VIEW_CONTENT", null, null));
-        if ((paramGdtAd == null) || (paramGdtAd.length <= 0))
-        {
-          yxp.d("GdtDMPReportUtil", "reportOpenWebPage error");
-          return false;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-        i = 0;
-      }
-      while (i < 3)
-      {
-        localObject1 = a(paramGdtAd);
-        AdHttp.send((AdHttp.Params)localObject1);
-        if ((localObject1 != null) && (((AdHttp.Params)localObject1).isSuccess())) {
-          return true;
-        }
-        yxp.d("GdtDMPReportUtil", "reportOpenWebPage error");
-        i += 1;
-      }
-    }
-  }
-  
-  private static boolean f(GdtAd paramGdtAd)
-  {
-    paramGdtAd = a(a(paramGdtAd, null, "VIEW_CONTENT", null, "http://fv.gdt.qq.com"));
-    if ((paramGdtAd == null) || (paramGdtAd.length <= 0)) {
-      yxp.d("GdtDMPReportUtil", "reportLoad error");
-    }
-    for (;;)
-    {
-      return false;
-      int i = 0;
-      while (i < 3)
-      {
-        AdHttp.Params localParams = a(paramGdtAd);
-        AdHttp.send(localParams);
-        if ((localParams != null) && (localParams.isSuccess())) {
-          return true;
-        }
-        yxp.d("GdtDMPReportUtil", "reportLoad error");
-        i += 1;
-      }
-    }
+    return this.a.getText().toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zcc
  * JD-Core Version:    0.7.0.1
  */

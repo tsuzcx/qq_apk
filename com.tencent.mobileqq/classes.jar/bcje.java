@@ -1,34 +1,21 @@
-import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 
 public class bcje
-  implements ajte
+  implements aqte
 {
-  public void a(int paramInt) {}
+  public bcje(TroopFileTransferManager paramTroopFileTransferManager, TroopFileTransferManager.Item paramItem) {}
   
-  public void a(long paramLong1, long paramLong2, boolean paramBoolean) {}
+  public void a() {}
   
-  public void a(submsgtype0xdd.MsgBody paramMsgBody) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void b()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      a((submsgtype0xdd.MsgBody)paramObject);
-      return;
-    case 2: 
-      paramObject = (Object[])paramObject;
-      a(((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
-      return;
-    }
-    a(((Integer)paramObject).intValue());
+    aqsz.a(new aret(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.e)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcje
  * JD-Core Version:    0.7.0.1
  */

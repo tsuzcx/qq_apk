@@ -1,100 +1,140 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import BOSSStrategyCenter.tAdvDesc;
+import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvRsp;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
 public class bjmh
-  implements View.OnClickListener
+  extends avqu
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
+  private static bjmh jdField_a_of_type_Bjmh;
+  private WeakReference<bjmd> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public bjmh(View paramView, String paramString)
+  public static bjmh a()
   {
-    a(paramView);
-    this.b = paramString;
-  }
-  
-  private void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131379422));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363521));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131378248));
-    paramView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379517);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131379518);
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ColorDrawable localColorDrawable = new ColorDrawable(-16777216);
-    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-    localObject = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20180423/4c3ece054ae044eb85797d31fa487ce7.jpg", (URLDrawable.URLDrawableOptions)localObject);
-    ((URLDrawable)localObject).setURLDrawableListener(new bjmi(this.jdField_a_of_type_AndroidWidgetTextView));
-    paramView.setBackgroundDrawable((Drawable)localObject);
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-  }
-  
-  public RelativeLayout a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(paramOnClickListener);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean != paramBoolean)
+    if (jdField_a_of_type_Bjmh == null) {}
+    try
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131716912));
+      if (jdField_a_of_type_Bjmh == null) {
+        jdField_a_of_type_Bjmh = new bjmh();
+      }
+      return jdField_a_of_type_Bjmh;
+    }
+    finally {}
+  }
+  
+  public static Boolean a(String paramString)
+  {
+    return Boolean.valueOf(bhpe.a(BaseApplicationImpl.getContext(), paramString));
+  }
+  
+  public static String a(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = Pattern.compile("\"download_app_package_name\":\"[^\"]*").matcher(paramString);
+      localObject1 = localObject2;
+      if (paramString.find())
+      {
+        paramString = paramString.group(0).split("\"");
+        localObject1 = localObject2;
+        if (paramString.length == 4)
+        {
+          localObject1 = localObject2;
+          if (paramString[3].length() > 0) {
+            localObject1 = paramString[3];
+          }
+        }
       }
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131716914));
+    return localObject1;
   }
   
-  public void onClick(View paramView)
+  public static void a(MobileQbossAdvRsp paramMobileQbossAdvRsp)
   {
-    switch (paramView.getId())
+    if (paramMobileQbossAdvRsp == null) {}
+    for (;;)
     {
-    default: 
       return;
+      paramMobileQbossAdvRsp = paramMobileQbossAdvRsp.mapAdv.entrySet().iterator();
+      while (paramMobileQbossAdvRsp.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMobileQbossAdvRsp.next();
+        Iterator localIterator = ((ArrayList)localEntry.getValue()).iterator();
+        while (localIterator.hasNext())
+        {
+          tAdvDesc localtAdvDesc = (tAdvDesc)localIterator.next();
+          String str = a(localtAdvDesc.res_data);
+          if ((str != null) && (a(str).booleanValue()))
+          {
+            localIterator.remove();
+            bjmf.a().d(localtAdvDesc.res_traceinfo, null);
+          }
+        }
+        if (((ArrayList)localEntry.getValue()).size() == 0) {
+          paramMobileQbossAdvRsp.remove();
+        }
+      }
     }
-    if (this.jdField_a_of_type_Boolean) {
-      vzw.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), this.b, this.jdField_a_of_type_JavaLangString);
-    }
-    for (paramView = "clk_open";; paramView = "clk_download")
+  }
+  
+  public void a(ArrayList<Integer> paramArrayList, bjmd parambjmd, String paramString)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambjmd);
+    parambjmd = BaseApplicationImpl.getApplication().getRuntime();
+    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), ayxv.class);
+    localNewIntent.putExtra("selfuin", Long.parseLong(parambjmd.getAccount()));
+    localNewIntent.putIntegerArrayListExtra("appid", paramArrayList);
+    localNewIntent.putExtra("requestType", paramString);
+    parambjmd.registObserver(this);
+    parambjmd.startServlet(localNewIntent);
+    QLog.i("QzoneQbossHelper", 1, "getQbossData req");
+  }
+  
+  protected void h(boolean paramBoolean, Bundle paramBundle)
+  {
+    String str1 = paramBundle.getString("requestType");
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
+    for (bjmd localbjmd = (bjmd)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localbjmd = null)
     {
-      vei.a("weishi_share", paramView, 0, 0, new String[0]);
-      return;
-      bcql.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), ajya.a(2131716911), 0).a();
-      vzw.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getContext(), this.b);
+      if (paramBoolean)
+      {
+        if (localbjmd != null) {
+          localbjmd.a(paramBundle, str1, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+        }
+        QLog.i("QzoneQbossHelper", 1, "onGetQbossData rsp success");
+      }
+      for (;;)
+      {
+        BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this);
+        return;
+        int i = paramBundle.getInt("ret", 0);
+        String str2 = paramBundle.getString("msg");
+        paramBundle = paramBundle.getIntegerArrayList("appid");
+        if (localbjmd != null) {
+          localbjmd.a(i, str2, str1, paramBundle);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjmh
  * JD-Core Version:    0.7.0.1
  */

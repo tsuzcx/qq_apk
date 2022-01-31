@@ -1,57 +1,27 @@
-import android.text.TextUtils;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.VoteViewV2;
+import com.tencent.mobileqq.widget.VoteViewV2.1;
 
 public class berz
-  implements Cloneable
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  public berz(VoteViewV2.1 param1) {}
   
-  public static berz a()
+  public void onClick(View paramView)
   {
-    berz localberz = new berz();
-    localberz.jdField_a_of_type_Int = bfgh.a("#000000");
-    localberz.jdField_a_of_type_JavaLangString = "white";
-    localberz.c = "default";
-    return localberz;
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    String str = paramJSONObject.optString("navigationBarBackgroundColor");
-    if (TextUtils.isEmpty(str)) {}
-    for (int i = this.jdField_a_of_type_Int;; i = bfgh.a(str))
-    {
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("navigationBarTextStyle", this.jdField_a_of_type_JavaLangString);
-      if ((!"white".equals(this.jdField_a_of_type_JavaLangString)) && (!"black".equals(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_JavaLangString = "white";
-      }
-      this.b = paramJSONObject.optString("navigationBarTitleText", this.b);
-      this.c = paramJSONObject.optString("navigationStyle", this.c);
-      return;
-    }
-  }
-  
-  public berz b()
-  {
-    try
-    {
-      berz localberz = (berz)super.clone();
-      return localberz;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-    return null;
+    paramView = new Intent(VoteViewV2.a(this.a.this$0), QQBrowserActivity.class);
+    String str = bdox.a(VoteViewV2.a(this.a.this$0), "praise", "");
+    VasWebviewUtil.openQQBrowserWithoutAD(VoteViewV2.a(this.a.this$0), str, 536870912L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(null, "thumbup", "others_click", null, 1, 0, 0, null, "0", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     berz
  * JD-Core Version:    0.7.0.1
  */

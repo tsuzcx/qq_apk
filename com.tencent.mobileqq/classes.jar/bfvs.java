@@ -1,24 +1,28 @@
-import android.text.DynamicLayout;
-import android.text.Layout.Alignment;
-import android.text.TextPaint;
-import android.text.TextUtils.TruncateAt;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class bfvs
-  extends DynamicLayout
+class bfvs
+  extends BroadcastReceiver
 {
-  public bfvs(CharSequence paramCharSequence1, CharSequence paramCharSequence2, TextPaint paramTextPaint, int paramInt1, Layout.Alignment paramAlignment, float paramFloat1, float paramFloat2, boolean paramBoolean, TextUtils.TruncateAt paramTruncateAt, int paramInt2)
-  {
-    super(paramCharSequence1, paramCharSequence2, paramTextPaint, paramInt1, paramAlignment, paramFloat1, paramFloat2, paramBoolean, paramTruncateAt, paramInt2);
-  }
+  bfvs(bfvr parambfvr) {}
   
-  public int getParagraphDirection(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return 1;
+    if ((paramIntent.getAction().equalsIgnoreCase("com.tencent.mobileqq.qidian.openactionsheet")) && (this.a.mRuntime.a() != null))
+    {
+      paramContext = (bhpy)bhql.a((Activity)paramContext, null);
+      paramContext.b(2131698536);
+      paramContext.c(2131690648);
+      paramContext.a(new bfvt(this, paramIntent, paramContext));
+      paramContext.show();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfvs
  * JD-Core Version:    0.7.0.1
  */

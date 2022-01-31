@@ -1,18 +1,18 @@
 package com.tencent.gdtad.api.motivevideo;
 
-import yvf;
-import yxp;
-import yzb;
+import aaky;
+import aanp;
+import aapa;
 
 public final class GdtMotiveVideoAd
   extends com.tencent.gdtad.api.GdtAd
 {
-  private yvf params;
+  private aaky params;
   
-  public GdtMotiveVideoAd(yvf paramyvf)
+  public GdtMotiveVideoAd(aaky paramaaky)
   {
-    super(paramyvf);
-    this.params = paramyvf;
+    super(paramaaky);
+    this.params = paramaaky;
   }
   
   public int getErrorCode(com.tencent.gdtad.aditem.GdtAd paramGdtAd, int paramInt1, int paramInt2, int paramInt3)
@@ -23,23 +23,23 @@ public final class GdtMotiveVideoAd
     }
     if ((paramGdtAd == null) || (!isValid()))
     {
-      yxp.d("GdtMotiveVideoAd", "getErrorCode error");
+      aanp.d("GdtMotiveVideoAd", "getErrorCode error");
       return 1;
     }
-    if (yzb.a(paramGdtAd.getCreativeSize())) {
+    if (aapa.a(paramGdtAd.getCreativeSize())) {
       return 0;
     }
     return 7;
   }
   
-  protected yvf getParams()
+  protected aaky getParams()
   {
     return this.params;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.api.motivevideo.GdtMotiveVideoAd
  * JD-Core Version:    0.7.0.1
  */

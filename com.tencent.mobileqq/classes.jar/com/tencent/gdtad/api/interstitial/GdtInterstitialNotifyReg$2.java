@@ -1,49 +1,22 @@
 package com.tencent.gdtad.api.interstitial;
 
-import android.content.Context;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.ark.ark;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtHandler.Options;
-import java.lang.ref.WeakReference;
-import yuc;
-import yui;
-import yxp;
+import aakc;
+import com.tencent.ad.tangram.net.AdHttp;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public final class GdtInterstitialNotifyReg$2
+public class GdtInterstitialNotifyReg$2
   implements Runnable
 {
-  public GdtInterstitialNotifyReg$2(WeakReference paramWeakReference, GdtInterstitialParams paramGdtInterstitialParams) {}
+  public GdtInterstitialNotifyReg$2(aakc paramaakc, AdHttp.Params paramParams) {}
   
   public void run()
   {
-    try
-    {
-      ark.arkNotify(yui.a().a().a, "interstitial_view_pause_event", "{}", "json");
-      yxp.b("GdtInterstitialNotifyReg", String.format("sendPause", new Object[0]));
-      Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      String str = yui.a().a().a;
-      if ((this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams != null) && (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.a != null))
-      {
-        GdtAd localGdtAd = this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.a.a;
-        AdReporterForAnalysis.reportForARKSendNotification(localContext, true, "interstitial_view_pause_event", str, localGdtAd);
-        return;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        yxp.d("GdtInterstitialNotifyReg", "sendPause", localThrowable);
-        continue;
-        Object localObject = null;
-      }
-    }
+    AdHttp.send(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialNotifyReg.2
  * JD-Core Version:    0.7.0.1
  */

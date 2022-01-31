@@ -1,39 +1,19 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import java.nio.ByteBuffer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiaz
+class aiaz
+  implements DialogInterface.OnClickListener
 {
-  public static ByteBuffer a(int paramInt1, int paramInt2)
+  aiaz(aiak paramaiak) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if (aiay.c)
-      {
-        ByteBuffer localByteBuffer1 = CameraGLSurfaceView.allocate(paramInt1, paramInt2);
-        aiay.b = true;
-        ByteBuffer localByteBuffer2 = localByteBuffer1;
-        if (localByteBuffer1 == null)
-        {
-          localByteBuffer2 = ByteBuffer.allocateDirect(paramInt2);
-          aiay.b = false;
-        }
-        return localByteBuffer2;
-      }
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-        continue;
-        localObject = null;
-      }
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiaz
  * JD-Core Version:    0.7.0.1
  */

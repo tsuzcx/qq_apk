@@ -1,18 +1,10 @@
-public class bfbq<T>
+public abstract interface bfbq
 {
-  public T a;
-  
-  public bfbq(T paramT)
-  {
-    Object localObject;
-    this.jdField_a_of_type_JavaLangObject = localObject;
-  }
-  
-  public void a() {}
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfbq
  * JD-Core Version:    0.7.0.1
  */

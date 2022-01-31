@@ -1,110 +1,50 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class akvt
+  implements TVK_SDKMgr.OnLogListener
 {
-  private static final Map<String, Integer> a = new HashMap();
+  public static String a = "cmgame_process.CmGameVideoLogImpl";
   
-  public static int a(String arg0, String paramString2)
+  public int d(String paramString1, String paramString2)
   {
-    paramString2 = ??? + "_" + paramString2;
-    synchronized (a)
-    {
-      if (a.containsKey(paramString2))
-      {
-        i = ((Integer)a.get(paramString2)).intValue();
-        return i;
-      }
-      int i = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4).getInt(paramString2, 0);
-      a.put(paramString2, Integer.valueOf(i));
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, paramString1 + ":" + paramString2);
     }
+    return 0;
   }
   
-  public static String a(String paramString)
+  public int e(String paramString1, String paramString2)
   {
-    String str = paramString;
-    if (paramString.length() > 4)
-    {
-      str = paramString.substring(4);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("DiySecureFileHelper", 4, paramString + " -> " + str);
-      }
-    }
-    return str;
+    QLog.e(a, 1, paramString1 + ":" + paramString2);
+    return 0;
   }
   
-  public static void a(String arg0, String paramString2, int paramInt)
+  public int i(String paramString1, String paramString2)
   {
-    int i = -1;
-    paramString2 = ??? + "_" + paramString2;
-    synchronized (a)
-    {
-      if (a.containsKey(paramString2)) {
-        i = ((Integer)a.get(paramString2)).intValue();
-      }
-      if (i != paramInt)
-      {
-        BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 4).edit().putInt(paramString2, paramInt).commit();
-        a.put(paramString2, Integer.valueOf(paramInt));
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i(a, 2, paramString1 + ":" + paramString2);
     }
+    return 0;
   }
   
-  private static void b(String paramString1, String paramString2)
+  public int v(String paramString1, String paramString2)
   {
-    Object localObject1 = new File(paramString1);
-    int i;
-    if (((File)localObject1).exists())
-    {
-      if (!((File)localObject1).isFile()) {
-        break label75;
-      }
-      i = bbdx.a(paramString1, paramString2);
-      if (i != 0) {
-        QLog.d("DiySecureFileHelper", 1, "Move [" + paramString1 + "] errorcode = " + i);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, paramString1 + ":" + paramString2);
     }
-    for (;;)
-    {
-      bbdx.a(paramString1);
-      return;
-      label75:
-      if (((File)localObject1).isDirectory())
-      {
-        localObject1 = b((File)localObject1);
-        int j = localObject1.length;
-        i = 0;
-        while (i < j)
-        {
-          Object localObject2 = localObject1[i];
-          b(localObject2.getAbsolutePath(), new File(paramString2, localObject2.getName()).getAbsolutePath());
-          i += 1;
-        }
-      }
-    }
+    return 0;
   }
   
-  private static File[] b(File paramFile)
+  public int w(String paramString1, String paramString2)
   {
-    File[] arrayOfFile = paramFile.listFiles();
-    paramFile = arrayOfFile;
-    if (arrayOfFile == null)
-    {
-      QLog.e("DiySecureFileHelper", 1, new Throwable(), new Object[0]);
-      paramFile = new File[0];
-    }
-    return paramFile;
+    QLog.w(a, 1, paramString1 + ":" + paramString2);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvt
  * JD-Core Version:    0.7.0.1
  */

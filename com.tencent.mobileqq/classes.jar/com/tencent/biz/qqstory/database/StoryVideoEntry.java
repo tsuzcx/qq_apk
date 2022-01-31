@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
-import auko;
-import aulv;
-import aumc;
+import awbv;
+import awdc;
+import awdj;
 
 public class StoryVideoEntry
-  extends auko
+  extends awbv
 {
   public long addTime;
   public String address;
@@ -75,7 +75,7 @@ public class StoryVideoEntry
   public String sourceVid;
   public int storyType;
   public int strangerViewCount;
-  @aulv(a=2147483647)
+  @awdc(a=2147483647)
   public long timeZoneOffsetMillis;
   public int totalLikeNum;
   public int totalRateCount = -1;
@@ -83,7 +83,7 @@ public class StoryVideoEntry
   public int uncheckLikeNum;
   public String unionId;
   public int uploadStatus = -1;
-  @aumc
+  @awdj
   public String vid;
   public long videoBytes;
   public long videoDuration;
@@ -109,7 +109,7 @@ public class StoryVideoEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.StoryVideoEntry
  * JD-Core Version:    0.7.0.1
  */

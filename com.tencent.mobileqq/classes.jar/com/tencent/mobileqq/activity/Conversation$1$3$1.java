@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import aavu;
-import ahkd;
+import acms;
+import ajbm;
 
 class Conversation$1$3$1
   implements Runnable
@@ -24,7 +24,7 @@ class Conversation$1$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.1.3.1
  * JD-Core Version:    0.7.0.1
  */

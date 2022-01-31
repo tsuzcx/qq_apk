@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class ContactMatch
-  extends auko
+  extends awbv
 {
   public short age;
   public int commonFriend;
   public short gender = 255;
   public boolean isReaded;
-  @aumc
+  @awdj
   public String mobileNo;
   public String name;
   public long timestamp;
@@ -18,7 +18,7 @@ public class ContactMatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.ContactMatch
  * JD-Core Version:    0.7.0.1
  */

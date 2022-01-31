@@ -1,38 +1,83 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import cooperation.qzone.feed.CertifiedFakeFeed;
 
-final class bjff
-  implements URLDrawable.URLDrawableListener
+public class bjff
 {
-  bjff(String paramString1, String paramString2, bkgj parambkgj, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper, bjcu parambjcu, int paramInt3) {}
+  private CertifiedFakeFeed a = new CertifiedFakeFeed(null);
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public bjff a(int paramInt)
   {
-    bjfe.a.remove(this.jdField_b_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QComboNPaster", 2, "applyNormalPaster onLoadFialed");
-    }
+    CertifiedFakeFeed.a(this.a, paramInt);
+    return this;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public bjff a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QComboNPaster", 2, "urlDrawableListener onLoadSuccessed");
-    }
-    bjfe.a(paramURLDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Bkgj, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.jdField_c_of_type_Float, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper, this.jdField_a_of_type_Bjcu, this.jdField_c_of_type_Int);
-    bjfe.a.remove(this.jdField_b_of_type_JavaLangString);
+    CertifiedFakeFeed.a(this.a, paramLong);
+    return this;
+  }
+  
+  public bjff a(String paramString)
+  {
+    CertifiedFakeFeed.a(this.a, paramString);
+    return this;
+  }
+  
+  public CertifiedFakeFeed a()
+  {
+    return this.a;
+  }
+  
+  public bjff b(int paramInt)
+  {
+    CertifiedFakeFeed.b(this.a, paramInt);
+    return this;
+  }
+  
+  public bjff b(String paramString)
+  {
+    CertifiedFakeFeed.b(this.a, paramString);
+    return this;
+  }
+  
+  public bjff c(int paramInt)
+  {
+    CertifiedFakeFeed.c(this.a, paramInt);
+    return this;
+  }
+  
+  public bjff c(String paramString)
+  {
+    CertifiedFakeFeed.c(this.a, paramString);
+    return this;
+  }
+  
+  public bjff d(int paramInt)
+  {
+    CertifiedFakeFeed.d(this.a, paramInt);
+    return this;
+  }
+  
+  public bjff d(String paramString)
+  {
+    CertifiedFakeFeed.d(this.a, paramString);
+    return this;
+  }
+  
+  public bjff e(String paramString)
+  {
+    CertifiedFakeFeed.e(this.a, paramString);
+    return this;
+  }
+  
+  public bjff f(String paramString)
+  {
+    CertifiedFakeFeed.f(this.a, paramString);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjff
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,39 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.ViewGroup;
-import android.widget.ProgressBar;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
 class arhb
-  extends Handler
+  extends alkl
 {
-  arhb(args paramargs, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  arhb(argq paramargq) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(Object paramObject)
   {
-    if (args.a(this.a).getVisibility() != 0) {}
-    int i;
+    Object localObject = this.a.jdField_a_of_type_Ardq.a();
+    paramObject = (bbpe)paramObject;
+    if (((FileManagerEntity)localObject).TroopUin != paramObject.b) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TroopFileModel<FileAssistant>", 4, "difference troop uin file");
+      }
+    }
     do
     {
       return;
-      i = paramMessage.arg1;
-    } while ((i < args.b(this.a)) || (i > 100));
-    args.b(this.a, i);
-    args.a(this.a).setProgress(args.b(this.a));
-    paramMessage = Message.obtain();
-    if (args.b(this.a) >= 90) {
-      i += 1;
-    }
-    for (;;)
-    {
-      paramMessage.arg1 = i;
-      sendMessageDelayed(paramMessage, 500L);
-      return;
-      i += 4;
-    }
+      if (TextUtils.isEmpty(argq.a(this.a)))
+      {
+        localObject = bcjk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
+        if (((bbpe)localObject).a != null) {
+          argq.a(this.a, ((bbpe)localObject).a.toString());
+        }
+      }
+    } while ((paramObject.a == null) || (argq.a(this.a) == null) || (!argq.a(this.a).equals(paramObject.a.toString())));
+    argq.a(this.a, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arhb
  * JD-Core Version:    0.7.0.1
  */

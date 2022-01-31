@@ -1,37 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
-class mio
-  implements ValueAnimator.AnimatorUpdateListener
+public class mio
+  implements DialogInterface.OnClickListener
 {
-  mio(min parammin) {}
+  public mio(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramValueAnimator.getAnimatedFraction();
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    float f;
-    if (i <= 220)
-    {
-      f = i / 220.0F;
-      min.a(this.a).setAlpha(f);
-    }
-    if (i <= 160)
-    {
-      f = i / 100.0F;
-      min.a(this.a).setAlpha(f);
-    }
-    if (min.a(this.a) != null) {
-      min.a(this.a).requestLayout();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mio
  * JD-Core Version:    0.7.0.1
  */

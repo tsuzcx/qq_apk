@@ -1,34 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qlink.QlinkBridgeActivity;
 
 public class biou
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public biou(AEProviderContainerView paramAEProviderContainerView) {}
+  public biou(QlinkBridgeActivity paramQlinkBridgeActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramView.getId())
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        vei.a("clk_filter", vei.b(avtd.a), 0, false, new String[0]);
-      } while (AEProviderContainerView.a(this.a) == 0);
-      AEProviderContainerView.a(this.a);
-      return;
-      vei.a("clk_beauty", vei.b(avtd.a), 0, false, new String[0]);
-    } while (AEProviderContainerView.a(this.a) == 1);
-    AEProviderContainerView.b(this.a);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biou
  * JD-Core Version:    0.7.0.1
  */

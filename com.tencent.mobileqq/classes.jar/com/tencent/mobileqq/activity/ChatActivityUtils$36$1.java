@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import aapk;
+import acgi;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ChatActivityUtils$36$1
   implements Runnable
 {
-  public ChatActivityUtils$36$1(aapk paramaapk) {}
+  public ChatActivityUtils$36$1(acgi paramacgi) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ChatActivityUtils$36$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityUtils.36.1
  * JD-Core Version:    0.7.0.1
  */

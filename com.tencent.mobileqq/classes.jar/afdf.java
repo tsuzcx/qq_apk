@@ -1,45 +1,64 @@
-import com.tencent.mobileqq.activity.contact.RecommendTroopListWrapper.2.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
 
 public class afdf
-  extends akil
+  implements bhqd
 {
-  afdf(afdd paramafdd) {}
+  public afdf(ApolloItemBuilder paramApolloItemBuilder, afdm paramafdm, ApolloActionData paramApolloActionData, bhpy parambhpy) {}
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (1 == paramInt1) {
-      ThreadManager.getUIHandler().post(new RecommendTroopListWrapper.2.1(this, paramString));
+    switch (paramInt)
+    {
     }
-  }
-  
-  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
-  {
-    this.a.a(paramBoolean1, paramInt1, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
-  }
-  
-  protected void a(boolean paramBoolean1, int paramInt1, String paramString, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
-  {
-    this.a.a(paramBoolean1, paramInt1, paramString, paramInt2, paramBoolean2, paramArrayList, paramBoolean3);
-  }
-  
-  protected void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList)
-  {
-    this.a.a(paramBoolean1, paramLong, paramInt, paramBoolean2, paramArrayList);
-  }
-  
-  protected void b(boolean paramBoolean, List<RecommendTroopItem> paramList)
-  {
-    this.a.b(paramBoolean);
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.cancel();
+      return;
+      if ((1 == this.jdField_a_of_type_Afdm.f) || (this.jdField_a_of_type_Afdm.f == 2))
+      {
+        if (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext instanceof Activity))
+        {
+          QLog.e("ApolloItemBuilder", 1, "mContext is not activity");
+          return;
+        }
+        ApolloUtil.a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "lmx_actchat");
+      }
+      else
+      {
+        if (3 == this.jdField_a_of_type_Afdm.f)
+        {
+          paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url)) {
+            paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.url);
+          }
+          for (;;)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+            break;
+            paramView.putExtra("url", alef.T + "&id=" + this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData.actionId);
+          }
+        }
+        if (4 != this.jdField_a_of_type_Afdm.f) {
+          acex.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemApolloItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Afdm.a.uniseq);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afdf
  * JD-Core Version:    0.7.0.1
  */

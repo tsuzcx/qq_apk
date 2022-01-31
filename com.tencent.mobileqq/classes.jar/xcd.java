@@ -1,23 +1,20 @@
-import org.json.JSONObject;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class xcd
+  implements xcv
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
+  public xcd(DoodleLayout paramDoodleLayout) {}
   
-  public xcd(JSONObject paramJSONObject)
+  public void a()
   {
-    this.a = paramJSONObject.optString("icon");
-    this.b = paramJSONObject.optString("iconGrid");
-    this.c = paramJSONObject.optString("jumpUrl");
-    this.d = paramJSONObject.optString("iconLoveGrid");
+    if (this.a.a != null) {
+      this.a.a.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xcd
  * JD-Core Version:    0.7.0.1
  */

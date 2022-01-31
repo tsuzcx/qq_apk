@@ -1,6 +1,6 @@
 package cooperation.qqreader.ui;
 
-import aabi;
+import absf;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -14,23 +14,23 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-import bccj;
-import bfob;
-import bguy;
-import bgwf;
-import bgwm;
+import bebk;
+import bedf;
+import beei;
+import befb;
+import bhow;
+import bivx;
+import bixj;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import cooperation.qqreader.QRBridgeUtil;
-import xmq;
+import java.util.List;
+import zbj;
 
 public class ReaderContentPageFragment
   extends ReaderBaseFragment
   implements Handler.Callback
 {
-  private bfob jdField_a_of_type_Bfob = new bfob(Looper.getMainLooper(), this);
-  private bgwm jdField_a_of_type_Bgwm;
+  private bhow jdField_a_of_type_Bhow = new bhow(Looper.getMainLooper(), this);
   private String jdField_a_of_type_JavaLangString;
   
   public static WebViewFragment a(Intent paramIntent)
@@ -42,13 +42,35 @@ public class ReaderContentPageFragment
     return localReaderContentPageFragment;
   }
   
+  private void a(List<String> paramList)
+  {
+    if (paramList == null) {}
+    do
+    {
+      return;
+      if (!paramList.contains("menuItem:openWithQQBrowser")) {
+        paramList.add("menuItem:openWithQQBrowser");
+      }
+      if (!paramList.contains("menuItem:openWithSafari")) {
+        paramList.add("menuItem:openWithSafari");
+      }
+      if (!paramList.contains("menuItem:favorite")) {
+        paramList.add("menuItem:favorite");
+      }
+      if (!paramList.contains("menuItem:screenLongShotShare")) {
+        paramList.add("menuItem:screenLongShotShare");
+      }
+    } while (paramList.contains("menuItem:exposeArticle"));
+    paramList.add("menuItem:exposeArticle");
+  }
+  
   private void j()
   {
-    if (this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    if (this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    if (this.jdField_a_of_type_Bccj.c != null) {
-      this.jdField_a_of_type_Bccj.c.setVisibility(8);
+    if (this.jdField_a_of_type_Bebk.c != null) {
+      this.jdField_a_of_type_Bebk.c.setVisibility(8);
     }
     if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
     {
@@ -57,9 +79,10 @@ public class ReaderContentPageFragment
     }
   }
   
-  public xmq a()
+  private void k()
   {
-    return this.jdField_a_of_type_Bgwm.a();
+    zbj localzbj = b();
+    localzbj.a(bixj.a(localzbj.a()));
   }
   
   public void a(ImageView paramImageView, TextView paramTextView, String paramString1, String paramString2, String paramString3)
@@ -136,27 +159,27 @@ public class ReaderContentPageFragment
         }
         this.jdField_a_of_type_JavaLangString = paramString1.trim();
         break;
-        paramImageView.setImageResource(2130843255);
+        paramImageView.setImageResource(2130843439);
         continue;
-        paramImageView.setImageResource(2130843254);
+        paramImageView.setImageResource(2130843438);
         continue;
-        paramImageView.setImageResource(2130839753);
+        paramImageView.setImageResource(2130840101);
         continue;
-        paramImageView.setImageResource(2130846045);
+        paramImageView.setImageResource(2130846424);
         continue;
-        paramImageView.setImageResource(2130846055);
+        paramImageView.setImageResource(2130846434);
         continue;
-        paramImageView.setImageResource(2130838576);
+        paramImageView.setImageResource(2130838647);
       }
       label193:
       this.jdField_a_of_type_JavaLangString = null;
     }
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, aabi paramaabi)
+  public void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, View.OnClickListener paramOnClickListener, absf paramabsf)
   {
-    if ((this.jdField_a_of_type_Bccj != null) && (this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Bccj.c != null)) {
-      a(this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Bccj.c, paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramOnClickListener);
+    if ((this.jdField_a_of_type_Bebk != null) && (this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Bebk.c != null)) {
+      a(this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_Bebk.c, paramString1, paramString2, paramString3, paramBoolean, paramInt1, paramOnClickListener);
     }
   }
   
@@ -177,8 +200,8 @@ public class ReaderContentPageFragment
     if ((paramBundle instanceof ReaderBaseWebActivity))
     {
       paramBundle = ((ReaderBaseWebActivity)paramBundle).a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-      if ((paramBundle != null) && (this.jdField_a_of_type_Bccj.c != null)) {
-        paramBundle.a(this.jdField_a_of_type_Bccj.c);
+      if ((paramBundle != null) && (this.jdField_a_of_type_Bebk.c != null)) {
+        paramBundle.a(this.jdField_a_of_type_Bebk.c);
       }
     }
     return i;
@@ -186,18 +209,18 @@ public class ReaderContentPageFragment
   
   public void c()
   {
-    if (QRBridgeUtil.getAppInterface() == null)
+    beei localbeei = (beei)this.jdField_a_of_type_Bedf.a(4);
+    if (localbeei != null)
     {
-      bgwf.d("ReaderContentPageFragment", "QRBridgeUtil.mApp is null");
-      Toast.makeText(getActivity(), "阅读插件加载中，请稍后重试！", 0).show();
-      return;
+      k();
+      a(localbeei.a);
+      localbeei.a(b(), this.jdField_a_of_type_Befb.a);
     }
-    this.jdField_a_of_type_Bgwm.a();
   }
   
   public void e()
   {
-    a(this.jdField_a_of_type_Bfob);
+    a(this.jdField_a_of_type_Bhow);
     super.e();
     if (this.jdField_a_of_type_AndroidContentIntent != null)
     {
@@ -205,9 +228,6 @@ public class ReaderContentPageFragment
       if (localBundle != null) {
         this.jdField_a_of_type_ComTencentBizUiTouchWebView.setBackgroundColor(localBundle.getInt("readerBgColor", -1));
       }
-    }
-    if (this.jdField_a_of_type_Bgwm == null) {
-      this.jdField_a_of_type_Bgwm = new bgwm(getActivity(), getActivity(), QRBridgeUtil.getAppInterface());
     }
   }
   
@@ -239,14 +259,14 @@ public class ReaderContentPageFragment
   
   public void onClick(View paramView)
   {
-    if ((paramView == this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.jdField_a_of_type_Bccj.c))
+    if ((paramView == this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView) || (paramView == this.jdField_a_of_type_Bebk.c))
     {
       if ((this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) && (this.jdField_a_of_type_JavaLangString != null)) {
         this.jdField_a_of_type_ComTencentBizUiTouchWebView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
       }
       return;
     }
-    if (paramView == this.jdField_a_of_type_Bccj.jdField_a_of_type_AndroidWidgetTextView)
+    if (paramView == this.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetTextView)
     {
       i();
       return;
@@ -266,15 +286,12 @@ public class ReaderContentPageFragment
   public void onDestroy()
   {
     super.onDestroy();
-    this.jdField_a_of_type_Bfob.removeCallbacksAndMessages(null);
-    if (this.jdField_a_of_type_Bgwm != null) {
-      this.jdField_a_of_type_Bgwm = null;
-    }
+    this.jdField_a_of_type_Bhow.removeCallbacksAndMessages(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderContentPageFragment
  * JD-Core Version:    0.7.0.1
  */

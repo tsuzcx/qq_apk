@@ -1,38 +1,21 @@
-import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 
 public class aixu
-  extends ajdn
+  implements View.OnClickListener
 {
-  public aixu(ApolloGameInterfaceProxy paramApolloGameInterfaceProxy) {}
+  public aixu(ChooseItemView paramChooseItemView, View.OnClickListener paramOnClickListener) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (paramObject == null);
-    try
-    {
-      paramObject = new JSONObject(paramObject.toString());
-      paramInt = paramObject.optInt("errCode");
-      paramObject.remove("errCode");
-      ApolloGameInterfaceProxy.a(this.a, paramInt, "cs.ssoMessage.local", paramObject.toString());
-      return;
-    }
-    catch (Throwable paramObject)
-    {
-      QLog.e("cmgame_process.CmGameObserver", 1, paramObject, new Object[0]);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a();
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixu
  * JD-Core Version:    0.7.0.1
  */

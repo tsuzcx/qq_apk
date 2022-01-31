@@ -1,12 +1,15 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.item.GreatMoveCombolEffectView;
 
 public class afkw
 {
-  public TextView a;
+  public int a;
+  public String a;
+  
+  public afkw(GreatMoveCombolEffectView paramGreatMoveCombolEffectView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afkw
  * JD-Core Version:    0.7.0.1
  */

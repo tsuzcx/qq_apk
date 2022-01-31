@@ -1,23 +1,23 @@
-import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.CoverSelectTabFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
 public class qqy
-  extends qji
+  implements skj
 {
-  private VideoInfo a;
+  public qqy(CoverSelectTabFragment paramCoverSelectTabFragment) {}
   
-  public VideoInfo a()
+  public void a(sko paramsko)
   {
-    return this.a;
+    CoverSelectTabFragment.a(this.a).setCurrentItem(paramsko.a());
   }
   
-  public String a()
-  {
-    return this.a.g;
-  }
+  public void b(sko paramsko) {}
+  
+  public void c(sko paramsko) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qqy
  * JD-Core Version:    0.7.0.1
  */

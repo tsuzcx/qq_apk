@@ -1,54 +1,23 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.os.Handler;
+import android.os.Message;
 
-public class mxe
-  extends MSFServlet
+class mxe
+  extends Handler
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MSFServlet", 2, "onReceive");
-    }
-    if (paramIntent == null) {
-      return;
-    }
-    Bundle localBundle = paramIntent.getExtras();
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (byte[] arrayOfByte = bbma.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
+    mxd localmxd = (mxd)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      localBundle.putByteArray("data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("MSFServlet", 2, "onReceive exit");
+    default: 
       return;
-      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
-      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
     }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MSFServlet", 2, "onSend");
-    }
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bbma.a(arrayOfByte));
-    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-    if (QLog.isColorLevel()) {
-      QLog.i("MSFServlet", 2, "onSend exit");
-    }
+    localmxd.jdField_a_of_type_Mxc.a(((mxf[])localmxd.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxe
  * JD-Core Version:    0.7.0.1
  */

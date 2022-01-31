@@ -1,53 +1,79 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import java.util.Iterator;
+import java.util.List;
 
-class aovj
-  extends aovw
+public class aovj
 {
-  protected long a;
-  protected String a;
-  protected String b;
-  protected String c;
-  protected String d;
-  protected String e;
-  protected String f;
-  protected String g;
+  public byte a;
+  public int a;
+  public long a;
+  public LebaPluginInfo a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
   
-  public aovj(aouy paramaouy, MessageRecord paramMessageRecord)
+  public aovj()
   {
-    super(paramaouy);
-    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
-    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
-    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
-    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
-    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
-    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  void a(String paramString, int paramInt) {}
-  
-  void a(String paramString, int paramInt, aovv paramaovv)
+  public static String a(List<aovj> paramList)
   {
-    if ("1".equals(this.g))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
-      }
-      paramaovv.a(aouy.a(this.jdField_a_of_type_Long, false), false);
-      return;
+    if (paramList == null) {
+      return " print lebaData == null";
     }
-    if ((this.b == null) || (this.b.length() == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild uuid is null");
-      }
-      paramaovv.a(aouy.a(this.jdField_a_of_type_Long, true), false);
-      return;
+    if (paramList.isEmpty()) {
+      return " print lebaData.isEmpty()";
     }
-    aouy.a(this.jdField_a_of_type_Aouy).a().a().a(paramString, paramInt, this.d, 3, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aovk(this, paramString, paramaovv));
+    StringBuilder localStringBuilder = new StringBuilder(" print lebaData size = ").append(paramList.size());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      aovj localaovj = (aovj)paramList.next();
+      if (localaovj == null)
+      {
+        localStringBuilder.append("|item = null");
+      }
+      else
+      {
+        localStringBuilder.append("|item = ").append(localaovj.jdField_a_of_type_Long).append("|").append(localaovj.jdField_a_of_type_JavaLangString).append("|").append(localaovj.jdField_b_of_type_JavaLangString).append("|").append(localaovj.jdField_a_of_type_Int).append("|").append(localaovj.jdField_a_of_type_Byte).append("|").append(localaovj.jdField_b_of_type_Long).append("|").append(localaovj.jdField_a_of_type_Boolean).append("|");
+        if (localaovj.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo == null) {
+          localStringBuilder.append("info=null");
+        } else {
+          localStringBuilder.append(localaovj.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.toString());
+        }
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramObject == null) || (this.jdField_a_of_type_Long == 0L)) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (this == paramObject);
+      if (!(paramObject instanceof aovj)) {
+        break;
+      }
+      paramObject = (aovj)paramObject;
+      bool1 = bool2;
+    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return Long.valueOf(this.jdField_a_of_type_Long).hashCode();
   }
 }
 

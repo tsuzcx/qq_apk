@@ -1,33 +1,45 @@
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
-import java.io.File;
+import android.app.Activity;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
-class ardn
-  implements TVK_ICacheMgr.IPreloadCompleteCallback
+public abstract interface ardn
 {
-  private ardn(ardi paramardi) {}
+  public abstract int a();
   
-  public void onComplete(String paramString1, String paramString2)
-  {
-    synchronized (ardi.a(this.a))
-    {
-      String str = ardi.a(paramString1);
-      ardh.b("onComplete path:" + str);
-      ardh.b("onComplete vid:" + paramString1 + ", detail:" + paramString2);
-      ardi.a(this.a, paramString1);
-      paramString2 = new File(ardi.b(paramString1));
-      if (paramString2.exists()) {
-        paramString2.renameTo(new File(str));
-      }
-      ardi.b(this.a, paramString1);
-      ardi.b(this.a, ardi.a(this.a));
-      ardi.b(this.a);
-      return;
-    }
-  }
+  public abstract RelativeLayout a();
+  
+  public abstract QQAppInterface a();
+  
+  public abstract ForwardFileInfo a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
+  
+  public abstract boolean d();
+  
+  public abstract void e();
+  
+  public abstract boolean e();
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract Activity getActivity();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardn
  * JD-Core Version:    0.7.0.1
  */

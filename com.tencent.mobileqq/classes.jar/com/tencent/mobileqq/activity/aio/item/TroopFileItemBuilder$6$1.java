@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aede;
+import afzs;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 class TroopFileItemBuilder$6$1
   implements Runnable
@@ -17,7 +17,7 @@ class TroopFileItemBuilder$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder.6.1
  * JD-Core Version:    0.7.0.1
  */

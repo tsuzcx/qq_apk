@@ -1,19 +1,15 @@
-public abstract class auop
-  implements auon
+class auop
+  implements bapx
 {
-  public final void a(int paramInt, aunw paramaunw) {}
+  auop(auoo paramauoo) {}
   
-  public final void a_(int paramInt, boolean paramBoolean) {}
+  public void onResp(baqw parambaqw) {}
   
-  public final void b(int paramInt, aunw paramaunw) {}
-  
-  public final void c(int paramInt, aunw paramaunw) {}
-  
-  public final void d(int paramInt, aunw paramaunw) {}
+  public void onUpdateProgeress(baqv parambaqv, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auop
  * JD-Core Version:    0.7.0.1
  */

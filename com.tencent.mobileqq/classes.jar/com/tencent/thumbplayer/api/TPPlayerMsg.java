@@ -4,6 +4,7 @@ public class TPPlayerMsg
 {
   public static final int TP_PLAYER_INFO_ASYNC_CALL_SELECT_TRACK = 4;
   public static final int TP_PLAYER_INFO_ASYNC_CALL_SWITCH_DEFINITION = 3;
+  public static final int TP_PLAYER_INFO_AUDIO_TRACK_PROXY = 1012;
   public static final int TP_PLAYER_INFO_LONG0_ALL_DOWNLOAD_FINISH = 1001;
   public static final int TP_PLAYER_INFO_LONG0_AUDIO_HW_DECODING_SLOW = 206;
   public static final int TP_PLAYER_INFO_LONG0_AUDIO_SW_DECODING_SLOW = 205;
@@ -38,10 +39,12 @@ public class TPPlayerMsg
   public static final int TP_PLAYER_INFO_OBJECT_PROTOCOL_UPDATE = 1005;
   public static final int TP_PLAYER_INFO_OBJECT_URL_EXPIRED = 1007;
   public static final int TP_PLAYER_INFO_OBJECT_VIDEO_CROP = 500;
+  public static final int TP_PLAYER_INFO_SELECT_AUDIO_TRACK = 1011;
+  public static final int TP_PLAYER_INFO_SWITCH_DEFINITION = 1010;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPPlayerMsg
  * JD-Core Version:    0.7.0.1
  */

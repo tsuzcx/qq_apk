@@ -15,7 +15,7 @@ public final class QIMShortVideoUtils$2
     //   1: istore_2
     //   2: aload_0
     //   3: getfield 14	dov/com/qq/im/QIMShortVideoUtils$2:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   6: invokestatic 32	bihv:a	(Landroid/content/Context;)Z
+    //   6: invokestatic 32	bkjr:a	(Landroid/content/Context;)Z
     //   9: ifeq +4 -> 13
     //   12: return
     //   13: invokestatic 38	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
@@ -78,7 +78,7 @@ public final class QIMShortVideoUtils$2
     //   129: istore_2
     //   130: iload_2
     //   131: ifeq -119 -> 12
-    //   134: getstatic 90	bgky:a	Laqyf;
+    //   134: getstatic 90	bilx:a	Lasot;
     //   137: ifnonnull +42 -> 179
     //   140: aload_0
     //   141: getfield 16	dov/com/qq/im/QIMShortVideoUtils$2:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -89,14 +89,14 @@ public final class QIMShortVideoUtils$2
     //   152: ifnonnull +7 -> 159
     //   155: ldc 92
     //   157: astore 7
-    //   159: new 94	aqyf
+    //   159: new 94	asot
     //   162: dup
     //   163: aload 7
     //   165: ldc 96
-    //   167: invokespecial 99	aqyf:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   170: putstatic 90	bgky:a	Laqyf;
-    //   173: getstatic 90	bgky:a	Laqyf;
-    //   176: invokevirtual 101	aqyf:a	()V
+    //   167: invokespecial 99	asot:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   170: putstatic 90	bilx:a	Lasot;
+    //   173: getstatic 90	bilx:a	Lasot;
+    //   176: invokevirtual 101	asot:a	()V
     //   179: new 103	android/content/Intent
     //   182: dup
     //   183: aload_0
@@ -130,7 +130,7 @@ public final class QIMShortVideoUtils$2
     //   238: invokestatic 38	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   241: astore 7
     //   243: invokestatic 139	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   246: invokestatic 144	axrn:a	(Landroid/content/Context;)Laxrn;
+    //   246: invokestatic 144	azmz:a	(Landroid/content/Context;)Lazmz;
     //   249: aload 7
     //   251: invokevirtual 148	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
     //   254: invokevirtual 154	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
@@ -140,7 +140,7 @@ public final class QIMShortVideoUtils$2
     //   261: lconst_0
     //   262: aconst_null
     //   263: ldc 158
-    //   265: invokevirtual 161	axrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   265: invokevirtual 161	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   268: iconst_0
     //   269: istore_1
     //   270: goto -142 -> 128
@@ -208,7 +208,7 @@ public final class QIMShortVideoUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.QIMShortVideoUtils.2
  * JD-Core Version:    0.7.0.1
  */

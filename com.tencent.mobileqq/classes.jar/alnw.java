@@ -1,26 +1,37 @@
-import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class alnw
-  implements alot
+public class alnw
+  extends alpn
 {
-  alnw(alnj paramalnj, long paramLong) {}
+  private String a;
   
-  public void a(long paramLong)
+  protected void a(String paramString)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alnj.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  protected void b(String paramString)
   {
-    alng.a(this.jdField_a_of_type_Alnj.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    super.b(paramString);
+    QQAppInterface.a().d();
+    alnr.a().a(paramString);
+    aobd.a(true);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    CoreService.startCoreService(alpl.a().a);
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.c();
+  }
+  
+  protected void d(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, this.jdField_a_of_type_JavaLangString);
+    aobd.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alnw
  * JD-Core Version:    0.7.0.1
  */

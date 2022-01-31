@@ -1,23 +1,58 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.GetVirtualListResult;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class bdnt
-  implements Parcelable.Creator<GetVirtualListResult>
+public class bdnt
+  implements apqa
 {
-  public GetVirtualListResult a(Parcel paramParcel)
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  
+  public bdnt(bdnm parambdnm) {}
+  
+  public List<apsm> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return new GetVirtualListResult(paramParcel);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(new apsm(7, 7, null));
+    aube localaube = (aube)bdnm.a(this.jdField_a_of_type_Bdnm).getManager(14);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      int i = ((Integer)localIterator.next()).intValue();
+      EmoticonPackage localEmoticonPackage = localaube.a(String.valueOf(i));
+      if (localEmoticonPackage != null)
+      {
+        localArrayList.add(new apsm(10, 7, localEmoticonPackage));
+      }
+      else
+      {
+        localEmoticonPackage = new EmoticonPackage();
+        localEmoticonPackage.epId = String.valueOf(i);
+        localEmoticonPackage.wordingId = -1L;
+        localEmoticonPackage.jobType = 4;
+        localEmoticonPackage.isMagicFaceDownloading = false;
+        localEmoticonPackage.valid = true;
+        localEmoticonPackage.status = 0;
+        localEmoticonPackage.aio = true;
+        localaube.a(localEmoticonPackage);
+        apne.a().a(bdnm.a(this.jdField_a_of_type_Bdnm));
+        ((apnf)bdnm.a(this.jdField_a_of_type_Bdnm).getManager(43)).a(String.valueOf(i), apnf.c, null, true, 0);
+      }
+    }
+    return localArrayList;
   }
   
-  public GetVirtualListResult[] a(int paramInt)
+  public void a(List<Integer> paramList)
   {
-    return new GetVirtualListResult[paramInt];
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdnt
  * JD-Core Version:    0.7.0.1
  */

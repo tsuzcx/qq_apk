@@ -13,7 +13,6 @@ public abstract class DesktopItemInfo
   public static final int TYPE_MODULE_INFO_NEW = 7;
   public static final int TYPE_MODULE_POPULARITY_LIST = 9;
   public static final int TYPE_MODULE_RECOMMEND = 8;
-  public static final int TYPE_SPRING_ENTRY = -99;
   public boolean deleteEnable;
   public boolean dragEnable;
   public boolean dropEnable;
@@ -50,7 +49,7 @@ public abstract class DesktopItemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopItemInfo
  * JD-Core Version:    0.7.0.1
  */

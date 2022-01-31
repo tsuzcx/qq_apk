@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import anvq;
-import bcas;
-import bcbu;
-import bcgz;
+import apmy;
+import bdzt;
+import beav;
+import bega;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.emosm.Client;
@@ -106,7 +106,7 @@ public class LiveRoomWebViewFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     QLog.d("LiveRoomWebViewFragment", 1, "onCreateView");
-    if (bcas.d) {
+    if (bdzt.d) {
       this.mIsWebViewCache = true;
     }
     this.mRootLayout = new FrameLayout(getActivity());
@@ -135,7 +135,7 @@ public class LiveRoomWebViewFragment
     this.mIntent.putExtra("webview_hide_progress", true);
     this.mWebViewBuilder = new LiveRoomWebViewBuilder(getActivity(), getActivity(), this.mIntent, this.mApp);
     paramLayoutInflater = null;
-    paramViewGroup = new bcbu(this.mWebViewBuilder);
+    paramViewGroup = new beav(this.mWebViewBuilder);
     if (this.mPluginList != null)
     {
       paramLayoutInflater = new VasCommonJsPlugin();
@@ -146,8 +146,8 @@ public class LiveRoomWebViewFragment
     if ((paramLayoutInflater != null) && (paramLayoutInflater.mRuntime != null)) {
       setVasUIInterface(paramLayoutInflater, paramViewGroup);
     }
-    if (!anvq.a().a()) {
-      anvq.a().a().doBindService(this.mApp.getApplication());
+    if (!apmy.a().a()) {
+      apmy.a().a().doBindService(this.mApp.getApplication());
     }
     if (this.mWebViewBuilder.getContainer().getParent() != null) {
       QLog.d("LiveRoomWebViewFragment", 1, "ViewRoot 's parent " + this.mWebViewBuilder.getContainer().getParent().hashCode());
@@ -232,14 +232,14 @@ public class LiveRoomWebViewFragment
     }
   }
   
-  public void setVasUIInterface(VasCommonJsPlugin paramVasCommonJsPlugin, bcbu parambcbu)
+  public void setVasUIInterface(VasCommonJsPlugin paramVasCommonJsPlugin, beav parambeav)
   {
-    paramVasCommonJsPlugin.setUiInterface(new LiveRoomWebViewFragment.1(this, parambcbu));
+    paramVasCommonJsPlugin.setUiInterface(new LiveRoomWebViewFragment.1(this, parambeav));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

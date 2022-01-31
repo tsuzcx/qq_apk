@@ -7,21 +7,21 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import omr;
-import onh;
-import pau;
-import pqo;
-import pqy;
-import puy;
-import pym;
+import orc;
+import ors;
+import pgd;
+import pxj;
+import pxt;
+import qbs;
+import qfg;
 
 public class ComponentContentSpecialTopic
   extends RelativeLayout
-  implements pqo
+  implements pxj
 {
   double jdField_a_of_type_Double;
   KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  puy jdField_a_of_type_Puy;
+  qbs jdField_a_of_type_Qbs;
   
   public ComponentContentSpecialTopic(Context paramContext)
   {
@@ -49,48 +49,48 @@ public class ComponentContentSpecialTopic
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559863, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559958, this, true);
   }
   
   public void a() {}
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_Puy = new puy();
+    this.jdField_a_of_type_Qbs = new qbs();
     this.jdField_a_of_type_Double = 0.0D;
     a(a(paramContext));
   }
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367846));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367981));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pau))
+    if ((paramObject instanceof pgd))
     {
-      paramObject = (pau)paramObject;
-      this.jdField_a_of_type_Puy.a(paramObject);
+      paramObject = (pgd)paramObject;
+      this.jdField_a_of_type_Qbs.a(paramObject);
       b();
       paramObject = paramObject.a();
       if (paramObject != null) {
-        omr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, onh.a(paramObject.mFirstPagePicUrl), getContext());
+        orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, ors.a(paramObject.mFirstPagePicUrl), getContext());
       }
     }
   }
   
-  public void a(pqy parampqy)
+  public void a(pxt parampxt)
   {
-    this.jdField_a_of_type_Puy.a(parampqy);
+    this.jdField_a_of_type_Qbs.a(parampxt);
   }
   
   public void b()
   {
     ArticleInfo localArticleInfo;
-    if (this.jdField_a_of_type_Puy.a != null)
+    if (this.jdField_a_of_type_Qbs.a != null)
     {
-      localArticleInfo = this.jdField_a_of_type_Puy.a.a();
+      localArticleInfo = this.jdField_a_of_type_Qbs.a.a();
       if (localArticleInfo != null) {
         break label28;
       }
@@ -99,13 +99,13 @@ public class ComponentContentSpecialTopic
     while ((this.jdField_a_of_type_Double != 0.0D) && (this.jdField_a_of_type_Double == localArticleInfo.mTopicPicWHRatio)) {
       return;
     }
-    pym.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localArticleInfo.mTopicPicWHRatio);
+    qfg.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, localArticleInfo.mTopicPicWHRatio);
     this.jdField_a_of_type_Double = localArticleInfo.mTopicPicWHRatio;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSpecialTopic
  * JD-Core Version:    0.7.0.1
  */

@@ -1,147 +1,120 @@
 import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendReport.1;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aokp
 {
-  private static aokp a;
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public static aokp a()
+  public static aokp a(aogf[] paramArrayOfaogf)
   {
-    if (a == null) {
-      a = new aokp();
-    }
-    return a;
-  }
-  
-  public static String a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface != null)
+    aokp localaokp = new aokp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    int i = 0;
+    for (;;)
     {
-      paramQQAppInterface = (aoeu)paramQQAppInterface.getManager(264);
-      if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.b))) {}
-    }
-    for (paramQQAppInterface = paramQQAppInterface.b;; paramQQAppInterface = "")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ExtendFriendReport", 0, String.format("getRecomTrace1 strRecomTrace=%s", new Object[] { paramQQAppInterface }));
+      try
+      {
+        if (i >= paramArrayOfaogf.length) {
+          break label221;
+        }
+        String str = paramArrayOfaogf[i].a;
+        if (TextUtils.isEmpty(str))
+        {
+          QLog.d("OpenSdkConfProcessor", 1, "parse, content empty");
+        }
+        else
+        {
+          JSONObject localJSONObject = new JSONObject(str);
+          if (localJSONObject.has("enable_third_app_share_for_backend"))
+          {
+            if (localJSONObject.optInt("enable_third_app_share_for_backend", 0) == 1)
+            {
+              bool = true;
+              localaokp.jdField_a_of_type_Boolean = bool;
+            }
+          }
+          else
+          {
+            if (localJSONObject.has("enable_third_app_share_big_image_by_server"))
+            {
+              if (localJSONObject.optInt("enable_third_app_share_big_image_by_server", 0) != 1) {
+                break label211;
+              }
+              bool = true;
+              localaokp.b = bool;
+            }
+            if (localJSONObject.has("sdk_share_verify_appinfo_timeout_duration")) {
+              localaokp.jdField_a_of_type_Long = localJSONObject.optInt("sdk_share_verify_appinfo_timeout_duration", 0);
+            }
+            if (localJSONObject.has("sdk_login_use_third_transform_pkg_name"))
+            {
+              if (localJSONObject.optInt("sdk_login_use_third_transform_pkg_name", 0) != 1) {
+                break label216;
+              }
+              bool = true;
+              localaokp.c = bool;
+            }
+            localStringBuilder.append("config: ").append(str).append(",");
+          }
+        }
       }
-      return paramQQAppInterface;
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendReport", 0, String.format("getRecomTrace2 strRecomTrace=%s", new Object[] { paramString }));
-    }
-    if (!TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    return "";
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendReport", 0, String.format("updateRecomTrace strRecomTrace=%s", new Object[] { paramString }));
-    }
-    if ((!TextUtils.isEmpty(paramString)) && (paramQQAppInterface != null))
-    {
-      paramQQAppInterface = (aoeu)paramQQAppInterface.getManager(264);
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.b = paramString;
+      catch (Exception paramArrayOfaogf)
+      {
+        QLog.e("OpenSdkConfProcessor", 1, "parse, failed!", paramArrayOfaogf);
+        return null;
       }
+      boolean bool = false;
+      continue;
+      label211:
+      bool = false;
+      continue;
+      label216:
+      bool = false;
+      continue;
+      label221:
+      QLog.d("OpenSdkConfProcessor", 1, "parse, content:" + localStringBuilder.toString());
+      return localaokp;
+      i += 1;
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
+  public long a()
   {
-    paramLong = (System.currentTimeMillis() - paramLong) / 1000L;
-    aoex localaoex = ((aoeu)paramQQAppInterface.getManager(264)).a();
-    if ((localaoex != null) && (localaoex.k <= paramLong)) {
-      axqy.b(paramQQAppInterface, "dc00898", "", paramString, "0X8009C6E", "0X8009C6E", 2, 0, "", "", "", "");
-    }
+    return this.jdField_a_of_type_Long;
   }
   
-  private void a(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3)
+  public boolean a()
   {
-    ThreadManager.post(new ExtendFriendReport.1(this, paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3), 5, null, false);
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public void a()
+  public boolean b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendReport", 0, "reportEntry");
-    }
-    a("", "extend_friend_entry", true, 0L, 0L, new HashMap(), "");
+    return this.b;
   }
   
-  public void a(int paramInt)
+  public boolean c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendReport", 0, String.format("reportEntryDuration duration=%s", new Object[] { Integer.valueOf(paramInt) }));
-    }
-    HashMap localHashMap = new HashMap();
-    a("", "extend_friend_entry_duration", true, paramInt, 0L, localHashMap, "");
+    return this.c;
   }
   
-  public void a(boolean paramBoolean, int paramInt)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendReport", 0, String.format("reportPreDownload success=%s result=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    a("", "extend_friend_pre_download", paramBoolean, 0L, 0L, localHashMap, "");
-  }
-  
-  public void b(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendReport", 0, String.format("reportResUnzip success=%s result=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    a("", "extend_friend_res_unzip", paramBoolean, 0L, 0L, localHashMap, "");
-  }
-  
-  public void c(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendReport", 0, String.format("reportFeedReq success=%s result=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    a("", "extend_friend_feed_req", paramBoolean, 0L, 0L, localHashMap, "");
-  }
-  
-  public void d(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendReport", 0, String.format("reportGroupReq success=%s result=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    a("", "extend_friend_group_req", paramBoolean, 0L, 0L, localHashMap, "");
-  }
-  
-  public void e(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendReport", 0, String.format("reportVoiceUploadReq success=%s result=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    a("", "extend_friend_voice_upload_req", paramBoolean, 0L, 0L, localHashMap, "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("serverShareEntryEnable:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("serverShareImageEnable:").append(this.b);
+    localStringBuilder.append("timeout_duration:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("useThirdTransformPkgName:").append(this.c);
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aokp
  * JD-Core Version:    0.7.0.1
  */

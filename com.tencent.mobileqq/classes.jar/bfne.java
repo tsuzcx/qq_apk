@@ -1,86 +1,91 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.os.Build.VERSION;
-import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class bfne
+class bfne
+  extends bfnn
 {
-  public static Camera a()
-  {
-    return a(-1, 5);
-  }
+  bfne(bfna parambfna, bfmm parambfmm, bfnj parambfnj, String paramString, JSONObject paramJSONObject) {}
   
-  public static Camera a(int paramInt)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    return a(paramInt, 5);
-  }
-  
-  @TargetApi(9)
-  public static Camera a(int paramInt1, int paramInt2)
-  {
-    if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-      paramInt2 = 1;
+    bool2 = false;
+    boolean bool3 = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("OpenSdkVirtualManager", 2, new Object[] { "OpenVirtual.uploadAvatarImage.result:", bfnl.a(paramString1, this.jdField_a_of_type_Bfmm.jdField_a_of_type_JavaLangString) });
     }
-    int i = 0;
-    Camera localCamera1 = null;
-    Camera localCamera3;
+    localObject = null;
+    bool1 = bool2;
+    paramString2 = localObject;
+    i = paramInt;
+    if (paramBoolean) {}
+    try
+    {
+      paramString1 = new JSONObject(paramString1);
+      i = paramString1.optInt("ErrorCode");
+      if (i != 0) {}
+    }
+    catch (JSONException paramString1)
+    {
+      label102:
+      do
+      {
+        for (;;)
+        {
+          QLog.d("OpenSdkVirtualManager", 1, "OpenVirtual.uploadAvatarImage.e:", paramString1);
+          bool1 = bool2;
+          paramString2 = localObject;
+          i = paramInt;
+        }
+        bfna.a(this.jdField_a_of_type_Bfna);
+        if (bfna.b(this.jdField_a_of_type_Bfna) < 2) {
+          break;
+        }
+      } while ((this.jdField_a_of_type_Bfnj == null) || (this.jdField_a_of_type_Bfnj == null));
+      this.jdField_a_of_type_Bfnj.a(bool1, this.jdField_a_of_type_JavaLangString, paramString2, i);
+      return;
+      bfna.a(this.jdField_a_of_type_Bfna, this.jdField_a_of_type_Bfmm, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_Bfnj);
+      return;
+    }
+    try
+    {
+      paramString1 = paramString1.optJSONObject("msg_img_data");
+      if (paramString1 == null) {
+        break label273;
+      }
+      paramString1 = paramString1.optString("str_file_name");
+      paramBoolean = bool3;
+    }
+    catch (JSONException paramString1)
+    {
+      paramInt = i;
+      break label168;
+      paramBoolean = false;
+      paramString1 = null;
+      break label102;
+    }
+    paramInt = i;
     for (;;)
     {
-      localCamera3 = localCamera1;
-      if (i < paramInt2)
-      {
-        Camera localCamera2 = localCamera1;
-        try
-        {
-          if ((Build.VERSION.SDK_INT >= 9) && (paramInt1 != -1)) {
-            localCamera2 = localCamera1;
-          }
-          for (localCamera1 = Camera.open(paramInt1);; localCamera1 = Camera.open())
-          {
-            localCamera2 = localCamera1;
-            localCamera3 = localCamera1;
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            localCamera2 = localCamera1;
-            QLog.d("CameraUtil", 2, "openCameraWithRetry successfully.  retry times = " + i + ", max retry times = " + paramInt2);
-            return localCamera1;
-            localCamera2 = localCamera1;
-          }
-        }
-        catch (Exception localException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("CameraUtil", 2, "openCameraWithRetry. Fail to open camera. error msg: " + localException.getMessage() + ", retry times = " + i + ", max retry times = " + paramInt2);
-          }
-          i += 1;
-          if (i < paramInt2) {
-            try
-            {
-              Thread.currentThread();
-              Thread.sleep(500);
-              Object localObject = localCamera2;
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              for (;;)
-              {
-                localInterruptedException.printStackTrace();
-              }
-            }
-          } else {
-            throw new RuntimeException(localInterruptedException);
-          }
-        }
+      i = paramInt;
+      paramString2 = paramString1;
+      bool1 = paramBoolean;
+      if (!bool1) {
+        break;
       }
+      if ((this.jdField_a_of_type_Bfnj != null) && (this.jdField_a_of_type_Bfnj != null)) {
+        this.jdField_a_of_type_Bfnj.a(bool1, this.jdField_a_of_type_JavaLangString, paramString2, i);
+      }
+      return;
+      paramInt = paramString1.optInt("uint32_ret_to_http", i);
+      paramString1 = null;
+      paramBoolean = false;
     }
-    return localCamera3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bfne
  * JD-Core Version:    0.7.0.1
  */

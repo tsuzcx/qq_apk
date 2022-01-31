@@ -1,75 +1,88 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.NewFriendManager.3.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import org.json.JSONObject;
 
 public class akbq
-  extends ajxj
+  implements MediaPlayer.OnPreparedListener
 {
-  akbq(akbn paramakbn) {}
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  boolean jdField_a_of_type_Boolean;
   
-  protected void onAddFriend(String paramString)
+  public akbq(akbl paramakbl, JSONObject paramJSONObject, String paramString, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a()
+  {
+    try
     {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
+      this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
       return;
-      localObject = this.a.b();
-    } while (((ArrayList)localObject).isEmpty());
-    Object localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    }
+    catch (Exception localException1)
     {
-      atza localatza = (atza)((Iterator)localObject).next();
-      if ((localatza instanceof atyv))
+      akbl.a(this.jdField_a_of_type_Akbl, "-->handleJsRequest exception:" + localException1.toString());
+      try
       {
-        int i = ((atyv)localatza).a.structMsg.msg.sub_type.get();
-        String str = ((atyv)localatza).a.senderuin;
-        if ((i == 13) && (paramString.equals(str)))
-        {
-          ((Iterator)localObject).remove();
-          akbn.a(this.a).a().b(ajsd.M, 0, ((atyv)localatza).a.uniseq, false);
-        }
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("code", 2);
+        localJSONObject.put("errorMessage", "exception");
+        this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
       }
     }
-    akbn.a(this.a).sendEmptyMessage(2);
   }
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if ((paramBoolean) && (akbn.a(this.a) != null)) {
-      akbn.a(this.a).sendEmptyMessage(2);
+    if (akbl.a(this.jdField_a_of_type_Akbl).a()) {}
+    try
+    {
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        akbl.a(this.jdField_a_of_type_Akbl, "-->play failed");
+        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
+        this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
+        return;
+        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 0);
+      }
+      return;
     }
-  }
-  
-  protected void onGetPushRecommend(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (akbn.a(this.a) != null)) {
-      akbn.a(this.a).sendEmptyMessage(2);
-    }
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    akbn.a(this.a).runOnUiThread(new NewFriendManager.3.1(this, paramBoolean));
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (akbn.a(this.a) != null)) {
-      akbn.a(this.a).sendEmptyMessage(2);
+    catch (Exception paramMediaPlayer)
+    {
+      akbl.a(this.jdField_a_of_type_Akbl, "-->handleJsRequest exception:" + paramMediaPlayer.toString());
+      try
+      {
+        paramMediaPlayer = new JSONObject();
+        paramMediaPlayer.put("code", 2);
+        paramMediaPlayer.put("errorMessage", "exception");
+        this.jdField_a_of_type_Akbl.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
+        return;
+      }
+      catch (Exception paramMediaPlayer)
+      {
+        paramMediaPlayer.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbq
  * JD-Core Version:    0.7.0.1
  */

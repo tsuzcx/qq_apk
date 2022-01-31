@@ -1,75 +1,37 @@
-import com.tencent.av.gaudio.AVPhoneUserInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class mlg
+class mlg
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a;
-  public long a;
-  public AVPhoneUserInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
-  public boolean e;
-  public boolean f;
-  public boolean g;
+  mlg(mlf parammlf) {}
   
-  public mlg()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_b_of_type_Long = 4L;
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Int == 2;
-  }
-  
-  public boolean c()
-  {
-    return this.e;
-  }
-  
-  public boolean d()
-  {
-    return (this.jdField_b_of_type_Boolean) && (!this.c);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin:=").append(this.jdField_a_of_type_Long).append(',');
-    localStringBuilder.append("isVideoIn:=").append(this.e).append(',');
-    localStringBuilder.append("isAttened:=").append(this.jdField_a_of_type_Boolean).append(',');
-    localStringBuilder.append("isSpeaking:=").append(this.jdField_b_of_type_Boolean).append(',');
-    return localStringBuilder.toString();
+    paramValueAnimator.getAnimatedFraction();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    float f;
+    if (i <= 220)
+    {
+      f = i / 220.0F;
+      mlf.a(this.a).setAlpha(f);
+    }
+    if (i <= 160)
+    {
+      f = i / 100.0F;
+      mlf.a(this.a).setAlpha(f);
+    }
+    if (mlf.a(this.a) != null) {
+      mlf.a(this.a).requestLayout();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mlg
  * JD-Core Version:    0.7.0.1
  */

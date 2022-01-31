@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajmu;
+import aleh;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ApolloActionPackage;
@@ -18,16 +18,16 @@ class ApolloPanel$21
     }
     if ((this.this$0.a != null) && (this.this$0.a.a != null))
     {
-      ajmu localajmu = (ajmu)this.this$0.a.a.getManager(155);
-      if (localajmu != null) {
-        localajmu.a(this.a);
+      aleh localaleh = (aleh)this.this$0.a.a.getManager(155);
+      if (localaleh != null) {
+        localaleh.a(this.a);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloPanel.21
  * JD-Core Version:    0.7.0.1
  */

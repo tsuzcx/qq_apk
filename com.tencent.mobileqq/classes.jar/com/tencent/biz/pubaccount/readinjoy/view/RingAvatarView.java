@@ -25,7 +25,7 @@ public class RingAvatarView
   
   public void a()
   {
-    setBackgroundDrawable(getContext().getResources().getDrawable(2130848473));
+    setBackgroundDrawable(getContext().getResources().getDrawable(2130848898));
   }
   
   public void b()
@@ -35,7 +35,7 @@ public class RingAvatarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.RingAvatarView
  * JD-Core Version:    0.7.0.1
  */

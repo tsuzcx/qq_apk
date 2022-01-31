@@ -1,47 +1,42 @@
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.System;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class qqa
-  extends ContentObserver
+  extends oxe
 {
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
+  public qqa(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public qqa(VideoFeedsListView paramVideoFeedsListView, Handler paramHandler)
+  public void a(int paramInt, long paramLong, String paramString)
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = VideoFeedsListView.a(paramVideoFeedsListView).getContentResolver();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    int i = Settings.System.getInt(VideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView).getContentResolver(), "accelerometer_rotation", -1);
-    if (i == 1) {
-      VideoFeedsListView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView, true);
+    if ((0L != paramLong) && (!TextUtils.isEmpty(paramString))) {
+      if ((ReadInJoyUgcSearchTopicFragment.a(this.a) != null) && (ReadInJoyUgcSearchTopicFragment.a(this.a).size() == 1))
+      {
+        TopicInfo localTopicInfo = (TopicInfo)ReadInJoyUgcSearchTopicFragment.a(this.a).get(0);
+        long l = localTopicInfo.a();
+        String str1 = localTopicInfo.a();
+        String str2 = localTopicInfo.b();
+        String str3 = localTopicInfo.c();
+        localTopicInfo.d();
+        localTopicInfo = TopicInfo.a().a(l).a("#" + str1).b(str2).c(str3).d(paramString).a();
+        ReadInJoyUgcSearchTopicFragment.a(this.a, localTopicInfo);
+        ors.a("0X800980A", ReadInJoyUgcSearchTopicFragment.a(this.a), paramLong, "1");
+      }
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.pubaccount.video.feeds.VideoFeedsListView", 2, "RotationObserver.onChange() : rotateState=" + i);
-      }
+      ReadInJoyUgcSearchTopicFragment.a(this.a, false);
+      QLog.d("ReadInJoyUgcSearchTopicFragment", 1, "handle0xc16CreateTopic, topicID:" + paramLong + "  topicUrl:" + paramString + " result:" + paramInt);
       return;
-      VideoFeedsListView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsListView, false);
+      this.a.a(1, this.a.getString(2131718798));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qqa
  * JD-Core Version:    0.7.0.1
  */

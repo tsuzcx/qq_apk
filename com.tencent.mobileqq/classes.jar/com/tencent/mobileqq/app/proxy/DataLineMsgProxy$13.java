@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.app.proxy;
 
-import aksy;
-import aksz;
+import amjd;
+import amje;
 import android.os.Handler;
 import android.os.Looper;
-import aukp;
-import aukq;
+import awbw;
+import awbx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import java.util.List;
@@ -13,16 +13,16 @@ import java.util.List;
 public class DataLineMsgProxy$13
   implements Runnable
 {
-  public DataLineMsgProxy$13(aksy paramaksy, long paramLong, int paramInt, aksz paramaksz) {}
+  public DataLineMsgProxy$13(amjd paramamjd, long paramLong, int paramInt, amje paramamje) {}
   
   public void run()
   {
-    aukp localaukp = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (aksy.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager, this.this$0.jdField_a_of_type_JavaLangString)) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(localaukp);
+    awbw localawbw = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    if (amjd.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager, this.this$0.jdField_a_of_type_JavaLangString)) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager.a(localawbw);
     }
-    List localList = localaukp.a(DataLineMsgRecord.class, aksy.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int), new String[] { String.valueOf(this.jdField_a_of_type_Long) });
-    localaukp.a();
+    List localList = localawbw.a(DataLineMsgRecord.class, amjd.a(this.this$0, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int), new String[] { String.valueOf(this.jdField_a_of_type_Long) });
+    localawbw.a();
     new Handler(Looper.getMainLooper()).post(new DataLineMsgProxy.13.1(this, localList));
   }
 }

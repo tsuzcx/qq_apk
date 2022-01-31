@@ -1,35 +1,128 @@
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.drawer.IntimateInfoChatDrawer.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class aexv
-  implements View.OnClickListener
+public class aexv
+  extends aexr
 {
-  aexv(aexu paramaexu) {}
+  private aenv jdField_a_of_type_Aenv;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void onClick(View paramView)
+  public aexv(BaseChatPie paramBaseChatPie)
   {
-    axqy.b(aexu.a(this.a), "CliOper", "", "", "Free_call", "Clk_free_call_tips", 0, 0, "", "", "", "");
-    aexu.c(aexu.a(this.a), aexu.a(this.a).jdField_a_of_type_JavaLangString);
-    aexu.a(this.a).a();
-    paramView = null;
-    String str = null;
-    if (aexu.a(this.a).jdField_a_of_type_Int == 1006) {
-      str = aexu.a(this.a).jdField_a_of_type_JavaLangString;
-    }
-    for (;;)
+    super(paramBaseChatPie);
+  }
+  
+  private void m()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie instanceof agld))
     {
-      ChatActivityUtils.a(aexu.a(this.a), aexu.a(this.a), aexu.a(this.a).jdField_a_of_type_Int, paramView, aexu.a(this.a).d, str, true, aexu.a(this.a).b, true, true, null, "from_internal");
-      axqy.b(aexu.a(this.a), "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "8", "", "", "");
-      return;
-      paramView = aexu.a(this.a).jdField_a_of_type_JavaLangString;
+      agld localagld = (agld)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+      if (localagld.a != null) {
+        localagld.a.d(1);
+      }
+    }
+    ThreadManager.getSubThreadHandler().post(new IntimateInfoChatDrawer.2(this));
+  }
+  
+  protected View a()
+  {
+    this.jdField_a_of_type_Aenv = new aexw(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    if (this.jdField_a_of_type_Aenv.a() == null) {}
+    this.jdField_a_of_type_Aenv.a(1);
+    return this.jdField_a_of_type_Aenv.a();
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_Aenv != null) {
+      this.jdField_a_of_type_Aenv.a(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aenv != null) {
+      this.jdField_a_of_type_Aenv.a();
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("onDrawerOpened, needReqIntimateInfo: %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
+    }
+    if (this.jdField_a_of_type_Aenv != null)
+    {
+      this.jdField_a_of_type_Aenv.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Aenv.b();
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Aenv.d();
+        this.jdField_a_of_type_Aenv.e();
+        this.jdField_a_of_type_Aenv.q();
+      }
+    }
+    m();
+  }
+  
+  public void h()
+  {
+    super.h();
+    if (this.jdField_a_of_type_Aenv != null)
+    {
+      this.jdField_a_of_type_Aenv.b = true;
+      this.jdField_a_of_type_Aenv.g();
+    }
+  }
+  
+  public void i()
+  {
+    super.i();
+    if (this.jdField_a_of_type_Aenv != null)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Aenv.f();
+    }
+  }
+  
+  public void j()
+  {
+    if (this.jdField_a_of_type_Aenv != null)
+    {
+      if (a())
+      {
+        this.jdField_a_of_type_Aenv.d();
+        this.jdField_a_of_type_Aenv.q();
+      }
+      this.jdField_a_of_type_Aenv.i();
+    }
+  }
+  
+  public void k()
+  {
+    if (this.jdField_a_of_type_Aenv != null) {
+      this.jdField_a_of_type_Aenv.j();
+    }
+  }
+  
+  public void l()
+  {
+    if (this.jdField_a_of_type_Aenv != null) {
+      this.jdField_a_of_type_Aenv.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexv
  * JD-Core Version:    0.7.0.1
  */

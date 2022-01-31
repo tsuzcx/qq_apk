@@ -1,53 +1,28 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.TranslateFragment;
+import java.util.List;
 
 public class avsz
+  implements PopupWindow.OnDismissListener
 {
-  public static int a()
+  public avsz(TranslateFragment paramTranslateFragment, avrj paramavrj) {}
+  
+  public void onDismiss()
   {
-    int j = 2;
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4);
-    long l = localSharedPreferences.getLong("key_open_camera_time", 0L);
-    int i = j;
-    if (l != 0L)
+    TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment, null);
+    if ((this.jdField_a_of_type_Avrj.b != null) && (this.jdField_a_of_type_Avrj.b.size() > 1))
     {
-      i = j;
-      if (System.currentTimeMillis() - l < 300000L) {
-        i = localSharedPreferences.getInt("camera", 2);
-      }
+      Drawable localDrawable = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment.getResources().getDrawable(2130845668);
+      TranslateFragment.a(this.jdField_a_of_type_ComTencentMobileqqOcrTranslateFragment).setCompoundDrawablesWithIntrinsicBounds(null, null, null, localDrawable);
     }
-    return i;
-  }
-  
-  public static void a()
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
-    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
-    localEditor.apply();
-  }
-  
-  public static void a(int paramInt)
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).edit();
-    localEditor.putInt("camera", paramInt);
-    localEditor.putLong("key_open_camera_time", System.currentTimeMillis());
-    localEditor.apply();
-  }
-  
-  public static boolean a()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).contains("camera");
-  }
-  
-  public static int b()
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4).getInt("camera", 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avsz
  * JD-Core Version:    0.7.0.1
  */

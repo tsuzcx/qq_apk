@@ -1,58 +1,27 @@
-import com.tencent.ark.open.ArkAppConfigMgr;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
-
 public class amqv
-  extends amqq
+  extends amqx
 {
-  public int a()
-  {
-    return 380;
-  }
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
+  float[] jdField_a_of_type_ArrayOfFloat;
+  float jdField_b_of_type_Float;
+  float[] jdField_b_of_type_ArrayOfFloat;
+  float c;
   
-  public amqk a(String paramString)
+  public amqv(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    QLog.d("ArkPlatformConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
-    try
-    {
-      amrj localamrj = (amrj)ampv.a(paramString, amrj.class);
-      return new amqp(paramString, localamrj);
-    }
-    catch (QStorageInstantiateException localQStorageInstantiateException)
-    {
-      for (;;)
-      {
-        QLog.i("ArkPlatformConfProcessor", 1, "readJsonOrXml:" + paramString + "fail", localQStorageInstantiateException);
-        Object localObject = null;
-      }
-    }
-  }
-  
-  public void a(amqk paramamqk)
-  {
-    super.a(paramamqk);
-    if (paramamqk == null) {
-      QLog.i("ArkPlatformConfProcessor", 1, "newConf is null");
-    }
-    do
-    {
-      return;
-      QLog.d("ArkPlatformConfProcessor", 1, "[onUpdate] type=" + a() + ", content = " + paramamqk.a());
-      paramamqk = paramamqk.a();
-      altb.a();
-    } while ((paramamqk == null) || (paramamqk.a() == null));
-    paramamqk = paramamqk.a();
-    if (paramamqk == null)
-    {
-      QLog.i("ArkPlatformConfProcessor", 2, "ArkSafe.updateUrlCheckAndCleanAppUpdateTime error config is null");
-      return;
-    }
-    ArkAppConfigMgr.getInstance().updateUrlCheckAndCleanAppUpdateTime(paramamqk.jdField_a_of_type_Boolean, paramamqk.b, paramamqk.jdField_a_of_type_JavaUtilArrayList);
+    super(0);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.c = paramFloat3;
+    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat1;
+    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqv
  * JD-Core Version:    0.7.0.1
  */

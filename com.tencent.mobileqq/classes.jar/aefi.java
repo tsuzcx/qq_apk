@@ -1,17 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import java.util.List;
 
-final class aefi
-  implements DialogInterface.OnClickListener
+public class aefi
+  extends alox
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aefi(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
+  
+  protected void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
   {
-    paramDialogInterface.dismiss();
+    if (paramBoolean)
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+      return;
+    }
+    this.a.a(2131719810, 1);
+  }
+  
+  protected void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList)
+  {
+    if (paramBoolean)
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      this.a.a(2131691543, 2);
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if ((paramBoolean1) && (paramBoolean3))
+    {
+      UncommonlyUsedContactsActivity.a(this.a);
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefi
  * JD-Core Version:    0.7.0.1
  */

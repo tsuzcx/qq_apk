@@ -1,59 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.GetContactTipsRunnable;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable;
-import cooperation.qqpim.QQPimTipsInfo;
-import eipc.EIPCResult;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.manager.EngineVersion;
+import com.tencent.qqmini.sdk.manager.InstalledEngine;
 
-public class bgtc
-  extends QIPCModule
+public final class bgtc
+  implements Parcelable.Creator<InstalledEngine>
 {
-  public bgtc(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC, String paramString)
+  public InstalledEngine a(Parcel paramParcel)
   {
-    super(paramString);
+    boolean bool2 = true;
+    InstalledEngine localInstalledEngine = new InstalledEngine();
+    localInstalledEngine.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localInstalledEngine.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localInstalledEngine.jdField_a_of_type_ComTencentQqminiSdkManagerEngineVersion = ((EngineVersion)paramParcel.readParcelable(EngineVersion.class.getClassLoader()));
+    localInstalledEngine.jdField_a_of_type_Int = paramParcel.readInt();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localInstalledEngine.jdField_a_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label102;
+      }
+    }
+    label102:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localInstalledEngine.jdField_b_of_type_Boolean = bool1;
+      localInstalledEngine.jdField_b_of_type_Int = paramParcel.readInt();
+      return localInstalledEngine;
+      bool1 = false;
+      break;
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public InstalledEngine[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(bgta.a, 2, "QQPimGetTipsInfoIPC.onCall()" + paramString);
-    }
-    if (bgta.g.equals(paramString)) {
-      if (QQPimGetTipsInfoIPC.a() != -1) {}
-    }
-    while ((!bgta.h.equals(paramString)) || (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L))
-    {
-      do
-      {
-        do
-        {
-          return null;
-        } while (System.currentTimeMillis() - QQPimGetTipsInfoIPC.a(this.a) < 500L);
-        QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
-        if (QQPimGetTipsInfoIPC.a() == 0)
-        {
-          QQPimGetTipsInfoIPC.a(-1);
-          ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.GetContactTipsRunnable(this.a, QQPimGetTipsInfoIPC.a(this.a), QQPimGetTipsInfoIPC.b(this.a)), null, true);
-          return null;
-        }
-      } while (QQPimGetTipsInfoIPC.a() != 1);
-      QQPimGetTipsInfoIPC.a(-1);
-      ThreadManager.postImmediately(new QQPimGetTipsInfoIPC.NoticeClickTipsRunnable(this.a, null), null, true);
-      return null;
-    }
-    QQPimGetTipsInfoIPC.a(this.a, System.currentTimeMillis());
-    paramString = new QQPimTipsInfo();
-    paramString.a = 0;
-    QQPimGetTipsInfoIPC.a(this.a).a(paramString);
-    return null;
+    return new InstalledEngine[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgtc
  * JD-Core Version:    0.7.0.1
  */

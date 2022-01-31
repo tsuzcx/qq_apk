@@ -1,46 +1,33 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCirclePushAsyncTextView;
+import feedcloud.FeedCloudMeta.StUser;
 
-class uca
-  implements udd
+public class uca
+  extends ClickableSpan
 {
-  uca(ubz paramubz) {}
+  public uca(QCirclePushAsyncTextView paramQCirclePushAsyncTextView, FeedCloudMeta.StUser paramStUser) {}
   
-  public boolean a(ucz paramucz, int paramInt, Object paramObject)
+  public void onClick(@NonNull View paramView)
   {
-    if (this.a.isCanceled()) {
-      return false;
+    if (QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView) != null) {
+      QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView).a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StUser);
     }
-    ved.a(this.a.a.jdField_a_of_type_JavaLangString, "onInfo, [videoView=%d, what=%d, extra=%s]", Integer.valueOf(System.identityHashCode(paramucz)), Integer.valueOf(paramInt), paramObject);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      VideoViewVideoHolder.a(this.a.a).a(this.a.a, paramucz, paramInt, paramObject);
-      return false;
-      ved.d(this.a.a.jdField_a_of_type_JavaLangString, "PLAYER_INFO_HW_DECODE_FAILED. extra=%s", new Object[] { paramObject });
-      continue;
-      VideoViewVideoHolder.d(this.a.a, ((Integer)paramObject).intValue());
-      continue;
-      VideoViewVideoHolder.a(this.a.a, 0L, "rendering-Start");
-      continue;
-      ved.d(this.a.a.jdField_a_of_type_JavaLangString, "start buffering, show loading view");
-      VideoViewVideoHolder.e(this.a.a, VideoViewVideoHolder.c(this.a.a) + 1);
-      VideoViewVideoHolder.a(this.a.a, SystemClock.uptimeMillis());
-      VideoViewVideoHolder.a(this.a.a, 8);
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-      continue;
-      VideoViewVideoHolder.f(this.a.a, (int)(VideoViewVideoHolder.d(this.a.a) + (SystemClock.uptimeMillis() - VideoViewVideoHolder.a(this.a.a))));
-      ved.d(this.a.a.jdField_a_of_type_JavaLangString, "end buffering, hide loading view");
-      this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-    }
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(-16777216);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setFakeBoldText(QCirclePushAsyncTextView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCirclePushAsyncTextView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uca
  * JD-Core Version:    0.7.0.1
  */

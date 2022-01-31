@@ -1,29 +1,57 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class apdh
+  extends apcg
 {
-  public final int a;
-  final long jdField_a_of_type_Long;
-  final Bundle jdField_a_of_type_AndroidOsBundle;
-  public apwj a;
-  public final String a;
-  final int b;
+  public apdi a;
+  public String b;
+  public boolean b;
   
-  public apdh(apdc paramapdc, Bundle paramBundle, int paramInt1, apwj paramapwj, long paramLong, int paramInt2)
+  public static apdh a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Apwj = paramapwj;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramapwj.a();
-    this.b = paramInt2;
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] new DownloadInst.[ mUDID:[" + this.jdField_a_of_type_Long + "] url:" + this.jdField_a_of_type_JavaLangString + " ]");
+    apdh localapdh = new apdh();
+    localapdh.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
+    localapdh.jdField_b_of_type_JavaLangString = paramJSONObject.optString("action");
+    localapdh.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isChecked", true);
+    localapdh.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("isAddByUser");
+    return localapdh;
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("action", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("isAddByUser", this.jdField_b_of_type_Boolean);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return localJSONObject;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Apdi == null) {
+      return this.jdField_a_of_type_Boolean;
+    }
+    return this.jdField_a_of_type_Apdi.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     apdh
  * JD-Core Version:    0.7.0.1
  */

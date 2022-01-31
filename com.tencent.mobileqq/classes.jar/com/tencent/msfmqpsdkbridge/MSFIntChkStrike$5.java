@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.text.TextUtils;
-import apug;
+import arni;
 
 class MSFIntChkStrike$5
   extends BroadcastReceiver
@@ -46,7 +46,7 @@ class MSFIntChkStrike$5
         localCursor.close();
       }
       if (TextUtils.isEmpty((CharSequence)localObject)) {
-        apug.a(paramContext, (String)localObject);
+        arni.b(paramContext, (String)localObject);
       }
       return;
     }
@@ -60,7 +60,7 @@ class MSFIntChkStrike$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msfmqpsdkbridge.MSFIntChkStrike.5
  * JD-Core Version:    0.7.0.1
  */

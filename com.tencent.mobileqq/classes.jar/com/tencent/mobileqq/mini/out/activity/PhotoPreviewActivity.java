@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
-import bbbx;
+import bdar;
 import com.tencent.mobileqq.activity.photo.ProGallery;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.widget.BubblePopupWindow;
@@ -34,7 +34,7 @@ public class PhotoPreviewActivity
   
   void back()
   {
-    bbbx.a(this, true, false);
+    bdar.anim(this, true, false);
     super.finish();
   }
   
@@ -51,7 +51,7 @@ public class PhotoPreviewActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    setContentView(2131561564);
+    setContentView(2131561756);
     this.reqWidth = getResources().getDisplayMetrics().widthPixels;
     this.reqHeight = getResources().getDisplayMetrics().heightPixels;
     initData();
@@ -130,18 +130,18 @@ public class PhotoPreviewActivity
   
   void initUI()
   {
-    this.topBar = findViewById(2131377553);
-    this.backBtn = ((TextView)findViewById(2131362995));
+    this.topBar = findViewById(2131378090);
+    this.backBtn = ((TextView)findViewById(2131363031));
     this.backBtn.setOnClickListener(new PhotoPreviewActivity.1(this));
     if (this.showBar) {
       this.topBar.setVisibility(0);
     }
-    this.titleView = ((TextView)findViewById(2131377350));
-    this.gallery = ((ProGallery)findViewById(2131366897));
+    this.titleView = ((TextView)findViewById(2131377884));
+    this.gallery = ((ProGallery)findViewById(2131367010));
     this.adapter = new PhotoPreviewActivity.ImageAdapter(this);
     this.gallery.setAdapter(this.adapter);
     this.gallery.setOnNoBlankListener(this.adapter);
-    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297009));
+    this.gallery.setSpacing(getResources().getDimensionPixelSize(2131297026));
     this.gallery.setSelection(this.currentSelectedPostion);
     this.gallery.setOnItemClickListener(new PhotoPreviewActivity.2(this));
   }
@@ -159,7 +159,7 @@ public class PhotoPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PhotoPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

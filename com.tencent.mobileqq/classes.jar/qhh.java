@@ -1,23 +1,16 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
-
-public class qhh
-  implements AdapterView.OnItemClickListener
+class qhh
+  implements qfs
 {
-  public qhh(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
+  qhh(qhg paramqhg) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.a.a.remove(paramInt);
-    this.a.e();
+    oxb.a().a(paramBoolean, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qhh
  * JD-Core Version:    0.7.0.1
  */

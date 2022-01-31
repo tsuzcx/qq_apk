@@ -1,38 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
-import java.lang.ref.WeakReference;
+import com.tencent.widget.AbsListView;
 
-public class rqv
-  extends Handler
+class rqv
+  implements bhpo
 {
-  private WeakReference<ReadInJoySkinAnimManager> a;
+  rqv(rqj paramrqj) {}
   
-  public rqv(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager)
-  {
-    this.a = new WeakReference(paramReadInJoySkinAnimManager);
-  }
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.a.get();
-    if (localReadInJoySkinAnimManager == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    switch (paramInt)
     {
+    case 1: 
+    case 2: 
     default: 
       return;
-    case 1: 
-      ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager);
-      return;
     }
-    ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager);
+    this.a.g();
+    rqj.b(this.a);
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rqv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.Random;
+import android.graphics.Bitmap;
 
-public class qrr
-  extends awyp
+class qrr
+  implements qry
 {
-  VideoFeedsAppInterface jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
-  Random jdField_a_of_type_JavaUtilRandom = new Random();
+  qrr(qrq paramqrq, qrd paramqrd) {}
   
-  public qrr(VideoFeedsAppInterface paramVideoFeedsAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface = paramVideoFeedsAppInterface;
-    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
-  }
+  public void a() {}
   
-  public AppInterface a()
+  public void a(Bitmap paramBitmap, qrw paramqrw)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
-  }
-  
-  protected void a()
-  {
-    try
-    {
-      super.a();
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(ToServiceMsg paramToServiceMsg)
-  {
-    super.b(paramToServiceMsg, null, qrs.class);
+    this.jdField_a_of_type_Qrd.a(paramBitmap);
+    qrq.a(this.jdField_a_of_type_Qrq, paramBitmap, paramqrw.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qrr
  * JD-Core Version:    0.7.0.1
  */

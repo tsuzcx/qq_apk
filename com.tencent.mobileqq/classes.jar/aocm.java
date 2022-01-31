@@ -1,13 +1,10 @@
-import com.tencent.image.URLImageView;
-
-public class aocm
-  extends anzy
+public abstract interface aocm
 {
-  public URLImageView[] a;
+  public abstract long a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aocm
  * JD-Core Version:    0.7.0.1
  */

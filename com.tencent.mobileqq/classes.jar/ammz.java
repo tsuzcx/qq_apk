@@ -1,22 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class ammz
-  implements View.OnClickListener
+class ammz
+  implements bahq
 {
-  public ammz(IphonePickerView paramIphonePickerView) {}
+  ammz(ammy paramammy) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (IphonePickerView.a(this.a) != null) {
-      IphonePickerView.a(this.a).a();
-    }
+    QLog.e("QQConfMeetingLogReportHelper", 1, "doReportLocalLog OnGetLocalLogListener onError, code=" + paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    ammy.a(this.a, paramString);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.a.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammz
  * JD-Core Version:    0.7.0.1
  */

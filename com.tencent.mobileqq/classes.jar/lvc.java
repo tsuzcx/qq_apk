@@ -1,68 +1,54 @@
-import android.graphics.Rect;
-import com.tencent.av.redpacket.AVRedPacketManager;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.random.RandomController;
+import com.tencent.av.random.RandomController.2.1;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class lvc
-  extends lva
+  implements mur
 {
-  public luu a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  public lvc(RandomController paramRandomController) {}
   
-  public lvc(luu paramluu)
+  public void a(String paramString, mus parammus)
   {
-    this.jdField_a_of_type_Luu = paramluu;
-    this.jdField_b_of_type_Long = 750L;
-  }
-  
-  public void a(long paramLong)
-  {
-    super.a(paramLong);
-    long l = this.jdField_a_of_type_Long;
-    int i = 0;
-    if (paramLong - l <= this.jdField_b_of_type_Long) {
-      i = 255;
+    if (QLog.isColorLevel()) {
+      QLog.d("RandomController", 2, "onGetNearbyPeopleProfile uin :" + paramString + ", nickname:" + parammus.b + ", gender:" + parammus.a);
     }
-    a(i);
-  }
-  
-  public void a(AVRedPacketManager paramAVRedPacketManager)
-  {
-    this.jdField_c_of_type_ArrayOfLvm = new lvm[5];
-    int i = 0;
-    while (i < this.jdField_c_of_type_ArrayOfLvm.length)
+    if (paramString.equals(RandomController.a(this.a).getAccount()))
     {
-      this.jdField_c_of_type_ArrayOfLvm[i] = new lvm(paramAVRedPacketManager.a("qav_redpacket_gold_" + i * 2 + ".png"));
-      i += 1;
+      if (parammus.a != -1) {
+        RandomController.a(this.a).a(parammus.a);
+      }
+      if (RandomController.a(this.a).a())
+      {
+        if (!RandomController.a(this.a)) {
+          break label209;
+        }
+        RandomController.b(this.a, false);
+        RandomController.a(this.a).set(0);
+        RandomController.a(this.a).a(RandomController.b(this.a), RandomController.c(this.a), 1, new String[0]);
+        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
+      }
     }
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_Luu = null;
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_b_of_type_Int = (paramInt1 * 399 / 750);
-    this.jdField_c_of_type_Int = (paramInt1 * 279 / 750);
-    this.d = (paramInt1 * 155 / 750);
-    this.e = (paramInt1 * 252 / 750);
-  }
-  
-  public void c()
-  {
-    Rect localRect = this.jdField_a_of_type_Luu.a();
-    int i = localRect.left - this.d;
-    int j = localRect.top - this.e;
-    a(i, j, this.jdField_b_of_type_Int + i, this.jdField_c_of_type_Int + j);
+    for (;;)
+    {
+      RandomController.a(this.a).a().post(new RandomController.2.1(this));
+      return;
+      label209:
+      if (RandomController.b(this.a))
+      {
+        RandomController.c(this.a, false);
+        RandomController.a(this.a).a(this.a.b, RandomController.b(this.a));
+        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lvc
  * JD-Core Version:    0.7.0.1
  */

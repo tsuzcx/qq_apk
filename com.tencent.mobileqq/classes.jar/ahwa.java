@@ -1,30 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
-class ahwa
-  implements Handler.Callback
+public class ahwa
+  implements acje
 {
-  ahwa(ahvz paramahvz) {}
+  public ahwa(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public boolean a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
+    if (paramBoolean) {
+      bkfg.a(this.a.getActivity());
     }
-    for (;;)
-    {
-      return false;
-      this.a.a(null);
-      continue;
-      if (ahvz.a(this.a) != null) {
-        ahvz.a(this.a).k();
-      }
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwa
  * JD-Core Version:    0.7.0.1
  */

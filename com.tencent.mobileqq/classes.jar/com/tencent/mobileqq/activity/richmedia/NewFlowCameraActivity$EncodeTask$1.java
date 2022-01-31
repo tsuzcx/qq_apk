@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahvs;
-import axir;
+import ajnc;
+import azdx;
 import com.tencent.maxvideo.mediadevice.AVCodec;
 import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class NewFlowCameraActivity$EncodeTask$1
   implements Runnable
 {
-  public NewFlowCameraActivity$EncodeTask$1(ahvs paramahvs, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public NewFlowCameraActivity$EncodeTask$1(ajnc paramajnc, RMVideoStateMgr paramRMVideoStateMgr) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class NewFlowCameraActivity$EncodeTask$1
       if (QLog.isColorLevel()) {
         QLog.d("PTV.NewFlowCameraActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.a.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
       }
-      axir.a().a().recordSubmit();
+      azdx.a().a().recordSubmit();
       return;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -43,7 +43,7 @@ public class NewFlowCameraActivity$EncodeTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.EncodeTask.1
  * JD-Core Version:    0.7.0.1
  */

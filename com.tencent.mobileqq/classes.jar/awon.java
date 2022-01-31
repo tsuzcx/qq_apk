@@ -1,178 +1,452 @@
-import android.app.Activity;
+import VIP.GetMusicListReq;
+import VIP.GetMusicListRsp;
+import VIP.GetQzoneMusicInfoReq;
+import VIP.GetQzoneMusicInfoRsp;
+import VIP.MusicInfo;
+import VIP.MusicListInfo;
+import VIP.SingerInfo;
+import VIP.SourceInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchEntity;
-import com.tencent.mobileqq.mini.entry.MiniAppLocalSearchManager;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.lyrics.FloatIconLayout;
+import com.tencent.mobileqq.listentogether.lyrics.FloatTextLayout;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.profile.musicbox.ProfileMusicBoxController.1;
+import com.tencent.mobileqq.profile.musicbox.ProfileMusicBoxController.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Set;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class awon
-  extends awoe
+  extends atjn
+  implements alkr, aumt
 {
-  public MiniAppLocalSearchEntity a;
-  protected String a;
-  public int[] a;
+  public static int j = 3;
+  private long jdField_a_of_type_Long;
+  private awop jdField_a_of_type_Awop;
+  private SongInfo jdField_a_of_type_ComTencentMobileqqMusicSongInfo = new SongInfo();
+  private SongInfo[] jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo;
+  private long b;
+  private boolean h;
+  private boolean i;
   
-  public awon(QQAppInterface paramQQAppInterface, int paramInt, MiniAppLocalSearchEntity paramMiniAppLocalSearchEntity, String paramString)
+  public awon(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface, paramInt, 0L);
-    this.jdField_a_of_type_ArrayOfInt = new int[3];
-    this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity = paramMiniAppLocalSearchEntity;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Atjl.jdField_b_of_type_Boolean = true;
+    paramQQAppInterface.removeObserver(this.jdField_a_of_type_Atic);
   }
   
-  protected long a(String paramString)
+  public static boolean a(long paramLong)
   {
-    return 0L;
-  }
-  
-  public CharSequence a()
-  {
-    return awwa.b(this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName, this.jdField_a_of_type_JavaLangString, 10, true);
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(View paramView)
-  {
-    if ((MiniAppLocalSearchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(310) != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.showMask != 0) {
-        break label314;
-      }
-      MiniAppLauncher.launchMiniAppById((Activity)paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null, null, null, null, 1005);
+    SongInfo localSongInfo = QQPlayerService.b();
+    if ((localSongInfo != null) && (QQPlayerService.b().jdField_b_of_type_Int == 10) && (localSongInfo.jdField_b_of_type_Long == paramLong)) {
+      return QQPlayerService.a();
     }
-    for (;;)
-    {
-      QQAppInterface localQQAppInterface;
-      JSONObject localJSONObject;
-      if ((paramView.getContext() instanceof UniteSearchActivity))
-      {
-        localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (awiw.b.containsKey(this))
-        {
-          paramView = (awix)awiw.b.get(this);
-          localJSONObject = new JSONObject();
-        }
-      }
-      try
-      {
-        localJSONObject.put("project", awsq.a());
-        localJSONObject.put("event_src", "client");
-        localJSONObject.put("obj_lct", paramView.jdField_a_of_type_Int);
-        localJSONObject.put("get_src", "native");
-        ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_item").obj1(paramView.jdField_a_of_type_Long + "").obj2(this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId).ver1(paramView.jdField_a_of_type_JavaLangString).ver2(awsq.a(UniteSearchActivity.d));
-        if (c())
-        {
-          paramView = "1";
-          awsq.a(null, localReportModelDC02528.ver3(paramView).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + awiw.jdField_a_of_type_Long));
-          awwa.b(localQQAppInterface, this.jdField_a_of_type_JavaLangString, this.i, e(), e());
-          if ((this.i == null) || (TextUtils.isEmpty(this.i))) {
-            break label379;
-          }
-          awsq.a(null, 0, this.b, "0X8009D31", 3, 0, null, null);
-          return;
-          label314:
-          MiniAppLauncher.launchMiniAppById((Activity)paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null, null, null, null, 1027);
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          QLog.e(h, 2, "e = " + localJSONException);
-          continue;
-          paramView = "0";
-        }
-        label379:
-        if ((this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName != null) && (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName.equals(this.jdField_a_of_type_JavaLangString)))
-        {
-          awsq.a(null, 0, this.b, "0X8009D33", 0, 0, this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null);
-          return;
-        }
-        awsq.a(null, 0, this.b, "0X8009D45", 0, 0, this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId, null);
-      }
-    }
-  }
-  
-  public boolean a()
-  {
     return false;
   }
   
-  public String b()
+  public void a(int paramInt, String paramString)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId;
+    super.a(j, paramString);
+    bajt.a().a(this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout, paramString, j);
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equalsIgnoreCase(paramString)))
+    {
+      this.i = true;
+      return;
+    }
+    this.i = false;
   }
   
-  public int c()
+  public void a(long paramLong)
   {
-    return 0;
+    new bdwc("VIP.ProfileMusicBoxServer.ProfileMusicBoxObj", "ProfileMusicBox.getMusicList").a("getMusicList", new GetMusicListReq(paramLong, "", 100L, new SourceInfo(3, "8.3.3"), 0), new GetMusicListRsp(), this, false);
   }
   
-  public CharSequence c()
+  public void a(long paramLong, SongInfo paramSongInfo)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.desc;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo = paramSongInfo;
+    this.h = a(paramLong);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramSongInfo.g);
+    a(paramLong, localArrayList);
   }
   
-  public String c()
+  public void a(long paramLong, ArrayList<String> paramArrayList)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appName;
+    new bdwc("VIP.ProfileMusicBoxServer.ProfileMusicBoxObj", "ProfileMusicBox.getQzoneMusicInfo").a("getQzoneMusicInfo", new GetQzoneMusicInfoReq(paramLong, paramArrayList, new SourceInfo(3, "8.3.3")), new GetQzoneMusicInfoRsp(), new awoo(this), false);
   }
   
-  public boolean c()
+  public void a(Context paramContext, SongInfo paramSongInfo)
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.showMask & 0x1) != 0;
+    if (QQPlayerService.a() == 3)
+    {
+      QQPlayerService.a(paramContext, false);
+      d(true);
+    }
+    do
+    {
+      return;
+      new Intent(paramContext, QQBrowserActivity.class).putExtra("url", bhos.a(aore.a().jdField_b_of_type_JavaLangString, "uin", String.valueOf(this.jdField_a_of_type_Long)));
+      QQPlayerService.b(this);
+      QQPlayerService.a(103);
+      QQPlayerService.a(paramContext, getToken(), new SongInfo[] { paramSongInfo }, 0, false);
+      a(this.jdField_a_of_type_Long);
+      a(String.valueOf(this.jdField_a_of_type_Long));
+      a(paramSongInfo);
+    } while (!QLog.isColorLevel());
+    QLog.d("ProfileMusicBoxController", 2, "playMusic mid:" + paramSongInfo.g + " url:" + paramSongInfo.jdField_b_of_type_JavaLangString);
   }
   
-  public int d()
+  public void a(awop paramawop)
   {
-    return 0;
+    this.jdField_a_of_type_Awop = paramawop;
   }
   
-  public CharSequence d()
+  public void a(SongInfo paramSongInfo)
   {
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("ProfileMusicBoxController", 2, "onPlayMusicChange song.id:" + paramSongInfo.e);
+    }
+    this.jdField_a_of_type_Atjl.jdField_a_of_type_JavaLangString = paramSongInfo.e;
+    if (a()) {
+      this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.a(this.jdField_a_of_type_Atjl);
+    }
   }
   
-  public String d()
+  public void a(String paramString)
   {
-    return null;
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount().equalsIgnoreCase(paramString)))
+    {
+      this.i = true;
+      if (!b()) {
+        break label54;
+      }
+      QQPlayerService.a(BaseApplicationImpl.getContext(), false);
+      d(true);
+    }
+    label54:
+    while (TextUtils.isEmpty(paramString))
+    {
+      return;
+      this.i = false;
+      break;
+    }
+    atjn localatjn = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
+    if (localatjn != null)
+    {
+      this.jdField_a_of_type_Atjl.jdField_a_of_type_Int = localatjn.a().jdField_a_of_type_Int;
+      this.jdField_a_of_type_Atjl.jdField_b_of_type_Int = localatjn.a().jdField_b_of_type_Int;
+      this.jdField_a_of_type_Atjl.jdField_a_of_type_Boolean = localatjn.a().jdField_a_of_type_Boolean;
+      if (localatjn.a()) {
+        localatjn.b(localatjn.a().e, localatjn.a().jdField_b_of_type_JavaLangString);
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileMusicBoxController", 2, "showLyrics");
+    }
+    if ((TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Atjl.jdField_b_of_type_JavaLangString)))
+    {
+      super.a(j, this.jdField_a_of_type_Atjl.jdField_b_of_type_JavaLangString);
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilSet.add(j + "_" + paramString);
+    if (!a())
+    {
+      super.a(j, paramString);
+      if (this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout != null) {
+        this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatTextLayout.b();
+      }
+    }
+    bajt.a().a(this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout, paramString, j);
   }
   
-  public int e()
+  public boolean b()
   {
-    return 6;
+    return (QQPlayerService.a() == 3) && (QQPlayerService.b() != null) && (QQPlayerService.b().jdField_b_of_type_Int == 10) && (a());
   }
   
-  public String e()
+  public void c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.appId;
+    awom.b(this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.getContext(), this.jdField_a_of_type_Atjl.jdField_b_of_type_JavaLangString);
+    String str;
+    if (this.i)
+    {
+      str = "";
+      if (!this.i) {
+        break label74;
+      }
+    }
+    label74:
+    for (int k = 1;; k = 2)
+    {
+      azmj.b(null, "dc00898", "", str, "qq_vip", "0X800A7DF", k, 0, "", "", "", "");
+      return;
+      str = String.valueOf(this.jdField_a_of_type_Long);
+      break;
+    }
   }
   
-  public String g()
+  public void d()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqMiniEntryMiniAppLocalSearchEntity.iconUrl;
+    QQPlayerService.c(BaseApplicationImpl.getContext());
+    m();
+    String str;
+    if (this.i)
+    {
+      str = "";
+      if (!this.i) {
+        break label67;
+      }
+    }
+    label67:
+    for (int k = 1;; k = 2)
+    {
+      azmj.b(null, "dc00898", "", str, "qq_vip", "0X800A7E0", k, 0, "", "", "", "");
+      return;
+      str = String.valueOf(this.jdField_a_of_type_Long);
+      break;
+    }
   }
   
-  public String h()
+  public void d(boolean paramBoolean)
   {
-    return "https://qzonestyle.gtimg.cn/aoi/sola/20190108152813_orkMRcBegl.png";
+    ThreadManagerV2.getUIHandlerV2().post(new ProfileMusicBoxController.1(this, paramBoolean));
+  }
+  
+  public void e()
+  {
+    QQPlayerService.c(this);
+    this.jdField_a_of_type_Awop = null;
+    super.e();
+    bajt.a().b();
+  }
+  
+  public String getToken()
+  {
+    return QQPlayerService.a(4, "QQMusicWrap");
+  }
+  
+  public void j()
+  {
+    super.b(j, this.jdField_a_of_type_Atjl.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_Atjl.e = 0;
+    b(j, this.jdField_a_of_type_Atjl.jdField_b_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      atjn localatjn = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
+      if (localatjn != null)
+      {
+        localatjn.a().jdField_a_of_type_Int = this.jdField_a_of_type_Atjl.jdField_a_of_type_Int;
+        localatjn.a().jdField_b_of_type_Int = this.jdField_a_of_type_Atjl.jdField_b_of_type_Int;
+        localatjn.a().jdField_a_of_type_Boolean = this.jdField_a_of_type_Atjl.jdField_a_of_type_Boolean;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileMusicBoxController", 2, "hideLyrics");
+      }
+    }
+  }
+  
+  public void k()
+  {
+    QQPlayerService.a(BaseApplicationImpl.getContext());
+    d(false);
+  }
+  
+  public void l()
+  {
+    QQPlayerService.c(BaseApplicationImpl.getContext());
+    m();
+  }
+  
+  public void m()
+  {
+    ThreadManagerV2.getUIHandlerV2().post(new ProfileMusicBoxController.2(this));
+    atjn localatjn = ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
+    JSONObject localJSONObject;
+    if ((localatjn != null) && (!ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b())) {
+      localJSONObject = new JSONObject();
+    }
+    try
+    {
+      localJSONObject.put("type", "musicboxResume");
+      localJSONObject.put("uin", localatjn.a().jdField_b_of_type_JavaLangString);
+      localJSONObject.put("uinType", localatjn.a().e);
+      ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileMusicBoxController", 2, "resetState");
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public void n()
+  {
+    SongInfo localSongInfo = QQPlayerService.c();
+    Object localObject = QQPlayerService.b();
+    if ((localSongInfo != null) && (localObject != null) && (localSongInfo.jdField_b_of_type_Int == 10) && (!TextUtils.isEmpty(localSongInfo.g)) && (!localSongInfo.g.equals(((SongInfo)localObject).g)))
+    {
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(localSongInfo.g);
+      a(this.jdField_a_of_type_Long, (ArrayList)localObject);
+    }
+  }
+  
+  public void onPlaySongChanged(SongInfo paramSongInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo = paramSongInfo;
+    if (paramSongInfo.jdField_b_of_type_Int == 10)
+    {
+      if (this.jdField_a_of_type_Awop != null) {
+        this.jdField_a_of_type_Awop.a(paramSongInfo, this.h);
+      }
+      n();
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileMusicBoxController", 2, "onPlaySongChanged newSong:" + paramSongInfo.c);
+      }
+    }
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    int k = 1;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ProfileMusicBoxController", 2, "onPlayStateChanged playState:" + paramInt);
+      }
+      return;
+      Object localObject = QQPlayerService.b();
+      if (((SongInfo)localObject).jdField_b_of_type_Int == 10)
+      {
+        if (this.jdField_a_of_type_Awop != null) {
+          this.jdField_a_of_type_Awop.a((SongInfo)localObject, true);
+        }
+        a((SongInfo)localObject);
+        if (!a()) {
+          a(String.valueOf(this.jdField_a_of_type_Long));
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout != null) {
+          this.jdField_a_of_type_ComTencentMobileqqListentogetherLyricsFloatIconLayout.setPlayState(true);
+        }
+        this.h = true;
+        this.jdField_b_of_type_Long = System.currentTimeMillis();
+      }
+      else
+      {
+        j();
+        continue;
+        if (this.jdField_a_of_type_Awop != null) {
+          this.jdField_a_of_type_Awop.a(2);
+        }
+        d(false);
+        this.h = false;
+        long l = this.jdField_a_of_type_Long;
+        if (this.i)
+        {
+          localObject = "0X800A7D9";
+          label220:
+          if (!bajt.a().a()) {
+            break label281;
+          }
+        }
+        for (;;)
+        {
+          azmj.b(null, "dc00898", "", String.valueOf(l), "qq_vip", (String)localObject, k, 0, String.valueOf((System.currentTimeMillis() - this.jdField_b_of_type_Long) / 1000L), "", "", "");
+          break;
+          localObject = "0X800A7DE";
+          break label220;
+          label281:
+          k = 2;
+        }
+        m();
+        this.h = false;
+        continue;
+        this.h = false;
+        localObject = QQPlayerService.b();
+        if ((localObject != null) && (((SongInfo)localObject).jdField_b_of_type_Int == 10))
+        {
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.add(((SongInfo)localObject).g);
+          a(this.jdField_a_of_type_Long, localArrayList);
+          continue;
+          localObject = QQPlayerService.b();
+          if ((localObject != null) && (TextUtils.isEmpty(((SongInfo)localObject).jdField_b_of_type_JavaLangString)) && (((SongInfo)localObject).jdField_b_of_type_Int == 10))
+          {
+            this.h = false;
+            localArrayList = new ArrayList();
+            localArrayList.add(((SongInfo)localObject).g);
+            a(this.jdField_a_of_type_Long, localArrayList);
+          }
+        }
+      }
+    }
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if ((paramBoolean) && ((paramObject instanceof GetMusicListRsp)))
+    {
+      paramObject = (GetMusicListRsp)paramObject;
+      ArrayList localArrayList = new ArrayList();
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo = new SongInfo[paramObject.stMusicList.vMusicList.size()];
+      paramInt = 0;
+      while (paramInt < paramObject.stMusicList.vMusicList.size())
+      {
+        this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo[paramInt] = new SongInfo();
+        this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo[paramInt].g = ((MusicInfo)paramObject.stMusicList.vMusicList.get(paramInt)).sSongId;
+        this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo[paramInt].jdField_d_of_type_JavaLangString = ((MusicInfo)paramObject.stMusicList.vMusicList.get(paramInt)).sAlbumName;
+        this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo[paramInt].e = ((MusicInfo)paramObject.stMusicList.vMusicList.get(paramInt)).sPic;
+        this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo[paramInt].c = ((MusicInfo)paramObject.stMusicList.vMusicList.get(paramInt)).sSongName;
+        this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo[paramInt].jdField_d_of_type_Long = ((MusicInfo)paramObject.stMusicList.vMusicList.get(paramInt)).iDuration;
+        this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo[paramInt].jdField_b_of_type_Int = 10;
+        this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo[paramInt].jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+        if (this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo[paramInt].g.equals(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo.g)) {
+          this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo[paramInt].jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo.jdField_b_of_type_JavaLangString;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        int k = 0;
+        while (k < ((MusicInfo)paramObject.stMusicList.vMusicList.get(paramInt)).vSingerList.size())
+        {
+          if (k != 0) {
+            localStringBuilder.append("/");
+          }
+          localStringBuilder.append(((SingerInfo)((MusicInfo)paramObject.stMusicList.vMusicList.get(paramInt)).vSingerList.get(k)).sSingerName);
+          k += 1;
+        }
+        this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo[paramInt].h = localStringBuilder.toString();
+        localArrayList.add(((MusicInfo)paramObject.stMusicList.vMusicList.get(paramInt)).sSongId);
+        paramInt += 1;
+      }
+      QQPlayerService.a(this.jdField_a_of_type_ArrayOfComTencentMobileqqMusicSongInfo);
+      n();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awon
  * JD-Core Version:    0.7.0.1
  */

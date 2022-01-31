@@ -1,48 +1,26 @@
-import android.util.Log;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import com.tencent.qphone.base.util.QLog;
 
-public class rnu
+class rnu
+  extends bhnr
 {
-  private static String jdField_a_of_type_JavaLangString = "TimeUtil";
-  private static ConcurrentHashMap<String, Long> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
+  rnu(rnr paramrnr, AlphaAnimation paramAlphaAnimation) {}
   
-  public static long a(String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
-    {
-      long l1 = System.currentTimeMillis();
-      long l2 = l1 - ((Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).longValue();
-      Log.d(jdField_a_of_type_JavaLangString, paramString + " end spent time : " + l2 + "      end time " + l1);
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      return l2;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsVideoUIDelegate", 2, "onVideoEndSoon appearAnim onAnimationEnd: ");
     }
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-    Log.d(jdField_a_of_type_JavaLangString, paramString + " start time : " + System.currentTimeMillis());
-    return -1L;
+    this.jdField_a_of_type_Rnr.a.a.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
   }
   
-  public static long b(String paramString)
-  {
-    paramString = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(System.currentTimeMillis()));
-    if (paramString == null) {
-      return -1L;
-    }
-    return paramString.longValue();
-  }
-  
-  public static long c(String paramString)
-  {
-    long l = -1L;
-    if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-      l = ((Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString)).longValue();
-    }
-    return l;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rnu
  * JD-Core Version:    0.7.0.1
  */

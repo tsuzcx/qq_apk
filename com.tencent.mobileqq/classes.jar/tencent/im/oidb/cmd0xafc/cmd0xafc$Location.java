@@ -15,7 +15,7 @@ public final class cmd0xafc$Location
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xafc.cmd0xafc.Location
  * JD-Core Version:    0.7.0.1
  */

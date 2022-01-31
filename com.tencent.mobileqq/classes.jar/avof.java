@@ -1,55 +1,35 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.NearbyPeople;
 
 public class avof
-  implements URLDrawableDownListener
 {
-  public avof(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public static String a;
+  public static List<oidb_0x8dd.NearbyPeople> a;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadCancelled: ");
-    }
+    jdField_a_of_type_JavaLangString = "0";
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public static String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadFailed: ");
-    }
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
+    return jdField_a_of_type_JavaLangString;
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public static List<oidb_0x8dd.NearbyPeople> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadInterrupted: ");
-    }
+    return jdField_a_of_type_JavaUtilList;
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public static void a(String paramString, List<oidb_0x8dd.NearbyPeople> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReceiptMessageDetailFragment", 2, "URLDrawableDownListener onLoadProgressed: " + paramURLDrawable + " / " + paramInt);
-    }
-    ReceiptMessageDetailFragment.a(this.a).setLevel(paramInt);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    ReceiptMessageDetailFragment.a(this.a).setVisibility(8);
-    ReceiptMessageDetailFragment.a(this.a, paramURLDrawable);
-    ReceiptMessageDetailFragment.b(this.a);
+    jdField_a_of_type_JavaUtilList = paramList;
+    jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avof
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
-import org.json.JSONArray;
-
-public class bemy
+public abstract interface bemy
 {
-  public JSONArray a;
-  public boolean a;
-  public boolean b;
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bemy
  * JD-Core Version:    0.7.0.1
  */

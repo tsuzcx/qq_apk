@@ -37,6 +37,7 @@ import com.tencent.mobileqq.mini.tfs.mini.PageCreateAsyncTask;
 import com.tencent.mobileqq.mini.tfs.mini.PageInitAsyncTask;
 import com.tencent.mobileqq.mini.tfs.mini.PagePreloadTask;
 import com.tencent.mobileqq.mini.tfs.mini.ServiceCreateAsyncTask;
+import com.tencent.mobileqq.mini.tfs.mini.ServiceInitAppTask;
 import com.tencent.mobileqq.mini.tfs.mini.ServiceInitAsyncTask;
 import com.tencent.mobileqq.mini.tfs.mini.TbsAsyncTask;
 import com.tencent.qphone.base.util.QLog;
@@ -72,6 +73,7 @@ public class AppLoaderManager
   private MiniAppConfig mMiniConfig;
   MiniTask.RuntimeContainerInitTask mRuntimeContainerInitTask;
   MiniTask.RuntimeCreateTask mRuntimeCreateTask;
+  ServiceInitAppTask mServiceInitAppTask;
   private boolean mStarted;
   private String mWARemoteDebugStr;
   private String mWAWebviewStr;
@@ -258,8 +260,10 @@ public class AppLoaderManager
     this.jsPluginEngineTask = new JsPluginEngineTask(localBaseApplicationImpl);
     this.mRuntimeContainerInitTask = new MiniTask.RuntimeContainerInitTask(localBaseApplicationImpl, AppBrandRuntimeContainer.g());
     this.mRuntimeCreateTask = new MiniTask.RuntimeCreateTask(localBaseApplicationImpl, AppBrandRuntimeContainer.g());
+    this.mServiceInitAppTask = new ServiceInitAppTask(localBaseApplicationImpl);
     this.initAppRuntimeTask.addDependTask(this.jsPluginEngineTask.addDependTask(this.mRuntimeCreateTask)).addDependTask(this.firstPageTask).addDependTask(this.apkgLoadTask).addDependTask(this.serviceInitTask.addDependTask(this.baselibLoadTask).addDependTask(this.serviceCreateTask.addDependTask(this.tbsTask).addDependTask(this.mRuntimeCreateTask).addDependTask(this.pageCreateTask))).addDependTask(this.pageInitTask.addDependTask(this.serviceInitTask).addDependTask(this.pageCreateTask.addDependTask(this.mRuntimeCreateTask).addDependTask(this.tbsTask).addDependTask(this.baselibLoadTask)));
-    initTasks(new BaseTask[] { this.initAppRuntimeTask, this.mRuntimeContainerInitTask });
+    this.mServiceInitAppTask.addDependTask(this.serviceInitTask);
+    initTasks(new BaseTask[] { this.initAppRuntimeTask, this.mRuntimeContainerInitTask, this.mServiceInitAppTask });
   }
   
   public boolean isTbsCompleted()
@@ -341,6 +345,13 @@ public class AppLoaderManager
   public void onBaselibUpdated(Context paramContext, MiniAppConfig paramMiniAppConfig)
   {
     AppBrandTask.runTaskOnUiThread(new AppLoaderManager.2(this, paramContext, paramMiniAppConfig));
+  }
+  
+  public void onFakeApkgInfo(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2)
+  {
+    paramMiniAppConfig = new ApkgInfo(null, paramMiniAppConfig);
+    paramMiniAppConfig.updateConfigStr(paramString1);
+    this.mServiceInitAppTask.startFakeApkgInfo(paramMiniAppConfig, paramString2);
   }
   
   public void onTaskBegin(BaseTask paramBaseTask)
@@ -433,6 +444,7 @@ public class AppLoaderManager
     resetTaskAndDepends(this.initAppRuntimeTask);
     resetTaskAndDepends(this.firstPageTask);
     resetTaskAndDepends(this.apkgLoadTask);
+    resetTaskAndDepends(this.mServiceInitAppTask);
     start();
   }
   
@@ -534,7 +546,7 @@ public class AppLoaderManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.AppLoaderManager
  * JD-Core Version:    0.7.0.1
  */

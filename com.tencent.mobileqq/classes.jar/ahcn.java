@@ -1,21 +1,19 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ahcn
-  implements agzh
+public abstract interface ahcn
 {
-  ahcn(ahcg paramahcg, ResultReceiver paramResultReceiver) {}
+  public abstract Activity a();
   
-  public void a(String paramString1, String paramString2, agzb paramagzb)
-  {
-    paramString1 = new Bundle();
-    paramString1.putString("res", paramString2);
-    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString1);
-  }
+  public abstract QQAppInterface a();
+  
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahcn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,105 +1,124 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hiboom.HiBoomPanelView;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import com.tencent.mobileqq.hiboom.SectorProgressView;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import java.util.Vector;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class asog
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public static asod a;
+  public int a;
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public HiBoomTextView a;
+  public SectorProgressView a;
+  public boolean a;
+  public ImageView b;
+  public ImageView c;
   
-  private static HashMap<String, String> a()
+  public asog(HiBoomPanelView paramHiBoomPanelView, View paramView, boolean paramBoolean)
   {
-    HashMap localHashMap = new HashMap();
-    if (a != null)
+    super(paramView);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean)
     {
-      asoi.a("MsgBackup_MsgBackupReporter", "mReportContainer = %s", new Object[] { a });
-      localHashMap.put("bizType", String.valueOf(a.jdField_a_of_type_Int));
-      localHashMap.put("platForm", String.valueOf(a.jdField_b_of_type_Int));
-      localHashMap.put("requestStatus", String.valueOf(a.jdField_a_of_type_Boolean));
-      localHashMap.put("errorCode", String.valueOf(a.jdField_c_of_type_Int));
-      localHashMap.put("totalCost", String.valueOf(a.jdField_a_of_type_Long));
-      localHashMap.put("averageSpeed", String.valueOf(a.jdField_a_of_type_Double));
-      localHashMap.put("totalSessionCount", String.valueOf(a.jdField_b_of_type_Long));
-      localHashMap.put("finishedSessionCount", String.valueOf(a.jdField_c_of_type_Long));
-      localHashMap.put("resSessionContains", String.valueOf(a.jdField_d_of_type_Long));
-      localHashMap.put("resTotalSize", String.valueOf(a.e));
-      localHashMap.put("dbTotalSize", String.valueOf(a.f));
-      localHashMap.put("resRequestCount", String.valueOf(a.g));
-      localHashMap.put("resRequestFailedCount", String.valueOf(a.h));
-      localHashMap.put("resRequestCancelCount", String.valueOf(a.i));
-      localHashMap.put("resTrivialCount", String.valueOf(a.j));
-      localHashMap.put("resTrivialFailedCount", String.valueOf(a.k));
-      localHashMap.put("resTrivialCancelCount", String.valueOf(a.l));
-      localHashMap.put("dbRequestCount", String.valueOf(a.m));
-      localHashMap.put("dbRequestFailedCount", String.valueOf(a.n));
-      localHashMap.put("dbRequestCancelCount", String.valueOf(a.o));
-      localHashMap.put("udpDetected", String.valueOf(a.jdField_b_of_type_Boolean));
-      localHashMap.put("connectType", String.valueOf(a.jdField_d_of_type_Int));
-      localHashMap.put("connectElipse", String.valueOf(a.p));
-      localHashMap.put("sessionReadyAllTimes", String.valueOf(a.q));
-      localHashMap.put("fileFailedCount", String.valueOf(a.r));
-      localHashMap.put("fileErrorList", String.valueOf(a.jdField_a_of_type_JavaUtilArrayList));
+      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView = ((HiBoomTextView)paramView.findViewById(2131367639));
+      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.setLoadingScale(0.6F);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367637));
+      this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView = ((SectorProgressView)paramView.findViewById(2131367638));
+      this.b = ((ImageView)paramView.findViewById(2131367634));
+      this.c = ((ImageView)paramView.findViewById(2131367635));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131367632));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367636));
+      paramView.setOnClickListener(this);
     }
-    return localHashMap;
   }
   
-  public static void a()
+  public void onClick(View paramView)
   {
-    if (a == null)
+    int i;
+    if (this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.getVisibility() == 0) {
+      if (!this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.a())
+      {
+        this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.a();
+        this.jdField_a_of_type_ComTencentMobileqqHiboomSectorProgressView.setProgress(0);
+        i = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_Asof.a(this.jdField_a_of_type_Int);
+        asnx.a.a(i);
+      }
+    }
+    do
     {
-      a = new asod();
-      a.a();
-      a.jdField_b_of_type_Int = 4;
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupReporter", 2, "report() called with: key = [" + paramString + "]");
-    }
-    axqy.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupReporter", 2, "report() called with: key = [" + paramString + "], fromType = [" + paramInt + "]");
-    }
-    axqy.b(null, "dc00898", "", "", paramString, paramString, paramInt, 0, "", "", "", "");
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup_MsgBackupReporter", 2, "report() called with: key = [" + paramString + "], fromType = [" + paramInt1 + "], reservedFromType = [" + paramInt2 + "]");
-    }
-    axqy.b(null, "dc00898", "", "", paramString, paramString, paramInt1, 0, String.valueOf(paramInt2), "", "", "");
-  }
-  
-  public static void b()
-  {
-    if (a != null)
-    {
-      a.a();
-      a = null;
-    }
-  }
-  
-  public static void c()
-  {
-    if (a != null)
-    {
-      HashMap localHashMap = a();
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      axrn.a(BaseApplicationImpl.getContext()).a(str, "MsgBackup_MsgBackupReporter", true, 0L, 0L, localHashMap, null);
-      b();
-    }
+      Object localObject;
+      do
+      {
+        return;
+        if (this.b.getVisibility() == 0)
+        {
+          switch (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_Asof.a(this.jdField_a_of_type_Int))
+          {
+          default: 
+            return;
+          }
+          localObject = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c();
+          if (this.c.getVisibility() == 0) {}
+          for (paramView = "0";; paramView = "1")
+          {
+            VasWebviewUtil.reportCommercialDrainage((String)localObject, "HighFont", "ClickPlus", "", 1, 0, 0, "", "", paramView);
+            this.c.setVisibility(8);
+            this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getPreferences().edit().putBoolean("hiboom_red_dot_show", true).commit();
+            paramView = bdox.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext(), "font", "mvip.gexinghua.mobile.font.client_tab_store") + "&haibao=1";
+            if (QLog.isColorLevel()) {
+              QLog.d("HiBoomFont.HiBoomPanelView", 2, "enter hiboom mall url = " + paramView);
+            }
+            VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.getContext(), paramView, 4096L, null, false, -1);
+            return;
+          }
+        }
+        if (this.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() != 0) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("HiBoomFont.HiBoomPanelView", 2, "dirty filter ");
+      return;
+      if (asnx.b.compareAndSet(false, true))
+      {
+        paramView = (alxl)this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(13);
+        localObject = (asnx)this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getManager(219);
+        i = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_Asof.a(this.jdField_a_of_type_Int);
+        if (QLog.isColorLevel()) {
+          QLog.d("HiBoomFont.HiBoomPanelView", 2, "onClick hiboomid = " + i);
+        }
+        if (((asnx)localObject).c.contains(Integer.valueOf(i))) {
+          paramView.a(i, true, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.a());
+        }
+        for (;;)
+        {
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomPanelView.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "CliOper", "", "", "0X80094D7", "0X80094D7", 0, 0, "", "", "", "");
+          return;
+          paramView.a(i, this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomTextView.a(), 2);
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("HiBoomFont.HiBoomPanelView", 2, "onClick is sending");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asog
  * JD-Core Version:    0.7.0.1
  */

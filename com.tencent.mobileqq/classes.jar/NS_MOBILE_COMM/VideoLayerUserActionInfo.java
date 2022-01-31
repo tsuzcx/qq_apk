@@ -39,7 +39,7 @@ public final class VideoLayerUserActionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_COMM.VideoLayerUserActionInfo
  * JD-Core Version:    0.7.0.1
  */

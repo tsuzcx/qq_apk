@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.PopupWindow;
-import bbll;
+import bdkf;
 import com.tencent.mobileqq.widget.FormMutiItem;
 import com.tencent.qphone.base.util.QLog;
 
@@ -29,10 +29,10 @@ class AddContactsView$12
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setWidth(-2);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(false);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(false);
-        int i = bbll.a(16.0F);
+        int i = bdkf.a(16.0F);
         int j = -localView.getMeasuredHeight();
         int k = this.this$0.i.getMeasuredHeight();
-        int m = bbll.a(24.0F);
+        int m = bdkf.a(24.0F);
         this.this$0.jdField_a_of_type_AndroidWidgetPopupWindow.showAsDropDown(this.this$0.i, i, j - k + m);
         return;
       }
@@ -45,7 +45,7 @@ class AddContactsView$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsView.12
  * JD-Core Version:    0.7.0.1
  */

@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import bgux;
+import bivw;
 import java.util.Arrays;
 
 public class JsCallParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<JsCallParams> CREATOR = new bgux();
+  public static final Parcelable.Creator<JsCallParams> CREATOR = new bivw();
   private String jdField_a_of_type_JavaLangString;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private String b;
@@ -72,7 +72,7 @@ public class JsCallParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.js.JsCallParams
  * JD-Core Version:    0.7.0.1
  */

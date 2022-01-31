@@ -1,43 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.widget.SingleLineTextView;
 
 public class azte
-  implements Callable<List<awii>>
 {
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public SingleLineTextView a;
   
-  public azte(aztd paramaztd, Context paramContext, QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public List<awii> a()
-  {
-    long l = System.currentTimeMillis();
-    ArrayList localArrayList = new ArrayList();
-    if (awii.E == this.jdField_a_of_type_Long)
-    {
-      this.jdField_a_of_type_Aztd.a = this.jdField_a_of_type_Aztd.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true);
-      localArrayList.addAll(this.jdField_a_of_type_Aztd.a);
-      this.jdField_a_of_type_Aztd.b = this.jdField_a_of_type_Aztd.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "CallableForSearchData time = " + (System.currentTimeMillis() - l));
-    }
-    return localArrayList;
-  }
+  azte(aztd paramaztd) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azte
  * JD-Core Version:    0.7.0.1
  */

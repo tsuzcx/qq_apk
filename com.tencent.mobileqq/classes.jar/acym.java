@@ -1,47 +1,22 @@
-import android.view.animation.Transformation;
-import android.view.animation.TranslateAnimation;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.LangSettingFragment;
 
 public class acym
-  extends TranslateAnimation
+  implements View.OnClickListener
 {
-  public static volatile boolean a;
-  public int a;
+  public acym(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public acym()
+  public void onClick(View paramView)
   {
-    this(1, 1.0F, 1, 0.0F, 1, 0.0F, 1, 0.0F);
-  }
-  
-  public acym(int paramInt1, float paramFloat1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4, float paramFloat4)
-  {
-    super(paramInt1, paramFloat1, paramInt2, paramFloat2, paramInt3, paramFloat3, paramInt4, paramFloat4);
-    this.jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public boolean getTransformation(long paramLong, Transformation paramTransformation)
-  {
-    this.jdField_a_of_type_Int += 1;
-    if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int <= 2))
-    {
-      setStartTime(paramLong);
-      if (this.jdField_a_of_type_Int == 2) {
-        jdField_a_of_type_Boolean = true;
-      }
-    }
-    return super.getTransformation(paramLong, paramTransformation);
-  }
-  
-  public void reset()
-  {
-    this.jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-    super.reset();
+    PublicFragmentActivity.a(this.a, LangSettingFragment.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acym
  * JD-Core Version:    0.7.0.1
  */

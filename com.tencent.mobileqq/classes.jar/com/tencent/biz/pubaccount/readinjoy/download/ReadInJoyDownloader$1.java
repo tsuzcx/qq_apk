@@ -7,31 +7,31 @@ import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import opy;
-import opz;
-import oqa;
+import ouq;
+import our;
+import ous;
 
 public class ReadInJoyDownloader$1
   implements Runnable
 {
-  public ReadInJoyDownloader$1(opz paramopz, oqa paramoqa) {}
+  public ReadInJoyDownloader$1(our paramour, ous paramous) {}
   
   public void run()
   {
     DownloadInfo localDownloadInfo = this.a.a();
-    Map localMap = oqa.a(this.a);
+    Map localMap = ous.a(this.a);
     String str = localDownloadInfo.d;
     QLog.d("ReadInJoyDownloader", 2, "[startDownload] url=" + str);
     try
     {
-      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = opz.a(this.this$0).getDownloadTaskState(str);
+      TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo = our.a(this.this$0).getDownloadTaskState(str);
       if (localTMAssistantDownloadTaskInfo != null)
       {
         QLog.d("ReadInJoyDownloader", 2, "[startDownload] existingInfo= " + localTMAssistantDownloadTaskInfo.mState);
         if (localTMAssistantDownloadTaskInfo.mState == 4)
         {
           QLog.d("ReadInJoyDownloader", 2, "[startDownload] existingInfo.mState=DownloadSDKTaskState_SUCCEED");
-          opz.a(this.this$0).onDownloadSDKTaskStateChanged(opz.a(this.this$0), str, 4, 0, "");
+          our.a(this.this$0).onDownloadSDKTaskStateChanged(our.a(this.this$0), str, 4, 0, "");
           return;
         }
       }
@@ -54,20 +54,20 @@ public class ReadInJoyDownloader$1
     {
       try
       {
-        i = opz.a(this.this$0).startDownloadTask(localDownloadInfo.d, "application/vnd.android.package-archive", localMap);
+        i = our.a(this.this$0).startDownloadTask(localDownloadInfo.d, "application/vnd.android.package-archive", localMap);
       }
       catch (Exception localException2)
       {
         try
         {
           QLog.d("ReadInJoyDownloader", 2, "[startDownload] task url=" + localDownloadInfo.d + " started result=" + i);
-          int j = oqa.a(this.a);
+          int j = ous.a(this.a);
           if ((i == 4) || (j <= 0)) {
             break;
           }
           QLog.d("ReadInJoyDownloader", 2, "[startDownload] failed, retry, remain retry: " + j);
-          oqa.a(this.a);
-          ThreadManager.getSubThreadHandler().postDelayed(this, oqa.a());
+          ous.a(this.a);
+          ThreadManager.getSubThreadHandler().postDelayed(this, ous.a());
           return;
         }
         catch (Exception localException3)
@@ -85,7 +85,7 @@ public class ReadInJoyDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.download.ReadInJoyDownloader.1
  * JD-Core Version:    0.7.0.1
  */

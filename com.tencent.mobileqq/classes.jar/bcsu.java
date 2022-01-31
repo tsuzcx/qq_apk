@@ -1,35 +1,48 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.widget.WorkSpaceView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsEditActivity;
+import java.lang.ref.WeakReference;
+import tencent.im.msg.im_msg_body.CustomFace;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class bcsu
-  extends Handler
+  implements awfy
 {
-  public bcsu(WorkSpaceView paramWorkSpaceView) {}
+  protected WeakReference<TroopPicEffectsEditActivity> a;
   
-  public void handleMessage(Message paramMessage)
+  public bcsu(TroopPicEffectsEditActivity paramTroopPicEffectsEditActivity)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
+    this.a = new WeakReference(paramTroopPicEffectsEditActivity);
+  }
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return null;
+  }
+  
+  public void a(awfz paramawfz) {}
+  
+  public void b(awfz paramawfz)
+  {
+    TroopPicEffectsEditActivity localTroopPicEffectsEditActivity = (TroopPicEffectsEditActivity)this.a.get();
+    if (localTroopPicEffectsEditActivity == null) {
       return;
-      int i = ((axuj)this.a.getChildAt(this.a.a).getTag()).a;
-      if ((this.a.getChildCount() > 1) && (this.a.getWidth() > 0)) {
-        this.a.a(this.a.a() + 1);
-      }
-      WorkSpaceView.a(this.a).sendEmptyMessageDelayed(0, i * 1000);
-      continue;
-      WorkSpaceView.a(this.a).removeMessages(0);
     }
+    localTroopPicEffectsEditActivity.c();
+    Intent localIntent = new Intent(localTroopPicEffectsEditActivity, SplashActivity.class);
+    localIntent.putExtra("uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("friendUin"));
+    localIntent.putExtra("uintype", 1);
+    localIntent.putExtra("troop_uin", localTroopPicEffectsEditActivity.getIntent().getStringExtra("troopUin"));
+    localIntent.putExtra("isFromTroopEffectPic", true);
+    localTroopPicEffectsEditActivity.startActivity(aekt.a(localIntent, new int[] { 1 }));
+    localTroopPicEffectsEditActivity.finish();
+    localTroopPicEffectsEditActivity.a(localTroopPicEffectsEditActivity.a, (im_msg_body.CustomFace)paramawfz.a, new bcsv(this, localTroopPicEffectsEditActivity));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcsu
  * JD-Core Version:    0.7.0.1
  */

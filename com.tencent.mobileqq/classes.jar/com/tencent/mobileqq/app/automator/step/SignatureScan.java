@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import abqj;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import zzm;
 
 public class SignatureScan
   extends AsyncStep
 {
   public int a()
   {
-    new zzm(this.a.app).a(false);
+    new abqj(this.a.app).a(false);
     return 7;
   }
 }

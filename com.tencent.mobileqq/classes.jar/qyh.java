@@ -1,34 +1,59 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-class qyh
-  extends Handler
+public class qyh
 {
-  qyh(qyg paramqyg, Looper paramLooper)
+  public static void a(long paramLong, KandianUrlImageView paramKandianUrlImageView)
   {
-    super(paramLooper);
+    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, new qyi(paramLong, paramKandianUrlImageView));
+    if (localReadInJoyUserInfo != null) {
+      b(localReadInJoyUserInfo, paramKandianUrlImageView);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  private static void b(ReadInJoyUserInfo paramReadInJoyUserInfo, KandianUrlImageView paramKandianUrlImageView)
   {
-    switch (paramMessage.what)
-    {
+    if (paramReadInJoyUserInfo == null) {
+      QLog.d("ReadInJoyVIconHelper", 2, "[setVIconWithUserInfo], userInfo is null.");
     }
     do
     {
-      return;
+      do
+      {
+        return;
+      } while (paramKandianUrlImageView == null);
       if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsVideoUIDelegate", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + qyg.a(this.a));
+        QLog.i("ReadInJoyVIconHelper", 2, "[refreshVIcon], userInfo = " + paramReadInJoyUserInfo);
       }
-    } while (!qyg.a(this.a));
-    this.a.a(1);
+      try
+      {
+        if (!TextUtils.isEmpty(paramReadInJoyUserInfo.smallIconUrl))
+        {
+          paramKandianUrlImageView.setImageResource(2130841377);
+          paramKandianUrlImageView.setVisibility(0);
+          paramKandianUrlImageView.a(new URL(paramReadInJoyUserInfo.smallIconUrl));
+          return;
+        }
+      }
+      catch (MalformedURLException paramReadInJoyUserInfo)
+      {
+        QLog.e("ReadInJoyVIconHelper", 1, "[refreshVIcon], e = " + paramReadInJoyUserInfo);
+        return;
+      }
+    } while (TextUtils.isEmpty(paramReadInJoyUserInfo.largeIconUrl));
+    paramKandianUrlImageView.setImageResource(2130841377);
+    paramKandianUrlImageView.setVisibility(0);
+    paramKandianUrlImageView.a(new URL(paramReadInJoyUserInfo.largeIconUrl));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qyh
  * JD-Core Version:    0.7.0.1
  */

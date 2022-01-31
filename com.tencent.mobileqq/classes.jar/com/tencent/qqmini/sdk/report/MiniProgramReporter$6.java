@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.report;
 
 import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
-import bezf;
+import bgya;
 import java.util.Collection;
 import java.util.Iterator;
 
 public class MiniProgramReporter$6
   implements Runnable
 {
-  public MiniProgramReporter$6(bezf parambezf, Collection paramCollection) {}
+  public MiniProgramReporter$6(bgya parambgya, Collection paramCollection) {}
   
   public void run()
   {
@@ -21,12 +21,12 @@ public class MiniProgramReporter$6
         this.this$0.a(localSingleDcData);
       }
     }
-    bezf.a(this.this$0);
+    bgya.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramReporter.6
  * JD-Core Version:    0.7.0.1
  */

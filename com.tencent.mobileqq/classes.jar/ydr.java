@@ -1,0 +1,10 @@
+public abstract interface ydr<T>
+{
+  public abstract void a(yeb paramyeb, T paramT);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     ydr
+ * JD-Core Version:    0.7.0.1
+ */

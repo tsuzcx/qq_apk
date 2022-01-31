@@ -1,9 +1,17 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
 
-public abstract interface aiqw
+public class aiqw
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(Canvas paramCanvas, Paint paramPaint);
+  public aiqw(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.getActivity().finish();
+  }
 }
 
 

@@ -5,13 +5,13 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
-import nph;
-import rux;
+import nsp;
+import slk;
 
 public class VideoInfo$EntranceDownloadInfo
-  implements Parcelable, rux
+  implements Parcelable, slk
 {
-  public static final Parcelable.Creator<EntranceDownloadInfo> CREATOR = new nph();
+  public static final Parcelable.Creator<EntranceDownloadInfo> CREATOR = new nsp();
   public UrlJumpInfo a;
   public String a;
   public boolean a;
@@ -95,7 +95,7 @@ public class VideoInfo$EntranceDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

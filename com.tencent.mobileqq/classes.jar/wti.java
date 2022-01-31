@@ -1,28 +1,13 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.qphone.base.util.QLog;
-
-public class wti
+public abstract interface wti
+  extends wwd
 {
-  private static SharedPreferences a;
+  public abstract void a(int paramInt);
   
-  public static SharedPreferences a(Context paramContext)
-  {
-    if (a == null)
-    {
-      if (paramContext == null)
-      {
-        QLog.e("SubscribeSpUtil", 2, "getPreference error, context is null");
-        return null;
-      }
-      a = paramContext.getSharedPreferences("biz_subscribe", 0);
-    }
-    return a;
-  }
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wti
  * JD-Core Version:    0.7.0.1
  */

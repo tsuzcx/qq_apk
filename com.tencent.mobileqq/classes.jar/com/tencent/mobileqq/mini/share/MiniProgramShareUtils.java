@@ -3,12 +3,12 @@ package com.tencent.mobileqq.mini.share;
 import NS_COMM.COMM.StCommonExt;
 import NS_MINI_SHARE.MiniProgramShare.StAdaptShareInfoReq;
 import NS_MINI_SHARE.MiniProgramShare.StTemplateInfo;
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.mini.launch.AppBrandProxy;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
@@ -29,10 +29,16 @@ import org.json.JSONObject;
 
 public class MiniProgramShareUtils
 {
+  public static final String MINI_APP_SHARE_APPID = "miniAppShareAppid";
+  public static final String MINI_APP_SHARE_APP_TYPE = "miniAppShareAppType";
+  public static final String MINI_APP_SHARE_DEST_ID = "miniAppShareDestId";
+  public static final String MINI_APP_SHARE_DEST_TYPE = "miniAppShareDestType";
   public static final String MINI_APP_SHARE_FROM = "miniAppShareFrom";
   public static final int MINI_APP_SHARE_FROM_DETAIL = 10;
   public static final int MINI_APP_SHARE_FROM_INNER_BUTTON = 11;
   public static final int MINI_APP_SHARE_FROM_MORE_BUTTON = 12;
+  public static final String MINI_APP_SHARE_SCENE = "miniAppShareScene";
+  public static final String MINI_APP_SHARE_TYPE = "miniAppShareType";
   public static final long SHARE_APPID_MISMATCHING = -1000710003L;
   public static final long SHARE_OUT_OF_LIMIT = -100070004L;
   private static final String SHARE_PATH_DETAIL = "openMiniApp/detail";
@@ -58,7 +64,7 @@ public class MiniProgramShareUtils
       }
     }
     label77:
-    for (paramJSONObject = ajya.a(2131706880);; paramJSONObject = ajya.a(2131706881))
+    for (paramJSONObject = alpo.a(2131707252);; paramJSONObject = alpo.a(2131707253))
     {
       paramJSONObject = paramJSONObject + "]" + paramMiniArkShareModel.getTitle();
       return paramJSONObject;
@@ -151,7 +157,7 @@ public class MiniProgramShareUtils
     }
   }
   
-  private static boolean performShareAsArkMessage(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, EntryModel paramEntryModel, ShareChatModel paramShareChatModel, int paramInt1, int paramInt2, JSONObject paramJSONObject, int paramInt3)
+  private static boolean performShareAsArkMessage(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, EntryModel paramEntryModel, ShareChatModel paramShareChatModel, int paramInt1, int paramInt2, JSONObject paramJSONObject, int paramInt3, String paramString5, int paramInt4)
   {
     if ((TextUtils.isEmpty(paramString3)) || (paramJSONObject == null) || (paramJSONObject.isNull("appName")) || (paramJSONObject.isNull("appView")) || (paramJSONObject.isNull("metaData"))) {
       return false;
@@ -192,7 +198,7 @@ public class MiniProgramShareUtils
       paramJSONObject = new Bundle();
       paramJSONObject.putString("sharePicturePath", paramString3);
       paramJSONObject.putString("forward_ark_app_name", str1);
-      AppBrandProxy.g().sendCmd("cmd_share_ark_async_message", paramJSONObject, new MiniProgramShareUtils.1(str3, str1, str2, paramString1, paramString2, paramString4, bool, paramInt3, paramInt1, paramActivity, paramInt2, paramEntryModel, paramShareChatModel));
+      AppBrandProxy.g().sendCmd("cmd_share_ark_async_message", paramJSONObject, new MiniProgramShareUtils.1(str3, str1, str2, paramString1, paramString2, paramString4, bool, paramInt3, paramInt1, paramActivity, paramString5, paramInt4, paramInt2, paramEntryModel, paramShareChatModel));
       return true;
       i = 272;
     }
@@ -212,10 +218,10 @@ public class MiniProgramShareUtils
     }
     int j = 0;
     int i = j;
-    if (!bbkk.a(paramMiniArkShareModel.getTemplateId()))
+    if (!bdje.a(paramMiniArkShareModel.getTemplateId()))
     {
       i = j;
-      if (!bbkk.a(paramMiniArkShareModel.getTemplateData())) {
+      if (!bdje.a(paramMiniArkShareModel.getTemplateData())) {
         i = 2;
       }
     }
@@ -255,7 +261,7 @@ public class MiniProgramShareUtils
     {
       localIntent.putExtra("type", 9);
       if (paramInt1 != 0) {
-        break label174;
+        break label188;
       }
       paramBundle.putInt("uintype", 0);
     }
@@ -263,20 +269,22 @@ public class MiniProgramShareUtils
     {
       paramBundle.putString("uin", String.valueOf(paramString1));
       paramBundle.putString("uinname", paramString2);
+      paramBundle.putInt("miniAppShareDestType", paramInt1);
+      paramBundle.putString("miniAppShareDestId", paramString1);
       localIntent.putExtras(paramBundle);
       if (paramInt2 == -1) {
-        break label190;
+        break label204;
       }
       paramActivity.startActivityForResult(localIntent, paramInt2);
       return;
       localIntent.putExtra("type", 10);
       break;
-      label174:
+      label188:
       if (paramInt1 == 1) {
         paramBundle.putInt("uintype", 1);
       }
     }
-    label190:
+    label204:
     paramActivity.startActivity(localIntent);
   }
   
@@ -317,7 +325,7 @@ public class MiniProgramShareUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramShareUtils
  * JD-Core Version:    0.7.0.1
  */

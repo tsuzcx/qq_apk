@@ -1,50 +1,40 @@
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class aeco
-  extends bbwt
+public class aeco
+  extends Handler
 {
-  aeco(aecl paramaecl, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public aeco(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onCancel(bbwu parambbwu)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onCancel| task:" + parambbwu);
-    }
-  }
-  
-  public void onDone(bbwu parambbwu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onDone| task:" + parambbwu);
-    }
-    if (parambbwu.b()) {}
-    do
+    switch (paramMessage.what)
     {
+    default: 
       return;
-      parambbwu.a().getInt("type");
-    } while (parambbwu.a() == -1);
-    parambbwu = new Message();
-    parambbwu.what = aecl.jdField_a_of_type_Int;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(parambbwu);
-  }
-  
-  public boolean onStart(bbwu parambbwu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatItemBuilder", 2, "coverDownloadListener.onStart| task:" + parambbwu);
+    case 0: 
+      this.a.i();
+      QQToast.a(this.a, this.a.getString(2131719756), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      this.a.i();
+      QQToast.a(this.a, this.a.getString(2131719743), 0).b(this.a.getTitleBarHeight());
+      return;
     }
-    return true;
+    paramMessage = (String)paramMessage.obj;
+    this.a.o.setText(paramMessage + "");
+    this.a.o.setContentDescription(paramMessage + "");
+    this.a.o.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeco
  * JD-Core Version:    0.7.0.1
  */

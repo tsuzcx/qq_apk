@@ -1,49 +1,35 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aott
-  extends apvf
 {
-  public aott(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a()
+  public static aott a(aogf[] paramArrayOfaogf)
   {
-    this.a.a.a().b();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().p();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().q();
-  }
-  
-  public void d()
-  {
-    this.a.a.a().r();
-  }
-  
-  public void e()
-  {
-    this.a.a.a().s();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().t();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().G();
+    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
+      return null;
+    }
+    aott localaott = new aott();
+    try
+    {
+      paramArrayOfaogf = new JSONObject(paramArrayOfaogf[0].jdField_a_of_type_JavaLangString);
+      localaott.jdField_a_of_type_Boolean = paramArrayOfaogf.getBoolean("enable");
+      localaott.jdField_a_of_type_JavaLangString = paramArrayOfaogf.getString("content");
+      return localaott;
+    }
+    catch (JSONException paramArrayOfaogf)
+    {
+      QLog.e("TencentDocMiniProgramGrayTipsBean", 1, paramArrayOfaogf.getLocalizedMessage(), paramArrayOfaogf);
+    }
+    return localaott;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aott
  * JD-Core Version:    0.7.0.1
  */

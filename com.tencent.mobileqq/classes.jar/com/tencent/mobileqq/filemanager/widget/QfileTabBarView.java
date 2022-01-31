@@ -9,9 +9,9 @@ import android.view.ViewParent;
 import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import apxw;
-import axqy;
-import bcsc;
+import arqy;
+import azmj;
+import berl;
 import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
@@ -34,7 +34,7 @@ public class QfileTabBarView
   public int a;
   HorizontalScrollView jdField_a_of_type_AndroidWidgetHorizontalScrollView;
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private bcsc jdField_a_of_type_Bcsc = new apxw(this);
+  private berl jdField_a_of_type_Berl = new arqy(this);
   HeaderScrollView jdField_a_of_type_ComTencentMobileqqActivityContactsViewHeaderScrollView = null;
   public BaseFileAssistantActivity a;
   QfileBaseTabView jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileBaseTabView = null;
@@ -58,13 +58,13 @@ public class QfileTabBarView
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = null;
     this.jdField_c_of_type_JavaUtilHashMap = new LinkedHashMap();
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560470, this);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131560646, this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)paramContext);
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131367599));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131367728));
     this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.getParent().requestDisallowInterceptTouchEvent(true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2 = ((TabBarView2)findViewById(2131376783));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376785));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.setOnTabChangeListener(this.jdField_a_of_type_Bcsc);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2 = ((TabBarView2)findViewById(2131377295));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377297));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.setOnTabChangeListener(this.jdField_a_of_type_Berl);
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView2.setBackgroundDrawable(null);
   }
   
@@ -83,38 +83,38 @@ public class QfileTabBarView
         case 3: 
           if (this.jdField_c_of_type_Int == 1)
           {
-            axqy.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A071", "0X800A071", 0, 0, "", "", "", "");
+            azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A071", "0X800A071", 0, 0, "", "", "", "");
             return;
           }
           break;
         case 1118: 
-          axqy.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB4", "0x8009DB4", 0, 0, "", "", "", "");
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB4", "0x8009DB4", 0, 0, "", "", "", "");
           return;
         case 1111: 
-          axqy.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DAE", "0x8009DAE", 0, 0, "", "", "", "");
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DAE", "0x8009DAE", 0, 0, "", "", "", "");
           return;
         case 1119: 
-          axqy.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB0", "0x8009DB0", 0, 0, "", "", "", "");
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB0", "0x8009DB0", 0, 0, "", "", "", "");
           return;
         case 1110: 
-          axqy.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB2", "0x8009DB2", 0, 0, "", "", "", "");
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB2", "0x8009DB2", 0, 0, "", "", "", "");
           return;
         case 1114: 
-          axqy.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB6", "0x8009DB6", 0, 0, "", "", "", "");
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0x8009DB6", "0x8009DB6", 0, 0, "", "", "", "");
           return;
         }
       } while (this.jdField_c_of_type_Int != 2);
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A081", "0X800A081", 0, 0, "", "", "", "");
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A081", "0X800A081", 0, 0, "", "", "", "");
       return;
       if (this.jdField_c_of_type_Int == 1)
       {
-        axqy.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A079", "0X800A079", 0, 0, "", "", "", "");
+        azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A079", "0X800A079", 0, 0, "", "", "", "");
         return;
       }
     } while (this.jdField_c_of_type_Int != 2);
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A08A", "0X800A08A", 0, 0, "", "", "", "");
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A08A", "0X800A08A", 0, 0, "", "", "", "");
     return;
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A08A", "0X800A08A", 0, 0, "", "", "", "");
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.app, "dc00898", "", "", "0X800A08A", "0X800A08A", 0, 0, "", "", "", "");
   }
   
   public int a()
@@ -153,13 +153,13 @@ public class QfileTabBarView
     //   46: invokespecial 173	java/util/ArrayList:<init>	()V
     //   49: astore 6
     //   51: aload 6
-    //   53: new 175	apxx
+    //   53: new 175	arqz
     //   56: dup
     //   57: aload_0
     //   58: new 177	java/lang/StringBuilder
     //   61: dup
     //   62: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   65: getstatic 183	ajsd:aV	Ljava/lang/String;
+    //   65: getstatic 183	aljq:aW	Ljava/lang/String;
     //   68: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   71: ldc 189
     //   73: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -167,17 +167,17 @@ public class QfileTabBarView
     //   79: iconst_0
     //   80: iconst_0
     //   81: iconst_1
-    //   82: invokespecial 196	apxx:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   82: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
     //   85: invokeinterface 201 2 0
     //   90: pop
     //   91: aload 6
-    //   93: new 175	apxx
+    //   93: new 175	arqz
     //   96: dup
     //   97: aload_0
     //   98: new 177	java/lang/StringBuilder
     //   101: dup
     //   102: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   105: getstatic 183	ajsd:aV	Ljava/lang/String;
+    //   105: getstatic 183	aljq:aW	Ljava/lang/String;
     //   108: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: ldc 203
     //   113: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -185,7 +185,7 @@ public class QfileTabBarView
     //   119: iconst_0
     //   120: iconst_0
     //   121: iconst_1
-    //   122: invokespecial 196	apxx:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   122: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
     //   125: invokeinterface 201 2 0
     //   130: pop
     //   131: new 172	java/util/ArrayList
@@ -193,605 +193,609 @@ public class QfileTabBarView
     //   135: invokespecial 173	java/util/ArrayList:<init>	()V
     //   138: astore 7
     //   140: aload 7
-    //   142: new 175	apxx
+    //   142: new 175	arqz
     //   145: dup
     //   146: aload_0
-    //   147: invokestatic 208	aptm:a	()Laptm;
-    //   150: invokevirtual 210	aptm:b	()Ljava/lang/String;
+    //   147: invokestatic 208	armo:a	()Larmo;
+    //   150: invokevirtual 210	armo:b	()Ljava/lang/String;
     //   153: iconst_0
     //   154: iconst_0
     //   155: iconst_1
-    //   156: invokespecial 196	apxx:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   156: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
     //   159: invokeinterface 201 2 0
     //   164: pop
     //   165: aload_0
     //   166: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
     //   169: invokevirtual 213	com/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity:e	()I
     //   172: bipush 8
-    //   174: if_icmpne +377 -> 551
+    //   174: if_icmpne +424 -> 598
     //   177: iconst_1
     //   178: istore_3
     //   179: aload_0
     //   180: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   183: ifnull +373 -> 556
+    //   183: ifnull +420 -> 603
     //   186: aload_0
     //   187: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   190: invokevirtual 220	java/lang/String:trim	()Ljava/lang/String;
     //   193: invokevirtual 223	java/lang/String:length	()I
-    //   196: ifeq +360 -> 556
+    //   196: ifeq +407 -> 603
     //   199: iconst_1
     //   200: istore 4
-    //   202: iload_2
-    //   203: lookupswitch	default:+241->444, 3:+359->562, 4:+451->654, 5:+497->700, 6:+543->746, 7:+589->792, 8:+681->884, 9:+745->948, 10:+838->1041, 11:+1012->1215, 12:+1106->1309, 13:+1131->1334, 14:+1156->1359, 15:+1208->1411, 16:+1180->1383, 17:+1236->1439, 18:+1264->1467, 19:+1292->1495, 20:+635->838, 21:+405->608, 110:+862->1065, 111:+1037->1240, 114:+902->1105, 118:+705->908, 119:+769->972, 1110:+1411->1614, 1111:+1350->1553, 1114:+1441->1644, 1118:+1320->1523, 1119:+1381->1584
-    //   445: iconst_2
-    //   446: iconst_0
-    //   447: invokevirtual 226	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:setFocusable	(Z)V
-    //   450: aload 5
-    //   452: instanceof 228
-    //   455: ifeq +15 -> 470
-    //   458: aload 5
-    //   460: checkcast 228	com/tencent/mobileqq/filemanager/activity/recentfile/QfileBaseRecentFileTabView
-    //   463: aload_0
-    //   464: getfield 132	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_c_of_type_Int	I
-    //   467: invokevirtual 231	com/tencent/mobileqq/filemanager/activity/recentfile/QfileBaseRecentFileTabView:setAttribution	(I)V
-    //   470: aload_0
-    //   471: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   474: instanceof 233
-    //   477: ifeq +17 -> 494
-    //   480: aload_0
-    //   481: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   484: checkcast 233	com/tencent/mobileqq/filemanager/activity/FMActivity
-    //   487: invokevirtual 236	com/tencent/mobileqq/filemanager/activity/FMActivity:a	()Lcom/tencent/mobileqq/filemanager/widget/SendBottomBar;
-    //   490: iload_2
-    //   491: invokevirtual 239	com/tencent/mobileqq/filemanager/widget/SendBottomBar:setAttribution	(I)V
-    //   494: aload_0
-    //   495: getfield 47	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_b_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   498: iload_1
-    //   499: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   202: new 177	java/lang/StringBuilder
+    //   205: dup
+    //   206: invokespecial 178	java/lang/StringBuilder:<init>	()V
+    //   209: getstatic 226	aljq:aX	Ljava/lang/String;
+    //   212: invokestatic 231	bduw:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   215: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: ldc 233
+    //   220: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: ldc 235
+    //   225: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   228: ldc 233
+    //   230: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   233: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   236: astore 8
+    //   238: invokestatic 238	com/tencent/mobileqq/shortvideo/ShortVideoUtils:b	()Ljava/lang/String;
+    //   241: astore 9
+    //   243: iload_2
+    //   244: lookupswitch	default:+244->488, 3:+365->609, 4:+457->701, 5:+503->747, 6:+549->793, 7:+595->839, 8:+687->931, 9:+751->995, 10:+824->1068, 11:+998->1242, 12:+1072->1316, 13:+1097->1341, 14:+1122->1366, 15:+1174->1418, 16:+1146->1390, 17:+1202->1446, 18:+1230->1474, 19:+1258->1502, 20:+641->885, 21:+411->655, 110:+848->1092, 111:+1023->1267, 114:+888->1132, 118:+711->955, 119:+775->1019, 1110:+1377->1621, 1111:+1316->1560, 1114:+1407->1651, 1118:+1286->1530, 1119:+1347->1591
+    //   489: iconst_2
+    //   490: iconst_0
+    //   491: invokevirtual 241	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:setFocusable	(Z)V
+    //   494: aload 5
+    //   496: instanceof 243
+    //   499: ifeq +15 -> 514
     //   502: aload 5
-    //   504: invokevirtual 243	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   507: pop
-    //   508: aload 5
-    //   510: areturn
-    //   511: astore 5
-    //   513: aconst_null
-    //   514: astore 5
-    //   516: ldc 245
-    //   518: iconst_1
-    //   519: new 177	java/lang/StringBuilder
-    //   522: dup
-    //   523: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   526: ldc 247
-    //   528: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   531: iload_1
-    //   532: invokevirtual 250	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   535: ldc 252
-    //   537: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   540: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   543: invokestatic 257	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   546: iconst_3
-    //   547: istore_2
-    //   548: goto -506 -> 42
-    //   551: iconst_0
-    //   552: istore_3
-    //   553: goto -374 -> 179
-    //   556: iconst_0
-    //   557: istore 4
-    //   559: goto -357 -> 202
-    //   562: iload 4
-    //   564: ifeq +28 -> 592
-    //   567: new 259	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAllFileTabView
-    //   570: dup
-    //   571: aload_0
-    //   572: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   575: aload_0
-    //   576: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   579: invokespecial 262	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAllFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   582: astore 5
-    //   584: aload 5
-    //   586: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   589: goto -145 -> 444
-    //   592: new 259	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAllFileTabView
-    //   595: dup
-    //   596: aload_0
-    //   597: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   600: invokespecial 266	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAllFileTabView:<init>	(Landroid/content/Context;)V
-    //   603: astore 5
-    //   605: goto -21 -> 584
-    //   608: iload 4
-    //   610: ifeq +28 -> 638
-    //   613: new 268	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTDocFileTabView
-    //   616: dup
-    //   617: aload_0
-    //   618: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   621: aload_0
-    //   622: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   625: invokespecial 269	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTDocFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   628: astore 5
-    //   630: aload 5
-    //   632: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   635: goto -191 -> 444
-    //   638: new 268	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTDocFileTabView
-    //   641: dup
-    //   642: aload_0
-    //   643: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   646: invokespecial 270	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTDocFileTabView:<init>	(Landroid/content/Context;)V
-    //   649: astore 5
-    //   651: goto -21 -> 630
-    //   654: iload 4
-    //   656: ifeq +28 -> 684
-    //   659: new 272	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentDocFileTabView
-    //   662: dup
-    //   663: aload_0
-    //   664: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   667: aload_0
-    //   668: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   671: invokespecial 273	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentDocFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   674: astore 5
-    //   676: aload 5
-    //   678: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   681: goto -237 -> 444
-    //   684: new 272	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentDocFileTabView
-    //   687: dup
-    //   688: aload_0
-    //   689: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   692: invokespecial 274	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentDocFileTabView:<init>	(Landroid/content/Context;)V
-    //   695: astore 5
-    //   697: goto -21 -> 676
-    //   700: iload 4
-    //   702: ifeq +28 -> 730
-    //   705: new 276	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentPicFileTabView
-    //   708: dup
-    //   709: aload_0
-    //   710: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   713: aload_0
-    //   714: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   717: invokespecial 277	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentPicFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   720: astore 5
-    //   722: aload 5
-    //   724: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   727: goto -283 -> 444
-    //   730: new 276	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentPicFileTabView
-    //   733: dup
-    //   734: aload_0
-    //   735: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   738: invokespecial 278	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentPicFileTabView:<init>	(Landroid/content/Context;)V
-    //   741: astore 5
-    //   743: goto -21 -> 722
-    //   746: iload 4
-    //   748: ifeq +28 -> 776
-    //   751: new 280	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentMediaFileTabView
-    //   754: dup
-    //   755: aload_0
-    //   756: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   759: aload_0
-    //   760: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   763: invokespecial 281	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentMediaFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   766: astore 5
-    //   768: aload 5
-    //   770: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   773: goto -329 -> 444
-    //   776: new 280	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentMediaFileTabView
-    //   779: dup
-    //   780: aload_0
-    //   781: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   784: invokespecial 282	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentMediaFileTabView:<init>	(Landroid/content/Context;)V
-    //   787: astore 5
-    //   789: goto -21 -> 768
-    //   792: iload 4
-    //   794: ifeq +28 -> 822
-    //   797: new 284	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAppFileTabView
-    //   800: dup
-    //   801: aload_0
-    //   802: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   805: aload_0
-    //   806: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   809: invokespecial 285	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAppFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   812: astore 5
-    //   814: aload 5
-    //   816: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   819: goto -375 -> 444
-    //   822: new 284	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAppFileTabView
-    //   825: dup
-    //   826: aload_0
-    //   827: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   830: invokespecial 286	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAppFileTabView:<init>	(Landroid/content/Context;)V
-    //   833: astore 5
-    //   835: goto -21 -> 814
-    //   838: iload 4
-    //   840: ifeq +28 -> 868
-    //   843: new 288	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTencentDocFileTabView
-    //   846: dup
-    //   847: aload_0
-    //   848: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   851: aload_0
-    //   852: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   855: invokespecial 289	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTencentDocFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   858: astore 5
-    //   860: aload 5
-    //   862: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   865: goto -421 -> 444
-    //   868: new 288	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTencentDocFileTabView
-    //   871: dup
-    //   872: aload_0
-    //   873: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   876: invokespecial 290	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTencentDocFileTabView:<init>	(Landroid/content/Context;)V
-    //   879: astore 5
-    //   881: goto -21 -> 860
-    //   884: new 292	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileAppTabView
-    //   887: dup
-    //   888: aload_0
-    //   889: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   892: aload 7
-    //   894: iconst_1
-    //   895: invokespecial 295	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileAppTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
-    //   898: astore 5
-    //   900: aload 5
-    //   902: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   905: goto -461 -> 444
-    //   908: new 297	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelFileTabView
-    //   911: dup
-    //   912: aload_0
-    //   913: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   916: aload 7
-    //   918: new 299	com/tencent/util/Pair
-    //   921: dup
-    //   922: ldc_w 300
-    //   925: invokestatic 305	ajya:a	(I)Ljava/lang/String;
-    //   928: iconst_5
-    //   929: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   932: invokespecial 308	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   935: invokespecial 311	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelFileTabView:<init>	(Landroid/content/Context;Ljava/util/List;Lcom/tencent/util/Pair;)V
-    //   938: astore 5
-    //   940: aload 5
-    //   942: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   945: goto -501 -> 444
-    //   948: new 313	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFilePicTabView
-    //   951: dup
-    //   952: aload_0
-    //   953: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   956: aload 7
-    //   958: iconst_1
-    //   959: invokespecial 314	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFilePicTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
-    //   962: astore 5
-    //   964: aload 5
-    //   966: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   969: goto -525 -> 444
-    //   972: iload_3
-    //   973: ifeq +44 -> 1017
-    //   976: aload 7
-    //   978: new 175	apxx
-    //   981: dup
-    //   982: aload_0
-    //   983: new 177	java/lang/StringBuilder
-    //   986: dup
-    //   987: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   990: getstatic 183	ajsd:aV	Ljava/lang/String;
-    //   993: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   996: ldc_w 316
-    //   999: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1002: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   504: checkcast 243	com/tencent/mobileqq/filemanager/activity/recentfile/QfileBaseRecentFileTabView
+    //   507: aload_0
+    //   508: getfield 132	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_c_of_type_Int	I
+    //   511: invokevirtual 246	com/tencent/mobileqq/filemanager/activity/recentfile/QfileBaseRecentFileTabView:setAttribution	(I)V
+    //   514: aload_0
+    //   515: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   518: instanceof 248
+    //   521: ifeq +17 -> 538
+    //   524: aload_0
+    //   525: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   528: checkcast 248	com/tencent/mobileqq/filemanager/activity/FMActivity
+    //   531: invokevirtual 251	com/tencent/mobileqq/filemanager/activity/FMActivity:a	()Lcom/tencent/mobileqq/filemanager/widget/SendBottomBar;
+    //   534: iload_2
+    //   535: invokevirtual 254	com/tencent/mobileqq/filemanager/widget/SendBottomBar:setAttribution	(I)V
+    //   538: aload_0
+    //   539: getfield 47	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_b_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   542: iload_1
+    //   543: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   546: aload 5
+    //   548: invokevirtual 258	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   551: pop
+    //   552: aload 5
+    //   554: areturn
+    //   555: astore 5
+    //   557: aconst_null
+    //   558: astore 5
+    //   560: ldc_w 260
+    //   563: iconst_1
+    //   564: new 177	java/lang/StringBuilder
+    //   567: dup
+    //   568: invokespecial 178	java/lang/StringBuilder:<init>	()V
+    //   571: ldc_w 262
+    //   574: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   577: iload_1
+    //   578: invokevirtual 265	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   581: ldc_w 267
+    //   584: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   587: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   590: invokestatic 272	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   593: iconst_3
+    //   594: istore_2
+    //   595: goto -553 -> 42
+    //   598: iconst_0
+    //   599: istore_3
+    //   600: goto -421 -> 179
+    //   603: iconst_0
+    //   604: istore 4
+    //   606: goto -404 -> 202
+    //   609: iload 4
+    //   611: ifeq +28 -> 639
+    //   614: new 274	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAllFileTabView
+    //   617: dup
+    //   618: aload_0
+    //   619: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   622: aload_0
+    //   623: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   626: invokespecial 277	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAllFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   629: astore 5
+    //   631: aload 5
+    //   633: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   636: goto -148 -> 488
+    //   639: new 274	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAllFileTabView
+    //   642: dup
+    //   643: aload_0
+    //   644: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   647: invokespecial 281	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAllFileTabView:<init>	(Landroid/content/Context;)V
+    //   650: astore 5
+    //   652: goto -21 -> 631
+    //   655: iload 4
+    //   657: ifeq +28 -> 685
+    //   660: new 283	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTDocFileTabView
+    //   663: dup
+    //   664: aload_0
+    //   665: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   668: aload_0
+    //   669: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   672: invokespecial 284	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTDocFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   675: astore 5
+    //   677: aload 5
+    //   679: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   682: goto -194 -> 488
+    //   685: new 283	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTDocFileTabView
+    //   688: dup
+    //   689: aload_0
+    //   690: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   693: invokespecial 285	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTDocFileTabView:<init>	(Landroid/content/Context;)V
+    //   696: astore 5
+    //   698: goto -21 -> 677
+    //   701: iload 4
+    //   703: ifeq +28 -> 731
+    //   706: new 287	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentDocFileTabView
+    //   709: dup
+    //   710: aload_0
+    //   711: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   714: aload_0
+    //   715: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   718: invokespecial 288	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentDocFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   721: astore 5
+    //   723: aload 5
+    //   725: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   728: goto -240 -> 488
+    //   731: new 287	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentDocFileTabView
+    //   734: dup
+    //   735: aload_0
+    //   736: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   739: invokespecial 289	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentDocFileTabView:<init>	(Landroid/content/Context;)V
+    //   742: astore 5
+    //   744: goto -21 -> 723
+    //   747: iload 4
+    //   749: ifeq +28 -> 777
+    //   752: new 291	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentPicFileTabView
+    //   755: dup
+    //   756: aload_0
+    //   757: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   760: aload_0
+    //   761: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   764: invokespecial 292	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentPicFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   767: astore 5
+    //   769: aload 5
+    //   771: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   774: goto -286 -> 488
+    //   777: new 291	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentPicFileTabView
+    //   780: dup
+    //   781: aload_0
+    //   782: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   785: invokespecial 293	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentPicFileTabView:<init>	(Landroid/content/Context;)V
+    //   788: astore 5
+    //   790: goto -21 -> 769
+    //   793: iload 4
+    //   795: ifeq +28 -> 823
+    //   798: new 295	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentMediaFileTabView
+    //   801: dup
+    //   802: aload_0
+    //   803: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   806: aload_0
+    //   807: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   810: invokespecial 296	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentMediaFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   813: astore 5
+    //   815: aload 5
+    //   817: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   820: goto -332 -> 488
+    //   823: new 295	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentMediaFileTabView
+    //   826: dup
+    //   827: aload_0
+    //   828: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   831: invokespecial 297	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentMediaFileTabView:<init>	(Landroid/content/Context;)V
+    //   834: astore 5
+    //   836: goto -21 -> 815
+    //   839: iload 4
+    //   841: ifeq +28 -> 869
+    //   844: new 299	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAppFileTabView
+    //   847: dup
+    //   848: aload_0
+    //   849: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   852: aload_0
+    //   853: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   856: invokespecial 300	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAppFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   859: astore 5
+    //   861: aload 5
+    //   863: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   866: goto -378 -> 488
+    //   869: new 299	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAppFileTabView
+    //   872: dup
+    //   873: aload_0
+    //   874: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   877: invokespecial 301	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentAppFileTabView:<init>	(Landroid/content/Context;)V
+    //   880: astore 5
+    //   882: goto -21 -> 861
+    //   885: iload 4
+    //   887: ifeq +28 -> 915
+    //   890: new 303	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTencentDocFileTabView
+    //   893: dup
+    //   894: aload_0
+    //   895: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   898: aload_0
+    //   899: getfield 215	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   902: invokespecial 304	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTencentDocFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;)V
+    //   905: astore 5
+    //   907: aload 5
+    //   909: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   912: goto -424 -> 488
+    //   915: new 303	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTencentDocFileTabView
+    //   918: dup
+    //   919: aload_0
+    //   920: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   923: invokespecial 305	com/tencent/mobileqq/filemanager/activity/recentfile/QfileRecentTencentDocFileTabView:<init>	(Landroid/content/Context;)V
+    //   926: astore 5
+    //   928: goto -21 -> 907
+    //   931: new 307	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileAppTabView
+    //   934: dup
+    //   935: aload_0
+    //   936: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   939: aload 7
+    //   941: iconst_1
+    //   942: invokespecial 310	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileAppTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
+    //   945: astore 5
+    //   947: aload 5
+    //   949: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   952: goto -464 -> 488
+    //   955: new 312	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelFileTabView
+    //   958: dup
+    //   959: aload_0
+    //   960: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   963: aload 7
+    //   965: new 314	com/tencent/util/Pair
+    //   968: dup
+    //   969: ldc_w 315
+    //   972: invokestatic 320	alpo:a	(I)Ljava/lang/String;
+    //   975: iconst_5
+    //   976: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   979: invokespecial 323	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   982: invokespecial 326	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelFileTabView:<init>	(Landroid/content/Context;Ljava/util/List;Lcom/tencent/util/Pair;)V
+    //   985: astore 5
+    //   987: aload 5
+    //   989: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   992: goto -504 -> 488
+    //   995: new 328	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFilePicTabView
+    //   998: dup
+    //   999: aload_0
+    //   1000: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1003: aload 7
     //   1005: iconst_1
-    //   1006: iconst_1
-    //   1007: iconst_1
-    //   1008: invokespecial 196	apxx:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
-    //   1011: invokeinterface 201 2 0
-    //   1016: pop
-    //   1017: new 318	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelPicTabView
-    //   1020: dup
-    //   1021: aload_0
-    //   1022: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1025: aload 7
-    //   1027: iconst_1
-    //   1028: invokespecial 319	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelPicTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
-    //   1031: astore 5
-    //   1033: aload 5
-    //   1035: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1038: goto -594 -> 444
-    //   1041: new 321	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileDocTabView
-    //   1044: dup
-    //   1045: aload_0
-    //   1046: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1049: aload 7
-    //   1051: iconst_1
-    //   1052: invokespecial 322	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileDocTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
-    //   1055: astore 5
-    //   1057: aload 5
-    //   1059: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1062: goto -618 -> 444
-    //   1065: new 297	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelFileTabView
-    //   1068: dup
-    //   1069: aload_0
-    //   1070: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1073: aload 7
-    //   1075: new 299	com/tencent/util/Pair
-    //   1078: dup
-    //   1079: ldc_w 323
-    //   1082: invokestatic 305	ajya:a	(I)Ljava/lang/String;
-    //   1085: iconst_3
-    //   1086: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1089: invokespecial 308	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   1092: invokespecial 311	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelFileTabView:<init>	(Landroid/content/Context;Ljava/util/List;Lcom/tencent/util/Pair;)V
-    //   1095: astore 5
-    //   1097: aload 5
-    //   1099: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1102: goto -658 -> 444
-    //   1105: aload 7
-    //   1107: new 175	apxx
-    //   1110: dup
-    //   1111: aload_0
-    //   1112: invokestatic 208	aptm:a	()Laptm;
-    //   1115: invokevirtual 325	aptm:c	()Ljava/lang/String;
-    //   1118: iconst_1
-    //   1119: iconst_0
-    //   1120: iconst_0
-    //   1121: invokespecial 196	apxx:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
-    //   1124: invokeinterface 201 2 0
-    //   1129: pop
-    //   1130: aload 7
-    //   1132: new 175	apxx
-    //   1135: dup
-    //   1136: aload_0
-    //   1137: new 177	java/lang/StringBuilder
-    //   1140: dup
-    //   1141: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   1144: invokestatic 208	aptm:a	()Laptm;
-    //   1147: invokevirtual 210	aptm:b	()Ljava/lang/String;
-    //   1150: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1153: ldc_w 327
-    //   1156: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1159: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1162: iconst_1
-    //   1163: iconst_0
-    //   1164: iconst_0
-    //   1165: invokespecial 196	apxx:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
-    //   1168: invokeinterface 201 2 0
-    //   1173: pop
-    //   1174: new 297	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelFileTabView
-    //   1177: dup
-    //   1178: aload_0
-    //   1179: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1182: aload 7
-    //   1184: new 299	com/tencent/util/Pair
-    //   1187: dup
-    //   1188: ldc_w 328
-    //   1191: invokestatic 305	ajya:a	(I)Ljava/lang/String;
-    //   1194: bipush 11
-    //   1196: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   1199: invokespecial 308	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   1202: invokespecial 311	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelFileTabView:<init>	(Landroid/content/Context;Ljava/util/List;Lcom/tencent/util/Pair;)V
-    //   1205: astore 5
-    //   1207: aload 5
-    //   1209: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1212: goto -768 -> 444
-    //   1215: new 330	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView
-    //   1218: dup
-    //   1219: aload_0
-    //   1220: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1223: iconst_3
-    //   1224: aload 7
-    //   1226: iconst_1
-    //   1227: invokespecial 333	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView:<init>	(Landroid/content/Context;ILjava/util/List;Z)V
-    //   1230: astore 5
-    //   1232: aload 5
-    //   1234: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1237: goto -793 -> 444
-    //   1240: iload_3
-    //   1241: ifeq +44 -> 1285
-    //   1244: aload 7
-    //   1246: new 175	apxx
-    //   1249: dup
-    //   1250: aload_0
-    //   1251: new 177	java/lang/StringBuilder
-    //   1254: dup
-    //   1255: invokespecial 178	java/lang/StringBuilder:<init>	()V
-    //   1258: getstatic 183	ajsd:aV	Ljava/lang/String;
-    //   1261: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1264: ldc_w 335
-    //   1267: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1270: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1273: iconst_0
-    //   1274: iconst_1
-    //   1275: iconst_1
-    //   1276: invokespecial 196	apxx:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
-    //   1279: invokeinterface 201 2 0
-    //   1284: pop
-    //   1285: new 337	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelMediaTabView
-    //   1288: dup
-    //   1289: aload_0
-    //   1290: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1293: aload 7
-    //   1295: iconst_1
-    //   1296: invokespecial 338	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelMediaTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
-    //   1299: astore 5
-    //   1301: aload 5
-    //   1303: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1306: goto -862 -> 444
-    //   1309: new 330	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView
-    //   1312: dup
-    //   1313: aload_0
-    //   1314: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1317: iconst_1
-    //   1318: aload 7
-    //   1320: iconst_1
-    //   1321: invokespecial 333	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView:<init>	(Landroid/content/Context;ILjava/util/List;Z)V
-    //   1324: astore 5
-    //   1326: aload 5
-    //   1328: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1331: goto -887 -> 444
-    //   1334: new 330	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView
-    //   1337: dup
-    //   1338: aload_0
-    //   1339: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1342: iconst_2
-    //   1343: aload 7
-    //   1345: iconst_1
-    //   1346: invokespecial 333	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView:<init>	(Landroid/content/Context;ILjava/util/List;Z)V
-    //   1349: astore 5
-    //   1351: aload 5
-    //   1353: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1356: goto -912 -> 444
-    //   1359: new 340	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileOtherTabView
-    //   1362: dup
-    //   1363: aload_0
-    //   1364: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1367: aload 7
-    //   1369: iconst_1
-    //   1370: invokespecial 341	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileOtherTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
-    //   1373: astore 5
-    //   1375: aload 5
-    //   1377: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1380: goto -936 -> 444
-    //   1383: new 343	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView
-    //   1386: dup
-    //   1387: aload_0
-    //   1388: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1391: ldc_w 345
+    //   1006: invokespecial 329	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFilePicTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
+    //   1009: astore 5
+    //   1011: aload 5
+    //   1013: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1016: goto -528 -> 488
+    //   1019: iload_3
+    //   1020: ifeq +24 -> 1044
+    //   1023: aload 7
+    //   1025: new 175	arqz
+    //   1028: dup
+    //   1029: aload_0
+    //   1030: aload 8
+    //   1032: iconst_1
+    //   1033: iconst_1
+    //   1034: iconst_1
+    //   1035: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   1038: invokeinterface 201 2 0
+    //   1043: pop
+    //   1044: new 331	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelPicTabView
+    //   1047: dup
+    //   1048: aload_0
+    //   1049: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1052: aload 7
+    //   1054: iconst_1
+    //   1055: invokespecial 332	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelPicTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
+    //   1058: astore 5
+    //   1060: aload 5
+    //   1062: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1065: goto -577 -> 488
+    //   1068: new 334	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileDocTabView
+    //   1071: dup
+    //   1072: aload_0
+    //   1073: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1076: aload 7
+    //   1078: iconst_1
+    //   1079: invokespecial 335	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileDocTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
+    //   1082: astore 5
+    //   1084: aload 5
+    //   1086: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1089: goto -601 -> 488
+    //   1092: new 312	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelFileTabView
+    //   1095: dup
+    //   1096: aload_0
+    //   1097: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1100: aload 7
+    //   1102: new 314	com/tencent/util/Pair
+    //   1105: dup
+    //   1106: ldc_w 336
+    //   1109: invokestatic 320	alpo:a	(I)Ljava/lang/String;
+    //   1112: iconst_3
+    //   1113: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1116: invokespecial 323	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   1119: invokespecial 326	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelFileTabView:<init>	(Landroid/content/Context;Ljava/util/List;Lcom/tencent/util/Pair;)V
+    //   1122: astore 5
+    //   1124: aload 5
+    //   1126: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1129: goto -641 -> 488
+    //   1132: aload 7
+    //   1134: new 175	arqz
+    //   1137: dup
+    //   1138: aload_0
+    //   1139: invokestatic 208	armo:a	()Larmo;
+    //   1142: invokevirtual 338	armo:c	()Ljava/lang/String;
+    //   1145: iconst_1
+    //   1146: iconst_0
+    //   1147: iconst_0
+    //   1148: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   1151: invokeinterface 201 2 0
+    //   1156: pop
+    //   1157: aload 7
+    //   1159: new 175	arqz
+    //   1162: dup
+    //   1163: aload_0
+    //   1164: new 177	java/lang/StringBuilder
+    //   1167: dup
+    //   1168: invokespecial 178	java/lang/StringBuilder:<init>	()V
+    //   1171: invokestatic 208	armo:a	()Larmo;
+    //   1174: invokevirtual 210	armo:b	()Ljava/lang/String;
+    //   1177: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1180: ldc_w 340
+    //   1183: invokevirtual 187	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1186: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1189: iconst_1
+    //   1190: iconst_0
+    //   1191: iconst_0
+    //   1192: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   1195: invokeinterface 201 2 0
+    //   1200: pop
+    //   1201: new 312	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelFileTabView
+    //   1204: dup
+    //   1205: aload_0
+    //   1206: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1209: aload 7
+    //   1211: new 314	com/tencent/util/Pair
+    //   1214: dup
+    //   1215: ldc_w 341
+    //   1218: invokestatic 320	alpo:a	(I)Ljava/lang/String;
+    //   1221: bipush 11
+    //   1223: invokestatic 118	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   1226: invokespecial 323	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   1229: invokespecial 326	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelFileTabView:<init>	(Landroid/content/Context;Ljava/util/List;Lcom/tencent/util/Pair;)V
+    //   1232: astore 5
+    //   1234: aload 5
+    //   1236: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1239: goto -751 -> 488
+    //   1242: new 343	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView
+    //   1245: dup
+    //   1246: aload_0
+    //   1247: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1250: iconst_3
+    //   1251: aload 7
+    //   1253: iconst_1
+    //   1254: invokespecial 346	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView:<init>	(Landroid/content/Context;ILjava/util/List;Z)V
+    //   1257: astore 5
+    //   1259: aload 5
+    //   1261: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1264: goto -776 -> 488
+    //   1267: iload_3
+    //   1268: ifeq +24 -> 1292
+    //   1271: aload 7
+    //   1273: new 175	arqz
+    //   1276: dup
+    //   1277: aload_0
+    //   1278: aload 9
+    //   1280: iconst_0
+    //   1281: iconst_1
+    //   1282: iconst_1
+    //   1283: invokespecial 196	arqz:<init>	(Lcom/tencent/mobileqq/filemanager/widget/QfileTabBarView;Ljava/lang/String;ZZZ)V
+    //   1286: invokeinterface 201 2 0
+    //   1291: pop
+    //   1292: new 348	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelMediaTabView
+    //   1295: dup
+    //   1296: aload_0
+    //   1297: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1300: aload 7
+    //   1302: iconst_1
+    //   1303: invokespecial 349	com/tencent/mobileqq/filemanager/activity/delDownloadFile/QfileLocalFileDelMediaTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
+    //   1306: astore 5
+    //   1308: aload 5
+    //   1310: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1313: goto -825 -> 488
+    //   1316: new 343	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView
+    //   1319: dup
+    //   1320: aload_0
+    //   1321: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1324: iconst_1
+    //   1325: aload 7
+    //   1327: iconst_1
+    //   1328: invokespecial 346	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView:<init>	(Landroid/content/Context;ILjava/util/List;Z)V
+    //   1331: astore 5
+    //   1333: aload 5
+    //   1335: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1338: goto -850 -> 488
+    //   1341: new 343	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView
+    //   1344: dup
+    //   1345: aload_0
+    //   1346: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1349: iconst_2
+    //   1350: aload 7
+    //   1352: iconst_1
+    //   1353: invokespecial 346	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView:<init>	(Landroid/content/Context;ILjava/util/List;Z)V
+    //   1356: astore 5
+    //   1358: aload 5
+    //   1360: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1363: goto -875 -> 488
+    //   1366: new 351	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileOtherTabView
+    //   1369: dup
+    //   1370: aload_0
+    //   1371: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1374: aload 7
+    //   1376: iconst_1
+    //   1377: invokespecial 352	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileOtherTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
+    //   1380: astore 5
+    //   1382: aload 5
+    //   1384: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1387: goto -899 -> 488
+    //   1390: new 354	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView
+    //   1393: dup
     //   1394: aload_0
-    //   1395: getfield 347	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_b_of_type_Int	I
-    //   1398: invokespecial 350	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;I)V
-    //   1401: astore 5
-    //   1403: aload 5
-    //   1405: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1408: goto -964 -> 444
-    //   1411: new 343	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView
-    //   1414: dup
-    //   1415: aload_0
-    //   1416: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1419: ldc_w 352
+    //   1395: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1398: ldc_w 356
+    //   1401: aload_0
+    //   1402: getfield 358	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_b_of_type_Int	I
+    //   1405: invokespecial 361	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;I)V
+    //   1408: astore 5
+    //   1410: aload 5
+    //   1412: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1415: goto -927 -> 488
+    //   1418: new 354	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView
+    //   1421: dup
     //   1422: aload_0
-    //   1423: getfield 347	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_b_of_type_Int	I
-    //   1426: invokespecial 350	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;I)V
-    //   1429: astore 5
-    //   1431: aload 5
-    //   1433: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1436: goto -992 -> 444
-    //   1439: new 343	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView
-    //   1442: dup
-    //   1443: aload_0
-    //   1444: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1447: ldc_w 354
+    //   1423: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1426: ldc_w 363
+    //   1429: aload_0
+    //   1430: getfield 358	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_b_of_type_Int	I
+    //   1433: invokespecial 361	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;I)V
+    //   1436: astore 5
+    //   1438: aload 5
+    //   1440: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1443: goto -955 -> 488
+    //   1446: new 354	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView
+    //   1449: dup
     //   1450: aload_0
-    //   1451: getfield 347	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_b_of_type_Int	I
-    //   1454: invokespecial 350	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;I)V
-    //   1457: astore 5
-    //   1459: aload 5
-    //   1461: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1464: goto -1020 -> 444
-    //   1467: new 343	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView
-    //   1470: dup
-    //   1471: aload_0
-    //   1472: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1475: ldc_w 356
+    //   1451: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1454: ldc_w 365
+    //   1457: aload_0
+    //   1458: getfield 358	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_b_of_type_Int	I
+    //   1461: invokespecial 361	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;I)V
+    //   1464: astore 5
+    //   1466: aload 5
+    //   1468: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1471: goto -983 -> 488
+    //   1474: new 354	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView
+    //   1477: dup
     //   1478: aload_0
-    //   1479: getfield 347	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_b_of_type_Int	I
-    //   1482: invokespecial 350	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;I)V
-    //   1485: astore 5
-    //   1487: aload 5
-    //   1489: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1492: goto -1048 -> 444
-    //   1495: new 343	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView
-    //   1498: dup
-    //   1499: aload_0
-    //   1500: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1503: ldc_w 358
+    //   1479: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1482: ldc_w 367
+    //   1485: aload_0
+    //   1486: getfield 358	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_b_of_type_Int	I
+    //   1489: invokespecial 361	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;I)V
+    //   1492: astore 5
+    //   1494: aload 5
+    //   1496: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1499: goto -1011 -> 488
+    //   1502: new 354	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView
+    //   1505: dup
     //   1506: aload_0
-    //   1507: getfield 347	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_b_of_type_Int	I
-    //   1510: invokespecial 350	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;I)V
-    //   1513: astore 5
-    //   1515: aload 5
-    //   1517: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1520: goto -1076 -> 444
-    //   1523: new 292	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileAppTabView
-    //   1526: dup
-    //   1527: aload_0
-    //   1528: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1531: aload 6
-    //   1533: iconst_0
-    //   1534: invokespecial 295	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileAppTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
-    //   1537: astore 5
-    //   1539: aload 5
-    //   1541: iconst_1
-    //   1542: invokevirtual 361	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:setFromWeiXin	(Z)V
-    //   1545: aload 5
-    //   1547: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1550: goto -1106 -> 444
-    //   1553: new 330	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView
-    //   1556: dup
-    //   1557: aload_0
-    //   1558: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1561: iconst_3
-    //   1562: aload 6
-    //   1564: iconst_0
-    //   1565: invokespecial 333	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView:<init>	(Landroid/content/Context;ILjava/util/List;Z)V
-    //   1568: astore 5
-    //   1570: aload 5
-    //   1572: iconst_1
-    //   1573: invokevirtual 361	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:setFromWeiXin	(Z)V
-    //   1576: aload 5
-    //   1578: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1581: goto -1137 -> 444
-    //   1584: new 313	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFilePicTabView
-    //   1587: dup
-    //   1588: aload_0
-    //   1589: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1592: aload 6
-    //   1594: iconst_0
-    //   1595: invokespecial 314	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFilePicTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
-    //   1598: astore 5
-    //   1600: aload 5
-    //   1602: iconst_1
-    //   1603: invokevirtual 361	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:setFromWeiXin	(Z)V
-    //   1606: aload 5
-    //   1608: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1611: goto -1167 -> 444
-    //   1614: new 321	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileDocTabView
-    //   1617: dup
-    //   1618: aload_0
-    //   1619: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1622: aload 6
-    //   1624: iconst_0
-    //   1625: invokespecial 322	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileDocTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
-    //   1628: astore 5
-    //   1630: aload 5
-    //   1632: iconst_1
-    //   1633: invokevirtual 361	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:setFromWeiXin	(Z)V
-    //   1636: aload 5
-    //   1638: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1641: goto -1197 -> 444
-    //   1644: new 340	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileOtherTabView
-    //   1647: dup
-    //   1648: aload_0
-    //   1649: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
-    //   1652: aload 6
-    //   1654: iconst_0
-    //   1655: invokespecial 341	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileOtherTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
-    //   1658: astore 5
-    //   1660: aload 5
-    //   1662: iconst_1
-    //   1663: invokevirtual 361	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:setFromWeiXin	(Z)V
-    //   1666: aload 5
-    //   1668: invokevirtual 264	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
-    //   1671: goto -1227 -> 444
-    //   1674: astore 6
-    //   1676: goto -1160 -> 516
+    //   1507: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1510: ldc_w 369
+    //   1513: aload_0
+    //   1514: getfield 358	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_b_of_type_Int	I
+    //   1517: invokespecial 361	com/tencent/mobileqq/filemanager/activity/cloudfile/QfileCloudFileTabView:<init>	(Landroid/content/Context;Ljava/lang/String;I)V
+    //   1520: astore 5
+    //   1522: aload 5
+    //   1524: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1527: goto -1039 -> 488
+    //   1530: new 307	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileAppTabView
+    //   1533: dup
+    //   1534: aload_0
+    //   1535: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1538: aload 6
+    //   1540: iconst_0
+    //   1541: invokespecial 310	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileAppTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
+    //   1544: astore 5
+    //   1546: aload 5
+    //   1548: iconst_1
+    //   1549: invokevirtual 372	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:setFromWeiXin	(Z)V
+    //   1552: aload 5
+    //   1554: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1557: goto -1069 -> 488
+    //   1560: new 343	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView
+    //   1563: dup
+    //   1564: aload_0
+    //   1565: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1568: iconst_3
+    //   1569: aload 6
+    //   1571: iconst_0
+    //   1572: invokespecial 346	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileMediaTabView:<init>	(Landroid/content/Context;ILjava/util/List;Z)V
+    //   1575: astore 5
+    //   1577: aload 5
+    //   1579: iconst_1
+    //   1580: invokevirtual 372	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:setFromWeiXin	(Z)V
+    //   1583: aload 5
+    //   1585: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1588: goto -1100 -> 488
+    //   1591: new 328	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFilePicTabView
+    //   1594: dup
+    //   1595: aload_0
+    //   1596: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1599: aload 6
+    //   1601: iconst_0
+    //   1602: invokespecial 329	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFilePicTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
+    //   1605: astore 5
+    //   1607: aload 5
+    //   1609: iconst_1
+    //   1610: invokevirtual 372	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:setFromWeiXin	(Z)V
+    //   1613: aload 5
+    //   1615: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1618: goto -1130 -> 488
+    //   1621: new 334	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileDocTabView
+    //   1624: dup
+    //   1625: aload_0
+    //   1626: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1629: aload 6
+    //   1631: iconst_0
+    //   1632: invokespecial 335	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileDocTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
+    //   1635: astore 5
+    //   1637: aload 5
+    //   1639: iconst_1
+    //   1640: invokevirtual 372	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:setFromWeiXin	(Z)V
+    //   1643: aload 5
+    //   1645: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1648: goto -1160 -> 488
+    //   1651: new 351	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileOtherTabView
+    //   1654: dup
+    //   1655: aload_0
+    //   1656: getfield 36	com/tencent/mobileqq/filemanager/widget/QfileTabBarView:jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity	Lcom/tencent/mobileqq/filemanager/activity/BaseFileAssistantActivity;
+    //   1659: aload 6
+    //   1661: iconst_0
+    //   1662: invokespecial 352	com/tencent/mobileqq/filemanager/activity/localfile/QfileLocalFileOtherTabView:<init>	(Landroid/content/Context;Ljava/util/List;Z)V
+    //   1665: astore 5
+    //   1667: aload 5
+    //   1669: iconst_1
+    //   1670: invokevirtual 372	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:setFromWeiXin	(Z)V
+    //   1673: aload 5
+    //   1675: invokevirtual 279	com/tencent/mobileqq/filemanager/activity/fileassistant/QfileBaseTabView:b	()V
+    //   1678: goto -1190 -> 488
+    //   1681: astore 6
+    //   1683: goto -1123 -> 560
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1679	0	this	QfileTabBarView
-    //   0	1679	1	paramInt	int
-    //   41	507	2	i	int
-    //   178	1063	3	j	int
-    //   200	639	4	k	int
-    //   14	495	5	localQfileBaseTabView	QfileBaseTabView
-    //   511	1	5	localException1	java.lang.Exception
-    //   514	1153	5	localObject	java.lang.Object
-    //   49	1604	6	localArrayList1	ArrayList
-    //   1674	1	6	localException2	java.lang.Exception
-    //   138	1230	7	localArrayList2	ArrayList
+    //   0	1686	0	this	QfileTabBarView
+    //   0	1686	1	paramInt	int
+    //   41	554	2	i	int
+    //   178	1090	3	j	int
+    //   200	686	4	k	int
+    //   14	539	5	localQfileBaseTabView	QfileBaseTabView
+    //   555	1	5	localException1	java.lang.Exception
+    //   558	1116	5	localObject	java.lang.Object
+    //   49	1611	6	localArrayList1	ArrayList
+    //   1681	1	6	localException2	java.lang.Exception
+    //   138	1237	7	localArrayList2	ArrayList
+    //   236	795	8	str1	String
+    //   241	1038	9	str2	String
     // Exception table:
     //   from	to	target	type
-    //   0	16	511	java/lang/Exception
-    //   24	42	1674	java/lang/Exception
+    //   0	16	555	java/lang/Exception
+    //   24	42	1681	java/lang/Exception
   }
   
   public ListView a()
@@ -1002,7 +1006,7 @@ public class QfileTabBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.QfileTabBarView
  * JD-Core Version:    0.7.0.1
  */

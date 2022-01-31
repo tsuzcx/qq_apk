@@ -1,112 +1,74 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.troop.aioapp.GrayGroupAppsDbHelper.1;
+import com.tencent.mobileqq.troop.aioapp.data.GrayGroupAppEntity;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-class bbid
-  extends BaseAdapter
+public class bbid
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private List<ResultRecord> jdField_a_of_type_JavaUtilList;
+  private final QQAppInterface a;
   
-  public bbid(QQAppInterface paramQQAppInterface, Context paramContext, List<ResultRecord> paramList, View.OnClickListener paramOnClickListener)
+  bbid(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramContext;
-    this.jdField_a_of_type_AndroidContentContext = paramList;
-    Object localObject;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = localObject;
-    this.jdField_a_of_type_JavaUtilList = paramOnClickListener;
+    this.a = paramQQAppInterface;
   }
   
-  private int a(int paramInt)
+  private void a(boolean paramBoolean)
   {
-    if (paramInt == 4) {}
-    do
+    awbw localawbw = this.a.getEntityManagerFactory().createEntityManager();
+    bbib localbbib = bbib.a(this.a);
+    Object localObject = localawbw.a(GrayGroupAppEntity.class);
+    if (!bbig.a((Collection)localObject))
     {
-      return 11;
-      if (paramInt == 1) {
-        return 4;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        GrayGroupAppEntity localGrayGroupAppEntity = (GrayGroupAppEntity)((Iterator)localObject).next();
+        if (paramBoolean)
+        {
+          localGrayGroupAppEntity.updatedTimestamp = 0L;
+          b(localGrayGroupAppEntity);
+        }
+        localbbib.a.put(Long.valueOf(localGrayGroupAppEntity.groupUin), localGrayGroupAppEntity);
       }
-      if (paramInt == 3000) {
-        return 101;
-      }
-    } while (paramInt == 1006);
-    return 1;
+    }
+    localawbw.a();
   }
   
-  private void a(ImageView paramImageView, ResultRecord paramResultRecord)
+  private void b(GrayGroupAppEntity paramGrayGroupAppEntity)
   {
-    if (ajsd.z.equals(paramResultRecord.a))
-    {
-      paramImageView.setImageResource(2130843409);
-      return;
-    }
-    if (ajsd.A.equals(paramResultRecord.a))
-    {
-      paramImageView.setImageResource(2130843407);
-      return;
-    }
-    if (ajsd.B.equals(paramResultRecord.a))
-    {
-      paramImageView.setImageResource(2130843412);
-      return;
-    }
-    if (ajsd.y.equals(paramResultRecord.a))
-    {
-      paramImageView.setImageResource(2130839295);
-      return;
-    }
-    int i = a(paramResultRecord.a());
-    paramImageView.setImageDrawable(bayh.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, i, paramResultRecord.a));
+    awbw localawbw = this.a.getEntityManagerFactory().createEntityManager();
+    paramGrayGroupAppEntity.setStatus(1000);
+    localawbw.b(paramGrayGroupAppEntity);
+    localawbw.a();
   }
   
-  public ResultRecord a(int paramInt)
+  public void a()
   {
-    return (ResultRecord)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    a(false);
   }
   
-  public int getCount()
+  void a(GrayGroupAppEntity paramGrayGroupAppEntity)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    ThreadManagerV2.excute(new GrayGroupAppsDbHelper.1(this, paramGrayGroupAppEntity), 32, null, false);
   }
   
-  public long getItemId(int paramInt)
+  public void b()
   {
-    return paramInt;
+    a(true);
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  void c()
   {
-    if (paramView == null)
-    {
-      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_Bbhz.i, this.jdField_a_of_type_Bbhz.i));
-    }
-    for (;;)
-    {
-      a(paramView, a(paramInt));
-      paramView.setTag(a(paramInt));
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramView.setFocusable(false);
-      return paramView;
-      paramView = (ImageView)paramView;
-    }
+    this.a.getEntityManagerFactory().createEntityManager().a(GrayGroupAppEntity.class.getSimpleName(), null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbid
  * JD-Core Version:    0.7.0.1
  */

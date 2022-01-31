@@ -2,14 +2,14 @@ package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
 import android.os.Bundle;
-import aqau;
-import aqfd;
+import aruc;
+import arys;
 import com.tencent.qphone.base.util.QLog;
 
 public class ForwardSdkShareOption$6
   implements Runnable
 {
-  public ForwardSdkShareOption$6(aqfd paramaqfd) {}
+  public ForwardSdkShareOption$6(arys paramarys) {}
   
   public void run()
   {
@@ -22,16 +22,16 @@ public class ForwardSdkShareOption$6
       }
       this.this$0.j = true;
       this.this$0.x();
-    } while (!aqfd.a(this.this$0));
+    } while (!arys.a(this.this$0));
     this.this$0.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
     this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aqau.e.intValue());
+    this.this$0.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aruc.e.intValue());
     this.this$0.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkShareOption.6
  * JD-Core Version:    0.7.0.1
  */

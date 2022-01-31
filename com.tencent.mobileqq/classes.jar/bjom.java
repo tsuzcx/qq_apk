@@ -1,61 +1,40 @@
-import android.support.annotation.NonNull;
-import java.util.Iterator;
-import java.util.Map.Entry;
+import java.util.Random;
 
-abstract class bjom<K, V>
-  implements bjon<K, V>, Iterator<Map.Entry<K, V>>
+public class bjom
+  extends bjow
 {
-  bjok<K, V> a;
-  bjok<K, V> b;
+  protected int a;
+  protected Random a;
   
-  bjom(bjok<K, V> parambjok1, bjok<K, V> parambjok2)
+  public bjom(int paramInt)
   {
-    this.a = parambjok2;
-    this.b = parambjok1;
+    this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
+    this.jdField_a_of_type_Int = 1;
+    a(paramInt);
   }
   
-  private bjok<K, V> a()
+  public int a()
   {
-    if ((this.b == this.a) || (this.a == null)) {
-      return null;
-    }
-    return a(this.b);
+    return this.jdField_a_of_type_Int;
   }
   
-  abstract bjok<K, V> a(bjok<K, V> parambjok);
-  
-  public Map.Entry<K, V> a()
+  public void a(int paramInt)
   {
-    bjok localbjok = this.b;
-    this.b = a();
-    return localbjok;
+    int i = paramInt;
+    if (paramInt < 1) {
+      i = 1;
+    }
+    this.jdField_a_of_type_Int = i;
   }
   
-  public void a(@NonNull bjok<K, V> parambjok)
+  public boolean a()
   {
-    if ((this.a == parambjok) && (parambjok == this.b))
-    {
-      this.b = null;
-      this.a = null;
-    }
-    if (this.a == parambjok) {
-      this.a = b(this.a);
-    }
-    if (this.b == parambjok) {
-      this.b = a();
-    }
-  }
-  
-  abstract bjok<K, V> b(bjok<K, V> parambjok);
-  
-  public boolean hasNext()
-  {
-    return this.b != null;
+    return this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_Int) < 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjom
  * JD-Core Version:    0.7.0.1
  */

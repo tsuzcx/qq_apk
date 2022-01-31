@@ -2,7 +2,6 @@ package com.tencent.component.network.module.report;
 
 import android.text.TextUtils;
 import android.util.Log;
-import com.squareup.okhttp.Response;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.DownloadResult.Content;
@@ -23,6 +22,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.net.ssl.SSLHandshakeException;
 import javax.net.ssl.SSLPeerUnverifiedException;
+import okhttp3.Response;
 import org.apache.http.Header;
 import org.apache.http.HeaderIterator;
 import org.apache.http.HttpEntity;
@@ -528,7 +528,7 @@ public class ImageDownloadReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.module.report.ImageDownloadReporter
  * JD-Core Version:    0.7.0.1
  */

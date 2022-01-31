@@ -1,21 +1,28 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
-class nzd
-  implements ViewFactory.FoundClickableViewListener
+public class nzd
+  extends GestureDetector.SimpleOnGestureListener
 {
-  nzd(nzc paramnzc, BaseData paramBaseData, Context paramContext) {}
+  private WeakReference<nwi> a;
   
-  public void onFound(ViewBase paramViewBase)
+  public nzd(nwi paramnwi)
   {
-    paramViewBase.setOnClickListener(new nze(this));
+    this.a = new WeakReference(paramnwi);
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((nwi)this.a.get()).a(true);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzd
  * JD-Core Version:    0.7.0.1
  */

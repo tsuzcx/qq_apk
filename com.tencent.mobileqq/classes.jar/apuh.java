@@ -1,48 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
 
-final class apuh
-  implements aput
+public class apuh
+  extends apow
 {
-  apuh(String paramString1, String paramString2) {}
-  
-  public void a(Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      return;
-    }
-    try
-    {
-      apvd.a(paramBitmap, this.a);
-      paramBitmap.recycle();
-      int i = gr.a(this.b);
-      gr.a(this.a, i);
-      return;
-    }
-    catch (FileNotFoundException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (IOException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
-    }
-  }
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apuh
  * JD-Core Version:    0.7.0.1
  */

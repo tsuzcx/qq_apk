@@ -1,46 +1,61 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.QLog;
 
 public class aohp
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+  extends aoho
 {
-  RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  View jdField_a_of_type_AndroidViewView;
-  private aoiy jdField_a_of_type_Aoiy;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-  SingleLineTextView b;
-  
-  public aohp(ExtendFriendGroupFragment paramExtendFriendGroupFragment, ViewGroup paramViewGroup, aoiy paramaoiy)
+  public int a()
   {
-    super(paramViewGroup);
-    this.jdField_a_of_type_Aoiy = paramaoiy;
-    this.jdField_a_of_type_AndroidViewView = paramViewGroup;
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramViewGroup.findViewById(2131367376));
-    this.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131377350));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramViewGroup.findViewById(2131368882));
-    this.b = ((SingleLineTextView)paramViewGroup.findViewById(2131365017));
-    paramViewGroup = new aoho(paramExtendFriendGroupFragment, null);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(paramViewGroup);
-    paramViewGroup = new StaggeredGridLayoutManager(1, 0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(paramViewGroup);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnTouchListener(new aohq(this, paramExtendFriendGroupFragment));
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aohr(this, paramExtendFriendGroupFragment));
+    return 170;
   }
   
-  public void onClick(View paramView) {}
+  public aohi a(String paramString)
+  {
+    QLog.d("ArkAIDictConfigProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    try
+    {
+      aoia localaoia = (aoia)aogt.a(paramString, aoia.class);
+      return new aohj(paramString, localaoia);
+    }
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      for (;;)
+      {
+        QLog.i("ArkAIDictConfigProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
+        Object localObject = null;
+      }
+    }
+  }
+  
+  public void a(aohi paramaohi)
+  {
+    super.a(paramaohi);
+    if (paramaohi == null) {
+      QLog.i("ArkAIDictConfigProcessor", 1, "newConf is null");
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          QLog.d("ArkAIDictConfigProcessor", 1, "[onUpdate] type=" + a() + ", content = " + paramaohi.a());
+          paramaohi = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        } while (paramaohi == null);
+        paramaohi = (ArkAppCenter)paramaohi.getManager(121);
+      } while (paramaohi == null);
+      paramaohi = paramaohi.a();
+    } while (paramaohi == null);
+    paramaohi.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aohp
  * JD-Core Version:    0.7.0.1
  */

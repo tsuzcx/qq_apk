@@ -1,20 +1,10 @@
-class tqy
-  extends tpp
+public abstract interface tqy
 {
-  tqy(tqh paramtqh, String paramString1, String paramString2, boolean paramBoolean, trq paramtrq)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
-  
-  public boolean b()
-  {
-    this.jdField_a_of_type_Trq.d = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqy
  * JD-Core Version:    0.7.0.1
  */

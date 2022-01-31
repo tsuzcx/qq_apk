@@ -1,18 +1,13 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.View;
+import java.util.List;
 
-class ajgv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface ajgv
 {
-  ajgv(ajgu paramajgu) {}
-  
-  public void onGlobalLayout()
-  {
-    ajgu.a(this.a);
-  }
+  public abstract List<View> a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgv
  * JD-Core Version:    0.7.0.1
  */

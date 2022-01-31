@@ -18,10 +18,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import baxn;
-import qof;
-import qog;
-import qoh;
+import bcwh;
+import rdj;
+import rdk;
+import rdl;
 
 public class VideoFeedsGuideView
   extends View
@@ -32,9 +32,9 @@ public class VideoFeedsGuideView
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private qof jdField_a_of_type_Qof;
-  private qog jdField_a_of_type_Qog;
-  private qoh jdField_a_of_type_Qoh;
+  private rdj jdField_a_of_type_Rdj;
+  private rdk jdField_a_of_type_Rdk;
+  private rdl jdField_a_of_type_Rdl;
   public int b;
   private int c;
   private int d;
@@ -77,20 +77,20 @@ public class VideoFeedsGuideView
   
   private void a()
   {
-    this.b = baxn.a(getContext(), 150.0F);
-    this.jdField_a_of_type_Int = baxn.a(getContext(), 180.0F);
-    this.c = baxn.a(getContext(), 8.0F);
-    this.e = baxn.a(getContext(), 70.0F);
-    this.g = baxn.a(getContext(), 70.0F);
+    this.b = bcwh.a(getContext(), 150.0F);
+    this.jdField_a_of_type_Int = bcwh.a(getContext(), 180.0F);
+    this.c = bcwh.a(getContext(), 8.0F);
+    this.e = bcwh.a(getContext(), 70.0F);
+    this.g = bcwh.a(getContext(), 70.0F);
     this.d = this.e;
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130842529);
-    this.jdField_a_of_type_Qof = new qof(this, null);
-    this.jdField_a_of_type_Qog = new qog(this, null);
-    this.jdField_a_of_type_Qoh = new qoh(this, null);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130842708);
+    this.jdField_a_of_type_Rdj = new rdj(this, null);
+    this.jdField_a_of_type_Rdk = new rdk(this, null);
+    this.jdField_a_of_type_Rdl = new rdl(this, null);
   }
   
   private void a(Canvas paramCanvas)
@@ -110,7 +110,7 @@ public class VideoFeedsGuideView
     {
       invalidate();
       if (paramBoolean) {
-        this.jdField_a_of_type_Qof.sendEmptyMessageDelayed(0, 300L);
+        this.jdField_a_of_type_Rdj.sendEmptyMessageDelayed(0, 300L);
       }
       return;
       this.h = 0;
@@ -123,7 +123,7 @@ public class VideoFeedsGuideView
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F });
     localObjectAnimator.setDuration(200L);
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 0, this.d });
-    localValueAnimator.addUpdateListener(this.jdField_a_of_type_Qoh);
+    localValueAnimator.addUpdateListener(this.jdField_a_of_type_Rdl);
     localValueAnimator.setDuration(500L);
     localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
     AnimatorSet localAnimatorSet = new AnimatorSet();
@@ -133,7 +133,7 @@ public class VideoFeedsGuideView
     localObjectAnimator.setStartDelay(400L);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator).after(localAnimatorSet);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(this.jdField_a_of_type_Qog);
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(this.jdField_a_of_type_Rdk);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
   }
   
@@ -203,7 +203,7 @@ public class VideoFeedsGuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,10 @@ package com.tencent.mobileqq.util;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bbac;
-import bbdx;
-import bbwu;
-import bbww;
+import bcyw;
+import bdcs;
+import bdvv;
+import bdvx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -40,13 +40,13 @@ public final class ProfileCardUtil$4
         {
           try
           {
-            str2 = bbac.b(this.a.getApplication());
+            str2 = bcyw.b(this.a.getApplication());
             File localFile = new File(str2 + ".tmp");
-            bbwu localbbwu = new bbwu((String)localObject, localFile);
-            localbbwu.f = "profileCardDownload";
-            localbbwu.e = "VIP_profilecard";
-            localbbwu.a = 1;
-            int j = bbww.a(localbbwu, this.a);
+            bdvv localbdvv = new bdvv((String)localObject, localFile);
+            localbdvv.f = "profileCardDownload";
+            localbdvv.e = "VIP_profilecard";
+            localbdvv.a = 1;
+            int j = bdvx.a(localbdvv, this.a);
             if (j != 0) {
               break label595;
             }
@@ -58,19 +58,19 @@ public final class ProfileCardUtil$4
               if (!localFile.exists()) {
                 break;
               }
-              localObject = bbdx.a(localFile);
+              localObject = bdcs.a(localFile);
               if ((TextUtils.isEmpty((CharSequence)localObject)) || (new JSONObject((String)localObject).optJSONArray("style").length() <= 0)) {
                 break;
               }
-              bbdx.d(str2 + ".tmp", str2);
+              bdcs.d(str2 + ".tmp", str2);
               localFile.delete();
               localObject = new File(str2).getParentFile().listFiles();
               if ((localObject != null) && (localObject.length > 0) && (i < localObject.length))
               {
                 str2 = localObject[i].getName();
-                if ((str2.startsWith("qvip_profile_template.json")) && (!str2.endsWith("8.3.0")))
+                if ((str2.startsWith("qvip_profile_template.json")) && (!str2.endsWith("8.3.3")))
                 {
-                  bbdx.d(str2);
+                  bdcs.d(str2);
                   if (QLog.isColorLevel()) {
                     QLog.i("Q.profilecard.FrdProfileCard", 2, "delete old file=" + str2);
                   }
@@ -79,7 +79,7 @@ public final class ProfileCardUtil$4
               else
               {
                 localSharedPreferences.edit().putString("cardTemplateVersion", str1).commit();
-                bbac.a(this.a, true);
+                bcyw.a(this.a, true);
                 if (!QLog.isColorLevel()) {
                   break;
                 }
@@ -111,7 +111,7 @@ public final class ProfileCardUtil$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.ProfileCardUtil.4
  * JD-Core Version:    0.7.0.1
  */

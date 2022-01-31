@@ -1,145 +1,27 @@
-public class tcz
-  implements tch
+import NS_KING_INTERFACE.stPostCommentReplyRsp;
+import NS_KING_SOCIALIZE_META.stMetaReply;
+import com.tribe.async.dispatch.Dispatcher;
+
+class tcz
+  implements tgt
 {
-  public final tch[] a = new tch[40];
+  tcz(tcu paramtcu, stMetaReply paramstMetaReply) {}
   
-  public static tch a(int paramInt)
+  public void a(the paramthe)
   {
-    return tdb.a.b(paramInt);
-  }
-  
-  public static tcz a()
-  {
-    return tdb.a;
-  }
-  
-  private void a(int paramInt, tch paramtch)
-  {
-    this.a[paramInt] = paramtch;
-  }
-  
-  public void a() {}
-  
-  public tch b(int paramInt)
-  {
-    tch localtch1 = this.a[paramInt];
-    if (localtch1 == null) {}
-    for (;;)
+    if ((paramthe.jdField_a_of_type_JavaLangObject instanceof stPostCommentReplyRsp))
     {
-      tch localtch2;
-      synchronized (this.a)
-      {
-        localtch2 = this.a[paramInt];
-        if (localtch2 == null) {
-          break label408;
-        }
-        return localtch2;
-        if (localtch1 != null)
-        {
-          localtch1.a();
-          ved.b("Q.qqstory.SuperManager", "onInit manager : %s", localtch1);
-        }
-        a(paramInt, localtch1);
-        return localtch1;
-      }
-      Object localObject2 = this;
-      continue;
-      localObject2 = new tdf();
-      continue;
-      localObject2 = new uks();
-      continue;
-      localObject2 = new tdx();
-      continue;
-      localObject2 = new tcs();
-      continue;
-      localObject2 = new tes();
-      continue;
-      localObject2 = new vls();
-      continue;
-      localObject2 = new bkby();
-      continue;
-      localObject2 = new tdl();
-      continue;
-      localObject2 = new sut();
-      continue;
-      localObject2 = new stf();
-      continue;
-      localObject2 = new svl();
-      continue;
-      localObject2 = new tcw();
-      continue;
-      localObject2 = new tcp();
-      continue;
-      localObject2 = new swk();
-      continue;
-      localObject2 = new tcl();
-      continue;
-      localObject2 = new tcn();
-      continue;
-      localObject2 = new tbw();
-      continue;
-      localObject2 = new tcm();
-      continue;
-      localObject2 = new tca();
-      continue;
-      localObject2 = new tdk();
-      continue;
-      localObject2 = new tcf();
-      continue;
-      localObject2 = new uvx();
-      continue;
-      localObject2 = new uwd();
-      continue;
-      localObject2 = new tdh();
-      continue;
-      localObject2 = new umv();
-      continue;
-      localObject2 = new tcg();
-      continue;
-      localObject2 = new tdc();
-      continue;
-      localObject2 = new stl();
-      continue;
-      localObject2 = new tcx();
-      continue;
-      localObject2 = new spn();
-      continue;
-      return localObject2;
-      label408:
-      localObject2 = localtch2;
-      switch (paramInt)
-      {
-      }
-      localObject2 = localtch2;
-    }
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    tch[] arrayOftch = this.a;
-    int i = 0;
-    try
-    {
-      while (i < this.a.length)
-      {
-        tch localtch = this.a[i];
-        ved.b("Q.qqstory.SuperManager", "destroy manager : %s", localtch);
-        if (localtch != null) {
-          localtch.b();
-        }
-        this.a[i] = null;
-        i += 1;
-      }
+      stPostCommentReplyRsp localstPostCommentReplyRsp = (stPostCommentReplyRsp)paramthe.jdField_a_of_type_JavaLangObject;
+      paramthe = this.jdField_a_of_type_Tcu.a(new Object[] { Integer.valueOf(4), Integer.valueOf(paramthe.b), paramthe.jdField_a_of_type_JavaLangString, localstPostCommentReplyRsp, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply, this.jdField_a_of_type_NS_KING_SOCIALIZE_METAStMetaReply.id, Integer.valueOf(this.jdField_a_of_type_Tcu.hashCode()) });
+      uht.a().dispatch(paramthe);
       return;
     }
-    finally {}
+    tlo.d(tcu.a(), "添加回复失败new！");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tcz
  * JD-Core Version:    0.7.0.1
  */

@@ -52,6 +52,7 @@ public class VsReporter
     paramCKeyBeaconReport.put("vs_caller", paramString12);
     paramCKeyBeaconReport.put("bs_extinfo", paramString13);
     paramCKeyBeaconReport.put("bs_guard", paramString14);
+    CKeyBeaconReport.trackCustomKVEvent(paramContext, "vs_ckey", paramCKeyBeaconReport.getProperties());
   }
   
   public static void reportInit(Context paramContext, CKeyBeaconReport paramCKeyBeaconReport, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt, String paramString7)
@@ -92,7 +93,7 @@ public class VsReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.VsReporter
  * JD-Core Version:    0.7.0.1
  */

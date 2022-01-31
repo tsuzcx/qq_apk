@@ -1,33 +1,33 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.VideoController;
+import android.text.TextUtils;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 import com.tencent.qphone.base.util.QLog;
 
-class mhb
-  extends BroadcastReceiver
+public class mhb
+  extends lij
 {
-  mhb(mha parammha) {}
+  public mhb(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(long paramLong, int paramInt, String paramString)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("QavDoubleVideoSharpnessMangaer", 2, "onReceive SVIPPayResultReceiver");
-    }
-    if (("tencent.video.q2v.SVIP.PAY".equals(paramContext)) && (mha.a(this.a) != null))
+    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "], seq[" + paramLong + "]");
+    if (TextUtils.equals(this.a.c, paramString))
     {
-      paramContext = mha.a(this.a).a();
-      if ((paramContext != null) && (paramContext.jdField_d_of_type_Int == 2)) {
-        mha.a(this.a).a(Long.valueOf(paramContext.jdField_d_of_type_JavaLangString).longValue(), mha.a(this.a));
-      }
-      this.a.e();
+      this.a.b("VideoObserver_onClose");
+      this.a.a(paramLong, paramInt);
+    }
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
+    if (TextUtils.equals(this.a.c, paramString)) {
+      this.a.b("VideoObserver_onDestroyUI");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mhb
  * JD-Core Version:    0.7.0.1
  */

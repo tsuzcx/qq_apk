@@ -1,53 +1,38 @@
-import VIP.GetQzoneMusicInfoRsp;
-import VIP.MusicInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.SongInfo;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
 class auxc
-  implements ajte
+  extends auxe
 {
-  auxc(auxb paramauxb) {}
+  auxc(auxa paramauxa) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public Message a(Message paramMessage)
   {
-    if ((paramBoolean) && ((paramObject instanceof GetQzoneMusicInfoRsp)))
-    {
-      paramObject = (GetQzoneMusicInfoRsp)paramObject;
-      if ((auxb.a(this.a)) || (!paramObject.mMusicList.containsKey(auxb.a(this.a).f))) {
-        break label101;
-      }
-      auxb.a(this.a).a = ((MusicInfo)paramObject.mMusicList.get(auxb.a(this.a).f)).sSongUrl;
-      this.a.a(BaseApplicationImpl.getContext(), auxb.a(this.a));
+    if (paramMessage == null) {
+      return null;
     }
-    for (;;)
+    return this.a.b(paramMessage);
+  }
+  
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
+  {
+    if (paramBasicTypeDataParcel == null) {}
+    Object[] arrayOfObject;
+    do
     {
-      return;
-      label101:
-      SongInfo[] arrayOfSongInfo = QQPlayerService.a();
-      if (arrayOfSongInfo != null)
-      {
-        paramInt = 0;
-        while (paramInt < arrayOfSongInfo.length)
-        {
-          if (paramObject.mMusicList.containsKey(arrayOfSongInfo[paramInt].f))
-          {
-            arrayOfSongInfo[paramInt].a = ((MusicInfo)paramObject.mMusicList.get(arrayOfSongInfo[paramInt].f)).sSongUrl;
-            if (QLog.isColorLevel()) {
-              QLog.d("ProfileMusicBoxController", 2, "requestMusicSongUrl mid:" + arrayOfSongInfo[paramInt].f + " url:" + arrayOfSongInfo[paramInt].a);
-            }
-          }
-          paramInt += 1;
-        }
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
       }
-    }
+      arrayOfObject = this.a.b(paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
+    } while (arrayOfObject == null);
+    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auxc
  * JD-Core Version:    0.7.0.1
  */

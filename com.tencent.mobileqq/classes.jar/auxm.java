@@ -1,25 +1,21 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import android.text.TextPaint;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.widget.XEditTextEx;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
 
 public class auxm
-  extends Editable.Factory
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public auxm(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public auxm(SmallVideoFragment paramSmallVideoFragment) {}
   
-  public Editable newEditable(CharSequence paramCharSequence)
+  public void onAudioFocusChange(int paramInt)
   {
-    if ((paramCharSequence instanceof aykz)) {
-      return (Editable)paramCharSequence;
+    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (SmallVideoFragment.a(this.a))) {
+      this.a.a();
     }
-    return new aykz(paramCharSequence, 3, (int)(StickyNotePublishFragment.a(this.a).getTextSize() / StickyNotePublishFragment.a(this.a).getPaint().density));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auxm
  * JD-Core Version:    0.7.0.1
  */

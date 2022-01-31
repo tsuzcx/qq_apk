@@ -1,27 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.util.Pair;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.data.AppShareID;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class acdw
-  implements DialogInterface.OnClickListener
+public class acdw
+  extends alls
 {
-  acdw(acdv paramacdv, ayaq paramayaq, Pair paramPair) {}
+  public acdw(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList)
   {
-    this.jdField_a_of_type_Ayaq.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!ayaq.a(this.jdField_a_of_type_Acdv.a.app))
+    if (this.a.A()) {}
+    do
     {
-      this.jdField_a_of_type_Acdv.a.setTitle("");
-      ayap.a(this.jdField_a_of_type_Acdv.a.app, this.jdField_a_of_type_Acdv.a, null);
+      do
+      {
+        do
+        {
+          return;
+          if (QLog.isDevelopLevel()) {
+            QLog.d("QQOperateVoIP", 4, "on showTips, chatactivity upadte ui");
+          }
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == paramInt)) {
+            break;
+          }
+        } while (!QLog.isDevelopLevel());
+        QLog.d("QQOperateVoIP", 4, "on showTips, uin dosenot equal");
+        return;
+        if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("QQOperateVoIP", 4, "on showTips,tasklist is null");
+      return;
+    } while (this.a.jdField_a_of_type_Agvt == null);
+    this.a.jdField_a_of_type_Agvt.a(paramArrayList);
+  }
+  
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_Aelz != null)) {
+      this.a.jdField_a_of_type_Aelz.notifyDataSetChanged();
     }
-    this.jdField_a_of_type_Acdv.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acdw
  * JD-Core Version:    0.7.0.1
  */

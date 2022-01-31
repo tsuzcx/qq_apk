@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract class tew
-  extends akuo
+final class tew
+  implements DialogInterface.OnClickListener
 {
-  public tew(String paramString)
-  {
-    super(0, true, false, 300000L, false, false, paramString);
-  }
+  tew(int paramInt1, int paramInt2) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      tes.a = new ter((int)(paramSosoLbsInfo.a.a * 1000000.0D), (int)(paramSosoLbsInfo.a.b * 1000000.0D));
-      ved.b("LbsManager", "onLocationFinish success : " + tes.a);
-    }
+    paramDialogInterface.dismiss();
+    tju.b(112, 2, 0);
+    tjr.a(117, this.a, this.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tew
  * JD-Core Version:    0.7.0.1
  */

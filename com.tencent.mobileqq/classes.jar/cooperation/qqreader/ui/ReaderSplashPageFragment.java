@@ -10,14 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import bgui;
-import bgwf;
+import bivh;
+import bixe;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class ReaderSplashPageFragment
   extends WebViewFragment
 {
-  private bgui a;
+  private bivh a;
   
   private ViewGroup a(Context paramContext)
   {
@@ -29,6 +29,7 @@ public class ReaderSplashPageFragment
   public static ReaderSplashPageFragment a(Intent paramIntent)
   {
     ReaderSplashPageFragment localReaderSplashPageFragment = new ReaderSplashPageFragment();
+    paramIntent.putExtra("url", "https://im.qq.com");
     Bundle localBundle = new Bundle();
     localBundle.putParcelable("intent", paramIntent);
     localReaderSplashPageFragment.setArguments(localBundle);
@@ -43,9 +44,9 @@ public class ReaderSplashPageFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    bgwf.e("ReaderSplashPageFragment", "onCreate");
+    bixe.e("ReaderSplashPageFragment", "onCreate");
     paramBundle = getActivity();
-    this.a = new bgui(paramBundle);
+    this.a = new bivh(paramBundle);
     Intent localIntent = a();
     if ((localIntent != null) && (localIntent.getExtras() != null))
     {
@@ -55,7 +56,7 @@ public class ReaderSplashPageFragment
       return;
     }
     paramBundle.finish();
-    bgwf.a("ReaderSplashPageFragment", "onCreate: intent 数据为空，退出splash");
+    bixe.a("ReaderSplashPageFragment", "onCreate: intent 数据为空，退出splash");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -69,7 +70,7 @@ public class ReaderSplashPageFragment
   
   public void onDestroy()
   {
-    bgwf.e("ReaderSplashPageFragment", "onDestroy");
+    bixe.e("ReaderSplashPageFragment", "onDestroy");
     if (this.a != null) {
       this.a.b();
     }
@@ -78,7 +79,7 @@ public class ReaderSplashPageFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderSplashPageFragment
  * JD-Core Version:    0.7.0.1
  */

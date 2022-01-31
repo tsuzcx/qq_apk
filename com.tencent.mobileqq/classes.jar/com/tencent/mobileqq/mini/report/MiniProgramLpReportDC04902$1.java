@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.report;
 
 import android.os.Debug.MemoryInfo;
 import android.os.Process;
-import bbdh;
+import bdcb;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
@@ -11,7 +11,7 @@ final class MiniProgramLpReportDC04902$1
 {
   public void run()
   {
-    Debug.MemoryInfo localMemoryInfo = bbdh.a(Process.myPid());
+    Debug.MemoryInfo localMemoryInfo = bdcb.a(Process.myPid());
     long l2;
     if (localMemoryInfo != null)
     {
@@ -44,7 +44,7 @@ final class MiniProgramLpReportDC04902$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04902.1
  * JD-Core Version:    0.7.0.1
  */

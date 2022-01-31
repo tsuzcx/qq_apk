@@ -1,74 +1,192 @@
-import android.content.BroadcastReceiver;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
 public class aeuw
-  extends BroadcastReceiver
+  extends beaa
+  implements becr, bedk, behg, behk
 {
-  public aeuw(TroopChatPie paramTroopChatPie) {}
+  private aeut a;
+  protected zbj a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aeuw(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
-    if (("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction())) && ("onHomeworkTroopIdentityChanged".equals(paramIntent.getStringExtra("event"))))
-    {
-      paramContext = paramIntent.getStringExtra("data");
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label41;
-      }
+    super(paramContext, paramActivity, paramAppInterface);
+    super.preInitPluginEngine();
+    this.mWebview = new TouchWebView(paramContext);
+    buildBaseWebView(this.mInterface);
+    this.jdField_a_of_type_Aeut = new aeut(paramActivity, this.mWebview);
+  }
+  
+  public Activity a()
+  {
+    return this.mInActivity;
+  }
+  
+  public TouchWebView a(ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup != null) {
+      paramViewGroup.addView(this.mWebview);
     }
-    for (;;)
+    return this.mWebview;
+  }
+  
+  public WebViewFragment a()
+  {
+    return null;
+  }
+  
+  public WebView a()
+  {
+    return this.mWebview;
+  }
+  
+  public zbj a()
+  {
+    return b();
+  }
+  
+  public void a()
+  {
+    super.doOnDestroy();
+  }
+  
+  public void a(String paramString)
+  {
+    this.mUrl = paramString;
+    this.mWebview.loadUrl(this.mUrl);
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a(String paramString)
+  {
+    return b().a(paramString);
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle)
+  {
+    return b().a(paramString1, paramString2, paramString3, paramString4, paramBundle);
+  }
+  
+  public String b()
+  {
+    String str2 = this.mUrl;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
     {
-      return;
-      try
+      str1 = str2;
+      if (this.mWebview != null)
       {
-        label41:
-        Object localObject = new JSONObject(paramContext);
-        paramContext = ((JSONObject)localObject).optString("groupCode");
-        if (TextUtils.equals(paramContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
-        {
-          paramIntent = ((JSONObject)localObject).optString("content");
-          String str1 = ((JSONObject)localObject).optString("source");
-          int i = ((JSONObject)localObject).optInt("rankId", 333);
-          String str2 = ((JSONObject)localObject).optString("nickName");
-          String str3 = ((JSONObject)localObject).optString("uin");
-          String str4 = ((JSONObject)localObject).optString("course");
-          localObject = ((JSONObject)localObject).optString("name");
-          if ((!"join".equals(str1)) && (TextUtils.equals(str3, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())))
-          {
-            ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, str3, str2, i, str4, (String)localObject);
-            if (this.a.jdField_a_of_type_Aeyc != null)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "mHomeworkTroopIdentityChangedReceiver dismissTipsBar.");
-              }
-              this.a.jdField_a_of_type_Aeyc.a(TroopChatPie.a(this.a), false);
-            }
-            if (TroopChatPie.a(this.a) != null) {
-              TroopChatPie.a(this.a).a(i);
-            }
-          }
-          if (QLog.isColorLevel())
-          {
-            QLog.d("zivonchen", 2, new Object[] { "mHomeworkTroopIdentityChangedReceiver troopUin = ", paramContext, ", content = ", paramIntent, ", source = ", str1, ", rankId = ", Integer.valueOf(i), ", nickName = ", str2, "uin = ", str3 });
-            return;
-          }
+        if (TextUtils.isEmpty(this.mWebview.getUrl())) {
+          break label46;
         }
+        str1 = this.mWebview.getUrl();
       }
-      catch (JSONException paramContext) {}
     }
+    return str1;
+    label46:
+    return this.mInActivity.getIntent().getStringExtra("url");
+  }
+  
+  protected zbj b()
+  {
+    if (this.jdField_a_of_type_Zbj == null)
+    {
+      this.jdField_a_of_type_Zbj = new zbj(this.mInterface, this.mInActivity);
+      this.jdField_a_of_type_Zbj.a(this);
+    }
+    return this.jdField_a_of_type_Zbj;
+  }
+  
+  public void b() {}
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    if (paramArrayList != null)
+    {
+      paramArrayList.add(new behn());
+      paramArrayList.add(new ConfessPlugin());
+      paramArrayList.add(new UiApiPlugin());
+      paramArrayList.add(new atdu());
+      paramArrayList.add(new zbp());
+      paramArrayList.add(new nsd());
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Aeut.a(b());
+  }
+  
+  public CustomWebView getWebView()
+  {
+    return this.mWebview;
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public final int pluginStartActivityForResult(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte)
+  {
+    paramByte = switchRequestCode(paramWebViewPlugin, (byte)1);
+    if (paramByte == -1) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AbsWebView", 2, "pluginStartActivityForResult not handled");
+      }
+    }
+    while (this.mInActivity == null) {
+      return paramByte;
+    }
+    this.mInActivity.startActivityForResult(paramIntent, 15001);
+    return paramByte;
+  }
+  
+  public final int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte)
+  {
+    CustomWebView localCustomWebView = paramWebViewPlugin.mRuntime.a();
+    if (localCustomWebView == null) {}
+    int i;
+    do
+    {
+      do
+      {
+        return -1;
+      } while (localCustomWebView.getPluginEngine() == null);
+      i = WebViewPluginEngine.a(paramWebViewPlugin);
+      if (i != -1) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AbsWebView", 2, "switchRequestCode failed: webView index=" + 0 + ", pluginIndex=" + i);
+    return -1;
+    return i << 8 & 0xFF00 | 0x0 | paramByte & 0xFF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuw
  * JD-Core Version:    0.7.0.1
  */

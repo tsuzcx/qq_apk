@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.SparseArray;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.IHwManager;
+import com.tencent.mobileqq.highway.ipv6.Ipv6Config;
 import com.tencent.mobileqq.highway.openup.OpenUpConfig;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.IpLearnConf;
 import com.tencent.mobileqq.highway.utils.BdhLogUtil;
@@ -19,8 +20,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
@@ -30,8 +33,8 @@ public class ConfigManager
 {
   private static final String BDH_FILE_DIR;
   private static final String CUSTOM_ENV_FILE_NAME = "custom_env";
-  private static final String HW_CONFIG_PUSH_FILENAME = "highway_config_push";
-  private static final String HW_CONFIG_SSOGET_FILENAME = "highway_config_ssoget";
+  static final String HW_CONFIG_PUSH_FILENAME = "highway_config_push";
+  static final String HW_CONFIG_SSOGET_FILENAME = "highway_config_ssoget";
   private static final String STORE_KEY_ID = "STORE_KEY_ID";
   private static final String STORE_KEY_IP = "STORE_KEY_IP";
   private static final String STORE_KEY_PORT = "STORE_KEY_PORT";
@@ -48,6 +51,7 @@ public class ConfigManager
   private HardCodeIpList mHardCodeIpList;
   private CopyOnWriteArrayList<String> mHcDomainCandicateList;
   private HwEngine mHwEngine;
+  private Map<Integer, ServiceIpProvider> mIPProviders = new HashMap();
   public Ipv6Available mIpv6Available;
   private boolean mIsGettingConfg;
   private IpContainer mPushIpContainer;
@@ -111,6 +115,48 @@ public class ConfigManager
     return null;
   }
   
+  private void handleIpv6Cfg(Context paramContext, HwConfig paramHwConfig)
+  {
+    int n = 1;
+    int m = 0;
+    int j;
+    int i;
+    int k;
+    if (paramHwConfig.fmtIpv6Policy != null)
+    {
+      j = paramHwConfig.fmtIpv6Policy.get();
+      i = 1;
+      if (paramHwConfig.bdhIpv6Policy == null) {
+        break label91;
+      }
+      k = paramHwConfig.bdhIpv6Policy.get();
+      i = 1;
+      label42:
+      if (paramHwConfig.connAttemptDelay == null) {
+        break label104;
+      }
+      m = paramHwConfig.connAttemptDelay.get();
+      i = n;
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        Ipv6Config.updateCfgFromSrv(paramContext, j, k, m);
+      }
+      return;
+      BdhLogUtil.LogEvent("C", "onSrvAddrPush : hwConfig.fmtIpv6Policy is null ");
+      i = 0;
+      j = 0;
+      break;
+      label91:
+      BdhLogUtil.LogEvent("C", "onSrvAddrPush : hwConfig.bdhIpv6Policy is null ");
+      k = 0;
+      break label42;
+      label104:
+      BdhLogUtil.LogEvent("C", "onSrvAddrPush : hwConfig.connAttemptDelay is null ");
+    }
+  }
+  
   private void initCustomEnv()
   {
     try
@@ -155,10 +201,38 @@ public class ConfigManager
   private void initIpConfig(Context paramContext, AppRuntime paramAppRuntime)
   {
     this.mHcDomainCandicateList = new CopyOnWriteArrayList();
-    this.mHcDomainCandicateList.add("htdata3.qq.com");
+    this.mHcDomainCandicateList.add("v6.htdata.qq.com ");
     this.mHardCodeIpList = new HardCodeIpList();
     this.mPushIpContainer = new IpContainer(paramContext, "highway_config_push", paramAppRuntime);
     this.mGetIpContainer = new IpContainer(paramContext, "highway_config_ssoget", paramAppRuntime);
+    this.mIPProviders.put(Integer.valueOf(21), new ServiceIpProvider(paramContext, paramAppRuntime, 21));
+  }
+  
+  private boolean isIpv6OnWhenDual()
+  {
+    Context localContext = this.mHwEngine.getAppContext();
+    if (localContext == null)
+    {
+      BdhLogUtil.LogEvent("C", "isIpv6WhenDual, context is null ");
+      return false;
+    }
+    if (!hasIpv6List(localContext))
+    {
+      BdhLogUtil.LogEvent("C", "isIpv6WhenDual, has no ipv6list ");
+      return false;
+    }
+    int i = -1;
+    if (this.mIpv6Available != null)
+    {
+      i = this.mIpv6Available.getAvailable(localContext);
+      BdhLogUtil.LogEvent("C", "isIpv6WhenDual, ipv6Available = " + i);
+    }
+    if ((Ipv6Config.isIpv6BDHFirst(this.mHwEngine)) && (i != 0))
+    {
+      BdhLogUtil.LogEvent("C", "isIpv6WhenDual, return true");
+      return true;
+    }
+    return false;
   }
   
   private void onSvrConnFailed(EndPoint paramEndPoint)
@@ -174,123 +248,187 @@ public class ConfigManager
     this.mGetIpContainer.onConnSuccess(paramEndPoint);
   }
   
+  private void processHwConfigPush(Context paramContext, HwConfig paramHwConfig, AppRuntime paramAppRuntime)
+  {
+    if (paramHwConfig == null) {
+      return;
+    }
+    if ((paramHwConfig.ipConf != null) && (paramHwConfig.ipConf.uint32_refresh_cached_ip.get() == 1)) {
+      IpContainer.refreshIpLearning();
+    }
+    if ((paramHwConfig.ipConf != null) && (paramHwConfig.ipConf.uint32_enable_ip_learn.get() == 1))
+    {
+      com.tencent.mobileqq.highway.iplearning.IpLearningImpl.sEnableIpLearning = 1;
+      if (paramHwConfig.dtConf != null) {
+        BdhSegTimeoutUtil.updateFromSrv(paramHwConfig.dtConf);
+      }
+      if (paramHwConfig.openUpConf != null) {
+        OpenUpConfig.updateFromSrv(paramHwConfig.openUpConf);
+      }
+      if (paramHwConfig.videoConf == null) {
+        break label136;
+      }
+      VideoUpConfigInfo.updateFromSrc(paramHwConfig.videoConf);
+      label96:
+      if (paramHwConfig.ptvCof == null) {
+        break label147;
+      }
+      PTVUpConfigInfo.updateFromSrc(paramHwConfig.ptvCof);
+    }
+    for (;;)
+    {
+      handleIpv6Cfg(paramContext, paramHwConfig);
+      this.mPushIpContainer.addNew(paramContext, paramHwConfig, paramAppRuntime, this);
+      return;
+      com.tencent.mobileqq.highway.iplearning.IpLearningImpl.sEnableIpLearning = 0;
+      break;
+      label136:
+      BdhLogUtil.LogEvent("C", "onSrvAddrPush : hwConfig.videoConf is null ");
+      break label96;
+      label147:
+      BdhLogUtil.LogEvent("C", "onSrvAddrPush : hwConfig.ptvCof is null ");
+    }
+  }
+  
+  private void processOtherTypeConfigPush(Map<Integer, HwConfig> paramMap, AppRuntime paramAppRuntime)
+  {
+    Integer[] arrayOfInteger = new Integer[1];
+    arrayOfInteger[0] = Integer.valueOf(21);
+    int j = arrayOfInteger.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = arrayOfInteger[i];
+      HwConfig localHwConfig = (HwConfig)paramMap.get(arrayOfInteger);
+      if (localHwConfig != null)
+      {
+        BdhLogUtil.LogEvent("C", "processOtherTypeConfigPush() " + localObject);
+        localObject = (ServiceIpProvider)this.mIPProviders.get(localObject);
+        if (localObject != null) {
+          ((ServiceIpProvider)localObject).addPushIp(localHwConfig, paramAppRuntime);
+        }
+      }
+      i += 1;
+    }
+  }
+  
   /* Error */
   public static void saveCustomEnv(String paramString1, String paramString2, String paramString3)
   {
     // Byte code:
-    //   0: new 79	java/io/File
+    //   0: new 82	java/io/File
     //   3: dup
-    //   4: getstatic 94	com/tencent/mobileqq/highway/config/ConfigManager:BDH_FILE_DIR	Ljava/lang/String;
-    //   7: invokespecial 281	java/io/File:<init>	(Ljava/lang/String;)V
+    //   4: getstatic 97	com/tencent/mobileqq/highway/config/ConfigManager:BDH_FILE_DIR	Ljava/lang/String;
+    //   7: invokespecial 447	java/io/File:<init>	(Ljava/lang/String;)V
     //   10: astore 4
     //   12: aload_0
-    //   13: invokestatic 287	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   13: invokestatic 453	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   16: ifeq +24 -> 40
     //   19: aload_1
-    //   20: invokestatic 287	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   20: invokestatic 453	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   23: ifeq +17 -> 40
     //   26: aload_2
-    //   27: invokestatic 287	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   27: invokestatic 453	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   30: ifeq +10 -> 40
     //   33: aload 4
-    //   35: invokevirtual 290	java/io/File:delete	()Z
+    //   35: invokevirtual 456	java/io/File:delete	()Z
     //   38: pop
     //   39: return
     //   40: aload 4
-    //   42: invokevirtual 190	java/io/File:exists	()Z
+    //   42: invokevirtual 236	java/io/File:exists	()Z
     //   45: ifne +42 -> 87
     //   48: aload 4
-    //   50: invokevirtual 293	java/io/File:mkdirs	()Z
+    //   50: invokevirtual 459	java/io/File:mkdirs	()Z
     //   53: ifne +34 -> 87
     //   56: ldc 26
     //   58: iconst_2
-    //   59: new 60	java/lang/StringBuilder
+    //   59: new 63	java/lang/StringBuilder
     //   62: dup
-    //   63: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   66: ldc_w 295
-    //   69: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: invokespecial 66	java/lang/StringBuilder:<init>	()V
+    //   66: ldc_w 461
+    //   69: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   72: aload 4
-    //   74: invokevirtual 298	java/io/File:getPath	()Ljava/lang/String;
-    //   77: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   80: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   83: invokestatic 304	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   74: invokevirtual 464	java/io/File:getPath	()Ljava/lang/String;
+    //   77: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   83: invokestatic 470	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   86: return
-    //   87: new 79	java/io/File
+    //   87: new 82	java/io/File
     //   90: dup
     //   91: aload 4
     //   93: ldc 11
-    //   95: invokespecial 307	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   95: invokespecial 473	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   98: astore 6
     //   100: aload 6
-    //   102: invokevirtual 290	java/io/File:delete	()Z
+    //   102: invokevirtual 456	java/io/File:delete	()Z
     //   105: pop
     //   106: aload 6
-    //   108: invokevirtual 310	java/io/File:createNewFile	()Z
+    //   108: invokevirtual 476	java/io/File:createNewFile	()Z
     //   111: ifeq +214 -> 325
-    //   114: new 312	java/io/FileOutputStream
+    //   114: new 478	java/io/FileOutputStream
     //   117: dup
     //   118: aload 6
-    //   120: invokespecial 313	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   120: invokespecial 479	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   123: astore 5
     //   125: aload 5
     //   127: astore 4
-    //   129: new 197	java/util/Properties
+    //   129: new 243	java/util/Properties
     //   132: dup
-    //   133: invokespecial 198	java/util/Properties:<init>	()V
+    //   133: invokespecial 244	java/util/Properties:<init>	()V
     //   136: astore 7
     //   138: aload 5
     //   140: astore 4
     //   142: aload_0
-    //   143: invokestatic 287	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   143: invokestatic 453	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   146: ifne +16 -> 162
     //   149: aload 5
     //   151: astore 4
     //   153: aload 7
     //   155: ldc 21
     //   157: aload_0
-    //   158: invokevirtual 317	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   158: invokevirtual 483	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   161: pop
     //   162: aload 5
     //   164: astore 4
     //   166: aload_1
-    //   167: invokestatic 287	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   167: invokestatic 453	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   170: ifne +16 -> 186
     //   173: aload 5
     //   175: astore 4
     //   177: aload 7
     //   179: ldc 23
     //   181: aload_1
-    //   182: invokevirtual 317	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   182: invokevirtual 483	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   185: pop
     //   186: aload 5
     //   188: astore 4
     //   190: aload_2
-    //   191: invokestatic 287	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   191: invokestatic 453	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   194: istore_3
     //   195: iload_3
     //   196: ifne +27 -> 223
     //   199: aload 5
     //   201: astore 4
     //   203: aload_2
-    //   204: invokestatic 212	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   204: invokestatic 258	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   207: ifle +16 -> 223
     //   210: aload 5
     //   212: astore 4
     //   214: aload 7
     //   216: ldc 19
     //   218: aload_2
-    //   219: invokevirtual 317	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
+    //   219: invokevirtual 483	java/util/Properties:setProperty	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/Object;
     //   222: pop
     //   223: aload 5
     //   225: astore 4
     //   227: aload 7
     //   229: aload 5
-    //   231: ldc_w 319
-    //   234: invokevirtual 323	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   231: ldc_w 485
+    //   234: invokevirtual 489	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
     //   237: aload 5
     //   239: ifnull -200 -> 39
     //   242: aload 5
-    //   244: invokevirtual 326	java/io/FileOutputStream:close	()V
+    //   244: invokevirtual 492	java/io/FileOutputStream:close	()V
     //   247: return
     //   248: astore_0
     //   249: return
@@ -298,22 +436,22 @@ public class ConfigManager
     //   251: aload 5
     //   253: astore 4
     //   255: aload_0
-    //   256: invokevirtual 327	java/lang/NumberFormatException:printStackTrace	()V
+    //   256: invokevirtual 493	java/lang/NumberFormatException:printStackTrace	()V
     //   259: goto -36 -> 223
     //   262: astore_0
     //   263: aload 5
     //   265: astore 4
     //   267: aload_0
-    //   268: invokevirtual 328	java/io/IOException:printStackTrace	()V
+    //   268: invokevirtual 494	java/io/IOException:printStackTrace	()V
     //   271: aload 5
     //   273: astore 4
     //   275: aload 6
-    //   277: invokevirtual 290	java/io/File:delete	()Z
+    //   277: invokevirtual 456	java/io/File:delete	()Z
     //   280: pop
     //   281: aload 5
     //   283: ifnull -244 -> 39
     //   286: aload 5
-    //   288: invokevirtual 326	java/io/FileOutputStream:close	()V
+    //   288: invokevirtual 492	java/io/FileOutputStream:close	()V
     //   291: return
     //   292: astore_0
     //   293: return
@@ -323,7 +461,7 @@ public class ConfigManager
     //   298: aload 4
     //   300: ifnull +8 -> 308
     //   303: aload 4
-    //   305: invokevirtual 326	java/io/FileOutputStream:close	()V
+    //   305: invokevirtual 492	java/io/FileOutputStream:close	()V
     //   308: aload_0
     //   309: athrow
     //   310: astore_1
@@ -583,6 +721,15 @@ public class ConfigManager
     }
   }
   
+  public List<EndPoint> getOtherTypeIp(Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    ServiceIpProvider localServiceIpProvider = (ServiceIpProvider)this.mIPProviders.get(Integer.valueOf(paramInt));
+    if (localServiceIpProvider != null) {
+      return localServiceIpProvider.getIpList(paramContext, paramBoolean);
+    }
+    return null;
+  }
+  
   public boolean hasIpv6List(Context paramContext)
   {
     if ((this.mPushIpContainer != null) && (this.mPushIpContainer.findIpCurNet(paramContext, true) != null))
@@ -600,42 +747,14 @@ public class ConfigManager
   
   public boolean isIpv6On()
   {
-    if (this.mHwEngine == null)
-    {
-      BdhLogUtil.LogEvent("C", "isIpv6On, mHwEngine is null ");
-      return false;
-    }
-    BdhLogUtil.LogEvent("C", "isIpv6On, ipv6Switch = " + this.mHwEngine.ipv6Switch + ", ipv6SwitchDual = " + this.mHwEngine.ipv6SwitchDual);
-    if (!this.mHwEngine.ipv6Switch) {
-      return false;
-    }
     int i = NetConnInfoCenter.getActiveNetIpFamily(true);
     this.mCurnetIptype = i;
     BdhLogUtil.LogEvent("C", "isIpv6On,getActiveNetIpFamily = " + i);
-    if ((i == 3) && (!this.mHwEngine.ipv6SwitchDual))
-    {
-      BdhLogUtil.LogEvent("C", "isIpv6On, ipv6SwitchDual is false ");
-      return false;
-    }
-    if ((i != 2) && (i != 3)) {
-      return false;
-    }
-    Context localContext = this.mHwEngine.getAppContext();
-    if (localContext == null)
-    {
-      BdhLogUtil.LogEvent("C", "isIpv6On, context is null ");
-      return false;
-    }
-    i = -1;
-    if (this.mIpv6Available != null)
-    {
-      i = this.mIpv6Available.getAvailable(localContext);
-      BdhLogUtil.LogEvent("C", "isIpv6On, ipv6Available = " + i);
-    }
-    if ((hasIpv6List(localContext)) && (i != 0))
-    {
-      BdhLogUtil.LogEvent("C", "isIpv6On, return true");
+    if (this.mCurnetIptype == 2) {
       return true;
+    }
+    if (this.mCurnetIptype == 3) {
+      return isIpv6OnWhenDual();
     }
     return false;
   }
@@ -654,42 +773,26 @@ public class ConfigManager
   
   public void onNetWorkChange(Context paramContext, AppRuntime paramAppRuntime, String paramString, boolean paramBoolean) {}
   
-  public void onSrvAddrPush(Context paramContext, AppRuntime paramAppRuntime, String paramString, HwConfig paramHwConfig)
+  public void onOtherTypeSrvAddrGet(HwConfig paramHwConfig, AppRuntime paramAppRuntime, int paramInt)
   {
-    BdhLogUtil.LogEvent("C", "onSrvAddrPush() ");
-    if ((paramHwConfig.ipConf != null) && (paramHwConfig.ipConf.uint32_refresh_cached_ip.get() == 1)) {
-      IpContainer.refreshIpLearning();
-    }
-    if ((paramHwConfig.ipConf != null) && (paramHwConfig.ipConf.uint32_enable_ip_learn.get() == 1))
+    if ((paramHwConfig == null) || (paramHwConfig.ipList.isEmpty())) {}
+    ServiceIpProvider localServiceIpProvider;
+    do
     {
-      com.tencent.mobileqq.highway.iplearning.IpLearningImpl.sEnableIpLearning = 1;
-      if (paramHwConfig.dtConf != null) {
-        BdhSegTimeoutUtil.updateFromSrv(paramHwConfig.dtConf);
-      }
-      if (paramHwConfig.openUpConf != null) {
-        OpenUpConfig.updateFromSrv(paramHwConfig.openUpConf);
-      }
-      if (paramHwConfig.videoConf == null) {
-        break label147;
-      }
-      VideoUpConfigInfo.updateFromSrc(paramHwConfig.videoConf);
-      label110:
-      if (paramHwConfig.ptvCof == null) {
-        break label159;
-      }
-      PTVUpConfigInfo.updateFromSrc(paramHwConfig.ptvCof);
-    }
-    for (;;)
-    {
-      this.mPushIpContainer.addNew(paramContext, paramHwConfig, paramAppRuntime, this);
       return;
-      com.tencent.mobileqq.highway.iplearning.IpLearningImpl.sEnableIpLearning = 0;
-      break;
-      label147:
-      BdhLogUtil.LogEvent("C", "onSrvAddrPush : hwConfig.videoConf is null ");
-      break label110;
-      label159:
-      BdhLogUtil.LogEvent("C", "onSrvAddrPush : hwConfig.ptvCof is null ");
+      BdhLogUtil.LogEvent("C", "onOtherTypeSrvAddrGet() " + paramInt);
+      localServiceIpProvider = (ServiceIpProvider)this.mIPProviders.get(Integer.valueOf(paramInt));
+    } while (localServiceIpProvider == null);
+    localServiceIpProvider.addSSOGetIp(paramHwConfig, paramAppRuntime);
+  }
+  
+  public void onSrvAddrPush(Context paramContext, AppRuntime paramAppRuntime, Map<Integer, HwConfig> paramMap)
+  {
+    if (paramMap != null)
+    {
+      BdhLogUtil.LogEvent("C", "onSrvAddrPush() ");
+      processHwConfigPush(paramContext, (HwConfig)paramMap.get(Integer.valueOf(10)), paramAppRuntime);
+      processOtherTypeConfigPush(paramMap, paramAppRuntime);
     }
   }
   

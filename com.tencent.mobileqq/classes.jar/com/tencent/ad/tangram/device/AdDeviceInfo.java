@@ -120,31 +120,31 @@ public final class AdDeviceInfo
         str2 = AdIMEIMD5Digest.get(paramContext);
         localObject1 = localResult.eventsForAnalysis;
         if (TextUtils.isEmpty(str2)) {
-          break label733;
+          break label745;
         }
         i = 0;
         ((List)localObject1).add(AdReporterForAnalysis.createEventForGetImei(paramContext, i, System.currentTimeMillis() - l, k));
         if (TextUtils.isEmpty(c.getMacAddressCache(paramContext))) {
-          break label738;
+          break label750;
         }
         bool = true;
         l = System.currentTimeMillis();
         str3 = AdMacAddressMD5Digest.get(paramContext);
         localObject1 = localResult.eventsForAnalysis;
         if (TextUtils.isEmpty(str3)) {
-          break label744;
+          break label756;
         }
         i = 0;
         ((List)localObject1).add(AdReporterForAnalysis.createEventForMacAddress(paramContext, i, System.currentTimeMillis() - l, bool));
         if (TextUtils.isEmpty(b.getAndroidIdCache(paramContext))) {
-          break label749;
+          break label761;
         }
         bool = true;
         l = System.currentTimeMillis();
         str4 = a.get(paramContext);
         localObject1 = localResult.eventsForAnalysis;
         if (TextUtils.isEmpty(str4)) {
-          break label755;
+          break label767;
         }
         i = 0;
         ((List)localObject1).add(AdReporterForAnalysis.createEventForAndroidId(paramContext, i, System.currentTimeMillis() - l, bool));
@@ -166,31 +166,31 @@ public final class AdDeviceInfo
           String str5 = com.qq.gdt.action.qadid.a.createQADID(paramContext);
           localObject1 = localResult.eventsForAnalysis;
           if (TextUtils.isEmpty(str5)) {
-            break label782;
+            break label794;
           }
           i = 0;
           ((List)localObject1).add(AdReporterForAnalysis.createEventForGetQADID(paramContext, i, System.currentTimeMillis() - l));
           localObject1 = AdIPV4.INSTANCE.getCache();
           if (localObject1 == null) {
-            break label787;
+            break label799;
           }
           localObject1 = ((AdIPV4.a)localObject1).ip;
           List localList = localResult.eventsForAnalysis;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label793;
+            break label805;
           }
           i = 0;
           localList.add(AdReporterForAnalysis.createEventForIPV4(paramContext, i));
           if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
           {
             if (!str1.equals(str2)) {
-              break label798;
+              break label810;
             }
             localResult.eventsForAnalysis.add(AdReporterForAnalysis.createEventImeiConsistency(paramContext, 0, k));
           }
           bool = canUseIMEI(paramContext);
           if (TextUtils.isEmpty(str1)) {
-            break label818;
+            break label830;
           }
           localResult.deviceInfo.muid = str1;
           localResult.deviceInfo.muid_type = 1;
@@ -215,24 +215,25 @@ public final class AdDeviceInfo
           localResult.deviceInfo.md5_mac = str3;
           localResult.deviceInfo.md5_android_id = str4;
           localResult.deviceInfo.client_ipv4 = ((String)localObject1);
+          localResult.deviceInfo.origin_network_type = AdNet.getNetworkType(paramContext);
           return localResult;
           bool = false;
           continue;
           i = 1;
           break label68;
-          label733:
+          label745:
           i = 1;
           break label118;
-          label738:
+          label750:
           bool = false;
           break label151;
-          label744:
+          label756:
           i = 1;
           break label179;
-          label749:
+          label761:
           bool = false;
           break label213;
-          label755:
+          label767:
           i = 1;
         }
       }
@@ -245,19 +246,19 @@ public final class AdDeviceInfo
           continue;
           i = 1;
           continue;
-          label782:
+          label794:
           i = 1;
           continue;
-          label787:
+          label799:
           Object localObject2 = null;
           continue;
-          label793:
+          label805:
           i = 1;
           continue;
-          label798:
+          label810:
           localResult.eventsForAnalysis.add(AdReporterForAnalysis.createEventImeiConsistency(paramContext, 1, k));
           continue;
-          label818:
+          label830:
           if ((!TextUtils.isEmpty(str2)) && (bool))
           {
             localResult.deviceInfo.muid = str2;

@@ -1,12 +1,7 @@
-public abstract interface bfdu
-{
-  public abstract String a(String paramString1, String paramString2, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2, int[] paramArrayOfInt);
-}
+public abstract interface bfdu {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfdu
  * JD-Core Version:    0.7.0.1
  */

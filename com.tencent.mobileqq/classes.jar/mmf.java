@@ -1,25 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class mmf
-  implements View.OnClickListener
+public class mmf
+  extends BroadcastReceiver
 {
-  mmf(mmb parammmb) {}
+  public mmf(VideoControlUI paramVideoControlUI) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((mmb.a(this.a) != null) && (mmb.a(this.a).isShown()))
-    {
-      this.a.e();
+    if ((paramIntent == null) || (this.a.jdField_a_of_type_ComTencentAvVideoController == null)) {
       return;
     }
-    mmb.c(this.a);
+    long l = mwd.a(paramIntent);
+    paramContext = paramIntent.getStringExtra("camera_id");
+    int i = paramIntent.getIntExtra("availability", 1);
+    QLog.w(this.a.d, 1, "CameraAvailabilityReceiver, cameraId[" + paramContext + "], availability[" + i + "], mCameraAvailable[" + this.a.jdField_a_of_type_ComTencentAvVideoController.a().Z + "], seq[" + l + "]");
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramContext, i);
+    if (i == 0)
+    {
+      VideoControlUI.a(this.a, l, i);
+      return;
+    }
+    paramContext = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+    if ((paramContext != null) && (paramContext.size() > 0))
+    {
+      paramContext = paramContext.entrySet().iterator();
+      do
+      {
+        if (!paramContext.hasNext()) {
+          break;
+        }
+      } while (((Integer)((Map.Entry)paramContext.next()).getValue()).intValue() != 0);
+    }
+    for (i = 0;; i = -1)
+    {
+      VideoControlUI.a(this.a, l, i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mmf
  * JD-Core Version:    0.7.0.1
  */

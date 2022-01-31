@@ -1,22 +1,23 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
-public class aixg
-  implements CompoundButton.OnCheckedChangeListener
+public final class aixg
+  implements Parcelable.Creator<RedPacketInfoBase>
 {
-  public aixg(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public RedPacketInfoBase a(Parcel paramParcel)
   {
-    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_storage_switch", paramBoolean).commit();
+    return new RedPacketInfoBase(paramParcel);
+  }
+  
+  public RedPacketInfoBase[] a(int paramInt)
+  {
+    return new RedPacketInfoBase[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aixg
  * JD-Core Version:    0.7.0.1
  */

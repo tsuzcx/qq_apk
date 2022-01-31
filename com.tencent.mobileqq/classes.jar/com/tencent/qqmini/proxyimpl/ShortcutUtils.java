@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
@@ -14,8 +14,8 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.support.annotation.RequiresApi;
-import bbef;
-import bekz;
+import bdda;
+import bgkk;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -64,11 +64,11 @@ public class ShortcutUtils
       if (hasRightsToShortCutInVIVO(paramActivity)) {
         break;
       }
-      paramActivity = ShortcutUtils.PermissionDialog.createPermissionDialog(paramActivity, ajya.a(2131714017), ajya.a(2131714030), ajya.a(2131714032), new ShortcutUtils.1(paramActivity), new ShortcutUtils.2());
+      paramActivity = ShortcutUtils.PermissionDialog.createPermissionDialog(paramActivity, alpo.a(2131714389), alpo.a(2131714402), alpo.a(2131714404), new ShortcutUtils.1(paramActivity), new ShortcutUtils.2());
       paramActivity.showCheckbox(false);
       paramActivity.show();
     } while (paramAddShortcutCallback == null);
-    paramAddShortcutCallback.onAddResult(2, ajya.a(2131714011));
+    paramAddShortcutCallback.onAddResult(2, alpo.a(2131714383));
     return;
     doAddShortcut(paramActivity, paramMiniAppInfo, paramAddShortcutCallback);
   }
@@ -80,7 +80,7 @@ public class ShortcutUtils
   
   private static Bitmap getLaunchBitmap(Activity paramActivity, MiniAppInfo paramMiniAppInfo)
   {
-    paramMiniAppInfo = bbef.b(URLDrawable.getDrawable(URLDecoder.decode(paramMiniAppInfo.iconUrl), null));
+    paramMiniAppInfo = bdda.b(URLDrawable.getDrawable(URLDecoder.decode(paramMiniAppInfo.iconUrl), null));
     int i = (int)paramActivity.getResources().getDimension(17104896);
     int j = ((ActivityManager)paramActivity.getSystemService("activity")).getLauncherLargeIconSize();
     if (j > i) {
@@ -88,7 +88,7 @@ public class ShortcutUtils
     }
     for (;;)
     {
-      return bbef.a(getResizedBitmap(paramMiniAppInfo, i, i), (int)(i * 0.15D));
+      return bdda.a(getResizedBitmap(paramMiniAppInfo, i, i), (int)(i * 0.15D));
     }
   }
   
@@ -334,7 +334,7 @@ public class ShortcutUtils
   
   private static void onCreateShortcutFailed(Activity paramActivity)
   {
-    bekz.a(new ShortcutUtils.4(paramActivity));
+    bgkk.a(new ShortcutUtils.4(paramActivity));
   }
   
   public static void openPermissionActivity(Activity paramActivity)
@@ -486,7 +486,7 @@ public class ShortcutUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShortcutUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,180 +1,231 @@
-import android.os.Handler;
-import android.os.SystemClock;
 import android.text.TextUtils;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.vip.lianghao.net.CheckRegisterLiangHao.1;
-import com.tencent.mobileqq.vip.lianghao.net.CheckRegisterLiangHao.2;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.mobileqq.troop.homework.recite.data.ParagraphInfo;
+import com.tencent.mobileqq.troop.homework.recite.data.WordInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class bbza
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference<bbzb> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(null);
-  private final String b = "a4d7xwsbelhregistercard";
-  private final String c = "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi";
+  private static final String a;
+  protected int a;
+  protected long a;
+  protected bbxe a;
+  protected List<ParagraphInfo> a;
+  protected JSONArray a;
+  protected JSONObject a;
   
-  public bbza(String paramString, bbzb parambbzb)
+  static
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambbzb);
+    jdField_a_of_type_JavaLangString = bbza.class.getSimpleName();
   }
   
-  private bbyv a()
+  public bbza(List<ParagraphInfo> paramList, bbxe parambbxe, String paramString)
   {
+    this.jdField_a_of_type_Bbxe = parambbxe;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (!TextUtils.isEmpty(paramString)) {}
     try
     {
-      Object localObject = a();
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return null;
-      }
-      localObject = new Request.Builder().url((String)localObject).build();
-      localObject = a().newCall((Request)localObject).execute();
-      int i = ((Response)localObject).code();
-      if (i == 200)
-      {
-        localObject = ((Response)localObject).body().string();
-        if (QLog.isColorLevel()) {
-          QLog.i("CheckRegisterLiangHao", 2, "json " + (String)localObject);
-        }
-        localObject = new JSONObject((String)localObject).optJSONObject("12196");
-        if (localObject != null)
-        {
-          localObject = ((JSONObject)localObject).optJSONObject("data");
-          if (localObject != null)
-          {
-            localObject = ((JSONObject)localObject).optJSONObject("mOut");
-            if (localObject != null) {
-              return new bbyv((JSONObject)localObject);
-            }
-          }
-        }
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("CheckRegisterLiangHao", 2, "sendRequest errorCode" + i);
-        }
-        localObject = new bbyv();
-        ((bbyv)localObject).a = i;
-        return localObject;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("CheckRegisterLiangHao", 2, localThrowable.toString());
-      }
-    }
-    return null;
-  }
-  
-  private OkHttpClient a()
-  {
-    OkHttpClient localOkHttpClient = new OkHttpClient();
-    localOkHttpClient.setConnectTimeout(5L, TimeUnit.SECONDS);
-    localOkHttpClient.setReadTimeout(5L, TimeUnit.SECONDS);
-    return localOkHttpClient;
-  }
-  
-  private String a()
-  {
-    return "https://proxy.vip.qq.com/cgi-bin/srfentry.fcgi?ts=" + System.currentTimeMillis() + "&data=" + a();
-  }
-  
-  private JSONObject a()
-  {
-    try
-    {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      JSONObject localJSONObject3 = new JSONObject();
-      localJSONObject3.put("uin", this.jdField_a_of_type_JavaLangString);
-      localJSONObject3.put("sign", b());
-      localJSONObject2.put("mIn", localJSONObject3);
-      localJSONObject1.put("12196", localJSONObject2);
-      return localJSONObject1;
-    }
-    catch (Throwable localThrowable) {}
-    return null;
-  }
-  
-  private void a(bbyv parambbyv)
-  {
-    Object localObject2;
-    Object localObject1;
-    long l1;
-    long l2;
-    int i;
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder().append("onResponse ");
-      if (parambbyv == null)
-      {
-        localObject1 = "";
-        QLog.i("CheckRegisterLiangHao", 2, (String)localObject1);
-      }
-    }
-    else
-    {
-      l1 = SystemClock.elapsedRealtime();
-      l2 = this.jdField_a_of_type_Long;
-      if (parambbyv == null) {
-        break label146;
-      }
-      i = parambbyv.a;
-      label63:
-      localObject1 = new HashMap();
-      ((HashMap)localObject1).put("param_FailCode", String.valueOf(i));
-      localObject2 = axrn.a(BaseApplicationImpl.getApplication());
-      if (i != 0) {
-        break label153;
-      }
-    }
-    label146:
-    label153:
-    for (boolean bool = true;; bool = false)
-    {
-      ((axrn)localObject2).a(null, "reg_lh_check_uin", bool, l1 - l2, 0L, (HashMap)localObject1, "", true);
-      localObject1 = (bbzb)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject1 != null) {
-        break label159;
-      }
+      this.jdField_a_of_type_OrgJsonJSONArray = new JSONArray(paramString);
       return;
-      localObject1 = parambbyv.toString();
-      break;
-      i = -30009;
-      break label63;
     }
-    label159:
-    ThreadManagerV2.getUIHandlerV2().post(new CheckRegisterLiangHao.2(this, (bbzb)localObject1, parambbyv));
+    catch (JSONException paramList)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, paramList.toString());
+    }
   }
   
-  private String b()
+  public String a()
   {
-    return MD5.toMD5("uin=" + this.jdField_a_of_type_JavaLangString + "&key=" + "a4d7xwsbelhregistercard").toUpperCase();
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_OrgJsonJSONArray == null)) {
+      return null;
+    }
+    return this.jdField_a_of_type_OrgJsonJSONArray.toString();
   }
   
   public void a()
   {
-    ThreadManagerV2.excute(new CheckRegisterLiangHao.1(this), 16, null, true);
+    if (this.jdField_a_of_type_OrgJsonJSONArray == null) {
+      return;
+    }
+    int i = this.jdField_a_of_type_Int;
+    for (;;)
+    {
+      if (i < this.jdField_a_of_type_OrgJsonJSONArray.length())
+      {
+        int j;
+        try
+        {
+          JSONObject localJSONObject = (JSONObject)this.jdField_a_of_type_OrgJsonJSONArray.get(i);
+          j = localJSONObject.optInt("p");
+          int k = localJSONObject.optInt("w");
+          if ((j < 0) || (j >= this.jdField_a_of_type_JavaUtilList.size())) {
+            break label224;
+          }
+          Object localObject = ((ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(j)).generateOrGetWordInfoList(j);
+          if ((k >= 0) && (k < ((List)localObject).size()))
+          {
+            localObject = (WordInfo)((List)localObject).get(k);
+            ((WordInfo)localObject).setColor(localJSONObject.optInt("s"));
+            if (this.jdField_a_of_type_Bbxe != null) {
+              this.jdField_a_of_type_Bbxe.a((WordInfo)localObject);
+            }
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "w error:" + k);
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          if (!QLog.isColorLevel()) {
+            break label270;
+          }
+        }
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "JSONException:" + localJSONException.toString());
+        break label270;
+        label224:
+        if (QLog.isColorLevel()) {
+          QLog.e(jdField_a_of_type_JavaLangString, 2, "p error:" + j);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_OrgJsonJSONObject = null;
+        return;
+      }
+      label270:
+      i += 1;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_OrgJsonJSONArray == null)) {}
+    for (;;)
+    {
+      return;
+      float f;
+      if (this.jdField_a_of_type_Int < this.jdField_a_of_type_OrgJsonJSONArray.length()) {
+        f = paramInt / 1000.0F;
+      }
+      try
+      {
+        if (this.jdField_a_of_type_OrgJsonJSONObject != null)
+        {
+          long l = this.jdField_a_of_type_OrgJsonJSONObject.getLong("t");
+          if (f <= (float)l) {
+            continue;
+          }
+        }
+      }
+      catch (JSONException localJSONException1)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.e(jdField_a_of_type_JavaLangString, 2, localJSONException1.toString());
+            continue;
+            if (QLog.isColorLevel()) {
+              QLog.e(jdField_a_of_type_JavaLangString, 2, "w error:" + j);
+            }
+          }
+        }
+      }
+      paramInt = this.jdField_a_of_type_Int;
+      while (paramInt < this.jdField_a_of_type_OrgJsonJSONArray.length())
+      {
+        for (;;)
+        {
+          try
+          {
+            localJSONObject = (JSONObject)this.jdField_a_of_type_OrgJsonJSONArray.get(paramInt);
+            localObject = localJSONObject.optString("t");
+          }
+          catch (JSONException localJSONException2)
+          {
+            JSONObject localJSONObject;
+            Object localObject;
+            int i;
+            int j;
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "JSONException:" + localJSONException2.toString());
+            continue;
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "p error:" + i);
+            continue;
+            this.jdField_a_of_type_OrgJsonJSONObject = localJSONException2;
+          }
+          try
+          {
+            if (f <= Float.valueOf((String)localObject).floatValue()) {
+              continue;
+            }
+            i = localJSONObject.optInt("p");
+            j = localJSONObject.optInt("w");
+            if ((i < 0) || (i >= this.jdField_a_of_type_JavaUtilList.size())) {
+              continue;
+            }
+            localObject = ((ParagraphInfo)this.jdField_a_of_type_JavaUtilList.get(i)).generateOrGetWordInfoList(i);
+            if ((j < 0) || (j >= ((List)localObject).size())) {
+              continue;
+            }
+            localObject = (WordInfo)((List)localObject).get(j);
+            ((WordInfo)localObject).setColor(localJSONObject.optInt("s"));
+            if (this.jdField_a_of_type_Bbxe != null) {
+              this.jdField_a_of_type_Bbxe.a((WordInfo)localObject);
+            }
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "NumberFormatException:" + localNumberFormatException.toString());
+          }
+        }
+        paramInt += 1;
+      }
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    float f = (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F;
+    if (this.jdField_a_of_type_OrgJsonJSONArray == null) {
+      this.jdField_a_of_type_OrgJsonJSONArray = new JSONArray();
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("p", paramInt1);
+      localJSONObject.put("s", paramInt3);
+      localJSONObject.put("t", f);
+      localJSONObject.put("w", paramInt2);
+      this.jdField_a_of_type_OrgJsonJSONArray.put(localJSONObject);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "addWordResult:" + localJSONException.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbza
  * JD-Core Version:    0.7.0.1
  */

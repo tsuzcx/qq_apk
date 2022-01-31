@@ -1,107 +1,103 @@
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.viola.wormhole.WormholeView;
+import com.tencent.viola.vinstance.VInstanceAction.VInstanceEventListener;
 
 public class pdx
+  implements View.OnClickListener, VInstanceAction.VInstanceEventListener, srp
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  private int jdField_a_of_type_Int;
+  private BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+  private WormholeView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView;
+  private pdw jdField_a_of_type_Pdw;
+  private sro jdField_a_of_type_Sro;
+  
+  public pdx(sro paramsro, WormholeView paramWormholeView, pdw parampdw)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBaseArticleInfo.mGalleryPicNumber > 3)
-    {
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("gallery_cn_text", paramBaseArticleInfo.mGalleryPicNumber + ajya.a(2131713021));
-      localJSONObject.put("id_gallery_cnt", localObject1);
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("gallery_icon", "qq_readinjoy_gallery_count");
-      localJSONObject.put("id_gallery_img", localObject1);
-      localJSONObject.put("id_gallery_bg", new JSONObject());
+    this.jdField_a_of_type_Sro = paramsro;
+    this.jdField_a_of_type_Pdw = parampdw;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView = paramWormholeView;
+    paramWormholeView.setLifeListener(this);
+    paramWormholeView.a();
+    paramWormholeView.setOnErrorViewClickListener(this);
+  }
+  
+  private boolean a(String paramString)
+  {
+    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getWormholeId()));
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+  }
+  
+  public void a(BaseArticleInfo paramBaseArticleInfo, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView == null) {
+      return;
     }
-    Object localObject3;
-    Object localObject2;
-    label177:
-    Object localObject4;
-    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
+    if ((this.jdField_a_of_type_Sro != null) && (this.jdField_a_of_type_Sro.a(paramBaseArticleInfo, paramInt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView.a())))
     {
-      localObject3 = ram.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
-      if ((localObject3 == null) || (((JSONArray)localObject3).length() < 3)) {
-        return localJSONObject;
-      }
-      localObject1 = ((JSONArray)localObject3).optJSONObject(0);
-      if (localObject1 == null)
-      {
-        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject2 = ((JSONArray)localObject3).optJSONObject(1);
-        if (localObject2 != null) {
-          break label323;
-        }
-        localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject3 = ((JSONArray)localObject3).optJSONObject(2);
-        if (localObject3 != null) {
-          break label333;
-        }
-      }
-      label323:
-      label333:
-      for (localObject3 = paramBaseArticleInfo.mFirstPagePicUrl;; localObject3 = ((JSONObject)localObject3).optString("picture"))
-      {
-        localObject4 = new JSONObject();
-        ((JSONObject)localObject4).put("multi_img_url1", localObject1);
-        localJSONObject.put("id_multi_img_1", localObject4);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url2", localObject2);
-        localJSONObject.put("id_multi_img_2", localObject1);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url3", localObject3);
-        localJSONObject.put("id_multi_img_3", localObject1);
-        pek.a(paramBaseArticleInfo, localJSONObject, true);
-        pek.m(paramBaseArticleInfo, localJSONObject);
-        pek.i(paramBaseArticleInfo, localJSONObject);
-        pek.a(localJSONObject);
-        localJSONObject.put("style_ID", "ReadInjoy_gallery_channel_triple_img_big_cell");
-        pek.a(localJSONObject, paramBaseArticleInfo);
-        return localJSONObject;
-        localObject1 = ((JSONObject)localObject1).optString("picture");
-        break;
-        localObject2 = ((JSONObject)localObject2).optString("picture");
-        break label177;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView.c();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView.b();
+  }
+  
+  public void a(WormholeView paramWormholeView)
+  {
+    if (this.jdField_a_of_type_Sro != null)
+    {
+      this.jdField_a_of_type_Sro.a(paramWormholeView.a(), this.jdField_a_of_type_Pdw.a());
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
+        this.jdField_a_of_type_Sro.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getWormholeId(), this);
       }
     }
-    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
+  }
+  
+  public void b(WormholeView paramWormholeView)
+  {
+    if (this.jdField_a_of_type_Sro != null)
     {
-      localObject1 = paramBaseArticleInfo.mSinglePicture;
-      label366:
-      localObject2 = ((URL)localObject1).getFile();
-      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
-        break label448;
-      }
-      localObject1 = paramBaseArticleInfo.mSinglePicture;
-      label394:
-      localObject3 = ((URL)localObject1).getFile();
-      if ((paramBaseArticleInfo.mPictures.length >= 3) && (paramBaseArticleInfo.mPictures[2] != null)) {
-        break label458;
+      this.jdField_a_of_type_Sro.a(paramWormholeView.a());
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
+        this.jdField_a_of_type_Sro.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getWormholeId());
       }
     }
-    label448:
-    label458:
-    for (Object localObject1 = paramBaseArticleInfo.mSinglePicture;; localObject1 = paramBaseArticleInfo.mPictures[2])
-    {
-      localObject4 = ((URL)localObject1).getFile();
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-      localObject3 = localObject4;
-      break;
-      localObject1 = paramBaseArticleInfo.mPictures[0];
-      break label366;
-      localObject1 = paramBaseArticleInfo.mPictures[1];
-      break label394;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((paramView.getId() == 2131380232) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) && (this.jdField_a_of_type_Sro != null)) {
+      this.jdField_a_of_type_Sro.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getWormholeId(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.getWormholeData());
+    }
+  }
+  
+  public void onError(String paramString)
+  {
+    if ((a(paramString)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView != null)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaWormholeWormholeView.d();
+    }
+  }
+  
+  public void onRefreshItem(String paramString)
+  {
+    if (a(paramString)) {
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pdx
  * JD-Core Version:    0.7.0.1
  */

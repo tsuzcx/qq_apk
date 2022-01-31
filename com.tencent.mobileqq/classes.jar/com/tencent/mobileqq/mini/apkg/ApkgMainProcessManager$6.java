@@ -11,12 +11,12 @@ final class ApkgMainProcessManager$6
   
   public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {
-    QLog.d("ApkgMainProcessManager", 2, "queueSubProcessLoadTask() called with: miniAppConfig = [" + this.val$miniAppConfig + "]");
+    QLog.d("ApkgMainProcessManager", 2, "removeSubProcessLoadTask() called with: miniAppConfig = [" + this.val$miniAppConfig + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgMainProcessManager.6
  * JD-Core Version:    0.7.0.1
  */

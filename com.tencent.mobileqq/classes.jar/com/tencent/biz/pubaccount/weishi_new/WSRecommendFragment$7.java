@@ -1,39 +1,48 @@
 package com.tencent.biz.pubaccount.weishi_new;
 
-import UserGrowth.stReportItem;
 import UserGrowth.stSimpleMetaFeed;
 import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 import java.util.HashMap;
-import java.util.Map;
-import smn;
-import snf;
+import java.util.List;
+import tfd;
+import tlo;
+import tlv;
 
 class WSRecommendFragment$7
   implements Runnable
 {
-  WSRecommendFragment$7(WSRecommendFragment paramWSRecommendFragment, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed) {}
+  WSRecommendFragment$7(WSRecommendFragment paramWSRecommendFragment, int paramInt, List paramList, boolean paramBoolean) {}
   
   public void run()
   {
-    if (!WSRecommendFragment.a(this.this$0).containsKey(Integer.valueOf(this.jdField_a_of_type_Int)))
+    HashMap localHashMap1 = new HashMap();
+    HashMap localHashMap2 = new HashMap();
+    int i = 0;
+    while (i < this.jdField_a_of_type_Int)
     {
-      WSRecommendFragment.a(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id);
-      stReportItem localstReportItem = smn.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, this.jdField_a_of_type_Int);
-      WSPublicAccReport.getInstance().feedsItemReport("gzh_exposure", snf.a(1), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, localstReportItem, 0);
-      WSRecommendFragment.a(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-      WSRecommendFragment.b(this.this$0).put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.id);
-      if (WSRecommendFragment.a(this.this$0).size() == 8)
+      if (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        WSRecommendFragment.a(this.this$0, WSRecommendFragment.a(this.this$0), WSRecommendFragment.b(this.this$0));
-        WSRecommendFragment.a(this.this$0).clear();
-        WSRecommendFragment.b(this.this$0).clear();
+        stSimpleMetaFeed localstSimpleMetaFeed = (stSimpleMetaFeed)this.jdField_a_of_type_JavaUtilList.get(i);
+        if (!WSRecommendFragment.a(this.this$0).containsKey(Integer.valueOf(i)))
+        {
+          WSRecommendFragment.a(this.this$0).put(Integer.valueOf(i), localstSimpleMetaFeed.id);
+          tlo.b("weishi-report", "put:" + i);
+          localHashMap1.put(Integer.valueOf(i), localstSimpleMetaFeed);
+          localHashMap2.put(Integer.valueOf(i), localstSimpleMetaFeed.id);
+        }
+        if (this.jdField_a_of_type_Boolean) {
+          tfd.a(1, tlv.a(localstSimpleMetaFeed, true));
+        }
       }
+      i += 1;
     }
+    WSRecommendFragment.a(this.this$0, localHashMap1, localHashMap2);
+    WSPublicAccReport.getInstance().reportFallList(localHashMap1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment.7
  * JD-Core Version:    0.7.0.1
  */

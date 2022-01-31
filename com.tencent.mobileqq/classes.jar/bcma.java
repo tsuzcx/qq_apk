@@ -1,22 +1,31 @@
-public abstract interface bcma
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+class bcma
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(int paramInt);
+  protected ImageView a;
+  protected TextView a;
+  protected String a;
+  protected ImageView b;
+  protected TextView b;
+  protected ImageView c;
   
-  public abstract void a(int paramInt, float paramFloat);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
+  public bcma(bclz parambclz, View paramView)
+  {
+    super(paramView);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365023));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367506));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370958));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367524));
+    this.c = ((ImageView)paramView.findViewById(2131375500));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcma
  * JD-Core Version:    0.7.0.1
  */

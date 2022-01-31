@@ -1,31 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.DialogInterface;
 
-public final class ajfu
-  implements EIPCResultCallback
+class ajfu
+  extends bdco
 {
-  public ajfu(String paramString1, String paramString2, ajfz paramajfz) {}
+  ajfu(ajfr paramajfr) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    CmShowRenderView.a(true);
-    paramEIPCResult = paramEIPCResult.data;
-    int i = paramEIPCResult.getInt("selfUinStatus");
-    int j = paramEIPCResult.getInt("friendUinStatus");
-    ajfs.a(this.jdField_a_of_type_JavaLangString, i);
-    ajfs.a(this.b, j);
-    if (this.jdField_a_of_type_Ajfz != null) {
-      this.jdField_a_of_type_Ajfz.a(true);
-    }
-    QLog.i("CmShow_CmShowRenderView", 1, "initCmShowData selfUinStatus:" + i + " friendUinStatus:" + j);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajfu
  * JD-Core Version:    0.7.0.1
  */

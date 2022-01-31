@@ -1,21 +1,32 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.view.View;
+import com.tencent.biz.qqstory.takevideo.EditPicSave.1.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
 
 public class wue
-  implements wwt
+  implements ThreadExcutor.IThreadListener
 {
-  public wue(VideoPlayerView paramVideoPlayerView) {}
+  wue(wud paramwud) {}
   
-  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    xhb.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "finish_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
+    int i = 1;
+    this.a.a.a().postDelayed(new EditPicSave.1.1(this), 500L);
+    if (azcx.a().a == 1) {}
+    for (;;)
+    {
+      axlc.h(i);
+      return;
+      i = 2;
+    }
   }
+  
+  public void onPreRun() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wue
  * JD-Core Version:    0.7.0.1
  */

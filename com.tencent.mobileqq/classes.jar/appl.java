@@ -1,89 +1,49 @@
-import android.app.Activity;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
 
-public class appl
-  extends appo
+class appl
+  implements URLDrawableDownListener
 {
-  private apuv a;
+  appl(appj paramappj, appi paramappi, URLImageView paramURLImageView, ImageView paramImageView) {}
   
-  public appl(apnb paramapnb, Activity paramActivity)
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    super(paramapnb, paramActivity);
-    this.jdField_a_of_type_Apuv = new appm(this);
+    QLog.e("CameraEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Appi.toString());
+    appj.a(this.jdField_a_of_type_Appj, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
-  private boolean c()
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    return (d()) && (!this.jdField_a_of_type_Apnb.f());
+    QLog.e("CameraEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_Appi.toString());
+    appj.a(this.jdField_a_of_type_Appj, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
-  private boolean d()
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
-    return (apug.a(this.jdField_a_of_type_AndroidAppActivity.getBaseContext(), this.jdField_a_of_type_Apnb.b(), this.jdField_a_of_type_Apnb.c())) || (ayfx.c(this.jdField_a_of_type_Apnb.c(), this.jdField_a_of_type_Apnb.b(), this.jdField_a_of_type_Apnb.c()));
+    QLog.e("CameraEmotionAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_Appi.toString());
+    appj.a(this.jdField_a_of_type_Appj, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
   }
   
-  public void a()
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    super.a();
+    appj.a(this.jdField_a_of_type_Appj, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("SimpleFilePresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = preview simple");
+      QLog.i("CameraEmotionAdapter", 2, "onLoadSuccessed: " + this.jdField_a_of_type_Appi.toString());
     }
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_Apnb.f())) || (16 == this.jdField_a_of_type_Apnb.b()))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.d(false);
-      if (this.jdField_a_of_type_Apnb.b() != 16) {
-        break label123;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692483));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(true);
-      if (this.jdField_a_of_type_Apnb.i()) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(false);
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(this.jdField_a_of_type_Apnb.f());
-      break;
-      label123:
-      if (this.jdField_a_of_type_Apnb.d())
-      {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692671));
-      }
-      else
-      {
-        if (c()) {
-          break label178;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131692837));
-      }
-    }
-    label178:
-    Object localObject;
-    if (bbfj.d(BaseApplicationImpl.getContext())) {
-      if (bbfj.h(BaseApplication.getContext())) {
-        localObject = BaseApplicationImpl.getContext().getString(2131692859);
-      }
-    }
-    for (;;)
-    {
-      localObject = apug.a((String)localObject, ajya.a(2131708419), this.jdField_a_of_type_Apuv);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a((SpannableString)localObject);
-      break;
-      localObject = BaseApplicationImpl.getContext().getString(2131692861);
-      continue;
-      localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131692837);
-    }
+    appj.a(this.jdField_a_of_type_Appj, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     appl
  * JD-Core Version:    0.7.0.1
  */

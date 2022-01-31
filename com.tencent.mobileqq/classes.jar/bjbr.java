@@ -1,25 +1,21 @@
-import android.support.annotation.NonNull;
-import dov.com.qq.im.capture.control.CaptureAsyncAutomator;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.CountDownLatch;
 
-public class bjbr
-  implements ThreadFactory
+class bjbr
 {
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+  private final String jdField_a_of_type_JavaLangString;
+  private final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
+  private volatile String b;
+  private volatile String c;
   
-  private bjbr(CaptureAsyncAutomator paramCaptureAsyncAutomator) {}
-  
-  public Thread newThread(@NonNull Runnable paramRunnable)
+  private bjbr(String paramString)
   {
-    paramRunnable = new Thread(paramRunnable, "CaptureAsyncAutomator_" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement());
-    paramRunnable.setPriority(4);
-    return paramRunnable;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjbr
  * JD-Core Version:    0.7.0.1
  */

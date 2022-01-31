@@ -1,26 +1,34 @@
-import java.util.ArrayList;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class alse
-  implements alsj
+public class alse
 {
-  alse(alsb paramalsb) {}
+  public int a;
+  public FromServiceMsg a;
+  public ToServiceMsg a;
+  public Object a;
+  public boolean a;
   
-  public void a(alsm paramalsm, boolean paramBoolean, byte[] paramArrayOfByte)
+  public alse(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i = 0;
-    while (i < paramalsm.b.size())
-    {
-      alsi localalsi = (alsi)paramalsm.b.get(i);
-      if (localalsi != null) {
-        localalsi.b(paramBoolean, paramalsm.a, paramArrayOfByte);
-      }
-      i += 1;
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public alse(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alse
  * JD-Core Version:    0.7.0.1
  */

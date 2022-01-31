@@ -1,115 +1,101 @@
-import java.io.UnsupportedEncodingException;
-
 public class bcvx
 {
-  static
+  public static bcvx a;
+  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[256];
+  private static char[] jdField_a_of_type_ArrayOfChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
+  
+  protected bcvx()
   {
-    if (!bcvx.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    a();
   }
   
-  public static String a(byte[] paramArrayOfByte, int paramInt)
+  public static bcvx a()
   {
+    if (jdField_a_of_type_Bcvx == null) {}
     try
     {
-      paramArrayOfByte = new String(b(paramArrayOfByte, paramInt), "US-ASCII");
-      return paramArrayOfByte;
+      jdField_a_of_type_Bcvx = new bcvx();
+      return jdField_a_of_type_Bcvx;
     }
-    catch (UnsupportedEncodingException paramArrayOfByte)
+    finally {}
+  }
+  
+  public String a(String paramString)
+  {
+    return a(paramString.getBytes()).toString();
+  }
+  
+  public StringBuffer a(byte[] paramArrayOfByte)
+  {
+    int k = 0;
+    StringBuffer localStringBuffer = new StringBuffer(paramArrayOfByte.length * 2);
+    int i = 0;
+    int j = 0;
+    char c;
+    while (k < paramArrayOfByte.length)
     {
-      throw new AssertionError(paramArrayOfByte);
-    }
-  }
-  
-  public static byte[] a(String paramString, int paramInt)
-  {
-    return a(paramString.getBytes(), paramInt);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
-  {
-    return a(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    bcvz localbcvz = new bcvz(paramInt3, new byte[paramInt2 * 3 / 4]);
-    if (!localbcvz.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
-      throw new IllegalArgumentException("bad base-64");
-    }
-    if (localbcvz.jdField_a_of_type_Int == localbcvz.jdField_a_of_type_ArrayOfByte.length) {
-      return localbcvz.jdField_a_of_type_ArrayOfByte;
-    }
-    paramArrayOfByte = new byte[localbcvz.jdField_a_of_type_Int];
-    System.arraycopy(localbcvz.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localbcvz.jdField_a_of_type_Int);
-    return paramArrayOfByte;
-  }
-  
-  public static byte[] b(byte[] paramArrayOfByte, int paramInt)
-  {
-    return b(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
-  }
-  
-  public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    bcwa localbcwa = new bcwa(paramInt3, null);
-    int i = paramInt2 / 3 * 4;
-    int j;
-    if (localbcwa.jdField_a_of_type_Boolean)
-    {
-      paramInt3 = i;
-      if (paramInt2 % 3 > 0) {
-        paramInt3 = i + 4;
-      }
-      i = paramInt3;
-      if (localbcwa.b)
+      i = i << 8 | paramArrayOfByte[k] & 0xFF;
+      j += 8;
+      if (j > 5)
       {
-        i = paramInt3;
-        if (paramInt2 > 0)
+        Object localObject = jdField_a_of_type_ArrayOfChar;
+        j -= 6;
+        c = localObject[(i >> j)];
+        if (c == 'i') {
+          localObject = "ia";
+        }
+        for (;;)
         {
-          j = (paramInt2 - 1) / 57;
-          if (!localbcwa.c) {
-            break label186;
+          localStringBuffer.append(localObject);
+          i &= (1 << j) - 1;
+          break;
+          if (c == '+') {
+            localObject = "ib";
+          } else if (c == '/') {
+            localObject = "ic";
+          } else {
+            localObject = Character.valueOf(c);
           }
         }
       }
+      k += 1;
     }
-    label186:
-    for (i = 2;; i = 1)
+    if (j > 0)
     {
-      i = paramInt3 + i * (j + 1);
-      localbcwa.jdField_a_of_type_ArrayOfByte = new byte[i];
-      localbcwa.a(paramArrayOfByte, paramInt1, paramInt2, true);
-      if ((jdField_a_of_type_Boolean) || (localbcwa.jdField_a_of_type_Int == i)) {
-        break label192;
+      c = jdField_a_of_type_ArrayOfChar[(i << 6 - j)];
+      if (c != 'i') {
+        break label185;
       }
-      throw new AssertionError();
-      paramInt3 = i;
-      switch (paramInt2 % 3)
-      {
-      case 0: 
-      default: 
-        paramInt3 = i;
-        break;
-      case 1: 
-        paramInt3 = i + 2;
-        break;
-      case 2: 
-        paramInt3 = i + 3;
-        break;
+      paramArrayOfByte = "ia";
+    }
+    for (;;)
+    {
+      localStringBuffer.append(paramArrayOfByte);
+      return localStringBuffer;
+      label185:
+      if (c == '+') {
+        paramArrayOfByte = "ib";
+      } else if (c == '/') {
+        paramArrayOfByte = "ic";
+      } else {
+        paramArrayOfByte = Character.valueOf(c);
       }
     }
-    label192:
-    return localbcwa.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  protected void a()
+  {
+    int i = 0;
+    while (i < jdField_a_of_type_ArrayOfChar.length)
+    {
+      jdField_a_of_type_ArrayOfByte[jdField_a_of_type_ArrayOfChar[i]] = ((byte)i);
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcvx
  * JD-Core Version:    0.7.0.1
  */

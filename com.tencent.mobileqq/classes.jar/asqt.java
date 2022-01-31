@@ -1,27 +1,20 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.LayoutParams;
-import java.util.Comparator;
+import android.view.View.OnHoverListener;
 
-public class asqt
-  implements Comparator<View>
+class asqt
+  implements View.OnHoverListener
 {
-  public int a(View paramView1, View paramView2)
+  asqt(asqs paramasqs) {}
+  
+  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
-    paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
-    {
-      if (paramView1.a) {
-        return 1;
-      }
-      return -1;
-    }
-    return paramView1.b - paramView2.b;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asqt
  * JD-Core Version:    0.7.0.1
  */

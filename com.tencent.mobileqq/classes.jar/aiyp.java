@@ -1,664 +1,147 @@
-import android.media.MediaPlayer;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
-import com.tencent.mobileqq.utils.VipUtils;
-import java.io.File;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Cap;
+import android.graphics.Paint.Join;
+import android.graphics.Paint.Style;
+import android.graphics.Path;
+import android.graphics.Rect;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aiyp
-  implements acts, Handler.Callback, bbiy, bgkk
 {
-  public static String a;
-  public static boolean a;
-  public static String b;
-  public static boolean b;
-  public static String c;
-  public static String d;
-  private int jdField_a_of_type_Int;
-  public long a;
-  private aiyr jdField_a_of_type_Aiyr;
-  private aiyt jdField_a_of_type_Aiyt;
-  private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  public WeakReference<aiys> a;
-  private int b;
-  public WeakReference<aiyu> b;
-  private WeakReference<aemy> jdField_c_of_type_JavaLangRefWeakReference;
-  boolean jdField_c_of_type_Boolean = false;
-  private boolean d;
-  private String jdField_e_of_type_JavaLangString = "";
-  private volatile boolean jdField_e_of_type_Boolean;
-  private String jdField_f_of_type_JavaLangString;
-  private boolean jdField_f_of_type_Boolean;
-  private String g;
-  private String h;
-  
-  static
+  public static Bitmap a(aevb paramaevb, int paramInt1, int paramInt2)
   {
-    jdField_a_of_type_JavaLangString = "1400035750";
-    jdField_b_of_type_JavaLangString = "5d3728db75adf458";
-    jdField_c_of_type_JavaLangString = "https://sqimg.qq.com/qq_product_operations/gme_sdk/GME_SDK_V1.zip";
-    jdField_d_of_type_JavaLangString = "105d1e43c456bc800b4adacd57ac1199";
-  }
-  
-  public aiyp(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_b_of_type_Int = 5;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new bfob(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_Aiyr = new aiyr(paramQQAppInterface);
-    ((airx)paramQQAppInterface.getManager(153)).a().a(this.jdField_a_of_type_Aiyr);
-    bgki.a().a(this);
-    a();
-  }
-  
-  private void b(int paramInt)
-  {
-    if ((this.jdField_b_of_type_JavaLangRefWeakReference != null) && (this.jdField_b_of_type_JavaLangRefWeakReference.get() != null))
-    {
-      if (paramInt == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CmGameTemp_CmGameAudioManager", 0, "[onReportRecordInfoResp] upload record succ.");
-        }
-        ((aiyu)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a();
-      }
+    if ((paramaevb == null) || (paramaevb.a() == null) || (paramaevb.a().size() <= 0)) {
+      return null;
     }
-    else {
-      return;
-    }
-    ((aiyu)this.jdField_b_of_type_JavaLangRefWeakReference.get()).a(paramInt);
-    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[onReportRecordInfoResp] uploadError,retcode:" + paramInt);
-  }
-  
-  public int a()
-  {
-    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderStart");
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((aiys)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
-    }
-    return 250;
-  }
-  
-  public int a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onBeginReceiveData");
-    return this.jdField_b_of_type_Int * 1000;
-  }
-  
-  public String a()
-  {
-    return this.jdField_e_of_type_JavaLangString;
-  }
-  
-  public void a()
-  {
-    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onInitSuccess");
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CmGameTemp_CmGameAudioManager", 0, "[QQRecorder] onRecorderVolumeStateChanged");
-    }
-  }
-  
-  public void a(int paramInt, aiys paramaiys)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaiys);
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = new QQRecorder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication());
-      paramaiys = new QQRecorder.RecorderParam(bbjg.jdField_a_of_type_Int, 0, 0);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(paramaiys);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(this);
-    }
-    paramaiys = new File(ajms.p);
-    if (!paramaiys.exists()) {
-      paramaiys.mkdirs();
-    }
-    paramaiys = b();
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a()) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a(paramaiys, true);
-    QLog.i("CmGameTemp_CmGameAudioManager", 0, "[startRecord] start record");
-  }
-  
-  public void a(aemy paramaemy)
-  {
-    this.jdField_c_of_type_JavaLangRefWeakReference = new WeakReference(paramaemy);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    int i = 2;
-    String str = paramBundle.getString("gmesdk_event_key");
-    int j = paramBundle.getInt("gmesdk_event_ret");
-    QLog.e("CmGameTemp_CmGameAudioManager", 1, "key:" + str + ",ret:" + j);
-    if ("gmesdk_event_key_enterroom".equals(str))
-    {
-      QLog.e("CmGameTemp_CmGameAudioManager", 1, "key:" + str + ",ret:" + j + ",roomId:" + this.h);
-      if ((j == 0) || (j == 1003))
-      {
-        this.jdField_e_of_type_Boolean = true;
-        this.jdField_e_of_type_JavaLangString = this.g;
-        this.jdField_f_of_type_JavaLangString = this.h;
-        ((airx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.jdField_e_of_type_JavaLangString, true, this.jdField_a_of_type_Int);
-        a(true, this.jdField_e_of_type_JavaLangString);
-        if (this.jdField_a_of_type_Int == 319) {
-          i = 1;
-        }
-        VipUtils.a(null, "cmshow", "Apollo", "turnOnAudio", i, 0, new String[0]);
-      }
-    }
-    while (!"gmesdk_event_key_exit_room".equals(str))
-    {
-      return;
-      ((airx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.jdField_e_of_type_JavaLangString, false, this.jdField_a_of_type_Int);
-      a(false, this.jdField_e_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Int == 319) {
-        i = 1;
-      }
-      VipUtils.a(null, "cmshow", "Apollo", "turnOnAudio", i, 1, new String[0]);
-      return;
-    }
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_e_of_type_Boolean = false;
-    ((airx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().a(this.jdField_e_of_type_JavaLangString, false, this.jdField_a_of_type_Int);
-    a(false, this.jdField_e_of_type_JavaLangString);
-    this.jdField_e_of_type_JavaLangString = "";
-    if (this.jdField_a_of_type_Int == 319) {
-      i = 1;
-    }
-    VipUtils.a(null, "cmshow", "Apollo", "turnOffAudio", i, 0, new String[0]);
-  }
-  
-  public void a(AudioPlayer paramAudioPlayer) {}
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt)
-  {
-    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[AudioPlayerListener] onError:" + paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderNotReady");
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[audioSwitch] friUin:" + paramString + ",from:" + paramInt + ",mCurrentFriUin:" + this.jdField_e_of_type_JavaLangString);
-    }
-    if (TextUtils.isEmpty(paramString)) {}
+    float f2;
+    float f6;
+    float f3;
+    float f7;
+    label548:
     do
     {
-      do
+      for (;;)
       {
-        return;
-      } while (!a());
-      if (!this.jdField_e_of_type_Boolean) {
-        break;
-      }
-      if (paramString.equals(this.jdField_e_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-        return;
-      }
-      if (paramInt == 318)
-      {
-        paramString = new Bundle();
-        paramString.putString("key_game_friUin", this.jdField_e_of_type_JavaLangString);
-        paramString.putString("key_dialog_type", "dialog_type_confirm");
-        QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_show_audio_dialog", paramString, null);
-        return;
-      }
-    } while ((this.jdField_c_of_type_JavaLangRefWeakReference == null) || (this.jdField_c_of_type_JavaLangRefWeakReference.get() == null));
-    ((aemy)this.jdField_c_of_type_JavaLangRefWeakReference.get()).g("dialog_type_confirm");
-    return;
-    b(paramString, paramInt);
-  }
-  
-  public void a(String paramString, aiyu paramaiyu)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[uploadFile] uploadFile:" + paramString);
-    }
-    if (this.jdField_a_of_type_Aiyt == null) {
-      this.jdField_a_of_type_Aiyt = new aiyt(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    ayvx localayvx = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramaiyu);
-    if (localayvx != null)
-    {
-      if (!this.jdField_c_of_type_Boolean)
-      {
-        this.jdField_a_of_type_Aiyt.addFilter(new Class[] { ayou.class });
-        localayvx.a(this.jdField_a_of_type_Aiyt);
-        this.jdField_c_of_type_Boolean = true;
-      }
-      paramaiyu = new aywc();
-      paramaiyu.jdField_b_of_type_Int = 24;
-      paramaiyu.jdField_c_of_type_Int = 36;
-      paramaiyu.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-      paramaiyu.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c();
-      paramaiyu.jdField_a_of_type_Boolean = true;
-      paramaiyu.j = ((int)new File(paramString).length());
-      paramaiyu.i = paramString;
-      localayvx.a(paramaiyu);
-    }
-  }
-  
-  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    int i = 1;
-    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderPrepare");
-    byte[] arrayOfByte = bbjg.a(paramRecorderParam.jdField_c_of_type_Int, paramRecorderParam.jdField_a_of_type_Int);
-    if (paramRecorderParam.jdField_a_of_type_JavaLangObject == null) {}
-    while (i == 0)
-    {
-      axug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramRecorderParam.jdField_c_of_type_Int, paramString, 0, (int)(System.currentTimeMillis() / 1000L));
-      axug.a(paramString, arrayOfByte, arrayOfByte.length, (short)0);
-      return;
-      i = 0;
-    }
-    avbt.a(paramString);
-    avbt.a(paramString, arrayOfByte, arrayOfByte.length);
-  }
-  
-  public void a(String paramString, QQRecorder.RecorderParam paramRecorderParam, double paramDouble)
-  {
-    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderEnd,totalTime:" + paramDouble);
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((aiys)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b();
-    }
-    int i;
-    if (paramRecorderParam != null)
-    {
-      if (paramRecorderParam.jdField_a_of_type_JavaLangObject != null) {
-        break label107;
-      }
-      i = 1;
-      if (i != 0) {
-        break label113;
-      }
-      axug.a(paramString, false);
-      axug.a(paramString);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Long = (paramDouble);
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a();
-      }
-      return;
-      label107:
-      i = 0;
-      break;
-      label113:
-      avbt.b(paramString);
-    }
-  }
-  
-  public void a(String paramString1, QQRecorder.RecorderParam paramRecorderParam, String paramString2)
-  {
-    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderError");
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((aiys)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(-2);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[enterRoom] friUin:" + paramString1 + ",roomId:" + paramString2 + ",from:" + paramString1);
-    }
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      QLog.e("CmGameTemp_CmGameAudioManager", 1, "[enterRoom] uin or roomId is empty");
-      return;
-    }
-    Bundle localBundle;
-    if ((Build.VERSION.SDK_INT >= 23) && (BaseActivity.sTopActivity != null) && (BaseActivity.sTopActivity.checkSelfPermission("android.permission.RECORD_AUDIO") != 0))
-    {
-      if (paramInt != 318) {
-        break label225;
-      }
-      localBundle = new Bundle();
-      localBundle.putString("key_dialog_type", "dialog_type_permission");
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_show_audio_dialog", localBundle, null);
-    }
-    for (;;)
-    {
-      localBundle = new Bundle();
-      localBundle.putString("uin", paramString1);
-      localBundle.putString("friUin", paramString1);
-      localBundle.putString("roomId", paramString2);
-      localBundle.putInt("from", paramInt);
-      paramString1 = Message.obtain();
-      paramString1.setData(localBundle);
-      paramString1.what = 2;
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString1);
-      return;
-      label225:
-      if ((this.jdField_c_of_type_JavaLangRefWeakReference != null) && (this.jdField_c_of_type_JavaLangRefWeakReference.get() != null)) {
-        ((aemy)this.jdField_c_of_type_JavaLangRefWeakReference.get()).g("dialog_type_permission");
-      }
-    }
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("CmGameTemp_CmGameAudioManager", 0, "[QQRecorder] onRecorderSilceEnd size：" + paramInt1);
-    }
-    if (paramRecorderParam.jdField_a_of_type_JavaLangObject == null) {}
-    for (paramInt2 = 1; paramInt2 == 0; paramInt2 = 0)
-    {
-      axug.a(paramString, paramArrayOfByte, paramInt1, (short)0);
-      return;
-    }
-    avbt.a(paramString, paramArrayOfByte, paramInt1);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (this.jdField_c_of_type_JavaLangRefWeakReference != null)
-    {
-      aemy localaemy = (aemy)this.jdField_c_of_type_JavaLangRefWeakReference.get();
-      if ((localaemy != null) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(localaemy.a()))) {
-        localaemy.t(paramBoolean);
-      }
-    }
-    aizu.a().a(paramBoolean, paramString);
-  }
-  
-  public boolean a()
-  {
-    boolean bool2 = false;
-    if (this.jdField_f_of_type_Boolean) {
-      return true;
-    }
-    boolean bool1;
-    if (ajmr.d != null)
-    {
-      jdField_a_of_type_JavaLangString = ajmr.d.optString("appid", "1400035750");
-      jdField_b_of_type_JavaLangString = ajmr.d.optString("key", "5d3728db75adf458");
-      jdField_c_of_type_JavaLangString = ajmr.d.optString("url", "https://sqimg.qq.com/qq_product_operations/gme_sdk/GME_SDK_V1.zip");
-      jdField_d_of_type_JavaLangString = ajmr.d.optString("md5", "105d1e43c456bc800b4adacd57ac1199");
-      if (ajmr.d.optInt("openAudio", 0) != 0)
-      {
-        bool1 = true;
-        jdField_a_of_type_Boolean = bool1;
-        bool1 = bool2;
-        if (ajmr.d.optInt("display", 0) != 0) {
-          bool1 = true;
-        }
-        jdField_b_of_type_Boolean = bool1;
-        QLog.i("CmGameTemp_CmGameAudioManager", 1, "[initParams] appId:" + jdField_a_of_type_JavaLangString + ",key:" + jdField_b_of_type_JavaLangString + ",url:" + jdField_c_of_type_JavaLangString + ",md5:" + jdField_d_of_type_JavaLangString + ",OPEN_AUDIO:" + jdField_a_of_type_Boolean + ",sDISPLAY:" + jdField_b_of_type_Boolean);
-        bgki.a().a(jdField_c_of_type_JavaLangString, jdField_d_of_type_JavaLangString);
-      }
-    }
-    for (this.jdField_f_of_type_Boolean = true;; this.jdField_f_of_type_Boolean = false)
-    {
-      return this.jdField_f_of_type_Boolean;
-      bool1 = false;
-      break;
-      QLog.e("CmGameTemp_CmGameAudioManager", 1, "[initParams] gameAudioConfig is null");
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    return (!TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) && (this.jdField_e_of_type_JavaLangString.equals(paramString)) && (this.jdField_e_of_type_Boolean);
-  }
-  
-  public String b()
-  {
-    return ajms.p + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + ".amr";
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-  }
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void b(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[queryRoomAndEnter] friUin:" + paramString + ",currentRoom:" + this.jdField_f_of_type_JavaLangString);
-    }
-    if (!a()) {
-      return;
-    }
-    airx localairx = (airx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
-    if (this.jdField_e_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    }
-    localairx.a().b(paramString, paramInt);
-  }
-  
-  public void b(String paramString, QQRecorder.RecorderParam paramRecorderParam)
-  {
-    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onRecorderAbnormal");
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_e_of_type_Boolean;
-  }
-  
-  public boolean b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[playUserRecord] play record:" + paramString);
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer == null) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      }
-      try
-      {
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying())
+        float f8;
+        try
         {
-          if (QLog.isColorLevel()) {
-            QLog.i("CmGameTemp_CmGameAudioManager", 0, "record is playing");
+          int i = paramaevb.a().a().width();
+          int j = paramaevb.a().a().height();
+          localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+          localCanvas = new Canvas(localBitmap);
+          localCanvas.drawColor(-1);
+          localPaint = new Paint(7);
+          localPaint.setStyle(Paint.Style.STROKE);
+          localPaint.setColor(-16777216);
+          localPaint.setStrokeWidth(paramInt1 / 16.0F);
+          localPaint.setStrokeCap(Paint.Cap.ROUND);
+          localPaint.setStrokeJoin(Paint.Join.ROUND);
+          f2 = i;
+          f6 = 0.0F;
+          f3 = j;
+          f7 = 0.0F;
+          localObject1 = paramaevb.a().iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
           }
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+          localObject2 = ((aewl)((Iterator)localObject1).next()).a().iterator();
+          f8 = f2;
+          f5 = f6;
+          f4 = f3;
+          f1 = f7;
+          f7 = f1;
+          f3 = f4;
+          f6 = f5;
+          f2 = f8;
+          if (!((Iterator)localObject2).hasNext()) {
+            continue;
+          }
+          localObject3 = (aewm)((Iterator)localObject2).next();
+          f2 = f8;
+          if (((aewm)localObject3).a() < f8) {
+            f2 = ((aewm)localObject3).a();
+          }
+          f3 = f5;
+          if (((aewm)localObject3).a() > f5) {
+            f3 = ((aewm)localObject3).a();
+          }
+          f5 = f4;
+          if (((aewm)localObject3).b() < f4) {
+            f5 = ((aewm)localObject3).b();
+          }
+          if (((aewm)localObject3).b() <= f1) {
+            break label548;
+          }
+          f1 = ((aewm)localObject3).b();
         }
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-        if (TextUtils.isEmpty(paramString))
+        catch (Throwable paramaevb)
         {
-          if (!new File(b()).exists())
+          Bitmap localBitmap;
+          Canvas localCanvas;
+          Paint localPaint;
+          Object localObject1;
+          Object localObject2;
+          float f1;
+          Object localObject3;
+          aewl localaewl;
+          ArrayList localArrayList;
+          paramaevb.printStackTrace();
+          return null;
+        }
+        float f4 = f6 - f2;
+        float f5 = f7 - f3;
+        f1 = Math.max(f4, f5);
+        f2 -= (f1 - f4) / 2.0F;
+        f3 -= (f1 - f5) / 2.0F;
+        localObject2 = new Path();
+        f4 = paramInt1 / f1;
+        f1 = paramInt2 / f1;
+        localObject3 = paramaevb.a().iterator();
+        if (((Iterator)localObject3).hasNext())
+        {
+          localaewl = (aewl)((Iterator)localObject3).next();
+          paramaevb = localaewl.a();
+          if (paramaevb != null)
           {
-            QLog.e("CmGameTemp_CmGameAudioManager", 1, "audio file not exist.");
-            return false;
+            ((Path)localObject2).moveTo((paramaevb.a() - f2) * f4, (paramaevb.b() - f3) * f1);
+            localArrayList = localaewl.a();
+            paramInt1 = 1;
+            if (paramInt1 < localaewl.c())
+            {
+              localObject1 = (aewm)localArrayList.get(paramInt1);
+              ((Path)localObject2).quadTo((paramaevb.a() - f2) * f4, (paramaevb.b() - f3) * f1, (((aewm)localObject1).a() - f2) * f4, (((aewm)localObject1).b() - f3) * f1);
+              paramInt1 += 1;
+              paramaevb = (aevb)localObject1;
+            }
           }
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(b());
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-          return true;
         }
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-        return true;
-      }
-      catch (IOException paramString)
-      {
-        QLog.e("CmGameTemp_CmGameAudioManager", 1, paramString.getMessage());
-        return false;
-      }
-    }
-  }
-  
-  public void c()
-  {
-    ((airx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().b(this.jdField_a_of_type_Aiyr);
-    bgki.a().a();
-    ayvx localayvx = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    if (localayvx != null)
-    {
-      localayvx.b(this.jdField_a_of_type_Aiyt);
-      this.jdField_a_of_type_Aiyt = null;
-      this.jdField_c_of_type_Boolean = false;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder = null;
-    }
-  }
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void c(String paramString, int paramInt)
-  {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("CmGameTemp_CmGameAudioManager", 0, "[exitRoom] uin:" + paramString + ",from:" + paramInt + ",mCurrentUin:" + this.jdField_e_of_type_JavaLangString + ",mCurrentRoomId:" + this.jdField_f_of_type_JavaLangString);
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) || (!paramString.equals(this.jdField_e_of_type_JavaLangString)));
-      if (paramInt != 318) {
-        break;
-      }
-      paramInt = i;
-      if (this.jdField_c_of_type_JavaLangRefWeakReference != null)
-      {
-        paramInt = i;
-        if (this.jdField_c_of_type_JavaLangRefWeakReference.get() != null) {
-          paramInt = 1;
+        else
+        {
+          localCanvas.drawPath((Path)localObject2, localPaint);
+          return localBitmap;
+          f4 = f5;
+          f5 = f3;
+          f8 = f2;
         }
       }
-    } while ((paramInt != 0) && (this.jdField_e_of_type_JavaLangString.equals(((aemy)this.jdField_c_of_type_JavaLangRefWeakReference.get()).a())));
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    return;
-    if (ajac.a(BaseApplicationImpl.getContext()))
-    {
-      paramString = new aiyq(this);
-      Bundle localBundle = new Bundle();
-      localBundle.putString("key_game_friUin", this.jdField_e_of_type_JavaLangString);
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "cm_game_client_module", "action_check_game_running", localBundle, paramString);
-      return;
-    }
-    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[exitRoom] game is not exist. exit room");
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    } while ((f2 <= f6) && (f3 <= f7));
+    return null;
   }
   
-  public void c(String paramString, QQRecorder.RecorderParam paramRecorderParam)
+  public static void a(Bitmap paramBitmap)
   {
-    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[QQRecorder] onInitFailed");
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((aiys)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(-1);
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
+      paramBitmap.recycle();
     }
-  }
-  
-  public boolean c()
-  {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder != null)
-    {
-      QLog.i("CmGameTemp_CmGameAudioManager", 0, "[startRecord] stop record");
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.c();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder.a();
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public boolean d()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CmGameTemp_CmGameAudioManager", 0, "[stopUserRecord] stop record:");
-        }
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-        return true;
-      }
-      return false;
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    case 1: 
-      QLog.i("CmGameTemp_CmGameAudioManager", 0, "[handleMessage] exitRoom,roomId:" + this.jdField_f_of_type_JavaLangString);
-      bgki.a().a(false);
-      bgki.a().b(false);
-      bgki.a().a(this.jdField_f_of_type_JavaLangString);
-      return false;
-    }
-    paramMessage = paramMessage.getData();
-    String str1 = paramMessage.getString("uin");
-    String str2 = paramMessage.getString("roomId");
-    int i = paramMessage.getInt("from");
-    QLog.i("CmGameTemp_CmGameAudioManager", 0, "[handleMessage] enterRoom,uin:" + str1 + ",roomId:" + str2 + ",from:" + i);
-    this.g = str1;
-    this.h = str2;
-    this.jdField_a_of_type_Int = i;
-    bgki.a().a(this.jdField_f_of_type_JavaLangString);
-    if ((!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)))
-    {
-      bgki.a().a(jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), jdField_b_of_type_JavaLangString, str2, true, true);
-      return false;
-    }
-    QLog.e("CmGameTemp_CmGameAudioManager", 0, "[handleMessage] appid or key is null!enter room failed");
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyp
  * JD-Core Version:    0.7.0.1
  */

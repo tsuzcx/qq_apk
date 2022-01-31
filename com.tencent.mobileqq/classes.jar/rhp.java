@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
 
-public final class rhp
-  implements Parcelable.Creator<RecommendFeedsDiandianEntranceManager.EntranceIconInfo>
+class rhp
+  implements bhqg
 {
-  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo a(Parcel paramParcel)
-  {
-    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo(paramParcel);
-  }
+  rhp(rhf paramrhf) {}
   
-  public RecommendFeedsDiandianEntranceManager.EntranceIconInfo[] a(int paramInt)
+  public void as_()
   {
-    return new RecommendFeedsDiandianEntranceManager.EntranceIconInfo[paramInt];
+    if (rhf.b(this.a)) {
+      rhf.a(this.a).c();
+    }
+    if (rhf.a(this.a) != null) {
+      rhf.a(this.a).g();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,31 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.bandwidth.BandwidthPredictor.NetworkChangeReceiver.1;
-import org.jetbrains.annotations.NotNull;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.search.HybridSearchFragment;
+import com.tencent.widget.ListView;
 
-public final class qwf
-  extends BroadcastReceiver
+public class qwf
+  extends ayff<ayjl, ayru>
 {
-  private qwf(qwc paramqwc) {}
-  
-  public void onReceive(@NotNull Context paramContext, @NotNull Intent paramIntent)
+  public qwf(HybridSearchFragment paramHybridSearchFragment, ListView paramListView, bcws parambcws)
   {
-    qwc.a(this.a).post(new BandwidthPredictor.NetworkChangeReceiver.1(this));
+    super(paramListView, parambcws);
+  }
+  
+  protected aymg<ayjl, ayru> a(int paramInt)
+  {
+    if (((ayjl)a(paramInt) instanceof ayhw)) {
+      return new aynp(this.jdField_a_of_type_Bcws, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment), null);
+    }
+    return new qwb(this.jdField_a_of_type_Bcws, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment, HybridSearchFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcSelectmemberSearchHybridSearchFragment));
+  }
+  
+  protected ayrv a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new ayro(paramViewGroup, 2131562584);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qwf
  * JD-Core Version:    0.7.0.1
  */

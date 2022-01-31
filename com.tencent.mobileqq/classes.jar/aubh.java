@@ -1,14 +1,19 @@
-import java.util.List;
+import android.util.Pair;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class aubh
+class aubh
+  implements aubq<Pair<String, Integer>, EmoticonPackage>
 {
-  public List<aubf> a;
-  public boolean a;
-  public List<audf> b;
+  aubh(aube paramaube) {}
+  
+  public EmoticonPackage a(Pair<String, Integer> paramPair)
+  {
+    return this.a.c((String)paramPair.first, ((Integer)paramPair.second).intValue());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aubh
  * JD-Core Version:    0.7.0.1
  */

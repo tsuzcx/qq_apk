@@ -1,10 +1,43 @@
-public abstract class axiz
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+
+class axiz
+  extends Handler
 {
-  public abstract double a(int paramInt1, int paramInt2);
+  public axiz(Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    axjd.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
+    switch (paramMessage.what)
+    {
+    case 1: 
+    default: 
+      return;
+    case 2: 
+      i = paramMessage.arg1;
+      paramMessage = paramMessage.getData();
+      axjd.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
+      return;
+    }
+    int i = paramMessage.arg1;
+    switch (paramMessage.arg1)
+    {
+    default: 
+      return;
+    }
+    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
+    axjd.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axiz
  * JD-Core Version:    0.7.0.1
  */

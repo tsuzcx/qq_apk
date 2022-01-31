@@ -1,47 +1,36 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.PathTraceManager;
-import java.lang.ref.WeakReference;
-import org.json.JSONObject;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar;
 
 public class bbuq
-  extends Handler
+  implements ViewPager.OnPageChangeListener
 {
-  public bbuq(PathTraceManager paramPathTraceManager, Looper paramLooper)
+  public bbuq(DotStyleNavBar paramDotStyleNavBar) {}
+  
+  public void onPageScrollStateChanged(int paramInt)
   {
-    super(paramLooper);
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageScrollStateChanged(paramInt);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    switch (paramMessage.what)
-    {
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageScrolled(paramInt1, paramFloat, paramInt2);
     }
-    for (;;)
-    {
-      return;
-      try
-      {
-        paramMessage = (JSONObject)paramMessage.obj;
-        String str = paramMessage.getString("callback");
-        if (this.a.a != null)
-        {
-          bbug localbbug = (bbug)this.a.a.get();
-          if (localbbug != null)
-          {
-            localbbug.callJs(str, new String[] { paramMessage.toString() });
-            return;
-          }
-        }
-      }
-      catch (Exception paramMessage) {}
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    this.a.setCurrent(paramInt);
+    if (DotStyleNavBar.a(this.a) != null) {
+      DotStyleNavBar.a(this.a).onPageSelected(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbuq
  * JD-Core Version:    0.7.0.1
  */

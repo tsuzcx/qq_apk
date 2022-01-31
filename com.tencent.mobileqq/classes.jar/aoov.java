@@ -1,33 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
 
-public class aoov
-  implements View.OnClickListener
+public abstract interface aoov
 {
-  public aoov(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
+  public abstract long a();
   
-  public void onClick(View paramView)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
-    }
-    paramView = (Button)paramView.findViewById(2131364973);
-    if (paramView.getTag() != null)
-    {
-      this.a.e = ((Integer)paramView.getTag()).intValue();
-      if (this.a.jdField_a_of_type_Apev != null) {
-        this.a.jdField_a_of_type_Apev.a(null);
-      }
-    }
-    this.a.m();
-  }
+  public abstract ExcitingTransferDownloadConfig a();
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoov
  * JD-Core Version:    0.7.0.1
  */

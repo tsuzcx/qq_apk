@@ -1,6 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
-import ajyg;
+import alpu;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -16,17 +16,17 @@ import tencent.im.oidb.hotchat.LBS.Attribute;
 import tencent.im.oidb.hotchat.LBS.Cell;
 import tencent.im.oidb.hotchat.LBS.LBSInfo;
 import tencent.im.oidb.hotchat.LBS.Wifi;
-import xkb;
+import yyu;
 
 public class HotchatPlugin$2
   implements Runnable
 {
-  public HotchatPlugin$2(xkb paramxkb, String[] paramArrayOfString) {}
+  public HotchatPlugin$2(yyu paramyyu, String[] paramArrayOfString) {}
   
   public void run()
   {
-    Object localObject2 = ajyg.a();
-    Object localObject1 = ajyg.a(false);
+    Object localObject2 = alpu.a();
+    Object localObject1 = alpu.a(false);
     JSONObject localJSONObject1 = new JSONObject();
     Object localObject3;
     Object localObject4;
@@ -117,7 +117,7 @@ public class HotchatPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.HotchatPlugin.2
  * JD-Core Version:    0.7.0.1
  */

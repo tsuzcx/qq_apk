@@ -6,6 +6,7 @@ import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnErrorList
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnInfoListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnPreparedListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSeekCompleteListener;
+import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnStateChangeListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSubtitleDataListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoFrameOutListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
@@ -14,7 +15,7 @@ import com.tencent.thumbplayer.api.TPSubtitleData;
 import com.tencent.thumbplayer.api.TPVideoFrameBuffer;
 
 public class TPPlayerBaseListeners
-  implements ITPPlayerBaseListener.IOnAudioPcmOutListener, ITPPlayerBaseListener.IOnCompletionListener, ITPPlayerBaseListener.IOnErrorListener, ITPPlayerBaseListener.IOnInfoListener, ITPPlayerBaseListener.IOnPreparedListener, ITPPlayerBaseListener.IOnSeekCompleteListener, ITPPlayerBaseListener.IOnSubtitleDataListener, ITPPlayerBaseListener.IOnVideoFrameOutListener, ITPPlayerBaseListener.IOnVideoSizeChangedListener
+  implements ITPPlayerBaseListener.IOnAudioPcmOutListener, ITPPlayerBaseListener.IOnCompletionListener, ITPPlayerBaseListener.IOnErrorListener, ITPPlayerBaseListener.IOnInfoListener, ITPPlayerBaseListener.IOnPreparedListener, ITPPlayerBaseListener.IOnSeekCompleteListener, ITPPlayerBaseListener.IOnStateChangeListener, ITPPlayerBaseListener.IOnSubtitleDataListener, ITPPlayerBaseListener.IOnVideoFrameOutListener, ITPPlayerBaseListener.IOnVideoSizeChangedListener
 {
   private static String TAG = "TPPlayerListenerS";
   private TPPlayerBaseListeners.TPPlayerListenersEmptyImpl EMPTY_LISTENERS;
@@ -24,6 +25,7 @@ public class TPPlayerBaseListeners
   private ITPPlayerBaseListener.IOnInfoListener mOnInfoListener;
   private ITPPlayerBaseListener.IOnPreparedListener mOnPreparedListener;
   private ITPPlayerBaseListener.IOnSeekCompleteListener mOnSeekCompleteListener;
+  private ITPPlayerBaseListener.IOnStateChangeListener mOnStateChangeListener;
   private ITPPlayerBaseListener.IOnSubtitleDataListener mOnSubtitleDataListener;
   private ITPPlayerBaseListener.IOnVideoFrameOutListener mOnVideoFrameOutListener;
   private ITPPlayerBaseListener.IOnVideoSizeChangedListener mOnVideoSizeChangedListener;
@@ -54,6 +56,7 @@ public class TPPlayerBaseListeners
     this.mOnSubtitleDataListener = this.EMPTY_LISTENERS;
     this.mOnVideoFrameOutListener = this.EMPTY_LISTENERS;
     this.mOnAudioFrameOutListener = this.EMPTY_LISTENERS;
+    this.mOnStateChangeListener = this.EMPTY_LISTENERS;
   }
   
   public void onAudioPcmOut(TPAudioFrameBuffer paramTPAudioFrameBuffer)
@@ -84,6 +87,11 @@ public class TPPlayerBaseListeners
   public void onSeekComplete()
   {
     this.mOnSeekCompleteListener.onSeekComplete();
+  }
+  
+  public void onStateChange(int paramInt1, int paramInt2)
+  {
+    this.mOnStateChangeListener.onStateChange(paramInt1, paramInt2);
   }
   
   public void onSubtitleData(TPSubtitleData paramTPSubtitleData)
@@ -131,6 +139,11 @@ public class TPPlayerBaseListeners
     this.mOnSeekCompleteListener = paramIOnSeekCompleteListener;
   }
   
+  public void setOnStateChangeListener(ITPPlayerBaseListener.IOnStateChangeListener paramIOnStateChangeListener)
+  {
+    this.mOnStateChangeListener = paramIOnStateChangeListener;
+  }
+  
   public void setOnSubtitleDataListener(ITPPlayerBaseListener.IOnSubtitleDataListener paramIOnSubtitleDataListener)
   {
     this.mOnSubtitleDataListener = paramIOnSubtitleDataListener;
@@ -148,7 +161,7 @@ public class TPPlayerBaseListeners
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlayerBaseListeners
  * JD-Core Version:    0.7.0.1
  */

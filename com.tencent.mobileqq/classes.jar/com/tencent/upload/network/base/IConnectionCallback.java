@@ -20,7 +20,7 @@ public abstract interface IConnectionCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.upload.network.base.IConnectionCallback
  * JD-Core Version:    0.7.0.1
  */

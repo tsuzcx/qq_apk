@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.vaswebviewplugin.QWalletPayJsPlugin;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-public class bbvg
-  extends QWalletPayJsPlugin
+class bbvg
 {
-  public bbvg()
-  {
-    this.mPluginNameSpace = "qw_pay";
-  }
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbvg
  * JD-Core Version:    0.7.0.1
  */

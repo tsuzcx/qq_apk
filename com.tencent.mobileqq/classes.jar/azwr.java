@@ -1,48 +1,36 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
 
-public class azwr
-  extends Handler
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"com/tencent/mobileqq/studymode/ModeSwitchManager$simpleUIObserver$1", "Lcom/tencent/mobileqq/simpleui/SimpleUIObserver;", "onReqGetSimpleUISwitch", "", "isSuccess", "", "bSwitch", "sStudySwitch", "bPref", "", "uin", "", "onSwitchSimpleUICallback", "isSuc", "bChangeTheme", "bSwitchElsePref", "statusCode", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class azwr
+  extends azia
 {
-  private WeakReference<BeginnerGuideFragment> a;
-  
-  public azwr(BeginnerGuideFragment paramBeginnerGuideFragment, Looper paramLooper)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    super(paramLooper);
-    this.a = new WeakReference(paramBeginnerGuideFragment);
+    this.a.a(false);
+    if (azwu.b())
+    {
+      this.a.a(paramBoolean1, paramBoolean2, paramBoolean3, paramInt);
+      return;
+    }
+    Iterator localIterator = ((Iterable)azwl.a(this.a)).iterator();
+    while (localIterator.hasNext()) {
+      ((azwm)localIterator.next()).a(paramBoolean1, paramBoolean2, paramBoolean3, paramInt);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, @Nullable String paramString)
   {
-    super.handleMessage(paramMessage);
-    BeginnerGuideFragment localBeginnerGuideFragment = (BeginnerGuideFragment)this.a.get();
-    if (localBeginnerGuideFragment == null) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1110: 
-        if (QLog.isColorLevel()) {
-          QLog.d("BeginnerGuideFragment", 2, "parse config from network success");
-        }
-        break;
-      }
-    } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof String)));
-    BeginnerGuideFragment.a(localBeginnerGuideFragment, (String)paramMessage.obj, paramMessage.arg1);
-    return;
-    BeginnerGuideFragment.a(localBeginnerGuideFragment, paramMessage.what);
+    Iterator localIterator = ((Iterable)azwl.a(this.a)).iterator();
+    while (localIterator.hasNext()) {
+      ((azwm)localIterator.next()).a(paramBoolean1, paramBoolean2, paramBoolean3, paramInt, paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azwr
  * JD-Core Version:    0.7.0.1
  */

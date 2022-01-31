@@ -1,23 +1,29 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3.3.1;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 
 public class acza
-  extends bfmx
+  implements DialogInterface.OnDismissListener
 {
-  acza(acyx paramacyx) {}
+  public acza(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((acyx.a(this.a) != null) && (acyx.a(this.a).isShown())) {
-      this.a.a.post(new ComboAnimation3.3.1(this));
+    if (!GesturePWDUnlockActivity.a(this.a))
+    {
+      GesturePWDUnlockActivity.a(this.a, true);
+      return;
     }
+    this.a.e();
+    GesturePWDUtils.setGestureUnlockFailedType(this.a, 1);
+    azmz.a(this.a.getBaseContext()).a(this.a.app, this.a.app.getCurrentAccountUin(), "Gesture_pwd", "click_wrong_pwd", 0, 1, "0", null, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acza
  * JD-Core Version:    0.7.0.1
  */

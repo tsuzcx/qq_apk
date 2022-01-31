@@ -1,23 +1,32 @@
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
+import java.util.List;
 
-public class ajwn
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class ajwn
+  implements View.OnClickListener
 {
-  public ajwn(FrameHelperActivity paramFrameHelperActivity) {}
+  ajwn(ajwm paramajwm) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    if ((this.a.c.getVisibility() == 0) && ((this.a.c() instanceof ReadinjoyTabFrame))) {
-      this.a.c.setVisibility(8);
+    paramView = (ajwo)paramView.getTag();
+    if (this.a.a.a.contains(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups))
+    {
+      this.a.a.a.remove(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
+      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
+      this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, false);
+      return;
     }
+    this.a.a.a.add(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
+    paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
+    this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwn
  * JD-Core Version:    0.7.0.1
  */

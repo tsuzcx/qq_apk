@@ -1,26 +1,24 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
 
 public class mfk
-  extends mcf
+  implements mkg
 {
-  public mfk(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
+  public mfk(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  protected void a(bbgf parambbgf)
+  public void a()
   {
-    if ((QLog.isDevelopLevel()) || (this.a.a != parambbgf.a)) {
-      QLog.w(this.a.c, 1, "onGroupInviteFlagChanged, mCanAutoInviteMemIntoTroop[" + this.a.a + "->" + parambbgf.a + "]");
-    }
-    if (this.a.a != parambbgf.a)
-    {
-      this.a.a = parambbgf.a;
-      this.a.f(0L, 65535);
-    }
+    this.a.k = true;
+    this.a.L();
+  }
+  
+  public void b()
+  {
+    this.a.k = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfk
  * JD-Core Version:    0.7.0.1
  */

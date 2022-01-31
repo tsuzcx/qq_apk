@@ -1,27 +1,21 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.content.Intent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 
-class mhi
-  extends ClickableSpan
+public class mhi
+  implements View.OnClickListener
 {
-  mhi(mha parammha) {}
+  public mhi(MultiIncomingCallsActivity paramMultiIncomingCallsActivity, long paramLong, Intent paramIntent, lid paramlid) {}
   
   public void onClick(View paramView)
   {
-    this.a.d();
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(paramTextPaint.getColor());
-    paramTextPaint.setUnderlineText(false);
+    this.jdField_a_of_type_ComTencentAvUiMultiIncomingCallsActivity.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_Lid);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mhi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,37 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import com.tencent.qphone.base.util.QLog;
 
 public class atkl
-  extends GestureDetector.SimpleOnGestureListener
+  extends BroadcastReceiver
 {
-  private atkl(StuffContainerView paramStuffContainerView) {}
+  private atkl(QQMusicPlayService paramQQMusicPlayService) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.a == null) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    float f2;
-    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
+    if (paramIntent != null)
     {
-      float f1 = paramMotionEvent2.getY() - paramMotionEvent1.getY();
-      f2 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
-      if (Math.abs(f1) <= Math.abs(f2)) {
-        break label143;
-      }
-      if (Math.abs(Math.asin(Math.abs(f2) / Math.sqrt(f2 * f2 + f1 * f1))) < 0.5235987755982988D)
+      QLog.d("QQMusicPlay.QQMusicPlayService", 1, "QQMusicPlayBroadcastReceiver onReceive,action:" + paramIntent.getAction());
+      paramContext = paramIntent.getAction();
+      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("QQMusicPlay_exit_action"))))
       {
-        if (f1 >= 0.0F) {
-          break label128;
+        if (QQMusicPlayService.a(this.a) == null) {
+          break label150;
         }
-        this.a.a.g();
+        QQMusicPlayService.a(this.a).sendEmptyMessage(11);
       }
     }
-    for (;;)
-    {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label128:
-      this.a.a.j();
-      continue;
-      label143:
-      if (f2 > 0.0F) {
-        this.a.a.h();
-      } else {
-        this.a.a.i();
-      }
-    }
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if (this.a.a != null) {
-      this.a.a.f();
-    }
-    return false;
+    return;
+    label150:
+    this.a.stopSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atkl
  * JD-Core Version:    0.7.0.1
  */

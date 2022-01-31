@@ -1,22 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
 
-public class acgj
-  extends aywb
+public final class acgj
+  implements View.OnClickListener
 {
-  public acgj(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public acgj(Toast paramToast) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    int i = paramMessage.what;
-    if ((i == 1003) || (i == 2003)) {
-      this.a.c();
-    }
+    this.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acgj
  * JD-Core Version:    0.7.0.1
  */

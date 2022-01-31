@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.webkit.JavascriptInterface;
-import bgyh;
-import bgyi;
+import bize;
+import bizf;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
@@ -50,7 +50,7 @@ public class ServiceOriginalWebview
     addJavascriptInterface(this, "WeixinJSCore");
   }
   
-  private void initAppServiceJs(ApkgInfo paramApkgInfo, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener)
+  private void initAppServiceJs(ApkgInfo paramApkgInfo, String paramString, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener)
   {
     if (paramApkgInfo == null) {}
     do
@@ -84,12 +84,12 @@ public class ServiceOriginalWebview
           }
         }
       }
-      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bgyh.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
+      str2 = String.format("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig=%1$s;  __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s');  __qqConfig.envVersion='" + str1 + "'; __qqConfig.deviceinfo='" + bize.a().f() + "'; __qqConfig.miniapp_version='" + str2 + "';", new Object[] { paramApkgInfo.mConfigStr, localJSONObject.toString() });
       str1 = str2;
       if (StorageUtil.getPreference().getBoolean(paramApkgInfo.appId + "_debug", false)) {
         str1 = str2 + "__qqConfig.debug=true;";
       }
-      evaluteJs(str1 + "if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};", new ServiceOriginalWebview.2(this, paramApkgInfo, paramOnLoadServiceWebvieJsListener));
+      evaluteJs(str1 + "if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};", new ServiceOriginalWebview.2(this, paramString, paramApkgInfo, paramOnLoadServiceWebvieJsListener));
       return;
     }
     catch (JSONException localJSONException)
@@ -116,7 +116,7 @@ public class ServiceOriginalWebview
       localJSONObject.put("env", localObject);
       localJSONObject.put("preload", paramBoolean);
       int i = QzoneConfig.getInstance().getConfig("qqminiapp", "xprof_api_report", 0);
-      StringBuilder localStringBuilder = new StringBuilder().append("if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = %1$s; Object.assign(__qqConfig, __tempConfig); __qqConfig.appContactInfo = {};__qqConfig.appContactInfo.operationInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo.apiAvailable = {'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'share':0,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0};__qqConfig.platform = 'android';__qqConfig.QUA='").append(bgyi.a()).append("';__qqConfig.frameworkInfo = {};__qqConfig.frameworkInfo.isAlpha=");
+      StringBuilder localStringBuilder = new StringBuilder().append("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nif (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = %1$s; __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.appContactInfo = {};__qqConfig.appContactInfo.operationInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo = {};__qqConfig.appContactInfo.operationInfo.jsonInfo.apiAvailable = {'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'share':0,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0};__qqConfig.platform = 'android';__qqConfig.QUA='").append(bizf.a()).append("';__qqConfig.frameworkInfo = {};__qqConfig.frameworkInfo.isAlpha=");
       if (i == 0) {}
       for (localObject = "false";; localObject = "true")
       {
@@ -139,6 +139,11 @@ public class ServiceOriginalWebview
   
   public void initService(ApkgInfo paramApkgInfo, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener)
   {
+    initService(paramApkgInfo, null, paramOnLoadServiceWebvieJsListener);
+  }
+  
+  public void initService(ApkgInfo paramApkgInfo, String paramString, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener)
+  {
     this.apkgInfo = paramApkgInfo;
     this.mListener = paramOnLoadServiceWebvieJsListener;
     setWebChromeClient(new ServiceOriginalWebview.1(this));
@@ -148,12 +153,12 @@ public class ServiceOriginalWebview
     if (this.waServiceJSLoaded)
     {
       if (this.AppServiceJsLoaded) {
-        break label63;
+        break label64;
       }
       this.AppServiceJsLoaded = true;
-      initAppServiceJs(paramApkgInfo, paramOnLoadServiceWebvieJsListener);
+      initAppServiceJs(paramApkgInfo, paramString, paramOnLoadServiceWebvieJsListener);
     }
-    label63:
+    label64:
     while (paramOnLoadServiceWebvieJsListener == null) {
       return;
     }
@@ -175,8 +180,8 @@ public class ServiceOriginalWebview
     }
     for (;;)
     {
-      initJSDefaultConfig();
-      evaluteJs(paramString, new ServiceOriginalWebview.3(this));
+      QLog.i("ServiceOriginalWebview", 1, "---begin service default config----");
+      initJSDefaultConfig(new ServiceOriginalWebview.3(this, paramString));
       paramString = AppBrandProxy.g().getMiniAppConfig();
       if ((paramString == null) || (paramString.config == null) || (TextUtils.isEmpty(paramString.config.appId))) {
         break;
@@ -271,7 +276,7 @@ public class ServiceOriginalWebview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.ServiceOriginalWebview
  * JD-Core Version:    0.7.0.1
  */

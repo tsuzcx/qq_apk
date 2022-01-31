@@ -1,26 +1,37 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class agkx
-  extends BroadcastReceiver
+class agkx
+  extends alkl
 {
-  public agkx(AlbumListActivity paramAlbumListActivity) {}
+  agkx(agkt paramagkt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    if (!this.a.isFinishing())
+    if (paramBoolean)
     {
-      this.a.finish();
-      QLog.i("AlbumListActivity", 1, "AlbumListActivity has finished by broadcastReceiver.");
+      if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())) {
+        agkt.a(this.a);
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while (paramBoolean1.booleanValue());
+        paramString1 = BaseActivity.sTopActivity;
+      } while (paramString1 == null);
+      bdcd.a(paramString1, 230, paramString1.getString(2131690004), null, null, paramString1.getString(2131720083), new agky(this, paramString1), null).show();
+      return;
     }
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, paramInt, 0).b(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agkx
  * JD-Core Version:    0.7.0.1
  */

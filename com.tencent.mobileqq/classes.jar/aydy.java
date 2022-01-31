@@ -1,23 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.Manager;
 
-public final class aydy
-  implements Parcelable.Creator<ReSendCmd>
+public class aydy
+  implements Manager
 {
-  public ReSendCmd a(Parcel paramParcel)
+  public static final String a;
+  public static final String b = alpo.a(2131714054);
+  public static final String c = alpo.a(2131714053);
+  public static final String d = alpo.a(2131714056);
+  int jdField_a_of_type_Int = -1;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  static
   {
-    return new ReSendCmd(paramParcel);
+    jdField_a_of_type_JavaLangString = alpo.a(2131714055);
   }
   
-  public ReSendCmd[] a(int paramInt)
+  public aydy(QQAppInterface paramQQAppInterface) {}
+  
+  public void onDestroy()
   {
-    return new ReSendCmd[paramInt];
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aydy
  * JD-Core Version:    0.7.0.1
  */

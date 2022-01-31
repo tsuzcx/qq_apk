@@ -1,34 +1,140 @@
+import android.net.Uri;
+import android.os.Build;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
+
 public class ajim
-  implements Comparable
+  implements vub, vuc, vud, vue
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "N1T", "ZTE A2015", "MI 1S", "GT-S7568I", "ZTE N909" };
+  private static final String[] jdField_b_of_type_ArrayOfJavaLangString = { "SM-A7000", "HM NOTE 1S", "MI 2S" };
+  private static final String[] c = { "vivo X6D" };
+  private static final String[] d = { "MI 4" };
+  private static final String[] e = { "Nexus 5" };
+  private static final String[] f = { "Nexus 5" };
+  private static final String[] g = { "OPPO R7sm" };
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private ajin jdField_a_of_type_Ajin;
+  private Uri jdField_a_of_type_AndroidNetUri;
+  private TextureVideoView jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private boolean jdField_a_of_type_Boolean;
+  private volatile boolean jdField_b_of_type_Boolean;
   
-  public int compareTo(Object paramObject)
+  private void a()
   {
-    paramObject = (ajim)paramObject;
-    if (this.d < paramObject.d) {
-      return 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.GuideVideoHandler", 2, "handleError");
     }
-    if (this.d > paramObject.d) {
-      return -1;
+    if (this.jdField_a_of_type_Ajin != null) {
+      this.jdField_a_of_type_Ajin.a();
     }
-    return 0;
+  }
+  
+  public static boolean a(String[] paramArrayOfString)
+  {
+    boolean bool2 = false;
+    String str = Build.MODEL;
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.GuideVideoHandler", 2, "isNotSupportLoopVideo model=" + str);
+    }
+    boolean bool1 = bool2;
+    int j;
+    int i;
+    if (str != null)
+    {
+      j = paramArrayOfString.length;
+      i = 0;
+    }
+    for (;;)
+    {
+      bool1 = bool2;
+      if (i < j)
+      {
+        if (str.equals(paramArrayOfString[i])) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
+    }
+  }
+  
+  public void a(vtz paramvtz)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.GuideVideoHandler", 2, "MediaPlayer onCompletion has been called.   at " + paramvtz.b() + " mIsPause" + this.jdField_a_of_type_Boolean);
+    }
+    this.jdField_a_of_type_Int = paramvtz.b();
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      paramvtz.c();
+      paramvtz.a(true);
+    }
+    if ((a(c)) && (!this.jdField_a_of_type_Boolean))
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoURI(this.jdField_a_of_type_AndroidNetUri);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.start();
+    }
+  }
+  
+  public boolean a(vtz paramvtz, int paramInt1, int paramInt2)
+  {
+    paramvtz = new StringBuilder(64);
+    paramvtz.append("bgVideo error-- what=");
+    paramvtz.append(paramInt1);
+    paramvtz.append(" extra=");
+    paramvtz.append(paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.GuideVideoHandler", 2, paramvtz.toString());
+    }
+    a();
+    paramvtz = Build.MODEL;
+    if (paramvtz != null)
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("crashModel", paramvtz);
+      azmz.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getApplicationContext()).a(null, "newHandGuide_error", true, 0L, 0L, localHashMap, "", false);
+    }
+    return true;
+  }
+  
+  public void a_(vtz paramvtz)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.E();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LoginActivity.GuideVideoHandler", 2, "MediaPlayer onPrepared has been called. talkback=" + AppSetting.c + " videoPrepareTime=" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+  }
+  
+  public boolean a_(vtz paramvtz, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 3)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginActivity.GuideVideoHandler", 2, "onInfo what===>" + paramInt1);
+      }
+      if (a(f)) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(103);
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajim
  * JD-Core Version:    0.7.0.1
  */

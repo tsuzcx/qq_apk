@@ -1,23 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
+import android.support.v4.util.LruCache;
+import android.text.TextUtils;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.data.ISong;
 
-public final class athw
-  implements Parcelable.Creator<VideoData>
+public class athw
+  implements atka
 {
-  public VideoData a(Parcel paramParcel)
-  {
-    return new VideoData(paramParcel);
-  }
+  public athw(ListenTogetherManager paramListenTogetherManager) {}
   
-  public VideoData[] a(int paramInt)
+  public void a(ISong paramISong)
   {
-    return new VideoData[paramInt];
+    if (paramISong != null)
+    {
+      ListenTogetherManager.a(this.a, paramISong);
+      this.a.a(paramISong.a());
+      String str = (String)ListenTogetherManager.a(this.a).get(paramISong.a());
+      if (!TextUtils.isEmpty(str)) {
+        ListenTogetherManager.a(this.a, paramISong.a(), str);
+      }
+    }
+    else
+    {
+      return;
+    }
+    ListenTogetherManager.a(this.a, paramISong.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     athw
  * JD-Core Version:    0.7.0.1
  */

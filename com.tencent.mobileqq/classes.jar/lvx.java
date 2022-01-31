@@ -1,24 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.model.ExpressionItem;
 
-final class lvx
-  extends mrr
+public class lvx
+  extends ExpressionItem
 {
-  lvx(String paramString1, String paramString2, String paramString3)
-  {
-    super(paramString1, paramString2, paramString3);
-  }
-  
-  protected void a(String paramString)
-  {
-    lvw.a(null);
-    if (QLog.isColorLevel()) {
-      QLog.d("AVPushReport", 2, "onAvReportPush SimpleHttpPostTask rsp = " + paramString);
-    }
-  }
+  public int[] a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lvx
  * JD-Core Version:    0.7.0.1
  */

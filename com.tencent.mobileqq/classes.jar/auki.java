@@ -1,248 +1,84 @@
-import android.annotation.TargetApi;
-import android.content.ContentResolver;
-import android.database.CharArrayBuffer;
-import android.database.ContentObserver;
-import android.database.Cursor;
-import android.database.DataSetObserver;
-import android.net.Uri;
-import android.os.Bundle;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class auki
-  implements Cursor
 {
-  private Cursor jdField_a_of_type_AndroidDatabaseCursor;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  
-  public auki(Cursor paramCursor)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, RecommendPerson paramRecommendPerson)
   {
-    this.jdField_a_of_type_AndroidDatabaseCursor = paramCursor;
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramRecommendPerson);
+    a("grp_card_add", paramInt2, paramQQAppInterface, paramRecommendPerson.cardTypeID, paramRecommendPerson.uin, paramInt1, localArrayList);
   }
   
-  public void close()
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, List<RecommendPerson> paramList)
   {
-    this.jdField_a_of_type_AndroidDatabaseCursor.close();
+    a("grp_card_exp", 0, paramQQAppInterface, paramInt1, "", paramInt2, paramList);
   }
   
-  public void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, RecommendPerson paramRecommendPerson)
   {
-    this.jdField_a_of_type_AndroidDatabaseCursor.copyStringToBuffer(paramInt, paramCharArrayBuffer);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramRecommendPerson);
+    a("grp_card_clk", 0, paramQQAppInterface, paramRecommendPerson.cardTypeID, paramRecommendPerson.uin, paramInt, localArrayList);
   }
   
-  public void deactivate()
+  private static void a(String paramString1, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString2, int paramInt3, List<RecommendPerson> paramList)
   {
-    this.jdField_a_of_type_AndroidDatabaseCursor.deactivate();
-  }
-  
-  public byte[] getBlob(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getBlob(paramInt);
-  }
-  
-  public int getColumnCount()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getColumnCount();
-  }
-  
-  public int getColumnIndex(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap == null)
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    StringBuilder localStringBuilder3 = new StringBuilder();
+    StringBuilder localStringBuilder4 = new StringBuilder();
+    JSONObject localJSONObject = new JSONObject();
+    int i = 0;
+    if (i < paramList.size())
     {
-      String[] arrayOfString = getColumnNames();
-      HashMap localHashMap = new HashMap(arrayOfString.length);
-      int i = 0;
-      int j = arrayOfString.length;
-      while (i < j)
+      if (paramList.get(i) == null) {}
+      for (;;)
       {
-        localHashMap.put(arrayOfString[i], Integer.valueOf(i));
         i += 1;
+        break;
+        if (i > 0)
+        {
+          localStringBuilder1.append(",");
+          localStringBuilder2.append(",");
+          localStringBuilder3.append(",");
+          localStringBuilder4.append(",");
+        }
+        localStringBuilder1.append(((RecommendPerson)paramList.get(i)).uin);
+        localStringBuilder2.append(((RecommendPerson)paramList.get(i)).recommendReason);
+        localStringBuilder3.append(((RecommendPerson)paramList.get(i)).recommendALghrithm);
+        localStringBuilder4.append(((RecommendPerson)paramList.get(i)).recommendRecall);
       }
-      this.jdField_a_of_type_JavaUtilHashMap = localHashMap;
     }
-    paramString = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString != null) {
-      return paramString.intValue();
+    try
+    {
+      if ("grp_card_exp".equals(paramString1)) {
+        localJSONObject.put("exp_uin", localStringBuilder1.toString());
+      }
+      localJSONObject.put("exp_reason", localStringBuilder2.toString());
+      localJSONObject.put("algh_id", localStringBuilder3.toString());
+      localJSONObject.put("recall_id", localStringBuilder4.toString());
     }
-    return -1;
-  }
-  
-  public int getColumnIndexOrThrow(String paramString)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getColumnIndexOrThrow(paramString);
-  }
-  
-  public String getColumnName(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getColumnName(paramInt);
-  }
-  
-  public String[] getColumnNames()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getColumnNames();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getCount();
-  }
-  
-  public double getDouble(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getDouble(paramInt);
-  }
-  
-  public Bundle getExtras()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getExtras();
-  }
-  
-  public float getFloat(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getFloat(paramInt);
-  }
-  
-  public int getInt(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getInt(paramInt);
-  }
-  
-  public long getLong(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getLong(paramInt);
-  }
-  
-  public Uri getNotificationUri()
-  {
-    return null;
-  }
-  
-  public int getPosition()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getPosition();
-  }
-  
-  public short getShort(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getShort(paramInt);
-  }
-  
-  public String getString(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getString(paramInt);
-  }
-  
-  @TargetApi(11)
-  public int getType(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getType(paramInt);
-  }
-  
-  public boolean getWantsAllOnMoveCalls()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.getWantsAllOnMoveCalls();
-  }
-  
-  public boolean isAfterLast()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.isAfterLast();
-  }
-  
-  public boolean isBeforeFirst()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.isBeforeFirst();
-  }
-  
-  public boolean isClosed()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.isClosed();
-  }
-  
-  public boolean isFirst()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.isFirst();
-  }
-  
-  public boolean isLast()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.isLast();
-  }
-  
-  public boolean isNull(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.isNull(paramInt);
-  }
-  
-  public boolean move(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.move(paramInt);
-  }
-  
-  public boolean moveToFirst()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToFirst();
-  }
-  
-  public boolean moveToLast()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToLast();
-  }
-  
-  public boolean moveToNext()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToNext();
-  }
-  
-  public boolean moveToPosition(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToPosition(paramInt);
-  }
-  
-  public boolean moveToPrevious()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToPrevious();
-  }
-  
-  public void registerContentObserver(ContentObserver paramContentObserver)
-  {
-    this.jdField_a_of_type_AndroidDatabaseCursor.registerContentObserver(paramContentObserver);
-  }
-  
-  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    this.jdField_a_of_type_AndroidDatabaseCursor.registerDataSetObserver(paramDataSetObserver);
-  }
-  
-  @Deprecated
-  public boolean requery()
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.requery();
-  }
-  
-  public Bundle respond(Bundle paramBundle)
-  {
-    return this.jdField_a_of_type_AndroidDatabaseCursor.respond(paramBundle);
-  }
-  
-  public void setExtras(Bundle paramBundle) {}
-  
-  public void setNotificationUri(ContentResolver paramContentResolver, Uri paramUri)
-  {
-    this.jdField_a_of_type_AndroidDatabaseCursor.setNotificationUri(paramContentResolver, paramUri);
-  }
-  
-  public void unregisterContentObserver(ContentObserver paramContentObserver)
-  {
-    this.jdField_a_of_type_AndroidDatabaseCursor.unregisterContentObserver(paramContentObserver);
-  }
-  
-  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
-  {
-    this.jdField_a_of_type_AndroidDatabaseCursor.unregisterDataSetObserver(paramDataSetObserver);
+    catch (JSONException paramList)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopMemberRecommend.Report", 2, "reportRecommend error: " + paramList.getMessage());
+        }
+      }
+    }
+    azmj.b(paramQQAppInterface, "dc00898", "", paramString2, "frd_recom", paramString1, paramInt2, paramInt1, String.valueOf(paramInt3), "", localJSONObject.toString(), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auki
  * JD-Core Version:    0.7.0.1
  */

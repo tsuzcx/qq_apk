@@ -1,23 +1,14 @@
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResInfo;
-import java.util.Comparator;
-
-public class awhc
-  implements Comparator<ScribbleResMgr.ResInfo>
+public final class awhc
+  extends awgp
 {
-  public awhc(ScribbleResMgr paramScribbleResMgr) {}
-  
-  public int a(ScribbleResMgr.ResInfo paramResInfo1, ScribbleResMgr.ResInfo paramResInfo2)
+  protected int c()
   {
-    if ((paramResInfo1 != null) && (paramResInfo2 != null)) {
-      return paramResInfo1.orderIndex - paramResInfo2.orderIndex;
-    }
-    return -1;
+    return 511;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awhc
  * JD-Core Version:    0.7.0.1
  */

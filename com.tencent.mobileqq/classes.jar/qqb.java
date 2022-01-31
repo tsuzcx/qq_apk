@@ -1,46 +1,72 @@
 import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsOptView;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
 public class qqb
-  implements URLDrawable.URLDrawableListener
+  implements TextWatcher
 {
-  public qqb(VideoFeedsOptView paramVideoFeedsOptView, URLDrawable paramURLDrawable) {}
+  private int jdField_a_of_type_Int;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public qqb(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof ApngDrawable))
+    int k = paramEditable.length();
+    int i;
+    int j;
+    label24:
+    Drawable[] arrayOfDrawable;
+    if (this.jdField_a_of_type_Int > 0)
     {
-      VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView, (ApngDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable());
-      if (VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView)) {
-        break label135;
+      i = 1;
+      if (k <= 0) {
+        break label156;
       }
-      VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView).pause();
+      j = 1;
+      if ((j ^ i) != 0)
+      {
+        arrayOfDrawable = ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment).getCompoundDrawables();
+        if (k <= 0) {
+          break label161;
+        }
+        Drawable localDrawable = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment.getResources().getDrawable(2130839355);
+        localDrawable.setBounds(0, 0, bdkf.b(16.0F), bdkf.b(16.0F));
+        arrayOfDrawable[2] = localDrawable;
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView.getLayoutParams().height = ((int)(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView).getIntrinsicHeight() / 3 * this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView.getResources().getDisplayMetrics().density));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView.getLayoutParams().width = ((int)(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView).getIntrinsicWidth() / 3 * this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView.getResources().getDisplayMetrics().density));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView.requestLayout();
+      ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment).setCompoundDrawablesWithIntrinsicBounds(arrayOfDrawable[0], arrayOfDrawable[1], arrayOfDrawable[2], arrayOfDrawable[3]);
+      this.jdField_a_of_type_Int = k;
+      ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment, paramEditable.toString());
+      if (paramEditable.length() <= 0) {
+        break label169;
+      }
+      owy.a().h(ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment));
       return;
-      label135:
-      VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView);
-      VideoFeedsOptView.a(VideoFeedsOptView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsOptView, "2"));
+      i = 0;
+      break;
+      label156:
+      j = 0;
+      break label24;
+      label161:
+      arrayOfDrawable[2] = null;
     }
+    label169:
+    ReadInJoyUgcSearchTopicFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyUgcSearchTopicFragment).setVisibility(4);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qqb
  * JD-Core Version:    0.7.0.1
  */

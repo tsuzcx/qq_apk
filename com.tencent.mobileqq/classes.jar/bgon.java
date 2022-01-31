@@ -1,21 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import java.io.File;
 
-public class bgon
-  implements DialogInterface.OnClickListener
+public abstract interface bgon
 {
-  public bgon(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QlinkShareJumpActivity.a(this.a, false);
-    this.a.finish();
-  }
+  public abstract void a(File paramFile);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgon
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,17 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import com.tencent.mobileqq.javahooksdk.ReplaceMethodCallback;
 
-public class atcj
-  implements ServiceConnection
+class atcj
+  implements ReplaceMethodCallback
 {
-  private WeakReference<atci> jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public atcj(atch paramatch, atci paramatci)
+  public void replaceMethod(MethodHookParam paramMethodHookParam)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramatci);
-  }
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    atch.a(this.jdField_a_of_type_Atch, lwm.a(paramIBinder));
-    paramComponentName = (atci)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramComponentName != null) {
-      paramComponentName.bt();
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    atch.a(this.jdField_a_of_type_Atch, null);
-    paramComponentName = (atci)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramComponentName != null) {
-      paramComponentName.bu();
-    }
+    atch.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.List;
-
-public class avsr
+public abstract interface avsr
 {
-  public int a;
-  public String a;
-  public List<PtvTemplateManager.PtvTemplateInfo> a;
-  public boolean a;
-  public int b;
-  public String b;
+  public abstract void a();
   
-  public avsr() {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
-  public avsr(String paramString)
-  {
-    this.a = paramString;
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avsr
  * JD-Core Version:    0.7.0.1
  */

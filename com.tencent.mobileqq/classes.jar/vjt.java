@@ -1,31 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
 
-public class vjt
-  implements Animation.AnimationListener
+public abstract interface vjt
 {
-  public vjt(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
+  public abstract Context a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
-    }
-  }
+  public abstract View a();
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void finish();
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract Activity getActivity();
+  
+  public abstract void startActivity(Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjt
  * JD-Core Version:    0.7.0.1
  */

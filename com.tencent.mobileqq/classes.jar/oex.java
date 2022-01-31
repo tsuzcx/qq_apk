@@ -1,33 +1,37 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.GiftPackageGialog.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.List;
 
 public class oex
-  extends ClickableSpan
+  implements ofd
 {
-  public oex(CommentInfo paramCommentInfo1, CommentInfo paramCommentInfo2, BaseActivity paramBaseActivity) {}
+  oex(oev paramoev) {}
   
-  public void onClick(View paramView)
+  public void a(GiftServiceBean paramGiftServiceBean)
   {
-    ohf.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.authorUin, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    paramView = new ohi(this.b.articleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo).a(ogn.a).b(this.b.area).c(0).a().a();
-    nol.a(null, ohf.a(this.b.articleInfo), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.b.articleInfo.mArticleID), String.valueOf(this.b.articleInfo.mAlgorithmID), this.b.articleInfo.innerUniqueID, paramView, false);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
-    paramTextPaint.setUnderlineText(false);
+    String str = oev.b(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
+    {
+      oev.b(this.a, paramGiftServiceBean);
+      oev.b(this.a).setText(paramGiftServiceBean.t);
+      if (oev.a(this.a)) {
+        oev.c(this.a, null);
+      }
+      oev.c(this.a).setText("");
+      if (oev.c(this.a) != null) {
+        oev.c(this.a).clear();
+      }
+      oev.a(this.a);
+      ThreadManager.executeOnNetWorkThread(new GiftPackageGialog.2.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oex
  * JD-Core Version:    0.7.0.1
  */

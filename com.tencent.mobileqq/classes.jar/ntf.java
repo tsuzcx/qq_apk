@@ -1,18 +1,43 @@
-class ntf
-  implements reb
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+
+final class ntf
+  implements bevy
 {
-  ntf(nte paramnte) {}
+  ntf(String paramString, syx paramsyx) {}
   
-  public void a(int paramInt)
+  public void a(BaseResp paramBaseResp)
   {
-    if (this.a.jdField_a_of_type_Rhm != null) {
-      this.a.jdField_a_of_type_Rhm.a(paramInt, this.a.jdField_a_of_type_Int);
+    boolean bool = true;
+    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      xxb.b(1, 2131720019);
+      bool = false;
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      if (this.jdField_a_of_type_Syx == null) {
+        break;
+      }
+      this.jdField_a_of_type_Syx.a(bool);
+      return;
+      xxb.b(2, 2131720038);
+      continue;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ntf
  * JD-Core Version:    0.7.0.1
  */

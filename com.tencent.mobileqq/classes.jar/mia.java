@@ -1,28 +1,26 @@
-import android.widget.RelativeLayout;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.QavOperationMenuView;
-import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
+import com.tencent.qphone.base.util.QLog;
 
 public class mia
-  implements mif
+  extends meu
 {
-  public mia(QavPanel paramQavPanel) {}
+  public mia(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
   
-  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
+  protected void a(bdfb parambdfb)
   {
-    if ((paramBoolean) && ((paramRelativeLayout instanceof QavOperationMenuView)))
+    if ((QLog.isDevelopLevel()) || (this.a.a != parambdfb.a)) {
+      QLog.w(this.a.d, 1, "onGroupInviteFlagChanged, mCanAutoInviteMemIntoTroop[" + this.a.a + "->" + parambdfb.a + "]");
+    }
+    if (this.a.a != parambdfb.a)
     {
-      paramRelativeLayout = (QavOperationMenuView)paramRelativeLayout;
-      paramRelativeLayout.a(this.a.a.b("BEAUTY_SKIN"));
-      paramRelativeLayout.a();
+      this.a.a = parambdfb.a;
+      this.a.f(0L, 65535);
     }
   }
-  
-  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mia
  * JD-Core Version:    0.7.0.1
  */

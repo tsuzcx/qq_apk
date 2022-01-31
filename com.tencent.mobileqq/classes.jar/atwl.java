@@ -1,121 +1,170 @@
 import android.content.Context;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.matchchat.MatchChatMsgListFragment;
+import com.tencent.mobileqq.matchchat.MatchChatMsgUtil.1;
+import com.tencent.mobileqq.matchchat.RecentMatchChatListItem;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
 
 public class atwl
 {
-  public static <T> T a(View paramView, Class<T> paramClass)
+  public static int a(QQAppInterface paramQQAppInterface)
   {
-    if (paramView == null) {}
+    if (paramQQAppInterface == null) {}
     do
     {
-      return null;
-      if (!(paramView.getParent() instanceof AbsListView)) {
+      do
+      {
+        return 0;
+        if (a(paramQQAppInterface)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("MatchChatMsgUtil", 2, "isMatchChatRedPointSwitchOn false");
+      return 0;
+      if (a(paramQQAppInterface, "matchchat_redpoint_show")) {
         break;
       }
-    } while (!a(paramView.getTag().getClass(), paramClass));
-    return paramView.getTag();
-    return a((View)paramView.getParent(), paramClass);
+    } while (!QLog.isColorLevel());
+    QLog.i("MatchChatMsgUtil", 2, "isRedPointShow false");
+    return 0;
+    Object localObject = paramQQAppInterface.a(1044).a(aljq.aU, 1044);
+    if (localObject == null)
+    {
+      QLog.i("MatchChatMsgUtil", 1, "getMatchChatRedPointNum null");
+      return 0;
+    }
+    localObject = ((List)localObject).iterator();
+    String str;
+    int j;
+    for (int i = 0; ((Iterator)localObject).hasNext(); i = paramQQAppInterface.a().a(str, j) + i)
+    {
+      MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+      str = localMessageRecord.senderuin;
+      j = localMessageRecord.istroop;
+    }
+    return i;
   }
   
-  public static String a(long paramLong)
+  public static Intent a(Context paramContext)
   {
-    long l1 = NetConnInfoCenter.getServerTimeMillis();
-    long l2 = l1 - paramLong;
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.setTimeInMillis(l1);
-    int i = localCalendar.get(5);
-    int j = localCalendar.get(1);
-    localCalendar.setTimeInMillis(paramLong);
-    int k = localCalendar.get(5);
-    int m = localCalendar.get(1);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat();
-    if (l2 < 600000L) {
-      return ajya.a(2131707230);
-    }
-    if (l2 < 3600000L) {
-      return l2 / 60L / 1000L + 1L + ajya.a(2131707223);
-    }
-    if ((l2 < 21600000L) && (k == i)) {
-      return l2 / 60L / 60L / 1000L + ajya.a(2131707217);
-    }
-    if ((l2 < 86400000L) && (k == i))
-    {
-      localSimpleDateFormat.applyPattern("HH:mm");
-      return localSimpleDateFormat.format(localCalendar.getTime());
-    }
-    if ((l2 < 86400000L) && (k != i))
-    {
-      localSimpleDateFormat.applyPattern("HH:mm");
-      return ajya.a(2131707228) + localSimpleDateFormat.format(localCalendar.getTime());
-    }
-    if (m == j)
-    {
-      localSimpleDateFormat.applyPattern("MM-dd");
-      return localSimpleDateFormat.format(localCalendar.getTime());
-    }
-    localSimpleDateFormat.applyPattern("yyyy-MM-dd");
-    return localSimpleDateFormat.format(localCalendar.getTime());
+    paramContext = new Intent(paramContext, PublicFragmentActivity.class);
+    paramContext.putExtra("uintype", 1044);
+    paramContext.putExtra("uin", aljq.aU);
+    paramContext.putExtra("public_fragment_class", MatchChatMsgListFragment.class.getName());
+    paramContext.addFlags(268435456);
+    return paramContext;
   }
   
-  public static void a(Context paramContext, PublishVideoEntry paramPublishVideoEntry, int paramInt)
+  public static Intent a(Context paramContext, String paramString, int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    File localFile1 = new File(paramPublishVideoEntry.mLocalRawVideoDir + "");
-    File localFile2 = new File(paramPublishVideoEntry.thumbPath + "");
-    paramPublishVideoEntry = new File(paramPublishVideoEntry.doodlePath + "");
-    try
+    paramContext = new Intent(paramContext, ChatActivity.class);
+    paramContext.putExtra("uin", paramString);
+    paramContext.putExtra("uintype", 1044);
+    paramContext.putExtra("entrance", paramInt);
+    paramContext.addFlags(268435456);
+    return paramContext;
+  }
+  
+  public static BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    int i = a(paramQQAppInterface);
+    QLog.i("MatchChatMsgUtil", 1, "getMatchChatRedPointAppInfo num = " + i);
+    paramQQAppInterface = new BusinessInfoCheckUpdate.AppInfo();
+    paramQQAppInterface.path.set(paramString);
+    paramQQAppInterface.num.set(i);
+    paramQQAppInterface.type.set(2);
+    paramQQAppInterface.iNewFlag.set(1);
+    return paramQQAppInterface;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    for (;;)
     {
-      localJSONObject.put("videoUrl", localFile1.toURI() + "");
-      localJSONObject.put("coverUrl", localFile2.toURI() + "");
-      localJSONObject.put("doodleUrl", paramPublishVideoEntry.toURI() + "");
-      localJSONObject.put("is_local", "1");
-      paramPublishVideoEntry = new Bundle();
-      paramPublishVideoEntry.putString("preLoadParams", localJSONObject.toString());
-      paramPublishVideoEntry.putBoolean("scroll_to_comment", false);
-      paramPublishVideoEntry.putString("isLocal", "1");
-      paramPublishVideoEntry.putString("_from", "3");
-      paramPublishVideoEntry.putString("play_mode", String.valueOf(2));
-      paramPublishVideoEntry.putBoolean("is_multi_progress_bar", false);
-      paramPublishVideoEntry.putString("feed_type", String.valueOf(paramInt));
-      SmallVideoFragment.a(paramContext, paramPublishVideoEntry);
       return;
-    }
-    catch (JSONException paramPublishVideoEntry)
-    {
-      for (;;)
+      Object localObject = paramQQAppInterface.a(1044).a(aljq.aU, 1044);
+      if (localObject == null)
       {
+        QLog.i("MatchChatMsgUtil", 1, "clearMatchChatMessageBox null");
+        return;
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
         if (QLog.isColorLevel()) {
-          QLog.i("NearbyMomentUtils", 2, "getPreviewPage, e=" + paramPublishVideoEntry.toString());
+          QLog.i("MatchChatMsgUtil", 1, "clearMatchChatMessageBox, delete uin = " + localMessageRecord.senderuin);
         }
+        String str = localMessageRecord.senderuin;
+        int i = localMessageRecord.istroop;
+        paramQQAppInterface.a().a(str, i);
       }
     }
   }
   
-  private static boolean a(Class paramClass1, Class paramClass2)
+  public static void a(QQAppInterface paramQQAppInterface, RecentMatchChatListItem paramRecentMatchChatListItem, boolean paramBoolean)
   {
-    if ((paramClass1 == Object.class) || (paramClass1 == null)) {
+    if ((paramQQAppInterface == null) || (paramRecentMatchChatListItem == null)) {}
+    int i;
+    do
+    {
+      return;
+      i = paramQQAppInterface.a().a(paramRecentMatchChatListItem.a(), paramRecentMatchChatListItem.a());
+      if (paramBoolean) {
+        paramQQAppInterface.a().a(aljq.aU, 1044, paramRecentMatchChatListItem.a(), paramQQAppInterface.getCurrentAccountUin());
+      }
+    } while (i <= 0);
+    paramQQAppInterface.a().a(paramRecentMatchChatListItem.a(), paramRecentMatchChatListItem.a(), true, false);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    if (paramQQAppInterface == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("MatchChatMsgUtil", 2, "saveRedPointShow key =" + paramString + " value =" + paramString);
+    }
+    bdiv.a(paramQQAppInterface.getAccount(), "match_chat_config_sp").edit().putBoolean(paramString, paramBoolean).apply();
+  }
+  
+  public static void a(RedTouch paramRedTouch, QQAppInterface paramQQAppInterface)
+  {
+    ThreadManagerV2.excute(new MatchChatMsgUtil.1(paramQQAppInterface, paramRedTouch), 16, null, false);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return true;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (paramQQAppInterface == null) {
       return false;
     }
-    if (paramClass1 == paramClass2) {
-      return true;
-    }
-    return a(paramClass1.getSuperclass(), paramClass2);
+    return bdiv.a(paramQQAppInterface.getAccount(), "match_chat_config_sp").getBoolean(paramString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atwl
  * JD-Core Version:    0.7.0.1
  */

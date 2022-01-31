@@ -1,52 +1,24 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
 
 public class amdn
-  implements bfph
+  extends alox
 {
-  public amdn(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString, bfpc parambfpc) {}
+  private amdn(GetGeneralSettings paramGetGeneralSettings) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    switch (paramInt)
+    if ((paramBoolean1) && (paramBoolean2))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.e();
+      this.a.a.a = 3;
+      this.a.a(7);
       return;
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
-      {
-        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app.a().b(this.jdField_a_of_type_JavaLangString);
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693460, 1);
-        continue;
-        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
-        {
-          paramView = new Intent();
-          paramView.setAction("android.intent.action.SENDTO");
-          paramView.setData(Uri.parse("smsto:" + this.jdField_a_of_type_JavaLangString));
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131693460, 1);
-        }
-      }
     }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdn
  * JD-Core Version:    0.7.0.1
  */

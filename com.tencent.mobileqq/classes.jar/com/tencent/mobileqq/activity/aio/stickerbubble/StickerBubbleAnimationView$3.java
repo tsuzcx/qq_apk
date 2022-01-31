@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import aevh;
+import agsm;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,23 +20,23 @@ class StickerBubbleAnimationView$3
     if (((File)localObject).exists()) {
       try
       {
-        aevh localaevh = new aevh((File)localObject, false);
-        StickerBubbleAnimationView.c(this.this$0).put(this.a, Integer.valueOf(localaevh.a()));
-        BitmapDrawable[] arrayOfBitmapDrawable = new BitmapDrawable[localaevh.b()];
-        localObject = StickerBubbleAnimationView.a(this.this$0, localaevh.a(), 0.7D);
+        agsm localagsm = new agsm((File)localObject, false);
+        StickerBubbleAnimationView.c(this.this$0).put(this.a, Integer.valueOf(localagsm.a()));
+        BitmapDrawable[] arrayOfBitmapDrawable = new BitmapDrawable[localagsm.b()];
+        localObject = StickerBubbleAnimationView.a(this.this$0, localagsm.a(), 0.7D);
         Resources localResources = this.this$0.getResources();
         if (localObject != null) {}
         for (;;)
         {
           arrayOfBitmapDrawable[0] = new BitmapDrawable(localResources, (Bitmap)localObject);
-          StickerBubbleAnimationView.a(this.this$0, localaevh, arrayOfBitmapDrawable, this.a, localaevh.a());
+          StickerBubbleAnimationView.a(this.this$0, localagsm, arrayOfBitmapDrawable, this.a, localagsm.a());
           StickerBubbleAnimationView.d(this.this$0).put(this.a, arrayOfBitmapDrawable);
           if (!QLog.isColorLevel()) {
             break;
           }
           QLog.d("StickerBubbleAnimationView", 2, "decoded first frame of gif: " + this.a);
           return;
-          localObject = localaevh.a();
+          localObject = localagsm.a();
         }
         QLog.e("StickerBubbleAnimationView", 1, "gifFile " + this.a + " is not exist");
       }
@@ -55,7 +55,7 @@ class StickerBubbleAnimationView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView.3
  * JD-Core Version:    0.7.0.1
  */

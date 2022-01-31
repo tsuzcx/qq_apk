@@ -28,13 +28,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListAdapter;
-import bfsl;
-import bfsm;
-import bfsn;
-import bfso;
-import bfsp;
-import bfsq;
-import bfuc;
+import bhti;
+import bhtj;
+import bhtk;
+import bhtl;
+import bhtm;
+import bhtn;
+import bhuz;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -51,7 +51,7 @@ public class HorizontalListView
   protected static final int INSERT_AT_START_OF_LIST = 0;
   private static final int INVALID_POINTER = -1;
   public static final String TAG = "HorizontalListView";
-  public static final int TAG_VIEW_TYPE = 2131690145;
+  public static final int TAG_VIEW_TYPE = 2131690192;
   static final int TOUCH_MODE_DONE_WAITING = 2;
   static final int TOUCH_MODE_DOWN = 0;
   static final int TOUCH_MODE_FLING = 4;
@@ -91,22 +91,22 @@ public class HorizontalListView
   private int mMotionX;
   private int mMotionY;
   protected int mNextX;
-  private bfsm mOnItemScrollEventListener;
-  private bfsn mOnScrollLinstener;
-  private bfso mOnScrollStateChangedListener;
+  private bhtj mOnItemScrollEventListener;
+  private bhtk mOnScrollLinstener;
+  private bhtl mOnScrollStateChangedListener;
   private HorizontalListView.CheckForLongPress mPendingCheckForLongPress;
   private Runnable mPendingCheckForTap;
   private HorizontalListView.PerformClick mPerformClick;
   Runnable mPositionScrollAfterLayout;
   HorizontalListView.PositionScroller mPositionScroller;
   private Rect mRect = new Rect();
-  private bfsp mRecycleListener;
+  private bhtm mRecycleListener;
   private List<Queue<View>> mRemovedViewsCache = new ArrayList();
   private Integer mRestoreX;
   protected int mRightViewAdapterIndex;
-  private bfsq mRunningOutOfDataListener;
+  private bhtn mRunningOutOfDataListener;
   private int mRunningOutOfDataThreshold;
-  protected bfuc mScroller;
+  protected bhuz mScroller;
   protected boolean mStayDisplayOffsetZero;
   private Rect mTouchFrame;
   int mTouchMode = -1;
@@ -298,7 +298,7 @@ public class HorizontalListView
     {
       paramInt = this.mAdapter.getItemViewType(paramInt);
       if ((paramView != null) && (isItemViewTypeValid(paramInt))) {
-        paramView.setTag(2131690145, Integer.valueOf(paramInt));
+        paramView.setTag(2131690192, Integer.valueOf(paramInt));
       }
       return;
     }
@@ -389,7 +389,7 @@ public class HorizontalListView
   private View obtainView(int paramInt)
   {
     View localView1 = getRecycledView(paramInt);
-    setTag(2131367611, Boolean.valueOf(true));
+    setTag(2131367740, Boolean.valueOf(true));
     View localView2 = this.mAdapter.getView(paramInt, localView1, this);
     markViewType(localView2, paramInt);
     if ((localView1 != null) && (localView2 != localView1)) {
@@ -404,7 +404,7 @@ public class HorizontalListView
   private View obtainView(int paramInt, boolean paramBoolean)
   {
     View localView1 = getRecycledView(paramInt);
-    setTag(2131367611, Boolean.valueOf(paramBoolean));
+    setTag(2131367740, Boolean.valueOf(paramBoolean));
     View localView2 = this.mAdapter.getView(paramInt, localView1, this);
     markViewType(localView2, paramInt);
     if ((localView1 != null) && (localView2 != localView1)) {
@@ -1161,7 +1161,7 @@ public class HorizontalListView
   @TargetApi(9)
   protected void initView(boolean paramBoolean)
   {
-    this.mScroller = new bfuc(getContext());
+    this.mScroller = new bhuz(getContext());
     this.mScroller.a(getScrollerFriction());
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(getContext());
     this.mTouchSlop = localViewConfiguration.getScaledTouchSlop();
@@ -1178,7 +1178,7 @@ public class HorizontalListView
     setWillNotDraw(false);
     this.mTouchMode = -1;
     setCurrentScrollState(4097);
-    this.mAdapterDataObserver = new bfsl(this);
+    this.mAdapterDataObserver = new bhti(this);
   }
   
   protected boolean isLastItemInAdapter(int paramInt)
@@ -2055,7 +2055,7 @@ public class HorizontalListView
   {
     try
     {
-      Object localObject = paramView.getTag(2131690145);
+      Object localObject = paramView.getTag(2131690192);
       if ((localObject instanceof Integer))
       {
         i = ((Integer)localObject).intValue();
@@ -2313,19 +2313,19 @@ public class HorizontalListView
     this.mMinX = 0;
   }
   
-  public void setOnItemScollEventListener(bfsm parambfsm)
+  public void setOnItemScollEventListener(bhtj parambhtj)
   {
-    this.mOnItemScrollEventListener = parambfsm;
+    this.mOnItemScrollEventListener = parambhtj;
   }
   
-  public void setOnScrollListener(bfsn parambfsn)
+  public void setOnScrollListener(bhtk parambhtk)
   {
-    this.mOnScrollLinstener = parambfsn;
+    this.mOnScrollLinstener = parambhtk;
   }
   
-  public void setOnScrollStateChangedListener(bfso parambfso)
+  public void setOnScrollStateChangedListener(bhtl parambhtl)
   {
-    this.mOnScrollStateChangedListener = parambfso;
+    this.mOnScrollStateChangedListener = parambhtl;
   }
   
   @TargetApi(9)
@@ -2336,9 +2336,9 @@ public class HorizontalListView
     }
   }
   
-  public void setRecycleListener(bfsp parambfsp)
+  public void setRecycleListener(bhtm parambhtm)
   {
-    this.mRecycleListener = parambfsp;
+    this.mRecycleListener = parambhtm;
   }
   
   public void setRestoreX(int paramInt)
@@ -2346,9 +2346,9 @@ public class HorizontalListView
     this.mRestoreX = Integer.valueOf(paramInt);
   }
   
-  public void setRunningOutOfDataListener(bfsq parambfsq, int paramInt)
+  public void setRunningOutOfDataListener(bhtn parambhtn, int paramInt)
   {
-    this.mRunningOutOfDataListener = parambfsq;
+    this.mRunningOutOfDataListener = parambhtn;
     this.mRunningOutOfDataThreshold = paramInt;
   }
   
@@ -2417,7 +2417,7 @@ public class HorizontalListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView
  * JD-Core Version:    0.7.0.1
  */

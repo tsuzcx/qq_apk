@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import bchg;
+import begh;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniAppUtils$5
@@ -18,20 +18,20 @@ final class MiniAppUtils$5
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if ((paramMessage.obj instanceof bchg))
+    if ((paramMessage.obj instanceof begh))
     {
-      bchg localbchg = (bchg)paramMessage.obj;
-      if (localbchg.c == 0)
+      begh localbegh = (begh)paramMessage.obj;
+      if (localbegh.c == 0)
       {
         QLog.d("MiniAppUtils", 2, "handleMessage() called with: msg = [" + paramMessage + "]");
-        MiniAppUtils.access$000(this.val$context, this.val$appId, this.val$dataCacheKey, localbchg.d);
+        MiniAppUtils.access$000(this.val$context, this.val$appId, this.val$dataCacheKey, localbegh.d);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.5
  * JD-Core Version:    0.7.0.1
  */

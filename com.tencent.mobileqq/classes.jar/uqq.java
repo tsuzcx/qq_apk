@@ -1,43 +1,77 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class uqq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract class uqq<DATA>
 {
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_a_of_type_Boolean;
+  public static final String a;
+  protected DATA a;
+  protected List<uqr<DATA>> a;
   
-  uqq(uqp paramuqp) {}
-  
-  public void onGlobalLayout()
+  static
   {
-    uqp.a(this.jdField_a_of_type_Uqp).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
-    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
-    if (i != this.jdField_a_of_type_Int)
-    {
-      int j = uqp.a(this.jdField_a_of_type_Uqp).getRootView().getHeight();
-      if (j - i <= j / 4) {
-        break label79;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      uqp.a(this.jdField_a_of_type_Uqp);
+    jdField_a_of_type_JavaLangString = uqq.class.getName();
+  }
+  
+  public uqq()
+  {
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  }
+  
+  public DATA a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    a(null);
+  }
+  
+  public void a(@NonNull uqr<DATA> paramuqr)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramuqr)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramuqr);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-      label79:
-      if (this.jdField_a_of_type_Boolean) {
-        uqp.b(this.jdField_a_of_type_Uqp);
-      }
+  }
+  
+  protected abstract void a(utj paramutj);
+  
+  protected void a(boolean paramBoolean, DATA paramDATA)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((uqr)localIterator.next()).a(paramBoolean, paramDATA);
     }
+  }
+  
+  public void b()
+  {
+    wsv.b(jdField_a_of_type_JavaLangString, "onInit");
+  }
+  
+  public void b(@NonNull uqr<DATA> paramuqr)
+  {
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramuqr)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramuqr);
+    }
+  }
+  
+  public void b(utj paramutj)
+  {
+    a(paramutj);
+  }
+  
+  public void c()
+  {
+    wsv.b(jdField_a_of_type_JavaLangString, "onDestroy");
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqq
  * JD-Core Version:    0.7.0.1
  */

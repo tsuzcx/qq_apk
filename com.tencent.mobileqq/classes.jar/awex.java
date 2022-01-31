@@ -1,22 +1,29 @@
 public class awex
 {
-  public long a;
   public awey a;
   
-  public awex()
+  public String a()
   {
-    this.jdField_a_of_type_Long = 0L;
+    return null;
   }
   
-  public awex(long paramLong, awey paramawey)
+  public void a(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Awey = paramawey;
+    if (this.a == null) {
+      this.a = new awey();
+    }
+    this.a.a = paramString1;
+    this.a.b = paramString2;
+  }
+  
+  protected boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awex
  * JD-Core Version:    0.7.0.1
  */

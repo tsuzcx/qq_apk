@@ -1,23 +1,24 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.HttpContext;
 
-class bapn
-  extends bapo
+public class bapn
+  extends DefaultHttpClient
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  TextView b;
-  
-  bapn(bapm parambapm)
+  public bapn(ClientConnectionManager paramClientConnectionManager, HttpParams paramHttpParams)
   {
-    super(parambapm.a);
+    super(paramClientConnectionManager, null);
+  }
+  
+  public HttpContext createHttpContext()
+  {
+    return super.createHttpContext();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bapn
  * JD-Core Version:    0.7.0.1
  */

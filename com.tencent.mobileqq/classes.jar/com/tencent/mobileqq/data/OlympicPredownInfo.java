@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class OlympicPredownInfo
-  extends auko
+  extends awbv
 {
   public int dailyRetryCount;
   public long dailyStartTime;
   public int totalRetryCount;
-  @aumc
+  @awdj
   public String url;
   
   public String toString()
@@ -24,7 +24,7 @@ public class OlympicPredownInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.OlympicPredownInfo
  * JD-Core Version:    0.7.0.1
  */

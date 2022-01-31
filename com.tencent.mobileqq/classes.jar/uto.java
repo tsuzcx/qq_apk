@@ -1,40 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
-public class uto
-  extends QQUIEventReceiver<utk, utn>
+public abstract class uto
+  extends amle
 {
-  public uto(utk paramutk)
+  public uto(String paramString)
   {
-    super(paramutk);
+    super(0, true, false, 300000L, false, false, paramString);
   }
   
-  public void a(@NonNull utk paramutk, @NonNull utn paramutn)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (paramutn.jdField_a_of_type_Boolean)
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      if (paramutn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-      {
-        utk.a(paramutk, paramutn.jdField_a_of_type_JavaUtilList, true);
-        utk.a(paramutk).a(true);
-      }
-      return;
+      utk.a = new utj((int)(paramSosoLbsInfo.a.a * 1000000.0D), (int)(paramSosoLbsInfo.a.b * 1000000.0D));
+      wsv.b("LbsManager", "onLocationFinish success : " + utk.a);
     }
-    utk.a(paramutk, paramutn);
-    utk.a(paramutk).remove(utk.b());
-    utk.a(paramutk);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return utn.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uto
  * JD-Core Version:    0.7.0.1
  */

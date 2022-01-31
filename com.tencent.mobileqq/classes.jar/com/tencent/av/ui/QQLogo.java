@@ -8,8 +8,8 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import lcg;
-import mgz;
+import lek;
+import mjr;
 
 public class QQLogo
   extends ImageView
@@ -36,13 +36,13 @@ public class QQLogo
   {
     boolean bool = false;
     this.a = false;
-    int i = getResources().getDimensionPixelSize(2131297793);
+    int i = getResources().getDimensionPixelSize(2131297814);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
     StringBuilder localStringBuilder = new StringBuilder().append("dispearLogo_internal:");
     if (localLayoutParams.bottomMargin != i) {
       bool = true;
     }
-    lcg.c("QQLogo", bool + "|" + localLayoutParams.bottomMargin + "|" + i);
+    lek.c("QQLogo", bool + "|" + localLayoutParams.bottomMargin + "|" + i);
     if (localLayoutParams.bottomMargin != i)
     {
       setVisibility(8);
@@ -53,7 +53,7 @@ public class QQLogo
   
   private void a(boolean paramBoolean)
   {
-    lcg.c("QQLogo", "QQLogo:" + this.a + "|" + paramBoolean + "|" + getVisibility());
+    lek.c("QQLogo", "QQLogo:" + this.a + "|" + paramBoolean + "|" + getVisibility());
     if ((getVisibility() == 8) && (!this.a) && (paramBoolean)) {
       b();
     }
@@ -66,13 +66,13 @@ public class QQLogo
   private void b()
   {
     this.a = true;
-    lcg.c("QQLogo", "showLogo_internal:");
+    lek.c("QQLogo", "showLogo_internal:");
     c();
   }
   
   private void c()
   {
-    lcg.c("QQLogo", "showLogo:");
+    lek.c("QQLogo", "showLogo:");
     Object localObject = new Transformation();
     ((Transformation)localObject).setAlpha(0.0F);
     AlphaAnimation localAlphaAnimation = (AlphaAnimation)getAnimation();
@@ -91,10 +91,10 @@ public class QQLogo
   
   private void d()
   {
-    lcg.c("QQLogo", "dispearLogo:");
+    lek.c("QQLogo", "dispearLogo:");
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setAnimationListener(new mgz(this));
+    localAlphaAnimation.setAnimationListener(new mjr(this));
     clearAnimation();
     startAnimation(localAlphaAnimation);
   }
@@ -111,13 +111,13 @@ public class QQLogo
         return;
       }
     } while (getVisibility() != 0);
-    lcg.c("QQLogo", "setOffset audio hide qq logo");
+    lek.c("QQLogo", "setOffset audio hide qq logo");
     setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.QQLogo
  * JD-Core Version:    0.7.0.1
  */

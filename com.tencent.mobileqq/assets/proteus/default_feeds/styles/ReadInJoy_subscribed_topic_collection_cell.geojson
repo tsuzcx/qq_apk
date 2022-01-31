@@ -1,6 +1,6 @@
 {
     "ReadInJoy_subscribed_topic_collection_cell": {
-        "view_type": "cell",
+        "view_type": "container",
         "direction": "vertical",
         "height": {
             "type": "relative",

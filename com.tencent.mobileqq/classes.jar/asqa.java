@@ -1,38 +1,25 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView.4.2;
 import com.tencent.qphone.base.util.QLog;
 
 public class asqa
+  implements DialogInterface.OnClickListener
 {
-  public static int a = 12;
-  public static boolean a;
+  public asqa(HotPicPageView.4.2 param2) {}
   
-  public static int a(Context paramContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramContext.getResources();
-    return paramContext.getDisplayMetrics().widthPixels - actj.a(42.0F, paramContext) * 2;
-  }
-  
-  public static int a(Context paramContext, int paramInt)
-  {
-    paramInt /= 5;
-    int i = a(paramContext);
-    paramContext = paramContext.getResources().getDisplayMetrics();
-    float f = paramContext.heightPixels * 1.0F / paramContext.widthPixels;
-    if (QLog.isColorLevel()) {
-      QLog.d("VelocityUtil", 2, "getInitVelocity() displayMetrics.widthPixels = " + paramContext.widthPixels + ", displayMetrics.heightPixels = " + paramContext.heightPixels + ", ratio = " + f + ", 16.F/9.F = " + 1.777778F + ",viewPagerClientWidth = " + i);
+    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
+    if (this.a.a.jdField_a_of_type_Asqh.a == 1) {
+      this.a.a.jdField_a_of_type_Asqh.a(0);
     }
-    if ((f > 1.777778F) && (QLog.isColorLevel())) {
-      QLog.d("VelocityUtil", 2, "getInitVelocity() ratio > 16.F/9.F");
-    }
-    QLog.d("VelocityUtil", 1, "getInitVelocity: pendingVelocity = " + paramInt + ", viewPagerClientWidth = " + i);
-    return paramInt;
+    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asqa
  * JD-Core Version:    0.7.0.1
  */

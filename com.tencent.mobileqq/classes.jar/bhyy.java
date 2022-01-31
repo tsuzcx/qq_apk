@@ -1,40 +1,35 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.ar.util.VipARUtils.3;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class bhyy
-  implements ModuleDownloadListener
+class bhyy
+  extends Handler
 {
-  public bhyy(VipARUtils.3 param3) {}
-  
-  public void onDownloadCanceled(String paramString)
+  public bhyy()
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+    super(Looper.getMainLooper());
   }
   
-  public void onDownloadFailed(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("vip_tar_engine.jar")) {
-      return;
+    switch (paramMessage.what)
+    {
     }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bhyv.a(), " onDownloadSucceed = ", bhyv.b() });
-    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bhyv.b());
+    do
+    {
+      do
+      {
+        return;
+      } while (paramMessage.obj == null);
+      paramMessage = ((WeakReference)paramMessage.obj).get();
+    } while ((paramMessage == null) || (!(paramMessage instanceof bhyv)));
+    ((bhyv)paramMessage).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhyy
  * JD-Core Version:    0.7.0.1
  */

@@ -175,7 +175,7 @@ final class af
     //   376: astore 4
     //   378: getstatic 74	com/tencent/mobileqq/msf/core/y:ad	Lorg/json/JSONObject;
     //   381: invokevirtual 148	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   384: astore 7
+    //   384: astore 8
     //   386: aload 5
     //   388: astore 4
     //   390: getstatic 151	com/tencent/mobileqq/msf/core/y:aj	Z
@@ -186,17 +186,17 @@ final class af
     //   403: dup
     //   404: getstatic 156	com/tencent/mobileqq/msf/core/y:ac	Ljava/lang/String;
     //   407: invokespecial 159	java/io/File:<init>	(Ljava/lang/String;)V
-    //   410: astore 7
+    //   410: astore 8
     //   412: aload 5
     //   414: astore 4
-    //   416: aload 7
+    //   416: aload 8
     //   418: invokevirtual 163	java/io/File:exists	()Z
     //   421: istore_1
     //   422: iload_1
     //   423: ifne +391 -> 814
     //   426: aload 5
     //   428: astore 4
-    //   430: aload 7
+    //   430: aload 8
     //   432: invokevirtual 166	java/io/File:createNewFile	()Z
     //   435: istore_1
     //   436: iload_1
@@ -357,16 +357,16 @@ final class af
     //   818: new 205	com/tencent/qphone/base/util/Cryptor
     //   821: dup
     //   822: invokespecial 206	com/tencent/qphone/base/util/Cryptor:<init>	()V
-    //   825: astore 8
+    //   825: astore 7
     //   827: aload 5
     //   829: astore 4
     //   831: new 208	java/io/FileOutputStream
     //   834: dup
-    //   835: aload 7
+    //   835: aload 8
     //   837: invokespecial 211	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   840: astore 5
     //   842: aload 5
-    //   844: aload 8
+    //   844: aload 7
     //   846: getstatic 74	com/tencent/mobileqq/msf/core/y:ad	Lorg/json/JSONObject;
     //   849: invokevirtual 148	org/json/JSONObject:toString	()Ljava/lang/String;
     //   852: invokevirtual 215	java/lang/String:getBytes	()[B
@@ -395,7 +395,7 @@ final class af
     //   906: ifnull +245 -> 1151
     //   909: aload_0
     //   910: getfield 20	com/tencent/mobileqq/msf/core/af:c	Lcom/tencent/qphone/base/remote/ToServiceMsg;
-    //   913: invokestatic 236	com/tencent/mobileqq/msf/service/q:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Lcom/tencent/qphone/base/remote/FromServiceMsg;
+    //   913: invokestatic 236	com/tencent/mobileqq/msf/service/t:a	(Lcom/tencent/qphone/base/remote/ToServiceMsg;)Lcom/tencent/qphone/base/remote/FromServiceMsg;
     //   916: astore 4
     //   918: aload 4
     //   920: invokevirtual 241	com/tencent/qphone/base/remote/FromServiceMsg:setMsgSuccess	()V
@@ -448,19 +448,19 @@ final class af
     //   1041: aload 5
     //   1043: astore 4
     //   1045: invokestatic 279	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1048: aload 7
+    //   1048: aload 8
     //   1050: ldc_w 281
     //   1053: invokestatic 287	com/tencent/mobileqq/msf/sdk/utils/SignUtils:signData	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   1056: astore 8
+    //   1056: astore 7
     //   1058: aload 5
     //   1060: astore 4
     //   1062: getstatic 290	com/tencent/mobileqq/msf/core/y:af	Ljava/lang/String;
-    //   1065: aload 8
+    //   1065: aload 7
     //   1067: invokestatic 294	com/tencent/mobileqq/msf/sdk/utils/SignUtils:writeFile	(Ljava/lang/String;Ljava/lang/String;)V
     //   1070: aload 5
     //   1072: astore 4
     //   1074: getstatic 156	com/tencent/mobileqq/msf/core/y:ac	Ljava/lang/String;
-    //   1077: aload 7
+    //   1077: aload 8
     //   1079: invokestatic 294	com/tencent/mobileqq/msf/sdk/utils/SignUtils:writeFile	(Ljava/lang/String;Ljava/lang/String;)V
     //   1082: goto -206 -> 876
     //   1085: astore 4
@@ -544,8 +544,8 @@ final class af
     //   4	1102	6	localObject7	Object
     //   1128	7	6	localObject8	Object
     //   1217	1	6	localException4	java.lang.Exception
-    //   30	1048	7	localObject9	Object
-    //   825	241	8	localObject10	Object
+    //   30	1036	7	localObject9	Object
+    //   384	694	8	localObject10	Object
     // Exception table:
     //   from	to	target	type
     //   430	436	812	java/lang/Exception

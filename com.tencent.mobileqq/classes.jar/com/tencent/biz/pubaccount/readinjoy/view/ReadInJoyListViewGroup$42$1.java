@@ -1,18 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-class ReadInJoyListViewGroup$42$1
+import rtr;
+
+public class ReadInJoyListViewGroup$42$1
   implements Runnable
 {
-  ReadInJoyListViewGroup$42$1(ReadInJoyListViewGroup.42 param42, int paramInt) {}
+  public ReadInJoyListViewGroup$42$1(rtr paramrtr) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup$42.this$0.a.setSelection(this.jdField_a_of_type_Int);
+    this.a.a.q();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.42.1
  * JD-Core Version:    0.7.0.1
  */

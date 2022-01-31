@@ -9,9 +9,8 @@ import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPlugin;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.minigame.manager.GameLoadManager;
 import com.tencent.mobileqq.minigame.utils.NativeBuffer;
-import com.tencent.mobileqq.triton.sdk.ITTEngine;
+import com.tencent.mobileqq.triton.sdk.bridge.ITNativeBufferPool;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.net.InetAddress;
@@ -98,7 +97,7 @@ public class UDPPlugin
         paramJSONObject1.put("errMsg", "invalid address :[" + str + "]");
         QLog.d("UDPPlugin", 1, "invalid address :[" + str + "]");
         return;
-        localObject1 = NativeBuffer.unpackNativeBuffer(paramJSONObject2, "message", GameLoadManager.g().getGameEngine().getNativeBufferPool());
+        localObject1 = NativeBuffer.unpackNativeBuffer(paramJSONObject2, "message", (ITNativeBufferPool)this.jsPluginEngine.getNativeBufferPool());
         int k = paramJSONObject2.optInt("offset");
         int m = paramJSONObject2.optInt("length", -1);
         i = m;
@@ -240,7 +239,7 @@ public class UDPPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.UDPPlugin
  * JD-Core Version:    0.7.0.1
  */

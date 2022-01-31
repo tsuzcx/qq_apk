@@ -1,13 +1,10 @@
-class akek
-  implements lxr
+import android.view.View;
+
+public abstract interface akek
 {
-  akek(akei paramakei) {}
+  public abstract void a(View paramView);
   
-  public void a(lxq paramlxq)
-  {
-    paramlxq.a(this.a.a.a);
-    paramlxq.a();
-  }
+  public abstract boolean a(String paramString, int paramInt);
 }
 
 

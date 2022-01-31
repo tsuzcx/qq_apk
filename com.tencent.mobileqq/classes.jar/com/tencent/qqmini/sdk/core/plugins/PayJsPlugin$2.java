@@ -4,21 +4,21 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import behq;
-import bekp;
-import bekr;
-import bekz;
-import betc;
-import bfgt;
+import bgho;
+import bgjw;
+import bgkd;
+import bgkk;
 import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
 import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.MD5Utils;
 import org.json.JSONObject;
 
 class PayJsPlugin$2
   implements AsyncResult
 {
-  PayJsPlugin$2(PayJsPlugin paramPayJsPlugin, JSONObject paramJSONObject, bekr parambekr) {}
+  PayJsPlugin$2(PayJsPlugin paramPayJsPlugin, JSONObject paramJSONObject, bgkd parambgkd) {}
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
@@ -43,7 +43,7 @@ class PayJsPlugin$2
             {
               paramJSONObject = str2;
               if (localMiniAppInfo.launchParam != null) {
-                paramJSONObject = String.valueOf(localMiniAppInfo.launchParam.a);
+                paramJSONObject = String.valueOf(localMiniAppInfo.launchParam.scene);
               }
             }
             if (localMiniAppInfo != null) {
@@ -54,8 +54,8 @@ class PayJsPlugin$2
             this.val$jsonObject.put("setMidasEnv", i);
             if (localMiniAppInfo != null)
             {
-              paramJSONObject = this.this$0.mApkgInfo.d + "_" + localMiniAppInfo.verType;
-              str1 = bfgt.b(paramJSONObject);
+              paramJSONObject = this.this$0.mApkgInfo.appId + "_" + localMiniAppInfo.verType;
+              str1 = MD5Utils.encodeHexStr(paramJSONObject);
               this.this$0.mContext.getSharedPreferences("keyMiniGamePayEnv", 4).edit().putString("keyMiniGamePayEnvAppidVertype", str1).commit();
               this.val$jsonObject.put("miniAppVertypeStr", paramJSONObject);
             }
@@ -64,7 +64,7 @@ class PayJsPlugin$2
           {
             for (;;)
             {
-              betc.b("PayJsPlugin", "setEnv error", paramJSONObject);
+              QMLog.i("PayJsPlugin", "setEnv error", paramJSONObject);
             }
           }
           this.this$0.handleRechargeGame(this.val$req, localActivity, this.val$jsonObject.toString(), String.valueOf(this.val$req.b), false);
@@ -79,18 +79,18 @@ class PayJsPlugin$2
         PayJsPlugin.access$200(this.this$0, this.val$req, null, "activity is null");
         return;
       }
-      bekz.a(new PayJsPlugin.2.1(this, str1));
-      betc.d("PayJsPlugin", "handleNativeRequest result = " + i);
+      bgkk.a(new PayJsPlugin.2.1(this, str1));
+      QMLog.e("PayJsPlugin", "handleNativeRequest result = " + i);
       PayJsPlugin.access$200(this.this$0, this.val$req, null, str1);
       return;
     }
-    betc.d("PayJsPlugin", "checkOfferId isSuc = " + paramBoolean);
+    QMLog.e("PayJsPlugin", "checkOfferId isSuc = " + paramBoolean);
     PayJsPlugin.access$200(this.this$0, this.val$req, null, "checkOfferId fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.PayJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

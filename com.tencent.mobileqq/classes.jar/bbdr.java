@@ -1,16 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.widget.ImageAnimationView;
+import com.tencent.widget.Gallery;
 
-final class bbdr
-  implements View.OnClickListener
+public class bbdr
+  implements Animation.AnimationListener
 {
-  bbdr(bbgu parambbgu) {}
+  public bbdr(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetImageAnimationView.setVisibility(4);
+    this.a.finish();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
   }
 }
 

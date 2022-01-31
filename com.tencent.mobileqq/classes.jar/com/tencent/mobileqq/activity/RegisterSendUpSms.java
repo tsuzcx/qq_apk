@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import abzc;
-import abzd;
-import ajya;
+import adqk;
+import adql;
+import alpo;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import avqc;
-import avqe;
-import axqy;
-import bbyl;
+import axia;
+import axic;
+import azmj;
+import bdxm;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
@@ -30,11 +30,11 @@ public class RegisterSendUpSms
 {
   private int jdField_a_of_type_Int = -1;
   private Button jdField_a_of_type_AndroidWidgetButton;
-  private avqc jdField_a_of_type_Avqc;
-  private avqe jdField_a_of_type_Avqe;
+  private axia jdField_a_of_type_Axia;
+  private axic jdField_a_of_type_Axic;
   private Runnable jdField_a_of_type_JavaLangRunnable = new RegisterSendUpSms.2(this);
-  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new abzd(this);
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new abzc(this);
+  private AccountObserver jdField_a_of_type_MqqObserverAccountObserver = new adql(this);
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new adqk(this);
   private int c;
   private int jdField_d_of_type_Int = 10;
   private String jdField_d_of_type_JavaLangString;
@@ -50,15 +50,15 @@ public class RegisterSendUpSms
   
   private void a()
   {
-    axqy.a(this.app, "new_reg", "send_msg", "next_clk", "", 1, "");
+    azmj.a(this.app, "new_reg", "send_msg", "next_clk", "", 1, "");
     if (getIntent().getBooleanExtra("key_register_from_fail_pay_lh", false))
     {
-      if (this.jdField_a_of_type_Avqe == null) {
-        this.jdField_a_of_type_Avqe = new avqe(this);
+      if (this.jdField_a_of_type_Axic == null) {
+        this.jdField_a_of_type_Axic = new axic(this);
       }
       getIntent().putExtra("key_register_smscode", this.jdField_d_of_type_JavaLangString);
       getIntent().putExtra("key_register_autologin", true);
-      this.jdField_a_of_type_Avqe.a(getIntent());
+      this.jdField_a_of_type_Axic.a(getIntent());
       return;
     }
     if (this.jdField_b_of_type_Boolean)
@@ -89,7 +89,7 @@ public class RegisterSendUpSms
       Object localObject;
       if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString))
       {
-        localObject = (TextView)super.findViewById(2131378498);
+        localObject = (TextView)super.findViewById(2131379110);
         if (localObject != null) {
           ((TextView)localObject).setText(this.jdField_d_of_type_JavaLangString);
         }
@@ -97,7 +97,7 @@ public class RegisterSendUpSms
       this.e = paramString.getString("upnum");
       if (!TextUtils.isEmpty(this.e))
       {
-        paramString = (TextView)super.findViewById(2131378500);
+        paramString = (TextView)super.findViewById(2131379112);
         if (paramString != null)
         {
           localObject = new StringBuilder();
@@ -135,7 +135,7 @@ public class RegisterSendUpSms
       if (QLog.isColorLevel()) {
         QLog.d("RegisterSendUpSms", 2, String.format("sendSMS phoneNum:%s, msgBody:%s", new Object[] { paramString1, paramString2 }));
       }
-      axqy.a(this.app, "new_reg_805", "send_msg", "send_clk", "", 1, "");
+      azmj.a(this.app, "new_reg_805", "send_msg", "send_clk", "", 1, "");
       return;
     }
     catch (Exception localException)
@@ -154,8 +154,8 @@ public class RegisterSendUpSms
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131562352);
-    c(2131717155);
+    setContentView(2131562556);
+    c(2131717527);
     b();
     if (getIntent().getBooleanExtra("key_register_from_fail_pay_lh", false))
     {
@@ -172,11 +172,11 @@ public class RegisterSendUpSms
         this.f = getIntent().getStringExtra("key_register_binded_qq");
       }
       if (QLog.isDevelopLevel()) {
-        bbyl.a(getClass().getSimpleName(), getIntent());
+        bdxm.a(getClass().getSimpleName(), getIntent());
       }
-      this.jdField_d_of_type_JavaLangString = super.getString(2131717156);
-      this.e = super.getString(2131717157);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363630));
+      this.jdField_d_of_type_JavaLangString = super.getString(2131717528);
+      this.e = super.getString(2131717529);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363683));
       if (this.jdField_a_of_type_AndroidWidgetButton != null) {
         this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       }
@@ -187,19 +187,19 @@ public class RegisterSendUpSms
       if (!TextUtils.isEmpty(paramBundle)) {
         a(paramBundle);
       }
-      axqy.a(this.app, "dc00898", "", "", "0X8007364", "0X8007364", 0, 0, "", "", "", "");
+      azmj.a(this.app, "dc00898", "", "", "0X8007364", "0X8007364", 0, 0, "", "", "", "");
       if (this.jdField_b_of_type_Boolean) {
         break label399;
       }
-      axqy.a(this.app, "dc00898", "", "", "0X8007364", "0X8007364", 1, 0, "", "", "", "");
+      azmj.a(this.app, "dc00898", "", "", "0X8007364", "0X8007364", 1, 0, "", "", "", "");
       label302:
       if (!TextUtils.isEmpty(this.f)) {
-        axqy.a(this.app, "dc00898", "", "", "0X8007364", "0X8007364", 3, 0, "", "", "", "");
+        azmj.a(this.app, "dc00898", "", "", "0X8007364", "0X8007364", 3, 0, "", "", "", "");
       }
       if (this.jdField_b_of_type_Int != 7) {
         break label439;
       }
-      axqy.a(this.app, "new_reg_805", "send_msg", "page_exp", "", 1, "", "1", "", "", "", "", "", "", "");
+      azmj.a(this.app, "new_reg_805", "send_msg", "page_exp", "", 1, "", "1", "", "", "", "", "", "", "");
     }
     for (;;)
     {
@@ -210,18 +210,18 @@ public class RegisterSendUpSms
       if (this.jdField_c_of_type_Boolean) {
         break label302;
       }
-      axqy.a(this.app, "dc00898", "", "", "0X8007364", "0X8007364", 2, 0, "", "", "", "");
+      azmj.a(this.app, "dc00898", "", "", "0X8007364", "0X8007364", 2, 0, "", "", "", "");
       break label302;
       label439:
-      axqy.a(this.app, "new_reg_805", "send_msg", "page_exp", "", 1, "", "2", "", "", "", "", "", "", "");
+      azmj.a(this.app, "new_reg_805", "send_msg", "page_exp", "", 1, "", "2", "", "", "", "", "", "", "");
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Avqe != null) {
-      this.jdField_a_of_type_Avqe.c();
+    if (this.jdField_a_of_type_Axic != null) {
+      this.jdField_a_of_type_Axic.c();
     }
   }
   
@@ -238,11 +238,11 @@ public class RegisterSendUpSms
         localAccountManager.queryUpSmsStat(this.jdField_a_of_type_MqqObserverAccountObserver);
       }
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131713348) + "(" + this.jdField_d_of_type_Int + "s)");
+      this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131713720) + "(" + this.jdField_d_of_type_Int + "s)");
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
     }
-    if (this.jdField_a_of_type_Avqe != null) {
-      this.jdField_a_of_type_Avqe.b();
+    if (this.jdField_a_of_type_Axic != null) {
+      this.jdField_a_of_type_Axic.b();
     }
   }
   
@@ -254,8 +254,8 @@ public class RegisterSendUpSms
   public void onAccountChanged()
   {
     super.onAccountChanged();
-    if (this.jdField_a_of_type_Avqe != null) {
-      this.jdField_a_of_type_Avqe.d();
+    if (this.jdField_a_of_type_Axic != null) {
+      this.jdField_a_of_type_Axic.d();
     }
   }
   
@@ -283,7 +283,7 @@ public class RegisterSendUpSms
       paramView.queryUpSmsStat(this.jdField_a_of_type_MqqObserverAccountObserver);
     }
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetButton.setText(ajya.a(2131713350) + "(" + this.jdField_d_of_type_Int + "s)");
+    this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131713722) + "(" + this.jdField_d_of_type_Int + "s)");
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
   }
   
@@ -291,19 +291,19 @@ public class RegisterSendUpSms
   {
     super.onDestroy();
     this.app.removeHandler(RegisterSendUpSms.class);
-    if (this.jdField_a_of_type_Avqc != null) {
-      this.jdField_a_of_type_Avqc.a();
+    if (this.jdField_a_of_type_Axia != null) {
+      this.jdField_a_of_type_Axia.a();
     }
-    this.jdField_a_of_type_Avqc = null;
-    if (this.jdField_a_of_type_Avqe != null) {
-      this.jdField_a_of_type_Avqe.a();
+    this.jdField_a_of_type_Axia = null;
+    if (this.jdField_a_of_type_Axic != null) {
+      this.jdField_a_of_type_Axic.a();
     }
-    this.jdField_a_of_type_Avqe = null;
+    this.jdField_a_of_type_Axic = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterSendUpSms
  * JD-Core Version:    0.7.0.1
  */

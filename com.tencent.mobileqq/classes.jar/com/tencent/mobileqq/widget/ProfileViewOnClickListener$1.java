@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.widget;
 
-import bcpt;
+import bepd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.medalwall.MedalWallMng;
 
 public class ProfileViewOnClickListener$1
   implements Runnable
 {
-  public ProfileViewOnClickListener$1(bcpt parambcpt, QQAppInterface paramQQAppInterface) {}
+  public ProfileViewOnClickListener$1(bepd parambepd, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {

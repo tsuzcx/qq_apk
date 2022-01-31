@@ -1,59 +1,12 @@
-import android.os.Bundle;
+import java.util.ArrayList;
 
-public class bbad
+public abstract interface bbad
 {
-  Bundle a = new Bundle();
-  
-  public Bundle a()
-  {
-    return this.a;
-  }
-  
-  public bbad a(String paramString)
-  {
-    this.a.putString("text_evidence", paramString);
-    return this;
-  }
-  
-  public bbad b(String paramString)
-  {
-    this.a.putString("img_evidence", paramString);
-    return this;
-  }
-  
-  public bbad c(String paramString)
-  {
-    this.a.putString("url_evidence", paramString);
-    return this;
-  }
-  
-  public bbad d(String paramString)
-  {
-    this.a.putString("video_evidence", paramString);
-    return this;
-  }
-  
-  public bbad e(String paramString)
-  {
-    this.a.putString("file_evidence", paramString);
-    return this;
-  }
-  
-  public bbad f(String paramString)
-  {
-    this.a.putString("audio_evidence", paramString);
-    return this;
-  }
-  
-  public bbad g(String paramString)
-  {
-    this.a.putString("user_input_param", paramString);
-    return this;
-  }
+  public abstract void a(int paramInt, String paramString, ArrayList<bbaa> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbad
  * JD-Core Version:    0.7.0.1
  */

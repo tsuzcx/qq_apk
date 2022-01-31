@@ -1,45 +1,73 @@
-import java.util.HashMap;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class mum
 {
-  public int a;
-  public String a;
-  public HashMap<String, String> a;
-  public mun a;
-  public int b;
-  public int c = 60000;
-  
-  public mum()
+  public static String a()
   {
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_b_of_type_Int = 5000;
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ImageUtil", 2, "[image download] getFilesDir is null");
+      }
+      return "";
+    }
+    return localFile.getParent() + "/qav/image_download/";
   }
   
-  public String toString()
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mUrl = ").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(",mConnectionTimeout = ").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(",mSocketTimeout = ").append(this.c);
-    if (this.jdField_a_of_type_Mun != null)
-    {
-      localStringBuilder.append(",mResult.mIsSucc = ").append(this.jdField_a_of_type_Mun.jdField_a_of_type_Boolean);
-      localStringBuilder.append(",mResult.mFileLength = ").append(this.jdField_a_of_type_Mun.jdField_a_of_type_Long);
-      localStringBuilder.append(",mResult.mErrCode = ").append(this.jdField_a_of_type_Mun.jdField_a_of_type_Int);
-      localStringBuilder.append(",mResult.mErrStr = ").append(this.jdField_a_of_type_Mun.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(",mResult.mTryCount = ").append(this.jdField_a_of_type_Mun.jdField_b_of_type_Int);
-      localStringBuilder.append(",mResult.mCostTime = ").append(this.jdField_a_of_type_Mun.jdField_b_of_type_Long).append("ms");
+    if (QLog.isColorLevel()) {
+      QLog.i("ImageUtil", 2, "[image early] trigger early download");
     }
-    for (;;)
+    paramQQAppInterface = (apgj)paramQQAppInterface.getManager(77);
+    if (paramQQAppInterface != null)
     {
-      return localStringBuilder.toString();
-      localStringBuilder.append(",mResult = null");
+      paramQQAppInterface = (aphi)paramQQAppInterface.a("qq.android.qav.image2");
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.a(false);
+      }
     }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return new File(b(), paramString).exists();
+  }
+  
+  public static String b()
+  {
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ImageUtil", 2, "[image early] getFilesDir is null");
+      }
+      return "";
+    }
+    return localFile.getParent() + "/qav/image_early/";
+  }
+  
+  public static String c()
+  {
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ImageUtil", 2, "[video early] getFilesDir is null");
+      }
+      return "";
+    }
+    return localFile.getParent() + "/qav/video_early/";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mum
  * JD-Core Version:    0.7.0.1
  */

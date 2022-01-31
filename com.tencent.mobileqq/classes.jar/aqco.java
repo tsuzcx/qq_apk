@@ -1,30 +1,23 @@
-import android.content.Intent;
-import java.util.Set;
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 
-public class aqco
-  extends aqds
+@TargetApi(16)
+class aqco
 {
-  public aqco(Intent paramIntent)
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    super(paramIntent);
+    paramView.setBackground(paramDrawable);
   }
   
-  protected void a()
+  public static void a(View paramView, Runnable paramRunnable)
   {
-    if (k()) {
-      this.a.add(d);
-    }
-    if (l()) {
-      this.a.add(c);
-    }
-    if (m()) {
-      this.a.add(b);
-    }
+    paramView.postOnAnimation(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqco
  * JD-Core Version:    0.7.0.1
  */

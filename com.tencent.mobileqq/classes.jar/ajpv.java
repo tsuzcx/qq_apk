@@ -1,51 +1,132 @@
-import android.app.Activity;
-import android.os.Looper;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.view.ApolloGameWrapper.1;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
 
-public class ajpv
+class ajpv
 {
-  public static void a(boolean paramBoolean, Activity paramActivity, aeyv paramaeyv, AppInterface paramAppInterface, String paramString, ajpw paramajpw)
+  public float a;
+  public int a;
+  public ajpu a;
+  private ajpw a;
+  public Bitmap a;
+  public boolean a;
+  
+  public ajpv(String paramString, ajpw paramajpw, Typeface paramTypeface)
   {
-    a(paramBoolean, paramActivity, paramaeyv, paramAppInterface, paramString, paramajpw, true);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Ajpw = paramajpw;
+    this.jdField_a_of_type_Ajpu = new ajpu(paramString, this.jdField_a_of_type_Ajpw.c, this.jdField_a_of_type_Ajpw.b, this.jdField_a_of_type_Ajpw.e, this.jdField_a_of_type_Ajpw.f, 0.0F, (this.jdField_a_of_type_Ajpw.jdField_a_of_type_Float - this.jdField_a_of_type_Ajpw.b) / 2.0F, paramTypeface);
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      b(paramString);
+      return;
+    }
   }
   
-  public static void a(boolean paramBoolean1, Activity paramActivity, aeyv paramaeyv, AppInterface paramAppInterface, String paramString, ajpw paramajpw, boolean paramBoolean2)
+  private boolean a(String paramString1, String paramString2)
   {
-    if (paramajpw == null)
+    if ((paramString1 == null) && (paramString2 == null)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame listener is null");
+      return true;
+      if ((paramString1 == null) || (paramString2 == null)) {
+        return false;
       }
-      return;
-    }
-    if ((paramActivity == null) || (paramAppInterface == null))
+    } while (paramString1.equals(paramString2));
+    return false;
+  }
+  
+  private void b(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.ApolloGameWrapper", 2, "checkApolloGame activity is null OR appInterface is null");
-      }
-      paramajpw.a(false, null);
-      return;
-    }
-    if (Looper.getMainLooper() == Looper.myLooper())
-    {
-      paramaeyv = ajcm.a(paramString);
-      if ((paramaeyv == null) || (paramaeyv.a == null) || (paramaeyv.a.get() != paramActivity))
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+      if (this.jdField_a_of_type_Int != -1)
       {
-        paramajpw.a(false, paramaeyv);
-        return;
+        GlUtil.deleteTexture(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Int = -1;
       }
-      paramajpw.a(true, paramaeyv);
       return;
     }
-    paramActivity.runOnUiThread(new ApolloGameWrapper.1(paramString, paramActivity, paramajpw));
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    }
+    if (this.jdField_a_of_type_Int != -1)
+    {
+      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Int = -1;
+    }
+    this.jdField_a_of_type_AndroidGraphicsBitmap = ajqa.a(this.jdField_a_of_type_Ajpu.c, this.jdField_a_of_type_Ajpw.jdField_a_of_type_Float);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      paramString = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_Ajpu.jdField_a_of_type_Float = 0.0F;
+      this.jdField_a_of_type_Ajpu.a(paramString);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = -1;
+      return;
+      QLog.d("BeanItemWrapper", 2, "createcache error:" + this.jdField_a_of_type_Ajpu.c + "-" + this.jdField_a_of_type_Ajpw.jdField_a_of_type_Float);
+    }
+  }
+  
+  public void a(Canvas paramCanvas, float paramFloat1, float paramFloat2)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      this.jdField_a_of_type_Ajpu.jdField_a_of_type_Float = paramFloat1;
+      paramFloat1 = this.jdField_a_of_type_Ajpu.b;
+      ajpu localajpu = this.jdField_a_of_type_Ajpu;
+      localajpu.b += paramFloat2;
+      this.jdField_a_of_type_Ajpu.a(paramCanvas);
+      this.jdField_a_of_type_Ajpu.b = paramFloat1;
+      return;
+    }
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, paramFloat1, paramFloat2, null);
+  }
+  
+  public void a(RenderBuffer paramRenderBuffer, RectF paramRectF, float paramFloat1, float paramFloat2)
+  {
+    if ((paramRenderBuffer == null) || (!this.jdField_a_of_type_Boolean)) {}
+    do
+    {
+      return;
+      if ((this.jdField_a_of_type_Int < 0) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
+        this.jdField_a_of_type_Int = GlUtil.createTexture(3553, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      }
+    } while (this.jdField_a_of_type_Int < 0);
+    ajqa.a(paramRenderBuffer, this.jdField_a_of_type_Int, this.jdField_a_of_type_Ajpu.c, this.jdField_a_of_type_Ajpw.jdField_a_of_type_Float, paramRectF, paramFloat1, paramFloat2);
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      if (!a(paramString, this.jdField_a_of_type_Ajpu.jdField_a_of_type_JavaLangString))
+      {
+        this.jdField_a_of_type_Ajpu.a(paramString);
+        b(paramString);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajpv
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
-import atxu;
+import avoy;
 import com.tencent.qphone.base.util.QLog;
 
 public class AutoScrollImageView
@@ -70,7 +70,7 @@ public class AutoScrollImageView
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(-1);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(2);
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new atxu(this));
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new avoy(this));
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     }
     if (this.jdField_a_of_type_Int == 0)
@@ -165,7 +165,7 @@ public class AutoScrollImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.AutoScrollImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import bgzs;
+import bjav;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 
 public class QZoneTopGestureLayout
@@ -39,7 +39,7 @@ public class QZoneTopGestureLayout
   {
     a = true;
     b = true;
-    this.mTopGestureDetector = new GestureDetector(paramContext, new bgzs(this, paramContext), new Handler(Looper.getMainLooper()));
+    this.mTopGestureDetector = new GestureDetector(paramContext, new bjav(this, paramContext), new Handler(Looper.getMainLooper()));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -52,7 +52,7 @@ public class QZoneTopGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QZoneTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

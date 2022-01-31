@@ -1,41 +1,19 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import java.util.List;
-import mqq.os.MqqHandler;
 
-class scs
-  extends sce
+final class scs
+  implements scv
 {
-  scs(scr paramscr) {}
+  scs(sct paramsct) {}
   
-  protected void a(boolean paramBoolean, List<scj> paramList)
+  public void a(boolean paramBoolean, List<BaseData> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptObserver", 2, "onGetRecommendList isSuccess: " + paramBoolean + " | data: " + paramList + " | isShowRecommend: " + this.a.jdField_a_of_type_Boolean);
-    }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Boolean))
-    {
-      if ((paramList == null) || (paramList.isEmpty())) {
-        break label145;
-      }
-      this.a.a(paramList);
-      paramList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-      if ((paramList != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && ((this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity))) {
-        paramList.sendEmptyMessage(1004);
-      }
-    }
-    label145:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("SubscriptObserver", 2, "onGetRecommendList data is null or empty");
+    this.a.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     scs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,20 @@
-public class ampz
+public abstract interface ampz
 {
-  @arlz(a="poll_interval")
-  public int a;
-  @arlz(a="jump_url")
-  public String a;
-  @arlz(a="search_empty_show_troop_recommend")
-  public int b;
+  public abstract void a(long paramLong);
   
-  public ampz()
-  {
-    this.jdField_a_of_type_Int = 10;
-    this.jdField_a_of_type_JavaLangString = "";
-  }
+  public abstract void a(amqn paramamqn);
   
-  public static ampz a(String paramString)
-  {
-    return (ampz)arma.a(paramString, ampz.class);
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(boolean paramBoolean, String paramString);
+  
+  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampz
  * JD-Core Version:    0.7.0.1
  */

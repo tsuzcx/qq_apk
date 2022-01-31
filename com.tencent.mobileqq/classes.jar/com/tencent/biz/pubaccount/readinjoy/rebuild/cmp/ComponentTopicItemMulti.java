@@ -9,27 +9,27 @@ import android.view.View;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import bhvy;
+import bjxj;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 import java.net.MalformedURLException;
 import java.net.URL;
-import omr;
-import pqo;
-import pqy;
-import pyi;
-import pyj;
-import qds;
+import orc;
+import pxj;
+import pxt;
+import qfc;
+import qfd;
+import qno;
 
 public class ComponentTopicItemMulti
   extends RelativeLayout
-  implements pqo
+  implements pxj
 {
   private int jdField_a_of_type_Int;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  public qds a;
+  public qno a;
   TextView b;
   
   public ComponentTopicItemMulti(Context paramContext)
@@ -58,7 +58,7 @@ public class ComponentTopicItemMulti
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2131559885, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131559980, this, true);
   }
   
   public void a() {}
@@ -70,28 +70,28 @@ public class ComponentTopicItemMulti
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364798));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377350));
-    this.b = ((TextView)findViewById(2131365017));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364879));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377884));
+    this.b = ((TextView)findViewById(2131365102));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof qds))
+    if ((paramObject instanceof qno))
     {
-      this.jdField_a_of_type_Qds = ((qds)paramObject);
+      this.jdField_a_of_type_Qno = ((qno)paramObject);
       b();
     }
     try
     {
-      paramObject = new URL(this.jdField_a_of_type_Qds.d);
-      omr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramObject, getContext());
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Qds.c + this.jdField_a_of_type_Qds.a);
-      paramObject = String.format(getResources().getString(2131718590), new Object[] { bhvy.a(this.jdField_a_of_type_Qds.jdField_b_of_type_Int) });
+      paramObject = new URL(this.jdField_a_of_type_Qno.d);
+      orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramObject, getContext());
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Qno.c + this.jdField_a_of_type_Qno.a);
+      paramObject = String.format(getResources().getString(2131719050), new Object[] { bjxj.a(this.jdField_a_of_type_Qno.jdField_b_of_type_Int) });
       this.b.setText(paramObject);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_Qds.jdField_b_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Qno.jdField_b_of_type_JavaLangString))
       {
-        setOnClickListener(new pyi(this));
+        setOnClickListener(new qfc(this));
         return;
       }
     }
@@ -99,14 +99,14 @@ public class ComponentTopicItemMulti
     {
       for (;;)
       {
-        omr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, null, getContext());
+        orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, null, getContext());
         paramObject.printStackTrace();
       }
-      setOnClickListener(new pyj(this));
+      setOnClickListener(new qfd(this));
     }
   }
   
-  public void a(pqy parampqy) {}
+  public void a(pxt parampxt) {}
   
   public void b()
   {
@@ -121,7 +121,7 @@ public class ComponentTopicItemMulti
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti
  * JD-Core Version:    0.7.0.1
  */

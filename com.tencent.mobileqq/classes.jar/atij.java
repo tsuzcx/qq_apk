@@ -1,216 +1,24 @@
-import android.content.Context;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-
 public class atij
 {
-  static URLDrawable a;
+  public String a;
+  public boolean a;
+  public boolean b;
   
-  public static Bitmap a(Drawable paramDrawable)
+  public atij(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramDrawable instanceof BitmapDrawable)) {
-      return ((BitmapDrawable)paramDrawable).getBitmap();
-    }
-    Bitmap localBitmap = Bitmap.createBitmap(120, 120, Bitmap.Config.RGB_565);
-    Canvas localCanvas = new Canvas(localBitmap);
-    paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-    paramDrawable.draw(localCanvas);
-    return localBitmap;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
   }
   
-  static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, atiu paramatiu)
+  public String toString()
   {
-    paramBaseActivity = (QQAppInterface)paramBaseActivity.getAppRuntime();
-    if (!TextUtils.isEmpty(paramString5))
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mUseAutoScaleParams = false;
-      if (a != null) {
-        a.cancelDownload();
-      }
-      a = URLDrawable.getDrawable(paramString5, localURLDrawableOptions);
-      if (a.getStatus() == 1)
-      {
-        ved.c("ShortVideoShareUtil", "URLDrawable's status is SUCCESSED.");
-        b(paramBaseActivity, paramString1, paramString2, paramString3, paramString4, a(a), paramatiu);
-        return;
-      }
-      if (a.getStatus() == 2)
-      {
-        b(paramBaseActivity, paramString1, paramString2, paramString3, paramString4, null, paramatiu);
-        a.downloadImediatly();
-        return;
-      }
-      ved.c("ShortVideoShareUtil", "start load URLDrawable.");
-      a.setURLDrawableListener(new atin(paramBaseActivity, paramString1, paramString2, paramString3, paramString4, paramatiu));
-      a.downloadImediatly();
-      return;
-    }
-    b(paramBaseActivity, paramString1, paramString2, paramString3, paramString4, null, paramatiu);
-  }
-  
-  static void a(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
-  {
-    paramString1 = new axum(StructMsgForGeneralShare.class).c(131).a(paramString2).a("web", paramString4, null, null, null).a();
-    paramString4 = axuz.a(2);
-    paramString4.a(paramString5, paramString2, paramString3, 0);
-    paramString1.addItem(paramString4);
-    paramString2 = new Intent();
-    paramString2.putExtra("forward_type", -3);
-    paramString2.putExtra("stuctmsg_bytes", paramString1.getBytes());
-    aqbe.a(paramBaseActivity, paramString2, 123);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, URLDrawable paramURLDrawable, DialogInterface.OnDismissListener paramOnDismissListener)
-  {
-    paramString1 = new bbjq(paramBaseActivity);
-    paramString1.a(paramBaseActivity.getString(2131719508));
-    paramString1.a(a(paramBaseActivity));
-    paramString1.a(paramOnDismissListener);
-    paramString1.a(new atik(paramString1, paramBaseActivity, paramString4, paramString2, paramString5, paramString3, paramString6, paramString7, paramQQAppInterface));
-    try
-    {
-      paramString1.a();
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ShareActionSheet", 2, "actionSheet.show exception=" + paramQQAppInterface);
-    }
-  }
-  
-  public static List<bbjs>[] a(Context paramContext)
-  {
-    ArrayList localArrayList = new ArrayList();
-    bbjs localbbjs = new bbjs();
-    localbbjs.a = paramContext.getString(2131696696);
-    localbbjs.jdField_b_of_type_Int = 2130838754;
-    localbbjs.jdField_b_of_type_Boolean = true;
-    localbbjs.c = 2;
-    localbbjs.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbjs);
-    localbbjs = new bbjs();
-    localbbjs.a = paramContext.getString(2131696709);
-    localbbjs.jdField_b_of_type_Int = 2130838755;
-    localbbjs.jdField_b_of_type_Boolean = true;
-    localbbjs.c = 3;
-    localbbjs.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbjs);
-    localbbjs = new bbjs();
-    localbbjs.a = paramContext.getString(2131696716);
-    localbbjs.jdField_b_of_type_Int = 2130838758;
-    localbbjs.c = 9;
-    localbbjs.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbjs);
-    localbbjs = new bbjs();
-    localbbjs.a = paramContext.getString(2131696699);
-    localbbjs.jdField_b_of_type_Int = 2130838752;
-    localbbjs.c = 10;
-    localbbjs.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localbbjs);
-    return (List[])new ArrayList[] { localArrayList };
-  }
-  
-  private static void b(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    paramString1 = (QQAppInterface)paramBaseActivity.getAppRuntime();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString5);
-    paramString5 = new Bundle();
-    paramString5.putString("title", paramString2);
-    paramString5.putString("desc", paramString3);
-    paramString5.putString("summary", paramString3);
-    paramString5.putString("detail_url", paramString4);
-    paramString5.putString("url", paramString4);
-    paramString5.putStringArrayList("image_url", localArrayList);
-    paramString5.putString("targetUrl", paramString4);
-    paramString5.putInt("cflag", 1);
-    bgzl.a(paramString1, paramBaseActivity, paramString5, null, 124);
-    new atix().h("video").i("playpage_fw_suc").a().a(paramString1);
-  }
-  
-  static void b(BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, atiu paramatiu)
-  {
-    String str = String.valueOf(System.currentTimeMillis());
-    if (!TextUtils.isEmpty(paramString5))
-    {
-      paramString1 = URLDrawable.URLDrawableOptions.obtain();
-      paramString1.mUseAutoScaleParams = false;
-      if (a != null) {
-        a.cancelDownload();
-      }
-      a = URLDrawable.getDrawable(paramString5, paramString1);
-      paramString5 = (QQAppInterface)paramBaseActivity.getAppRuntime();
-      if (a.getStatus() == 1)
-      {
-        ved.c("ShortVideoShareUtil", "URLDrawable's status is SUCCESSED.");
-        paramString1 = a(a);
-        paramBaseActivity = paramString1;
-        if (paramString1 == null) {
-          paramBaseActivity = baxi.b(BaseApplicationImpl.getApplication().getResources(), 2130844480);
-        }
-        WXShareHelper.a().a(new atip(str, paramatiu));
-        WXShareHelper.a().a(str, paramString2, paramBaseActivity, paramString3, paramString4);
-        new atix().h("video").i("playpage_fw_suc").a().a(paramString5);
-      }
-    }
-    else
-    {
-      return;
-    }
-    if (a.getStatus() == 2)
-    {
-      paramString1 = a(a);
-      paramBaseActivity = paramString1;
-      if (paramString1 == null) {
-        paramBaseActivity = baxi.b(BaseApplicationImpl.getApplication().getResources(), 2130844480);
-      }
-      WXShareHelper.a().a(new atiq(str, paramatiu));
-      WXShareHelper.a().a(str, paramString2, paramBaseActivity, paramString3, paramString4);
-      a.downloadImediatly();
-      new atix().h("video").i("playpage_fw_suc").a().a(paramString5);
-      return;
-    }
-    ved.c("ShortVideoShareUtil", "start load URLDrawable.");
-    a.setURLDrawableListener(new atir(str, paramatiu, paramString2, paramString3, paramString4, paramString5));
-    a.startDownload();
-  }
-  
-  private static void b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, Bitmap paramBitmap, atiu paramatiu)
-  {
-    String str = String.valueOf(System.currentTimeMillis());
-    if (paramBitmap == null) {}
-    for (paramString1 = baxi.b(BaseApplicationImpl.getApplication().getResources(), 2130844480);; paramString1 = paramBitmap)
-    {
-      WXShareHelper.a().a(new atio(str, paramatiu));
-      WXShareHelper.a().b(str, paramString2, paramString1, paramString3, paramString4);
-      new atix().h("video").i("playpage_fw_suc").a().a(paramQQAppInterface);
-      return;
-    }
+    return "MusicExtendedReqParam{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", needUrl=" + this.jdField_a_of_type_Boolean + ", needLyric=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atij
  * JD-Core Version:    0.7.0.1
  */

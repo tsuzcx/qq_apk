@@ -9,9 +9,6 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class subcmd0x501$SubCmd0x501Rspbody$DownloadEncryptConf
   extends MessageMicro<DownloadEncryptConf>
 {
-  public static final int BOOL_ENABLE_ENCRYPTED_PIC_FIELD_NUMBER = 2;
-  public static final int BOOL_ENABLE_ENCRYPT_REQUEST_FIELD_NUMBER = 1;
-  public static final int UINT32_CTRL_FLAG_FIELD_NUMBER = 3;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "bool_enable_encrypt_request", "bool_enable_encrypted_pic", "uint32_ctrl_flag" }, new Object[] { Boolean.valueOf(false), Boolean.valueOf(false), Integer.valueOf(0) }, DownloadEncryptConf.class);
   public final PBBoolField bool_enable_encrypt_request = PBField.initBool(false);
   public final PBBoolField bool_enable_encrypted_pic = PBField.initBool(false);

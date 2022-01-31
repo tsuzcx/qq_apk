@@ -1,25 +1,120 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class amgd
-  implements bbqp
+public class amgd
 {
-  amgd(amgb paramamgb, int paramInt) {}
-  
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public static int a(MessageRecord paramMessageRecord, int paramInt)
   {
-    paramQQAppInterface = bbtj.a(this.jdField_a_of_type_Amgb.a.getApp(), this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("MessageNotificationSettingManager", 2, new Object[] { "playRingId.onCompleted: invoked. ", " wavPath: ", paramQQAppInterface });
+    paramMessageRecord = a(paramMessageRecord);
+    int j;
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord = paramMessageRecord.iterator();
+      int i = 0;
+      j = i;
+      if (!paramMessageRecord.hasNext()) {
+        break label62;
+      }
+      amge localamge = (amge)paramMessageRecord.next();
+      if (localamge.a != paramInt) {
+        break label64;
+      }
+      i = localamge.b + i;
     }
-    amgb.a(this.jdField_a_of_type_Amgb, paramQQAppInterface);
+    label62:
+    label64:
+    for (;;)
+    {
+      break;
+      j = 0;
+      return j;
+    }
   }
   
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
+  public static List<amge> a(MessageRecord paramMessageRecord)
+  {
+    ArrayList localArrayList;
+    String str;
+    int j;
+    int i;
+    if (((paramMessageRecord instanceof MessageForStructing)) && ((((MessageForStructing)paramMessageRecord).structingMsg instanceof AbsShareMsg)) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 52))
+    {
+      paramMessageRecord = (AbsShareMsg)((MessageForStructing)paramMessageRecord).structingMsg;
+      localArrayList = new ArrayList();
+      Iterator localIterator = paramMessageRecord.iterator();
+      for (;;)
+      {
+        if (localIterator.hasNext())
+        {
+          paramMessageRecord = (azqj)localIterator.next();
+          if (paramMessageRecord != null)
+          {
+            str = alpo.a(2131705648);
+            j = 1;
+            if ((paramMessageRecord instanceof azsv))
+            {
+              i = ((azsv)paramMessageRecord).a.getInt("count");
+              j = 1;
+              paramMessageRecord = str;
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      localArrayList.add(new amge(paramMessageRecord, j, i));
+      break;
+      Object localObject = paramMessageRecord.h;
+      if (localObject != null)
+      {
+        i = j;
+        paramMessageRecord = str;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          i = j;
+          paramMessageRecord = str;
+          str = ((JSONObject)localObject).getString("giftName");
+          i = j;
+          paramMessageRecord = str;
+          j = ((JSONObject)localObject).getInt("giftType");
+          i = j;
+          paramMessageRecord = str;
+          int k = ((JSONObject)localObject).getInt("giftCount");
+          i = k;
+          paramMessageRecord = str;
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          j = i;
+          i = 0;
+        }
+        continue;
+        return localArrayList;
+        return null;
+      }
+      else
+      {
+        i = 0;
+        j = 1;
+        paramMessageRecord = localJSONException;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgd
  * JD-Core Version:    0.7.0.1
  */

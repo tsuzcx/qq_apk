@@ -29,8 +29,8 @@ public class HttpUtils
   private static final String LOGTAG = "HttpUtils";
   public static byte[] POST_DATA_KEY = null;
   private static final int PROTOCOL_VERSION = 3;
-  private static final int TIDTYPE_MM = 0;
-  private static final int TIDTYPE_QQ = 1;
+  private static final int TID_NO_ENCRYPT = 0;
+  private static final int TID_WITH_ENCRYPT = 1;
   private static final String mmPackageName = "com.tencent.mm";
   private static final String qqPackageName = "com.tencent.mobileqq";
   
@@ -274,7 +274,7 @@ public class HttpUtils
     //   217: aload_0
     //   218: getfield 165	MTT/ThirdAppInfoNew:sAppName	Ljava/lang/String;
     //   221: invokevirtual 118	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   224: ifeq +278 -> 502
+    //   224: ifeq +272 -> 496
     //   227: new 356	com/tencent/smtt/sdk/TbsDownloadUpload
     //   230: dup
     //   231: aload_1
@@ -332,7 +332,7 @@ public class HttpUtils
     //   351: pop
     //   352: aload_1
     //   353: invokestatic 272	com/tencent/smtt/sdk/TbsShareManager:isThirdPartyApp	(Landroid/content/Context;)Z
-    //   356: ifeq +195 -> 551
+    //   356: ifeq +189 -> 545
     //   359: aload 6
     //   361: ldc_w 387
     //   364: aload_1
@@ -358,7 +358,7 @@ public class HttpUtils
     //   408: istore_2
     //   409: aload_0
     //   410: getfield 297	MTT/ThirdAppInfoNew:localCoreVersion	I
-    //   413: ifgt +167 -> 580
+    //   413: ifgt +161 -> 574
     //   416: aload 6
     //   418: ldc_w 402
     //   421: aload_1
@@ -377,111 +377,109 @@ public class HttpUtils
     //   449: aload_1
     //   450: invokevirtual 418	com/tencent/smtt/sdk/TbsDownloadConfig:uploadDownloadInterruptCodeIfNeeded	(Landroid/content/Context;)V
     //   453: invokestatic 421	com/tencent/smtt/sdk/QbSdk:getTID	()Ljava/lang/String;
-    //   456: ifnull +43 -> 499
+    //   456: ifnull +37 -> 493
     //   459: aload_0
     //   460: getfield 165	MTT/ThirdAppInfoNew:sAppName	Ljava/lang/String;
     //   463: ldc 31
     //   465: invokevirtual 118	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   468: ifeq +125 -> 593
+    //   468: ifeq +119 -> 587
     //   471: aload 6
     //   473: ldc_w 423
-    //   476: invokestatic 428	com/tencent/smtt/utils/PostEncryption:getInstance	()Lcom/tencent/smtt/utils/PostEncryption;
-    //   479: invokestatic 421	com/tencent/smtt/sdk/QbSdk:getTID	()Ljava/lang/String;
-    //   482: invokevirtual 432	com/tencent/smtt/utils/PostEncryption:RSAEncode	(Ljava/lang/String;)Ljava/lang/String;
-    //   485: invokevirtual 319	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   488: pop
-    //   489: aload 6
-    //   491: ldc_w 434
-    //   494: iconst_1
-    //   495: invokevirtual 343	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   498: pop
-    //   499: aload 6
-    //   501: areturn
-    //   502: aload_0
-    //   503: getfield 288	MTT/ThirdAppInfoNew:sAppSignature	Ljava/lang/String;
-    //   506: ifnonnull +29 -> 535
-    //   509: aload 6
-    //   511: ldc_w 377
-    //   514: ldc_w 436
-    //   517: invokevirtual 319	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   520: pop
-    //   521: goto -192 -> 329
-    //   524: astore_0
-    //   525: ldc 96
-    //   527: ldc_w 438
-    //   530: invokestatic 415	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   533: aconst_null
-    //   534: areturn
-    //   535: aload 6
-    //   537: ldc_w 377
-    //   540: aload_0
-    //   541: getfield 288	MTT/ThirdAppInfoNew:sAppSignature	Ljava/lang/String;
-    //   544: invokevirtual 319	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   547: pop
-    //   548: goto -219 -> 329
-    //   551: aload 6
-    //   553: ldc_w 387
-    //   556: aload_1
-    //   557: invokestatic 443	com/tencent/smtt/sdk/TbsDownloader:getCoreShareDecoupleCoreVersionByContext	(Landroid/content/Context;)I
-    //   560: invokevirtual 343	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   563: pop
-    //   564: aload 6
-    //   566: ldc_w 445
-    //   569: aload_1
-    //   570: invokestatic 443	com/tencent/smtt/sdk/TbsDownloader:getCoreShareDecoupleCoreVersionByContext	(Landroid/content/Context;)I
-    //   573: invokevirtual 343	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   576: pop
-    //   577: goto -205 -> 372
-    //   580: aload 6
-    //   582: ldc_w 402
-    //   585: iload_2
-    //   586: invokevirtual 343	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   589: pop
-    //   590: goto -158 -> 432
-    //   593: aload_0
-    //   594: getfield 165	MTT/ThirdAppInfoNew:sAppName	Ljava/lang/String;
-    //   597: ldc 28
-    //   599: invokevirtual 118	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   602: ifeq -103 -> 499
-    //   605: aload 6
-    //   607: ldc_w 423
-    //   610: invokestatic 421	com/tencent/smtt/sdk/QbSdk:getTID	()Ljava/lang/String;
-    //   613: invokevirtual 319	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   616: pop
-    //   617: aload 6
-    //   619: ldc_w 434
-    //   622: iconst_0
-    //   623: invokevirtual 343	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   626: pop
-    //   627: aload 6
-    //   629: areturn
-    //   630: astore_0
-    //   631: aload 6
-    //   633: areturn
+    //   476: invokestatic 421	com/tencent/smtt/sdk/QbSdk:getTID	()Ljava/lang/String;
+    //   479: invokevirtual 319	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   482: pop
+    //   483: aload 6
+    //   485: ldc_w 425
+    //   488: iconst_0
+    //   489: invokevirtual 343	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   492: pop
+    //   493: aload 6
+    //   495: areturn
+    //   496: aload_0
+    //   497: getfield 288	MTT/ThirdAppInfoNew:sAppSignature	Ljava/lang/String;
+    //   500: ifnonnull +29 -> 529
+    //   503: aload 6
+    //   505: ldc_w 377
+    //   508: ldc_w 427
+    //   511: invokevirtual 319	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   514: pop
+    //   515: goto -186 -> 329
+    //   518: astore_0
+    //   519: ldc 96
+    //   521: ldc_w 429
+    //   524: invokestatic 415	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   527: aconst_null
+    //   528: areturn
+    //   529: aload 6
+    //   531: ldc_w 377
+    //   534: aload_0
+    //   535: getfield 288	MTT/ThirdAppInfoNew:sAppSignature	Ljava/lang/String;
+    //   538: invokevirtual 319	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   541: pop
+    //   542: goto -213 -> 329
+    //   545: aload 6
+    //   547: ldc_w 387
+    //   550: aload_1
+    //   551: invokestatic 434	com/tencent/smtt/sdk/TbsDownloader:getCoreShareDecoupleCoreVersionByContext	(Landroid/content/Context;)I
+    //   554: invokevirtual 343	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   557: pop
+    //   558: aload 6
+    //   560: ldc_w 436
+    //   563: aload_1
+    //   564: invokestatic 434	com/tencent/smtt/sdk/TbsDownloader:getCoreShareDecoupleCoreVersionByContext	(Landroid/content/Context;)I
+    //   567: invokevirtual 343	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   570: pop
+    //   571: goto -199 -> 372
+    //   574: aload 6
+    //   576: ldc_w 402
+    //   579: iload_2
+    //   580: invokevirtual 343	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   583: pop
+    //   584: goto -152 -> 432
+    //   587: aload_0
+    //   588: getfield 165	MTT/ThirdAppInfoNew:sAppName	Ljava/lang/String;
+    //   591: ldc 28
+    //   593: invokevirtual 118	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   596: ifeq -103 -> 493
+    //   599: aload 6
+    //   601: ldc_w 423
+    //   604: invokestatic 421	com/tencent/smtt/sdk/QbSdk:getTID	()Ljava/lang/String;
+    //   607: invokevirtual 319	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   610: pop
+    //   611: aload 6
+    //   613: ldc_w 425
+    //   616: iconst_0
+    //   617: invokevirtual 343	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   620: pop
+    //   621: aload 6
+    //   623: areturn
+    //   624: astore_0
+    //   625: aload 6
+    //   627: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	634	0	paramThirdAppInfoNew	ThirdAppInfoNew
-    //   0	634	1	paramContext	Context
-    //   248	338	2	i	int
+    //   0	628	0	paramThirdAppInfoNew	ThirdAppInfoNew
+    //   0	628	1	paramContext	Context
+    //   248	332	2	i	int
     //   254	43	3	j	int
     //   260	47	4	k	int
     //   267	51	5	m	int
-    //   7	625	6	localJSONObject	org.json.JSONObject
+    //   7	619	6	localJSONObject	org.json.JSONObject
     //   235	28	7	localTbsDownloadUpload	com.tencent.smtt.sdk.TbsDownloadUpload
     // Exception table:
     //   from	to	target	type
-    //   0	227	524	java/lang/Exception
-    //   227	329	524	java/lang/Exception
-    //   329	372	524	java/lang/Exception
-    //   372	432	524	java/lang/Exception
-    //   437	445	524	java/lang/Exception
-    //   445	453	524	java/lang/Exception
-    //   502	521	524	java/lang/Exception
-    //   535	548	524	java/lang/Exception
-    //   551	577	524	java/lang/Exception
-    //   580	590	524	java/lang/Exception
-    //   453	499	630	java/lang/Exception
-    //   593	627	630	java/lang/Exception
+    //   0	227	518	java/lang/Exception
+    //   227	329	518	java/lang/Exception
+    //   329	372	518	java/lang/Exception
+    //   372	432	518	java/lang/Exception
+    //   437	445	518	java/lang/Exception
+    //   445	453	518	java/lang/Exception
+    //   496	515	518	java/lang/Exception
+    //   529	542	518	java/lang/Exception
+    //   545	571	518	java/lang/Exception
+    //   574	584	518	java/lang/Exception
+    //   453	493	624	java/lang/Exception
+    //   587	621	624	java/lang/Exception
   }
   
   /* Error */
@@ -495,32 +493,32 @@ public class HttpUtils
     //   6: ldc 106
     //   8: astore 5
     //   10: aload_0
-    //   11: invokevirtual 453	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   11: invokevirtual 444	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   14: astore 4
     //   16: aload_0
-    //   17: invokevirtual 456	java/net/HttpURLConnection:getContentEncoding	()Ljava/lang/String;
+    //   17: invokevirtual 447	java/net/HttpURLConnection:getContentEncoding	()Ljava/lang/String;
     //   20: astore_0
     //   21: aload_0
     //   22: ifnull +133 -> 155
     //   25: aload_0
-    //   26: ldc_w 458
-    //   29: invokevirtual 462	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   26: ldc_w 449
+    //   29: invokevirtual 453	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   32: ifeq +123 -> 155
-    //   35: new 464	java/util/zip/GZIPInputStream
+    //   35: new 455	java/util/zip/GZIPInputStream
     //   38: dup
     //   39: aload 4
-    //   41: invokespecial 467	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
+    //   41: invokespecial 458	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;)V
     //   44: astore_0
-    //   45: new 469	java/io/ByteArrayOutputStream
+    //   45: new 460	java/io/ByteArrayOutputStream
     //   48: dup
-    //   49: invokespecial 470	java/io/ByteArrayOutputStream:<init>	()V
+    //   49: invokespecial 461	java/io/ByteArrayOutputStream:<init>	()V
     //   52: astore 4
     //   54: sipush 128
     //   57: newarray byte
     //   59: astore 6
     //   61: aload_0
     //   62: aload 6
-    //   64: invokevirtual 476	java/io/InputStream:read	([B)I
+    //   64: invokevirtual 467	java/io/InputStream:read	([B)I
     //   67: istore_3
     //   68: iload_3
     //   69: iconst_m1
@@ -529,7 +527,7 @@ public class HttpUtils
     //   75: aload 6
     //   77: iconst_0
     //   78: iload_3
-    //   79: invokevirtual 480	java/io/ByteArrayOutputStream:write	([BII)V
+    //   79: invokevirtual 471	java/io/ByteArrayOutputStream:write	([BII)V
     //   82: goto -21 -> 61
     //   85: astore_1
     //   86: aload_1
@@ -537,27 +535,27 @@ public class HttpUtils
     //   90: aload 4
     //   92: ifnull +8 -> 100
     //   95: aload 4
-    //   97: invokevirtual 483	java/io/ByteArrayOutputStream:close	()V
+    //   97: invokevirtual 474	java/io/ByteArrayOutputStream:close	()V
     //   100: aload 5
     //   102: astore 4
     //   104: aload_0
     //   105: ifnull +11 -> 116
     //   108: aload_0
-    //   109: invokevirtual 484	java/io/InputStream:close	()V
+    //   109: invokevirtual 475	java/io/InputStream:close	()V
     //   112: aload 5
     //   114: astore 4
     //   116: ldc 17
     //   118: new 145	java/lang/StringBuilder
     //   121: dup
     //   122: invokespecial 146	java/lang/StringBuilder:<init>	()V
-    //   125: ldc_w 486
+    //   125: ldc_w 477
     //   128: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   131: aload 4
     //   133: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   136: ldc_w 488
+    //   136: ldc_w 479
     //   139: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   142: iload_2
-    //   143: invokevirtual 491	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   143: invokevirtual 482	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   146: invokevirtual 155	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   149: invokestatic 104	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   152: aload 4
@@ -565,17 +563,17 @@ public class HttpUtils
     //   155: aload_0
     //   156: ifnull +44 -> 200
     //   159: aload_0
-    //   160: ldc_w 493
-    //   163: invokevirtual 462	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   160: ldc_w 484
+    //   163: invokevirtual 453	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   166: ifeq +34 -> 200
-    //   169: new 495	java/util/zip/InflaterInputStream
+    //   169: new 486	java/util/zip/InflaterInputStream
     //   172: dup
     //   173: aload 4
-    //   175: new 497	java/util/zip/Inflater
+    //   175: new 488	java/util/zip/Inflater
     //   178: dup
     //   179: iconst_1
-    //   180: invokespecial 500	java/util/zip/Inflater:<init>	(Z)V
-    //   183: invokespecial 503	java/util/zip/InflaterInputStream:<init>	(Ljava/io/InputStream;Ljava/util/zip/Inflater;)V
+    //   180: invokespecial 491	java/util/zip/Inflater:<init>	(Z)V
+    //   183: invokespecial 494	java/util/zip/InflaterInputStream:<init>	(Ljava/io/InputStream;Ljava/util/zip/Inflater;)V
     //   186: astore_0
     //   187: goto -142 -> 45
     //   190: astore_1
@@ -591,51 +589,51 @@ public class HttpUtils
     //   207: ifeq +60 -> 267
     //   210: new 41	java/lang/String
     //   213: dup
-    //   214: invokestatic 508	com/tencent/smtt/utils/Post3DESEncryption:getInstance	()Lcom/tencent/smtt/utils/Post3DESEncryption;
+    //   214: invokestatic 499	com/tencent/smtt/utils/Post3DESEncryption:getInstance	()Lcom/tencent/smtt/utils/Post3DESEncryption;
     //   217: aload 4
-    //   219: invokevirtual 512	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   222: invokevirtual 516	com/tencent/smtt/utils/Post3DESEncryption:DesDecrypt	([B)[B
-    //   225: invokespecial 519	java/lang/String:<init>	([B)V
+    //   219: invokevirtual 503	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   222: invokevirtual 507	com/tencent/smtt/utils/Post3DESEncryption:DesDecrypt	([B)[B
+    //   225: invokespecial 510	java/lang/String:<init>	([B)V
     //   228: astore_1
     //   229: aload 4
     //   231: ifnull +8 -> 239
     //   234: aload 4
-    //   236: invokevirtual 483	java/io/ByteArrayOutputStream:close	()V
+    //   236: invokevirtual 474	java/io/ByteArrayOutputStream:close	()V
     //   239: aload_1
     //   240: astore 4
     //   242: aload_0
     //   243: ifnull -127 -> 116
     //   246: aload_0
-    //   247: invokevirtual 484	java/io/InputStream:close	()V
+    //   247: invokevirtual 475	java/io/InputStream:close	()V
     //   250: aload_1
     //   251: astore 4
     //   253: goto -137 -> 116
     //   256: astore_0
     //   257: aload_0
-    //   258: invokevirtual 520	java/io/IOException:printStackTrace	()V
+    //   258: invokevirtual 511	java/io/IOException:printStackTrace	()V
     //   261: aload_1
     //   262: astore 4
     //   264: goto -148 -> 116
     //   267: new 41	java/lang/String
     //   270: dup
     //   271: aload 4
-    //   273: invokevirtual 512	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   273: invokevirtual 503	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   276: aload_1
-    //   277: invokestatic 524	com/tencent/smtt/utils/Post3DESEncryption:DESDecrypt	([BLjava/lang/String;)[B
-    //   280: invokespecial 519	java/lang/String:<init>	([B)V
+    //   277: invokestatic 515	com/tencent/smtt/utils/Post3DESEncryption:DESDecrypt	([BLjava/lang/String;)[B
+    //   280: invokespecial 510	java/lang/String:<init>	([B)V
     //   283: astore_1
     //   284: goto -55 -> 229
     //   287: astore 4
     //   289: aload 4
-    //   291: invokevirtual 520	java/io/IOException:printStackTrace	()V
+    //   291: invokevirtual 511	java/io/IOException:printStackTrace	()V
     //   294: goto -55 -> 239
     //   297: astore_1
     //   298: aload_1
-    //   299: invokevirtual 520	java/io/IOException:printStackTrace	()V
+    //   299: invokevirtual 511	java/io/IOException:printStackTrace	()V
     //   302: goto -202 -> 100
     //   305: astore_0
     //   306: aload_0
-    //   307: invokevirtual 520	java/io/IOException:printStackTrace	()V
+    //   307: invokevirtual 511	java/io/IOException:printStackTrace	()V
     //   310: aload 5
     //   312: astore 4
     //   314: goto -198 -> 116
@@ -647,20 +645,20 @@ public class HttpUtils
     //   324: aload 4
     //   326: ifnull +8 -> 334
     //   329: aload 4
-    //   331: invokevirtual 483	java/io/ByteArrayOutputStream:close	()V
+    //   331: invokevirtual 474	java/io/ByteArrayOutputStream:close	()V
     //   334: aload_0
     //   335: ifnull +7 -> 342
     //   338: aload_0
-    //   339: invokevirtual 484	java/io/InputStream:close	()V
+    //   339: invokevirtual 475	java/io/InputStream:close	()V
     //   342: aload_1
     //   343: athrow
     //   344: astore 4
     //   346: aload 4
-    //   348: invokevirtual 520	java/io/IOException:printStackTrace	()V
+    //   348: invokevirtual 511	java/io/IOException:printStackTrace	()V
     //   351: goto -17 -> 334
     //   354: astore_0
     //   355: aload_0
-    //   356: invokevirtual 520	java/io/IOException:printStackTrace	()V
+    //   356: invokevirtual 511	java/io/IOException:printStackTrace	()V
     //   359: goto -17 -> 342
     //   362: astore_1
     //   363: aload 7
@@ -821,7 +819,7 @@ public class HttpUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.stat.HttpUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,105 @@
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-
 public class azfy
-  implements bfph
 {
-  String jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Bapd.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
-  
-  public azfy(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, bfpc parambfpc, URLDrawable paramURLDrawable) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static void a(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    int i;
-    if (!bahv.b(this.jdField_a_of_type_JavaLangString))
+    int m = 0;
+    int i = 0;
+    int i7 = paramInt1 * paramInt2;
+    int j = 0;
+    int i4 = 0;
+    int n;
+    int k;
+    int i5;
+    int i1;
+    if (i4 < paramInt2)
     {
-      i = 1;
-      if (i == 0) {
-        break label74;
+      n = (i4 >> 1) * paramInt1 / 2 + i7;
+      k = i7 * 5 / 4 + (i4 >> 1) * paramInt1 / 2;
+      i5 = 0;
+      if (i5 < paramInt1)
+      {
+        i1 = (paramArrayOfByte[j] & 0xFF) - 16;
+        if (i1 >= 0) {
+          break label361;
+        }
+        i1 = 0;
       }
-      paramView = this.jdField_a_of_type_JavaLangString;
-      paramView = this.jdField_a_of_type_Bfpc.a(paramInt);
-      if (!this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131693384).equals(paramView)) {
-        break label130;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
     }
+    label194:
+    label202:
+    label361:
     for (;;)
     {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      i = 0;
-      break;
-      label74:
-      if (this.jdField_a_of_type_JavaLangString.equals(agle.jdField_a_of_type_JavaLangString)) {}
-      for (paramView = bahv.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_JavaLangString, 0);; paramView = bahv.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_JavaLangString, 1))
+      int i2;
+      if ((i5 & 0x1) == 0)
       {
-        bahv.a(paramView);
-        break;
+        i = paramArrayOfByte[n];
+        i2 = paramArrayOfByte[k];
+        m = n + 1;
+        n = (i2 & 0xFF) - 128;
+        i = (i & 0xFF) - 128;
+        k += 1;
       }
-      label130:
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131693394).equals(paramView)) {
-        TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131693392).equals(paramView)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.d, this.jdField_a_of_type_JavaLangString);
-      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131698004).equals(paramView)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.c(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
-      } else if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getString(2131693381).equals(paramView)) {
-        if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Boolean) && (TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity) != null) && (TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity).getBoolean("from_personality_label", false))) {
-          TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int, TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity));
-        } else if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int))) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
-        } else {
-          this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.c(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.jdField_a_of_type_Int);
+      for (;;)
+      {
+        i1 *= 1192;
+        i2 = i1 + n * 1634;
+        int i3 = i1 - n * 833 - i * 400;
+        int i6 = i1 + i * 2066;
+        if (i2 < 0)
+        {
+          i1 = 0;
+          if (i3 >= 0) {
+            break label296;
+          }
+          i2 = 0;
+          if (i6 >= 0) {
+            break label314;
+          }
+          i3 = 0;
         }
+        for (;;)
+        {
+          paramArrayOfInt[j] = (i3 >> 10 & 0xFF | i2 >> 2 & 0xFF00 | i1 << 6 & 0xFF0000 | 0xFF000000);
+          i1 = j + 1;
+          j = n;
+          i5 += 1;
+          n = m;
+          m = i;
+          i = j;
+          j = i1;
+          break;
+          i1 = i2;
+          if (i2 <= 262143) {
+            break label194;
+          }
+          i1 = 262143;
+          break label194;
+          i2 = i3;
+          if (i3 <= 262143) {
+            break label202;
+          }
+          i2 = 262143;
+          break label202;
+          i3 = i6;
+          if (i6 > 262143) {
+            i3 = 262143;
+          }
+        }
+        i4 += 1;
+        break;
+        return;
+        i2 = m;
+        m = n;
+        n = i;
+        i = i2;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azfy
  * JD-Core Version:    0.7.0.1
  */

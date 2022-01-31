@@ -1,214 +1,194 @@
 import android.app.Activity;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.Context;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.manager.Manager;
+import java.lang.ref.WeakReference;
 
 public class akng
-  implements Manager
+  implements aknb, Handler.Callback
 {
-  SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  ConcurrentHashMap<String, aknl> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  protected bhow a;
+  WeakReference<Activity> a;
+  private WeakReference<QQAppInterface> b;
   
-  public akng(QQAppInterface paramQQAppInterface)
+  public akng(Activity paramActivity, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = aknj.a(paramQQAppInterface.getApp(), paramQQAppInterface.c());
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_Bhow = new bhow(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.b = new WeakReference(paramQQAppInterface);
   }
   
-  public static akng a(QQAppInterface paramQQAppInterface)
+  public int a()
   {
-    return (akng)paramQQAppInterface.getManager(277);
+    return 100;
   }
   
-  aknl a(String paramString, int paramInt)
+  public aknh a(long paramLong, String paramString1, String paramString2)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      aknl localaknl2 = (aknl)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      aknl localaknl1 = localaknl2;
-      if (localaknl2 == null)
-      {
-        localaknl1 = new aknl();
-        localaknl1.jdField_a_of_type_JavaLangString = paramString;
-        localaknl1.jdField_a_of_type_Int = paramInt;
-      }
-      return localaknl1;
+    if (this.b == null) {
+      return null;
     }
-  }
-  
-  public ArrayList<aknl> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString("KeyHiddenChatList", "");
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    if (localQQAppInterface == null) {
+      return null;
+    }
+    if ("general_cmd_ui_show_toast".equals(paramString1)) {
+      return a(paramString2);
+    }
+    if ("cs.get_dress_path.local".equals(paramString1))
     {
-      localObject = ((String)localObject).split(";");
-      if ((localObject != null) && (localObject.length > 0))
+      alep.a(paramLong, localQQAppInterface, paramString1, paramString2);
+      return new aknh();
+    }
+    if ("cs.report_data_2_compass.local".equals(paramString1))
+    {
+      alep.a(localQQAppInterface, paramString2);
+      return new aknh();
+    }
+    if ("cs.report_data_2_backstage.local".equals(paramString1))
+    {
+      alep.b(localQQAppInterface, paramString2);
+      return new aknh();
+    }
+    if ("cs.report_flow_data.local".equals(paramString1))
+    {
+      alep.c(localQQAppInterface, paramString2);
+      return new aknh();
+    }
+    if ("cs.encrypt_data.local".equals(paramString1))
+    {
+      alep.a(paramLong, localQQAppInterface, paramString2);
+      return new aknh();
+    }
+    if ("cs.decrypt_data.local".equals(paramString1))
+    {
+      alep.b(paramLong, localQQAppInterface, paramString2);
+      return new aknh();
+    }
+    if ("cs.get_server_ip_port.local".equals(paramString1))
+    {
+      alep.b(paramLong, localQQAppInterface, paramString1, paramString2);
+      return new aknh();
+    }
+    if ("cs.save_recommend_ip.local".equals(paramString1))
+    {
+      alep.a(localQQAppInterface, paramString2);
+      return new aknh();
+    }
+    if ("cs.apolloGameWebMessage.local".equals(paramString1))
+    {
+      alep.a(paramString2);
+      return new aknh();
+    }
+    if ("cs.openFloatTransparentView.local".equals(paramString1))
+    {
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
       {
-        int j = localObject.length;
-        int i = 0;
-        for (;;)
+        alep.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
+        return new aknh();
+      }
+    }
+    else if ("cs.openWebView.local".equals(paramString1))
+    {
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+      {
+        alep.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
+        return new aknh();
+      }
+    }
+    else
+    {
+      if ("cs.script_get_nickname.local".equals(paramString1))
+      {
+        QQMessageFacade localQQMessageFacade = localQQAppInterface.a();
+        int j = -1;
+        String str = "";
+        paramString1 = str;
+        int i = j;
+        if (localQQMessageFacade != null)
         {
-          if (i < j)
+          paramString1 = str;
+          i = j;
+          if (localQQMessageFacade.a())
           {
-            String[] arrayOfString = localObject[i].split("\\|");
-            if ((arrayOfString != null) && (arrayOfString.length == 2)) {}
-            try
+            paramString1 = str;
+            i = j;
+            if (!TextUtils.isEmpty(localQQMessageFacade.a()))
             {
-              aknl localaknl = new aknl();
-              localaknl.jdField_a_of_type_JavaLangString = arrayOfString[0];
-              localaknl.jdField_a_of_type_Int = Integer.parseInt(arrayOfString[1]);
-              localArrayList.add(localaknl);
-              i += 1;
-            }
-            catch (Throwable localThrowable)
-            {
-              for (;;)
-              {
-                QLog.e("tag_hidden_chat", 2, localThrowable, new Object[0]);
-              }
+              paramString1 = localQQMessageFacade.a();
+              i = localQQMessageFacade.a();
             }
           }
         }
+        return akwt.a(paramString2, localQQAppInterface, i, paramString1);
+      }
+      if ("cs.script_get_action_data.local".equals(paramString1))
+      {
+        ApolloGameUtil.a(paramLong, localQQAppInterface, paramString2);
+        return null;
       }
     }
-    return localArrayList;
+    return null;
+  }
+  
+  public aknh a(String paramString)
+  {
+    aknh localaknh = new aknh();
+    String str = ApolloUtil.a(paramString, "tips");
+    int i = ApolloUtil.a(paramString, "length");
+    if (TextUtils.isEmpty(str)) {
+      return localaknh;
+    }
+    paramString = this.jdField_a_of_type_Bhow.obtainMessage(255);
+    paramString.obj = str;
+    paramString.arg1 = i;
+    paramString.sendToTarget();
+    return localaknh;
   }
   
   public void a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      aknl localaknl = (aknl)localIterator.next();
-      localStringBuilder.append(localaknl.jdField_a_of_type_JavaLangString).append("|").append(localaknl.jdField_a_of_type_Int).append(";");
-    }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("KeyHiddenChatList", localStringBuilder.toString()).commit();
+    this.jdField_a_of_type_Bhow.removeCallbacksAndMessages(null);
   }
   
-  void a(aknl paramaknl)
+  public boolean a(Activity paramActivity)
   {
-    if ((paramaknl == null) || (TextUtils.isEmpty(paramaknl.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramaknl.jdField_a_of_type_JavaLangString, paramaknl);
-      a();
-      return;
-    }
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
-    if (!localSharedPreferences.getBoolean("FirstSetHidden", false))
-    {
-      localSharedPreferences.edit().putBoolean("FirstSetHidden", true).commit();
-      bbdj.a(paramActivity, 230, paramActivity.getString(2131696647), paramActivity.getString(2131696645), paramActivity.getString(2131719551), paramActivity.getString(2131696646), new aknh(this, paramActivity), new bbdt()).show();
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A349", "0X800A349", 0, 0, "0", "0", "", "");
-    }
-  }
-  
-  void a(String paramString)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-      a();
-      return;
-    }
-  }
-  
-  public void a(String paramString, int paramInt, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.contains(paramString))) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      a(a(paramString, paramInt));
-      return;
-    }
-    a(paramString);
-  }
-  
-  boolean a()
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject1 = a();
-        if (QLog.isColorLevel())
-        {
-          if (localObject1 != null)
-          {
-            i = ((List)localObject1).size();
-            QLog.d("tag_hidden_chat", 2, new Object[] { "doInitAllHidden(), dataList.size is ", Integer.valueOf(i) });
-          }
-        }
-        else
-        {
-          if (localObject1 == null) {
-            break label158;
-          }
-          synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-          {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-            localObject1 = ((List)localObject1).iterator();
-            if (!((Iterator)localObject1).hasNext()) {
-              break;
-            }
-            aknl localaknl = (aknl)((Iterator)localObject1).next();
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localaknl.jdField_a_of_type_JavaLangString, localaknl);
-          }
-        }
-        int i = 0;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("tag_hidden_chat", 2, "doInitAllHidden exception:" + localException.getMessage());
-        }
-        return false;
-      }
-    }
-    label158:
     return true;
   }
   
-  public void b()
+  public boolean handleMessage(Message paramMessage)
   {
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    int i = 1;
+    switch (paramMessage.what)
     {
-      a();
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
-  }
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    do
+    {
+      return false;
+    } while (!(paramMessage.obj instanceof String));
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    CharSequence localCharSequence = (CharSequence)paramMessage.obj;
+    if (paramMessage.arg1 == 1) {}
+    for (;;)
+    {
+      QQToast.a(localBaseApplication, localCharSequence, i).a();
+      return false;
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akng
  * JD-Core Version:    0.7.0.1
  */

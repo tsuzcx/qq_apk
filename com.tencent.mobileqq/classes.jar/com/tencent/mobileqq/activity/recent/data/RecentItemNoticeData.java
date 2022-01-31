@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ahpj;
+import ajgs;
 import android.content.Context;
 import android.content.Intent;
-import bbbr;
+import bdal;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
@@ -35,7 +35,7 @@ public class RecentItemNoticeData
     this.time = paramLong2;
     this.mDisplayTime = paramLong2;
     this.mTitleName = String.format(Locale.getDefault(), "%s:%s", new Object[] { paramString3, paramString1 });
-    this.mShowTime = ahpj.a().a(a(), this.mDisplayTime);
+    this.mShowTime = ajgs.a().a(a(), this.mDisplayTime);
   }
   
   public void a(Intent paramIntent)
@@ -46,7 +46,7 @@ public class RecentItemNoticeData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    if (AppSetting.d)
+    if (AppSetting.c)
     {
       paramQQAppInterface = new StringBuilder(24);
       paramQQAppInterface.append(this.mTitleName);
@@ -76,7 +76,7 @@ public class RecentItemNoticeData
   public boolean a(int paramInt, long paramLong1, String paramString1, String paramString2, String paramString3, long paramLong2)
   {
     if (this.type != paramInt) {}
-    while ((this.uin != paramLong1) || (this.time != paramLong2) || (!bbbr.a(this.wording, paramString1)) || (!bbbr.a(this.url, paramString2)) || (!bbbr.a(this.from, paramString3))) {
+    while ((this.uin != paramLong1) || (this.time != paramLong2) || (!bdal.a(this.wording, paramString1)) || (!bdal.a(this.url, paramString2)) || (!bdal.a(this.from, paramString3))) {
       return false;
     }
     return true;
@@ -84,7 +84,7 @@ public class RecentItemNoticeData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemNoticeData
  * JD-Core Version:    0.7.0.1
  */

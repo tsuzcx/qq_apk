@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.headers;
 
-import akiz;
-import rou;
+import amap;
+import set;
 
 class ReadInJoyTabTopSearchHeaderController$4$1
   implements Runnable
@@ -14,13 +14,12 @@ class ReadInJoyTabTopSearchHeaderController$4$1
       return;
     }
     this.a.this$0.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_Int, this.a.b);
-    this.a.this$0.jdField_a_of_type_Akiz = new akiz(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.a.this$0.jdField_a_of_type_Akiz.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 10);
+    new amap(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyTabTopSearchHeaderController.4.1
  * JD-Core Version:    0.7.0.1
  */

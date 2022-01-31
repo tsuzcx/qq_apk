@@ -1,23 +1,23 @@
-import android.support.annotation.Nullable;
+import android.content.Context;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
-public abstract interface aicg
+class aicg
+  implements View.OnTouchListener
 {
-  public abstract int a();
+  aicg(aica paramaica) {}
   
-  public abstract void a();
-  
-  public abstract void a(@Nullable aice paramaice);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aicg
  * JD-Core Version:    0.7.0.1
  */

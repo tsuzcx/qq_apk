@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import ajya;
-import bcql;
+import alpo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class PreloadingFragment$9
   implements Runnable
@@ -11,12 +11,12 @@ class PreloadingFragment$9
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131708409), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131708781), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment.9
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.view;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
@@ -40,28 +40,28 @@ public class ReadInjoyHeaderAdDownloadView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress = new ReadInjoyHeaderAdDownloadView.SimpleRoundProgress(paramContext);
-    ReadInjoyHeaderAdDownloadView.SimpleRoundProgress.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, Color.parseColor("#D9FFFFFF"));
-    ReadInjoyHeaderAdDownloadView.SimpleRoundProgress.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, Color.parseColor("#FF00CAFC"));
-    ReadInjoyHeaderAdDownloadView.SimpleRoundProgress.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, actj.a(1.5F, paramContext.getResources()));
-    ReadInjoyHeaderAdDownloadView.SimpleRoundProgress.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, actj.a(1.5F, paramContext.getResources()));
-    ReadInjoyHeaderAdDownloadView.SimpleRoundProgress.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, actj.a(7.0F, paramContext.getResources()));
-    ReadInjoyHeaderAdDownloadView.SimpleRoundProgress.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, 100);
-    ReadInjoyHeaderAdDownloadView.SimpleRoundProgress.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, 270);
-    ReadInjoyHeaderAdDownloadView.SimpleRoundProgress.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, 0);
-    ReadInjoyHeaderAdDownloadView.SimpleRoundProgress.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, 65);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_a_of_type_Int = Color.parseColor("#D9FFFFFF");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_b_of_type_Int = Color.parseColor("#FF00CAFC");
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_a_of_type_Float = aekt.a(1.5F, paramContext.getResources());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_b_of_type_Float = aekt.a(1.5F, paramContext.getResources());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_c_of_type_Float = aekt.a(7.0F, paramContext.getResources());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.jdField_c_of_type_Int = 100;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.e = 270;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.d = 0;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress.f = 65;
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyHeaderAdDownloadView$SimpleRoundProgress, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.c = 2130841327;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.c);
+    this.jdField_c_of_type_Int = 2130841448;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_c_of_type_Int);
     localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_b_of_type_Int = 2130841329;
+    this.jdField_b_of_type_Int = 2130841450;
     this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(this.jdField_b_of_type_Int);
     localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     addView(this.jdField_b_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.d = actj.a(1.5F, paramContext.getResources());
+    this.d = aekt.a(1.5F, paramContext.getResources());
     a(0, 0);
   }
   
@@ -123,7 +123,7 @@ public class ReadInjoyHeaderAdDownloadView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyHeaderAdDownloadView
  * JD-Core Version:    0.7.0.1
  */

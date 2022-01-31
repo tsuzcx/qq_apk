@@ -1,55 +1,37 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqForbidVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
+import UserGrowth.stCallInfo;
+import UserGrowth.stGlobalConfig;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.weishi_new.util.OuterInterceptManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class tky
-  extends sys<tkz>
 {
-  public final String a;
-  public String b = "";
-  
-  public tky(tkx paramtkx, String paramString)
+  public static void a(Activity paramActivity, tlc paramtlc)
   {
-    this.jdField_a_of_type_JavaLangString = sxm.a("StorySvc.forbid_video");
-    this.b = paramString;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public tkz a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspForbidVideo localRspForbidVideo = new qqstory_service.RspForbidVideo();
-    try
+    stGlobalConfig localstGlobalConfig = tee.a().a();
+    if ((localstGlobalConfig != null) && (localstGlobalConfig.callinfo != null) && (localstGlobalConfig.callinfo.switch_call_live))
     {
-      localRspForbidVideo.mergeFrom(paramArrayOfByte);
-      return new tkz(this.jdField_a_of_type_Tkx, localRspForbidVideo);
+      tlo.e("OuterInterceptManager", "stGlobalConfig.callinfo: " + localstGlobalConfig.callinfo);
+      if (paramtlc != null) {
+        paramtlc.b();
+      }
+      b(paramActivity, paramtlc);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+    while (paramtlc == null) {
+      return;
     }
-    return null;
+    paramtlc.a();
   }
   
-  protected byte[] a()
+  private static void b(Activity paramActivity, tlc paramtlc)
   {
-    qqstory_service.ReqForbidVideo localReqForbidVideo = new qqstory_service.ReqForbidVideo();
-    localReqForbidVideo.vid.set(this.b);
-    return localReqForbidVideo.toByteArray();
-  }
-  
-  public String toString()
-  {
-    return "ReportIgnoreVideoRequest{, vid='" + this.b + '\'' + '}';
+    ThreadManager.getUIHandler().post(new OuterInterceptManager.1(paramActivity, paramtlc));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tky
  * JD-Core Version:    0.7.0.1
  */

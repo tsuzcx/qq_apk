@@ -20,9 +20,9 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Switch;
 import android.widget.TextView;
-import betc;
-import bfho;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.ViewUtils;
 
 public class FormSwitchItem
   extends RelativeLayout
@@ -35,10 +35,10 @@ public class FormSwitchItem
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
   protected boolean a;
-  int jdField_b_of_type_Int = bfho.a(16.0F);
+  int jdField_b_of_type_Int = ViewUtils.dpToPx(16.0F);
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private boolean jdField_b_of_type_Boolean;
-  int c = bfho.a(0.5F);
+  int c = ViewUtils.dpToPx(0.5F);
   private int d;
   private int e;
   private int f;
@@ -55,8 +55,8 @@ public class FormSwitchItem
   public FormSwitchItem(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    int k = getResources().getDimensionPixelSize(2131297218);
-    int m = getResources().getDimensionPixelSize(2131297220);
+    int k = getResources().getDimensionPixelSize(2131297237);
+    int m = getResources().getDimensionPixelSize(2131297239);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.MiniSdkFormItem);
     this.f = paramContext.getDimensionPixelSize(3, k);
     this.e = paramContext.getDimensionPixelSize(2, m);
@@ -80,7 +80,7 @@ public class FormSwitchItem
   
   public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
   {
-    return paramResources.getDrawable(2130849248);
+    return paramResources.getDrawable(2130849679);
   }
   
   private void a()
@@ -90,9 +90,9 @@ public class FormSwitchItem
       this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
-    int k = getContext().getResources().getDimensionPixelSize(2131297219);
+    int k = getContext().getResources().getDimensionPixelSize(2131297238);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, k);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131165750));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131165788));
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
     this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
     setLeftIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.g, this.h);
@@ -166,8 +166,8 @@ public class FormSwitchItem
       }
       catch (Exception localException)
       {
-        if (betc.a()) {
-          betc.a("FormSwitchItem", localException.toString());
+        if (QMLog.isColorLevel()) {
+          QMLog.d("FormSwitchItem", localException.toString());
         }
         setMinimumHeight(this.e);
         super.onMeasure(paramInt1, paramInt2);
@@ -309,7 +309,7 @@ public class FormSwitchItem
       {
         this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131165750));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColorStateList(2131165788));
       }
     }
     else {
@@ -320,7 +320,7 @@ public class FormSwitchItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.widget.FormSwitchItem
  * JD-Core Version:    0.7.0.1
  */

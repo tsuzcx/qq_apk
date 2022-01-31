@@ -1,27 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-
-public class nwd
-  implements bfph
+class nwd
+  implements rtx
 {
-  public nwd(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, String paramString, bfpc parambfpc) {}
+  nwd(nwc paramnwc) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      osg.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.getActivity());
+    if (this.a.jdField_a_of_type_Rxg != null) {
+      this.a.jdField_a_of_type_Rxg.a(paramInt, this.a.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nwd
  * JD-Core Version:    0.7.0.1
  */

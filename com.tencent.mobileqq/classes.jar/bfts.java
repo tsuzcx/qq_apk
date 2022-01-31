@@ -1,17 +1,11 @@
-import com.tencent.widget.MovingView;
-
 public class bfts
 {
-  public float a;
-  public float b;
-  public float c;
-  public float d;
-  
-  public bfts(MovingView paramMovingView) {}
+  public volatile long a;
+  public volatile boolean a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfts
  * JD-Core Version:    0.7.0.1
  */

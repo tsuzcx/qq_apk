@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import azej;
+import bbci;
 import com.tencent.widget.XListView;
 
 class TroopAdminList$2$1
@@ -10,8 +10,8 @@ class TroopAdminList$2$1
   
   public void run()
   {
-    this.a.this$0.jdField_a_of_type_Azej = new azej(this.a.this$0, this.a.this$0);
-    this.a.this$0.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.a.this$0.jdField_a_of_type_Azej);
+    this.a.this$0.jdField_a_of_type_Bbci = new bbci(this.a.this$0, this.a.this$0);
+    this.a.this$0.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.a.this$0.jdField_a_of_type_Bbci);
   }
 }
 

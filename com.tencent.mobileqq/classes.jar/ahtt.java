@@ -1,38 +1,20 @@
-import android.os.MessageQueue.IdleHandler;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
 public class ahtt
-  implements MessageQueue.IdleHandler
+  implements Cloneable
 {
-  public ahtt(FlowCameraActivity2 paramFlowCameraActivity2) {}
-  
-  public boolean queueIdle()
-  {
-    if (axhq.d(axhq.b)) {
-      this.a.b(true);
-    }
-    for (;;)
-    {
-      if ((this.a.g) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
-      this.a.c.setEnabled(false);
-      if (QLog.isColorLevel()) {
-        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
-      }
-      return false;
-      this.a.j();
-    }
-  }
+  public CheckBox a;
+  public TextView a;
+  public TencentDocItem a;
+  public AsyncImageView a;
+  public TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtt
  * JD-Core Version:    0.7.0.1
  */

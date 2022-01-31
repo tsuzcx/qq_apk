@@ -9,6 +9,16 @@ public abstract interface Ad
   
   public abstract long getAId();
   
+  public abstract long getActionSetId();
+  
+  public abstract long getAdvertiserId();
+  
+  public abstract String getAdvertiser_corporate_image_name();
+  
+  public abstract String getAdvertiser_corporate_logo();
+  
+  public abstract String getAppChannelId();
+  
   public abstract String getAppDeeplink();
   
   public abstract String getAppId();
@@ -23,6 +33,8 @@ public abstract interface Ad
   
   public abstract String getAppPackageUrl();
   
+  public abstract String getCanvas();
+  
   public abstract int getCreativeSize();
   
   public abstract int getDestType();
@@ -32,6 +44,8 @@ public abstract interface Ad
   public abstract String getProductId();
   
   public abstract int getProductType();
+  
+  public abstract String getTencent_video_id();
   
   public abstract String getTraceId();
   
@@ -68,6 +82,8 @@ public abstract interface Ad
   public abstract boolean isValid();
   
   public abstract boolean isVideoSplice();
+  
+  public abstract void setActionSetId(long paramLong);
 }
 
 

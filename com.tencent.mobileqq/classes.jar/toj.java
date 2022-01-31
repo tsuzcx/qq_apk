@@ -1,35 +1,38 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.POIPosterData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public class toj
-  extends syn
+class toj
+  implements toy
 {
-  public final ArrayList<tee> a = new ArrayList();
+  toj(toi paramtoi) {}
   
-  public toj(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
+  public void a(Object paramObject)
   {
-    a(paramRspGetPOIPosters);
-  }
-  
-  private void a(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
-  {
-    int i = 0;
-    while (i < paramRspGetPOIPosters.poi_posters.size())
+    if ((paramObject instanceof top))
     {
-      Object localObject = (qqstory_struct.POIPosterData)paramRspGetPOIPosters.poi_posters.get(i);
-      localObject = new tee(((qqstory_struct.POIPosterData)localObject).poster_name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).thumb_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_json_layout_desc.get().toStringUtf8());
-      this.a.add(localObject);
-      i += 1;
+      if (!this.a.b) {
+        ((PublicAccountImageCollectionMainActivity)toi.a(this.a)).h();
+      }
+      this.a.b = true;
     }
+    while ((paramObject instanceof toq)) {
+      if (toi.a(this.a))
+      {
+        this.a.d(true);
+        return;
+        ((PublicAccountImageCollectionMainActivity)toi.a(this.a)).g();
+      }
+      else
+      {
+        this.a.d(false);
+        return;
+      }
+    }
+    this.a.d(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     toj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package dov.com.tencent.mobileqq.activity.richmedia.state;
 
-import bkrt;
-import bksa;
-import ved;
+import bndd;
+import bndk;
+import wsv;
 
 public class RMVideoRecordState$3
   implements Runnable
 {
-  public RMVideoRecordState$3(bkrt parambkrt) {}
+  public RMVideoRecordState$3(bndd parambndd) {}
   
   public void run()
   {
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
     if (!localRMVideoStateMgr.a())
     {
-      ved.c("RMRecordState", "run record finish, but state is not right");
+      wsv.c("RMRecordState", "run record finish, but state is not right");
       return;
     }
     this.this$0.b();
@@ -23,7 +23,7 @@ public class RMVideoRecordState$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState.3
  * JD-Core Version:    0.7.0.1
  */

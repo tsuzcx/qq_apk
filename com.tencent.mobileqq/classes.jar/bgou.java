@@ -1,36 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import android.widget.ImageView;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import java.io.File;
 
 public class bgou
-  implements DialogInterface.OnClickListener
+  implements bgon
 {
-  public bgou(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, boolean paramBoolean1, boolean paramBoolean2) {}
+  public bgou(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(File paramFile)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.b) {
-        apug.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 777, false, 0);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
-      return;
-      apug.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 888, false, 0);
-      continue;
-      paramDialogInterface = new Intent(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, ScannerActivity.class);
-      paramDialogInterface.putExtra("from", "qlink");
-      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(paramDialogInterface);
+    if ((MiniAppVideoPlayer.c(this.a) != null) && (paramFile != null)) {
+      MiniAppVideoPlayer.c(this.a).setImageBitmap(bgkx.a(paramFile.getAbsolutePath()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgou
  * JD-Core Version:    0.7.0.1
  */

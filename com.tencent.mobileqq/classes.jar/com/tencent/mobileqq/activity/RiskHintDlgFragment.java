@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import abzm;
-import abzn;
-import abzo;
-import abzp;
-import abzq;
-import abzr;
-import abzs;
-import abzt;
+import adqu;
+import adqv;
+import adqw;
+import adqx;
+import adqy;
+import adqz;
+import adra;
+import adrb;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,44 +17,74 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import aoes;
-import axqy;
-import bbdj;
-import bbfj;
-import bbgu;
-import bcas;
-import bcql;
+import apwu;
+import azmj;
+import bdcd;
+import bdee;
+import bdfq;
+import bdiv;
+import bdzt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import mqq.observer.WtloginObserver;
 import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import org.json.JSONObject;
 
 public class RiskHintDlgFragment
   extends PublicBaseFragment
 {
   public String a;
-  WtloginObserver a;
+  WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new adrb(this);
   public DevlockInfo a;
+  private boolean jdField_a_of_type_Boolean = true;
   public String b;
   public String c;
   
   public RiskHintDlgFragment()
   {
     this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
-    this.jdField_a_of_type_MqqObserverWtloginObserver = new abzt(this);
+  }
+  
+  private void b()
+  {
+    Intent localIntent = new Intent(getActivity(), AuthDevActivity.class);
+    localIntent.putExtra("phone_num", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile);
+    localIntent.putExtra("country_code", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.CountryCode);
+    localIntent.putExtra("auth_dev_open", false);
+    localIntent.putExtra("from_risk_hint", true);
+    localIntent.putExtra("DevlockInfo", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
+    localIntent.putExtra("auth_dev_gray_switch", this.jdField_a_of_type_Boolean);
+    startActivityForResult(localIntent, 0);
   }
   
   void a()
   {
     String str = getActivity().app.getCurrentAccountUin();
-    int i = aoes.a().a(getActivity().app, str, this.jdField_a_of_type_MqqObserverWtloginObserver);
+    int i = apwu.a().a(getActivity().app, str, this.jdField_a_of_type_MqqObserverWtloginObserver);
     if (i != 0)
     {
       if (QLog.isColorLevel()) {
         QLog.d("RiskHintDlgFragment", 2, "startGetDevLockStatus CheckDevLockStatus failed. ret=" + i);
       }
       this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = null;
+    }
+    str = bdiv.j(getActivity(), getActivity().app.getCurrentAccountUin());
+    if (!TextUtils.isEmpty(str)) {}
+    try
+    {
+      if (new JSONObject(str).optInt("securityType", 0) == 0) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.jdField_a_of_type_Boolean = bool;
+        return;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("RiskHintDlgFragment", 1, new Object[] { "parse dev gray switch error : ", localException.getMessage() });
     }
   }
   
@@ -63,13 +93,13 @@ public class RiskHintDlgFragment
     if ("1".equals(paramString)) {
       if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null)
       {
-        if (bbfj.d(getActivity())) {
-          break label126;
+        if (bdee.d(getActivity())) {
+          break label137;
         }
-        bcql.a(getActivity(), getString(2131692321), 0).b(getActivity().getTitleBarHeight());
+        QQToast.a(getActivity(), getString(2131692397), 0).b(getActivity().getTitleBarHeight());
       }
     }
-    label126:
+    label137:
     do
     {
       return;
@@ -80,11 +110,12 @@ public class RiskHintDlgFragment
         paramString.putExtra("country_code", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.CountryCode);
         paramString.putExtra("auth_dev_open", true);
         paramString.putExtra("from_risk_hint", true);
+        paramString.putExtra("auth_dev_gray_switch", this.jdField_a_of_type_Boolean);
         startActivity(paramString);
       }
       for (;;)
       {
-        axqy.b(getActivity().app, "dc00898", "", "", "0X800AAA5", "0X800AAA5", 0, 0, "", "", "", "");
+        azmj.b(getActivity().app, "dc00898", "", "", "0X800AAA5", "0X800AAA5", 0, 0, "", "", "", "");
         a();
         if (getActivity() == null) {
           break;
@@ -93,6 +124,11 @@ public class RiskHintDlgFragment
         return;
         if (TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile))
         {
+          if (this.jdField_a_of_type_Boolean)
+          {
+            b();
+            return;
+          }
           paramString = new Intent(getActivity(), AuthDevOpenUgActivity.class);
           paramString.putExtra("DevlockInfo", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
           paramString.putExtra("from_risk_hint", true);
@@ -100,6 +136,11 @@ public class RiskHintDlgFragment
         }
         else if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.AllowSet == 0)
         {
+          if (this.jdField_a_of_type_Boolean)
+          {
+            b();
+            return;
+          }
           paramString = new Intent(getActivity(), AuthDevOpenUgActivity.class);
           paramString.putExtra("DevlockInfo", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
           paramString.putExtra("from_risk_hint", true);
@@ -107,12 +148,7 @@ public class RiskHintDlgFragment
         }
         else if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.AllowSet == 1)
         {
-          paramString = new Intent(getActivity(), AuthDevActivity.class);
-          paramString.putExtra("phone_num", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile);
-          paramString.putExtra("country_code", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.CountryCode);
-          paramString.putExtra("auth_dev_open", false);
-          paramString.putExtra("from_risk_hint", true);
-          startActivity(paramString);
+          b();
         }
       }
       if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("http")) || (paramString.startsWith("https"))))
@@ -121,10 +157,10 @@ public class RiskHintDlgFragment
         localIntent.putExtra("url", paramString);
         localIntent.putExtra("from_risk_hint", true);
         getActivity().startActivity(localIntent);
-        axqy.b(getActivity().app, "dc00898", "", "", "0X800AAA4", "0X800AAA4", 0, 0, "", "", "", "");
+        azmj.b(getActivity().app, "dc00898", "", "", "0X800AAA4", "0X800AAA4", 0, 0, "", "", "", "");
         return;
       }
-      axqy.b(getActivity().app, "dc00898", "", "", "0X800AAA6", "0X800AAA6", 0, 0, "", "", "", "");
+      azmj.b(getActivity().app, "dc00898", "", "", "0X800AAA6", "0X800AAA6", 0, 0, "", "", "", "");
     } while (getActivity() == null);
     getActivity().finish();
   }
@@ -133,8 +169,8 @@ public class RiskHintDlgFragment
   {
     try
     {
-      paramString1 = bbdj.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, new abzm(this), new abzn(this));
-      paramString1.setOnDismissListener(new abzo(this));
+      paramString1 = bdcd.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, new adqu(this), new adqv(this));
+      paramString1.setOnDismissListener(new adqw(this));
       paramString1.show();
       return;
     }
@@ -149,8 +185,8 @@ public class RiskHintDlgFragment
   {
     try
     {
-      paramString1 = bbdj.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, paramString5, new abzp(this), new abzq(this), new abzr(this));
-      paramString1.setOnDismissListener(new abzs(this));
+      paramString1 = bdcd.a(getActivity(), 0, paramString1, paramString2, paramString3, paramString4, paramString5, new adqx(this), new adqy(this), new adqz(this));
+      paramString1.setOnDismissListener(new adra(this));
       paramString1.show();
       return;
     }
@@ -186,8 +222,8 @@ public class RiskHintDlgFragment
     for (;;)
     {
       a();
-      bcas.b(2);
-      axqy.b(getActivity().app, "dc00898", "", "", "0X800AAA3", "0X800AAA3", 0, 0, "", "", "", "");
+      bdzt.b(2);
+      azmj.b(getActivity().app, "dc00898", "", "", "0X800AAA3", "0X800AAA3", 0, 0, "", "", "", "");
       return super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
       if (l == 1063L)
       {
@@ -205,7 +241,7 @@ public class RiskHintDlgFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RiskHintDlgFragment
  * JD-Core Version:    0.7.0.1
  */

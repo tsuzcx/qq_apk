@@ -1,37 +1,77 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
 public class aybl
-  extends aybi
+  extends aofy<aybm>
 {
-  private float d;
-  private int f;
-  private int g;
-  private int h;
-  private int i;
-  
-  public aybl(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat)
+  public int a()
   {
-    super(paramInt1, 11, 0);
-    this.f = paramInt2;
-    this.g = paramInt3;
-    this.h = paramInt4;
-    this.i = paramInt5;
-    this.d = paramFloat;
+    return 485;
   }
   
-  protected void a(int paramInt, float paramFloat)
+  @NonNull
+  public aybm a(int paramInt)
   {
-    this.jdField_c_of_type_Float = (paramInt * 0.8F / this.jdField_c_of_type_Int);
-    if (this.jdField_c_of_type_Float > 0.8F) {
-      this.jdField_c_of_type_Float = 0.8F;
+    return new aybm();
+  }
+  
+  @Nullable
+  public aybm a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ScreenShotConfigProcessor", 2, "onParsed : " + paramArrayOfaogf[0].a);
+      }
+      return aybm.a(paramArrayOfaogf[0].a);
     }
-    this.jdField_b_of_type_Int = ((int)(360.0F * paramInt * paramInt / (this.jdField_c_of_type_Int * this.jdField_c_of_type_Int)));
-    this.a = (this.f + (this.h - this.f) * paramInt / this.jdField_c_of_type_Int);
-    this.jdField_b_of_type_Float = ((int)(this.g + this.i * Math.sin(this.d * this.a)));
-    super.a(paramInt, paramFloat);
+    return new aybm();
+  }
+  
+  public Class<aybm> a()
+  {
+    return aybm.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + paramInt);
+    }
+  }
+  
+  public void a(aybm paramaybm)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + paramaybm);
+    }
+    aybw.a(paramaybm);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aybl
  * JD-Core Version:    0.7.0.1
  */

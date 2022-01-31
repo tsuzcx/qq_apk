@@ -1,38 +1,40 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class baap
-  extends Handler
+  implements MediaPlayer.OnErrorListener
 {
-  public baap(baan parambaan, Looper paramLooper)
+  private WeakReference<VideoSprite> a;
+  
+  private baap(VideoSprite paramVideoSprite)
   {
-    super(paramLooper);
+    this.a = new WeakReference(paramVideoSprite);
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    for (;;)
+    paramMediaPlayer = (VideoSprite)this.a.get();
+    if (paramMediaPlayer == null) {}
+    do
     {
-      try
-      {
-        switch (paramMessage.what)
-        {
-        case 2: 
-          return;
-        }
+      return true;
+      if (QLog.isColorLevel()) {
+        QLog.e("VideoSprite", 2, "onError: " + paramInt1);
       }
-      finally {}
-      paramMessage = paramMessage.getData();
-      this.a.b(paramMessage.getDouble("startTime"), paramMessage.getStringArray("pinyins"));
-      this.a.a(0);
+    } while (paramInt1 != 1);
+    if (paramMediaPlayer.a != null) {
+      paramMediaPlayer.a.a();
     }
+    paramMediaPlayer.j();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baap
  * JD-Core Version:    0.7.0.1
  */

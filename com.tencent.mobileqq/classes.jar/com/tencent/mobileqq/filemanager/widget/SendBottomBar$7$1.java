@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import apyi;
+import arrk;
 
 public class SendBottomBar$7$1
   implements Runnable
 {
-  public SendBottomBar$7$1(apyi paramapyi) {}
+  public SendBottomBar$7$1(arrk paramarrk) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class SendBottomBar$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.7.1
  * JD-Core Version:    0.7.0.1
  */

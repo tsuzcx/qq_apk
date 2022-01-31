@@ -1,96 +1,130 @@
+import UserGrowth.stLinkStragegyArgs;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqAddGroupVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.RspAddGroupVideo;
-import com.tencent.biz.qqstory.network.pb.qqstory_group.VideoObject;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.1;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.2;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiLinkUtil.3;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.ttpic.baseutils.device.DeviceUtils;
+import cooperation.qzone.LocalMultiProcConfig;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
 public class tlp
-  extends sys<tnu>
 {
-  private final HashMap<String, List<String>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private final List<Long> jdField_a_of_type_JavaUtilList;
-  private final List<Integer> b;
-  private final int c;
-  
-  public tlp(String paramString, List<String> paramList, List<Long> paramList1, List<Integer> paramList2, int paramInt)
+  private static int a()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("union_id should not be empty");
+    if (!a(b(), c(), 0)) {
+      return 0;
     }
-    if ((paramList == null) || (paramList.isEmpty())) {
-      throw new IllegalArgumentException("vidList is empty");
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Collections.unmodifiableList(paramList));
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.b = paramList2;
-    this.c = paramInt;
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", b(), 0);
   }
   
-  public String a()
+  public static stLinkStragegyArgs a()
   {
-    return sxm.a("StoryGroupSvc.add_video");
+    stLinkStragegyArgs localstLinkStragegyArgs = new stLinkStragegyArgs();
+    localstLinkStragegyArgs.hasInstalledWeish = xoo.a(BaseApplicationImpl.getApplication().getApplicationContext());
+    localstLinkStragegyArgs.todayClickCount = b();
+    localstLinkStragegyArgs.todayEnterCount = a();
+    localstLinkStragegyArgs.todayLastLinkId = c();
+    return localstLinkStragegyArgs;
   }
   
-  public syn a(byte[] paramArrayOfByte)
+  public static void a()
   {
-    qqstory_group.RspAddGroupVideo localRspAddGroupVideo = new qqstory_group.RspAddGroupVideo();
-    try
-    {
-      localRspAddGroupVideo.mergeFrom(paramArrayOfByte);
-      return new tnu(localRspAddGroupVideo);
+    a(b(), c());
+  }
+  
+  public static void a(int paramInt)
+  {
+    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.1(paramInt));
+  }
+  
+  private static void a(String paramString1, String paramString2)
+  {
+    ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.2(paramString1, paramString2));
+  }
+  
+  private static boolean a(String paramString1, String paramString2, int paramInt)
+  {
+    long l = LocalMultiProcConfig.getLong("weishi_usergrowth", paramString2, 0L);
+    boolean bool = bjpr.a(System.currentTimeMillis(), l);
+    if (!bool) {
+      ThreadManager.getSubThreadHandler().post(new WeishiLinkUtil.3(paramString1, paramInt, paramString2));
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    return bool;
+  }
+  
+  private static int b()
+  {
+    if (!a(d(), e(), 0)) {
+      return 0;
+    }
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", d(), 0);
+  }
+  
+  private static String b()
+  {
+    return "key_open_recommend_page_count_" + h();
+  }
+  
+  public static void b()
+  {
+    a(d(), e());
+  }
+  
+  private static int c()
+  {
+    if (!a(f(), g(), -1)) {
+      return -1;
+    }
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", f(), -1);
+  }
+  
+  private static String c()
+  {
+    return "key_open_recommend_page_time_" + h();
+  }
+  
+  private static String d()
+  {
+    return "key_click_recommend_card_count_" + h();
+  }
+  
+  private static String e()
+  {
+    return "key_click_recommend_card_time_" + h();
+  }
+  
+  private static String f()
+  {
+    return "key_last_link_type_" + h();
+  }
+  
+  private static String g()
+  {
+    return "key_last_link_time_" + h();
+  }
+  
+  private static String h()
+  {
+    String str2 = "";
+    String str3 = DeviceUtils.getVersionName(BaseApplicationImpl.getContext());
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    String str1 = str2;
+    if (localAppRuntime != null)
     {
-      for (;;)
-      {
-        ved.b("AddGroupVideoRequest", "decodeResponse", paramArrayOfByte);
+      str1 = str2;
+      if (!TextUtils.isEmpty(localAppRuntime.getAccount())) {
+        str1 = bfhh.a(localAppRuntime.getAccount());
       }
     }
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_group.ReqAddGroupVideo localReqAddGroupVideo = new qqstory_group.ReqAddGroupVideo();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Map.Entry)localIterator.next();
-      qqstory_group.GroupVideo localGroupVideo = new qqstory_group.GroupVideo();
-      localGroupVideo.source.set(this.c);
-      localGroupVideo.union_id.set(ByteStringMicro.copyFromUtf8((String)((Map.Entry)localObject).getKey()));
-      int i = 0;
-      localObject = ((List)((Map.Entry)localObject).getValue()).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        qqstory_group.VideoObject localVideoObject = new qqstory_group.VideoObject();
-        localVideoObject.vid.set(ByteStringMicro.copyFromUtf8(str));
-        localVideoObject.ts.set(((Long)this.jdField_a_of_type_JavaUtilList.get(i)).longValue() / 1000L);
-        localVideoObject.time_zone.set(((Integer)this.b.get(i)).intValue());
-        localGroupVideo.video_obj_list.add(localVideoObject);
-        i += 1;
-      }
-      localReqAddGroupVideo.group_video_list.add(localGroupVideo);
-    }
-    return localReqAddGroupVideo.toByteArray();
+    return str1 + "_" + str3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tlp
  * JD-Core Version:    0.7.0.1
  */

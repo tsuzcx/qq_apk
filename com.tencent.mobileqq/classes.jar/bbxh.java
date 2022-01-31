@@ -1,72 +1,22 @@
-import android.app.Activity;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vip.KCWraperV2InOtherProcess.1;
-import com.tencent.mobileqq.vip.KingCardActivationFragment;
-import com.tencent.util.Pair;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class bbxh
-  extends bbxc
+class bbxh
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  String a()
-  {
-    return "KC.KCWraper.Other";
-  }
+  bbxh(bbxf parambbxf, boolean paramBoolean) {}
   
-  void a(ViewGroup paramViewGroup)
+  public void onGlobalLayout()
   {
-    a("can not call bindActivationView");
-  }
-  
-  void a(bbxm parambbxm, boolean paramBoolean)
-  {
-    a("queryKingCard : from cache");
-    Pair localPair = a();
-    if (parambbxm != null)
-    {
-      if (paramBoolean) {
-        ThreadManager.getUIHandler().post(new KCWraperV2InOtherProcess.1(this, parambbxm, localPair));
-      }
-    }
-    else {
-      return;
-    }
-    parambbxm.a(true, ((Boolean)localPair.first).booleanValue(), ((Integer)localPair.second).intValue());
-  }
-  
-  void a(Runnable paramRunnable)
-  {
-    a("tryLoad : do nothing");
-  }
-  
-  boolean a()
-  {
-    a("isReady : do nothing");
-    return true;
-  }
-  
-  boolean a(Activity paramActivity)
-  {
-    if (c())
-    {
-      PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
-      return true;
-    }
-    return false;
-  }
-  
-  boolean b()
-  {
-    boolean bool = c();
-    a("supportActivationView = " + bool);
-    return bool;
+    bbxf.a(this.jdField_a_of_type_Bbxf).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    bbxf.b(this.jdField_a_of_type_Bbxf).setVisibility(4);
+    bbxf.a(this.jdField_a_of_type_Bbxf, this.jdField_a_of_type_Boolean, bbxf.a(this.jdField_a_of_type_Bbxf), bbxf.c(this.jdField_a_of_type_Bbxf));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbxh
  * JD-Core Version:    0.7.0.1
  */

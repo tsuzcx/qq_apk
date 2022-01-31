@@ -1,20 +1,42 @@
-import android.util.Pair;
-import android.view.View;
-import android.view.View.OnClickListener;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.troop.widget.MessageSubtitleView;
+import java.util.Queue;
 
-class bcmx
+public class bcmx
+  implements Animator.AnimatorListener
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = null;
-  View jdField_a_of_type_AndroidViewView;
-  ArrayList<Pair<View, bcmw>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  int[] jdField_a_of_type_ArrayOfInt;
+  int jdField_a_of_type_Int;
+  boolean jdField_a_of_type_Boolean = false;
   
-  private bcmx(bcmu parambcmu) {}
+  public bcmx(MessageSubtitleView paramMessageSubtitleView, boolean paramBoolean, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (this.jdField_a_of_type_Int == MessageSubtitleView.c) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.b();
+      }
+      if (!this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView.a.isEmpty()) {
+        MessageSubtitleView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetMessageSubtitleView);
+      }
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcmx
  * JD-Core Version:    0.7.0.1
  */

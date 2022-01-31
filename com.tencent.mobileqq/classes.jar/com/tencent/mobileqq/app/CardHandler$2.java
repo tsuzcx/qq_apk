@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app;
 
-import ajti;
-import ajtw;
-import ajxl;
+import alkv;
+import allj;
+import aloz;
 import android.os.Bundle;
-import bazx;
+import bcyr;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -17,7 +17,7 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class CardHandler$2
   implements Runnable
 {
-  public CardHandler$2(ajti paramajti, Bundle paramBundle) {}
+  public CardHandler$2(alkv paramalkv, Bundle paramBundle) {}
   
   public void run()
   {
@@ -25,7 +25,7 @@ public class CardHandler$2
     localOIDBSSOPkg.uint32_command.set(1279);
     localOIDBSSOPkg.uint32_result.set(0);
     localOIDBSSOPkg.uint32_service_type.set(9);
-    Object localObject2 = ((ajxl)this.this$0.app.getManager(51)).c(this.this$0.app.getCurrentAccountUin());
+    Object localObject2 = ((aloz)this.this$0.app.getManager(51)).c(this.this$0.app.getCurrentAccountUin());
     int j = 0;
     int i = 0;
     long l2 = 0L;
@@ -103,7 +103,7 @@ public class CardHandler$2
       k = this.a.getInt("profession");
       int i1 = i;
       m = j;
-      if (bazx.a(k))
+      if (bcyr.a(k))
       {
         m = j + 1;
         i1 = i + 8;
@@ -178,8 +178,8 @@ public class CardHandler$2
       k += 2;
       j += 24;
       arrayOfString = this.a.getStringArray("location");
-      ((ByteBuffer)localObject1).putShort((short)20032).putShort((short)12).putInt(ajtw.a(arrayOfString[0])).putInt(ajtw.a(arrayOfString[1])).putInt(ajtw.a(arrayOfString[2]));
-      ((ByteBuffer)localObject1).putShort((short)20041).putShort((short)4).putInt(ajtw.a(arrayOfString[3]));
+      ((ByteBuffer)localObject1).putShort((short)20032).putShort((short)12).putInt(allj.a(arrayOfString[0])).putInt(allj.a(arrayOfString[1])).putInt(allj.a(arrayOfString[2]));
+      ((ByteBuffer)localObject1).putShort((short)20041).putShort((short)4).putInt(allj.a(arrayOfString[3]));
       l2 = l1;
       i = j;
       m = k;
@@ -200,8 +200,8 @@ public class CardHandler$2
       k = m + 2;
       i += 24;
       arrayOfString = this.a.getStringArray("hometown");
-      ((ByteBuffer)localObject1).putShort((short)24002).putShort((short)12).putInt(ajtw.a(arrayOfString[0])).putInt(ajtw.a(arrayOfString[1])).putInt(ajtw.a(arrayOfString[2]));
-      ((ByteBuffer)localObject1).putShort((short)20043).putShort((short)4).putInt(ajtw.a(arrayOfString[3]));
+      ((ByteBuffer)localObject1).putShort((short)24002).putShort((short)12).putInt(allj.a(arrayOfString[0])).putInt(allj.a(arrayOfString[1])).putInt(allj.a(arrayOfString[2]));
+      ((ByteBuffer)localObject1).putShort((short)20043).putShort((short)4).putInt(allj.a(arrayOfString[3]));
       l1 = l2;
       j = i;
       n = k;
@@ -431,26 +431,48 @@ public class CardHandler$2
         l1 = l2;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("CardHandler", 2, "set detail card, field count = " + m);
+    l2 = l1;
+    i = j;
+    k = m;
+    if (this.a.containsKey("key_qqcircle_switch"))
+    {
+      l1 |= 0x0;
+      m += 1;
+      j += 6;
+      ((ByteBuffer)localObject1).putShort((short)-23175);
+      ((ByteBuffer)localObject1).putShort((short)2);
+      ((ByteBuffer)localObject1).putShort(this.a.getShort("key_qqcircle_switch"));
+      l2 = l1;
+      i = j;
+      k = m;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("CardHandler", 2, String.format(Locale.getDefault(), "set qqcircle switch:%s", new Object[] { Short.valueOf(this.a.getShort("key_qqcircle_switch")) }));
+        k = m;
+        i = j;
+        l2 = l1;
+      }
     }
-    if (m == 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("CardHandler", 2, "set detail card, field count = " + k);
+    }
+    if (k == 0)
     {
       this.this$0.notifyUI(31, true, new Object[] { Integer.valueOf(0), localObject2 });
       return;
     }
-    localObject2 = ByteBuffer.allocate(j + 7);
+    localObject2 = ByteBuffer.allocate(i + 7);
     ((ByteBuffer)localObject2).putInt((int)Long.parseLong(this.this$0.app.getCurrentAccountUin()));
     ((ByteBuffer)localObject2).put((byte)0);
-    ((ByteBuffer)localObject2).putShort((short)m);
-    ((ByteBuffer)localObject2).put(((ByteBuffer)localObject1).array(), 0, j);
+    ((ByteBuffer)localObject2).putShort((short)k);
+    ((ByteBuffer)localObject2).put(((ByteBuffer)localObject1).array(), 0, i);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((ByteBuffer)localObject2).array()));
     localObject1 = this.this$0.createToServiceMsg("OidbSvc.0x4ff_9");
     ((ToServiceMsg)localObject1).extraData.putAll(this.a);
     ((ToServiceMsg)localObject1).putWupBuffer(localOIDBSSOPkg.toByteArray());
     ((ToServiceMsg)localObject1).extraData.putBoolean("isSetLoginDays", false);
     ((ToServiceMsg)localObject1).extraData.putBoolean("reqFromCardHandler", true);
-    ((ToServiceMsg)localObject1).extraData.putLong("fieldFlag", l1);
+    ((ToServiceMsg)localObject1).extraData.putLong("fieldFlag", l2);
     ((ToServiceMsg)localObject1).setTimeout(20000L);
     this.this$0.sendPbReq((ToServiceMsg)localObject1);
   }

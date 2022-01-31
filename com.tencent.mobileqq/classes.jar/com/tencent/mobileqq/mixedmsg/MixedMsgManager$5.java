@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mixedmsg;
 
-import aumr;
+import awdy;
 import com.tencent.mobileqq.data.MessageForPic;
 
 public final class MixedMsgManager$5
@@ -10,12 +10,12 @@ public final class MixedMsgManager$5
   
   public void run()
   {
-    aumr.b(this.a);
+    awdy.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mixedmsg.MixedMsgManager.5
  * JD-Core Version:    0.7.0.1
  */

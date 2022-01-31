@@ -1,21 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
 
-public class rea
-  extends oyd
+final class rea
+  extends AnimatorListenerAdapter
 {
-  public rea(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
-  {
-    super(paramString);
-  }
+  rea(View paramView) {}
   
-  public void a(oxx paramoxx)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangObject = paramoxx.a();
+    this.a.setAlpha(1.0F);
+    this.a.setLayerType(0, null);
+    this.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rea
  * JD-Core Version:    0.7.0.1
  */

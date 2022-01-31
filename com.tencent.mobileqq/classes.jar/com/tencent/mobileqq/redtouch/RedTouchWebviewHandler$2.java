@@ -2,8 +2,8 @@ package com.tencent.mobileqq.redtouch;
 
 import android.app.Activity;
 import android.text.TextUtils;
-import avps;
-import bcdp;
+import axho;
+import becq;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -132,11 +132,11 @@ class RedTouchWebviewHandler$2
       if ((this.this$0.mRuntime == null) || (this.this$0.mRuntime.a() == null) || (localObject1 == null) || (((List)localObject1).isEmpty())) {
         break label1338;
       }
-      localObject5 = new avps(this.this$0.mRuntime.a());
+      localObject5 = new axho(this.this$0.mRuntime.a());
       if (localObject5 == null) {
         break label1338;
       }
-      localObject5 = ((avps)localObject5).a();
+      localObject5 = ((axho)localObject5).a();
       localObject7 = ((BusinessInfoCheckUpdate.AppInfo)((List)localObject1).get(0)).path.get();
       if ((TextUtils.isEmpty((CharSequence)localObject7)) || (!((String)localObject7).equals(localObject5))) {
         break label1338;
@@ -301,7 +301,7 @@ class RedTouchWebviewHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchWebviewHandler.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,40 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class acjj
-  implements View.OnClickListener
+class acjj
+  implements army
 {
-  public acjj(TroopMemberListActivity paramTroopMemberListActivity) {}
+  acjj(acji paramacji, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    vxp.a(this.a.a);
-    vxp.a(this.a.a.a);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.a.a.size())
-    {
-      paramView.add(((acku)this.a.a.a.get(i)).a);
-      i += 1;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      this.jdField_a_of_type_Acji.a.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.setResult(-1, localIntent);
-    this.a.finish();
+    allz localallz;
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localallz = (allz)this.jdField_a_of_type_Acji.a.a.a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localallz.a(localArrayList));
+    armz.a(2131692744);
+    return;
+    this.jdField_a_of_type_Acji.a.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acjj
  * JD-Core Version:    0.7.0.1
  */

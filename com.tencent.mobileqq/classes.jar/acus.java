@@ -1,31 +1,21 @@
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import java.util.ArrayList;
+
 public class acus
+  implements bhqd
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  public acus(FriendProfileCardActivity paramFriendProfileCardActivity, ArrayList paramArrayList, bhpy parambhpy) {}
   
-  public acus(String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
+    ((bdke)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a();
+    this.jdField_a_of_type_Bhpy.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acus
  * JD-Core Version:    0.7.0.1
  */

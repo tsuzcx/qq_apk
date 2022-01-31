@@ -1,16 +1,420 @@
-import com.tencent.av.opengl.program.TextureProgram;
+import android.text.TextUtils;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
+import com.tencent.aekit.plugin.core.AIAttr;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.av.opengl.effects.AEFilterSupport;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.mobileqq.shortvideo.filter.QQPtColorFilter;
+import com.tencent.mobileqq.shortvideo.filter.QQPtColorFilterInfo;
+import com.tencent.mobileqq.shortvideo.resource.AVFilterResource;
+import com.tencent.mobileqq.shortvideo.resource.Resources;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sveffects.SdkContext;
+import com.tencent.ttpic.openapi.PTFaceAttr;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class lrk
-  extends TextureProgram
+  implements lrj
 {
-  public lrk()
+  private volatile int jdField_a_of_type_Int;
+  private AEFilterManager jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager;
+  private PendantItem jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem;
+  private FilterDesc jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc;
+  private VideoMaterial jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial;
+  private final List<lrr> jdField_a_of_type_JavaUtilList = new ArrayList(11);
+  private final lrq jdField_a_of_type_Lrq = new lrq();
+  private final lsq jdField_a_of_type_Lsq;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  
+  public lrk(lsq paramlsq)
   {
-    super("uniform  mat4   uMatrix;\nuniform  mat4 uTextureMatrix;\nattribute vec2  aPosition ;\nvarying vec2 vTextureCoord;\nvoid main(void)\n{\nvec4 pos = vec4(aPosition, 0.0, 1.0);\n gl_Position = uMatrix * pos;\n vTextureCoord = (uTextureMatrix * (pos+vec4(0.5,0.5,0.0,0.0))).xy;\n}\n", "#ifdef GL_ES\nprecision highp float;\n#endif\nvarying vec2 vTextureCoord;\t\t\t\t//vTextureCoord;\nuniform sampler2D uTextureSampler0;\t\t\t// 原始纹理 rgba\nuniform float fWidth;\t\t\t// 纹理宽 短边\nuniform float fHeight;\t\t\t// 纹理高 长边\n\nvoid main() {\n\n  vec2 samplingPos =vec2(0.0,0.0);\n\tvec4 texel=vec4(0.0,0.0,0.0,0.0);\n\t\n\tvec3 offset = vec3(0.0, 0.5, 0.5);\n\t//颜色系数矩阵\n\tvec3 ycoeff = vec3(0.2990, 0.5870, 0.1140);\n\tvec3 ucoeff = vec3(-0.1687,-0.3313, 0.5);\n\tvec3 vcoeff = vec3(0.5,-0.4187,-0.0813);\n\n\tvec2 nowTxtPos = vTextureCoord;\n\tvec2 size = vec2(fWidth, fHeight);\n\n\tvec2 yScale = vec2(1,1);\n\tvec2 uvScale = vec2(4,2);\n\tvec2 hehe =vec2(0.5,0.5);\n\n/*\n    顶点旋转后，纹理坐标原点变为右下角，x轴向上，y轴向左\n\trbg纹理大小为 w*h， fbo 纹理大小为 (w/4)*(h*3/2)\n    fbo中yuv420数据保存在纹理左侧1/4处，从上到下为 V ,U，Y\n    V占用空间为w/4 * h/4,U占用空间为w/4 * h/4, Y占用空间为w/4 * h\n\n*/\n\tif(nowTxtPos.y <=1.0 &&  nowTxtPos.x <= 1.0 && nowTxtPos.x >= 0.8333333333333333)//采集V   纵轴 5/6 到1\n\t{\n        if(nowTxtPos.y < 0.5){//先写第二行，再写第一行，glreadPixel是从下往上反着读的\n             nowTxtPos.y += 0.5;\n        }else{\n             nowTxtPos.y -= 0.5;\n        }\n\n        float newOffset = 0.0;\n        if(nowTxtPos.y < 0.5){ //采集下一行\n               newOffset =2.0;\n        }\n        if(nowTxtPos.y > 0.5){ //不减前半部分无法采样\n              nowTxtPos.y -= 0.5;\n        }\n\n        nowTxtPos.x = nowTxtPos.x* 1.5; //恢复为RGB中比例\n        nowTxtPos.x -=1.25; //scale后纹理坐标返回 (1,1)\n\t\tvec2 basePos1 = (nowTxtPos * size +hehe);//rgb 中的像素点\n        vec2 basePos =vec2(int(basePos1.x),int(basePos1.y))* uvScale;//取整\n\n\t\t//得到像素坐标\n        float v1,v2,v3,v4;\n        basePos.x -=newOffset; //从左上角往右往下写yuv\n        //1\n        basePos.x+=0.0;\n        basePos.y+=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tv1 = dot(texel.rgb, vcoeff);\n\t\tv1 += offset.z;\n\t\t//2\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tv2 = dot(texel.rgb, vcoeff);\n\t\tv2 += offset.z;\n\t\t//3\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tv3 = dot(texel.rgb, vcoeff);\n\t\tv3 += offset.z;\n\t\t//4\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tv4 = dot(texel.rgb, vcoeff);\n\t\tv4 += offset.z;\n\t\t//写入V值\n        gl_FragColor = vec4(v1, v2, v3, v4);\n\n\t\t\n\t}\n\t//奇数行采集U\n\telse if(nowTxtPos.y <= 1.0 && nowTxtPos.x >= 0.6666666666666667 && nowTxtPos.x < 0.8333333333333333 )//采集U   纵轴 4/6 到5/6\n\t{\n        if(nowTxtPos.y < 0.5){//先写第二行，再写第一行，glreadPixel是从下往上反着读的\n             nowTxtPos.y += 0.5;\n        }else{\n             nowTxtPos.y -= 0.5;\n        }\n\n        float newOffset = 0.0;\n        if(nowTxtPos.y < 0.5){ //采集下一行\n              newOffset =2.0;\n        }\n        if(nowTxtPos.y > 0.5){ //不减前半部分无法采样\n              nowTxtPos.y -= 0.5;\n        }\n\n\t\tnowTxtPos.x = nowTxtPos.x* 1.5; //恢复为RGB中比例\n\t\tnowTxtPos.x -=1.0; //scale 后纹理坐标返回 (1,1)\n\t\tvec2 basePos1 = (nowTxtPos * size +hehe) ; \n        vec2 basePos =vec2(int(basePos1.x),int(basePos1.y))* uvScale;//取整\n\n\n        basePos.x -= newOffset;\n        //得到像素坐标\n        float u1,u2,u3,u4;\n        //1\n        basePos.x+=0.0;\n        basePos.y+=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tu1 = dot(texel.rgb, ucoeff);\n\t\tu1 += offset.y;\n\t\t//2\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tu2 = dot(texel.rgb, ucoeff);\n\t\tu2 += offset.y;\n\t\t//3\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tu3 = dot(texel.rgb, ucoeff);\n\t\tu3 += offset.y;\n\t\t//4\n        basePos.y -=2.0;//隔列采样\n        basePos.x -=0.0;\n\t\tsamplingPos = basePos/size;\n\t\ttexel = texture2D(uTextureSampler0, samplingPos);\n\t\tu4 = dot(texel.rgb, ucoeff);\n\t\tu4 += offset.y;\n\t\t//写入U值\n        gl_FragColor = vec4(u1, u2, u3, u4);\n\t}else if(nowTxtPos.y <= 1.0 && nowTxtPos.x >= 0.0 && nowTxtPos.x <= 0.6666666666666667){ //采集Y值 纵轴 0 到4/6\n          \t    nowTxtPos.x = nowTxtPos.x* 1.5; //恢复为RGB中比例\n\n\n                // y base postion\n                vec2 basePos1 = (nowTxtPos * size +hehe) ; //  0.99996的情况？\n                vec2 basePos =vec2(int(basePos1.x),int(basePos1.y))* yScale;//取整\n\n          \t\tfloat y1,y2,y3,y4;\n\n          \t\t //1\n          \t\tsamplingPos =  basePos / size;\n          \t\ttexel = texture2D(uTextureSampler0, samplingPos);\n          \t\ty1 = dot(texel.rgb, ycoeff);\n          \t\ty1 += offset.x;\n\n          \t    //2\n          \t\tbasePos.y -= 1.0;\n          \t\tsamplingPos = basePos/size;\n          \t\ttexel = texture2D(uTextureSampler0, samplingPos);\n          \t\ty2 = dot(texel.rgb, ycoeff);\n          \t\ty2 += offset.x;\n\n          \t//3\n          \t\tbasePos.y -= 1.0;\n          \t\tsamplingPos = basePos/size;\n          \t\ttexel = texture2D(uTextureSampler0, samplingPos);\n          \t\ty3 = dot(texel.rgb, ycoeff);\n          \t\ty3 += offset.x;\n\n          \t//4\n          \t\tbasePos.y -= 1.0;\n          \t\tsamplingPos = basePos/size;\n          \t\ttexel = texture2D(uTextureSampler0, samplingPos);\n          \t\ty4 = dot(texel.rgb, ycoeff);\n          \t\ty4 += offset.x;\n\n          \t\t//写入亮度值\n          \t\tgl_FragColor = vec4(y1, y2, y3, y4);\n\n          \t\t}\n\telse\n\t{\n\t\tgl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);\n\t}\n}", new lrp[] { new lro("aPosition"), new lrq("uMatrix"), new lrq("uAlpha"), new lrq("uTextureMatrix"), new lrq("uTextureSampler0"), new lrq("uTextureSampler1"), new lrq("uTextureSampler2"), new lrq("fWidth"), new lrq("fHeight"), new lrq("colorMat"), new lrq("yuvFormat"), new lrq("leavel") }, false);
+    if (QLog.isColorLevel()) {
+      QLog.i("AEFilterAVWrapperImpl", 2, "AEFilterAVWrapperImpl");
+    }
+    this.jdField_a_of_type_Lsq = paramlsq;
+    this.jdField_a_of_type_Int = 0;
+    a(1);
+  }
+  
+  private double a()
+  {
+    double d1 = 0.16666667163372D;
+    PTFaceAttr localPTFaceAttr = a();
+    if (localPTFaceAttr != null) {
+      d1 = localPTFaceAttr.getFaceDetectScale();
+    }
+    return d1;
+  }
+  
+  private PTFaceAttr a()
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null)
+    {
+      AIAttr localAIAttr = this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.getAIAttr();
+      localObject1 = localObject2;
+      if (localAIAttr != null) {
+        localObject1 = (PTFaceAttr)localAIAttr.getFaceAttr();
+      }
+    }
+    return localObject1;
+  }
+  
+  private String a(FilterDesc paramFilterDesc)
+  {
+    Object localObject2;
+    if (paramFilterDesc == null) {
+      localObject2 = null;
+    }
+    Object localObject1;
+    do
+    {
+      return localObject2;
+      localObject1 = SdkContext.getInstance().getResources().getAvFilterResource().getFilterResPath();
+      if (!TextUtils.isEmpty(paramFilterDesc.resRootPath)) {
+        localObject1 = paramFilterDesc.resRootPath;
+      }
+      localObject2 = paramFilterDesc.getResFold((String)localObject1);
+      QQPtColorFilterInfo localQQPtColorFilterInfo = QQPtColorFilter.getColorFilterInfo((String)localObject2);
+      localObject1 = localObject2;
+      if (localQQPtColorFilterInfo != null) {
+        localObject1 = (String)localObject2 + localQQPtColorFilterInfo.getColorPng();
+      }
+      localObject2 = localObject1;
+    } while (!QLog.isColorLevel());
+    QLog.i("AEFilterAVWrapperImpl", 2, "getLutPath, name[" + paramFilterDesc.name + "], out[" + (String)localObject1 + "]");
+    return localObject1;
+  }
+  
+  private void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Int >= 1) {}
+    boolean bool;
+    do
+    {
+      return;
+      bool = AEFilterSupport.a(paramInt);
+      if ((bool) && (this.jdField_a_of_type_Int < 1)) {
+        this.jdField_a_of_type_Int = 1;
+      }
+    } while ((paramInt == 0) || (!QLog.isColorLevel()));
+    QLog.i("AEFilterAVWrapperImpl", 2, "prepare ret[" + bool + "], state[" + this.jdField_a_of_type_Int + "], flag[" + paramInt + "]");
+  }
+  
+  private void d()
+  {
+    if (this.jdField_a_of_type_Int >= 2) {
+      return;
+    }
+    String str;
+    label93:
+    boolean bool;
+    if (this.jdField_a_of_type_Int < 3)
+    {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager = new AEFilterManager();
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.initInGL(this.b, this.c);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.switchFilterOn(108, false);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.setBeautyNormalAlpha(0.8F);
+      str = a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc);
+      if ((!TextUtils.isEmpty(str)) && (!bdcs.a(str))) {
+        break label223;
+      }
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateLutGL(str);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateMaterialGL(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.setForceFaceDetect(this.jdField_a_of_type_Boolean);
+      bool = this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.isInited();
+      if (!bool) {
+        break label256;
+      }
+      this.jdField_a_of_type_Int = 2;
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.defineFiltersAndOrder(new int[] { 101, 108, 106, 102, 104, 105, 103 });
+    }
+    for (;;)
+    {
+      lsp.a(bool);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("AEFilterAVWrapperImpl", 2, "initAEFilterInGL, state[" + this.jdField_a_of_type_Int + "]");
+      return;
+      label223:
+      QLog.i("AEFilterAVWrapperImpl", 1, "initAEFilterInGL, fail path[" + str + "]");
+      break label93;
+      label256:
+      this.jdField_a_of_type_Int = 3;
+    }
+  }
+  
+  private void e()
+  {
+    AEFilterManager localAEFilterManager = this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager;
+    if (localAEFilterManager == null) {}
+    do
+    {
+      return;
+      localAEFilterManager.setSmoothSharpenSize(this.d, this.e);
+      localAEFilterManager.setSmoothSharpenStrength(0.0F);
+      this.jdField_a_of_type_Lrq.a(0, this.jdField_a_of_type_JavaUtilList);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        lrr locallrr = (lrr)localIterator.next();
+        if (locallrr != null) {
+          switch (locallrr.jdField_a_of_type_Int)
+          {
+          default: 
+            break;
+          case 1: 
+            localAEFilterManager.setSmoothLevel(locallrr.d);
+            break;
+          case 2: 
+          case 3: 
+            localAEFilterManager.setBeautyOrTransformLevel(locallrr.jdField_a_of_type_ComTencentTtpicOpenapiConfigBeautyRealConfig$TYPE, locallrr.d);
+          }
+        }
+      }
+    } while ((this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem == null) || (!PendantItem.isBeautyMakeup(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getCategory())));
+    if ((this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.extraParam instanceof Integer)) {
+      this.f = ((Integer)this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.extraParam).intValue();
+    }
+    localAEFilterManager.setCosmeticsAlpha(this.f);
+  }
+  
+  public int a(int paramInt, boolean paramBoolean1, lsd paramlsd, boolean paramBoolean2)
+  {
+    int i;
+    if (this.jdField_a_of_type_Int < 1)
+    {
+      a(0);
+      i = paramInt;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return i;
+          if (this.jdField_a_of_type_Int < 2) {
+            d();
+          }
+          i = paramInt;
+        } while (this.jdField_a_of_type_Int >= 3);
+        i = paramInt;
+      } while (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager == null);
+      e();
+      paramInt = this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.drawFrame(paramInt, paramBoolean1, System.currentTimeMillis() * 1000000L);
+      i = paramInt;
+    } while (paramlsd == null);
+    paramlsd.a(a(), (float)a(), paramBoolean2);
+    return paramInt;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateMaterialGL(null);
+    }
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateLutGL(null);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = null;
+    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = null;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("AEFilterAVWrapperImpl", 2, "uninitInGL");
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = ((int)(paramInt1 * 1.0F));
+    this.e = ((int)(paramInt2 * 1.0F));
+    if (QLog.isColorLevel()) {
+      QLog.i("AEFilterAVWrapperImpl", 2, "initInGL");
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    QLog.w("AEFilterAVWrapperImpl", 1, "clearState, seq[" + paramLong + "]");
+    this.jdField_a_of_type_Lsq.a(paramLong);
+  }
+  
+  public void a(PendantItem paramPendantItem, VideoMaterial paramVideoMaterial)
+  {
+    boolean bool;
+    if ((!lsp.a(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem, paramPendantItem)) || (this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial != paramVideoMaterial))
+    {
+      if (QLog.isColorLevel())
+      {
+        if ((this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem == null) || (!this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.hasGesture())) {
+          break label181;
+        }
+        bool = true;
+        QLog.d("AEFilterAVWrapperImpl", 2, "setPendant, pendantItem[" + paramPendantItem + "], isPendantHasGesture[" + bool + "]");
+      }
+      if ((this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) && (!this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.isInited())) {
+        break label186;
+      }
+      this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = paramPendantItem;
+      this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = paramVideoMaterial;
+      if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) {
+        this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateMaterialGL(this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
+      }
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (PendantItem.isBeautyMakeup(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getCategory())) && ((this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.extraParam instanceof Integer))) {
+        this.f = ((Integer)this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.extraParam).intValue();
+      }
+      return;
+      label181:
+      bool = false;
+      break;
+      label186:
+      QLog.i("AEFilterAVWrapperImpl", 1, "initAEDetector failed!");
+    }
+  }
+  
+  public void a(FilterDesc paramFilterDesc)
+  {
+    String str;
+    StringBuilder localStringBuilder;
+    if (!lsp.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc, paramFilterDesc))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = paramFilterDesc;
+      str = a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc);
+      if ((this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager == null) || ((!TextUtils.isEmpty(str)) && (!bdcs.a(str)))) {
+        break label112;
+      }
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateLutGL(str);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("setFilterDesc, name[");
+        if (paramFilterDesc != null) {
+          break label146;
+        }
+      }
+    }
+    label146:
+    for (paramFilterDesc = "null";; paramFilterDesc = paramFilterDesc.name)
+    {
+      QLog.i("AEFilterAVWrapperImpl", 2, paramFilterDesc + "], path[" + str + "]");
+      return;
+      label112:
+      QLog.i("AEFilterAVWrapperImpl", 1, "setFilterDesc, fail path[" + str + "]");
+      break;
+    }
+  }
+  
+  public void a(lsa paramlsa, lsd paramlsd)
+  {
+    String str2 = "";
+    String str1 = "";
+    VideoMaterial localVideoMaterial = this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial;
+    PendantItem localPendantItem = this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem;
+    if (localPendantItem != null)
+    {
+      str2 = localPendantItem.getGestureType();
+      str1 = localPendantItem.getGestureWording();
+    }
+    for (boolean bool1 = localPendantItem.hasFace();; bool1 = false)
+    {
+      boolean bool2 = lko.a().b();
+      if ((lkt.a(localVideoMaterial)) && (!bool2)) {
+        bool1 = false;
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Lsq.a(paramlsa, paramlsd.jdField_a_of_type_Int, false, bool1, str1, str2);
+        return;
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.setForceFaceDetect(this.jdField_a_of_type_Boolean);
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.hasGesture());
+  }
+  
+  public boolean a(lrq paramlrq)
+  {
+    if (paramlrq == null) {
+      this.jdField_a_of_type_Lrq.c();
+    }
+    for (;;)
+    {
+      return this.jdField_a_of_type_Lrq.b();
+      this.jdField_a_of_type_Lrq.a(paramlrq);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null)
+    {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateLutGL(null);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateMaterialGL(null);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.destroy();
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager = null;
+    }
+    this.jdField_a_of_type_Int = 4;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc = null;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial = null;
+    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("AEFilterAVWrapperImpl", 2, "destroyInGL");
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.d = ((int)(paramInt1 * 1.0F));
+    this.e = ((int)(paramInt2 * 1.0F));
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager != null) {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEFilterManager.updateWidthHeight(paramInt1, paramInt2);
+    }
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null);
+  }
+  
+  public void c() {}
+  
+  public void c(int paramInt1, int paramInt2) {}
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lrk
  * JD-Core Version:    0.7.0.1
  */

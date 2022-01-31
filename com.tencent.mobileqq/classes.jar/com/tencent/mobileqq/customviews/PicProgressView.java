@@ -3,8 +3,8 @@ package com.tencent.mobileqq.customviews;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import ayoy;
-import aypb;
+import bamt;
+import bamw;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.qphone.base.util.QLog;
 
@@ -12,7 +12,7 @@ public class PicProgressView
   extends MessageProgressView
 {
   int jdField_a_of_type_Int = 0;
-  private aypb jdField_a_of_type_Aypb;
+  private bamw jdField_a_of_type_Bamw;
   PicProgressView.RefreshProgressRunnable jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable;
   public String a;
   public boolean a;
@@ -35,7 +35,7 @@ public class PicProgressView
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_Aypb == null) {}
+    if (this.jdField_a_of_type_Bamw == null) {}
     label222:
     do
     {
@@ -43,22 +43,22 @@ public class PicProgressView
       do
       {
         return;
-        if ((this.jdField_a_of_type_Aypb.e() < 100) && (paramInt1 >= 100)) {
+        if ((this.jdField_a_of_type_Bamw.e() < 100) && (paramInt1 >= 100)) {
           i = 100;
         }
         do
         {
-          this.jdField_a_of_type_Aypb.a(i);
-          paramInt1 = Math.max(this.jdField_a_of_type_Aypb.g(), 0);
+          this.jdField_a_of_type_Bamw.a(i);
+          paramInt1 = Math.max(this.jdField_a_of_type_Bamw.g(), 0);
           long l = 25L;
-          if (this.jdField_a_of_type_Aypb.g() < 0) {
+          if (this.jdField_a_of_type_Bamw.g() < 0) {
             l = 1000L;
           }
-          if (this.jdField_a_of_type_Aypb.e() > paramInt1) {
+          if (this.jdField_a_of_type_Bamw.e() > paramInt1) {
             break label222;
           }
           if (QLog.isColorLevel()) {
-            QLog.d("PicProgressView", 2, "currentProgress " + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_Aypb.a() + " processor " + this.jdField_a_of_type_Aypb);
+            QLog.d("PicProgressView", 2, "currentProgress " + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_Bamw.a() + " processor " + this.jdField_a_of_type_Bamw);
           }
           setProgress(i);
           if (this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable != null) {
@@ -69,13 +69,13 @@ public class PicProgressView
           return;
           i = paramInt1;
         } while (paramInt1 < 100);
-        this.jdField_a_of_type_Aypb = null;
+        this.jdField_a_of_type_Bamw = null;
         return;
       } while (paramInt2 == 1);
       this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable.a(paramInt2);
       return;
       if (QLog.isColorLevel()) {
-        QLog.d("PicProgressView", 2, "doUpdateCurrentProgress ,currentProgress:" + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_Aypb.a() + " processor " + this.jdField_a_of_type_Aypb);
+        QLog.d("PicProgressView", 2, "doUpdateCurrentProgress ,currentProgress:" + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_Bamw.a() + " processor " + this.jdField_a_of_type_Bamw);
       }
     } while (paramInt1 < this.jdField_a_of_type_Int);
     setProgress(paramInt1);
@@ -83,8 +83,8 @@ public class PicProgressView
   
   public int a()
   {
-    if (this.jdField_a_of_type_Aypb != null) {
-      return this.jdField_a_of_type_Aypb.e();
+    if (this.jdField_a_of_type_Bamw != null) {
+      return this.jdField_a_of_type_Bamw.e();
     }
     return 0;
   }
@@ -92,16 +92,16 @@ public class PicProgressView
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PicProgressView", 2, "updateProgress processor:" + this.jdField_a_of_type_Aypb);
+      QLog.d("PicProgressView", 2, "updateProgress processor:" + this.jdField_a_of_type_Bamw);
     }
-    if (this.jdField_a_of_type_Aypb != null) {
-      a(this.jdField_a_of_type_Aypb.e(), 1);
+    if (this.jdField_a_of_type_Bamw != null) {
+      a(this.jdField_a_of_type_Bamw.e(), 1);
     }
   }
   
   public void a(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_Aypb != null) && ((this.jdField_a_of_type_Aypb instanceof ayoy)) && (this.jdField_a_of_type_Aypb.c() < 1001L)) {
+    if ((this.jdField_a_of_type_Bamw != null) && ((this.jdField_a_of_type_Bamw instanceof bamt)) && (this.jdField_a_of_type_Bamw.c() < 1001L)) {
       return;
     }
     super.a(paramCanvas);
@@ -113,9 +113,9 @@ public class PicProgressView
     super.onDetachedFromWindow();
   }
   
-  public void setProcessor(aypb paramaypb)
+  public void setProcessor(bamw parambamw)
   {
-    if (this.jdField_a_of_type_Aypb == paramaypb) {
+    if (this.jdField_a_of_type_Bamw == parambamw) {
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable != null)
@@ -123,7 +123,7 @@ public class PicProgressView
       removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable);
       this.jdField_a_of_type_ComTencentMobileqqCustomviewsPicProgressView$RefreshProgressRunnable = null;
     }
-    this.jdField_a_of_type_Aypb = paramaypb;
+    this.jdField_a_of_type_Bamw = parambamw;
   }
   
   public void setProgress(int paramInt)
@@ -159,7 +159,7 @@ public class PicProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.PicProgressView
  * JD-Core Version:    0.7.0.1
  */

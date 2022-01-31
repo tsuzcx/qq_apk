@@ -1,31 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class qbq
-  implements Cloneable
+class qbq
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
+  qbq(qbp paramqbp) {}
   
-  protected Object clone()
+  public void onClick(View paramView)
   {
-    try
-    {
-      qbq localqbq = (qbq)super.clone();
-      return localqbq;
+    paramView = this.a.jdField_a_of_type_Rqj.a();
+    if (paramView != null) {
+      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qbq
  * JD-Core Version:    0.7.0.1
  */

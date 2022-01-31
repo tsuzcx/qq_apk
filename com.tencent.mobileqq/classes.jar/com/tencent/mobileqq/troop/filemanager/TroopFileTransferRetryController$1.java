@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import azso;
-import azsp;
+import bbqx;
+import bbqy;
 
 public class TroopFileTransferRetryController$1
   implements Runnable
 {
-  public TroopFileTransferRetryController$1(azso paramazso, String paramString) {}
+  public TroopFileTransferRetryController$1(bbqx parambbqx, String paramString) {}
   
   public void run()
   {

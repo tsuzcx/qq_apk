@@ -1,80 +1,31 @@
-import android.content.Context;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
 
 class agel
-  implements bfos
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  int b;
-  int c = 0;
+  agel(agej paramagej, AIOShortVideoData paramAIOShortVideoData) {}
   
-  agel(ageg paramageg)
+  public void onClick(View paramView)
   {
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.jdField_b_of_type_Int = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged, reach bottom, scrollState " + paramInt + " firstVisibleItem: " + this.c + ", lastItem:" + this.jdField_a_of_type_Int + ", totalItemCount = " + this.jdField_b_of_type_Int + ", mIsComplete: " + this.jdField_a_of_type_Ageg.d + ", requesting:" + this.jdField_a_of_type_Ageg.jdField_c_of_type_Boolean + ", mSearchMode: " + this.jdField_a_of_type_Ageg.jdField_b_of_type_Int + ", mCurrentKeyword: " + this.jdField_a_of_type_Ageg.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_b_of_type_Int == 0) {}
-    do
+    agej.a(this.jdField_a_of_type_Agej, agej.a(this.jdField_a_of_type_Agej), alpo.a(2131700423));
+    boolean bool = azbu.a().a();
+    paramView = agej.b(this.jdField_a_of_type_Agej);
+    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.g;
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.e;
+    if (bool) {}
+    for (int i = 1;; i = 0)
     {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_Int != this.jdField_b_of_type_Int) || (paramInt != 0));
-      if ((this.c != 0) && (!this.jdField_a_of_type_Ageg.jdField_c_of_type_Boolean))
-      {
-        this.jdField_a_of_type_Ageg.jdField_c_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Ageg.jdField_b_of_type_Int == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageLocal >>>>> isComplete: " + this.jdField_a_of_type_Ageg.d);
-          }
-          this.jdField_a_of_type_Ageg.jdField_a_of_type_Agbo.a(this.jdField_a_of_type_Ageg.jdField_a_of_type_Long, this.jdField_a_of_type_Ageg.jdField_a_of_type_JavaLangString, 2);
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageInCloud >>>>> isComplete: " + this.jdField_a_of_type_Ageg.d);
-        }
-        if (this.jdField_a_of_type_Ageg.d)
-        {
-          this.jdField_a_of_type_Ageg.jdField_c_of_type_AndroidWidgetTextView.setText(ajya.a(2131706120));
-          this.jdField_a_of_type_Ageg.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131371996).setVisibility(8);
-          this.jdField_a_of_type_Ageg.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-          this.jdField_a_of_type_Ageg.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          return;
-        }
-        this.jdField_a_of_type_Ageg.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Ageg.jdField_a_of_type_AndroidContentContext.getString(2131719096));
-        this.jdField_a_of_type_Ageg.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_Ageg.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131371996).setVisibility(0);
-        this.jdField_a_of_type_Ageg.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.jdField_a_of_type_Ageg.jdField_a_of_type_Long = System.currentTimeMillis();
-        return;
-      }
-    } while ((this.c != 0) || (this.jdField_a_of_type_Ageg.jdField_c_of_type_Boolean) || (!this.jdField_a_of_type_Ageg.d) || (this.jdField_a_of_type_Ageg.jdField_b_of_type_Int != 1));
-    this.jdField_a_of_type_Ageg.jdField_c_of_type_AndroidWidgetTextView.setText(ajya.a(2131706116));
-    this.jdField_a_of_type_Ageg.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131371996).setVisibility(8);
-    this.jdField_a_of_type_Ageg.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_Ageg.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      DanceMachineQQBrowserActivity.a(paramView, j, str, i, -999, 1, 0, null);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agel
  * JD-Core Version:    0.7.0.1
  */

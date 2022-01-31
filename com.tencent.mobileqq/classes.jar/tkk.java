@@ -1,25 +1,21 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import java.util.List;
+import NS_KING_INTERFACE.stPostCommentReplyReq;
+import NS_KING_INTERFACE.stPostCommentReplyRsp;
+import NS_KING_SOCIALIZE_META.stMetaComment;
+import NS_KING_SOCIALIZE_META.stMetaReply;
+import UserGrowth.stSimpleMetaFeed;
 
 public class tkk
-  extends ssh
+  extends thb<stPostCommentReplyRsp>
 {
-  public QQUserUIItem a;
-  public String a;
-  public List<QQUserUIItem> a;
-  public String b;
-  
-  public String toString()
+  public tkk(stSimpleMetaFeed paramstSimpleMetaFeed, stMetaComment paramstMetaComment, stMetaReply paramstMetaReply)
   {
-    if (this.a == null) {
-      return "UpdateUserInfoEvent " + super.toString();
-    }
-    return "UpdateUserInfoEvent " + this.a.toString() + super.toString();
+    super("PostCommentReply");
+    this.a = new stPostCommentReplyReq(paramstSimpleMetaFeed.id, paramstMetaComment.id, paramstMetaReply);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tkk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,24 @@
-import android.view.View;
+import android.view.KeyEvent;
 import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.richstatus.SignTextEditFragment;
 
-class axxs
+public class axxs
+  implements TextView.OnEditorActionListener
 {
-  public View a;
-  public TextView a;
-  public TextView b;
+  public axxs(SignTextEditFragment paramSignTextEditFragment) {}
   
-  public void a()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)) {
+      bhoc.b(paramTextView);
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    if (this.b != null) {
-      this.b.setVisibility(8);
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axxs
  * JD-Core Version:    0.7.0.1
  */

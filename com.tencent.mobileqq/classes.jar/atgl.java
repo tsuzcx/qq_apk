@@ -1,55 +1,28 @@
-import com.tencent.mobileqq.nearby.now.view.SplitedProgressBar;
-import java.security.InvalidParameterException;
+import com.tencent.widget.AbsListView;
 
-public class atgl
+public abstract interface atgl
 {
-  private SplitedProgressBar a;
+  public abstract int a();
   
-  public atgl(SplitedProgressBar paramSplitedProgressBar)
-  {
-    if (paramSplitedProgressBar == null) {
-      throw new InvalidParameterException("ProgressControler: progressBar is null");
-    }
-    this.a = paramSplitedProgressBar;
-  }
+  public abstract void a();
   
-  public void a(int paramInt)
-  {
-    if (paramInt == 0) {
-      return;
-    }
-    this.a.setTotalCount(paramInt);
-  }
+  public abstract void a(int paramInt1, boolean paramBoolean, int paramInt2);
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 < this.a.b) {
-      this.a.setProgress(paramInt1, paramInt2);
-    }
-  }
+  public abstract void a(atgn paramatgn);
   
-  public void a(boolean paramBoolean)
-  {
-    SplitedProgressBar localSplitedProgressBar = this.a;
-    if (paramBoolean) {}
-    for (int i = 8;; i = 0)
-    {
-      localSplitedProgressBar.setVisibility(i);
-      return;
-    }
-  }
+  public abstract void a(AbsListView paramAbsListView, int paramInt);
   
-  public void b(int paramInt)
-  {
-    if (paramInt == 0) {
-      return;
-    }
-    this.a.setShowMaxCount(paramInt);
-  }
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atgl
  * JD-Core Version:    0.7.0.1
  */

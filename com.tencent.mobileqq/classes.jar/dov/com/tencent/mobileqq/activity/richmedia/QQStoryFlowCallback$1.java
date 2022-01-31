@@ -1,11 +1,11 @@
 package dov.com.tencent.mobileqq.activity.richmedia;
 
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 
 public final class QQStoryFlowCallback$1
   implements Runnable
 {
-  public QQStoryFlowCallback$1(bcql parambcql) {}
+  public QQStoryFlowCallback$1(QQToast paramQQToast) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public final class QQStoryFlowCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback.1
  * JD-Core Version:    0.7.0.1
  */

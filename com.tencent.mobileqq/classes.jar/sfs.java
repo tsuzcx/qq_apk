@@ -1,54 +1,43 @@
-import android.os.Bundle;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
-class sfs
-  implements wxt
+public class sfs
+  implements ComplementFileStringLoader
 {
-  sfs(sfk paramsfk, String paramString, boolean paramBoolean) {}
+  private sfz a;
   
-  public void a(Bundle paramBundle)
+  public sfs(sfz paramsfz)
   {
-    if (paramBundle != null)
+    this.a = paramsfz;
+  }
+  
+  public String loadFileAsString(String paramString)
+  {
+    try
     {
-      if (this.jdField_a_of_type_Sfk.a != null) {
-        this.jdField_a_of_type_Sfk.l();
-      }
-      String str = paramBundle.getString("pic_server_id");
-      this.jdField_a_of_type_Sfk.a(paramBundle);
-      if ("-1".equals(str)) {
-        paramBundle = new JSONObject();
+      InputStream localInputStream = this.a.a(paramString);
+      if (localInputStream == null) {
+        throw new IllegalStateException(paramString + " not found");
       }
     }
-    else
+    catch (IOException localIOException)
     {
-      try
+      if (QLog.isColorLevel())
       {
-        paramBundle.put("retCode", -1);
-        paramBundle.put("msg", "fail");
-        this.jdField_a_of_type_Sfk.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-        if (this.jdField_a_of_type_Boolean)
-        {
-          nol.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, -1, "1", "", "", "", false);
-          return;
-        }
+        QLog.d("OfflineComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
+        localIOException.printStackTrace();
       }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-        axqy.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D30", "0X8005D30", 0, -1, "1", "", "", "");
-        return;
-      }
+      return null;
     }
-    this.jdField_a_of_type_Sfk.a(localJSONException, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    String str = sgi.a(localIOException);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sfs
  * JD-Core Version:    0.7.0.1
  */

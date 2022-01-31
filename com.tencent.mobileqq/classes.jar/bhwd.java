@@ -1,124 +1,89 @@
-import android.content.SharedPreferences;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.widget.ExploreByTouchHelper;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.widget.RangeButtonView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bhwd
-  extends RemoteCommand
+  extends ExploreByTouchHelper
 {
-  private QQAppInterface a;
-  
-  public void a()
+  public bhwd(RangeButtonView paramRangeButtonView, View paramView)
   {
-    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
-    if ((localPluginCommunicationHandler != null) && (localPluginCommunicationHandler.containsCmd("com.tencent.qqreadinjoy.readinjoyremotecommand"))) {
-      localPluginCommunicationHandler.unregister("com.tencent.qqreadinjoy.readinjoyremotecommand");
+    super(paramView);
+  }
+  
+  public Rect a(int paramInt)
+  {
+    Point localPoint = (Point)RangeButtonView.a(this.a).a().get(paramInt);
+    paramInt = RangeButtonView.a(this.a).a() / 2;
+    return new Rect(localPoint.x - paramInt, localPoint.y - paramInt, localPoint.x + paramInt, localPoint.y + paramInt);
+  }
+  
+  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  {
+    return RangeButtonView.a(this.a, (int)paramFloat1, (int)paramFloat2, RangeButtonView.a(this.a).a() / 2, RangeButtonView.a(this.a).a() / 2, false);
+  }
+  
+  public void getVisibleVirtualViews(List<Integer> paramList)
+  {
+    int i = 0;
+    while (i < RangeButtonView.a(this.a).size())
+    {
+      paramList.add(Integer.valueOf(i));
+      i += 1;
     }
   }
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    boolean bool = true;
-    int i = paramBundle.getInt("param_data_type", 0);
-    paramOnInvokeFinishLinstener = new Bundle();
-    switch (i)
+    switch (paramInt2)
     {
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-      do
-      {
-        do
-        {
-          Object localObject;
-          do
-          {
-            SharedPreferences localSharedPreferences;
-            do
-            {
-              do
-              {
-                return paramOnInvokeFinishLinstener;
-                localObject = paramBundle.getString("param_sp_key");
-                paramBundle = paramBundle.getString("param_sp_value_type");
-                localSharedPreferences = bhvy.a(this.a, 1);
-              } while (localSharedPreferences == null);
-              try
-              {
-                if (paramBundle.equals("long"))
-                {
-                  paramOnInvokeFinishLinstener.putString("result_key", Long.toString(localSharedPreferences.getLong((String)localObject, 0L)));
-                  return paramOnInvokeFinishLinstener;
-                }
-              }
-              catch (ClassCastException paramBundle)
-              {
-                paramBundle.printStackTrace();
-                return paramOnInvokeFinishLinstener;
-              }
-              if (paramBundle.equals("boolean"))
-              {
-                paramOnInvokeFinishLinstener.putString("result_key", Boolean.toString(localSharedPreferences.getBoolean((String)localObject, false)));
-                return paramOnInvokeFinishLinstener;
-              }
-              if (paramBundle.equals("int"))
-              {
-                paramOnInvokeFinishLinstener.putString("result_key", Integer.toString(localSharedPreferences.getInt((String)localObject, 0)));
-                return paramOnInvokeFinishLinstener;
-              }
-            } while (!paramBundle.equals("String"));
-            paramOnInvokeFinishLinstener.putString("result_key", localSharedPreferences.getString((String)localObject, null));
-            return paramOnInvokeFinishLinstener;
-            paramBundle = paramBundle.getString("param_uin");
-            bbcz.h(this.a, paramBundle);
-            paramOnInvokeFinishLinstener.putString("result_key", bbcz.j(this.a, paramBundle));
-            return paramOnInvokeFinishLinstener;
-            paramBundle = paramBundle.getString("param_uin");
-            paramOnInvokeFinishLinstener.putParcelable("result_key", this.a.a(paramBundle, true));
-            return paramOnInvokeFinishLinstener;
-            paramBundle = paramBundle.getString("param_uin");
-            localObject = (ajxl)this.a.getManager(51);
-          } while ((localObject == null) || (TextUtils.isEmpty(paramBundle)));
-          paramBundle = ((ajxl)localObject).b(paramBundle);
-        } while (paramBundle == null);
-        paramOnInvokeFinishLinstener.putString("result_key", Short.toString(paramBundle.shGender));
-        return paramOnInvokeFinishLinstener;
-        paramBundle = paramBundle.getString("param_uin");
-      } while (TextUtils.isEmpty(paramBundle));
-      paramOnInvokeFinishLinstener.putString("result_key", Boolean.toString(osg.a().a(paramBundle)));
-      return paramOnInvokeFinishLinstener;
-    case 6: 
-      paramBundle = bhvy.a(this.a);
-      if ((paramBundle != null) && (paramBundle.a == 0)) {}
-      for (;;)
-      {
-        paramOnInvokeFinishLinstener.putString("result_key", Boolean.toString(bool));
-        return paramOnInvokeFinishLinstener;
-        bool = false;
-      }
-    case 7: 
-      paramOnInvokeFinishLinstener.putString("result_key", onh.b());
-      return paramOnInvokeFinishLinstener;
     }
-    paramBundle = paramBundle.getString("param_uin");
-    new not(this.a, paramBundle, this.a.getApp().getApplicationContext()).a();
-    QLog.e("ReadInJoyRemoteCommand", 2, "handle remote unfollow public account request ! puin : " + paramBundle);
-    paramOnInvokeFinishLinstener.putBoolean("result_key", true);
-    return paramOnInvokeFinishLinstener;
+    do
+    {
+      return false;
+    } while ((RangeButtonView.a(this.a) == null) || (RangeButtonView.a(this.a) == null));
+    if ((paramInt1 != RangeButtonView.a(this.a)) && (paramInt1 != -1))
+    {
+      if (RangeButtonView.a(this.a) != null) {
+        RangeButtonView.a(this.a).a(RangeButtonView.a(this.a), paramInt1);
+      }
+      RangeButtonView.a(this.a, paramInt1);
+      this.a.invalidate();
+    }
+    return true;
+  }
+  
+  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  {
+    if ((RangeButtonView.b(this.a) != null) && (RangeButtonView.b(this.a).size() > paramInt)) {
+      paramAccessibilityEvent.setContentDescription((CharSequence)RangeButtonView.b(this.a).get(paramInt));
+    }
+  }
+  
+  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    if ((RangeButtonView.b(this.a) != null) && (RangeButtonView.b(this.a).size() > paramInt))
+    {
+      String str2 = (String)RangeButtonView.b(this.a).get(paramInt);
+      String str1 = str2;
+      if (paramInt == RangeButtonView.a(this.a)) {
+        str1 = str2 + alpo.a(2131713081);
+      }
+      paramAccessibilityNodeInfoCompat.setContentDescription(str1);
+    }
+    paramAccessibilityNodeInfoCompat.addAction(16);
+    paramAccessibilityNodeInfoCompat.setBoundsInParent(a(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhwd
  * JD-Core Version:    0.7.0.1
  */

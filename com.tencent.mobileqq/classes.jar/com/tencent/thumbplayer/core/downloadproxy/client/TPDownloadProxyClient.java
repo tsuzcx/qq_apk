@@ -36,7 +36,7 @@ public class TPDownloadProxyClient
   {
     try
     {
-      String str = this.downloadProxyAidl.getClipPlayUrl(paramInt1, paramInt2);
+      String str = this.downloadProxyAidl.getClipPlayUrl(paramInt1, paramInt2, 1);
       return str;
     }
     catch (Throwable localThrowable)
@@ -64,7 +64,7 @@ public class TPDownloadProxyClient
   {
     try
     {
-      String str = this.downloadProxyAidl.getPlayUrl(paramInt);
+      String str = this.downloadProxyAidl.getPlayUrl(paramInt, 1);
       return str;
     }
     catch (Throwable localThrowable)
@@ -121,7 +121,7 @@ public class TPDownloadProxyClient
     }
   }
   
-  public int removeOfflineDownload(String paramString)
+  public int removeStorageCache(String paramString)
   {
     return -1;
   }
@@ -208,16 +208,18 @@ public class TPDownloadProxyClient
   
   public int startClipPlay(String paramString, int paramInt, ITPPlayListener paramITPPlayListener)
   {
-    paramITPPlayListener = new TPDownloadProxyClient.2(this, paramITPPlayListener);
+    if (paramITPPlayListener == null) {}
     try
     {
-      paramInt = this.downloadProxyAidl.startClipPlay(paramString, paramInt, paramITPPlayListener);
-      return paramInt;
+      return this.downloadProxyAidl.startClipPlay(paramString, paramInt, null);
     }
     catch (Throwable paramString)
     {
       TPDLProxyLog.e("TPDownloadProxyClient", 0, "tpdlnative", "startClipPlay failed, error:" + paramString.toString());
     }
+    paramITPPlayListener = new TPDownloadProxyClient.2(this, paramITPPlayListener);
+    paramInt = this.downloadProxyAidl.startClipPlay(paramString, paramInt, paramITPPlayListener);
+    return paramInt;
     return -1;
   }
   
@@ -228,20 +230,23 @@ public class TPDownloadProxyClient
   
   public int startPlay(String paramString, TPDownloadParam paramTPDownloadParam, ITPPlayListener paramITPPlayListener)
   {
-    if ((this.downloadProxyAidl == null) || (paramTPDownloadParam == null) || (paramITPPlayListener == null)) {
+    if ((this.downloadProxyAidl == null) || (paramTPDownloadParam == null)) {
       return -1;
     }
     paramTPDownloadParam = new TPDownloadParamAidl(paramTPDownloadParam.getUrlList(), paramTPDownloadParam.getDlType(), paramTPDownloadParam.getExtInfoMap());
-    paramITPPlayListener = new TPDownloadProxyClient.1(this, paramITPPlayListener);
+    if (paramITPPlayListener == null) {}
     try
     {
-      int i = this.downloadProxyAidl.startPlay(paramString, paramTPDownloadParam, paramITPPlayListener);
-      return i;
+      return this.downloadProxyAidl.startPlay(paramString, paramTPDownloadParam, null);
     }
     catch (Throwable paramString)
     {
+      int i;
       TPDLProxyLog.e("TPDownloadProxyClient", 0, "tpdlnative", "startPlay failed, error:" + paramString.toString());
     }
+    paramITPPlayListener = new TPDownloadProxyClient.1(this, paramITPPlayListener);
+    i = this.downloadProxyAidl.startPlay(paramString, paramTPDownloadParam, paramITPPlayListener);
+    return i;
     return -1;
   }
   
@@ -300,7 +305,7 @@ public class TPDownloadProxyClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.client.TPDownloadProxyClient
  * JD-Core Version:    0.7.0.1
  */

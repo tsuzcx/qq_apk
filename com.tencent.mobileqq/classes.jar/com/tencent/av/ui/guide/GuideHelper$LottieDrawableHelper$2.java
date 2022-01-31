@@ -1,12 +1,12 @@
 package com.tencent.av.ui.guide;
 
-import mom;
-import mop;
+import mrg;
+import mrj;
 
 public class GuideHelper$LottieDrawableHelper$2
   implements Runnable
 {
-  public GuideHelper$LottieDrawableHelper$2(mom parammom, mop parammop) {}
+  public GuideHelper$LottieDrawableHelper$2(mrg parammrg, mrj parammrj) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class GuideHelper$LottieDrawableHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.guide.GuideHelper.LottieDrawableHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import adhw;
+import afab;
 import android.widget.ImageButton;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.widget.XEditTextEx;
@@ -8,7 +8,7 @@ import com.tencent.widget.XEditTextEx;
 public class FullScreenInputHelper$1
   implements Runnable
 {
-  public FullScreenInputHelper$1(adhw paramadhw) {}
+  public FullScreenInputHelper$1(afab paramafab) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class FullScreenInputHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FullScreenInputHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,20 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
-class aqgu
-  extends RecyclerView.OnScrollListener
+public class aqgu
+  implements View.OnClickListener
 {
-  aqgu(aqgr paramaqgr) {}
+  public aqgu(FMActivity paramFMActivity) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onClick(View paramView)
   {
-    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
-      aqgr.a(this.a).c();
-    }
-    while (!aqgr.a(this.a).a()) {
-      return;
-    }
-    aqgr.a(this.a).b();
-    aqgr.a(this.a).notifyDataSetChanged();
+    FMActivity.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgu
  * JD-Core Version:    0.7.0.1
  */

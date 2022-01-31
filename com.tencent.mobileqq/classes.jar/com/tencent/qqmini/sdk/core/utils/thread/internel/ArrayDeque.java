@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.core.utils.thread.internel;
 
-import bems;
-import bemt;
-import bemu;
+import bgmi;
+import bgmj;
+import bgmk;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 
 public class ArrayDeque<E>
   extends AbstractCollection<E>
-  implements bemu<E>, Serializable, Cloneable
+  implements bgmk<E>, Serializable, Cloneable
 {
   private static final long serialVersionUID = 2340985798034038923L;
   private transient int jdField_a_of_type_Int;
@@ -274,7 +274,7 @@ public class ArrayDeque<E>
   
   public Iterator<E> descendingIterator()
   {
-    return new bemt(this, null);
+    return new bgmj(this, null);
   }
   
   public E element()
@@ -307,7 +307,7 @@ public class ArrayDeque<E>
   
   public Iterator<E> iterator()
   {
-    return new bems(this, null);
+    return new bgmi(this, null);
   }
   
   public boolean offer(E paramE)
@@ -480,7 +480,7 @@ public class ArrayDeque<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.thread.internel.ArrayDeque
  * JD-Core Version:    0.7.0.1
  */

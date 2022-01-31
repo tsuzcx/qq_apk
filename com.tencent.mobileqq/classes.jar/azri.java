@@ -1,18 +1,21 @@
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
 
-class azri
-  implements Comparator<azrl>
+public class azri
+  extends URLDrawableDownListener.Adapter
 {
-  azri(azrh paramazrh) {}
+  public azri(StructMsgForHypertext paramStructMsgForHypertext) {}
   
-  public int a(azrl paramazrl1, azrl paramazrl2)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return paramazrl2.b - paramazrl1.b;
+    paramView.setBackgroundDrawable(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azri
  * JD-Core Version:    0.7.0.1
  */

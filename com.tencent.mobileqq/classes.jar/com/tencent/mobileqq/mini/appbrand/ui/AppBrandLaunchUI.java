@@ -7,8 +7,8 @@ import android.os.Looper;
 import android.os.Parcelable;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import bbeg;
-import bbex;
+import bddb;
+import bdds;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -64,11 +64,11 @@ public class AppBrandLaunchUI
     {
       localObject1 = ((Intent)localObject3).getStringExtra("scheme");
       localObject2 = (ResultReceiver)((Intent)localObject3).getParcelableExtra("result_receiver");
-      localObject3 = bbex.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this, (String)localObject1);
+      localObject3 = bdds.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this, (String)localObject1);
       localObject4 = new Bundle();
       if (localObject3 != null)
       {
-        boolean bool = ((bbeg)localObject3).c();
+        boolean bool = ((bddb)localObject3).c();
         if (bool)
         {
           i = 1;
@@ -209,7 +209,7 @@ public class AppBrandLaunchUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandLaunchUI
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ public abstract interface VConsoleDragView$Listener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.VConsoleDragView.Listener
  * JD-Core Version:    0.7.0.1
  */

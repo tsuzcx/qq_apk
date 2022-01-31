@@ -1,158 +1,31 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
-import com.tencent.mobileqq.widget.CircleFileStateView;
-import java.util.List;
-
 public class apev
-  extends apeh
 {
-  private final int jdField_a_of_type_Int = -1;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private LocalFileBrowserActivity jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity;
-  private List<FileInfo> jdField_a_of_type_JavaUtilList;
-  private final int b = 1;
+  public int a;
+  public String a;
+  public boolean a;
+  public String b = "";
+  public String c = "";
   
-  public apev(Context paramContext, List<FileInfo> paramList, LocalFileBrowserActivity paramLocalFileBrowserActivity)
+  public apev()
   {
-    super(paramContext, paramLocalFileBrowserActivity.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity = paramLocalFileBrowserActivity;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 1;
   }
   
-  private View a(FileInfo paramFileInfo, ViewGroup paramViewGroup)
+  public String toString()
   {
-    apew localapew = new apew(this);
-    if (!paramFileInfo.c())
-    {
-      paramFileInfo = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560449, paramViewGroup, false);
-      localapew.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramFileInfo);
-      localapew.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
-      localapew.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-      localapew.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localapew);
-      localapew.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramFileInfo.findViewById(2131366225));
-      localapew.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131366211));
-      localapew.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
-      localapew.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setTag(localapew);
-      localapew.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131375250));
-      localapew.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramFileInfo.findViewById(2131366223));
-      localapew.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
-      localapew.b = ((TextView)paramFileInfo.findViewById(2131366226));
-      localapew.c = ((TextView)paramFileInfo.findViewById(2131366209));
-      localapew.d = ((TextView)paramFileInfo.findViewById(2131368885));
-      localapew.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView = ((CircleFileStateView)paramFileInfo.findViewById(2131361889));
-      localapew.jdField_a_of_type_ComTencentMobileqqWidgetCircleFileStateView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
-    }
-    for (;;)
-    {
-      paramFileInfo.setTag(localapew);
-      return paramFileInfo;
-      paramFileInfo = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560457, paramViewGroup, false);
-      paramFileInfo.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b);
-      localapew.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramFileInfo.findViewById(2131366237));
-      localapew.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramFileInfo.findViewById(2131375260));
-      localapew.jdField_a_of_type_AndroidWidgetTextView = ((EllipsizingTextView)paramFileInfo.findViewById(2131366240));
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((FileInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).c()) {
-      return -1;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (localFileInfo == null) {
-      return null;
-    }
-    if (paramView == null) {}
-    for (;;)
-    {
-      try
-      {
-        paramViewGroup = a(localFileInfo, paramViewGroup);
-        paramView = paramViewGroup;
-      }
-      catch (Exception paramViewGroup)
-      {
-        continue;
-      }
-      try
-      {
-        paramViewGroup = (apew)paramView.getTag();
-        paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileInfo = localFileInfo;
-        if (localFileInfo.c())
-        {
-          paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setDefaultImage(2130843456);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFileInfo.d());
-          paramViewGroup.jdField_a_of_type_Int = paramInt;
-        }
-        else
-        {
-          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          apug.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localFileInfo.c(), apug.a(localFileInfo.c()));
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localFileInfo.d());
-          if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.f())
-          {
-            paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-            paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(apel.a(localFileInfo));
-            String str1 = apvw.b(localFileInfo.b());
-            String str2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.getString(2131692476);
-            paramViewGroup.c.setText(str1 + str2 + apvd.a(localFileInfo.a()));
-            paramViewGroup.jdField_a_of_type_Int = paramInt;
-          }
-        }
-      }
-      catch (Exception paramViewGroup)
-      {
-        paramViewGroup.printStackTrace();
-        return paramView;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
-    }
-    return paramView;
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("enable:").append(this.jdField_a_of_type_Boolean).append(",");
+    localStringBuilder.append("mPlainContent:").append(this.jdField_a_of_type_JavaLangString).append(",");
+    localStringBuilder.append("mHighLightContent:").append(this.b).append(",");
+    localStringBuilder.append("times:").append(this.jdField_a_of_type_Int).append(",");
+    localStringBuilder.append("mJumpLinkUrls:").append(this.c).append(",");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apev
  * JD-Core Version:    0.7.0.1
  */

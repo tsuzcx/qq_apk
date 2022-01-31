@@ -1,52 +1,93 @@
-import android.view.View;
-import android.view.ViewStub;
-import android.widget.TextView;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.SendMsg;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class bipe
-  extends biko
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bipg jdField_a_of_type_Bipg;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   
-  public bipe(ViewStub paramViewStub)
+  public bipe(QQAppInterface paramQQAppInterface)
   {
-    super(paramViewStub);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
+    this.jdField_a_of_type_Bipg = new bipg(paramQQAppInterface);
   }
   
-  protected void a(View paramView)
+  private int a(String paramString, Bundle paramBundle, Handler paramHandler, long paramLong)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365839);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365841));
-  }
-  
-  public void b()
-  {
-    a();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131692631);
-  }
-  
-  public void c()
-  {
-    if (a())
+    paramHandler = new SendMsg(paramString);
+    paramString = paramBundle;
+    if (paramBundle == null) {
+      paramString = new Bundle();
+    }
+    if ((paramString != null) && (paramString.size() > 0)) {
+      paramHandler.a.putAll(paramString);
+    }
+    int i = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+    paramHandler.a(i);
+    if (paramLong > 0L) {
+      paramHandler.a(paramLong);
+    }
+    try
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_a_of_type_Bipg.a(paramHandler);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      throw new RuntimeException("sendMsg is fail", paramString);
     }
   }
   
-  public void d()
+  public int a(String paramString, Bundle paramBundle)
   {
-    if (!a()) {
+    try
+    {
+      int i = a(paramString, paramBundle, null, 0L);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return -1;
+  }
+  
+  public void a()
+  {
+    PluginCommunicationHandler localPluginCommunicationHandler = PluginCommunicationHandler.getInstance();
+    if (localPluginCommunicationHandler == null)
+    {
+      QLog.e("QlinkServiceManager", 1, "[QLINK] QQ - PluginCommunicationHandler.getInstance failed");
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    localPluginCommunicationHandler.register(new bipf(this, "qlink.notify"));
   }
+  
+  public void a(long paramLong) {}
+  
+  public boolean a(long paramLong1, int paramInt, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    return true;
+  }
+  
+  public boolean a(byte[] paramArrayOfByte)
+  {
+    return true;
+  }
+  
+  public void b(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bipe
  * JD-Core Version:    0.7.0.1
  */

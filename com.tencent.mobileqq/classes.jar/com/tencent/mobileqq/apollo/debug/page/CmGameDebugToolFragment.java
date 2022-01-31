@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.debug.page;
 
-import aixf;
-import aixg;
+import akor;
+import akos;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -28,8 +28,8 @@ public class CmGameDebugToolFragment
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new aixf(this));
-    this.b.setOnCheckedChangeListener(new aixg(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(new akor(this));
+    this.b.setOnCheckedChangeListener(new akos(this));
   }
   
   public void onClick(View paramView)
@@ -45,9 +45,9 @@ public class CmGameDebugToolFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2131558797, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramLayoutInflater.findViewById(2131364318));
-    this.b = ((FormSwitchItem)paramLayoutInflater.findViewById(2131364317));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131558833, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)paramLayoutInflater.findViewById(2131364386));
+    this.b = ((FormSwitchItem)paramLayoutInflater.findViewById(2131364385));
     b();
     c();
     return paramLayoutInflater;
@@ -55,7 +55,7 @@ public class CmGameDebugToolFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment
  * JD-Core Version:    0.7.0.1
  */

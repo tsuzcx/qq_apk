@@ -612,7 +612,7 @@ public class DefaultHttpDataSource
         i = this.connection.getResponseCode();
         str1 = this.connection.getResponseMessage();
         if ((i >= 200) && (i <= 299)) {
-          break label196;
+          break label238;
         }
         localMap = this.connection.getHeaderFields();
         closeConnectionQuietly();
@@ -627,10 +627,15 @@ public class DefaultHttpDataSource
         closeConnectionQuietly();
         throw new HttpDataSource.HttpDataSourceException("Unable to connect to " + paramDataSpec.uri.toString(), localIOException2, paramDataSpec, 1);
       }
+      catch (Exception localException)
+      {
+        closeConnectionQuietly();
+        throw new HttpDataSource.HttpDataSourceException("Unable to connect to " + paramDataSpec.uri.toString(), paramDataSpec, 1);
+      }
       localIOException1 = localIOException1;
       throw new HttpDataSource.HttpDataSourceException("Unable to connect to " + paramDataSpec.uri.toString(), localIOException1, paramDataSpec, 1);
     }
-    label196:
+    label238:
     String str2;
     if ((this.contentTypePredicate != null) && (!this.contentTypePredicate.evaluate(str2)))
     {
@@ -703,7 +708,7 @@ public class DefaultHttpDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.httpclient.DefaultHttpDataSource
  * JD-Core Version:    0.7.0.1
  */

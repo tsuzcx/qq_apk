@@ -1,109 +1,58 @@
-import android.text.TextUtils;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class aqoj
-  extends BaseAdapter
+class aqoj
+  extends aqou
 {
-  int jdField_a_of_type_Int = -1;
-  SparseArray<URLDrawable> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private List<String> jdField_a_of_type_JavaUtilList;
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public aqoj(List<String> paramList)
+  public aqoj(aqnw paramaqnw, MessageRecord paramMessageRecord)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    super(paramaqnw);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
-  public String a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (paramInt >= 0)) {
-      return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    }
-    return null;
-  }
+  void a(String paramString, int paramInt) {}
   
-  public String a(String paramString)
+  void a(String paramString, int paramInt, aqot paramaqot)
   {
-    String str;
-    if (TextUtils.isEmpty(paramString)) {
-      str = "";
-    }
-    do
+    if ("1".equals(this.g))
     {
-      return str;
-      if (paramString.startsWith("//")) {
-        return "file:/" + paramString;
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2DiscTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
       }
-      str = paramString;
-    } while (!paramString.startsWith("/"));
-    return "file://" + paramString;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+      paramaqot.a(aqnw.a(this.jdField_a_of_type_Long, false), false);
+      return;
     }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView != null) {
-      return paramView;
-    }
-    String str = a(a(paramInt));
-    URLDrawable localURLDrawable = (URLDrawable)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("BigImageAdapter", 2, "getView position=" + paramInt + ",cache=" + localURLDrawable + ",url=" + str);
-    }
-    paramView = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
-    if ((localURLDrawable != null) && (localURLDrawable.getStatus() == 1)) {
-      paramView.setImageDrawable(localURLDrawable);
-    }
-    for (;;)
+    if ((this.b == null) || (this.b.length() == 0))
     {
-      paramView.setContentDescription(ajya.a(2131708149) + paramInt);
-      return paramView;
-      if (!TextUtils.isEmpty(str))
-      {
-        int i = paramViewGroup.getWidth();
-        int j = paramViewGroup.getHeight();
-        paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
-        paramViewGroup.mRequestWidth = i;
-        paramViewGroup.mRequestHeight = j;
-        paramViewGroup.mLoadingDrawable = aywm.a;
-        paramViewGroup = URLDrawable.getDrawable(str, paramViewGroup);
-        switch (paramViewGroup.getStatus())
-        {
-        default: 
-          paramViewGroup.setTag(Integer.valueOf(1));
-          paramViewGroup.startDownload();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("BigImageAdapter", 2, "getView position=" + paramInt + ",parentWidth=" + i + ",parentHeight=" + j);
-        }
-        paramView.setImageDrawable(paramViewGroup);
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild uuid is null");
       }
+      paramaqot.a(aqnw.a(this.jdField_a_of_type_Long, true), false);
+      return;
     }
+    aqnw.a(this.jdField_a_of_type_Aqnw).a().a().a(paramString, paramInt, this.d, 106, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aqok(this, paramString, paramaqot));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqoj
  * JD-Core Version:    0.7.0.1
  */

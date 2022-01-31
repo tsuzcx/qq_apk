@@ -1,7 +1,7 @@
 package com.google.android.filament;
 
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
 import com.google.android.filament.proguard.UsedByReflection;
 
 public class EntityManager
@@ -74,7 +74,7 @@ public class EntityManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.EntityManager
  * JD-Core Version:    0.7.0.1
  */

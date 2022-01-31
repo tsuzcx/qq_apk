@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class ajes
-  implements ajnh
+  implements View.OnTouchListener
 {
-  ajes(ajer paramajer, boolean paramBoolean) {}
+  ajes(ajer paramajer) {}
   
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Ajer.a(this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, paramInt1, paramArrayOfInt, paramInt2);
+    if (paramMotionEvent.getAction() == 0) {
+      paramView.setAlpha(0.5F);
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
+        paramView.setAlpha(1.0F);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajes
  * JD-Core Version:    0.7.0.1
  */

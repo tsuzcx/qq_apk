@@ -1,43 +1,57 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
 import android.os.Handler;
-import appt;
-import aprb;
+import android.os.PowerManager.WakeLock;
+import arfz;
+import aris;
+import arni;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import java.util.HashMap;
+import java.util.Map;
 
 public class VideoFilePresenter$14
   implements Runnable
 {
-  public VideoFilePresenter$14(appt paramappt) {}
+  public VideoFilePresenter$14(aris paramaris) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Aprb.d(appt.a(this.this$0));
-    if (this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {}
-    while ((appt.b(this.this$0)) || (!this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying())) {
-      return;
+    if (this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
+      if (arni.c(this.this$0.jdField_a_of_type_Arfz.d())) {
+        QLog.e("FileBrowserPresenter<FileAssistant>", 1, "playVideo video, but mediaplay null!");
+      }
     }
-    int i = (int)this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
-    int j = (int)this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
-    this.this$0.jdField_a_of_type_Aprb.b(i);
-    if ((!appt.c(this.this$0)) && (i > appt.b(this.this$0))) {
-      appt.b(this.this$0, i);
-    }
-    float f = i / j;
-    if (f <= 0.001D)
+    do
     {
-      appt.a(this.this$0).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 100L);
+      do
+      {
+        return;
+      } while (this.this$0.jdField_a_of_type_Arfz.d() != 1);
+      QLog.e("FileBrowserPresenter<FileAssistant>", 1, "playVideo online video, but mediaplay null!");
       return;
-    }
-    if (i >= appt.a(this.this$0)) {
-      this.this$0.jdField_a_of_type_Aprb.c((int)(f * 10000.0F));
-    }
-    appt.a(this.this$0).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 100L);
+      aris.a(this.this$0).acquire();
+      this.this$0.c();
+      if (aris.b(this.this$0))
+      {
+        aris.b(this.this$0, false);
+        aris.a(this.this$0).removeCallbacks(this.this$0.jdField_a_of_type_JavaLangRunnable);
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("shouq_bus_type", "bus_type_video_file");
+        this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
+        this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.this$0.jdField_a_of_type_AndroidAppActivity, aris.a(this.this$0), aris.a(this.this$0), 0L, this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo);
+      }
+      this.this$0.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+      aris.a(this.this$0).postDelayed(this.this$0.jdField_a_of_type_JavaLangRunnable, 1000L);
+      aris.d(this.this$0);
+    } while ((!arni.c(this.this$0.jdField_a_of_type_Arfz.d())) || (!QLog.isDevelopLevel()));
+    QLog.d("#@#@", 1, "userPos[" + aris.a(this.this$0) + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.14
  * JD-Core Version:    0.7.0.1
  */

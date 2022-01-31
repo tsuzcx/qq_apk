@@ -1,121 +1,88 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.opengl.EGLContext;
-import android.opengl.Matrix;
-import android.support.annotation.NonNull;
-import android.view.Surface;
-import com.tencent.ttpic.openapi.filter.TextureRender;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Handler;
+import android.provider.MediaStore.Images.Media;
 
-public final class avxx
-  implements SurfaceTexture.OnFrameAvailableListener, avyg
+public class avxx
+  extends ContentObserver
 {
-  private int jdField_a_of_type_Int;
-  private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  private Surface jdField_a_of_type_AndroidViewSurface;
-  private avyh jdField_a_of_type_Avyh;
-  private avyy jdField_a_of_type_Avyy;
-  private avyz jdField_a_of_type_Avyz;
-  private TextureRender jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private boolean jdField_a_of_type_Boolean;
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private int b;
-  private int c;
+  private static final String jdField_a_of_type_JavaLangString = MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString();
+  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "_data", "date_added" };
+  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
+  private avxy jdField_a_of_type_Avxy;
   
-  public avxx(EGLContext paramEGLContext, int paramInt1, int paramInt2)
+  public avxx(Handler paramHandler, Context paramContext)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Avyy = new avyy(paramEGLContext, 1);
-    this.jdField_a_of_type_Avyz = new avyz(this.jdField_a_of_type_Avyy);
-    this.jdField_a_of_type_Avyz.a(paramInt1, paramInt2);
-    this.jdField_a_of_type_Avyz.b();
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-    this.c = avyi.a(36197);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.c);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-    this.jdField_a_of_type_Avyh = new avyh(this.jdField_a_of_type_Int, this.b);
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-  }
-  
-  public Surface a()
-  {
-    return this.jdField_a_of_type_AndroidViewSurface;
+    super(paramHandler);
+    this.jdField_a_of_type_AndroidContentContentResolver = paramContext.getContentResolver();
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Avyy != null)
-    {
-      this.jdField_a_of_type_Avyy.a();
-      this.jdField_a_of_type_Avyy = null;
-    }
-    if (this.jdField_a_of_type_Avyz != null)
-    {
-      this.jdField_a_of_type_Avyz.a();
-      this.jdField_a_of_type_Avyz = null;
-    }
-    this.jdField_a_of_type_AndroidViewSurface.release();
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.release();
-    this.jdField_a_of_type_Avyh.b();
-    this.jdField_a_of_type_Avyh = null;
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
-    this.jdField_a_of_type_AndroidViewSurface = null;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
+    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, this);
   }
   
-  public void a(@NonNull avxs paramavxs, boolean paramBoolean)
+  public void a(avxy paramavxy)
   {
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-    paramavxs.jdField_a_of_type_ArrayOfFloat = ((float[])this.jdField_a_of_type_ArrayOfFloat.clone());
-    this.jdField_a_of_type_Avyh.a(paramavxs.a());
-    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.c, null, null);
-    this.jdField_a_of_type_Avyh.a();
+    this.jdField_a_of_type_Avxy = paramavxy;
   }
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      for (;;)
-      {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {
-          try
-          {
-            this.jdField_a_of_type_JavaLangObject.wait();
-            if (!this.jdField_a_of_type_Boolean) {
-              throw new RuntimeException("frame wait timed out");
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            throw new RuntimeException(localInterruptedException);
-          }
-        }
-      }
-    }
-    this.jdField_a_of_type_Boolean = false;
-    avyi.a("before updateTexImage");
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
+    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
   }
   
-  public void onFrameAvailable(SurfaceTexture arg1)
+  public void onChange(boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
+    super.onChange(paramBoolean);
+    onChange(paramBoolean, null);
+  }
+  
+  public void onChange(boolean paramBoolean, Uri paramUri)
+  {
+    Cursor localCursor;
+    String str;
+    long l;
+    if (paramUri == null)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
+      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, jdField_a_of_type_ArrayOfJavaLangString, null, null, "date_added DESC");
+      if ((localCursor != null) && (localCursor.moveToFirst()))
+      {
+        str = localCursor.getString(localCursor.getColumnIndex("_data"));
+        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
+        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_Avxy != null)) {
+          this.jdField_a_of_type_Avxy.a(paramUri);
+        }
+      }
+      if (localCursor != null) {
+        localCursor.close();
       }
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramUri.toString().matches(jdField_a_of_type_JavaLangString + "/\\d+"));
+      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(paramUri, jdField_a_of_type_ArrayOfJavaLangString, null, null, null);
+      if ((localCursor != null) && (localCursor.moveToFirst()))
+      {
+        str = localCursor.getString(localCursor.getColumnIndex("_data"));
+        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
+        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_Avxy != null)) {
+          this.jdField_a_of_type_Avxy.a(paramUri);
+        }
+      }
+    } while (localCursor == null);
+    localCursor.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avxx
  * JD-Core Version:    0.7.0.1
  */

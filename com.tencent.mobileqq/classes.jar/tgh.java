@@ -1,52 +1,74 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeWatched;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import NS_KING_INTERFACE.stPostFeedDingRsp;
+import com.tencent.biz.pubaccount.weishi_new.event.LikeRspEvent;
 
-public class tgh
-  extends sys<tgi>
+class tgh
+  implements tgt
 {
-  static final String a = sxm.a("StorySvc.msgtab_node_click");
-  public long b;
-  public String b;
-  public int c;
+  tgh(tgg paramtgg, String paramString, int paramInt, boolean paramBoolean) {}
   
-  public String a()
+  public void a(the paramthe)
   {
-    return a;
-  }
-  
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
-    try
+    int j = 0;
+    int i = 0;
+    LikeRspEvent localLikeRspEvent = new LikeRspEvent(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if ((paramthe == null) || (paramthe.a == null))
     {
-      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
-      return new tgi(localRspMsgTabNodeWatched);
+      tlo.a("WSLikeAnimationManger", "点赞失败:-1");
+      paramthe = this.jdField_a_of_type_Tgg;
+      str = this.jdField_a_of_type_JavaLangString;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        i = 0;
+        tgg.a(paramthe, str, localLikeRspEvent, i);
+      }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    for (;;)
     {
-      ved.d("Q.qqstory.msgTab:ReqMsgTabNodeClick", "" + paramArrayOfByte);
+      tff.a().a(localLikeRspEvent);
+      return;
+      i = 1;
+      break;
+      if (!(paramthe.a instanceof stPostFeedDingRsp)) {
+        break label189;
+      }
+      paramthe = (stPostFeedDingRsp)paramthe.a;
+      if (paramthe == null)
+      {
+        tlo.a("WSLikeAnimationManger", "服务器失败！！！");
+        paramthe = this.jdField_a_of_type_Tgg;
+        str = this.jdField_a_of_type_JavaLangString;
+        if (this.jdField_a_of_type_Boolean) {}
+        for (;;)
+        {
+          tgg.a(paramthe, str, localLikeRspEvent, i);
+          break;
+          i = 1;
+        }
+      }
+      i = paramthe.is_ding;
+      localLikeRspEvent.setRpsStatus(4301);
+      localLikeRspEvent.setRspIsDing(i);
+      if (i == 0) {
+        tlo.a("WSLikeAnimationManger", "请求后变成：没有点赞-by微视");
+      } else {
+        tlo.a("WSLikeAnimationManger", "请求后变成：已经点赞-by微视");
+      }
     }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
-    localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
-    localReqMsgTabNodeWatched.node_type.set(this.c);
-    localReqMsgTabNodeWatched.operation.set(3);
-    localReqMsgTabNodeWatched.recommend_id.set(this.jdField_b_of_type_Long);
-    return localReqMsgTabNodeWatched.toByteArray();
+    label189:
+    tlo.a("WSLikeAnimationManger", "点赞失败:-2");
+    paramthe = this.jdField_a_of_type_Tgg;
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Boolean) {}
+    for (i = j;; i = 1)
+    {
+      tgg.a(paramthe, str, localLikeRspEvent, i);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tgh
  * JD-Core Version:    0.7.0.1
  */

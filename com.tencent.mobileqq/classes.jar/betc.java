@@ -1,102 +1,43 @@
-import android.util.Log;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ObjectAnimator;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
 
 public class betc
+  implements Animator.AnimatorListener
 {
-  private static betb a;
+  public betc(FloatingScreenContainer paramFloatingScreenContainer) {}
   
-  public static int a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (a != null) {
-      return a.getLogLevel();
+    FloatingScreenContainer.a(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    FloatingScreenContainer.a(this.a).removeAllListeners();
+    if (FloatingScreenContainer.a(this.a) != null) {
+      FloatingScreenContainer.a(this.a).b();
     }
-    return 3;
+    FloatingScreenContainer.a(this.a, false);
   }
   
-  private static String a(String paramString)
+  public void onAnimationRepeat(Animator paramAnimator)
   {
-    return "[MiniSDK]" + paramString;
+    FloatingScreenContainer.a(this.a, true);
   }
   
-  public static void a(betb parambetb)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (parambetb != null) {
-      a = parambetb;
+    if (FloatingScreenContainer.a(this.a) != null) {
+      FloatingScreenContainer.a(this.a).a();
     }
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a(paramString1, paramString2, null);
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a != null)
-    {
-      a.d(a(paramString1), paramString2, paramThrowable);
-      return;
-    }
-    Log.d(a(paramString1), paramString2, paramThrowable);
-  }
-  
-  public static boolean a()
-  {
-    return true;
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    b(paramString1, paramString2, null);
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a != null)
-    {
-      a.i(a(paramString1), paramString2, paramThrowable);
-      return;
-    }
-    Log.i(a(paramString1), paramString2, paramThrowable);
-  }
-  
-  public static boolean b()
-  {
-    return 2 >= a();
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    c(paramString1, paramString2, null);
-  }
-  
-  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a != null)
-    {
-      a.w(a(paramString1), paramString2, paramThrowable);
-      return;
-    }
-    Log.w(a(paramString1), paramString2, paramThrowable);
-  }
-  
-  public static void d(String paramString1, String paramString2)
-  {
-    d(paramString1, paramString2, null);
-  }
-  
-  public static void d(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a != null)
-    {
-      a.e(a(paramString1), paramString2, paramThrowable);
-      return;
-    }
-    Log.e(a(paramString1), paramString2, paramThrowable);
+    FloatingScreenContainer.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     betc
  * JD-Core Version:    0.7.0.1
  */

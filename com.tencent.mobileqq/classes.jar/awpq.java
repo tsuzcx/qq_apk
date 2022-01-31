@@ -1,82 +1,36 @@
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.profile.stickynote.vas.StickyNoteShopLayout;
 
-public class awpq
-  implements awoh
+class awpq
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
+  awpq(awpn paramawpn, Context paramContext, String paramString1, String paramString2, String paramString3) {}
   
-  public int a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return 0;
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = -1;
-    switch (paramInt)
-    {
+    String str;
+    if (awpn.a(this.jdField_a_of_type_Awpn).a == 1) {
+      str = "&g_ch=suixintie&actId=460973&isAskFriendPay=0";
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.uniteSearch.SearchResultGroupModelImpl", 2, "getPosition(). type=" + paramInt + "  position=" + i);
+      bdqe.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString + str, this.b, this.c, 0);
+      paramDialogInterface.dismiss();
+      return;
+      if (awpn.a(this.jdField_a_of_type_Awpn).a == 2) {
+        str = "&g_ch=扩列装扮&actId=466499&isAskFriendPay=0";
+      } else {
+        str = "";
       }
-      return i;
-      i = this.a;
-      continue;
-      i = this.b;
-      continue;
-      i = this.c;
     }
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public List<awoi> a()
-  {
-    return null;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a = paramInt2;
-      return;
-    case 2: 
-      this.b = paramInt2;
-      return;
-    }
-    this.c = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(2, paramInt1);
-    a(1, paramInt2);
-    a(3, paramInt3);
-  }
-  
-  public void a(View paramView) {}
-  
-  public String b()
-  {
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awpq
  * JD-Core Version:    0.7.0.1
  */

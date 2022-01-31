@@ -12,6 +12,8 @@ public class VerifyDevLockManager$VerifyDevLockObserver
     return this.mSeq;
   }
   
+  public void onReceive(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt, Object paramObject) {}
+  
   public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo) {}
   
   public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg) {}

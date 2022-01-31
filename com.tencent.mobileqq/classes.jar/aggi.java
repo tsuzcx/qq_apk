@@ -1,70 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
 public class aggi
-  extends ampa
+  extends RecyclerView.OnScrollListener
 {
-  public static aggh a()
-  {
-    return (aggh)ampl.a().a(470);
-  }
+  public aggi(PhotoListPanel paramPhotoListPanel) {}
   
-  public int a()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    return 470;
-  }
-  
-  @NonNull
-  public aggh a(int paramInt)
-  {
-    return new aggh();
-  }
-  
-  @Nullable
-  public aggh a(amph[] paramArrayOfamph)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 2, "parse.configData : " + paramArrayOfamph[0].a);
-    }
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return aggh.a(paramArrayOfamph);
-    }
-    return null;
-  }
-  
-  public Class<aggh> a()
-  {
-    return aggh.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("mini_msg_config", 0, "onUpdate " + paramObject);
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.l = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggi
  * JD-Core Version:    0.7.0.1
  */

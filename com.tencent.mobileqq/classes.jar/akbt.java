@@ -1,14 +1,23 @@
-public abstract interface akbt
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qphone.base.util.QLog;
+
+public class akbt
+  implements anoi
 {
-  public abstract void ag_();
+  public akbt(SessionClearFragment paramSessionClearFragment) {}
   
-  public abstract void b();
-  
-  public abstract void i_(int paramInt);
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForTroop onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    }
+    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbt
  * JD-Core Version:    0.7.0.1
  */

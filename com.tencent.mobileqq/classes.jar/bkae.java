@@ -1,472 +1,289 @@
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.Style;
-import android.graphics.PointF;
-import android.graphics.Rect;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.view.MotionEvent;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
+import android.opengl.Matrix;
+import android.os.Handler;
+import android.support.annotation.RequiresApi;
+import android.view.ScaleGestureDetector;
+import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.view.SurfaceHolder;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.vip.ar.controller.VipARCameraController.3;
+import cooperation.vip.ar.controller.VipARCameraController.6;
+import cooperation.vip.ar.controller.VipARCameraController.7;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.opengles.GL10;
+import mqq.os.MqqHandler;
 
 public class bkae
-  extends bkbm
+  extends bkak
 {
-  public static final String a;
-  public int a;
-  public Paint a;
-  public TextPaint a;
-  public bkaf a;
-  private bkag jdField_a_of_type_Bkag;
-  private bkim jdField_a_of_type_Bkim;
-  public List<bkaf> a;
-  public boolean a;
-  public int b;
-  public Paint b;
-  private String b;
-  public boolean b;
-  private boolean d = true;
+  private int jdField_a_of_type_Int;
+  private GLSurfaceView jdField_a_of_type_AndroidOpenglGLSurfaceView;
+  private ScaleGestureDetector.OnScaleGestureListener jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener = new bkai(this);
+  private ScaleGestureDetector jdField_a_of_type_AndroidViewScaleGestureDetector;
+  private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bkah(this);
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private bkal jdField_a_of_type_Bkal;
+  private bkao jdField_a_of_type_Bkao;
+  private bkap jdField_a_of_type_Bkap;
+  private bkaw jdField_a_of_type_Bkaw = new bkaf(this);
+  private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+  private boolean jdField_a_of_type_Boolean;
+  private float[] jdField_a_of_type_ArrayOfFloat;
+  private int jdField_b_of_type_Int;
+  private bkaw jdField_b_of_type_Bkaw = new bkag(this);
+  private boolean jdField_b_of_type_Boolean;
+  private float[] jdField_b_of_type_ArrayOfFloat;
+  private int jdField_c_of_type_Int;
+  private boolean jdField_c_of_type_Boolean;
+  private float[] jdField_c_of_type_ArrayOfFloat;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean;
+  private int jdField_e_of_type_Int;
+  private boolean jdField_e_of_type_Boolean;
+  private boolean f;
+  private boolean g = true;
+  private boolean h = true;
+  private boolean i;
+  private boolean j;
   
   static
   {
-    jdField_a_of_type_JavaLangString = bkae.class.getSimpleName();
+    System.loadLibrary("c++_shared");
   }
   
-  public bkae(DoodleView paramDoodleView)
+  @RequiresApi(8)
+  public bkae(Context paramContext, ViewGroup paramViewGroup)
   {
-    super(paramDoodleView);
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString;
-    c();
-  }
-  
-  public bkae(DoodleView paramDoodleView, String paramString)
-  {
-    this(paramDoodleView);
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  private void a(MotionEvent paramMotionEvent)
-  {
-    if (a(paramMotionEvent.getX(0), paramMotionEvent.getY(0)))
+    super(paramContext, paramViewGroup);
+    if (paramContext.getResources().getConfiguration().orientation == 2) {}
+    for (this.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Int = 1)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_Bkaf);
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Bkaf);
-    }
-  }
-  
-  private void a(bkaf parambkaf, Canvas paramCanvas)
-  {
-    ved.c(jdField_a_of_type_JavaLangString, "drawItem start.");
-    if (parambkaf == null) {
+      bkar.a().b(this.jdField_b_of_type_Bkaw);
+      this.jdField_a_of_type_Bkal = new bkal(paramContext, paramViewGroup);
       return;
     }
-    paramCanvas.save();
-    paramCanvas.concat(this.jdField_a_of_type_Bkim.a(parambkaf));
-    parambkaf.a(paramCanvas, true);
-    paramCanvas.restore();
-    ved.c(jdField_a_of_type_JavaLangString, "drawItem end.");
   }
   
-  private boolean a(float paramFloat1, float paramFloat2)
+  private float[] a(float paramFloat1, float paramFloat2)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-    while (i >= 0)
+    float f1;
+    if (this.jdField_a_of_type_Int == 0)
     {
-      bkaf localbkaf = (bkaf)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (this.jdField_a_of_type_Bkim.a(localbkaf, paramFloat1, paramFloat2, false))
-      {
-        this.jdField_a_of_type_Bkaf = localbkaf;
-        return true;
-      }
-      i -= 1;
+      paramFloat1 /= this.jdField_b_of_type_Int;
+      paramFloat1 = this.jdField_d_of_type_Int * paramFloat1;
+      f1 = paramFloat2 / this.jdField_c_of_type_Int * this.jdField_e_of_type_Int;
+      paramFloat2 = paramFloat1;
     }
-    return false;
-  }
-  
-  private void b(MotionEvent paramMotionEvent)
-  {
-    this.jdField_a_of_type_Bkaf = null;
-    this.jdField_a_of_type_Bkim.a();
-    k();
-    d(false);
-  }
-  
-  private boolean b()
-  {
-    return a() == 10;
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_Bkim = new bkim();
-    this.jdField_a_of_type_Bkim.a(true);
-    this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
-    this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL);
-    this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(Typeface.DEFAULT);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16711936);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-    this.i.setStrokeWidth(2.0F);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-65536);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_Bkaf == null) {
-      return;
-    }
-    ved.b(jdField_a_of_type_JavaLangString, "before limit translate value. translateXValue = %f, translateYValue = %f.", Float.valueOf(this.jdField_a_of_type_Bkaf.s), Float.valueOf(this.jdField_a_of_type_Bkaf.t));
-    float f5 = this.jdField_a_of_type_Bkaf.b.x + this.jdField_a_of_type_Bkaf.s;
-    float f4 = this.jdField_a_of_type_Bkaf.b.y + this.jdField_a_of_type_Bkaf.t;
-    float f1 = this.jdField_a_of_type_Bkaf.s;
-    float f3 = this.jdField_a_of_type_Bkaf.t;
-    if (f5 - this.jdField_a_of_type_Bkaf.u / 2.0F < this.jdField_a_of_type_AndroidGraphicsRect.left) {
-      f1 = this.jdField_a_of_type_Bkaf.u / 2.0F - this.jdField_a_of_type_Bkaf.b.x;
-    }
-    float f2 = f1;
-    if (f5 + this.jdField_a_of_type_Bkaf.u / 2.0F > this.jdField_a_of_type_AndroidGraphicsRect.right) {
-      f2 = this.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_Bkaf.u / 2.0F - this.jdField_a_of_type_Bkaf.b.x;
-    }
-    f1 = f3;
-    if (f4 - this.jdField_a_of_type_Bkaf.v / 2.0F < this.jdField_a_of_type_AndroidGraphicsRect.top) {
-      f1 = this.jdField_a_of_type_Bkaf.v / 2.0F - this.jdField_a_of_type_Bkaf.b.y;
-    }
-    if (this.jdField_a_of_type_Bkaf.v / 2.0F + f4 > this.jdField_a_of_type_AndroidGraphicsRect.bottom) {
-      f1 = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_Bkaf.v / 2.0F - this.jdField_a_of_type_Bkaf.b.y;
-    }
-    this.jdField_a_of_type_Bkaf.s = f2;
-    this.jdField_a_of_type_Bkaf.t = f1;
-    ved.b(jdField_a_of_type_JavaLangString, "after limit translate value. translateXValue = %f, translateYValue = %f.", Float.valueOf(this.jdField_a_of_type_Bkaf.s), Float.valueOf(this.jdField_a_of_type_Bkaf.t));
-  }
-  
-  private void e()
-  {
-    ved.b(jdField_a_of_type_JavaLangString, "click the item:" + this.jdField_a_of_type_Bkaf);
-    if ((this.jdField_a_of_type_Bkag != null) && (this.jdField_a_of_type_Bkaf != null)) {
-      this.jdField_a_of_type_Bkag.a(this.jdField_a_of_type_Bkaf);
-    }
-  }
-  
-  public int a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
+    for (paramFloat1 = f1;; paramFloat1 = this.jdField_e_of_type_Int - paramFloat1 * f1)
     {
-      ved.b(jdField_a_of_type_JavaLangString, "getDoodleCount:" + i);
-      return i;
+      return new float[] { paramFloat2, paramFloat1 };
+      paramFloat1 /= this.jdField_b_of_type_Int;
+      f1 = this.jdField_e_of_type_Int;
+      paramFloat2 = paramFloat2 / this.jdField_c_of_type_Int * this.jdField_d_of_type_Int;
     }
   }
   
-  public PointF a()
+  private void g()
   {
-    PointF localPointF = new PointF();
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    this.jdField_a_of_type_Bkao = new bkao();
+    this.jdField_a_of_type_Bkao.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int);
+    this.jdField_d_of_type_Int = this.jdField_a_of_type_Bkao.a();
+    this.jdField_e_of_type_Int = this.jdField_a_of_type_Bkao.b();
+    this.jdField_c_of_type_Boolean = true;
+    ThreadManager.getUIHandler().post(new VipARCameraController.3(this));
+  }
+  
+  private void h()
+  {
+    if (!this.i)
     {
-      localPointF.x = (this.jdField_a_of_type_AndroidGraphicsRect.width() / 2);
-      localPointF.y = (this.jdField_a_of_type_AndroidGraphicsRect.height() / 2);
-      ved.b(jdField_a_of_type_JavaLangString, "get default center pointer in doodle center. x = %f, y = %f.", Float.valueOf(localPointF.x), Float.valueOf(localPointF.y));
-      ved.b(jdField_a_of_type_JavaLangString, "get default center pointer. x = %f, y = %f.", Float.valueOf(localPointF.x), Float.valueOf(localPointF.y));
-      return localPointF;
-    }
-    float f = this.jdField_a_of_type_AndroidGraphicsRect.height();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    label122:
-    if (localIterator.hasNext())
-    {
-      bkaf localbkaf = (bkaf)localIterator.next();
-      if ((localbkaf.s != 0.0F) || (localbkaf.t != 0.0F) || (localbkaf.b.y > f)) {
-        break label253;
-      }
-      f = localbkaf.b.y;
-    }
-    label253:
-    for (;;)
-    {
-      break label122;
-      if (f == this.jdField_a_of_type_AndroidGraphicsRect.height()) {}
-      for (f = this.jdField_a_of_type_AndroidGraphicsRect.height() / 2;; f -= actj.a(40.0F, this.jdField_a_of_type_AndroidContentContext.getResources()))
-      {
-        localPointF.x = (this.jdField_a_of_type_AndroidGraphicsRect.width() / 2);
-        localPointF.y = f;
-        break;
-      }
+      this.i = true;
+      ThreadManagerV2.getUIHandlerV2().post(new VipARCameraController.6(this));
     }
   }
   
-  public String a()
+  private void i()
   {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  @NonNull
-  public List<String> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      return localArrayList;
+    if (!this.j)
+    {
+      this.j = true;
+      ThreadManagerV2.getUIHandlerV2().post(new VipARCameraController.7(this));
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(((bkaf)localIterator.next()).jdField_a_of_type_JavaLangString);
-    }
-    return localArrayList;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Bkaf = null;
-    this.jdField_a_of_type_Bkim.a();
-    ved.b(jdField_a_of_type_JavaLangString, "clear over.");
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView = ((GLSurfaceView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363901));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setEGLContextClientVersion(2);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setEGLContextFactory(new bkaj(this, null));
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setRenderer(this);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setRenderMode(1);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setPreserveEGLContextOnPause(true);
+    this.jdField_a_of_type_AndroidViewScaleGestureDetector = new ScaleGestureDetector(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewScaleGestureDetector$OnScaleGestureListener);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
+    this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377702));
   }
   
-  public void a(int paramInt, float paramFloat)
+  public void a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Bkaf == null) {
-      return;
+    if (this.jdField_a_of_type_Bkap == null) {
+      this.jdField_a_of_type_Bkap = new bkap();
     }
-    this.jdField_a_of_type_Bkaf.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Bkaf.s = paramFloat;
-    k();
-  }
-  
-  protected void a(Canvas paramCanvas)
-  {
-    if (this.d)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        a((bkaf)localIterator.next(), paramCanvas);
-      }
-    }
-  }
-  
-  public void a(Canvas paramCanvas, float paramFloat)
-  {
-    paramCanvas.save();
-    paramCanvas.scale(paramFloat, paramFloat);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      bkaf localbkaf = (bkaf)localIterator.next();
-      paramCanvas.save();
-      paramCanvas.concat(this.jdField_a_of_type_Bkim.a(localbkaf));
-      localbkaf.a(paramCanvas, false);
-      paramCanvas.restore();
-    }
-    paramCanvas.restore();
-  }
-  
-  public void a(bkag parambkag)
-  {
-    this.jdField_a_of_type_Bkag = parambkag;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.d = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return a() == 0;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return true;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    int i = (int)paramMotionEvent.getY();
-    int k = (int)paramMotionEvent.getX();
-    int j = Math.abs(k - this.jdField_b_of_type_Int);
-    int m = Math.abs(i - this.jdField_a_of_type_Int);
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bkim.a(paramMotionEvent, false);
-      d();
-      return true;
-      this.jdField_b_of_type_Int = k;
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Boolean = false;
-      a(paramMotionEvent);
-      if (this.jdField_a_of_type_Bkaf != null)
-      {
-        this.jdField_a_of_type_Bkim.a(this.jdField_a_of_type_Bkaf);
-        continue;
-        if (m > 5)
-        {
-          i = 1;
-          label133:
-          if (j <= 5) {
-            break label159;
-          }
-        }
-        label159:
-        for (j = 1; (j | i) != 0; j = 0)
-        {
-          this.jdField_a_of_type_Boolean = true;
-          break;
-          i = 0;
-          break label133;
-        }
-        if ((!this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_Bkaf instanceof bkaf))) {
-          e();
-        }
-        b(paramMotionEvent);
-      }
+    this.jdField_a_of_type_Bkap.jdField_a_of_type_Int = bdkf.a();
+    this.jdField_a_of_type_Bkap.jdField_b_of_type_Int = bdkf.b();
+    this.jdField_a_of_type_Bkap.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Bkap.c = paramString2;
+    if (this.jdField_a_of_type_Bkal != null) {
+      this.jdField_a_of_type_Bkal.a(this.jdField_a_of_type_Bkap);
     }
   }
   
-  public boolean a(String paramString)
+  public void b()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return false;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bkao.a();
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (TextUtils.equals(((bkaf)localIterator.next()).jdField_a_of_type_JavaLangString, paramString))
-      {
-        ved.e(jdField_a_of_type_JavaLangString, "add repeated uin.");
-        return true;
-      }
-    }
-    return false;
   }
   
-  public boolean a(String paramString1, Drawable paramDrawable, String paramString2, String paramString3, bkah parambkah, PointF paramPointF)
+  public void c()
   {
-    if (paramDrawable == null) {
-      ved.e(jdField_a_of_type_JavaLangString, "addAtItem faceDrawable is null.");
+    super.c();
+    if (this.jdField_a_of_type_Bkal != null) {
+      this.jdField_a_of_type_Bkal.c();
     }
+  }
+  
+  public void d()
+  {
+    super.d();
+    QLog.d("VipARCameraController", 2, "onActivityResume " + this.jdField_c_of_type_Boolean);
+    this.f = true;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bkao.a();
+    }
+    if (this.jdField_a_of_type_Bkal != null) {
+      this.jdField_a_of_type_Bkal.d();
+    }
+  }
+  
+  public void e()
+  {
+    super.e();
+    QLog.d("VipARCameraController", 2, "onActivityStop " + this.jdField_c_of_type_Boolean);
+    this.f = false;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bkao.b();
+    }
+  }
+  
+  public void f()
+  {
+    super.f();
+    QLog.d("VipARCameraController", 2, "onActivityDestroy " + this.jdField_c_of_type_Boolean);
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bkao.c();
+    }
+    if (this.jdField_a_of_type_Bkal != null) {
+      this.jdField_a_of_type_Bkal.f();
+    }
+  }
+  
+  public void onDrawFrame(GL10 paramGL10)
+  {
+    GLES20.glClear(16640);
+    if (!this.jdField_c_of_type_Boolean) {}
     do
     {
-      return false;
-      if (parambkah == null)
+      float[] arrayOfFloat;
+      do
       {
-        ved.e(jdField_a_of_type_JavaLangString, "addAtItem params is null.");
-        return false;
-      }
-      if (!b()) {
-        break;
-      }
-      ved.e(jdField_a_of_type_JavaLangString, "has max at count. add at failed.");
-    } while (this.jdField_a_of_type_Bkag == null);
-    this.jdField_a_of_type_Bkag.a(10);
-    return false;
-    ved.b(jdField_a_of_type_JavaLangString, "addAtItem before, faceDrawable : %s , remark : %s , LayerParams : %s", paramDrawable, paramString2, parambkah);
-    bkah localbkah = bkah.a(parambkah);
-    PointF localPointF = paramPointF;
-    if (paramPointF == null) {
-      localPointF = a();
-    }
-    localbkah.jdField_a_of_type_AndroidGraphicsPointF = localPointF;
-    int i = (int)(localbkah.jdField_a_of_type_Int * localbkah.jdField_a_of_type_Float);
-    int j = (int)(localbkah.jdField_b_of_type_Int * localbkah.jdField_a_of_type_Float);
-    float f2 = localbkah.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f3 = localbkah.jdField_a_of_type_AndroidGraphicsPointF.y;
-    float f1 = f2;
-    if (f2 - i / 2 < this.jdField_a_of_type_AndroidGraphicsRect.left) {
-      f1 = this.jdField_a_of_type_AndroidGraphicsRect.left + i / 2;
-    }
-    f2 = f1;
-    if (i / 2 + f1 > this.jdField_a_of_type_AndroidGraphicsRect.right) {
-      f2 = this.jdField_a_of_type_AndroidGraphicsRect.right - i / 2;
-    }
-    f1 = f3;
-    if (f3 - j / 2 < this.jdField_a_of_type_AndroidGraphicsRect.top) {
-      f1 = this.jdField_a_of_type_AndroidGraphicsRect.top + j / 2;
-    }
-    f3 = f1;
-    if (j / 2 + f1 > this.jdField_a_of_type_AndroidGraphicsRect.bottom) {
-      f3 = this.jdField_a_of_type_AndroidGraphicsRect.bottom - j / 2;
-    }
-    localbkah.jdField_a_of_type_AndroidGraphicsPointF.x = f2;
-    localbkah.jdField_a_of_type_AndroidGraphicsPointF.y = f3;
-    ved.b(jdField_a_of_type_JavaLangString, "addAtItem after, faceDrawable : %s , remark : %s , LayerParams : %s", paramDrawable, paramString2, parambkah);
-    ved.c(jdField_a_of_type_JavaLangString, "Create AtItem.");
-    paramString1 = new bkaf(this, paramString1, paramDrawable, paramString2, paramString3, localbkah);
-    ved.b(jdField_a_of_type_JavaLangString, "before add item to list. size = %d.", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
-    this.jdField_a_of_type_JavaUtilList.add(paramString1);
-    ved.b(jdField_a_of_type_JavaLangString, "after add item to list. size = %d.", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
-    k();
-    return true;
+        do
+        {
+          return;
+          h();
+          if (this.jdField_a_of_type_Bkao.a(this.jdField_a_of_type_AndroidViewSurfaceHolder, false) == 0) {
+            break;
+          }
+        } while (this.jdField_a_of_type_Bkal == null);
+        this.jdField_a_of_type_Bkal.onDrawFrame(null);
+        return;
+        if (this.h)
+        {
+          bkar.a("ar_tar_show", "1");
+          this.h = false;
+        }
+        i();
+        if (this.jdField_a_of_type_ArrayOfFloat == null) {
+          this.jdField_a_of_type_ArrayOfFloat = new float[16];
+        }
+        if (this.jdField_b_of_type_ArrayOfFloat == null) {
+          this.jdField_b_of_type_ArrayOfFloat = new float[16];
+        }
+        if (this.jdField_c_of_type_ArrayOfFloat == null) {
+          this.jdField_c_of_type_ArrayOfFloat = new float[16];
+        }
+        Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
+        Matrix.setIdentityM(this.jdField_b_of_type_ArrayOfFloat, 0);
+        Matrix.setIdentityM(this.jdField_c_of_type_ArrayOfFloat, 0);
+        arrayOfFloat = this.jdField_a_of_type_Bkao.d();
+      } while (arrayOfFloat == null);
+      this.jdField_b_of_type_ArrayOfFloat[0] = arrayOfFloat[0];
+      this.jdField_b_of_type_ArrayOfFloat[5] = arrayOfFloat[1];
+      this.jdField_b_of_type_ArrayOfFloat[10] = arrayOfFloat[2];
+      Matrix.scaleM(this.jdField_c_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_Bkao.a(), 0, 1.0F / arrayOfFloat[0], 1.0F / arrayOfFloat[1], 1.0F / arrayOfFloat[2]);
+      Matrix.multiplyMM(this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_Bkao.b(), 0, this.jdField_c_of_type_ArrayOfFloat, 0);
+    } while (this.jdField_a_of_type_Bkal == null);
+    this.jdField_a_of_type_Bkal.a(this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_Bkao.c());
+    this.jdField_a_of_type_Bkal.onDrawFrame(paramGL10);
   }
   
-  public void aZ_()
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
-    {
-      ved.b(jdField_a_of_type_JavaLangString, "before remove item from list. size = %d.", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
-      this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
-      ved.b(jdField_a_of_type_JavaLangString, "after remove item from list. size = %d.", Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
-      k();
+    QLog.d("VipARCameraController", 2, "onSurfaceChanged");
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+    GLES20.glClearDepthf(1.0F);
+    GLES20.glEnable(2929);
+    GLES20.glDepthFunc(515);
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    GLES20.glViewport(0, 0, paramInt1, paramInt2);
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bkao.a(0, 0, paramInt1, paramInt2);
     }
+    if (this.jdField_a_of_type_Bkal != null) {
+      this.jdField_a_of_type_Bkal.onSurfaceChanged(paramGL10, paramInt1, paramInt2);
+    }
+    this.jdField_b_of_type_Boolean = true;
   }
   
-  public String b()
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      return null;
+    QLog.d("VipARCameraController", 2, "onSurfaceCreated" + this.jdField_c_of_type_Boolean);
+    this.jdField_a_of_type_Bkap.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_a_of_type_Bkao.d();
     }
-    JSONArray localJSONArray = new JSONArray();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localJSONArray.put(((bkaf)localIterator.next()).a());
+    if (this.jdField_a_of_type_Bkal != null) {
+      this.jdField_a_of_type_Bkal.onSurfaceCreated(paramGL10, paramEGLConfig);
     }
-    ved.c(jdField_a_of_type_JavaLangString, "AtLayer getAtJsonArray:" + localJSONArray.toString());
-    return localJSONArray.toString();
-  }
-  
-  public void b(Canvas paramCanvas)
-  {
-    a(paramCanvas, this.jdField_a_of_type_Float);
-  }
-  
-  public boolean b(MotionEvent paramMotionEvent)
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return false;
-    }
-    float f1 = paramMotionEvent.getX();
-    float f2 = paramMotionEvent.getY();
-    int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-    while (i >= 0)
-    {
-      paramMotionEvent = (bkaf)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (this.jdField_a_of_type_Bkim.a(paramMotionEvent, f1, f2, false)) {
-        return true;
-      }
-      i -= 1;
-    }
-    return false;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkae
  * JD-Core Version:    0.7.0.1
  */

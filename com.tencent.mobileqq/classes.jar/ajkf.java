@@ -1,23 +1,26 @@
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
 
 public class ajkf
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public long a;
-  public JSONObject a = new JSONObject();
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
-  public long i;
-  public long j;
+  public ajkf(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (EditLocalVideoActivity.a(this.a)) {}
+    for (paramInt = -1;; paramInt = 0)
+    {
+      EditLocalVideoActivity.a(this.a).dismiss();
+      EditLocalVideoActivity.a(this.a, paramInt);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajkf
  * JD-Core Version:    0.7.0.1
  */

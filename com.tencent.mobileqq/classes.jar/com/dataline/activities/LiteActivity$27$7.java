@@ -1,29 +1,29 @@
 package com.dataline.activities;
 
-import akpf;
+import amfy;
 import android.content.Context;
 import android.text.ClipboardManager;
-import cl;
+import at;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.widget.XListView;
-import fk;
+import dt;
 
 public class LiteActivity$27$7
   implements Runnable
 {
-  public LiteActivity$27$7(cl paramcl, String paramString, int paramInt) {}
+  public LiteActivity$27$7(at paramat, String paramString, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Cl.a.jdField_a_of_type_Fk.notifyDataSetChanged();
+    this.jdField_a_of_type_At.a.jdField_a_of_type_Dt.notifyDataSetChanged();
     try
     {
-      ((ClipboardManager)this.jdField_a_of_type_Cl.a.jdField_a_of_type_ComTencentWidgetXListView.getContext().getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
+      ((ClipboardManager)this.jdField_a_of_type_At.a.jdField_a_of_type_ComTencentWidgetXListView.getContext().getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
       label41:
-      LiteActivity.a(this.jdField_a_of_type_Cl.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_Cl.a.jdField_a_of_type_ComTencentWidgetXListView);
-      LiteActivity.a(this.jdField_a_of_type_Cl.a.jdField_a_of_type_ComTencentWidgetXListView);
-      this.jdField_a_of_type_Cl.a.app.a().a(this.jdField_a_of_type_Int).e();
+      LiteActivity.a(this.jdField_a_of_type_At.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.jdField_a_of_type_At.a.jdField_a_of_type_ComTencentWidgetXListView);
+      LiteActivity.a(this.jdField_a_of_type_At.a.jdField_a_of_type_ComTencentWidgetXListView);
+      this.jdField_a_of_type_At.a.app.a().a(this.jdField_a_of_type_Int).e();
       return;
     }
     catch (Exception localException)
@@ -34,7 +34,7 @@ public class LiteActivity$27$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.27.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aotk
-  implements View.OnClickListener
 {
-  public aotk(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  private int a = -1;
   
-  public void onClick(View paramView)
+  public static aotk a(aogf[] paramArrayOfaogf)
   {
-    paramView = (aots)paramView.getTag();
-    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
-    if (5 != localFileManagerEntity.cloudType) {
-      apug.c(localFileManagerEntity);
+    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
+      paramArrayOfaogf = null;
     }
-    switch (paramView.jdField_a_of_type_Int)
+    aotk localaotk;
+    do
     {
-    }
-    for (;;)
-    {
-      this.a.i();
-      return;
-      this.a.a.a().ac();
-      if (!bbfj.d(BaseApplication.getContext()))
+      return paramArrayOfaogf;
+      localaotk = new aotk();
+      try
       {
-        aptx.a(2131692666);
-        return;
+        localaotk.a = new JSONObject(paramArrayOfaogf[0].a).getInt("show_limit");
+        return localaotk;
       }
-      if (localFileManagerEntity.status == 16)
+      catch (JSONException localJSONException)
       {
-        aptx.a(2131692857);
-        return;
+        paramArrayOfaogf = localaotk;
       }
-      aptd.a(localFileManagerEntity).a(false, this.a.getContext(), new aotl(this, localFileManagerEntity));
-      continue;
-      this.a.a.a().ab();
-      this.a.a(localFileManagerEntity, paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
-      continue;
-      this.a.a.a().ad();
-      if (localFileManagerEntity.getCloudType() == 0)
-      {
-        QfileBaseRecentFileTabView.w(this.a).a().a(localFileManagerEntity.nSessionId);
-      }
-      else if (localFileManagerEntity.getCloudType() == 6)
-      {
-        ((ajum)QfileBaseRecentFileTabView.x(this.a).a(8)).a(0, localFileManagerEntity.uniseq, false);
-      }
-      else
-      {
-        QfileBaseRecentFileTabView.y(this.a).a().a(localFileManagerEntity.nSessionId);
-        continue;
-        this.a.a.a().ae();
-        if (!bbfj.d(BaseApplication.getContext()))
-        {
-          aptx.a(2131692666);
-          return;
-        }
-        if (localFileManagerEntity.status == 16)
-        {
-          aptx.a(2131692857);
-          return;
-        }
-        boolean bool = localFileManagerEntity.isSend();
-        aptd.a(localFileManagerEntity).a(bool, this.a.a, new aotm(this, localFileManagerEntity));
-      }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.e("TencentDocHistoryTabToastBean", 1, "exception = " + localJSONException.toString());
+    return localaotk;
+  }
+  
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public boolean a()
+  {
+    return this.a == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aotk
  * JD-Core Version:    0.7.0.1
  */

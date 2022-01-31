@@ -1,86 +1,45 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
-import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.support.annotation.UiThread;
+import java.lang.ref.WeakReference;
 
-class tie
-  extends SimpleObserver<List<tso>>
+public class tie<V extends tat>
+  implements taw<V>
 {
-  tie(thv paramthv, tff paramtff, View paramView, Activity paramActivity) {}
+  private WeakReference<V> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  private void a(String paramString1, String paramString2, ArrayList<String> paramArrayList, HashMap<String, String> paramHashMap)
+  @UiThread
+  public V a()
   {
-    if ((!TextUtils.isEmpty(paramString2)) && (TextUtils.isEmpty(paramString1))) {
-      paramString1 = "NO_SUCH_FEED_ID";
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+      return null;
     }
-    for (;;)
+    return (tat)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      paramString1 = new OpenPlayerBuilder(new MsgTabPlayInfo(this.jdField_a_of_type_Tff.a, 0, null, paramString1, paramString2, paramArrayList, paramHashMap), 106);
-      paramString1.a(this.jdField_a_of_type_Thv.a());
-      paramString1 = paramString1.a();
-      paramString1.mUIStyle.bottomWidgetShowFlag = 3;
-      if ((this.jdField_a_of_type_AndroidViewView instanceof StoryMsgNodeFrameLayout))
-      {
-        tvc.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, ((StoryMsgNodeFrameLayout)this.jdField_a_of_type_AndroidViewView).a);
-        return;
-      }
-      tvc.a(this.jdField_a_of_type_AndroidAppActivity, paramString1, this.jdField_a_of_type_AndroidViewView);
-      return;
+      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+      this.jdField_a_of_type_JavaLangRefWeakReference = null;
     }
   }
   
-  public void a(List<tso> paramList)
+  @UiThread
+  public void a(V paramV)
   {
-    Object localObject = twy.a(paramList);
-    String str1;
-    if (localObject != null)
-    {
-      str1 = ((tso)localObject).a;
-      localObject = ((tso)localObject).b;
-    }
-    for (;;)
-    {
-      ArrayList localArrayList = new ArrayList();
-      HashMap localHashMap = new HashMap();
-      int i = 0;
-      for (;;)
-      {
-        String str2;
-        if (i < paramList.size())
-        {
-          str2 = ((tso)paramList.get(i)).b;
-          if (!TextUtils.isEmpty(str2)) {}
-        }
-        else
-        {
-          a(str1, (String)localObject, localArrayList, localHashMap);
-          return;
-        }
-        localArrayList.add(str2);
-        localHashMap.put(str2, ((tso)paramList.get(i)).a);
-        i += 1;
-      }
-      localObject = null;
-      str1 = null;
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramV);
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void onError(@NonNull Error paramError)
+  public void b()
   {
-    a("", "", null, null);
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tie
  * JD-Core Version:    0.7.0.1
  */

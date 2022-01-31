@@ -11,7 +11,8 @@ import com.tencent.mobileqq.mini.apkg.NetworkTimeoutInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime.ShareScreenshotCallback;
 import com.tencent.mobileqq.mini.sdk.ShareChatModel;
-import com.tencent.mobileqq.minigame.manager.GameLoadManager;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.mobileqq.minigame.ui.GameActivity;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.mobileqq.triton.sdk.callback.ScreenShotCallback;
@@ -42,11 +43,6 @@ public class GameBrandRuntime
     }
     onAttachWindow(paramBaseActivity);
     paramApkgInfo.mAppConfigInfo = new AppConfigInfo();
-    paramApkgInfo.mAppConfigInfo.networkTimeoutInfo = new NetworkTimeoutInfo();
-    paramApkgInfo.mAppConfigInfo.networkTimeoutInfo.request = 60000;
-    paramApkgInfo.mAppConfigInfo.networkTimeoutInfo.connectSocket = 60000;
-    paramApkgInfo.mAppConfigInfo.networkTimeoutInfo.downloadFile = 60000;
-    paramApkgInfo.mAppConfigInfo.networkTimeoutInfo.uploadFile = 60000;
     this.apkgInfo = paramApkgInfo;
     ThreadManagerV2.excute(new GameBrandRuntime.1(this, this.activity), 16, null, true);
   }
@@ -58,7 +54,10 @@ public class GameBrandRuntime
   
   public void getScreenShot(ScreenShotCallback paramScreenShotCallback)
   {
-    GameLoadManager.g().getGameEngine().getScreenShot(paramScreenShotCallback);
+    GameRuntimeLoader localGameRuntimeLoader = GameRuntimeLoaderManager.g().getBindRuntimeLoader(this.activity);
+    if (localGameRuntimeLoader != null) {
+      localGameRuntimeLoader.getGameEngine().getScreenShot(paramScreenShotCallback);
+    }
   }
   
   public void getShareScreenshot(BaseAppBrandRuntime.ShareScreenshotCallback paramShareScreenshotCallback)
@@ -85,10 +84,17 @@ public class GameBrandRuntime
   {
     this.appId = paramString;
   }
+  
+  public void setNetworkTimeout(NetworkTimeoutInfo paramNetworkTimeoutInfo)
+  {
+    if ((this.apkgInfo != null) && (this.apkgInfo.mAppConfigInfo != null)) {
+      this.apkgInfo.mAppConfigInfo.networkTimeoutInfo = paramNetworkTimeoutInfo;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime
  * JD-Core Version:    0.7.0.1
  */

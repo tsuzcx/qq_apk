@@ -1,201 +1,128 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusAnimationItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import cooperation.qzone.util.NetworkState;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeishiRedDotInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLazyLoadDelegate;
+import com.tencent.biz.pubaccount.readinjoy.video.WeishiVideoFeedsLazyLoadDelegate.1;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 public class rls
-  implements rkh, rkj
+  extends VideoFeedsLazyLoadDelegate
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter;
-  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
-  private final Map<String, Integer> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private static final String jdField_c_of_type_JavaLangString = alpo.a(2131717302);
+  private WeishiRedDotInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructWeishiRedDotInfo;
+  private oye jdField_a_of_type_Oye = (oye)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(274);
+  private boolean jdField_c_of_type_Boolean;
+  private boolean d;
   
-  private void a(Container paramContainer)
+  public rls(qyx paramqyx, Bundle paramBundle, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, String paramString2, boolean paramBoolean, int paramInt)
   {
-    int i = 8;
-    int j = 0;
-    ViewBase localViewBase;
-    if (paramContainer != null)
+    super(paramqyx, paramBundle, paramQQAppInterface, paramFragmentActivity, paramString1, paramString2, paramBoolean, paramInt);
+  }
+  
+  private void a(WeishiRedDotInfo paramWeishiRedDotInfo)
+  {
+    if (paramWeishiRedDotInfo == null)
     {
-      localViewBase = paramContainer.getVirtualView();
-      if (localViewBase != null)
-      {
-        paramContainer = localViewBase.findViewBaseByName("id_large_video_icon");
-        localViewBase = localViewBase.findViewBaseByName("id_video_bg");
-        if (!NetworkState.isWifiConn()) {
-          break label64;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (paramContainer != null) {
-        paramContainer.setVisibility(j);
-      }
-      if (localViewBase != null) {
-        localViewBase.setVisibility(i);
-      }
+      super.d();
       return;
-      label64:
-      j = 8;
-      i = 0;
     }
+    this.jdField_c_of_type_Boolean = true;
+    int i = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("VIDEO_FROM_TYPE", -1);
+    String str1 = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("VIDEO_SECOND_INDEX_INNER_ID");
+    long l3 = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getLongExtra("VIDEO_FROM_POLYMERIC_TOPIC_ID", -1L);
+    String str2 = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("VIDEO_COMMON_DATA");
+    String str3 = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("VALUE_COOKIE");
+    long l2 = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getLongExtra("VIDEO_FROM_POLYMERIC_PUIN", 0L);
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    }
+    this.jdField_a_of_type_Ntb.a(this.jdField_a_of_type_Ntc, l1, a(), i, null, str1, l3, true, 0, str2, str3, paramWeishiRedDotInfo, 0, null, null, 0, null);
   }
   
-  public int a(BaseData paramBaseData)
+  public void a(int paramInt)
   {
-    if ((paramBaseData instanceof ProteusItemData))
+    if (paramInt == 0)
     {
-      paramBaseData = (ProteusItemData)paramBaseData;
-      if (paramBaseData.a != null)
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(jdField_c_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842777);
+      return;
+    }
+    super.a(paramInt);
+  }
+  
+  public void a(VideoInfo paramVideoInfo)
+  {
+    b(paramVideoInfo);
+    super.a(paramVideoInfo);
+  }
+  
+  public boolean a(Bundle paramBundle)
+  {
+    if (this.jdField_c_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo = ((VideoInfo)paramBundle.getParcelable("VALUE_REQUEST_VIDEO_DETAIL_INFO"));
+      if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
       {
-        paramBaseData = paramBaseData.a.getStyleName();
-        Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramBaseData);
-        if (localInteger != null) {
-          return localInteger.intValue();
-        }
-        QLog.d("WebProteusViewCreator", 1, "getViewType error,styleName:" + paramBaseData);
+        rdm.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
+        this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().putExtra("VIDEO_ARTICLE_ID", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g);
+        this.jdField_a_of_type_Oye.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+        return true;
       }
     }
-    return -1;
+    return super.a(paramBundle);
   }
   
-  public rkg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = ((int)bdcb.k());
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = ((int)bdcb.l());
+    ColorDrawable localColorDrawable = new ColorDrawable(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getColor(2131165307));
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
+    localObject = URLDrawable.getDrawable("https://sqimg.qq.com/qq_product_operations/kan/images/rij_wehishi_bg.png", (URLDrawable.URLDrawableOptions)localObject);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable((Drawable)localObject);
+  }
+  
+  public void b(VideoInfo paramVideoInfo)
+  {
+    if ((paramVideoInfo != null) && (this.jdField_a_of_type_Oye != null))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new pol();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
-      olo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
-    }
-    if (this.jdField_a_of_type_AndroidContentContext == null) {
-      this.jdField_a_of_type_AndroidContentContext = paramContext;
-    }
-    ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
-    paramViewGroup = null;
-    try
-    {
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
-      paramViewGroup = (ViewGroup)localObject;
-      olo.a(((Container)localObject).getVirtualView(), localProteusItemData.a.getViewBean());
-      paramViewGroup = (ViewGroup)localObject;
-      str = localProteusItemData.b.toString();
-      paramViewGroup = (ViewGroup)localObject;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject;
-        boolean bool;
-        String str = "error!! msg=" + localException.toString();
+      if (paramVideoInfo.a == null) {
+        rdm.a(paramVideoInfo);
       }
+      long l = NetConnInfoCenter.getServerTime();
+      this.jdField_a_of_type_Oye.a(syb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramVideoInfo.a), l);
     }
-    bool = false;
-    localObject = paramViewGroup;
-    if (paramViewGroup == null)
-    {
-      localObject = new View(paramContext);
-      bool = true;
-    }
-    QLog.d("WebProteusViewCreator", 1, "createViewHolder viewIsNull=" + bool + "  proteusData=" + str);
-    if ((paramBaseData instanceof ProteusAnimationItemData)) {
-      ((ProteusAnimationItemData)paramBaseData).a((View)localObject);
-    }
-    return new rlt(this, (View)localObject, localProteusItemData);
   }
   
-  public void a() {}
-  
-  public void a(Context paramContext)
+  public void d()
   {
-    for (;;)
+    if (!this.d)
     {
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new pol();
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
-          olo.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
-          paramContext = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getTemplateFactory().getNameTemplateMap().keySet();
-          rkg.a = 32;
-          int i = rkg.a + 1;
-          paramContext = paramContext.iterator();
-          if (paramContext.hasNext())
-          {
-            String str = (String)paramContext.next();
-            if (!this.jdField_a_of_type_JavaUtilMap.containsKey(str))
-            {
-              this.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
-              i += 1;
-            }
-          }
-          else
-          {
-            QLog.d("WebProteusViewCreator", 1, "VIEW_TYPE_COUNT=" + rkg.a + ",NAME_VIEWTYPE_MAP size=" + this.jdField_a_of_type_JavaUtilMap.size() + "type=" + i);
-            rkg.a += this.jdField_a_of_type_JavaUtilMap.size() + 1;
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      catch (Exception paramContext)
-      {
-        QLog.d("WebProteusViewCreator", 1, "initProteusTypeCount error,msg:" + paramContext.toString());
-        return;
-      }
+      this.d = true;
+      ThreadManager.excute(new WeishiVideoFeedsLazyLoadDelegate.1(this), 32, null, true);
+      return;
     }
+    a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructWeishiRedDotInfo);
   }
-  
-  public void a(BaseAdapter paramBaseAdapter)
-  {
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    switch (paramBaseData.p)
-    {
-    default: 
-      return false;
-    }
-    return true;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rls
  * JD-Core Version:    0.7.0.1
  */

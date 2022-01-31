@@ -11,7 +11,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Process;
 import android.text.TextUtils;
-import aquq;
+import asle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -409,7 +409,7 @@ public class GesturePWDUtils
     }
   }
   
-  public static String patternToString(List<aquq> paramList)
+  public static String patternToString(List<asle> paramList)
   {
     if (paramList == null) {
       return "";
@@ -419,9 +419,9 @@ public class GesturePWDUtils
     int i = 0;
     while (i < j)
     {
-      aquq localaquq = (aquq)paramList.get(i);
-      int k = localaquq.a();
-      arrayOfByte[i] = ((byte)(localaquq.b() + k * 3));
+      asle localasle = (asle)paramList.get(i);
+      int k = localasle.a();
+      arrayOfByte[i] = ((byte)(localasle.b() + k * 3));
       i += 1;
     }
     return Arrays.toString(arrayOfByte);
@@ -561,7 +561,7 @@ public class GesturePWDUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.gesturelock.GesturePWDUtils
  * JD-Core Version:    0.7.0.1
  */

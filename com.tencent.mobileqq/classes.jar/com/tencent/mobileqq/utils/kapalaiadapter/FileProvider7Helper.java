@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Parcelable;
 import android.support.v4.content.FileProvider;
+import android.support.v4.content.FileProvider.PathStrategy;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -38,148 +39,180 @@ public class FileProvider7Helper
     return str;
   }
   
+  public static FileProvider.PathStrategy getPathStrategy(Context paramContext)
+  {
+    if (sAuthority == null) {
+      sAuthority = paramContext.getApplicationContext().getPackageName() + ".fileprovider";
+    }
+    return FileProvider.getPathStrategy(paramContext, sAuthority);
+  }
+  
   /* Error */
   public static String getRealPathFromContentURI(Context paramContext, Uri paramUri)
   {
     // Byte code:
-    //   0: ldc 54
-    //   2: astore 4
-    //   4: aload 4
-    //   6: astore_3
-    //   7: aload_1
-    //   8: ifnull +37 -> 45
-    //   11: aload 4
-    //   13: astore_3
-    //   14: ldc 54
+    //   0: aload_1
+    //   1: ifnull +244 -> 245
+    //   4: ldc 54
+    //   6: aload_1
+    //   7: invokevirtual 85	android/net/Uri:toString	()Ljava/lang/String;
+    //   10: invokevirtual 89	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   13: ifne +232 -> 245
     //   16: aload_1
-    //   17: invokevirtual 67	android/net/Uri:toString	()Ljava/lang/String;
-    //   20: invokevirtual 71	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   23: ifne +22 -> 45
-    //   26: aload_1
-    //   27: invokevirtual 74	android/net/Uri:getScheme	()Ljava/lang/String;
-    //   30: astore_3
-    //   31: ldc 76
-    //   33: aload_3
-    //   34: invokevirtual 71	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   37: ifeq +10 -> 47
-    //   40: aload_1
-    //   41: invokevirtual 79	android/net/Uri:getPath	()Ljava/lang/String;
-    //   44: astore_3
-    //   45: aload_3
-    //   46: areturn
-    //   47: ldc 81
-    //   49: aload_3
-    //   50: invokevirtual 71	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   53: ifeq +151 -> 204
-    //   56: aload_0
-    //   57: invokevirtual 87	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   60: aload_1
-    //   61: iconst_1
-    //   62: anewarray 48	java/lang/String
-    //   65: dup
-    //   66: iconst_0
-    //   67: ldc 89
-    //   69: aastore
-    //   70: aconst_null
-    //   71: aconst_null
-    //   72: aconst_null
-    //   73: invokevirtual 95	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   76: astore 4
-    //   78: aload 4
-    //   80: astore_3
-    //   81: aload 4
-    //   83: ldc 89
-    //   85: invokeinterface 101 2 0
-    //   90: istore_2
-    //   91: aload 4
-    //   93: astore_3
-    //   94: aload 4
-    //   96: invokeinterface 104 1 0
-    //   101: ifle +46 -> 147
-    //   104: aload 4
-    //   106: astore_3
-    //   107: aload 4
-    //   109: invokeinterface 108 1 0
-    //   114: pop
-    //   115: aload 4
-    //   117: astore_3
-    //   118: aload 4
-    //   120: iload_2
-    //   121: invokeinterface 112 2 0
-    //   126: astore 5
-    //   128: aload 5
-    //   130: astore_0
-    //   131: aload_0
-    //   132: astore_3
-    //   133: aload 4
-    //   135: ifnull -90 -> 45
-    //   138: aload 4
-    //   140: invokeinterface 115 1 0
-    //   145: aload_0
-    //   146: areturn
-    //   147: ldc 54
-    //   149: astore_0
-    //   150: goto -19 -> 131
-    //   153: astore_3
-    //   154: aconst_null
-    //   155: astore 4
-    //   157: aload 4
-    //   159: astore_3
-    //   160: aload_0
-    //   161: aload_1
-    //   162: invokevirtual 79	android/net/Uri:getPath	()Ljava/lang/String;
-    //   165: aload_1
-    //   166: invokevirtual 119	android/net/Uri:getPathSegments	()Ljava/util/List;
-    //   169: invokestatic 121	com/tencent/mobileqq/utils/kapalaiadapter/FileProvider7Helper:getPathFromUri	(Landroid/content/Context;Ljava/lang/String;Ljava/util/List;)Ljava/lang/String;
-    //   172: astore_0
-    //   173: aload_0
-    //   174: astore_3
-    //   175: aload 4
-    //   177: ifnull -132 -> 45
-    //   180: aload 4
-    //   182: invokeinterface 115 1 0
-    //   187: aload_0
-    //   188: areturn
-    //   189: astore_0
-    //   190: aconst_null
-    //   191: astore_3
-    //   192: aload_3
-    //   193: ifnull +9 -> 202
-    //   196: aload_3
-    //   197: invokeinterface 115 1 0
-    //   202: aload_0
-    //   203: athrow
-    //   204: aload_1
-    //   205: invokevirtual 67	android/net/Uri:toString	()Ljava/lang/String;
-    //   208: areturn
+    //   17: invokevirtual 92	android/net/Uri:getScheme	()Ljava/lang/String;
+    //   20: astore_3
+    //   21: ldc 94
+    //   23: aload_3
+    //   24: invokevirtual 89	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   27: ifeq +10 -> 37
+    //   30: aload_1
+    //   31: invokevirtual 97	android/net/Uri:getPath	()Ljava/lang/String;
+    //   34: astore_1
+    //   35: aload_1
+    //   36: areturn
+    //   37: ldc 99
+    //   39: aload_3
+    //   40: invokevirtual 89	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   43: ifeq +188 -> 231
+    //   46: aload_0
+    //   47: invokevirtual 103	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   50: aload_1
+    //   51: iconst_1
+    //   52: anewarray 48	java/lang/String
+    //   55: dup
+    //   56: iconst_0
+    //   57: ldc 105
+    //   59: aastore
+    //   60: aconst_null
+    //   61: aconst_null
+    //   62: aconst_null
+    //   63: invokevirtual 111	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   66: astore_3
+    //   67: aload_3
+    //   68: astore 4
+    //   70: aload_3
+    //   71: ldc 105
+    //   73: invokeinterface 117 2 0
+    //   78: istore_2
+    //   79: aload_3
+    //   80: astore 4
+    //   82: aload_3
+    //   83: invokeinterface 120 1 0
+    //   88: ifle +42 -> 130
+    //   91: aload_3
+    //   92: astore 4
+    //   94: aload_3
+    //   95: invokeinterface 124 1 0
+    //   100: pop
+    //   101: aload_3
+    //   102: astore 4
+    //   104: aload_3
+    //   105: iload_2
+    //   106: invokeinterface 128 2 0
+    //   111: astore 5
+    //   113: aload 5
+    //   115: astore_0
+    //   116: aload_0
+    //   117: astore_1
+    //   118: aload_3
+    //   119: ifnull -84 -> 35
+    //   122: aload_3
+    //   123: invokeinterface 131 1 0
+    //   128: aload_0
+    //   129: areturn
+    //   130: ldc 54
+    //   132: astore_0
+    //   133: goto -17 -> 116
+    //   136: astore_3
+    //   137: aconst_null
+    //   138: astore_3
+    //   139: aload_3
+    //   140: astore 4
+    //   142: aload_0
+    //   143: invokestatic 24	com/tencent/mobileqq/utils/kapalaiadapter/FileProvider7Helper:isTargetBeyondN	(Landroid/content/Context;)Z
+    //   146: ifeq +34 -> 180
+    //   149: aload_3
+    //   150: astore 4
+    //   152: aload_0
+    //   153: invokestatic 133	com/tencent/mobileqq/utils/kapalaiadapter/FileProvider7Helper:getPathStrategy	(Landroid/content/Context;)Landroid/support/v4/content/FileProvider$PathStrategy;
+    //   156: aload_1
+    //   157: invokeinterface 139 2 0
+    //   162: invokevirtual 142	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   165: astore_0
+    //   166: aload_0
+    //   167: astore_1
+    //   168: aload_3
+    //   169: ifnull -134 -> 35
+    //   172: aload_3
+    //   173: invokeinterface 131 1 0
+    //   178: aload_0
+    //   179: areturn
+    //   180: aload_3
+    //   181: astore 4
+    //   183: aload_0
+    //   184: aload_1
+    //   185: invokevirtual 97	android/net/Uri:getPath	()Ljava/lang/String;
+    //   188: aload_1
+    //   189: invokevirtual 146	android/net/Uri:getPathSegments	()Ljava/util/List;
+    //   192: invokestatic 148	com/tencent/mobileqq/utils/kapalaiadapter/FileProvider7Helper:getPathFromUri	(Landroid/content/Context;Ljava/lang/String;Ljava/util/List;)Ljava/lang/String;
+    //   195: astore_0
+    //   196: goto -30 -> 166
+    //   199: astore_0
+    //   200: aload_3
+    //   201: astore 4
+    //   203: aload_0
+    //   204: invokevirtual 151	java/lang/Exception:printStackTrace	()V
+    //   207: ldc 54
     //   209: astore_0
-    //   210: goto -18 -> 192
-    //   213: astore_3
-    //   214: goto -57 -> 157
+    //   210: goto -44 -> 166
+    //   213: astore_0
+    //   214: aconst_null
+    //   215: astore 4
+    //   217: aload 4
+    //   219: ifnull +10 -> 229
+    //   222: aload 4
+    //   224: invokeinterface 131 1 0
+    //   229: aload_0
+    //   230: athrow
+    //   231: aload_1
+    //   232: invokevirtual 85	android/net/Uri:toString	()Ljava/lang/String;
+    //   235: areturn
+    //   236: astore_0
+    //   237: goto -20 -> 217
+    //   240: astore 4
+    //   242: goto -103 -> 139
+    //   245: ldc 54
+    //   247: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	217	0	paramContext	Context
-    //   0	217	1	paramUri	Uri
-    //   90	31	2	i	int
-    //   6	127	3	localObject1	Object
-    //   153	1	3	localException1	java.lang.Exception
-    //   159	38	3	localObject2	Object
-    //   213	1	3	localException2	java.lang.Exception
-    //   2	179	4	localObject3	Object
-    //   126	3	5	str	String
+    //   0	248	0	paramContext	Context
+    //   0	248	1	paramUri	Uri
+    //   78	28	2	i	int
+    //   20	103	3	localObject1	Object
+    //   136	1	3	localException1	java.lang.Exception
+    //   138	63	3	localObject2	Object
+    //   68	155	4	localObject3	Object
+    //   240	1	4	localException2	java.lang.Exception
+    //   111	3	5	str	String
     // Exception table:
     //   from	to	target	type
-    //   56	78	153	java/lang/Exception
-    //   56	78	189	finally
-    //   81	91	209	finally
-    //   94	104	209	finally
-    //   107	115	209	finally
-    //   118	128	209	finally
-    //   160	173	209	finally
-    //   81	91	213	java/lang/Exception
-    //   94	104	213	java/lang/Exception
-    //   107	115	213	java/lang/Exception
-    //   118	128	213	java/lang/Exception
+    //   46	67	136	java/lang/Exception
+    //   142	149	199	java/lang/Exception
+    //   152	166	199	java/lang/Exception
+    //   183	196	199	java/lang/Exception
+    //   46	67	213	finally
+    //   70	79	236	finally
+    //   82	91	236	finally
+    //   94	101	236	finally
+    //   104	113	236	finally
+    //   142	149	236	finally
+    //   152	166	236	finally
+    //   183	196	236	finally
+    //   203	207	236	finally
+    //   70	79	240	java/lang/Exception
+    //   82	91	240	java/lang/Exception
+    //   94	101	240	java/lang/Exception
+    //   104	113	240	java/lang/Exception
   }
   
   public static Uri getUriForFile(Context paramContext, File paramFile)

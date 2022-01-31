@@ -2,10 +2,10 @@ package cooperation.qqindividuality.ipc;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
-import bglh;
-import bglq;
-import bgsn;
-import bgsu;
+import bimg;
+import bimp;
+import bitm;
+import bitt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
@@ -16,41 +16,41 @@ import mqq.app.MobileQQ;
 public class QQIndividualityPluginProxyService
   extends PluginProxyService
 {
-  private static bgsn jdField_a_of_type_Bgsn;
-  private static bgsu jdField_a_of_type_Bgsu;
+  private static bitm jdField_a_of_type_Bitm;
+  private static bitt jdField_a_of_type_Bitt;
   
-  public static bgsn a()
+  public static bitm a()
   {
-    if (jdField_a_of_type_Bgsn == null) {}
+    if (jdField_a_of_type_Bitm == null) {}
     try
     {
-      if (jdField_a_of_type_Bgsn == null) {
-        jdField_a_of_type_Bgsn = new bgsn(BaseApplicationImpl.getApplication().getRuntime());
+      if (jdField_a_of_type_Bitm == null) {
+        jdField_a_of_type_Bitm = new bitm(BaseApplicationImpl.getApplication().getRuntime());
       }
-      return jdField_a_of_type_Bgsn;
+      return jdField_a_of_type_Bitm;
     }
     finally {}
   }
   
-  public static bgsu a()
+  public static bitt a()
   {
-    if (jdField_a_of_type_Bgsu == null) {}
+    if (jdField_a_of_type_Bitt == null) {}
     try
     {
-      if (jdField_a_of_type_Bgsu == null) {
-        jdField_a_of_type_Bgsu = new bgsu(BaseApplicationImpl.getApplication().getRuntime());
+      if (jdField_a_of_type_Bitt == null) {
+        jdField_a_of_type_Bitt = new bitt(BaseApplicationImpl.getApplication().getRuntime());
       }
-      return jdField_a_of_type_Bgsu;
+      return jdField_a_of_type_Bitt;
     }
     finally {}
   }
   
   public static void a()
   {
-    if (jdField_a_of_type_Bgsu != null)
+    if (jdField_a_of_type_Bitt != null)
     {
-      jdField_a_of_type_Bgsu.b("qqindividuality_signature");
-      jdField_a_of_type_Bgsu = null;
+      jdField_a_of_type_Bitt.b("qqindividuality_signature");
+      jdField_a_of_type_Bitt = null;
     }
   }
   
@@ -63,22 +63,22 @@ public class QQIndividualityPluginProxyService
   {
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), QQIndividualityPluginProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
-    bglq localbglq = new bglq(0);
-    localbglq.b = "qqindividuality_plugin.apk";
-    localbglq.d = PluginInfo.m;
-    localbglq.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localbglq.e = paramString;
-    localbglq.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localbglq.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    bglh.c(paramAppRuntime.getApplication(), localbglq);
+    bimp localbimp = new bimp(0);
+    localbimp.b = "qqindividuality_plugin.apk";
+    localbimp.d = PluginInfo.m;
+    localbimp.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localbimp.e = paramString;
+    localbimp.jdField_a_of_type_AndroidContentIntent = localIntent;
+    localbimp.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    bimg.c(paramAppRuntime.getApplication(), localbimp);
   }
   
   public static boolean a()
   {
-    bgsn localbgsn = a();
-    if (!PluginCommunicationHandler.getInstance().containsCmd(localbgsn.getCmd()))
+    bitm localbitm = a();
+    if (!PluginCommunicationHandler.getInstance().containsCmd(localbitm.getCmd()))
     {
-      PluginCommunicationHandler.getInstance().register(localbgsn);
+      PluginCommunicationHandler.getInstance().register(localbitm);
       return true;
     }
     return false;
@@ -86,7 +86,7 @@ public class QQIndividualityPluginProxyService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

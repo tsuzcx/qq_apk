@@ -1,20 +1,17 @@
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import cooperation.readinjoy.ReadInJoyHelper.1;
+import android.view.animation.Interpolator;
 
-public class bhvz
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public final class bhvz
+  implements Interpolator
 {
-  public bhvz(ReadInJoyHelper.1 param1) {}
-  
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public float getInterpolation(float paramFloat)
   {
-    if (paramInt == 0) {}
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhvz
  * JD-Core Version:    0.7.0.1
  */

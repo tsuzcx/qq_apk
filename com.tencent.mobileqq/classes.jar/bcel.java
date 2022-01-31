@@ -1,20 +1,43 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.mobileqq.data.TroopInfo;
+import java.util.List;
+import tencent.im.oidb.cmd0x88d.oidb_0x88d.GroupInfo;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
-public class bcel
-  implements ThreadExcutor.IThreadListener
+public abstract interface bcel
 {
-  public bcel(SwiftBrowserCookieMonster paramSwiftBrowserCookieMonster) {}
+  public abstract void a();
   
-  public void onAdded() {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onPostRun() {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public void onPreRun() {}
+  public abstract void a(long paramLong, List<oidb_0x899.memberlist> paramList);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(oidb_0x88d.GroupInfo paramGroupInfo);
+  
+  public abstract void a(boolean paramBoolean, long paramLong, TroopInfo paramTroopInfo);
+  
+  public abstract void a(boolean paramBoolean, List<aiiy> paramList);
+  
+  public abstract void b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d();
+  
+  public abstract void d(String paramString);
+  
+  public abstract void e(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcel
  * JD-Core Version:    0.7.0.1
  */

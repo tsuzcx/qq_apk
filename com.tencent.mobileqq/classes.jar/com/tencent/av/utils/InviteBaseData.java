@@ -3,12 +3,12 @@ package com.tencent.av.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import mrt;
+import mun;
 
 public class InviteBaseData
   implements Parcelable
 {
-  public static final Parcelable.Creator<InviteBaseData> CREATOR = new mrt();
+  public static final Parcelable.Creator<InviteBaseData> CREATOR = new mun();
   public int a;
   public String a;
   public int b;
@@ -58,7 +58,7 @@ public class InviteBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.utils.InviteBaseData
  * JD-Core Version:    0.7.0.1
  */

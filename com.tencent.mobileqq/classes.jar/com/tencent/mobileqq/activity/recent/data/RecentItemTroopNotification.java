@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import afns;
-import ahpj;
-import ajsd;
+import ahla;
+import ajgs;
+import aljq;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import aydd;
+import baba;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -73,12 +73,12 @@ public class RecentItemTroopNotification
       return;
       super.a(paramQQAppInterface, paramContext);
       if (TextUtils.isEmpty(this.mTitleName)) {
-        this.mTitleName = paramContext.getString(2131691088);
+        this.mTitleName = paramContext.getString(2131691141);
       }
-      this.mUnreadNum = afns.a(paramQQAppInterface);
-      String str = aydd.a().a(paramQQAppInterface);
-      paramContext = aydd.a().a();
-      paramQQAppInterface = paramQQAppInterface.a().b(ajsd.N, 0);
+      this.mUnreadNum = ahla.a(paramQQAppInterface);
+      String str = baba.a().a(paramQQAppInterface);
+      paramContext = baba.a().a();
+      paramQQAppInterface = paramQQAppInterface.a().b(aljq.N, 0);
       if (paramQQAppInterface == null) {
         break label279;
       }
@@ -94,10 +94,10 @@ public class RecentItemTroopNotification
         this.mLastMsg = str;
       }
       if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
-        this.mShowTime = ahpj.a().a(a(), this.mDisplayTime);
+        this.mShowTime = ajgs.a().a(a(), this.mDisplayTime);
       }
       this.mUser.jumpTabMode = 1;
-    } while (!AppSetting.d);
+    } while (!AppSetting.c);
     paramQQAppInterface = new StringBuilder(24);
     paramQQAppInterface.append(this.mTitleName);
     if (this.mUnreadNum == 1) {
@@ -135,7 +135,7 @@ public class RecentItemTroopNotification
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemTroopNotification
  * JD-Core Version:    0.7.0.1
  */

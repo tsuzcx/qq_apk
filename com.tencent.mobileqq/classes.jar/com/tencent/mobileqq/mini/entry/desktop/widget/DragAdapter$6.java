@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.entry.desktop.widget;
 
-import ajya;
-import amtb;
-import bcql;
+import alpo;
+import aokd;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.List;
 
 class DragAdapter$6
@@ -12,7 +12,7 @@ class DragAdapter$6
   
   public void run()
   {
-    bcql.a(DragAdapter.access$600(this.this$0), ajya.a(2131703524) + amtb.c() + ajya.a(2131703523), 0).a();
+    QQToast.a(DragAdapter.access$600(this.this$0), alpo.a(2131703896) + aokd.c() + alpo.a(2131703895), 0).a();
     if (this.val$overTopTargetIndex != -1)
     {
       this.this$0.mData.remove(this.val$overTopTargetIndex);
@@ -23,7 +23,7 @@ class DragAdapter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DragAdapter.6
  * JD-Core Version:    0.7.0.1
  */

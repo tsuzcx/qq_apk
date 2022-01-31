@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.share;
 
 import android.text.TextUtils;
-import bbdx;
+import bdcs;
 import com.tencent.qphone.base.util.QLog;
 
 final class MiniArkShareAsyncManager$2
@@ -11,14 +11,14 @@ final class MiniArkShareAsyncManager$2
   
   public void run()
   {
-    if ((!TextUtils.isEmpty(this.val$filePath)) && (bbdx.d(this.val$filePath))) {
+    if ((!TextUtils.isEmpty(this.val$filePath)) && (bdcs.d(this.val$filePath))) {
       QLog.d("MiniArkShareAsyncManage", 2, "removeArkShareLocalTemporaryFile() called with: filePath = [" + this.val$filePath + "]");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniArkShareAsyncManager.2
  * JD-Core Version:    0.7.0.1
  */

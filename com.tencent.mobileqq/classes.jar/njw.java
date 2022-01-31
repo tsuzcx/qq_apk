@@ -1,37 +1,16 @@
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class njw
-  implements TVK_SDKMgr.InstallListener
+class njw
 {
-  public njw(VideoCoverView.5 param5) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "installSDK onInstalledFailed arg0=" + paramInt);
-    }
-    this.a.this$0.b = false;
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "installSDK onInstalledSuccessed");
-    }
-    this.a.this$0.b = true;
-    ThreadManager.getUIHandler().post(new VideoCoverView.5.1.1(this));
-  }
+  njw(njv paramnjv) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     njw
  * JD-Core Version:    0.7.0.1
  */

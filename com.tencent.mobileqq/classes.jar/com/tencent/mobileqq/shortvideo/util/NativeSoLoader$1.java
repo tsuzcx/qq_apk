@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import axkx;
+import azgd;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class NativeSoLoader$1
@@ -8,16 +8,16 @@ public final class NativeSoLoader$1
 {
   public void run()
   {
-    if (!axkx.a().get())
+    if (!azgd.a().get())
     {
-      boolean bool = axkx.a("TKGLRenderer");
-      axkx.a().getAndSet(bool);
+      boolean bool = azgd.a("TKGLRenderer");
+      azgd.a().getAndSet(bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.NativeSoLoader.1
  * JD-Core Version:    0.7.0.1
  */

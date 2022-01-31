@@ -1,29 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
-final class aevl
-  implements Animation.AnimationListener
+public class aevl
+  implements aexd
 {
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleHelper", 2, "onAllAnimationEnd " + paramAnimation);
-    }
-  }
+  public aevl(DoodlePanel paramDoodlePanel) {}
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(aexc paramaexc)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleHelper", 2, "onAnimationStart " + paramAnimation);
-    }
+    this.a.a(paramaexc);
+    paramaexc = "" + paramaexc.a + ";" + paramaexc.b + ";" + paramaexc.c;
+    bczr.a(this.a.getContext(), "aio_doodle_colorpicker_select", paramaexc);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aevl
  * JD-Core Version:    0.7.0.1
  */

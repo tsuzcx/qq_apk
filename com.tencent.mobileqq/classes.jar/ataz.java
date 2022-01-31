@@ -1,31 +1,19 @@
-import android.graphics.Bitmap;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ataz
-  implements baxz
+  implements DialogInterface.OnClickListener
 {
-  ataz(atav paramatav) {}
+  ataz(atax paramatax, bdfq parambdfq) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    synchronized (this.a.a)
-    {
-      if (this.a.a.contains(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyProxy", 2, "onDecodeTaskCompleted: reqUin=" + paramString + ", avatar=" + paramBitmap);
-        }
-        this.a.a.remove(paramString);
-        atav.a(this.a, 4161, new Object[] { Integer.valueOf(paramInt2), paramString, paramBitmap });
-      }
-      return;
-    }
+    this.jdField_a_of_type_Bdfq.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ataz
  * JD-Core Version:    0.7.0.1
  */

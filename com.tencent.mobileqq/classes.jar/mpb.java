@@ -1,26 +1,18 @@
-import com.tencent.av.app.VideoAppInterface;
+import android.view.MotionEvent;
 
-class mpb
-  implements mqf
+public abstract interface mpb
 {
-  mpb(moz parammoz) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, long paramLong);
   
-  public void a(mqe parammqe)
-  {
-    moz localmoz = this.a;
-    if (parammqe.b == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localmoz.a(bool, parammqe.g, parammqe.c);
-      this.a.a = null;
-      moz.b(this.a).a(new Object[] { Integer.valueOf(8003), Integer.valueOf(7) });
-      return;
-    }
-  }
+  public abstract void a(int paramInt, long paramLong);
+  
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpb
  * JD-Core Version:    0.7.0.1
  */

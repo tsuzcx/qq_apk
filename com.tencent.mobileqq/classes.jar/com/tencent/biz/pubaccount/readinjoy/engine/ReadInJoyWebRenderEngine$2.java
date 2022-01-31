@@ -5,8 +5,8 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.core.ViolaInstance;
 import org.json.JSONException;
 import org.json.JSONObject;
-import osq;
-import rvx;
+import oxi;
+import smk;
 
 public class ReadInJoyWebRenderEngine$2
   implements Runnable
@@ -15,15 +15,15 @@ public class ReadInJoyWebRenderEngine$2
   {
     try
     {
-      JSONObject localJSONObject = rvx.a();
+      JSONObject localJSONObject = smk.a();
       if (localJSONObject != null)
       {
         if (!TextUtils.isEmpty(this.a)) {
           localJSONObject.put("param", this.a);
         }
         localJSONObject.put("url", this.b);
-        osq.a(this.this$0, false);
-        osq.a(this.this$0).render(this.c, localJSONObject.toString());
+        oxi.a(this.this$0, false);
+        oxi.a(this.this$0).render(this.c, localJSONObject.toString());
       }
       return;
     }
@@ -36,7 +36,7 @@ public class ReadInJoyWebRenderEngine$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyWebRenderEngine.2
  * JD-Core Version:    0.7.0.1
  */

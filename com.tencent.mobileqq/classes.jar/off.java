@@ -1,19 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class off
-  implements ViewBase.OnClickListener
 {
-  off(ofb paramofb) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onClick(ViewBase paramViewBase)
-  {
-    ((ogn)this.a.jdField_a_of_type_Ohs).a(this.a.jdField_a_of_type_Oif, ofa.a(this.a.jdField_a_of_type_Oif, 1));
-  }
+  off(ofb paramofb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     off
  * JD-Core Version:    0.7.0.1
  */

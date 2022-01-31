@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.history;
 
-import afvu;
-import ajya;
-import akwb;
+import ahto;
+import alpo;
+import ammr;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import bcqf;
-import bfnk;
+import bepp;
+import bhoe;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,27 +27,27 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   implements View.OnClickListener
 {
   Handler.Callback a;
-  public bcqf a;
+  public bepp a;
   
   public ChatHistoryAuthDevForRoamMsgFragment()
   {
-    this.jdField_a_of_type_AndroidOsHandler$Callback = new afvu(this);
+    this.jdField_a_of_type_AndroidOsHandler$Callback = new ahto(this);
   }
   
   private void a()
   {
-    akwb localakwb = (akwb)getActivity().app.a(59);
-    if (localakwb != null)
+    ammr localammr = (ammr)getActivity().app.a(59);
+    if (localammr != null)
     {
-      localakwb.a((short)1);
+      localammr.a((short)1);
       if (QLog.isColorLevel()) {
         QLog.d("ChatHistoryAuthDevForRoamMsgFragment", 2, "set_roam_message_auth_mode: 1");
       }
-      this.jdField_a_of_type_Bcqf = new bcqf(getActivity(), getActivity().getTitleBarHeight());
-      this.jdField_a_of_type_Bcqf.setCancelable(false);
-      this.jdField_a_of_type_Bcqf.a(ajya.a(2131701638));
+      this.jdField_a_of_type_Bepp = new bepp(getActivity(), getActivity().getTitleBarHeight());
+      this.jdField_a_of_type_Bepp.setCancelable(false);
+      this.jdField_a_of_type_Bepp.a(alpo.a(2131702011));
       if (!getActivity().isFinishing()) {
-        this.jdField_a_of_type_Bcqf.show();
+        this.jdField_a_of_type_Bepp.show();
       }
     }
   }
@@ -60,17 +60,17 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   public void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    setTitle(getString(2131696660));
-    this.mContentView.findViewById(2131378730).setOnClickListener(this);
-    this.mContentView.findViewById(2131378733).setOnClickListener(this);
-    paramLayoutInflater = new bfnk(this.jdField_a_of_type_AndroidOsHandler$Callback);
+    setTitle(getString(2131696835));
+    this.mContentView.findViewById(2131379348).setOnClickListener(this);
+    this.mContentView.findViewById(2131379351).setOnClickListener(this);
+    paramLayoutInflater = new bhoe(this.jdField_a_of_type_AndroidOsHandler$Callback);
     getActivity().app.setHandler(getClass(), paramLayoutInflater);
     VipUtils.a(getActivity().app, "chat_history", "LockSet", "switch_devlock", 1, 0, new String[0]);
   }
   
   public int getContentLayoutId()
   {
-    return 2131561469;
+    return 2131561659;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -106,15 +106,15 @@ public class ChatHistoryAuthDevForRoamMsgFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131378730)
+    if (paramView.getId() == 2131379348)
     {
-      this.mContentView.findViewById(2131378730).setEnabled(false);
+      this.mContentView.findViewById(2131379348).setEnabled(false);
       paramView = new Intent(getActivity(), QQBrowserActivity.class);
       paramView.putExtra("url", "http://mapp.3g.qq.com/touch/psw/verify.jsp?_wv=5123&type=history&from=[from]".replace("[from]", "switch_devlock"));
       VipUtils.a(getActivity().app, "chat_history", "LockSet", "Clk_usedevlock", 1, 0, new String[0]);
       startActivityForResult(paramView, 10000);
     }
-    while (paramView.getId() != 2131378733) {
+    while (paramView.getId() != 2131379351) {
       return;
     }
     VipUtils.a(getActivity().app, "chat_history", "LockSet", "Clk_PswUse", 2, 0, new String[0]);
@@ -130,7 +130,7 @@ public class ChatHistoryAuthDevForRoamMsgFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment
  * JD-Core Version:    0.7.0.1
  */

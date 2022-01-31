@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import alzk;
+import anqj;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class NearbyVideoUtils$2
@@ -10,12 +10,12 @@ public final class NearbyVideoUtils$2
   
   public void run()
   {
-    alzk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, 39, this.jdField_a_of_type_Int, 640);
+    anqj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, 39, this.jdField_a_of_type_Int, 640);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyVideoUtils.2
  * JD-Core Version:    0.7.0.1
  */

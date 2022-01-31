@@ -1,23 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
 
 class bcqg
-  implements DialogInterface.OnKeyListener
+  implements Animation.AnimationListener
 {
-  bcqg(bcqf parambcqf, boolean paramBoolean) {}
+  bcqg(bcqe parambcqe, ImageView paramImageView) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramInt == 84) || (paramInt == 4)) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    return false;
+    this.jdField_a_of_type_Bcqe.a.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcqg
  * JD-Core Version:    0.7.0.1
  */

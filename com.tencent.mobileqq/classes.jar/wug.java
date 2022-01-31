@@ -1,28 +1,22 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.HashMap;
+import com.tencent.qphone.base.util.QLog;
 
-public class wug
-  implements wwt
+class wug
+  implements bepg
 {
-  public wug(VideoPlayerView paramVideoPlayerView) {}
+  wug(wud paramwud) {}
   
-  public void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
+  public void a(bepe parambepe)
   {
-    if (VideoPlayerView.a(this.a) != null)
-    {
-      xhb.a(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "half_follow", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).id.get(), VideoPlayerView.a(this.a).title.get() });
-      VideoPlayerView.a(this.a).poster.followState.set(1);
-      VideoPlayerView.a(this.a).put(VideoPlayerView.a(this.a).poster.id.get(), Boolean.valueOf(true));
+    if (QLog.isColorLevel()) {
+      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambepe);
     }
   }
+  
+  public void a(bepe parambepe, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wug
  * JD-Core Version:    0.7.0.1
  */

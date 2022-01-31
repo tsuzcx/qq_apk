@@ -1,56 +1,74 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
+import android.app.Activity;
+import android.content.Context;
+import android.provider.Settings.Secure;
+import android.view.View;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.qphone.base.util.QLog;
 
-class bhoc
-  implements ModuleDownloadListener
+public class bhoc
 {
-  bhoc(bhnz parambhnz) {}
-  
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString) {}
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public static void a(Activity paramActivity)
   {
-    if (!paramString.equals("libandroidndkbeauty.so")) {}
-    for (;;)
+    try
     {
-      return;
-      String str = bhnz.a.getPath();
-      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
-      if (paramString.exists()) {}
-      try
-      {
-        bhnz.a(paramString, new File(bhnz.a.getPath() + "/libandroidndkbeauty.zip"));
-        paramString = new File(str);
-        if (!paramString.exists()) {
-          paramString.mkdirs();
-        }
-        if (this.a.a(bhnz.b, false)) {
-          continue;
-        }
-        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so" });
-        bhoh.b(new File(bhnz.a.getPath() + "/libandroidndkbeauty.zip"), paramString);
-        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so finish" });
-        return;
+      InputMethodManager localInputMethodManager = (InputMethodManager)paramActivity.getSystemService("input_method");
+      if (localInputMethodManager.isActive()) {
+        localInputMethodManager.hideSoftInputFromWindow(paramActivity.getWindow().getDecorView().getWindowToken(), 0);
       }
-      catch (Exception paramString)
-      {
-        for (;;)
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      while (!QLog.isDevelopLevel()) {}
+      paramActivity.printStackTrace();
+    }
+  }
+  
+  public static void a(View paramView)
+  {
+    ((InputMethodManager)paramView.getContext().getSystemService("input_method")).showSoftInput(paramView, 0);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool2 = false;
+    try
+    {
+      paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "default_input_method");
+      bool1 = bool2;
+      if (paramContext != null) {
+        if ((!paramContext.contains("com.sohu.inputmethod.sogou")) && (!paramContext.contains("com.tencent.qqpinyin")))
         {
-          paramString.printStackTrace();
+          bool1 = bool2;
+          if (!paramContext.contains("com.sogou.zhuyininput")) {}
+        }
+        else
+        {
+          bool1 = true;
         }
       }
     }
+    catch (NullPointerException paramContext)
+    {
+      do
+      {
+        boolean bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.d("InputMethodUtil", 2, "checkSogouInputDefault(), e = " + paramContext.getStackTrace());
+    }
+    return bool1;
+    return false;
+  }
+  
+  public static void b(View paramView)
+  {
+    ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhoc
  * JD-Core Version:    0.7.0.1
  */

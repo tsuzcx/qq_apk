@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class atpa
-  implements ajua
+class atpa
+  implements DialogInterface.OnDismissListener
 {
-  public atpa(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  atpa(atoz paramatoz) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramBoolean) && (paramInt == 2))
-    {
-      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
-        break label41;
-      }
-      NearbyPeopleProfileActivity.a(this.a).d();
-    }
-    label41:
-    while (NearbyPeopleProfileActivity.a(this.a) == null) {
-      return;
-    }
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atpa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,18 @@
-class arqu
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+
+public class arqu
+  implements bevo
 {
-  private static final arqs a = new arqs(null);
+  public arqu(QfileEditBottomBar paramQfileEditBottomBar) {}
+  
+  public void a(int paramInt)
+  {
+    QfileEditBottomBar.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqu
  * JD-Core Version:    0.7.0.1
  */

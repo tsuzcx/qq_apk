@@ -49,10 +49,10 @@ public class ToastView
   
   private void create(int paramInt, boolean paramBoolean)
   {
-    this.toastLayout = this.mInflater.inflate(2131559266, null);
+    this.toastLayout = this.mInflater.inflate(2131559310, null);
     this.toastLayout.setClickable(paramBoolean);
-    Object localObject = (TextView)this.toastLayout.findViewById(2131377522);
-    ImageView localImageView = (ImageView)this.toastLayout.findViewById(2131377519);
+    Object localObject = (TextView)this.toastLayout.findViewById(2131378059);
+    ImageView localImageView = (ImageView)this.toastLayout.findViewById(2131378056);
     this.objectAnimator = ObjectAnimator.ofFloat(localImageView, "rotation", new float[] { 0.0F, 360.0F });
     this.objectAnimator.setInterpolator(new LinearInterpolator());
     this.objectAnimator.setDuration(2000L);
@@ -95,15 +95,15 @@ public class ToastView
   public static int getIconRes(String paramString)
   {
     if ("success".equals(paramString)) {
-      return 2130846897;
+      return 2130847264;
     }
     if ("warn".equals(paramString)) {
-      return 2130846896;
+      return 2130847263;
     }
     if ("loading".equals(paramString)) {
-      return 2130840645;
+      return 2130840748;
     }
-    return 2130839019;
+    return 2130839100;
   }
   
   private void setDuration(int paramInt)
@@ -191,7 +191,7 @@ public class ToastView
       return;
     }
     setToastMsg(paramString);
-    paramString = (TextView)this.toastLayout.findViewById(2131377522);
+    paramString = (TextView)this.toastLayout.findViewById(2131378059);
     if (TextUtils.isEmpty(this.message))
     {
       paramString.setVisibility(8);
@@ -203,7 +203,7 @@ public class ToastView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.ToastView
  * JD-Core Version:    0.7.0.1
  */

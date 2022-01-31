@@ -1,42 +1,23 @@
-import com.tencent.mobileqq.activity.AgeSelectionActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtHandler.Options;
 
-public class aaij
-  implements amne
+public final class aaij
+  implements Parcelable.Creator<GdtHandler.Options>
 {
-  public aaij(AgeSelectionActivity paramAgeSelectionActivity) {}
-  
-  public void a()
+  public GdtHandler.Options a(Parcel paramParcel)
   {
-    if ((AgeSelectionActivity.a(this.a) != null) && (AgeSelectionActivity.a(this.a).isShowing())) {
-      AgeSelectionActivity.a(this.a).dismiss();
-    }
+    return new GdtHandler.Options(paramParcel);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public GdtHandler.Options[] a(int paramInt)
   {
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      AgeSelectionActivity.a(this.a);
-      AgeSelectionActivity.b(this.a);
-      if ((AgeSelectionActivity.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
-        AgeSelectionActivity.a(this.a).a(2);
-      }
-      return;
-      AgeSelectionActivity.a(this.a, paramInt2);
-      continue;
-      AgeSelectionActivity.b(this.a, paramInt2);
-      continue;
-      AgeSelectionActivity.c(this.a, paramInt2);
-    }
+    return new GdtHandler.Options[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaij
  * JD-Core Version:    0.7.0.1
  */

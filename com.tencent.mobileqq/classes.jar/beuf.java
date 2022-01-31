@@ -1,23 +1,23 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
 
-class beuf
-  extends beub
+public class beuf
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  beuf(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
-  {
-    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
-  }
+  public beuf(VideoTextureView paramVideoTextureView) {}
   
-  protected beua a()
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    return new beua(2131694219, new beug(this));
+    if (VideoTextureView.a() != null) {
+      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beuf
  * JD-Core Version:    0.7.0.1
  */

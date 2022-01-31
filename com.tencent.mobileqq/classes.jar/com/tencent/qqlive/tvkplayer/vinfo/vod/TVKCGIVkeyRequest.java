@@ -23,7 +23,7 @@ public class TVKCGIVkeyRequest
   private static final String ENCRYPT_VER_4_2 = "4.2";
   private static final String ENCRYPT_VER_5 = "5.1";
   private static final int ERR_RETRY_MAX_COUNT = 2;
-  private static final String TAG = "TVKPlayer[VideoInfo][TVKCGIVkeyRequest.java]";
+  private static final String TAG = "MediaPlayer[TVKCGIVkeyRequest.java]";
   private ITVKCGIVkeyResponse mCallback = null;
   private int mCgiRetryCount = 0;
   private int mCurrentHostUrlRetryCount = 0;
@@ -93,7 +93,7 @@ public class TVKCGIVkeyRequest
     if ((this.mParams != null) && (!TextUtils.isEmpty(this.mParams.getLoginCookie())))
     {
       localHashMap.put("Cookie", this.mParams.getLoginCookie());
-      TVKLogUtil.i("TVKPlayer[VideoInfo][TVKCGIVkeyRequest.java]", "[vinfo][getvkey]cookie:" + this.mParams.getLoginCookie());
+      TVKLogUtil.i("MediaPlayer[TVKCGIVkeyRequest.java]", "[vinfo][getvkey]cookie:" + this.mParams.getLoginCookie());
     }
     return localHashMap;
   }
@@ -251,7 +251,7 @@ public class TVKCGIVkeyRequest
       this.mGetUrlCount += 1;
       this.mCurrentHostUrlRetryCount += 1;
       Map localMap = getQueryParams();
-      TVKLogUtil.i("TVKPlayer[VideoInfo][TVKCGIVkeyRequest.java]", "[vinfo][getvkey] start to request, request time = " + this.mCurrentHostUrlRetryCount);
+      TVKLogUtil.i("MediaPlayer[TVKCGIVkeyRequest.java]", "[vinfo][getvkey] start to request, request time = " + this.mCurrentHostUrlRetryCount);
       this.mStartRequestMS = SystemClock.elapsedRealtime();
       TVKVideoInfoHttpProcessor.getInstance().addToRequestQueue(this.mCurrentHostUrlRetryCount, getRequestUrl(), localMap, getHeaders(), this.mGetVkeyCb);
       return;
@@ -265,7 +265,7 @@ public class TVKCGIVkeyRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVkeyRequest
  * JD-Core Version:    0.7.0.1
  */

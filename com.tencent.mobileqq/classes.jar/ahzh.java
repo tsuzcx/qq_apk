@@ -1,14 +1,34 @@
-public abstract interface ahzh
+import android.os.Bundle;
+
+class ahzh
+  extends alox
 {
-  public abstract void a();
+  ahzh(ahzg paramahzg) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  {
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(1, paramString);
+    }
+  }
   
-  public abstract void a(int paramInt1, int paramInt2, String paramString);
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (paramBoolean) {
+      this.a.a(1, paramString);
+    }
+  }
+  
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a(2, null);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzh
  * JD-Core Version:    0.7.0.1
  */

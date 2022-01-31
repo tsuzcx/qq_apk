@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar;
 
-import alby;
-import alip;
+import amso;
+import amzf;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -40,7 +40,7 @@ public class ARNativeBridge
   {
     boolean bool2 = true;
     long l = System.currentTimeMillis();
-    boolean bool3 = alby.a(alby.a, needCheckMd5);
+    boolean bool3 = amso.a("ArMapEngine800", needCheckMd5);
     if (!bool3) {}
     for (boolean bool1 = true;; bool1 = false)
     {
@@ -63,7 +63,7 @@ public class ARNativeBridge
     {
       try
       {
-        int i = alby.a(alby.a);
+        int i = amso.a("ArMapEngine800");
         if (i != 0) {
           continue;
         }
@@ -84,7 +84,7 @@ public class ARNativeBridge
       if (QLog.isColorLevel()) {
         QLog.d("AREngine", 2, "initSoEnvirontMent loadSoSuccess = " + loadSoSuccess);
       }
-      alip.a().f(System.currentTimeMillis() - l, loadSoSuccess);
+      amzf.a().f(System.currentTimeMillis() - l, loadSoSuccess);
       return loadSoSuccess;
       bool1 = false;
     }
@@ -387,7 +387,7 @@ public class ARNativeBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARNativeBridge
  * JD-Core Version:    0.7.0.1
  */

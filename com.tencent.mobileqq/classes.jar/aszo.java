@@ -1,32 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyFakeActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.intervideo.nowproxy.NowEntryData;
+import com.tencent.intervideo.nowproxy.customized_interface.CustomizedReport;
 
-public class aszo
-  extends Handler
+class aszo
+  extends CustomizedReport
 {
-  public aszo(NearbyFakeActivity paramNearbyFakeActivity) {}
+  aszo(asyy paramasyy) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onNowEntry(Bundle paramBundle, NowEntryData paramNowEntryData) {}
+  
+  public void onReport(Bundle paramBundle)
   {
-    switch (paramMessage.what)
-    {
+    asyp localasyp = aszx.a().a();
+    if (localasyp != null) {
+      localasyp.a(paramBundle);
     }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyFakeActivity", 2, "procPreload time out");
-      }
-      NearbyFakeActivity.a(this.a, 1);
+    if ((paramBundle != null) && ("weishi_service_num".equals(paramBundle.getString("id", "")))) {
+      tjr.a(aszw.jdField_a_of_type_JavaLangString, "", "", aszw.b, aszw.jdField_a_of_type_Int, 4, 2, paramBundle.getInt("play_time"));
     }
   }
+  
+  public void setNowEntryData(NowEntryData paramNowEntryData) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszo
  * JD-Core Version:    0.7.0.1
  */

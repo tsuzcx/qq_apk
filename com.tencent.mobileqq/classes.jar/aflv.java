@@ -1,63 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectionsExplorationFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aflv
-  extends ajxj
+class aflv
+  extends afpq
 {
-  public aflv(ConnectionsExplorationFragment paramConnectionsExplorationFragment) {}
-  
-  protected void onAddFriend(String paramString)
+  aflv(aflj paramaflj)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onAddFriend " + paramString);
-    }
-    ConnectionsExplorationFragment.a(this.a, false, true);
+    super(paramaflj, null);
   }
   
-  protected void onAddReqStatesChanged(boolean paramBoolean, String paramString)
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onAddReqStatesChanged isSuccess=" + paramBoolean + " " + paramString);
-    }
-    ConnectionsExplorationFragment.a(this.a, false, true);
-  }
-  
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean + " " + paramString);
-    }
-    ConnectionsExplorationFragment.a(this.a, false, true);
-  }
-  
-  public void onGetConnectionsPerson(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onCancelMayKnowRecommend isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      ConnectionsExplorationFragment.a(this.a, false, true);
-    }
-    while (paramInt1 != 1205) {
-      return;
-    }
-    ConnectionsExplorationFragment.a(this.a, false, false);
-  }
-  
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConnectionsExplorationFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      ConnectionsExplorationFragment.a(this.a, false, false);
-    }
+    return new affo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aflv
  * JD-Core Version:    0.7.0.1
  */

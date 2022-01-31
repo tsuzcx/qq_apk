@@ -1,52 +1,22 @@
-import android.net.Uri;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.1.1;
 
-class aqvt
-  implements aqwb
+public class aqvt
+  implements birw
 {
-  aqvt(aqvs paramaqvs, int paramInt, String paramString) {}
+  aqvt(aqvs paramaqvs) {}
   
-  public void a(Uri paramUri)
+  public boolean a(int paramInt, Bundle paramBundle)
   {
-    QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFaild= " + paramUri);
-    this.jdField_a_of_type_Aqvs.a.finish();
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong)
-  {
-    QLog.d("CheckForward.Security", 1, "system share.prepareFileInfoAndReq : onFinish= " + paramString1);
-    try
-    {
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        paramString2 = new ArrayList();
-        paramString2.add(paramString1);
-        this.jdField_a_of_type_Aqvs.a(paramString2, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (this.jdField_a_of_type_Int == 4)
-      {
-        paramString2 = new ArrayList();
-        paramString2.add(paramString1);
-        this.jdField_a_of_type_Aqvs.b(paramString2, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    }
-    catch (Throwable paramString1)
-    {
-      QLog.e("CheckForward.Security", 1, "system share.prepareFileInfoAndReq exception=", paramString1);
-      return;
-    }
-    if (this.jdField_a_of_type_Int == 3) {
-      this.jdField_a_of_type_Aqvs.a(paramString1, this.jdField_a_of_type_JavaLangString);
-    }
+    new Handler(Looper.getMainLooper()).post(new QfavFilePreviewController.1.1(this, paramBundle));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqvt
  * JD-Core Version:    0.7.0.1
  */

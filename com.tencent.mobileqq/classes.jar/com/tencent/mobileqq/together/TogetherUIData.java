@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.together;
 
-import ayno;
+import balk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.io.Serializable;
 
 public class TogetherUIData
   implements Serializable
 {
-  private ayno mTogetherSession;
+  private balk mTogetherSession;
   
   public String getCurUin()
   {
@@ -24,7 +24,7 @@ public class TogetherUIData
     return this.mTogetherSession.a(paramBoolean, paramQQAppInterface);
   }
   
-  public ayno getTogetherSession()
+  public balk getTogetherSession()
   {
     return this.mTogetherSession;
   }
@@ -34,14 +34,14 @@ public class TogetherUIData
     this.mTogetherSession = null;
   }
   
-  public void setTogetherSession(ayno paramayno)
+  public void setTogetherSession(balk parambalk)
   {
-    this.mTogetherSession = paramayno;
+    this.mTogetherSession = parambalk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherUIData
  * JD-Core Version:    0.7.0.1
  */

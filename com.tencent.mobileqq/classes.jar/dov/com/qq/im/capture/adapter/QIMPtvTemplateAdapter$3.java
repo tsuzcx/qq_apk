@@ -1,13 +1,13 @@
 package dov.com.qq.im.capture.adapter;
 
-import bjbe;
+import blmo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.manager.FeatureManager;
 
 public class QIMPtvTemplateAdapter$3
   implements Runnable
 {
-  public QIMPtvTemplateAdapter$3(bjbe parambjbe) {}
+  public QIMPtvTemplateAdapter$3(blmo paramblmo) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class QIMPtvTemplateAdapter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter.3
  * JD-Core Version:    0.7.0.1
  */

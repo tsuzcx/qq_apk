@@ -1,97 +1,48 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.TagUserItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.VideoListLayout;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryFeedTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBaseList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class vbd
-  implements bfph
+public class vbd
+  extends unf
 {
-  vbd(vba paramvba, bfpc parambfpc, int paramInt, uxm paramuxm) {}
+  public List<vbc> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public vbd(qqstory_service.RspStoryFeedTagInfo paramRspStoryFeedTagInfo)
   {
-    this.jdField_a_of_type_Bfpc.e();
-    switch (paramInt)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    paramRspStoryFeedTagInfo = paramRspStoryFeedTagInfo.tag_info.get();
+    if (paramRspStoryFeedTagInfo != null)
     {
-    }
-    Object localObject2;
-    do
-    {
-      do
+      paramRspStoryFeedTagInfo = paramRspStoryFeedTagInfo.iterator();
+      while (paramRspStoryFeedTagInfo.hasNext())
       {
-        return;
-        vba.b(this.jdField_a_of_type_Vba, this.jdField_a_of_type_Int);
-        if (this.jdField_a_of_type_Uxm.a().type != 3) {
-          break;
-        }
-      } while (!(this.jdField_a_of_type_Uxm.a().getOwner() instanceof QQUserUIItem));
-      paramView = ((QQUserUIItem)this.jdField_a_of_type_Uxm.a().getOwner()).qq;
-      localObject1 = new StringBuilder();
-      localObject2 = this.jdField_a_of_type_Vba.a(this.jdField_a_of_type_Int);
-      if (localObject2 != null)
-      {
-        localObject2 = (VideoListLayout)((vap)localObject2).a(2131373274);
-        if (localObject2 != null)
+        Object localObject = (qqstory_struct.TagInfoBaseList)paramRspStoryFeedTagInfo.next();
+        vbc localvbc = new vbc();
+        localvbc.jdField_a_of_type_JavaLangString = ((qqstory_struct.TagInfoBaseList)localObject).feed_id.get().toStringUtf8();
+        localObject = ((qqstory_struct.TagInfoBaseList)localObject).tag_info_list.get();
+        if (localObject != null)
         {
-          localObject2 = ((VideoListLayout)localObject2).a();
-          if (localObject2 != null)
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
           {
-            paramInt = ((StoryHomeHorizontalListView)localObject2).getFirstVisiblePosition();
-            while (paramInt <= ((StoryHomeHorizontalListView)localObject2).getLastVisiblePosition())
-            {
-              List localList = this.jdField_a_of_type_Uxm.d();
-              if ((paramInt >= 0) && (paramInt < localList.size()))
-              {
-                ((StringBuilder)localObject1).append(((StoryVideoItem)localList.get(paramInt)).mVid);
-                if (paramInt < ((StoryHomeHorizontalListView)localObject2).getLastVisiblePosition()) {
-                  ((StringBuilder)localObject1).append(",");
-                }
-              }
-              paramInt += 1;
-            }
+            xjw localxjw = new xjw((qqstory_struct.TagInfoBase)((Iterator)localObject).next());
+            localvbc.jdField_a_of_type_JavaUtilList.add(localxjw);
           }
         }
-      }
-      vei.c("video_nenegative", "close_IDrecommend", 0, 0, new String[] { "", paramView, "", ((StringBuilder)localObject1).toString() });
-      return;
-    } while ((this.jdField_a_of_type_Uxm.a().type != 6) || (!(this.jdField_a_of_type_Uxm.a().getOwner() instanceof TagUserItem)));
-    long l = ((TagUserItem)this.jdField_a_of_type_Uxm.a().getOwner()).tagId;
-    paramView = new StringBuilder();
-    Object localObject1 = this.jdField_a_of_type_Vba.a(this.jdField_a_of_type_Int);
-    if (localObject1 != null)
-    {
-      localObject1 = (VideoListLayout)((vap)localObject1).a(2131373274);
-      if (localObject1 != null)
-      {
-        localObject1 = ((VideoListLayout)localObject1).a();
-        if (localObject1 != null)
-        {
-          paramInt = ((StoryHomeHorizontalListView)localObject1).getFirstVisiblePosition();
-          while (paramInt <= ((StoryHomeHorizontalListView)localObject1).getLastVisiblePosition())
-          {
-            localObject2 = this.jdField_a_of_type_Uxm.d();
-            if ((paramInt >= 0) && (paramInt < ((List)localObject2).size()))
-            {
-              paramView.append(((StoryVideoItem)((List)localObject2).get(paramInt)).mVid);
-              if (paramInt < ((StoryHomeHorizontalListView)localObject1).getLastVisiblePosition()) {
-                paramView.append(",");
-              }
-            }
-            paramInt += 1;
-          }
-        }
+        this.jdField_a_of_type_JavaUtilList.add(localvbc);
       }
     }
-    vei.c("video_nenegative", "close_newsrecommend", 0, 0, new String[] { "", String.valueOf(l), "", paramView.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vbd
  * JD-Core Version:    0.7.0.1
  */

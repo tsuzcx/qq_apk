@@ -1,40 +1,22 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.XMPCoreUtil.2;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bhqc
-  implements ModuleDownloadListener
+class bhqc
+  implements View.OnClickListener
 {
-  public bhqc(XMPCoreUtil.2 param2) {}
+  bhqc(bhpy parambhpy) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onClick(View paramView)
   {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadCanceled ", paramString });
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadFailed ", paramString });
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("xmpcore.jar")) {
-      return;
+    this.a.dismiss();
+    if (bhpy.a(this.a) != null) {
+      bhpy.a(this.a).onDismiss();
     }
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "url = ", bhqa.a(), " onDownloadSucceed = ", bhqa.b() });
-    LocalMultiProcConfig.putString("xmp_core_file_md5", bhqa.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhqc
  * JD-Core Version:    0.7.0.1
  */

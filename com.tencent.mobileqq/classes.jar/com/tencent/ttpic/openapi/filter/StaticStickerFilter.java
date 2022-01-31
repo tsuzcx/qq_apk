@@ -6,7 +6,6 @@ import com.tencent.aekit.openrender.UniformParam.Float3fParam;
 import com.tencent.aekit.openrender.UniformParam.IntParam;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.filter.NormalVideoFilter;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
@@ -17,6 +16,7 @@ import java.util.List;
 public class StaticStickerFilter
   extends NormalVideoFilter
 {
+  private long fabbyStartTime = 0L;
   private boolean initialized = false;
   private float ratio = 0.75F;
   private List<PointF> relativePivotsPts;
@@ -170,7 +170,7 @@ public class StaticStickerFilter
     if (this.item.type == VideoFilterFactory.POSITION_TYPE.RELATIVE.type)
     {
       if ((paramInt != 90) && (paramInt != 270)) {
-        break label1720;
+        break label1688;
       }
       i = 720;
     }
@@ -189,18 +189,17 @@ public class StaticStickerFilter
         f1 *= this.scaleFactor;
         f2 = this.width / this.height;
         if ((paramInt != 90) && (paramInt != 270)) {
-          break label752;
+          break label748;
         }
         d1 = 1.333333333333333D;
         f3 = (float)d1;
         if ((this.item.relativeScaleType != 1) || (f2 >= f3)) {
-          break label1717;
+          break label1685;
         }
         f1 = f2 / f3 * f1;
       }
-      label948:
-      label1204:
-      label1717:
+      label1159:
+      label1685:
       for (;;)
       {
         m = (int)(m * f1);
@@ -213,7 +212,7 @@ public class StaticStickerFilter
           if (this.item.alignFacePoints.length >= 1)
           {
             if (this.item.alignFacePoints.length != 1) {
-              break label759;
+              break label755;
             }
             localObject = arrayOfFloat;
             if (this.item.alignFacePoints[0] < localList.size()) {
@@ -236,11 +235,11 @@ public class StaticStickerFilter
         {
           d1 = 1.333333333333333D;
           if (d2 < d1) {
-            break label997;
+            break label989;
           }
           f1 = this.width / j;
           if ((paramInt != 90) && (paramInt != 270)) {
-            break label948;
+            break label944;
           }
           paramInt = (int)(this.width * 0.75D);
           j = (int)(paramInt * this.item.position[1]);
@@ -252,14 +251,14 @@ public class StaticStickerFilter
           f5 = i;
           localObject = AlgoUtils.calPositions(f2, f3 + f4 * f1, f1 * m + f5, paramInt, this.width, this.height);
           if (this.item.scaleDirection != 0) {
-            break label962;
+            break label958;
           }
-          setPositions(AlgoUtils.adjustPosition((float[])localObject, (float)this.triggerCtrlItem.getAudioScaleFactor()));
+          setPositions(AlgoUtils.adjustPosition((float[])localObject, this.audioScaleFactor));
         }
         for (;;)
         {
           if (this.item.angle <= 0.0F) {
-            break label1204;
+            break label1188;
           }
           addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, this.item.angle));
           addParam(new UniformParam.IntParam("texNeedTransform", 1));
@@ -271,10 +270,10 @@ public class StaticStickerFilter
           }
           f1 = 1.0F;
           break;
-          label752:
+          label748:
           d1 = 0.75D;
           break label180;
-          label759:
+          label755:
           localObject = arrayOfFloat;
           if (this.item.alignFacePoints.length != 2) {
             break label356;
@@ -294,12 +293,13 @@ public class StaticStickerFilter
           break label356;
           d1 = 0.75D;
           break label464;
+          label944:
           paramInt = (int)(this.width / 0.75D);
           break label506;
-          label962:
-          setPositions(AlgoUtils.adjustPosition((float[])localObject, (float)this.triggerCtrlItem.getAudioScaleFactor(), this.item.anchorPointAudio, this.item.scaleDirection));
+          label958:
+          setPositions(AlgoUtils.adjustPosition((float[])localObject, this.audioScaleFactor, this.item.anchorPointAudio, this.item.scaleDirection));
           continue;
-          label997:
+          label989:
           f1 = this.height / i;
           if ((paramInt == 90) || (paramInt == 270)) {}
           for (paramInt = (int)(this.height / 0.75D);; paramInt = (int)(this.height * 0.75D))
@@ -312,13 +312,14 @@ public class StaticStickerFilter
             f5 = paramInt;
             localObject = AlgoUtils.calPositions(f2, f3 + f4 * f1, f1 * m + f5, i, this.width, this.height);
             if (this.item.scaleDirection != 0) {
-              break label1171;
+              break label1159;
             }
-            setPositions(AlgoUtils.adjustPosition((float[])localObject, (float)this.triggerCtrlItem.getAudioScaleFactor()));
+            setPositions(AlgoUtils.adjustPosition((float[])localObject, this.audioScaleFactor));
             break;
           }
-          setPositions(AlgoUtils.adjustPosition((float[])localObject, (float)this.triggerCtrlItem.getAudioScaleFactor(), this.item.anchorPointAudio, this.item.scaleDirection));
+          setPositions(AlgoUtils.adjustPosition((float[])localObject, this.audioScaleFactor, this.item.anchorPointAudio, this.item.scaleDirection));
         }
+        label1188:
         break;
         if (this.width / this.height >= 0.75D)
         {
@@ -332,7 +333,7 @@ public class StaticStickerFilter
           d2 = paramInt;
           localObject = AlgoUtils.calPositions(f1, f2, (float)(d1 * m + d2), i, this.width, this.height);
           if (this.item.scaleDirection == 0) {
-            setPositions(AlgoUtils.adjustPosition((float[])localObject, (float)this.triggerCtrlItem.getAudioScaleFactor()));
+            setPositions(AlgoUtils.adjustPosition((float[])localObject, this.audioScaleFactor));
           }
         }
         while (this.item.angle > 0.0F)
@@ -342,7 +343,7 @@ public class StaticStickerFilter
           addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, this.item.angle));
           addParam(new UniformParam.IntParam("texNeedTransform", 1));
           return;
-          setPositions(AlgoUtils.adjustPosition((float[])localObject, (float)this.triggerCtrlItem.getAudioScaleFactor(), this.item.anchorPointAudio, this.item.scaleDirection));
+          setPositions(AlgoUtils.adjustPosition((float[])localObject, this.audioScaleFactor, this.item.anchorPointAudio, this.item.scaleDirection));
           continue;
           d1 = this.height / 960.0D;
           i = (int)(this.height * 0.75D);
@@ -353,15 +354,14 @@ public class StaticStickerFilter
           d2 = i;
           localObject = AlgoUtils.calPositions(f1, f2, (float)(d1 * m + d2), paramInt, this.width, this.height);
           if (this.item.scaleDirection == 0) {
-            setPositions(AlgoUtils.adjustPosition((float[])localObject, (float)this.triggerCtrlItem.getAudioScaleFactor()));
+            setPositions(AlgoUtils.adjustPosition((float[])localObject, this.audioScaleFactor));
           } else {
-            setPositions(AlgoUtils.adjustPosition((float[])localObject, (float)this.triggerCtrlItem.getAudioScaleFactor(), this.item.anchorPointAudio, this.item.scaleDirection));
+            setPositions(AlgoUtils.adjustPosition((float[])localObject, this.audioScaleFactor, this.item.anchorPointAudio, this.item.scaleDirection));
           }
         }
         break;
       }
-      label1171:
-      label1720:
+      label1688:
       i = 960;
     }
   }
@@ -382,6 +382,7 @@ public class StaticStickerFilter
   
   public void resetFabbyProgress()
   {
+    this.fabbyStartTime = 0L;
     this.triggered = false;
   }
   
@@ -398,10 +399,10 @@ public class StaticStickerFilter
   public void updateFabbyProgress(long paramLong)
   {
     if (!this.triggered) {
-      this.triggerCtrlItem.setFrameStartTime(paramLong);
+      this.fabbyStartTime = paramLong;
     }
     this.triggered = true;
-    updateTextureParam((int)((paramLong - this.triggerCtrlItem.getFrameStartTime()) / Math.max(this.item.frameDuration, 1.0D)) % Math.max(this.item.frames, 1), paramLong);
+    updateTextureParam((int)(((paramLong - this.fabbyStartTime) / Math.max(this.item.frameDuration, 1.0D)) % Math.max(this.item.frames, 1)), paramLong);
     initFabbyPositionAdjust();
   }
   

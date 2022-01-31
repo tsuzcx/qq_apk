@@ -4,7 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import bfsd;
+import bhta;
 import com.tencent.qphone.base.util.QLog;
 
 public class DragGallery
@@ -33,8 +33,8 @@ public class DragGallery
       if (((this.j == 1) || (this.j == -1)) && (f >= 6.0F) && (this.h < 10))
       {
         getParent().requestDisallowInterceptTouchEvent(false);
-        if (this.jdField_a_of_type_Bfsd != null) {
-          this.jdField_a_of_type_Bfsd.b(this.mSelectedPosition);
+        if (this.jdField_a_of_type_Bhta != null) {
+          this.jdField_a_of_type_Bhta.b(this.mSelectedPosition);
         }
       }
       return;
@@ -55,7 +55,7 @@ public class DragGallery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.DragGallery
  * JD-Core Version:    0.7.0.1
  */

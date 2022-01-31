@@ -3,8 +3,8 @@ package com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import ows;
-import owv;
+import pbx;
+import pca;
 
 public final class VideoPluginInstall$1
   implements Runnable
@@ -14,12 +14,12 @@ public final class VideoPluginInstall$1
     if (QLog.isColorLevel()) {
       QLog.d("gifvideo.VideoPluginInstall", 2, "start install video sdk in subThread");
     }
-    if (!ows.b()) {
-      ows.b();
+    if (!pbx.b()) {
+      pbx.b();
     }
     try
     {
-      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new owv(ows.a()));
+      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getContext(), new pca(pbx.a()));
       return;
     }
     catch (Exception localException)
@@ -31,7 +31,7 @@ public final class VideoPluginInstall$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoPluginInstall.1
  * JD-Core Version:    0.7.0.1
  */

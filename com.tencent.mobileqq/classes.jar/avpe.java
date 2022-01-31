@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.nearby.widget.GradientAnimTextView;
 
-public final class avpe
-  implements Parcelable.Creator<ReceiptMessageReadMemberListFragment.MemberInfo>
+public class avpe
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ReceiptMessageReadMemberListFragment.MemberInfo a(Parcel paramParcel)
-  {
-    return new ReceiptMessageReadMemberListFragment.MemberInfo(paramParcel);
-  }
+  public avpe(GradientAnimTextView paramGradientAnimTextView) {}
   
-  public ReceiptMessageReadMemberListFragment.MemberInfo[] a(int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return new ReceiptMessageReadMemberListFragment.MemberInfo[paramInt];
+    GradientAnimTextView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avpe
  * JD-Core Version:    0.7.0.1
  */

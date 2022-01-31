@@ -1,28 +1,43 @@
-import android.os.Parcel;
-import android.os.Parcelable.ClassLoaderCreator;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.SavedState;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.hotpic.HotPicTab;
 
-public final class asqr
-  implements Parcelable.ClassLoaderCreator<MultiAIOBaseViewPager.SavedState>
+public class asqr
+  extends Handler
 {
-  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel)
-  {
-    return new MultiAIOBaseViewPager.SavedState(paramParcel, null);
-  }
+  public asqr(HotPicTab paramHotPicTab) {}
   
-  public MultiAIOBaseViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
+  public void handleMessage(Message paramMessage)
   {
-    return new MultiAIOBaseViewPager.SavedState(paramParcel, paramClassLoader);
-  }
-  
-  public MultiAIOBaseViewPager.SavedState[] a(int paramInt)
-  {
-    return new MultiAIOBaseViewPager.SavedState[paramInt];
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      HotPicTab.a(this.a, 0.0F);
+      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
+      this.a.invalidate();
+      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      HotPicTab.a(this.a, (float)(HotPicTab.a(this.a) + 0.1D));
+      if (HotPicTab.a(this.a) < 1.0F)
+      {
+        this.a.invalidate();
+        sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(HotPicTab.a(this.a).obtainMessage(2), 10L);
+      return;
+    }
+    HotPicTab.a(this.a, 1.0F);
+    HotPicTab.a(this.a, HotPicTab.a(this.a));
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asqr
  * JD-Core Version:    0.7.0.1
  */

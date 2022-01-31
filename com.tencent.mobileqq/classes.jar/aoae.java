@@ -1,28 +1,38 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import cooperation.qqreader.QRBridgeActivity;
 
 public class aoae
-  implements ValueAnimator.AnimatorUpdateListener
+  implements aoah
 {
-  public aoae(EmotionKeywordLayout paramEmotionKeywordLayout) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public String a()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("EmotionKeywordLayout", 2, "show:offset=" + f);
-    }
-    if (EmotionKeywordLayout.a(this.a) != null) {
-      EmotionKeywordLayout.a(this.a).setTranslationY(f);
-    }
+    return alpo.a(2131717449);
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    if (paramView == null) {}
+    Context localContext;
+    do
+    {
+      do
+      {
+        return;
+      } while (paramInt != 16908289);
+      localContext = paramView.getContext();
+    } while (localContext == null);
+    paramView = new Intent(paramView.getContext(), QRBridgeActivity.class);
+    paramView.putExtra("readtype", "18");
+    paramView.addFlags(268435456);
+    localContext.startActivity(paramView);
+    azmj.b(null, "dc00898", "", "", "0X800AA81", "0X800AA81", 3, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoae
  * JD-Core Version:    0.7.0.1
  */

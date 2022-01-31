@@ -1,11 +1,19 @@
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-public class bbfq
+public final class bbfq
+  implements QQPermissionCallback
 {
-  private static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap(new HashMap(8));
+  public bbfq(BaseActivity paramBaseActivity) {}
   
-  public static void a(String paramString1, String paramString2, String paramString3) {}
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (!this.a.isFinishing()) {
+      bdcd.b(this.a);
+    }
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 

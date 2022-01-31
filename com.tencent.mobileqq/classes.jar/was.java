@@ -1,44 +1,29 @@
-import java.io.File;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-final class was
-  extends waa
+class was
+  extends SimpleJob<Object>
 {
-  was(waa paramwaa, String paramString, long paramLong) {}
-  
-  public void onFailure(String paramString)
+  was(waq paramwaq, String paramString)
   {
-    vei.a("music_composite", "video_music_composite", 0, 1, new String[0]);
-    this.jdField_a_of_type_Waa.onFailure(paramString);
+    super(paramString);
   }
   
-  public void onFinish(boolean paramBoolean)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    File localFile = new File(this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
+    if (this.a.a == null) {
+      this.a.a = new wat(this.a, this.a.c);
     }
-    this.jdField_a_of_type_Waa.onFinish(paramBoolean);
-  }
-  
-  public void onStart()
-  {
-    super.onStart();
-    this.jdField_a_of_type_Waa.onStart();
-  }
-  
-  public void onSuccess(String paramString)
-  {
-    vei.a("music_composite", "video_music_composite", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.b) });
-    if (bjjc.c) {
-      bjjc.g.a(1, System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_Waa.onSuccess(paramString);
-    ved.c("Q.qqstory.ffmpeg.FFmpegCmd", "[vs_publish_flow]   recordVideo combinBackgroundMusic success end");
+    this.a.d = this.a.a.a;
+    waq.a(this.a);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     was
  * JD-Core Version:    0.7.0.1
  */

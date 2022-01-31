@@ -1,21 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class axve
-  implements View.OnTouchListener
+class axve
+  implements DialogInterface.OnDismissListener
 {
-  public axve(StructMsgForGeneralShare paramStructMsgForGeneralShare, acxj paramacxj) {}
+  axve(axvd paramaxvd) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return this.jdField_a_of_type_Acxj.onTouch(paramView, paramMotionEvent);
+    if (ImmersiveUtils.isSupporImmersive() == 1) {
+      this.a.a.updateSystemUIVisablity();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axve
  * JD-Core Version:    0.7.0.1
  */

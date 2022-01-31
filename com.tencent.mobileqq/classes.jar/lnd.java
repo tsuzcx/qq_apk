@@ -1,68 +1,48 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
-import com.tencent.qphone.base.util.QLog;
-
 public class lnd
 {
-  public static int a(lmv paramlmv)
+  public static String a;
+  private lne jdField_a_of_type_Lne = new lne(this);
+  private lnm jdField_a_of_type_Lnm = new lnm(this);
+  
+  static
   {
-    if (paramlmv == null) {}
-    do
-    {
-      do
-      {
-        return 11;
-        if (!TextUtils.isEmpty(paramlmv.c)) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("QavGPDownloadManager", 4, String.format("getEnableFlag, %s", new Object[] { paramlmv }));
-      return 11;
-      if (!paramlmv.a) {
-        break;
-      }
-    } while (!a(paramlmv));
-    return 1;
-    return 2;
+    jdField_a_of_type_JavaLangString = "";
   }
   
-  static SharedPreferences a()
+  public int a(byte[] paramArrayOfByte)
   {
-    return EffectConfigBase.a(298, EffectConfigBase.c);
-  }
-  
-  public static String a()
-  {
-    return UpdateAvSo.a();
-  }
-  
-  public static boolean a(lmv paramlmv)
-  {
-    String str1 = paramlmv.b;
-    paramlmv = a() + paramlmv.d + ".so";
-    String str2 = a().getString("so_zip_md5", null);
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
+    if (this.jdField_a_of_type_Lnm != null) {
+      return this.jdField_a_of_type_Lnm.a(paramArrayOfByte);
     }
-    do
-    {
-      return false;
-      if (bbdx.a(paramlmv)) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramlmv }));
-    return false;
-    return true;
+    return -1;
+  }
+  
+  public lnf a()
+  {
+    lnf locallnf = null;
+    if (this.jdField_a_of_type_Lnm != null) {
+      locallnf = this.jdField_a_of_type_Lnm.a();
+    }
+    return locallnf;
+  }
+  
+  public void a(long paramLong, lnn paramlnn)
+  {
+    this.jdField_a_of_type_Lne.a(paramLong, paramlnn);
+  }
+  
+  public byte[] a()
+  {
+    byte[] arrayOfByte = null;
+    if (this.jdField_a_of_type_Lne != null) {
+      arrayOfByte = this.jdField_a_of_type_Lne.a();
+    }
+    return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lnd
  * JD-Core Version:    0.7.0.1
  */

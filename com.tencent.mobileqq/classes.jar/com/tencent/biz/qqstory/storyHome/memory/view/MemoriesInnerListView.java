@@ -6,21 +6,21 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.BaseAdapter;
-import baxn;
+import bcwh;
 import com.tencent.widget.HorizontalListView;
 import java.util.List;
-import uuc;
-import uud;
-import uue;
-import uuf;
+import wiu;
+import wiv;
+import wiw;
+import wix;
 
 @TargetApi(9)
 public class MemoriesInnerListView
   extends HorizontalListView
 {
   protected int a;
-  public uue a;
-  private uuf a;
+  public wiw a;
+  private wix a;
   protected int b;
   
   public MemoriesInnerListView(Context paramContext)
@@ -38,22 +38,22 @@ public class MemoriesInnerListView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
-    this.b = baxn.a(paramContext, 82.0F);
-    this.jdField_a_of_type_Uuf = new uuf(getContext());
-    super.setAdapter(this.jdField_a_of_type_Uuf);
-    super.setOnItemClickListener(this.jdField_a_of_type_Uuf);
-    super.setOnScrollStateChangedListener(new uud(this));
+    this.b = bcwh.a(paramContext, 82.0F);
+    this.jdField_a_of_type_Wix = new wix(getContext());
+    super.setAdapter(this.jdField_a_of_type_Wix);
+    super.setOnItemClickListener(this.jdField_a_of_type_Wix);
+    super.setOnScrollStateChangedListener(new wiv(this));
     setOverScrollMode(1);
   }
   
   public BaseAdapter a()
   {
-    return this.jdField_a_of_type_Uuf;
+    return this.jdField_a_of_type_Wix;
   }
   
-  public void setDate(List<uuc> paramList, String paramString)
+  public void setDate(List<wiu> paramList, String paramString)
   {
-    this.jdField_a_of_type_Uuf.a(paramList, paramString);
+    this.jdField_a_of_type_Wix.a(paramList, paramString);
     int i = this.jdField_a_of_type_Int / this.b;
     if (paramList.size() >= i)
     {
@@ -65,7 +65,7 @@ public class MemoriesInnerListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView
  * JD-Core Version:    0.7.0.1
  */

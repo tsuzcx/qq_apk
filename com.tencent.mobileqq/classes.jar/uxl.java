@@ -1,66 +1,48 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupVideoInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
-import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.ViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
 public class uxl
-  extends uxo<ShareGroupFeedItem>
 {
-  public uxl(@NonNull ShareGroupFeedItem paramShareGroupFeedItem)
-  {
-    super(paramShareGroupFeedItem);
-  }
+  private static String a = uxl.class.getSimpleName();
   
-  public void a(StoryVideoItem paramStoryVideoItem)
+  public static upy a(ViewGroup paramViewGroup, int paramInt)
   {
-    super.a(paramStoryVideoItem);
-    paramStoryVideoItem = (ShareGroupFeedItem)a();
-    paramStoryVideoItem.videoCount -= 1;
-    if (((ShareGroupFeedItem)a()).videoCount < 0) {
-      ((ShareGroupFeedItem)a()).videoCount = 0;
-    }
-  }
-  
-  public void a(StoryVideoItem paramStoryVideoItem, boolean paramBoolean)
-  {
-    super.a(paramStoryVideoItem, paramBoolean);
-    paramStoryVideoItem = (ShareGroupFeedItem)a();
-    paramStoryVideoItem.videoCount += 1;
-    if (((ShareGroupFeedItem)a()).videoCount < 0) {
-      ((ShareGroupFeedItem)a()).videoCount = 0;
-    }
-  }
-  
-  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
-  {
-    ((ShareGroupFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), paramStoryFeed);
-    ((ShareGroupFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
-    Object localObject = (qqstory_struct.ShareGroupFeed)paramStoryFeed.share_group_feed.get();
-    paramStoryFeed = new ArrayList();
-    localObject = ((qqstory_struct.ShareGroupFeed)localObject).video_list.get().iterator();
-    while (((Iterator)localObject).hasNext())
+    wsv.a(a, "create type=%d", Integer.valueOf(paramInt));
+    switch (paramInt)
     {
-      qqstory_struct.ShareGroupVideoInfo localShareGroupVideoInfo = (qqstory_struct.ShareGroupVideoInfo)((Iterator)localObject).next();
-      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-      localStoryVideoItem.convertFrom("Q.qqstory.home.data.VideoListHomeFeed", localShareGroupVideoInfo);
-      paramStoryFeed.add(localStoryVideoItem);
+    default: 
+      if (QLog.isDevelopLevel()) {
+        QLog.e(a, 2, "发现一个野生的类型: " + paramInt);
+      }
+      return new upy(paramViewGroup, 2131561492);
+    case 6: 
+      return new uxc(paramViewGroup);
+    case 5: 
+      return new uxk(paramViewGroup);
+    case 7: 
+      return new uxb(paramViewGroup);
+    case 8: 
+      return new uxr(paramViewGroup, 2131561492);
+    case 9: 
+      return new uxj(paramViewGroup);
+    case 3: 
+      return new uxd(paramViewGroup);
+    case 4: 
+      return new uxh(paramViewGroup, 4);
+    case 2: 
+      return new uxp(paramViewGroup, 2131561494);
+    case 10: 
+    case 11: 
+      return new uxi(paramViewGroup);
+    case 12: 
+      return new uxm(paramViewGroup);
     }
-    c(paramStoryFeed, true);
-    return true;
+    return new uxe(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxl
  * JD-Core Version:    0.7.0.1
  */

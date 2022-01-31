@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.troop.data;
 
-import azmw;
-import azmx;
+import bblf;
+import bblg;
 
 public class TroopAioKeywordTipBar$1$1
   implements Runnable
 {
-  public TroopAioKeywordTipBar$1$1(azmx paramazmx) {}
+  public TroopAioKeywordTipBar$1$1(bblg parambblg) {}
   
   public void run()
   {
-    azmw.a(this.a.a, false);
+    bblf.a(this.a.a, false);
   }
 }
 

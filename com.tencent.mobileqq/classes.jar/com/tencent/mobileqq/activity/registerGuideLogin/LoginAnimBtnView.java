@@ -11,7 +11,10 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieComposition.Factory.ListenerAdapter;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.LottieTask;
 import com.tencent.qphone.base.util.QLog;
 
 public class LoginAnimBtnView
@@ -20,7 +23,10 @@ public class LoginAnimBtnView
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
+  private LottieComposition.Factory.ListenerAdapter jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition$Factory$ListenerAdapter;
   private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
+  private LottieTask<LottieComposition> jdField_a_of_type_ComTencentMobileqqDiniflyLottieTask;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   private Runnable jdField_a_of_type_JavaLangRunnable = new LoginAnimBtnView.1(this);
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
@@ -140,6 +146,17 @@ public class LoginAnimBtnView
       this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
       this.jdField_a_of_type_Boolean = false;
     }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieTask != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition$Factory$ListenerAdapter.cancel();
+        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieTask.removeListener(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition$Factory$ListenerAdapter);
+        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieTask = null;
+        this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition$Factory$ListenerAdapter = null;
+      }
+      return;
+    }
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -225,7 +242,7 @@ public class LoginAnimBtnView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView
  * JD-Core Version:    0.7.0.1
  */

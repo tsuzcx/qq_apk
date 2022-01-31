@@ -1,32 +1,18 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.JoinGroupInfo;
 
-final class bbks
-  extends ClickableSpan
+public final class bbks
+  implements Parcelable.Creator<JoinGroupInfo>
 {
-  bbks(Context paramContext, athv paramathv) {}
-  
-  public void onClick(View paramView)
+  public JoinGroupInfo a(Parcel paramParcel)
   {
-    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_Athv.b());
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_Athv.b());
-    }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    return new JoinGroupInfo(paramParcel);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public JoinGroupInfo[] a(int paramInt)
   {
-    super.updateDrawState(paramTextPaint);
-    paramTextPaint.setColor(Color.parseColor("#00aced"));
-    paramTextPaint.setUnderlineText(false);
+    return new JoinGroupInfo[paramInt];
   }
 }
 

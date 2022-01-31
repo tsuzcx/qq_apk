@@ -1,46 +1,21 @@
 package com.tencent.biz.TroopRedpoint;
 
-import bbdx;
+import aljq;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.app.MobileQQ;
-import mxu;
-import tencent.im.oidb.cmd0x791.oidb_0x791.GetRedDotRes;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
+import nan;
 
 public class TroopRedTouchManager$2
   implements Runnable
 {
-  public TroopRedTouchManager$2(mxu parammxu, oidb_0x791.GetRedDotRes paramGetRedDotRes) {}
+  public TroopRedTouchManager$2(nan paramnan, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    int i = 0;
-    Object localObject1 = new File(this.this$0.a.getApplication().getFilesDir(), "TroopRedTouchManager2_" + this.this$0.a.getCurrentAccountUin()).getAbsolutePath();
-    synchronized (this.this$0)
-    {
-      try
-      {
-        bbdx.a((String)localObject1, this.a.toByteArray(), false);
-        localObject1 = new StringBuilder("saveLocalFile==>");
-        while (i < this.a.rpt_msg_reddot_info.size())
-        {
-          ((StringBuilder)localObject1).append(mxu.a((oidb_0x791.RedDotInfo)this.a.rpt_msg_reddot_info.get(i)));
-          i += 1;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
-    }
+    this.this$0.a = MsgBoxListActivity.a(this.a, aljq.I, true);
     if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.b + "Q.qqstory.redPoint", 2, localObject2.toString());
+      QLog.d("nearby.redpoint", 2, "asyn nearbyMsgBoxUnReadNum=" + this.this$0.a);
     }
   }
 }

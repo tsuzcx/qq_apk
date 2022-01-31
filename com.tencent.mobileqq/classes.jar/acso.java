@@ -1,31 +1,30 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class acso
-  implements Comparator<File>
+public class acso
+  implements View.OnClickListener
 {
-  acso(acsn paramacsn) {}
+  public acso(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onClick(View paramView)
   {
-    long l = acsn.a(this.a, paramFile1) - acsn.a(this.a, paramFile2);
-    if (l > 0L) {
-      return 1;
+    if (this.a.app != null)
+    {
+      paramView = new Intent();
+      paramView.putExtras(this.a.getIntent().getExtras());
+      paramView.putExtra("extra_choose_friend_uin", this.a.app.getAccount());
+      paramView.putExtra("extra_choose_friend_name", this.a.app.getCurrentNickname());
+      this.a.setResult(-1, paramView);
+      this.a.finish();
     }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acso
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
+import com.tencent.mobileqq.search.mostused.MostUsedSearchItem;
 
-final class ayla
-  extends Editable.Factory
+public class ayla
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public int a;
+  public ayjl a;
+  public MostUsedSearchItem a;
+  public boolean a;
+  
+  public ayla(aykx paramaykx)
   {
-    if ((paramCharSequence instanceof aykz)) {
-      return (Editable)paramCharSequence;
-    }
-    return new aykz(paramCharSequence, 3, 20);
+    this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayla
  * JD-Core Version:    0.7.0.1
  */

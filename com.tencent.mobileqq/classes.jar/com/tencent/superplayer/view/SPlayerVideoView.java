@@ -9,8 +9,8 @@ import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.superplayer.utils.SPlayerLogUtil;
-import com.tencent.superplayer.utils.SPlayerThreadUtil;
+import com.tencent.superplayer.utils.LogUtil;
+import com.tencent.superplayer.utils.ThreadUtil;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -27,8 +27,8 @@ public class SPlayerVideoView
   private AtomicBoolean mDetachingView;
   private ISPlayerViewBase mDisPlayView = null;
   private int mHeight = 0;
-  private boolean mIsSupportTextureView = true;
   private boolean mIsSurfaceReady = false;
+  private boolean mIsUseTextureView;
   private int mSerialNO = 0;
   private SurfaceTexture mStoredSurfaceTexture;
   private Object mSurfaceOrHolder;
@@ -41,11 +41,11 @@ public class SPlayerVideoView
   {
     super(paramContext.getApplicationContext());
     this.mContext = paramContext.getApplicationContext();
-    this.mIsSupportTextureView = paramBoolean;
+    this.mIsUseTextureView = paramBoolean;
     this.mDetachingView = new AtomicBoolean(false);
     this.mSerialNO = new Random().nextInt();
     if (Build.VERSION.SDK_INT < 14) {
-      this.mIsSupportTextureView = false;
+      this.mIsUseTextureView = false;
     }
     initViewAfterV4();
   }
@@ -101,7 +101,7 @@ public class SPlayerVideoView
     FrameLayout.LayoutParams localLayoutParams2 = new FrameLayout.LayoutParams(-1, -1);
     localLayoutParams2.gravity = 17;
     setLayoutParams(localLayoutParams1);
-    this.mDisPlayView = SPlayerViewFactory.createPlayView(this.mContext, this.mIsSupportTextureView);
+    this.mDisPlayView = SPlayerViewFactory.createPlayView(this.mContext, this.mIsUseTextureView);
     this.mDisPlayView.setViewCallBack(this.mViewCallBack);
     addView((View)this.mDisPlayView, localLayoutParams2);
   }
@@ -126,20 +126,20 @@ public class SPlayerVideoView
     }
     if (!this.mIsSurfaceReady)
     {
-      SPlayerLogUtil.i(TAG, "detach from old parent view , but view not ready");
+      LogUtil.i(TAG, "detach from old parent view , but view not ready");
       return false;
     }
     if (this.mDetachingView.get())
     {
-      SPlayerLogUtil.i(TAG, "detach from old parent view , but is detaching");
+      LogUtil.i(TAG, "detach from old parent view , but is detaching");
       return true;
     }
     if (!(this.mDisPlayView instanceof SPlayerTextureView))
     {
-      SPlayerLogUtil.i(TAG, "detach from old parent view , but not texture view");
+      LogUtil.i(TAG, "detach from old parent view , but not texture view");
       return false;
     }
-    SPlayerLogUtil.i(TAG, "detach from old parent view");
+    LogUtil.i(TAG, "detach from old parent view");
     this.mDetachingView.set(true);
     this.mDisPlayView.setViewCallBack(this.mBlockCallback);
     return true;
@@ -147,7 +147,7 @@ public class SPlayerVideoView
   
   public boolean enableViewCallback()
   {
-    SPlayerLogUtil.i(TAG, "attach to new parent view");
+    LogUtil.i(TAG, "attach to new parent view");
     if ((this.mDisPlayView != null) && ((this.mDisPlayView instanceof SPlayerTextureView)) && (this.mStoredSurfaceTexture != null) && (((SPlayerTextureView)this.mDisPlayView).getSurfaceTexture() != this.mStoredSurfaceTexture) && (Build.VERSION.SDK_INT >= 16)) {
       ((SPlayerTextureView)this.mDisPlayView).setSurfaceTexture(this.mStoredSurfaceTexture);
     }
@@ -156,6 +156,27 @@ public class SPlayerVideoView
     }
     this.mDetachingView.set(false);
     return true;
+  }
+  
+  public View getRenderView()
+  {
+    return (View)this.mDisPlayView;
+  }
+  
+  public int getRenderViewHeight()
+  {
+    if (this.mDisPlayView == null) {
+      return 0;
+    }
+    return ((View)this.mDisPlayView).getHeight();
+  }
+  
+  public int getRenderViewWidth()
+  {
+    if (this.mDisPlayView == null) {
+      return 0;
+    }
+    return ((View)this.mDisPlayView).getWidth();
   }
   
   public String getSerialNO()
@@ -187,14 +208,21 @@ public class SPlayerVideoView
   
   public void removeViewCallBack(ISPlayerVideoView.IVideoViewCallBack paramIVideoViewCallBack)
   {
-    if ((this.mVideoViewCallBackList != null) && (paramIVideoViewCallBack != null) && (this.mVideoViewCallBackList.contains(paramIVideoViewCallBack))) {
-      this.mVideoViewCallBackList.remove(paramIVideoViewCallBack);
+    if (this.mVideoViewCallBackList != null)
+    {
+      if (paramIVideoViewCallBack == null) {
+        this.mVideoViewCallBackList.clear();
+      }
     }
+    else {
+      return;
+    }
+    this.mVideoViewCallBackList.remove(paramIVideoViewCallBack);
   }
   
   public void setFixedSize(int paramInt1, int paramInt2)
   {
-    SPlayerLogUtil.i(TAG, "setFixedSize, vW: " + paramInt1 + ", vH: " + paramInt2 + ", NO: " + this.mSerialNO);
+    LogUtil.i(TAG, "setFixedSize, vW: " + paramInt1 + ", vH: " + paramInt2 + ", NO: " + this.mSerialNO);
     if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
       return;
     }
@@ -204,7 +232,7 @@ public class SPlayerVideoView
       ((View)this.mDisPlayView).requestLayout();
       return;
     }
-    SPlayerThreadUtil.postRunnableOnMainThread(new SPlayerVideoView.3(this));
+    ThreadUtil.postRunnableOnMainThread(new SPlayerVideoView.3(this));
   }
   
   public void setScaleParam(float paramFloat)
@@ -218,18 +246,18 @@ public class SPlayerVideoView
     {
       this.mDisPlayView.setXYaxis(paramInt);
       this.mType = paramInt;
-      SPlayerThreadUtil.postRunnableOnMainThread(new SPlayerVideoView.4(this));
+      ThreadUtil.postRunnableOnMainThread(new SPlayerVideoView.4(this));
       return;
     }
     catch (Exception localException)
     {
-      SPlayerLogUtil.e(TAG, localException.getMessage());
+      LogUtil.e(TAG, localException.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.superplayer.view.SPlayerVideoView
  * JD-Core Version:    0.7.0.1
  */

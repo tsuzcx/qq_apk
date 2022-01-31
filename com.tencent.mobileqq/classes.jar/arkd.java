@@ -1,23 +1,72 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.GestureRelativeLayout;
 
-public final class arkd
-  implements Parcelable.Creator<SingTogetherSession>
+public class arkd
+  implements GestureDetector.OnGestureListener
 {
-  public SingTogetherSession a(Parcel paramParcel)
+  private arkd(SimpleFileViewer.GestureRelativeLayout paramGestureRelativeLayout) {}
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    return new SingTogetherSession(paramParcel, null);
+    return false;
   }
   
-  public SingTogetherSession[] a(int paramInt)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    return new SingTogetherSession[paramInt];
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (Math.abs(paramFloat2) > Math.abs(paramFloat1))
+    {
+      paramMotionEvent1 = this.a.a.b();
+      if (paramFloat2 <= 0.0F) {
+        break label97;
+      }
+      if (paramMotionEvent1 != null) {
+        paramMotionEvent1.setVisibility(8);
+      }
+      if (this.a.a.jdField_a_of_type_Arqe != null) {
+        this.a.a.jdField_a_of_type_Arqe.b(true);
+      }
+      if (this.a.a.jdField_a_of_type_Arqc != null) {
+        this.a.a.jdField_a_of_type_Arqc.b(true);
+      }
+    }
+    label97:
+    do
+    {
+      do
+      {
+        return false;
+      } while (paramFloat2 >= 0.0F);
+      if (paramMotionEvent1 != null) {
+        paramMotionEvent1.setVisibility(0);
+      }
+      if (this.a.a.jdField_a_of_type_Arqe != null) {
+        this.a.a.jdField_a_of_type_Arqe.a(true);
+      }
+    } while (this.a.a.jdField_a_of_type_Arqc == null);
+    this.a.a.jdField_a_of_type_Arqc.a(true);
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arkd
  * JD-Core Version:    0.7.0.1
  */

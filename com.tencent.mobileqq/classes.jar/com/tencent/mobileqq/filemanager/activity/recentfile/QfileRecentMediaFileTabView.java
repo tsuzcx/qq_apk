@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.activity.recentfile;
 
-import ajya;
+import alpo;
 import android.content.Context;
-import aoqb;
-import aotq;
-import aott;
-import apug;
-import apvf;
-import apvj;
+import aqiz;
+import aqmo;
+import aqmr;
+import arni;
+import aroh;
+import arol;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ import java.util.List;
 public class QfileRecentMediaFileTabView
   extends QfileBaseRecentFileTabView
 {
-  private apvf a;
+  private aroh a;
   
   public QfileRecentMediaFileTabView(Context paramContext)
   {
@@ -38,14 +38,14 @@ public class QfileRecentMediaFileTabView
   
   private String a(String paramString)
   {
-    switch (apug.a(paramString))
+    switch (arni.a(paramString))
     {
     default: 
       return null;
     case 2: 
-      return ajya.a(2131709708);
+      return alpo.a(2131710080);
     }
-    return ajya.a(2131709706);
+    return alpo.a(2131710078);
   }
   
   private void k()
@@ -53,19 +53,19 @@ public class QfileRecentMediaFileTabView
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c()) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().K();
     }
-    while (this.jdField_a_of_type_Apvf != null)
+    while (this.jdField_a_of_type_Aroh != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Apvf);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Aroh);
       return;
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a().P();
     }
-    this.jdField_a_of_type_Apvf = new aott(this);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Apvf);
+    this.jdField_a_of_type_Aroh = new aqmr(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this.jdField_a_of_type_Aroh);
   }
   
-  protected aoqb a()
+  protected aqiz a()
   {
-    return new aotq(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
+    return new aqmo(a(), this.jdField_a_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_b_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.c);
   }
   
   protected void a()
@@ -152,7 +152,7 @@ public class QfileRecentMediaFileTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.Comparator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
 
-class ozl
-  implements Comparator<AdvertisementInfo>
+public class ozl
+  extends BroadcastReceiver
 {
-  ozl(ozk paramozk) {}
+  public ozl(ReadInJoyDailyFragment paramReadInJoyDailyFragment) {}
   
-  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
+    if (this.a.getActivity() != null)
+    {
+      if (ReadInJoyDailyFragment.a(this.a) != null) {
+        ReadInJoyDailyFragment.a(this.a).i();
+      }
+      ReadInJoyDailyFragment.a(this.a, true);
+      this.a.getActivity().finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ozl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,17 @@
-class bjou
+final class bjou
+  extends bjot
 {
-  bjnn jdField_a_of_type_Bjnn;
-  bjnq jdField_a_of_type_Bjnq;
-  
-  bjou(bjnr parambjnr, bjnq parambjnq)
+  public int a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Bjnn = bjnt.a(parambjnr);
-    this.jdField_a_of_type_Bjnq = parambjnq;
-  }
-  
-  void a(bjns parambjns, bjnp parambjnp)
-  {
-    bjnq localbjnq = bjot.a(parambjnp);
-    this.jdField_a_of_type_Bjnq = bjot.a(this.jdField_a_of_type_Bjnq, localbjnq);
-    this.jdField_a_of_type_Bjnn.a(parambjns, parambjnp);
-    this.jdField_a_of_type_Bjnq = localbjnq;
+    if ((paramString == null) || (paramString.length() == 0) || (paramInt < 1)) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjou
  * JD-Core Version:    0.7.0.1
  */

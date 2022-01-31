@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aaig;
+import abzg;
 import android.widget.TextView;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -34,7 +34,7 @@ class AddRequestActivity$8$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.8.1.1
  * JD-Core Version:    0.7.0.1
  */

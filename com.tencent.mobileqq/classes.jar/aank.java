@@ -1,28 +1,54 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.widget.XPanelContainer;
-import mqq.app.QQPermissionCallback;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aank
-  implements QQPermissionCallback
+class aank
+  implements aanf
 {
-  public aank(BaseChatPie paramBaseChatPie) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public boolean a(aamm paramaamm, String paramString, String... paramVarArgs)
   {
-    bbdj.b(this.a.a());
-    ((adje)this.a.a(29)).b(2);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(2);
-    aeft.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8005CAC", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    Object localObject = null;
+    if (paramaamm != null) {}
+    for (paramVarArgs = paramaamm.a(); (paramaamm == null) || (paramVarArgs == null); paramVarArgs = null)
+    {
+      aanp.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("netType", aanr.a(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        for (;;)
+        {
+          paramaamm.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramaamm != null) {
+            paramString = paramaamm.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getNetType", paramString);
+          return true;
+          localJSONException = localJSONException;
+          aanp.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          aanp.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", paramString);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aank
  * JD-Core Version:    0.7.0.1
  */

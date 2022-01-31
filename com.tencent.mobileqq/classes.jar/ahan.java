@@ -1,82 +1,21 @@
-import Wallet.SkinInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.ArrayList;
 
 public class ahan
+  extends ahms
 {
-  public static boolean a;
-  public static int c = 0;
   public int a;
-  public SkinInfo a;
-  public RedPacketInfoBase a;
   public String a;
-  public int b;
-  public String b = "";
-  
-  public ahan(SkinInfo paramSkinInfo)
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
-    this.jdField_a_of_type_JavaLangString = paramSkinInfo.skin_name;
-    this.jdField_a_of_type_WalletSkinInfo = paramSkinInfo;
-  }
-  
-  public ahan(String paramString)
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_WalletSkinInfo = new SkinInfo();
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase = new RedPacketInfoBase();
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static int a(List<ahan> paramList)
-  {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      ahan localahan = (ahan)paramList.next();
-      if (c == localahan.jdField_a_of_type_WalletSkinInfo.skin_id) {
-        return localahan.jdField_a_of_type_WalletSkinInfo.skin_id;
-      }
-    }
-    return -1;
-  }
-  
-  public static void a(List<ahan> paramList)
-  {
-    Collections.sort(paramList, new ahao());
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if (!(paramObject instanceof ahan)) {
-        break;
-      }
-    } while (this.jdField_a_of_type_WalletSkinInfo.skin_id == ((ahan)paramObject).jdField_a_of_type_WalletSkinInfo.skin_id);
-    return false;
-    return super.equals(paramObject);
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("");
-    localStringBuffer.append("background : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.background + " | ");
-    localStringBuffer.append("icon : " + this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon + " | ");
-    return localStringBuffer.toString();
-  }
+  public ArrayList<ahao> a;
+  public boolean a;
+  public int b = -1;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahan
  * JD-Core Version:    0.7.0.1
  */

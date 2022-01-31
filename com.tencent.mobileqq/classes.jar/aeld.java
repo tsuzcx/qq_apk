@@ -1,82 +1,87 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.qphone.base.util.QLog;
 
-class aeld
-  implements View.OnClickListener
+public class aeld
+  extends BroadcastReceiver
 {
-  aeld(aela paramaela) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long = 0L;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  long b = 0L;
   
-  public void onClick(View paramView)
+  public aeld(AudioPlayer paramAudioPlayer, String paramString, int paramInt)
   {
-    if (paramView.getTag() == null) {}
-    MessageForQQWalletMsg localMessageForQQWalletMsg;
-    Object localObject;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    long l = SystemClock.uptimeMillis();
+    int i = paramIntent.getIntExtra("android.media.extra.SCO_AUDIO_STATE", -1);
+    if (QLog.isColorLevel()) {
+      QLog.d("AudioPlayer", 2, "onReceive ACTION_SCO_AUDIO_STATE_UPDATED = " + i + " " + this.jdField_a_of_type_JavaLangString + ", time=" + l);
+    }
+    if (1 == i) {
+      if (this.b == 0L)
+      {
+        this.b = l;
+        AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer));
+        AudioPlayer.b = true;
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a()) {
+          AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+        }
+      }
+    }
     do
     {
-      QQWalletRedPacketMsg localQQWalletRedPacketMsg;
-      agvx localagvx;
       do
       {
-        do
-        {
-          do
-          {
-            return;
-            if (this.a.jdField_a_of_type_Agyt != null) {
-              this.a.jdField_a_of_type_Agyt.a(11);
-            }
-            l = System.currentTimeMillis();
-          } while (!ahiv.a(aela.jdField_a_of_type_Long, l));
-          aela.jdField_a_of_type_Long = l;
-          localMessageForQQWalletMsg = (MessageForQQWalletMsg)paramView.getTag();
-          localQQWalletRedPacketMsg = localMessageForQQWalletMsg.mQQWalletRedPacketMsg;
-          localagvx = (agvx)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(125);
-          if (!myb.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          localagvx.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 11);
-        } while (!QLog.isColorLevel());
-        QLog.d("PasswdRedBagManager", 2, "current is in Anonymous, dont show passwdredbag tips");
         return;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
-          break;
+        if (2 == i)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          return;
         }
-        localObject = (baky)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(48);
-        boolean bool = ((baky)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        localObject = ((baky)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, false);
-        if ((!bool) && ((localObject == null) || (!((bale)localObject).jdField_a_of_type_Boolean))) {
-          break;
-        }
-        localagvx.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 11);
-      } while (!QLog.isColorLevel());
-      QLog.d("PasswdRedBagManager", 2, "current is in TroopMemberGag, dont show passwdredbag tips");
-      return;
-      localObject = localagvx.a(localQQWalletRedPacketMsg.redPacketId);
-      long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-      if ((localObject == null) || ((!((agvw)localObject).jdField_a_of_type_Boolean) && (!((agvw)localObject).b) && (!((agvw)localObject).c) && (((agvw)localObject).jdField_a_of_type_Long >= l))) {
-        break;
+      } while (i != 0);
+      if (this.jdField_a_of_type_Long == 0L)
+      {
+        this.jdField_a_of_type_Long = l;
+        return;
       }
-      localagvx.a(localQQWalletRedPacketMsg.redPacketId, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      l = VACDReportUtil.a(null, "qqwallet", "graphb", "draw.click", "msgType=22", 0, null);
-      localagvx.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (agvw)localObject, l, 1000001, "", localMessageForQQWalletMsg.mQQWalletRedPacketMsg.elem.skinId, localMessageForQQWalletMsg.fromHBList, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("PasswdRedBagManager", 2, "click open draw redpacket, isPasswdRedBagOpen=" + ((agvw)localObject).jdField_a_of_type_Boolean + ",isPasswdRedBagFinish=" + ((agvw)localObject).b + ",isPasswdRedBagOverDue=" + ((agvw)localObject).c);
-    return;
-    DrawRedpacketPannelPreviewFragment.a(paramView.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, localMessageForQQWalletMsg);
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.d();
+      }
+      if (((this.b != 0L) && (l - this.b <= 2000L)) || (l - this.jdField_a_of_type_Long <= 1000L))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AudioPlayer", 2, "sco disconnected quickly.");
+        }
+        AudioPlayer.b(true);
+        if ((AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer)) && (!AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer).isBluetoothA2dpOn())) {
+          AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, false);
+        }
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a())
+        {
+          AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+          return;
+        }
+        AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, 0);
+        return;
+      }
+    } while (!this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a());
+    AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer, AudioPlayer.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeld
  * JD-Core Version:    0.7.0.1
  */

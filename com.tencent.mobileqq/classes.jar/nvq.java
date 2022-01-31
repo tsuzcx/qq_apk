@@ -1,22 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class nvq
-  implements TopGestureLayout.OnGestureListener
+class nvq
+  implements View.OnClickListener
 {
-  public nvq(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  nvq(nvp paramnvp) {}
   
-  public void flingLToR()
+  public void onClick(View paramView)
   {
-    ReadInJoyChannelActivity.a(this.a, true);
-    this.a.finish();
+    ((Activity)paramView.getContext()).onBackPressed();
   }
-  
-  public void flingRToL() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvq
  * JD-Core Version:    0.7.0.1
  */

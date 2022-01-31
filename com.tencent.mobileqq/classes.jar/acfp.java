@@ -1,25 +1,17 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acfp
-  implements CompoundButton.OnCheckedChangeListener
+public final class acfp
+  implements DialogInterface.OnClickListener
 {
-  public acfp(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramCompoundButton.getId())
-    {
-    default: 
-      return;
-    }
-    asfd.a().a(this.a.app, paramBoolean);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acfp
  * JD-Core Version:    0.7.0.1
  */

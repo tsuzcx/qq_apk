@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.colornote;
 
-import amgo;
+import anxo;
 
 public class ColorNoteCurd$2
   implements Runnable
 {
-  public ColorNoteCurd$2(amgo paramamgo, int paramInt1, String paramString, int paramInt2) {}
+  public ColorNoteCurd$2(anxo paramanxo, int paramInt1, String paramString, int paramInt2) {}
   
   public void run()
   {
-    amgo.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    this.this$0.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.ColorNoteCurd.2
  * JD-Core Version:    0.7.0.1
  */

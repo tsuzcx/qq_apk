@@ -1,12 +1,19 @@
-import java.util.Map;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
 
-public abstract interface agzg
+public class agzg
+  implements ahzx
 {
-  public abstract void a(String paramString, Map<String, String> paramMap);
+  public agzg(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    this.a.a.a(paramMotionEvent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agzg
  * JD-Core Version:    0.7.0.1
  */

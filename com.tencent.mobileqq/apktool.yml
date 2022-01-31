@@ -1,11 +1,12 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: QQ-8.3.0-1362-3834.apk
+apkFileName: QQ-8.3.3-1376-3834.apk
 compressionType: false
 doNotCompress:
 - resources.arsc
 - assets/apollo_def_rsc
 - assets/classes10.dex.MD5
 - assets/classes11.dex.MD5
+- assets/classes12.dex.MD5
 - assets/classes2.dex.MD5
 - assets/classes3.dex.MD5
 - assets/classes4.dex.MD5
@@ -88,6 +89,10 @@ doNotCompress:
 - assets/benchmark/vlow/zuk.json
 - assets/plugins/PluginManifest
 - assets/proteus/commercialAd_feeds/manifest
+- assets/proteus/default_feeds/pages/manifest
+- assets/proteus/default_feeds/pages/daily_triple_img_card/manifest
+- assets/proteus/native_article/pages/manifest
+- assets/proteus/native_article/pages/recommend_small_card/manifest
 - gif
 - webp
 - r/v/bl9.gif
@@ -289,11 +294,12 @@ unknownFiles:
   com/tracking/sdk/META-INF/MANIFEST.MF: '0'
   junit/runner/logo.gif: '0'
   junit/runner/smalllogo.gif: '0'
+  okhttp3/internal/publicsuffix/publicsuffixes.gz: '0'
 usesFramework:
   ids:
   - 1
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1362'
-  versionName: 8.3.0
+  versionCode: '1376'
+  versionName: 8.3.3

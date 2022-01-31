@@ -1,16 +1,10 @@
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-@Inherited
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.TYPE})
-public @interface ahqt {}
+public abstract interface ahqt
+{
+  public abstract void a(int paramInt);
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqt
  * JD-Core Version:    0.7.0.1
  */

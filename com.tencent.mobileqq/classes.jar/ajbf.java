@@ -1,24 +1,32 @@
-import mqq.app.AppActivity;
-import mqq.app.QQPermissionCallback;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
 
-class ajbf
-  implements QQPermissionCallback
+public class ajbf
+  implements Animation.AnimationListener
 {
-  ajbf(ajba paramajba, AppActivity paramAppActivity) {}
+  public ajbf(AnonymousEntranceView paramAnonymousEntranceView) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    bbdj.a(this.jdField_a_of_type_MqqAppAppActivity, paramArrayOfString, paramArrayOfInt);
+    if (AnonymousEntranceView.b(this.a) != null) {
+      AnonymousEntranceView.b(this.a).setVisibility(4);
+    }
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Ajba.grant();
+    if (AnonymousEntranceView.b(this.a) != null) {
+      AnonymousEntranceView.b(this.a).setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbf
  * JD-Core Version:    0.7.0.1
  */

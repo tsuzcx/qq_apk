@@ -18,7 +18,7 @@ class BaseChatPie$12
     }
     this.this$0.f(this.jdField_a_of_type_AndroidContentIntent);
     if (this.jdField_a_of_type_Boolean) {
-      this.this$0.W();
+      this.this$0.X();
     }
     if (this.b.getBooleanExtra("isFromShare", false))
     {
@@ -33,13 +33,13 @@ class BaseChatPie$12
       }
       else
       {
-        str1 = this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131690572);
+        str1 = this.this$0.jdField_a_of_type_AndroidContentContext.getString(2131690623);
       }
       if (QLog.isColorLevel()) {
         QLog.i(this.this$0.jdField_a_of_type_JavaLangString, 2, "set left text from forward: " + str1);
       }
       this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
-      this.this$0.aW();
+      this.this$0.aY();
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO != null) {
         this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.e();
       }
@@ -48,7 +48,7 @@ class BaseChatPie$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.12
  * JD-Core Version:    0.7.0.1
  */

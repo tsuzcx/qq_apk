@@ -1,49 +1,51 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.data.GifDecoder;
-import com.tencent.qphone.base.util.QLog;
+import NS_MOBILE_OPERATION.operation_like_req;
+import com.qq.taf.jce.JceStruct;
 
 public class bjey
-  implements GifDecoder
+  extends bizh
 {
-  private int jdField_a_of_type_Int;
-  private bkhx jdField_a_of_type_Bkhx;
-  private String jdField_a_of_type_JavaLangString;
+  private int a;
+  public JceStruct a;
   
-  public bjey(int paramInt, String paramString)
+  public bjey(Long paramLong, String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    operation_like_req localoperation_like_req = new operation_like_req();
+    localoperation_like_req.uin = paramLong.longValue();
+    localoperation_like_req.action = paramInt1;
+    localoperation_like_req.appid = paramInt2;
+    localoperation_like_req.curkey = paramString1;
+    localoperation_like_req.unikey = paramString2;
+    this.jdField_a_of_type_ComQqTafJceJceStruct = localoperation_like_req;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public Bitmap getNextGifFrame(long paramLong)
+  public String getCmdString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AnimationDecodeWrapper", 2, "timestamp:" + paramLong);
-    }
-    paramLong = paramLong / 1000L / 1000L;
-    if (QLog.isColorLevel()) {
-      QLog.d("AnimationDecodeWrapper", 2, "timestampMs:" + paramLong);
-    }
-    if (this.jdField_a_of_type_Bkhx != null) {
-      return this.jdField_a_of_type_Bkhx.a(paramLong);
-    }
-    return null;
+    return "QzoneNewService.like";
   }
   
-  public void init()
+  public JceStruct getReq()
   {
-    this.jdField_a_of_type_Bkhx = bkge.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString);
+    return this.jdField_a_of_type_ComQqTafJceJceStruct;
   }
   
-  public void release()
+  public String uniKey()
   {
-    this.jdField_a_of_type_Bkhx = null;
+    return "like";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjey
  * JD-Core Version:    0.7.0.1
  */

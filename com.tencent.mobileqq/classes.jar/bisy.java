@@ -1,16 +1,20 @@
-class bisy
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qqfav.widget.QfavJumpActivity;
+
+public class bisy
+  implements DialogInterface.OnClickListener
 {
-  public float a;
-  public int a;
-  public float b;
-  public float c;
-  public float d;
+  public bisy(QfavJumpActivity paramQfavJumpActivity) {}
   
-  bisy(bisx parambisx) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bisy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.contactsync;
 
-import anem;
+import aovt;
 import com.tencent.qphone.base.util.QLog;
 
 public class ContactSyncManager$2
   implements Runnable
 {
-  public ContactSyncManager$2(anem paramanem) {}
+  public ContactSyncManager$2(aovt paramaovt) {}
   
   public void run()
   {
@@ -24,7 +24,7 @@ public class ContactSyncManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.contactsync.ContactSyncManager.2
  * JD-Core Version:    0.7.0.1
  */

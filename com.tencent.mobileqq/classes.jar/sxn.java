@@ -1,31 +1,20 @@
-public class sxn
+import android.os.Bundle;
+
+class sxn
+  implements ymm
 {
-  public static int a;
-  public static boolean a;
-  public static boolean b;
-  public static boolean c;
+  sxn(sxe paramsxe) {}
   
-  static
+  public void callback(Bundle paramBundle)
   {
-    jdField_a_of_type_Boolean = false;
-    b = false;
-    c = false;
-    jdField_a_of_type_Int = 725;
-  }
-  
-  public static boolean a()
-  {
-    return false;
-  }
-  
-  public static boolean b()
-  {
-    return true;
+    if (this.a.a != null) {
+      this.a.k();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxn
  * JD-Core Version:    0.7.0.1
  */

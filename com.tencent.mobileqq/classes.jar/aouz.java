@@ -1,29 +1,70 @@
-import android.os.Bundle;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
-final class aouz
-  extends xbb
+public class aouz
+  extends aofy<aouy>
 {
-  aouz(String paramString, aovv paramaovv, long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
+  public int a()
   {
-    if (!paramBoolean)
+    return 424;
+  }
+  
+  @NonNull
+  public aouy a(int paramInt)
+  {
+    return new aouy();
+  }
+  
+  @Nullable
+  public aouy a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
     {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aovv.a(aouy.a(this.jdField_a_of_type_Long, false), true);
-      return;
+      paramArrayOfaogf = paramArrayOfaogf[0].a;
+      QLog.i("SafeModeProcessor", 1, "onParsed: invoked.  content: " + paramArrayOfaogf);
+      paramArrayOfaogf = aouy.a(paramArrayOfaogf);
+      if (paramArrayOfaogf != null)
+      {
+        BaseApplicationImpl.getContext().getSharedPreferences("sp_safemode_test_crash_config", 4).edit().putBoolean("key_test_crash_switch", paramArrayOfaogf.a).apply();
+        BaseApplicationImpl.getContext().getSharedPreferences("sp_safemode_test_crash", 0).edit().putBoolean("crash", paramArrayOfaogf.a).commit();
+      }
+      return paramArrayOfaogf;
     }
-    paramBundle.putString("_m_ForwardBusType", String.valueOf(paramInt2));
-    paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
-    if (paramInt1 == 0)
-    {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Aovv.a(this.jdField_a_of_type_JavaLangString, paramBundle);
-      return;
-    }
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Aovv.a(aouy.a(this.jdField_a_of_type_Long, false), false);
+    return null;
+  }
+  
+  public Class<aouy> a()
+  {
+    return aouy.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aouy paramaouy) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

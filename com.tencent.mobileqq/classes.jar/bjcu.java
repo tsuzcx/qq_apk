@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.UndealCount.QZoneCountUserInfo;
 
-public abstract interface bjcu
+public final class bjcu
+  implements Parcelable.Creator<QZoneCountUserInfo>
 {
-  public abstract void a();
+  public QZoneCountUserInfo a(Parcel paramParcel)
+  {
+    return new QZoneCountUserInfo(paramParcel);
+  }
   
-  public abstract void a(bkbv parambkbv, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
-  
-  public abstract void a(bkgd parambkgd, String paramString, float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void a(bkgh parambkgh, float paramFloat1, float paramFloat2, float paramFloat3);
-  
-  public abstract void a(bkgh parambkgh, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void b(bkbv parambkbv, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper);
+  public QZoneCountUserInfo[] a(int paramInt)
+  {
+    return new QZoneCountUserInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjcu
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.av.gaudio;
 import android.graphics.Bitmap;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqo;
 import mqq.os.MqqHandler;
+import mti;
 
 class GaInviteLockActivity$11
   implements Runnable
@@ -15,7 +15,7 @@ class GaInviteLockActivity$11
   {
     int i = this.this$0.jdField_a_of_type_Int;
     long l = this.this$0.jdField_a_of_type_Long;
-    int j = mqo.c(this.this$0.jdField_b_of_type_Int);
+    int j = mti.c(this.this$0.jdField_b_of_type_Int);
     String str1 = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(i, String.valueOf(l), null);
     String str2 = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(j, String.valueOf(this.this$0.jdField_b_of_type_Long), String.valueOf(this.this$0.jdField_a_of_type_Long));
     Bitmap localBitmap = this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(j, String.valueOf(this.this$0.jdField_b_of_type_Long), null, true, true);
@@ -30,7 +30,7 @@ class GaInviteLockActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.gaudio.GaInviteLockActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class adda
-  implements addx
+  implements Animation.AnimationListener
 {
-  public adda(DoodleLayout paramDoodleLayout) {}
+  public adda(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(this.a.a(true, false));
-    }
+    LoginInfoActivity.b(this.a).setVisibility(4);
+    LoginInfoActivity.b(this.a).clearAnimation();
   }
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (DoodleLayout.a(this.a) != null) {
-      DoodleLayout.a(this.a).a(paramInt1, paramInt2);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adda
  * JD-Core Version:    0.7.0.1
  */

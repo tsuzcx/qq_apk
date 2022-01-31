@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app;
 
-import ajvs;
-import ajvt;
-import ajvu;
-import ajvv;
-import ajyb;
-import akhm;
+import alng;
+import alnh;
+import alni;
+import alnj;
+import alpp;
+import alzc;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import ayxg;
-import bbfj;
+import bavf;
+import bdee;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -32,17 +32,17 @@ public abstract class FaceDownloader
   private static int e = 1;
   protected byte a;
   public int a;
-  private ajvu jdField_a_of_type_Ajvu;
+  private alni jdField_a_of_type_Alni;
   protected AppInterface a;
   protected ArrayList<FaceInfo> a;
   protected HashSet<String> a;
-  public LinkedList<ajvt> a;
+  public LinkedList<alnh> a;
   protected AtomicInteger a;
   protected MqqHandler a;
   private FaceDownloader.FaceDownloadRunnable[] jdField_a_of_type_ArrayOfComTencentMobileqqAppFaceDownloader$FaceDownloadRunnable;
   private Thread[] jdField_a_of_type_ArrayOfJavaLangThread;
   protected int b;
-  public ArrayList<ajvv> b;
+  public ArrayList<alnj> b;
   protected AtomicInteger b;
   private int c = 2;
   private int d = 10;
@@ -56,8 +56,8 @@ public abstract class FaceDownloader
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(100);
     b();
     c();
-    if (this.jdField_a_of_type_Ajvu.jdField_a_of_type_Int != -2147483648) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_Ajvu.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Alni.jdField_a_of_type_Int != -2147483648) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_Alni.jdField_a_of_type_Int;
     }
     String str = BaseApplicationImpl.processName;
     if ((!TextUtils.isEmpty(str)) && (str.equals("com.tencent.mobileqq"))) {
@@ -76,7 +76,7 @@ public abstract class FaceDownloader
       {
         this.jdField_a_of_type_ArrayOfComTencentMobileqqAppFaceDownloader$FaceDownloadRunnable[i] = new FaceDownloader.FaceDownloadRunnable(this, i);
         this.jdField_a_of_type_ArrayOfJavaLangThread[i] = ThreadManager.newFreeThread(this.jdField_a_of_type_ArrayOfComTencentMobileqqAppFaceDownloader$FaceDownloadRunnable[i], "FaceDownloadThread", 5);
-        if (akhm.a().c()) {
+        if (alzc.a().c()) {
           this.jdField_a_of_type_ArrayOfJavaLangThread[i].setPriority(1);
         }
         try
@@ -99,7 +99,7 @@ public abstract class FaceDownloader
     }
     for (;;)
     {
-      this.jdField_a_of_type_MqqOsMqqHandler = new ajvs(this, Looper.getMainLooper());
+      this.jdField_a_of_type_MqqOsMqqHandler = new alng(this, Looper.getMainLooper());
       return;
       this.jdField_a_of_type_Byte = 3;
       continue;
@@ -115,7 +115,7 @@ public abstract class FaceDownloader
       return "";
     }
     String str2 = b(paramInt);
-    paramInt = bbfj.a(BaseApplicationImpl.getApplication().getApplicationContext());
+    paramInt = bdee.a(BaseApplicationImpl.getApplication().getApplicationContext());
     String str1;
     if (paramInt == 1) {
       str1 = "WIFI";
@@ -137,7 +137,7 @@ public abstract class FaceDownloader
   
   public static String a(String paramString, byte paramByte)
   {
-    String str = ayxg.a().a("q.qlogo.cn", 1003);
+    String str = bavf.a().a("q.qlogo.cn", 1003);
     if (QLog.isColorLevel()) {
       QLog.i("InnerDns", 2, "get1080QQHeadDownLoadUrl.choosedIp=" + str);
     }
@@ -178,24 +178,24 @@ public abstract class FaceDownloader
   private String a(String paramString, boolean paramBoolean)
   {
     int i = 28;
-    boolean bool = ajyb.a().a();
+    boolean bool = alpp.a().a();
     int j = NetConnInfoCenter.getActiveNetIpFamily(true);
     Object localObject;
     if (j == 3)
     {
-      localObject = ayxg.a();
+      localObject = bavf.a();
       if (bool)
       {
         j = 28;
-        localObject = ((ayxg)localObject).a(paramString, 1003, true, j);
+        localObject = ((bavf)localObject).a(paramString, 1003, true, j);
         if ((localObject != null) && (((ArrayList)localObject).size() != 0) && (!paramBoolean)) {
           break label213;
         }
-        localObject = ayxg.a();
+        localObject = bavf.a();
         if (bool) {
           i = 1;
         }
-        paramString = ((ayxg)localObject).a(paramString, 1003, true, i);
+        paramString = ((bavf)localObject).a(paramString, 1003, true, i);
       }
     }
     for (;;)
@@ -212,14 +212,14 @@ public abstract class FaceDownloader
         {
           j = 1;
           label166:
-          localObject = ayxg.a();
+          localObject = bavf.a();
           if (j == 0) {
             break label197;
           }
         }
         for (;;)
         {
-          paramString = ((ayxg)localObject).a(paramString, 1003, true, i);
+          paramString = ((bavf)localObject).a(paramString, 1003, true, i);
           break;
           j = 0;
           break label166;
@@ -270,9 +270,9 @@ public abstract class FaceDownloader
     {
       return;
       if (BaseApplicationImpl.processName.equals("com.tencent.mobileqq:tool")) {}
-      for (this.jdField_a_of_type_Ajvu = a(); QLog.isColorLevel(); this.jdField_a_of_type_Ajvu = new ajvu(this))
+      for (this.jdField_a_of_type_Alni = a(); QLog.isColorLevel(); this.jdField_a_of_type_Alni = new alni(this))
       {
-        QLog.i("Q.qqhead.FaceDownloader", 2, "initFaceDownloadThreadInfo, maxThreadCount=" + this.jdField_a_of_type_Ajvu.jdField_a_of_type_Int + ",priority=" + this.jdField_a_of_type_Ajvu.jdField_b_of_type_Int);
+        QLog.i("Q.qqhead.FaceDownloader", 2, "initFaceDownloadThreadInfo, maxThreadCount=" + this.jdField_a_of_type_Alni.jdField_a_of_type_Int + ",priority=" + this.jdField_a_of_type_Alni.jdField_b_of_type_Int);
         return;
       }
     }
@@ -402,12 +402,12 @@ public abstract class FaceDownloader
     //   81: pop
     //   82: aconst_null
     //   83: astore 31
-    //   85: new 418	anvt
+    //   85: new 418	apnb
     //   88: dup
     //   89: aload_1
     //   90: aconst_null
     //   91: iconst_0
-    //   92: invokespecial 421	anvt:<init>	(Ljava/lang/String;Ljava/io/File;I)V
+    //   92: invokespecial 421	apnb:<init>	(Ljava/lang/String;Ljava/io/File;I)V
     //   95: astore 42
     //   97: aload 41
     //   99: ifnonnull +40 -> 139
@@ -417,7 +417,7 @@ public abstract class FaceDownloader
     //   108: invokestatic 230	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   111: aload 42
     //   113: iconst_1
-    //   114: putfield 424	anvt:jdField_b_of_type_Int	I
+    //   114: putfield 424	apnb:jdField_b_of_type_Int	I
     //   117: iconst_1
     //   118: ireturn
     //   119: astore_1
@@ -476,19 +476,19 @@ public abstract class FaceDownloader
     //   223: ifnonnull +105 -> 328
     //   226: aload 42
     //   228: iload 5
-    //   230: putfield 424	anvt:jdField_b_of_type_Int	I
+    //   230: putfield 424	apnb:jdField_b_of_type_Int	I
     //   233: iload 5
     //   235: istore 6
     //   237: iload 4
     //   239: ifeq -208 -> 31
-    //   242: new 443	ajvv
+    //   242: new 443	alnj
     //   245: dup
     //   246: aload_0
-    //   247: invokespecial 444	ajvv:<init>	(Lcom/tencent/mobileqq/app/FaceDownloader;)V
+    //   247: invokespecial 444	alnj:<init>	(Lcom/tencent/mobileqq/app/FaceDownloader;)V
     //   250: astore_1
     //   251: aload_1
     //   252: aload_3
-    //   253: putfield 447	ajvv:jdField_a_of_type_ComTencentMobileqqUtilFaceInfo	Lcom/tencent/mobileqq/util/FaceInfo;
+    //   253: putfield 447	alnj:jdField_a_of_type_ComTencentMobileqqUtilFaceInfo	Lcom/tencent/mobileqq/util/FaceInfo;
     //   256: iload 5
     //   258: ifeq +5191 -> 5449
     //   261: aload_3
@@ -496,7 +496,7 @@ public abstract class FaceDownloader
     //   265: invokevirtual 452	com/tencent/mobileqq/util/FaceInfo:a	(I)V
     //   268: aload_1
     //   269: aconst_null
-    //   270: putfield 455	ajvv:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   270: putfield 455	alnj:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   273: aload_0
     //   274: getfield 62	com/tencent/mobileqq/app/FaceDownloader:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   277: aload_1
@@ -522,7 +522,7 @@ public abstract class FaceDownloader
     //   315: invokestatic 277	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   318: aload 42
     //   320: bipush 13
-    //   322: putfield 424	anvt:jdField_b_of_type_Int	I
+    //   322: putfield 424	apnb:jdField_b_of_type_Int	I
     //   325: bipush 13
     //   327: ireturn
     //   328: ldc 216
@@ -607,7 +607,7 @@ public abstract class FaceDownloader
     //   503: invokevirtual 505	android/net/NetworkInfo:getType	()I
     //   506: istore 12
     //   508: aload 32
-    //   510: invokestatic 509	bbmx:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   510: invokestatic 509	bdlr:b	(Ljava/lang/String;)Ljava/lang/String;
     //   513: astore 44
     //   515: lload 25
     //   517: lstore 27
@@ -665,7 +665,7 @@ public abstract class FaceDownloader
     //   618: iload 5
     //   620: istore 6
     //   622: aload 44
-    //   624: getstatic 513	bbmx:d	Ljava/lang/String;
+    //   624: getstatic 513	bdlr:d	Ljava/lang/String;
     //   627: invokevirtual 91	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   630: ifeq +1598 -> 2228
     //   633: lload 25
@@ -842,15 +842,15 @@ public abstract class FaceDownloader
     //   967: iconst_1
     //   968: istore 17
     //   970: aload 44
-    //   972: getstatic 513	bbmx:d	Ljava/lang/String;
+    //   972: getstatic 513	bdlr:d	Ljava/lang/String;
     //   975: invokevirtual 91	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   978: ifne +25 -> 1003
     //   981: aload 44
-    //   983: getstatic 522	bbmx:f	Ljava/lang/String;
+    //   983: getstatic 522	bdlr:f	Ljava/lang/String;
     //   986: invokevirtual 91	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   989: ifne +14 -> 1003
     //   992: aload 44
-    //   994: getstatic 525	bbmx:h	Ljava/lang/String;
+    //   994: getstatic 525	bdlr:h	Ljava/lang/String;
     //   997: invokevirtual 91	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1000: ifeq +1668 -> 2668
     //   1003: iload 11
@@ -1033,7 +1033,7 @@ public abstract class FaceDownloader
     //   1357: aload 42
     //   1359: aload_1
     //   1360: invokevirtual 292	java/net/HttpURLConnection:getResponseCode	()I
-    //   1363: putfield 558	anvt:c	I
+    //   1363: putfield 558	apnb:c	I
     //   1366: lload 25
     //   1368: lstore 27
     //   1370: iload 17
@@ -1053,7 +1053,7 @@ public abstract class FaceDownloader
     //   1396: aload 42
     //   1398: aload_1
     //   1399: invokevirtual 300	java/net/HttpURLConnection:getContentLength	()I
-    //   1402: putfield 559	anvt:e	I
+    //   1402: putfield 559	apnb:e	I
     //   1405: lload 25
     //   1407: lstore 27
     //   1409: iload 17
@@ -1073,7 +1073,7 @@ public abstract class FaceDownloader
     //   1435: aload 42
     //   1437: aload_1
     //   1438: invokevirtual 297	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
-    //   1441: putfield 560	anvt:h	Ljava/lang/String;
+    //   1441: putfield 560	apnb:h	Ljava/lang/String;
     //   1444: lload 25
     //   1446: lstore 27
     //   1448: iload 17
@@ -1093,7 +1093,7 @@ public abstract class FaceDownloader
     //   1474: aload 42
     //   1476: aload_1
     //   1477: invokevirtual 563	java/net/HttpURLConnection:getContentEncoding	()Ljava/lang/String;
-    //   1480: putfield 565	anvt:i	Ljava/lang/String;
+    //   1480: putfield 565	apnb:i	Ljava/lang/String;
     //   1483: lload 25
     //   1485: lstore 27
     //   1487: iload 17
@@ -1114,7 +1114,7 @@ public abstract class FaceDownloader
     //   1515: aload_1
     //   1516: ldc_w 312
     //   1519: invokevirtual 306	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   1522: putfield 566	anvt:f	Ljava/lang/String;
+    //   1522: putfield 566	apnb:f	Ljava/lang/String;
     //   1525: lload 25
     //   1527: lstore 27
     //   1529: iload 17
@@ -1261,7 +1261,7 @@ public abstract class FaceDownloader
     //   1798: istore 6
     //   1800: sipush 200
     //   1803: aload 42
-    //   1805: getfield 558	anvt:c	I
+    //   1805: getfield 558	apnb:c	I
     //   1808: if_icmpne +3184 -> 4992
     //   1811: lload 25
     //   1813: lstore 27
@@ -1288,7 +1288,7 @@ public abstract class FaceDownloader
     //   1852: iload 14
     //   1854: istore 6
     //   1856: aload 42
-    //   1858: getfield 559	anvt:e	I
+    //   1858: getfield 559	apnb:e	I
     //   1861: istore 15
     //   1863: iload 15
     //   1865: i2l
@@ -1655,19 +1655,19 @@ public abstract class FaceDownloader
     //   2651: aload 35
     //   2653: aload 43
     //   2655: iload 16
-    //   2657: invokestatic 644	bbmx:b	(Ljava/lang/String;Ljava/lang/String;I)Ljava/net/HttpURLConnection;
+    //   2657: invokestatic 644	bdlr:b	(Ljava/lang/String;Ljava/lang/String;I)Ljava/net/HttpURLConnection;
     //   2660: astore 32
     //   2662: aload 32
     //   2664: astore_1
     //   2665: goto -1626 -> 1039
     //   2668: aload 44
-    //   2670: getstatic 646	bbmx:b	Ljava/lang/String;
+    //   2670: getstatic 646	bdlr:b	Ljava/lang/String;
     //   2673: invokevirtual 91	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   2676: ifeq +23 -> 2699
     //   2679: aload 35
     //   2681: aload 43
     //   2683: iload 16
-    //   2685: invokestatic 648	bbmx:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/net/HttpURLConnection;
+    //   2685: invokestatic 648	bdlr:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/net/HttpURLConnection;
     //   2688: astore 32
     //   2690: iconst_1
     //   2691: istore 17
@@ -1677,7 +1677,7 @@ public abstract class FaceDownloader
     //   2699: aload 35
     //   2701: aload 43
     //   2703: iload 16
-    //   2705: invokestatic 648	bbmx:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/net/HttpURLConnection;
+    //   2705: invokestatic 648	bdlr:a	(Ljava/lang/String;Ljava/lang/String;I)Ljava/net/HttpURLConnection;
     //   2708: astore 32
     //   2710: aload 32
     //   2712: astore_1
@@ -2113,7 +2113,7 @@ public abstract class FaceDownloader
     //   3652: iload 5
     //   3654: istore 6
     //   3656: aload 42
-    //   3658: getfield 566	anvt:f	Ljava/lang/String;
+    //   3658: getfield 566	apnb:f	Ljava/lang/String;
     //   3661: ifnonnull +2310 -> 5971
     //   3664: lload 25
     //   3666: lstore 27
@@ -2140,7 +2140,7 @@ public abstract class FaceDownloader
     //   3705: iload 5
     //   3707: istore 6
     //   3709: aload 42
-    //   3711: getfield 558	anvt:c	I
+    //   3711: getfield 558	apnb:c	I
     //   3714: istore 9
     //   3716: iload 9
     //   3718: sipush 200
@@ -2177,7 +2177,7 @@ public abstract class FaceDownloader
     //   3784: iload 6
     //   3786: istore 10
     //   3788: aload 42
-    //   3790: getfield 566	anvt:f	Ljava/lang/String;
+    //   3790: getfield 566	apnb:f	Ljava/lang/String;
     //   3793: ifnull +48 -> 3841
     //   3796: iload 7
     //   3798: istore 13
@@ -2190,7 +2190,7 @@ public abstract class FaceDownloader
     //   3812: iload 6
     //   3814: istore 10
     //   3816: aload 42
-    //   3818: getfield 566	anvt:f	Ljava/lang/String;
+    //   3818: getfield 566	apnb:f	Ljava/lang/String;
     //   3821: aload_3
     //   3822: getfield 285	com/tencent/mobileqq/util/FaceInfo:jdField_a_of_type_AvatarInfoQQHeadInfo	LAvatarInfo/QQHeadInfo;
     //   3825: getfield 653	AvatarInfo/QQHeadInfo:headVerify	Ljava/lang/String;
@@ -2351,7 +2351,7 @@ public abstract class FaceDownloader
     //   4185: iload 5
     //   4187: istore 6
     //   4189: aload 42
-    //   4191: getfield 558	anvt:c	I
+    //   4191: getfield 558	apnb:c	I
     //   4194: istore 5
     //   4196: goto -468 -> 3728
     //   4199: astore_1
@@ -2373,7 +2373,7 @@ public abstract class FaceDownloader
     //   4228: aload 34
     //   4230: iconst_0
     //   4231: iload 5
-    //   4233: invokestatic 661	baxi:a	([BII)Landroid/graphics/Bitmap;
+    //   4233: invokestatic 661	bcwc:a	([BII)Landroid/graphics/Bitmap;
     //   4236: astore 33
     //   4238: aload 33
     //   4240: astore 31
@@ -2385,20 +2385,20 @@ public abstract class FaceDownloader
     //   4285: lload_3
     //   4286: bipush 50
     //   4288: bipush 50
-    //   4290: invokestatic 667	bbef:c	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
+    //   4290: invokestatic 667	bdda:c	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
     //   4293: astore 31
     //   4295: aload_0
     //   4296: getfield 93	com/tencent/mobileqq/app/FaceDownloader:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
     //   4299: sipush 216
     //   4302: invokevirtual 673	com/tencent/common/app/AppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   4305: checkcast 675	bayr
+    //   4305: checkcast 675	bcxl
     //   4308: aload_3
     //   4309: invokevirtual 677	com/tencent/mobileqq/util/FaceInfo:a	()Ljava/lang/String;
     //   4312: aload 31
     //   4314: aload_3
     //   4315: getfield 678	com/tencent/mobileqq/util/FaceInfo:jdField_a_of_type_Int	I
-    //   4318: invokestatic 681	bayr:a	(I)B
-    //   4321: invokevirtual 684	bayr:a	(Ljava/lang/String;Landroid/graphics/Bitmap;B)V
+    //   4318: invokestatic 681	bcxl:a	(I)B
+    //   4321: invokevirtual 684	bcxl:a	(Ljava/lang/String;Landroid/graphics/Bitmap;B)V
     //   4324: aload_3
     //   4325: getstatic 687	com/tencent/mobileqq/util/FaceInfo:q	I
     //   4328: invokevirtual 452	com/tencent/mobileqq/util/FaceInfo:a	(I)V
@@ -2423,17 +2423,17 @@ public abstract class FaceDownloader
     //   4376: invokevirtual 315	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   4379: invokevirtual 200	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   4382: invokestatic 230	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4385: new 443	ajvv
+    //   4385: new 443	alnj
     //   4388: dup
     //   4389: aload_0
-    //   4390: invokespecial 444	ajvv:<init>	(Lcom/tencent/mobileqq/app/FaceDownloader;)V
+    //   4390: invokespecial 444	alnj:<init>	(Lcom/tencent/mobileqq/app/FaceDownloader;)V
     //   4393: astore 33
     //   4395: aload 33
     //   4397: aload_3
-    //   4398: putfield 447	ajvv:jdField_a_of_type_ComTencentMobileqqUtilFaceInfo	Lcom/tencent/mobileqq/util/FaceInfo;
+    //   4398: putfield 447	alnj:jdField_a_of_type_ComTencentMobileqqUtilFaceInfo	Lcom/tencent/mobileqq/util/FaceInfo;
     //   4401: aload 33
     //   4403: aload 31
-    //   4405: putfield 455	ajvv:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   4405: putfield 455	alnj:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   4408: aload_0
     //   4409: getfield 62	com/tencent/mobileqq/app/FaceDownloader:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   4412: aload 33
@@ -2622,7 +2622,7 @@ public abstract class FaceDownloader
     //   4825: aload 33
     //   4827: aload 33
     //   4829: invokevirtual 709	android/graphics/Bitmap:getWidth	()I
-    //   4832: invokestatic 711	bbef:a	(I)I
+    //   4832: invokestatic 711	bdda:a	(I)I
     //   4835: bipush 50
     //   4837: bipush 50
     //   4839: invokestatic 716	com/tencent/mobileqq/app/QQAppInterface:a	(Landroid/graphics/Bitmap;III)Landroid/graphics/Bitmap;
@@ -2631,7 +2631,7 @@ public abstract class FaceDownloader
     //   4847: aload 33
     //   4849: bipush 50
     //   4851: bipush 50
-    //   4853: invokestatic 718	bbef:a	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
+    //   4853: invokestatic 718	bdda:a	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
     //   4856: astore 31
     //   4858: goto -563 -> 4295
     //   4861: sipush 1024
@@ -2717,7 +2717,7 @@ public abstract class FaceDownloader
     //   5033: iload 14
     //   5035: istore 6
     //   5037: aload 42
-    //   5039: getfield 558	anvt:c	I
+    //   5039: getfield 558	apnb:c	I
     //   5042: istore 5
     //   5044: iload 5
     //   5046: istore 7
@@ -2801,13 +2801,13 @@ public abstract class FaceDownloader
     //   5233: goto +818 -> 6051
     //   5236: iload 5
     //   5238: istore 6
-    //   5240: invokestatic 754	bbbm:a	()Z
+    //   5240: invokestatic 754	bdag:a	()Z
     //   5243: istore 18
     //   5245: iload 18
     //   5247: ifeq +170 -> 5417
     //   5250: iload 5
     //   5252: istore 6
-    //   5254: invokestatic 756	bbbm:a	()J
+    //   5254: invokestatic 756	bdag:a	()J
     //   5257: lstore 27
     //   5259: iload 5
     //   5261: istore 6
@@ -2876,7 +2876,7 @@ public abstract class FaceDownloader
     //   5414: goto -3054 -> 2360
     //   5417: iload 5
     //   5419: istore 6
-    //   5421: invokestatic 774	bbbm:b	()J
+    //   5421: invokestatic 774	bdag:b	()J
     //   5424: lstore 27
     //   5426: goto -167 -> 5259
     //   5429: ldc_w 776
@@ -2901,33 +2901,33 @@ public abstract class FaceDownloader
     //   5462: aload_3
     //   5463: getstatic 656	com/tencent/mobileqq/util/FaceInfo:p	I
     //   5466: invokevirtual 452	com/tencent/mobileqq/util/FaceInfo:a	(I)V
-    //   5469: new 778	baxj
+    //   5469: new 778	bcwd
     //   5472: dup
-    //   5473: invokespecial 779	baxj:<init>	()V
+    //   5473: invokespecial 779	bcwd:<init>	()V
     //   5476: astore_2
     //   5477: new 781	android/graphics/BitmapFactory$Options
     //   5480: dup
     //   5481: invokespecial 782	android/graphics/BitmapFactory$Options:<init>	()V
     //   5484: astore 31
     //   5486: aload 31
-    //   5488: getstatic 787	baxt:a	Landroid/graphics/Bitmap$Config;
+    //   5488: getstatic 787	bcwn:a	Landroid/graphics/Bitmap$Config;
     //   5491: putfield 790	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
     //   5494: aload_0
     //   5495: getfield 93	com/tencent/mobileqq/app/FaceDownloader:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
     //   5498: sipush 216
     //   5501: invokevirtual 673	com/tencent/common/app/AppInterface:getManager	(I)Lmqq/manager/Manager;
-    //   5504: checkcast 675	bayr
+    //   5504: checkcast 675	bcxl
     //   5507: astore 32
     //   5509: iconst_0
     //   5510: istore 6
     //   5512: aload 32
     //   5514: aload_3
-    //   5515: invokevirtual 793	bayr:a	(Lcom/tencent/mobileqq/util/FaceInfo;)Ljava/lang/String;
+    //   5515: invokevirtual 793	bcxl:a	(Lcom/tencent/mobileqq/util/FaceInfo;)Ljava/lang/String;
     //   5518: aload 31
     //   5520: aload_2
-    //   5521: invokestatic 796	baxi:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Lbaxj;)V
+    //   5521: invokestatic 796	bcwc:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;Lbcwd;)V
     //   5524: aload_2
-    //   5525: getfield 797	baxj:jdField_a_of_type_Int	I
+    //   5525: getfield 797	bcwd:jdField_a_of_type_Int	I
     //   5528: iconst_1
     //   5529: if_icmpne +18 -> 5547
     //   5532: aload_0
@@ -2944,37 +2944,37 @@ public abstract class FaceDownloader
     //   5555: iconst_2
     //   5556: if_icmpge +11 -> 5567
     //   5559: aload_2
-    //   5560: getfield 797	baxj:jdField_a_of_type_Int	I
+    //   5560: getfield 797	bcwd:jdField_a_of_type_Int	I
     //   5563: iconst_1
     //   5564: if_icmpeq +394 -> 5958
     //   5567: aload_2
-    //   5568: getfield 801	baxj:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   5568: getfield 801	bcwd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   5571: ifnull +76 -> 5647
     //   5574: aload_3
     //   5575: getfield 662	com/tencent/mobileqq/util/FaceInfo:c	I
     //   5578: tableswitch	default:+34 -> 5612, 1:+109->5687, 2:+34->5612, 3:+141->5719, 4:+34->5612, 5:+49->5627
     //   5613: aload_2
-    //   5614: getfield 801	baxj:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   5614: getfield 801	bcwd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   5617: bipush 50
     //   5619: bipush 50
-    //   5621: invokestatic 667	bbef:c	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
-    //   5624: putfield 801	baxj:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   5621: invokestatic 667	bdda:c	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
+    //   5624: putfield 801	bcwd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   5627: aload 32
     //   5629: aload_3
     //   5630: invokevirtual 677	com/tencent/mobileqq/util/FaceInfo:a	()Ljava/lang/String;
     //   5633: aload_2
-    //   5634: getfield 801	baxj:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   5634: getfield 801	bcwd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   5637: aload_3
     //   5638: getfield 678	com/tencent/mobileqq/util/FaceInfo:jdField_a_of_type_Int	I
-    //   5641: invokestatic 681	bayr:a	(I)B
-    //   5644: invokevirtual 684	bayr:a	(Ljava/lang/String;Landroid/graphics/Bitmap;B)V
+    //   5641: invokestatic 681	bcxl:a	(I)B
+    //   5644: invokevirtual 684	bcxl:a	(Ljava/lang/String;Landroid/graphics/Bitmap;B)V
     //   5647: aload_3
     //   5648: getstatic 687	com/tencent/mobileqq/util/FaceInfo:q	I
     //   5651: invokevirtual 452	com/tencent/mobileqq/util/FaceInfo:a	(I)V
     //   5654: aload_1
     //   5655: aload_2
-    //   5656: getfield 801	baxj:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   5659: putfield 455	ajvv:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   5656: getfield 801	bcwd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   5659: putfield 455	alnj:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   5662: aload_0
     //   5663: getfield 62	com/tencent/mobileqq/app/FaceDownloader:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   5666: aload_1
@@ -2989,26 +2989,26 @@ public abstract class FaceDownloader
     //   5684: iload 5
     //   5686: ireturn
     //   5687: aload_2
-    //   5688: getfield 801	baxj:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   5688: getfield 801	bcwd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   5691: invokevirtual 709	android/graphics/Bitmap:getWidth	()I
-    //   5694: invokestatic 711	bbef:a	(I)I
+    //   5694: invokestatic 711	bdda:a	(I)I
     //   5697: istore 6
     //   5699: aload_2
     //   5700: aload_2
-    //   5701: getfield 801	baxj:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   5701: getfield 801	bcwd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   5704: iload 6
     //   5706: bipush 50
     //   5708: bipush 50
     //   5710: invokestatic 716	com/tencent/mobileqq/app/QQAppInterface:a	(Landroid/graphics/Bitmap;III)Landroid/graphics/Bitmap;
-    //   5713: putfield 801	baxj:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   5713: putfield 801	bcwd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   5716: goto -89 -> 5627
     //   5719: aload_2
     //   5720: aload_2
-    //   5721: getfield 801	baxj:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   5721: getfield 801	bcwd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   5724: bipush 50
     //   5726: bipush 50
-    //   5728: invokestatic 718	bbef:a	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
-    //   5731: putfield 801	baxj:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   5728: invokestatic 718	bdda:a	(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
+    //   5731: putfield 801	bcwd:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   5734: goto -107 -> 5627
     //   5737: astore 32
     //   5739: goto -1857 -> 3882
@@ -3246,7 +3246,7 @@ public abstract class FaceDownloader
     //   42	4582	39	localURL	java.net.URL
     //   178	5174	40	localFile	java.io.File
     //   3	499	41	localNetworkInfo	android.net.NetworkInfo
-    //   95	4943	42	localanvt	anvt
+    //   95	4943	42	localapnb	apnb
     //   482	4185	43	str3	String
     //   513	4199	44	str4	String
     // Exception table:
@@ -3547,9 +3547,9 @@ public abstract class FaceDownloader
     //   5421	5426	6058	finally
   }
   
-  public ajvu a()
+  public alni a()
   {
-    ajvu localajvu = new ajvu(this);
+    alni localalni = new alni(this);
     int i = Runtime.getRuntime().availableProcessors();
     if (QLog.isColorLevel()) {
       QLog.i("Q.qqhead.FaceDownloader", 2, "processor count:" + i);
@@ -3557,11 +3557,11 @@ public abstract class FaceDownloader
     if (i >= 4) {}
     do
     {
-      return localajvu;
-      localajvu.jdField_a_of_type_Int = (i + 1);
+      return localalni;
+      localalni.jdField_a_of_type_Int = (i + 1);
     } while (i > 2);
-    localajvu.jdField_b_of_type_Int = 10;
-    return localajvu;
+    localalni.jdField_b_of_type_Int = 10;
+    return localalni;
   }
   
   public String a(String paramString, byte paramByte1, byte paramByte2, int paramInt)
@@ -3711,14 +3711,14 @@ public abstract class FaceDownloader
     }
   }
   
-  public void a(ajvt paramajvt)
+  public void a(alnh paramalnh)
   {
     try
     {
       if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDownloader", 2, "addFaceDownloadListener l=" + paramajvt);
+        QLog.i("Q.qqhead.FaceDownloader", 2, "addFaceDownloadListener l=" + paramalnh);
       }
-      this.jdField_a_of_type_JavaUtilLinkedList.add(paramajvt);
+      this.jdField_a_of_type_JavaUtilLinkedList.add(paramalnh);
       return;
     }
     finally {}
@@ -3757,14 +3757,14 @@ public abstract class FaceDownloader
     }
   }
   
-  public void b(ajvt paramajvt)
+  public void b(alnh paramalnh)
   {
     try
     {
       if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDownloader", 2, "removeFaceDownloadListener l=" + paramajvt);
+        QLog.i("Q.qqhead.FaceDownloader", 2, "removeFaceDownloadListener l=" + paramalnh);
       }
-      this.jdField_a_of_type_JavaUtilLinkedList.remove(paramajvt);
+      this.jdField_a_of_type_JavaUtilLinkedList.remove(paramalnh);
       return;
     }
     finally {}

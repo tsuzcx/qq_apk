@@ -15,7 +15,7 @@ public class Kandian210Msg0xeeInfo$UGCPushInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo.UGCPushInfo
  * JD-Core Version:    0.7.0.1
  */

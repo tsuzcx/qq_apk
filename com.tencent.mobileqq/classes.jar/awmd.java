@@ -1,37 +1,36 @@
-import com.tencent.mobileqq.data.fts.FTSMessage;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import com.tencent.mobileqq.utils.fts.FTSMessageCodec.TextMsgExts;
+import android.graphics.Point;
+import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
 import java.util.Comparator;
+import java.util.Random;
 
-class awmd
-  implements Comparator<FTSEntity>
+public class awmd
+  implements Comparator<awlz>
 {
-  awmd(awmb paramawmb) {}
+  int jdField_a_of_type_Int;
+  Random jdField_a_of_type_JavaUtilRandom;
+  int b;
   
-  public int a(FTSEntity paramFTSEntity1, FTSEntity paramFTSEntity2)
+  public awmd(TagCloudView paramTagCloudView, Random paramRandom, int paramInt1, int paramInt2)
   {
-    paramFTSEntity1 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity1).msgExts;
-    paramFTSEntity2 = (FTSMessageCodec.TextMsgExts)((FTSMessage)paramFTSEntity2).msgExts;
-    long l1;
-    if (paramFTSEntity1 != null)
-    {
-      l1 = paramFTSEntity1.time;
-      if (paramFTSEntity2 == null) {
-        break label54;
-      }
+    this.jdField_a_of_type_JavaUtilRandom = paramRandom;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt1;
+  }
+  
+  public int a(awlz paramawlz1, awlz paramawlz2)
+  {
+    if ((paramawlz1.b.y > this.jdField_a_of_type_Int) || (paramawlz2.b.y > this.jdField_a_of_type_Int)) {
+      return -(paramawlz1.b.y - paramawlz2.b.y);
     }
-    label54:
-    for (long l2 = paramFTSEntity2.time;; l2 = 0L)
-    {
-      return Long.signum(l2 - l1);
-      l1 = 0L;
-      break;
+    if ((paramawlz1.b.x > this.b) || (paramawlz2.b.x > this.b)) {
+      return -(paramawlz1.b.x - paramawlz2.b.x);
     }
+    return this.jdField_a_of_type_JavaUtilRandom.nextInt(3) - 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awmd
  * JD-Core Version:    0.7.0.1
  */

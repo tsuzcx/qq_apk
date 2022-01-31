@@ -1,30 +1,25 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class skm
-  implements bdld
+class skm
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void installSucceed(String paramString1, String paramString2) {}
+  skm(skl paramskl, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo) {}
+  int a(int paramInt1, int paramInt2, float paramFloat)
+  {
+    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
+  }
   
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2) {}
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo) {}
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList) {}
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo) {}
-  
-  public void packageReplaced(String paramString1, String paramString2) {}
-  
-  public void uninstallSucceed(String paramString1, String paramString2) {}
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = paramValueAnimator.getAnimatedFraction();
+    this.jdField_a_of_type_Skl.a(a(this.jdField_a_of_type_Int, this.b, f), a(this.c, this.d, f));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     skm
  * JD-Core Version:    0.7.0.1
  */

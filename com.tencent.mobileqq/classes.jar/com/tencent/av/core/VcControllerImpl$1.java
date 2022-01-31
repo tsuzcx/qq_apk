@@ -1,6 +1,6 @@
 package com.tencent.av.core;
 
-import lls;
+import lnv;
 
 class VcControllerImpl$1
   implements Runnable
@@ -16,7 +16,7 @@ class VcControllerImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.core.VcControllerImpl.1
  * JD-Core Version:    0.7.0.1
  */

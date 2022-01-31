@@ -1,19 +1,18 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-class bdbd
-  implements bdeq
+final class bdbd
+  implements MediaPlayer.OnCompletionListener
 {
-  bdbd(bdbc parambdbc, ImageView paramImageView) {}
-  
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    paramMediaPlayer.release();
+    bdaz.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdbd
  * JD-Core Version:    0.7.0.1
  */

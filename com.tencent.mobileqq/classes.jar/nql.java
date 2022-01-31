@@ -1,33 +1,23 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
 
 public class nql
-  extends akdn
+  implements bedj
 {
-  public nql(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  public nql(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public Object a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
+    switch (paramInt)
     {
-      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131701270));
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-      }
+    default: 
+      return null;
     }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131701249));
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846186);
+    return new nqo(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nql
  * JD-Core Version:    0.7.0.1
  */

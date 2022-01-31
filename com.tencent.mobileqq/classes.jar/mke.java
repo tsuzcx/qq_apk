@@ -1,32 +1,84 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.VideoController;
 import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.qphone.base.util.QLog;
 
 class mke
-  implements mho
+  implements Animation.AnimationListener
 {
-  mke(mkc parammkc) {}
+  mke(mkb parammkb) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a.a != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("QavInOutAnimation", 2, "OutAnimation onAnimationEnd");
+    }
+    try
     {
-      this.a.a.a.setViewEnable(2131372374, false);
-      this.a.a.a.setViewEnable(2131362921, false);
-      this.a.a.a.setViewEnable(2131362933, false);
-      this.a.a.a.setViewEnable(2131362932, false);
+      if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
+      {
+        this.a.jdField_a_of_type_ComTencentAvVideoController.a().ar = false;
+        this.a.jdField_a_of_type_ComTencentAvVideoController.a().as = false;
+      }
+      if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null) {
+        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setVisibility(4);
+      }
+      if (this.a.jdField_a_of_type_AndroidViewView != null) {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      }
+      if (this.a.b != null) {
+        this.a.b.setVisibility(4);
+      }
+      if (this.a.c != null) {
+        this.a.c.setVisibility(4);
+      }
+      if (this.a.d != null) {
+        this.a.d.setVisibility(4);
+      }
+      if (this.a.e != null) {
+        this.a.e.setVisibility(4);
+      }
+      if (this.a.g != null) {
+        this.a.g.setVisibility(4);
+      }
+      if (this.a.jdField_a_of_type_Mkg != null) {
+        this.a.jdField_a_of_type_Mkg.b();
+      }
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationEnd Exception :" + paramAnimation);
     }
   }
   
-  public void b()
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    this.a.a.e = true;
-    this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 2130772163);
+    if (QLog.isColorLevel()) {
+      QLog.d("QavInOutAnimation", 2, "OutAnimation onAnimationStart");
+    }
+    try
+    {
+      if (this.a.jdField_a_of_type_Mkg != null) {
+        this.a.jdField_a_of_type_Mkg.a();
+      }
+      return;
+    }
+    catch (Exception paramAnimation)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationStart Exception :" + paramAnimation);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mke
  * JD-Core Version:    0.7.0.1
  */

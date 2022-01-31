@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
 import com.tencent.biz.qqstory.view.widget.DragFrameLayout;
-import qqg;
+import rfl;
 
 class VideoFeedsLoadDelegate$1
   implements Runnable
@@ -10,12 +10,12 @@ class VideoFeedsLoadDelegate$1
   
   public void run()
   {
-    this.a.a(200, new qqg());
+    this.a.a(200, new rfl());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLoadDelegate.1
  * JD-Core Version:    0.7.0.1
  */

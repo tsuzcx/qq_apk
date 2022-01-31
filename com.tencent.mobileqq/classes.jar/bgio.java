@@ -1,23 +1,30 @@
-import cooperation.comic.ui.QQComicFragment;
+import java.util.concurrent.Callable;
 
-public class bgio
-  implements bcei
+class bgio
+  implements Callable<Void>
 {
-  public bgio(QQComicFragment paramQQComicFragment) {}
+  bgio(bgin parambgin) {}
   
-  public Object a(int paramInt)
+  public Void a()
   {
-    switch (paramInt)
+    synchronized (this.a)
     {
-    default: 
+      if (bgin.a(this.a) == null) {
+        return null;
+      }
+      bgin.a(this.a);
+      if (bgin.a(this.a))
+      {
+        bgin.b(this.a);
+        bgin.a(this.a, 0);
+      }
       return null;
     }
-    return new bgip(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgio
  * JD-Core Version:    0.7.0.1
  */

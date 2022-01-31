@@ -1,129 +1,51 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUAlphaBlendFilter;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.GPUOESBaseFilter;
 
 public class axrv
 {
-  public static axrv a;
-  private String a;
-  public Map<String, Boolean> a;
-  public Map<String, Boolean> b = new ConcurrentHashMap();
-  
-  static
+  public static GPUBaseFilter a(int paramInt)
   {
-    jdField_a_of_type_Axrv = new axrv("qzone");
-  }
-  
-  public axrv(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaLangString = ("StatisticHitRateCollector_" + paramString);
-  }
-  
-  public static axrv a()
-  {
-    return jdField_a_of_type_Axrv;
-  }
-  
-  public static String a()
-  {
-    AppRuntime localAppRuntime = null;
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      localAppRuntime = localBaseApplicationImpl.getRuntime();
-    }
-    if (localAppRuntime == null) {
-      return "0";
-    }
-    if (localAppRuntime.getAccount() == null) {
-      return "0";
-    }
-    return localAppRuntime.getAccount();
-  }
-  
-  public void a(String paramString)
-  {
-    a(paramString, "actQZLoadHitRateRed");
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
-    if ((localBoolean == null) || (!localBoolean.booleanValue()))
+    switch (paramInt)
     {
-      localBoolean = (Boolean)this.b.get(paramString2);
-      if ((localBoolean != null) && (localBoolean.booleanValue()))
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "hitEnd sucess action = " + paramString2 + " , hit = true, uin = " + paramString1);
-        }
-        axrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, true, 0L, 0L, null, null);
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
-        this.b.remove(paramString2);
-      }
+    default: 
+      return new GPUBaseFilter();
+    case 101: 
+      return new GPUBaseFilter();
+    case 102: 
+      return new GPUOESBaseFilter();
+    case 0: 
+      return new axrx();
+    case 7: 
+      return new axrz();
+    case 5: 
+      return new axsb();
+    case 6: 
+      return new axsc();
+    case 4: 
+      return new axry();
+    case 106: 
+      return new axsa();
     }
+    return new GPUAlphaBlendFilter();
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public static boolean a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "preloadMark preloadAction = " + paramString + " , flag = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      b(a(), paramString);
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(paramString, Boolean.valueOf(false));
-    this.b.put(paramString, Boolean.valueOf(true));
-  }
-  
-  public void b(String paramString)
-  {
-    a(paramString, "actQZLoadHitRateLeba");
-  }
-  
-  public void b(String paramString1, String paramString2)
-  {
-    if (paramString2 != null)
+    switch (paramInt)
     {
-      Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilMap.get(paramString2);
-      if ((localBoolean == null) || (!localBoolean.booleanValue()))
-      {
-        localBoolean = (Boolean)this.b.get(paramString2);
-        if ((localBoolean != null) && (localBoolean.booleanValue()))
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(paramString2, Boolean.valueOf(true));
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "hitEnd action = " + paramString2 + " , hit = false, uin = " + paramString1);
-          }
-          axrn.a(BaseApplicationImpl.getContext()).a(paramString1, paramString2, false, 0L, 0L, null, null);
-          this.jdField_a_of_type_JavaUtilMap.remove(paramString2);
-          this.b.remove(paramString2);
-        }
-      }
+    case 1: 
+    case 2: 
+    case 3: 
+    default: 
+      return false;
     }
-  }
-  
-  public void c(String paramString)
-  {
-    a(paramString, "actQZLoadHitRateProfile");
-  }
-  
-  public void d(String paramString)
-  {
-    Iterator localIterator = new ArrayList(this.b.keySet()).iterator();
-    while (localIterator.hasNext()) {
-      b(paramString, (String)localIterator.next());
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axrv
  * JD-Core Version:    0.7.0.1
  */

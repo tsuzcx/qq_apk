@@ -1,22 +1,22 @@
 package com.tencent.biz.pubaccount.NativeAd.util;
 
-import bbfj;
-import bdhk;
+import bdee;
+import bfgi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import nlt;
-import nmc;
-import qjc;
+import nop;
+import noy;
+import qyj;
 
 public class ADBaseAppDownloadManager$1
   implements Runnable
 {
-  public ADBaseAppDownloadManager$1(nlt paramnlt, qjc paramqjc) {}
+  public ADBaseAppDownloadManager$1(nop paramnop, qyj paramqyj) {}
   
   public void run()
   {
-    if ((this.this$0.b(this.a)) && (nmc.a(this.this$0.a, this.a.d)))
+    if ((this.this$0.b(this.a)) && (noy.a(this.this$0.a, this.a.d)))
     {
       QLog.d("ADBaseAppDownloadManager", 1, "already installed." + this.a.d);
       this.this$0.a(this.a, 1, 100);
@@ -24,20 +24,20 @@ public class ADBaseAppDownloadManager$1
     do
     {
       return;
-      if ((this.this$0.c(this.a)) && (nlt.a(this.this$0.a, this.a)))
+      if ((this.this$0.c(this.a)) && (nop.a(this.this$0.a, this.a)))
       {
         QLog.d("ADBaseAppDownloadManager", 1, "already finishDownload." + this.a.d);
         this.this$0.a(this.a, 5, 100);
-        DownloadInfo localDownloadInfo = bdhk.a().c(this.a.jdField_a_of_type_JavaLangString);
-        bdhk.a().a(localDownloadInfo);
+        DownloadInfo localDownloadInfo = bfgi.a().c(this.a.jdField_a_of_type_JavaLangString);
+        bfgi.a().a(localDownloadInfo);
         return;
       }
       if (this.a.jdField_a_of_type_Boolean)
       {
-        nlt.a(this.this$0, this.a);
+        nop.a(this.this$0, this.a);
         return;
       }
-      if (bbfj.g(BaseApplicationImpl.getContext()))
+      if (bdee.g(BaseApplicationImpl.getContext()))
       {
         this.this$0.a(this.a, 0);
         return;
@@ -48,7 +48,7 @@ public class ADBaseAppDownloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

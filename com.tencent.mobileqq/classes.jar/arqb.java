@@ -1,33 +1,30 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.View.OnClickListener;
 
-public class arqb
-  extends BaseAdapter
+public abstract class arqb
+  implements View.OnClickListener
 {
-  public int getCount()
-  {
-    return 0;
-  }
+  private long a;
   
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
+  public abstract void a(View paramView);
   
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
+  public void b(View paramView) {}
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void onClick(View paramView)
   {
-    return null;
+    long l = System.currentTimeMillis();
+    if (l - this.a >= 500L)
+    {
+      a(paramView);
+      this.a = l;
+      return;
+    }
+    b(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqb
  * JD-Core Version:    0.7.0.1
  */

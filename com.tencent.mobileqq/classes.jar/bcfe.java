@@ -1,49 +1,28 @@
-import android.content.res.Resources;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 class bcfe
-  implements View.OnClickListener
+  implements bcwt
 {
   bcfe(bcfc parambcfc) {}
   
-  public void onClick(View paramView)
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    paramView = "";
-    Object localObject = Uri.parse(bcfc.a(this.a).c());
-    try
+    if ((paramBitmap != null) && (bcfc.a(this.a) != null))
     {
-      localObject = ((Uri)localObject).getQueryParameter("article_id");
-      paramView = (View)localObject;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, String.format("onDecodeTaskCompleted uin=%s", new Object[] { paramString }));
       }
-      this.a.f(this.a.jdField_a_of_type_JavaLangString);
-    }
-    localObject = paramView;
-    if (paramView == null) {
-      localObject = "";
-    }
-    axqy.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A1D", "0X8006A1D", 0, 0, "", (String)localObject, "", "");
-    nol.a("0X8006A1D", "", "", (String)localObject, "", "");
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.b = true;
-      bcql.a(BaseApplicationImpl.getContext(), 0, 2131695591, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298865));
-      return;
+      if (!TextUtils.isEmpty(paramString)) {
+        bcfc.a(this.a).b(paramString);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcfe
  * JD-Core Version:    0.7.0.1
  */

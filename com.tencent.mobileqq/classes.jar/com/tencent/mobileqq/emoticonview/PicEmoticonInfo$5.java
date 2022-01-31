@@ -2,7 +2,7 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
 import android.content.Intent;
-import askf;
+import aube;
 import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -27,11 +27,11 @@ public final class PicEmoticonInfo$5
       localIntent.putExtra("selfUin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
       localIntent.putExtra("sessionInfo", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
       localIntent.putExtra("emoticon", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-      Object localObject = (askf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
-      EmoticonPackage localEmoticonPackage = ((askf)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+      Object localObject = (aube)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
+      EmoticonPackage localEmoticonPackage = ((aube)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
       if (localEmoticonPackage != null)
       {
-        localObject = ((askf)localObject).a(localEmoticonPackage.childEpId);
+        localObject = ((aube)localObject).a(localEmoticonPackage.childEpId);
         if ((localObject != null) && (((List)localObject).size() > 0)) {
           localIntent.putExtra("childEmoticon", (Serializable)((List)localObject).get(0));
         }
@@ -42,7 +42,7 @@ public final class PicEmoticonInfo$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.PicEmoticonInfo.5
  * JD-Core Version:    0.7.0.1
  */

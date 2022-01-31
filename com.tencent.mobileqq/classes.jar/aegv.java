@@ -1,43 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.upload.uinterface.data.UpsImageUploadResult;
 
-class aegv
-  implements DialogInterface.OnClickListener
+public class aegv
+  extends awqb
 {
-  aegv(aegs paramaegs, int paramInt, Object paramObject, aeiy paramaeiy) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aegv(VipProfileCardDiyActivity paramVipProfileCardDiyActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3, boolean paramBoolean)
   {
-    switch (this.jdField_a_of_type_Int)
+    super(paramLong, paramString1, paramArrayOfByte, paramString2);
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    switch (paramInt)
     {
-    case 2: 
     default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryScene", 2, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
-      }
-      break;
-    }
-    do
-    {
+    case 1001: 
       do
       {
         return;
-      } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOImageData));
-      aegs.a(this.jdField_a_of_type_Aegs, (AIOImageData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aeiy);
-      this.jdField_a_of_type_Aegs.u();
+        this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
+      } while (a() == null);
+      this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a(), this.jdField_a_of_type_Boolean);
       return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOShortVideoData));
-    aegs.a(this.jdField_a_of_type_Aegs, (AIOShortVideoData)this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_Aeiy);
-    this.jdField_a_of_type_Aeiy.a.a = true;
-    this.jdField_a_of_type_Aegs.u();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityVipProfileCardDiyActivity.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aegv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,10 @@
-import android.app.Activity;
-import android.content.Context;
-import java.lang.ref.WeakReference;
-
-public class wos
-  extends wme
+public abstract interface wos
 {
-  protected WeakReference<Context> a;
-  
-  public wos(Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-    this.a = new WeakReference(paramContext);
-  }
-  
-  public boolean a()
-  {
-    Context localContext = (Context)this.a.get();
-    return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
-  }
-  
-  public void show()
-  {
-    if (a()) {
-      return;
-    }
-    super.show();
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wos
  * JD-Core Version:    0.7.0.1
  */

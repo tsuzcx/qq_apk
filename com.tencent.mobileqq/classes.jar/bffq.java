@@ -1,42 +1,66 @@
-import android.content.Context;
-import android.os.Process;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.Toast;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.ui.MainPageFragment;
-import java.io.File;
+import java.util.ArrayList;
 
 public class bffq
-  implements View.OnLongClickListener
 {
-  public bffq(MainPageFragment paramMainPageFragment) {}
+  protected static bffq a;
+  protected ArrayList<bfil> a;
   
-  public boolean onLongClick(View paramView)
+  public static bffq a()
   {
-    String str = MainPageFragment.b() + MainPageFragment.a(this.a).appId + "_debug";
-    if (new File(str).exists()) {
-      belh.a(str, false);
+    try
+    {
+      if (jdField_a_of_type_Bffq == null)
+      {
+        jdField_a_of_type_Bffq = new bffq();
+        jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      }
+      bffq localbffq = jdField_a_of_type_Bffq;
+      return localbffq;
     }
-    str = MainPageFragment.c() + bfgt.c(MainPageFragment.a(this.a).appId);
-    if (new File(str).exists()) {
-      belh.a(str, false);
+    finally {}
+  }
+  
+  public ArrayList<bfil> a()
+  {
+    return jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(bfil parambfil)
+  {
+    int j = jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    while (i < j)
+    {
+      if ((bfil)jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList.get(i) == parambfil) {
+        return;
+      }
+      i += 1;
     }
-    str = paramView.getContext().getCacheDir() + File.separator + "mini" + File.separator + this.a.a() + File.separator + MainPageFragment.a(this.a).appId;
-    if (new File(str).exists()) {
-      belh.a(str, false);
+    jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList.add(parambfil);
+  }
+  
+  public void b(bfil parambfil)
+  {
+    int j = jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        if ((bfil)jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList.get(i) == parambfil) {
+          jdField_a_of_type_Bffq.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        }
+      }
+      else {
+        return;
+      }
+      i += 1;
     }
-    this.a.getActivity().finish();
-    Process.killProcess(Process.myPid());
-    betc.d("debug", "clear miniapp");
-    Toast.makeText(paramView.getContext(), "清除游戏缓存数据成功!", 1).show();
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bffq
  * JD-Core Version:    0.7.0.1
  */

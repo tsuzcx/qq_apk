@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bbiu;
+import bdhq;
 
 public class QQLSActivity$1
   implements Runnable
@@ -9,13 +9,13 @@ public class QQLSActivity$1
   
   public void run()
   {
-    this.this$0.a = new bbiu(this.this$0.getApplicationContext(), this.this$0);
+    this.this$0.a = new bdhq(this.this$0.getApplicationContext(), this.this$0);
     this.this$0.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.1
  * JD-Core Version:    0.7.0.1
  */

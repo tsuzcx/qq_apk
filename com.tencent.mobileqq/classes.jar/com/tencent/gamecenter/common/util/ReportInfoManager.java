@@ -1,15 +1,19 @@
 package com.tencent.gamecenter.common.util;
 
-import ajac;
-import ajdo;
+import aade;
+import aadf;
+import aadg;
+import aadh;
+import akro;
+import akva;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bbrd;
-import bcyb;
+import bdpx;
+import bexd;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.gamecenter.http.utils.AsyncHttpConnection;
@@ -19,10 +23,6 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yok;
-import yol;
-import yom;
-import yon;
 
 public class ReportInfoManager
 {
@@ -34,7 +34,7 @@ public class ReportInfoManager
   private static final String REPORT_INFO = "report_info";
   private static final String SHAREDPREFERENCES_NAME = "gamecenter_preferences";
   private static ReportInfoManager instance;
-  private ArrayList<yom> reportAdInfoList = new ArrayList();
+  private ArrayList<aadg> reportAdInfoList = new ArrayList();
   
   public static ReportInfoManager getInstance()
   {
@@ -53,11 +53,11 @@ public class ReportInfoManager
   
   public void addReportInfo(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    yom localyom = new yom();
-    localyom.jdField_a_of_type_JavaLangString = paramString1;
-    localyom.jdField_b_of_type_JavaLangString = paramString2;
-    localyom.jdField_c_of_type_JavaLangString = paramString3;
-    this.reportAdInfoList.add(localyom);
+    aadg localaadg = new aadg();
+    localaadg.jdField_a_of_type_JavaLangString = paramString1;
+    localaadg.jdField_b_of_type_JavaLangString = paramString2;
+    localaadg.jdField_c_of_type_JavaLangString = paramString3;
+    this.reportAdInfoList.add(localaadg);
     saveReportInfo(paramContext);
   }
   
@@ -77,11 +77,11 @@ public class ReportInfoManager
             try
             {
               JSONObject localJSONObject = paramString.getJSONObject(i);
-              yom localyom = new yom();
-              localyom.jdField_a_of_type_JavaLangString = localJSONObject.getString("appid");
-              localyom.jdField_b_of_type_JavaLangString = localJSONObject.getString("actionname");
-              localyom.jdField_c_of_type_JavaLangString = localJSONObject.getString("timestamp");
-              this.reportAdInfoList.add(localyom);
+              aadg localaadg = new aadg();
+              localaadg.jdField_a_of_type_JavaLangString = localJSONObject.getString("appid");
+              localaadg.jdField_b_of_type_JavaLangString = localJSONObject.getString("actionname");
+              localaadg.jdField_c_of_type_JavaLangString = localJSONObject.getString("timestamp");
+              this.reportAdInfoList.add(localaadg);
               i += 1;
             }
             catch (JSONException localJSONException)
@@ -114,11 +114,11 @@ public class ReportInfoManager
       Iterator localIterator = this.reportAdInfoList.iterator();
       while (localIterator.hasNext())
       {
-        yom localyom = (yom)localIterator.next();
+        aadg localaadg = (aadg)localIterator.next();
         JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("appid", localyom.jdField_a_of_type_JavaLangString);
-        localJSONObject2.put("actionname", localyom.jdField_b_of_type_JavaLangString);
-        localJSONObject2.put("timestamp", localyom.jdField_c_of_type_JavaLangString);
+        localJSONObject2.put("appid", localaadg.jdField_a_of_type_JavaLangString);
+        localJSONObject2.put("actionname", localaadg.jdField_b_of_type_JavaLangString);
+        localJSONObject2.put("timestamp", localaadg.jdField_c_of_type_JavaLangString);
         localJSONArray.put(localJSONObject2);
         continue;
         return localJSONObject1.toString();
@@ -142,63 +142,63 @@ public class ReportInfoManager
     this.reportAdInfoList.clear();
   }
   
-  public String convertInfoObjectToJson(yon paramyon)
+  public String convertInfoObjectToJson(aadh paramaadh)
   {
-    if (paramyon == null) {
+    if (paramaadh == null) {
       return "{}";
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("uin", paramyon.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("entrance_status", paramyon.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("gamecenter_src", paramyon.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("oper_moudle", paramyon.jdField_a_of_type_Int);
-      localJSONObject.put("module_type", paramyon.jdField_b_of_type_Int);
-      localJSONObject.put("oper_id", paramyon.jdField_c_of_type_Int);
-      localJSONObject.put("sq_ver", paramyon.d);
-      localJSONObject.put("gamecenter_ver", paramyon.e);
-      localJSONObject.put("device_type", paramyon.f);
-      localJSONObject.put("net_type", paramyon.g);
-      localJSONObject.put("resolution", paramyon.h);
-      localJSONObject.put("ret_id", paramyon.i);
+      localJSONObject.put("uin", paramaadh.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("entrance_status", paramaadh.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("gamecenter_src", paramaadh.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("oper_moudle", paramaadh.jdField_a_of_type_Int);
+      localJSONObject.put("module_type", paramaadh.jdField_b_of_type_Int);
+      localJSONObject.put("oper_id", paramaadh.jdField_c_of_type_Int);
+      localJSONObject.put("sq_ver", paramaadh.d);
+      localJSONObject.put("gamecenter_ver", paramaadh.e);
+      localJSONObject.put("device_type", paramaadh.f);
+      localJSONObject.put("net_type", paramaadh.g);
+      localJSONObject.put("resolution", paramaadh.h);
+      localJSONObject.put("ret_id", paramaadh.i);
       return localJSONObject.toString();
     }
-    catch (JSONException paramyon)
+    catch (JSONException paramaadh)
     {
       for (;;)
       {
-        paramyon.printStackTrace();
+        paramaadh.printStackTrace();
       }
     }
   }
   
-  public yon genClickReportInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public aadh genClickReportInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    yon localyon = new yon();
-    localyon.jdField_a_of_type_JavaLangString = paramString1;
-    localyon.jdField_b_of_type_JavaLangString = paramString2;
-    localyon.f = Build.MODEL;
-    localyon.jdField_c_of_type_JavaLangString = "1";
-    localyon.e = paramString3;
-    localyon.jdField_b_of_type_Int = 108;
-    localyon.g = paramString4;
-    localyon.jdField_c_of_type_Int = 16001;
-    localyon.jdField_a_of_type_Int = 1;
-    localyon.h = paramString5;
-    localyon.d = bcyb.a().d();
-    return localyon;
+    aadh localaadh = new aadh();
+    localaadh.jdField_a_of_type_JavaLangString = paramString1;
+    localaadh.jdField_b_of_type_JavaLangString = paramString2;
+    localaadh.f = Build.MODEL;
+    localaadh.jdField_c_of_type_JavaLangString = "1";
+    localaadh.e = paramString3;
+    localaadh.jdField_b_of_type_Int = 108;
+    localaadh.g = paramString4;
+    localaadh.jdField_c_of_type_Int = 16001;
+    localaadh.jdField_a_of_type_Int = 1;
+    localaadh.h = paramString5;
+    localaadh.d = bexd.a().d();
+    return localaadh;
   }
   
-  public void postClickReportInfo(yon paramyon)
+  public void postClickReportInfo(aadh paramaadh)
   {
-    if (paramyon == null) {
+    if (paramaadh == null) {
       return;
     }
-    paramyon = convertInfoObjectToJson(paramyon);
-    long l = paramyon.getBytes().length;
+    paramaadh = convertInfoObjectToJson(paramaadh);
+    long l = paramaadh.getBytes().length;
     String str = String.format("https://report.gamecenter.qq.com/cgi-bin/gc_pg_act_fcgi?appid=%1$s&tt=1&osv=%2$s", new Object[] { Integer.valueOf(AppSetting.a()), Build.VERSION.RELEASE });
-    new AsyncHttpConnection(new yok(this, l)).a(str, paramyon);
+    new AsyncHttpConnection(new aade(this, l)).a(str, paramaadh);
   }
   
   public String readReportInfo(Context paramContext)
@@ -206,29 +206,29 @@ public class ReportInfoManager
     return paramContext.getSharedPreferences("gamecenter_preferences", 0).getString("report_info", "");
   }
   
-  public void reportGameCenterChannel(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt, yol paramyol)
+  public void reportGameCenterChannel(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt, aadf paramaadf)
   {
-    paramyol = new ReportInfoManager.ReportChannlInfo();
-    paramyol.channel_id = paramString2;
-    paramyol.pos_id = paramString3;
-    paramyol.pos_name = paramString4;
-    paramyol.resource_id = paramString5;
-    paramyol.schedule_id = paramString6;
-    paramyol.appid = paramString7;
-    paramyol.oper_type = paramInt;
-    paramyol.act_id = paramString1;
-    paramString1 = ajac.a();
+    paramaadf = new ReportInfoManager.ReportChannlInfo();
+    paramaadf.channel_id = paramString2;
+    paramaadf.pos_id = paramString3;
+    paramaadf.pos_name = paramString4;
+    paramaadf.resource_id = paramString5;
+    paramaadf.schedule_id = paramString6;
+    paramaadf.appid = paramString7;
+    paramaadf.oper_type = paramInt;
+    paramaadf.act_id = paramString1;
+    paramString1 = akro.a();
     if ((paramString1 instanceof QQAppInterface))
     {
-      ((bbrd)paramString1.getBusinessHandler(71)).a(paramyol);
+      ((bdpx)paramString1.getBusinessHandler(71)).a(paramaadf);
       return;
     }
-    ((ajdo)ajac.a().getBusinessHandler(0)).a(paramyol);
+    ((akva)akro.a().getBusinessHandler(0)).a(paramaadf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.ReportInfoManager
  * JD-Core Version:    0.7.0.1
  */

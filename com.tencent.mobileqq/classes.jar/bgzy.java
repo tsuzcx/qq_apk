@@ -1,44 +1,67 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import NS_MINI_INTERFACE.INTERFACE.StGetPhoneNumberReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetPhoneNumberRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
-class bgzy
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+public class bgzy
+  extends bgzp
 {
-  bgzy(bgzx parambgzx) {}
+  private INTERFACE.StGetPhoneNumberReq a = new INTERFACE.StGetPhoneNumberReq();
   
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  public bgzy(String paramString)
   {
-    paramSharedPreferences = BaseApplicationImpl.getApplication().getRuntime();
-    if (paramSharedPreferences != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged key = " + paramString);
-      }
-      if ((!bgzx.a(this.a)) && (bgzx.a(this.a) != null))
-      {
-        if (bgzx.a(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          bgzx.a(this.a, bgzx.a(this.a).getInt(paramString, 0));
-        }
-        if (bgzx.b(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          bgzx.c(this.a, bgzx.a(this.a).getString(paramString, null));
-        }
-        if (bgzx.d(this.a, paramSharedPreferences.getAccount()).equals(paramString)) {
-          bgzx.e(this.a, bgzx.a(this.a).getString(paramString, null));
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneVipInfoManager", 2, "onSharedPreferenceChanged value = " + bgzx.a(this.a) + " personlizedYellowVipUrl = " + bgzx.a(this.a));
-        }
-      }
-      bgzx.a(this.a, false);
+    this.a.appId.set(paramString);
+  }
+  
+  protected String a()
+  {
+    return "mini_user_info";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
+    INTERFACE.StGetPhoneNumberRsp localStGetPhoneNumberRsp = new INTERFACE.StGetPhoneNumberRsp();
+    try
+    {
+      localStGetPhoneNumberRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetPhoneNumberRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("countryCode", localStGetPhoneNumberRsp.countryCode.get());
+        paramArrayOfByte.put("purePhoneNumber", localStGetPhoneNumberRsp.purePhoneNumber.get());
+        paramArrayOfByte.put("iv", localStGetPhoneNumberRsp.iv.get());
+        paramArrayOfByte.put("encryptedData", localStGetPhoneNumberRsp.encryptedData.get());
+        paramArrayOfByte.put("cloudID", "");
+        paramArrayOfByte.put("errMsg", "ok");
+        return paramArrayOfByte;
+      }
+      QMLog.d("getPhoneNumberRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("getPhoneNumberRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetPhoneNumber";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgzy
  * JD-Core Version:    0.7.0.1
  */

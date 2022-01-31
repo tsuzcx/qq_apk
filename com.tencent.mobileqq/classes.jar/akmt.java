@@ -1,112 +1,143 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-import java.util.Collection;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Observable;
-import mqq.manager.Manager;
+import java.util.Map.Entry;
+import java.util.Set;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class akmt
-  extends Observable
-  implements Manager
+  extends alqf
 {
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private HashMap<String, SoftReference<akmv>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public akmt(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public akmt(QQAppInterface paramQQAppInterface)
+  protected void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, Boolean paramBoolean1)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super.a(paramString1, paramString2, paramBoolean, paramString3, paramString4, paramBoolean1);
+    QLog.e("HotchatActivity", 1, String.format("join hotchat uin:%s success:%s errorMsg:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString3 }));
   }
   
-  private akmv a(String paramString)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    for (;;)
+    super.a(paramString1, paramBoolean, paramString2);
+    if (HotChatCenterFragment.a(this.a) != null) {
+      HotChatCenterFragment.a(this.a).sendEmptyMessage(1);
+    }
+    QLog.e("HotchatActivity", 1, String.format("Exit hotchat uin:%s success:%s errorMsg:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString2 }));
+  }
+  
+  public void a(boolean paramBoolean, HotChatInfo paramHotChatInfo, Common.WifiPOIInfo paramWifiPOIInfo, int paramInt, String paramString)
+  {
+    if (!paramBoolean)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      QLog.e("HotchatActivity", 1, String.format("[onQuickJoinHotChat] failed code:%s result:%s", new Object[] { paramString, Integer.valueOf(paramInt) }));
+      paramHotChatInfo = Message.obtain();
+      paramHotChatInfo.what = 3;
+      paramHotChatInfo.obj = alpo.a(2131705922);
+      if (HotChatCenterFragment.a(this.a) != null) {
+        HotChatCenterFragment.a(this.a).sendMessage(paramHotChatInfo);
+      }
+      return;
+      break label181;
+      break label181;
+    }
+    label181:
+    label488:
+    do
+    {
+      do
       {
-        localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (localObject1 != null)
+        Iterator localIterator;
+        do
         {
-          localObject1 = (akmv)((SoftReference)localObject1).get();
-          Object localObject2 = localObject1;
-          if (localObject1 == null)
+          do
           {
-            localObject2 = new akmv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new akmu(this));
-            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject2));
-          }
-          return localObject2;
-        }
-      }
-      Object localObject1 = null;
-    }
-  }
-  
-  public FullMessageSearchResult a(String paramString)
-  {
-    return a(paramString).b();
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.FullMessageSearch", 2, "stopSearch " + this.jdField_a_of_type_JavaUtilHashMap.size());
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject2 = (SoftReference)localIterator.next();
-        if (localObject2 != null)
-        {
-          localObject2 = (akmv)((SoftReference)localObject2).get();
-          if (localObject2 != null) {
-            ((akmv)localObject2).b(2);
-          }
-        }
-      }
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.FullMessageSearch", 2, "pauseSearch " + paramString);
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        paramString = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (paramString != null)
-        {
-          paramString = (akmv)paramString.get();
-          if (paramString != null) {
-            paramString.a();
-          }
+            paramWifiPOIInfo = paramString;
+            if (TextUtils.isEmpty(paramString))
+            {
+              paramWifiPOIInfo = paramString;
+              if (paramHotChatInfo != null) {
+                paramWifiPOIInfo = paramHotChatInfo.name;
+              }
+            }
+            if (paramWifiPOIInfo != null) {
+              break;
+            }
+            paramHotChatInfo = Message.obtain();
+            paramHotChatInfo.obj = alpo.a(2131705920);
+            paramHotChatInfo.what = 3;
+          } while (HotChatCenterFragment.a(this.a) == null);
+          HotChatCenterFragment.a(this.a).sendMessage(paramHotChatInfo);
           return;
+          if ((this.a.a == null) || (this.a.a.size() <= 0)) {
+            break;
+          }
+          localIterator = this.a.a.entrySet().iterator();
+        } while (!localIterator.hasNext());
+        Object localObject = (Map.Entry)localIterator.next();
+        if (localObject == null) {
+          break;
         }
-      }
-      paramString = null;
-    }
+        paramString = (String)((Map.Entry)localObject).getValue();
+        localObject = (String)((Map.Entry)localObject).getKey();
+        if ((TextUtils.isEmpty(paramString)) || (!paramString.equals(paramWifiPOIInfo))) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("HotchatActivity", 2, "onQuickJoinHotChat, hotcode:" + paramWifiPOIInfo);
+        }
+        paramWifiPOIInfo = Message.obtain();
+        if ((paramHotChatInfo == null) || ((paramInt != 1) && (paramInt != 2))) {
+          break label488;
+        }
+        paramWifiPOIInfo.what = 2;
+        paramWifiPOIInfo.obj = new Object[] { paramHotChatInfo.troopUin, paramHotChatInfo.troopCode, paramHotChatInfo.name, Integer.valueOf(paramHotChatInfo.apolloGameId) };
+        if (paramHotChatInfo.apolloGameId > 0) {
+          VipUtils.a(null, "cmshow", "Apollo", "join_reliao", 1, 0, new String[] { String.valueOf(paramHotChatInfo.apolloGameId) });
+        }
+        if (HotChatCenterFragment.a(this.a).get() != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("HotchatActivity", 2, String.format("[onQuickJoinHotChat] remove uin:%s code:%s", new Object[] { localObject, paramString }));
+          }
+          ((alpr)HotChatCenterFragment.a(this.a).get()).b((String)localObject);
+        }
+        this.a.a.remove(localObject);
+      } while (HotChatCenterFragment.a(this.a) == null);
+      HotChatCenterFragment.a(this.a).sendMessage(paramWifiPOIInfo);
+      HotChatCenterFragment.a(this.a).sendEmptyMessage(1);
+      return;
+      QLog.e("HotchatActivity", 1, "[onQuickJoinHotChat] join failed");
+      paramHotChatInfo = Message.obtain();
+      paramHotChatInfo.obj = alpo.a(2131705921);
+      paramHotChatInfo.what = 3;
+    } while (HotChatCenterFragment.a(this.a) == null);
+    HotChatCenterFragment.a(this.a).sendMessage(paramHotChatInfo);
+    return;
+    QLog.e("HotchatActivity", 1, "[onQuickJoinHotChat] not click at all");
   }
   
-  public FullMessageSearchResult b(String paramString)
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    return a(paramString).c();
+    super.a(paramBoolean, paramString1, paramInt, paramString2, paramString3);
+    QLog.e("HotchatActivity", 1, String.format("Kicked out hotchat by admin  uin:%s success:%s errorMsg:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString3 }));
   }
   
-  public void onDestroy()
+  public void b(boolean paramBoolean, String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    a();
+    super.b(paramBoolean, paramString1, paramInt, paramString2, paramString3);
+    QLog.e("HotchatActivity", 1, String.format("Kicked out  hotchat uin:%s success:%s errorMsg:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString3 }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akmt
  * JD-Core Version:    0.7.0.1
  */

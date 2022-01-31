@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.redtouch;
 
 import android.os.Bundle;
-import anqq;
-import anqu;
+import aphy;
+import apic;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import java.util.ArrayList;
@@ -28,13 +28,13 @@ class RedTouchWebviewHandler$2$1
     localBundle.putString("path", this.jdField_b_of_type_JavaLangString);
     localBundle.putString("serial", this.c);
     localBundle.putString("callback", this.jdField_a_of_type_JavaLangString);
-    localObject = anqu.a("redTouch_getAppInfo_report", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$2.this$0.mOnRemoteResp.key, localBundle);
+    localObject = apic.a("redTouch_getAppInfo_report", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$2.this$0.mOnRemoteResp.key, localBundle);
     this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchWebviewHandler$2.this$0.sendRemoteReq((Bundle)localObject, false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchWebviewHandler.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class MiniAppTextArea1$4
   public void run()
   {
     int i;
-    if ((this.this$0.isFocused()) && (MiniAppTextArea1.access$1500(this.this$0)) && (MiniAppTextArea1.access$600(this.this$0) != null))
+    if ((this.this$0.isFocused()) && (MiniAppTextArea1.access$800(this.this$0)) && (MiniAppTextArea1.access$600(this.this$0) != null))
     {
       if ((MiniAppTextArea1.access$600(this.this$0).appBrandRuntime == null) || (MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.getCurPage() == null) || (MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.getCurPage().getNavBar() == null) || (MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.getCurPage().getNavBar().getNavbarStyle() == null)) {
         break label392;
@@ -27,22 +27,22 @@ class MiniAppTextArea1$4
     }
     for (;;)
     {
-      i = DisplayUtil.getRealHeight(this.this$0.getContext()) - (i + (this.this$0.getTop() - MiniAppTextArea1.access$600(this.this$0).getNativeScrollY()) + MiniAppTextArea1.access$1600(this.this$0));
-      if ((MiniAppTextArea1.access$400(this.this$0) > i) && (MiniAppTextArea1.access$1700(this.this$0)) && (MiniAppTextArea1.access$1500(this.this$0)))
+      i = DisplayUtil.getRealHeight(this.this$0.getContext()) - (i + (this.this$0.getTop() - MiniAppTextArea1.access$600(this.this$0).getNativeScrollY()) + MiniAppTextArea1.access$1800(this.this$0));
+      if ((MiniAppTextArea1.access$400(this.this$0) > i) && (MiniAppTextArea1.access$1900(this.this$0)) && (MiniAppTextArea1.access$800(this.this$0)))
       {
-        localObjectAnimator = ObjectAnimator.ofFloat(MiniAppTextArea1.access$600(this.this$0), "translationY", new float[] { MiniAppTextArea1.access$1800(this.this$0), -(MiniAppTextArea1.access$400(this.this$0) - i) });
+        localObjectAnimator = ObjectAnimator.ofFloat(MiniAppTextArea1.access$600(this.this$0), "translationY", new float[] { MiniAppTextArea1.access$2000(this.this$0), -(MiniAppTextArea1.access$400(this.this$0) - i) });
         localObjectAnimator.setDuration(200L);
         localObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         localObjectAnimator.start();
-        MiniAppTextArea1.access$1802(this.this$0, -(MiniAppTextArea1.access$400(this.this$0) - i));
+        MiniAppTextArea1.access$2002(this.this$0, -(MiniAppTextArea1.access$400(this.this$0) - i));
       }
       do
       {
         return;
         i = MiniAppTextArea1.access$600(this.this$0).appBrandRuntime.getCurPage().getNavBar().getHeight();
         break;
-      } while ((MiniAppTextArea1.access$1500(this.this$0)) || (MiniAppTextArea1.access$600(this.this$0) == null));
-      MiniAppTextArea1.access$1802(this.this$0, 0);
+      } while ((MiniAppTextArea1.access$800(this.this$0)) || (MiniAppTextArea1.access$600(this.this$0) == null));
+      MiniAppTextArea1.access$2002(this.this$0, 0);
       ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(MiniAppTextArea1.access$600(this.this$0), "translationY", new float[] { MiniAppTextArea1.access$600(this.this$0).getTranslationY(), 0.0F });
       localObjectAnimator.setDuration(200L);
       localObjectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
@@ -55,7 +55,7 @@ class MiniAppTextArea1$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppTextArea1.4
  * JD-Core Version:    0.7.0.1
  */

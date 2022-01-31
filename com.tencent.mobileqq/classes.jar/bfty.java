@@ -1,22 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.NegativeChildrenLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
-public class bfty
-  implements View.OnClickListener
+class bfty
 {
-  public bfty(NegativeChildrenLayout paramNegativeChildrenLayout) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a != null) {
-      this.a.a.a(paramView);
-    }
-  }
+  bfty(bftx parambftx) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfty
  * JD-Core Version:    0.7.0.1
  */

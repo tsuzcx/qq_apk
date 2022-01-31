@@ -9,8 +9,8 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.v4.util.MQLruCache;
 import android.util.AttributeSet;
-import baxi;
-import bfss;
+import bcwc;
+import bhtp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -18,7 +18,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class RecentDynamicAvatarView
   extends DynamicAvatarView
-  implements bfss
+  implements bhtp
 {
   private static boolean e = false;
   protected float a;
@@ -73,7 +73,7 @@ public class RecentDynamicAvatarView
     Object localObject = "";
     if (paramLong == 1L)
     {
-      i = 2130849337;
+      i = 2130849770;
       localObject = "StatusIcon_TroopPermanentBlockStatusBigIconKey";
       if (i >= 0) {
         break label58;
@@ -87,7 +87,7 @@ public class RecentDynamicAvatarView
       if (paramLong != 2L) {
         break;
       }
-      i = 2130849339;
+      i = 2130849772;
       localObject = "StatusIcon_TroopTmpBlockStatusBigIcon";
       break;
       if (BaseApplicationImpl.sImageCache != null) {
@@ -96,7 +96,7 @@ public class RecentDynamicAvatarView
       localBitmap1 = localBitmap2;
       if (localBitmap2 == null)
       {
-        localBitmap2 = baxi.b(BaseApplicationImpl.getApplication().getResources(), i);
+        localBitmap2 = bcwc.b(BaseApplicationImpl.getApplication().getResources(), i);
         localBitmap1 = localBitmap2;
         if (localBitmap2 != null)
         {
@@ -195,7 +195,7 @@ public class RecentDynamicAvatarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.RecentDynamicAvatarView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,222 +1,113 @@
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Build;
 import android.text.TextUtils;
-import android.util.Base64;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
+import com.tencent.image.AbstractGifImage;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.viola.ui.dom.style.FlexConvertUtils;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.AbsListView;
 
 public class ryp
+  implements bhpo
 {
-  public static String a = "ViolaBizUtils";
-  private static String b = "8.0.6";
+  public ryp(FastWebActivity paramFastWebActivity) {}
   
-  public static String a()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    int j = 1;
-    JSONObject localJSONObject = new JSONObject();
+    if (FastWebActivity.a(this.a) != null)
+    {
+      FastWebActivity.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      FastWebActivity.a(this.a).a(this.a.app, paramAbsListView, paramInt1, paramInt2);
+    }
+    FastWebActivity.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (FastWebActivity.a(this.a) != null) {
+      FastWebActivity.a(this.a).a(FastWebActivity.a(this.a), FastWebActivity.a(this.a).getFirstVisiblePosition(), paramInt2);
+    }
+    FastWebActivity.a(this.a, paramAbsListView, paramInt1 + paramInt2 - 1, false);
+    FastWebActivity.a(this.a, 0);
+    paramAbsListView = paramAbsListView.getChildAt(0);
+    if ((paramAbsListView != null) && (FastWebActivity.c(this.a) != paramAbsListView.getTop()))
+    {
+      FastWebActivity.b(this.a, paramAbsListView.getTop());
+      FastWebActivity.c(this.a, 0);
+    }
+    if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0) && (paramInt1 == 0))
+    {
+      QLog.d(FastWebActivity.a(this.a), 2, "on scroller top");
+      FastWebActivity.a(this.a, 1);
+    }
+    if (paramInt2 + paramInt1 == paramInt3)
+    {
+      QLog.d(FastWebActivity.a(this.a), 2, "on scroller bottom");
+      FastWebActivity.a(this.a, 2);
+    }
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    boolean bool1 = FastWebActivity.a(this.a, FastWebActivity.a(this.a).getLastVisiblePosition());
+    String str1;
+    String str2;
+    if (bool1)
+    {
+      str1 = "list_comment_kandian";
+      str2 = str1;
+      if (pwu.a().a())
+      {
+        str2 = str1;
+        if (TextUtils.equals(str1, "list_kandian_native_web")) {
+          str2 = "list_kandian_native_web_lite";
+        }
+      }
+      if (paramInt != 0) {
+        break label341;
+      }
+      AbstractGifImage.resumeAll();
+      int i = FastWebActivity.a(this.a).getFirstVisiblePosition();
+      FastWebActivity.e(this.a);
+      FastWebActivity.a(this.a, i);
+      abqw.a().a(str2, false);
+      label101:
+      boolean bool2 = FastWebActivity.b(this.a, FastWebActivity.a(this.a).getFirstVisiblePosition());
+      sdn.a(paramAbsListView, paramInt, FastWebActivity.a(this.a).innerUniqueID, FastWebActivity.a(this.a, paramAbsListView, paramInt), bool2);
+      if (FastWebActivity.a(this.a) != null) {
+        FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
+      }
+      FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
+      FastWebActivity.f(this.a);
+      if (FastWebActivity.a(this.a) != null) {
+        FastWebActivity.a(this.a).a(paramAbsListView, paramInt);
+      }
+      if (paramInt == 1) {
+        FastWebActivity.e(this.a);
+      }
+      if (!bool1) {
+        break label355;
+      }
+      FastWebActivity.a(this.a).a();
+      if ((FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a) != null) && (FastWebActivity.a(this.a).a() != null)) {
+        FastWebActivity.a(this.a).a().a(FastWebActivity.a(this.a).getFirstVisiblePosition() - FastWebActivity.a(this.a).getCount(), FastWebActivity.a(this.a).getLastVisiblePosition() - FastWebActivity.a(this.a).getCount());
+      }
+    }
     for (;;)
     {
-      try
-      {
-        localJSONObject.put("platform", "Android");
-        localJSONObject.put("osVersion", bbdh.e());
-        localJSONObject.put("appName", bbdh.c());
-        localJSONObject.put("appVersion", "8.3.0.4480");
-        DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
-        i = (int)(FlexConvertUtils.getScreenHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
-        int k = (int)(FlexConvertUtils.getScreenWidth(BaseApplication.getContext()) / localDisplayMetrics.density);
-        float f = localDisplayMetrics.density;
-        localJSONObject.put("deviceWidth", k);
-        localJSONObject.put("deviceHeight", i);
-        localJSONObject.put("dpToPxRatio", f);
-        localJSONObject.put("deviceModel", Build.MODEL);
-        localJSONObject.put("violaVersion", b);
-        localJSONObject.put("statusBarHeight", ImmersiveUtils.getStatusBarHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
-        localJSONObject.put("appID", "1");
-        localJSONObject.put("isDebug", 0);
-        localJSONObject.put("navBarHeight", DisplayUtil.getNavigationBarHeight(BaseApplication.getContext()) / localDisplayMetrics.density);
-        localJSONObject.put("deviceBrand", Build.BRAND);
-        localJSONObject.put("appVersionId", AppSetting.a());
-        bkvi.a(BaseActivity.sTopActivity);
-        if (!bkvi.b()) {
-          continue;
-        }
-        i = 1;
-        localJSONObject.put("isLiuHai", i);
-        if (bbwq.a() != 1) {
-          continue;
-        }
-        i = j;
-        localJSONObject.put("isKinCard", i);
-        localJSONObject.put("netType", naj.a());
-      }
-      catch (JSONException localJSONException)
-      {
-        int i;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d(a, 2, "env JSONException");
-        continue;
-      }
-      return localJSONObject.toString();
-      i = 0;
-      continue;
-      i = 0;
+      this.a.a(paramAbsListView, paramInt);
+      return;
+      str1 = "list_kandian_native_web";
+      break;
+      label341:
+      AbstractGifImage.pauseAll();
+      abqw.a().a(str2);
+      break label101;
+      label355:
+      FastWebActivity.a(this.a).b();
     }
-  }
-  
-  public static String a(String paramString)
-  {
-    String str = Uri.parse(paramString).getQueryParameter("v_bid");
-    paramString = str;
-    if (TextUtils.isEmpty(str)) {
-      paramString = "-1";
-    }
-    return paramString;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    String str = mzh.a(paramString1);
-    if (TextUtils.isEmpty(str)) {}
-    do
-    {
-      return null;
-      paramString1 = str + paramString1;
-      paramString2 = mzb.d(paramString2);
-    } while (TextUtils.isEmpty(paramString2));
-    return paramString1 + "/" + paramString2;
-  }
-  
-  public static JSONObject a()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("viewDidAppear", 1);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException) {}
-    return new JSONObject();
-  }
-  
-  public static JSONObject a(int paramInt)
-  {
-    try
-    {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("type", paramInt);
-      localJSONObject1.put("pageRefresh", localJSONObject2);
-      return localJSONObject1;
-    }
-    catch (JSONException localJSONException) {}
-    return new JSONObject();
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
-      String str;
-      do
-      {
-        return false;
-        str = Uri.parse(paramString).getQueryParameter("v_bid");
-      } while (TextUtils.isEmpty(str));
-      paramString = a(str, paramString);
-    } while ((TextUtils.isEmpty(paramString)) || (!new File(paramString).exists()));
-    return true;
-  }
-  
-  public static String b()
-  {
-    long l = System.currentTimeMillis();
-    return "&time=" + String.valueOf(l).substring(0, 7);
-  }
-  
-  public static String b(String paramString)
-  {
-    String str = Uri.parse(paramString).getQueryParameter("v_bid");
-    if (TextUtils.isEmpty(str)) {
-      return null;
-    }
-    return a(str, paramString);
-  }
-  
-  public static JSONObject b()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("viewDidDisappear", 1);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException) {}
-    return new JSONObject();
-  }
-  
-  public static String c(String paramString)
-  {
-    SharedPreferences localSharedPreferences;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localSharedPreferences = bhvy.a(BaseApplicationImpl.getApplication().getRuntime(), true, true);
-      if (localSharedPreferences == null) {
-        QLog.d(a, 1, "failed to getItem");
-      }
-    }
-    else
-    {
-      return null;
-    }
-    return localSharedPreferences.getString(paramString, null);
-  }
-  
-  public static JSONObject c()
-  {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("pageDestroy", 1);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException) {}
-    return new JSONObject();
-  }
-  
-  public static String d(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str;
-    do
-    {
-      do
-      {
-        return paramString;
-      } while (!paramString.contains("v_url_base64"));
-      str = Uri.parse(paramString).getQueryParameter("v_url_base64");
-    } while (TextUtils.isEmpty(str));
-    return new String(Base64.decode(str, 0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryp
  * JD-Core Version:    0.7.0.1
  */

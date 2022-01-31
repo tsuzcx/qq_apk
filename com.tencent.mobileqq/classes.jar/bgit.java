@@ -1,39 +1,47 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.mobileqq.redtouch.RedTouchUI;
-import cooperation.comic.VipComicJumpActivity;
-import cooperation.comic.ui.QQComicTabBarView;
-import java.util.List;
+import java.io.Closeable;
+import java.io.InputStream;
 
-public class bgit
-  implements bgig
+public final class bgit
+  implements Closeable
 {
-  public bgit(QQComicTabBarView paramQQComicTabBarView) {}
+  private final long jdField_a_of_type_Long;
+  private final String jdField_a_of_type_JavaLangString;
+  private final long[] jdField_a_of_type_ArrayOfLong;
+  private final InputStream[] jdField_a_of_type_ArrayOfJavaIoInputStream;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  private bgit(bgin parambgin, String paramString, long paramLong, InputStream[] paramArrayOfInputStream, long[] paramArrayOfLong)
   {
-    paramInt1 = this.a.a();
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (paramInt1 < 0) || (paramInt1 >= this.a.jdField_a_of_type_JavaUtilList.size())) {}
-    RedTouchUI localRedTouchUI;
-    RedAppInfo localRedAppInfo;
-    do
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ArrayOfJavaIoInputStream = paramArrayOfInputStream;
+    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
+  }
+  
+  public InputStream a(int paramInt)
+  {
+    return this.jdField_a_of_type_ArrayOfJavaIoInputStream[paramInt];
+  }
+  
+  public String a(int paramInt)
+  {
+    return bgin.a(a(paramInt));
+  }
+  
+  public void close()
+  {
+    InputStream[] arrayOfInputStream = this.jdField_a_of_type_ArrayOfJavaIoInputStream;
+    int j = arrayOfInputStream.length;
+    int i = 0;
+    while (i < j)
     {
-      return;
-      paramInt2 = VipComicJumpActivity.a("fav", this.a.jdField_a_of_type_JavaUtilList);
-      if ((paramBoolean) && (paramInt1 != paramInt2))
-      {
-        this.a.a(paramInt2);
-        return;
-      }
-      localRedTouchUI = (RedTouchUI)this.a.jdField_a_of_type_Bgji.get("1113.100801");
-      localRedAppInfo = (RedAppInfo)this.a.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2);
-    } while ((localRedTouchUI == null) || (!localRedTouchUI.a()) || (localRedAppInfo == null) || (localRedTouchUI.a != localRedAppInfo));
-    this.a.a(paramInt2, true);
+      bgiu.a(arrayOfInputStream[i]);
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgit
  * JD-Core Version:    0.7.0.1
  */

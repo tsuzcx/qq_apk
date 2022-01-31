@@ -5,7 +5,6 @@ import NS_MINI_USERAUTH.MiniUserAuth.StApiScopeEntry;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import berj;
 import com.tencent.mobileqq.pb.PBStringField;
 import java.io.Serializable;
 import org.json.JSONObject;
@@ -13,14 +12,14 @@ import org.json.JSONObject;
 public class ApiScopeEntry
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator<ApiScopeEntry> CREATOR = new berj();
+  public static final Parcelable.Creator<ApiScopeEntry> CREATOR = new ApiScopeEntry.1();
   public String apiName;
   public String eventName;
   public String scope;
   
   public ApiScopeEntry() {}
   
-  public ApiScopeEntry(Parcel paramParcel)
+  protected ApiScopeEntry(Parcel paramParcel)
   {
     this.eventName = paramParcel.readString();
     this.apiName = paramParcel.readString();
@@ -88,7 +87,7 @@ public class ApiScopeEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.ApiScopeEntry
  * JD-Core Version:    0.7.0.1
  */

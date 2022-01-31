@@ -1,74 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import NS_MINI_APP_MISC.MISC.StAppPlayingInfo;
+import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class asej
+class asej
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
-  public String c;
+  asej(asei paramasei, MISC.StAppPlayingInfo paramStAppPlayingInfo) {}
   
-  public static asej a(JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    if (paramJSONObject != null) {
-      for (;;)
-      {
-        try
-        {
-          localObject = new asej();
-          try
-          {
-            if (paramJSONObject.has("tip"))
-            {
-              ((asej)localObject).a = paramJSONObject.getString("tip");
-              if (!paramJSONObject.has("key_word")) {
-                continue;
-              }
-              ((asej)localObject).b = paramJSONObject.getString("key_word");
-              if (!paramJSONObject.has("jump_url")) {
-                continue;
-              }
-              ((asej)localObject).c = paramJSONObject.getString("jump_url");
-              return localObject;
-            }
-            ((asej)localObject).a = "";
-            continue;
-            localObject = paramJSONObject;
-          }
-          catch (Exception localException1)
-          {
-            paramJSONObject = (JSONObject)localObject;
-          }
-        }
-        catch (Exception localException2)
-        {
-          paramJSONObject = null;
-          continue;
-        }
-        if (!QLog.isColorLevel()) {
-          return localObject;
-        }
-        QLog.i("CUOpenCardGuideMng", 2, "GuideEntry-parse", localException1);
-        return paramJSONObject;
-        ((asej)localObject).b = "";
-        continue;
-        ((asej)localObject).c = "";
-        return localObject;
-      }
+    if ((this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo.appId.get())) && (paramView != null)) {
+      MiniAppLauncher.launchMiniAppById(paramView.getContext(), this.jdField_a_of_type_NS_MINI_APP_MISCMISC$StAppPlayingInfo.appMetaInfo.appId.get(), null, null, null, null, asei.a(this.jdField_a_of_type_Asei));
     }
-    Object localObject = null;
-    return localObject;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[tip:").append(this.a).append(", key_word:").append(this.b).append(", jump_url:").append(this.c).append("]");
-    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asej
  * JD-Core Version:    0.7.0.1
  */

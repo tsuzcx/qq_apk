@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.BannerAdapter;
+import com.tencent.widget.AbsListView;
 
-public class rum
-  implements View.OnClickListener
+class rum
+  extends pdi
 {
-  public rum(BannerAdapter paramBannerAdapter, int paramInt) {}
-  
-  public void onClick(View paramView)
+  rum(ruk paramruk, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetBannerBannerAdapter.a(this.jdField_a_of_type_Int);
+    super(paramString);
+  }
+  
+  public void a(pdc parampdc)
+  {
+    parampdc.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rum
  * JD-Core Version:    0.7.0.1
  */

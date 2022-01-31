@@ -1,71 +1,113 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import cooperation.comic.VipComicJumpActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class anym
-  implements anzf
+  implements anyn
 {
-  public anym(EmoticonMainPanel paramEmoticonMainPanel, int paramInt, long paramLong) {}
-  
-  public void a()
+  private void a(Context paramContext, JSONObject paramJSONObject)
   {
-    int k = 1;
-    int j = this.jdField_a_of_type_Int;
-    int i = j;
-    List localList;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h)
+    Intent localIntent = new Intent(paramContext, VipComicJumpActivity.class);
+    localIntent.addFlags(268435456);
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonMainPanel", 2, "switchTabMode mMarketPgkDownloaded = true");
-      }
-      localList = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList;
-      i = j;
-      if (localList != null)
-      {
-        i = j;
-        if (localList.size() > 0)
-        {
-          if ((localList.size() <= EmoticonMainPanel.e) || (((aoap)localList.get(EmoticonMainPanel.e)).jdField_a_of_type_Int != 8)) {
-            break label163;
-          }
-          i = 1;
-          if (!((anrx)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(334)).c()) {
-            break label198;
-          }
-        }
-      }
+      localJSONObject.put("jumpto", "com.qqcomic.activity.reader.VipComicPortraitReadingActivity");
+      localJSONObject.put("comic", paramJSONObject);
+      localJSONObject.put("from", Integer.parseInt("1041001"));
+      label59:
+      localIntent.putExtra("options", localJSONObject.toString());
+      paramContext.startActivity(localIntent);
+      return;
     }
-    label163:
-    label198:
-    for (j = k;; j = 0)
+    catch (Exception paramJSONObject)
     {
-      if (i != 0) {
-        if (localList.size() >= j + 4) {
-          i = j + 3;
-        }
+      break label59;
+    }
+  }
+  
+  private void b(Context paramContext, ColorNote paramColorNote)
+  {
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_floatwin");
+    localIntent.putExtra("url", paramColorNote.getSubType());
+    localIntent.putExtra("subType", paramColorNote.mSubType);
+    localIntent.putExtra("fragmentStyle", 1);
+    localIntent.putExtra("tabBarStyle", 1);
+    localIntent.putExtra("titleBarStyle", 1);
+    localIntent.addFlags(268435456);
+    paramContext.startActivity(localIntent);
+  }
+  
+  private void b(Context paramContext, JSONObject paramJSONObject)
+  {
+    Intent localIntent = new Intent(paramContext, VipComicJumpActivity.class);
+    localIntent.addFlags(268435456);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("jumpto", "com.qqcomic.activity.media.VipComicMediaPlayActivity");
+      localJSONObject.put("comic", paramJSONObject);
+      label46:
+      localIntent.putExtra("options", localJSONObject.toString());
+      paramContext.startActivity(localIntent);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      break label46;
+    }
+  }
+  
+  public void a(Context paramContext, ColorNote paramColorNote)
+  {
+    try
+    {
+      localObject = paramColorNote.getReserve();
+      if (localObject == null)
+      {
+        QLog.e("BoodoLauncher", 2, "color note reserve is null");
+        return;
       }
+      localObject = new JSONObject(new String((byte[])localObject));
+    }
+    catch (JSONException localJSONException)
+    {
+      int i;
+      JSONObject localJSONObject;
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h = false;
-        EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_Long, i);
-        return;
-        i = 0;
-        break;
-        i = 0;
-        continue;
-        if (localList.size() >= j + 3) {
-          i = j + 2;
-        } else {
-          i = 0;
-        }
+        Object localObject;
+        QLog.e("BoodoLauncher", 1, localJSONException, new Object[0]);
+        localJSONObject = null;
       }
+      if (i != 1) {
+        break label92;
+      }
+      a(paramContext, localJSONObject);
+      return;
+      label92:
+      if (i != 3) {
+        return;
+      }
+      b(paramContext, localJSONObject);
+    }
+    i = ((JSONObject)localObject).optInt("colorNoteType", 0);
+    if (i == 2)
+    {
+      b(paramContext, paramColorNote);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anym
  * JD-Core Version:    0.7.0.1
  */

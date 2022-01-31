@@ -1,22 +1,22 @@
-public class agef
+import android.app.Activity;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+
+class agef
+  implements EIPCResultCallback
 {
-  public String a;
+  agef(agee paramagee) {}
   
-  public agef(String paramString)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a = paramString;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("keyword = ").append(this.a);
-    return localStringBuilder.toString();
+    if (-102 == paramEIPCResult.code) {
+      agdi.n(this.a.a).finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agef
  * JD-Core Version:    0.7.0.1
  */

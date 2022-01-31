@@ -1,73 +1,57 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
 import com.tencent.qphone.base.util.QLog;
 
-public final class andk
-  extends ampa<andj>
+public class andk
+  implements View.OnClickListener
 {
-  public static void b()
-  {
-    QLog.d("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "initConfig");
-    andj.a(false, (andj)ampl.a().a(501));
-  }
+  public andk(QRScanEntryView paramQRScanEntryView) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 501;
-  }
-  
-  @NonNull
-  public andj a(int paramInt)
-  {
-    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
-    return new andj();
-  }
-  
-  @Nullable
-  public andj a(amph[] paramArrayOfamph)
-  {
-    return andj.a(paramArrayOfamph);
-  }
-  
-  public Class<andj> a()
-  {
-    return andj.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.e("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onReqFailed: " + paramInt);
-  }
-  
-  public void a(andj paramandj)
-  {
-    QLog.w("TdsReaderView_TdsReaderGrayConfigProcessor", 1, "onUpdate");
-    andj.a(true, paramandj);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    boolean bool2 = false;
+    if (QRScanEntryView.a(this.a))
+    {
+      paramView = anbk.a();
+      if (!QRScanEntryView.b(this.a))
+      {
+        bool1 = true;
+        if (paramView.a(bool1))
+        {
+          paramView = this.a;
+          if (QRScanEntryView.b(this.a)) {
+            break label118;
+          }
+          bool1 = true;
+          QRScanEntryView.a(paramView, bool1);
+          paramView = (anbp)this.a.a;
+          bool1 = bool2;
+          if (!QRScanEntryView.b(this.a)) {
+            bool1 = true;
+          }
+          paramView.a(bool1, 0L);
+          QRScanEntryView.a(this.a, true);
+          QRScanEntryView.b(this.a, QRScanEntryView.b(this.a));
+        }
+      }
+    }
+    label118:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        return;
+        boolean bool1 = false;
+        continue;
+        bool1 = false;
+      }
+    }
+    QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andk
  * JD-Core Version:    0.7.0.1
  */

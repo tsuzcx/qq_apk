@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiBasicInfo;
-
-public final class bhfq
-  implements Parcelable.Creator<WeishiBasicInfo>
+public abstract interface bhfq
 {
-  public WeishiBasicInfo a(Parcel paramParcel)
-  {
-    return new WeishiBasicInfo(paramParcel);
-  }
+  public abstract void onValCancel();
   
-  public WeishiBasicInfo[] a(int paramInt)
-  {
-    return new WeishiBasicInfo[paramInt];
-  }
+  public abstract void onValChange(int paramInt1, int paramInt2);
+  
+  public abstract void onValConfirm(int[] paramArrayOfInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhfq
  * JD-Core Version:    0.7.0.1
  */

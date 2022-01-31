@@ -1,26 +1,25 @@
+import com.tencent.qphone.base.util.QLog;
+
 class argn
-  implements argp
+  extends alsi
 {
-  argn(argm paramargm) {}
+  argn(argh paramargh) {}
   
-  public void a(int paramInt, String paramString)
+  protected void a(int paramInt1, int paramInt2)
   {
-    try
+    if (paramInt1 == 0)
     {
-      if (argm.a(this.a) != null) {
-        argm.a(this.a).a(paramInt, paramString);
+      if (argh.b(this.a)) {
+        armz.a(2131694531);
       }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+      argh.a(this.a, false);
+      QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "PC offline!");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     argn
  * JD-Core Version:    0.7.0.1
  */

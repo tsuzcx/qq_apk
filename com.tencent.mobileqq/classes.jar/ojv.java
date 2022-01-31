@@ -1,87 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.CommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class ojv
-  implements BusinessObserver
+  implements ViewBase.OnClickListener
 {
-  ojv(oju paramoju, BaseCommentData paramBaseCommentData) {}
+  ojv(ojn paramojn) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(ViewBase paramViewBase)
   {
-    int i = 1;
-    if (paramBoolean) {}
-    for (;;)
+    if (this.a.jdField_a_of_type_Omt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          break label249;
-        }
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        paramInt = localWebSsoResponseBody.ret.get();
-        paramBundle = localWebSsoResponseBody.data.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyCommentSSOModule", 2, "deleteComment ret=" + paramBundle);
-        }
-        paramBundle = new JSONObject(paramBundle);
-        if (paramInt != 0)
-        {
-          paramBundle.optString("msg");
-          paramInt = 0;
-          i = paramInt;
-          if ((i == 0) && (oju.a(this.jdField_a_of_type_Oju) != null)) {
-            oju.a(this.jdField_a_of_type_Oju).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData);
-          }
-          return;
-        }
-        paramInt = paramBundle.optInt("ret");
-        if (paramInt != 0) {
-          break label249;
-        }
-        paramInt = i;
-        try
-        {
-          if (oju.a(this.jdField_a_of_type_Oju) == null) {
-            continue;
-          }
-          oju.a(this.jdField_a_of_type_Oju).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData);
-          paramInt = i;
-        }
-        catch (Exception paramBundle)
-        {
-          paramInt = 1;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramInt = 0;
-        continue;
-      }
-      paramBundle.getLocalizedMessage();
-      paramBundle.printStackTrace();
-      i = paramInt;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ReadInJoyCommentSSOModule", 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
-        i = paramInt;
-        continue;
-        label249:
-        paramInt = 0;
-      }
+      paramViewBase = new oke(this.a.jdField_a_of_type_Omt).a().a();
+      nrt.a(null, olt.a(this.a.jdField_a_of_type_Omt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), "0X8009010", "0X8009010", 0, 0, String.valueOf(this.a.jdField_a_of_type_Omt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), String.valueOf(this.a.jdField_a_of_type_Omt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), this.a.jdField_a_of_type_Omt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, paramViewBase, false);
     }
+    if (((this.a.jdField_a_of_type_Omt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData instanceof CommentData)) && (((CommentData)this.a.jdField_a_of_type_Omt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData).subCommentNum > 0))
+    {
+      if ((this.a.jdField_a_of_type_Omg instanceof ola)) {
+        ((ola)this.a.jdField_a_of_type_Omg).a(this.a.jdField_a_of_type_Omt, ojm.a(this.a.jdField_a_of_type_Omt, 0));
+      }
+      return;
+    }
+    this.a.jdField_a_of_type_Omg.a(this.a.jdField_a_of_type_Omt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ojv
  * JD-Core Version:    0.7.0.1
  */

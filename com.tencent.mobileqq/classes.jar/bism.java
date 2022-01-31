@@ -1,24 +1,31 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-class bism
-  implements Animation.AnimationListener
+public class bism
+  implements bisl
 {
-  bism(bisl parambisl) {}
+  public void a() {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    bisl.a(this.a).setVisibility(4);
-  }
+  public void a(String paramString) {}
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void b() {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public void i() {}
+  
+  public void j() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bism
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel.9.1;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.location.ui.LocationDialogUtil.9;
 
 public class atmz
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  atmz(atlw paramatlw) {}
+  public atmz(LocationDialogUtil.9 param9) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.c(paramView);
-    new atix().h("video").i("playpage_like_click").b().a(this.a.a);
-    ThreadManagerV2.excute(new PlayOperationViewModel.9.1(this, (aszf)this.a.a.getManager(106)), 16, null, false);
+    if (atmi.a(this.a.a)) {
+      this.a.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atmz
  * JD-Core Version:    0.7.0.1
  */

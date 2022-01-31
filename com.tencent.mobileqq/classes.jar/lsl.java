@@ -1,57 +1,183 @@
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+
 public class lsl
 {
-  private static float jdField_a_of_type_Float = (float)(Math.log(0.75D) / Math.log(0.9D));
-  private static final float[] jdField_a_of_type_ArrayOfFloat;
-  private static float b = 800.0F;
-  private static float c = 0.4F;
-  private static float d = 1.0F - c;
-  private static float e;
-  private static float f = 1.0F / a(1.0F);
+  private static float jdField_a_of_type_Float = -1.0F;
+  private static int jdField_a_of_type_Int = -1;
+  private static int b = -1;
   
-  static
+  public static float a()
   {
-    jdField_a_of_type_ArrayOfFloat = new float[101];
-    float f1 = 0.0F;
-    int i = 0;
-    if (i <= 100)
+    if (jdField_a_of_type_Float != -1.0F) {
+      return jdField_a_of_type_Float;
+    }
+    for (;;)
     {
-      float f4 = i / 100.0F;
-      float f2 = 1.0F;
-      for (;;)
+      try
       {
-        float f3 = (f2 - f1) / 2.0F + f1;
-        float f5 = 3.0F * f3 * (1.0F - f3);
-        float f6 = ((1.0F - f3) * c + d * f3) * f5 + f3 * f3 * f3;
-        if (Math.abs(f6 - f4) < 1.E-005D)
-        {
-          jdField_a_of_type_ArrayOfFloat[i] = (f3 * f3 * f3 + f5);
-          i += 1;
-          break;
+        lrh locallrh = lrh.a();
+        if (locallrh == null) {
+          continue;
         }
-        if (f6 > f4) {
-          f2 = f3;
-        } else {
-          f1 = f3;
+        jdField_a_of_type_Float = locallrh.a();
+        if (QLog.isColorLevel()) {
+          QLog.w("LowlightAndDenoiseTools", 1, "getVideodenoiseRatio[" + jdField_a_of_type_Float + "]");
         }
       }
+      catch (Exception localException)
+      {
+        QLog.w("LowlightAndDenoiseTools", 1, "getVideoDenoiseRatio, Excpetion", localException);
+        jdField_a_of_type_Float = 15.0F;
+        continue;
+      }
+      return jdField_a_of_type_Float;
+      jdField_a_of_type_Float = 15.0F;
     }
-    jdField_a_of_type_ArrayOfFloat[100] = 1.0F;
-    e = 8.0F;
-    f = 1.0F;
   }
   
-  static float a(float paramFloat)
+  static boolean a()
   {
-    paramFloat = e * paramFloat;
-    if (paramFloat < 1.0F) {}
-    for (paramFloat -= 1.0F - (float)Math.exp(-paramFloat);; paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * (1.0F - 0.3678795F) + 0.3678795F) {
-      return paramFloat * f;
+    return lsa.a(8, 1800000, -2147483648);
+  }
+  
+  public static boolean b()
+  {
+    if (AudioHelper.a(12) == 1)
+    {
+      AudioHelper.a(alpo.a(2131706776));
+      return true;
+    }
+    if (AudioHelper.a(12) == 0)
+    {
+      AudioHelper.a(alpo.a(2131706778));
+      return true;
+    }
+    if (jdField_a_of_type_Int == -1) {}
+    for (;;)
+    {
+      try
+      {
+        locallrh = lrh.a();
+        if (locallrh == null) {
+          continue;
+        }
+        if (!locallrh.a()) {
+          continue;
+        }
+        jdField_a_of_type_Int = 1;
+        i = 1;
+      }
+      catch (Exception localException)
+      {
+        lrh locallrh;
+        QLog.w("LowlightAndDenoiseTools", 1, "isSupportLowlight, Excpetion", localException);
+        jdField_a_of_type_Int = 0;
+        continue;
+        int i = 4;
+        jdField_a_of_type_Int = 0;
+        continue;
+        i = 5;
+        jdField_a_of_type_Int = 0;
+        continue;
+        i = 0;
+        continue;
+      }
+      if (jdField_a_of_type_Int == -1)
+      {
+        if (!mvh.b()) {
+          continue;
+        }
+        if (!a()) {
+          continue;
+        }
+        i = 3;
+        jdField_a_of_type_Int = 1;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("LowlightAndDenoiseTools", 1, "isSupportLowlight[" + jdField_a_of_type_Int + "], step[" + i + "]");
+      }
+      if (jdField_a_of_type_Int == 1) {
+        break;
+      }
+      return false;
+      if (!locallrh.b()) {
+        continue;
+      }
+      i = 2;
+      jdField_a_of_type_Int = 0;
+    }
+  }
+  
+  public static boolean c()
+  {
+    if (AudioHelper.a(12) == 1)
+    {
+      AudioHelper.a(alpo.a(2131706775));
+      return true;
+    }
+    if (AudioHelper.a(12) == 0)
+    {
+      AudioHelper.a(alpo.a(2131706777));
+      return true;
+    }
+    if (b == -1) {}
+    try
+    {
+      locallrh = lrh.a();
+      if (locallrh == null) {
+        break label187;
+      }
+      if (!locallrh.c()) {
+        break label145;
+      }
+      b = 1;
+      jdField_a_of_type_Float = 25.0F;
+      i = 1;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        lrh locallrh;
+        label70:
+        QLog.w("LowlightAndDenoiseTools", 1, "isSupportVideoDenoiseFlag, Excpetion", localException);
+        b = 0;
+        continue;
+        int i = 0;
+      }
+    }
+    if (b == -1)
+    {
+      if (!a()) {
+        break label161;
+      }
+      b = 1;
+    }
+    for (i = 3;; i = 4)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("LowlightAndDenoiseTools", 1, "isSupportVideoDenoiseFlag[" + b + "], step[" + i + "]");
+      }
+      if (b == 1) {
+        break;
+      }
+      return false;
+      label145:
+      if (!locallrh.d()) {
+        break label187;
+      }
+      b = 0;
+      i = 2;
+      break label70;
+      label161:
+      b = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lsl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aedq;
+import agae;
 import android.view.View;
-import bahf;
-import bahr;
+import bcfr;
+import bcgd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForTroopGift;
 import com.tencent.qphone.base.util.QLog;
@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 public class TroopGiftMsgItemBuilder$TroopGiftMsgHolder$1
   implements Runnable
 {
-  public TroopGiftMsgItemBuilder$TroopGiftMsgHolder$1(aedq paramaedq, bahr parambahr) {}
+  public TroopGiftMsgItemBuilder$TroopGiftMsgHolder$1(agae paramagae, bcgd parambcgd) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class TroopGiftMsgItemBuilder$TroopGiftMsgHolder$1
       if (QLog.isColorLevel()) {
         QLog.d("ChatItemBuilder", 2, "GONE uniseq = " + this.this$0.a.uniseq);
       }
-      ((bahf)aedq.a(this.this$0).getManager(223)).b(this.this$0);
+      ((bcfr)agae.a(this.this$0).getManager(223)).b(this.this$0);
       this.this$0.d.setVisibility(8);
       return;
     }
@@ -34,7 +34,7 @@ public class TroopGiftMsgItemBuilder$TroopGiftMsgHolder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.TroopGiftMsgHolder.1
  * JD-Core Version:    0.7.0.1
  */

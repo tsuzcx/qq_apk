@@ -1,65 +1,39 @@
-import android.content.Intent;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDanceMachine;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class veo
-  extends akat
+class veo
+  implements awfy
 {
-  public veo(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
+  veo(ven paramven) {}
   
-  public void a(MessageForDanceMachine paramMessageForDanceMachine)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    super.a(paramMessageForDanceMachine);
-    if (!DanceMachineUploadVideoFragment.a(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("UploadDanceMachineVideo", 2, "do not need callback");
-      }
-    }
-    do
+    return null;
+  }
+  
+  public void a(awfz paramawfz) {}
+  
+  public void b(awfz paramawfz)
+  {
+    if ((paramawfz.jdField_b_of_type_Int == 0) && (!TextUtils.isEmpty(paramawfz.jdField_b_of_type_JavaLangString)))
     {
+      this.a.a("UploadImageJob_out_image_url", paramawfz.jdField_b_of_type_JavaLangString);
+      ven.a(this.a, true);
       return;
-      DanceMachineUploadVideoFragment.a(this.a, false);
-      if (paramMessageForDanceMachine != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("UploadDanceMachineVideo", 2, "mfd is null");
-    return;
+    }
+    paramawfz = new ErrorMessage(paramawfz.jdField_b_of_type_Int, paramawfz.a);
     if (QLog.isColorLevel()) {
-      QLog.d("UploadDanceMachineVideo", 2, "uuid : " + paramMessageForDanceMachine.uuid + "  md5 : " + paramMessageForDanceMachine.md5 + " thumbFilePath : " + paramMessageForDanceMachine.mThumbFilePath);
+      QLog.e(this.a.jdField_b_of_type_JavaLangString, 2, paramawfz, new Object[0]);
     }
-    if (paramMessageForDanceMachine.errorCode == 0)
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("upload_result", true);
-      localIntent.putExtra("upload_video_uuid", paramMessageForDanceMachine.uuid);
-      localIntent.putExtra("upload_video_md5", paramMessageForDanceMachine.md5);
-      localIntent.putExtra("upload_video_thumb", paramMessageForDanceMachine.mThumbFilePath);
-      localIntent.putExtra("share_method", DanceMachineUploadVideoFragment.a(this.a));
-      localIntent.putExtra("current_nickname", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-      localIntent.putExtra("current_uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-      if (DanceMachineUploadVideoFragment.a(this.a) != -1L) {
-        localIntent.putExtra("upload_time_cost", SystemClock.elapsedRealtime() - DanceMachineUploadVideoFragment.a(this.a));
-      }
-      paramMessageForDanceMachine = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-      BaseActivity localBaseActivity = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-      paramMessageForDanceMachine.setResult(-1, localIntent);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(2);
-    }
+    ven.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     veo
  * JD-Core Version:    0.7.0.1
  */

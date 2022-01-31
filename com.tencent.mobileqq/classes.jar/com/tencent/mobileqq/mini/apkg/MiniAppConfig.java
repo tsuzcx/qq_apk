@@ -19,6 +19,7 @@ public class MiniAppConfig
   public MiniAppInfo config;
   public String entryPath;
   public int forceReroad;
+  public int gameAdsTotalTime;
   public boolean isFromShowInfo;
   public boolean isSdkMode;
   public LaunchParam launchParam;
@@ -162,7 +163,7 @@ public class MiniAppConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.MiniAppConfig
  * JD-Core Version:    0.7.0.1
  */

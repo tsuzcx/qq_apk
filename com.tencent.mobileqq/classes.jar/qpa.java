@@ -1,32 +1,92 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import eipc.EIPCResult;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
-class qpa
-  extends QIPCModule
+public class qpa
 {
-  qpa(qoz paramqoz, String paramString)
+  private int jdField_a_of_type_Int = 9;
+  private long[] jdField_a_of_type_ArrayOfLong = new long[this.jdField_a_of_type_Int];
+  private long[] b = new long[this.jdField_a_of_type_Int];
+  private long[] c = new long[this.jdField_a_of_type_Int];
+  private long[] d = new long[this.jdField_a_of_type_Int];
+  private long[] e = new long[this.jdField_a_of_type_Int];
+  private long[] f = new long[this.jdField_a_of_type_Int];
+  
+  public qpa(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  
+  public void a(int paramInt, long paramLong)
   {
-    super(paramString);
+    if (paramInt < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_ArrayOfLong[paramInt] = paramLong;
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public long[] a()
   {
-    synchronized (qoz.a(this.a))
-    {
-      Iterator localIterator = qoz.a(this.a).iterator();
-      if (localIterator.hasNext()) {
-        ((qpb)localIterator.next()).a(paramString, paramBundle);
-      }
+    return this.c;
+  }
+  
+  public void b(int paramInt, long paramLong)
+  {
+    if (paramInt < this.jdField_a_of_type_Int) {
+      this.b[paramInt] = paramLong;
     }
-    return null;
+  }
+  
+  public long[] b()
+  {
+    return this.d;
+  }
+  
+  public void c(int paramInt, long paramLong)
+  {
+    if (paramInt < this.jdField_a_of_type_Int) {
+      this.c[paramInt] = paramLong;
+    }
+  }
+  
+  public long[] c()
+  {
+    return this.b;
+  }
+  
+  public void d(int paramInt, long paramLong)
+  {
+    if (paramInt < this.jdField_a_of_type_Int) {
+      this.d[paramInt] = paramLong;
+    }
+  }
+  
+  public long[] d()
+  {
+    return this.jdField_a_of_type_ArrayOfLong;
+  }
+  
+  public void e(int paramInt, long paramLong)
+  {
+    if (paramInt < this.jdField_a_of_type_Int) {
+      this.e[paramInt] = paramLong;
+    }
+  }
+  
+  public long[] e()
+  {
+    return this.f;
+  }
+  
+  public void f(int paramInt, long paramLong)
+  {
+    if (paramInt < this.jdField_a_of_type_Int) {
+      this.f[paramInt] = paramLong;
+    }
+  }
+  
+  public long[] f()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qpa
  * JD-Core Version:    0.7.0.1
  */

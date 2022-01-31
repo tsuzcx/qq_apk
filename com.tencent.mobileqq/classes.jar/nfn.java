@@ -1,61 +1,24 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerIndicator;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerViewPager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.view.Window;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
 public class nfn
-  implements ViewPager.OnPageChangeListener
+  implements View.OnLayoutChangeListener
 {
-  public nfn(AccountDetailBannerViewPager paramAccountDetailBannerViewPager) {}
+  public nfn(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AccountDetailBannerViewPager", 2, "onPageScrollStateChanged->" + paramInt);
-    }
-    AccountDetailBannerViewPager.a(this.a, paramInt);
-    if (AccountDetailBannerViewPager.a(this.a) != null)
-    {
-      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
-      }
-    }
-  }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
-  {
-    if (AccountDetailBannerViewPager.a(this.a) != null)
-    {
-      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
-      }
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AccountDetailBannerViewPager", 2, "onPageSelected->" + paramInt);
-    }
-    if (AccountDetailBannerViewPager.a(this.a) != null)
-    {
-      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
-      }
-    }
-    if (AccountDetailBannerViewPager.a(this.a) != null) {
-      AccountDetailBannerViewPager.a(this.a).a(paramInt);
+    paramInt1 = this.a.getWindow().getDecorView().getBottom() - this.a.getWindow().getDecorView().getTop();
+    if (paramInt1 != this.a.b) {
+      LebaSearchPluginManagerActivity.a(this.a, paramInt1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfn
  * JD-Core Version:    0.7.0.1
  */

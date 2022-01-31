@@ -4,11 +4,11 @@ import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import bdle;
+import bfkb;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import java.util.ArrayList;
-import nla;
-import nli;
+import nnw;
+import noe;
 
 public class AdModuleAdapter
   extends PagerAdapter
@@ -16,34 +16,34 @@ public class AdModuleAdapter
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList<nli> jdField_a_of_type_JavaUtilArrayList;
-  private nla jdField_a_of_type_Nla;
+  private ArrayList<noe> jdField_a_of_type_JavaUtilArrayList;
+  private nnw jdField_a_of_type_Nnw;
   private String b;
   private String c;
   
-  public AdModuleAdapter(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, nla paramnla, ArrayList<nli> paramArrayList)
+  public AdModuleAdapter(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, nnw paramnnw, ArrayList<noe> paramArrayList)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
     this.c = paramString3;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Nla = paramnla;
+    this.jdField_a_of_type_Nnw = paramnnw;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
   public void a()
   {
-    nli localnli = (nli)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    bdle.a().b(localnli);
-    if (localnli.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler != null) {
-      AppNetConnInfo.unregisterNetInfoHandler(localnli.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+    noe localnoe = (noe)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    bfkb.a().b(localnoe);
+    if (localnoe.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler != null) {
+      AppNetConnInfo.unregisterNetInfoHandler(localnoe.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
     }
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    paramObject = (nli)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramObject = (noe)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     paramViewGroup.removeView(paramObject.jdField_a_of_type_AndroidViewView);
     paramObject.c();
   }
@@ -58,19 +58,19 @@ public class AdModuleAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    nli localnli = (nli)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    noe localnoe = (noe)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     Context localContext = this.jdField_a_of_type_AndroidContentContext;
     String str1 = this.jdField_a_of_type_JavaLangString;
     String str2 = this.b;
     String str3 = this.c;
     int i = this.jdField_a_of_type_Int;
-    nla localnla = this.jdField_a_of_type_Nla;
+    nnw localnnw = this.jdField_a_of_type_Nnw;
     if (paramInt == getCount() - 1) {}
     for (boolean bool = true;; bool = false)
     {
-      localnli.jdField_a_of_type_AndroidViewView = localnli.a(localContext, str1, str2, str3, i, localnla, bool);
-      paramViewGroup.addView(localnli.jdField_a_of_type_AndroidViewView);
-      return localnli.jdField_a_of_type_AndroidViewView;
+      localnoe.jdField_a_of_type_AndroidViewView = localnoe.a(localContext, str1, str2, str3, i, localnnw, bool);
+      paramViewGroup.addView(localnoe.jdField_a_of_type_AndroidViewView);
+      return localnoe.jdField_a_of_type_AndroidViewView;
     }
   }
   
@@ -81,7 +81,7 @@ public class AdModuleAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.adapter.AdModuleAdapter
  * JD-Core Version:    0.7.0.1
  */

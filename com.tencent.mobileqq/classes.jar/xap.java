@@ -1,50 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DeleteFileRspBody;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
-
-public abstract class xap
-  extends mxj
+class xap
+  implements utn
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (paramInt != 0)
-    {
-      a(false, paramInt, paramBundle, "", ajya.a(2131715381));
-      return;
-    }
-    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
-    try
-    {
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (oidb_0x6d6.DeleteFileRspBody)localRspBody.delete_file_rsp.get();
-      if (!paramArrayOfByte.int32_ret_code.has()) {
-        break label133;
-      }
-      if (paramArrayOfByte.int32_ret_code.get() == 0)
-      {
-        a(true, 0, paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
-        return;
-      }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      a(false, -1, paramBundle, "", ajya.a(2131715377));
-      return;
-    }
-    a(false, paramArrayOfByte.int32_ret_code.get(), paramBundle, paramArrayOfByte.str_ret_msg.get(), paramArrayOfByte.str_client_wording.get());
-    return;
-    label133:
-    a(false, -1, paramBundle, "", ajya.a(2131715385));
-  }
+  xap(xak paramxak, xax paramxax) {}
   
-  protected abstract void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2);
+  public void a(boolean paramBoolean, utj paramutj)
+  {
+    wsv.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
+    if ((paramBoolean) && (paramutj != null))
+    {
+      this.jdField_a_of_type_Xak.a(paramutj.b, paramutj.a, this.jdField_a_of_type_Xax);
+      return;
+    }
+    wsv.e("DoodleEmojiManager", "onLbsUpdate failed.");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xap
  * JD-Core Version:    0.7.0.1
  */

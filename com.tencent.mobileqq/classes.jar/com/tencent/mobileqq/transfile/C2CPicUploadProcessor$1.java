@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.transfile;
 
-import aypl;
-import bcql;
+import bang;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class C2CPicUploadProcessor$1
   implements Runnable
 {
-  public C2CPicUploadProcessor$1(aypl paramaypl) {}
+  public C2CPicUploadProcessor$1(bang parambang) {}
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.sApplication, 2131689939, 1).a();
+    QQToast.a(BaseApplicationImpl.sApplication, 2131689986, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.C2CPicUploadProcessor.1
  * JD-Core Version:    0.7.0.1
  */

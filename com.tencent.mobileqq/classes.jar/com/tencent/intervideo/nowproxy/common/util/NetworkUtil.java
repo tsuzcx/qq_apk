@@ -80,7 +80,7 @@ public class NetworkUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.common.util.NetworkUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -2,14 +2,17 @@ package cooperation.qqreader;
 
 import android.content.Context;
 import android.content.Intent;
-import bbfj;
-import bgvn;
-import bgwf;
+import android.text.TextUtils;
+import bdee;
+import biwm;
+import bixe;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
+import cooperation.qqreader.host.ReaderHost;
+import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import mzb;
+import nbv;
 
 public class VipProxyRreLoadReaderProcess
   extends PluginProxyBroadcastReceiver
@@ -18,32 +21,45 @@ public class VipProxyRreLoadReaderProcess
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    bgwf.c("VipProxyRreLoadReaderProcess", "VipProxyRreLoadReaderProcess onReceive");
+    bixe.c("VipProxyRreLoadReaderProcess", "VipProxyRreLoadReaderProcess onReceive");
     super.onReceive(paramContext, paramIntent);
-    if (paramIntent.getBooleanExtra("is_preload_reader_plugin", false)) {
-      bgvn.b(paramContext);
+    String str1 = paramIntent.getStringExtra("params_uin_for_reader");
+    String str2 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if (!TextUtils.isEmpty(str2))
+    {
+      ReaderHost.setAccount(str2);
+      if (!paramIntent.getBooleanExtra("is_preload_reader_plugin", false)) {
+        break label120;
+      }
+      biwm.b(paramContext);
     }
     for (;;)
     {
       if (!a)
       {
         a = true;
-        bgug.a = 2;
-        bgwf.d("VipProxyRreLoadReaderProcess", "VipProxyRreLoadReaderProcess isPreloadProcess=true");
-        if (bbfj.h(MobileQQ.sMobileQQ))
+        bivf.a = 2;
+        bixe.d("VipProxyRreLoadReaderProcess", "VipProxyRreLoadReaderProcess isPreloadProcess=true");
+        if (bdee.h(MobileQQ.sMobileQQ))
         {
-          mzb.a();
+          nbv.a();
           ThreadManager.post(new VipProxyRreLoadReaderProcess.1(this), 5, null, true);
         }
       }
       return;
-      bgvn.a(BaseApplicationImpl.getApplication(), false);
+      if (TextUtils.isEmpty(str1)) {
+        break;
+      }
+      ReaderHost.setAccount(str1);
+      break;
+      label120:
+      biwm.a(BaseApplicationImpl.getApplication(), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.VipProxyRreLoadReaderProcess
  * JD-Core Version:    0.7.0.1
  */

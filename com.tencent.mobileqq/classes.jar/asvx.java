@@ -1,16 +1,21 @@
-import android.media.MediaPlayer;
-import android.os.Looper;
-import com.tencent.mobileqq.music.SongInfo;
+import android.view.View;
+import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.3;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
 public class asvx
+  implements EnterCallback
 {
-  public MediaPlayer a;
-  public Looper a;
-  public SongInfo a;
+  public asvx(GroupVideoManager.3 param3) {}
+  
+  public void onCloseLoadingView() {}
+  
+  public void onEnterComplete() {}
+  
+  public void onShowLoadingView(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asvx
  * JD-Core Version:    0.7.0.1
  */

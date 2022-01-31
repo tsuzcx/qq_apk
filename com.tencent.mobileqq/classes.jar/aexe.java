@@ -1,12 +1,15 @@
-import java.util.List;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.doodle.control.ColorView;
 
-public abstract interface aexe
+public class aexe
+  extends aexo
 {
-  public abstract void a(List<aewf> paramList, String paramString1, String paramString2);
+  public ImageView a;
+  public ColorView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexe
  * JD-Core Version:    0.7.0.1
  */

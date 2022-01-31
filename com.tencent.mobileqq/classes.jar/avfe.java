@@ -1,47 +1,38 @@
-import NS_MOBILE_PHOTO.operation_red_touch_req;
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
 
-public class avfe
-  extends MSFServlet
+class avfe
+  implements URLDrawableDownListener
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  avfe(avfd paramavfd, avff paramavff, int paramInt) {}
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramFromServiceMsg != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAlbumRedDotServlet", 2, "resultcode:" + paramFromServiceMsg.getResultCode() + ",failMsg:" + paramFromServiceMsg.getBusinessFailMsg());
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("QzoneAlbumRedDotServlet", 2, "fromServiceMsg==msg");
+    this.jdField_a_of_type_Avff.a(this.jdField_a_of_type_Int, false);
+    this.jdField_a_of_type_Avff.a(this.jdField_a_of_type_Int);
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
   {
-    paramIntent = paramIntent.getSerializableExtra("req");
-    if ((paramIntent != null) && ((paramIntent instanceof operation_red_touch_req)))
-    {
-      avfd localavfd = new avfd(getAppRuntime().getLongAccountUin(), (operation_red_touch_req)paramIntent);
-      byte[] arrayOfByte = localavfd.encode();
-      paramIntent = arrayOfByte;
-      if (arrayOfByte == null) {
-        paramIntent = new byte[4];
-      }
-      paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + localavfd.uniKey());
-      paramPacket.putSendData(paramIntent);
+    if ((paramInt > 0) && (paramInt < 10000)) {
+      this.jdField_a_of_type_Avff.b(this.jdField_a_of_type_Int, paramInt / 100);
     }
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_Avff.a(this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_Avff.a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avfe
  * JD-Core Version:    0.7.0.1
  */

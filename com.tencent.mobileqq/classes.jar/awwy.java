@@ -1,72 +1,37 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.SquareImageView;
+import NS_MOBILE_PHOTO.operation_red_touch_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class awwy
-  extends awyh
+  extends QzoneExternalRequest
 {
-  public RelativeLayout b;
-  public SquareImageView b;
-  public ImageView c;
-  public SquareImageView c;
-  public TextView e;
-  public TextView f;
-  public TextView g;
+  public JceStruct a;
   
-  public awwy(ViewGroup paramViewGroup, int paramInt)
+  public awwy(long paramLong, operation_red_touch_req paramoperation_red_touch_req)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    paramViewGroup.getResources();
-    LinearLayout localLinearLayout = new LinearLayout(paramViewGroup.getContext());
-    localLinearLayout.setOrientation(1);
-    localLinearLayout.addView(LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, null, false), new LinearLayout.LayoutParams(-1, -2));
-    localLinearLayout.setBackgroundResource(2130849142);
-    localLinearLayout.setClickable(true);
-    localLinearLayout.setFocusable(true);
-    this.jdField_b_of_type_AndroidViewView = localLinearLayout;
-    a();
+    super.setHostUin(paramLong);
+    super.setLoginUserId(paramLong);
+    this.a = paramoperation_red_touch_req;
   }
   
-  protected void a()
+  public String getCmdString()
   {
-    super.a();
+    return "QzoneNewService.asy_photo.OperationRedTouch";
   }
   
-  protected void a(View paramView)
+  public JceStruct getReq()
   {
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375395));
-    if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131367856));
-    }
-    this.jdField_b_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131368606));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368543));
-    this.e = ((TextView)paramView.findViewById(2131378371));
-    this.f = ((TextView)paramView.findViewById(2131378329));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)paramView.findViewById(2131375266));
-    this.g = ((TextView)paramView.findViewById(2131375267));
-    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null))
-    {
-      this.f.setTextColor(this.f.getContext().getResources().getColor(2131166792));
-      this.g.setTextColor(this.g.getContext().getResources().getColor(2131166792));
-      return;
-    }
-    this.f.setTextColor(this.f.getContext().getResources().getColor(2131167134));
-    this.g.setTextColor(this.g.getContext().getResources().getColor(2131167134));
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "OperationRedTouch";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awwy
  * JD-Core Version:    0.7.0.1
  */

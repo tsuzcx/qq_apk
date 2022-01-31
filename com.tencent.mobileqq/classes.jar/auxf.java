@@ -1,146 +1,99 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.QzonePluginProxyActivity;
-import java.lang.reflect.Method;
-import java.util.Iterator;
-import java.util.List;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
 
-public class auxf
+class auxf
+  implements auxd
 {
-  public static int a = -16692;
-  public static int b = -16693;
+  private IBinder a;
   
-  public static Drawable a(int paramInt)
+  auxf(IBinder paramIBinder)
   {
-    Iterator localIterator = auxe.a.iterator();
-    while (localIterator.hasNext())
-    {
-      auxk localauxk = (auxk)localIterator.next();
-      if (paramInt == localauxk.jdField_a_of_type_Long) {
-        return localauxk.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getConstantState().newDrawable();
-      }
-    }
-    return null;
+    this.a = paramIBinder;
   }
   
-  private static Class<?> a(Context paramContext, String paramString)
+  public Message a(Message paramMessage)
   {
-    Object localObject1 = null;
-    try
-    {
-      localObject2 = Class.forName(paramString);
-      localObject1 = localObject2;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        try
-        {
-          Object localObject2 = QzonePluginProxyActivity.a(paramContext).loadClass(paramString);
-          return localObject2;
-        }
-        catch (Throwable paramContext)
-        {
-          QLog.e("StickyNotePublishUtils", 1, "loadQZoneClass, failed to load class from qzone plugin class loader.");
-        }
-        localThrowable = localThrowable;
-        QLog.e("StickyNotePublishUtils", 1, "loadQZoneClass, failed to load class from normal class loader.");
-      }
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {}
-    return localObject1;
-  }
-  
-  public static String a(EditText paramEditText)
-  {
-    if (paramEditText != null)
-    {
-      if ((paramEditText.getText() instanceof ayku))
-      {
-        ayku localayku = (ayku)paramEditText.getText();
-        if (localayku != null) {
-          return localayku.a();
-        }
-      }
-      if ((paramEditText != null) && (paramEditText.getEditableText() != null)) {
-        return paramEditText.getEditableText().toString();
-      }
-    }
-    return null;
-  }
-  
-  public static void a(Context paramContext, long paramLong1, long paramLong2, String paramString, boolean paramBoolean, bhkn parambhkn)
-  {
-    try
-    {
-      paramContext = a(paramContext, "com.qzone.publish.stickynote.StickyNotePublishProxy");
-      if (paramContext != null) {
-        paramContext.getMethod("modifyStickyNotePriv", new Class[] { Long.TYPE, Long.TYPE, String.class, Boolean.TYPE, bhkn.class }).invoke(null, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString, Boolean.valueOf(paramBoolean), parambhkn });
-      }
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QLog.e("StickyNotePublishUtils", 1, "modifyStickyNotePriv fail.", paramContext);
-    }
-  }
-  
-  public static void a(Context paramContext, QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, boolean paramBoolean, String paramString1, String paramString2, String paramString3, bhkn parambhkn)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickyNotePublishUtils", 0, String.format("publishStickyNote, hostUin=%s publishUin=%s isPublic=%s bgColor=%s vasExtendInfo=%s content=%s callback=%s", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3, parambhkn }));
-    }
-    if ((paramContext == null) || (paramQQAppInterface == null) || (paramLong1 == 0L) || (paramLong2 == 0L) || (TextUtils.isEmpty(paramString3))) {
-      QLog.e("StickyNotePublishUtils", 1, "publishStickyNote, params invalid.");
-    }
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
     for (;;)
     {
-      return;
-      boolean bool1 = bhby.a(paramContext, paramQQAppInterface);
-      boolean bool2 = bhby.b(paramContext, paramQQAppInterface);
-      if ((!bool1) || (!bool2))
-      {
-        QLog.e("StickyNotePublishUtils", 1, String.format("publishStickyNote, init fail. initEnv=%s initServlet=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-        return;
-      }
       try
       {
-        paramContext = a(paramContext, "com.qzone.publish.stickynote.StickyNotePublishProxy");
-        if (paramContext != null)
+        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+        if (paramMessage != null)
         {
-          paramContext.getMethod("publishStickyNote", new Class[] { Long.TYPE, Long.TYPE, Boolean.TYPE, String.class, String.class, String.class, bhkn.class }).invoke(null, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Boolean.valueOf(paramBoolean), paramString1, paramString2, paramString3, parambhkn });
-          return;
+          localParcel1.writeInt(1);
+          paramMessage.writeToParcel(localParcel1, 0);
+          this.a.transact(2, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0)
+          {
+            paramMessage = (Message)Message.CREATOR.createFromParcel(localParcel2);
+            return paramMessage;
+          }
         }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        paramMessage = null;
       }
-      catch (Exception paramContext)
+      finally
       {
-        QLog.e("StickyNotePublishUtils", 1, "publishStickyNote fail.", paramContext);
+        localParcel2.recycle();
+        localParcel1.recycle();
       }
     }
   }
   
-  public static String b(EditText paramEditText)
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
   {
-    if (paramEditText != null)
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
     {
-      paramEditText = a(paramEditText);
-      if (!TextUtils.isEmpty(paramEditText)) {
-        return bhve.b(paramEditText.replaceAll(ajya.a(2131705802), ajya.a(2131705804)).replaceAll(ajya.a(2131705801), "/MM"));
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
+        if (paramBasicTypeDataParcel != null)
+        {
+          localParcel1.writeInt(1);
+          paramBasicTypeDataParcel.writeToParcel(localParcel1, 0);
+          this.a.transact(1, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          if (localParcel2.readInt() != 0)
+          {
+            paramBasicTypeDataParcel = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(localParcel2);
+            return paramBasicTypeDataParcel;
+          }
+        }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        paramBasicTypeDataParcel = null;
+      }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
       }
     }
-    return "";
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auxf
  * JD-Core Version:    0.7.0.1
  */

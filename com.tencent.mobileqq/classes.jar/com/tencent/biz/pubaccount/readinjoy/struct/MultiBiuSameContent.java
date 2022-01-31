@@ -13,14 +13,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import qbl;
+import qlh;
 import tencent.im.oidb.articlesummary.articlesummary.BiuOneLevelItem;
 import tencent.im.oidb.articlesummary.articlesummary.MultiBiuSameContent;
 
 public class MultiBiuSameContent
   implements Parcelable
 {
-  public static final Parcelable.Creator<MultiBiuSameContent> CREATOR = new qbl();
+  public static final Parcelable.Creator<MultiBiuSameContent> CREATOR = new qlh();
   public int a;
   public long a;
   public String a;
@@ -117,7 +117,7 @@ public class MultiBiuSameContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent
  * JD-Core Version:    0.7.0.1
  */

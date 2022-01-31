@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.magicface;
 
-import lhl;
+import ljo;
 
 public class FaceItem
-  extends lhl
+  extends ljo
 {
   private String attr;
   private String compress_res_md5;
@@ -150,7 +150,7 @@ public class FaceItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.FaceItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,45 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteActivity;
+
 public class lpz
-  extends lpp
+  implements DialogInterface.OnClickListener
 {
-  short a;
-  short jdField_b_of_type_Short;
-  byte[] jdField_b_of_type_ArrayOfByte;
-  byte[] c;
-  byte[] d;
+  int jdField_a_of_type_Int;
   
-  lpz(lpp paramlpp, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2)
+  public lpz(GaInviteActivity paramGaInviteActivity, int paramInt)
   {
-    super(paramlpp);
-    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte1;
-    this.c = paramArrayOfByte2;
-    this.d = paramArrayOfByte3;
-    this.a = paramShort1;
-    this.jdField_b_of_type_Short = paramShort2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l()) {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.h(true);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
+        break;
+        if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.e) {
+          this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.m();
+        }
+      }
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lpz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,30 @@
-public class bhei
+import android.os.SystemClock;
+
+class bhei
+  implements bhay
 {
-  public int a;
-  public String a;
+  long jdField_a_of_type_Long;
+  
+  bhei(bheh parambheh, bhcv parambhcv, long paramLong) {}
+  
+  public void onStateChanged()
+  {
+    if (this.jdField_a_of_type_Bhcv != null) {}
+    for (bhaz localbhaz = this.jdField_a_of_type_Bhcv.getCurrState();; localbhaz = null)
+    {
+      if ((localbhaz != null) && (localbhaz == this.jdField_a_of_type_Bhcv.b)) {
+        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      }
+      if ((localbhaz != null) && (localbhaz == this.jdField_a_of_type_Bhcv.e)) {
+        this.jdField_a_of_type_Bheh.a(this.jdField_a_of_type_Bhcv, this.b, SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
+      }
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhei
  * JD-Core Version:    0.7.0.1
  */

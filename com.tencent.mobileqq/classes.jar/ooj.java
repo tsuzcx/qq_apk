@@ -1,91 +1,87 @@
-import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.aladdin.config.network.AladdinResponseHandler;
-import com.tencent.biz.pubaccount.readinjoy.config.AladdinListener;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class ooj
-  extends MSFServlet
+class ooj
+  implements BusinessObserver
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  ooj(ooi paramooi, BaseCommentData paramBaseCommentData) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    QLog.i("QQAladdinRequestHandler", 1, "[onReceive] cmd=" + paramFromServiceMsg.getServiceCmd() + " appSeq=" + paramFromServiceMsg.getAppSeq() + " success=" + paramFromServiceMsg.isSuccess() + " resultCode=" + paramFromServiceMsg.getResultCode());
-    if (!paramFromServiceMsg.isSuccess()) {
-      return;
-    }
-    AladdinResponseHandler localAladdinResponseHandler = (AladdinResponseHandler)paramIntent.getParcelableExtra("key_response_handler");
+    int i = 1;
+    if (paramBoolean) {}
     for (;;)
     {
       try
       {
-        Object localObject = ooi.a(paramFromServiceMsg.getWupBuffer());
-        int i = paramFromServiceMsg.getResultCode();
-        QLog.i("QQAladdinRequestHandler", 1, "[onReceive] msfRetCode = " + i);
-        if (i != 1000) {
-          break;
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          break label249;
         }
-        if (localObject != null)
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        paramInt = localWebSsoResponseBody.ret.get();
+        paramBundle = localWebSsoResponseBody.data.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyCommentSSOModule", 2, "deleteComment ret=" + paramBundle);
+        }
+        paramBundle = new JSONObject(paramBundle);
+        if (paramInt != 0)
         {
-          paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])localObject);
-          i = paramFromServiceMsg.uint32_result.get();
-          QLog.i("QQAladdinRequestHandler", 1, "[onReceive] oidbResult = " + i);
-          if ((paramFromServiceMsg.bytes_bodybuffer.has()) && (paramFromServiceMsg.bytes_bodybuffer.get() != null))
-          {
-            paramFromServiceMsg = paramFromServiceMsg.bytes_bodybuffer.get().toByteArray();
-            localObject = (Bundle)paramIntent.getParcelableExtra("key_extra_info");
-            localAladdinResponseHandler.onReceive(paramFromServiceMsg, (Bundle)localObject);
-            ooi.a((Bundle)localObject);
-            paramIntent = paramIntent.getParcelableArrayListExtra("key_aladdin_listeners");
-            if ((paramIntent == null) || (paramIntent.size() <= 0)) {
-              break;
-            }
-            i = 0;
-            if (i >= paramIntent.size()) {
-              break;
-            }
-            ((AladdinListener)paramIntent.get(i)).a();
-            i += 1;
+          paramBundle.optString("msg");
+          paramInt = 0;
+          i = paramInt;
+          if ((i == 0) && (ooi.a(this.jdField_a_of_type_Ooi) != null)) {
+            ooi.a(this.jdField_a_of_type_Ooi).a(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData);
+          }
+          return;
+        }
+        paramInt = paramBundle.optInt("ret");
+        if (paramInt != 0) {
+          break label249;
+        }
+        paramInt = i;
+        try
+        {
+          if (ooi.a(this.jdField_a_of_type_Ooi) == null) {
             continue;
           }
-          QLog.e("QQAladdinRequestHandler", 1, "[onReceive] oidb bytes_bodybuffer is empty");
-          continue;
+          ooi.a(this.jdField_a_of_type_Ooi).a(true, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataBaseCommentData);
+          paramInt = i;
         }
-        QLog.e("QQAladdinRequestHandler", 1, "[onReceive] msf data is empty");
+        catch (Exception paramBundle)
+        {
+          paramInt = 1;
+        }
       }
-      catch (Exception paramIntent)
+      catch (Exception paramBundle)
       {
-        QLog.e("QQAladdinRequestHandler", 1, "[onReceive] ", paramIntent);
-        return;
+        paramInt = 0;
+        continue;
+      }
+      paramBundle.getLocalizedMessage();
+      paramBundle.printStackTrace();
+      i = paramInt;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("ReadInJoyCommentSSOModule", 2, "fetchCommentList error info:" + paramBundle.getLocalizedMessage());
+        i = paramInt;
+        continue;
+        label249:
+        paramInt = 0;
       }
     }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    paramIntent = paramIntent.getByteArrayExtra("key_body_bytes");
-    if (paramIntent != null)
-    {
-      paramIntent = pot.a("OidbSvc.0xbf8", 3064, 0, paramIntent);
-      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
-      paramPacket.putSendData(ooi.b(paramIntent.getWupBuffer()));
-      paramPacket.setAttributes(paramIntent.getAttributes());
-      return;
-    }
-    QLog.e("QQAladdinRequestHandler", 1, "[onSend] bytes are null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ooj
  * JD-Core Version:    0.7.0.1
  */

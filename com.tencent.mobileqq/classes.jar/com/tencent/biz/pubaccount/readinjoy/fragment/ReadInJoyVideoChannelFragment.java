@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import actj;
+import aekt;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import bhvy;
+import bjxj;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
@@ -20,13 +20,16 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.HashMap;
 import java.util.List;
-import nte;
-import nth;
-import onh;
-import osg;
-import osj;
-import qtr;
-import qvk;
+import nwj;
+import nwm;
+import obv;
+import oeh;
+import ors;
+import owy;
+import oxb;
+import pbd;
+import rjg;
+import rlb;
 
 public class ReadInJoyVideoChannelFragment
   extends ReadInJoyBaseFragment
@@ -34,7 +37,8 @@ public class ReadInJoyVideoChannelFragment
   private int jdField_a_of_type_Int = -1;
   protected long a;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  protected nte a;
+  protected nwj a;
+  private obv jdField_a_of_type_Obv;
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long;
   private boolean jdField_b_of_type_Boolean;
@@ -44,16 +48,8 @@ public class ReadInJoyVideoChannelFragment
   
   private void a()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Nte != null))
-    {
-      this.jdField_a_of_type_Nte.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", Long.valueOf(this.jdField_b_of_type_Long));
-      this.jdField_a_of_type_Nte.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_SEQ", Long.valueOf(this.jdField_c_of_type_Long));
-      this.jdField_a_of_type_Nte.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_FIRST_CREATED", this.jdField_b_of_type_Boolean);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "doRefreshAndForceInsert()：set intent args finish : " + this.jdField_a_of_type_Nte.a().getIntent().getExtras().toString());
-      }
-      this.jdField_a_of_type_Boolean = false;
-    }
+    this.jdField_a_of_type_Obv = new obv(getActivity());
+    this.jdField_a_of_type_Obv.a(new pbd(this));
   }
   
   private void a(Activity paramActivity)
@@ -64,30 +60,30 @@ public class ReadInJoyVideoChannelFragment
       {
         if (!this.f)
         {
-          nte localnte = this.jdField_a_of_type_Nte;
-          if (localnte == null) {}
+          nwj localnwj = this.jdField_a_of_type_Nwj;
+          if (localnwj == null) {}
         }
         else
         {
           return;
         }
-        this.jdField_a_of_type_Nte = ((nte)onh.a.remove(Integer.valueOf(56)));
-        if (this.jdField_a_of_type_Nte == null)
+        this.jdField_a_of_type_Nwj = ((nwj)ors.a.remove(Integer.valueOf(56)));
+        if (this.jdField_a_of_type_Nwj == null)
         {
-          this.jdField_a_of_type_Nte = new nte(paramActivity);
-          this.jdField_a_of_type_Nte.a(56);
-          this.jdField_a_of_type_Nte.b(3);
-          this.jdField_a_of_type_Nte.c(this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_Nte.a(this.jdField_a_of_type_AndroidViewViewGroup);
-          a();
-          this.jdField_a_of_type_Nte.a();
+          this.jdField_a_of_type_Nwj = new nwj(paramActivity);
+          this.jdField_a_of_type_Nwj.a(56);
+          this.jdField_a_of_type_Nwj.b(3);
+          this.jdField_a_of_type_Nwj.c(this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_Nwj.a(this.jdField_a_of_type_AndroidViewViewGroup);
+          b();
+          this.jdField_a_of_type_Nwj.a();
         }
-        this.jdField_a_of_type_Nte.c(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_Nte.a(this.jdField_a_of_type_Rhm, this.jdField_d_of_type_Int);
-        paramActivity = (ViewGroup)this.jdField_a_of_type_Nte.a();
+        this.jdField_a_of_type_Nwj.c(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Nwj.a(this.jdField_a_of_type_Rxg, this.jdField_d_of_type_Int);
+        paramActivity = (ViewGroup)this.jdField_a_of_type_Nwj.a();
         if (this.jdField_a_of_type_Int == 1002)
         {
-          int j = actj.a(44.5F, getResources());
+          int j = aekt.a(44.5F, getResources());
           i = j;
           if (ImmersiveUtils.isSupporImmersive() == 1) {
             i = j + ImmersiveUtils.getStatusBarHeight(getActivity());
@@ -110,20 +106,34 @@ public class ReadInJoyVideoChannelFragment
   
   private void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Nte != null) && (this.jdField_a_of_type_Nte.a() != null) && (this.jdField_a_of_type_Nte.a() != null) && (this.jdField_a_of_type_Nte.a().size() > 0)) {
-      onh.a(56, (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L, this.jdField_a_of_type_Nte.a().a(), (BaseArticleInfo)this.jdField_a_of_type_Nte.a().get(0), paramBoolean);
+    if ((this.jdField_a_of_type_Long != 0L) && (this.jdField_a_of_type_Nwj != null) && (this.jdField_a_of_type_Nwj.a() != null) && (this.jdField_a_of_type_Nwj.a() != null) && (this.jdField_a_of_type_Nwj.a().size() > 0)) {
+      ors.a(56, (System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000L, this.jdField_a_of_type_Nwj.a().a(), (BaseArticleInfo)this.jdField_a_of_type_Nwj.a().get(0), paramBoolean);
     }
   }
   
   private void b()
   {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Nwj != null))
+    {
+      this.jdField_a_of_type_Nwj.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", Long.valueOf(this.jdField_b_of_type_Long));
+      this.jdField_a_of_type_Nwj.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_SEQ", Long.valueOf(this.jdField_c_of_type_Long));
+      this.jdField_a_of_type_Nwj.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_FIRST_CREATED", this.jdField_b_of_type_Boolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "doRefreshAndForceInsert()：set intent args finish : " + this.jdField_a_of_type_Nwj.a().getIntent().getExtras().toString());
+      }
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  private void c()
+  {
     this.jdField_b_of_type_Long = 0L;
     this.jdField_c_of_type_Long = 0L;
-    if ((this.jdField_a_of_type_Nte != null) && (this.jdField_a_of_type_Nte.a() != null))
+    if ((this.jdField_a_of_type_Nwj != null) && (this.jdField_a_of_type_Nwj.a() != null))
     {
-      this.jdField_a_of_type_Nte.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", 0L);
-      this.jdField_a_of_type_Nte.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_SEQ", 0L);
-      this.jdField_a_of_type_Nte.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_FIRST_CREATED", false);
+      this.jdField_a_of_type_Nwj.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID", 0L);
+      this.jdField_a_of_type_Nwj.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_SEQ", 0L);
+      this.jdField_a_of_type_Nwj.a().getIntent().putExtra("READINJOY_VIDEO_FORCE_INSERT_FIRST_CREATED", false);
     }
   }
   
@@ -132,10 +142,10 @@ public class ReadInJoyVideoChannelFragment
     return 56;
   }
   
-  public qtr a()
+  public rjg a()
   {
-    if (this.jdField_a_of_type_Nte != null) {
-      return this.jdField_a_of_type_Nte.a();
+    if (this.jdField_a_of_type_Nwj != null) {
+      return this.jdField_a_of_type_Nwj.a();
     }
     return null;
   }
@@ -143,12 +153,12 @@ public class ReadInJoyVideoChannelFragment
   public void a(int paramInt)
   {
     super.a(paramInt);
-    if (this.jdField_a_of_type_Nte != null)
+    if (this.jdField_a_of_type_Nwj != null)
     {
-      this.jdField_a_of_type_Nte.a(true);
+      this.jdField_a_of_type_Nwj.a(true);
       return;
     }
-    nth.e(a());
+    nwm.e(a());
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -156,8 +166,8 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onSuperActivityResult(): requestCode = " + paramInt1 + ", resultCode = " + paramInt2);
     }
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.a(paramInt1, paramInt2, paramIntent);
     }
     super.a(paramInt1, paramInt2, paramIntent);
   }
@@ -170,15 +180,15 @@ public class ReadInJoyVideoChannelFragment
     {
       localStringBuilder = new StringBuilder().append("onFragmentNewIntent():");
       if (paramBundle != null) {
-        break label68;
+        break label71;
       }
     }
-    label68:
+    label71:
     for (String str = " null";; str = paramBundle.toString())
     {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, str);
       if ((paramBundle != null) && (paramBundle.getBoolean("key_need_refresh_channel_cover_list", false))) {
-        osg.a().a(56);
+        owy.a().a(56);
       }
       return;
     }
@@ -204,6 +214,9 @@ public class ReadInJoyVideoChannelFragment
       }
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       this.jdField_c_of_type_Boolean = true;
+      if (this.jdField_a_of_type_Nwj != null) {
+        this.jdField_a_of_type_Nwj.n();
+      }
       if (paramBundle != null)
       {
         this.jdField_b_of_type_Long = paramBundle.getLong("READINJOY_VIDEO_FORCE_INSERT_ARTICLE_ID");
@@ -212,44 +225,47 @@ public class ReadInJoyVideoChannelFragment
         if (this.jdField_b_of_type_Long != 0L)
         {
           this.jdField_a_of_type_Boolean = true;
-          a();
+          b();
         }
       }
-      if ((bhvy.i()) && (!(paramActivity instanceof ReadInJoyNewFeedsActivity))) {
-        break label310;
+      if ((bjxj.i()) && (!(paramActivity instanceof ReadInJoyNewFeedsActivity))) {
+        break label339;
       }
       paramBundle = ((ReadInJoyNewFeedsActivity)paramActivity).a();
       int i = paramBundle.b();
       if (i == 1) {
         paramBundle.b(i);
       }
-      label179:
-      if (this.jdField_a_of_type_Nte != null) {
-        this.jdField_a_of_type_Nte.h();
+      label194:
+      if (this.jdField_a_of_type_Nwj != null) {
+        this.jdField_a_of_type_Nwj.h();
       }
-      if (((!bhvy.i()) || ((paramActivity instanceof ReadInJoyNewFeedsActivity))) && (!this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Long > 0L) && (this.jdField_a_of_type_Nte != null)) {
-        this.jdField_a_of_type_Nte.i();
+      if (((!bjxj.i()) || ((paramActivity instanceof ReadInJoyNewFeedsActivity))) && (!this.jdField_b_of_type_Boolean) && (this.jdField_b_of_type_Long > 0L) && (this.jdField_a_of_type_Nwj != null)) {
+        this.jdField_a_of_type_Nwj.i();
       }
-      if ((!bhvy.j()) || (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.g()) || (this.jdField_a_of_type_Nte == null) || (this.jdField_a_of_type_Int != 1001)) {
-        break label321;
+      if ((!bjxj.j()) || (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.g()) || (this.jdField_a_of_type_Nwj == null) || (this.jdField_a_of_type_Int != 1001)) {
+        break label350;
       }
-      this.jdField_a_of_type_Nte.a(true);
-      osj.a().a(3, null);
+      this.jdField_a_of_type_Nwj.a(true);
+      oxb.a().a(3, null);
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "notifyShowSelf(): hasRed refresh ");
       }
     }
-    label310:
-    label321:
-    while ((!bhvy.j()) || (this.jdField_a_of_type_Nte == null) || (!(getActivity() instanceof SplashActivity)))
+    label339:
+    label350:
+    while ((!bjxj.j()) || (this.jdField_a_of_type_Nwj == null) || (!(getActivity() instanceof SplashActivity)))
     {
+      if (this.jdField_a_of_type_Obv != null) {
+        this.jdField_a_of_type_Obv.a();
+      }
       return;
       str = paramBundle.toString();
       break;
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager.d(1);
-      break label179;
+      break label194;
     }
-    long l = System.currentTimeMillis() - bhvy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity());
+    long l = System.currentTimeMillis() - bjxj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getActivity());
     if ((l >= 900000L) && (!this.e)) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "videochannel tab auto refresh ! duration : " + l);
     }
@@ -257,14 +273,14 @@ public class ReadInJoyVideoChannelFragment
     {
       if (paramBoolean)
       {
-        this.jdField_a_of_type_Nte.a(true);
-        osj.a().a(3, null);
+        this.jdField_a_of_type_Nwj.a(true);
+        oxb.a().a(3, null);
       }
       if (!QLog.isColorLevel()) {
         break;
       }
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "notifyShowSelf(): isLastExitOver15Min : " + paramBoolean);
-      return;
+      break;
       this.e = false;
     }
   }
@@ -279,8 +295,8 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "notifyTitleClick()");
     }
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.a(true);
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.a(true);
     }
     ThreadManager.executeOnSubThread(new ReadInJoyVideoChannelFragment.1(this));
   }
@@ -297,8 +313,8 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "notifyClickSelf()");
     }
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.a(true);
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.a(true);
     }
   }
   
@@ -309,22 +325,25 @@ public class ReadInJoyVideoChannelFragment
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "notifyHideSelf()");
     }
     this.jdField_c_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.m();
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.m();
     }
-    b();
+    c();
     a(false);
     this.jdField_a_of_type_Long = 0L;
-    if ((bhvy.j()) && ((getActivity() instanceof SplashActivity))) {
-      bhvy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, System.currentTimeMillis(), getActivity());
+    if ((bjxj.j()) && ((getActivity() instanceof SplashActivity))) {
+      bjxj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, System.currentTimeMillis(), getActivity());
     }
-    qvk.a().a(false, "videoFeeds tab hiseSelf");
+    rlb.a().a(false, "videoFeeds tab hiseSelf");
+    if (this.jdField_a_of_type_Obv != null) {
+      this.jdField_a_of_type_Obv.b();
+    }
   }
   
   public void i()
   {
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.k();
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.k();
     }
   }
   
@@ -349,8 +368,8 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onActivityResult(): requestCode = " + paramInt1 + ", resultCode = " + paramInt2);
     }
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.a(paramInt1, paramInt2, paramIntent);
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
@@ -360,6 +379,21 @@ public class ReadInJoyVideoChannelFragment
     super.onAttach(paramActivity);
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onAttach()");
+    }
+    try
+    {
+      oeh.c();
+      a();
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "preRequestPatchAd error:" + paramActivity.getMessage());
+        }
+      }
     }
   }
   
@@ -377,7 +411,7 @@ public class ReadInJoyVideoChannelFragment
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onCreate()");
     }
     if (!this.jdField_d_of_type_Boolean) {
-      qvk.a().a(getActivity());
+      rlb.a().a(getActivity());
     }
   }
   
@@ -387,7 +421,7 @@ public class ReadInJoyVideoChannelFragment
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onCreateView()");
     }
     this.jdField_a_of_type_AndroidViewViewGroup = new FrameLayout(paramLayoutInflater.getContext());
-    if ((!getUserVisibleHint()) && (onh.l())) {}
+    if ((!getUserVisibleHint()) && (ors.l())) {}
     for (;;)
     {
       return this.jdField_a_of_type_AndroidViewViewGroup;
@@ -403,10 +437,10 @@ public class ReadInJoyVideoChannelFragment
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onDestroy()");
       }
-      if (this.jdField_a_of_type_Nte != null) {
-        this.jdField_a_of_type_Nte.d();
+      if (this.jdField_a_of_type_Nwj != null) {
+        this.jdField_a_of_type_Nwj.d();
       }
-      b();
+      c();
       return;
     }
     catch (Exception localException)
@@ -422,7 +456,7 @@ public class ReadInJoyVideoChannelFragment
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onDestroyView()");
     }
     if (!this.jdField_d_of_type_Boolean) {
-      qvk.a().b(getActivity());
+      rlb.a().b(getActivity());
     }
   }
   
@@ -432,8 +466,8 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onDetach()");
     }
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.c();
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.c();
     }
   }
   
@@ -443,8 +477,11 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onPause()");
     }
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Nte != null)) {
-      this.jdField_a_of_type_Nte.g();
+    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Nwj != null)) {
+      this.jdField_a_of_type_Nwj.g();
+    }
+    if (this.jdField_a_of_type_Obv != null) {
+      this.jdField_a_of_type_Obv.b();
     }
   }
   
@@ -454,10 +491,13 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onResume()");
     }
-    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Nte != null))
+    if ((this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Nwj != null))
     {
-      this.jdField_a_of_type_Nte.h();
-      qvk.a().a();
+      this.jdField_a_of_type_Nwj.h();
+      rlb.a().a();
+    }
+    if ((this.jdField_a_of_type_Obv != null) && (!this.jdField_a_of_type_Obv.a())) {
+      this.jdField_a_of_type_Obv.a();
     }
   }
   
@@ -467,9 +507,9 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onStart()");
     }
-    bhvy.a(getActivity().getAppRuntime());
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.e();
+    bjxj.a(getActivity().getAppRuntime());
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.e();
     }
   }
   
@@ -479,15 +519,15 @@ public class ReadInJoyVideoChannelFragment
     if (QLog.isColorLevel()) {
       QLog.d("Q.readinjoy.video.VideoChannelFragment", 2, "onStop()");
     }
-    if (this.jdField_a_of_type_Nte != null) {
-      this.jdField_a_of_type_Nte.f();
+    if (this.jdField_a_of_type_Nwj != null) {
+      this.jdField_a_of_type_Nwj.f();
     }
-    qvk.a().a(false, "videoChannelFragment tab onStop");
+    rlb.a().a(false, "videoChannelFragment tab onStop");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment
  * JD-Core Version:    0.7.0.1
  */

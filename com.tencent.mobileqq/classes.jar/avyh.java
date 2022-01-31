@@ -1,62 +1,34 @@
-import android.opengl.GLES20;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
 public class avyh
+  implements Animator.AnimatorListener
 {
-  private int a;
-  private int b;
-  private int c;
-  private int d;
+  public avyh(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public avyh(int paramInt1, int paramInt2)
-  {
-    this.c = paramInt1;
-    this.d = paramInt2;
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenFramebuffers(1, arrayOfInt, 0);
-    this.b = arrayOfInt[0];
-    GLES20.glBindFramebuffer(36160, this.b);
-    a();
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    GLES20.glBindFramebuffer(36160, 0);
-    avyi.a(0);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt < 0)
-    {
-      ved.d("AvEditor.FrameBuffer", "invalid textureId " + paramInt);
-      return;
+    ScanIconAnimateView.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.b();
     }
-    int i = paramInt;
-    if (paramInt == 0) {
-      i = avyi.a(1)[0];
-    }
-    GLES20.glActiveTexture(33984);
-    avyi.a(i);
-    GLES20.glTexParameterf(3553, 10241, 9729.0F);
-    GLES20.glTexParameterf(3553, 10240, 9729.0F);
-    GLES20.glTexParameteri(3553, 10242, 33071);
-    GLES20.glTexParameteri(3553, 10243, 33071);
-    GLES20.glTexImage2D(3553, 0, 6408, this.c, this.d, 0, 6408, 5121, null);
-    GLES20.glViewport(0, 0, this.c, this.d);
-    GLES20.glBindFramebuffer(36160, this.b);
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, i, 0);
-    GLES20.glClear(16384);
-    this.a = i;
   }
   
-  public void b()
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    GLES20.glDeleteFramebuffers(1, new int[] { this.b }, 0);
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avyh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,19 @@
-import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.util.HashSet;
-import java.util.Set;
-
 public class bfgy
+  extends bfha
 {
-  private static final Set<Integer> a = new HashSet();
-  
-  static
+  public static bfgy a()
   {
-    a.add(Integer.valueOf(3001));
-    a.add(Integer.valueOf(3002));
-    a.add(Integer.valueOf(3003));
-    a.add(Integer.valueOf(3004));
-    a.add(Integer.valueOf(3005));
-    a.add(Integer.valueOf(3006));
-    a.add(Integer.valueOf(3007));
-    a.add(Integer.valueOf(3008));
-    a.add(Integer.valueOf(3009));
-    a.add(Integer.valueOf(3010));
-    a.add(Integer.valueOf(3011));
-    a.add(Integer.valueOf(3012));
-    a.add(Integer.valueOf(3013));
-    a.add(Integer.valueOf(1001));
-    a.add(Integer.valueOf(1022));
+    return new bfgy();
   }
   
-  public static boolean a(MiniAppInfo paramMiniAppInfo)
+  public String a()
   {
-    return (paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null) && (a.contains(Integer.valueOf(paramMiniAppInfo.launchParam.a)));
+    return b() + "|" + c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfgy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import android.util.Pair;
+import java.net.URL;
 
 public class nhn
-  implements DialogInterface.OnDismissListener
 {
-  public nhn(AccountDetailActivity paramAccountDetailActivity) {}
+  public Pair<Integer, Integer> a;
+  public URL a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static nhn a(URL paramURL, Pair<Integer, Integer> paramPair)
   {
-    this.a.p = false;
+    nhn localnhn = new nhn();
+    localnhn.jdField_a_of_type_JavaNetURL = paramURL;
+    localnhn.jdField_a_of_type_AndroidUtilPair = paramPair;
+    return localnhn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nhn
  * JD-Core Version:    0.7.0.1
  */

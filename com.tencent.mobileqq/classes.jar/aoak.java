@@ -1,33 +1,22 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aoak
-  extends anwk
+  implements DialogInterface.OnClickListener
 {
-  aoak(aoai paramaoai) {}
+  aoak(aoaj paramaoaj) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b(paramEmoticonPackage);
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
-  {
-    this.a.a(paramEmoticonPackage, paramInt);
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage);
-  }
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
+    if (aoaj.a(this.a).isShowing()) {
+      aoaj.a(this.a).dismiss();
+    }
+    aobd.a(aoaj.a(this.a), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoak
  * JD-Core Version:    0.7.0.1
  */

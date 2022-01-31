@@ -1,73 +1,119 @@
-import android.text.TextUtils.TruncateAt;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.ApolloLibData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class apgp
-  implements awwr
+  extends apgu
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private EllipsizingTextView jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+  public static final String[] a = { "libjsc.so" };
   
-  public apgp(ViewGroup paramViewGroup)
+  public apgp(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560486, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366211));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView = ((EllipsizingTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366223));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365017));
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setMaxLines(1);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.setEllipsize(TextUtils.TruncateAt.MIDDLE);
+    super("android.qq.apollo.js.833g1", paramQQAppInterface);
   }
   
-  public View a()
+  public static void a()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (apgj)((QQAppInterface)localObject).getManager(77);
+      if (localObject != null)
+      {
+        localObject = (apgp)((apgj)localObject).a("android.qq.apollo.js.833g1");
+        if (localObject != null)
+        {
+          ((apgp)localObject).a(true);
+          QLog.i("ApolloSoLoader_libHandler", 1, "restartDownload savaLib");
+        }
+      }
+    }
   }
   
-  public View a(String paramString)
+  public int a()
   {
-    return null;
+    return 10038;
   }
   
-  public ImageView a()
+  public Class<? extends XmlData> a()
   {
-    return null;
+    return ApolloLibData.class;
   }
   
-  public TextView a()
+  public String a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView;
+    return "ApolloSoLoader_libHandler";
   }
   
-  public ImageView b()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
+    QLog.i("ApolloSoLoader_libHandler", 1, "[doOnDownloadSuccess] sava:" + paramString);
+    Object localObject = a();
+    if (localObject != null) {
+      QLog.i("ApolloSoLoader_libHandler", 1, "version:" + ((XmlData)localObject).Version);
+    }
+    int i;
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      i = 1;
+      if (i != 0) {
+        alda.a(10, null, new int[] { 1 });
+      }
+      if (new File(paramString).exists())
+      {
+        if (bhol.a(paramString, 1)) {
+          break label189;
+        }
+        if (localObject != null)
+        {
+          ((XmlData)localObject).loadState = 0;
+          ((XmlData)localObject).Version = 0;
+          apgi.a((XmlData)localObject, new String[] { "loadState", "Version" });
+        }
+        QLog.e("ApolloSoLoader_libHandler", 1, "[doOnDownloadSuccess],unzip apollo lib failed!");
+        if (i != 0)
+        {
+          alda.a(10, 200, 1001, new Object[] { "unzip sava lib failed" });
+          alfz.a = true;
+        }
+      }
+    }
+    for (;;)
+    {
+      super.a(paramString);
+      return;
+      i = 0;
+      break;
+      label189:
+      localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
+      if (localObject != null) {
+        ((SharedPreferences)localObject).edit().putString("res_name", "android.qq.apollo.js.833g1").commit();
+      }
+      if (i != 0) {
+        alda.a(10, 200, 0, new Object[] { "libsava so download success" });
+      }
+      alfz.a("after_ApolloSo_downloaded");
+    }
   }
   
-  public TextView b()
+  public boolean a()
   {
-    return null;
+    return true;
   }
   
-  public TextView c()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public TextView d()
+  public String b()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apgp
  * JD-Core Version:    0.7.0.1
  */

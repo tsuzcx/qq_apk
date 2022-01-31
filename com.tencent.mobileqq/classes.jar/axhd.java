@@ -1,24 +1,32 @@
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import java.nio.ByteBuffer;
+import android.os.Bundle;
+import java.lang.ref.WeakReference;
 
-public class axhd
+abstract class axhd<T>
+  extends nac
 {
-  public int a;
-  public MediaCodec.BufferInfo a;
-  public MediaFormat a;
-  public ByteBuffer a;
-  public boolean a;
+  protected T a;
+  private WeakReference<T> a;
   
-  public axhd(axhc paramaxhc)
+  axhd(T paramT)
   {
-    this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramT);
   }
+  
+  public final void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (this.jdField_a_of_type_JavaLangObject == null) {
+      return;
+    }
+    b(paramInt, paramArrayOfByte, paramBundle);
+    this.jdField_a_of_type_JavaLangObject = null;
+  }
+  
+  abstract void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axhd
  * JD-Core Version:    0.7.0.1
  */

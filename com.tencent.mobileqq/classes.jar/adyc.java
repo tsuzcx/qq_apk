@@ -1,32 +1,27 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.QZoneClickReport;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
 class adyc
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  adyc(adya paramadya) {}
+  adyc(adyb paramadyb, bdfq parambdfq) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-    {
-      paramView = new bgyj();
-      paramView.c = "330";
-      paramView.d = "3";
-      paramView.e = "2";
-      QZoneClickReport.startReportImediately(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView);
-      paramView = bgyw.a();
-      bgyp.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, paramView, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 0, 0, 0);
-    }
+    azmj.b(this.jdField_a_of_type_Adyb.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Adyb.a.a, "", "", "");
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Adyb.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "http://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
+    paramDialogInterface.putExtra("webStyle", "noBottomBar");
+    this.jdField_a_of_type_Adyb.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_Bdfq.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyc
  * JD-Core Version:    0.7.0.1
  */

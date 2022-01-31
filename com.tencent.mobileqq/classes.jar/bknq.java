@@ -1,20 +1,31 @@
-import android.graphics.RectF;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
-public abstract interface bknq
+public class bknq
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abstract void a(int paramInt);
+  private bknq(AECropperImageView paramAECropperImageView) {}
   
-  public abstract void a(int paramInt1, int paramInt2, RectF paramRectF);
-  
-  public abstract void a(int paramInt, RectF paramRectF);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if (!AECropperImageView.a(this.a)) {}
+    do
+    {
+      return false;
+      if (AECropperImageView.b(this.a))
+      {
+        blfg.d("AECropperImageView", "Cropping current bitmap. Can't perform this action right now.");
+        return false;
+      }
+    } while ((paramMotionEvent1 == null) || (paramMotionEvent2 == null) || (paramMotionEvent1.getPointerCount() > 1) || (paramMotionEvent2.getPointerCount() > 1));
+    this.a.a(paramFloat1, paramFloat2);
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bknq
  * JD-Core Version:    0.7.0.1
  */

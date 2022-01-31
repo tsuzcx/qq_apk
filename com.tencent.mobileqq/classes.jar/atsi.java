@@ -1,23 +1,17 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.os.Handler;
+import android.os.Looper;
 
-class atsi
-  implements TextWatcher
+final class atsi
+  extends atsr<Handler, Void>
 {
-  atsi(atsc paramatsc) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  protected Handler a(Void paramVoid)
   {
-    atbr.a(this.a.e, 40);
+    return new Handler(Looper.getMainLooper());
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsi
  * JD-Core Version:    0.7.0.1
  */

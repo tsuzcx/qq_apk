@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aebg;
+import afxu;
 import android.app.Dialog;
 
 public class StructingMsgItemBuilder$17$1
   implements Runnable
 {
-  public StructingMsgItemBuilder$17$1(aebg paramaebg, Dialog paramDialog) {}
+  public StructingMsgItemBuilder$17$1(afxu paramafxu, Dialog paramDialog) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class StructingMsgItemBuilder$17$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.17.1
  * JD-Core Version:    0.7.0.1
  */

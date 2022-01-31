@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.app;
 
-import amgv;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import anxw;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public abstract interface IAppUIProxy
-  extends amgv
+  extends anxw
 {
   public abstract void completeLoading(BaseActivity paramBaseActivity);
   
@@ -54,7 +54,7 @@ public abstract interface IAppUIProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.IAppUIProxy
  * JD-Core Version:    0.7.0.1
  */

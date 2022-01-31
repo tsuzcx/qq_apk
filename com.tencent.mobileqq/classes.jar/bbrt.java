@@ -1,38 +1,20 @@
-import android.graphics.Color;
-import android.util.SparseArray;
-
-public class bbrt
+public abstract interface bbrt
 {
-  public byte a;
-  public int a;
-  public long a;
-  public SparseArray<bbrt> a;
-  public boolean a;
-  public int b;
-  public long b;
-  public long c;
+  public abstract void a();
   
-  public static bbrt a()
-  {
-    return new bbrt();
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2, bdlo parambdlo);
   
-  public static bbrt a(int paramInt, byte paramByte)
-  {
-    bbrt localbbrt = new bbrt();
-    localbbrt.jdField_b_of_type_Int = paramInt;
-    localbbrt.jdField_a_of_type_Byte = paramByte;
-    return localbbrt;
-  }
+  public abstract void a(bdlo parambdlo);
   
-  public int a()
-  {
-    return Color.rgb((int)this.jdField_a_of_type_Long, (int)this.jdField_b_of_type_Long, (int)this.c);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void a(byte[] paramArrayOfByte, long paramLong, String paramString);
+  
+  public abstract void b(bdlo parambdlo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbrt
  * JD-Core Version:    0.7.0.1
  */

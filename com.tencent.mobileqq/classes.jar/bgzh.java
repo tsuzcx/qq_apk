@@ -1,54 +1,67 @@
-import PUSHAPI.PushRsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StGetUserHealthDataReq;
+import NS_MINI_INTERFACE.INTERFACE.StGetUserHealthDataRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
 public class bgzh
-  extends QzoneExternalRequest
+  extends bgzp
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private long b;
+  private INTERFACE.StGetUserHealthDataReq a = new INTERFACE.StGetUserHealthDataReq();
   
-  public bgzh(long paramLong1, long paramLong2, String paramString1, long paramLong3, String paramString2)
+  public bgzh(COMM.StCommonExt paramStCommonExt, String paramString)
   {
-    super.setHostUin(paramLong1);
-    super.setLoginUserId(paramLong1);
-    super.setRefer(paramString1);
-    this.jdField_a_of_type_Long = paramLong2;
-    this.b = paramLong3;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.needCompress = false;
+    this.a.appid.set(paramString);
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
   }
   
-  public String getCmdString()
+  protected String a()
   {
-    return "wns.pushrsp";
+    return "mini_user_info";
   }
   
-  public byte[] getEncodedUniParameter()
+  public JSONObject a(byte[] paramArrayOfByte)
   {
-    PushRsp localPushRsp = new PushRsp();
-    localPushRsp.ptime = this.jdField_a_of_type_Long;
-    localPushRsp.is_bgd = 0;
-    localPushRsp.sUID = "<JIEHEBAN>";
-    localPushRsp.flag = this.b;
-    localPushRsp.Mark = this.jdField_a_of_type_JavaLangString;
-    return bggm.a(localPushRsp);
-  }
-  
-  public JceStruct getReq()
-  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    INTERFACE.StGetUserHealthDataRsp localStGetUserHealthDataRsp = new INTERFACE.StGetUserHealthDataRsp();
+    try
+    {
+      localStGetUserHealthDataRsp.mergeFrom(a(paramArrayOfByte));
+      if (localStGetUserHealthDataRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("encryptedData", localStGetUserHealthDataRsp.encryptedData.get());
+        paramArrayOfByte.put("iv", localStGetUserHealthDataRsp.iv.get());
+        return paramArrayOfByte;
+      }
+      QMLog.d("GetUserHealthDataRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("GetUserHealthDataRequest", "onResponse fail." + paramArrayOfByte);
+    }
     return null;
   }
   
-  public String uniKey()
+  public byte[] a()
   {
-    return "wns.pushrsp";
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "GetUserHealthData";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgzh
  * JD-Core Version:    0.7.0.1
  */

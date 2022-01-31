@@ -1,19 +1,27 @@
-import android.os.Bundle;
-import android.os.IInterface;
-import com.tencent.mobileqq.pic.CompressInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.ocr.OCRPerformFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface avrc
-  extends IInterface
+public class avrc
+  extends BroadcastReceiver
 {
-  public abstract Bundle a(int paramInt, Bundle paramBundle);
+  public avrc(OCRPerformFragment paramOCRPerformFragment) {}
   
-  public abstract void a(int paramInt, Bundle paramBundle);
-  
-  public abstract void a(CompressInfo paramCompressInfo);
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    {
+      QLog.d("OCRPerformFragment", 4, "receive videochat");
+      this.a.getActivity().finish();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avrc
  * JD-Core Version:    0.7.0.1
  */

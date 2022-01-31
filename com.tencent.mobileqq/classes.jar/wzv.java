@@ -1,31 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
 class wzv
-  extends Handler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  wzv(wzt paramwzt) {}
+  wzv(wzu paramwzu) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (wzs.a(this.a.a) == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Azpg + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Azph);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.l = (this.a.d + this.a.f * f);
+    this.a.m = (this.a.e + this.a.g * f);
+    this.a.j = (this.a.b + this.a.h * f);
+    this.a.k = (this.a.c + this.a.i * f);
+    if (this.a.a.a != null) {
+      this.a.a.a.a(f);
     }
-    if (this.a.jdField_a_of_type_Azph != null) {
-      this.a.a(this.a.jdField_a_of_type_Azph);
+    if (f == 1.0F) {
+      wzs.a(this.a.a, null);
     }
-    this.a.a();
+    wzs.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzv
  * JD-Core Version:    0.7.0.1
  */

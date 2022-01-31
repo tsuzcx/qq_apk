@@ -1,36 +1,20 @@
-import android.os.Handler;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnSeekCompleteListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer.11.1;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class beom
-  implements VideoPlayerProxy.OnSeekCompleteListener
+  implements View.OnClickListener
 {
-  public beom(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
+  public beom(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
   
-  public void onSeekComplete(VideoPlayerProxy paramVideoPlayerProxy)
+  public void onClick(View paramView)
   {
-    bejn.c().post(new MiniAppVideoPlayer.11.1(this));
-    try
-    {
-      paramVideoPlayerProxy = new JSONObject();
-      paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_Behp.a("onVideoSeeked", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-      betc.a("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoSeeked = " + paramVideoPlayerProxy.toString());
-      return;
-    }
-    catch (JSONException paramVideoPlayerProxy)
-    {
-      paramVideoPlayerProxy.printStackTrace();
-    }
+    ProfileCardMoreInfoView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beom
  * JD-Core Version:    0.7.0.1
  */

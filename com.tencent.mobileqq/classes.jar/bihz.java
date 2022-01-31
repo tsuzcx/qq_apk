@@ -1,237 +1,128 @@
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.richmedia.capture.data.FollowCaptureParam;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMStoryFollowCaptureUnit.1;
-import dov.com.qq.im.capture.mode.CaptureModeController;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import dov.com.qq.im.capture.view.StoryImageToastView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraStoryCaptureButtonLayout;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@TargetApi(18)
 public class bihz
-  extends bihx
 {
-  private static int d;
-  private static int e;
-  private volatile boolean A;
-  private FollowCaptureParam jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam;
-  private FollowCaptureView jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFollowCaptureView;
-  private Stack<Integer> jdField_a_of_type_JavaUtilStack = new Stack();
-  private LocalMediaInfo b;
-  private CameraCaptureView.VideoCaptureResult c;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
+  public int d;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g;
+  public boolean g;
+  public int h;
+  public boolean h;
+  public int i;
+  public boolean i;
+  public boolean j;
+  public boolean k;
   
-  static
+  public static bihz a(String paramString)
   {
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    ((WindowManager)BaseApplicationImpl.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
-    jdField_d_of_type_Int = localDisplayMetrics.widthPixels;
-    e = localDisplayMetrics.heightPixels;
-  }
-  
-  public bihz(bjrl parambjrl, bjrk parambjrk)
-  {
-    super(parambjrl, parambjrk);
-  }
-  
-  private void af()
-  {
-    if (axhq.e())
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
     {
-      localObject = avte.a(this.jdField_a_of_type_Bjrl.a());
-      if (localObject != null)
+      paramString = new JSONObject(paramString);
+      return a(paramString);
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
       {
-        jdField_d_of_type_Int = ((DisplayMetrics)localObject).widthPixels;
-        e = ((DisplayMetrics)localObject).heightPixels;
+        if (QLog.isColorLevel()) {
+          QLog.d("PreloadPublicParam", 2, "PreloadPublicParam parseJson Exception");
+        }
+        paramString = null;
       }
     }
-    Object localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.getLayoutParams();
-    ((RelativeLayout.LayoutParams)localObject).height = (e / 2);
-    int j = bbll.a(48.0F);
-    int i = bbll.a(44.0F);
-    int k = bbll.a(118.0F);
-    k = e - k - i - j;
-    i = k;
-    if (this.jdField_d_of_type_Boolean) {
-      i = k - (this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams().height + this.jdField_b_of_type_AndroidWidgetRelativeLayout.getLayoutParams().height);
+  }
+  
+  public static bihz a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return null;
     }
-    if (i - ((RelativeLayout.LayoutParams)localObject).height > 0) {}
-    for (i = (i - ((RelativeLayout.LayoutParams)localObject).height) / 2 + j;; i = j)
+    bihz localbihz = new bihz();
+    try
     {
-      ((RelativeLayout.LayoutParams)localObject).topMargin = i;
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.e(false);
-      return;
+      if (paramJSONObject.has("pppid")) {
+        localbihz.jdField_a_of_type_Int = paramJSONObject.getInt("pppid");
+      }
+      if (paramJSONObject.has("timecontrol"))
+      {
+        localObject = paramJSONObject.getJSONObject("timecontrol");
+        localbihz.jdField_a_of_type_Boolean = ((JSONObject)localObject).getBoolean("switch");
+        localbihz.jdField_b_of_type_Int = ((JSONObject)localObject).getInt("dayofweek");
+        localbihz.jdField_c_of_type_Int = ((JSONObject)localObject).getInt("hourofday");
+      }
+      if (paramJSONObject.has("reddot"))
+      {
+        localObject = paramJSONObject.getJSONObject("reddot");
+        localbihz.jdField_b_of_type_Boolean = ((JSONObject)localObject).getBoolean("switch");
+        localbihz.jdField_c_of_type_Boolean = ((JSONObject)localObject).optBoolean("apponly");
+        localbihz.jdField_d_of_type_Boolean = ((JSONObject)localObject).getBoolean("app");
+        localbihz.jdField_e_of_type_Boolean = ((JSONObject)localObject).getBoolean("leba");
+      }
+      if (paramJSONObject.has("lebalist")) {
+        localbihz.jdField_h_of_type_Boolean = paramJSONObject.getJSONObject("lebalist").getBoolean("switch");
+      }
+      if (paramJSONObject.has("activetime"))
+      {
+        localObject = paramJSONObject.getJSONObject("activetime");
+        localbihz.jdField_i_of_type_Boolean = ((JSONObject)localObject).getBoolean("switch");
+        localbihz.jdField_e_of_type_Int = ((JSONObject)localObject).getInt("hour");
+      }
+      if (paramJSONObject.has("usedtimes"))
+      {
+        localObject = paramJSONObject.getJSONObject("usedtimes");
+        localbihz.j = ((JSONObject)localObject).getBoolean("switch");
+        localbihz.jdField_f_of_type_Int = ((JSONObject)localObject).getInt("times");
+      }
+      if (paramJSONObject.has("userlearn"))
+      {
+        localObject = paramJSONObject.getJSONObject("userlearn");
+        localbihz.k = ((JSONObject)localObject).getBoolean("switch");
+        localbihz.jdField_g_of_type_Int = ((JSONObject)localObject).getInt("timearea");
+        localbihz.jdField_h_of_type_Int = ((JSONObject)localObject).getInt("methodid");
+        localbihz.jdField_i_of_type_Int = ((JSONObject)localObject).getInt("clusternum");
+      }
+      localObject = localbihz;
+      if (paramJSONObject.has("cdperiod"))
+      {
+        paramJSONObject = paramJSONObject.getJSONObject("cdperiod");
+        localbihz.jdField_f_of_type_Boolean = paramJSONObject.optBoolean("switch");
+        localbihz.jdField_d_of_type_Int = paramJSONObject.optInt("time");
+        localbihz.jdField_g_of_type_Boolean = paramJSONObject.optBoolean("reverse");
+        localObject = localbihz;
+      }
     }
-  }
-  
-  public void A()
-  {
-    super.A();
-    this.jdField_a_of_type_JavaUtilStack.pop();
-    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().b(false);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFollowCaptureView.e(((Integer)this.jdField_a_of_type_JavaUtilStack.peek()).intValue());
-  }
-  
-  protected void B()
-  {
-    e(false);
-  }
-  
-  public void H()
-  {
-    super.H();
-    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().b(true);
-  }
-  
-  public void L()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.B();
-    if ((this.jdField_a_of_type_JavaUtilList.size() == 0) || (this.jdField_b_of_type_JavaUtilList.size() == 0))
+    catch (JSONException paramJSONObject)
     {
-      e(false);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setSegment(true);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setEnableSegment(false);
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PreloadPublicParam", 2, "PreloadPublicParam parseJson Exception");
+        }
+        Object localObject = null;
+      }
     }
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setLockStatus(false);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.h(false);
-    this.jdField_a_of_type_DovComQqImCaptureViewStoryImageToastView.b();
-  }
-  
-  public void T()
-  {
-    super.T();
-    af();
-  }
-  
-  public int a()
-  {
-    return 2131560556;
-  }
-  
-  public View a()
-  {
-    View localView = super.a();
-    af();
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setSegment(true);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setEnableSegment(false);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setFunctionFlag(3);
-    return localView;
-  }
-  
-  protected avss a()
-  {
-    return new biia(this, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoCameraFocusView);
-  }
-  
-  protected avul a()
-  {
-    avul localavul = super.a();
-    localavul.g(jdField_d_of_type_Int);
-    localavul.h(e);
-    localavul.a(false);
-    return localavul;
-  }
-  
-  public ArrayList<Integer> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Integer.valueOf(0));
-    return localArrayList;
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    super.a(paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStoryFollowCaptureUnit", 2, "onCreate");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam = ((FollowCaptureParam)this.jdField_a_of_type_Bjrl.a().getIntent().getSerializableExtra("extra_follow_capture_param"));
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam.videoPath)))
-    {
-      bcql.a(BaseApplicationImpl.getContext(), ajya.a(2131709854), 0).a();
-      this.jdField_a_of_type_Bjrl.a().finish();
-      return;
-    }
-    this.jdField_a_of_type_Bjrd.b = 108;
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.b(true);
-    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.b(true);
-    d(true);
-    this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFollowCaptureView = ((FollowCaptureView)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView);
-    paramBundle = BaseApplicationImpl.getContext().getResources().getString(2131699477);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setIsFollowCaptureTips();
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setRecordTipsWording(paramBundle);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.e();
-    ThreadManagerV2.excute(new QIMStoryFollowCaptureUnit.1(this), 16, null, true);
-    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().b(false);
-    this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a().b();
-    this.jdField_a_of_type_JavaUtilStack.push(Integer.valueOf(0));
-    bkrf.a().b(false);
-  }
-  
-  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
-  {
-    this.jdField_c_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult = paramVideoCaptureResult;
-    this.jdField_b_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-    if ((!this.A) || (this.jdField_c_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult == null) || (paramLocalMediaInfo == null)) {
-      return;
-    }
-    this.jdField_a_of_type_Bjrl.a().getIntent().putExtra("extra_follow_capture_param", this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam);
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam != null) {
-      paramVideoCaptureResult.audioDataFilePath = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFollowCaptureParam.audioPath;
-    }
-    super.a(paramVideoCaptureResult, paramLocalMediaInfo);
-  }
-  
-  protected void b(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo)
-  {
-    super.b(paramVideoCaptureResult, paramLocalMediaInfo);
-    this.jdField_a_of_type_JavaUtilStack.push(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewFollowCaptureView.f()));
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMStoryFollowCaptureUnit", 2, "onSegmentVideoOneCaptured: localMediaInfo.duration = " + paramLocalMediaInfo.mDuration + " ; playPosition = " + this.jdField_a_of_type_JavaUtilStack.peek());
-    }
-  }
-  
-  public int d()
-  {
-    return 0;
-  }
-  
-  public void f(boolean paramBoolean)
-  {
-    super.f(paramBoolean);
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraStoryCaptureButtonLayout.setEnableSegment(false);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bihz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.view;
 
-import aisj;
-import ajqu;
+import akjv;
+import alih;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -10,14 +10,14 @@ import com.tencent.image.URLImageView;
 public class ApolloPanel$34$1
   implements Runnable
 {
-  public ApolloPanel$34$1(ajqu paramajqu) {}
+  public ApolloPanel$34$1(alih paramalih) {}
   
   public void run()
   {
     ApolloPanel.a(this.a.a).setVisibility(0);
     this.a.a.b.setVisibility(0);
     ApolloPanel.a(this.a.a).setVisibility(8);
-    if ((aisj.a) && (ApolloPanel.d(this.a.a)))
+    if ((akjv.a) && (ApolloPanel.d(this.a.a)))
     {
       ApolloPanel.a(this.a.a).setVisibility(0);
       ApolloPanel.b(this.a.a).setVisibility(0);
@@ -35,7 +35,7 @@ public class ApolloPanel$34$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloPanel.34.1
  * JD-Core Version:    0.7.0.1
  */

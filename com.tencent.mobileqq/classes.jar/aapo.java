@@ -1,24 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public final class aapo
-  implements DialogInterface.OnClickListener
+class aapo
+  extends AdHttp.Params
 {
-  public aapo(aaqa paramaaqa) {}
+  public int a = -2147483648;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean isSuccess()
   {
-    if (this.a != null) {
-      this.a.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    return (super.isSuccess()) && (this.responseData != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapo
  * JD-Core Version:    0.7.0.1
  */

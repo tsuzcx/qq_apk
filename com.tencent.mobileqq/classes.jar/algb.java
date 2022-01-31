@@ -1,10 +1,17 @@
-public abstract interface algb
+import java.io.File;
+import java.io.FilenameFilter;
+
+public final class algb
+  implements FilenameFilter
 {
-  public abstract byte[] a();
+  public boolean accept(File paramFile, String paramString)
+  {
+    return (paramString.toLowerCase().endsWith(".amr")) || (paramString.toLowerCase().endsWith(".mp3"));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,48 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.remote.SendMsg;
+import com.tencent.qqprotect.qsec.IRuntimeInterface;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-public final class bhlb
-  implements Parcelable.Creator<SendMsg>
+public class bhlb
+  implements IRuntimeInterface
 {
-  public SendMsg a(Parcel paramParcel)
+  private static volatile bhlb a;
+  
+  private bhlb()
   {
-    return new SendMsg(paramParcel);
+    QSecFramework.a(3L, new bhlc(this));
   }
   
-  public SendMsg[] a(int paramInt)
+  public static bhlb a()
   {
-    return new SendMsg[paramInt];
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bhlb();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 1) {
+      bhin.a(paramString, paramInt2);
+    }
+    while (paramInt1 != 2) {
+      return;
+    }
+    bhin.b(paramString, paramInt2);
+  }
+  
+  public String getInterfaceName()
+  {
+    return "Rpt";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhlb
  * JD-Core Version:    0.7.0.1
  */

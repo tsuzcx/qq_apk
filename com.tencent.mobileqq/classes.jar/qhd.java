@@ -1,51 +1,37 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.CheckBox;
-import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.widget.ExpandableListView;
-import java.util.List;
-
-public class qhd
-  extends qhk
+class qhd
+  implements qgt
 {
-  private qhu a;
+  qhd(qhb paramqhb, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public qhd(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView, boolean paramBoolean, qhu paramqhu)
+  public void a()
   {
-    super(paramContext, paramQQAppInterface, paramExpandableListView, paramBoolean);
-    this.jdField_a_of_type_Qhu = paramqhu;
+    if (qhb.a(this.jdField_a_of_type_Qhb) != null)
+    {
+      qhb.a(this.jdField_a_of_type_Qhb).i();
+      qhb.a(this.jdField_a_of_type_Qhb).a(this.jdField_a_of_type_Int, this.b, this.c);
+    }
   }
   
-  protected void a()
+  public void a(int paramInt, long paramLong, String paramString1, qfz paramqfz, String paramString2, String paramString3, String paramString4)
   {
-    if ((this.jdField_a_of_type_Qhu != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcDatabindingObservableArrayList.size() >= this.jdField_a_of_type_Qhu.b()))
+    if (qhb.a(this.jdField_a_of_type_Qhb) != null)
     {
-      String str = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718565, new Object[] { String.valueOf(this.jdField_a_of_type_Qhu.c()) });
-      bcql.a(this.jdField_a_of_type_AndroidContentContext, str, 0).a();
+      if (paramInt == 0)
+      {
+        qhb.a(this.jdField_a_of_type_Qhb).i();
+        qhb.a(this.jdField_a_of_type_Qhb).a(paramLong, paramString1, paramqfz, paramString2, this.jdField_a_of_type_Int, this.b, this.c);
+      }
+    }
+    else {
       return;
     }
-    bcql.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131718559), 0).a();
-  }
-  
-  protected void a(qhs paramqhs, Friends paramFriends)
-  {
-    if ((paramFriends == null) || (this.jdField_a_of_type_Qhu == null) || (this.jdField_a_of_type_Qhu.a() == null) || (this.jdField_a_of_type_Qhu.a().isEmpty())) {
-      return;
-    }
-    paramqhs.a.setBackgroundResource(2130848416);
-    if (this.jdField_a_of_type_Qhu.a().contains(paramFriends.uin))
-    {
-      paramqhs.a.setEnabled(false);
-      return;
-    }
-    paramqhs.a.setEnabled(true);
+    qhb.a(this.jdField_a_of_type_Qhb).i();
+    qhb.a(this.jdField_a_of_type_Qhb).a(paramString3, paramString2, this.jdField_a_of_type_Int, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qhd
  * JD-Core Version:    0.7.0.1
  */

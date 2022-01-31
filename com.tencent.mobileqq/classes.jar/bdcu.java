@@ -1,28 +1,90 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.agent.OpenCardContainer;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.ImageInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.utils.ForwardSendPicUtil.1;
+import com.tencent.qphone.base.util.QLog;
 
-class bdcu
-  implements View.OnClickListener
+public class bdcu
 {
-  bdcu(bdct parambdct, int paramInt) {}
-  
-  public void onClick(View paramView)
+  private static String a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
-    if ((bdct.a(this.jdField_a_of_type_Bdct) == null) || (this.jdField_a_of_type_Int >= bdct.a(this.jdField_a_of_type_Bdct).size()) || (this.jdField_a_of_type_Int < 0)) {
-      return;
+    String str = bduw.a(bdda.a(paramContext, paramString, paramInt));
+    ImageInfo localImageInfo = new ImageInfo();
+    if (paramBoolean) {}
+    for (int i = 7;; i = 4)
+    {
+      bdda.a(i, paramContext, paramString, str, true, localImageInfo, paramInt);
+      return localImageInfo.b;
     }
-    if ((this.jdField_a_of_type_Bdct.a.a != null) && (bdct.a(this.jdField_a_of_type_Bdct).get(this.jdField_a_of_type_Int) != null) && (OpenCardContainer.a(this.jdField_a_of_type_Bdct.a) != null)) {
-      OpenCardContainer.a(this.jdField_a_of_type_Bdct.a).a(((bdcw)bdct.a(this.jdField_a_of_type_Bdct).get(this.jdField_a_of_type_Int)).a);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, String paramString3, boolean paramBoolean, Context paramContext)
+  {
+    return a(paramQQAppInterface, paramString1, paramString2, paramInt, paramString3, paramBoolean, paramContext, 0);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt1, String paramString3, boolean paramBoolean, Context paramContext, int paramInt2)
+  {
+    Object localObject;
+    if ((paramContext instanceof Activity))
+    {
+      localObject = ((Activity)paramContext).getIntent();
+      if (localObject == null) {}
     }
-    bdct.a(this.jdField_a_of_type_Bdct).remove(bdct.a(this.jdField_a_of_type_Bdct).get(this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_Bdct.notifyDataSetChanged();
+    for (boolean bool = ((Intent)localObject).getBooleanExtra("isFromFavorites", false);; bool = false)
+    {
+      localObject = "ForwardSendPicUtil.sendPicTo." + paramContext.getClass().getSimpleName();
+      bdda.a(-1L, paramInt1, true, "image_send_prepare", (String)localObject + ", isQzoneShare=" + paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardSendPicUtil", 2, "[@]call compressImage start!");
+      }
+      paramString1 = a(paramContext, paramString1, paramInt1, paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardSendPicUtil", 2, "[@]call compressImage end!");
+      }
+      if (!bdcs.b(paramString1))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ForwardSendPicUtil", 2, "sendPicTo,pic not exist,return false!");
+        }
+        return false;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardSendPicUtil", 2, "[@]call addAndSendPicMsgRecord start!");
+      }
+      if (paramString1 != null)
+      {
+        int i = 1009;
+        if (bool) {
+          i = 1053;
+        }
+        paramContext = new awfm();
+        paramContext.a(paramString1);
+        paramContext.d(i);
+        paramContext.d(paramString2);
+        paramContext.c(batv.d);
+        paramContext.e(paramString3);
+        paramContext.c(paramQQAppInterface.getCurrentAccountUin());
+        paramContext.e(paramInt1);
+        paramString2 = awes.a(2, i);
+        paramString2.a(paramContext.a());
+        paramString2.c = paramInt2;
+        awes.a(paramString2, paramQQAppInterface);
+        ThreadManager.post(new ForwardSendPicUtil.1(paramString1, paramInt1, paramQQAppInterface), 5, null, false);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardSendPicUtil", 2, "[@]call addAndSendPicMsgRecord end!");
+      }
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdcu
  * JD-Core Version:    0.7.0.1
  */

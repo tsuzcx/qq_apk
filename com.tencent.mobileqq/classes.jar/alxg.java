@@ -1,54 +1,80 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.LruCache;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
 
-class alxg
-  extends BroadcastReceiver
+public class alxg
+  extends FriendListHandler
+  implements aywc
 {
-  alxg(alxf paramalxf) {}
+  private ToServiceMsg a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public alxg(QQAppInterface paramQQAppInterface)
   {
-    if ((paramIntent == null) || (!"com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("faceType", -1) != this.a.jdField_a_of_type_Int)) {}
-    ArrayList localArrayList;
-    do
+    super(paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    Object localObject1;
+    if (this.app.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a == 2)
     {
-      return;
-      paramContext = paramIntent.getStringArrayListExtra("uinList");
-      localArrayList = paramIntent.getStringArrayListExtra("headPathList");
-    } while ((paramContext == null) || (localArrayList == null));
-    int j = paramContext.size();
-    if (QLog.isColorLevel()) {
-      QLog.d("NonMainAppHeadLoader", 2, "onReceive, uinListSize:" + j + " reqSize:" + this.a.jdField_a_of_type_JavaUtilHashSet.size());
-    }
-    paramIntent = new ArrayList(this.a.jdField_a_of_type_JavaUtilHashSet.size());
-    int i = 0;
-    while (i < j)
-    {
-      String str = (String)paramContext.get(i);
-      if (this.a.jdField_a_of_type_JavaUtilHashSet.contains(str))
-      {
-        this.a.jdField_a_of_type_JavaUtilHashSet.remove(str);
-        paramIntent.add(str);
+      localObject1 = (bdih)this.app.getManager(31);
+      if (localObject1 != null) {
+        ((bdih)localObject1).a(true, this);
       }
-      this.a.jdField_b_of_type_AndroidSupportV4UtilLruCache.put(str, localArrayList.get(i));
-      i += 1;
     }
-    paramContext = Message.obtain();
-    paramContext.obj = paramIntent;
-    paramContext.what = 1001;
-    this.a.jdField_b_of_type_AndroidOsHandler.sendMessage(paramContext);
+    if (this.a != null)
+    {
+      Object localObject2 = this.app.jdField_a_of_type_Aytq.a(this.a.getServiceCmd());
+      if (localObject2 != null)
+      {
+        localObject1 = new UniPacket(true);
+        ((UniPacket)localObject1).setEncodeName("utf-8");
+        if (((zdf)localObject2).a(this.a, (UniPacket)localObject1))
+        {
+          localObject2 = new ReqItem();
+          ((ReqItem)localObject2).eServiceID = 115;
+          ((ReqItem)localObject2).vecParam = ((UniPacket)localObject1).encode();
+          return localObject2;
+        }
+      }
+    }
+    return null;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if ((paramRespItem.eServiceID == 115) && (paramRespItem.cResult == 2))
+    {
+      FromServiceMsg localFromServiceMsg = new FromServiceMsg(this.app.getAccount(), "ProfileService.ReqGetSettings");
+      localFromServiceMsg.setMsgSuccess();
+      localFromServiceMsg.putWupBuffer(paramRespItem.vecUpdate);
+      this.app.a(this.a, localFromServiceMsg);
+    }
+  }
+  
+  public void send(ToServiceMsg paramToServiceMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RoamSetting", 2, "ReqGetSettingsItem.send...");
+    }
+    this.a = paramToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alxg
  * JD-Core Version:    0.7.0.1
  */

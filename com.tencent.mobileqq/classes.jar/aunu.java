@@ -1,78 +1,170 @@
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import tencent.im.oidb.qqmusic.MusicSongInfoMatch.CMsgRequest;
+import tencent.im.oidb.qqmusic.MusicSongInfoMatch.CMsgResponse;
+import tencent.im.oidb.qqmusic.MusicSongInfoMatch.ParamPair;
 
 public class aunu
+  extends alko
 {
-  private static final Object a = "PicReporter";
-  
-  public static void a()
+  public aunu(QQAppInterface paramQQAppInterface)
   {
-    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131695322), "qqsetting_auto_receive_pic_key", true);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_state", String.valueOf(bool));
-    aung.a(a, "report2G3G4GSwitchState", "param_state:" + bool);
-    axrn.a(BaseApplication.getContext()).a(null, "act2G3G4GSwitch", false, 0L, 0L, localHashMap, "");
+    super(paramQQAppInterface);
   }
   
-  public static void a(int paramInt, long paramLong)
+  private long a()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_network", String.valueOf(paramInt));
-    localHashMap.put("param_limit", String.valueOf(paramLong));
-    aung.a(a, "reportOverFlow", "param_network:" + paramInt + ",param_limit:" + paramLong);
-    axrn.a(BaseApplication.getContext()).a(null, "actPicPreDownOverFlow", false, 0L, 0L, localHashMap, "");
-  }
-  
-  public static void a(String paramString, int paramInt1, int paramInt2, long paramLong)
-  {
-    aung.a(a, "reportBigPicDownCost", "uintype:" + paramInt1 + ",networktype:" + paramInt2 + ",timeCost:" + paramLong);
-    if ((paramInt1 == -1) || (paramInt2 == -1) || (paramLong < 0L)) {
-      return;
+    long l = 0L;
+    String str;
+    if (!TextUtils.isEmpty("8.3.3")) {
+      str = "8.3.3".replace(".", "");
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_uintype", String.valueOf(paramInt1));
-    localHashMap.put("param_networktype", String.valueOf(paramInt2));
-    localHashMap.put("param_timecost", String.valueOf(paramLong));
-    axrn.a(BaseApplication.getContext()).a(paramString, "actBigPicDownCost", false, 0L, 0L, localHashMap, "");
-  }
-  
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
-  {
-    if (paramHashMap == null)
+    try
     {
-      aung.a(a, "reportPicDownAutoLearn", "reportInfo == null");
-      return;
+      l = Long.parseLong(str);
+      return l;
     }
-    if ((String)paramHashMap.get("xgPreDownCount") == null)
+    catch (NumberFormatException localNumberFormatException) {}
+    return 0L;
+  }
+  
+  private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    try
     {
-      aung.a(a, "reportPicDownAutoLearn", "no xg report data");
+      if (paramFromServiceMsg.getResultCode() == 1000)
+      {
+        paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+        paramToServiceMsg = new MusicSongInfoMatch.CMsgResponse();
+        paramToServiceMsg.mergeFrom(paramFromServiceMsg);
+        paramFromServiceMsg = new String(paramToServiceMsg.data.get().toByteArray());
+      }
+      switch (paramToServiceMsg.reqtype.get())
+      {
+      case 1: 
+        notifyUI(81, true, paramFromServiceMsg);
+        return;
+      case 2: 
+        notifyUI(82, true, paramFromServiceMsg);
+        return;
+      case 3: 
+        notifyUI(83, true, paramFromServiceMsg);
+        return;
+        notifyUI(81, false, null);
+        return;
+      }
       return;
     }
-    axrn.a(BaseApplication.getContext()).a(paramString, "actPicDownAutoLearn", false, 0L, 0L, paramHashMap, "");
-    aung.a(a, "reportPicDownAutoLearn", "");
+    catch (Exception paramToServiceMsg) {}
   }
   
-  public static void a(boolean paramBoolean)
+  public void a(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PicReporter", 2, "device busy " + paramBoolean);
+    QLog.d("MusicPlayerHandler", 4, new Object[] { "requestMatchSongInfo ", String.valueOf(paramString1), " ", String.valueOf(paramString2), " ", String.valueOf(paramString3), " ", String.valueOf(paramString4), " ", String.valueOf(paramString5), " ", String.valueOf(paramInt) });
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", String.valueOf(paramLong), "MusicSongInfoMatchSvc.songquery");
+    MusicSongInfoMatch.CMsgRequest localCMsgRequest = new MusicSongInfoMatch.CMsgRequest();
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      MusicSongInfoMatch.ParamPair localParamPair = new MusicSongInfoMatch.ParamPair();
+      localParamPair.key.set(ByteStringMicro.copyFromUtf8("songname"));
+      localParamPair.value.set(ByteStringMicro.copyFromUtf8(paramString1));
+      localCMsgRequest.urlparams.add(localParamPair);
     }
-    axrn.a(BaseApplication.getContext()).a(null, "Pic.Mkdir.DeviceBusy", paramBoolean, 0L, 0L, null, "");
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("singername"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(paramString2));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("albumname"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(paramString3));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    if (!TextUtils.isEmpty(paramString4))
+    {
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("songid"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(paramString4));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    if (!TextUtils.isEmpty(paramString5))
+    {
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("summary"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(paramString5));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    if (paramInt > 0)
+    {
+      paramInt /= 1000;
+      paramString1 = new MusicSongInfoMatch.ParamPair();
+      paramString1.key.set(ByteStringMicro.copyFromUtf8("duration"));
+      paramString1.value.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramInt)));
+      localCMsgRequest.urlparams.add(paramString1);
+    }
+    localCMsgRequest.reqtype.set(1);
+    localCMsgRequest.uin.set(paramLong);
+    localCMsgRequest.ct.set(1008L);
+    localCMsgRequest.cv.set(a());
+    localToServiceMsg.putWupBuffer(localCMsgRequest.toByteArray());
+    sendPbReq(localToServiceMsg);
   }
   
-  public static void b(boolean paramBoolean)
+  public void a(String paramString, long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PicReporter", 2, "Aio preview " + paramBoolean);
+    QLog.d("MusicPlayerHandler", 4, new Object[] { "requestLikeSong ", String.valueOf(paramString), " ", String.valueOf(paramLong1), " ", String.valueOf(paramLong2), " ", String.valueOf(paramBoolean) });
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", String.valueOf(paramLong1), "MusicSongInfoMatchSvc.songquery");
+    MusicSongInfoMatch.CMsgRequest localCMsgRequest = new MusicSongInfoMatch.CMsgRequest();
+    MusicSongInfoMatch.ParamPair localParamPair1 = new MusicSongInfoMatch.ParamPair();
+    localParamPair1.key.set(ByteStringMicro.copyFromUtf8("songid"));
+    localParamPair1.value.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramLong2)));
+    MusicSongInfoMatch.ParamPair localParamPair2 = new MusicSongInfoMatch.ParamPair();
+    localParamPair2.key.set(ByteStringMicro.copyFromUtf8("OpenUDID"));
+    localParamPair2.value.set(ByteStringMicro.copyFromUtf8(String.valueOf(paramString)));
+    localCMsgRequest.urlparams.add(localParamPair1);
+    localCMsgRequest.urlparams.add(localParamPair2);
+    if (paramBoolean) {
+      localCMsgRequest.reqtype.set(2);
     }
-    axrn.a(BaseApplication.getContext()).a(null, "Pic.AioPreview.Empty", paramBoolean, 0L, 0L, null, "");
+    for (;;)
+    {
+      localCMsgRequest.uin.set(paramLong1);
+      localCMsgRequest.ct.set(1008L);
+      localCMsgRequest.cv.set(a());
+      localToServiceMsg.putWupBuffer(localCMsgRequest.toByteArray());
+      sendPbReq(localToServiceMsg);
+      return;
+      localCMsgRequest.reqtype.set(3);
+    }
+  }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return aunr.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("MusicSongInfoMatchSvc.songquery".equals(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aunu
  * JD-Core Version:    0.7.0.1
  */

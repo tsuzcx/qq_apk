@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app;
 
-import akdt;
-import akfz;
+import alvi;
+import alxp;
 
 public class QPSafeCheckHandler$1
   implements Runnable
 {
   public void run()
   {
-    akfz.a();
+    alxp.a();
     this.this$0.a(this.a);
   }
 }

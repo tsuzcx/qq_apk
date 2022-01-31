@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.runtime.core.page;
 
-import betc;
-import bfbj;
-import bfbs;
+import bhas;
+import bhbe;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 public class AppBrandPageContainer$1$1
   implements Runnable
 {
-  public AppBrandPageContainer$1$1(bfbs parambfbs, int paramInt) {}
+  public AppBrandPageContainer$1$1(bhbe parambhbe, int paramInt) {}
   
   public void run()
   {
@@ -16,21 +16,21 @@ public class AppBrandPageContainer$1$1
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("height", this.jdField_a_of_type_Int);
-      localJSONObject.put("inputId", this.jdField_a_of_type_Bfbs.a.d());
-      if (this.jdField_a_of_type_Bfbs.a.a != null) {
-        this.jdField_a_of_type_Bfbs.a.a.a("onKeyboardHeightChange", localJSONObject.toString(), this.jdField_a_of_type_Bfbs.a.c());
+      localJSONObject.put("inputId", this.jdField_a_of_type_Bhbe.a.f());
+      if (this.jdField_a_of_type_Bhbe.a.a != null) {
+        this.jdField_a_of_type_Bhbe.a.a.a("onKeyboardHeightChange", localJSONObject.toString(), this.jdField_a_of_type_Bhbe.a.e());
       }
       return;
     }
     catch (Throwable localThrowable)
     {
-      betc.d("AppBrandPageContainer", "KeyboardObserver error, ", localThrowable);
+      QMLog.e("minisdk-start-AppBrandPageContainer", "KeyboardObserver error, ", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.1.1
  * JD-Core Version:    0.7.0.1
  */

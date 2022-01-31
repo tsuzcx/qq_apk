@@ -1,68 +1,72 @@
-import java.lang.ref.WeakReference;
+import android.util.SparseArray;
+import android.view.View;
+import com.tencent.widget.AbsSpinner;
 
 public class bhpv
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static int jdField_b_of_type_Int;
-  private static bhpv jdField_b_of_type_Bhpv;
-  public int a;
-  private bhpv jdField_a_of_type_Bhpv;
-  public String a;
-  public WeakReference<bhpu> a;
-  public String b;
-  public String c;
-  public String d;
+  private final SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  public bhpv(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = (paramInt + " " + paramString);
-  }
+  public bhpv(AbsSpinner paramAbsSpinner) {}
   
-  public static bhpv a(int paramInt, String paramString)
+  public View a(int paramInt)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_b_of_type_Bhpv != null)
-      {
-        bhpv localbhpv = jdField_b_of_type_Bhpv;
-        jdField_b_of_type_Bhpv = localbhpv.jdField_a_of_type_Bhpv;
-        localbhpv.jdField_a_of_type_Bhpv = null;
-        localbhpv.jdField_a_of_type_JavaLangString = (paramInt + " " + paramString);
-        localbhpv.jdField_a_of_type_Int = paramInt;
-        jdField_b_of_type_Int -= 1;
-        return localbhpv;
-      }
-      return new bhpv(paramInt, paramString);
+    View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localView != null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt);
     }
-  }
-  
-  private void b()
-  {
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.c = null;
-    this.d = null;
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    return localView;
   }
   
   public void a()
   {
-    b();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    int j = localSparseArray.size();
+    int i = 0;
+    while (i < j)
     {
-      if (jdField_b_of_type_Int < 100)
-      {
-        this.jdField_a_of_type_Bhpv = jdField_b_of_type_Bhpv;
-        jdField_b_of_type_Bhpv = this;
-        jdField_b_of_type_Int += 1;
+      View localView = (View)localSparseArray.valueAt(i);
+      if (localView != null) {
+        AbsSpinner.a(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
       }
+      i += 1;
+    }
+    localSparseArray.clear();
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
+  }
+  
+  public void b()
+  {
+    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    int j = localSparseArray.size();
+    int i = 0;
+    View localView;
+    if (i < j)
+    {
+      localView = (View)localSparseArray.valueAt(i);
+      if ((localView == null) || (!(localView.getTag(2131367011) instanceof Boolean))) {
+        break label94;
+      }
+    }
+    label94:
+    for (boolean bool = ((Boolean)localView.getTag(2131367011)).booleanValue();; bool = true)
+    {
+      if ((localView != null) && (bool)) {
+        AbsSpinner.b(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
+      }
+      i += 1;
+      break;
+      localSparseArray.clear();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhpv
  * JD-Core Version:    0.7.0.1
  */

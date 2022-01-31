@@ -1,39 +1,31 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
-class arbv
-  implements TVK_IMediaPlayer.OnInfoListener
+final class arbv
+  implements View.OnClickListener
 {
-  arbv(arbp paramarbp) {}
+  arbv(FileManagerEntity paramFileManagerEntity, ardn paramardn) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    try
     {
+      if (biuq.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
+      {
+        biuq.a().a(this.jdField_a_of_type_Ardn.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath, false);
+        return;
+      }
+      QLog.e("FileOperaterUtils-PUPU", 2, "Should not open the file with pupu: " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath);
+      return;
     }
-    do
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video start buffering !");
-      }
-      if (arbp.a(this.a) != null) {
-        arbp.a(this.a).a(this.a.b, 0);
-      }
-      this.a.c = 6;
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video end buffering !");
-      }
-    } while (arbp.a(this.a) == null);
-    arbp.a(this.a).a(this.a.b, 1);
-    return false;
+    catch (Exception paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbv
  * JD-Core Version:    0.7.0.1
  */

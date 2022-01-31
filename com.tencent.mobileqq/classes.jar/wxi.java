@@ -1,85 +1,163 @@
-import android.os.Handler;
 import android.os.Message;
-import android.widget.FrameLayout;
-import com.tencent.biz.tribe.TribeVideoPlugin;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.util.Base64;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.view.ViewStub;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
 
 public class wxi
-  extends Handler
+  extends wwc
+  implements wui
 {
-  private WeakReference<TribeVideoPlugin> a;
+  private ViewStub jdField_a_of_type_AndroidViewViewStub;
+  public SubtitleLayout a;
+  private byte[] jdField_a_of_type_ArrayOfByte;
   
-  public wxi(TribeVideoPlugin paramTribeVideoPlugin)
+  public wxi(@NonNull wwe paramwwe, byte[] paramArrayOfByte)
   {
-    this.a = new WeakReference(paramTribeVideoPlugin);
+    super(paramwwe);
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
   
-  public void handleMessage(Message paramMessage)
+  private void a(int paramInt)
   {
-    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.a.get();
-    Object localObject = paramMessage.obj;
-    if ((localTribeVideoPlugin == null) || (localObject == null) || (!(localObject instanceof String))) {}
+    switch (paramInt)
+    {
+    }
     do
     {
       do
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              switch (paramMessage.what)
-              {
-              default: 
-                return;
-              case 1: 
-                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, true);
-                return;
-              case 2: 
-                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, false);
-                return;
-              case 3: 
-                paramMessage = (wxl)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-              }
-            } while ((paramMessage == null) || (wxl.c(paramMessage)));
-            if (QLog.isColorLevel()) {
-              QLog.d("TribeVideoPlugin", 2, "sdk player is not prepared");
-            }
-            TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, 5);
-            wxl.b(paramMessage, true);
-            return;
-            paramMessage = (wxl)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-          } while (paramMessage == null);
-          if ((TribeVideoPlugin.a(localTribeVideoPlugin) == 0) && (!TribeVideoPlugin.a(localTribeVideoPlugin)))
-          {
-            QLog.d("TribeVideoPlugin", 2, "MSG_SHOW_PLAYER_LAYOUT plugin.mPlayMode == PARAM_RESULT_PLAY_FRONT videoWrapper.mPlayerID = " + wxl.a(paramMessage));
-            TribeVideoPlugin.a(localTribeVideoPlugin).bringToFront();
-            TribeVideoPlugin.a(localTribeVideoPlugin, true);
-          }
-          TribeVideoPlugin.a(localTribeVideoPlugin, wxl.a(paramMessage), 1);
-          return;
-          paramMessage = (wxl)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-        } while (paramMessage == null);
-        TribeVideoPlugin.a(localTribeVideoPlugin, paramMessage);
         return;
-        paramMessage = (wxl)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-      } while (paramMessage == null);
-      TribeVideoPlugin.b(localTribeVideoPlugin, paramMessage);
+      } while (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.getVisibility() == paramInt);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.setVisibility(paramInt);
       return;
-      paramMessage = (wxl)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
-    } while (paramMessage == null);
-    TribeVideoPlugin.c(localTribeVideoPlugin, paramMessage);
-    return;
-    TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject);
+    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.getVisibility() == paramInt));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.setVisibility(paramInt);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131377215));
+    QQStoryContext.a();
+    QQStoryContext.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout == null)
+    {
+      wsv.b("Q.qqstory.publish.edit.Subtitle", "makeSureInitLayout");
+      ViewParent localViewParent = this.jdField_a_of_type_AndroidViewViewStub.getParent();
+      if ((localViewParent == null) || (!(localViewParent instanceof ViewGroup))) {
+        break label95;
+      }
+    }
+    label95:
+    for (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = ((SubtitleLayout)this.jdField_a_of_type_AndroidViewViewStub.inflate());; this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = ((SubtitleLayout)a(2131377214)))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.a(1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.a(this.jdField_a_of_type_ArrayOfByte);
+      a(wui.class, this);
+      return;
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    a(0);
+  }
+  
+  public void a(int paramInt, @NonNull xgs paramxgs)
+  {
+    super.a(paramInt, paramxgs);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout == null) || (this.jdField_a_of_type_ArrayOfByte == null)) {
+      wsv.d("Q.qqstory.publish.edit.Subtitle", "editVideoPrePublish but subtitle layout is null");
+    }
+    for (;;)
+    {
+      return;
+      try
+      {
+        String str = Base64.encodeToString(this.jdField_a_of_type_ArrayOfByte, 0);
+        if (!TextUtils.isEmpty(str))
+        {
+          paramxgs.a.putExtra("subtitleData", str);
+          QLog.e("Q.qqstory.publish.edit.Subtitle", 2, "subtitle base64 encode :" + str.length());
+          return;
+        }
+      }
+      catch (Exception paramxgs)
+      {
+        QLog.e("Q.qqstory.publish.edit.Subtitle", 2, "subtitle base64 encode exception:" + paramxgs.toString());
+      }
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.setTimeStamp(paramLong);
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  protected boolean a(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return super.a(paramMessage);
+    }
+    a(0);
+    return true;
+  }
+  
+  public void ad_()
+  {
+    super.ad_();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.d();
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.publish.edit.Subtitle", 2, "videoplayer start");
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.b();
+    }
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.e();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.f();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout = null;
+    }
+    this.jdField_a_of_type_ArrayOfByte = null;
+  }
+  
+  public void h()
+  {
+    super.h();
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesSubtitleLayout.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxi
  * JD-Core Version:    0.7.0.1
  */

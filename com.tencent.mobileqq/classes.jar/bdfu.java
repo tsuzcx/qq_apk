@@ -1,20 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.open.appcommon.js.AppInterface.2;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class bdfu
-  implements DialogInterface.OnDismissListener
+class bdfu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public bdfu(AppInterface.2 param2) {}
+  bdfu(bdfq parambdfq, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.this$0.tipDialog = null;
+    bdfq localbdfq;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    {
+      paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+      localbdfq = this.jdField_a_of_type_Bdfq;
+      if (!paramBoolean) {
+        break label34;
+      }
+    }
+    label34:
+    for (int i = 1;; i = 0)
+    {
+      paramCompoundButton.onClick(localbdfq, i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdfu
  * JD-Core Version:    0.7.0.1
  */

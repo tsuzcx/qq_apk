@@ -1,47 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-class anut
-  extends WtloginObserver
+public class anut
+  implements View.OnClickListener
 {
-  anut(anuq paramanuq, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
+  public anut(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    if ((paramInt == 0) && (paramDevlockInfo != null))
-    {
-      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
-      if (paramDevlockInfo.AllowSet != 1) {
-        break label85;
-      }
-      bool1 = true;
-      paramWUserSigInfo.putBoolean("hasSecurityPhoneNumber", bool1);
-      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
-      if (paramDevlockInfo.DevSetup != 1) {
-        break label91;
-      }
-    }
-    label85:
-    label91:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      paramWUserSigInfo.putBoolean("devlockIsOpen", bool1);
-      this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
-      return;
-      bool1 = false;
-      break;
-    }
+    int i = ((Integer)paramView.getTag()).intValue();
+    this.a.a(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anut
  * JD-Core Version:    0.7.0.1
  */

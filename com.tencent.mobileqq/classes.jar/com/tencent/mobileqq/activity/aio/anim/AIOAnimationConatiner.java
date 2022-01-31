@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import acyl;
-import acyv;
-import acyw;
-import acyx;
-import aczg;
-import ambi;
+import aepy;
+import aeqj;
+import aeqk;
+import aeql;
+import aequ;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
@@ -14,11 +13,12 @@ import android.view.View.OnLayoutChangeListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Transformation;
-import bfnz;
+import ansh;
+import bhou;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
-import ved;
-import vxp;
+import wsv;
+import xmh;
 
 public class AIOAnimationConatiner
   extends ViewGroup
@@ -27,8 +27,8 @@ public class AIOAnimationConatiner
   public static final ViewGroup.LayoutParams a;
   public static ClassLoader a;
   private int jdField_a_of_type_Int;
-  private acyl jdField_a_of_type_Acyl;
-  public aczg a;
+  private aepy jdField_a_of_type_Aepy;
+  public aequ a;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   
   static
@@ -47,7 +47,7 @@ public class AIOAnimationConatiner
     super(paramContext, paramAttributeSet);
   }
   
-  private acyl a(int paramInt)
+  private aepy a(int paramInt)
   {
     switch (paramInt)
     {
@@ -57,13 +57,13 @@ public class AIOAnimationConatiner
     case 2: 
       return new FloorJumperSet(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     case 1: 
-      return new acyx(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+      return new aeql(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     case 0: 
-      return new acyw(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+      return new aeqk(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     case 4: 
       return new PathAnimation(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
     }
-    return new ambi(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
+    return new ansh(paramInt, this, this.jdField_a_of_type_ComTencentWidgetListView);
   }
   
   private void e()
@@ -71,7 +71,7 @@ public class AIOAnimationConatiner
     if (QLog.isColorLevel()) {
       QLog.d("AIOAnimationContainer", 2, "animation end");
     }
-    this.jdField_a_of_type_Acyl = null;
+    this.jdField_a_of_type_Aepy = null;
     removeAllViewsInLayout();
     invalidate();
   }
@@ -83,54 +83,54 @@ public class AIOAnimationConatiner
   
   public void a()
   {
-    if (this.jdField_a_of_type_Acyl != null) {
-      this.jdField_a_of_type_Acyl.c();
+    if (this.jdField_a_of_type_Aepy != null) {
+      this.jdField_a_of_type_Aepy.c();
     }
     e();
   }
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Acyl != null) && (paramInt == this.jdField_a_of_type_Int)) {
+    if ((this.jdField_a_of_type_Aepy != null) && (paramInt == this.jdField_a_of_type_Int)) {
       a();
     }
   }
   
   public void a(int paramInt1, int paramInt2, Object... paramVarArgs)
   {
-    if ((this.jdField_a_of_type_Acyl != null) && (paramInt2 < this.jdField_a_of_type_Acyl.jdField_a_of_type_Int)) {}
+    if ((this.jdField_a_of_type_Aepy != null) && (paramInt2 < this.jdField_a_of_type_Aepy.jdField_a_of_type_Int)) {}
     do
     {
       do
       {
         return;
-        if ((this.jdField_a_of_type_Acyl != null) && (paramInt2 == this.jdField_a_of_type_Acyl.jdField_a_of_type_Int) && (this.jdField_a_of_type_Acyl.a(paramInt1)))
+        if ((this.jdField_a_of_type_Aepy != null) && (paramInt2 == this.jdField_a_of_type_Aepy.jdField_a_of_type_Int) && (this.jdField_a_of_type_Aepy.a(paramInt1)))
         {
-          this.jdField_a_of_type_Acyl.a(paramVarArgs);
+          this.jdField_a_of_type_Aepy.a(paramVarArgs);
           return;
         }
-        if (this.jdField_a_of_type_Acyl != null) {
+        if (this.jdField_a_of_type_Aepy != null) {
           a();
         }
         this.jdField_a_of_type_Int = paramInt1;
-        this.jdField_a_of_type_Acyl = a(paramInt1);
-      } while (this.jdField_a_of_type_Acyl == null);
-      this.jdField_a_of_type_Acyl.jdField_a_of_type_Int = paramInt2;
-    } while (this.jdField_a_of_type_Acyl.a(paramVarArgs));
-    this.jdField_a_of_type_Acyl = null;
+        this.jdField_a_of_type_Aepy = a(paramInt1);
+      } while (this.jdField_a_of_type_Aepy == null);
+      this.jdField_a_of_type_Aepy.jdField_a_of_type_Int = paramInt2;
+    } while (this.jdField_a_of_type_Aepy.a(paramVarArgs));
+    this.jdField_a_of_type_Aepy = null;
   }
   
   public void a(ListView paramListView)
   {
-    vxp.a(paramListView);
+    xmh.a(paramListView);
     if (this.jdField_a_of_type_ComTencentWidgetListView == paramListView)
     {
-      ved.e("AIOAnimationConatiner", "attach the same listView!");
+      wsv.e("AIOAnimationConatiner", "attach the same listView!");
       return;
     }
     if (this.jdField_a_of_type_ComTencentWidgetListView != null)
     {
-      ved.e("AIOAnimationConatiner", "attach and override listView!");
+      wsv.e("AIOAnimationConatiner", "attach and override listView!");
       d();
     }
     this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
@@ -139,7 +139,7 @@ public class AIOAnimationConatiner
   
   public boolean a()
   {
-    return this.jdField_a_of_type_Acyl != null;
+    return this.jdField_a_of_type_Aepy != null;
   }
   
   public boolean addViewInLayout(View paramView, int paramInt, ViewGroup.LayoutParams paramLayoutParams, boolean paramBoolean)
@@ -149,22 +149,22 @@ public class AIOAnimationConatiner
   
   public void b()
   {
-    if (this.jdField_a_of_type_Acyl != null) {
-      this.jdField_a_of_type_Acyl.a();
+    if (this.jdField_a_of_type_Aepy != null) {
+      this.jdField_a_of_type_Aepy.a();
     }
   }
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_Acyl != null) {
-      this.jdField_a_of_type_Acyl.a(paramInt);
+    if (this.jdField_a_of_type_Aepy != null) {
+      this.jdField_a_of_type_Aepy.a(paramInt);
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_Acyl != null) {
-      this.jdField_a_of_type_Acyl.b();
+    if (this.jdField_a_of_type_Aepy != null) {
+      this.jdField_a_of_type_Aepy.b();
     }
   }
   
@@ -180,16 +180,16 @@ public class AIOAnimationConatiner
   protected boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
   {
     Object localObject = paramView.getTag();
-    if ((bfnz.e()) && ((localObject instanceof acyv)) && (((acyv)localObject).b))
+    if ((bhou.e()) && ((localObject instanceof aeqj)) && (((aeqj)localObject).b))
     {
-      localObject = (acyv)localObject;
+      localObject = (aeqj)localObject;
       Matrix localMatrix = paramTransformation.getMatrix();
       localMatrix.reset();
       int i = paramView.getWidth() / 2;
       int j = paramView.getHeight() / 2;
-      localMatrix.preRotate(((acyv)localObject).a, i, j);
-      localMatrix.preScale(((acyv)localObject).d, ((acyv)localObject).e, j, j);
-      paramTransformation.setAlpha(((acyv)localObject).f);
+      localMatrix.preRotate(((aeqj)localObject).a, i, j);
+      localMatrix.preScale(((aeqj)localObject).d, ((aeqj)localObject).e, j, j);
+      paramTransformation.setAlpha(((aeqj)localObject).f);
       return true;
     }
     return false;
@@ -210,14 +210,14 @@ public class AIOAnimationConatiner
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_Acyl != null) {
-      this.jdField_a_of_type_Acyl.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_Aepy != null) {
+      this.jdField_a_of_type_Aepy.a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if (this.jdField_a_of_type_Acyl != null) {
+    if (this.jdField_a_of_type_Aepy != null) {
       if ((paramInt1 == paramInt5) && (paramInt2 == paramInt6) && (paramInt3 == paramInt7) && (paramInt4 == paramInt8)) {
         break label53;
       }
@@ -225,14 +225,14 @@ public class AIOAnimationConatiner
     label53:
     for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Acyl.a(bool, paramInt1, paramInt2, paramInt3, paramInt4);
+      this.jdField_a_of_type_Aepy.a(bool, paramInt1, paramInt2, paramInt3, paramInt4);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner
  * JD-Core Version:    0.7.0.1
  */

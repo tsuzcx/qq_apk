@@ -1,66 +1,22 @@
-import NS_KING_INTERFACE.stPostFeedDingRsp;
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 
-final class slu
-  implements slh
+public class slu
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  slu(Handler paramHandler, int paramInt) {}
+  public slu(TickerView paramTickerView) {}
   
-  public void a(sls paramsls)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-    if ((paramsls == null) || (paramsls.jdField_a_of_type_JavaLangObject == null))
-    {
-      localMessage.what = 4302;
-      localMessage.obj = Integer.valueOf(-1);
-      Log.e(slt.a, "点赞失败:-1");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-      return;
-      if ((paramsls.jdField_a_of_type_JavaLangObject instanceof stPostFeedDingRsp))
-      {
-        stPostFeedDingRsp localstPostFeedDingRsp = (stPostFeedDingRsp)paramsls.jdField_a_of_type_JavaLangObject;
-        if (localstPostFeedDingRsp == null)
-        {
-          Log.e(slt.a, "服务器失败！！！");
-          localMessage.what = 4302;
-          localMessage.obj = Integer.valueOf(paramsls.jdField_a_of_type_Int);
-        }
-        else
-        {
-          int i = localstPostFeedDingRsp.is_ding;
-          localMessage.what = 4301;
-          localMessage.obj = Integer.valueOf(i);
-          paramsls = new Intent("weishi_public_account_ding_state_change");
-          paramsls.putExtra("position", this.jdField_a_of_type_Int);
-          paramsls.putExtra("is_ding", i);
-          BaseApplication.getContext().sendBroadcast(paramsls);
-          Log.e(slt.a, "发送了点赞广播");
-          if (i == 0) {
-            Log.e(slt.a, "请求后变成：没有点赞-by微视");
-          } else {
-            Log.e(slt.a, "请求后变成：已经点赞-by微视");
-          }
-        }
-      }
-      else
-      {
-        Log.e(slt.a, "点赞失败:-2");
-        localMessage.what = 4302;
-        localMessage.obj = Integer.valueOf(-2);
-      }
-    }
+    TickerView.a(this.a).a(paramValueAnimator.getAnimatedFraction());
+    TickerView.a(this.a);
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     slu
  * JD-Core Version:    0.7.0.1
  */

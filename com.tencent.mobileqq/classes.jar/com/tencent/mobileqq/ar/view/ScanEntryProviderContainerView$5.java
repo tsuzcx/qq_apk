@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.view;
 
-import ajya;
-import bcql;
+import alpo;
+import com.tencent.mobileqq.widget.QQToast;
 
 class ScanEntryProviderContainerView$5
   implements Runnable
@@ -10,14 +10,14 @@ class ScanEntryProviderContainerView$5
   
   public void run()
   {
-    bcql localbcql = bcql.a(this.this$0.a, ajya.a(2131713516), 1);
-    localbcql.a();
-    localbcql.a();
+    QQToast localQQToast = QQToast.a(this.this$0.a, alpo.a(2131713888), 1);
+    localQQToast.a();
+    localQQToast.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView.5
  * JD-Core Version:    0.7.0.1
  */

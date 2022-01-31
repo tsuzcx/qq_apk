@@ -1,74 +1,33 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.qqconnect.wtlogin.Login;
 
 public class bggy
+  implements View.OnFocusChangeListener
 {
-  private final int jdField_a_of_type_Int;
-  public aqyd a;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private int c = 0;
-  private int d;
+  public bggy(Login paramLogin) {}
   
-  public bggy(int paramInt1, int paramInt2)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    c();
-  }
-  
-  private void b()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (this.jdField_b_of_type_Boolean) {}
-    for (int i = 0;; i = 1)
+    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
     {
-      bggx.a(localAppRuntime, i, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(this.d) });
-      c();
+      if (true == paramBoolean) {
+        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
+      }
+      if (!paramBoolean) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
+    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
       return;
     }
-  }
-  
-  private void c()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.c = 0;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.d = 0;
-  }
-  
-  public void a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.jdField_b_of_type_Boolean = true;
-    b();
-  }
-  
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    bggy localbggy = (bggy)bggx.a().get(Integer.valueOf(this.jdField_a_of_type_Int));
-    if ((localbggy != null) && (localbggy.jdField_a_of_type_Boolean)) {
-      localbggy.b();
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.c = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.d = paramInt2;
-    bggx.a().put(Integer.valueOf(this.jdField_a_of_type_Int), this);
+    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bggy
  * JD-Core Version:    0.7.0.1
  */

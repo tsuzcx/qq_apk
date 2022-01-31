@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
+import java.util.List;
 
-public final class arli
-  implements Parcelable.Creator<WatchTogetherSession>
+class arli
+  implements bevo
 {
-  public WatchTogetherSession a(Parcel paramParcel)
-  {
-    return new WatchTogetherSession(paramParcel);
-  }
+  arli(arle paramarle, List paramList) {}
   
-  public WatchTogetherSession[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new WatchTogetherSession[paramInt];
+    if (paramInt == 2) {
+      bcjk.a(arle.a(this.jdField_a_of_type_Arle), arle.a(this.jdField_a_of_type_Arle), this.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arli
  * JD-Core Version:    0.7.0.1
  */

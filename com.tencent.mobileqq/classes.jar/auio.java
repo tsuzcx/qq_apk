@@ -1,32 +1,23 @@
-import android.annotation.SuppressLint;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.onlinestatus.AutoReplyEditActivity;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
 
 public class auio
-  implements View.OnTouchListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public auio(AutoReplyEditActivity paramAutoReplyEditActivity) {}
+  public auio(MultiCardCustomLayout paramMultiCardCustomLayout) {}
   
-  @SuppressLint({"ClickableViewAccessibility"})
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+    if (MultiCardCustomLayout.a(this.a) != null) {
+      MultiCardCustomLayout.a(this.a).onLongClick(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auio
  * JD-Core Version:    0.7.0.1
  */

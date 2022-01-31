@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite;
 
 import android.os.Message;
-import babi;
-import bfob;
-import bhxg;
+import bbzr;
+import bhow;
+import bjyr;
 import java.lang.ref.WeakReference;
 
 class HWReciteItem$DownloadAudioTask
   implements Runnable
 {
   private final WeakReference<HWReciteItem> a;
-  private final WeakReference<babi> b;
+  private final WeakReference<bbzr> b;
   
-  HWReciteItem$DownloadAudioTask(HWReciteItem paramHWReciteItem, babi parambabi)
+  HWReciteItem$DownloadAudioTask(HWReciteItem paramHWReciteItem, bbzr parambbzr)
   {
     this.a = new WeakReference(paramHWReciteItem);
-    this.b = new WeakReference(parambabi);
+    this.b = new WeakReference(parambbzr);
   }
   
   public void run()
   {
-    babi localbabi = (babi)this.b.get();
-    if (localbabi != null)
+    bbzr localbbzr = (bbzr)this.b.get();
+    if (localbbzr != null)
     {
-      localbabi.d = bhxg.a(localbabi.e);
+      localbbzr.d = bjyr.a(localbbzr.e);
       Object localObject = (HWReciteItem)this.a.get();
       if ((localObject != null) && (HWReciteItem.a((HWReciteItem)localObject) != null))
       {
         localObject = HWReciteItem.a((HWReciteItem)localObject).obtainMessage();
         ((Message)localObject).what = 233;
-        ((Message)localObject).obj = localbabi;
+        ((Message)localObject).obj = localbbzr;
         ((Message)localObject).sendToTarget();
       }
     }

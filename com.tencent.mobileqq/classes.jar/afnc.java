@@ -1,44 +1,27 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForPic;
 
-class afnc
-  implements View.OnClickListener
+final class afnc
+  implements afpr
 {
-  afnc(afmy paramafmy) {}
-  
-  public void onClick(View paramView)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    paramView = (RecommendTroopItem)paramView.getTag(-1);
-    if ((paramView == null) || (TextUtils.isEmpty(paramView.uin)))
-    {
-      QLog.d("NotifyAndRecAdapter", 2, "del troop but troop is empty");
-      return;
+    if (((MessageForPic)paramChatMessage).isMixed) {
+      return 24;
     }
-    akfc.a(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, 2, paramView.uin, new afnd(this));
-    this.a.b.remove(paramView);
-    this.a.notifyDataSetChanged();
-    if ((this.a.b != null) && (this.a.b.size() == 0)) {
-      this.a.jdField_a_of_type_Afmk.a().sendEmptyMessage(100);
+    if (alpw.a(paramChatMessage)) {
+      return 42;
     }
-    if (afmy.a(this.a) != null)
-    {
-      akfc localakfc = (akfc)afmy.a(this.a).getManager(22);
-      if ((this.a.b != null) && (this.a.b.size() == 0)) {
-        localakfc.a(1);
-      }
-      localakfc.a(paramView.uin);
+    if (alnp.a(paramChatMessage)) {
+      return 66;
     }
-    axqy.b(null, "P_CliOper", "Grp_recom", "", "msg_page", "Clk_unlike", 0, 0, paramView.uin, "", "", "");
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afnc
  * JD-Core Version:    0.7.0.1
  */

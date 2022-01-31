@@ -1,20 +1,23 @@
 package com.tencent.qqmini.sdk.minigame.webaudio;
 
-import bexw;
+import bgwp;
+import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
 
 public class WebAudioManager$4
   implements Runnable
 {
-  public WebAudioManager$4(bexw parambexw, int paramInt) {}
+  public WebAudioManager$4(bgwp parambgwp, int paramInt) {}
   
   public void run()
   {
-    AudioNativeManager.stopSource(this.a);
+    if (bgwp.a(this.this$0) != null) {
+      bgwp.a(this.this$0).stopSource(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.webaudio.WebAudioManager.4
  * JD-Core Version:    0.7.0.1
  */

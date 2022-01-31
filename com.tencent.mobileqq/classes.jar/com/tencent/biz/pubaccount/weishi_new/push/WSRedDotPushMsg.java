@@ -5,14 +5,14 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import org.json.JSONObject;
-import sma;
-import smg;
+import tiw;
+import tjc;
 
 public class WSRedDotPushMsg
-  extends sma
+  extends tiw
   implements Parcelable
 {
-  public static final Parcelable.Creator<WSRedDotPushMsg> CREATOR = new smg();
+  public static final Parcelable.Creator<WSRedDotPushMsg> CREATOR = new tjc();
   public String mFeedIds;
   public IWSPushBaseStrategy mStrategyInfo;
   
@@ -62,7 +62,7 @@ public class WSRedDotPushMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg
  * JD-Core Version:    0.7.0.1
  */

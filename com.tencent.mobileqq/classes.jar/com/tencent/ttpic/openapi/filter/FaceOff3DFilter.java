@@ -18,8 +18,6 @@ import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.model.FaceItem;
@@ -71,7 +69,6 @@ public class FaceOff3DFilter
   public double sumr = 0.0D;
   private float[] texVertices = new float[1380];
   protected int[] texture = new int[4];
-  private TriggerCtrlItem triggerCtrlItem;
   private boolean triggered;
   
   public FaceOff3DFilter(FaceItem paramFaceItem, String paramString)
@@ -80,7 +77,6 @@ public class FaceOff3DFilter
     this.item = paramFaceItem;
     this.dataPath = paramString;
     this.sequenceMode = TextUtils.isEmpty(paramFaceItem.faceExchangeImage);
-    this.triggerCtrlItem = new TriggerCtrlItem(paramFaceItem);
     initParams();
   }
   
@@ -417,11 +413,11 @@ public class FaceOff3DFilter
       this.isIrisImageReady = false;
       addParam(new UniformParam.TextureParam("inputImageTexture4", 0, 33988));
       float[] arrayOfFloat = new float[2];
-      float[] tmp400_399 = arrayOfFloat;
-      tmp400_399[0] = 0.0F;
-      float[] tmp404_400 = tmp400_399;
-      tmp404_400[1] = 0.0F;
-      tmp404_400;
+      float[] tmp398_397 = arrayOfFloat;
+      tmp398_397[0] = 0.0F;
+      float[] tmp402_398 = tmp398_397;
+      tmp402_398[1] = 0.0F;
+      tmp402_398;
       addParam(new UniformParam.FloatsParam("center1", arrayOfFloat));
       addParam(new UniformParam.FloatsParam("center2", arrayOfFloat));
       addParam(new UniformParam.FloatsParam("size", arrayOfFloat));
@@ -503,10 +499,7 @@ public class FaceOff3DFilter
     return arrayOfFloat;
   }
   
-  public void reset()
-  {
-    this.triggerCtrlItem.reset();
-  }
+  public void reset() {}
   
   public void setCosAlpha(float paramFloat)
   {
@@ -519,21 +512,6 @@ public class FaceOff3DFilter
       return;
     }
     this.data = paramArrayOfByte;
-  }
-  
-  public void setRenderForBitmap(boolean paramBoolean)
-  {
-    this.triggerCtrlItem.setRenderForBitmap(paramBoolean);
-  }
-  
-  public void setTriggerWords(String paramString)
-  {
-    this.triggerCtrlItem.setTriggerWords(paramString);
-  }
-  
-  public TRIGGERED_STATUS updateActionTriggered(PTDetectInfo paramPTDetectInfo)
-  {
-    return this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
   }
   
   public void updatePointParams(List<PointF> paramList, float[] paramArrayOfFloat)
@@ -623,12 +601,11 @@ public class FaceOff3DFilter
     {
       paramObject = (PTDetectInfo)paramObject;
       this.detectInfo = paramObject;
-      updateActionTriggered(paramObject);
-      if ((!this.triggerCtrlItem.isTriggered()) || (CollectionUtils.isEmpty(paramObject.facePoints))) {
-        break label63;
+      if (CollectionUtils.isEmpty(paramObject.facePoints)) {
+        break label47;
       }
     }
-    label63:
+    label47:
     for (boolean bool = true;; bool = false)
     {
       this.triggered = bool;
@@ -643,48 +620,42 @@ public class FaceOff3DFilter
     updateMouthOpenFactor(localList);
     updatePointParams(localList, arrayOfFloat);
     update3DPointParams();
-    updateTextureParams(paramObject.timestamp);
+    updateTextureParams(paramObject.timestamp, paramObject.frameIndex);
   }
   
-  public void updateRandomGroupValue(int paramInt)
-  {
-    this.triggerCtrlItem.setRandomGroupValue(paramInt);
-  }
+  public void updateRandomGroupValue(int paramInt) {}
   
-  public void updateTextureParams(long paramLong)
+  public void updateTextureParams(long paramLong, int paramInt)
   {
     boolean bool1 = initGrayImage();
     boolean bool2 = initIrisImage();
     if ((!bool1) || (!bool2)) {}
     int i;
-    int j;
     do
     {
       do
       {
         return;
         if (!this.sequenceMode) {
-          break label114;
+          break label98;
         }
-        this.triggerCtrlItem.updateFrameIndex(paramLong);
-        i = this.triggerCtrlItem.getFrameIndex();
-        if (i != this.lastIndex) {
+        if (paramInt != this.lastIndex) {
           break;
         }
       } while (!this.isFaceImageReady);
       update3DFaceImage(this.texture[0]);
       return;
-      j = getNextFrame(i);
-      if (j > 0) {
+      i = getNextFrame(paramInt);
+      if (i > 0) {
         break;
       }
     } while (!this.isFaceImageReady);
     update3DFaceImage(this.texture[0]);
     return;
-    update3DFaceImage(j);
-    this.lastIndex = i;
+    update3DFaceImage(i);
+    this.lastIndex = paramInt;
     return;
-    label114:
+    label98:
     initFaceImage();
   }
   

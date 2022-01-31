@@ -1,41 +1,68 @@
-import android.support.annotation.NonNull;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class bkej
+class bkej
+  extends bkea
 {
-  @NonNull
-  public final bkai a;
-  @NonNull
-  public final bkaj a;
-  @NonNull
-  public final bkak a;
-  @NonNull
-  public final bkat a;
-  @NonNull
-  public final bkaw a;
-  @NonNull
-  public final bkba a;
-  public final ArrayList<bkbm> a;
+  private WeakReference<bkee> a;
   
-  public bkej(@NonNull bkba parambkba, @NonNull bkaw parambkaw, @NonNull bkak parambkak, @NonNull bkai parambkai, @NonNull bkat parambkat, @NonNull bkaj parambkaj)
+  bkej(bkee parambkee)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Bkba = parambkba;
-    this.jdField_a_of_type_Bkaw = parambkaw;
-    this.jdField_a_of_type_Bkak = parambkak;
-    this.jdField_a_of_type_Bkai = parambkai;
-    this.jdField_a_of_type_Bkaj = parambkaj;
-    this.jdField_a_of_type_Bkat = parambkat;
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambkak);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambkai);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambkaw);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambkba);
-    this.jdField_a_of_type_JavaUtilArrayList.add(parambkat);
+    this.a = new WeakReference(parambkee);
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    bkee localbkee = (bkee)this.a.get();
+    if (localbkee == null) {
+      bfnq.c("WadlProxyServiceManager", "##@transferAsync, manager gc: " + paramString);
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          bfnq.c("WadlProxyServiceManager", "##@Call back from Service: " + paramString);
+        }
+        paramBundle.setClassLoader(getClass().getClassLoader());
+      } while (paramString == null);
+      if (paramString.equals("WADL.REVERSE_HEART_CMD"))
+      {
+        paramString = bkee.a(localbkee).obtainMessage();
+        paramString.what = 4;
+        paramString.setData(paramBundle);
+        bkee.a(localbkee).sendMessage(paramString);
+        return;
+      }
+      if (paramString.equals("WADL.REVERSE_ACTION_CMD"))
+      {
+        paramString = bkee.a(localbkee).obtainMessage();
+        paramString.what = 3;
+        paramString.setData(paramBundle);
+        bkee.a(localbkee).sendMessage(paramString);
+        return;
+      }
+      if (paramString.equals("WADL.REVERSE_STOP_MONITOR_CMD"))
+      {
+        paramString = bkee.a(localbkee).obtainMessage();
+        paramString.what = 5;
+        paramString.setData(paramBundle);
+        bkee.a(localbkee).sendMessage(paramString);
+        return;
+      }
+    } while (!paramString.equals("WADL.REVERSE_START_MONITOR_CMD"));
+    paramString = bkee.a(localbkee).obtainMessage();
+    paramString.what = 6;
+    paramString.setData(paramBundle);
+    bkee.a(localbkee).sendMessage(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkej
  * JD-Core Version:    0.7.0.1
  */

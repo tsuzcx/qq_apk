@@ -2,17 +2,15 @@ public abstract interface lrz
 {
   public abstract void a();
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public abstract void a(int paramInt);
   
-  public abstract void a(byte[] paramArrayOfByte);
+  public abstract void a(long paramLong);
   
-  public abstract void b();
-  
-  public abstract void c();
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lrz
  * JD-Core Version:    0.7.0.1
  */

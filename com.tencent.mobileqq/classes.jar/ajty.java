@@ -1,78 +1,45 @@
-import SummaryCard.RespCondSearch;
-import com.tencent.mobileqq.app.FriendListHandler;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
 
-class ajty
-  extends ajxj
+public class ajty
+  extends awdn
 {
-  ajty(ajtw paramajtw) {}
+  public ajty(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  protected void onCondSearchFriendResult(long paramLong, boolean paramBoolean, Object paramObject, int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConditionSearch.Manager", 2, "searchseq = " + this.a.jdField_a_of_type_Long + " | seq = " + paramLong + ", isSuccess=" + paramBoolean + ", ret=" + paramInt1 + ", searchFrom=" + paramInt2);
-    }
-    if (this.a.jdField_a_of_type_Long != paramLong) {
-      return;
-    }
-    if ((paramBoolean) && (paramInt1 == 0))
+    this.a.a.unRegistObserver(this);
+    switch (ContactsInnerFrame.a(this.a).d())
     {
-      paramObject = (RespCondSearch)paramObject;
-      ajtw localajtw = this.a;
-      if (paramObject.cEndFlag == 0)
-      {
-        paramBoolean = true;
-        localajtw.jdField_e_of_type_Boolean = paramBoolean;
-        this.a.jdField_f_of_type_Int = paramObject.iPage;
-        this.a.jdField_b_of_type_Long = paramObject.dwSessionID;
-        if (this.a.jdField_b_of_type_JavaUtilList != null) {
-          break label342;
-        }
-        this.a.jdField_b_of_type_JavaUtilList = paramObject.vUserList;
-      }
-      for (;;)
-      {
-        if ((this.a.jdField_g_of_type_Int >= 2) || ((this.a.jdField_b_of_type_JavaUtilList != null) && (this.a.jdField_b_of_type_JavaUtilList.size() >= 10)) || (!this.a.jdField_e_of_type_Boolean)) {
-          break label382;
-        }
-        paramObject = this.a;
-        paramObject.jdField_g_of_type_Int += 1;
-        ((FriendListHandler)ajtw.a(this.a).a(1)).a(this.a.jdField_a_of_type_Long, this.a.jdField_f_of_type_Int + 1, this.a.jdField_b_of_type_Long, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Int, this.a.c, this.a.jdField_f_of_type_ArrayOfJavaLangString, this.a.jdField_g_of_type_ArrayOfJavaLangString, this.a.d, this.a.jdField_e_of_type_Int, paramInt2);
-        return;
-        paramBoolean = false;
-        break;
-        label342:
-        if ((paramObject.vUserList != null) && (!paramObject.vUserList.isEmpty())) {
-          this.a.jdField_b_of_type_JavaUtilList.addAll(paramObject.vUserList);
-        }
-      }
-      label382:
-      if ((this.a.jdField_b_of_type_JavaUtilList == null) || (this.a.jdField_b_of_type_JavaUtilList.size() < 6)) {
-        this.a.jdField_e_of_type_Boolean = false;
-      }
-      this.a.a(true, this.a.jdField_b_of_type_JavaUtilList, this.a.jdField_e_of_type_Boolean, paramInt2);
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    default: 
+      ContactsInnerFrame.c(this.a);
+      return;
+    case 0: 
+    case 7: 
+    case 9: 
+      ContactsInnerFrame.a(this.a);
+      return;
+    case 1: 
+    case 5: 
+      ContactsInnerFrame.b(this.a);
       return;
     }
-    if ((paramBoolean) && (paramInt1 != 0))
+    if (ContactsInnerFrame.a(this.a).a().lastUsedFlag == 2L)
     {
-      this.a.jdField_e_of_type_Boolean = false;
-      this.a.a(true, this.a.jdField_b_of_type_JavaUtilList, this.a.jdField_e_of_type_Boolean, paramInt2);
+      ContactsInnerFrame.a(this.a);
       return;
     }
-    if (this.a.jdField_g_of_type_Int == 0)
-    {
-      this.a.a(false, null, this.a.jdField_e_of_type_Boolean, paramInt2);
-      return;
-    }
-    this.a.a(true, this.a.jdField_b_of_type_JavaUtilList, this.a.jdField_e_of_type_Boolean, paramInt2);
+    ContactsInnerFrame.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajty
  * JD-Core Version:    0.7.0.1
  */

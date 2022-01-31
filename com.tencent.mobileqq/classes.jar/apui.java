@@ -1,127 +1,164 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
+import com.tencent.mobileqq.widget.ProgressButton;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.List;
 
-final class apui
-  implements apvh
+public class apui
+  extends apru
 {
-  apui(QQAppInterface paramQQAppInterface, int paramInt) {}
+  protected int f = (this.d - (int)(18.0F * this.jdField_a_of_type_Float) * 8) / 7;
   
-  public long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong, int paramInt3)
+  public apui(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, appt paramappt, int paramInt4)
   {
-    return a(paramString1, paramInt1, paramString2, paramInt2, paramString3, paramString4, paramString5, paramLong, paramInt3, 0L, 0);
+    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramappt, paramInt4);
+    this.b = true;
   }
   
-  public long a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, long paramLong1, int paramInt3, long paramLong2, int paramInt4)
+  public View a(apow paramapow, int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-    localDataLineMsgRecord.fileUuid = paramString3;
-    if (paramString2 != null) {
-      localDataLineMsgRecord.uOwnerUin = Long.valueOf(paramString2).longValue();
-    }
-    localDataLineMsgRecord.selfuin = paramString1;
-    localDataLineMsgRecord.filename = paramString4;
-    if (paramString5 != null)
+    paramViewGroup = (apuj)paramapow;
+    this.a = paramViewGroup;
+    int i = getItemViewType(paramInt);
+    if (i == 0)
     {
-      localDataLineMsgRecord.thumbPath = apvd.a(apvd.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()), apug.a(paramString5));
-      bbdx.d(paramString5, localDataLineMsgRecord.thumbPath);
-    }
-    localDataLineMsgRecord.filesize = paramLong1;
-    localDataLineMsgRecord.busId = paramInt2;
-    localDataLineMsgRecord.forwardTroopFileEntrance = paramInt3;
-    if (paramInt1 == 0) {
-      localDataLineMsgRecord.fileFrom = 1;
-    }
-    for (localDataLineMsgRecord.nOpType = 29;; localDataLineMsgRecord.nOpType = 31)
-    {
-      localDataLineMsgRecord.istroop = paramInt1;
-      paramString1 = (ajum)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
-      localDataLineMsgRecord.sessionid = paramString1.a(0, this.jdField_a_of_type_Int).longValue();
-      localDataLineMsgRecord.msg = "";
-      localDataLineMsgRecord.issend = 1;
-      localDataLineMsgRecord.isread = true;
-      localDataLineMsgRecord.issuc = false;
-      ((akfv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(localDataLineMsgRecord);
-      localDataLineMsgRecord.time = awzy.a();
-      localDataLineMsgRecord.progress = 0.2F;
-      localDataLineMsgRecord.fileMsgStatus = 0L;
-      localDataLineMsgRecord.msgtype = ajum.a(0);
-      localDataLineMsgRecord.bIsTransfering = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid)).a(localDataLineMsgRecord, true);
-      paramString1.a(7, true, new Object[] { Long.valueOf(0L), Long.valueOf(localDataLineMsgRecord.sessionid), localDataLineMsgRecord.path, Byte.valueOf((byte)ajum.b(localDataLineMsgRecord.msgtype)), Boolean.valueOf(false), Boolean.valueOf(false), Long.valueOf(localDataLineMsgRecord.filesize) });
-      return localDataLineMsgRecord.sessionid;
-      localDataLineMsgRecord.fileFrom = 2;
-    }
-  }
-  
-  public String a(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4, long paramLong1, long paramLong2, long paramLong3, int paramInt3)
-  {
-    return null;
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileManagerUtil<FileAssistant>", 1, "getDatalineProcessCallBack->onResult bSuccess[" + paramBoolean + "],nSessionId[" + paramLong + "],retCode[" + paramInt + "],retMsg[" + paramString1 + "],uuid[" + paramString2 + "],troopUin[" + paramString3 + "],strNewPath[" + paramString4 + "]");
-    }
-    if (paramInt != 0)
-    {
-      if (TextUtils.isEmpty(paramString1))
-      {
-        aptx.c(BaseApplicationImpl.getContext().getString(2131692671));
-        paramBoolean = false;
+      if (paramView != null) {
+        break label751;
       }
-    }
-    else
-    {
-      paramString1 = (ajum)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
-      if (paramBoolean) {
-        break label158;
-      }
-      paramString1.OnSessionComplete(paramLong, 41, paramInt);
-    }
-    label158:
-    do
-    {
-      do
+      paramapow = apsr.a().a(7);
+      paramView = new AbsListView.LayoutParams(-1, -2);
+      if (paramapow == null)
       {
-        return;
-        aptx.c(paramString1);
-        break;
-        if (TextUtils.isEmpty(paramString4))
-        {
-          paramString1.OnSessionComplete(paramLong, 0, paramInt);
-          return;
+        if (QLog.isColorLevel()) {
+          QLog.d("SmallEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemType = " + i + ";view from infalter");
         }
-        paramInt = DataLineMsgRecord.getDevTypeBySeId(paramLong);
-        paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramInt).a(paramLong);
-      } while (paramString2 == null);
-      paramString2.serverPath = paramString4;
-      paramString2.nOpType = 1;
-      paramString2.bIsSended = true;
-      paramString2.bIsTransfering = false;
-      if (paramString2.entityID != 0L)
-      {
-        paramString3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramString2.entityID);
-        if (paramString3 != null)
-        {
-          paramString3.status = 1;
-          paramString3.Uuid = paramString2.serverPath;
-        }
+        paramapow = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561686, null);
+        paramapow.setLayoutParams(paramView);
+        paramapow.setPadding(0, (int)(10.0F * this.jdField_a_of_type_Float), 0, 0);
+        a(7, paramapow);
+        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramapow.findViewById(2131364879));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramapow.findViewById(2131364970));
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetProgressButton = ((ProgressButton)paramapow.findViewById(2131364968));
+        paramapow.setTag(paramViewGroup);
       }
-    } while (!paramString1.a(paramString2));
-    paramString1.a(paramString2);
+    }
+    for (;;)
+    {
+      a(paramViewGroup);
+      paramView = paramapow;
+      return paramView;
+      if (QLog.isColorLevel()) {
+        QLog.d("SmallEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemType = " + i + ";view from cache");
+      }
+      break;
+      Object localObject;
+      if (paramView == null)
+      {
+        paramView = apsr.a().a(2);
+        if (paramView == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("SmallEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemType = " + i + ";view from infalter");
+          }
+          paramView = new EmoticonPanelLinearLayout(this.jdField_a_of_type_AndroidContentContext);
+          paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+          paramView.setOrientation(0);
+          paramView.setPadding(0, (int)(this.jdField_a_of_type_Float * 18.0F), 0, 0);
+          i = 0;
+          for (;;)
+          {
+            paramapow = paramView;
+            if (i >= this.jdField_a_of_type_Int) {
+              break;
+            }
+            paramapow = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+            localObject = new LinearLayout.LayoutParams(this.f, this.f);
+            ((LinearLayout.LayoutParams)localObject).leftMargin = ((int)(this.jdField_a_of_type_Float * 18.0F));
+            paramapow.setLayoutParams((ViewGroup.LayoutParams)localObject);
+            paramapow.setVisibility(8);
+            paramapow.setScaleType(ImageView.ScaleType.FIT_XY);
+            paramapow.setAdjustViewBounds(false);
+            paramView.addView(paramapow);
+            i += 1;
+          }
+        }
+        paramapow = paramView;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("SmallEmotionUpdateAdapter", 2, "getEmotionView position = " + paramInt + ";itemType = " + i + ";view from cache");
+          paramapow = paramView;
+        }
+        ((EmoticonPanelLinearLayout)paramapow).setCallBack(this.jdField_a_of_type_Appt);
+        a(2, paramapow);
+        paramView = (ViewGroup)paramapow;
+        paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView = new URLImageView[this.jdField_a_of_type_Int];
+        i = 0;
+        while (i < this.jdField_a_of_type_Int)
+        {
+          paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i] = ((URLImageView)paramView.getChildAt(i));
+          i += 1;
+        }
+        paramapow.setTag(paramViewGroup);
+      }
+      for (;;)
+      {
+        i = 0;
+        paramView = paramapow;
+        if (i >= this.jdField_a_of_type_Int) {
+          break;
+        }
+        int j = this.jdField_a_of_type_Int * paramInt + i;
+        if (j > this.jdField_a_of_type_JavaUtilList.size() - 1)
+        {
+          paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setTag(null);
+          paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setVisibility(8);
+        }
+        label744:
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject = paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i];
+          paramView = (apsj)this.jdField_a_of_type_JavaUtilList.get(j);
+          if ((paramView instanceof appw)) {}
+          for (paramView = (appw)paramView;; paramView = null)
+          {
+            if (paramView == null) {
+              break label744;
+            }
+            paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setTag(paramView);
+            paramViewGroup.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setOnClickListener(this);
+            ((URLImageView)localObject).setImageDrawable(paramView.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Float));
+            ((URLImageView)localObject).setVisibility(0);
+            break;
+          }
+        }
+        paramapow = paramView;
+      }
+      label751:
+      paramapow = paramView;
+    }
   }
   
-  public void a(boolean paramBoolean, String paramString1, long paramLong, int paramInt, String paramString2, String paramString3, String paramString4) {}
+  public apow a()
+  {
+    return new apuj();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apui
  * JD-Core Version:    0.7.0.1
  */

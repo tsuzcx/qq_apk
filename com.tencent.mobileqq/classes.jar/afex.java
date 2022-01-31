@@ -1,60 +1,64 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qphone.base.util.QLog;
 
-public class afex
-  implements TextView.OnEditorActionListener
+class afex
+  implements DialogInterface.OnClickListener
 {
-  public afex(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  afex(afew paramafew, MessageForArkApp paramMessageForArkApp) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
-    {
-      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      if (!TextUtils.isEmpty(paramTextView)) {
-        if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(paramTextView.trim())))
-        {
-          this.a.a(paramTextView);
-          nol.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
-          ClassificationSearchActivity.a(this.a, paramTextView);
-        }
-      }
-      for (;;)
-      {
-        return true;
-        if (this.a.f == ClassificationSearchActivity.d)
-        {
-          nol.a(null, "", "0X800742D", "0X800742D", 0, 0, paramTextView, "", "", "");
-          ClassificationSearchActivity.a(this.a, paramTextView);
-        }
-        else
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
-          continue;
-          if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
-          {
-            paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getHint().toString();
-            if ((!TextUtils.isEmpty(paramTextView.trim())) && (!TextUtils.equals(paramTextView, ajya.a(2131701926))) && (!TextUtils.equals(paramTextView, ajya.a(2131701941))))
-            {
-              this.a.a(paramTextView);
-              nol.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
-              ClassificationSearchActivity.a(this.a, paramTextView);
-            }
-          }
-        }
+    paramDialogInterface = (MessageForArkApp)ayvw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    if (paramDialogInterface.msgData == null) {
+      if (paramDialogInterface.ark_app_message == null) {
+        ArkAppCenter.c("ArkApp", String.format("resendMessage, msgData and ark_app_message are null", new Object[0]));
       }
     }
-    return false;
+    Object localObject;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramDialogInterface.msgData = paramDialogInterface.ark_app_message.toBytes();
+          } while (this.jdField_a_of_type_Afew.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null);
+          if ((paramDialogInterface.ark_app_message.containStructMsg == null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.containStructMsg != null)) {
+            paramDialogInterface.ark_app_message.containStructMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.ark_app_message.containStructMsg;
+          }
+          paramInt = paramDialogInterface.getProcessState();
+          if (QLog.isColorLevel()) {
+            QLog.d("ArkAppShareMultiItemBuilder", 2, new Object[] { "AAShare.get multiItem resend msg stat=", Integer.valueOf(paramInt), ", old.uniseq=", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq), ", new uniseq=", Long.valueOf(paramDialogInterface.uniseq) });
+          }
+          this.jdField_a_of_type_Afew.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Afew.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Afew.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.uniseq);
+          if ((paramInt == 1002) || (paramInt == 0)) {
+            break;
+          }
+          localObject = BaseApplicationImpl.getApplication().getRuntime();
+        } while (!(localObject instanceof QQAppInterface));
+        localObject = (ArkAppCenter)((QQAppInterface)localObject).getManager(121);
+      } while (localObject == null);
+      localObject = ((ArkAppCenter)localObject).a();
+    } while (localObject == null);
+    ((annl)localObject).a(paramDialogInterface);
+    return;
+    this.jdField_a_of_type_Afew.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramDialogInterface, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afex
  * JD-Core Version:    0.7.0.1
  */

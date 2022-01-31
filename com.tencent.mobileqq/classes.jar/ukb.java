@@ -1,88 +1,70 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.settings.QQStoryShieldListActivity;
-import com.tencent.biz.qqstory.settings.QQStoryShieldListActivity.1.1;
-import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
+import android.annotation.TargetApi;
+import android.support.annotation.NonNull;
+import java.io.File;
 
+@TargetApi(14)
 public class ukb
-  extends ssv
+  extends ujt
 {
-  private List<QQStoryUserInfo> a;
-  
-  public ukb(QQStoryShieldListActivity paramQQStoryShieldListActivity)
+  public ukb(@NonNull String[] paramArrayOfString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super(paramArrayOfString);
   }
   
-  private void a(List<QQStoryUserInfo> paramList)
+  protected void a(String[] paramArrayOfString, uju paramuju)
   {
-    ThreadManager.getSubThreadHandler().post(new QQStoryShieldListActivity.1.1(this, paramList));
-  }
-  
-  public void a(boolean paramBoolean1, List<QQStoryUserInfo> paramList, byte[] paramArrayOfByte, boolean paramBoolean2, String paramString)
-  {
-    if (!TextUtils.equals(QQStoryShieldListActivity.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity), paramString)) {
-      return;
-    }
-    if (paramBoolean1)
+    int n = paramArrayOfString.length;
+    int i = 0;
+    if (i < n)
     {
-      if (!paramBoolean2)
-      {
-        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-        paramList = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Sss;
-        if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Int == 2) {}
-        for (paramBoolean1 = true;; paramBoolean1 = false)
-        {
-          paramList.a(paramArrayOfByte, 10, paramBoolean1, QQStoryShieldListActivity.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity));
-          return;
-        }
-      }
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-      this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a(this.jdField_a_of_type_JavaUtilList);
-      paramList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Int == 2) {
-        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Sst.jdField_b_of_type_JavaUtilList = paramList;
-      }
+      File localFile1 = new File(paramArrayOfString[i]);
+      double d = a(localFile1);
+      File[] arrayOfFile = localFile1.listFiles();
+      if (arrayOfFile == null) {}
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Sst.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        paramArrayOfByte = paramList.iterator();
-        while (paramArrayOfByte.hasNext())
+        i += 1;
+        break;
+        long l = System.currentTimeMillis();
+        int i1 = arrayOfFile.length;
+        int k = 0;
+        int j = 0;
+        for (;;)
         {
-          paramString = (QQStoryUserInfo)paramArrayOfByte.next();
-          this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Sst.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString.uin, paramString);
+          if (j < i1)
+          {
+            if (j % 150 == 0) {}
+            try
+            {
+              Thread.sleep(100L);
+              File localFile2 = arrayOfFile[j];
+              int m = k;
+              if (l - localFile2.lastModified() > 86400000L)
+              {
+                a(localFile2);
+                m = k + 1;
+              }
+              j += 1;
+              k = m;
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              for (;;)
+              {
+                wsv.e("Q.qqstory.cleaner:TimeCleanStep", "sleep error ,InterruptedException");
+              }
+            }
+          }
         }
-        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Sst.jdField_a_of_type_JavaUtilList = paramList;
+        paramuju.jdField_b_of_type_Double = (d - a(localFile1) + paramuju.jdField_b_of_type_Double);
+        paramuju.jdField_b_of_type_Int = (k + paramuju.jdField_b_of_type_Int);
       }
-      a(paramList);
-      QQStoryShieldListActivity.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
-      this.jdField_a_of_type_JavaUtilList.clear();
-      return;
     }
-    QQStoryShieldListActivity.b(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity);
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Bcqi.b();
-    if (paramBoolean1)
-    {
-      List localList = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.jdField_a_of_type_Sst.a(paramBoolean3);
-      this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.a(localList);
-      return;
-    }
-    bcql.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity, 2131694975, 0).b(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ukb
  * JD-Core Version:    0.7.0.1
  */

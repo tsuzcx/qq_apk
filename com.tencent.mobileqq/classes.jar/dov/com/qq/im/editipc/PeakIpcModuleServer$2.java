@@ -1,14 +1,14 @@
 package dov.com.qq.im.editipc;
 
-import bjnd;
+import blym;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 
 public class PeakIpcModuleServer$2
   implements Runnable
 {
-  public PeakIpcModuleServer$2(bjnd parambjnd, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  public PeakIpcModuleServer$2(blym paramblym, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class PeakIpcModuleServer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.editipc.PeakIpcModuleServer.2
  * JD-Core Version:    0.7.0.1
  */

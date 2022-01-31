@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.List;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import com.tencent.shadow.dynamic.host.PluginManager;
 
-class asux
-  implements DialogInterface.OnClickListener
+public abstract interface asux
+  extends PluginManager
 {
-  asux(asuw paramasuw, List paramList) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_JavaUtilList, false);
-  }
+  public abstract void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asux
  * JD-Core Version:    0.7.0.1
  */

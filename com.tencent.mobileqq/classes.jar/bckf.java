@@ -1,7 +1,11 @@
-public class bckf {}
+public class bckf
+{
+  public int a;
+  public int b;
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bckf
  * JD-Core Version:    0.7.0.1
  */

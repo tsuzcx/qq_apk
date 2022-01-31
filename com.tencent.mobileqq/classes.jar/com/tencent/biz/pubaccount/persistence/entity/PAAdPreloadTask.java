@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.persistence.entity;
 
 import android.text.TextUtils;
-import auko;
-import bbfj;
+import awbv;
+import bdee;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class PAAdPreloadTask
-  extends auko
+  extends awbv
 {
   public static final int NETWORK_TYPE_4G = 2;
   public static final int NETWORK_TYPE_NONE = 0;
@@ -119,8 +119,8 @@ public class PAAdPreloadTask
   
   public boolean isNetworkValid()
   {
-    if (((this.mNetworkType & 0x1) != 0) && (bbfj.h(null))) {}
-    while (((this.mNetworkType & 0x2) != 0) && (bbfj.a(BaseApplication.getContext()) == 4)) {
+    if (((this.mNetworkType & 0x1) != 0) && (bdee.h(null))) {}
+    while (((this.mNetworkType & 0x2) != 0) && (bdee.a(BaseApplication.getContext()) == 4)) {
       return true;
     }
     return false;
@@ -128,7 +128,7 @@ public class PAAdPreloadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask
  * JD-Core Version:    0.7.0.1
  */

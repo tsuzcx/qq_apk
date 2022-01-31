@@ -1,17 +1,23 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+
 class tsk
-  implements tjc
+  implements View.OnClickListener
 {
-  tsk(tsi paramtsi, tjb paramtjb) {}
+  tsk(tsf paramtsf) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Tjb.a();
-    this.jdField_a_of_type_Tsi.c();
+    QLog.d("QCircleFolderSplashPart", 4, "btn onClick");
+    tyj.a("", 20, tsf.a(this.a));
+    tqt.a().a(false);
+    tsf.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsk
  * JD-Core Version:    0.7.0.1
  */

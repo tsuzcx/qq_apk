@@ -1,25 +1,15 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionCenterView;
+import android.widget.ImageView;
 
-public class qpp
-  extends AnimatorListenerAdapter
+class qpp
 {
-  public qpp(VideoFeedsLikeAnimate.LikeExplosionCenterView paramLikeExplosionCenterView) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  ImageView b;
   
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    VideoFeedsLikeAnimate.LikeExplosionCenterView.a(this.a);
-  }
+  private qpp(qpn paramqpn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qpp
  * JD-Core Version:    0.7.0.1
  */

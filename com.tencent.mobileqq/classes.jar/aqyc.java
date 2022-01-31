@@ -1,147 +1,24 @@
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.List;
 
 public class aqyc
+  extends aqyg
 {
-  public static ConcurrentHashMap<String, ArrayList<aqyf>> a = new ConcurrentHashMap();
-  public static ConcurrentHashMap<String, aqye> b = new ConcurrentHashMap();
-  
-  public static void a()
+  public CharSequence c()
   {
-    synchronized (a)
-    {
-      HashSet localHashSet = new HashSet();
-      Iterator localIterator2 = a.values().iterator();
-      while (localIterator2.hasNext())
-      {
-        Iterator localIterator3 = ((ArrayList)localIterator2.next()).iterator();
-        if (localIterator3.hasNext())
-        {
-          aqyf localaqyf = (aqyf)localIterator3.next();
-          localaqyf.d();
-          localHashSet.add(localaqyf.d);
-        }
-      }
-    }
-    Iterator localIterator1 = localObject.iterator();
-    while (localIterator1.hasNext()) {
-      c((String)localIterator1.next());
-    }
-  }
-  
-  public static void a(aqyf paramaqyf)
-  {
-    synchronized (a)
-    {
-      String str = paramaqyf.a();
-      ArrayList localArrayList = (ArrayList)a.get(str);
-      if (localArrayList == null)
-      {
-        localArrayList = new ArrayList();
-        localArrayList.add(paramaqyf);
-        a.put(str, localArrayList);
-      }
-      while (localArrayList.contains(paramaqyf)) {
-        return;
-      }
-      localArrayList.add(paramaqyf);
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    synchronized (a)
-    {
-      aqyf localaqyf;
-      do
-      {
-        Iterator localIterator = a.keySet().iterator();
-        Object localObject;
-        while (!((Iterator)localObject).hasNext())
-        {
-          do
-          {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localObject = (String)localIterator.next();
-          } while (!((String)localObject).endsWith("plugin"));
-          localObject = ((ArrayList)a.get(localObject)).iterator();
-        }
-        localaqyf = (aqyf)((Iterator)localObject).next();
-      } while (!((aqyd)localaqyf).a.equals(paramString));
-      localaqyf.b();
-      localaqyf.d();
-    }
-  }
-  
-  public static void b(String paramString)
-  {
-    synchronized (a)
-    {
-      Iterator localIterator = a.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (String)localIterator.next();
-        if (((String)localObject).startsWith(paramString))
-        {
-          localObject = ((ArrayList)a.get(localObject)).iterator();
-          if (((Iterator)localObject).hasNext()) {
-            ((aqyf)((Iterator)localObject).next()).d();
-          }
-        }
-      }
-    }
-    c(paramString);
-  }
-  
-  public static void c(String paramString)
-  {
-    synchronized (a)
-    {
-      aqye localaqye = (aqye)b.get(paramString);
-      if (localaqye != null)
-      {
-        localaqye.d();
-        b.remove(paramString);
-      }
-      return;
-    }
-  }
-  
-  public static void d(String paramString)
-  {
-    synchronized (a)
-    {
-      paramString = (aqye)b.get(paramString);
-      if (paramString != null) {
-        paramString.b();
-      }
-      return;
-    }
-  }
-  
-  public static void e(String paramString)
-  {
-    synchronized (a)
-    {
-      if ((aqye)b.get(paramString) == null)
-      {
-        aqye localaqye = new aqye(paramString);
-        b.put(paramString, localaqye);
-        localaqye.a();
-      }
-      return;
-    }
+    Object localObject = (FileManagerEntity)this.a.get(0);
+    String str1 = aroy.b(((FileManagerEntity)localObject).srvTime);
+    String str2 = arni.b((FileManagerEntity)localObject);
+    localObject = arof.a(((FileManagerEntity)localObject).fileSize);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str2).append("  ").append(str1).append("  ").append((String)localObject);
+    this.b = localStringBuilder;
+    return localStringBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqyc
  * JD-Core Version:    0.7.0.1
  */

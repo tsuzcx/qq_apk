@@ -4,13 +4,13 @@ import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import atdr;
-import atds;
-import atdt;
-import atdw;
-import atdx;
-import bbgu;
-import bciq;
+import auuq;
+import auur;
+import auus;
+import auuv;
+import auuw;
+import bdfq;
+import behr;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -18,12 +18,12 @@ public class GameRoomTransActivity
   extends BaseActivity
 {
   public DialogInterface.OnDismissListener a;
-  public bbgu a;
+  public bdfq a;
   
   public GameRoomTransActivity()
   {
-    this.jdField_a_of_type_Bbgu = null;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new atdw(this);
+    this.jdField_a_of_type_Bdfq = null;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new auuv(this);
   }
   
   public void a()
@@ -53,7 +53,7 @@ public class GameRoomTransActivity
     {
       i = getIntent().getIntExtra("roomNum", 10);
       int j = getIntent().getIntExtra("zoneId", 0);
-      ((bciq)this.app.a(107)).b(i, j, new atds(this, i));
+      ((behr)this.app.a(107)).b(i, j, new auur(this, i));
       return;
     }
     catch (Exception localException)
@@ -69,7 +69,7 @@ public class GameRoomTransActivity
   {
     String str = getIntent().getStringExtra("inviteId");
     int i = getIntent().getIntExtra("roomNum", 10);
-    ((bciq)this.app.a(107)).a(str, true, new atdt(this, str, i));
+    ((behr)this.app.a(107)).a(str, true, new auus(this, str, i));
   }
   
   protected void d()
@@ -77,7 +77,7 @@ public class GameRoomTransActivity
     int i = getIntent().getIntExtra("roomNum", 10);
     int j = getIntent().getIntExtra("zoneId", 0);
     long l = getIntent().getLongExtra("gc", -1L);
-    ((bciq)this.app.a(107)).a(new atdx(this, l, i, j));
+    ((behr)this.app.a(107)).a(new auuw(this, l, i, j));
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -88,7 +88,7 @@ public class GameRoomTransActivity
     {
       if (checkSelfPermission("android.permission.RECORD_AUDIO") != 0)
       {
-        requestPermissions(new atdr(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+        requestPermissions(new auuq(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
         return true;
       }
       a();
@@ -105,7 +105,7 @@ public class GameRoomTransActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity
  * JD-Core Version:    0.7.0.1
  */

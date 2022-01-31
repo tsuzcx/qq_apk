@@ -1,60 +1,103 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 
 public class baad
-  extends BaseAdapter
+  extends baaj
+  implements azza, baai
 {
-  public baae a;
-  protected List<String> a = new ArrayList();
+  private baae a;
+  private azze jdField_b_of_type_Azze = new azze(0.0F, 0.0F);
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
   
-  public String a(int paramInt)
+  public baad(SpriteGLView paramSpriteGLView, Bitmap paramBitmap, boolean paramBoolean)
   {
-    return (String)this.a.get(paramInt);
+    super(paramSpriteGLView, paramBitmap);
+    this.c = paramBoolean;
   }
   
-  public void a(String paramString)
+  public baad(SpriteGLView paramSpriteGLView, boolean paramBoolean, String paramString)
   {
-    this.a.add(paramString);
+    super(paramSpriteGLView);
+    this.c = paramBoolean;
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  public int getCount()
+  public String a()
   {
-    return this.a.size();
+    return this.jdField_b_of_type_JavaLangString;
   }
   
-  public long getItemId(int paramInt)
+  public void a(baae parambaae)
   {
-    return paramInt;
+    this.jdField_a_of_type_Baae = parambaae;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2)
   {
-    if (paramView == null)
+    if ((this.jdField_a_of_type_Baam == null) || (this.jdField_a_of_type_Baam.a == null)) {
+      return false;
+    }
+    paramInt1 = paramMotionEvent.getAction();
+    float f3 = paramMotionEvent.getX();
+    float f4 = paramMotionEvent.getY();
+    a(this.jdField_b_of_type_Azze);
+    float f1 = b();
+    float f5 = (this.jdField_b_of_type_Azze.a - this.jdField_a_of_type_Baam.a.getWidth() * this.e / 2.0F) * f1;
+    float f6 = (this.jdField_b_of_type_Azze.a + this.jdField_a_of_type_Baam.a.getWidth() * this.e / 2.0F) * f1;
+    float f2;
+    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_b_of_type_Boolean)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560368, null, false);
-      paramViewGroup = new baaf(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378371));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramViewGroup);
-      paramView.setTag(paramViewGroup);
+      f2 = paramInt2 - (this.jdField_b_of_type_Azze.b + this.jdField_a_of_type_Baam.a.getHeight() * this.e / 2.0F) * f1;
+      f1 = paramInt2 - f1 * (this.jdField_b_of_type_Azze.b - this.jdField_a_of_type_Baam.a.getHeight() * this.e / 2.0F);
+      if (paramInt1 != 0) {
+        break label337;
+      }
+      if ((f3 <= f5) || (f3 >= f6) || (f4 <= f2) || (f4 >= f1)) {
+        break label315;
+      }
+      this.jdField_b_of_type_Boolean = true;
+      if (this.c) {
+        this.jdField_a_of_type_Int = 128;
+      }
     }
     for (;;)
     {
-      String str = a(paramInt);
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(str);
-      return paramView;
-      paramViewGroup = (baaf)paramView.getTag();
+      return this.jdField_b_of_type_Boolean;
+      f2 = (this.jdField_b_of_type_Azze.b - this.jdField_a_of_type_Baam.a.getHeight() * this.e / 2.0F) * f1;
+      f1 *= (this.jdField_b_of_type_Azze.b + this.jdField_a_of_type_Baam.a.getHeight() * this.e / 2.0F);
+      break;
+      label315:
+      this.jdField_b_of_type_Boolean = false;
+      if (this.c) {
+        this.jdField_a_of_type_Int = 255;
+      }
     }
+    label337:
+    if ((paramInt1 == 1) || (paramInt1 == 3))
+    {
+      this.jdField_b_of_type_Boolean = false;
+      if (this.c) {
+        this.jdField_a_of_type_Int = 255;
+      }
+      if ((f3 > f5) && (f3 < f6) && (f4 > f2) && (f4 < f1))
+      {
+        if (this.jdField_a_of_type_Baae != null)
+        {
+          this.jdField_a_of_type_Baae.a(this);
+          return true;
+        }
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baad
  * JD-Core Version:    0.7.0.1
  */

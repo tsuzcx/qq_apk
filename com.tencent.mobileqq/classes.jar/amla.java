@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.comment.DanmuItemBean;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
-public abstract interface amla
+public final class amla
+  extends amky
 {
-  public abstract void a(amku paramamku, boolean paramBoolean1, boolean paramBoolean2, int paramInt, ArrayList<DanmuItemBean> paramArrayList, List<Long> paramList);
+  public amla(String paramString, boolean paramBoolean)
+  {
+    super(paramString, paramBoolean);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  
+  public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amla
  * JD-Core Version:    0.7.0.1
  */

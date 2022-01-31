@@ -14,11 +14,12 @@ public class DomObjectConstant
   public static final String DOM_TYPE_SLIDER = "slider";
   public static final String DOM_TYPE_SMART_HEADER = "smart-header";
   public static final String DOM_TYPE_TEXT = "text";
+  public static final String DOM_TYPE_V_INSTANCE = "instance";
   public static final String DOM_TYPE_WATERFALLLIST = "waterfall-list";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.dom.DomObjectConstant
  * JD-Core Version:    0.7.0.1
  */

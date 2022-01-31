@@ -1,38 +1,79 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.av.VideoController;
 import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.QavPanelSoundWaveView;
 
 class mkd
-  implements mho
+  implements Animation.AnimationListener
 {
-  mkd(mkc parammkc, int paramInt) {}
+  mkd(mkb parammkb) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_Mkc.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
+    if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
     {
-      this.jdField_a_of_type_Mkc.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131372374, false);
-      this.jdField_a_of_type_Mkc.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131362921, false);
-      this.jdField_a_of_type_Mkc.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131362933, false);
-      this.jdField_a_of_type_Mkc.a.jdField_a_of_type_ComTencentAvUiQavPanel.setViewEnable(2131362932, false);
+      this.a.jdField_a_of_type_ComTencentAvUiQavPanel.clearAnimation();
+      this.a.jdField_a_of_type_ComTencentAvUiQavPanel.startAnimation(this.a.f);
+      if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a() != null) {
+        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a().startAnimation(this.a.jdField_g_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_c_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.b != null)
+    {
+      this.a.b.clearAnimation();
+      if (this.a.b.getVisibility() == 0) {
+        this.a.b.startAnimation(this.a.jdField_d_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.jdField_c_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_c_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_c_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_c_of_type_AndroidViewView.startAnimation(this.a.jdField_d_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.jdField_d_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_d_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_d_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_d_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.jdField_e_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_e_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_e_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_e_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.jdField_g_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_g_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_g_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_g_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null)) {
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a().ar = true;
     }
   }
   
-  public void b()
-  {
-    this.jdField_a_of_type_Mkc.a.a().a(this.jdField_a_of_type_Mkc.a.c, 250);
-    this.jdField_a_of_type_Mkc.a.a().b(250);
-    this.jdField_a_of_type_Mkc.a.a().b(this.jdField_a_of_type_Mkc.a.c, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Mkc.a.e = true;
-    QLog.d(this.jdField_a_of_type_Mkc.a.jdField_a_of_type_JavaLangString, 1, "onClose()-> onOutAnimationEnd ->finish  ");
-    this.jdField_a_of_type_Mkc.a.finish();
-    this.jdField_a_of_type_Mkc.a.overridePendingTransition(0, 2130772163);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mkd
  * JD-Core Version:    0.7.0.1
  */

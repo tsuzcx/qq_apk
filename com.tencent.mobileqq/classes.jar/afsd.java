@@ -1,26 +1,39 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.MessageForPLNews;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
 class afsd
-  extends ajxj
+  implements View.OnClickListener
 {
-  afsd(afry paramafry) {}
+  afsd(afsc paramafsc, MessageForPLNews paramMessageForPLNews, String paramString) {}
   
-  protected void onMayKnowEntryStateChanged(boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CTEntryMng", 2, "onMayKnowEntryStateChanged isSuccess=" + paramBoolean);
+    paramView = (afse)paramView.getTag();
+    if (paramView == null) {
+      return;
     }
-    if (paramBoolean)
-    {
-      afry.a(this.a, true);
-      afry.a(this.a);
+    paramView = new ProfileActivity.AllInOne(paramView.jdField_a_of_type_JavaLangString, 1);
+    Intent localIntent = new Intent(this.jdField_a_of_type_Afsc.jdField_a_of_type_AndroidContentContext, PersonalityLabelGalleryActivity.class);
+    localIntent.putExtra("personality_label_allinone", paramView);
+    localIntent.putExtra("fromType", 2);
+    localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPLNews.frienduin);
+    localIntent.putExtra("nickname", this.jdField_a_of_type_JavaLangString);
+    if (!(this.jdField_a_of_type_Afsc.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+      localIntent.addFlags(268435456);
     }
+    this.jdField_a_of_type_Afsc.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    azmj.b(this.jdField_a_of_type_Afsc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "3", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afsd
  * JD-Core Version:    0.7.0.1
  */

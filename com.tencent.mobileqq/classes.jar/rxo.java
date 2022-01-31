@@ -1,21 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import com.tencent.widget.AbsListView;
 
 public class rxo
-  implements DialogInterface.OnDismissListener
+  implements bhpo
 {
-  public rxo(BridgeModule paramBridgeModule) {}
+  public rxo(SlideActiveAnimController paramSlideActiveAnimController) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (!BridgeModule.access$300(this.a)) {}
-    BridgeModule.access$302(this.a, false);
+    if (paramInt == 0) {
+      this.a.e = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxo
  * JD-Core Version:    0.7.0.1
  */

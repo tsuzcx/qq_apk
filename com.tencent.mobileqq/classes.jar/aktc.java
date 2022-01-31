@@ -1,21 +1,43 @@
-import android.content.ContentValues;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameSubProcessHandler.10;
+import java.util.HashMap;
 
 public class aktc
-  extends aksv
+  extends alfq
 {
-  public aktc(String paramString1, int paramInt1, String paramString2, ContentValues paramContentValues, String paramString3, String[] paramArrayOfString, int paramInt2, aktd paramaktd)
-  {
-    super(paramString1, paramInt1, paramString2, paramContentValues, paramString3, paramArrayOfString, paramInt2, paramaktd);
-  }
+  public aktc(CmGameSubProcessHandler.10 param10) {}
   
-  public aktc(String paramString1, int paramInt1, String paramString2, auko paramauko, int paramInt2, aktd paramaktd)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    super(paramString1, paramInt1, paramString2, paramauko, paramInt2, paramaktd);
+    if (paramInt == 200)
+    {
+      Object localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inSampleSize = 1;
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
+      ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
+      paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length, (BitmapFactory.Options)localObject);
+      localObject = Bitmap.createBitmap(paramArrayOfByte.getWidth(), paramArrayOfByte.getHeight(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas((Bitmap)localObject);
+      localCanvas.drawBitmap(paramArrayOfByte, 0.0F, 0.0F, null);
+      localCanvas.save();
+      paramArrayOfByte.recycle();
+      if (localObject != null)
+      {
+        this.a.a.a((Bitmap)localObject, 200);
+        akta.b(this.a.this$0).put(this.a.b, localObject);
+      }
+      return;
+    }
+    this.a.a.a(null, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aktc
  * JD-Core Version:    0.7.0.1
  */

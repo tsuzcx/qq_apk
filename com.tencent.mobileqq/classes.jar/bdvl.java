@@ -1,43 +1,56 @@
-import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.video.VipVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnControllerClickListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo.RecommadInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
 
 public class bdvl
+  implements TVK_IMediaPlayer.OnControllerClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  MessageMicro<?> jdField_a_of_type_ComTencentMobileqqPbMessageMicro = null;
-  Object jdField_a_of_type_JavaLangObject = null;
-  int b = 0;
+  public bdvl(VipVideoPlayActivity paramVipVideoPlayActivity) {}
   
-  public bdvl(int paramInt1, MessageMicro<?> paramMessageMicro, int paramInt2, Object paramObject)
+  public void onAttationClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  
+  public void onBackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro = paramMessageMicro;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onBackClick");
+    }
+    this.a.setResult(0);
+    this.a.finish();
   }
   
-  public int a()
+  public void onBackOnFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    return this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onBackOnFullScreenClick");
+    }
+    if (this.a.getRequestedOrientation() == 0)
+    {
+      this.a.setRequestedOrientation(1);
+      return;
+    }
+    this.a.setResult(0);
+    this.a.finish();
   }
   
-  public MessageMicro<?> a()
+  public void onCacheClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  
+  public void onFeedbackClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  
+  public void onFullScreenClick(TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqPbMessageMicro;
+    if (QLog.isColorLevel()) {
+      QLog.d("VipVideoPlayActivity", 2, "video player onFullScreenClick--------------");
+    }
+    this.a.setRequestedOrientation(0);
   }
   
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public int b()
-  {
-    return this.b;
-  }
+  public void onReopenClick(TVK_NetVideoInfo.RecommadInfo paramRecommadInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdvl
  * JD-Core Version:    0.7.0.1
  */

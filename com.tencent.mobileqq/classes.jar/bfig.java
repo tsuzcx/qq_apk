@@ -1,43 +1,12 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.Date;
-
-final class bfig
-  extends bfik
+public abstract interface bfig
 {
-  bfig(bfif parambfif)
-  {
-    super(null);
-  }
+  public abstract void a(String paramString1, String paramString2, String paramString3);
   
-  public boolean a(String paramString, bfjd parambfjd)
-  {
-    if (this.a.size() >= this.a.maxSize())
-    {
-      bfif.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Cache not load completely.");
-      }
-      return false;
-    }
-    if (parambfjd.a > new Date().getTime())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Add cache entry, key: %s, %s", new Object[] { paramString, parambfjd.toString() }));
-      }
-      this.a.put(paramString, parambfjd);
-    }
-    for (;;)
-    {
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Discard expired entry, key: %s, %s", new Object[] { paramString, parambfjd.toString() }));
-      }
-    }
-  }
+  public abstract void b(String paramString1, String paramString2, String paramString3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfig
  * JD-Core Version:    0.7.0.1
  */

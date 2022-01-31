@@ -1,43 +1,45 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import java.util.HashSet;
 
 class bhqb
-  implements ModuleDownloadListener
+  implements View.OnClickListener
 {
-  bhqb(bhqa parambhqa, bhqd parambhqd) {}
+  bhqb(bhpy parambhpy) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void onClick(View paramView)
   {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadCanceled ", paramString });
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "onDownloadFailed ", paramString });
-    bhqa.a(this.jdField_a_of_type_Bhqa, false);
-    this.jdField_a_of_type_Bhqd.a(false);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("xmpcore.jar")) {
-      return;
+    int i = paramView.getId();
+    Object localObject;
+    if ((bhpy.a(this.a)) && ((bhpy.a(this.a) == null) || (!bhpy.a(this.a).contains(Integer.valueOf(i)))) && (bhpy.b(this.a) != -1) && (i != bhpy.b(this.a)))
+    {
+      localObject = (View)bhpy.a(this.a).get(bhpy.b(this.a));
+      ((View)localObject).findViewById(2131361916).setVisibility(8);
+      localObject = (TextView)((View)localObject).findViewById(2131361915);
+      bhpy.a(this.a, (TextView)localObject, false);
+      localObject = (View)bhpy.a(this.a).get(i);
+      ((View)localObject).findViewById(2131361916).setVisibility(0);
+      localObject = (TextView)((View)localObject).findViewById(2131361915);
+      bhpy.a(this.a, (TextView)localObject, true);
+      bhpy.a(this.a, i);
     }
-    QZLog.i("XMPCoreUtil", 4, new Object[] { "url = ", bhqa.a(), " onDownloadSucceed = ", bhqa.b() });
-    LocalMultiProcConfig.putString("xmp_core_file_md5", bhqa.b());
-    bhqa.a(this.jdField_a_of_type_Bhqa);
-    this.jdField_a_of_type_Bhqd.a(bhqa.a(this.jdField_a_of_type_Bhqa));
+    if (bhpy.a(this.a) != null) {
+      bhpy.a(this.a).OnClick(paramView, i);
+    }
+    if (bhpy.a(this.a) != null)
+    {
+      localObject = (TextView)paramView.findViewById(2131361915);
+      if ((localObject != null) && ((localObject instanceof TextView))) {
+        bhpy.a(this.a).a(paramView, i, ((TextView)localObject).getText().toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhqb
  * JD-Core Version:    0.7.0.1
  */

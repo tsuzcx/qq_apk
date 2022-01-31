@@ -2,7 +2,7 @@ package dov.com.tencent.biz.qqstory.takevideo.multivideo;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import bkkf;
+import bmvp;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -14,7 +14,7 @@ public abstract class DecodeRunnable
   protected int a;
   protected long a;
   protected String a;
-  protected WeakReference<bkkf> a;
+  protected WeakReference<bmvp> a;
   protected boolean a;
   protected int b;
   protected long b;
@@ -23,9 +23,9 @@ public abstract class DecodeRunnable
   protected int d;
   protected int e = -1;
   
-  public DecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bkkf parambkkf)
+  public DecodeRunnable(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, bmvp parambmvp)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambkkf);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmvp);
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_b_of_type_Long = (1000L * paramLong1);
     this.jdField_c_of_type_Long = (1000L * paramLong2);
@@ -97,9 +97,9 @@ public abstract class DecodeRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bkkf localbkkf = (bkkf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbkkf != null) {
-        localbkkf.a(paramInt);
+      bmvp localbmvp = (bmvp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbmvp != null) {
+        localbmvp.a(paramInt);
       }
     }
   }
@@ -108,9 +108,9 @@ public abstract class DecodeRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bkkf localbkkf = (bkkf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbkkf != null) {
-        localbkkf.a(paramInt, paramLong, paramBitmap);
+      bmvp localbmvp = (bmvp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbmvp != null) {
+        localbmvp.a(paramInt, paramLong, paramBitmap);
       }
     }
   }
@@ -118,25 +118,25 @@ public abstract class DecodeRunnable
   protected void a(List<Long> paramList)
   {
     if ((paramList == null) || (paramList.size() == 0)) {}
-    bkkf localbkkf;
+    bmvp localbmvp;
     do
     {
       do
       {
         return;
       } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localbkkf = (bkkf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localbkkf == null);
-    localbkkf.a(paramList);
+      localbmvp = (bmvp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localbmvp == null);
+    localbmvp.a(paramList);
   }
   
   protected void a(boolean paramBoolean)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bkkf localbkkf = (bkkf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbkkf != null) {
-        localbkkf.a(paramBoolean);
+      bmvp localbmvp = (bmvp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbmvp != null) {
+        localbmvp.a(paramBoolean);
       }
     }
   }
@@ -150,16 +150,16 @@ public abstract class DecodeRunnable
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      bkkf localbkkf = (bkkf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localbkkf != null) {
-        localbkkf.a();
+      bmvp localbmvp = (bmvp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbmvp != null) {
+        localbmvp.a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.multivideo.DecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

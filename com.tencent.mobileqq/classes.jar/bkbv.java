@@ -1,35 +1,82 @@
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
+import SWEET_NEW_COMM_SVR.sweet_comm_cfg_get_rsp;
+import SWEET_NEW_COMM_SVR.sweet_comm_cfg_item;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.Map;
 
 public class bkbv
+  extends bkbo
 {
-  public final int a;
-  public final Drawable a;
-  public final String a;
-  public final String b;
-  
-  public bkbv(@NonNull String paramString1, @NonNull String paramString2, Drawable paramDrawable, int paramInt)
+  private void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt;
+    if ((paramBoolean) && ((paramObject instanceof sweet_comm_cfg_item)))
+    {
+      paramObject = (sweet_comm_cfg_item)paramObject;
+      if (a() != null)
+      {
+        asdx localasdx = (asdx)a().a(153);
+        if (localasdx != null) {
+          localasdx.a(true, paramObject.wording, paramObject.dynamic_value, paramObject.url);
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (a() == null);
+      paramObject = (asdx)a().a(153);
+    } while (paramObject == null);
+    paramObject.a(false, null, null, null);
   }
   
-  public String toString()
+  public QQAppInterface a()
   {
-    StringBuilder localStringBuilder = new StringBuilder("SelectedItem{");
-    localStringBuilder.append("category='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", name='").append(this.b).append('\'');
-    localStringBuilder.append(", drawable=").append(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    localStringBuilder.append(", isDynamic=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append('}');
-    return localStringBuilder.toString();
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    return null;
+  }
+  
+  public QzoneExternalRequest a(Intent paramIntent)
+  {
+    return new bkbw(this, paramIntent);
+  }
+  
+  public void a(long paramLong)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("currentUin", paramLong);
+    a(localIntent);
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    boolean bool = false;
+    if (paramFromServiceMsg != null) {}
+    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
+    {
+      paramIntent = (sweet_comm_cfg_get_rsp)bjqk.a(paramFromServiceMsg.getWupBuffer(), "GetCommCfg");
+      if ((paramIntent != null) && (paramIntent.m_cfg_res != null))
+      {
+        paramIntent = (sweet_comm_cfg_item)paramIntent.m_cfg_res.get(new Long(1L));
+        if (paramIntent != null) {
+          bool = true;
+        }
+        a(bool, paramIntent);
+      }
+      return;
+    }
+    a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkbv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import akhp;
+import alzf;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -18,11 +18,11 @@ class TroopChatPie$37
     do
     {
       return;
-      akhp localakhp = (akhp)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+      alzf localalzf = (alzf)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
       String str = this.this$0.a().jdField_a_of_type_JavaLangString;
       if (!TextUtils.isEmpty(str))
       {
-        localakhp.t(str);
+        localalzf.t(str);
         return;
       }
     } while (!QLog.isColorLevel());
@@ -31,7 +31,7 @@ class TroopChatPie$37
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.37
  * JD-Core Version:    0.7.0.1
  */

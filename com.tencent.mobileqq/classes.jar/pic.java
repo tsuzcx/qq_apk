@@ -1,31 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import cooperation.liveroom.LiveRoomProxyActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 class pic
-  implements View.OnClickListener
+  implements pht<BEAN>
 {
-  pic(pia parampia, int paramInt, ram paramram, pau parampau) {}
+  pic(pia parampia) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, List<BEAN> paramList, int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_Int == 120) {
-      LiveRoomProxyActivity.open(this.jdField_a_of_type_Ram.a(), this.jdField_a_of_type_Pau.a().mSocialFeedInfo.a.c, "kandian feed click");
+    if (pia.a(this.a) != null)
+    {
+      if (!paramBoolean) {
+        break label69;
+      }
+      pia.a(this.a).a(paramList, true);
+      if (pia.a(this.a).a()) {
+        pia.a(this.a).h();
+      }
     }
-    rbr localrbr;
-    do
+    else
     {
       return;
-      localrbr = this.jdField_a_of_type_Ram.a();
-    } while (localrbr == null);
-    localrbr.a(paramView, this.jdField_a_of_type_Pau.a(), 2);
+    }
+    pia.a(this.a).g();
+    return;
+    label69:
+    QLog.i("ListPresenter", 2, "loadNextPage error, errorCode=" + paramInt + ", errorMsg= " + paramString);
+    pia.a(this.a).c(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pic
  * JD-Core Version:    0.7.0.1
  */

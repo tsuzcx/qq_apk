@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import bfwr;
-import bfws;
+import bhxo;
+import bhxp;
 
 public class ThemeLabelTextView
   extends TextView
-  implements bfws
+  implements bhxp
 {
-  bfwr a;
+  bhxo a;
   
   public ThemeLabelTextView(Context paramContext)
   {
@@ -37,7 +37,7 @@ public class ThemeLabelTextView
     setSupportMaskView(false);
   }
   
-  public void a(Canvas paramCanvas)
+  public void a_(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
   }
@@ -64,10 +64,10 @@ public class ThemeLabelTextView
     if (paramBoolean)
     {
       if (this.a == null) {
-        this.a = new bfwr();
+        this.a = new bhxo();
       }
       this.a.a(true);
-      setMaskShape(bfwr.c);
+      setMaskShape(bhxo.c);
     }
     while (this.a == null) {
       return;
@@ -77,7 +77,7 @@ public class ThemeLabelTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.ThemeLabelTextView
  * JD-Core Version:    0.7.0.1
  */

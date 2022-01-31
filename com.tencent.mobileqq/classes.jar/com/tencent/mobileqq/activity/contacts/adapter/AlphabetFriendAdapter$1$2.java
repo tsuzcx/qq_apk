@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import afpc;
+import ahmt;
 import com.tencent.qphone.base.util.QLog;
 
 class AlphabetFriendAdapter$1$2
@@ -15,12 +15,12 @@ class AlphabetFriendAdapter$1$2
     }
     this.a.this$0.b();
     this.a.this$0.c();
-    afpc.a(this.a.this$0);
+    ahmt.a(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.adapter.AlphabetFriendAdapter.1.2
  * JD-Core Version:    0.7.0.1
  */

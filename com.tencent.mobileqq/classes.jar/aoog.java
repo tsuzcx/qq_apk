@@ -1,43 +1,72 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
-class aoog
-  implements DialogInterface.OnClickListener
+public class aoog
+  extends aofy<aoof>
 {
-  aoog(aoof paramaoof, String paramString, apdc paramapdc, Bundle paramBundle) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    String str2 = "http://" + this.jdField_a_of_type_Aoof.a.h + ":" + this.jdField_a_of_type_Aoof.a.i + "/ftn_compress_getfile/rkey=" + this.jdField_a_of_type_Aoof.a.f + "&filetype=" + this.jdField_a_of_type_Aoof.a.b + "&path=";
-    if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, str2);
-    }
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString;
-    try
+    return 207;
+  }
+  
+  @NonNull
+  public aoof a(int paramInt)
+  {
+    return new aoof();
+  }
+  
+  @Nullable
+  public aoof a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
     {
-      String str1 = URLEncoder.encode(this.jdField_a_of_type_JavaLangString, "utf8");
-      paramDialogInterface = str1;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
-      {
-        localUnsupportedEncodingException.printStackTrace();
+      aoof localaoof = aoof.a(paramArrayOfaogf[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("WVWhiteListConfProcessor", 2, "onParsed  " + paramArrayOfaogf[0].a);
       }
+      return localaoof;
     }
-    paramDialogInterface = str2 + paramDialogInterface + "&";
-    this.jdField_a_of_type_Apdc.b(paramDialogInterface, this.jdField_a_of_type_AndroidOsBundle);
-    apue.a("0X80052CE");
+    return null;
+  }
+  
+  public Class<aoof> a()
+  {
+    return aoof.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aoof paramaoof)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WVWhiteListConfProcessor", 2, "onUpdate " + paramaoof.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoog
  * JD-Core Version:    0.7.0.1
  */

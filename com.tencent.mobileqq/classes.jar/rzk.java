@@ -1,44 +1,62 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class rzk
-  implements ohj
+public class rzk
+  implements smj
 {
-  rzk(rzh paramrzh) {}
+  public rzk(FastWebActivity paramFastWebActivity) {}
   
   public void a()
   {
-    if (rzh.a(this.a) != null) {
-      rzh.a(this.a).a();
-    }
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onPageExposure");
   }
   
-  public void a(int paramInt) {}
-  
-  public void a(boolean paramBoolean)
+  public void a(int paramInt)
   {
-    if (paramBoolean) {
-      return;
-    }
-    this.a.a(true);
-    rzh.a(this.a).c();
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onStateChange");
   }
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    switch (paramView.getId())
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onCustomAnimStart");
+  }
+  
+  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    FastWebActivity.a(this.a, true);
+    FastWebActivity.a(this.a, false);
+    FastWebActivity.b(this.a);
+    if ((paramInt2 != 3) && (paramInt2 != 5)) {
+      this.a.overridePendingTransition(0, 0);
+    }
+    if (paramInt2 == 5)
     {
-    default: 
-      return;
+      Intent localIntent = new Intent();
+      localIntent.setAction("float_layer_finsh_action");
+      this.a.sendBroadcast(localIntent);
     }
-    rzh.a(this.a).e();
-    this.a.a(false);
-    rzh.a(this.a).c();
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating mCommonSuspensionGestureLayout onPageClose type = " + paramInt2);
+  }
+  
+  public void b()
+  {
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onPopAnimStart");
+  }
+  
+  public void b(int paramInt)
+  {
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onPositionStateChange");
+  }
+  
+  public void c()
+  {
+    QLog.d(FastWebActivity.a(this.a), 2, "mFloating onPopAnimEnd");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzk
  * JD-Core Version:    0.7.0.1
  */

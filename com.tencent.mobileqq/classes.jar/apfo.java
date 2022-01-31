@@ -1,79 +1,53 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.text.TextUtils;
 
 public class apfo
-  implements awwr
 {
-  protected int a;
-  protected View a;
-  protected ImageView a;
-  protected TextView a;
-  protected TextView b;
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
   
   public apfo() {}
   
-  public apfo(ViewGroup paramViewGroup)
+  public apfo(long paramLong, int paramInt)
   {
-    this.jdField_a_of_type_Int = 2131562389;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
-    a();
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public View a()
+  public apfo(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.c = paramString3;
+    this.d = paramString4;
   }
   
-  public View a(String paramString)
+  public boolean a()
   {
-    return null;
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString));
   }
   
-  public ImageView a()
+  public String toString()
   {
-    return null;
-  }
-  
-  public TextView a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367776));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377350));
-    this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(ayku.a);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365042));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131377420).setVisibility(8);
-  }
-  
-  public ImageView b()
-  {
-    return this.jdField_a_of_type_AndroidWidgetImageView;
-  }
-  
-  public TextView b()
-  {
-    return null;
-  }
-  
-  public TextView c()
-  {
-    return this.b;
-  }
-  
-  public TextView d()
-  {
-    return null;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DoutuItem uuid:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", md5").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", fileId").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", url").append(this.c);
+    localStringBuilder.append(",key:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(",count:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",picUin:").append(this.d);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apfo
  * JD-Core Version:    0.7.0.1
  */

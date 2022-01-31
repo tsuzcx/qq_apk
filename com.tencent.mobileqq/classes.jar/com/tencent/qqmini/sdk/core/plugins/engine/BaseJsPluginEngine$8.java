@@ -5,8 +5,8 @@ import android.content.DialogInterface.OnDismissListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import bemx;
-import betc;
+import bgmn;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class BaseJsPluginEngine$8
   implements DialogInterface.OnDismissListener
@@ -15,8 +15,8 @@ class BaseJsPluginEngine$8
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    bemx localbemx = (bemx)paramDialogInterface;
-    Object localObject = localbemx.a();
+    bgmn localbgmn = (bgmn)paramDialogInterface;
+    Object localObject = localbgmn.a();
     if (localObject != null)
     {
       paramDialogInterface = ((Bundle)localObject).getString("key_event_name");
@@ -25,9 +25,9 @@ class BaseJsPluginEngine$8
     for (;;)
     {
       localObject = BaseJsPluginEngine.access$000(paramDialogInterface, (String)localObject);
-      boolean bool1 = localbemx.a();
-      boolean bool2 = localbemx.b();
-      betc.a("JsPluginEngine[AuthGuard]", "onDismiss eventName=" + paramDialogInterface + ",scopeName=" + (String)localObject + ",isConfirm=" + bool1 + ",isRefuse=" + bool2);
+      boolean bool1 = localbgmn.a();
+      boolean bool2 = localbgmn.b();
+      QMLog.d("JsPluginEngine[AuthGuard]", "onDismiss eventName=" + paramDialogInterface + ",scopeName=" + (String)localObject + ",isConfirm=" + bool1 + ",isRefuse=" + bool2);
       paramDialogInterface = BaseJsPluginEngine.access$500(this.this$0).obtainMessage(1);
       if (bool1)
       {
@@ -58,7 +58,7 @@ class BaseJsPluginEngine$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.engine.BaseJsPluginEngine.8
  * JD-Core Version:    0.7.0.1
  */

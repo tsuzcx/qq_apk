@@ -1,15 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
 
-public abstract interface bcrr
+public class bcrr
+  extends bcjt
 {
-  public abstract void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
+  public bcrr(TroopInteractGiftAnimationController.1.1 param1) {}
   
-  public abstract void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt);
+  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopInteractGiftAnimationController", 2, "startInteract: errorCode = " + paramInt);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcrr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.database.DataSetObserver;
+import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
 
 class mpm
-  implements View.OnClickListener
+  extends DataSetObserver
 {
-  mpm(mpk parammpk) {}
+  mpm(mpl parammpl, EffectCycleViewPager paramEffectCycleViewPager) {}
   
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    this.a.a(false, 1);
+    this.jdField_a_of_type_Mpl.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.jdField_a_of_type_Mpl.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mpm
  * JD-Core Version:    0.7.0.1
  */

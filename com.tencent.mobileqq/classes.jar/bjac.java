@@ -1,77 +1,45 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.os.Handler;
+import android.os.Message;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.1;
+import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2.2.2;
 
-class bjac
+public class bjac
+  extends bjkb
 {
-  private static final SharedPreferences a = ;
+  public bjac(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
   
-  static int a(@NonNull String paramString, int paramInt)
+  public void a()
   {
-    return a.getInt(paramString, paramInt);
+    Message localMessage = Message.obtain();
+    localMessage.what = 1000;
+    localMessage.arg1 = 1;
+    this.a.a.sendMessage(localMessage);
+    int i = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadSoTimeout", 60000);
+    this.a.a.sendEmptyMessageDelayed(1009, i);
   }
   
-  static long a(@NonNull String paramString, long paramLong)
+  public void a(float paramFloat)
   {
-    return a.getLong(paramString, paramLong);
+    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.1(this, paramFloat));
   }
   
-  @Nullable
-  static String a(@NonNull String paramString1, String paramString2)
+  public void a(int paramInt)
   {
-    return a.getString(paramString1, paramString2);
+    this.a.a.obtainMessage(1008).sendToTarget();
   }
   
-  static void a(@NonNull String paramString)
+  public void b()
   {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.remove(paramString);
-    localEditor.apply();
+    this.a.runOnUiThread(new QZoneLiveVideoDownLoadActivtyV2.2.2(this));
   }
   
-  static void a(@NonNull String paramString, int paramInt)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putInt(paramString, paramInt);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, long paramLong)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putLong(paramString, paramLong);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString1, String paramString2)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putString(paramString1, paramString2);
-    localEditor.apply();
-  }
-  
-  static void a(@NonNull String paramString, boolean paramBoolean)
-  {
-    SharedPreferences.Editor localEditor = a.edit();
-    localEditor.putBoolean(paramString, paramBoolean);
-    localEditor.apply();
-  }
-  
-  static boolean a(@NonNull String paramString)
-  {
-    return a.contains(paramString);
-  }
-  
-  static boolean a(@NonNull String paramString, boolean paramBoolean)
-  {
-    return a.getBoolean(paramString, paramBoolean);
-  }
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjac
  * JD-Core Version:    0.7.0.1
  */

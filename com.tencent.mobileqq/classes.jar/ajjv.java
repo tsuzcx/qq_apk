@@ -1,43 +1,27 @@
-import com.tencent.common.app.AppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ajjv
+public class ajjv
+  implements ajkq
 {
-  public int a;
-  public String a;
-  public final List<ajjw> a;
+  public ajjv(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public ajjv()
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    EditLocalVideoActivity.a(this.a, paramString);
+    EditLocalVideoActivity.g(this.a);
   }
   
-  public JSONObject a(String paramString, AppInterface paramAppInterface)
+  public void b()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramAppInterface == null)) {
-      return null;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((ajjw)localIterator.next()).a(paramString, localJSONObject, paramAppInterface);
-    }
-    return localJSONObject;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mClientId:").append(this.jdField_a_of_type_Int).append(" mCmdSSOName:").append(this.jdField_a_of_type_JavaLangString).append(" mParameters:").append(this.jdField_a_of_type_JavaUtilList);
-    return localStringBuilder.toString();
+    QQToast.a(this.a, 2131695262, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajjv
  * JD-Core Version:    0.7.0.1
  */

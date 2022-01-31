@@ -1,72 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.YTFace.model.FaceStatus;
 
 public class amwz
-  extends ampa<amwy>
 {
-  public int a()
-  {
-    return 207;
-  }
+  public int a = 3000;
+  public FaceStatus[] a;
   
-  @NonNull
-  public amwy a(int paramInt)
+  public String toString()
   {
-    return new amwy();
-  }
-  
-  @Nullable
-  public amwy a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
-    {
-      amwy localamwy = amwy.a(paramArrayOfamph[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVWhiteListConfProcessor", 2, "onParsed  " + paramArrayOfamph[0].a);
-      }
-      return localamwy;
-    }
-    return null;
-  }
-  
-  public Class<amwy> a()
-  {
-    return amwy.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amwy paramamwy)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVWhiteListConfProcessor", 2, "onUpdate " + paramamwy.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "ARCloudRecogReqFaceInfo{timeout = " + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwz
  * JD-Core Version:    0.7.0.1
  */

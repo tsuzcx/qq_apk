@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelZan;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-public final class auui
-  implements Parcelable.Creator<PersonalityLabelZan>
+public class auui
+  implements DialogInterface.OnClickListener
 {
-  public PersonalityLabelZan a(Parcel paramParcel)
-  {
-    return new PersonalityLabelZan(paramParcel);
-  }
+  public auui(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public PersonalityLabelZan[] a(int paramInt)
-  {
-    return new PersonalityLabelZan[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auui
  * JD-Core Version:    0.7.0.1
  */

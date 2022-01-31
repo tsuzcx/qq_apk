@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qdd;
+import qmz;
 
 public class SocializeFeedsInfo$UGCVoiceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<UGCVoiceInfo> CREATOR = new qdd();
+  public static final Parcelable.Creator<UGCVoiceInfo> CREATOR = new qmz();
   public int a;
   public String a;
   public boolean a;
@@ -37,7 +37,7 @@ public class SocializeFeedsInfo$UGCVoiceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import mqq.os.MqqHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
 
 public class qfa
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public qfa(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public qfa(ComponentSocialOperation paramComponentSocialOperation) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadInJoyDeliverVideoActivity.a(this.a).sendEmptyMessage(103);
-    ReadInJoyDeliverVideoActivity.b(this.a);
+    this.a.a.startAnimation(this.a.c);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qfa
  * JD-Core Version:    0.7.0.1
  */

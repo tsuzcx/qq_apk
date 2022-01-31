@@ -1,80 +1,51 @@
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
-import com.tencent.mobileqq.extendfriend.wiget.horseRaceLamp.HorseRaceLampVew;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import org.json.JSONObject;
 
 public class aojk
-  extends aoez
 {
-  public aojk(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
+  public static final String c = asiv.jdField_a_of_type_JavaLangString + "GameCenterMsgBean";
+  public int a;
+  public String a;
+  public String b = asin.c;
   
-  protected void a(int paramInt)
+  public aojk()
   {
-    asfl.a(this.a.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, ExtendFriendLimitChatMatchFragment.a(this.a).app);
+    this.jdField_a_of_type_JavaLangString = asin.b;
   }
   
-  protected void a(boolean paramBoolean1, ArrayList<aogn> paramArrayList, boolean paramBoolean2, int paramInt, ArrayList<String> paramArrayList1)
+  public static aojk a(aogf[] paramArrayOfaogf)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ExtendFriendLimitChatMatchFragment", 2, "onGetUnLimitBaseInfo suc:" + paramBoolean1);
-    }
-    if (paramBoolean1)
+    aojk localaojk = new aojk();
+    int i = 0;
+    for (;;)
     {
-      if (paramInt <= 0)
+      if (i < paramArrayOfaogf.length)
       {
-        QLog.e("ExtendFriendLimitChatMatchFragment", 2, "onlineCount  wrong");
-        if ((paramArrayList1 != null) && (paramArrayList1.size() > 0))
+        Object localObject = paramArrayOfaogf[i].jdField_a_of_type_JavaLangString;
+        try
         {
-          if (this.a.jdField_a_of_type_Aolh == null) {
-            break label260;
+          localObject = new JSONObject((String)localObject);
+          localaojk.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("gameMsgFuncSwitch");
+          localaojk.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("gameMsgListUrl");
+          localaojk.b = ((JSONObject)localObject).optString("gamePrefix");
+          QLog.i(c, 1, "[parse], mGraySwitch:" + localaojk.jdField_a_of_type_Int + ",url:" + localaojk.jdField_a_of_type_JavaLangString);
+          i += 1;
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            QLog.e(c, 1, localThrowable, new Object[0]);
           }
-          this.a.jdField_a_of_type_Aolh.a(paramArrayList1);
         }
-      }
-      for (;;)
-      {
-        if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-          break label294;
-        }
-        paramArrayList1 = new aolw();
-        paramArrayList1.a(paramArrayList);
-        paramInt = 0;
-        while (paramInt < paramArrayList.size())
-        {
-          localObject = (aogn)paramArrayList.get(paramInt);
-          if (!TextUtils.isEmpty(((aogn)localObject).a)) {
-            ExtendFriendLimitChatMatchFragment.a(this.a, ExtendFriendLimitChatMatchFragment.a(this.a) + ((aogn)localObject).a + ";");
-          }
-          paramInt += 1;
-        }
-        Object localObject = paramInt + BaseApplication.getContext().getResources().getString(2131698997);
-        if (ExtendFriendLimitChatMatchFragment.a(this.a) != null)
-        {
-          ExtendFriendLimitChatMatchFragment.a(this.a).setText((CharSequence)localObject);
-          break;
-        }
-        QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mMatchCountTxt is null");
-        break;
-        label260:
-        QLog.e("ExtendFriendLimitChatMatchFragment", 2, "mHeadsPanleView is null");
-      }
-      if (ExtendFriendLimitChatMatchFragment.a(this.a) != null) {
-        ExtendFriendLimitChatMatchFragment.a(this.a).setAdapter(paramArrayList1);
       }
     }
-    return;
-    label294:
-    QLog.e("ExtendFriendLimitChatMatchFragment", 2, "TagInfo size 0");
+    return localaojk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aojk
  * JD-Core Version:    0.7.0.1
  */

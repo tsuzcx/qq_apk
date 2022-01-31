@@ -1,23 +1,34 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agex
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  agex(ager paramager) {}
+  agex(aget paramaget, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((InputMethodManager)this.a.a.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if (paramInt == 1)
+    {
+      if (this.jdField_a_of_type_Int != 0) {
+        break label47;
+      }
+      this.jdField_a_of_type_Aget.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
+    }
+    for (;;)
+    {
+      aget.b(this.jdField_a_of_type_Aget, null);
+      return;
+      label47:
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Aget.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agex
  * JD-Core Version:    0.7.0.1
  */

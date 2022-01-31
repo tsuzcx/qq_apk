@@ -1,129 +1,55 @@
-import android.database.Cursor;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.drawable.Drawable;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import com.tencent.widget.XListView;
 
 public class ahbb
+  implements ahar
 {
-  public int a;
-  public long a;
-  public String a;
-  public JSONObject a;
-  public int b;
-  public long b;
-  protected String b;
+  public ahbb(AddContactViewPagerTroopFragment paramAddContactViewPagerTroopFragment) {}
   
-  protected ahbb(int paramInt1, long paramLong1, int paramInt2, String paramString1, long paramLong2, String paramString2)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
-  
-  protected static ahbb a(Cursor paramCursor)
-  {
-    if (paramCursor == null) {
-      return null;
+    if ((this.a.jdField_b_of_type_Boolean) && (AddContactViewPagerTroopFragment.a(this.a) != null)) {
+      AddContactViewPagerTroopFragment.b(this.a).a(this.a.b(), paramBoolean, null);
     }
-    int i1 = paramCursor.getColumnIndexOrThrow("no");
-    int m = paramCursor.getColumnIndexOrThrow("uin");
-    int n = paramCursor.getColumnIndexOrThrow("btype");
-    int i = paramCursor.getColumnIndexOrThrow("bid");
-    int j = paramCursor.getColumnIndexOrThrow("create_time");
-    int k = paramCursor.getColumnIndexOrThrow("ext");
-    i1 = paramCursor.getInt(i1);
-    long l1 = paramCursor.getLong(m);
-    m = paramCursor.getInt(n);
-    String str = paramCursor.getString(i);
-    long l2 = paramCursor.getLong(j);
-    paramCursor = paramCursor.getString(k);
-    if (QLog.isColorLevel()) {
-      QLog.i("NotifyMsgDBHelper", 2, "fromCursorOrThrow bId:" + str + " extJson:" + paramCursor);
-    }
-    return new ahbb(i1, l1, m, str, l2, paramCursor);
-  }
-  
-  public int a(String paramString, int paramInt)
-  {
-    a(false);
-    if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
-      return paramInt;
-    }
-    return this.jdField_a_of_type_OrgJsonJSONObject.optInt(paramString, paramInt);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    a(true);
-    try
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_OrgJsonJSONObject.put(paramString, paramInt);
-      return;
+      if (paramInt <= 0) {
+        break label73;
+      }
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
     }
-    catch (JSONException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    a(true);
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject.put(paramString1, paramString2);
-      return;
-    }
-    catch (JSONException paramString1)
-    {
-      while (!QLog.isColorLevel()) {}
-      paramString1.printStackTrace();
-    }
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_OrgJsonJSONObject != null) {}
-    label65:
+    label73:
+    Object localObject;
     do
     {
-      do
-      {
-        for (;;)
-        {
-          return;
-          if ((this.jdField_b_of_type_JavaLangString == null) || (this.jdField_b_of_type_JavaLangString.length() <= 0)) {
-            break label65;
-          }
-          try
-          {
-            this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(this.jdField_b_of_type_JavaLangString);
-            return;
-          }
-          catch (JSONException localJSONException)
-          {
-            if (QLog.isColorLevel())
-            {
-              localJSONException.printStackTrace();
-              return;
-            }
-          }
-          catch (Throwable localThrowable) {}
-        }
-      } while (!QLog.isColorLevel());
-      localThrowable.printStackTrace();
       return;
-    } while ((!paramBoolean) || (this.jdField_a_of_type_OrgJsonJSONObject != null));
-    this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
+      localObject = URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20191206115411_QbbYvjs7gs.png", null);
+      if ((localObject != null) && (1 != ((URLDrawable)localObject).getStatus())) {
+        ((URLDrawable)localObject).restartDownload();
+      }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131689704);
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131689710);
+      this.a.c.setText(2131689705);
+      this.a.c.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      this.a.c.setOnClickListener(new ahbc(this));
+      localObject = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getParent();
+    } while ((localObject == null) || (!(localObject instanceof ViewGroup)));
+    ((ViewGroup)localObject).setBackgroundResource(2130839216);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahbb
  * JD-Core Version:    0.7.0.1
  */

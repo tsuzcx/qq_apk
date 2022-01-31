@@ -1,7 +1,7 @@
 package cooperation.qzone.util;
 
-import bhqa;
-import bhqc;
+import bjrl;
+import bjrn;
 import cooperation.qzone.networkedmodule.QzoneModuleManager;
 
 public class XMPCoreUtil$2
@@ -9,11 +9,11 @@ public class XMPCoreUtil$2
 {
   public void run()
   {
-    if ((bhqa.b(this.this$0)) || (!bhqa.c(this.this$0))) {}
+    if ((bjrl.b(this.this$0)) || (!bjrl.c(this.this$0))) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        QzoneModuleManager.getInstance().downloadModule("xmpcore.jar", new bhqc(this));
+        QzoneModuleManager.getInstance().downloadModule("xmpcore.jar", new bjrn(this));
       }
       return;
     }
@@ -21,7 +21,7 @@ public class XMPCoreUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.util.XMPCoreUtil.2
  * JD-Core Version:    0.7.0.1
  */

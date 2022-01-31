@@ -1,49 +1,28 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import qqcircle.QQCircleFeedBase.StTabInfo;
 
-final class trz
-  implements bcww
+class trz
+  implements uab
 {
-  trz(String paramString, tpi paramtpi, trq paramtrq) {}
+  trz(trx paramtrx) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void a()
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction)) {
-      return;
+    if (trx.a(this.a) != null) {
+      trx.a(this.a, tqr.a(trx.a(this.a).a.urlInfo.get(), "authCampanyUrl"));
     }
-    switch (paramBaseResp.errCode)
-    {
-    case -3: 
-    case -1: 
-    default: 
-      if (this.jdField_a_of_type_Tpi != null) {
-        this.jdField_a_of_type_Tpi.b(this.jdField_a_of_type_Trq);
-      }
-      break;
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      if (this.jdField_a_of_type_Tpi != null)
-      {
-        this.jdField_a_of_type_Tpi.a(this.jdField_a_of_type_Trq);
-        continue;
-        if (this.jdField_a_of_type_Tpi != null)
-        {
-          this.jdField_a_of_type_Tpi.c(this.jdField_a_of_type_Trq);
-          continue;
-          if (this.jdField_a_of_type_Tpi != null) {
-            this.jdField_a_of_type_Tpi.b(this.jdField_a_of_type_Trq);
-          }
-        }
-      }
+  }
+  
+  public void b()
+  {
+    if (trx.a(this.a) != null) {
+      trx.a(this.a, tqr.a(trx.a(this.a).a.urlInfo.get(), "authSchoolUrl"));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trz
  * JD-Core Version:    0.7.0.1
  */

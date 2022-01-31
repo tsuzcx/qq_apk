@@ -1,21 +1,25 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeWatched;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
 
-public class tgo
-  extends syn
+class tgo
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public tgo(qqstory_service.RspMsgTabNodeWatched paramRspMsgTabNodeWatched)
-  {
-    super(paramRspMsgTabNodeWatched.result);
-  }
+  tgo(tgn paramtgn) {}
   
-  public String toString()
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    return "MsgTabNodeWatchedResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder().append("launch mini program ");
+    if (paramBoolean) {}
+    for (String str = "success";; str = "fail")
+    {
+      tlo.d("WSMiniAppHelper", str + ", bundle: " + paramBundle.toString());
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tgo
  * JD-Core Version:    0.7.0.1
  */

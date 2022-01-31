@@ -1,21 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
-class bixd
-  implements View.OnClickListener
+public final class bixd
 {
-  bixd(bixc parambixc) {}
-  
-  public void onClick(View paramView)
+  public static String a(Context paramContext)
   {
-    if ((this.a.a != null) && (bixc.a(this.a) != null)) {
-      bixc.a(this.a).a(paramView, this.a.a, bixc.a(this.a));
-    }
+    return paramContext.getSharedPreferences("SETTING", 0).getString("debug_h5_test_env", null);
+  }
+  
+  public static void a(Context paramContext, boolean paramBoolean, String paramString)
+  {
+    paramContext.getSharedPreferences("SETTING", 0).edit().putBoolean("debug_h5_test_mode", paramBoolean).putString("debug_h5_test_env", paramString).apply();
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return paramContext.getSharedPreferences("SETTING", 0).getBoolean("debug_h5_test_mode", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bixd
  * JD-Core Version:    0.7.0.1
  */

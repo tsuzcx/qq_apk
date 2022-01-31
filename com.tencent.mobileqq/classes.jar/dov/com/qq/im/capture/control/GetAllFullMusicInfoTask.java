@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.control;
 
 import android.text.TextUtils;
-import aukp;
-import aukr;
-import bjal;
-import bjav;
+import awbw;
+import awby;
+import bllv;
+import blmf;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
@@ -25,7 +25,7 @@ import org.json.JSONObject;
 public class GetAllFullMusicInfoTask
   extends ParallGroup
 {
-  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bjav.a(2);
+  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)blmf.a(2);
   private List<FlowMusic> jdField_a_of_type_JavaUtilList;
   private List<FlowMusic> b = new ArrayList();
   private String jdField_c_of_type_JavaLangString;
@@ -143,7 +143,7 @@ public class GetAllFullMusicInfoTask
       localObject1 = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a.a();
       try
       {
-        ((aukr)localObject1).a();
+        ((awby)localObject1).a();
         Iterator localIterator = this.b.iterator();
         while (localIterator.hasNext())
         {
@@ -153,13 +153,13 @@ public class GetAllFullMusicInfoTask
       }
       finally
       {
-        ((aukr)localObject1).b();
+        ((awby)localObject1).b();
       }
-      ((aukr)localObject1).b();
+      ((awby)localObject1).b();
       this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(4, true, this.b);
     }
     Object localObject1 = this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager;
-    QIMMusicConfigManager.b(bjal.a().getCurrentAccountUin());
+    QIMMusicConfigManager.b(bllv.a().getCurrentAccountUin());
   }
   
   public int a()
@@ -290,7 +290,7 @@ public class GetAllFullMusicInfoTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.control.GetAllFullMusicInfoTask
  * JD-Core Version:    0.7.0.1
  */

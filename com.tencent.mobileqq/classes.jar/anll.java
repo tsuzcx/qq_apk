@@ -1,23 +1,27 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
-
-public class anll
-  implements CompoundButton.OnCheckedChangeListener
+class anll
 {
-  public anll(DataReportViewer paramDataReportViewer) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    this.a.a = paramBoolean;
-    if (this.a.a) {
-      this.a.a();
-    }
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    this.d = null;
+    this.e = null;
+    this.f = null;
+    this.g = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anll
  * JD-Core Version:    0.7.0.1
  */

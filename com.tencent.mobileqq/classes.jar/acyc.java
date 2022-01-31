@@ -1,74 +1,37 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.activity.aio.PokePanel.3.1;
-import com.tencent.mobileqq.activity.aio.PokePanel.3.2;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
 public class acyc
-  extends VasQuickUpdateManager.CallBacker
+  extends zep
 {
-  public acyc(PokePanel paramPokePanel) {}
+  public acyc(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public zdw a(Activity paramActivity, zec paramzec)
   {
-    boolean bool3 = true;
-    boolean bool1 = true;
-    boolean bool2 = false;
-    if (paramLong == 21L)
-    {
-      if ((!paramString1.equals("poke.effectList")) || (paramInt1 != 0)) {
-        break label107;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.PokePanel", 2, "download vas poke list, refresh now.");
-      }
-      paramString1 = paramVasQuickUpdateManager.app;
-      ThreadManager.getUIHandler().post(new PokePanel.3.1(this, paramString1));
-      paramString1 = "";
-      paramString2 = "";
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramString2)) {
-        ThreadManager.getUIHandler().post(new PokePanel.3.2(this, paramString2, paramString1, bool1));
-      }
-      return;
-      label107:
-      if (paramString1.startsWith("poke.item.effect."))
-      {
-        paramString1 = paramString1.substring("poke.item.effect.".length(), paramString1.length());
-        if (paramInt1 != 0) {}
-        for (;;)
-        {
-          paramString2 = "poke.item.effect.";
-          break;
-          bool1 = false;
-        }
-      }
-      if (paramString1.startsWith("poke.item.res."))
-      {
-        paramString1 = paramString1.substring("poke.item.res.".length(), paramString1.length());
-        if (paramInt1 != 0) {}
-        for (bool1 = bool3;; bool1 = false)
-        {
-          paramString2 = "poke.item.res.";
-          break;
-        }
-      }
-      paramString1 = "";
-      paramString2 = "";
-      bool1 = bool2;
-    }
+    return super.a(paramActivity, paramzec);
+  }
+  
+  public zdy a(Activity paramActivity, zec paramzec)
+  {
+    this.a.a = new awkj((FriendProfilePicBrowserActivity)paramActivity, paramzec);
+    return this.a.a;
+  }
+  
+  public zec a(Activity paramActivity)
+  {
+    paramActivity = new avfg(this.a, FriendProfilePicBrowserActivity.a(this.a));
+    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
+    return paramActivity;
+  }
+  
+  public zed a(Activity paramActivity, zec paramzec)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acyc
  * JD-Core Version:    0.7.0.1
  */

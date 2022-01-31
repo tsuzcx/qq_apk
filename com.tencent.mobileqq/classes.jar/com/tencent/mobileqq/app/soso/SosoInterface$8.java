@@ -1,9 +1,16 @@
 package com.tencent.mobileqq.app.soso;
 
+import java.util.ArrayList;
+
 final class SosoInterface$8
   implements Runnable
 {
-  public void run() {}
+  public void run()
+  {
+    if (SosoInterface.a().size() == 0) {
+      SosoInterface.d();
+    }
+  }
 }
 
 

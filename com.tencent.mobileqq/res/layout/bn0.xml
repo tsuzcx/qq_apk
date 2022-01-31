@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbEntryBannerView android:id="@id/m9g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="18.0dip" />
     <FrameLayout android:orientation="vertical" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="115.0dip">
         <ImageView android:id="@id/ewe" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
         <FrameLayout android:id="@id/exd" android:layout_width="fill_parent" android:layout_height="fill_parent">

@@ -1,23 +1,20 @@
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedLog;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.15;
 
-class arix
-  implements CustomizedLog
+public class arix
+  implements DialogInterface.OnClickListener
 {
-  arix(arik paramarik) {}
+  public arix(VideoFilePresenter.15 param15) {}
   
-  public void onFlushLogs() {}
-  
-  public void onLog(int paramInt, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i(paramString1, 1, paramString2);
+    this.a.this$0.aJ_();
   }
-  
-  public void onUploadLogs() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arix
  * JD-Core Version:    0.7.0.1
  */

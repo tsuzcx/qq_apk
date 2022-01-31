@@ -1,33 +1,65 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.ad.tangram.canvas.download.AdCanvasDownloadListenerAdapter;
+import com.tencent.ad.tangram.canvas.download.IAdDownloader.Callback;
+import com.tencent.ad.tangram.canvas.views.canvas.components.appbutton.AdAppDownloadManager;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aahl
-  implements View.OnClickListener
+  implements AdCanvasDownloadListenerAdapter
 {
-  public aahl(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
+  private List<IAdDownloader.Callback> a = new CopyOnWriteArrayList();
   
-  public void onClick(View paramView)
+  public IAdDownloader.Callback getDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.isShowing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getWindow() != null)) {}
-    try
+    if ((this.a != null) && (this.a.size() > 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.dismiss();
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, -1, this.jdField_a_of_type_JavaLangString);
-      label58:
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a = null;
-      return;
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
+        if (((localCallback instanceof aahk)) && (((aahk)localCallback).a() == paramAdAppDownloadManager)) {
+          return localCallback;
+        }
+      }
     }
-    catch (Throwable paramView)
+    return null;
+  }
+  
+  public void removeDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  {
+    if ((this.a == null) || (paramAdAppDownloadManager == null)) {}
+    for (;;)
     {
-      break label58;
+      return;
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        IAdDownloader.Callback localCallback = (IAdDownloader.Callback)localIterator.next();
+        if ((localCallback instanceof aahk))
+        {
+          AdAppDownloadManager localAdAppDownloadManager = ((aahk)localCallback).a();
+          if ((localAdAppDownloadManager != null) && (localAdAppDownloadManager == paramAdAppDownloadManager)) {
+            this.a.remove(localCallback);
+          }
+        }
+      }
+    }
+  }
+  
+  public void setDownloadListener(AdAppDownloadManager paramAdAppDownloadManager)
+  {
+    if ((this.a != null) && (paramAdAppDownloadManager != null))
+    {
+      aahk localaahk = new aahk();
+      localaahk.a(paramAdAppDownloadManager);
+      this.a.add(localaahk);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahl
  * JD-Core Version:    0.7.0.1
  */

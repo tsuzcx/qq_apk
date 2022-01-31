@@ -1,18 +1,12 @@
-class aleu
-  extends akxk
+import com.tencent.mobileqq.app.QQAppInterface;
+
+public abstract interface aleu
 {
-  aleu(alet paramalet) {}
-  
-  public void a(alfv paramalfv)
-  {
-    if (alet.a(this.a) != null) {
-      alet.a(this.a).a(paramalfv);
-    }
-  }
+  public abstract void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aleu
  * JD-Core Version:    0.7.0.1
  */

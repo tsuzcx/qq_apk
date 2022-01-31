@@ -1,108 +1,143 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Looper;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialFragment;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialStatus;
+import java.lang.ref.WeakReference;
 
-public class aajy
-  extends akat
+public final class aajy
 {
-  public aajy(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  private aamd jdField_a_of_type_Aamd = new aajz(this);
+  private GdtInterstitialParams jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
   
-  public void a(boolean paramBoolean, String paramString, ayay paramayay)
+  public aajy(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams)
   {
-    if ((this.a.isFinishing()) || (TextUtils.isEmpty(paramString)) || (paramayay == null)) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onPushSubAccountMsg subUin" + paramString);
-      }
-    } while (!paramBoolean);
-    AssociatedAccountActivity.d(this.a, false);
+    this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams = paramGdtInterstitialParams;
+    if (aakb.a().a(paramContext)) {
+      aake.a().b(paramContext);
+    }
   }
   
-  public void a(boolean paramBoolean, String paramString, ayaz paramayaz)
+  private GdtInterstitialParams a()
   {
-    if ((this.a.isFinishing()) || (paramayaz == null) || (this.a.app == null) || (!TextUtils.equals(paramString, this.a.app.c()))) {}
+    return this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams;
+  }
+  
+  public void a(Activity paramActivity)
+  {
+    int i = 0;
+    boolean bool;
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      bool = false;
+    }
+    for (;;)
+    {
+      aanp.b("GdtInterstitialAd", String.format("close %b", new Object[] { Boolean.valueOf(bool) }));
+      Object localObject = a();
+      if (bool) {}
+      for (;;)
+      {
+        aaoc.b(paramActivity, (GdtInterstitialParams)localObject, i);
+        return;
+        if (!this.jdField_a_of_type_Boolean) {
+          break label166;
+        }
+        if (this.b)
+        {
+          bool = false;
+          break;
+        }
+        if (a() == null)
+        {
+          bool = false;
+          break;
+        }
+        this.b = true;
+        localObject = new Bundle();
+        ((Bundle)localObject).putString("IPC_ACTION", "ipc_interstitial_close");
+        ((Bundle)localObject).putString("IPC_TO_PROCESS_NAME", "com.tencent.mobileqq:tool");
+        ((Bundle)localObject).putString("TRACE_ID", a().a());
+        aama.a().a(paramActivity, new aamh((Bundle)localObject), new WeakReference(this.jdField_a_of_type_Aamd));
+        bool = true;
+        break;
+        i = 1;
+      }
+      label166:
+      bool = false;
+    }
+  }
+  
+  public void a(Activity paramActivity, int paramInt, Intent paramIntent)
+  {
+    aanp.b("GdtInterstitialAd", "onClose");
+    if (paramIntent == null) {}
+    paramIntent = (GdtInterstitialStatus)paramIntent.getParcelableExtra("interstitialStatus");
+    if (paramIntent == null) {}
     do
     {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onSubAccountThirdQQUnreadMsgNum mIsFromPull=" + this.a.jdField_b_of_type_Boolean + "  mPullReqNeedBackNum=" + this.a.jdField_a_of_type_Int + " isSuccess=" + paramBoolean + "  mainAccount=" + paramString + "  data=" + paramayaz);
-      }
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        AssociatedAccountActivity.a(this.a, paramBoolean, false);
+      aaoc.b(paramActivity, a(), paramIntent, paramInt);
+    } while (this.c);
+    try
+    {
+      if (this.c) {
         return;
       }
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.c = false;
-    } while (!paramBoolean);
-    AssociatedAccountActivity.a(this.a, paramayaz);
+    }
+    finally {}
+    this.c = true;
+    aaoc.c(paramActivity, a(), paramIntent, paramInt);
   }
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  public boolean a()
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
+    if ((!this.jdField_a_of_type_Boolean) && (a() != null)) {
+      return a().b();
     }
-    if (QLog.isColorLevel())
-    {
-      paramString1 = new StringBuilder().append("onSubAccountMsgNumConfirm isSuccess=").append(paramBoolean).append(" subUin=").append(paramString1).append(" set need2ConfirmMsgNum=");
-      if (paramBoolean) {
-        break label164;
-      }
+    return false;
+  }
+  
+  public boolean a(Activity paramActivity)
+  {
+    int i;
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      i = 1;
     }
-    label164:
-    for (paramBoolean = true;; paramBoolean = false)
+    for (;;)
     {
-      QLog.d("AssociatedAccountActivity", 2, paramBoolean + " nextAction=" + paramString2 + " mNeed2ConfirmMsgNum=" + this.a.jdField_b_of_type_Int);
-      if (!"sub.account.switchAccount".equals(paramString2)) {
+      aanp.b("GdtInterstitialAd", String.format("show %d", new Object[] { Integer.valueOf(i) }));
+      aaoc.a(paramActivity, a(), i);
+      if (i != 0) {
         break;
       }
-      paramString1 = this.a;
-      paramString1.jdField_b_of_type_Int -= 1;
-      if (this.a.jdField_b_of_type_Int <= 0)
+      return true;
+      if (!a())
       {
-        AssociatedAccountActivity.c(this.a, false);
-        AssociatedAccountActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString);
+        i = 1;
       }
-      if (this.a.jdField_b_of_type_Int >= 0) {
-        break;
+      else
+      {
+        int j = GdtInterstitialFragment.a(paramActivity, a());
+        i = j;
+        if (j == 0)
+        {
+          this.jdField_a_of_type_Boolean = true;
+          i = 0;
+        }
       }
-      this.a.jdField_b_of_type_Int = 0;
-      return;
     }
-  }
-  
-  public void b(boolean paramBoolean, String paramString, ayay paramayay)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (this.a.isFinishing()) || (paramayay == null)) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AssociatedAccountActivity", 2, "onGetSubAccountMsg subAccount=" + paramString + " mIsFromPull=" + this.a.jdField_b_of_type_Boolean + " isSuccess=" + paramBoolean + "  mPullReqNeedBackNum=" + this.a.jdField_a_of_type_Int);
-      }
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        AssociatedAccountActivity.a(this.a, paramBoolean, true);
-        return;
-      }
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.c = false;
-      if ((paramBoolean) && (paramayay.c))
-      {
-        AssociatedAccountActivity.b(this.a);
-        return;
-      }
-    } while (!paramBoolean);
-    AssociatedAccountActivity.f(this.a);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aajy
  * JD-Core Version:    0.7.0.1
  */

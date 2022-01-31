@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajss;
+import alkf;
 import android.content.Context;
 import android.content.IntentFilter;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
@@ -14,7 +14,7 @@ public class BaseActivity$1
   public void run()
   {
     int i = 0;
-    if (!SettingCloneUtil.readValue(this.this$0, null, this.this$0.getString(2131695284), "qqsetting_screenshot_key", false)) {}
+    if (!SettingCloneUtil.readValue(this.this$0, null, this.this$0.getString(2131695442), "qqsetting_screenshot_key", false)) {}
     for (;;)
     {
       if (i != 0) {
@@ -23,7 +23,7 @@ public class BaseActivity$1
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      BaseActivity.access$102(new ajss(null));
+      BaseActivity.access$102(new alkf(null));
       try
       {
         this.this$0.getApplicationContext().registerReceiver(BaseActivity.access$100(), localIntentFilter);

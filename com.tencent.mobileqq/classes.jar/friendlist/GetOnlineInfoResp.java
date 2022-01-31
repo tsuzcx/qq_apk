@@ -7,9 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class GetOnlineInfoResp
   extends JceStruct
 {
-  static int cache_eIconType = 0;
+  static int cache_eIconType;
   static int cache_eNetworkType;
   static int cache_result = 0;
+  static byte[] cache_vecMusicInfo;
   public long dwInterval = 30L;
   public long dwStatus = 20L;
   public long dwUin;
@@ -23,15 +24,19 @@ public final class GetOnlineInfoResp
   public String strTermDesc = "";
   public long uAbiFlag;
   public long uExtOnlineStatus;
+  public byte[] vecMusicInfo;
   
   static
   {
     cache_eNetworkType = 0;
+    cache_eIconType = 0;
+    cache_vecMusicInfo = (byte[])new byte[1];
+    ((byte[])cache_vecMusicInfo)[0] = 0;
   }
   
   public GetOnlineInfoResp() {}
   
-  public GetOnlineInfoResp(int paramInt1, short paramShort, long paramLong1, long paramLong2, long paramLong3, int paramInt2, int paramInt3, long paramLong4, long paramLong5, String paramString1, String paramString2, long paramLong6, int paramInt4)
+  public GetOnlineInfoResp(int paramInt1, short paramShort, long paramLong1, long paramLong2, long paramLong3, int paramInt2, int paramInt3, long paramLong4, long paramLong5, String paramString1, String paramString2, long paramLong6, int paramInt4, byte[] paramArrayOfByte)
   {
     this.result = paramInt1;
     this.errorCode = paramShort;
@@ -46,6 +51,7 @@ public final class GetOnlineInfoResp
     this.strCustomOnlineStatusDesc = paramString2;
     this.uExtOnlineStatus = paramLong6;
     this.iBatteryStatus = paramInt4;
+    this.vecMusicInfo = paramArrayOfByte;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -63,6 +69,7 @@ public final class GetOnlineInfoResp
     this.strCustomOnlineStatusDesc = paramJceInputStream.readString(10, false);
     this.uExtOnlineStatus = paramJceInputStream.read(this.uExtOnlineStatus, 11, false);
     this.iBatteryStatus = paramJceInputStream.read(this.iBatteryStatus, 12, false);
+    this.vecMusicInfo = ((byte[])paramJceInputStream.read(cache_vecMusicInfo, 13, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -84,11 +91,14 @@ public final class GetOnlineInfoResp
     }
     paramJceOutputStream.write(this.uExtOnlineStatus, 11);
     paramJceOutputStream.write(this.iBatteryStatus, 12);
+    if (this.vecMusicInfo != null) {
+      paramJceOutputStream.write(this.vecMusicInfo, 13);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     friendlist.GetOnlineInfoResp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import ajti;
-import auja;
+import alkv;
+import awad;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class MainFragment$19
@@ -11,13 +11,13 @@ class MainFragment$19
   
   public void run()
   {
-    auja localauja = (auja)MainFragment.a(this.this$0).getManager(319);
-    ((ajti)MainFragment.a(this.this$0).a(2)).C();
+    awad localawad = (awad)MainFragment.a(this.this$0).getManager(319);
+    ((alkv)MainFragment.a(this.this$0).a(2)).D();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MainFragment.19
  * JD-Core Version:    0.7.0.1
  */

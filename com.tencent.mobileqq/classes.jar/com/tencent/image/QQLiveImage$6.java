@@ -9,42 +9,35 @@ final class QQLiveImage$6
 {
   public void run()
   {
-    for (;;)
+    try
     {
-      try
+      QQLiveImage.mLockForImageList.lock();
+      if (QQLiveImage.access$200() != null)
       {
-        QQLiveImage.mLockForImageList.lock();
-        if (QQLiveImage.access$200() != null)
+        int i = 0;
+        while (i < QQLiveImage.access$200().size())
         {
-          int i = 0;
-          if (i < QQLiveImage.access$200().size())
+          QQLiveImage localQQLiveImage = (QQLiveImage)QQLiveImage.access$200().get(i);
+          if (localQQLiveImage != null)
           {
-            QQLiveImage localQQLiveImage = (QQLiveImage)QQLiveImage.access$200().get(i);
-            if (localQQLiveImage != null)
-            {
-              localQQLiveImage.resume();
-              QLog.i(QQLiveImage.TAG, 1, "resumeAll().... i " + i + ", ID: " + localQQLiveImage.ID);
-            }
-            i += 1;
-            continue;
+            localQQLiveImage.resume();
+            QLog.i(QQLiveImage.TAG, 1, "resumeAll().... i " + i + ", ID: " + localQQLiveImage.ID);
           }
+          i += 1;
         }
-        ReentrantLock localReentrantLock1;
-        ReentrantLock localReentrantLock2 = QQLiveImage.mLockForImageList;
       }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(QQLiveImage.TAG, 2, "resumeAll()()", localException);
-        }
-        localReentrantLock1 = QQLiveImage.mLockForImageList;
-        localReentrantLock1.unlock();
-        return;
+      return;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(QQLiveImage.TAG, 2, "resumeAll()()", localException);
       }
-      finally
-      {
-        QQLiveImage.mLockForImageList.unlock();
-      }
+      return;
+    }
+    finally
+    {
+      QQLiveImage.mLockForImageList.unlock();
     }
   }
 }

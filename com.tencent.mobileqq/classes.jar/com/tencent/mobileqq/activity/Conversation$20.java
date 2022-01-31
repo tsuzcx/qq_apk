@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
-import onh;
+import nrc;
 
 class Conversation$20
   implements Runnable
@@ -10,12 +9,12 @@ class Conversation$20
   
   public void run()
   {
-    onh.a(Conversation.a(this.this$0).getMeasuredHeight(), Conversation.a(this.this$0).getResources());
+    nrc.a().a(this.this$0.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.20
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.fpsreport;
 
-import aaae;
+import abrb;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import bbfv;
+import bdeq;
 import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class FPSSlideDetectListView
   extends SlideDetectListView
 {
   private long jdField_a_of_type_Long;
-  private aaae jdField_a_of_type_Aaae;
+  private abrb jdField_a_of_type_Abrb;
   private String jdField_a_of_type_JavaLangString;
   private boolean f;
   
@@ -24,8 +24,8 @@ public class FPSSlideDetectListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.jdField_a_of_type_Aaae != null) {
-      this.jdField_a_of_type_Aaae.b();
+    if (this.jdField_a_of_type_Abrb != null) {
+      this.jdField_a_of_type_Abrb.b();
     }
   }
   
@@ -35,23 +35,23 @@ public class FPSSlideDetectListView
     if (this.f)
     {
       this.f = false;
-      bbfv.a(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis());
+      bdeq.a(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis());
     }
   }
   
   public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_Aaae != null) {
-      this.jdField_a_of_type_Aaae.a(paramInt);
+    if (this.jdField_a_of_type_Abrb != null) {
+      this.jdField_a_of_type_Abrb.a(paramInt);
     }
   }
   
   public void setActTAG(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Aaae = new aaae();
-    this.jdField_a_of_type_Aaae.a(paramString);
+    this.jdField_a_of_type_Abrb = new abrb();
+    this.jdField_a_of_type_Abrb.a(paramString);
     setStartTime(SystemClock.uptimeMillis());
   }
   
@@ -63,7 +63,7 @@ public class FPSSlideDetectListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fpsreport.FPSSlideDetectListView
  * JD-Core Version:    0.7.0.1
  */

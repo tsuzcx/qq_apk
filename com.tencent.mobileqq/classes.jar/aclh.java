@@ -1,33 +1,32 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.AccountDetail;
 
 public class aclh
-  extends ajto
+  extends bcib
 {
-  public aclh(TroopRequestActivity paramTroopRequestActivity) {}
+  public aclh(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void onCardDownload(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.systemmsg.TroopRequestActivity", 2, "onCardDownload() isSuccess = " + paramBoolean + "  data:" + paramObject);
-    }
-    if (paramObject == null) {}
-    Card localCard;
-    do
+    if (paramBoolean)
     {
-      do
-      {
-        return;
-      } while ((!paramBoolean) || (!(paramObject instanceof Card)));
-      localCard = (Card)paramObject;
-    } while ((localCard.uin == null) || (!localCard.uin.equals(this.a.b)));
-    TroopRequestActivity.a(this.a, (Card)paramObject);
+      Message localMessage = Message.obtain();
+      localMessage.what = 16;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("uinname", paramAccountDetail.name);
+      localBundle.putString("extra_type", paramAccountDetail.summary);
+      localBundle.putLong("uin", paramLong);
+      localMessage.setData(localBundle);
+      this.a.a.sendMessage(localMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aclh
  * JD-Core Version:    0.7.0.1
  */

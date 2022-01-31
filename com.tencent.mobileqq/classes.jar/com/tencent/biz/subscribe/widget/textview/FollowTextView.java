@@ -10,10 +10,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import bbkk;
-import bcql;
-import bfpc;
-import bhpo;
+import bdje;
+import bhpy;
+import bjqz;
 import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.event.FollowUpdateEvent;
 import com.tencent.biz.subscribe.event.SimpleBaseEvent;
@@ -23,28 +22,29 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import sgg;
-import wkk;
-import wpt;
-import wpv;
-import wux;
-import wwp;
-import wwq;
-import wwr;
-import wws;
-import wwt;
-import xhb;
+import syb;
+import xzd;
+import yej;
+import yel;
+import yjq;
+import yli;
+import ylj;
+import ylk;
+import yll;
+import ylm;
+import yvu;
 
 public class FollowTextView
   extends TextView
-  implements View.OnClickListener, wpv
+  implements View.OnClickListener, yel
 {
   private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
   private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-  private wkk jdField_a_of_type_Wkk;
-  private wwt jdField_a_of_type_Wwt;
+  private xzd jdField_a_of_type_Xzd;
+  private ylm jdField_a_of_type_Ylm;
   protected boolean a;
   private volatile boolean b = true;
   private boolean c;
@@ -73,12 +73,12 @@ public class FollowTextView
     String str3;
     if (paramStFeed != null)
     {
-      if (bbkk.a(paramStFeed.id.get())) {
+      if (bdje.a(paramStFeed.id.get())) {
         break label100;
       }
       str1 = paramStFeed.id.get();
       str2 = paramStFeed.poster.id.get();
-      str3 = "auth_" + wux.a(a());
+      str3 = "auth_" + yjq.a(a());
       if (!paramBoolean) {
         break label114;
       }
@@ -87,7 +87,7 @@ public class FollowTextView
     label114:
     for (paramStFeed = "follow";; paramStFeed = "un_follow")
     {
-      xhb.a(str2, str3, paramStFeed, 0, 0, new String[] { "", "", str1 });
+      yvu.a(str2, str3, paramStFeed, 0, 0, new String[] { "", "", str1 });
       return;
       str1 = paramStFeed.poster.nick.get();
       break;
@@ -96,16 +96,16 @@ public class FollowTextView
   
   private void d()
   {
-    bfpc localbfpc = bfpc.a(getContext());
-    localbfpc.a(String.format(getContext().getResources().getString(2131695619), new Object[] { this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get() }));
-    localbfpc.a(2131696742, 3);
-    localbfpc.c(2131690596);
-    localbfpc.setOnDismissListener(new wwr(this));
-    localbfpc.a(new wws(this, localbfpc));
-    if (!localbfpc.isShowing())
+    bhpy localbhpy = bhpy.a(getContext());
+    localbhpy.a(String.format(getContext().getResources().getString(2131695777), new Object[] { this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get() }));
+    localbhpy.a(2131696917, 3);
+    localbhpy.c(2131690648);
+    localbhpy.setOnDismissListener(new ylk(this));
+    localbhpy.a(new yll(this, localbhpy));
+    if (!localbhpy.isShowing())
     {
       this.b = true;
-      localbfpc.show();
+      localbhpy.show();
     }
   }
   
@@ -149,7 +149,7 @@ public class FollowTextView
       if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get().equals(localFollowUpdateEvent.useId))
       {
         a(localFollowUpdateEvent.followStatus);
-        bhpo.a(getContext(), (FollowUpdateEvent)paramSimpleBaseEvent);
+        bjqz.a(getContext(), (FollowUpdateEvent)paramSimpleBaseEvent);
         SubscribeHybirdFragment.a(getContext(), (FollowUpdateEvent)paramSimpleBaseEvent);
       }
     }
@@ -172,22 +172,22 @@ public class FollowTextView
     Object localObject = (QQAppInterface)localObject;
     if (paramBoolean)
     {
-      sgg.a((AppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), new wwp(this), false, 0, true);
+      syb.a((AppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), new yli(this), false, 0, true);
       return;
     }
-    sgg.a((QQAppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), false, new wwq(this), true);
+    syb.a((QQAppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), false, new ylj(this), true);
   }
   
   protected boolean a()
   {
-    return (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (bbkk.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get()));
+    return (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (bdje.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get()));
   }
   
   protected void b()
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      i = 2130838649;
+      i = 2130838726;
       setBackgroundResource(i);
       if (!this.jdField_a_of_type_Boolean) {
         break label47;
@@ -197,9 +197,9 @@ public class FollowTextView
     for (int i = -9211021;; i = Color.parseColor("#bdbfc9"))
     {
       setTextColor(i);
-      setText(2131690655);
+      setText(2131690707);
       return;
-      i = 2130838647;
+      i = 2130838724;
       break;
     }
   }
@@ -208,7 +208,7 @@ public class FollowTextView
   {
     if (this.jdField_a_of_type_Boolean)
     {
-      i = 2130838736;
+      i = 2130838898;
       setBackgroundResource(i);
       if (!this.jdField_a_of_type_Boolean) {
         break label47;
@@ -218,9 +218,9 @@ public class FollowTextView
     for (int i = -1493172225;; i = -1)
     {
       setTextColor(i);
-      setText(2131690661);
+      setText(2131690713);
       return;
-      i = 2130838734;
+      i = 2130838896;
       break;
     }
   }
@@ -229,7 +229,7 @@ public class FollowTextView
   {
     super.onAttachedToWindow();
     if (!isInEditMode()) {
-      wpt.a().a(this);
+      yej.a().a(this);
     }
   }
   
@@ -241,11 +241,11 @@ public class FollowTextView
       return;
       if (!this.b)
       {
-        bcql.a(getContext(), "请勿重复操作", 0).a();
+        QQToast.a(getContext(), "请勿重复操作", 0).a();
         return;
       }
-      if (this.jdField_a_of_type_Wkk != null) {
-        this.jdField_a_of_type_Wkk.a();
+      if (this.jdField_a_of_type_Xzd != null) {
+        this.jdField_a_of_type_Xzd.a();
       }
       if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.followState.get() == 0)
       {
@@ -259,7 +259,7 @@ public class FollowTextView
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    wpt.a().b(this);
+    yej.a().b(this);
   }
   
   public void setExtraTypeInfo(ExtraTypeInfo paramExtraTypeInfo)
@@ -276,9 +276,9 @@ public class FollowTextView
     }
   }
   
-  public void setFollowStateChangeListener(wwt paramwwt)
+  public void setFollowStateChangeListener(ylm paramylm)
   {
-    this.jdField_a_of_type_Wwt = paramwwt;
+    this.jdField_a_of_type_Ylm = paramylm;
   }
   
   public void setIsInNightMode(boolean paramBoolean)
@@ -286,9 +286,9 @@ public class FollowTextView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setItemPreClickListener(wkk paramwkk)
+  public void setItemPreClickListener(xzd paramxzd)
   {
-    this.jdField_a_of_type_Wkk = paramwkk;
+    this.jdField_a_of_type_Xzd = paramxzd;
   }
   
   public void setNoneReportType(boolean paramBoolean)
@@ -323,7 +323,7 @@ public class FollowTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.FollowTextView
  * JD-Core Version:    0.7.0.1
  */

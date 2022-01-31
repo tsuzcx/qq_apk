@@ -309,6 +309,8 @@ public abstract interface IX5WebViewExtension
   
   public abstract void snapshotWholePage(Canvas paramCanvas, boolean paramBoolean1, boolean paramBoolean2);
   
+  public abstract void snapshotWholePage(Canvas paramCanvas, boolean paramBoolean1, boolean paramBoolean2, Runnable paramRunnable);
+  
   public abstract void stopPreLoad(String paramString);
   
   public abstract void trimMemory(int paramInt);
@@ -329,7 +331,7 @@ public abstract interface IX5WebViewExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,81 @@
 public class ayvm
 {
-  public int a;
+  public byte a;
+  public long a;
   public String a;
-  public boolean a;
-  public int b;
+  public short a;
+  public byte[] a;
+  public byte b;
+  public long b;
   public String b;
-  public boolean b;
-  public int c;
+  public short b;
+  public byte[] b;
+  public byte c;
+  public long c;
   public String c;
-  public int d;
-  public int e;
+  public byte[] c;
+  public long d;
+  public long e;
+  public long f;
+  public long g;
+  public long h;
+  public long i;
+  public long j;
+  public long k;
   
-  public String toString()
+  public ayvm(ayvl paramayvl, long paramLong, String paramString, byte paramByte1, byte paramByte2)
   {
-    return "PttSliceInfoBean{encodeType=" + this.jdField_a_of_type_Int + ", isfirst=" + this.jdField_a_of_type_Boolean + ", isLast=" + this.jdField_b_of_type_Boolean + ", voiceId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", offset=" + this.jdField_b_of_type_Int + ", vegPos='" + this.d + '\'' + ", md5='" + this.c + '\'' + ", chatType='" + this.e + '\'' + '}';
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Byte = paramByte1;
+    this.jdField_a_of_type_Byte = paramByte2;
+  }
+  
+  public ayvm(ayvl paramayvl, long paramLong1, String paramString, byte paramByte1, byte paramByte2, long paramLong2, long paramLong3, long paramLong4, long paramLong5, short paramShort, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte paramByte3, long paramLong6)
+  {
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Byte = paramByte1;
+    this.jdField_a_of_type_Byte = paramByte2;
+    this.g = paramLong2;
+    this.h = paramLong3;
+    this.i = paramLong4;
+    this.j = paramLong5;
+    this.jdField_b_of_type_Short = paramShort;
+    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte1;
+    this.jdField_c_of_type_ArrayOfByte = paramArrayOfByte2;
+    this.jdField_c_of_type_Byte = paramByte3;
+    this.k = paramLong6;
+  }
+  
+  public ayvm(ayvl paramayvl, long paramLong1, String paramString1, byte paramByte1, byte paramByte2, long paramLong2, String paramString2, long paramLong3, long paramLong4, short paramShort, long paramLong5, String paramString3, long paramLong6)
+  {
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_Byte = paramByte1;
+    this.jdField_a_of_type_Byte = paramByte2;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_Long = paramLong3;
+    this.d = paramLong4;
+    this.jdField_a_of_type_Short = paramShort;
+    this.e = paramLong5;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.f = paramLong6;
+  }
+  
+  public ayvm(ayvl paramayvl, long paramLong, String paramString, byte paramByte1, byte paramByte2, byte[] paramArrayOfByte)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Byte = paramByte1;
+    this.jdField_a_of_type_Byte = paramByte2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ayvm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import ahfb;
+import aizf;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForScribble;
 import com.tencent.qphone.base.util.QLog;
 
@@ -18,7 +18,7 @@ public class ScribbleBaseOperator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.ScribbleBaseOperator.1
  * JD-Core Version:    0.7.0.1
  */

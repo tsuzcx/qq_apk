@@ -1,30 +1,20 @@
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qqreader.ui.ForceUserUpdateActivity;
 
-public abstract interface biwx
+public class biwx
+  implements View.OnClickListener
 {
-  public abstract void a(VideoMaterial paramVideoMaterial);
+  public biwx(ForceUserUpdateActivity paramForceUserUpdateActivity) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b();
-  
-  public abstract void b(boolean paramBoolean);
-  
-  public abstract void c();
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
+  public void onClick(View paramView)
+  {
+    this.a.finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biwx
  * JD-Core Version:    0.7.0.1
  */

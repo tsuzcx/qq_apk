@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-class aweg
-  implements awfk
+public final class aweg
+  implements Parcelable.Creator<CompressInfo>
 {
-  aweg(aweb paramaweb) {}
-  
-  public void a(String paramString)
+  public CompressInfo a(Parcel paramParcel)
   {
-    if (SignatureHistoryFragment.b(this.a.a)) {
-      return;
-    }
-    SignatureHistoryFragment.a(this.a.a, paramString);
+    return new CompressInfo(paramParcel, null);
+  }
+  
+  public CompressInfo[] a(int paramInt)
+  {
+    return new CompressInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aweg
  * JD-Core Version:    0.7.0.1
  */

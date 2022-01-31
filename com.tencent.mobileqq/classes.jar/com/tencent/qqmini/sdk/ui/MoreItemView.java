@@ -6,14 +6,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import betc;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 public class MoreItemView
   extends LinearLayout
 {
-  private int jdField_a_of_type_Int;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private MoreItem jdField_a_of_type_ComTencentQqminiSdkUiMoreItem;
   
   public MoreItemView(Context paramContext)
   {
@@ -23,29 +23,29 @@ public class MoreItemView
   
   private void a()
   {
-    View localView = inflate(getContext(), 2131559306, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370418));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370420));
+    View localView = inflate(getContext(), 2131559355, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370724));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131370726));
   }
   
-  public int a()
+  public MoreItem a()
   {
-    return this.jdField_a_of_type_Int;
+    return this.jdField_a_of_type_ComTencentQqminiSdkUiMoreItem;
   }
   
   public void a(MoreItem paramMoreItem)
   {
     if (paramMoreItem == null)
     {
-      betc.c("MoreItemView", "bind. Failed to bind data. MoreItem is null");
+      QMLog.w("MoreItemView", "bind. Failed to bind data. MoreItem is null");
       return;
     }
     if ((paramMoreItem.b == 0) || (paramMoreItem.jdField_a_of_type_JavaLangString == null))
     {
-      betc.c("MoreItemView", "bind. Failed to bind data. MoreItem is null");
+      QMLog.w("MoreItemView", "bind. Failed to bind data. MoreItem is null");
       return;
     }
-    this.jdField_a_of_type_Int = paramMoreItem.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentQqminiSdkUiMoreItem = paramMoreItem;
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(getResources().getDrawable(paramMoreItem.b));
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramMoreItem.jdField_a_of_type_JavaLangString);
     if (paramMoreItem.jdField_a_of_type_Boolean) {}
@@ -58,7 +58,7 @@ public class MoreItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MoreItemView
  * JD-Core Version:    0.7.0.1
  */

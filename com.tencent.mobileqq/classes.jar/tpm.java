@@ -1,63 +1,122 @@
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.PollContainerLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
-import java.net.URI;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class tpm
-  implements ulb
+public class tpm
+  extends BaseAdapter
 {
-  tpm(tpl paramtpl, tej paramtej) {}
+  public tpm(tpk paramtpk) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public tpu a(int paramInt)
   {
-    paramString = BaseApplicationImpl.getContext();
-    Object localObject = new PollContainerLayout(paramString);
-    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Tej, -1, null);
-    FrameLayout localFrameLayout = new FrameLayout(paramString);
-    localFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramString.getResources(), paramBitmap));
-    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramBitmap.getWidth(), paramBitmap.getHeight()));
-    localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-    localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramBitmap.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramBitmap.getHeight(), 1073741824));
-    localFrameLayout.layout(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    ((PollContainerLayout)localObject).a(this.jdField_a_of_type_Tej, -1, null);
-    localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
-    Canvas localCanvas = new Canvas((Bitmap)localObject);
-    localCanvas.drawBitmap(paramBitmap, new Matrix(), null);
-    localFrameLayout.draw(localCanvas);
-    paramString = paramString.getCacheDir().getAbsolutePath() + "/" + System.currentTimeMillis() + ".png";
-    if (vxv.a((Bitmap)localObject, paramString)) {
-      this.jdField_a_of_type_Tpl.a("result", new File(paramString).toURI().toString());
+    if (tpk.a != null) {
+      return (tpu)tpk.a.get(paramInt);
+    }
+    return null;
+  }
+  
+  public int getCount()
+  {
+    if (tpk.a != null) {
+      return tpk.a.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1;
+    Object localObject2;
+    int i;
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(tpk.a()).inflate(2131559460, paramViewGroup, false);
+      paramViewGroup = new tpn(this);
+      localObject1 = paramView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).height = ((tpk.b() - aekt.a(110.0F, tpk.a().getResources())) / 3);
+      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "height of item is" + ((ViewGroup.LayoutParams)localObject1).height);
+      }
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131375420));
+      localObject2 = paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject2).width = ((tpk.c() - aekt.a(2.0F, tpk.a().getResources())) / 2);
+      ((ViewGroup.LayoutParams)localObject2).height = (((ViewGroup.LayoutParams)localObject2).width * 9 / 16);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      if (QLog.isColorLevel()) {
+        QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "height of image is" + ((ViewGroup.LayoutParams)localObject2).height);
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375436));
+      if (((ViewGroup.LayoutParams)localObject1).height - ((ViewGroup.LayoutParams)localObject2).height - aekt.a(40.0F, tpk.a().getResources()) > aekt.a(16.0F, tpk.a().getResources()))
+      {
+        i = 2;
+        if (QLog.isColorLevel()) {
+          QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, " number is" + i);
+        }
+        if ((Build.MANUFACTURER.toLowerCase().contains("meizu")) && (Build.VERSION.SDK_INT <= 16))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "this is meizu");
+          }
+          localObject1 = new LinearLayout.LayoutParams(-1, -2);
+          ((LinearLayout.LayoutParams)localObject1).setMargins(12, 0, 12, 1);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 10.0F);
+        }
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setMaxLines(i);
+        paramView.setTag(paramViewGroup);
+      }
     }
     for (;;)
     {
-      ((Bitmap)localObject).recycle();
-      tpl.a(this.jdField_a_of_type_Tpl, true);
-      return;
-      this.jdField_a_of_type_Tpl.a("result", this.jdField_a_of_type_Tpl.a.mVideoThumbnailUrl);
+      localObject1 = a(paramInt);
+      if (localObject1 != null)
+      {
+        localObject2 = ((tpu)localObject1).a;
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#000000"));
+        localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
+        localURLDrawableOptions.mFailedDrawable = localColorDrawable;
+        localObject2 = URLDrawable.getDrawable((String)localObject2, localURLDrawableOptions);
+        if ((localObject2 != null) && (((URLDrawable)localObject2).getStatus() == 2)) {
+          ((URLDrawable)localObject2).restartDownload();
+        }
+        paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((tpu)localObject1).b);
+        if (QLog.isColorLevel()) {
+          QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "recommendInfo position = " + paramInt + "; url =" + localObject2 + "; title = " + ((tpu)localObject1).b);
+        }
+      }
+      return paramView;
+      i = 1;
+      break;
+      paramViewGroup = (tpn)paramView.getTag();
     }
-  }
-  
-  public void a(String paramString, Throwable paramThrowable)
-  {
-    this.jdField_a_of_type_Tpl.a("result", this.jdField_a_of_type_Tpl.a.mVideoThumbnailUrl);
-    tpl.b(this.jdField_a_of_type_Tpl, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpm
  * JD-Core Version:    0.7.0.1
  */

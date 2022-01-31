@@ -1,188 +1,61 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.2;
-import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.3;
-import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.4;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Calendar;
-import mqq.os.MqqHandler;
+import android.widget.BaseAdapter;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public class sij
+public abstract class sij<T>
+  extends BaseAdapter
+  implements sil
 {
-  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private static bcww jdField_a_of_type_Bcww = new sik();
-  private static String jdField_a_of_type_JavaLangString;
+  private int jdField_a_of_type_Int;
+  private HashMap<T, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public static void a()
+  protected void a(T paramT)
   {
-    WXShareHelper.a().a(jdField_a_of_type_Bcww);
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    localHashMap.put(paramT, Integer.valueOf(i));
   }
   
-  public static void a(Activity paramActivity)
+  protected void a(List<T> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareImageUtils", 2, "launchFriendPicker path = " + jdField_a_of_type_JavaLangString);
-    }
-    if (jdField_a_of_type_JavaLangString == null)
-    {
-      QLog.e("ShareImageUtils", 1, "currentPath is null");
-      return;
-    }
-    Intent localIntent = new Intent(paramActivity, ForwardRecentActivity.class);
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("key_help_forward_pic", true);
-    localIntent.putExtras(localBundle);
-    localIntent.putExtra("forward_type", 1);
-    localIntent.putExtra("key_allow_multiple_forward_from_limit", false);
-    localIntent.putExtra("key_share_from_screen_shot", true);
-    localIntent.putExtra("key_share_from_screen_need_finish", true);
-    localIntent.setData(Uri.parse(jdField_a_of_type_JavaLangString));
-    paramActivity.startActivityForResult(localIntent, 3);
-  }
-  
-  public static void a(Context paramContext)
-  {
-    if (jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      QLog.e("ShareImageUtils", 1, "bitmap is null");
-      return;
-    }
-    ThreadManager.getFileThreadHandler().post(new ShareImageUtils.2(paramContext));
-  }
-  
-  public static void a(Bitmap paramBitmap)
-  {
-    jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-  }
-  
-  public static void a(BaseActivity paramBaseActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareImageUtils", 2, "shareToQzone");
-    }
-    if (jdField_a_of_type_JavaLangString == null)
-    {
-      QLog.e("ShareImageUtils", 1, "currentPath is null");
-      return;
-    }
-    paramBaseActivity = (QQAppInterface)paramBaseActivity.getAppRuntime();
-    Bundle localBundle = new Bundle();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(jdField_a_of_type_JavaLangString);
-    localBundle.putStringArrayList("images", localArrayList);
-    bgzl.a(paramBaseActivity, BaseApplicationImpl.getContext(), localBundle, null, 2);
-  }
-  
-  public static void a(String paramString)
-  {
-    jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public static void b()
-  {
-    jdField_a_of_type_JavaLangString = null;
-    jdField_a_of_type_AndroidGraphicsBitmap = null;
-    WXShareHelper.a().b(jdField_a_of_type_Bcww);
-  }
-  
-  public static void b(Activity paramActivity)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareImageUtils", 2, "ScreenShotShareFragment shareToWXFriend");
-    }
-    if ((jdField_a_of_type_JavaLangString == null) || (jdField_a_of_type_AndroidGraphicsBitmap == null))
-    {
-      QLog.e("ShareImageUtils", 1, "currentPath or bitmap is null");
-      return;
-    }
-    int i;
-    if (!WXShareHelper.a().a()) {
-      i = 2131720917;
-    }
-    for (;;)
-    {
-      if (i != -1)
-      {
-        bcql.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298865));
-        return;
-        if (!WXShareHelper.a().b()) {
-          i = 2131720918;
-        }
-      }
-      else
-      {
-        WxShareHelperFromReadInjoy.a().a(jdField_a_of_type_JavaLangString, jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
-        return;
-      }
-      i = -1;
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a(paramList.next());
     }
   }
   
-  public static void c(Activity paramActivity)
+  protected void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareImageUtils", 2, "shareToFriendCircle");
-    }
-    if ((jdField_a_of_type_JavaLangString == null) || (jdField_a_of_type_AndroidGraphicsBitmap == null))
-    {
-      QLog.e("ShareImageUtils", 1, "currentPath or bitmap is null");
-      return;
-    }
-    int i;
-    if (!WXShareHelper.a().a()) {
-      i = 2131720917;
-    }
-    for (;;)
-    {
-      if (i != -1)
-      {
-        bcql.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298865));
-        return;
-        if (!WXShareHelper.a().b()) {
-          i = 2131720918;
-        }
-      }
-      else
-      {
-        WxShareHelperFromReadInjoy.a().a(jdField_a_of_type_JavaLangString, jdField_a_of_type_AndroidGraphicsBitmap, 1, false);
-        return;
-      }
-      i = -1;
-    }
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
   }
   
-  private static void d()
+  public T getItem(int paramInt)
   {
-    String str = ajsd.aV + "/Tencent/QQ_Images/" + Calendar.getInstance().getTime() + ".png";
-    if (bbdx.a(jdField_a_of_type_AndroidGraphicsBitmap, str))
-    {
-      QLog.d("ShareImageUtils", 1, "save to sdcard success");
-      bbef.a(BaseApplicationImpl.getContext(), str);
-      str = BaseApplicationImpl.getContext().getString(2131695191) + " " + str;
-      ThreadManager.getUIHandler().post(new ShareImageUtils.3(str));
-      return;
+    return null;
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilHashMap.size())) {
+      return -1L;
     }
-    QLog.d("ShareImageUtils", 1, "save to sdcard fail");
-    ThreadManager.getUIHandler().post(new ShareImageUtils.4());
+    Object localObject = getItem(paramInt);
+    if (this.jdField_a_of_type_JavaUtilHashMap.get(localObject) != null) {
+      return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localObject)).intValue();
+    }
+    return paramInt;
+  }
+  
+  public final boolean hasStableIds()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sij
  * JD-Core Version:    0.7.0.1
  */

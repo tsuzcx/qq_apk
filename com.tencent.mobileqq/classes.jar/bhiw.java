@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.plugin.PluginRecord;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-public final class bhiw
-  implements Parcelable.Creator<PluginRecord>
+class bhiw
+  implements bhjt
 {
-  public PluginRecord a(Parcel paramParcel)
+  protected long a;
+  
+  public bhiw(bhis parambhis, long paramLong)
   {
-    return new PluginRecord(paramParcel);
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public PluginRecord[] a(int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return new PluginRecord[paramInt];
+    if (this.jdField_a_of_type_Long != 0L) {
+      QSecFramework.a(7L, this.jdField_a_of_type_Long, paramInt, 0L, paramArrayOfByte1, paramArrayOfByte2, null, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhiw
  * JD-Core Version:    0.7.0.1
  */

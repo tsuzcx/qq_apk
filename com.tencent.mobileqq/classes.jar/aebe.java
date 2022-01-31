@@ -1,28 +1,44 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aebe
-  implements View.OnClickListener
+  extends bcjt
 {
-  public aebe(StructingMsgItemBuilder paramStructingMsgItemBuilder, ImageView paramImageView, ChatMessage paramChatMessage, String paramString, long paramLong) {}
+  public aebe(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, String paramString)
   {
-    if (StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList error");
     }
-    StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
-    StructingMsgItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X800631E", "0X800631E", 0, 0, "" + this.jdField_a_of_type_Long, "", "", "");
+    TroopMemberListActivity.a(this.a, true);
+    if (TroopMemberListActivity.b(this.a))
+    {
+      paramString = this.a.a.obtainMessage(12, null);
+      this.a.a.sendMessage(paramString);
+    }
+  }
+  
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList");
+    }
+    TroopMemberListActivity.a(this.a, paramArrayOfLong1);
+    TroopMemberListActivity.b(this.a, paramArrayOfLong2);
+    TroopMemberListActivity.c(this.a, paramArrayOfLong3);
+    TroopMemberListActivity.a(this.a, true);
+    if (TroopMemberListActivity.b(this.a))
+    {
+      paramArrayOfLong1 = this.a.a.obtainMessage(12, null);
+      this.a.a.sendMessage(paramArrayOfLong1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aebe
  * JD-Core Version:    0.7.0.1
  */

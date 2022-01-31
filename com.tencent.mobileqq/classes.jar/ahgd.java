@@ -1,35 +1,61 @@
-import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import android.support.v4.util.SparseArrayCompat;
 
-class ahgd
-  implements InvocationHandler
+public class ahgd<T>
 {
-  public ahgk a;
+  SparseArrayCompat<ahgc<T>> a = new SparseArrayCompat();
   
-  public ahgd(ahgk paramahgk)
+  public int a()
   {
-    this.a = paramahgk;
+    return this.a.size();
   }
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public int a(T paramT, int paramInt)
   {
-    QLog.i("springHb_SpringEntryManager", 2, "callbackInvocationHandler method: " + paramMethod.getName());
-    try
+    int i = this.a.size() - 1;
+    while (i >= 0)
     {
-      paramObject = paramMethod.invoke(this.a, paramArrayOfObject);
-      return paramObject;
+      if (((ahgc)this.a.valueAt(i)).a(paramT, paramInt)) {
+        return this.a.keyAt(i);
+      }
+      i -= 1;
     }
-    catch (Throwable paramObject)
+    throw new IllegalArgumentException("No ItemViewDelegate added that matches position=" + paramInt + " in data source");
+  }
+  
+  public ahgc a(int paramInt)
+  {
+    return (ahgc)this.a.get(paramInt);
+  }
+  
+  public ahgd<T> a(ahgc<T> paramahgc)
+  {
+    int i = this.a.size();
+    if (paramahgc != null) {
+      this.a.put(i, paramahgc);
+    }
+    return this;
+  }
+  
+  public void a(ahgk paramahgk, T paramT, int paramInt)
+  {
+    int j = this.a.size();
+    int i = 0;
+    while (i < j)
     {
-      QLog.i("springHb_SpringEntryManager", 1, QLog.getStackTraceString(paramObject));
+      ahgc localahgc = (ahgc)this.a.valueAt(i);
+      if (localahgc.a(paramT, paramInt))
+      {
+        localahgc.a(paramahgk, paramT, paramInt);
+        return;
+      }
+      i += 1;
     }
-    return null;
+    throw new IllegalArgumentException("No ItemViewDelegateManager added that matches position=" + paramInt + " in data source");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgd
  * JD-Core Version:    0.7.0.1
  */

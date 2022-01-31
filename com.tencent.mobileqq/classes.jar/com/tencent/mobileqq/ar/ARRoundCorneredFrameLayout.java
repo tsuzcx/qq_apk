@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar;
 
-import actj;
+import aekt;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -30,7 +30,7 @@ public class ARRoundCorneredFrameLayout
   public ARRoundCorneredFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.a = actj.a(a(paramContext, paramAttributeSet), paramContext.getResources());
+    this.a = aekt.a(a(paramContext, paramAttributeSet), paramContext.getResources());
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(1, null);
     }
@@ -65,7 +65,7 @@ public class ARRoundCorneredFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRoundCorneredFrameLayout
  * JD-Core Version:    0.7.0.1
  */

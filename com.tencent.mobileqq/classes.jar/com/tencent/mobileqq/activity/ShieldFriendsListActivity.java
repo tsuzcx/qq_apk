@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import acbv;
-import acbw;
-import acbx;
-import ajxj;
-import ajya;
+import adtd;
+import adte;
+import adtf;
+import alox;
+import alpo;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -13,9 +13,9 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import baxy;
-import baxz;
-import bbdv;
+import bcws;
+import bcwt;
+import bdcq;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
@@ -26,12 +26,12 @@ import com.tencent.widget.XListView;
 
 public class ShieldFriendsListActivity
   extends IphoneTitleBarActivity
-  implements baxz
+  implements bcwt
 {
-  private acbx jdField_a_of_type_Acbx;
-  ajxj jdField_a_of_type_Ajxj = new acbv(this);
+  private adtf jdField_a_of_type_Adtf;
+  alox jdField_a_of_type_Alox = new adtd(this);
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private baxy jdField_a_of_type_Baxy;
+  private bcws jdField_a_of_type_Bcws;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
   
   private void a()
@@ -48,14 +48,14 @@ public class ShieldFriendsListActivity
       Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(i);
       if (localObject != null)
       {
-        localObject = (acbw)((View)localObject).getTag();
-        if ((localObject != null) && (paramLong == Long.valueOf(((acbw)localObject).jdField_a_of_type_JavaLangString).longValue()))
+        localObject = (adte)((View)localObject).getTag();
+        if ((localObject != null) && (paramLong == Long.valueOf(((adte)localObject).jdField_a_of_type_JavaLangString).longValue()))
         {
-          if (((acbw)localObject).jdField_a_of_type_ComTencentWidgetSwitch.isChecked() != paramBoolean)
+          if (((adte)localObject).jdField_a_of_type_ComTencentWidgetSwitch.isChecked() != paramBoolean)
           {
-            ((acbw)localObject).jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-            ((acbw)localObject).jdField_a_of_type_ComTencentWidgetSwitch.setChecked(paramBoolean);
-            ((acbw)localObject).jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(((acbw)localObject).jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+            ((adte)localObject).jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
+            ((adte)localObject).jdField_a_of_type_ComTencentWidgetSwitch.setChecked(paramBoolean);
+            ((adte)localObject).jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(((adte)localObject).jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
           }
           return true;
         }
@@ -67,7 +67,7 @@ public class ShieldFriendsListActivity
   
   private void b()
   {
-    if (this.jdField_a_of_type_Acbx.getCount() <= 0)
+    if (this.jdField_a_of_type_Adtf.getCount() <= 0)
     {
       this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -80,28 +80,28 @@ public class ShieldFriendsListActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131561113);
-    super.setTitle(2131699449);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131369306));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366310));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699450);
+    setContentView(2131561300);
+    super.setTitle(2131699801);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131369541));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366404));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699802);
     this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 17.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167033));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167084));
     paramBundle = new RelativeLayout.LayoutParams(-2, -2);
     paramBundle.addRule(13);
     this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramBundle);
-    this.jdField_a_of_type_Baxy = new baxy(this, this.app);
-    this.jdField_a_of_type_Baxy.a(this);
-    this.jdField_a_of_type_Acbx = new acbx(this, this.jdField_a_of_type_Baxy, this.app);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Acbx);
+    this.jdField_a_of_type_Bcws = new bcws(this, this.app);
+    this.jdField_a_of_type_Bcws.a(this);
+    this.jdField_a_of_type_Adtf = new adtf(this, this.jdField_a_of_type_Bcws, this.app);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Adtf);
     paramBundle = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetXListView.getLayoutParams();
-    paramBundle.topMargin = ((int)bbdv.a(this, 12.0F));
+    paramBundle.topMargin = ((int)bdcq.a(this, 12.0F));
     this.jdField_a_of_type_ComTencentWidgetXListView.setLayoutParams(paramBundle);
     a();
-    addObserver(this.jdField_a_of_type_Ajxj);
-    if (AppSetting.d) {
-      this.leftView.setContentDescription(ajya.a(2131714006));
+    addObserver(this.jdField_a_of_type_Alox);
+    if (AppSetting.c) {
+      this.leftView.setContentDescription(alpo.a(2131714378));
     }
     return true;
   }
@@ -109,10 +109,10 @@ public class ShieldFriendsListActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Baxy != null) {
-      this.jdField_a_of_type_Baxy.d();
+    if (this.jdField_a_of_type_Bcws != null) {
+      this.jdField_a_of_type_Bcws.d();
     }
-    removeObserver(this.jdField_a_of_type_Ajxj);
+    removeObserver(this.jdField_a_of_type_Alox);
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
@@ -131,10 +131,10 @@ public class ShieldFriendsListActivity
         Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1);
         if (localObject != null)
         {
-          localObject = (acbw)((View)localObject).getTag();
-          if ((localObject != null) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(((acbw)localObject).jdField_a_of_type_JavaLangString)))
+          localObject = (adte)((View)localObject).getTag();
+          if ((localObject != null) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(((adte)localObject).jdField_a_of_type_JavaLangString)))
           {
-            ((acbw)localObject).jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
+            ((adte)localObject).jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(new BitmapDrawable(paramBitmap));
             return;
           }
         }
@@ -145,7 +145,7 @@ public class ShieldFriendsListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ShieldFriendsListActivity
  * JD-Core Version:    0.7.0.1
  */

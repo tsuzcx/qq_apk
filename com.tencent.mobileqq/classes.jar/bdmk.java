@@ -1,222 +1,146 @@
-import android.content.Context;
-import android.os.Environment;
-import com.tencent.apkupdate.ApkUpdateListener;
-import com.tencent.apkupdate.ApkUpdateParam;
-import com.tencent.apkupdate.ApkUpdateSDK;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.UpdateManager.1;
-import com.tencent.open.downloadnew.UpdateManager.2;
-import java.io.File;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import mqq.os.MqqHandler;
 
-public class bdmk
-  implements ApkUpdateListener
+public final class bdmk
 {
-  protected static bdmk a;
-  public static final String a;
-  protected ConcurrentLinkedQueue<bdml> a;
+  private int jdField_a_of_type_Int = 16;
+  @Nullable
+  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  @Nullable
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  @Nullable
+  private final List<bdmm> jdField_a_of_type_JavaUtilList;
+  private int jdField_b_of_type_Int = 12544;
+  private final List<bdmo> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private int jdField_c_of_type_Int = -1;
+  private final List<bdml> jdField_c_of_type_JavaUtilList = new ArrayList();
   
-  static
+  public bdmk(@NonNull Bitmap paramBitmap)
   {
-    jdField_a_of_type_JavaLangString = bdmk.class.getName();
-  }
-  
-  protected bdmk()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    ApkUpdateSDK.getInstance().init(bcyb.a().a());
-    ApkUpdateSDK.getInstance().addListener(this);
-  }
-  
-  public static bdmk a()
-  {
-    try
-    {
-      if (jdField_a_of_type_Bdmk == null) {
-        jdField_a_of_type_Bdmk = new bdmk();
-      }
-      bdmk localbdmk = jdField_a_of_type_Bdmk;
-      return localbdmk;
+    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
+      throw new IllegalArgumentException("Bitmap is not valid");
     }
-    finally {}
+    this.jdField_c_of_type_JavaUtilList.add(bdmi.a);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_JavaUtilList = null;
+    this.jdField_b_of_type_JavaUtilList.add(bdmo.a);
+    this.jdField_b_of_type_JavaUtilList.add(bdmo.b);
+    this.jdField_b_of_type_JavaUtilList.add(bdmo.c);
+    this.jdField_b_of_type_JavaUtilList.add(bdmo.d);
+    this.jdField_b_of_type_JavaUtilList.add(bdmo.e);
+    this.jdField_b_of_type_JavaUtilList.add(bdmo.f);
   }
   
-  /* Error */
-  public static boolean a()
+  private Bitmap a(Bitmap paramBitmap)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 55	bdmk:jdField_a_of_type_Bdmk	Lbdmk;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnull +10 -> 18
-    //   11: iconst_1
-    //   12: istore_0
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: iload_0
-    //   17: ireturn
-    //   18: iconst_0
-    //   19: istore_0
-    //   20: goto -7 -> 13
-    //   23: astore_1
-    //   24: ldc 2
-    //   26: monitorexit
-    //   27: aload_1
-    //   28: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   12	8	0	bool	boolean
-    //   6	2	1	localbdmk	bdmk
-    //   23	5	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	7	23	finally
-  }
-  
-  public void a()
-  {
-    try
-    {
-      ApkUpdateSDK.getInstance().removeListener(this);
-      ApkUpdateSDK.getInstance().destory();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException = localException;
-        bdii.a(jdField_a_of_type_JavaLangString, "onDestroy>>>", localException);
-      }
-    }
-    finally {}
-  }
-  
-  public void a(bdml parambdml)
-  {
-    try
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambdml);
-      return;
-    }
-    finally
-    {
-      parambdml = finally;
-      throw parambdml;
-    }
-  }
-  
-  public void a(DownloadInfo paramDownloadInfo)
-  {
-    String str2 = paramDownloadInfo.e;
-    String str3 = paramDownloadInfo.l;
-    if ("mounted".equals(Environment.getExternalStorageState())) {}
+    double d2 = -1.0D;
     int i;
-    for (String str1 = Environment.getExternalStorageDirectory().getAbsolutePath() + bdle.jdField_a_of_type_JavaLangString + "newApkDir";; str1 = bcyb.a().a().getFilesDir().getAbsolutePath())
+    double d1;
+    if (this.jdField_b_of_type_Int > 0)
     {
-      File localFile = new File(str1);
-      if (!localFile.exists()) {
-        localFile.mkdirs();
+      i = paramBitmap.getWidth() * paramBitmap.getHeight();
+      d1 = d2;
+      if (i > this.jdField_b_of_type_Int) {
+        d1 = Math.sqrt(this.jdField_b_of_type_Int / i);
       }
-      str1 = str1 + "/" + str2 + ".newGen.apk";
-      bdii.b(jdField_a_of_type_JavaLangString, "patchNewApk>>>>>packageName=" + str2 + ", patchPath=" + str3 + ", newApkPath=" + str1);
-      i = ApkUpdateSDK.getInstance().patchNewApk(str2, str3, str1);
-      if (i != 0) {
-        break label421;
-      }
-      bdii.b(jdField_a_of_type_JavaLangString, ajya.a(2131715918));
-      paramDownloadInfo.l = str1;
-      if (("com.tencent.mobileqq".equals(paramDownloadInfo.e)) && (ajud.b((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
-        paramDownloadInfo.a = false;
-      }
-      if ((!"com.tencent.mobileqq".equals(paramDownloadInfo.e)) || (!bdle.a().b())) {
-        break label403;
-      }
-      paramDownloadInfo.j = bdle.a().a(paramDownloadInfo);
-      if (paramDownloadInfo.j == 0) {
-        break;
-      }
-      bdii.d(jdField_a_of_type_JavaLangString, "updateManager patchNewApk write code fail......");
-      paramDownloadInfo.a(-2);
-      bdle.a().e(paramDownloadInfo);
-      bdle.a().a(paramDownloadInfo, paramDownloadInfo.j, null);
-      return;
     }
-    paramDownloadInfo.a(4);
-    bdle.a().e(paramDownloadInfo);
-    bdii.c(jdField_a_of_type_JavaLangString, "info.path = " + paramDownloadInfo.l);
-    bdle.a().a(4, paramDownloadInfo);
-    if (paramDownloadInfo.a) {
-      bdle.a().c(paramDownloadInfo);
-    }
-    bdjr.a("300", paramDownloadInfo.h, paramDownloadInfo.c, paramDownloadInfo.o);
-    ThreadManager.getSubThreadHandler().post(new UpdateManager.1(this, str1, paramDownloadInfo));
-    return;
-    label403:
-    ThreadManager.getSubThreadHandler().post(new UpdateManager.2(this, str1, paramDownloadInfo));
-    return;
-    label421:
-    bdii.e(jdField_a_of_type_JavaLangString, ajya.a(2131715919) + i);
-    bdle.a().a(-24, paramDownloadInfo);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    bdii.b(jdField_a_of_type_JavaLangString, "checkUpdate>>> list size:" + paramList.size());
-    ApkUpdateSDK.getInstance().checkUpdate(paramList);
-  }
-  
-  public void b(bdml parambdml)
-  {
-    try
+    while (d1 <= 0.0D)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.remove(parambdml);
-      return;
-    }
-    finally
-    {
-      parambdml = finally;
-      throw parambdml;
-    }
-  }
-  
-  public void b(List<ApkUpdateParam> paramList)
-  {
-    bdii.b(jdField_a_of_type_JavaLangString, "checkUpdate>>> list size:" + paramList.size());
-    ApkUpdateSDK.getInstance().checkUpdateList(paramList);
-  }
-  
-  public void onCheckUpdateFailed(String paramString)
-  {
-    bdii.c(jdField_a_of_type_JavaLangString, "onCheckUpdateFailed>>>errMsg=" + paramString);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-    while (localIterator.hasNext()) {
-      ((bdml)localIterator.next()).a(paramString);
-    }
-  }
-  
-  public void onCheckUpdateSucceed(ArrayList paramArrayList)
-  {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.iterator();
-      while (localIterator.hasNext()) {
-        ((bdml)localIterator.next()).a(paramArrayList);
+      return paramBitmap;
+      d1 = d2;
+      if (this.jdField_c_of_type_Int > 0)
+      {
+        i = Math.max(paramBitmap.getWidth(), paramBitmap.getHeight());
+        d1 = d2;
+        if (i > this.jdField_c_of_type_Int) {
+          d1 = this.jdField_c_of_type_Int / i;
+        }
       }
     }
+    return Bitmap.createScaledBitmap(paramBitmap, (int)Math.ceil(paramBitmap.getWidth() * d1), (int)Math.ceil(d1 * paramBitmap.getHeight()), false);
+  }
+  
+  private int[] a(Bitmap paramBitmap)
+  {
+    int i = 0;
+    int j = paramBitmap.getWidth();
+    int k = paramBitmap.getHeight();
+    int[] arrayOfInt = new int[j * k];
+    paramBitmap.getPixels(arrayOfInt, 0, j, 0, 0, j, k);
+    if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
+      return arrayOfInt;
+    }
+    k = this.jdField_a_of_type_AndroidGraphicsRect.width();
+    int m = this.jdField_a_of_type_AndroidGraphicsRect.height();
+    paramBitmap = new int[k * m];
+    while (i < m)
+    {
+      System.arraycopy(arrayOfInt, (this.jdField_a_of_type_AndroidGraphicsRect.top + i) * j + this.jdField_a_of_type_AndroidGraphicsRect.left, paramBitmap, i * k, k);
+      i += 1;
+    }
+    return paramBitmap;
+  }
+  
+  @NonNull
+  public bdmi a()
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      Bitmap localBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      if (0 != 0) {
+        throw new NullPointerException();
+      }
+      localObject = this.jdField_a_of_type_AndroidGraphicsRect;
+      if ((localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) && (localObject != null))
+      {
+        double d = localBitmap.getWidth() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+        ((Rect)localObject).left = ((int)Math.floor(((Rect)localObject).left * d));
+        ((Rect)localObject).top = ((int)Math.floor(((Rect)localObject).top * d));
+        ((Rect)localObject).right = Math.min((int)Math.ceil(((Rect)localObject).right * d), localBitmap.getWidth());
+        ((Rect)localObject).bottom = Math.min((int)Math.ceil(d * ((Rect)localObject).bottom), localBitmap.getHeight());
+      }
+      int[] arrayOfInt = a(localBitmap);
+      int i = this.jdField_a_of_type_Int;
+      if (this.jdField_c_of_type_JavaUtilList.isEmpty())
+      {
+        localObject = null;
+        localObject = new bdmd(arrayOfInt, i, (bdml[])localObject);
+        if (localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap) {
+          localBitmap.recycle();
+        }
+        localObject = ((bdmd)localObject).a();
+        if (0 != 0) {
+          throw new NullPointerException();
+        }
+      }
+    }
+    for (;;)
+    {
+      localObject = new bdmi((List)localObject, this.jdField_b_of_type_JavaUtilList);
+      ((bdmi)localObject).a();
+      if (0 != 0) {
+        throw new NullPointerException();
+      }
+      return localObject;
+      localObject = (bdml[])this.jdField_c_of_type_JavaUtilList.toArray(new bdml[this.jdField_c_of_type_JavaUtilList.size()]);
+      break;
+      if (this.jdField_a_of_type_JavaUtilList == null) {
+        break label304;
+      }
+      localObject = this.jdField_a_of_type_JavaUtilList;
+    }
+    label304:
+    throw new AssertionError();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmk
  * JD-Core Version:    0.7.0.1
  */

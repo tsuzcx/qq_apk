@@ -1,61 +1,68 @@
-import android.util.SparseArray;
-import java.util.Stack;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class rnh
+public class rnh
 {
-  SparseArray<Integer> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  Stack<String> jdField_a_of_type_JavaUtilStack = new Stack();
-  SparseArray<Object> b = new SparseArray();
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private rez jdField_a_of_type_Rez;
+  private rmn jdField_a_of_type_Rmn;
+  private tap jdField_a_of_type_Tap;
   
-  public int a()
+  rnh(Activity paramActivity, rmn paramrmn)
   {
-    int j = -1;
-    int i = 3;
-    int k = 0;
-    if (k < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Rmn = paramrmn;
+    this.jdField_a_of_type_Tap = ((tap)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(126));
+    this.jdField_a_of_type_Rez = new rez(paramActivity, 1);
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_Rez.a();
+  }
+  
+  void a(VideoInfo paramVideoInfo)
+  {
+    int i = 0;
+    boolean bool;
+    if (!paramVideoInfo.p)
     {
-      if (this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(k) <= j) {
-        break label72;
+      bool = true;
+      paramVideoInfo.p = bool;
+      if (!paramVideoInfo.p) {
+        break label53;
       }
-      i = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(k);
-      j = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(k)).intValue();
+      i = paramVideoInfo.r + 1;
     }
     for (;;)
     {
-      int m = k + 1;
-      k = j;
-      j = i;
-      i = k;
-      k = m;
+      paramVideoInfo.r = i;
+      this.jdField_a_of_type_Tap.a(paramVideoInfo, paramVideoInfo.p);
+      return;
+      bool = false;
       break;
-      return i;
-      label72:
-      m = j;
-      j = i;
-      i = m;
+      label53:
+      if (paramVideoInfo.r > 0) {
+        i = paramVideoInfo.r - 1;
+      }
     }
   }
   
-  public int b()
+  void a(VideoInfo paramVideoInfo, int paramInt1, int paramInt2)
   {
-    int i = this.jdField_a_of_type_JavaUtilStack.size() - 1;
-    while (i >= 0)
-    {
-      String str = (String)this.jdField_a_of_type_JavaUtilStack.get(i);
-      if (rnd.a().equals(str)) {
-        return 3;
-      }
-      if (rnd.b().equals(str)) {
-        return 2;
-      }
-      i -= 1;
+    if (!paramVideoInfo.p) {
+      a(paramVideoInfo);
     }
-    return 1;
+    if ((paramInt1 >= 0) && (paramInt2 >= 0)) {
+      this.jdField_a_of_type_Rez.a(paramInt1, paramInt2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rnh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,22 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.hce.HcePluginInstallActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import java.io.File;
 
 public class bgku
-  implements OnPluginInstallListener
 {
-  public bgku(HcePluginInstallActivity paramHcePluginInstallActivity) {}
-  
-  public IBinder asBinder()
+  public static Uri a(Context paramContext, File paramFile)
   {
-    return null;
-  }
-  
-  public void onInstallBegin(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallBegin, pluginId:" + paramString);
-    }
-  }
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallDownloadProgress, pluginId:" + paramString + " offset:" + paramInt1 + " total: " + paramInt2);
-    }
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
-    }
-    bcql.a(this.a.getApplicationContext(), 2131695210, 0).a();
-    HcePluginInstallActivity.a(this.a, false);
-    this.a.finish();
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("HcePluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
-    }
-    if (HcePluginInstallActivity.a(this.a).isPlugininstalled("vfc_plugin.apk"))
-    {
-      HcePluginInstallActivity.a(this.a);
-      return;
-    }
-    bcql.a(this.a.getApplicationContext(), 2131695210, 0).a();
-    HcePluginInstallActivity.a(this.a, false);
-    this.a.finish();
+    Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+    paramFile = Uri.fromFile(paramFile);
+    localIntent.setData(paramFile);
+    paramContext.sendBroadcast(localIntent);
+    return paramFile;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgku
  * JD-Core Version:    0.7.0.1
  */

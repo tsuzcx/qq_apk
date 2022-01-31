@@ -1,20 +1,19 @@
-import android.app.Activity;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 class apth
-  implements bbws
 {
-  apth(aptd paramaptd, Activity paramActivity, int paramInt) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void callback(int paramInt)
-  {
-    if ((paramInt == 1) || (paramInt == 2)) {
-      aptd.a(this.jdField_a_of_type_Aptd, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
-    }
-  }
+  private apth(apte paramapte) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apth
  * JD-Core Version:    0.7.0.1
  */

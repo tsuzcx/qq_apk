@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.pendant;
 
-import agpt;
+import aikt;
 import com.tencent.qphone.base.util.QLog;
 
 class AvatarPendantActivity$1
@@ -12,7 +12,7 @@ class AvatarPendantActivity$1
   {
     try
     {
-      agpt.a(this.this$0);
+      aikt.a(this.this$0);
       return;
     }
     catch (Exception localException)
@@ -23,7 +23,7 @@ class AvatarPendantActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.1
  * JD-Core Version:    0.7.0.1
  */

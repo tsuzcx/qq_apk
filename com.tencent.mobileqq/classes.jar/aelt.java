@@ -1,35 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 
-public class aelt
-  extends aels
+public abstract class aelt
+  extends aemk
 {
-  public Bitmap a;
-  public AnimationView.AnimationInfo a;
-  
-  public aelt(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramRedPacketInfo.specialBackground;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo = paramRedPacketInfo.specailBackgroundAnimInfo;
-    }
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo != null) || (this.jdField_a_of_type_AndroidGraphicsBitmap != null);
-  }
+  public int a;
+  public View a;
+  public ansf a;
+  public BaseChatItemLayout a;
+  public String a;
+  public int b;
+  public View b;
+  public int c;
+  public int d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelt
  * JD-Core Version:    0.7.0.1
  */

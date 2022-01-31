@@ -1,5 +1,7 @@
 package com.tencent.gdtad.views.canvas;
 
+import aanp;
+import aapa;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,46 +12,47 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasView;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
+import com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasView;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import yxp;
-import yzb;
 
 public abstract class GdtCanvasBaseFragment
   extends PublicBaseFragment
 {
   protected static final String KEY_DATA = "data";
   private static final String TAG = "GdtCanvasBaseFragment";
-  private GdtCanvasView contentView;
+  private AdCanvasView contentView;
   
-  public static void start(Activity paramActivity, Class<? extends GdtCanvasBaseFragment> paramClass, GdtCanvasData paramGdtCanvasData)
+  public static void start(Activity paramActivity, Class<? extends GdtCanvasBaseFragment> paramClass, AdCanvasData paramAdCanvasData)
   {
-    start(paramActivity, paramClass, paramGdtCanvasData, null);
+    start(paramActivity, paramClass, paramAdCanvasData, null);
   }
   
-  public static void start(Activity paramActivity, Class<? extends GdtCanvasBaseFragment> paramClass, GdtCanvasData paramGdtCanvasData, Bundle paramBundle)
+  public static void start(Activity paramActivity, Class<? extends GdtCanvasBaseFragment> paramClass, AdCanvasData paramAdCanvasData, Bundle paramBundle)
   {
-    if ((paramActivity == null) || (paramGdtCanvasData == null) || (!paramGdtCanvasData.isValid()))
+    if ((paramActivity == null) || (paramAdCanvasData == null) || (!paramAdCanvasData.isValid()))
     {
-      yxp.b("GdtCanvasBaseFragment", "start error");
+      aanp.b("GdtCanvasBaseFragment", "start error");
       return;
     }
-    yxp.b("GdtCanvasBaseFragment", "start");
+    aanp.b("GdtCanvasBaseFragment", "start");
     Bundle localBundle = new Bundle();
     if ((paramBundle != null) && (!paramBundle.isEmpty())) {
       localBundle.putAll(paramBundle);
     }
-    localBundle.putSerializable("data", paramGdtCanvasData);
-    paramGdtCanvasData = new Intent();
-    paramGdtCanvasData.putExtra("public_fragment_window_feature", 1);
-    paramGdtCanvasData.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-    paramGdtCanvasData.putExtra("big_brother_source_key", "biz_src_ads");
-    paramGdtCanvasData.putExtras(localBundle);
-    if (TextUtils.isEmpty(paramGdtCanvasData.getStringExtra("big_brother_ref_source_key"))) {
-      yxp.d("GdtCanvasBaseFragment", "start gdt empty refId");
+    localBundle.putSerializable("data", paramAdCanvasData);
+    paramBundle = new Intent();
+    paramBundle.putExtra("public_fragment_window_feature", 1);
+    paramBundle.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+    paramBundle.putExtra("big_brother_source_key", "biz_src_ads");
+    paramBundle.putExtras(localBundle);
+    if (TextUtils.isEmpty(paramBundle.getStringExtra("big_brother_ref_source_key"))) {
+      aanp.d("GdtCanvasBaseFragment", "start gdt empty refId");
     }
-    PublicFragmentActivity.a(paramActivity, paramGdtCanvasData, paramClass);
+    PublicFragmentActivity.a(paramActivity, paramBundle, paramClass);
+    AdReporterForAnalysis.reportForStartActivity(paramActivity, paramAdCanvasData.ad, "GdtCanvasBaseFragment");
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -80,7 +83,7 @@ public abstract class GdtCanvasBaseFragment
   public boolean onBackEvent()
   {
     if (this.contentView != null) {
-      return this.contentView.a();
+      return this.contentView.back();
     }
     return false;
   }
@@ -92,15 +95,16 @@ public abstract class GdtCanvasBaseFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    if ((getArguments() == null) || (!(getArguments().getSerializable("data") instanceof GdtCanvasData))) {
+    AdReporterForAnalysis.reportForActivityStatusChanged(getActivity(), null, "GdtCanvasBaseFragment", 1);
+    if ((getArguments() == null) || (!(getArguments().getSerializable("data") instanceof AdCanvasData))) {
       return null;
     }
-    paramLayoutInflater = (GdtCanvasData)GdtCanvasData.class.cast(getArguments().getSerializable("data"));
+    paramLayoutInflater = (AdCanvasData)AdCanvasData.class.cast(getArguments().getSerializable("data"));
     if (!TextUtils.isEmpty(getArguments().getString("big_brother_ref_source_key"))) {
       paramLayoutInflater.sourceId = getArguments().getString("big_brother_ref_source_key");
     }
-    this.contentView = new GdtCanvasView(getActivity());
-    yzb.a(this.contentView);
+    this.contentView = new AdCanvasView(getActivity());
+    aapa.a(this.contentView);
     this.contentView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     this.contentView.setData(paramLayoutInflater);
     if ((getActivity() != null) && (getActivity().getWindow() != null)) {
@@ -112,7 +116,7 @@ public abstract class GdtCanvasBaseFragment
   public void onDestroy()
   {
     if (this.contentView != null) {
-      this.contentView.a();
+      this.contentView.onActivityDestroy();
     }
     super.onDestroy();
   }
@@ -120,7 +124,7 @@ public abstract class GdtCanvasBaseFragment
   public void onPause()
   {
     if (this.contentView != null) {
-      this.contentView.c();
+      this.contentView.onActivityPause();
     }
     super.onPause();
   }
@@ -129,13 +133,13 @@ public abstract class GdtCanvasBaseFragment
   {
     super.onResume();
     if (this.contentView != null) {
-      this.contentView.b();
+      this.contentView.onActivityResume();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.GdtCanvasBaseFragment
  * JD-Core Version:    0.7.0.1
  */

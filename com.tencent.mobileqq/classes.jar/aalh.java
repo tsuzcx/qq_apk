@@ -1,31 +1,98 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.gdtad.api.motivevideo.GdtMvDownloadBtnManager;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class aalh
-  extends Handler
+  implements bfka
 {
-  public aalh(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  private WeakReference<GdtMvDownloadBtnManager> a;
   
-  public void handleMessage(Message paramMessage)
+  public aalh(GdtMvDownloadBtnManager paramGdtMvDownloadBtnManager)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    this.a = new WeakReference(paramGdtMvDownloadBtnManager);
+  }
+  
+  public void installSucceed(String paramString1, String paramString2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramString1, paramString2);
     }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131720659);
+  }
+  
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  {
+    aanp.a("GdtMvDownloadBtnManager", "onDownloadCancel: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.d(paramDownloadInfo);
     }
-    this.a.a(paramMessage, 1);
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramDownloadInfo, paramInt1, paramString, paramInt2);
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    aanp.a("GdtMvDownloadBtnManager", "onDownloadFinish: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.c(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    aanp.a("GdtMvDownloadBtnManager", "onDownloadPause: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramDownloadInfo);
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    aanp.a("GdtMvDownloadBtnManager", "onDownloadUpdate: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.a(paramList);
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    aanp.a("GdtMvDownloadBtnManager", "onDownloadWait: ");
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.b(paramDownloadInfo);
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.c(paramString1, paramString2);
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    GdtMvDownloadBtnManager localGdtMvDownloadBtnManager = (GdtMvDownloadBtnManager)this.a.get();
+    if (localGdtMvDownloadBtnManager != null) {
+      localGdtMvDownloadBtnManager.b(paramString1, paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aalh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,28 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine.TagItemInfo;
+import java.util.UUID;
 
-public abstract interface bbql
+class bbql
+  implements amji
 {
-  public abstract boolean canUpdate(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2);
+  bbql(bbqi parambbqi, UUID paramUUID) {}
   
-  public abstract boolean deleteFiles(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString);
+  public void a(String paramString)
+  {
+    bbrc.d("TroopFileDataBaseProxy", bbrc.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[add]. table:" + paramString);
+  }
   
-  public abstract VasQuickUpdateEngine.TagItemInfo getItemInfo(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString);
+  public void a(String paramString, int paramInt)
+  {
+    bbrc.d("TroopFileDataBaseProxy", bbrc.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish[up]. table:" + paramString);
+  }
   
-  public abstract boolean isFileExists(@Nullable QQAppInterface paramQQAppInterface, long paramLong, String paramString);
+  public void b(String paramString, int paramInt)
+  {
+    bbrc.d("TroopFileDataBaseProxy", bbrc.c, "[" + this.jdField_a_of_type_JavaUtilUUID.toString() + "] deleteItem finish. table:" + paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbql
  * JD-Core Version:    0.7.0.1
  */

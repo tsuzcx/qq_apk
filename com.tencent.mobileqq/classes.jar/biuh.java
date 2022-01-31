@@ -1,73 +1,111 @@
-import android.support.annotation.Nullable;
-import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
+import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginStatic;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import mqq.app.AppRuntime;
 
-class biuh
-  implements bjos<birm>
+public class biuh
 {
-  biuh(biug parambiug, bist parambist) {}
-  
-  public void a(@Nullable birm parambirm)
+  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    QLog.d("AEGIFChunkPreviewFragment", 4, "On observe material download state");
-    if ((parambirm == null) || (biua.a(this.jdField_a_of_type_Biug.a) == null)) {}
-    label360:
-    for (;;)
+    if ((paramBaseApplicationImpl == null) || (paramString == null))
     {
-      return;
-      int i = this.jdField_a_of_type_Bist.jdField_a_of_type_Int + 1;
+      if (QLog.isColorLevel()) {
+        QLog.d(bitz.a, 2, "createQQPimRuntime() application == null || processName == null");
+      }
+      return null;
+    }
+    try
+    {
+      Class localClass1 = Class.forName("com.qqpim.application.QQPimPluginRuntime");
+      if (localClass1 != null) {}
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
       for (;;)
       {
-        if (i >= biua.a(this.jdField_a_of_type_Biug.a).size()) {
-          break label360;
-        }
-        bita localbita = (bita)biua.a(this.jdField_a_of_type_Biug.a).get(i);
-        if ((localbita != null) && (localbita.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null) && (localbita.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id.equals(parambirm.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.id)))
+        try
         {
-          if (localbita.jdField_b_of_type_Int != parambirm.jdField_a_of_type_Int) {
-            localbita.jdField_b_of_type_Int = parambirm.jdField_a_of_type_Int;
-          }
-          if (localbita.jdField_b_of_type_Int != 2) {
+          if (!QLog.isColorLevel()) {
             break;
           }
-          localbita.jdField_b_of_type_JavaLangString = birf.a().a(localbita.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial);
-          QLog.d("AEGIFChunkPreviewFragment", 4, new Object[] { "Downloaded material", "path===" + localbita.jdField_b_of_type_JavaLangString });
-          parambirm = new bivq();
-          parambirm.jdField_a_of_type_Int = i;
-          parambirm.jdField_a_of_type_JavaLangString = localbita.jdField_b_of_type_JavaLangString;
-          if ((localbita.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial != null) && ((localbita.jdField_a_of_type_JavaLangString == null) || (localbita.jdField_a_of_type_JavaLangString.equals("")))) {
-            if (localbita.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename") != null)
-            {
-              parambirm.jdField_b_of_type_JavaLangString = "";
-              parambirm.c = ((String)localbita.jdField_a_of_type_CameraXEFFECT_MATERIALS_GENERAL_DATASTRUCTMetaMaterial.additionalFields.get("savename"));
-            }
-          }
-          for (;;)
-          {
-            biua.a(this.jdField_a_of_type_Biug.a).a(parambirm);
-            localbita.jdField_a_of_type_Int = 12;
-            biua.a(this.jdField_a_of_type_Biug.a).notifyItemChanged(i);
-            return;
-            parambirm.jdField_b_of_type_JavaLangString = "";
-            parambirm.c = "";
-            continue;
-            if (localbita.jdField_a_of_type_JavaLangString == null) {
-              parambirm.jdField_b_of_type_JavaLangString = "";
-            } else {
-              parambirm.jdField_b_of_type_JavaLangString = localbita.jdField_a_of_type_JavaLangString;
-            }
-          }
+          QLog.d(bitz.a, 2, "createQQPimRuntime() cls == null");
         }
-        i += 1;
+        catch (ClassNotFoundException paramBaseApplicationImpl)
+        {
+          ClassLoader localClassLoader;
+          paramBaseApplicationImpl.printStackTrace();
+        }
+        localClassNotFoundException = localClassNotFoundException;
+        localClassLoader = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "qqpim_plugin.apk");
+        Class localClass2 = localClassLoader.loadClass("com.qqpim.application.QQPimPluginRuntime");
+        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
+        continue;
+        do
+        {
+          return null;
+          if (QLog.isColorLevel()) {
+            QLog.d(bitz.a, 2, "createQQPimRuntime() 1 ");
+          }
+          paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { BaseApplicationImpl.class, String.class }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
+        } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
+        if (QLog.isColorLevel()) {
+          QLog.d(bitz.a, 2, "createQQPimRuntime() succ");
+        }
+        paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
+        return paramBaseApplicationImpl;
       }
     }
+    catch (IllegalArgumentException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (IllegalAccessException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InstantiationException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (InvocationTargetException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (NoSuchMethodException paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    catch (Exception paramBaseApplicationImpl)
+    {
+      for (;;)
+      {
+        paramBaseApplicationImpl.printStackTrace();
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biuh
  * JD-Core Version:    0.7.0.1
  */

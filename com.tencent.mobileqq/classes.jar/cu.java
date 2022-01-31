@@ -1,40 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.dataline.activities.PrinterSubOptionActivity;
 
 public class cu
-  implements DialogInterface.OnClickListener
 {
-  public cu(LiteActivity paramLiteActivity, List paramList) {}
+  public int a;
+  public long a;
+  public String a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public cu(PrinterSubOptionActivity paramPrinterSubOptionActivity, int paramInt, long paramLong, String paramString)
   {
-    ajum localajum = (ajum)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
-    localajum.b(113);
-    localajum.a(116);
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-      if ((localDataLineMsgRecord.fileMsgStatus == 1L) && (localDataLineMsgRecord.strMoloKey != null)) {
-        fc.f(this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app);
-      }
-      localArrayList.add(Long.valueOf(localDataLineMsgRecord.sessionid));
-    }
-    localajum.a(localArrayList);
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.notifyDataSetChanged();
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cu
  * JD-Core Version:    0.7.0.1
  */

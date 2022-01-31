@@ -1,21 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.4;
+import android.content.Intent;
+import java.util.Set;
 
 public class arvw
-  implements DialogInterface.OnClickListener
+  extends arxa
 {
-  public arvw(LocationDialogUtil.4 param4) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public arvw(Intent paramIntent)
   {
-    this.a.a.b();
-    axqy.b(null, "CliOper", "", "", "0X800A967", "0X800A967", 0, 0, "0", "0", "0", "");
+    super(paramIntent);
+  }
+  
+  protected void a()
+  {
+    if (k()) {
+      this.a.add(d);
+    }
+    if (l()) {
+      this.a.add(c);
+    }
+    if (m()) {
+      this.a.add(b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arvw
  * JD-Core Version:    0.7.0.1
  */

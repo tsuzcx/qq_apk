@@ -1,12 +1,23 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 
-public abstract interface bgkk
+public class bgkk
 {
-  public abstract void a(Bundle paramBundle);
+  private static Handler a = new Handler(Looper.getMainLooper());
+  
+  public static void a(Runnable paramRunnable)
+  {
+    a.post(paramRunnable);
+  }
+  
+  public static void a(Runnable paramRunnable, long paramLong)
+  {
+    a.postDelayed(paramRunnable, paramLong);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgkk
  * JD-Core Version:    0.7.0.1
  */

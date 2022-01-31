@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ProfileCardExtendFriendView;
 
-class beoc
-  implements View.OnClickListener
+public class beoc
+  implements bdrl
 {
-  beoc(beny parambeny) {}
+  public beoc(ProfileCardExtendFriendView paramProfileCardExtendFriendView) {}
   
-  public void onClick(View paramView)
+  public void load(bdpm parambdpm)
   {
-    this.a.dismiss();
-    if (beny.a(this.a) != null) {
-      beny.a(this.a).onDismiss();
-    }
+    this.a.setETTextColorFromClothes(parambdpm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beoc
  * JD-Core Version:    0.7.0.1
  */

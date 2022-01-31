@@ -1,35 +1,34 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import mqq.app.Foreground;
 
 public class aluv
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public aluv(ArkIDESettingFragment paramArkIDESettingFragment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static String a()
   {
-    if (paramBoolean)
+    Activity localActivity = Foreground.getTopActivity();
+    String str;
+    if (localActivity != null)
     {
-      AboutActivity.a(5);
-      if (!this.a.b().equals("close")) {
-        this.a.b();
+      str = localActivity.getClass().getName();
+      if ((localActivity instanceof SplashActivity))
+      {
+        if (SplashActivity.a == 1) {
+          return str + "_" + ((SplashActivity)localActivity).a();
+        }
+        return str + "_ChatFragment";
       }
-      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is opened and IDE debug is also open ,state=%s", new Object[] { AboutActivity.b() }));
-      ArkAppCenter.a(true);
-      return;
     }
-    AboutActivity.a(0);
-    this.a.c();
-    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ArkDebug switch is closed and IDE debug is also closed,state=%s", new Object[] { AboutActivity.b() }));
-    ArkAppCenter.a(false);
+    else
+    {
+      return "Null";
+    }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aluv
  * JD-Core Version:    0.7.0.1
  */

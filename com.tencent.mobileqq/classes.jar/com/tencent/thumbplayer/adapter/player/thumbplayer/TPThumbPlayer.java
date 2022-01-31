@@ -24,6 +24,7 @@ import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamLong;
 import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamQueueInt;
 import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamQueueString;
 import com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamString;
+import com.tencent.thumbplayer.api.TPPlayerMsg.TPAudioTrackInfo;
 import com.tencent.thumbplayer.api.TPProgramInfo;
 import com.tencent.thumbplayer.api.TPSubtitleData;
 import com.tencent.thumbplayer.api.TPTrackInfo;
@@ -43,6 +44,7 @@ import com.tencent.thumbplayer.core.player.TPNativePlayer;
 import com.tencent.thumbplayer.core.player.TPNativePlayerInitConfig;
 import com.tencent.thumbplayer.core.player.TPNativePlayerProgramInfo;
 import com.tencent.thumbplayer.utils.TPLogUtil;
+import java.util.List;
 import java.util.Map;
 
 public class TPThumbPlayer
@@ -360,7 +362,7 @@ public class TPThumbPlayer
     return localTPTrackInfo;
   }
   
-  public void addAudioTrackSource(String paramString1, String paramString2)
+  public void addAudioTrackSource(String paramString1, String paramString2, List<TPOptionalParam> paramList)
   {
     TPLogUtil.i(TAG, "addAudioTrackSource");
     if (this.mPlayer == null)
@@ -368,7 +370,13 @@ public class TPThumbPlayer
       TPLogUtil.w(TAG, "player has released, return");
       return;
     }
-    this.mPlayer.addAudioTrackSource(paramString1, paramString2);
+    paramList = new TPPlayerMsg.TPAudioTrackInfo();
+    paramList.audioTrackUrl = paramString1;
+    paramString1 = this.mPlayerListenerReps;
+    if (paramString1 != null) {
+      paramString1.onInfo(1012, 0L, 0L, paramList);
+    }
+    this.mPlayer.addAudioTrackSource(paramList.proxyUrl, paramString2);
   }
   
   public void addSubtitleSource(String paramString1, String paramString2, String paramString3)
@@ -393,7 +401,7 @@ public class TPThumbPlayer
       localTPImageGeneratorParams.format = paramTPCaptureParams.format;
       localTPImageGeneratorParams.requestedTimeMsToleranceAfter = paramTPCaptureParams.requestedTimeMsToleranceAfter;
       localTPImageGeneratorParams.requestedTimeMsToleranceBefore = paramTPCaptureParams.requestedTimeMsToleranceBefore;
-      this.mImageGenerator.generateImageAsyncAtTime(getCurrentPositionMs(), localTPImageGeneratorParams, paramTPCaptureCallBack);
+      this.mImageGenerator.generateImageAsyncAtTime(paramTPCaptureParams.requestedTimeMs, localTPImageGeneratorParams, paramTPCaptureCallBack);
       return;
     }
     paramTPCaptureCallBack.onCaptureVideoFailed(1000013);
@@ -410,19 +418,14 @@ public class TPThumbPlayer
     this.mPlayer.deselectTrackAsync(paramInt, paramLong);
   }
   
-  public int getBufferPercent()
+  public long getBufferedDurationMs()
   {
     if (this.mPlayer == null)
     {
       TPLogUtil.i(TAG, "player has released, return 0");
-      return 0;
+      return 0L;
     }
-    if (this.mPlayer.getDurationMs() <= 0L)
-    {
-      TPLogUtil.w(TAG, "bufferPercent is not large than 0, return 0");
-      return 0;
-    }
-    return (int)(100.0F * (float)this.mPlayer.getBufferedDurationMs() / (float)this.mPlayer.getDurationMs());
+    return this.mPlayer.getBufferedDurationMs();
   }
   
   public long getCurrentPositionMs()
@@ -878,24 +881,26 @@ public class TPThumbPlayer
     }
   }
   
-  public void switchDefinition(ITPMediaAsset paramITPMediaAsset, long paramLong)
+  public void switchDefinition(ITPMediaAsset paramITPMediaAsset, int paramInt, long paramLong)
   {
     TPLogUtil.i(TAG, "switchDefinition mediaAsset:" + paramITPMediaAsset + " opaque:" + paramLong);
     throwExceptionIfPlayerReleased();
     if (paramITPMediaAsset != null)
     {
-      if (this.mPlayer.switchDefinitionAsync(paramITPMediaAsset.getUrl(), paramLong) != 0) {
+      paramInt = TPThumbPlayerUtils.convert2NativeSwitchMode(paramInt);
+      if (this.mPlayer.switchDefinitionAsync(paramITPMediaAsset.getUrl(), paramInt, paramLong) != 0) {
         throw new IllegalStateException("switchDefinition in invalid state");
       }
       this.mImageGenerator = new TPThumbCapture(paramITPMediaAsset.getUrl());
     }
   }
   
-  public void switchDefinition(String paramString, long paramLong)
+  public void switchDefinition(String paramString, int paramInt, long paramLong)
   {
     TPLogUtil.i(TAG, "switchDefinition url:" + paramString + " opaque:" + paramLong);
     throwExceptionIfPlayerReleased();
-    if (this.mPlayer.switchDefinitionAsync(paramString, paramLong) != 0) {
+    paramInt = TPThumbPlayerUtils.convert2NativeSwitchMode(paramInt);
+    if (this.mPlayer.switchDefinitionAsync(paramString, paramInt, paramLong) != 0) {
       throw new IllegalStateException("switchDefinition in invalid state");
     }
     this.mImageGenerator = new TPThumbCapture(paramString);
@@ -903,7 +908,7 @@ public class TPThumbPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.thumbplayer.TPThumbPlayer
  * JD-Core Version:    0.7.0.1
  */

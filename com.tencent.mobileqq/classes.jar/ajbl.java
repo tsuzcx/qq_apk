@@ -1,106 +1,48 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
+import android.support.annotation.IdRes;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ajbl
-  implements ajbk
 {
-  private int jdField_a_of_type_Int;
-  private ajcm jdField_a_of_type_Ajcm;
-  public WeakReference<Context> a;
+  private static final Map<String, Integer> a;
+  public static int[] a;
   
-  public ajbl(Activity paramActivity, ajcm paramajcm, int paramInt)
+  static
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    this.jdField_a_of_type_Ajcm = paramajcm;
-    this.jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130838245, 2130838230, 2130838232, 2130838246, 2130838408, 2130841039, 2130838247, 2130838229, 2130838234, 2130838231, 2130838228, 2130838238, 2130838242, 2130838243, 2130838244 };
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put("m.ke.qq.com", Integer.valueOf(7));
+    jdField_a_of_type_JavaUtilMap.put("ke.qq.com", Integer.valueOf(7));
+    jdField_a_of_type_JavaUtilMap.put("fudao.qq.com", Integer.valueOf(9));
+    jdField_a_of_type_JavaUtilMap.put("buluo.qq.com", Integer.valueOf(10));
+    jdField_a_of_type_JavaUtilMap.put("m.gamecenter.qq.com", Integer.valueOf(2));
+    jdField_a_of_type_JavaUtilMap.put("imgcache.qq.com", Integer.valueOf(2));
   }
   
-  public int a()
+  @IdRes
+  public static int a(int paramInt)
   {
-    return 200;
+    return jdField_a_of_type_ArrayOfInt[paramInt];
   }
   
-  public aivv a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  public static int a(String paramString)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    ajcm localajcm = this.jdField_a_of_type_Ajcm;
-    if ((!(localAppRuntime instanceof QQAppInterface)) || (localajcm == null)) {}
-    do
-    {
-      do
-      {
-        return null;
-        if (this.jdField_a_of_type_Int == paramInt2) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("CmGameHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.jdField_a_of_type_Int), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
-      return null;
-      if ("cs.first_frame_drawn.local".equals(paramString1))
-      {
-        localajcm.e(paramString2);
-        return null;
+    Integer localInteger2 = (Integer)jdField_a_of_type_JavaUtilMap.get(paramString);
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      if (!syb.d(paramString)) {
+        break label37;
       }
-      if ("cs.create_room.local".equals(paramString1))
-      {
-        localajcm.f(paramString2);
-        return null;
-      }
-      if ("cs.join_room.local".equals(paramString1))
-      {
-        localajcm.g(paramString2);
-        return null;
-      }
-      if ("cs.game_start.local".equals(paramString1))
-      {
-        localajcm.h(paramString2);
-        return null;
-      }
-      if ("cs.make_room_min.local".equals(paramString1))
-      {
-        localajcm.b();
-        return null;
-      }
-      if ("cs.close_room.local".equals(paramString1))
-      {
-        localajcm.c();
-        return null;
-      }
-      if ("cs.game_tips.local".equals(paramString1))
-      {
-        localajcm.i(ApolloUtil.a(paramString2, "tips"));
-        return null;
-      }
-      if ("cs.check_pubAccount_state.local".equals(paramString1))
-      {
-        localajcm.a(paramString2, paramInt1);
-        return null;
-      }
-    } while (!"cs.on_get_open_key.local".equals(paramString1));
-    localajcm.b(paramString2, paramInt1);
-    return null;
-  }
-  
-  public ajcm a()
-  {
-    return this.jdField_a_of_type_Ajcm;
-  }
-  
-  public void a()
-  {
-    QLog.i("CmGameHandler", 1, "[destroyHandler]");
-    this.jdField_a_of_type_Ajcm = null;
+    }
+    label37:
+    for (localInteger1 = Integer.valueOf(8);; localInteger1 = Integer.valueOf(6)) {
+      return localInteger1.intValue();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbl
  * JD-Core Version:    0.7.0.1
  */

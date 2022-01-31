@@ -1,18 +1,17 @@
-import android.view.Choreographer.FrameCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
 
-class beyd
-  implements Choreographer.FrameCallback
+public class beyd
+  implements DialogInterface.OnClickListener
 {
-  beyd(beyc parambeyc) {}
+  public beyd(AuthorityControlAppDetailsFragment paramAuthorityControlAppDetailsFragment) {}
   
-  public void doFrame(long paramLong)
-  {
-    beyc.a(this.a, paramLong);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyd
  * JD-Core Version:    0.7.0.1
  */

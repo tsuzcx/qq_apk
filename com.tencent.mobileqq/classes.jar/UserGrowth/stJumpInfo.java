@@ -16,6 +16,7 @@ public final class stJumpInfo
   public Map<String, String> mapExt;
   public String schema_url = "";
   public String text = "";
+  public String trace_id = "";
   public String url = "";
   
   static
@@ -25,7 +26,7 @@ public final class stJumpInfo
   
   public stJumpInfo() {}
   
-  public stJumpInfo(int paramInt1, String paramString1, String paramString2, Map<String, String> paramMap, int paramInt2, String paramString3, String paramString4)
+  public stJumpInfo(int paramInt1, String paramString1, String paramString2, Map<String, String> paramMap, int paramInt2, String paramString3, String paramString4, String paramString5)
   {
     this.index = paramInt1;
     this.url = paramString1;
@@ -34,6 +35,7 @@ public final class stJumpInfo
     this.id = paramInt2;
     this.h5url = paramString3;
     this.schema_url = paramString4;
+    this.trace_id = paramString5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -45,6 +47,7 @@ public final class stJumpInfo
     this.id = paramJceInputStream.read(this.id, 4, false);
     this.h5url = paramJceInputStream.readString(5, false);
     this.schema_url = paramJceInputStream.readString(6, false);
+    this.trace_id = paramJceInputStream.readString(7, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -65,6 +68,9 @@ public final class stJumpInfo
     }
     if (this.schema_url != null) {
       paramJceOutputStream.write(this.schema_url, 6);
+    }
+    if (this.trace_id != null) {
+      paramJceOutputStream.write(this.trace_id, 7);
     }
   }
 }

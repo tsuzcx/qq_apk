@@ -1,32 +1,27 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
-import org.json.JSONObject;
-
-public class baso
-  implements aycd
+class baso
+  extends alsi
 {
-  public baso(TroopInteractGiftAnimationController.1.1 param1, int paramInt1, int paramInt2, String paramString, JSONObject paramJSONObject1, int paramInt3, JSONObject paramJSONObject2) {}
+  baso(basm parambasm) {}
   
-  public void a()
+  public void a(boolean paramBoolean, long paramLong, alsj paramalsj)
   {
-    if (this.jdField_a_of_type_Int > this.jdField_b_of_type_Int) {
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a != null) {}
-    }
-    do
+    this.a.b("sendMsgFinish", "success:" + paramBoolean);
+    this.a.a(this.a.c, false, paramBoolean, paramalsj);
+    if (paramBoolean)
     {
+      this.a.e();
       return;
-      String str = this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_OrgJsonJSONObject.optString("videoPath", "2.mp4");
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a.a(str, new basp(this));
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.this$0.a();
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a == null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController$1$1.a.a.a();
+    }
+    if (paramalsj != null) {
+      this.a.v = paramalsj.d;
+    }
+    this.a.a(-1, "MessageForScribble SEND FAIL", "", this.a.b);
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baso
  * JD-Core Version:    0.7.0.1
  */

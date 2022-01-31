@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import bhqe;
+import bjrp;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
 import java.util.ArrayList;
-import vey;
+import wtq;
 
 public class EditLocalGifSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditLocalGifSource> CREATOR = new vey();
+  public static final Parcelable.Creator<EditLocalGifSource> CREATOR = new wtq();
   @NonNull
   public int a;
   @NonNull
@@ -48,7 +48,7 @@ public class EditLocalGifSource
       paramString = new LocalMediaInfo();
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramString;
-    this.jdField_a_of_type_Long = bhqe.d;
+    this.jdField_a_of_type_Long = bjrp.d;
   }
   
   public EditLocalGifSource(String paramString, ArrayList<String> paramArrayList, LocalMediaInfo paramLocalMediaInfo, long paramLong)
@@ -112,7 +112,7 @@ public class EditLocalGifSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditLocalGifSource
  * JD-Core Version:    0.7.0.1
  */

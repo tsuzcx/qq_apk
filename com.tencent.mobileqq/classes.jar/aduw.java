@@ -1,20 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.StructMsgObserver.1;
+import com.tencent.mobileqq.activity.StructMsgObserver.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.Observable;
+import java.util.Observer;
 
-class aduw
-  implements View.OnClickListener
+public class aduw
+  implements Observer
 {
-  aduw(aduu paramaduu) {}
-  
-  public void onClick(View paramView)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    aduu.a(this.a, true, this.a.a.getCurrentAccountUin());
+    if (!aeif.a) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (!(paramObject instanceof MessageForStructing)) {
+              break;
+            }
+            paramObject = (MessageForStructing)paramObject;
+            paramObservable = paramObject.structingMsg;
+          } while ((paramObject.isSend()) || (!aeif.a(paramObservable)));
+          paramObject = paramObservable.mMsgUrl;
+          str1 = paramObservable.currentAccountUin;
+          str2 = paramObservable.uin;
+          ThreadManager.post(new StructMsgObserver.1(this, paramObject, paramObservable.uinType, str1, str2), 5, null, false);
+          return;
+        } while (!(paramObject instanceof MessageForText));
+        paramObservable = (MessageForText)paramObject;
+      } while ((paramObservable.isSend()) || (TextUtils.isEmpty(paramObservable.msg)));
+      paramObject = aeif.c(paramObservable.msg);
+    } while (TextUtils.isEmpty(paramObject));
+    String str1 = paramObservable.frienduin;
+    String str2 = paramObservable.selfuin;
+    ThreadManager.post(new StructMsgObserver.2(this, paramObject, paramObservable.istroop, str2, str1), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aduw
  * JD-Core Version:    0.7.0.1
  */

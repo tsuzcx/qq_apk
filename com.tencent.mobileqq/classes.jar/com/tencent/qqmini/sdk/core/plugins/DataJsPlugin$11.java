@@ -1,29 +1,51 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import android.os.Handler.Callback;
-import android.os.Message;
-import bekr;
+import bgkd;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
 class DataJsPlugin$11
-  implements Handler.Callback
+  implements AsyncResult
 {
-  DataJsPlugin$11(DataJsPlugin paramDataJsPlugin, bekr parambekr) {}
+  DataJsPlugin$11(DataJsPlugin paramDataJsPlugin, String paramString, bgkd parambgkd) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
+      QMLog.d("DataJsPlugin", "call getUserInfo ： " + paramJSONObject.toString());
+      if (("webapi_getuserinfo_opendata".equals(this.val$apiName)) && (paramJSONObject != null)) {}
+      try
+      {
+        paramJSONObject.remove("signature");
+        paramJSONObject.remove("encryptedData");
+        paramJSONObject.remove("iv");
+        paramJSONObject.remove("cloudID");
+        if (paramJSONObject.has("data"))
+        {
+          JSONObject localJSONObject = new JSONObject(paramJSONObject.get("data").toString());
+          localJSONObject.remove("signature");
+          paramJSONObject.put("data", localJSONObject);
+        }
+        this.val$req.a(paramJSONObject);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          QMLog.e("DataJsPlugin", "webapi_getuserinfo_opendata error, ", localThrowable);
+        }
+      }
     }
-    for (;;)
-    {
-      return false;
-      this.val$req.b();
-    }
+    QMLog.d("DataJsPlugin", "call getUserInfo failed. ");
+    this.val$req.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.DataJsPlugin.11
  * JD-Core Version:    0.7.0.1
  */

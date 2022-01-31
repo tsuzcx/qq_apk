@@ -1,41 +1,26 @@
-import android.graphics.Canvas;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
 
-public abstract class anha<D extends anga>
+public class anha
+  implements DialogInterface.OnClickListener
 {
-  private ArrayList<anhf> a;
+  public anha(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bdfq parambdfq) {}
   
-  private void c(Canvas paramCanvas, D paramD, angj paramangj, float paramFloat1, float paramFloat2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null)
+    if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {}
+    try
     {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        ((anhf)localIterator.next()).a(paramCanvas, paramD, paramangj, paramFloat1, paramFloat2);
-      }
+      this.jdField_a_of_type_Bdfq.dismiss();
+      return;
     }
+    catch (Exception paramDialogInterface) {}
   }
-  
-  public abstract anhy a(D paramD);
-  
-  public void a() {}
-  
-  public final void a(Canvas paramCanvas, D paramD, angj paramangj, float paramFloat1, float paramFloat2)
-  {
-    b(paramCanvas, paramD, paramangj, paramFloat1, paramFloat2);
-    c(paramCanvas, paramD, paramangj, paramFloat1, paramFloat2);
-  }
-  
-  public void a(D paramD) {}
-  
-  public abstract boolean a(anga paramanga);
-  
-  public abstract void b(Canvas paramCanvas, D paramD, angj paramangj, float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anha
  * JD-Core Version:    0.7.0.1
  */

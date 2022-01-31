@@ -16,7 +16,7 @@ import com.tencent.ad.tangram.net.AdNet;
 import com.tencent.ad.tangram.process.AdProcessManager;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 import com.tencent.ad.tangram.statistics.AdReporterForClick;
-import com.tencent.ad.tangram.statistics.a;
+import com.tencent.ad.tangram.statistics.b;
 import com.tencent.ad.tangram.videoceiling.AdVideoCeiling;
 import com.tencent.ad.tangram.videoceiling.AdVideoSplice;
 import com.tencent.ad.tangram.web.AdBrowser;
@@ -349,7 +349,7 @@ public final class AdClickUtil
         AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
       }
       if ((localObject2 != null) && (((AdClickUtil.Result)localObject2).isSuccess())) {
-        a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 285);
+        b.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 285);
       }
       if (localObject1 != null) {
         str = ((AdAppDeeplinkLauncher.Result)localObject1).getActivityName();
@@ -397,9 +397,9 @@ public final class AdClickUtil
     if (bool) {}
     for (int i = 247;; i = 248)
     {
-      a.reportAsync(localWeakReference, localAd, i);
+      b.reportAsync(localWeakReference, localAd, i);
       if (!TextUtils.isEmpty(paramParams.ad.getAppDeeplink())) {
-        a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 245);
+        b.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 245);
       }
       if (!bool) {
         break;
@@ -444,30 +444,12 @@ public final class AdClickUtil
       localObject = new AdClickUtil.Result(4, 0);
     }
     AdClickUtil.Result localResult;
-    label112:
     do
     {
-      int i;
-      do
-      {
-        return localObject;
-        i = getVideoCeilingStyle(paramParams);
-        if (!paramParams.ad.isAppXiJingDefault()) {
-          break label112;
-        }
-        handleAppAfterInstalled(paramParams);
-        if (i != -2147483648) {
-          return handleVideoCeiling(paramParams, i);
-        }
-        localResult = handleAppMarket(paramParams);
-        if (localResult == null) {
-          break;
-        }
-        localObject = localResult;
-      } while (localResult.isSuccess());
-      return handleUrl(paramParams, getUrl(paramParams));
-      if (!paramParams.ad.isAppXiJing()) {
-        break label184;
+      return localObject;
+      int i = getVideoCeilingStyle(paramParams);
+      if ((!paramParams.ad.isAppXiJingDefault()) && (!paramParams.ad.isAppXiJing())) {
+        break label141;
       }
       handleAppAfterInstalled(paramParams);
       if (i != -2147483648) {
@@ -483,7 +465,7 @@ public final class AdClickUtil
       return handleCanvas(paramParams);
     }
     return handleUrl(paramParams, getUrl(paramParams));
-    label184:
+    label141:
     AdLog.e("AdClickUtil", "handleAppProductTypeIfNotInstalled error");
     return new AdClickUtil.Result(4, 0);
   }
@@ -505,7 +487,7 @@ public final class AdClickUtil
       AdReporterForClick.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, getUrlForClick(paramParams));
     }
     if ((localObject != null) && (((AdAppDeeplinkLauncher.Result)localObject).isSuccess())) {
-      a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 246);
+      b.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 246);
     }
     if (localObject != null) {}
     for (localObject = ((AdAppDeeplinkLauncher.Result)localObject).getError();; localObject = new AdError(1))
@@ -646,7 +628,7 @@ public final class AdClickUtil
       if ((!isWebProductTypeDeeplinkSupported(paramParams)) || (TextUtils.isEmpty(paramParams.ad.getAppDeeplink()))) {
         break label202;
       }
-      a.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 245);
+      b.reportAsync(new WeakReference(paramParams.activity.get()), paramParams.ad, 245);
       if (i != -2147483648) {
         return handleVideoCeiling(paramParams, i);
       }

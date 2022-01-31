@@ -1,45 +1,59 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.articlesummary.articlesummary.KdLiveInfo;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcSource;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentDivider;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentLastRead;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentSocialOperation;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTitle;
 
 public class qbf
+  extends qbh
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  
-  public static qbf a(articlesummary.KdLiveInfo paramKdLiveInfo)
+  public qbf(Context paramContext, bcws parambcws, rqj paramrqj)
   {
-    qbf localqbf = new qbf();
-    localqbf.jdField_a_of_type_Int = paramKdLiveInfo.uint32_style_type.get();
-    localqbf.jdField_a_of_type_JavaLangString = paramKdLiveInfo.bytes_status_bg_url.get().toStringUtf8();
-    localqbf.b = paramKdLiveInfo.bytes_status_icon_url.get().toStringUtf8();
-    localqbf.c = paramKdLiveInfo.bytes_status_text.get().toStringUtf8();
-    localqbf.d = paramKdLiveInfo.bytes_hot_icon_url.get().toStringUtf8();
-    localqbf.e = paramKdLiveInfo.bytes_hot_text.get().toStringUtf8();
-    localqbf.f = paramKdLiveInfo.bytes_title_jump_url.get().toStringUtf8();
-    localqbf.g = paramKdLiveInfo.bytes_report_common_data.get().toStringUtf8();
-    return localqbf;
+    super(paramContext, parambcws, paramrqj);
   }
   
-  @NonNull
-  public String toString()
+  public pxl g()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\n").append("style=").append(this.jdField_a_of_type_Int).append("\n").append("statusBgUrl=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("statusIconUrl=").append(this.b).append("\n").append("statusText=").append(this.c).append("\n").append("hotIconUrl=").append(this.d).append("\n").append("hotText=").append(this.e).append("\n").append("titleJumpUrl=").append(this.f).append("\n").append("reportCommonData=").append(this.g).append("\n");
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Pxk = new ComponentContentGridImage(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pxl o()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_Pxk != null)
+    {
+      if ((this.jdField_a_of_type_Pxk instanceof ComponentContentGridImage)) {
+        ((ComponentContentGridImage)this.jdField_a_of_type_Pxk).setMIReadInJoyModel(this.jdField_a_of_type_JavaLangObject);
+      }
+      this.jdField_a_of_type_Pxk.a(ComponentContentGridImage.a(((pgd)this.jdField_a_of_type_JavaLangObject).a()));
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qbf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,31 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.content.Intent;
-import com.tencent.mobileqq.mini.sdk.MiniAppController;
-import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
+import com.tencent.mobileqq.mini.appbrand.utils.ShortcutUtils.AddShortcutCallback;
+import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 class OtherJsPlugin$3
-  implements MiniAppController.ActivityResultListener
+  implements ShortcutUtils.AddShortcutCallback
 {
   OtherJsPlugin$3(OtherJsPlugin paramOtherJsPlugin, String paramString, JsRuntime paramJsRuntime, int paramInt) {}
   
-  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onAddResult(int paramInt, String paramString)
   {
-    QLog.d(OtherJsPlugin.access$000(), 2, "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
-    if (paramInt1 == 5)
+    if (paramInt == 0)
     {
-      OtherJsPlugin.access$100(this.this$0, this.val$eventName, this.val$webview, this.val$callbackId);
-      MiniAppController.getInstance().removeActivityResultListener(this);
-      return true;
+      paramString = new JSONObject();
+      paramString = ApiUtil.wrapCallbackOk(this.val$eventName, paramString);
+      this.val$webview.evaluateCallbackJs(this.val$callbackId, paramString.toString());
+      return;
     }
-    return false;
+    paramString = ApiUtil.wrapCallbackFail(this.val$eventName, null, paramString);
+    this.val$webview.evaluateCallbackJs(this.val$callbackId, paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.OtherJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

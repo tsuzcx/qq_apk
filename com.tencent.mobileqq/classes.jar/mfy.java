@@ -1,24 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import com.tencent.av.ui.EffectToolbar;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
-class mfy
-  implements View.OnClickListener
+public class mfy
+  implements Observer
 {
-  mfy(mfv parammfv) {}
+  private WeakReference<EffectToolbar> a;
   
-  public void onClick(View paramView)
+  public mfy(EffectToolbar paramEffectToolbar)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.j();
+    this.a = new WeakReference(paramEffectToolbar);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    EffectToolbar localEffectToolbar = (EffectToolbar)this.a.get();
+    if (localEffectToolbar == null) {
+      return;
     }
-    axqy.b(null, "CliOper", "", "", "0X8005DF3", "0X8005DF3", 0, 0, "", "", "", "");
+    EffectToolbar.access$300(localEffectToolbar, paramObservable, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfy
  * JD-Core Version:    0.7.0.1
  */

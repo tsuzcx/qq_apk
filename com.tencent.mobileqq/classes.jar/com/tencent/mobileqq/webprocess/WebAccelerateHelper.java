@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.webprocess;
 
-import ajve;
+import almr;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
 import android.view.View;
-import bcey;
-import bcgq;
+import bedz;
+import befr;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -26,7 +26,7 @@ import com.tencent.sonic.sdk.SonicConfig.Builder;
 import com.tencent.sonic.sdk.SonicEngine;
 import java.util.Arrays;
 import java.util.List;
-import nau;
+import ndq;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -135,7 +135,7 @@ public class WebAccelerateHelper
   
   public WebViewPluginEngine createWebViewPluginEngine(AppInterface paramAppInterface, Activity paramActivity, CustomWebView paramCustomWebView, WebAccelerateHelper.CommonJsPluginFactory paramCommonJsPluginFactory, List<WebViewPlugin> paramList)
   {
-    nau.a("createWebViewPluginEngine");
+    ndq.a("createWebViewPluginEngine");
     if ((paramAppInterface != null) && (paramActivity == null) && (paramCustomWebView == null) && (paramList == null))
     {
       if (QLog.isColorLevel()) {
@@ -145,7 +145,7 @@ public class WebAccelerateHelper
     }
     for (;;)
     {
-      nau.b("createWebViewPluginEngine");
+      ndq.b("createWebViewPluginEngine");
       if (paramAppInterface != null)
       {
         if (QLog.isColorLevel()) {
@@ -256,7 +256,7 @@ public class WebAccelerateHelper
         }
         Integer[] arrayOfInteger = new Integer[15];
         Arrays.fill(arrayOfInteger, Integer.valueOf(-1));
-        DeviceProfileManager.a(str, arrayOfInteger, new ajve());
+        DeviceProfileManager.a(str, arrayOfInteger, new almr());
         sWebViewFeatureParams = arrayOfInteger;
         if (QLog.isColorLevel()) {
           QLog.d("WebAccelerateHelper", 2, "WebView feature params=" + Arrays.toString(sWebViewFeatureParams));
@@ -294,9 +294,9 @@ public class WebAccelerateHelper
   
   public void preCheckOffline(String paramString)
   {
-    bcey localbcey = bcey.a(paramString);
-    if (localbcey != null) {
-      localbcey.a(new WebAccelerateHelper.4(this), paramString);
+    bedz localbedz = bedz.a(paramString);
+    if (localbedz != null) {
+      localbedz.a(new WebAccelerateHelper.4(this), paramString);
     }
   }
   
@@ -353,7 +353,7 @@ public class WebAccelerateHelper
   
   public void preGetKey(Intent paramIntent, AppInterface paramAppInterface)
   {
-    preGetKey(bcgq.a(paramIntent), paramIntent, paramAppInterface);
+    preGetKey(befr.a(paramIntent), paramIntent, paramAppInterface);
   }
   
   public void preGetKey(String paramString, Intent paramIntent, AppInterface paramAppInterface)
@@ -374,7 +374,7 @@ public class WebAccelerateHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebAccelerateHelper
  * JD-Core Version:    0.7.0.1
  */

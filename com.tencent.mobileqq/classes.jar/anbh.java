@@ -1,44 +1,23 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArModelResource;
 
-public class anbh
+public final class anbh
+  implements Parcelable.Creator<ArModelResource>
 {
-  private String a = ajya.a(2131714847);
-  private String b = "";
-  
-  public static anbh a(amph[] paramArrayOfamph)
+  public ArModelResource a(Parcel paramParcel)
   {
-    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
-      return null;
-    }
-    anbh localanbh = new anbh();
-    try
-    {
-      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].a);
-      localanbh.a = paramArrayOfamph.getString("emptyShowWording");
-      localanbh.b = paramArrayOfamph.getString("linkWord");
-      return localanbh;
-    }
-    catch (JSONException paramArrayOfamph)
-    {
-      paramArrayOfamph.printStackTrace();
-    }
-    return localanbh;
+    return new ArModelResource(paramParcel);
   }
   
-  public String a()
+  public ArModelResource[] a(int paramInt)
   {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    return new ArModelResource[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbh
  * JD-Core Version:    0.7.0.1
  */

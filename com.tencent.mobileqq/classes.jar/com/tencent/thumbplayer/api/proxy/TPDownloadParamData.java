@@ -1,16 +1,19 @@
 package com.tencent.thumbplayer.api.proxy;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class TPDownloadParamData
 {
+  public String audioTrackKeyId;
   private String[] bakUrl;
   private String base;
   private int clipCount = 1;
   private int clipNo = 1;
   private String currentFormat;
   private int currentFormatID;
+  private List<Map<String, String>> defInfoList;
   private int dlType;
   private String downloadFileID;
   private int endTimeMS;
@@ -30,6 +33,7 @@ public class TPDownloadParamData
   private long preloadDuration;
   private long preloadSize;
   private String savePath;
+  private boolean selfAdaption = false;
   private int starTimeMS;
   private int testid;
   private long tm;
@@ -56,6 +60,11 @@ public class TPDownloadParamData
   {
     this.downloadFileID = paramString;
     this.dlType = paramInt;
+  }
+  
+  public String getAudioTrackKeyId()
+  {
+    return this.audioTrackKeyId;
   }
   
   public String[] getBakUrl()
@@ -86,6 +95,11 @@ public class TPDownloadParamData
   public int getCurrentFormatID()
   {
     return this.currentFormatID;
+  }
+  
+  public List<Map<String, String>> getDefInfoList()
+  {
+    return this.defInfoList;
   }
   
   public int getDlType()
@@ -163,6 +177,11 @@ public class TPDownloadParamData
     return this.savePath;
   }
   
+  public boolean getSelfAdaption()
+  {
+    return this.selfAdaption;
+  }
+  
   public int getStarTimeMS()
   {
     return this.starTimeMS;
@@ -228,6 +247,11 @@ public class TPDownloadParamData
     return this.isOffline;
   }
   
+  public void setAudioTrackKeyId(String paramString)
+  {
+    this.audioTrackKeyId = paramString;
+  }
+  
   public void setBakUrl(String[] paramArrayOfString)
   {
     this.bakUrl = paramArrayOfString;
@@ -261,6 +285,11 @@ public class TPDownloadParamData
   public void setCurrentFormatID(int paramInt)
   {
     this.currentFormatID = paramInt;
+  }
+  
+  public void setDefInfoList(List<Map<String, String>> paramList)
+  {
+    this.defInfoList = paramList;
   }
   
   public void setDlType(int paramInt)
@@ -353,6 +382,11 @@ public class TPDownloadParamData
     this.savePath = paramString;
   }
   
+  public void setSelfAdaption(boolean paramBoolean)
+  {
+    this.selfAdaption = paramBoolean;
+  }
+  
   public void setStarTimeMS(int paramInt)
   {
     this.starTimeMS = paramInt;
@@ -400,7 +434,7 @@ public class TPDownloadParamData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.api.proxy.TPDownloadParamData
  * JD-Core Version:    0.7.0.1
  */

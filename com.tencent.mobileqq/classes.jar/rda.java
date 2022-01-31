@@ -1,22 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGameAdComManager.2;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGameAdComManager.2.1;
 
 public class rda
-  extends oyd
+  implements ofa
 {
-  public rda(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap)
-  {
-    super(paramString);
-  }
+  public rda(VideoFeedsGameAdComManager.2.1 param1) {}
   
-  public void a(oxx paramoxx)
+  public void a()
   {
-    paramoxx.a(this.jdField_a_of_type_JavaUtilMap);
+    this.a.a.this$0.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rda
  * JD-Core Version:    0.7.0.1
  */

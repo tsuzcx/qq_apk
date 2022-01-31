@@ -9,12 +9,12 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import vyj;
-import vyk;
+import xnb;
+import xnc;
 
 public class JsonORM
 {
-  private static final Map<Class, vyk[]> a = new IdentityHashMap();
+  private static final Map<Class, xnc[]> a = new IdentityHashMap();
   
   public static int a(Class<?> paramClass)
   {
@@ -48,7 +48,7 @@ public class JsonORM
     if ((paramJSONObject == null) || (paramClass == null)) {
       throw new IllegalArgumentException("both jsonObject and clazz should not be null");
     }
-    Object localObject2 = (vyk[])a.get(paramClass);
+    Object localObject2 = (xnc[])a.get(paramClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -123,7 +123,7 @@ public class JsonORM
       throw new IllegalArgumentException("object should not be null");
     }
     Class localClass = paramObject.getClass();
-    Object localObject2 = (vyk[])a.get(localClass);
+    Object localObject2 = (xnc[])a.get(localClass);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
@@ -264,20 +264,20 @@ public class JsonORM
     paramField.set(paramObject, paramJSONObject.optString(paramString));
   }
   
-  private static void a(Class<?> paramClass, ArrayList<vyk> paramArrayList)
+  private static void a(Class<?> paramClass, ArrayList<xnc> paramArrayList)
   {
     paramClass = paramClass.getDeclaredFields();
     int i = 0;
     if (i != paramClass.length)
     {
       Field localField = paramClass[i];
-      vyj localvyj = (vyj)localField.getAnnotation(vyj.class);
-      if (localvyj == null) {}
+      xnb localxnb = (xnb)localField.getAnnotation(xnb.class);
+      if (localxnb == null) {}
       for (;;)
       {
         i += 1;
         break;
-        paramArrayList.add(new vyk(localvyj.a(), a(localField.getType()), localField));
+        paramArrayList.add(new xnc(localxnb.a(), a(localField.getType()), localField));
       }
     }
   }
@@ -310,7 +310,7 @@ public class JsonORM
     return arrayOfObject;
   }
   
-  private static vyk[] a(Class<?> paramClass)
+  private static xnc[] a(Class<?> paramClass)
   {
     ArrayList localArrayList = new ArrayList();
     while (paramClass != null)
@@ -318,14 +318,14 @@ public class JsonORM
       a(paramClass, localArrayList);
       paramClass = paramClass.getSuperclass();
     }
-    paramClass = new vyk[localArrayList.size()];
+    paramClass = new xnc[localArrayList.size()];
     localArrayList.toArray(paramClass);
     return paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.JsonORM
  * JD-Core Version:    0.7.0.1
  */

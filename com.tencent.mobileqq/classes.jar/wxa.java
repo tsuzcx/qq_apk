@@ -1,55 +1,32 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
+import android.text.Editable;
+import android.text.TextWatcher;
 
-public class wxa
-  implements TVK_SDKMgr.OnLogListener
+class wxa
+  implements TextWatcher
 {
-  public wxa(TribeVideoPlugin paramTribeVideoPlugin) {}
+  wxa(wwx paramwwx) {}
   
-  public int d(String paramString1, String paramString2)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    wwe localwwe = this.a.a;
+    if (this.a.a.a()) {}
+    for (paramEditable = "2";; paramEditable = "1")
+    {
+      localwwe.a("search_poi", 0, 0, new String[] { paramEditable });
+      wtb.a("0X80076D1");
+      wtb.b("0X80075E6");
+      wwx.a(this.a);
+      return;
     }
-    return 0;
   }
   
-  public int e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxa
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,9 @@ class VerifyDevLockManagerImpl$1
       return;
     case 0: 
       paramMessage = (Object[])paramMessage.obj;
-      ((VerifyDevLockManager.VerifyDevLockObserver)paramMessage[0]).onRecvNotice((VerifyDevLockManager.NotifyType)paramMessage[1], ((Integer)paramMessage[2]).intValue(), (String)paramMessage[3], ((Integer)paramMessage[4]).intValue(), (ErrMsg)paramMessage[5], (DevlockInfo)paramMessage[6]);
+      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)paramMessage[0];
+      localVerifyDevLockObserver.onRecvNotice((VerifyDevLockManager.NotifyType)paramMessage[1], ((Integer)paramMessage[2]).intValue(), (String)paramMessage[3], ((Integer)paramMessage[4]).intValue(), (ErrMsg)paramMessage[5], (DevlockInfo)paramMessage[6]);
+      localVerifyDevLockObserver.onReceive((VerifyDevLockManager.NotifyType)paramMessage[1], ((Integer)paramMessage[4]).intValue(), paramMessage[7]);
       return;
     }
     paramMessage = (Object[])paramMessage.obj;

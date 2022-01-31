@@ -2,37 +2,37 @@ package com.tencent.av.business.manager.pendant;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import lcg;
-import lim;
+import lek;
+import lkp;
 
 public final class AVEffectPendantReport$1
   implements Runnable
 {
   public void run()
   {
-    if ((lim.a() == null) || (lim.a().isEmpty()))
+    if ((lkp.a() == null) || (lkp.a().isEmpty()))
     {
-      lim.d();
+      lkp.d();
       return;
     }
-    lim.a(0);
-    lim.b(0);
-    Iterator localIterator = lim.a().iterator();
+    lkp.a(0);
+    lkp.b(0);
+    Iterator localIterator = lkp.a().iterator();
     while (localIterator.hasNext())
     {
       PendantItem localPendantItem = (PendantItem)localIterator.next();
-      lim.a();
-      if (lim.a(localPendantItem)) {
-        lim.b();
+      lkp.a();
+      if (lkp.a(localPendantItem)) {
+        lkp.b();
       }
     }
-    lcg.c("AVEffectPendantReport", "refleshAndSetDownloadInfo()  mTotalCount = " + lim.c() + "  mDownloadCount = " + lim.d());
-    lim.a();
+    lek.c("AVEffectPendantReport", "refleshAndSetDownloadInfo()  mTotalCount = " + lkp.c() + "  mDownloadCount = " + lkp.d());
+    lkp.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.AVEffectPendantReport.1
  * JD-Core Version:    0.7.0.1
  */

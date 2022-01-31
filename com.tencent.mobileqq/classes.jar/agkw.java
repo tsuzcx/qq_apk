@@ -1,26 +1,57 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.AlbumListActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import java.util.ArrayList;
 
-public class agkw
-  implements View.OnClickListener
+class agkw
+  extends almw
 {
-  public agkw(AlbumListActivity paramAlbumListActivity) {}
+  agkw(agkt paramagkt) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (this.a.r) {
-      alvj.a().a("callbackArk", null, null);
+    paramObject = (ArrayList)paramObject;
+    int i = paramObject.indexOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    if ((i != -1) && (paramBoolean))
+    {
+      if (((Boolean)paramObject.get(i + 1)).booleanValue()) {
+        this.a.b(false, false);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000)
+      {
+        paramObject = ((almv)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        if ((paramObject != null) && (paramObject.discussionName != null))
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramObject.discussionName;
+          this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramObject.uin, this.a.e);
+        }
+      }
     }
-    if (this.a.s) {
-      axqy.b(null, "dc00898", "", "", "0X800A6E0", "0X800A6E0", 0, 0, "", "", "", "");
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 3000))
+    {
+      paramString = ((almv)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(paramString);
+      if ((paramString != null) && (paramString.discussionName != null))
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramString.discussionName;
+        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramString.uin, this.a.e);
+      }
     }
-    this.a.onBackPressed();
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) {
+      this.a.I();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agkw
  * JD-Core Version:    0.7.0.1
  */

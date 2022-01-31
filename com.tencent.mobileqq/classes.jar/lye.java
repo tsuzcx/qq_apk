@@ -1,31 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.ReqGroupVideo.ReqShareBackflowVerify;
-import com.tencent.av.ReqGroupVideo.RspShareBackflowVerify;
-import com.tencent.av.share.AVSchema;
-import com.tencent.av.share.AVSchema.MyMsgListener.1;
+import com.tencent.qphone.base.util.QLog;
 
-public class lye
-  extends lhb<ReqGroupVideo.ReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify>
+final class lye
+  extends mul
 {
-  public lyd a;
-  
-  public lye(AVSchema paramAVSchema, lyd paramlyd)
+  lye(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Lyd = paramlyd;
+    super(paramString1, paramString2, paramString3);
   }
   
-  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqShareBackflowVerify paramReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify paramRspShareBackflowVerify, Object paramObject)
+  protected void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached()) {
-      return;
+    lyd.a(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("AVPushReport", 2, "onAvReportPush SimpleHttpPostTask rsp = " + paramString);
     }
-    new Handler(Looper.getMainLooper()).post(new AVSchema.MyMsgListener.1(this, paramRspShareBackflowVerify, paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lye
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,6 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-
-public class bfhl
-{
-  private static SharedPreferences a;
-  
-  public static SharedPreferences a()
-  {
-    if (a == null) {
-      a = beqb.a().a().getSharedPreferences("pre_miniapp", 4);
-    }
-    return a;
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfhl
  * JD-Core Version:    0.7.0.1
  */

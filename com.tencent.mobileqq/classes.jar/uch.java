@@ -1,16 +1,22 @@
-import java.util.Comparator;
+import com.tencent.biz.qqcircle.widgets.QCircleRecommendImageView;
 
-public final class uch
-  implements Comparator<ucm>
+public class uch
+  implements antv
 {
-  public int a(ucm paramucm1, ucm paramucm2)
+  public uch(QCircleRecommendImageView paramQCircleRecommendImageView) {}
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void b()
   {
-    return paramucm1.a - paramucm2.a;
+    QCircleRecommendImageView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uch
  * JD-Core Version:    0.7.0.1
  */

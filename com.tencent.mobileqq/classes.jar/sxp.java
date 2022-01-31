@@ -1,22 +1,20 @@
-import android.content.Intent;
-import android.util.SparseIntArray;
-import mqq.app.MSFServlet;
+import android.os.Bundle;
 
-public class sxp
+class sxp
+  implements ymm
 {
-  public static void a(SparseIntArray paramSparseIntArray)
-  {
-    syi.a(paramSparseIntArray);
-  }
+  sxp(sxe paramsxe) {}
   
-  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean)
+  public void callback(Bundle paramBundle)
   {
-    syi.a(paramMSFServlet, paramIntent, paramBoolean);
+    if (this.a.a != null) {
+      this.a.k();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxp
  * JD-Core Version:    0.7.0.1
  */

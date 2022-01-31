@@ -1,64 +1,75 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
-import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
-import java.util.Comparator;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.RecommendActivityViewHolder.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class uxq
-  implements Comparator<uxm>
+  extends uxn
 {
-  public int a(uxm paramuxm1, uxm paramuxm2)
+  public static final void b(utx paramutx)
   {
-    int k = 1;
+    ThreadManager.post(new RecommendActivityViewHolder.1(paramutx), 8, null, true);
+  }
+  
+  public void a()
+  {
+    this.itemView.setTag(2131373799, null);
+  }
+  
+  public void a(utx paramutx)
+  {
+    super.a(paramutx);
+    vhj.b(this.jdField_a_of_type_AndroidWidgetImageView, paramutx.jdField_b_of_type_JavaLangString, true, (int)bdcq.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 50.0F));
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    String str;
     int i;
-    int j;
-    if (((paramuxm1 instanceof uxi)) && (((HotRecommendFeedItem)((uxi)paramuxm1).a()).mIsTopLocation))
+    if (TextUtils.isEmpty(paramutx.c))
     {
+      str = alpo.a(2131713646);
+      localTextView.setText(str);
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.c.setVisibility(0);
+      if (paramutx.jdField_b_of_type_Int <= 0) {
+        break label247;
+      }
       i = 1;
-      if ((!(paramuxm2 instanceof uxi)) || (!((HotRecommendFeedItem)((uxi)paramuxm2).a()).mIsTopLocation)) {
-        break label80;
+      label92:
+      a(1, i);
+      if (QLog.isColorLevel()) {
+        QLog.e("zivonchen", 2, "FollowPersonViewHolder userItem = " + paramutx.c + ", faceDrawable = " + paramutx.jdField_b_of_type_JavaLangString);
       }
-      j = 1;
-      label54:
-      if ((j ^ i) == 0) {
-        break label86;
-      }
-      j = k;
-      if (i != 0) {
-        j = -1;
+      str = (String)this.itemView.getTag(2131373799);
+      if (!TextUtils.equals(paramutx.jdField_a_of_type_JavaLangString, str)) {
+        switch (paramutx.jdField_a_of_type_Int)
+        {
+        default: 
+          str = "unknown";
+        }
       }
     }
-    label80:
-    label86:
-    do
+    for (;;)
     {
-      do
-      {
-        return j;
-        i = 0;
-        break;
-        j = 0;
-        break label54;
-        if (paramuxm1.a.dateTimeMillis != paramuxm2.a.dateTimeMillis) {
-          break label146;
-        }
-        if (((paramuxm1 instanceof uxo)) && (uxo.a((uxo)paramuxm1))) {
-          return -1;
-        }
-        if (!(paramuxm2 instanceof uxo)) {
-          break label144;
-        }
-        j = k;
-      } while (uxo.a((uxo)paramuxm2));
-      return 0;
-      j = k;
-    } while (paramuxm1.a.dateTimeMillis <= paramuxm2.a.dateTimeMillis);
-    label144:
-    label146:
-    return -1;
+      wta.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramutx.jdField_a_of_type_JavaLangString, str });
+      this.itemView.setTag(2131373799, paramutx.jdField_a_of_type_JavaLangString);
+      return;
+      str = paramutx.c;
+      break;
+      label247:
+      i = 0;
+      break label92;
+      str = "2";
+      continue;
+      str = "3";
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.colornote.smallscreen;
 
-import amjz;
 import android.animation.ValueAnimator;
+import aoax;
 
 final class ColorNoteSmallScreenRelativeLayout$CheckForLongPress
   implements Runnable
@@ -22,7 +22,7 @@ final class ColorNoteSmallScreenRelativeLayout$CheckForLongPress
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout.CheckForLongPress
  * JD-Core Version:    0.7.0.1
  */

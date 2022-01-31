@@ -1,84 +1,82 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import java.util.List;
 
 public class wgc
-  extends ajvj
+  extends uhw<wfn, ukn>
 {
-  public wgc(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
+  public wgc(wfn paramwfn)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "onGetFlyTicket: " + paramBoolean);
-    }
-    if (!paramBoolean)
-    {
-      this.a.a(paramInt);
-      return;
-    }
-    Object localObject = this.a.jdField_a_of_type_Ajvg.a(this.a.jdField_c_of_type_JavaLangString, true);
-    if ((localObject != null) && ((localObject instanceof BitmapDrawable))) {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)localObject).getBitmap();
-    }
-    localObject = this.a.getSharedPreferences("qrcode", 0).edit();
-    ((SharedPreferences.Editor)localObject).putLong("discussionvalidtime" + this.a.jdField_c_of_type_JavaLangString, paramLong1);
-    ((SharedPreferences.Editor)localObject).putString("discussion" + this.a.jdField_c_of_type_JavaLangString, paramString2);
-    ((SharedPreferences.Editor)localObject).putString("discussionfullSig" + this.a.jdField_c_of_type_JavaLangString, paramString1);
-    ((SharedPreferences.Editor)localObject).commit();
-    this.a.jdField_b_of_type_Long = paramLong1;
-    localObject = wij.a(paramString2, -1);
-    if (localObject != null)
-    {
-      ((TextView)this.a.findViewById(2131372615)).setText(paramString2);
-      this.a.jdField_b_of_type_AndroidViewView.post(this.a.jdField_b_of_type_JavaLangRunnable);
-      this.a.d = paramString2;
-      this.a.e = paramString1;
-      this.a.jdField_a_of_type_Ij = ((ij)localObject);
-      this.a.f();
-      return;
-    }
-    this.a.g();
+    super(paramwfn);
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  private void c(@NonNull wfn paramwfn, @NonNull ukn paramukn)
   {
-    if (paramBoolean1)
+    if ((wfn.a(paramwfn) == null) || (!wfn.a(paramwfn).a.date.equals(paramukn.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.date)))
     {
-      paramString = ((ajvg)this.a.app.a(6)).a(paramString, true);
-      if ((paramString instanceof BitmapDrawable)) {
-        this.a.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)paramString).getBitmap();
-      }
-      if (this.a.jdField_a_of_type_AndroidOsBundle == null)
+      wsv.b(this.TAG, "ignore this upload status event. %s.", paramukn.toString());
+      return;
+    }
+    wsv.a(this.TAG, "receive upload status change event. %s.", paramukn.toString());
+    int i = 0;
+    for (;;)
+    {
+      StoryVideoItem localStoryVideoItem;
+      if (i < wfn.a(paramwfn).a().size())
       {
-        this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("bkgRes", 0);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("nameClr", -16777216);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("tipsClr", -8947849);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("B", -16777216);
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("W", 16777215);
-        this.a.jdField_a_of_type_AndroidOsBundle.putParcelable("qrloc", new Rect(45, 76, 495, 526));
-        this.a.jdField_a_of_type_AndroidOsBundle.putInt("head", 1);
+        localStoryVideoItem = (StoryVideoItem)wfn.a(paramwfn).a().get(i);
+        if (!localStoryVideoItem.equals(paramukn.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem)) {
+          break label159;
+        }
+        if (paramukn.b != null) {
+          break label135;
+        }
+        localStoryVideoItem.copy(paramukn.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
       }
-      if (this.a.jdField_a_of_type_Ij == null) {
-        this.a.jdField_a_of_type_Ij = this.a.a(this.a.jdField_c_of_type_JavaLangString, this.a.jdField_c_of_type_Int, -1);
+      for (;;)
+      {
+        paramwfn.a();
+        wsv.d(this.TAG, "can't find the video whose state has been changed.");
+        return;
+        label135:
+        wfn.a(paramwfn).a(localStoryVideoItem);
+        wfn.a(paramwfn).a(paramukn.b, i);
       }
-      if (this.a.jdField_a_of_type_Ij != null) {
-        this.a.f();
-      }
+      label159:
+      i += 1;
     }
   }
+  
+  public void a(@NonNull wfn paramwfn, @NonNull ukn paramukn)
+  {
+    if (paramukn.a()) {
+      wsv.b(this.TAG, "ignore this upload status event, because it's a troop video.");
+    }
+    do
+    {
+      return;
+      if (paramukn.c())
+      {
+        wsv.a(this.TAG, "receive share group video upload status change event. %s.", paramukn.toString());
+        return;
+      }
+    } while (!paramukn.b());
+    wsv.a(this.TAG, "receive personal video upload status change event. %s.", paramukn.toString());
+    c(paramwfn, paramukn);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return ukn.class;
+  }
+  
+  public void b(@NonNull wfn paramwfn, @NonNull ukn paramukn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wgc
  * JD-Core Version:    0.7.0.1
  */

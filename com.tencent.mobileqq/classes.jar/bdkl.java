@@ -1,27 +1,23 @@
 public class bdkl
 {
-  protected String a;
-  protected String b;
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public bdkl(String paramString1, String paramString2)
+  public bdkl()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public String a()
-  {
-    return this.a;
-  }
-  
-  public String b()
-  {
-    return this.b;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdkl
  * JD-Core Version:    0.7.0.1
  */

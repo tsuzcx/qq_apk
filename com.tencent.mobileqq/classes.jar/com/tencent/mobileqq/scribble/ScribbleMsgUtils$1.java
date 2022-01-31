@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.scribble;
 
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForScribble;
 
 public final class ScribbleMsgUtils$1
@@ -16,7 +16,7 @@ public final class ScribbleMsgUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleMsgUtils.1
  * JD-Core Version:    0.7.0.1
  */

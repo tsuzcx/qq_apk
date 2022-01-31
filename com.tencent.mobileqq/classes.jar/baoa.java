@@ -1,14 +1,45 @@
-import android.view.MotionEvent;
+import java.io.File;
+import java.io.IOException;
 
-public abstract interface baoa
+public class baoa
 {
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  File jdField_a_of_type_JavaIoFile;
+  private String jdField_a_of_type_JavaLangString;
   
-  public abstract boolean b(MotionEvent paramMotionEvent);
+  baoa(banz parambanz, String paramString)
+  {
+    if (!parambanz.jdField_a_of_type_JavaIoFile.exists()) {
+      parambanz.jdField_a_of_type_JavaIoFile.mkdirs();
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaIoFile = new File(parambanz.jdField_a_of_type_JavaIoFile, paramString + ".tmp");
+  }
+  
+  File a()
+  {
+    File localFile = this.jdField_a_of_type_Banz.a(this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      return localFile;
+    }
+    if ((!this.jdField_a_of_type_JavaIoFile.exists()) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L))
+    {
+      this.jdField_a_of_type_JavaIoFile.delete();
+      throw new IOException("write 0 length file or null File");
+    }
+    this.jdField_a_of_type_JavaIoFile.renameTo(localFile);
+    return localFile;
+  }
+  
+  void a(boolean paramBoolean)
+  {
+    if ((!paramBoolean) || (this.jdField_a_of_type_JavaIoFile.length() <= 0L)) {
+      this.jdField_a_of_type_JavaIoFile.delete();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baoa
  * JD-Core Version:    0.7.0.1
  */

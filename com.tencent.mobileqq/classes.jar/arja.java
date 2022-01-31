@@ -1,30 +1,55 @@
-import android.os.Bundle;
-import com.tencent.intervideo.nowproxy.NowEntryData;
-import com.tencent.intervideo.nowproxy.customized_interface.CustomizedReport;
+import android.media.AudioManager;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class arja
-  extends CustomizedReport
+  implements View.OnClickListener
 {
-  arja(arik paramarik) {}
+  arja(aris paramaris) {}
   
-  public void onNowEntry(Bundle paramBundle, NowEntryData paramNowEntryData) {}
-  
-  public void onReport(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    arib localarib = arjj.a().a();
-    if (localarib != null) {
-      localarib.a(paramBundle);
+    switch (paramView.getId())
+    {
     }
-    if ((paramBundle != null) && ("weishi_service_num".equals(paramBundle.getString("id", "")))) {
-      smn.a(arji.jdField_a_of_type_JavaLangString, "", "", arji.b, arji.jdField_a_of_type_Int, 4, 2, paramBundle.getInt("play_time"));
-    }
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null);
+      if (aris.a(this.a))
+      {
+        aris.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        arng.a("0X8004BE5");
+        this.a.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(aris.a(this.a));
+        aris.a(this.a);
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_Arke.d(aris.a(this.a));
+        return;
+        aris.b(this.a);
+      }
+      paramView = this.a.jdField_a_of_type_Arfz.b();
+      aris.a(this.a, paramView);
+      String str = this.a.a() + "(" + arof.a(this.a.jdField_a_of_type_Arfz.c()) + ")";
+      this.a.a(paramView, str);
+      return;
+      this.a.n();
+      return;
+      i = this.a.jdField_a_of_type_Arfz.i();
+      j = this.a.jdField_a_of_type_Arfz.h();
+    } while ((i != 6) || (j != 1) || (this.a.jdField_a_of_type_Arfz.a() == null));
+    this.a.jdField_a_of_type_Arfz.a().a();
   }
-  
-  public void setNowEntryData(NowEntryData paramNowEntryData) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arja
  * JD-Core Version:    0.7.0.1
  */

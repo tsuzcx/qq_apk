@@ -33,10 +33,10 @@
                 },
                 "margin_bottom": "8",
                 "attributes": {
-                    "setCellArray:": "$video_datas",
+                    "setCellArray:": "$video_data",
                     "setScrollTypeString:": "0",
-                    "setScrollBounceString:": "$canEdgeDrag",
-                    "setEdgeDragString:": "$canEdgeDrag",
+                    "setScrollBounceString:": "$canScroll",
+                    "setEdgeDragString:": "$canScroll",
                     "setScrollJumpUrl:": "cmd_video_set_card_cell_Drag",
                     "setScrollInsetLeft:right:top:bottom:": [
                         "2",

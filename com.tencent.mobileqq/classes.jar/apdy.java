@@ -1,42 +1,77 @@
-import android.text.TextUtils;
+import EncounterSvc.RespEncounterInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.widget.LinearLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.dating.CarrierHelper;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import com.tencent.mobileqq.dating.MsgBoxListActivity.1.1;
+import com.tencent.mobileqq.dating.MsgBoxListActivity.1.2;
+import com.tencent.mobileqq.dating.MsgBoxListActivity.1.3;
+import java.util.ArrayList;
+import java.util.List;
 
-class apdy
-  implements bifb
+public class apdy
+  extends alqy
 {
-  apdy(apdn paramapdn, String paramString, int paramInt, Object paramObject) {}
+  public apdy(MsgBoxListActivity paramMsgBoxListActivity) {}
   
-  public void a(String paramString, long paramLong, float paramFloat) {}
+  protected void d(boolean paramBoolean, Object[] paramArrayOfObject)
+  {
+    if ((paramBoolean) && (paramArrayOfObject != null) && ((paramArrayOfObject instanceof Object[])) && (MsgBoxListActivity.a(this.a) != null))
+    {
+      MsgBoxListActivity.a(this.a).a((List)paramArrayOfObject[0], 0, (ArrayList)paramArrayOfObject[1]);
+      this.a.jdField_a_of_type_ComTencentMobileqqDatingCarrierHelper$EntranceConfig = MsgBoxListActivity.a(this.a).a();
+      this.a.app.getPreferences().edit().putLong("sp_key_dating_config_time", System.currentTimeMillis()).commit();
+      this.a.runOnUiThread(new MsgBoxListActivity.1.3(this));
+    }
+  }
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  protected void e(boolean paramBoolean, Object[] paramArrayOfObject)
   {
     int i;
-    if ((paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists()))
+    LinearLayout localLinearLayout;
+    if (paramBoolean)
     {
+      if (paramArrayOfObject == null) {
+        break label101;
+      }
       i = 1;
-      if (i == 0) {
-        break label128;
+      if (((i & paramArrayOfObject instanceof Object[]) != 0) && (this.a.d != null) && (this.a.jdField_a_of_type_Avpu != null) && (((Integer)paramArrayOfObject[1]).intValue() == 1))
+      {
+        paramArrayOfObject = (List)paramArrayOfObject[0];
+        localLinearLayout = (LinearLayout)this.a.d.findViewById(2131372492);
+        if (localLinearLayout.getChildCount() != 0) {
+          break label106;
+        }
+        this.a.runOnUiThread(new MsgBoxListActivity.1.1(this, paramArrayOfObject));
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onSucceed. filePath[" + paramString2 + "]");
-      }
-      apdn.a(this.jdField_a_of_type_Apdn).a().a(true, 39, new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramString2, this.jdField_a_of_type_JavaLangObject });
     }
-    label128:
-    while (!QLog.isColorLevel())
+    for (;;)
     {
       return;
+      label101:
       i = 0;
       break;
+      label106:
+      if (localLinearLayout.getChildCount() == paramArrayOfObject.size())
+      {
+        i = 0;
+        while (i < localLinearLayout.getChildCount())
+        {
+          View localView = localLinearLayout.getChildAt(i);
+          RespEncounterInfo localRespEncounterInfo = (RespEncounterInfo)paramArrayOfObject.get(i);
+          this.a.runOnUiThread(new MsgBoxListActivity.1.2(this, localView, localRespEncounterInfo));
+          i += 1;
+        }
+      }
     }
-    QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onFailed: errcode[" + paramInt + "], errmsg[" + paramString3 + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apdy
  * JD-Core Version:    0.7.0.1
  */

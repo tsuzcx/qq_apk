@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.troopCard;
 
-import bagq;
+import bcfc;
 
 class VisitorTroopCardFragment$2
   implements Runnable

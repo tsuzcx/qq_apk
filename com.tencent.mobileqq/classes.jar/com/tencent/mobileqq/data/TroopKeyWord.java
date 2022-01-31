@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import auko;
+import awbv;
 
 public class TroopKeyWord
-  extends auko
+  extends awbv
 {
   public boolean enable;
   public int expiredFlag;
@@ -52,7 +52,7 @@ public class TroopKeyWord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopKeyWord
  * JD-Core Version:    0.7.0.1
  */

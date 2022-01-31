@@ -1,46 +1,65 @@
-import com.tencent.av.redpacket.AVRedPacketManager;
-
 public class luw
-  extends lva
 {
-  public int b;
+  private int jdField_a_of_type_Int;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[8];
   
-  public luw()
+  public int a()
   {
-    this.jdField_b_of_type_Int = 667;
-    this.c = new lvm[8];
-    this.jdField_b_of_type_Long = 1250L;
+    this.jdField_a_of_type_Int -= 1;
+    return this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int];
   }
   
-  public void a(long paramLong)
+  public void a()
   {
-    super.a(paramLong);
-    long l = this.a;
-    int i = 0;
-    if (paramLong - l <= this.jdField_b_of_type_Long) {
-      i = 255;
+    this.jdField_a_of_type_Int = 0;
+    if (this.jdField_a_of_type_ArrayOfInt.length != 8) {
+      this.jdField_a_of_type_ArrayOfInt = new int[8];
     }
-    a(i);
   }
   
-  public void a(AVRedPacketManager paramAVRedPacketManager)
+  public void a(int paramInt)
   {
-    int i = 0;
-    while (i < this.c.length)
+    if (this.jdField_a_of_type_ArrayOfInt.length == this.jdField_a_of_type_Int)
     {
-      this.c[i] = new lvm(paramAVRedPacketManager.a("qav_redpacket_excellent_" + i * 2 + ".png"));
-      i += 1;
+      arrayOfInt = new int[this.jdField_a_of_type_Int + this.jdField_a_of_type_Int];
+      System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ArrayOfInt = arrayOfInt;
     }
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    arrayOfInt[i] = paramInt;
   }
   
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public int[] a()
   {
-    a(0, 0, paramInt1, this.jdField_b_of_type_Int * paramInt1 / 750);
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public int[] a(int[] paramArrayOfInt)
+  {
+    int[] arrayOfInt;
+    if (paramArrayOfInt != null)
+    {
+      arrayOfInt = paramArrayOfInt;
+      if (paramArrayOfInt.length >= this.jdField_a_of_type_Int) {}
+    }
+    else
+    {
+      arrayOfInt = new int[this.jdField_a_of_type_Int];
+    }
+    System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_a_of_type_Int);
+    return arrayOfInt;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     luw
  * JD-Core Version:    0.7.0.1
  */

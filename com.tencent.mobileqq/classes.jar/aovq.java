@@ -1,44 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class aovq
-  extends aowi
+public class aovq
 {
-  aovq(aovp paramaovp, aovv paramaovv, String paramString) {}
+  public int a;
+  public Runnable a;
+  public List<String> a;
+  public int b;
+  public Runnable b;
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, Bundle paramBundle)
+  public void a(boolean paramBoolean)
   {
-    super.a(paramBoolean, paramLong, paramString1, paramString2, paramString3, paramString4, paramInt, paramString5, paramString6, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovp.jdField_a_of_type_JavaLangString + " start DiscUploadTaskExcuter isSuccess:" + paramBoolean + " retCode:" + paramLong + " retMsg:" + paramString6);
-    }
-    if (!paramBoolean)
-    {
-      if ((paramLong == -100001L) || (paramLong == -100002L))
-      {
-        this.jdField_a_of_type_Aovv.a(aouy.a(this.jdField_a_of_type_Aovp.jdField_a_of_type_Long, false), true);
-        return;
+    if (a()) {
+      if (this.jdField_a_of_type_JavaLangRunnable != null) {
+        this.jdField_a_of_type_JavaLangRunnable.run();
       }
-      this.jdField_a_of_type_Aovv.a(aouy.a(this.jdField_a_of_type_Aovp.jdField_a_of_type_Long, false), false);
+    }
+    while (this.jdField_b_of_type_JavaLangRunnable == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovp.jdField_a_of_type_JavaLangString + " start upload Discfile");
-    }
-    paramBoolean = apei.e(aouy.a(this.jdField_a_of_type_Aovp.jdField_a_of_type_Aouy));
-    paramString5 = paramBundle.getString("strHttpsDomain");
-    int i = paramBundle.getShort("httpsPort");
-    paramString2 = "";
-    if (apvm.b(aouy.a(this.jdField_a_of_type_Aovp.jdField_a_of_type_Aouy))) {
-      paramString2 = paramBundle.getString("strHttpsDomain");
-    }
-    paramString1 = new aowk(aouy.a(this.jdField_a_of_type_Aovp.jdField_a_of_type_Aouy), paramString3, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aovp.jdField_a_of_type_Long, paramString4, paramInt, paramBoolean, paramString5, i, this.jdField_a_of_type_Aovp.b, paramString2, new aovr(this, paramString1));
-    if (QLog.isColorLevel()) {
-      QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aovp.jdField_a_of_type_JavaLangString + " add to rsCenter");
-    }
-    aovp.a(this.jdField_a_of_type_Aovp, apug.a().longValue());
-    aouy.a(this.jdField_a_of_type_Aovp.jdField_a_of_type_Aouy).a().a(aovp.a(this.jdField_a_of_type_Aovp), paramString1);
+    this.jdField_b_of_type_JavaLangRunnable.run();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_b_of_type_Int & this.jdField_a_of_type_Int) == this.jdField_a_of_type_Int;
   }
 }
 

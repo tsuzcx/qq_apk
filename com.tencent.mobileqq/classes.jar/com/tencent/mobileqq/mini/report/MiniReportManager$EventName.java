@@ -2,6 +2,9 @@ package com.tencent.mobileqq.mini.report;
 
 public class MiniReportManager$EventName
 {
+  public static final String APKG_DOWNLOAD_PIPELINE_END = "apkg_download_pipeline_end";
+  public static final String APKG_DOWNLOAD_PIPELINE_RESULT = "apkg_download_pipeline_result";
+  public static final String APKG_DOWNLOAD_PIPELINE_START = "apkg_download_pipeline_start";
   public static final String APP_CREATE = "appcreate";
   public static final String APP_DOWNLOAD_END = "appdownloadend";
   public static final String APP_DOWNLOAD_RESULT = "app_download_result";
@@ -17,6 +20,7 @@ public class MiniReportManager$EventName
   public static final String APP_LOAD_START = "app_load_start";
   public static final String APP_LOAD_SUCC = "onlaunchsucc";
   public static final String APP_LOAD_TIMEOUT = "onlaunchtimeout";
+  public static final String APP_ROUTE_DONE = "app_route_done";
   public static final String APP_STAY_DURATION = "miniappstaytime";
   public static final String APP_UNZIP_END = "appunzipend";
   public static final String APP_UNZIP_RESULT = "app_unzip_result";
@@ -85,6 +89,10 @@ public class MiniReportManager$EventName
   public static final String PAGE_FRAME_LOAD_END = "pageframeloadend";
   public static final String PAGE_FRAME_LOAD_START = "pageframeloadstart";
   public static final String PAGE_HIDE = "pagehide";
+  public static final String PAGE_JS_END = "page_js_end";
+  public static final String PAGE_JS_START = "page_js_start";
+  public static final String PAGE_LOAD_END = "pageloadend";
+  public static final String PAGE_LOAD_RESULT = "page_load_result";
   public static final String PAGE_SHOW = "pageshow";
   public static final String PRELOAD_PROCESS = "preloadprocess";
   public static final String PRELOAD_PROCESS_END = "preload_process_end";
@@ -132,7 +140,7 @@ public class MiniReportManager$EventName
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniReportManager.EventName
  * JD-Core Version:    0.7.0.1
  */

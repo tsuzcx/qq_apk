@@ -1,22 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.SlideActiveAnimController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class rhz
-  implements ValueAnimator.AnimatorUpdateListener
+class rhz
+  implements DialogInterface.OnClickListener
 {
-  public rhz(SlideActiveAnimController paramSlideActiveAnimController) {}
+  rhz(rhx paramrhx) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    SlideActiveAnimController.a(this.a).setAlpha(paramValueAnimator.floatValue());
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rhz
  * JD-Core Version:    0.7.0.1
  */

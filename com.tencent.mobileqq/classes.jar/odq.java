@@ -1,91 +1,59 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.ad.soft_ad.ReadInJoyCommonSoftAdBar;
 
-public class odq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class odq
+  implements odo
 {
-  public odq(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  odq(nor paramnor, ReadInJoyCommonSoftAdBar paramReadInJoyCommonSoftAdBar, Context paramContext) {}
   
-  public void onGlobalLayout()
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    Object localObject = new Rect();
-    ReadInJoyDeliverBiuActivity.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
-    int i = ReadInJoyDeliverBiuActivity.b(this.a).getRootView().getHeight();
-    int j = i - ((Rect)localObject).height();
-    boolean bool;
-    if (j > 100)
+    if (paramString != null)
     {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout screenHeight:" + i + ", ExternalPanelheight:" + j + ", isShowKeybroad:" + bool);
-      }
-      i = ReadInJoyDeliverBiuActivity.a(this.a).getHeight();
-      if (bool == ReadInJoyDeliverBiuActivity.a(this.a)) {
-        break label394;
-      }
-      if (j > ReadInJoyDeliverBiuActivity.a(this.a)) {
-        ReadInJoyDeliverBiuActivity.a(this.a, j);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + ReadInJoyDeliverBiuActivity.b(this.a));
-      }
-      j = i - ReadInJoyDeliverBiuActivity.c(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.d(this.a) + ", maxHeight:" + j);
-      }
-      ReadInJoyDeliverBiuActivity.a(this.a).setMaxHeight(j);
-      ReadInJoyDeliverBiuActivity.a(this.a, bool);
-      localObject = this.a;
-      if (i >= ReadInJoyDeliverBiuActivity.e(this.a)) {
-        break label372;
-      }
-      j = i;
-      label283:
-      ReadInJoyDeliverBiuActivity.b((ReadInJoyDeliverBiuActivity)localObject, j);
-      localObject = this.a;
-      if (i <= ReadInJoyDeliverBiuActivity.f(this.a)) {
-        break label383;
-      }
-      label307:
-      ReadInJoyDeliverBiuActivity.c((ReadInJoyDeliverBiuActivity)localObject, i);
-    }
-    for (;;)
-    {
-      ReadInJoyDeliverBiuActivity.d(this.a, ReadInJoyDeliverBiuActivity.h(this.a));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mExternalPanelheight:" + ReadInJoyDeliverBiuActivity.g(this.a));
-      }
-      return;
-      bool = false;
-      break;
-      label372:
-      j = ReadInJoyDeliverBiuActivity.e(this.a);
-      break label283;
-      label383:
-      i = ReadInJoyDeliverBiuActivity.f(this.a);
-      break label307;
-      label394:
-      if ((ReadInJoyDeliverBiuActivity.g(this.a) != ReadInJoyDeliverBiuActivity.h(this.a)) && (i == ReadInJoyDeliverBiuActivity.f(this.a)))
+      if (paramString.equalsIgnoreCase("soft_btn"))
       {
-        i -= ReadInJoyDeliverBiuActivity.h(this.a);
-        j = i - ReadInJoyDeliverBiuActivity.i(this.a);
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.j(this.a) + ", maxHeight:" + j);
+        if (this.jdField_a_of_type_Nor != null)
+        {
+          paramString = this.jdField_a_of_type_Nor.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar.a);
+          odp.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar, this.jdField_a_of_type_Nor, 1);
+          if (paramString != null) {
+            paramString.o();
+          }
         }
-        ReadInJoyDeliverBiuActivity.b(this.a).setMaxHeight(j);
+        return;
       }
+      if (paramString.equalsIgnoreCase("soft_progress"))
+      {
+        if (this.jdField_a_of_type_Nor != null)
+        {
+          paramString = this.jdField_a_of_type_Nor.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar.a);
+          if (paramString != null) {
+            paramString.p();
+          }
+        }
+        odp.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar, this.jdField_a_of_type_Nor, 1);
+        return;
+      }
+      odp.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar, this.jdField_a_of_type_Nor, 0);
+      return;
     }
+    switch (paramInt2)
+    {
+    default: 
+      return;
+    case 2131366263: 
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar.getVisibility() == 0)) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar.setVisibility(8);
+      }
+      odp.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar, this.jdField_a_of_type_Nor, 3, true);
+      return;
+    }
+    odp.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdSoft_adReadInJoyCommonSoftAdBar, this.jdField_a_of_type_Nor, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     odq
  * JD-Core Version:    0.7.0.1
  */

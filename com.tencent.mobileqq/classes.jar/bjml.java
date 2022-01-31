@@ -1,22 +1,42 @@
-import android.graphics.PointF;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.remote.IServiceHandler.Stub;
+import cooperation.qzone.remote.RemoteServiceProxy;
+import cooperation.qzone.remote.SendMsg;
 
 public class bjml
-  extends lqn
+  implements ServiceConnection
 {
-  public bjml(CropVideoActivity paramCropVideoActivity) {}
+  public bjml(RemoteServiceProxy paramRemoteServiceProxy) {}
   
-  public boolean a(lql paramlql)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    float f1 = paramlql.a().x;
-    float f2 = paramlql.a().y;
-    CropVideoActivity.a(this.a).a(f1, f2, 0.0F);
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
+    }
+    this.a.serviceHandler = IServiceHandler.Stub.asInterface(paramIBinder);
+    if (RemoteServiceProxy.access$000(this.a) != null)
+    {
+      paramComponentName = new SendMsg("cmd.registerListener");
+      paramComponentName.actionListener = RemoteServiceProxy.access$000(this.a);
+      this.a.sendMsg(paramComponentName);
+    }
+    this.a.onBaseServiceConnected();
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
+    }
+    this.a.serviceHandler = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjml
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.troop.enterEffect;
 
-import azrn;
-import azrv;
-import azrw;
+import bbpw;
+import bbqe;
+import bbqf;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopEnterEffectController$4$1
   implements Runnable
 {
-  public TroopEnterEffectController$4$1(azrv paramazrv, int paramInt, azrw paramazrw) {}
+  public TroopEnterEffectController$4$1(bbqe parambbqe, int paramInt, bbqf parambbqf) {}
   
   public void run()
   {
-    QLog.d("TroopEnterEffect.Controller", 2, "download Res isAIO = " + this.jdField_a_of_type_Azrv.a.a);
-    if (this.jdField_a_of_type_Azrv.a.a)
+    QLog.d("TroopEnterEffect.Controller", 2, "download Res isAIO = " + this.jdField_a_of_type_Bbqe.a.a);
+    if (this.jdField_a_of_type_Bbqe.a.a)
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopEnterEffect.Controller", 2, "download Res callback success id = " + this.jdField_a_of_type_Int + " showAnimation");
       }
-      this.jdField_a_of_type_Azrv.a.a(this.jdField_a_of_type_Azrw);
+      this.jdField_a_of_type_Bbqe.a.a(this.jdField_a_of_type_Bbqf);
     }
   }
 }

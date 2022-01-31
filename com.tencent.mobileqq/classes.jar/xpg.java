@@ -1,80 +1,39 @@
-import android.app.Activity;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Gallery;
 
-class xpg
-  implements xps
+final class xpg
+  extends xos
 {
-  xpg(xpf paramxpf) {}
+  xpg(xos paramxos, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void b()
+  public void onFailure(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "gallery onEnterAnimationEnd");
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
     }
-    if (this.a.jdField_a_of_type_ComTencentWidgetGallery.getVisibility() != 0) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
+    this.jdField_a_of_type_Xos.onFailure(paramString);
+    if ((this.jdField_a_of_type_Xos instanceof ukz)) {
+      ((ukz)this.jdField_a_of_type_Xos).a(941004);
     }
-    this.a.b();
-    if ((this.a.jdField_a_of_type_Xpr != null) && (!this.a.jdField_a_of_type_Xpr.a())) {
-      this.a.jdField_a_of_type_Xpr.a();
-    }
+    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 failed message：" + paramString);
   }
   
-  public void c()
+  public void onStart()
   {
-    if (this.a.jdField_a_of_type_Xpw.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    this.a.c();
-    if ((this.a.jdField_a_of_type_Xpr != null) && (this.a.jdField_a_of_type_Xpr.a())) {
-      this.a.jdField_a_of_type_Xpr.b();
-    }
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 start");
   }
   
-  public void d()
+  public void onSuccess(String paramString)
   {
-    if (this.a.jdField_a_of_type_Xpw.a().b) {
-      this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(4);
-    }
-    if (this.a.jdField_a_of_type_Xpe != null) {
-      this.a.jdField_a_of_type_Xpe.a(4);
-    }
-    if ((this.a.jdField_a_of_type_Xpr != null) && (this.a.jdField_a_of_type_Xpr.a())) {
-      this.a.jdField_a_of_type_Xpr.b();
-    }
-    this.a.d();
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.e();
-  }
-  
-  public void e()
-  {
-    this.a.e();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("gallery onExitAnimationEnd ");
-      if (this.a.jdField_a_of_type_Xpw.a() != this.a) {
-        break label87;
-      }
-    }
-    label87:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("GalleryComponent", 2, bool);
-      if (this.a.jdField_a_of_type_Xpw.a() != this.a) {
-        break;
-      }
-      this.a.jdField_a_of_type_AndroidAppActivity.finish();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentWidgetGallery.setVisibility(0);
-    this.a.l();
+    long l1 = System.currentTimeMillis();
+    long l2 = this.b;
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getAudioFromMp4 success cost：" + String.valueOf(l1 - l2) + "ms\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpg
  * JD-Core Version:    0.7.0.1
  */

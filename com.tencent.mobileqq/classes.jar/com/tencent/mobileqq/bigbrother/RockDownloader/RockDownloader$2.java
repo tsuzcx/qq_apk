@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.bigbrother.RockDownloader;
 
-import ajya;
-import amal;
-import amam;
+import alpo;
 import android.text.TextUtils;
-import auko;
-import aukp;
+import anrk;
+import anrl;
+import awbv;
+import awbw;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.data.RockDownloadInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -20,7 +20,7 @@ public final class RockDownloader$2
   
   public void run()
   {
-    Object localObject = amam.a().a(RockDownloadInfo.class, true, "businessName=? AND packageName=?", new String[] { this.a.getDownloadInfo().businessName, this.a.getDownloadInfo().packageName }, null, null, null, null);
+    Object localObject = anrl.a().a(RockDownloadInfo.class, true, "businessName=? AND packageName=?", new String[] { this.a.getDownloadInfo().businessName, this.a.getDownloadInfo().packageName }, null, null, null, null);
     ArrayList localArrayList = new ArrayList();
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
@@ -30,10 +30,10 @@ public final class RockDownloader$2
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        auko localauko = (auko)((Iterator)localObject).next();
-        if ((localauko instanceof RockDownloadInfo))
+        awbv localawbv = (awbv)((Iterator)localObject).next();
+        if ((localawbv instanceof RockDownloadInfo))
         {
-          RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)localauko;
+          RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)localawbv;
           if ((!TextUtils.isEmpty(localRockDownloadInfo.localPath)) && (new VFSFile(localRockDownloadInfo.localPath).exists()))
           {
             localArrayList.add(localRockDownloadInfo);
@@ -41,9 +41,9 @@ public final class RockDownloader$2
           else
           {
             if (QLog.isColorLevel()) {
-              QLog.d("RockDownloader", 2, new Object[] { "File Removed: ", localauko.toString() });
+              QLog.d("RockDownloader", 2, new Object[] { "File Removed: ", localawbv.toString() });
             }
-            amam.a().b(localRockDownloadInfo);
+            anrl.a().b(localRockDownloadInfo);
           }
         }
       }
@@ -57,12 +57,12 @@ public final class RockDownloader$2
     else {
       return;
     }
-    this.a.getQueryAPKListener().a(this.a.getDownloadInfo(), ajya.a(2131713498), 10002);
+    this.a.getQueryAPKListener().a(this.a.getDownloadInfo(), alpo.a(2131713870), 10002);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloader.2
  * JD-Core Version:    0.7.0.1
  */

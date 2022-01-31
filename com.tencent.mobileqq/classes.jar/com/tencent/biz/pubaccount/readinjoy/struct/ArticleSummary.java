@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import auko;
-import qdx;
+import awbv;
+import qnu;
 
 public class ArticleSummary
-  extends auko
+  extends awbv
 {
   public int adsJumpType;
   public String adsJumpUrl;
@@ -31,7 +31,7 @@ public class ArticleSummary
   public String title;
   public int uint32_adsSource;
   public int videoCommentCount;
-  public qdx videoData;
+  public qnu videoData;
   public int videoPlayCount;
   public String videoReportInfo;
   public String videoSubscriptColor;
@@ -39,7 +39,7 @@ public class ArticleSummary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ArticleSummary
  * JD-Core Version:    0.7.0.1
  */

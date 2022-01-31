@@ -4,9 +4,9 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import osx;
-import ota;
-import sgg;
+import oxp;
+import oxs;
+import syb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class ReadinjoySPEventReport$3
@@ -16,7 +16,7 @@ public final class ReadinjoySPEventReport$3
   
   public void run()
   {
-    if ((!this.a) && (!osx.c())) {}
+    if ((!this.a) && (!oxp.c())) {}
     label285:
     label293:
     label299:
@@ -26,12 +26,12 @@ public final class ReadinjoySPEventReport$3
       return;
       if (this.a)
       {
-        osx.c(System.currentTimeMillis());
-        osx.a(true);
+        oxp.c(System.currentTimeMillis());
+        oxp.a(true);
       }
-      osx.b(this.a);
+      oxp.b(this.a);
       Object localObject;
-      if (osx.b(9))
+      if (oxp.b(9))
       {
         ArrayList localArrayList = new ArrayList();
         oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
@@ -46,7 +46,7 @@ public final class ReadinjoySPEventReport$3
         localArrayList.add(localAttributeList);
         if (!this.a)
         {
-          long l = osx.e();
+          long l = oxp.e();
           l = (System.currentTimeMillis() - l) / 1000L;
           localObject = new oidb_cmd0x80a.AttributeList();
           ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
@@ -57,7 +57,7 @@ public final class ReadinjoySPEventReport$3
           localAttributeList.att_id.set(3);
           localAttributeList.att_name.set("isScreenTime");
           localPBStringField = localAttributeList.att_value;
-          if (!osx.d()) {
+          if (!oxp.d()) {
             break label293;
           }
           localObject = "1";
@@ -65,32 +65,32 @@ public final class ReadinjoySPEventReport$3
           localPBStringField.set((String)localObject);
           localArrayList.add(localAttributeList);
         }
-        sgg.a(9, localArrayList);
+        syb.a(9, localArrayList);
         if (!this.a) {
           break label299;
         }
-        osx.d(System.currentTimeMillis());
-        osx.c(0);
+        oxp.d(System.currentTimeMillis());
+        oxp.c(0);
       }
       for (;;)
       {
-        if (ota.a != 1) {
+        if (oxs.a != 1) {
           break label304;
         }
-        osx.d(false);
+        oxp.d(false);
         return;
         localObject = String.valueOf(0);
         break;
         localObject = "0";
         break label231;
-        osx.a();
+        oxp.a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.3
  * JD-Core Version:    0.7.0.1
  */

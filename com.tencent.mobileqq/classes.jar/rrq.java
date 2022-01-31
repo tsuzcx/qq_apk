@@ -1,22 +1,22 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
-import com.tencent.widget.AdapterView;
+import android.util.Pair;
+import java.net.URL;
 
 public class rrq
-  implements bfpt
 {
-  public rrq(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
+  public Pair<Integer, Integer> a;
+  public URL a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static rrq a(URL paramURL, Pair<Integer, Integer> paramPair)
   {
-    if ((!this.a.a()) && (this.a.isEnabled()) && (ReadInJoyDynamicGridView.a(this.a) != null)) {
-      ReadInJoyDynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-    }
+    rrq localrrq = new rrq();
+    localrrq.jdField_a_of_type_JavaNetURL = paramURL;
+    localrrq.jdField_a_of_type_AndroidUtilPair = paramPair;
+    return localrrq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rrq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,7 @@
-public class lcs
-{
-  public int a;
-  public String a;
-  
-  public lcs()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-}
+public class lcs {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lcs
  * JD-Core Version:    0.7.0.1
  */

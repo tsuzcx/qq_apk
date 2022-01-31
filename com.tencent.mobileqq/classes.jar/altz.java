@@ -1,16 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-public class altz
+class altz
+  implements Comparator<PhoneContact>
 {
-  public ImageView a;
-  public TextView a;
-  public String a;
-  public ImageView b;
+  altz(alty paramalty) {}
+  
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  {
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     altz
  * JD-Core Version:    0.7.0.1
  */

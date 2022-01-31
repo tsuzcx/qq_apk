@@ -101,6 +101,7 @@ public class MainService
         localObject = (Class)this.mRequestServlets.remove(Integer.valueOf(paramToServiceMsg.getAppSeq()));
         l2 = paramToServiceMsg.extraData.getLong("sendTime");
         l2 = System.currentTimeMillis() - l2;
+        paramFromServiceMsg.addAttribute("msf_receive", Long.valueOf(System.currentTimeMillis()));
         if (paramFromServiceMsg.isSuccess())
         {
           if (QLog.isColorLevel()) {
@@ -113,7 +114,7 @@ public class MainService
           str1 = (String)paramToServiceMsg.getAttribute("from_where");
           str2 = (String)paramToServiceMsg.getAttribute("mainaccount");
           i = 0;
-          label248:
+          label262:
           int j = 0;
           if ("0".equals(paramFromServiceMsg.getUin()))
           {
@@ -132,12 +133,12 @@ public class MainService
             if ((this.reportThreshold == -1) && (um != null))
             {
               if (!um.whetherReportDuringThisStartup(7)) {
-                break label1134;
+                break label1148;
               }
               this.reportThreshold = um.getThreshold(7);
               um.setMonitoredThread(7, Thread.currentThread(), null);
             }
-            label506:
+            label520:
             if ((um != null) && (um.whetherStackEnabled(7))) {
               um.reportStackIfTimeout(7);
             }
@@ -162,7 +163,7 @@ public class MainService
             if (this.reportThreshold > 0)
             {
               if (l2 <= this.reportThreshold) {
-                break label1143;
+                break label1157;
               }
               if (um.whetherReportThisTime(7)) {
                 um.addEvent(7, paramFromServiceMsg.getServiceCmd(), (int)l2, this.umNotReported, null);
@@ -209,11 +210,11 @@ public class MainService
         }
         i = 1;
         localObject = null;
-        break label248;
-        label1134:
+        break label262;
+        label1148:
         this.reportThreshold = -2;
-        break label506;
-        label1143:
+        break label520;
+        label1157:
         if (um.whetherStackEnabled(7)) {
           um.notifyNotTimeout(7);
         }

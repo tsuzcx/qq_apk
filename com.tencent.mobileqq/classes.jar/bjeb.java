@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-
 public abstract interface bjeb
 {
-  public abstract void a(int paramInt, boolean paramBoolean, Object paramObject);
-  
-  public abstract void a(MusicItemInfo paramMusicItemInfo);
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjeb
  * JD-Core Version:    0.7.0.1
  */

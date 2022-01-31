@@ -1,41 +1,20 @@
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 
-public abstract class bbom
-  extends RecyclerView.OnScrollListener
+class bbom
+  implements bevo
 {
-  private boolean a;
+  bbom(bboe parambboe, TroopFileTransferManager paramTroopFileTransferManager, String paramString1, String paramString2, long paramLong, int paramInt) {}
   
-  public abstract void a();
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(int paramInt)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    GridLayoutManager localGridLayoutManager = (GridLayoutManager)paramRecyclerView.getLayoutManager();
-    if (paramInt == 0)
-    {
-      paramInt = localGridLayoutManager.findLastCompletelyVisibleItemPosition();
-      if ((((bboj)paramRecyclerView.getAdapter()).a(paramInt).a == 4) && (this.a)) {
-        a();
-      }
-    }
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if (paramInt2 > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.a = bool;
-      return;
+    if (paramInt == 2) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbom
  * JD-Core Version:    0.7.0.1
  */

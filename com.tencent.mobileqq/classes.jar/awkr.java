@@ -1,24 +1,15 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import java.util.List;
 
-class awkr
-  implements View.OnClickListener
+public abstract interface awkr
 {
-  awkr(awkq paramawkq, String paramString) {}
+  public abstract void a(long paramLong, awkq paramawkq);
   
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.jdField_a_of_type_Awkq.a.getActivity(), QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Awkq.a.startActivity(paramView);
-  }
+  public abstract void a(List<PersonalityLabelPhoto> paramList, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awkr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.mobileqq.multiaio.widget.TabPageIndicator;
+import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aspg
-  implements asqw
+public final class aspg
+  extends bdvu
 {
-  public aspg(MultiAIOFragment paramMultiAIOFragment) {}
+  public aspg(String paramString) {}
   
-  public void a(boolean paramBoolean)
+  public void onDone(bdvv parambdvv)
   {
-    MultiAIOFragment.a(this.a).setViewPagerBusy(paramBoolean);
+    PayLikeFloatViewBuilder.a(false);
+    if (parambdvv.a == 0)
+    {
+      parambdvv = new File(this.a + ".tmp");
+      if (parambdvv.exists()) {
+        parambdvv.renameTo(new File(this.a));
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aspg
  * JD-Core Version:    0.7.0.1
  */

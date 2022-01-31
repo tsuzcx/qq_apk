@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.recent;
 
-import ahkd;
-import ahlk;
-import aukp;
-import aukq;
-import axuj;
+import ajbm;
+import ajct;
+import awbw;
+import awbx;
+import azqd;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ExpiredPushBanner;
@@ -13,13 +13,13 @@ import java.util.List;
 public class BannerManager$37$1
   implements Runnable
 {
-  public BannerManager$37$1(ahlk paramahlk, int paramInt, List paramList) {}
+  public BannerManager$37$1(ajct paramajct, int paramInt, List paramList) {}
   
   public void run()
   {
     int k = 0;
-    aukp localaukp = ahkd.a(this.jdField_a_of_type_Ahlk.a).app.getEntityManagerFactory().createEntityManager();
-    Object localObject = localaukp.a(ExpiredPushBanner.class, false, null, null, null, null, "endtime", null);
+    awbw localawbw = ajbm.a(this.jdField_a_of_type_Ajct.a).app.getEntityManagerFactory().createEntityManager();
+    Object localObject = localawbw.a(ExpiredPushBanner.class, false, null, null, null, null, "endtime", null);
     int j = k;
     if (localObject != null)
     {
@@ -34,30 +34,30 @@ public class BannerManager$37$1
           if (i >= m) {
             break;
           }
-          localaukp.b((ExpiredPushBanner)((List)localObject).get(i));
+          localawbw.b((ExpiredPushBanner)((List)localObject).get(i));
           i += 1;
         }
       }
     }
     while (j < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localObject = (axuj)this.jdField_a_of_type_JavaUtilList.get(j);
+      localObject = (azqd)this.jdField_a_of_type_JavaUtilList.get(j);
       if (localObject != null)
       {
         long l2 = 0L;
         long l1 = l2;
-        if (((axuj)localObject).c != null)
+        if (((azqd)localObject).c != null)
         {
           l1 = l2;
-          if (((axuj)localObject).c.contains("|")) {
-            l1 = Long.parseLong(((axuj)localObject).c.substring(((axuj)localObject).c.indexOf("|") + 1));
+          if (((azqd)localObject).c.contains("|")) {
+            l1 = Long.parseLong(((azqd)localObject).c.substring(((azqd)localObject).c.indexOf("|") + 1));
           }
         }
         ExpiredPushBanner localExpiredPushBanner = new ExpiredPushBanner();
-        localExpiredPushBanner.cid = Long.parseLong(((axuj)localObject).a);
-        localExpiredPushBanner.md5 = ((axuj)localObject).m;
+        localExpiredPushBanner.cid = Long.parseLong(((azqd)localObject).a);
+        localExpiredPushBanner.md5 = ((azqd)localObject).m;
         localExpiredPushBanner.endtime = l1;
-        localaukp.a(localExpiredPushBanner);
+        localawbw.a(localExpiredPushBanner);
       }
       j += 1;
     }
@@ -65,7 +65,7 @@ public class BannerManager$37$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.BannerManager.37.1
  * JD-Core Version:    0.7.0.1
  */

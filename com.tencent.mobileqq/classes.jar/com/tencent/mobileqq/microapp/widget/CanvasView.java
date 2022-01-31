@@ -22,7 +22,7 @@ import android.graphics.Typeface;
 import android.os.Build.VERSION;
 import android.view.MotionEvent;
 import android.view.View;
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.mobileqq.microapp.appbrand.page.PageWebview;
@@ -135,7 +135,7 @@ public class CanvasView
       }
       localObject2 = ((JSONArray)localObject3).optString(0);
       localObject1 = localObject2;
-      if (!bbkk.a((String)localObject2))
+      if (!bdje.a((String)localObject2))
       {
         if (!((String)localObject2).startsWith("wxfile")) {
           break label327;
@@ -146,7 +146,7 @@ public class CanvasView
       if (QLog.isColorLevel()) {
         QLog.i("drawCanvas", 2, "dataPath: " + (String)localObject1);
       }
-      if (!bbkk.a((String)localObject1))
+      if (!bdje.a((String)localObject1))
       {
         localObject1 = com.tencent.mobileqq.microapp.b.a.i((String)localObject1);
         if (localObject1 != null)
@@ -732,7 +732,7 @@ public class CanvasView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.CanvasView
  * JD-Core Version:    0.7.0.1
  */

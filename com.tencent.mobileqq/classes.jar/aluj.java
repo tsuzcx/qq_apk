@@ -1,18 +1,29 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.content.Intent;
+import com.dataline.activities.PrinterActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.ArrayList;
 
 class aluj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements army
 {
-  aluj(alui paramalui) {}
+  aluj(aluh paramaluh, BaseActivity paramBaseActivity, String paramString) {}
   
-  public void onGlobalLayout()
+  public void a()
   {
-    alui.a(this.a);
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, PrinterActivity.class);
+    localIntent.putExtra(bdaq.h, 55);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.jdField_a_of_type_JavaLangString);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
+    azmj.b(this.jdField_a_of_type_Aluh.a, "CliOper", "", "", "0X8004059", "0X8004059", 0, 0, "", "", "", "");
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aluj
  * JD-Core Version:    0.7.0.1
  */

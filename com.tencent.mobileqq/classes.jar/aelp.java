@@ -1,87 +1,200 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 
 public class aelp
+  implements alzv
 {
-  public static int a(int paramInt)
-  {
-    int i = 5;
-    QLog.i("ViewHolderFactory", 2, "CFT-debug messageType = " + paramInt);
-    if (paramInt == 6) {
-      i = 1;
-    }
-    while (paramInt == 14) {
-      return i;
-    }
-    if ((paramInt == 13) || (paramInt == 15)) {
-      return 2;
-    }
-    if ((paramInt == 4) || (paramInt == 5)) {
-      return 3;
-    }
-    if (paramInt == 2001) {
-      return 4;
-    }
-    if ((paramInt == 7) || (paramInt == 8) || (paramInt == 11) || (paramInt == 12)) {
-      return 6;
-    }
-    if (paramInt == 2002) {
-      return 7;
-    }
-    if (paramInt == 18) {
-      return 8;
-    }
-    if (paramInt == 19) {
-      return 9;
-    }
-    if (paramInt == 21) {
-      return 10;
-    }
-    if (paramInt == 22) {
-      return 11;
-    }
-    if (paramInt == 23) {
-      return 12;
-    }
-    return 0;
-  }
+  public int a;
+  public BaseChatItemLayout a;
+  public TroopInfo a;
+  public boolean a;
   
-  public static aekw a(QQAppInterface paramQQAppInterface, aelj paramaelj, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, acvf paramacvf)
+  private aelp(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    switch (paramInt)
+    Object localObject1 = (aelt)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getTag();
+    Object localObject4;
+    Object localObject2;
+    bbpp localbbpp;
+    Object localObject3;
+    int i;
+    int j;
+    label87:
+    boolean bool2;
+    boolean bool1;
+    if ((paramTroopMemberInfo != null) && (TextUtils.equals(((aelt)localObject1).a.senderuin, paramTroopMemberInfo.memberuin)))
     {
-    default: 
-      return new aekr(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
-    case 1: 
-      return new aeky(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
-    case 5: 
-      return new aekz(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
-    case 2: 
-      return new aelr(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
-    case 3: 
-      return new aelo(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
-    case 4: 
-      return new aelq(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
-    case 6: 
-      return new aelm(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
-    case 7: 
-      return new aeku(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
-    case 8: 
-      return new aekx(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
-    case 9: 
-      return new aekt(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
-    case 10: 
-      return new aell(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
-    case 11: 
-      return new aeks(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+      localObject4 = null;
+      localObject2 = null;
+      localbbpp = null;
+      localObject3 = null;
+      localObject1 = null;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isQidianPrivateTroop())) {
+        break label367;
+      }
+      i = 1;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isHomeworkTroop())) {
+        break label372;
+      }
+      j = 1;
+      bool2 = azib.b();
+      if (!bool2) {
+        break label382;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null) {
+        break label631;
+      }
+      bool1 = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isTroopOwner(paramTroopMemberInfo.memberuin);
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator.contains(paramTroopMemberInfo.memberuin))) {
+        break label377;
+      }
+      i = 1;
+      label146:
+      localObject2 = bbpo.a().a(paramTroopMemberInfo, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+      if ((localObject2 == null) || ((i == 0) && (!bool1))) {
+        break label626;
+      }
+      localObject1 = ((bbpp)localObject2).a;
+      i = ((bbpp)localObject2).b;
+      label186:
+      if (this.jdField_a_of_type_Boolean) {
+        i = bbpo.a().jdField_a_of_type_Int;
+      }
     }
-    return new aekv(paramQQAppInterface, paramaelj, paramQQWalletTransferMsgElem, paramInt, paramacvf);
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
+        if (!bool2)
+        {
+          localObject2 = localObject1;
+          if (1 == this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.cGroupRankUserFlag) {}
+        }
+        else
+        {
+          localObject2 = localObject1;
+          if (j == 0)
+          {
+            bool1 = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isTroopOwner(paramTroopMemberInfo.memberuin);
+            if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator == null) || (!this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator.contains(paramTroopMemberInfo.memberuin))) {
+              break label577;
+            }
+            j = 1;
+            label281:
+            localObject2 = "";
+            if (!bool1) {
+              break label582;
+            }
+            localObject2 = alpo.a(2131721111);
+          }
+        }
+      }
+      label297:
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setTroopMemberLevel(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a, true, (String)localObject2, false, i, this.jdField_a_of_type_Int);
+        BaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder, true);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.c.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.c.setTag(Integer.valueOf(2131364209));
+      }
+      return;
+      label367:
+      i = 0;
+      break;
+      label372:
+      j = 0;
+      break label87;
+      label377:
+      i = 0;
+      break label146;
+      label382:
+      if (i != 0)
+      {
+        boolean bool3 = this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isTroopOwner(paramTroopMemberInfo.memberuin);
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator != null) && (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.Administrator.contains(paramTroopMemberInfo.memberuin)))
+        {
+          bool1 = true;
+          localbbpp = bbpo.a().a(bool3, bool1);
+          if (localbbpp == null) {
+            break label617;
+          }
+          localObject1 = localbbpp.a;
+          i = localbbpp.b;
+        }
+      }
+      for (;;)
+      {
+        label429:
+        break;
+        bool1 = false;
+        break label429;
+        if (j != 0)
+        {
+          localObject2 = bbpo.a().a(paramTroopMemberInfo.level, false, false, false);
+          if ((localObject2 == null) || (!bcgk.a(paramTroopMemberInfo))) {
+            break label608;
+          }
+          localObject1 = ((bbpp)localObject2).a;
+          i = ((bbpp)localObject2).b;
+        }
+        for (;;)
+        {
+          if (this.jdField_a_of_type_Boolean) {
+            i = bbpo.a().jdField_a_of_type_Int;
+          }
+          break;
+          localObject2 = bbpo.a().a(paramTroopMemberInfo, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+          if (localObject2 != null)
+          {
+            localObject1 = ((bbpp)localObject2).a;
+            i = ((bbpp)localObject2).b;
+          }
+          for (;;)
+          {
+            if (this.jdField_a_of_type_Boolean)
+            {
+              i = bbpo.a().jdField_a_of_type_Int;
+              break;
+              label577:
+              j = 0;
+              break label281;
+              label582:
+              if (j == 0) {
+                break label297;
+              }
+              localObject2 = alpo.a(2131721108);
+              break label297;
+            }
+            break;
+            i = 0;
+            localObject1 = localObject3;
+          }
+          label608:
+          i = 0;
+          localObject1 = localbbpp;
+        }
+        label617:
+        i = 0;
+        localObject1 = localObject2;
+      }
+      label626:
+      i = 0;
+      break label186;
+      label631:
+      i = 0;
+      localObject1 = localObject4;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelp
  * JD-Core Version:    0.7.0.1
  */

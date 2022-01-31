@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.mini.entry;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 public class MiniAppEntity
-  extends auko
+  extends awbv
 {
   public static final String TAG = "MiniAppEntity";
-  @aumc
+  @awdj
   public String appId;
   public byte[] appInfo;
   public String name;
@@ -236,7 +236,7 @@ public class MiniAppEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppEntity
  * JD-Core Version:    0.7.0.1
  */

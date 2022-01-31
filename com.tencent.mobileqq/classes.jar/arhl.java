@@ -1,18 +1,20 @@
-import com.tencent.common.app.AppInterface;
-
 class arhl
-  implements arhr
+  implements army
 {
-  arhl(arhk paramarhk, AppInterface paramAppInterface) {}
+  arhl(arhj paramarhj) {}
   
   public void a()
   {
-    this.jdField_a_of_type_Arhk.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if (arhj.a(this.a) != null) {
+      arhj.a(this.a);
+    }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arhl
  * JD-Core Version:    0.7.0.1
  */

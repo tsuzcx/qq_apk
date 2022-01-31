@@ -1,14 +1,14 @@
 package com.tencent.qqmini.proxyimpl;
 
-import bdld;
-import beyp;
+import bfka;
+import bgxk;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 class MiniAppProxyImpl$12
-  implements bdld
+  implements bfka
 {
   MiniAppProxyImpl$12(MiniAppProxyImpl paramMiniAppProxyImpl) {}
   
@@ -17,7 +17,7 @@ class MiniAppProxyImpl$12
     if ((MiniAppProxyImpl.access$1200(this.this$0) != null) && (MiniAppProxyImpl.access$1300(this.this$0) != null) && (MiniAppProxyImpl.access$1200(this.this$0).equals(paramString1)) && (MiniAppProxyImpl.access$1300(this.this$0).equals(paramString2)))
     {
       QLog.d("MiniAppProxyImpl", 1, "installSucceed: " + paramString1 + "; pkgname : " + paramString2);
-      beyp.a(MiniAppProxyImpl.access$1100(this.this$0), null, "launchapp", "installapp", "qqdownload");
+      bgxk.a(MiniAppProxyImpl.access$1100(this.this$0), null, "launchapp", "installapp", "qqdownload");
     }
   }
   
@@ -41,7 +41,7 @@ class MiniAppProxyImpl$12
     {
       QLog.d("MiniAppProxyImpl", 1, "onDownloadFinish");
       AppBrandTask.runTaskOnUiThread(new MiniAppProxyImpl.12.1(this));
-      beyp.a(MiniAppProxyImpl.access$1100(this.this$0), null, "launchapp", "downloadappfinish", "qqdownload");
+      bgxk.a(MiniAppProxyImpl.access$1100(this.this$0), null, "launchapp", "downloadappfinish", "qqdownload");
     }
   }
   
@@ -50,7 +50,7 @@ class MiniAppProxyImpl$12
     if ((MiniAppProxyImpl.access$1000(this.this$0) != null) && (paramDownloadInfo != null) && (MiniAppProxyImpl.access$1000(this.this$0).equals(paramDownloadInfo.d)))
     {
       QLog.d("MiniAppProxyImpl", 1, "onDownloadPause");
-      beyp.a(MiniAppProxyImpl.access$1100(this.this$0), null, "launchapp", "downloadapppause", "qqdownload");
+      bgxk.a(MiniAppProxyImpl.access$1100(this.this$0), null, "launchapp", "downloadapppause", "qqdownload");
     }
   }
   
@@ -69,7 +69,7 @@ class MiniAppProxyImpl$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.12
  * JD-Core Version:    0.7.0.1
  */

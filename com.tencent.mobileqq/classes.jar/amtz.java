@@ -1,89 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.image.SafeBitmapFactory;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
-public class amtz
-  extends ampa<amty>
+class amtz
+  extends amvb
 {
-  public int a()
-  {
-    return 251;
-  }
-  
-  @NonNull
-  public amty a(int paramInt)
-  {
-    return new amty();
-  }
-  
-  @Nullable
-  public amty a(amph[] paramArrayOfamph)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicCommonConfProcessor", 2, "onParsed " + paramArrayOfamph.length);
-    }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfamph != null)
-    {
-      localObject1 = localObject2;
-      if (paramArrayOfamph.length > 0) {
-        localObject1 = amty.a(paramArrayOfamph);
-      }
-    }
-    return localObject1;
-  }
-  
-  public Class<amty> a()
-  {
-    return amty.class;
-  }
+  amtz(amtv paramamtv) {}
   
   public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PicCommonConfProcessor", 2, "onReqFailed " + paramInt);
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadSuccess success " + paramInt);
     }
+    if (amtv.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadSuccess error mHandler is null ");
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 10;
+    localMessage.arg1 = paramInt;
+    amtv.a(this.a).sendMessage(localMessage);
   }
   
-  public void a(amty paramamty)
+  public void a(int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PicCommonConfProcessor", 2, "onUpdate " + paramamty.toString());
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadProcess process " + paramInt1 + " : " + paramInt2);
     }
-    SafeBitmapFactory.setNeedRegionDecode(paramamty.jdField_a_of_type_Boolean);
-    SafeBitmapFactory.setPxThreshoidToSp(paramamty.jdField_a_of_type_Long);
-    SafeBitmapFactory.setRamThreshoidToSp(paramamty.jdField_a_of_type_Int);
-    SafeBitmapFactory.setThreadCountToSp(paramamty.jdField_b_of_type_Int);
-    ayxe.a(paramamty.jdField_b_of_type_Long);
-    ayxe.b(paramamty.jdField_c_of_type_Long);
-    ayxc.a(paramamty.jdField_c_of_type_Int);
+    if (amtv.a(this.a) == null) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 11;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    amtv.a(this.a).sendMessage(localMessage);
   }
   
-  public int b()
+  public void b(int paramInt1, int paramInt2)
   {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
-  
-  public boolean d()
-  {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "onMiniDownloadError " + paramInt1 + " : " + paramInt2);
+    }
+    if (amtv.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "onMiniDownloadError error mHandler is null ");
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 12;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    amtv.a(this.a).sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtz
  * JD-Core Version:    0.7.0.1
  */

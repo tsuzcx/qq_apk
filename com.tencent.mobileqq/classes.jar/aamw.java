@@ -1,54 +1,29 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
-import com.tencent.mobileqq.data.AppShareID;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 
 public class aamw
-  extends ajuf
+  implements aanf
 {
-  public aamw(BaseChatPie paramBaseChatPie) {}
-  
-  protected void a(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList)
+  public boolean a(aamm paramaamm, String paramString, String... paramVarArgs)
   {
-    if (this.a.A()) {}
-    do
+    Object localObject = null;
+    ymk localymk = ymk.a();
+    localymk.a();
+    localymk.j(new aamx(this, paramaamm, paramString, paramVarArgs, localymk));
+    if (paramaamm != null) {}
+    for (paramString = paramaamm.a();; paramString = null)
     {
-      do
-      {
-        do
-        {
-          return;
-          if (QLog.isDevelopLevel()) {
-            QLog.d("QQOperateVoIP", 4, "on showTips, chatactivity upadte ui");
-          }
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == paramInt)) {
-            break;
-          }
-        } while (!QLog.isDevelopLevel());
-        QLog.d("QQOperateVoIP", 4, "on showTips, uin dosenot equal");
-        return;
-        if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
-          break;
-        }
-      } while (!QLog.isDevelopLevel());
-      QLog.d("QQOperateVoIP", 4, "on showTips,tasklist is null");
-      return;
-    } while (this.a.jdField_a_of_type_Aeyo == null);
-    this.a.jdField_a_of_type_Aeyo.a(paramArrayList);
-  }
-  
-  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
-  {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Acup != null)) {
-      this.a.jdField_a_of_type_Acup.notifyDataSetChanged();
+      paramVarArgs = localObject;
+      if (paramaamm != null) {
+        paramVarArgs = paramaamm.a();
+      }
+      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getUserInfo", paramVarArgs);
+      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamw
  * JD-Core Version:    0.7.0.1
  */

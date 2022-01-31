@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import afji;
-import afjr;
-import afjs;
-import ajya;
-import akaa;
-import akbn;
-import akka;
+import ahgn;
+import ahgw;
+import ahgx;
+import alpo;
+import alro;
+import altc;
+import ambq;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -23,7 +23,7 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bcqf;
+import bepp;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.BaseForwardSelectionActivity;
 import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
@@ -33,15 +33,15 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class NewFriendActivity
   extends BaseForwardSelectionActivity
-  implements afji, View.OnClickListener
+  implements ahgn, View.OnClickListener
 {
   public static int a;
-  private afjs jdField_a_of_type_Afjs;
-  akbn jdField_a_of_type_Akbn;
+  private ahgx jdField_a_of_type_Ahgx;
+  altc jdField_a_of_type_Altc;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bcqf a;
+  public bepp a;
   private SystemMsgListView jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendSystemMsgListView;
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   private int jdField_b_of_type_Int;
@@ -79,7 +79,7 @@ public class NewFriendActivity
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839144);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839228);
       this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables();
       this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawablePadding();
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
@@ -90,29 +90,29 @@ public class NewFriendActivity
   
   public void a(int paramInt)
   {
-    if ((!isFinishing()) && (this.jdField_a_of_type_Bcqf == null))
+    if ((!isFinishing()) && (this.jdField_a_of_type_Bepp == null))
     {
-      this.jdField_a_of_type_Bcqf = new bcqf(this, getTitleBarHeight());
-      this.jdField_a_of_type_Bcqf.setOnDismissListener(new afjr(this));
-      this.jdField_a_of_type_Bcqf.c(paramInt);
-      this.jdField_a_of_type_Bcqf.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_Bcqf.setCancelable(false);
-      this.jdField_a_of_type_Bcqf.show();
+      this.jdField_a_of_type_Bepp = new bepp(this, getTitleBarHeight());
+      this.jdField_a_of_type_Bepp.setOnDismissListener(new ahgw(this));
+      this.jdField_a_of_type_Bepp.c(paramInt);
+      this.jdField_a_of_type_Bepp.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bepp.setCancelable(false);
+      this.jdField_a_of_type_Bepp.show();
     }
   }
   
   public boolean a()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Afjs.hasMessages(1))
+    if (this.jdField_a_of_type_Ahgx.hasMessages(1))
     {
-      this.jdField_a_of_type_Afjs.removeMessages(1);
+      this.jdField_a_of_type_Ahgx.removeMessages(1);
       bool = true;
     }
-    if (this.jdField_a_of_type_Bcqf != null)
+    if (this.jdField_a_of_type_Bepp != null)
     {
-      this.jdField_a_of_type_Bcqf.cancel();
-      this.jdField_a_of_type_Bcqf = null;
+      this.jdField_a_of_type_Bepp.cancel();
+      this.jdField_a_of_type_Bepp = null;
       return true;
     }
     return bool;
@@ -131,8 +131,8 @@ public class NewFriendActivity
   
   public void c()
   {
-    Message localMessage = this.jdField_a_of_type_Afjs.obtainMessage(1, 2131719292, 0);
-    this.jdField_a_of_type_Afjs.sendMessageDelayed(localMessage, 1000L);
+    Message localMessage = this.jdField_a_of_type_Ahgx.obtainMessage(1, 2131719773, 0);
+    this.jdField_a_of_type_Ahgx.sendMessageDelayed(localMessage, 1000L);
   }
   
   void d()
@@ -166,37 +166,37 @@ public class NewFriendActivity
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    this.jdField_a_of_type_Afjs = new afjs(this);
-    this.jdField_a_of_type_Akbn = ((akbn)this.app.getManager(34));
-    setContentView(2131560910);
-    setContentBackgroundResource(2130838514);
-    paramBundle = (LinearLayout)findViewById(2131375493);
+    this.jdField_a_of_type_Ahgx = new ahgx(this);
+    this.jdField_a_of_type_Altc = ((altc)this.app.getManager(34));
+    setContentView(2131561093);
+    setContentBackgroundResource(2130838591);
+    paramBundle = (LinearLayout)findViewById(2131375981);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
       paramBundle.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368179));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368472));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368429));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131368325));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368659));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368613));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.c = ((TextView)findViewById(2131368457));
+    this.c = ((TextView)findViewById(2131368644));
     this.c.setVisibility(0);
     this.c.setOnClickListener(this);
     this.c.setText(2131689628);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694632);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694788);
     d();
-    if (AppSetting.d)
+    if (AppSetting.c)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText());
       this.c.setContentDescription(this.c.getText());
-      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131694069) + ajya.a(2131707514));
+      this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription(getString(2131694185) + alpo.a(2131707886));
     }
-    paramBundle = (akaa)this.app.getManager(159);
+    paramBundle = (alro)this.app.getManager(159);
     if (paramBundle != null) {
       paramBundle.a(4);
     }
-    akka.a(this.app).a(this.app.getCurrentAccountUin());
+    ambq.a(this.app).a(this.app.getCurrentAccountUin());
     paramBundle = getIntent().getStringExtra("from");
     int j = getIntent().getIntExtra("fromSubType", -1);
     int i;
@@ -213,7 +213,7 @@ public class NewFriendActivity
     }
     for (;;)
     {
-      paramBundle = (akbn)this.app.getManager(34);
+      paramBundle = (altc)this.app.getManager(34);
       paramBundle.e = false;
       paramBundle.d = false;
       return true;
@@ -280,7 +280,7 @@ public class NewFriendActivity
       paramView.putExtra("entrence_data_report", 3);
       paramView.putExtra("EntranceId", 6);
       startActivityForResult(paramView, 221);
-      this.jdField_a_of_type_Akbn.f();
+      this.jdField_a_of_type_Altc.f();
       return;
     }
     finish();
@@ -293,7 +293,7 @@ public class NewFriendActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,19 @@
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aimt
-  extends bfwe
+class aimt
+  implements View.OnClickListener
 {
-  public String a;
-  public int c = 1;
-  public ImageView c;
+  aimt(aims paramaims) {}
+  
+  public void onClick(View paramView)
+  {
+    aims.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aimt
  * JD-Core Version:    0.7.0.1
  */

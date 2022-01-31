@@ -1,8 +1,8 @@
 package cooperation.qwallet.plugin;
 
-import abtq;
-import agxa;
-import agzd;
+import adky;
+import aiqz;
+import aitd;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
@@ -23,23 +23,23 @@ public class QWalletPrivacyUtils
     if ((paramQQAppInterface == null) || (paramBaseActivity == null)) {
       return false;
     }
-    boolean bool = agxa.a(paramQQAppInterface.c(), "privacy_has_click_agree", false);
+    boolean bool = aiqz.a(paramQQAppInterface.c(), "privacy_has_click_agree", false);
     if (QLog.isColorLevel()) {
       QLog.i("QWalletPrivacyUtils", 2, "hasClickAgree" + bool);
     }
     if (bool) {
       return false;
     }
-    agzd localagzd = (agzd)paramQQAppInterface.getManager(245);
-    if (localagzd != null)
+    aitd localaitd = (aitd)paramQQAppInterface.getManager(245);
+    if (localaitd != null)
     {
-      if (localagzd.a("privacy", 0, new String[] { "switch" }) == 1)
+      if (localaitd.a("privacy", 0, new String[] { "switch" }) == 1)
       {
         i = 1;
         if (i == 0) {
           break label232;
         }
-        if (localagzd.a("session", 0, new String[] { "1" }) != 1) {
+        if (localaitd.a("session", 0, new String[] { "1" }) != 1) {
           break label146;
         }
       }
@@ -49,17 +49,17 @@ public class QWalletPrivacyUtils
         if (i == 0) {
           break label151;
         }
-        agxa.a(paramQQAppInterface.getAccount(), "privacy_has_click_agree", true);
+        aiqz.a(paramQQAppInterface.getAccount(), "privacy_has_click_agree", true);
         return false;
         i = 0;
         break;
       }
       label151:
-      paramQQAppInterface = localagzd.a("privacy", "", new String[] { "title" });
-      String str = localagzd.a("privacy", "", new String[] { "content" });
+      paramQQAppInterface = localaitd.a("privacy", "", new String[] { "title" });
+      String str = localaitd.a("privacy", "", new String[] { "content" });
       if ((!TextUtils.isEmpty(paramQQAppInterface)) && (!TextUtils.isEmpty(str)))
       {
-        startPrivacyDialogActivity(paramBaseActivity, paramQQAppInterface, str, localagzd.a("privacy", "https://i.gtimg.cn/channel/imglib/201802/upload_895b44a9069ca68cb5c84439c7e1d2aa.jpg", new String[] { "background" }));
+        startPrivacyDialogActivity(paramBaseActivity, paramQQAppInterface, str, localaitd.a("privacy", "https://i.gtimg.cn/channel/imglib/201802/upload_895b44a9069ca68cb5c84439c7e1d2aa.jpg", new String[] { "background" }));
         return true;
       }
     }
@@ -71,8 +71,8 @@ public class QWalletPrivacyUtils
   {
     if (paramAppRuntime != null)
     {
-      agxa.a(paramAppRuntime.getAccount(), "privacy_has_click_agree", true);
-      paramAppRuntime = (agzd)paramAppRuntime.getManager(245);
+      aiqz.a(paramAppRuntime.getAccount(), "privacy_has_click_agree", true);
+      paramAppRuntime = (aitd)paramAppRuntime.getManager(245);
       if (paramAppRuntime != null)
       {
         HashMap localHashMap = new HashMap();
@@ -89,12 +89,12 @@ public class QWalletPrivacyUtils
     localIntent.putExtra("title", paramString1);
     localIntent.putExtra("content", paramString2);
     localIntent.putExtra("background", paramString3);
-    abtq.a(paramBaseActivity, localIntent, PublicTransFragmentActivity.class, QWalletPrivacyFragment.class);
+    adky.a(paramBaseActivity, localIntent, PublicTransFragmentActivity.class, QWalletPrivacyFragment.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPrivacyUtils
  * JD-Core Version:    0.7.0.1
  */

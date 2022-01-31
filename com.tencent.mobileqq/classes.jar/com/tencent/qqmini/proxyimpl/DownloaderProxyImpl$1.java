@@ -1,10 +1,5 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.squareup.okhttp.Callback;
-import com.squareup.okhttp.Headers;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
 import java.io.File;
@@ -12,8 +7,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Headers;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 class DownloaderProxyImpl$1
   implements Callback
@@ -22,7 +21,7 @@ class DownloaderProxyImpl$1
   
   DownloaderProxyImpl$1(DownloaderProxyImpl paramDownloaderProxyImpl, String paramString1, DownloaderProxy.DownloadListener paramDownloadListener, String paramString2) {}
   
-  public void onFailure(Request paramRequest, IOException paramIOException)
+  public void onFailure(Call paramCall, IOException paramIOException)
   {
     QLog.e("DownloaderProxyImpl", 1, "httpConnect err url:" + this.val$url, paramIOException);
     if ("Canceled".equals(paramIOException.getLocalizedMessage()))
@@ -38,14 +37,14 @@ class DownloaderProxyImpl$1
     }
   }
   
-  public void onResponse(Response paramResponse)
+  public void onResponse(Call paramCall, Response paramResponse)
   {
     if (this.canceled) {
       return;
     }
     int k = paramResponse.code();
-    Map localMap = paramResponse.headers().toMultimap();
-    this.val$listener.onDownloadHeadersReceived(k, localMap);
+    paramCall = paramResponse.headers().toMultimap();
+    this.val$listener.onDownloadHeadersReceived(k, paramCall);
     Object localObject = new File(this.val$filePath);
     if (((File)localObject).exists()) {
       ((File)localObject).delete();
@@ -70,7 +69,7 @@ class DownloaderProxyImpl$1
       localIOException.close();
       ((OutputStream)localObject).close();
       this.val$listener.onDownloadProgress(0.99F, i, i);
-      this.val$listener.onDownloadSucceed(k, this.val$filePath, localMap);
+      this.val$listener.onDownloadSucceed(k, this.val$filePath, paramCall);
       this.this$0.taskMap.remove(this.val$url);
     }
     localInputStream = paramResponse.body().byteStream();
@@ -97,7 +96,7 @@ class DownloaderProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.DownloaderProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

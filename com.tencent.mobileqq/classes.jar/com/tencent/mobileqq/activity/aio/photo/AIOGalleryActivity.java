@@ -1,11 +1,10 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aegf;
-import aegg;
-import aegi;
-import aegs;
-import aejb;
-import amkf;
+import agcv;
+import agcw;
+import agcy;
+import agdi;
+import agft;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -16,33 +15,34 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
-import avwo;
-import avwr;
-import bcuc;
-import bjal;
+import aobd;
+import axon;
+import axoq;
+import betl;
+import bllv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
 import com.tencent.image.QQLiveImage;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
-import lze;
-import wxr;
-import xpf;
-import xpw;
+import mbt;
+import ymk;
+import zdy;
+import zep;
 
 public class AIOGalleryActivity
   extends PeakActivity
 {
   int jdField_a_of_type_Int;
   public long a;
-  public aejb a;
+  public agft a;
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-  avwo jdField_a_of_type_Avwo;
-  avwr jdField_a_of_type_Avwr;
+  axon jdField_a_of_type_Axon;
+  axoq jdField_a_of_type_Axoq;
   public String a;
-  private wxr jdField_a_of_type_Wxr;
-  xpw jdField_a_of_type_Xpw = new aegg(this);
+  private ymk jdField_a_of_type_Ymk;
+  zep jdField_a_of_type_Zep = new agcw(this);
   boolean jdField_a_of_type_Boolean = false;
   int jdField_b_of_type_Int = 1;
   BroadcastReceiver jdField_b_of_type_AndroidContentBroadcastReceiver = null;
@@ -55,46 +55,46 @@ public class AIOGalleryActivity
     this.jdField_a_of_type_Long = -1L;
   }
   
-  public avwo a()
+  public axon a()
   {
-    if (this.jdField_a_of_type_Avwo == null) {
-      this.jdField_a_of_type_Avwo = new avwo(this);
+    if (this.jdField_a_of_type_Axon == null) {
+      this.jdField_a_of_type_Axon = new axon(this);
     }
-    return this.jdField_a_of_type_Avwo;
+    return this.jdField_a_of_type_Axon;
   }
   
-  public avwr a()
+  public axoq a()
   {
-    if (this.jdField_a_of_type_Avwr == null) {
-      this.jdField_a_of_type_Avwr = new avwr(this);
+    if (this.jdField_a_of_type_Axoq == null) {
+      this.jdField_a_of_type_Axoq = new axoq(this);
     }
-    return this.jdField_a_of_type_Avwr;
-  }
-  
-  public boolean a()
-  {
-    return false;
+    return this.jdField_a_of_type_Axoq;
   }
   
   public void finish()
   {
-    xpf localxpf = this.jdField_a_of_type_Xpw.a();
-    if (aegs.class.isInstance(localxpf)) {
-      ((aegs)localxpf).g();
+    zdy localzdy = this.jdField_a_of_type_Zep.a();
+    if (agdi.class.isInstance(localzdy)) {
+      ((agdi)localzdy).g();
     }
     QQLiveImage.releaseAll(this);
     super.finish();
     overridePendingTransition(0, 0);
   }
   
+  public boolean isWrapContent()
+  {
+    return false;
+  }
+  
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Xpw.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Zep.a(paramInt1, paramInt2, paramIntent);
   }
   
   public void onBackPressed()
   {
-    if (!this.jdField_a_of_type_Xpw.b()) {
+    if (!this.jdField_a_of_type_Zep.b()) {
       super.onBackPressed();
     }
     QQLiveImage.releaseAll(this);
@@ -103,26 +103,26 @@ public class AIOGalleryActivity
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    this.jdField_a_of_type_Xpw.a(paramConfiguration);
+    this.jdField_a_of_type_Zep.a(paramConfiguration);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    this.ad = false;
+    this.mActNeedImmersive = false;
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Wxr = wxr.a();
-    this.jdField_a_of_type_Wxr.a();
-    aegc.a = getResources().getDisplayMetrics().density;
-    ShortVideoUtils.a(bjal.a());
-    this.jdField_a_of_type_Avwo = new avwo(this);
-    this.jdField_a_of_type_Avwr = new avwr(this);
+    this.jdField_a_of_type_Ymk = ymk.a();
+    this.jdField_a_of_type_Ymk.a();
+    agcs.a = getResources().getDisplayMetrics().density;
+    ShortVideoUtils.a(bllv.a());
+    this.jdField_a_of_type_Axon = new axon(this);
+    this.jdField_a_of_type_Axoq = new axoq(this);
     paramBundle = getIntent().getExtras();
     this.jdField_a_of_type_JavaLangString = paramBundle.getString("extra.GROUP_UIN");
     this.jdField_b_of_type_Boolean = paramBundle.getBoolean("extra.IS_FROM_CHAT_FILE_HISTORY");
     try
     {
-      this.jdField_a_of_type_Xpw.a(this);
-      this.jdField_b_of_type_AndroidContentBroadcastReceiver = new aegf(this);
+      this.jdField_a_of_type_Zep.a(this);
+      this.jdField_b_of_type_AndroidContentBroadcastReceiver = new agcv(this);
       paramBundle = new IntentFilter();
       paramBundle.addAction("tencent.av.v2q.StartVideoChat");
     }
@@ -154,12 +154,12 @@ public class AIOGalleryActivity
       QLog.d("AIOGalleryActivity", 2, "onDestroy()");
     }
     super.onDestroy();
-    this.jdField_a_of_type_Xpw.c(this);
-    if (this.jdField_a_of_type_Aejb != null) {}
+    this.jdField_a_of_type_Zep.c(this);
+    if (this.jdField_a_of_type_Agft != null) {}
     try
     {
       if ((!this.jdField_b_of_type_Boolean) && (!getIntent().getBooleanExtra("extra.IS_STARTING_CHAT_FILE_HISTORY", false))) {
-        this.jdField_a_of_type_Aejb.a();
+        this.jdField_a_of_type_Agft.a();
       }
       for (;;)
       {
@@ -169,18 +169,18 @@ public class AIOGalleryActivity
           unregisterReceiver(this.jdField_b_of_type_AndroidContentBroadcastReceiver);
           this.jdField_b_of_type_AndroidContentBroadcastReceiver = null;
         }
-        if (this.jdField_a_of_type_Avwo != null)
+        if (this.jdField_a_of_type_Axon != null)
         {
-          this.jdField_a_of_type_Avwo.b(this.jdField_a_of_type_Int);
-          this.jdField_a_of_type_Avwo.a();
+          this.jdField_a_of_type_Axon.b(this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_Axon.a();
         }
-        if (this.jdField_a_of_type_Avwr != null) {
-          this.jdField_a_of_type_Avwr.a();
+        if (this.jdField_a_of_type_Axoq != null) {
+          this.jdField_a_of_type_Axoq.a();
         }
-        this.jdField_a_of_type_Wxr.b();
+        this.jdField_a_of_type_Ymk.b();
         QQLiveImage.releaseAll(this);
         return;
-        this.jdField_a_of_type_Aejb.c();
+        this.jdField_a_of_type_Agft.c();
       }
     }
     catch (Exception localException)
@@ -191,7 +191,7 @@ public class AIOGalleryActivity
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!this.jdField_a_of_type_Xpw.a(paramInt, paramKeyEvent)) {
+    if (!this.jdField_a_of_type_Zep.a(paramInt, paramKeyEvent)) {
       return super.onKeyDown(paramInt, paramKeyEvent);
     }
     return true;
@@ -199,9 +199,9 @@ public class AIOGalleryActivity
   
   public void onPause()
   {
-    lze.a(BaseApplicationImpl.getContext(), false);
-    bcuc.a(BaseApplicationImpl.getContext(), true, 52);
-    amkf.a(BaseApplicationImpl.getContext(), 2, true);
+    mbt.a(BaseApplicationImpl.getContext(), false);
+    betl.a(BaseApplicationImpl.getContext(), true, 52);
+    aobd.a(BaseApplicationImpl.getContext(), 2, true);
     AbstractGifImage.pauseAll();
     ApngImage.pauseAll();
     QQLiveImage.pauseAll(this);
@@ -210,7 +210,7 @@ public class AIOGalleryActivity
     try
     {
       unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      this.jdField_a_of_type_Xpw.b();
+      this.jdField_a_of_type_Zep.b();
       return;
     }
     catch (Exception localException)
@@ -227,23 +227,23 @@ public class AIOGalleryActivity
   public void onResume()
   {
     super.onResume();
-    lze.a(BaseApplicationImpl.getContext(), true);
-    bcuc.a(BaseApplicationImpl.getContext(), false, 52);
-    amkf.a(BaseApplicationImpl.getContext(), 2, false);
+    mbt.a(BaseApplicationImpl.getContext(), true);
+    betl.a(BaseApplicationImpl.getContext(), false, 52);
+    aobd.a(BaseApplicationImpl.getContext(), 2, false);
     com.tencent.image.AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
     AbstractGifImage.resumeAll();
     ApngImage.playByTag(0);
     QQLiveImage.resumeAll(this);
     if (Build.MODEL.equals("Coolpad 5930"))
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aegi(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new agcy(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
       localIntentFilter.addAction("android.intent.action.USER_PRESENT");
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
-    this.jdField_a_of_type_Xpw.c();
+    this.jdField_a_of_type_Zep.c();
   }
   
   public void onStart()
@@ -266,13 +266,13 @@ public class AIOGalleryActivity
   {
     super.onWindowFocusChanged(paramBoolean);
     if (paramBoolean) {
-      this.jdField_a_of_type_Xpw.b(this);
+      this.jdField_a_of_type_Zep.b(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity
  * JD-Core Version:    0.7.0.1
  */

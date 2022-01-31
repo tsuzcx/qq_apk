@@ -1,19 +1,36 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-class adpr
-  implements bcwm
+public class adpr
+  implements View.OnFocusChangeListener
 {
-  adpr(adpq paramadpq, ChatMessage paramChatMessage, Context paramContext) {}
+  public adpr(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
   
-  public void a(int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    apug.a(this.jdField_a_of_type_Adpq.a, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_AndroidContentContext);
+    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
+    {
+      if (paramBoolean)
+      {
+        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.b(this.a).setVisibility(0);
+      }
+    }
+    else {
+      return;
+    }
+    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpr
  * JD-Core Version:    0.7.0.1
  */

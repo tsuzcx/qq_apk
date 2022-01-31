@@ -11,10 +11,12 @@ public final class FunnySpace
   static ArrayList<FunnySpaceAction> cache_Actions = new ArrayList();
   public ArrayList<FunnySpaceAction> Actions;
   public long TotalCount;
+  public String host_message = "";
   public boolean is_block;
   public boolean is_show;
   public boolean is_show_cmshowar = true;
   public long uFirePowerCount;
+  public long uFirePowerLevel;
   
   static
   {
@@ -24,7 +26,7 @@ public final class FunnySpace
   
   public FunnySpace() {}
   
-  public FunnySpace(ArrayList<FunnySpaceAction> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, boolean paramBoolean3, long paramLong2)
+  public FunnySpace(ArrayList<FunnySpaceAction> paramArrayList, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, boolean paramBoolean3, long paramLong2, String paramString, long paramLong3)
   {
     this.Actions = paramArrayList;
     this.is_block = paramBoolean1;
@@ -32,6 +34,8 @@ public final class FunnySpace
     this.TotalCount = paramLong1;
     this.is_show_cmshowar = paramBoolean3;
     this.uFirePowerCount = paramLong2;
+    this.host_message = paramString;
+    this.uFirePowerLevel = paramLong3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -42,6 +46,8 @@ public final class FunnySpace
     this.TotalCount = paramJceInputStream.read(this.TotalCount, 3, false);
     this.is_show_cmshowar = paramJceInputStream.read(this.is_show_cmshowar, 4, false);
     this.uFirePowerCount = paramJceInputStream.read(this.uFirePowerCount, 5, false);
+    this.host_message = paramJceInputStream.readString(6, false);
+    this.uFirePowerLevel = paramJceInputStream.read(this.uFirePowerLevel, 7, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -54,11 +60,15 @@ public final class FunnySpace
     paramJceOutputStream.write(this.TotalCount, 3);
     paramJceOutputStream.write(this.is_show_cmshowar, 4);
     paramJceOutputStream.write(this.uFirePowerCount, 5);
+    if (this.host_message != null) {
+      paramJceOutputStream.write(this.host_message, 6);
+    }
+    paramJceOutputStream.write(this.uFirePowerLevel, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.FunnySpace
  * JD-Core Version:    0.7.0.1
  */

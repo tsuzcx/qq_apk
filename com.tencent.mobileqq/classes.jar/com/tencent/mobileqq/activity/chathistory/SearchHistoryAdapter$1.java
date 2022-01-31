@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.chathistory;
 
-import afcg;
+import agzl;
 import android.os.Handler;
-import bbeb;
+import bdcw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,7 +11,7 @@ public class SearchHistoryAdapter$1
 {
   public void run()
   {
-    String[] arrayOfString = bbeb.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    String[] arrayOfString = bdcw.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     if (QLog.isColorLevel()) {
       QLog.i("chatHistory.searchHistory", 2, "loadHistory, histories = " + arrayOfString);
     }
@@ -20,7 +20,7 @@ public class SearchHistoryAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.SearchHistoryAdapter.1
  * JD-Core Version:    0.7.0.1
  */

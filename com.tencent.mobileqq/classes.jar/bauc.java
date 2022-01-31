@@ -1,16 +1,15 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class bauc
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
+  public int a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bauc
  * JD-Core Version:    0.7.0.1
  */

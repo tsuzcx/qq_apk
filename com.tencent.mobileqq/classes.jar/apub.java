@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import android.view.View;
+import java.io.File;
 
-final class apub
-  implements Comparator<FileInfo>
+public class apub
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
-  {
-    return (int)(paramFileInfo2.b() / 1000L - paramFileInfo1.b() / 1000L);
-  }
+  public int a;
+  View jdField_a_of_type_AndroidViewView;
+  public bdnb a;
+  public File a;
+  boolean jdField_a_of_type_Boolean;
+  
+  apub(aptw paramaptw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apub
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,25 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import android.content.DialogInterface.OnCancelListener;
 
-class acgt
-  implements DialogInterface.OnClickListener
+public final class acgt
+  implements DialogInterface.OnCancelListener
 {
-  acgt(acgr paramacgr, bbgu parambbgu) {}
+  public acgt(acgz paramacgz, acgy paramacgy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    axqy.b(this.jdField_a_of_type_Acgr.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Acgr.a.a, "", "", "");
-    this.jdField_a_of_type_Bbgu.cancel();
+    if (this.jdField_a_of_type_Acgz.a) {
+      azmj.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
+    }
+    if (this.jdField_a_of_type_Acgy != null) {
+      this.jdField_a_of_type_Acgy.a();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acgt
  * JD-Core Version:    0.7.0.1
  */

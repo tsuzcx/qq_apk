@@ -1,104 +1,38 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.anonymous.QQAnonymousDialog.2;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.SystemClock;
 
 public class myg
-  extends Dialog
 {
-  public int a;
-  public Context a;
-  public Handler a;
-  public LayoutInflater a;
-  public View a;
-  public ImageView a;
-  public TextView a;
+  public final int a;
+  public final long a;
+  public final boolean a;
+  public int[] a;
+  public final int b;
+  public final int c;
+  public int d;
+  public int e;
   
-  public myg(Context paramContext)
+  private myg(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super(paramContext, 2131755791);
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(new myh(this));
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560297, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369494));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369505));
-  }
-  
-  public void a()
-  {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    localLayoutParams.width = ((int)bbdv.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
-    localLayoutParams.height = ((int)bbdv.a(this.jdField_a_of_type_AndroidContentContext, 44.0F));
-    super.show();
-    this.jdField_a_of_type_AndroidViewView.postDelayed(new QQAnonymousDialog.2(this), 1000L);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    switch (paramInt)
-    {
-    default: 
-    case 1: 
-    case 3: 
-      do
-      {
-        do
-        {
-          return;
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843052);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-        } while (!AppSetting.d);
-        QQAppInterface.f(paramString);
-        return;
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843046);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      } while (!AppSetting.d);
-      QQAppInterface.f(paramString);
-      return;
+    this.b = mxy.a(paramInt1, 20000);
+    this.c = paramInt2;
+    this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() + paramInt4);
+    this.e = paramInt1;
+    paramInt1 = mxy.a(paramInt1, this.c, 20000, true);
+    if (paramInt1 > 10000) {
+      this.d = (20000 - paramInt1);
     }
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843051);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131696359));
-  }
-  
-  public void dismiss()
-  {
-    try
+    for (this.jdField_a_of_type_Boolean = false; paramInt3 == -1; this.jdField_a_of_type_Boolean = true)
     {
-      super.dismiss();
+      this.jdField_a_of_type_Int = ((int)(0.1F * this.d));
       return;
+      this.d = paramInt1;
     }
-    catch (Exception localException) {}
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    paramBundle = getWindow();
-    paramBundle.setContentView(this.jdField_a_of_type_AndroidViewView);
-    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
-    localLayoutParams.width = -2;
-    localLayoutParams.height = -2;
-    localLayoutParams.gravity = 17;
-    paramBundle.setAttributes(localLayoutParams);
-    setCanceledOnTouchOutside(false);
+    this.jdField_a_of_type_Int = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myg
  * JD-Core Version:    0.7.0.1
  */

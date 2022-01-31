@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import cooperation.readinjoy.ReadInJoyHelper.1;
 
-public final class bjxk
-  implements Parcelable.Creator<EditVideoParams>
+public class bjxk
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public EditVideoParams a(Parcel paramParcel)
-  {
-    return new EditVideoParams(paramParcel);
-  }
+  public bjxk(ReadInJoyHelper.1 param1) {}
   
-  public EditVideoParams[] a(int paramInt)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    return new EditVideoParams[paramInt];
+    if (paramInt == 0) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjxk
  * JD-Core Version:    0.7.0.1
  */

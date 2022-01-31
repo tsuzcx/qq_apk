@@ -1,66 +1,30 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.widget.HorizontalLabelLayout;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class rkk
-  implements rkh
+class rkk
+  implements URLDrawable.URLDrawableListener
 {
-  public int a(BaseData paramBaseData)
-  {
-    switch (paramBaseData.p)
-    {
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-    default: 
-      throw new IllegalArgumentException();
-    case 7: 
-    case 13: 
-      return 7;
-    case 8: 
-    case 14: 
-      return 8;
-    case 15: 
-      return 13;
-    }
-    return 14;
-  }
+  rkk(rkd paramrkd) {}
   
-  public rkg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    LayoutInflater localLayoutInflater = LayoutInflater.from(paramContext);
-    switch (a(paramBaseData))
-    {
-    case 9: 
-    case 10: 
-    case 11: 
-    case 12: 
-    default: 
-      throw new IllegalArgumentException();
-    case 7: 
-      return new rko(this, localLayoutInflater.inflate(2131559922, paramViewGroup, false), paramBaseData);
-    case 8: 
-      return new rkm(this, localLayoutInflater.inflate(2131559919, paramViewGroup, false), paramBaseData);
-    case 13: 
-      paramViewGroup = new HorizontalLabelLayout(paramContext);
-      int i = actj.a(15.0F, paramContext.getResources());
-      paramViewGroup.setPadding(i, 0, i, 0);
-      return new rkl(this, paramViewGroup, paramBaseData);
-    }
-    return new rkn(this, localLayoutInflater.inflate(2131559846, paramViewGroup, false), paramBaseData);
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public boolean a(BaseData paramBaseData)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return (paramBaseData.p == 7) || (paramBaseData.p == 8) || (paramBaseData.p == 13) || (paramBaseData.p == 14) || (paramBaseData.p == 15) || (paramBaseData.p == 16);
+    if ((rkd.a(this.a) != null) && (rkd.a(this.a).getStatus() == 1) && ((rkd.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)rkd.a(this.a).getCurrDrawable();
+      rkd.a(this.a, paramURLDrawable.getBitmap());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkk
  * JD-Core Version:    0.7.0.1
  */

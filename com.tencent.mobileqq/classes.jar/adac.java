@@ -1,19 +1,40 @@
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
 
-class adac
-  implements OnCompositionLoadedListener
+public class adac
+  implements TextWatcher
 {
-  adac(aczz paramaczz) {}
+  public adac(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public void afterTextChanged(Editable paramEditable)
   {
-    aczz.a(this.a, paramLottieComposition);
+    paramEditable = paramEditable.toString();
+    int i = 0;
+    if (!TextUtils.isEmpty(paramEditable)) {
+      i = paramEditable.getBytes().length / 3;
+    }
+    if (i <= 40) {
+      this.a.a.setTextColor(this.a.getResources().getColor(2131166975));
+    }
+    for (;;)
+    {
+      this.a.a.setText("" + (40 - i));
+      return;
+      this.a.a.setTextColor(-65536);
+    }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adac
  * JD-Core Version:    0.7.0.1
  */

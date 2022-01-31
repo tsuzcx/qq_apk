@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import Wallet.FocusMpIdRsp;
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import bcql;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.widget.QQToast;
 import mqq.observer.BusinessObserver;
 
 class DataJsPlugin$14
@@ -21,16 +21,16 @@ class DataJsPlugin$14
     if ((paramBundle == null) || (paramBundle.err_code != 0))
     {
       this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
-      bcql.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, ajya.a(2131702741), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131298865));
+      QQToast.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, alpo.a(2131703113), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131298914));
       return;
     }
-    bcql.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, ajya.a(2131702745), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131298865));
+    QQToast.a(this.this$0.jsPluginEngine.appBrandRuntime.activity, 0, alpo.a(2131703117), 1).b(this.this$0.jsPluginEngine.appBrandRuntime.activity.getResources().getDimensionPixelSize(2131298914));
     this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.DataJsPlugin.14
  * JD-Core Version:    0.7.0.1
  */

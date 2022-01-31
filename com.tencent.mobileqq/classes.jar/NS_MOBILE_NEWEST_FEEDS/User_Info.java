@@ -42,7 +42,7 @@ public final class User_Info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_NEWEST_FEEDS.User_Info
  * JD-Core Version:    0.7.0.1
  */

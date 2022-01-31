@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import npi;
+import nsq;
 import org.json.JSONObject;
 
 public class VideoInfo$GameAdComData
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameAdComData> CREATOR = new npi();
+  public static final Parcelable.Creator<GameAdComData> CREATOR = new nsq();
   public String A;
   public int a;
   public VideoInfo.GameAdDownloadInfo a;
@@ -158,7 +158,7 @@ public class VideoInfo$GameAdComData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoInfo.GameAdComData
  * JD-Core Version:    0.7.0.1
  */

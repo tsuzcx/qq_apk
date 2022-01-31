@@ -1,27 +1,10 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
-
-public class anwg
+public abstract interface anwg
 {
-  public double a;
-  public float a = 1.0F;
-  public int a;
-  public Drawable a;
-  public EmojiStickerManager.StickerInfo a;
-  public String a;
-  public boolean a;
-  public int b;
-  public Drawable b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
+  public abstract void a(byte[] paramArrayOfByte, anwh paramanwh, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwg
  * JD-Core Version:    0.7.0.1
  */

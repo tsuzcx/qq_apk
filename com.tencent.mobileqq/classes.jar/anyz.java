@@ -1,29 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.ViewParent;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import java.util.List;
 
-public class anyz
-  implements ValueAnimator.AnimatorUpdateListener
+class anyz
+  implements View.OnClickListener
 {
-  public anyz(EmoticonMainPanel paramEmoticonMainPanel, int paramInt) {}
+  anyx jdField_a_of_type_Anyx;
+  anzb jdField_a_of_type_Anzb;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  anyz(anyx paramanyx, anzb paramanzb)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
-      AbstractGifImage.resumeAll();
-    }
-    com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = i;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getParent() != null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getParent().requestLayout();
+    this.jdField_a_of_type_Anyx = paramanyx;
+    this.jdField_a_of_type_Anzb = paramanzb;
+  }
+  
+  public void onClick(View paramView)
+  {
+    anxn.a(paramView.getContext(), (ColorNote)anyx.a(this.jdField_a_of_type_Anyx).get(this.jdField_a_of_type_Anzb.getAdapterPosition()));
+    if (anyx.a(this.jdField_a_of_type_Anyx) != null) {
+      anyx.a(this.jdField_a_of_type_Anyx).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyz
  * JD-Core Version:    0.7.0.1
  */

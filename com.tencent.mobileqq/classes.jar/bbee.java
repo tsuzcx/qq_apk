@@ -1,41 +1,24 @@
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.5.1;
+
 public class bbee
+  implements Animation.AnimationListener
 {
-  public static int a = 40000;
-  public static int b = 30000;
-  public static int c = 20000;
-  public static int d = 20000;
-  public static int e = 15000;
-  public static int f = 10000;
-  public static int g;
+  public bbee(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public static int a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return a;
-    case 1: 
-    case 4: 
-    case 5: 
-      return c;
-    }
-    return b;
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
   
-  public static int b(int paramInt)
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return d + g;
-    case 1: 
-    case 4: 
-    case 5: 
-      return f + g;
+    if (this.a.b == null) {
+      return;
     }
-    return e + g;
+    this.a.b.post(new TroopAvatarWallPreviewActivity.5.1(this));
   }
 }
 

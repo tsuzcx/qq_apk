@@ -1,45 +1,21 @@
-import com.tencent.gamecenter.appointment.GameCenterReceiver;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.open.wadl.WadlConfigCenter.1;
-import java.util.HashMap;
-
 public class bdow
 {
-  static bdow jdField_a_of_type_Bdow;
-  static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  private HashMap<String, bdou> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public int a;
+  public boolean a;
+  public int b;
+  public int c;
   
-  private bdow()
+  public bdow(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3)
   {
-    a();
-    GameCenterReceiver.a();
-  }
-  
-  public static bdow a()
-  {
-    if (jdField_a_of_type_Bdow == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_Bdow == null) {
-        jdField_a_of_type_Bdow = new bdow();
-      }
-      return jdField_a_of_type_Bdow;
-    }
-  }
-  
-  public <T> T a(String paramString)
-  {
-    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public void a()
-  {
-    ThreadManagerV2.executeOnFileThread(new WadlConfigCenter.1(this));
+    this.b = paramInt1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Int = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdow
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,9 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import aujj;
-import aujk;
-import aujl;
+import awam;
+import awan;
+import awao;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +17,10 @@ public class OnlineStatusPagerAdapter
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  public aujj a;
-  private aujk jdField_a_of_type_Aujk;
-  private aujl jdField_a_of_type_Aujl = new aujl();
-  private ArrayList<aujj> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public awam a;
+  private awan jdField_a_of_type_Awan;
+  private awao jdField_a_of_type_Awao = new awao();
+  private ArrayList<awam> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
   OnlineStatusPagerAdapter(Context paramContext, int paramInt)
   {
@@ -28,19 +28,19 @@ public class OnlineStatusPagerAdapter
     this.jdField_a_of_type_Int = (paramInt * 3);
   }
   
-  private List<aujj> a(int paramInt)
+  private List<awam> a(int paramInt)
   {
     paramInt = this.jdField_a_of_type_Int * paramInt;
     int i = Math.min(this.jdField_a_of_type_JavaUtilArrayList.size(), this.jdField_a_of_type_Int + paramInt);
     return this.jdField_a_of_type_JavaUtilArrayList.subList(paramInt, i);
   }
   
-  public void a(aujk paramaujk)
+  public void a(awan paramawan)
   {
-    this.jdField_a_of_type_Aujk = paramaujk;
+    this.jdField_a_of_type_Awan = paramawan;
   }
   
-  public void a(ArrayList<aujj> paramArrayList)
+  public void a(ArrayList<awam> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -50,7 +50,7 @@ public class OnlineStatusPagerAdapter
     if ((paramObject instanceof OnlineStatusListLayout))
     {
       paramViewGroup.removeView((OnlineStatusListLayout)paramObject);
-      this.jdField_a_of_type_Aujl.a(paramInt, (View)paramObject);
+      this.jdField_a_of_type_Awao.a(paramInt, (View)paramObject);
     }
   }
   
@@ -71,14 +71,14 @@ public class OnlineStatusPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    OnlineStatusListLayout localOnlineStatusListLayout = (OnlineStatusListLayout)this.jdField_a_of_type_Aujl.a(paramInt);
+    OnlineStatusListLayout localOnlineStatusListLayout = (OnlineStatusListLayout)this.jdField_a_of_type_Awao.a(paramInt);
     if (localOnlineStatusListLayout == null) {
       localOnlineStatusListLayout = new OnlineStatusListLayout(this.jdField_a_of_type_AndroidContentContext);
     }
     for (;;)
     {
       localOnlineStatusListLayout.a(a(paramInt), this);
-      localOnlineStatusListLayout.a(this.jdField_a_of_type_Aujj);
+      localOnlineStatusListLayout.a(this.jdField_a_of_type_Awam);
       if ((localOnlineStatusListLayout.getParent() != paramViewGroup) && (paramInt < getCount())) {
         paramViewGroup.addView(localOnlineStatusListLayout);
       }
@@ -95,20 +95,20 @@ public class OnlineStatusPagerAdapter
   public void onClick(View paramView)
   {
     paramView = paramView.getTag();
-    if ((paramView instanceof aujj))
+    if ((paramView instanceof awam))
     {
-      paramView = (aujj)paramView;
-      if (this.jdField_a_of_type_Aujk != null) {
-        this.jdField_a_of_type_Aujk.a(this.jdField_a_of_type_Aujj, paramView);
+      paramView = (awam)paramView;
+      if (this.jdField_a_of_type_Awan != null) {
+        this.jdField_a_of_type_Awan.a(this.jdField_a_of_type_Awam, paramView);
       }
-      this.jdField_a_of_type_Aujj = paramView;
+      this.jdField_a_of_type_Awam = paramView;
       notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

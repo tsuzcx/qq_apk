@@ -1,17 +1,17 @@
 package com.tencent.common.galleryactivity;
 
-import xpw;
+import zep;
 
 public class GalleryManager$1
   implements Runnable
 {
-  public GalleryManager$1(xpw paramxpw) {}
+  public GalleryManager$1(zep paramzep) {}
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Xpd.c = true;
-    xpw.a(this.this$0, this.this$0.jdField_a_of_type_Xpk);
-    xpw.a(this.this$0);
+    this.this$0.jdField_a_of_type_Zdw.c = true;
+    zep.a(this.this$0, this.this$0.jdField_a_of_type_Zed);
+    zep.a(this.this$0);
   }
 }
 

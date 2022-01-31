@@ -1,85 +1,181 @@
-import android.support.annotation.NonNull;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.biz.qqcircle.component.ComponentBaseFragment;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class tvn
+  implements Application.ActivityLifecycleCallbacks
 {
-  @NonNull
-  public final String a;
-  @NonNull
-  public final String b;
-  @NonNull
-  public final String c;
-  public final String d;
+  private View jdField_a_of_type_AndroidViewView;
+  private ComponentBaseFragment jdField_a_of_type_ComTencentBizQqcircleComponentComponentBaseFragment;
+  private final ConcurrentHashMap<String, tvg> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public tvn(String paramString1, String paramString2, String paramString3, String paramString4)
+  public tvn(ComponentBaseFragment paramComponentBaseFragment, View paramView)
   {
-    if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null))
-    {
-      ved.e("Q.qqstory.playernew.TVKPreloader", "vid=%s, videoUrl=%s, localPath=%s", new Object[] { paramString1, paramString2, paramString3 });
-      throw new IllegalArgumentException("vid, videoUrl, localPath should not be null");
-    }
-    this.a = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
+    this.jdField_a_of_type_ComTencentBizQqcircleComponentComponentBaseFragment = paramComponentBaseFragment;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public boolean equals(Object paramObject)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    boolean bool1;
-    if (this == paramObject) {
-      bool1 = true;
-    }
-    do
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool3;
-          } while (paramObject == null);
-          bool1 = bool3;
-        } while (getClass() != paramObject.getClass());
-        paramObject = (tvn)paramObject;
-        bool1 = bool3;
-      } while (!this.a.equals(paramObject.a));
-      bool1 = bool3;
-    } while (!this.b.equals(paramObject.b));
-    if (this.d != null) {
-      bool1 = this.d.equals(paramObject.d);
-    }
-    for (;;)
-    {
-      return bool1;
-      bool1 = bool2;
-      if (paramObject.d != null) {
-        bool1 = false;
+      Object localObject = (String)localIterator.next();
+      localObject = (tvg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvg)localObject).a(paramInt1, paramInt2, paramIntent);
       }
     }
   }
   
-  public int hashCode()
+  public void a(Configuration paramConfiguration)
   {
-    int j = this.a.hashCode();
-    int k = this.b.hashCode();
-    if (this.d != null) {}
-    for (int i = this.d.hashCode();; i = 0) {
-      return i + (j * 31 + k) * 31;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvg)localObject).a(paramConfiguration);
+      }
     }
   }
   
-  public String toString()
+  public void a(View paramView)
   {
-    return "PreloadItem{vid='" + this.a + '\'' + ", debugMsg='" + this.d + '\'' + '}';
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      ((tvg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str)).a(paramString, paramObject);
+    }
+  }
+  
+  public void a(List<tvg> paramList)
+  {
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      tvg localtvg = (tvg)paramList.next();
+      localtvg.a(this.jdField_a_of_type_ComTencentBizQqcircleComponentComponentBaseFragment, this.jdField_a_of_type_AndroidViewView, this);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localtvg.getClass().getSimpleName(), localtvg);
+    }
+  }
+  
+  public boolean a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if ((localObject != null) && (((tvg)localObject).a())) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if (localObject != null)
+      {
+        ((tvg)localObject).onActivityCreated(paramActivity, paramBundle);
+        ((tvg)localObject).a(this.jdField_a_of_type_AndroidViewView);
+      }
+    }
+  }
+  
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvg)localObject).onActivityDestroyed(paramActivity);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    this.jdField_a_of_type_ComTencentBizQqcircleComponentComponentBaseFragment = null;
+  }
+  
+  public void onActivityPaused(Activity paramActivity)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvg)localObject).onActivityPaused(paramActivity);
+      }
+    }
+  }
+  
+  public void onActivityResumed(Activity paramActivity)
+  {
+    paramActivity = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (paramActivity.hasNext())
+    {
+      Object localObject = (String)paramActivity.next();
+      localObject = (tvg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvg)localObject).onActivityResumed(this.jdField_a_of_type_ComTencentBizQqcircleComponentComponentBaseFragment.getActivity());
+      }
+    }
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvg)localObject).onActivityStarted(paramActivity);
+      }
+    }
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (String)localIterator.next();
+      localObject = (tvg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if (localObject != null) {
+        ((tvg)localObject).onActivityStopped(paramActivity);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.ThemeImageView;
 
-class ajet
-  implements ajnh
+public class ajet
+  extends ajfh
 {
-  ajet(ajer paramajer, boolean paramBoolean, int paramInt, int[] paramArrayOfInt) {}
-  
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
-  {
-    ajer.a(this.jdField_a_of_type_Ajer, this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
-  }
+  public ThemeImageView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajet
  * JD-Core Version:    0.7.0.1
  */

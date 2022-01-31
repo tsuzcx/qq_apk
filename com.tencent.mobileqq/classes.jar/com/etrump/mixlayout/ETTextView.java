@@ -1,11 +1,9 @@
 package com.etrump.mixlayout;
 
-import actj;
-import adys;
-import aece;
-import ajwc;
-import ambg;
-import amcy;
+import aekt;
+import afvg;
+import afys;
+import alnq;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -32,16 +30,19 @@ import android.view.View.MeasureSpec;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import aylc;
+import ansf;
+import anty;
 import b;
-import bbrp;
-import bbrq;
-import bcjp;
+import baiy;
+import bdqj;
+import bdqk;
+import beiq;
 import c;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.ToolAppRuntime;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
@@ -53,20 +54,20 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import com.tencent.widget.XListView;
 import f;
+import fj;
+import fp;
+import fq;
+import fr;
+import fs;
+import ft;
+import fu;
+import fv;
+import fx;
 import g;
-import ha;
-import hg;
-import hh;
-import hi;
-import hj;
-import hk;
-import hl;
-import hm;
-import ho;
-import hs;
-import hv;
-import hx;
-import ia;
+import gb;
+import ge;
+import gg;
+import gj;
 import j;
 import java.util.concurrent.atomic.AtomicBoolean;
 import k;
@@ -90,8 +91,8 @@ public class ETTextView
   private boolean hasComputeComplexScript;
   public boolean isFounderAnimating;
   public boolean isParsingMagicFont;
-  public hl mAnimationListener;
-  private final hh mBitmapLocker = new hh(this, null);
+  public fu mAnimationListener;
+  private final fq mBitmapLocker = new fq(this, null);
   private boolean mCacheMeasureResult = true;
   public int mClickEpId = -1;
   public int mClickcEId = -1;
@@ -105,7 +106,7 @@ public class ETTextView
   public ETFont mFont;
   public j mFounderColorLayout;
   public boolean mHasClickedArkSpan;
-  public ha mLayout;
+  public fj mLayout;
   private int mLinkBackcolor;
   public boolean mMagicFont;
   public int mMaxWidth = 2147483647;
@@ -113,7 +114,7 @@ public class ETTextView
   private int mMinHeight;
   private int mMinWidth;
   public long mMsgId;
-  private hk mOnBeforeTextOrFontChangeListener;
+  private ft mOnBeforeTextOrFontChangeListener;
   private boolean mPauseAnimation;
   private MotionEvent mPreviousUpEvent;
   private Paint mSelectPaint;
@@ -122,8 +123,8 @@ public class ETTextView
   private float mShadowDx;
   private float mShadowDy;
   private float mShadowRadius;
-  private hx mTextGraphMap;
-  private hg mTextSelection;
+  private gg mTextGraphMap;
+  private fp mTextSelection;
   Runnable mTimerForSecondClick = new ETTextView.1(this);
   public boolean shouldStartAnimation;
   
@@ -191,33 +192,33 @@ public class ETTextView
   
   private void dealSmallEmojiClick(int paramInt1, int paramInt2)
   {
-    ambg localambg;
+    ansf localansf;
     Object localObject;
     Resources localResources;
     boolean bool;
     if (this.mLayout.a(paramInt1, paramInt2) != null)
     {
-      localambg = (ambg)getTag(2131363707);
-      localObject = (ChatMessage)getTag(2131364152);
+      localansf = (ansf)getTag(2131363763);
+      localObject = (ChatMessage)getTag(2131364214);
       localResources = getResources();
       bool = false;
       if (localObject != null) {
         bool = ((ChatMessage)localObject).isSend();
       }
       localObject = getBackground();
-      if ((localObject == null) || (!(localObject instanceof amcy))) {
+      if ((localObject == null) || (!(localObject instanceof anty))) {
         break label82;
       }
-      ((amcy)localObject).jdField_a_of_type_Boolean = true;
+      ((anty)localObject).jdField_a_of_type_Boolean = true;
     }
     label82:
-    while ((localObject == null) || (localambg == null)) {
+    while ((localObject == null) || (localansf == null)) {
       return;
     }
     if (bool) {}
-    for (paramInt1 = 2130848934;; paramInt1 = 2130848758)
+    for (paramInt1 = 2130849365;; paramInt1 = 2130849189)
     {
-      localambg.a(this, localResources.getDrawable(paramInt1));
+      localansf.a(this, localResources.getDrawable(paramInt1));
       return;
     }
   }
@@ -236,13 +237,13 @@ public class ETTextView
     Object localObject;
     if (mCreateDecorationHandler == null)
     {
-      mUIHandler = new hm(null);
+      mUIHandler = new fv(null);
       if (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
         break label86;
       }
-      localObject = (ho)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(42);
-      if ((localObject != null) && (((ho)localObject).a != null) && (((ho)localObject).a.getLooper() != null)) {
-        mCreateDecorationHandler = new hi(((ho)localObject).a.getLooper());
+      localObject = (fx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(42);
+      if ((localObject != null) && (((fx)localObject).a != null) && (((fx)localObject).a.getLooper() != null)) {
+        mCreateDecorationHandler = new fr(((fx)localObject).a.getLooper());
       }
     }
     label86:
@@ -252,9 +253,9 @@ public class ETTextView
       {
         return;
       } while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof ToolAppRuntime));
-      localObject = hs.a();
+      localObject = gb.a();
     } while (localObject == null);
-    mCreateDecorationHandler = new hi(((hs)localObject).a.getLooper());
+    mCreateDecorationHandler = new fr(((gb)localObject).a.getLooper());
   }
   
   private void setFont(ETFont paramETFont, long paramLong, int paramInt)
@@ -279,7 +280,7 @@ public class ETTextView
       }
       this.mMsgId = paramLong;
       if (this.mLayout == null) {
-        this.mLayout = new ha();
+        this.mLayout = new fj();
       }
       this.mFont.setColor(getCurrentTextColor());
       if (this.mOnBeforeTextOrFontChangeListener != null) {
@@ -324,15 +325,15 @@ public class ETTextView
     super.clearHighlightContent();
   }
   
-  public ha getETLayout()
+  public fj getETLayout()
   {
     return this.mLayout;
   }
   
-  public hx getTextGraphMap()
+  public gg getTextGraphMap()
   {
     if (this.mTextGraphMap == null) {
-      this.mTextGraphMap = new hx(getText());
+      this.mTextGraphMap = new gg(getText());
     }
     return this.mTextGraphMap;
   }
@@ -407,6 +408,7 @@ public class ETTextView
   protected void init()
   {
     this.mSelectPaint = new Paint();
+    setTypeface(null);
   }
   
   public boolean isCacheMeasureResult()
@@ -416,7 +418,7 @@ public class ETTextView
   
   public boolean isDrawDefaultByHY()
   {
-    return (this.mFont != null) && (this.mFont.mFontId == 9999) && (!TextUtils.isEmpty(this.mFont.mFontPath)) && (ia.jdField_a_of_type_Int == 4);
+    return (this.mFont != null) && (this.mFont.mFontId == 9999) && (!TextUtils.isEmpty(this.mFont.mFontPath)) && (gj.jdField_a_of_type_Int == 4);
   }
   
   public boolean isUseExpressFont()
@@ -447,7 +449,7 @@ public class ETTextView
   {
     if (!this.hasComputeComplexScript)
     {
-      this.hasComplexScript = aylc.b(getText().toString());
+      this.hasComplexScript = baiy.b(getText().toString());
       this.hasComputeComplexScript = true;
     }
     return (this.mFont != null) && (this.mFont.mFontId != 0) && (this.mFont.mFontType == 4) && (!this.hasComplexScript);
@@ -471,27 +473,27 @@ public class ETTextView
       if ((localObject1 != null) && (((ChatFragment)localObject1).a() != null) && (((ChatFragment)localObject1).a().a != null))
       {
         localObject1 = ((ChatFragment)localObject1).a().a;
-        localObject1 = actj.a((ListView)localObject1, actj.a(this.mMsgId, ((XListView)localObject1).getAdapter()));
+        localObject1 = aekt.a((ListView)localObject1, aekt.a(this.mMsgId, ((XListView)localObject1).getAdapter()));
         Object localObject2;
-        if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof aece)))
+        if ((localObject1 != null) && ((((View)localObject1).getTag() instanceof afys)))
         {
-          localObject2 = (aece)((View)localObject1).getTag();
-          if ((((aece)localObject2).d == null) || (((aece)localObject2).d.getTop() + ((View)localObject1).getBottom() < getContext().getResources().getDimensionPixelSize(2131298865))) {}
+          localObject2 = (afys)((View)localObject1).getTag();
+          if ((((afys)localObject2).d == null) || (((afys)localObject2).d.getTop() + ((View)localObject1).getBottom() < getContext().getResources().getDimensionPixelSize(2131298914))) {}
         }
         else
         {
           do
           {
             return true;
-            if ((localObject1 == null) || (!(actj.a((View)localObject1) instanceof adys))) {
+            if ((localObject1 == null) || (!(aekt.a((View)localObject1) instanceof afvg))) {
               break;
             }
-            localObject2 = (adys)actj.a((View)localObject1);
-          } while (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131298865));
+            localObject2 = (afvg)aekt.a((View)localObject1);
+          } while (((View)localObject1).getTop() + ((View)localObject1).getBottom() >= getContext().getResources().getDimensionPixelSize(2131298914));
         }
       }
     }
-    if (((getContext() instanceof QQBrowserActivity)) || ((getContext() instanceof PublicFragmentActivity))) {}
+    if (((getContext() instanceof QQBrowserActivity)) || ((getContext() instanceof PublicFragmentActivity)) || ((getContext() instanceof FriendProfileCardActivity))) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
@@ -519,7 +521,7 @@ public class ETTextView
     super.locationByIndex(paramInt, paramArrayOfInt, paramBoolean);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     if (this.mFounderColorLayout != null) {
@@ -620,7 +622,7 @@ public class ETTextView
         else
         {
           l2 = System.currentTimeMillis();
-          hv.a("action_draw", this.mFont.mFontId, this.mFont.mFontType, getText().length(), l2 - l1);
+          ge.a("action_draw", this.mFont.mFontId, this.mFont.mFontType, getText().length(), l2 - l1);
           return;
         }
         ETEngine localETEngine = ETEngine.getInstance();
@@ -658,7 +660,7 @@ public class ETTextView
         startFounderDecorAnimation(false, false);
         return;
         l2 = System.currentTimeMillis();
-        hv.a("action_draw", this.mFont.mFontId, 4, getText().length(), l2 - l1);
+        ge.a("action_draw", this.mFont.mFontId, 4, getText().length(), l2 - l1);
       }
       break;
       label677:
@@ -709,8 +711,8 @@ public class ETTextView
         this.mLayout.jdField_a_of_type_Long = -1L;
         if ((!mReportError) && (localThrowable.getMessage().contains("textlayout")))
         {
-          bbrq.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
-          bbrp.a("individual_v2_font_measure_error", "font_measure_error");
+          bdqk.a(null, "individual_v2_font_measure_error", "font_measure_error", localThrowable.getMessage(), localThrowable.getMessage(), 0.0F);
+          bdqj.a("individual_v2_font_measure_error", "font_measure_error");
           mReportError = true;
         }
         super.onMeasure(paramInt1, paramInt2);
@@ -749,8 +751,8 @@ public class ETTextView
     if ((this.mLayout == null) || (this.mLayout.jdField_a_of_type_Long != this.mMsgId) || ((this.mFont != null) && (!this.mFont.equals(this.mLayout.jdField_a_of_type_ComEtrumpMixlayoutETFont))) || (!this.mCacheMeasureResult) || (this.mLayout.jdField_b_of_type_Boolean != this.mMagicFont))
     {
       this.mDecorRunning = false;
-      this.mLayout = new ha();
-      this.mTextSelection = new hg(this, this.mLayout);
+      this.mLayout = new fj();
+      this.mTextSelection = new fp(this, this.mLayout);
       if (this.mDecoration != null)
       {
         this.mDecoration.deleteDescriptor();
@@ -796,9 +798,9 @@ public class ETTextView
         }
         if (this.mLayout.jdField_b_of_type_Boolean)
         {
-          f1 = ho.c;
-          if (ajwc.a() == 18.0F) {
-            f1 = ho.e;
+          f1 = fx.c;
+          if (alnq.a() == 18.0F) {
+            f1 = fx.e;
           }
           ((ETFont)localObject2).setSize(f1 * getTextSize());
         }
@@ -847,7 +849,7 @@ public class ETTextView
         i += i4 + i5;
         j += i2 + i3;
         label1187:
-        hh.a(this.mBitmapLocker, i, j);
+        fq.a(this.mBitmapLocker, i, j);
         label1198:
         if (this.mDecoration != null)
         {
@@ -1060,10 +1062,10 @@ public class ETTextView
   public void setDefaultFont(Typeface paramTypeface, long paramLong)
   {
     setTypeface(paramTypeface);
-    if (ia.jdField_a_of_type_Int == 4) {
+    if (gj.jdField_a_of_type_Int == 4) {
       if (this.mFont == null)
       {
-        this.mFont = new ETFont(9999, ia.a(), getTextSize());
+        this.mFont = new ETFont(9999, gj.a(), getTextSize());
         this.mMsgId = paramLong;
         this.mFont.mFontType = -1;
       }
@@ -1075,7 +1077,7 @@ public class ETTextView
       }
       return;
       this.mFont.mFontId = 9999;
-      this.mFont.setPath(ia.a());
+      this.mFont.setPath(gj.a());
       this.mFont.setSize(getTextSize());
       break;
       this.mFont = null;
@@ -1158,9 +1160,9 @@ public class ETTextView
     super.setMinWidth(paramInt);
   }
   
-  public void setOnTextOrFontChangeListener(hk paramhk)
+  public void setOnTextOrFontChangeListener(ft paramft)
   {
-    this.mOnBeforeTextOrFontChangeListener = paramhk;
+    this.mOnBeforeTextOrFontChangeListener = paramft;
   }
   
   public void setShadowLayer(float paramFloat1, float paramFloat2, float paramFloat3, int paramInt)
@@ -1180,25 +1182,35 @@ public class ETTextView
     super.setText(paramCharSequence, paramBufferType);
   }
   
-  public void setTextAnimationListener(hl paramhl)
+  public void setTextAnimationListener(fu paramfu)
   {
-    this.mAnimationListener = paramhl;
+    this.mAnimationListener = paramfu;
   }
   
   public final void setTextMsg(CharSequence paramCharSequence)
   {
-    if ((paramCharSequence != null) && (!paramCharSequence.equals(getText())))
+    if (getText() != null) {}
+    for (String str = getText().toString();; str = "")
     {
-      setText(paramCharSequence);
-      this.mMsgId = System.currentTimeMillis();
+      if ((paramCharSequence != null) && (!paramCharSequence.toString().equals(str)))
+      {
+        setText(paramCharSequence);
+        this.mMsgId = System.currentTimeMillis();
+        requestLayout();
+        invalidate();
+      }
+      return;
     }
   }
   
   public void setTypeface(Typeface paramTypeface)
   {
+    Typeface localTypeface = paramTypeface;
+    if (paramTypeface == null) {}
     try
     {
-      super.setTypeface(paramTypeface);
+      localTypeface = Typeface.DEFAULT;
+      super.setTypeface(localTypeface);
       return;
     }
     catch (Exception paramTypeface)
@@ -1233,7 +1245,7 @@ public class ETTextView
       }
       this.mDecorRunning = true;
       this.shouldStartAnimation = false;
-      mUIHandler.obtainMessage(0, hj.a(this)).sendToTarget();
+      mUIHandler.obtainMessage(0, fs.a(this)).sendToTarget();
       if ((paramBoolean2) || (this.mAnimationListener == null)) {
         break;
       }
@@ -1278,8 +1290,8 @@ public class ETTextView
                   if (localObject == null) {
                     break;
                   }
-                  localObject = (ho)((QQAppInterface)localObject).getManager(42);
-                } while ((localObject != null) && (!((ho)localObject).b()));
+                  localObject = (fx)((QQAppInterface)localObject).getManager(42);
+                } while ((localObject != null) && (!((fx)localObject).b()));
                 if ((!enableAnimation) || (this.mPauseAnimation)) {
                   break;
                 }
@@ -1361,7 +1373,7 @@ public class ETTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.etrump.mixlayout.ETTextView
  * JD-Core Version:    0.7.0.1
  */

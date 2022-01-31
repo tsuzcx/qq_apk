@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import android.widget.TextView;
+import com.tencent.widget.HorizontalListView;
 
-public abstract interface ajfn
+public class ajfn
+  extends ajfh
 {
-  public abstract void a(SpriteTaskParam paramSpriteTaskParam, long paramLong);
-  
-  public abstract void a(SpriteTaskParam paramSpriteTaskParam, long paramLong, int paramInt);
+  public TextView a;
+  public HorizontalListView a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajfn
  * JD-Core Version:    0.7.0.1
  */

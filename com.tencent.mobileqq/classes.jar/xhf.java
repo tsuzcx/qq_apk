@@ -1,32 +1,39 @@
-public class xhf
+import android.os.SystemClock;
+import com.tribe.async.async.JobSegment;
+
+public abstract class xhf<IN, OUT>
+  extends JobSegment<IN, OUT>
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  protected long a;
+  private final String a;
+  private long b;
   
-  public xhf(int paramInt, String paramString)
+  public xhf()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
   }
   
-  public int a()
+  public void call(IN paramIN)
   {
-    return this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    super.call(paramIN);
   }
   
-  public void a(int paramInt)
+  public void notifyError(Error paramError)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.b = SystemClock.uptimeMillis();
+    super.notifyError(paramError);
   }
   
-  public void a(String paramString)
+  public void notifyResult(OUT paramOUT)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = SystemClock.uptimeMillis();
+    super.notifyResult(paramOUT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xhf
  * JD-Core Version:    0.7.0.1
  */

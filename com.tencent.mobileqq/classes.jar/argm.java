@@ -1,48 +1,28 @@
-import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.MobileQQ;
 
-public class argm
+class argm
+  implements DialogInterface.OnClickListener
 {
-  private static final String jdField_a_of_type_JavaLangString = "PTT|" + argm.class.getSimpleName();
-  argo jdField_a_of_type_Argo;
-  private argp jdField_a_of_type_Argp;
-  private argp b = new argn(this);
+  argm(argh paramargh) {}
   
-  public argm(Context paramContext, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Argo = new argo(this, paramContext);
-  }
-  
-  public int a()
-  {
-    this.jdField_a_of_type_Argo.a();
-    return 0;
-  }
-  
-  public String a()
-  {
-    return ".m4a";
-  }
-  
-  public void a(String paramString, argp paramargp)
-  {
-    this.jdField_a_of_type_Argp = paramargp;
-    this.jdField_a_of_type_Argo.a(paramString, this.b);
-  }
-  
-  public int b()
-  {
-    this.jdField_a_of_type_Argo.b();
-    return 0;
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Argo.a();
+    this.a.b();
+    this.a.a.removeObserver(argh.a(this.a));
+    Intent localIntent = new Intent(this.a.a.getApplication(), LiteActivity.class);
+    localIntent.addFlags(67108864);
+    this.a.a.getApplication().startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     argm
  * JD-Core Version:    0.7.0.1
  */

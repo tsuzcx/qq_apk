@@ -1,68 +1,41 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import java.util.List;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
 
 public class awnl
-  implements awoh
+  extends Handler
 {
-  private afgv jdField_a_of_type_Afgv;
-  private String jdField_a_of_type_JavaLangString;
-  private List<awoi> jdField_a_of_type_JavaUtilList;
+  public awnl(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
   
-  public awnl(afgv paramafgv, List<awoi> paramList, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Afgv = paramafgv;
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public String a()
-  {
-    if (UniteSearchActivity.d == 12) {
-      return ajya.a(2131705355) + sfe.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), BaseApplicationImpl.getContext());
+    if (!this.a.a(paramMessage)) {}
+    switch (paramMessage.what)
+    {
+    case 5: 
+    case 8: 
+    default: 
+      return;
+    case 6: 
+      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
+      {
+        Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
+        return;
+      }
+      Toast.makeText(this.a.a.getApplicationContext(), 2131695638, 0).show();
+      return;
+    case 7: 
+      Toast.makeText(this.a.a.getApplicationContext(), 2131695592, 0).show();
+      return;
     }
-    return ajya.a(2131705354);
-  }
-  
-  public List<awoi> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    awwa.a(this.jdField_a_of_type_JavaLangString, 90, 0, paramView);
-    Intent localIntent = new Intent();
-    localIntent.putExtra("from_key", 2);
-    localIntent.putExtra("last_key_words", this.jdField_a_of_type_JavaLangString);
-    localIntent.setClass(paramView.getContext(), ClassificationSearchActivity.class);
-    localIntent.putExtra("jump_src_key", 0);
-    ClassificationSearchActivity.a((Activity)paramView.getContext(), localIntent, this.jdField_a_of_type_Afgv);
-    paramView = paramView.getContext();
-    if ((paramView != null) && ((paramView instanceof BaseActivity))) {
-      nol.a(((BaseActivity)paramView).app, "P_CliOper", "Pb_account_lifeservice", "0", "0X8005D22", "0X8005D22", 0, 0, "0", "1", this.jdField_a_of_type_JavaLangString, "", false);
-    }
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awnl
  * JD-Core Version:    0.7.0.1
  */

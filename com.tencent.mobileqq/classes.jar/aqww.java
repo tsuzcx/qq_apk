@@ -1,62 +1,42 @@
-import QC.BubbleRecommendRsp;
-import QC.CommonRsp;
-import QC.FontRecommendRsp;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.io.File;
 
-public class aqww
-  extends akfy
+class aqww
+  implements bkgx
 {
-  public aqww(FontBubblePanelView paramFontBubblePanelView) {}
+  aqww(aqwl paramaqwl, String paramString, int paramInt, Object paramObject) {}
   
-  public void a(boolean paramBoolean, BubbleRecommendRsp paramBubbleRecommendRsp)
-  {
-    if (FontBubblePanelView.a(this.a) == 4)
-    {
-      if ((paramBoolean) && (paramBubbleRecommendRsp.vItems.size() > 0)) {
-        FontBubblePanelView.a(this.a, paramBubbleRecommendRsp);
-      }
-    }
-    else {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("onGetBubbleRecommend failed, ");
-    if ((paramBubbleRecommendRsp != null) && (paramBubbleRecommendRsp.stRet != null))
-    {
-      localStringBuilder.append("ret:");
-      localStringBuilder.append(paramBubbleRecommendRsp.stRet.ret);
-      localStringBuilder.append("err:");
-      localStringBuilder.append(paramBubbleRecommendRsp.stRet.err);
-    }
-    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
-  }
+  public void a(String paramString, long paramLong, float paramFloat) {}
   
-  public void a(boolean paramBoolean, FontRecommendRsp paramFontRecommendRsp)
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
   {
-    if (FontBubblePanelView.a(this.a) == 3)
+    int i;
+    if ((paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists()))
     {
-      if ((paramBoolean) && (paramFontRecommendRsp.vItems.size() > 0)) {
-        FontBubblePanelView.a(this.a, paramFontRecommendRsp);
+      i = 1;
+      if (i == 0) {
+        break label128;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onSucceed. filePath[" + paramString2 + "]");
+      }
+      aqwl.a(this.jdField_a_of_type_Aqwl).a().a(true, 39, new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramString2, this.jdField_a_of_type_JavaLangObject });
     }
-    else {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder("onGetFontRecommend failed, ");
-    if ((paramFontRecommendRsp != null) && (paramFontRecommendRsp.stRet != null))
+    label128:
+    while (!QLog.isColorLevel())
     {
-      localStringBuilder.append("ret:");
-      localStringBuilder.append(paramFontRecommendRsp.stRet.ret);
-      localStringBuilder.append("err:");
-      localStringBuilder.append(paramFontRecommendRsp.stRet.err);
+      return;
+      i = 0;
+      break;
     }
-    QLog.e("FontBubblePanelView", 1, localStringBuilder.toString());
+    QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onFailed: errcode[" + paramInt + "], errmsg[" + paramString3 + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqww
  * JD-Core Version:    0.7.0.1
  */

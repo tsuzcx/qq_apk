@@ -1,44 +1,32 @@
-import android.content.Context;
 import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
 public class vqd
-  extends vpr
+  extends vqk<StoryVideoItem>
 {
-  public int c;
-  
-  public vqd(int paramInt1, String paramString, int paramInt2, int paramInt3)
+  public vqd(VideoViewVideoHolder paramVideoViewVideoHolder)
   {
-    super(paramInt1, paramString, paramInt2);
-    this.c = paramInt3;
+    super(paramVideoViewVideoHolder, null);
   }
   
-  @NonNull
-  public Class<? extends vps> a()
+  public void a(StoryVideoItem paramStoryVideoItem)
   {
-    return vqe.class;
+    super.onNext(paramStoryVideoItem);
+    VideoViewVideoHolder.a(this.a);
   }
   
-  @NonNull
-  public vps a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  public void onError(@NonNull Error paramError)
   {
-    return new vqe(this, paramContext, paramViewGroup);
-  }
-  
-  public void a(int paramInt)
-  {
-    ved.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
-    this.c = paramInt;
-  }
-  
-  public boolean a()
-  {
-    return true;
+    super.onError(paramError);
+    wsv.d(this.a.a, "VideoFileSegment error=%s", new Object[] { ((ErrorMessage)paramError).getErrorMessage() });
+    VideoViewVideoHolder.a(this.a, (ErrorMessage)paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vqd
  * JD-Core Version:    0.7.0.1
  */

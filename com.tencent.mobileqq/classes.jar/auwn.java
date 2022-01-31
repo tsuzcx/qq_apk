@@ -1,14 +1,23 @@
-public class auwn
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+
+public final class auwn
+  implements Parcelable.Creator<InterestTagInfo>
 {
-  public int a;
-  public auwo a;
-  public String a;
-  public int b;
-  public String b;
+  public InterestTagInfo a(Parcel paramParcel)
+  {
+    return new InterestTagInfo(paramParcel);
+  }
+  
+  public InterestTagInfo[] a(int paramInt)
+  {
+    return new InterestTagInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auwn
  * JD-Core Version:    0.7.0.1
  */

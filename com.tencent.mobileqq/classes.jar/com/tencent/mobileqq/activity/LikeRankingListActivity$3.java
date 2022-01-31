@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import atxd;
+import avod;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
 
@@ -11,21 +11,21 @@ class LikeRankingListActivity$3
   
   public void run()
   {
-    atxd localatxd = (atxd)this.this$0.app.getManager(160);
-    RedTouchItem localRedTouchItem1 = localatxd.a(100601);
-    if (localatxd.a(localRedTouchItem1, false))
+    avod localavod = (avod)this.this$0.app.getManager(160);
+    RedTouchItem localRedTouchItem1 = localavod.a(100601);
+    if (localavod.a(localRedTouchItem1, false))
     {
-      RedTouchItem localRedTouchItem2 = localatxd.a(-7);
-      if ((localatxd.a(localRedTouchItem2, true)) && (localRedTouchItem2.receiveTime == localRedTouchItem1.receiveTime)) {
+      RedTouchItem localRedTouchItem2 = localavod.a(-7);
+      if ((localavod.a(localRedTouchItem2, true)) && (localRedTouchItem2.receiveTime == localRedTouchItem1.receiveTime)) {
         localRedTouchItem2.unReadFlag = false;
       }
-      localatxd.a(100601);
+      localavod.a(100601);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LikeRankingListActivity.3
  * JD-Core Version:    0.7.0.1
  */

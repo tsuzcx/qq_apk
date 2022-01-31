@@ -1,33 +1,31 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.graphics.Color;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.RadioGroup;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseBottomPersonalFragment;
-import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
-import java.util.List;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
-public class wvw
-  implements ViewPager.OnPageChangeListener
+class wvw
+  implements View.OnTouchListener
 {
-  public wvw(RelativePersonalBottomView paramRelativePersonalBottomView) {}
+  wvw(wvv paramwvv) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    
-    if ((RelativePersonalBottomView.a(this.a) != null) && (RelativePersonalBottomView.a(this.a).getChildCount() > paramInt)) {
-      RelativePersonalBottomView.a(this.a).getChildAt(paramInt).performClick();
+    switch (paramMotionEvent.getAction())
+    {
     }
-    if (RelativePersonalBottomView.a(this.a).size() > paramInt) {
-      ((SubscribeBaseBottomPersonalFragment)RelativePersonalBottomView.a(this.a).get(paramInt)).a(paramInt);
+    for (;;)
+    {
+      return false;
+      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
+      continue;
+      this.a.a.setTextColor(Color.parseColor("#ffffff"));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,28 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
 
 public class auxn
-  implements bhkn
+  extends Handler
 {
-  public auxn(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public auxn(StoryPlayController paramStoryPlayController) {}
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StickyNotePublishFragment", 2, String.format("publishStickyNote onResult success=%s resultCode=%s resultMsg=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), paramString }));
-    }
-    if ((StickyNotePublishFragment.a(this.a) != null) && (StickyNotePublishFragment.a(this.a).isShowing())) {
-      StickyNotePublishFragment.a(this.a).dismiss();
-    }
-    if (paramBoolean)
+    switch (paramMessage.what)
     {
-      bcql.a(BaseApplication.context, 2, 2131699319, 0).a();
-      if (this.a.getActivity() != null)
-      {
-        StickyNotePublishFragment.b(this.a, false);
-        this.a.a(this.a.getActivity().app);
-        this.a.getActivity().setResult(-1);
-        this.a.getActivity().finish();
-      }
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
       return;
+      StoryPlayController.a(this.a, this.a.a);
     }
-    int i = 2131699317;
-    if (paramInt == auxf.b) {
-      i = 2131699318;
-    }
-    bcql.a(BaseApplication.context, 1, i, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auxn
  * JD-Core Version:    0.7.0.1
  */

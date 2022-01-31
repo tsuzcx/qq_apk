@@ -1,10 +1,10 @@
 package com.tencent.YTFace.cluster;
 
-import alco;
+import amte;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bbdx;
+import bdcs;
 import com.tencent.YTFace.model.FaceStatus;
 import com.tencent.YTFace.model.FaceTarget;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -29,8 +29,8 @@ public class FaceCluster
   {
     try
     {
-      String str1 = alco.a("YTFaceExtFeature");
-      String str2 = alco.a("YTFaceClusterJNI_V820");
+      String str1 = amte.a("YTFaceExtFeature");
+      String str2 = amte.a("YTFaceClusterJNI_V820");
       BaseApplicationImpl.sApplication.getSharedPreferences("StatisticCollector", 4).edit().putString("facefeature_ext_so_md5", str1).commit();
       QLog.d("FaceCluster", 1, "FaceCluster faceFeatureExtSoMD5 = " + str1 + " faceJniSoMD5 =  " + str2);
       return;
@@ -67,7 +67,7 @@ public class FaceCluster
     //   4: istore 5
     //   6: ldc 2
     //   8: monitorenter
-    //   9: invokestatic 113	alco:a	()Z
+    //   9: invokestatic 113	amte:a	()Z
     //   12: istore 7
     //   14: iload 7
     //   16: ifne +9 -> 25
@@ -83,19 +83,19 @@ public class FaceCluster
     //   39: iconst_1
     //   40: putstatic 115	com/tencent/YTFace/cluster/FaceCluster:soLoaded	Z
     //   43: ldc 117
-    //   45: invokestatic 121	alco:b	(Ljava/lang/String;)B
+    //   45: invokestatic 121	amte:b	(Ljava/lang/String;)B
     //   48: istore_0
     //   49: ldc 123
-    //   51: invokestatic 121	alco:b	(Ljava/lang/String;)B
+    //   51: invokestatic 121	amte:b	(Ljava/lang/String;)B
     //   54: istore_1
     //   55: ldc 125
-    //   57: invokestatic 121	alco:b	(Ljava/lang/String;)B
+    //   57: invokestatic 121	amte:b	(Ljava/lang/String;)B
     //   60: istore_2
     //   61: ldc 34
-    //   63: invokestatic 121	alco:b	(Ljava/lang/String;)B
+    //   63: invokestatic 121	amte:b	(Ljava/lang/String;)B
     //   66: istore_3
     //   67: ldc 42
-    //   69: invokestatic 121	alco:b	(Ljava/lang/String;)B
+    //   69: invokestatic 121	amte:b	(Ljava/lang/String;)B
     //   72: istore 4
     //   74: iload 6
     //   76: istore 5
@@ -226,8 +226,8 @@ public class FaceCluster
     }
     try
     {
-      paramString1 = bbdx.a(paramString1);
-      paramString2 = bbdx.a(paramString2);
+      paramString1 = bdcs.a(paramString1);
+      paramString2 = bdcs.a(paramString2);
       QLog.d("FaceCluster", 1, "init ,ufdmtccArray = " + paramString1 + ",ufatArray = " + paramString2);
       if ((paramString1 != null) && (paramString2 != null))
       {
@@ -270,7 +270,7 @@ public class FaceCluster
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.YTFace.cluster.FaceCluster
  * JD-Core Version:    0.7.0.1
  */

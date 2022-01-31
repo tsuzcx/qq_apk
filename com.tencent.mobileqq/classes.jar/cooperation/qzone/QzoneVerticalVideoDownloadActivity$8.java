@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import axqn;
+import azly;
 import com.tencent.common.app.BaseApplicationImpl;
 import java.util.Properties;
 
@@ -11,12 +11,12 @@ final class QzoneVerticalVideoDownloadActivity$8
   
   public void run()
   {
-    axqn.a(BaseApplicationImpl.getContext()).reportKVEvent(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilProperties);
+    azly.a(BaseApplicationImpl.getContext()).reportKVEvent(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilProperties);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QzoneVerticalVideoDownloadActivity.8
  * JD-Core Version:    0.7.0.1
  */

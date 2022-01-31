@@ -1,37 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class arpa
-  extends WebViewPlugin
+final class arpa
+  implements View.OnClickListener
 {
-  public static final String a;
-  protected wxr a;
+  arpa(QQAppInterface paramQQAppInterface, String paramString, arpc paramarpc, aotd paramaotd) {}
   
-  static
+  public void onClick(View paramView)
   {
-    jdField_a_of_type_JavaLangString = arpa.class.getSimpleName();
-  }
-  
-  public arpa()
-  {
-    this.mPluginNameSpace = "ftssearch";
-    this.jdField_a_of_type_Wxr = wxr.a();
-    this.jdField_a_of_type_Wxr.a();
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {}
-    while ("ftssearch".equals(paramString2)) {
-      return false;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
     }
-    return false;
+    this.jdField_a_of_type_Arpc.a(this.jdField_a_of_type_Aotd.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arpa
  * JD-Core Version:    0.7.0.1
  */

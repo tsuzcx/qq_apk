@@ -1,22 +1,26 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.qphone.base.util.QLog;
 
-final class actl
-  implements bcay
+public class actl
+  extends BroadcastReceiver
 {
-  public void a(boolean paramBoolean)
+  public actl(ForwardRecentActivity paramForwardRecentActivity) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramBoolean)
+    if (!this.a.isFinishing())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebAccelerator", 2, "preStart QWeb Process");
-      }
-      acsz.a();
+      this.a.finish();
+      QLog.i("ForwardOption.ForwardEntranceActivity", 1, "ForwardRecentActivity has finished by broadcastReceiver.");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     actl
  * JD-Core Version:    0.7.0.1
  */

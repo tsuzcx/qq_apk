@@ -4,7 +4,7 @@ import NS_MINI_INTERFACE.INTERFACE.StGetCodeReq;
 import NS_MINI_INTERFACE.INTERFACE.StGetCodeRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.util.Log;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.mini.http.HttpProtoBufRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -49,7 +49,7 @@ public class HttpGetCodeRequest
     INTERFACE.StGetCodeRsp localStGetCodeRsp = new INTERFACE.StGetCodeRsp();
     try
     {
-      localStQWebRsp.mergeFrom(bbma.b(paramArrayOfByte));
+      localStQWebRsp.mergeFrom(bdku.b(paramArrayOfByte));
       localStGetCodeRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
       QLog.d("HttpGetCodeRequest", 1, "[miniapp-http].onResponse, retCode: " + localStQWebRsp.retCode.get() + ", errMsg: " + localStQWebRsp.errMsg.get().toStringUtf8());
       if (localStGetCodeRsp != null)
@@ -70,7 +70,7 @@ public class HttpGetCodeRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.http.httpRequest.HttpGetCodeRequest
  * JD-Core Version:    0.7.0.1
  */

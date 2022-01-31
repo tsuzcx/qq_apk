@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.QIMBeautyItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.upload.common.UploadConfiguration.NetworkStateObserver;
 
-public final class bjcw
-  implements Parcelable.Creator<QIMBeautyItem>
+class bjcw
+  implements bjqe
 {
-  public QIMBeautyItem a(Parcel paramParcel)
-  {
-    return new QIMBeautyItem(paramParcel);
-  }
+  bjcw(bjcv parambjcv, UploadConfiguration.NetworkStateObserver paramNetworkStateObserver) {}
   
-  public QIMBeautyItem[] a(int paramInt)
+  public void onNetworkConnect(boolean paramBoolean)
   {
-    return new QIMBeautyItem[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadEnv", 2, "upload2: onNetworkConnect registerNetworkStateObserver|onNetworkConnect：" + paramBoolean);
+    }
+    bjcv.a(this.jdField_a_of_type_Bjcv, paramBoolean);
+    this.jdField_a_of_type_ComTencentUploadCommonUploadConfiguration$NetworkStateObserver.onStateChanged(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjcw
  * JD-Core Version:    0.7.0.1
  */

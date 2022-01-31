@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import ajya;
-import auko;
-import aulz;
-import aumc;
+import alpo;
+import awbv;
+import awdg;
+import awdj;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.EqqAccountInfo;
@@ -17,15 +17,15 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import naz;
+import ndv;
 
 public class EqqDetail
-  extends auko
+  extends awbv
 {
   public byte[] accountData;
   public String address = "";
-  @aulz
-  public String certifiedDescription = ajya.a(2131704197);
+  @awdg
+  public String certifiedDescription = alpo.a(2131704569);
   public int certifiedGrade;
   public String displayNumber = "";
   public long eqqAccountFlag;
@@ -39,12 +39,12 @@ public class EqqDetail
   public boolean mIsSyncLbs;
   public boolean mIsSyncLbsSelected;
   public int mShowMsgFlag = -1;
-  public String name = ajya.a(2131704198);
+  public String name = alpo.a(2131704570);
   public String phoneNumber = "";
   public String realSummary = "";
   public int seqno;
-  public String summary = ajya.a(2131704196);
-  @aumc
+  public String summary = alpo.a(2131704568);
+  @awdj
   public String uin;
   
   public EqqDetail() {}
@@ -225,7 +225,7 @@ public class EqqDetail
   
   public boolean hasIvrAbility()
   {
-    if (!naz.a) {
+    if (!ndv.a) {
       if (QLog.isDevelopLevel()) {
         QLog.d("EqqDetail", 4, "Don't support sharp");
       }
@@ -238,7 +238,7 @@ public class EqqDetail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.EqqDetail
  * JD-Core Version:    0.7.0.1
  */

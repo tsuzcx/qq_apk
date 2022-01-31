@@ -1,10 +1,23 @@
-public abstract interface awtb
+import android.view.animation.Animation;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.qphone.base.util.QLog;
+
+public class awtb
+  extends awsv
 {
-  public abstract void a(int paramInt);
+  public awtb(LSRecordPanel paramLSRecordPanel) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("LsRecord", 4, "LS startSideAnimation onAnimationEnd");
+    }
+    this.a.b = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awtb
  * JD-Core Version:    0.7.0.1
  */

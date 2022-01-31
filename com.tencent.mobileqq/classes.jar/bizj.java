@@ -1,58 +1,53 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.openapi.offlineset.utils.IHttpClient;
-import com.tencent.ttpic.openapi.offlineset.utils.IResponseListener;
-import dov.com.qq.im.ae.play.UrlConHttpClient.1;
-import dov.com.qq.im.ae.play.UrlConHttpClient.2;
-import java.util.concurrent.Executor;
+import NS_MOBILE_MAIN_PAGE.PhotoWall;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_del_photo_wall_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
+import java.util.ArrayList;
 
 public class bizj
-  implements IHttpClient
+  extends QzoneExternalRequest
 {
-  private static final String jdField_a_of_type_JavaLangString = bizj.class.getSimpleName();
-  private IResponseListener jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener;
+  public JceStruct a;
   
-  private void a(int paramInt, String paramString1, String paramString2)
+  public bizj(long paramLong1, long paramLong2, String paramString, Long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener != null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener.response(paramInt, 1, paramString1, paramString2);
-    }
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong2);
+    mobile_sub_del_photo_wall_req localmobile_sub_del_photo_wall_req = new mobile_sub_del_photo_wall_req();
+    PhotoWall localPhotoWall = new PhotoWall();
+    localPhotoWall.photoId = paramString;
+    localPhotoWall.ctime = paramLong.longValue();
+    localmobile_sub_del_photo_wall_req.vecUrls = new ArrayList();
+    localmobile_sub_del_photo_wall_req.vecUrls.add(localPhotoWall);
+    this.a = localmobile_sub_del_photo_wall_req;
   }
   
-  public void download(int paramInt, String paramString1, String paramString2, String paramString3)
+  public static JceStruct a(byte[] paramArrayOfByte)
   {
-    LogUtils.i(jdField_a_of_type_JavaLangString, "开始下载文件:" + paramString2);
-    if (TextUtils.isEmpty(paramString2))
-    {
-      LogUtils.e(jdField_a_of_type_JavaLangString, "downUrl 无效：" + paramString2);
-      return;
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    AsyncTask.THREAD_POOL_EXECUTOR.execute(new UrlConHttpClient.2(this, paramString2, paramString3, paramInt, paramString1));
+    return decode(paramArrayOfByte, "delPhotoWall");
   }
   
-  public void get(int paramInt, String paramString1, String paramString2)
+  public String getCmdString()
   {
-    if (TextUtils.isEmpty(paramString2))
-    {
-      LogUtils.e(jdField_a_of_type_JavaLangString, "url 无效：" + paramString2);
-      return;
-    }
-    LogUtils.i(jdField_a_of_type_JavaLangString, "GET 请求：" + paramString2);
-    AsyncTask.THREAD_POOL_EXECUTOR.execute(new UrlConHttpClient.1(this, paramString2, paramInt, paramString1));
+    return "QzoneNewService.delPhotoWall";
   }
   
-  public void post(int paramInt, String paramString1, String paramString2) {}
-  
-  public void setResponseListener(IResponseListener paramIResponseListener)
+  public JceStruct getReq()
   {
-    LogUtils.i(jdField_a_of_type_JavaLangString, "setResponseListener ");
-    this.jdField_a_of_type_ComTencentTtpicOpenapiOfflinesetUtilsIResponseListener = paramIResponseListener;
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "delPhotoWall";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bizj
  * JD-Core Version:    0.7.0.1
  */

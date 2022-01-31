@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
+import aaos;
+import aaot;
 import android.app.Activity;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniLog;
-import yyt;
-import yyu;
 
 class AppBrandFragment$4
   implements Runnable
@@ -13,12 +13,12 @@ class AppBrandFragment$4
   public void run()
   {
     MiniLog.init();
-    yyt.a().a(this.val$activity, new yyu());
+    aaos.a().a(this.val$activity, new aaot());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandFragment.4
  * JD-Core Version:    0.7.0.1
  */

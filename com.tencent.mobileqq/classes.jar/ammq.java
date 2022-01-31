@@ -1,36 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.MultiImageTextView;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 public class ammq
-  implements DialogInterface.OnDismissListener
 {
-  public ammq(LocationSelectActivity paramLocationSelectActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static Object a(byte[] paramArrayOfByte)
   {
-    LocationSelectActivity.a(this.a).setRightTextColor(2);
-    if (AppSetting.d)
-    {
-      LocationSelectActivity.b(this.a).setContentDescription(ajya.a(2131706309) + LocationSelectActivity.a(this.a).name);
-      LocationSelectActivity.a(this.a).setContentDescription(ajya.a(2131706307) + LocationSelectActivity.a(this.a).a().getText());
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
     }
-    paramDialogInterface = LocationSelectActivity.a(this.a);
-    if (LocationSelectActivity.a(this.a) == 0)
-    {
-      axqy.b(this.a.app, "CliOper", "", "", "0X8004248", "0X8004248", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
-      return;
+    return new ObjectInputStream(new ByteArrayInputStream(paramArrayOfByte)).readObject();
+  }
+  
+  public static byte[] a(Serializable paramSerializable)
+  {
+    if (paramSerializable == null) {
+      return null;
     }
-    axqy.b(this.a.app, "CliOper", "", "", "0X800424A", "0X800424A", 0, 0, paramDialogInterface[0], paramDialogInterface[1], paramDialogInterface[2], "");
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    new ObjectOutputStream(localByteArrayOutputStream).writeObject(paramSerializable);
+    return localByteArrayOutputStream.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammq
  * JD-Core Version:    0.7.0.1
  */

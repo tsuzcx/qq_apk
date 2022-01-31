@@ -1,33 +1,21 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
 
 public class agzt
-  implements View.OnFocusChangeListener
+  implements View.OnTouchListener
 {
-  public agzt(LingHbFragment paramLingHbFragment) {}
+  public agzt(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramBoolean) {
-      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
-      }
-      return;
-      LingHbFragment.a(this.a).a();
-    }
+    return (paramMotionEvent.getAction() == 2) && ((this.a.a == null) || (this.a.a.getCount() == 0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agzt
  * JD-Core Version:    0.7.0.1
  */

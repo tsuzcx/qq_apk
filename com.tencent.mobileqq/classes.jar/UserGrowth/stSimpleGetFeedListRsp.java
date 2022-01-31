@@ -23,6 +23,7 @@ public final class stSimpleGetFeedListRsp
   public boolean is_finished = true;
   public stMyVideoInfo my_vinfo;
   public String session = "";
+  public String trace_id = "";
   
   static
   {
@@ -34,7 +35,7 @@ public final class stSimpleGetFeedListRsp
   
   public stSimpleGetFeedListRsp() {}
   
-  public stSimpleGetFeedListRsp(String paramString1, ArrayList<stSimpleMetaFeed> paramArrayList, boolean paramBoolean, Map<String, Integer> paramMap, byte paramByte, stGlobalConfig paramstGlobalConfig, String paramString2, stMyVideoInfo paramstMyVideoInfo, String paramString3)
+  public stSimpleGetFeedListRsp(String paramString1, ArrayList<stSimpleMetaFeed> paramArrayList, boolean paramBoolean, Map<String, Integer> paramMap, byte paramByte, stGlobalConfig paramstGlobalConfig, String paramString2, stMyVideoInfo paramstMyVideoInfo, String paramString3, String paramString4)
   {
     this.attach_info = paramString1;
     this.feeds = paramArrayList;
@@ -45,6 +46,7 @@ public final class stSimpleGetFeedListRsp
     this.gdt_args = paramString2;
     this.my_vinfo = paramstMyVideoInfo;
     this.session = paramString3;
+    this.trace_id = paramString4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -58,6 +60,7 @@ public final class stSimpleGetFeedListRsp
     this.gdt_args = paramJceInputStream.readString(6, false);
     this.my_vinfo = ((stMyVideoInfo)paramJceInputStream.read(cache_my_vinfo, 7, false));
     this.session = paramJceInputStream.readString(8, false);
+    this.trace_id = paramJceInputStream.readString(9, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -84,6 +87,9 @@ public final class stSimpleGetFeedListRsp
     }
     if (this.session != null) {
       paramJceOutputStream.write(this.session, 8);
+    }
+    if (this.trace_id != null) {
+      paramJceOutputStream.write(this.trace_id, 9);
     }
   }
 }

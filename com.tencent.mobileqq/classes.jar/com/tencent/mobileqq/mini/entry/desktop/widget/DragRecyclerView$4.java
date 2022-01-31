@@ -4,11 +4,11 @@ import android.graphics.Canvas;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import bfyr;
+import bhzo;
 import com.tencent.qphone.base.util.QLog;
 
 class DragRecyclerView$4
-  extends bfyr
+  extends bhzo
 {
   DragRecyclerView$4(DragRecyclerView paramDragRecyclerView) {}
   
@@ -78,7 +78,7 @@ class DragRecyclerView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView.4
  * JD-Core Version:    0.7.0.1
  */

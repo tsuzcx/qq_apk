@@ -5,6 +5,7 @@ import android.graphics.PointF;
 import android.opengl.GLES20;
 import android.text.TextUtils;
 import com.tencent.aekit.api.standard.AEModule;
+import com.tencent.aekit.openrender.AEOpenRenderConfig;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
@@ -34,7 +35,10 @@ public class TTBeautyV5BeautyFaceList
   private int height;
   private boolean isFemale = true;
   private boolean isGenderGhanged = false;
+  private boolean isLUT1LoadSuccess = false;
+  private boolean isLUT2LoadSuccess = false;
   private String lastLutPath = null;
+  private String lastLutStyleMaskPath = null;
   private BeautyAIParam mBeautyAIParam = new BeautyAIParam();
   private TTBeautyV5BeautyEffectCombineFilter2 mBeautyEffectCombineFilter = new TTBeautyV5BeautyEffectCombineFilter2();
   private TTBeautyV5EyeBagBlurFilter mBlurFilter1 = new TTBeautyV5EyeBagBlurFilter();
@@ -51,7 +55,7 @@ public class TTBeautyV5BeautyFaceList
   private boolean mRenderLipsLut = false;
   private float mSmoothOpacity = 0.0F;
   private float mSmoothOpacity2 = 0.0F;
-  private int[] mTextures = new int[4];
+  private int[] mTextures = new int[5];
   private float mToothWhiten = 0.0F;
   private TTBeautyV5WrinklesRemoveFilter2 mWrinklesRemoveFilter2 = new TTBeautyV5WrinklesRemoveFilter2();
   private boolean openFaceFeture = true;
@@ -112,6 +116,16 @@ public class TTBeautyV5BeautyFaceList
   private boolean isFirstFewFrames()
   {
     return this.mRenderIndex < 20;
+  }
+  
+  private boolean loadLut(Bitmap paramBitmap, int paramInt)
+  {
+    if (BitmapUtils.isLegal(paramBitmap))
+    {
+      GlUtil.loadTexture(paramInt, paramBitmap);
+      return true;
+    }
+    return false;
   }
   
   private void updateSmoothOpacity()
@@ -175,9 +189,12 @@ public class TTBeautyV5BeautyFaceList
     Bitmap localBitmap1 = VideoMemoryManager.getInstance().getBeautyCacheBitmap("color_tone_hongrun.png");
     Bitmap localBitmap2 = VideoMemoryManager.getInstance().getBeautyCacheBitmap("color_tone_baixi.png");
     GLES20.glGenTextures(this.mTextures.length, this.mTextures, 0);
-    GlUtil.loadTexture(this.mTextures[0], localBitmap1);
-    GlUtil.loadTexture(this.mTextures[1], localBitmap2);
-    if ((!BitmapUtils.isLegal(localBitmap1)) || (BitmapUtils.isLegal(localBitmap2))) {}
+    if (loadLut(localBitmap1, this.mTextures[0])) {
+      this.isLUT1LoadSuccess = true;
+    }
+    if (loadLut(localBitmap2, this.mTextures[1])) {
+      this.isLUT2LoadSuccess = true;
+    }
     this.mFaceFeatureFilter.setFaceFeatureParam(new FaceFeatureParam(0.8F, 0.8F, 0.8F, "female_beauty_normal.png", "female_beauty_multiply.png", "female_beauty_softlight.png"));
     this.mFaceFeatureAndTeethWhitenFilter.setFaceFeatureParam(new FaceFeatureParam(0.8F, 0.8F, 0.8F, "female_beauty_normal.png", "female_beauty_multiply.png", "female_beauty_softlight.png"));
     this.lastLutPath = null;
@@ -208,13 +225,14 @@ public class TTBeautyV5BeautyFaceList
       localList = VideoMaterialUtil.copyList((List)paramList.get(i));
       FaceOffUtil.initFacePositions(FaceOffUtil.getFullCoords(localList, 5.0F), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices);
       if (paramList1.size() <= i) {
-        break label1495;
+        break label1515;
       }
     }
     label147:
     label159:
     label194:
-    label1495:
+    label1239:
+    label1515:
     for (Object localObject = FaceOffUtil.initPointVis(FaceOffUtil.getFullPointsVisForFaceOffFilter(pointsVis((Float[])paramList1.get(i))), this.pointVisVertices);; localObject = new float[0])
     {
       boolean bool1;
@@ -353,7 +371,6 @@ public class TTBeautyV5BeautyFaceList
             this.mFaceFeatureFilter.renderTexture(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
             localFrame1.unlock();
             continue;
-            label1239:
             if ((this.mToothWhiten > 0.01F) || (this.mRenderLipsLut))
             {
               paramFrame = localFrame1;
@@ -388,8 +405,16 @@ public class TTBeautyV5BeautyFaceList
       paramFrame = localFrame1;
       if (this.mContrastFilter.needRender())
       {
-        paramFrame = this.mContrastFilter.RenderProcess(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
-        localFrame1.unlock();
+        paramFrame = localFrame1;
+        if (this.isLUT1LoadSuccess)
+        {
+          paramFrame = localFrame1;
+          if (this.isLUT2LoadSuccess)
+          {
+            paramFrame = this.mContrastFilter.RenderProcess(localFrame1.getTextureId(), localFrame1.width, localFrame1.height);
+            localFrame1.unlock();
+          }
+        }
       }
       this.mRenderIndex += 1;
       return paramFrame;
@@ -486,6 +511,28 @@ public class TTBeautyV5BeautyFaceList
     this.mFaceFeatureAndTeethWhitenFilter.setLipsLutAlpha(0);
   }
   
+  public void setLipsStyleMaskPath(String paramString)
+  {
+    if ((this.lastLutStyleMaskPath != null) && (this.lastLutStyleMaskPath.equals(paramString))) {
+      return;
+    }
+    this.lastLutStyleMaskPath = paramString;
+    Bitmap localBitmap = null;
+    if (!TextUtils.isEmpty(paramString)) {
+      if (paramString.startsWith("assets://")) {
+        break label80;
+      }
+    }
+    label80:
+    for (localBitmap = BitmapUtils.decodeSampledBitmapFromFile(paramString, 1); BitmapUtils.isLegal(localBitmap); localBitmap = BitmapUtils.decodeSampleBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(paramString), 1))
+    {
+      GlUtil.loadTexture(this.mTextures[4], localBitmap);
+      this.mFaceFeatureAndTeethWhitenFilter.setLipsStyleMaskPath(this.mTextures[4]);
+      return;
+    }
+    this.mFaceFeatureAndTeethWhitenFilter.setLipsStyleMaskPath(0);
+  }
+  
   public void setNormalAlphaFactor(float paramFloat)
   {
     this.mFaceFeatureAndTeethWhitenFilter.setNormalAlphaFactor(paramFloat);
@@ -509,11 +556,43 @@ public class TTBeautyV5BeautyFaceList
   
   public void setSkinColorAlpha(float paramFloat)
   {
-    if (paramFloat < 0.0F)
+    Bitmap localBitmap;
+    if (!this.isLUT1LoadSuccess)
     {
+      localBitmap = VideoMemoryManager.getInstance().getBeautyCacheBitmap("color_tone_hongrun.png");
+      if (localBitmap == null) {
+        break label122;
+      }
+      bool = true;
+      AEOpenRenderConfig.checkStrictMode(bool, "color_tone_hongrun.png is null");
+      if (loadLut(localBitmap, this.mTextures[0])) {
+        this.isLUT1LoadSuccess = true;
+      }
+    }
+    if (!this.isLUT2LoadSuccess)
+    {
+      localBitmap = VideoMemoryManager.getInstance().getBeautyCacheBitmap("color_tone_baixi.png");
+      if (localBitmap == null) {
+        break label127;
+      }
+    }
+    label122:
+    label127:
+    for (boolean bool = true;; bool = false)
+    {
+      AEOpenRenderConfig.checkStrictMode(bool, "color_tone_baixi.png is null");
+      if (loadLut(localBitmap, this.mTextures[1])) {
+        this.isLUT2LoadSuccess = true;
+      }
+      if (paramFloat >= 0.0F) {
+        break label132;
+      }
       this.mContrastFilter.updateSkinColorValue(Math.abs(paramFloat), this.mTextures[0]);
       return;
+      bool = false;
+      break;
     }
+    label132:
     this.mContrastFilter.updateSkinColorValue(Math.abs(paramFloat), this.mTextures[1]);
   }
   

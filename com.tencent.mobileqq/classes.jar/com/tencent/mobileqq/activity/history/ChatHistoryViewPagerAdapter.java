@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.history;
 
-import afqr;
-import afwf;
-import afyj;
-import afyk;
-import agbc;
+import ahoi;
+import ahtz;
+import ahwh;
+import ahwi;
+import ahza;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,24 +16,24 @@ import java.util.ArrayList;
 
 public class ChatHistoryViewPagerAdapter
   extends CustomFragmentStatePagerAdapter
-  implements afqr
+  implements ahoi
 {
-  private afwf jdField_a_of_type_Afwf;
-  private afyj jdField_a_of_type_Afyj;
+  private ahtz jdField_a_of_type_Ahtz;
+  private ahwh jdField_a_of_type_Ahwh;
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private String jdField_a_of_type_JavaLangString;
   protected ArrayList<ChatHistoryBaseFragment> a;
-  private ArrayList<afyk> b = new ArrayList();
+  private ArrayList<ahwi> b = new ArrayList();
   
-  public ChatHistoryViewPagerAdapter(FragmentManager paramFragmentManager, BaseActivity paramBaseActivity, afwf paramafwf, afyj paramafyj, String paramString)
+  public ChatHistoryViewPagerAdapter(FragmentManager paramFragmentManager, BaseActivity paramBaseActivity, ahtz paramahtz, ahwh paramahwh, String paramString)
   {
     super(paramFragmentManager);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
-    this.jdField_a_of_type_Afwf = paramafwf;
-    this.jdField_a_of_type_Afyj = paramafyj;
+    this.jdField_a_of_type_Ahtz = paramahtz;
+    this.jdField_a_of_type_Ahwh = paramahwh;
     this.b.clear();
-    this.b.addAll(this.jdField_a_of_type_Afyj.jdField_a_of_type_JavaUtilArrayList);
+    this.b.addAll(this.jdField_a_of_type_Ahwh.jdField_a_of_type_JavaUtilArrayList);
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -42,7 +42,7 @@ public class ChatHistoryViewPagerAdapter
     int i = 0;
     while (i < this.b.size())
     {
-      if (((afyk)this.b.get(i)).a == paramInt) {
+      if (((ahwi)this.b.get(i)).a == paramInt) {
         return i;
       }
       i += 1;
@@ -50,10 +50,10 @@ public class ChatHistoryViewPagerAdapter
     return -1;
   }
   
-  private afyk a(int paramInt)
+  private ahwi a(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < this.b.size())) {
-      return (afyk)this.b.get(paramInt);
+      return (ahwi)this.b.get(paramInt);
     }
     return null;
   }
@@ -82,24 +82,24 @@ public class ChatHistoryViewPagerAdapter
   
   public ChatHistoryBaseFragment a(int paramInt, boolean paramBoolean)
   {
-    afyk localafyk = a(paramInt);
+    ahwi localahwi = a(paramInt);
     Object localObject1 = null;
-    if (localafyk != null)
+    if (localahwi != null)
     {
-      Object localObject2 = a(localafyk.a);
+      Object localObject2 = a(localahwi.a);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = localObject2;
         if (paramBoolean)
         {
-          localObject1 = agbc.a(localafyk.a);
+          localObject1 = ahza.a(localahwi.a);
           ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
           ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
           ((ChatHistoryBaseFragment)localObject1).a(paramInt);
           ((ChatHistoryBaseFragment)localObject1).b(this.jdField_a_of_type_JavaLangString);
-          ((ChatHistoryBaseFragment)localObject1).b(localafyk.a);
-          ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_Afwf);
+          ((ChatHistoryBaseFragment)localObject1).b(localahwi.a);
+          ((ChatHistoryBaseFragment)localObject1).a(this.jdField_a_of_type_Ahtz);
           localObject2 = new Bundle();
           ((Bundle)localObject2).putBoolean("should_restore_from_kill", false);
           ((ChatHistoryBaseFragment)localObject1).setArguments((Bundle)localObject2);
@@ -207,7 +207,7 @@ public class ChatHistoryViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

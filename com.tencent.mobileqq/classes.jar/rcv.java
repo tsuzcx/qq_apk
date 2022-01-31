@@ -1,28 +1,37 @@
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.widget.AbsListView;
+import com.tencent.qphone.base.util.QLog;
 
-public class rcv
-  implements bfos
+class rcv
+  extends oxe
 {
-  public rcv(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  private rcv(rcp paramrcp) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void e(boolean paramBoolean)
   {
-    if ((ReadInJoyListViewGroup.a(this.a) != null) && (ReadInJoyListViewGroup.a(this.a).getVisibility() != 4)) {
-      ReadInJoyListViewGroup.a(this.a).setVisibility(4);
+    rcp.b(this.a, paramBoolean);
+    if (paramBoolean) {
+      this.a.d();
     }
-    this.a.a(new rcx(this, "onListViewScroll", paramAbsListView, paramInt1, paramInt2, paramInt3));
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsFloatWindowManager", 2, "onVideoFeedsFloatingWindowVisibilityChange: " + paramBoolean);
+      }
+      return;
+      this.a.e();
+    }
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void i()
   {
-    this.a.a(new rcw(this, "onScrollStateChanged", paramAbsListView, paramInt));
+    this.a.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsFloatWindowManager", 2, "onVideoFeedsFloatingWindowDismiss");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rcv
  * JD-Core Version:    0.7.0.1
  */

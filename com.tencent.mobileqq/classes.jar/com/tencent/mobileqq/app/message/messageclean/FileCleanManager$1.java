@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.app.message.messageclean;
 
-import akrm;
+import amhr;
 import com.tencent.qphone.base.util.QLog;
 
 public class FileCleanManager$1
   implements Runnable
 {
-  public FileCleanManager$1(akrm paramakrm) {}
+  public FileCleanManager$1(amhr paramamhr) {}
   
   public void run()
   {
-    akrm.a(this.this$0);
-    akrm.b(this.this$0);
-    akrm.a(this.this$0, true);
+    amhr.a(this.this$0);
+    amhr.b(this.this$0);
+    amhr.a(this.this$0, true);
     if (QLog.isColorLevel()) {
       QLog.e("FileCleanManager", 2, "load pics and videos finish");
     }
-    akrm.c(this.this$0);
+    amhr.c(this.this$0);
   }
 }
 

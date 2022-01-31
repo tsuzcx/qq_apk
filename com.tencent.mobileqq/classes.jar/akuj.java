@@ -1,37 +1,49 @@
+import android.app.Activity;
 import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Looper;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.process.data.CmGameScreenRotate.1;
 
-public final class akuj
-  implements Handler.Callback
+public class akuj
 {
-  public boolean handleMessage(Message paramMessage)
+  public int a;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private ApolloSurfaceView jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView;
+  private CmGameInitParams jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams;
+  
+  public akuj(ApolloSurfaceView paramApolloSurfaceView, CmGameInitParams paramCmGameInitParams, Activity paramActivity)
   {
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView = paramApolloSurfaceView;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams = paramCmGameInitParams;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+  }
+  
+  public static int a(int paramInt)
+  {
+    if (paramInt == 1) {}
+    do
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.i("SOSO.LBS", 2, "msg_stop_location.");
+      return 1;
+      if (paramInt == 3) {
+        return 0;
       }
-      SosoInterface.c();
-      SosoInterface.d();
-      continue;
-      if (SosoInterface.a().hasMessages(1001))
-      {
-        SosoInterface.a().removeMessages(1001);
-        SosoInterface.a().sendEmptyMessageDelayed(1001, 3000L);
-      }
+    } while (paramInt != 2);
+    return 8;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.post(new CmGameScreenRotate.1(this, paramInt));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akuj
  * JD-Core Version:    0.7.0.1
  */

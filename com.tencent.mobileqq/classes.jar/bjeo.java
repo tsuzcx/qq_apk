@@ -1,35 +1,36 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.widget.AbsListView;
+import cooperation.qzone.contentbox.QZoneMsgFragment;
 
 public class bjeo
-  implements bjeq
+  implements bhpo
 {
-  private File a;
+  public bjeo(QZoneMsgFragment paramQZoneMsgFragment) {}
   
-  public void a()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    try
-    {
-      bjeu localbjeu = (bjeu)bjav.a().c(10);
-      localbjeu.a(this.a);
-      localbjeu.c();
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("HumSongRecognizer", 2, "recognize: Failed. info: exception = ", localThrowable);
+    if (QZoneMsgFragment.a(this.a) != null) {
+      QZoneMsgFragment.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
-  public void a(File paramFile)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    this.a = paramFile;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (QZoneMsgFragment.a(this.a) != null) {
+        QZoneMsgFragment.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      return;
+      QZoneMsgFragment.a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjeo
  * JD-Core Version:    0.7.0.1
  */

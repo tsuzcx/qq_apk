@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.msgTabNode.model;
 
-import svv;
-import tfk;
+import ukn;
+import uuc;
 
 public class MsgTabNodeListLoader$15
   implements Runnable
 {
-  public MsgTabNodeListLoader$15(tfk paramtfk, svv paramsvv) {}
+  public MsgTabNodeListLoader$15(uuc paramuuc, ukn paramukn) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class MsgTabNodeListLoader$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.15
  * JD-Core Version:    0.7.0.1
  */

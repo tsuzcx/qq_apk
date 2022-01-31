@@ -1,33 +1,19 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class bjuh
-  extends bjdv
+  implements DialogInterface.OnClickListener
 {
-  bjuh(bjuf parambjuf) {}
+  bjuh(bjuc parambjuc) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bdis.a().a(ajya.a(2131703703) + bjuf.a(this.a));
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (bjuf.a(this.a).getLocalPath().equals(paramString)))
-    {
-      bjuf.a(this.a).sendEmptyMessage(2);
-      bjuf.a(this.a, bjuf.a(this.a));
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjuh
  * JD-Core Version:    0.7.0.1
  */

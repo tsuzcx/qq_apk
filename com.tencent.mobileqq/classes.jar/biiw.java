@@ -1,12 +1,14 @@
-import java.io.File;
-
-public class biiw
+final class biiw
+  extends ThreadLocal<char[]>
 {
-  public static final String a = biiy.f + File.separator + "camera_emo_default_template.json";
+  protected char[] a()
+  {
+    return new char[1024];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biiw
  * JD-Core Version:    0.7.0.1
  */

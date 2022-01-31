@@ -2,16 +2,16 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
-import behp;
-import bejl;
-import bekr;
-import belh;
-import belj;
-import betc;
-import bezb;
-import bezd;
-import bezi;
+import bghn;
+import bgjm;
+import bgkd;
+import bgkv;
+import bgkz;
+import bgxw;
+import bgxy;
+import bgyd;
 import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -22,21 +22,21 @@ import org.json.JSONObject;
 class FileJsPlugin$2
   implements DownloaderProxy.DownloadListener
 {
-  FileJsPlugin$2(FileJsPlugin paramFileJsPlugin, String paramString1, bekr parambekr, long paramLong, String paramString2, String paramString3, JSONObject paramJSONObject, String paramString4) {}
+  FileJsPlugin$2(FileJsPlugin paramFileJsPlugin, String paramString1, bgkd parambgkd, long paramLong, String paramString2, String paramString3, JSONObject paramJSONObject, String paramString4) {}
   
   private void reportDownloadFileResult(long paramLong, int paramInt)
   {
     if (this.this$0.mIsMiniGame) {}
     for (String str = "1";; str = "0")
     {
-      bezi.a(this.this$0.mMiniAppInfo, 640, null, null, null, paramInt, str, paramLong, null);
+      bgyd.a(this.this$0.mMiniAppInfo, 640, null, null, null, paramInt, str, paramLong, null);
       return;
     }
   }
   
   public void onDownloadFailed(int paramInt, String paramString)
   {
-    betc.a("FileJsPlugin", "download failed! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms]");
+    QMLog.d("FileJsPlugin", "download failed! [minigame timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms]");
     try
     {
       FileJsPlugin.access$000(this.this$0).remove(this.val$downloadId);
@@ -46,15 +46,15 @@ class FileJsPlugin$2
       localJSONObject.put("errMsg", "Download Failed." + paramString);
       this.val$req.a.a("onDownloadTaskStateChange", localJSONObject.toString(), 0);
       reportDownloadFileResult(System.currentTimeMillis() - this.val$startMS, paramInt);
-      bezb.a(this.this$0.mMiniAppInfo, 0, System.currentTimeMillis() - this.val$startMS, true);
-      bezd.a(this.this$0.mMiniAppInfo, this.val$reportUrl, System.currentTimeMillis() - this.val$startMS, paramInt, 0);
+      bgxw.a(this.this$0.mMiniAppInfo, 0, System.currentTimeMillis() - this.val$startMS, true);
+      bgxy.a(this.this$0.mMiniAppInfo, this.val$reportUrl, System.currentTimeMillis() - this.val$startMS, paramInt, 0);
       return;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        betc.d("FileJsPlugin", "download onDownloadFailed failed." + paramString);
+        QMLog.e("FileJsPlugin", "download onDownloadFailed failed." + paramString);
       }
     }
   }
@@ -64,7 +64,7 @@ class FileJsPlugin$2
     new JSONObject();
     try
     {
-      paramMap = belj.a(paramMap);
+      paramMap = bgkz.a(paramMap);
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("downloadTaskId", this.val$downloadId);
       localJSONObject.put("statusCode", 200);
@@ -75,7 +75,7 @@ class FileJsPlugin$2
     }
     catch (Exception paramMap)
     {
-      betc.d("FileJsPlugin", "onDownloadSucceed headerJson error." + paramMap);
+      QMLog.e("FileJsPlugin", "onDownloadSucceed headerJson error." + paramMap);
     }
   }
   
@@ -94,13 +94,13 @@ class FileJsPlugin$2
     }
     catch (Throwable localThrowable)
     {
-      betc.d("FileJsPlugin", "download onDownloadProgress failed." + localThrowable);
+      QMLog.e("FileJsPlugin", "download onDownloadProgress failed." + localThrowable);
     }
   }
   
   public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
   {
-    betc.a("FileJsPlugin", "download Succeed! [minigame downloadTaskId:" + this.val$downloadId + ", timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms]");
+    QMLog.d("FileJsPlugin", "download Succeed! [minigame downloadTaskId:" + this.val$downloadId + ", timecost:" + (System.currentTimeMillis() - this.val$startMS) + "ms]");
     for (;;)
     {
       try
@@ -122,7 +122,7 @@ class FileJsPlugin$2
         Object localObject1;
         Object localObject3;
         Object localObject2;
-        betc.d("FileJsPlugin", "download onDownloadSucceed exception.", paramString);
+        QMLog.e("FileJsPlugin", "download onDownloadSucceed exception.", paramString);
         paramMap = new JSONObject();
         try
         {
@@ -134,10 +134,10 @@ class FileJsPlugin$2
         }
         catch (JSONException paramMap)
         {
-          betc.d("FileJsPlugin", "download onDownloadSucceed callback fail exception.", paramString);
+          QMLog.e("FileJsPlugin", "download onDownloadSucceed callback fail exception.", paramString);
         }
         continue;
-        betc.a("FileJsPlugin", "download failed, filepath not exists, tmpFile:" + this.val$tmpFilePath);
+        QMLog.d("FileJsPlugin", "download failed, filepath not exists, tmpFile:" + this.val$tmpFilePath);
         FileJsPlugin.access$000(this.this$0).remove(this.val$downloadId);
         paramString = new JSONObject();
         paramString.put("downloadTaskId", this.val$downloadId);
@@ -159,8 +159,8 @@ class FileJsPlugin$2
             localObject2 = localObject1;
             if (((File)localObject3).length() > 0L)
             {
-              betc.c("FileJsPlugin", "download Succeed but target file not exists, try copy from download tmp file:" + paramString + ", length:" + ((File)localObject3).length() + ", to:" + this.val$filePath);
-              localObject2 = belh.a(this.val$filePath);
+              QMLog.w("FileJsPlugin", "download Succeed but target file not exists, try copy from download tmp file:" + paramString + ", length:" + ((File)localObject3).length() + ", to:" + this.val$filePath);
+              localObject2 = bgkv.a(this.val$filePath);
               localObject1 = localObject2;
             }
           }
@@ -176,16 +176,16 @@ class FileJsPlugin$2
       }
       try
       {
-        if ((!belh.b((File)localObject3, (File)localObject1)) || (!((File)localObject1).exists()) || (((File)localObject1).length() != ((File)localObject3).length())) {
+        if ((!bgkv.b((File)localObject3, (File)localObject1)) || (!((File)localObject1).exists()) || (((File)localObject1).length() != ((File)localObject3).length())) {
           continue;
         }
-        betc.b("FileJsPlugin", "copy from download tmp file:" + paramString + " success");
+        QMLog.i("FileJsPlugin", "copy from download tmp file:" + paramString + " success");
         localObject2 = localObject1;
         localObject1 = localObject2;
       }
       catch (Throwable localThrowable1)
       {
-        betc.d("FileJsPlugin", "try copy from download tmp file exception! tmp file:" + paramString, localThrowable1);
+        QMLog.e("FileJsPlugin", "try copy from download tmp file exception! tmp file:" + paramString, localThrowable1);
         continue;
         paramString = null;
         continue;
@@ -246,15 +246,15 @@ class FileJsPlugin$2
             break label1161;
           }
           paramString = (String)localObject2 + "." + paramString;
-          if (!belh.b(this.val$filePath, paramString)) {
+          if (!bgkv.b(this.val$filePath, paramString)) {
             break label1161;
           }
-          belh.a(this.val$filePath);
+          bgkv.a(this.val$filePath);
           localObject2 = paramString;
         }
         catch (Throwable paramString)
         {
-          betc.d("FileJsPlugin", "create file extension failed! " + paramString);
+          QMLog.e("FileJsPlugin", "create file extension failed! " + paramString);
           continue;
         }
         paramString = new JSONObject();
@@ -264,16 +264,16 @@ class FileJsPlugin$2
         paramString.put("totalBytesExpectedToWrite", ((File)localObject1).length());
         paramString.put("state", "progressUpdate");
         this.val$req.a.a("onDownloadTaskStateChange", paramString.toString(), 0);
-        betc.a("FileJsPlugin", "download success.");
+        QMLog.d("FileJsPlugin", "download success.");
         paramString = new JSONObject();
         try
         {
-          paramMap = belj.a(paramMap);
+          paramMap = bgkz.a(paramMap);
           paramString = paramMap;
         }
         catch (Exception paramMap)
         {
-          betc.d("FileJsPlugin", "onDownloadSucceed headerJson error." + paramMap);
+          QMLog.e("FileJsPlugin", "onDownloadSucceed headerJson error." + paramMap);
           continue;
           paramMap.put("filePath", this.val$reqParamObj.optString("filePath"));
           continue;
@@ -285,13 +285,13 @@ class FileJsPlugin$2
         if ((!this.val$reqParamObj.isNull("filePath")) && (!TextUtils.isEmpty(this.val$reqParamObj.optString("filePath")))) {
           break label1032;
         }
-        paramMap.put("tempFilePath", bejl.a().e((String)localObject2));
+        paramMap.put("tempFilePath", bgjm.a().e((String)localObject2));
         paramMap.put("header", paramString);
         paramMap.put("state", "success");
         this.val$req.a.a("onDownloadTaskStateChange", paramMap.toString(), 0);
         reportDownloadFileResult(System.currentTimeMillis() - this.val$startMS, paramInt);
-        bezb.a(this.this$0.mMiniAppInfo, 0, System.currentTimeMillis() - this.val$startMS, false);
-        bezd.a(this.this$0.mMiniAppInfo, this.val$reportUrl, System.currentTimeMillis() - this.val$startMS, paramInt, 0);
+        bgxw.a(this.this$0.mMiniAppInfo, 0, System.currentTimeMillis() - this.val$startMS, false);
+        bgxy.a(this.this$0.mMiniAppInfo, this.val$reportUrl, System.currentTimeMillis() - this.val$startMS, paramInt, 0);
         return;
         localObject2 = localObject1;
         if (!((File)localObject1).exists()) {
@@ -307,7 +307,7 @@ class FileJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.FileJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

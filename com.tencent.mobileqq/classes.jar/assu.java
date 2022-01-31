@@ -1,21 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class assu
-  implements baxz
+class assu
+  implements EIPCResultCallback
 {
-  public assu(MultiCardRecommendFragment paramMultiCardRecommendFragment) {}
+  assu(asst paramasst, long paramLong) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (MultiCardRecommendFragment.a(this.a) != null) {
-      MultiCardRecommendFragment.a(this.a).notifyDataSetChanged();
+    switch (paramEIPCResult.code)
+    {
+    }
+    for (;;)
+    {
+      azmj.b(null, "dc00898", "", "", "0X800AC2D", "0X800AC2D", 0, 0, String.valueOf(System.currentTimeMillis() - asst.a(this.jdField_a_of_type_Asst)), String.valueOf(this.jdField_a_of_type_Long), "", "");
+      return;
+      asst.a(this.jdField_a_of_type_Asst).a(2, paramEIPCResult.data);
+      continue;
+      asst.a(this.jdField_a_of_type_Asst).a(1, paramEIPCResult.data);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     assu
  * JD-Core Version:    0.7.0.1
  */

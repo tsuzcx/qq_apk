@@ -1,41 +1,104 @@
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import com.tencent.qphone.base.util.QLog;
 
 public class ayip
-  implements bfux
+  extends ayjm
 {
-  public ayip(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
+  private AccountSearchPb.record jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record;
+  public CharSequence a;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void a(bfuw parambfuw)
+  public ayip(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
   {
-    int i;
-    switch (parambfuw.a)
+    this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record = paramrecord;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+  }
+  
+  public CharSequence a()
+  {
+    return ayrd.a(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get(), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    Context localContext = paramView.getContext();
+    if ((localContext != null) && ((localContext instanceof BaseActivity)))
     {
-    case 2131364294: 
-    default: 
-      i = 0;
+      PublicView.a((QQAppInterface)((BaseActivity)localContext).getAppRuntime(), localContext, this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.class_index.get(), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()), String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get()), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.account_flag.get(), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.name.get(), 4);
+      ayrd.a(this.jdField_a_of_type_JavaLangString, 70, 0, paramView);
+      ayrd.a(this.jdField_a_of_type_JavaLangString, 70, paramView, false);
     }
-    for (;;)
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence b()
+  {
+    return null;
+  }
+  
+  public String b()
+  {
+    return String.valueOf(this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.uin.get());
+  }
+  
+  public boolean b()
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      axqy.b(this.a.app, "dc00898", "", "", "0X8009C65", "0X8009C65", 0, 0, "", "", "" + GroupTeamWorkListActivity.a(this.a), "" + i);
-      return;
-      ayfx.a(this.a.app, "0X800993B");
-      ayfx.a(this.a.app, this.a, 1, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 1;
-      continue;
-      ayfx.a(this.a.app, "0X800993C");
-      ayfx.a(this.a.app, this.a, 2, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 2;
-      continue;
-      ayfx.a(this.a.app, "0X800993C");
-      ayfx.a(this.a.app, this.a, 3, "group_online_doc", this.a.a, GroupTeamWorkListActivity.a(this.a), this.a.app.getLongAccountUin());
-      i = 3;
+      localStringBuilder = new StringBuilder().append("name = ").append(this.jdField_a_of_type_JavaLangCharSequence).append(", isCert = ");
+      if ((!this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.has()) || (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.get() != 1L)) {
+        break label102;
+      }
     }
+    label102:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("GroupNetSearchModelPublicAcntItem", 2, bool);
+      if ((!this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.has()) || (this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$record.flag.get() != 1L)) {
+        break;
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public CharSequence c()
+  {
+    return alpo.a(2131705729);
+  }
+  
+  public CharSequence d()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayip
  * JD-Core Version:    0.7.0.1
  */

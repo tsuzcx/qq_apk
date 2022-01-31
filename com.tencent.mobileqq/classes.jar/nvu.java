@@ -1,23 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class nvu
-  implements myy
+class nvu
+  implements View.OnClickListener
 {
-  public nvu(ReadInJoyFeedsActivity.1 param1) {}
+  nvu(nvp paramnvp) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
+    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToGrantPermission");
+    paramView = (BaseActivity)paramView.getContext();
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      if (paramView.shouldShowRequestPermissionRationale("android.permission.ACCESS_FINE_LOCATION"))
+      {
+        nvp.a(this.a, true);
+        return;
+      }
+      paramView.requestPermissions(new nvv(this, paramView), 1, new String[] { "android.permission.ACCESS_FINE_LOCATION" });
+      return;
     }
+    nvp.a(this.a, 5);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvu
  * JD-Core Version:    0.7.0.1
  */

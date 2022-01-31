@@ -1,16 +1,10 @@
-class bimm
-  implements biqo
+public abstract interface bimm
 {
-  bimm(bima parambima) {}
-  
-  public void a()
-  {
-    bima.a(this.a).u();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bimm
  * JD-Core Version:    0.7.0.1
  */

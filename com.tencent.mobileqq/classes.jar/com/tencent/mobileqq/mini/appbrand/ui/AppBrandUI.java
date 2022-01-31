@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import amgn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import anxn;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.app.AppLoaderFactory;
 import com.tencent.mobileqq.mini.app.AppUIProxy;
@@ -112,7 +112,7 @@ public class AppBrandUI
     return this.mAppUIProxy;
   }
   
-  public amgn getColorNoteController()
+  public anxn getColorNoteController()
   {
     IAppUIProxy localIAppUIProxy = getAppUIProxy();
     if ((localIAppUIProxy instanceof AppUIProxy)) {
@@ -174,7 +174,7 @@ public class AppBrandUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppBrandUI
  * JD-Core Version:    0.7.0.1
  */

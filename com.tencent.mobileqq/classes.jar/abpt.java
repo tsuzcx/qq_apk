@@ -1,23 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abpt
-  implements View.OnClickListener
 {
-  public abpt(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
-  
-  public void onClick(View paramView)
+  public static void a(String paramString1, String paramString2)
   {
-    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
-    this.a.startActivity(paramView);
+    QLog.d(paramString1, 1, paramString2);
   }
+  
+  public static void b(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abpt
  * JD-Core Version:    0.7.0.1
  */

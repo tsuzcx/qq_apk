@@ -1,21 +1,24 @@
-import android.graphics.drawable.Drawable;
-import java.net.URL;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
 
-public abstract class xqc
-  extends xpv
+public class xqc
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public Drawable a()
+  public xqc(NeoVideoRecordButton paramNeoVideoRecordButton) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return null;
+    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
+    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
+    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
+    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
   }
-  
-  public abstract URL a();
-  
-  public abstract Drawable b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xqc
  * JD-Core Version:    0.7.0.1
  */

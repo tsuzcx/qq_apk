@@ -1,87 +1,55 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-public class aajx
-  extends akhb
+public final class aajx
 {
-  public aajx(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  private static volatile boolean a;
   
-  protected void a(boolean paramBoolean, ayay paramayay)
+  public static int a(int paramInt)
   {
-    int j = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountActivity", 2, "onGetBindSubAccount() isSuccess=" + paramBoolean);
+    switch (paramInt)
+    {
+    case -5: 
+    case -4: 
+    case -3: 
+    case -1: 
+    case 1: 
+    case 2: 
+    case 3: 
+    case 4: 
+    case 5: 
+    default: 
+      return 1;
+    case 0: 
+      return 0;
+    case -2: 
+      return 3;
+    case -6: 
+      return 6;
+    case -7: 
+      return 13;
     }
-    if ((paramayay == null) || (!TextUtils.equals(paramayay.b, this.a.app.c()))) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramBoolean);
-      paramayay = paramayay.c();
-    } while ((paramayay == null) || (this.a.a == null));
-    Iterator localIterator = this.a.a.iterator();
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-    } while (paramayay.contains(((SubAccountInfo)localIterator.next()).subuin));
-    for (int i = 1;; i = 0)
-    {
-      if (paramayay.size() != this.a.a.size()) {
-        i = j;
-      }
-      while (i != 0)
-      {
-        AssociatedAccountActivity.d(this.a, false);
-        return;
-      }
-      break;
-    }
+    return 207;
   }
   
-  protected void b(boolean paramBoolean, ayay paramayay)
+  public static void a()
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("AssociatedAccountActivity", 2, "onBindSubAccount() isSuccess=" + paramBoolean);
-      if (paramayay != null) {
-        QLog.d("AssociatedAccountActivity", 2, "onBindSubAccount() mainAccount=" + paramayay.b + " subAccount=" + paramayay.c + " errType=" + paramayay.jdField_a_of_type_Int + " errMsg=" + paramayay.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if ((paramayay == null) || (!TextUtils.equals(paramayay.b, this.a.app.c()))) {}
-    while (!paramBoolean) {
+    aanp.b("GdtArkUtil", String.format("init %b", new Object[] { Boolean.valueOf(a) }));
+    if (a) {
       return;
     }
-    AssociatedAccountActivity.d(this.a, false);
-  }
-  
-  protected void c(boolean paramBoolean, ayay paramayay)
-  {
-    if (QLog.isColorLevel())
+    try
     {
-      QLog.d("AssociatedAccountActivity", 2, "onUnBindSubAccount() isSuccess=" + paramBoolean);
-      if (paramayay != null) {
-        QLog.d("AssociatedAccountActivity", 2, "onUnBindSubAccount() mainAccount=" + paramayay.b + " subAccount=" + paramayay.c + " errType=" + paramayay.jdField_a_of_type_Int + " errMsg=" + paramayay.jdField_a_of_type_JavaLangString);
+      if (a) {
+        return;
       }
     }
-    if ((paramayay == null) || (!TextUtils.equals(paramayay.b, this.a.app.c()))) {}
-    while (!paramBoolean) {
-      return;
-    }
-    AssociatedAccountActivity.d(this.a, false);
+    finally {}
+    a = true;
+    anmp.a(true);
+    anmp.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aajx
  * JD-Core Version:    0.7.0.1
  */

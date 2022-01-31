@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.subscript;
 
 import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 class SubscriptFeedsActivity$9
   implements Runnable
@@ -21,7 +21,7 @@ class SubscriptFeedsActivity$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.9
  * JD-Core Version:    0.7.0.1
  */

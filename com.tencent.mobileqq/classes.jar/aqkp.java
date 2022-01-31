@@ -1,16 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelFileTabView.1;
+import java.util.Comparator;
 
-class aqkp
-  implements MiniAppLauncher.MiniAppLaunchListener
+public class aqkp
+  implements Comparator<Long>
 {
-  aqkp(aqko paramaqko) {}
+  public aqkp(QfileLocalFileDelFileTabView.1 param1) {}
   
-  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle) {}
+  public int a(Long paramLong1, Long paramLong2)
+  {
+    if (paramLong1.equals(paramLong2)) {
+      return 1;
+    }
+    return (int)(paramLong1.longValue() - paramLong2.longValue());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkp
  * JD-Core Version:    0.7.0.1
  */

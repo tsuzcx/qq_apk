@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.dating.DatingUtil.1;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
-public class anmm
-  implements DialogInterface.OnClickListener
+class anmm
+  implements army
 {
-  public anmm(DatingUtil.1 param1) {}
+  anmm(anml paramanml) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    anml.a(this.a);
+  }
+  
+  public void b()
+  {
+    ((NewPhotoListActivity)this.a.mActivity).sendBtn.setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,26 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI.4;
 
 public class mfn
-  extends lfp
+  implements mkg
 {
-  public mfn(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
+  public mfn(DoubleVideoMeetingCtrlUI.4 param4) {}
   
-  protected void a(long paramLong1, long paramLong2, ArrayList<ldr> paramArrayList)
+  public void a()
   {
-    ThreadManager.getUIHandler().post(new MultiVideoCtrlLayerUIBase.1.1(this));
+    this.a.this$0.k = true;
+    this.a.this$0.L();
+  }
+  
+  public void b()
+  {
+    this.a.this$0.d(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_Int);
+    this.a.this$0.k = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
-public class bcrn
-  extends Animation
+class bcrn
+  implements baaa
 {
-  public bcrn(ShaderAnimLayout paramShaderAnimLayout) {}
+  bcrn(bcrm parambcrm) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void a()
   {
-    if (this.a.jdField_a_of_type_Boolean == true) {}
-    for (this.a.jdField_a_of_type_Float = (1.0F - paramFloat);; this.a.jdField_a_of_type_Float = paramFloat)
-    {
-      this.a.invalidate();
-      return;
+    this.a.a.a.a.this$0.a();
+    if (this.a.a.a.a.jdField_a_of_type_Baaa != null) {
+      this.a.a.a.a.jdField_a_of_type_Baaa.a();
     }
+    this.a.a.a.a.this$0.a(this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.a.a.a.a.this$0.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcrn
  * JD-Core Version:    0.7.0.1
  */

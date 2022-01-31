@@ -1,13 +1,12 @@
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
 
-public abstract interface belt
+public class belt
 {
-  public abstract void a(Context paramContext, Intent paramIntent);
+  View[] a = new View[12];
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     belt
  * JD-Core Version:    0.7.0.1
  */

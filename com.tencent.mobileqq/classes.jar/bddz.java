@@ -1,86 +1,74 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import com.tencent.open.agent.SwitchAccountActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.widget.MessageProgressView.RefreshProgressRunnable;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-class bddz
-  extends GestureDetector.SimpleOnGestureListener
+public class bddz
 {
-  bddz(bddy parambddy) {}
+  public ConcurrentHashMap<String, MessageProgressView.RefreshProgressRunnable> a = new ConcurrentHashMap();
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public static final bddz a()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (Math.abs(paramFloat1) > Math.abs(paramFloat2))
+    return bdeb.a();
+  }
+  
+  public MessageProgressView.RefreshProgressRunnable a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    while (this.a.isEmpty()) {
+      return null;
+    }
+    return (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.a.keySet().iterator();
+    while (localIterator.hasNext()) {
+      a((String)localIterator.next());
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
     {
-      bool1 = bool2;
-      if (Math.abs(paramFloat1) > 20.0F)
+      MessageProgressView.RefreshProgressRunnable localRefreshProgressRunnable = (MessageProgressView.RefreshProgressRunnable)this.a.get(paramString);
+      if (localRefreshProgressRunnable != null) {
+        localRefreshProgressRunnable.a();
+      }
+    }
+    try
+    {
+      this.a.remove(paramString);
+      if (QLog.isColorLevel()) {
+        QLog.e("MessageProgressView", 2, " aflter removeAnimRunnable size=" + this.a.size());
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
       {
-        bool1 = bool2;
-        if (!this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a)
-        {
-          this.a.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = true;
-          if (this.a.jdField_a_of_type_AndroidViewView != null) {
-            this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
-          }
-          if ((paramFloat1 < -20.0F) && (this.a.jdField_a_of_type_JavaLangRefWeakReference != null))
-          {
-            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-            if (paramMotionEvent1 != null)
-            {
-              paramMotionEvent1 = paramMotionEvent1.findViewById(2131375998);
-              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
-                ((ShaderAnimLayout)paramMotionEvent1).e();
-              }
-            }
-            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
-          }
-          if (paramFloat1 > 20.0F)
-          {
-            if ((this.a.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-              break label245;
-            }
-            paramMotionEvent1 = (View)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-            if (paramMotionEvent1 != this.a.jdField_a_of_type_AndroidViewView)
-            {
-              paramMotionEvent1 = paramMotionEvent1.findViewById(2131375998);
-              if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() == 0)) {
-                ((ShaderAnimLayout)paramMotionEvent1).e();
-              }
-            }
-            this.a.jdField_a_of_type_JavaLangRefWeakReference = null;
-          }
+        if (QLog.isColorLevel()) {
+          QLog.e("MessageProgressView", 2, "removeAnimRunnable exception = " + paramString.getMessage());
         }
       }
     }
-    for (;;)
-    {
-      bool1 = true;
-      return bool1;
-      label245:
-      if (this.a.jdField_a_of_type_AndroidViewView != null)
-      {
-        paramMotionEvent1 = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131375998);
-        if ((paramMotionEvent1 != null) && (paramMotionEvent1.getVisibility() != 0))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("AccountManage", 2, "show current selectedAccountView");
-          }
-          ((ShaderAnimLayout)paramMotionEvent1).a();
-          this.a.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.jdField_a_of_type_AndroidViewView);
-          this.a.jdField_a_of_type_AndroidViewView = null;
-        }
-      }
+  }
+  
+  public void a(String paramString, MessageProgressView.RefreshProgressRunnable paramRefreshProgressRunnable)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.a.put(paramString, paramRefreshProgressRunnable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bddz
  * JD-Core Version:    0.7.0.1
  */

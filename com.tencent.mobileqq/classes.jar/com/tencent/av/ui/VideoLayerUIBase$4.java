@@ -1,10 +1,10 @@
 package com.tencent.av.ui;
 
-import ajsd;
+import aljq;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
-import apvd;
-import bbef;
+import arof;
+import bdda;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -19,18 +19,18 @@ class VideoLayerUIBase$4
   
   public void run()
   {
-    new File(ajsd.bc).mkdirs();
+    new File(aljq.bd).mkdirs();
     Object localObject = new Matrix();
     ((Matrix)localObject).setScale(1.0F, -1.0F);
     Bitmap localBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), (Matrix)localObject, true);
     localObject = new SimpleDateFormat("yyyyMMdd.HHmmss.SSS");
     localObject = ((SimpleDateFormat)localObject).format(new Date(System.currentTimeMillis())) + ".jpg";
-    File localFile = new File(ajsd.bc, (String)localObject);
+    File localFile = new File(aljq.bd, (String)localObject);
     for (;;)
     {
       try
       {
-        bool1 = apvd.a(localBitmap, localFile.getAbsolutePath());
+        bool1 = arof.a(localBitmap, localFile.getAbsolutePath());
         QLog.w(this.this$0.jdField_a_of_type_JavaLangString, 1, "tryScreenShot, screenShotFlag[" + this.jdField_a_of_type_Long + "], Exception", localException1);
       }
       catch (Exception localException1)
@@ -41,7 +41,7 @@ class VideoLayerUIBase$4
           bool2 = bool1;
           if (bool1)
           {
-            bbef.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
+            bdda.a(BaseApplicationImpl.getContext(), localFile.getAbsolutePath());
             bool2 = bool1;
           }
           if (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
@@ -67,7 +67,7 @@ class VideoLayerUIBase$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUIBase.4
  * JD-Core Version:    0.7.0.1
  */

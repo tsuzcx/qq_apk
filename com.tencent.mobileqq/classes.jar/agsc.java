@@ -1,100 +1,61 @@
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Message;
-import android.view.View;
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.util.WeakReference;
 
-public abstract class agsc
-  implements agmi
+final class agsc
+  implements DialogInterface.OnClickListener
 {
-  protected static volatile agsc a;
-  public agrz a;
-  public agsa a;
-  agsd jdField_a_of_type_Agsd = null;
-  agse jdField_a_of_type_Agse = null;
-  agsf jdField_a_of_type_Agsf = null;
-  agsg jdField_a_of_type_Agsg = null;
-  public WeakReference<NewPhotoListActivity> a;
+  agsc(AbsShareMsg paramAbsShareMsg, FragmentActivity paramFragmentActivity, Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
-  protected agsc(NewPhotoListActivity paramNewPhotoListActivity)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramNewPhotoListActivity);
-    this.jdField_a_of_type_Agrz = agrz.a(paramNewPhotoListActivity.getIntent().getBooleanExtra("NEED_NEW_PHOTO_COMMON_DATA", true));
-    paramNewPhotoListActivity.getIntent().putExtra("NEED_NEW_PHOTO_COMMON_DATA", false);
-    this.jdField_a_of_type_Agrz.a();
-    this.jdField_a_of_type_Agsa = new agsa();
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListActivity", 2, "PhotoListLogic new，activity = " + paramNewPhotoListActivity + ",PhotoCommonData = " + this.jdField_a_of_type_Agrz);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      if (QLog.isColorLevel()) {
+        QLog.i("ChatActivity", 2, "qbShowWpaResultDialog back");
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
+      {
+        paramDialogInterface = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("appid");
+        if (paramDialogInterface != null) {
+          arys.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, true, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("callback_type"), Long.parseLong(paramDialogInterface));
+        }
+      }
+      ndq.a(this.jdField_a_of_type_AndroidContentContext, 0, "", "");
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8004B56", "0X8004B56", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+      return;
     }
-  }
-  
-  abstract String a(LocalMediaInfo paramLocalMediaInfo);
-  
-  protected abstract List<LocalMediaInfo> a();
-  
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
-  
-  public abstract void a(Intent paramIntent);
-  
-  protected abstract void a(Message paramMessage);
-  
-  public abstract void a(View paramView);
-  
-  public abstract void a(View paramView, Bundle paramBundle, int paramInt, Intent paramIntent);
-  
-  public abstract void a(CompoundButton paramCompoundButton, boolean paramBoolean);
-  
-  public void a(boolean paramBoolean) {}
-  
-  abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
-  
-  abstract void a(boolean paramBoolean, Intent paramIntent);
-  
-  protected abstract boolean a();
-  
-  abstract boolean a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean);
-  
-  abstract boolean a(List<LocalMediaInfo> paramList);
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoListActivity", 2, "PhotoListLogic close，activity = " + this.jdField_a_of_type_MqqUtilWeakReference.get() + ",PhotoCommonData = " + this.jdField_a_of_type_Agrz);
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "0X8004B55", "0X8004B55", 0, 0, "", "", "", "");
+    if (!(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity instanceof SplashActivity))
+    {
+      paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class);
+      paramDialogInterface.putExtra("tab_index", MainFragment.b);
+      paramDialogInterface.addFlags(67108864);
+      paramDialogInterface.addFlags(268435456);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
+      return;
     }
-    this.jdField_a_of_type_Agrz.b();
-    jdField_a_of_type_Agsc = null;
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a().R();
   }
-  
-  public abstract void b(Intent paramIntent);
-  
-  public abstract void b(View paramView);
-  
-  public abstract void c();
-  
-  abstract void c(Intent paramIntent);
-  
-  public abstract void c(View paramView);
-  
-  abstract void d();
-  
-  public abstract void d(Intent paramIntent);
-  
-  public abstract void e();
-  
-  public abstract void e(Intent paramIntent);
-  
-  public abstract void f();
-  
-  public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsc
  * JD-Core Version:    0.7.0.1
  */

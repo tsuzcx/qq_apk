@@ -1,95 +1,43 @@
-import NS_COMM.COMM.StCommonExt;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.app.Activity;
+import java.lang.ref.WeakReference;
 
 public class xgy
-  extends MSFServlet
 {
-  public String a()
+  public final double a;
+  public final float a;
+  public final int a;
+  public final String a;
+  public final WeakReference<Activity> a;
+  public final boolean a;
+  public final double b;
+  public final int b;
+  public final String b;
+  public final boolean b;
+  public final int c;
+  
+  public xgy(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, float paramFloat, boolean paramBoolean1, int paramInt3, double paramDouble1, double paramDouble2, String paramString2, boolean paramBoolean2)
   {
-    String str = BaseApplicationImpl.sApplication.getRuntime().getAccount();
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
-    Random localRandom = new Random();
-    localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
-    return localStringBuilder.toString();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Double = paramDouble1;
+    this.jdField_b_of_type_Double = paramDouble2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
   }
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public String toString()
   {
-    try
-    {
-      Bundle localBundle = new Bundle();
-      if (paramFromServiceMsg != null)
-      {
-        if (paramFromServiceMsg.isSuccess())
-        {
-          localBundle.putParcelable("KEY_FOR_AIO_STORY_FEED_DATA", paramFromServiceMsg);
-          notifyObserver(paramIntent, 1010, true, localBundle, atzq.class);
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QzoneAioStoryFeedServlet", 2, new Object[] { "inform QzoneAioStoryFeedServlet isSuccess false:", paramFromServiceMsg.getBusinessFailMsg() });
-        }
-        notifyObserver(paramIntent, 1010, false, localBundle, atzq.class);
-        return;
-      }
-    }
-    catch (Throwable paramIntent)
-    {
-      QLog.e("QzoneAioStoryFeedServlet", 1, paramIntent + "onReceive error");
-      notifyObserver(null, 1010, false, null, atzq.class);
-    }
-  }
-  
-  public void onSend(Intent paramIntent, Packet paramPacket)
-  {
-    long l1 = paramIntent.getLongExtra("key_last_aio_story_create_time", 0L);
-    long l2 = paramIntent.getLongExtra("key_friend_uid", -1L);
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
-    Object localObject = null;
-    if (arrayOfByte != null) {
-      localObject = new COMM.StCommonExt();
-    }
-    try
-    {
-      ((COMM.StCommonExt)localObject).mergeFrom(arrayOfByte);
-      arrayOfByte = new xgw((COMM.StCommonExt)localObject, l1, l2).encode(paramIntent, -1, a());
-      localObject = arrayOfByte;
-      if (arrayOfByte == null) {
-        localObject = new byte[4];
-      }
-      paramPacket.setSSOCommand("LightAppSvc.qq_story_client.GetUserNewestStory");
-      paramPacket.putSendData(bbma.a((byte[])localObject));
-      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QzoneAioStoryFeedServlet", 2, "onSend. mergeFrom exception!");
-        }
-        localInvalidProtocolBufferMicroException.printStackTrace();
-      }
-    }
+    return "GenerateThumbArgs{mFileDir='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mRatioWH=" + this.jdField_a_of_type_Float + ", mShowLastFrameThumb=" + this.jdField_a_of_type_Boolean + ", mOrientation=" + this.c + ", mLatitude=" + this.jdField_a_of_type_Double + ", mLongitude=" + this.jdField_b_of_type_Double + ", mExistsThumbPath=" + this.jdField_b_of_type_JavaLangString + ", mThumbOk=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgy
  * JD-Core Version:    0.7.0.1
  */

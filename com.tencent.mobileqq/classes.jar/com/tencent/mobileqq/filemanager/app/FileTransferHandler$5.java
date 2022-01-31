@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aowc;
-import apbc;
+import aqpa;
+import aqua;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 

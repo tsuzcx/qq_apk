@@ -1,59 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.util.LruCache;
 
-public class aoyw
-  extends aozw
+public class aoyw<T>
 {
-  aoun jdField_a_of_type_Aoun = null;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  String jdField_a_of_type_JavaLangString = "DiscOfflinePreviewController<FileAssistant>";
-  String b;
-  String c;
+  private LruCache<String, T> a = new aoyx(this, (int)Runtime.getRuntime().maxMemory() / 32);
   
-  public aoyw(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  private static int a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.b = paramString1;
-    this.c = paramString2;
-    a();
+    if (paramBitmap == null) {
+      return 0;
+    }
+    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
   }
   
-  public int a()
+  private int b(T paramT)
   {
-    return 2;
+    if ((paramT instanceof Bitmap)) {
+      return a((Bitmap)paramT);
+    }
+    if ((paramT instanceof BitmapDrawable)) {
+      return a(((BitmapDrawable)paramT).getBitmap());
+    }
+    return 0;
   }
   
-  public void a()
+  protected int a(T paramT)
   {
-    this.jdField_a_of_type_Aoun = new aoyx(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_Aoun);
+    return 0;
   }
   
-  public boolean a()
+  public void a(int paramInt)
   {
-    if (TextUtils.isEmpty(this.b))
+    try
     {
-      QLog.e(this.jdField_a_of_type_JavaLangString, 1, " init OfflinePreviewController error,uuid is null,stack:" + apug.a());
-      if (this.jdField_a_of_type_Aooq != null) {
-        this.jdField_a_of_type_Aooq.a(false, "", "", -100005L, "", "", null, this.b, null);
-      }
-      return false;
+      this.a.trimToSize(paramInt);
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.c, this.b);
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Aoun != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().deleteObserver(this.jdField_a_of_type_Aoun);
-    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyw
  * JD-Core Version:    0.7.0.1
  */

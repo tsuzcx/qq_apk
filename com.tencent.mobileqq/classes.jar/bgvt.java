@@ -1,42 +1,43 @@
-import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
-import java.io.File;
-import java.util.concurrent.Future;
+import android.content.Context;
+import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.minigame.ui.MiniGameAdBannerPopup;
+import cooperation.vip.pb.TianShuAccess.GetAdsRsp;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public class bgvt
-  implements PluginManagerUpdater
+public final class bgvt
+  implements AsyncResult
 {
-  private ardz jdField_a_of_type_Ardz;
-  private File jdField_a_of_type_JavaIoFile;
+  public bgvt(WeakReference paramWeakReference, String paramString, int paramInt) {}
   
-  public bgvt(ardz paramardz, File paramFile)
+  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Ardz = paramardz;
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-  }
-  
-  public File getLatest()
-  {
-    return this.jdField_a_of_type_JavaIoFile;
-  }
-  
-  public Future isAvailable(File paramFile)
-  {
-    return this.jdField_a_of_type_Ardz.isAvailable(paramFile);
-  }
-  
-  public Future update()
-  {
-    return this.jdField_a_of_type_Ardz.update();
-  }
-  
-  public boolean wasUpdating()
-  {
-    return false;
+    if (paramBoolean) {}
+    try
+    {
+      TianShuAccess.GetAdsRsp localGetAdsRsp = (TianShuAccess.GetAdsRsp)paramJSONObject.get("response");
+      QMLog.d("MiniGameAdBannerPopup", "onGetAdvs() called with: result = [" + paramJSONObject + "], getAdsRsp = [" + localGetAdsRsp + "]");
+      if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
+        return;
+      }
+      MiniGameAdBannerPopup.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramBoolean, localGetAdsRsp);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      QMLog.e("MiniGameAdBannerPopup", "tianshuRequestAdv onReceiveResult", paramJSONObject);
+    }
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    {
+      MiniGameAdBannerPopup.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramBoolean, null);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgvt
  * JD-Core Version:    0.7.0.1
  */

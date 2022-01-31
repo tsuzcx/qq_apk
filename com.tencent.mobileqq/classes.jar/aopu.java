@@ -1,33 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class aopu
-  implements DialogInterface.OnKeyListener
+class aopu
+  implements aooy
 {
-  public aopu(UniformDownloadActivity paramUniformDownloadActivity) {}
+  aopu(aopq paramaopq) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void a(Context paramContext)
   {
-    boolean bool = false;
-    if (paramInt == 4)
+    try
     {
-      if (this.a.a != null)
+      Intent localIntent;
+      if (new JSONObject(aopq.a(this.a)).getInt("showlocalfile") == 1)
       {
-        this.a.a.dismiss();
-        this.a.a = null;
+        localIntent = new Intent(paramContext, LocalFileBrowserActivity.class);
+        if (localIntent != null) {}
       }
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      bool = true;
+      else
+      {
+        return;
+      }
+      try
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("category", 23);
+        localIntent.putExtra("bundle", localBundle);
+        localIntent.putExtra("localSdCardfile", 0);
+        paramContext.startActivity(localIntent);
+        return;
+      }
+      catch (Exception paramContext)
+      {
+        paramContext.printStackTrace();
+        return;
+      }
+      return;
     }
-    return bool;
+    catch (JSONException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopu
  * JD-Core Version:    0.7.0.1
  */

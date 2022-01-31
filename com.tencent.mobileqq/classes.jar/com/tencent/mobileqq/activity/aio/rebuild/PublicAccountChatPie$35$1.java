@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aert;
-import aesq;
-import ajvr;
-import ajya;
-import aukp;
-import aukq;
-import bduf;
+import agot;
+import agpr;
+import alne;
+import alpo;
+import awbw;
+import awbx;
+import bfua;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EqqDetail;
@@ -22,13 +22,13 @@ import java.util.List;
 public class PublicAccountChatPie$35$1
   implements Runnable
 {
-  public PublicAccountChatPie$35$1(aesq paramaesq) {}
+  public PublicAccountChatPie$35$1(agpr paramagpr) {}
   
   public void run()
   {
     Object localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    EqqDetail localEqqDetail = (EqqDetail)((aukp)localObject).a(EqqDetail.class, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    ((aukp)localObject).a();
+    EqqDetail localEqqDetail = (EqqDetail)((awbw)localObject).a(EqqDetail.class, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    ((awbw)localObject).a();
     if (localEqqDetail == null) {
       return;
     }
@@ -46,14 +46,14 @@ public class PublicAccountChatPie$35$1
         while (localIterator2.hasNext())
         {
           mobileqq_mp.ConfigInfo localConfigInfo = (mobileqq_mp.ConfigInfo)localIterator2.next();
-          if (localConfigInfo.title.get().equals(ajya.a(2131708766))) {
+          if (localConfigInfo.title.get().equals(alpo.a(2131709138))) {
             localConfigInfo.state.set(1);
           }
         }
       }
       localEqqDetail.accountData = ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).toByteArray();
-      ((ajvr)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).a(localEqqDetail);
-      this.a.a.jdField_a_of_type_Bduf.a(true);
+      ((alne)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).a(localEqqDetail);
+      this.a.a.jdField_a_of_type_Bfua.a(true);
       return;
     }
     catch (Exception localException) {}
@@ -61,7 +61,7 @@ public class PublicAccountChatPie$35$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.35.1
  * JD-Core Version:    0.7.0.1
  */

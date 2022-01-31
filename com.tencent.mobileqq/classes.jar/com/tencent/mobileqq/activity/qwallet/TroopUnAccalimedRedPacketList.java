@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import aela;
-import agyn;
-import agyo;
-import agyp;
-import agyq;
-import agyr;
-import agys;
-import agyu;
-import agyy;
-import agyz;
-import ahiw;
-import ajya;
+import aghr;
+import aisn;
+import aiso;
+import aisp;
+import aisq;
+import aisr;
+import aiss;
+import aisu;
+import aisy;
+import aisz;
+import ajaf;
+import alpo;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -30,7 +30,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import baww;
+import bcvq;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
 import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
@@ -39,15 +39,15 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
-import vzl;
+import xod;
 
 public class TroopUnAccalimedRedPacketList
   extends FrameLayout
 {
   private static final String jdField_a_of_type_JavaLangString = TroopUnAccalimedRedPacketList.class.getSimpleName();
   private int jdField_a_of_type_Int;
-  private agyu jdField_a_of_type_Agyu;
-  private agyz jdField_a_of_type_Agyz;
+  private aisu jdField_a_of_type_Aisu;
+  private aisz jdField_a_of_type_Aisz;
   private Animator jdField_a_of_type_AndroidAnimationAnimator;
   private Context jdField_a_of_type_AndroidContentContext;
   private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
@@ -75,21 +75,21 @@ public class TroopUnAccalimedRedPacketList
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().width = -1;
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().height = -1;
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.parseColor("#b2000000"));
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new agyn(this));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new aisn(this));
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842833);
-      baww.a(this.jdField_a_of_type_AndroidWidgetImageView, ajya.a(2131715806));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843017);
+      bcvq.a(this.jdField_a_of_type_AndroidWidgetImageView, alpo.a(2131716178));
       paramQQAppInterface = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-      paramQQAppInterface.leftMargin = vzl.a(this.jdField_a_of_type_AndroidContentContext, 12.5F);
-      paramQQAppInterface.topMargin = vzl.a(this.jdField_a_of_type_AndroidContentContext, 37.5F);
+      paramQQAppInterface.leftMargin = xod.a(this.jdField_a_of_type_AndroidContentContext, 12.5F);
+      paramQQAppInterface.topMargin = xod.a(this.jdField_a_of_type_AndroidContentContext, 37.5F);
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramQQAppInterface);
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new agyo(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aiso(this));
       this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetImageView);
       paramQQAppInterface = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
-      paramQQAppInterface.width = vzl.a(this.jdField_a_of_type_AndroidContentContext, 80.0F);
-      paramQQAppInterface.height = vzl.a(this.jdField_a_of_type_AndroidContentContext, 32.0F);
+      paramQQAppInterface.width = xod.a(this.jdField_a_of_type_AndroidContentContext, 80.0F);
+      paramQQAppInterface.height = xod.a(this.jdField_a_of_type_AndroidContentContext, 32.0F);
       paramQQAppInterface.addRule(13);
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
@@ -98,29 +98,29 @@ public class TroopUnAccalimedRedPacketList
       paramQQAppInterface.height = -2;
       paramQQAppInterface.addRule(15);
       this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramQQAppInterface);
-      paramQQAppInterface = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842832);
-      paramQQAppInterface.setBounds(0, 0, vzl.a(this.jdField_a_of_type_AndroidContentContext, 100.0F), vzl.a(this.jdField_a_of_type_AndroidContentContext, 100.0F));
+      paramQQAppInterface = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843016);
+      paramQQAppInterface.setBounds(0, 0, xod.a(this.jdField_a_of_type_AndroidContentContext, 100.0F), xod.a(this.jdField_a_of_type_AndroidContentContext, 100.0F));
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, paramQQAppInterface, null, null);
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(vzl.a(this.jdField_a_of_type_AndroidContentContext, 20.0F));
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(xod.a(this.jdField_a_of_type_AndroidContentContext, 20.0F));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 14.0F);
       this.jdField_a_of_type_AndroidWidgetTextView.setGravity(1);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_Agyu = new agyu(this, this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_Aisu = new aisu(this, this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = new RecyclerView(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView);
       paramQQAppInterface = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutParams();
       paramQQAppInterface.width = -1;
-      paramQQAppInterface.height = vzl.a(this.jdField_a_of_type_AndroidContentContext, 300.0F);
+      paramQQAppInterface.height = xod.a(this.jdField_a_of_type_AndroidContentContext, 300.0F);
       paramQQAppInterface.addRule(15);
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext, 0, false));
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Agyu);
-      int i = (vzl.a(this.jdField_a_of_type_AndroidContentContext) - vzl.a(this.jdField_a_of_type_AndroidContentContext, 160.0F)) / 2;
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new agyy(i, vzl.a(this.jdField_a_of_type_AndroidContentContext, 3.5F), null));
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Aisu);
+      int i = (xod.a(this.jdField_a_of_type_AndroidContentContext) - xod.a(this.jdField_a_of_type_AndroidContentContext, 160.0F)) / 2;
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new aisy(i, xod.a(this.jdField_a_of_type_AndroidContentContext, 3.5F), null));
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(false);
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator().setRemoveDuration(300L);
       this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator().setChangeDuration(300L);
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(new agyp(this));
+      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(new aisp(this));
       this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, "translationX", new float[] { i, 0.0F });
       this.jdField_a_of_type_AndroidAnimationAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationAnimator.setDuration(300L);
@@ -142,12 +142,12 @@ public class TroopUnAccalimedRedPacketList
   public void a(String paramString, int paramInt)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      ahiw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.show", "", "");
+      ajaf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.show", "", "");
     }
     try
     {
       if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-        LottieComposition.Factory.fromJsonString(a(), new agyq(this));
+        LottieComposition.Factory.fromJsonString(a(), new aisq(this));
       }
       this.jdField_b_of_type_JavaLangString = paramString;
       this.jdField_a_of_type_Int = paramInt;
@@ -158,8 +158,8 @@ public class TroopUnAccalimedRedPacketList
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
       this.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(true);
       this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c, 17, 0, 0);
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new agyr(this));
-      RedPacketManager.getInstance().reqGroupAvailableList(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, new agys(this));
+      this.jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new aisr(this));
+      RedPacketManager.getInstance().reqGroupAvailableList(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, new aiss(this));
       return;
     }
     catch (Throwable localThrowable)
@@ -175,10 +175,10 @@ public class TroopUnAccalimedRedPacketList
   {
     super.onAttachedToWindow();
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Agyz = new agyz(this, null);
+    this.jdField_a_of_type_Aisz = new aisz(this, null);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("troop_hblist_broadcast_action");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Agyz, localIntentFilter);
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Aisz, localIntentFilter);
   }
   
   protected void onDetachedFromWindow()
@@ -188,19 +188,19 @@ public class TroopUnAccalimedRedPacketList
     if ((this.jdField_a_of_type_AndroidAnimationAnimator != null) && (this.jdField_a_of_type_AndroidAnimationAnimator.isRunning())) {
       this.jdField_a_of_type_AndroidAnimationAnimator.cancel();
     }
-    if (this.jdField_a_of_type_Agyz != null)
+    if (this.jdField_a_of_type_Aisz != null)
     {
-      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Agyz);
-      this.jdField_a_of_type_Agyz = null;
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Aisz);
+      this.jdField_a_of_type_Aisz = null;
     }
-    if ((aela.a != null) && (!aela.a.isEmpty())) {
-      aela.a.clear();
+    if ((aghr.a != null) && (!aghr.a.isEmpty())) {
+      aghr.a.clear();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList
  * JD-Core Version:    0.7.0.1
  */

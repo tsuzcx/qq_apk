@@ -1,270 +1,956 @@
-import android.graphics.Rect;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.RemoteException;
+import android.os.ResultReceiver;
+import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
-import com.tencent.av.business.manager.magicface.MagicfaceDataMultiResultJason;
-import com.tencent.av.business.manager.magicface.MagicfaceDataPendantJason;
-import com.tencent.av.business.manager.magicface.MagicfaceDataVideoJason;
-import java.nio.ByteBuffer;
-import java.util.BitSet;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class lhy
-  extends MagicFaceDataEntity
 {
-  Rect a;
-  protected MagicfaceDataMultiResultJason a;
-  int b;
+  int jdField_a_of_type_Int = -1;
+  ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new lia(this);
+  private MQLruCache<String, Object> jdField_a_of_type_AndroidSupportV4UtilMQLruCache;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private QQLruCache<String, String> jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache;
+  lze jdField_a_of_type_Lze = new lhz(this);
+  public lzg a;
+  boolean jdField_a_of_type_Boolean = false;
+  public boolean b;
   
-  public lhy(VideoAppInterface paramVideoAppInterface, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt)
+  public lhy(VideoAppInterface paramVideoAppInterface)
   {
-    super(paramVideoAppInterface, paramString1, paramString2, paramString3, paramBoolean, paramInt);
-    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Lzg = null;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+  }
+  
+  public int a(int paramInt, String paramString)
+  {
+    int j = 0;
+    int i = j;
+    if (this.jdField_a_of_type_Lzg != null) {}
     try
     {
-      paramVideoAppInterface = new JSONObject(paramString3);
-      if (paramVideoAppInterface.has("multiresult")) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason = ((MagicfaceDataMultiResultJason)bazp.a(paramVideoAppInterface.getJSONObject("multiresult"), MagicfaceDataMultiResultJason.class));
-      }
-      if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason == null) {
-        this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason = new MagicfaceDataMultiResultJason();
-      }
-      lcg.e("MagicFaceDataEntityMultiResult", "multi: " + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.toString());
-      this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_x, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_y, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_x + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_wid, this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_y + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_hei);
-      if (((paramBoolean) && (this.jdField_a_of_type_JavaUtilBitSet.get(1))) || ((!paramBoolean) && (this.jdField_a_of_type_JavaUtilBitSet.get(0))))
+      i = this.jdField_a_of_type_Lzg.a(paramInt, paramString);
+      return i;
+    }
+    catch (RemoteException paramString)
+    {
+      do
       {
-        paramBoolean = true;
-        this.jdField_a_of_type_Boolean = paramBoolean;
-        lcg.c("MagicFaceDataEntityMultiResult", "MagicFaceDataEntityMultiResult constructor:");
-        return;
-      }
+        i = j;
+      } while (!QLog.isColorLevel());
+      QLog.e("QQServiceProxy", 2, "getDiscussMemberNum", paramString);
     }
-    catch (JSONException paramVideoAppInterface)
-    {
-      for (;;)
+    return 0;
+  }
+  
+  public int a(String paramString)
+  {
+    if (this.jdField_a_of_type_Lzg != null) {
+      try
       {
-        paramVideoAppInterface.printStackTrace();
-        continue;
-        paramBoolean = false;
+        int i = this.jdField_a_of_type_Lzg.c(paramString);
+        return i;
       }
-    }
-  }
-  
-  private String a(int paramInt1, int paramInt2)
-  {
-    lcg.c("MagicFaceDataEntityMultiResult", " getResultString:" + paramInt2 + "|" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start);
-    switch (paramInt2)
-    {
-    default: 
-      return "";
-    case 1: 
-      return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_hit;
-    }
-    return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_miss;
-  }
-  
-  private String a(MagicfaceDataPendantJason paramMagicfaceDataPendantJason, String paramString)
-  {
-    String str = paramString;
-    if (paramMagicfaceDataPendantJason != null)
-    {
-      str = paramString;
-      if (paramMagicfaceDataPendantJason.mirror)
+      catch (RemoteException paramString)
       {
-        str = paramString;
-        if (!this.jdField_b_of_type_Boolean) {
-          str = paramString + "_mirror";
-        }
+        QLog.e("QQServiceProxy", 2, "convertUinTypeEx e = ", paramString);
       }
-    }
-    return str;
-  }
-  
-  private void a(byte[] paramArrayOfByte, boolean paramBoolean)
-  {
-    int i;
-    int j;
-    float f1;
-    if (paramBoolean)
-    {
-      i = 4;
-      j = i * 64 * 2;
-      if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= j) || (this.jdField_a_of_type_AndroidGraphicsRect == null)) {
-        break label291;
-      }
-      lcg.c("MagicFaceDataEntityMultiResult", "isShot:" + this.jdField_b_of_type_Int + "|" + this.d + "|" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start + "|" + this.jdField_a_of_type_AndroidGraphicsRect.toString() + "|" + paramArrayOfByte.length);
-      if ((this.jdField_b_of_type_Int == 0) && (this.d >= this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start - 2) && (this.d < this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start))
-      {
-        paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
-        if (!paramBoolean) {
-          break label265;
-        }
-        f1 = paramArrayOfByte.getInt(j) / 1000000;
-        label170:
-        if (!paramBoolean) {
-          break label276;
-        }
-      }
-    }
-    label265:
-    label276:
-    for (float f2 = paramArrayOfByte.getInt(j + i) / 1000000;; f2 = paramArrayOfByte.getShort(j + i))
-    {
-      lcg.c("MagicFaceDataEntityMultiResult", "onReceiveFaceFeature Kill is:|" + f1 + "|" + f2 + "|" + this.jdField_a_of_type_AndroidGraphicsRect.toString());
-      if (this.jdField_a_of_type_AndroidGraphicsRect.contains((int)f1, (int)f2)) {
-        this.jdField_b_of_type_Int = 1;
-      }
-      return;
-      i = 2;
-      break;
-      f1 = paramArrayOfByte.getShort(j);
-      break label170;
-    }
-    label291:
-    lcg.c("MagicFaceDataEntityMultiResult", "isShot ERROR");
-  }
-  
-  private int b()
-  {
-    switch (this.jdField_b_of_type_Int)
-    {
-    default: 
-      return 0;
-    case 1: 
-      return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_hit_frame;
-    }
-    return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_miss_frame;
-  }
-  
-  private String c()
-  {
-    switch (this.jdField_b_of_type_Int)
-    {
-    default: 
-      return null;
-    case 0: 
-      return "miss";
-    }
-    return "hit";
-  }
-  
-  private boolean d()
-  {
-    return (this.jdField_a_of_type_JavaUtilBitSet.get(1)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.tips));
-  }
-  
-  public int a()
-  {
-    return super.a() + b();
-  }
-  
-  protected String a()
-  {
-    String str = "";
-    StringBuilder localStringBuilder;
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.hasMirrorRes)
-    {
-      str = "" + "_";
-      localStringBuilder = new StringBuilder().append(str);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label118;
-      }
-    }
-    label118:
-    for (str = "mirror";; str = "normal")
-    {
-      str = str;
-      lcg.c("MagicFaceDataEntityMultiResult", "getMirrorPath:" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.hasMirrorRes + "|" + this.jdField_a_of_type_Boolean + "|" + str);
-      return str;
-    }
-  }
-  
-  public String a(int paramInt)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.common_id))
-    {
-      int i = a();
-      lcg.c("MagicFaceDataEntityMultiResult", " getResPath:" + paramInt + "|" + this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start + "|" + i);
-      if ((paramInt >= this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataMultiResultJason.divers_ani_start) && (paramInt < i)) {
-        return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.common_id + "_" + a(paramInt, this.jdField_b_of_type_Int) + a();
-      }
-      return this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.common_id + a();
-    }
-    return super.a(paramInt);
-  }
-  
-  public String a(MagicfaceDataPendantJason paramMagicfaceDataPendantJason)
-  {
-    String str2 = super.a(paramMagicfaceDataPendantJason);
-    lcg.c("MagicFaceDataEntityMultiResult", "getDecorateName :" + paramMagicfaceDataPendantJason.toString());
-    String str1 = str2;
-    if (!TextUtils.isEmpty(str2))
-    {
-      if (TextUtils.isEmpty(paramMagicfaceDataPendantJason.trigger)) {
-        break label142;
-      }
-      str1 = c();
-      lcg.c("MagicFaceDataEntityMultiResult", "getDecorateName 2:" + paramMagicfaceDataPendantJason.trigger + "|" + str1);
-      if (!paramMagicfaceDataPendantJason.trigger.equals(str1)) {
-        break label137;
-      }
-      str1 = a(paramMagicfaceDataPendantJason, str2);
     }
     for (;;)
     {
-      lcg.c("MagicFaceDataEntityMultiResult", "getDecorateName 3:" + str1);
-      return str1;
-      label137:
-      str1 = null;
-      continue;
-      label142:
-      str1 = a(paramMagicfaceDataPendantJason, str2);
+      return -1;
+      QLog.e("QQServiceProxy", 2, "convertUinTypeEx mQQServiceForAV == null");
     }
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte, short paramShort1, short paramShort2, short paramShort3, short paramShort4, boolean paramBoolean)
+  public long a(String paramString)
   {
-    super.a(paramString, paramArrayOfByte, paramShort1, paramShort2, paramShort3, paramShort4, paramBoolean);
-    if (this.jdField_a_of_type_JavaUtilBitSet.get(0)) {
-      if (!a(paramString)) {
-        a(paramArrayOfByte, paramBoolean);
+    long l2 = 0L;
+    long l1 = l2;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      l1 = this.jdField_a_of_type_Lzg.a(paramString);
+      return l1;
+    }
+    catch (RemoteException paramString)
+    {
+      do
+      {
+        l1 = l2;
+      } while (!QLog.isColorLevel());
+      QLog.e("QQServiceProxy", 2, "getDiscussMemberNum", paramString);
+    }
+    return 0L;
+  }
+  
+  public Bitmap a()
+  {
+    return bdda.a(true);
+  }
+  
+  public Bitmap a(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    String str = a(paramInt, paramString1, paramString2, paramBoolean1);
+    Object localObject = a(str);
+    if (localObject == null) {
+      if (this.jdField_a_of_type_Lzg == null) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        Bitmap localBitmap = this.jdField_a_of_type_Lzg.a(paramInt, paramString1, paramString2, paramBoolean1, paramBoolean2);
+        localObject = localBitmap;
+        if (localObject == null) {}
+      }
+      catch (RemoteException localRemoteException1)
+      {
+        if (paramBoolean2) {
+          localObject = a();
+        }
+        i = 2;
+        continue;
+      }
+      catch (NullPointerException localNullPointerException1) {}
+      try
+      {
+        a(str, (Bitmap)localObject);
+        i = 0;
+      }
+      catch (NullPointerException localNullPointerException2)
+      {
+        break label173;
+      }
+      catch (RemoteException localRemoteException2)
+      {
+        continue;
+        continue;
+      }
+      if (AudioHelper.e()) {
+        QLog.w("QQServiceProxy", 1, "getFaceBitmap, uinType[" + paramInt + "], uin[" + paramString1 + "], extraUin[" + paramString2 + "], isNeedReturnDefaultValue[" + paramBoolean2 + "], ret[" + i + "]");
+      }
+      return localObject;
+      int i = 1;
+      continue;
+      label173:
+      if (paramBoolean2) {
+        localObject = a();
+      }
+      i = 3;
+      continue;
+      i = 4;
+      if (!paramBoolean2) {
+        break;
+      }
+      localObject = a();
+      continue;
+      i = -3;
+    }
+  }
+  
+  public Bitmap a(String paramString)
+  {
+    if (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) {
+      return (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.get(paramString);
+    }
+    return null;
+  }
+  
+  public Bundle a(int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle, ResultReceiver paramResultReceiver)
+  {
+    if (this.jdField_a_of_type_Lzg != null) {
+      try
+      {
+        paramBundle = this.jdField_a_of_type_Lzg.a(paramInt1, paramInt2, paramInt3, null, paramBundle, paramResultReceiver);
+        return paramBundle;
+      }
+      catch (RemoteException paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQServiceProxy", 2, "requestEvent, mainCmd[" + paramInt1 + "], subType[" + paramInt2 + "], seq[" + paramInt3 + "]");
+        }
       }
     }
-    while (!a(paramString)) {
+    for (;;)
+    {
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.w("QQServiceProxy", 1, "requestEvent, fail, mainCmd[" + paramInt1 + "], subType[" + paramInt2 + "], seq[" + paramInt3 + "]");
+      }
+    }
+  }
+  
+  public String a()
+  {
+    Object localObject = null;
+    if (this.jdField_a_of_type_Lzg != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQServiceProxy", 2, "We will get current user skey");
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      try
+      {
+        String str = this.jdField_a_of_type_Lzg.a();
+        localObject = str;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.w("QQServiceProxy", 2, "getSKey fail", localRemoteException);
+        return null;
+      }
+      return localObject;
+    }
+    QLog.d("QQServiceProxy", 2, "getSKey-->mQQServiceForAV is null");
+    return null;
+  }
+  
+  public String a(int paramInt, String paramString1, String paramString2)
+  {
+    return "" + paramInt + "_" + paramString1 + "_" + paramString2;
+  }
+  
+  public String a(int paramInt, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    paramString2 = new StringBuilder().append("").append(paramInt).append("_").append(paramString1).append("_").append(paramString2).append("_");
+    if (paramBoolean) {}
+    for (paramString1 = "0";; paramString1 = "1") {
+      return paramString1;
+    }
+  }
+  
+  public String a(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache != null) {
+      return (String)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString);
+    }
+    return "";
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache = BaseApplicationImpl.sImageCache;
+    this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache = new QQLruCache(10001, 50, 10);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      this.jdField_a_of_type_Lzg.a(paramInt, paramString);
       return;
     }
-    a(paramArrayOfByte, paramBoolean);
+    catch (RemoteException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQServiceProxy", 2, "startPumpMessage", paramString);
+    }
+  }
+  
+  public void a(int paramInt, String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      this.jdField_a_of_type_Lzg.a(paramInt, paramString1, paramString2);
+      return;
+    }
+    catch (RemoteException paramString1)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQServiceProxy", 2, "setPeerInfo", paramString1);
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      this.jdField_a_of_type_Lzg.a(paramLong);
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQServiceProxy", 2, "syncChatingTime", localRemoteException);
+    }
+  }
+  
+  public void a(long paramLong1, String paramString, long paramLong2)
+  {
+    if (this.jdField_a_of_type_Lzg != null) {}
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        this.jdField_a_of_type_Lzg.a(paramLong1, paramString, paramLong2);
+        return;
+      }
+      catch (RemoteException paramString)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.e("QQServiceProxy", 2, "addSharpMsgRecordList e = ", paramString);
+        return;
+      }
+    }
+    QLog.e("QQServiceProxy", 2, "addSharpMsgRecordList mQQServiceForAV==null");
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      QLog.w("QQServiceProxy", 1, "stopPumpMessage[" + paramString + "]");
+      this.jdField_a_of_type_Lzg.a();
+      return;
+    }
+    catch (RemoteException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQServiceProxy", 2, "stopPumpMessage", paramString);
+    }
+  }
+  
+  public void a(String paramString, Bitmap paramBitmap)
+  {
+    if ((this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) && (paramBitmap != null)) {
+      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(paramString, paramBitmap);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache != null) && (!TextUtils.isEmpty(paramString2))) {
+      this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(paramString1, paramString2);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      this.jdField_a_of_type_Lzg.d(paramBoolean);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QQServiceProxy", 1, "keepVideoProcessAlive fail.", localThrowable);
+    }
+  }
+  
+  public boolean a()
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("isQQServiceBind ");
+      if (this.jdField_a_of_type_Lzg == null) {
+        break label51;
+      }
+    }
+    label51:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("QQServiceProxy", 2, bool);
+      if (this.jdField_a_of_type_Lzg == null) {
+        break;
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(int paramInt, long paramLong)
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      bool1 = this.jdField_a_of_type_Lzg.a(paramInt, paramLong);
+      return bool1;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      do
+      {
+        bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.e("QQServiceProxy", 2, "curGAInviteIsRight", localRemoteException);
+    }
+    return true;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      bool = this.jdField_a_of_type_Lzg.a(paramLong);
+      return bool;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      QLog.e("QQServiceProxy", 2, "getTroopAdmins-->troopUin=" + paramLong, localRemoteException);
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      bool = this.jdField_a_of_type_Lzg.a(paramString);
+      return bool;
+    }
+    catch (RemoteException paramString)
+    {
+      QLog.e("QQServiceProxy", 2, "isFriend", paramString);
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    boolean bool = false;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      bool = this.jdField_a_of_type_Lzg.b(paramString, paramInt);
+      return bool;
+    }
+    catch (RemoteException paramString)
+    {
+      QLog.e("QQServiceProxy", 2, "requestDecodeStrangeFace-->false", paramString);
+    }
+    return false;
+  }
+  
+  public boolean a(lyu paramlyu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceProxy", 2, "getAVRedPacketConfig start mQQServiceForAV = " + this.jdField_a_of_type_Lzg);
+    }
+    if (this.jdField_a_of_type_Lzg != null) {
+      try
+      {
+        this.jdField_a_of_type_Lzg.a(paramlyu);
+        return true;
+      }
+      catch (RemoteException paramlyu)
+      {
+        paramlyu.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("QQServiceProxy", 2, "getAVRedPacketConfig error", paramlyu);
+        }
+      }
+    }
+    return false;
+  }
+  
+  public long[] a(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      localObject1 = this.jdField_a_of_type_Lzg.a(paramString);
+      return localObject1;
+    }
+    catch (RemoteException paramString)
+    {
+      do
+      {
+        localObject1 = localObject2;
+      } while (!QLog.isColorLevel());
+      QLog.e("QQServiceProxy", 2, "getDiscussMemberList", paramString);
+    }
+    return null;
+  }
+  
+  public String b(int paramInt, String paramString1, String paramString2)
+  {
+    String str2 = a(paramInt, paramString1, paramString2);
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      String str1 = this.jdField_a_of_type_Lzg.a(paramInt, paramString1, paramString2);
+      localObject2 = str1;
+      if (!TextUtils.isEmpty(str1))
+      {
+        localObject2 = str1;
+        a(str2, str1);
+      }
+      localObject1 = str1;
+      localObject2 = str1;
+      if (AudioHelper.e())
+      {
+        localObject2 = str1;
+        QLog.w("QQServiceProxy", 1, "getDisplayName, uinType[" + paramInt + "], uin[" + paramString1 + "], extraUin[" + paramString2 + "], name[" + str1 + "]");
+        localObject1 = str1;
+      }
+    }
+    catch (RemoteException paramString2)
+    {
+      for (;;)
+      {
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          QLog.w("QQServiceProxy", 2, "getDisplayName", paramString2);
+          localObject1 = localObject2;
+        }
+      }
+    }
+    paramString2 = (String)localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject1 = a(str2);
+      paramString2 = (String)localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        return paramString1;
+      }
+    }
+    return paramString2;
+  }
+  
+  public String b(String paramString)
+  {
+    Object localObject2 = a(paramString);
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      localObject2 = null;
+      localObject1 = null;
+      if (this.jdField_a_of_type_Lzg == null) {}
+    }
+    try
+    {
+      localObject1 = this.jdField_a_of_type_Lzg.a(paramString);
+      localObject2 = localObject1;
+      a(paramString, (String)localObject1);
+      localObject2 = localObject1;
+      QLog.w("QQServiceProxy", 1, "getPhoneUserNameByPhoneNum, number[" + paramString + "], name[" + (String)localObject1 + "]");
+    }
+    catch (RemoteException paramString)
+    {
+      do
+      {
+        localObject1 = localObject2;
+      } while (!QLog.isColorLevel());
+      QLog.w("QQServiceProxy", 2, "getPhoneUserNameByPhoneNum", paramString);
+    }
+    return localObject1;
+    return localObject2;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache != null) {
+      this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.evictAll();
+    }
+    if (this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache != null) {
+      this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.evictAll();
+    }
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      this.jdField_a_of_type_Lzg.b(paramInt, paramString);
+      return;
+    }
+    catch (RemoteException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQServiceProxy", 2, "setBindInfo", paramString);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Lzg != null) {
+        this.jdField_a_of_type_Lzg.d(paramString);
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQServiceProxy", 2, "[red dot] redTouchManagerClick", paramString);
+    }
+  }
+  
+  public boolean b()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      bool1 = this.jdField_a_of_type_Lzg.a();
+      return bool1;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      do
+      {
+        bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.e("QQServiceProxy", 2, "isQQpaused", localRemoteException);
+    }
+    return false;
+  }
+  
+  public boolean b(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      this.jdField_a_of_type_Lzg.a(paramString);
+      bool1 = true;
+    }
+    catch (RemoteException paramString)
+    {
+      do
+      {
+        bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.e("QQServiceProxy", 2, "getNearbyProfileData", paramString);
+    }
+    return bool1;
+    return false;
+  }
+  
+  public boolean b(lyu paramlyu)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceProxy", 2, "startDownloadAVRedPacketRes start");
+    }
+    if (this.jdField_a_of_type_Lzg != null) {
+      try
+      {
+        this.jdField_a_of_type_Lzg.b(paramlyu);
+        return true;
+      }
+      catch (RemoteException paramlyu)
+      {
+        paramlyu.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.d("QQServiceProxy", 2, "startDownloadAVRedPacketRes error", paramlyu);
+        }
+      }
+    }
+    return false;
+  }
+  
+  public String c(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      localObject1 = this.jdField_a_of_type_Lzg.d(paramString);
+      return localObject1;
+    }
+    catch (RemoteException paramString)
+    {
+      do
+      {
+        localObject1 = localObject2;
+      } while (!QLog.isColorLevel());
+      QLog.e("QQServiceProxy", 2, "getPhoneNumByUin", paramString);
+    }
+    return null;
   }
   
   public void c()
   {
-    super.c();
-    if (this.jdField_a_of_type_JavaUtilBitSet.get(0)) {
-      a(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceProxy", 2, "bindQQService");
     }
-    lcg.c("MagicFaceDataEntityMultiResult", "processStart:" + this.jdField_a_of_type_JavaUtilBitSet.get(2));
-    if ((!this.jdField_a_of_type_JavaUtilBitSet.get(2)) && (d())) {
-      a(this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceDataVideoJason.tips);
+    if ((this.jdField_a_of_type_Lzg == null) && (!this.jdField_a_of_type_Boolean))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp(), QQServiceForAV.class);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
     }
+  }
+  
+  public void c(String paramString)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Lzg != null) {
+        this.jdField_a_of_type_Lzg.e(paramString);
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("QQServiceProxy", 2, "[red dot] redTouchManagerExposure", paramString);
+    }
+  }
+  
+  public boolean c()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      bool1 = this.jdField_a_of_type_Lzg.g();
+      return bool1;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      do
+      {
+        bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.e("QQServiceProxy", 2, "isPhoneCalling", localRemoteException);
+    }
+    return false;
+  }
+  
+  public boolean c(String paramString)
+  {
+    if (this.jdField_a_of_type_Lzg != null) {
+      try
+      {
+        boolean bool = this.jdField_a_of_type_Lzg.a(paramString, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
+        return bool;
+      }
+      catch (RemoteException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    return true;
   }
   
   public void d()
   {
-    super.d();
-    if (this.jdField_a_of_type_JavaUtilBitSet.get(0)) {
-      a(false);
+    lek.d("QQServiceProxy", "unbindQQService");
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      this.jdField_a_of_type_Lzg.a();
+      this.jdField_a_of_type_Lzg.a(this.jdField_a_of_type_Lze);
     }
-    b(0);
-    b(1);
-    if (d()) {
-      a(null);
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        try
+        {
+          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
+          return;
+        }
+        catch (Exception localException2)
+        {
+          QLog.e("QQServiceProxy", 2, "unbindService3 ", localException2);
+        }
+        localRemoteException = localRemoteException;
+        QLog.e("QQServiceProxy", 2, "unbindQQService1 ", localRemoteException);
+      }
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        QLog.e("QQServiceProxy", 2, "unbindQQService2 ", localException1);
+      }
+    }
+  }
+  
+  public boolean d()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      bool1 = this.jdField_a_of_type_Lzg.h();
+      return bool1;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      do
+      {
+        bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.e("QQServiceProxy", 2, "isQQSVIP remote call exception", localRemoteException);
+    }
+    return false;
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_Lzg != null) {
+      try
+      {
+        this.jdField_a_of_type_Lzg.b();
+        return;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.e("QQServiceProxy", 2, "avStartAddFriendService", localRemoteException);
+        return;
+      }
+    }
+    this.b = true;
+  }
+  
+  public boolean e()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      bool1 = this.jdField_a_of_type_Lzg.b();
+      return bool1;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      do
+      {
+        bool1 = bool2;
+      } while (!QLog.isColorLevel());
+      QLog.e("QQServiceProxy", 2, "getNearbyProfileData", localRemoteException);
+    }
+    return false;
+  }
+  
+  public boolean f()
+  {
+    if ((this.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_Lzg != null)) {}
+    for (;;)
+    {
+      try
+      {
+        if (!this.jdField_a_of_type_Lzg.c()) {
+          continue;
+        }
+        i = 1;
+        this.jdField_a_of_type_Int = i;
+      }
+      catch (Exception localException)
+      {
+        int i;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("QQServiceProxy", 2, "getTalkBack", localException);
+        continue;
+      }
+      if (this.jdField_a_of_type_Int != 1) {
+        break label69;
+      }
+      return true;
+      i = 0;
+    }
+    label69:
+    return false;
+  }
+  
+  public boolean g()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      bool1 = this.jdField_a_of_type_Lzg.d();
+      if (QLog.isColorLevel()) {
+        QLog.e("EffectEnable", 2, "getEffectsSoLoadIsOk  result " + this.jdField_a_of_type_Lzg + "   " + bool1);
+      }
+      return bool1;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        QLog.e("EffectEnable", 1, "getEffectsSoLoadIsOk", localRemoteException);
+        bool1 = bool2;
+      }
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      for (;;)
+      {
+        lek.e("EffectEnable", localNullPointerException.getMessage());
+        bool1 = bool2;
+      }
+    }
+  }
+  
+  public boolean h()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Lzg != null) {}
+    try
+    {
+      bool1 = this.jdField_a_of_type_Lzg.e();
+      if (QLog.isColorLevel()) {
+        QLog.e("getEffectLibPagSoLoadIsOk", 2, "getEffectLibPagSoLoadIsOk  result " + this.jdField_a_of_type_Lzg + "   " + bool1);
+      }
+      return bool1;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        QLog.e("getEffectLibPagSoLoadIsOk", 1, "getEffectLibPagSoLoadIsOk", localRemoteException);
+        bool1 = bool2;
+      }
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      for (;;)
+      {
+        lek.e("EffectEnable", localNullPointerException.getMessage());
+        bool1 = bool2;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lhy
  * JD-Core Version:    0.7.0.1
  */

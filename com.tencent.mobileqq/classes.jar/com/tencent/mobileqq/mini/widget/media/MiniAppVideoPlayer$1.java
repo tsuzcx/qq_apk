@@ -7,12 +7,12 @@ class MiniAppVideoPlayer$1
   
   public void run()
   {
-    this.this$0.play(this.this$0.initialTime * 1000);
+    this.this$0.play((this.this$0.initialTime * 1000.0D));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppVideoPlayer.1
  * JD-Core Version:    0.7.0.1
  */

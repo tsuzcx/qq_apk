@@ -17,7 +17,7 @@ public class ADViewIndividuation
     super(paramContext);
     this.i = 8;
     this.j = 18;
-    this.g = 2130846122;
+    this.g = 2130846501;
     this.h = this.g;
   }
   
@@ -26,7 +26,7 @@ public class ADViewIndividuation
     super(paramContext, paramAttributeSet);
     this.i = 4;
     this.j = 8;
-    this.g = 2130846122;
+    this.g = 2130846501;
     this.h = this.g;
   }
   

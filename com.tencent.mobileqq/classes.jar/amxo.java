@@ -1,16 +1,30 @@
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
+import java.io.File;
+import java.io.FileFilter;
 
-public abstract interface amxo
+final class amxo
+  implements FileFilter
 {
-  public abstract long a();
-  
-  public abstract ExcitingTransferDownloadConfig a();
-  
-  public abstract boolean a();
+  public boolean accept(File paramFile)
+  {
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
+    {
+      int i = 3;
+      while (i < paramFile.length())
+      {
+        if (!Character.isDigit(paramFile.charAt(i))) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxo
  * JD-Core Version:    0.7.0.1
  */

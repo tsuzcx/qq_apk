@@ -18,6 +18,7 @@ public final class mobile_feeds_rsp
   static Map<Integer, UnifyRecomStruct> cache_mapRecomUnifyList;
   static st_prefetch cache_prefetch_rsp;
   static Map<Integer, String> cache_rank_param;
+  static s_campus_info cache_stCampusInfo = new s_campus_info();
   static FunnySpace cache_stFunnySpace;
   static s_join_list cache_stJoinList;
   static s_life_moment cache_stLifeMemntInfo;
@@ -49,6 +50,7 @@ public final class mobile_feeds_rsp
   public st_prefetch prefetch_rsp;
   public Map<Integer, String> rank_param;
   public long req_count;
+  public s_campus_info stCampusInfo;
   public FunnySpace stFunnySpace;
   public s_join_list stJoinList;
   public s_life_moment stLifeMemntInfo;
@@ -91,7 +93,7 @@ public final class mobile_feeds_rsp
   
   public mobile_feeds_rsp() {}
   
-  public mobile_feeds_rsp(int paramInt1, String paramString1, ArrayList<single_feed> paramArrayList, long paramLong1, int paramInt2, int paramInt3, long paramLong2, long paramLong3, long paramLong4, String paramString2, st_prefetch paramst_prefetch, int paramInt4, s_cover params_cover, interest_list paraminterest_list, int paramInt5, login_uin_info paramlogin_uin_info, Map<Integer, String> paramMap1, int paramInt6, int paramInt7, String paramString3, Map<String, String> paramMap2, int paramInt8, s_profile_timeline params_profile_timeline, long paramLong5, s_join_list params_join_list, Map<Integer, UnifyRecomStruct> paramMap, s_memory_seal_off params_memory_seal_off, Map<String, String> paramMap3, s_life_moment params_life_moment, Map<Integer, String> paramMap4, FunnySpace paramFunnySpace, byte[] paramArrayOfByte, int paramInt9, boolean paramBoolean)
+  public mobile_feeds_rsp(int paramInt1, String paramString1, ArrayList<single_feed> paramArrayList, long paramLong1, int paramInt2, int paramInt3, long paramLong2, long paramLong3, long paramLong4, String paramString2, st_prefetch paramst_prefetch, int paramInt4, s_cover params_cover, interest_list paraminterest_list, int paramInt5, login_uin_info paramlogin_uin_info, Map<Integer, String> paramMap1, int paramInt6, int paramInt7, String paramString3, Map<String, String> paramMap2, int paramInt8, s_profile_timeline params_profile_timeline, long paramLong5, s_join_list params_join_list, Map<Integer, UnifyRecomStruct> paramMap, s_memory_seal_off params_memory_seal_off, Map<String, String> paramMap3, s_life_moment params_life_moment, Map<Integer, String> paramMap4, FunnySpace paramFunnySpace, byte[] paramArrayOfByte, int paramInt9, boolean paramBoolean, s_campus_info params_campus_info)
   {
     this.hasmore = paramInt1;
     this.attach_info = paramString1;
@@ -127,6 +129,7 @@ public final class mobile_feeds_rsp
     this.stShangchengInfo = paramArrayOfByte;
     this.dailyShuoShuoCount = paramInt9;
     this.bPsvOpenKapu = paramBoolean;
+    this.stCampusInfo = params_campus_info;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -165,6 +168,7 @@ public final class mobile_feeds_rsp
     this.stShangchengInfo = ((byte[])paramJceInputStream.read(cache_stShangchengInfo, 31, false));
     this.dailyShuoShuoCount = paramJceInputStream.read(this.dailyShuoShuoCount, 32, false);
     this.bPsvOpenKapu = paramJceInputStream.read(this.bPsvOpenKapu, 33, false);
+    this.stCampusInfo = ((s_campus_info)paramJceInputStream.read(cache_stCampusInfo, 34, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -241,11 +245,14 @@ public final class mobile_feeds_rsp
     }
     paramJceOutputStream.write(this.dailyShuoShuoCount, 32);
     paramJceOutputStream.write(this.bPsvOpenKapu, 33);
+    if (this.stCampusInfo != null) {
+      paramJceOutputStream.write(this.stCampusInfo, 34);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_feeds_rsp
  * JD-Core Version:    0.7.0.1
  */

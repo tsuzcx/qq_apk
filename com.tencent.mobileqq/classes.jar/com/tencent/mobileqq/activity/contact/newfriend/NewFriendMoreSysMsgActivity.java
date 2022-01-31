@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import afke;
-import aiod;
-import akbn;
+import ahhj;
+import akfo;
+import altc;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 public class NewFriendMoreSysMsgActivity
   extends BaseActivity
 {
-  private aiod a;
+  private akfo a;
   
   public static void a(Activity paramActivity, int paramInt1, int paramInt2)
   {
@@ -32,36 +32,36 @@ public class NewFriendMoreSysMsgActivity
   {
     super.doOnCreate(paramBundle);
     int i = getIntent().getIntExtra("first_visible_index", 0);
-    setContentView(2131560914);
-    paramBundle = (LinearLayout)findViewById(2131375493);
+    setContentView(2131561097);
+    paramBundle = (LinearLayout)findViewById(2131375981);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
       paramBundle.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    paramBundle = (SwipListView)findViewById(2131376778);
-    View localView = findViewById(2131370850);
-    TextView localTextView = (TextView)findViewById(2131368472);
+    paramBundle = (SwipListView)findViewById(2131377290);
+    View localView = findViewById(2131371160);
+    TextView localTextView = (TextView)findViewById(2131368659);
     localTextView.setVisibility(0);
-    localTextView.setText(2131694633);
-    setTitle(getString(2131694633));
-    localTextView = (TextView)findViewById(2131368429);
+    localTextView.setText(2131694789);
+    setTitle(getString(2131694789));
+    localTextView = (TextView)findViewById(2131368613);
     localTextView.setVisibility(0);
     localTextView.setText("");
-    localTextView.setOnClickListener(new afke(this));
-    localTextView = (TextView)findViewById(2131368457);
+    localTextView.setOnClickListener(new ahhj(this));
+    localTextView = (TextView)findViewById(2131368644);
     localTextView.setVisibility(0);
-    localTextView.setText(2131699552);
-    this.a = new aiod(this, this.app, paramBundle, localView, localTextView, this.mFlingHandler, i);
+    localTextView.setText(2131699907);
+    this.a = new akfo(this, this.app, paramBundle, localView, localTextView, this.mFlingHandler, i);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    akbn localakbn = (akbn)this.app.getManager(34);
-    localakbn.g();
-    localakbn.k();
+    altc localaltc = (altc)this.app.getManager(34);
+    localaltc.g();
+    localaltc.k();
     this.a.a();
   }
   
@@ -72,7 +72,7 @@ public class NewFriendMoreSysMsgActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity
  * JD-Core Version:    0.7.0.1
  */

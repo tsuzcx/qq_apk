@@ -1,27 +1,27 @@
 package com.tencent.qqmini.proxyimpl;
 
-import ajya;
+import alpo;
 import android.app.Activity;
-import bcqf;
-import besj;
+import bepp;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqmini.sdk.core.model.InnerShareData;
 
 class ShareProxyImpl$5
   implements Runnable
 {
-  ShareProxyImpl$5(ShareProxyImpl paramShareProxyImpl, Activity paramActivity, besj parambesj) {}
+  ShareProxyImpl$5(ShareProxyImpl paramShareProxyImpl, Activity paramActivity, InnerShareData paramInnerShareData) {}
   
   public void run()
   {
-    bcqf localbcqf = new bcqf(this.val$activity);
-    localbcqf.a(ajya.a(2131702742));
-    localbcqf.show();
-    ThreadManager.excute(new ShareProxyImpl.5.1(this, localbcqf), 128, null, true);
+    bepp localbepp = new bepp(this.val$activity);
+    localbepp.a(alpo.a(2131703114));
+    localbepp.show();
+    ThreadManager.excute(new ShareProxyImpl.5.1(this, localbepp), 128, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareProxyImpl.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,30 @@
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.nearby.smooth.ItemLoader;
-import com.tencent.widget.AbsListView;
 
-public final class atxp
+class atxp
+  extends Handler
 {
-  int jdField_a_of_type_Int;
-  final Handler jdField_a_of_type_AndroidOsHandler;
-  atxo jdField_a_of_type_Atxo;
-  final ItemLoader<?, ?> jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
-  
-  void a()
+  atxp(atxo paramatxo, Looper paramLooper, atxn paramatxn)
   {
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+    super(paramLooper);
   }
   
-  void a(View paramView1, View paramView2, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Atxo.a();
-    ListAdapter localListAdapter = this.jdField_a_of_type_Atxo.a();
-    if ((this.jdField_a_of_type_Int != 2) && (!this.jdField_a_of_type_Boolean)) {}
-    for (boolean bool = true;; bool = false)
+    synchronized (atxn.a(this.jdField_a_of_type_Atxo.jdField_a_of_type_Atxn))
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(paramView1, paramView2, localListAdapter, paramInt, bool);
+      atxr localatxr = atxn.a(this.jdField_a_of_type_Atxo.jdField_a_of_type_Atxn, (String)paramMessage.obj);
+      if (localatxr != null) {
+        localatxr.a(paramMessage.what);
+      }
       return;
     }
-  }
-  
-  void a(atxo paramatxo)
-  {
-    this.jdField_a_of_type_Atxo = paramatxo;
-    if (this.jdField_a_of_type_Atxo != null)
-    {
-      paramatxo = this.jdField_a_of_type_Atxo.a();
-      paramatxo.setOnScrollListener(new atxs(this, null));
-      paramatxo.setOnTouchListener(new atxr(this, null));
-      paramatxo.setOnItemSelectedListener(new atxt(this, null));
-    }
-  }
-  
-  void b()
-  {
-    if (this.jdField_a_of_type_Atxo == null) {
-      throw new IllegalStateException("Cannot cancel requests with no managed view");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemLoader.a(this.jdField_a_of_type_Atxo.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atxp
  * JD-Core Version:    0.7.0.1
  */

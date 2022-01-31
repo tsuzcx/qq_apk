@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abnu;
+import adfc;
 
 public class NotificationActivity$1$1
   implements Runnable
 {
-  public NotificationActivity$1$1(abnu paramabnu) {}
+  public NotificationActivity$1$1(adfc paramadfc) {}
   
   public void run()
   {

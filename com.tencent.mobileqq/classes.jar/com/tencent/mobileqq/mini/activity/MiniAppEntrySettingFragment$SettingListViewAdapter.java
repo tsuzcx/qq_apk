@@ -71,10 +71,10 @@ class MiniAppEntrySettingFragment$SettingListViewAdapter
     MiniAppSettingSwitchInfoEntity localMiniAppSettingSwitchInfoEntity = (MiniAppSettingSwitchInfoEntity)this.mData.get(paramInt);
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(2131561967, null);
+      paramView = LayoutInflater.from(this.mContext).inflate(2131562159, null);
       paramViewGroup = new MiniAppEntrySettingFragment.SettingListViewAdapter.Holder(this);
-      paramViewGroup.singleLineSwitchItem = ((FormSwitchItem)paramView.findViewById(2131370326));
-      paramViewGroup.multiLineSwitchItem = ((FormMultiLineSwitchItem)paramView.findViewById(2131370325));
+      paramViewGroup.singleLineSwitchItem = ((FormSwitchItem)paramView.findViewById(2131370625));
+      paramViewGroup.multiLineSwitchItem = ((FormMultiLineSwitchItem)paramView.findViewById(2131370624));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
@@ -123,7 +123,7 @@ class MiniAppEntrySettingFragment$SettingListViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.MiniAppEntrySettingFragment.SettingListViewAdapter
  * JD-Core Version:    0.7.0.1
  */

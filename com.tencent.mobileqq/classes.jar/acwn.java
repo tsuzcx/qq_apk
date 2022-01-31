@@ -1,30 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.IntimateInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class acwn
-  implements DialogInterface.OnClickListener
+public class acwn
+  implements bdzz
 {
-  acwn(acwl paramacwl) {}
+  private WeakReference<asot> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acwn(asot paramasot)
   {
-    if ((!TextUtils.isEmpty(this.a.a)) && (acwl.a(this.a) != null))
+    this.a = new WeakReference(paramasot);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      if (acwl.a(this.a) == 1) {
-        acwl.b(this.a, this.a.a);
+      asot localasot = (asot)this.a.get();
+      if (localasot != null) {
+        localasot.a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendProfileCardActivity", 2, "check friend's profile and preload web-process!");
       }
     }
-    else {
-      return;
-    }
-    acwl.a(this.a, this.a.a, acwl.a(this.a).maskType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwn
  * JD-Core Version:    0.7.0.1
  */

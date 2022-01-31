@@ -1,31 +1,31 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import bgib;
+import bgkc;
+import com.tencent.qqmini.sdk.core.model.InnerShareData;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class ShareJsPlugin$1
-  implements AsyncResult
+  implements bgib
 {
-  ShareJsPlugin$1(ShareJsPlugin paramShareJsPlugin, bekr parambekr) {}
+  ShareJsPlugin$1(ShareJsPlugin paramShareJsPlugin, bgkc parambgkc) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onGetScreenshot(String paramString)
   {
-    if (paramJSONObject.optBoolean("needShareCallBack"))
+    if (TextUtils.isEmpty(paramString))
     {
-      if (paramBoolean) {
-        this.val$req.a();
-      }
-    }
-    else {
+      this.val$shareDataBuilder.c(this.this$0.mMiniAppInfo.iconUrl).a().a();
+      QMLog.e("ShareJsPlugin", "getScreenshot for QzoneShare failed, savedScreenshotPath = null");
       return;
     }
-    this.val$req.b();
+    this.val$shareDataBuilder.c(paramString).a(true).a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.ShareJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

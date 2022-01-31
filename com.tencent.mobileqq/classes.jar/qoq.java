@@ -1,27 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Point;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import mqq.app.QQPermissionCallback;
 
-final class qoq
-  implements ValueAnimator.AnimatorUpdateListener
+public class qoq
+  implements QQPermissionCallback
 {
-  qoq(ViewGroup paramViewGroup, int paramInt1, int paramInt2) {}
+  public qoq(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramValueAnimator = (Point)paramValueAnimator.getAnimatedValue();
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    localLayoutParams.width = (this.jdField_a_of_type_Int + paramValueAnimator.x);
-    int i = this.b;
-    localLayoutParams.height = (paramValueAnimator.y + i);
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
+    bdcd.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qoq
  * JD-Core Version:    0.7.0.1
  */

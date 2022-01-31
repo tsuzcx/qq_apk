@@ -1,6 +1,6 @@
 package cooperation.troop_homework.jsp;
 
-import bhxk;
+import bjyv;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 
 public class TroopHWFileDownloadManager$3
@@ -8,12 +8,12 @@ public class TroopHWFileDownloadManager$3
 {
   public void run()
   {
-    bhxk.a(this.this$0).cancelDownloadTask(this.a);
+    bjyv.a(this.this$0).cancelDownloadTask(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWFileDownloadManager.3
  * JD-Core Version:    0.7.0.1
  */

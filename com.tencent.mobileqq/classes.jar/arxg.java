@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import java.util.List;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
 
-public class arxg
+class arxg
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private int jdField_a_of_type_Int;
-  private arxi jdField_a_of_type_Arxi;
-  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  private final List<LocationRoom.Venue> jdField_a_of_type_JavaUtilList;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  arxg(arxf paramarxf) {}
+  
+  public void onGlobalLayout()
+  {
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    arxf.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arxg
  * JD-Core Version:    0.7.0.1
  */

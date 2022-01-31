@@ -1,30 +1,51 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
-
 public class nub
-  extends bfmx
+  implements alkr
 {
-  public nub(ReadInJoyNaviController.1 param1, View paramView) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    paramAnimation = new TranslateAnimation(0.0F, 0.0F, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0.e, 0.0F);
-    paramAnimation.setDuration(30L);
-    paramAnimation.setAnimationListener(new nuc(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
-  }
+  protected void b(boolean paramBoolean, Object paramObject) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  protected void c(boolean paramBoolean, Object paramObject) {}
+  
+  protected void d(boolean paramBoolean, Object paramObject) {}
+  
+  protected void e(boolean paramBoolean, Object paramObject) {}
+  
+  protected void f(boolean paramBoolean, Object paramObject) {}
+  
+  protected void g(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    nua.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyNaviController$1.this$0).setAlpha(1.0F);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      a(paramBoolean, paramObject);
+      return;
+    case 1: 
+      b(paramBoolean, paramObject);
+      return;
+    case 2: 
+      c(paramBoolean, paramObject);
+      return;
+    case 3: 
+      d(paramBoolean, paramObject);
+      return;
+    case 4: 
+      e(paramBoolean, paramObject);
+      return;
+    case 5: 
+      f(paramBoolean, paramObject);
+      return;
+    }
+    g(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nub
  * JD-Core Version:    0.7.0.1
  */

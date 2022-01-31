@@ -1,37 +1,34 @@
-import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.widget.ImageView;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class afho
-  implements baxz
+  implements bhqd
 {
-  afho(afhn paramafhn) {}
+  afho(afhh paramafhh, MessageForFile paramMessageForFile, bhpy parambhpy, BaseChatItemLayout paramBaseChatItemLayout, afhp paramafhp) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
+    paramView = this.jdField_a_of_type_Afhh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
+    if (paramView != null)
     {
-      paramInt2 = afhn.a(this.a).getChildCount();
-      paramInt1 = 0;
-      while (paramInt1 < paramInt2)
+      if (paramView.status == 16)
       {
-        Object localObject = afhn.a(this.a).getChildViewHolder(afhn.a(this.a).getChildAt(paramInt1));
-        if ((localObject instanceof afhp))
-        {
-          localObject = (afhp)localObject;
-          if (((afhp)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) {
-            ((afhp)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-          }
-        }
-        paramInt1 += 1;
+        armz.a(2131692939);
+        this.jdField_a_of_type_Bhpy.cancel();
+        return;
       }
+      arni.a(this.jdField_a_of_type_Afhh.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Afhh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
     }
+    this.jdField_a_of_type_Afhh.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Afhp, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status);
+    this.jdField_a_of_type_Bhpy.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afho
  * JD-Core Version:    0.7.0.1
  */

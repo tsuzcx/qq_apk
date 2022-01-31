@@ -1,29 +1,28 @@
+import com.tencent.qphone.base.util.QLog;
+
 public class llk
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString = "";
-  int jdField_b_of_type_Int = 0;
-  String jdField_b_of_type_JavaLangString = "";
-  int jdField_c_of_type_Int = 0;
-  String jdField_c_of_type_JavaLangString = "";
-  int jdField_d_of_type_Int = 0;
-  String jdField_d_of_type_JavaLangString = "";
-  int jdField_e_of_type_Int = 0;
-  String jdField_e_of_type_JavaLangString = "";
-  int f = 0;
-  int g = 0;
-  int h = 0;
-  int i = 0;
-  int j = 0;
-  int k = 0;
-  int l = 0;
-  int m = 0;
+  public static void a()
+  {
+    a("0X8009850");
+  }
   
-  public llk(lla paramlla) {}
+  static void a(String paramString)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w("VoiceRecogReport", 1, "report, key[" + paramString + "]");
+    }
+    azmj.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", null, null);
+  }
+  
+  public static void b()
+  {
+    a("0X8009851");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     llk
  * JD-Core Version:    0.7.0.1
  */

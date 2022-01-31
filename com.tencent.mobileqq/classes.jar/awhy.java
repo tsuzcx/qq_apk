@@ -1,93 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.fragment.SearchEntryFragment;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 
 class awhy
-  implements xni
+  implements Animator.AnimatorListener
 {
-  awhy(awhx paramawhx) {}
+  awhy(awhw paramawhw, View paramView1, View paramView2) {}
   
-  public void a(HotWordSearchEntryDataModel.HotSearchItem paramHotSearchItem)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    Object localObject;
-    HotWordSearchEntryDataModel.HotSearchItem localHotSearchItem;
-    if (paramHotSearchItem != null)
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-awhw.a(this.jdField_a_of_type_Awhw));
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_Awhw.f)
     {
-      localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      do
-      {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-        localHotSearchItem = (HotWordSearchEntryDataModel.HotSearchItem)((Iterator)localObject).next();
-      } while (!TextUtils.equals(paramHotSearchItem.title, localHotSearchItem.title));
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    for (;;)
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    paramAnimator.topMargin = (-awhw.a(this.jdField_a_of_type_Awhw));
+    this.b.setLayoutParams(paramAnimator);
+    if (this.jdField_a_of_type_Awhw.f)
     {
-      if (localHotSearchItem == null) {
-        return;
-      }
-      localObject = localHotSearchItem.jumpUrl;
-      paramHotSearchItem = (HotWordSearchEntryDataModel.HotSearchItem)localObject;
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        if (this.a.jdField_a_of_type_Int != 10) {
-          break label382;
-        }
-        paramHotSearchItem = awvx.a(localHotSearchItem.title, 5, "kandian_hotword");
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.uniteSearch.HotWordSearchEntryModel", 2, "open Browser append suffix url = " + paramHotSearchItem);
-        }
-        awhx.a(this.a, paramHotSearchItem, localHotSearchItem.title);
-        awwa.a("hot_list", "clk_hot_list", new String[] { localHotSearchItem.title, String.valueOf(this.a.jdField_a_of_type_Int), String.valueOf(this.a.jdField_a_of_type_JavaUtilList.indexOf(localHotSearchItem) + 1) });
-        paramHotSearchItem = new JSONObject();
-        try
-        {
-          paramHotSearchItem.put("project", awsq.a());
-          paramHotSearchItem.put("event_src", "client");
-          paramHotSearchItem.put("experiment_id", awsq.b);
-          localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("hot_list").action("clk_hot_list");
-          if (this.a.jdField_a_of_type_Int == 3)
-          {
-            i = 21;
-            awsq.a(null, localReportModelDC02528.ver2(awsq.a(i)).ver4(localHotSearchItem.title).ver7(paramHotSearchItem.toString()).session_id(((QQAppInterface)localObject).getCurrentAccountUin() + this.a.jdField_a_of_type_Long));
-            awsq.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, SearchEntryFragment.a(this.a.jdField_a_of_type_Int), "0X8009D28", 0, 0, null, null);
-            ((akgc)((QQAppInterface)onh.a()).getManager(299)).a(localHotSearchItem.title);
-            return;
-            label382:
-            paramHotSearchItem = awvx.c(this.a.jdField_a_of_type_Int);
-            paramHotSearchItem = awvx.a(localHotSearchItem.title, 5, paramHotSearchItem);
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            QLog.e("Q.uniteSearch.HotWordSearchEntryModel", 2, "e = " + localJSONException);
-            continue;
-            int i = this.a.jdField_a_of_type_Int;
-          }
-        }
-      }
-      localHotSearchItem = null;
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (!this.jdField_a_of_type_Awhw.f) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awhy
  * JD-Core Version:    0.7.0.1
  */

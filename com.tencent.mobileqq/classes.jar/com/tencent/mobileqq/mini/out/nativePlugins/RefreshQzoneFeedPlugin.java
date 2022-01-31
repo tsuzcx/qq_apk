@@ -2,8 +2,8 @@ package com.tencent.mobileqq.mini.out.nativePlugins;
 
 import android.content.Intent;
 import android.os.Bundle;
-import bgyp;
-import bgyw;
+import bizm;
+import bizt;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.NativePlugin.JSContext;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +27,7 @@ public class RefreshQzoneFeedPlugin
         Bundle localBundle = new Bundle();
         localBundle.putString("cmd", "refreshFeed");
         localIntent.putExtras(localBundle);
-        bgyp.a(paramJSONObject, bgyw.a(), localIntent);
+        bizm.a(paramJSONObject, bizt.a(), localIntent);
         paramJSContext.evaluateCallback(true, null, "");
         if (QLog.isColorLevel()) {
           QLog.i("RefreshQzoneFeedPlugin", 2, "RefreshQzoneFeed");
@@ -42,7 +42,7 @@ public class RefreshQzoneFeedPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.RefreshQzoneFeedPlugin
  * JD-Core Version:    0.7.0.1
  */

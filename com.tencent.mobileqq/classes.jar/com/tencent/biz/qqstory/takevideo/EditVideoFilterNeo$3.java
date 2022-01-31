@@ -3,14 +3,14 @@ package com.tencent.biz.qqstory.takevideo;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
-import tbu;
-import vgr;
-import vhm;
+import uqm;
+import wvj;
+import wwe;
 
 public class EditVideoFilterNeo$3
   implements Runnable
 {
-  public EditVideoFilterNeo$3(vgr paramvgr, tbu paramtbu) {}
+  public EditVideoFilterNeo$3(wvj paramwvj, uqm paramuqm) {}
   
   public void run()
   {
@@ -33,7 +33,7 @@ public class EditVideoFilterNeo$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.3
  * JD-Core Version:    0.7.0.1
  */

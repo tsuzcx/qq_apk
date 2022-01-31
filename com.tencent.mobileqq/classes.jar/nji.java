@@ -1,71 +1,43 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.widget.Switch;
 
 class nji
-  implements INetInfoHandler
+  implements DialogInterface.OnClickListener
 {
-  njf a;
+  nji(nin paramnin, npo paramnpo, boolean paramBoolean, Switch paramSwitch) {}
   
-  public nji(njf paramnjf1, njf paramnjf2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = paramnjf2;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onNetMobile2None()
-  {
-    njf.c("onNetMobile2None");
-    if (this.a != null) {
-      njf.b(this.a);
+    boolean bool = true;
+    if (paramInt == 0) {
+      if ((3 == this.jdField_a_of_type_Npo.e) && (this.jdField_a_of_type_Npo.d == 0))
+      {
+        paramDialogInterface = this.jdField_a_of_type_Nin;
+        localnpo = this.jdField_a_of_type_Npo;
+        if (!this.jdField_a_of_type_Boolean) {
+          paramDialogInterface.a(localnpo, bool);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, this.jdField_a_of_type_ComTencentWidgetSwitch);
+      }
     }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    njf.c("onNetMobile2Wifi");
-    if (this.a != null) {
-      njf.b(this.a);
+    while (paramInt != 1) {
+      for (;;)
+      {
+        npo localnpo;
+        return;
+        bool = false;
+      }
     }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    njf.c("onNetNone2Mobile");
-    if (this.a != null) {
-      njf.b(this.a);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    njf.c("onNetNone2Wifi");
-    if (this.a != null) {
-      njf.b(this.a);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    njf.c("onNetWifi2Mobile");
-    if (this.a != null) {
-      njf.b(this.a);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    njf.c("onNetWifi2None");
-    if (this.a != null) {
-      njf.b(this.a);
-    }
+    this.jdField_a_of_type_Nin.a(this.jdField_a_of_type_Npo, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nji
  * JD-Core Version:    0.7.0.1
  */

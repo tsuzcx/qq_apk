@@ -1,18 +1,17 @@
-class ajwl
-  implements axof
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+public class ajwl
+  extends akee
 {
-  ajwl(ajwk paramajwk) {}
-  
-  public void a()
-  {
-    this.a.m();
-  }
-  
-  public void b() {}
+  public CheckBox a;
+  public Object a;
+  public TextView d;
+  public TextView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwl
  * JD-Core Version:    0.7.0.1
  */

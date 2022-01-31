@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.main;
 
-import agcf;
-import agdb;
+import aiak;
+import aibg;
 
 public class MainAssistObserver$5$1
   implements Runnable
 {
-  public MainAssistObserver$5$1(agdb paramagdb) {}
+  public MainAssistObserver$5$1(aibg paramaibg) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class MainAssistObserver$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.5.1
  * JD-Core Version:    0.7.0.1
  */

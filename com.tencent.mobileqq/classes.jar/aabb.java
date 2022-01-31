@@ -1,99 +1,513 @@
-import android.app.Application;
+import android.app.Activity;
 import android.content.Context;
-import android.content.pm.PackageManager;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build.VERSION;
-import android.provider.Settings.Secure;
-import android.telephony.TelephonyManager;
+import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.device.utils.LightAppSettingInfo;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import cooperation.plugin.PluginBaseActivity;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppActivity;
+import mqq.app.AppRuntime;
+import mqq.app.BaseActivity;
+import mqq.observer.BusinessObserver;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aabb
 {
-  private static int jdField_a_of_type_Int = -1;
-  private static String jdField_a_of_type_JavaLangString = "";
+  protected static long a;
+  public static ArrayList<LightAppSettingInfo> a;
+  public static volatile ConcurrentHashMap<Integer, LightAppSettingInfo> a;
+  protected aabd a;
+  public Activity a;
+  protected Bundle a;
+  protected bepp a;
+  protected DeviceInfo a;
+  protected String a;
+  protected AppRuntime a;
+  private BusinessObserver a;
+  protected boolean a;
+  protected ArrayList<Integer> b;
+  protected boolean b;
+  protected boolean c;
+  protected boolean d;
   
-  public static String a(Application paramApplication)
+  static
   {
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    String str1 = "";
-    Context localContext = paramApplication.getApplicationContext();
-    Object localObject = str1;
-    if (a(paramApplication))
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  }
+  
+  public aabb()
+  {
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new aabc(this);
+    this.jdField_a_of_type_MqqAppAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    this.c = false;
+  }
+  
+  public aabb(Activity paramActivity)
+  {
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new aabc(this);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity))
     {
-      paramApplication = (TelephonyManager)localContext.getSystemService("phone");
-      String str2 = paramApplication.getDeviceId();
-      localObject = str1;
-      if (!TextUtils.isEmpty(str2)) {
-        localObject = "" + str2;
-      }
-      str1 = paramApplication.getSubscriberId();
-      if (TextUtils.isEmpty(str1)) {
-        break label170;
-      }
-      paramApplication = (String)localObject + str1;
+      this.jdField_a_of_type_MqqAppAppRuntime = ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).getAppRuntime();
+      this.c = true;
+    }
+    while (!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {
+      return;
+    }
+    this.jdField_a_of_type_MqqAppAppRuntime = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppRuntime();
+    this.c = false;
+  }
+  
+  public aabb(Activity paramActivity, aabd paramaabd)
+  {
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new aabc(this);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.jdField_a_of_type_Aabd = paramaabd;
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof AppActivity))
+    {
+      this.jdField_a_of_type_MqqAppAppRuntime = ((AppActivity)this.jdField_a_of_type_AndroidAppActivity).getAppRuntime();
+      this.c = true;
+    }
+    while (!(this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {
+      return;
+    }
+    this.jdField_a_of_type_MqqAppAppRuntime = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppRuntime();
+    this.c = false;
+  }
+  
+  public static String a(Resources paramResources, LightAppSettingInfo paramLightAppSettingInfo, String paramString)
+  {
+    String str;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      str = paramString;
+      if (!paramString.equals("null")) {}
+    }
+    else
+    {
+      str = paramResources.getString(2131691626);
+    }
+    if ((!TextUtils.isEmpty(paramLightAppSettingInfo.b)) && (!TextUtils.isEmpty(paramLightAppSettingInfo.jdField_a_of_type_JavaLangString)) && (bfij.a(paramLightAppSettingInfo.b))) {
+      return paramResources.getString(2131691628, new Object[] { str });
+    }
+    return paramResources.getString(2131691627, new Object[] { str });
+  }
+  
+  public static void a(Activity paramActivity, String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (bfij.a(paramString1)))
+    {
+      bfij.a(paramActivity, paramString1);
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("autoDownload", false);
+    localBundle.putString("packageName", paramString1);
+    localBundle.putString("appId", paramString2);
+    bfei.b(paramActivity, localBundle);
+  }
+  
+  private void a(Intent paramIntent, LightAppSettingInfo paramLightAppSettingInfo)
+  {
+    String str = null;
+    if (paramLightAppSettingInfo.jdField_d_of_type_Int == 2) {
+      str = "http://qzs.qq.com/open/mobile/iot_public_device_2/html/ipCamera.html";
     }
     for (;;)
     {
-      localObject = paramApplication;
-      if (TextUtils.isEmpty(paramApplication))
+      paramIntent.putExtra("url", str);
+      return;
+      if (paramLightAppSettingInfo.jdField_d_of_type_Int == 17) {
+        str = "http://qzs.qq.com/open/mobile/iot_public_device_2/html/print.html";
+      }
+    }
+  }
+  
+  public static void a(ArrayList<LightAppSettingInfo> paramArrayList)
+  {
+    if (paramArrayList == null) {}
+    for (;;)
+    {
+      return;
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
       {
-        localObject = paramApplication;
-        if (Build.VERSION.SDK_INT >= 23) {
-          localObject = bfnn.b();
+        LightAppSettingInfo localLightAppSettingInfo = (LightAppSettingInfo)paramArrayList.next();
+        if (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(localLightAppSettingInfo.jdField_c_of_type_Int)))
+        {
+          jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(localLightAppSettingInfo.jdField_c_of_type_Int), localLightAppSettingInfo);
+          jdField_a_of_type_JavaUtilArrayList.add(localLightAppSettingInfo);
         }
       }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+    }
+  }
+  
+  public static void c()
+  {
+    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    jdField_a_of_type_JavaUtilArrayList.clear();
+  }
+  
+  private void d()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("uin", this.jdField_a_of_type_JavaLangString);
+    Object localObject = new StringBuilder();
+    if (this.jdField_b_of_type_JavaUtilArrayList != null)
+    {
+      int i = 0;
+      while (i < this.jdField_b_of_type_JavaUtilArrayList.size())
       {
-        paramApplication = (Application)localObject;
-        if (!((String)localObject).startsWith("012345678912345")) {}
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaUtilArrayList.get(i));
+        if (i != this.jdField_b_of_type_JavaUtilArrayList.size() - 1) {
+          ((StringBuilder)localObject).append(",");
+        }
+        i += 1;
       }
-      else
+    }
+    localBundle.putString("pids", ((StringBuilder)localObject).toString());
+    if ((this.d) && (this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo != null)) {
+      localBundle.putLong("din", this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.din);
+    }
+    if (this.d) {}
+    for (localObject = "get_public_lightapp_info";; localObject = "get_lightapp_info")
+    {
+      aabn.a((String)localObject, localBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_MqqObserverBusinessObserver);
+      return;
+    }
+  }
+  
+  public LightAppSettingInfo a(DeviceInfo paramDeviceInfo)
+  {
+    LightAppSettingInfo localLightAppSettingInfo2 = (LightAppSettingInfo)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramDeviceInfo.productId));
+    LightAppSettingInfo localLightAppSettingInfo1 = localLightAppSettingInfo2;
+    if (localLightAppSettingInfo2 == null)
+    {
+      localLightAppSettingInfo1 = localLightAppSettingInfo2;
+      if (!this.c)
       {
-        paramApplication = Settings.Secure.getString(localContext.getContentResolver(), "android_id");
+        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+        localLightAppSettingInfo1 = localLightAppSettingInfo2;
+        if ((localAppRuntime instanceof QQAppInterface))
+        {
+          a(((zpa)((QQAppInterface)localAppRuntime).a(51)).a());
+          localLightAppSettingInfo1 = (LightAppSettingInfo)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramDeviceInfo.productId));
+        }
       }
-      jdField_a_of_type_JavaLangString = MD5.toMD5(paramApplication);
-      return jdField_a_of_type_JavaLangString;
-      label170:
-      str1 = paramApplication.getSimOperator();
-      paramApplication = (Application)localObject;
-      if (!TextUtils.isEmpty(str1)) {
-        paramApplication = (String)localObject + str1;
+    }
+    return localLightAppSettingInfo1;
+  }
+  
+  public HashMap<Integer, String> a(JSONArray paramJSONArray)
+  {
+    localHashMap = new HashMap();
+    if (paramJSONArray != null) {
+      try
+      {
+        if (paramJSONArray.length() > 0)
+        {
+          int i = 0;
+          while (i < paramJSONArray.length())
+          {
+            JSONObject localJSONObject = (JSONObject)paramJSONArray.get(i);
+            if (localJSONObject != null) {
+              localHashMap.put(Integer.valueOf(localJSONObject.getInt("property_id")), localJSONObject.getString("property_val"));
+            }
+            i += 1;
+          }
+        }
+        return localHashMap;
+      }
+      catch (Exception paramJSONArray) {}
+    }
+  }
+  
+  public void a()
+  {
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface))
+    {
+      localObject1 = ((zpa)((QQAppInterface)localObject1).a(51)).a();
+      if ((localObject1 != null) && (localObject1.length > 0))
+      {
+        ArrayList localArrayList = new ArrayList();
+        if (SystemClock.elapsedRealtime() - jdField_a_of_type_Long > 15000L)
+        {
+          jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+          int j = localObject1.length;
+          int i = 0;
+          while (i < j)
+          {
+            Object localObject2 = localObject1[i];
+            if (!jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(localObject2.productId))) {
+              localArrayList.add(Integer.valueOf(localObject2.productId));
+            }
+            i += 1;
+          }
+          if (localArrayList.size() > 0) {
+            a(localArrayList, false);
+          }
+        }
       }
     }
   }
   
-  private static boolean a(Application paramApplication)
+  public void a(DeviceInfo paramDeviceInfo, Bundle paramBundle, boolean paramBoolean)
   {
-    boolean bool = true;
-    if (jdField_a_of_type_Int == -1)
+    if (paramDeviceInfo == null)
     {
-      bool = a(paramApplication, "android.permission.READ_PHONE_STATE");
-      if (bool) {
-        jdField_a_of_type_Int = 1;
+      if (this.jdField_a_of_type_Aabd != null) {
+        this.jdField_a_of_type_Aabd.a(false);
       }
+      return;
     }
-    while (jdField_a_of_type_Int > 0) {
+    if (paramBundle != null) {}
+    for (boolean bool = paramBundle.getBoolean("showProgress", true);; bool = true)
+    {
+      this.jdField_b_of_type_Boolean = true;
+      this.d = paramBoolean;
+      LightAppSettingInfo localLightAppSettingInfo = a(paramDeviceInfo);
+      String str;
+      if (localLightAppSettingInfo != null) {
+        if ((localLightAppSettingInfo.e != 3) && (localLightAppSettingInfo.e != 7) && (localLightAppSettingInfo.e != 5) && (localLightAppSettingInfo.e != 4) && (localLightAppSettingInfo.e != 1) && (localLightAppSettingInfo.e != 8) && (localLightAppSettingInfo.e != 9))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("LightAppUtil", 2, "bindType=" + localLightAppSettingInfo.e);
+          }
+          bfhq.a().a(2131691629);
+          str = null;
+        }
+      }
       for (;;)
       {
-        return bool;
-        jdField_a_of_type_Int = 0;
+        if ((str == null) && (0 == 0))
+        {
+          paramDeviceInfo = new Intent();
+          paramDeviceInfo.setClassName("com.tencent.mobileqq", "com.tencent.biz.pubaccount.PublicAccountBrowser");
+          paramDeviceInfo.putExtra("url", "http://qzs.qq.com/open/mobile/qq_download/index.html");
+          paramDeviceInfo.putExtra("isPublicDevice", paramBoolean);
+          aabm.a(null, "Net_LiteApp_Setting", 0, 1, localLightAppSettingInfo.jdField_c_of_type_Int);
+          if (str != null) {
+            break label713;
+          }
+          this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDeviceInfo);
+          label247:
+          if (this.jdField_a_of_type_Aabd == null) {
+            break label794;
+          }
+          this.jdField_a_of_type_Aabd.a(true);
+          return;
+          if (localLightAppSettingInfo.jdField_a_of_type_Int == 0) {
+            switch (localLightAppSettingInfo.jdField_d_of_type_Int)
+            {
+            default: 
+              if ((TextUtils.isEmpty(localLightAppSettingInfo.jdField_c_of_type_JavaLangString)) && (TextUtils.isEmpty(localLightAppSettingInfo.jdField_d_of_type_JavaLangString))) {
+                break label935;
+              }
+              str = "com.tencent.device.lightapp.LightAppActivity";
+              break;
+            case 2: 
+              if ((localLightAppSettingInfo.jdField_a_of_type_JavaUtilArrayList != null) && (localLightAppSettingInfo.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(200031))))
+              {
+                str = "com.tencent.device.superav.ui.SuperVideoActivity";
+                continue;
+              }
+              if ((this.d) && (a()))
+              {
+                str = "com.tencent.device.lightapp.LightAppActivity";
+                continue;
+              }
+              str = "com.tencent.device.av.VideoActivity";
+              break;
+            case 14: 
+              str = "com.tencent.device.qqwifi.WiFiStorageActivity";
+              break;
+            case 16: 
+              str = "com.tencent.device.av.VisualDoorBellActivity";
+              break;
+            case 17: 
+              str = "com.tencent.device.lightapp.LightAppActivity";
+              break;
+            }
+          }
+          if (localLightAppSettingInfo.jdField_a_of_type_Int == 1)
+          {
+            if ((TextUtils.isEmpty(localLightAppSettingInfo.jdField_c_of_type_JavaLangString)) && (TextUtils.isEmpty(localLightAppSettingInfo.jdField_d_of_type_JavaLangString))) {
+              break label935;
+            }
+            str = "com.tencent.device.lightapp.LightAppActivity";
+            continue;
+          }
+          bfhq.a().a(2131691633);
+          if (this.jdField_a_of_type_Aabd == null) {
+            break;
+          }
+          this.jdField_a_of_type_Aabd.a(false);
+          return;
+        }
+        Bundle localBundle = new Bundle();
+        localBundle.putParcelable("device_info", paramDeviceInfo);
+        localBundle.putParcelable("lightapp_setting", localLightAppSettingInfo);
+        if (paramBundle != null) {
+          localBundle.putBundle("extras", paramBundle);
+        }
+        if (0 == 0) {}
+        for (Intent localIntent = new Intent();; localIntent = null)
+        {
+          localIntent.putExtra("uin", String.valueOf(paramDeviceInfo.din));
+          if (!TextUtils.isEmpty(paramDeviceInfo.displayName)) {
+            localIntent.putExtra("uinname", paramDeviceInfo.displayName);
+          }
+          for (;;)
+          {
+            localIntent.putExtra("account", paramDeviceInfo.serialNum);
+            localIntent.putExtra("pid", paramDeviceInfo.productId);
+            localIntent.putExtra("device_info", paramDeviceInfo);
+            localIntent.putExtra("isPublicDevice", paramBoolean);
+            if (this.d) {
+              a(localIntent, localLightAppSettingInfo);
+            }
+            if ((paramBundle != null) && (paramBundle.getBoolean("isFromBindSucc", false))) {
+              localIntent.putExtra("bindSuccTime", System.currentTimeMillis());
+            }
+            localIntent.putExtras(localBundle);
+            paramDeviceInfo = localIntent;
+            break;
+            localIntent.putExtra("uinname", aabn.a(paramDeviceInfo));
+          }
+          label713:
+          if ((this.jdField_a_of_type_AndroidAppActivity instanceof PluginBaseActivity))
+          {
+            paramDeviceInfo.setClassName(this.jdField_a_of_type_AndroidAppActivity, str);
+            this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDeviceInfo);
+            break label247;
+          }
+          if ((this.jdField_a_of_type_AndroidAppActivity instanceof ChatActivity)) {
+            paramDeviceInfo.putExtra("bFromChatActivity", true);
+          }
+          bjxx.a().a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_MqqAppAppRuntime.getAccount(), paramDeviceInfo, str, -1, null, SmartDevicePluginProxyActivity.class);
+          break label247;
+          label794:
+          break;
+          if (this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo == null)
+          {
+            if (!bdee.g(this.jdField_a_of_type_AndroidAppActivity))
+            {
+              bfhq.a().a(2131691632);
+              if (this.jdField_a_of_type_Aabd == null) {
+                break;
+              }
+              this.jdField_a_of_type_Aabd.a(false);
+              return;
+            }
+            this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo = paramDeviceInfo;
+            this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+            paramBundle = new ArrayList();
+            paramBundle.add(Integer.valueOf(paramDeviceInfo.productId));
+            a(paramBundle, bool);
+            return;
+          }
+          bfhq.a().a(2131691631);
+          if ((this.jdField_a_of_type_Bepp != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
+            this.jdField_a_of_type_Bepp.dismiss();
+          }
+          if (this.jdField_a_of_type_Aabd == null) {
+            break;
+          }
+          this.jdField_a_of_type_Aabd.a(false);
+          return;
+        }
+        label935:
+        str = null;
       }
     }
-    return false;
   }
   
-  private static boolean a(Application paramApplication, String paramString)
+  public void a(ArrayList<Integer> paramArrayList, boolean paramBoolean)
   {
-    if (paramApplication == null) {}
-    PackageManager localPackageManager;
-    do
-    {
+    this.jdField_b_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    b();
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_AndroidAppActivity == null) {
       return false;
-      localPackageManager = paramApplication.getPackageManager();
-    } while ((localPackageManager == null) || (localPackageManager.checkPermission(paramString, paramApplication.getPackageName()) != 0));
-    return true;
+    }
+    Object localObject;
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof PluginBaseActivity))
+    {
+      localObject = ((PluginBaseActivity)this.jdField_a_of_type_AndroidAppActivity).getOutActivity();
+      label30:
+      if (localObject == null) {
+        break label97;
+      }
+      localObject = new WebView((Context)localObject);
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        ((WebView)localObject).removeJavascriptInterface("searchBoxJavaBridge_");
+        ((WebView)localObject).removeJavascriptInterface("accessibility");
+        ((WebView)localObject).removeJavascriptInterface("accessibilityTraversal");
+      }
+      if ((localObject == null) || (((WebView)localObject).getX5WebViewExtension() == null)) {
+        break label99;
+      }
+    }
+    label97:
+    label99:
+    for (boolean bool = true;; bool = false)
+    {
+      ((WebView)localObject).destroy();
+      return bool;
+      localObject = this.jdField_a_of_type_AndroidAppActivity;
+      break label30;
+      break;
+    }
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
+        break label103;
+      }
+      this.jdField_a_of_type_Bepp = new bepp(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131298914));
+      this.jdField_a_of_type_Bepp.c(2131691630);
+      this.jdField_a_of_type_Bepp.show();
+    }
+    while (this.jdField_a_of_type_MqqAppAppRuntime == null)
+    {
+      bfhg.d("LightAppUtil", "app == null when dologin");
+      if (this.jdField_a_of_type_Aabd != null) {
+        this.jdField_a_of_type_Aabd.a(false);
+      }
+      return;
+      label103:
+      this.jdField_a_of_type_Boolean = false;
+    }
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_MqqAppAppRuntime.getAccount();
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      bfhq.a().a(2131695064);
+    }
+    d();
   }
 }
 

@@ -1,38 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyGiftView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-
-public class ahfg
-  implements View.OnClickListener
+class ahfg
+  extends alox
 {
-  public ahfg(SpecifyGiftView paramSpecifyGiftView, aycd paramaycd, View.OnClickListener paramOnClickListener) {}
+  ahfg(ahfc paramahfc) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).a();
-    if (this.jdField_a_of_type_Aycd != null) {
-      this.jdField_a_of_type_Aycd.a();
-    }
-    QQAppInterface localQQAppInterface = ahiw.a();
-    if (localQQAppInterface != null)
-    {
-      bahf localbahf = (bahf)localQQAppInterface.getManager(223);
-      if (localbahf != null) {
-        localbahf.a(SpecifyGiftView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView).frienduin);
-      }
-    }
-    ahiw.a(localQQAppInterface, "212", "only.animation.close");
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    if ((paramBoolean) && (ahfc.a(this.a) != null)) {
+      ahfc.a(this.a).a(String.valueOf(paramObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahfg
  * JD-Core Version:    0.7.0.1
  */

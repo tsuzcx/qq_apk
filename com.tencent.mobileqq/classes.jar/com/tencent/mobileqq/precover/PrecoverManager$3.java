@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.precover;
 
-import aurv;
+import awjh;
 import com.tencent.mobileqq.data.PrecoverResource;
 import com.tencent.mobileqq.data.PrecoverResourceBusiness;
 import java.util.ArrayList;
@@ -13,28 +13,28 @@ public class PrecoverManager$3
 {
   public void run()
   {
-    synchronized (aurv.a(this.this$0))
+    synchronized (awjh.a(this.this$0))
     {
-      Object localObject1 = (List)aurv.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
+      Object localObject1 = (List)awjh.a(this.this$0).remove(this.jdField_a_of_type_JavaLangString);
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
         localObject1 = ((List)localObject1).iterator();
         if (((Iterator)localObject1).hasNext())
         {
           localObject4 = (PrecoverResource)((Iterator)localObject1).next();
-          aurv.b(this.this$0).remove(aurv.a((PrecoverResource)localObject4));
+          awjh.b(this.this$0).remove(awjh.a((PrecoverResource)localObject4));
         }
       }
     }
-    aurv.a(this.this$0, this.jdField_a_of_type_JavaLangString, PrecoverResourceBusiness.class);
-    Object localObject3 = aurv.a(this.this$0, this.jdField_a_of_type_JavaLangString, PrecoverResource.class);
+    awjh.a(this.this$0, this.jdField_a_of_type_JavaLangString, PrecoverResourceBusiness.class);
+    Object localObject3 = awjh.a(this.this$0, this.jdField_a_of_type_JavaLangString, PrecoverResource.class);
     Object localObject4 = this.jdField_a_of_type_JavaUtilList.iterator();
     PrecoverResource localPrecoverResource;
     while (((Iterator)localObject4).hasNext())
     {
       localPrecoverResource = (PrecoverResource)((Iterator)localObject4).next();
-      aurv.b(this.this$0).put(aurv.a(localPrecoverResource), localPrecoverResource);
-      aurv.a(this.this$0, localPrecoverResource);
+      awjh.b(this.this$0).put(awjh.a(localPrecoverResource), localPrecoverResource);
+      awjh.a(this.this$0, localPrecoverResource);
     }
     if ((localObject3 != null) && (((List)localObject3).size() > 0))
     {
@@ -42,7 +42,7 @@ public class PrecoverManager$3
       while (((Iterator)localObject4).hasNext())
       {
         localPrecoverResource = (PrecoverResource)((Iterator)localObject4).next();
-        aurv.b(this.this$0).put(aurv.a(localPrecoverResource), localPrecoverResource);
+        awjh.b(this.this$0).put(awjh.a(localPrecoverResource), localPrecoverResource);
       }
     }
     localObject4 = new ArrayList();
@@ -58,12 +58,12 @@ public class PrecoverManager$3
         }
       }
     }
-    aurv.a(this.this$0).put(this.jdField_a_of_type_JavaLangString, localObject4);
+    awjh.a(this.this$0).put(this.jdField_a_of_type_JavaLangString, localObject4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.precover.PrecoverManager.3
  * JD-Core Version:    0.7.0.1
  */

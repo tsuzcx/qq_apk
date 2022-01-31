@@ -1,61 +1,20 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.TroopRemindSettingData;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.List;
 
-public class aulu
-  extends aula
+class aulu
+  implements DialogInterface.OnClickListener
 {
-  public aulu()
-  {
-    this.a = 2;
-  }
+  aulu(ault paramault, List paramList) {}
   
-  public auko a(auko paramauko, Cursor paramCursor, boolean paramBoolean, aukz paramaukz)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramauko = (TroopRemindSettingData)paramauko;
-    if (paramaukz == null)
-    {
-      paramauko.troopUin = paramCursor.getString(paramCursor.getColumnIndex("troopUin"));
-      paramauko.isOpenState = paramCursor.getInt(paramCursor.getColumnIndex("isOpenState"));
-      return paramauko;
-    }
-    int i = paramCursor.getColumnIndex("troopUin");
-    if (i == -1) {
-      paramaukz.a(new NoColumnError("troopUin", String.class));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("isOpenState");
-      if (i != -1) {
-        break;
-      }
-      paramaukz.a(new NoColumnError("isOpenState", Integer.TYPE));
-      return paramauko;
-      paramauko.troopUin = paramCursor.getString(i);
-    }
-    paramauko.isOpenState = paramCursor.getInt(i);
-    return paramauko;
-  }
-  
-  public String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,troopUin TEXT UNIQUE ,isOpenState INTEGER)");
-    return localStringBuilder.toString();
-  }
-  
-  public void a(auko paramauko, ContentValues paramContentValues)
-  {
-    paramauko = (TroopRemindSettingData)paramauko;
-    paramContentValues.put("troopUin", paramauko.troopUin);
-    paramContentValues.put("isOpenState", Integer.valueOf(paramauko.isOpenState));
+    this.jdField_a_of_type_Ault.a(this.jdField_a_of_type_JavaUtilList, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aulu
  * JD-Core Version:    0.7.0.1
  */

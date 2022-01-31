@@ -67,9 +67,9 @@ public class TemplateParser
     //   0: aconst_null
     //   1: astore 7
     //   3: iconst_1
-    //   4: istore 4
+    //   4: istore 5
     //   6: iconst_1
-    //   7: istore 5
+    //   7: istore 4
     //   9: aload_2
     //   10: ldc 124
     //   12: invokevirtual 127	java/lang/String:endsWith	(Ljava/lang/String;)Z
@@ -257,7 +257,7 @@ public class TemplateParser
     //   393: astore_0
     //   394: iload_3
     //   395: ifne +12 -> 407
-    //   398: iload 5
+    //   398: iload 4
     //   400: istore_3
     //   401: aload_0
     //   402: astore 7
@@ -306,7 +306,7 @@ public class TemplateParser
     //   480: astore_2
     //   481: iload_3
     //   482: ifne +29 -> 511
-    //   485: iload 4
+    //   485: iload 5
     //   487: istore_3
     //   488: iload_3
     //   489: ifne +27 -> 516
@@ -604,8 +604,8 @@ public class TemplateParser
     //   0	984	1	paramString1	String
     //   0	984	2	paramString2	String
     //   28	485	3	i	int
-    //   4	482	4	j	int
-    //   7	392	5	k	int
+    //   7	392	4	j	int
+    //   4	482	5	k	int
     //   33	911	6	localObject1	Object
     //   1	979	7	localObject2	Object
     //   94	450	8	localObject3	Object

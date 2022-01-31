@@ -1,22 +1,22 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import ajya;
-import bcql;
-import bjvt;
+import alpo;
+import bmhd;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class EditVideoDoodle$12
   implements Runnable
 {
-  public EditVideoDoodle$12(bjvt parambjvt) {}
+  public EditVideoDoodle$12(bmhd parambmhd) {}
   
   public void run()
   {
-    bcql.a(this.this$0.a(), ajya.a(2131703908), 0).a();
+    QQToast.a(this.this$0.a(), alpo.a(2131704280), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle.12
  * JD-Core Version:    0.7.0.1
  */

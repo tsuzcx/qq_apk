@@ -1,30 +1,12 @@
-import java.util.concurrent.Callable;
+import android.view.View;
 
-class beiq
-  implements Callable<Void>
+public abstract interface beiq
 {
-  beiq(beip parambeip) {}
-  
-  public Void a()
-  {
-    synchronized (this.a)
-    {
-      if (beip.a(this.a) == null) {
-        return null;
-      }
-      beip.a(this.a);
-      if (beip.a(this.a))
-      {
-        beip.b(this.a);
-        beip.a(this.a, 0);
-      }
-      return null;
-    }
-  }
+  public abstract void a(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beiq
  * JD-Core Version:    0.7.0.1
  */

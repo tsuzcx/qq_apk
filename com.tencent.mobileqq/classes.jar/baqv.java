@@ -1,28 +1,93 @@
-import com.tencent.mobileqq.remind.widget.WheelView;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.widget.VerticalGallery;
+import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.List;
 
 public class baqv
-  implements bfxb
 {
-  private int jdField_a_of_type_Int;
+  public long a;
+  public bapw a;
+  public bapx a;
+  public bapy a;
+  public baqw a;
+  public OutputStream a;
+  public Object a;
+  public HashMap<String, String> a;
+  public List<basp> a;
+  public byte[] a;
+  int jdField_b_of_type_Int = 1;
+  public long b;
+  private Object jdField_b_of_type_JavaLangObject;
+  public int c;
+  public long c;
+  public String c;
+  public int d = 5;
+  public String d;
+  public int e = 1;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public boolean i;
+  public boolean j = true;
+  public boolean k;
+  public boolean l = true;
+  public boolean m = true;
+  public boolean n = true;
+  public boolean o;
   
-  public baqv(WheelPickerLayout paramWheelPickerLayout, int paramInt)
+  public baqv()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_c_of_type_Long = 480000L;
+    this.jdField_c_of_type_Int = 8;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public void a(VerticalGallery paramVerticalGallery)
+  public Object a()
   {
-    int i = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout)[this.jdField_a_of_type_Int].getSelectedItemPosition();
-    if (WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout) != null) {
-      WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.jdField_a_of_type_Int, i);
+    try
+    {
+      Object localObject1 = this.jdField_b_of_type_JavaLangObject;
+      return localObject1;
     }
+    finally
+    {
+      localObject2 = finally;
+      throw localObject2;
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    try
+    {
+      this.jdField_b_of_type_JavaLangObject = paramObject;
+      return;
+    }
+    finally
+    {
+      paramObject = finally;
+      throw paramObject;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_c_of_type_JavaLangString != null) || (this.jdField_a_of_type_JavaIoOutputStream != null);
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_c_of_type_JavaLangString != null;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_JavaIoOutputStream != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baqv
  * JD-Core Version:    0.7.0.1
  */

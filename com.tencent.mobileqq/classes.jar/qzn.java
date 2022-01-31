@@ -1,16 +1,12 @@
+import org.json.JSONObject;
+
 public abstract interface qzn
 {
-  public abstract String a();
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract String b();
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qzn
  * JD-Core Version:    0.7.0.1
  */

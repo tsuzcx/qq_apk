@@ -1,24 +1,19 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-
-public class lnj
+class lnj
 {
-  public int a;
-  public long a;
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  int c = 0;
+  int d = 0;
+  int e = 0;
+  int f = 0;
+  int g = 0;
+  int h = 0;
   
-  public lnj(AVNotifyCenter paramAVNotifyCenter, long paramLong, int paramInt)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public String toString()
-  {
-    return "OtherTerChatingRoomInfo:mRoomId=" + this.jdField_a_of_type_Long + ", mSessionType=" + this.jdField_a_of_type_Int;
-  }
+  lnj(lnf paramlnf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lnj
  * JD-Core Version:    0.7.0.1
  */

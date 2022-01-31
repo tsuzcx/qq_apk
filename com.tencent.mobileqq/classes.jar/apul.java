@@ -1,21 +1,31 @@
-final class apul
-  implements bbws
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerFrameLayout;
+
+class apul
+  implements Animator.AnimatorListener
 {
-  apul(aptw paramaptw) {}
+  apul(apuk paramapuk) {}
   
-  public void callback(int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((paramInt == 1) || (paramInt == 2))
+    if (this.a.a != null)
     {
-      this.a.a();
-      return;
+      float f = this.a.a.getTranslationX();
+      this.a.a.setTranslationX(0.0F);
+      this.a.a((int)(this.a.a.getLeft() + f), this.a.a.getTop(), (int)(f + this.a.a.getLeft() + this.a.a.getWidth()), this.a.a.getBottom());
     }
-    this.a.b();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apul
  * JD-Core Version:    0.7.0.1
  */

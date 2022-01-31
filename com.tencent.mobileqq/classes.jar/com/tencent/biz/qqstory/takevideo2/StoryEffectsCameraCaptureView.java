@@ -7,13 +7,13 @@ import android.util.AttributeSet;
 import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import javax.microedition.khronos.opengles.GL10;
-import ved;
-import vwi;
+import wsv;
+import xla;
 
 public class StoryEffectsCameraCaptureView
   extends EffectsCameraCaptureView
 {
-  private vwi a;
+  private xla a;
   
   public StoryEffectsCameraCaptureView(@NonNull Context paramContext)
   {
@@ -28,7 +28,7 @@ public class StoryEffectsCameraCaptureView
   public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
   {
     if ((this.jdField_a_of_type_Boolean) && (this.r == 1)) {
-      ved.b("zhiqiang", "frameToMediaCodec the last frame=" + paramLong);
+      wsv.b("zhiqiang", "frameToMediaCodec the last frame=" + paramLong);
     }
     super.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong);
   }
@@ -36,22 +36,22 @@ public class StoryEffectsCameraCaptureView
   public void onDrawFrame(GL10 paramGL10)
   {
     super.onDrawFrame(paramGL10);
-    paramGL10 = this.jdField_a_of_type_Vwi;
+    paramGL10 = this.jdField_a_of_type_Xla;
     if (paramGL10 != null)
     {
       paramGL10.a(GlUtil.captureFrame(b(this.t), this.n, this.o, 0));
-      this.jdField_a_of_type_Vwi = null;
+      this.jdField_a_of_type_Xla = null;
     }
   }
   
-  public void setCaptureRequest(vwi paramvwi)
+  public void setCaptureRequest(xla paramxla)
   {
-    this.jdField_a_of_type_Vwi = paramvwi;
+    this.jdField_a_of_type_Xla = paramxla;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo2.StoryEffectsCameraCaptureView
  * JD-Core Version:    0.7.0.1
  */

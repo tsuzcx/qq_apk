@@ -1,29 +1,51 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class aoli
-  implements Animation.AnimationListener
+public class aoli
 {
-  aoli(aolh paramaolh) {}
+  private int a;
+  private int b;
+  private int c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static aoli a(String paramString)
   {
-    paramAnimation = new ScaleAnimation(1.2F, 1.0F, 1.2F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(500);
-    paramAnimation.setFillAfter(true);
-    paramAnimation.setAnimationListener(new aolj(this));
-    this.a.c.startAnimation(paramAnimation);
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        aoli localaoli = new aoli();
+        paramString = new JSONObject(paramString);
+        localaoli.a = paramString.optInt("showVoiceToTextSwitch", -1);
+        localaoli.b = paramString.optInt("grayTipShowPerThousand", -1);
+        localaoli.c = paramString.optInt("mainSwitch", -1);
+        return localaoli;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public int a()
+  {
+    return this.b;
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public boolean a()
+  {
+    return this.a == 1;
+  }
+  
+  public String toString()
+  {
+    return "open:" + this.a;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoli
  * JD-Core Version:    0.7.0.1
  */

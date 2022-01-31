@@ -1,25 +1,24 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.qphone.base.util.QLog;
 
-final class svm
-  implements DialogInterface.OnClickListener
+class svm
+  implements DialogInterface.OnCancelListener
 {
-  svm(List paramList) {}
+  svm(svl paramsvl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      svl.a((String)localIterator.next());
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryShareHelper", 2, "mShareActionSheet cancle button OnClick");
     }
-    paramDialogInterface.dismiss();
+    svl.a(this.a, -1, -1, true);
+    svl.b(this.a, -1, -1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     svm
  * JD-Core Version:    0.7.0.1
  */

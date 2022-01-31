@@ -1,52 +1,48 @@
-import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.2;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebAnimationUtils.3;
 
 public class sce
-  implements ajte
 {
-  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList) {}
-  
-  protected void a(boolean paramBoolean, List<scj> paramList) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public static void a(Activity paramActivity)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      if (paramObject != null) {
-        try
-        {
-          a(paramBoolean, (ArrayList)paramObject);
-          return;
-        }
-        catch (Exception paramObject)
-        {
-          return;
-        }
-      }
-      a(false, new ArrayList(0));
+    if (paramActivity == null) {
       return;
     }
-    if (paramObject != null) {
-      try
-      {
-        a(paramBoolean, (ArrayList)paramObject);
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        return;
-      }
-    }
-    a(false, new ArrayList(0));
+    TextView localTextView1 = (TextView)paramActivity.findViewById(2131368613);
+    TextView localTextView2 = (TextView)paramActivity.findViewById(2131368619);
+    ImageView localImageView = (ImageView)paramActivity.findViewById(2131368618);
+    new Handler().postDelayed(new FastWebAnimationUtils.1(paramActivity, localTextView1), 500L);
+    new Handler().postDelayed(new FastWebAnimationUtils.2(localTextView2, paramActivity), 2500L);
+    new Handler().postDelayed(new FastWebAnimationUtils.3(paramActivity, localTextView2, localImageView), 4200L);
+  }
+  
+  private static AnimationSet b(View paramView, Context paramContext)
+  {
+    paramView = new TranslateAnimation(0.0F, -(paramView.getX() - bdkf.b(40.0F)), 0.0F, 0.0F);
+    paramView.setFillAfter(true);
+    paramView.setDuration(200L);
+    paramContext = (AlphaAnimation)AnimationUtils.loadAnimation(paramContext, 2130772182);
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    localAnimationSet.addAnimation(paramContext);
+    localAnimationSet.addAnimation(paramView);
+    localAnimationSet.setFillAfter(true);
+    return localAnimationSet;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sce
  * JD-Core Version:    0.7.0.1
  */

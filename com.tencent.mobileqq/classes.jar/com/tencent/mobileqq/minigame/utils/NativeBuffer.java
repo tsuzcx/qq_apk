@@ -51,12 +51,8 @@ public class NativeBuffer
         QLog.e("[minigame] ", 1, "packNativeBuffer err :", paramArrayOfByte);
         return;
       }
-      if (paramInt3 == TYPE_BUFFER_NATIVE) {
-        if (paramITNativeBufferPool != null) {
-          localJSONObject.put("id", paramITNativeBufferPool.newNativeBuffer(paramArrayOfByte, paramInt1, paramInt2));
-        } else {
-          QLog.e("[minigame] ", 1, "packNativeBuffer for native on null bufferPool");
-        }
+      if ((paramInt3 == TYPE_BUFFER_NATIVE) && (paramITNativeBufferPool != null)) {
+        localJSONObject.put("id", paramITNativeBufferPool.newNativeBuffer(paramArrayOfByte, paramInt1, paramInt2));
       }
     }
   }
@@ -125,7 +121,7 @@ public class NativeBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.NativeBuffer
  * JD-Core Version:    0.7.0.1
  */

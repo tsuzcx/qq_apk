@@ -1,77 +1,48 @@
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
+import kotlin.Metadata;
+import kotlin.jvm.JvmStatic;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class qhu
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoy/service/RIJAidlClient;", "", "()V", "<set-?>", "Lcom/tencent/biz/pubaccount/readinjoy/service/IRIJAidlInterface;", "rijAidlInterface", "getRijAidlInterface", "()Lcom/tencent/biz/pubaccount/readinjoy/service/IRIJAidlInterface;", "rijServiceConnection", "Lcom/tencent/biz/pubaccount/readinjoy/service/RIJAidlClient$RIJServiceConnection;", "bindService", "", "context", "Landroid/content/Context;", "getInstance", "unbindService", "RIJServiceConnection", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+public final class qhu
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString = "";
-  private List<String> jdField_a_of_type_JavaUtilList;
-  private int jdField_b_of_type_Int = 10;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int c = 30;
+  @Nullable
+  private static qhr jdField_a_of_type_Qhr;
+  public static final qhu a;
+  private static final qhv jdField_a_of_type_Qhv = new qhv();
   
-  public int a()
+  static
   {
-    return this.jdField_a_of_type_Int;
+    jdField_a_of_type_Qhu = new qhu();
   }
   
-  public String a()
+  @JvmStatic
+  @NotNull
+  public static final qhu a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return jdField_a_of_type_Qhu;
   }
   
-  public List<String> a()
+  @Nullable
+  public final qhr a()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return jdField_a_of_type_Qhr;
   }
   
-  public void a(int paramInt)
+  public final void a(@NotNull Context paramContext)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(List<String> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int b()
-  {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  public int c()
-  {
-    return this.c;
-  }
-  
-  public void c(int paramInt)
-  {
-    this.c = paramInt;
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    paramContext.bindService(new Intent(paramContext, KandianVideoUploadService.class), (ServiceConnection)jdField_a_of_type_Qhv, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qhu
  * JD-Core Version:    0.7.0.1
  */

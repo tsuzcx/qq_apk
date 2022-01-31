@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.hotpic;
 
 import android.os.Handler;
-import arbb;
+import asrp;
 
 public class PresenceInterfaceImpl$1
   implements Runnable
 {
-  public PresenceInterfaceImpl$1(arbb paramarbb) {}
+  public PresenceInterfaceImpl$1(asrp paramasrp) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class PresenceInterfaceImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,112 +1,115 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
+import com.tencent.mobileqq.earlydownload.xmldata.ViolaBizLibData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.File;
 
 public class aphn
-  extends aphu
+  extends apgu
 {
-  long jdField_a_of_type_Long = 0L;
-  ExcitingTransferUploadResultRp jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp;
-  final String jdField_a_of_type_JavaLangString = "ExcitingTransfer.ExtfGroupRP<FileAssistant>";
-  boolean jdField_a_of_type_Boolean = false;
-  long b = 0L;
-  long c;
+  public static final String[] a = { "libviola.so" };
   
   public aphn(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface);
+    super("android.qq.readinjoy.viola_biz_810", paramQQAppInterface);
   }
   
-  protected int a()
+  public static void a()
   {
-    return 2;
-  }
-  
-  protected String a(boolean paramBoolean)
-  {
-    return "actGroupXTFUpload";
-  }
-  
-  protected HashMap<String, String> a()
-  {
-    HashMap localHashMap = super.a();
-    localHashMap.put("param_IsFlashFile", String.valueOf(this.jdField_a_of_type_Boolean));
-    localHashMap.put("param_TotalCostTime", String.valueOf(this.c));
-    localHashMap.put("param_CalcShaCostTime", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("param_CalcHashCostTime", String.valueOf(this.b));
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null)
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      localHashMap.put("param_Result", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nResult));
-      localHashMap.put("param_IsXTFValid", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_bIsXTFValid));
-      localHashMap.put("param_HttpTime", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64HttpTime));
-      localHashMap.put("param_SrvReturCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nSrvReturCode));
-      localHashMap.put("param_TransferSpeed", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64TransferSpeed));
-      localHashMap.put("param_TransferSize", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64TransferSize));
-      localHashMap.put("param_StartSize", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64StartSize));
-      localHashMap.put("param_ServerIp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_strServerIp));
-      localHashMap.put("param_ServerPort", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_wServerPort));
-      localHashMap.put("param_FileUrl", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_strFileUrl));
-      localHashMap.put("param_MaxUploadingFtnNum", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uMaxUploadingFtnNum));
-      localHashMap.put("param_RetryCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRetryCount));
-      localHashMap.put("param_IpChangeCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uIpChangeCount));
-      localHashMap.put("param_RollBackCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRollBackCount));
-      localHashMap.put("param_QueryHoleCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uQueryHoleCount));
-      localHashMap.put("param_RangDiffCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRangDiffCount));
-      localHashMap.put("param_DelayTotoalCount", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uDelayTotoalCount));
-      localHashMap.put("param_TcpCnnCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nTcpCnnCode));
-      localHashMap.put("param_TcpSocketCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_nTcpSocketCode));
-      localHashMap.put("param_HttpsSupport", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_wHttpsSupport));
-    }
-    for (;;)
-    {
-      QLog.i("ExcitingTransfer.ExtfGroupRP<FileAssistant>", 1, "Id[" + this.d + "] >>> GroupSendDataReport:act=" + a(false) + localHashMap.toString());
-      return localHashMap;
-      localHashMap.put("param_IsXTFValid", String.valueOf(false));
-      localHashMap.put("param_HttpTime", String.valueOf(0));
-      localHashMap.put("param_SrvReturCode", String.valueOf(0));
-      localHashMap.put("param_TransferSpeed", String.valueOf(0));
-      localHashMap.put("param_TransferSize", String.valueOf(0));
-      localHashMap.put("param_StartSize", String.valueOf(0));
-      localHashMap.put("param_ServerIp", "");
-      localHashMap.put("param_ServerPort", String.valueOf(0));
-      localHashMap.put("param_FileUrl", "");
-      localHashMap.put("param_MaxUploadingFtnNum", String.valueOf(0));
-      localHashMap.put("param_RetryCount", String.valueOf(0));
-      localHashMap.put("param_IpChangeCount", String.valueOf(0));
-      localHashMap.put("param_RollBackCount", String.valueOf(0));
-      localHashMap.put("param_QueryHoleCount", String.valueOf(0));
-      localHashMap.put("param_RangDiffCount", String.valueOf(0));
-      localHashMap.put("param_DelayTotoalCount", String.valueOf(0));
-      localHashMap.put("param_TcpCnnCode", String.valueOf(0));
-      localHashMap.put("param_TcpSocketCode", String.valueOf(0));
-      localHashMap.put("param_HttpsSupport", String.valueOf(0));
+      localObject = (apgj)((QQAppInterface)localObject).getManager(77);
+      if (localObject != null)
+      {
+        localObject = (aphn)((apgj)localObject).a("android.qq.readinjoy.viola_biz_810");
+        if (localObject != null)
+        {
+          ((aphn)localObject).a(true);
+          QLog.i("viola.ViolaBizLibHandler", 1, "restartDownloadLib");
+        }
+      }
     }
   }
   
-  public void a(long paramLong)
+  public static boolean i()
   {
-    this.jdField_a_of_type_Long = paramLong;
+    String str = oxo.a();
+    int i = 0;
+    while (i < a.length)
+    {
+      File localFile = new File(str, a[i]);
+      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
   }
   
-  public void a(ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp = paramExcitingTransferUploadResultRp;
+    return 10079;
   }
   
-  public void b(long paramLong)
+  public Class<? extends XmlData> a()
   {
-    this.c = paramLong;
+    return ViolaBizLibData.class;
   }
   
-  public void c(boolean paramBoolean)
+  public String a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    return "viola.ViolaBizLibHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
+    XmlData localXmlData = a();
+    if (localXmlData != null) {
+      QLog.i("viola.ViolaBizLibHandler", 1, "version:" + localXmlData.Version);
+    }
+    if (new File(paramString).exists())
+    {
+      if (oxo.a(paramString)) {
+        break label124;
+      }
+      if (localXmlData != null)
+      {
+        localXmlData.loadState = 0;
+        localXmlData.Version = 0;
+        apgi.a(localXmlData, new String[] { "loadState", "Version" });
+      }
+      QLog.e("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess],unzip android.qq.readinjoy.viola_biz_810 lib failed!");
+    }
+    label124:
+    do
+    {
+      return;
+      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
+      if (paramString != null) {
+        paramString.edit().putString("res_name", "android.qq.readinjoy.viola_biz_810").commit();
+      }
+    } while (!apho.i());
+    oxi.a("biz doOnDownloadSuccess");
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aphn
  * JD-Core Version:    0.7.0.1
  */

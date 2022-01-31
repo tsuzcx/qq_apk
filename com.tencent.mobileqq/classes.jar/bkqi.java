@@ -1,22 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-
-class bkqi
-  implements DialogInterface.OnClickListener
-{
-  bkqi(bkqf parambkqf) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    ((bkqb)this.a.a).f(false);
-    bkqf.a(this.a).setSelected(false);
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkqi
  * JD-Core Version:    0.7.0.1
  */

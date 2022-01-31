@@ -1,61 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
-public class amun
-  extends ampa<amum>
+public final class amun
+  implements Parcelable.Creator<ArCloudConfigInfo>
 {
-  public int a()
+  public ArCloudConfigInfo a(Parcel paramParcel)
   {
-    return 419;
+    return new ArCloudConfigInfo(paramParcel);
   }
   
-  @NonNull
-  public amum a(int paramInt)
+  public ArCloudConfigInfo[] a(int paramInt)
   {
-    return new amum();
-  }
-  
-  @Nullable
-  public amum a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return amum.a(paramArrayOfamph[0].a);
-    }
-    return null;
-  }
-  
-  public Class<amum> a()
-  {
-    return amum.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amum paramamum) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return new ArCloudConfigInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amun
  * JD-Core Version:    0.7.0.1
  */

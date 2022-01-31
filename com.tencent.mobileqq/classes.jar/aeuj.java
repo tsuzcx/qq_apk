@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 
-public class aeuj
-  extends azjv
+class aeuj
+  implements View.OnTouchListener
 {
-  public aeuj(TroopChatPie paramTroopChatPie) {}
+  aeuj(aeui paramaeui) {}
   
-  protected void a(long paramLong)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!String.valueOf(paramLong).equals(this.a.c())) {}
-    while (TroopChatPie.l(this.a) == null) {
-      return;
-    }
-    TroopChatPie.m(this.a).a();
+    aeui.a(this.a).a(paramMotionEvent);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeuj
  * JD-Core Version:    0.7.0.1
  */

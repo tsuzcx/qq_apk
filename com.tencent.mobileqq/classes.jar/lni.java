@@ -1,29 +1,27 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import java.util.Vector;
-
-public class lni
+class lni
 {
-  public long a;
-  public Vector<lnl> a;
+  int jdField_a_of_type_Int = 0;
+  boolean jdField_a_of_type_Boolean = false;
+  int b = 0;
+  int c = 0;
+  int d = 0;
+  int e = 0;
+  int f = 0;
+  int g = 0;
+  int h = 0;
+  int i = 0;
+  int j = 0;
+  int k = 0;
+  int l = 0;
+  int m = 0;
+  int n = 0;
+  int o = 0;
   
-  public lni(AVNotifyCenter paramAVNotifyCenter)
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilVector = null;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("roomNum[").append(this.jdField_a_of_type_Long).append("], list[");
-    if (this.jdField_a_of_type_JavaUtilVector == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size())) {
-      return localObject + "]";
-    }
-  }
+  lni(lnf paramlnf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lni
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,10 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
-
 class akrf
-  implements akop
 {
-  akrf(akqw paramakqw, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
-  
-  public ToServiceMsg a()
-  {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akqw.a.createToServiceMsg("ProfileService.Pb.ReqSystemMsgRead");
-    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
-    localToServiceMsg.extraData.putLong("type", 1L);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
-    localToServiceMsg.setEnableFastResend(true);
-    return localToServiceMsg;
-  }
+  private static akre a = new akre("cm_game_client_module");
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akrf
  * JD-Core Version:    0.7.0.1
  */

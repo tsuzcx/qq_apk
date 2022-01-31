@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import bcqf;
+import bepp;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar;
 import com.tencent.mobileqq.app.ThreadManagerV2;
@@ -71,7 +71,7 @@ public class LoadingFragment
   b.b stateObserver = new c(this);
   Handler uiHandler;
   private com.tencent.mobileqq.microapp.widget.f x5Dialog;
-  private bcqf x5LoadingDialog;
+  private bepp x5LoadingDialog;
   
   static
   {
@@ -331,7 +331,7 @@ public class LoadingFragment
     com.tencent.mobileqq.microapp.app.b.a().addObserver(this.stateObserver);
     if (i == 0)
     {
-      this.x5LoadingDialog = new bcqf(getActivity());
+      this.x5LoadingDialog = new bepp(getActivity());
       this.x5LoadingDialog.setOnDismissListener(new b(this));
       this.x5Dialog = new com.tencent.mobileqq.microapp.widget.f(getActivity());
       this.x5Dialog.setOnDismissListener(this);
@@ -343,7 +343,7 @@ public class LoadingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.activity.LoadingFragment
  * JD-Core Version:    0.7.0.1
  */

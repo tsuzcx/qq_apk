@@ -1,22 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import mqq.app.QQPermissionCallback;
 
 class aifu
-  extends akil
+  implements QQPermissionCallback
 {
-  aifu(aifs paramaifs) {}
+  aifu(aift paramaift) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      aifs.a(this.a, paramString, localBitmap);
-    }
+    bdcd.a(this.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.a.grant();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aifu
  * JD-Core Version:    0.7.0.1
  */

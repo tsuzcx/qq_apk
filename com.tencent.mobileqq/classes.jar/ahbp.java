@@ -1,38 +1,39 @@
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.view.ViewTreeObserver;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.SwipListView;
 
 public class ahbp
+  implements akfm
 {
-  int jdField_a_of_type_Int = 0;
-  ahbs jdField_a_of_type_Ahbs;
-  HashMap<String, PreloadManager.PathResult> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  List<DownloadParam> jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean = false;
-  
-  public ahbp(List<DownloadParam> paramList, ahbs paramahbs)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramahbs;
-    Object localObject;
-    this.jdField_a_of_type_Ahbs = localObject;
-  }
+  public ahbp(AddContactsView paramAddContactsView) {}
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      DownloadParam localDownloadParam = (DownloadParam)localIterator.next();
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.a(localDownloadParam, new ahbq(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled _B");
     }
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onRecommendsAvailable _B");
+    }
+    this.a.b.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+    this.a.e();
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.getViewTreeObserver().addOnGlobalLayoutListener(new ahbq(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahbp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,61 @@
-import android.os.Bundle;
-import com.tencent.open.agent.AgentActivity;
-import com.tencent.qconn.protofile.preAuth.PreAuthRequest;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import android.graphics.Bitmap;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.util.CustomLruCache;
 
-public class bcyc
-  implements bdol
+class bcyc
+  extends CustomLruCache<String, Drawable>
 {
-  public bcyc(AgentActivity paramAgentActivity, String paramString1, Bundle paramBundle, String paramString2, long paramLong) {}
-  
-  public void a()
+  bcyc(bcyb parambcyb, int paramInt)
   {
-    QLog.d("AgentActivity", 1, "--> getTicketNoPasswd onFail");
-    aqgj.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", "", false);
-    AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.b, false);
+    super(paramInt);
   }
   
-  public void a(bdnp parambdnp)
+  protected int a(String paramString, Drawable paramDrawable)
   {
-    QLog.d("AgentActivity", 1, new Object[] { "start_auth_use_time", " getTicketNoPasswd onSuccess", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
-    aqgj.a("KEY_DELEGATE_GET_TICKET_NO_PASSWD", parambdnp);
-    this.jdField_a_of_type_ComTencentOpenAgentAgentActivity.a.a().a(this.b, parambdnp);
-    preAuth.PreAuthRequest localPreAuthRequest = this.jdField_a_of_type_ComTencentOpenAgentAgentActivity.a.a().a(parambdnp, this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, AgentActivity.a(this.jdField_a_of_type_ComTencentOpenAgentAgentActivity), this.b, this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_ComTencentOpenAgentAgentActivity.a.a().a(localPreAuthRequest, this.jdField_a_of_type_ComTencentOpenAgentAgentActivity, parambdnp, new bcyd(this), 0);
+    int i = 0;
+    int j = 0;
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramString = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramString != null) {
+        j = paramString.getRowBytes() * paramString.getHeight();
+      }
+    }
+    int m;
+    int k;
+    do
+    {
+      do
+      {
+        return j;
+      } while (!(paramDrawable instanceof AnimationDrawable));
+      paramString = (AnimationDrawable)paramDrawable;
+      m = paramString.getNumberOfFrames();
+      k = 0;
+      j = i;
+    } while (k >= m);
+    paramDrawable = paramString.getFrame(k);
+    if ((paramDrawable instanceof BitmapDrawable))
+    {
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        j = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * j + i;
+      }
+    }
+    for (;;)
+    {
+      k += 1;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcyc
  * JD-Core Version:    0.7.0.1
  */

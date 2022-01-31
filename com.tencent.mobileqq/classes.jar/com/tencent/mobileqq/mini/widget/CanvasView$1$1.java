@@ -25,69 +25,67 @@ class CanvasView$1$1
     int i3 = this.this$1.val$paramObj.optInt("height");
     int i4 = this.this$1.this$0.mpx2pxInt(i2);
     int i5 = this.this$1.this$0.mpx2pxInt(i3);
-    Object localObject2 = new int[i4 * i5];
-    this.val$currBitmap.getPixels((int[])localObject2, 0, i4, n, i1, i4, i5);
-    byte[] arrayOfByte = new byte[i4 * i5 * 4];
-    n = 0;
+    label490:
+    label510:
     for (;;)
     {
-      for (;;)
+      try
       {
-        label194:
-        int i7;
-        int i6;
-        if (n < i5)
+        Object localObject2 = new int[i4 * i5];
+        this.val$currBitmap.getPixels((int[])localObject2, 0, i4, n, i1, i4, i5);
+        byte[] arrayOfByte = new byte[i4 * i5 * 4];
+        n = 0;
+        break label490;
+        if (i1 < i4)
         {
-          i1 = 0;
-          if (i1 < i4)
-          {
-            i7 = i4 * n + i1;
-            i6 = i7 * 4;
-            i7 = localObject2[i7];
-          }
-        }
-        else
-        {
-          try
-          {
-            int i = (byte)Color.alpha(i7);
-            int j = (byte)Color.red(i7);
-            int k = (byte)Color.green(i7);
-            int m = (byte)Color.blue(i7);
-            arrayOfByte[i6] = j;
-            arrayOfByte[(i6 + 1)] = k;
-            arrayOfByte[(i6 + 2)] = m;
-            arrayOfByte[(i6 + 3)] = i;
-            i1 += 1;
-            break label194;
-            localObject2 = new JSONObject();
-            ((JSONObject)localObject2).put("width", i2);
-            ((JSONObject)localObject2).put("height", i3);
-            NativeBuffer.packNativeBuffer(arrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "data", (JSONObject)localObject2, null);
-            this.this$1.this$0.callbackJsEventOK(this.this$1.val$event, (JSONObject)localObject2, this.this$1.val$callBackId);
-            return;
-          }
-          catch (Throwable localThrowable)
-          {
-            QLog.e(CanvasView.access$100(), 2, "getImageData failed: " + Log.getStackTraceString(localThrowable));
-            this.this$1.this$0.callbackJsEventFail(this.this$1.val$event, null, this.this$1.val$callBackId);
-            return;
-          }
-          finally
-          {
-            if ((this.val$currBitmap != null) && (!this.val$currBitmap.isRecycled())) {
-              this.val$currBitmap.recycle();
-            }
-          }
+          int i7 = i4 * n + i1;
+          int i6 = i7 * 4;
+          i7 = localObject2[i7];
+          int i = (byte)Color.alpha(i7);
+          int j = (byte)Color.red(i7);
+          int k = (byte)Color.green(i7);
+          int m = (byte)Color.blue(i7);
+          arrayOfByte[i6] = j;
+          arrayOfByte[(i6 + 1)] = k;
+          arrayOfByte[(i6 + 2)] = m;
+          arrayOfByte[(i6 + 3)] = i;
+          i1 += 1;
+          continue;
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("width", i2);
+          ((JSONObject)localObject2).put("height", i3);
+          NativeBuffer.packNativeBuffer(arrayOfByte, NativeBuffer.TYPE_BUFFER_BASE64, "data", (JSONObject)localObject2, null);
+          this.this$1.this$0.callbackJsEventOK(this.this$1.val$event, (JSONObject)localObject2, this.this$1.val$callBackId);
+          return;
         }
       }
-      n += 1;
+      catch (Throwable localThrowable)
+      {
+        QLog.e(CanvasView.access$100(), 2, "getImageData failed: " + Log.getStackTraceString(localThrowable));
+        this.this$1.this$0.callbackJsEventFail(this.this$1.val$event, null, this.this$1.val$callBackId);
+        return;
+      }
+      finally
+      {
+        if ((this.val$currBitmap != null) && (!this.val$currBitmap.isRecycled())) {
+          this.val$currBitmap.recycle();
+        }
+      }
+      for (;;)
+      {
+        if (n >= i5) {
+          break label510;
+        }
+        i1 = 0;
+        break;
+        n += 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.CanvasView.1.1
  * JD-Core Version:    0.7.0.1
  */

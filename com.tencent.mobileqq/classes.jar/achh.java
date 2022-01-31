@@ -1,23 +1,21 @@
-import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class achh
   implements View.OnClickListener
 {
-  public achh(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
+  public achh(ChatHistory paramChatHistory) {}
   
   public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
+    this.a.k();
+    azmj.b(this.a.app, "CliOper", "", "", "0X800568E", "0X800568E", this.a.k, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achh
  * JD-Core Version:    0.7.0.1
  */

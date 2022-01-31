@@ -1,26 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troopreward.OrientationAdapterImageView;
-import com.tencent.qphone.base.util.QLog;
-
 public class baug
-  extends Handler
 {
-  public baug(OrientationAdapterImageView paramOrientationAdapterImageView) {}
+  public int a;
+  public int b;
   
-  public void handleMessage(Message paramMessage)
+  public baug(int paramInt1, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.a.invalidate();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OrientationAdapterImageView", 2, "handleMessage:" + this.a.jdField_a_of_type_Int + "," + this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baug
  * JD-Core Version:    0.7.0.1
  */

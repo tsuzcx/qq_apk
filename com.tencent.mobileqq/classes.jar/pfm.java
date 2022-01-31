@@ -1,31 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import cooperation.liveroom.LiveRoomProxyActivity;
-
-class pfm
-  implements View.OnClickListener
+public class pfm
 {
-  pfm(pfj parampfj, pau parampau, ram paramram) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    if ((this.jdField_a_of_type_Pau.a() != null) && (this.jdField_a_of_type_Pau.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Pau.a().mSocialFeedInfo.a != null)) {
-      LiveRoomProxyActivity.open(this.jdField_a_of_type_Ram.a(), this.jdField_a_of_type_Pau.a().mSocialFeedInfo.a.c, "kandian biu feed click");
-    }
-    rbr localrbr;
-    do
-    {
-      return;
-      localrbr = this.jdField_a_of_type_Ram.a();
-    } while (localrbr == null);
-    localrbr.a(paramView, this.jdField_a_of_type_Pau.a(), 2);
+    return "ColumnInfoForSelfPage{myVideoCount=" + this.jdField_a_of_type_Int + ", myColumnCount=" + this.jdField_b_of_type_Int + ", mySubscribeCount=" + this.jdField_c_of_type_Int + ", myVideoJumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", myColumnJumpUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mySubscribeJumpUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pfm
  * JD-Core Version:    0.7.0.1
  */

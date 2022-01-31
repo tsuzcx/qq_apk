@@ -7,13 +7,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.view.View;
-import bcql;
-import bcsc;
-import bfkz;
+import berl;
+import bhlt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -68,14 +68,14 @@ class ThemeDIYActivity$11
         }
         paramMessage = (ResData)paramMessage.obj;
       } while (paramMessage == null);
-      Object localObject = this.this$0.mContext.getResources().getDrawable(2130846563);
+      Object localObject = this.this$0.mContext.getResources().getDrawable(2130846929);
       try
       {
         URL localURL = new URL("themediydownloader", paramMessage.path, paramMessage.url);
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
         localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-        localURLDrawableOptions.mUseSharpPImage = bfkz.a(BaseApplicationImpl.getApplication());
+        localURLDrawableOptions.mUseSharpPImage = bhlt.a(BaseApplicationImpl.getApplication());
         localObject = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
         if (((URLDrawable)localObject).getStatus() != 1)
         {
@@ -175,7 +175,7 @@ class ThemeDIYActivity$11
       this.this$0.mHandler.removeMessages(24);
       this.this$0.mIsSaving.set(false);
       this.this$0.setProgessDialog(false, 0);
-      bcql.a(this.this$0.mContext, 2131720224, 3000).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131298865));
+      QQToast.a(this.this$0.mContext, 2131720760, 3000).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131298914));
       return;
       if (paramMessage.obj == null)
       {
@@ -193,12 +193,12 @@ class ThemeDIYActivity$11
       if (paramMessage.obj == null) {
         break;
       }
-      bcql.a(this.this$0.mContext, paramMessage.obj.toString(), 3600).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131298865));
+      QQToast.a(this.this$0.mContext, paramMessage.obj.toString(), 3600).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131298914));
       return;
       if (paramMessage.obj == null) {
         break;
       }
-      bcql.a(this.this$0.mContext, paramMessage.obj.toString(), 3600).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131298865));
+      QQToast.a(this.this$0.mContext, paramMessage.obj.toString(), 3600).b(this.this$0.mContext.getResources().getDimensionPixelSize(2131298914));
       return;
       if (1 != paramMessage.arg1) {
         break;
@@ -211,7 +211,7 @@ class ThemeDIYActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDIYActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,47 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetYearNodeListReceiver.1;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-class whp
-  extends BroadcastReceiver
+public class whp
+  extends QQUIEventReceiver<whl, wif>
 {
-  whp(who paramwho) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public whp(whl paramwhl)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("PreCallUpToolProc", 2, String.format("onReceive action=%s", new Object[] { paramContext }));
-    }
-    if (("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) && (TextUtils.equals(paramIntent.getStringExtra("from"), who.a(this.a))))
+    super(paramwhl);
+  }
+  
+  public void a(@NonNull whl paramwhl, @NonNull wif paramwif)
+  {
+    if (paramwif.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      if (who.a(this.a) != null) {
-        who.a(this.a).removeMessages(108);
-      }
-      if (who.a(this.a) != null) {
-        who.a(this.a).a();
+      paramwif = paramwif.jdField_a_of_type_JavaUtilList.iterator();
+      for (int i = 0; paramwif.hasNext(); i = ((MomeriesYearNode)paramwif.next()).videoCount + i) {}
+      if (i >= 0)
+      {
+        wsv.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(i));
+        whl.a(paramwhl, i);
+        if (paramwhl.a != null)
+        {
+          paramwhl.a.videoCount = whl.a(paramwhl);
+          ThreadManager.post(new MemoriesProfilePresenter.GetYearNodeListReceiver.1(this, paramwhl), 5, null, false);
+        }
       }
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wif.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whp
  * JD-Core Version:    0.7.0.1
  */

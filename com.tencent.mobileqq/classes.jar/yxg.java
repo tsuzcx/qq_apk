@@ -1,42 +1,31 @@
+import WEISHI_USER_GROWTH.WEISHI.stGetPersonalPageRsp;
 import java.lang.ref.WeakReference;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class yxg
-  implements yso
+final class yxg
+  implements yvn<WEISHI.stGetPersonalPageRsp>
 {
-  yxg(yxf paramyxf) {}
+  private final WeakReference<yxc> a;
   
-  public void onResponse(ysn paramysn)
+  public yxg(yxc paramyxc)
   {
-    if ((paramysn == null) || (paramysn.a() == null) || (yxf.a(this.a) == null) || (yxf.a(this.a).get() == null)) {
-      return;
-    }
-    String str = (String)yxf.a(this.a).get(paramysn);
-    yxf.a(this.a).remove(paramysn);
-    Object localObject1 = yxo.a(paramysn.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
-    Object localObject2 = yxo.a(paramysn.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
-    paramysn = new JSONObject();
-    try
+    this.a = new WeakReference(paramyxc);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, WEISHI.stGetPersonalPageRsp paramstGetPersonalPageRsp)
+  {
+    paramString = (yxc)this.a.get();
+    if (paramString == null) {}
+    do
     {
-      paramysn.put("request", localObject1);
-      paramysn.put("response", localObject2);
-      ((ywk)yxf.a(this.a).get()).callJs(str, new String[] { paramysn.toString() });
       return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
+      paramString.a(paramstGetPersonalPageRsp, false);
+    } while (paramstGetPersonalPageRsp == null);
+    yxc.a(paramString, paramstGetPersonalPageRsp.toByteArray());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yxg
  * JD-Core Version:    0.7.0.1
  */

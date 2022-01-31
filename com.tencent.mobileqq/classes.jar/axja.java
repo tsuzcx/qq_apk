@@ -1,38 +1,19 @@
-public class axja
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.mobileqq.pic.CompressInfo;
+
+public abstract interface axja
+  extends IInterface
 {
-  static int jdField_a_of_type_Int = 3;
-  int[] jdField_a_of_type_ArrayOfInt;
-  int b;
-  int c;
+  public abstract Bundle a(int paramInt, Bundle paramBundle);
   
-  public axja(String paramString, int paramInt)
-  {
-    this.c = paramInt;
-    paramString = paramString.split(" ");
-    if (paramString.length != 2) {
-      throw new Exception("data illegal");
-    }
-    if (paramString[1].equals("1")) {}
-    for (this.b = 1;; this.b = 0)
-    {
-      paramString = paramString[0].toCharArray();
-      this.jdField_a_of_type_ArrayOfInt = new int[paramString.length];
-      paramInt = i;
-      while (paramInt < paramString.length)
-      {
-        this.jdField_a_of_type_ArrayOfInt[paramInt] = (Integer.valueOf(paramString[paramInt]).intValue() - Integer.valueOf(48).intValue());
-        paramInt += 1;
-      }
-      if (!paramString[1].equals("0")) {
-        break;
-      }
-    }
-    throw new Exception("data illegal");
-  }
+  public abstract void a(int paramInt, Bundle paramBundle);
+  
+  public abstract void a(CompressInfo paramCompressInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axja
  * JD-Core Version:    0.7.0.1
  */

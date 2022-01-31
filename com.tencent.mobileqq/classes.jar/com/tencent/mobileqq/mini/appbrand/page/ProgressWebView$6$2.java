@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.page;
 
-import ajya;
-import bcql;
+import alpo;
 import com.tencent.mobileqq.mini.appbrand.utils.ShareUtils;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -20,12 +20,12 @@ class ProgressWebView$6$2
       return;
     }
     QLog.e("ProgressWebView", 1, "sharePicToQQ failed, because of picture downloadFailed");
-    bcql.a(ProgressWebView.access$300(this.this$1.this$0), 1, ajya.a(2131708519), 0).a();
+    QQToast.a(ProgressWebView.access$300(this.this$1.this$0), 1, alpo.a(2131708891), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.ProgressWebView.6.2
  * JD-Core Version:    0.7.0.1
  */

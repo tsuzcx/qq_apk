@@ -1,119 +1,258 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.leba.table.LebaBannerLogic.1;
+import com.tencent.mobileqq.leba.widget.LebaRoundLayout;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.Comment;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsg;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsgBody;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.GetCommentListResp;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.UserInfo;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-class athc
-  extends mxi
+public class athc
+  implements View.OnClickListener
 {
-  athc(athb paramathb, atgz paramatgz) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  public FrameLayout a;
+  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public athc(Context paramContext)
   {
-    boolean bool = false;
-    QLog.i("CommentsDataSource", 1, "errorCode:" + paramInt);
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3)
+  {
+    QLog.i("Q.lebatab.LebaBannerLogic", 1, String.format("jump jumpUrl:%s ,jumpType:%s ,appId:%s ", new Object[] { paramString1, paramString2, paramString3 }));
+    try
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
+      if ("url".equals(paramString2))
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        QLog.i("CommentsDataSource", 1, "err_msg:" + paramBundle.err_msg.get());
-        if (!paramBundle.busi_buf.has())
-        {
-          QLog.i("CommentsDataSource", 1, "rspBody.busi_buf is null");
-          this.jdField_a_of_type_Atgz.a();
-          return;
-        }
-        paramArrayOfByte = new NowNearbyVideoCommentProto.GetCommentListResp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        if (paramArrayOfByte.result.get() != 0L)
-        {
-          QLog.i("CommentsDataSource", 1, "error code :" + paramArrayOfByte.result.get());
-          this.jdField_a_of_type_Atgz.a();
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        QLog.i("CommentsDataSource", 1, "merge data error " + paramArrayOfByte);
-        this.jdField_a_of_type_Atgz.a();
+        paramQQAppInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        paramQQAppInterface.putExtra("url", paramString1);
+        this.jdField_a_of_type_AndroidContentContext.startActivity(paramQQAppInterface);
         return;
       }
-      paramBundle = new Comments();
-      paramBundle.jdField_a_of_type_Long = paramArrayOfByte.total_num.get();
-      QLog.i("CommentsDataSource", 1, "all comments count is: " + paramBundle.jdField_a_of_type_Long);
-      if (paramArrayOfByte.end_flag.get() == 1L) {
-        bool = true;
-      }
-      paramBundle.jdField_a_of_type_Boolean = bool;
-      paramBundle.jdField_a_of_type_JavaUtilList = new ArrayList();
-      if (paramArrayOfByte.lists.has())
+      paramQQAppInterface = bdds.a(paramQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString1);
+      if (paramQQAppInterface != null)
       {
-        Iterator localIterator = paramArrayOfByte.lists.get().iterator();
-        while (localIterator.hasNext())
-        {
-          NowNearbyVideoCommentProto.Comment localComment = (NowNearbyVideoCommentProto.Comment)localIterator.next();
-          Comments.Comment localComment1 = new Comments.Comment();
-          localComment1.jdField_a_of_type_Long = localComment.comment_id.get();
-          localComment1.jdField_b_of_type_Long = localComment.create_time.get();
-          localComment1.jdField_a_of_type_Int = localComment.type.get();
-          if (localComment.publish_info.has())
-          {
-            localComment1.jdField_c_of_type_Long = localComment.publish_info.uid.get();
-            localComment1.jdField_b_of_type_JavaLangString = localComment.publish_info.anchor_name.get().toStringUtf8();
-            localComment1.jdField_c_of_type_JavaLangString = localComment.publish_info.head_img_url.get().toStringUtf8();
-            localComment1.jdField_b_of_type_Int = localComment.publish_info.user_type.get();
-            localComment1.jdField_d_of_type_Long = localComment.publish_info.now_id.get();
-            if (localComment.reply_info.has())
-            {
-              localComment1.jdField_e_of_type_Long = localComment.reply_info.uid.get();
-              localComment1.jdField_d_of_type_JavaLangString = localComment.reply_info.anchor_name.get().toStringUtf8();
-              localComment1.jdField_e_of_type_JavaLangString = localComment.reply_info.head_img_url.get().toStringUtf8();
-              localComment1.jdField_c_of_type_Int = localComment.reply_info.user_type.get();
-              localComment1.f = localComment.reply_info.now_id.get();
-            }
-          }
-          if ((localComment.content.has()) && (localComment.content.msgs.has())) {
-            localComment1.jdField_a_of_type_JavaLangString = ((NowNearbyVideoCommentProto.CommentMsg)localComment.content.msgs.get(0)).msg.get().toStringUtf8();
-          }
-          if (!athb.a(this.jdField_a_of_type_Athb).contains(Long.valueOf(localComment.comment_id.get()))) {
-            athb.a(this.jdField_a_of_type_Athb).add(Long.valueOf(localComment.comment_id.get()));
-          }
-          if (localComment1.jdField_a_of_type_Int == 2) {
-            paramBundle.b.add(localComment1);
-          }
-          paramBundle.jdField_a_of_type_JavaUtilList.add(localComment1);
-        }
+        paramQQAppInterface.c();
+        return;
       }
-      QLog.i("CommentsDataSource", 1, "total:" + paramArrayOfByte.total_num.get() + ", ret:" + paramArrayOfByte.result.get());
-      this.jdField_a_of_type_Atgz.a(paramBundle);
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.i("Q.lebatab.LebaBannerLogic", 1, "jump exception ", paramQQAppInterface);
       return;
     }
-    QLog.i("CommentsDataSource", 1, "getComments failed");
-    this.jdField_a_of_type_Atgz.a();
+    QLog.i("Q.lebatab.LebaBannerLogic", 1, "jumpAction jAction == null");
+  }
+  
+  private void a(String paramString1, String paramString2, String paramString3, List<String> paramList, int paramInt)
+  {
+    int i = 0;
+    if ((paramList != null) && (paramList.size() > 0)) {}
+    for (paramList = (String)paramList.get(0);; paramList = null)
+    {
+      if ("url".equals(paramString2))
+      {
+        i = 1;
+        if (paramInt != 1) {
+          break label113;
+        }
+        paramString2 = athb.a("banner_exp");
+        paramString2.jdField_b_of_type_Int = i;
+        paramString2.a = paramString3;
+        paramString2.jdField_b_of_type_JavaLangString = paramList;
+        paramString2.e = paramString1;
+        azlk.a(null, paramString2);
+      }
+      label113:
+      while (paramInt != 2)
+      {
+        return;
+        if ("scheme".equals(paramString2))
+        {
+          i = 2;
+          break;
+        }
+        if (!"miniapp".equals(paramString2)) {
+          break;
+        }
+        i = 3;
+        break;
+      }
+      paramString2 = athb.a("banner_clk");
+      paramString2.jdField_b_of_type_Int = i;
+      paramString2.a = paramString3;
+      paramString2.jdField_b_of_type_JavaLangString = paramList;
+      paramString2.e = paramString1;
+      azlk.a(null, paramString2);
+      return;
+    }
+  }
+  
+  private void a(AppRuntime paramAppRuntime, BusinessInfoCheckUpdate.AppInfo paramAppInfo, View paramView)
+  {
+    ((LebaRoundLayout)paramView.findViewById(2131363767)).a = bdkf.a(16.0F);
+    Object localObject = (LinearLayout)paramView.findViewById(2131369689);
+    if (ThemeUtil.isNowThemeIsNight(paramAppRuntime, false, null))
+    {
+      ((LinearLayout)localObject).setBackgroundResource(2130840283);
+      if ((((LinearLayout)localObject).getTag() == null) || (!(((LinearLayout)localObject).getTag() instanceof RedTouch))) {
+        break label240;
+      }
+      paramView = (RedTouch)((LinearLayout)localObject).getTag();
+    }
+    for (;;)
+    {
+      if (paramAppInfo.red_display_info == null) {
+        break label293;
+      }
+      localObject = paramAppInfo.red_display_info.red_type_info.get().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)((Iterator)localObject).next();
+        if ((localRedTypeInfo.red_type.get() == 5) || (localRedTypeInfo.red_type.get() == 4)) {
+          try
+          {
+            JSONObject localJSONObject = new JSONObject(localRedTypeInfo.red_desc.get());
+            localJSONObject.put("cr", String.format("#%06X", new Object[] { Integer.valueOf(0xFFFFFF & this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166908)) }));
+            localRedTypeInfo.red_desc.set(localJSONObject.toString());
+          }
+          catch (Exception localException)
+          {
+            QLog.i("Q.lebatab.LebaBannerLogic", 1, "parse json exception", localException);
+          }
+        }
+      }
+      ((LinearLayout)localObject).setBackgroundResource(2130839216);
+      break;
+      label240:
+      paramView = paramView.findViewById(2131369600);
+      paramView = new RedTouch(this.jdField_a_of_type_AndroidContentContext, paramView).c(bdkf.b(5.0F)).b(bdkf.b(1.0F)).a(3).a();
+      ((LinearLayout)localObject).setTag(paramView);
+    }
+    label293:
+    paramView.a(paramAppInfo);
+    if ((!this.jdField_a_of_type_JavaUtilHashSet.contains(Integer.valueOf(paramAppInfo.uiAppId.get()))) && (paramAppInfo.iNewFlag.get() != 0))
+    {
+      this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(paramAppInfo.uiAppId.get()));
+      ((axho)paramAppRuntime.getManager(36)).a(paramAppInfo.uiAppId.get(), 30);
+      paramAppRuntime = paramAppInfo.buffer.get();
+      paramAppInfo = paramAppInfo.missions.get();
+      QLog.i("Q.lebatab.LebaBannerLogic", 1, String.format("reportExposure buffer = %s missions = %s", new Object[] { paramAppRuntime, paramAppInfo }));
+    }
+    try
+    {
+      paramAppRuntime = new JSONObject(paramAppRuntime);
+      a(paramAppRuntime.optString("_jump_url"), paramAppRuntime.optString("_jump_type"), paramAppRuntime.optString("_app_id"), paramAppInfo, 1);
+      if (AppSetting.c) {
+        bcvq.a(paramView, paramView.a(), Button.class.getName());
+      }
+      return;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      for (;;)
+      {
+        QLog.i("Q.lebatab.LebaBannerLogic", 1, "parse json exception", paramAppRuntime);
+      }
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setPadding(0, 0, 0, 0);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.removeAllViews();
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_JavaUtilHashSet.clear();
+  }
+  
+  public void c()
+  {
+    ThreadManager.getUIHandler().post(new LebaBannerLogic.1(this));
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout == null) {
+      QLog.i("Q.lebatab.LebaBannerLogic", 1, "onClick mRootLayout == null");
+    }
+    long l;
+    AppRuntime localAppRuntime;
+    do
+    {
+      return;
+      l = System.currentTimeMillis();
+      a();
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(localAppRuntime instanceof QQAppInterface));
+    paramView = (axho)localAppRuntime.getManager(36);
+    if (paramView != null)
+    {
+      Object localObject1 = paramView.a(0, "100000");
+      if ((localObject1 != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.get() != 0) && (((BusinessInfoCheckUpdate.AppInfo)localObject1).exposure_max.get() >= 0))
+      {
+        String str1 = ((BusinessInfoCheckUpdate.AppInfo)localObject1).buffer.get();
+        localObject1 = ((BusinessInfoCheckUpdate.AppInfo)localObject1).missions.get();
+        QLog.i("Q.lebatab.LebaBannerLogic", 1, String.format("onClick buffer = %s missions = %s time = %d", new Object[] { str1, localObject1, Long.valueOf(System.currentTimeMillis() - l) }));
+        try
+        {
+          Object localObject2 = new JSONObject(str1);
+          str1 = ((JSONObject)localObject2).optString("_jump_url");
+          String str2 = ((JSONObject)localObject2).optString("_jump_type");
+          localObject2 = ((JSONObject)localObject2).optString("_app_id");
+          a((QQAppInterface)localAppRuntime, str1, str2, (String)localObject2);
+          a(str1, str2, (String)localObject2, (List)localObject1, 2);
+          paramView.a(100000, 31);
+          return;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.i("Q.lebatab.LebaBannerLogic", 1, "parse json exception ", localException);
+          }
+        }
+      }
+      QLog.i("Q.lebatab.LebaBannerLogic", 1, "onClick appInfo no new");
+      return;
+    }
+    QLog.i("Q.lebatab.LebaBannerLogic", 1, "onClick redTouchManager == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     athc
  * JD-Core Version:    0.7.0.1
  */

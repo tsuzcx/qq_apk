@@ -1,12 +1,16 @@
-public abstract interface bkjs
+import android.content.DialogInterface;
+
+final class bkjs
+  extends bdco
 {
-  public abstract void a(bkjr parambkjr);
-  
-  public abstract void a(bkjr parambkjr, int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkjs
  * JD-Core Version:    0.7.0.1
  */

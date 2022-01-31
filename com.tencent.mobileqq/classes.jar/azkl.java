@@ -1,21 +1,22 @@
-import android.widget.ListView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.startup.step.RecordTracer;
+import com.tencent.trackrecordlib.core.IRecordCallback;
 
-class azkl
-  implements azlz
+public class azkl
+  implements IRecordCallback
 {
-  azkl(azkj paramazkj) {}
+  public azkl(RecordTracer paramRecordTracer) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onRecordEvent(String paramString)
   {
-    if ((paramBoolean) && (paramInt > 0)) {
-      this.a.a.a.a.smoothScrollBy(paramInt, 200);
+    if (!TextUtils.isEmpty(paramString)) {
+      bjmy.a().a(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azkl
  * JD-Core Version:    0.7.0.1
  */

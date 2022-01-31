@@ -1,31 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.ad.multiVideo.MultiVideoAdFooterView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class nzs
-  extends Handler
+public class nzs
+  implements rue
 {
-  nzs(nzr paramnzr, Looper paramLooper)
+  private WeakReference<ReadInJoyNewBaseActivity> a;
+  
+  public nzs(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity)
   {
-    super(paramLooper);
+    this.a = new WeakReference(paramReadInJoyNewBaseActivity);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
+    ReadInJoyNewFeedsActivity localReadInJoyNewFeedsActivity = (ReadInJoyNewFeedsActivity)this.a.get();
+    if (localReadInJoyNewFeedsActivity == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNewFeedsActivity", 2, "NaviMaskTouchListenerImpl. activity has destoryed");
+      }
     }
-    do
-    {
+    while ((ReadInJoyNewFeedsActivity.a(localReadInJoyNewFeedsActivity) != 0) || (localReadInJoyNewFeedsActivity.a == null)) {
       return;
-    } while ((this.a.a == null) || (this.a.a.a == null));
-    this.a.a.a.a();
+    }
+    localReadInJoyNewFeedsActivity.a.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzs
  * JD-Core Version:    0.7.0.1
  */

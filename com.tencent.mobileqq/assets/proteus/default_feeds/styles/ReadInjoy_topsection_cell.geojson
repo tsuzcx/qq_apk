@@ -1,6 +1,6 @@
 {
     "ReadInjoy_topsection_cell": {
-        "view_type": "cell",
+        "view_type": "container",
         "layout_type":"layout_linear",
         "direction": "horizontal",
         "height": {

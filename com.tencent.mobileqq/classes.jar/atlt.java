@@ -1,34 +1,12 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
-class atlt
-  implements atgz
+public abstract interface atlt
 {
-  atlt(atls paramatls) {}
-  
-  public void a()
-  {
-    if (atls.a(this.a) != null)
-    {
-      atls.a(this.a).a(BaseApplicationImpl.getApplication().getString(2131696677));
-      atls.a(this.a).b();
-      atls.a(this.a).c();
-    }
-  }
-  
-  public void a(Comments paramComments)
-  {
-    if (atls.a(this.a) != null)
-    {
-      atls.a(this.a);
-      atls.a(this.a).a(paramComments);
-      atls.a(this.a).b();
-    }
-  }
+  public abstract void a(LatLng paramLatLng, Double paramDouble, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atlt
  * JD-Core Version:    0.7.0.1
  */

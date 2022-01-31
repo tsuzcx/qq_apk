@@ -970,6 +970,7 @@ public class BuiltInServlet
                 if (isQQUin((String)localObject1)) {}
                 for (localObject1 = getAppRuntime().getService().msfSub.getLoginMsg((String)localObject1, (byte[])localObject2);; localObject1 = getAppRuntime().getService().msfSub.getChangeUinAndLoginMsg((String)localObject1, (byte[])localObject2))
                 {
+                  ((ToServiceMsg)localObject1).setIsSupportRetry(true);
                   ((ToServiceMsg)localObject1).setTimeout(40000L);
                   sendToMSF(paramIntent, (ToServiceMsg)localObject1);
                   return;
@@ -984,6 +985,7 @@ public class BuiltInServlet
                 if (isQQUin((String)localObject1)) {}
                 for (localObject1 = getAppRuntime().getService().msfSub.getLoginMsg((String)localObject1, MD5.toMD5Byte((String)localObject3));; localObject1 = getAppRuntime().getService().msfSub.getChangeUinAndLoginMsg((String)localObject1, MD5.toMD5Byte((String)localObject3)))
                 {
+                  ((ToServiceMsg)localObject1).setIsSupportRetry(true);
                   ((ToServiceMsg)localObject1).addAttribute("from_where", "subaccount");
                   ((ToServiceMsg)localObject1).addAttribute("mainaccount", localObject2);
                   ((ToServiceMsg)localObject1).setTimeout(40000L);
@@ -999,6 +1001,7 @@ public class BuiltInServlet
                 if (isQQUin((String)localObject1)) {}
                 for (localObject1 = getAppRuntime().getService().msfSub.getLoginMsg((String)localObject1, MD5.toMD5Byte((String)localObject3));; localObject1 = getAppRuntime().getService().msfSub.getChangeUinAndLoginMsg((String)localObject1, MD5.toMD5Byte((String)localObject3)))
                 {
+                  ((ToServiceMsg)localObject1).setIsSupportRetry(true);
                   ((ToServiceMsg)localObject1).setTimeout(40000L);
                   ((ToServiceMsg)localObject1).addAttribute("from_where", "ssoAccountAction");
                   ((ToServiceMsg)localObject1).addAttribute("targetTicket", Integer.valueOf(paramIntent.getIntExtra("targetTicket", 4096)));
@@ -1010,6 +1013,7 @@ public class BuiltInServlet
                 localObject2 = paramIntent.getStringExtra("password");
                 localObject1 = getAppRuntime().getService().msfSub.getVerifyPasswdMsg((String)localObject1, MD5.toMD5Byte((String)localObject2));
                 ((ToServiceMsg)localObject1).setTimeout(40000L);
+                ((ToServiceMsg)localObject1).setIsSupportRetry(true);
                 sendToMSF(paramIntent, (ToServiceMsg)localObject1);
                 return;
                 localObject1 = paramIntent.getStringExtra("account");
@@ -1121,14 +1125,14 @@ public class BuiltInServlet
                   ((PushRegisterInfo)localObject2).iLargeSeq = paramIntent.getLongExtra("K_SEQ", 0L);
                   ((PushRegisterInfo)localObject2).uin = getAppRuntime().getAccount();
                   if (localObject3 != AppRuntime.Status.offline) {
-                    break label1876;
+                    break label1900;
                   }
                   localObject1 = getAppRuntime().getService().msfSub.getUnRegisterPushMsg((PushRegisterInfo)localObject2);
                   if (QLog.isColorLevel()) {
                     QLog.d("Q.contacts.", 2, "BuiltInServlet.ACTION_REGIST_MESSAGE_PUSH " + localObject3 + ", " + ((PushRegisterInfo)localObject2).timeStamp + ", " + ((PushRegisterInfo)localObject2).iLargeSeq + ", isUserSet: " + bool);
                   }
                   if (!bool) {
-                    break label1896;
+                    break label1920;
                   }
                   ((ToServiceMsg)localObject1).getAttributes().put("regPushReason", RegPushReason.setOnlineStatus);
                 }
@@ -1139,7 +1143,7 @@ public class BuiltInServlet
                   b = 0;
                   break;
                   localObject1 = getAppRuntime().getService().msfSub.getRegisterPushMsg((PushRegisterInfo)localObject2);
-                  break label1770;
+                  break label1794;
                   ((ToServiceMsg)localObject1).getAttributes().put("regPushReason", RegPushReason.appRegister);
                 }
                 j = paramIntent.getIntExtra("appid", 0);
@@ -1196,14 +1200,14 @@ public class BuiltInServlet
                 ((HashMap)localObject5).put("wifi_mac", localObject1);
                 localObject5 = ((ToServiceMsg)localObject4).getAttributes();
                 if (localObject3 != null) {
-                  break label2500;
+                  break label2524;
                 }
                 localObject1 = "";
                 ((HashMap)localObject5).put("os_language", localObject1);
                 ((ToServiceMsg)localObject4).getAttributes().put("qq_language", Integer.valueOf(i));
                 localObject3 = ((ToServiceMsg)localObject4).getAttributes();
                 if (localObject2 != null) {
-                  break label2507;
+                  break label2531;
                 }
               }
               for (localObject1 = "";; localObject1 = localObject2)
@@ -1213,7 +1217,7 @@ public class BuiltInServlet
                 return;
                 break;
                 localObject1 = localObject3;
-                break label2435;
+                break label2459;
               }
               sendToMSF(paramIntent, getAppRuntime().getService().msfSub.getRegisterSendReSendSmsMsg());
               return;
@@ -1397,14 +1401,14 @@ public class BuiltInServlet
       sendToMSF(paramIntent, (ToServiceMsg)localObject1);
       return;
     case 2212: 
-      label1770:
+      label1794:
+      label1900:
       localObject1 = new ToServiceMsg(MsfServiceSdk.get().getMsfServiceName(), "0", "");
-      label1876:
-      label1896:
+      label1920:
+      label2459:
+      label2524:
+      label2531:
       i = paramIntent.getIntExtra("localeId", 0);
-      label2435:
-      label2500:
-      label2507:
       ((ToServiceMsg)localObject1).getAttributes().put("localeId", Integer.valueOf(i));
       ((ToServiceMsg)localObject1).setMsfCommand(MsfCommand.msf_update_locale_id);
       ((ToServiceMsg)localObject1).setNeedCallback(false);

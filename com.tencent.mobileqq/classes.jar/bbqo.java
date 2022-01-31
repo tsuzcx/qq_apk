@@ -1,73 +1,58 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
-import android.os.RemoteException;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
 public class bbqo
-  implements IBinder.DeathRecipient, bbqp
 {
-  private long jdField_a_of_type_Long;
-  private ayln jdField_a_of_type_Ayln;
-  private String jdField_a_of_type_JavaLangString;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public long e;
+  public int f;
+  public long f;
+  public int g;
+  public long g;
+  public long h;
   
-  private bbqo(long paramLong, String paramString, ayln paramayln)
+  public bbqo()
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Ayln = paramayln;
-    try
-    {
-      paramayln.asBinder().linkToDeath(this, 0);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      QLog.e("QuickUpdateIPCModule", 1, "linkToDeath fail: " + this, paramString);
-    }
+    a();
   }
   
-  public void binderDied()
+  public void a()
   {
-    QLog.e("QuickUpdateIPCModule", 1, "binderDied: " + this);
-    bbtm.a(this.jdField_a_of_type_Long).removeListener(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this);
-  }
-  
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
-  {
-    QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + paramInt1 + ", " + this);
-    try
-    {
-      this.jdField_a_of_type_Ayln.onComplete(paramString1, paramInt1);
-      return;
-    }
-    catch (RemoteException paramQQAppInterface)
-    {
-      QLog.e("QuickUpdateIPCModule", 1, "onCompleted: " + this, paramQQAppInterface);
-    }
-  }
-  
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
-  {
-    try
-    {
-      this.jdField_a_of_type_Ayln.onProgress(paramString1, paramLong2, paramLong3);
-      return;
-    }
-    catch (RemoteException paramQQAppInterface)
-    {
-      QLog.e("QuickUpdateIPCModule", 1, "onProgress: " + this, paramQQAppInterface);
-    }
-  }
-  
-  public String toString()
-  {
-    return this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString + "," + super.toString();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_Long = 0L;
+    this.jdField_d_of_type_Long = 0L;
+    this.jdField_e_of_type_Long = 0L;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = 0;
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_f_of_type_Long = 0L;
+    this.jdField_g_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_d_of_type_JavaLangString = "";
+    this.h = 0L;
+    this.jdField_g_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbqo
  * JD-Core Version:    0.7.0.1
  */

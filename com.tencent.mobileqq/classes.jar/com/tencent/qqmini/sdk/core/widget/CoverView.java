@@ -8,9 +8,9 @@ import android.graphics.Path.FillType;
 import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import benc;
-import betc;
-import bfgl;
+import bgms;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,7 +20,7 @@ public class CoverView
 {
   private float jdField_a_of_type_Float;
   public int a;
-  private benc jdField_a_of_type_Benc;
+  private bgms jdField_a_of_type_Bgms;
   private String jdField_a_of_type_JavaLangString;
   protected boolean a;
   private float jdField_b_of_type_Float;
@@ -30,12 +30,17 @@ public class CoverView
   public CoverView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Float = bfgl.a(paramContext);
+    this.jdField_a_of_type_Float = DisplayUtil.getDensity(paramContext);
   }
   
   public int a()
   {
     return this.jdField_a_of_type_Int;
+  }
+  
+  public boolean a()
+  {
+    return this.c;
   }
   
   public void draw(Canvas paramCanvas)
@@ -68,7 +73,7 @@ public class CoverView
     while (this.jdField_b_of_type_Boolean)
     {
       return true;
-      betc.a("CoverView", "--ACTION_DOWN--");
+      QMLog.d("CoverView", "--ACTION_DOWN--");
       int j;
       JSONObject localJSONObject5;
       try
@@ -82,17 +87,17 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touch", localJSONObject1);
-        if (this.jdField_a_of_type_Benc == null) {
+        if (this.jdField_a_of_type_Bgms == null) {
           continue;
         }
-        this.jdField_a_of_type_Benc.a("onTouchStart", localJSONObject5.toString());
+        this.jdField_a_of_type_Bgms.a("onTouchStart", localJSONObject5.toString());
       }
       catch (JSONException localJSONException1)
       {
         localJSONException1.printStackTrace();
       }
       continue;
-      betc.a("CoverView", "--ACTION_POINTER_DOWN--" + paramMotionEvent.getPointerCount() + "   " + paramMotionEvent.getActionIndex() + "   " + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
+      QMLog.d("CoverView", "--ACTION_POINTER_DOWN--" + paramMotionEvent.getPointerCount() + "   " + paramMotionEvent.getActionIndex() + "   " + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
       int k;
       try
       {
@@ -106,10 +111,10 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touch", localJSONObject2);
-        if (this.jdField_a_of_type_Benc == null) {
+        if (this.jdField_a_of_type_Bgms == null) {
           continue;
         }
-        this.jdField_a_of_type_Benc.a("onTouchStart", localJSONObject5.toString());
+        this.jdField_a_of_type_Bgms.a("onTouchStart", localJSONObject5.toString());
       }
       catch (JSONException localJSONException2)
       {
@@ -134,68 +139,68 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touches", localJSONArray1);
-        if (this.jdField_a_of_type_Benc == null) {
+        if (this.jdField_a_of_type_Bgms == null) {
           continue;
         }
-        this.jdField_a_of_type_Benc.a("onTouchMove", localJSONObject5.toString());
+        this.jdField_a_of_type_Bgms.a("onTouchMove", localJSONObject5.toString());
       }
       catch (JSONException localJSONException3)
       {
         localJSONException3.printStackTrace();
       }
       continue;
-      betc.a("CoverView", "--ACTION_UP--");
+      QMLog.d("CoverView", "--ACTION_UP--");
       try
       {
         JSONObject localJSONObject3 = new JSONObject();
-        i = (int)bfgl.a(paramMotionEvent.getX());
-        j = (int)bfgl.a(paramMotionEvent.getY());
+        i = (int)DisplayUtil.px2mpx(paramMotionEvent.getX());
+        j = (int)DisplayUtil.px2mpx(paramMotionEvent.getY());
         localJSONObject3.put("x", i);
         localJSONObject3.put("y", j);
         localJSONObject3.put("id", paramMotionEvent.getPointerId(0));
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touch", localJSONObject3);
-        if (this.jdField_a_of_type_Benc == null) {
+        if (this.jdField_a_of_type_Bgms == null) {
           continue;
         }
-        this.jdField_a_of_type_Benc.a("onTouchEnd", localJSONObject5.toString());
+        this.jdField_a_of_type_Bgms.a("onTouchEnd", localJSONObject5.toString());
       }
       catch (JSONException localJSONException4)
       {
         localJSONException4.printStackTrace();
       }
       continue;
-      betc.a("CoverView", "--ACTION_POINTER_UP--" + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
+      QMLog.d("CoverView", "--ACTION_POINTER_UP--" + paramMotionEvent.getPointerId(paramMotionEvent.getActionIndex()));
       try
       {
         i = paramMotionEvent.getActionIndex();
         JSONObject localJSONObject4 = new JSONObject();
-        j = (int)bfgl.a(paramMotionEvent.getX(i));
-        k = (int)bfgl.a(paramMotionEvent.getY(i));
+        j = (int)DisplayUtil.px2mpx(paramMotionEvent.getX(i));
+        k = (int)DisplayUtil.px2mpx(paramMotionEvent.getY(i));
         localJSONObject4.put("x", j);
         localJSONObject4.put("y", k);
         localJSONObject4.put("id", paramMotionEvent.getPointerId(i));
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touch", localJSONObject4);
-        if (this.jdField_a_of_type_Benc == null) {
+        if (this.jdField_a_of_type_Bgms == null) {
           continue;
         }
-        this.jdField_a_of_type_Benc.a("onTouchEnd", localJSONObject5.toString());
+        this.jdField_a_of_type_Bgms.a("onTouchEnd", localJSONObject5.toString());
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
       }
       continue;
-      betc.a("CoverView", "--ACTION_CANCEL--");
+      QMLog.d("CoverView", "--ACTION_CANCEL--");
       JSONArray localJSONArray2 = new JSONArray();
       try
       {
         localJSONObject5 = new JSONObject();
-        i = (int)bfgl.a(paramMotionEvent.getX());
-        j = (int)bfgl.a(paramMotionEvent.getY());
+        i = (int)DisplayUtil.px2mpx(paramMotionEvent.getX());
+        j = (int)DisplayUtil.px2mpx(paramMotionEvent.getY());
         localJSONObject5.put("x", i);
         localJSONObject5.put("y", j);
         localJSONObject5.put("id", paramMotionEvent.getPointerId(0));
@@ -203,8 +208,8 @@ public class CoverView
         localJSONObject5 = new JSONObject();
         localJSONObject5.put("data", this.jdField_a_of_type_JavaLangString);
         localJSONObject5.put("touches", localJSONArray2);
-        if (this.jdField_a_of_type_Benc != null) {
-          this.jdField_a_of_type_Benc.a("onTouchCancel", localJSONObject5.toString());
+        if (this.jdField_a_of_type_Bgms != null) {
+          this.jdField_a_of_type_Bgms.a("onTouchCancel", localJSONObject5.toString());
         }
       }
       catch (JSONException localJSONException5)
@@ -220,11 +225,11 @@ public class CoverView
     this.jdField_b_of_type_Float = paramFloat;
   }
   
-  public void setData(String paramString, boolean paramBoolean, benc parambenc)
+  public void setData(String paramString, boolean paramBoolean, bgms parambgms)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_b_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Benc = parambenc;
+    this.jdField_a_of_type_Bgms = parambgms;
   }
   
   public void setFixed(boolean paramBoolean)
@@ -244,7 +249,7 @@ public class CoverView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.widget.CoverView
  * JD-Core Version:    0.7.0.1
  */

@@ -2,30 +2,30 @@ package com.tencent.biz.qqstory.playvideo;
 
 import android.os.Handler;
 import java.lang.ref.WeakReference;
-import tud;
-import ucz;
+import viv;
+import vrr;
 
 public class NewProgressControler$2
   implements Runnable
 {
-  public NewProgressControler$2(tud paramtud) {}
+  public NewProgressControler$2(viv paramviv) {}
   
   public void run()
   {
     if (this.this$0.jdField_a_of_type_Boolean) {}
-    ucz localucz;
+    vrr localvrr;
     do
     {
       do
       {
         return;
       } while (this.this$0.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localucz = (ucz)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localucz == null);
-    if (localucz.b() > 0L)
+      localvrr = (vrr)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localvrr == null);
+    if (localvrr.b() > 0L)
     {
-      tud.a(this.this$0, localucz.a(), localucz.b());
-      tud.a(this.this$0);
+      viv.a(this.this$0, localvrr.a(), localvrr.b());
+      viv.a(this.this$0);
       return;
     }
     this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
@@ -33,7 +33,7 @@ public class NewProgressControler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.NewProgressControler.2
  * JD-Core Version:    0.7.0.1
  */

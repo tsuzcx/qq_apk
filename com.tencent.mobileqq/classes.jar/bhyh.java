@@ -1,12 +1,10 @@
 public abstract interface bhyh
 {
-  public abstract void a(amwp paramamwp);
-  
-  public abstract void a(String paramString);
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhyh
  * JD-Core Version:    0.7.0.1
  */

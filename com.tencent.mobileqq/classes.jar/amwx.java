@@ -1,72 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
-public class amwx
-  extends ampa<amww>
+public abstract interface amwx
 {
-  public int a()
-  {
-    return 361;
-  }
+  public abstract void a(int paramInt, amxh paramamxh, long paramLong);
   
-  @NonNull
-  public amww a(int paramInt)
-  {
-    return new amww();
-  }
+  public abstract void a(amwz paramamwz);
   
-  @Nullable
-  public amww a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
-    {
-      amww localamww = amww.a(paramArrayOfamph[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("WVStatisticsConfProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
-      }
-      return localamww;
-    }
-    return null;
-  }
+  public abstract void a(amxa paramamxa);
   
-  public Class<amww> a()
-  {
-    return amww.class;
-  }
+  public abstract void a(amxb paramamxb);
   
-  public void a(int paramInt) {}
+  public abstract void a(amxc paramamxc);
   
-  public void a(amww paramamww)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WVStatisticsConfProcessor", 2, "onUpdate " + paramamww.toString());
-    }
-  }
+  public abstract void a(amxj paramamxj);
   
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public abstract void b(amxa paramamxa);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwx
  * JD-Core Version:    0.7.0.1
  */

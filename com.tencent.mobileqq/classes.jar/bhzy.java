@@ -1,46 +1,62 @@
-import SWEET_NEW_BASE.sweet_req_comm;
-import SWEET_NEW_PAIR.sweet_pair_byebye_req;
-import android.content.Intent;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.graphics.Canvas;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
-class bhzy
-  extends QzoneExternalRequest
+public class bhzy
+  extends bhzx
 {
-  bhzy(bhzx parambhzx, Intent paramIntent) {}
-  
-  public String getCmdString()
+  private float a(RecyclerView paramRecyclerView, View paramView)
   {
-    return "SweetQzoneService.sweet_pair_byebye";
-  }
-  
-  public JceStruct getReq()
-  {
-    sweet_pair_byebye_req localsweet_pair_byebye_req = new sweet_pair_byebye_req();
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    int j = paramRecyclerView.getChildCount();
+    int i = 0;
+    float f1 = 0.0F;
+    if (i < j)
     {
-      long l1 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
-      long l2 = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("friendUin", -1L);
-      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
-      localsweet_req_comm.opuin = l1;
-      localsweet_req_comm.uin = l1;
-      localsweet_req_comm.loveuin = l2;
-      localsweet_req_comm.qua = bgyi.a();
-      localsweet_req_comm.pf = 1;
-      localsweet_req_comm.src = 3;
-      localsweet_pair_byebye_req.req_comm = localsweet_req_comm;
+      View localView = paramRecyclerView.getChildAt(i);
+      float f2;
+      if (localView == paramView) {
+        f2 = f1;
+      }
+      for (;;)
+      {
+        i += 1;
+        f1 = f2;
+        break;
+        float f3 = ViewCompat.getElevation(localView);
+        f2 = f1;
+        if (f3 > f1) {
+          f2 = f3;
+        }
+      }
     }
-    return localsweet_pair_byebye_req;
+    return f1;
   }
   
-  public String uniKey()
+  public void a(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    return "sweet_pair_byebye";
+    if ((paramBoolean) && (paramView.getTag(2131368567) == null))
+    {
+      float f = ViewCompat.getElevation(paramView);
+      ViewCompat.setElevation(paramView, 1.0F + a(paramRecyclerView, paramView));
+      paramView.setTag(2131368567, Float.valueOf(f));
+    }
+    super.a(paramCanvas, paramRecyclerView, paramView, paramFloat1, paramFloat2, paramInt, paramBoolean);
+  }
+  
+  public void a(View paramView)
+  {
+    Object localObject = paramView.getTag(2131368567);
+    if ((localObject != null) && ((localObject instanceof Float))) {
+      ViewCompat.setElevation(paramView, ((Float)localObject).floatValue());
+    }
+    paramView.setTag(2131368567, null);
+    super.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhzy
  * JD-Core Version:    0.7.0.1
  */

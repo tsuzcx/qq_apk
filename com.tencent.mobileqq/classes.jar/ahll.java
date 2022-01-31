@@ -1,33 +1,47 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 
-class ahll
-  implements View.OnClickListener
+public class ahll
+  extends RecyclerView.OnScrollListener
 {
-  ahll(ahkd paramahkd) {}
+  public ahll(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    paramView = new Intent(ahkd.a(this.a), GuideBindPhoneActivity.class);
-    paramView.putExtra("fromKeyForContactBind", 4);
-    ahkd.a(this.a).startActivity(paramView);
-    ahkd.a(this.a).getSharedPreferences("contact_bind_info" + ahkd.a(this.a).app.getAccount(), 0).edit().putBoolean("key_show_contact_banner", false).commit();
-    this.a.a(15, 0);
-    ahkd.a(this.a).removeMessages(11);
-    axqy.a(ahkd.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 13, 0, "", "", "", "");
-    axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "0X80053D9", "0X80053D9", 0, 0, "", "", "", "");
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    this.a.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
+    {
+      paramRecyclerView = paramRecyclerView.getLayoutManager();
+      if (((paramRecyclerView instanceof LinearLayoutManager)) && (((LinearLayoutManager)paramRecyclerView).findLastVisibleItemPosition() + 1 == TroopSuspiciousFragment.a(this.a).getItemCount())) {
+        TroopSuspiciousFragment.a(this.a);
+      }
+    }
+    if (this.a.jdField_a_of_type_Bcws != null)
+    {
+      if (paramInt == 0) {
+        break label94;
+      }
+      this.a.jdField_a_of_type_Bcws.a();
+      this.a.jdField_a_of_type_Bcws.c();
+    }
+    label94:
+    while (!this.a.jdField_a_of_type_Bcws.a()) {
+      return;
+    }
+    this.a.jdField_a_of_type_Bcws.b();
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahll
  * JD-Core Version:    0.7.0.1
  */

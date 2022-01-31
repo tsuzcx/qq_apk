@@ -1,27 +1,39 @@
-import android.widget.TextView;
-import java.util.Map;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import com.tencent.image.NativeGifImage;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.widget.FastAnimationDrawable;
 
 class wtn
-  implements wul
+  implements SeekBar.OnSeekBarChangeListener
 {
-  wtn(wtl paramwtl, adng paramadng) {}
+  wtn(wtm paramwtm) {}
   
-  public void a(String paramString, long paramLong1, long paramLong2)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    Long localLong = (Long)wtl.b(this.jdField_a_of_type_Wtl).get(Integer.valueOf(this.jdField_a_of_type_Adng.b));
-    if ((localLong != null) && (localLong.longValue() > paramLong2) && (paramLong1 != localLong.longValue()) && (Math.abs(paramLong1 - localLong.longValue()) > 100L))
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Adng.a.setText((CharSequence)wtl.c(this.jdField_a_of_type_Wtl).get(Integer.valueOf(this.jdField_a_of_type_Adng.b)));
-      return;
+      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
+      if (this.a.jdField_a_of_type_Wwe.a.a != null) {
+        this.a.jdField_a_of_type_Wwe.a.a.a(NativeGifImage.QZONE_DELAY);
+      }
+      this.a.jdField_a_of_type_Boolean = true;
+      this.a.e = NativeGifImage.QZONE_DELAY;
+      this.a.d = paramInt;
+      if (QLog.isColorLevel()) {
+        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
+      }
     }
-    wtl.b(this.jdField_a_of_type_Wtl).put(Integer.valueOf(this.jdField_a_of_type_Adng.b), Long.valueOf(paramLong2));
-    wtl.c(this.jdField_a_of_type_Wtl).put(Integer.valueOf(this.jdField_a_of_type_Adng.b), paramString);
-    this.jdField_a_of_type_Adng.a.setText(paramString);
   }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtn
  * JD-Core Version:    0.7.0.1
  */

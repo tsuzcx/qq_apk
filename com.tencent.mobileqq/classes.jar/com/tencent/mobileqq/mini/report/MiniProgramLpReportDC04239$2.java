@@ -9,12 +9,12 @@ final class MiniProgramLpReportDC04239$2
   
   public void run()
   {
-    MiniProgramLpReportDC04239.report(this.val$miniAppConfig, this.val$appType, this.val$path, this.val$actionType, this.val$subActionType, this.val$reserves, this.val$reserves2, null, null, null);
+    MiniProgramLpReportDC04239.report(this.val$miniAppConfig, this.val$appType, this.val$path, this.val$actionType, this.val$subActionType, this.val$reserves, this.val$reserves2, null, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239.2
  * JD-Core Version:    0.7.0.1
  */

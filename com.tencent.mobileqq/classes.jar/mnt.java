@@ -1,90 +1,106 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.graphics.PointF;
+import com.tencent.av.ui.VideoLayerUI;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.lang.ref.WeakReference;
 
-class mnt
-  extends Handler
+public class mnt
+  implements lst
 {
-  private WeakReference<mns> jdField_a_of_type_JavaLangRefWeakReference;
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
   
-  public mnt(mns parammns1, Looper paramLooper, mns parammns2)
+  private mnt(VideoLayerUI paramVideoLayerUI) {}
+  
+  public void a(lss paramlss)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammns2);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMoveEnd");
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_Mll.a() == 2) {
+      return;
+    }
+    PointF localPointF = paramlss.a();
+    int i = (int)localPointF.x;
+    int j = (int)localPointF.y;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q == 0) {
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMgp[0].a(i, j, true);
+    }
+    for (;;)
+    {
+      llm.a(false);
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(Integer.valueOf(6503), Boolean.valueOf(false));
+      return;
+      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b(i, j);
+        this.c = ((int)paramlss.a());
+        this.d = ((int)paramlss.b());
+        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.e, this.jdField_a_of_type_Int, this.b, this.c, this.d);
+        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.n(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t);
+      }
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(lss paramlss)
   {
-    int i = paramMessage.what;
-    mns localmns = (mns)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localmns == null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("QavVideoAudioRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
-      }
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_Mll.a() == 2) {
+      return false;
     }
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMove");
+    }
+    paramlss = paramlss.a();
+    int i = (int)paramlss.x;
+    int j = (int)paramlss.y;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q == 0) {
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMgp[0].a(i, j, false);
+    }
+    for (;;)
     {
-      for (;;)
+      return true;
+      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
       {
-        return;
-        switch (i)
-        {
-        default: 
-          throw new RuntimeException("Unhandled msg what=" + i);
-        case 0: 
-          if (mns.a(this.jdField_a_of_type_Mns) == null) {
-            mns.a(this.jdField_a_of_type_Mns, new ByteArrayOutputStream(32768));
-          }
-          if (paramMessage.obj != null)
-          {
-            mns.a(localmns, (avza)paramMessage.obj);
-            return;
-          }
-          throw new RuntimeException("MSG_START_RECORDING bundle == null");
-        case 1: 
-          mns.a(localmns);
-          try
-          {
-            if (mns.a(this.jdField_a_of_type_Mns) != null)
-            {
-              mns.a(this.jdField_a_of_type_Mns).flush();
-              mns.a(this.jdField_a_of_type_Mns).close();
-              mns.a(this.jdField_a_of_type_Mns, null);
-              return;
-            }
-          }
-          catch (IOException paramMessage) {}
+        if ((Math.abs(i) > 5) || (Math.abs(j) > 5)) {
+          VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, true);
         }
+        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.b(i, j);
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("QavVideoAudioRecorder", 2, "AudioBuf.close() ", paramMessage);
-    return;
-    if (paramMessage.obj != null)
+    }
+  }
+  
+  public boolean b(lss paramlss)
+  {
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q == 0)
     {
-      paramMessage = (Object[])paramMessage.obj;
-      if ((paramMessage == null) || (paramMessage.length != 5)) {
-        throw new IllegalArgumentException("args == null || args.length != 5");
+      paramlss = paramlss.a();
+      int i = (int)paramlss.x;
+      int j = (int)paramlss.y;
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfMgp[0].a(i, j, false);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 1, "onMoveBegin, mTargetIndex[" + this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q + "], startX[" + this.jdField_a_of_type_Int + "], startY[" + this.b + "], startPosition[" + this.e + "], mTopOffset[" + this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.n + "], mBottomOffset[" + this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.o + "], mRecordCtrlBottom[" + this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.i + "]");
+        QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMoveBegin");
       }
-      mns.a(localmns, ((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
-      return;
+      llm.a(true);
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(Integer.valueOf(6503), Boolean.valueOf(true));
+      return true;
+      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
+      {
+        this.jdField_a_of_type_Int = ((int)paramlss.a());
+        this.b = ((int)paramlss.b());
+        this.e = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h();
+      }
     }
-    throw new RuntimeException("MSG_VIDEO_FRAME_AVAILABLE bundle == null");
-    if (paramMessage.obj != null)
-    {
-      paramMessage = (Object[])paramMessage.obj;
-      localmns.b((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue());
-      return;
-    }
-    throw new RuntimeException("MSG_AUDIO_FRAME_AVAILABLE bundle == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mnt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,29 @@
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
-public class lln
+class lln
+  implements Observer
 {
-  static String jdField_a_of_type_JavaLangString = "smartdevice::sharp";
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  llm jdField_a_of_type_Llm = null;
-  llo jdField_a_of_type_Llo = null;
+  private WeakReference<llm> a;
   
-  public lln(llm paramllm, VideoAppInterface paramVideoAppInterface)
+  public lln(llm paramllm)
   {
-    this.jdField_a_of_type_Llm = paramllm;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_Llo = new llo(this);
-    paramllm = new IntentFilter();
-    paramllm.addAction("SmartDevice_ReceiveSharpMsg");
-    paramllm.addAction("SmartDevice_ReceiveSharpAckMsg");
-    paramllm.addAction("SmartDevice_DeviceUnBindRst");
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Llo, paramllm, "com.tencent.smartdevice.permission.broadcast", null);
+    this.a = new WeakReference(paramllm);
   }
   
-  void a(byte[] paramArrayOfByte, long paramLong)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "send broadcast : smartdevice send sharp msg");
+    llm localllm = (llm)this.a.get();
+    if (localllm == null) {
+      return;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("size", paramArrayOfByte.length);
-    localBundle.putLong("uin", paramLong);
-    localBundle.putByteArray("value", paramArrayOfByte);
-    paramArrayOfByte = new Intent();
-    paramArrayOfByte.putExtra("msgData", localBundle);
-    paramArrayOfByte.setAction("SmartDevice_SendSharpMsg");
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(paramArrayOfByte, "com.tencent.smartdevice.permission.broadcast");
-  }
-  
-  public void b(byte[] paramArrayOfByte, long paramLong)
-  {
-    a(paramArrayOfByte, paramLong);
+    llm.a(localllm, paramObservable, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lln
  * JD-Core Version:    0.7.0.1
  */

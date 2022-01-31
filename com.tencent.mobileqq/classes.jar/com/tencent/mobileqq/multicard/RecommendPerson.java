@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.multicard;
 
-import auko;
+import awbv;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.io.Serializable;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="troopUin,cardTypeID,uin")
 public class RecommendPerson
-  extends auko
+  extends awbv
   implements Serializable
 {
   public int addedIndex;
@@ -24,7 +24,7 @@ public class RecommendPerson
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.RecommendPerson
  * JD-Core Version:    0.7.0.1
  */

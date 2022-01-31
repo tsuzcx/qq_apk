@@ -1,9 +1,8 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.IntimateInfo.MemoryDayInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import java.util.List;
 
 class adkb
   implements View.OnClickListener
@@ -12,76 +11,24 @@ class adkb
   
   public void onClick(View paramView)
   {
-    Object localObject;
-    if (adka.a(this.a) != null)
+    paramView = paramView.getTag();
+    if ((paramView instanceof adjz))
     {
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      long l1;
-      switch (adka.a(this.a).jumpType)
+      paramView = (adjz)paramView;
+      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
       {
-      default: 
-        if (localObject != null)
-        {
-          localObject = (aqkh)((QQAppInterface)localObject).a(153);
-          l1 = 0L;
-        }
-        break;
+        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
+        this.a.a.a(this.a.a.a.size());
+        this.a.notifyDataSetChanged();
+        adka.a(this.a, paramView);
+        azmj.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
       }
-      try
-      {
-        long l2 = Long.valueOf(adjy.a(this.a.a)).longValue();
-        l1 = l2;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        for (;;)
-        {
-          QLog.e("intimate_relationship", 2, "valueOf string err");
-        }
-      }
-      ((aqkh)localObject).a(l1, adka.a(this.a).dateType);
-    }
-    for (;;)
-    {
-      if (adka.a(this.a) != null) {
-        adka.a(this.a).a(paramView, adka.a(this.a));
-      }
-      return;
-      if ((adka.a(this.a).linkUrl != null) && (this.a.a.a != null))
-      {
-        axqy.b(null, "dc00898", "", "", "0X800A208 ", "0X800A208 ", adka.a(this.a).dateType, 0, "", "", "", "");
-        QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A208");
-        bbeg localbbeg = bbex.a((QQAppInterface)localObject, this.a.a.a, adka.a(this.a).linkUrl);
-        if (localbbeg != null) {
-          localbbeg.c();
-        }
-        while (QLog.isColorLevel())
-        {
-          QLog.d("intimate_relationship", 2, "click  scheme: " + adka.a(this.a).linkUrl);
-          break;
-          if (adka.a(this.a).linkUrl.toLowerCase().startsWith("mqzone://")) {
-            bgyp.c(this.a.a.a, adka.a(this.a).linkUrl);
-          } else {
-            adjy.a(this.a.a.a, adka.a(this.a).linkUrl);
-          }
-        }
-      }
-      QLog.e("intimate_relationship", 2, "click  scheme: linkUrl or context is null");
-      break;
-      axqy.b(null, "dc00898", "", "", "0X800A208 ", "0X800A208 ", adka.a(this.a).dateType, 0, "", "", "", "");
-      QLog.d("Intimate report test", 2, "REPORT_TAG_0X800A208");
-      if (adjy.a(this.a.a) == null) {
-        break;
-      }
-      adjy.a(this.a.a).a(adka.a(this.a));
-      break;
-      QLog.e("intimate_relationship", 2, "click  mInfo is null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkb
  * JD-Core Version:    0.7.0.1
  */

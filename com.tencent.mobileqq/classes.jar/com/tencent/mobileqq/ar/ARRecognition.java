@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.ar;
 
-import akzb;
-import akzc;
-import akzd;
-import akze;
-import alfy;
-import algd;
-import algf;
-import algn;
-import algp;
-import algv;
-import alhu;
+import ampr;
+import amps;
+import ampt;
+import ampu;
+import amwo;
+import amwt;
+import amwv;
+import amxd;
+import amxf;
+import amxl;
+import amyk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -22,7 +22,7 @@ import java.util.List;
 public class ARRecognition
   implements Parcelable
 {
-  public static final Parcelable.Creator<ARRecognition> CREATOR = new akzb();
+  public static final Parcelable.Creator<ARRecognition> CREATOR = new ampr();
   public int a;
   public long a;
   public int b;
@@ -82,51 +82,51 @@ public class ARRecognition
     return l2;
   }
   
-  public static akze a(ArrayList<ARRecognition> paramArrayList, algn paramalgn)
+  public static ampu a(ArrayList<ARRecognition> paramArrayList, amxd paramamxd)
   {
-    akze localakze = new akze(0L, false);
+    ampu localampu = new ampu(0L, false);
     if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      return localakze;
+      return localampu;
     }
-    boolean bool1 = alfy.a(paramalgn.jdField_a_of_type_Alfy);
-    boolean bool2 = algd.a(paramalgn.jdField_a_of_type_Algd);
-    boolean bool3 = algp.a(paramalgn.jdField_a_of_type_Algp);
-    boolean bool4 = alhu.a(paramalgn.jdField_a_of_type_Alhu);
-    boolean bool5 = algv.a(paramalgn.jdField_a_of_type_Algv);
+    boolean bool1 = amwo.a(paramamxd.jdField_a_of_type_Amwo);
+    boolean bool2 = amwt.a(paramamxd.jdField_a_of_type_Amwt);
+    boolean bool3 = amxf.a(paramamxd.jdField_a_of_type_Amxf);
+    boolean bool4 = amyk.a(paramamxd.jdField_a_of_type_Amyk);
+    boolean bool5 = amxl.a(paramamxd.jdField_a_of_type_Amxl);
     if ((!bool1) && (!bool2) && (!bool3) && (!bool4) && (!bool5)) {
-      return localakze;
+      return localampu;
     }
-    paramalgn = new ArrayList();
+    paramamxd = new ArrayList();
     if (bool1) {
-      paramalgn.add(new akzd(1L, a(paramArrayList, 1L)));
+      paramamxd.add(new ampt(1L, a(paramArrayList, 1L)));
     }
     if (bool3) {
-      paramalgn.add(new akzd(4L, a(paramArrayList, 4L)));
+      paramamxd.add(new ampt(4L, a(paramArrayList, 4L)));
     }
     if (bool2) {
-      paramalgn.add(new akzd(2L, a(paramArrayList, 2L)));
+      paramamxd.add(new ampt(2L, a(paramArrayList, 2L)));
     }
     if (bool4) {
-      paramalgn.add(new akzd(128L, a(paramArrayList, 128L)));
+      paramamxd.add(new ampt(128L, a(paramArrayList, 128L)));
     }
     if (bool5) {
-      paramalgn.add(new akzd(2048L, a(paramArrayList, 2048L)));
+      paramamxd.add(new ampt(2048L, a(paramArrayList, 2048L)));
     }
     paramArrayList = new StringBuilder();
     int i = 0;
-    while (i < paramalgn.size())
+    while (i < paramamxd.size())
     {
-      paramArrayList.append("(index:").append(i).append(",prority=" + ((akzd)paramalgn.get(i)).jdField_a_of_type_Long + ")\n");
+      paramArrayList.append("(index:").append(i).append(",prority=" + ((ampt)paramamxd.get(i)).jdField_a_of_type_Long + ")\n");
       i += 1;
     }
     QLog.i("AREngine_CommonConfigInfo", 1, "getCurrentPriorityHighestResult print result " + paramArrayList.toString());
-    Collections.sort(paramalgn, new akzc());
-    localakze.jdField_a_of_type_Long = ((akzd)paramalgn.get(0)).jdField_a_of_type_Long;
-    if (paramalgn.size() == 1) {}
+    Collections.sort(paramamxd, new amps());
+    localampu.jdField_a_of_type_Long = ((ampt)paramamxd.get(0)).jdField_a_of_type_Long;
+    if (paramamxd.size() == 1) {}
     for (bool1 = true;; bool1 = false)
     {
-      localakze.jdField_a_of_type_Boolean = bool1;
-      return localakze;
+      localampu.jdField_a_of_type_Boolean = bool1;
+      return localampu;
     }
   }
   
@@ -178,34 +178,34 @@ public class ARRecognition
     return false;
   }
   
-  public static boolean a(algn paramalgn, long paramLong)
+  public static boolean a(amxd paramamxd, long paramLong)
   {
-    if (paramalgn == null) {}
+    if (paramamxd == null) {}
     do
     {
       return false;
       if (paramLong == 1L) {
-        return alfy.a(paramalgn.jdField_a_of_type_Alfy);
+        return amwo.a(paramamxd.jdField_a_of_type_Amwo);
       }
       if (paramLong == 2L) {
-        return algd.a(paramalgn.jdField_a_of_type_Algd);
+        return amwt.a(paramamxd.jdField_a_of_type_Amwt);
       }
       if (paramLong == 128L) {
-        return alhu.a(paramalgn.jdField_a_of_type_Alhu);
+        return amyk.a(paramamxd.jdField_a_of_type_Amyk);
       }
       if (paramLong == 4L) {
-        return algp.a(paramalgn.jdField_a_of_type_Algp);
+        return amxf.a(paramamxd.jdField_a_of_type_Amxf);
       }
       if (paramLong == 64L) {
-        return algf.a(paramalgn.jdField_a_of_type_Algf);
+        return amwv.a(paramamxd.jdField_a_of_type_Amwv);
       }
     } while (paramLong != 2048L);
-    return algv.a(paramalgn.jdField_a_of_type_Algv);
+    return amxl.a(paramamxd.jdField_a_of_type_Amxl);
   }
   
-  public static boolean a(algn paramalgn, ArrayList<ARRecognition> paramArrayList, long paramLong)
+  public static boolean a(amxd paramamxd, ArrayList<ARRecognition> paramArrayList, long paramLong)
   {
-    if ((paramalgn == null) || (paramArrayList == null) || (!a(paramalgn, paramLong))) {
+    if ((paramamxd == null) || (paramArrayList == null) || (!a(paramamxd, paramLong))) {
       return false;
     }
     int j = a(paramArrayList, paramLong);
@@ -217,7 +217,7 @@ public class ARRecognition
       }
       long l = 1 << (int)((ARRecognition)paramArrayList.get(i)).jdField_a_of_type_Long;
       int k = ((ARRecognition)paramArrayList.get(i)).c;
-      if ((paramLong != l) && (a(paramalgn, l)) && (!a(paramLong, l, j, k))) {
+      if ((paramLong != l) && (a(paramamxd, l)) && (!a(paramLong, l, j, k))) {
         break;
       }
       i += 1;
@@ -335,7 +335,7 @@ public class ARRecognition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecognition
  * JD-Core Version:    0.7.0.1
  */

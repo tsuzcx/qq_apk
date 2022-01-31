@@ -1,45 +1,103 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
-class agwf
-  extends BroadcastReceiver
+public class agwf
+  implements agvy
 {
-  private agwf(agvx paramagvx) {}
+  private agwa jdField_a_of_type_Agwa;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new agwg(this);
+  public Toast a;
+  public bblx a;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private boolean jdField_a_of_type_Boolean;
+  private View.OnClickListener b = new agwh(this);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public agwf(QQAppInterface paramQQAppInterface, agwa paramagwa, BaseActivity paramBaseActivity, SessionInfo paramSessionInfo, bblx parambblx, Toast paramToast)
   {
-    int i;
-    String str1;
-    if ("grap_idiom_hb_result_action".equals(paramIntent.getAction()))
-    {
-      i = paramIntent.getIntExtra("grap_hb_state", 0);
-      paramContext = paramIntent.getStringExtra("listid");
-      str1 = paramIntent.getStringExtra("grap_hb_frienduin");
-      if ((i != 1) && (i != 10)) {
-        break label59;
-      }
-      agvx.a(this.a, paramContext, str1, 1, true);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Agwa = paramagwa;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_Bblx = parambblx;
+    this.jdField_a_of_type_AndroidWidgetToast = paramToast;
+  }
+  
+  public int a()
+  {
+    return 20;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131721118);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString) == 3) {
+      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131721119);
     }
-    label59:
-    String str2;
+    View localView = ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramVarArgs, this.b, this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_msg", "", "AIOchat", "exp_setmsg", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString) == 3) {}
+    for (paramVarArgs = "1";; paramVarArgs = "0")
+    {
+      azmj.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "exp_topbar", 0, 0, str, paramVarArgs, "", "");
+      return localView;
+    }
+  }
+  
+  public void a()
+  {
+    if ((a()) || (this.jdField_a_of_type_Boolean)) {
+      atwd.a().c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if (paramInt != 1000) {}
     do
     {
       do
       {
         return;
-      } while (i != 12);
-      str2 = paramIntent.getStringExtra("grap_hb_idiom");
-      i = paramIntent.getIntExtra("grap_hb_seq", 0);
-      paramIntent = paramIntent.getStringExtra("grap_idiom_alpha");
-    } while (this.a.a(paramContext) == null);
-    agvx.a(this.a, paramContext, str1, 1, false);
-    this.a.a(paramContext, str2, paramIntent, i);
+      } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1);
+      if ((this.jdField_a_of_type_Bblx == null) || (!this.jdField_a_of_type_Bblx.a())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopAssistTipsBar", 2, "navigateBar is show, return ");
+    return;
+    ThreadManager.post(new TroopAssistTipsBar.1(this), 8, null, true);
+  }
+  
+  public boolean a()
+  {
+    return 3 == this.jdField_a_of_type_Agwa.a();
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agwf
  * JD-Core Version:    0.7.0.1
  */

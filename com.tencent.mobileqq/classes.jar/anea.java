@@ -1,92 +1,26 @@
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.util.ArrayList;
+import com.tencent.ark.ark.VariantWrapper;
 
-public abstract class anea
+class anea
+  implements anfl
 {
-  public byte a;
-  private final int jdField_a_of_type_Int = amow.a();
-  public long a;
-  protected ArrayList a;
-  public short a;
-  private boolean jdField_a_of_type_Boolean;
-  public long b = -1L;
-  public long c = -1L;
+  anea(andz paramandz, long paramLong) {}
   
-  public anea(short paramShort, byte paramByte)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_Byte = -1;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Short = paramShort;
-    this.jdField_a_of_type_Byte = paramByte;
-  }
-  
-  public final int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public abstract void a();
-  
-  public abstract void a(DataInputStream paramDataInputStream);
-  
-  public abstract void a(DataOutputStream paramDataOutputStream);
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
-  }
-  
-  public final void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public final boolean a()
-  {
-    return (this.c > 0L) && (this.c <= System.currentTimeMillis());
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void b(String paramString)
-  {
-    if ((paramString == null) || (paramString.trim().equals(""))) {}
-    label85:
-    for (;;)
-    {
-      return;
-      int i = 0;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        aneg localaneg = (aneg)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((localaneg.d == null) || (!localaneg.d.contains(paramString))) {}
-      }
-      for (;;)
-      {
-        if (i == -1) {
-          break label85;
-        }
-        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        return;
-        i += 1;
-        break;
-        i = -1;
-      }
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Andz.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
   }
   
-  public final boolean b()
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return this.b > System.currentTimeMillis();
+    andw.a(this.jdField_a_of_type_Andz.a, this.jdField_a_of_type_Long, paramBoolean, "Motion", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anea
  * JD-Core Version:    0.7.0.1
  */

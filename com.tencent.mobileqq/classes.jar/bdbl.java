@@ -1,25 +1,25 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.GroupListOpenFrame;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.widget.BubblePopupWindow;
 
-class bdbl
-  implements View.OnClickListener
+final class bdbl
+  extends TextView
 {
-  bdbl(bdbk parambdbk, int paramInt, String paramString) {}
-  
-  public void onClick(View paramView)
+  bdbl(Context paramContext, BubblePopupWindow paramBubblePopupWindow)
   {
-    paramView = new Bundle();
-    paramView.putInt("group_index", this.jdField_a_of_type_Int);
-    paramView.putString("group_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Bdbk.a.a.a(1, paramView);
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    boolean bool = super.performClick();
+    this.a.b();
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdbl
  * JD-Core Version:    0.7.0.1
  */

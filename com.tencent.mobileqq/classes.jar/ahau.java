@@ -1,25 +1,32 @@
-import Wallet.PopDialog;
-import Wallet.SkinInfo;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
-class ahau
-  implements DialogInterface.OnClickListener
+public class ahau
+  extends RecyclerView.ItemDecoration
 {
-  ahau(ahat paramahat, ahan paramahan) {}
+  private int a;
+  private int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahau(int paramInt1, int paramInt2)
   {
-    paramDialogInterface = this.jdField_a_of_type_Ahan.a.pop_dialog.left_url;
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      bgxb.a(ahaq.a(this.jdField_a_of_type_Ahat.a), paramDialogInterface);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    paramRect.right = this.a;
+    if (paramRecyclerView.getChildPosition(paramView) == 0) {
+      paramRect.left = this.b;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahau
  * JD-Core Version:    0.7.0.1
  */

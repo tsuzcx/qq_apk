@@ -1,26 +1,24 @@
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
-public class aucg
+class aucg
+  extends aubv
 {
-  public int a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  aucg(aucf paramaucf) {}
   
-  public String toString()
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",session_id:").append(this.c).append(",content:").append(this.d).append(",language").append(this.e).append(",ocr_language_list").append(this.jdField_a_of_type_JavaUtilArrayList);
-    return localStringBuilder.toString();
+    super.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
+    }
+    if ((paramBoolean) && ((paramObject instanceof auct))) {
+      aucf.a(this.a, (auct)paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aucg
  * JD-Core Version:    0.7.0.1
  */

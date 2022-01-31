@@ -1,117 +1,147 @@
-import android.os.Bundle;
-import org.json.JSONException;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-final class sgc
-  implements wxt
+public class sgc
 {
-  sgc(ryd paramryd, String paramString) {}
+  private static Map<String, sgd> a = new ConcurrentHashMap();
   
-  public void a(Bundle paramBundle)
+  static
   {
-    Object localObject1 = paramBundle.getString("action");
-    if ("onCommentSend".equals(localObject1)) {}
-    for (;;)
+    a();
+  }
+  
+  public static String a(String paramString)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject;
+    try
     {
-      String str;
-      Object localObject2;
-      int i;
-      try
+      localObject = (sgd)a.get(paramString);
+      localJSONObject.put("app", "QQ");
+      localJSONObject.put("appVersion", "8.3.3");
+      localJSONObject.put("businessID", ((sgd)localObject).b);
+      localJSONObject.put("os", "android");
+      localObject = new JSONObject();
+      paramString = sgf.a(paramString, false);
+      if (paramString != null)
       {
-        localObject1 = paramBundle.getString("commentId", "");
-        str = paramBundle.getString("rowKey", "");
-        localObject2 = paramBundle.getString("commentContent", "");
-        i = paramBundle.getInt("firstLevelComment");
-        paramBundle = paramBundle.getString("parentCommentId", "");
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("type", "onCommentSend");
-        localJSONObject.put("commentId", localObject1);
-        localJSONObject.put("rowKey", str);
-        localJSONObject.put("commentContent", localObject2);
-        localJSONObject.put("firstLevelComment", i + 1);
-        localJSONObject.put("parentCommentID", paramBundle);
-        localJSONObject.put("result", "success");
-        if (this.jdField_a_of_type_Ryd != null) {
-          this.jdField_a_of_type_Ryd.a(this.jdField_a_of_type_JavaLangString, localJSONObject);
-        }
-        return;
-      }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      if ("onCommentLike".equals(localObject1)) {
-        try
+        paramString = paramString.a().entrySet().iterator();
+        while (paramString.hasNext())
         {
-          localObject1 = paramBundle.getString("commentId", "");
-          str = paramBundle.getString("rowKey", "");
-          paramBundle = paramBundle.getString("likeStatus", "");
-          localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("type", "onCommentLike");
-          ((JSONObject)localObject2).put("rowKey", str);
-          ((JSONObject)localObject2).put("commentId", localObject1);
-          ((JSONObject)localObject2).put("likeStatus", paramBundle);
-          ((JSONObject)localObject2).put("result", "success");
-          if (this.jdField_a_of_type_Ryd == null) {
-            continue;
-          }
-          this.jdField_a_of_type_Ryd.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
-          return;
-        }
-        catch (JSONException paramBundle)
-        {
-          paramBundle.printStackTrace();
-          return;
-        }
-      } else if ("onCommentDelete".equals(localObject1)) {
-        try
-        {
-          localObject1 = paramBundle.getString("commentId", "");
-          str = paramBundle.getString("rowKey", "");
-          i = paramBundle.getInt("totalDeleteCount", 0);
-          paramBundle = new JSONObject();
-          paramBundle.put("type", "onCommentDelete");
-          paramBundle.put("totalDelete", i);
-          paramBundle.put("commentID", localObject1);
-          paramBundle.put("rowKey", str);
-          paramBundle.put("result", "success");
-          if (this.jdField_a_of_type_Ryd == null) {
-            continue;
-          }
-          this.jdField_a_of_type_Ryd.a(this.jdField_a_of_type_JavaLangString, paramBundle);
-          return;
-        }
-        catch (JSONException paramBundle)
-        {
-          paramBundle.printStackTrace();
-          return;
-        }
-      } else if ("onPanelClose".equals(localObject1)) {
-        try
-        {
-          paramBundle = paramBundle.getString("rowKey", "");
-          localObject1 = new JSONObject();
-          ((JSONObject)localObject1).put("type", "onPanelClose");
-          ((JSONObject)localObject1).put("rowKey", paramBundle);
-          ((JSONObject)localObject1).put("result", "success");
-          if (this.jdField_a_of_type_Ryd != null)
-          {
-            this.jdField_a_of_type_Ryd.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject1);
-            return;
-          }
-        }
-        catch (JSONException paramBundle)
-        {
-          paramBundle.printStackTrace();
+          Map.Entry localEntry = (Map.Entry)paramString.next();
+          ((JSONObject)localObject).put((String)localEntry.getKey(), localEntry.getValue());
+          continue;
+          return localJSONObject.toString();
         }
       }
     }
+    catch (Exception paramString)
+    {
+      QLog.d("RealTimeController", 1, "", paramString);
+    }
+    for (;;)
+    {
+      localJSONObject.put("styles", localObject);
+      QLog.d("RealTimeController", 1, "styles: " + localJSONObject);
+    }
+  }
+  
+  public static sgf a(String paramString)
+  {
+    if (a.containsKey(paramString))
+    {
+      paramString = (sgd)a.get(paramString);
+      if ((paramString != null) && (paramString.jdField_a_of_type_Sge != null)) {
+        return paramString.jdField_a_of_type_Sge.a();
+      }
+    }
+    return null;
+  }
+  
+  private static void a()
+  {
+    a(new sgd("default_feeds", "1"));
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    QLog.d("RealTimeController", 1, "serviceKey:" + paramString1 + " styles:" + paramString2);
+    if (TextUtils.isEmpty(paramString2)) {}
+    sgd localsgd;
+    do
+    {
+      return;
+      localsgd = (sgd)a.get(paramString1);
+    } while (localsgd == null);
+    paramString1 = sgf.a(paramString1, true);
+    if (paramString1 == null)
+    {
+      QLog.d("RealTimeController", 1, "realTimeTemplateFactory == null styles:" + paramString2);
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString1.a(sfw.a());
+        localObject = new JSONObject(paramString2);
+        paramString2 = ((JSONObject)localObject).getString("businessID");
+        QLog.d("RealTimeController", 1, "realTimeBusinessID: " + paramString2);
+        paramString2 = ((JSONObject)localObject).getJSONArray("styleList");
+        if (!((JSONObject)localObject).has("deleteList")) {
+          break label282;
+        }
+        localObject = ((JSONObject)localObject).getJSONArray("deleteList");
+        ArrayList localArrayList = new ArrayList();
+        i = 0;
+        if (i < ((JSONArray)localObject).length())
+        {
+          String str = ((JSONArray)localObject).getString(i);
+          localArrayList.add(str);
+          paramString1.c(str);
+          i += 1;
+          continue;
+        }
+        localsgd.jdField_a_of_type_Sge.a(localArrayList);
+      }
+      catch (Exception paramString1)
+      {
+        Object localObject;
+        QLog.d("RealTimeController", 1, "", paramString1);
+        return;
+      }
+      if (i >= paramString2.length()) {
+        break;
+      }
+      localObject = (JSONObject)paramString2.get(i);
+      localsgd.jdField_a_of_type_Sge.a(paramString1, (JSONObject)localObject, true);
+      i += 1;
+      continue;
+      label282:
+      int i = 0;
+    }
+  }
+  
+  public static void a(sgd paramsgd)
+  {
+    if ((paramsgd.jdField_a_of_type_JavaLangString == null) || (paramsgd.b == null)) {
+      return;
+    }
+    a.put(paramsgd.jdField_a_of_type_JavaLangString, paramsgd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sgc
  * JD-Core Version:    0.7.0.1
  */

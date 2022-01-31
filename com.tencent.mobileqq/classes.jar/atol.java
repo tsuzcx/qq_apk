@@ -1,62 +1,68 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.util.Pair;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.profilecard.LabelContainer;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class atol
-  extends atoj
-  implements View.OnClickListener
+class atol
+  implements atlu
 {
-  protected int a()
+  atol(atof paramatof, LocationRoom.Venue paramVenue) {}
+  
+  public Pair<atlh, LocationRoom.Venue> a()
   {
-    return 2131560848;
+    return new Pair(atof.a(this.jdField_a_of_type_Atof), this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
   }
   
-  protected LabelContainer a(View paramView, int paramInt1, atfm paramatfm, int paramInt2)
+  public void a(atlh paramatlh, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    ((TextView)paramView.findViewById(2131378558)).setText(c[paramInt1]);
-    paramInt1 = vpm.b(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    int i = vpm.b(this.jdField_a_of_type_AndroidContentContext, 6.0F);
-    LabelContainer localLabelContainer = (LabelContainer)paramView.findViewById(2131368874);
-    localLabelContainer.setSpace(paramInt1, i);
-    paramView.setTag(paramatfm);
-    paramView.setOnClickListener(this);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() == paramInt2 - 1)
-    {
-      paramInt1 = vpm.b(this.jdField_a_of_type_AndroidContentContext, 10.0F);
-      paramView.setBackgroundResource(2130839176);
-      paramView.setPadding(0, paramInt1, 0, paramInt1);
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "[venue] setVenue: onResult. roomKey: " + paramatlh + " venue: " + paramVenue + " mRoomKey: " + atof.a(this.jdField_a_of_type_Atof) + " optType: " + paramInt1, " isSuccess: " + paramBoolean + " errorCode: " + paramInt2 });
     }
-    return localLabelContainer;
-  }
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if ((paramView.getTag() instanceof atfm))
-    {
-      paramView = (atfm)paramView.getTag();
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, ChooseInterestTagActivity.class);
-      localIntent.putExtra("interest_tag_type", paramView.jdField_a_of_type_Int);
-      localIntent.putExtra("is_from_judge", false);
-      localIntent.putExtra("is_from_nearby", true);
-      localIntent.putExtra("from_where", "NearbyPeopleProfileActivity");
-      localIntent.putParcelableArrayListExtra("choosed_interest_tags", paramView.jdField_a_of_type_JavaUtilArrayList);
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 11);
+    if ((!paramatlh.equals(atof.a(this.jdField_a_of_type_Atof))) || (paramVenue == null)) {
+      return;
     }
+    atof.a(this.jdField_a_of_type_Atof).setVenueOprating(false);
+    atof.a(this.jdField_a_of_type_Atof).setVisibility(8);
+    if (paramBoolean)
+    {
+      atof.a(this.jdField_a_of_type_Atof).setVenue(this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue);
+      QQToast.a(atof.a(this.jdField_a_of_type_Atof), 2, "集合点设置成功", 0).a();
+      azmj.b(null, "CliOper", "", "", "0X800A964", "0X800A964", 0, 0, "0", "0", "0", "");
+      return;
+    }
+    switch (paramInt2)
+    {
+    default: 
+      QQToast.a(atof.a(this.jdField_a_of_type_Atof), 1, "设置失败，请稍后重试", 0).a();
+      if (atof.a(this.jdField_a_of_type_Atof).a() != null) {
+        atof.a(this.jdField_a_of_type_Atof);
+      }
+      break;
+    }
+    for (;;)
+    {
+      if ((paramInt2 != 10001) && (paramInt2 != 10003) && (paramInt2 != 10004) && (paramInt2 != 10100)) {
+        break label389;
+      }
+      azmj.b(null, "CliOper", "", "", "0X800A965", "0X800A965", 2, 0, "0", "0", "0", "");
+      return;
+      QQToast.a(atof.a(this.jdField_a_of_type_Atof), 1, "你已离开共享会话", 0).a();
+      atof.a(this.jdField_a_of_type_Atof).finish();
+      break;
+      QQToast.a(atof.a(this.jdField_a_of_type_Atof), 1, "已有人设置集合点", 0).a();
+      break;
+      atof.b(this.jdField_a_of_type_Atof);
+    }
+    label389:
+    azmj.b(null, "CliOper", "", "", "0X800A965", "0X800A965", 1, 0, "0", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atol
  * JD-Core Version:    0.7.0.1
  */

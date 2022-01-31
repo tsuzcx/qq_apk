@@ -13,7 +13,7 @@ public final class mobile_count_rsp_new
   extends JceStruct
 {
   static byte[] cache_QzmallProfileDecoGetRsp;
-  static int cache_cancellation_status = 0;
+  static int cache_cancellation_status;
   static Map<Integer, String> cache_extendinfo;
   static int cache_isShowNewFeedBanner;
   static int cache_jumpType;
@@ -43,6 +43,7 @@ public final class mobile_count_rsp_new
   static ArrayList<String> cache_vec_blackReportPid;
   static ArrayList<String> cache_vec_reportid;
   static ArrayList<stSoftInfo> cache_vec_soft_infos;
+  static ArrayList<String> cache_veckuolieHotTag;
   static stVerticalVideoDisplay cache_vertVideoDisplay;
   public byte[] QzmallProfileDecoGetRsp;
   public int cancellation_status;
@@ -100,6 +101,7 @@ public final class mobile_count_rsp_new
   public ArrayList<String> vec_blackReportPid;
   public ArrayList<String> vec_reportid;
   public ArrayList<stSoftInfo> vec_soft_infos;
+  public ArrayList<String> veckuolieHotTag;
   public stVerticalVideoDisplay vertVideoDisplay;
   
   static
@@ -160,11 +162,14 @@ public final class mobile_count_rsp_new
     localObject = new stSoftInfo();
     cache_vec_soft_infos.add(localObject);
     cache_plusRecom = new stPlusRecomInfo();
+    cache_cancellation_status = 0;
+    cache_veckuolieHotTag = new ArrayList();
+    cache_veckuolieHotTag.add("");
   }
   
   public mobile_count_rsp_new() {}
   
-  public mobile_count_rsp_new(Map<Integer, ArrayList<entrance_cfg>> paramMap, Map<Integer, count_info> paramMap1, ban_info paramban_info, birth_info parambirth_info, String paramString1, int paramInt1, yellow_info paramyellow_info, String paramString2, Map<Long, s_comm_data> paramMap2, master_info parammaster_info1, ArrayList<operat_data> paramArrayList, Map<Long, Long> paramMap3, String paramString3, master_info parammaster_info2, medal_info parammedal_info, int paramInt2, medal_banner parammedal_banner, Map<Integer, yy_icon> paramMap4, star_info paramstar_info, combine_diamond_info paramcombine_diamond_info, Map<Integer, String> paramMap5, String paramString4, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte, int paramInt7, int paramInt8, int paramInt9, String paramString5, int paramInt10, int paramInt11, int paramInt12, Map<Integer, mobile_feeds_tab_info> paramMap6, int paramInt13, String paramString6, Map<Integer, String> paramMap7, Map<String, byte[]> paramMap8, Map<String, String> paramMap9, int paramInt14, stVerticalVideoDisplay paramstVerticalVideoDisplay, int paramInt15, stNuanNuanComment paramstNuanNuanComment1, Map<Long, Long> paramMap10, int paramInt16, String paramString7, int paramInt17, ArrayList<String> paramArrayList1, int paramInt18, int paramInt19, int paramInt20, ArrayList<String> paramArrayList2, stNuanNuanComment paramstNuanNuanComment2, ArrayList<stSoftInfo> paramArrayList3, stPlusRecomInfo paramstPlusRecomInfo, int paramInt21)
+  public mobile_count_rsp_new(Map<Integer, ArrayList<entrance_cfg>> paramMap, Map<Integer, count_info> paramMap1, ban_info paramban_info, birth_info parambirth_info, String paramString1, int paramInt1, yellow_info paramyellow_info, String paramString2, Map<Long, s_comm_data> paramMap2, master_info parammaster_info1, ArrayList<operat_data> paramArrayList, Map<Long, Long> paramMap3, String paramString3, master_info parammaster_info2, medal_info parammedal_info, int paramInt2, medal_banner parammedal_banner, Map<Integer, yy_icon> paramMap4, star_info paramstar_info, combine_diamond_info paramcombine_diamond_info, Map<Integer, String> paramMap5, String paramString4, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte, int paramInt7, int paramInt8, int paramInt9, String paramString5, int paramInt10, int paramInt11, int paramInt12, Map<Integer, mobile_feeds_tab_info> paramMap6, int paramInt13, String paramString6, Map<Integer, String> paramMap7, Map<String, byte[]> paramMap8, Map<String, String> paramMap9, int paramInt14, stVerticalVideoDisplay paramstVerticalVideoDisplay, int paramInt15, stNuanNuanComment paramstNuanNuanComment1, Map<Long, Long> paramMap10, int paramInt16, String paramString7, int paramInt17, ArrayList<String> paramArrayList1, int paramInt18, int paramInt19, int paramInt20, ArrayList<String> paramArrayList2, stNuanNuanComment paramstNuanNuanComment2, ArrayList<stSoftInfo> paramArrayList3, stPlusRecomInfo paramstPlusRecomInfo, int paramInt21, ArrayList<String> paramArrayList4)
   {
     this.mapEntranceCfg = paramMap;
     this.stMapCountInfo = paramMap1;
@@ -223,6 +228,7 @@ public final class mobile_count_rsp_new
     this.vec_soft_infos = paramArrayList3;
     this.plusRecom = paramstPlusRecomInfo;
     this.cancellation_status = paramInt21;
+    this.veckuolieHotTag = paramArrayList4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -284,6 +290,7 @@ public final class mobile_count_rsp_new
     this.vec_soft_infos = ((ArrayList)paramJceInputStream.read(cache_vec_soft_infos, 54, false));
     this.plusRecom = ((stPlusRecomInfo)paramJceInputStream.read(cache_plusRecom, 55, false));
     this.cancellation_status = paramJceInputStream.read(this.cancellation_status, 56, false);
+    this.veckuolieHotTag = ((ArrayList)paramJceInputStream.read(cache_veckuolieHotTag, 57, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -417,11 +424,14 @@ public final class mobile_count_rsp_new
       paramJceOutputStream.write(this.plusRecom, 55);
     }
     paramJceOutputStream.write(this.cancellation_status, 56);
+    if (this.veckuolieHotTag != null) {
+      paramJceOutputStream.write(this.veckuolieHotTag, 57);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_UNDEAL_COUNT.mobile_count_rsp_new
  * JD-Core Version:    0.7.0.1
  */

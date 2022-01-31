@@ -15,7 +15,7 @@
             </com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar>
             <FrameLayout android:id="@id/ioc" android:background="#ffe0e0e0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_below="@id/l1w" />
             <FrameLayout android:id="@id/l1y" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ioc" />
-            <com.tencent.gdtad.views.canvas.framework.GdtCanvasView android:id="@id/lx3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.tencent.ad.tangram.canvas.views.canvas.framework.AdCanvasView android:id="@id/lx3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         </com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView>
     </RelativeLayout>
 </com.tencent.gdtad.views.videoceiling.GdtVideoCeilingScrollVIew>

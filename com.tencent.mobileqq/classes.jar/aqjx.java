@@ -1,45 +1,84 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.fragment.TroopRobotFragment;
-import com.tencent.mobileqq.fragment.TroopRobotFragment.1.1;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.1;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.2;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView.13.3;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aqjx
-  extends akil
+  extends aqnl
 {
-  public aqjx(TroopRobotFragment paramTroopRobotFragment) {}
+  public aqjx(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
+  protected void a(aqxx paramaqxx)
   {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
+    if (paramaqxx == null) {}
+    do
     {
-      TroopRobotFragment.a(this.a, paramLong1);
+      FileManagerEntity localFileManagerEntity;
+      do
+      {
+        return;
+        if (!(paramaqxx.a instanceof FileManagerEntity)) {
+          break;
+        }
+        localFileManagerEntity = (FileManagerEntity)paramaqxx.a;
+      } while ((paramaqxx.b == null) || (paramaqxx.b.length() <= 0));
+      localFileManagerEntity.strThumbPath = paramaqxx.b;
+      QfileBaseCloudFileTabView.k(this.a).a().c(localFileManagerEntity);
+      this.a.i();
       return;
-    }
-    QLog.i("TroopRobotFragment", 2, "onAddRobot  net troopuin" + paramLong1 + " cur " + TroopRobotFragment.a(this.a));
+    } while (!(paramaqxx.a instanceof WeiYunFileInfo));
+    this.a.i();
   }
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, bami parambami)
+  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
   {
-    String str = String.valueOf(paramLong);
-    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
+    aqxj.a(paramString1);
+    arni.a(paramInteger.intValue(), paramString2);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(false);
+  }
+  
+  protected void a(String paramString1, String paramString2, boolean paramBoolean)
+  {
+    paramString2 = aqxj.a(paramString1);
+    if ((!this.a.b(paramString2)) && (this.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      if ((paramBoolean) && (parambami != null) && (this.a.getActivity() != null))
+      paramString2 = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramString2.hasNext())
       {
-        QLog.d("TroopRobotFragment", 2, "onGetAllRobots");
-        this.a.getActivity().runOnUiThread(new TroopRobotFragment.1.1(this, parambami));
-        return;
+        WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)paramString2.next();
+        if (localWeiYunFileInfo.a.equalsIgnoreCase(paramString1) == true) {
+          this.a.b(localWeiYunFileInfo);
+        }
       }
-      QLog.e("TroopRobotFragment", 2, "onGetAllRobots err " + paramInt + " :" + paramLong);
-      TroopRobotFragment.a(this.a, paramLong);
-      return;
     }
-    QLog.i("TroopRobotFragment", 2, "onGetAllRobots  net troopuin" + paramLong + " cur " + TroopRobotFragment.a(this.a));
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(false);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    QfileBaseCloudFileTabView.a(this.a, new QfileBaseCloudFileTabView.13.1(this));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    QfileBaseCloudFileTabView.b(this.a, new QfileBaseCloudFileTabView.13.2(this, paramLong2));
+  }
+  
+  protected void b()
+  {
+    super.b();
+    QfileBaseCloudFileTabView.c(this.a, new QfileBaseCloudFileTabView.13.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqjx
  * JD-Core Version:    0.7.0.1
  */

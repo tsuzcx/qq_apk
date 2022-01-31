@@ -4,9 +4,9 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLSurfaceView.Renderer;
-import bkds;
-import bkew;
-import bkft;
+import bmpc;
+import bmqg;
+import bmrd;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -14,10 +14,10 @@ import javax.microedition.khronos.opengles.GL10;
 @TargetApi(14)
 public class DoodleTextureView
   extends GLTextureView
-  implements GLSurfaceView.Renderer, bkds
+  implements GLSurfaceView.Renderer, bmpc
 {
   int jdField_a_of_type_Int = 320;
-  bkew jdField_a_of_type_Bkew;
+  bmqg jdField_a_of_type_Bmqg;
   int b = 480;
   
   public DoodleTextureView(Context paramContext)
@@ -37,8 +37,8 @@ public class DoodleTextureView
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Bkew != null) {
-      this.jdField_a_of_type_Bkew.c(paramInt);
+    if (this.jdField_a_of_type_Bmqg != null) {
+      this.jdField_a_of_type_Bmqg.c(paramInt);
     }
   }
   
@@ -57,8 +57,8 @@ public class DoodleTextureView
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if (this.jdField_a_of_type_Bkew != null) {
-      this.jdField_a_of_type_Bkew.e();
+    if (this.jdField_a_of_type_Bmqg != null) {
+      this.jdField_a_of_type_Bmqg.e();
     }
   }
   
@@ -67,9 +67,9 @@ public class DoodleTextureView
   {
     this.jdField_a_of_type_Int = paramInt1;
     this.b = paramInt2;
-    if (this.jdField_a_of_type_Bkew != null)
+    if (this.jdField_a_of_type_Bmqg != null)
     {
-      paramGL10 = (bkft)this.jdField_a_of_type_Bkew.a(102);
+      paramGL10 = (bmrd)this.jdField_a_of_type_Bmqg.a(102);
       if (paramGL10 != null) {
         paramGL10.a(paramInt1, paramInt2);
       }
@@ -78,8 +78,8 @@ public class DoodleTextureView
   
   public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    if (this.jdField_a_of_type_Bkew != null) {
-      this.jdField_a_of_type_Bkew.d();
+    if (this.jdField_a_of_type_Bmqg != null) {
+      this.jdField_a_of_type_Bmqg.d();
     }
   }
   
@@ -89,16 +89,16 @@ public class DoodleTextureView
     return true;
   }
   
-  public void setOpController(bkew parambkew)
+  public void setOpController(bmqg parambmqg)
   {
-    this.jdField_a_of_type_Bkew = parambkew;
-    this.jdField_a_of_type_Bkew.a(this);
+    this.jdField_a_of_type_Bmqg = parambmqg;
+    this.jdField_a_of_type_Bmqg.a(this);
     super.b(new DoodleTextureView.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView
  * JD-Core Version:    0.7.0.1
  */

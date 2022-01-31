@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.adapter;
 
-import aint;
+import akfe;
 import com.tencent.qphone.base.util.QLog;
 
 public class MayKnowAdapter$7
   implements Runnable
 {
-  public MayKnowAdapter$7(aint paramaint) {}
+  public MayKnowAdapter$7(akfe paramakfe) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class MayKnowAdapter$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.MayKnowAdapter.7
  * JD-Core Version:    0.7.0.1
  */

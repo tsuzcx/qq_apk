@@ -2,8 +2,8 @@ package cooperation.troop_homework.jsp;
 
 import android.os.Handler;
 import android.text.TextUtils;
-import bhxs;
-import bhxt;
+import bjzd;
+import bjze;
 import com.tencent.mm.vfs.VFSFile;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -58,10 +58,10 @@ class TroopHWJsPlugin$CompressImageJob
         label207:
         this.this$0.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localException);
         ((HashMap)localObject1).put(Integer.valueOf(i), localException);
-        bhxs localbhxs = new bhxs(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.e, this.this$0.d);
-        bhxt localbhxt = this.this$0.a(this.this$0, i, localException, null, localbhxs, 1);
-        this.this$0.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localbhxt);
-        localbhxt.a();
+        bjzd localbjzd = new bjzd(this.this$0.jdField_b_of_type_JavaLangString, this.this$0.e, this.this$0.d);
+        bjze localbjze = this.this$0.a(this.this$0, i, localException, null, localbjzd, 1);
+        this.this$0.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localbjze);
+        localbjze.a();
       }
       else
       {
@@ -73,7 +73,7 @@ class TroopHWJsPlugin$CompressImageJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.CompressImageJob
  * JD-Core Version:    0.7.0.1
  */

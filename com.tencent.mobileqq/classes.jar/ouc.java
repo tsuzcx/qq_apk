@@ -1,29 +1,46 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView;
-import com.tencent.mobileqq.widget.AutoFitTextView;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class ouc
-  implements bcjx
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  KanDianUrlRoundCornerImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKanDianUrlRoundCornerImageView;
-  AutoFitTextView jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView;
-  ImageView b;
-  
-  public ouc(oua paramoua) {}
-  
-  public int a()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth();
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoFloatWindowConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    if ((String)paramString.get("readinjoy_tinyvideo_window_switch") != null) {
+      bjxj.b((String)paramString.get("readinjoy_tinyvideo_window_switch"));
+    }
+    paramString = (String)paramString.get("readinjoy_tinyvideo_autoplay_nextvideo");
+    if (paramString != null) {}
+    try
+    {
+      bjxj.d(Integer.parseInt(paramString));
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bjxj.b(null);
+    bjxj.d(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ouc
  * JD-Core Version:    0.7.0.1
  */

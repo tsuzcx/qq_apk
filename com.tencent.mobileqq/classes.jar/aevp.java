@@ -1,27 +1,30 @@
-import android.graphics.Point;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class aevp
+  implements DialogInterface.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private aevf jdField_a_of_type_Aevf;
-  private aevg jdField_a_of_type_Aevg;
-  private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  public aevp(DoodlePanel paramDoodlePanel) {}
   
-  aevp(Point paramPoint, String paramString, boolean paramBoolean, aevg paramaevg, aevf paramaevf, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Aevg = paramaevg;
-    this.jdField_a_of_type_Aevf = paramaevf;
-    this.jdField_a_of_type_Int = paramInt;
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    }
+    if (DoodlePanel.a(this.a) != null) {
+      DoodlePanel.a(this.a).a(false, false);
+    }
+    DoodlePanel.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aevp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.33;
+import android.view.View;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.widget.AdapterView;
 
 public class anvc
-  implements ajkp
+  implements bhqr
 {
-  public anvc(MessengerService.IncomingHandler.33 param33) {}
+  public anvc(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void a(long paramLong, String paramString)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Bundle localBundle = new Bundle();
-    if (paramLong == 0L) {}
-    for (int i = 0;; i = 1)
-    {
-      localBundle.putInt("result", i);
-      localBundle.putString("message", paramString);
-      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
+    this.a.b = paramInt;
   }
+  
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvc
  * JD-Core Version:    0.7.0.1
  */

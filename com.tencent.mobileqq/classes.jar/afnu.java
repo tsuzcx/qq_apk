@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afnu
-  implements View.OnClickListener
+class afnu
+  extends afpq
 {
-  public afnu(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
-  
-  public void onClick(View paramView)
+  afnu(aflj paramaflj)
   {
-    bbbp.a("Grp_contacts_news", "notice", "unnormal_clk", 0, 0, new String[0]);
-    TroopSuspiciousFragment.a(this.a.a);
+    super(paramaflj, null);
+  }
+  
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afij(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afnu
  * JD-Core Version:    0.7.0.1
  */

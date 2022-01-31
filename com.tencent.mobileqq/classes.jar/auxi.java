@@ -1,22 +1,25 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.widget.RoundedImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class auxi
-  extends RecyclerView.ViewHolder
+  extends alko
 {
-  public RoundedImageView a;
-  public boolean a;
-  
-  public auxi(auxg paramauxg, View paramView)
+  public auxi(QQAppInterface paramQQAppInterface)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView = ((RoundedImageView)paramView.findViewById(2131375328));
+    super(paramQQAppInterface);
   }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return auxj.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auxi
  * JD-Core Version:    0.7.0.1
  */

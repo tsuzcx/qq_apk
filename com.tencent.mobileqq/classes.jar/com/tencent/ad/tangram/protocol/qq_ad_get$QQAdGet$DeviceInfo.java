@@ -25,11 +25,15 @@ public final class qq_ad_get$QQAdGet$DeviceInfo
   public String muid;
   public int muid_type = 0;
   public String oaid;
+  public int origin_network_type = 0;
   public int os_type = 0;
   public String os_ver;
   public String qadid;
   public String qq_ver;
   public String taid_ticket;
+  public long wx_api_ver = 0L;
+  public boolean wx_installed = false;
+  public boolean wx_ul = false;
 }
 
 

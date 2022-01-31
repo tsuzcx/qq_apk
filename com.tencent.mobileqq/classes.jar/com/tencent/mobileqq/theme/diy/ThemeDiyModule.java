@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.theme.diy;
 
-import acur;
-import ajya;
+import aemb;
+import alpo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -16,9 +16,9 @@ import android.util.Base64;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.Window;
-import aylt;
-import aymg;
-import aymv;
+import bajp;
+import bakc;
+import bakr;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.model.ChatBackgroundManager;
@@ -39,7 +39,7 @@ public class ThemeDiyModule
   private SparseArray<String> mPageIndexBgMap = new SparseArray();
   private JSONObject mStyle;
   private ThemeDIYData[] mThemeDIYData = ThemeDIYActivity.getDiyData();
-  private aymv mThemeDiyImpl;
+  private bakr mThemeDiyImpl;
   
   public ThemeDiyModule(Context paramContext, AppInterface paramAppInterface)
   {
@@ -68,7 +68,7 @@ public class ThemeDiyModule
     Object localObject3 = ThemeBackground.getSharedPreferences(this.context, this.app.getAccount(), 4).getString(paramString, "null");
     Object localObject1 = "100";
     if ("theme_bg_aio_path".equals(paramString)) {
-      localObject3 = acur.a(this.context, this.app.getAccount(), "");
+      localObject3 = aemb.a(this.context, this.app.getAccount(), "");
     }
     paramString = (String)localObject2;
     if (!"null".equals(localObject3))
@@ -164,7 +164,7 @@ public class ThemeDiyModule
     if (QLog.isColorLevel()) {
       QLog.i("ThemeDiyModule", 2, "saveTheme  themeId:" + str);
     }
-    aymg.a(str, new ThemeDiyModule.1(this, paramJSONObject, paramString));
+    bakc.a(str, new ThemeDiyModule.1(this, paramJSONObject, paramString));
   }
   
   private void setDIYData(int paramInt, String paramString1, String paramString2, String paramString3)
@@ -213,7 +213,7 @@ public class ThemeDiyModule
     if (str.equals(""))
     {
       i = -1;
-      localObject = ajya.a(2131714917);
+      localObject = alpo.a(2131715289);
     }
     for (;;)
     {
@@ -309,8 +309,8 @@ public class ThemeDiyModule
     this.mAlbumPageIndex = paramInt1;
     Object localObject = new ResSuitData.BgSuit(null);
     ((ResSuitData.BgSuit)localObject).id = "99";
-    ((ResSuitData.BgSuit)localObject).resID = 2130845244;
-    ((ResSuitData.BgSuit)localObject).name = ajya.a(2131714899);
+    ((ResSuitData.BgSuit)localObject).resID = 2130845611;
+    ((ResSuitData.BgSuit)localObject).name = alpo.a(2131715271);
     localObject = DIYThemeUtils.getResData(this.app, (ResSuitData)localObject, 121, ((ResSuitData.BgSuit)localObject).id + "." + paramInt1 + "." + System.currentTimeMillis()).path;
     Rect localRect = new Rect();
     paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
@@ -334,7 +334,7 @@ public class ThemeDiyModule
     if (localJSONArray == null)
     {
       if (this.mThemeDiyImpl != null) {
-        this.mThemeDiyImpl.callJs(paramString, new String[] { new aylt(-1, "bginfos is null").a() });
+        this.mThemeDiyImpl.callJs(paramString, new String[] { new bajp(-1, "bginfos is null").a() });
       }
       return;
     }
@@ -393,9 +393,9 @@ public class ThemeDiyModule
     }
   }
   
-  public void setThemeDiyImpl(aymv paramaymv)
+  public void setThemeDiyImpl(bakr parambakr)
   {
-    this.mThemeDiyImpl = paramaymv;
+    this.mThemeDiyImpl = parambakr;
   }
   
   public void trySaveDefineImage(String paramString)
@@ -439,7 +439,7 @@ public class ThemeDiyModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDiyModule
  * JD-Core Version:    0.7.0.1
  */

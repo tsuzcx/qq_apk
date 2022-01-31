@@ -1,54 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
 
 class aiiu
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  aiiu(aiit paramaiit, aksk paramaksk) {}
+  aiiu(aiit paramaiit) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "finish all settings when dialog dismiss");
-    }
-    if (bbfj.g(this.jdField_a_of_type_Aiit.a))
-    {
-      boolean bool1 = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Aiit.a).a();
-      boolean bool2 = QQSpecialFriendSettingActivity.b(this.jdField_a_of_type_Aiit.a).a();
-      paramDialogInterface = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Aiit.a);
-      String str = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Aiit.a);
-      int i = QQSpecialFriendSettingActivity.a(this.jdField_a_of_type_Aiit.a);
-      paramDialogInterface.a(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
-      paramDialogInterface = this.jdField_a_of_type_Aiit.a.a.obtainMessage(8193);
-      paramDialogInterface.obj = this.jdField_a_of_type_Aiit.a.getString(2131699496);
-      this.jdField_a_of_type_Aiit.a.a.sendMessage(paramDialogInterface);
-      if ((bool1) && (bool2))
-      {
-        paramDialogInterface = "0";
-        axqy.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, paramDialogInterface, "", "", "");
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aksk.a();
-      return;
-      paramDialogInterface = "1";
-      break;
-      paramDialogInterface = this.jdField_a_of_type_Aiit.a.a.obtainMessage(8195);
-      paramDialogInterface.arg1 = 0;
-      paramDialogInterface.arg2 = 2131692321;
-      this.jdField_a_of_type_Aiit.a.a.sendMessage(paramDialogInterface);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiiu
  * JD-Core Version:    0.7.0.1
  */

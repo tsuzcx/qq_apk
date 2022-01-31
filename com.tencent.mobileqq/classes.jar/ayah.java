@@ -1,55 +1,24 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.stt.SliceSttManager.SliceSttServet.2;
-import java.io.File;
+import android.view.View;
+import com.tencent.mobileqq.richstatus.comment.widget.CommentsView;
 
 public class ayah
+  extends ayad
 {
-  adbu jdField_a_of_type_Adbu = new ayai(this);
-  private adci jdField_a_of_type_Adci = new adci();
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public MessageForPtt a;
-  private Long jdField_a_of_type_JavaLangLong;
-  public String a;
-  String b;
-  
-  public ayah(ayag paramayag, QQAppInterface paramQQAppInterface, MessageForPtt paramMessageForPtt, Long paramLong)
+  public ayah(CommentsView paramCommentsView, int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangLong = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt = paramMessageForPtt;
+    super(paramInt);
   }
   
-  private void b()
+  public void onClick(View paramView)
   {
-    if (this.b != null)
-    {
-      File localFile = new File(this.b);
-      if (localFile.exists()) {
-        localFile.delete();
-      }
+    if (CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView) != null) {
+      CommentsView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetCommentsView).a(this.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.sttAbility = 2;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.sttText = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.isReadPtt = true;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.serial();
-    this.jdField_a_of_type_Ayag.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.msgData);
-    this.jdField_a_of_type_Ayag.jdField_a_of_type_AndroidOsHandler.post(new SliceSttManager.SliceSttServet.2(this));
-  }
-  
-  public void a()
-  {
-    this.b = MessageForPtt.getTmpFilePath(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath());
-    this.jdField_a_of_type_Adci.a(this.b, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adbu, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin);
-    this.jdField_a_of_type_Adci.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayah
  * JD-Core Version:    0.7.0.1
  */

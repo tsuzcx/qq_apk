@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.multicard;
 
-import assi;
-import assk;
+import aujf;
+import aujh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
@@ -14,7 +14,7 @@ import mqq.os.MqqHandler;
 public class MultiCardManager$1
   implements Runnable
 {
-  public MultiCardManager$1(assi paramassi, ArrayList paramArrayList, long paramLong, assk paramassk) {}
+  public MultiCardManager$1(aujf paramaujf, ArrayList paramArrayList, long paramLong, aujh paramaujh) {}
   
   public void run()
   {
@@ -22,7 +22,7 @@ public class MultiCardManager$1
     Object localObject2;
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      localObject1 = (TroopManager)assi.a(this.this$0).getManager(52);
+      localObject1 = (TroopManager)aujf.a(this.this$0).getManager(52);
       localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (((Iterator)localObject2).hasNext())
       {
@@ -51,7 +51,7 @@ public class MultiCardManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager.1
  * JD-Core Version:    0.7.0.1
  */

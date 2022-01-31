@@ -1,10 +1,23 @@
-public abstract interface wtr
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+
+public final class wtr
+  implements Parcelable.Creator<EditLocalPhotoSource>
 {
-  public abstract void a(boolean paramBoolean);
+  public EditLocalPhotoSource a(Parcel paramParcel)
+  {
+    return new EditLocalPhotoSource(paramParcel);
+  }
+  
+  public EditLocalPhotoSource[] a(int paramInt)
+  {
+    return new EditLocalPhotoSource[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtr
  * JD-Core Version:    0.7.0.1
  */

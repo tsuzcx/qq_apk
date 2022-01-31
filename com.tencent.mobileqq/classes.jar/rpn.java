@@ -1,103 +1,56 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory.Options;
-import android.os.Build.VERSION;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager.EntranceIconInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
 import com.tencent.qphone.base.util.QLog;
 
-public class rpn
+class rpn
+  implements View.OnClickListener
 {
-  public static int a(Bitmap.Config paramConfig)
+  rpn(rpk paramrpk, Activity paramActivity) {}
+  
+  public void onClick(View paramView)
   {
-    int j = 2;
     int i;
-    if (paramConfig == Bitmap.Config.ARGB_8888) {
-      i = 4;
-    }
-    do
+    Bundle localBundle;
+    if (this.jdField_a_of_type_AndroidAppActivity != null)
     {
-      do
+      QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to config feeds");
+      i = bjxj.e();
+      localBundle = new Bundle();
+      if ((paramView instanceof ReadInJoyColorBandEntranceButton))
       {
-        return i;
-        i = j;
-      } while (paramConfig == Bitmap.Config.RGB_565);
-      i = j;
-    } while (paramConfig == Bitmap.Config.ARGB_4444);
-    if (paramConfig == Bitmap.Config.ALPHA_8) {
-      return 1;
+        paramView = ((ReadInJoyColorBandEntranceButton)paramView).a();
+        if (!(paramView instanceof Parcelable)) {
+          break label82;
+        }
+        localBundle.putParcelable("daily_bottom_entry_data", (Parcelable)paramView);
+      }
     }
-    return 1;
-  }
-  
-  @TargetApi(19)
-  public static int a(Bitmap paramBitmap)
-  {
-    if (paramBitmap == null) {
-      return 0;
-    }
-    if (a()) {
-      return paramBitmap.getAllocationByteCount();
-    }
-    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
-    }
-  }
-  
-  public static void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (paramBoolean)
+    label82:
+    while ((i != 3) && (i != 4))
     {
-      RuntimeException localRuntimeException = new RuntimeException("getStack");
-      a(paramString1, paramString2 + " " + localRuntimeException.getStackTrace()[2].getMethodName());
+      localBundle.putInt("daily_bottom_triger_src", 1);
+      rry.a(this.jdField_a_of_type_AndroidAppActivity, localBundle);
+      this.jdField_a_of_type_Rpk.b();
       return;
     }
-    a(paramString1, paramString2);
-  }
-  
-  public static boolean a()
-  {
-    return Build.VERSION.SDK_INT >= 21;
-  }
-  
-  @TargetApi(19)
-  public static boolean a(Bitmap paramBitmap, BitmapFactory.Options paramOptions)
-  {
-    boolean bool = true;
-    if ((paramBitmap == null) || (paramBitmap.isRecycled()) || (!paramBitmap.isMutable())) {
-      bool = false;
-    }
-    do
+    RecommendFeedsDiandianEntranceManager.EntranceIconInfo localEntranceIconInfo = new RecommendFeedsDiandianEntranceManager.EntranceIconInfo();
+    if (i == 4) {}
+    for (paramView = "https://buluo.qq.com/mobile/v2/buluoindex.html?_wv=16778243&_bid=128&_wwv=1&_wvSb=0&_nav_txtclr=00000&from=kdybrk&target=hot&_nav_titleclr=000000&_wvNlb=0xffffff";; paramView = "mqqapi://readinjoy/open?src_type=internal&ispush=1&target=2&readinjoyNotDecodeUrl=1&version=1&channelid=70&channelname=看点关注&channelType=0&changeChannelOrder=true&moveChannelFromSource=0")
     {
-      do
-      {
-        return bool;
-        if ((b()) && (!a(paramOptions))) {
-          break;
-        }
-      } while ((paramBitmap.getWidth() == paramOptions.outWidth) && (paramBitmap.getHeight() == paramOptions.outHeight) && (paramOptions.inSampleSize == 1));
-      return false;
-    } while ((int)Math.ceil(paramOptions.outWidth * 1.0D / paramOptions.inSampleSize) * (int)Math.ceil(paramOptions.outHeight * 1.0D / paramOptions.inSampleSize) * a(paramBitmap.getConfig()) <= paramBitmap.getAllocationByteCount());
-    return false;
-  }
-  
-  public static boolean a(BitmapFactory.Options paramOptions)
-  {
-    return (paramOptions.outWidth > 2048) || (paramOptions.outHeight > 2048);
-  }
-  
-  public static boolean b()
-  {
-    return Build.VERSION.SDK_INT >= 19;
+      localEntranceIconInfo.c = paramView;
+      localBundle.putParcelable("daily_bottom_entry_data", localEntranceIconInfo);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rpn
  * JD-Core Version:    0.7.0.1
  */

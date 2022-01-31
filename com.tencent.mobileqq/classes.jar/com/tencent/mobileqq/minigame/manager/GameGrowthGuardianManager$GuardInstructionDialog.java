@@ -3,10 +3,12 @@ package com.tencent.mobileqq.minigame.manager;
 import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
 import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
-import bbdj;
-import bbgu;
+import bdcd;
+import bdfq;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -75,7 +77,12 @@ abstract class GameGrowthGuardianManager$GuardInstructionDialog
           }
           else if (((INTERFACE.GuardInstruction)localObject2).type.get() == 7)
           {
-            localObject2 = new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppConfig);
+            QLog.d("GameGrowthGuardianManag", 1, "tryBuildAndShow() called with: modal = " + ((INTERFACE.GuardInstruction)localObject2).modal.get());
+            if (((INTERFACE.GuardInstruction)localObject2).modal.get() == 0) {
+              localObject2 = new GameGrowthGuardianManager.GuardInstructionDialogSkippedRealNameAuthenticate((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppConfig);
+            } else {
+              localObject2 = new GameGrowthGuardianManager.GuardInstructionDialogRealNameAuthenticate((INTERFACE.GuardInstruction)localObject2, paramContext, paramMiniAppConfig);
+            }
           }
           else
           {
@@ -93,17 +100,18 @@ abstract class GameGrowthGuardianManager$GuardInstructionDialog
     if ((getContext() == null) || (getGuardInstruction() == null)) {
       return;
     }
-    bbgu localbbgu = bbdj.a(getContext(), 230).setTitle(getGuardInstruction().title.get()).setMessage(getGuardInstruction().msg.get());
+    bdfq localbdfq = bdcd.a(getContext(), 230).setTitle(getGuardInstruction().title.get()).setMessage(getGuardInstruction().msg.get());
     if (getPositiveDialogAction() != null) {
-      localbbgu.setPositiveButton(getPositiveDialogAction().getStringResId(), getPositiveDialogAction().getOnClickListener());
+      localbdfq.setPositiveButton(getPositiveDialogAction().getStringResId(), getPositiveDialogAction().getOnClickListener());
     }
     if (getNegativeDialogAction() != null) {
-      localbbgu.setNegativeButton(getNegativeDialogAction().getStringResId(), getNegativeDialogAction().getOnClickListener());
+      localbdfq.setNegativeButton(getNegativeDialogAction().getStringResId(), getNegativeDialogAction().getOnClickListener());
     }
-    localbbgu.setOnShowListener(new GameGrowthGuardianManager.GuardInstructionDialog.2(this));
-    localbbgu.setOnDismissListener(new GameGrowthGuardianManager.GuardInstructionDialog.3(this));
-    localbbgu.setCancelable(false);
-    localbbgu.show();
+    GameGrowthGuardianManager.GuardInstructionDialog.2 local2 = new GameGrowthGuardianManager.GuardInstructionDialog.2(this);
+    localbdfq.setOnShowListener(new GameGrowthGuardianManager.GuardInstructionDialog.3(this, local2));
+    localbdfq.setOnDismissListener(new GameGrowthGuardianManager.GuardInstructionDialog.4(this, local2));
+    localbdfq.setCancelable(false);
+    localbdfq.show();
   }
   
   public Context getContext()
@@ -131,6 +139,59 @@ abstract class GameGrowthGuardianManager$GuardInstructionDialog
     return null;
   }
   
+  String getReportActionType()
+  {
+    return "sys_alert";
+  }
+  
+  protected String getReportSubActionType()
+  {
+    return null;
+  }
+  
+  protected void onBackgroundForReport()
+  {
+    QLog.d("GameGrowthGuardianManag", 1, "onBackgroundForReport() called");
+    performReport("hide");
+  }
+  
+  protected void onDismissForReport(DialogInterface paramDialogInterface) {}
+  
+  protected void onShowForReport(DialogInterface paramDialogInterface) {}
+  
+  protected void performReport(String paramString)
+  {
+    String str1;
+    String str2;
+    String str3;
+    String str4;
+    if (getGuardInstruction() != null)
+    {
+      str1 = getGuardInstruction().ruleName.get();
+      str2 = String.valueOf(getGuardInstruction().type.get());
+      str3 = String.valueOf(getGuardInstruction().modal.get());
+      str4 = getGuardInstruction().msg.get();
+    }
+    for (;;)
+    {
+      if (this.judgeTimingRsp != null) {}
+      for (String str5 = String.valueOf(this.judgeTimingRsp.nextDuration.get());; str5 = null)
+      {
+        if (getMiniAppConfig() != null) {}
+        for (String str6 = MiniProgramLpReportDC04239.getAppType(getMiniAppConfig());; str6 = null)
+        {
+          MiniProgramLpReportDC04239.report(getMiniAppConfig(), str6, null, getReportActionType(), getReportSubActionType(), paramString, str1, str2, str3, str4, str5);
+          QLog.d("GameGrowthGuardianManag", 1, "performReport called with action = " + getReportActionType() + ",subaction = " + getReportSubActionType() + ",reserves = " + paramString + ",reserves2 = " + str1 + ",reserves3 = " + str2 + ",reserves4 = " + str3 + ",reserves5 = " + str4 + ",reserves6 = " + str5);
+          return;
+        }
+      }
+      str4 = null;
+      str3 = null;
+      str2 = null;
+      str1 = null;
+    }
+  }
+  
   public void setJudgeTimingRsp(INTERFACE.StJudgeTimingRsp paramStJudgeTimingRsp)
   {
     this.judgeTimingRsp = paramStJudgeTimingRsp;
@@ -143,7 +204,7 @@ abstract class GameGrowthGuardianManager$GuardInstructionDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameGrowthGuardianManager.GuardInstructionDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,22 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
 
-public class ahvb
-  implements wxt
+class ahvb
+  implements arld
 {
-  public ahvb(NewFlowCameraActivity paramNewFlowCameraActivity, String paramString1, String paramString2) {}
+  ahvb(ahva paramahva) {}
   
-  public void a(Bundle paramBundle)
+  public void a(int paramInt1, int paramInt2)
   {
-    Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getIntent();
-    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")) && (paramBundle.getInt("head_id") >= 0) && (!TextUtils.isEmpty(paramBundle.getString("video_id"))))
+    if ((paramInt1 == 3) && (paramInt2 == 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e();
-      localIntent.putExtras(paramBundle);
-      localIntent.putExtra("video_path", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("photo_path", this.b);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.setResult(-1, localIntent);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.finish();
-      return;
+      azmj.b(this.a.a.a, "dc00898", "", "", "0X800A0B5", "0X800A0B5", 3, 0, "", "", "", "");
+      ChatHistoryC2CFileFragment.a(this.a.a, true);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e();
-    bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, 1, ajya.a(2131707470), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahvb
  * JD-Core Version:    0.7.0.1
  */

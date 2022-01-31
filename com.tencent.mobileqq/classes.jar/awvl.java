@@ -1,50 +1,89 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Comparator;
-
-class awvl
-  implements Comparator<awoe>
+public class awvl
 {
-  awvl(awvk paramawvk) {}
+  public int a;
+  public String a;
+  private boolean a;
+  private int jdField_b_of_type_Int = -1;
+  private String jdField_b_of_type_JavaLangString = "";
+  private boolean jdField_b_of_type_Boolean = true;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString = "";
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString = "";
   
-  public int a(awoe paramawoe1, awoe paramawoe2)
+  public awvl()
   {
-    int i = -1;
-    paramawoe1 = (awps)paramawoe1;
-    paramawoe2 = (awps)paramawoe2;
-    ajxl localajxl = (ajxl)this.a.a.getManager(51);
-    boolean bool1 = localajxl.b((String)paramawoe1.a());
-    boolean bool2 = localajxl.b((String)paramawoe2.a());
-    if ((!bool1) && (!bool2))
-    {
-      bool1 = localajxl.d((String)paramawoe1.a());
-      bool2 = localajxl.d((String)paramawoe2.a());
-      if ((!bool1) && (!bool2)) {
-        return paramawoe2.f() - paramawoe1.f();
-      }
-      if (bool1 != bool2)
-      {
-        if (bool2) {
-          return -1;
-        }
-        return 1;
-      }
-      return paramawoe2.f() - paramawoe1.f();
-    }
-    if (bool1 != bool2)
-    {
-      if (bool2) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
-    }
-    return paramawoe2.f() - paramawoe1.f();
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public awvk a()
+  {
+    return new awvk(this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_d_of_type_JavaLangString, this.jdField_d_of_type_Int, this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public awvl a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public awvl a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public awvl a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public awvl b(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public awvl b(String paramString)
+  {
+    this.jdField_d_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public awvl b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    return this;
+  }
+  
+  public awvl c(int paramInt)
+  {
+    this.jdField_d_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public awvl c(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public awvl d(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public awvl d(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awvl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,10 @@
-import android.content.Context;
-
-public class ahql
-  extends ahpz
+public abstract interface ahql
 {
-  public ahql(Context paramContext)
-  {
-    this.a = paramContext.getString(2131698526);
-    this.b = this.a;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahql
  * JD-Core Version:    0.7.0.1
  */

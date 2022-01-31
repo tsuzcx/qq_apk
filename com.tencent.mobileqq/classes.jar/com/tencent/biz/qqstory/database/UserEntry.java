@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class UserEntry
-  extends auko
+  extends awbv
 {
   public long dbCacheTime = -1L;
   public int fansCount;
@@ -26,7 +26,7 @@ public class UserEntry
   public int shareGroupCount;
   public int sourceTagType = -2147483648;
   public String symbolUrl;
-  @aumc
+  @awdj
   public String unionId;
   public int videoCount;
   public String wsSchema;
@@ -43,7 +43,7 @@ public class UserEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.UserEntry
  * JD-Core Version:    0.7.0.1
  */

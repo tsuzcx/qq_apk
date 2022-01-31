@@ -1,87 +1,48 @@
-import java.lang.ref.WeakReference;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import tencent.im.cs.group_file_common.group_file_common.FileInfo;
 
-public class bbte<E>
+class bbte
+  extends ypo
 {
-  private HashMap<String, CopyOnWriteArrayList<E>> a = new HashMap();
+  bbte(bbtc parambbtc) {}
   
-  public List<E> a(String paramString)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    try
+    if ((!paramBoolean) || (paramFileInfo == null)) {}
+    Object localObject2;
+    Object localObject1;
+    do
     {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.get(paramString);
-      paramString = localCopyOnWriteArrayList;
-      if (localCopyOnWriteArrayList == null) {
-        paramString = Collections.emptyList();
-      }
-      return paramString;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString, E paramE)
-  {
-    try
-    {
-      CopyOnWriteArrayList localCopyOnWriteArrayList2 = (CopyOnWriteArrayList)this.a.get(paramString);
-      CopyOnWriteArrayList localCopyOnWriteArrayList1 = localCopyOnWriteArrayList2;
-      if (localCopyOnWriteArrayList2 == null)
+      do
       {
-        localCopyOnWriteArrayList1 = new CopyOnWriteArrayList();
-        this.a.put(paramString, localCopyOnWriteArrayList1);
-      }
-      localCopyOnWriteArrayList1.add(paramE);
-      return;
-    }
-    finally {}
-  }
-  
-  public void a(String paramString, Object paramObject, boolean paramBoolean)
-  {
-    try
-    {
-      paramString = (CopyOnWriteArrayList)this.a.get(paramString);
-      if (paramString != null)
-      {
-        if (paramBoolean)
+        do
         {
-          Iterator localIterator = paramString.iterator();
-          while (localIterator.hasNext())
+          do
           {
-            Object localObject1 = localIterator.next();
-            Object localObject2 = ((WeakReference)localObject1).get();
-            if ((localObject2 == null) || (localObject2 == paramObject)) {
-              paramString.remove(localObject1);
-            }
+            return;
+            localObject2 = paramFileInfo.str_file_id.get();
+          } while (TextUtils.isEmpty((CharSequence)localObject2));
+          localObject1 = localObject2;
+          if (!((String)localObject2).startsWith("/")) {
+            localObject1 = "/" + (String)localObject2;
           }
-        }
-        paramString.remove(paramObject);
-      }
-    }
-    finally {}
-  }
-  
-  public List<E> b(String paramString)
-  {
-    try
-    {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.remove(paramString);
-      paramString = localCopyOnWriteArrayList;
-      if (localCopyOnWriteArrayList == null) {
-        paramString = Collections.emptyList();
-      }
-      return paramString;
-    }
-    finally {}
+        } while (!((String)localObject1).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath));
+        bbrc.c("TroopFileUploadFeedsSender", bbrc.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onGetOneFileResult. bus_id:" + paramFileInfo.uint32_bus_id.get() + " dead_time:" + paramFileInfo.uint32_dead_time.get());
+        localObject2 = bbra.a(this.a.d);
+      } while (localObject2 == null);
+      localObject1 = ((bcil)localObject2).a((String)localObject1);
+    } while (localObject1 == null);
+    ((bbnr)localObject1).a = paramFileInfo.uint32_bus_id.get();
+    ((bbnr)localObject1).c = paramFileInfo.uint32_dead_time.get();
+    ((bcil)localObject2).d((bbnr)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbte
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,37 @@
-import android.view.View;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
-class autx
-  implements bfph
+public class autx
+  implements behy<oidb_0x8e4.RspBody>
 {
-  autx(autv paramautv, PersonalityLabelInfo paramPersonalityLabelInfo, bfpc parambfpc) {}
+  public autx(GameRoomInviteActivity paramGameRoomInviteActivity, String paramString1, String paramString2) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    switch (paramInt)
+    GameRoomInviteActivity localGameRoomInviteActivity;
+    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
     {
+      localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+      if ((paramRspBody.uint64_leader_uin.has()) && (paramRspBody.uint64_leader_uin.get() != this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {
+        break label94;
+      }
     }
-    for (;;)
+    label94:
+    for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Bfpc.e();
+      localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), this.jdField_a_of_type_JavaLangString, this.b);
       return;
-      autv.a(this.jdField_a_of_type_Autv, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
-      continue;
-      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_Autv.a, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo.id);
-      this.jdField_a_of_type_Autv.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     autx
  * JD-Core Version:    0.7.0.1
  */

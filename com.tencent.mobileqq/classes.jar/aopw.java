@@ -1,72 +1,93 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.7.1;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-public class aopw
-  implements bfph
+public abstract class aopw<T>
+  extends aofy<T>
 {
-  public aopw(UniformDownloadActivity paramUniformDownloadActivity) {}
+  @NonNull
+  public abstract T a();
   
-  public void OnClick(View paramView, int paramInt)
+  @NonNull
+  public T a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_Bfpc == null) {
-      return;
-    }
-    if (paramView != null)
-    {
-      paramView = this.a.jdField_a_of_type_Bfpc.a(paramInt);
-      if (!TextUtils.isEmpty(paramView))
-      {
-        if ((!paramView.equals(this.a.getResources().getString(2131691923))) && (!paramView.equals(this.a.getResources().getString(2131691924)))) {
-          break label270;
-        }
-        axqy.b(null, "dc00898", "", "", "0X8008F87", "0X8008F87", 1, 0, "", "", "", "");
-        if (!UniformDownloadActivity.a(this.a)) {
-          break label241;
-        }
-        if (!bdkw.g()) {
-          break label231;
-        }
-        bdkd.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3007", false);
-        paramView = UniformDownloadActivity.a(this.a);
-        UniformDownloadActivity.a(this.a, paramView);
-        paramView = UniformDownloadActivity.a(this.a, paramView);
-        if (QLog.isColorLevel()) {
-          QLog.d(UniformDownloadActivity.jdField_a_of_type_JavaLangString, 2, "tmastUrl=" + paramView);
-        }
-        UniformDownloadActivity.a(this.a, paramView);
-        UniformDownloadActivity.b(this.a);
-        this.a.finish();
-        this.a.overridePendingTransition(0, 0);
-      }
+    Object localObject1 = null;
+    if (paramInt == 1) {
+      localObject1 = a();
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      label231:
-      UniformDownloadActivity.c(this.a);
-      continue;
-      label241:
-      UniformDownloadActivity.b(this.a).setVisibility(0);
-      ThreadManager.getSubThreadHandler().post(new UniformDownloadActivity.7.1(this));
-      continue;
-      label270:
-      if ((paramView.equals(this.a.getResources().getString(2131691922))) || (paramView.equals(this.a.getResources().getString(2131690141))) || (paramView.equals(this.a.getResources().getString(2131690140)))) {
-        UniformDownloadActivity.c(this.a);
+      Object localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        xmh.a(getClass().getName() + ".migrateOldOrDefaultContent return null!! type=" + paramInt, new Object[0]);
+        localObject2 = b();
+      }
+      return localObject2;
+      if (paramInt == 0) {
+        localObject1 = b();
+      } else {
+        xmh.a(getClass().getName() + ".migrateOldOrDefaultContent illegal type: " + paramInt, new Object[0]);
       }
     }
+  }
+  
+  @NonNull
+  public abstract T a(@NonNull aogf[] paramArrayOfaogf);
+  
+  public void a(int paramInt)
+  {
+    wsv.e("QVipConfigProcessor", getClass().getName() + ".onReqFailed: " + paramInt);
+  }
+  
+  public void a(T paramT)
+  {
+    wsv.d("QVipConfigProcessor", getClass().getName() + ".onUpdate: " + paramT);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  @NonNull
+  public abstract T b();
+  
+  @Nullable
+  public T b(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0))
+    {
+      wsv.e("QVipConfigProcessor", getClass().getName() + ".onParsed error: confFiles is empty");
+      paramArrayOfaogf = b();
+      if (paramArrayOfaogf != null) {}
+      for (boolean bool = true;; bool = false)
+      {
+        xmh.a(bool, getClass().getName() + ".onParsed error: confFiles is empty");
+        return paramArrayOfaogf;
+      }
+    }
+    wsv.d("QVipConfigProcessor", getClass().getName() + ".parsed content count=" + paramArrayOfaogf.length);
+    return a(paramArrayOfaogf);
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aopw
  * JD-Core Version:    0.7.0.1
  */

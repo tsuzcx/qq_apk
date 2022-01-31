@@ -1,30 +1,41 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.image.ApngImage;
-import dov.com.qq.im.ae.play.AEPlayShowTabView;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
-class bixk
-  extends ViewPager.SimpleOnPageChangeListener
+final class bixk
+  extends biwh
 {
-  bixk(bixi parambixi) {}
+  bixk(Context paramContext) {}
   
-  public void onPageScrollStateChanged(int paramInt)
+  public void b(@NonNull biwi parambiwi)
   {
-    if (paramInt == 0)
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.e("Utility", 2, "-->getEntryControl:connection recv data!");
+    }
+    parambiwi = parambiwi.a();
+    boolean bool1 = bool2;
+    if (parambiwi != null)
     {
-      ApngImage.resumeAll();
+      parambiwi = bixj.a("on_off", parambiwi);
+      if (parambiwi == null) {
+        bool1 = bool2;
+      }
+    }
+    else
+    {
+      bixi.a(this.a, bool1);
       return;
     }
-    ApngImage.pauseAll();
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    bixi.a(this.a).a(paramInt);
+    if (((Integer)parambiwi).intValue() == 1) {}
+    for (bool1 = true;; bool1 = false) {
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bixk
  * JD-Core Version:    0.7.0.1
  */

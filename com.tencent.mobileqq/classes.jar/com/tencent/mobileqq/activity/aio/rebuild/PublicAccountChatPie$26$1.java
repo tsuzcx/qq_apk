@@ -1,22 +1,25 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aert;
-import aesl;
-import com.tencent.biz.ui.CustomMenuBar;
+import agot;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 
-public class PublicAccountChatPie$26$1
+class PublicAccountChatPie$26$1
   implements Runnable
 {
-  public PublicAccountChatPie$26$1(aesl paramaesl) {}
+  PublicAccountChatPie$26$1(PublicAccountChatPie.26 param26) {}
   
   public void run()
   {
-    this.a.a.a.clearAnimation();
+    Intent localIntent = new Intent();
+    localIntent.putExtra("isNeedFinish", true);
+    this.a.this$0.a.setResult(-1, localIntent);
+    this.a.this$0.I();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.26.1
  * JD-Core Version:    0.7.0.1
  */

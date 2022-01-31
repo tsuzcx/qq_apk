@@ -1,12 +1,21 @@
-public abstract interface bksh
+import android.support.annotation.NonNull;
+
+public class bksh
 {
-  public abstract void invalidate();
+  public String a;
+  public boolean a;
+  public String b = "null";
+  public String c = "null";
   
-  public abstract void postInvalidate();
+  @NonNull
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangString + ", ready=" + this.jdField_a_of_type_Boolean + ", extraInfo=" + this.c + ", error=" + this.b;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bksh
  * JD-Core Version:    0.7.0.1
  */

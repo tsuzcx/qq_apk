@@ -1,27 +1,23 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.DownloadBarInfo;
 
-class nsn
-  implements ViewBase.OnClickListener
+public final class nsn
+  implements Parcelable.Creator<VideoInfo.DownloadBarInfo>
 {
-  nsn(nsm paramnsm) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public VideoInfo.DownloadBarInfo a(Parcel paramParcel)
   {
-    if (paramViewBase.getEventAttachedData() == null)
-    {
-      QLog.e("DailyHeaderViewController", 1, "[onClick] attach event data is null");
-      return;
-    }
-    nsc.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject);
-    onh.a(paramViewBase.getNativeView().getContext(), paramViewBase.getEventAttachedData());
+    return new VideoInfo.DownloadBarInfo(paramParcel);
+  }
+  
+  public VideoInfo.DownloadBarInfo[] a(int paramInt)
+  {
+    return new VideoInfo.DownloadBarInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nsn
  * JD-Core Version:    0.7.0.1
  */

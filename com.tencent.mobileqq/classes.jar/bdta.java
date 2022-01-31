@@ -1,96 +1,46 @@
-import com.tencent.qg.sdk.log.IQLog;
+import android.graphics.Rect;
 
 public class bdta
-  implements IQLog
 {
-  private static String a(String paramString, Object... paramVarArgs)
+  private bdsv jdField_a_of_type_Bdsv;
+  private bdsx jdField_a_of_type_Bdsx;
+  
+  public bdta(bdsv parambdsv, bdsx parambdsx)
   {
-    return String.format(null, paramString, paramVarArgs);
+    this.jdField_a_of_type_Bdsv = parambdsv;
+    this.jdField_a_of_type_Bdsx = parambdsx;
   }
   
-  public void a(String paramString1, String paramString2)
+  public void a()
   {
-    ved.c(paramString1, paramString2);
+    this.jdField_a_of_type_Bdsv.a(new bdtb(this));
+    b();
   }
   
-  public void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public void a(int paramInt1, int paramInt2)
   {
-    ved.b(paramString1, paramString2, paramThrowable);
+    this.jdField_a_of_type_Bdsx.a(new Rect(0, 0, paramInt1, paramInt2));
   }
   
-  public void d(String paramString1, String paramString2)
+  public void b()
   {
-    ved.b(paramString1, paramString2);
+    this.jdField_a_of_type_Bdsv.a();
   }
   
-  public void d(String paramString1, String paramString2, Throwable paramThrowable)
+  public void c()
   {
-    ved.a(paramString1, paramString2, paramThrowable);
+    this.jdField_a_of_type_Bdsv.b();
   }
   
-  public void d(String paramString1, String paramString2, Object... paramVarArgs)
+  public void d()
   {
-    ved.b(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    ved.e(paramString1, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    ved.c(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    ved.c(paramString1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    ved.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void i(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    ved.c(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void v(String paramString1, String paramString2)
-  {
-    ved.a(paramString1, paramString2);
-  }
-  
-  public void v(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    ved.a(paramString1, paramString2, new Object[] { paramThrowable });
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    ved.c(paramString1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    ved.b(paramString1, paramString2, paramThrowable);
-  }
-  
-  public void w(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    ved.d(paramString1, a(paramString2, paramVarArgs));
-  }
-  
-  public void w(String paramString, Throwable paramThrowable)
-  {
-    ved.b(paramString, "", paramThrowable);
+    this.jdField_a_of_type_Bdsv.a(null);
+    this.jdField_a_of_type_Bdsx.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdta
  * JD-Core Version:    0.7.0.1
  */

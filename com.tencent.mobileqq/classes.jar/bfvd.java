@@ -1,65 +1,237 @@
-import android.graphics.Camera;
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.tencent.widget.QzoneAutoVerticalScrollTextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.MessageMicro<*>;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.Cryptor;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_head.Head;
+import tencent.im.msg.im_msg_head.HttpConnHead;
+import tencent.im.msg.im_msg_head.LoginSig;
 
-public class bfvd
-  extends Animation
+public abstract class bfvd
+  extends alko
 {
-  private float jdField_a_of_type_Float;
-  private Camera jdField_a_of_type_AndroidGraphicsCamera;
-  private final boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private final boolean jdField_b_of_type_Boolean;
+  private bapv jdField_a_of_type_Bapv;
+  private bfvc jdField_a_of_type_Bfvc;
+  public bfvh a;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private List<bfvg> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   
-  public bfvd(QzoneAutoVerticalScrollTextView paramQzoneAutoVerticalScrollTextView, boolean paramBoolean1, boolean paramBoolean2)
+  protected bfvd(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Bfvh = new bfve(this);
+    this.jdField_a_of_type_Bfvc = ((bfvc)paramQQAppInterface.a(104));
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Bfvh);
+    this.jdField_a_of_type_Bapv = paramQQAppInterface.getNetEngine(0);
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  private int a(int paramInt1, MessageMicro<?> paramMessageMicro, boolean paramBoolean, int paramInt2, Object paramObject)
   {
-    float f1 = this.jdField_a_of_type_Float;
-    float f2 = this.jdField_b_of_type_Float;
-    Camera localCamera = this.jdField_a_of_type_AndroidGraphicsCamera;
-    int i;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      i = 1;
-      paramTransformation = paramTransformation.getMatrix();
-      localCamera.save();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label99;
+    int i = 1;
+    String str = this.jdField_a_of_type_Bfvc.a();
+    if (this.jdField_a_of_type_Bfvc.a() == null) {
+      if (paramBoolean) {
+        i = 2;
       }
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * (paramFloat - 1.0F), 0.0F);
     }
-    for (;;)
+    do
     {
-      localCamera.getMatrix(paramTransformation);
-      localCamera.restore();
-      paramTransformation.preTranslate(-f1, -f2);
-      paramTransformation.postTranslate(f1, f2);
-      return;
-      i = -1;
-      break;
-      label99:
-      localCamera.translate(0.0F, i * this.jdField_b_of_type_Float * paramFloat, 0.0F);
+      do
+      {
+        do
+        {
+          return i;
+        } while (this.jdField_a_of_type_Bfvc.a(paramInt1, paramMessageMicro, paramInt2, paramObject));
+        return 3;
+        if (this.jdField_a_of_type_Bfvc.b() != null) {
+          break;
+        }
+        if (paramBoolean) {
+          return 4;
+        }
+      } while (this.jdField_a_of_type_Bfvc.a(paramInt1, paramMessageMicro, paramInt2, paramObject));
+      return 5;
+      if ((str != null) && (str.length() != 0)) {
+        break;
+      }
+      if (paramBoolean) {
+        return 6;
+      }
+    } while (this.jdField_a_of_type_Bfvc.a(paramInt1, paramMessageMicro, paramInt2, paramObject));
+    return 7;
+    return 0;
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (localIterator.hasNext())
+        {
+          bfvg localbfvg = (bfvg)localIterator.next();
+          a(localbfvg.a(), localbfvg.a(), true, localbfvg.b(), localbfvg.a());
+        }
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
     }
   }
   
-  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void a(int paramInt1, MessageMicro<?> paramMessageMicro, boolean paramBoolean, int paramInt2, Object paramObject)
   {
-    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_AndroidGraphicsCamera = new Camera();
-    this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView.getHeight();
-    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView.getWidth();
+    int i = a(paramInt1, paramMessageMicro, paramBoolean, paramInt2, paramObject);
+    if (i == 1)
+    {
+      QLog.d("BigDataHandler", 1, "We will wait getIPList call back to do bigData Req" + paramInt1);
+      if (!paramBoolean) {
+        synchronized (this.jdField_a_of_type_JavaLangObject)
+        {
+          this.jdField_a_of_type_JavaUtilList.add(new bfvg(paramInt1, paramMessageMicro, paramInt2, paramObject));
+          return;
+        }
+      }
+    }
+    else
+    {
+      if (i != 0)
+      {
+        QLog.d("BigDataHandler", 1, "USER command get key error status: " + i);
+        a(paramInt1, false, null, paramInt2, paramObject);
+        return;
+      }
+      long l;
+      Object localObject2;
+      try
+      {
+        l = Long.parseLong(this.app.getCurrentAccountUin());
+        localObject2 = new Cryptor().encrypt(paramMessageMicro.toByteArray(), this.jdField_a_of_type_Bfvc.a());
+        paramMessageMicro = new String();
+        i = 0;
+        while (i < "8.3.3".length())
+        {
+          ??? = paramMessageMicro;
+          if ("8.3.3".charAt(i) != '.') {
+            ??? = paramMessageMicro.concat(Character.toString("8.3.3".charAt(i)));
+          }
+          i += 1;
+          paramMessageMicro = (MessageMicro<?>)???;
+        }
+        ??? = new im_msg_head.LoginSig();
+      }
+      catch (Exception paramMessageMicro)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BigDataHandler", 2, paramInt1 + " uin case long fail");
+        }
+        a(paramInt1, false, null, paramInt2, paramObject);
+        return;
+      }
+      ((im_msg_head.LoginSig)???).uint32_type.set(22);
+      ((im_msg_head.LoginSig)???).bytes_sig.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_Bfvc.b()));
+      Object localObject3 = new im_msg_head.HttpConnHead();
+      ((im_msg_head.HttpConnHead)localObject3).uint64_uin.set(l);
+      ((im_msg_head.HttpConnHead)localObject3).uint32_command.set(1791);
+      ((im_msg_head.HttpConnHead)localObject3).uint32_sub_command.set(paramInt2);
+      ((im_msg_head.HttpConnHead)localObject3).uint32_seq.set(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet());
+      ((im_msg_head.HttpConnHead)localObject3).uint32_version.set(Integer.parseInt(paramMessageMicro));
+      ((im_msg_head.HttpConnHead)localObject3).uint32_flag.set(1);
+      ((im_msg_head.HttpConnHead)localObject3).uint32_compress_type.set(0);
+      ((im_msg_head.HttpConnHead)localObject3).uint32_error_code.set(0);
+      paramMessageMicro = new im_msg_head.Head();
+      paramMessageMicro.uint32_head_type.set(4);
+      paramMessageMicro.msg_login_sig.set((MessageMicro)???);
+      paramMessageMicro.msg_httpconn_head.set((MessageMicro)localObject3);
+      ??? = paramMessageMicro.toByteArray();
+      paramMessageMicro = new ByteArrayOutputStream();
+      try
+      {
+        localObject3 = new DataOutputStream(paramMessageMicro);
+        ((DataOutputStream)localObject3).write(40);
+        ((DataOutputStream)localObject3).writeInt(???.length);
+        ((DataOutputStream)localObject3).writeInt(localObject2.length);
+        ((DataOutputStream)localObject3).write((byte[])???);
+        ((DataOutputStream)localObject3).write((byte[])localObject2);
+        ((DataOutputStream)localObject3).write(41);
+        ((DataOutputStream)localObject3).flush();
+        ??? = this.jdField_a_of_type_Bfvc.a();
+        ??? = (String)??? + "cgi-bin/httpconn";
+        paramMessageMicro = paramMessageMicro.toByteArray();
+        localObject2 = new baps();
+        ((baps)localObject2).a(paramObject);
+        ((baps)localObject2).jdField_a_of_type_ArrayOfByte = paramMessageMicro;
+        ((baps)localObject2).jdField_a_of_type_Bapx = new bfvf(paramInt1, this, this.jdField_a_of_type_Bfvc.a(), paramInt2, paramObject);
+        ((baps)localObject2).jdField_a_of_type_JavaLangString = ((String)???);
+        ((baps)localObject2).jdField_a_of_type_Int = 1;
+        ((baps)localObject2).jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
+        if (this.jdField_a_of_type_Bapv != null)
+        {
+          this.jdField_a_of_type_Bapv.a((baqv)localObject2);
+          return;
+        }
+      }
+      catch (Exception paramMessageMicro)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BigDataHandler", 2, paramMessageMicro.getMessage());
+        }
+        a(paramInt1, false, null, paramInt2, paramObject);
+      }
+    }
   }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (localIterator.hasNext())
+        {
+          bfvg localbfvg = (bfvg)localIterator.next();
+          a(localbfvg.a(), false, null, localbfvg.b(), localbfvg.a());
+        }
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+    }
+  }
+  
+  public void a(int paramInt1, MessageMicro<?> paramMessageMicro, int paramInt2, Object paramObject)
+  {
+    a(paramInt1, paramMessageMicro, false, paramInt2, paramObject);
+  }
+  
+  protected abstract void a(int paramInt1, boolean paramBoolean, byte[] paramArrayOfByte, int paramInt2, Object paramObject);
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.app != null) {
+      this.app.removeObserver(this.jdField_a_of_type_Bfvh);
+    }
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfvd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,31 @@
-import android.os.Handler.Callback;
-import android.os.Message;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
-class bjcd
-  implements Handler.Callback
+public class bjcd
+  implements URLDrawable.URLDrawableListener
 {
-  bjcd(bjcb parambjcb) {}
+  public bjcd(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMessage.obj instanceof bjcj)) {
-        paramMessage = (bjcj)paramMessage.obj;
-      }
-    }
+    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "onLoadFialed");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    QzoneVerticalVideoDownloadActivity.access$100(this.a).setImageDrawable(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjcd
  * JD-Core Version:    0.7.0.1
  */

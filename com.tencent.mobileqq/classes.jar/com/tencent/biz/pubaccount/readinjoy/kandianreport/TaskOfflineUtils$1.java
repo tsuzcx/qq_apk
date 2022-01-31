@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import mzb;
+import nbv;
 
 final class TaskOfflineUtils$1
   implements Runnable
@@ -13,7 +13,7 @@ final class TaskOfflineUtils$1
   {
     try
     {
-      mzb.a(this.val$bid, BaseApplicationImpl.getApplication().getRuntime(), new TaskOfflineUtils.TaskAsyncBack(this.val$bid, this.val$supportVersion, this.val$offlineCallBack), true, 5, true);
+      nbv.a(this.val$bid, BaseApplicationImpl.getApplication().getRuntime(), new TaskOfflineUtils.TaskAsyncBack(this.val$bid, this.val$supportVersion, this.val$offlineCallBack), true, 5, true);
       return;
     }
     catch (Throwable localThrowable)
@@ -24,7 +24,7 @@ final class TaskOfflineUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskOfflineUtils.1
  * JD-Core Version:    0.7.0.1
  */

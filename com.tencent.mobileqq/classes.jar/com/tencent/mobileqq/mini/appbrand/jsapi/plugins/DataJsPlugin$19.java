@@ -1,25 +1,21 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import org.json.JSONObject;
 
 class DataJsPlugin$19
-  implements InternalJSPlugin.openUrlCallback
+  implements Runnable
 {
-  DataJsPlugin$19(DataJsPlugin paramDataJsPlugin, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
+  DataJsPlugin$19(DataJsPlugin paramDataJsPlugin, JSONObject paramJSONObject, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
   
-  public void openResult(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, null, this.val$callbackId);
-      return;
-    }
-    this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, paramString, this.val$callbackId);
+    InternalJSPlugin.openUrl(this.val$jsonObject, this.this$0.jsPluginEngine, new DataJsPlugin.19.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.DataJsPlugin.19
  * JD-Core Version:    0.7.0.1
  */

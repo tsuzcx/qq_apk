@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aedj;
+import afzx;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import com.tencent.image.URLDrawable;
@@ -11,11 +11,11 @@ import java.io.File;
 public class TroopGiftMsgItemBuilder$2
   implements Runnable
 {
-  public TroopGiftMsgItemBuilder$2(aedj paramaedj, BubbleImageView paramBubbleImageView, String paramString, int paramInt) {}
+  public TroopGiftMsgItemBuilder$2(afzx paramafzx, BubbleImageView paramBubbleImageView, String paramString, int paramInt) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag(2131372729).equals(this.jdField_a_of_type_JavaLangString))
+    if (this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag(2131373085).equals(this.jdField_a_of_type_JavaLangString))
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(this.jdField_a_of_type_Int);
@@ -27,7 +27,7 @@ public class TroopGiftMsgItemBuilder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

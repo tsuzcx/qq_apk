@@ -2,8 +2,8 @@ package dov.com.qq.im;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import bihu;
-import bjrl;
+import bkjq;
+import bmcv;
 import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
 class QIMReadinjoyEffectsCameraCaptureUnit$2$1
@@ -13,13 +13,13 @@ class QIMReadinjoyEffectsCameraCaptureUnit$2$1
   
   public void run()
   {
-    this.a.this$0.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setRecordTipsWording(this.a.this$0.jdField_a_of_type_Bjrl.a().getResources().getString(2131699474));
+    this.a.this$0.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setRecordTipsWording(this.a.this$0.jdField_a_of_type_Bmcv.a().getResources().getString(2131699827));
     this.a.this$0.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.QIMReadinjoyEffectsCameraCaptureUnit.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
-import java.util.List;
+import android.widget.TextView;
 
-public abstract interface autf
+class autf
 {
-  public abstract void a(long paramLong, aute paramaute);
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public abstract void a(List<PersonalityLabelPhoto> paramList, long paramLong);
+  autf(aute paramaute) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     autf
  * JD-Core Version:    0.7.0.1
  */

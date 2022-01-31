@@ -10,18 +10,24 @@ public final class C2CMsgReadedNotify
   public long lBindedUin;
   public long lFlag;
   public long lLastReadTime;
+  public long lLastReadTime_qms;
   public long lPeerUin;
   public String strPhoneNum = "";
+  public long uAioType;
+  public long uint64_to_tiny_id;
   
   public C2CMsgReadedNotify() {}
   
-  public C2CMsgReadedNotify(long paramLong1, long paramLong2, long paramLong3, String paramString, long paramLong4)
+  public C2CMsgReadedNotify(long paramLong1, long paramLong2, long paramLong3, String paramString, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
     this.lPeerUin = paramLong1;
     this.lLastReadTime = paramLong2;
     this.lFlag = paramLong3;
     this.strPhoneNum = paramString;
     this.lBindedUin = paramLong4;
+    this.lLastReadTime_qms = paramLong5;
+    this.uAioType = paramLong6;
+    this.uint64_to_tiny_id = paramLong7;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -31,6 +37,9 @@ public final class C2CMsgReadedNotify
     this.lFlag = paramJceInputStream.read(this.lFlag, 2, false);
     this.strPhoneNum = paramJceInputStream.readString(3, false);
     this.lBindedUin = paramJceInputStream.read(this.lBindedUin, 4, false);
+    this.lLastReadTime_qms = paramJceInputStream.read(this.lLastReadTime_qms, 5, false);
+    this.uAioType = paramJceInputStream.read(this.uAioType, 6, false);
+    this.uint64_to_tiny_id = paramJceInputStream.read(this.uint64_to_tiny_id, 7, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -42,6 +51,9 @@ public final class C2CMsgReadedNotify
       paramJceOutputStream.write(this.strPhoneNum, 3);
     }
     paramJceOutputStream.write(this.lBindedUin, 4);
+    paramJceOutputStream.write(this.lLastReadTime_qms, 5);
+    paramJceOutputStream.write(this.uAioType, 6);
+    paramJceOutputStream.write(this.uint64_to_tiny_id, 7);
   }
 }
 

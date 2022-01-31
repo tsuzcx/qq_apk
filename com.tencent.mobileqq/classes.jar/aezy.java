@@ -1,24 +1,18 @@
-import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
-
 class aezy
-  extends GridLayoutManager.SpanSizeLookup
+  implements alhj
 {
   aezy(aezx paramaezx) {}
   
-  public int getSpanSize(int paramInt)
+  public void a(boolean paramBoolean, akty paramakty)
   {
-    switch (this.a.getItemViewType(paramInt))
-    {
-    case 1: 
-    default: 
-      return 1;
+    if ((paramBoolean) && (paramakty != null)) {
+      paramakty.f();
     }
-    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,46 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import android.graphics.Bitmap;
 
 public class awiy
-  implements Manager
 {
-  public static final String a;
-  public static final String b = ajya.a(2131713682);
-  public static final String c = ajya.a(2131713681);
-  public static final String d = ajya.a(2131713684);
-  int jdField_a_of_type_Int = -1;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public int b;
+  public Bitmap b;
+  public String b;
+  public int c;
+  public Bitmap c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public String h;
   
-  static
+  public awiy() {}
+  
+  public awiy(Bitmap paramBitmap, String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5)
   {
-    jdField_a_of_type_JavaLangString = ajya.a(2131713683);
-  }
-  
-  public awiy(QQAppInterface paramQQAppInterface) {}
-  
-  public void onDestroy()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_e_of_type_JavaLangString = paramString1;
+    this.jdField_f_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString3;
+    this.c = paramInt3;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_e_of_type_Int = paramInt4;
+    this.jdField_f_of_type_Int = paramInt5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awiy
  * JD-Core Version:    0.7.0.1
  */

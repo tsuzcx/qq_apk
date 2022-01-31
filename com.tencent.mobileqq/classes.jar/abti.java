@@ -1,38 +1,28 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class abti
+class abti
+  extends nac
 {
-  public PublicAccountInfo a;
-  public String a;
-  public String b = "";
+  abti(abtg paramabtg, abts paramabts, JSONObject paramJSONObject, absf paramabsf) {}
   
-  public abti(PublicAccountInfo paramPublicAccountInfo)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    if (QLog.isColorLevel()) {
+      QLog.i(abtg.a, 2, "onResult appid=" + abtg.b(this.jdField_a_of_type_Abtg).a + ", openid=" + this.jdField_a_of_type_Abts.a + ", openkey=" + this.jdField_a_of_type_Abts.b + ", code=" + paramInt + ", req param=" + this.jdField_a_of_type_OrgJsonJSONObject);
     }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      abvm.a(this.jdField_a_of_type_Absf, paramInt, "reportScore result error, try again");
+      return;
     }
-    this.b = str;
+    abvm.a(this.jdField_a_of_type_Absf, absh.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abti
  * JD-Core Version:    0.7.0.1
  */

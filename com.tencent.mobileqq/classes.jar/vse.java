@@ -1,63 +1,99 @@
-import android.graphics.Bitmap;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class vse
+  implements Cloneable
 {
-  private static boolean[] a;
   public int a;
-  public Bitmap a;
+  public long a;
   public String a;
+  public ArrayList<Integer> a;
   public boolean a;
   public int b;
-  public Bitmap b;
+  public long b;
   public String b;
-  public boolean b;
-  public boolean c;
-  public boolean d;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
   
-  static
+  public vse()
   {
-    jdField_a_of_type_ArrayOfBoolean = new boolean[5];
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public vse(String paramString)
+  public vse(vse paramvse)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramvse.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_JavaLangString = paramvse.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramvse.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Long = paramvse.jdField_a_of_type_Long;
+    this.jdField_b_of_type_JavaLangString = paramvse.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramvse.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = paramvse.jdField_b_of_type_Int;
+    this.jdField_b_of_type_Long = paramvse.jdField_b_of_type_Long;
+    this.jdField_c_of_type_JavaLangString = paramvse.jdField_c_of_type_JavaLangString;
+    this.jdField_c_of_type_Long = paramvse.jdField_c_of_type_Long;
+    this.d = paramvse.d;
   }
   
-  public static void a(int[] paramArrayOfInt)
+  public long a()
   {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
+      return ((Integer)Collections.max(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
+    }
+    return -1L;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_c_of_type_Long = 0L;
+    this.d = null;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
+      return ((Integer)Collections.min(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
+    }
+    return -1L;
+  }
+  
+  public long c()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() < 3) {
+      return -1L;
+    }
+    int k = Math.min(this.jdField_a_of_type_JavaUtilArrayList.size(), 10);
     int i = 0;
-    while (i < 5) {
-      if ((paramArrayOfInt == null) || (paramArrayOfInt.length != 5))
-      {
-        jdField_a_of_type_ArrayOfBoolean[i] = false;
-        i += 1;
-      }
-      else
-      {
-        boolean[] arrayOfBoolean = jdField_a_of_type_ArrayOfBoolean;
-        int k = arrayOfBoolean[i];
-        if (paramArrayOfInt[i] > 0) {}
-        for (int j = 1;; j = 0)
-        {
-          arrayOfBoolean[i] = (j | k);
-          break;
-        }
-      }
+    int j = 0;
+    while (i < k)
+    {
+      j += ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
+      i += 1;
     }
+    return j / k;
   }
   
-  public static boolean a(int paramInt)
+  public String toString()
   {
-    if ((paramInt < 0) || (paramInt > 4)) {
-      return true;
-    }
-    return jdField_a_of_type_ArrayOfBoolean[paramInt];
+    return " " + this.jdField_a_of_type_JavaLangString + " " + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_Int + " " + this.jdField_b_of_type_Int + " " + this.jdField_b_of_type_Long + " " + this.jdField_a_of_type_Boolean + " " + c() + " " + b() + " " + a() + " " + this.jdField_b_of_type_JavaLangString + " " + this.jdField_c_of_type_JavaLangString + " " + this.jdField_c_of_type_Long + " " + this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vse
  * JD-Core Version:    0.7.0.1
  */

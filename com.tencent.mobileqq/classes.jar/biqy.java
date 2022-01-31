@@ -1,43 +1,47 @@
-import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class biqy
-  implements ajte
+class biqy
+  extends OnPluginInstallListener.Stub
 {
-  public void a(boolean paramBoolean, int paramInt) {}
+  biqy(biqx parambiqx) {}
   
-  public void a(boolean paramBoolean, bist parambist) {}
+  public void onInstallBegin(String paramString) {}
   
-  protected void a(boolean paramBoolean, GetFontDataRsp paramGetFontDataRsp) {}
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void b(boolean paramBoolean, int paramInt) {}
-  
-  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onInstallError(String paramString, int paramInt)
   {
-    switch (paramInt)
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "install plugin " + paramString + " error! " + paramInt);
+    }
+    try
     {
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, (bist)paramObject);
-      return;
-    case 2: 
-      a(paramBoolean, ((Boolean)paramObject).booleanValue());
-      return;
-    case 3: 
-      a(paramBoolean, ((Integer)paramObject).intValue());
-      return;
-    case 4: 
-      a(paramBoolean, (GetFontDataRsp)paramObject);
+      ThreadManager.post(this.a.a, 5, null, false);
       return;
     }
-    b(paramBoolean, ((Integer)paramObject).intValue());
+    catch (Exception paramString) {}
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("qqfav", 2, "install plugin " + paramString + " OK.");
+    }
+    biqv.a().set(true);
+    try
+    {
+      ThreadManager.post(this.a.a, 5, null, false);
+      return;
+    }
+    catch (Exception paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     biqy
  * JD-Core Version:    0.7.0.1
  */

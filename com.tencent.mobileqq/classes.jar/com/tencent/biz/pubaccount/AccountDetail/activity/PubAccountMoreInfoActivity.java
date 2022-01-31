@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.AccountDetail.activity;
 
-import akdh;
+import aluw;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -19,9 +19,9 @@ import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
-import ndz;
-import nfr;
-import nor;
+import ngv;
+import nin;
+import nrz;
 
 public class PubAccountMoreInfoActivity
   extends IphoneTitleBarActivity
@@ -34,14 +34,14 @@ public class PubAccountMoreInfoActivity
   String jdField_a_of_type_JavaLangString;
   protected NewIntent a;
   protected BusinessObserver a;
-  nfr jdField_a_of_type_Nfr;
+  nin jdField_a_of_type_Nin;
   
   private void c()
   {
     super.setContentView(2131558405);
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131375512));
-    setTitle(getResources().getString(2131695567));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131372872);
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131376000));
+    setTitle(getResources().getString(2131695725));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131373310);
     if (ThemeUtil.isInNightMode(this.app)) {
       if (this.jdField_a_of_type_AndroidViewView != null) {
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -52,8 +52,8 @@ public class PubAccountMoreInfoActivity
       this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
       if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null)
       {
-        this.jdField_a_of_type_Nfr = new nfr(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, true);
-        this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_Nfr.a());
+        this.jdField_a_of_type_Nin = new nin(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, true);
+        this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_Nin.a());
       }
       return;
       if (this.jdField_a_of_type_AndroidViewView != null) {
@@ -64,8 +64,8 @@ public class PubAccountMoreInfoActivity
   
   private void d()
   {
-    this.jdField_a_of_type_Nfr = new nfr(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, true);
-    this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_Nfr.a());
+    this.jdField_a_of_type_Nin = new nin(this.app, this, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail, true);
+    this.jdField_a_of_type_AndroidWidgetScrollView.addView(this.jdField_a_of_type_Nin.a());
   }
   
   protected void a()
@@ -78,9 +78,9 @@ public class PubAccountMoreInfoActivity
     if (localObject != null) {
       this.jdField_a_of_type_JavaLangString = ((Intent)localObject).getStringExtra("uin");
     }
-    localObject = (akdh)this.app.getManager(56);
+    localObject = (aluw)this.app.getManager(56);
     if (localObject != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = ((akdh)localObject).a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = ((aluw)localObject).a(this.jdField_a_of_type_JavaLangString);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) {
       b();
@@ -100,10 +100,10 @@ public class PubAccountMoreInfoActivity
     if (this.jdField_a_of_type_MqqAppNewIntent != null) {
       this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
     }
-    this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(super.getApplicationContext(), nor.class);
+    this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(super.getApplicationContext(), nrz.class);
     this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.3.0,3,4480");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("8.3.3,3,4515");
     localGetPublicAccountDetailInfoRequest.version.set(1);
     if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) {
       localGetPublicAccountDetailInfoRequest.seqno.set(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno);
@@ -115,7 +115,7 @@ public class PubAccountMoreInfoActivity
         localGetPublicAccountDetailInfoRequest.uin.set((int)Long.parseLong(this.jdField_a_of_type_JavaLangString));
         label119:
         this.jdField_a_of_type_MqqAppNewIntent.putExtra("data", localGetPublicAccountDetailInfoRequest.toByteArray());
-        this.jdField_a_of_type_MqqObserverBusinessObserver = new ndz(this);
+        this.jdField_a_of_type_MqqObserverBusinessObserver = new ngv(this);
         this.jdField_a_of_type_MqqAppNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
         this.app.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
         return;
@@ -139,8 +139,8 @@ public class PubAccountMoreInfoActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Nfr != null) {
-      this.jdField_a_of_type_Nfr.b();
+    if (this.jdField_a_of_type_Nin != null) {
+      this.jdField_a_of_type_Nin.b();
     }
   }
   

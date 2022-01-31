@@ -1,1449 +1,1002 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager.2;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager.3;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.data.DraftSummaryInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.util.SparseArray;
+import android.util.Xml;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
 import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.app.MobileQQ;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
 import org.json.JSONObject;
+import org.xmlpull.v1.XmlSerializer;
 
 public class sdc
 {
-  public int a;
-  protected long a;
-  protected Boolean a;
-  public Object a;
-  protected String a;
-  Comparator<TroopBarData> a;
-  public List<TroopBarData> a;
-  protected final Map<String, TroopBarData> a;
-  public ConcurrentHashMap<String, Integer> a;
-  protected boolean a;
-  protected long b;
-  protected final ConcurrentHashMap<String, PublicAccountInfo> b;
-  protected boolean b;
-  protected boolean c;
-  protected boolean d;
+  private static String a;
+  public static final HashMap<String, String> a;
+  private static String b;
+  private static String c;
+  private static String d;
+  private static String e;
+  private static String f;
+  private static String g;
+  private static String h;
+  private static String i;
+  private static String j;
+  private static String k;
+  private static String l;
+  private static String m;
+  private static String n;
+  private static String o;
+  private static String p;
+  private static String q;
+  private static String r;
+  private static String s = "{\n    \"id_container\": {\n        \"url\": \"http://hhhh.html\"\n    },\n    \"id_pic\": {\n        \"src\": \"http://hhh.jpg\"\n    },\n    \"id_title\": {\n        \"text\": \"简爱\"\n    },\n    \"id_summary\": {\n        \"text\": \"[英] 夏洛蒂 . 勃朗特\"\n    },\n    \"id_wording\": {\n        \"text\": \"13.5万人阅读\"\n    },\n    \"id_pic_right\": {\n        \"url\": \"img_book_right\"\n    },\n    \"source_id\": \"123xx\",\n    \"style_ID\": \"ReadInjoy_native_web_normal\"\n}";
   
-  private sdc()
+  static
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_JavaUtilComparator = new sdd(this);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    jdField_a_of_type_JavaLangString = "HtmlChangeUtil";
+    b = "p";
+    c = "section";
+    d = "strong";
+    e = "i";
+    f = "u";
+    g = "img";
+    h = "video";
+    i = "a";
+    j = "proteus";
+    k = "span";
+    l = "ul";
+    m = "li";
+    n = "ol";
+    o = "blockquote";
+    p = "text-decoration";
+    q = "color";
+    r = "background-color";
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put("aqua", "#00FFFF");
+    jdField_a_of_type_JavaUtilHashMap.put("black", "#000000");
+    jdField_a_of_type_JavaUtilHashMap.put("blue", "#0000FF");
+    jdField_a_of_type_JavaUtilHashMap.put("fuchsia", "#FF00FF");
+    jdField_a_of_type_JavaUtilHashMap.put("gray", "#808080");
+    jdField_a_of_type_JavaUtilHashMap.put("green", "#008000");
+    jdField_a_of_type_JavaUtilHashMap.put("lime", "#00FF00");
+    jdField_a_of_type_JavaUtilHashMap.put("maroon", "#800000");
+    jdField_a_of_type_JavaUtilHashMap.put("navy", "#000080");
+    jdField_a_of_type_JavaUtilHashMap.put("olive", "#808000");
+    jdField_a_of_type_JavaUtilHashMap.put("purple", "#800080");
+    jdField_a_of_type_JavaUtilHashMap.put("red", "#FF0000");
+    jdField_a_of_type_JavaUtilHashMap.put("silver", "#C0C0C0");
+    jdField_a_of_type_JavaUtilHashMap.put("teal", "#008080");
+    jdField_a_of_type_JavaUtilHashMap.put("white", "#FFFFFF");
+    jdField_a_of_type_JavaUtilHashMap.put("yellow", "#FFFF00");
   }
   
-  private TroopBarData a(aukp paramaukp, QQAppInterface paramQQAppInterface, String paramString)
+  private static int a()
   {
-    a(paramQQAppInterface);
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    return Aladdin.getConfig(267).getIntegerFromString("filter_small_pic_size", 30);
+  }
+  
+  public static BaseData a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, sdh paramsdh, SparseArray<Float> paramSparseArray)
+  {
+    Object localObject2 = "";
+    Object localObject3 = "";
+    Object localObject1 = "";
+    int i1 = paramsdh.c();
+    if (i1 != 1)
     {
-      TroopBarData localTroopBarData = (TroopBarData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      paramaukp = localTroopBarData;
-      if (localTroopBarData == null)
+      Object localObject4 = localObject2;
+      Object localObject5 = localObject3;
+      Object localObject6 = localObject1;
+      switch (i1)
       {
-        localTroopBarData = new TroopBarData();
-        localTroopBarData.mUin = paramString;
-        paramQQAppInterface = paramQQAppInterface.a();
-        paramaukp = localTroopBarData;
-        if (paramQQAppInterface != null)
+      default: 
+        localObject6 = localObject1;
+        localObject5 = localObject3;
+        localObject4 = localObject2;
+      case 0: 
+      case 1: 
+      case 2: 
+        for (;;)
         {
-          paramQQAppInterface = paramQQAppInterface.a(paramString, 1008);
-          paramaukp = localTroopBarData;
-          if (paramQQAppInterface != null)
+          i1 = paramsdh.d();
+          localObject2 = localObject4;
+          localObject3 = localObject5;
+          localObject1 = localObject6;
+          break;
+          if (!paramsdh.b().equals(g)) {
+            break label331;
+          }
+          int i2 = paramsdh.b();
+          i1 = 0;
+          localObject4 = localObject1;
+          localObject1 = localObject2;
+          localObject2 = localObject3;
+          localObject3 = localObject4;
+          if (i1 < i2)
           {
-            localTroopBarData.mLastDraftTime = paramQQAppInterface.getTime();
-            paramaukp = localTroopBarData;
+            String str = paramsdh.a(i1);
+            if (str.equals("src"))
+            {
+              localObject1 = paramsdh.b(i1);
+              localObject5 = localObject3;
+              localObject6 = localObject2;
+              localObject4 = localObject1;
+              if (((String)localObject1).indexOf("http") == -1)
+              {
+                localObject4 = "http::" + (String)localObject1;
+                localObject6 = localObject2;
+                localObject5 = localObject3;
+              }
+            }
+            for (;;)
+            {
+              i1 += 1;
+              localObject3 = localObject5;
+              localObject2 = localObject6;
+              localObject1 = localObject4;
+              break;
+              if (str.equals("width"))
+              {
+                localObject6 = paramsdh.b(i1);
+                localObject5 = localObject3;
+                localObject4 = localObject1;
+              }
+              else
+              {
+                localObject5 = localObject3;
+                localObject6 = localObject2;
+                localObject4 = localObject1;
+                if (str.equals("height"))
+                {
+                  localObject5 = paramsdh.b(i1);
+                  localObject6 = localObject2;
+                  localObject4 = localObject1;
+                }
+              }
+            }
+          }
+          localObject4 = localObject1;
+          localObject5 = localObject2;
+          localObject6 = localObject3;
+        }
+        label331:
+        throw new IllegalArgumentException("img tag error: has other start tag");
+      }
+      if (!g.equals(paramsdh.b())) {}
+    }
+    else
+    {
+      if (!a()) {
+        break label404;
+      }
+      i1 = a();
+      if ((Integer.valueOf((String)localObject3).intValue() >= i1) || (Integer.valueOf((String)localObject1).intValue() >= i1)) {
+        break label404;
+      }
+      return null;
+    }
+    throw new IllegalArgumentException("img tag error: has other end tag");
+    label404:
+    return scl.a(paramArticleInfo, paramFastWebArticleInfo, (String)localObject2, (String)localObject3, (String)localObject1, paramSparseArray);
+  }
+  
+  public static BaseData a(sdh paramsdh)
+  {
+    ProteusBookData localProteusBookData = new ProteusBookData();
+    int i1 = paramsdh.c();
+    Object localObject;
+    String str2;
+    String str1;
+    if (i1 != 1) {
+      switch (i1)
+      {
+      case 0: 
+      case 1: 
+      default: 
+      case 2: 
+        int i2;
+        do
+        {
+          i1 = paramsdh.d();
+          break;
+          if (!paramsdh.b().equals(j)) {
+            break label304;
+          }
+          i2 = paramsdh.b();
+          i1 = 0;
+        } while (i1 >= i2);
+        localObject = paramsdh.a(i1);
+        if (((String)localObject).equals("id")) {
+          localProteusBookData.jdField_a_of_type_JavaLangString = paramsdh.b(i1);
+        }
+        while (!((String)localObject).equals("data"))
+        {
+          i1 += 1;
+          break;
+        }
+        str2 = paramsdh.b(i1);
+        if (!TextUtils.isEmpty(str2))
+        {
+          JSONObject localJSONObject = new JSONObject(str2);
+          str1 = localJSONObject.getString("source_id");
+          localObject = sfq.a("native_article", true);
+          if (localObject != null)
+          {
+            localObject = ((sfq)localObject).getTemplateBean(localJSONObject);
+            label183:
+            if (localJSONObject.has("id")) {
+              localProteusBookData.d = localJSONObject.getString("id");
+            }
+            if (localJSONObject.has("card_type")) {
+              localProteusBookData.c = localJSONObject.getString("card_type");
+            }
+            if (localJSONObject.has("sid")) {
+              localProteusBookData.e = localJSONObject.getString("sid");
+            }
+          }
+        }
+        break;
+      }
+    }
+    for (;;)
+    {
+      QLog.d("Q.readinjoy.fast_web", 2, "data: " + str2);
+      localProteusBookData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean = ((TemplateBean)localObject);
+      localProteusBookData.b = str1;
+      break;
+      localObject = null;
+      break label183;
+      label304:
+      throw new IllegalArgumentException("proteus tag error: has other start tag");
+      if (j.equals(paramsdh.b())) {
+        return localProteusBookData;
+      }
+      throw new IllegalArgumentException("proteus tag error: has other end tag");
+      str1 = null;
+      localObject = null;
+    }
+  }
+  
+  private static BaseData a(sdh paramsdh, SparseArray<Float> paramSparseArray)
+  {
+    StringWriter localStringWriter = new StringWriter();
+    XmlSerializer localXmlSerializer = Xml.newSerializer();
+    localXmlSerializer.setOutput(localStringWriter);
+    int i1 = paramsdh.c();
+    Object localObject1 = "";
+    if (i1 != 1)
+    {
+      Object localObject2 = localObject1;
+      switch (i1)
+      {
+      default: 
+        localObject2 = localObject1;
+      case 0: 
+      case 1: 
+      case 2: 
+      case 4: 
+        for (;;)
+        {
+          i1 = paramsdh.d();
+          localObject1 = localObject2;
+          break;
+          localObject2 = paramsdh.b();
+          if (!((String)localObject2).equals(i)) {
+            throw new IllegalArgumentException(alpo.a(2131706008));
+          }
+          localXmlSerializer.startTag("", (String)localObject2);
+          int i2 = paramsdh.b();
+          i1 = 0;
+          for (;;)
+          {
+            localObject2 = localObject1;
+            if (i1 >= i2) {
+              break;
+            }
+            String str = paramsdh.a(i1);
+            localObject2 = paramsdh.b(i1);
+            if (str.equals("href")) {
+              localObject1 = localObject2;
+            }
+            localXmlSerializer.attribute("", str, (String)localObject2);
+            i1 += 1;
+          }
+          localXmlSerializer.text(paramsdh.a());
+          localObject2 = localObject1;
+        }
+      }
+      if (i.equals(paramsdh.b())) {
+        localXmlSerializer.endTag("", i);
+      }
+    }
+    else
+    {
+      localXmlSerializer.flush();
+      return scl.a(localStringWriter.toString(), (String)localObject1, paramSparseArray);
+    }
+    throw new IllegalArgumentException("a tag error: has other end tag");
+  }
+  
+  public static List<BaseData> a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, SparseArray<Float> paramSparseArray)
+  {
+    Object localObject = paramFastWebArticleInfo.jdField_a_of_type_JavaLangString;
+    ArrayList localArrayList = new ArrayList();
+    sdg localsdg = new sdg(null);
+    sdh localsdh = new sdh(Xml.newPullParser(), localsdg);
+    localsdh.a(new StringReader((String)localObject));
+    int i1 = localsdh.c();
+    while (i1 != 1)
+    {
+      switch (i1)
+      {
+      }
+      for (;;)
+      {
+        if (localsdh.c() != 2)
+        {
+          i1 = localsdh.d();
+          break;
+          localObject = localsdh.b();
+          if ((((String)localObject).equals(b)) || (((String)localObject).equals(c)))
+          {
+            a(paramArticleInfo, paramFastWebArticleInfo, localsdh, localArrayList, localsdg, paramSparseArray);
+          }
+          else if (((String)localObject).equals(i))
+          {
+            localArrayList.add(a(localsdh, paramSparseArray));
+          }
+          else
+          {
+            if (((String)localObject).equals(d))
+            {
+              a(localsdh, localsdg, localArrayList, paramSparseArray);
+              if (2 != localsdh.c()) {
+                continue;
+              }
+              i1 = localsdh.c();
+              break;
+            }
+            if (((String)localObject).equals(o))
+            {
+              localsdh.d();
+              c(paramArticleInfo, paramFastWebArticleInfo, localsdh, localArrayList, localsdg, paramSparseArray);
+            }
+            else if (((String)localObject).equals(g))
+            {
+              localObject = a(paramArticleInfo, paramFastWebArticleInfo, localsdh, paramSparseArray);
+              if (localObject != null) {
+                localArrayList.add(localObject);
+              }
+            }
+            else if (((String)localObject).equals(h))
+            {
+              localArrayList.add(b(paramArticleInfo, paramFastWebArticleInfo, localsdh, paramSparseArray));
+            }
+            else if (((String)localObject).equals(j))
+            {
+              localArrayList.add(a(localsdh));
+            }
+            else if (((String)localObject).equals(k))
+            {
+              a(localsdh, localsdg, localArrayList, paramSparseArray);
+            }
+            else if ((((String)localObject).equals(l)) || (((String)localObject).equals(n)))
+            {
+              b(paramArticleInfo, paramFastWebArticleInfo, localsdh, localArrayList, localsdg, paramSparseArray);
+            }
+            else
+            {
+              throw new IllegalArgumentException(alpo.a(2131706007) + (String)localObject);
+              a(localsdh, localsdg, localArrayList, paramSparseArray);
+              if (2 == localsdh.c())
+              {
+                i1 = localsdh.c();
+                break;
+              }
+            }
           }
         }
       }
-      return paramaukp;
-    }
-  }
-  
-  private TroopBarData a(QQAppInterface arg1, String paramString)
-  {
-    a(???);
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      paramString = (TroopBarData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      return paramString;
-    }
-  }
-  
-  private List<TroopBarData> a(QQAppInterface paramQQAppInterface, List<TroopBarData> paramList)
-  {
-    if (paramList == null) {
-      return null;
-    }
-    paramList = paramList.iterator();
-    ArrayList localArrayList = new ArrayList();
-    while (paramList.hasNext())
-    {
-      TroopBarData localTroopBarData = (TroopBarData)paramList.next();
-      if (saz.d(paramQQAppInterface, localTroopBarData.mUin)) {
-        localArrayList.add(localTroopBarData);
-      }
+      i1 = 2;
     }
     return localArrayList;
   }
   
-  public static sdc a()
+  private static void a(SpannableString paramSpannableString, SparseArray<Object> paramSparseArray)
   {
-    try
-    {
-      if (sde.a == null) {
-        sde.a = new sdc();
-      }
-      sdc localsdc = sde.a;
-      return localsdc;
-    }
-    finally {}
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, aukp paramaukp, TroopBarData paramTroopBarData)
-  {
-    if (paramTroopBarData == null) {
+    if (paramSparseArray == null) {
       return;
     }
-    paramaukp = (TroopBarData)this.jdField_a_of_type_JavaUtilMap.get(paramTroopBarData.mUin);
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    int i1 = 0;
+    label7:
+    Object localObject1;
+    if (i1 < paramSparseArray.size())
     {
-      this.jdField_a_of_type_JavaUtilMap.put(paramTroopBarData.mUin, paramTroopBarData);
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_JavaUtilList != null)
-        {
-          if (paramaukp != null) {
-            this.jdField_a_of_type_JavaUtilList.remove(paramaukp);
-          }
-          this.jdField_a_of_type_JavaUtilList.remove(paramTroopBarData);
-          this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaUtilList.size(), paramTroopBarData);
-          if (QLog.isColorLevel()) {
-            QLog.i("TroopBarAssistantManager", 2, "save TroopBarData " + paramTroopBarData.mUin + " to dataList");
-          }
-        }
-        a();
-        paramaukp = (ProxyManager)paramQQAppInterface.getManager(18);
-        if (paramTroopBarData.getStatus() == 1000)
-        {
-          paramaukp.a(paramQQAppInterface.getAccount(), 0, paramTroopBarData.getTableName(), paramTroopBarData, 3, null);
-          paramQQAppInterface = (KandianMergeManager)paramQQAppInterface.getManager(162);
-          paramQQAppInterface.k();
-          paramQQAppInterface.b(null);
-          return;
-          paramQQAppInterface = finally;
-          throw paramQQAppInterface;
-        }
-      }
-      paramaukp.a(paramQQAppInterface.getAccount(), 0, paramTroopBarData.getTableName(), paramTroopBarData, 4, null);
-    }
-  }
-  
-  private void a(MessageRecord paramMessageRecord, String paramString, QQAppInterface paramQQAppInterface)
-  {
-    if (!saz.d(paramQQAppInterface, paramString)) {
-      return;
-    }
-    m(paramQQAppInterface);
-    if ((paramMessageRecord != null) && (!paramMessageRecord.isread))
-    {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-        break label106;
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).intValue() + 1));
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopBarAssistantManager", 2, "add uin " + paramString + " to newMsgMap");
-      }
-      l(paramQQAppInterface);
-      return;
-      label106:
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(1));
-    }
-  }
-  
-  private boolean a(aukp paramaukp, String paramString)
-  {
-    TroopBarData localTroopBarData;
-    Object localObject2;
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      localTroopBarData = (TroopBarData)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      localObject2 = this.jdField_a_of_type_JavaLangObject;
-      ??? = localTroopBarData;
-    }
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_JavaUtilList != null)
-        {
-          ??? = localTroopBarData;
-          if (localTroopBarData == null)
-          {
-            Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-            ??? = localTroopBarData;
-            if (localIterator.hasNext())
-            {
-              ??? = (TroopBarData)localIterator.next();
-              if (!TextUtils.equals(((TroopBarData)???).mUin, paramString)) {
-                continue;
-              }
-            }
-          }
-          this.jdField_a_of_type_JavaUtilList.remove(???);
-        }
-        if (??? == null) {
-          break;
-        }
-        if (paramaukp.b((auko)???)) {
-          break label175;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopBarAssistantManager", 2, "remove TroopBarData " + ((TroopBarData)???).mUin + " from em fail");
-        }
-        return true;
-      }
-      finally {}
-      paramaukp = finally;
-      throw paramaukp;
-      label175:
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopBarAssistantManager", 2, "remove TroopBarData " + ((TroopBarData)???).mUin + " from em success");
-      }
-    }
-    return false;
-  }
-  
-  private boolean a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    int j = 0;
-    Object localObject = (TroopManager)paramQQAppInterface.getManager(52);
-    aktf localaktf = paramQQAppInterface.a().a();
-    if (localObject == null) {
-      return false;
-    }
-    int i = j;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      i = j;
-      if (!this.c) {
-        i = 1;
-      }
-    }
-    if (i != 0)
-    {
-      localObject = localaktf.a(ajsd.ac, 7210);
-      if (((RecentUser)localObject).lastmsgtime < paramLong) {
-        ((RecentUser)localObject).lastmsgtime = paramLong;
-      }
-      if (b(paramQQAppInterface)) {
-        localaktf.a((RecentUser)localObject);
+      localObject1 = paramSparseArray.valueAt(i1);
+      if (localObject1 != null) {
+        break label34;
       }
     }
     for (;;)
     {
-      paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-      if (paramQQAppInterface != null) {
-        paramQQAppInterface.sendEmptyMessage(1009);
-      }
-      return true;
-      TroopBarData localTroopBarData = a(paramQQAppInterface);
-      if (localTroopBarData == null) {
-        break;
-      }
-      ((RecentUser)localObject).lastmsgtime = localTroopBarData.mLastMsgTime;
-      ((RecentUser)localObject).lastmsgdrafttime = localTroopBarData.mLastDraftTime;
+      i1 += 1;
+      break label7;
       break;
-      localObject = localaktf.b(ajsd.ac, 7210);
-      if (localObject != null) {
-        localaktf.b((RecentUser)localObject);
+      label34:
+      if ((localObject1 instanceof ArrayList))
+      {
+        localObject1 = (ArrayList)localObject1;
+        int i2 = 0;
+        while (i2 < ((ArrayList)localObject1).size())
+        {
+          Object localObject2 = ((sdf)((ArrayList)localObject1).get(i2)).a();
+          if ((localObject2 instanceof sde)) {
+            ((sde)localObject2).a(paramSpannableString.toString());
+          }
+          paramSpannableString.setSpan(localObject2, 0, paramSpannableString.length(), 33);
+          i2 += 1;
+        }
+      }
+      else
+      {
+        localObject1 = ((sdf)localObject1).a();
+        if ((localObject1 instanceof sde)) {
+          ((sde)localObject1).a(paramSpannableString.toString());
+        }
+        paramSpannableString.setSpan(localObject1, 0, paramSpannableString.length(), 33);
       }
     }
   }
   
-  private long b(QQAppInterface paramQQAppInterface)
+  public static void a(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, sdh paramsdh, List<BaseData> paramList, sdg paramsdg, SparseArray<Float> paramSparseArray)
   {
-    if (paramQQAppInterface == null) {
-      return 0L;
-    }
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      this.jdField_b_of_type_Long = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getLong("troopbar_recent_item_last_del_time", 0L);
-      this.jdField_b_of_type_Boolean = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopBarAssistantManager", 2, "getTroopBarRecentItemLastDelTime, lastDelTime:" + this.jdField_b_of_type_Long);
-    }
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public static void b()
-  {
-    try
-    {
-      sde.a = null;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private void b(aukp arg1, QQAppInterface paramQQAppInterface)
-  {
+    int i1 = paramsdh.c();
+    int i3 = paramsdh.a();
     for (;;)
     {
-      Object localObject;
-      int i;
-      try
-      {
-        localObject = ???.a(TroopBarData.class, false, null, null, null, null, "mLastMsgTime desc", null);
-        if ((localObject != null) && (((List)localObject).size() > 0)) {
-          Collections.sort((List)localObject, this.jdField_a_of_type_JavaUtilComparator);
-        }
-        long l;
-        localObject = ((TroopBarData)this.jdField_a_of_type_JavaUtilList.get(i)).mUin;
+      int i2;
+      if (i1 != 1) {
+        i2 = paramsdh.c();
       }
-      catch (Exception ???)
+      switch (i2)
       {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+      case 0: 
+      case 1: 
+      default: 
+      case 2: 
+      case 3: 
+        do
         {
-          this.jdField_a_of_type_JavaUtilList = ((List)localObject);
-          if (this.jdField_a_of_type_JavaUtilList == null)
+          Object localObject;
+          do
           {
-            this.jdField_a_of_type_JavaUtilList = new ArrayList(15);
-            synchronized (this.jdField_a_of_type_JavaUtilMap)
+            i1 = paramsdh.d();
+            break;
+            localObject = paramsdh.b();
+            if (a((String)localObject))
             {
-              this.jdField_a_of_type_JavaUtilMap.clear();
-              paramQQAppInterface = this.jdField_a_of_type_JavaUtilList.iterator();
-              if (!paramQQAppInterface.hasNext()) {
-                break label368;
-              }
-              localObject = (TroopBarData)paramQQAppInterface.next();
-              this.jdField_a_of_type_JavaUtilMap.put(((TroopBarData)localObject).mUin, localObject);
+              a(paramsdh, paramsdg, paramList, paramSparseArray);
+              i1 = i2;
+              break;
             }
-            ??? = ???;
-            if (QLog.isColorLevel()) {
-              QLog.e("TroopBarAssistantManager", 2, "initTroopBarAssistRecent doInit error: ", ???);
-            }
-            return;
-          }
-          l = b(paramQQAppInterface);
-          i = 0;
-          if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
-            continue;
-          }
-          localObject = (TroopBarData)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (localObject == null)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("TroopBarAssistantManager", 2, "doInit==> pad == null");
-            }
-            this.jdField_a_of_type_JavaUtilList.remove(i);
-          }
-          else
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("TroopBarAssistantManager", 2, "doInit==> uin:" + ((TroopBarData)localObject).mUin + ", lastMsgTime:" + ((TroopBarData)localObject).mLastMsgTime);
-            }
-            if (((TroopBarData)localObject).mLastMsgTime < l) {
-              this.jdField_a_of_type_JavaUtilList.remove(i);
-            }
-          }
-        }
-      }
-      finally {}
-      ((TroopBarData)this.jdField_a_of_type_JavaUtilList.get(i)).mLatestMessage = paramQQAppInterface.a().b((String)localObject, 1008);
-      break label371;
-      label368:
-      return;
-      label371:
-      i += 1;
-    }
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = paramQQAppInterface.a().a();
-    paramString = paramQQAppInterface.b(paramString, 1008);
-    if (paramString != null) {
-      paramQQAppInterface.b(paramString);
-    }
-  }
-  
-  private void d(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    a(paramString, paramQQAppInterface, false);
-  }
-  
-  private void e(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    if (!saz.d(paramQQAppInterface, paramString)) {
-      return;
-    }
-    m(paramQQAppInterface);
-    if (paramQQAppInterface.a().a(paramString, 1008) > 0)
-    {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString)) {
-        break label73;
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).intValue() + 1));
-    }
-    for (;;)
-    {
-      l(paramQQAppInterface);
-      return;
-      label73:
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(1));
-    }
-  }
-  
-  private void k(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface != null)
-    {
-      if (!paramQQAppInterface.getAccount().equals(this.jdField_a_of_type_JavaLangString)) {}
-      synchronized (this.jdField_a_of_type_JavaLangBoolean)
-      {
-        this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-        this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getAccount();
-        ??? = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0);
-        this.jdField_a_of_type_Boolean = ((SharedPreferences)???).getBoolean("troopbar_assist_show_in_msg", true);
-        this.jdField_a_of_type_Long = ((SharedPreferences)???).getLong("troopbar_assist_last_read_time", 0L);
-        this.c = ((SharedPreferences)???).getBoolean("troopbar_assist_deleted", false);
-      }
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilList = null;
-      m(paramQQAppInterface);
-      this.jdField_b_of_type_Boolean = false;
-      return;
-      paramQQAppInterface = finally;
-      throw paramQQAppInterface;
-    }
-  }
-  
-  private void l(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    ThreadManager.executeOnSubThread(new TroopBarAssistantManager.2(this, paramQQAppInterface));
-  }
-  
-  private void m(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-      return;
-    }
-    for (;;)
-    {
-      int i;
-      synchronized (this.jdField_a_of_type_JavaLangBoolean)
-      {
-        if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue())
-        {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-          Object localObject = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getString("troopbar_assist_new_unread_list", "");
-          if (bhvy.b()) {
-            QLog.i("TroopBarAssistantManager", 2, "changeAccount, get newMsgStr from sp:" + (String)localObject);
-          }
-          try
-          {
-            localObject = new JSONArray((String)localObject);
-            i = 0;
-            if (i < ((JSONArray)localObject).length())
+            if (((String)localObject).equals(g))
             {
-              JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
-              Iterator localIterator = localJSONObject.keys();
-              if (!localIterator.hasNext()) {
-                break label255;
+              localObject = a(paramArticleInfo, paramFastWebArticleInfo, paramsdh, paramSparseArray);
+              i1 = i2;
+              if (localObject == null) {
+                break;
               }
-              String str = (String)localIterator.next();
-              if (!saz.d(paramQQAppInterface, str)) {
-                continue;
-              }
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, Integer.valueOf(localJSONObject.getInt(str)));
-              continue;
+              paramList.add(localObject);
+              i1 = i2;
+              break;
             }
-          }
-          catch (Exception paramQQAppInterface)
-          {
-            paramQQAppInterface.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.e("TroopBarAssistantManager", 2, "initNewMsgMapIfNeeds:" + paramQQAppInterface.toString());
+            if (((String)localObject).equals(h))
+            {
+              paramList.add(b(paramArticleInfo, paramFastWebArticleInfo, paramsdh, paramSparseArray));
+              i1 = i2;
+              break;
             }
-            this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
-            if (bhvy.b()) {
-              QLog.i("TroopBarAssistantManager", 2, "initNewMsgMapIfNeeds, succ");
+            if (((String)localObject).equals(i))
+            {
+              paramList.add(a(paramsdh, paramSparseArray));
+              i1 = i2;
+              break;
             }
-          }
-        }
-        else
-        {
+            if ((((String)localObject).equals(l)) || (((String)localObject).equals(n)))
+            {
+              b(paramArticleInfo, paramFastWebArticleInfo, paramsdh, paramList, paramsdg, paramSparseArray);
+              i1 = i2;
+              break;
+            }
+            if (((String)localObject).equals(o))
+            {
+              paramsdh.d();
+              c(paramArticleInfo, paramFastWebArticleInfo, paramsdh, paramList, paramsdg, paramSparseArray);
+              i1 = i2;
+              break;
+            }
+          } while ((((String)localObject).equals(b)) || (((String)localObject).equals(c)));
           return;
-        }
+        } while (((!paramsdh.b().equals(b)) && (!paramsdh.b().equals(c))) || (i3 != paramsdh.a()));
+        return;
       }
-      label255:
-      i += 1;
+      a(paramsdh, paramsdg, paramList, paramSparseArray);
+      i1 = i2;
     }
   }
   
-  public int a()
+  public static void a(sdh paramsdh, sdg paramsdg, List<BaseData> paramList, SparseArray<Float> paramSparseArray)
   {
-    int j;
-    if (this.jdField_a_of_type_JavaUtilMap != null)
+    int i4 = paramsdg.a();
+    int i5 = paramsdg.b();
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    int i3 = paramsdh.c();
+    int i2 = 0;
+    int i1;
+    if (i3 != 1)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-      int i = 0;
-      j = i;
-      if (!localIterator.hasNext()) {
-        break label59;
+      i1 = i2;
+      switch (i3)
+      {
+      default: 
+        i1 = i2;
       }
-      if (!((TroopBarData)localIterator.next()).mIsSticky) {
-        break label61;
-      }
-      i += 1;
     }
-    label59:
-    label61:
     for (;;)
     {
+      i3 = paramsdh.d();
+      i2 = i1;
       break;
-      j = 0;
-      return j;
-    }
-  }
-  
-  public int a(QQAppInterface arg1)
-  {
-    int i = 0;
-    if (!???.getAccount().equals(this.jdField_a_of_type_JavaLangString)) {
-      return 0;
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangBoolean)
+      i1 = i2 + 1;
+      if (!a(paramsdh.b()))
       {
-        if (this.jdField_a_of_type_JavaLangBoolean.booleanValue())
+        do
         {
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-          i = 0;
-          if (localIterator.hasNext()) {
-            i += ((Integer)localIterator.next()).intValue();
+          paramsdh = localSpannableStringBuilder.toString();
+          if (!TextUtils.isEmpty(paramsdh.replaceAll(" ", "").trim())) {
+            paramList.add(scl.a(paramsdh, localSpannableStringBuilder, i4, i5, paramSparseArray));
           }
-        }
-        else
-        {
-          return i;
-        }
-      }
-    }
-  }
-  
-  public int a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return 0;
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
-    {
-      paramQQAppInterface = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-      while (paramQQAppInterface.hasNext())
-      {
-        Object localObject = (String)paramQQAppInterface.next();
-        if (paramString.equals(localObject))
-        {
-          localObject = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-          if (localObject != null) {
-            return ((Integer)localObject).intValue();
-          }
-        }
-      }
-    }
-    return 0;
-  }
-  
-  public int a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    int i = 0;
-    akpb localakpb = paramQQAppInterface.a();
-    Object localObject1 = paramQQAppInterface.a();
-    if ((localakpb == null) || (localObject1 == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TroopBarAssistantManager", 2, "countAllSubscriptionUnread getConversationFacade fail");
-      }
-      return 0;
-    }
-    label184:
-    label187:
-    label192:
-    label195:
-    label201:
-    label209:
-    for (;;)
-    {
-      int j;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_JavaUtilList != null)
-        {
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-          i = 0;
-          if (!localIterator.hasNext()) {
-            break label209;
-          }
-          TroopBarData localTroopBarData = (TroopBarData)localIterator.next();
-          localObject1 = localTroopBarData.mLatestMessage;
-          if (localObject1 != null) {
-            break label184;
-          }
-          localObject1 = paramQQAppInterface.a().b(localTroopBarData.mUin, 1008);
-          if ((localObject1 != null) && (saz.d(paramQQAppInterface, ((MessageRecord)localObject1).frienduin)))
-          {
-            j = localakpb.a(((MessageRecord)localObject1).frienduin, ((MessageRecord)localObject1).istroop);
-            if (!paramBoolean) {
-              break label201;
-            }
-            if (j <= 0) {
-              break label195;
-            }
-            j = 1;
-            break label187;
-          }
-        }
-        else
-        {
-          return i;
-        }
-      }
-      break label192;
-      continue;
-      for (i = j + i;; i = j + i)
-      {
-        break;
-        j = 0;
-        break label187;
-      }
-    }
-  }
-  
-  public long a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.a().a().a(ajsd.ac, 7210);
-    long l = 0L;
-    if (paramQQAppInterface != null) {
-      l = paramQQAppInterface.lastmsgtime;
-    }
-    return l;
-  }
-  
-  public TroopBarData a(QQAppInterface paramQQAppInterface)
-  {
-    a(paramQQAppInterface);
-    for (;;)
-    {
-      TroopBarData localTroopBarData;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+          return;
+          SpannableString localSpannableString = new SpannableString(paramsdh.a().replaceAll(" +", " ").replaceAll("\t+", " "));
+          a(localSpannableString, paramsdg.b);
+          localSpannableStringBuilder.append(localSpannableString);
+          i1 = i2;
           break;
-        }
-        long l = b(paramQQAppInterface);
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localTroopBarData = (TroopBarData)localIterator.next();
-        if (localTroopBarData.mLastMsgTime < l) {
-          localIterator.remove();
-        }
-      }
-      DraftSummaryInfo localDraftSummaryInfo = paramQQAppInterface.a().a(localTroopBarData.mUin, 1008);
-      if (localDraftSummaryInfo != null) {
-        localTroopBarData.mLastDraftTime = localDraftSummaryInfo.getTime();
-      } else {
-        localTroopBarData.mLastDraftTime = 0L;
-      }
-    }
-    a();
-    paramQQAppInterface = a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilList);
-    if ((paramQQAppInterface != null) && (!paramQQAppInterface.isEmpty())) {}
-    for (paramQQAppInterface = (TroopBarData)paramQQAppInterface.get(0);; paramQQAppInterface = null)
-    {
-      return paramQQAppInterface;
-      if (QLog.isColorLevel()) {
-        QLog.w("TroopBarAssistantManager", 2, "getFirstData return null");
+        } while (i2 == 0);
+        i1 = i2 - 1;
       }
     }
   }
   
-  public String a(String paramString)
+  private static boolean a()
   {
-    if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null)
-    {
-      paramString = (PublicAccountInfo)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      if (paramString != null) {
-        return paramString.name;
-      }
-    }
-    return "";
+    return Aladdin.getConfig(267).getIntegerFromString("enable_filter_small_pic", 0) == 1;
   }
   
-  public String a(String paramString, QQAppInterface paramQQAppInterface)
+  private static boolean a(String paramString)
   {
-    paramString = ((akdh)paramQQAppInterface.getManager(56)).a(paramString);
-    if (paramString != null) {
-      return paramString.name;
-    }
-    return "";
+    return (paramString.equals(d)) || (paramString.equals(e)) || (paramString.equals(f)) || (paramString.equals(k));
   }
   
-  public List<TroopBarData> a(QQAppInterface paramQQAppInterface)
+  public static BaseData b(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, sdh paramsdh, SparseArray<Float> paramSparseArray)
   {
-    ArrayList localArrayList = new ArrayList();
-    a(paramQQAppInterface);
-    for (;;)
+    int i7 = paramsdh.c();
+    Object localObject5 = "";
+    Object localObject3 = "";
+    Object localObject4 = "";
+    Object localObject1 = "";
+    Object localObject2 = "";
+    int i2 = 0;
+    int i3 = 0;
+    int i1 = 1;
+    if (i7 != 1)
     {
-      int j;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      Object localObject6 = localObject3;
+      Object localObject7 = localObject5;
+      int i4 = i2;
+      int i5 = i3;
+      Object localObject8 = localObject1;
+      Object localObject9 = localObject2;
+      Object localObject10 = localObject4;
+      int i6 = i1;
+      switch (i7)
       {
-        if (this.jdField_a_of_type_JavaUtilList != null)
+      default: 
+        i6 = i1;
+        localObject10 = localObject4;
+        localObject9 = localObject2;
+        localObject8 = localObject1;
+        i5 = i3;
+        i4 = i2;
+        localObject7 = localObject5;
+        localObject6 = localObject3;
+      case 0: 
+      case 1: 
+      case 2: 
+        for (;;)
         {
-          int i = 0;
-          long l = b(paramQQAppInterface);
-          j = this.jdField_a_of_type_JavaUtilList.size() - 1;
-          if (j >= 0)
+          i7 = paramsdh.d();
+          localObject3 = localObject6;
+          localObject5 = localObject7;
+          i2 = i4;
+          i3 = i5;
+          localObject1 = localObject8;
+          localObject2 = localObject9;
+          localObject4 = localObject10;
+          i1 = i6;
+          break;
+          if (!paramsdh.b().equals(h)) {
+            break label739;
+          }
+          i7 = paramsdh.b();
+          i4 = 0;
+          i5 = i1;
+          localObject6 = localObject2;
+          localObject2 = localObject1;
+          localObject1 = localObject3;
+          i1 = i2;
+          localObject3 = localObject5;
+          localObject5 = localObject4;
+          localObject4 = localObject6;
+          i2 = i3;
+          i3 = i5;
+          if (i4 < i7)
           {
-            TroopBarData localTroopBarData = (TroopBarData)this.jdField_a_of_type_JavaUtilList.get(j);
-            if (localTroopBarData == null)
+            String str = paramsdh.a(i4);
+            if (str.equals("vid"))
             {
-              this.jdField_a_of_type_JavaUtilList.remove(j);
+              localObject10 = paramsdh.b(i4);
+              localObject9 = localObject1;
+              localObject8 = localObject5;
+              localObject7 = localObject2;
+              localObject6 = localObject4;
+              i6 = i1;
+              i5 = i2;
             }
-            else
+            for (;;)
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("TroopBarAssistantManager", 2, "getUseTroopBarAssistList==> uin:" + localTroopBarData.mUin + ", lastMsgTime:" + localTroopBarData.mLastMsgTime);
-              }
-              if (localTroopBarData.mLastMsgTime < l)
+              i4 += 1;
+              i2 = i5;
+              i1 = i6;
+              localObject4 = localObject6;
+              localObject2 = localObject7;
+              localObject5 = localObject8;
+              localObject1 = localObject9;
+              localObject3 = localObject10;
+              break;
+              if (str.equals("width"))
               {
-                this.jdField_a_of_type_JavaUtilList.remove(j);
+                i6 = Integer.valueOf(paramsdh.b(i4)).intValue();
+                i5 = i2;
+                localObject6 = localObject4;
+                localObject7 = localObject2;
+                localObject8 = localObject5;
+                localObject9 = localObject1;
+                localObject10 = localObject3;
+              }
+              else if (str.equals("height"))
+              {
+                i5 = Integer.valueOf(paramsdh.b(i4)).intValue();
+                i6 = i1;
+                localObject6 = localObject4;
+                localObject7 = localObject2;
+                localObject8 = localObject5;
+                localObject9 = localObject1;
+                localObject10 = localObject3;
+              }
+              else if (str.equals("cover"))
+              {
+                localObject9 = paramsdh.b(i4);
+                i5 = i2;
+                i6 = i1;
+                localObject6 = localObject4;
+                localObject7 = localObject2;
+                localObject8 = localObject5;
+                localObject10 = localObject3;
+              }
+              else if (str.equals("tid"))
+              {
+                localObject8 = paramsdh.b(i4);
+                i5 = i2;
+                i6 = i1;
+                localObject6 = localObject4;
+                localObject7 = localObject2;
+                localObject9 = localObject1;
+                localObject10 = localObject3;
+              }
+              else if (str.equals("appid"))
+              {
+                localObject7 = paramsdh.b(i4);
+                i5 = i2;
+                i6 = i1;
+                localObject6 = localObject4;
+                localObject8 = localObject5;
+                localObject9 = localObject1;
+                localObject10 = localObject3;
+              }
+              else if (str.equals("appkey"))
+              {
+                localObject6 = paramsdh.b(i4);
+                i5 = i2;
+                i6 = i1;
+                localObject7 = localObject2;
+                localObject8 = localObject5;
+                localObject9 = localObject1;
+                localObject10 = localObject3;
               }
               else
               {
-                MessageRecord localMessageRecord = paramQQAppInterface.a().b(localTroopBarData.mUin, 1008);
-                if (localMessageRecord == null)
+                i5 = i2;
+                i6 = i1;
+                localObject6 = localObject4;
+                localObject7 = localObject2;
+                localObject8 = localObject5;
+                localObject9 = localObject1;
+                localObject10 = localObject3;
+                if (str.equals("busitype"))
                 {
-                  this.jdField_a_of_type_JavaUtilList.remove(j);
-                }
-                else if (localMessageRecord.time > localTroopBarData.mLastMsgTime)
-                {
-                  ((TroopBarData)this.jdField_a_of_type_JavaUtilList.get(j)).mLastMsgTime = localMessageRecord.time;
-                  i = 1;
+                  i3 = Integer.valueOf(paramsdh.b(i4)).intValue();
+                  i5 = i2;
+                  i6 = i1;
+                  localObject6 = localObject4;
+                  localObject7 = localObject2;
+                  localObject8 = localObject5;
+                  localObject9 = localObject1;
+                  localObject10 = localObject3;
                 }
               }
             }
           }
-          else
-          {
-            if (i != 0) {
-              Collections.sort(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilComparator);
-            }
-            localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+          localObject6 = localObject1;
+          localObject7 = localObject3;
+          i4 = i1;
+          i5 = i2;
+          localObject8 = localObject2;
+          localObject9 = localObject4;
+          localObject10 = localObject5;
+          i6 = i3;
+        }
+        label739:
+        throw new IllegalArgumentException("video tag error: has other start tag");
+      }
+      if (!h.equals(paramsdh.b())) {}
+    }
+    else
+    {
+      return scl.a(paramArticleInfo, paramFastWebArticleInfo, (String)localObject3, (String)localObject5, i2, i3, (String)localObject1, (String)localObject2, (String)localObject4, i1, paramSparseArray);
+    }
+    throw new IllegalArgumentException("video tag error: has other end tag");
+  }
+  
+  private static HashMap<String, String> b(String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    paramString = paramString.split(";");
+    int i1 = 0;
+    if (i1 < paramString.length)
+    {
+      Object localObject = paramString[i1].split(":");
+      if (localObject.length != 2) {}
+      for (;;)
+      {
+        i1 += 1;
+        break;
+        String str = localObject[0].trim();
+        localObject = localObject[1].trim();
+        if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+          localHashMap.put(str.toLowerCase(), ((String)localObject).toLowerCase());
+        }
+      }
+    }
+    return localHashMap;
+  }
+  
+  private static List<Object> b(String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (TextUtils.isEmpty(paramString)) {
+      return localArrayList;
+    }
+    for (;;)
+    {
+      int i2;
+      Object localObject;
+      try
+      {
+        String[] arrayOfString = paramString.split(";");
+        i2 = 0;
+        if (i2 < arrayOfString.length)
+        {
+          localObject = arrayOfString[i2].split(":");
+          if (localObject.length != 2) {
+            break label399;
           }
+          paramString = localObject[0].trim();
+          localObject = localObject[1].trim();
+          if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty((CharSequence)localObject))) {
+            break label399;
+          }
+          if (!p.equals(paramString)) {
+            break label172;
+          }
+          if (!"underline".equals(localObject)) {
+            break label143;
+          }
+          localArrayList.add(sdf.a(3, new Object[0]));
+        }
+      }
+      catch (Exception paramString)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, paramString, new Object[0]);
+      }
+      return localArrayList;
+      label143:
+      if ("line-through".equals(localObject))
+      {
+        localArrayList.add(sdf.a(5, new Object[0]));
+        break label399;
+        label172:
+        if ((q.equals(paramString)) || (r.equals(paramString)))
+        {
+          int i1;
+          if (((String)localObject).startsWith("rgb("))
+          {
+            localObject = localObject.split("\\(")[1].split("\\)")[0].split(",");
+            if (localObject.length != 3) {
+              break label394;
+            }
+            i1 = Color.rgb(Integer.valueOf(localObject[0].trim()).intValue(), Integer.valueOf(localObject[1].trim()).intValue(), Integer.valueOf(localObject[2].trim()).intValue());
+          }
+          while (i1 != -1)
+          {
+            if ("color".equals(paramString)) {}
+            for (paramString = sdf.a(2, new Object[] { Integer.valueOf(i1) });; paramString = sdf.a(1, new Object[] { Integer.valueOf(i1) }))
+            {
+              localArrayList.add(paramString);
+              break label399;
+              if (((String)localObject).startsWith("#"))
+              {
+                i1 = Color.parseColor((String)localObject);
+                break;
+              }
+              if (!jdField_a_of_type_JavaUtilHashMap.containsKey(((String)localObject).toLowerCase())) {
+                break label394;
+              }
+              i1 = Color.parseColor((String)jdField_a_of_type_JavaUtilHashMap.get(((String)localObject).toLowerCase()));
+              break;
+            }
+            i1 = -1;
+          }
+        }
+      }
+      label394:
+      label399:
+      i2 += 1;
+    }
+  }
+  
+  public static void b(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, sdh paramsdh, List<BaseData> paramList, sdg paramsdg, SparseArray<Float> paramSparseArray)
+  {
+    int i1 = paramsdh.c();
+    int i3 = paramsdh.a();
+    for (;;)
+    {
+      int i2;
+      if (i1 != 1) {
+        i2 = paramsdh.c();
+      }
+      switch (i2)
+      {
+      case 0: 
+      case 1: 
+      default: 
+      case 2: 
+      case 3: 
+        Object localObject;
+        do
+        {
+          do
+          {
+            i1 = paramsdh.d();
+            break;
+            localObject = paramsdh.b();
+            if (a((String)localObject))
+            {
+              a(paramsdh, paramsdg, paramList, paramSparseArray);
+              i1 = i2;
+              break;
+            }
+            if (((String)localObject).equals(g))
+            {
+              localObject = a(paramArticleInfo, paramFastWebArticleInfo, paramsdh, paramSparseArray);
+              i1 = i2;
+              if (localObject == null) {
+                break;
+              }
+              paramList.add(localObject);
+              i1 = i2;
+              break;
+            }
+            if (((String)localObject).equals(h))
+            {
+              paramList.add(b(paramArticleInfo, paramFastWebArticleInfo, paramsdh, paramSparseArray));
+              i1 = i2;
+              break;
+            }
+            if (((String)localObject).equals(i))
+            {
+              paramList.add(a(paramsdh, paramSparseArray));
+              i1 = i2;
+              break;
+            }
+          } while ((((String)localObject).equals(n)) || (((String)localObject).equals(l)));
+          if ((!((String)localObject).equals(b)) && (!((String)localObject).equals(c))) {
+            break label274;
+          }
+          a(paramArticleInfo, paramFastWebArticleInfo, paramsdh, paramList, paramsdg, paramSparseArray);
+        } while (i3 != paramsdh.a());
+        return;
+        if (((String)localObject).equals(m))
+        {
+          paramsdh.d();
+          a(paramsdh, paramsdg, paramList, paramSparseArray);
+          i1 = i2;
         }
         else
         {
-          return localArrayList;
+          throw new IOException("illegal tag include in list element(ul or ol)");
         }
-      }
-      j -= 1;
-    }
-  }
-  
-  public void a()
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-        Collections.sort(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilComparator);
-      }
-      return;
-    }
-  }
-  
-  public void a(aukp paramaukp, QQAppInterface paramQQAppInterface)
-  {
-    try
-    {
-      a(paramQQAppInterface);
-      aktf localaktf = paramQQAppInterface.a().a();
-      Object localObject2 = localaktf.a(false);
-      long l = System.currentTimeMillis() / 1000L;
-      Object localObject1 = new ArrayList();
-      Object localObject3;
-      if ((localObject2 != null) && (((List)localObject2).size() > 0))
-      {
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (RecentUser)((Iterator)localObject2).next();
-          if (((((RecentUser)localObject3).getType() == 1008) || (((RecentUser)localObject3).getType() == 1024)) && (a(paramQQAppInterface, ((RecentUser)localObject3).uin, ((RecentUser)localObject3).getType()))) {
-            ((List)localObject1).add(localObject3);
-          }
-        }
-      }
-      if (((List)localObject1).size() > 0)
-      {
-        l = ((RecentUser)((List)localObject1).get(0)).lastmsgtime;
-        localObject1 = ((List)localObject1).iterator();
-        if (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (RecentUser)((Iterator)localObject1).next();
-          localObject3 = a(paramaukp, paramQQAppInterface, ((RecentUser)localObject2).uin);
-          ((TroopBarData)localObject3).mLastDraftTime = ((RecentUser)localObject2).lastmsgdrafttime;
-          QQMessageFacade.Message localMessage;
-          if (((RecentUser)localObject2).lastmsgtime == 0L)
-          {
-            localMessage = paramQQAppInterface.a().a(((TroopBarData)localObject3).mUin, 1008);
-            if (localMessage == null) {}
-          }
-          for (((TroopBarData)localObject3).mLastMsgTime = localMessage.time;; ((TroopBarData)localObject3).mLastMsgTime = ((RecentUser)localObject2).lastmsgtime)
-          {
-            a(paramQQAppInterface, paramaukp, (TroopBarData)localObject3);
-            localaktf.b((RecentUser)localObject2);
-            e(((TroopBarData)localObject3).mUin, paramQQAppInterface);
-            break;
-          }
-        }
-      }
-      ((PublicAccountHandler)paramQQAppInterface.a(11)).c();
-      paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("init_troopbar_assist", false).commit();
-      return;
-    }
-    catch (Exception paramaukp) {}
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      int i;
-      if (this.jdField_a_of_type_JavaUtilList == null)
-      {
-        i = 1;
-        if (i != 0)
-        {
-          ??? = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-          b((aukp)???, paramQQAppInterface);
-          ((aukp)???).a();
-          paramQQAppInterface = ((akdh)paramQQAppInterface.getManager(56)).a();
-          if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
-          {
-            this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-            paramQQAppInterface = paramQQAppInterface.iterator();
-            while (paramQQAppInterface.hasNext())
-            {
-              ??? = (PublicAccountInfo)paramQQAppInterface.next();
-              this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(((PublicAccountInfo)???).getUin(), ???);
-            }
-          }
-        }
-      }
-      else
-      {
-        i = 0;
-      }
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    if (!paramQQAppInterface.getAccount().equals(this.jdField_a_of_type_JavaLangString)) {
-      k(paramQQAppInterface);
-    }
-    this.jdField_a_of_type_Long = paramLong;
-    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putLong("troopbar_assist_last_read_time", paramLong).commit();
-    RecentUser localRecentUser = paramQQAppInterface.a().a().a(ajsd.ac, 7210);
-    if (localRecentUser != null) {
-      localRecentUser.lastmsgtime = paramLong;
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    if (bhvy.b()) {
-      QLog.i("TroopBarAssistantManager", 2, "setLastReadTime, newMsgStr clear in memory");
-    }
-    l(paramQQAppInterface);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    m(paramQQAppInterface);
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().contains(paramString))) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(0));
-    }
-    l(paramQQAppInterface);
-    ahpd.b(paramQQAppInterface, paramString, sgg.b(paramQQAppInterface, paramString));
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, List<PublicAccountInfo> paramList)
-  {
-    if ((paramQQAppInterface == null) || (!paramQQAppInterface.getAccount().equals(this.jdField_a_of_type_JavaLangString))) {}
-    do
-    {
-      return;
-      if (((akdh)paramQQAppInterface.getManager(56)).jdField_a_of_type_Boolean) {
         break;
+      case 4: 
+        label274:
+        a(paramsdh, paramsdg, paramList, paramSparseArray);
+        i1 = i2;
       }
-    } while (!bhvy.b());
-    QLog.w("TroopBarAssistantManager", 2, "refreshSettings but padm not cached");
-    return;
-    this.d = true;
-    if ((paramList != null) && (paramList.size() > 0))
+    }
+  }
+  
+  public static void c(ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo, sdh paramsdh, List<BaseData> paramList, sdg paramsdg, SparseArray<Float> paramSparseArray)
+  {
+    int i1 = paramsdh.c();
+    switch (i1)
     {
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)paramList.next();
-        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(localPublicAccountInfo.getUin(), localPublicAccountInfo);
-      }
     }
-    f(paramQQAppInterface);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("troopbar_assist_deleted", paramBoolean).commit();
-    this.c = paramBoolean;
-  }
-  
-  public void a(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    if (b(paramQQAppInterface)) {
-      if ((!this.jdField_a_of_type_Boolean) || (this.c)) {
-        break label96;
-      }
-    }
-    label96:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        localObject = paramQQAppInterface.a().a().a(ajsd.ac, 7210);
-        if (paramMessageRecord.time >= ((RecentUser)localObject).lastmsgtime) {
-          c(paramQQAppInterface, false);
-        }
-      }
-      Object localObject = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      a(paramMessageRecord, paramMessageRecord.frienduin, paramMessageRecord.time, (aukp)localObject, paramQQAppInterface);
-      ((aukp)localObject).a();
-      return;
-    }
-  }
-  
-  public void a(MessageRecord paramMessageRecord, String paramString, long paramLong, aukp paramaukp, QQAppInterface paramQQAppInterface)
-  {
-    TroopBarData localTroopBarData = a(paramaukp, paramQQAppInterface, paramString);
-    if ((paramMessageRecord != null) && (paramMessageRecord.time > paramLong))
-    {
-      localTroopBarData.mLastMsgTime = paramMessageRecord.time;
-      localTroopBarData.mLatestMessage = paramMessageRecord;
-    }
-    for (;;)
-    {
-      QQMessageFacade.Message localMessage = paramQQAppInterface.a().a(localTroopBarData.mUin, 1008);
-      if (localMessage != null)
-      {
-        long l = localMessage.time;
-        if (l > localTroopBarData.mLastMsgTime)
-        {
-          localTroopBarData.mLastMsgTime = l;
-          localTroopBarData.mLatestMessage = localMessage;
-        }
-      }
-      a(paramQQAppInterface, paramaukp, localTroopBarData);
-      a(paramMessageRecord, paramString, paramQQAppInterface);
-      if (this.c) {
-        a(paramQQAppInterface, false);
-      }
-      b(paramQQAppInterface, paramString);
-      a(paramQQAppInterface, paramLong);
-      return;
-      localTroopBarData.mLastMsgTime = paramLong;
-    }
-  }
-  
-  public void a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    aukp localaukp = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    if (a(localaukp, paramString)) {
-      d(paramString, paramQQAppInterface);
-    }
-    localaukp.a();
-  }
-  
-  public void a(String paramString, QQAppInterface paramQQAppInterface, Context paramContext, akdn paramakdn)
-  {
-    sgg.a(paramQQAppInterface, paramContext, paramString, true, paramakdn);
-  }
-  
-  public void a(String paramString, QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    m(paramQQAppInterface);
-    if (((paramBoolean) || (paramQQAppInterface.a().a(paramString, 1008) > 0)) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-    }
-    l(paramQQAppInterface);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("init_troopbar_assist", true);
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    synchronized (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      if (this.jdField_a_of_type_JavaUtilList == null)
-      {
-        aukp localaukp = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-        b(localaukp, paramQQAppInterface);
-        localaukp.a();
-      }
-      return this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
-    }
-  }
-  
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    return (paramInt == 1008) && (saz.d(paramQQAppInterface, paramString));
-  }
-  
-  public boolean a(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    paramString = a(paramQQAppInterface, paramString);
-    if (paramString != null) {
-      return paramString.mIsSticky;
-    }
-    return false;
-  }
-  
-  public List<sda> b(QQAppInterface paramQQAppInterface)
-  {
-    a(paramQQAppInterface);
-    Object localObject1 = new ArrayList();
-    Object localObject3;
-    for (;;)
-    {
-      long l;
-      TroopBarData localTroopBarData;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        if (this.jdField_a_of_type_JavaUtilList == null) {
-          break label285;
-        }
-        l = b(paramQQAppInterface);
-        localObject3 = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (!((Iterator)localObject3).hasNext()) {
-          break;
-        }
-        localTroopBarData = (TroopBarData)((Iterator)localObject3).next();
-        if (localTroopBarData == null) {
-          ((Iterator)localObject3).remove();
-        }
-      }
-      Object localObject4 = paramQQAppInterface.a().b(localTroopBarData.mUin, 1008);
-      if (localObject4 == null)
-      {
-        ((Iterator)localObject3).remove();
-      }
-      else
-      {
-        localTroopBarData.mLatestMessage = ((MessageRecord)localObject4);
-        localTroopBarData.mLastMsgTime = ((MessageRecord)localObject4).time;
-        localObject4 = paramQQAppInterface.a().a(localTroopBarData.mUin, 1008);
-        if (localObject4 != null) {}
-        for (localTroopBarData.mLastDraftTime = ((DraftSummaryInfo)localObject4).getTime();; localTroopBarData.mLastDraftTime = 0L)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopBarAssistantManager", 2, "getUseTroopBarAssistList==> uin:" + localTroopBarData.mUin + ", lastMsgTime:" + localTroopBarData.mLastMsgTime + ", lastDraftTime: " + localTroopBarData.mLastDraftTime);
-          }
-          if (localTroopBarData.mLastMsgTime >= l) {
-            break;
-          }
-          ((Iterator)localObject3).remove();
-          break;
-        }
-      }
-    }
-    a();
-    ((List)localObject1).addAll(a(paramQQAppInterface, this.jdField_a_of_type_JavaUtilList));
-    label285:
-    ??? = new ArrayList(((List)localObject1).size());
-    localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject3 = (TroopBarData)((Iterator)localObject1).next();
-      localObject3 = sda.a(paramQQAppInterface, paramQQAppInterface.getApplication().getApplicationContext(), (TroopBarData)localObject3);
-      if ((localObject3 != null) && (!((List)???).contains(localObject3))) {
-        ((List)???).add(localObject3);
-      }
-    }
-    return ???;
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopBarAssistManager", 2, "app == null; what happen.");
-      }
-    }
-    TroopBarData localTroopBarData;
+    label36:
     do
     {
-      return;
-      if (!paramQQAppInterface.getAccount().equals(this.jdField_a_of_type_JavaLangString)) {
-        k(paramQQAppInterface);
-      }
-      if (b(paramQQAppInterface))
+      paramsdh.d();
+      while (i1 == 1)
       {
-        c(paramQQAppInterface, false);
-        b(paramQQAppInterface, false);
-        a(paramQQAppInterface, NetConnInfoCenter.getServerTime());
         return;
-      }
-      localTroopBarData = a(paramQQAppInterface);
-    } while (localTroopBarData == null);
-    a(paramQQAppInterface, localTroopBarData.mLastMsgTime);
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("first_login", paramBoolean).commit();
-  }
-  
-  public void b(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      paramString = (TroopBarData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      if (paramString == null) {
-        return;
-      }
-      paramString.mIsSticky = true;
-      paramString.mLastStickyTime = (System.currentTimeMillis() / 1000L);
-      ((ProxyManager)paramQQAppInterface.getManager(18)).a(paramQQAppInterface.getAccount(), 0, paramString.getTableName(), paramString, 4, null);
-      a();
-      paramString = paramQQAppInterface.getHandler(Conversation.class);
-      if (paramString != null)
-      {
-        paramString.sendEmptyMessage(1009);
-        return;
-      }
-    }
-  }
-  
-  public boolean b(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("subscribe_setTop_flag", false);
-  }
-  
-  public List<PublicAccountInfo> c(QQAppInterface paramQQAppInterface)
-  {
-    Object localObject = ((akdh)paramQQAppInterface.getManager(56)).a();
-    if (localObject != null)
-    {
-      ArrayList localArrayList = new ArrayList();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)((Iterator)localObject).next();
-        if (saz.d(paramQQAppInterface, localPublicAccountInfo.getUin())) {
-          localArrayList.add(localPublicAccountInfo);
-        }
-      }
-      return localArrayList;
-    }
-    return null;
-  }
-  
-  public void c(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-    if (bhvy.b()) {
-      QLog.i("TroopBarAssistantManager", 2, "setFirstEnterFeeds, newMsgStr clear in memory");
-    }
-    l(paramQQAppInterface);
-  }
-  
-  public void c(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("subscribe_setTop_flag", paramBoolean).commit();
-  }
-  
-  public void c(String paramString, QQAppInterface paramQQAppInterface)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      paramString = (TroopBarData)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      if (paramString == null) {
-        return;
-      }
-      paramString.mIsSticky = false;
-      paramString.mLastStickyTime = 0L;
-      ((ProxyManager)paramQQAppInterface.getManager(18)).a(paramQQAppInterface.getAccount(), 0, paramString.getTableName(), paramString, 4, null);
-      a();
-      paramString = paramQQAppInterface.getHandler(Conversation.class);
-      if (paramString != null)
-      {
-        paramString.sendEmptyMessage(1009);
-        return;
-      }
-    }
-  }
-  
-  public boolean c(QQAppInterface paramQQAppInterface)
-  {
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).getBoolean("first_enter_subscribe_no_reset", true);
-  }
-  
-  public void d(QQAppInterface paramQQAppInterface)
-  {
-    TroopBarData localTroopBarData = a(paramQQAppInterface);
-    if (localTroopBarData != null) {}
-    for (long l = localTroopBarData.mLastMsgTime;; l = NetConnInfoCenter.getServerTime())
-    {
-      a(paramQQAppInterface, l);
-      return;
-    }
-  }
-  
-  public void d(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("first_enter_subscribe", paramBoolean).commit();
-  }
-  
-  public void e(QQAppInterface paramQQAppInterface)
-  {
-    ThreadManager.executeOnSubThread(new TroopBarAssistantManager.3(this, paramQQAppInterface));
-  }
-  
-  public void e(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit().putBoolean("first_enter_subscribe_no_reset", paramBoolean).commit();
-  }
-  
-  public void f(QQAppInterface paramQQAppInterface)
-  {
-    aktf localaktf = paramQQAppInterface.a().a();
-    aukp localaukp = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = new ArrayList();
-    Object localObject1 = new ArrayList();
-    ??? = localaktf.a(false);
-    Object localObject4;
-    if ((??? != null) && (((List)???).size() > 0))
-    {
-      ??? = ((List)???).iterator();
-      while (((Iterator)???).hasNext())
-      {
-        localObject4 = (RecentUser)((Iterator)???).next();
-        if ((((RecentUser)localObject4).getType() == 1008) && (a(paramQQAppInterface, ((RecentUser)localObject4).uin, ((RecentUser)localObject4).getType())) && (!((RecentUser)localObject4).shouldShowInRecentList())) {
-          ((ArrayList)localObject2).add(localObject4);
-        }
-      }
-    }
-    a(paramQQAppInterface);
-    Object localObject5;
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-      {
-        localObject4 = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (((Iterator)localObject4).hasNext())
+        String str = paramsdh.b();
+        if ((str.equals(b)) || (str.equals(c)))
         {
-          localObject5 = (TroopBarData)((Iterator)localObject4).next();
-          if (!a(paramQQAppInterface, ((TroopBarData)localObject5).mUin, 1008)) {
-            ((ArrayList)localObject1).add(localObject5);
-          }
+          a(paramArticleInfo, paramFastWebArticleInfo, paramsdh, paramList, paramsdg, paramSparseArray);
+          break label36;
         }
-      }
-    }
-    if (((ArrayList)localObject2).size() > 0)
-    {
-      if (this.c) {
-        a(paramQQAppInterface, false);
-      }
-      localObject2 = ((ArrayList)localObject2).iterator();
-      if (((Iterator)localObject2).hasNext())
-      {
-        ??? = (RecentUser)((Iterator)localObject2).next();
-        localObject4 = a(localaukp, paramQQAppInterface, ((RecentUser)???).uin);
-        if (((RecentUser)???).lastmsgtime == 0L)
-        {
-          localObject5 = paramQQAppInterface.a().a(((TroopBarData)localObject4).mUin, 1008);
-          if (localObject5 == null) {}
+        if (!a(str)) {
+          throw new IOException("blockquote tag include no text tag !");
         }
-        for (((TroopBarData)localObject4).mLastMsgTime = ((QQMessageFacade.Message)localObject5).time;; ((TroopBarData)localObject4).mLastMsgTime = ((RecentUser)???).lastmsgtime)
-        {
-          a(paramQQAppInterface, localaukp, (TroopBarData)localObject4);
-          localaktf.b((RecentUser)???);
-          e(((RecentUser)???).uin, paramQQAppInterface);
-          break;
-        }
+        a(paramsdh, paramsdg, paramList, paramSparseArray);
       }
-    }
-    if (((ArrayList)localObject1).size() > 0)
-    {
-      localObject2 = ((ArrayList)localObject1).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        ??? = (TroopBarData)((Iterator)localObject2).next();
-        localObject4 = localaktf.a(((TroopBarData)???).mUin, 1008);
-        ((RecentUser)localObject4).uin = ((TroopBarData)???).mUin;
-        ((RecentUser)localObject4).setType(1008);
-        ((RecentUser)localObject4).lastmsgtime = ((TroopBarData)???).mLastMsgTime;
-        ((RecentUser)localObject4).lastmsgdrafttime = ((TroopBarData)???).mLastDraftTime;
-        if (bhvy.b())
-        {
-          localObject1 = (akdh)paramQQAppInterface.getManager(56);
-          QLog.i("TroopBarAssistantManager", 2, "uinConfigMap size: " + this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.size() + ", pam cache: " + ((akdh)localObject1).jdField_a_of_type_Boolean);
-          QLog.i("TroopBarAssistantManager", 2, "to remove incognizance TroopBarData " + ((TroopBarData)???).mUin + " from dataList");
-        }
-        if (a(localaukp, ((TroopBarData)???).mUin))
-        {
-          if (this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap == null) {}
-          for (localObject1 = null;; localObject1 = (PublicAccountInfo)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(((TroopBarData)???).mUin))
-          {
-            if (localObject1 != null) {
-              localaktf.a((RecentUser)localObject4);
-            }
-            if (bhvy.b()) {
-              QLog.i("TroopBarAssistantManager", 2, "to remove incognizance uin " + ((TroopBarData)???).mUin + " from newMsgSet");
-            }
-            d(((TroopBarData)???).mUin, paramQQAppInterface);
-            break;
-          }
-        }
-      }
-    }
-    localObject1 = a(paramQQAppInterface);
-    if (localObject1 != null) {
-      a(paramQQAppInterface, ((TroopBarData)localObject1).mLastMsgTime);
-    }
-    if (localaukp != null) {
-      localaukp.a();
-    }
-  }
-  
-  public void g(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface.removeMessages(1002);
-      paramQQAppInterface.sendEmptyMessage(1002);
-      paramQQAppInterface.removeMessages(1005);
-      paramQQAppInterface.sendEmptyMessage(1005);
-    }
-  }
-  
-  public void h(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return;
-      paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getAccount(), 0).edit();
-      this.jdField_b_of_type_Long = NetConnInfoCenter.getServerTime();
-      paramQQAppInterface.putLong("troopbar_recent_item_last_del_time", this.jdField_b_of_type_Long);
-      paramQQAppInterface.commit();
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopBarAssistantManager", 2, "saveTroopBarRecentItemLastDelTime, lastDelTime:" + this.jdField_b_of_type_Long);
-  }
-  
-  public void i(QQAppInterface paramQQAppInterface)
-  {
-    a().d(paramQQAppInterface, false);
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void j(QQAppInterface paramQQAppInterface)
-  {
-    try
-    {
-      k(paramQQAppInterface);
-      if (a(paramQQAppInterface) == true)
-      {
-        aukp localaukp = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-        a(localaukp, paramQQAppInterface);
-        localaukp.a();
-      }
-      b(paramQQAppInterface);
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-    }
+    } while (!paramsdh.b().equals(o));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdc
  * JD-Core Version:    0.7.0.1
  */

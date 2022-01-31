@@ -1,22 +1,22 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollectionID;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.view.View;
 
-public class tlg
+final class tlg
+  implements bhqd
 {
-  public int a;
-  public int b;
+  tlg(bhqd parambhqd, bhpy parambhpy) {}
   
-  public qqstory_struct.DateVideoCollectionID a()
+  public void OnClick(View paramView, int paramInt)
   {
-    qqstory_struct.DateVideoCollectionID localDateVideoCollectionID = new qqstory_struct.DateVideoCollectionID();
-    localDateVideoCollectionID.collection_id.set(this.a);
-    localDateVideoCollectionID.collection_type.set(this.b);
-    return localDateVideoCollectionID;
+    tlo.b("WSFeedUtils", "clickedView :" + paramView + ", which: " + paramInt);
+    if (this.jdField_a_of_type_Bhqd != null) {
+      this.jdField_a_of_type_Bhqd.OnClick(paramView, paramInt);
+    }
+    this.jdField_a_of_type_Bhpy.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tlg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,92 @@
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-public class arfc
-  implements arfm
+class arfc
+  extends almg
 {
-  public arfc(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  arfc(arfb paramarfb) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(long paramLong, float paramFloat)
   {
-    int k = 1;
-    IVPluginDataReporter localIVPluginDataReporter;
-    int j;
-    if (!bbfj.a(GroupVideoLoadingFragment.a(this.a)))
+    Object localObject = this.a.jdField_a_of_type_Ardq.a();
+    if (localObject == null) {}
+    do
     {
-      i = 1;
-      if (!paramBoolean) {
-        break label80;
-      }
-      GroupVideoLoadingFragment.a(this.a, false);
-      localIVPluginDataReporter = GroupVideoLoadingFragment.a(this.a).opType("enterPage");
-      if (!paramBoolean) {
-        break label111;
-      }
-      j = 1;
-      label50:
-      localIVPluginDataReporter = localIVPluginDataReporter.opIn(j);
-      if (i == 0) {
-        break label116;
-      }
-    }
-    label80:
-    label111:
-    label116:
-    for (int i = k;; i = 0)
-    {
-      localIVPluginDataReporter.opResult(i).report();
       return;
-      i = 0;
-      break;
-      if (i != 0) {
-        GroupVideoLoadingFragment.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("DatalineFileModel<FileAssistant>", 2, "DataLine onProgress : opType[" + this.a.jdField_a_of_type_Ardq.e() + "], uniseq[" + ((FileManagerEntity)localObject).uniseq + "], nSessionId[" + ((FileManagerEntity)localObject).nSessionId + "], peerType[" + this.a.jdField_a_of_type_Ardq.b() + "]");
       }
-      for (;;)
-      {
-        argk.b("2880338");
-        break;
-        GroupVideoLoadingFragment.a(this.a, false);
-      }
-      j = 0;
-      break label50;
+      int i = DataLineMsgRecord.getDevTypeBySeId(((FileManagerEntity)localObject).uniseq);
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(((FileManagerEntity)localObject).uniseq);
+    } while ((localObject == null) || (paramLong != ((DataLineMsgRecord)localObject).sessionid) || (this.a.jdField_a_of_type_Argf == null));
+    this.a.jdField_a_of_type_Argf.a(paramFloat);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  {
+    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Ardq.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("DatalineFileModel<FileAssistant>", 2, "DataLine onRecvFile : isSuccess[" + paramBoolean + "], uniseq[" + localFileManagerEntity.uniseq + "], nSessionId[" + localFileManagerEntity.nSessionId + "], peerType[" + this.a.jdField_a_of_type_Ardq.b() + "]");
     }
+    int i = DataLineMsgRecord.getDevTypeBySeId(localFileManagerEntity.uniseq);
+    DataLineMsgRecord localDataLineMsgRecord = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(localFileManagerEntity.uniseq);
+    if (localDataLineMsgRecord == null) {}
+    do
+    {
+      do
+      {
+        return;
+        String str = localFileManagerEntity.getFilePath();
+        if ((paramLong == localDataLineMsgRecord.sessionid) || (str == null) || (str.equals(paramString))) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.i("DatalineFileModel<FileAssistant>", 1, "this recv file done is not current visit file");
+      return;
+    } while (this.a.jdField_a_of_type_Argf == null);
+    if (paramBoolean)
+    {
+      localFileManagerEntity.status = 1;
+      this.a.jdField_a_of_type_Argf.f();
+      return;
+    }
+    localFileManagerEntity.status = 3;
+    this.a.jdField_a_of_type_Argf.g();
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    paramString = this.a.jdField_a_of_type_Ardq.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("DatalineFileModel<FileAssistant>", 2, "DataLine onSendFile : isSuccess[" + paramBoolean + "], uniseq[" + paramString.uniseq + "], nSessionId[" + paramString.nSessionId + "], peerType[" + this.a.jdField_a_of_type_Ardq.b() + "]");
+    }
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramString.uniseq);
+    DataLineMsgRecord localDataLineMsgRecord = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(paramString.uniseq);
+    if (localDataLineMsgRecord == null) {}
+    do
+    {
+      return;
+      if (paramLong != localDataLineMsgRecord.sessionid)
+      {
+        QLog.i("DatalineFileModel<FileAssistant>", 1, "this send file done is not current visit file");
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Argf == null);
+    if (paramBoolean)
+    {
+      paramString.status = 1;
+      this.a.jdField_a_of_type_Argf.f();
+      return;
+    }
+    this.a.jdField_a_of_type_Argf.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfc
  * JD-Core Version:    0.7.0.1
  */

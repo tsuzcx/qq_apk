@@ -1,33 +1,12 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.qphone.base.util.QLog;
-
-class ardp
-  implements URLDrawable.URLDrawableListener
+public abstract interface ardp
 {
-  ardp(ardo paramardo, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
+  public abstract void a(String paramString);
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap onLoadCanceled");
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    QLog.e("ImaxAdvertisement", 1, "s_forShare Bitmap FAILED, no more action ...");
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable = atij.a(paramURLDrawable);
-    ardo.a(this.jdField_a_of_type_Ardo, this.jdField_a_of_type_JavaLangString, this.b, this.c, paramURLDrawable, this.d, this.jdField_a_of_type_Int);
-  }
+  public abstract void aG_();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ardp
  * JD-Core Version:    0.7.0.1
  */

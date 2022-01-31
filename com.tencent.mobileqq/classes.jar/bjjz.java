@@ -1,30 +1,40 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bjjz
-  implements bble<Float>
 {
-  public bjjz(AdvancedProviderView paramAdvancedProviderView, QIMProviderContainerView paramQIMProviderContainerView, View paramView) {}
+  int a;
+  public Dialog a;
+  public Intent a;
+  public ServiceConnection a;
+  public Class<? extends Activity> a;
+  public String a;
+  public List<RemoteCommand> a;
+  public boolean a;
+  public int b = -1;
+  public String b;
+  public int c = 10000;
+  String c;
+  public String d;
+  public String e;
+  public String f;
   
-  @TargetApi(11)
-  public void a(bbky<Float> parambbky, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  public bjjz(int paramInt)
   {
-    paramFloat = paramFloat1.floatValue();
-    if (this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView != null) {
-      this.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.setBackGroundAlpha(paramFloat);
-    }
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(paramFloat);
-    }
-    AdvancedProviderView.a(this.jdField_a_of_type_DovComQqImCaptureViewAdvancedProviderView, paramFloat);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjjz
  * JD-Core Version:    0.7.0.1
  */

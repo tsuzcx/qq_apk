@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
-import ajya;
-import bbav;
+import alpo;
+import bczp;
 
 class ScreenShotUtil$2$3
   implements Runnable
@@ -10,12 +10,12 @@ class ScreenShotUtil$2$3
   
   public void run()
   {
-    this.this$0.a.a(new IllegalStateException(ajya.a(2131719049)));
+    this.this$0.a.a(new IllegalStateException(alpo.a(2131719527)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.ScreenShotUtil.2.3
  * JD-Core Version:    0.7.0.1
  */

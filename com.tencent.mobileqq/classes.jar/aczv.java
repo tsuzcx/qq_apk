@@ -1,33 +1,24 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.1;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation.5.2;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class aczv
-  extends View
+  implements View.OnTouchListener
 {
-  aczv(aczt paramaczt, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public aczv(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.1(this));
+    switch (paramMotionEvent.getAction())
+    {
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new XBubbleAnimation.5.2(this));
-    }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aczv
  * JD-Core Version:    0.7.0.1
  */

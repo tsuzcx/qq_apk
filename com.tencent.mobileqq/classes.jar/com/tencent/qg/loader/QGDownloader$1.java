@@ -1,19 +1,19 @@
 package com.tencent.qg.loader;
 
 import android.os.Handler;
-import bdtc;
-import bdte;
+import bfsx;
+import bfsz;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 
 public class QGDownloader$1
   implements Runnable
 {
-  public QGDownloader$1(bdtc parambdtc, String paramString) {}
+  public QGDownloader$1(bfsx parambfsx, String paramString) {}
   
   public void run()
   {
-    boolean bool = bdte.a("QGDownloader.onSuccess");
+    boolean bool = bfsz.a("QGDownloader.onSuccess");
     if (!bool)
     {
       if (QLog.isColorLevel()) {
@@ -26,7 +26,7 @@ public class QGDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qg.loader.QGDownloader.1
  * JD-Core Version:    0.7.0.1
  */

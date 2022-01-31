@@ -1,72 +1,73 @@
+import android.graphics.PointF;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import com.tencent.mobileqq.profile.view.VipTagView;
+import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
+import java.util.List;
 
 public class awrj
-  extends awsa
+  implements Animation.AnimationListener
 {
-  private awqj jdField_a_of_type_Awqj;
-  private awqs jdField_a_of_type_Awqs;
-  private awrf jdField_a_of_type_Awrf;
-  private awrl jdField_a_of_type_Awrl;
+  public awrj(ProfileTagView paramProfileTagView, View paramView, PointF paramPointF) {}
   
-  public awrj(baxy parambaxy)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(parambaxy);
-    this.jdField_a_of_type_Awrf = new awrf(parambaxy);
-    this.jdField_a_of_type_Awqs = new awqs(parambaxy);
-    this.jdField_a_of_type_Awqj = new awqj(parambaxy, 268435456);
-  }
-  
-  public void b(awoi paramawoi, awwr paramawwr)
-  {
-    if ((!(paramawoi instanceof awoe)) && (!(paramawoi instanceof awng))) {
-      QLog.e("MostUsedResultPresenter", 2, "unresolved model");
-    }
-    do
+    paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView;
+    paramAnimation.i -= 1;
+    paramAnimation = (RatioLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    if (paramAnimation != null)
     {
-      return;
-      if ((paramawoi instanceof awoe))
+      if (this.jdField_a_of_type_AndroidViewView.getAnimation() != null) {
+        this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      }
+      if ((paramAnimation.a != this.jdField_a_of_type_AndroidGraphicsPointF.x) || (paramAnimation.b != this.jdField_a_of_type_AndroidGraphicsPointF.y))
       {
-        localObject = (awoe)paramawoi;
-        int i = awpt.a(((awoe)localObject).e());
-        if (i == 2)
-        {
-          this.jdField_a_of_type_Awrf.b(paramawoi, paramawwr);
-          return;
+        paramAnimation.a = this.jdField_a_of_type_AndroidGraphicsPointF.x;
+        paramAnimation.b = this.jdField_a_of_type_AndroidGraphicsPointF.y;
+        this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
+        if ((this.jdField_a_of_type_AndroidViewView instanceof VipTagView)) {
+          ((VipTagView)this.jdField_a_of_type_AndroidViewView).setShakingState(true);
         }
-        if (i == 1)
-        {
-          this.jdField_a_of_type_Awqs.b(paramawoi, paramawwr);
-          return;
-        }
-        QLog.e("MostUsedResultPresenter", 2, "unresolved id type" + ((awoe)localObject).e());
-        return;
       }
-    } while (!(paramawoi instanceof awng));
-    Object localObject = (awng)paramawoi;
-    if (awpt.a(((awng)localObject).e()) == 3)
-    {
-      this.jdField_a_of_type_Awqj.b(paramawoi, paramawwr);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b = false;
+      if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.i == 0) {
+        if (!this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b())
+        {
+          paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_Awmk.a.getLabelList();
+          if (paramAnimation != null)
+          {
+            if ((this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_ArrayOfAndroidViewView[(ProfileTagView.a().length - 1)] == null) || (paramAnimation.size() != 0)) {
+              break label244;
+            }
+            this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          }
+        }
+      }
     }
-    QLog.e("MostUsedResultPresenter", 2, "unresolved id type" + ((awng)localObject).e());
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.e)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.g(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_Awmk);
+        this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.e = false;
+      }
+      return;
+      label244:
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    }
   }
   
-  protected void c(awoi paramawoi, awwr paramawwr)
-  {
-    if (this.jdField_a_of_type_Awrl != null)
-    {
-      if (paramawwr.a() != null) {
-        paramawwr.a().setOnClickListener(new awrk(this));
-      }
-      return;
-    }
-    super.c(paramawoi, paramawwr);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awrj
  * JD-Core Version:    0.7.0.1
  */

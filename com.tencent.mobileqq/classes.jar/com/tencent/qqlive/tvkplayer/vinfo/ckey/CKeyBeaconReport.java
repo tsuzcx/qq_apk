@@ -12,6 +12,7 @@ import java.util.Set;
 
 public class CKeyBeaconReport
 {
+  private static String BeaconAppKey = "000000CYDQ3IT5FF";
   private static BeaconInterface mBeaconInterface;
   private String mChannel;
   protected Properties mProperties = null;
@@ -23,7 +24,7 @@ public class CKeyBeaconReport
     this.mChannel = paramString2;
     mBeaconInterface = paramBeaconInterface;
     if (BeaconAdapter.isBeaconEnable()) {
-      BeaconAdapter.registerTunnel("000002ZJF83HCA7I", this.mVersion, this.mChannel);
+      BeaconAdapter.registerTunnel(BeaconAppKey, this.mVersion, this.mChannel);
     }
   }
   
@@ -56,7 +57,7 @@ public class CKeyBeaconReport
   public static void trackCustomKVEvent(Context paramContext, String paramString, Properties paramProperties)
   {
     if (BeaconAdapter.isBeaconEnable()) {
-      BeaconAdapter.onUserAction(paramString, true, -1L, -1L, propertyToMap(paramProperties), true, false);
+      BeaconAdapter.onUserActionToTunnel(BeaconAppKey, paramString, true, -1L, -1L, propertyToMap(paramProperties), true, false);
     }
     if (mBeaconInterface != null) {
       mBeaconInterface.trackCustomKVEvent(paramString, propertyToMap(paramProperties));
@@ -92,7 +93,7 @@ public class CKeyBeaconReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.CKeyBeaconReport
  * JD-Core Version:    0.7.0.1
  */

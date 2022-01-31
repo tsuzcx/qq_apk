@@ -1,24 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import mqq.app.AppRuntime;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class myn
+class myn
+  implements WtTicketPromise
 {
-  TroopMemberApiService a;
+  myn(myl parammyl) {}
   
-  public myn(TroopMemberApiService paramTroopMemberApiService)
+  public void Done(Ticket paramTicket)
   {
-    this.a = paramTroopMemberApiService;
+    myl.a(this.a, false);
+    this.a.h();
   }
   
-  public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
-  {
-    if (paramBundle == null) {}
-  }
+  public void Failed(ErrMsg paramErrMsg) {}
+  
+  public void Timeout(ErrMsg paramErrMsg) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myn
  * JD-Core Version:    0.7.0.1
  */

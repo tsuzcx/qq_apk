@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.addon;
 
-import auko;
-import aulz;
-import aumc;
+import awbv;
+import awdg;
+import awdj;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.pb.pendant.DiyAddonUser.UserStickerInfo;
@@ -16,14 +16,14 @@ import java.util.Iterator;
 import java.util.List;
 
 public class DiyPendantEntity
-  extends auko
+  extends awbv
 {
   public int borderId;
   public int diyId;
-  @aulz
+  @awdg
   public ArrayList<DiyPendantSticker> stickerList;
   public byte[] stickers;
-  @aumc
+  @awdj
   public String uinAndDiyId;
   public long updateTs;
   
@@ -78,7 +78,7 @@ public class DiyPendantEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,339 +1,158 @@
-import android.content.Context;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.manager.Manager;
+import org.json.JSONArray;
+import org.json.JSONException;
 
 public class alxs
+  implements Manager
 {
-  private int jdField_a_of_type_Int = 2;
-  private alya jdField_a_of_type_Alya;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  private boolean jdField_a_of_type_Boolean;
+  public static final String a;
+  public static boolean a;
+  private QQAppInterface a;
   
-  public alxs(Context paramContext, int paramInt)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = paramInt;
-    try
-    {
-      this.jdField_a_of_type_AndroidHardwareSensorManager = ((SensorManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("sensor"));
-      return;
-    }
-    catch (Throwable paramContext)
-    {
-      QLog.e("ARSensorManager", 1, "ARSensorManager getSystemService error:" + paramContext.getMessage());
-      this.jdField_a_of_type_AndroidHardwareSensorManager = null;
-    }
+    jdField_a_of_type_JavaLangString = alxs.class.getSimpleName();
   }
   
-  public alya a(int paramInt, SensorManager paramSensorManager, alxt paramalxt)
+  public alxs() {}
+  
+  public alxs(QQAppInterface paramQQAppInterface)
   {
-    if (paramSensorManager == null) {
-      return null;
-    }
-    if (paramInt == 1) {
-      if (0 != 0) {
-        break label515;
-      }
-    }
-    for (;;)
-    {
-      Object localObject7;
-      label89:
-      Object localObject3;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private static String a()
+  {
+    return (String)bjxj.a("search_keyword_list", "");
+  }
+  
+  private static void b(String paramString)
+  {
+    jdField_a_of_type_Boolean = true;
+    bjxj.a("search_keyword_list", paramString);
+  }
+  
+  public ArrayList<String> a()
+  {
+    localArrayList = new ArrayList();
+    Object localObject = a();
+    if (localObject != null) {
       try
       {
-        localObject1 = new alyf(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramalxt);
-        localObject7 = localObject1;
-        if (localObject1 != null) {}
+        localObject = new JSONArray((String)localObject);
+        int i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          localArrayList.add(((JSONArray)localObject).optString(i));
+          i += 1;
+        }
+        return localArrayList;
       }
-      catch (OrientationProviderNotFound localOrientationProviderNotFound2)
+      catch (JSONException localJSONException)
       {
-        try
-        {
-          localObject7 = new alyd(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramalxt);
-          localObject1 = localObject7;
-          if (localObject7 != null) {}
-        }
-        catch (OrientationProviderNotFound localOrientationProviderNotFound2)
-        {
-          try
-          {
-            Object localObject1 = new alxy(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramalxt);
-            if (localObject1 != null) {
-              break label485;
-            }
-            paramSensorManager = "null";
-            QLog.d("ARSensorManager", 1, "getProvider:" + paramSensorManager);
-            return localObject1;
-            localOrientationProviderNotFound1 = localOrientationProviderNotFound1;
-            Object localObject2 = null;
-            continue;
-            localOrientationProviderNotFound2 = localOrientationProviderNotFound2;
-            localObject7 = null;
-          }
-          catch (OrientationProviderNotFound paramSensorManager)
-          {
-            localObject3 = null;
-            continue;
-          }
-        }
+        localJSONException.printStackTrace();
       }
-      if (paramInt == 0) {
-        if (0 != 0) {
-          break label509;
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          localObject7 = new alyc(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramalxt);
-          localObject3 = localObject7;
-          if (localObject7 != null) {}
-        }
-        catch (OrientationProviderNotFound localOrientationProviderNotFound5)
-        {
-          try
-          {
-            localObject3 = new alyd(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramalxt);
-            localObject7 = localObject3;
-            if (localObject3 != null) {}
-          }
-          catch (OrientationProviderNotFound localOrientationProviderNotFound5)
-          {
-            try
-            {
-              localObject7 = new alyf(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramalxt);
-              localObject8 = localObject7;
-              if (localObject7 != null) {}
-            }
-            catch (OrientationProviderNotFound localOrientationProviderNotFound5)
-            {
-              try
-              {
-                for (;;)
-                {
-                  localObject8 = new alxx(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramalxt);
-                  localObject3 = localObject8;
-                  if (localObject8 != null) {
-                    break;
-                  }
-                  try
-                  {
-                    localObject3 = new alxz(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramalxt);
-                  }
-                  catch (OrientationProviderNotFound paramSensorManager)
-                  {
-                    localObject3 = null;
-                  }
-                }
-                break;
-                localOrientationProviderNotFound3 = localOrientationProviderNotFound3;
-                localObject7 = null;
-                continue;
-                localOrientationProviderNotFound4 = localOrientationProviderNotFound4;
-                Object localObject4 = null;
-                continue;
-                localOrientationProviderNotFound5 = localOrientationProviderNotFound5;
-                localObject7 = null;
-              }
-              catch (OrientationProviderNotFound localOrientationProviderNotFound6)
-              {
-                Object localObject8 = null;
-                continue;
-              }
-            }
-          }
-        }
-        if ((paramInt == 2) || (paramInt == 3)) {
-          if (0 != 0) {
-            break label503;
-          }
-        }
-        for (;;)
-        {
-          for (;;)
-          {
-            try
-            {
-              localObject7 = new alyd(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramalxt);
-              localObject5 = localObject7;
-              if (localObject7 != null) {}
-            }
-            catch (OrientationProviderNotFound localOrientationProviderNotFound8)
-            {
-              try
-              {
-                localObject5 = new alyf(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramalxt);
-                localObject7 = localObject5;
-                if (localObject5 != null) {}
-              }
-              catch (OrientationProviderNotFound localOrientationProviderNotFound8)
-              {
-                try
-                {
-                  for (;;)
-                  {
-                    localObject7 = new alxx(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramalxt);
-                    Object localObject5 = localObject7;
-                    if (localObject7 != null) {
-                      break;
-                    }
-                    try
-                    {
-                      localObject5 = new alxy(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramalxt);
-                    }
-                    catch (OrientationProviderNotFound paramSensorManager)
-                    {
-                      localObject5 = null;
-                    }
-                  }
-                  break;
-                  localOrientationProviderNotFound7 = localOrientationProviderNotFound7;
-                  localObject7 = null;
-                  continue;
-                  localOrientationProviderNotFound8 = localOrientationProviderNotFound8;
-                  Object localObject6 = null;
-                }
-                catch (OrientationProviderNotFound localOrientationProviderNotFound9)
-                {
-                  localObject7 = null;
-                  continue;
-                }
-              }
-            }
-            if (((paramInt != 4) && (paramInt != 5)) || (0 != 0)) {
-              break label497;
-            }
-            try
-            {
-              localalye = new alye(this.jdField_a_of_type_AndroidContentContext, paramInt, paramSensorManager, paramalxt);
-            }
-            catch (OrientationProviderNotFound paramSensorManager)
-            {
-              localalye = null;
-            }
-          }
-          break;
-          label485:
-          paramSensorManager = localalye.getClass().getSimpleName();
-          break label89;
-          label497:
-          localalye = null;
-          break;
-          label503:
-          localObject7 = null;
-        }
-        label509:
-        localObject7 = null;
-      }
-      label515:
-      alye localalye = null;
     }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    b("");
+  }
+  
+  public void a(int paramInt)
+  {
+    ArrayList localArrayList = a();
+    if ((localArrayList != null) && (paramInt < localArrayList.size())) {
+      localArrayList.remove(paramInt);
+    }
+    JSONArray localJSONArray = new JSONArray();
+    paramInt = 0;
+    while (paramInt < localArrayList.size())
     {
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Alya != null) {
-        this.jdField_a_of_type_Alya.c();
-      }
+      localJSONArray.put(localArrayList.get(paramInt));
+      paramInt += 1;
     }
+    b(localJSONArray.toString());
   }
   
-  public boolean a()
+  public void a(String paramString)
   {
-    return (a(2)) && ((a(1)) || (a(4)));
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {}
-    while (this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(paramInt) == null) {
-      return false;
-    }
-    return true;
-  }
-  
-  public boolean a(alxt paramalxt)
-  {
-    if (!this.jdField_a_of_type_Boolean)
+    int i = 0;
+    if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_Alya = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidHardwareSensorManager, paramalxt);
-      if (this.jdField_a_of_type_Alya == null) {
-        break label48;
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "addSearchHistory key word is null");
       }
-      this.jdField_a_of_type_Alya.b();
+      return;
     }
-    label48:
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false) {
-      return this.jdField_a_of_type_Boolean;
+    ArrayList localArrayList = a();
+    if (localArrayList.size() >= 10) {
+      localArrayList.remove(localArrayList.size() - 1);
     }
+    localArrayList.remove(paramString);
+    localArrayList.add(0, paramString);
+    paramString = new JSONArray();
+    while (i < localArrayList.size())
+    {
+      paramString.put(localArrayList.get(i));
+      i += 1;
+    }
+    b(paramString.toString());
   }
   
-  public boolean a(alxt paramalxt, int paramInt)
+  public void a(JSONArray paramJSONArray)
   {
-    if (!this.jdField_a_of_type_Boolean)
+    int j = 0;
+    if (paramJSONArray == null)
     {
-      this.jdField_a_of_type_Alya = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidHardwareSensorManager, paramalxt);
-      if (this.jdField_a_of_type_Alya == null) {
-        break label78;
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_a_of_type_JavaLangString, 2, "addAllSearchHistory key word is null");
       }
-      int i = paramInt;
-      if (paramInt != 2)
+      return;
+    }
+    ArrayList localArrayList2 = a();
+    ArrayList localArrayList1 = localArrayList2;
+    if (localArrayList2 == null) {
+      localArrayList1 = new ArrayList();
+    }
+    localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      String str = paramJSONArray.optString(i);
+      if (!TextUtils.isEmpty(str))
       {
-        i = paramInt;
-        if (paramInt != 1)
-        {
-          i = paramInt;
-          if (paramInt != 0)
-          {
-            i = paramInt;
-            if (paramInt != 3) {
-              i = 2;
-            }
-          }
-        }
+        localArrayList2.add(str);
+        localArrayList1.remove(str);
       }
-      this.jdField_a_of_type_Alya.a(i);
+      i += 1;
     }
-    label78:
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false) {
-      return this.jdField_a_of_type_Boolean;
+    localArrayList2.addAll(localArrayList1);
+    paramJSONArray = new JSONArray();
+    if (localArrayList2.size() > 10) {
+      i = 10;
     }
+    while (j < i)
+    {
+      paramJSONArray.put(localArrayList2.get(j));
+      j += 1;
+      continue;
+      i = localArrayList2.size();
+    }
+    b(paramJSONArray.toString());
   }
   
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_AndroidHardwareSensorManager == null) {
-      return false;
-    }
-    Object localObject = this.jdField_a_of_type_AndroidHardwareSensorManager;
-    int i;
-    if (this.jdField_a_of_type_Int == 5)
-    {
-      i = 15;
-      localObject = ((SensorManager)localObject).getDefaultSensor(i);
-      if ((this.jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(4) == null) || (localObject == null)) {
-        break label56;
-      }
-    }
-    label56:
-    for (boolean bool = true;; bool = false)
-    {
-      return bool;
-      i = 11;
-      break;
-    }
-  }
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alxs
  * JD-Core Version:    0.7.0.1
  */

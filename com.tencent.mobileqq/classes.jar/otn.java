@@ -1,29 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
-import com.tencent.common.app.AppInterface;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class otn
-  implements View.OnClickListener
+  implements AladdinConfigHandler
 {
-  public otn(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
-  
-  public void onClick(View paramView)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    this.a.f();
-    if (ReadInJoyAdIMAXBrowserFragment.a(this.a)) {
-      return;
+    QLog.d("KandianOpenOptConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("KandianOpenOptConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "opt_open_cost")) {
+        bjxj.a("preload_controller", Boolean.valueOf("1".equals(str2)));
+      }
     }
-    ReadInJoyAdIMAXBrowserFragment.a(this.a, true);
-    paramView = new HashMap();
-    paramView.put("stat_src", "5");
-    nmc.a(new nyd().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nmc.t).b(nmc.ae).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nmc.a(paramView)).a());
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bjxj.a("preload_controller", Boolean.valueOf(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     otn
  * JD-Core Version:    0.7.0.1
  */

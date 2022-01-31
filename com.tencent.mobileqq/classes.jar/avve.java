@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager.ChainBuilder;
+import com.tencent.mobileqq.ocr.view.gesture.GestureFrameLayout;
 
-public abstract interface avve
+public class avve
+  implements avvf
 {
-  public abstract void a(QQFilterRenderManager.ChainBuilder paramChainBuilder);
+  public avve(GestureFrameLayout paramGestureFrameLayout) {}
   
-  public abstract void m();
+  public void a(avvt paramavvt)
+  {
+    this.a.a(paramavvt);
+  }
+  
+  public void a(avvt paramavvt1, avvt paramavvt2)
+  {
+    this.a.a(paramavvt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avve
  * JD-Core Version:    0.7.0.1
  */

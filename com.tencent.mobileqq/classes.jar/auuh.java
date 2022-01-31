@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity;
-import mqq.app.QQPermissionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
 public class auuh
-  implements QQPermissionCallback
+  implements DialogInterface.OnClickListener
 {
-  public auuh(PersonalityLabelShareActivity paramPersonalityLabelShareActivity) {}
+  public auuh(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean, String paramString) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bbdj.a(this.a, paramArrayOfString, paramArrayOfInt);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    PersonalityLabelShareActivity.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
+    String str = this.jdField_a_of_type_JavaLangString;
+    paramDialogInterface.b = str;
+    GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Autg.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auuh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,27 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import android.widget.PopupWindow.OnDismissListener;
 
-public class pxr
-  extends ClickableSpan
+class pxr
+  implements PopupWindow.OnDismissListener
 {
-  public pxr(ComponentHeaderUgc paramComponentHeaderUgc, ArticleInfo paramArticleInfo) {}
+  pxr(pxl parampxl, bhtq parambhtq) {}
   
-  public void onClick(View paramView)
+  public void onDismiss()
   {
-    onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.a(), 4, false, 7, false);
-    ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.a.e());
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(actj.a(2, 14, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getResources()));
+    this.jdField_a_of_type_Bhtq.a(1.0F);
+    if (this.jdField_a_of_type_Pxl.a.b)
+    {
+      rjg localrjg = this.jdField_a_of_type_Pxl.a.a();
+      if (localrjg != null)
+      {
+        localrjg.c();
+        this.jdField_a_of_type_Pxl.a.b = false;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pxr
  * JD-Core Version:    0.7.0.1
  */

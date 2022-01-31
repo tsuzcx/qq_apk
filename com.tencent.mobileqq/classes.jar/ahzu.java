@@ -1,15 +1,17 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.os.Bundle;
 
-public abstract interface ahzu
+class ahzu
+  implements bepk
 {
-  public abstract void a(MediaPlayer paramMediaPlayer);
+  ahzu(ahzt paramahzt) {}
   
-  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
+  public void a(Bundle paramBundle) {}
+  
+  public void b(Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzu
  * JD-Core Version:    0.7.0.1
  */

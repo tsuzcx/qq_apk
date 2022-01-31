@@ -1,47 +1,77 @@
-import android.content.ComponentName;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.data.Stranger;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
-class ahkw
-  implements View.OnClickListener
+public class ahkw
+  extends alyo
 {
-  ahkw(ahkd paramahkd) {}
+  public ahkw(TroopActivity paramTroopActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField)
   {
-    paramView = QQPlayerService.a();
-    int i;
-    if (paramView != null)
+    if (paramBoolean)
     {
-      ahkd.a(this.a).startActivity(paramView);
-      paramView = paramView.getComponent().getClassName();
-      if (!paramView.equals(MusicPlayerActivity.class.getName())) {
-        break label125;
+      if (paramPBRepeatMessageField != null)
+      {
+        paramPBRepeatMessageField = paramPBRepeatMessageField.get().iterator();
+        while (paramPBRepeatMessageField.hasNext())
+        {
+          oidb_0x5d4.DelResult localDelResult = (oidb_0x5d4.DelResult)paramPBRepeatMessageField.next();
+          QLog.d("TroopActivity", 2, "ondelete: uin " + localDelResult.uin.get());
+          if (this.a.a != null)
+          {
+            int i = 0;
+            while (i < this.a.a.size())
+            {
+              Stranger localStranger = (Stranger)this.a.a.get(i);
+              if (localStranger.uin.equals(String.valueOf(localDelResult.uin.get()))) {
+                this.a.a.remove(localStranger);
+              }
+              i += 1;
+            }
+          }
+        }
       }
-      i = 0;
     }
-    for (;;)
-    {
-      axqy.a(ahkd.a(this.a).app, "dc00898", "", "", "0X8009EE4", "0X8009EE4", 1, 0, "", "", "", "");
-      axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
-      return;
-      label125:
-      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
-        i = 1;
-      } else {
-        i = -1;
+    else if (QLog.isColorLevel()) {
+      QLog.d("TroopActivity", 2, "onDelete is failed");
+    }
+  }
+  
+  public void a(boolean paramBoolean, List<Stranger> paramList)
+  {
+    if (paramBoolean) {
+      if (paramList != null)
+      {
+        this.a.a.clear();
+        this.a.a.addAll(paramList);
+        QLog.d("TroopActivity", 2, "onGetListRemote :" + this.a.a.size());
       }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("TroopActivity", 2, "onGetListRemote is failed");
+  }
+  
+  public void b(boolean paramBoolean, List<Stranger> paramList)
+  {
+    if ((paramBoolean) && (paramList != null))
+    {
+      this.a.a.clear();
+      this.a.a.addAll(paramList);
+      QLog.d("TroopActivity", 2, "onGetListLocal :" + this.a.a.size());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahkw
  * JD-Core Version:    0.7.0.1
  */

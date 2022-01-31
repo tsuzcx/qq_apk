@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
-import bhbw;
+import bjdd;
+import bjde;
+import bjdf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.widget.XListView;
 
@@ -30,31 +32,42 @@ public class FeedListView
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void a(bhbw parambhbw) {}
+  public void a(bjdf parambjdf) {}
   
   public void a(QQAppInterface paramQQAppInterface, Activity paramActivity, long paramLong) {}
+  
+  public boolean a(String paramString, bjdf parambjdf)
+  {
+    return false;
+  }
   
   public int b()
   {
     return 0;
   }
   
-  public void b() {}
-  
-  public void c() {}
-  
-  public void d() {}
-  
-  public void e() {}
+  public void f() {}
   
   public boolean f()
   {
     return this.a;
   }
   
-  public void j() {}
+  public void g() {}
   
-  public void o_() {}
+  public void h() {}
+  
+  public void i() {}
+  
+  public void l() {}
+  
+  public void m() {}
+  
+  public void q_() {}
+  
+  public void setExpandHead(bjdd parambjdd) {}
+  
+  public void setFeedUinChangedListener(bjde parambjde) {}
   
   public void setLongClickValid(boolean paramBoolean)
   {
@@ -63,7 +76,7 @@ public class FeedListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.api.FeedListView
  * JD-Core Version:    0.7.0.1
  */

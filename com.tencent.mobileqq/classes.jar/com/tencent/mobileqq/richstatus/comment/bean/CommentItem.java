@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richstatus.comment.bean;
 
-import awey;
+import ayab;
 import java.io.Serializable;
 
 public class CommentItem
@@ -11,12 +11,12 @@ public class CommentItem
   public long id;
   public long targetId;
   public long timeStamp;
-  public awey toReplyUser;
-  public awey user;
+  public ayab toReplyUser;
+  public ayab user;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.comment.bean.CommentItem
  * JD-Core Version:    0.7.0.1
  */

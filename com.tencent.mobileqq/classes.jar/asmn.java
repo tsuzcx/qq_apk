@@ -1,30 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class asmn
-  implements View.OnClickListener
+class asmn
+  implements DialogInterface.OnDismissListener
 {
-  public asmn(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  asmn(asmj paramasmj) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (MsgBackupDateFragment.a(this.a) == 0) {
-      asog.a("0X800A236");
-    }
-    for (;;)
+    if (this.a.a)
     {
-      this.a.onBackEvent();
-      return;
-      if (aslg.c) {
-        asog.a("0X800A25B");
-      }
+      this.a.a = false;
+      asmj.a(this.a).finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asmn
  * JD-Core Version:    0.7.0.1
  */

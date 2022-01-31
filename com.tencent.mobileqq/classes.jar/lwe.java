@@ -1,331 +1,63 @@
-import android.app.Notification;
-import android.graphics.Bitmap;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.service.AVPbInfo;
-import com.tencent.av.service.AVServiceForQQ;
-import com.tencent.av.service.AVServiceForQQ.AVServiceForQQStub.1;
-import com.tencent.av.service.AVServiceForQQ.AVServiceForQQStub.2;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.os.Bundle;
+import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.redpacket.AVRedPacketManager.GameStateInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class lwe
-  extends lwm
+  implements lwh
 {
-  private lwe(AVServiceForQQ paramAVServiceForQQ) {}
+  public lwe(AVRedPacketManager paramAVRedPacketManager) {}
   
-  public int a(long paramLong, int paramInt)
-  {
-    Object localObject;
-    label72:
-    int i;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
-    {
-      localObject = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      if ((localObject == null) || (!((VideoController)localObject).e) || (((VideoController)localObject).a().E != paramInt) || (((VideoController)localObject).a().jdField_g_of_type_Long != paramLong)) {
-        break label117;
-      }
-      localObject = ((VideoController)localObject).c().iterator();
-      paramInt = 0;
-      i = paramInt;
-      if (!((Iterator)localObject).hasNext()) {
-        break label120;
-      }
-      if (((ldr)((Iterator)localObject).next()).c != 1) {
-        break label123;
-      }
-      paramInt += 1;
-    }
-    label117:
-    label120:
-    label123:
-    for (;;)
-    {
-      break label72;
-      localObject = VideoController.a();
-      break;
-      i = 0;
-      return i;
-    }
-  }
-  
-  public AVPbInfo a(byte[] paramArrayOfByte)
+  public void a(boolean paramBoolean, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "processQCallPush in AVServiceForQQ");
+      QLog.d("AVRedPacketManager", 2, "onLoadFinish, isSucc=" + paramBoolean + ",type=" + paramInt);
     }
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(); localVideoController != null; localVideoController = VideoController.a()) {
-      return localVideoController.a(paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
+    if (!AVRedPacketManager.a(this.a, true)) {}
+    do
     {
-      localVideoController.a("startSpeak", localVideoController.jdField_a_of_type_Long, true, true);
-      return;
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    b();
-    VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
-    {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      if (!localVideoController.e) {
-        break label90;
-      }
-      if (paramLong == 0L) {
-        paramLong = localVideoController.jdField_a_of_type_Long;
-      }
-      localVideoController.a(localVideoController.c, localVideoController.jdField_a_of_type_Long, 95);
-    }
-    for (;;)
-    {
-      localVideoController.a(0, 0, null);
-      lcx.a().a().a();
-      lcx.a().a().b();
-      return;
-      localVideoController = VideoController.a();
-      break;
-      label90:
-      localVideoController.a(AVServiceForQQ.a(this.a), paramLong, 96);
-    }
-  }
-  
-  public void a(long paramLong, String paramString)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(); (localVideoController.e) && (localVideoController.a().az); localVideoController = VideoController.a()) {
-      return;
-    }
-    long l = AudioHelper.b();
-    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "enterRoom, groupId[" + paramLong + "], nickname[" + paramString + "], seq[" + l + "]");
-    localVideoController.a().a("enterRoom", true);
-    AVServiceForQQ.a(this.a, mtq.a());
-    AVServiceForQQ.a(this.a).a(null);
-    AVServiceForQQ.a(this.a).c();
-    AVServiceForQQ.a(this.a).d();
-    if ((lcx.a().a().jdField_a_of_type_Lgc.jdField_a_of_type_Int == 3) && ((paramLong == -1L) || (paramLong == lcx.a().a().jdField_a_of_type_Lgc.jdField_a_of_type_Long)))
-    {
-      AVServiceForQQ.a(this.a, true);
-      this.a.b = lcx.a().a().c;
-      if ((!AVServiceForQQ.a(this.a)) && (localVideoController.e))
+      do
       {
-        localVideoController.a(localVideoController.c, localVideoController.jdField_a_of_type_Long, 94);
-        lcx.a().a().b();
-        lcx.a().a().a();
-      }
-      lcx.a().b(this.a.b);
-      if (AVServiceForQQ.a(this.a)) {
-        break label457;
-      }
-      AVServiceForQQ.a(this.a).b();
-      AVServiceForQQ.a(this.a).a("DEVICE_EARPHONE;DEVICE_SPEAKERPHONE;DEVICE_BLUETOOTHHEADSET;DEVICE_WIREDHEADSET;");
-      AVServiceForQQ.a(this.a).a();
-      localVideoController.f(false);
-      label344:
-      if (!localVideoController.e) {
-        break label567;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "StartOrEnterGAudio already in room");
-      }
-    }
-    for (;;)
-    {
-      localVideoController.a().a(l, "enterRoom", 3);
-      localVideoController.a().jdField_a_of_type_Lgb.b = paramString;
-      localVideoController.a().az = true;
-      return;
-      this.a.b = lcx.a(AVServiceForQQ.a(this.a), String.valueOf(paramLong), new int[0]);
-      lcx.a().a(this.a.b, false);
-      AVServiceForQQ.a(this.a, false);
-      break;
-      label457:
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "IsAccompanyReturn");
-      }
-      AVServiceForQQ.a(this.a).a();
-      if (lcx.a().b(this.a.b).jdField_g_of_type_Boolean)
+        return;
+      } while (paramInt != 1);
+      if ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode == 1) && (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState == 1))
       {
-        localVideoController.a("enterRoom", lcx.a().b(this.a.b).jdField_a_of_type_Lgc.jdField_a_of_type_Long, false, false);
-        break label344;
-      }
-      localVideoController.a("enterRoom", lcx.a().b(this.a.b).jdField_a_of_type_Lgc.jdField_a_of_type_Long, true, false);
-      break label344;
-      label567:
-      int i = localVideoController.a(AVServiceForQQ.a(this.a), paramLong, AVServiceForQQ.b(this.a), new long[] { this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin() }, false);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "enterRoom result = " + i);
-      }
-      new Handler(Looper.getMainLooper()).post(new AVServiceForQQ.AVServiceForQQStub.2(this, i));
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      if (localVideoController != null) {
-        localVideoController.w(paramString);
-      }
-      return;
-    }
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      if (localVideoController != null) {
-        localVideoController.a(paramString, paramBitmap);
-      }
-      return;
-    }
-  }
-  
-  public void a(lwi paramlwi) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      localVideoController.e(paramBoolean);
-      return;
-    }
-  }
-  
-  public void a(boolean paramBoolean, Notification paramNotification)
-  {
-    if (Build.VERSION.SDK_INT < 18) {}
-    for (;;)
-    {
-      return;
-      if (!paramBoolean) {
-        break;
-      }
-      if (paramNotification != null) {}
-      for (this.a.jdField_a_of_type_AndroidAppNotification = paramNotification; this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null; this.a.jdField_a_of_type_AndroidAppNotification = new Notification())
-      {
-        this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().post(new AVServiceForQQ.AVServiceForQQStub.1(this));
+        Bundle localBundle = new Bundle();
+        localBundle.putString("key", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.key);
+        localBundle.putInt("gameState", 1);
+        localBundle.putInt("fromWho", 1);
+        localBundle.putInt("musicId", this.a.g);
+        localBundle.putInt("enterType", this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.enterType);
+        this.a.jdField_a_of_type_Lwb.a();
+        this.a.a(1, localBundle);
+        this.a.a(false, 1011, AVRedPacketManager.jdField_a_of_type_Long, null);
+        this.a.a(false, 1021, AVRedPacketManager.c, null);
         return;
       }
-    }
-    try
+    } while ((this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameMode != 2) || (this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.gameState != 1));
+    long l = Math.abs(System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$GameStateInfo.mRedPacketComeStartTime);
+    paramBoolean = msp.b(AVRedPacketManager.a(this.a));
+    if (l >= AVRedPacketManager.f)
     {
-      this.a.stopForeground(true);
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "setAvServiceForegroud stop foreground.");
-      this.a.jdField_a_of_type_AndroidAppNotification = null;
-      return;
-    }
-    catch (Throwable paramNotification)
-    {
-      for (;;)
+      if (paramBoolean)
       {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "setAvServiceForegroud stop foreground fail", paramNotification);
+        this.a.d();
+        return;
       }
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      if (localVideoController != null) {
-        localVideoController.c(paramArrayOfByte);
-      }
+      this.a.f();
       return;
     }
-  }
-  
-  public void b()
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
+    if (paramBoolean)
     {
-      localVideoController.a("stopSpeak", localVideoController.jdField_a_of_type_Long, false, true);
+      this.a.a(false, 1028, AVRedPacketManager.f - l, null);
       return;
     }
-  }
-  
-  public void b(byte[] paramArrayOfByte)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      if (localVideoController != null) {
-        localVideoController.d(paramArrayOfByte);
-      }
-      return;
-    }
-  }
-  
-  public void c()
-  {
-    long l = AudioHelper.b();
-    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "exitQQCall, seq[" + l + "]");
-    VideoController localVideoController;
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
-    {
-      localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-      mtq.a().b(l);
-      localVideoController.a().f = false;
-      localVideoController.a(localVideoController.a().d, 224);
-      localVideoController.b(224);
-      if (localVideoController.a().y == -1) {
-        break label220;
-      }
-    }
-    for (;;)
-    {
-      localVideoController.a().s = true;
-      lcg.c(this.a.jdField_a_of_type_JavaLangString, "DataReport onClose: ");
-      lhq.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      ljq.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      lir.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      mbx.b(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
-      mlo.a(localVideoController.a());
-      localVideoController.b(localVideoController.a().d, localVideoController.a().y);
-      localVideoController.a().jdField_g_of_type_Boolean = false;
-      return;
-      localVideoController = VideoController.a();
-      break;
-      label220:
-      localVideoController.a().y = 0;
-    }
-  }
-  
-  public void c(byte[] paramArrayOfByte)
-  {
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
-    for (VideoController localVideoController = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();; localVideoController = VideoController.a())
-    {
-      if (localVideoController != null) {
-        localVideoController.f(paramArrayOfByte);
-      }
-      return;
-    }
+    this.a.a(false, 1026, AVRedPacketManager.f - l, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lwe
  * JD-Core Version:    0.7.0.1
  */

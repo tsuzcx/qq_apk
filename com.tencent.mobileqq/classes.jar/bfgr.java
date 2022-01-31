@@ -1,85 +1,73 @@
-import com.tencent.mobileqq.pb.PBField;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.open.appstore.js.DINewForCommonWebView;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.io.File;
 import java.util.List;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-@Deprecated
 public class bfgr
+  implements bfki
 {
-  public static JSONObject a(Object paramObject)
+  public bfgr(DINewForCommonWebView paramDINewForCommonWebView, String paramString) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    JSONObject localJSONObject = new JSONObject();
-    Field[] arrayOfField = paramObject.getClass().getDeclaredFields();
-    int j = arrayOfField.length;
+    bfhg.e("DINewForCommonWebView", "[innerQuery] [onException] errorCode=" + paramInt + ", errorMsg=" + paramString);
+  }
+  
+  public void a(List<DownloadInfo> paramList)
+  {
+    bfhg.c("DINewForCommonWebView", "[innerQuery] onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
     int i = 0;
     for (;;)
     {
-      if (i < j) {}
-      Object localObject2;
-      Object localObject1;
-      for (;;)
+      if (i < j)
       {
-        Object localObject3;
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
         try
         {
-          if (!Modifier.isPublic(arrayOfField[i].getModifiers())) {
-            break label270;
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("packagename", localDownloadInfo.e);
+          localJSONObject.put("versioncode", localDownloadInfo.b);
+          localJSONObject.put("url", localDownloadInfo.d);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONObject.put("download_from", localDownloadInfo.h);
+          localJSONObject.put("writecodestate", localDownloadInfo.j);
+          if (TextUtils.isEmpty(localDownloadInfo.l)) {
+            localJSONObject.put("final_file_exits", "false");
           }
-          arrayOfField[i].setAccessible(true);
-          localObject2 = arrayOfField[i].get(paramObject);
-          localObject1 = localObject2;
-          if ((localObject2 instanceof PBField)) {
-            localObject1 = localObject2.getClass().getDeclaredMethod("get", new Class[0]).invoke(localObject2, new Object[0]);
-          }
-          if (!(localObject1 instanceof List)) {
-            break label225;
-          }
-          localObject2 = new JSONArray();
-          localObject1 = ((List)localObject1).iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break;
-          }
-          localObject3 = ((Iterator)localObject1).next();
-          if (a(localObject3))
+          for (;;)
           {
-            ((JSONArray)localObject2).put(localObject3);
-            continue;
-            return localJSONObject;
+            localJSONArray.put(localJSONObject);
+            i += 1;
+            break;
+            localJSONObject.put("final_file_exits", new File(localDownloadInfo.l).exists());
           }
         }
-        catch (Exception paramObject)
+        catch (JSONException localJSONException)
         {
-          betc.d("JSONUtils", "convert error:" + paramObject);
-        }
-        if (localObject3 != null) {
-          ((JSONArray)localObject2).put(a(localObject3));
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
         }
       }
-      localJSONObject.put(arrayOfField[i].getName(), localObject2);
-      break label270;
-      label225:
-      if (a(localObject1)) {
-        localJSONObject.put(arrayOfField[i].getName(), localObject1);
-      } else if (localObject1 != null) {
-        localJSONObject.put(arrayOfField[i].getName(), a(localObject1));
-      }
-      label270:
-      i += 1;
     }
-  }
-  
-  static boolean a(Object paramObject)
-  {
-    return ((paramObject instanceof Integer)) || ((paramObject instanceof Long)) || ((paramObject instanceof String)) || ((paramObject instanceof Boolean)) || ((paramObject instanceof Double));
+    paramList = "javascript:" + this.jdField_a_of_type_JavaLangString + "(" + localJSONArray.toString() + ")";
+    bfhg.c("DINewForCommonWebView", "[innerQuery] querySucess : " + paramList);
+    DINewForCommonWebView.a(this.jdField_a_of_type_ComTencentOpenAppstoreJsDINewForCommonWebView, paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfgr
  * JD-Core Version:    0.7.0.1
  */

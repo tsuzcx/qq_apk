@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.pts.loader;
 
 import android.os.Handler;
-import bbdx;
-import bejn;
+import bdcs;
 import com.tencent.qphone.base.util.QLog;
-import ppl;
-import pqe;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import pwa;
+import pwx;
 
 public class PTSJSCLoader$2
   implements Runnable
 {
-  public PTSJSCLoader$2(ppl paramppl, Runnable paramRunnable) {}
+  public PTSJSCLoader$2(pwa parampwa, Runnable paramRunnable) {}
   
   public void run()
   {
@@ -18,32 +18,32 @@ public class PTSJSCLoader$2
     {
       QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], jsc has loaded, no need to load again.");
       if (this.a != null) {
-        bejn.b().post(this.a);
+        ThreadManager.b().post(this.a);
       }
     }
     for (;;)
     {
       return;
-      String str = ppl.a(this.this$0) + "/" + "libjsc.so";
+      String str = pwa.a(this.this$0) + "/" + "libjsc.so";
       QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], jscSoFullPath = " + str);
       try
       {
-        if (bbdx.a(str))
+        if (bdcs.a(str))
         {
           System.load(str);
-          ppl.a(this.this$0, true);
+          pwa.a(this.this$0, true);
           QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], load jsc so success");
-          pqe.b("[loadPTSJSC] succeed", "1");
+          pwx.b("[loadPTSJSC] succeed", "1");
           if (this.a == null) {
             continue;
           }
-          bejn.b().post(this.a);
+          ThreadManager.b().post(this.a);
         }
       }
       catch (Throwable localThrowable)
       {
         QLog.e("PTSJSCLoader", 1, "[loadPTSJSC] error, t = " + localThrowable);
-        pqe.a(localThrowable.toString(), "1");
+        pwx.a(localThrowable.toString(), "1");
         return;
       }
     }
@@ -52,7 +52,7 @@ public class PTSJSCLoader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.2
  * JD-Core Version:    0.7.0.1
  */

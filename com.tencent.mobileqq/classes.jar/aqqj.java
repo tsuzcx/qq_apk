@@ -1,90 +1,59 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
 
-public class aqqj
-  extends RecyclerView.ViewHolder
+class aqqj
+  implements aqnr
 {
-  private int jdField_a_of_type_Int;
-  public ImageView a;
-  public TextView a;
-  private aqqc jdField_a_of_type_Aqqc;
-  private FeedsItemData jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData;
-  public CornerImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  aqqj(aqqi paramaqqi, String paramString, aqqr paramaqqr) {}
   
-  public aqqj(View paramView)
+  public void a(int paramInt, String paramString)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377350));
-    this.b = ((TextView)paramView.findViewById(2131362884));
-    this.c = ((TextView)paramView.findViewById(2131370992));
-    this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView = ((CornerImageView)paramView.findViewById(2131367906));
-    this.d = ((TextView)paramView.findViewById(2131366923));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365268));
-  }
-  
-  public void a(aqqc paramaqqc, FeedsItemData paramFeedsItemData, int paramInt)
-  {
-    this.jdField_a_of_type_Aqqc = paramaqqc;
-    this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData = paramFeedsItemData;
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.miniType == 1)
-    {
-      this.itemView.setBackgroundDrawable(aqsv.a(this.itemView.getContext(), 8.0F, 8.0F, 8.0F, 8.0F));
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2DiscTaskExcuter onFaild：");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.title);
-      this.b.setText(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.authorName);
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setImageURL(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.coverImgUrl);
-        this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setRadius(actj.a(4.0F, this.itemView.getResources()));
-        this.d.setText(this.jdField_a_of_type_Aqqc.a().gameName);
-        if ((!TextUtils.isEmpty(this.jdField_a_of_type_Aqqc.a().gameName)) && (this.jdField_a_of_type_Aqqc.a().gameName.length() > 8))
-        {
-          this.c.setVisibility(4);
-          this.itemView.setOnClickListener(new aqqk(this));
-          return;
-          if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.miniType == 2)
-          {
-            this.itemView.setBackgroundDrawable(aqsv.a(this.itemView.getContext(), 0.0F, 0.0F, 8.0F, 8.0F));
-            this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-            continue;
-          }
-          this.itemView.setBackgroundDrawable(aqsv.a(this.itemView.getContext(), 8.0F, 8.0F, 0.0F, 0.0F));
-          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqqi.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild:" + paramInt);
       }
-      catch (Exception paramaqqc)
+      this.jdField_a_of_type_Aqqr.a(aqpv.a(this.jdField_a_of_type_Aqqi.jdField_a_of_type_Long, bool2), bool1);
+      return;
+      if ((paramInt == -6101) || (paramInt == -7003))
       {
-        for (;;)
-        {
-          QLog.e("QQGamePubFeedsAdapter", 1, paramaqqc, new Object[0]);
-        }
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.viewersNum > 10000) {}
-    for (paramaqqc = Math.round(this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.viewersNum / 10000.0F * 10.0F) / 10.0F + ajya.a(2131710332);; paramaqqc = this.jdField_a_of_type_ComTencentMobileqqGamecenterDataFeedsItemData.viewersNum + ajya.a(2131710320))
-    {
-      this.c.setText(paramaqqc);
-      break;
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "2");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aqqi.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aqqi.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aqqi.c);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aqqi.e);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aqqi.f);
+    localBundle.putString("_m_ForwardUuid", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aqqi.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send success");
     }
+    this.jdField_a_of_type_Aqqr.a(paramString, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,16 @@
-class bbgm
-  implements adlm
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+
+public class bbgm
+  implements bbgq
 {
-  bbgm(bbgl parambbgl) {}
+  public bbgm(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
   
-  public boolean a(adlj paramadlj)
+  public void a(Bitmap paramBitmap)
   {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(adlj paramadlj, String paramString1, String paramString2)
-  {
-    return false;
+    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bevy);
+    WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
   }
 }
 

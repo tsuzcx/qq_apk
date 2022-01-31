@@ -1,28 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import java.lang.ref.WeakReference;
-
 public class ayaa
-  extends Handler
 {
-  private WeakReference<axzs> a;
+  public long a;
+  public ayab a;
   
-  public ayaa(axzs paramaxzs)
+  public ayaa()
   {
-    this.a = new WeakReference(paramaxzs);
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  public void handleMessage(Message paramMessage)
+  public ayaa(long paramLong, ayab paramayab)
   {
-    if ((axzs)this.a.get() != null) {
-      ((AnyScaleTypeImageView)paramMessage.obj).setImageResource(2130844582);
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Ayab = paramayab;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayaa
  * JD-Core Version:    0.7.0.1
  */

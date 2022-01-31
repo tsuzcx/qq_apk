@@ -1,13 +1,13 @@
 package com.tencent.litetransfersdk;
 
-import ajum;
+import allz;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import aptx;
-import apug;
-import apvm;
+import armz;
+import arni;
+import aroo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.GifDrawable;
@@ -61,7 +61,7 @@ import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MpFileNot
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.MsgHeader;
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.NFCNotify;
 import tencent.im.s2c.msgtype0x211.submsgtype0x7.SubMsgType0x7.MsgBody.RNFCNotify;
-import yah;
+import zpa;
 
 public class ProtocolHelper
 {
@@ -92,7 +92,7 @@ public class ProtocolHelper
     if (paramInt == 1)
     {
       str = paramString1;
-      if (apug.a(paramString1) != 0)
+      if (arni.a(paramString1) != 0)
       {
         str = paramString1;
         if (!paramBoolean) {
@@ -217,7 +217,7 @@ public class ProtocolHelper
           paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])localList.toArray(new String[localList.size()]));
           paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_httpsvr_api_ver = paramRspBody.msg_apply_upload_rsp_v2.uint32_httpsvr_api_ver.get();
           paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.bytes_sha = paramRspBody.msg_apply_upload_rsp_v2.bytes_sha.get().toByteArray();
-        } while ((this.mApp == null) || (!(this.mApp instanceof QQAppInterface)) || (!apvm.b((QQAppInterface)this.mApp)));
+        } while ((this.mApp == null) || (!(this.mApp instanceof QQAppInterface)) || (!aroo.b((QQAppInterface)this.mApp)));
         paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody.msg_apply_upload_rsp_v2.str_upload_dns.get();
         return;
         paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp = new ApplyUploadRsp();
@@ -235,7 +235,7 @@ public class ProtocolHelper
         paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.uint32_pack_size = paramRspBody.msg_apply_upload_rsp_v3.uint32_pack_size.get();
         localList = paramRspBody.msg_apply_upload_rsp_v3.rpt_str_uploadip_list.get();
         paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.rpt_str_uploadip_list = ((String[])localList.toArray(new String[localList.size()]));
-      } while ((this.mApp == null) || (!(this.mApp instanceof QQAppInterface)) || (!apvm.b((QQAppInterface)this.mApp)));
+      } while ((this.mApp == null) || (!(this.mApp instanceof QQAppInterface)) || (!aroo.b((QQAppInterface)this.mApp)));
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_uploadRsp.str_upload_dns = paramRspBody.msg_apply_upload_rsp_v3.str_upload_dns.get();
       return;
     case 1810: 
@@ -262,7 +262,7 @@ public class ProtocolHelper
       localList = paramRspBody.msg_apply_download_rsp.msg_download_info.rpt_str_downloadip_list.get();
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.rpt_str_downloadip_list = ((String[])localList.toArray(new String[localList.size()]));
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_cookie = paramRspBody.msg_apply_download_rsp.msg_download_info.str_cookie.get();
-      if ((this.mApp != null) && ((this.mApp instanceof QQAppInterface)) && (apvm.b((QQAppInterface)this.mApp))) {
+      if ((this.mApp != null) && ((this.mApp instanceof QQAppInterface)) && (aroo.b((QQAppInterface)this.mApp))) {
         paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_download_info.str_download_dns = paramRspBody.msg_apply_download_rsp.msg_download_info.str_download_dns.get();
       }
       paramMsgSCBody.msgBody0x346.pMsgBody0x346_1210.msg_file_info = createFileInfo(paramRspBody.msg_apply_download_rsp.msg_file_info);
@@ -427,7 +427,7 @@ public class ProtocolHelper
       return Long.valueOf(this.mApp.getCurrentAccountUin()).longValue();
     }
     if (this.mUinType == 1) {
-      return ((yah)((QQAppInterface)this.mApp).a(51)).a();
+      return ((zpa)((QQAppInterface)this.mApp).a(51)).a();
     }
     return 0L;
   }
@@ -1234,7 +1234,7 @@ public class ProtocolHelper
   
   public Session genSession(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    Session localSession = genSession(paramDataLineMsgRecord.fileFrom, paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, paramDataLineMsgRecord.filename, ajum.b(paramDataLineMsgRecord.msgtype), 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex);
+    Session localSession = genSession(paramDataLineMsgRecord.fileFrom, paramDataLineMsgRecord.path, paramDataLineMsgRecord.thumbPath, paramDataLineMsgRecord.filename, allz.b(paramDataLineMsgRecord.msgtype), 0, paramDataLineMsgRecord.sessionid, paramDataLineMsgRecord.groupId, paramDataLineMsgRecord.groupSize, paramDataLineMsgRecord.groupIndex);
     if (localSession != null)
     {
       localSession.uFileSizeSrc = paramDataLineMsgRecord.filesize;
@@ -1303,7 +1303,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      aptx.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131693904));
+      armz.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131694020));
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.1(this, paramString));
@@ -1314,7 +1314,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      aptx.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131693908));
+      armz.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131694024));
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.3(this, paramString));
@@ -1325,7 +1325,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      aptx.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131693906));
+      armz.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131694022));
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.2(this, paramString));
@@ -1336,7 +1336,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      aptx.a(2131693945);
+      armz.a(2131694061);
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.5(this));
@@ -1347,7 +1347,7 @@ public class ProtocolHelper
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() == localLooper.getThread())
     {
-      aptx.a(2131693944);
+      armz.a(2131694060);
       return;
     }
     new Handler(localLooper).post(new ProtocolHelper.4(this));
@@ -1355,7 +1355,7 @@ public class ProtocolHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.litetransfersdk.ProtocolHelper
  * JD-Core Version:    0.7.0.1
  */

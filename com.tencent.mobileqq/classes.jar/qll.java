@@ -1,40 +1,28 @@
-import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnExtractFrameListener;
-import java.util.HashMap;
 
-class qll
-  implements TVK_IMediaPlayer.OnExtractFrameListener
+public class qll
+  implements Cloneable
 {
-  qll(qlg paramqlg) {}
+  public String a;
+  public String b;
   
-  public void onExtractFrame(int paramInt, Bitmap paramBitmap)
+  protected Object clone()
   {
-    qln localqln = (qln)qlg.a(this.a).get(Integer.valueOf(paramInt));
-    if (localqln != null) {}
     try
     {
-      localqln.jdField_b_of_type_Long = qlb.a(paramBitmap, true);
-      localqln.jdField_b_of_type_Int = qlb.a(localqln.a, localqln.jdField_b_of_type_Long);
-      if (QLog.isColorLevel()) {
-        QLog.d(qlg.a(), 2, "onExtractFrame frameIndex = " + paramInt + ", localHash = " + localqln.jdField_b_of_type_Long + ", hashDiff = " + localqln.jdField_b_of_type_Int);
-      }
-      return;
+      qll localqll = (qll)super.clone();
+      return localqll;
     }
-    catch (Throwable paramBitmap)
+    catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(qlg.a(), 2, "VideoExtractFrameHash.dctImageHash ERROR e = " + paramBitmap.getMessage());
-        }
-      }
+      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qll
  * JD-Core Version:    0.7.0.1
  */

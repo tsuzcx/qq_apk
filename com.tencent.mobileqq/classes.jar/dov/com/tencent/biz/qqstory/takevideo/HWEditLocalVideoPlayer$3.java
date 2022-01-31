@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Message;
-import bjxn;
+import bmix;
 
 class HWEditLocalVideoPlayer$3
   implements Runnable
@@ -15,7 +15,7 @@ class HWEditLocalVideoPlayer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.3
  * JD-Core Version:    0.7.0.1
  */

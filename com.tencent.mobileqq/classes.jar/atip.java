@@ -1,34 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-final class atip
-  implements bcww
+public class atip
+  implements DialogInterface.OnClickListener
 {
-  atip(String paramString, atiu paramatiu) {}
+  public atip(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
-    {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label50;
-      }
-      if (this.jdField_a_of_type_Atiu != null) {
-        this.jdField_a_of_type_Atiu.a(true);
-      }
-    }
-    label50:
-    while (this.jdField_a_of_type_Atiu == null) {
-      return;
-    }
-    this.jdField_a_of_type_Atiu.a(false);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atip
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,67 @@
-import android.app.Activity;
-import com.tencent.biz.troopplugin.PluginJumpManager;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import android.graphics.drawable.Drawable;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class xdm
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
 {
-  public xdm(PluginJumpManager paramPluginJumpManager, xdn paramxdn, Activity paramActivity, String paramString1, String paramString2, String paramString3, long paramLong, xdo paramxdo, String paramString4) {}
+  public Drawable a;
+  public String a;
+  public xdn a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public xdm()
   {
-    this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager = paramPluginManagerClient;
-    paramPluginManagerClient = this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.queryPlugin(this.jdField_a_of_type_Xdn.b);
-    int i;
-    if (paramPluginManagerClient != null) {
-      if (paramPluginManagerClient.mState == 4)
-      {
-        i = 1;
-        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.launchPlugin(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Xdn.b, this.jdField_a_of_type_Xdn.c, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_Xdo.b, this.jdField_a_of_type_Xdo.a);
-      }
+    this.jdField_a_of_type_Xdn = new xdn();
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Xdn == null) {
+      this.jdField_a_of_type_Xdn = new xdn();
     }
-    for (;;)
+    try
     {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.openLinkInNewWebView(this.jdField_a_of_type_AndroidAppActivity, this.b, this.d);
-      }
-      return;
-      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 0, this.b, this.jdField_a_of_type_Xdo.b, null, null);
-      this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.installPlugin(this.jdField_a_of_type_Xdn.b);
-      i = 0;
-      continue;
-      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 1, this.b, this.jdField_a_of_type_Xdo.b, null, null);
-      i = 0;
+      JSONObject localJSONObject = new JSONObject(this.e);
+      int i = localJSONObject.getInt("align");
+      Object localObject = localJSONObject.getJSONArray("picture_margin");
+      int j = ((JSONArray)localObject).getInt(0);
+      int k = ((JSONArray)localObject).getInt(1);
+      int m = ((JSONArray)localObject).getInt(2);
+      int n = ((JSONArray)localObject).getInt(3);
+      localObject = localJSONObject.getString("text_color");
+      int i1 = localJSONObject.getInt("text_size");
+      int i2 = localJSONObject.getInt("picture_width");
+      int i3 = localJSONObject.getInt("picture_height");
+      int i4 = localJSONObject.getInt("standard_width");
+      int i5 = localJSONObject.getInt("standard_height");
+      this.jdField_a_of_type_Xdn.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_Xdn.jdField_a_of_type_ArrayOfInt = new int[] { j, k, m, n };
+      this.jdField_a_of_type_Xdn.jdField_a_of_type_JavaLangString = ((String)localObject);
+      this.jdField_a_of_type_Xdn.b = i1;
+      this.jdField_a_of_type_Xdn.c = i2;
+      this.jdField_a_of_type_Xdn.d = i3;
+      this.jdField_a_of_type_Xdn.e = i4;
+      this.jdField_a_of_type_Xdn.f = i5;
+      return true;
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Item{thumbUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", desc='" + this.c + '\'' + ", imageUrl='" + this.d + '\'' + ", imageDrawable=" + this.jdField_a_of_type_AndroidGraphicsDrawableDrawable + ", layoutJson='" + this.e + '\'' + ", params=" + this.jdField_a_of_type_Xdn + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdm
  * JD-Core Version:    0.7.0.1
  */

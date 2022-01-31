@@ -1,22 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 
-class ahlo
+public class ahlo
   implements View.OnClickListener
 {
-  ahlo(ahkd paramahkd) {}
+  public ahlo(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
   public void onClick(View paramView)
   {
-    this.a.a(22, 0);
-    this.a.a(-1, null);
-    axqy.b(ahkd.a(this.a).app, "CliOper", "", "", "QQWIFI", "clk_buleClose", 0, 0, "", "", "", "");
+    TroopSuspiciousFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahlo
  * JD-Core Version:    0.7.0.1
  */

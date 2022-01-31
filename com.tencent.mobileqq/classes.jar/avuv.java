@@ -1,31 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.view.CircleBarView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class avuv
-  extends Animation
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public avuv(CircleBarView paramCircleBarView) {}
+  public avuv(ScanOcrView paramScanOcrView) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    CircleBarView.a(this.a, CircleBarView.a(this.a) * paramFloat * CircleBarView.b(this.a) / CircleBarView.c(this.a));
-    CircleBarView.b(this.a, 30.0F);
-    if (CircleBarView.a(this.a) != null)
-    {
-      if (CircleBarView.a(this.a) != null) {
-        CircleBarView.a(this.a).setText(CircleBarView.a(this.a).a(paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a)));
-      }
-      CircleBarView.a(this.a).a(CircleBarView.a(this.a), paramFloat, CircleBarView.b(this.a), CircleBarView.c(this.a));
-    }
-    this.a.postInvalidate();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.a.e = i;
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avuv
  * JD-Core Version:    0.7.0.1
  */

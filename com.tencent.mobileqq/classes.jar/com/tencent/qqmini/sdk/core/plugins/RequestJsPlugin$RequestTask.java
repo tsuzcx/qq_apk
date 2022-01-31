@@ -1,7 +1,7 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.os.SystemClock;
-import bell;
+import bglb;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -26,10 +26,10 @@ public class RequestJsPlugin$RequestTask
       if (paramJSONObject.has("url")) {
         this.mUrl = paramJSONObject.optString("url");
       }
-      Object localObject1 = bell.a(paramRequestJsPlugin.mMiniAppContext, paramJSONObject, "data");
+      Object localObject1 = bglb.a(paramRequestJsPlugin.mMiniAppContext, paramJSONObject, "data");
       if (localObject1 != null)
       {
-        localObject1 = ((bell)localObject1).a;
+        localObject1 = ((bglb)localObject1).a;
         this.mBody = ((byte[])localObject1);
         if ((this.mBody == null) && (paramJSONObject.has("data")))
         {
@@ -75,7 +75,7 @@ public class RequestJsPlugin$RequestTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.RequestJsPlugin.RequestTask
  * JD-Core Version:    0.7.0.1
  */

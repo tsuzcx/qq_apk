@@ -1,123 +1,269 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.transfile.ProtoReqManager;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import java.util.ArrayList;
+import java.util.List;
+import tencent.im.longconn.multimsg.MultiMsg.MultiMsgApplyUpReq;
+import tencent.im.longconn.multimsg.MultiMsg.MultiMsgApplyUpRsp;
+import tencent.im.longconn.multimsg.MultiMsg.ReqBody;
+import tencent.im.longconn.multimsg.MultiMsg.RspBody;
 
-final class bawk
-  implements DownloadParams.DecodeHandler
+public class bawk
+  extends bawa
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  int a;
+  
+  private void a(int paramInt, bawz parambawz, MultiMsg.ReqBody paramReqBody)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
+    parambawz = (bawv)parambawz;
+    MultiMsg.MultiMsgApplyUpReq localMultiMsgApplyUpReq = new MultiMsg.MultiMsgApplyUpReq();
+    localMultiMsgApplyUpReq.setHasFlag(true);
+    localMultiMsgApplyUpReq.uint64_dst_uin.set(Long.valueOf(parambawz.d).longValue());
+    localMultiMsgApplyUpReq.uint64_msg_size.set(parambawz.jdField_a_of_type_Long);
+    localMultiMsgApplyUpReq.bytes_msg_md5.set(ByteStringMicro.copyFrom(parambawz.jdField_a_of_type_ArrayOfByte));
+    localMultiMsgApplyUpReq.uint32_msg_type.set(b(parambawz.f));
+    localMultiMsgApplyUpReq.uint32_apply_id.set(0);
+    paramReqBody.rpt_multimsg_applyup_req.add(localMultiMsgApplyUpReq);
+    if (parambawz.jdField_a_of_type_Int == 1) {
+      paramReqBody.uint32_bu_type.set(1);
     }
-    int n;
-    int i1;
-    int i;
-    int j;
-    int k;
-    int m;
-    int i2;
-    int i3;
-    boolean bool;
-    label128:
-    label380:
-    do
+    if ((parambawz.jdField_a_of_type_Int == 0) && (aule.b)) {
+      paramReqBody.uint32_bu_type.set(2);
+    }
+  }
+  
+  private byte[] a(List<bawz> paramList)
+  {
+    int i = baqx.a().a();
+    this.jdField_a_of_type_Int = i;
+    switch (i)
     {
-      Object localObject;
-      do
-      {
-        do
-        {
-          return paramDownloadParams;
-          localObject = paramDownloadParams.tag;
-          paramDownloadParams = paramBitmap;
-        } while (!(localObject instanceof int[]));
-        paramDownloadParams = paramBitmap;
-      } while (((int[])localObject).length != 6);
-      paramDownloadParams = (int[])localObject;
-      n = paramDownloadParams[0];
-      i1 = paramDownloadParams[1];
-      i = paramDownloadParams[2];
-      j = paramDownloadParams[3];
-      k = paramDownloadParams[4];
-      m = paramDownloadParams[5];
-      i2 = paramBitmap.getHeight();
-      i3 = paramBitmap.getWidth();
-      float f1;
-      if ((n >= 0) && (i1 >= 0) && (i > 0) && (j > 0) && (n < i3) && (i1 < i2))
-      {
-        bool = true;
-        if (QLog.isColorLevel()) {
-          QLog.i(bavw.a(), 2, String.format("CUSTOM_CLIP_DECODER [%d,%d,%d,%d,%d,%d] valid=%b", new Object[] { Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Boolean.valueOf(bool) }));
-        }
-        if ((bool) || (k <= 0) || (m <= 0)) {
-          break label439;
-        }
-        f1 = k / m;
-        float f2 = paramBitmap.getWidth() / paramBitmap.getHeight();
-        localObject = new Rect();
-        if (f1 <= f2) {
-          break label380;
-        }
-        i = paramBitmap.getWidth();
-        j = (int)(i / f1);
-        n = (int)(0.5F * (paramBitmap.getHeight() - j));
-        f1 = paramBitmap.getHeight() - j;
-        ((Rect)localObject).set(0, n, i, (int)(j + 0.5F * f1));
-      }
-      for (;;)
-      {
-        paramBitmap = bbef.a(paramBitmap, (Rect)localObject, agqq.a(k, m, ((Rect)localObject).width(), ((Rect)localObject).height()));
-        paramDownloadParams = paramBitmap;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i(bavw.a(), 2, String.format("CUSTOM_CLIP_DECODER centerCrop %s", new Object[] { ((Rect)localObject).toShortString() }));
-        return paramBitmap;
-        bool = false;
-        break label128;
-        i = paramBitmap.getHeight();
-        j = (int)(f1 * i);
-        n = (int)(0.5F * (paramBitmap.getWidth() - j));
-        f1 = paramBitmap.getWidth() - j;
-        ((Rect)localObject).set(n, 0, (int)(j + 0.5F * f1), i);
-      }
-      paramDownloadParams = paramBitmap;
-    } while (!bool);
-    label439:
-    if (n + i > i3) {
-      i = i3 - n;
+    default: 
+      i = 255;
     }
+    Object localObject;
     for (;;)
     {
-      if (i1 + j > i2) {
-        j = i2 - i1;
+      localObject = baqx.a().a();
+      int j = i;
+      if (localObject != null)
+      {
+        j = i;
+        if (((String)localObject).contains("wap")) {
+          j = 5;
+        }
       }
+      localObject = new MultiMsg.ReqBody();
+      ((MultiMsg.ReqBody)localObject).setHasFlag(true);
+      ((MultiMsg.ReqBody)localObject).uint32_subcmd.set(1);
+      ((MultiMsg.ReqBody)localObject).uint32_term_type.set(5);
+      ((MultiMsg.ReqBody)localObject).uint32_platform_type.set(9);
+      ((MultiMsg.ReqBody)localObject).uint32_net_type.set(j);
+      ((MultiMsg.ReqBody)localObject).bytes_build_ver.set(ByteStringMicro.copyFromUtf8(basj.a()));
+      ((MultiMsg.ReqBody)localObject).uint32_bu_type.set(0);
+      i = 0;
+      while (i < paramList.size())
+      {
+        a(i, (bawz)paramList.get(i), (MultiMsg.ReqBody)localObject);
+        i += 1;
+      }
+      i = 3;
+      continue;
+      i = 6;
+      continue;
+      i = 7;
+      continue;
+      i = 8;
+    }
+    return ((MultiMsg.ReqBody)localObject).toByteArray();
+  }
+  
+  public static int b(int paramInt)
+  {
+    int i = 3;
+    switch (paramInt)
+    {
+    default: 
+      i = 1;
+    case 1: 
+    case 3000: 
+      return i;
+    case 1040: 
+      return 15;
+    }
+    return 255;
+  }
+  
+  public void a(bari parambari, barh parambarh)
+  {
+    localObject1 = parambari.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
+    byte[] arrayOfByte1 = parambari.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
+    bawo localbawo = (bawo)parambarh.jdField_a_of_type_JavaLangObject;
+    baxd localbaxd = localbawo.jdField_a_of_type_Baxd;
+    alsj localalsj = parambari.jdField_a_of_type_Alsj;
+    if (((FromServiceMsg)localObject1).getResultCode() != 1000)
+    {
+      i = ((FromServiceMsg)localObject1).getResultCode();
+      if ((i == 1002) || (i == 1013)) {
+        a(-1, 9311, MessageHandler.a((FromServiceMsg)localObject1), "", localalsj, localbaxd.jdField_a_of_type_JavaUtilList);
+      }
+    }
+    List localList;
+    for (;;)
+    {
+      baxu.a(localbawo, localbaxd);
+      return;
+      a(-1, 9044, MessageHandler.a((FromServiceMsg)localObject1), "", localalsj, localbaxd.jdField_a_of_type_JavaUtilList);
+      continue;
+      try
+      {
+        localList = ((MultiMsg.RspBody)new MultiMsg.RspBody().mergeFrom(arrayOfByte1)).rpt_multimsg_applyup_rsp.get();
+        if ((localList != null) && (localList.size() != 0)) {
+          break;
+        }
+        throw new Exception("resps null");
+      }
+      catch (Exception parambari)
+      {
+        a(-1, -9527, bamw.a("P", -9529L), parambari.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte1), localalsj, localbaxd.jdField_a_of_type_JavaUtilList);
+      }
+    }
+    int i = 0;
+    label231:
+    if (i < localList.size()) {
+      parambari = (MultiMsg.MultiMsgApplyUpRsp)localList.get(i);
+    }
+    try
+    {
+      localObject1 = (baxn)localbaxd.jdField_a_of_type_JavaUtilList.get(i);
+      try
+      {
+        j = parambari.uint32_result.get();
+        if (j != 0) {
+          break label778;
+        }
+        if (parambari.bytes_msg_resid.has()) {
+          break label364;
+        }
+        throw new Exception("bytes_msg_resid NOT exists");
+      }
+      catch (Exception parambari) {}
+    }
+    catch (Exception parambari)
+    {
       for (;;)
       {
-        paramDownloadParams = new Rect(n, i1, i + n, j + i1);
-        j = 1;
-        i = j;
-        if (k > 0)
-        {
-          i = j;
-          if (m > 0) {
-            i = agqq.a(k, m, paramDownloadParams.width(), paramDownloadParams.height());
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i(bavw.a(), 2, String.format("CUSTOM_CLIP_DECODER [w,h]=[%d,%d] dstClip=%s sample=%d", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), paramDownloadParams, Integer.valueOf(i) }));
-        }
-        return bbef.a(paramBitmap, paramDownloadParams, i);
+        localObject1 = null;
+        continue;
+        int j = 0;
       }
+    }
+    a(-1, -9527, bamw.a("P", -9529L), parambari.getMessage() + " hex:" + HexUtil.bytes2HexStr(arrayOfByte1), localalsj, (baxq)localObject1);
+    for (;;)
+    {
+      i += 1;
+      break label231;
+      break;
+      label364:
+      Object localObject2 = parambari.bytes_msg_resid.get().toByteArray();
+      if ((localObject2 == null) || (localObject2.length <= 0)) {
+        throw new Exception("resid_bs == null || empty");
+      }
+      if (!parambari.bytes_msg_ukey.has()) {
+        throw new Exception("bytes_msg_ukey NOT exists");
+      }
+      Object localObject3 = parambari.bytes_msg_ukey.get().toByteArray();
+      if ((localObject3 == null) || (localObject3.length <= 0)) {
+        throw new Exception("ukey_bs == null || empty");
+      }
+      if (!parambari.bytes_msg_key.has()) {
+        throw new Exception("bytes_msg_key NOT exists");
+      }
+      Object localObject4 = parambari.bytes_msg_key.get().toByteArray();
+      if ((localObject4 == null) || (localObject4.length <= 0)) {
+        throw new Exception("msgkey_bs == null || empty");
+      }
+      if (!parambari.bytes_msg_sig.has()) {
+        throw new Exception("bytes_msg_sig NOT exists");
+      }
+      byte[] arrayOfByte2 = parambari.bytes_msg_sig.get().toByteArray();
+      if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
+        throw new Exception("msgsig_bs == null || empty");
+      }
+      ((baxn)localObject1).jdField_a_of_type_ArrayOfByte = ((byte[])localObject2);
+      ((baxn)localObject1).jdField_b_of_type_ArrayOfByte = ((byte[])localObject3);
+      ((baxn)localObject1).c = ((byte[])localObject4);
+      ((baxn)localObject1).d = arrayOfByte2;
+      localObject2 = parambari.rpt_uint32_up_ip.get();
+      localObject3 = parambari.rpt_uint32_up_port.get();
+      if ((localObject2 != null) && (((List)localObject2).size() != 0)) {
+        break label844;
+      }
+      throw new Exception("check iplist");
+      while (j < ((List)localObject2).size())
+      {
+        long l1 = ((Integer)((List)localObject2).get(j)).intValue();
+        long l2 = ((Integer)((List)localObject3).get(j)).intValue();
+        localObject4 = new basp();
+        ((basp)localObject4).jdField_a_of_type_JavaLangString = bdlr.a(l1 & 0xFFFFFFFF);
+        ((basp)localObject4).jdField_a_of_type_Int = ((int)l2);
+        ((baxn)localObject1).jdField_a_of_type_JavaUtilArrayList.add(j, localObject4);
+        j += 1;
+      }
+      ((baxn)localObject1).jdField_a_of_type_Int = ((int)parambari.uint64_block_size.get());
+      ((baxn)localObject1).jdField_b_of_type_Int = ((int)parambari.uint64_up_offset.get());
+      a(0, 0, "", "", localalsj, (baxq)localObject1);
+      continue;
+      label778:
+      if (bawg.a(j))
+      {
+        this.jdField_b_of_type_Int += 1;
+        if (this.jdField_b_of_type_Int < 2)
+        {
+          localbawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager.a(parambarh);
+          return;
+        }
+      }
+      a(-1, -9527, bamw.a(j), "", localalsj, (baxq)localObject1);
+    }
+  }
+  
+  public void a(bawo parambawo)
+  {
+    if ((parambawo != null) && (parambawo.jdField_a_of_type_JavaUtilList != null) && (parambawo.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
+    {
+      barh localbarh = new barh();
+      localbarh.jdField_a_of_type_JavaLangString = "MultiMsg.ApplyUp";
+      localbarh.jdField_a_of_type_ArrayOfByte = a(parambawo.jdField_a_of_type_JavaUtilList);
+      localbarh.jdField_a_of_type_JavaLangObject = parambawo;
+      localbarh.jdField_a_of_type_Barg = this;
+      a(parambawo, localbarh);
+    }
+  }
+  
+  void b(bawo parambawo)
+  {
+    baxd localbaxd = parambawo.jdField_a_of_type_Baxd;
+    localbaxd.jdField_a_of_type_JavaUtilList.clear();
+    int i = 0;
+    while (i < parambawo.jdField_a_of_type_JavaUtilList.size())
+    {
+      baxn localbaxn = new baxn();
+      localbaxd.jdField_a_of_type_JavaUtilList.add(i, localbaxn);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bawk
  * JD-Core Version:    0.7.0.1
  */

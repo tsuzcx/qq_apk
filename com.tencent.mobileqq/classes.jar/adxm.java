@@ -1,31 +1,58 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class adxm
-  implements View.OnClickListener
+  implements bhqd
 {
-  public adxm(QQStoryItemBuilder paramQQStoryItemBuilder) {}
+  public adxm(TroopAssistantActivity paramTroopAssistantActivity, int paramInt, String paramString, bhpy parambhpy) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    adxs localadxs = (adxs)actj.a(paramView);
-    if (paramView == localadxs.jdField_a_of_type_AndroidWidgetFrameLayout) {
-      this.a.b(localadxs);
-    }
-    for (;;)
+    if (!bdee.d(BaseApplication.getContext()))
     {
-      axqy.b(this.a.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "5", "", "");
-      return;
-      if (paramView == localadxs.jdField_a_of_type_AndroidWidgetRelativeLayout) {
-        this.a.a(localadxs);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a = new beps(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
       }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a.b(2, 2131694766, 1500);
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Bhpy != null) {
+        this.jdField_a_of_type_Bhpy.dismiss();
+      }
+      return;
+      int i = -1;
+      switch (paramInt)
+      {
+      default: 
+        paramInt = i;
+      }
+      while (paramInt != this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app.a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
+        break;
+        paramInt = 1;
+        continue;
+        paramInt = 4;
+        continue;
+        paramInt = 2;
+        continue;
+        paramInt = 3;
+      }
+    }
+    catch (Exception paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("TroopAssistantActivity", 2, paramView.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxm
  * JD-Core Version:    0.7.0.1
  */

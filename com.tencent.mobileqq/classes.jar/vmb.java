@@ -1,27 +1,26 @@
-import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.List;
 
-public class vmb
-  extends ssh
+class vmb
+  implements vll
 {
-  public final int a;
-  public final long a;
-  @NonNull
-  public final vlr a;
-  public final boolean a;
-  public final long b;
+  vmb(vma paramvma) {}
   
-  public vmb(@NonNull vlr paramvlr, int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
+  public void a(ErrorMessage paramErrorMessage, List<vld> paramList)
   {
-    this.jdField_a_of_type_Vlr = paramvlr;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
+    this.a.a.a(paramErrorMessage, paramList);
+    this.a.b();
+  }
+  
+  public void a(List<vle> paramList, boolean paramBoolean)
+  {
+    this.a.a.a(paramList, paramBoolean);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmb
  * JD-Core Version:    0.7.0.1
  */

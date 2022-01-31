@@ -1,48 +1,47 @@
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.qphone.base.util.QLog;
 
 public class abrs
-  extends abrv
 {
-  private abrs(PortraitImageview paramPortraitImageview) {}
+  public double a;
+  public long a;
+  public abrw a;
+  public String a;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public abrs()
   {
-    if (this.a.a() > this.a.c()) {
-      this.a.a(this.a.c());
-    }
-    for (;;)
-    {
-      return true;
-      this.a.a(this.a.c() * 3.0F, paramMotionEvent.getX(), paramMotionEvent.getY(), 350.0F);
-    }
+    this.jdField_a_of_type_Double = -1.0D;
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void a(abrr paramabrr)
   {
-    if (((paramMotionEvent1 != null) && (paramMotionEvent1.getPointerCount() > 1)) || ((paramMotionEvent2 != null) && (paramMotionEvent2.getPointerCount() > 1)) || ((this.a.jdField_a_of_type_AndroidViewScaleGestureDetector != null) && (this.a.jdField_a_of_type_AndroidViewScaleGestureDetector.isInProgress()))) {
-      return false;
-    }
-    this.a.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.a(-paramFloat1, -paramFloat2);
-    this.a.setImageMatrix(this.a.a());
-    return true;
+    this.jdField_a_of_type_Double = Math.max(this.jdField_a_of_type_Double, paramabrr.jdField_a_of_type_Double);
+    this.jdField_a_of_type_Long = Math.max(this.jdField_a_of_type_Long, paramabrr.b);
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  public boolean a()
   {
-    if (this.a.jdField_a_of_type_Abrt != null)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Long > 0L)
     {
-      this.a.jdField_a_of_type_Abrt.a();
-      return false;
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Long < 9223372036854775807L)
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_Double >= 0.0D) {
+          bool1 = true;
+        }
+      }
     }
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    if ((!bool1) && (QLog.isColorLevel())) {
+      QLog.i("reportToDenta", 2, "failed" + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_Double);
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abrs
  * JD-Core Version:    0.7.0.1
  */

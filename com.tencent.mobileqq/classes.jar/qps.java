@@ -1,52 +1,47 @@
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
+import android.app.Activity;
+import android.view.View;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
 
 public class qps
-  extends qpt
+  extends QIMEffectCameraCaptureUnit
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private int c;
-  private int d;
-  
-  public qps(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView, Drawable paramDrawable, int paramInt1, int paramInt2)
+  public qps(bmcv parambmcv, bmcu parambmcu)
   {
-    super(paramLikeExplosionView);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = paramInt2;
+    super(parambmcv, parambmcu);
+    this.jdField_a_of_type_Bmcn = new bmcn(10017, 106, 4);
   }
   
-  public qps(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView, Drawable paramDrawable, int paramInt1, int paramInt2, int paramInt3)
+  public View a()
   {
-    super(paramLikeExplosionView);
-    double d1 = Math.toRadians(paramInt3);
-    this.e = ((float)Math.cos(d1));
-    this.f = ((float)Math.sin(d1));
-    a();
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_d_of_type_Int = paramInt2;
+    this.s = false;
+    this.r = false;
+    View localView = super.a();
+    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewQIMCameraCaptureButtonLayout.setFunctionFlag(2);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    return localView;
   }
   
-  public void a(Canvas paramCanvas)
+  protected axmk a()
   {
-    int i = (int)(this.jdField_c_of_type_Float - this.jdField_c_of_type_Int / 2);
-    int j = (int)(this.jdField_d_of_type_Float - this.jdField_c_of_type_Int / 2);
-    int k = this.jdField_c_of_type_Int;
-    int m = this.jdField_c_of_type_Int;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i, j, k + i, m + j);
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView).reset();
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView).setRotate(this.jdField_d_of_type_Int, VideoFeedsLikeAnimate.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a), VideoFeedsLikeAnimate.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView.a));
-    paramCanvas.setMatrix(VideoFeedsLikeAnimate.LikeExplosionView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsLikeAnimate$LikeExplosionView));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    axmk localaxmk = super.a();
+    localaxmk.a(false);
+    localaxmk.l(2);
+    localaxmk.i(2);
+    return localaxmk;
+  }
+  
+  public void a(axmn paramaxmn)
+  {
+    Activity localActivity = this.jdField_a_of_type_Bmcv.a();
+    localActivity.startActivity(EditPicActivity.a(localActivity, paramaxmn.a, true, true, true, true, true, 8));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qps
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,22 @@
-public class bbpx
+import android.content.Context;
+import android.widget.ScrollView;
+
+class bbpx
+  extends ScrollView
 {
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  public String e;
-  public int f;
+  bbpx(bbpw parambbpw, Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbpx
  * JD-Core Version:    0.7.0.1
  */

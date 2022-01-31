@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
 
-class beug
-  implements DialogInterface.OnClickListener
+public class beug
+  implements MediaPlayer.OnErrorListener
 {
-  beug(beuf parambeuf) {}
+  public beug(VideoTextureView paramVideoTextureView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    paramDialogInterface.dismiss();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beug
  * JD-Core Version:    0.7.0.1
  */

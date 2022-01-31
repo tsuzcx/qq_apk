@@ -1,21 +1,34 @@
-import com.tencent.widget.AbsListView;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
+@SuppressLint({"HandlerLeak"})
 class rcw
-  extends oyd
+  extends Handler
 {
-  rcw(rcv paramrcv, String paramString, AbsListView paramAbsListView, int paramInt)
-  {
-    super(paramString);
-  }
+  private rcw(rcp paramrcp) {}
   
-  public void a(oxx paramoxx)
+  public void handleMessage(Message paramMessage)
   {
-    paramoxx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsFloatWindowManager", 2, "floating window msg time out: " + paramMessage.what);
+      }
+      return;
+      rcp.b(this.a);
+      continue;
+      this.a.h();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rcw
  * JD-Core Version:    0.7.0.1
  */

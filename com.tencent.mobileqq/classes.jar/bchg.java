@@ -1,43 +1,49 @@
-import android.os.Handler;
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class bchg
 {
-  public int a;
-  public long a;
-  public Handler a;
-  public bchc a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public volatile String d;
-  public String e;
-  public String f = "";
-  
-  public bchg()
+  public static List<TroopFileTansferItemEntity> a(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    TroopFileTansferItemEntity localTroopFileTansferItemEntity = new TroopFileTansferItemEntity();
+    localTroopFileTansferItemEntity.troopuin = paramLong;
+    return paramQQAppInterface.a(TroopFileTansferItemEntity.class, "select * from " + localTroopFileTansferItemEntity.getTableName() + " where troopuin = ?", new String[] { "" + paramLong });
   }
   
-  public String toString()
+  public static boolean a(QQAppInterface paramQQAppInterface, Map<UUID, ? extends awbv> paramMap, long paramLong)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("unikey=").append(this.jdField_a_of_type_JavaLangString).append(",url=").append(this.jdField_b_of_type_JavaLangString).append(" ,header=").append(this.jdField_c_of_type_JavaLangString).append(",htmlbody len=");
-    if (TextUtils.isEmpty(this.d)) {}
-    for (int i = 0;; i = this.d.length()) {
-      return i + ",reqState=" + this.jdField_a_of_type_Int + ",httpStatusCode=" + this.jdField_b_of_type_Int + ",needBase64Rsp=" + this.jdField_a_of_type_Boolean + ",jsCallback=" + this.e + ",resultCode=" + this.jdField_c_of_type_Int + ",errorMsg=" + this.f;
+    if (paramMap == null) {
+      QLog.e("SerializableManager", 4, "bad Entity Param");
     }
+    Object localObject;
+    do
+    {
+      return false;
+      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+      localObject = new TroopFileTansferItemEntity();
+      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
+    } while (!paramQQAppInterface.a(((TroopFileTansferItemEntity)localObject).getTableName()));
+    paramMap = paramMap.values().iterator();
+    while (paramMap.hasNext())
+    {
+      localObject = (awbv)paramMap.next();
+      ((TroopFileTansferItemEntity)localObject).troopuin = paramLong;
+      ((awbv)localObject).setStatus(1000);
+      paramQQAppInterface.a((awbv)localObject);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bchg
  * JD-Core Version:    0.7.0.1
  */

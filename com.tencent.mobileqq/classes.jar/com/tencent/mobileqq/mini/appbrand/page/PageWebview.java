@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.webkit.JavascriptInterface;
 import android.widget.FrameLayout;
-import bbkk;
-import bgyi;
+import bdje;
+import bizf;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo.PageHtmlContent;
@@ -116,7 +116,7 @@ public class PageWebview
   
   private void onWebViewReady(ApkgInfo paramApkgInfo)
   {
-    if (bbkk.a(this.pageFrameHtmlJsStr))
+    if (bdje.a(this.pageFrameHtmlJsStr))
     {
       String str = paramApkgInfo.getPageFrameJSStr(this.mRouteUrl);
       if (!TextUtils.isEmpty(str)) {
@@ -124,8 +124,10 @@ public class PageWebview
       }
     }
     paramApkgInfo = paramApkgInfo.getPageJsStr(this.mRouteUrl);
-    if (!TextUtils.isEmpty(paramApkgInfo)) {
-      evaluteJs(paramApkgInfo);
+    if (!TextUtils.isEmpty(paramApkgInfo))
+    {
+      reportAppQualityEvent(122);
+      evaluteJs(paramApkgInfo, new PageWebview.3(this));
     }
     this.hasPageJsLoaded = true;
     if (this.listener != null) {
@@ -211,7 +213,7 @@ public class PageWebview
     if (QLog.isColorLevel()) {
       QLog.i("miniapp-start", 1, "---PageWebView end load wawebview ---   webviewid:" + this.pageWebviewId);
     }
-    if (bbkk.a(this.mAppWxss)) {
+    if (bdje.a(this.mAppWxss)) {
       this.mAppWxss = this.apkgInfo.getRootWxssJsContent();
     }
     if (!TextUtils.isEmpty(this.mAppWxss)) {
@@ -220,7 +222,7 @@ public class PageWebview
     if (QLog.isColorLevel()) {
       QLog.i("miniapp-start", 1, "---PageWebView begin load pageFrameHtmlJsStr --- webviewid:" + this.pageWebviewId);
     }
-    if (!bbkk.a(this.pageFrameHtmlJsStr)) {
+    if (!bdje.a(this.pageFrameHtmlJsStr)) {
       evaluteJs(this.pageFrameHtmlJsStr);
     }
     for (;;)
@@ -231,7 +233,7 @@ public class PageWebview
       QLog.i("miniapp-start", 1, "---PageWebView end initApkgJs ---   webviewid:" + this.pageWebviewId);
       return;
       this.pageFrameHtmlJsStr = this.apkgInfo.getPageHtmlContent().jsStr;
-      if (!bbkk.a(this.pageFrameHtmlJsStr))
+      if (!bdje.a(this.pageFrameHtmlJsStr))
       {
         QLog.i("miniapp-start", 1, "--- PageWebView load pageFrameHtmlJsStr --- webviewid:" + this.pageWebviewId);
         evaluteJs(this.pageFrameHtmlJsStr);
@@ -257,11 +259,11 @@ public class PageWebview
       ((JSONObject)localObject).put("USER_DATA_PATH", MiniAppGlobal.STR_WXFILE + "usr");
       localJSONObject.put("env", localObject);
       localJSONObject.put("preload", paramBoolean);
-      StringBuilder localStringBuilder = new StringBuilder().append("var window = window || {}; window.__webview_engine_version__ = 0.02; if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s');Object.assign(__qqConfig, __tempConfig);");
+      StringBuilder localStringBuilder = new StringBuilder().append("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nvar window = window || {}; window.__webview_engine_version__ = 0.02; if (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s');__qqConfig = extend(__qqConfig, __tempConfig);");
       if (this.mEnableNativeBuffer) {}
       for (localObject = "__qqConfig.nativeBufferEnabled = true;";; localObject = "")
       {
-        localObject = String.format((String)localObject + "__qqConfig.QUA='" + bgyi.a() + "';__qqConfig.platform = 'android';", new Object[] { localJSONObject });
+        localObject = String.format((String)localObject + "__qqConfig.QUA='" + bizf.a() + "';__qqConfig.platform = 'android';", new Object[] { localJSONObject });
         localObject = (String)localObject + "__qqConfig.useXWebVideo=" + this.enableEmbeddedVideo + ";";
         localObject = (String)localObject + "__qqConfig.XWebVideoMinVersion=045100;";
         QLog.d("miniapp-embedded", 1, "page enableEmbeddedVideo : " + this.enableEmbeddedVideo);
@@ -346,7 +348,7 @@ public class PageWebview
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 514	com/tencent/mobileqq/mini/appbrand/page/PageWebview:hasLoadHtml	Z
+    //   3: getfield 517	com/tencent/mobileqq/mini/appbrand/page/PageWebview:hasLoadHtml	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +6 -> 14
@@ -355,17 +357,17 @@ public class PageWebview
     //   13: return
     //   14: aload_0
     //   15: iconst_1
-    //   16: putfield 514	com/tencent/mobileqq/mini/appbrand/page/PageWebview:hasLoadHtml	Z
-    //   19: ldc_w 325
+    //   16: putfield 517	com/tencent/mobileqq/mini/appbrand/page/PageWebview:hasLoadHtml	Z
+    //   19: ldc_w 330
     //   22: iconst_1
-    //   23: ldc_w 516
-    //   26: invokestatic 313	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   23: ldc_w 519
+    //   26: invokestatic 318	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   29: aload_0
     //   30: sipush 623
     //   33: invokespecial 126	com/tencent/mobileqq/mini/appbrand/page/PageWebview:reportAppQualityEvent	(I)V
     //   36: aload_0
-    //   37: ldc_w 518
-    //   40: invokevirtual 521	com/tencent/mobileqq/mini/appbrand/page/PageWebview:loadUrl	(Ljava/lang/String;)V
+    //   37: ldc_w 521
+    //   40: invokevirtual 524	com/tencent/mobileqq/mini/appbrand/page/PageWebview:loadUrl	(Ljava/lang/String;)V
     //   43: aload_0
     //   44: sipush 624
     //   47: invokespecial 126	com/tencent/mobileqq/mini/appbrand/page/PageWebview:reportAppQualityEvent	(I)V
@@ -388,7 +390,7 @@ public class PageWebview
   
   public void loadPageWebviewJs(ApkgInfo paramApkgInfo)
   {
-    if (bbkk.a(this.mRouteUrl)) {}
+    if (bdje.a(this.mRouteUrl)) {}
     while ((this.hasFLoad) || (!this.hasLoadHtmlFinish)) {
       return;
     }
@@ -529,12 +531,12 @@ public class PageWebview
   
   public void shotWebview(PageWebview.WebviewShotCallback paramWebviewShotCallback)
   {
-    ThreadManager.getSubThreadHandler().post(new PageWebview.3(this, paramWebviewShotCallback));
+    ThreadManager.getSubThreadHandler().post(new PageWebview.4(this, paramWebviewShotCallback));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.PageWebview
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,25 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.1;
 
 public class azdd
-  extends BroadcastReceiver
 {
-  public azdd(AbsPublishActivity paramAbsPublishActivity) {}
+  public Handler a;
+  public azde a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public azdd(Handler paramHandler, azde paramazde)
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
-    {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      this.a.a(i, 9);
-    }
-    do
-    {
-      return;
-      if ("key_audio_delete_action".equals(paramContext))
-      {
-        this.a.a(0);
-        this.a.a = null;
-        bajf.a(this.a.o, this.a.p, "del_record", this.a.q, this.a.b, "", "");
-        return;
-      }
-    } while (!"key_audio_play_action".equals(paramContext));
-    bajf.a(this.a.o, this.a.p, "preview_record", this.a.q, this.a.b, "", "");
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_Azde = paramazde;
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraExceptionHandler.1(this, paramRuntimeException));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azdd
  * JD-Core Version:    0.7.0.1
  */

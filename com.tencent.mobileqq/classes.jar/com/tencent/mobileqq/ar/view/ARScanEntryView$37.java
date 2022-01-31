@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.view;
 
-import ajya;
-import allb;
-import almy;
-import bcql;
+import alpo;
+import anbr;
+import ando;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 class ARScanEntryView$37
@@ -14,23 +14,23 @@ class ARScanEntryView$37
   
   public void run()
   {
-    allb localallb = this.this$0.a.a();
-    boolean bool1 = localallb.c();
-    boolean bool2 = localallb.d();
+    anbr localanbr = this.this$0.a.a();
+    boolean bool1 = localanbr.c();
+    boolean bool2 = localanbr.d();
     QLog.d("AREngine_ARScanEntryView", 1, "startDownloadTimeoutCheck, AR组件加载超, mIsDownloadTimeout[" + ARScanEntryView.c(this.this$0) + "],isBaseSoReady:=" + bool1 + ",isFaceSoReady:=" + bool2);
     ARScanEntryView.c(this.this$0, true);
     if (!bool1)
     {
-      this.this$0.d_(ajya.a(2131700752));
+      this.this$0.e_(alpo.a(2131701121));
       return;
     }
     this.this$0.j();
-    bcql.a(BaseApplicationImpl.getContext(), 2131690173, 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 2131690221, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.37
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.map.geolocation.internal;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public abstract interface TencentLog
 {
@@ -13,7 +13,7 @@ public abstract interface TencentLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.map.geolocation.internal.TencentLog
  * JD-Core Version:    0.7.0.1
  */

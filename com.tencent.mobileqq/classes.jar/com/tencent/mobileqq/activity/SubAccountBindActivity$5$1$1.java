@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import acdu;
+import advd;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,12 +13,12 @@ class SubAccountBindActivity$5$1$1
   
   public void run()
   {
-    ((ImageView)SubAccountBindActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$5$1.jdField_a_of_type_Acdu.a).getChildAt(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$5$1.jdField_a_of_type_Int).findViewById(2131367679)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    ((ImageView)SubAccountBindActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$5$1.jdField_a_of_type_Advd.a).getChildAt(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountBindActivity$5$1.jdField_a_of_type_Int).findViewById(2131367808)).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SubAccountBindActivity.5.1.1
  * JD-Core Version:    0.7.0.1
  */

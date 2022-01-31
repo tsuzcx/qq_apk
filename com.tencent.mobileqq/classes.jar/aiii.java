@@ -1,46 +1,93 @@
-import android.view.Surface;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
-import android.widget.SeekBar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 public class aiii
-  implements bbvr
+  extends benu
 {
-  public aiii(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  private aiii(NewStyleCountryActivity paramNewStyleCountryActivity) {}
   
-  public void a(bbvo parambbvo)
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + this.a.b);
+    return 2131562554;
+  }
+  
+  public void a(View paramView, int paramInt)
+  {
+    paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(((bdet)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString)).intValue();
+    ((TextView)paramView).setText(((bdet)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return ((bdet)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
+  }
+  
+  public int getCount()
+  {
+    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (((bdet)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean) {
+      return 0;
     }
-    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid())) {
-      aptx.a(2131691318);
-    }
-    do
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    bdet localbdet = (bdet)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    if (getItemViewType(paramInt) == 0)
     {
-      do
-      {
-        return;
-        bbbf.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.e, this.a.f, this.a.jdField_a_of_type_Bbvo.d(), this.a.jdField_a_of_type_Bbvo.e());
-      } while (this.a.j != 10);
-      parambbvo.a(localSurfaceHolder);
-      this.a.jdField_a_of_type_Int = parambbvo.c();
-    } while (this.a.jdField_a_of_type_Int <= 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "此时的时长为" + ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
+      if (paramView != null) {
+        break label115;
+      }
+      paramView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
     }
-    this.a.d.setText(ShortVideoUtils.a(this.a.jdField_a_of_type_Int));
-    this.a.jdField_a_of_type_AndroidWidgetSeekBar.setMax(this.a.jdField_a_of_type_Int);
+    label115:
+    for (;;)
+    {
+      ((TextView)paramView).setText(localbdet.jdField_a_of_type_JavaLangString);
+      for (;;)
+      {
+        paramView.setVisibility(0);
+        return paramView;
+        View localView = paramView;
+        if (paramView == null)
+        {
+          localView = NewStyleCountryActivity.a(this.a, paramViewGroup, this.a.getLayoutInflater(), false);
+          localView.setOnClickListener(this.a);
+        }
+        this.a.a(localView, localbdet);
+        paramView = localView;
+      }
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiii
  * JD-Core Version:    0.7.0.1
  */

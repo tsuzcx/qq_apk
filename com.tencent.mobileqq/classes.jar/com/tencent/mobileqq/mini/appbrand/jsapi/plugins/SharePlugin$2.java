@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.text.TextUtils;
-import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 import java.util.HashMap;
 
 final class SharePlugin$2
@@ -19,7 +19,7 @@ final class SharePlugin$2
     for (;;)
     {
       if (!TextUtils.isEmpty(str)) {
-        bcql.a(BaseApplicationImpl.getContext(), str, 1).a();
+        QQToast.a(BaseApplicationImpl.getContext(), str, 1).a();
       }
       return;
       if ((this.val$flag & 0x10) != 0) {
@@ -38,7 +38,7 @@ final class SharePlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.SharePlugin.2
  * JD-Core Version:    0.7.0.1
  */

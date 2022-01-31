@@ -9,7 +9,7 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
-import wgs;
+import xvk;
 
 public abstract class QRLoginBaseActivity
   extends IphoneTitleBarActivity
@@ -23,9 +23,9 @@ public abstract class QRLoginBaseActivity
     super.doOnCreate(paramBundle);
     a();
     hideTitleBar();
-    this.b = ((ImageView)super.findViewById(2131369092));
-    this.b.setContentDescription(getText(2131690572));
-    this.b.setOnClickListener(new wgs(this));
+    this.b = ((ImageView)super.findViewById(2131369324));
+    this.b.setContentDescription(getText(2131690623));
+    this.b.setOnClickListener(new xvk(this));
     return true;
   }
   
@@ -53,14 +53,14 @@ public abstract class QRLoginBaseActivity
       getWindow().addFlags(67108864);
       if (this.mActNeedImmersive)
       {
-        int i = getResources().getColor(2131166910);
+        int i = getResources().getColor(2131166957);
         if (this.mSystemBarComp == null)
         {
           this.mSystemBarComp = new SystemBarCompact(this, true, i);
           if (!ThemeUtil.isDefaultOrDIYTheme(false)) {
             break label103;
           }
-          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130838514));
+          this.mSystemBarComp.setStatusDrawable(getResources().getDrawable(2130838591));
         }
       }
     }
@@ -77,7 +77,7 @@ public abstract class QRLoginBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRLoginBaseActivity
  * JD-Core Version:    0.7.0.1
  */

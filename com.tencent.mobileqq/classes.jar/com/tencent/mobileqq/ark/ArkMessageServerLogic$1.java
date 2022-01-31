@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark;
 
-import altm;
-import altw;
-import altx;
+import ankf;
+import ankp;
+import ankq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public final class ArkMessageServerLogic$1
   implements Runnable
 {
-  public ArkMessageServerLogic$1(altx paramaltx) {}
+  public ArkMessageServerLogic$1(ankq paramankq) {}
   
   public void run()
   {
@@ -37,14 +37,14 @@ public final class ArkMessageServerLogic$1
           ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, ark sso is null");
           break;
         }
-      } while (((altm)localObject).a("ArkAppPanel.List", 10000, 0, new altw(this)));
+      } while (((ankf)localObject).a("ArkAppPanel.List", 10000, 0, new ankp(this)));
       ArkAppCenter.c("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList, fail send sso request");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkMessageServerLogic.1
  * JD-Core Version:    0.7.0.1
  */

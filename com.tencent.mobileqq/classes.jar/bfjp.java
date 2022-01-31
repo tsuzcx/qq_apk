@@ -1,44 +1,44 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class bfjp
-  extends Handler
 {
-  public bfjp(QSecFramework paramQSecFramework, Looper paramLooper)
+  public static int a(String paramString, int paramInt, long paramLong)
   {
-    super(paramLooper);
+    return a(paramLong).getInt(paramString, paramInt);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static SharedPreferences a()
   {
-    try
-    {
-      if ((paramMessage.what == 1) && (!TextUtils.isEmpty((CharSequence)paramMessage.obj)))
-      {
-        long l = Long.parseLong((String)paramMessage.obj);
-        if (l != 0L)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QSecFramework", 2, "handle native msg for cookie:" + l);
-          }
-          QSecFramework.a(6L, l, 0L, 0L, null, null, null, null);
-        }
-      }
-      return;
+    int i = Build.VERSION.SDK_INT;
+    BaseApplication localBaseApplication = BaseApplication.getContext();
+    if (i > 10) {}
+    for (i = 4;; i = 0) {
+      return localBaseApplication.getSharedPreferences("OPENSDK_setting", i);
     }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
+  }
+  
+  public static SharedPreferences a(long paramLong)
+  {
+    if (paramLong == 0L) {
+      return a();
     }
+    String str = bfhi.b(String.valueOf(paramLong)) + "_" + "preference";
+    return BaseApplication.getContext().getSharedPreferences(str, 0);
+  }
+  
+  public static void a(String paramString, int paramInt, long paramLong)
+  {
+    SharedPreferences.Editor localEditor = a(paramLong).edit();
+    localEditor.putInt(paramString, paramInt);
+    localEditor.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfjp
  * JD-Core Version:    0.7.0.1
  */

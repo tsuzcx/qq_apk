@@ -1,98 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
-
 public class amxi
-  extends ampa<amxg>
 {
-  public static amxg a()
+  public int a;
+  public long a;
+  public amwz a;
+  public amxa a;
+  public amxb a;
+  public amxc a;
+  public amxh a;
+  public amxj a;
+  public amxk a;
+  public avqw a;
+  public String a;
+  public int b;
+  public long b;
+  public amxa b;
+  public String b;
+  public int c = -1;
+  public long c;
+  
+  public amxi()
   {
-    amxg localamxg2 = (amxg)ampl.a().a(583);
-    amxg localamxg1 = localamxg2;
-    if (localamxg2 == null) {
-      localamxg1 = new amxg();
-    }
-    return localamxg1;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Long = 0L;
   }
   
-  public int a()
+  public String toString()
   {
-    return 583;
-  }
-  
-  @NonNull
-  public amxg a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ExtendFriendBannerProcessor", 2, "migrateOldOrDefaultContent ");
-    }
-    return new amxg();
-  }
-  
-  @Nullable
-  public amxg a(amph[] paramArrayOfamph)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ExtendFriendBannerProcessor", 2, "onParsed start");
-    }
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ExtendFriendBannerProcessor", 2, "onParsed " + paramArrayOfamph.length);
-      }
-      return amxg.a(paramArrayOfamph[0]);
-    }
-    return null;
-  }
-  
-  public Class<amxg> a()
-  {
-    return amxg.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("ExtendFriendBannerProcessor", 2, "onReqFailed " + paramInt);
-    }
-  }
-  
-  public void a(amxg paramamxg)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramamxg == null) {
-        break label43;
-      }
-    }
-    label43:
-    for (paramamxg = paramamxg.toString();; paramamxg = " empty")
-    {
-      QLog.d("ExtendFriendBannerProcessor", 2, paramamxg);
-      return;
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return "ARCloudReqInfo{sessionId = " + this.jdField_a_of_type_JavaLangString + ", fileInfo = " + this.jdField_a_of_type_Amxh + ", longitude = " + this.jdField_a_of_type_Int + ", latitude = " + this.jdField_b_of_type_Int + ", recogType = " + this.jdField_a_of_type_Long + ", businessType = " + this.c + ", markerInfo = " + this.jdField_a_of_type_Amxj + ", objectClassifyInfo = " + this.jdField_a_of_type_Amxa + ", preOcrInfo = " + this.jdField_a_of_type_Amxb + ", sceneRecogInfo = " + this.jdField_a_of_type_Amxc + ", ocrInfo = " + this.jdField_a_of_type_Avqw + ", appid = " + this.jdField_b_of_type_JavaLangString + ", uin = " + this.jdField_b_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxi
  * JD-Core Version:    0.7.0.1
  */

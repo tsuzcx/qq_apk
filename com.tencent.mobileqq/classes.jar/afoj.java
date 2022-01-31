@@ -1,22 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopSign;
 
-public class afoj
-  implements View.OnClickListener
+final class afoj
+  implements afpr
 {
-  public afoj(TroopSuspiciousFragment paramTroopSuspiciousFragment, structmsg.SystemMsg paramSystemMsg) {}
-  
-  public void onClick(View paramView)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    auvy.a(TroopSuspiciousFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment), this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.getActivity(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
+    if (TextUtils.isEmpty(((MessageForTroopSign)paramChatMessage).dynamicSource)) {
+      return 71;
+    }
+    return 84;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afoj
  * JD-Core Version:    0.7.0.1
  */

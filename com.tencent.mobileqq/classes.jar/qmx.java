@@ -1,32 +1,15 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-
-class qmx
-  implements View.OnSystemUiVisibilityChangeListener
+public class qmx
 {
-  qmx(qmu paramqmu) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
-  {
-    ReadInJoyCommentListFragment localReadInJoyCommentListFragment;
-    if (qmu.a(this.a) != null)
-    {
-      localReadInJoyCommentListFragment = qmu.a(this.a);
-      if ((paramInt & 0x2) != 0) {
-        break label32;
-      }
-    }
-    label32:
-    for (boolean bool = true;; bool = false)
-    {
-      localReadInJoyCommentListFragment.a(bool);
-      return;
-    }
-  }
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qmx
  * JD-Core Version:    0.7.0.1
  */

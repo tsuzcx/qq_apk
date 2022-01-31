@@ -1,32 +1,75 @@
-public abstract interface aojb
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
+
+public class aojb
+  extends aofy<aoja>
 {
-  public abstract long a();
+  public int a()
+  {
+    return 453;
+  }
   
-  public abstract void a(int paramInt);
+  @NonNull
+  public aoja a(int paramInt)
+  {
+    return new aoja();
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  @Nullable
+  public aoja a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    {
+      aoja localaoja = aoja.a(paramArrayOfaogf[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("DonDisturbProcessor", 0, "onParsed don disturb" + paramArrayOfaogf[0].a);
+      }
+      return localaoja;
+    }
+    return new aoja();
+  }
   
-  public abstract void a(long paramLong);
+  public Class<aoja> a()
+  {
+    return aoja.class;
+  }
   
-  public abstract void b();
+  public void a(int paramInt) {}
   
-  public abstract void b(int paramInt);
+  public void a(aoja paramaoja)
+  {
+    bdiv.a(BaseApplicationImpl.getContext(), "open_don_disturb", BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramaoja.a());
+    if (QLog.isColorLevel()) {
+      QLog.d("DonDisturbProcessor", 0, "onUpdate don disturb" + paramaoja);
+    }
+  }
   
-  public abstract int c();
+  public boolean a()
+  {
+    return true;
+  }
   
-  public abstract void c();
+  public int b()
+  {
+    return 0;
+  }
   
-  public abstract void c(int paramInt);
+  public boolean b()
+  {
+    return false;
+  }
   
-  public abstract void d();
-  
-  public abstract void d(int paramInt);
-  
-  public abstract void e(int paramInt);
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aojb
  * JD-Core Version:    0.7.0.1
  */

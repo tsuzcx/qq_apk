@@ -1,20 +1,29 @@
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
+
 public class bbbw
+  implements bhqd
 {
-  public static final String a = o + "SelectedPhotoList";
-  public static final String b = o + "ForwardWhere";
-  public static final String c = o + "FromWhere";
-  public static final String d = o + "AlbumName";
-  public static final String e = o + "AlbumId";
-  public static final String f = o + "InitActivityClass";
-  public static final String g = o + "DestActivityClass";
-  public static final String h = o + "RequestCode";
-  public static final String i = o + "TempSelectPhotoMap";
-  public static final String j = o + "PassToDestActivity";
-  public static final String k = o + "PassFromDestActivity";
-  public static final String l = ajya.a(2131700154);
-  public static final String m = ajya.a(2131700155);
-  public static final String n = ajya.a(2131700153);
-  private static final String o = bbbw.class.getName() + ".";
+  public bbbw(MediaPreviewActivity paramMediaPreviewActivity, bhpy parambhpy, URLDrawable paramURLDrawable) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    paramView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.jdField_a_of_type_Bcmu.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.jdField_a_of_type_Int);
+    String str = this.jdField_a_of_type_Bhpy.a(paramInt);
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131693485).equals(str)) && (paramView != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable, paramView.a);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.getString(2131693495).equals(str)) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopActivityMediaPreviewActivity.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      }
+    }
+  }
 }
 
 

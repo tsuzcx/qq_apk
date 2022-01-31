@@ -1,26 +1,26 @@
 package dov.com.qq.im;
 
-import bbdj;
-import bigp;
-import bigs;
-import bigt;
-import bjrl;
+import bdcd;
+import bkil;
+import bkio;
+import bkip;
+import bmcv;
 
 public class QIMCameraCaptureUnit$13
   implements Runnable
 {
-  public QIMCameraCaptureUnit$13(bigp parambigp, String paramString) {}
+  public QIMCameraCaptureUnit$13(bkil parambkil, String paramString) {}
   
   public void run()
   {
-    bigs localbigs = new bigs(this);
-    bigt localbigt = new bigt(this);
-    bbdj.a(this.this$0.a.a(), null, this.a, localbigs, localbigs, localbigt);
+    bkio localbkio = new bkio(this);
+    bkip localbkip = new bkip(this);
+    bdcd.a(this.this$0.a.a(), null, this.a, localbkio, localbkio, localbkip);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.QIMCameraCaptureUnit.13
  * JD-Core Version:    0.7.0.1
  */

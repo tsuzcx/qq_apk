@@ -1,23 +1,34 @@
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.data.TroopInfo;
+
 public class bccq
+  implements Comparable<bccq>
 {
   public int a;
+  public TroopInfo a;
   public String a;
-  public String[] a;
   public int b;
-  public String b;
   
-  public bccq(int paramInt1, int paramInt2, String paramString1, String paramString2, String... paramVarArgs)
+  public int a(@NonNull bccq parambccq)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramVarArgs;
+    if (this.b != parambccq.b) {
+      return this.b - parambccq.b;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime != parambccq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime) {
+      return (int)(parambccq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.lastMsgTime);
+    }
+    if (parambccq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime != this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime) {
+      return (int)(parambccq.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime - this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopCreateTime);
+    }
+    if (this.jdField_a_of_type_Int != parambccq.jdField_a_of_type_Int) {
+      return this.jdField_a_of_type_Int - parambccq.jdField_a_of_type_Int;
+    }
+    return this.jdField_a_of_type_JavaLangString.compareTo(parambccq.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bccq
  * JD-Core Version:    0.7.0.1
  */

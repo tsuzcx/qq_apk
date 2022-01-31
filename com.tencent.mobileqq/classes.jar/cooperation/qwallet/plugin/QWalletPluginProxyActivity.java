@@ -1,6 +1,6 @@
 package cooperation.qwallet.plugin;
 
-import ajya;
+import alpo;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Intent;
@@ -8,11 +8,11 @@ import android.content.IntentFilter;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcql;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.pluginsdk.IPluginActivity;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.proxy.BuscardLoadNFCProxyActivity;
 import cooperation.qwallet.plugin.proxy.QWalletNFCProxyActivity;
@@ -301,7 +301,7 @@ public class QWalletPluginProxyActivity
         if (l - this.lastTipsTime > 3000L)
         {
           this.lastTipsTime = l;
-          bcql.a(this, ajya.a(2131711449), 0).a();
+          QQToast.a(this, alpo.a(2131711821), 0).a();
         }
         return;
       }
@@ -549,7 +549,7 @@ public class QWalletPluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

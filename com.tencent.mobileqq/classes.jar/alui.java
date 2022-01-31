@@ -1,87 +1,59 @@
-import android.app.Activity;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.view.ViewTreeObserver;
-import android.view.WindowManager;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView;
+import com.dataline.activities.LiteActivity;
+import com.dataline.activities.PrinterActivity;
+import com.tencent.litetransfersdk.Session;
 
-public class alui
+class alui
+  extends almg
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private ViewGroup.MarginLayoutParams jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams;
-  private ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
-  private int b;
-  private int c;
+  alui(aluh paramaluh) {}
   
-  private alui(Activity paramActivity, ArkAppView paramArkAppView)
+  protected void a(Session paramSession)
   {
-    FrameLayout localFrameLayout = (FrameLayout)paramActivity.findViewById(16908290);
-    if (localFrameLayout == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView = localFrameLayout.getChildAt(0);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new aluj(this));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = paramArkAppView;
-    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams = ((ViewGroup.MarginLayoutParams)paramArkAppView.getLayoutParams());
-    paramArkAppView = new DisplayMetrics();
-    paramActivity.getWindowManager().getDefaultDisplay().getMetrics(paramArkAppView);
-    this.c = paramArkAppView.heightPixels;
-    this.b = this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin;
-  }
-  
-  private int a()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    return localRect.bottom - localRect.top;
-  }
-  
-  private void a()
-  {
-    int i = a();
-    if (i != this.jdField_a_of_type_Int)
+    this.a.a(3, paramSession, 0.0D, false);
+    if (this.a.a != null)
     {
-      int k = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
-      int j = k - i;
-      if (j <= k / 4) {
-        break label104;
-      }
-      Rect localRect = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getInputRect();
-      int[] arrayOfInt = new int[2];
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLocationOnScreen(arrayOfInt);
-      k = localRect.bottom + arrayOfInt[1];
-      j = this.c - j;
-      if (j < k)
-      {
-        this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = (j - k);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = i;
-      return;
-      label104:
-      this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = this.b;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
+      this.a.a.c();
+      this.a.a.notifyDataSetChanged();
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
+      LiteActivity.a(this.a.a.a.jdField_a_of_type_ComTencentWidgetXListView);
     }
   }
   
-  public static void a(Activity paramActivity, ArkAppView paramArkAppView)
+  protected void a(Session paramSession, float paramFloat)
   {
-    new alui(paramActivity, paramArkAppView);
+    this.a.a(1, paramSession, paramFloat, false);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(Session paramSession, boolean paramBoolean)
+  {
+    this.a.a(2, paramSession, 0.0D, paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(boolean paramBoolean, Long paramLong)
+  {
+    this.a.a(paramLong, paramBoolean);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
+  }
+  
+  protected void b(Session paramSession)
+  {
+    this.a.a(0, paramSession, 0.0D, false);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alui
  * JD-Core Version:    0.7.0.1
  */

@@ -4,21 +4,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import auck;
-import auko;
-import aukp;
-import aumc;
+import avto;
+import awbv;
+import awbw;
+import awdj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class OcrRecogResult
-  extends auko
+  extends awbv
   implements Parcelable
 {
-  public static final Parcelable.Creator<OcrRecogResult> CREATOR = new auck();
-  @aumc
+  public static final Parcelable.Creator<OcrRecogResult> CREATOR = new avto();
+  @awdj
   public String filename;
   public String language;
   public String ocrContent;
@@ -46,54 +46,54 @@ public class OcrRecogResult
     }
   }
   
-  public static OcrRecogResult find(aukp paramaukp, String paramString)
+  public static OcrRecogResult find(awbw paramawbw, String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (paramaukp != null)
+    if (paramawbw != null)
     {
       localObject1 = localObject2;
       if (!TextUtils.isEmpty(paramString)) {
-        localObject1 = (OcrRecogResult)paramaukp.a(OcrRecogResult.class, "filename=?", new String[] { String.valueOf(paramString) });
+        localObject1 = (OcrRecogResult)paramawbw.a(OcrRecogResult.class, "filename=?", new String[] { String.valueOf(paramString) });
       }
     }
     return localObject1;
   }
   
-  public static void persistOrReplace(aukp paramaukp, OcrRecogResult paramOcrRecogResult)
+  public static void persistOrReplace(awbw paramawbw, OcrRecogResult paramOcrRecogResult)
   {
-    if ((paramaukp != null) && (paramOcrRecogResult != null) && (!TextUtils.isEmpty(paramOcrRecogResult.filename))) {
-      paramaukp.b(paramOcrRecogResult);
+    if ((paramawbw != null) && (paramOcrRecogResult != null) && (!TextUtils.isEmpty(paramOcrRecogResult.filename))) {
+      paramawbw.b(paramOcrRecogResult);
     }
   }
   
-  public static boolean remove(aukp paramaukp, String paramString)
+  public static boolean remove(awbw paramawbw, String paramString)
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (paramaukp != null)
+    if (paramawbw != null)
     {
       bool1 = bool2;
       if (!TextUtils.isEmpty(paramString))
       {
-        paramString = find(paramaukp, paramString);
+        paramString = find(paramawbw, paramString);
         bool1 = bool2;
         if (paramString != null) {
-          bool1 = paramaukp.b(paramString);
+          bool1 = paramawbw.b(paramString);
         }
       }
     }
     return bool1;
   }
   
-  public static void removeCache(aukp paramaukp)
+  public static void removeCache(awbw paramawbw)
   {
-    List localList = paramaukp.a(OcrRecogResult.class);
+    List localList = paramawbw.a(OcrRecogResult.class);
     if ((localList != null) && (localList.size() > 50))
     {
       Iterator localIterator = localList.iterator();
       while (localIterator.hasNext()) {
-        paramaukp.b((OcrRecogResult)localIterator.next());
+        paramawbw.b((OcrRecogResult)localIterator.next());
       }
       QLog.d("Q.ocr", 1, "removeCache size:" + localList.size());
     }
@@ -135,7 +135,7 @@ public class OcrRecogResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.data.OcrRecogResult
  * JD-Core Version:    0.7.0.1
  */

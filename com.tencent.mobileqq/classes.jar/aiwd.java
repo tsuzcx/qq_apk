@@ -1,96 +1,131 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import Wallet.DownloadReportReq;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Map;
 
 public class aiwd
-  extends aivy<Canvas>
+  extends bdvu
 {
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(2);
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Rect b = new Rect();
+  private boolean jdField_a_of_type_Boolean;
   
-  public boolean a(Canvas paramCanvas, float paramFloat)
+  public aiwd(PreloadResource paramPreloadResource, int paramInt, WeakReference paramWeakReference, bdvu parambdvu, long paramLong) {}
+  
+  public void onDoneFile(bdvv parambdvv)
   {
-    boolean bool = false;
-    if (paramCanvas == null) {
-      return bool;
+    Object localObject = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (PreloadManager.a((PreloadManager)localObject)) {
+      ((PreloadManager)localObject).c();
     }
-    label25:
-    aiwb localaiwb;
-    Bitmap localBitmap;
+    if (this.jdField_a_of_type_Bdvu != null) {
+      this.jdField_a_of_type_Bdvu.onDoneFile(parambdvv);
+    }
+    localObject = new DownloadReportReq();
+    int i;
+    File localFile;
+    long l;
+    if (parambdvv.jdField_a_of_type_Int == 0)
+    {
+      ((DownloadReportReq)localObject).iType = 1;
+      int j = -1;
+      i = j;
+      if (parambdvv.jdField_a_of_type_JavaUtilMap != null)
+      {
+        i = j;
+        if (!TextUtils.isEmpty(parambdvv.jdField_a_of_type_JavaLangString))
+        {
+          localFile = (File)parambdvv.jdField_a_of_type_JavaUtilMap.get(parambdvv.jdField_a_of_type_JavaLangString);
+          if (localFile != null) {
+            break label242;
+          }
+          l = -2L;
+          label113:
+          i = (int)l;
+        }
+      }
+    }
     for (;;)
     {
-      try
+      for (;;)
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (!localIterator.hasNext()) {
-          break label360;
+        ((DownloadReportReq)localObject).vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos(i);
+        ((DownloadReportReq)localObject).iUin = this.jdField_a_of_type_Long;
+        ((DownloadReportReq)localObject).sPhoneType = bdcb.i();
+        ((DownloadReportReq)localObject).sOsVersion = bdcb.e();
+        ((DownloadReportReq)localObject).sQQVersion = bdcb.c();
+        ((DownloadReportReq)localObject).iScene = parambdvv.a().getInt("scene");
+        aiqs.a((JceStruct)localObject, null);
+        if (QLog.isColorLevel()) {
+          QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down result:" + parambdvv.jdField_a_of_type_Int + localObject);
         }
-        localaiwb = (aiwb)localIterator.next();
-        localaiwb.b();
-        if (!localaiwb.a())
-        {
-          localIterator.remove();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("CanvasDisplay", 2, "remove invalidate barrage:" + localaiwb);
-          continue;
-        }
-        localBitmap = localaiwb.a();
-      }
-      finally {}
-      if ((localBitmap != null) && (!localBitmap.isRecycled()))
-      {
-        paramCanvas.save();
-        if (paramFloat == 1.0F)
-        {
-          if (this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha() != localaiwb.d) {
-            this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(localaiwb.d);
-          }
-          label165:
-          if (localaiwb.h <= 0.0F) {
-            break label388;
-          }
-        }
-      }
-    }
-    label388:
-    for (float f1 = localaiwb.h;; f1 = 1.0F)
-    {
-      float f2 = localaiwb.jdField_e_of_type_Float;
-      float f3 = localaiwb.jdField_f_of_type_Float;
-      float f4 = localaiwb.jdField_e_of_type_Float;
-      float f5 = localaiwb.jdField_e_of_type_Int;
-      float f6 = localaiwb.jdField_f_of_type_Float;
-      paramCanvas.clipRect(f2, f3, f4 + f5 * f1, f1 * localaiwb.jdField_f_of_type_Int + f6);
-      paramCanvas.translate(localaiwb.jdField_e_of_type_Float, localaiwb.jdField_f_of_type_Float);
-      if (localaiwb.h != 0.0F) {
-        paramCanvas.scale(localaiwb.h, localaiwb.h);
-      }
-      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
-      this.b.set(0, 0, localaiwb.jdField_e_of_type_Int, localaiwb.jdField_f_of_type_Int);
-      paramCanvas.drawBitmap(localBitmap, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.restore();
-      break label25;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(255.0F * paramFloat));
-      break label165;
-      label360:
-      bool = this.jdField_a_of_type_JavaUtilList.isEmpty();
-      if (!bool) {}
-      for (bool = true;; bool = false) {
+        return;
+        ((DownloadReportReq)localObject).iType = 2;
         break;
+        try
+        {
+          label242:
+          if (localFile.exists())
+          {
+            l = localFile.length();
+            break label113;
+          }
+          l = -3L;
+        }
+        catch (Throwable localThrowable)
+        {
+          i = -4;
+          localThrowable.printStackTrace();
+        }
       }
     }
+  }
+  
+  public void onProgress(bdvv parambdvv)
+  {
+    double d;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      long l1 = System.currentTimeMillis();
+      long l2 = parambdvv.g;
+      d = parambdvv.f / (l1 - l2);
+      if (d >= 1.0D) {
+        break label43;
+      }
+    }
+    label43:
+    do
+    {
+      return;
+      parambdvv = new DownloadReportReq();
+      parambdvv.sSpeed = (d + "");
+      parambdvv.vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos();
+      parambdvv.iType = 0;
+      parambdvv.iUin = this.jdField_a_of_type_Long;
+      aiqs.a(parambdvv, null);
+    } while (!QLog.isColorLevel());
+    QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down speed:" + d);
+  }
+  
+  public boolean onStart(bdvv parambdvv)
+  {
+    int i = 3;
+    parambdvv.f = 1048576L;
+    if (this.jdField_a_of_type_Int > 3) {
+      i = this.jdField_a_of_type_Int;
+    }
+    parambdvv.b = i;
+    return super.onStart(parambdvv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwd
  * JD-Core Version:    0.7.0.1
  */

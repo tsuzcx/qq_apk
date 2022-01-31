@@ -2,14 +2,14 @@ package com.tencent.litetransfersdk;
 
 import android.os.Handler;
 import android.os.Looper;
-import aptm;
-import ayta;
+import armo;
+import baqx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
-import ft;
-import fv;
+import ec;
+import ee;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -91,7 +91,7 @@ public class LiteTransferWrapper
   
   public static int getNetType()
   {
-    return ayta.a().a();
+    return baqx.a().a();
   }
   
   public void CancelAll(int paramInt, boolean paramBoolean)
@@ -242,11 +242,11 @@ public class LiteTransferWrapper
   
   public void SetProxyToJni()
   {
-    fv localfv = ft.a();
-    if (localfv != null) {
+    ee localee = ec.a();
+    if (localee != null) {
       try
       {
-        setGlobalProxyInfo(1, localfv.jdField_a_of_type_JavaLangString, (short)localfv.jdField_a_of_type_Int, "", "");
+        setGlobalProxyInfo(1, localee.jdField_a_of_type_JavaLangString, (short)localee.jdField_a_of_type_Int, "", "");
         return;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
@@ -390,26 +390,26 @@ public class LiteTransferWrapper
   {
     try
     {
-      File localFile = new File(aptm.a().b());
+      File localFile = new File(armo.a().b());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetDefaultPath(aptm.a().b());
-      localFile = new File(aptm.a().d());
+      SetDefaultPath(armo.a().b());
+      localFile = new File(armo.a().d());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbPath(aptm.a().d());
-      localFile = new File(aptm.a().c());
+      SetThumbPath(armo.a().d());
+      localFile = new File(armo.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetTempPath(aptm.a().c());
-      localFile = new File(aptm.a().c());
+      SetTempPath(armo.a().c());
+      localFile = new File(armo.a().c());
       if (!localFile.exists()) {
         localFile.mkdir();
       }
-      SetThumbTempPath(aptm.a().c());
+      SetThumbTempPath(armo.a().c());
       return;
     }
     catch (Exception localException) {}
@@ -481,7 +481,7 @@ public class LiteTransferWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.litetransfersdk.LiteTransferWrapper
  * JD-Core Version:    0.7.0.1
  */

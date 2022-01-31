@@ -1,21 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aook
-  implements View.OnClickListener
+  extends aofy<aooj>
 {
-  public aook(FilePreviewActivity paramFilePreviewActivity) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    axqy.b(this.a.app, "dc00898", "", "", "0X8009065", "0X8009065", 0, 0, "", "", "", "");
-    FilePreviewActivity.a(this.a, ayee.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131720143), true));
+    return 484;
+  }
+  
+  @NonNull
+  public aooj a(int paramInt)
+  {
+    return new aooj();
+  }
+  
+  @Nullable
+  public aooj a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return aooj.a(paramArrayOfaogf);
+    }
+    return null;
+  }
+  
+  public Class<aooj> a()
+  {
+    return aooj.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aooj paramaooj) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aook
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.DynamicBannerItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
 
 public class qdk
+  implements View.OnClickListener
 {
-  public String a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RecommendFollowInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
   
-  public static List<qdk> a(oidb_cmd0xbc9.DynamicBannerItem paramDynamicBannerItem)
+  private qdk(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
+  
+  public void onClick(View paramView)
   {
-    localArrayList = new ArrayList();
-    if (!paramDynamicBannerItem.bytes_dynamic_json.has()) {}
-    for (;;)
+    switch (paramView.getId())
     {
-      return localArrayList;
-      Object localObject = paramDynamicBannerItem.bytes_dynamic_json.get().toStringUtf8();
-      try
+    default: 
+      return;
+    case 2131366636: 
+      paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList;
+      RecommendFollowInfo localRecommendFollowInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed) {}
+      for (boolean bool = true;; bool = false)
       {
-        JSONArray localJSONArray = new JSONArray((String)localObject);
-        int i = 0;
-        while (i < localJSONArray.length())
-        {
-          qdk localqdk = new qdk();
-          localqdk.a = localJSONArray.get(i).toString();
-          localArrayList.add(localqdk);
-          i += 1;
-        }
-        return localArrayList;
-      }
-      catch (Exception localException)
-      {
-        QLog.d("TopBannerInfo", 4, "" + (String)localObject);
-        localObject = new qdk();
-        ((qdk)localObject).a = paramDynamicBannerItem.bytes_dynamic_json.get().toStringUtf8();
-        localArrayList.add(localObject);
+        paramView.a(localRecommendFollowInfo, bool);
+        return;
       }
     }
-  }
-  
-  public oidb_cmd0xbc9.DynamicBannerItem a()
-  {
-    oidb_cmd0xbc9.DynamicBannerItem localDynamicBannerItem = new oidb_cmd0xbc9.DynamicBannerItem();
-    if (!TextUtils.isEmpty(this.a)) {
-      localDynamicBannerItem.bytes_dynamic_json.set(ByteStringMicro.copyFromUtf8(this.a));
-    }
-    return localDynamicBannerItem;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qdk
  * JD-Core Version:    0.7.0.1
  */

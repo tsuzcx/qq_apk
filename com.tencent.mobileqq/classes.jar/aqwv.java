@@ -1,21 +1,34 @@
-import com.tencent.mobileqq.hiboom.FontBubble;
-import com.tencent.mobileqq.hiboom.FontBubblePanelView;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp;
 
-public class aqwv
-  implements askq<List<FontBubble>>
+class aqwv
+  implements bkgc<WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp>
 {
-  public aqwv(FontBubblePanelView paramFontBubblePanelView) {}
+  aqwv(aqwl paramaqwl, aqwz paramaqwz) {}
   
-  public void a(List<FontBubble> paramList)
+  public void a(int paramInt, String paramString, WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
   {
-    FontBubblePanelView.a(this.a, paramList);
-    FontBubblePanelView.a(this.a).notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Failed errorCode=" + paramInt + "; errorMsg=" + paramString);
+    }
+    if (this.jdField_a_of_type_Aqwz != null) {
+      this.jdField_a_of_type_Aqwz.a(paramInt, paramString);
+    }
+  }
+  
+  public void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Success");
+    }
+    if (this.jdField_a_of_type_Aqwz != null) {
+      this.jdField_a_of_type_Aqwz.a(null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwv
  * JD-Core Version:    0.7.0.1
  */

@@ -9,30 +9,30 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import bcns;
-import bcrp;
-import bcrq;
-import bcrr;
-import bfos;
+import bemu;
+import beqy;
+import beqz;
+import bera;
+import bhpo;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 
 public class SlideDetectListView
   extends XListView
-  implements bcns
+  implements bemu
 {
   float jdField_a_of_type_Float = 0.0F;
   public int a;
   protected GestureDetector.SimpleOnGestureListener a;
   protected GestureDetector a;
   public View a;
-  private bcrr jdField_a_of_type_Bcrr;
-  private bfos jdField_a_of_type_Bfos;
+  private bera jdField_a_of_type_Bera;
+  private bhpo jdField_a_of_type_Bhpo;
   private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
   public int b;
-  private bfos b;
+  private bhpo b;
   public boolean b;
   public int c;
   public boolean c;
@@ -51,8 +51,8 @@ public class SlideDetectListView
     this.jdField_c_of_type_Int = 0;
     this.jdField_e_of_type_Int = -1;
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bcrp(this);
-    super.setOnScrollListener(new bcrq(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new beqy(this);
+    super.setOnScrollListener(new beqz(this));
     this.f = (ViewConfiguration.getTouchSlop() + 2);
   }
   
@@ -163,8 +163,8 @@ public class SlideDetectListView
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
         this.jdField_a_of_type_AndroidViewView.setPressed(false);
-        if (this.jdField_a_of_type_Bcrr != null) {
-          this.jdField_a_of_type_Bcrr.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
+        if (this.jdField_a_of_type_Bera != null) {
+          this.jdField_a_of_type_Bera.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
         }
       }
       this.jdField_a_of_type_Boolean = false;
@@ -176,7 +176,7 @@ public class SlideDetectListView
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131375998);
+      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131376497);
       if (localView != null) {
         localView.setVisibility(8);
       }
@@ -266,8 +266,8 @@ public class SlideDetectListView
         if (this.jdField_a_of_type_AndroidViewView != null)
         {
           this.jdField_a_of_type_AndroidViewView.setPressed(false);
-          if (this.jdField_a_of_type_Bcrr != null) {
-            this.jdField_a_of_type_Bcrr.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
+          if (this.jdField_a_of_type_Bera != null) {
+            this.jdField_a_of_type_Bera.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
           }
         }
         this.jdField_a_of_type_Boolean = false;
@@ -325,21 +325,21 @@ public class SlideDetectListView
     }
   }
   
-  public void setOnScrollGroupFloatingListener(bfos parambfos)
+  public void setOnScrollGroupFloatingListener(bhpo parambhpo)
   {
-    this.jdField_b_of_type_Bfos = parambfos;
+    this.jdField_b_of_type_Bhpo = parambhpo;
   }
   
-  public void setOnScrollListener(bfos parambfos) {}
+  public void setOnScrollListener(bhpo parambhpo) {}
   
-  public void setOnScrollToTopListener(bfos parambfos)
+  public void setOnScrollToTopListener(bhpo parambhpo)
   {
-    this.jdField_a_of_type_Bfos = parambfos;
+    this.jdField_a_of_type_Bhpo = parambhpo;
   }
   
-  public void setOnSlideListener(bcrr parambcrr)
+  public void setOnSlideListener(bera parambera)
   {
-    this.jdField_a_of_type_Bcrr = parambcrr;
+    this.jdField_a_of_type_Bera = parambera;
   }
 }
 

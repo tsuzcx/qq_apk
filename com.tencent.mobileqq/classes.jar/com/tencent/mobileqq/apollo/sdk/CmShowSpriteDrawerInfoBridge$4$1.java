@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import ajgc;
-import ajgi;
+import akxo;
+import akxu;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class CmShowSpriteDrawerInfoBridge$4$1
   implements Runnable
 {
-  public CmShowSpriteDrawerInfoBridge$4$1(ajgi paramajgi, String paramString, ajgc paramajgc) {}
+  public CmShowSpriteDrawerInfoBridge$4$1(akxu paramakxu, String paramString, akxo paramakxo) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class CmShowSpriteDrawerInfoBridge$4$1
       localJSONObject.put("dressInfos", localObject);
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("changeDress('").append(localJSONObject.toString()).append("');");
-      this.jdField_a_of_type_Ajgc.a(((StringBuilder)localObject).toString());
+      this.jdField_a_of_type_Akxo.a(((StringBuilder)localObject).toString());
       return;
     }
     catch (Throwable localThrowable)
@@ -30,7 +30,7 @@ public class CmShowSpriteDrawerInfoBridge$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.4.1
  * JD-Core Version:    0.7.0.1
  */

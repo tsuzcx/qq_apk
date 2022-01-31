@@ -5,14 +5,14 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import bgwk;
+import bixj;
 
 public class LoadingImageView
   extends ImageView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = bgwk.a("https://qzonestyle.gtimg.cn/aoi/sola/20191212143823_h3cZSvL8ed.png");
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = bixj.a("https://qzonestyle.gtimg.cn/aoi/sola/20191212143823_h3cZSvL8ed.png");
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -65,7 +65,7 @@ public class LoadingImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.view.LoadingImageView
  * JD-Core Version:    0.7.0.1
  */

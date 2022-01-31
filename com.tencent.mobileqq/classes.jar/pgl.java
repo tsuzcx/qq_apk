@@ -1,40 +1,23 @@
-import android.app.Activity;
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem;
 
-class pgl
-  implements ViewBase.OnClickListener
+public final class pgl
+  implements Parcelable.Creator<ReadInJoyDraftboxItem>
 {
-  pgl(pgh parampgh, Container paramContainer) {}
-  
-  public void onClick(ViewBase paramViewBase)
+  public ReadInJoyDraftboxItem a(Parcel paramParcel)
   {
-    paramViewBase = BaseApplicationImpl.getContext();
-    int i;
-    if ((Build.VERSION.SDK_INT >= 23) && (paramViewBase != null)) {
-      if (paramViewBase.checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      if ((i == 0) && (pcb.a() == 1) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext() instanceof Activity))) {
-        pgh.a(this.jdField_a_of_type_Pgh, (Activity)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext());
-      }
-      return;
-      i = 0;
-      continue;
-      i = 1;
-    }
+    return new ReadInJoyDraftboxItem(paramParcel);
+  }
+  
+  public ReadInJoyDraftboxItem[] a(int paramInt)
+  {
+    return new ReadInJoyDraftboxItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,29 @@
-class vgf
-  implements vop
+public class vgf
+  extends vge
 {
-  vgf(vga paramvga) {}
-  
-  public void a()
-  {
-    ved.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击重新拉取地理贴纸");
-    vga.a(this.a);
-  }
-  
-  public void a(String paramString)
-  {
-    ved.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载：" + paramString);
-    vhm localvhm = this.a.a;
-    if (this.a.a.a()) {}
-    for (String str = "2";; str = "1")
-    {
-      localvhm.a("download_face", 0, 0, new String[] { str, paramString });
-      vej.b("0X80075DD");
-      if (!((vls)tcz.a(8)).a(paramString, true)) {
-        ved.d("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载启动失败");
-      }
-      return;
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    ved.b("Q.qqstory.publish.edit.StoryDoodle", "用户点击下载取消：" + paramString);
-  }
+  public String a;
+  public int b = 0;
+  public int c = 16296448;
+  public String c;
+  public int d;
+  public String d;
+  public int e = 1;
+  public String e;
+  public String f = ugx.a;
+  public String g = "mqqapi://qstory/open?src_type=internal&version=1";
+  public String h;
+  public String i = "";
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n = "";
+  public String o;
+  public String p;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgf
  * JD-Core Version:    0.7.0.1
  */

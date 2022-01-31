@@ -1,29 +1,49 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.weishi_new.push.IWSPushBaseStrategy;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
-class tjg
-  extends SimpleJob<Object>
+public class tjg
 {
-  tjg(tjf paramtjf, String paramString)
+  public static tjd a(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    super(paramString);
-  }
-  
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    if (this.a.jdField_a_of_type_Tji == null) {
-      this.a.jdField_a_of_type_Tji = new tji(this.a, this.a.d);
-    }
-    this.a.jdField_a_of_type_JavaLangString = "";
-    tjf.a(this.a);
-    return null;
+    if (paramWSRedDotPushMsg == null) {}
+    do
+    {
+      return null;
+      int i;
+      if (paramWSRedDotPushMsg.mStrategyInfo != null) {
+        i = paramWSRedDotPushMsg.mStrategyInfo.getType();
+      }
+      while (paramInt == 2) {
+        if (i == 1)
+        {
+          return new tjh(paramWSRedDotPushMsg);
+          i = 0;
+        }
+        else if (i == 5)
+        {
+          return new tje(paramWSRedDotPushMsg);
+        }
+      }
+      if (i == 2) {
+        return new tji(paramWSRedDotPushMsg, paramInt, paramIntent);
+      }
+      if (i == 3) {
+        return new tjj(paramWSRedDotPushMsg, paramInt, paramIntent);
+      }
+      if (i == 4) {
+        return new tjf(paramWSRedDotPushMsg, paramInt);
+      }
+      if (paramInt == 2) {
+        return new tjh(paramWSRedDotPushMsg);
+      }
+    } while (paramInt != 6);
+    return new tji(paramWSRedDotPushMsg, paramInt, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tjg
  * JD-Core Version:    0.7.0.1
  */

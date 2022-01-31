@@ -1,32 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqcircle.widgets.QCircleFeedCommentWidget;
 
-class ual
-  implements ucg
+public class ual
+  implements DialogInterface.OnClickListener
 {
-  private ual(uai paramuai) {}
+  public ual(QCircleFeedCommentWidget paramQCircleFeedCommentWidget) {}
   
-  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, String paramString2, File paramFile, boolean paramBoolean) {}
-  
-  public void a(VideoViewVideoHolder paramVideoViewVideoHolder, ucz paramucz) {}
-  
-  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, ucz paramucz, int paramInt, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return false;
+    paramDialogInterface.dismiss();
   }
-  
-  public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, ucz paramucz, boolean paramBoolean)
-  {
-    return this.a.a.a(paramVideoViewVideoHolder, paramucz, paramBoolean);
-  }
-  
-  public void b(VideoViewVideoHolder paramVideoViewVideoHolder, ucz paramucz) {}
-  
-  public void c(VideoViewVideoHolder paramVideoViewVideoHolder, ucz paramucz) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ual
  * JD-Core Version:    0.7.0.1
  */

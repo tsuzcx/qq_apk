@@ -1,29 +1,18 @@
-import android.graphics.Bitmap;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.soload.LoadExtResult;
 
-public class azig
-  implements URLDrawable.DownloadListener
+public abstract interface azig
 {
-  public azig(TroopCreateLogicActivity paramTroopCreateLogicActivity, URLDrawable paramURLDrawable, azih paramazih) {}
+  public abstract LoadExtResult a(azij paramazij);
   
-  public void onFileDownloadFailed(int paramInt)
-  {
-    this.jdField_a_of_type_Azih.a(null);
-  }
+  public abstract void a(azij paramazij, azin paramazin);
   
-  public void onFileDownloadStarted() {}
+  public abstract void a(String paramString);
   
-  public void onFileDownloadSucceed(long paramLong)
-  {
-    Bitmap localBitmap = bdig.a(this.jdField_a_of_type_ComTencentImageURLDrawable, 100, 100);
-    this.jdField_a_of_type_Azih.a(localBitmap);
-  }
+  public abstract boolean a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azig
  * JD-Core Version:    0.7.0.1
  */

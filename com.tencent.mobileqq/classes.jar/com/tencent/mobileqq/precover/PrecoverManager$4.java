@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.precover;
 
-import aurv;
-import aurw;
+import awjh;
+import awji;
 
 public class PrecoverManager$4
   implements Runnable
 {
-  public PrecoverManager$4(aurv paramaurv) {}
+  public PrecoverManager$4(awjh paramawjh) {}
   
   public void run()
   {
-    aurv.a(this.this$0).a();
+    awjh.a(this.this$0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.precover.PrecoverManager.4
  * JD-Core Version:    0.7.0.1
  */

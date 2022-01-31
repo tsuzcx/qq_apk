@@ -1,141 +1,84 @@
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory.Options;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ApolloActionPackage;
-import com.tencent.mobileqq.transfile.FileDownloadFailedException;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.OutputStream;
-import org.apache.http.Header;
+import android.content.Context;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 public class ajnb
-  extends ayoi
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private BitmapFactory.Options a;
-  protected BaseApplicationImpl a;
+  float jdField_a_of_type_Float;
   
-  public ajnb(BaseApplicationImpl paramBaseApplicationImpl)
+  public ajnb(NewFlowCameraActivity paramNewFlowCameraActivity, Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = paramBaseApplicationImpl;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = new BitmapFactory.Options();
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inDensity = 320;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inTargetDensity = paramBaseApplicationImpl.getResources().getDisplayMetrics().densityDpi;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inScreenDensity = paramBaseApplicationImpl.getResources().getDisplayMetrics().densityDpi;
+    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
   }
   
-  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    int j;
-    if (paramDownloadParams != null)
-    {
-      paramOutputStream = paramDownloadParams.getHeader("apollo_tasks");
-      if (paramOutputStream != null)
-      {
-        j = Integer.parseInt(paramOutputStream.getValue());
-        paramURLDrawableHandler = paramDownloadParams.getHeader("apollo_uin");
-        paramOutputStream = "";
-        if (paramURLDrawableHandler != null) {
-          paramOutputStream = paramURLDrawableHandler.getValue();
-        }
-      }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.r == 10002) {
+      wta.a("video_shoot", "camera_clkdouble", 0, 0, new String[0]);
     }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.i) {}
+    do
     {
-      try
+      do
       {
-        if (this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl == null) {
-          break label460;
+        return true;
+        if (NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) != null) {
+          NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).c();
         }
-        paramOutputStream = (AppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getAppRuntime(paramOutputStream);
-        if (paramOutputStream != null) {
-          break label234;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloDownloader", 2, "downloadImage app is null");
-        }
-        throw new FileDownloadFailedException(9301, 0L, "qqAppInterface is null", false, false);
-      }
-      catch (Throwable paramOutputStream)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloDownloader", 2, "exception:" + paramOutputStream.getMessage());
-        }
-        paramOutputStream = BaseApplicationImpl.getContext();
-        if (Build.VERSION.SDK_INT <= 10) {
-          break label228;
-        }
-      }
-      int i = 4;
-      label150:
-      String str = paramOutputStream.getSharedPreferences("Last_Login", i).getString("uin", "");
-      if (this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl != null) {}
-      for (paramURLDrawableHandler = (AppInterface)this.jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl.getAppRuntime(str);; paramURLDrawableHandler = null)
-      {
-        paramOutputStream = paramURLDrawableHandler;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("ApolloDownloader", 2, "a second time: uin->" + str);
-        paramOutputStream = paramURLDrawableHandler;
-        break;
-        label228:
-        i = 0;
-        break label150;
-        label234:
-        paramOutputStream = (airx)paramOutputStream.getManager(153);
-        if (paramOutputStream != null)
-        {
-          if (j == 0)
-          {
-            paramDownloadParams = (ApolloActionPackage)paramDownloadParams.tag;
-            if (paramDownloadParams != null) {}
-          }
-          do
-          {
-            return null;
-            if (paramOutputStream.b(paramDownloadParams))
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("ApolloDownloader", 2, "packageTab is exist pid=" + paramDownloadParams.packageId);
-              }
-              return paramOutputStream.a(paramDownloadParams);
-            }
-            if (paramOutputStream.a(paramDownloadParams)) {
-              return paramOutputStream.a(paramDownloadParams);
-            }
-            throw new FileDownloadFailedException(9301, 0L, "downloadImage fail", false, false);
-            paramDownloadParams = (ApolloActionData)paramDownloadParams.tag;
-          } while (paramDownloadParams == null);
-          if (paramOutputStream.b(paramDownloadParams, j))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloDownloader", 2, "actionRes is exist aid=" + paramDownloadParams.actionId);
-            }
-            return paramOutputStream.a(paramDownloadParams, j);
-          }
-          if (paramOutputStream.a(paramDownloadParams, j)) {
-            return paramOutputStream.a(paramDownloadParams, j);
-          }
-          throw new FileDownloadFailedException(9301, 0L, "downloadImage fail", false, false);
-        }
-        return new File(ajsd.aW);
-      }
-      label460:
-      paramOutputStream = null;
+      } while (!azcv.c());
+      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, -1, false);
+    } while ((ajli.a != 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a != null));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.D();
+    return true;
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return super.onDown(paramMotionEvent);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.t) {
+      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    float f = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    if (Math.abs(f) > this.jdField_a_of_type_Float)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a(f);
+      if (NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) != null) {
+        NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).c();
+      }
+      return true;
+    }
+    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, paramMotionEvent);
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return super.onSingleTapUp(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajnb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.newshare.util;
 
-import tpi;
+import vea;
 
 class StoryBasicShareUtils$2$1
   implements Runnable
@@ -9,14 +9,14 @@ class StoryBasicShareUtils$2$1
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_Tpi != null) {
-      this.this$0.jdField_a_of_type_Tpi.a(this.this$0.jdField_a_of_type_Trp);
+    if (this.this$0.jdField_a_of_type_Vea != null) {
+      this.this$0.jdField_a_of_type_Vea.a(this.this$0.jdField_a_of_type_Vgh);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.util.StoryBasicShareUtils.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,53 @@
-import android.app.Activity;
-import io.flutter.view.FlutterMain;
-import io.flutter.view.FlutterNativeView;
-import io.flutter.view.FlutterView;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.open.agent.CardContainer;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 
-public final class bfcp
+public class bfcp
+  extends Handler
 {
-  public static FlutterView a(Activity paramActivity, String paramString, FlutterNativeView paramFlutterNativeView)
+  public bfcp(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
   {
-    FlutterMain.startInitialization(paramActivity.getApplicationContext());
-    FlutterMain.ensureInitializationComplete(paramActivity.getApplicationContext(), null);
-    if (paramFlutterNativeView != null) {}
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      paramActivity = new bfcq(paramActivity, null, paramFlutterNativeView);
-      if (paramString != null) {
-        paramActivity.setInitialRoute(paramString);
-      }
-      paramActivity.setAlpha(0.0F);
-      return paramActivity;
-      paramFlutterNativeView = new FlutterNativeView(paramActivity);
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            paramMessage = (Bitmap)paramMessage.obj;
+          } while (paramMessage == null);
+          this.a.a.a("", "", paramMessage, true);
+          return;
+          paramMessage = (Bitmap)paramMessage.obj;
+        } while (paramMessage == null);
+        this.a.a.a("", paramMessage);
+        return;
+        paramMessage = (String)paramMessage.obj;
+      } while (TextUtils.isEmpty(paramMessage));
+      this.a.a.setAppType(paramMessage);
+      return;
+    } while (this.a.a.a == null);
+    this.a.a.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfcp
  * JD-Core Version:    0.7.0.1
  */

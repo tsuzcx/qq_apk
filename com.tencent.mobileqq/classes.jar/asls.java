@@ -1,97 +1,48 @@
-import android.database.sqlite.SQLiteDatabase;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupExtraEntity;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupMsgEntity;
-import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
-import java.io.File;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import java.lang.reflect.Method;
 
-public class asls
+public abstract class asls
 {
-  private aslt a;
+  public static asls a;
   
-  public asls(String paramString)
+  public static void a()
   {
-    this.a = new aslt(paramString);
-  }
-  
-  public static void a(String paramString)
-  {
-    paramString = new File(paramString);
-    if ((paramString.exists()) && (Build.VERSION.SDK_INT >= 16)) {
-      SQLiteDatabase.deleteDatabase(paramString);
-    }
-  }
-  
-  public int a()
-  {
-    return this.a.a("msg");
-  }
-  
-  public String a()
-  {
-    return this.a.name;
-  }
-  
-  public List<MsgBackupExtraEntity> a()
-  {
-    return this.a.a();
-  }
-  
-  public List<MsgBackupResEntity> a(int paramInt1, int paramInt2)
-  {
-    return this.a.b(paramInt1, paramInt2);
-  }
-  
-  public List<MsgBackupMsgEntity> a(long paramLong, int paramInt)
-  {
-    return this.a.a(paramLong, paramInt);
-  }
-  
-  public List<MsgBackupResEntity> a(long paramLong1, long paramLong2)
-  {
-    return this.a.a(paramLong1, paramLong2);
-  }
-  
-  public void a()
-  {
-    if (this.a.isOpen()) {
-      this.a.close();
-    }
-  }
-  
-  public void a(List<MsgBackupMsgEntity> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
+    try
+    {
+      Method localMethod = Class.forName("com.tencent.mobileqq.haoliyou.JefsClass").getMethod("getInstance", new Class[0]);
+      localMethod.setAccessible(true);
+      a = (asls)localMethod.invoke(null, new Object[0]);
       return;
     }
-    this.a.b(paramList);
+    catch (Throwable localThrowable) {}
   }
   
-  public int b()
+  public static void a(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
   {
-    return this.a.b("res");
-  }
-  
-  public void b(List<MsgBackupResEntity> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
+    asls localasls = a;
+    if (localasls != null) {
+      localasls.b(paramActivity, paramIntent, paramInt, paramBundle);
     }
-    this.a.c(paramList);
   }
   
-  public void c(List<MsgBackupExtraEntity> paramList)
+  public static void a(Context paramContext, Intent paramIntent, Runnable paramRunnable)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
+    asls localasls = a;
+    if (localasls != null) {
+      localasls.b(paramContext, paramIntent, paramRunnable);
     }
-    this.a.a(paramList);
   }
+  
+  public abstract void b(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle);
+  
+  public abstract void b(Context paramContext, Intent paramIntent, Runnable paramRunnable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     asls
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ class GameJsPluginEngine$1
   public void onLowMemory()
   {
     Debug.MemoryInfo[] arrayOfMemoryInfo = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getProcessMemoryInfo(new int[] { Process.myPid() });
-    QLog.e("GameJsPluginEngine", 1, "onLowMemory!!!!!! Meminfo:dalvikPss[" + arrayOfMemoryInfo[0].dalvikPss + "],nativePss[" + arrayOfMemoryInfo[0].nativePss + "],otherPss[" + arrayOfMemoryInfo[0].otherPss + "],total[" + arrayOfMemoryInfo[0].getTotalPss() + "]");
+    QLog.e("GameJsPluginEngine", 1, new Object[] { "onLowMemory!!!!!! Meminfo:dalvikPss[", Integer.valueOf(arrayOfMemoryInfo[0].dalvikPss), "],nativePss[", Integer.valueOf(arrayOfMemoryInfo[0].nativePss), "],otherPss[", Integer.valueOf(arrayOfMemoryInfo[0].otherPss), "],total[", Integer.valueOf(arrayOfMemoryInfo[0].getTotalPss()), "]" });
   }
   
   public void onTrimMemory(int paramInt)
@@ -41,7 +41,7 @@ class GameJsPluginEngine$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,37 @@
-public class akfg
-  implements ajte
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+
+class akfg
+  implements View.OnTouchListener
 {
-  public void a(boolean paramBoolean, Object paramObject) {}
+  akfg(akfe paramakfe) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramInt)
+    switch (paramMotionEvent.getAction())
     {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      a(paramBoolean, paramObject);
-      return;
     }
-    a(paramBoolean, ((Boolean)paramObject).booleanValue());
+    for (;;)
+    {
+      return false;
+      if ((paramView instanceof ImageView))
+      {
+        ((ImageView)paramView).getDrawable().setColorFilter(855638016, PorterDuff.Mode.SRC_ATOP);
+        continue;
+        if ((paramView instanceof ImageView)) {
+          ((ImageView)paramView).getDrawable().clearColorFilter();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfg
  * JD-Core Version:    0.7.0.1
  */

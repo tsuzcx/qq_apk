@@ -1,78 +1,53 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import java.util.ArrayList;
-import java.util.Map;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import android.webkit.URLUtil;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
 
 public class zcf
-  extends WebViewPlugin
+  extends baig
 {
-  private ArrayList<zcd> a = new ArrayList();
+  public String a;
+  public String b;
   
-  public zcf()
+  public zcf(CharSequence paramCharSequence, int paramInt)
   {
-    this.mPluginNameSpace = "GdtWebReportPlugin";
-    zce localzce = new zce(this);
-    zcg localzcg = new zcg(this);
-    nzx localnzx = new nzx();
-    this.a.add(localzce);
-    this.a.add(localzcg);
-    this.a.add(localnzx);
+    super(paramCharSequence, paramInt);
   }
   
-  public Activity a()
+  protected void a(View paramView, String paramString)
   {
-    if (this.mRuntime != null) {}
-    for (Activity localActivity1 = this.mRuntime.a();; localActivity1 = null)
+    Context localContext = paramView.getContext();
+    Intent localIntent = new Intent(localContext, PublicAccountBrowser.class);
+    localIntent.putExtra("uin", this.a);
+    int i = paramString.lastIndexOf("#");
+    if (i > 0) {}
+    for (paramView = paramString.substring(i);; paramView = null)
     {
-      Activity localActivity2 = localActivity1;
-      if ((localActivity1 instanceof BasePluginActivity)) {
-        localActivity2 = ((BasePluginActivity)BasePluginActivity.class.cast(localActivity1)).getOutActivity();
+      String str2 = URLUtil.guessUrl(paramString);
+      String str1 = str2;
+      if (paramView != null) {
+        str1 = str2 + paramView;
       }
-      return localActivity2;
+      localIntent.putExtra("url", str1);
+      localIntent.putExtra("assignBackText", localContext.getResources().getString(2131690623));
+      localIntent.putExtra("puin", this.b);
+      localIntent.putExtra("key_isReadModeEnabled", true);
+      localIntent.putExtra("fromAio", true);
+      localIntent.putExtra("fromPublicAccount", true);
+      localIntent.putExtra("articalChannelId", 1);
+      localIntent.putExtra("big_brother_source_key", syb.b(this.b));
+      syb.a(localIntent, paramString);
+      localContext.startActivity(localIntent);
+      azmj.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, str1, "", "", "");
+      return;
     }
-  }
-  
-  public void callJs(String paramString)
-  {
-    super.callJs(paramString);
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    int i = 0;
-    while (i < this.a.size())
-    {
-      ((zcd)this.a.get(i)).a(paramString, paramLong, paramMap);
-      i += 1;
-    }
-    return false;
-  }
-  
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
-  {
-    return super.handleSchemaRequest(paramString1, paramString2);
-  }
-  
-  public void onActivityReady()
-  {
-    super.onActivityReady();
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-  }
-  
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
-  {
-    super.onWebViewCreated(paramCustomWebView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zcf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,77 @@
-import com.tencent.qphone.base.util.QLog;
-
-class aslh
-  extends askw
+public class aslh
 {
-  aslh(aslg paramaslg) {}
+  asli a;
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public aslh(int paramInt)
   {
-    super.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "onGetQrResponse: " + paramObject + ", isSuccess: " + paramBoolean);
+    this.a = new asli(paramInt);
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "graytip";
+    case 2: 
+      return "nor_text";
+    case 3: 
+      return "url";
+    case 4: 
+      return "qq";
+    case 5: 
+      return "img";
+    case 6: 
+      return "dialog";
+    case 7: 
+      return "title";
+    case 8: 
+      return "alter";
+    case 9: 
+      return "btn";
     }
-    if ((paramBoolean) && ((paramObject instanceof aslu))) {
-      aslg.a(this.a, (aslu)paramObject);
+    return "item";
+  }
+  
+  public static String b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 1: 
+      return "align";
+    case 2: 
+      return "text";
+    case 3: 
+      return "size";
+    case 4: 
+      return "jump";
+    case 5: 
+      return "color";
+    case 6: 
+      return "uin";
+    case 7: 
+      return "name";
     }
+    return "src";
+  }
+  
+  public asli a()
+  {
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return asli.a(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aslh
  * JD-Core Version:    0.7.0.1
  */

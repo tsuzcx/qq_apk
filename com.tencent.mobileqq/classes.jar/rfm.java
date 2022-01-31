@@ -1,19 +1,33 @@
-import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.FrameLayoutCompat;
 
-public abstract interface rfm
+public class rfm
+  extends oxe
 {
-  public abstract int a();
+  private rfm(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public abstract View a(ViewGroup paramViewGroup);
-  
-  public abstract void a();
-  
-  public abstract void a(boolean paramBoolean, String paramString);
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (VideoFeedsPlayActivity.a(this.a).getVisibility() == 0))
+    {
+      VideoFeedsPlayActivity.b(this.a, true);
+      localqhj = new qhj(this.a);
+      localqhj.a(paramString);
+      localqhj.a(RIJRedPacketManager.a().d());
+      localqhj.showAsDropDown(VideoFeedsPlayActivity.a(this.a), 0, -bdkf.a(10.0F));
+    }
+    while (!paramBoolean)
+    {
+      qhj localqhj;
+      return;
+    }
+    VideoFeedsPlayActivity.a(this.a).setVisibilityChangedListener(new rfn(this, paramString));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rfm
  * JD-Core Version:    0.7.0.1
  */

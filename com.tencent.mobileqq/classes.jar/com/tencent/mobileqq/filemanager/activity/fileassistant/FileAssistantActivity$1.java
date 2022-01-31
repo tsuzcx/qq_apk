@@ -2,7 +2,7 @@ package com.tencent.mobileqq.filemanager.activity.fileassistant;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aoww;
+import aqpu;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 class FileAssistantActivity$1
@@ -14,10 +14,10 @@ class FileAssistantActivity$1
   {
     SharedPreferences localSharedPreferences = this.this$0.app.getPreferences();
     boolean bool = localSharedPreferences.getBoolean("_file_assistant_guid_tips_", false);
-    aoww localaoww = (aoww)this.this$0.app.getManager(317);
-    if (localaoww != null)
+    aqpu localaqpu = (aqpu)this.this$0.app.getManager(317);
+    if (localaqpu != null)
     {
-      this.this$0.a = localaoww.a();
+      this.this$0.a = localaqpu.a();
       this.this$0.runOnUiThread(new FileAssistantActivity.1.1(this));
     }
     if (!bool)
@@ -29,7 +29,7 @@ class FileAssistantActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity.1
  * JD-Core Version:    0.7.0.1
  */

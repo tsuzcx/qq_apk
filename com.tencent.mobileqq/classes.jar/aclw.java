@@ -1,20 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.qphone.base.util.QLog;
 
 public class aclw
-  implements View.OnClickListener
+  extends bdqc
 {
-  public aclw(TroopRequestActivity paramTroopRequestActivity) {}
+  public aclw(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void onClick(View paramView)
+  protected void onGetMyTroopEffect(boolean paramBoolean, Object paramObject)
   {
-    this.a.f();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.chatopttroop", 2, "onGetMyTroopEffect  result = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.a.a(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aclw
  * JD-Core Version:    0.7.0.1
  */

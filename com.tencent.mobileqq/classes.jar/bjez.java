@@ -1,66 +1,54 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.image.NativeApngDecoder;
-import com.tencent.mobileqq.richmedia.capture.data.GifDecoder;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import NS_QZONE_MQMSG.QzoneMessageReq;
+import com.qq.taf.jce.JceStruct;
+import java.util.HashMap;
+import java.util.Map;
 
 public class bjez
-  implements GifDecoder
+  extends bizh
 {
-  private NativeApngDecoder jdField_a_of_type_ComTencentImageNativeApngDecoder;
-  private String jdField_a_of_type_JavaLangString;
+  private int a;
+  public JceStruct a;
   
-  public bjez(String paramString)
+  public bjez(long paramLong1, String paramString, long paramLong2, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    QzoneMessageReq localQzoneMessageReq = new QzoneMessageReq();
+    localQzoneMessageReq.uin = paramLong1;
+    localQzoneMessageReq.trace_info = paramString;
+    localQzoneMessageReq.num = paramLong2;
+    localQzoneMessageReq.ext = new HashMap();
+    localQzoneMessageReq.ext.put("qua", bizf.a());
+    localQzoneMessageReq.scence = paramInt;
+    this.jdField_a_of_type_ComQqTafJceJceStruct = localQzoneMessageReq;
   }
   
-  public Bitmap getNextGifFrame(long paramLong)
+  public int a()
   {
-    if (this.jdField_a_of_type_ComTencentImageNativeApngDecoder != null) {
-      return this.jdField_a_of_type_ComTencentImageNativeApngDecoder.getNextFrameBitmap(paramLong);
-    }
-    return null;
+    return this.jdField_a_of_type_Int;
   }
   
-  public void init()
+  public void a(int paramInt)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    File localFile;
-    do
-    {
-      do
-      {
-        return;
-        if (bbqx.a().b()) {
-          break;
-        }
-        bbqx.a().a();
-      } while (!QLog.isColorLevel());
-      QLog.d("ApngDecodeWrapper", 2, "so not loaded");
-      return;
-      localFile = new File(this.jdField_a_of_type_JavaLangString);
-    } while ((!localFile.exists()) || (!localFile.isFile()));
-    try
-    {
-      this.jdField_a_of_type_ComTencentImageNativeApngDecoder = new NativeApngDecoder(localFile);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void release()
+  public String getCmdString()
   {
-    this.jdField_a_of_type_ComTencentImageNativeApngDecoder = null;
+    return "QzoneNewService.GetNewMQmsg";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.jdField_a_of_type_ComQqTafJceJceStruct;
+  }
+  
+  public String uniKey()
+  {
+    return "GetNewMQmsg";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjez
  * JD-Core Version:    0.7.0.1
  */

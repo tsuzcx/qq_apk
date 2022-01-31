@@ -1,28 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.os.Handler;
-import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
-import com.tencent.mobileqq.trooppiceffects.view.ShakePicView.1.1;
-
 public class bauf
-  implements Animator.AnimatorListener
 {
-  public bauf(ShakePicView paramShakePicView) {}
+  public int a;
+  public baud a;
+  public boolean a;
+  public boolean b;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public String toString()
   {
-    this.a.a.postDelayed(new ShakePicView.1.1(this), 160L);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUinType:" + this.jdField_a_of_type_Int);
+    localStringBuilder.append(",mIsRaw:" + this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",mIsShareAppPic:" + this.b);
+    localStringBuilder.append(",mShareAppInfo:{" + this.jdField_a_of_type_Baud + "}");
+    return localStringBuilder.toString();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bauf
  * JD-Core Version:    0.7.0.1
  */

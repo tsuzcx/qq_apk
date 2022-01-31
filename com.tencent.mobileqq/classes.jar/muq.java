@@ -1,116 +1,67 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.List;
 
 class muq
-  implements ITransactionCallback
+  extends BroadcastReceiver
 {
-  long jdField_a_of_type_Long = 0L;
+  muq(mup parammup) {}
   
-  muq(mup parammup, String paramString, long paramLong, byte[] paramArrayOfByte, mur parammur) {}
-  
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QLog.w(this.jdField_a_of_type_Mup.jdField_a_of_type_JavaLangString, 1, "onFailed, sessionId[" + this.jdField_a_of_type_JavaLangString + "], retCode[" + paramInt + "]");
-    paramArrayOfByte = bbea.a(this.jdField_a_of_type_ArrayOfByte);
-    this.jdField_a_of_type_Mur.a(paramInt, this.jdField_a_of_type_JavaLangString, "", paramArrayOfByte);
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
-  {
-    String str2 = "";
-    String str1;
-    if (paramArrayOfByte != null) {
-      str1 = str2;
-    }
-    for (;;)
+    mus localmus;
+    if (paramIntent.getAction().equals("tencent.video.q2v.getNearByProfile"))
     {
-      int i;
-      try
-      {
-        localObject2 = new Bdh_extinfo.CommFileExtRsp();
-        str1 = str2;
-        ((Bdh_extinfo.CommFileExtRsp)localObject2).mergeFrom(paramArrayOfByte);
-        str1 = str2;
-        str2 = ((Bdh_extinfo.CommFileExtRsp)localObject2).bytes_download_url.get().toStringUtf8();
-        str1 = str2;
-        boolean bool = TextUtils.isEmpty(str2);
-        if (!bool) {
-          continue;
-        }
-        i = -10010;
-        str1 = str2;
-      }
-      catch (Exception localException2)
-      {
-        Object localObject2;
-        StringBuilder localStringBuilder;
-        i = -10012;
-        continue;
-        paramArrayOfByte = null;
-        continue;
-      }
-      str2 = bbea.a(this.jdField_a_of_type_ArrayOfByte);
-      localObject2 = this.jdField_a_of_type_Mup.jdField_a_of_type_JavaLangString;
-      localStringBuilder = new StringBuilder().append("onSuccess, sessionId[").append(this.jdField_a_of_type_JavaLangString).append("], respData[");
-      Object localObject1;
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte = Integer.valueOf(paramArrayOfByte.length);
-        QLog.w((String)localObject2, 1, paramArrayOfByte + "], retCode[" + i + "], md5[" + str2 + "], url[" + str1 + "]");
-        AudioHelper.a(this.jdField_a_of_type_Mup.jdField_a_of_type_JavaLangString, paramHashMap, false);
-        this.jdField_a_of_type_Mur.a(i, this.jdField_a_of_type_JavaLangString, str1, str2);
-        return;
-        try
-        {
-          if (QLog.isDevelopLevel()) {
-            QLog.w(this.jdField_a_of_type_Mup.jdField_a_of_type_JavaLangString, 1, "onSuccess, sessionId[" + this.jdField_a_of_type_JavaLangString + "], 原始url[" + str2 + "]");
-          }
-          str1 = bfnx.a(str2);
-          i = 0;
-        }
-        catch (Exception localException1)
-        {
-          i = -10011;
-          localObject1 = str2;
-        }
-      }
-      else
-      {
-        i = 0;
-        localObject1 = localException2;
+      paramContext = paramIntent.getStringExtra("uin");
+      localmus = new mus(this.a);
+      localmus.jdField_a_of_type_JavaLangString = paramContext;
+      localmus.jdField_b_of_type_JavaLangString = paramIntent.getStringExtra("nickname");
+      localmus.jdField_a_of_type_Int = paramIntent.getIntExtra("gender", -1);
+      localmus.jdField_b_of_type_Int = paramIntent.getIntExtra("age", 0);
+      localmus.jdField_a_of_type_Byte = paramIntent.getByteExtra("constellation", (byte)-1);
+      paramIntent = lfb.a().c(this.a.jdField_a_of_type_JavaLangString);
+      if (paramIntent != null) {
+        break label98;
       }
     }
-  }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
-  {
-    QLog.w(this.jdField_a_of_type_Mup.jdField_a_of_type_JavaLangString, 1, "onTransStart, sessionId[" + this.jdField_a_of_type_JavaLangString + "]");
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    if (QLog.isColorLevel())
+    label98:
+    do
     {
-      long l = System.currentTimeMillis();
-      if (this.jdField_a_of_type_Long < l)
+      return;
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
       {
-        QLog.w(this.jdField_a_of_type_Mup.jdField_a_of_type_JavaLangString, 1, "onUpdateProgress, sessionId[" + this.jdField_a_of_type_JavaLangString + "], transferedSize[" + paramInt + "], totalSize[" + this.b + "]");
-        this.jdField_a_of_type_Long = (l + 2000L);
+        lfu locallfu = this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramContext);
+        if (locallfu != null)
+        {
+          this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramContext, localmus.jdField_b_of_type_JavaLangString, false);
+          locallfu.c = localmus.jdField_a_of_type_Int;
+        }
+        if (paramContext.equals(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount()))
+        {
+          paramIntent.a.d = localmus.jdField_a_of_type_Int;
+          paramIntent.a.f = localmus.jdField_b_of_type_JavaLangString;
+        }
+        if (paramContext.equals(paramIntent.d))
+        {
+          paramIntent.a.c = localmus.jdField_a_of_type_Int;
+          paramIntent.a.jdField_b_of_type_JavaLangString = localmus.jdField_b_of_type_JavaLangString;
+        }
       }
+    } while ((this.a.jdField_a_of_type_Mur == null) || (!this.a.jdField_a_of_type_JavaUtilList.contains(paramContext)));
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyPeopleProfileHelper", 2, "onGetNearbyPeopleProfile uin :" + paramContext + ", nickname:" + localmus.jdField_b_of_type_JavaLangString + ", gender:" + localmus.jdField_a_of_type_Int);
     }
+    this.a.jdField_a_of_type_Mur.a(paramContext, localmus);
+    this.a.jdField_a_of_type_JavaUtilList.remove(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     muq
  * JD-Core Version:    0.7.0.1
  */

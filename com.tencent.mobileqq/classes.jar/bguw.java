@@ -1,141 +1,56 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.redtouch.RedAppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import cooperation.qqreader.QRBridgeUtil;
-import eipc.EIPCResult;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONObject;
+import android.os.Handler;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.minigame.manager.GameReportManager.1;
+import com.tencent.qqmini.sdk.minigame.manager.GameReportManager.2;
 
 public class bguw
-  extends QIPCModule
 {
-  private static bguw a;
+  private static String jdField_a_of_type_JavaLangString;
+  private MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public bguw(String paramString)
+  public bguw()
   {
-    super(paramString);
+    jdField_a_of_type_JavaLangString = toString();
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
   }
   
-  public static bguw a()
+  public void a()
   {
-    if (a == null) {}
     try
     {
-      if (a == null) {
-        a = new bguw("ReaderIPCModule");
+      if (!this.b)
+      {
+        this.b = true;
+        bgya.a().a().post(new GameReportManager.1(this));
       }
-      return a;
+      return;
     }
-    finally {}
+    catch (Throwable localThrowable)
+    {
+      QMLog.e(jdField_a_of_type_JavaLangString, "onJsError", localThrowable);
+    }
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void b()
   {
-    bgwf.e("ReaderIPCModule", "action = " + paramString);
-    if (paramBundle == null)
+    try
     {
-      bgwf.e("ReaderIPCModule", "Err params = null, action = " + paramString);
-      return null;
+      bgya.a().a().post(new GameReportManager.2(this));
+      return;
     }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localObject instanceof QQAppInterface))
+    catch (Throwable localThrowable)
     {
-      bgwf.e("ReaderIPCModule", "onRemoteInvoke cannot get QQAppInterface");
-      return null;
+      QMLog.e(jdField_a_of_type_JavaLangString, "onFirstFrame", localThrowable);
     }
-    localObject = (QQAppInterface)localObject;
-    if ("getRedTouchInfo".equals(paramString))
-    {
-      paramString = (avps)((QQAppInterface)localObject).getManager(36);
-      localObject = paramBundle.getStringArrayList("pathList");
-      if ((paramString != null) && (localObject != null))
-      {
-        paramBundle = new ArrayList();
-        localObject = ((ArrayList)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          BusinessInfoCheckUpdate.AppInfo localAppInfo = paramString.a((String)((Iterator)localObject).next());
-          if (localAppInfo != null) {
-            paramBundle.add(avpv.a(localAppInfo));
-          }
-        }
-        paramString = new Bundle();
-        paramString.putParcelableArrayList("redTouchInfoList", paramBundle);
-        return EIPCResult.createResult(0, paramString);
-      }
-    }
-    else if ("getSingleRedTouchInfo".equals(paramString))
-    {
-      paramString = (avps)((QQAppInterface)localObject).getManager(36);
-      if (paramString != null)
-      {
-        paramString = paramString.a(paramBundle.getString("path"));
-        if (paramString != null)
-        {
-          paramString = avpv.a(paramString);
-          paramBundle = new Bundle();
-          paramBundle.putParcelable("redTouchInfo", paramString);
-          if ((paramString != null) && (paramString.b() == 1)) {
-            bgwf.e("ReaderIPCModule", "path=" + paramString.b());
-          }
-          return EIPCResult.createResult(0, paramBundle);
-        }
-      }
-    }
-    else
-    {
-      if (!"reportRedTouchClick".equals(paramString)) {
-        break label396;
-      }
-      paramString = (avps)((QQAppInterface)localObject).getManager(36);
-      if (paramString != null)
-      {
-        paramBundle = paramBundle.getString("path");
-        paramString.b(paramBundle);
-      }
-    }
-    label396:
-    do
-    {
-      try
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("service_type", 2);
-        ((JSONObject)localObject).put("act_id", 1002);
-        paramString.c(paramString.a(paramBundle), ((JSONObject)localObject).toString());
-        return null;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      }
-      if ("download_reader_plugin".equals(paramString))
-      {
-        bgtt.a().a(((QQAppInterface)localObject).getApp());
-        return EIPCResult.createResult(0, new Bundle());
-      }
-      if ("get_skey".equals(paramString))
-      {
-        paramString = new Bundle();
-        paramString.putString("get_skey_value", QRBridgeUtil.getSKey((QQAppInterface)localObject));
-        return EIPCResult.createResult(0, paramString);
-      }
-    } while (!"action_get_account".equals(paramString));
-    paramString = new Bundle();
-    paramString.putString("key_get_account", ((QQAppInterface)localObject).getAccount());
-    return EIPCResult.createResult(0, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bguw
  * JD-Core Version:    0.7.0.1
  */

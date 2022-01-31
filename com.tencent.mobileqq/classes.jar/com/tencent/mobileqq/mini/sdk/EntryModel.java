@@ -3,8 +3,6 @@ package com.tencent.mobileqq.mini.sdk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 public class EntryModel
@@ -17,7 +15,7 @@ public class EntryModel
   private String entryDataHash;
   public boolean isAdmin;
   public String name;
-  public Map<String, String> reportData;
+  public String reportData;
   public int type;
   public long uin;
   
@@ -41,10 +39,7 @@ public class EntryModel
       this.isAdmin = bool;
       this.entryDataHash = paramParcel.readString();
       this.dwGroupClassExt = paramParcel.readLong();
-      if (this.reportData == null) {
-        this.reportData = new HashMap();
-      }
-      paramParcel.readMap(this.reportData, Map.class.getClassLoader());
+      this.reportData = paramParcel.readString();
       return;
     }
   }
@@ -70,14 +65,14 @@ public class EntryModel
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeString(this.entryDataHash);
       paramParcel.writeLong(this.dwGroupClassExt);
-      paramParcel.writeMap(this.reportData);
+      paramParcel.writeString(this.reportData);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.EntryModel
  * JD-Core Version:    0.7.0.1
  */

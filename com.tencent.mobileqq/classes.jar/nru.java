@@ -1,73 +1,371 @@
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountSearchRecommendManager.1;
+import com.tencent.biz.pubaccount.PublicAccountSearchRecommendManager.2;
+import com.tencent.mobileqq.ac.ArticleComment.GetRecommendPubAccountRequest;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
+import mqq.app.NewIntent;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nru
-  implements View.OnClickListener
 {
-  public nru(CustomTabView paramCustomTabView, nrr paramnrr, ImageView paramImageView1, TextView paramTextView, ImageView paramImageView2) {}
+  private static nru jdField_a_of_type_Nru;
+  private final int jdField_a_of_type_Int = 8;
+  private final long jdField_a_of_type_Long = 86400000L;
+  private final String jdField_a_of_type_JavaLangString = nru.class.getSimpleName();
+  private ArrayList<nry> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private HashMap<String, nrx> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private boolean jdField_a_of_type_Boolean;
+  private final long jdField_b_of_type_Long = 3600000L;
+  private final String jdField_b_of_type_JavaLangString = "recommend_title";
+  private ArrayList<nrx> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_b_of_type_Boolean;
+  private final long jdField_c_of_type_Long = 2592000000L;
+  private final String jdField_c_of_type_JavaLangString = "recommend_cache_time";
+  private long jdField_d_of_type_Long;
+  private final String jdField_d_of_type_JavaLangString = "recommend_fetch_time";
+  private long jdField_e_of_type_Long;
+  private final String jdField_e_of_type_JavaLangString = "recommend_content_list";
+  private final String f = "recommend_is_forbidden";
+  private final String g = "search_history_list";
+  private String h;
   
-  public void onClick(View paramView)
+  private ArrayList<nry> a()
   {
-    nrh.a(null, "gouwu.tab.click", this.jdField_a_of_type_Nrr.a + "", NetConnInfoCenter.getServerTimeMillis() + "", "");
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getTag() == null) {}
-    for (int i = 0;; i = ((Integer)this.jdField_a_of_type_AndroidWidgetImageView.getTag()).intValue())
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 8) {
+      return (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone();
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < 8)
     {
-      paramView = Integer.valueOf(i);
-      if (paramView.intValue() != 0)
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        nrh.a(this.jdField_a_of_type_Nrr.a, paramView.intValue());
+      localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
+      i += 1;
+    }
+    return (ArrayList)localArrayList.clone();
+  }
+  
+  private ArrayList<nry> a(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = new ArrayList();
+    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      nrx localnrx = (nrx)localIterator.next();
+      paramQQAppInterface.add(new nry(this, localnrx.jdField_a_of_type_JavaLangString, localnrx.jdField_b_of_type_JavaLangString, localnrx.jdField_a_of_type_Boolean));
+    }
+    return paramQQAppInterface;
+  }
+  
+  public static nru a()
+  {
+    if (jdField_a_of_type_Nru == null) {}
+    try
+    {
+      jdField_a_of_type_Nru = new nru();
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_Nru.jdField_a_of_type_JavaLangString, 2, "newInstance!");
       }
-      if (this.jdField_a_of_type_Nrr.a != this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a) {
+      return jdField_a_of_type_Nru;
+    }
+    finally {}
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, nrw paramnrw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getRecommendListFromLocal->mRecommendIsForbidden:" + this.jdField_b_of_type_Boolean);
+    }
+    if (this.jdField_b_of_type_Boolean)
+    {
+      paramnrw.a(new ArrayList(), null, true);
+      return;
+    }
+    if (b(paramQQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getRecommendListFromLocal->使用推荐内容缓存!");
+      }
+      paramnrw.a(a(), this.h, true);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getRecommendListFromLocal->使用搜索历史!");
+    }
+    paramnrw.a(a(paramQQAppInterface), null, false);
+  }
+  
+  private boolean a(QQAppInterface paramQQAppInterface)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      a(paramQQAppInterface);
+    }
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    boolean bool = false;
+    if (l - this.jdField_e_of_type_Long > 3600000L) {
+      bool = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkShouldFetchData->now:" + l + ", fetchTime:" + this.jdField_e_of_type_Long + ", result:" + bool);
+    }
+    return bool;
+  }
+  
+  private void b(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("sp_public_account_with_cuin_" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = paramQQAppInterface.getString("public_account_search_recommend", null);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "loadRecommendListFromLocal->json:" + paramQQAppInterface);
+      }
+      if (!TextUtils.isEmpty(paramQQAppInterface)) {
+        try
+        {
+          paramQQAppInterface = syb.a(paramQQAppInterface);
+          if (paramQQAppInterface != null)
+          {
+            this.h = paramQQAppInterface.getString("recommend_title");
+            this.jdField_d_of_type_Long = paramQQAppInterface.getLong("recommend_cache_time");
+            this.jdField_e_of_type_Long = paramQQAppInterface.getLong("recommend_fetch_time");
+            this.jdField_b_of_type_Boolean = paramQQAppInterface.getBoolean("recommend_is_forbidden");
+            paramQQAppInterface = paramQQAppInterface.getJSONArray("recommend_content_list");
+            this.jdField_a_of_type_JavaUtilArrayList.clear();
+            int i = 0;
+            while (i < paramQQAppInterface.length())
+            {
+              Object localObject = (JSONObject)paramQQAppInterface.get(i);
+              localObject = new nry(this, ((JSONObject)localObject).optString("uin"), ((JSONObject)localObject).optString("name"), ((JSONObject)localObject).optBoolean("isPA", true));
+              this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+              i += 1;
+            }
+          }
+          return;
+        }
+        catch (JSONException paramQQAppInterface)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "loadRecommendListFromLocal->error:" + paramQQAppInterface);
+          }
+        }
+      }
+    }
+  }
+  
+  private void b(QQAppInterface paramQQAppInterface, nrw paramnrw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "sendGetPublicAccountSearchRecommendRequest->begin!");
+    }
+    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication().getApplicationContext(), nrz.class);
+    localNewIntent.putExtra("cmd", "PubAccountArticleCenter.GetRecommendPubAccount");
+    ArticleComment.GetRecommendPubAccountRequest localGetRecommendPubAccountRequest = new ArticleComment.GetRecommendPubAccountRequest();
+    localGetRecommendPubAccountRequest.version.set(syb.a());
+    localGetRecommendPubAccountRequest.cuin.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    localGetRecommendPubAccountRequest.count.set(8);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "sendGetPublicAccountSearchRecommendRequset->versionInfo:" + localGetRecommendPubAccountRequest.version.get() + ", cuin:" + localGetRecommendPubAccountRequest.cuin.get() + ", count:" + localGetRecommendPubAccountRequest.count.get());
+    }
+    localNewIntent.putExtra("data", localGetRecommendPubAccountRequest.toByteArray());
+    localNewIntent.setObserver(new nrv(this, localNewIntent, paramQQAppInterface, paramnrw));
+    this.jdField_e_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
+    paramQQAppInterface.startServlet(localNewIntent);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "sendGetPublicAccountSearchRecommendRequest->send request, time:" + this.jdField_e_of_type_Long);
+    }
+  }
+  
+  private boolean b(QQAppInterface paramQQAppInterface)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      a(paramQQAppInterface);
+    }
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (l - this.jdField_d_of_type_Long < 86400000L)
+    {
+      bool1 = bool2;
+      if (i > 0) {
+        bool1 = true;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkRecommendCacheValid->now:" + l + ", cacheTime:" + this.jdField_d_of_type_Long + ", size:" + i + ", result:" + bool1);
+    }
+    return bool1;
+  }
+  
+  private void c(QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.executeOnFileThread(new PublicAccountSearchRecommendManager.1(this, paramQQAppInterface));
+  }
+  
+  private void d(QQAppInterface paramQQAppInterface)
+  {
+    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("sp_public_account_with_cuin_" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = paramQQAppInterface.getString("public_account_search_history", null);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "loadHistoryListFromLocal->json:" + paramQQAppInterface);
+      }
+      if (!TextUtils.isEmpty(paramQQAppInterface)) {
+        try
+        {
+          paramQQAppInterface = syb.a(paramQQAppInterface);
+          if (paramQQAppInterface != null)
+          {
+            paramQQAppInterface = paramQQAppInterface.getJSONArray("search_history_list");
+            this.jdField_b_of_type_JavaUtilArrayList.clear();
+            this.jdField_a_of_type_JavaUtilHashMap.clear();
+            int i = 0;
+            while (i < paramQQAppInterface.length())
+            {
+              Object localObject = (JSONObject)paramQQAppInterface.get(i);
+              localObject = new nrx(this, ((JSONObject)localObject).optString("uin"), ((JSONObject)localObject).optString("name"), ((JSONObject)localObject).optLong("time"), ((JSONObject)localObject).optBoolean("isPA", true));
+              this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
+              this.jdField_a_of_type_JavaUtilHashMap.put(((nrx)localObject).jdField_a_of_type_JavaLangString, localObject);
+              i += 1;
+            }
+          }
+          return;
+        }
+        catch (JSONException paramQQAppInterface)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "loadHistoryListFromLocal->error:" + paramQQAppInterface);
+          }
+        }
+      }
+    }
+  }
+  
+  private void e(QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.executeOnFileThread(new PublicAccountSearchRecommendManager.2(this, paramQQAppInterface));
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.h = "";
+    this.jdField_d_of_type_Long = 0L;
+    this.jdField_e_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_b_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "resetManager!");
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if ((!this.jdField_a_of_type_Boolean) && (paramQQAppInterface != null))
+    {
+      b(paramQQAppInterface);
+      d(paramQQAppInterface);
+      this.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "initFromLocalData!");
+      }
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "updatePublicAccountSearchHistoryItem->uin:" + paramString1 + ", name:" + paramString2 + ", isPublicAccount:" + paramBoolean + ", time:" + l);
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
+    {
+      paramString1 = (nrx)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
+      this.jdField_b_of_type_JavaUtilArrayList.remove(paramString1);
+      this.jdField_b_of_type_JavaUtilArrayList.add(0, paramString1);
+      paramString1.jdField_a_of_type_Long = l;
+      paramString1.jdField_a_of_type_Boolean = paramBoolean;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "updatePublicAccountSearchHistoryItem update!");
+      }
+    }
+    for (;;)
+    {
+      e(paramQQAppInterface);
+      if (!QLog.isColorLevel()) {
         break;
       }
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a = this.jdField_a_of_type_Nrr.a;
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor(this.jdField_a_of_type_Nrr.f));
-    if ((CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView) != null) && (!bbkk.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView)))) {
-      CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView).setTextColor(Color.parseColor(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView)));
-    }
-    CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView, this.jdField_a_of_type_AndroidWidgetTextView);
-    CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView, this.jdField_a_of_type_Nrr.e);
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = vzl.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), 28.0F);
-    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = vzl.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), 28.0F);
-    paramView = URLDrawable.getDrawable(this.jdField_a_of_type_Nrr.d, (URLDrawable.URLDrawableOptions)localObject);
-    if (paramView != null) {
-      this.b.setImageDrawable(paramView);
-    }
-    if ((CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView) != null) && (!bbkk.a(CustomTabView.b(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView))))
-    {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = vzl.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), 28.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = vzl.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), 28.0F);
-      localObject = URLDrawable.getDrawable(CustomTabView.b(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), localURLDrawableOptions);
-      if (paramView != null) {
-        CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView).setImageDrawable((Drawable)localObject);
+      paramQQAppInterface = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+      while (paramQQAppInterface.hasNext())
+      {
+        paramString1 = (nrx)paramQQAppInterface.next();
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, paramString1.toString());
+      }
+      break;
+      paramString2 = new nrx(this, paramString1, paramString2, l, paramBoolean);
+      this.jdField_b_of_type_JavaUtilArrayList.add(0, paramString2);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "updatePublicAccountSearchHistoryItem insert!");
+      }
+      int i = this.jdField_b_of_type_JavaUtilArrayList.size();
+      if (i > 8)
+      {
+        paramString1 = (nrx)this.jdField_b_of_type_JavaUtilArrayList.get(i - 1);
+        this.jdField_b_of_type_JavaUtilArrayList.remove(paramString1);
+        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString1.jdField_a_of_type_JavaLangString);
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "updatePublicAccountSearchHistoryItem remove lastItem!");
+        }
       }
     }
-    CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView, this.b);
-    CustomTabView.b(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView, this.jdField_a_of_type_Nrr.c);
-    if (bbkk.a(this.jdField_a_of_type_Nrr.b))
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, nrw paramnrw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getRecommendList->isFromCreate:" + paramBoolean);
+    }
+    if (!paramBoolean)
     {
-      nrh.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), "3046055438", "QQ购物");
+      paramnrw.a(a(paramQQAppInterface), null, false);
       return;
     }
-    nrh.a(CustomTabView.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView), this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitViewCustomTabView.a, this.jdField_a_of_type_Nrr.b);
+    if (a(paramQQAppInterface))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getRecommendList->sendGetPublicAccountSearchRecommendRequest!");
+      }
+      b(paramQQAppInterface, paramnrw);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getRecommendList->getRecommendListFromLocal!");
+    }
+    a(paramQQAppInterface, paramnrw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nru
  * JD-Core Version:    0.7.0.1
  */

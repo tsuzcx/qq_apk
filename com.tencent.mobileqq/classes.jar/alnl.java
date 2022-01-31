@@ -1,26 +1,40 @@
-import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.util.FaceInfo;
 
-class alnl
-  implements alow
+public class alnl
+  implements alkr
 {
-  alnl(alnj paramalnj, long paramLong) {}
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo) {}
   
-  public void a(long paramLong)
+  public void b(boolean paramBoolean, FaceInfo paramFaceInfo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alnj.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    Object localObject = null;
+    if (paramInt == 0) {
+      if (paramObject == null)
+      {
+        paramObject = null;
+        a(paramBoolean, paramObject);
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    alng.a(this.jdField_a_of_type_Alnj.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
+    while (paramInt != 1) {
+      for (;;)
+      {
+        return;
+        paramObject = (FaceInfo)paramObject;
+      }
+    }
+    if (paramObject == null) {}
+    for (paramObject = localObject;; paramObject = (FaceInfo)paramObject)
+    {
+      b(paramBoolean, paramObject);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alnl
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.graphics.LinearGradient;
 import android.graphics.PointF;
 import android.graphics.Shader.TileMode;
 import android.text.TextUtils;
+import android.util.Pair;
 import com.tencent.viola.ui.dom.DomObject;
 import java.util.ArrayList;
 import java.util.List;
@@ -190,51 +191,87 @@ public class GradientParseUtils
     return make270To360PointF(paramInt, paramFloat1, paramFloat2);
   }
   
-  public static int[] parseColor(String[] paramArrayOfString, int paramInt)
+  public static Pair<int[], float[]> parseColorAndPosition(String[] paramArrayOfString, int paramInt)
   {
+    int j = 0;
     if ((paramArrayOfString == null) || (paramArrayOfString.length == 0)) {
       return null;
     }
-    ArrayList localArrayList = new ArrayList();
-    while (paramInt < paramArrayOfString.length)
+    ArrayList localArrayList2 = new ArrayList();
+    ArrayList localArrayList1 = new ArrayList();
+    Object localObject1;
+    if (paramInt < paramArrayOfString.length)
     {
-      String str2 = paramArrayOfString[paramInt].trim();
+      Object localObject2 = paramArrayOfString[paramInt].trim();
       int i;
-      String str1;
-      if (str2.contains("rgba"))
+      if (((String)localObject2).contains("rgba"))
       {
-        str2 = pickRgbOra(paramArrayOfString, paramInt, 4);
+        localObject1 = pickRgbOra(paramArrayOfString, paramInt, 4, localArrayList1);
         i = paramInt + 3;
-        str1 = str2;
-        if (str2 == null) {
-          return null;
-        }
       }
-      else
+      for (;;)
       {
-        str1 = str2;
-        i = paramInt;
-        if (str2.contains("rgb"))
+        localArrayList2.add(localObject1);
+        paramInt = i + 1;
+        break;
+        if (((String)localObject2).contains("rgb"))
         {
-          str2 = pickRgbOra(paramArrayOfString, paramInt, 3);
+          localObject1 = pickRgbOra(paramArrayOfString, paramInt, 3, localArrayList1);
           i = paramInt + 2;
-          str1 = str2;
-          if (str2 == null) {
-            return null;
+        }
+        else
+        {
+          localObject1 = localObject2;
+          i = paramInt;
+          if (((String)localObject2).contains("%"))
+          {
+            localObject2 = spiltColorAndLocation((String)localObject2);
+            localObject1 = localObject2[0];
+            localArrayList1.add(localObject2[1]);
+            i = paramInt;
           }
         }
       }
-      localArrayList.add(str1);
-      paramInt = i + 1;
     }
-    paramArrayOfString = new int[localArrayList.size()];
+    paramArrayOfString = new int[localArrayList2.size()];
     paramInt = 0;
     while (paramInt < paramArrayOfString.length)
     {
-      paramArrayOfString[paramInt] = ColorParseUtils.parseColor((String)localArrayList.get(paramInt));
+      paramArrayOfString[paramInt] = ColorParseUtils.parseColor((String)localArrayList2.get(paramInt));
       paramInt += 1;
     }
-    return paramArrayOfString;
+    if ((!localArrayList1.isEmpty()) && (localArrayList1.size() != localArrayList2.size()))
+    {
+      if ((localArrayList1.size() != 1) || ((!localArrayList1.contains("0")) && (!localArrayList1.contains("100")))) {
+        break label319;
+      }
+      localArrayList1.clear();
+    }
+    for (;;)
+    {
+      localObject1 = new float[localArrayList1.size()];
+      paramInt = j;
+      while (paramInt < localObject1.length)
+      {
+        localObject1[paramInt] = (Integer.parseInt((String)localArrayList1.get(paramInt)) / 100.0F);
+        paramInt += 1;
+      }
+      label319:
+      if ((localArrayList1.size() == 2) && (localArrayList1.contains("0")) && (localArrayList1.contains("100")))
+      {
+        localArrayList1.clear();
+      }
+      else
+      {
+        if (!localArrayList1.contains("0")) {
+          localArrayList1.add(0, "0");
+        }
+        if ((localArrayList1.size() != localArrayList2.size()) && (!localArrayList1.contains("100"))) {
+          localArrayList1.add(localArrayList1.size(), "100");
+        }
+      }
+    }
+    return new Pair(paramArrayOfString, localObject1);
   }
   
   private static PointF[] parseDegrees(String paramString, float paramFloat1, float paramFloat2)
@@ -314,6 +351,7 @@ public class GradientParseUtils
   
   public static LinearGradient parseLinearGradient(Object paramObject, DomObject paramDomObject)
   {
+    int j = 0;
     for (;;)
     {
       float f1;
@@ -327,41 +365,62 @@ public class GradientParseUtils
         if (!paramObject.contains("linear-gradient(")) {
           return null;
         }
-        String[] arrayOfString = paramObject.substring(paramObject.indexOf('(') + 1, paramObject.lastIndexOf(')')).split(",");
-        if (arrayOfString.length <= 1) {
+        localObject = paramObject.substring(paramObject.indexOf('(') + 1, paramObject.lastIndexOf(')')).split(",");
+        if (localObject.length <= 1) {
           return null;
         }
-        paramObject = arrayOfString[0];
+        paramObject = localObject[0];
         f1 = paramDomObject.getLayoutWidth();
         f2 = paramDomObject.getLayoutHeight();
-        if (paramObject.contains("to"))
-        {
-          paramObject = parseFromPosition(paramObject, f1, f2);
-          paramDomObject = parseColor(arrayOfString, 1);
-          if ((paramObject == null) || (paramDomObject == null) || (paramDomObject.length < 1)) {
-            break;
-          }
-          ViolaLogUtils.d("GradientParseUtils", "width: " + f1 + ", height: " + f2);
-          ViolaLogUtils.d("GradientParseUtils", "start: " + paramObject[0].toString() + ", end: " + paramObject[1].toString());
-          paramObject = new LinearGradient(paramObject[0].x, paramObject[0].y, paramObject[1].x, paramObject[1].y, paramDomObject, null, Shader.TileMode.CLAMP);
-          return paramObject;
+        if (!paramObject.contains("to")) {
+          break label198;
         }
+        paramObject = parseFromPosition(paramObject, f1, f2);
+        i = 0;
       }
       catch (Exception paramObject)
       {
+        Object localObject;
         ViolaLogUtils.e("GradientParseUtils", paramObject.getMessage());
         return null;
       }
-      if (paramObject.contains("deg")) {
-        paramObject = parseDegrees(paramObject, f1, f2);
-      } else {
-        paramObject = parseFromPosition("to bottom", f1, f2);
+      paramDomObject = parseColorAndPosition((String[])localObject, i);
+      localObject = (int[])paramDomObject.first;
+      paramDomObject = (float[])paramDomObject.second;
+      if ((paramObject != null) && (localObject != null) && (localObject.length >= 1))
+      {
+        if (paramDomObject.length == 0) {
+          break label242;
+        }
+        label146:
+        paramObject = new LinearGradient(paramObject[0].x, paramObject[0].y, paramObject[1].x, paramObject[1].y, (int[])localObject, paramDomObject, Shader.TileMode.CLAMP);
+        return paramObject;
+        label198:
+        if (paramObject.contains("deg"))
+        {
+          paramObject = parseDegrees(paramObject, f1, f2);
+          i = 0;
+        }
+        else
+        {
+          paramObject = parseFromPosition("to bottom", f1, f2);
+          i = 1;
+        }
       }
+      label242:
+      while (i == 0)
+      {
+        i = 1;
+        break;
+        return null;
+        paramDomObject = null;
+        break label146;
+      }
+      int i = j;
     }
-    return null;
   }
   
-  private static String pickRgbOra(String[] paramArrayOfString, int paramInt1, int paramInt2)
+  private static String pickRgbOra(String[] paramArrayOfString, int paramInt1, int paramInt2, List<String> paramList)
   {
     if ((paramArrayOfString == null) || (paramArrayOfString.length < paramInt1 + paramInt2)) {
       return null;
@@ -370,22 +429,54 @@ public class GradientParseUtils
     int i = paramInt1;
     if (i < paramInt1 + paramInt2)
     {
-      if (i != paramInt1) {
-        localStringBuilder.append(',').append(paramArrayOfString[i]);
+      Object localObject = paramArrayOfString[i].trim();
+      if (((String)localObject).contains("%"))
+      {
+        localObject = spiltColorAndLocation((String)localObject);
+        localStringBuilder.append(",").append(localObject[0]);
+        paramList.add(localObject[1]);
       }
       for (;;)
       {
         i += 1;
         break;
-        localStringBuilder.append(paramArrayOfString[i]);
+        if (i != paramInt1) {
+          localStringBuilder.append(',').append((String)localObject);
+        } else {
+          localStringBuilder.append((String)localObject);
+        }
       }
     }
     return localStringBuilder.toString();
   }
+  
+  private static String[] spiltColorAndLocation(String paramString)
+  {
+    String[] arrayOfString = new String[2];
+    paramString = paramString.trim().split(" ");
+    int j = paramString.length;
+    int i = 0;
+    if (i < j)
+    {
+      Object localObject = paramString[i];
+      if (TextUtils.isEmpty(localObject.trim())) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (localObject.contains("%")) {
+          arrayOfString[1] = localObject.substring(0, localObject.length() - 1);
+        } else {
+          arrayOfString[0] = localObject;
+        }
+      }
+    }
+    return arrayOfString;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.utils.GradientParseUtils
  * JD-Core Version:    0.7.0.1
  */

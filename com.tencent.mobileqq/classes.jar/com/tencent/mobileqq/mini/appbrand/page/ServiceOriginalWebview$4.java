@@ -10,12 +10,12 @@ class ServiceOriginalWebview$4
   
   public void onReceiveValue(Object paramObject)
   {
-    ServiceOriginalWebview.access$300(this.this$0).put(this.val$subPkgRoot, Boolean.valueOf(true));
+    ServiceOriginalWebview.access$400(this.this$0).put(this.val$subPkgRoot, Boolean.valueOf(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.ServiceOriginalWebview.4
  * JD-Core Version:    0.7.0.1
  */

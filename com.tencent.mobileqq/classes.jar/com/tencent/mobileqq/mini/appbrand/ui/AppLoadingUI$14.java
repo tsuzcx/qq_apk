@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import ajya;
+import alpo;
 import android.os.Handler;
 import android.os.Message;
-import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
@@ -25,11 +25,11 @@ class AppLoadingUI$14
           BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
           if (str != null)
           {
-            bcql.a(localBaseApplication, 1, str, 1).a();
+            QQToast.a(localBaseApplication, 1, str, 1).a();
             this.this$0.uiHandler.postDelayed(new AppLoadingUI.14.1(this), 1000L);
             return;
           }
-          str = ajya.a(2131700625);
+          str = alpo.a(2131700994);
           continue;
         }
         Object localObject = null;
@@ -44,7 +44,7 @@ class AppLoadingUI$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppLoadingUI.14
  * JD-Core Version:    0.7.0.1
  */

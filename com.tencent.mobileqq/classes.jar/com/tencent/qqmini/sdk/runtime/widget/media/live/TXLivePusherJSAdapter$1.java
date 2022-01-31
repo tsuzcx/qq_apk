@@ -1,0 +1,23 @@
+package com.tencent.qqmini.sdk.runtime.widget.media.live;
+
+import bhhf;
+import com.tencent.qqmini.sdk.log.QMLog;
+
+public class TXLivePusherJSAdapter$1
+  implements Runnable
+{
+  public void run()
+  {
+    bhhf.a(this.this$0, this.a);
+    if (QMLog.isColorLevel()) {
+      QMLog.d("TXLivePusherJSAdapter", "notifyOrientationChanged, angle:" + this.a + ", orientation:" + bhhf.a(this.this$0));
+    }
+    bhhf.a(this.this$0, this.a, bhhf.a(this.this$0));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.qqmini.sdk.runtime.widget.media.live.TXLivePusherJSAdapter.1
+ * JD-Core Version:    0.7.0.1
+ */

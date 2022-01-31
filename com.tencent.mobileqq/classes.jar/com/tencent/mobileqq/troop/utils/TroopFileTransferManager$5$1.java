@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.utils;
 
-import bajv;
-import bako;
+import bcii;
+import bcjb;
 
 public class TroopFileTransferManager$5$1
   implements Runnable
 {
-  public TroopFileTransferManager$5$1(bako parambako, TroopFileTransferManager.Item paramItem) {}
+  public TroopFileTransferManager$5$1(bcjb parambcjb, TroopFileTransferManager.Item paramItem) {}
   
   public void run()
   {
-    bajv localbajv = new bajv(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Bako.a.e, 3, 210);
-    this.jdField_a_of_type_Bako.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localbajv);
+    bcii localbcii = new bcii(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Bcjb.a.e, 3, 210);
+    this.jdField_a_of_type_Bcjb.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localbcii);
   }
 }
 

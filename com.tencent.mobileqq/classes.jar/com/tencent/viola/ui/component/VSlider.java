@@ -192,6 +192,20 @@ public class VSlider
   
   public void addSubView(View paramView, int paramInt) {}
   
+  public void bindData()
+  {
+    if (!isLazy())
+    {
+      updateStyle(this.mDomObj.getStyle(), false);
+      updateAttrs(this.mDomObj.getAttributes());
+      updateExtra(this.mDomObj.getExtra());
+      setBackgroundDrawable();
+      checkClipChild();
+      checkDisAppearEventFromDomobject();
+      updateLifeCycle("mounted");
+    }
+  }
+  
   public void destroy()
   {
     super.destroy();
@@ -319,7 +333,7 @@ public class VSlider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.component.VSlider
  * JD-Core Version:    0.7.0.1
  */

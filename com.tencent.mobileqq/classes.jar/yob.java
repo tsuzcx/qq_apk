@@ -1,61 +1,33 @@
-import android.content.Context;
-import android.provider.Settings.Secure;
-import android.telephony.TelephonyManager;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.util.Enumeration;
-import java.util.UUID;
 
-public class yob
-  extends bdfn
+class yob
+  implements ynu
 {
-  private static final String b = ;
+  yob(yny paramyny, long paramLong) {}
   
-  public static String a()
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    return b + File.separator + ".GameCenterWebBuffer" + File.separator + "Images/games";
-  }
-  
-  public static String a(Context paramContext)
-  {
-    Object localObject = (TelephonyManager)paramContext.getSystemService("phone");
-    String str = "" + ((TelephonyManager)localObject).getDeviceId();
-    localObject = "" + ((TelephonyManager)localObject).getSimSerialNumber();
-    long l1 = ("" + Settings.Secure.getString(paramContext.getContentResolver(), "android_id")).hashCode();
-    long l2 = str.hashCode();
-    return new UUID(l1, ((String)localObject).hashCode() | l2 << 32).toString();
-  }
-  
-  public static String b()
-  {
-    try
+    if (QLog.isColorLevel())
     {
-      InetAddress localInetAddress;
-      do
-      {
-        localObject = NetworkInterface.getNetworkInterfaces();
-        Enumeration localEnumeration;
-        while (!localEnumeration.hasMoreElements())
-        {
-          if (!((Enumeration)localObject).hasMoreElements()) {
-            break;
-          }
-          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
-        }
-        localInetAddress = (InetAddress)localEnumeration.nextElement();
-      } while (localInetAddress.isLoopbackAddress());
-      Object localObject = localInetAddress.getHostAddress().toString();
-      return localObject;
+      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
+      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    catch (SocketException localSocketException) {}
-    return null;
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
+    {
+      this.jdField_a_of_type_Yny.jdField_a_of_type_Ynw.e = paramString1;
+      this.jdField_a_of_type_Yny.jdField_a_of_type_Ynx.a.b(this.jdField_a_of_type_Yny.jdField_a_of_type_Ynx);
+      this.jdField_a_of_type_Yny.jdField_a_of_type_Ynx.b();
+      return;
+    }
+    this.jdField_a_of_type_Yny.jdField_a_of_type_Ynx.d = paramString2;
+    this.jdField_a_of_type_Yny.jdField_a_of_type_Ynx.a.a(this.jdField_a_of_type_Yny.jdField_a_of_type_Ynx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yob
  * JD-Core Version:    0.7.0.1
  */

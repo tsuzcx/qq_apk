@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.soso;
 
-import akuq;
+import amlg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public final class SosoInterface$SosoCell
   implements Parcelable, Comparable<SosoCell>
 {
-  public static final Parcelable.Creator<SosoCell> CREATOR = new akuq();
+  public static final Parcelable.Creator<SosoCell> CREATOR = new amlg();
   public int a;
   public boolean a;
   public int b;

@@ -1,46 +1,37 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class nrg
-  extends akat
+  extends BroadcastReceiver
 {
-  nrg(nrf paramnrf) {}
+  nrg(nrc paramnrc) {}
   
-  public void a(List<MessageRecord> paramList)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super.a(paramList);
-    HashSet localHashSet = new HashSet();
-    if (nqn.b != null) {
-      localHashSet.addAll(nqn.b);
-    }
-    nrf localnrf = (nrf)this.a.mApp.getBusinessHandler(88);
-    paramList = new ArrayList(paramList).iterator();
-    label164:
-    while (paramList.hasNext())
+    if (this.a.a == 2)
     {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-      if (("2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) || ((localMessageRecord.istroop == 1008) && (saz.e(this.a.app, localMessageRecord.senderuin)))) {}
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) && (!localHashSet.contains(localMessageRecord.senderuin))) {
-          break label164;
-        }
-        if (i != 0) {
-          localnrf.a(localMessageRecord);
-        }
-        localnrf.b(localMessageRecord);
-        break;
-      }
+      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
+      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
+      this.a.a(null, 0, 14, i, paramIntent);
+    }
+    try
+    {
+      paramContext.unregisterReceiver(this.a.b);
+      label50:
+      this.a.b = null;
+      this.a.a = 0;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label50;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nrg
  * JD-Core Version:    0.7.0.1
  */

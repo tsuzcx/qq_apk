@@ -1,20 +1,37 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast.ProtectedToast;
 
 public class bepx
-  implements AsyncResult
+  implements Handler.Callback
 {
-  public bepx(AppBrandLaunchManager paramAppBrandLaunchManager) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public bepx(QQToast.ProtectedToast paramProtectedToast, Handler paramHandler)
   {
-    betc.b("minisdk-start_AppBrandLaunchManager", "---startApp---- useUserApp isSuccess = " + paramBoolean);
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    try
+    {
+      this.jdField_a_of_type_AndroidOsHandler.handleMessage(paramMessage);
+      return true;
+    }
+    catch (Throwable paramMessage)
+    {
+      for (;;)
+      {
+        paramMessage.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bepx
  * JD-Core Version:    0.7.0.1
  */

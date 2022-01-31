@@ -15,14 +15,14 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bela;
-import benr;
-import bens;
-import bent;
-import benu;
-import besn;
-import beso;
-import bfgl;
+import bgkl;
+import bgns;
+import bgnt;
+import bgnu;
+import bgnv;
+import com.tencent.qqmini.sdk.launcher.model.TabBarInfo;
+import com.tencent.qqmini.sdk.launcher.model.TabBarInfo.ButtonInfo;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,14 +31,14 @@ public class TabBar
   extends LinearLayout
 {
   public static final int a;
-  private benu jdField_a_of_type_Benu;
-  private besn jdField_a_of_type_Besn;
-  public LinkedList<bent> a;
+  private bgnv jdField_a_of_type_Bgnv;
+  private TabBarInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo;
+  public LinkedList<bgnu> a;
   private boolean jdField_a_of_type_Boolean = true;
   
   static
   {
-    jdField_a_of_type_Int = bfgl.a("#7F000000");
+    jdField_a_of_type_Int = DisplayUtil.parseColor("#7F000000");
   }
   
   public TabBar(Context paramContext)
@@ -50,7 +50,7 @@ public class TabBar
   
   public static int a(Context paramContext)
   {
-    return bfgl.a(paramContext, 54.0F);
+    return DisplayUtil.dip2px(paramContext, 54.0F);
   }
   
   private void a()
@@ -59,7 +59,7 @@ public class TabBar
     setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
   }
   
-  private void a(List<beso> paramList)
+  private void a(List<TabBarInfo.ButtonInfo> paramList)
   {
     removeAllViews();
     this.jdField_a_of_type_JavaUtilLinkedList.clear();
@@ -68,7 +68,7 @@ public class TabBar
       int i = 0;
       while (i < paramList.size())
       {
-        View localView = a((beso)paramList.get(i), i);
+        View localView = a((TabBarInfo.ButtonInfo)paramList.get(i), i);
         if (localView != null)
         {
           LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -1);
@@ -84,7 +84,7 @@ public class TabBar
   {
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = this.jdField_a_of_type_Besn.jdField_a_of_type_JavaLangString;
+      str = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo.borderStyle;
     }
     return (str.equals("white")) || (str.equalsIgnoreCase("#FFFFFF")) || (str.equalsIgnoreCase("#FFFFFFFF"));
   }
@@ -93,87 +93,87 @@ public class TabBar
   {
     RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
     Object localObject1 = new View(getContext());
-    ((View)localObject1).setId(2131370294);
-    localRelativeLayout.addView((View)localObject1, new RelativeLayout.LayoutParams(-1, bfgl.a(getContext(), 0.5F)));
+    ((View)localObject1).setId(2131370591);
+    localRelativeLayout.addView((View)localObject1, new RelativeLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 0.5F)));
     localObject1 = new ImageView(getContext());
-    ((ImageView)localObject1).setId(2131367679);
-    Object localObject2 = new RelativeLayout.LayoutParams(bfgl.a(getContext(), 30.0F), bfgl.a(getContext(), 30.0F));
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131370294);
-    ((RelativeLayout.LayoutParams)localObject2).topMargin = bfgl.a(getContext(), 2.0F);
+    ((ImageView)localObject1).setId(2131367808);
+    Object localObject2 = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 30.0F), DisplayUtil.dip2px(getContext(), 30.0F));
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131370591);
+    ((RelativeLayout.LayoutParams)localObject2).topMargin = DisplayUtil.dip2px(getContext(), 2.0F);
     ((RelativeLayout.LayoutParams)localObject2).addRule(14, -1);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new TextView(getContext());
-    ((TextView)localObject1).setId(2131370289);
+    ((TextView)localObject1).setId(2131370586);
     ((TextView)localObject1).setTextColor(-1);
     ((TextView)localObject1).setTextSize(1, 10.0F);
-    ((TextView)localObject1).setPadding(bfgl.a(getContext(), 1.0F), 0, bfgl.a(getContext(), 1.0F), 0);
-    ((TextView)localObject1).setBackgroundResource(2130840823);
+    ((TextView)localObject1).setPadding(DisplayUtil.dip2px(getContext(), 1.0F), 0, DisplayUtil.dip2px(getContext(), 1.0F), 0);
+    ((TextView)localObject1).setBackgroundResource(2130840935);
     ((TextView)localObject1).setVisibility(4);
     ((TextView)localObject1).setGravity(17);
     ((TextView)localObject1).setSingleLine();
     ((TextView)localObject1).setMaxEms(3);
     ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
     localObject2 = new RelativeLayout.LayoutParams(-2, -2);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131367679);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(1, 2131367679);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131367808);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(1, 2131367808);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new View(getContext());
-    ((View)localObject1).setId(2131370293);
-    ((View)localObject1).setBackgroundResource(2130840824);
+    ((View)localObject1).setId(2131370590);
+    ((View)localObject1).setBackgroundResource(2130840936);
     ((View)localObject1).setVisibility(4);
-    localObject2 = new RelativeLayout.LayoutParams(bfgl.a(getContext(), 10.0F), bfgl.a(getContext(), 10.0F));
-    ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131367679);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(1, 2131367679);
+    localObject2 = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 10.0F), DisplayUtil.dip2px(getContext(), 10.0F));
+    ((RelativeLayout.LayoutParams)localObject2).addRule(6, 2131367808);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(1, 2131367808);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new TextView(getContext());
-    ((TextView)localObject1).setId(2131377032);
+    ((TextView)localObject1).setId(2131377552);
     ((TextView)localObject1).setTextSize(1, 12.0F);
     localObject2 = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject2).addRule(14, -1);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131367679);
-    ((RelativeLayout.LayoutParams)localObject2).bottomMargin = bfgl.a(getContext(), 5.0F);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131367808);
+    ((RelativeLayout.LayoutParams)localObject2).bottomMargin = DisplayUtil.dip2px(getContext(), 5.0F);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new View(getContext());
     localObject2 = new RelativeLayout.LayoutParams(-1, 0);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131377032);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131377552);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new View(getContext());
-    ((View)localObject1).setId(2131370291);
-    localObject2 = new RelativeLayout.LayoutParams(-1, bfgl.a(getContext(), 0.5F));
-    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131377032);
+    ((View)localObject1).setId(2131370588);
+    localObject2 = new RelativeLayout.LayoutParams(-1, DisplayUtil.dip2px(getContext(), 0.5F));
+    ((RelativeLayout.LayoutParams)localObject2).addRule(3, 2131377552);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject1 = new LinearLayout(getContext());
     ((LinearLayout)localObject1).setOrientation(0);
     localObject2 = new RelativeLayout.LayoutParams(-1, -2);
-    ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131370291);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(8, 2131370588);
     localRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     localObject2 = new View(getContext());
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, bfgl.a(getContext(), 2.0F));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, DisplayUtil.dip2px(getContext(), 2.0F));
     localLayoutParams.weight = 1.0F;
     ((LinearLayout)localObject1).addView((View)localObject2, localLayoutParams);
     localObject2 = new View(getContext());
-    ((View)localObject2).setId(2131370292);
+    ((View)localObject2).setId(2131370589);
     ((View)localObject2).setVisibility(8);
-    localLayoutParams = new LinearLayout.LayoutParams(0, bfgl.a(getContext(), 2.0F));
+    localLayoutParams = new LinearLayout.LayoutParams(0, DisplayUtil.dip2px(getContext(), 2.0F));
     localLayoutParams.weight = 3.0F;
     ((LinearLayout)localObject1).addView((View)localObject2, localLayoutParams);
     localObject2 = new View(getContext());
-    localLayoutParams = new LinearLayout.LayoutParams(0, bfgl.a(getContext(), 2.0F));
+    localLayoutParams = new LinearLayout.LayoutParams(0, DisplayUtil.dip2px(getContext(), 2.0F));
     localLayoutParams.weight = 1.0F;
     ((LinearLayout)localObject1).addView((View)localObject2, localLayoutParams);
     return localRelativeLayout;
   }
   
-  public View a(beso parambeso, int paramInt)
+  public View a(TabBarInfo.ButtonInfo paramButtonInfo, int paramInt)
   {
-    if ((parambeso == null) || (TextUtils.isEmpty(parambeso.jdField_b_of_type_JavaLangString))) {
+    if ((paramButtonInfo == null) || (TextUtils.isEmpty(paramButtonInfo.text))) {
       return null;
     }
     View localView = a();
-    bent localbent = bent.a(localView, parambeso, this.jdField_a_of_type_Besn);
-    localbent.a();
-    this.jdField_a_of_type_JavaUtilLinkedList.add(localbent);
-    localView.setOnClickListener(new benr(this, paramInt, parambeso));
+    bgnu localbgnu = bgnu.a(localView, paramButtonInfo, this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo);
+    localbgnu.a();
+    this.jdField_a_of_type_JavaUtilLinkedList.add(localbgnu);
+    localView.setOnClickListener(new bgns(this, paramInt, paramButtonInfo));
     return localView;
   }
   
@@ -181,9 +181,9 @@ public class TabBar
   {
     if ((paramInt != -1) && (paramInt < this.jdField_a_of_type_JavaUtilLinkedList.size()))
     {
-      bent localbent = (bent)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt);
-      localbent.e.setVisibility(0);
-      localbent.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+      bgnu localbgnu = (bgnu)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt);
+      localbgnu.e.setVisibility(0);
+      localbgnu.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
     }
   }
   
@@ -192,14 +192,14 @@ public class TabBar
     if (getVisibility() != 0)
     {
       this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_Besn != null) {
-        this.jdField_a_of_type_Besn.a(true);
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo != null) {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo.setShow(true);
       }
       setVisibility(0);
-      if ((!paramBoolean) || (this.jdField_a_of_type_Besn == null)) {
+      if ((!paramBoolean) || (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo == null)) {
         break label104;
       }
-      if (!"top".equals(this.jdField_a_of_type_Besn.jdField_b_of_type_JavaLangString)) {
+      if (!"top".equals(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo.position)) {
         break label96;
       }
     }
@@ -222,7 +222,7 @@ public class TabBar
   public void b(int paramInt)
   {
     if ((paramInt != -1) && (paramInt < this.jdField_a_of_type_JavaUtilLinkedList.size())) {
-      ((bent)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt)).e.setVisibility(4);
+      ((bgnu)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt)).e.setVisibility(4);
     }
   }
   
@@ -231,20 +231,20 @@ public class TabBar
     if (getVisibility() != 8)
     {
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Besn != null) {
-        this.jdField_a_of_type_Besn.a(false);
+      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo != null) {
+        this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo.setShow(false);
       }
-      if ((!paramBoolean) || (this.jdField_a_of_type_Besn == null)) {
+      if ((!paramBoolean) || (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo == null)) {
         break label107;
       }
-      if (!"top".equals(this.jdField_a_of_type_Besn.jdField_b_of_type_JavaLangString)) {
+      if (!"top".equals(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo.position)) {
         break label99;
       }
     }
     label99:
     for (int i = -getHeight();; i = getHeight())
     {
-      animate().translationY(i).setDuration(300L).setInterpolator(new AccelerateDecelerateInterpolator()).setListener(new bens(this));
+      animate().translationY(i).setDuration(300L).setInterpolator(new AccelerateDecelerateInterpolator()).setListener(new bgnt(this));
       return;
     }
     label107:
@@ -255,51 +255,51 @@ public class TabBar
   {
     if ((paramInt != -1) && (paramInt < this.jdField_a_of_type_JavaUtilLinkedList.size()))
     {
-      bent localbent = (bent)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt);
-      localbent.e.setVisibility(4);
-      localbent.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+      bgnu localbgnu = (bgnu)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt);
+      localbgnu.e.setVisibility(4);
+      localbgnu.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
     }
   }
   
   public void d(int paramInt)
   {
     if ((paramInt != -1) && (paramInt < this.jdField_a_of_type_JavaUtilLinkedList.size())) {
-      ((bent)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt)).jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+      ((bgnu)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt)).jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
     }
   }
   
-  public void setInfo(besn parambesn)
+  public void setInfo(TabBarInfo paramTabBarInfo)
   {
-    this.jdField_a_of_type_Besn = parambesn;
-    if (this.jdField_a_of_type_Besn != null)
+    this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo = paramTabBarInfo;
+    if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo != null)
     {
-      this.jdField_a_of_type_Besn = parambesn.a();
-      a(this.jdField_a_of_type_Besn.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo = paramTabBarInfo.clone();
+      a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo.list);
       if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0) {
-        ((bent)this.jdField_a_of_type_JavaUtilLinkedList.getFirst()).a(true);
+        ((bgnu)this.jdField_a_of_type_JavaUtilLinkedList.getFirst()).a(true);
       }
     }
   }
   
-  public void setItemSelected(bent parambent)
+  public void setItemSelected(bgnu parambgnu)
   {
-    if (parambent != null)
+    if (parambgnu != null)
     {
-      parambent.a(true);
+      parambgnu.a(true);
       Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
       while (localIterator.hasNext())
       {
-        bent localbent = (bent)localIterator.next();
-        if (localbent != parambent) {
-          localbent.a(false);
+        bgnu localbgnu = (bgnu)localIterator.next();
+        if (localbgnu != parambgnu) {
+          localbgnu.a(false);
         }
       }
     }
   }
   
-  public void setOnTabItemClickListener(benu parambenu)
+  public void setOnTabItemClickListener(bgnv parambgnv)
   {
-    this.jdField_a_of_type_Benu = parambenu;
+    this.jdField_a_of_type_Bgnv = parambgnv;
   }
   
   public void setTabBarBadge(int paramInt, String paramString)
@@ -311,7 +311,7 @@ public class TabBar
       if (paramString.length() > 3) {
         str = "...";
       }
-      paramString = (bent)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt);
+      paramString = (bgnu)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt);
       if (!TextUtils.isEmpty(str)) {
         break label78;
       }
@@ -331,43 +331,43 @@ public class TabBar
   {
     if ((paramInt != -1) && (paramInt < this.jdField_a_of_type_JavaUtilLinkedList.size()))
     {
-      bent localbent = (bent)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt);
+      bgnu localbgnu = (bgnu)this.jdField_a_of_type_JavaUtilLinkedList.get(paramInt);
       if (paramString != null) {
-        localbent.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+        localbgnu.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
       }
       if (paramBitmap1 != null) {
-        localbent.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(getContext().getResources(), paramBitmap1);
+        localbgnu.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(getContext().getResources(), paramBitmap1);
       }
       if (paramBitmap2 != null) {
-        localbent.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(getContext().getResources(), paramBitmap2);
+        localbgnu.jdField_b_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(getContext().getResources(), paramBitmap2);
       }
-      localbent.b();
+      localbgnu.b();
     }
   }
   
   public void setTabBarStyle(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    besn localbesn = this.jdField_a_of_type_Besn;
+    TabBarInfo localTabBarInfo = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo;
     int i;
     if (TextUtils.isEmpty(paramString1))
     {
-      i = this.jdField_a_of_type_Besn.jdField_a_of_type_Int;
-      localbesn.jdField_a_of_type_Int = i;
-      paramString1 = this.jdField_a_of_type_Besn;
+      i = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo.color;
+      localTabBarInfo.color = i;
+      paramString1 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo;
       if (!TextUtils.isEmpty(paramString2)) {
         break label146;
       }
-      i = this.jdField_a_of_type_Besn.jdField_b_of_type_Int;
+      i = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo.selectedColor;
       label50:
-      paramString1.jdField_b_of_type_Int = i;
-      paramString1 = this.jdField_a_of_type_Besn;
+      paramString1.selectedColor = i;
+      paramString1 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo;
       if (!TextUtils.isEmpty(paramString3)) {
         break label155;
       }
-      i = this.jdField_a_of_type_Besn.c;
+      i = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo.backgroundColor;
       label77:
-      paramString1.c = i;
-      paramString2 = this.jdField_a_of_type_Besn;
+      paramString1.backgroundColor = i;
+      paramString2 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo;
       if (!a(paramString4)) {
         break label164;
       }
@@ -377,16 +377,16 @@ public class TabBar
     label164:
     for (paramString1 = "white";; paramString1 = "black")
     {
-      paramString2.jdField_a_of_type_JavaLangString = paramString1;
+      paramString2.borderStyle = paramString1;
       paramString1 = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
       while (paramString1.hasNext()) {
-        ((bent)paramString1.next()).b();
+        ((bgnu)paramString1.next()).b();
       }
-      i = bfgl.a(paramString1);
+      i = DisplayUtil.parseColor(paramString1);
       break;
-      i = bfgl.a(paramString2);
+      i = DisplayUtil.parseColor(paramString2);
       break label50;
-      i = bfgl.a(paramString3);
+      i = DisplayUtil.parseColor(paramString3);
       break label77;
     }
   }
@@ -394,24 +394,24 @@ public class TabBar
   public void setTabSelected(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    bent localbent;
+    bgnu localbgnu;
     do
     {
       return;
       Iterator localIterator;
       while (!localIterator.hasNext())
       {
-        paramString = bela.a(paramString);
+        paramString = bgkl.a(paramString);
         localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
       }
-      localbent = (bent)localIterator.next();
-    } while (!localbent.jdField_a_of_type_Beso.jdField_a_of_type_JavaLangString.equals(paramString));
-    setItemSelected(localbent);
+      localbgnu = (bgnu)localIterator.next();
+    } while (!localbgnu.jdField_a_of_type_ComTencentQqminiSdkLauncherModelTabBarInfo$ButtonInfo.pagePath.equals(paramString));
+    setItemSelected(localbgnu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.widget.TabBar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,34 @@
+import android.app.Activity;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment.1.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.List;
 
-class akbr
-  implements asko
+public class akbr
+  implements amhw
 {
-  akbr(akbn paramakbn) {}
+  public akbr(SessionClearFragment paramSessionClearFragment) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SessionClearFragment", 2, "onLoadStart");
+      this.a.a();
     }
-    this.a.d();
   }
   
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
+  public void a(List<amhq> paramList)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
+      QLog.d("SessionClearFragment", 2, "onLoadFinish");
     }
-    this.a.d();
-  }
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
-    }
-    if ((paramInt & 0x1) != 0) {
-      synchronized (akbn.a(this.a))
-      {
-        Iterator localIterator = akbn.a(this.a).iterator();
-        if (localIterator.hasNext()) {
-          ((akbt)localIterator.next()).b();
-        }
-      }
-    }
+    SessionClearFragment.a(this.a).runOnUiThread(new SessionClearFragment.1.1(this, paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbr
  * JD-Core Version:    0.7.0.1
  */

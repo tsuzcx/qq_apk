@@ -1,77 +1,161 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.view.ApolloPanel.35.1;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionPackage;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class alii
+  implements alis
 {
-  protected static aysb a;
-  private aysa jdField_a_of_type_Aysa;
-  private ayxs jdField_a_of_type_Ayxs;
-  public QQAppInterface a;
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList<alio> jdField_a_of_type_JavaUtilArrayList;
-  private HashMap<String, alin> jdField_a_of_type_JavaUtilHashMap;
+  public alii(ApolloPanel paramApolloPanel) {}
   
-  static
+  public alja a(int paramInt)
   {
-    jdField_a_of_type_Aysb = new alim();
-  }
-  
-  public alii(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Aysa = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_Ayxs = ((ayxs)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(193));
-  }
-  
-  public boolean a(alio paramalio, alin paramalin)
-  {
-    if ((paramalio == null) || (paramalin == null)) {
-      return false;
+    switch (paramInt)
+    {
+    default: 
+      return new algk(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
     }
-    Object localObject1 = new alij(this, paramalio);
-    ??? = new alik(this);
-    ayrx localayrx = new ayrx();
-    localayrx.jdField_a_of_type_Aysc = ((aysc)???);
-    localayrx.jdField_a_of_type_JavaLangString = paramalio.jdField_a_of_type_JavaLangString;
-    localayrx.jdField_a_of_type_Int = 0;
-    localayrx.c = paramalio.c;
-    localayrx.e = 1;
-    localayrx.jdField_a_of_type_Aysb = jdField_a_of_type_Aysb;
-    paramalio.jdField_a_of_type_Ayrx = localayrx;
+    if (akji.c("gamePanelSwitch") != 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPanel", 2, "loadPanel gameSwitch is 0 return null");
+      }
+      return null;
+    }
+    return new algy(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+  }
+  
+  public void a()
+  {
+    ApolloPanel.a(this.a).post(new ApolloPanel.35.1(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    SharedPreferences.Editor localEditor = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0).edit();
+    if (paramInt < 0) {
+      localEditor.remove("sp_key_apollo_current_page_index_3d");
+    }
     for (;;)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      localEditor.apply();
+      return;
+      localEditor.putString("sp_key_apollo_current_page_index_3d", String.valueOf(paramInt));
+    }
+  }
+  
+  public void a(List<alja> paramList, List<ApolloActionPackage> paramList1, boolean paramBoolean)
+  {
+    int i = 0;
+    int m = 0;
+    while (i < paramList.size())
+    {
+      m += ((alja)paramList.get(i)).a();
+      i += 1;
+    }
+    i = -1;
+    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("apollo_sp" + this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 0);
+    if (((SharedPreferences)localObject).contains("sp_key_apollo_current_page_index_3d"))
+    {
+      localObject = ((SharedPreferences)localObject).getString("sp_key_apollo_current_page_index_3d", null);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    }
+    for (;;)
+    {
+      try
       {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramalio);
-        switch (bbfj.a(BaseApplication.getContext()))
-        {
-        default: 
-          i = 1;
-          localObject1 = new alil(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramalio.b, (ayxr)localObject1, localayrx, paramalio, paramalin);
-          this.jdField_a_of_type_Ayxs.a(10065, "prd", paramalio.b, 0, paramalio.jdField_a_of_type_JavaLangString, localayrx.c, i, 0, false, (ayxp)localObject1);
-          this.jdField_a_of_type_JavaUtilHashMap.put(paramalio.b, paramalin);
-          QLog.i("AREngine_ARPreSoResourceDownload", 1, "submitDownloadTask. url = " + paramalio.jdField_a_of_type_JavaLangString);
-          return true;
+        j = Integer.parseInt((String)localObject);
+        if (j >= m) {
+          continue;
         }
       }
-      int i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 4;
+      catch (Exception localException1)
+      {
+        int k;
+        int n;
+        j = -1;
+        i = 0;
+        QLog.e("ApolloPanel", 1, "parse previousSavedPagerIndexStr error", localException1);
+        continue;
+        k += 1;
+        continue;
+        j = 0;
+        continue;
+      }
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] from previous saved for 3d, pagerIndex=", Integer.valueOf(j) });
+        }
+        i = j;
+        j = 1;
+        k = j;
+        j = i;
+        i = k;
+        if (i != 0) {
+          continue;
+        }
+        n = paramList1.size();
+        k = 0;
+        if (k >= n) {
+          continue;
+        }
+        localObject = (ApolloActionPackage)paramList1.get(k);
+        if ((localObject == null) || (((ApolloActionPackage)localObject).packageId != 300)) {
+          continue;
+        }
+      }
+      catch (Exception localException2)
+      {
+        i = 1;
+        continue;
+        k = i;
+        i = j;
+        j = k;
+        continue;
+        k = 0;
+        continue;
+      }
+      if (k < paramList.size())
+      {
+        i = ApolloPanel.a(this.a, paramList, k);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] default single action, pagerIndex=", Integer.valueOf(i) });
+        }
+        j = 1;
+        if (j == 0) {
+          i = 1;
+        }
+        if (i < m)
+        {
+          ApolloPanel.jdField_a_of_type_Int = i;
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloPanel", 2, new Object[] { "[setCurrentIndex] sCurrentIndex= ", Integer.valueOf(ApolloPanel.jdField_a_of_type_Int) });
+          }
+        }
+        return;
+      }
+      i = 0;
+      int j = -1;
     }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return (paramInt >= 100) && (paramInt != 400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alii
  * JD-Core Version:    0.7.0.1
  */

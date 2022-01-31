@@ -1,46 +1,48 @@
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
+import android.net.Uri;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.qphone.base.util.QLog;
 
 class aluq
-  implements View.OnClickListener
+  extends ClickableSpan
 {
-  aluq(aluo paramaluo) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  String jdField_a_of_type_JavaLangString;
+  String b;
+  
+  public aluq(Context paramContext, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.b = paramString1;
+  }
   
   public void onClick(View paramView)
   {
-    aluo.a(this.a).put(aluo.a(this.a).a, Integer.valueOf(1));
-    paramView = aluo.a(this.a).a();
-    if (!bbfr.a(paramView, aluo.a(this.a).c))
+    try
     {
-      if (!TextUtils.isEmpty(aluo.a(this.a).g))
-      {
-        Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-        localIntent.putExtra("url", aluo.a(this.a).g);
-        localIntent.putExtra("fromArkAppDownload", true);
-        paramView.startActivity(localIntent);
-      }
-      aaep.a(aluo.a(this.a), -4, "need to download");
-    }
-    for (;;)
-    {
-      aluo.a(this.a).a();
-      aluo.a(this.a).dismiss();
-      aluo.a(this.a, null);
+      paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
       return;
-      aluo.a(this.a, aluo.a(this.a).a, aluo.a(this.a).b, aluo.a(this.a).c, aluo.a(this.a).d, aluo.a(this.a).e, aluo.a(this.a).f);
-      aaep.a(aluo.a(this.a), aabk.a);
     }
+    catch (Exception paramView)
+    {
+      QLog.d("PrivacyPolicyHelper", 1, "no system browser exp=", paramView);
+    }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aluq
  * JD-Core Version:    0.7.0.1
  */

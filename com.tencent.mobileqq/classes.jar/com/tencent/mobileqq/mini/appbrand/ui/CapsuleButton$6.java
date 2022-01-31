@@ -1,28 +1,22 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.cache.MiniCacheFreeManager;
+import com.tencent.mobileqq.mini.mainpage.MainPageFragment;
 
 class CapsuleButton$6
-  implements EIPCResultCallback
+  implements CapsuleButton.onActivityFinishListener
 {
-  CapsuleButton$6(CapsuleButton paramCapsuleButton, MiniAppInfo paramMiniAppInfo) {}
+  CapsuleButton$6(CapsuleButton paramCapsuleButton, MiniAppConfig paramMiniAppConfig) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onActivityFinish()
   {
-    if ((paramEIPCResult != null) && (paramEIPCResult.code == -100))
-    {
-      AppBrandTask.runTaskOnUiThread(new CapsuleButton.6.1(this));
-      return;
-    }
-    CapsuleButton.access$700(this.this$0, this.val$miniAppInfo);
+    MiniCacheFreeManager.freeCache(MainPageFragment.getUin(), CapsuleButton.access$700(this.this$0), true, new CapsuleButton.6.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.CapsuleButton.6
  * JD-Core Version:    0.7.0.1
  */

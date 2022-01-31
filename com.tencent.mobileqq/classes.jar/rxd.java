@@ -1,16 +1,21 @@
-import android.view.View.OnClickListener;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
 
-public abstract interface rxd
+public class rxd
+  implements View.OnLongClickListener
 {
-  public abstract void a(String paramString, View.OnClickListener paramOnClickListener);
+  public rxd(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(String paramString, View.OnClickListener paramOnClickListener);
+  public boolean onLongClick(View paramView)
+  {
+    ReadinjoyTabFrame.b(this.a);
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rxd
  * JD-Core Version:    0.7.0.1
  */

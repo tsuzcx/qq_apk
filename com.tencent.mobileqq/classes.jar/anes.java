@@ -1,20 +1,43 @@
-import android.net.Uri;
-import android.net.Uri.Builder;
-import android.provider.ContactsContract.RawContacts;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.10;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.wadl.ipc.WadlParams;
 
-class anes
+public class anes
+  implements DialogInterface.OnClickListener
 {
-  public static final String[] a = { "_id", "sourceid", "contact_id" };
-  public static final String[] b = { "sync1", "sync2", "sync3" };
+  public anes(ArkAppDownloadModule.10 param10) {}
   
-  public static final Uri a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return ContactsContract.RawContacts.CONTENT_URI.buildUpon().appendQueryParameter("account_name", paramString).appendQueryParameter("account_type", "com.tencent.mobileqq.account").appendQueryParameter("caller_is_syncadapter", anem.b()).build();
+    boolean bool = false;
+    bkel.a().a(this.a.jdField_a_of_type_CooperationWadlIpcWadlParams);
+    aneq.a(this.a.this$0, true);
+    azmj.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "7", "", this.a.jdField_a_of_type_CooperationWadlIpcWadlParams.a, "");
+    if ((paramDialogInterface instanceof bdfq))
+    {
+      if (!((bdfq)paramDialogInterface).getCheckBoxState()) {
+        bool = true;
+      }
+      if (this.a.jdField_a_of_type_AndroidContentSharedPreferences == null) {}
+    }
+    try
+    {
+      this.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.a.b, bool).apply();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      QLog.e("ark.download.module", 1, "start download sp error : ", paramDialogInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anes
  * JD-Core Version:    0.7.0.1
  */

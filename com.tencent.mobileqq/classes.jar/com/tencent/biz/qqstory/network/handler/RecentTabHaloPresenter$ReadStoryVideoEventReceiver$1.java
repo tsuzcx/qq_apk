@@ -1,22 +1,22 @@
 package com.tencent.biz.qqstory.network.handler;
 
-import tdr;
-import tkp;
-import tks;
+import usj;
+import uzh;
+import uzk;
 
 public class RecentTabHaloPresenter$ReadStoryVideoEventReceiver$1
   implements Runnable
 {
-  public RecentTabHaloPresenter$ReadStoryVideoEventReceiver$1(tks paramtks, tkp paramtkp, tdr paramtdr) {}
+  public RecentTabHaloPresenter$ReadStoryVideoEventReceiver$1(uzk paramuzk, uzh paramuzh, usj paramusj) {}
   
   public void run()
   {
-    tks.a(this.this$0, this.jdField_a_of_type_Tkp, this.jdField_a_of_type_Tdr);
+    uzk.a(this.this$0, this.jdField_a_of_type_Uzh, this.jdField_a_of_type_Usj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver.1
  * JD-Core Version:    0.7.0.1
  */

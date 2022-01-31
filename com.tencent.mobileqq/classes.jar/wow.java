@@ -1,21 +1,20 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class wow
+class wow
+  implements DialogInterface.OnClickListener
 {
-  public static TextView a(Context paramContext, float paramFloat, String paramString1, String paramString2)
+  wow(wou paramwou) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = new TextView(paramContext);
-    paramContext.setTextSize(1, paramFloat);
-    paramContext.setTextColor(Color.parseColor(paramString1));
-    paramContext.setText(paramString2);
-    return paramContext;
+    wta.a("home_page", "guide_known", 0, 0, new String[0]);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wow
  * JD-Core Version:    0.7.0.1
  */

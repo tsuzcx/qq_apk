@@ -1,10 +1,14 @@
-public abstract class agyt
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+public final class agyt
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agyt
  * JD-Core Version:    0.7.0.1
  */

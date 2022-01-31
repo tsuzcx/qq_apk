@@ -1,31 +1,85 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
-public class aijl
-  implements Animation.AnimationListener
+public final class aijl
+  implements Parcelable.Creator<LocalMediaInfo>
 {
-  public aijl(SpecailCareListActivity paramSpecailCareListActivity, aijx paramaijx) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public LocalMediaInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Aijx.a.clearAnimation();
-    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
-    paramAnimation.addRule(1, 2131367679);
-    paramAnimation.setMargins(0, (int)(36.0F * SpecailCareListActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), (int)(30.0F * SpecailCareListActivity.j(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), 0);
-    this.jdField_a_of_type_Aijx.a.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_Aijx.a.setVisibility(0);
+    boolean bool2 = true;
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo._id = paramParcel.readLong();
+    localLocalMediaInfo.path = paramParcel.readString();
+    localLocalMediaInfo.fileSize = paramParcel.readLong();
+    localLocalMediaInfo.addedDate = paramParcel.readLong();
+    localLocalMediaInfo.modifiedDate = paramParcel.readLong();
+    localLocalMediaInfo.orientation = paramParcel.readInt();
+    localLocalMediaInfo.rotation = paramParcel.readInt();
+    localLocalMediaInfo.mDuration = paramParcel.readLong();
+    if (paramParcel.readByte() == 1)
+    {
+      bool1 = true;
+      localLocalMediaInfo.mChecked = bool1;
+      localLocalMediaInfo.selectStatus = paramParcel.readInt();
+      localLocalMediaInfo.thumbWidth = paramParcel.readInt();
+      localLocalMediaInfo.thumbHeight = paramParcel.readInt();
+      localLocalMediaInfo.thumbnailPath = paramParcel.readString();
+      localLocalMediaInfo.index = paramParcel.readInt();
+      localLocalMediaInfo.position = Integer.valueOf(paramParcel.readInt());
+      localLocalMediaInfo.mMimeType = paramParcel.readString();
+      localLocalMediaInfo.mMediaType = paramParcel.readInt();
+      localLocalMediaInfo.mediaWidth = paramParcel.readInt();
+      localLocalMediaInfo.mediaHeight = paramParcel.readInt();
+      if (paramParcel.readByte() != 1) {
+        break label339;
+      }
+      bool1 = true;
+      label202:
+      localLocalMediaInfo.isSystemMeidaStore = bool1;
+      if (paramParcel.readByte() != 1) {
+        break label344;
+      }
+      bool1 = true;
+      label218:
+      localLocalMediaInfo.isRegionThumbUseNewDecoder = bool1;
+      localLocalMediaInfo.longitude = paramParcel.readInt();
+      localLocalMediaInfo.latitude = paramParcel.readInt();
+      localLocalMediaInfo.panoramaPhotoType = paramParcel.readInt();
+      localLocalMediaInfo.mCloudPhotoOwnerUin = paramParcel.readLong();
+      localLocalMediaInfo.mCloudPhotoOwnerAlbumId = paramParcel.readString();
+      localLocalMediaInfo.mCloudPhotoId = paramParcel.readString();
+      if (paramParcel.readByte() != 1) {
+        break label349;
+      }
+    }
+    label339:
+    label344:
+    label349:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localLocalMediaInfo.isVideoReady = bool1;
+      localLocalMediaInfo.missionID = paramParcel.readString();
+      localLocalMediaInfo.mTransferPosList = paramParcel.readArrayList(Long.class.getClassLoader());
+      localLocalMediaInfo.aiTextLabel = paramParcel.readArrayList(String.class.getClassLoader());
+      return localLocalMediaInfo;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label202;
+      bool1 = false;
+      break label218;
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public LocalMediaInfo[] a(int paramInt)
+  {
+    return new LocalMediaInfo[0];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijl
  * JD-Core Version:    0.7.0.1
  */

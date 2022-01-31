@@ -1,50 +1,58 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment.1.1;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class nqk
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public nqk(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  public nqk(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    paramContext = paramIntent.getAction();
-    if ("action_decode_finish".equals(paramContext))
+    switch (paramView.getId())
     {
-      paramContext = paramIntent.getStringExtra("uin");
-      paramIntent = (Bitmap)paramIntent.getParcelableExtra("bitmap");
-      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramContext)) && (paramIntent != null)) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramIntent);
-      }
-    }
-    do
-    {
-      do
+    default: 
+      onClick(paramView);
+      return;
+    case 2131368644: 
+      if (!this.a.jdField_a_of_type_Beey.a.a)
       {
+        paramView = this.a.jdField_a_of_type_Bebk.c.getText().toString();
+        this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onRightBtn(\"" + paramView + "\")");
         return;
-      } while ((!"action_follow_status_finish".equals(paramContext)) || (!String.valueOf(paramIntent.getStringExtra("uin")).equals(this.a.jdField_a_of_type_JavaLangString)));
-      this.a.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isFollow", false);
-    } while (this.a.jdField_a_of_type_AndroidWidgetTextView == null);
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131701257));
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
+      }
+      if (PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a) == 1001)
+      {
+        ThreadManager.executeOnSubThread(new PublicAccountBrowser.PublicAccountBrowserFragment.1.1(this));
+        this.a.getActivity().finish();
+        return;
+      }
+      onClick(paramView);
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajya.a(2131701269));
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130846186);
+    if (!this.a.jdField_a_of_type_Beey.a.a)
+    {
+      paramView = this.a.jdField_a_of_type_Bebk.a.getText().toString();
+      if (paramView.equals(PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText")))
+      {
+        this.a.f();
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onLeftBtn(\"" + paramView + "\")");
+      return;
+    }
+    onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nqk
  * JD-Core Version:    0.7.0.1
  */

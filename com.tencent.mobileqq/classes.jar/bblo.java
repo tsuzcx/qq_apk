@@ -1,35 +1,31 @@
-import android.content.Context;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.widget.SingleLineTextView;
+import android.util.SparseArray;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.2;
+import java.util.Iterator;
+import java.util.List;
 
-public final class bblo
-  implements URLDrawable.URLDrawableListener
+public class bblo
+  extends alzj
 {
-  public bblo(boolean paramBoolean, SingleLineTextView paramSingleLineTextView, Context paramContext) {}
+  public bblo(TroopAioKeywordTipManager.2 param2) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  protected void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (paramURLDrawable.getCurrDrawable() != null) {
-        paramURLDrawable.getCurrDrawable().setColorFilter(1996488704, PorterDuff.Mode.SRC_ATOP);
-      }
-    }
-    for (;;)
+    SparseArray localSparseArray;
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, VipUtils.a(actj.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), paramURLDrawable));
-      return;
-      if (paramURLDrawable.getCurrDrawable() != null) {
-        paramURLDrawable.getCurrDrawable().setColorFilter(null);
+      localSparseArray = this.a.this$0.b;
+      if (paramList != null) {
+        try
+        {
+          paramList = paramList.iterator();
+          while (paramList.hasNext())
+          {
+            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = (TroopAioKeywordTipInfo)paramList.next();
+            this.a.this$0.b.put(localTroopAioKeywordTipInfo.ruleId, localTroopAioKeywordTipInfo);
+          }
+        }
+        finally {}
       }
     }
   }

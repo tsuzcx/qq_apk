@@ -1,16 +1,22 @@
-import android.os.Handler;
-import com.tencent.qqmini.sdk.report.MiniProgramLpReportDC04884.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.open.agent.BindGroupFragment;
 
 public class beyz
+  implements View.OnClickListener
 {
-  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  public beyz(BindGroupFragment paramBindGroupFragment) {}
+  
+  public void onClick(View paramView)
   {
-    bezf.a().a().post(new MiniProgramLpReportDC04884.1(paramString2, paramString1, paramString3));
+    BindGroupFragment.a(this.a, alpo.a(2131701493));
+    ((alzf)BindGroupFragment.a(this.a).a(20)).a(Integer.valueOf(BindGroupFragment.a(this.a)).intValue(), Integer.valueOf(BindGroupFragment.b(this.a)).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.process.download.CmGameSubRscHandler.2;
 
-public final class akut
-  implements Parcelable.Creator<SosoInterface.SosoWifi>
+public class akut
+  implements DialogInterface.OnClickListener
 {
-  public SosoInterface.SosoWifi a(Parcel paramParcel)
-  {
-    return new SosoInterface.SosoWifi(paramParcel);
-  }
+  public akut(CmGameSubRscHandler.2 param2) {}
   
-  public SosoInterface.SosoWifi[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new SosoInterface.SosoWifi[paramInt];
+    if (this.a.a != null) {
+      this.a.a.b(null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akut
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class OfficialRecommendEntry
-  extends auko
+  extends awbv
 {
   public int bigvColor;
   public String bigvCover;
@@ -19,7 +19,7 @@ public class OfficialRecommendEntry
   public String bigvUserSymbolUrl;
   public String bigvUserUnionId;
   public boolean isMarkRead;
-  @aumc
+  @awdj
   public int itemId;
   public int linkColor;
   public String linkCover;
@@ -38,7 +38,7 @@ public class OfficialRecommendEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.OfficialRecommendEntry
  * JD-Core Version:    0.7.0.1
  */

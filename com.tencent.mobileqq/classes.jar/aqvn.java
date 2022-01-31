@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
-
-public class aqvn
+class aqvn
+  extends aqus
 {
-  JefsClass.CancelableRunnable a;
-  
-  public aqvn(JefsClass.CancelableRunnable paramCancelableRunnable)
+  public aqvn(aqug paramaqug)
   {
-    this.a = paramCancelableRunnable;
+    super(paramaqug);
   }
   
-  public void a()
+  protected String a()
   {
-    this.a.a = true;
+    return "StateUploadoneWhenChangeToOff";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqvn
  * JD-Core Version:    0.7.0.1
  */

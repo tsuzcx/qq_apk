@@ -1,54 +1,44 @@
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.qwallet.plugin.QWalletHelper;
-import mqq.app.AppRuntime;
+import android.os.RemoteException;
+import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class bgub
-  extends RemoteCommand
+class bgub
+  implements bgrh
 {
-  public bgub()
-  {
-    super("qqreader_plugin_asyn_cmd");
-  }
+  bgub(bgtx parambgtx, MiniAppInfo paramMiniAppInfo) {}
   
-  private QQAppInterface a()
+  public void onInitApkgInfo(int paramInt, bgjw parambgjw, String paramString)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
-  {
-    switch (paramBundle.getInt("CommondType"))
+    QMLog.d("ApkgMainProcessManager", "onInitApkgInfo load apkg in main process end " + parambgjw);
+    parambgjw = (List)bgtx.a(this.jdField_a_of_type_Bgtx).remove(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.appId);
+    if (parambgjw != null)
     {
-    }
-    for (;;)
-    {
-      return null;
-      if (a() != null)
+      parambgjw = parambgjw.iterator();
+      while (parambgjw.hasNext())
       {
-        paramBundle = paramBundle.getString("publicaccount_uin");
-        sgg.a(a(), a().getApp(), paramBundle, new bguc(this, paramOnInvokeFinishLinstener));
-        continue;
-        QWalletHelper.preloadQWallet(a());
+        paramString = (MiniCmdCallback)parambgjw.next();
+        if (paramString != null) {
+          try
+          {
+            paramString.onCmdResult(true, new Bundle());
+          }
+          catch (RemoteException paramString)
+          {
+            paramString.printStackTrace();
+          }
+        }
       }
     }
-  }
-  
-  public boolean isSynchronized()
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgub
  * JD-Core Version:    0.7.0.1
  */

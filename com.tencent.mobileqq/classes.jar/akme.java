@@ -1,52 +1,17 @@
-import com.tencent.mobileqq.app.automator.step.GetTroopAssisMsg;
-import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class akme
-  extends akat
+public abstract interface akme
 {
-  private akme(GetTroopAssisMsg paramGetTroopAssisMsg) {}
+  public abstract EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig);
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "onGetAllProxyMsgFin:" + paramBoolean + ", timeoutFlag=" + paramLong1 + ", type=" + paramLong2);
-    }
-    if (paramLong2 == 1L) {
-      if ((!paramBoolean) || (paramLong1 == 8L) || (paramLong1 == 4L)) {
-        break label95;
-      }
-    }
-    label95:
-    for (int i = 1; i == 0; i = 0)
-    {
-      this.a.a(6);
-      return;
-    }
-    this.a.a(7);
-  }
-  
-  protected void a(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "on GetTroopMsg Fin:" + paramBoolean);
-    }
-    bfnl.a().h();
-    this.a.a(7);
-  }
-  
-  protected void g(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "on RegisterProxy Fin:" + paramBoolean);
-    }
-    if (!paramBoolean) {
-      this.a.a(6);
-    }
-  }
+  public abstract void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akme
  * JD-Core Version:    0.7.0.1
  */

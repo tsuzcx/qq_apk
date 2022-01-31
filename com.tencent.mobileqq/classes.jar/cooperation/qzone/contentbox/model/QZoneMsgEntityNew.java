@@ -2,9 +2,9 @@ package cooperation.qzone.contentbox.model;
 
 import NS_QZONE_MQMSG.QzoneMessageBoxRsp;
 import android.text.TextUtils;
-import auko;
-import aulz;
-import bhdm;
+import awbv;
+import awdg;
+import bjew;
 import cooperation.qzone.util.QZLog;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,15 +13,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class QZoneMsgEntityNew
-  extends auko
+  extends awbv
   implements Serializable
 {
   public static final String TAG;
-  @aulz
+  @awdg
   public ArrayList<MQMsg> ArkNes_vec;
   public String bottomItemBuffer;
-  @aulz
-  public ArrayList<bhdm> bottomItems;
+  @awdg
+  public ArrayList<bjew> bottomItems;
   public boolean hasmore = true;
   public String more_url = "";
   public String msgBuffer = "";
@@ -50,7 +50,7 @@ public class QZoneMsgEntityNew
     localQZoneMsgEntityNew.visitor_count = paramQzoneMessageBoxRsp.visitor_count;
     localQZoneMsgEntityNew.more_url = paramQzoneMessageBoxRsp.more_url;
     localQZoneMsgEntityNew.writeArkNewsToBuffer();
-    localQZoneMsgEntityNew.bottomItems = bhdm.a(paramQzoneMessageBoxRsp.bottomVec);
+    localQZoneMsgEntityNew.bottomItems = bjew.a(paramQzoneMessageBoxRsp.bottomVec);
     localQZoneMsgEntityNew.writeBottomItemToBuffer();
     if ((localQZoneMsgEntityNew.ArkNes_vec != null) && (localQZoneMsgEntityNew.ArkNes_vec.size() > 0) && (((MQMsg)localQZoneMsgEntityNew.ArkNes_vec.get(0)).pushTime > 0L)) {
       localQZoneMsgEntityNew.pushTime = ((MQMsg)localQZoneMsgEntityNew.ArkNes_vec.get(0)).pushTime;
@@ -125,9 +125,9 @@ public class QZoneMsgEntityNew
           int i = 0;
           while (i < localJSONArray.length())
           {
-            bhdm localbhdm = bhdm.a(localJSONArray.getJSONObject(i));
-            if (localbhdm != null) {
-              this.bottomItems.add(localbhdm);
+            bjew localbjew = bjew.a(localJSONArray.getJSONObject(i));
+            if (localbjew != null) {
+              this.bottomItems.add(localbjew);
             }
             i += 1;
           }
@@ -168,9 +168,9 @@ public class QZoneMsgEntityNew
     Iterator localIterator = this.bottomItems.iterator();
     while (localIterator.hasNext())
     {
-      bhdm localbhdm = (bhdm)localIterator.next();
-      if (localbhdm != null) {
-        localJSONArray.put(localbhdm.a());
+      bjew localbjew = (bjew)localIterator.next();
+      if (localbjew != null) {
+        localJSONArray.put(localbjew.a());
       }
     }
     this.bottomItemBuffer = localJSONArray.toString();
@@ -178,7 +178,7 @@ public class QZoneMsgEntityNew
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.QZoneMsgEntityNew
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.game.WebGameFakeView;
 
-final class akpz
-  implements Comparator<MessageRecord>
+public class akpz
+  implements View.OnClickListener
 {
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public akpz(WebGameFakeView paramWebGameFakeView, ImageView paramImageView) {}
+  
+  public void onClick(View paramView)
   {
-    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
+    akpc.a().a(null);
+    if (akpc.a().a() <= 1) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akpz
  * JD-Core Version:    0.7.0.1
  */

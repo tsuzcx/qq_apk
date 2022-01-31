@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import ajsd;
+import aljq;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import ayaq;
-import bbcz;
+import azyl;
+import bdbt;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,6 +15,8 @@ import com.tencent.qphone.base.util.QLog;
 public class RecentItemSubAccount
   extends RecentUserBaseData
 {
+  public String showSubUin;
+  
   public RecentItemSubAccount(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
@@ -30,12 +32,12 @@ public class RecentItemSubAccount
       return;
       super.a(paramQQAppInterface, paramContext);
       MsgSummary localMsgSummary = a();
-      if (!ajsd.x.equals(this.mUser.uin)) {
+      if (!aljq.x.equals(this.mUser.uin)) {
         break;
       }
-      this.mTitleName = paramContext.getString(2131719823);
+      this.mTitleName = paramContext.getString(2131720354);
       this.mUnreadNum = 0;
-      ayaq.a(paramQQAppInterface, paramContext, this, localMsgSummary);
+      azyl.a(paramQQAppInterface, paramContext, this, localMsgSummary);
       if (!TextUtils.isEmpty(localMsgSummary.strContent)) {
         localMsgSummary.mEmojiFlag = 1;
       }
@@ -45,12 +47,12 @@ public class RecentItemSubAccount
       if (TextUtils.isEmpty(this.mMsgExtroInfo)) {
         break label377;
       }
-      this.mExtraInfoColor = paramContext.getResources().getColor(2131166955);
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131167006);
       this.mShowTime = "";
       this.mDisplayTime = a();
       a(paramQQAppInterface);
       a(paramQQAppInterface, paramContext, localMsgSummary);
-    } while (!AppSetting.d);
+    } while (!AppSetting.c);
     paramQQAppInterface = new StringBuilder();
     paramQQAppInterface.append(this.mTitleName).append(",");
     if (this.mUnreadNum == 0) {}
@@ -62,11 +64,11 @@ public class RecentItemSubAccount
       paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
       this.mContentDesc = paramQQAppInterface.toString();
       return;
-      this.mTitleName = bbcz.c(paramQQAppInterface, this.mUser.uin, true);
+      this.mTitleName = bdbt.c(paramQQAppInterface, this.mUser.uin, true);
       if (TextUtils.isEmpty(this.mTitleName)) {
         this.mTitleName = this.mUser.uin;
       }
-      this.mTitleName = (paramContext.getString(2131719856) + "（" + this.mTitleName + "）");
+      this.mTitleName = (paramContext.getString(2131720387) + "（" + this.mTitleName + "）");
       break;
       label377:
       this.mMsgExtroInfo = "";
@@ -84,7 +86,7 @@ public class RecentItemSubAccount
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemSubAccount
  * JD-Core Version:    0.7.0.1
  */

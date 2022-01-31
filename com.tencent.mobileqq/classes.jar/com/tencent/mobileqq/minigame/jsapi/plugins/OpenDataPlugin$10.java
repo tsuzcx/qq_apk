@@ -3,18 +3,17 @@ package com.tencent.mobileqq.minigame.jsapi.plugins;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.mobileqq.minigame.manager.GameInfoManager;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import org.json.JSONObject;
 
 class OpenDataPlugin$10
   implements MiniAppCmdInterface
 {
-  OpenDataPlugin$10(OpenDataPlugin paramOpenDataPlugin, JsRuntime paramJsRuntime, int paramInt) {}
+  OpenDataPlugin$10(OpenDataPlugin paramOpenDataPlugin, String paramString, JsRuntime paramJsRuntime, int paramInt) {}
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    GameLog.getInstance().i("OpenDataPlugin", "getGroupCloudStorage callback appid:" + GameInfoManager.g().getAppId() + ", isSuc" + paramBoolean + ", ret:" + String.valueOf(paramJSONObject));
+    GameLog.getInstance().i("OpenDataPlugin", "getGroupCloudStorage callback appid:" + this.val$appid + ", isSuc" + paramBoolean + ", ret:" + String.valueOf(paramJSONObject));
     JSONObject localJSONObject = new JSONObject();
     if (paramBoolean) {
       try
@@ -43,7 +42,7 @@ class OpenDataPlugin$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.OpenDataPlugin.10
  * JD-Core Version:    0.7.0.1
  */

@@ -298,6 +298,13 @@ public class LottieCompositionFactory
     return "rawRes_" + paramInt;
   }
   
+  public static void removeCacheByKey(String paramString)
+  {
+    if (paramString != null) {
+      taskCache.remove(paramString);
+    }
+  }
+  
   public static void setMaxCacheSize(int paramInt)
   {
     if (Build.VERSION.SDK_INT >= 21) {
@@ -307,7 +314,7 @@ public class LottieCompositionFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieCompositionFactory
  * JD-Core Version:    0.7.0.1
  */

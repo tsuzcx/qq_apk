@@ -1,20 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 
-public class abny
-  implements DialogInterface.OnClickListener
+class abny
+  implements abnz
 {
-  public abny(NotificationActivity paramNotificationActivity) {}
+  abny(abnx paramabnx, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ToServiceMsg a()
   {
-    this.a.finish();
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Abnx.a.createToServiceMsg("PbMessageSvc.PbMsgReadedReport");
+    byte[] arrayOfByte = this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray();
+    if (arrayOfByte != null)
+    {
+      localToServiceMsg.putWupBuffer(arrayOfByte);
+      localToServiceMsg.setEnableFastResend(true);
+      return localToServiceMsg;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abny
  * JD-Core Version:    0.7.0.1
  */

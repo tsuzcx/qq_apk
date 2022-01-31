@@ -1,13 +1,20 @@
-import PersonalState.UserProfile;
-import java.util.List;
+import android.content.ContentValues;
+import android.database.Cursor;
 
-public abstract interface awch
+public abstract class awch
 {
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, List<UserProfile> paramList, boolean paramBoolean3);
+  public int a;
+  public boolean a;
+  
+  public abstract awbv a(awbv paramawbv, Cursor paramCursor, boolean paramBoolean, awcg paramawcg);
+  
+  public abstract String a(String paramString);
+  
+  public abstract void a(awbv paramawbv, ContentValues paramContentValues);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awch
  * JD-Core Version:    0.7.0.1
  */

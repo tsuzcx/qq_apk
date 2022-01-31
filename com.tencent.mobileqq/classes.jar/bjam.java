@@ -1,69 +1,48 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_req;
+import com.qq.taf.jce.JceStruct;
+import cooperation.qzone.QzoneExternalRequest;
 
 public class bjam
+  extends QzoneExternalRequest
 {
-  public static Bundle a(@NonNull Intent paramIntent)
+  public JceStruct a;
+  
+  public bjam(long paramLong1, long paramLong2, int paramInt)
   {
-    return paramIntent.getBundleExtra("state");
+    mobile_sub_get_cover_req localmobile_sub_get_cover_req = new mobile_sub_get_cover_req();
+    localmobile_sub_get_cover_req.uin = paramLong1;
+    localmobile_sub_get_cover_req.flag = paramInt;
+    this.a = localmobile_sub_get_cover_req;
+    super.setHostUin(paramLong1);
+    super.setLoginUserId(paramLong2);
   }
   
-  public static Bundle a(@NonNull bjao parambjao)
+  public static JceStruct a(byte[] paramArrayOfByte)
   {
-    Bundle localBundle = new Bundle();
-    if (parambjao.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout != null)
-    {
-      bkak localbkak = (bkak)parambjao.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a(bkak.a);
-      bkai localbkai = (bkai)parambjao.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a("DynamicFaceLayer");
-      bkba localbkba = (bkba)parambjao.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a(bkba.a);
-      localBundle.putBundle(bkak.a, localbkak.a());
-      localBundle.putBundle("DynamicFaceLayer", localbkai.a());
-      if (localbkba != null) {
-        localBundle.putBundle(bkba.a, localbkba.a());
-      }
-      a(parambjao, localBundle);
-      localBundle.putBundle("container", parambjao.jdField_a_of_type_DovComQqImCaptureViewQIMProviderContainerView.a());
-      return localBundle;
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    QLog.e("EditState", 1, "saveState mDoodleLayout is null");
-    return localBundle;
+    return decode(paramArrayOfByte, "getCover");
   }
   
-  private static void a(bjao parambjao, Bundle paramBundle)
+  public String getCmdString()
   {
-    Object localObject = parambjao.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a();
-    bkbk localbkbk = ((bkbi)localObject).a();
-    if (localbkbk == null)
-    {
-      localObject = parambjao.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a();
-      parambjao = ((bkbi)localObject).a();
-      if (parambjao == null) {
-        break label83;
-      }
-      parambjao.jdField_a_of_type_Int = 1001;
-    }
-    label83:
-    for (;;)
-    {
-      if (parambjao != null)
-      {
-        ((bjck)bjav.a(15)).a(parambjao.jdField_a_of_type_AndroidGraphicsBitmap);
-        paramBundle.putBundle("VoteLayer", ((bkbi)localObject).a());
-      }
-      return;
-      localbkbk.jdField_a_of_type_Int = 1000;
-      parambjao = localbkbk;
-    }
+    return "QzoneNewService.getCover";
+  }
+  
+  public JceStruct getReq()
+  {
+    return this.a;
+  }
+  
+  public String uniKey()
+  {
+    return "getCover";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjam
  * JD-Core Version:    0.7.0.1
  */

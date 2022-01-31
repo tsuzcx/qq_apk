@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajms;
-import ajqa;
-import ajqc;
+import alef;
+import alhn;
+import alhp;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -10,10 +10,10 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import bbwu;
-import bbww;
-import bbwz;
-import bfob;
+import bdvv;
+import bdvx;
+import bdwa;
+import bhow;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.Utils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -26,13 +26,13 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
-import nav;
+import ndr;
 
 public class ApolloLottieAnim
   implements Handler.Callback
 {
   public int a;
-  private bfob jdField_a_of_type_Bfob = new bfob(paramContext.getMainLooper(), this);
+  private bhow jdField_a_of_type_Bhow = new bhow(paramContext.getMainLooper(), this);
   private ApolloLottieAnim.DecoderRunnable jdField_a_of_type_ComTencentMobileqqApolloViewApolloLottieAnim$DecoderRunnable = new ApolloLottieAnim.DecoderRunnable();
   private String jdField_a_of_type_JavaLangString;
   private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
@@ -51,14 +51,14 @@ public class ApolloLottieAnim
   public static String a(String paramString)
   {
     paramString = Utils.Crc64String(paramString);
-    String str = ajms.k;
+    String str = alef.k;
     return str + paramString + ".zip";
   }
   
   private void a(File paramFile, String paramString)
   {
     if ((paramFile.exists()) && (!TextUtils.isEmpty(paramString))) {
-      nav.a(paramFile, paramString);
+      ndr.a(paramFile, paramString);
     }
   }
   
@@ -69,7 +69,7 @@ public class ApolloLottieAnim
     Bundle localBundle = new Bundle();
     localBundle.putString("folder", paramString);
     localMessage.setData(localBundle);
-    this.jdField_a_of_type_Bfob.sendMessage(localMessage);
+    this.jdField_a_of_type_Bhow.sendMessage(localMessage);
   }
   
   private void a(String paramString1, String paramString2, boolean paramBoolean)
@@ -177,7 +177,7 @@ public class ApolloLottieAnim
     {
       try
       {
-        ajqa localajqa = new ajqa(this, paramDiniFlyAnimationView, paramBoolean);
+        alhn localalhn = new alhn(this, paramDiniFlyAnimationView, paramBoolean);
         Bundle localBundle = new Bundle();
         StringBuilder localStringBuilder = new StringBuilder().append("apollo://lottie_");
         if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
@@ -185,7 +185,7 @@ public class ApolloLottieAnim
           str = paramString;
           localBundle.putString("key", Utils.Crc64String(str));
           localBundle.putString("path", paramString + "images/");
-          LottieComposition.Factory.fromInputStreamWithCacheBitmap(paramContext, paramInputStream, paramDiniFlyAnimationView.getLottieDrawable(), localajqa, localBundle, a());
+          LottieComposition.Factory.fromInputStreamWithCacheBitmap(paramContext, paramInputStream, paramDiniFlyAnimationView.getLottieDrawable(), localalhn, localBundle, a());
           return;
         }
       }
@@ -229,14 +229,14 @@ public class ApolloLottieAnim
   protected void a(String paramString1, String paramString2, String paramString3)
   {
     this.jdField_a_of_type_Int = 1;
-    bbwu localbbwu = new bbwu(paramString1, new File(paramString2));
-    localbbwu.p = true;
-    localbbwu.n = true;
-    localbbwu.f = "apollo_lottie";
-    localbbwu.b = 1;
-    localbbwu.q = true;
-    localbbwu.r = true;
-    localbbwu.a(new ajqc(this, paramString1, paramString2, paramString3));
+    bdvv localbdvv = new bdvv(paramString1, new File(paramString2));
+    localbdvv.p = true;
+    localbdvv.n = true;
+    localbdvv.f = "apollo_lottie";
+    localbdvv.b = 1;
+    localbdvv.q = true;
+    localbdvv.r = true;
+    localbdvv.a(new alhp(this, paramString1, paramString2, paramString3));
     paramString1 = BaseApplicationImpl.getApplication();
     if (paramString1 != null)
     {
@@ -247,19 +247,19 @@ public class ApolloLottieAnim
     {
       if (paramString1 != null)
       {
-        paramString1 = (bbww)paramString1.getManager(47);
+        paramString1 = (bdvx)paramString1.getManager(47);
         if (paramString1 != null)
         {
           paramString1 = paramString1.a(3);
           if (paramString1 != null) {
-            paramString1.a(localbbwu, localbbwu.a(), null);
+            paramString1.a(localbdvv, localbdvv.a(), null);
           }
         }
       }
       for (int i = 0;; i = 1)
       {
         if (i != 0) {
-          ThreadManager.executeOnNetWorkThread(new ApolloLottieAnim.3(this, localbbwu));
+          ThreadManager.executeOnNetWorkThread(new ApolloLottieAnim.3(this, localbdvv));
         }
         return;
       }
@@ -300,8 +300,8 @@ public class ApolloLottieAnim
   public void b()
   {
     ThreadManager.getUIHandler().post(new ApolloLottieAnim.4(this));
-    if (this.jdField_a_of_type_Bfob != null) {
-      this.jdField_a_of_type_Bfob.removeCallbacksAndMessages(null);
+    if (this.jdField_a_of_type_Bhow != null) {
+      this.jdField_a_of_type_Bhow.removeCallbacksAndMessages(null);
     }
   }
   
@@ -330,7 +330,7 @@ public class ApolloLottieAnim
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloLottieAnim
  * JD-Core Version:    0.7.0.1
  */

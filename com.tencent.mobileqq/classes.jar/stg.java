@@ -1,51 +1,47 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import org.json.JSONObject;
+import android.view.View;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.List;
 
-class stg
-  extends SimpleJob<Object>
+public class stg
+  implements bhqd
 {
-  stg(stf paramstf, String paramString)
-  {
-    super(paramString);
-  }
+  public stg(SubscriptFeedsActivity paramSubscriptFeedsActivity, String paramString, bhpy parambhpy) {}
   
-  protected Object a(@NonNull JobContext arg1, @Nullable Void... paramVarArgs)
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = (String)((tcs)tcz.a(10)).b("SP_KEY_AUTHKEY_SERVER_INFO", "");
-    synchronized (this.a.b)
+    switch (paramInt)
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        long l = this.a.a.jdField_a_of_type_Long;
-        if (l != 0L) {}
+    default: 
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+    }
+    suv.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity, null);
+    paramInt = syb.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString);
+    ajgm.b(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app, this.jdField_a_of_type_JavaLangString, paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity.app.a().c(this.jdField_a_of_type_JavaLangString, 1008);
+    nrt.a(null, "CliOper", "", "", "0X8006113", "0X8006113", 0, 0, "", "", "", "");
+    paramView = SubscriptFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity).iterator();
+    sut localsut;
+    do
+    {
+      if (!paramView.hasNext()) {
+        break;
       }
-      try
-      {
-        paramVarArgs = new stj();
-        localObject = new JSONObject((String)localObject);
-        paramVarArgs.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("t");
-        paramVarArgs.jdField_a_of_type_ArrayOfByte = bbea.a(((JSONObject)localObject).getString("ak"));
-        this.a.a = paramVarArgs;
-        ved.a("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init success -> %s", localObject);
-        return null;
-      }
-      catch (Exception paramVarArgs)
-      {
-        for (;;)
-        {
-          ved.b("Q.qqstory.publish:VideoServerInfoManager", "ServerInfo init error , %s", paramVarArgs);
-        }
-      }
+      localsut = (sut)paramView.next();
+    } while ((localsut.jdField_a_of_type_JavaLangString == null) || (!localsut.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)));
+    for (paramInt = localsut.b;; paramInt = 0)
+    {
+      azmj.b(null, "dc00899", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X80064CF", "0X80064CF", 0, 0, "" + paramInt, "", "", "");
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     stg
  * JD-Core Version:    0.7.0.1
  */

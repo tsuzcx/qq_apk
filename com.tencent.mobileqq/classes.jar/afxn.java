@@ -1,45 +1,25 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CSettingFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 
-public class afxn
-  implements aatn
+class afxn
+  extends aelt
 {
-  public afxn(ChatHistoryC2CSettingFragment paramChatHistoryC2CSettingFragment) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  RoundCornerImageView jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  View jdField_c_of_type_AndroidViewView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  View d;
   
-  public void a(Activity paramActivity)
-  {
-    bcql.a(paramActivity, 2, 2131691511, 0).b(this.a.getActivity().getTitleBarHeight());
-    paramActivity.setResult(-1);
-    paramActivity.finish();
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      axqy.b(paramQQAppInterface, "dc00898", "", "", "0X800A17D", "0X800A17D", 2, 0, "", "", "", "");
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    axqy.b(paramQQAppInterface, "dc00898", "", "", "0X800A17F", "0X800A17F", 2, 0, "", "", "", "");
-  }
-  
-  public void b(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    if (paramInt == 0) {
-      axqy.b(paramQQAppInterface, "dc00898", "", "", "0X800A17E", "0X800A17E", 2, 0, "", "", "", "");
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    axqy.b(paramQQAppInterface, "dc00898", "", "", "0X800A180", "0X800A180", 2, 0, "", "", "", "");
-  }
+  afxn(afxl paramafxl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afxn
  * JD-Core Version:    0.7.0.1
  */

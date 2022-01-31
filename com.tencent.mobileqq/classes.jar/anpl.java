@@ -1,129 +1,102 @@
-import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.1;
-import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.2;
-import com.tencent.mobileqq.earlydownload.xmldata.ChirpSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.armap.sensor.rotation.Matrix4;
 
-public class anpl
-  extends anpn
+public final class anpl
 {
-  private LinkedList<anpm> a = new LinkedList();
-  private QQAppInterface b;
-  private boolean d;
+  private static anpl a;
+  private static anpl b;
+  private static anpl c;
+  public float a;
+  public float b;
+  public float c;
+  public float d;
   
-  public anpl(QQAppInterface paramQQAppInterface)
+  static
   {
-    super("qq.android.system.chirp", paramQQAppInterface);
-    this.b = paramQQAppInterface;
+    jdField_a_of_type_Anpl = new anpl();
+    jdField_b_of_type_Anpl = new anpl();
+    jdField_c_of_type_Anpl = new anpl();
   }
   
-  public int a()
+  public anpl a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    return 10040;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
+    this.d = paramFloat4;
+    return this;
   }
   
-  public Class<? extends XmlData> a()
+  public anpl a(Matrix4 paramMatrix4)
   {
-    return ChirpSoData.class;
+    paramMatrix4 = paramMatrix4.val;
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = paramMatrix4[0];
+    float f3 = this.jdField_b_of_type_Float;
+    float f4 = paramMatrix4[4];
+    float f5 = this.jdField_c_of_type_Float;
+    float f6 = paramMatrix4[8];
+    float f7 = this.d;
+    float f8 = paramMatrix4[12];
+    float f9 = this.jdField_a_of_type_Float;
+    float f10 = paramMatrix4[1];
+    float f11 = this.jdField_b_of_type_Float;
+    float f12 = paramMatrix4[5];
+    float f13 = this.jdField_c_of_type_Float;
+    float f14 = paramMatrix4[9];
+    float f15 = this.d;
+    float f16 = paramMatrix4[13];
+    float f17 = this.jdField_a_of_type_Float;
+    float f18 = paramMatrix4[2];
+    float f19 = this.jdField_b_of_type_Float;
+    float f20 = paramMatrix4[6];
+    float f21 = this.jdField_c_of_type_Float;
+    float f22 = paramMatrix4[10];
+    float f23 = this.d;
+    float f24 = paramMatrix4[14];
+    float f25 = this.jdField_a_of_type_Float;
+    float f26 = paramMatrix4[3];
+    float f27 = this.jdField_b_of_type_Float;
+    float f28 = paramMatrix4[7];
+    float f29 = this.jdField_c_of_type_Float;
+    float f30 = paramMatrix4[11];
+    float f31 = this.d;
+    return a(f1 * f2 + f3 * f4 + f5 * f6 + f7 * f8, f9 * f10 + f11 * f12 + f13 * f14 + f15 * f16, f17 * f18 + f19 * f20 + f21 * f22 + f23 * f24, paramMatrix4[15] * f31 + (f25 * f26 + f27 * f28 + f29 * f30));
   }
   
-  public String a()
+  public boolean equals(Object paramObject)
   {
-    return "actEarlyChirpSo";
-  }
-  
-  public void a(anpm paramanpm)
-  {
-    synchronized (this.a)
+    if (this == paramObject) {}
+    do
     {
-      if (!this.a.contains(paramanpm)) {
-        this.a.add(paramanpm);
+      return true;
+      if (paramObject == null) {
+        return false;
       }
-      return;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChirpSoHandler", 2, "onDownload success " + paramString);
-    }
-    paramString = new ChirpSoHandler.1(this, paramString);
-    if (Looper.getMainLooper() == Looper.myLooper()) {
-      ThreadManager.getSubThreadHandler().post(paramString);
-    }
-    for (;;)
-    {
-      BaseApplicationImpl.sUiHandler.post(new ChirpSoHandler.2(this));
-      return;
-      paramString.run();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChirpSoHandler", 2, "restartDownload " + paramBoolean);
-    }
-    if (!this.d) {
-      this.d = paramBoolean;
-    }
-    if ((a() != null) && (a().loadState == 2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChirpSoHandler", 2, "is in downloading");
+      if (getClass() != paramObject.getClass()) {
+        return false;
       }
-      return;
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public void b(anpm paramanpm)
-  {
-    synchronized (this.a)
-    {
-      this.a.remove(paramanpm);
-      return;
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.d)
-    {
-      this.b.E();
-      if (QLog.isColorLevel()) {
-        QLog.d("ChirpSoHandler", 2, "isNetValid2Download by user " + AppSetting.d);
+      paramObject = (anpl)paramObject;
+      if (Float.floatToIntBits(this.jdField_a_of_type_Float) != Float.floatToIntBits(paramObject.jdField_a_of_type_Float)) {
+        return false;
       }
-      return AppSetting.d;
-    }
-    this.b.E();
-    if (QLog.isColorLevel()) {
-      QLog.d("ChirpSoHandler", 2, "isNetValid2Download by startup " + AppSetting.d);
-    }
-    return (AppSetting.d) && (super.b());
+      if (Float.floatToIntBits(this.jdField_b_of_type_Float) != Float.floatToIntBits(paramObject.jdField_b_of_type_Float)) {
+        return false;
+      }
+      if (Float.floatToIntBits(this.jdField_c_of_type_Float) != Float.floatToIntBits(paramObject.jdField_c_of_type_Float)) {
+        return false;
+      }
+    } while (Float.floatToIntBits(this.d) == Float.floatToIntBits(paramObject.d));
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return (((Float.floatToIntBits(this.jdField_a_of_type_Float) + 31) * 31 + Float.floatToIntBits(this.jdField_b_of_type_Float)) * 31 + Float.floatToIntBits(this.jdField_c_of_type_Float)) * 31 + Float.floatToIntBits(this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 
-public final class alab
-  implements Parcelable.Creator<ARRelationShipAIOMsg>
+public abstract interface alab
 {
-  public ARRelationShipAIOMsg a(Parcel paramParcel)
-  {
-    return new ARRelationShipAIOMsg(paramParcel);
-  }
+  public abstract void a(int paramInt);
   
-  public ARRelationShipAIOMsg[] a(int paramInt)
-  {
-    return new ARRelationShipAIOMsg[paramInt];
-  }
+  public abstract void a(ApolloTextureView paramApolloTextureView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alab
  * JD-Core Version:    0.7.0.1
  */

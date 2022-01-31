@@ -1,27 +1,40 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.concurrent.ConcurrentHashMap;
 
 class qzq
-  implements View.OnClickListener
+  extends Handler
 {
-  qzq(qzo paramqzo, Activity paramActivity) {}
-  
-  public void onClick(View paramView)
+  qzq(qzp paramqzp, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_AndroidAppActivity != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      QLog.d("DailyFeedsDiandianEntranceManager", 2, "jump to recommend feeds");
-      rcb.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2130772289);
-      this.jdField_a_of_type_Qzo.b();
+    default: 
+      super.handleMessage(paramMessage);
     }
+    do
+    {
+      return;
+      paramMessage = this.a.a(false);
+    } while (paramMessage == null);
+    qzp.a(this.a).remove(Integer.valueOf(paramMessage.jdField_a_of_type_Int));
+    AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramMessage.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+    if (localAdvertisementInfo != null) {
+      localAdvertisementInfo.isShowingGuide = false;
+    }
+    this.a.a(null, paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qzq
  * JD-Core Version:    0.7.0.1
  */

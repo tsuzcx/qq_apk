@@ -1,26 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-
-class pct
-  implements otf
+public class pct
+  implements pcq
 {
-  pct(pcs parampcs) {}
+  private static pct a = new pct();
   
-  public void l()
+  public static pct a()
   {
-    if (!pcw.b())
-    {
-      QLog.d("FeedsPreloadManager", 1, "foreground, feeds preload.");
-      this.a.a(false);
-      return;
-    }
-    QLog.d("FeedsPreloadManager", 1, "lock screen enter foreground, no need to preload.");
+    return a;
   }
   
-  public void m() {}
+  public void a(String paramString, pcr parampcr)
+  {
+    osf.a().a(paramString, "PubAccountArticleCenter.GetUrlByVid", new pcu(this, parampcr));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pct
  * JD-Core Version:    0.7.0.1
  */

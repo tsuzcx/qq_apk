@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import anpk;
-
 public class ArNativeSoData
   extends XmlData
 {
   public String getSharedPreferencesName()
   {
-    return "early_" + anpk.a;
+    return "early_qq.android.ar.native.so_v8.0.0";
   }
   
   public String getStrResName()
   {
-    return anpk.a;
+    return "qq.android.ar.native.so_v8.0.0";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.ArNativeSoData
  * JD-Core Version:    0.7.0.1
  */

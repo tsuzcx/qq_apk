@@ -1,27 +1,23 @@
-import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.emoticonview.EmotionPreviewInfo;
 
-class apst
-  implements apsl
+public final class apst
+  implements Parcelable.Creator<EmotionPreviewInfo>
 {
-  apst(apss paramapss) {}
-  
-  public void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle)
+  public EmotionPreviewInfo a(Parcel paramParcel)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramInt3);
-    }
+    return new EmotionPreviewInfo(paramParcel);
   }
   
-  public void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle)
+  public EmotionPreviewInfo[] a(int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean);
-    }
+    return new EmotionPreviewInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apst
  * JD-Core Version:    0.7.0.1
  */

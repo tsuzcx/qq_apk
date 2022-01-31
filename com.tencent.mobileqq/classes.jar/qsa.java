@@ -1,27 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import android.view.ViewGroup;
+import com.tencent.superplayer.api.ISuperPlayer.OnSeekCompleteListener;
 
-class qsa
-  implements DialogInterface.OnDismissListener
+public abstract interface qsa
 {
-  qsa(qrt paramqrt) {}
+  public abstract long a();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    qrt.a(this.a, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    if ((qrt.a(this.a) != null) && (qrt.a(this.a).b()) && (qrt.b(this.a)) && (!qrt.c(this.a)) && (qrt.a(this.a)) && (!qrt.d(this.a))) {
-      qrt.a(this.a).c();
-    }
-    if (qrt.a(this.a) != null) {
-      qrt.a(this.a).f();
-    }
-    qrt.a(this.a, false);
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt, ISuperPlayer.OnSeekCompleteListener paramOnSeekCompleteListener);
+  
+  public abstract void a(String paramString, ViewGroup paramViewGroup);
+  
+  public abstract void a(qrv paramqrv);
+  
+  public abstract void a(qrw paramqrw, qry paramqry);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qsa
  * JD-Core Version:    0.7.0.1
  */

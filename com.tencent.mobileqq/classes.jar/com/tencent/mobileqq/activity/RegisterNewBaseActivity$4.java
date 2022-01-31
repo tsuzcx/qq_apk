@@ -10,15 +10,15 @@ class RegisterNewBaseActivity$4
   
   public void run()
   {
-    this.this$0.a = new Dialog(this.this$0, 2131755791);
-    this.this$0.a.setContentView(2131561454);
-    ((TextView)this.this$0.a.findViewById(2131365146)).setText(this.this$0.getString(this.a));
+    this.this$0.a = new Dialog(this.this$0, 2131755801);
+    this.this$0.a.setContentView(2131561644);
+    ((TextView)this.this$0.a.findViewById(2131365231)).setText(this.this$0.getString(this.a));
     this.this$0.a.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterNewBaseActivity.4
  * JD-Core Version:    0.7.0.1
  */

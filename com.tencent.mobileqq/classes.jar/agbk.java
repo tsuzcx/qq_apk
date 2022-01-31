@@ -1,48 +1,32 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
-class agbk
-  implements View.OnClickListener
+public class agbk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  agbk(agbj paramagbj, TroopLinkElement paramTroopLinkElement, agbl paramagbl) {}
+  public agbk(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!agbj.a(this.jdField_a_of_type_Agbj))
-    {
-      paramView = new Intent(agbj.a(this.jdField_a_of_type_Agbj), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement.url);
-      agbj.a(this.jdField_a_of_type_Agbj).startActivity(paramView);
-      return;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (ViewGroup.MarginLayoutParams)UnlimitedBladeWorks.a(this.a).getLayoutParams();
+    if (UnlimitedBladeWorks.a(this.a)) {
+      paramValueAnimator.leftMargin = 0;
     }
-    boolean bool = agbl.a(this.jdField_a_of_type_Agbl).isChecked();
-    if (bool)
+    for (paramValueAnimator.rightMargin = i;; paramValueAnimator.rightMargin = 0)
     {
-      agbj.a(this.jdField_a_of_type_Agbj).remove(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
-      paramView = agbl.a(this.jdField_a_of_type_Agbl);
-      if (bool) {
-        break label125;
-      }
-    }
-    label125:
-    for (bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
+      UnlimitedBladeWorks.a(this.a).setLayoutParams(paramValueAnimator);
       return;
-      agbj.a(this.jdField_a_of_type_Agbj).add(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryLinkTroopLinkElement);
-      break;
+      paramValueAnimator.leftMargin = i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbk
  * JD-Core Version:    0.7.0.1
  */

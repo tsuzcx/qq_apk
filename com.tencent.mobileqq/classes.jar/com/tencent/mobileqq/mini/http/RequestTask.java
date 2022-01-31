@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.mini.http;
 
-import com.squareup.okhttp.Call;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
+import okhttp3.Call;
 
 public class RequestTask
   implements Runnable
@@ -78,7 +78,7 @@ public class RequestTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.http.RequestTask
  * JD-Core Version:    0.7.0.1
  */

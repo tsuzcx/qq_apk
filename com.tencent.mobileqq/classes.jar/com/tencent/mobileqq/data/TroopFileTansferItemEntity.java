@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aulz;
-import azpj;
+import awbv;
+import awdg;
+import bbns;
 import java.util.UUID;
 
 public class TroopFileTansferItemEntity
-  extends auko
+  extends awbv
 {
   public int BusId;
   public int ErrorCode;
@@ -40,7 +40,7 @@ public class TroopFileTansferItemEntity
   public int duration;
   public long entrySessionID;
   public int height;
-  @aulz
+  @awdg
   public boolean isCheckPrivateDir;
   public boolean isFromAIO;
   public boolean isZipInnerFile;
@@ -57,7 +57,7 @@ public class TroopFileTansferItemEntity
   public String zipInnerPath;
   public int zipType;
   
-  public Class<? extends auko> getClassForTable()
+  public Class<? extends awbv> getClassForTable()
   {
     return TroopFileTansferItemEntity.class;
   }
@@ -69,7 +69,7 @@ public class TroopFileTansferItemEntity
   
   public void postRead()
   {
-    this.Status = azpj.a(this._sStatus);
+    this.Status = bbns.a(this._sStatus);
     this._sStatus = null;
     this.Id = UUID.fromString(this._sId);
     this._sId = null;
@@ -82,13 +82,13 @@ public class TroopFileTansferItemEntity
   
   public void prewrite()
   {
-    this._sStatus = azpj.a(this.Status);
+    this._sStatus = bbns.a(this.Status);
     this._sId = this.Id.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopFileTansferItemEntity
  * JD-Core Version:    0.7.0.1
  */

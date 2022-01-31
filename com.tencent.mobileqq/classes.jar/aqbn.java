@@ -1,21 +1,58 @@
-class aqbn
-  implements aqbq
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
+public class aqbn
+  extends Handler
 {
-  aqbn(aqbe paramaqbe) {}
+  public static int a;
+  public static int b = 2;
+  private WeakReference<ExtendFriendLimitChatMatchFragment> a;
   
-  public void a()
+  static
   {
-    this.a.a.setProgressBarVisibility(0);
+    jdField_a_of_type_Int = 1;
   }
   
-  public void b()
+  public aqbn(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment)
   {
-    this.a.a.setProgressBarVisibility(8);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramExtendFriendLimitChatMatchFragment);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == jdField_a_of_type_Int)
+    {
+      paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramMessage != null)
+      {
+        QLog.e("ExtendFriendLimitChatMatchFragment", 1, "limitchat matching time out from ui");
+        ExtendFriendLimitChatMatchFragment.a(paramMessage, true);
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (paramMessage.what != b);
+        paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while (paramMessage == null);
+      ExtendFriendLimitChatMatchFragment.b(paramMessage);
+      paramMessage = paramMessage.getActivity();
+    } while (paramMessage == null);
+    paramMessage.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqbn
  * JD-Core Version:    0.7.0.1
  */

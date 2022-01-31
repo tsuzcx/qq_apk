@@ -1,33 +1,27 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class ajph
-  implements View.OnClickListener
+public class ajph
 {
-  ajph(ajpe paramajpe, String paramString, int paramInt) {}
+  public int a;
+  ajpi jdField_a_of_type_Ajpi = new ajpi(this.jdField_a_of_type_Ajpg);
+  String jdField_a_of_type_JavaLangString;
+  public AtomicInteger a;
+  volatile boolean jdField_a_of_type_Boolean;
+  public int b;
+  String jdField_b_of_type_JavaLangString;
+  boolean jdField_b_of_type_Boolean;
+  public int c;
+  public String c;
+  public String d;
   
-  public void onClick(View paramView)
+  public ajph(ajpg paramajpg)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString != null))
-    {
-      paramView = "http://lgame.qq.com/html/feedback/index?gameid=" + this.jdField_a_of_type_Int + "&_wv=2&openid=" + this.jdField_a_of_type_JavaLangString;
-      Intent localIntent = new Intent(this.jdField_a_of_type_Ajpe.a.getActivity(), QQBrowserActivity.class);
-      localIntent.putExtra("big_brother_source_key", "biz_src_zf_lmx");
-      VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_Ajpe.a.getActivity(), paramView, -1L, localIntent, false, -1);
-      return;
-    }
-    QLog.e("apollo_cmGame_ApolloGameInfoFragment", 1, "[setGameIdAndOpenId] openId is null or is empty");
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajph
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,15 @@ package com.tencent.qqlive.tvkplayer.vinfo.ckey.comm;
 
 import android.content.Context;
 import android.util.Base64;
+import android.util.Log;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.security.GeneralSecurityException;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -20,6 +23,7 @@ public class VsAppKeyVerify
   private static final String PUB_KEY_BASE = "MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAvrKogXQuH0o0JcHsLKnEqr74NTWwI4Z65kTg0/z/O5dYTWbU5VgZUMWm110wCIdzozx/x4jiCPX0Ya/casUF6wpWXGoMV93qWB2p4EPBmxjSNLxjxPgTWfOyMt4v1ELHy9OTsFfFqbPQ1wSkSLQEn7J+0ZSGxZZXsUmkvuUJwd/PwVu79CjrCVSZsgnmqcplKvbVqYT8B8zBqnz3lIcBeMINWYu4id6MggiREGc07jw/VRYcu/Y8E8UKkRfa+bxPSzBaMLWRzGxXHLhrgHFDhBdINOXJit0A4AhJ0AckMsEcFUSE2WFW5F8a8gam/ZD7nj5tnyVM034qggV+W9PyhS3B6BRgIkFHkNr0y4zbw+RQDCSkGGqVBCHOWFhNR+olWimhhwaxWK4DMRVHlOyI/PE9/Kp0Xud7UM65r/jLgMG39Oz7ipfeqa4SrTYaBemYWv9YQ09a7Tn5unIb0nxmLHobTQBngbKoqcXGm56toYWhG+LQfcSjOaTbQ3fPSDFBAgMBAAE=";
   private static VsAppKeyVerify instance = null;
   private Context mContext;
+  private Map<String, Map<String, String>> mMapAppKey = new HashMap();
   private String mPkgName = "";
   private String mPlatform = "";
   private String mSdtfrom = "";
@@ -54,6 +58,63 @@ public class VsAppKeyVerify
       return localVsAppKeyVerify;
     }
     finally {}
+  }
+  
+  public boolean addVsAppKey(Context paramContext, String paramString)
+  {
+    try
+    {
+      this.mContext = paramContext;
+      paramContext = Base64.decode(paramString, 0);
+      paramString = Base64.decode("MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAvrKogXQuH0o0JcHsLKnEqr74NTWwI4Z65kTg0/z/O5dYTWbU5VgZUMWm110wCIdzozx/x4jiCPX0Ya/casUF6wpWXGoMV93qWB2p4EPBmxjSNLxjxPgTWfOyMt4v1ELHy9OTsFfFqbPQ1wSkSLQEn7J+0ZSGxZZXsUmkvuUJwd/PwVu79CjrCVSZsgnmqcplKvbVqYT8B8zBqnz3lIcBeMINWYu4id6MggiREGc07jw/VRYcu/Y8E8UKkRfa+bxPSzBaMLWRzGxXHLhrgHFDhBdINOXJit0A4AhJ0AckMsEcFUSE2WFW5F8a8gam/ZD7nj5tnyVM034qggV+W9PyhS3B6BRgIkFHkNr0y4zbw+RQDCSkGGqVBCHOWFhNR+olWimhhwaxWK4DMRVHlOyI/PE9/Kp0Xud7UM65r/jLgMG39Oz7ipfeqa4SrTYaBemYWv9YQ09a7Tn5unIb0nxmLHobTQBngbKoqcXGm56toYWhG+LQfcSjOaTbQ3fPSDFBAgMBAAE=", 0);
+      paramContext = decrypt(KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(paramString)), paramContext);
+      VsLog.info(new String(paramContext), new Object[0]);
+      Object localObject = new Properties();
+      ((Properties)localObject).load(new ByteArrayInputStream(paramContext));
+      paramContext = ((Properties)localObject).getProperty("vskey");
+      VsLog.info(paramContext, new Object[0]);
+      if (paramContext == null) {
+        VsLog.error("verify appkey fail vskey", new Object[0]);
+      }
+      paramString = ((Properties)localObject).getProperty("platform");
+      if (paramString == null) {
+        VsLog.error("verify appkey fail platform", new Object[0]);
+      }
+      String str = ((Properties)localObject).getProperty("sdtfrom");
+      if (str == null) {
+        VsLog.error("verify appkey fail sdtfrom", new Object[0]);
+      }
+      localObject = ((Properties)localObject).getProperty("pkg");
+      if (localObject == null) {
+        VsLog.error("verify appkey fail pkg", new Object[0]);
+      }
+      if (!this.mContext.getPackageName().equals(localObject))
+      {
+        Log.e("VERIFY VSAPPKEY", "verify appkey fail platform " + paramString);
+        return false;
+      }
+      localObject = new HashMap();
+      ((Map)localObject).put("platform", paramString);
+      ((Map)localObject).put("sdtfrom", str);
+      ((Map)localObject).put("vskey", paramContext);
+      updateMap(paramString, (Map)localObject);
+      return true;
+    }
+    catch (Throwable paramContext)
+    {
+      if ((paramContext instanceof GeneralSecurityException))
+      {
+        VsLog.error(paramContext.toString(), new Object[0]);
+        return false;
+      }
+      VsLog.error(paramContext.toString(), new Object[0]);
+    }
+    return false;
+  }
+  
+  public Map<String, Map<String, String>> getAppKeyMap()
+  {
+    return this.mMapAppKey;
   }
   
   public String getmPkgName()
@@ -96,6 +157,20 @@ public class VsAppKeyVerify
     this.mVsKey = paramString;
   }
   
+  public void updateMap(String paramString, Map<String, String> paramMap)
+  {
+    try
+    {
+      this.mMapAppKey.put(paramString, paramMap);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
   public boolean verifyVsAppKey(Context paramContext, String paramString)
   {
     try
@@ -103,55 +178,53 @@ public class VsAppKeyVerify
       this.mContext = paramContext;
       paramContext = Base64.decode(paramString, 0);
       paramString = Base64.decode("MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAvrKogXQuH0o0JcHsLKnEqr74NTWwI4Z65kTg0/z/O5dYTWbU5VgZUMWm110wCIdzozx/x4jiCPX0Ya/casUF6wpWXGoMV93qWB2p4EPBmxjSNLxjxPgTWfOyMt4v1ELHy9OTsFfFqbPQ1wSkSLQEn7J+0ZSGxZZXsUmkvuUJwd/PwVu79CjrCVSZsgnmqcplKvbVqYT8B8zBqnz3lIcBeMINWYu4id6MggiREGc07jw/VRYcu/Y8E8UKkRfa+bxPSzBaMLWRzGxXHLhrgHFDhBdINOXJit0A4AhJ0AckMsEcFUSE2WFW5F8a8gam/ZD7nj5tnyVM034qggV+W9PyhS3B6BRgIkFHkNr0y4zbw+RQDCSkGGqVBCHOWFhNR+olWimhhwaxWK4DMRVHlOyI/PE9/Kp0Xud7UM65r/jLgMG39Oz7ipfeqa4SrTYaBemYWv9YQ09a7Tn5unIb0nxmLHobTQBngbKoqcXGm56toYWhG+LQfcSjOaTbQ3fPSDFBAgMBAAE=", 0);
-      paramContext = decrypt(KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(paramString)), paramContext);
-      VsLog.info(new String(paramContext), new Object[0]);
-      Object localObject = new Properties();
-      ((Properties)localObject).load(new ByteArrayInputStream(paramContext));
-      paramContext = ((Properties)localObject).getProperty("vskey");
-      VsLog.info(paramContext, new Object[0]);
-      if (paramContext == null) {
+      paramString = decrypt(KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(paramString)), paramContext);
+      VsLog.info(new String(paramString), new Object[0]);
+      paramContext = new Properties();
+      paramContext.load(new ByteArrayInputStream(paramString));
+      paramString = paramContext.getProperty("vskey");
+      VsLog.info(paramString, new Object[0]);
+      if (paramString == null) {
         VsLog.error("verify appkey fail vskey", new Object[0]);
       }
-      paramString = ((Properties)localObject).getProperty("platform");
-      if (paramString == null) {
+      String str1 = paramContext.getProperty("platform");
+      if (str1 == null) {
         VsLog.error("verify appkey fail platform", new Object[0]);
       }
-      String str1 = ((Properties)localObject).getProperty("sdtfrom");
-      if (str1 == null) {
+      String str2 = paramContext.getProperty("sdtfrom");
+      if (str2 == null) {
         VsLog.error("verify appkey fail sdtfrom", new Object[0]);
       }
-      localObject = ((Properties)localObject).getProperty("pkg");
-      if (localObject == null) {
+      paramContext = paramContext.getProperty("pkg");
+      if (paramContext == null) {
         VsLog.error("verify appkey fail pkg", new Object[0]);
       }
-      String str2 = this.mContext.getPackageName();
-      if (!str2.equals(localObject)) {
-        VsLog.error("verify appkey fail pkg %s %s", new Object[] { str2, localObject });
+      this.mPkgName = paramContext;
+      this.mSdtfrom = str2;
+      this.mPlatform = str1;
+      if (!this.mContext.getPackageName().equals(paramContext))
+      {
+        Log.e("VERIFY VSAPPKEY", "verify appkey fail platform " + str1);
+        return false;
       }
-      this.mPkgName = ((String)localObject);
-      this.mSdtfrom = str1;
-      this.mPlatform = paramString;
-      this.mVsKey = paramContext;
+      this.mVsKey = paramString;
       return true;
     }
     catch (Throwable paramContext)
     {
-      if (!(paramContext instanceof GeneralSecurityException)) {
-        break label262;
+      if ((paramContext instanceof GeneralSecurityException))
+      {
+        VsLog.error(paramContext.toString(), new Object[0]);
+        return false;
       }
-    }
-    VsLog.error(paramContext.toString(), new Object[0]);
-    for (;;)
-    {
-      return false;
-      label262:
       VsLog.error(paramContext.toString(), new Object[0]);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.VsAppKeyVerify
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,34 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ResolveInfo;
-import com.tencent.mobileqq.haoliyou.JefsClass;
-import com.tencent.mobileqq.haoliyou.JefsClass.CancelableRunnable;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class aqvg
-  implements aqvo
+class aqvg
+  extends aquk
 {
-  public aqvg(JefsClass paramJefsClass, Context paramContext, Intent paramIntent, String paramString, int paramInt) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3, List<ResolveInfo> paramList, JefsClass.CancelableRunnable paramCancelableRunnable)
+  public aqvg(aqug paramaqug)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TeleScreen|JefsClass", 2, "checkAndDo() ]");
+    super(paramaqug);
+  }
+  
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
-    JefsClass.a(this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, paramString1, paramString2, paramString3, paramList, paramCancelableRunnable, this.jdField_a_of_type_Int);
+    aqug.b(this.jdField_a_of_type_Aqug, 11, 7);
+    aqug.c(this.jdField_a_of_type_Aqug, 11, 7);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Aquk = new aqve(this.jdField_a_of_type_Aqug);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqvg
  * JD-Core Version:    0.7.0.1
  */

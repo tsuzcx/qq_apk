@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
 class xis
-  implements View.OnClickListener
+  extends blpg
 {
-  xis(xiq paramxiq) {}
+  xis(xir paramxir) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean) {}
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
   {
-    xiq.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowPhotoListManager", 2, "SlideShowPhotoListManager onFinish key=" + paramString + " result=" + paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xis
  * JD-Core Version:    0.7.0.1
  */

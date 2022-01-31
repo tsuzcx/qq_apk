@@ -1,13 +1,14 @@
-public class apwc
+public abstract interface apwc
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
-  String c;
+  public abstract void b();
+  
+  public abstract void b(float paramFloat);
+  
+  public abstract void c(float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apwc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,22 @@
-import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 
-public class afmh
+final class afmh
+  implements afpr
 {
-  public int a;
-  public int b;
-  public int c;
-  
-  public afmh(int paramInt1, int paramInt2, int paramInt3)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "TabLayoutStatus{, tabId=" + this.a + ", scrollPos=" + this.b + ", scrollTop='" + this.c + '\'' + '}';
+    paramQQAppInterface = ((MessageForUniteGrayTip)paramChatMessage).tipParam;
+    if ((paramQQAppInterface != null) && (paramQQAppInterface.b == 655384)) {
+      return 110;
+    }
+    return 64;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afmh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,31 @@
 package com.tencent.qqmini.sdk.ipc;
 
-import android.os.Bundle;
-import bepl;
-import bepp;
-import bepu;
-import beqb;
-import betc;
+import bgpo;
+import com.tencent.qqmini.sdk.launcher.ipc.IAppMainService;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 public class AppBrandProxyImpl$6
   implements Runnable
 {
-  public AppBrandProxyImpl$6(bepl parambepl, String paramString, bepu parambepu, Bundle paramBundle) {}
+  public AppBrandProxyImpl$6(bgpo parambgpo, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {
-    if (this.this$0.a() == null)
-    {
-      betc.d("minisdk-start_AppBrandProxy", "sendCmd IAppBrandService Connection is Null 1. cmd=" + this.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_Bepu != null) {}
-      try
-      {
-        this.jdField_a_of_type_Bepu.a(false, new Bundle());
-        return;
-      }
-      catch (Throwable localThrowable1)
-      {
-        betc.d("minisdk-start_AppBrandProxy", "sendCmd exception.", localThrowable1);
-        return;
-      }
-    }
     try
     {
-      bepl.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, beqb.a().a(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Bepu);
+      bgpo.a(this.this$0).stopMiniApp(this.a);
       return;
     }
-    catch (Throwable localThrowable2)
+    catch (Throwable localThrowable)
     {
-      betc.d("minisdk-start_AppBrandProxy", "sendCmd exception.", localThrowable2);
+      QMLog.e("minisdk-start_AppBrandProxy", "stopMiniApp exception.", localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ipc.AppBrandProxyImpl.6
  * JD-Core Version:    0.7.0.1
  */

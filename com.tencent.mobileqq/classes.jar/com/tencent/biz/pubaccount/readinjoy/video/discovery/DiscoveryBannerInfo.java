@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.video.discovery;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qws;
+import rmh;
 
 public class DiscoveryBannerInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DiscoveryBannerInfo> CREATOR = new qws();
+  public static final Parcelable.Creator<DiscoveryBannerInfo> CREATOR = new rmh();
   public int a;
   public long a;
   public String a;
@@ -47,7 +47,7 @@ public class DiscoveryBannerInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo
  * JD-Core Version:    0.7.0.1
  */

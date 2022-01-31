@@ -1,46 +1,21 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-final class owt
-  implements Handler.Callback
+public class owt
+  extends alsi
 {
-  public boolean handleMessage(Message paramMessage)
+  public owt(KandianSubscribeManager paramKandianSubscribeManager) {}
+  
+  protected void a(boolean paramBoolean)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 0: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          ows.a(false);
-          ows.a().removeMessages(0);
-        } while ((ows.a() == null) || (ows.a().size() <= 0));
-        paramMessage = ows.a().iterator();
-        while (paramMessage.hasNext()) {
-          ((owu)paramMessage.next()).a(true);
-        }
-        ows.a(false);
-        ows.a().removeMessages(1);
-      } while ((ows.a() == null) || (ows.a().size() <= 0));
-      paramMessage = ows.a().iterator();
-      while (paramMessage.hasNext()) {
-        ((owu)paramMessage.next()).a(false);
-      }
-    }
-    ows.a(true);
-    return true;
+    super.a(paramBoolean);
+    ThreadManager.executeOnSubThread(new KandianSubscribeManager.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     owt
  * JD-Core Version:    0.7.0.1
  */

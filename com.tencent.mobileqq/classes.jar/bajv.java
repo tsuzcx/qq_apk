@@ -1,33 +1,39 @@
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.2.1;
+import com.tencent.qphone.base.util.QLog;
+
 public class bajv
+  extends bdqc
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
+  bajv(bajt parambajt) {}
   
-  public bajv(String paramString, long paramLong, int paramInt1, int paramInt2)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt1;
-  }
-  
-  public bajv(String paramString1, long paramLong, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    if ((paramInt == 36) && ((paramObject instanceof Integer)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FloatViewSkin", 2, "mMusicBusinessObserver: isSuccess" + paramBoolean + "  music player id:" + paramObject);
+      }
+      paramInt = ((Integer)paramObject).intValue();
+      bajt.a(this.a, paramInt);
+      if (paramInt > 0)
+      {
+        this.a.a = true;
+        bdsc.a.download(null, bajt.a(this.a), bajt.a(this.a), false);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.a = false;
+    ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bajv
  * JD-Core Version:    0.7.0.1
  */

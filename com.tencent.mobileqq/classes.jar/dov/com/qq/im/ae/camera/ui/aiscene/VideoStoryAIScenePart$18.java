@@ -5,25 +5,25 @@ import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
 import android.animation.ObjectAnimator;
 import android.widget.TextView;
-import bill;
+import bkqa;
 import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
 
 public class VideoStoryAIScenePart$18
   implements Runnable
 {
-  public VideoStoryAIScenePart$18(bill parambill, AEMaterialPanel paramAEMaterialPanel, int paramInt) {}
+  public VideoStoryAIScenePart$18(bkqa parambkqa, AEMaterialPanel paramAEMaterialPanel, int paramInt) {}
   
   public void run()
   {
     int i = this.jdField_a_of_type_DovComQqImAeCameraUiPanelAEMaterialPanel.getHeight();
     int j = this.jdField_a_of_type_Int;
-    int k = bill.a(this.this$0).getMeasuredHeight();
+    int k = bkqa.a(this.this$0).getMeasuredHeight();
     Object localObject = new int[2];
-    bill.a(this.this$0).getLocationInWindow((int[])localObject);
+    bkqa.a(this.this$0).getLocationInWindow((int[])localObject);
     i = j - i - k - 10 - localObject[1];
-    localObject = ObjectAnimator.ofFloat(bill.a(this.this$0), "translationY", new float[] { 0.0F, i });
-    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(bill.b(this.this$0), "translationY", new float[] { 0.0F, i });
-    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(bill.b(this.this$0), "translationY", new float[] { 0.0F, i });
+    localObject = ObjectAnimator.ofFloat(bkqa.a(this.this$0), "translationY", new float[] { 0.0F, i });
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(bkqa.b(this.this$0), "translationY", new float[] { 0.0F, i });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(bkqa.b(this.this$0), "translationY", new float[] { 0.0F, i });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.play((Animator)localObject).with(localObjectAnimator1).with(localObjectAnimator2);
     localAnimatorSet.setDuration(300L).start();
@@ -31,7 +31,7 @@ public class VideoStoryAIScenePart$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.camera.ui.aiscene.VideoStoryAIScenePart.18
  * JD-Core Version:    0.7.0.1
  */

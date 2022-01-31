@@ -1,63 +1,157 @@
+import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.widget.InteractContainerLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
-import java.net.URI;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.GridView;
+import java.util.ArrayList;
 
-class tpk
-  implements ulb
+public class tpk
 {
-  tpk(tpj paramtpj) {}
+  private static int jdField_a_of_type_Int;
+  private static Context jdField_a_of_type_AndroidContentContext;
+  static ArrayList<tpu> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  static boolean jdField_a_of_type_Boolean;
+  private static int b;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  protected bhqp a;
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public tpk(Activity paramActivity, ArrayList<tpu> paramArrayList, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    paramString = BaseApplicationImpl.getContext();
-    Object localObject = new InteractContainerLayout(paramString);
-    ((InteractContainerLayout)localObject).a(this.a.a);
-    FrameLayout localFrameLayout = new FrameLayout(paramString);
-    localFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramString.getResources(), paramBitmap));
-    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramBitmap.getWidth(), paramBitmap.getHeight()));
-    localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-    localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramBitmap.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramBitmap.getHeight(), 1073741824));
-    localFrameLayout.layout(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    ((InteractContainerLayout)localObject).a(this.a.a);
-    localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
-    Canvas localCanvas = new Canvas((Bitmap)localObject);
-    localCanvas.drawBitmap(paramBitmap, new Matrix(), null);
-    localFrameLayout.draw(localCanvas);
-    paramString = paramString.getCacheDir().getAbsolutePath() + "/" + System.currentTimeMillis() + ".png";
-    if (vxv.a((Bitmap)localObject, paramString)) {
-      this.a.a("result", new File(paramString).toURI().toString());
+    this.jdField_a_of_type_Bhqp = new tpl(this);
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    jdField_a_of_type_AndroidContentContext = paramActivity.getApplicationContext();
+    jdField_a_of_type_Int = paramInt1;
+    b = paramInt2;
+    jdField_a_of_type_Boolean = paramBoolean;
+    jdField_a_of_type_JavaUtilArrayList = a(paramArrayList);
+  }
+  
+  static int a()
+  {
+    if (jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
     }
+    int i = jdField_a_of_type_JavaUtilArrayList.size();
+    int j = (jdField_a_of_type_Int - aekt.a(110.0F, jdField_a_of_type_AndroidContentContext.getResources())) / 3;
+    if (i % 2 == 0) {
+      return i / 2 * j;
+    }
+    return (i + 1) / 2 * j;
+  }
+  
+  private ArrayList<tpu> a(ArrayList<tpu> paramArrayList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject;
+    if (paramArrayList == null)
+    {
+      localObject = null;
+      return localObject;
+    }
+    if (paramArrayList.size() <= 6)
+    {
+      localArrayList.addAll(paramArrayList);
+      return localArrayList;
+    }
+    int i = 0;
     for (;;)
     {
-      ((Bitmap)localObject).recycle();
-      tpj.a(this.a, true);
-      return;
-      this.a.a("result", this.a.a.mVideoThumbnailUrl);
+      localObject = localArrayList;
+      if (i >= 6) {
+        break;
+      }
+      localArrayList.add(paramArrayList.get(i));
+      i += 1;
     }
   }
   
-  public void a(String paramString, Throwable paramThrowable)
+  @TargetApi(9)
+  private void a(RelativeLayout paramRelativeLayout)
   {
-    this.a.a("result", this.a.a.mVideoThumbnailUrl);
-    tpj.b(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "buildView!");
+    }
+    int i = aekt.a(2.0F, jdField_a_of_type_AndroidContentContext.getResources());
+    int j = (b - i) / 2;
+    paramRelativeLayout = (GridView)paramRelativeLayout.findViewById(2131375418);
+    paramRelativeLayout.setColumnWidth(j);
+    paramRelativeLayout.setStretchMode(0);
+    paramRelativeLayout.setHorizontalSpacing(i);
+    paramRelativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, a()));
+    paramRelativeLayout.setNumColumns(2);
+    paramRelativeLayout.setOnItemClickListener(this.jdField_a_of_type_Bhqp);
+    if (Build.VERSION.SDK_INT >= 9) {
+      paramRelativeLayout.setOverScrollMode(2);
+    }
+    paramRelativeLayout.setAdapter(new tpm(this));
+  }
+  
+  public View a(Activity paramActivity, View paramView, ViewGroup paramViewGroup)
+  {
+    if ((paramView != null) && ((paramView instanceof RelativeLayout)))
+    {
+      paramView = (RelativeLayout)paramView;
+      Object localObject = paramView.getTag();
+      if ((localObject != null) && ((localObject instanceof tpo)))
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "createView reuse!");
+        }
+        return paramView;
+      }
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "createView new create!");
+    }
+    paramActivity = (RelativeLayout)LayoutInflater.from(paramActivity).inflate(2131559461, paramViewGroup, false);
+    paramView = paramActivity.getLayoutParams();
+    paramView.height = jdField_a_of_type_Int;
+    paramActivity.setLayoutParams(paramView);
+    paramView = new tpo();
+    paramView.jdField_a_of_type_ComTencentWidgetGridView = ((GridView)paramActivity.findViewById(2131375418));
+    paramView.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView = ((VideoFeedsAlphaMaskView)paramActivity.findViewById(2131370081));
+    paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131375404));
+    paramActivity.setTag(paramView);
+    if ((jdField_a_of_type_JavaUtilArrayList == null) && (jdField_a_of_type_Boolean))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "createView getRecommendInfo error");
+      }
+      paramView.jdField_a_of_type_ComTencentWidgetGridView.setVisibility(8);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramViewGroup = paramView.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.getLayoutParams();
+      int i = aekt.a(66.0F, jdField_a_of_type_AndroidContentContext.getResources());
+      paramViewGroup.height = (jdField_a_of_type_Int - i);
+      paramView.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setLayoutParams(paramViewGroup);
+    }
+    for (;;)
+    {
+      return paramActivity;
+      paramViewGroup = paramView.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.getLayoutParams();
+      paramViewGroup.height = a();
+      paramView.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAlphaMaskView.setLayoutParams(paramViewGroup);
+      paramView.jdField_a_of_type_ComTencentWidgetGridView.setVisibility(0);
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+      a(paramActivity);
+    }
+  }
+  
+  public void a(ArrayList<tpu> paramArrayList)
+  {
+    jdField_a_of_type_JavaUtilArrayList = a(paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpk
  * JD-Core Version:    0.7.0.1
  */

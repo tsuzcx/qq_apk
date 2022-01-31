@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.Advertisement.view;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.biz.qqstory.view.SplitedProgressBar;
@@ -24,12 +24,12 @@ public class AdvertisementSplitedProgressBar
     this.e = 872415231;
     this.f = -2130706433;
     this.h = 4;
-    this.g = actj.a(1.5F, paramContext.getResources());
+    this.g = aekt.a(1.5F, paramContext.getResources());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.AdvertisementSplitedProgressBar
  * JD-Core Version:    0.7.0.1
  */

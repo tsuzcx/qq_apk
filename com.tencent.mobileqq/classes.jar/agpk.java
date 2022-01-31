@@ -1,188 +1,64 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.UnFollowResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.transfile.StructLongMessageDownloadProcessor;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import mqq.observer.BusinessObserver;
 
-public class agpk
+class agpk
+  implements BusinessObserver
 {
-  public static LocalMediaInfo a(Context paramContext, String paramString, boolean paramBoolean)
+  agpk(agot paramagot, String paramString) {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    long l = System.currentTimeMillis();
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    localLocalMediaInfo.mMediaType = 0;
-    localLocalMediaInfo.path = paramString;
-    paramString = new BitmapFactory.Options();
-    paramString.inJustDecodeBounds = true;
-    BitmapFactory.decodeFile(localLocalMediaInfo.path, paramString);
-    localLocalMediaInfo.mediaWidth = paramString.outWidth;
-    localLocalMediaInfo.mediaHeight = paramString.outHeight;
-    if (paramBoolean)
-    {
-      localLocalMediaInfo.thumbWidth = 0;
-      localLocalMediaInfo.thumbHeight = ((int)paramContext.getResources().getDimension(2131296962));
-      if ((localLocalMediaInfo.mediaWidth > 0) && (localLocalMediaInfo.mediaHeight > 0)) {
-        aglq.a(localLocalMediaInfo, localLocalMediaInfo.mediaWidth, localLocalMediaInfo.mediaHeight);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_Agot.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean) {
+      this.jdField_a_of_type_Agot.B(2131695727);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReplacePhotoDataUtil", 1, new Object[] { "convert to mediaInfo, cost:", Long.valueOf(System.currentTimeMillis() - l) });
+      agot.c(this.jdField_a_of_type_Agot);
+      if (agot.d(this.jdField_a_of_type_Agot) == 0) {
+        this.jdField_a_of_type_Agot.bs();
       }
-      return localLocalMediaInfo;
-      int i = ayop.a;
-      localLocalMediaInfo.thumbHeight = i;
-      localLocalMediaInfo.thumbWidth = i;
-    }
-  }
-  
-  public static LocalMediaInfo a(Map<LocalMediaInfo, LocalMediaInfo> paramMap, String paramString)
-  {
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
-      if (paramString.equals(((LocalMediaInfo)localEntry.getValue()).path)) {
-        return (LocalMediaInfo)localEntry.getKey();
-      }
-    }
-    return null;
-  }
-  
-  public static String a(Map<String, String> paramMap, String paramString)
-  {
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
-      if (paramString.equals(localEntry.getValue())) {
-        return (String)localEntry.getKey();
-      }
-    }
-    return null;
-  }
-  
-  public static HashMap<String, String> a(HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
-  {
-    HashMap localHashMap = new HashMap();
-    paramHashMap = paramHashMap.entrySet().iterator();
-    while (paramHashMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramHashMap.next();
-      localHashMap.put(((LocalMediaInfo)localEntry.getKey()).path, ((LocalMediaInfo)localEntry.getValue()).path);
-    }
-    return localHashMap;
-  }
-  
-  public static void a(Context paramContext, Intent paramIntent, boolean paramBoolean, HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
-  {
-    Object localObject = paramHashMap;
-    if (paramHashMap == null) {
-      localObject = new HashMap();
-    }
-    paramIntent = (HashMap)paramIntent.getSerializableExtra("PhotoConst.editPathMap");
-    LocalMediaInfo localLocalMediaInfo;
-    if (paramIntent != null)
-    {
-      Iterator localIterator = paramIntent.entrySet().iterator();
-      if (localIterator.hasNext())
-      {
-        paramHashMap = (Map.Entry)localIterator.next();
-        paramIntent = a(paramContext, (String)paramHashMap.getKey(), paramBoolean);
-        localLocalMediaInfo = a(paramContext, (String)paramHashMap.getValue(), paramBoolean);
-        paramHashMap = a((Map)localObject, (String)paramHashMap.getKey());
-        if (paramHashMap == null) {
-          break label127;
-        }
-        paramIntent = paramHashMap;
-      }
-    }
-    label127:
-    for (;;)
-    {
-      ((HashMap)localObject).put(paramIntent, localLocalMediaInfo);
-      break;
       return;
-    }
-  }
-  
-  public static void a(List<LocalMediaInfo> paramList, ArrayList<String> paramArrayList, HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
-  {
-    Iterator localIterator1 = paramHashMap.entrySet().iterator();
-    label183:
-    for (;;)
-    {
-      Map.Entry localEntry;
-      if (localIterator1.hasNext())
+      try
       {
-        localEntry = (Map.Entry)localIterator1.next();
-        Iterator localIterator2 = paramList.iterator();
-        do
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
         {
-          if (!localIterator2.hasNext()) {
-            break;
+          mobileqq_mp.UnFollowResponse localUnFollowResponse = new mobileqq_mp.UnFollowResponse();
+          localUnFollowResponse.mergeFrom(paramBundle);
+          if (((mobileqq_mp.RetInfo)localUnFollowResponse.ret_info.get()).ret_code.get() == 0)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d(this.jdField_a_of_type_Agot.jdField_a_of_type_JavaLangString, 2, "unfollow success");
+            }
+            agot.a(this.jdField_a_of_type_Agot, agot.a(this.jdField_a_of_type_Agot));
+            nrt.a(this.jdField_a_of_type_Agot.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "0X8005A2D", "0X8005A2D", 0, 0, "", "", "", "", false);
+            StructLongMessageDownloadProcessor.a(this.jdField_a_of_type_Agot.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+            ((bcic)this.jdField_a_of_type_Agot.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132)).a(this.jdField_a_of_type_Agot.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+            agot.b(this.jdField_a_of_type_Agot, false);
           }
-          paramHashMap = (LocalMediaInfo)localIterator2.next();
-        } while (!paramHashMap.path.equals(((LocalMediaInfo)localEntry.getKey()).path));
-      }
-      for (;;)
-      {
-        if (paramHashMap == null) {
-          break label183;
+          else
+          {
+            this.jdField_a_of_type_Agot.B(2131695727);
+          }
         }
-        int i = paramList.indexOf(paramHashMap);
-        paramList.remove(paramHashMap);
-        paramList.add(i, localEntry.getValue());
-        ((LocalMediaInfo)localEntry.getValue()).position = Integer.valueOf(i);
-        if (paramArrayList == null) {
-          break;
-        }
-        i = paramArrayList.indexOf(paramHashMap.path);
-        paramArrayList.remove(paramHashMap.path);
-        paramArrayList.add(i, ((LocalMediaInfo)localEntry.getValue()).path);
-        break;
-        return;
-        paramHashMap = null;
       }
+      catch (Exception paramBundle) {}
     }
-  }
-  
-  public static boolean a(String paramString, HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
-  {
-    paramHashMap = paramHashMap.entrySet().iterator();
-    while (paramHashMap.hasNext()) {
-      if (((LocalMediaInfo)((Map.Entry)paramHashMap.next()).getValue()).path.equals(paramString)) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public static HashMap<String, String> b(HashMap<LocalMediaInfo, LocalMediaInfo> paramHashMap)
-  {
-    HashMap localHashMap = new HashMap(paramHashMap.size());
-    paramHashMap = paramHashMap.entrySet().iterator();
-    while (paramHashMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramHashMap.next();
-      localHashMap.put(((LocalMediaInfo)localEntry.getKey()).path, ((LocalMediaInfo)localEntry.getValue()).path);
-    }
-    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agpk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.paster;
 
 import android.text.TextUtils;
-import bbfj;
-import bjfr;
-import bjfs;
-import bjfv;
-import bkgd;
+import bdee;
+import blrc;
+import blrd;
+import blrg;
+import bmrn;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -14,15 +14,15 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class QIMInformationPasterManager$2
   implements Runnable
 {
-  public QIMInformationPasterManager$2(bjfr parambjfr, List paramList) {}
+  public QIMInformationPasterManager$2(blrc paramblrc, List paramList) {}
   
   public void run()
   {
-    bjfr.a(this.this$0).clear();
+    blrc.a(this.this$0).clear();
     if (QLog.isColorLevel()) {
       QLog.d("QIMInformationPasterManager", 2, "patch pull res");
     }
-    if (!bbfj.g(bjfr.a(this.this$0))) {
+    if (!bdee.g(blrc.a(this.this$0))) {
       if (QLog.isColorLevel()) {
         QLog.d("QIMInformationPasterManager", 2, "network is unavailable");
       }
@@ -31,29 +31,29 @@ public class QIMInformationPasterManager$2
     {
       return;
       Iterator localIterator = this.a.iterator();
-      bkgd localbkgd;
+      bmrn localbmrn;
       while (localIterator.hasNext())
       {
-        localbkgd = (bkgd)localIterator.next();
-        if ((!TextUtils.isEmpty(localbkgd.e)) && (!this.this$0.a(localbkgd)) && (localbkgd.b != 2)) {
-          bjfr.a(this.this$0).add(localbkgd);
+        localbmrn = (bmrn)localIterator.next();
+        if ((!TextUtils.isEmpty(localbmrn.e)) && (!this.this$0.a(localbmrn)) && (localbmrn.b != 2)) {
+          blrc.a(this.this$0).add(localbmrn);
         }
       }
       if (QLog.isColorLevel()) {
-        QLog.d("QIMInformationPasterManager", 2, "need download size:" + bjfr.a(this.this$0).size());
+        QLog.d("QIMInformationPasterManager", 2, "need download size:" + blrc.a(this.this$0).size());
       }
-      localIterator = bjfr.a(this.this$0).iterator();
+      localIterator = blrc.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        localbkgd = (bkgd)localIterator.next();
-        this.this$0.a.a(localbkgd, new bjfs(this));
+        localbmrn = (bmrn)localIterator.next();
+        this.this$0.a.a(localbmrn, new blrd(this));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.paster.QIMInformationPasterManager.2
  * JD-Core Version:    0.7.0.1
  */

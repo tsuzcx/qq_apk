@@ -1,34 +1,23 @@
-import android.app.Activity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
 
-public class awlq
-  implements View.OnTouchListener
+public final class awlq
+  implements Parcelable.Creator<PersonalityLabelInfo>
 {
-  public awlq(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public PersonalityLabelInfo a(Parcel paramParcel)
   {
-    if ((!awwa.a(SelectMemberContactSearchFragment.a(this.a))) && (!SelectMemberContactSearchFragment.a(this.a)) && (paramMotionEvent.getAction() == 1))
-    {
-      paramView = this.a.getActivity();
-      if (paramView != null) {
-        paramView.finish();
-      }
-      return false;
-    }
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    return new PersonalityLabelInfo(paramParcel);
+  }
+  
+  public PersonalityLabelInfo[] a(int paramInt)
+  {
+    return new PersonalityLabelInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awlq
  * JD-Core Version:    0.7.0.1
  */

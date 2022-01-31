@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.NativeAd.fragment;
 
-import abtq;
+import aanp;
+import adky;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,11 +18,10 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import nli;
-import nlq;
+import noe;
+import nom;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import yxp;
 
 public class ReadInJoyNativeAdAppFragment
   extends PublicBaseFragment
@@ -32,7 +32,7 @@ public class ReadInJoyNativeAdAppFragment
   private AdvertisementInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList<nli> jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<noe> jdField_a_of_type_JavaUtilArrayList;
   private String b;
   private String c;
   
@@ -73,7 +73,7 @@ public class ReadInJoyNativeAdAppFragment
         i = 0;
         if (i < ((JSONArray)localObject1).length())
         {
-          localObject2 = nli.a(getActivity().app, ((JSONArray)localObject1).getJSONObject(i));
+          localObject2 = noe.a(getActivity().app, ((JSONArray)localObject1).getJSONObject(i));
           if (localObject2 != null) {
             this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
           }
@@ -106,11 +106,11 @@ public class ReadInJoyNativeAdAppFragment
       }
       return;
     }
-    yxp.b("ReadInJoyNativeAdAppFragment", "start");
+    aanp.b("ReadInJoyNativeAdAppFragment", "start");
     Intent localIntent = new Intent();
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtras(paramBundle);
-    abtq.a(paramActivity, localIntent, PublicFragmentActivityForTool.class, paramClass);
+    adky.a(paramActivity, localIntent, PublicFragmentActivityForTool.class, paramClass);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -137,13 +137,13 @@ public class ReadInJoyNativeAdAppFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131559970, paramViewGroup, false);
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView = ((ReadInJoyNativeAdAppContentView)paramLayoutInflater.findViewById(2131370663));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131560069, paramViewGroup, false);
+    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView = ((ReadInJoyNativeAdAppContentView)paramLayoutInflater.findViewById(2131370974));
     if (this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView != null)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView.setVideoPlayPositon(this.jdField_a_of_type_Long);
       if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView.setData((nlq)this.jdField_a_of_type_JavaUtilArrayList.get(0), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+        this.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppContentView.setData((nom)this.jdField_a_of_type_JavaUtilArrayList.get(0), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
     }
     return paramLayoutInflater;
@@ -175,7 +175,7 @@ public class ReadInJoyNativeAdAppFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdAppFragment
  * JD-Core Version:    0.7.0.1
  */

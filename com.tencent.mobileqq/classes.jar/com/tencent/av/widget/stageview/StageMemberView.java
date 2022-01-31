@@ -20,8 +20,8 @@ import android.util.TypedValue;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import mvg;
-import mvr;
+import mxz;
+import myk;
 
 public class StageMemberView
   extends ViewGroup
@@ -34,8 +34,8 @@ public class StageMemberView
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
   public ImageView a;
   private String jdField_a_of_type_JavaLangString;
-  public mvg a;
-  private mvr jdField_a_of_type_Mvr;
+  public mxz a;
+  private myk jdField_a_of_type_Myk;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 3;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
@@ -44,17 +44,17 @@ public class StageMemberView
   public StageMemberView(Context paramContext, Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
     super(paramContext);
-    this.jdField_a_of_type_Mvg = null;
+    this.jdField_a_of_type_Mxz = null;
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap1;
     this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap2;
-    this.jdField_a_of_type_Mvr = new mvr(this, getContext());
-    this.jdField_a_of_type_Mvr.setVisibility(0);
+    this.jdField_a_of_type_Myk = new myk(this, getContext());
+    this.jdField_a_of_type_Myk.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     addViewInLayout(this.jdField_a_of_type_AndroidWidgetImageView, 0, generateDefaultLayoutParams(), false);
     addViewInLayout(this.jdField_b_of_type_AndroidWidgetImageView, 1, generateDefaultLayoutParams(), false);
-    addViewInLayout(this.jdField_a_of_type_Mvr, 2, generateDefaultLayoutParams(), false);
+    addViewInLayout(this.jdField_a_of_type_Myk, 2, generateDefaultLayoutParams(), false);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     setClipChildren(false);
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
@@ -115,7 +115,7 @@ public class StageMemberView
     {
       int j = (int)(localFontMetrics.descent - localFontMetrics.ascent);
       getWidth();
-      this.jdField_a_of_type_Mvr.layout((getWidth() - i) / 2 + 5, this.jdField_b_of_type_AndroidWidgetImageView.getHeight(), (i + getWidth()) / 2 + 5, j + this.jdField_b_of_type_AndroidWidgetImageView.getHeight());
+      this.jdField_a_of_type_Myk.layout((getWidth() - i) / 2 + 5, this.jdField_b_of_type_AndroidWidgetImageView.getHeight(), (i + getWidth()) / 2 + 5, j + this.jdField_b_of_type_AndroidWidgetImageView.getHeight());
       b();
       return;
     }
@@ -126,7 +126,7 @@ public class StageMemberView
     if (((this.jdField_a_of_type_JavaLangString == null) && (paramString == null)) || ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))) {
       return;
     }
-    float f2 = super.getResources().getDimensionPixelSize(2131298530);
+    float f2 = super.getResources().getDimensionPixelSize(2131298556);
     String str2 = paramString;
     if (f2 > 0.0F)
     {
@@ -163,19 +163,19 @@ public class StageMemberView
         }
       }
     }
-    if ((this.jdField_a_of_type_Mvg != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Mvg.jdField_a_of_type_JavaLangString))) {
-      if ((TextUtils.isEmpty(str2)) && (this.jdField_a_of_type_Mvg.jdField_a_of_type_JavaLangString.contains("%s "))) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Mvg.jdField_a_of_type_JavaLangString.replace("%s ", "");
+    if ((this.jdField_a_of_type_Mxz != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_Mxz.jdField_a_of_type_JavaLangString))) {
+      if ((TextUtils.isEmpty(str2)) && (this.jdField_a_of_type_Mxz.jdField_a_of_type_JavaLangString.contains("%s "))) {
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Mxz.jdField_a_of_type_JavaLangString.replace("%s ", "");
       }
     }
     for (;;)
     {
       a();
-      this.jdField_a_of_type_Mvr.invalidate();
+      this.jdField_a_of_type_Myk.invalidate();
       this.jdField_a_of_type_AndroidWidgetImageView.invalidate();
       setContentDescription(this.jdField_a_of_type_JavaLangString);
       return;
-      this.jdField_a_of_type_JavaLangString = String.format(this.jdField_a_of_type_Mvg.jdField_a_of_type_JavaLangString, new Object[] { str2 });
+      this.jdField_a_of_type_JavaLangString = String.format(this.jdField_a_of_type_Mxz.jdField_a_of_type_JavaLangString, new Object[] { str2 });
       continue;
       this.jdField_a_of_type_JavaLangString = str2;
     }
@@ -190,7 +190,7 @@ public class StageMemberView
     }
     for (;;)
     {
-      this.jdField_a_of_type_Mvr.invalidate();
+      this.jdField_a_of_type_Myk.invalidate();
       this.jdField_a_of_type_AndroidWidgetImageView.invalidate();
       this.jdField_b_of_type_AndroidWidgetImageView.invalidate();
       return;
@@ -272,7 +272,7 @@ public class StageMemberView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.widget.stageview.StageMemberView
  * JD-Core Version:    0.7.0.1
  */

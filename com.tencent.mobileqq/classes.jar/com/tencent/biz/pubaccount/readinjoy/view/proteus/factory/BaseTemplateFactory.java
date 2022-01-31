@@ -26,12 +26,12 @@ public class BaseTemplateFactory
     return localBaseTemplateFactory;
   }
   
-  public void createTemplate(int paramInt, String paramString, ViewBean paramViewBean)
+  public void createTemplate(int paramInt, String paramString, ViewBean paramViewBean, Map<String, Object> paramMap)
   {
-    TemplateBean localTemplateBean = new TemplateBean(paramInt, paramString);
-    localTemplateBean.setViewBean(paramViewBean);
-    this.nameTemplateMap.put(paramString, localTemplateBean);
-    onAddTemplate(paramString, localTemplateBean);
+    paramMap = new TemplateBean(paramInt, paramString, paramMap);
+    paramMap.setViewBean(paramViewBean);
+    this.nameTemplateMap.put(paramString, paramMap);
+    onAddTemplate(paramString, paramMap);
   }
   
   public void createViewTemplate(String paramString, ComplementFileStringLoader paramComplementFileStringLoader)
@@ -103,7 +103,7 @@ public class BaseTemplateFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory
  * JD-Core Version:    0.7.0.1
  */

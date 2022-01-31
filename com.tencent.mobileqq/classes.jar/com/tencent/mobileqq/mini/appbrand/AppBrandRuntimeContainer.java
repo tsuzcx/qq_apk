@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
@@ -339,7 +339,7 @@ public final class AppBrandRuntimeContainer
         if (this.mDebugLayout.getParent() != null) {
           ((ViewGroup)this.mDebugLayout.getParent()).removeView(this.mDebugLayout);
         }
-        this.mDebugText.setText(ajya.a(2131700596));
+        this.mDebugText.setText(alpo.a(2131700965));
         paramFrameLayout.addView(this.mDebugLayout, new ViewGroup.LayoutParams(-1, -1));
         this.mDebugLayout.setVisibility(4);
       }
@@ -432,7 +432,7 @@ public final class AppBrandRuntimeContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.AppBrandRuntimeContainer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,67 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import android.graphics.Color;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import java.util.ArrayList;
 
 public class ajsu
-  extends BroadcastReceiver
+  extends Animation
 {
-  private ajsu(BaseActivity2 paramBaseActivity2) {}
+  private int jdField_a_of_type_Int;
+  private ajsv jdField_a_of_type_Ajsv;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ajsu(ArrayList<Integer> paramArrayList)
   {
-    if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-    {
-      BaseActivity2.ab = false;
-      GesturePWDUtils.setAppForground(paramContext, BaseActivity2.ab);
-    }
-    while (!paramIntent.getAction().equals("android.intent.action.SCREEN_ON")) {
+    a(paramArrayList);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(ArrayList<Integer> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+  }
+  
+  public void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    super.applyTransformation(paramFloat, paramTransformation);
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
       return;
     }
-    BaseActivity2.ab = GesturePWDUtils.isAppOnForegroundByTasks(paramContext);
-    GesturePWDUtils.setAppForground(paramContext, BaseActivity2.ab);
+    float f = 1.0F / (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    int i = (int)(paramFloat / f);
+    f = (paramFloat - i * f) / f;
+    if (i == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
+      i = this.jdField_a_of_type_JavaUtilArrayList.size() - 2;
+    }
+    for (;;)
+    {
+      int k = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
+      int j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i + 1)).intValue();
+      i = j;
+      if (paramFloat < 1.0F)
+      {
+        i = (int)(Color.alpha(k) + (Color.alpha(j) - Color.alpha(k)) * f);
+        int m = (int)(Color.red(k) + (Color.red(j) - Color.red(k)) * f);
+        int n = (int)(Color.green(k) + (Color.green(j) - Color.green(k)) * f);
+        paramFloat = Color.blue(k);
+        i = Color.argb(i, m, n, (int)((Color.blue(j) - Color.blue(k)) * f + paramFloat));
+      }
+      this.jdField_a_of_type_Int = i;
+      if (this.jdField_a_of_type_Ajsv == null) {
+        break;
+      }
+      this.jdField_a_of_type_Ajsv.a(i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsu
  * JD-Core Version:    0.7.0.1
  */

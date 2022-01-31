@@ -11,10 +11,10 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
-import baxn;
+import bcwh;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.animation.AnimatorProxy;
-import wcs;
+import xrk;
 
 public class DragFrameLayout
   extends FrameLayout
@@ -25,7 +25,7 @@ public class DragFrameLayout
   private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
   private ScaleAnimation jdField_a_of_type_AndroidViewAnimationScaleAnimation;
   private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private wcs jdField_a_of_type_Wcs;
+  private xrk jdField_a_of_type_Xrk;
   protected boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -147,7 +147,7 @@ public class DragFrameLayout
     {
       float f1 = Math.abs(this.jdField_c_of_type_Float - this.jdField_a_of_type_Float);
       float f2 = Math.abs(this.jdField_d_of_type_Float - this.jdField_b_of_type_Float);
-      if ((this.jdField_d_of_type_Int == 0) && (f1 + f2 < baxn.a(getContext(), 10.0F))) {
+      if ((this.jdField_d_of_type_Int == 0) && (f1 + f2 < bcwh.a(getContext(), 10.0F))) {
         return false;
       }
       f1 = this.jdField_c_of_type_Float - this.jdField_a_of_type_Float;
@@ -162,7 +162,7 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Wcs.a()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Xrk.a()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
@@ -178,7 +178,7 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Wcs.b()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Xrk.b()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
@@ -194,7 +194,7 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Wcs != null) && (this.jdField_a_of_type_Wcs.c()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Xrk != null) && (this.jdField_a_of_type_Xrk.c()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
@@ -323,12 +323,12 @@ public class DragFrameLayout
       if (this.jdField_d_of_type_Int != 0)
       {
         this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Wcs != null)
+        if (this.jdField_a_of_type_Xrk != null)
         {
           f1 = ViewHelper.getScaleX(this.jdField_a_of_type_AndroidViewView);
           f2 = ViewHelper.getScaleY(this.jdField_a_of_type_AndroidViewView);
           if ((f1 > 0.0F) && (f2 > 0.0F)) {
-            this.jdField_a_of_type_Wcs.a(this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(f1 * this.jdField_b_of_type_Int), (int)(f2 * this.jdField_c_of_type_Int), (int)ViewHelper.getX(this.jdField_a_of_type_AndroidViewView), (int)ViewHelper.getY(this.jdField_a_of_type_AndroidViewView));
+            this.jdField_a_of_type_Xrk.a(this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(f1 * this.jdField_b_of_type_Int), (int)(f2 * this.jdField_c_of_type_Int), (int)ViewHelper.getX(this.jdField_a_of_type_AndroidViewView), (int)ViewHelper.getY(this.jdField_a_of_type_AndroidViewView));
           }
         }
       }
@@ -357,9 +357,9 @@ public class DragFrameLayout
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnDraggingListener(wcs paramwcs)
+  public void setOnDraggingListener(xrk paramxrk)
   {
-    this.jdField_a_of_type_Wcs = paramwcs;
+    this.jdField_a_of_type_Xrk = paramxrk;
   }
   
   public void setSizeAndPosition(float paramFloat, int paramInt1, int paramInt2)
@@ -374,14 +374,14 @@ public class DragFrameLayout
     ViewHelper.setScaleY(this.jdField_a_of_type_AndroidViewView, f);
     ViewHelper.setX(this.jdField_a_of_type_AndroidViewView, paramInt1);
     ViewHelper.setY(this.jdField_a_of_type_AndroidViewView, paramInt2);
-    if (this.jdField_a_of_type_Wcs != null) {
-      this.jdField_a_of_type_Wcs.a(paramInt1, paramInt2, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(this.jdField_b_of_type_Int * f), (int)(this.jdField_c_of_type_Int * f));
+    if (this.jdField_a_of_type_Xrk != null) {
+      this.jdField_a_of_type_Xrk.a(paramInt1, paramInt2, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(this.jdField_b_of_type_Int * f), (int)(this.jdField_c_of_type_Int * f));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.DragFrameLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,29 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.view.View;
+import android.widget.ExpandableListAdapter;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.widget.ExpandableListView;
 
 public class adxc
-  extends adwy
+  implements bhsp
 {
-  public RelativeLayout a;
-  public BubbleImageView a;
-  public MessageProgressView a;
-  public RelativeLayout b;
-  public int e;
-  public int f;
+  public adxc(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public adxc(adxb paramadxb)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
   {
-    super(paramadxb);
+    if (((akhm)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
+      return true;
+    }
+    azni.b(this.a.getActivity(), this.a.app.getCurrentAccountUin());
+    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
+    this.a.a(paramExpandableListView);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGuideView;
 
 public class rdk
-  extends oyd
+  extends AnimatorListenerAdapter
 {
-  public rdk(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  private rdk(VideoFeedsGuideView paramVideoFeedsGuideView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramString);
+    super.onAnimationCancel(paramAnimator);
+    VideoFeedsGuideView.a(this.a, false);
   }
   
-  public void a(oxx paramoxx)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramoxx.b();
+    super.onAnimationEnd(paramAnimator);
+    VideoFeedsGuideView.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdk
  * JD-Core Version:    0.7.0.1
  */

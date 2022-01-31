@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia.view;
 
-import ahxm;
-import aiak;
-import aiap;
+import ajow;
+import ajru;
+import ajrz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.opengl.GLSurfaceView;
@@ -10,8 +10,8 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import axin;
-import axjc;
+import azdt;
+import azei;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
@@ -54,7 +54,7 @@ public class FSurfaceViewLayout
   public int a()
   {
     if ((this.c) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)) {
-      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Aiap.a;
+      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Ajrz.a;
     }
     return 0;
   }
@@ -76,7 +76,7 @@ public class FSurfaceViewLayout
   public void a(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     if ((this.c) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)) {
-      ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axjc.a(paramBoolean, paramFloat1);
+      ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Azei.a(paramBoolean, paramFloat1);
     }
   }
   
@@ -124,7 +124,7 @@ public class FSurfaceViewLayout
     return false;
   }
   
-  public boolean a(Context paramContext, aiak paramaiak, PreviewContext paramPreviewContext)
+  public boolean a(Context paramContext, ajru paramajru, PreviewContext paramPreviewContext)
   {
     if (!this.d)
     {
@@ -157,10 +157,10 @@ public class FSurfaceViewLayout
       {
         this.jdField_a_of_type_AndroidOpenglGLSurfaceView = new CameraFilterGLView(paramContext, null);
         this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setVisibility(8);
-        this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setId(2131366419);
+        this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setId(2131366525);
       }
       paramContext = (CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView;
-      paramContext.setFilterListener(paramaiak);
+      paramContext.setFilterListener(paramajru);
       paramContext.setVideoContext(paramPreviewContext);
       paramContext.b();
       this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setLayoutParams(localLayoutParams);
@@ -179,7 +179,7 @@ public class FSurfaceViewLayout
       if (this.jdField_a_of_type_AndroidOpenglGLSurfaceView == null)
       {
         this.jdField_a_of_type_AndroidOpenglGLSurfaceView = new CameraGLSurfaceView(paramContext);
-        this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setId(2131366428);
+        this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setId(2131366534);
         this.jdField_a_of_type_AndroidOpenglGLSurfaceView.setVisibility(8);
       }
       paramContext = (CameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView;
@@ -192,7 +192,7 @@ public class FSurfaceViewLayout
   public int b()
   {
     if ((this.c) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)) {
-      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axin.c();
+      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Azdt.c();
     }
     return 0;
   }
@@ -207,7 +207,7 @@ public class FSurfaceViewLayout
   public boolean b()
   {
     if ((this.c) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null) && ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraFilterGLView))) {
-      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axjc.d;
+      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Azei.d;
     }
     return true;
   }
@@ -222,7 +222,7 @@ public class FSurfaceViewLayout
   public boolean c()
   {
     if ((this.c) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null) && ((this.jdField_a_of_type_AndroidOpenglGLSurfaceView instanceof CameraFilterGLView))) {
-      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axjc.e;
+      return ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Azei.e;
     }
     return true;
   }
@@ -239,7 +239,7 @@ public class FSurfaceViewLayout
   public void e()
   {
     if ((this.c) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView != null)) {
-      ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Axin.b();
+      ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).jdField_a_of_type_Azdt.b();
     }
   }
   
@@ -285,17 +285,17 @@ public class FSurfaceViewLayout
     }
   }
   
-  public void setPreviewSize(int paramInt1, int paramInt2, ahxm paramahxm)
+  public void setPreviewSize(int paramInt1, int paramInt2, ajow paramajow)
   {
     if (this.jdField_a_of_type_AndroidOpenglGLSurfaceView == null) {
       return;
     }
     if (this.c)
     {
-      ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setPreviewSize(paramInt1, paramInt2, paramahxm);
+      ((CameraFilterGLView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setPreviewSize(paramInt1, paramInt2, paramajow);
       return;
     }
-    ((CameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setPreviewSize(paramInt1, paramInt2, paramahxm);
+    ((CameraGLSurfaceView)this.jdField_a_of_type_AndroidOpenglGLSurfaceView).setPreviewSize(paramInt1, paramInt2, paramajow);
   }
   
   public void setVideoFilter(String paramString)
@@ -329,7 +329,7 @@ public class FSurfaceViewLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout
  * JD-Core Version:    0.7.0.1
  */

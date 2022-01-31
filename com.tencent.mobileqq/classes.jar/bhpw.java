@@ -1,39 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.AbsSpinner.SavedState;
 
-public class bhpw
+public final class bhpw
+  implements Parcelable.Creator<AbsSpinner.SavedState>
 {
-  public static int a(String paramString)
+  public AbsSpinner.SavedState a(Parcel paramParcel)
   {
-    try
-    {
-      int i = Integer.parseInt(paramString);
-      return i;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      a("toInt convert error:" + paramString);
-      return 0;
-    }
-    catch (Exception paramString)
-    {
-      a("toInt convert error:" + paramString.getMessage());
-    }
-    return 0;
+    return new AbsSpinner.SavedState(paramParcel, null);
   }
   
-  private static final void a(String paramString)
+  public AbsSpinner.SavedState[] a(int paramInt)
   {
-    try
-    {
-      QLog.e("SafeUtil", 1, paramString);
-      return;
-    }
-    catch (Exception paramString) {}
+    return new AbsSpinner.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhpw
  * JD-Core Version:    0.7.0.1
  */

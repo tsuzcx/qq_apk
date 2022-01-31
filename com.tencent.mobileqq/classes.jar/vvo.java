@@ -1,82 +1,34 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class vvo
-  extends BaseAdapter
+public final class vvo
+  extends QQUIEventReceiver<vvc, wku>
 {
-  int jdField_a_of_type_Int = -1;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList<vvt> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  
-  public vvo(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
+  public vvo(@NonNull vvc paramvvc)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    super(paramvvc);
   }
   
-  public void a(int paramInt)
+  public void a(@NonNull vvc paramvvc, @NonNull wku paramwku)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(ArrayList<vvt> paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    vvt localvvt = (vvt)getItem(paramInt);
-    View localView;
-    if (paramView == null)
+    if ((paramwku.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramwku.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramvvc.a != null) && (TextUtils.equals(paramwku.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramvvc.a.b)))
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561226, paramViewGroup, false);
-      paramView = new vvp(this);
-      paramView.a = ((ImageView)localView.findViewById(2131368320));
-      paramView.b = ((ImageView)localView.findViewById(2131368375));
-      localView.setTag(paramView);
-      paramViewGroup = paramView;
+      wsv.a(paramvvc.b, "refresh feed item , feed id :%s", paramvvc.a.b);
+      paramvvc.i();
     }
-    for (;;)
-    {
-      paramViewGroup.a.setImageDrawable(localvvt.a);
-      if (paramInt != this.jdField_a_of_type_Int) {
-        break;
-      }
-      paramViewGroup.b.setVisibility(0);
-      return localView;
-      paramViewGroup = (vvp)paramView.getTag();
-      localView = paramView;
-    }
-    paramViewGroup.b.setVisibility(8);
-    return localView;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return wku.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvo
  * JD-Core Version:    0.7.0.1
  */

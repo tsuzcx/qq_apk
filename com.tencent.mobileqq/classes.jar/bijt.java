@@ -1,18 +1,21 @@
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView.12.2;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.redtouch.RedTouchUI;
+import com.tencent.widget.SimpleTextView;
+import cooperation.comic.ui.QQComicTabBarView;
 
 public class bijt
-  implements avtm
 {
-  public bijt(AECameraGLSurfaceView.12.2 param2) {}
+  public ImageView a;
+  public URLDrawable a;
+  public RedTouchUI a;
+  public SimpleTextView a;
   
-  public void a()
-  {
-    bips.a().a();
-  }
+  public bijt(QQComicTabBarView paramQQComicTabBarView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bijt
  * JD-Core Version:    0.7.0.1
  */

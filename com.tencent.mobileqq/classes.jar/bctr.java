@@ -1,43 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ObjectAnimator;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
+import android.os.Handler;
 
-public class bctr
-  implements Animator.AnimatorListener
+class bctr
+  implements bctp
 {
-  public bctr(FloatingScreenContainer paramFloatingScreenContainer) {}
+  bctr(bctq parambctq) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a()
   {
-    FloatingScreenContainer.a(this.a, false);
+    bctq.a(this.a).sendEmptyMessage(1);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void b()
   {
-    FloatingScreenContainer.a(this.a).removeAllListeners();
-    if (FloatingScreenContainer.a(this.a) != null) {
-      FloatingScreenContainer.a(this.a).b();
+    bctq.a(this.a).sendEmptyMessage(0);
+  }
+  
+  public void c()
+  {
+    if (bctq.a(this.a) != null) {
+      bctq.a(this.a).b();
     }
-    FloatingScreenContainer.a(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    FloatingScreenContainer.a(this.a, true);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (FloatingScreenContainer.a(this.a) != null) {
-      FloatingScreenContainer.a(this.a).a();
-    }
-    FloatingScreenContainer.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bctr
  * JD-Core Version:    0.7.0.1
  */

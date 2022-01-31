@@ -1,19 +1,30 @@
-import com.tencent.qqmini.sdk.core.proxy.AsyncResult;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
 class behx
-  implements AsyncResult
+  extends BroadcastReceiver
 {
-  behx(behw parambehw) {}
+  behx(behr parambehr) {}
   
-  public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    betc.d("AuthState", "setAuthorize() onCmdListener isSuccess: " + paramBoolean + "   ; ret: " + paramJSONObject);
+    long l1 = paramIntent.getLongExtra("groupId", 0L);
+    paramContext = paramIntent.getLongArrayExtra("uinList");
+    boolean bool = paramIntent.getBooleanExtra("isSpeaking", false);
+    int j = paramContext.length;
+    int i = 0;
+    while (i < j)
+    {
+      long l2 = paramContext[i];
+      this.a.notifyUI(2, true, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bool) });
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     behx
  * JD-Core Version:    0.7.0.1
  */

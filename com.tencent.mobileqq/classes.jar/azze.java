@@ -1,25 +1,17 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.Button;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-
 public class azze
-  implements Animation.AnimationListener
 {
-  public azze(ReciteFragment paramReciteFragment, Button paramButton) {}
+  public float a;
+  public float b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public azze(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_AndroidWidgetButton.setVisibility(4);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azze
  * JD-Core Version:    0.7.0.1
  */

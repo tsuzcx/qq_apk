@@ -1,161 +1,100 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.open.appcommon.now.download.local.DownloadNativeApi.1;
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticon.QQSysAndEmojiResInfo;
 
-public class bdgu
+class bdgu
+  implements appt
 {
-  private static bdgu jdField_a_of_type_Bdgu;
-  private bdgt jdField_a_of_type_Bdgt = new bdgt();
+  bdgu(bdgl parambdgl) {}
   
-  public static bdgu a()
+  public void a(appw paramappw)
   {
-    if (jdField_a_of_type_Bdgu == null) {
-      jdField_a_of_type_Bdgu = new bdgu();
-    }
-    return jdField_a_of_type_Bdgu;
-  }
-  
-  private DownloadInfo a(bdgz parambdgz)
-  {
-    DownloadInfo localDownloadInfo = new DownloadInfo(parambdgz.jdField_a_of_type_JavaLangString, parambdgz.jdField_b_of_type_JavaLangString);
-    localDownloadInfo.jdField_d_of_type_JavaLangString = parambdgz.jdField_d_of_type_JavaLangString;
-    localDownloadInfo.jdField_b_of_type_Int = parambdgz.jdField_a_of_type_Int;
-    localDownloadInfo.jdField_b_of_type_Boolean = parambdgz.jdField_d_of_type_Boolean;
-    localDownloadInfo.jdField_a_of_type_Boolean = parambdgz.e;
-    localDownloadInfo.f = parambdgz.jdField_c_of_type_JavaLangString;
-    localDownloadInfo.jdField_a_of_type_Int = parambdgz.jdField_c_of_type_Int;
-    localDownloadInfo.jdField_c_of_type_Int = parambdgz.jdField_b_of_type_Int;
-    localDownloadInfo.jdField_d_of_type_Int = 0;
-    localDownloadInfo.jdField_c_of_type_Boolean = true;
-    return localDownloadInfo;
-  }
-  
-  private boolean a()
-  {
-    return "com.tencent.mobileqq:tool".equals(bdfn.r());
-  }
-  
-  public int a(Activity paramActivity, bdgz parambdgz)
-  {
-    if (!a()) {
-      return 401;
-    }
-    if (parambdgz == null) {
-      return 400;
-    }
-    if ((parambdgz.jdField_a_of_type_Boolean) && (!"com.tencent.now".equals(parambdgz.jdField_c_of_type_JavaLangString))) {
-      return 402;
-    }
-    DownloadInfo localDownloadInfo = a(parambdgz);
-    localDownloadInfo.g = 2;
-    localDownloadInfo.jdField_c_of_type_Boolean = true;
-    if ((naj.a() != 1) && (paramActivity != null) && (parambdgz.f)) {
-      a(paramActivity, localDownloadInfo, parambdgz);
-    }
-    for (;;)
-    {
-      return 200;
-      bdgk.a().a(localDownloadInfo);
-      this.jdField_a_of_type_Bdgt.a(parambdgz);
-    }
-  }
-  
-  public int a(bdgz parambdgz)
-  {
-    int j = -1;
     int i;
-    if (!a()) {
-      i = 401;
+    int j;
+    if ((paramappw instanceof apuw))
+    {
+      i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
+      j = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
+      if ((i < 0) || (j < 0) || (j < i)) {}
     }
+    apur localapur;
     int k;
+    int m;
     do
     {
+      this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, baiy.c(((apuw)paramappw).a));
       do
       {
-        return i;
-        i = j;
-      } while (parambdgz == null);
-      parambdgz = a(parambdgz);
-      parambdgz.g = 13;
-      parambdgz.jdField_c_of_type_Int = 0;
-      k = bdgk.a().a(parambdgz);
-      if (k == 1) {
-        return 1;
+        return;
+      } while (!(paramappw instanceof apur));
+      localapur = (apur)paramappw;
+      i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
+      j = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
+      k = localapur.a;
+      m = localapur.b;
+      if ((i < 0) || (j < 0) || (j < i)) {
+        break;
       }
-      i = j;
-    } while (k != 0);
-    return 0;
-  }
-  
-  public int a(String paramString)
-  {
-    if (!a()) {
-      return 401;
-    }
-    this.jdField_a_of_type_Bdgt.a(paramString);
-    bdgk.a().a(paramString);
-    return 200;
-  }
-  
-  public int a(String paramString1, String paramString2)
-  {
-    if (!a()) {
-      return 401;
-    }
-    bdgk.a().a(paramString1, paramString2);
-    return 200;
-  }
-  
-  public int a(List<bdgz> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return 400;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    } while ((k == 2) && (m == -1));
+    if (k == 1) {}
+    for (paramappw = baiy.c(m);; paramappw = baiy.a(m))
     {
-      DownloadInfo localDownloadInfo = a((bdgz)paramList.next());
-      localDownloadInfo.jdField_c_of_type_Int = 0;
-      localArrayList.add(localDownloadInfo);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, paramappw);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+      if (this.a.jdField_a_of_type_Boolean) {
+        localapur.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), null);
+      }
+      apoa.a().a(k).a(m, 5);
+      return;
     }
-    if (bdgk.a().a(localArrayList) != 0) {
-      return 400;
+  }
+  
+  public void a(appw paramappw1, appw paramappw2, Drawable paramDrawable) {}
+  
+  public boolean a(appw paramappw)
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart() == 0) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Editable localEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText();
+        int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
+        int j = TextUtils.getOffsetBefore(this.a.jdField_a_of_type_AndroidWidgetEditText.getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
     }
-    return 200;
   }
   
-  public void a(Activity paramActivity, DownloadInfo paramDownloadInfo, bdgz parambdgz)
-  {
-    new Handler(Looper.getMainLooper()).post(new DownloadNativeApi.1(this, paramDownloadInfo, parambdgz, paramActivity));
-  }
+  public void b(appw paramappw) {}
   
-  public void a(bdgx parambdgx)
-  {
-    this.jdField_a_of_type_Bdgt.a(parambdgx);
-    bdgk.a().a(this.jdField_a_of_type_Bdgt);
-  }
+  public void c() {}
   
-  public boolean a(String paramString)
-  {
-    return bdjl.a(paramString);
-  }
+  public void d() {}
   
-  public void b(bdgx parambdgx)
-  {
-    this.jdField_a_of_type_Bdgt.a();
-    this.jdField_a_of_type_Bdgt.b(parambdgx);
-    bdgk.a().b(this.jdField_a_of_type_Bdgt);
-  }
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdgu
  * JD-Core Version:    0.7.0.1
  */

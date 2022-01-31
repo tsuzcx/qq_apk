@@ -1,30 +1,19 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Build.VERSION;
-import android.widget.ImageView;
+import com.tencent.biz.qqcircle.viewmodels.QCircleMessageNoticeViewModel.1;
+import java.util.List;
 
-class tze
-  extends AnimatorListenerAdapter
+public class tze
+  implements axhr
 {
-  tze(tzc paramtzc) {}
+  public tze(QCircleMessageNoticeViewModel.1 param1) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(List<String> paramList, int paramInt)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.a.a.setImageAlpha(255);
-    }
-    for (;;)
-    {
-      this.a.a.setVisibility(8);
-      return;
-      this.a.a.setImageResource(2130849558);
-    }
+    tzd.a(this.a.this$0, paramList, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tze
  * JD-Core Version:    0.7.0.1
  */

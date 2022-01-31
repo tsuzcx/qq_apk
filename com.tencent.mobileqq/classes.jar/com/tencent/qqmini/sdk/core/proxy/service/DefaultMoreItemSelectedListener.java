@@ -4,35 +4,35 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import benn;
-import besl;
-import besz;
-import betc;
-import beut;
-import bezl;
-import bfgc;
+import bgnf;
+import bgte;
+import bgyg;
+import bhij;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.model.ShareState;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniRuntime;
+import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.ui.MainPageFragment;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public class DefaultMoreItemSelectedListener
-  implements bfgc
+  implements bhij
 {
   private static final String TAG = "DefaultMoreItemSelectedListener";
   
-  private void reportClick(besz parambesz, String paramString)
+  private void reportClick(IMiniRuntime paramIMiniRuntime, String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while (!parambesz.a().isEngineTypeMiniGame()) {
+    while (!paramIMiniRuntime.getMiniAppInfo().isEngineTypeMiniGame()) {
       return;
     }
-    bezl.a(parambesz.a(), bezl.a(parambesz.a()), null, "user_click", "more_button", paramString);
+    bgyg.a(paramIMiniRuntime.getMiniAppInfo(), bgyg.a(paramIMiniRuntime.getMiniAppInfo()), null, "user_click", "more_button", paramString);
   }
   
-  private void startAboutPage(Activity paramActivity, MiniAppInfo paramMiniAppInfo, besl parambesl)
+  private void startAboutPage(Activity paramActivity, MiniAppInfo paramMiniAppInfo, ShareState paramShareState)
   {
     MainPageFragment.a(paramActivity, paramMiniAppInfo, paramMiniAppInfo.verType);
   }
@@ -51,11 +51,11 @@ public class DefaultMoreItemSelectedListener
     {
       for (;;)
       {
-        betc.d("DefaultMoreItemSelectedListener", "startComplainAndCallback, url = " + "");
+        QMLog.e("DefaultMoreItemSelectedListener", "startComplainAndCallback, url = " + "");
         localUnsupportedEncodingException.printStackTrace();
       }
     }
-    Object localObject = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + paramString + "&openid=" + beut.a().a() + "&avatar=" + (String)localObject + "&nickname=游客";
+    Object localObject = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + paramString + "&openid=" + bgte.a().a() + "&avatar=" + (String)localObject + "&nickname=游客";
     paramString = new Intent();
     paramString.putExtra("url", (String)localObject);
     paramString.putExtra("title", "投诉与反馈");
@@ -65,41 +65,41 @@ public class DefaultMoreItemSelectedListener
     ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).startBrowserActivity(paramActivity, paramString);
   }
   
-  public void onMoreItemSelected(besz parambesz, int paramInt)
+  public void onMoreItemSelected(IMiniRuntime paramIMiniRuntime, int paramInt)
   {
-    if (parambesz == null) {
+    if (paramIMiniRuntime == null) {
       return;
     }
     String str = "";
     if ((paramInt >= 100) && (paramInt <= 200))
     {
-      parambesz.a(paramInt, null);
-      reportClick(parambesz, "share_" + paramInt);
+      paramIMiniRuntime.share(paramInt, null);
+      reportClick(paramIMiniRuntime, "share_" + paramInt);
       return;
     }
-    Activity localActivity = parambesz.a();
-    MiniAppInfo localMiniAppInfo = parambesz.a();
+    Activity localActivity = paramIMiniRuntime.getAttachedActivity();
+    MiniAppInfo localMiniAppInfo = paramIMiniRuntime.getMiniAppInfo();
     switch (paramInt)
     {
     }
     for (;;)
     {
-      reportClick(parambesz, str);
+      reportClick(paramIMiniRuntime, str);
       return;
-      parambesz.a(1, null);
+      paramIMiniRuntime.share(1, null);
       str = "share_QQ";
       continue;
-      parambesz.a(2, null);
+      paramIMiniRuntime.share(2, null);
       str = "share_QZ";
       continue;
-      parambesz.a(3, null);
+      paramIMiniRuntime.share(3, null);
       str = "share_WX";
       continue;
-      parambesz.a(4, null);
+      paramIMiniRuntime.share(4, null);
       str = "share_Moments";
       continue;
       if ((localActivity != null) && (localMiniAppInfo != null)) {
-        startAboutPage(localActivity, localMiniAppInfo, parambesz.a());
+        startAboutPage(localActivity, localMiniAppInfo, paramIMiniRuntime.getShareState());
       }
       str = "about";
       continue;
@@ -108,10 +108,12 @@ public class DefaultMoreItemSelectedListener
       }
       str = "report";
       continue;
-      parambesz.a();
-      benn.a(localActivity, "调试面板需重启生效", 1).a();
+      paramIMiniRuntime.toggleDebugPanel();
+      bgnf.a(localActivity, "调试面板需重启生效", 1).a();
       continue;
-      parambesz.b();
+      paramIMiniRuntime.toggleMonitorPanel();
+      continue;
+      paramIMiniRuntime.restart();
       continue;
       str = "cancel";
       continue;
@@ -121,7 +123,7 @@ public class DefaultMoreItemSelectedListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.DefaultMoreItemSelectedListener
  * JD-Core Version:    0.7.0.1
  */

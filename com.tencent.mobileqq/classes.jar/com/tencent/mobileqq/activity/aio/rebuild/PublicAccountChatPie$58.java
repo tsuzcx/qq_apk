@@ -1,26 +1,25 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aert;
-import npz;
+import agot;
 
 public class PublicAccountChatPie$58
   implements Runnable
 {
-  public PublicAccountChatPie$58(aert paramaert, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3) {}
+  public PublicAccountChatPie$58(agot paramagot) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.this$0.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
-      return;
+    boolean bool = false;
+    agot localagot = this.this$0;
+    if ((this.this$0.b(true)) || (this.this$0.b(false))) {
+      bool = true;
     }
-    this.this$0.a.a();
+    localagot.as = bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.58
  * JD-Core Version:    0.7.0.1
  */

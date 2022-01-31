@@ -1,22 +1,25 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import acyk;
-import aeym;
-import aeyn;
-import ahon;
-import ajsd;
-import ajya;
-import akdh;
-import akpb;
+import abol;
+import aepx;
+import agvr;
+import agvs;
+import ajfw;
+import aljq;
+import alpo;
+import aluw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import bggg;
+import asil;
+import asin;
+import bdkd;
+import bihe;
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.PAMessage;
@@ -27,12 +30,12 @@ import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import oob;
 import org.json.JSONObject;
-import saz;
-import sfe;
-import shu;
-import sjs;
+import osm;
+import ssp;
+import swy;
+import szp;
+import tcn;
 
 public class RecentItemPublicAccountChatMsgData
   extends RecentItemChatMsgData
@@ -43,7 +46,7 @@ public class RecentItemPublicAccountChatMsgData
   public RecentItemPublicAccountChatMsgData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    this.isNewKandian = TextUtils.equals(paramRecentUser.uin, ajsd.az);
+    this.isNewKandian = TextUtils.equals(paramRecentUser.uin, aljq.az);
     if (this.isNewKandian) {
       this.mUnreadFlag = 2;
     }
@@ -51,9 +54,9 @@ public class RecentItemPublicAccountChatMsgData
   
   private void a(AbsStructMsg paramAbsStructMsg, Context paramContext)
   {
-    if ((!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(ajya.a(2131713186))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(ajya.a(2131713191))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(ajya.a(2131713183))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(ajya.a(2131713194))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(ajya.a(2131713197))))
+    if ((!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(alpo.a(2131713558))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(alpo.a(2131713563))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(alpo.a(2131713555))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(alpo.a(2131713566))) && (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(alpo.a(2131713569))))
     {
-      if (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(String.format(paramContext.getString(2131696736), new Object[] { Integer.valueOf(this.mUnreadNum) }))) {}
+      if (!paramAbsStructMsg.mOrangeWord.equalsIgnoreCase(String.format(paramContext.getString(2131696911), new Object[] { Integer.valueOf(this.mUnreadNum) }))) {}
     }
     else {
       this.mMsgExtroInfo = "";
@@ -67,10 +70,10 @@ public class RecentItemPublicAccountChatMsgData
     {
       i = paramMessage.msgtype;
       if ((i == -3006) || (i == -5004)) {
-        break label1023;
+        break label1094;
       }
       a(paramMessage, this.mUser.getType(), paramQQAppInterface, paramContext, this.msgSummary);
-      if ((i == -2025) && (this.mUnreadNum > 0) && (saz.a(paramQQAppInterface, this.mUser.uin)))
+      if ((i == -2025) && (this.mUnreadNum > 0) && (ssp.a(paramQQAppInterface, this.mUser.uin)))
       {
         this.mExtraInfoColor = -881592;
         this.mMsgExtroInfo = paramMessage.msg;
@@ -80,9 +83,9 @@ public class RecentItemPublicAccountChatMsgData
     else
     {
       paramContext = null;
-      paramQQMessageFacade = (akdh)paramQQAppInterface.getManager(56);
-      if ((paramQQMessageFacade != null) && (!ahon.a(paramQQAppInterface))) {
-        break label1207;
+      paramQQMessageFacade = (aluw)paramQQAppInterface.getManager(56);
+      if ((paramQQMessageFacade != null) && (!ajfw.a(paramQQAppInterface))) {
+        break label1278;
       }
     }
     for (;;)
@@ -97,31 +100,34 @@ public class RecentItemPublicAccountChatMsgData
             this.mTitleName = paramQQMessageFacade.name;
           }
           if (this.isNewKandian) {
-            this.mTitleName = sfe.b(paramQQAppInterface, paramQQAppInterface.getApp());
+            this.mTitleName = swy.b(paramQQAppInterface, paramQQAppInterface.getApp());
           }
         }
         if (paramContext == null) {
-          break label1222;
+          break label1293;
         }
         this.mTitleName = paramContext.name;
         this.mAuthenIconId = 0;
-        if (ajsd.aR.equals(this.mUser.uin)) {
+        if (aljq.aS.equals(this.mUser.uin)) {
           this.mTitleName = KandianDailyManager.a(paramMessage);
         }
         if ((paramMessage == null) || (paramMessage.getMessageText() == null)) {
-          break label1230;
+          break label1301;
         }
         this.mDisplayTime = paramMessage.time;
-        if ((!this.isNewKandian) && (saz.a(paramQQAppInterface, this.mUser.uin)))
+        if (("2747277822".equals(this.mUser.uin)) && (asil.a())) {
+          asin.a(paramQQAppInterface, paramMessage, this.msgSummary, this);
+        }
+        if ((!this.isNewKandian) && (ssp.a(paramQQAppInterface, this.mUser.uin)))
         {
-          i = paramQQAppInterface.a().f(this.mUser.uin, this.mUser.getType());
+          i = paramQQAppInterface.a().g(this.mUser.uin, this.mUser.getType());
           if (this.mUnreadNum > 0)
           {
-            if (!ajsd.aQ.equals(this.mUser.uin)) {
-              break label1252;
+            if (!aljq.aR.equals(this.mUser.uin)) {
+              break label1323;
             }
             if (i <= 0) {
-              break label1244;
+              break label1315;
             }
             this.mUnreadNum = 1;
             this.mUnreadFlag = 2;
@@ -130,11 +136,11 @@ public class RecentItemPublicAccountChatMsgData
         if ((paramMessage != null) && (paramMessage.mExJsonObject != null)) {
           this.mReportKeyBytesOacMsgxtend = paramMessage.mExJsonObject.optString("report_key_bytes_oac_msg_extend", null);
         }
-        if (ajsd.aP.equals(this.mUser.uin)) {
-          oob.a(this, 9);
+        if (aljq.aQ.equals(this.mUser.uin)) {
+          osm.a(this, 9);
         }
-        sjs.a().a();
-        shu.a(this);
+        tcn.a().a();
+        szp.a(this);
         if (("2909288299".equals(this.mUser.uin)) && (this.mUnreadNum > 0))
         {
           paramContext = paramMessage.getExtInfoFromExtStr("news_has_report");
@@ -163,7 +169,7 @@ public class RecentItemPublicAccountChatMsgData
             {
               this.mMsgExtroInfo = ("[" + paramQQMessageFacade.structingMsg.mOrangeWord.substring(0, 8) + "]");
               a(paramQQMessageFacade.structingMsg, paramContext);
-              this.mExtraInfoColor = paramContext.getResources().getColor(2131166955);
+              this.mExtraInfoColor = paramContext.getResources().getColor(2131167006);
             }
           }
           else
@@ -176,7 +182,7 @@ public class RecentItemPublicAccountChatMsgData
           this.mMsgExtroInfo = ("[" + paramQQMessageFacade.structingMsg.mOrangeWord + "]");
           continue;
         }
-        if ((ajsd.aQ.equals(this.mUser.uin)) || (ajsd.aR.equals(this.mUser.uin)))
+        if ((aljq.aR.equals(this.mUser.uin)) || (aljq.aS.equals(this.mUser.uin)))
         {
           paramQQMessageFacade = null;
           if ((paramMessage.lastMsg instanceof MessageForStructing))
@@ -210,7 +216,7 @@ public class RecentItemPublicAccountChatMsgData
           paramMessage.lastMsg = paramQQMessageFacade;
           continue;
         }
-        if (("2290230341".equals(this.mUser.uin)) && (bggg.a(paramQQAppInterface)))
+        if (("2290230341".equals(this.mUser.uin)) && (bihe.a(paramQQAppInterface)))
         {
           paramContext = paramMessage.getExtInfoFromExtStr("qzone_msg_box_promot");
           if (TextUtils.isEmpty(paramContext)) {
@@ -219,15 +225,25 @@ public class RecentItemPublicAccountChatMsgData
           this.msgSummary.strContent = paramContext;
           break;
         }
-        paramContext = aeym.a(paramQQAppInterface, this.mUser.uin);
-        if ((paramContext == null) || (paramContext.d != paramMessage.uniseq) || (!paramContext.b())) {
+        if (this.mUnreadNum > 0)
+        {
+          bool = true;
+          paramContext = bdkd.a(paramQQAppInterface, paramMessage, bool);
+          if (paramContext != null) {
+            this.msgSummary.strContent = paramContext;
+          }
+          paramContext = agvr.a(paramQQAppInterface, this.mUser.uin);
+          if ((paramContext == null) || (paramContext.d != paramMessage.uniseq) || (!paramContext.b())) {
+            break;
+          }
+          ThreadManager.post(new RecentItemPublicAccountChatMsgData.2(this, paramQQAppInterface, paramContext), 2, null, false);
           break;
         }
-        ThreadManager.post(new RecentItemPublicAccountChatMsgData.2(this, paramQQAppInterface, paramContext), 2, null, false);
-        break;
-        label1023:
+        boolean bool = false;
+        continue;
+        label1094:
         this.msgSummary.strContent = "";
-        paramQQMessageFacade = acyk.a(paramMessage);
+        paramQQMessageFacade = aepx.a(paramMessage);
         if ((paramQQMessageFacade == null) || (paramQQMessageFacade.items == null) || (paramQQMessageFacade.items.size() == 0))
         {
           a(paramMessage, this.mUser.getType(), paramQQAppInterface, paramContext, this.msgSummary);
@@ -247,20 +263,20 @@ public class RecentItemPublicAccountChatMsgData
         paramContext = paramQQMessageFacade.b(this.mUser.uin);
         continue;
       }
-      label1207:
+      label1278:
       paramContext = paramQQMessageFacade.b(this.mUser.uin);
       continue;
-      label1222:
+      label1293:
       this.mAuthenIconId = 0;
       continue;
-      label1230:
+      label1301:
       this.mDisplayTime = this.mUser.lastmsgtime;
       continue;
-      label1244:
+      label1315:
       this.mUnreadFlag = 1;
       continue;
-      label1252:
-      if (ajsd.aR.equals(this.mUser.uin))
+      label1323:
+      if (aljq.aS.equals(this.mUser.uin))
       {
         if (i > 0) {
           this.mUnreadFlag = 2;
@@ -282,7 +298,7 @@ public class RecentItemPublicAccountChatMsgData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData
  * JD-Core Version:    0.7.0.1
  */

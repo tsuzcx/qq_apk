@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import ahiw;
-import ajya;
+import ajaf;
+import alpo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -9,13 +9,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import axrn;
-import baxl;
-import bbcz;
-import bcql;
+import azmz;
+import bcwf;
+import bdbt;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.net.URLDecoder;
 import org.json.JSONException;
@@ -66,7 +66,7 @@ public class TenpayJumpActivity
   {
     try
     {
-      int j = paramContext.getResources().getDimensionPixelSize(2131298865);
+      int j = paramContext.getResources().getDimensionPixelSize(2131298914);
       float f1 = paramContext.getResources().getDisplayMetrics().density;
       return j - (int)(f1 * 5.0F);
     }
@@ -108,13 +108,13 @@ public class TenpayJumpActivity
       {
         if (this.jdField_a_of_type_JavaLangString.equals(str2))
         {
-          a(ajya.a(2131714851));
+          a(alpo.a(2131715223));
           finish();
           return;
         }
         if (!this.jdField_a_of_type_JavaLangString.equals(str1))
         {
-          a(ajya.a(2131714852));
+          a(alpo.a(2131715224));
           finish();
           return;
         }
@@ -128,7 +128,7 @@ public class TenpayJumpActivity
         ((Bundle)localObject1).putString("json", localJSONObject.toString());
         ((Bundle)localObject1).putString("callbackSn", "0");
         PayBridgeActivity.a(this, 9, (Bundle)localObject1);
-        ahiw.a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.e, 1L, 0, "scanTransferLimmitQR", "", "");
+        ajaf.a(this.app, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.e, 1L, 0, "scanTransferLimmitQR", "", "");
         return;
       }
       a("verifyqrcode", localJSONObject.toString());
@@ -163,7 +163,7 @@ public class TenpayJumpActivity
   public void a(CharSequence paramCharSequence)
   {
     if (!isFinishing()) {
-      bcql.a(this, paramCharSequence, 0).b(a(this.jdField_a_of_type_AndroidContentContext));
+      QQToast.a(this, paramCharSequence, 0).b(a(this.jdField_a_of_type_AndroidContentContext));
     }
   }
   
@@ -180,7 +180,7 @@ public class TenpayJumpActivity
     paramString5.append("|0|1|0|android.");
     paramString5.append(6);
     paramString5.append("|");
-    paramString5.append(baxl.a());
+    paramString5.append(bcwf.a());
     paramString5.append("|");
     if ((!TextUtils.isEmpty(paramString3)) || (!TextUtils.isEmpty(paramString4)))
     {
@@ -195,7 +195,7 @@ public class TenpayJumpActivity
       paramString5.append(this.e.replace("|", ","));
     }
     paramString5.append("|");
-    axrn.a(BaseApplication.getContext()).b(this.app, paramString5.toString());
+    azmz.a(BaseApplication.getContext()).b(this.app, paramString5.toString());
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -234,7 +234,7 @@ public class TenpayJumpActivity
           continue;
         }
         this.i = "1";
-        paramBundle = bbcz.m(this.app, this.g);
+        paramBundle = bdbt.m(this.app, this.g);
         if ((!TextUtils.isEmpty(paramBundle)) && (!paramBundle.equals(this.g))) {
           this.h = paramBundle;
         }
@@ -362,7 +362,7 @@ public class TenpayJumpActivity
     //   215: ifne +41 -> 256
     //   218: aload_0
     //   219: ldc_w 387
-    //   222: invokestatic 161	ajya:a	(I)Ljava/lang/String;
+    //   222: invokestatic 161	alpo:a	(I)Ljava/lang/String;
     //   225: invokevirtual 164	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:a	(Ljava/lang/CharSequence;)V
     //   228: aload_0
     //   229: invokevirtual 167	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:finish	()V
@@ -405,7 +405,7 @@ public class TenpayJumpActivity
     //   301: getfield 193	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   304: aload_0
     //   305: getfield 340	com/tencent/mobileqq/activity/qwallet/TenpayJumpActivity:g	Ljava/lang/String;
-    //   308: invokestatic 360	bbcz:m	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
+    //   308: invokestatic 360	bdbt:m	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Ljava/lang/String;
     //   311: astore 5
     //   313: aload 5
     //   315: invokestatic 103	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -554,7 +554,7 @@ public class TenpayJumpActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.TenpayJumpActivity
  * JD-Core Version:    0.7.0.1
  */

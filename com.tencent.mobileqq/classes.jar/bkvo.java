@@ -1,25 +1,43 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
+import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetFontDataRsp;
 
-public class bkvo
-  extends Handler
+public abstract class bkvo
+  implements alkr
 {
-  public bkvo(AEPituCameraCaptureButtonLayout paramAEPituCameraCaptureButtonLayout, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean, bkxm parambkxm) {}
+  
+  protected void a(boolean paramBoolean, GetFontDataRsp paramGetFontDataRsp) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void b(boolean paramBoolean, int paramInt) {}
+  
+  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super.handleMessage(paramMessage);
-    this.a.a(paramMessage);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, (bkxm)paramObject);
+      return;
+    case 2: 
+      a(paramBoolean, ((Boolean)paramObject).booleanValue());
+      return;
+    case 3: 
+      a(paramBoolean, ((Integer)paramObject).intValue());
+      return;
+    case 4: 
+      a(paramBoolean, (GetFontDataRsp)paramObject);
+      return;
+    }
+    b(paramBoolean, ((Integer)paramObject).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkvo
  * JD-Core Version:    0.7.0.1
  */

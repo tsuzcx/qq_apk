@@ -1,7 +1,7 @@
 package com.dataline.util.widget;
 
 import android.os.Handler;
-import gu;
+import fd;
 
 class WaitTextView$1
   implements Runnable
@@ -19,7 +19,7 @@ class WaitTextView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.dataline.util.widget.WaitTextView.1
  * JD-Core Version:    0.7.0.1
  */

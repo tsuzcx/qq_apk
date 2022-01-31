@@ -1,29 +1,63 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
-import com.tencent.common.app.AppInterface;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class oto
-  implements View.OnClickListener
+  implements AladdinConfigHandler
 {
-  public oto(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
-  
-  public void onClick(View paramView)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    paramView = (bcfh)this.a.a.a(4);
-    if ((paramView != null) && (paramView.a != null) && (paramView.a.a())) {
-      return;
+    QLog.d("KingcardConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = osq.a(paramString);
+    Object localObject = paramString.keySet();
+    for (;;)
+    {
+      String str1;
+      String str2;
+      try
+      {
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          str1 = (String)((Iterator)localObject).next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.equals(str1, "kingcard_switch")) {
+            bjxj.o(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
+      if (TextUtils.equals(str1, "kingcard_guide_url")) {
+        bjxj.i(str2);
+      } else if (TextUtils.equals(str1, "kingcard_tiptext")) {
+        bjxj.j(str2);
+      } else if (TextUtils.equals(str1, "kingcard_jumptext")) {
+        bjxj.k(str2);
+      }
     }
-    ReadInJoyAdIMAXBrowserFragment.a(this.a);
-    paramView = new HashMap();
-    paramView.put("stat_src", "5");
-    nmc.a(new nyd().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nmc.u).b(nmc.ae).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nmc.a(paramView)).a());
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bjxj.o(0);
+    bjxj.i("");
+    bjxj.j("");
+    bjxj.k("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oto
  * JD-Core Version:    0.7.0.1
  */

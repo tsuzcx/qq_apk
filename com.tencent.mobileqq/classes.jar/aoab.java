@@ -1,65 +1,86 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.colornote.settings.HistoryFormItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-class aoab
-  implements URLDrawable.URLDrawableListener
+public class aoab
 {
-  aoab(anzz paramanzz) {}
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  private int a(ColorNote paramColorNote)
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
-    if (QLog.isColorLevel())
+    switch (anyi.a(paramColorNote.getServiceType()) & 0xFFFF0000)
     {
-      paramURLDrawable = paramURLDrawable.getTag();
-      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
-      {
-        paramURLDrawable = (Emoticon)paramURLDrawable;
-        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadCanceled eId = " + paramURLDrawable.eId);
-      }
+    default: 
+      return 2130843909;
+    case 16973824: 
+      return 2130843854;
+    case 17039360: 
+      return 2130839044;
+    case 16842752: 
+      return 2130839045;
+    case 16908288: 
+      return 2130839046;
     }
+    return 2130843691;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  private Drawable a(Context paramContext, ColorNote paramColorNote)
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
-    if (QLog.isColorLevel())
+    paramContext = paramContext.getResources();
+    int i = a(paramColorNote);
+    try
     {
-      paramURLDrawable = paramURLDrawable.getTag();
-      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
-      {
-        paramURLDrawable = (Emoticon)paramURLDrawable;
-        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadFialed eId = " + paramURLDrawable.eId);
+      paramColorNote = new URL(paramColorNote.getPicUrl());
+      boolean bool = "resdrawable".equals(paramColorNote.getProtocol());
+      if (bool) {
+        try
+        {
+          paramColorNote = paramContext.getDrawable(Integer.parseInt(paramColorNote.getHost()));
+          return paramColorNote;
+        }
+        catch (NumberFormatException paramColorNote)
+        {
+          return paramContext.getDrawable(i);
+        }
       }
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = aekt.a(40.0F, paramContext);
+      localURLDrawableOptions.mRequestHeight = aekt.a(40.0F, paramContext);
+      localURLDrawableOptions.mLoadingDrawable = paramContext.getDrawable(i);
+      localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
+      paramColorNote = URLDrawable.getDrawable(paramColorNote, localURLDrawableOptions);
+      return paramColorNote;
     }
+    catch (MalformedURLException paramColorNote)
+    {
+      paramContext = paramContext.getDrawable(i);
+      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
+      return paramContext;
+    }
+    catch (NullPointerException paramColorNote)
+    {
+      paramContext = paramContext.getDrawable(i);
+      QLog.e("DefaultFormItemBuilder", 1, paramColorNote, new Object[0]);
+    }
+    return paramContext;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public HistoryFormItem a(Context paramContext, ColorNote paramColorNote)
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
-    paramURLDrawable = paramURLDrawable.getTag();
-    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
-    {
-      paramURLDrawable = (Emoticon)paramURLDrawable;
-      if (!this.a.jdField_a_of_type_JavaUtilList.contains(paramURLDrawable)) {
-        this.a.jdField_a_of_type_JavaUtilList.add(paramURLDrawable);
-      }
-      this.a.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener downloadSucess eId = " + paramURLDrawable.eId);
-      }
-    }
+    HistoryFormItem localHistoryFormItem = new HistoryFormItem(paramContext);
+    localHistoryFormItem.setLeftText(paramColorNote.getMainTitle());
+    localHistoryFormItem.setLeftIcon(a(paramContext, paramColorNote), paramContext.getResources().getDimensionPixelSize(2131298700), paramContext.getResources().getDimensionPixelSize(2131298699));
+    return localHistoryFormItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoab
  * JD-Core Version:    0.7.0.1
  */

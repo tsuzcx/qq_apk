@@ -1,85 +1,86 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.armap.sensor.provider.OrientationProviderNotFound;
+import java.util.List;
 
 public class anoy
-  extends BitmapDrawable
+  extends anpa
 {
-  public int a;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(2);
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private float jdField_a_of_type_Float = -1.0F;
+  boolean jdField_a_of_type_Boolean = false;
+  private float b = -1.0F;
+  private float c = -1.0F;
+  private float[] d = new float[3];
+  private float[] e = new float[3];
+  private float[] f = new float[16];
   
-  public anoy(Resources paramResources, Bitmap paramBitmap)
+  public anoy(Context paramContext, int paramInt, SensorManager paramSensorManager, anos paramanos)
   {
-    super(paramResources, paramBitmap);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    super(paramContext, paramInt, paramSensorManager, paramanos);
+    paramContext = paramSensorManager.getDefaultSensor(1);
+    if (paramContext != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramContext);
+      return;
+    }
+    throw new OrientationProviderNotFound(String.valueOf(1));
   }
   
-  protected Rect a(Rect paramRect)
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (getBitmap() == null) {
-      return this.jdField_a_of_type_AndroidGraphicsRect;
+    if (this.jdField_a_of_type_Anos == null) {
+      return;
     }
-    int i = getBitmap().getHeight();
-    int k = getBitmap().getWidth();
-    if (paramRect == null) {
-      return new Rect(0, 0, k, i);
-    }
-    QLog.d("chatbg", 1, "dstRect = " + paramRect);
-    QLog.d("chatbg", 1, "img width = " + k + " img height = " + i);
-    if (this.jdField_a_of_type_Int < paramRect.height()) {
-      this.jdField_a_of_type_Int = paramRect.height();
-    }
-    int j;
-    if (this.jdField_a_of_type_Int / paramRect.width() >= i / k)
+    if (Math.abs(paramFloat1 - this.jdField_a_of_type_Float) > 1.0F)
     {
-      j = paramRect.width() * i / this.jdField_a_of_type_Int;
-      k = (int)((k - j) * 0.5D);
-      if (this.jdField_a_of_type_Int > paramRect.height()) {
-        i = getBitmap().getHeight() * paramRect.height() / this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Float = paramFloat1;
+      this.jdField_a_of_type_Anos.updateAzimuth(paramFloat1);
+    }
+    if (Math.abs(paramFloat2 - this.b) > 1.0F)
+    {
+      this.b = paramFloat2;
+      this.jdField_a_of_type_Anos.updatePitch(paramFloat2);
+    }
+    if (Math.abs(paramFloat3 - this.c) > 1.0F)
+    {
+      this.c = paramFloat3;
+      this.jdField_a_of_type_Anos.updateRoll(paramFloat3);
+    }
+    this.jdField_a_of_type_Anos.updateSensor(paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    if (paramSensorEvent.sensor.getType() == 1)
+    {
+      System.arraycopy(paramSensorEvent.values, 0, this.jdField_a_of_type_ArrayOfFloat, 0, 3);
+      float f1 = this.jdField_a_of_type_ArrayOfFloat[0];
+      float f2 = this.jdField_a_of_type_ArrayOfFloat[1];
+      float f3 = this.jdField_a_of_type_ArrayOfFloat[2];
+      this.d[1] = (-(float)Math.atan2(f2, f3));
+      this.d[2] = ((float)Math.atan2(-f1, Math.sqrt(f2 * f2 + f3 * f3)));
+      if (this.jdField_a_of_type_Boolean) {
+        this.d = anot.a(this.d, this.e);
+      }
+      System.arraycopy(this.d, 0, this.e, 0, 3);
+      this.jdField_a_of_type_Boolean = true;
+      anou.a(anou.a(this.d), this.f);
+      if (this.jdField_a_of_type_Int != 1) {
+        super.a(this.f);
       }
     }
-    for (paramRect = new Rect(k, 0, j + k, i);; paramRect = new Rect(0, i, k, j + i))
+    else
     {
-      QLog.d("chatbg", 1, " result = " + paramRect + " chatWindowHeight " + this.jdField_a_of_type_Int);
-      return paramRect;
-      j = paramRect.height() * k / paramRect.width();
-      i = (int)((i - this.jdField_a_of_type_Int * k / paramRect.width()) * 0.5D);
+      return;
     }
+    a(0.0F, (float)(this.d[1] * 180.0F / 3.141592653589793D), (float)(this.d[2] * 180.0F / 3.141592653589793D));
   }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
-    {
-      Rect localRect = getBounds();
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, localRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-  }
-  
-  public int getOpacity()
-  {
-    return 0;
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect = a(getBounds());
-  }
-  
-  public void setAlpha(int paramInt) {}
-  
-  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anoy
  * JD-Core Version:    0.7.0.1
  */

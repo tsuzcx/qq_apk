@@ -1,88 +1,67 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import auko;
-import aukp;
-import aukq;
-import aukr;
+import awbv;
+import awbw;
+import awbx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 class DesktopDataManager$19
   implements Runnable
 {
-  DesktopDataManager$19(DesktopDataManager paramDesktopDataManager, List paramList) {}
+  DesktopDataManager$19(DesktopDataManager paramDesktopDataManager, DesktopItemInfo paramDesktopItemInfo) {}
   
   public void run()
   {
-    Object localObject1 = MiniAppUtils.getAppInterface();
-    if (localObject1 == null) {
+    Object localObject = MiniAppUtils.getAppInterface();
+    if (localObject == null) {
       QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
     }
-    aukp localaukp;
+    awbw localawbw;
     do
     {
       return;
-      localaukp = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-    } while (localaukp == null);
-    aukr localaukr = localaukp.a();
-    localaukr.a();
+      localawbw = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+    } while (localawbw == null);
     for (;;)
     {
       try
       {
-        localStringBuilder = new StringBuilder();
-        Iterator localIterator = this.val$appInfoList.iterator();
-        if (!localIterator.hasNext()) {
-          continue;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localObject = null;
+        if (!(this.val$data instanceof DesktopAppInfo)) {
+          break label148;
         }
-        localObject1 = (DesktopItemInfo)localIterator.next();
-        if (!(localObject1 instanceof DesktopAppInfo)) {
-          continue;
+        localObject = new DeskTopAppEntity(((DesktopAppInfo)this.val$data).mMiniAppInfo);
+        if (localObject != null)
+        {
+          ((DeskTopAppEntity)localObject).setStatus(1000);
+          DesktopDataManager.access$3200(this.this$0, localawbw, (awbv)localObject);
+          localStringBuilder.append(((DeskTopAppEntity)localObject).name).append(", ");
         }
-        localObject1 = new DeskTopAppEntity(((DesktopAppInfo)localObject1).mMiniAppInfo);
-      }
-      catch (Exception localException)
-      {
-        StringBuilder localStringBuilder;
         if (!QLog.isColorLevel()) {
-          continue;
+          break;
         }
-        QLog.d("DesktopDataManager", 2, "insertEntityWithBatch exception: ", localException);
-        return;
-        if (!(localException instanceof DesktopSearchInfo)) {
-          break label231;
-        }
-        DeskTopAppEntity localDeskTopAppEntity = new DeskTopAppEntity(((DesktopSearchInfo)localException).mAppInfo);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("DesktopDataManager", 2, new Object[] { "insertEntityWithBatch : ", localStringBuilder.toString() });
-        localaukr.c();
+        QLog.d("DesktopDataManager", 2, new Object[] { "insertEntity : ", localStringBuilder.toString() });
         return;
       }
-      finally
-      {
-        localaukr.b();
+      catch (Exception localException) {}
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      if (localObject1 != null)
-      {
-        ((DeskTopAppEntity)localObject1).setStatus(1000);
-        DesktopDataManager.access$3100(this.this$0, localaukp, (auko)localObject1);
-        localStringBuilder.append(((DeskTopAppEntity)localObject1).name).append(", ");
-        continue;
-        label231:
-        Object localObject3 = null;
+      QLog.d("DesktopDataManager", 2, "insertEntity exception: ", localException);
+      return;
+      label148:
+      if ((this.val$data instanceof DesktopSearchInfo)) {
+        DeskTopAppEntity localDeskTopAppEntity = new DeskTopAppEntity(((DesktopSearchInfo)this.val$data).mAppInfo);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.19
  * JD-Core Version:    0.7.0.1
  */

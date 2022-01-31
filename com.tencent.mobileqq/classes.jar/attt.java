@@ -1,38 +1,32 @@
-class attt
-  implements amnf
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class attt
 {
-  attt(attg paramattg) {}
-  
-  public int a()
-  {
-    return 1;
-  }
+  public int a;
+  public String a;
+  public List<attw> a = new ArrayList();
+  public int b = -1;
+  public String b;
+  public String c;
   
   public int a(int paramInt)
   {
-    return 2;
-  }
-  
-  public String a(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= 0)
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 1) {}
+      attw localattw = (attw)localIterator.next();
+      if ((localattw.a <= paramInt) && (localattw.b > paramInt)) {
+        return localattw.c;
+      }
     }
-    else
-    {
-      paramInt1 = 0;
-    }
-    if (paramInt1 == 0) {
-      return ajya.a(2131707275);
-    }
-    return ajya.a(2131707376);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     attt
  * JD-Core Version:    0.7.0.1
  */

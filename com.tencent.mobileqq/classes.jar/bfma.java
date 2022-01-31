@@ -1,58 +1,21 @@
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import com.tencent.open.filedownload.ApkFileDownloadFragment.3.1;
+import mqq.os.MqqHandler;
+
 public class bfma
+  extends bfmj
 {
-  public static boolean a;
-  private static volatile boolean b;
+  public bfma(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
   
-  /* Error */
-  public static void a()
+  public void a()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 10	bfma:b	Z
-    //   6: istore_0
-    //   7: iload_0
-    //   8: ifeq +7 -> 15
-    //   11: ldc 2
-    //   13: monitorexit
-    //   14: return
-    //   15: invokestatic 16	com/tencent/sveffects/SdkContext:getInstance	()Lcom/tencent/sveffects/SdkContext;
-    //   18: ldc 18
-    //   20: invokestatic 24	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   23: new 26	bfme
-    //   26: dup
-    //   27: invokespecial 29	bfme:<init>	()V
-    //   30: new 31	bfml
-    //   33: dup
-    //   34: invokespecial 32	bfml:<init>	()V
-    //   37: new 34	bfmh
-    //   40: dup
-    //   41: invokespecial 35	bfmh:<init>	()V
-    //   44: new 37	bfmk
-    //   47: dup
-    //   48: invokespecial 38	bfmk:<init>	()V
-    //   51: invokevirtual 42	com/tencent/sveffects/SdkContext:init	(Ljava/lang/String;Landroid/app/Application;Lcom/tencent/sveffects/DpcSwitcher;Lcom/tencent/mobileqq/shortvideo/resource/Resources;Lcom/tencent/sveffects/Logger;Lcom/tencent/sveffects/Reporter;)V
-    //   54: iconst_1
-    //   55: putstatic 10	bfma:b	Z
-    //   58: goto -47 -> 11
-    //   61: astore_1
-    //   62: ldc 2
-    //   64: monitorexit
-    //   65: aload_1
-    //   66: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   6	2	0	bool	boolean
-    //   61	5	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	7	61	finally
-    //   15	58	61	finally
+    ThreadManager.getUIHandler().post(new ApkFileDownloadFragment.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfma
  * JD-Core Version:    0.7.0.1
  */

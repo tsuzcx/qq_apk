@@ -1,30 +1,30 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
-import aegs;
+import agdi;
 import android.app.Activity;
 import android.util.Pair;
 import android.util.SparseArray;
-import axqy;
-import bbjq;
+import azmj;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
-import whj;
+import xwb;
 
 public class AIOGalleryScene$19
   implements Runnable
 {
-  public AIOGalleryScene$19(aegs paramaegs, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
+  public AIOGalleryScene$19(agdi paramagdi, int paramInt, SparseArray paramSparseArray, ArrayList paramArrayList) {}
   
   public void run()
   {
-    if ((aegs.O(this.this$0) == null) || (aegs.P(this.this$0).isFinishing())) {
+    if ((agdi.O(this.this$0) == null) || (agdi.P(this.this$0).isFinishing())) {
       return;
     }
     Object localObject;
     String str1;
     String str2;
-    if (whj.a(this.jdField_a_of_type_Int))
+    if (xwb.a(this.jdField_a_of_type_Int))
     {
       localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(1);
       if (!(localObject instanceof Pair)) {
@@ -55,9 +55,9 @@ public class AIOGalleryScene$19
             if (localObject == null)
             {
               localObject = "";
-              aegs.a(this.this$0, 2131692915, 2130839646, 55, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
-              axqy.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
-              if (whj.b(this.jdField_a_of_type_Int))
+              agdi.a(this.this$0, 2131692999, 2130839743, 55, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+              azmj.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 0, 0, "", "", "", "");
+              if (xwb.b(this.jdField_a_of_type_Int))
               {
                 localObject = this.jdField_a_of_type_AndroidUtilSparseArray.get(2);
                 if (!(localObject instanceof String)) {
@@ -92,9 +92,9 @@ public class AIOGalleryScene$19
             break label285;
           }
           localObject = "";
-          aegs.a(this.this$0, 2131692914, 2130839645, 56, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
-          axqy.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
-          this.this$0.a.d();
+          agdi.a(this.this$0, 2131692998, 2130839742, 56, (String)localObject, this.jdField_a_of_type_JavaUtilArrayList);
+          azmj.b(null, "P_CliOper", "qrcode", "", "0X80059A3", "0X80059A3", 1, 0, "", "", "", "");
+          this.this$0.a.updateUI();
           return;
         }
         catch (JSONException localJSONException3)
@@ -112,7 +112,7 @@ public class AIOGalleryScene$19
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.19
  * JD-Core Version:    0.7.0.1
  */

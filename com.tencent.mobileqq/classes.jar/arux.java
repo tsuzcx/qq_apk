@@ -1,28 +1,18 @@
-import android.util.Pair;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-
 class arux
-  implements arvd
+  implements army
 {
-  arux(arus paramarus, int paramInt, String paramString) {}
+  arux(aruw paramaruw) {}
   
-  public Pair<Integer, String> a()
+  public void a()
   {
-    return new Pair(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString);
+    cx.b(this.a.a.a, 0);
   }
   
-  public aruk a()
-  {
-    if (arus.a(this.jdField_a_of_type_Arus) == null) {
-      QLog.d("LocationHandler", 1, "[LocationManager] getLocation: invoked. location null detected");
-    }
-    return new aruk(this.jdField_a_of_type_Arus.app.c(), arus.a(this.jdField_a_of_type_Arus), arus.a(this.jdField_a_of_type_Arus));
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     arux
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app.message;
 
-import akrh;
+import amhm;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
@@ -9,14 +9,14 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 public class UncommonMessageProcessor$2
   extends SendMessageHandler.SendMessageRunnable
 {
-  public UncommonMessageProcessor$2(akrh paramakrh, ToServiceMsg paramToServiceMsg) {}
+  public UncommonMessageProcessor$2(amhm paramamhm, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
     this.a.setTimeout(this.c);
     this.a.extraData.putInt("retryIndex", this.b);
     this.a.extraData.putLong("timeOut", this.c);
-    this.this$0.a.a(this.a);
+    amhm.b(this.this$0).a(this.a);
   }
 }
 

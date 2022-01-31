@@ -1,22 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.database.CommentEntry;
-
-class szq
-  extends szr
+final class szq
+  implements oxx
 {
-  szq(szp paramszp) {}
+  public void l() {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
+  public void m()
   {
-    this.a.a.a.e();
-    if (paramBoolean) {
-      this.a.a.a.a(true, paramCommentEntry);
-    }
+    szp.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     szq
  * JD-Core Version:    0.7.0.1
  */

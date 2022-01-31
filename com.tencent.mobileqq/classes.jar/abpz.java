@@ -1,27 +1,37 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class abpz
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public abpz(NotifyPushSettingActivity paramNotifyPushSettingActivity, ajti paramajti) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public abpz(abpy paramabpy) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.a, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getString(2131717486), "qqsetting_special_care_bar", paramBoolean);
-    this.jdField_a_of_type_Ajti.c(paramBoolean);
-    bfoi.a(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.i("IphoneTitleBarActivity", 2, "onCheckedChanged: invoked. care bar  isChecked: " + paramBoolean);
+    try
+    {
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("lib_name").trim();
+      this.b = paramJSONObject.getString("func_name").trim();
+      return true;
     }
+    catch (Exception paramJSONObject)
+    {
+      abpt.a("KingKongNativePatch", "Parse fingerprint error!");
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abpz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
 package cooperation.troop_homework;
 
-import ajya;
-import bcql;
-import bhxj;
+import alpo;
+import bjyu;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class TroopHomeworkHelper$UploadFileTask$3
   implements Runnable
 {
-  public TroopHomeworkHelper$UploadFileTask$3(bhxj parambhxj) {}
+  public TroopHomeworkHelper$UploadFileTask$3(bjyu parambjyu) {}
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131715456), 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131715828), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ahue;
+import ajlo;
 import android.app.Activity;
 
 public class FlowSendTask$3
   implements Runnable
 {
-  public FlowSendTask$3(ahue paramahue) {}
+  public FlowSendTask$3(ajlo paramajlo) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class FlowSendTask$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.FlowSendTask.3
  * JD-Core Version:    0.7.0.1
  */

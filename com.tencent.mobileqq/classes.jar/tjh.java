@@ -1,29 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.WSHomeFragment;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 
-class tjh
-  extends SimpleJob<Object>
+public class tjh
+  extends tjd<tiw, WSPushStrategyInfo>
 {
-  tjh(tjf paramtjf, String paramString)
+  public tjh(tiw paramtiw)
   {
-    super(paramString);
+    super(paramtiw);
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
-    if (this.a.jdField_a_of_type_Tji == null) {
-      this.a.jdField_a_of_type_Tji = new tji(this.a, this.a.d);
-    }
-    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Tji.jdField_a_of_type_JavaLangString;
-    tjf.a(this.a);
-    return null;
+    WSHomeFragment.a(paramContext);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tjh
  * JD-Core Version:    0.7.0.1
  */

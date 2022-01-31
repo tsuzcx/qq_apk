@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import qdg;
+import qnc;
 
 public class TabChannelCoverInfo
   extends ChannelCoverInfo
@@ -17,7 +17,7 @@ public class TabChannelCoverInfo
   public int only_cover;
   public String proxy;
   public int reason;
-  public qdg redPoint;
+  public qnc redPoint;
   public String redPointJson;
   public long sectionId;
   public int seq;
@@ -55,7 +55,7 @@ public class TabChannelCoverInfo
     TabChannelCoverInfo localTabChannelCoverInfo = (TabChannelCoverInfo)super.clone();
     if (this.redPoint != null)
     {
-      localTabChannelCoverInfo.redPoint = new qdg();
+      localTabChannelCoverInfo.redPoint = new qnc();
       localTabChannelCoverInfo.redPoint.jdField_a_of_type_Boolean = this.redPoint.jdField_a_of_type_Boolean;
       localTabChannelCoverInfo.redPoint.jdField_b_of_type_Long = this.redPoint.jdField_b_of_type_Long;
       localTabChannelCoverInfo.redPoint.jdField_a_of_type_Long = this.redPoint.jdField_a_of_type_Long;
@@ -84,7 +84,7 @@ public class TabChannelCoverInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo
  * JD-Core Version:    0.7.0.1
  */

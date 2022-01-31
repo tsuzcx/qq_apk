@@ -2,8 +2,8 @@ package com.tencent.mobileqq.ocr.view.gesture.control;
 
 import android.view.View;
 import android.widget.OverScroller;
-import auee;
-import aues;
+import avvi;
+import avvw;
 import com.tencent.mobileqq.ocr.view.gesture.animation.AnimationEngine;
 
 class GestureController$LocalAnimationEngine
@@ -45,7 +45,7 @@ class GestureController$LocalAnimationEngine
         f = GestureController.a(this.this$0).a();
         if ((Float.isNaN(this.this$0.jdField_a_of_type_Float)) || (Float.isNaN(this.this$0.jdField_b_of_type_Float)) || (Float.isNaN(GestureController.a(this.this$0))) || (Float.isNaN(GestureController.b(this.this$0))))
         {
-          aues.a(this.this$0.c, this.this$0.jdField_a_of_type_Auep, this.this$0.jdField_b_of_type_Auep, f);
+          avvw.a(this.this$0.c, this.this$0.jdField_a_of_type_Avvt, this.this$0.jdField_b_of_type_Avvt, f);
           bool1 = bool3;
           if (!this.this$0.b()) {
             this.this$0.a(false);
@@ -58,7 +58,7 @@ class GestureController$LocalAnimationEngine
           this.this$0.f();
         }
         return bool1;
-        aues.a(this.this$0.c, this.this$0.jdField_a_of_type_Auep, this.this$0.jdField_a_of_type_Float, this.this$0.jdField_b_of_type_Float, this.this$0.jdField_b_of_type_Auep, GestureController.a(this.this$0), GestureController.b(this.this$0), f);
+        avvw.a(this.this$0.c, this.this$0.jdField_a_of_type_Avvt, this.this$0.jdField_a_of_type_Float, this.this$0.jdField_b_of_type_Float, this.this$0.jdField_b_of_type_Avvt, GestureController.a(this.this$0), GestureController.b(this.this$0), f);
         break;
       }
       bool1 = false;
@@ -68,7 +68,7 @@ class GestureController$LocalAnimationEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.control.GestureController.LocalAnimationEngine
  * JD-Core Version:    0.7.0.1
  */

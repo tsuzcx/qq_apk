@@ -1,8 +1,8 @@
 package com.tencent.component.network.downloader.strategy;
 
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.Response;
 import com.tencent.component.network.downloader.UrlKeyGenerator;
+import okhttp3.Request.Builder;
+import okhttp3.Response;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 
@@ -28,7 +28,7 @@ public abstract interface ResumeTransfer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.strategy.ResumeTransfer
  * JD-Core Version:    0.7.0.1
  */

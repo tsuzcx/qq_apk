@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class vhb
-  implements DialogInterface.OnDismissListener
+class vhb
+  implements vhf
 {
-  public vhb(EditVideoGuide paramEditVideoGuide) {}
+  vhb(vha paramvha) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.b = 3;
-    this.a.jdField_a_of_type_Vhm.a(14);
+    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vhb
  * JD-Core Version:    0.7.0.1
  */

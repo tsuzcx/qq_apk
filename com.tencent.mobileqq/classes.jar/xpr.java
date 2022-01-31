@@ -1,24 +1,24 @@
-import android.app.Activity;
+import java.io.IOException;
 
-public abstract interface xpr
+class xpr
 {
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(Activity paramActivity, xpf paramxpf);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
+  Process a(String[] paramArrayOfString)
+  {
+    try
+    {
+      Process localProcess = Runtime.getRuntime().exec(paramArrayOfString);
+      return localProcess;
+    }
+    catch (IOException localIOException)
+    {
+      wsv.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
+    }
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpr
  * JD-Core Version:    0.7.0.1
  */

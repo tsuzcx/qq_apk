@@ -1,13 +1,13 @@
 package com.tencent.biz.qqstory.database;
 
 import android.os.Parcel;
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShareGroupEntry
-  extends auko
+  extends awbv
 {
   public int allowStrangerVisitAndPost;
   public String backgroundUrl;
@@ -21,7 +21,7 @@ public class ShareGroupEntry
   public String name;
   public int ownerType;
   public String ownerUnionId;
-  @aumc
+  @awdj
   public String shareGroupId;
   public int type;
   public int videoCount;
@@ -71,7 +71,7 @@ public class ShareGroupEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.ShareGroupEntry
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.fts.FTSEntity;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public abstract class awlx
-  extends awoj
+class awlx
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  protected QQAppInterface a;
-  protected CharSequence a;
-  protected String a;
-  protected ArrayList<String> a;
-  protected List<? extends FTSEntity> a;
-  public int b;
-  protected CharSequence b;
-  protected String b;
-  public int c = -1;
-  protected CharSequence c;
-  public int d = -1;
-  protected CharSequence d;
+  awlx(awlv paramawlv, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  public awlx(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ArrayList<String> paramArrayList, List<? extends FTSEntity> paramList)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
+    }
   }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public CharSequence d()
-  {
-    return null;
-  }
-  
-  public abstract CharSequence e();
-  
-  public abstract CharSequence f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awlx
  * JD-Core Version:    0.7.0.1
  */

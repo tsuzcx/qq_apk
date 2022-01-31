@@ -1,29 +1,14 @@
-import android.support.annotation.NonNull;
-
-public class bjpa
-  implements bjoz
+final class bjpa
+  extends bjoe<bjoz, Void>
 {
-  @NonNull
-  public <T extends bjow> T a(@NonNull Class<T> paramClass)
+  protected bjoz a(Void paramVoid)
   {
-    try
-    {
-      bjow localbjow = (bjow)paramClass.newInstance();
-      return localbjow;
-    }
-    catch (InstantiationException localInstantiationException)
-    {
-      throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
-    }
+    return new bjoz();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjpa
  * JD-Core Version:    0.7.0.1
  */

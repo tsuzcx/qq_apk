@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.richmedia.capture.fragment;
 
-import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 class CaptureQmcfSoDownloadFragment$5
@@ -16,7 +16,7 @@ class CaptureQmcfSoDownloadFragment$5
     }
     if (!this.jdField_a_of_type_Boolean)
     {
-      bcql.a(BaseApplicationImpl.getContext(), 2131718792, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 2131719266, 0).a();
       CaptureQmcfSoDownloadFragment.a(this.this$0, -1);
       return;
     }
@@ -26,7 +26,7 @@ class CaptureQmcfSoDownloadFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment.5
  * JD-Core Version:    0.7.0.1
  */

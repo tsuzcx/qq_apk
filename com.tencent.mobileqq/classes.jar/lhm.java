@@ -1,70 +1,77 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.business.manager.EffectConfigBase;
+import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
+import android.content.ComponentCallbacks2;
+import android.content.Context;
+import android.content.res.Configuration;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
-public class lhm<T extends lhl>
-  extends Handler
+class lhm
+  implements ComponentCallbacks2
 {
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<EffectConfigBase<T>> jdField_a_of_type_JavaLangRefWeakReference;
+  lhm(lhl paramlhl) {}
   
-  public lhm(String paramString, EffectConfigBase<T> paramEffectConfigBase)
+  private void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramEffectConfigBase);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+    VideoController localVideoController = this.a.a.a();
+    if (localVideoController != null) {
+      localVideoController.a("lowMemoryLevel", String.valueOf(paramInt));
+    }
+    try
     {
-      EffectConfigBase localEffectConfigBase = (EffectConfigBase)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      lhl locallhl;
-      switch (paramMessage.what)
+      ActivityManager localActivityManager = (ActivityManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("activity");
+      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
+      localActivityManager.getMemoryInfo(localMemoryInfo);
+      localVideoController = localVideoController.a("availMem", String.valueOf(localMemoryInfo.availMem / 1048576L)).a("threshold", String.valueOf(localMemoryInfo.threshold / 1048576L));
+      if (localMemoryInfo.lowMemory) {}
+      for (paramInt = 1;; paramInt = 0)
       {
-      default: 
-        localEffectConfigBase.a(paramMessage);
-      case 0: 
-        do
-        {
-          return;
-          locallhl = (lhl)paramMessage.obj;
-          l = paramMessage.arg1;
-          bool = EffectConfigBase.a(localEffectConfigBase, locallhl, localEffectConfigBase.jdField_a_of_type_Lhl);
-          QLog.w(this.jdField_a_of_type_JavaLangString, 1, "MSG_ON_ITEM_SELECT_CHANGED, seq[" + l + "], isEqual[" + bool + "], count_MSG[" + localEffectConfigBase.jdField_a_of_type_Int + "], \nitem[" + locallhl + "], \ncur[" + localEffectConfigBase.jdField_a_of_type_Lhl + "]");
-          if (localEffectConfigBase.jdField_a_of_type_Int >= 0) {
-            localEffectConfigBase.jdField_a_of_type_Int -= 1;
-          }
-        } while (!bool);
-        EffectConfigBase.a(localEffectConfigBase, l, locallhl);
+        localVideoController.a("lowMemory", String.valueOf(paramInt));
         return;
-      case 1: 
-        locallhl = (lhl)paramMessage.obj;
-        l = paramMessage.arg2;
-        if (paramMessage.arg1 == 1) {}
-        for (;;)
-        {
-          EffectConfigBase.a(localEffectConfigBase, l, locallhl, bool);
-          return;
-          bool = false;
-        }
       }
-      EffectConfigBase.a(localEffectConfigBase, (lhl)paramMessage.obj, paramMessage.arg1);
       return;
     }
-    long l = 0L;
-    if (paramMessage.what == 0) {
-      l = paramMessage.arg1;
+    catch (Throwable localThrowable)
+    {
+      lek.e("GMemoryMonitor", localThrowable.getMessage());
     }
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "handleMessage, had destroy, msg[" + paramMessage.what + "], seq[" + l + "]");
+  }
+  
+  public void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GMemoryMonitor", 2, "onConfigurationChanged called");
+    }
+  }
+  
+  public void onLowMemory()
+  {
+    QLog.d("GMemoryMonitor", 1, "onLowMemory called");
+    this.a.a(-10, this.a.a.e);
+    a(-10);
+  }
+  
+  public void onTrimMemory(int paramInt)
+  {
+    if (paramInt >= 15) {
+      lkx.a(41, paramInt);
+    }
+    if (paramInt == 15)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("GMemoryMonitor", 2, "onTrimMemory called ,level = " + paramInt);
+      }
+      this.a.a(paramInt, this.a.a.e);
+      ((lkz)this.a.a.a(4)).a(27, paramInt);
+      a(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lhm
  * JD-Core Version:    0.7.0.1
  */

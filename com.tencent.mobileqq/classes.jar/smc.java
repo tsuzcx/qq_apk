@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.weishi_new.push.WSPushOpDialogModel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
 
-public final class smc
-  implements Parcelable.Creator<WSPushOpDialogModel>
+public class smc
+  implements View.OnClickListener
 {
-  public WSPushOpDialogModel a(Parcel paramParcel)
-  {
-    return new WSPushOpDialogModel(paramParcel);
-  }
+  public smc(CommonSuspensionGestureLayout paramCommonSuspensionGestureLayout) {}
   
-  public WSPushOpDialogModel[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new WSPushOpDialogModel[paramInt];
+    CommonSuspensionGestureLayout.a(this.a).a(true, 0, 5);
+    CommonSuspensionGestureLayout.a(this.a, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     smc
  * JD-Core Version:    0.7.0.1
  */

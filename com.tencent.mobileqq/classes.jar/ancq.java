@@ -1,53 +1,22 @@
-import com.tencent.TMG.utils.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class ancq
+  implements DialogInterface.OnDismissListener
 {
-  private boolean a;
-  private boolean b;
-  private boolean c;
+  public ancq(ARScanEntryView paramARScanEntryView) {}
   
-  public static ancq a(amph[] paramArrayOfamph)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramArrayOfamph == null) || (paramArrayOfamph.length <= 0)) {
-      return null;
-    }
-    ancq localancq = new ancq();
-    try
-    {
-      paramArrayOfamph = new JSONObject(paramArrayOfamph[0].a);
-      localancq.a = paramArrayOfamph.getBoolean("fastload");
-      localancq.b = paramArrayOfamph.getBoolean("prefetch");
-      localancq.c = paramArrayOfamph.getBoolean("preloadWebView");
-      QLog.v("TencentDocPreloadConfigBean", 0, "fastload = " + localancq.a + ", prefetch = " + localancq.b + ", preloadWebView = " + localancq.c);
-      return localancq;
-    }
-    catch (JSONException paramArrayOfamph)
-    {
-      QLog.e("TencentDocPreloadConfigBean", 1, paramArrayOfamph.getLocalizedMessage(), paramArrayOfamph);
-    }
-    return localancq;
-  }
-  
-  public boolean a()
-  {
-    return this.a;
-  }
-  
-  public boolean b()
-  {
-    return this.b;
-  }
-  
-  public boolean c()
-  {
-    return this.c;
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a).g();
+    ARScanEntryView.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancq
  * JD-Core Version:    0.7.0.1
  */

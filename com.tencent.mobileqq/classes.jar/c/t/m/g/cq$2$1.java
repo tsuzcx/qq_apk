@@ -3,7 +3,7 @@ package c.t.m.g;
 import java.io.File;
 
 final class cq$2$1
-  implements dd
+  implements de
 {
   cq$2$1(cq.2 param2) {}
   
@@ -20,7 +20,7 @@ final class cq$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.cq.2.1
  * JD-Core Version:    0.7.0.1
  */

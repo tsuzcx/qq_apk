@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import azvg;
+import bbtp;
 
 public class TroopFileUploader$2
   implements Runnable
 {
-  public TroopFileUploader$2(azvg paramazvg) {}
+  public TroopFileUploader$2(bbtp parambbtp) {}
   
   public void run()
   {
-    if (azvg.a(this.this$0)) {
+    if (bbtp.a(this.this$0)) {
       return;
     }
-    azvg.a(this.this$0, azvg.a(this.this$0));
+    bbtp.a(this.this$0, bbtp.a(this.this$0));
   }
 }
 

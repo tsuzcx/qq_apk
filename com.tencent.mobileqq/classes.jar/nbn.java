@@ -1,14 +1,23 @@
-import OnlinePushPack.SvcRespPushMsg;
+import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
 
-public abstract interface nbn
+public class nbn
+  implements alkr
 {
-  public abstract void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg);
+  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
   
-  public abstract void a(int paramInt, String paramString);
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a(paramBoolean, (BmqqUserSimpleInfo)paramObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbn
  * JD-Core Version:    0.7.0.1
  */

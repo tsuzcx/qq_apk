@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.KdTagItem;
+import android.view.View;
 
-public final class npl
-  implements Parcelable.Creator<VideoInfo.KdTagItem>
+public abstract interface npl
 {
-  public VideoInfo.KdTagItem a(Parcel paramParcel)
-  {
-    return new VideoInfo.KdTagItem(paramParcel);
-  }
+  public abstract void a(View paramView);
   
-  public VideoInfo.KdTagItem[] a(int paramInt)
-  {
-    return new VideoInfo.KdTagItem[paramInt];
-  }
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npl
  * JD-Core Version:    0.7.0.1
  */

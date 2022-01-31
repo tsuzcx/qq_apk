@@ -1,165 +1,61 @@
-import android.animation.ValueAnimator;
-import android.view.View;
-import android.view.animation.BounceInterpolator;
-import android.view.animation.LinearInterpolator;
-import android.widget.ListAdapter;
-import android.widget.ListView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class azag
 {
-  private int jdField_a_of_type_Int;
-  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private ListView jdField_a_of_type_AndroidWidgetListView;
-  private azcn jdField_a_of_type_Azcn;
-  private boolean jdField_a_of_type_Boolean;
-  private int jdField_b_of_type_Int;
-  private ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
-  private boolean jdField_b_of_type_Boolean;
+  public static int a;
+  public static boolean a;
+  public static boolean b = true;
   
-  public azag(ListView paramListView, azcn paramazcn, List<azcs> paramList)
+  static
   {
-    this.jdField_a_of_type_AndroidWidgetListView = paramListView;
-    this.jdField_a_of_type_Azcn = paramazcn;
-    this.jdField_a_of_type_Azcn.a(paramList);
-    a(this.jdField_a_of_type_AndroidWidgetListView);
-    paramazcn = this.jdField_a_of_type_AndroidWidgetListView.getLayoutParams();
-    paramazcn.height = this.jdField_a_of_type_Int;
-    paramazcn.width = this.jdField_b_of_type_Int;
-    paramListView.setLayoutParams(paramazcn);
-    this.jdField_a_of_type_AndroidWidgetListView.setPadding(baxn.a(this.jdField_a_of_type_AndroidWidgetListView.getContext(), 8.0F), -this.jdField_a_of_type_Int, 0, 0);
+    jdField_a_of_type_Int = 18;
   }
   
-  public static List<azcs> a(JSONArray paramJSONArray)
+  public static void a()
   {
-    if (paramJSONArray == null)
+    Object localObject;
+    if (!jdField_a_of_type_Boolean)
     {
+      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.ShortVideoPlayInAIO.name(), null);
       if (QLog.isColorLevel()) {
-        QLog.d("TribePostTitlePrefixPanelController", 2, "prefixJArray is null");
+        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initConfig(), videoPlayConfig=" + (String)localObject);
       }
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    for (;;)
-    {
-      if (i < paramJSONArray.length())
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-        azcs localazcs = new azcs();
-        try
+        localObject = ((String)localObject).split("\\|");
+        if ((localObject != null) && (localObject.length >= 2))
         {
-          localazcs.a(localJSONObject);
-          if (localazcs.a()) {
-            localArrayList.add(localazcs);
+          if (!TextUtils.isEmpty(localObject[0])) {
+            b = localObject[0].equals("1");
           }
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QLog.e("TribePostTitlePrefixPanelController", 2, "analyze error , " + localException);
-          }
+          if (TextUtils.isEmpty(localObject[1])) {}
         }
       }
     }
-    return localArrayList;
-  }
-  
-  private void d()
-  {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { -this.jdField_a_of_type_Int, 0 });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(100L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new azah(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new azai(this));
-  }
-  
-  private void e()
-  {
-    this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, -this.jdField_a_of_type_Int });
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(100L);
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new azaj(this));
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new azak(this));
-  }
-  
-  public void a()
-  {
-    if ((!a()) && (!this.jdField_a_of_type_Boolean))
+    try
     {
-      this.jdField_a_of_type_AndroidWidgetListView.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null) {
-        d();
+      jdField_a_of_type_Int = Integer.parseInt(localObject[1]);
+      jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideo.ShortVideoPlayConfig", 2, "initVideoPlayConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + b + ", sRequestedFPS:" + jdField_a_of_type_Int);
       }
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new BounceInterpolator());
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-    }
-  }
-  
-  public void a(ListView paramListView)
-  {
-    ListAdapter localListAdapter = paramListView.getAdapter();
-    if (localListAdapter == null) {
       return;
     }
-    int k = localListAdapter.getCount();
-    int i = 0;
-    int j = 0;
-    while (i < k)
+    catch (Exception localException)
     {
-      View localView = localListAdapter.getView(i, null, paramListView);
-      localView.measure(0, 0);
-      j += localView.getMeasuredHeight();
-      int m = localView.getMeasuredWidth();
-      if (m > this.jdField_b_of_type_Int) {
-        this.jdField_b_of_type_Int = m;
+      for (;;)
+      {
+        jdField_a_of_type_Int = 18;
       }
-      i += 1;
-    }
-    this.jdField_a_of_type_Int = (paramListView.getDividerHeight() * (localListAdapter.getCount() - 1) + j);
-    this.jdField_b_of_type_Int += baxn.a(this.jdField_a_of_type_AndroidWidgetListView.getContext(), 8.0F);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_AndroidWidgetListView.getVisibility() == 0;
-  }
-  
-  public void b()
-  {
-    if ((a()) && (!this.jdField_a_of_type_Boolean))
-    {
-      if (this.jdField_b_of_type_AndroidAnimationValueAnimator == null) {
-        e();
-      }
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.start();
-      this.jdField_b_of_type_Boolean = true;
-    }
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_AndroidWidgetListView.getVisibility() != 0) || (this.jdField_b_of_type_Boolean);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-    }
-    if (this.jdField_b_of_type_AndroidAnimationValueAnimator != null) {
-      this.jdField_b_of_type_AndroidAnimationValueAnimator.cancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azag
  * JD-Core Version:    0.7.0.1
  */

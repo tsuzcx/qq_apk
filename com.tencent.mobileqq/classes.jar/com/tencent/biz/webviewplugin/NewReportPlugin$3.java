@@ -1,22 +1,22 @@
 package com.tencent.biz.webviewplugin;
 
 import android.os.Bundle;
-import bcqf;
+import bepp;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import xkn;
+import yzg;
 
 public final class NewReportPlugin$3
   implements Runnable
 {
-  public NewReportPlugin$3(int paramInt, BaseActivity paramBaseActivity, String paramString1, String paramString2, Bundle paramBundle, String paramString3, String paramString4, String paramString5, String paramString6, bcqf parambcqf) {}
+  public NewReportPlugin$3(int paramInt, BaseActivity paramBaseActivity, String paramString1, String paramString2, Bundle paramBundle, String paramString3, String paramString4, String paramString5, String paramString6, bepp parambepp) {}
   
   public void run()
   {
     try
     {
-      Object localObject = xkn.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidOsBundle);
-      localObject = xkn.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.c, this.d, this.b, this.e, this.jdField_a_of_type_Int, xkn.a(this.jdField_a_of_type_Int), this.f, "", "", "", "", "", "", "", (Bundle)localObject);
+      Object localObject = yzg.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_AndroidOsBundle);
+      localObject = yzg.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_JavaLangString, this.c, this.d, this.b, this.e, this.jdField_a_of_type_Int, yzg.a(this.jdField_a_of_type_Int), this.f, "", "", "", "", "", "", "", (Bundle)localObject);
       if (QLog.isColorLevel()) {
         QLog.d("NewReportPlugin", 1, "safetyNewReport postData=" + (String)localObject);
       }
@@ -31,7 +31,7 @@ public final class NewReportPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.3
  * JD-Core Version:    0.7.0.1
  */

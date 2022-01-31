@@ -1,61 +1,103 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.Ability;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.multicard.MultiCardRecommendFragment;
+import com.tencent.mobileqq.multicard.RecommendPerson;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class aukc
-  extends aula
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public aukc()
-  {
-    this.a = 2;
-  }
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public List<RecommendPerson> a;
+  public List<aukd> b;
   
-  public auko a(auko paramauko, Cursor paramCursor, boolean paramBoolean, aukz paramaukz)
+  public aukc(aukb paramaukb, View paramView, int paramInt)
   {
-    paramauko = (Ability)paramauko;
-    if (paramaukz == null)
-    {
-      paramauko.uin = paramCursor.getString(paramCursor.getColumnIndex("uin"));
-      paramauko.flags = paramCursor.getInt(paramCursor.getColumnIndex("flags"));
-      return paramauko;
-    }
-    int i = paramCursor.getColumnIndex("uin");
-    if (i == -1) {
-      paramaukz.a(new NoColumnError("uin", String.class));
-    }
+    super(paramView);
+    this.jdField_a_of_type_JavaUtilList = ((List)paramaukb.a.get(Integer.valueOf(paramInt)));
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
     for (;;)
     {
-      i = paramCursor.getColumnIndex("flags");
-      if (i != -1) {
-        break;
+      return;
+      this.b = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379007));
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375949));
+      paramView = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramView.hasNext())
+      {
+        Object localObject = (RecommendPerson)paramView.next();
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopMemberRecommend.Adapter", 2, "ActiveViewHolder, person.uin =" + ((RecommendPerson)localObject).uin + " size() = " + this.jdField_a_of_type_JavaUtilList.size());
+        }
+        localObject = LayoutInflater.from(this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext()).inflate(2131562760, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+        RelativeLayout localRelativeLayout = (RelativeLayout)((View)localObject).findViewById(2131375950);
+        ImageView localImageView = (ImageView)((View)localObject).findViewById(2131368935);
+        TextView localTextView1 = (TextView)((View)localObject).findViewById(2131379008);
+        TextView localTextView2 = (TextView)((View)localObject).findViewById(2131379009);
+        Button localButton = (Button)((View)localObject).findViewById(2131363743);
+        a(aekt.a(85.0F, aukb.a(paramaukb).getResources()), this.jdField_a_of_type_JavaUtilList.size(), localRelativeLayout);
+        aukd localaukd = new aukd(this);
+        localaukd.jdField_a_of_type_AndroidWidgetRelativeLayout = localRelativeLayout;
+        localaukd.jdField_a_of_type_AndroidWidgetImageView = localImageView;
+        localaukd.jdField_a_of_type_AndroidWidgetTextView = localTextView1;
+        localaukd.b = localTextView2;
+        localaukd.jdField_a_of_type_AndroidWidgetButton = localButton;
+        this.b.add(localaukd);
+        this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
       }
-      paramaukz.a(new NoColumnError("flags", Integer.TYPE));
-      return paramauko;
-      paramauko.uin = paramCursor.getString(i);
     }
-    paramauko.flags = paramCursor.getInt(i);
-    return paramauko;
   }
   
-  public String a(String paramString)
+  private void a(int paramInt1, int paramInt2, RelativeLayout paramRelativeLayout)
   {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,uin TEXT UNIQUE ,flags INTEGER)");
-    return localStringBuilder.toString();
+    if (paramInt2 > 1)
+    {
+      int i = bdkf.a();
+      paramInt2 = (i - paramInt2 * paramInt1) / (paramInt2 * paramInt2);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramRelativeLayout.getLayoutParams();
+      localLayoutParams.leftMargin = paramInt2;
+      localLayoutParams.rightMargin = paramInt2;
+      paramRelativeLayout.setLayoutParams(localLayoutParams);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberRecommend.Adapter", 2, "onCreateViewHolder, rlWidth =" + paramInt1 + " screenWidth =" + i + " margin = " + paramInt2);
+      }
+    }
   }
   
-  public void a(auko paramauko, ContentValues paramContentValues)
+  public void onClick(View paramView)
   {
-    paramauko = (Ability)paramauko;
-    paramContentValues.put("uin", paramauko.uin);
-    paramContentValues.put("flags", Integer.valueOf(paramauko.flags));
+    switch (paramView.getId())
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (aukb.a(this.jdField_a_of_type_Aukb) == null);
+      aukb.a(this.jdField_a_of_type_Aukb).a((RecyclerView.ViewHolder)paramView.getTag(2131375950), (RecommendPerson)paramView.getTag(2131363743));
+      return;
+    } while (aukb.a(this.jdField_a_of_type_Aukb) == null);
+    aukb.a(this.jdField_a_of_type_Aukb).b((RecyclerView.ViewHolder)paramView.getTag(2131375950), (RecommendPerson)paramView.getTag(2131363743));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aukc
  * JD-Core Version:    0.7.0.1
  */

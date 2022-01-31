@@ -1,26 +1,29 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class agoo
-  implements DialogInterface.OnClickListener
+  implements ysb
 {
-  agoo(agon paramagon) {}
+  agoo(agoj paramagoj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", this.a.a.t);
-    this.a.a.setResult(-1, paramDialogInterface);
-    this.a.a.finish();
-    PhotoPreviewActivity.a(this.a.a).dismiss();
+    auvn localauvn = this.a.jdField_a_of_type_Auvn;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002) {}
+    for (int i = 8;; i = 6)
+    {
+      localauvn.a(false, true, i);
+      return;
+    }
+  }
+  
+  public void b()
+  {
+    this.a.jdField_a_of_type_Auvn.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agoo
  * JD-Core Version:    0.7.0.1
  */

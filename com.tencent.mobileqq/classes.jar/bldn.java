@@ -1,14 +1,17 @@
-public abstract interface bldn
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.qq.im.ae.play.EditTextViewer;
+
+public class bldn
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void c();
+  public bldn(EditTextViewer paramEditTextViewer) {}
   
-  public abstract void d();
-  
-  public abstract void i();
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bldn
  * JD-Core Version:    0.7.0.1
  */

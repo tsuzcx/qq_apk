@@ -1,174 +1,75 @@
 import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONObject;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcVideo;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class pye
-  extends BaseAdapter
+  extends pzi
 {
-  private pye(ComponentPolymericView paramComponentPolymericView) {}
-  
-  public int getCount()
+  public pye(Context paramContext, bcws parambcws, rqj paramrqj)
   {
-    if (ComponentPolymericView.a(this.a) != null) {
-      return ComponentPolymericView.a(this.a).size();
+    super(paramContext, parambcws, paramrqj);
+  }
+  
+  public pxl a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return c(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).q().l().n().g().j();
+  }
+  
+  public pxl c(rqj paramrqj, bcws parambcws)
+  {
+    super.c(paramrqj, parambcws);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish.c = true;
+    return this;
+  }
+  
+  public pxl d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return ComponentPolymericView.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return ((BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt)).mRecommendSeq;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
-    if (onh.s(localBaseArticleInfo))
+    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout1.setOrientation(1);
+    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPublish);
+    }
+    if ((this.jdField_a_of_type_Pxk != null) && ((this.jdField_a_of_type_Pxk instanceof ComponentContentBigImageVideo)))
     {
-      switch (localBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int)
-      {
-      default: 
-        if (onh.c(localBaseArticleInfo)) {
-          return 51;
-        }
-        break;
-      case 9: 
-        return 67;
-      case 11: 
-        return 69;
-      case 10: 
-        return 68;
-      case 12: 
-        return 98;
-      case 13: 
-        return 97;
-      }
-      if (onh.e(localBaseArticleInfo)) {
-        return 52;
-      }
-      if (localBaseArticleInfo.mSinglePicture != null) {
-        return 50;
-      }
+      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      localLinearLayout2.setOrientation(1);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+      localLayoutParams.setMargins(aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aekt.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLinearLayout2.setLayoutParams(localLayoutParams);
+      localLinearLayout2.addView((ComponentContentBigImageVideo)this.jdField_a_of_type_Pxk);
+      ((ComponentContentBigImageVideo)this.jdField_a_of_type_Pxk).setOnClickListener(new pyf(this));
+      localLinearLayout1.addView(localLinearLayout2);
     }
-    else
-    {
-      if (localBaseArticleInfo.mPolymericInfo != null) {}
-      switch (localBaseArticleInfo.mPolymericInfo.jdField_a_of_type_Int)
-      {
-      default: 
-        if (onh.a(localBaseArticleInfo)) {
-          return 51;
-        }
-        break;
-      case 9: 
-        return 67;
-      case 11: 
-        return 69;
-      case 10: 
-        return 68;
-      }
-      if (onh.e(localBaseArticleInfo)) {
-        return 52;
-      }
-      if (localBaseArticleInfo.mSinglePicture != null) {
-        return 50;
-      }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
     }
-    return 50;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout1);
+    return this;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public pxl g()
   {
-    paramViewGroup = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
-    Object localObject1 = ComponentPolymericView.a(this.a);
-    Object localObject2 = (ArticleInfo)paramViewGroup;
-    int j = getItemViewType(paramInt);
-    int k = (int)paramViewGroup.mChannelID;
-    int i;
-    if (paramViewGroup.mChannelID == 3L)
-    {
-      i = 1;
-      localObject2 = new pbf((Context)localObject1, (ArticleInfo)localObject2, j, k, i, paramInt, false, getCount(), null, ComponentPolymericView.a(this.a).a.a());
-      localObject1 = pqn.a(paramInt, localObject2, getItemViewType(paramInt), paramView, ComponentPolymericView.a(this.a), ComponentPolymericView.a(this.a).a.a(), ComponentPolymericView.a(this.a).a.a().a());
-      if (localObject1 != null)
-      {
-        ((View)localObject1).setTag(2131379213, localObject2);
-        ComponentPolymericView.a(this.a).a.a().a(paramViewGroup, (pau)localObject2, System.currentTimeMillis(), paramInt);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PolymericSmallVideo", 2, "ComponentPolymericView getView position:" + paramInt + " count:" + getCount());
-      }
-      if (ComponentPolymericView.a(this.a)[paramInt] == null) {
-        ComponentPolymericView.a(this.a)[paramInt] = Boolean.valueOf(false);
-      }
-      if (((onh.o(paramViewGroup)) || (onh.p(paramViewGroup))) && (!ComponentPolymericView.a(this.a)[paramInt].booleanValue())) {
-        localObject2 = new JSONObject();
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject3 = (qbo)paramViewGroup.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
-        ((JSONObject)localObject2).put("channel_id", paramViewGroup.mChannelID);
-        if (((qbo)localObject3).jdField_a_of_type_Qbp == null) {
-          continue;
-        }
-        paramView = ((qbo)localObject3).jdField_a_of_type_Qbp.a;
-        ((JSONObject)localObject2).put("rowkey", paramView);
-        if (((qbo)localObject3).jdField_a_of_type_Qbq == null) {
-          continue;
-        }
-        i = ((qbo)localObject3).jdField_a_of_type_Qbq.b;
-        ((JSONObject)localObject2).put("topicid", i);
-      }
-      catch (Exception paramView)
-      {
-        Object localObject3;
-        paramView.printStackTrace();
-        continue;
-        paramView = "2";
-        continue;
-      }
-      localObject3 = paramViewGroup.mFeedId + "";
-      if (!onh.o(paramViewGroup)) {
-        continue;
-      }
-      paramView = "1";
-      nol.a(null, "CliOper", "", "", "0X8009829", "0X8009829", 0, 0, (String)localObject3, paramView, paramViewGroup.mStrategyId + "", ((JSONObject)localObject2).toString(), false);
-      ComponentPolymericView.a(this.a)[paramInt] = Boolean.valueOf(true);
-      if ((onh.i(paramViewGroup)) && (paramViewGroup.mPolymericInfo != null)) {
-        paramViewGroup.mPolymericInfo.f = paramInt;
-      }
-      return localObject1;
-      i = 0;
-      break;
-      paramView = Integer.valueOf(0);
-      continue;
-      i = 0;
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 15;
+    this.jdField_a_of_type_Pxk = new ComponentContentPgcVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pye
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,59 @@
-import android.graphics.Rect;
-import java.util.Arrays;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class ambh
+  extends alko
 {
-  public int a;
-  public amba a;
-  public Rect a;
-  public String a;
-  public boolean a;
-  public String[] a;
-  public int b;
-  public String b;
-  public boolean b;
-  public int c = 50;
-  public int d = -1;
-  public int e = 1;
-  
-  public ambh()
+  public ambh(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
-    this.jdField_a_of_type_JavaLangString = "";
+    super(paramQQAppInterface);
   }
   
-  public String toString()
+  public void a(int paramInt)
   {
-    return "CommonAttrs [key=" + this.jdField_b_of_type_JavaLangString + ", mRect=" + this.jdField_a_of_type_AndroidGraphicsRect + ", count=" + this.jdField_a_of_type_Int + ", duration=" + this.c + ", align=" + this.d + ", mBigImgPath=" + this.jdField_a_of_type_JavaLangString + ", repeatCount=" + this.jdField_b_of_type_Int + ", mAnimationPath=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + "]";
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), "WifiCloudCheckSvc.req");
+    localToServiceMsg.addAttribute("request_type", Integer.valueOf(paramInt));
+    super.send(localToServiceMsg);
+  }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return ambi.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive resultCode: " + paramFromServiceMsg.getResultCode() + " errorMsg: " + paramFromServiceMsg.getBusinessFailMsg() + " serviceCmd: " + paramToServiceMsg.getServiceCmd());
+    }
+    int i = 0;
+    try
+    {
+      if ("WifiCloudCheckSvc.req".equals(paramToServiceMsg.getServiceCmd()))
+      {
+        int j = ((Integer)paramToServiceMsg.getAttribute("request_type")).intValue();
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive type: " + j);
+          i = j;
+        }
+      }
+      super.notifyUI(i, paramFromServiceMsg.isSuccess(), paramObject);
+      return;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("WifiSdk", 2, "WifiSdkHandler, onReceive exception: " + paramToServiceMsg.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ambh
  * JD-Core Version:    0.7.0.1
  */

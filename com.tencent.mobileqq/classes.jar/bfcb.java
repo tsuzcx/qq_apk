@@ -1,39 +1,27 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.open.agent.OpenSelectPermissionFragment;
+import com.tencent.open.agent.OpenSelectPermissionFragment.4.1;
+import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeResponse;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bfcb
-  extends behs
+public class bfcb
+  extends bfnj
 {
-  public abstract View a();
+  public bfcb(OpenSelectPermissionFragment paramOpenSelectPermissionFragment) {}
   
-  public abstract void a();
-  
-  public abstract void a(Activity paramActivity);
-  
-  public abstract void a(MiniAppInfo paramMiniAppInfo, boolean paramBoolean);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, int paramInt);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a(int paramInt1, int paramInt2);
-  
-  public abstract void b();
-  
-  public abstract void b(String paramString, int paramInt);
-  
-  public abstract void c();
-  
-  public abstract void setApkgInfo(bekp parambekp);
+  protected void a(boolean paramBoolean, int paramInt, SdkAuthorize.AuthorizeResponse paramAuthorizeResponse)
+  {
+    if (this.a.getActivity() == null)
+    {
+      QLog.e("OpenSelectPermissionFragment", 1, "onDoAuthorize activity is null");
+      return;
+    }
+    this.a.getActivity().runOnUiThread(new OpenSelectPermissionFragment.4.1(this, paramBoolean, paramAuthorizeResponse, paramInt));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfcb
  * JD-Core Version:    0.7.0.1
  */

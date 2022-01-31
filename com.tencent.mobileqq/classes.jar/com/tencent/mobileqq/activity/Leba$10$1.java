@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
-import anec;
-import arps;
+import aovj;
+import atgm;
 import com.tencent.mobileqq.data.LebaPluginInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -21,15 +21,15 @@ class Leba$10$1
     Iterator localIterator1 = Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba$10.this$0).iterator();
     while (localIterator1.hasNext())
     {
-      anec localanec1 = (anec)localIterator1.next();
-      if ((localanec1 != null) && (localanec1.b != null) && (localanec1.a != null))
+      aovj localaovj1 = (aovj)localIterator1.next();
+      if ((localaovj1 != null) && (localaovj1.b != null) && (localaovj1.a != null))
       {
         Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator2.hasNext())
         {
-          anec localanec2 = (anec)localIterator2.next();
-          if ((localanec2 != null) && (localanec2.a != null) && (localanec2.a.strPkgName.equals(localanec1.a.strPkgName))) {
-            localanec2.b = localanec1.b;
+          aovj localaovj2 = (aovj)localIterator2.next();
+          if ((localaovj2 != null) && (localaovj2.a != null) && (localaovj2.a.strPkgName.equals(localaovj1.a.strPkgName))) {
+            localaovj2.b = localaovj1.b;
           }
         }
       }
@@ -50,7 +50,7 @@ class Leba$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Leba.10.1
  * JD-Core Version:    0.7.0.1
  */

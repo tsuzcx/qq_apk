@@ -1,40 +1,23 @@
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadTaskCallback;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.MedalInfo;
 
-class auyo
-  implements IUploadTaskCallback
+public final class auyo
+  implements Parcelable.Creator<MedalInfo>
 {
-  auyo(auyn paramauyn) {}
-  
-  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
+  public MedalInfo a(Parcel paramParcel)
   {
-    this.a.f = 1002;
-    this.a.jdField_a_of_type_Int = paramInt;
-    this.a.c = paramString;
-    this.a.a(1002, new Object[0]);
+    return new MedalInfo(paramParcel);
   }
   
-  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2) {}
-  
-  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt)
+  public MedalInfo[] a(int paramInt)
   {
-    if (this.a.f != paramInt)
-    {
-      this.a.f = paramInt;
-      this.a.a(this.a.f, new Object[0]);
-    }
-  }
-  
-  public void onUploadSucceed(AbstractUploadTask paramAbstractUploadTask, Object paramObject)
-  {
-    this.a.f = 1001;
-    this.a.jdField_a_of_type_JavaLangObject = paramObject;
-    this.a.a(1001, new Object[0]);
+    return new MedalInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auyo
  * JD-Core Version:    0.7.0.1
  */

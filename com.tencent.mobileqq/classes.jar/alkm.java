@@ -1,55 +1,59 @@
 import android.content.Context;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface.TBSLogRunnable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.utils.TbsLogClient;
+import mqq.os.MqqHandler;
 
-public abstract class alkm
-  implements alkx
+public class alkm
+  extends TbsLogClient
 {
-  public int a;
-  protected Context a;
-  protected AppInterface a;
-  protected int b;
-  
-  public alkm()
+  public alkm(BrowserAppInterface paramBrowserAppInterface, Context paramContext)
   {
-    this.jdField_a_of_type_Int = 0;
+    super(paramContext);
   }
   
-  public int a()
+  public void d(String paramString1, String paramString2)
   {
-    return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
   }
   
-  public void a(Context paramContext, AppInterface paramAppInterface)
+  public void e(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
   }
   
-  public int b()
+  public void i(String paramString1, String paramString2)
   {
-    return this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
   }
   
-  public void g()
+  public void showLog(String paramString)
   {
-    this.jdField_a_of_type_Int = 2;
+    if (this.a.b == -1) {
+      this.a.b = 0;
+    }
+    if (this.a.b == 1) {
+      this.a.getHandler(BrowserAppInterface.class).post(new BrowserAppInterface.TBSLogRunnable(this.a, paramString));
+    }
   }
   
-  public void h()
+  public void w(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public void i() {}
-  
-  public void j()
-  {
-    this.jdField_a_of_type_Int = 5;
+    if (QLog.isColorLevel()) {
+      QLog.w(paramString1, 2, paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alkm
  * JD-Core Version:    0.7.0.1
  */

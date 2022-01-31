@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import auko;
+import awbv;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import onh;
+import ors;
 
 public class ArticleExposureInfo
-  extends auko
+  extends awbv
   implements Comparable<ArticleExposureInfo>
 {
   public static final String TABLE_NAME = ArticleExposureInfo.class.getSimpleName();
@@ -27,7 +27,7 @@ public class ArticleExposureInfo
     localArticleExposureInfo.algorithmID = paramBaseArticleInfo.mAlgorithmID;
     localArticleExposureInfo.articleID = paramBaseArticleInfo.mArticleID;
     localArticleExposureInfo.exposureTime = NetConnInfoCenter.getServerTimeMillis();
-    localArticleExposureInfo.feedsType = onh.a(paramBaseArticleInfo);
+    localArticleExposureInfo.feedsType = ors.a(paramBaseArticleInfo);
     localArticleExposureInfo.channelID = paramBaseArticleInfo.mChannelID;
     localArticleExposureInfo.title = paramBaseArticleInfo.mTitle;
     return localArticleExposureInfo;
@@ -35,12 +35,14 @@ public class ArticleExposureInfo
   
   public int compareTo(ArticleExposureInfo paramArticleExposureInfo)
   {
-    if (this.exposureTime > paramArticleExposureInfo.exposureTime) {
-      return -1;
-    }
-    if (this.exposureTime < paramArticleExposureInfo.exposureTime) {
+    if (paramArticleExposureInfo == null) {}
+    do
+    {
       return 1;
-    }
+      if (this.exposureTime > paramArticleExposureInfo.exposureTime) {
+        return -1;
+      }
+    } while (this.exposureTime < paramArticleExposureInfo.exposureTime);
     return 0;
   }
   
@@ -51,7 +53,7 @@ public class ArticleExposureInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ArticleExposureInfo
  * JD-Core Version:    0.7.0.1
  */

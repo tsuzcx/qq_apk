@@ -70,7 +70,7 @@ public class MaskURLImageView
   {
     int i = (int)((getWidth() - this.d) / 2.0F);
     int j = (int)((getHeight() - this.d) / 2.0F);
-    Drawable localDrawable = getResources().getDrawable(2130847374);
+    Drawable localDrawable = getResources().getDrawable(2130847756);
     if (localDrawable != null)
     {
       localDrawable.setBounds(i, j, (int)(i + this.d), (int)(j + this.d));
@@ -97,7 +97,7 @@ public class MaskURLImageView
     float f2 = ((Paint.FontMetrics)localObject).top;
     f1 = (getHeight() - (f1 - f2)) / 2.0F;
     f2 = ((Paint.FontMetrics)localObject).top;
-    localObject = getResources().getDrawable(2130846792);
+    localObject = getResources().getDrawable(2130847159);
     if ((!jdField_a_of_type_Boolean) && (localObject == null)) {
       throw new AssertionError();
     }
@@ -141,7 +141,7 @@ public class MaskURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.widget.MaskURLImageView
  * JD-Core Version:    0.7.0.1
  */

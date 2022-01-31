@@ -2,6 +2,7 @@ package com.tencent.ad.tangram.net;
 
 import android.content.Context;
 import android.support.annotation.Keep;
+import android.text.TextUtils;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.process.AdProcessManager;
 import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
@@ -14,9 +15,10 @@ public enum AdIPV4
   INSTANCE;
   
   private static final String TAG = "AdIPV4";
-  private AdIPV4.a address;
+  private volatile AdIPV4.a address;
   private volatile boolean initialized = false;
   private AdIPV4.b ipcHandler;
+  private volatile long tryToUpdateCacheTimeMillis = -2147483648L;
   
   private AdIPV4() {}
   
@@ -56,8 +58,35 @@ public enum AdIPV4
     }
   }
   
+  private void updateCacheIfNecessary()
+  {
+    boolean bool;
+    if (AdProcessManager.INSTANCE.isOnMainProcess().booleanValue()) {
+      bool = false;
+    }
+    for (;;)
+    {
+      AdLog.i("AdIPV4", String.format("updateCacheIfNecessary %b", new Object[] { Boolean.valueOf(bool) }));
+      return;
+      if ((this.address != null) && (!TextUtils.isEmpty(this.address.ip)))
+      {
+        bool = false;
+      }
+      else if ((this.tryToUpdateCacheTimeMillis != -2147483648L) && (System.currentTimeMillis() - this.tryToUpdateCacheTimeMillis < 60000L))
+      {
+        bool = false;
+      }
+      else
+      {
+        AdThreadManager.INSTANCE.post(new AdIPV4.3(this), 3);
+        bool = true;
+      }
+    }
+  }
+  
   public AdIPV4.a getCache()
   {
+    updateCacheIfNecessary();
     return this.address;
   }
   

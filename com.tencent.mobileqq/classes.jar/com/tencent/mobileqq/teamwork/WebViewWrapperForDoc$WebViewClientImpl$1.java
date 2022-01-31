@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.teamwork;
 
-import aygm;
+import baei;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 
 public class WebViewWrapperForDoc$WebViewClientImpl$1
   implements Runnable
 {
-  public WebViewWrapperForDoc$WebViewClientImpl$1(aygm paramaygm, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  public WebViewWrapperForDoc$WebViewClientImpl$1(baei parambaei, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class WebViewWrapperForDoc$WebViewClientImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.WebViewWrapperForDoc.WebViewClientImpl.1
  * JD-Core Version:    0.7.0.1
  */

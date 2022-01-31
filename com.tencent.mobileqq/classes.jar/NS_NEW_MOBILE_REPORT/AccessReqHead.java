@@ -12,6 +12,7 @@ public final class AccessReqHead
   static IOSTerminal cache_iosTerminal;
   static Terminal cache_terminal = new Terminal();
   static TicketForQQ cache_ticketForQQ = new TicketForQQ();
+  static ArrayList<String> cache_uninstallPkgList;
   public ArrayList<String> installPkgList;
   public IOSTerminal iosTerminal;
   public int loginType;
@@ -22,6 +23,7 @@ public final class AccessReqHead
   public Terminal terminal;
   public TicketForQQ ticketForQQ;
   public long uin;
+  public ArrayList<String> uninstallPkgList;
   public String uniqueId = "";
   
   static
@@ -29,11 +31,13 @@ public final class AccessReqHead
     cache_iosTerminal = new IOSTerminal();
     cache_installPkgList = new ArrayList();
     cache_installPkgList.add("");
+    cache_uninstallPkgList = new ArrayList();
+    cache_uninstallPkgList.add("");
   }
   
   public AccessReqHead() {}
   
-  public AccessReqHead(String paramString1, long paramLong, String paramString2, Terminal paramTerminal, TicketForQQ paramTicketForQQ, int paramInt1, IOSTerminal paramIOSTerminal, int paramInt2, String paramString3, String paramString4, ArrayList<String> paramArrayList)
+  public AccessReqHead(String paramString1, long paramLong, String paramString2, Terminal paramTerminal, TicketForQQ paramTicketForQQ, int paramInt1, IOSTerminal paramIOSTerminal, int paramInt2, String paramString3, String paramString4, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
   {
     this.qua = paramString1;
     this.uin = paramLong;
@@ -45,7 +49,8 @@ public final class AccessReqHead
     this.loginType = paramInt2;
     this.opendId = paramString3;
     this.phoneNum = paramString4;
-    this.installPkgList = paramArrayList;
+    this.installPkgList = paramArrayList1;
+    this.uninstallPkgList = paramArrayList2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -61,6 +66,7 @@ public final class AccessReqHead
     this.opendId = paramJceInputStream.readString(8, false);
     this.phoneNum = paramJceInputStream.readString(9, false);
     this.installPkgList = ((ArrayList)paramJceInputStream.read(cache_installPkgList, 10, false));
+    this.uninstallPkgList = ((ArrayList)paramJceInputStream.read(cache_uninstallPkgList, 11, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -91,6 +97,9 @@ public final class AccessReqHead
     }
     if (this.installPkgList != null) {
       paramJceOutputStream.write(this.installPkgList, 10);
+    }
+    if (this.uninstallPkgList != null) {
+      paramJceOutputStream.write(this.uninstallPkgList, 11);
     }
   }
 }

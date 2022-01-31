@@ -1,25 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import android.os.Bundle;
+import android.text.TextUtils;
+import eipc.EIPCResult;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public class peb
+class peb
+  implements spj
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  peb(pea parampea, int paramInt, oik paramoik) {}
+  
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    JSONObject localJSONObject = new JSONObject();
-    pek.a(paramBaseArticleInfo, localJSONObject, true);
-    pek.a(paramBaseArticleInfo, localJSONObject);
-    pek.b(paramBaseArticleInfo, localJSONObject);
-    pek.e(paramBaseArticleInfo, localJSONObject);
-    pek.m(paramBaseArticleInfo, localJSONObject);
-    pek.g(paramBaseArticleInfo, localJSONObject);
-    localJSONObject.put("style_ID", "ReadInjoy_none_img_cell");
-    pek.a(localJSONObject, paramBaseArticleInfo);
-    return localJSONObject;
+    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null)) {}
+    try
+    {
+      paramJSONObject.put("arg_callback", paramString);
+      paramString = new Bundle();
+      paramString.putString("action_update_biu_and_comment_request_string", paramJSONObject.toString());
+      paramString = EIPCResult.createResult(0, paramString);
+      this.jdField_a_of_type_Pea.callbackResult(this.jdField_a_of_type_Int, paramString);
+      this.jdField_a_of_type_Oik.a();
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     peb
  * JD-Core Version:    0.7.0.1
  */

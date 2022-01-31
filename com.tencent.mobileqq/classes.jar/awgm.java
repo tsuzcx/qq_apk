@@ -1,23 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.screendetect.ScreenShotFragment;
-import com.tencent.qphone.base.util.QLog;
-
-public class awgm
-  implements awgf
+public final class awgm
+  extends awgl
 {
-  public awgm(ScreenShotFragment paramScreenShotFragment) {}
-  
-  public void a(View paramView, int paramInt)
+  protected int c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotFragment", 2, "ScreenShotInnerAdapter OnItemClickListener : position = " + paramInt + ", view = " + paramView);
-    }
-    ScreenShotFragment.a(this.a, paramInt);
+    return 496;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awgm
  * JD-Core Version:    0.7.0.1
  */

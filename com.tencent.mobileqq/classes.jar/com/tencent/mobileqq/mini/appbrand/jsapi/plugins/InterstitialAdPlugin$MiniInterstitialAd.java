@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
+import aajy;
+import aano;
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -26,8 +28,6 @@ import java.util.HashMap;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import yuh;
-import yxo;
 
 class InterstitialAdPlugin$MiniInterstitialAd
 {
@@ -36,7 +36,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
   private static final String COMP_ID = "compId";
   private static final String OPERATION_TYPE = "type";
   private static final String TAG = "[minigame] MiniInterstitialAd";
-  private yuh adInterstitial;
+  private aajy adInterstitial;
   private String adUnitId;
   private int appInterstitialId;
   private BaseJsPluginEngine jsPluginEngine;
@@ -99,23 +99,23 @@ class InterstitialAdPlugin$MiniInterstitialAd
     {
       bool = ((GameActivity)this.jsPluginEngine.activityContext).getIsOrientationLandscape();
       if (!bool) {
-        break label540;
+        break label537;
       }
       i = 90;
       QLog.i("[minigame] MiniInterstitialAd", 1, "handle initAdParam appId = " + (String)localObject2 + "， deviceOrient = " + i);
       localApkgInfo = this.jsPluginEngine.appBrandRuntime.getApkgInfo();
       if ((localApkgInfo == null) || (!localApkgInfo.isEngineTypeMiniApp())) {
-        break label545;
+        break label542;
       }
       j = 0;
       label212:
       if (j != 0) {
-        break label550;
+        break label547;
       }
     }
-    label540:
-    label545:
-    label550:
+    label537:
+    label542:
+    label547:
     for (int j = 10;; j = 11)
     {
       Object localObject3 = "";
@@ -150,7 +150,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
           localObject3 = str2;
           if (localApkgInfo.appConfig.launchParam != null)
           {
-            localObject4 = MiniAppInfo.getReportDataString(localApkgInfo.appConfig.launchParam.reportData);
+            localObject4 = localApkgInfo.appConfig.launchParam.reportData;
             localObject3 = String.valueOf(localApkgInfo.appConfig.launchParam.scene);
           }
         }
@@ -183,7 +183,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
   
   private GdtHandler.Options getClickOption(JSONObject paramJSONObject)
   {
-    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
+    Object localObject = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramJSONObject));
     paramJSONObject = new GdtHandler.Options();
     paramJSONObject.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject);
     paramJSONObject.jdField_a_of_type_Boolean = true;
@@ -297,7 +297,7 @@ class InterstitialAdPlugin$MiniInterstitialAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.InterstitialAdPlugin.MiniInterstitialAd
  * JD-Core Version:    0.7.0.1
  */

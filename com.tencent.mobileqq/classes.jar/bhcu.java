@@ -1,39 +1,63 @@
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.qzone.contentbox.FootNavigationLayout;
-import cooperation.qzone.report.lp.LpReportInfo_dc02880;
-import cooperation.qzone.report.lp.LpReportManager;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
+import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bhcu
-  implements View.OnClickListener
+  implements bgln
 {
-  public bhcu(FootNavigationLayout paramFootNavigationLayout, bhdm parambhdm, int paramInt) {}
+  public bhcu(bhcq parambhcq) {}
   
-  public void onClick(View paramView)
+  public void onSoftKeyboardClosed()
   {
-    paramView = bbex.a(((BaseActivity)this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext()).app, this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext(), this.jdField_a_of_type_Bhdm.b);
-    if (paramView != null) {
-      paramView.c();
-    }
-    for (;;)
+    if (bhcq.c(this.a) != 0)
     {
-      paramView = new LpReportInfo_dc02880(7, FootNavigationLayout.a()[this.jdField_a_of_type_Int]);
-      LpReportManager.getInstance().reportToDC02880(paramView, false, true);
+      bgkq.a(bhcq.a(this.a).a(), bhcq.c(this.a), 0.0F, 1.0F, 1.0F);
+      bhcq.b(this.a, 0);
+    }
+    InputMethodManager localInputMethodManager = (InputMethodManager)bhcq.a(this.a).getContext().getSystemService("input_method");
+    if (localInputMethodManager == null) {
       return;
-      paramView = new Intent(this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext(), QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_Bhdm.b);
-      bgyp.c(paramView);
-      this.jdField_a_of_type_CooperationQzoneContentboxFootNavigationLayout.getContext().startActivity(paramView);
+    }
+    localInputMethodManager.hideSoftInputFromWindow(bhcq.a(this.a).getWindowToken(), 0);
+    this.a.a(true);
+  }
+  
+  public void onSoftKeyboardOpened(int paramInt)
+  {
+    try
+    {
+      bhcq.a(this.a, paramInt);
+      if ((bhcq.a(this.a) != null) && (bhcq.a(this.a).a() != null)) {}
+      for (Object localObject = bhcq.a(this.a).a().a();; localObject = null)
+      {
+        if ((localObject != null) && (DisplayUtil.hasNavBar((Context)localObject)) && (DisplayUtil.isNavigationBarExist((Activity)localObject))) {
+          bhcq.a(this.a, bhcq.b(this.a) + DisplayUtil.getNavigationBarHeight(bhcq.a(this.a).a().a()));
+        }
+        bhcq.a(this.a);
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("inputId", bhcq.a(this.a));
+        ((JSONObject)localObject).put("height", paramInt);
+        if ((bhcq.a(this.a) != null) && (bhcq.a(this.a).a() != null)) {
+          bhcq.a(this.a).a().b("onKeyboardShow", ((JSONObject)localObject).toString());
+        }
+        return;
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhcu
  * JD-Core Version:    0.7.0.1
  */

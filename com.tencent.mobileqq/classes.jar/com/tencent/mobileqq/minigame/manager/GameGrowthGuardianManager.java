@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.minigame.manager;
 
+import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
 import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingReq;
 import NS_MINI_INTERFACE.INTERFACE.StJudgeTimingRsp;
@@ -40,6 +41,8 @@ public class GameGrowthGuardianManager
   private static final String TAG = "GameGrowthGuardianManag";
   private static long beginExecuteMillis;
   private static Runnable heartBeatRunnable;
+  private static boolean isForeground;
+  private static COMM.StCommonExt previousExtInfo;
   
   static
   {
@@ -162,10 +165,18 @@ public class GameGrowthGuardianManager
   
   private static void execute(Context paramContext, MiniAppConfig paramMiniAppConfig, @GameGrowthGuardianManager.JudgeTimingRequestFactType int paramInt)
   {
+    int j = 0;
     if ((paramContext == null) || (paramMiniAppConfig == null)) {}
-    while (!enableHeartBeatCheck(paramMiniAppConfig)) {
+    do
+    {
       return;
-    }
+      if ((!isForeground) && ((paramInt == 11) || (paramInt == 12)))
+      {
+        QLog.e("GameGrowthGuardianManag", 1, "not in foreground, not allowed to send begin or heartbeat protocol");
+        return;
+      }
+    } while (!enableHeartBeatCheck(paramMiniAppConfig));
+    GameRuntimeLoader localGameRuntimeLoader = GameRuntimeLoaderManager.g().getBindRuntimeLoader(paramContext);
     Object localObject2 = MiniProgramReportHelper.launchIdForMiniAppConfig(paramMiniAppConfig);
     INTERFACE.StJudgeTimingReq localStJudgeTimingReq = new INTERFACE.StJudgeTimingReq();
     PBStringField localPBStringField = localStJudgeTimingReq.appid;
@@ -176,68 +187,83 @@ public class GameGrowthGuardianManager
       localPBStringField.set((String)localObject1);
       localObject1 = localStJudgeTimingReq.appType;
       if (!paramMiniAppConfig.isEngineTypeMiniGame()) {
-        break label268;
+        break label373;
       }
       i = 1;
-      label87:
+      label126:
       ((PBInt32Field)localObject1).set(i);
       localObject1 = localStJudgeTimingReq.scene;
       if (paramMiniAppConfig.launchParam == null) {
-        break label273;
+        break label378;
       }
       i = paramMiniAppConfig.launchParam.scene;
-      label115:
+      label154:
       ((PBInt32Field)localObject1).set(i);
       localStJudgeTimingReq.factType.set(paramInt);
       localStJudgeTimingReq.reportTime.set(TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
+      if (previousExtInfo != null) {
+        localStJudgeTimingReq.extInfo.set(previousExtInfo);
+      }
       if (paramInt != 11) {
-        break label278;
+        break label383;
       }
       localStJudgeTimingReq.totalTime.set(0);
-      label162:
+      label218:
       localPBStringField = localStJudgeTimingReq.launchId;
       if (localObject2 == null) {
-        break label303;
+        break label408;
       }
       localObject1 = localObject2;
-      label178:
+      label234:
       localPBStringField.set((String)localObject1);
       localStJudgeTimingReq.afterCertify.set(0);
       localObject2 = localStJudgeTimingReq.via;
       if ((paramMiniAppConfig.config == null) || (paramMiniAppConfig.config.via == null)) {
-        break label310;
+        break label415;
       }
     }
-    label268:
-    label273:
-    label278:
-    label303:
-    label310:
+    label408:
+    label415:
     for (Object localObject1 = paramMiniAppConfig.config.via;; localObject1 = "")
     {
       ((PBStringField)localObject2).set((String)localObject1);
+      localObject1 = localStJudgeTimingReq.AdsTotalTime;
+      i = j;
+      if (localGameRuntimeLoader != null)
+      {
+        i = j;
+        if (localGameRuntimeLoader.getGameInfoManager().getMiniAppConfig() != null) {
+          i = localGameRuntimeLoader.getGameInfoManager().getMiniAppConfig().gameAdsTotalTime;
+        }
+      }
+      ((PBInt32Field)localObject1).set(i);
       MiniAppSSOCmdHelper.sendSSOCmdRequest("LightAppSvc.mini_app_growguard.JudgeTiming", paramMiniAppConfig.config.appId, localStJudgeTimingReq, INTERFACE.StJudgeTimingRsp.class, new GameGrowthGuardianManager.2(paramContext, paramMiniAppConfig, paramInt));
       return;
       localObject1 = "";
       break;
+      label373:
       i = 0;
-      break label87;
+      break label126;
+      label378:
       i = 0;
-      break label115;
+      break label154;
+      label383:
       localStJudgeTimingReq.totalTime.set((int)TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis() - beginExecuteMillis));
-      break label162;
+      break label218;
       localObject1 = "";
-      break label178;
+      break label234;
     }
   }
   
   public static void executeBegin(Context paramContext, MiniAppConfig paramMiniAppConfig)
   {
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new GameGrowthGuardianManager.1(paramContext, paramMiniAppConfig), JUDGE_TIMING_REQUEST_BEGIN_DELAY);
+    isForeground = true;
+    ThreadManagerV2.getUIHandlerV2().post(new GameGrowthGuardianManager.1(paramContext, paramMiniAppConfig));
   }
   
   public static void executeEnd(Context paramContext, MiniAppConfig paramMiniAppConfig)
   {
+    isForeground = false;
     execute(paramContext, paramMiniAppConfig, 13);
     if (heartBeatRunnable != null)
     {
@@ -383,7 +409,7 @@ public class GameGrowthGuardianManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameGrowthGuardianManager
  * JD-Core Version:    0.7.0.1
  */

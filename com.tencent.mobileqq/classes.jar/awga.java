@@ -1,301 +1,212 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.text.Editable;
-import android.text.Spannable;
-import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.os.Build;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class awga
 {
-  private static long a;
+  private static final String jdField_a_of_type_JavaLangString = BaseApplication.getContext().getString(2131691062);
+  private static List<String> jdField_a_of_type_JavaUtilList;
   
-  public static int a(Editable paramEditable, int paramInt)
+  public static int a(int paramInt)
   {
-    if ((paramEditable.length() < 0) || (paramInt < 2) || (paramInt > paramEditable.length())) {}
-    for (;;)
+    switch (paramInt)
     {
-      return -1;
-      paramInt -= 1;
-      while ((paramInt >= 0) && (a(paramEditable, paramInt) == null) && (paramEditable.charAt(paramInt) != ' '))
-      {
-        if (paramEditable.charAt(paramInt) == '#') {
-          return paramInt;
-        }
-        paramInt -= 1;
-      }
+    case 0: 
+    case 1: 
+    default: 
+      return 0;
     }
+    return 2;
   }
   
-  public static ColorStateList a(int paramInt1, int paramInt2)
+  private static awgc a(CompressInfo paramCompressInfo)
   {
-    return new ColorStateList(new int[][] { { 16842919 }, { 0 } }, new int[] { paramInt2, paramInt1 });
-  }
-  
-  public static awfu a(Spannable paramSpannable, int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= paramSpannable.length())) {
+    if (paramCompressInfo != null) {}
+    switch (paramCompressInfo.jdField_f_of_type_Int)
+    {
+    default: 
       return null;
-    }
-    awfu[] arrayOfawfu = (awfu[])paramSpannable.getSpans(paramInt, paramInt, awfu.class);
-    int i = 0;
-    while (i < arrayOfawfu.length)
-    {
-      int j = paramSpannable.getSpanStart(arrayOfawfu[i]);
-      int k = paramSpannable.getSpanEnd(arrayOfawfu[i]);
-      if ((paramInt >= j) && (paramInt < k)) {
-        return arrayOfawfu[i];
+    case 0: 
+      if (paramCompressInfo.jdField_a_of_type_Int == 1035) {
+        return new awgh(paramCompressInfo);
       }
-      i += 1;
+      if (paramCompressInfo.jdField_a_of_type_Int == 1036) {
+        return new awge(paramCompressInfo);
+      }
+      return new awgg(paramCompressInfo);
+    case 1: 
+      return new awgf(paramCompressInfo);
     }
-    return null;
+    return new awgd(paramCompressInfo);
   }
   
-  public static String a(int paramInt, String paramString)
+  private static void a(CompressInfo paramCompressInfo, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder("https://ti.qq.com/signature/focustopic?_wv=3&&_wwv=129");
-    localStringBuilder.append('&');
-    localStringBuilder.append("topic_id=");
-    localStringBuilder.append(paramInt);
-    localStringBuilder.append("&");
-    localStringBuilder.append("topic_name=");
-    try
-    {
-      localStringBuilder.append(URLEncoder.encode(paramString, "UTF-8"));
-      if (QLog.isColorLevel()) {
-        QLog.i("TopicUtil", 2, String.format("constructTopicDetailUrl[%d,%s]", new Object[] { Integer.valueOf(paramInt), paramString }));
-      }
-      return localStringBuilder.toString();
+    if ((paramCompressInfo == null) || (TextUtils.isEmpty(paramCompressInfo.c)) || (TextUtils.isEmpty(paramCompressInfo.jdField_e_of_type_JavaLangString))) {
+      awen.b("CompressOperator", " checkAndLog()", "info == null || TextUtils.isEmpty(info.srcPath) || TextUtils.isEmpty(info.destPath)");
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-      }
-    }
-  }
-  
-  public static String a(Editable paramEditable)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    if (i < paramEditable.length())
-    {
-      if (a(paramEditable, i) != null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append(paramEditable.subSequence(i, i + 1));
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicUtil", 2, String.format("getPlainText [edit=%s len=%d %s]", new Object[] { paramEditable, Integer.valueOf(paramEditable.length()), localStringBuilder.toString() }));
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(List<Pair<Integer, String>> paramList)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < paramList.size())
-    {
-      localStringBuilder.append("index = ").append(i).append(",");
-      localStringBuilder.append("id = ").append(((Pair)paramList.get(i)).first).append(",");
-      localStringBuilder.append("topic = ").append((String)((Pair)paramList.get(i)).second).append(",");
-      i += 1;
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static List<Pair<Integer, String>> a(Editable paramEditable)
-  {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = null;
-    int i = 0;
-    if (i < paramEditable.length())
-    {
-      Object localObject2 = (awfu[])paramEditable.getSpans(i, i, awfu.class);
-      if ((localObject2 == null) || (localObject2.length <= 0)) {
-        break label122;
-      }
-      localObject2 = localObject2[0];
-      if (localObject2 == localObject1) {
-        break label122;
-      }
-      localObject1 = ((awfu)localObject2).a();
-      if ((localObject1 instanceof Pair)) {
-        localArrayList.add((Pair)localObject1);
-      }
-      localObject1 = localObject2;
-    }
-    label122:
-    for (;;)
-    {
-      i += 1;
-      break;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("TopicUtil", 2, String.format("getTopics %s", new Object[] { a(localArrayList) }));
-      }
-      return localArrayList;
-    }
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt)
-  {
-    if (System.currentTimeMillis() - a < 500L) {
-      return;
-    }
-    a = System.currentTimeMillis();
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    ((Activity)paramContext).startActivityForResult(localIntent, paramInt);
-  }
-  
-  public static void a(Editable paramEditable, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramInt1 >= 0) || (paramInt2 < 0) || (paramInt3 <= 0) || (paramInt3 < -paramInt1) || (paramInt2 + paramInt3 > paramEditable.length())) {}
-    int j;
+    long l1;
+    long l2;
     do
     {
-      return;
-      paramInt1 = -paramInt1;
-      int i = 0;
-      j = paramInt2 + paramInt3 - paramInt1;
-      paramInt1 = i;
-      if (Character.isLowSurrogate(paramEditable.toString().charAt(j)))
+      do
       {
-        paramInt1 = i;
-        if (j > 0)
-        {
-          paramInt1 = i;
-          if (j - 1 < paramEditable.length() - 1) {
-            paramInt1 = 1;
-          }
-        }
-      }
-      paramEditable.delete(j, paramInt2 + paramInt3);
-    } while (paramInt1 == 0);
-    paramEditable.delete(j - 1, j);
-  }
-  
-  public static void a(ETTextView paramETTextView, CharSequence paramCharSequence, int paramInt)
-  {
-    boolean bool;
-    if ((paramETTextView.mFont != null) && (paramETTextView.mFont.getId() != 0) && (9999 != paramETTextView.mFont.getId()))
-    {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("TopicUtil", 2, String.format("topicSpanCompactETTextView isCustom=%b from=%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) }));
-      }
-      if (paramCharSequence != null) {
-        break label140;
-      }
-    }
-    label140:
-    for (paramETTextView = paramETTextView.getText();; paramETTextView = paramCharSequence)
-    {
-      if ((paramETTextView == null) || (!(paramETTextView instanceof Spannable))) {
         return;
-      }
-      paramETTextView = (Spannable)paramETTextView;
-      paramETTextView = (awfu[])paramETTextView.getSpans(0, paramETTextView.length(), awfu.class);
-      paramInt = 0;
-      while (paramInt < paramETTextView.length)
-      {
-        paramETTextView[0].a(bool);
-        paramInt += 1;
-      }
-      bool = false;
-      break;
+        awen.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", paramCompressInfo.toString());
+        if (!paramCompressInfo.jdField_a_of_type_Boolean) {
+          break;
+        }
+      } while (paramBoolean);
+      l1 = awgi.a(paramCompressInfo.c);
+      l2 = awgi.a(paramCompressInfo.jdField_e_of_type_JavaLangString);
+      awen.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", "src File size:" + l1);
+      awen.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", "dest File size:" + l2);
+    } while ((l1 <= 0L) || (l2 <= l1));
+    if (aipm.c(paramCompressInfo.c))
+    {
+      awen.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", "src is incompatible ,keep compress file");
+      return;
     }
+    if (l1 > 1024L)
+    {
+      bdcs.b(paramCompressInfo.c);
+      awen.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", jdField_a_of_type_JavaLangString);
+      paramCompressInfo.jdField_f_of_type_JavaLangString = ("CompressOperator" + paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()" + jdField_a_of_type_JavaLangString);
+      bdcs.d(paramCompressInfo.jdField_e_of_type_JavaLangString);
+      if (jdField_a_of_type_JavaUtilList == null) {
+        jdField_a_of_type_JavaUtilList = new ArrayList();
+      }
+      if (!jdField_a_of_type_JavaUtilList.contains(paramBoolean + paramCompressInfo.c)) {
+        jdField_a_of_type_JavaUtilList.add(paramBoolean + paramCompressInfo.c);
+      }
+      paramCompressInfo.jdField_e_of_type_JavaLangString = paramCompressInfo.c;
+      awen.b("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", " destSize > srcSize, info.destPath = info.srcPath");
+      return;
+    }
+    awen.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", "src length is too small");
+    paramBoolean = "MI 6".equals(Build.MODEL);
+    azmz.a(BaseApplication.getContext()).a(null, "SendPicSrcProblem", paramBoolean, 0L, l1, null, "");
+    return;
+    paramCompressInfo.jdField_e_of_type_JavaLangString = paramCompressInfo.c;
+    awen.b("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " checkAndLog()", "info.isSuccess = false, info.destPath = info.srcPath");
   }
   
-  public static boolean a(String paramString)
+  public static boolean a(CompressInfo paramCompressInfo)
   {
-    if (paramString == null) {}
-    while (paramString.trim().length() < 3) {
+    boolean bool1;
+    if (paramCompressInfo == null) {
+      bool1 = false;
+    }
+    long l1;
+    boolean bool2;
+    do
+    {
+      return bool1;
+      awen.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " CompressOperator.start()", "processName = " + BaseApplicationImpl.sApplication.getQQProcessName() + ",srcPath = " + paramCompressInfo.c);
+      l1 = System.currentTimeMillis();
+      int i = absd.a().a(0, 1, 1, Process.myTid(), 2000, 203, 128L, Process.myTid(), "sendPic", true);
+      bool2 = a(paramCompressInfo, false);
+      long l2 = System.currentTimeMillis();
+      paramCompressInfo = null;
+      if (absd.a().a())
+      {
+        paramCompressInfo = new HashMap();
+        paramCompressInfo.put("hcState", String.valueOf(absd.a().a()));
+        paramCompressInfo.put("model", Build.MODEL);
+      }
+      azmz.a(BaseApplication.getContext()).a(null, "AIOPicCompress", bool2, l2 - l1, 0L, paramCompressInfo, "");
+      if (i != 0) {
+        absd.a().a(i);
+      }
+      bool1 = bool2;
+    } while (!QLog.isColorLevel());
+    QLog.d("CompressOperator", 2, "pic compress cost=" + (System.currentTimeMillis() - l1));
+    return bool2;
+  }
+  
+  private static boolean a(CompressInfo paramCompressInfo, boolean paramBoolean)
+  {
+    if ((paramCompressInfo == null) || (!bdcs.b(paramCompressInfo.c)))
+    {
+      awen.b("CompressOperator", " startImpl()", "info == null || TextUtils.isEmpty(info.srcPath)");
       return false;
     }
-    return true;
+    Object localObject;
+    if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.contains(paramBoolean + paramCompressInfo.c)))
+    {
+      awen.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " startImpl()", jdField_a_of_type_JavaLangString);
+      paramCompressInfo.jdField_f_of_type_JavaLangString = ("CompressOperator" + paramCompressInfo.jdField_a_of_type_JavaLangString + " startImpl()" + jdField_a_of_type_JavaLangString);
+      paramCompressInfo.jdField_e_of_type_JavaLangString = paramCompressInfo.c;
+      localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+      BitmapFactory.decodeFile(paramCompressInfo.jdField_e_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+      paramCompressInfo.d = ((BitmapFactory.Options)localObject).outWidth;
+      paramCompressInfo.jdField_e_of_type_Int = ((BitmapFactory.Options)localObject).outHeight;
+      return true;
+    }
+    paramCompressInfo.h = bdee.b(BaseApplication.getContext());
+    if (awgi.a(paramCompressInfo.c))
+    {
+      paramCompressInfo.jdField_f_of_type_Int = 2;
+      if (QLog.isColorLevel()) {
+        awen.a("CompressOperator", " startImpl()", "info:" + paramCompressInfo);
+      }
+      localObject = a(paramCompressInfo);
+      if (!paramBoolean) {
+        break label341;
+      }
+    }
+    label341:
+    for (boolean bool = ((awgc)localObject).b();; bool = ((awgc)localObject).a())
+    {
+      paramCompressInfo.jdField_a_of_type_Boolean = bool;
+      a(paramCompressInfo, paramBoolean);
+      if (paramCompressInfo.jdField_e_of_type_JavaLangString != null)
+      {
+        localObject = new BitmapFactory.Options();
+        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+      }
+      try
+      {
+        bdda.a(paramCompressInfo.jdField_e_of_type_JavaLangString, (BitmapFactory.Options)localObject);
+        paramCompressInfo.d = ((BitmapFactory.Options)localObject).outWidth;
+        paramCompressInfo.jdField_e_of_type_Int = ((BitmapFactory.Options)localObject).outHeight;
+        return paramCompressInfo.jdField_a_of_type_Boolean;
+      }
+      catch (OutOfMemoryError paramCompressInfo) {}
+      if (PhotoUtils.a(paramCompressInfo.c))
+      {
+        paramCompressInfo.jdField_f_of_type_Int = 1;
+        break;
+      }
+      paramCompressInfo.jdField_f_of_type_Int = 0;
+      break;
+    }
+    return false;
   }
   
-  public static List<Pair<Integer, Integer>> b(Editable paramEditable)
+  public static boolean b(CompressInfo paramCompressInfo)
   {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    Object localObject2 = null;
-    awfu[] arrayOfawfu;
-    int j;
-    Object localObject1;
-    if (i < paramEditable.length())
-    {
-      arrayOfawfu = (awfu[])paramEditable.getSpans(i, i, awfu.class);
-      if ((arrayOfawfu == null) || (arrayOfawfu.length <= 0)) {
-        break label184;
-      }
-      if (arrayOfawfu.length > 1)
-      {
-        int k = arrayOfawfu.length;
-        j = 0;
-        localObject1 = null;
-        label66:
-        if (j < k)
-        {
-          awfu localawfu = arrayOfawfu[j];
-          if (localawfu == localObject2) {
-            break label194;
-          }
-          localObject1 = localawfu;
-        }
-      }
+    if (paramCompressInfo == null) {
+      return false;
     }
-    label184:
-    label194:
-    for (;;)
-    {
-      j += 1;
-      break label66;
-      if (localObject1 == null) {
-        localObject1 = arrayOfawfu[(arrayOfawfu.length - 1)];
-      }
-      for (;;)
-      {
-        label110:
-        if (localObject1 != localObject2)
-        {
-          localObject2 = ((awfu)localObject1).a();
-          if ((localObject2 instanceof Pair)) {
-            localArrayList.add(new Pair(((Pair)localObject2).first, Integer.valueOf(i)));
-          }
-        }
-        for (;;)
-        {
-          i += 1;
-          localObject2 = localObject1;
-          break;
-          localObject1 = arrayOfawfu[0];
-          break label110;
-          return localArrayList;
-          localObject1 = localObject2;
-        }
-      }
-    }
+    awen.a("CompressOperator", paramCompressInfo.jdField_a_of_type_JavaLangString + " startThumbnail()", "");
+    return a(paramCompressInfo, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awga
  * JD-Core Version:    0.7.0.1
  */

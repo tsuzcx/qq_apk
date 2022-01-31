@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.settings;
 
-import actj;
-import ajxl;
-import ajya;
+import aekt;
+import aloz;
+import alpo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,24 +15,24 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bbfj;
-import bcqi;
-import bcql;
+import bdee;
+import beps;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.Switch;
 import java.util.ArrayList;
-import ssf;
-import sss;
-import sst;
-import ssv;
-import uka;
-import uyk;
-import vei;
+import ugx;
+import uhk;
+import uhl;
+import uhn;
+import vys;
+import wnc;
+import wta;
 
 public class QQStoryShieldActivity
   extends IphoneTitleBarActivity
@@ -40,20 +40,20 @@ public class QQStoryShieldActivity
 {
   int jdField_a_of_type_Int = 3;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public bcqi a;
+  public beps a;
   public Switch a;
   String jdField_a_of_type_JavaLangString;
-  sss jdField_a_of_type_Sss;
-  sst jdField_a_of_type_Sst;
-  ssv jdField_a_of_type_Ssv = new uka(this);
+  uhk jdField_a_of_type_Uhk;
+  uhl jdField_a_of_type_Uhl;
+  uhn jdField_a_of_type_Uhn = new vys(this);
   View[] jdField_a_of_type_ArrayOfAndroidViewView = new View[3];
   public Switch b;
   
   protected View a(int paramInt, String paramString)
   {
-    View localView = View.inflate(this, 2131561161, null);
-    ((TextView)localView.findViewById(2131377350)).setText(paramString);
-    ((TextView)localView.findViewById(2131368086)).setText("");
+    View localView = View.inflate(this, 2131561349, null);
+    ((TextView)localView.findViewById(2131377884)).setText(paramString);
+    ((TextView)localView.findViewById(2131368224)).setText("");
     localView.setTag(Integer.valueOf(paramInt));
     localView.setOnClickListener(this);
     return localView;
@@ -61,7 +61,7 @@ public class QQStoryShieldActivity
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Sss.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Uhk.a(this.jdField_a_of_type_JavaLangString);
     super.startTitleProgress();
   }
   
@@ -75,26 +75,26 @@ public class QQStoryShieldActivity
       super.finish();
       return false;
     }
-    this.jdField_a_of_type_Sst = ((sst)this.app.getManager(181));
-    this.jdField_a_of_type_Sss = ((sss)this.app.a(98));
-    this.app.addObserver(this.jdField_a_of_type_Ssv);
+    this.jdField_a_of_type_Uhl = ((uhl)this.app.getManager(181));
+    this.jdField_a_of_type_Uhk = ((uhk)this.app.a(98));
+    this.app.addObserver(this.jdField_a_of_type_Uhn);
     paramBundle = new LinearLayout(this);
     Object localObject = new LinearLayout.LayoutParams(-1, -1);
-    paramBundle.setBackgroundResource(2130838515);
+    paramBundle.setBackgroundResource(2130838592);
     paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject);
     paramBundle.setOrientation(1);
-    paramBundle.setPadding(0, actj.a(20.0F, getResources()), 0, 0);
+    paramBundle.setPadding(0, aekt.a(20.0F, getResources()), 0, 0);
     this.jdField_a_of_type_AndroidViewViewGroup = paramBundle;
-    paramBundle = a(0, ajya.a(2131711041));
-    paramBundle.setBackgroundResource(2130839176);
+    paramBundle = a(0, alpo.a(2131711413));
+    paramBundle.setBackgroundResource(2130839260);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(paramBundle);
     if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 2)) {
       paramBundle.setVisibility(8);
     }
     paramBundle = new FormSwitchItem(this, null);
     this.jdField_a_of_type_ArrayOfAndroidViewView[1] = paramBundle;
-    paramBundle.setText(ajya.a(2131711059) + ssf.b);
-    paramBundle.setContentDescription(ajya.a(2131711028) + ssf.b);
+    paramBundle.setText(alpo.a(2131711431) + ugx.b);
+    paramBundle.setContentDescription(alpo.a(2131711400) + ugx.b);
     paramBundle.setBgType(2);
     paramBundle.setTag(Integer.valueOf(1));
     paramBundle.a().setTextSize(1, 18.0F);
@@ -105,12 +105,12 @@ public class QQStoryShieldActivity
     this.jdField_a_of_type_AndroidViewViewGroup.addView(paramBundle);
     paramBundle = (LinearLayout.LayoutParams)paramBundle.getLayoutParams();
     if ((this.jdField_a_of_type_Int != 3) && (this.jdField_a_of_type_Int != 2)) {
-      paramBundle.topMargin = actj.a(20.0F, getResources());
+      paramBundle.topMargin = aekt.a(20.0F, getResources());
     }
     paramBundle = new FormSwitchItem(this, null);
     this.jdField_a_of_type_ArrayOfAndroidViewView[2] = paramBundle;
-    paramBundle.setText(ajya.a(2131711045) + ssf.b);
-    paramBundle.setContentDescription(ajya.a(2131711016) + ssf.b);
+    paramBundle.setText(alpo.a(2131711417) + ugx.b);
+    paramBundle.setContentDescription(alpo.a(2131711388) + ugx.b);
     paramBundle.setBgType(3);
     paramBundle.setTag(Integer.valueOf(2));
     paramBundle.a().setTextSize(1, 18.0F);
@@ -119,7 +119,7 @@ public class QQStoryShieldActivity
     this.jdField_a_of_type_ComTencentWidgetSwitch.setTag(Integer.valueOf(2));
     this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
     this.jdField_a_of_type_AndroidViewViewGroup.addView(paramBundle);
-    paramBundle = this.jdField_a_of_type_Sst.a(this.jdField_a_of_type_JavaLangString);
+    paramBundle = this.jdField_a_of_type_Uhl.a(this.jdField_a_of_type_JavaLangString);
     boolean bool;
     if (paramBundle != null)
     {
@@ -145,18 +145,18 @@ public class QQStoryShieldActivity
       if (this.jdField_a_of_type_Int != 3) {
         break label722;
       }
-      super.setTitle(ssf.jdField_a_of_type_JavaLangString + ajya.a(2131711017));
+      super.setTitle(ugx.jdField_a_of_type_JavaLangString + alpo.a(2131711389));
       label624:
-      this.jdField_a_of_type_Bcqi = new bcqi(this, 2131561032);
-      if (bbfj.g(this)) {
+      this.jdField_a_of_type_Beps = new beps(this, 2131561218);
+      if (bdee.g(this)) {
         break label801;
       }
-      bcql.a(this, 1, ajya.a(2131711013), 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, alpo.a(2131711385), 0).b(getTitleBarHeight());
       super.startTitleProgress();
     }
     for (;;)
     {
-      vei.a("friend_story_settings", "exp_set", this.jdField_a_of_type_Int, 0, new String[] { "2", "", "", "" });
+      wta.a("friend_story_settings", "exp_set", this.jdField_a_of_type_Int, 0, new String[] { "2", "", "", "" });
       return true;
       bool = false;
       break;
@@ -168,36 +168,36 @@ public class QQStoryShieldActivity
       {
         if (QQStoryContext.a().a(this.jdField_a_of_type_JavaLangString))
         {
-          super.setTitle(ssf.jdField_a_of_type_JavaLangString + ajya.a(2131711058));
+          super.setTitle(ugx.jdField_a_of_type_JavaLangString + alpo.a(2131711430));
           break label624;
         }
-        super.setTitle(ajya.a(2131711037));
+        super.setTitle(alpo.a(2131711409));
         break label624;
       }
-      super.setTitle(ajya.a(2131711054));
+      super.setTitle(alpo.a(2131711426));
       break label624;
       label801:
-      this.jdField_a_of_type_Sss.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Uhk.a(this.jdField_a_of_type_JavaLangString);
     }
   }
   
   public void doOnDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Ssv);
+    this.app.removeObserver(this.jdField_a_of_type_Uhn);
     super.doOnDestroy();
   }
   
   public void finish()
   {
-    uyk.a(this.app);
+    wnc.a(this.app);
     super.finish();
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     int j = ((Integer)paramCompoundButton.getTag()).intValue();
-    if (!bbfj.g(this)) {
-      bcql.a(this, 1, ajya.a(2131711056), 0).b(getTitleBarHeight());
+    if (!bdee.g(this)) {
+      QQToast.a(this, 1, alpo.a(2131711428), 0).b(getTitleBarHeight());
     }
     for (int i = 0;; i = 1)
     {
@@ -218,12 +218,12 @@ public class QQStoryShieldActivity
         if (this.jdField_a_of_type_Int != 3) {
           break label277;
         }
-        vei.a("person_data_set", paramCompoundButton, 0, 0, new String[] { "", "", "", "" });
+        wta.a("person_data_set", paramCompoundButton, 0, 0, new String[] { "", "", "", "" });
         return;
         if (i != 0)
         {
-          this.jdField_a_of_type_Sss.a(paramCompoundButton, true, paramBoolean);
-          this.jdField_a_of_type_Bcqi.b(0, 2131718679, 0);
+          this.jdField_a_of_type_Uhk.a(paramCompoundButton, true, paramBoolean);
+          this.jdField_a_of_type_Beps.b(0, 2131719152, 0);
           break;
         }
         paramCompoundButton = this.jdField_a_of_type_ComTencentWidgetSwitch;
@@ -235,8 +235,8 @@ public class QQStoryShieldActivity
         }
         if (i != 0)
         {
-          this.jdField_a_of_type_Sss.a(paramCompoundButton, false, paramBoolean);
-          this.jdField_a_of_type_Bcqi.b(0, 2131718679, 0);
+          this.jdField_a_of_type_Uhk.a(paramCompoundButton, false, paramBoolean);
+          this.jdField_a_of_type_Beps.b(0, 2131719152, 0);
           break;
         }
         paramCompoundButton = this.b;
@@ -255,7 +255,7 @@ public class QQStoryShieldActivity
         }
       }
       label277:
-      vei.a("list_settings", paramCompoundButton, 0, 0, new String[] { "", "", "", "" });
+      wta.a("list_settings", paramCompoundButton, 0, 0, new String[] { "", "", "", "" });
       return;
     }
   }
@@ -267,19 +267,19 @@ public class QQStoryShieldActivity
     default: 
       return;
     }
-    if (((ajxl)this.app.getManager(51)).b(this.jdField_a_of_type_JavaLangString)) {}
+    if (((aloz)this.app.getManager(51)).b(this.jdField_a_of_type_JavaLangString)) {}
     for (int i = 1;; i = 19)
     {
       paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_JavaLangString, i);
       ProfileActivity.b(getActivity(), paramView);
-      vei.a("list_settings", "clk_person_data", 0, 0, new String[] { "", "", "", "" });
+      wta.a("list_settings", "clk_person_data", 0, 0, new String[] { "", "", "", "" });
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryShieldActivity
  * JD-Core Version:    0.7.0.1
  */

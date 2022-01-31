@@ -1,25 +1,14 @@
-import com.tencent.qqprotect.qsec.QSecFramework;
+import org.json.JSONObject;
 
-class bfic
-  implements bfiz
+public abstract interface bfic
 {
-  protected long a;
+  public abstract void a(Exception paramException);
   
-  public bfic(bfhy parambfhy, long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    if (this.jdField_a_of_type_Long != 0L) {
-      QSecFramework.a(7L, this.jdField_a_of_type_Long, paramInt, 0L, paramArrayOfByte1, paramArrayOfByte2, null, null);
-    }
-  }
+  public abstract void a(JSONObject paramJSONObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfic
  * JD-Core Version:    0.7.0.1
  */

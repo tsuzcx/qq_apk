@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agqi;
+import ailh;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
 
 public class TroopPhotoController$4
   implements Runnable
 {
-  public TroopPhotoController$4(agqi paramagqi, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
+  public TroopPhotoController$4(ailh paramailh, TroopManager paramTroopManager, TroopInfo paramTroopInfo) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class TroopPhotoController$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.TroopPhotoController.4
  * JD-Core Version:    0.7.0.1
  */

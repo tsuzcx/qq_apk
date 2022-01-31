@@ -1,257 +1,143 @@
-import android.text.TextUtils;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.drawable.Drawable;
+import android.util.Pair;
+import android.util.SparseArray;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
+import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.search.activity.ContactSearchActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import com.tencent.mobileqq.profile.like.PraiseManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public abstract class awoe
-  extends awoj
-  implements Cloneable
+public class awoe
+  extends bhnr
 {
-  public static final String h = awoe.class.getSimpleName();
-  private long jdField_a_of_type_Long = -1L;
-  public awvy a;
-  public QQAppInterface a;
-  private CharSequence jdField_a_of_type_JavaLangCharSequence;
-  private String jdField_a_of_type_JavaLangString;
-  public HashMap<String, String> a;
-  protected int b;
-  private long jdField_b_of_type_Long;
-  protected CharSequence b;
-  private String jdField_b_of_type_JavaLangString;
-  public boolean b;
-  protected long c;
-  protected String i;
-  protected String j;
-  protected String k;
+  int a;
+  public Drawable a;
+  public SparseArray<Pair<Point, Integer>> a;
+  public View a;
+  public aspf a;
+  public boolean a;
+  public Drawable[] a;
+  int b = 0;
   
-  public awoe(QQAppInterface paramQQAppInterface, int paramInt, long paramLong)
+  public awoe()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_b_of_type_Int = paramInt;
-    this.c = paramLong;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public long a()
+  public static Animation a(Animation.AnimationListener paramAnimationListener, float paramFloat1, float paramFloat2)
   {
-    QQMessageFacade.Message localMessage;
-    if (this.jdField_a_of_type_Long == -1L)
+    AnimationSet localAnimationSet = new AnimationSet(true);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(paramFloat1, paramFloat2, paramFloat1, paramFloat2, 1, 0.5F, 1, 0.5F);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(paramFloat1, paramFloat2);
+    localScaleAnimation.setRepeatMode(2);
+    localScaleAnimation.setRepeatCount(-1);
+    localScaleAnimation.setDuration(750L);
+    localAlphaAnimation.setRepeatMode(2);
+    localAlphaAnimation.setRepeatCount(-1);
+    localAlphaAnimation.setDuration(750L);
+    localAlphaAnimation.setAnimationListener(paramAnimationListener);
+    localAnimationSet.addAnimation(localScaleAnimation);
+    localAnimationSet.addAnimation(localAlphaAnimation);
+    localAnimationSet.setInterpolator(new awof());
+    return localAnimationSet;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, HeartLayout paramHeartLayout, Bitmap paramBitmap, awoj paramawoj, int paramInt1, boolean paramBoolean, int paramInt2, float paramFloat1, float paramFloat2)
+  {
+    if (azib.b())
     {
-      localMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(b(), d());
-      if (localMessage == null) {
-        break label47;
-      }
-    }
-    label47:
-    for (this.jdField_a_of_type_Long = localMessage.time;; this.jdField_a_of_type_Long = 0L) {
-      return this.jdField_a_of_type_Long;
-    }
-  }
-  
-  protected abstract long a(String paramString);
-  
-  public awvy a()
-  {
-    return this.jdField_a_of_type_Awvy;
-  }
-  
-  public awvy a(String paramString)
-  {
-    return null;
-  }
-  
-  public CharSequence a()
-  {
-    String str = c();
-    if (!TextUtils.isEmpty(str))
-    {
-      if ((!str.equals(this.jdField_b_of_type_JavaLangString)) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, a())))
-      {
-        this.jdField_b_of_type_JavaLangString = str;
-        this.jdField_a_of_type_JavaLangString = a();
-        if ((!this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Awvy == null)) {
-          break label98;
-        }
-      }
-      label98:
-      for (this.jdField_a_of_type_JavaLangCharSequence = awwa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, a(), 6, this.jdField_a_of_type_Awvy); this.jdField_a_of_type_JavaLangCharSequence != null; this.jdField_a_of_type_JavaLangCharSequence = awwa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, a(), 6)) {
-        return this.jdField_a_of_type_JavaLangCharSequence;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(h, 2, "getTitle str is null");
-    }
-    this.jdField_b_of_type_JavaLangString = null;
-    return "";
-    return "";
-  }
-  
-  public abstract Object a();
-  
-  public void a(View paramView)
-  {
-    Integer localInteger1;
-    Integer localInteger2;
-    awix localawix;
-    QQAppInterface localQQAppInterface;
-    JSONObject localJSONObject;
-    if (awwa.a(this.jdField_b_of_type_Int))
-    {
-      localInteger1 = (Integer)paramView.getTag(2131379214);
-      localInteger2 = (Integer)paramView.getTag(2131379212);
       if (QLog.isColorLevel()) {
-        QLog.i("Q.uniteSearch..ContectReport", 2, " view.getTag(R.id.view_tag_position) = " + localInteger1);
+        QLog.i("PraiseManager", 2, "doZanAnim, SimpleUIMode is open now");
       }
-      if (((paramView.getContext() instanceof UniteSearchActivity)) && (awiw.b.containsKey(this)))
-      {
-        localawix = (awix)awiw.b.get(this);
-        localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        localJSONObject = new JSONObject();
-      }
+      paramHeartLayout.a(paramBitmap, paramFloat1, paramFloat2);
     }
-    try
+    do
     {
-      localJSONObject.put("project", awsq.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localawix.jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "native");
-      awsq.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localawix.jdField_a_of_type_Long + "").obj2(localawix.jdField_b_of_type_JavaLangString).ver1(localawix.jdField_a_of_type_JavaLangString).ver2(awsq.a(this.jdField_b_of_type_Int)).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + awiw.jdField_a_of_type_Long));
-      if (((paramView.getContext() instanceof UniteSearchActivity)) && (!(this instanceof awpm)) && (localInteger2.intValue() >= 0) && (localInteger1.intValue() >= 0))
+      return;
+      PraiseManager localPraiseManager = (PraiseManager)paramQQAppInterface.getManager(209);
+      if ((paramBoolean) && (localPraiseManager.a.get(Integer.valueOf(paramInt1)) == null))
       {
-        awwa.a("all_result", "clk_contact", new String[] { "" + a(), "" + localInteger2, "" + (localInteger1.intValue() + 1), "" + f() });
+        localPraiseManager.a(paramawoj);
+        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt1, new Pair(new Point((int)paramFloat1, (int)paramFloat2), Integer.valueOf(paramInt2)));
+      }
+      paramawoj = localPraiseManager.a(paramInt1, paramBoolean, "from_nearby_people");
+      if (paramawoj != null)
+      {
+        if ((paramInt2 == 2) && (paramawoj.c != null))
+        {
+          if (this.jdField_a_of_type_Aspf != null)
+          {
+            paramHeartLayout.a(paramawoj, paramawoj.c, paramQQAppInterface, this.jdField_a_of_type_Aspf.a(paramInt2, paramHeartLayout.a), paramFloat1 - bcwh.a(paramHeartLayout.getContext(), 20.0F), paramFloat2 - bcwh.a(paramHeartLayout.getContext(), 120.0F), bcwh.a(paramHeartLayout.getContext(), 75.0F), bcwh.a(paramHeartLayout.getContext(), 65.0F));
+            return;
+          }
+          paramHeartLayout.a(paramawoj, paramawoj.c, paramFloat1, paramFloat2);
+          return;
+        }
+        paramHeartLayout.a(paramawoj, paramawoj.b, paramFloat1, paramFloat2);
         return;
       }
+    } while (paramBoolean);
+    paramHeartLayout.a(paramBitmap, paramFloat1, paramFloat2);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, Drawable paramDrawable, Resources paramResources)
+  {
+    Drawable localDrawable2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable1;
+    if (paramBoolean2) {
+      localDrawable1 = ndi.a(localDrawable2, paramResources.getColor(2131165672));
     }
-    catch (JSONException localJSONException)
+    while (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable == null)
     {
-      do
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = new Drawable[] { paramDrawable, localDrawable1 };
+      return;
+      localDrawable1 = localDrawable2;
+      if (paramBoolean1) {
+        localDrawable1 = ndi.a(localDrawable2, paramResources.getColor(2131165675));
+      }
+    }
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[0] = paramDrawable;
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[1] = localDrawable1;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_Int % 2 == 0)
+    {
+      this.b = ((this.b + 1) % this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable.length);
+      if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {
+        break label89;
+      }
+      ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[this.b]);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_a_of_type_Int / 2 >= awog.jdField_a_of_type_Int)
       {
-        for (;;)
-        {
-          QLog.e(h, 2, "e = " + localJSONException);
-        }
-        if (((paramView.getContext() instanceof ContactSearchActivity)) && (!(this instanceof awpm)))
-        {
-          awwa.a("contact", "clk_result", new String[] { "" + a(), "" + localInteger2, "" + (localInteger1.intValue() + 1), "" + f() });
-          return;
-        }
-        if (((paramView.getContext() instanceof UniteSearchActivity)) && ((this instanceof awpm)))
-        {
-          awwa.a("all_result", "clk_public_uin", new String[] { "" + a(), "" + localInteger2, "" + (localInteger1.intValue() + 1), "" + f() });
-          return;
-        }
-      } while (((paramView.getContext() instanceof UniteSearchActivity)) || (!(this instanceof awpm)));
-      awwa.a("all_result", "clk_public_uin_page", new String[] { "" + a(), "" + localInteger2, "" + (localInteger1.intValue() + 1), "" + f() });
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.i = paramString;
-  }
-  
-  public final long b()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public final long b(String paramString)
-  {
-    long l2 = a(paramString);
-    long l1 = l2;
-    if (l2 != -9223372036854775808L)
-    {
-      l1 = l2;
-      if (b()) {
-        l1 = l2 + (this.c << SearchConfigManager.contactSearchRecentBaseBit);
+        this.jdField_a_of_type_AndroidViewView.clearAnimation();
+        this.jdField_a_of_type_Boolean = false;
       }
+      return;
+      label89:
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable[this.b]);
     }
-    this.jdField_b_of_type_Long = l1;
-    return l1;
-  }
-  
-  public CharSequence b()
-  {
-    String str = d();
-    if (!TextUtils.isEmpty(str))
-    {
-      if ((!str.equals(this.k)) || (!TextUtils.equals(this.j, a())))
-      {
-        this.k = str;
-        this.j = a();
-        if ((!this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Awvy == null)) {
-          break label94;
-        }
-      }
-      label94:
-      for (this.jdField_b_of_type_JavaLangCharSequence = awwa.a(awwa.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str, a(), 6, this.jdField_a_of_type_Awvy));; this.jdField_b_of_type_JavaLangCharSequence = awwa.a(awwa.a(str, a(), 6))) {
-        return this.jdField_b_of_type_JavaLangCharSequence;
-      }
-    }
-    this.k = null;
-    return null;
-  }
-  
-  public abstract String b();
-  
-  protected boolean b()
-  {
-    return true;
-  }
-  
-  public abstract String c();
-  
-  public Object clone()
-  {
-    try
-    {
-      Object localObject = super.clone();
-      return localObject;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      localCloneNotSupportedException.printStackTrace();
-    }
-    return null;
-  }
-  
-  public abstract int d();
-  
-  public abstract String d();
-  
-  public int e()
-  {
-    return 0;
-  }
-  
-  public CharSequence e()
-  {
-    return a();
-  }
-  
-  public String f()
-  {
-    if (((this instanceof awmq)) || ((this instanceof awmp)) || ((this instanceof awms))) {
-      return ajya.a(2131705704);
-    }
-    if (((this instanceof awmu)) || ((this instanceof awmx)) || ((this instanceof awnd)) || ((this instanceof awne)) || ((this instanceof awmy)) || ((this instanceof awmz))) {
-      return ajya.a(2131705705);
-    }
-    return ajya.a(2131705706);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awoe
  * JD-Core Version:    0.7.0.1
  */

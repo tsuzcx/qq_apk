@@ -1,12 +1,30 @@
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 
-public abstract interface awqd<T>
+class awqd
+  extends awpy
 {
-  public abstract List<T> a(Object... paramVarArgs);
+  awqd(awqc paramawqc, long paramLong)
+  {
+    super(paramLong);
+  }
+  
+  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  {
+    paramUploadImageSize = awpx.a(paramAbstractUploadTask.uploadFilePath);
+    if (paramUploadImageSize != null)
+    {
+      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
+      paramUploadImageSize.recycle();
+      return paramAbstractUploadTask;
+    }
+    return new IUploadConfig.UploadImageSize(640, 1136, 100);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awqd
  * JD-Core Version:    0.7.0.1
  */

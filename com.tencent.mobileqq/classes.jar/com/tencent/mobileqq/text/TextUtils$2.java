@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.text;
 
 import android.graphics.drawable.Drawable;
-import aylc;
-import ayld;
+import baiy;
+import baiz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class TextUtils$2
   implements Runnable
 {
-  public TextUtils$2(int paramInt, ayld paramayld) {}
+  public TextUtils$2(int paramInt, baiz parambaiz) {}
   
   public void run()
   {
-    Drawable localDrawable = aylc.a(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
-    if ((localDrawable != null) && (this.jdField_a_of_type_Ayld != null)) {
-      this.jdField_a_of_type_Ayld.a(localDrawable);
+    Drawable localDrawable = baiy.a(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
+    if ((localDrawable != null) && (this.jdField_a_of_type_Baiz != null)) {
+      this.jdField_a_of_type_Baiz.a(localDrawable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.text.TextUtils.2
  * JD-Core Version:    0.7.0.1
  */

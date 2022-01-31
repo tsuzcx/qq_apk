@@ -1,51 +1,42 @@
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import android.content.res.Resources;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StReply;
+import feedcloud.FeedCloudMeta.StUser;
 
-final class tvd
-  extends tte
+class tvd
+  implements tqy
 {
-  tvd(String paramString1, String paramString2, int paramInt, Context paramContext) {}
+  tvd(tuu paramtuu, FeedCloudMeta.StReply paramStReply, FeedCloudMeta.StComment paramStComment) {}
   
-  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
+  public void a(int paramInt)
   {
-    if ((paramInt == 0) && (paramStoryVideoItem != null))
+    Object localObject;
+    if (paramInt == tqz.c)
     {
-      paramString = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString, this.b), this.jdField_a_of_type_Int).a();
-      OpenPlayerBuilder.UIStyle localUIStyle = paramString.mUIStyle;
-      if (paramStoryVideoItem.mInteractStatus == 1) {}
-      for (paramInt = 1;; paramInt = 2)
-      {
-        localUIStyle.bottomWidgetShowFlag = paramInt;
-        paramString.mUIStyle.mPlayerRepeatMode = 1;
-        tvc.a(this.jdField_a_of_type_AndroidContentContext, paramString, null);
-        return;
+      localObject = (ClipboardManager)tuk.c(this.jdField_a_of_type_Tuu.a).getSystemService("clipboard");
+      if (localObject != null) {
+        ((ClipboardManager)localObject).setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.content.get()));
       }
     }
-    if (paramInt == 10100)
-    {
-      paramString = new Intent(this.jdField_a_of_type_AndroidContentContext, QQStoryWarningActivity.class);
-      paramString.putExtra("tipsResource", ajya.a(2131714554));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramString);
+    while (paramInt != tqz.e) {
       return;
     }
-    if (!TextUtils.isEmpty(paramString))
+    if (tra.a((FeedCloudMeta.StUser)this.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply.postUser.get())) {}
+    for (paramInt = 0;; paramInt = 2)
     {
-      bcql.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramString, 0).a();
+      localObject = tuk.d(this.jdField_a_of_type_Tuu.a).getString(2131698367);
+      bdcd.a(tuk.e(this.jdField_a_of_type_Tuu.a), 230, (String)localObject, null, 2131690648, 2131690626, new tve(this, paramInt), new tvf(this)).show();
       return;
     }
-    bcql.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, ajya.a(2131714555) + paramInt, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvd
  * JD-Core Version:    0.7.0.1
  */

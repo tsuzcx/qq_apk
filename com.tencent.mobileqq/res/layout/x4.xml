@@ -22,6 +22,6 @@
     <ViewStub android:id="@id/cp4" android:layout="@layout/a69" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <ViewStub android:id="@id/m0w" android:layout="@layout/c9w" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <ViewStub android:id="@id/m0y" android:visibility="gone" android:layout="@layout/c9y" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <include android:visibility="gone" layout="@layout/a" />
+    <include android:visibility="gone" layout="@layout/cf8" />
     <View android:id="@id/m18" android:background="@color/aly" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

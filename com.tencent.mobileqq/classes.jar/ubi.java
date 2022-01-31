@@ -1,84 +1,112 @@
-import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.ReportData;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.tencent.biz.qqcircle.requests.QCircleRecomForwardRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import feedcloud.FeedCloudMeta.StComment;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StRecomForward;
+import feedcloud.FeedCloudMeta.StUser;
+import mqq.app.AppRuntime;
+import mqq.app.Constants.PropertiesKey;
 
 public class ubi
-  extends SimpleJob<Object>
+  extends tzr
+  implements tzy
 {
-  public ubi(VideoViewVideoHolder paramVideoViewVideoHolder, String paramString1, StoryVideoItem paramStoryVideoItem, long paramLong1, long paramLong2, int paramInt, String paramString2)
+  private ImageButton jdField_a_of_type_AndroidWidgetImageButton;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private FeedCloudMeta.StFeed jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed;
+  private ImageButton b;
+  
+  public ubi(Activity paramActivity)
   {
-    super(paramString1);
+    super(paramActivity);
   }
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  protected int a()
   {
-    int j = 1;
-    for (;;)
+    return 2131560571;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed == null)
     {
-      try
-      {
-        paramJobContext = new JSONObject();
-        paramJobContext.put("author_id", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid + "");
-        paramJobContext.put("author_type", "1");
-        paramJobContext.put("video_type", "1");
-        paramJobContext.put("video_time", this.jdField_a_of_type_Long + "");
-        paramJobContext.put("play_time", this.b + "");
-        paramJobContext.put("video_restrict", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mBanType + "");
-        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
-        {
-          i = 1;
-          paramJobContext.put("content_type", i);
-          if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mLocalCreateTime > 0L) {
-            break label426;
-          }
-          i = j;
-          paramJobContext.put("content_origin", i);
-          paramJobContext.put("mobile_type", Build.MODEL);
-          paramJobContext.put("wifi_ssid", vym.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
-          paramJobContext.put("wifi_mac", vym.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a()));
-          long l1;
-          if (VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder) > 0L)
-          {
-            l1 = VideoViewVideoHolder.b(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
-            paramJobContext.put("load_time", l1 + "");
-            vei.a("story_grp", "play_video_js", this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.a().mReportData.from, this.jdField_a_of_type_Int, new String[] { paramJobContext.toString(), "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-            this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.d = 3;
-          }
-          else
-          {
-            l1 = System.currentTimeMillis();
-            long l2 = VideoViewVideoHolder.c(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder);
-            l1 -= l2;
-            continue;
-          }
-          return null;
-        }
-      }
-      catch (JSONException paramJobContext)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.jdField_a_of_type_JavaLangString, 2, "reportTroopVideo exception:" + QLog.getStackTraceString(paramJobContext));
-        }
-      }
-      int i = 2;
-      continue;
-      label426:
-      i = 2;
+      wsv.c("QCircleBaseInputPopupWindow", "QCircleForwardRequest feed == null, return");
+      return;
     }
+    Object localObject = new FeedCloudMeta.StRecomForward();
+    FeedCloudMeta.StUser localStUser = new FeedCloudMeta.StUser();
+    localStUser.id.set(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localStUser.nick.set(BaseApplicationImpl.getApplication().getProperty(Constants.PropertiesKey.nickName.toString() + BaseApplicationImpl.getApplication().getRuntime().getAccount()));
+    ((FeedCloudMeta.StRecomForward)localObject).poster.set(localStUser);
+    FeedCloudMeta.StComment localStComment = new FeedCloudMeta.StComment();
+    if (!TextUtils.isEmpty(a()))
+    {
+      ((FeedCloudMeta.StRecomForward)localObject).title.set(a());
+      if ((this.b != null) && (this.b.isSelected()))
+      {
+        localStComment.id.set("fakeId_" + System.currentTimeMillis());
+        localStComment.content.set(a());
+        localStComment.createTime.set((int)(System.currentTimeMillis() / 1000L));
+        localStComment.postUser.set(localStUser);
+      }
+    }
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed.recomForward.set((MessageMicro)localObject);
+    localObject = new QCircleRecomForwardRequest(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, localStComment);
+    VSNetworkHelper.a().a((VSBaseRequest)localObject, new ubj(this));
+    a("");
+    b(null);
+    dismiss();
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131363651));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378964));
+    this.b = ((ImageButton)paramView.findViewById(2131363729));
+    this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.b.setOnClickListener(this);
+    this.b.setSelected(true);
+    a(this);
+  }
+  
+  public void a(FeedCloudMeta.StFeed paramStFeed)
+  {
+    this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed = paramStFeed;
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131363651: 
+      dismiss();
+      return;
+    }
+    if (this.b.isSelected())
+    {
+      this.b.setSelected(false);
+      return;
+    }
+    this.b.setSelected(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,27 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tribe.async.async.JobSegment;
 
-public class absx
-  extends akdn
+class absx
+  extends atzz<JobSegment>
 {
-  public absx(PublicAccountListActivity paramPublicAccountListActivity) {}
-  
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  absx(absw paramabsw, JobSegment paramJobSegment)
   {
-    if (paramInt == 0) {
-      this.a.c();
-    }
+    super(paramJobSegment);
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(JobSegment paramJobSegment, boolean paramBoolean, atzw paramatzw)
   {
-    if (paramBoolean) {
-      this.a.c();
+    if (paramBoolean)
+    {
+      absw.a(this.a, paramatzw);
+      return;
     }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c();
-    }
+    absw.a(this.a, new AppInfoError(5, "appInfo error"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absx
  * JD-Core Version:    0.7.0.1
  */

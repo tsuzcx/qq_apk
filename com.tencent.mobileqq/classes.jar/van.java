@@ -1,16 +1,41 @@
-class van
-  implements uzw
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
+
+public class van
 {
-  van(vac paramvac) {}
+  public int a;
+  public String a;
+  public List<LikeEntry> a;
+  public int b;
   
-  public void a()
+  public boolean equals(Object paramObject)
   {
-    ved.d("Q.qqstory.home.StoryListPresenter", "ParallelStepExecutor finish requestAllDataFromNet steps");
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (van)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     van
  * JD-Core Version:    0.7.0.1
  */

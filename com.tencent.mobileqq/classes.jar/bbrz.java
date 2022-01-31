@@ -1,16 +1,45 @@
-import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.FileDownloadMgrObserver.1;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Set;
 
-public abstract interface bbrz
+public class bbrz
+  implements Observer
 {
-  public abstract void a(int paramInt, Bundle paramBundle);
+  private final void a(Object paramObject)
+  {
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    paramObject = (Object[])paramObject[1];
+    switch (i)
+    {
+    default: 
+      return;
+    }
+    a((Set)paramObject[0]);
+  }
   
-  public abstract void b();
+  protected void a(Set<Long> paramSet) {}
   
-  public abstract void c();
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
+    {
+      new Handler(paramObservable).post(new TroopFileDownloadMgr.FileDownloadMgrObserver.1(this, paramObject));
+      return;
+    }
+    a(paramObject);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbrz
  * JD-Core Version:    0.7.0.1
  */

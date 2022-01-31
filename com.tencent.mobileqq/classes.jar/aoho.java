@@ -1,25 +1,99 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoho
-  extends RecyclerView.ItemDecoration
+  extends aofy<aohi>
 {
-  private final int jdField_a_of_type_Int = actj.a(3.0F, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.getResources());
-  
-  private aoho(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public static aohi b(int paramInt)
   {
-    paramRect.right = this.jdField_a_of_type_Int;
+    aohi localaohi = (aohi)aogj.a().a(paramInt);
+    if (localaohi != null) {
+      return localaohi;
+    }
+    return new aohi();
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  @NonNull
+  public aohi a(int paramInt)
+  {
+    return new aohi();
+  }
+  
+  public aohi a(String paramString)
+  {
+    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    return new aohi(paramString);
+  }
+  
+  @Nullable
+  public aohi a(aogf[] paramArrayOfaogf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkConfProcessor", 2, "[onParsed] config type = " + a());
+    }
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
+    {
+      paramArrayOfaogf = paramArrayOfaogf[0].a;
+      if (!TextUtils.isEmpty(paramArrayOfaogf)) {
+        return a(paramArrayOfaogf);
+      }
+      QLog.d("ArkConfProcessor", 1, "[onParsed] content is empty, config type = " + a());
+    }
+    return null;
+  }
+  
+  public Class<aohi> a()
+  {
+    return aohi.class;
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("ArkConfProcessor", 1, "[onReqFailed] failCode=" + paramInt + ", config type = " + a());
+  }
+  
+  public void a(aohi paramaohi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkConfProcessor", 2, "[onUpdate]  config type = " + a());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoho
  * JD-Core Version:    0.7.0.1
  */

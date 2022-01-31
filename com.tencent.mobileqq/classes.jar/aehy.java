@@ -1,21 +1,29 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import java.io.File;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.widget.SimpleTextView;
 
-final class aehy
-  implements DialogInterface.OnClickListener
+public class aehy
 {
-  aehy(Activity paramActivity, File paramFile1, File paramFile2, aeib paramaeib) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    aehw.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile, this.b, this.jdField_a_of_type_Aeib);
-  }
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  SimpleTextView jdField_a_of_type_ComTencentWidgetSimpleTextView;
+  public Object a;
+  int jdField_b_of_type_Int;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView d;
+  TextView e;
+  TextView f;
+  TextView g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aehy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import admk;
-import adml;
+import afeu;
+import afev;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 public class ArkAppRootLayout
   extends RelativeLayout
 {
-  private adml jdField_a_of_type_Adml;
+  private afev jdField_a_of_type_Afev;
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   private boolean jdField_a_of_type_Boolean;
   
@@ -36,7 +36,7 @@ public class ArkAppRootLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new admk(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new afeu(this));
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -68,9 +68,9 @@ public class ArkAppRootLayout
     }
   }
   
-  public void setCallback(adml paramadml)
+  public void setCallback(afev paramafev)
   {
-    this.jdField_a_of_type_Adml = paramadml;
+    this.jdField_a_of_type_Afev = paramafev;
   }
   
   public void setDisableParentReturn(boolean paramBoolean)
@@ -80,7 +80,7 @@ public class ArkAppRootLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout
  * JD-Core Version:    0.7.0.1
  */

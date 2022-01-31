@@ -1,23 +1,43 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 
-public class assa
-  implements View.OnClickListener
+class assa
+  extends RecyclerView.AdapterDataObserver
 {
-  public assa(MultiCardFragment paramMultiCardFragment) {}
+  assa(asrz paramasrz) {}
   
-  public void onClick(View paramView)
+  public void onChanged()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
-    }
+    super.onChanged();
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  {
+    super.onItemRangeChanged(paramInt1, paramInt2);
+    this.a.notifyItemRangeChanged(paramInt1, paramInt2);
+  }
+  
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  {
+    super.onItemRangeInserted(paramInt1, paramInt2);
+    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
+  }
+  
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
+    this.a.notifyItemRangeChanged(paramInt1, paramInt2 + paramInt3);
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    super.onItemRangeRemoved(paramInt1, paramInt2);
+    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     assa
  * JD-Core Version:    0.7.0.1
  */

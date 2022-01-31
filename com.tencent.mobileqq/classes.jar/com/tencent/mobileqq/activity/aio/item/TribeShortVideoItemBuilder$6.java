@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aecx;
+import afzl;
 import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
 import com.tencent.qphone.base.util.QLog;
 
 class TribeShortVideoItemBuilder$6
   implements Runnable
 {
-  TribeShortVideoItemBuilder$6(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder, aecx paramaecx, long paramLong) {}
+  TribeShortVideoItemBuilder$6(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder, afzl paramafzl, long paramLong) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aecx == null) {
+    if (this.jdField_a_of_type_Afzl == null) {
       if (QLog.isColorLevel()) {
         QLog.e("TribeShortVideoItemBuilder", 2, "showPlayIcon");
       }
@@ -20,15 +20,15 @@ class TribeShortVideoItemBuilder$6
     do
     {
       return;
-      localLong = (Long)this.jdField_a_of_type_Aecx.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoView.getTag();
+      localLong = (Long)this.jdField_a_of_type_Afzl.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder$TribeShortVideoView.getTag();
     } while ((localLong == null) || (localLong.longValue() != this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_Aecx.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setDrawStatus(2);
-    this.jdField_a_of_type_Aecx.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(0);
+    this.jdField_a_of_type_Afzl.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setDrawStatus(2);
+    this.jdField_a_of_type_Afzl.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAutoStartProgressBar.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.6
  * JD-Core Version:    0.7.0.1
  */

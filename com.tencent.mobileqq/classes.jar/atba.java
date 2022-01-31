@@ -1,21 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
 
 class atba
-  extends atgh
 {
-  atba(atav paramatav, int paramInt) {}
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  String jdField_a_of_type_JavaLangString;
+  String b;
   
-  protected void a()
+  public atba(atax paramatax, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
   {
-    if (QLog.isColorLevel()) {
-      atbr.a("realHasUnreadMsg", new Object[] { "onNearbyProcStart" });
-    }
-    atav.a(this.jdField_a_of_type_Atav, 4100, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atba
  * JD-Core Version:    0.7.0.1
  */

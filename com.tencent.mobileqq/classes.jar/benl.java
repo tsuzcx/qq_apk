@@ -1,35 +1,21 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.widget.ParticipleView;
 
-class benl
-  implements View.OnClickListener
+public class benl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  int jdField_a_of_type_Int;
+  public benl(ParticipleView paramParticipleView) {}
   
-  public benl(bene parambene, int paramInt)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Bene.a != null) {
-      this.jdField_a_of_type_Bene.a.onClick(this.jdField_a_of_type_Bene, this.jdField_a_of_type_Bene.a(this.jdField_a_of_type_Int));
-    }
-    try
-    {
-      if (this.jdField_a_of_type_Bene.isShowing()) {
-        this.jdField_a_of_type_Bene.dismiss();
-      }
-      return;
-    }
-    catch (Exception paramView) {}
+    ParticipleView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     benl
  * JD-Core Version:    0.7.0.1
  */

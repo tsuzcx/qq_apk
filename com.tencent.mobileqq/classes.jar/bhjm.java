@@ -1,88 +1,120 @@
-import android.os.Message;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject;
-import com.tencent.component.network.module.report.ImageDownloadReporter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bhjm
-  implements Downloader.DownloadListener
+public class bhjm
 {
-  bhjn jdField_a_of_type_Bhjn;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = 3600L;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<bhkb> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<String> b = new ArrayList();
   
-  public bhjm(bhjk parambhjk, bhjn parambhjn)
+  public bhjm(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Bhjn = parambhjn;
-  }
-  
-  public void onDownloadCanceled(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 1, "plugin download canceled, url=" + paramString);
-    }
-    paramString = Message.obtain(this.jdField_a_of_type_Bhjk.a, 2);
-    paramString.obj = this.jdField_a_of_type_Bhjn;
-    paramString.sendToTarget();
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramString = Message.obtain(this.jdField_a_of_type_Bhjk.a, 3);
-    paramString.obj = this.jdField_a_of_type_Bhjn;
-    paramString.arg1 = -9999;
-    if ((paramDownloadResult != null) && (paramDownloadResult.getReport() != null)) {}
+    if (paramJSONObject != null) {}
     for (;;)
     {
+      int i;
       try
       {
-        paramDownloadResult = new ImageDownloadReporter().obtainReportObj(paramDownloadResult, paramDownloadResult.getReport());
-        paramString.arg1 = paramDownloadResult.retCode;
-        if (!AppNetConnInfo.isNetSupport()) {
-          continue;
+        this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("type");
+        long l = paramJSONObject.getLong("interval");
+        if ((l > 0L) && (l < 604800L)) {
+          this.jdField_a_of_type_Long = l;
         }
-        i = 1;
-        paramString.arg2 = i;
-        QLog.w("QZonePluginManger", 1, "plugin download failed, code=" + paramDownloadResult.retCode + ", arg2=" + paramString.arg2);
+        Object localObject = paramJSONObject.getJSONArray("filter");
+        if (localObject != null)
+        {
+          i = 0;
+          if (i < ((JSONArray)localObject).length())
+          {
+            JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
+            if (localJSONObject == null) {
+              break label248;
+            }
+            this.jdField_a_of_type_JavaUtilList.add(new bhkb(localJSONObject));
+            break label248;
+          }
+        }
+        if (paramJSONObject.has("rpt"))
+        {
+          paramJSONObject = paramJSONObject.getJSONObject("rpt");
+          if (paramJSONObject != null)
+          {
+            i = paramJSONObject.getInt("id");
+            if (i > 100000)
+            {
+              this.jdField_a_of_type_Int = i;
+              paramJSONObject = paramJSONObject.getJSONArray("fields");
+              if (paramJSONObject != null)
+              {
+                i = j;
+                if (i < paramJSONObject.length())
+                {
+                  localObject = paramJSONObject.getString(i);
+                  if ((localObject != null) && (!((String)localObject).isEmpty())) {
+                    this.b.add(localObject);
+                  }
+                  i += 1;
+                  continue;
+                }
+              }
+            }
+          }
+        }
+        return;
       }
-      catch (Exception paramDownloadResult)
+      catch (JSONException paramJSONObject)
       {
-        int i;
-        QLog.w("QZonePluginManger", 1, "onDownloadFailed", paramDownloadResult);
-        continue;
+        paramJSONObject.printStackTrace();
       }
-      paramString.sendToTarget();
-      return;
-      i = 0;
+      label248:
+      i += 1;
     }
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  public int a()
   {
-    bhjk.a(this.jdField_a_of_type_Bhjk, (int)(100.0F * paramFloat));
-    paramString = Message.obtain(this.jdField_a_of_type_Bhjk.a, 5);
-    bhjn.a(this.jdField_a_of_type_Bhjn).progress = paramFloat;
-    paramString.obj = this.jdField_a_of_type_Bhjn;
-    paramString.sendToTarget();
+    return this.jdField_a_of_type_Int;
   }
   
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public long a()
   {
-    if (QLog.isColorLevel())
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public List<String> a()
+  {
+    return this.b;
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
     {
-      QLog.d("QZonePluginManger", 2, "onDownloadSucceed, downloaded path:" + paramDownloadResult.getPath());
-      paramString = bhkh.e(bhjk.a(this.jdField_a_of_type_Bhjk), bhjn.a(this.jdField_a_of_type_Bhjn));
-      QLog.d("QZonePluginManger", 2, "onDownloadSucceed, saved path:" + paramString + ", exsit:" + paramString.exists());
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        bhkb localbhkb = (bhkb)localIterator.next();
+        if (!localbhkb.a()) {
+          return false;
+        }
+        if (!localbhkb.a(paramObject)) {
+          return false;
+        }
+      }
+      return true;
     }
-    paramString = Message.obtain(this.jdField_a_of_type_Bhjk.a, 4);
-    paramString.obj = this.jdField_a_of_type_Bhjn;
-    paramString.sendToTarget();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhjm
  * JD-Core Version:    0.7.0.1
  */

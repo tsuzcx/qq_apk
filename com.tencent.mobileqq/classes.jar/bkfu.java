@@ -1,76 +1,65 @@
-import android.annotation.TargetApi;
-import android.graphics.PointF;
-import android.opengl.GLES20;
-import android.opengl.GLES30;
-import com.tencent.aekit.openrender.internal.Frame;
-import com.tencent.aekit.openrender.util.GlUtil;
-import com.tencent.filter.BaseFilter;
-
-public class bkfu
+final class bkfu
 {
-  public static double a(PointF paramPointF1, PointF paramPointF2)
+  public static int d = 16;
+  int jdField_a_of_type_Int = 538116905;
+  short jdField_a_of_type_Short = 1;
+  int jdField_b_of_type_Int;
+  short jdField_b_of_type_Short = 0;
+  int c;
+  
+  public int a()
   {
-    return Math.sqrt((paramPointF1.x - paramPointF2.x) * (paramPointF1.x - paramPointF2.x) + (paramPointF1.y - paramPointF2.y) * (paramPointF1.y - paramPointF2.y));
+    return this.jdField_b_of_type_Int;
   }
   
-  public static void a()
+  public void a(int paramInt)
   {
-    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-    GLES20.glClear(16640);
-    GLES20.glFlush();
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  @TargetApi(18)
-  public static void a(int paramInt)
+  public void a(byte[] paramArrayOfByte)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      GLES20.glDisable(3042);
-      return;
-    case 1: 
-      GLES20.glEnable(3042);
-      GLES20.glBlendFunc(1, 771);
-      GLES20.glBlendEquation(32774);
-      return;
-    case 2: 
-      GLES20.glEnable(3042);
-      GLES20.glBlendFunc(770, 771);
-      GLES30.glBlendEquation(32776);
-      return;
-    }
-    GLES20.glEnable(3042);
-    GLES20.glBlendFuncSeparate(1, 771, 1, 1);
-    GLES20.glBlendEquation(32774);
+    byte[] arrayOfByte = new byte[4];
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, 4);
+    this.jdField_a_of_type_Int = bcwj.a(arrayOfByte);
+    arrayOfByte = new byte[2];
+    System.arraycopy(paramArrayOfByte, 4, arrayOfByte, 0, 2);
+    this.jdField_a_of_type_Short = bcwj.a(arrayOfByte);
+    arrayOfByte = new byte[4];
+    System.arraycopy(paramArrayOfByte, 6, arrayOfByte, 0, 4);
+    this.jdField_b_of_type_Int = bcwj.a(arrayOfByte);
+    arrayOfByte = new byte[4];
+    System.arraycopy(paramArrayOfByte, 10, arrayOfByte, 0, 4);
+    this.c = bcwj.a(arrayOfByte);
+    arrayOfByte = new byte[2];
+    System.arraycopy(paramArrayOfByte, 14, arrayOfByte, 0, 2);
+    this.jdField_b_of_type_Short = bcwj.a(arrayOfByte);
   }
   
-  public static void a(Frame paramFrame, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public byte[] a()
   {
-    paramFrame.bindFrame(paramInt1, paramInt2, paramInt3, 1.0D);
-    GLES20.glBindFramebuffer(36160, paramFrame.getFBO());
-    GLES20.glViewport(0, 0, paramInt2, paramInt3);
-    if (paramBoolean) {
-      a();
-    }
+    byte[] arrayOfByte = new byte[16];
+    System.arraycopy(bcwj.a(this.jdField_a_of_type_Int), 0, arrayOfByte, 0, 4);
+    System.arraycopy(bcwj.a(this.jdField_a_of_type_Short), 0, arrayOfByte, 4, 2);
+    System.arraycopy(bcwj.a(this.jdField_b_of_type_Int), 0, arrayOfByte, 6, 4);
+    System.arraycopy(bcwj.a(this.c), 0, arrayOfByte, 10, 4);
+    System.arraycopy(bcwj.a(this.jdField_b_of_type_Short), 0, arrayOfByte, 14, 2);
+    return arrayOfByte;
   }
   
-  public static void a(BaseFilter paramBaseFilter, Frame paramFrame1, Frame paramFrame2, int paramInt1, int paramInt2, int paramInt3)
+  public int b()
   {
-    Frame localFrame = new Frame(paramFrame1.getFBO(), paramFrame1.getTextureId(), paramInt2, paramInt3);
-    GlUtil.setBlendMode(true);
-    GLES20.glBlendEquation(32774);
-    GLES20.glBindFramebuffer(36160, paramFrame1.getFBO());
-    GLES20.glViewport(0, 0, paramInt2, paramInt3);
-    paramFrame2.bindFrame(paramInt1, paramInt2, paramInt3, 1.0D);
-    paramBaseFilter.RenderProcess(paramFrame2.getTextureId(), paramInt2, paramInt3, paramFrame1.getTextureId(), 1.0D, localFrame);
-    GlUtil.setBlendMode(false);
+    return this.c;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.c = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkfu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.beauty.QavBeautyMenuPanel;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.qphone.base.util.QLog;
 
 public class mhz
-  implements mhs
+  implements DialogInterface.OnClickListener
 {
-  public mhz(QavPanel paramQavPanel) {}
+  public mhz(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
-  public void a(View paramView, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = this.a.a(paramInt);
-    if ((paramView instanceof QavBeautyMenuPanel)) {
-      ((QavBeautyMenuPanel)paramView).a();
-    }
-    long l = AudioHelper.b();
-    this.a.a(l, paramInt, true);
-  }
-  
-  public void a(View paramView1, View paramView2)
-  {
-    if (this.a.a != null) {
-      this.a.a.onClick(paramView2);
-    }
+    QLog.w(this.a.d, 1, "showConfirmBoxToHangup, no, mRelationId[" + this.a.b + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mhz
  * JD-Core Version:    0.7.0.1
  */

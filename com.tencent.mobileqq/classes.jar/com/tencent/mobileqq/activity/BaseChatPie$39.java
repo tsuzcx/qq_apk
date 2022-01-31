@@ -1,30 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import akqr;
+import aelz;
+import ajtc;
 
 class BaseChatPie$39
   implements Runnable
 {
-  BaseChatPie$39(BaseChatPie paramBaseChatPie, akqr paramakqr) {}
+  BaseChatPie$39(BaseChatPie paramBaseChatPie, ajtc paramajtc) {}
   
   public void run()
   {
-    if (this.a.e)
-    {
-      if (this.a.g)
-      {
-        this.this$0.e(131079);
-        return;
-      }
-      this.this$0.e(131078);
-      return;
+    if ((!this.a.b()) && (this.this$0.a != null)) {
+      this.this$0.a.d();
     }
-    this.this$0.e(131076);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseChatPie.39
  * JD-Core Version:    0.7.0.1
  */

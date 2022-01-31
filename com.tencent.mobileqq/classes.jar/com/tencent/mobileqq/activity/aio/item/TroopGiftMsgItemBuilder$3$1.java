@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aedj;
+import afzx;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import com.tencent.image.URLDrawable;
@@ -27,7 +27,7 @@ class TroopGiftMsgItemBuilder$3$1
       }
     }
     this.a.this$0.b.remove(this.a.b);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag(2131372729).equals(this.a.jdField_a_of_type_JavaLangString))
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag(2131373085).equals(this.a.jdField_a_of_type_JavaLangString))
     {
       localObject = URLDrawable.URLDrawableOptions.obtain();
       ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(this.a.jdField_a_of_type_Int);
@@ -39,7 +39,7 @@ class TroopGiftMsgItemBuilder$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.3.1
  * JD-Core Version:    0.7.0.1
  */

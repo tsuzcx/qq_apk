@@ -1,138 +1,82 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.random.RandomWebProtocol;
+import java.util.Random;
+import org.json.JSONObject;
 
 public class lvj
-  extends lum
+  extends lvi
 {
-  public boolean a;
+  int c;
+  int d;
+  int e;
+  String f;
   
-  public void a(long paramLong)
+  public lvj(RandomWebProtocol paramRandomWebProtocol, lvi paramlvi, String paramString, int paramInt1, int paramInt2, int paramInt3, String... paramVarArgs)
   {
-    long l = paramLong - this.jdField_a_of_type_Long;
-    int k = 0;
-    int j = 0;
-    int i;
-    float f;
-    if (this.jdField_a_of_type_Boolean) {
-      if ((l > 0L) && (l < 100L))
-      {
-        i = (int)(255L * l / 100L);
-        if ((l <= 0L) || (l > 200L)) {
-          break label226;
-        }
-        f = -0.0035F * (float)l + 1.5F;
-      }
+    super(paramRandomWebProtocol, paramlvi);
+    this.a = 1;
+    this.c = paramString;
+    this.d = paramInt1;
+    this.c = paramInt2;
+    this.e = paramInt3;
+    if ((this.e == 2) && (paramVarArgs != null) && (paramVarArgs.length == 1)) {
+      this.f = paramVarArgs[0];
     }
-    label539:
+    this.d = "[d] RequestDouble";
+  }
+  
+  String a()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject = localJSONObject1;
     for (;;)
     {
-      QLog.d("RedPacketGameParticleTopWordTip", 2, "WL_DEBUG update duration = " + l + ", alpha = " + i + ", scale = " + f + ", curTime = " + paramLong + ", mStartTime = " + this.jdField_a_of_type_Long);
-      a(i);
-      b(f);
-      return;
-      if ((l >= 100L) && (l <= 1200L))
+      try
       {
-        i = 255;
-        break;
-      }
-      i = j;
-      if (l <= 1200L) {
-        break;
-      }
-      i = j;
-      if (l >= 1250L) {
-        break;
-      }
-      i = (int)(255L * (l - 1250L) / -50L);
-      break;
-      label226:
-      if ((l > 200L) && (l <= 350L))
-      {
-        f = 0.001333333F * (float)l + 0.5333334F;
-      }
-      else if ((l > 350L) && (l <= 450L))
-      {
-        f = -0.001F * (float)l + 1.35F;
-      }
-      else if ((l > 450L) && (l <= 550L))
-      {
-        f = 0.001F * (float)l + 0.45F;
-      }
-      else if ((l > 550L) && (l <= 1100L))
-      {
-        f = 1.0F;
-      }
-      else if ((l > 1100L) && (l <= 1150L))
-      {
-        f = 0.0016F * (float)l - 0.76F;
-      }
-      else if ((l > 1150L) && (l <= 1250L))
-      {
-        f = -0.0108F * (float)l + 13.5F;
-      }
-      else
-      {
-        f = 0.0F;
-        continue;
-        if ((l > 0L) && (l < 100L)) {
-          i = (int)(255L * l / 100L);
-        }
-        for (;;)
+        this.a = new JSONObject().put("peer_gender", this.c).put("session_type", this.d).put("reqtype", this.e);
+        localObject = localJSONObject1;
+        if (this.e == 2)
         {
-          if ((l <= 0L) || (l > 200L)) {
-            break label539;
-          }
-          f = -0.0035F * (float)l + 1.5F;
-          break;
-          if ((l >= 100L) && (l <= 700L))
+          localObject = localJSONObject1;
+          if (this.f != null)
           {
-            i = 255;
-          }
-          else
-          {
-            i = k;
-            if (l > 700L)
-            {
-              i = k;
-              if (l < 750L) {
-                i = (int)(255L * (l - 750L) / -50L);
-              }
+            localObject = localJSONObject1;
+            this.a.put("uniqkey", this.f);
+            localObject = localJSONObject1;
+            JSONObject localJSONObject2 = new JSONObject(super.a());
+            localObject = localJSONObject1;
+            if (this.e != 1) {
+              break label178;
             }
+            localObject = localJSONObject1;
+            i = this.b.a;
+            localObject = localJSONObject1;
+            localJSONObject1 = localJSONObject2.put("rand", i);
+            localObject = localJSONObject1;
+            return localJSONObject1.toString();
           }
         }
-        if ((l > 200L) && (l <= 350L)) {
-          f = 0.001333333F * (float)l + 0.5333334F;
-        } else if ((l > 350L) && (l <= 450L)) {
-          f = -0.001F * (float)l + 1.35F;
-        } else if ((l > 450L) && (l <= 550L)) {
-          f = 0.001F * (float)l + 0.45F;
-        } else if ((l > 550L) && (l <= 600L)) {
-          f = 1.0F;
-        } else if ((l > 600L) && (l <= 650L)) {
-          f = 0.0016F * (float)l + 0.04F;
-        } else if ((l > 650L) && (l <= 750L)) {
-          f = -0.0108F * (float)l + 8.1F;
-        } else {
-          f = 0.0F;
+        localObject = localJSONObject1;
+        if (this.e != 1) {
+          continue;
         }
+        localObject = localJSONObject1;
+        this.b.a = new Random().nextInt();
+        continue;
+        localObject = localException;
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return ((JSONObject)localObject).toString();
+      }
+      label178:
+      int i = new Random().nextInt();
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramInt2 = paramInt1 * 39 / 750;
-    paramInt3 = paramInt1 * 59 / 750;
-    a(paramInt2, paramInt3, paramInt1 - paramInt2, paramInt1 * 268 / 750 + paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lvj
  * JD-Core Version:    0.7.0.1
  */

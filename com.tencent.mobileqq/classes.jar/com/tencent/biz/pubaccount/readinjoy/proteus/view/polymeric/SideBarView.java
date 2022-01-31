@@ -86,7 +86,7 @@ public class SideBarView
       if ((!paramString.startsWith("http")) && (!paramString.startsWith("pubaccount"))) {
         break label64;
       }
-      Drawable localDrawable = getContext().getResources().getDrawable(2130842661);
+      Drawable localDrawable = getContext().getResources().getDrawable(2130842845);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = DrawableUtil.getDrawable(getContext(), paramString, localDrawable, localDrawable);
     }
     label64:
@@ -109,7 +109,7 @@ public class SideBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.SideBarView
  * JD-Core Version:    0.7.0.1
  */

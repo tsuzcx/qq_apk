@@ -1,35 +1,70 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.SimpleAdapter;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.FollowingListFragment;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
-class qve
-  implements SeekBar.OnSeekBarChangeListener
+public class qve
+  extends SimpleAdapter
 {
-  qve(qva paramqva) {}
-  
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public qve(Context paramContext, List<? extends Map<String, ?>> paramList, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    int i = paramSeekBar.getProgress();
-    int j = qva.a(this.a).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + qtx.a(j));
+    super(paramList, paramInt, paramArrayOfString, paramArrayOfInt, arrayOfInt);
+  }
+  
+  protected void a(View paramView, ResultRecord paramResultRecord) {}
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Map localMap = (Map)getItem(paramInt);
+    ResultRecord localResultRecord = ResultRecord.a((String)localMap.get("key_uin"), (String)localMap.get("key_name"));
+    if (FollowingListFragment.a(this.a).contains(localResultRecord)) {
+      localMap.put("key_checked", Boolean.valueOf(true));
     }
-    if (j == 3) {
-      qva.a(this.a).a(i * 1000, qva.a(this.a));
+    for (;;)
+    {
+      paramView = super.getView(paramInt, paramView, paramViewGroup);
+      a(paramView, localResultRecord);
+      return paramView;
+      localMap.put("key_checked", Boolean.valueOf(false));
     }
-    while (j != 5) {
+  }
+  
+  public void setViewImage(ImageView paramImageView, String paramString)
+  {
+    super.setViewImage(paramImageView, paramString);
+    if (paramImageView.getId() == 2131367808) {}
+    try
+    {
+      Object localObject = this.a.getResources().getDrawable(2130840084);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
+      localObject = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
+      ((URLDrawable)localObject).setTag(bcuq.a(140, 140));
+      ((URLDrawable)localObject).setDecodeHandler(bcuq.o);
+      paramImageView.setImageDrawable((Drawable)localObject);
       return;
     }
-    qva.a(this.a).c(i * 1000);
+    catch (Exception paramImageView)
+    {
+      QLog.e("FollowingListFragment", 2, "setViewImage: " + paramString, paramImageView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qve
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,46 @@
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
 
 public class yed
+  extends LinearLayoutManager
 {
-  public int a;
-  public String a;
-  public int b;
+  public yed(Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    super(paramContext, paramInt, paramBoolean);
+  }
   
-  private yed(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      super.onLayoutChildren(paramRecycler, paramState);
+      return;
+    }
+    catch (Exception paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+  }
+  
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yed
  * JD-Core Version:    0.7.0.1
  */

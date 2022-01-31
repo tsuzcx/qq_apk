@@ -1,47 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.async.Boss;
-import com.tribe.async.async.Bosses;
+import NS_KING_INTERFACE.stGetFeedCommentListReq;
+import UserGrowth.stQQGetFeedCommentListReq;
+import UserGrowth.stQQGetFeedCommentListRsp;
 
 public class tkf
-  extends tbb
+  extends thb<stQQGetFeedCommentListRsp>
 {
-  qqstory_service.RspIconPostfix a;
-  
-  public tkf() {}
-  
-  public tkf(qqstory_service.RspIconPostfix paramRspIconPostfix)
+  public tkf()
   {
-    super(paramRspIconPostfix.result);
-    this.a = paramRspIconPostfix;
+    super("QQGetFeedCommentList");
+    this.a = new stGetFeedCommentListReq("", "76C9BjPDT1HaN4nHs", "", 0, "", 0);
   }
   
-  public void a()
+  public tkf(String paramString1, String paramString2, int paramInt)
   {
-    if ((this.a.icon_info.has()) && (this.a.icon_info.size() > 0)) {
-      Bosses.get().postJob(new tkg(this, "GetUserIconHandler"));
-    }
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
-    }
+    super("QQGetFeedCommentList");
+    this.a = new stQQGetFeedCommentListReq(new stGetFeedCommentListReq(paramString1, paramString2, "", 0, "", paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tkf
  * JD-Core Version:    0.7.0.1
  */

@@ -27,7 +27,7 @@ public class RoundTextView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RoundTextView);
-    this.jdField_a_of_type_Int = paramContext.getColor(0, 2131167134);
+    this.jdField_a_of_type_Int = paramContext.getColor(0, 2131167192);
     paramContext.recycle();
   }
   
@@ -55,7 +55,7 @@ public class RoundTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.widget.RoundTextView
  * JD-Core Version:    0.7.0.1
  */

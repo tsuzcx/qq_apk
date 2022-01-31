@@ -1,25 +1,175 @@
-import java.util.Comparator;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.graphics.PorterDuff.Mode;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
-final class zcs
-  implements Comparator<zcq>
+public class zcs
+  extends Dialog
 {
-  public int a(zcq paramzcq1, zcq paramzcq2)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private zcv jdField_a_of_type_Zcv;
+  private boolean jdField_a_of_type_Boolean;
+  private View jdField_b_of_type_AndroidViewView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  
+  public zcs(Context paramContext)
   {
-    if ((paramzcq1 == null) && (paramzcq2 == null)) {}
-    do
+    super(paramContext, 2131755801);
+    super.setContentView(2131559087);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    a();
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131377895);
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131377890);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365220));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365226));
+    this.c = ((TextView)super.findViewById(2131377893));
+    ((ImageView)super.findViewById(2131377894)).setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
+    this.d = ((TextView)super.findViewById(2131377888));
+    ((ImageView)super.findViewById(2131377889)).setColorFilter(-909794, PorterDuff.Mode.MULTIPLY);
+    this.e = ((TextView)super.findViewById(2131377128));
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    int j = 8;
+    QLog.i("ShareToQZone", 2, "width:" + this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().width);
+    Object localObject;
+    if (paramBoolean)
     {
-      return 0;
-      if ((paramzcq1 == null) && (paramzcq2 != null)) {
-        return 1;
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      localObject = this.jdField_b_of_type_AndroidViewView;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label126;
       }
-      if ((paramzcq1 != null) && (paramzcq2 == null)) {
-        return -1;
+      i = 8;
+      label65:
+      ((View)localObject).setVisibility(i);
+      localObject = this.jdField_a_of_type_AndroidViewView;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label131;
       }
-      if (paramzcq1.a() > paramzcq2.a()) {
-        return -1;
+      i = 0;
+      label86:
+      ((View)localObject).setVisibility(i);
+      localObject = this.e;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label137;
       }
-    } while (paramzcq1.a() >= paramzcq2.a());
-    return 1;
+    }
+    label131:
+    label137:
+    for (int i = j;; i = 0)
+    {
+      ((TextView)localObject).setVisibility(i);
+      return;
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      break;
+      label126:
+      i = 0;
+      break label65;
+      i = 8;
+      break label86;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.d != null) {
+      this.d.setText(paramInt);
+    }
+  }
+  
+  public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new zct(this, paramOnClickListener));
+  }
+  
+  public void a(zcv paramzcv)
+  {
+    this.jdField_a_of_type_Zcv = paramzcv;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.e != null)
+    {
+      if (paramInt != 0) {
+        this.e.setText(paramInt);
+      }
+    }
+    else {
+      return;
+    }
+    this.e.setText("");
+  }
+  
+  public void b(String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      b(false);
+      return;
+    }
+    b(true);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new zcu(this, paramOnClickListener));
+  }
+  
+  public void c(int paramInt)
+  {
+    if (this.c != null) {
+      this.c.setText(paramInt);
+    }
+  }
+  
+  public void dismiss()
+  {
+    try
+    {
+      super.dismiss();
+      return;
+    }
+    catch (Exception localException) {}
+  }
+  
+  public void onBackPressed()
+  {
+    QLog.i("ShareResultDialog", 2, "onBackPressed");
+    super.onBackPressed();
+    zcv localzcv;
+    if (this.jdField_a_of_type_Zcv != null)
+    {
+      localzcv = this.jdField_a_of_type_Zcv;
+      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0) {
+        break label44;
+      }
+    }
+    label44:
+    for (boolean bool = true;; bool = false)
+    {
+      localzcv.a(bool);
+      return;
+    }
   }
 }
 

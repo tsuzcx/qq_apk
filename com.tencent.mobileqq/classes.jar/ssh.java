@@ -1,28 +1,29 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tribe.async.dispatch.Dispatcher.Event;
+import android.support.v4.view.ViewPager;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
 
 public class ssh
-  implements Dispatcher.Event
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public ErrorMessage a = new ErrorMessage();
+  public ssh(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public String a()
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    return this.a.getErrorMessage();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("{\"_class\":\"SimpleBaseEvent\", \"errorInfo\":");
-    if (this.a == null) {}
-    for (String str = "null";; str = "\"" + this.a + "\"") {
-      return str + "}";
+    ServiceAccountFolderActivityNew.a(this.a, true);
+    if (ServiceAccountFolderActivityNew.a(this.a).getId() == paramInt) {
+      ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(0);
     }
+    while (ServiceAccountFolderActivityNew.b(this.a).getId() != paramInt) {
+      return;
+    }
+    ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ssh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public class awup
-  extends awut
+class awup
+  implements DialogInterface.OnClickListener
 {
-  public awup(GroupSearchEngine paramGroupSearchEngine, awuu paramawuu, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramawuu, paramString, paramInt);
-  }
+  awup(awul paramawul, String paramString) {}
   
-  public awoh a(List<awoi> paramList, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new awoa(paramList, paramString, GroupSearchEngine.a(this.a));
+    new awuq(awul.a(this.jdField_a_of_type_Awul).jdField_a_of_type_AndroidContentContext, awul.a(this.jdField_a_of_type_Awul).a()).a(this.jdField_a_of_type_JavaLangString).a(awul.a(this.jdField_a_of_type_Awul).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo).a(awul.a(this.jdField_a_of_type_Awul)).a();
+    azmj.b(awul.a(this.jdField_a_of_type_Awul).a(), "dc00898", "", "", "0X800A4BD", "0X800A4BD", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awup
  * JD-Core Version:    0.7.0.1
  */

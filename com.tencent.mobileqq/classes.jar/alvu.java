@@ -1,34 +1,23 @@
-import com.tencent.ark.ArkEnvironmentManager.Log;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
-final class alvu
-  implements ArkEnvironmentManager.Log
+class alvu
+  implements muf
 {
-  public void d(String paramString1, String paramString2)
+  alvu(alvt paramalvt, long paramLong, int paramInt) {}
+  
+  public void a(int paramInt1, muh parammuh, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(paramString1, 2, paramString2);
+    if (paramInt1 == 0)
+    {
+      this.jdField_a_of_type_Alvt.a.a(10, 1, this.jdField_a_of_type_Long, null, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Alvt.a.a(7, this.jdField_a_of_type_Long, 2, 0, 0, 21, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Alvt.a.a(21, 1, this.jdField_a_of_type_Long, 0L);
     }
-  }
-  
-  public void e(String paramString1, String paramString2)
-  {
-    QLog.e(paramString1, 1, paramString2);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 1, paramString2);
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alvu
  * JD-Core Version:    0.7.0.1
  */

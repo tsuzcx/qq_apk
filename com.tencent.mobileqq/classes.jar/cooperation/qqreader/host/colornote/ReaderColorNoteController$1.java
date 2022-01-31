@@ -1,9 +1,9 @@
 package cooperation.qqreader.host.colornote;
 
-import amki;
+import aobg;
 
 class ReaderColorNoteController$1
-  implements amki
+  implements aobg
 {
   ReaderColorNoteController$1(ReaderColorNoteController paramReaderColorNoteController, OnColorNoteAnimFinishCallback paramOnColorNoteAnimFinishCallback) {}
   
@@ -16,7 +16,7 @@ class ReaderColorNoteController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.host.colornote.ReaderColorNoteController.1
  * JD-Core Version:    0.7.0.1
  */

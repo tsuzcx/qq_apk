@@ -1,26 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenContainer;
-
-public class bctp
-  implements Animator.AnimatorListener
+public abstract interface bctp
 {
-  public bctp(FloatingScreenContainer paramFloatingScreenContainer) {}
+  public abstract void a();
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void b();
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    paramAnimator.removeAllListeners();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bctp
  * JD-Core Version:    0.7.0.1
  */

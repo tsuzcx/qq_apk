@@ -1,18 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-
 public class aohn
-  extends RecyclerView.ViewHolder
+  extends aohi
 {
-  public aohn(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView)
+  private aoih a;
+  
+  public aohn(String paramString, aoih paramaoih)
   {
-    super(paramView);
+    super(paramString);
+    this.a = paramaoih;
+  }
+  
+  public aoih a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aohn
  * JD-Core Version:    0.7.0.1
  */

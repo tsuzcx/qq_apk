@@ -1,63 +1,39 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import UserGrowth.stFollowRsp;
 
-public class ter
+class ter
+  implements tgt
 {
-  public final int a;
-  public final int b;
-  public final int c;
+  ter(tep paramtep, int paramInt, String paramString) {}
   
-  public ter(int paramInt1, int paramInt2)
+  public void a(the paramthe)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = 1;
-  }
-  
-  public ter(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-  }
-  
-  public static ter a(SosoInterface.SosoLocation paramSosoLocation)
-  {
-    if (paramSosoLocation != null) {
-      return new ter((int)(paramSosoLocation.a * 1000000.0D), (int)(paramSosoLocation.b * 1000000.0D));
+    if (!(paramthe.a instanceof stFollowRsp)) {
+      if (this.jdField_a_of_type_Int == 2)
+      {
+        tep.a(this.jdField_a_of_type_Tep, this.jdField_a_of_type_JavaLangString, 1);
+        tlo.b("WSUserBusiness", "[getServiceListenerWrapper] data error: " + paramthe.a);
+      }
     }
-    return new ter(0, 0);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
     do
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (ter)paramObject;
-      if (this.a != paramObject.a) {
-        return false;
-      }
-    } while (this.b == paramObject.b);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return this.a * 31 + this.b;
-  }
-  
-  public String toString()
-  {
-    return "GpsMsg{latitude=" + this.a + ", longitude=" + this.b + '}';
+      return;
+      tep.a(this.jdField_a_of_type_Tep, this.jdField_a_of_type_JavaLangString, 2);
+      break;
+      paramthe = (stFollowRsp)paramthe.a;
+    } while (paramthe == null);
+    int i = paramthe.isFollow;
+    tlo.b("WSUserBusiness", "[getServiceListenerWrapper] isFollow : " + i);
+    if (i == 1)
+    {
+      bfhq.a().a(2131721470);
+      return;
+    }
+    bfhq.a().a(2131721471);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ter
  * JD-Core Version:    0.7.0.1
  */

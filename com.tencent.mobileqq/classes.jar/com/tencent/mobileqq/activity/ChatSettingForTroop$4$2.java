@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import aaum;
-import bbdd;
+import aclk;
+import bdbx;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ChatSettingForTroop$4$2
   implements Runnable
 {
-  public ChatSettingForTroop$4$2(aaum paramaaum, String paramString) {}
+  public ChatSettingForTroop$4$2(aclk paramaclk, String paramString) {}
   
   public void run()
   {
-    bbdd.a(this.jdField_a_of_type_Aaum.a.app.getCurrentAccountUin(), "troop_game_feed", this.jdField_a_of_type_JavaLangString, 0);
+    bdbx.a(this.jdField_a_of_type_Aclk.a.app.getCurrentAccountUin(), "troop_game_feed", this.jdField_a_of_type_JavaLangString, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.4.2
  * JD-Core Version:    0.7.0.1
  */

@@ -71,7 +71,7 @@ public final class cmd0x8a1$CreateGroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8a1.cmd0x8a1.CreateGroupInfo
  * JD-Core Version:    0.7.0.1
  */

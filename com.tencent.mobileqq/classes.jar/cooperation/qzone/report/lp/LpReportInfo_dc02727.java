@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import bgyi;
+import bizf;
 import cooperation.qzone.util.QZLog;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +37,7 @@ public class LpReportInfo_dc02727
   public LpReportInfo_dc02727(JSONObject paramJSONObject)
   {
     init(paramJSONObject);
-    this.qua = bgyi.a();
+    this.qua = bizf.a();
   }
   
   private void init(JSONObject paramJSONObject)
@@ -130,7 +130,7 @@ public class LpReportInfo_dc02727
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc02727
  * JD-Core Version:    0.7.0.1
  */

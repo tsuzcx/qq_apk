@@ -1,39 +1,17 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.SystemClock;
-import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ahhg
-  extends View
 {
-  private View jdField_a_of_type_AndroidViewView;
-  
-  public ahhg(ahhb paramahhb, Context paramContext, View paramView, Drawable paramDrawable)
-  {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    setBackgroundDrawable(paramDrawable);
-  }
-  
-  public void invalidateDrawable(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidViewView.invalidate();
-  }
-  
-  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
-  {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_AndroidViewView.postDelayed(paramRunnable, paramLong - l);
-  }
-  
-  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
-  {
-    this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramRunnable);
-  }
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahhg
  * JD-Core Version:    0.7.0.1
  */

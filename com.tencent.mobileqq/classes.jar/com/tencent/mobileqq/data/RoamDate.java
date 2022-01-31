@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aulz;
+import awbv;
+import awdg;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.Arrays;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin, date")
 public class RoamDate
-  extends auko
+  extends awbv
 {
   public static final int LOCAL_INDEX_00 = 0;
   public static final int LOCAL_INDEX_01 = 1;
@@ -20,11 +20,11 @@ public class RoamDate
   public static final int SERVER_INDEX_11 = 3;
   private static final String TABLE_NAME = "MessageRoamDate";
   public String date;
-  @aulz
+  @awdg
   public long[] lastMsgTime = new long[31];
   public byte[] lastMsgTimeData;
   public long locindex;
-  @aulz
+  @awdg
   public long[] random;
   public byte[] randomData;
   public long serindex;
@@ -370,7 +370,7 @@ public class RoamDate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RoamDate
  * JD-Core Version:    0.7.0.1
  */

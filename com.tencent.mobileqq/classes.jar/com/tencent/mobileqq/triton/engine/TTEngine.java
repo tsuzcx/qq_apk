@@ -10,6 +10,7 @@ import com.tencent.mobileqq.triton.annotation.JNIModule;
 import com.tencent.mobileqq.triton.api.TTChannel;
 import com.tencent.mobileqq.triton.api.http.NativeHttp;
 import com.tencent.mobileqq.triton.audio.TTAudioPlayerManager;
+import com.tencent.mobileqq.triton.audio.WebAudioProxy;
 import com.tencent.mobileqq.triton.bridge.TTJSBridge;
 import com.tencent.mobileqq.triton.bridge.TTJSInnerEngine;
 import com.tencent.mobileqq.triton.bridge.plugins.AudioPlugin;
@@ -32,6 +33,7 @@ import com.tencent.mobileqq.triton.sdk.ITLog;
 import com.tencent.mobileqq.triton.sdk.ITSoLoader;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.mobileqq.triton.sdk.ITTEngine.IListener;
+import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
 import com.tencent.mobileqq.triton.sdk.audio.IAudioPlayerBuilder;
 import com.tencent.mobileqq.triton.sdk.bridge.IInspectorAgent;
 import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
@@ -82,6 +84,7 @@ public class TTEngine
   @TTNativeCall
   private TTChannel mTTChannel;
   private volatile int mTargetFPS;
+  private WebAudioProxy mWebAudioProxy;
   @TTNativeCall
   private long nativeTTAppHandle;
   private HashMap<String, Boolean> optionalSoLoadStatusMap;
@@ -100,6 +103,7 @@ public class TTEngine
     this.mGameLauncher = new GameLauncher(this, this.mJSBridge);
     this.mJsRuntimeLoader = new JsRuntimeLoader(this);
     this.mCanvasRecorder = new CanvasRecorder(this);
+    this.mWebAudioProxy = new WebAudioProxy();
   }
   
   @TTNativeCall
@@ -155,6 +159,11 @@ public class TTEngine
   public Activity getAttachedActivity()
   {
     return this.mAttachedActivity;
+  }
+  
+  public IAudioNativeManager getAudioNativeManager()
+  {
+    return this.mWebAudioProxy;
   }
   
   public CanvasRecorder getCanvasRecorder()
@@ -583,7 +592,7 @@ public class TTEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.TTEngine
  * JD-Core Version:    0.7.0.1
  */

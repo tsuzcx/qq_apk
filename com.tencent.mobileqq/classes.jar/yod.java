@@ -1,29 +1,29 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
+import com.tencent.qphone.base.util.QLog;
 
-public class yod
-  extends FrameLayout
+class yod
+  extends xos
 {
-  public yod(GameCenterAPIJavaScript paramGameCenterAPIJavaScript, Context paramContext, CustomWebView paramCustomWebView)
+  yod(ynx paramynx, yoh paramyoh) {}
+  
+  public void onFailure(String paramString)
   {
-    super(paramContext);
+    QLog.w(".troop.VideoCombineHelper", 1, "concatMediaByTs change ts onSuccess: " + paramString);
+    this.jdField_a_of_type_Yoh.onFailure(paramString);
   }
   
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  public void onSuccess(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView instanceof View)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.dispatchTouchEvent(paramMotionEvent);
+    if (QLog.isColorLevel())
+    {
+      QLog.w(".troop.trace_video_combine", 2, "concatMediaByTs change ts onSuccess: " + paramString);
+      QLog.d(".troop.trace_video_combine", 2, "convertToTsTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Ynx.a.a));
     }
-    return super.dispatchTouchEvent(paramMotionEvent);
+    this.jdField_a_of_type_Ynx.a.a = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yod
  * JD-Core Version:    0.7.0.1
  */

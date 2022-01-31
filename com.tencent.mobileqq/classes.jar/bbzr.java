@@ -1,180 +1,185 @@
-import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bbzr
-  extends bbzo
+  extends bbzz
+  implements bbzt
 {
-  public bbzr(VipFunCallPreviewActivity paramVipFunCallPreviewActivity) {}
+  public int a;
+  public long a;
+  public bjyu a;
+  public String a;
+  public List<Integer> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public bbzr(JSONObject paramJSONObject)
   {
-    switch (paramInt)
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = Collections.EMPTY_LIST;
+    this.jdField_f_of_type_Int = -1;
+    a(paramJSONObject);
+  }
+  
+  public static JSONObject a(bbzr parambbzr)
+  {
+    JSONObject localJSONObject = new JSONObject().put("type", "recite").put("troop_uin", parambbzr.jdField_f_of_type_JavaLangString).put("subtype", 1).put("title", parambbzr.jdField_b_of_type_JavaLangString).put("desc", parambbzr.c).put("kid", parambbzr.jdField_a_of_type_JavaLangString).put("error_count", parambbzr.jdField_d_of_type_Int).put("remind_count", parambbzr.jdField_e_of_type_Int).put("waste_time", parambbzr.jdField_a_of_type_Long).put("grade", parambbzr.jdField_f_of_type_Int).put("lyric", parambbzr.jdField_g_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(parambbzr.jdField_e_of_type_JavaLangString)) {
+      localJSONObject.put("file_url", parambbzr.jdField_e_of_type_JavaLangString);
+    }
+    if (!TextUtils.isEmpty(parambbzr.jdField_d_of_type_JavaLangString)) {
+      localJSONObject.put("file_path", parambbzr.jdField_d_of_type_JavaLangString);
+    }
+    if (parambbzr.jdField_a_of_type_JavaUtilList != null) {
+      localJSONObject.put("pid_list", new JSONArray(parambbzr.jdField_a_of_type_JavaUtilList));
+    }
+    return localJSONObject;
+  }
+  
+  public static JSONObject a(String paramString1, String paramString2, String paramString3, List<Integer> paramList)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(alpo.a(2131706067)).append(paramString2);
+    if ((paramList != null) && (!paramList.isEmpty())) {
+      localStringBuilder.append(bbyv.a(paramList));
+    }
+    paramString1 = new JSONObject().put("type", "recite").put("troop_uin", paramString1).put("subtype", 2).put("title", paramString2).put("desc", localStringBuilder.toString()).put("kid", paramString3);
+    if (paramList != null) {
+      paramString1.put("pid_list", new JSONArray(paramList));
+    }
+    return paramString1;
+  }
+  
+  public static JSONObject a(String paramString1, String paramString2, String paramString3, List<Integer> paramList, int paramInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder(alpo.a(2131706069)).append(paramString2);
+    if ((paramList != null) && (!paramList.isEmpty()) && (paramList.size() != paramInt)) {
+      localStringBuilder.append(bbyv.a(paramList));
+    }
+    paramString1 = new JSONObject().put("type", "recite").put("troop_uin", paramString1).put("subtype", 2).put("title", paramString2).put("desc", localStringBuilder.toString()).put("kid", paramString3);
+    if (paramList != null) {
+      paramString1.put("pid_list", new JSONArray(paramList));
+    }
+    return paramString1;
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public void a(String paramString)
+  {
+    super.a(paramString);
+    try
     {
-    case 1: 
-    case 2: 
-    default: 
+      a(new JSONObject(paramString));
       return;
     }
-    Collections.sort(this.a.jdField_a_of_type_JavaUtilArrayList);
-    this.a.d = this.a.jdField_a_of_type_JavaUtilArrayList.toString();
-    this.a.a(false, 0);
-    this.a.jdField_a_of_type_Boolean = paramBoolean;
-    Object localObject1;
-    int i;
-    int j;
-    String str;
-    Object localObject2;
-    Object localObject3;
-    if (!paramBoolean)
+    catch (JSONException paramString)
     {
-      localObject1 = (Bundle)paramObject;
-      i = ((Bundle)localObject1).getInt("result");
-      j = ((Bundle)localObject1).getInt("callId", this.a.jdField_a_of_type_Int);
-      paramObject = ((Bundle)localObject1).getString("message");
-      str = ((Bundle)localObject1).getString("svr_url");
-      localObject2 = ((Bundle)localObject1).getString("svr_actStr");
-      if (i != 9002) {
-        break label290;
-      }
-      paramInt = 11;
-      localObject3 = paramObject;
-      if (TextUtils.isEmpty(paramObject)) {
-        localObject3 = ajya.a(2131716756);
-      }
-      paramObject = localObject3;
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        break label607;
-      }
-      localObject1 = ajya.a(2131716734);
-      localObject2 = null;
-      paramInt = 11;
-      paramObject = localObject3;
+      paramString.printStackTrace();
     }
-    for (;;)
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("subtype");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("kid");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("title");
+    this.c = paramJSONObject.optString("desc");
+    this.jdField_d_of_type_Int = paramJSONObject.optInt("error_count");
+    this.jdField_e_of_type_Int = paramJSONObject.optInt("remind_count");
+    this.jdField_a_of_type_Long = paramJSONObject.optLong("waste_time");
+    this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("file_path");
+    this.jdField_e_of_type_JavaLangString = paramJSONObject.optString("file_url");
+    this.jdField_f_of_type_Int = paramJSONObject.optInt("grade", -1);
+    this.jdField_f_of_type_JavaLangString = paramJSONObject.optString("troop_uin");
+    this.jdField_g_of_type_JavaLangString = paramJSONObject.optString("lyric");
+    paramJSONObject = paramJSONObject.optJSONArray("pid_list");
+    if (paramJSONObject != null)
     {
-      if (TextUtils.isEmpty(paramObject)) {
-        if ((i == 22001) || (i == 6002))
-        {
-          paramObject = ajya.a(2131716750);
-          label222:
-          VipFunCallPreviewActivity localVipFunCallPreviewActivity = this.a;
-          localObject3 = localObject1;
-          if (!TextUtils.isEmpty(str))
-          {
-            localObject3 = localObject1;
-            if (TextUtils.isEmpty((CharSequence)localObject1)) {
-              localObject3 = ajya.a(2131716754);
-            }
-          }
-          localVipFunCallPreviewActivity.a(paramInt, j, null, paramObject, (String)localObject2, (String)localObject3, str);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(50);
-          return;
-          label290:
-          if (i == 9003)
-          {
-            paramInt = 12;
-            localObject1 = paramObject;
-            if (TextUtils.isEmpty(paramObject)) {
-              localObject1 = ajya.a(2131716737);
-            }
-            paramObject = localObject1;
-            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              break label607;
-            }
-            localObject3 = ajya.a(2131716749);
-            localObject2 = null;
-            paramInt = 12;
-            paramObject = localObject1;
-            localObject1 = localObject3;
-            continue;
-          }
-          if ((i == 1005011) || (i == 5002))
-          {
-            paramInt = 2;
-            localObject1 = paramObject;
-            if (TextUtils.isEmpty(paramObject)) {
-              localObject1 = ajya.a(2131716743);
-            }
-            paramObject = localObject1;
-            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              break label607;
-            }
-            localObject3 = ajya.a(2131716747);
-            localObject2 = null;
-            paramInt = 2;
-            paramObject = localObject1;
-            localObject1 = localObject3;
-            continue;
-          }
-          if ((i == 1005012) || (i == 4002))
-          {
-            paramInt = 1;
-            localObject1 = paramObject;
-            if (TextUtils.isEmpty(paramObject)) {
-              localObject1 = ajya.a(2131716752);
-            }
-            paramObject = localObject1;
-            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              break label607;
-            }
-            localObject3 = ajya.a(2131716744);
-            localObject2 = null;
-            paramInt = 1;
-            paramObject = localObject1;
-            localObject1 = localObject3;
-            continue;
-          }
-          if (i == 461001)
-          {
-            localObject1 = ajya.a(2131716759);
-            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              break label601;
-            }
-          }
-        }
-      }
-      label601:
-      for (paramObject = ajya.a(2131716753);; paramObject = localObject2)
+      int j = paramJSONObject.length();
+      if (j != 0)
       {
-        localObject3 = ajya.a(2131716742);
-        str = bbqd.a("funCallMine");
-        paramInt = 6;
-        localObject2 = localObject1;
-        localObject1 = paramObject;
-        paramObject = localObject2;
-        localObject2 = localObject3;
-        break;
-        localObject3 = null;
-        localObject1 = localObject2;
-        paramInt = 4;
-        localObject2 = localObject3;
-        break;
-        if (i == 3002)
+        this.jdField_a_of_type_JavaUtilList = new ArrayList(j);
+        int i = 0;
+        while (i < j)
         {
-          paramObject = ajya.a(2131716733);
-          break label222;
+          this.jdField_a_of_type_JavaUtilList.add(Integer.valueOf(paramJSONObject.getInt(i)));
+          i += 1;
         }
-        if (i == 8002)
-        {
-          paramObject = ajya.a(2131716760);
-          break label222;
-        }
-        break label222;
       }
-      label607:
-      localObject3 = null;
-      localObject1 = localObject2;
-      localObject2 = localObject3;
     }
+    else
+    {
+      this.jdField_a_of_type_JavaUtilList = Collections.EMPTY_LIST;
+    }
+    if (this.jdField_a_of_type_Bjyu != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("HWReciteInfo", 2, "cancel uploadFileTask");
+      }
+      this.jdField_a_of_type_Bjyu.c();
+      this.jdField_a_of_type_Bjyu = null;
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
+        this.jdField_g_of_type_Int = 0;
+      }
+    }
+    else {
+      return;
+    }
+    this.jdField_g_of_type_Int = 3;
+  }
+  
+  public int b()
+  {
+    return 4;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_e_of_type_JavaLangString = paramString;
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("file_url", paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public int d()
+  {
+    if (this.jdField_g_of_type_Int == 3) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbzr
  * JD-Core Version:    0.7.0.1
  */

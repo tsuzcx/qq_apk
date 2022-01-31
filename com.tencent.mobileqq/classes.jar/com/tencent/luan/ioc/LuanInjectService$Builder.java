@@ -1,9 +1,97 @@
 package com.tencent.luan.ioc;
 
+import com.tencent.luan.core.LuanLog;
+import com.tencent.luan.core.Utility;
+import com.tencent.luan.ioc.index.IndexInjectAnalysisService;
+import com.tencent.luan.ioc.index.IndexInjectInfoService;
+import com.tencent.luan.ioc.reflect.ReflectInjectAnalysisService;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 public class LuanInjectService$Builder
 {
   private boolean debugMode = false;
+  private List<IndexInjectInfoService> indexInjectInfoServices = new LinkedList();
   private ClassLoader loader = null;
+  private Map<String, Class<?>> nameTypeMap = new HashMap();
+  private Set<Class<?>> providerTypes = new LinkedHashSet();
+  private boolean reflectValid = true;
+  
+  public LuanInjectService$Builder() {}
+  
+  public LuanInjectService$Builder(LuanInjectService paramLuanInjectService)
+  {
+    Utility.makeSureNotNull(paramLuanInjectService, "injectService");
+    this.loader = LuanInjectService.access$600(paramLuanInjectService).getLoader();
+    this.debugMode = LuanInjectService.access$700(paramLuanInjectService);
+    this.reflectValid = LuanInjectService.access$600(paramLuanInjectService).isValid();
+    this.indexInjectInfoServices.addAll(LuanInjectService.access$800(paramLuanInjectService).getIndexInfos());
+    this.nameTypeMap.putAll(LuanInjectService.access$900(paramLuanInjectService));
+    this.providerTypes.addAll(LuanInjectService.access$1000(paramLuanInjectService));
+  }
+  
+  public Builder addIndexInfo(IndexInjectInfoService paramIndexInjectInfoService)
+  {
+    Utility.makeSureNotNull(paramIndexInjectInfoService, "indexInfo");
+    this.indexInjectInfoServices.add(paramIndexInjectInfoService);
+    return this;
+  }
+  
+  public Builder addIndexInfos(Iterable<IndexInjectInfoService> paramIterable)
+  {
+    paramIterable = paramIterable.iterator();
+    while (paramIterable.hasNext()) {
+      addIndexInfo((IndexInjectInfoService)paramIterable.next());
+    }
+    return this;
+  }
+  
+  public Builder addNamedType(Class<?> paramClass)
+  {
+    Utility.makeSureNotNull(paramClass, "namedType");
+    String str = LuanInjectService.access$1100(paramClass);
+    if (str.isEmpty()) {
+      LuanLog.d("LuanInjectService", "addNamedType: this class " + paramClass.getName() + " is not named or named empty string, ignored");
+    }
+    Class localClass;
+    do
+    {
+      return this;
+      localClass = (Class)this.nameTypeMap.put(str, paramClass);
+    } while (localClass == null);
+    LuanLog.d("LuanInjectService", "addNamedType: " + localClass.getName() + " with the name of " + str + " is override by " + paramClass.getName());
+    return this;
+  }
+  
+  public Builder addNamedTypes(Iterable<Class<?>> paramIterable)
+  {
+    paramIterable = paramIterable.iterator();
+    while (paramIterable.hasNext()) {
+      addNamedType((Class)paramIterable.next());
+    }
+    return this;
+  }
+  
+  public Builder addProviderType(Class<?> paramClass)
+  {
+    Utility.makeSureNotNull(paramClass, "providerType");
+    this.providerTypes.add(paramClass);
+    return this;
+  }
+  
+  public Builder addProviderTypes(Iterable<Class<?>> paramIterable)
+  {
+    paramIterable = paramIterable.iterator();
+    while (paramIterable.hasNext()) {
+      addProviderType((Class)paramIterable.next());
+    }
+    return this;
+  }
   
   public LuanInjectService create()
   {
@@ -21,10 +109,16 @@ public class LuanInjectService$Builder
     this.debugMode = paramBoolean;
     return this;
   }
+  
+  public Builder setReflectValid(boolean paramBoolean)
+  {
+    this.reflectValid = paramBoolean;
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.luan.ioc.LuanInjectService.Builder
  * JD-Core Version:    0.7.0.1
  */

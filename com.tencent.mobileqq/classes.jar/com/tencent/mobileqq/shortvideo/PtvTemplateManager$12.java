@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.shortvideo;
 
 import android.text.TextUtils;
-import axdi;
-import axle;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
+import ayym;
+import azgk;
 import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQTemplateParser;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
@@ -15,7 +13,7 @@ import java.util.Iterator;
 class PtvTemplateManager$12
   implements Runnable
 {
-  PtvTemplateManager$12(PtvTemplateManager paramPtvTemplateManager, File paramFile, boolean paramBoolean, axdi paramaxdi, AppInterface paramAppInterface) {}
+  PtvTemplateManager$12(PtvTemplateManager paramPtvTemplateManager, File paramFile, boolean paramBoolean1, ayym paramayym, boolean paramBoolean2) {}
   
   public void run()
   {
@@ -52,11 +50,11 @@ class PtvTemplateManager$12
     synchronized (this.this$0.jdField_d_of_type_JavaLangObject)
     {
       this.this$0.a = ((PtvTemplateManager.PtvTemplateInfo)localObject1);
-      if (this.jdField_a_of_type_Axdi != null) {
-        this.jdField_a_of_type_Axdi.a();
+      if (this.jdField_a_of_type_Ayym != null) {
+        this.jdField_a_of_type_Ayym.a();
       }
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (axle.c())) {
-        this.this$0.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      if ((this.b) && (azgk.c())) {
+        this.this$0.b();
       }
       PtvTemplateManager.a(this.this$0);
       return;
@@ -65,7 +63,7 @@ class PtvTemplateManager$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.12
  * JD-Core Version:    0.7.0.1
  */

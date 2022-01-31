@@ -1,65 +1,37 @@
 package com.tencent.mobileqq.mini.entry.desktop;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import bbdx;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mini.apkg.ApkgManager;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.cache.Storage;
-import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager;
-import com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.MiniAppSubProcessorInfo;
-import com.tencent.mobileqq.mini.util.StorageUtil;
-import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 class MiniAppDesktopAdapter$5
-  implements Runnable
+  implements View.OnAttachStateChangeListener
 {
-  MiniAppDesktopAdapter$5(MiniAppDesktopAdapter paramMiniAppDesktopAdapter, BaseActivity paramBaseActivity, MiniAppInfo paramMiniAppInfo) {}
+  MiniAppDesktopAdapter$5(MiniAppDesktopAdapter paramMiniAppDesktopAdapter, MiniAppInfo paramMiniAppInfo, int paramInt) {}
   
-  public void run()
+  public void onViewAttachedToWindow(View paramView)
   {
-    Object localObject = this.val$baseActivity.app.c();
-    String str = ApkgManager.getApkgFolderPath(this.val$miniAppInfo);
-    if (new File(str).exists())
+    try
     {
-      bbdx.a(str, false);
-      QLog.d("MiniAppDesktopAdapter", 1, "clear apkgFile. " + this.val$miniAppInfo.appId);
+      ((DesktopDataManager)MiniAppUtils.getAppInterface().getManager(336)).checkMiniAppAdReport(this.val$miniAppInfo, this.val$position);
+      return;
     }
-    str = MiniAppGlobal.getMiniCacheFilePath() + MD5.toMD5(this.val$miniAppInfo.appId);
-    if (new File(str).exists())
+    catch (Exception paramView)
     {
-      bbdx.a(str, false);
-      QLog.d("MiniAppDesktopAdapter", 1, "clear cacheFile. " + this.val$miniAppInfo.appId);
-    }
-    str = Storage.getCacheDir(this.val$baseActivity.getCacheDir().getAbsolutePath(), (String)localObject, this.val$miniAppInfo.appId);
-    if (new File(str).exists())
-    {
-      bbdx.a(str, false);
-      QLog.d("MiniAppDesktopAdapter", 1, "clear storageFile. " + this.val$miniAppInfo.appId);
-    }
-    if (BaseApplicationImpl.getApplication().getSharedPreferences(this.val$miniAppInfo.appId + "_" + (String)localObject, 4).edit().clear().commit()) {
-      QLog.d("MiniAppDesktopAdapter", 1, "clear authorize info. " + this.val$miniAppInfo.appId);
-    }
-    if (StorageUtil.getPreference().edit().putBoolean(this.val$miniAppInfo.appId + "_debug", false).commit()) {
-      QLog.d("MiniAppDesktopAdapter", 1, "clear debug info. " + this.val$miniAppInfo.appId);
-    }
-    localObject = AppBrandLaunchManager.g().getCacheApp(this.val$miniAppInfo);
-    if (localObject != null)
-    {
-      AppBrandLaunchManager.g().forceKillProcess((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject);
-      QLog.d("MiniAppDesktopAdapter", 1, "kill process. " + this.val$miniAppInfo.appId + "; " + ((AppBrandLaunchManager.MiniAppSubProcessorInfo)localObject).processName);
+      QLog.e("MiniAppDesktopAdapter", 1, "collectAdReport, exception: " + Log.getStackTraceString(paramView));
     }
   }
+  
+  public void onViewDetachedFromWindow(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.5
  * JD-Core Version:    0.7.0.1
  */

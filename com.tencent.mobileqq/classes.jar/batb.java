@@ -1,471 +1,204 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.ArrayList<Lbata;>;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.zip.ZipException;
+import java.io.OutputStream;
+import java.net.URL;
 
 public class batb
+  extends bame
 {
-  protected static batb a;
-  protected static Object a;
-  protected bata a;
-  protected File a;
-  protected ArrayList<bata> a;
-  protected File b;
-  
-  static
+  public static Bitmap a(Bitmap paramBitmap, int paramInt)
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-  }
-  
-  private batb(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(0);
-    this.jdField_a_of_type_JavaIoFile = new File(a(paramContext) + "group_catalog_new.xml");
-  }
-  
-  private bata a(bata parambata, String paramString)
-  {
-    Object localObject2 = null;
-    Iterator localIterator = null;
-    if (parambata.b.equals(paramString)) {}
-    do
+    try
     {
-      for (Object localObject1 = parambata; !localIterator.hasNext(); localObject1 = localObject2)
-      {
-        do
-        {
-          do
-          {
-            return localObject1;
-            localObject1 = localIterator;
-          } while (parambata.jdField_a_of_type_JavaUtilArrayList == null);
-          localObject1 = localIterator;
-        } while (parambata.jdField_a_of_type_JavaUtilArrayList.isEmpty());
-        localIterator = parambata.jdField_a_of_type_JavaUtilArrayList.iterator();
-      }
-      parambata = a((bata)localIterator.next(), paramString);
-      localObject1 = parambata;
-    } while (parambata == null);
-    return parambata;
-  }
-  
-  private bata a(String paramString)
-  {
-    Object localObject1 = null;
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
-      return null;
+      Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+      localBitmap.setDensity(160);
+      Canvas localCanvas = new Canvas(localBitmap);
+      Paint localPaint = new Paint();
+      Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+      RectF localRectF = new RectF(new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()));
+      float f = paramInt;
+      localPaint.setAntiAlias(true);
+      localCanvas.drawARGB(0, 0, 0, 0);
+      localPaint.setColor(-16777216);
+      localCanvas.drawRoundRect(localRectF, f, f, localPaint);
+      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+      localCanvas.drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), localRect, localPaint);
+      return localBitmap;
     }
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        bata localbata = a((bata)localIterator.next(), paramString);
-        localObject1 = localbata;
-        if (localbata != null) {
-          localObject1 = localbata;
-        }
-      }
-      return localObject1;
-    }
+    catch (Exception localException) {}
+    return paramBitmap;
   }
   
-  public static batb a(Context paramContext)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_Batb == null) {
-        jdField_a_of_type_Batb = new batb(paramContext);
-      }
-      return jdField_a_of_type_Batb;
-    }
-  }
-  
-  private String a(Context paramContext)
-  {
-    paramContext = paramContext.getFilesDir().getAbsolutePath() + File.separator + "group_catalog" + File.separator;
-    if ((this.b != null) && (this.b.exists()) && (paramContext.equals(this.b.getPath() + File.separator))) {
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupCatalogTool", 2, "mCatalogXmlDirFile != null && path.equals(mCatalogXmlDirFile.getPath()");
-      }
-    }
-    do
-    {
-      return paramContext;
-      this.b = new File(paramContext);
-    } while (this.b.exists());
-    this.b.mkdirs();
-    return paramContext;
-  }
-  
-  private ArrayList<bata> a(ArrayList<bata> paramArrayList, String paramString)
-  {
-    Object localObject = null;
-    bata localbata = null;
-    Iterator localIterator;
-    if (paramArrayList != null)
-    {
-      localIterator = paramArrayList.iterator();
-      paramArrayList = localbata;
-    }
-    for (;;)
-    {
-      localObject = paramArrayList;
-      if (localIterator.hasNext())
-      {
-        localbata = (bata)localIterator.next();
-        if ((localbata.jdField_a_of_type_JavaUtilArrayList == null) || (localbata.jdField_a_of_type_JavaUtilArrayList.size() <= 0)) {
-          break label100;
-        }
-        if (!localbata.b.equals(paramString)) {
-          break label81;
-        }
-        localObject = localbata.jdField_a_of_type_JavaUtilArrayList;
-      }
-      label81:
-      label100:
-      do
-      {
-        return localObject;
-        localObject = a(localbata.jdField_a_of_type_JavaUtilArrayList, paramString);
-        paramArrayList = (ArrayList<bata>)localObject;
-        if (localObject == null) {
-          break;
-        }
-        return localObject;
-        localObject = paramArrayList;
-      } while (localbata.jdField_a_of_type_Int == 4);
-    }
-  }
-  
-  /* Error */
-  private bata b(Context paramContext, String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_0
-    //   4: invokevirtual 148	batb:a	()Z
-    //   7: ifne +14 -> 21
-    //   10: aload_1
-    //   11: ldc 150
-    //   13: aload_0
-    //   14: aload_1
-    //   15: invokespecial 36	batb:a	(Landroid/content/Context;)Ljava/lang/String;
-    //   18: invokestatic 155	bfoc:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
-    //   21: new 157	bate
-    //   24: dup
-    //   25: aload_2
-    //   26: invokespecial 158	bate:<init>	(Ljava/lang/String;)V
-    //   29: astore_3
-    //   30: invokestatic 164	javax/xml/parsers/SAXParserFactory:newInstance	()Ljavax/xml/parsers/SAXParserFactory;
-    //   33: invokevirtual 168	javax/xml/parsers/SAXParserFactory:newSAXParser	()Ljavax/xml/parsers/SAXParser;
-    //   36: astore 5
-    //   38: new 170	java/io/BufferedInputStream
-    //   41: dup
-    //   42: new 172	java/io/FileInputStream
-    //   45: dup
-    //   46: aload_0
-    //   47: getfield 51	batb:jdField_a_of_type_JavaIoFile	Ljava/io/File;
-    //   50: invokespecial 175	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   53: invokespecial 178	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   56: astore_2
-    //   57: aload_2
-    //   58: astore_1
-    //   59: aload 5
-    //   61: new 180	org/xml/sax/InputSource
-    //   64: dup
-    //   65: new 182	java/io/InputStreamReader
-    //   68: dup
-    //   69: aload_2
-    //   70: ldc 184
-    //   72: invokespecial 187	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   75: invokespecial 190	org/xml/sax/InputSource:<init>	(Ljava/io/Reader;)V
-    //   78: aload_3
-    //   79: invokevirtual 196	javax/xml/parsers/SAXParser:parse	(Lorg/xml/sax/InputSource;Lorg/xml/sax/helpers/DefaultHandler;)V
-    //   82: aload_2
-    //   83: astore_1
-    //   84: aload_0
-    //   85: aload_3
-    //   86: invokevirtual 199	bate:a	()Ljava/util/ArrayList;
-    //   89: putfield 28	batb:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   92: aload_2
-    //   93: astore_1
-    //   94: aload_3
-    //   95: invokevirtual 202	bate:a	()Lbata;
-    //   98: astore_3
-    //   99: aload_3
-    //   100: astore_1
-    //   101: aload_2
-    //   102: ifnull +9 -> 111
-    //   105: aload_2
-    //   106: invokevirtual 207	java/io/InputStream:close	()V
-    //   109: aload_3
-    //   110: astore_1
-    //   111: aload_1
-    //   112: areturn
-    //   113: astore_1
-    //   114: aload_1
-    //   115: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   118: aload_3
-    //   119: areturn
-    //   120: astore_3
-    //   121: aconst_null
-    //   122: astore_2
-    //   123: aload_2
-    //   124: astore_1
-    //   125: invokestatic 116	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   128: ifeq +14 -> 142
-    //   131: aload_2
-    //   132: astore_1
-    //   133: ldc 118
-    //   135: iconst_2
-    //   136: ldc 212
-    //   138: aload_3
-    //   139: invokestatic 216	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   142: aload 4
-    //   144: astore_1
-    //   145: aload_2
-    //   146: ifnull -35 -> 111
-    //   149: aload_2
-    //   150: invokevirtual 207	java/io/InputStream:close	()V
-    //   153: aconst_null
-    //   154: areturn
-    //   155: astore_1
-    //   156: aload_1
-    //   157: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   160: aconst_null
-    //   161: areturn
-    //   162: astore_3
-    //   163: aconst_null
-    //   164: astore_2
-    //   165: aload_2
-    //   166: astore_1
-    //   167: invokestatic 116	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   170: ifeq +14 -> 184
-    //   173: aload_2
-    //   174: astore_1
-    //   175: ldc 118
-    //   177: iconst_2
-    //   178: ldc 218
-    //   180: aload_3
-    //   181: invokestatic 216	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   184: aload 4
-    //   186: astore_1
-    //   187: aload_2
-    //   188: ifnull -77 -> 111
-    //   191: aload_2
-    //   192: invokevirtual 207	java/io/InputStream:close	()V
-    //   195: aconst_null
-    //   196: areturn
-    //   197: astore_1
-    //   198: aload_1
-    //   199: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   202: aconst_null
-    //   203: areturn
-    //   204: astore_2
-    //   205: aconst_null
-    //   206: astore_1
-    //   207: aload_1
-    //   208: ifnull +7 -> 215
-    //   211: aload_1
-    //   212: invokevirtual 207	java/io/InputStream:close	()V
-    //   215: aload_2
-    //   216: athrow
-    //   217: astore_1
-    //   218: aload_1
-    //   219: invokevirtual 210	java/io/IOException:printStackTrace	()V
-    //   222: goto -7 -> 215
-    //   225: astore_2
-    //   226: goto -19 -> 207
-    //   229: astore_3
-    //   230: goto -65 -> 165
-    //   233: astore_3
-    //   234: goto -111 -> 123
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	237	0	this	batb
-    //   0	237	1	paramContext	Context
-    //   0	237	2	paramString	String
-    //   29	90	3	localObject1	Object
-    //   120	19	3	localException1	java.lang.Exception
-    //   162	19	3	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   229	1	3	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   233	1	3	localException2	java.lang.Exception
-    //   1	184	4	localObject2	Object
-    //   36	24	5	localSAXParser	javax.xml.parsers.SAXParser
-    // Exception table:
-    //   from	to	target	type
-    //   105	109	113	java/io/IOException
-    //   30	57	120	java/lang/Exception
-    //   149	153	155	java/io/IOException
-    //   30	57	162	java/lang/OutOfMemoryError
-    //   191	195	197	java/io/IOException
-    //   30	57	204	finally
-    //   211	215	217	java/io/IOException
-    //   59	82	225	finally
-    //   84	92	225	finally
-    //   94	99	225	finally
-    //   125	131	225	finally
-    //   133	142	225	finally
-    //   167	173	225	finally
-    //   175	184	225	finally
-    //   59	82	229	java/lang/OutOfMemoryError
-    //   84	92	229	java/lang/OutOfMemoryError
-    //   94	99	229	java/lang/OutOfMemoryError
-    //   59	82	233	java/lang/Exception
-    //   84	92	233	java/lang/Exception
-    //   94	99	233	java/lang/Exception
-  }
-  
-  private String b(Context paramContext)
-  {
-    paramContext = paramContext.getFilesDir().getAbsolutePath() + File.separator + "group_catalog_temp" + File.separator;
-    File localFile = new File(paramContext);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return paramContext;
-  }
-  
-  protected long a(Context paramContext)
-  {
-    return paramContext.getSharedPreferences("LAST_GET_CLASS_CHOICE_URL_TIME", 0).getLong("GroupCatalogTool", 0L);
-  }
-  
-  public bata a()
-  {
-    return this.jdField_a_of_type_Bata;
-  }
-  
-  public bata a(Context paramContext, String paramString)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
-    {
-      paramContext = a(paramString);
-      this.jdField_a_of_type_Bata = paramContext;
-      return paramContext;
-    }
-    paramContext = b(paramContext, paramString);
-    this.jdField_a_of_type_Bata = paramContext;
-    return paramContext;
-  }
-  
-  public ArrayList<bata> a()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      ArrayList localArrayList = new ArrayList(Arrays.asList(new bata[this.jdField_a_of_type_JavaUtilArrayList.size()]));
-      Collections.copy(localArrayList, this.jdField_a_of_type_JavaUtilArrayList);
-      return localArrayList;
-    }
-  }
-  
-  public ArrayList<bata> a(String paramString)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      paramString = a(this.jdField_a_of_type_JavaUtilArrayList, paramString);
-      return paramString;
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_Bata = null;
-      return;
-    }
-  }
-  
-  public void a(Context paramContext, long paramLong)
-  {
-    paramContext = paramContext.getSharedPreferences("LAST_GET_CLASS_CHOICE_URL_TIME", 0).edit();
-    paramContext.putLong("GroupCatalogTool", paramLong);
-    paramContext.commit();
-  }
-  
-  public void a(bata parambata)
-  {
-    this.jdField_a_of_type_Bata = parambata;
-  }
-  
-  public void a(String paramString, batd parambatd)
-  {
-    long l = a(BaseApplicationImpl.getContext());
-    boolean bool = this.jdField_a_of_type_JavaIoFile.exists();
-    if ((System.currentTimeMillis() - l > 86400000L) || (!bool))
-    {
-      paramString = new bbww(BaseApplicationImpl.getApplication().getRuntime()).a(1);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add("http://pub.idqqimg.com/pc/group/layer_new.zip");
-      HashMap localHashMap = new HashMap();
-      File localFile = new File(b(BaseApplicationImpl.getContext()) + "layer_new.zip");
-      localHashMap.put("http://pub.idqqimg.com/pc/group/layer_new.zip", localFile);
-      paramString.a(new bbwu(localArrayList, localHashMap, "http://pub.idqqimg.com/pc/group/layer_new.zip"), new batc(this, localFile, parambatd), new Bundle());
-    }
+    return new File(paramDownloadParams.url.getFile());
   }
   
   public boolean a()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaIoFile.exists())
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_JavaIoFile.length() > 0L) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    boolean bool = false;
-    try
-    {
-      nav.a(new File(b(paramContext) + "layer_new.zip"), b(paramContext));
-      bool = true;
-    }
-    catch (ZipException paramContext)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("GroupCatalogTool", 2, paramContext.getMessage());
-      return false;
-    }
-    catch (IOException paramContext)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("GroupCatalogTool", 2, paramContext.getMessage());
-    }
-    return bool;
     return false;
   }
   
-  public boolean b(Context paramContext)
+  /* Error */
+  public java.lang.Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return bbdx.b(b(paramContext) + "group_catalog_new.xml", a(paramContext) + "group_catalog_new.xml");
+    // Byte code:
+    //   0: aload_1
+    //   1: invokevirtual 114	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   4: astore_3
+    //   5: aload_3
+    //   6: invokestatic 120	bdcs:b	(Ljava/lang/String;)Z
+    //   9: ifne +21 -> 30
+    //   12: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   15: ifeq +11 -> 26
+    //   18: ldc 127
+    //   20: iconst_2
+    //   21: ldc 129
+    //   23: invokestatic 133	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   26: aconst_null
+    //   27: astore_2
+    //   28: aload_2
+    //   29: areturn
+    //   30: new 135	android/graphics/BitmapFactory$Options
+    //   33: dup
+    //   34: invokespecial 136	android/graphics/BitmapFactory$Options:<init>	()V
+    //   37: astore_1
+    //   38: aload_1
+    //   39: sipush 160
+    //   42: putfield 140	android/graphics/BitmapFactory$Options:inDensity	I
+    //   45: aload_1
+    //   46: sipush 160
+    //   49: putfield 143	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   52: aload_1
+    //   53: sipush 160
+    //   56: putfield 146	android/graphics/BitmapFactory$Options:inScreenDensity	I
+    //   59: aload_1
+    //   60: iconst_1
+    //   61: putfield 150	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   64: aload_3
+    //   65: aload_1
+    //   66: invokestatic 155	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   69: pop
+    //   70: aload_1
+    //   71: iconst_0
+    //   72: putfield 150	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   75: aload_1
+    //   76: aload_0
+    //   77: aload_1
+    //   78: aload_2
+    //   79: getfield 158	com/tencent/image/DownloadParams:reqWidth	I
+    //   82: aload_2
+    //   83: getfield 161	com/tencent/image/DownloadParams:reqHeight	I
+    //   86: invokevirtual 164	batb:a	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   89: putfield 167	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   92: new 169	java/io/BufferedInputStream
+    //   95: dup
+    //   96: new 171	java/io/FileInputStream
+    //   99: dup
+    //   100: aload_3
+    //   101: invokespecial 172	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   104: invokespecial 175	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   107: astore_3
+    //   108: aload_3
+    //   109: aconst_null
+    //   110: aload_1
+    //   111: invokestatic 181	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   114: astore_1
+    //   115: aload_2
+    //   116: getfield 185	com/tencent/image/DownloadParams:tag	Ljava/lang/Object;
+    //   119: astore_2
+    //   120: aload_2
+    //   121: instanceof 187
+    //   124: ifeq +102 -> 226
+    //   127: aload_2
+    //   128: checkcast 187	[I
+    //   131: checkcast 187	[I
+    //   134: arraylength
+    //   135: iconst_3
+    //   136: if_icmpne +90 -> 226
+    //   139: aload_1
+    //   140: aload_2
+    //   141: checkcast 187	[I
+    //   144: checkcast 187	[I
+    //   147: iconst_2
+    //   148: iaload
+    //   149: invokestatic 189	batb:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
+    //   152: astore_1
+    //   153: aload_1
+    //   154: astore_2
+    //   155: aload_3
+    //   156: ifnull -128 -> 28
+    //   159: aload_3
+    //   160: invokevirtual 192	java/io/BufferedInputStream:close	()V
+    //   163: aload_1
+    //   164: areturn
+    //   165: astore_2
+    //   166: aconst_null
+    //   167: astore_1
+    //   168: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   171: ifeq +12 -> 183
+    //   174: ldc 127
+    //   176: iconst_2
+    //   177: ldc 194
+    //   179: aload_2
+    //   180: invokestatic 198	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   183: aload_1
+    //   184: ifnull +7 -> 191
+    //   187: aload_1
+    //   188: invokevirtual 192	java/io/BufferedInputStream:close	()V
+    //   191: aconst_null
+    //   192: areturn
+    //   193: astore_1
+    //   194: aconst_null
+    //   195: astore_2
+    //   196: aload_2
+    //   197: ifnull +7 -> 204
+    //   200: aload_2
+    //   201: invokevirtual 192	java/io/BufferedInputStream:close	()V
+    //   204: aload_1
+    //   205: athrow
+    //   206: astore_1
+    //   207: aload_3
+    //   208: astore_2
+    //   209: goto -13 -> 196
+    //   212: astore_3
+    //   213: aload_1
+    //   214: astore_2
+    //   215: aload_3
+    //   216: astore_1
+    //   217: goto -21 -> 196
+    //   220: astore_2
+    //   221: aload_3
+    //   222: astore_1
+    //   223: goto -55 -> 168
+    //   226: goto -73 -> 153
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	229	0	this	batb
+    //   0	229	1	paramFile	File
+    //   0	229	2	paramDownloadParams	DownloadParams
+    //   0	229	3	paramURLDrawableHandler	URLDrawableHandler
+    // Exception table:
+    //   from	to	target	type
+    //   92	108	165	java/lang/OutOfMemoryError
+    //   92	108	193	finally
+    //   108	153	206	finally
+    //   168	183	212	finally
+    //   108	153	220	java/lang/OutOfMemoryError
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     batb
  * JD-Core Version:    0.7.0.1
  */

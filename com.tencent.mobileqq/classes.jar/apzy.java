@@ -1,53 +1,46 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
+import android.graphics.Rect;
 import android.view.View;
-import io.flutter.embedding.android.SplashScreen;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
 public class apzy
-  implements SplashScreen
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private apzz jdField_a_of_type_Apzz;
+  private int jdField_a_of_type_Int;
+  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  private boolean jdField_a_of_type_Boolean;
   
-  public apzy(apzz paramapzz)
-  {
-    this.jdField_a_of_type_Apzz = paramapzz;
-  }
+  public apzy(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  @Nullable
-  public View createSplashView(@NonNull Context paramContext, @Nullable Bundle paramBundle)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131560514, null);
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public boolean doesSplashViewRememberItsTransition()
-  {
-    return false;
-  }
-  
-  @Nullable
-  public Bundle saveSplashScreenState()
-  {
-    return null;
-  }
-  
-  public void transitionToFlutter(@NonNull Runnable paramRunnable)
-  {
-    if (paramRunnable != null) {
-      paramRunnable.run();
+    ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
+    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
+    if (i != this.jdField_a_of_type_Int)
+    {
+      int j = ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getRootView().getHeight();
+      int k = j - i;
+      if (k <= j / 4) {
+        break label90;
+      }
+      ExtendFriendProfileEditFragment.c(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, k);
+      this.jdField_a_of_type_Boolean = true;
+      ExtendFriendProfileEditFragment.d(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
     }
-    if (this.jdField_a_of_type_Apzz != null) {
-      this.jdField_a_of_type_Apzz.a();
+    for (;;)
+    {
+      this.jdField_a_of_type_Int = i;
+      return;
+      label90:
+      if (this.jdField_a_of_type_Boolean) {
+        ExtendFriendProfileEditFragment.e(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apzy
  * JD-Core Version:    0.7.0.1
  */

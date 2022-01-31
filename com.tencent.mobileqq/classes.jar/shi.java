@@ -1,16 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
 
-class shi
-  implements DialogInterface.OnCancelListener
+public class shi
+  extends Drawable
 {
-  shi(shh paramshh) {}
+  private Bitmap a;
   
-  public void onCancel(DialogInterface paramDialogInterface) {}
+  public shi(Bitmap paramBitmap)
+  {
+    this.a = paramBitmap;
+  }
+  
+  public Bitmap a()
+  {
+    return this.a;
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if ((this.a != null) && (!this.a.isRecycled())) {
+      paramCanvas.drawBitmap(this.a, 0.0F, 0.0F, null);
+    }
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.a.getHeight();
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.a.getWidth();
+  }
+  
+  public int getMinimumHeight()
+  {
+    return this.a.getHeight();
+  }
+  
+  public int getMinimumWidth()
+  {
+    return this.a.getWidth();
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     shi
  * JD-Core Version:    0.7.0.1
  */

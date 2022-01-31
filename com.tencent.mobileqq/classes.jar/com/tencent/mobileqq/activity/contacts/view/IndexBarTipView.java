@@ -81,7 +81,7 @@ public class IndexBarTipView
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     this.c = paramContext.getResources().getColor(17170444);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDimension(2131297064);
+    this.jdField_a_of_type_Float = paramContext.getResources().getDimension(2131297081);
     if (paramAttributeSet != null)
     {
       paramContext = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.IndexBar);
@@ -185,7 +185,7 @@ public class IndexBarTipView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.view.IndexBarTipView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,61 @@
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.4.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import android.text.TextUtils;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import mqq.observer.AccountObserver;
 
 public class adql
-  extends VasQuickUpdateManager.CallBacker
+  extends AccountObserver
 {
-  adql(adqe paramadqe) {}
+  public adql(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if ((paramString1.equals("poke.effectList")) && (paramInt1 == 0))
+    RegisterSendUpSms.c(this.a, paramInt1);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterSendUpSms", 2, "onRegisterQuerySmsStatResp isSuccess=" + paramBoolean + ", code=" + paramInt1 + ", uin=" + paramString1 + ", nick=" + paramString2 + ", faceUrl=" + paramString3 + ", errmsg=" + paramString4);
+    }
+    if (paramInt1 == 4) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GivingHeart", 2, "download vas poke list from GivingHeartItemBuilder, update pokeSvipMap now.");
+      RegisterSendUpSms.a(this.a, 0);
+      return;
+      RegisterSendUpSms.a(this.a).setEnabled(true);
+      if (paramInt1 == 0)
+      {
+        RegisterSendUpSms.a(this.a).setText(alpo.a(2131713745));
+        RegisterSendUpSms.a(this.a, paramString1);
+        RegisterSendUpSms.b(this.a, paramString2);
+        RegisterSendUpSms.c(this.a, paramString3);
+        RegisterSendUpSms.a(this.a);
+        continue;
       }
-      ThreadManager.getFileThreadHandler().post(new GivingHeartItemBuilder.4.1(this));
+      paramString1 = paramString4;
+      if (paramInt1 == -1) {}
+      try
+      {
+        paramString1 = new String(paramArrayOfByte, "utf-8");
+        paramArrayOfByte = paramString1;
+        if (TextUtils.isEmpty(paramString1)) {
+          paramArrayOfByte = this.a.getString(2131717524);
+        }
+        QQToast.a(this.a, paramArrayOfByte.trim(), 0).b(this.a.getTitleBarHeight());
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          paramString1 = paramString4;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adql
  * JD-Core Version:    0.7.0.1
  */

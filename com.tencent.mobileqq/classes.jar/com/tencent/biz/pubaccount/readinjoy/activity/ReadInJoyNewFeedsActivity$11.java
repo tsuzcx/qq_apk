@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import onh;
+import ors;
 
 class ReadInJoyNewFeedsActivity$11
   implements Runnable
@@ -10,13 +10,13 @@ class ReadInJoyNewFeedsActivity$11
   public void run()
   {
     if (!this.this$0.isFinishing()) {
-      onh.a(this.this$0, 5, true, this.a);
+      ors.a(this.this$0, 5, true, this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import afpm;
+import ahnd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 
 public class ContactsTroopAdapter$4
   implements Runnable
 {
-  public ContactsTroopAdapter$4(afpm paramafpm) {}
+  public ContactsTroopAdapter$4(ahnd paramahnd) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class ContactsTroopAdapter$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter.4
  * JD-Core Version:    0.7.0.1
  */

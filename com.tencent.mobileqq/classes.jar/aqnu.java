@@ -1,10 +1,16 @@
-public abstract interface aqnu
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class aqnu
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(boolean paramBoolean);
+  aqnu(aqns paramaqns) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqnu
  * JD-Core Version:    0.7.0.1
  */

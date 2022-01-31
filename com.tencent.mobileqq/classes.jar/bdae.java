@@ -1,23 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.open.agent.CardContainer;
+import android.content.ClipData;
+import android.view.View;
+import java.io.File;
 
 public class bdae
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public bdae(CardContainer paramCardContainer, ImageView paramImageView) {}
+  public ClipData a;
+  public View a;
+  File a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  bdae(File paramFile, View paramView, ClipData paramClipData)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams().height = i;
-    this.jdField_a_of_type_AndroidWidgetImageView.requestLayout();
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidContentClipData = paramClipData;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidContentClipData != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdae
  * JD-Core Version:    0.7.0.1
  */

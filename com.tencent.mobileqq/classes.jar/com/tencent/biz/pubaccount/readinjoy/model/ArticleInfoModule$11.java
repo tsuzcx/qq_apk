@@ -3,13 +3,13 @@ package com.tencent.biz.pubaccount.readinjoy.model;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import ozo;
-import qau;
+import pew;
+import qkr;
 
 public class ArticleInfoModule$11
   implements Runnable
 {
-  public ArticleInfoModule$11(ozo paramozo, int paramInt, List paramList) {}
+  public ArticleInfoModule$11(pew parampew, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -21,9 +21,9 @@ public class ArticleInfoModule$11
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        qau localqau = (qau)((Iterator)localObject).next();
-        if (localqau.jdField_a_of_type_Int != 0) {
-          QLog.e("ArticleInfoModule", 2, "dislike fail ,articleID : " + localqau.jdField_a_of_type_Long + ", failCode : " + localqau.jdField_a_of_type_Int + ",fialMessage : " + localqau.jdField_a_of_type_JavaLangString);
+        qkr localqkr = (qkr)((Iterator)localObject).next();
+        if (localqkr.jdField_a_of_type_Int != 0) {
+          QLog.e("ArticleInfoModule", 2, "dislike fail ,articleID : " + localqkr.jdField_a_of_type_Long + ", failCode : " + localqkr.jdField_a_of_type_Int + ",fialMessage : " + localqkr.jdField_a_of_type_JavaLangString);
         }
       }
     }
@@ -44,7 +44,7 @@ public class ArticleInfoModule$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule.11
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.channelCover;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import nol;
-import npu;
-import oep;
+import nrt;
+import ntd;
+import ojb;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ChannelCoverView$2
   implements Runnable
 {
-  public ChannelCoverView$2(oep paramoep, ChannelCoverInfo paramChannelCoverInfo) {}
+  public ChannelCoverView$2(ojb paramojb, ChannelCoverInfo paramChannelCoverInfo) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class ChannelCoverView$2
           if (this.a.mIsTopic)
           {
             str3 = "0X80088BB";
-            nol.a(null, "", str1, str3, 0, 0, "1", "", "", npu.a(this.a.mChannelCoverId, localJSONObject), false);
+            nrt.a(null, "", str1, str3, 0, 0, "1", "", "", ntd.a(this.a.mChannelCoverId, localJSONObject), false);
             return;
           }
           String str3 = "0X8007BE6";
@@ -44,7 +44,7 @@ public class ChannelCoverView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverView.2
  * JD-Core Version:    0.7.0.1
  */

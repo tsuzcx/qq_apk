@@ -1,37 +1,28 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation.10.1;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+
 public class bboh
-  extends aoam
+  implements DialogInterface.OnClickListener
 {
-  public static int a = 1;
-  public static int b = 2;
-  public static int c = 3;
-  public static int d = 4;
-  public static int e = 5;
-  public static int f = 6;
-  public static int g = 7;
-  public static int h = 8;
-  public static int i;
-  public static int j = 1;
-  public static int k = 6;
-  public static int l = 1;
-  public static int m = 2;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public int n;
-  public int o;
-  public int p;
-  public int q;
-  public int r;
-  public int s;
+  public bboh(TroopFileItemOperation.10.1 param1) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (bboe.a(this.a.a.jdField_a_of_type_Bboe) == 0);
+    TroopFileTransferManager.a(this.a.a.jdField_a_of_type_Bboe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_Bboe.jdField_a_of_type_Long).b(this.a.a.jdField_a_of_type_Bbnr.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bboh
  * JD-Core Version:    0.7.0.1
  */

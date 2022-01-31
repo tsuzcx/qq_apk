@@ -1,22 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class abyf
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public abyf(RegisterActivity paramRegisterActivity) {}
+  public abyf(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.sendEmptyMessage(1);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    AddFriendVerifyActivity.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyf
  * JD-Core Version:    0.7.0.1
  */

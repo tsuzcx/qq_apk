@@ -1,20 +1,43 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import mqq.util.WeakReference;
+
 class tqx
-  extends tpp
+  implements View.OnClickListener
 {
-  tqx(tqh paramtqh, String paramString1, String paramString2, boolean paramBoolean, trn paramtrn)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  tqx(tqt paramtqt) {}
   
-  public boolean b()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Trn.h = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    tqy localtqy;
+    if (tqt.a(this.a) != null)
+    {
+      localtqy = (tqy)tqt.a(this.a).get();
+      if (localtqy == null) {}
+    }
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131373169: 
+      localtqy.a(tqz.a);
+      return;
+    case 2131373165: 
+      localtqy.a(tqz.b);
+      return;
+    case 2131373166: 
+      localtqy.a(tqz.c);
+      return;
+    case 2131373168: 
+      localtqy.a(tqz.d);
+      return;
+    }
+    localtqy.a(tqz.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tqx
  * JD-Core Version:    0.7.0.1
  */

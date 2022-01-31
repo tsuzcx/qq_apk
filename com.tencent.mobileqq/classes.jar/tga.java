@@ -1,35 +1,56 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-class tga
-  implements syq<tgf, tgg>
+public class tga
+  extends tfj
 {
-  tga(tfz paramtfz, sss paramsss, sst paramsst) {}
+  private TextView a;
   
-  public void a(@NonNull tgf paramtgf, @Nullable tgg paramtgg, @NonNull ErrorMessage paramErrorMessage)
+  private tga(ViewGroup paramViewGroup, tby paramtby)
   {
-    if ((paramErrorMessage.isFail()) || (paramtgg == null))
-    {
-      QLog.w("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 1, "get active fail" + paramErrorMessage.getErrorMessage());
+    super(paramViewGroup, paramtby, 2131560227);
+  }
+  
+  public static tga a(ViewGroup paramViewGroup, tby paramtby)
+  {
+    return new tga(paramViewGroup, paramtby);
+  }
+  
+  protected void a()
+  {
+    this.a = ((TextView)a(1).findViewById(2131379788));
+  }
+  
+  protected void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.a.setVisibility(paramInt);
+  }
+  
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    super.a(paramstSimpleMetaFeed);
+    if (paramstSimpleMetaFeed == null) {
       return;
     }
-    if (paramtgg.b == 1)
+    TextView localTextView = this.a;
+    if (TextUtils.isEmpty(paramstSimpleMetaFeed.feed_desc)) {}
+    for (int i = 8;; i = 0)
     {
-      this.jdField_a_of_type_Tfz.a(true);
-      this.jdField_a_of_type_Sss.b(2);
-      this.jdField_a_of_type_Tfz.a = 2;
+      localTextView.setVisibility(i);
+      this.a.setText(paramstSimpleMetaFeed.feed_desc);
+      a(1, paramstSimpleMetaFeed);
+      a(2, 1, paramstSimpleMetaFeed);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "active value is " + paramtgg.b);
-    }
-    this.jdField_a_of_type_Sst.a(paramtgg.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tga
  * JD-Core Version:    0.7.0.1
  */

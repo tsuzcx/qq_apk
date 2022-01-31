@@ -1,54 +1,51 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.CountDownTimer;
+import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.GIFInfo;
+import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.portal.ProgressViewRed;
 
 class awia
-  implements awid
+  extends CountDownTimer
 {
-  awia(awhx paramawhx, HotWordSearchEntryDataModel.GIFInfo paramGIFInfo) {}
-  
-  public void a()
+  awia(awhw paramawhw, long paramLong1, long paramLong2, long[] paramArrayOfLong)
   {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
-    int i = localSharedPreferences.getInt("HotWordSearchEntryModel.psk_hot_search_try_time", 0);
-    String str = localSharedPreferences.getString("HotWordSearchEntryModel.psk_hot_search_try_id", "");
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    akiz localakiz = new akiz(localQQAppInterface);
-    if (!TextUtils.equals(str, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID))
-    {
-      localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_try_id", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID).apply();
-      localSharedPreferences.edit().putInt("HotWordSearchEntryModel.psk_hot_search_try_time", 1).apply();
-      localakiz.a(localQQAppInterface, "gif_sta_first", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
-      return;
-    }
-    localSharedPreferences.edit().putInt("HotWordSearchEntryModel.psk_hot_search_try_time", i + 1).apply();
-    localakiz.a(localQQAppInterface, "gif_sta_second", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
+    super(paramLong1, paramLong2);
   }
   
-  public void b()
+  public void onFinish()
   {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext());
-    int i = localSharedPreferences.getInt("HotWordSearchEntryModel.psk_hot_search_try_time", 0);
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    akiz localakiz = new akiz(localQQAppInterface);
-    if (i == 1) {
-      localakiz.a(localQQAppInterface, "gif_suc_first", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
+    PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_Awhw.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(79);
+    if (localPortalManager != null) {
+      localPortalManager.a();
     }
-    for (;;)
+  }
+  
+  public void onTick(long paramLong)
+  {
+    if (awhw.a(this.jdField_a_of_type_Awhw).getVisibility() == 0)
     {
-      localSharedPreferences.edit().putString("HotWordSearchEntryModel.psk_hot_search_last_show_id", this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID).apply();
-      return;
-      localakiz.a(localQQAppInterface, "gif_suc_second", null, null, this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel$GIFInfo.hotSearchGifID);
+      this.jdField_a_of_type_Awhw.a(paramLong);
+      awhw.a(this.jdField_a_of_type_Awhw).a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_Awhw.jdField_a_of_type_JavaLangStringBuilder);
     }
+    if (this.jdField_a_of_type_Awhw.jdField_a_of_type_ComTencentMobileqqPortalFormalView.getVisibility() == 0)
+    {
+      this.jdField_a_of_type_Awhw.a(paramLong);
+      this.jdField_a_of_type_Awhw.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_Awhw.jdField_b_of_type_JavaLangStringBuilder);
+    }
+    paramLong = System.currentTimeMillis() - this.jdField_a_of_type_Awhw.jdField_b_of_type_Long;
+    if (paramLong > 2000L) {
+      this.jdField_a_of_type_Awhw.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(1);
+    }
+    while (paramLong <= 1000L) {
+      return;
+    }
+    this.jdField_a_of_type_Awhw.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awia
  * JD-Core Version:    0.7.0.1
  */

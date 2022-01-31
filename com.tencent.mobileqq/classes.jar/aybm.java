@@ -1,60 +1,47 @@
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
+
 public class aybm
-  extends aybi
 {
-  private float d;
-  private float e;
-  private float f;
-  private float g;
+  private boolean a = true;
   
-  public aybm(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public static aybm a(String paramString)
   {
-    super(paramInt, 1, 0);
-    this.d = paramFloat1;
-    this.e = paramFloat2;
-    this.f = paramFloat3;
-    this.g = paramFloat4;
+    boolean bool = true;
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      aybm localaybm = new aybm();
+      if (new JSONObject(paramString).optInt("enable", 1) == 1) {}
+      for (;;)
+      {
+        localaybm.a = bool;
+        return localaybm;
+        bool = false;
+      }
+      return null;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("ScreenShotConfigProcessor", 2, "ScreenShotConfigData parse error", paramString);
+    }
   }
   
-  protected void a(int paramInt, float paramFloat)
+  public boolean a()
   {
-    this.a = (this.d + (this.f - this.d) * paramFloat);
-    this.b = (this.e + (this.g - this.e) * paramFloat);
-    if (this.f - this.d > 0.0F)
-    {
-      if (this.a >= this.f) {
-        this.a = this.f;
-      }
-      if (this.g - this.e <= 0.0F) {
-        break label162;
-      }
-      if (this.b >= this.g) {
-        this.b = this.g;
-      }
-    }
-    for (;;)
-    {
-      if (paramInt >= this.c)
-      {
-        this.a = this.f;
-        this.b = this.g;
-      }
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.a > this.f) {
-        break;
-      }
-      this.a = this.f;
-      break;
-      label162:
-      if (this.b <= this.g) {
-        this.b = this.g;
-      }
-    }
+    return this.a;
+  }
+  
+  public String toString()
+  {
+    return "ScreenShotConfigData [mSwitchEnable = " + this.a + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aybm
  * JD-Core Version:    0.7.0.1
  */

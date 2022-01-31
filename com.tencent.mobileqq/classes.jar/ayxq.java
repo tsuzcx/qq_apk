@@ -1,54 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import cooperation.qzone.LbsDataV2;
+import cooperation.qzone.util.QZLog;
 
-public class ayxq
-  extends ayxp
-  implements aysc
+final class ayxq
+  extends amky
 {
-  public ayrx a;
-  private ayxr a;
-  
-  public ayxq(QQAppInterface paramQQAppInterface, String paramString, ayxr paramayxr, ayrx paramayrx)
+  ayxq(String paramString, boolean paramBoolean)
   {
-    super(paramQQAppInterface, paramString);
-    this.jdField_a_of_type_Ayrx = paramayrx;
-    this.jdField_a_of_type_Ayxr = paramayxr;
+    super(paramString, paramBoolean);
   }
   
-  public void onResp(aysz paramaysz)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    this.jdField_a_of_type_Ayxr.onResp(paramaysz);
-    this.ctrl.a(this);
-  }
-  
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
-  {
-    this.jdField_a_of_type_Ayxr.onUpdateProgeress(paramaysy, paramLong1, paramLong2);
-  }
-  
-  protected void realCancel()
-  {
-    this.app.getNetEngine(0).b(this.jdField_a_of_type_Ayrx);
-  }
-  
-  protected void realStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PreDownload.Task", 2, "start: " + this);
+    QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet.NewLbsInterface", 1, "[QZ_LBS_MODULE]----locate");
+    long l1 = System.currentTimeMillis();
+    long l2 = ayxp.a();
+    bjmr.a(paramInt, this.businessId, l1 - l2);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null))
+    {
+      ayxp.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.a));
+      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "[QZ_LBS_MODULE]onLocationFinish succeed! gps=" + ayxp.a());
     }
-    this.app.getNetEngine(0).a(this.jdField_a_of_type_Ayrx);
-    this.jdField_a_of_type_Ayrx.jdField_a_of_type_Aysc = this;
-    this.jdField_a_of_type_Ayxr.a(this);
-  }
-  
-  public String toString()
-  {
-    return super.toString() + "[" + this.jdField_a_of_type_Ayrx.jdField_a_of_type_JavaLangString + ", " + this.jdField_a_of_type_Ayxr + "]";
+    for (;;)
+    {
+      ayxp.a(paramInt);
+      return;
+      QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "[QZ_LBS_MODULE]onLocationFinish failed: error in force gps info update..");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayxq
  * JD-Core Version:    0.7.0.1
  */

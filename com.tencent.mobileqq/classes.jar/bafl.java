@@ -1,129 +1,69 @@
-import android.content.Context;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
+import java.util.List;
 
-public class bafl
-  extends afdd
+class bafl
+  extends bhxd
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  View jdField_a_of_type_AndroidViewView;
-  ArrayList<RecommendTroopItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  TextView b;
-  boolean d = false;
-  
-  public bafl(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, afdg paramafdg, String paramString, boolean paramBoolean, TextView paramTextView, View paramView)
+  bafl(bafj parambafj, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4, List paramList, int[] paramArrayOfInt5)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_Afdg = paramafdg;
-    this.c = false;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramTextView;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    try
-    {
-      this.jdField_a_of_type_Long = Long.parseLong(paramString);
-      a();
-      return;
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, bhxc parambhxc, View.OnClickListener paramOnClickListener)
+  {
+    parambhxc = super.a(paramInt, paramObject, parambhxc, paramOnClickListener);
+    if (parambhxc != null) {
+      parambhxc.setTag(-10, paramObject);
     }
-    catch (NumberFormatException paramQQAppInterface)
+    return parambhxc;
+  }
+  
+  public void a(int paramInt, Object paramObject, bhxc[] paramArrayOfbhxc)
+  {
+    paramInt = 0;
+    Object localObject = this.jdField_a_of_type_Bafj.a((bagp)paramObject);
+    int i = ((List)localObject).size();
+    paramObject = localObject;
+    if (i > 3)
     {
-      for (;;)
+      paramObject = ((List)localObject).subList(i - 2, i);
+      paramObject.add(0, bafj.a);
+    }
+    i = Math.min(paramObject.size(), 3);
+    if (paramInt < paramArrayOfbhxc.length)
+    {
+      int j;
+      if (paramInt < i)
       {
-        QLog.d("TroopDataCardRecomTroopListWrapper", 1, "TroopDataCardRecomTroopListWrapper NumberFormatException ", paramQQAppInterface);
-      }
-    }
-  }
-  
-  protected afcy a()
-  {
-    return new bafk(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-  }
-  
-  protected void a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(this.b);
-      this.b.setVisibility(8);
-    }
-    this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(this.jdField_a_of_type_AndroidViewView);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    ((akhp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, 25);
-  }
-  
-  protected void a(boolean paramBoolean1, long paramLong, int paramInt, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int j = paramArrayList.size();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopDataCardRecomTroopListWrapper", 2, "onGetTroopDataCardRecommendTroopList isSuccess = " + paramBoolean1 + ",troopUIN = " + paramLong + ",serverPageID = " + paramInt + ",dataListSize = " + i + ",newDataListSize = " + j);
-    }
-    this.d = paramBoolean2;
-    if ((paramBoolean1) && (this.jdField_a_of_type_Long == paramLong))
-    {
-      if (j + i < 50) {
-        break label221;
-      }
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList.subList(0, 50 - i));
-      this.d = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopDataCardRecomTroopListWrapper", 2, "onGetTroopDataCardRecommendTroopList reach limit,this.dataList.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size());
-      }
-    }
-    for (;;)
-    {
-      c();
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        if (this.d) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText("没有更多内容了");
+        localObject = (bagq)paramObject.get(paramInt);
+        j = this.jdField_a_of_type_JavaUtilList.indexOf(localObject);
+        if (j < 0)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i(this.jdField_a_of_type_JavaLangString, 1, "getRightMenuItemInfo error, can not find the menu， menuId[" + ((bagq)localObject).b() + "]");
+          }
+          paramArrayOfbhxc[paramInt].b = -1;
+          paramArrayOfbhxc[paramInt].a = -1;
         }
       }
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-      label221:
-      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        paramArrayOfbhxc[paramInt].b = j;
+        paramArrayOfbhxc[paramInt].a = this.jdField_a_of_type_ArrayOfInt[j];
+        continue;
+        paramArrayOfbhxc[paramInt].b = -1;
+        paramArrayOfbhxc[paramInt].a = -1;
+      }
     }
-  }
-  
-  protected boolean a()
-  {
-    return this.d;
-  }
-  
-  protected void c()
-  {
-    this.jdField_a_of_type_Afcy.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Afcy.notifyDataSetChanged();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopDataCardRecomTroopListWrapper", 2, "refreshListView,this.dataList.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size());
-    }
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-    {
-      this.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
-      this.b.setVisibility(0);
-      return;
-    }
-    this.b.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bafl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.GetPackageShopRsp;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.RspBody;
-import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.StockItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import tencent.aio.media.aio_media.RspLatestPlayingState;
 
-class balj
-  extends mxi
+public abstract interface balj
 {
-  balj(balh parambalh, balg parambalg) {}
+  public abstract void a(int paramInt1, int paramInt2, String paramString);
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    if (paramInt != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Balg);
-      }
-      this.jdField_a_of_type_Balg.a(-1, "errorCode=" + paramInt);
-    }
-    do
-    {
-      return;
-      paramBundle = new Oidb_0xcd1.RspBody();
-      if (paramArrayOfByte != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. onResult erro data=" + null);
-    return;
-    for (;;)
-    {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (!paramBundle.get_pack_rsp.has()) {
-          break;
-        }
-        paramArrayOfByte = new Oidb_0xcd1.GetPackageShopRsp();
-        paramArrayOfByte.mergeFrom(((Oidb_0xcd1.GetPackageShopRsp)paramBundle.get_pack_rsp.get()).toByteArray());
-        paramBundle = new ArrayList();
-        if (paramArrayOfByte.msg_stock.has())
-        {
-          List localList = paramArrayOfByte.msg_stock.get();
-          paramInt = 0;
-          if (paramInt < localList.size())
-          {
-            Oidb_0xcd1.StockItem localStockItem = (Oidb_0xcd1.StockItem)localList.get(paramInt);
-            bals localbals = new bals();
-            localbals.a = localStockItem.int32_productid.get();
-            localbals.b = localStockItem.int32_amount.get();
-            paramBundle.add(localbals);
-            paramInt += 1;
-            continue;
-          }
-        }
-        if (paramArrayOfByte.empty_package_page.has())
-        {
-          paramArrayOfByte = (Oidb_0xcd1.EmptyPackagePage)paramArrayOfByte.empty_package_page.get();
-          if (paramArrayOfByte != null)
-          {
-            paramArrayOfByte = new xce(paramArrayOfByte);
-            if (this.jdField_a_of_type_Balg == null) {
-              break;
-            }
-            this.jdField_a_of_type_Balg.a(paramBundle, paramArrayOfByte);
-            return;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i(".troop.send_gift", 2, "send_iodb_oxcd1. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-        }
-        this.jdField_a_of_type_Balg.a(-1, "InvalidProtocolBufferMicroException");
-        return;
-      }
-      paramArrayOfByte = null;
-    }
-  }
+  public abstract void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, Object paramObject);
+  
+  public abstract void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, long paramLong1, long paramLong2, boolean paramBoolean);
+  
+  public abstract void a(ToServiceMsg paramToServiceMsg, aio_media.RspLatestPlayingState paramRspLatestPlayingState);
+  
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     balj
  * JD-Core Version:    0.7.0.1
  */

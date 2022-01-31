@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.utils.RandomAccessFileManager;
-import java.io.RandomAccessFile;
+import android.os.Handler;
+import android.os.Message;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.widget.CustomHorizontalScrollView;
 
 public class bbjf
+  extends Handler
 {
-  public volatile int a;
-  public long a;
-  public bbjf a;
-  public RandomAccessFile a;
-  public long b;
-  public bbjf b;
+  public bbjf(NewTroopContactView paramNewTroopContactView) {}
   
-  public bbjf(RandomAccessFileManager paramRandomAccessFileManager) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomHorizontalScrollView.scrollTo(this.a.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().width, 0);
+  }
 }
 
 

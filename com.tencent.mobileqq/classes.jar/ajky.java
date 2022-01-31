@@ -1,50 +1,23 @@
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.TMG.utils.SoUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
 
-class ajky
-  implements AVCallback
+public class ajky
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ajky(ajks paramajks) {}
+  public ajky(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
   
-  public void onComplete(int paramInt, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramInt == 0)
-    {
-      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
-      if (!this.a.a())
-      {
-        bbdx.d(ajlj.a() + "libqav_graphics.so", ajlj.a() + "libtmg_graphics.so");
-        boolean bool = SoUtil.loadSo("tmg_graphics");
-        QLog.e("AVEngineWalper", 1, "first check failed, rename bLoad = " + bool);
-        if (!this.a.a())
-        {
-          QLog.e("AVEngineWalper", 1, "Second check failed, stop engine~~~");
-          ajks.a(this.a, false);
-          this.a.a();
-          paramInt = 1;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.a != null) {
-        this.a.a.a(paramInt, paramString);
-      }
-      return;
-      ajks.a(this.a, true);
-      QLog.e("AVEngineWalper", 1, "start successfully second try~~~~");
-      continue;
-      ajks.a(this.a, true);
-      QLog.e("AVEngineWalper", 1, "start successfully~~~~");
-      continue;
-      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
-    }
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajky
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import axqy;
+import azmj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
@@ -78,19 +78,19 @@ final class NotifyPushSettingActivity$21
       i = 1;
       label188:
       localHashMap.put("Clk_hide_text", Integer.valueOf(i));
-      if (!SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718862), "qqsetting_notify_blncontrol_key", true)) {
+      if (!SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719338), "qqsetting_notify_blncontrol_key", true)) {
         break label528;
       }
       i = 1;
       label234:
       localHashMap.put("Led_blinking", Integer.valueOf(i));
-      if (!SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718636), "qqsetting_receivemsg_whenexit_key", true)) {
+      if (!SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719109), "qqsetting_receivemsg_whenexit_key", true)) {
         break label533;
       }
       i = 1;
       label280:
       localHashMap.put("Logout_msg", Integer.valueOf(i));
-      if (!SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718858), "qqsetting_notify_myfeedpush_key", true)) {
+      if (!SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131719334), "qqsetting_notify_myfeedpush_key", true)) {
         break label538;
       }
       i = j;
@@ -103,7 +103,7 @@ final class NotifyPushSettingActivity$21
         while (((Iterator)localObject).hasNext())
         {
           String str2 = (String)((Iterator)localObject).next();
-          axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliStatus", "", "", "Setting_tab", str2, 0, 0, String.valueOf(localHashMap.get(str2)), "", "", "");
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliStatus", "", "", "Setting_tab", str2, 0, 0, String.valueOf(localHashMap.get(str2)), "", "", "");
         }
         boolean bool;
         str1 = "1";
@@ -117,7 +117,7 @@ final class NotifyPushSettingActivity$21
     }
     for (;;)
     {
-      axqy.b((QQAppInterface)localObject, "CliStatus", "", "", "0X8004971", "0X8004971", 0, 0, str1, "", "", "");
+      azmj.b((QQAppInterface)localObject, "CliStatus", "", "", "0X8004971", "0X8004971", 0, 0, str1, "", "", "");
       return;
       i = 0;
       break;
@@ -163,7 +163,7 @@ final class NotifyPushSettingActivity$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotifyPushSettingActivity.21
  * JD-Core Version:    0.7.0.1
  */

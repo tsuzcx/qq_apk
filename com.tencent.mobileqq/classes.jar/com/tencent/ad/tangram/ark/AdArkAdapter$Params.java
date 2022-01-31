@@ -10,13 +10,13 @@ public class AdArkAdapter$Params
 {
   public String appName;
   public WeakReference<AdArkAdapter.Callback> callback;
-  public Context context;
+  public WeakReference<Context> context;
   public String metaData;
   public String viewName;
   
   public boolean isValid()
   {
-    return (this.context != null) && (!TextUtils.isEmpty(this.metaData));
+    return (this.context != null) && (this.context.get() != null) && (!TextUtils.isEmpty(this.metaData));
   }
 }
 

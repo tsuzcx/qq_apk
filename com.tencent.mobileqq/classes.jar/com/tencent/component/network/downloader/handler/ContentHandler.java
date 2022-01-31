@@ -1,7 +1,7 @@
 package com.tencent.component.network.downloader.handler;
 
-import com.squareup.okhttp.Response;
 import com.tencent.component.network.downloader.DownloadResult;
+import okhttp3.Response;
 import org.apache.http.HttpResponse;
 
 public abstract interface ContentHandler
@@ -10,7 +10,7 @@ public abstract interface ContentHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.handler.ContentHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,15 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.List;
 
-public class aqsm
-  extends GestureDetector.SimpleOnGestureListener
+class aqsm
+  implements aqst
 {
-  public aqsm(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
-  
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
-  {
-    this.a.f();
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return super.onSingleTapConfirmed(paramMotionEvent);
-  }
+  aqsm(aqsl paramaqsl, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqsm
  * JD-Core Version:    0.7.0.1
  */

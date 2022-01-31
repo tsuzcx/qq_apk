@@ -1,29 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
 class wzk
-  extends waa
+  extends AnimatorListenerAdapter
 {
-  wzk(wze paramwze, wzo paramwzo) {}
+  wzk(wzi paramwzi) {}
   
-  public void onFailure(String paramString)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    QLog.w(".troop.VideoCombineHelper", 1, "concatMediaByTs change ts onSuccess: " + paramString);
-    this.jdField_a_of_type_Wzo.onFailure(paramString);
+    wsv.b("FaceLayer", "scaleAnimator cancel!");
   }
   
-  public void onSuccess(String paramString)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.w(".troop.trace_video_combine", 2, "concatMediaByTs change ts onSuccess: " + paramString);
-      QLog.d(".troop.trace_video_combine", 2, "convertToTsTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Wze.a.a));
-    }
-    this.jdField_a_of_type_Wze.a.a = System.currentTimeMillis();
+    wsv.b("FaceLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.b.g();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    wsv.b("FaceLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzk
  * JD-Core Version:    0.7.0.1
  */

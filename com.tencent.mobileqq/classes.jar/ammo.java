@@ -1,22 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil.UpdateFriendStatusItem;
 
-public class ammo
-  extends Handler
+public final class ammo
+  implements Parcelable.Creator<FriendsStatusUtil.UpdateFriendStatusItem>
 {
-  public ammo(LocationSelectActivity paramLocationSelectActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public FriendsStatusUtil.UpdateFriendStatusItem a(Parcel paramParcel)
   {
-    if (paramMessage.what == 1000) {
-      this.a.a(((Boolean)((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[0]).booleanValue(), (String[])((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[1]);
-    }
+    return new FriendsStatusUtil.UpdateFriendStatusItem(paramParcel);
+  }
+  
+  public FriendsStatusUtil.UpdateFriendStatusItem[] a(int paramInt)
+  {
+    return new FriendsStatusUtil.UpdateFriendStatusItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammo
  * JD-Core Version:    0.7.0.1
  */

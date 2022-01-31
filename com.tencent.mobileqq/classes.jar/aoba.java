@@ -1,431 +1,59 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.common.config.AppSetting;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.os.Bundle;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenService;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aoba
-  extends anxi
+  implements Application.ActivityLifecycleCallbacks
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplication.getContext().getResources().getDrawable(2130837722);
-  public anzi a;
-  BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  public aoba(ColorNoteSmallScreenService paramColorNoteSmallScreenService) {}
   
-  public aoba(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, anyg paramanyg, BaseChatPie paramBaseChatPie)
-  {
-    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanyg);
-    this.jdField_a_of_type_Anzi = new aobb(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
-  }
+  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
   
-  private int a(anyh paramanyh)
-  {
-    if ((paramanyh instanceof aoaz)) {
-      return ((aoaz)paramanyh).jdField_g_of_type_Int;
-    }
-    if ((paramanyh instanceof aobp)) {
-      return ((aobp)paramanyh).jdField_g_of_type_Int;
-    }
-    return 0;
-  }
-  
-  private String a(anyh paramanyh)
-  {
-    String str1 = "isUpdate";
-    if ((paramanyh instanceof aoaz)) {
-      str1 = ((aoaz)paramanyh).jdField_g_of_type_JavaLangString;
-    }
-    for (;;)
-    {
-      String str2 = str1;
-      if (TextUtils.isEmpty(str1))
-      {
-        QLog.e("FavoriteEmotionAdapter", 2, "getRoamingType return null, " + paramanyh.toString());
-        str2 = "isUpdate";
-      }
-      return str2;
-      if ((paramanyh instanceof aobp)) {
-        str1 = ((aobp)paramanyh).a;
-      }
-    }
-  }
-  
-  private void a(anyh paramanyh, String paramString)
-  {
-    if ((paramanyh instanceof aoaz)) {
-      ((aoaz)paramanyh).jdField_g_of_type_JavaLangString = paramString;
-    }
-    while (!(paramanyh instanceof aobp)) {
-      return;
-    }
-    ((aobp)paramanyh).a = paramString;
-  }
-  
-  private void a(URLImageView paramURLImageView1, URLImageView paramURLImageView2)
-  {
-    URLDrawable localURLDrawable;
-    if ((paramURLImageView1.getDrawable() instanceof URLDrawable))
-    {
-      localURLDrawable = (URLDrawable)paramURLImageView1.getDrawable();
-      if (localURLDrawable.getStatus() != 0) {
-        break label102;
-      }
-      paramURLImageView1.setVisibility(8);
-      paramURLImageView2.setVisibility(0);
-      if (!localURLDrawable.isDownloadStarted()) {
-        localURLDrawable.startDownload();
-      }
-      if (!(paramURLImageView2.getDrawable() instanceof Animatable)) {
-        paramURLImageView2.setImageDrawable((Drawable)BaseApplication.getContext().getResources().getDrawable(2130839140));
-      }
-      paramURLImageView1 = (Animatable)paramURLImageView2.getDrawable();
-      if (!paramURLImageView1.isRunning()) {
-        paramURLImageView1.start();
-      }
-    }
-    return;
-    label102:
-    if ((localURLDrawable.getStatus() == 2) || (localURLDrawable.getStatus() == 3))
-    {
-      paramURLImageView1.setVisibility(8);
-      paramURLImageView2.setVisibility(0);
-      if ((paramURLImageView2.getDrawable() instanceof Animatable)) {
-        ((Animatable)paramURLImageView2.getDrawable()).stop();
-      }
-      paramURLImageView2.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      return;
-    }
-    paramURLImageView1.setVisibility(0);
-    paramURLImageView2.setVisibility(8);
-  }
-  
-  private RelativeLayout b()
+  public void onActivityDestroyed(Activity paramActivity)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("FavoriteEmotionAdapter", 2, "getFavouriteView");
-    }
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(this.d / this.jdField_a_of_type_Int, (int)(61.0F * this.jdField_a_of_type_Float)));
-    Object localObject = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((URLImageView)localObject).setId(2131365583);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 56.0F), (int)(this.jdField_a_of_type_Float * 56.0F));
-    localLayoutParams.addRule(13, -1);
-    localLayoutParams.addRule(12, -1);
-    localLayoutParams.setMargins(0, 0, 0, (int)(5.0F * this.jdField_a_of_type_Float));
-    ((URLImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    ((URLImageView)localObject).setAdjustViewBounds(false);
-    localRelativeLayout.addView((View)localObject, localLayoutParams);
-    localObject = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((URLImageView)localObject).setId(2131365561);
-    localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 56.0F), (int)(this.jdField_a_of_type_Float * 56.0F));
-    localLayoutParams.addRule(13, -1);
-    localLayoutParams.addRule(12, -1);
-    localLayoutParams.setMargins(0, 0, 0, (int)(5.0F * this.jdField_a_of_type_Float));
-    ((URLImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    ((URLImageView)localObject).setAdjustViewBounds(false);
-    localRelativeLayout.addView((View)localObject, localLayoutParams);
-    localObject = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((URLImageView)localObject).setId(2131365584);
-    localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Float * 56.0F), (int)(this.jdField_a_of_type_Float * 56.0F));
-    localLayoutParams.addRule(13, -1);
-    localLayoutParams.addRule(12, -1);
-    localLayoutParams.setMargins(0, 0, 0, (int)(5.0F * this.jdField_a_of_type_Float));
-    ((URLImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    ((URLImageView)localObject).setAdjustViewBounds(false);
-    ((URLImageView)localObject).setVisibility(8);
-    localRelativeLayout.addView((View)localObject, localLayoutParams);
-    localObject = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-    ((RelativeLayout)localObject).setId(2131365921);
-    ((RelativeLayout)localObject).setVisibility(8);
-    ((RelativeLayout)localObject).setBackgroundResource(2130849301);
-    localLayoutParams = new RelativeLayout.LayoutParams(axlk.a(10.0F), axlk.a(10.0F));
-    localLayoutParams.addRule(3, 2131365583);
-    localLayoutParams.addRule(7, 2131365583);
-    localLayoutParams.addRule(6, 2131365583);
-    localLayoutParams.topMargin = (-(int)(4.0F * this.jdField_a_of_type_Float));
-    localLayoutParams.rightMargin = (-(int)(4.0F * this.jdField_a_of_type_Float));
-    localRelativeLayout.addView((View)localObject, localLayoutParams);
-    localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((ImageView)localObject).setId(2131365582);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    ((ImageView)localObject).setBackgroundResource(2130837702);
-    localLayoutParams.addRule(7, 2131365583);
-    localLayoutParams.addRule(8, 2131365583);
-    localLayoutParams.setMargins(0, 0, (int)(-5.0F * this.jdField_a_of_type_Float), (int)(-5.0F * this.jdField_a_of_type_Float));
-    localRelativeLayout.addView((View)localObject, localLayoutParams);
-    localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    ((ImageView)localObject).setId(2131365589);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(7, 2131365583);
-    localLayoutParams.addRule(8, 2131365583);
-    localRelativeLayout.addView((View)localObject, localLayoutParams);
-    if (AppSetting.d) {
-      localRelativeLayout.setFocusable(true);
-    }
-    return localRelativeLayout;
-  }
-  
-  private void b(View paramView, aoam paramaoam)
-  {
-    if ((paramView == null) || (!(paramaoam instanceof anyh))) {
-      QLog.e("FavoriteEmotionAdapter", 1, "emotionInfo or contentView = null");
-    }
-    anyh localanyh;
-    Object localObject1;
-    do
-    {
-      return;
-      localanyh = (anyh)paramaoam;
-      paramView.setTag(localanyh);
-      paramView.setVisibility(0);
-      localObject1 = (RelativeLayout)paramView.findViewById(2131365921);
-      if (localObject1 != null) {
-        ((RelativeLayout)localObject1).setVisibility(8);
-      }
-      localObject1 = (URLImageView)paramView.findViewById(2131365583);
-    } while (((URLImageView)localObject1).getTag(2131379213) == localanyh);
-    ((URLImageView)localObject1).setTag(2131379213, paramaoam);
-    URLImageView localURLImageView = (URLImageView)paramView.findViewById(2131365561);
-    paramaoam = (URLImageView)paramView.findViewById(2131365584);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131365582);
-    ((URLImageView)localObject1).setVisibility(0);
-    ((URLImageView)localObject1).setURLDrawableDownListener(null);
-    Object localObject2 = localanyh.h;
-    if ("favEdit".equals(localObject2))
-    {
-      ((URLImageView)localObject1).setImageDrawable(null);
-      ((URLImageView)localObject1).setImageResource(2130839376);
-      paramaoam.setVisibility(8);
-      localImageView.setVisibility(8);
-      localURLImageView.setVisibility(8);
-      if (AppSetting.d) {
-        ((URLImageView)localObject1).setContentDescription(ajya.a(2131704390));
-      }
-      paramView = (ImageView)paramView.findViewById(2131365589);
-      if (!(localanyh instanceof aobp)) {
-        break label618;
-      }
-      paramaoam = (aobp)localanyh;
-      if (!paramaoam.b()) {
-        break label611;
-      }
-      if (!paramaoam.c()) {
-        break label601;
-      }
-      paramView.setImageResource(2130838117);
-    }
-    for (;;)
-    {
-      paramView.setVisibility(0);
-      return;
-      if ("funny_pic".equals(localObject2))
-      {
-        ((URLImageView)localObject1).setImageDrawable(null);
-        ((URLImageView)localObject1).setImageResource(2130846207);
-        paramaoam.setVisibility(8);
-        localImageView.setVisibility(8);
-        localURLImageView.setVisibility(8);
-        if (!AppSetting.d) {
-          break;
-        }
-        ((URLImageView)localObject1).setContentDescription(ajya.a(2131704382));
-        break;
-      }
-      localObject2 = localanyh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Float, (int)(56.0F * this.jdField_a_of_type_Float), (int)(56.0F * this.jdField_a_of_type_Float));
-      ((URLImageView)localObject1).setImageDrawable((Drawable)localObject2);
-      if (AppSetting.d) {
-        ((URLImageView)localObject1).setContentDescription(ansx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(Integer.valueOf(localanyh.jdField_g_of_type_Int)));
-      }
-      String str = a(localanyh);
-      if (QLog.isColorLevel()) {
-        QLog.i("FavoriteEmotionAdapter", 2, "updateUI: roamingType = " + str);
-      }
-      if (str.equals("needUpload"))
-      {
-        localURLImageView.setImageDrawable(new ColorDrawable(-419430401));
-        localURLImageView.setVisibility(0);
-        localObject1 = (Animatable)BaseApplication.getContext().getResources().getDrawable(2130839140);
-        paramaoam.setImageDrawable((Drawable)localObject1);
-        ((Animatable)localObject1).start();
-        paramaoam.setVisibility(0);
-        localImageView.setVisibility(8);
-        break;
-      }
-      if (str.equals("failed"))
-      {
-        localURLImageView.setImageDrawable(new ColorDrawable(-419430401));
-        paramaoam.setVisibility(8);
-        localImageView.setVisibility(0);
-        localURLImageView.setVisibility(0);
-        break;
-      }
-      paramaoam.setVisibility(4);
-      localImageView.setVisibility(4);
-      localURLImageView.setVisibility(8);
-      if (!(localObject2 instanceof URLDrawable)) {
-        break;
-      }
-      ((URLImageView)localObject1).setURLDrawableDownListener(new aobc(this, localanyh, (URLImageView)localObject1, paramaoam));
-      a((URLImageView)localObject1, paramaoam);
-      break;
-      label601:
-      paramView.setImageResource(2130849324);
-    }
-    label611:
-    paramView.setVisibility(8);
-    return;
-    label618:
-    paramView.setVisibility(8);
-  }
-  
-  public View a(anxj paramanxj, int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int j = 0;
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("getEmotionView position = ").append(paramInt).append(" convertView is ");
-      if (paramView == null)
-      {
-        paramViewGroup = "null";
-        QLog.d("FavoriteEmotionAdapter", 2, paramViewGroup);
-      }
-    }
-    else
-    {
-      paramViewGroup = (aobe)paramanxj;
-      if (paramView != null) {
-        break label507;
-      }
-      paramView = aoau.a().a(this.c);
-      if (paramView != null) {
-        break label345;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FavoriteEmotionAdapter", 2, "getEmotionView position = " + paramInt + "; view from inflater");
-      }
-      paramanxj = new EmoticonPanelLinearLayout(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, -1);
-      paramanxj.setPanelType(EmoticonPanelLinearLayout.d);
-      paramanxj.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-      paramanxj.setOrientation(0);
-      if (paramInt != 0) {
-        break label243;
-      }
-      paramanxj.setPadding(0, (int)(16.0F * this.jdField_a_of_type_Float), 0, 0);
-    }
-    for (;;)
-    {
-      i = 0;
-      while (i < this.jdField_a_of_type_Int)
-      {
-        paramView = b();
-        paramView.setVisibility(8);
-        paramView.setFocusable(true);
-        paramView.setFocusableInTouchMode(true);
-        paramanxj.addView(paramView);
-        i += 1;
-      }
-      paramViewGroup = paramView.getClass().toString();
-      break;
-      label243:
-      paramanxj.setPadding(0, (int)(14.0F * this.jdField_a_of_type_Float), 0, 0);
-    }
-    paramanxj.jdField_a_of_type_Anzi = this.jdField_a_of_type_Anzi;
-    for (;;)
-    {
-      ((EmoticonPanelLinearLayout)paramanxj).setCallBack(this.jdField_a_of_type_Anyg);
-      a(this.c, paramanxj);
-      paramView = (ViewGroup)paramanxj;
-      paramViewGroup.a = new RelativeLayout[this.jdField_a_of_type_Int];
-      i = 0;
-      while (i < this.jdField_a_of_type_Int)
-      {
-        paramViewGroup.a[i] = ((RelativeLayout)paramView.getChildAt(i));
-        i += 1;
-      }
-      label345:
-      paramanxj = paramView;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("FavoriteEmotionAdapter", 2, "getEmotionView position = " + paramInt + "; view from cache");
-        paramanxj = paramView;
-      }
-    }
-    paramanxj.setTag(paramViewGroup);
-    int i = j;
-    for (;;)
-    {
-      if (i < this.jdField_a_of_type_Int)
-      {
-        j = this.jdField_a_of_type_Int * paramInt + i;
-        if (j > this.jdField_a_of_type_JavaUtilList.size() - 1)
-        {
-          paramViewGroup.a[i].setTag(null);
-          paramViewGroup.a[i].setVisibility(8);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          b(paramViewGroup.a[i], (aoam)this.jdField_a_of_type_JavaUtilList.get(j));
-        }
-      }
-      if (QLog.isColorLevel()) {}
-      return paramanxj;
-      label507:
-      paramanxj = paramView;
-      i = j;
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityDestroyed: " + paramActivity.getClass().getName());
     }
   }
   
-  public anxj a()
-  {
-    return new aobe();
-  }
+  public void onActivityPaused(Activity paramActivity) {}
   
-  public void a(List<aoam> paramList)
-  {
-    super.a(paramList);
-    ansx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).h();
-  }
-  
-  public void b()
+  public void onActivityResumed(Activity paramActivity)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("FavoriteEmotionAdapter", 2, "refreshPanelData");
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityResumed: " + paramActivity.getClass().getName());
     }
-    aoan localaoan = aoan.a();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    int j = this.c;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) {}
-    for (int i = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().jdField_a_of_type_Int;; i = -1)
+    if (this.a.f)
     {
-      localaoan.a(localQQAppInterface, j, null, -1, i, false, new aobd(this));
-      return;
+      this.a.f = false;
+      this.a.d = true;
+      this.a.a().removeCallbacks(this.a.b);
+      this.a.a().postDelayed(this.a.b, 200L);
+    }
+  }
+  
+  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public void onActivityStarted(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStarted: " + paramActivity.getClass().getName());
+    }
+  }
+  
+  public void onActivityStopped(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorNoteSmallScreenService", 2, "onActivityStopped: " + paramActivity.getClass().getName());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoba
  * JD-Core Version:    0.7.0.1
  */

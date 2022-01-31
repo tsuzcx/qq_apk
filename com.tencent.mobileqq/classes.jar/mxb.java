@@ -1,39 +1,53 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.content.Context;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiManager.WifiLock;
 
 public class mxb
-  implements TextWatcher
 {
-  public mxb(PoiMapActivity paramPoiMapActivity) {}
+  int jdField_a_of_type_Int = 0;
+  Context jdField_a_of_type_AndroidContentContext = null;
+  WifiManager.WifiLock jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = null;
+  String jdField_a_of_type_JavaLangString = null;
   
-  public void afterTextChanged(Editable paramEditable)
+  public mxb(Context paramContext, int paramInt, String paramString)
   {
-    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (TextUtils.isEmpty(paramEditable))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(8);
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      this.a.jdField_a_of_type_Mxa.notifyDataSetChanged();
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    this.a.a(paramEditable);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a()
+  {
+    if (b())
+    {
+      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.release();
+      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = null;
+    }
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock == null) {
+      this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock = ((WifiManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("wifi")).createWifiLock(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock != null)
+    {
+      if (!this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.isHeld()) {
+        this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.acquire();
+      }
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock != null) && (this.jdField_a_of_type_AndroidNetWifiWifiManager$WifiLock.isHeld());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxb
  * JD-Core Version:    0.7.0.1
  */

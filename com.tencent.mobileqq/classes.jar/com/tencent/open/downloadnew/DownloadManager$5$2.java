@@ -1,26 +1,26 @@
 package com.tencent.open.downloadnew;
 
-import bdii;
-import bdle;
-import bdlk;
+import bfhg;
+import bfkb;
+import bfkh;
 
 public class DownloadManager$5$2
   implements Runnable
 {
-  public DownloadManager$5$2(bdlk parambdlk, long paramLong1, long paramLong2, String paramString) {}
+  public DownloadManager$5$2(bfkh parambfkh, long paramLong1, long paramLong2, String paramString) {}
   
   public void run()
   {
     int i = (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b);
-    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Bdlk.a.c(this.jdField_a_of_type_JavaLangString, i);
+    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Bfkh.a.c(this.jdField_a_of_type_JavaLangString, i);
     if (localDownloadInfo == null) {
-      bdii.d("DownloadManager_", "OnDownloadSDKTaskProgressChanged info == null");
+      bfhg.d("DownloadManager_", "OnDownloadSDKTaskProgressChanged info == null");
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bdlk.a.a(2, localDownloadInfo);
+      this.jdField_a_of_type_Bfkh.a.a(2, localDownloadInfo);
       return;
-      bdii.a("DownloadManager_", "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.f);
+      bfhg.a("DownloadManager_", "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.f);
     }
   }
 }

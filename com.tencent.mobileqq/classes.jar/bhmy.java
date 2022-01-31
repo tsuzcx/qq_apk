@@ -1,19 +1,36 @@
-public abstract class bhmy
+import com.tencent.sveffects.DpcSwitcher;
+
+public class bhmy
+  implements DpcSwitcher
 {
-  public static bhmy a = new bhmz();
-  
-  public abstract int a();
-  
-  public abstract String a();
-  
-  public String toString()
+  public float getBeatyRate()
   {
-    return a() + ':' + a();
+    return azfz.a();
+  }
+  
+  public boolean isBeautySwitchOpen()
+  {
+    return azfz.b();
+  }
+  
+  public boolean isDeNoiseSwitchOpen()
+  {
+    return azfz.e();
+  }
+  
+  public boolean isPortraitSwitchOpen()
+  {
+    return azgk.g();
+  }
+  
+  public boolean isSvafSwitchOpen()
+  {
+    return azfz.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhmy
  * JD-Core Version:    0.7.0.1
  */

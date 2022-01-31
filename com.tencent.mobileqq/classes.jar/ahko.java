@@ -1,30 +1,10 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class ahko
-  implements View.OnClickListener
+public abstract interface ahko
 {
-  ahko(ahkd paramahkd) {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    paramView = new Bundle();
-    paramView.putBoolean("string_from", false);
-    paramView.putBoolean("string_uin", true);
-    paramView.putLong("device_din", 0L);
-    paramView.putInt("sTitleID", 0);
-    bgph.a(ahkd.a(this.a), paramView, "com.qqdataline.activity.LiteWifiphotoActivity");
-  }
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahko
  * JD-Core Version:    0.7.0.1
  */

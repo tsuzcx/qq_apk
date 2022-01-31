@@ -1,27 +1,21 @@
-import android.support.annotation.Nullable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkShareJumpActivity;
 
-class bipo
-  implements bjos<Boolean>
+public class bipo
+  implements DialogInterface.OnClickListener
 {
-  bipo(bipi parambipi) {}
+  public bipo(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
   
-  public void a(@Nullable Boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean == null) {
-      return;
-    }
-    bipi localbipi = this.a;
-    if (!paramBoolean.booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      bipi.a(localbipi, bool);
-      return;
-    }
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bipo
  * JD-Core Version:    0.7.0.1
  */

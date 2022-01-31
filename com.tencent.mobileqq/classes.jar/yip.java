@@ -1,0 +1,26 @@
+import android.widget.ImageView;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+
+public class yip
+  implements yij
+{
+  public yip(VideoPlayerView paramVideoPlayerView) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((VideoPlayerView.a(this.a) != null) && (!paramBoolean) && (this.a.e != null) && (this.a.e.getVisibility() == 0))
+    {
+      this.a.e.setVisibility(8);
+      VideoPlayerView.a(this.a, "");
+    }
+    if (VideoPlayerView.a(this.a) != null) {
+      VideoPlayerView.a(this.a).a(paramBoolean);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+ * Qualified Name:     yip
+ * JD-Core Version:    0.7.0.1
+ */

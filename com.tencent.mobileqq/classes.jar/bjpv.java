@@ -1,49 +1,35 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import java.util.concurrent.CountDownLatch;
 
-class bjpv
-  implements GestureDetector.OnGestureListener
+public final class bjpv
+  implements Downloader.DownloadListener
 {
-  private bjpv(bjpq parambjpq) {}
+  public bjpv(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void onDownloadCanceled(String paramString)
   {
-    return true;
+    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    paramMotionEvent2.getX();
-    paramMotionEvent1.getX();
-    paramMotionEvent1.getX();
-    paramMotionEvent2.getX();
-    paramFloat1 = paramMotionEvent2.getY();
-    float f = paramMotionEvent1.getY();
-    paramMotionEvent1.getY();
-    paramMotionEvent2.getY();
-    if ((paramFloat1 - f > 120) && (Math.abs(paramFloat2) > 20)) {
-      this.a.l();
-    }
-    return true;
+    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent) {}
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    return true;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return true;
+    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjpv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,20 @@
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.activity.aio.helper.TroopRobotHelper.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public abstract interface afbz
+public class afbz
+  implements bcnj
 {
-  public abstract void a(ChatMessage paramChatMessage);
+  afbz(afby paramafby) {}
+  
+  public void a(String paramString)
+  {
+    ThreadManager.getUIHandler().post(new TroopRobotHelper.1.1(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afbz
  * JD-Core Version:    0.7.0.1
  */

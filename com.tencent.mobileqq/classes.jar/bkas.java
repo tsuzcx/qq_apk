@@ -1,65 +1,43 @@
-import android.graphics.PointF;
-import android.support.annotation.NonNull;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
-public class bkas
+class bkas
+  implements ModuleDownloadListener
 {
-  public float a;
-  public final int a;
-  public final PointF a;
-  public final String a;
-  public final float b;
-  public final int b;
-  public final float c;
-  public final int c;
-  public final float d;
-  public final int d;
+  bkas(bkar parambkar, bkaw parambkaw) {}
   
-  public bkas(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2)
+  public void onDownloadCanceled(String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.jdField_b_of_type_Float = paramFloat4;
-    this.jdField_c_of_type_Float = paramFloat5;
-    this.jdField_d_of_type_Float = paramFloat6;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_d_of_type_Int = 0;
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public bkas(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
+  public void onDownloadFailed(String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.jdField_b_of_type_Float = paramFloat4;
-    this.jdField_c_of_type_Float = paramFloat5;
-    this.jdField_d_of_type_Float = paramFloat6;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_d_of_type_Int = paramInt4;
+    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
+    bkar.a(this.jdField_a_of_type_Bkar, false);
+    this.jdField_a_of_type_Bkaw.a(false);
   }
   
-  public static bkas a(@NonNull bkas parambkas)
+  public void onDownloadProgress(String paramString, float paramFloat)
   {
-    return new bkas(parambkas.jdField_a_of_type_AndroidGraphicsPointF.x, parambkas.jdField_a_of_type_AndroidGraphicsPointF.y, parambkas.jdField_a_of_type_Float, parambkas.jdField_b_of_type_Float, parambkas.jdField_c_of_type_Float, parambkas.jdField_d_of_type_Float, parambkas.jdField_a_of_type_Int, parambkas.jdField_b_of_type_Int, parambkas.jdField_a_of_type_JavaLangString, parambkas.jdField_c_of_type_Int, parambkas.jdField_d_of_type_Int);
+    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
   }
   
-  public static bkas a(@NonNull bkin parambkin, @NonNull bkas parambkas)
+  public void onDownloadSucceed(String paramString)
   {
-    return new bkas(parambkin.b.x, parambkin.b.y, parambkas.jdField_a_of_type_Float, parambkin.r, parambkin.s, parambkin.t, parambkas.jdField_a_of_type_Int, parambkas.jdField_b_of_type_Int, parambkas.jdField_a_of_type_JavaLangString, parambkas.jdField_c_of_type_Int, parambkas.jdField_d_of_type_Int);
-  }
-  
-  public String toString()
-  {
-    return "LayerParams{centerP=" + this.jdField_a_of_type_AndroidGraphicsPointF + ", scale=" + this.jdField_a_of_type_Float + ", rotate=" + this.jdField_b_of_type_Float + ", translateXValue=" + this.jdField_c_of_type_Float + ", translateYValue=" + this.jdField_d_of_type_Float + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_c_of_type_Int + ", textSize=" + this.jdField_d_of_type_Int + '}';
+    if (!paramString.equals("vip_tar_engine.jar")) {
+      return;
+    }
+    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bkar.a(), " onDownloadSucceed = ", bkar.b() });
+    LocalMultiProcConfig.putString("VipARUtils_JAR_md5", bkar.b());
+    bkar.a(this.jdField_a_of_type_Bkar);
+    this.jdField_a_of_type_Bkaw.a(bkar.a(this.jdField_a_of_type_Bkar));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkas
  * JD-Core Version:    0.7.0.1
  */

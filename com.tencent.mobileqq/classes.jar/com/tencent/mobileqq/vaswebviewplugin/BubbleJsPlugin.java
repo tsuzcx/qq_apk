@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import anqq;
-import anqu;
-import bcdp;
+import aphy;
+import apic;
+import becq;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
@@ -36,7 +36,7 @@ public class BubbleJsPlugin
     this.mReqBundle.clear();
     this.mReqBundle.putInt("id", i);
     this.mReqBundle.putInt("textId", j);
-    super.sendRemoteReq(anqu.a("diy_setup", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(apic.a("diy_setup", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
     startDownload(paramJSONObject, "");
     if (QLog.isColorLevel()) {
       QLog.d("BubbleJsPlugin", 2, paramJSONObject.toString());
@@ -324,13 +324,13 @@ public class BubbleJsPlugin
       localJSONObject.put("status", 3);
       localJSONObject.put("progress", 100);
       paramJSONObject.put("result", 0);
-      paramJSONObject.put("message", ajya.a(2131701211));
+      paramJSONObject.put("message", alpo.a(2131701580));
       super.callJs(paramString + "(" + paramJSONObject.toString() + ");");
       return;
     }
     this.mReqBundle.clear();
     this.mReqBundle.putInt("id", i);
-    super.sendRemoteReq(anqu.a("queryBubbleInfo", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(apic.a("queryBubbleInfo", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
   }
   
   public void queryLocal(JSONObject paramJSONObject, String paramString)
@@ -338,7 +338,7 @@ public class BubbleJsPlugin
     if (QLog.isColorLevel()) {
       QLog.i("BubbleJsPlugin", 2, "queryLocal " + paramJSONObject.toString());
     }
-    paramString = anqu.a("queryLocal", paramString, this.mOnRemoteResp.key, new Bundle());
+    paramString = apic.a("queryLocal", paramString, this.mOnRemoteResp.key, new Bundle());
     if (paramJSONObject != null) {}
     try
     {
@@ -376,7 +376,7 @@ public class BubbleJsPlugin
       i = paramJSONObject.optInt("voiceprintId", 0);
       this.mReqBundle.putInt("voiceprintId", i);
     }
-    super.sendRemoteReq(anqu.a("setup", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(apic.a("setup", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
   }
   
   public void startDownload(JSONObject paramJSONObject, String paramString)
@@ -387,7 +387,7 @@ public class BubbleJsPlugin
     }
     this.mReqBundle.clear();
     this.mReqBundle.putInt("id", i);
-    super.sendRemoteReq(anqu.a("bubble_startDownLoad", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(apic.a("bubble_startDownLoad", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
   }
   
   public void stopDownload(JSONObject paramJSONObject, String paramString)
@@ -398,7 +398,7 @@ public class BubbleJsPlugin
     }
     this.mReqBundle.clear();
     this.mReqBundle.putInt("id", i);
-    super.sendRemoteReq(anqu.a("bubble_StopDownLoad", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+    super.sendRemoteReq(apic.a("bubble_StopDownLoad", paramString, this.mOnRemoteResp.key, this.mReqBundle), false, true);
   }
 }
 

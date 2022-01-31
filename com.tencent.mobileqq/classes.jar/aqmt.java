@@ -1,25 +1,49 @@
-import android.view.View;
-import com.tencent.mobileqq.gallery.model.video.AIOFileVideoData;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
 
-class aqmt
-  implements apvg
+public class aqmt
+  extends aroh
 {
-  aqmt(aqmr paramaqmr, AIOFileVideoData paramAIOFileVideoData, agqv paramagqv, View paramView) {}
+  public aqmt(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.h)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData.h = false;
-      this.jdField_a_of_type_Agqv.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aqmr.a(this.jdField_a_of_type_ComTencentMobileqqGalleryModelVideoAIOFileVideoData, false));
-    }
-    this.jdField_a_of_type_Agqv.b();
-    this.jdField_a_of_type_Agqv.f();
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,138 +1,88 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.util.Pair;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import mqq.app.MobileQQ;
 
 public class aqgv
-  extends RecyclerView.Adapter<aqgy>
+  implements RadioGroup.OnCheckedChangeListener
 {
-  float jdField_a_of_type_Float = 1.0F;
-  Context jdField_a_of_type_AndroidContentContext;
-  baxy jdField_a_of_type_Baxy;
-  List<Pair<String, String>> jdField_a_of_type_JavaUtilList;
+  public aqgv(FMActivity paramFMActivity) {}
   
-  public aqgv(Context paramContext, baxy parambaxy, float paramFloat)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Baxy = parambaxy;
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Float = paramFloat;
-  }
-  
-  public aqgy a(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (paramInt == aqgr.b)
-    {
-      paramViewGroup = new View(this.jdField_a_of_type_AndroidContentContext);
-      int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131296976);
-      paramInt = i;
-      if (this.jdField_a_of_type_Float != 0.0F) {
-        paramInt = (int)(i / this.jdField_a_of_type_Float);
-      }
-      paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, paramInt));
-      return new aqgy(paramViewGroup);
+    int i = 1;
+    if (this.a.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
     }
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559069, paramViewGroup, false);
-    if ((this.jdField_a_of_type_Float != 0.0F) && (paramViewGroup != null))
+    this.a.g();
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(0);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView != null)
     {
-      Object localObject1 = paramViewGroup.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).height = actj.a(80.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
-      paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-      localObject1 = (ImageView)paramViewGroup.findViewById(2131368031);
-      Object localObject2;
-      if (localObject1 != null)
-      {
-        localObject2 = ((ImageView)localObject1).getLayoutParams();
-        if (localObject2 != null)
-        {
-          paramInt = actj.a(40.0F / this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidContentContext.getResources());
-          ((ViewGroup.LayoutParams)localObject2).width = paramInt;
-          ((ViewGroup.LayoutParams)localObject2).height = paramInt;
-          ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        }
-      }
-      localObject1 = (TextView)paramViewGroup.findViewById(2131378529);
-      if (localObject1 != null)
-      {
-        ((TextView)localObject1).setTextSize(2, (int)(10.0D / this.jdField_a_of_type_Float));
-        localObject2 = (ViewGroup.MarginLayoutParams)((TextView)localObject1).getLayoutParams();
-        ((ViewGroup.MarginLayoutParams)localObject2).setMargins((int)(((ViewGroup.MarginLayoutParams)localObject2).leftMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).topMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).rightMargin / this.jdField_a_of_type_Float), (int)(((ViewGroup.MarginLayoutParams)localObject2).bottomMargin / this.jdField_a_of_type_Float));
-        ((TextView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      }
+      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.removeAllViews();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a();
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView = null;
+      this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView);
     }
-    return new aqgx(paramViewGroup);
-  }
-  
-  public void a(aqgy paramaqgy, int paramInt)
-  {
-    if (paramaqgy.a == aqgr.b) {}
-    Pair localPair;
-    do
+    if ((paramInt == 2131375342) && (this.a.jdField_b_of_type_AndroidWidgetRadioButton.isChecked()))
     {
-      do
-      {
-        return;
-      } while (paramaqgy.a != aqgr.a);
-      paramInt -= 1;
-      if (paramInt < 0) {
-        QLog.e("ForwardTroopMemberControllerForMiniPie", 2, "type normal in wrong index");
-      }
-      localPair = (Pair)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    } while (!(paramaqgy instanceof aqgx));
-    ((aqgx)paramaqgy).a((String)localPair.first, (String)localPair.second, this.jdField_a_of_type_Baxy);
-  }
-  
-  public void a(List<Pair<String, String>> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {
+      this.a.a().f();
+      FMActivity.d(this.a);
+      this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
+      this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
+      this.a.i(false);
+      FMActivity.a(this.a, 1);
+      paramInt = 0;
+    }
+    for (;;)
+    {
+      paramRadioGroup = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+      paramRadioGroup.putInt("last_select_tab_type", paramInt);
+      paramRadioGroup.commit();
       return;
-    }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public int getItemCount()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size() + 1;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (paramInt == 0) {
-      return aqgr.b;
-    }
-    return aqgr.a;
-  }
-  
-  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
-  {
-    super.onAttachedToRecyclerView(paramRecyclerView);
-    paramRecyclerView = paramRecyclerView.getLayoutManager();
-    if ((paramRecyclerView instanceof GridLayoutManager)) {
-      ((GridLayoutManager)paramRecyclerView).setSpanSizeLookup(new aqgw(this));
+      if ((paramInt == 2131369782) && (this.a.jdField_a_of_type_AndroidWidgetRadioButton.isChecked()))
+      {
+        this.a.a().e();
+        FMActivity.e(this.a);
+        if ((this.a.h == 0) && (this.a.d)) {
+          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        }
+        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.jdField_c_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.i(false);
+        FMActivity.a(this.a, 2);
+        paramInt = i;
+      }
+      else if ((paramInt == 2131364372) && (this.a.jdField_c_of_type_AndroidWidgetRadioButton.isChecked()))
+      {
+        this.a.a().d();
+        FMActivity.b(this.a, 2);
+        this.a.jdField_a_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.jdField_b_of_type_AndroidWidgetRadioButton.setSelected(false);
+        this.a.i(false);
+        FMActivity.a(this.a, 0);
+        paramInt = 2;
+      }
+      else
+      {
+        paramInt = -1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgv
  * JD-Core Version:    0.7.0.1
  */

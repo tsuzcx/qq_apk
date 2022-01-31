@@ -1,64 +1,29 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Message;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import mqq.os.MqqHandler;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
 public class bktp
-  extends MqqHandler
+  implements Animator.AnimatorListener
 {
-  public bktp(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public bktp(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("AEProviderContainerView", 2, "panel opened");
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          bcql.a(this.a, 2131719565, 0).a();
-          return;
-          String str = this.a.getString(2131719566);
-          paramMessage = (String)paramMessage.obj;
-          bcql.a(this.a.jdField_a_of_type_AndroidContentContext, 2, str + paramMessage, 0).a();
-          bbef.a(this.a, paramMessage);
-          return;
-          paramMessage = bbdj.a(this.a.jdField_a_of_type_AndroidContentContext, 232, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719598), this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131719597), 2131719580, 2131718724, new bktq(this), new bktr(this));
-          ShortVideoPlayActivity.a(this.a, paramMessage);
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoPlayActivity", 2, "...mobile/none => wifi...");
-          }
-        } while (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null);
-        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(1);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPlayActivity", 2, "...wifi/none => mobile...");
-        }
-        if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-          this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(2);
-        }
-        if ((this.a.b != 1) && (this.a.b != 2)) {
-          break;
-        }
-      } while (!this.a.b());
-      this.a.j();
-      this.a.r();
-      return;
-    } while (this.a.b != 0);
-    ShortVideoPlayActivity.a(this.a);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bktp
  * JD-Core Version:    0.7.0.1
  */

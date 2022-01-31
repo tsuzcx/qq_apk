@@ -1,236 +1,276 @@
-import android.media.MediaPlayer;
-import android.media.SoundPool;
+import android.app.Activity;
 import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.sdk.CmShowSpriteAioScript.1;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.HashSet;
 
 public class akxp
+  implements aknb
 {
-  private int jdField_a_of_type_Int;
-  MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-  private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
-  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet;
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private HashSet<Integer> jdField_b_of_type_JavaUtilHashSet;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
-  private boolean d;
-  private boolean e;
+  protected int a;
+  protected akwu a;
+  protected akxn a;
+  public akxr a;
+  protected String a;
+  protected boolean a;
+  protected String b;
   
-  public akxp(int paramInt, String... paramVarArgs)
+  public akxp(int paramInt, akxr paramakxr, akxn paramakxn)
   {
-    try
-    {
-      this.e = true;
-      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-      this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
-      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(paramInt, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new akxt(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new akxu(this));
-      if ((paramVarArgs != null) && (paramVarArgs.length > 0))
-      {
-        int j = paramVarArgs.length;
-        paramInt = i;
-        while (paramInt < j)
-        {
-          String str = paramVarArgs[paramInt];
-          if (!TextUtils.isEmpty(str))
-          {
-            i = this.jdField_a_of_type_AndroidMediaSoundPool.load(str, 1);
-            this.jdField_a_of_type_JavaUtilHashMap.put(str, Integer.valueOf(i));
-            if (QLog.isColorLevel()) {
-              QLog.d("ARMusicController", 2, "load file:" + str + ", id=" + i);
-            }
-          }
-          paramInt += 1;
-        }
-      }
-      return;
-    }
-    catch (Exception paramVarArgs)
-    {
-      paramVarArgs.printStackTrace();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = ("cmshow_script_" + paramInt + ".js");
+    this.jdField_a_of_type_Akxr = paramakxr;
+    this.jdField_a_of_type_Akxn = paramakxn;
+    QLog.i("CmShow_SpriteAioScript", 1, "[create script object], bid:" + paramInt + ",scriptName:" + this.b);
   }
   
-  public akxp(String paramString1, String paramString2)
+  public akxp(int paramInt, String paramString, akxr paramakxr, akxn paramakxn)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaLangString = paramString1;
-      this.jdField_b_of_type_JavaLangString = paramString2;
-      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new akxq(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new akxr(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new akxs(this));
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString2, 1);
-      try
-      {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString1);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-        return;
-      }
-      catch (IOException paramString1)
-      {
-        paramString1.printStackTrace();
-        return;
-      }
-      return;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString;
+    this.jdField_a_of_type_Akxr = paramakxr;
+    this.jdField_a_of_type_Akxn = paramakxn;
+    QLog.i("CmShow_SpriteAioScript", 1, "[create script object], bid:" + paramInt + ",scriptName:" + this.b);
   }
   
-  public void a()
+  public int a()
   {
-    a(false);
+    return 300;
+  }
+  
+  public akml a()
+  {
+    if (this.jdField_a_of_type_Akxr == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_Akxr.a();
+  }
+  
+  public aknh a(long paramLong, String paramString1, String paramString2)
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(alef.av).append(this.b);
+    return localStringBuilder.toString();
+  }
+  
+  public void a() {}
+  
+  public void a(akwu paramakwu)
+  {
+    this.jdField_a_of_type_Akwu = paramakwu;
+  }
+  
+  public void a(String paramString)
+  {
+    a(paramString, 0, false);
+  }
+  
+  public void a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_Akxr == null)) {
+      QLog.w("CmShow_SpriteAioScript", 1, "[execScriptInRenderThread], script is null.");
+    }
+    akml localakml;
+    do
+    {
+      return;
+      localakml = this.jdField_a_of_type_Akxr.a();
+    } while (localakml == null);
+    localakml.runRenderTask(new CmShowSpriteAioScript.1(this, paramString, localakml, paramInt, paramBoolean));
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    int i;
-    for (;;)
-    {
-      try
-      {
-        if (!this.e) {
-          return;
-        }
-        if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
-        {
-          i = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
-          if (QLog.isColorLevel()) {
-            QLog.d("ARMusicController", 2, "playSound path=" + paramString + ", id=" + i);
-          }
-          if (i == -1) {
-            return;
-          }
-          if (!this.jdField_b_of_type_JavaUtilHashSet.contains(Integer.valueOf(i))) {
-            break;
-          }
-          this.jdField_a_of_type_AndroidMediaSoundPool.play(i, 1.0F, 1.0F, 1, 0, 1.0F);
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("ARMusicController", 2, paramString, new Object[0]);
-        return;
-      }
-      i = -1;
+    if (!this.jdField_a_of_type_Boolean) {
+      QLog.w("CmShow_SpriteAioScript", 2, "[checkDressRsc], script is NOT ready.");
     }
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(i));
+    while ((TextUtils.isEmpty(paramString)) || (!"0".equals(paramString))) {
       return;
-    }
-    this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
-  }
-  
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        if (!new File(paramString).exists())
-        {
-          QLog.d("ARMusicController", 2, "playBgMusic file not exist" + paramString);
-          return;
-        }
-        if (this.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying()) {
-          this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-        }
-        this.jdField_a_of_type_JavaLangString = paramString;
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.reset();
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource(paramString);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.setLooping(paramBoolean1);
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-        this.d = paramBoolean2;
-        return;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.e("ARMusicController", 2, "playBgMusic exception", paramString);
-        return;
-      }
-      QLog.d("ARMusicController", 1, "playBgMusic exception" + paramString.getMessage());
     }
   }
   
-  public void a(boolean paramBoolean)
+  public boolean a()
   {
-    try
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidMediaMediaPlayer.start();
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.d("ARMusicController", 2, "playBgMusic : " + this.jdField_a_of_type_JavaLangString);
-        return;
-        this.d = true;
-      }
-      return;
+      QLog.i("CmShow_SpriteAioScript", 1, "script is already read, scriptName:" + this.b);
+      return true;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    this.jdField_a_of_type_Boolean = b();
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public void b()
+  public boolean a(Activity paramActivity)
+  {
+    return false;
+  }
+  
+  protected boolean a(String paramString)
+  {
+    boolean bool = true;
+    if (!new algi(paramString + ".sig", paramString).a(1))
+    {
+      QLog.w("CmShow_SpriteAioScript", 1, "verify fails, path:" + paramString);
+      e();
+      bool = false;
+    }
+    return bool;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void b() {}
+  
+  public boolean b()
   {
     try
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.prepareAsync();
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "stopAllMusic");
+      if ((this.jdField_a_of_type_Int == 0) && (!TextUtils.isEmpty(akji.e)))
+      {
+        this.jdField_a_of_type_JavaLangString = akji.e;
+        QLog.i("CmShow_SpriteAioScript", 1, "Succeed to read script 0 from cache");
+        return true;
       }
-      return;
+      String str = a();
+      if (TextUtils.isEmpty(str)) {
+        return false;
+      }
+      localFile = new File(str);
+      if (!localFile.exists())
+      {
+        QLog.w("CmShow_SpriteAioScript", 1, "Fail to read script file. " + localFile.getAbsolutePath());
+        f();
+        if (TextUtils.isEmpty(alef.au)) {
+          alda.a(this.jdField_a_of_type_Akxr.a(), 300, 202, new Object[] { "Fail to read script file:", str });
+        } else {
+          alda.a(this.jdField_a_of_type_Akxr.a(), 300, 200, new Object[] { "Fail to read script file:", str });
+        }
+      }
     }
-    catch (Exception localException)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      localException.printStackTrace();
+      File localFile;
+      QLog.e("CmShow_SpriteAioScript", 1, "[loadScript],OOM:", localOutOfMemoryError);
+      alda.a(this.jdField_a_of_type_Akxr.a(), 300, 150, new Object[] { "loadScript:", localOutOfMemoryError });
+      return false;
+      if (!a(localOutOfMemoryError))
+      {
+        alda.a(this.jdField_a_of_type_Akxr.a(), 300, 201, new Object[] { "Fail to verify script file:", localOutOfMemoryError });
+        return false;
+      }
+      this.jdField_a_of_type_JavaLangString = bdcs.b(localFile);
+      QLog.i("CmShow_SpriteAioScript", 1, "Succeed to read script file, bid:" + this.jdField_a_of_type_Int);
+      return true;
     }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("CmShow_SpriteAioScript", 1, "[loadScript]:", localThrowable);
+      alda.a(this.jdField_a_of_type_Akxr.a(), 300, 30, new Object[] { "loadScript:", localThrowable });
+      return false;
+    }
+    return false;
   }
   
   public void c()
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("CmShow_SpriteAioScript", 2, new Object[] { "[loadScript], mIsLoaded:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
+    }
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-      this.jdField_a_of_type_JavaUtilHashMap = null;
-      this.jdField_a_of_type_JavaUtilHashSet = null;
-      this.jdField_b_of_type_JavaUtilHashSet = null;
+      try
+      {
+        if (!this.jdField_a_of_type_Boolean) {
+          break;
+        }
+        if (100 == this.jdField_a_of_type_Int)
+        {
+          QLog.d("CmShow_SpriteAioScript", 1, "sava TraceReport CmShowStatUtil commitJS:(cmshow_0)");
+          a(this.jdField_a_of_type_JavaLangString, 5, false);
+          b();
+          return;
+        }
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          QLog.d("CmShow_SpriteAioScript", 1, "sava TraceReport CmShowStatUtil commitJS:(cmshow_0)");
+          a(this.jdField_a_of_type_JavaLangString, 3, false);
+          continue;
+        }
+        localStringBuilder = new StringBuilder();
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("CmShow_SpriteAioScript", 1, localThrowable, new Object[0]);
+        return;
+      }
+      StringBuilder localStringBuilder;
+      localStringBuilder.append("(function(){").append(this.jdField_a_of_type_JavaLangString).append(";registerFunction(\"playAction_bid_").append(this.jdField_a_of_type_Int).append("\", playSpriteAction);").append("registerFunction(\"sendMsg_bid_").append(this.jdField_a_of_type_Int).append("\", sendSpriteMsg);").append("registerFunction(\"stopAction_bid_").append(this.jdField_a_of_type_Int).append("\", stopSpriteAction);").append("})();");
+      a(localStringBuilder.toString());
+    }
+  }
+  
+  public boolean c()
+  {
+    if (TextUtils.isEmpty(alef.au)) {}
+    while (new File(alef.av + "cm3d.js").exists()) {
+      return true;
+    }
+    return false;
+  }
+  
+  public void d()
+  {
+    ApolloCmdChannel.getChannelFromOtherProcess(ApolloUtil.a()).addCmdHandler(this);
+  }
+  
+  public void e()
+  {
+    QLog.w("CmShow_SpriteAioScript", 1, "[onVerifyFailure], check base.zip");
+    QQAppInterface localQQAppInterface = ApolloUtil.a();
+    if (localQQAppInterface != null)
+    {
+      amly.a(localQQAppInterface);
       return;
     }
-    catch (Exception localException)
+    QLog.e("CmShow_SpriteAioScript", 1, "onVerifyFailure app is null");
+  }
+  
+  public void f()
+  {
+    QLog.w("CmShow_SpriteAioScript", 1, "[onScriptNotExists], redownload base.zip");
+    QQAppInterface localQQAppInterface = ApolloUtil.a();
+    if (localQQAppInterface != null)
     {
-      localException.printStackTrace();
+      amly.a(localQQAppInterface);
+      return;
     }
+    QLog.e("CmShow_SpriteAioScript", 1, "onVerifyFailure app is null");
+  }
+  
+  public void g()
+  {
+    ApolloCmdChannel localApolloCmdChannel = ApolloCmdChannel.getChannelFromOtherProcess(ApolloUtil.a());
+    if (localApolloCmdChannel != null) {
+      localApolloCmdChannel.removeCmdHandler(this);
+    }
+    this.jdField_a_of_type_Akwu = null;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxp
  * JD-Core Version:    0.7.0.1
  */

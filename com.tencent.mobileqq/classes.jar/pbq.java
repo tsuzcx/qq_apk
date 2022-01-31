@@ -1,76 +1,51 @@
-import android.util.SparseArray;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class pbq
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private static pbq jdField_a_of_type_Pbq;
-  private SparseArray<ChannelInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  private boolean jdField_a_of_type_Boolean = true;
+  public pbq(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public static pbq a()
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (jdField_a_of_type_Pbq == null) {}
-    try
+    if (paramMotionEvent1.getY() - paramMotionEvent2.getY() > 100.0F) {}
+    for (int i = 1;; i = 0)
     {
-      if (jdField_a_of_type_Pbq == null) {
-        jdField_a_of_type_Pbq = new pbq();
-      }
-      return jdField_a_of_type_Pbq;
-    }
-    finally {}
-  }
-  
-  public void a(List<Integer> paramList)
-  {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
-    {
-      return;
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      if ((i != 0) && (!ReadInjoyIMAXAdFragment.a(this.a)))
       {
-        int i = ((Integer)paramList.next()).intValue();
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
+        ReadInjoyIMAXAdFragment.a(this.a, true);
+        ReadInjoyIMAXAdFragment.a(this.a);
+        ReadInjoyIMAXAdFragment.a(this.a, this.a.getActivity().app, noy.q);
       }
+      return true;
     }
   }
   
-  public void b(List<Integer> paramList)
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
-    {
-      return;
-      ArrayList localArrayList = new ArrayList();
-      int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-      int i = 0;
-      while (i < j)
-      {
-        int k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
-        if ((!onh.a(k)) && (!paramList.contains(Integer.valueOf(k)))) {
-          localArrayList.add(Integer.valueOf(k));
-        }
-        i += 1;
-      }
-      paramList = localArrayList.iterator();
-      while (paramList.hasNext())
-      {
-        i = ((Integer)paramList.next()).intValue();
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
-        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
-      }
+    if (ReadInjoyIMAXAdFragment.a(this.a)) {
+      return true;
     }
+    ReadInjoyIMAXAdFragment.a(this.a, true);
+    ReadInjoyIMAXAdFragment.a(this.a);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
+      ReadInjoyIMAXAdFragment.a(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
+    }
+    ReadInjoyIMAXAdFragment.a(this.a, ReadInjoyIMAXAdFragment.a(this.a), noy.s);
+    ReadInjoyIMAXAdFragment.b(this.a, 2);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null) {
+      ReadInjoyIMAXAdFragment.c(this.a, (int)ReadInjoyIMAXAdFragment.a(this.a).getCurrentPostion());
+    }
+    ReadInjoyIMAXAdFragment.d(this.a, 0);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pbq
  * JD-Core Version:    0.7.0.1
  */

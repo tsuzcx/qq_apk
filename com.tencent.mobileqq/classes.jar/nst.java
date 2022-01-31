@@ -1,20 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.KdTagItem;
 
-class nst
-  implements Animation.AnimationListener
+public final class nst
+  implements Parcelable.Creator<VideoInfo.KdTagItem>
 {
-  nst(nsp paramnsp) {}
+  public VideoInfo.KdTagItem a(Parcel paramParcel)
+  {
+    return new VideoInfo.KdTagItem(paramParcel);
+  }
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public VideoInfo.KdTagItem[] a(int paramInt)
+  {
+    return new VideoInfo.KdTagItem[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nst
  * JD-Core Version:    0.7.0.1
  */

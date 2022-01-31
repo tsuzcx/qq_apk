@@ -1,24 +1,27 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder.1;
+import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder.1.1.1;
+
 public class alhs
+  implements Animation.AnimationListener
 {
-  public long a;
-  public alhh a;
-  public alhr a;
+  public alhs(ApolloMainViewBinder.1 param1) {}
   
-  public alhs()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Alhr = null;
-    this.jdField_a_of_type_Alhh = null;
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new ApolloMainViewBinder.1.1.1(this), 300L);
   }
   
-  public String toString()
-  {
-    return "ARLocalRecogResult{frameIdx = " + this.jdField_a_of_type_Long + ", markerResult = " + this.jdField_a_of_type_Alhr + ", faceResult = " + this.jdField_a_of_type_Alhh + '}';
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alhs
  * JD-Core Version:    0.7.0.1
  */

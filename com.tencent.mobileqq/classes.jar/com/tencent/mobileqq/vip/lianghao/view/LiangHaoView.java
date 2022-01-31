@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vip.lianghao.view;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bbyw;
+import bdxx;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class LiangHaoView
@@ -18,7 +18,7 @@ public class LiangHaoView
 {
   private View jdField_a_of_type_AndroidViewView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public bbyw a;
+  public bdxx a;
   
   public LiangHaoView(Context paramContext)
   {
@@ -42,10 +42,10 @@ public class LiangHaoView
   {
     setOrientation(0);
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130846259);
-    int i = actj.a(12.0F, getResources());
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130846638);
+    int i = aekt.a(12.0F, getResources());
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i, i);
-    localLayoutParams.rightMargin = actj.a(5.0F, getResources());
+    localLayoutParams.rightMargin = aekt.a(5.0F, getResources());
     localLayoutParams.gravity = 16;
     addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
@@ -67,27 +67,27 @@ public class LiangHaoView
     }
   }
   
-  public void setUin(bbyw parambbyw)
+  public void setUin(bdxx parambdxx)
   {
     int j = 0;
-    if ((parambbyw == null) || (TextUtils.isEmpty(parambbyw.a))) {
+    if ((parambdxx == null) || (TextUtils.isEmpty(parambdxx.a))) {
       return;
     }
-    this.jdField_a_of_type_Bbyw = parambbyw;
-    SpannableString localSpannableString = new SpannableString(parambbyw.a);
+    this.jdField_a_of_type_Bdxx = parambdxx;
+    SpannableString localSpannableString = new SpannableString(parambdxx.a);
     int i;
-    if (TextUtils.isEmpty(parambbyw.b)) {
+    if (TextUtils.isEmpty(parambdxx.b)) {
       i = -1;
     }
     for (;;)
     {
       if (j != 0) {
-        localSpannableString.setSpan(new ForegroundColorSpan(-31676), i, parambbyw.b.length() + i, 18);
+        localSpannableString.setSpan(new ForegroundColorSpan(-31676), i, parambdxx.b.length() + i, 18);
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableString);
-      setContentDescription(BaseApplicationImpl.getApplication().getString(2131693774) + " " + parambbyw.a);
+      setContentDescription(BaseApplicationImpl.getApplication().getString(2131693890) + " " + parambdxx.a);
       return;
-      i = parambbyw.a.indexOf(parambbyw.b);
+      i = parambdxx.a.indexOf(parambdxx.b);
       if (i >= 0) {
         j = 1;
       }
@@ -96,7 +96,7 @@ public class LiangHaoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.view.LiangHaoView
  * JD-Core Version:    0.7.0.1
  */

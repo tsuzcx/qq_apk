@@ -1,788 +1,822 @@
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Environment;
-import android.os.StatFs;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.widget.EditText;
+import android.widget.ImageView;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.1;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.4;
-import com.tencent.mobileqq.filemanager.settings.FMSettings.5;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo.5;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class aptm
+  extends appw
+  implements aptd
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long = 0L;
-  public bbgu a;
+  public static final int a;
+  public static final int b;
+  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable();
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  public Emoticon a;
   public String a;
-  public Map<String, apts> a;
-  boolean jdField_a_of_type_Boolean = false;
-  long jdField_b_of_type_Long = 0L;
-  public String b;
-  boolean jdField_b_of_type_Boolean = false;
-  long c = System.currentTimeMillis() / 1000L;
-  long d = 0L;
+  private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  private String jdField_b_of_type_JavaLangString;
+  public boolean b;
+  private Drawable c;
+  public boolean c;
+  private Drawable d;
+  public int h;
+  public int i;
+  public int j;
   
-  private aptm()
+  static
   {
-    this.jdField_a_of_type_JavaUtilMap = null;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    a(2, "new FMSetting!");
-    a();
+    jdField_a_of_type_Int = Color.parseColor("#21d9c6");
+    jdField_b_of_type_Int = Color.parseColor("#ffffff");
   }
   
-  private long a(String paramString, List<String> paramList)
+  public aptm(String paramString)
   {
-    long l1 = 0L;
-    paramString = new File(paramString).listFiles();
-    long l2 = l1;
-    if (paramString != null)
-    {
-      if (paramString.length != 0) {
-        break label35;
-      }
-      l2 = l1;
-    }
-    label35:
-    int i;
-    do
-    {
-      return l2;
-      i = 0;
-      l2 = l1;
-    } while (i >= paramString.length);
-    Object localObject = paramString[i];
-    if (localObject.isDirectory()) {}
-    for (l1 += a(localObject.getPath(), paramList);; l1 += paramString[i].length())
-    {
-      i += 1;
-      break;
-      if (paramList != null) {
-        paramList.add(localObject.getAbsolutePath());
-      }
-    }
-  }
-  
-  public static aptm a()
-  {
-    return aptr.a();
-  }
-  
-  private String a(String paramString)
-  {
-    paramString = (paramString + "/Tencent/QQfile_recv/").replace("//", "/");
-    File localFile = new File(paramString);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return paramString;
-  }
-  
-  public static void a(int paramInt, String paramString) {}
-  
-  /* Error */
-  private void a(File paramFile1, File paramFile2, aptl paramaptl)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 8
-    //   3: aconst_null
-    //   4: astore 7
-    //   6: aconst_null
-    //   7: astore 9
-    //   9: aload_1
-    //   10: invokevirtual 128	java/io/File:exists	()Z
-    //   13: ifeq +12 -> 25
-    //   16: aload_1
-    //   17: invokevirtual 92	java/io/File:length	()J
-    //   20: lconst_0
-    //   21: lcmp
-    //   22: ifne +54 -> 76
-    //   25: iconst_1
-    //   26: ldc 150
-    //   28: invokestatic 54	aptm:a	(ILjava/lang/String;)V
-    //   31: iconst_0
-    //   32: ifeq +11 -> 43
-    //   35: new 152	java/lang/NullPointerException
-    //   38: dup
-    //   39: invokespecial 153	java/lang/NullPointerException:<init>	()V
-    //   42: athrow
-    //   43: iconst_0
-    //   44: ifeq +11 -> 55
-    //   47: new 152	java/lang/NullPointerException
-    //   50: dup
-    //   51: invokespecial 153	java/lang/NullPointerException:<init>	()V
-    //   54: athrow
-    //   55: aload_3
-    //   56: aload_1
-    //   57: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   60: aload_2
-    //   61: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   64: invokeinterface 158 3 0
-    //   69: aload_3
-    //   70: invokeinterface 159 1 0
-    //   75: return
-    //   76: aload_2
-    //   77: invokevirtual 128	java/io/File:exists	()Z
-    //   80: ifeq +8 -> 88
-    //   83: aload_2
-    //   84: invokevirtual 162	java/io/File:delete	()Z
-    //   87: pop
-    //   88: new 164	java/io/FileOutputStream
-    //   91: dup
-    //   92: aload_2
-    //   93: invokespecial 167	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   96: astore 5
-    //   98: new 169	java/io/FileInputStream
-    //   101: dup
-    //   102: aload_1
-    //   103: invokespecial 170	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   106: astore 6
-    //   108: invokestatic 176	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   111: sipush 4096
-    //   114: invokevirtual 180	com/tencent/commonsdk/pool/ByteArrayPool:getBuf	(I)[B
-    //   117: astore 7
-    //   119: aload 6
-    //   121: aload 7
-    //   123: invokevirtual 184	java/io/FileInputStream:read	([B)I
-    //   126: istore 4
-    //   128: iload 4
-    //   130: iconst_m1
-    //   131: if_icmpeq +69 -> 200
-    //   134: aload_0
-    //   135: getfield 29	aptm:jdField_a_of_type_Boolean	Z
-    //   138: ifne +62 -> 200
-    //   141: aload 5
-    //   143: aload 7
-    //   145: iconst_0
-    //   146: iload 4
-    //   148: invokevirtual 188	java/io/FileOutputStream:write	([BII)V
-    //   151: aload 5
-    //   153: invokevirtual 191	java/io/FileOutputStream:flush	()V
-    //   156: aload_3
-    //   157: iload 4
-    //   159: i2l
-    //   160: lconst_0
-    //   161: invokeinterface 194 5 0
-    //   166: goto -47 -> 119
-    //   169: astore_1
-    //   170: aload 6
-    //   172: astore_2
-    //   173: aload 5
-    //   175: astore_1
-    //   176: aload_1
-    //   177: ifnull +7 -> 184
-    //   180: aload_1
-    //   181: invokevirtual 197	java/io/FileOutputStream:close	()V
-    //   184: aload_2
-    //   185: ifnull +7 -> 192
-    //   188: aload_2
-    //   189: invokevirtual 198	java/io/FileInputStream:close	()V
-    //   192: aload_3
-    //   193: iconst_m1
-    //   194: invokeinterface 201 2 0
-    //   199: return
-    //   200: invokestatic 176	com/tencent/commonsdk/pool/ByteArrayPool:getGenericInstance	()Lcom/tencent/commonsdk/pool/ByteArrayPool;
-    //   203: aload 7
-    //   205: invokevirtual 205	com/tencent/commonsdk/pool/ByteArrayPool:returnBuf	([B)V
-    //   208: aload 5
-    //   210: ifnull +8 -> 218
-    //   213: aload 5
-    //   215: invokevirtual 197	java/io/FileOutputStream:close	()V
-    //   218: aload 6
-    //   220: ifnull +8 -> 228
-    //   223: aload 6
-    //   225: invokevirtual 198	java/io/FileInputStream:close	()V
-    //   228: aload_3
-    //   229: aload_1
-    //   230: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   233: aload_2
-    //   234: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   237: invokeinterface 158 3 0
-    //   242: aload_3
-    //   243: invokeinterface 159 1 0
-    //   248: return
-    //   249: astore_1
-    //   250: aconst_null
-    //   251: astore 5
-    //   253: aload 8
-    //   255: astore_1
-    //   256: aload 5
-    //   258: ifnull +8 -> 266
-    //   261: aload 5
-    //   263: invokevirtual 197	java/io/FileOutputStream:close	()V
-    //   266: aload_1
-    //   267: ifnull +7 -> 274
-    //   270: aload_1
-    //   271: invokevirtual 198	java/io/FileInputStream:close	()V
-    //   274: aload_3
-    //   275: iconst_m1
-    //   276: invokeinterface 201 2 0
-    //   281: return
-    //   282: astore_1
-    //   283: aconst_null
-    //   284: astore 5
-    //   286: aload 7
-    //   288: astore_1
-    //   289: aload 5
-    //   291: ifnull +8 -> 299
-    //   294: aload 5
-    //   296: invokevirtual 197	java/io/FileOutputStream:close	()V
-    //   299: aload_1
-    //   300: ifnull +7 -> 307
-    //   303: aload_1
-    //   304: invokevirtual 198	java/io/FileInputStream:close	()V
-    //   307: aload_3
-    //   308: iconst_m1
-    //   309: invokeinterface 201 2 0
-    //   314: return
-    //   315: astore 7
-    //   317: aconst_null
-    //   318: astore 5
-    //   320: aconst_null
-    //   321: astore 6
-    //   323: aload 5
-    //   325: ifnull +8 -> 333
-    //   328: aload 5
-    //   330: invokevirtual 197	java/io/FileOutputStream:close	()V
-    //   333: aload 6
-    //   335: ifnull +8 -> 343
-    //   338: aload 6
-    //   340: invokevirtual 198	java/io/FileInputStream:close	()V
-    //   343: aload_3
-    //   344: aload_1
-    //   345: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   348: aload_2
-    //   349: invokevirtual 83	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   352: invokeinterface 158 3 0
-    //   357: aload_3
-    //   358: invokeinterface 159 1 0
-    //   363: aload 7
-    //   365: athrow
-    //   366: astore 5
-    //   368: goto -325 -> 43
-    //   371: astore 5
-    //   373: goto -318 -> 55
-    //   376: astore 5
-    //   378: goto -160 -> 218
-    //   381: astore 5
-    //   383: goto -155 -> 228
-    //   386: astore_1
-    //   387: goto -203 -> 184
-    //   390: astore_1
-    //   391: goto -199 -> 192
-    //   394: astore_2
-    //   395: goto -129 -> 266
-    //   398: astore_1
-    //   399: goto -125 -> 274
-    //   402: astore_2
-    //   403: goto -104 -> 299
-    //   406: astore_1
-    //   407: goto -100 -> 307
-    //   410: astore 5
-    //   412: goto -79 -> 333
-    //   415: astore 5
-    //   417: goto -74 -> 343
-    //   420: astore 7
-    //   422: aconst_null
-    //   423: astore 6
-    //   425: goto -102 -> 323
-    //   428: astore 7
-    //   430: goto -107 -> 323
-    //   433: astore_1
-    //   434: aload 7
-    //   436: astore_1
-    //   437: goto -148 -> 289
-    //   440: astore_1
-    //   441: aload 6
-    //   443: astore_1
-    //   444: goto -155 -> 289
-    //   447: astore_1
-    //   448: aload 8
-    //   450: astore_1
-    //   451: goto -195 -> 256
-    //   454: astore_1
-    //   455: aload 6
-    //   457: astore_1
-    //   458: goto -202 -> 256
-    //   461: astore_1
-    //   462: aconst_null
-    //   463: astore_1
-    //   464: aload 9
-    //   466: astore_2
-    //   467: goto -291 -> 176
-    //   470: astore_1
-    //   471: aload 5
-    //   473: astore_1
-    //   474: aload 9
-    //   476: astore_2
-    //   477: goto -301 -> 176
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	480	0	this	aptm
-    //   0	480	1	paramFile1	File
-    //   0	480	2	paramFile2	File
-    //   0	480	3	paramaptl	aptl
-    //   126	32	4	i	int
-    //   96	233	5	localFileOutputStream	java.io.FileOutputStream
-    //   366	1	5	localException1	Exception
-    //   371	1	5	localException2	Exception
-    //   376	1	5	localException3	Exception
-    //   381	1	5	localException4	Exception
-    //   410	1	5	localException5	Exception
-    //   415	57	5	localException6	Exception
-    //   106	350	6	localFileInputStream	java.io.FileInputStream
-    //   4	283	7	arrayOfByte	byte[]
-    //   315	49	7	localObject1	Object
-    //   420	1	7	localObject2	Object
-    //   428	7	7	localObject3	Object
-    //   1	448	8	localObject4	Object
-    //   7	468	9	localObject5	Object
-    // Exception table:
-    //   from	to	target	type
-    //   108	119	169	java/io/IOException
-    //   119	128	169	java/io/IOException
-    //   134	166	169	java/io/IOException
-    //   200	208	169	java/io/IOException
-    //   9	25	249	java/lang/OutOfMemoryError
-    //   25	31	249	java/lang/OutOfMemoryError
-    //   76	88	249	java/lang/OutOfMemoryError
-    //   88	98	249	java/lang/OutOfMemoryError
-    //   9	25	282	java/lang/Exception
-    //   25	31	282	java/lang/Exception
-    //   76	88	282	java/lang/Exception
-    //   88	98	282	java/lang/Exception
-    //   9	25	315	finally
-    //   25	31	315	finally
-    //   76	88	315	finally
-    //   88	98	315	finally
-    //   35	43	366	java/lang/Exception
-    //   47	55	371	java/lang/Exception
-    //   213	218	376	java/lang/Exception
-    //   223	228	381	java/lang/Exception
-    //   180	184	386	java/lang/Exception
-    //   188	192	390	java/lang/Exception
-    //   261	266	394	java/lang/Exception
-    //   270	274	398	java/lang/Exception
-    //   294	299	402	java/lang/Exception
-    //   303	307	406	java/lang/Exception
-    //   328	333	410	java/lang/Exception
-    //   338	343	415	java/lang/Exception
-    //   98	108	420	finally
-    //   108	119	428	finally
-    //   119	128	428	finally
-    //   134	166	428	finally
-    //   200	208	428	finally
-    //   98	108	433	java/lang/Exception
-    //   108	119	440	java/lang/Exception
-    //   119	128	440	java/lang/Exception
-    //   134	166	440	java/lang/Exception
-    //   200	208	440	java/lang/Exception
-    //   98	108	447	java/lang/OutOfMemoryError
-    //   108	119	454	java/lang/OutOfMemoryError
-    //   119	128	454	java/lang/OutOfMemoryError
-    //   134	166	454	java/lang/OutOfMemoryError
-    //   200	208	454	java/lang/OutOfMemoryError
-    //   9	25	461	java/io/IOException
-    //   25	31	461	java/io/IOException
-    //   76	88	461	java/io/IOException
-    //   88	98	461	java/io/IOException
-    //   98	108	470	java/io/IOException
-  }
-  
-  private void a(List<String> paramList, aptl paramaptl)
-  {
-    a(1, "moveFileToDefaultPath");
-    if ((paramList == null) || (paramList.size() == 0)) {
-      a(1, "moveFileToDefaultPath,lstPath is null or size = 0");
-    }
-    Object localObject;
-    String str1;
-    int j;
-    int i;
-    do
-    {
-      return;
-      this.jdField_a_of_type_Long = 0L;
-      try
-      {
-        this.jdField_a_of_type_Int = 0;
-        this.jdField_b_of_type_Long = 0L;
-        localObject = paramList.iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          str1 = (String)((Iterator)localObject).next();
-          this.jdField_b_of_type_Long += apvd.a(str1);
-        }
-        a(1, "moveFileToDefaultPath,total size[" + this.jdField_b_of_type_Long + "]");
-      }
-      finally {}
-      if (this.jdField_b_of_type_Long == 0L)
-      {
-        paramaptl.a();
-        return;
-      }
-      str1 = d().jdField_b_of_type_JavaLangString + d().c;
-      j = paramList.size();
-      i = 0;
-    } while (i >= j);
-    String str2 = (String)paramList.get(i);
-    if (str2.contains("/.tmp/")) {
-      localObject = b(str1) + apug.a(str2);
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        localObject = new File((String)localObject);
-        try
-        {
-          ThreadManager.post(new FMSettings.4(this, str2, (File)localObject, j, paramaptl), 8, null, false);
-          i += 1;
-        }
-        catch (Exception paramList)
-        {
-          a(1, "copyFile Fail! " + paramList.toString());
-        }
-      }
-      if (str2.contains("/.thumbnails/")) {
-        localObject = c(str1) + apug.a(str2);
-      } else {
-        localObject = a(str1) + apug.a(str2);
-      }
-    }
-  }
-  
-  private boolean a(String paramString)
-  {
-    File localFile = new File(paramString);
-    boolean bool = false;
-    if (!localFile.exists()) {
-      bool = localFile.mkdirs();
-    }
-    if (bool) {
-      a(2, "create [" + paramString + "] success!");
-    }
-    return bool;
-  }
-  
-  private apts b()
-  {
-    return (apts)this.jdField_a_of_type_JavaUtilMap.get("sdCard");
-  }
-  
-  private String b(String paramString)
-  {
-    paramString = (paramString + "/Tencent/QQfile_recv/.tmp/").replace("//", "/");
-    File localFile = new File(paramString);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return paramString;
-  }
-  
-  private apts c()
-  {
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 1) {
-      return null;
-    }
-    return (apts)this.jdField_a_of_type_JavaUtilMap.get("externalSdCard");
-  }
-  
-  private String c(String paramString)
-  {
-    paramString = (paramString + "/Tencent/QQfile_recv/.thumbnails/").replace("//", "/");
-    File localFile = new File(paramString);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return paramString;
-  }
-  
-  private void c()
-  {
-    apts localapts = a();
-    if (localapts == null) {
-      return;
-    }
-    ThreadManager.post(new FMSettings.1(this, b(localapts.jdField_b_of_type_JavaLangString + localapts.c)), 8, null, false);
-  }
-  
-  private apts d()
-  {
-    a(2, "getDefaultStorage[" + this.jdField_a_of_type_JavaUtilMap.size() + "]");
-    Object localObject1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (String)((Iterator)localObject1).next();
-      localObject2 = (apts)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
-      ((apts)localObject2).a();
-      if (((apts)localObject2).jdField_a_of_type_Boolean)
-      {
-        a(2, "getDefaultStorage[" + ((apts)localObject2).jdField_b_of_type_JavaLangString + "] + ext[" + ((apts)localObject2).c + "]");
-        return localObject2;
-      }
-    }
-    a(2, "getDefaultStorage nothing is default refresh!");
-    Object localObject2 = (apts)this.jdField_a_of_type_JavaUtilMap.get("sdCard");
-    localObject1 = localObject2;
-    if (localObject2 == null)
-    {
-      localObject1 = new apts(this, null);
-      ((apts)localObject1).jdField_a_of_type_Boolean = true;
-      ((apts)localObject1).jdField_a_of_type_JavaLangString = "SD卡";
-      ((apts)localObject1).jdField_b_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath();
-      ((apts)localObject1).c = "";
-    }
-    ((apts)localObject1).a(BaseApplicationImpl.getContext());
-    return localObject1;
-  }
-  
-  public long a()
-  {
-    Object localObject = d().jdField_b_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) || (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)) {}
     try
     {
-      localObject = new StatFs((String)localObject);
-      long l = ((StatFs)localObject).getAvailableBlocks();
-      int i = ((StatFs)localObject).getBlockSize();
-      return i * l;
+      paramString = BaseApplication.getContext().getResources();
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130837906);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130843327);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("PicEmoticonInfo", 2, paramString.getMessage());
+      return;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("PicEmoticonInfo", 2, paramString.getMessage());
+    }
+  }
+  
+  public static String a(Emoticon paramEmoticon)
+  {
+    if (paramEmoticon == null) {
+      return null;
+    }
+    return paramEmoticon.epId + "_" + paramEmoticon.eId;
+  }
+  
+  private void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.extensionWidth == 0) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.extensionHeight == 0) || ((this.jdField_c_of_type_AndroidGraphicsDrawableDrawable == null) || (this.d == null))) {}
+    try
+    {
+      Resources localResources = BaseApplication.getContext().getResources();
+      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = localResources.getDrawable(2130846583);
+      this.d = localResources.getDrawable(2130846584);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable;
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.d;
+      return;
     }
     catch (Exception localException)
     {
-      localException.printStackTrace();
-    }
-    return 2147483647L;
-  }
-  
-  public apts a()
-  {
-    a(2, "getOtherStorage[" + this.jdField_a_of_type_JavaUtilMap.size() + "]");
-    apts localapts = d();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (apts)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-      if (localapts != localObject) {
-        return localObject;
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PicEmoticonInfo", 2, localException.getMessage());
+        }
       }
     }
-    a(2, "getOtherStorage nothing is default refresh!");
-    return null;
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PicEmoticonInfo", 2, localOutOfMemoryError.getMessage());
+        }
+      }
+    }
+  }
+  
+  public static void a(URLDrawable paramURLDrawable)
+  {
+    Object localObject;
+    if (paramURLDrawable != null)
+    {
+      localObject = paramURLDrawable.getCurrDrawable();
+      if ((localObject != null) && ((localObject instanceof GifDrawable)))
+      {
+        localObject = ((GifDrawable)localObject).getImage();
+        if ((localObject == null) || (!(localObject instanceof apvb))) {
+          break label72;
+        }
+        ((apvb)localObject).b();
+        ((apvb)localObject).a();
+        paramURLDrawable.invalidateSelf();
+        if (QLog.isColorLevel()) {
+          QLog.d("PicEmoticonInfo", 2, "soundgif startSoundDrawablePlay start");
+        }
+      }
+    }
+    label72:
+    do
+    {
+      do
+      {
+        return;
+      } while ((localObject == null) || (!(localObject instanceof apvc)));
+      ((apvc)localObject).b();
+      ((apvc)localObject).a();
+      paramURLDrawable.invalidateSelf();
+    } while (!QLog.isColorLevel());
+    QLog.d("PicEmoticonInfo", 2, "soundgif startSoundDrawablePlay start");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon, EmojiStickerManager.StickerInfo paramStickerInfo)
+  {
+    if (paramEmoticon == null)
+    {
+      bdqr.a("emotionType", "emotionActionSend", "1", "", "", "", "", "", "", "");
+      QLog.e("PicEmoticonInfo", 1, "send emotion + 1:emotion == null");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PicEmoticonInfo", 2, "emotion mall,epid=" + paramEmoticon.epId + ";jobtype=" + paramEmoticon.jobType);
+    }
+    if (paramEmoticon.isNewSoundEmoticon()) {
+      aube.a(paramQQAppInterface, "0X800A932", paramSessionInfo.jdField_a_of_type_Int, paramEmoticon.epId);
+    }
+    if ((paramEmoticon.jobType == 2) && (((paramContext instanceof SplashActivity)) || ((paramContext instanceof ChatActivity))))
+    {
+      d(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon, paramStickerInfo);
+      return;
+    }
+    if ((paramEmoticon.jobType == 4) && (((paramContext instanceof SplashActivity)) || ((paramContext instanceof ChatActivity))))
+    {
+      e(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon, paramStickerInfo);
+      return;
+    }
+    c(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon, paramStickerInfo);
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, URL paramURL, EmoticonPackage paramEmoticonPackage, boolean paramBoolean, URLDrawable paramURLDrawable)
+  {
+    if (paramQQAppInterface != null)
+    {
+      paramQQAppInterface = (aube)paramQQAppInterface.getManager(14);
+      if ((paramEmoticonPackage == null) && (!paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) && (!(paramURLDrawable.getCurrDrawable() instanceof ApngDrawable)))
+      {
+        paramURL = paramURL.toString();
+        paramQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, new aptn(this, paramURL));
+      }
+    }
+  }
+  
+  private static void b(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Emoticon paramEmoticon)
+  {
+    ThreadManager.post(new PicEmoticonInfo.5(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon), 5, null, true);
+  }
+  
+  public static void b(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null)
+    {
+      paramURLDrawable = paramURLDrawable.getCurrDrawable();
+      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof GifDrawable)))
+      {
+        paramURLDrawable = ((GifDrawable)paramURLDrawable).getImage();
+        if ((paramURLDrawable == null) || (!(paramURLDrawable instanceof apvb))) {
+          break label61;
+        }
+        ((apvb)paramURLDrawable).b();
+        if (QLog.isColorLevel()) {
+          QLog.d("PicEmoticonInfo", 2, "soundgif stopSoundDrawablePlay stop");
+        }
+      }
+    }
+    label61:
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramURLDrawable == null) || (!(paramURLDrawable instanceof apvc)));
+      ((apvc)paramURLDrawable).b();
+    } while (!QLog.isColorLevel());
+    QLog.d("PicEmoticonInfo", 2, "soundgif stopSoundDrawablePlay stop");
+  }
+  
+  private static void c(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon, EmojiStickerManager.StickerInfo paramStickerInfo)
+  {
+    acex.a(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon, paramStickerInfo);
+    paramSessionInfo = "";
+    int m = -1;
+    paramContext = ((FragmentActivity)paramContext).getChatFragment();
+    int k = m;
+    if (paramContext != null)
+    {
+      paramContext = paramContext.a().a();
+      k = m;
+      if (paramContext != null) {
+        k = paramContext.a(paramEmoticon.epId);
+      }
+    }
+    paramContext = paramSessionInfo;
+    if (k >= 0) {
+      paramContext = Integer.toString(k);
+    }
+    azmj.b(paramQQAppInterface, "CliOper", "", "", "ep_mall", "0X80057A9", 0, 0, paramEmoticon.epId, "", paramContext, paramEmoticon.eId);
+  }
+  
+  private static void d(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon, EmojiStickerManager.StickerInfo paramStickerInfo)
+  {
+    apnf localapnf = (apnf)paramQQAppInterface.getManager(43);
+    azmj.b(paramQQAppInterface, "CliOper", "", "", "MbFasong", "MbIDDianji", 0, 0, paramEmoticon.epId, "", "", "");
+    ((aube)paramQQAppInterface.getManager(14)).a(paramEmoticon.epId, -1, new aptq(paramContext, paramQQAppInterface, paramEmoticon, localapnf, paramSessionInfo, paramStickerInfo));
+  }
+  
+  private static void e(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon, EmojiStickerManager.StickerInfo paramStickerInfo)
+  {
+    Object localObject = paramContext.getSharedPreferences("emoticon_panel_" + paramQQAppInterface.getCurrentAccountUin(), 0);
+    if (localObject != null) {
+      ((SharedPreferences)localObject).edit().putLong("sp_key_send_h5_magic_face_time", System.currentTimeMillis()).apply();
+    }
+    azmj.b(paramQQAppInterface, "CliOper", "", "", "ep_mall", "0X800579D", 0, 0, paramEmoticon.epId, "", "", "");
+    localObject = (apnf)paramQQAppInterface.getManager(43);
+    ((aube)paramQQAppInterface.getManager(14)).a(paramEmoticon.epId, 0, new apts(paramContext, paramQQAppInterface, paramEmoticon, (apnf)localObject, paramSessionInfo));
+    c(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon, paramStickerInfo);
+  }
+  
+  public int a()
+  {
+    return this.g;
+  }
+  
+  public Drawable a(Context paramContext, float paramFloat)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null)
+    {
+      Object localObject = null;
+      try
+      {
+        paramContext = new URL("emotion_pic", "fromPanel", a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon));
+        if (paramContext != null)
+        {
+          ColorDrawable localColorDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+          if (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable != null)
+          {
+            localObject = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+            paramContext = URLDrawable.getDrawable(paramContext, localColorDrawable, (Drawable)localObject, false);
+            paramContext.setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+            paramContext.addHeader("my_uin", this.jdField_b_of_type_JavaLangString);
+            return paramContext;
+          }
+        }
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        for (;;)
+        {
+          paramContext = (Context)localObject;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("PicEmoticonInfo", 2, "getDrawable ,", localMalformedURLException);
+            paramContext = (Context)localObject;
+            continue;
+            localObject = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+          }
+        }
+      }
+    }
+    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  }
+  
+  public Drawable a(Context paramContext, float paramFloat, int paramInt1, int paramInt2)
+  {
+    return a(paramContext, paramFloat);
+  }
+  
+  public URLDrawable a()
+  {
+    Object localObject4 = null;
+    Object localObject1;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon == null) {
+      localObject1 = localObject4;
+    }
+    for (;;)
+    {
+      return localObject1;
+      String str = apro.q.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+      localObject1 = localObject4;
+      if (str == null) {
+        continue;
+      }
+      try
+      {
+        localObject3 = new URL("emotion_pic", "fromAIO", a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon));
+        localObject1 = localObject4;
+        if (localObject3 == null) {
+          continue;
+        }
+        a();
+        localObject3 = URLDrawable.getDrawable((URL)localObject3, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_b_of_type_AndroidGraphicsDrawableDrawable, false);
+        localObject1 = localObject3;
+        if (((URLDrawable)localObject3).getStatus() == 1) {
+          continue;
+        }
+        ((URLDrawable)localObject3).setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+        ((URLDrawable)localObject3).addHeader("my_uin", this.jdField_b_of_type_JavaLangString);
+        localObject1 = localObject3;
+        if (!arof.a(str)) {
+          continue;
+        }
+        try
+        {
+          ((URLDrawable)localObject3).downloadImediatly();
+          return localObject3;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          Object localObject2 = localObject3;
+        }
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("PicEmoticonInfo", 2, "getBigDrawable oom,drawableID=" + this.e);
+        return localObject3;
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        for (;;)
+        {
+          localMalformedURLException.printStackTrace();
+          Object localObject3 = null;
+        }
+      }
+    }
+  }
+  
+  public URLDrawable a(Context paramContext, float paramFloat)
+  {
+    return a("fromAIO", true);
+  }
+  
+  public URLDrawable a(String paramString, boolean paramBoolean)
+  {
+    return a(paramString, paramBoolean, false, null);
+  }
+  
+  public URLDrawable a(String paramString, boolean paramBoolean1, boolean paramBoolean2, afrf paramafrf)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon == null) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        paramString = new URL("emotion_pic", paramString, a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon));
+        if (paramString == null) {
+          continue;
+        }
+        a();
+        localObject1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        localObject1 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+        if (paramafrf != null)
+        {
+          localObject1 = paramafrf.e.getDrawable();
+          paramafrf = BaseApplicationImpl.getApplication().waitAppRuntime(null);
+          if ((paramafrf instanceof QQAppInterface))
+          {
+            paramafrf = (QQAppInterface)paramafrf;
+            localObject2 = URLDrawable.URLDrawableOptions.obtain();
+            ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
+            ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+            ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
+            if (paramafrf != null)
+            {
+              localObject1 = (aube)paramafrf.getManager(14);
+              if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null)
+              {
+                localObject1 = ((aube)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, 0);
+                if (((localObject1 != null) && (((EmoticonPackage)localObject1).isAPNG == 2)) || (this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isAPNG))
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("PicEmoticonInfo", 2, "getBigDrawable: APNG so loaded use apng image");
+                  }
+                  ((URLDrawable.URLDrawableOptions)localObject2).mUseApngImage = true;
+                  ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = false;
+                  ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "useAPNG";
+                  paramBoolean1 = true;
+                  ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.extensionWidth;
+                  ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.extensionHeight;
+                  localObject2 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject2);
+                  if (((URLDrawable)localObject2).getStatus() != 1)
+                  {
+                    ((URLDrawable)localObject2).setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+                    ((URLDrawable)localObject2).addHeader("my_uin", this.jdField_b_of_type_JavaLangString);
+                    ((URLDrawable)localObject2).addHeader("emo_type", String.valueOf(this.j));
+                    if (paramBoolean2)
+                    {
+                      ((URLDrawable)localObject2).addHeader("2g_use_gif", "true");
+                      if ((((URLDrawable)localObject2).getStatus() == 2) || (((URLDrawable)localObject2).getStatus() == 3)) {
+                        ((URLDrawable)localObject2).restartDownload();
+                      }
+                      return localObject2;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      catch (MalformedURLException paramString)
+      {
+        for (;;)
+        {
+          Object localObject2;
+          QLog.e("PicEmoticonInfo", 1, "market face getLoadingDrawable", paramString);
+          paramString = null;
+          continue;
+          ((URLDrawable)localObject2).addHeader("2g_use_gif", "false");
+          continue;
+          a(paramafrf, paramString, (EmoticonPackage)localObject1, paramBoolean1, (URLDrawable)localObject2);
+          continue;
+          paramBoolean1 = false;
+          continue;
+          Object localObject1 = null;
+          continue;
+          paramafrf = null;
+        }
+      }
+    }
+  }
+  
+  public URLDrawable a(String paramString, boolean paramBoolean1, boolean paramBoolean2, afrf paramafrf, int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon == null) {}
+    for (;;)
+    {
+      return null;
+      try
+      {
+        paramString = new URL("emotion_pic", paramString, a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon));
+        if (paramString == null) {
+          continue;
+        }
+        a();
+        localObject1 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        localObject1 = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+        if (paramafrf != null)
+        {
+          localObject1 = paramafrf.e.getDrawable();
+          paramafrf = BaseApplicationImpl.getApplication().waitAppRuntime(null);
+          if ((paramafrf instanceof QQAppInterface))
+          {
+            paramafrf = (QQAppInterface)paramafrf;
+            localObject2 = URLDrawable.URLDrawableOptions.obtain();
+            ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = ((Drawable)localObject1);
+            ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+            ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
+            if (paramafrf != null)
+            {
+              localObject1 = (aube)paramafrf.getManager(14);
+              if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null)
+              {
+                localObject1 = ((aube)localObject1).b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, 0);
+                if (((localObject1 != null) && (((EmoticonPackage)localObject1).isAPNG == 2)) || (this.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isAPNG))
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("PicEmoticonInfo", 2, "getBigDrawable: APNG so loaded use apng image");
+                  }
+                  ((URLDrawable.URLDrawableOptions)localObject2).mUseApngImage = true;
+                  ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = false;
+                  ((URLDrawable.URLDrawableOptions)localObject2).mMemoryCacheKeySuffix = "useAPNG";
+                  paramBoolean1 = true;
+                  ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.h;
+                  ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.i;
+                  localObject2 = URLDrawable.getDrawable(paramString, (URLDrawable.URLDrawableOptions)localObject2);
+                  if (((URLDrawable)localObject2).getStatus() != 1)
+                  {
+                    ((URLDrawable)localObject2).setTag(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+                    ((URLDrawable)localObject2).addHeader("my_uin", this.jdField_b_of_type_JavaLangString);
+                    ((URLDrawable)localObject2).addHeader("emo_type", String.valueOf(this.j));
+                    if (paramBoolean2)
+                    {
+                      ((URLDrawable)localObject2).addHeader("2g_use_gif", "true");
+                      if ((((URLDrawable)localObject2).getStatus() == 2) || (((URLDrawable)localObject2).getStatus() == 3)) {
+                        ((URLDrawable)localObject2).restartDownload();
+                      }
+                      return localObject2;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      catch (MalformedURLException paramString)
+      {
+        for (;;)
+        {
+          Object localObject2;
+          QLog.e("PicEmoticonInfo", 1, "market face getLoadingDrawable", paramString);
+          paramString = null;
+          continue;
+          ((URLDrawable)localObject2).addHeader("2g_use_gif", "false");
+          continue;
+          a(paramafrf, paramString, (EmoticonPackage)localObject1, paramBoolean1, (URLDrawable)localObject2);
+          continue;
+          paramBoolean1 = false;
+          continue;
+          Object localObject1 = null;
+          continue;
+          paramafrf = null;
+        }
+      }
+    }
   }
   
   public String a()
   {
-    apts localapts = a();
-    if (localapts == null) {
-      return null;
-    }
-    return a(localapts.jdField_b_of_type_JavaLangString + localapts.c);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a()
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
   {
-    this.jdField_a_of_type_Boolean = false;
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    Map localMap = apug.a(localBaseApplication);
-    a(1, "qurey strorages[" + localMap.size() + "]");
-    String str1 = localBaseApplication.getSharedPreferences("FMSETTING_59", 4).getString("DefaultRootPath", ajsd.aV);
-    a(1, "qurey defaultRootPath[" + str1 + "]");
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    Iterator localIterator = localMap.keySet().iterator();
-    if (localIterator.hasNext())
+    a(paramQQAppInterface, paramContext, paramSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerInfo);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo, boolean paramBoolean, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon == null)
     {
-      String str2 = (String)localIterator.next();
+      bdqr.a("emotionType", "emotionActionSend", "1", "", "", "", "", "", "", "");
+      QLog.e("PicEmoticonInfo", 1, "send isFroward emotion = null");
+    }
+    label226:
+    label362:
+    label380:
+    do
+    {
+      do
+      {
+        return;
+        paramEditText = (apnf)paramQQAppInterface.getManager(43);
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType != 2) || (!paramBoolean) || ((!(paramContext instanceof SplashActivity)) && (!(paramContext instanceof ChatActivity))) || (!atva.a())) {
+          break label226;
+        }
+        if (paramEditText.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, Boolean.valueOf(false))) {
+          break;
+        }
+        ChatActivityUtils.a(paramContext, 2131690020, 0);
+        paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
+      } while (paramQQAppInterface == null);
+      paramQQAppInterface.obtainMessage(10).sendToTarget();
+      paramQQAppInterface.obtainMessage(21).sendToTarget();
+      return;
+      paramInt = atuj.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, 0);
+      if (QLog.isColorLevel()) {
+        QLog.d("PicEmoticonInfo", 2, "forward,【maxInt:】" + paramInt);
+      }
+      paramInt = attl.a(paramInt);
+      ((aube)paramQQAppInterface.getManager(14)).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, new apto(this, paramQQAppInterface, paramInt, paramContext, paramSessionInfo));
+      return;
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4) && (paramBoolean) && (((paramContext instanceof SplashActivity)) || ((paramContext instanceof ChatActivity))))
+      {
+        SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("emoticon_panel_" + paramQQAppInterface.getCurrentAccountUin(), 0);
+        if (localSharedPreferences != null) {
+          localSharedPreferences.edit().putLong("sp_key_send_h5_magic_face_time", System.currentTimeMillis()).apply();
+        }
+        if (!paramEditText.b(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, true, true)) {
+          break label380;
+        }
+        if (!paramEditText.b()) {
+          break label362;
+        }
+        b(paramContext, paramQQAppInterface, paramSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+      }
       for (;;)
       {
-        Object localObject;
-        apts localapts;
-        try
-        {
-          localObject = ((File)localMap.get(str2)).getPath();
-          localapts = new apts(this, null);
-          localapts.jdField_a_of_type_Boolean = false;
-          if (!str2.equalsIgnoreCase("sdCard")) {
-            break label402;
-          }
-          localapts.jdField_a_of_type_JavaLangString = "SD卡";
-          localapts.jdField_b_of_type_JavaLangString = ((String)localObject);
-          localapts.c = "";
-          a(1, "rootPath[" + localapts.jdField_b_of_type_JavaLangString + "],bDefault[" + localapts.jdField_a_of_type_Boolean + "]");
-          localObject = new StatFs((String)localObject);
-          localapts.jdField_a_of_type_Long = (((StatFs)localObject).getAvailableBlocks() * ((StatFs)localObject).getBlockSize());
-          a(4, "defaultRootPath[" + str1 + "].equalsIgnoreCase(si.rootPath[" + localapts.jdField_b_of_type_JavaLangString + "])");
-          if ((localMap.size() == 1) || (str1.equalsIgnoreCase(localapts.jdField_b_of_type_JavaLangString)))
-          {
-            a(4, "defaultRootPath.equalsIgnoreCase(si.rootPath) = true");
-            localapts.jdField_a_of_type_Boolean = true;
-            localapts.a(localBaseApplication);
-          }
-          localapts.a();
-          this.jdField_a_of_type_JavaUtilMap.put(str2, localapts);
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-        break;
-        label402:
-        if (localException.equalsIgnoreCase("externalSdCard"))
-        {
-          localapts.jdField_a_of_type_JavaLangString = "外置SD卡";
-          localBaseApplication.getExternalFilesDir(null);
-          String str3 = BaseApplicationImpl.sApplication.getPackageName();
-          localapts.jdField_b_of_type_JavaLangString = ((String)localObject);
-          localapts.c = ("/Android/data/" + str3 + "/");
-        }
-      }
-    }
-  }
-  
-  public void a(long paramLong, List<String> arg3, Activity paramActivity, aptl paramaptl)
-  {
-    if (this.jdField_b_of_type_Boolean) {}
-    for (;;)
-    {
-      return;
-      long l;
-      synchronized (BaseApplicationImpl.getContext())
-      {
-        this.jdField_b_of_type_Boolean = true;
-        l = b();
-        if (!a())
-        {
-          paramaptl.a(12);
-          synchronized (BaseApplicationImpl.getContext())
-          {
-            this.jdField_b_of_type_Boolean = false;
-            return;
-          }
-        }
-      }
-      if (l < paramLong)
-      {
-        paramaptl.a(16);
-        synchronized (BaseApplicationImpl.getContext())
-        {
-          this.jdField_b_of_type_Boolean = false;
-          return;
-        }
-      }
-      a(1, "showChoosePath, callback[" + paramaptl + "]");
-      ??? = b();
-      apts localapts = c();
-      if (((apts)???).jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_JavaLangString = ajya.a(2131704671);
-      }
-      for (this.jdField_b_of_type_JavaLangString = (a().jdField_b_of_type_JavaLangString + a().c + "/Tencent/QQfile_recv/").replace("//", "/"); paramActivity != null; this.jdField_b_of_type_JavaLangString = (a().jdField_b_of_type_JavaLangString + a().c + "/Tencent/QQfile_recv/").replace("//", "/"))
-      {
-        label216:
-        paramActivity.runOnUiThread(new FMSettings.5(this, paramActivity, ???, paramaptl));
+        acex.a(paramQQAppInterface, paramContext, paramSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, paramInt);
         return;
-        if ((localapts == null) || (!localapts.jdField_a_of_type_Boolean)) {
-          break label216;
+        if (QLog.isColorLevel()) {
+          QLog.d("PicEmoticonInfo", 2, "forward not support h5magic");
         }
-        this.jdField_a_of_type_JavaLangString = ajya.a(2131704667);
       }
-    }
+      ChatActivityUtils.a(paramContext, 2131690020, 0);
+      paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.obtainMessage(10).sendToTarget();
+    paramQQAppInterface.obtainMessage(21).sendToTarget();
   }
   
-  public void a(String paramString)
+  public void a(boolean paramBoolean)
   {
-    try
-    {
-      if (this.jdField_a_of_type_JavaUtilMap != null)
-      {
-        if (this.jdField_a_of_type_JavaUtilMap.size() == 0) {
-          return;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        if (paramString != null) {
-          this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-        }
-        if ("externalSdCard".equalsIgnoreCase(paramString))
-        {
-          ((apts)this.jdField_a_of_type_JavaUtilMap.get("sdCard")).a(BaseApplicationImpl.getContext());
-          return;
-        }
-      }
-    }
-    catch (Exception paramString) {}
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_JavaUtilMap.size() == 1) {}
-    while (c() == null) {
-      return false;
-    }
-    return true;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public long b()
+  public int[] a()
   {
-    Object localObject = a();
-    if (localObject == null) {
-      return 0L;
-    }
-    localObject = ((apts)localObject).jdField_b_of_type_JavaLangString;
-    try
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString() != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString().isEmpty()))
     {
-      localObject = new StatFs((String)localObject);
-      long l = ((StatFs)localObject).getAvailableBlocks();
-      int i = ((StatFs)localObject).getBlockSize();
-      return i * l;
+      int[] arrayOfInt = new int[this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString().size()];
+      int k = 0;
+      while (k < this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString().size())
+      {
+        arrayOfInt[k] = ((Integer)this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString().get(k)).intValue();
+        k += 1;
+      }
+      return arrayOfInt;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-    return 2147483647L;
+    return null;
+  }
+  
+  public int b()
+  {
+    return 0;
   }
   
   public String b()
   {
-    return ajsd.bl;
+    return "";
   }
   
-  public void b()
+  public boolean b()
   {
-    try
+    return (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isSound);
+  }
+  
+  public int c()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.backColor != null)) {}
+    int m;
+    for (int k = 1;; k = 0)
     {
-      a(1, "FMSettings free");
-      Field localField = this.jdField_a_of_type_Bbgu.getClass().getSuperclass().getDeclaredField("mShowing");
-      localField.setAccessible(true);
-      localField.set(this.jdField_a_of_type_Bbgu, Boolean.valueOf(true));
-      this.jdField_a_of_type_Bbgu.dismiss();
-      return;
+      m = jdField_a_of_type_Int;
+      if (k == 0) {
+        return m;
+      }
+      try
+      {
+        k = Color.parseColor(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.backColor);
+        return k;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("PicEmoticonInfo", 2, localException, new Object[0]);
+      }
     }
-    catch (Exception localException) {}
+    return m;
   }
   
-  public String c()
+  public boolean c()
   {
-    return ajsd.bn;
+    return (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString() != null) && (!this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.parseSoundPrintString().isEmpty());
   }
   
-  public String d()
+  public int d()
   {
-    return ajsd.bm;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.volumeColor != null)) {}
+    int m;
+    for (int k = 1;; k = 0)
+    {
+      m = jdField_b_of_type_Int;
+      if (k == 0) {
+        return m;
+      }
+      try
+      {
+        k = Color.parseColor(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.volumeColor);
+        return k;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("PicEmoticonInfo", 2, localException, new Object[0]);
+      }
+    }
+    return m;
+  }
+  
+  public boolean d()
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon == null) || (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 1))
+    {
+      bool1 = false;
+      return bool1;
+    }
+    Object localObject = apro.s.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+    if (localObject != null)
+    {
+      localObject = new File((String)localObject);
+      if ((((File)localObject).exists()) && (((File)localObject).isFile())) {
+        bool1 = true;
+      }
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.isSound) && (bool1))
+      {
+        localObject = apro.o.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+        if (localObject == null) {
+          break label165;
+        }
+        localObject = new File((String)localObject);
+        if (((File)localObject).exists())
+        {
+          bool1 = bool2;
+          if (((File)localObject).isFile()) {
+            break;
+          }
+        }
+        return false;
+        bool1 = false;
+        continue;
+      }
+      return bool1;
+      label165:
+      return false;
+      bool1 = false;
+    }
+  }
+  
+  public boolean e()
+  {
+    boolean bool = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon == null) {
+      return false;
+    }
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 1)
+    {
+      localObject = apro.p.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+      label52:
+      if (localObject == null) {
+        break label112;
+      }
+      localObject = new File((String)localObject);
+      if ((!((File)localObject).exists()) || (!((File)localObject).isFile())) {
+        break label114;
+      }
+    }
+    for (;;)
+    {
+      return bool;
+      localObject = apro.q.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+      break label52;
+      label112:
+      break;
+      label114:
+      bool = false;
+    }
+  }
+  
+  public String toString()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon != null) {
+      return String.format("PicEmoticonInfo, name %s, eId %s, epId %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.name, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId });
+    }
+    return "PicEmoticonInfo TYPE_BIG_EMOTICON and no emoticon";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aptm
  * JD-Core Version:    0.7.0.1
  */

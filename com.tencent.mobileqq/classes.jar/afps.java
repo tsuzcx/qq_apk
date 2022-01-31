@@ -1,22 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
 
-class afps
-  extends akil
+public class afps
+  implements View.OnClickListener
 {
-  afps(afpm paramafpm) {}
+  public afps(LightVideoItemBuilder paramLightVideoItemBuilder) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public void onClick(View paramView)
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
-    if (localBitmap != null) {
-      afpm.a(this.a, paramString, localBitmap);
-    }
+    this.a.onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afps
  * JD-Core Version:    0.7.0.1
  */

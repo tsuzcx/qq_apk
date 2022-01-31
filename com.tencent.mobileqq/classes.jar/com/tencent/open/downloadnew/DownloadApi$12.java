@@ -1,16 +1,16 @@
 package com.tencent.open.downloadnew;
 
-import bdld;
-import bdle;
+import bfka;
+import bfkb;
 
 public final class DownloadApi$12
   implements Runnable
 {
-  public DownloadApi$12(bdld parambdld) {}
+  public DownloadApi$12(bfka parambfka) {}
   
   public void run()
   {
-    bdle.a().b(this.a);
+    bfkb.a().b(this.a);
   }
 }
 

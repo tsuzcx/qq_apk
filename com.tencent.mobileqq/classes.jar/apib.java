@@ -1,88 +1,96 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferHostInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionBase;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.manager.Manager;
 
-public class apib
+public abstract class apib<T extends CustomEmotionBase>
+  implements Manager
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final List<ExcitingTransferHostInfo> jdField_a_of_type_JavaUtilList;
-  private final boolean jdField_a_of_type_Boolean;
-  private final byte[] jdField_a_of_type_ArrayOfByte;
-  private final List<ExcitingTransferHostInfo> b;
+  protected QQAppInterface a;
+  protected String a;
+  protected CopyOnWriteArrayList<WeakReference<apkn>> a;
+  protected AtomicBoolean a;
   
-  public apib(List<ExcitingTransferHostInfo> paramList1, List<ExcitingTransferHostInfo> paramList2, boolean paramBoolean, String paramString, byte[] paramArrayOfByte)
+  public apib(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList1;
-    this.b = paramList2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
   }
   
-  public String a()
+  protected abstract int a();
+  
+  protected abstract ally<T> a();
+  
+  protected abstract aphz<T> a();
+  
+  public void a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
   }
   
-  public List<ExcitingTransferHostInfo> a()
+  public void a(apkn paramapkn)
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      if (((WeakReference)localIterator.next()).get() == paramapkn) {
+        return;
+      }
+    }
+    paramapkn = new WeakReference(paramapkn);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramapkn);
   }
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangString == null))
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    ally localally;
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("ExcitingTransfer.SvrInfo<FileAssistant>", 2, "support https but mstrSSLName is null");
+      return;
+      localally = a();
+    } while (localally == null);
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomEmotionRoamingManagerBase", 2, "------------start syncRoaming----------");
+    }
+    localally.a();
+  }
+  
+  public void b(apkn paramapkn)
+  {
+    if (paramapkn == null) {}
+    WeakReference localWeakReference;
+    do
+    {
+      return;
+      Iterator localIterator;
+      while (!localIterator.hasNext()) {
+        localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
       }
-      return false;
-    }
-    return true;
+      localWeakReference = (WeakReference)localIterator.next();
+    } while (localWeakReference.get() != paramapkn);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localWeakReference);
   }
   
-  public byte[] a()
+  public void onDestroy()
   {
-    return this.jdField_a_of_type_ArrayOfByte;
-  }
-  
-  public List<ExcitingTransferHostInfo> b()
-  {
-    return this.b;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    ExcitingTransferHostInfo localExcitingTransferHostInfo;
-    for (Object localObject = "IPV4:"; localIterator.hasNext(); localObject = (String)localObject + "[" + localExcitingTransferHostInfo.mstrIp + ":" + localExcitingTransferHostInfo.mport + "] ") {
-      localExcitingTransferHostInfo = (ExcitingTransferHostInfo)localIterator.next();
-    }
-    localObject = (String)localObject + " -- IPV6:";
-    localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      localExcitingTransferHostInfo = (ExcitingTransferHostInfo)localIterator.next();
-      localObject = (String)localObject + "[" + localExcitingTransferHostInfo.mstrIp + ":" + localExcitingTransferHostInfo.mport + "] ";
-    }
-    localObject = new StringBuilder().append((String)localObject).append(" strSSLCName:").append(this.jdField_a_of_type_JavaLangString).append(" bSupportHttps:").append(this.jdField_a_of_type_Boolean).append(" busniEx len:");
-    if (this.jdField_a_of_type_ArrayOfByte != null) {}
-    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
-      return i;
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apib
  * JD-Core Version:    0.7.0.1
  */

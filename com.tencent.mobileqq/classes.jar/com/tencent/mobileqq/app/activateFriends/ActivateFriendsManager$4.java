@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app.activateFriends;
 
-import akjv;
-import akjy;
+import ambl;
+import ambo;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ActivateFriendsManager$4
   implements Runnable
 {
-  public ActivateFriendsManager$4(akjv paramakjv) {}
+  public ActivateFriendsManager$4(ambl paramambl) {}
   
   public void run()
   {
-    akjv.a(this.this$0).notifyObservers(akjy.class, 115, true, null);
+    ambl.a(this.this$0).notifyObservers(ambo.class, 115, true, null);
   }
 }
 

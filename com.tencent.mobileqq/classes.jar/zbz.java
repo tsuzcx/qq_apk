@@ -1,39 +1,60 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.Rect;
-import com.tencent.gdtad.views.videoimax.GdtVideoImaxEnterImageView;
-import com.tencent.gdtad.views.videoimax.TransitionContext;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3;
 
-public class zbz
-  implements ValueAnimator.AnimatorUpdateListener
+class zbz
 {
-  public zbz(TransitionContext paramTransitionContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, Rect paramRect) {}
+  private WebSoService.WebSoState.WebSo3 jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private void a(zbx paramzbx, String paramString, WebSoService.WebSoState.WebSo3 paramWebSo3)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    int j = this.jdField_a_of_type_Int;
-    int k = Math.round((0 - this.jdField_a_of_type_Int) * f1);
-    int m = this.b;
-    int n = Math.round((0 - this.b) * f1);
-    int i1 = this.c;
-    int i2 = Math.round((this.d - this.c) * f1);
-    if (this.e < TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).getHeight()) {}
-    for (int i = TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).getHeight();; i = this.e)
+    if ((paramWebSo3 != null) && (!TextUtils.isEmpty(paramString))) {
+      begt.a("callJs");
+    }
+    try
     {
-      int i3 = this.f;
-      i = Math.round((i - this.f) * f1);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(k + j, n + m, i2 + i1, i + i3);
-      TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).setClipBoundsCompact(this.jdField_a_of_type_AndroidGraphicsRect);
-      TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).invalidate();
-      yxp.a("TransitionContext", "onAnimationUpdate() mPreviewView.getHeight = [" + TransitionContext.a(this.jdField_a_of_type_ComTencentGdtadViewsVideoimaxTransitionContext).getHeight() + "]");
+      paramzbx.callJs(paramString, new String[] { this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3.a() });
+      this.jdField_a_of_type_JavaLangString = null;
       return;
     }
+    catch (Exception paramzbx)
+    {
+      for (;;)
+      {
+        paramzbx.printStackTrace();
+      }
+    }
+  }
+  
+  public WebSoService.WebSoState.WebSo3 a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3;
+  }
+  
+  public void a()
+  {
+    begt.a("clearJsCallback");
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3 = null;
+  }
+  
+  public void a(zbx paramzbx, WebSoService.WebSoState.WebSo3 paramWebSo3)
+  {
+    begt.a("setUpWebso3");
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3 = paramWebSo3;
+    a(paramzbx, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3);
+  }
+  
+  public void a(zbx paramzbx, String paramString)
+  {
+    begt.a("registerGetData");
+    this.jdField_a_of_type_JavaLangString = paramString;
+    a(paramzbx, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState$WebSo3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zbz
  * JD-Core Version:    0.7.0.1
  */

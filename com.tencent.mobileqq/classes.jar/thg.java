@@ -1,61 +1,68 @@
-import android.content.Context;
-import android.text.TextUtils;
-import android.view.ViewGroup;
-import java.util.List;
+import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class thg
-  extends tbd<tff, tbg<tff>>
+  implements INetInfoHandler
 {
-  private int a;
+  private WSPlayerManager a;
   
-  public thg(Context paramContext)
+  public thg(WSPlayerManager paramWSPlayerManager)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Int = -1;
+    this.a = paramWSPlayerManager;
   }
   
-  public int a(int paramInt)
+  private void a()
   {
-    tff localtff = (tff)a(paramInt);
-    if (localtff != null) {
-      return localtff.jdField_a_of_type_Int;
-    }
-    return 0;
-  }
-  
-  public int a(String paramString)
-  {
-    List localList = a();
-    int i = 0;
-    while (i < localList.size())
+    if ((this.a != null) && (this.a.a() != null))
     {
-      if (TextUtils.equals(((tff)localList.get(i)).jdField_a_of_type_JavaLangString, paramString)) {
-        return b() + i;
+      thl localthl = this.a.a();
+      if ((!this.a.f()) && (!this.a.e())) {
+        break label55;
       }
-      i += 1;
+      this.a.b(localthl, false);
     }
-    return b();
+    label55:
+    while (!this.a.g()) {
+      return;
+    }
+    this.a.a();
   }
   
-  public void a(tbg<tff> paramtbg)
+  public void onNetMobile2None()
   {
-    super.onViewDetachedFromWindow(paramtbg);
-    paramtbg.a();
+    tlo.b("WSPlayerForNetInfoHandler", "onNetMobile2None");
   }
   
-  public tbg b(ViewGroup paramViewGroup, int paramInt)
+  public void onNetMobile2Wifi(String paramString)
   {
-    return tit.a(paramViewGroup, paramInt);
+    tlo.b("WSPlayerForNetInfoHandler", "onNetMobile2Wifi s:" + paramString);
   }
   
-  public void b(tbg paramtbg, int paramInt)
+  public void onNetNone2Mobile(String paramString)
   {
-    paramtbg.a((tff)a(paramInt));
+    tlo.b("WSPlayerForNetInfoHandler", "onNetNone2Mobile s:" + paramString);
+    a();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    tlo.b("WSPlayerForNetInfoHandler", "onNetNone2Wifi s:" + paramString);
+    a();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    tlo.b("WSPlayerForNetInfoHandler", "onNetWifi2Mobile s:" + paramString);
+  }
+  
+  public void onNetWifi2None()
+  {
+    tlo.b("WSPlayerForNetInfoHandler", "onNetWifi2None");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,20 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.activity.phone.SettingActivity2.3;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agku
-  extends aumg
+class agku
+  implements View.OnClickListener
 {
-  public agku(SettingActivity2.3 param3) {}
+  agku(agkt paramagkt) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.this$0.c != null)
-    {
-      this.a.this$0.app.unRegistObserver(this.a.this$0.c);
-      this.a.this$0.c = null;
-    }
-    this.a.this$0.b();
-    if (paramBoolean)
-    {
-      if (this.a.this$0.c != null)
-      {
-        this.a.this$0.app.unRegistObserver(this.a.this$0.c);
-        this.a.this$0.c = null;
-      }
-      this.a.this$0.a();
-      this.a.this$0.setResult(-1);
-    }
+    agbu.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, false, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agku
  * JD-Core Version:    0.7.0.1
  */

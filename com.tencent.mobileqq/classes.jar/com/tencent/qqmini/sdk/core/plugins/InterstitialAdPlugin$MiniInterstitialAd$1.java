@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
-import behm;
-import bejc;
-import betc;
+import bghk;
+import bgjd;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsInterstitialAdView;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.lang.ref.WeakReference;
 
 class InterstitialAdPlugin$MiniInterstitialAd$1
@@ -24,18 +24,18 @@ class InterstitialAdPlugin$MiniInterstitialAd$1
           if ((localActivity != null) && (InterstitialAdPlugin.MiniInterstitialAd.access$100(this.this$1).show(localActivity)))
           {
             InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$1, true, "operateInterstitialAd", this.val$compId, 0, this.val$callbackId);
-            bejc.a().a(new InterstitialAdPlugin.MiniInterstitialAd.1.1(this));
-            behm.b(true);
+            bgjd.a().a(new InterstitialAdPlugin.MiniInterstitialAd.1.1(this));
+            bghk.b(true);
             return;
           }
-          betc.d("SDK_MiniInterstitialAd", "activity is null");
+          QMLog.e("SDK_MiniInterstitialAd", "activity is null");
           InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$1, false, "operateInterstitialAd", this.val$compId, 1003, this.val$callbackId);
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        betc.d("SDK_MiniInterstitialAd", "adInterstitial show Exception:", localThrowable);
+        QMLog.e("SDK_MiniInterstitialAd", "adInterstitial show Exception:", localThrowable);
         InterstitialAdPlugin.MiniInterstitialAd.access$200(this.this$1, false, "operateInterstitialAd", this.val$compId, 1003, this.val$callbackId);
         return;
       }
@@ -45,7 +45,7 @@ class InterstitialAdPlugin$MiniInterstitialAd$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.InterstitialAdPlugin.MiniInterstitialAd.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,57 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class aaqc
-  implements Animation.AnimationListener
+  implements INetInfoHandler
 {
-  public aaqc(ChatFragment paramChatFragment) {}
+  public aaqc(GdtVideoCommonView paramGdtVideoCommonView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onNetMobile2None()
   {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationEnd");
-    this.a.b(1);
+    aanp.b("GdtVideoCommonView", "INetInfoHandler onNetMobile2None()");
+    GdtVideoCommonView.a(this.a, 0);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation)
+  public void onNetMobile2Wifi(String paramString)
   {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationRepeat");
+    aanp.b("GdtVideoCommonView", "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
+    GdtVideoCommonView.a(this.a, 1);
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onNetNone2Mobile(String paramString)
   {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationStart");
+    aanp.b("GdtVideoCommonView", "INetInfoHandler onNetNone2Mobile() apn=" + paramString + " onNetWifi2None " + GdtVideoCommonView.c(this.a));
+    GdtVideoCommonView.a(this.a, 2);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    aanp.b("GdtVideoCommonView", "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
+    GdtVideoCommonView.a(this.a, 1);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    aanp.b("GdtVideoCommonView", "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
+    GdtVideoCommonView.a(this.a, 2);
+    if ((this.a.a) && (this.a.a()))
+    {
+      GdtVideoCommonView.d(this.a);
+      GdtVideoCommonView.a(this.a).post(GdtVideoCommonView.a(this.a));
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    aanp.b("GdtVideoCommonView", "INetInfoHandler onNetWifi2None()");
+    GdtVideoCommonView.b(this.a, true);
+    GdtVideoCommonView.a(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqc
  * JD-Core Version:    0.7.0.1
  */

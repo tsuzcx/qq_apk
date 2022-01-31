@@ -1,40 +1,65 @@
+import android.content.Context;
+import com.tencent.mobileqq.vas.quickupdate.UpdateCallbackSelector.1;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+
 public class bdsj
 {
-  private static bdsk a = new bdsk();
+  private static bdrz jdField_a_of_type_Bdrz = new bdsa();
+  private static final HashMap<Long, bdrz> jdField_a_of_type_JavaUtilHashMap = new UpdateCallbackSelector.1();
   
-  public static void a(bdsk parambdsk)
+  public static bdrz a(long paramLong)
   {
-    if (parambdsk != null)
+    bdrz localbdrz2 = (bdrz)jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+    bdrz localbdrz1 = localbdrz2;
+    if (localbdrz2 == null) {
+      localbdrz1 = jdField_a_of_type_Bdrz;
+    }
+    return localbdrz1;
+  }
+  
+  public static void a(Context paramContext)
+  {
+    Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    while (localIterator.hasNext()) {
+      ((bdrz)localIterator.next()).cleanCache(paramContext);
+    }
+  }
+  
+  public static void a(bdrz parambdrz)
+  {
+    try
     {
-      a = parambdsk;
+      jdField_a_of_type_Bdrz = parambdrz;
       return;
     }
-    a = new bdsk();
+    finally
+    {
+      parambdrz = finally;
+      throw parambdrz;
+    }
   }
   
-  public static void a(String paramString1, String paramString2)
+  public static void b(bdrz parambdrz)
   {
-    a.a(paramString1, paramString2);
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    a.a(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    a.b(paramString1, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    a.c(paramString1, paramString2);
+    try
+    {
+      if (jdField_a_of_type_Bdrz == parambdrz) {
+        jdField_a_of_type_Bdrz = new bdsa();
+      }
+      return;
+    }
+    finally
+    {
+      parambdrz = finally;
+      throw parambdrz;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdsj
  * JD-Core Version:    0.7.0.1
  */

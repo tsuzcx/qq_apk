@@ -1,39 +1,20 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class acri
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  public acri(ActivateFriendView paramActivateFriendView) {}
+  public acri(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    paramView = (ActivateFriendViewItem)paramView;
-    if (paramView.a)
-    {
-      ActivateFriendView.a(this.a);
-      if (paramView.a) {
-        break label75;
-      }
-    }
-    label75:
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      if (ActivateFriendView.a(this.a) != null) {
-        ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
-      }
-      return;
-      ActivateFriendView.b(this.a);
-      break;
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acri
  * JD-Core Version:    0.7.0.1
  */

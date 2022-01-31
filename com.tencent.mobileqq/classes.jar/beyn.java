@@ -1,18 +1,25 @@
-import com.tencent.qqmini.sdk.monitor.ui.MiniAppMonitorInfoView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.open.agent.BindGroupActivity.4.1;
 
 public class beyn
-  implements beye
+  implements DialogInterface.OnClickListener
 {
-  private beyn(MiniAppMonitorInfoView paramMiniAppMonitorInfoView) {}
+  public beyn(BindGroupActivity.4.1 param1) {}
   
-  public void a(long paramLong, double paramDouble)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(paramDouble);
+    if (paramInt == 1)
+    {
+      this.a.a.a.a.cancel();
+      this.a.a.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.intervideo.nowproxy.proxyinner.channel;
 
+import abpr;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import zyu;
 
 public class FromService
   implements Parcelable
 {
-  public static final Parcelable.Creator<FromService> CREATOR = new zyu();
+  public static final Parcelable.Creator<FromService> CREATOR = new abpr();
   public int a;
   public Bundle a;
   public int b;
@@ -30,7 +30,7 @@ public class FromService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.proxyinner.channel.FromService
  * JD-Core Version:    0.7.0.1
  */

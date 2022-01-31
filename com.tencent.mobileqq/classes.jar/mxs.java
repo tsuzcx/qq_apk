@@ -1,66 +1,27 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RspBody;
-import tencent.im.oidb.cmd0x791.oidb_0x791.SetRedDotRes;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.widget.RatingBar;
 
-class mxs
-  implements BusinessObserver
+public class mxs
+  implements View.OnClickListener
 {
-  mxs(mxn parammxn) {}
+  public mxs(RatingBar paramRatingBar) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      try
-      {
-        Object localObject = paramBundle.getByteArray("data");
-        paramBundle = new oidb_sso.OIDBSSOPkg();
-        paramBundle.mergeFrom((byte[])localObject);
-        if ((paramBundle != null) && (paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()))
-        {
-          if (paramBundle.bytes_bodybuffer.get() == null) {
-            return;
-          }
-          localObject = new oidb_0x791.RspBody();
-          ((oidb_0x791.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
-          localObject = (oidb_0x791.SetRedDotRes)((oidb_0x791.RspBody)localObject).msg_set_reddot_res.get();
-          if (localObject != null)
-          {
-            paramBundle = "";
-            localObject = ((oidb_0x791.SetRedDotRes)localObject).rpt_uint64_failed_uin.get().iterator();
-            while (((Iterator)localObject).hasNext())
-            {
-              long l = ((Long)((Iterator)localObject).next()).longValue();
-              paramBundle = paramBundle + String.valueOf(l) + ",";
-            }
-            if ((!TextUtils.isEmpty(paramBundle)) && (QLog.isColorLevel()))
-            {
-              QLog.d("SplashActivityQ.qqstory.redPoint", 2, "setRedDotInfo failed result is:" + paramBundle);
-              return;
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle.printStackTrace();
+    if (RatingBar.a(this.a))
+    {
+      RatingBar.a(this.a, this.a.indexOfChild(paramView) + 1);
+      this.a.setStar(RatingBar.a(this.a), true);
+      if (RatingBar.a(this.a) != null) {
+        RatingBar.a(this.a).a(RatingBar.a(this.a), RatingBar.a(this.a));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mxs
  * JD-Core Version:    0.7.0.1
  */

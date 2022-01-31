@@ -1,19 +1,23 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView.OnItemClickListener;
 
 class auqp
-  extends bfmx
+  implements View.OnClickListener
 {
-  auqp(auqk paramauqk) {}
+  auqp(auqn paramauqn) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.setVisibility(0);
+    auqr localauqr = (auqr)paramView.getTag();
+    if (this.a.a != null) {
+      this.a.a.onItemClick(null, paramView, localauqr.a, localauqr.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auqp
  * JD-Core Version:    0.7.0.1
  */

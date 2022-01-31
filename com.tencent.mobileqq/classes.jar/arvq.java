@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class arvq
-  implements DialogInterface.OnClickListener
+class arvq
+  implements View.OnClickListener
 {
-  public arvq(LocationDialogUtil.11 param11) {}
+  arvq(arvo paramarvo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.D();
+    arvo.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arvq
  * JD-Core Version:    0.7.0.1
  */

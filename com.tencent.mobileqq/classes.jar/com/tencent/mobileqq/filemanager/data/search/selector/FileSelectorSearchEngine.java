@@ -4,19 +4,19 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import aoze;
-import apga;
-import apgf;
-import apgh;
-import aptm;
-import apty;
-import awii;
-import awij;
-import awiv;
-import awuu;
-import awuv;
-import awvi;
-import awwa;
+import aqsc;
+import aqyy;
+import aqzd;
+import aqzf;
+import armo;
+import arna;
+import aydi;
+import aydj;
+import aydv;
+import aypx;
+import aypy;
+import ayql;
+import ayrd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -29,7 +29,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class FileSelectorSearchEngine
-  implements awiv, awuu<apga>
+  implements aydv, aypx<aqyy>
 {
   private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
@@ -46,43 +46,43 @@ public class FileSelectorSearchEngine
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  private List<apga> b(awvi paramawvi)
+  private List<aqyy> b(ayql paramayql)
   {
-    Map localMap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramawvi.a);
+    Map localMap = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramayql.a);
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = localMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      apgh localapgh = new apgh(paramawvi.a, this.jdField_a_of_type_Int);
+      aqzf localaqzf = new aqzf(paramayql.a, this.jdField_a_of_type_Int);
       localObject = (List)localMap.get(localObject);
-      localapgh.a(this.jdField_a_of_type_AndroidOsBundle);
-      localapgh.a((List)localObject);
-      if (localapgh.d() > 0) {
-        localArrayList.add(localapgh);
+      localaqzf.a(this.jdField_a_of_type_AndroidOsBundle);
+      localaqzf.a((List)localObject);
+      if (localaqzf.d() > 0) {
+        localArrayList.add(localaqzf);
       }
     }
     return localArrayList;
   }
   
-  private List<apga> c(awvi paramawvi)
+  private List<aqyy> c(ayql paramayql)
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject2 = new HashMap();
-    Object localObject1 = aptm.a().b();
+    Object localObject1 = armo.a().b();
     if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-      apty.a(true, (String)localObject1, "", ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject2, null);
+      arna.a(true, (String)localObject1, "", ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject2, null);
     }
     if (a())
     {
-      localObject1 = apty.a(this.jdField_a_of_type_AndroidContentContext, null);
+      localObject1 = arna.a(this.jdField_a_of_type_AndroidContentContext, null);
       if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
         ((HashMap)localObject2).put("installedApk", localObject1);
       }
     }
-    localObject1 = aptm.a().a();
+    localObject1 = armo.a().a();
     if (localObject1 != null) {
-      apty.a(true, (String)localObject1, "", ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject2, null);
+      arna.a(true, (String)localObject1, "", ".swf|.mov|.mp4|.3gp|.avi|.rmvb|.wmf|.mpg|.rm|.asf|.mpeg|.mkv|.wmv|.flv|.f4v|.webm|.mod|.mpe|.fla|.m4r|.m4u|.m4v|.vob|.mp3|.wav|.m4a|.wave|.midi|.wma|.ogg|.ape|.acc|.aac|.aiff|.mid|.xmf|.rtttl|.flac|.amr|.mp2|.m3u|.m4b|.m4p.mpga|.jpg|.bmp|.jpeg|.gif|.png|.ico|", (HashMap)localObject2, null);
     }
     localObject1 = new HashMap();
     if ((localObject2 != null) && (!((HashMap)localObject2).isEmpty()))
@@ -104,14 +104,14 @@ public class FileSelectorSearchEngine
         {
           localObject3 = (FileInfo)((Iterator)localObject2).next();
           localObject4 = ((FileInfo)localObject3).d();
-          if (((String)localObject4).indexOf(paramawvi.a) >= 0)
+          if (((String)localObject4).indexOf(paramayql.a) >= 0)
           {
             if (!((Map)localObject1).containsKey(localObject4)) {
               ((Map)localObject1).put(localObject4, new ArrayList());
             }
             ((List)((Map)localObject1).get(localObject4)).add(localObject3);
           }
-          else if (awwa.b(paramawvi.a, (String)localObject4, awii.g) > -9223372036854775808L)
+          else if (ayrd.b(paramayql.a, (String)localObject4, aydi.g) > -9223372036854775808L)
           {
             if (!((Map)localObject1).containsKey(localObject4)) {
               ((Map)localObject1).put(localObject4, new ArrayList());
@@ -126,9 +126,9 @@ public class FileSelectorSearchEngine
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (String)((Iterator)localObject2).next();
-          localObject4 = new apgf(paramawvi.a, this.jdField_a_of_type_Int);
-          ((apgf)localObject4).a((List)((Map)localObject1).get(localObject3));
-          ((apgf)localObject4).a(this.jdField_a_of_type_AndroidOsBundle);
+          localObject4 = new aqzd(paramayql.a, this.jdField_a_of_type_Int);
+          ((aqzd)localObject4).a((List)((Map)localObject1).get(localObject3));
+          ((aqzd)localObject4).a(this.jdField_a_of_type_AndroidOsBundle);
           localArrayList.add(localObject4);
         }
       }
@@ -136,50 +136,50 @@ public class FileSelectorSearchEngine
     return localArrayList;
   }
   
-  private List<apga> d(awvi paramawvi)
+  private List<aqyy> d(ayql paramayql)
   {
     return new ArrayList();
   }
   
-  public List<apga> a(awvi paramawvi)
+  public List<aqyy> a(ayql paramayql)
   {
     List localList = null;
     if (this.jdField_a_of_type_Int == 16) {
-      localList = b(paramawvi);
+      localList = b(paramayql);
     }
     for (;;)
     {
-      paramawvi = localList;
+      paramayql = localList;
       if (localList == null) {
-        paramawvi = new ArrayList();
+        paramayql = new ArrayList();
       }
-      return paramawvi;
+      return paramayql;
       if (this.jdField_a_of_type_Int == 17) {
-        localList = c(paramawvi);
+        localList = c(paramayql);
       } else if (this.jdField_a_of_type_Int == 18) {
-        localList = d(paramawvi);
+        localList = d(paramayql);
       }
     }
   }
   
   public void a() {}
   
-  public void a(int paramInt, List<? extends awij> paramList) {}
+  public void a(int paramInt, List<? extends aydj> paramList) {}
   
   public void a(Bundle paramBundle)
   {
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
-  public void a(awvi paramawvi, awuv<apga> paramawuv)
+  public void a(ayql paramayql, aypy<aqyy> paramaypy)
   {
-    if ((paramawvi == null) || (paramawvi.a == null) || (TextUtils.isEmpty(paramawvi.a.trim()))) {
+    if ((paramayql == null) || (paramayql.a == null) || (TextUtils.isEmpty(paramayql.a.trim()))) {
       return;
     }
     synchronized (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable.jdField_a_of_type_Awvi = paramawvi;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable.jdField_a_of_type_Awuv = paramawuv;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable.jdField_a_of_type_Ayql = paramayql;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable.jdField_a_of_type_Aypy = paramaypy;
       ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable, 64);
       ThreadManager.executeOnFileThread(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable);
       return;
@@ -200,8 +200,8 @@ public class FileSelectorSearchEngine
   {
     synchronized (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable.jdField_a_of_type_Awvi = null;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable.jdField_a_of_type_Awuv = null;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable.jdField_a_of_type_Ayql = null;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable.jdField_a_of_type_Aypy = null;
       ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchSelectorFileSelectorSearchEngine$SearchRunnable, 64);
       return;
     }
@@ -215,7 +215,7 @@ public class FileSelectorSearchEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchEngine
  * JD-Core Version:    0.7.0.1
  */

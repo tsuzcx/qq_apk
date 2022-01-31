@@ -14,20 +14,20 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout.LayoutParams;
-import bekj;
-import bele;
-import belx;
-import bely;
-import betc;
-import bfcd;
-import bfcw;
-import bfcx;
-import bfcy;
-import bfcz;
-import bfgh;
-import bfgl;
+import bgid;
+import bgkq;
+import bgln;
+import bglo;
+import bhbq;
+import bhcm;
+import bhcn;
+import bhco;
+import bhcp;
+import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
 import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
+import com.tencent.qqmini.sdk.utils.ColorUtils;
+import com.tencent.qqmini.sdk.utils.DisplayUtil;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONException;
@@ -35,15 +35,15 @@ import org.json.JSONObject;
 
 public class MiniAppTextArea
   extends EditText
-  implements bfcd
+  implements bhbq
 {
   private static int jdField_e_of_type_Int = 45;
   private int jdField_a_of_type_Int = -1;
   private ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener;
-  private bfcz jdField_a_of_type_Bfcz;
+  private bhcp jdField_a_of_type_Bhcp;
   private NativeViewContainer jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer;
   private String jdField_a_of_type_JavaLangString;
-  private Map<Integer, belx> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private Map<Integer, bgln> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
   private boolean jdField_b_of_type_Boolean;
@@ -58,7 +58,7 @@ public class MiniAppTextArea
   private int h;
   private int i;
   private int j;
-  private int k = bfgl.a(getContext(), 50.0F);
+  private int k = DisplayUtil.dip2px(getContext(), 50.0F);
   private int l;
   private int m;
   private int n;
@@ -67,8 +67,8 @@ public class MiniAppTextArea
   {
     super(paramContext);
     setPadding(0, 0, 0, 0);
-    this.jdField_a_of_type_Bfcz = new bfcz(this);
-    this.jdField_c_of_type_Int = bfgl.b(getContext());
+    this.jdField_a_of_type_Bhcp = new bhcp(this);
+    this.jdField_c_of_type_Int = DisplayUtil.getRealHeight(getContext());
     this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer = paramNativeViewContainer;
     e();
     f();
@@ -119,7 +119,7 @@ public class MiniAppTextArea
     }
     catch (Exception localException)
     {
-      betc.d("MiniAppTextArea", "hideCurrentInput error", localException);
+      QMLog.e("MiniAppTextArea", "hideCurrentInput error", localException);
     }
   }
   
@@ -150,9 +150,9 @@ public class MiniAppTextArea
   
   private void b(JSONObject paramJSONObject)
   {
-    this.j = ((int)(bfgl.a(getContext()) * paramJSONObject.optInt("marginBottom") + 0.5F));
-    int i3 = (int)Math.max(bfgl.a(getContext()) * paramJSONObject.optInt("width") + 0.5F, 0.0F);
-    this.l = ((int)Math.max(bfgl.a(getContext()) * paramJSONObject.optInt("height") + 0.5F, 0.0F));
+    this.j = ((int)(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("marginBottom") + 0.5F));
+    int i3 = (int)Math.max(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("width") + 0.5F, 0.0F);
+    this.l = ((int)Math.max(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("height") + 0.5F, 0.0F));
     int i2 = this.l;
     int i1 = i2;
     if (this.l == 0)
@@ -162,10 +162,10 @@ public class MiniAppTextArea
         i1 = -2;
       }
     }
-    i2 = (int)(bfgl.a(getContext()) * paramJSONObject.optInt("left") + 0.5F);
-    int i4 = (int)(bfgl.a(getContext()) * paramJSONObject.optInt("top") + 0.5F);
-    this.m = ((int)(bfgl.a(getContext()) * paramJSONObject.optInt("maxHeight") + 0.5F));
-    this.n = ((int)(bfgl.a(getContext()) * paramJSONObject.optInt("minHeight") + 0.5F));
+    i2 = (int)(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("left") + 0.5F);
+    int i4 = (int)(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("top") + 0.5F);
+    this.m = ((int)(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("maxHeight") + 0.5F));
+    this.n = ((int)(DisplayUtil.getDensity(getContext()) * paramJSONObject.optInt("minHeight") + 0.5F));
     Object localObject = new FrameLayout.LayoutParams(i3, i1);
     ((FrameLayout.LayoutParams)localObject).leftMargin = i2;
     ((FrameLayout.LayoutParams)localObject).topMargin = i4;
@@ -181,14 +181,14 @@ public class MiniAppTextArea
     i1 = paramJSONObject.optInt("fontSize");
     i2 = paramJSONObject.optInt("lineSpace");
     paramJSONObject = paramJSONObject.optString("color");
-    setLineSpacing(bfgl.a(getContext(), i2), 1.0F);
+    setLineSpacing(DisplayUtil.dip2px(getContext(), i2), 1.0F);
     if ("left".equals(localObject)) {
       setGravity(3);
     }
     for (;;)
     {
       setTextSize(i1);
-      setTextColor(bfgh.a(paramJSONObject));
+      setTextColor(ColorUtils.parseColor(paramJSONObject));
       if ("bold".equals(str)) {
         setTypeface(Typeface.defaultFromStyle(1));
       }
@@ -209,7 +209,7 @@ public class MiniAppTextArea
       this.jdField_f_of_type_Boolean = false;
       h();
       if (this.g != 0) {
-        bele.a(localPageWebviewContainer, this.g, 0.0F, 1.0F, 1.0F);
+        bgkq.a(localPageWebviewContainer, this.g, 0.0F, 1.0F, 1.0F);
       }
       a(paramBoolean);
       this.g = 0;
@@ -224,13 +224,13 @@ public class MiniAppTextArea
     if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer != null) {}
     try
     {
-      bfcy localbfcy = a();
-      if (localbfcy.a() != this.jdField_b_of_type_Int)
+      bhco localbhco = a();
+      if (localbhco.a() != this.jdField_b_of_type_Int)
       {
-        this.jdField_b_of_type_Int = localbfcy.a();
+        this.jdField_b_of_type_Int = localbhco.a();
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("height", a(localbfcy.b() / bfgl.a(getContext())));
-        localJSONObject.put("lineCount", localbfcy.a());
+        localJSONObject.put("height", a(localbhco.b() / DisplayUtil.getDensity(getContext())));
+        localJSONObject.put("lineCount", localbhco.a());
         localJSONObject.put("inputId", this.jdField_a_of_type_Int);
         this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer.a().b("onTextAreaHeightChange", localJSONObject.toString());
       }
@@ -244,9 +244,9 @@ public class MiniAppTextArea
   
   private void e()
   {
-    bfcz localbfcz = new bfcz(this);
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localbfcz);
-    this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer.setSoftKeyboardStateListener(localbfcz);
+    bhcp localbhcp = new bhcp(this);
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localbhcp);
+    this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer.setSoftKeyboardStateListener(localbhcp);
   }
   
   private void f()
@@ -307,7 +307,7 @@ public class MiniAppTextArea
     for (PageWebviewContainer localPageWebviewContainer = this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer.a();; localPageWebviewContainer = null)
     {
       if (localPageWebviewContainer != null) {
-        bele.a(localPageWebviewContainer, this.h, this.g, 1.0F, 1.0F);
+        bgkq.a(localPageWebviewContainer, this.h, this.g, 1.0F, 1.0F);
       }
       this.h = this.g;
       if ((!this.jdField_d_of_type_Boolean) || (this.jdField_f_of_type_Boolean)) {
@@ -326,16 +326,16 @@ public class MiniAppTextArea
     return this.jdField_f_of_type_Int;
   }
   
-  public bfcy a()
+  public bhco a()
   {
-    bfcy localbfcy = new bfcy();
+    bhco localbhco = new bhco();
     Layout localLayout = getLayout();
     if (localLayout != null)
     {
-      localbfcy.a(localLayout.getLineCount());
-      localbfcy.b(localLayout.getHeight());
+      localbhco.a(localLayout.getLineCount());
+      localbhco.b(localLayout.getHeight());
     }
-    return localbfcy;
+    return localbhco;
   }
   
   public void a()
@@ -362,14 +362,14 @@ public class MiniAppTextArea
     }
     localObject = paramJSONObject.optString("placeholder");
     JSONObject localJSONObject = paramJSONObject.optJSONObject("placeholderStyle");
-    if (!bely.a((String)localObject)) {
+    if (!bglo.a((String)localObject)) {
       setHint((CharSequence)localObject);
     }
     if (localJSONObject != null)
     {
       localObject = localJSONObject.optString("color");
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        setHintTextColor(bfgh.a((String)localObject));
+        setHintTextColor(ColorUtils.parseColor((String)localObject));
       }
     }
     i1 = paramJSONObject.optInt("selectionStart", -1);
@@ -404,7 +404,7 @@ public class MiniAppTextArea
       {
         this.jdField_b_of_type_Int = 1;
         JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("height", a(getLineHeight() / bfgl.a(getContext())));
+        localJSONObject.put("height", a(getLineHeight() / DisplayUtil.getDensity(getContext())));
         localJSONObject.put("lineCount", 1);
         localJSONObject.put("inputId", this.jdField_a_of_type_Int);
         if (localPageWebviewContainer != null) {
@@ -414,12 +414,12 @@ public class MiniAppTextArea
       }
       catch (Throwable localThrowable)
       {
-        betc.d("MiniAppTextArea", "callbackLineChange error.", localThrowable);
+        QMLog.e("MiniAppTextArea", "callbackLineChange error.", localThrowable);
       }
     }
   }
   
-  public void setAttributes(int paramInt, JSONObject paramJSONObject, bekj parambekj)
+  public void setAttributes(int paramInt, JSONObject paramJSONObject, bgid parambgid)
   {
     this.jdField_a_of_type_Int = paramInt;
     if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageNativeViewContainer.a()) {}
@@ -457,14 +457,14 @@ public class MiniAppTextArea
       }
       String str = paramJSONObject.optString("placeholder");
       localObject = paramJSONObject.optJSONObject("placeholderStyle");
-      if (!bely.a(str)) {
+      if (!bglo.a(str)) {
         setHint(str);
       }
       if (localObject != null)
       {
         str = ((JSONObject)localObject).optString("color");
         if (!TextUtils.isEmpty(str)) {
-          setHintTextColor(bfgh.a(str));
+          setHintTextColor(ColorUtils.parseColor(str));
         }
       }
       i1 = paramJSONObject.optInt("selectionStart", -1);
@@ -476,8 +476,8 @@ public class MiniAppTextArea
       if (i1 > 0) {
         setSelection(i1);
       }
-      setOnFocusChangeListener(new bfcw(this));
-      addTextChangedListener(new bfcx(this, (JSONObject)localObject, localJSONObject, paramInt, paramJSONObject, parambekj));
+      setOnFocusChangeListener(new bhcm(this));
+      addTextChangedListener(new bhcn(this, (JSONObject)localObject, localJSONObject, paramInt, paramJSONObject, parambgid));
       return;
     }
   }
@@ -494,7 +494,7 @@ public class MiniAppTextArea
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.widget.MiniAppTextArea
  * JD-Core Version:    0.7.0.1
  */

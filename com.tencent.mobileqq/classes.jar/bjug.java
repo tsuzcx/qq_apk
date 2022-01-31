@@ -1,31 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.content.res.Resources;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.2.1;
 
-class bjug
-  implements View.OnClickListener
+public class bjug
+  implements DialogInterface.OnClickListener
 {
-  bjug(bjuf parambjuf) {}
+  public bjug(QzoneQunFeedJsPlugin.2.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditRecognitionPart", 2, "mRecognitionBubble onClick: invoked. ");
-    }
-    paramView = ((bjed)bjav.a().c(8)).a();
-    if ((MusicProviderView.a) && (paramView != null) && (paramView.mItemId != bjuf.a(this.a).mItemId) && (paramView.mType == 5))
-    {
-      this.a.c();
-      return;
-    }
-    bjuf.a(this.a);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.a.a.a.mRuntime.a().getAccount();
+    Intent localIntent = new Intent();
+    String str = this.a.a.a.a.mRuntime.a().getResources().getString(2131718150);
+    QzonePluginProxyActivity.a(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
+    localIntent.putExtra("aid", "jhan_plxz");
+    localIntent.putExtra("success_tips", str);
+    localIntent.putExtra("direct_go", true);
+    QzonePluginProxyActivity.a(this.a.a.a.a.mRuntime.a(), paramDialogInterface, localIntent, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjug
  * JD-Core Version:    0.7.0.1
  */

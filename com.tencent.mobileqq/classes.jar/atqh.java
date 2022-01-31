@@ -1,83 +1,45 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.window.FloatMapWidget;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.Iterator;
+import java.util.List;
 
 class atqh
-  implements View.OnClickListener
+  implements atpk
 {
-  atqh(atpk paramatpk) {}
+  atqh(atqe paramatqe) {}
   
-  public void onClick(View paramView)
+  public void a(LocationRoom.Venue paramVenue) {}
+  
+  public void a(LatLng paramLatLng) {}
+  
+  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
   {
-    PicInfo localPicInfo;
-    if ((paramView.getTag() instanceof PicInfo))
+    if (paramList != null)
     {
-      localPicInfo = (PicInfo)paramView.getTag();
-      if (localPicInfo.g != "type_qq_head_pic") {
-        break label189;
-      }
-      localPicInfo.c = this.a.a.app.a(32, String.valueOf(atpk.a(this.a).uin), 200);
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.nearby_people_card.", 2, "on mode guest small head clicked: uin is: " + atpk.a(this.a).uin + " local path is: " + localPicInfo.c);
-      }
-      paramView = xpu.a(paramView);
-      this.a.a.a(localPicInfo, paramView);
-      if (ProfileActivity.c(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h)) {
-        axqy.b(this.a.a.app, "CliOper", "", "", "0X8005240", "0X8005240", 0, 0, "", "", "", "");
-      }
-    }
-    return;
-    label189:
-    paramView = xpu.a(paramView);
-    int i = 0;
-    label196:
-    int j;
-    if (i < this.a.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-      if (atpk.a(this.a).nowUserType == 0)
+      paramLatLng = paramList.iterator();
+      while (paramLatLng.hasNext())
       {
-        if (localPicInfo.jdField_a_of_type_Int != ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int) {
-          break label425;
+        paramList = (String)paramLatLng.next();
+        Bitmap localBitmap = this.a.a(paramList);
+        if (localBitmap != null)
+        {
+          localBitmap = bdda.c(localBitmap, 16, 16);
+          atqe.a(this.a).a(paramList, localBitmap);
         }
-        j = i;
       }
-    }
-    for (;;)
-    {
-      label256:
-      this.a.a.a(j, paramView);
-      axqy.b(this.a.a.app, "CliOper", "", "", "0X800482A", "0X800482A", 0, 0, "", "", "", "");
-      if (this.a.a.e == 3) {}
-      for (paramView = "2";; paramView = "1")
-      {
-        axqy.b(null, "dc00899", "grp_lbs", "", "data_card", "clk_pic", 0, 0, paramView, "", "", "");
-        if (!atav.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h, this.a.a.e)) {
-          break;
-        }
-        this.a.a.app.a().b(localPicInfo.jdField_a_of_type_JavaLangString);
-        return;
-        j = i;
-        if (TextUtils.equals(localPicInfo.jdField_a_of_type_JavaLangString, ((PicInfo)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString)) {
-          break label256;
-        }
-        label425:
-        i += 1;
-        break label196;
-      }
-      j = 0;
     }
   }
+  
+  public void a(boolean paramBoolean, Point paramPoint) {}
+  
+  public void a(boolean paramBoolean, atpl paramatpl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atqh
  * JD-Core Version:    0.7.0.1
  */

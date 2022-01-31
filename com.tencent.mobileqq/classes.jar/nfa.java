@@ -1,23 +1,35 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class nfa
-  implements View.OnClickListener
+final class nfa
+  implements BusinessObserver
 {
-  nfa(ney paramney, String paramString) {}
+  nfa(QQAppInterface paramQQAppInterface, nfc paramnfc) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    ney.a(this.jdField_a_of_type_Ney).startActivity(paramView);
+    if ((paramBoolean) && (paramBundle != null))
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        nez.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Nfc);
+      }
+    }
+    else
+    {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
+    }
+    this.jdField_a_of_type_Nfc.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfa
  * JD-Core Version:    0.7.0.1
  */

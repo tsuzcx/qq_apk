@@ -1,42 +1,60 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class almh
-  implements allc
+  extends MSFServlet
 {
-  public almh(ARScanEntryView paramARScanEntryView) {}
-  
-  public void a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResDownloadComplete ;" + this.a.m);
-    if (!this.a.m) {
+    if (QLog.isColorLevel()) {
+      QLog.d("DataLineServlet", 2, "onReceive called");
+    }
+    if (paramIntent == null)
+    {
+      QLog.e("DataLineServlet", 1, "onReceive : req is null");
       return;
     }
-    ARScanEntryView.a(this.a, 100);
-    ARScanEntryView.a(this.a).removeMessages(324);
-    ARScanEntryView.a(this.a).sendEmptyMessage(324);
-    this.a.k();
+    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
+    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    ((allz)localQQAppInterface.a(8)).a(paramIntent, paramFromServiceMsg);
   }
   
-  public void a(int paramInt)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onARBaseResUpdateProgress " + paramInt + ";" + this.a.m);
-    if (!this.a.m) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("DataLineServlet", 2, "onSend called");
     }
-    ARScanEntryView.a(this.a, paramInt);
-    ARScanEntryView.a(this.a);
-  }
-  
-  public void b()
-  {
-    this.a.k();
+    if (paramIntent == null) {
+      QLog.e("DataLineServlet", 1, "onSend : req is null");
+    }
+    do
+    {
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent == null) {
+        break;
+      }
+      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+      paramPacket.putSendData(paramIntent.getWupBuffer());
+      paramPacket.setTimeout(paramIntent.getTimeout());
+    } while (paramIntent.isNeedCallback());
+    paramPacket.setNoResponse();
+    return;
+    QLog.e("DataLineServlet", 1, "onSend : toMsg is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     almh
  * JD-Core Version:    0.7.0.1
  */

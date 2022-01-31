@@ -1,42 +1,22 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afnj
-  extends afjf
+class afnj
+  extends afpq
 {
-  public int a;
-  public long a;
-  public Button a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ShaderAnimLayout a;
-  public String a;
-  public structmsg.StructMsg a;
-  public int b;
-  public long b;
-  public ImageView b;
-  public LinearLayout b;
-  public TextView b;
-  public String b;
-  public long c;
-  public TextView c;
-  public TextView d;
-  
-  public afnj(Context paramContext, View paramView)
+  afnj(aflj paramaflj)
   {
-    super(paramContext, paramView);
+    super(paramaflj, null);
+  }
+  
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new afrl(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afnj
  * JD-Core Version:    0.7.0.1
  */

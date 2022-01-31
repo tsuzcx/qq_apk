@@ -1,10 +1,7 @@
-public abstract interface urb
-{
-  public abstract void a(int paramInt);
-}
+public abstract interface urb {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     urb
  * JD-Core Version:    0.7.0.1
  */

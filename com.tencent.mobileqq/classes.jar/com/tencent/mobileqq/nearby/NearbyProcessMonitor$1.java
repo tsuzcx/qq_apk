@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby;
 
-import atau;
-import atbi;
+import aurt;
+import aush;
 
 public final class NearbyProcessMonitor$1
   implements Runnable
@@ -10,16 +10,16 @@ public final class NearbyProcessMonitor$1
   
   public void run()
   {
-    atau.b(this.a);
-    atau.a(this.a);
-    atau.a += 1;
-    atbi.a(this.a);
-    atau.a();
+    aurt.b(this.a);
+    aurt.a(this.a);
+    aurt.a += 1;
+    aush.a(this.a);
+    aurt.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyProcessMonitor.1
  * JD-Core Version:    0.7.0.1
  */

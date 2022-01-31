@@ -1,108 +1,117 @@
-import android.content.Intent;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Bundle;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class sxx
-  extends tco
+final class sxx
+  implements ymm
 {
-  private boolean a(List<String> paramList)
+  sxx(spj paramspj, String paramString) {}
+  
+  public void callback(Bundle paramBundle)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)QQStoryContext.a();
-    tcs localtcs = (tcs)tcz.a(10);
-    boolean bool;
-    if (paramList.isEmpty())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodeConfigCmd data is null!!!");
-      }
-      localtcs.b("key_story_msg_tab_show", Boolean.valueOf(false));
-      bool = true;
-    }
+    Object localObject1 = paramBundle.getString("action");
+    if ("onCommentSend".equals(localObject1)) {}
     for (;;)
     {
-      ((sss)localQQAppInterface.a(98)).notifyUI(1021, true, null);
-      return bool;
-      paramList = (String)paramList.get(0);
-      if (paramList != null)
+      String str;
+      Object localObject2;
+      int i;
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.qqstory.infoTabShow", 2, "config content: " + paramList);
+        localObject1 = paramBundle.getString("commentId", "");
+        str = paramBundle.getString("rowKey", "");
+        localObject2 = paramBundle.getString("commentContent", "");
+        i = paramBundle.getInt("firstLevelComment");
+        paramBundle = paramBundle.getString("parentCommentId", "");
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("type", "onCommentSend");
+        localJSONObject.put("commentId", localObject1);
+        localJSONObject.put("rowKey", str);
+        localJSONObject.put("commentContent", localObject2);
+        localJSONObject.put("firstLevelComment", i + 1);
+        localJSONObject.put("parentCommentID", paramBundle);
+        localJSONObject.put("result", "success");
+        if (this.jdField_a_of_type_Spj != null) {
+          this.jdField_a_of_type_Spj.a(this.jdField_a_of_type_JavaLangString, localJSONObject);
         }
+        return;
+      }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      if ("onCommentLike".equals(localObject1)) {
         try
         {
-          paramList = new JSONObject(paramList);
-          if (paramList.getInt("StoryShowInMsgTab") != 0) {}
-          for (bool = true;; bool = false)
-          {
-            localtcs.b("key_story_msg_tab_show", Boolean.valueOf(bool));
-            localtcs.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(paramList.optInt("StoryAutoExpInMsgTab", 2)));
-            bool = true;
-            break;
+          localObject1 = paramBundle.getString("commentId", "");
+          str = paramBundle.getString("rowKey", "");
+          paramBundle = paramBundle.getString("likeStatus", "");
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("type", "onCommentLike");
+          ((JSONObject)localObject2).put("rowKey", str);
+          ((JSONObject)localObject2).put("commentId", localObject1);
+          ((JSONObject)localObject2).put("likeStatus", paramBundle);
+          ((JSONObject)localObject2).put("result", "success");
+          if (this.jdField_a_of_type_Spj == null) {
+            continue;
           }
-          bool = false;
+          this.jdField_a_of_type_Spj.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject2);
+          return;
         }
-        catch (JSONException paramList)
+        catch (JSONException paramBundle)
         {
-          if (QLog.isColorLevel()) {
-            QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
+          paramBundle.printStackTrace();
+          return;
+        }
+      } else if ("onCommentDelete".equals(localObject1)) {
+        try
+        {
+          localObject1 = paramBundle.getString("commentId", "");
+          str = paramBundle.getString("rowKey", "");
+          i = paramBundle.getInt("totalDeleteCount", 0);
+          paramBundle = new JSONObject();
+          paramBundle.put("type", "onCommentDelete");
+          paramBundle.put("totalDelete", i);
+          paramBundle.put("commentID", localObject1);
+          paramBundle.put("rowKey", str);
+          paramBundle.put("result", "success");
+          if (this.jdField_a_of_type_Spj == null) {
+            continue;
           }
+          this.jdField_a_of_type_Spj.a(this.jdField_a_of_type_JavaLangString, paramBundle);
+          return;
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+          return;
+        }
+      } else if ("onPanelClose".equals(localObject1)) {
+        try
+        {
+          paramBundle = paramBundle.getString("rowKey", "");
+          localObject1 = new JSONObject();
+          ((JSONObject)localObject1).put("type", "onPanelClose");
+          ((JSONObject)localObject1).put("rowKey", paramBundle);
+          ((JSONObject)localObject1).put("result", "success");
+          if (this.jdField_a_of_type_Spj != null)
+          {
+            this.jdField_a_of_type_Spj.a(this.jdField_a_of_type_JavaLangString, (JSONObject)localObject1);
+            return;
+          }
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
         }
       }
     }
-  }
-  
-  private boolean b(List<String> paramList)
-  {
-    if (paramList.isEmpty())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodePreloaderConfigCmd data is null!!!");
-      }
-      return false;
-    }
-    paramList = (String)paramList.get(0);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.infoTabShow", 2, "handleStoryMsgTabNodePreloaderConfigCmd config content: " + paramList);
-    }
-    try
-    {
-      paramList = new JSONObject(paramList);
-      int i = paramList.getInt("MsgTabPrestrainbNum");
-      paramList = paramList.getString("4G");
-      tcs localtcs = (tcs)tcz.a(10);
-      localtcs.b("key_story_msg_tab_node_preload", Integer.valueOf(i));
-      localtcs.b("key_story_msg_tab_node_preload_4g", Boolean.valueOf("1".equals(paramList)));
-      return true;
-    }
-    catch (JSONException paramList)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
-      }
-    }
-    return false;
-  }
-  
-  public boolean a(int paramInt, Intent paramIntent, ConfigurationService.Config paramConfig, List<String> paramList)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 243: 
-      return a(paramList);
-    }
-    return b(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxx
  * JD-Core Version:    0.7.0.1
  */

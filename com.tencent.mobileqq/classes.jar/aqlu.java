@@ -1,225 +1,114 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import android.view.View;
-import com.tencent.image.GifDrawable;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.gallery.animation.AnimationView;
-import com.tencent.mobileqq.gallery.model.GalleryBaseData;
-import com.tencent.mobileqq.gallery.model.pic.AIOPicData;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
 public class aqlu
-  extends aqls
+  implements arqx
 {
-  int jdField_a_of_type_Int;
-  Activity jdField_a_of_type_AndroidAppActivity;
-  View jdField_a_of_type_AndroidViewView;
-  aqmn jdField_a_of_type_Aqmn;
-  AnimationView jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView;
-  View b;
-  View c;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public aqlu(Activity paramActivity, aqmn paramaqmn)
+  public aqlu(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
+  
+  public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Aqmn = paramaqmn;
-    this.jdField_a_of_type_Int = paramActivity.getResources().getDisplayMetrics().densityDpi;
+    boolean bool = false;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -2147483648;
+    this.b = 2147483647;
+    FileInfo localFileInfo = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_Aqiz.getChild(paramInt1, paramInt2);
+    if (localFileInfo == null) {}
+    do
+    {
+      return;
+      if (!aqxj.a(localFileInfo)) {
+        bool = true;
+      }
+      this.jdField_a_of_type_Boolean = bool;
+    } while (!QfileLocalFilePicTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView, localFileInfo, this.jdField_a_of_type_Boolean));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.o();
   }
   
-  private Drawable a(Rect paramRect1, Rect paramRect2, Rect paramRect3, Rect paramRect4, aqmm paramaqmm, boolean paramBoolean)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (paramaqmm == null) {
-      return null;
+    if (paramInt1 != paramInt3) {
+      return;
     }
-    Drawable localDrawable = paramaqmm.a();
-    paramRect1 = paramaqmm.a();
-    if ((paramRect1 == null) || (localDrawable == null) || (!paramaqmm.a(paramBoolean))) {
-      return null;
-    }
-    int i = this.jdField_a_of_type_AndroidViewView.getWidth();
-    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
-    int k = localDrawable.getIntrinsicWidth();
-    int m = localDrawable.getIntrinsicHeight();
-    paramRect2.set(0, 0, k, m);
-    paramRect3.set(paramRect1);
-    paramRect1 = null;
-    if ((paramaqmm instanceof aqmi)) {
-      paramRect1 = ((aqmi)paramaqmm).a;
-    }
-    if ((!bfnz.e()) && ((localDrawable instanceof URLDrawable)) && ((((URLDrawable)localDrawable).getCurrDrawable() instanceof GifDrawable)))
-    {
-      paramRect2 = paramRect1;
-      if (((GalleryBaseData)paramRect1).a() == 1) {
-        paramRect2 = aqnv.a((AIOPicData)paramRect1);
-      }
-      paramRect3 = aqlv.a(k, m, i, j, false, paramRect2);
-      paramRect1 = paramRect2;
-    }
-    for (paramRect2 = paramRect3;; paramRect2 = null)
-    {
-      if (paramRect2 == null)
-      {
-        paramRect2 = paramRect1;
-        if (((GalleryBaseData)paramRect1).a() == 1) {
-          paramRect2 = aqnv.a((AIOPicData)paramRect1);
-        }
-      }
-      for (paramRect1 = aqlv.a(k, m, i, j, paramRect2);; paramRect1 = paramRect2)
-      {
-        paramRect4.set(paramRect1);
-        return localDrawable;
-      }
-    }
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((aqlt)localIterator.next()).b();
-    }
-  }
-  
-  public boolean b()
-  {
-    boolean bool = true;
-    if (a()) {
-      return true;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      f();
-    }
-    Rect localRect1 = new Rect();
-    Rect localRect2 = new Rect();
-    aqmm localaqmm = this.jdField_a_of_type_Aqmn.a();
-    if (localaqmm == null) {
-      return false;
-    }
-    Rect localRect3 = localaqmm.b();
-    Rect localRect4 = new Rect();
-    Drawable localDrawable = a(null, localRect4, localRect1, localRect2, localaqmm, true);
-    this.jdField_a_of_type_Boolean = true;
-    if (localDrawable != null)
-    {
-      this.jdField_b_of_type_Boolean = bool;
-      if (this.jdField_b_of_type_Boolean) {
-        break label126;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.setVisibility(4);
+    paramInt3 = Math.min(paramInt2, paramInt4);
+    int i = Math.max(paramInt2, paramInt4);
+    if (paramInt4 < paramInt2) {
+      this.b = Math.min(paramInt4, this.b);
     }
     for (;;)
     {
-      return this.jdField_b_of_type_Boolean;
-      bool = false;
-      break;
-      label126:
-      this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.jdField_a_of_type_Boolean = localaqmm.d;
-      if (localRect3 == null) {
-        this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.a(localDrawable, localRect1, localRect2, localaqmm.a(), this.jdField_a_of_type_Long);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.a(localDrawable, localRect3, localRect4, localRect1, localRect2, this.jdField_a_of_type_Long);
+      paramInt2 = paramInt3;
+      while (paramInt2 <= i)
+      {
+        QfileLocalFilePicTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView, (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_Aqiz.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean);
+        paramInt2 += 1;
       }
+      this.jdField_a_of_type_Int = Math.max(paramInt4, this.jdField_a_of_type_Int);
     }
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.setVisibility(4);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((aqlt)localIterator.next()).c();
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public boolean c()
-  {
-    if (a()) {
-      return true;
-    }
-    if (this.jdField_a_of_type_AndroidViewView == null) {
-      f();
-    }
-    Rect localRect1 = new Rect();
-    Rect localRect2 = new Rect();
-    aqmm localaqmm = this.jdField_a_of_type_Aqmn.a();
-    Rect localRect3;
-    Rect localRect4;
-    Drawable localDrawable;
+    paramInt2 = this.b;
+    QfileLocalFilePicTabView localQfileLocalFilePicTabView;
+    FileInfo localFileInfo;
     boolean bool;
-    if (localaqmm != null)
+    if (paramInt2 < paramInt3)
     {
-      localRect3 = localaqmm.b();
-      localRect4 = new Rect();
-      localDrawable = a(localRect3, localRect4, localRect1, localRect2, localaqmm, false);
-      this.jdField_a_of_type_Boolean = true;
-      if (localDrawable == null) {
-        break label122;
+      localQfileLocalFilePicTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView;
+      localFileInfo = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_Aqiz.getChild(paramInt1, paramInt2);
+      if (!this.jdField_a_of_type_Boolean) {}
+      for (bool = true;; bool = false)
+      {
+        QfileLocalFilePicTabView.a(localQfileLocalFilePicTabView, localFileInfo, bool);
+        paramInt2 += 1;
+        break;
       }
-      bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if (this.jdField_b_of_type_Boolean) {
-        break label127;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.setVisibility(4);
     }
-    for (;;)
+    paramInt2 = i + 1;
+    if (paramInt2 <= this.jdField_a_of_type_Int)
     {
-      return this.jdField_b_of_type_Boolean;
-      return false;
-      label122:
-      bool = false;
-      break;
-      label127:
-      this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.jdField_a_of_type_Boolean = localaqmm.d;
-      this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.a(localDrawable, localRect1, localRect2, localaqmm.a(), localaqmm.b(), localaqmm.c(), this.jdField_a_of_type_Long);
-      if (localRect3 == null) {
-        this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.a(localDrawable, localRect1, localRect2, localaqmm.a(), localaqmm.b(), localaqmm.c(), this.jdField_a_of_type_Long);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.b(localDrawable, localRect3, localRect4, localRect1, localRect2, this.jdField_a_of_type_Long);
+      localQfileLocalFilePicTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView;
+      localFileInfo = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_Aqiz.getChild(paramInt1, paramInt2);
+      if (!this.jdField_a_of_type_Boolean) {}
+      for (bool = true;; bool = false)
+      {
+        QfileLocalFilePicTabView.a(localQfileLocalFilePicTabView, localFileInfo, bool);
+        paramInt2 += 1;
+        break;
       }
     }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.o();
   }
   
-  public void d()
+  public void a(boolean paramBoolean)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((aqlt)localIterator.next()).d();
+    if (paramBoolean)
+    {
+      URLDrawable.pause();
+      return;
     }
+    URLDrawable.resume();
   }
   
-  public void e()
+  public void b(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView.setVisibility(4);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((aqlt)localIterator.next()).e();
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.g()) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.h()))
+    {
+      SharedPreferences.Editor localEditor = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getSharedPreferences("LAST_CHOOSE_", 0).edit();
+      localEditor.putInt("GROUP", paramInt1);
+      localEditor.putInt("CHILD", (paramInt2 + 1) / 4);
+      localEditor.commit();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void f()
-  {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131366897);
-    this.jdField_a_of_type_ComTencentMobileqqGalleryAnimationAnimationView = ((AnimationView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131362548));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131375493);
-    this.c = this.jdField_a_of_type_AndroidAppActivity.findViewById(2131362998);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqlu
  * JD-Core Version:    0.7.0.1
  */

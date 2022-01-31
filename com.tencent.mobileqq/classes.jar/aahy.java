@@ -1,26 +1,30 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.ad.tangram.thread.AdThreadManagerAdapter;
+import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.1;
+import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.2;
+import java.util.Map;
 
-public class aahy
-  extends ajto
+public final class aahy
+  implements AdThreadManagerAdapter
 {
-  public aahy(AddRequestActivity paramAddRequestActivity) {}
-  
-  protected void onImpeach(boolean paramBoolean, String paramString)
+  public boolean postDelayed(Runnable paramRunnable, int paramInt, long paramLong)
   {
-    if (!this.a.a.equals(paramString)) {
-      return;
+    GdtThreadManagerAdapter.1 local1 = new GdtThreadManagerAdapter.1(this);
+    if (paramInt == 0) {
+      return new Handler(Looper.getMainLooper()).postDelayed(paramRunnable, paramLong);
     }
-    if (paramBoolean)
+    if (local1.containsKey(Integer.valueOf(paramInt)))
     {
-      this.a.a(2130839315, this.a.getString(2131690624));
-      return;
+      paramInt = ((Integer)local1.get(Integer.valueOf(paramInt))).intValue();
+      return new Handler(Looper.getMainLooper()).postDelayed(new GdtThreadManagerAdapter.2(this, paramRunnable, paramInt), paramLong);
     }
-    this.a.a(2130839302, this.a.getString(2131690622));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,13 @@
 package com.tencent.biz.videostory;
 
 import java.util.TimerTask;
-import xem;
+import ytf;
 
 public final class EventControlUtils$2
   extends TimerTask
 {
+  public EventControlUtils$2(ytf paramytf) {}
+  
   public void run()
   {
     if (this.a != null) {
@@ -15,7 +17,7 @@ public final class EventControlUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.videostory.EventControlUtils.2
  * JD-Core Version:    0.7.0.1
  */

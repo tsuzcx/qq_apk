@@ -1,59 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import onh;
-import ozo;
-import qbn;
-import qbo;
-import qbq;
-import tencent.im.oidb.cmd0xa6e.oidb_cmd0xa6e.TopicInfo;
+import oxb;
+import pew;
 
 public class ArticleInfoModule$49
   implements Runnable
 {
-  public ArticleInfoModule$49(ozo paramozo, int paramInt, Set paramSet, List paramList) {}
+  public ArticleInfoModule$49(pew parampew, ArrayList paramArrayList, List paramList1, List paramList2) {}
   
   public void run()
   {
-    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)ozo.a(this.this$0).get(Integer.valueOf(this.jdField_a_of_type_Int));
-    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator1.hasNext())
-    {
-      ArticleInfo localArticleInfo = (ArticleInfo)localConcurrentHashMap.get(Long.valueOf(((Long)localIterator1.next()).longValue()));
-      if ((localArticleInfo != null) && (onh.o(localArticleInfo)) && (localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList != null))
-      {
-        Iterator localIterator2 = localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator2.hasNext())
-        {
-          qbo localqbo = (qbo)localIterator2.next();
-          if (localqbo.a != null)
-          {
-            Iterator localIterator3 = this.jdField_a_of_type_JavaUtilList.iterator();
-            while (localIterator3.hasNext())
-            {
-              oidb_cmd0xa6e.TopicInfo localTopicInfo = (oidb_cmd0xa6e.TopicInfo)localIterator3.next();
-              if (localqbo.a.b == localTopicInfo.uint64_topic_id.get()) {
-                localqbo.a.jdField_a_of_type_Int = localTopicInfo.uint32_pv.get();
-              }
-            }
-          }
-        }
-        localArticleInfo.invalidateProteusTemplateBean();
-        this.this$0.a(localArticleInfo);
-      }
-    }
+    oxb.a().a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule.49
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,19 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
 class akem
-  implements lxr
+  implements View.OnClickListener
 {
-  akem(akee paramakee, byte[] paramArrayOfByte) {}
+  akem(akel paramakel) {}
   
-  public void a(lxq paramlxq)
+  public void onClick(View paramView)
   {
-    paramlxq.a(this.jdField_a_of_type_ArrayOfByte);
-    paramlxq.a();
+    akel.a(this.a).a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akem
  * JD-Core Version:    0.7.0.1
  */

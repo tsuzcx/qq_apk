@@ -1,77 +1,166 @@
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import org.json.JSONObject;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.helper.AIOEmoticonGuideHelper.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emoticonview.EmoticonGuideBubbleView;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aeyn
+  implements afak, afal, Handler.Callback, View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  int jdField_b_of_type_Int = 0;
-  long jdField_b_of_type_Long;
-  String jdField_b_of_type_JavaLangString;
-  protected int c;
-  long jdField_c_of_type_Long;
-  String jdField_c_of_type_JavaLangString;
-  int jdField_d_of_type_Int = 0;
-  public long d;
-  String jdField_d_of_type_JavaLangString;
-  int e = 0;
+  private aomm jdField_a_of_type_Aomm;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private EmoticonGuideBubbleView jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView;
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public aeyn(JSONObject paramJSONObject)
+  public aeyn(BaseChatPie paramBaseChatPie)
   {
-    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
-    if (paramJSONObject != null)
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_MqqOsMqqHandler = new bhoe(Looper.getMainLooper(), this);
+  }
+  
+  private void a(aomm paramaomm)
+  {
+    if (paramaomm == null) {}
+    String str;
+    boolean bool;
+    do
     {
-      this.jdField_a_of_type_Long = paramJSONObject.optLong("puin");
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("type");
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("show_tab");
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("content");
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("url");
-      this.jdField_b_of_type_Long = paramJSONObject.optLong("begin");
-      this.jdField_c_of_type_Long = paramJSONObject.optLong("end");
-      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("shool_id");
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("times");
-      this.jdField_d_of_type_Long = paramJSONObject.optLong("msg_seqno");
-      this.jdField_d_of_type_Long = paramJSONObject.optLong("msg_seqno");
-      this.jdField_d_of_type_Int = paramJSONObject.optInt("tid");
-      this.e = paramJSONObject.optInt("clicked");
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (!a(paramaomm)) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() == null));
+      if (QLog.isColorLevel()) {
+        QLog.d("aio_emoticon_guide.helper", 2, "realShowGuideBubble start.");
+      }
+      this.jdField_a_of_type_Aomm = paramaomm;
+      if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("aio_emoticon_guide.helper", 2, "showGuideBubble  emoticonGuideBubbleView is new create.");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView = new EmoticonGuideBubbleView(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext);
+      }
+      str = paramaomm.a.a;
+      if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
+        str = paramaomm.a.b;
+      }
+      bool = ThemeUtil.isNowThemeIsSimple(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null);
+    } while (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout, str, paramaomm.a.e, paramaomm.a.f, bool));
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD4C", "0X800AD4C", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.setOnClickListener(this);
+    bdiv.a("key_show_emoticon_guide", Boolean.valueOf(false));
+    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1, 3000L);
+  }
+  
+  private boolean a(aomm paramaomm)
+  {
+    if (paramaomm == null) {
+      return false;
+    }
+    if ((((Boolean)bdiv.a("key_show_emoticon_guide", Boolean.valueOf(true))).booleanValue()) && (paramaomm.a.b())) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
   
-  boolean a()
+  public void a()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Long > 0L)
-    {
-      bool1 = bool2;
-      if (this.jdField_c_of_type_Int >= 0) {
-        bool1 = true;
-      }
+    if (!((Boolean)bdiv.a("key_show_emoticon_guide", Boolean.valueOf(true))).booleanValue()) {
+      return;
     }
-    return bool1;
+    ThreadManager.getFileThreadHandler().post(new AIOEmoticonGuideHelper.1(this));
   }
   
-  public boolean b()
+  public void a(int paramInt)
   {
-    boolean bool2 = true;
-    long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    boolean bool1 = bool2;
-    if (l >= this.jdField_b_of_type_Long)
+    switch (paramInt)
     {
-      bool1 = bool2;
-      if (l <= this.jdField_c_of_type_Long) {
-        bool1 = false;
+    case 9: 
+    case 10: 
+    default: 
+      return;
+    }
+    b();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 8, 11 };
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.getVisibility() == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("aio_emoticon_guide.helper", 2, "removeGuideBubble ");
+      }
+      this.jdField_a_of_type_Aomm = null;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+    }
+    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 1) {
+      b();
+    }
+    while (paramMessage.what != 2) {
+      return true;
+    }
+    a((aomm)paramMessage.obj);
+    return true;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a() == null) || (this.jdField_a_of_type_Aomm == null)) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonGuideBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
+      int i = this.jdField_a_of_type_Aomm.a.c;
+      int k = this.jdField_a_of_type_Aomm.a.d;
+      if (k == 1)
+      {
+        i = apog.b(i);
+        if (!apog.c(i)) {}
+      }
+      else
+      {
+        while (i != -1)
+        {
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AD4D", "0X800AD4D", 0, 0, "", "", "", "");
+          this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().a(k, i);
+          return;
+          if (k == 2)
+          {
+            int j = apnz.b(i);
+            i = j;
+            if (apnz.a(j)) {}
+          }
+          else
+          {
+            i = -1;
+          }
+        }
       }
     }
-    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeyn
  * JD-Core Version:    0.7.0.1
  */

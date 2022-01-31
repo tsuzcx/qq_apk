@@ -1,25 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-
-public class ajhc
-  implements DialogInterface.OnClickListener
+public abstract class ajhc
+  implements ajhe
 {
-  public ajhc(ApolloGameActivity paramApolloGameActivity, ajob paramajob, int paramInt) {}
+  public int a;
+  public long a;
+  public bbkv a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajhc()
   {
-    if (this.jdField_a_of_type_Ajob != null) {
-      this.jdField_a_of_type_Ajob.a(1);
-    }
-    VipUtils.a(null, "cmshow", "Apollo", "sendToDesktopSusessful", 0, 1, new String[] { String.valueOf(this.jdField_a_of_type_Int) });
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_b_of_type_Long = -1L;
+    this.jdField_b_of_type_Int = -35072;
+    this.jdField_a_of_type_Bbkv = new bbkv();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhc
  * JD-Core Version:    0.7.0.1
  */

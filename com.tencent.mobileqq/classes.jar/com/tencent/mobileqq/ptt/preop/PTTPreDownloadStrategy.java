@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ptt.preop;
 
 import android.os.Handler;
-import avci;
-import avcl;
-import avcm;
-import avcn;
-import axrn;
-import ayta;
+import awtv;
+import awty;
+import awtz;
+import awua;
+import azmz;
+import baqx;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.qphone.base.BaseConstants;
@@ -18,14 +18,14 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class PTTPreDownloadStrategy
-  implements avcl, Runnable
+  implements awty, Runnable
 {
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private avci jdField_a_of_type_Avci = new avci(1);
+  private awtv jdField_a_of_type_Awtv = new awtv(1);
   private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   private volatile boolean jdField_a_of_type_Boolean;
-  private avci b = new avci(3);
-  private avci c = new avci(2);
+  private awtv b = new awtv(3);
+  private awtv c = new awtv(2);
   
   public PTTPreDownloadStrategy(QQAppInterface paramQQAppInterface, Handler paramHandler)
   {
@@ -60,23 +60,23 @@ public class PTTPreDownloadStrategy
     return l1;
   }
   
-  private void a(avci paramavci)
+  private void a(awtv paramawtv)
   {
     long l2;
-    if (paramavci.jdField_a_of_type_Avcn.jdField_a_of_type_Int == -2147483648)
+    if (paramawtv.jdField_a_of_type_Awua.jdField_a_of_type_Int == -2147483648)
     {
       if (QLog.isDevelopLevel()) {
         QLog.d("PTTPreDownloader", 4, "initStrategyInfoIfNeccessary");
       }
       Date localDate = new Date();
       Object localObject1 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      avcn localavcn1 = avcm.a((QQAppInterface)localObject1, paramavci.jdField_a_of_type_Int);
-      paramavci.jdField_a_of_type_Avcn.jdField_a_of_type_Int = localavcn1.jdField_a_of_type_Int;
+      awua localawua1 = awtz.a((QQAppInterface)localObject1, paramawtv.jdField_a_of_type_Int);
+      paramawtv.jdField_a_of_type_Awua.jdField_a_of_type_Int = localawua1.jdField_a_of_type_Int;
       int i;
-      if (paramavci.jdField_a_of_type_Avcn.jdField_a_of_type_Int > 0)
+      if (paramawtv.jdField_a_of_type_Awua.jdField_a_of_type_Int > 0)
       {
-        avcn localavcn2 = new avcn();
-        localObject1 = avcm.a((QQAppInterface)localObject1, paramavci.jdField_a_of_type_Int, localavcn2);
+        awua localawua2 = new awua();
+        localObject1 = awtz.a((QQAppInterface)localObject1, paramawtv.jdField_a_of_type_Int, localawua2);
         Object localObject2 = new SimpleDateFormat("yyyy-MM-dd").format(localDate);
         if (QLog.isDevelopLevel()) {
           QLog.d("PTTPreDownloader", 4, "PreTime:" + (String)localObject1 + " curTime:" + (String)localObject2);
@@ -86,35 +86,35 @@ public class PTTPreDownloadStrategy
           i = 0;
           while (i <= 5)
           {
-            paramavci.jdField_a_of_type_Avcn.jdField_a_of_type_ArrayOfInt[i] = localavcn2.jdField_a_of_type_ArrayOfInt[i];
+            paramawtv.jdField_a_of_type_Awua.jdField_a_of_type_ArrayOfInt[i] = localawua2.jdField_a_of_type_ArrayOfInt[i];
             i += 1;
           }
         }
         i = 0;
         int j = 0;
-        if (localavcn2.jdField_a_of_type_Int > -1)
+        if (localawua2.jdField_a_of_type_Int > -1)
         {
           localObject1 = new HashMap();
           localObject2 = new StringBuilder();
-          ((StringBuilder)localObject2).append(localavcn2.jdField_a_of_type_Int);
+          ((StringBuilder)localObject2).append(localawua2.jdField_a_of_type_Int);
           i = j;
           while (i <= 5)
           {
-            ((StringBuilder)localObject2).append('#').append(i).append('_').append(localavcn2.jdField_a_of_type_ArrayOfInt[i]);
+            ((StringBuilder)localObject2).append('#').append(i).append('_').append(localawua2.jdField_a_of_type_ArrayOfInt[i]);
             i += 1;
           }
           ((HashMap)localObject1).put("RemainCfg", ((StringBuilder)localObject2).toString());
           ((HashMap)localObject1).put(BaseConstants.RDM_NoChangeFailCode, "");
-          axrn.a(BaseApplication.getContext()).a(null, "PttPreDownloadDailyRemain", true, 0L, 0L, (HashMap)localObject1, "");
+          azmz.a(BaseApplication.getContext()).a(null, "PttPreDownloadDailyRemain", true, 0L, 0L, (HashMap)localObject1, "");
           i = 0;
         }
         while (i <= 5)
         {
-          paramavci.jdField_a_of_type_Avcn.jdField_a_of_type_ArrayOfInt[i] = localavcn1.jdField_a_of_type_ArrayOfInt[i];
+          paramawtv.jdField_a_of_type_Awua.jdField_a_of_type_ArrayOfInt[i] = localawua1.jdField_a_of_type_ArrayOfInt[i];
           i += 1;
         }
       }
-      b(paramavci);
+      b(paramawtv);
       if (!this.jdField_a_of_type_Boolean)
       {
         l1 = localDate.getTime();
@@ -142,11 +142,11 @@ public class PTTPreDownloadStrategy
     }
   }
   
-  private void b(avci paramavci)
+  private void b(awtv paramawtv)
   {
-    paramavci = paramavci.jdField_a_of_type_Int + ":" + paramavci.jdField_a_of_type_Avcn;
+    paramawtv = paramawtv.jdField_a_of_type_Int + ":" + paramawtv.jdField_a_of_type_Awua;
     if (QLog.isDevelopLevel()) {
-      QLog.d("PTTPreDownloader", 4, paramavci);
+      QLog.d("PTTPreDownloader", 4, paramawtv);
     }
   }
   
@@ -162,28 +162,28 @@ public class PTTPreDownloadStrategy
     {
       return;
       localHashMap = new HashMap();
-      if (this.jdField_a_of_type_Avci.jdField_a_of_type_Avcn.jdField_a_of_type_Int != -2147483648)
+      if (this.jdField_a_of_type_Awtv.jdField_a_of_type_Awua.jdField_a_of_type_Int != -2147483648)
       {
-        avcm.a(localQQAppInterface, this.jdField_a_of_type_Avci.jdField_a_of_type_Avcn, this.jdField_a_of_type_Avci.jdField_a_of_type_Int);
-        b(this.jdField_a_of_type_Avci);
-        localHashMap.put("C2CDownload", String.valueOf(this.jdField_a_of_type_Avci.b));
-        localHashMap.put("C2CView", String.valueOf(this.jdField_a_of_type_Avci.d));
-        localHashMap.put("C2CCancel", String.valueOf(this.jdField_a_of_type_Avci.e));
-        localHashMap.put("C2CEscape", String.valueOf(this.jdField_a_of_type_Avci.c));
+        awtz.a(localQQAppInterface, this.jdField_a_of_type_Awtv.jdField_a_of_type_Awua, this.jdField_a_of_type_Awtv.jdField_a_of_type_Int);
+        b(this.jdField_a_of_type_Awtv);
+        localHashMap.put("C2CDownload", String.valueOf(this.jdField_a_of_type_Awtv.b));
+        localHashMap.put("C2CView", String.valueOf(this.jdField_a_of_type_Awtv.d));
+        localHashMap.put("C2CCancel", String.valueOf(this.jdField_a_of_type_Awtv.e));
+        localHashMap.put("C2CEscape", String.valueOf(this.jdField_a_of_type_Awtv.c));
       }
-      if (this.b.jdField_a_of_type_Avcn.jdField_a_of_type_Int != -2147483648)
+      if (this.b.jdField_a_of_type_Awua.jdField_a_of_type_Int != -2147483648)
       {
-        avcm.a(localQQAppInterface, this.b.jdField_a_of_type_Avcn, this.b.jdField_a_of_type_Int);
+        awtz.a(localQQAppInterface, this.b.jdField_a_of_type_Awua, this.b.jdField_a_of_type_Int);
         b(this.b);
-        b(this.jdField_a_of_type_Avci);
+        b(this.jdField_a_of_type_Awtv);
         localHashMap.put("GroupDownload", String.valueOf(this.b.b));
         localHashMap.put("GroupView", String.valueOf(this.b.d));
         localHashMap.put("GroupCancel", String.valueOf(this.b.e));
         localHashMap.put("GroupEscape", String.valueOf(this.b.c));
       }
-      if (this.c.jdField_a_of_type_Avcn.jdField_a_of_type_Int != -2147483648)
+      if (this.c.jdField_a_of_type_Awua.jdField_a_of_type_Int != -2147483648)
       {
-        avcm.a(localQQAppInterface, this.c.jdField_a_of_type_Avcn, this.c.jdField_a_of_type_Int);
+        awtz.a(localQQAppInterface, this.c.jdField_a_of_type_Awua, this.c.jdField_a_of_type_Int);
         b(this.c);
         localHashMap.put("DiscussDownload", String.valueOf(this.c.b));
         localHashMap.put("DiscussView", String.valueOf(this.c.d));
@@ -192,7 +192,7 @@ public class PTTPreDownloadStrategy
       }
     } while (localHashMap.size() <= 0);
     localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
-    axrn.a(BaseApplication.getContext()).a(null, "PttPreDownloadPV", true, 0L, 0L, localHashMap, "");
+    azmz.a(BaseApplication.getContext()).a(null, "PttPreDownloadPV", true, 0L, 0L, localHashMap, "");
   }
   
   public void a()
@@ -211,41 +211,41 @@ public class PTTPreDownloadStrategy
     boolean bool3 = false;
     if (paramMessageForPtt.istroop == 0) {}
     label393:
-    for (avci localavci = this.jdField_a_of_type_Avci;; localavci = null)
+    for (awtv localawtv = this.jdField_a_of_type_Awtv;; localawtv = null)
     {
       long l2;
       int i;
-      if (localavci != null)
+      if (localawtv != null)
       {
         l2 = 0L;
-        i = ayta.a().a();
+        i = baqx.a().a();
       }
       for (;;)
       {
         long l3;
         try
         {
-          a(localavci);
-          if (localavci.jdField_a_of_type_Avcn.jdField_a_of_type_Int <= 0)
+          a(localawtv);
+          if (localawtv.jdField_a_of_type_Awua.jdField_a_of_type_Int <= 0)
           {
             l1 = l2;
             bool1 = bool3;
             bool2 = bool1;
             if (QLog.isDevelopLevel())
             {
-              QLog.d("PTTPreDownloader", 4, "canDownload:" + bool1 + " sesion:" + localavci.jdField_a_of_type_Int + " net:" + i + " " + l1 + " - " + paramMessageForPtt.estimatedSize + " = " + localavci.jdField_a_of_type_Avcn.jdField_a_of_type_ArrayOfInt[i] + ", pttSize:" + paramMessageForPtt.fileSize);
+              QLog.d("PTTPreDownloader", 4, "canDownload:" + bool1 + " sesion:" + localawtv.jdField_a_of_type_Int + " net:" + i + " " + l1 + " - " + paramMessageForPtt.estimatedSize + " = " + localawtv.jdField_a_of_type_Awua.jdField_a_of_type_ArrayOfInt[i] + ", pttSize:" + paramMessageForPtt.fileSize);
               bool2 = bool1;
             }
             return bool2;
             if (paramMessageForPtt.istroop == 1)
             {
-              localavci = this.b;
+              localawtv = this.b;
               break;
             }
             if (paramMessageForPtt.istroop != 3000) {
               break label393;
             }
-            localavci = this.c;
+            localawtv = this.c;
             break;
           }
           l3 = paramMessageForPtt.msgRecTime - paramMessageForPtt.msgTime;
@@ -256,23 +256,23 @@ public class PTTPreDownloadStrategy
           }
           bool1 = bool3;
           l1 = l2;
-          if (l3 > localavci.jdField_a_of_type_Avcn.jdField_a_of_type_Int * 24 * 60 * 60 * 100) {
+          if (l3 > localawtv.jdField_a_of_type_Awua.jdField_a_of_type_Int * 24 * 60 * 60 * 100) {
             continue;
           }
           l3 = a(paramMessageForPtt);
-          if (l3 > localavci.jdField_a_of_type_Avcn.jdField_a_of_type_ArrayOfInt[i])
+          if (l3 > localawtv.jdField_a_of_type_Awua.jdField_a_of_type_ArrayOfInt[i])
           {
-            localavci.c += 1;
+            localawtv.c += 1;
             bool1 = bool3;
             l1 = l2;
             continue;
           }
-          localavci.b += 1;
+          localawtv.b += 1;
         }
         finally {}
         paramMessageForPtt.estimatedSize = l3;
-        long l1 = localavci.jdField_a_of_type_Avcn.jdField_a_of_type_ArrayOfInt[i];
-        int[] arrayOfInt = localavci.jdField_a_of_type_Avcn.jdField_a_of_type_ArrayOfInt;
+        long l1 = localawtv.jdField_a_of_type_Awua.jdField_a_of_type_ArrayOfInt[i];
+        int[] arrayOfInt = localawtv.jdField_a_of_type_Awua.jdField_a_of_type_ArrayOfInt;
         arrayOfInt[i] = ((int)(arrayOfInt[i] - l3));
         boolean bool1 = true;
       }
@@ -287,11 +287,11 @@ public class PTTPreDownloadStrategy
     }
     if (paramMessageForPtt.istroop == 0) {}
     label389:
-    for (avci localavci = this.jdField_a_of_type_Avci;; localavci = null)
+    for (awtv localawtv = this.jdField_a_of_type_Awtv;; localawtv = null)
     {
       boolean bool1 = bool2;
       int i;
-      if (localavci != null)
+      if (localawtv != null)
       {
         if ((paramMessageForPtt.extFlag & 1L) <= 0L) {
           break label289;
@@ -301,43 +301,43 @@ public class PTTPreDownloadStrategy
         if (i == 0) {
           break label336;
         }
-        i = ayta.a().a();
+        i = baqx.a().a();
       }
       for (;;)
       {
         try
         {
-          a(localavci);
-          long l1 = localavci.jdField_a_of_type_Avcn.jdField_a_of_type_ArrayOfInt[i];
+          a(localawtv);
+          long l1 = localawtv.jdField_a_of_type_Awua.jdField_a_of_type_ArrayOfInt[i];
           long l2 = paramMessageForPtt.fileSize + l1;
-          avcn localavcn = avcm.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localavci.jdField_a_of_type_Int);
-          if (l2 > localavcn.jdField_a_of_type_ArrayOfInt[i])
+          awua localawua = awtz.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localawtv.jdField_a_of_type_Int);
+          if (l2 > localawua.jdField_a_of_type_ArrayOfInt[i])
           {
-            localavci.jdField_a_of_type_Avcn.jdField_a_of_type_ArrayOfInt[i] = localavcn.jdField_a_of_type_ArrayOfInt[i];
+            localawtv.jdField_a_of_type_Awua.jdField_a_of_type_ArrayOfInt[i] = localawua.jdField_a_of_type_ArrayOfInt[i];
             if (paramInt != 1) {
               break label316;
             }
-            localavci.d += 1;
+            localawtv.d += 1;
             if (QLog.isDevelopLevel()) {
-              QLog.d("PTTPreDownloader", 4, "consume sesion:" + localavci.jdField_a_of_type_Int + " netType:" + i + ", " + l1 + " + " + paramMessageForPtt.fileSize + " = " + localavci.jdField_a_of_type_Avcn.jdField_a_of_type_ArrayOfInt[i]);
+              QLog.d("PTTPreDownloader", 4, "consume sesion:" + localawtv.jdField_a_of_type_Int + " netType:" + i + ", " + l1 + " + " + paramMessageForPtt.fileSize + " = " + localawtv.jdField_a_of_type_Awua.jdField_a_of_type_ArrayOfInt[i]);
             }
             bool1 = true;
             return bool1;
             if (paramMessageForPtt.istroop == 1)
             {
-              localavci = this.b;
+              localawtv = this.b;
               break;
             }
             if (paramMessageForPtt.istroop != 3000) {
               break label389;
             }
-            localavci = this.c;
+            localawtv = this.c;
             break;
             label289:
             i = 0;
             break label45;
           }
-          localavci.jdField_a_of_type_Avcn.jdField_a_of_type_ArrayOfInt[i] = ((int)l2);
+          localawtv.jdField_a_of_type_Awua.jdField_a_of_type_ArrayOfInt[i] = ((int)l2);
           continue;
           if (paramInt != 3) {
             continue;
@@ -345,13 +345,13 @@ public class PTTPreDownloadStrategy
         }
         finally {}
         label316:
-        localavci.e += 1;
+        localawtv.e += 1;
         continue;
         label336:
         bool1 = bool2;
         if (QLog.isDevelopLevel())
         {
-          QLog.d("PTTPreDownloader", 4, "consume sesion:" + localavci.jdField_a_of_type_Int + " not preDownload");
+          QLog.d("PTTPreDownloader", 4, "consume sesion:" + localawtv.jdField_a_of_type_Int + " not preDownload");
           bool1 = bool2;
         }
       }
@@ -360,9 +360,9 @@ public class PTTPreDownloadStrategy
   
   public void b()
   {
-    this.jdField_a_of_type_Avci = new avci(1);
-    this.b = new avci(3);
-    this.c = new avci(2);
+    this.jdField_a_of_type_Awtv = new awtv(1);
+    this.b = new awtv(3);
+    this.c = new awtv(2);
   }
   
   public boolean b(MessageForPtt paramMessageForPtt)
@@ -371,28 +371,28 @@ public class PTTPreDownloadStrategy
     if (paramMessageForPtt.estimatedSize <= 0L) {
       return false;
     }
-    avci localavci = null;
+    awtv localawtv = null;
     int i;
     if (paramMessageForPtt.istroop == 0)
     {
-      localavci = this.jdField_a_of_type_Avci;
-      if (localavci == null) {
+      localawtv = this.jdField_a_of_type_Awtv;
+      if (localawtv == null) {
         break label266;
       }
-      i = ayta.a().a();
+      i = baqx.a().a();
     }
     for (;;)
     {
       try
       {
-        long l1 = localavci.jdField_a_of_type_Avcn.jdField_a_of_type_ArrayOfInt[i];
-        localavci.jdField_a_of_type_Avcn.jdField_a_of_type_ArrayOfInt[i] += (int)(paramMessageForPtt.estimatedSize - paramMessageForPtt.fileSize);
+        long l1 = localawtv.jdField_a_of_type_Awua.jdField_a_of_type_ArrayOfInt[i];
+        localawtv.jdField_a_of_type_Awua.jdField_a_of_type_ArrayOfInt[i] += (int)(paramMessageForPtt.estimatedSize - paramMessageForPtt.fileSize);
         long l2 = paramMessageForPtt.estimatedSize;
         paramMessageForPtt.estimatedSize = 0L;
         bool1 = bool2;
         if (QLog.isDevelopLevel())
         {
-          QLog.d("PTTPreDownloader", 4, "fixEstimatedSize sesion:" + localavci.jdField_a_of_type_Int + " net:" + i + ", " + l1 + " + " + l2 + " - " + paramMessageForPtt.fileSize + " = " + localavci.jdField_a_of_type_Avcn.jdField_a_of_type_ArrayOfInt[i] + ", PttSize:" + paramMessageForPtt.fileSize);
+          QLog.d("PTTPreDownloader", 4, "fixEstimatedSize sesion:" + localawtv.jdField_a_of_type_Int + " net:" + i + ", " + l1 + " + " + l2 + " - " + paramMessageForPtt.fileSize + " = " + localawtv.jdField_a_of_type_Awua.jdField_a_of_type_ArrayOfInt[i] + ", PttSize:" + paramMessageForPtt.fileSize);
           bool1 = bool2;
         }
         return bool1;
@@ -400,13 +400,13 @@ public class PTTPreDownloadStrategy
       finally {}
       if (paramMessageForPtt.istroop == 1)
       {
-        localavci = this.b;
+        localawtv = this.b;
         break;
       }
       if (paramMessageForPtt.istroop != 3000) {
         break;
       }
-      localavci = this.c;
+      localawtv = this.c;
       break;
       label266:
       boolean bool1 = false;
@@ -425,7 +425,7 @@ public class PTTPreDownloadStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.preop.PTTPreDownloadStrategy
  * JD-Core Version:    0.7.0.1
  */

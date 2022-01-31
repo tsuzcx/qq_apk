@@ -1,30 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.statistics.thread.SuspendThreadManager;
 
 public class achc
-  implements DialogInterface.OnClickListener
 {
-  public achc(TroopInfoActivity paramTroopInfoActivity) {}
+  public achc(ChatFragment paramChatFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.bOwner) {}
-    for (String str1 = "0";; str1 = "1")
+    if ((ChatFragment.b()) && (this.a.jdField_a_of_type_Boolean))
     {
-      axqy.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "0", "");
-      paramDialogInterface.dismiss();
-      return;
+      bdjd.b("AIO_Start_cost", null);
+      SuspendThreadManager.a().c();
+      bdjd.a("AIO_onDrawView", "AIO_SysMsgCost");
+      ChatFragment.a(this.a);
+      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("uintype", -1) == 1008)
+      {
+        String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
+        bdel.a("pubAcc_aio_open", null, str);
+        bdel.a("pubAcc_structMsg_display", null, str);
+      }
+      ChatFragment.a(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achc
  * JD-Core Version:    0.7.0.1
  */

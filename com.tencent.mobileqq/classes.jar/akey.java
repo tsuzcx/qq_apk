@@ -1,11 +1,31 @@
-public class akey
-  implements ajte
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.widget.Switch;
+
+class akey
+  extends View.AccessibilityDelegate
 {
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  akey(akev paramakev) {}
+  
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  {
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    if (paramView != null)
+    {
+      paramView = (Switch)paramView.findViewById(2131363726);
+      if ((paramView != null) && (paramView.getVisibility() != 8))
+      {
+        paramAccessibilityNodeInfo.setCheckable(true);
+        paramAccessibilityNodeInfo.setChecked(paramView.isChecked());
+        paramAccessibilityNodeInfo.setClassName(Switch.class.getName());
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akey
  * JD-Core Version:    0.7.0.1
  */

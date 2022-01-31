@@ -1,68 +1,93 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Iterator;
+import java.util.List;
 
-final class bhka
-  implements ServiceConnection
+public class bhka
+  implements bhjy
 {
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  private bhjz jdField_a_of_type_Bhjz;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public bhka(bhjz parambhjz)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "onServiceConnected");
-    }
-    if (bhjz.a() == null)
+    this.jdField_a_of_type_Bhjz = parambhjz;
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_Boolean) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "return WeakReference<OnPluginInterfaceReadyListener> is null");
-      }
-      bhjz.a();
       return;
-    }
-    paramComponentName = (bhkb)bhjz.a().get();
-    if (paramComponentName == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "return OnPluginManagerLoadedListener is null");
-      }
-      bhjz.a();
-      return;
-    }
-    if ((paramIBinder != null) && (paramIBinder.isBinderAlive()) && (paramIBinder.pingBinder()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "binder alive");
-      }
-      bhjz.a = new bhjd(bhkl.a(paramIBinder));
-      paramComponentName.onQzonePluginClientReady(bhjz.a);
+      this.jdField_a_of_type_Boolean = true;
+    } while (this.jdField_a_of_type_Bhjz == null);
+    this.jdField_a_of_type_Bhjz.a(a(), null);
+  }
+  
+  private void c()
+  {
+    Object localObject = BaseApplication.getContext().getPackageManager();
+    if (localObject != null) {
+      localObject = ((PackageManager)localObject).getInstalledPackages(8192).iterator();
     }
     for (;;)
     {
-      bhjz.a();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("QZonePluginManger", 2, "binder not alive");
+      PackageInfo localPackageInfo;
+      if (((Iterator)localObject).hasNext())
+      {
+        localPackageInfo = (PackageInfo)((Iterator)localObject).next();
+        if (this.jdField_a_of_type_Boolean) {}
       }
-      paramComponentName.onQzonePluginClientReady(null);
+      else
+      {
+        return;
+      }
+      if (this.jdField_a_of_type_Bhjz != null) {
+        this.jdField_a_of_type_Bhjz.b(a(), localPackageInfo);
+      }
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  private void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "onServiceDisconnected");
-    }
-    if (bhjz.a != null)
+    if (!this.jdField_a_of_type_Boolean) {}
+    do
     {
-      bhjz.a.b();
-      bhjz.a = null;
+      return;
+      this.jdField_a_of_type_Boolean = false;
+    } while (this.jdField_a_of_type_Bhjz == null);
+    this.jdField_a_of_type_Bhjz.c(a(), null);
+  }
+  
+  public String a()
+  {
+    return "App";
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    try
+    {
+      b();
+      c();
+      label16:
+      d();
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label16;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhka
  * JD-Core Version:    0.7.0.1
  */

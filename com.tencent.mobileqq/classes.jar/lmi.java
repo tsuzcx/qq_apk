@@ -1,49 +1,29 @@
-import android.graphics.Path;
-import android.graphics.PathMeasure;
-import android.graphics.PointF;
+import com.tencent.av.camera.CameraUtils;
+import java.util.Observable;
 
-public abstract class lmi
-  extends lly
+public class lmi
+  extends Observable
 {
-  protected Path a;
-  protected PathMeasure a;
+  public lmi(CameraUtils paramCameraUtils) {}
   
-  public lmi()
+  public void a(Object[] paramArrayOfObject)
   {
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure = new PathMeasure(this.jdField_a_of_type_AndroidGraphicsPath, false);
-  }
-  
-  public abstract void a();
-  
-  public void a(float paramFloat1, float paramFloat2)
-  {
-    super.a(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
-    a();
-  }
-  
-  public void b(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPath.quadTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y, (this.jdField_a_of_type_AndroidGraphicsPointF.x + paramFloat1) / 2.0F, (this.jdField_a_of_type_AndroidGraphicsPointF.y + paramFloat2) / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
-    a();
-  }
-  
-  public void c(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_AndroidGraphicsPointF.x = paramFloat1;
-    this.jdField_a_of_type_AndroidGraphicsPointF.y = paramFloat2;
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y);
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.setPath(this.jdField_a_of_type_AndroidGraphicsPath, false);
-    a();
+    try
+    {
+      super.setChanged();
+      super.notifyObservers(paramArrayOfObject);
+      return;
+    }
+    finally
+    {
+      paramArrayOfObject = finally;
+      throw paramArrayOfObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmi
  * JD-Core Version:    0.7.0.1
  */

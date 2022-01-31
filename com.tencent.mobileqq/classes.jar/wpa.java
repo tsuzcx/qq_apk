@@ -1,50 +1,22 @@
-import android.os.Handler;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.1;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.2;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.3;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.4;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.5;
-import com.tencent.biz.subscribe.component.base.ComponentAdapter.1.6;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter.4.1;
 
 public class wpa
-  extends RecyclerView.AdapterDataObserver
+  implements View.OnClickListener
 {
-  wpa(woz paramwoz) {}
+  public wpa(StoryListPresenter.4.1 param1) {}
   
-  public void onChanged()
+  public void onClick(View paramView)
   {
-    woz.a(this.a).post(new ComponentAdapter.1.1(this));
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
-  {
-    woz.a(this.a).post(new ComponentAdapter.1.2(this, paramInt1, paramInt2));
-  }
-  
-  public void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
-  {
-    woz.a(this.a).post(new ComponentAdapter.1.3(this, paramInt1, paramInt2, paramObject));
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    woz.a(this.a).post(new ComponentAdapter.1.4(this, paramInt1, paramInt2));
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    woz.a(this.a).post(new ComponentAdapter.1.6(this, paramInt1, paramInt2));
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    woz.a(this.a).post(new ComponentAdapter.1.5(this, paramInt1, paramInt2));
+    wta.a("home_page", "clk_up_close", 0, 0, new String[0]);
+    this.a.a.this$0.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpa
  * JD-Core Version:    0.7.0.1
  */

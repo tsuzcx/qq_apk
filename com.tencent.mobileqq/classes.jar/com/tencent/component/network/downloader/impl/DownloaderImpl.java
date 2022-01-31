@@ -2,8 +2,6 @@ package com.tencent.component.network.downloader.impl;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.Response;
 import com.tencent.component.network.downloader.DownloadReport;
 import com.tencent.component.network.downloader.DownloadRequest;
 import com.tencent.component.network.downloader.DownloadResult;
@@ -12,6 +10,7 @@ import com.tencent.component.network.downloader.Downloader;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.component.network.downloader.Downloader.StreamDownloadListener;
+import com.tencent.component.network.downloader.PreConnectManager;
 import com.tencent.component.network.downloader.common.Utils;
 import com.tencent.component.network.downloader.handler.ContentHandler;
 import com.tencent.component.network.downloader.handler.FileHandler;
@@ -31,7 +30,6 @@ import com.tencent.component.network.utils.MultiHashMap;
 import com.tencent.component.network.utils.http.HttpUtil;
 import com.tencent.component.network.utils.http.HttpUtil.ClientOptions;
 import com.tencent.component.network.utils.http.HttpUtil.RequestOptions;
-import com.tencent.component.network.utils.http.base.QZoneHttp2Client;
 import com.tencent.component.network.utils.http.base.QZoneHttpClient;
 import com.tencent.component.network.utils.http.pool.CustomDnsResolve;
 import com.tencent.component.network.utils.thread.Future;
@@ -48,6 +46,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import okhttp3.OkHttpClient;
+import okhttp3.Request.Builder;
+import okhttp3.Response;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 
@@ -74,7 +75,7 @@ public class DownloaderImpl
   private final HashMap<String, Future<DownloadResult>> mFutures = new HashMap();
   private QZoneHttpClient mHttpClient;
   private DownloaderImpl.LockManager mLockManager = new DownloaderImpl.LockManager(this, null);
-  private QZoneHttp2Client mOkClient;
+  private OkHttpClient mOkClient;
   private boolean mPaused = false;
   private final MultiHashMap<String, DownloadRequest> mPendingRequests = new MultiHashMap();
   private final DownloaderImpl.ThreadPoolCache mThreadPoolCache = sThreadPoolCache;
@@ -342,6 +343,22 @@ public class DownloaderImpl
     return localFileHandler.handleFile(paramDownloadResult.getPath(), paramDownloadRequest.getPath());
   }
   
+  private boolean handleRangeModeFail(DownloadTask paramDownloadTask)
+  {
+    if ((paramDownloadTask instanceof RangeDownloadTask))
+    {
+      paramDownloadTask = paramDownloadTask.getDownloadRequest();
+      if (paramDownloadTask != null)
+      {
+        QDLog.w("downloader_RANGE", "download fail, retry on  StrictMode, url:" + paramDownloadTask.getUrl());
+        paramDownloadTask.mode = Downloader.DownloadMode.StrictMode;
+        download(paramDownloadTask, true);
+        return true;
+      }
+    }
+    return false;
+  }
+  
   private boolean isDownloading(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -459,7 +476,7 @@ public class DownloaderImpl
     }
   }
   
-  private QZoneHttp2Client obtainHttp2Client()
+  private OkHttpClient obtainHttp2Client()
   {
     if (this.mOkClient != null) {
       return this.mOkClient;
@@ -468,8 +485,8 @@ public class DownloaderImpl
     {
       if (this.mOkClient != null)
       {
-        QZoneHttp2Client localQZoneHttp2Client = this.mOkClient;
-        return localQZoneHttp2Client;
+        OkHttpClient localOkHttpClient = this.mOkClient;
+        return localOkHttpClient;
       }
     }
     finally {}
@@ -478,7 +495,10 @@ public class DownloaderImpl
     ((HttpUtil.ClientOptions)localObject2).maxConnection = MAX_CONNECTION;
     ((HttpUtil.ClientOptions)localObject2).maxConnectionPerRoute = MAX_CONNECTION_PER_ROUTE;
     ((HttpUtil.ClientOptions)localObject2).timeToLive = TIME_TO_LIVE_HTTP2;
-    this.mOkClient = HttpUtil.createHttp2Client((HttpUtil.ClientOptions)localObject2);
+    CustomDnsResolve localCustomDnsResolve = new CustomDnsResolve();
+    localCustomDnsResolve.addIpStrategy(this.pDirectIPConfig);
+    localCustomDnsResolve.addIpStrategy(this.pBackupIPConfig);
+    this.mOkClient = HttpUtil.createHttp2Client((HttpUtil.ClientOptions)localObject2, localCustomDnsResolve);
     localObject2 = this.mOkClient;
     return localObject2;
   }
@@ -694,38 +714,50 @@ public class DownloaderImpl
   
   public boolean download(DownloadRequest paramDownloadRequest, boolean paramBoolean)
   {
+    boolean bool3 = true;
+    boolean bool2 = false;
     Object localObject = paramDownloadRequest.getUrl();
+    boolean bool1;
     if ((!Utils.checkUrl((String)localObject)) || (paramDownloadRequest.getPaths() == null)) {
-      return false;
+      bool1 = false;
     }
-    String str = generateUrlKey((String)localObject);
-    QDLog.i("downloader", "download :" + (String)localObject + " urlKey:" + str + " listener:" + paramDownloadRequest.getListener());
-    boolean bool;
-    int i;
-    if ((addPendingRequest((String)localObject, str, paramDownloadRequest)) && (!isDownloading((String)localObject)))
+    String str;
+    do
     {
-      if (paramDownloadRequest.range > 0L) {
-        paramDownloadRequest.addParam("Range", "bytes=" + paramDownloadRequest.range);
-      }
-      bool = Config.shouldUseHttp2(Utils.getDomin((String)localObject));
-      if ((Config.getNetworkStackType() != 2) && (Config.getNetworkStackType() != 3)) {
-        break label302;
-      }
+      do
+      {
+        return bool1;
+        str = generateUrlKey((String)localObject);
+        QDLog.i("downloader", "download :" + (String)localObject + " urlKey:" + str + " listener:" + paramDownloadRequest.getListener());
+        bool1 = bool3;
+      } while (!addPendingRequest((String)localObject, str, paramDownloadRequest));
+      bool1 = bool3;
+    } while (isDownloading((String)localObject));
+    if (paramDownloadRequest.range > 0L) {
+      paramDownloadRequest.addParam("Range", "bytes=" + paramDownloadRequest.range);
+    }
+    bool3 = Config.shouldUseHttp2(Utils.getDomin((String)localObject));
+    int i;
+    if ((Config.getNetworkStackType() == 2) || (Config.getNetworkStackType() == 3))
+    {
       i = 1;
-      if ((!bool) || (i != 0)) {
-        break label307;
+      bool1 = bool2;
+      if (bool3)
+      {
+        bool1 = bool2;
+        if (i == 0) {
+          bool1 = true;
+        }
       }
-      bool = true;
-      label180:
-      if (!bool) {
-        break label313;
+      if ((paramDownloadRequest.mode != Downloader.DownloadMode.RangeMode) && (!bool1)) {
+        break label359;
       }
       obtainHttp2Client();
-      label190:
+      label226:
       if (paramDownloadRequest.mode != Downloader.DownloadMode.StrictMode) {
-        break label321;
+        break label367;
       }
-      localObject = new StrictDownloadTask(this.mContext, this.mOkClient, this.mHttpClient, (String)localObject, str, paramBoolean, bool);
+      localObject = new StrictDownloadTask(this.mContext, this.mOkClient, this.mHttpClient, (String)localObject, str, paramBoolean, bool1);
       ((DownloadTask)localObject).setAttemptCount(12);
     }
     for (;;)
@@ -733,22 +765,29 @@ public class DownloaderImpl
       if (paramDownloadRequest.needMd5) {
         ((DownloadTask)localObject).setNeedMd5();
       }
+      if (paramDownloadRequest.onResponseDataListener != null) {
+        ((DownloadTask)localObject).setResponseDataListener(paramDownloadRequest.onResponseDataListener);
+      }
       ((DownloadTask)localObject).setHttpParams(paramDownloadRequest.getParams());
       ((DownloadTask)localObject).setHandler(this, this.pDirectIPConfig, this.pBackupIPConfig, this.pPortConfigStrategy, this.pResumeTransfer, this.pReportHandler, this.pExternalReportHandler, this.pNetworkFlowStatistics, this.pTmpFileCache);
       enqueueTask((DownloadTask)localObject);
       return true;
-      label302:
       i = 0;
       break;
-      label307:
-      bool = false;
-      break label180;
-      label313:
+      label359:
       obtainHttpClient();
-      break label190;
-      label321:
-      localObject = new FastDownloadTask(this.mContext, this.mOkClient, this.mHttpClient, (String)localObject, str, paramBoolean, bool);
-      ((DownloadTask)localObject).setAttemptCount(8);
+      break label226;
+      label367:
+      if (paramDownloadRequest.mode == Downloader.DownloadMode.RangeMode)
+      {
+        localObject = new RangeDownloadTask(this.mContext, this.mOkClient, this.mHttpClient, (String)localObject, str, paramBoolean, paramDownloadRequest.rangeNumber, paramDownloadRequest.getFileSizeForRangeMode());
+        ((DownloadTask)localObject).setDownloadRequest(paramDownloadRequest);
+      }
+      else
+      {
+        localObject = new FastDownloadTask(this.mContext, this.mOkClient, this.mHttpClient, (String)localObject, str, paramBoolean, bool1);
+        ((DownloadTask)localObject).setAttemptCount(8);
+      }
     }
   }
   
@@ -852,6 +891,11 @@ public class DownloaderImpl
     this.mPaused = true;
   }
   
+  public void preConnectHost(ArrayList<String> paramArrayList)
+  {
+    PreConnectManager.connectHost(obtainHttp2Client(), paramArrayList);
+  }
+  
   public String prepareRequestUrl(String paramString)
   {
     if (this.pProcessStrategy == null) {
@@ -878,7 +922,7 @@ public class DownloaderImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.DownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

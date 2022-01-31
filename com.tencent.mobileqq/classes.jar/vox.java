@@ -1,20 +1,26 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.content.Intent;
+import android.os.Bundle;
 
-class vox
-  implements FileFilter
+public class vox
+  implements vno
 {
-  vox(vow paramvow) {}
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public boolean accept(File paramFile)
-  {
-    paramFile = paramFile.getName();
-    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp"));
-  }
+  public void a(Bundle paramBundle1, Bundle paramBundle2) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vox
  * JD-Core Version:    0.7.0.1
  */

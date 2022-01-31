@@ -1,238 +1,80 @@
-import android.content.Context;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfo;
+import android.graphics.drawable.DrawableContainer.DrawableContainerState;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class vvq
-  implements vvs
+  extends vox
 {
-  public static final String[] a;
-  private AppInterface a;
-  public boolean a;
-  public boolean b;
+  public vvq(vvc paramvvc) {}
   
-  static
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "vivo X20A" };
+    Object localObject = this.a.a();
+    if ((localObject == null) || (!this.a.jdField_a_of_type_Vld.equals(localObject))) {}
+    do
+    {
+      return;
+      if (paramInt1 == this.a.hashCode())
+      {
+        wsv.b(this.a.b, "onActivityResult, onChooseFriendResult");
+        localObject = ((StoryPlayerGroupHolder)this.a.a()).a();
+        if (localObject != null) {
+          ((VideoViewVideoHolder)localObject).c(false);
+        }
+        if (paramInt2 == -1) {
+          vhx.a().a(paramIntent.getExtras());
+        }
+      }
+      if ((paramInt1 == 10002) && (paramInt2 == -1))
+      {
+        ukd.b(this.a.b + " onActivityResult");
+        QQToast.a(this.a.b(), this.a.b().getString(2131720047), 1).a();
+      }
+      if ((paramInt1 == 467) && (paramInt2 == -1) && (vvc.a(this.a) != null)) {
+        vvc.a(this.a).a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.b, 2, new Object[] { "BottomVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
+      }
+    } while (this.a.jdField_a_of_type_Vdt == null);
+    this.a.jdField_a_of_type_Vdt.a(paramInt1, paramInt2, paramIntent);
   }
   
-  public vvq(AppInterface paramAppInterface, boolean paramBoolean1, boolean paramBoolean2)
+  public void d()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.b = paramBoolean2;
+    super.d();
+    if ((bngs.a) && (!azgq.a(this.a.jdField_a_of_type_AndroidViewView.getContext())) && (vvc.a(this.a) - xod.a(this.a.jdField_a_of_type_AndroidViewView.getContext(), 9.0F) > 0))
+    {
+      Object localObject = vvc.a(this.a).getBackground();
+      if ((localObject instanceof StateListDrawable))
+      {
+        localObject = (DrawableContainer.DrawableContainerState)((StateListDrawable)localObject).getConstantState();
+        if (localObject != null) {
+          ((GradientDrawable)localObject.getChildren()[0]).setColor(this.a.jdField_a_of_type_AndroidViewView.getResources().getColor(2131167196));
+        }
+      }
+    }
   }
   
-  public void a(@NonNull ArrayList<vvt> paramArrayList, @NonNull Context paramContext)
+  public void g()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Doodle_Strokes_CfgLineLayerStrokeStrategy", 2, "createHorizontalStroke");
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      paramArrayList.add(new vvt(paramContext.getResources().getDrawable(2130845883), 1, 0));
-    }
-    Iterator localIterator;
-    Object localObject1;
-    Object localObject9;
-    vvt localvvt2;
-    Object localObject10;
-    Object localObject3;
-    Object localObject11;
-    Object localObject2;
-    Object localObject12;
-    vvt localvvt1;
-    Object localObject4;
-    Object localObject5;
-    Object localObject6;
-    Object localObject7;
-    Object localObject8;
-    int i;
-    if (this.b)
-    {
-      localIterator = null;
-      localObject1 = null;
-      localObject9 = null;
-      localvvt2 = null;
-      localObject10 = null;
-      localObject3 = null;
-      localObject11 = null;
-      localObject2 = null;
-      localObject12 = null;
-      localvvt1 = null;
-      boolean bool = axle.e();
-      localObject4 = localObject12;
-      localObject5 = localObject11;
-      localObject6 = localObject10;
-      localObject7 = localObject9;
-      localObject8 = localIterator;
-      if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
-      {
-        localObject4 = localObject12;
-        localObject5 = localObject11;
-        localObject6 = localObject10;
-        localObject7 = localObject9;
-        localObject8 = localIterator;
-        if (bool)
-        {
-          localObject4 = PtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface).b();
-          if ((localObject4 != null) && (!((ArrayList)localObject4).isEmpty()))
-          {
-            localIterator = ((ArrayList)localObject4).iterator();
-            do
-            {
-              localObject4 = localvvt1;
-              localObject5 = localObject2;
-              localObject6 = localObject3;
-              localObject7 = localvvt2;
-              localObject8 = localObject1;
-              if (!localIterator.hasNext()) {
-                break;
-              }
-              localObject4 = (PtvTemplateManager.DoodleInfo)localIterator.next();
-            } while (("doodle_highlighter".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName)) && (Build.VERSION.SDK_INT < 18));
-            i = Integer.valueOf(((PtvTemplateManager.DoodleInfo)localObject4).doodleId).intValue();
-            if ("doodle_image_family".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-            {
-              localObject4 = new vvt(paramContext.getResources().getDrawable(2130844247), 2, i);
-              localObject2 = localObject3;
-              localObject3 = localObject1;
-              localObject1 = localObject4;
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      localObject4 = localObject3;
-      localObject3 = localObject2;
-      localObject2 = localObject1;
-      localObject1 = localObject4;
-      break;
-      if ("doodle_image_mouth".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-      {
-        localvvt1 = new vvt(paramContext.getResources().getDrawable(2130844248), 2, i);
-        localObject4 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-      }
-      else if ("doodle_image_xin".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-      {
-        localObject4 = new vvt(paramContext.getResources().getDrawable(2130844249), 2, i);
-        localObject3 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject4;
-      }
-      else if ("doodle_highlighter".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-      {
-        localObject4 = new vvt(paramContext.getResources().getDrawable(2130844246), 2, i);
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-      }
-      else if ("doodle_fireworks".equals(((PtvTemplateManager.DoodleInfo)localObject4).doodleName))
-      {
-        localvvt2 = new vvt(paramContext.getResources().getDrawable(2130844245), 2, i);
-        localObject4 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-        continue;
-        localObject4 = localObject12;
-        localObject5 = localObject11;
-        localObject6 = localObject10;
-        localObject7 = localObject9;
-        localObject8 = localIterator;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Doodle_Strokes_CfgLineLayerStrokeStrategy", 2, "createHorizontalStroke doodleInfo is NUll !");
-          localObject8 = localIterator;
-          localObject7 = localObject9;
-          localObject6 = localObject10;
-          localObject5 = localObject11;
-          localObject4 = localObject12;
-        }
-        i = 0;
-        while (i < 4)
-        {
-          paramArrayList.add(new vvt(paramContext.getResources().getDrawable(vvt.b[i]), 0, vvt.a[i]));
-          i += 1;
-        }
-        paramArrayList.add(new vvt(paramContext.getResources().getDrawable(2130845875), 0, -1));
-        int k = 0;
-        paramContext = jdField_a_of_type_ArrayOfJavaLangString;
-        int m = paramContext.length;
-        i = 0;
-        int j = k;
-        if (i < m)
-        {
-          if (paramContext[i].equals(Build.MODEL)) {
-            j = 1;
-          }
-        }
-        else
-        {
-          if (j == 0) {
-            break label714;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("CfgLineLayerStrokeStrategy", 2, "createHorizontalStroke black model " + Build.MODEL);
-          }
-        }
-        for (;;)
-        {
-          return;
-          i += 1;
-          break;
-          label714:
-          if (localObject8 != null) {
-            paramArrayList.add(localObject8);
-          }
-          if (localObject7 != null) {
-            paramArrayList.add(localObject7);
-          }
-          if (localObject6 != null) {
-            paramArrayList.add(localObject6);
-          }
-          if (localObject5 != null) {
-            paramArrayList.add(localObject5);
-          }
-          if (localObject4 != null)
-          {
-            paramArrayList.add(localObject4);
-            return;
-            i = 0;
-            while (i < vvt.a.length)
-            {
-              if (vvt.a[i] != -9576193) {
-                paramArrayList.add(new vvt(paramContext.getResources().getDrawable(vvt.b[i]), 0, vvt.a[i]));
-              }
-              i += 1;
-            }
-          }
-        }
-      }
-      else
-      {
-        localObject4 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-      }
+    super.g();
+    if (vvc.a(this.a) != null) {
+      vvc.a(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvq
  * JD-Core Version:    0.7.0.1
  */

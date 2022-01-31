@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import ayhf;
-import ayhg;
+import bafb;
+import bafc;
 import java.lang.ref.WeakReference;
 
 public class ConfigSetting$LocalWtTicketPromise$1
   implements Runnable
 {
-  public ConfigSetting$LocalWtTicketPromise$1(ayhg paramayhg) {}
+  public ConfigSetting$LocalWtTicketPromise$1(bafc parambafc) {}
   
   public void run()
   {
-    ayhf localayhf = (ayhf)ayhg.a(this.this$0).get();
-    if (localayhf != null) {
-      ayhf.a(localayhf, ayhg.a(this.this$0));
+    bafb localbafb = (bafb)bafc.a(this.this$0).get();
+    if (localbafb != null) {
+      bafb.a(localbafb, bafc.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSetting.LocalWtTicketPromise.1
  * JD-Core Version:    0.7.0.1
  */

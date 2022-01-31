@@ -1,8 +1,8 @@
 package com.tencent.gdtad.views.videoceiling;
 
 import android.text.TextUtils;
+import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
 import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.views.canvas.GdtCanvasData;
 import com.tencent.gdtad.views.video.GdtVideoData;
 import java.io.Serializable;
 
@@ -14,7 +14,7 @@ public class GdtVideoCeilingData
   public static final int STYLE_CANVAS = 4;
   public static final int STYLE_WEB = 1;
   private GdtAd ad;
-  private GdtCanvasData canvasData;
+  private AdCanvasData canvasData;
   private int mStyle = -2147483648;
   private GdtVideoData videoData;
   private String webUrl;
@@ -33,7 +33,7 @@ public class GdtVideoCeilingData
     return this.ad;
   }
   
-  public GdtCanvasData getCanvasData()
+  public AdCanvasData getCanvasData()
   {
     return this.canvasData;
   }
@@ -69,9 +69,9 @@ public class GdtVideoCeilingData
     this.videoData.setAd(paramGdtAd);
   }
   
-  public void setCanvasData(GdtCanvasData paramGdtCanvasData)
+  public void setCanvasData(AdCanvasData paramAdCanvasData)
   {
-    this.canvasData = paramGdtCanvasData;
+    this.canvasData = paramAdCanvasData;
   }
   
   public void setStyle(int paramInt)
@@ -94,7 +94,7 @@ public class GdtVideoCeilingData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtVideoCeilingData
  * JD-Core Version:    0.7.0.1
  */

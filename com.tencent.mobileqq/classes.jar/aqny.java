@@ -1,48 +1,62 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqny
+class aqny
+  extends aqou
 {
-  private static int a;
-  public ConcurrentHashMap<Long, aqob> a;
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  static
+  public aqny(aqnw paramaqnw, MessageRecord paramMessageRecord)
   {
-    jdField_a_of_type_Int = 900000;
+    super(paramaqnw);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
   }
   
-  private aqny()
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
+  void a(String paramString, int paramInt) {}
   
-  public static final aqny a()
+  void a(String paramString, int paramInt, aqot paramaqot)
   {
-    return aqoa.a();
-  }
-  
-  public aqob a(long paramLong)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong))) {
-      return (aqob)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
+    if ("1".equals(this.g))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      }
+      paramaqot.a(aqnw.a(this.jdField_a_of_type_Long, false), false);
+      return;
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    aqmd.a().a().a(" LongVideoUrlCacheManager", 4, "LongVideoUrlCacheManager,clearCache");
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-  }
-  
-  public void a(long paramLong1, String[] paramArrayOfString, long paramLong2, MessageForShortVideo paramMessageForShortVideo, int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramLong1), new aqob(this, paramArrayOfString, paramLong2, paramMessageForShortVideo, paramInt, paramString));
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Buddy2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file uuid is null");
+      }
+      paramaqot.a(aqnw.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    aqnm localaqnm = aqnw.a(this.jdField_a_of_type_Aqnw).a().a();
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_JavaLangString + "]");
+    }
+    localaqnm.a(paramString, paramInt, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, 3, new aqnz(this, paramString, paramaqot));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqny
  * JD-Core Version:    0.7.0.1
  */

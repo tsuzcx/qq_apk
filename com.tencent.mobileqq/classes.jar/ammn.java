@@ -1,149 +1,80 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
-import com.tencent.mobileqq.conditionsearch.data.AddressData.NO_LIMIT_ADDRESS;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.widget.FormSimpleItem;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.io.File;
+import mqq.app.ISecurityFileHelper;
 
 public class ammn
-  implements amne
+  extends amml
+  implements ISecurityFileHelper
 {
-  public ammn(LocationSelectActivity paramLocationSelectActivity) {}
-  
-  public void a()
+  public ammn()
   {
-    LocationSelectActivity.a(this.a).setRightTextColor(2);
-    this.a.jdField_a_of_type_Bfpc.dismiss();
+    super(null);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  protected String a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView == null) {
-      return;
-    }
-    switch (paramInt1)
+    return "QQFavoriteMigration";
+  }
+  
+  public String declareBusinessFileName()
+  {
+    return "QQ_Favorite";
+  }
+  
+  public boolean doMigrate(File paramFile)
+  {
+    QLog.d("ISecurityFileHelper", 1, "Move QQFavorite file start");
+    File localFile = new File(aljq.bi);
+    if ((localFile.exists()) && (paramFile.isDirectory()))
     {
+      paramFile = ammj.a(localFile);
+      int j = paramFile.length;
+      int i = 0;
+      while (i < j)
+      {
+        localFile = paramFile[i];
+        String str = localFile.getName();
+        if ((str.length() > 4) && (str.matches("[0-9]{5}.*"))) {
+          bdcs.a(localFile.getAbsolutePath(), aljq.bi + ammj.a(str));
+        }
+        i += 1;
+      }
     }
-    label809:
-    label812:
-    for (;;)
+    a();
+    return true;
+  }
+  
+  public boolean needMigration()
+  {
+    if (a())
     {
-      LocationSelectActivity.a(this.a, LocationSelectActivity.a(this.a), LocationSelectActivity.a(this.a));
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(null);
-      this.a.jdField_a_of_type_ArrayOfInt[0] = paramInt2;
-      this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[0] = ((BaseAddress)((ArrayList)this.a.jdField_a_of_type_ArrayOfJavaLangObject[0]).get(paramInt2));
-      ArrayList localArrayList1 = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[0].getDataList();
-      if (localArrayList1.size() > 0)
-      {
-        this.a.jdField_a_of_type_ArrayOfJavaLangObject[1] = localArrayList1;
-        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = ((BaseAddress)localArrayList1.get(0));
-        this.a.jdField_a_of_type_ArrayOfInt[1] = 0;
-        localArrayList1 = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1].getDataList();
-        if (localArrayList1.size() > 0)
-        {
-          this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = localArrayList1;
-          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = ((BaseAddress)localArrayList1.get(0));
-          this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-        }
+      File localFile = new File(aljq.bi);
+      if ((localFile.exists()) && (localFile.isDirectory())) {
+        return true;
       }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_Int > 1)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(1);
-          this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(1, this.a.jdField_a_of_type_ArrayOfInt[1]);
-          if (this.a.jdField_a_of_type_Int == 3)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.a.jdField_a_of_type_ArrayOfInt[2]);
-          }
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(this);
-        break;
-        if (this.a.jdField_a_of_type_Int == 3)
-        {
-          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(3);
-          this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = null;
-          this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-          continue;
-          if (this.a.jdField_a_of_type_Int > 1)
-          {
-            this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = new AddressData.NO_LIMIT_ADDRESS(2);
-            this.a.jdField_a_of_type_ArrayOfJavaLangObject[1] = null;
-            this.a.jdField_a_of_type_ArrayOfInt[1] = 0;
-            if (this.a.jdField_a_of_type_Int == 3)
-            {
-              this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(3);
-              this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = null;
-              this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-            }
-          }
-        }
-      }
-      this.a.jdField_a_of_type_ArrayOfInt[1] = paramInt2;
-      this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(null);
-      try
-      {
-        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = ((BaseAddress)((ArrayList)this.a.jdField_a_of_type_ArrayOfJavaLangObject[1]).get(paramInt2));
-        localArrayList1 = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1].getDataList();
-        if (localArrayList1.size() > 0)
-        {
-          this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = localArrayList1;
-          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = ((BaseAddress)localArrayList1.get(0));
-          this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-          if (this.a.jdField_a_of_type_Int > 2)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(2);
-            this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setSelection(2, this.a.jdField_a_of_type_ArrayOfInt[2]);
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(this);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[1] = new BaseAddress("不限", "0", 2);
-          continue;
-          if (this.a.jdField_a_of_type_Int > 2)
-          {
-            this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = new AddressData.NO_LIMIT_ADDRESS(3);
-            this.a.jdField_a_of_type_ArrayOfJavaLangObject[2] = null;
-            this.a.jdField_a_of_type_ArrayOfInt[2] = 0;
-          }
-        }
-      }
-      ArrayList localArrayList2;
-      if (Collections.emptyList().equals(this.a.jdField_a_of_type_ArrayOfJavaLangObject[2]))
-      {
-        if (!QLog.isColorLevel()) {
-          break label809;
-        }
-        QLog.d("LocationSelectActivity", 2, "columnListArray at 2 is empty");
-        localArrayList2 = null;
-      }
-      for (;;)
-      {
-        if ((localArrayList2 == null) || (paramInt2 >= localArrayList2.size()) || (paramInt2 < 0)) {
-          break label812;
-        }
-        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchDataBaseAddress[2] = ((BaseAddress)localArrayList2.get(paramInt2));
-        this.a.jdField_a_of_type_ArrayOfInt[2] = paramInt2;
-        break;
-        localArrayList2 = (ArrayList)this.a.jdField_a_of_type_ArrayOfJavaLangObject[2];
-        continue;
-        localArrayList2 = null;
-      }
+      a();
     }
+    return false;
+  }
+  
+  public File oldBusinessDir(String paramString)
+  {
+    return null;
+  }
+  
+  public boolean oldBusinessDirExist(String paramString)
+  {
+    return false;
+  }
+  
+  public String[] reportHistoryFileInfo()
+  {
+    return new String[] { "0", "0" };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,147 +1,153 @@
-import android.content.res.Resources;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Formatter;
-import java.util.Locale;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ark.ArkAiDictMgr.1;
+import com.tencent.mobileqq.ark.ArkAiDictMgr.3;
+import com.tencent.mobileqq.ark.ArkAiDictMgr.4;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.ark.ArkRecommendLogic.ArkWordSegmentThread;
+import com.tencent.mobileqq.startup.step.UpdateArkSo;
+import com.tencent.wordsegment.WordSegment;
+import java.io.File;
 
 public class ania
 {
-  private static float jdField_a_of_type_Float = -1.0F;
-  private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder;
-  private static final SimpleDateFormat jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy年M月d日 hh:mm:ss");
-  private static final Date jdField_a_of_type_JavaUtilDate = new Date();
-  private static final Formatter jdField_a_of_type_JavaUtilFormatter;
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile boolean jdField_a_of_type_Boolean;
+  private java.lang.ref.WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  static
+  public ania(AppInterface paramAppInterface)
   {
-    jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-    jdField_a_of_type_JavaUtilFormatter = new Formatter(jdField_a_of_type_JavaLangStringBuilder, Locale.getDefault());
+    this.jdField_a_of_type_JavaLangRefWeakReference = new mqq.util.WeakReference(paramAppInterface);
   }
   
-  public static int a(float paramFloat)
+  public static anic a(AppInterface paramAppInterface, String paramString)
   {
-    if (jdField_a_of_type_Float < 0.0F) {
-      jdField_a_of_type_Float = anfj.a().a().a().getDisplayMetrics().density;
+    anic localanic = new anic();
+    localanic.jdField_a_of_type_JavaLangString = paramString;
+    ArkRecommendLogic.a().a(new ArkAiDictMgr.3(paramAppInterface, localanic, paramString));
+    return localanic;
+  }
+  
+  static String a()
+  {
+    return ArkAppCenter.b() + "/WordData/";
+  }
+  
+  public static String a(String paramString)
+  {
+    return a() + paramString;
+  }
+  
+  public static void a()
+  {
+    Object localObject = new File(a());
+    if (((File)localObject).isFile()) {
+      ((File)localObject).delete();
     }
-    return (int)(jdField_a_of_type_Float * paramFloat + 0.5F);
-  }
-  
-  public static int a(anga paramanga1, anga paramanga2)
-  {
-    int i = 0;
-    if (paramanga1 == paramanga2) {}
-    int j;
-    do
+    for (;;)
     {
-      do
+      return;
+      localObject = ((File)localObject).listFiles();
+      if (localObject != null)
       {
-        return i;
-        if (paramanga1 == null) {
-          return -1;
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
+        {
+          localObject[i].delete();
+          i += 1;
         }
-        if (paramanga2 == null) {
-          return 1;
-        }
-      } while (paramanga1.equals(paramanga2));
-      long l = paramanga1.d() - paramanga2.d();
-      if (l > 0L) {
-        return 1;
       }
-      if (l < 0L) {
-        return -1;
-      }
-      i = paramanga1.b() - paramanga2.b();
-      if (i > 0) {
-        return -1;
-      }
-      if (i < 0) {
-        return 1;
-      }
-      i = paramanga1.e() - paramanga2.e();
-      if (i > 0) {
-        return 1;
-      }
-      if (i < 0) {
-        return -1;
-      }
-      i = paramanga1.c() - paramanga2.c();
-      if (i > 0) {
-        return -1;
-      }
-      if (i < 0) {
-        return 1;
-      }
-      l = paramanga1.c() - paramanga2.c();
-      if (l > 0L) {
-        return -1;
-      }
-      if (l < 0L) {
-        return 1;
-      }
-      j = paramanga1.a() - paramanga2.a();
-      if (j > 0) {
-        return 1;
-      }
-      i = j;
-    } while (j >= 0);
-    return -1;
-  }
-  
-  public static int a(anga paramanga1, anga paramanga2, long paramLong)
-  {
-    if ((paramanga1.b(paramLong)) || (paramanga2.b(paramLong))) {}
-    float[] arrayOfFloat2;
-    do
-    {
-      return -1;
-      arrayOfFloat1 = paramanga1.a(paramanga1.e());
-      arrayOfFloat2 = paramanga2.a(paramanga1.e());
-    } while ((arrayOfFloat1 == null) || (arrayOfFloat2 == null));
-    int i = (int)((arrayOfFloat2[0] - arrayOfFloat1[2]) / paramanga2.a());
-    float[] arrayOfFloat1 = paramanga1.a(paramanga1.b());
-    return Math.max(i, (int)((paramanga2.a(paramanga1.b())[0] - arrayOfFloat1[2]) / paramanga2.a()));
-  }
-  
-  public static String a(long paramLong)
-  {
-    if (paramLong < 86400000L)
-    {
-      paramLong /= 1000L;
-      long l1 = paramLong % 60L;
-      long l2 = paramLong / 60L % 60L;
-      long l3 = paramLong / 3600L;
-      paramLong = l1;
-      if (l1 < 0L) {
-        paramLong = 0L;
-      }
-      l1 = l2;
-      if (l2 < 0L) {
-        l1 = 0L;
-      }
-      l2 = l3;
-      if (l3 < 0L) {
-        l2 = 0L;
-      }
-      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
-      if (l2 > 0L) {
-        return jdField_a_of_type_JavaUtilFormatter.format("%d:%02d:%02d", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(paramLong) }).toString();
-      }
-      return jdField_a_of_type_JavaUtilFormatter.format("%02d:%02d", new Object[] { Long.valueOf(l1), Long.valueOf(paramLong) }).toString();
     }
-    jdField_a_of_type_JavaUtilDate.setTime(paramLong);
-    return jdField_a_of_type_JavaTextSimpleDateFormat.format(jdField_a_of_type_JavaUtilDate);
+  }
+  
+  public static void a(AppInterface paramAppInterface)
+  {
+    if (a())
+    {
+      ArkAppCenter.c("ArkApp.Dict", "initWordData, already inited.");
+      return;
+    }
+    new File(a()).mkdirs();
+    if (!jdField_a_of_type_Boolean) {
+      ArkRecommendLogic.a().a(new ArkAiDictMgr.1());
+    }
+    b(paramAppInterface);
   }
   
   public static boolean a()
   {
-    return Build.VERSION.SDK_INT >= 18;
+    return (jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString));
+  }
+  
+  public static void b(AppInterface paramAppInterface)
+  {
+    if (!jdField_a_of_type_Boolean)
+    {
+      ArkAppCenter.c("ArkApp.Dict", "reloadWordData, sIsSoLoaded is false");
+      return;
+    }
+    ArkRecommendLogic.a().post(new ArkAiDictMgr.4(paramAppInterface));
+  }
+  
+  private static boolean b(AppInterface paramAppInterface)
+  {
+    if (paramAppInterface == null) {}
+    do
+    {
+      return true;
+      paramAppInterface = aoho.b(170).a();
+      if ((paramAppInterface == null) || (paramAppInterface.a() == null))
+      {
+        ArkAppCenter.c("ArkApp.Dict", "getWordInitState, confBean is empty");
+        return true;
+      }
+      paramAppInterface = paramAppInterface.a().d;
+      if (paramAppInterface == null) {
+        break;
+      }
+      ArkAppCenter.c("ArkApp.Dict", String.format("getWordInitState, wordInitState=%s", new Object[] { paramAppInterface }));
+    } while (!paramAppInterface.equals("false"));
+    return false;
+    ArkAppCenter.c("ArkApp.Dict", "getWordInitState, ark_dict_init is empty");
+    return true;
+  }
+  
+  private static void d()
+  {
+    try
+    {
+      if ((anhp.b) && (!jdField_a_of_type_Boolean))
+      {
+        jdField_a_of_type_Boolean = UpdateArkSo.b(BaseApplicationImpl.getContext(), "WordSegment");
+        ArkAppCenter.c("ArkApp.Dict", String.format("loadWordSegmentSo, result=%s", new Object[] { Boolean.toString(jdField_a_of_type_Boolean) }));
+        if (jdField_a_of_type_Boolean) {
+          WordSegment.setLogCallback(new anib());
+        }
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void b()
+  {
+    ArkAppCenter.c("ArkApp.Dict", "clearDict");
+    AppInterface localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    bdiv.i(localAppInterface.getApp(), localAppInterface.getCurrentAccountUin());
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ania
  * JD-Core Version:    0.7.0.1
  */

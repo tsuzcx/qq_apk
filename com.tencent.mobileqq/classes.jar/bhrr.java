@@ -1,33 +1,23 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.DynamicGridView;
 
-final class bhrr
-  implements DialogInterface.OnClickListener
+public class bhrr
+  implements AdapterView.OnItemClickListener
 {
-  bhrr(Context paramContext) {}
+  public bhrr(DynamicGridView paramDynamicGridView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    try
-    {
-      if (bgyi.a().indexOf("GM") < 0) {
-        bhrp.a(QzoneConfig.getInstance().getConfig("H5Url", "DownloadQzoneClient", "https://m.qzone.com/client/fwd?bid=update&_wv=7"), this.a);
-      }
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("showQzoneAppDownloadDialog", 2, "simpleBrowserJump exception", paramDialogInterface);
+    if ((!this.a.a()) && (this.a.isEnabled()) && (DynamicGridView.a(this.a) != null)) {
+      DynamicGridView.a(this.a).onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhrr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.profile.view;
 
-import ajxl;
+import aloz;
 import android.widget.ImageView;
-import auuy;
-import bbcm;
+import awmk;
+import bdbg;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -13,23 +13,23 @@ import mqq.os.MqqHandler;
 class ProfileQVipDiyView$1
   implements Runnable
 {
-  ProfileQVipDiyView$1(ProfileQVipDiyView paramProfileQVipDiyView, auuy paramauuy, ImageView paramImageView, boolean paramBoolean) {}
+  ProfileQVipDiyView$1(ProfileQVipDiyView paramProfileQVipDiyView, awmk paramawmk, ImageView paramImageView, boolean paramBoolean) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((ajxl)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_Auuy.a.a);
+    ExtensionInfo localExtensionInfo = ((aloz)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_Awmk.a.a);
     ProfileQVipDiyView.1.1 local1 = new ProfileQVipDiyView.1.1(this, localExtensionInfo);
     ThreadManager.getUIHandler().post(local1);
-    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bbcm.b(localExtensionInfo.pendantId)))
+    if ((this.jdField_a_of_type_Boolean) && (localExtensionInfo != null) && (bdbg.b(localExtensionInfo.pendantId)))
     {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.this$0.jdField_a_of_type_Ajte);
-      bbcm.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Auuy.a.a);
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.this$0.jdField_a_of_type_Alkr);
+      bdbg.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Awmk.a.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ProfileQVipDiyView.1
  * JD-Core Version:    0.7.0.1
  */

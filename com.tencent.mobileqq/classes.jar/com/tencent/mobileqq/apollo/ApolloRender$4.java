@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo;
 
-import bbdh;
+import bdcb;
 import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -15,14 +15,14 @@ class ApolloRender$4
   {
     try
     {
-      Object localObject2 = bbdh.i();
-      String str = bbdh.e();
-      int i = bbdh.b();
-      long l1 = bbdh.a();
-      long l2 = Math.ceil(bbdh.d() / 1073741824.0D);
-      long l3 = bbdh.k();
-      long l4 = bbdh.l();
-      float f = bbdh.a();
+      Object localObject2 = bdcb.i();
+      String str = bdcb.e();
+      int i = bdcb.b();
+      long l1 = bdcb.a();
+      long l2 = Math.ceil(bdcb.d() / 1073741824.0D);
+      long l3 = bdcb.k();
+      long l4 = bdcb.l();
+      float f = bdcb.a();
       Object localObject1 = new JSONObject();
       ((JSONObject)localObject1).put("mo", localObject2);
       ((JSONObject)localObject1).put("os", str);
@@ -50,7 +50,7 @@ class ApolloRender$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloRender.4
  * JD-Core Version:    0.7.0.1
  */

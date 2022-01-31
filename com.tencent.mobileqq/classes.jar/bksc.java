@@ -1,24 +1,23 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
-public class bksc
-  implements MediaPlayer.OnCompletionListener
+class bksc
+  implements bmac<Boolean>
 {
-  public bksc(FixedSizeVideoView paramFixedSizeVideoView) {}
+  bksc(bkrq parambkrq) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (this.a.a != null)
-    {
-      this.a.removeCallbacks(FixedSizeVideoView.a(this.a));
-      this.a.a.a(paramMediaPlayer);
+    if (paramBoolean == null) {}
+    while (bkrq.a(this.a) == null) {
+      return;
     }
+    bkrq.a(this.a).a(paramBoolean.booleanValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bksc
  * JD-Core Version:    0.7.0.1
  */

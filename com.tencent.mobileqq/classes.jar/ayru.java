@@ -1,89 +1,25 @@
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.HttpInterfaceForTVK;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.security.InvalidParameterException;
-import java.util.HashMap;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class ayru
-  extends HttpInterfaceForTVK
+public abstract interface ayru
+  extends ayrs
 {
-  public int a;
-  private ayrw jdField_a_of_type_Ayrw = new ayrw(this, null);
-  private Object jdField_a_of_type_JavaLangObject = new Object();
-  public String a;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
-  private int c;
+  public abstract View a(String paramString);
   
-  public int a(String arg1, String paramString2)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if ((??? == null) || (paramString2 == null)) {
-      return -1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("HttpInterfaceForTVKImp", 0, "downLoadSync, url = " + ??? + ", filePath = " + paramString2);
-    }
-    ayrx localayrx;
-    try
-    {
-      localayrx = new ayrx();
-      localayrx.jdField_a_of_type_Aysc = this.jdField_a_of_type_Ayrw;
-      localayrx.jdField_a_of_type_JavaLangString = ???;
-      localayrx.jdField_a_of_type_Int = 0;
-      localayrx.c = paramString2;
-      localayrx.e = String.valueOf(System.currentTimeMillis());
-      ??? = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(??? instanceof QQAppInterface)) {
-        throw new InvalidParameterException("can't get AppInterface");
-      }
-    }
-    catch (Exception ???)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("HttpInterfaceForTVKImp", 0, "downLoadSync, setp 1", ???);
-      }
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
-      {
-        try
-        {
-          if (!this.jdField_a_of_type_Boolean)
-          {
-            this.jdField_a_of_type_JavaLangObject.wait(600000L);
-            continue;
-          }
-          ???.put("param_isSuccess", "1");
-        }
-        catch (InterruptedException paramString2)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("HttpInterfaceForTVKImp", 0, "downLoadSync, setp 2", paramString2);
-          }
-          ??? = new HashMap();
-          if (this.b != 0) {
-            break label289;
-          }
-        }
-        ???.put("param_ErrorCode", String.valueOf(this.c));
-        ???.put("param_ErrDesc", this.jdField_a_of_type_JavaLangString);
-        ???.put("param_HttpCode", String.valueOf(this.jdField_a_of_type_Int));
-        axrn.a(BaseApplication.getContext()).a(null, "HttpInterfaceForTVKImp", true, 0L, 0L, ???, "");
-        return this.b;
-        ((QQAppInterface)???).getNetEngine(0).a(localayrx);
-      }
-      label289:
-      ???.put("param_isSuccess", "0");
-    }
-  }
+  public abstract ImageView a();
+  
+  public abstract TextView a();
+  
+  public abstract TextView b();
+  
+  public abstract TextView c();
+  
+  public abstract TextView d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayru
  * JD-Core Version:    0.7.0.1
  */

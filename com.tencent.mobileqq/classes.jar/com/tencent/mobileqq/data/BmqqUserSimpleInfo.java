@@ -2,12 +2,12 @@ package com.tencent.mobileqq.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import com.tencent.qphone.base.util.QLog;
 
 public class BmqqUserSimpleInfo
-  extends auko
+  extends awbv
   implements Parcelable, Cloneable
 {
   private static final String TAG = "BmqqUserSimpleInfo";
@@ -19,7 +19,7 @@ public class BmqqUserSimpleInfo
   public String mBmqqNickName;
   public String mBmqqRemarkName;
   public String mBmqqTelphone;
-  @aumc
+  @awdj
   public String mBmqqUin;
   public int mFlag;
   
@@ -113,7 +113,7 @@ public class BmqqUserSimpleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.BmqqUserSimpleInfo
  * JD-Core Version:    0.7.0.1
  */

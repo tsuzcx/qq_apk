@@ -1,41 +1,52 @@
-import com.tencent.mobileqq.transfile.ProtoReqManager;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ayyp
 {
-  public int a;
-  aytk jdField_a_of_type_Aytk;
-  ayze jdField_a_of_type_Ayze = new ayze();
-  public ayzw a;
-  public ProtoReqManager a;
-  public String a;
-  public List<ayza> a;
-  public byte[] a;
+  int a;
+  int b;
+  int c;
+  int d;
   
-  public ayyp()
+  public static ayyp a(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    try
     {
-      localStringBuilder.append("index:");
-      localStringBuilder.append(i);
-      localStringBuilder.append(" ");
-      localStringBuilder.append(((ayza)this.jdField_a_of_type_JavaUtilList.get(i)).toString());
-      i += 1;
+      paramString = new JSONObject(paramString).getJSONArray("showDetail");
+      if (paramString.length() < 0)
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(0);
+        ayyp localayyp = new ayyp();
+        String str = localJSONObject.optString("name");
+        if ("photo".equals(str))
+        {
+          localayyp.c = localJSONObject.optInt("showRed", 0);
+          localayyp.d = localJSONObject.optInt("version", 0);
+          return localayyp;
+        }
+        paramString = localayyp;
+        if (!"gif".equals(str)) {
+          return paramString;
+        }
+        localayyp.a = localJSONObject.optInt("showRed", 0);
+        localayyp.b = localJSONObject.optInt("version", 0);
+        return localayyp;
+      }
     }
-    return localStringBuilder.toString();
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ShortVideoAndHotPicRedDotConfProcessor", 2, "handleGetPtvHotPicConfig Exception :", paramString);
+      }
+      paramString = null;
+    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayyp
  * JD-Core Version:    0.7.0.1
  */

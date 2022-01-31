@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.app;
 
-import ajum;
+import allz;
 import com.tencent.litetransfersdk.Session;
 
 public class DataLineHandler$12
   implements Runnable
 {
-  public DataLineHandler$12(ajum paramajum, long paramLong) {}
+  public DataLineHandler$12(allz paramallz, long paramLong) {}
   
   public void run()
   {
     Session localSession = this.this$0.a(this.a);
-    ajum.a(this.this$0, localSession, null, null, true);
+    allz.a(this.this$0, localSession, null, null, true);
   }
 }
 

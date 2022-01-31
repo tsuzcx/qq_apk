@@ -1,34 +1,61 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.support.v4.view.ViewCompat;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
 
 public class ahrj
-  implements Animator.AnimatorListener
 {
-  public ahrj(LoginView paramLoginView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public static boolean a(View paramView)
   {
-    LoginView.b(this.a, false);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    LoginView.a(this.a, LoginView.b(this.a), LoginView.d(this.a), LoginView.f(this.a), LoginView.h(this.a), 1.0F);
-    if (this.a.a != null) {
-      this.a.a.e();
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramView instanceof HeaderScrollView)) {
+      if (!((HeaderScrollView)paramView).b()) {
+        bool1 = true;
+      }
     }
-    LoginView.b(this.a, false);
+    do
+    {
+      do
+      {
+        View localView;
+        do
+        {
+          for (;;)
+          {
+            return bool1;
+            bool1 = false;
+          }
+          if (!(paramView instanceof ViewGroup)) {
+            break;
+          }
+          localView = ((ViewGroup)paramView).getChildAt(1);
+          if ((localView == null) || (!(localView instanceof HeaderScrollView))) {
+            break label116;
+          }
+          bool1 = bool2;
+        } while (!((HeaderScrollView)localView).b());
+        return false;
+        if (!(paramView instanceof AbsListView)) {
+          break label116;
+        }
+        paramView = (AbsListView)paramView;
+        if (paramView.getChildCount() <= 0) {
+          break;
+        }
+        bool1 = bool2;
+      } while (paramView.getFirstVisiblePosition() > 0);
+      bool1 = bool2;
+    } while (paramView.getChildAt(0).getTop() < paramView.getPaddingTop());
+    return false;
+    label116:
+    return ViewCompat.canScrollVertically(paramView, -1);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrj
  * JD-Core Version:    0.7.0.1
  */

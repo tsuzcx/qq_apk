@@ -1,65 +1,48 @@
-import android.os.IBinder;
-import android.os.Parcel;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aylp
-  implements ayln
+  implements View.OnClickListener
 {
-  private IBinder a;
+  aylp(aylm paramaylm, ayij paramayij) {}
   
-  aylp(IBinder paramIBinder)
+  public void onClick(View paramView)
   {
-    this.a = paramIBinder;
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
-  }
-  
-  public void onComplete(String paramString, int paramInt)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
+    if (this.jdField_a_of_type_Ayij.l == 1)
     {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
-      localParcel1.writeString(paramString);
-      localParcel1.writeInt(paramInt);
-      this.a.transact(2, localParcel1, localParcel2, 0);
-      localParcel2.readException();
+      azmj.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
+      azmj.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 2, 0, "", "", "", "");
+    }
+    Object localObject;
+    for (;;)
+    {
+      localObject = (aloz)aylm.a(this.jdField_a_of_type_Aylm).getManager(51);
+      if ((((aloz)localObject).b(this.jdField_a_of_type_Ayij.b)) || (((aloz)localObject).d(this.jdField_a_of_type_Ayij.b))) {
+        break;
+      }
+      localObject = AddFriendLogicActivity.a(paramView.getContext(), 1, this.jdField_a_of_type_Ayij.b, null, 3020, 3, this.jdField_a_of_type_Ayij.c, null, null, paramView.getContext().getString(2131689628), null);
+      paramView.getContext().startActivity((Intent)localObject);
+      return;
+      azmj.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 0, 0, "", "", "", "");
+      azmj.b(null, "dc00898", "", "", "0X800A33B", "0X800A33B", 1, 0, "", "", "", "");
+    }
+    if (((aloz)localObject).b(this.jdField_a_of_type_Ayij.b))
+    {
+      this.jdField_a_of_type_Ayij.k = 2;
+      aylm.a(this.jdField_a_of_type_Aylm).notifyDataSetChanged();
       return;
     }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
-  }
-  
-  public void onProgress(String paramString, long paramLong1, long paramLong2)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    try
-    {
-      localParcel1.writeInterfaceToken("com.tencent.mobileqq.theme.IDownloadListener");
-      localParcel1.writeString(paramString);
-      localParcel1.writeLong(paramLong1);
-      localParcel1.writeLong(paramLong2);
-      this.a.transact(1, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
-    }
+    this.jdField_a_of_type_Ayij.k = 1;
+    aylm.a(this.jdField_a_of_type_Aylm).notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aylp
  * JD-Core Version:    0.7.0.1
  */

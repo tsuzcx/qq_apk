@@ -1,48 +1,34 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.base.BitmapError;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.1;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.2.2;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-public class vkb
-  extends JobSegment<Bitmap, Bitmap>
+public final class vkb
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public int a;
-  
-  public vkb()
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    this.a = 10;
-  }
-  
-  public vkb(int paramInt)
-  {
-    this.a = paramInt;
-  }
-  
-  public static Bitmap a(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
-  {
-    if (paramBitmap == null) {
-      return null;
-    }
-    bbki.a(paramBitmap, paramInt);
-    return paramBitmap;
-  }
-  
-  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
-  {
-    long l = System.currentTimeMillis();
-    paramJobContext = a(paramBitmap, this.a, false);
-    ved.b("BlurJobSegment", "blur time = " + (System.currentTimeMillis() - l) + ", blur ratio = " + this.a);
-    if (paramJobContext == null)
+    synchronized ()
     {
-      super.notifyError(new BitmapError("BlurJobSegment", 7));
+      vkf localvkf = vjz.a();
+      vjz.a().post(new TVKPreloader.2.2(this, localvkf, paramString1, paramInt, paramString2));
       return;
     }
-    super.notifyResult(paramJobContext);
+  }
+  
+  public void onPreLoadSucess(String arg1, String paramString2)
+  {
+    synchronized ()
+    {
+      paramString2 = vjz.a();
+      vjz.a().post(new TVKPreloader.2.1(this, paramString2));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vkb
  * JD-Core Version:    0.7.0.1
  */

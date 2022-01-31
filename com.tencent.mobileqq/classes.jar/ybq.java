@@ -1,22 +1,20 @@
-import android.os.Looper;
-import android.os.Message;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBStringField;
 
 class ybq
-  extends aywb
 {
-  ybq(ybp paramybp, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public COMM.StCommonExt a;
+  public boolean a;
+  public boolean b;
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    this.a.a(paramMessage);
+    return "CommentResponse{hasMore=" + this.jdField_a_of_type_Boolean + ", attachInfo='" + this.jdField_a_of_type_NS_COMMCOMM$StCommonExt.attachInfo.get() + '\'' + ", hasResponse='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ybq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class wsx
-  implements View.OnClickListener
+final class wsx
+  implements uni<wsy, unf>
 {
-  wsx(wsw paramwsw, wth paramwth, String paramString, bfpc parambfpc) {}
-  
-  public void onClick(View paramView)
+  public void a(@NonNull wsy paramwsy, @Nullable unf paramunf, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_Wth.a(false, this.jdField_a_of_type_JavaLangString, true);
-    this.jdField_a_of_type_Bfpc.dismiss();
+    if (paramErrorMessage.isFail()) {
+      wsv.b("Q.qqstory.MonitorReport", "send monitor fail %s", paramErrorMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsx
  * JD-Core Version:    0.7.0.1
  */

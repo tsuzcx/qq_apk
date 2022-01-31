@@ -1,37 +1,56 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
 
-public class amlw
-  extends MSFServlet
+public final class amlw
+  implements Parcelable.Creator<UpgradeTIMWrapper>
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public UpgradeTIMWrapper a(Parcel paramParcel)
   {
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (byte[] arrayOfByte = bbma.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
+    Object localObject = null;
+    String str2 = paramParcel.readString();
+    String str3 = paramParcel.readString();
+    String str4 = paramParcel.readString();
+    String str5 = paramParcel.readString();
+    String str6 = paramParcel.readString();
+    int j = 0;
+    for (;;)
     {
-      new Bundle().putByteArray("data", arrayOfByte);
-      akhp localakhp = (akhp)((QQAppInterface)getAppRuntime()).a(20);
-      if (localakhp != null) {
-        localakhp.a(paramIntent, paramFromServiceMsg, arrayOfByte);
+      try
+      {
+        int i = paramParcel.readInt();
+        j = i;
+        String str1 = paramParcel.readString();
+        paramParcel.printStackTrace();
       }
-      return;
+      catch (Exception paramParcel)
+      {
+        try
+        {
+          paramParcel = paramParcel.readString();
+          return new UpgradeTIMWrapper(str2, str3, str4, str5, str6, i, str1, paramParcel);
+        }
+        catch (Exception paramParcel)
+        {
+          break label81;
+        }
+        paramParcel = paramParcel;
+        str1 = null;
+        i = j;
+      }
+      label81:
+      paramParcel = localObject;
     }
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public UpgradeTIMWrapper[] a(int paramInt)
   {
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
-    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(bbma.a(arrayOfByte));
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlw
  * JD-Core Version:    0.7.0.1
  */

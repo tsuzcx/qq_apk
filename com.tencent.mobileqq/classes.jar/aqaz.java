@@ -1,88 +1,44 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.data.ArkFlashChatMessage;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import android.graphics.Rect;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
 
 public class aqaz
-  extends aqbe
+  extends RecyclerView.ItemDecoration
 {
-  public aqaz(Intent paramIntent)
+  private int a;
+  private int b;
+  private int c;
+  private int d;
+  
+  public aqaz(Fragment paramFragment)
   {
-    super(paramIntent);
+    this.a = aekt.a(11.0F, paramFragment.getResources());
+    this.b = aekt.a(11.0F, paramFragment.getResources());
+    this.c = aekt.a(8.0F, paramFragment.getResources());
+    this.d = aekt.a(8.0F, paramFragment.getResources());
   }
   
-  public String a()
+  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    int i = paramRecyclerView.getAdapter().getItemCount();
+    if (paramRecyclerView.getAdapter().getItemViewType(paramInt) == 6)
     {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_prompt");
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("forward_ark_app_desc");
-      }
+      paramRect.set(0, this.a, 0, 0);
+      return;
     }
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  protected void a()
-  {
-    if (k()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (l()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
-    }
-  }
-  
-  protected boolean a(String paramString1, int paramInt, String paramString2)
-  {
-    SessionInfo localSessionInfo = new SessionInfo();
-    localSessionInfo.jdField_a_of_type_Int = paramInt;
-    localSessionInfo.jdField_a_of_type_JavaLangString = paramString1;
-    localSessionInfo.b = paramString2;
-    paramString1 = this.jdField_a_of_type_AndroidOsBundle.getString("forward_flashchat_rawcontent");
-    if (TextUtils.isEmpty(paramString1)) {
-      return false;
-    }
-    paramString2 = new ArkFlashChatMessage();
-    paramString2.fromAppXml(paramString1);
-    paramInt = this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_MSG_FORWARD_ID");
-    aanz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo, paramString2, paramInt);
-    return true;
-  }
-  
-  protected boolean c()
-  {
-    if (f())
+    if (paramInt == i - 1)
     {
-      Iterator localIterator = b().iterator();
-      while (localIterator.hasNext())
-      {
-        ResultRecord localResultRecord = (ResultRecord)localIterator.next();
-        a(localResultRecord.jdField_a_of_type_JavaLangString, localResultRecord.a(), localResultRecord.c);
-      }
-      return super.c();
+      paramRect.set(this.c, this.a, this.d, this.b);
+      return;
     }
-    e_();
-    return super.c();
-  }
-  
-  protected boolean e_()
-  {
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("uintype");
-    return a(this.jdField_a_of_type_AndroidOsBundle.getString("uin"), i, this.jdField_a_of_type_AndroidOsBundle.getString("troop_uin"));
+    paramRect.set(this.c, this.a, this.d, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqaz
  * JD-Core Version:    0.7.0.1
  */

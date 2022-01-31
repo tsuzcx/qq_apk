@@ -1,221 +1,31 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.content.Context;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.anim.friendship.impl.LottieAnimDirector.5;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileInputStream;
-import java.io.IOException;
-import mqq.os.MqqHandler;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
 
 public class adad
-  extends adai
-  implements Animator.AnimatorListener
+  implements TextWatcher
 {
-  private adbc jdField_a_of_type_Adbc;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LottieDrawable jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable;
-  private String jdField_a_of_type_JavaLangString = "";
-  private boolean jdField_a_of_type_Boolean;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private String c;
+  public adad(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
   
-  public adad(Context paramContext)
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Adbc = new adbc(paramContext);
-    this.jdField_a_of_type_Adbc.a(new adae(this));
-  }
-  
-  private QQAppInterface a()
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (a() != null)
+    paramEditable = paramEditable.toString();
+    if ((paramEditable != null) && (paramEditable.trim().length() > 0))
     {
-      localObject1 = localObject2;
-      if ((a() instanceof BaseActivity)) {
-        localObject1 = ((BaseActivity)a()).app;
-      }
-    }
-    return localObject1;
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_JavaLangString = asxl.a(paramQQAppInterface).a(this.jdField_b_of_type_JavaLangString, this.c);
-    if (QLog.isColorLevel()) {
-      QLog.i("LottieAnimDirector", 1, "onResourceReady lottieUrl:" + this.jdField_b_of_type_JavaLangString + "  lottieMd5:" + this.c + " mResPath:" + this.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = new LottieDrawable();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setImageAssetDelegate(new adag(this));
-    }
-    try
-    {
-      paramQQAppInterface = new FileInputStream(this.jdField_a_of_type_JavaLangString + "data.json");
-      QLog.i("LottieAnimDirector", 1, "decode anim async");
-      LottieComposition.Factory.fromInputStream(a(), paramQQAppInterface, new adah(this));
+      this.a.b.setEnabled(true);
       return;
     }
-    catch (IOException paramQQAppInterface)
-    {
-      QLog.e("LottieAnimDirector", 1, "Decode anim json error");
-    }
+    this.a.b.setEnabled(false);
   }
   
-  private void a(LottieComposition paramLottieComposition)
-  {
-    QLog.i("LottieAnimDirector", 1, "decode json success");
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (paramLottieComposition != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.setComposition(paramLottieComposition);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.loop(false);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.addAnimatorListener(this);
-      if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LottieAnimDirector", 2, "refresh Lottie.d");
-        }
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable);
-      }
-    }
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public int a()
-  {
-    return 3;
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "play");
-    }
-    ThreadManager.getUIHandler().postDelayed(new LottieAnimDirector.5(this), 300L);
-  }
-  
-  public void a(adao paramadao)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "prepare");
-    }
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null)
-    {
-      paramadao.a(false);
-      return;
-    }
-    if (asxl.a(localQQAppInterface).a(this.jdField_b_of_type_JavaLangString, this.c))
-    {
-      a(localQQAppInterface);
-      paramadao.a(true);
-      return;
-    }
-    asxl.a(localQQAppInterface).a(this.jdField_b_of_type_JavaLangString, this.c, new adaf(this, paramadao));
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString1;
-    this.c = paramString2;
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "setLottieResources url:" + paramString1 + " md5:" + paramString2);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "cancel");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.recycleBitmaps();
-    }
-    if (this.jdField_a_of_type_Adbc != null)
-    {
-      this.jdField_a_of_type_Adbc.b();
-      this.jdField_a_of_type_Adbc.c();
-    }
-    a(8);
-    super.b();
-  }
-  
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "doOnPause");
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.isAnimating())) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.pauseAnimation();
-    }
-    if ((this.jdField_a_of_type_Adbc != null) && (this.jdField_a_of_type_Adbc.a())) {
-      this.jdField_a_of_type_Adbc.d();
-    }
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "doOnResume");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.resumeAnimation();
-    }
-    if ((this.jdField_a_of_type_Adbc != null) && (this.jdField_a_of_type_Adbc.a())) {
-      this.jdField_a_of_type_Adbc.e();
-    }
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LottieAnimDirector", 2, "doOnDestroy");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.cancelAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable.recycleBitmaps();
-    }
-    if (this.jdField_a_of_type_Adbc != null)
-    {
-      this.jdField_a_of_type_Adbc.b();
-      this.jdField_a_of_type_Adbc.c();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieDrawable = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    b();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adad
  * JD-Core Version:    0.7.0.1
  */

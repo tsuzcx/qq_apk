@@ -1,20 +1,30 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.1.1;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
 
-public class tfl
-  implements tkj
+class tfl
+  extends GestureDetector.SimpleOnGestureListener
 {
   tfl(tfk paramtfk) {}
   
-  public void a(tkk paramtkk)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    ved.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "Update UserItems %s", paramtkk);
-    this.a.a.post(new MsgTabNodeListLoader.1.1(this, paramtkk));
+    tlo.b("WSFollowFeedHolder", "VideoLayout onDoubleTap");
+    tfk.a(this.a, paramMotionEvent);
+    tfk.a(this.a, true);
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    tlo.b("WSFollowFeedHolder", "VideoLayout onSingleTapConfirmed");
+    tfk.a(this.a);
+    tfk.a(this.a, false);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tfl
  * JD-Core Version:    0.7.0.1
  */

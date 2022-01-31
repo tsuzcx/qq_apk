@@ -19,7 +19,7 @@ class ITPDownloadProxyAidl$Stub$Proxy
     return this.mRemote;
   }
   
-  public String getClipPlayUrl(int paramInt1, int paramInt2)
+  public String getClipPlayUrl(int paramInt1, int paramInt2, int paramInt3)
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
@@ -28,6 +28,7 @@ class ITPDownloadProxyAidl$Stub$Proxy
       localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
       localParcel1.writeInt(paramInt1);
       localParcel1.writeInt(paramInt2);
+      localParcel1.writeInt(paramInt3);
       this.mRemote.transact(6, localParcel1, localParcel2, 0);
       localParcel2.readException();
       String str = localParcel2.readString();
@@ -65,14 +66,15 @@ class ITPDownloadProxyAidl$Stub$Proxy
     }
   }
   
-  public String getPlayUrl(int paramInt)
+  public String getPlayUrl(int paramInt1, int paramInt2)
   {
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
     {
       localParcel1.writeInterfaceToken("com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl");
-      localParcel1.writeInt(paramInt);
+      localParcel1.writeInt(paramInt1);
+      localParcel1.writeInt(paramInt2);
       this.mRemote.transact(5, localParcel1, localParcel2, 0);
       localParcel2.readException();
       String str = localParcel2.readString();
@@ -274,18 +276,18 @@ class ITPDownloadProxyAidl$Stub$Proxy
     //   14: invokevirtual 32	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
     //   17: aload 4
     //   19: aload_1
-    //   20: invokevirtual 61	android/os/Parcel:writeString	(Ljava/lang/String;)V
+    //   20: invokevirtual 62	android/os/Parcel:writeString	(Ljava/lang/String;)V
     //   23: aload 4
     //   25: iload_2
     //   26: invokevirtual 36	android/os/Parcel:writeInt	(I)V
     //   29: aload_3
     //   30: ifnull +55 -> 85
     //   33: aload_3
-    //   34: invokeinterface 95 1 0
+    //   34: invokeinterface 96 1 0
     //   39: astore_1
     //   40: aload 4
     //   42: aload_1
-    //   43: invokevirtual 98	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
+    //   43: invokevirtual 99	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
     //   46: aload_0
     //   47: getfield 15	com/tencent/thumbplayer/core/downloadproxy/aidl/ITPDownloadProxyAidl$Stub$Proxy:mRemote	Landroid/os/IBinder;
     //   50: iconst_3
@@ -297,7 +299,7 @@ class ITPDownloadProxyAidl$Stub$Proxy
     //   62: aload 5
     //   64: invokevirtual 45	android/os/Parcel:readException	()V
     //   67: aload 5
-    //   69: invokevirtual 65	android/os/Parcel:readInt	()I
+    //   69: invokevirtual 66	android/os/Parcel:readInt	()I
     //   72: istore_2
     //   73: aload 5
     //   75: invokevirtual 52	android/os/Parcel:recycle	()V
@@ -448,7 +450,7 @@ class ITPDownloadProxyAidl$Stub$Proxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

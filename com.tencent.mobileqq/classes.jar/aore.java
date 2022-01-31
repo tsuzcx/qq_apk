@@ -1,32 +1,63 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aore
-  implements View.OnClickListener
+  extends aopw<aord>
 {
-  public aore(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
-  
-  public void onClick(View paramView)
+  public static aord a()
   {
-    if (!QfileBaseCloudFileTabView.a(this.a)) {
-      return;
+    return (aord)aogj.a().a(563);
+  }
+  
+  public int a()
+  {
+    return 563;
+  }
+  
+  @NonNull
+  public aord a(@NonNull aogf[] paramArrayOfaogf)
+  {
+    aord localaord = new aord();
+    paramArrayOfaogf = paramArrayOfaogf[0].a;
+    if (paramArrayOfaogf != null) {}
+    try
+    {
+      if (!"".equals(paramArrayOfaogf))
+      {
+        paramArrayOfaogf = new JSONObject(paramArrayOfaogf);
+        localaord.a = paramArrayOfaogf.getString("musicBoxUrl");
+        localaord.b = paramArrayOfaogf.getString("playerUrl");
+      }
+      return localaord;
     }
-    QfileBaseCloudFileTabView.a(this.a);
-    this.a.f();
-    if (this.a.jdField_a_of_type_Aoqb.getGroupCount() > 0) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.a.jdField_a_of_type_Aoqb.getGroupCount() - 1);
+    catch (JSONException paramArrayOfaogf)
+    {
+      paramArrayOfaogf.printStackTrace();
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.getAdapter().getCount() - 1);
-    QfileBaseCloudFileTabView.a(this.a, false);
-    this.a.h();
+    return localaord;
+  }
+  
+  public Class<aord> a()
+  {
+    return aord.class;
+  }
+  
+  @NonNull
+  public aord b()
+  {
+    return new aord();
+  }
+  
+  @NonNull
+  public aord c()
+  {
+    return new aord();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aore
  * JD-Core Version:    0.7.0.1
  */

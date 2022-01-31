@@ -1,37 +1,40 @@
-import android.os.Handler;
-import android.os.Message;
-import java.util.List;
+import com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderManager.2;
+import com.tencent.mobileqq.data.RockDownloadInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class anrp
-  extends ajvz
+public class anrp
+  extends anrk
 {
-  anrp(anrm paramanrm) {}
+  public anrp(RockDownloaderManager.2 param2) {}
   
-  public void a(boolean paramBoolean)
+  public void a(RockDownloadInfo paramRockDownloadInfo, String paramString, int paramInt)
   {
-    anrm.a(this.a).clear();
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.e();
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloaderManager", 2, new Object[] { "onFail: RockDownloadInfo=", paramRockDownloadInfo, " errorMsg=", paramString, " errorCode=", Integer.valueOf(paramInt) });
     }
   }
   
-  protected void b(boolean paramBoolean, Object paramObject)
+  public void a(ArrayList<RockDownloadInfo> paramArrayList)
   {
-    if ((paramObject != null) && ((paramObject instanceof Integer)) && (anrm.a(this.a) != null)) {
-      anrm.a(this.a).obtainMessage(208, paramObject).sendToTarget();
-    }
-    if ((this.a.a != null) && (paramBoolean)) {
-      this.a.a.e();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      RockDownloadInfo localRockDownloadInfo = (RockDownloadInfo)paramArrayList.next();
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "onSuccess:", localRockDownloadInfo });
+      }
+      boolean bool = anrq.b(localRockDownloadInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("RockDownloaderManager", 2, new Object[] { "install success=", Boolean.valueOf(bool) });
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anrp
  * JD-Core Version:    0.7.0.1
  */

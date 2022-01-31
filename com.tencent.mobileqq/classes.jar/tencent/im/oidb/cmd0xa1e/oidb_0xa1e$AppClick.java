@@ -15,7 +15,7 @@ public final class oidb_0xa1e$AppClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xa1e.oidb_0xa1e.AppClick
  * JD-Core Version:    0.7.0.1
  */

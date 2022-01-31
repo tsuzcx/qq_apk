@@ -1,14 +1,12 @@
-import android.os.Bundle;
+import java.util.List;
 
 public abstract interface apsl
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString, int paramInt3, Bundle paramBundle);
-  
-  public abstract void a(boolean paramBoolean, int paramInt, String paramString, Bundle paramBundle);
+  public abstract void a(List<apsj> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apsl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,16 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyVideoTopicTextView;
+
 class oja
-  extends ojn
 {
-  oja(oil paramoil, boolean paramBoolean, String paramString, int paramInt1, int paramInt2)
-  {
-    super(paramoil, null);
-  }
+  ChannelCoverInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo;
+  ReadInJoyVideoTopicTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoTopicTextView;
   
-  void a(ojq paramojq)
-  {
-    paramojq.onCommentLikeOrDislike(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
-  }
+  oja(oiz paramoiz) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oja
  * JD-Core Version:    0.7.0.1
  */

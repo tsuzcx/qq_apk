@@ -1,30 +1,23 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
 
-public class aika
-  extends Handler
+public final class aika
+  implements Parcelable.Creator<PhotoSendParams>
 {
-  public aika(VipSpecialCareHandler.1 param1, Looper paramLooper)
+  public PhotoSendParams a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new PhotoSendParams(paramParcel);
   }
   
-  public void handleMessage(Message paramMessage)
+  public PhotoSendParams[] a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    aijz.a(this.a.this$0, "-->request timeout");
-    aijz.a(this.a.this$0, -2);
+    return new PhotoSendParams[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aika
  * JD-Core Version:    0.7.0.1
  */

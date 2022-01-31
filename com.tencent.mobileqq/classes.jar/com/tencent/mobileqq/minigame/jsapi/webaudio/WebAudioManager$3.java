@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.minigame.jsapi.webaudio;
 
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.mobileqq.triton.audio.AudioHandleThread;
+import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,7 +14,10 @@ class WebAudioManager$3
   
   public void run()
   {
-    if (AudioNativeManager.isSourceStopped(this.val$sourceId))
+    if (WebAudioManager.access$000(this.this$0) == null) {
+      return;
+    }
+    if (WebAudioManager.access$000(this.this$0).isSourceStopped(this.val$sourceId))
     {
       JSONObject localJSONObject = new JSONObject();
       try
@@ -21,6 +26,7 @@ class WebAudioManager$3
         localJSONObject.put("channelId", this.val$sourceId);
         if (this.val$jsRuntime != null)
         {
+          GameLog.getInstance().d("WebAudio", "onWebAudioSourceEnded channelId:" + this.val$sourceId);
           this.val$jsRuntime.evaluateSubcribeJS("onWebAudioSourceEnded", localJSONObject.toString(), 0);
           return;
         }
@@ -38,7 +44,7 @@ class WebAudioManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.webaudio.WebAudioManager.3
  * JD-Core Version:    0.7.0.1
  */

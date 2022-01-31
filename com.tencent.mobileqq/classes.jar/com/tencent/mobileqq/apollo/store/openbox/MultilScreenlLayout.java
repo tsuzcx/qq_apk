@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
-import aaln;
-import ajja;
+import accl;
+import alam;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -16,8 +16,8 @@ public class MultilScreenlLayout
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private aaln jdField_a_of_type_Aaln;
-  protected ajja a;
+  private accl jdField_a_of_type_Accl;
+  protected alam a;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
@@ -57,7 +57,7 @@ public class MultilScreenlLayout
   
   private void b()
   {
-    this.jdField_a_of_type_Aaln = new aaln(getContext());
+    this.jdField_a_of_type_Accl = new accl(getContext());
     this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
     ViewConfiguration localViewConfiguration = ViewConfiguration.get(getContext());
     this.e = localViewConfiguration.getScaledTouchSlop();
@@ -93,7 +93,7 @@ public class MultilScreenlLayout
     label168:
     for (;;)
     {
-      this.jdField_a_of_type_Aaln.a(getScrollX(), 0, i2, 0, paramInt);
+      this.jdField_a_of_type_Accl.a(getScrollX(), 0, i2, 0, paramInt);
       this.jdField_a_of_type_Int = i1;
       invalidate();
       return;
@@ -102,9 +102,9 @@ public class MultilScreenlLayout
   
   public void computeScroll()
   {
-    if (this.jdField_a_of_type_Aaln.b())
+    if (this.jdField_a_of_type_Accl.b())
     {
-      super.scrollTo(this.jdField_a_of_type_Aaln.a(), this.jdField_a_of_type_Aaln.b());
+      super.scrollTo(this.jdField_a_of_type_Accl.a(), this.jdField_a_of_type_Accl.b());
       postInvalidate();
     }
   }
@@ -144,7 +144,7 @@ public class MultilScreenlLayout
       this.d = 1;
       break label60;
       this.jdField_a_of_type_Float = f1;
-      if (this.jdField_a_of_type_Aaln.a()) {}
+      if (this.jdField_a_of_type_Accl.a()) {}
       for (n = 0;; n = 1)
       {
         this.d = n;
@@ -209,8 +209,8 @@ public class MultilScreenlLayout
         {
           QLog.d("MutilScreenlLayout", 2, "onTouchEvent ");
           return true;
-          if (!this.jdField_a_of_type_Aaln.a()) {
-            this.jdField_a_of_type_Aaln.a();
+          if (!this.jdField_a_of_type_Accl.a()) {
+            this.jdField_a_of_type_Accl.a();
           }
           this.jdField_a_of_type_Float = f1;
           this.jdField_c_of_type_Float = f1;
@@ -254,7 +254,7 @@ public class MultilScreenlLayout
               if (Math.hypot(Math.abs(this.jdField_c_of_type_Float - f1), Math.abs(this.jdField_b_of_type_Float - f2)) > this.e) {
                 this.jdField_a_of_type_Boolean = true;
               }
-              if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Ajja == null)) {
+              if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Alam == null)) {
                 continue;
               }
               i2 = super.getChildCount();
@@ -304,7 +304,7 @@ public class MultilScreenlLayout
         if (n == 0) {
           break label84;
         }
-        this.jdField_a_of_type_Ajja.a(f1, f2);
+        this.jdField_a_of_type_Alam.a(f1, f2);
         break label84;
         if ((n < -this.jdField_c_of_type_Int) && (this.jdField_a_of_type_Int < super.getChildCount() - 1))
         {
@@ -327,9 +327,9 @@ public class MultilScreenlLayout
     }
   }
   
-  public void setClickLayoutListener(ajja paramajja)
+  public void setClickLayoutListener(alam paramalam)
   {
-    this.jdField_a_of_type_Ajja = paramajja;
+    this.jdField_a_of_type_Alam = paramalam;
   }
   
   public void setCurrentFrame(int paramInt)
@@ -359,7 +359,7 @@ public class MultilScreenlLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.MultilScreenlLayout
  * JD-Core Version:    0.7.0.1
  */

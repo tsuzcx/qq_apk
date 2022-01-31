@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import aabi;
-import aabl;
+import absf;
+import absi;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 class DataJsPlugin$26
   implements Runnable
 {
-  DataJsPlugin$26(DataJsPlugin paramDataJsPlugin, aabi paramaabi) {}
+  DataJsPlugin$26(DataJsPlugin paramDataJsPlugin, absf paramabsf) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ class DataJsPlugin$26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.DataJsPlugin.26
  * JD-Core Version:    0.7.0.1
  */

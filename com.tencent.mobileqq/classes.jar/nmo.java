@@ -1,28 +1,15 @@
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
 
-public class nmo
-  implements aptw
+public abstract interface nmo
 {
-  public nmo(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  public abstract void a(VerticalPagerView paramVerticalPagerView, View paramView, int paramInt);
   
-  public void a()
-  {
-    yxp.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
-    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
-    {
-      ReadInJoyNativeAdAppVideoView.a(this.a).start();
-      ReadInJoyNativeAdAppVideoView.e(this.a, 5);
-      ReadInJoyNativeAdAppVideoView.a(this.a);
-      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
-    }
-  }
-  
-  public void b() {}
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nmo
  * JD-Core Version:    0.7.0.1
  */

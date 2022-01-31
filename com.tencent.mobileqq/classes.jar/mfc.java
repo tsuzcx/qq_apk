@@ -1,24 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.MultiMembersVideoUI;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class mfc
-  implements View.OnTouchListener
+class mfc
+  extends Handler
 {
-  public mfc(MultiMembersVideoUI paramMultiMembersVideoUI) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public mfc(mfb parammfb, Looper paramLooper)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    return paramMotionEvent.getAction() == 2;
+    mfb.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfc
  * JD-Core Version:    0.7.0.1
  */

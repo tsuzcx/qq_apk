@@ -1,42 +1,56 @@
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.search.activity.FunctionSearchActivity;
+import java.util.List;
+
 public class ayiu
+  implements ayjk
 {
   private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int b;
-  private int c;
-  private int d;
+  private final String jdField_a_of_type_JavaLangString;
+  public final List<ayjl> a;
   
-  public ayiu(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public ayiu(List<ayjl> paramList, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Int;
+    return aydn.a("fts_native_function_maxnum", 3);
+  }
+  
+  public String a()
+  {
+    return aydn.a();
+  }
+  
+  public List<ayjl> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(View paramView)
+  {
+    FunctionSearchActivity.a((BaseActivity)paramView.getContext(), this.jdField_a_of_type_JavaLangString);
+    aynt.a(null, 0, this.jdField_a_of_type_Int, "0X8009D4B", 0, 0, null, null);
   }
   
   public int b()
   {
-    return this.b;
+    return this.jdField_a_of_type_Int;
   }
   
-  public int c()
+  public String b()
   {
-    return this.c;
-  }
-  
-  public int d()
-  {
-    return this.d;
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayiu
  * JD-Core Version:    0.7.0.1
  */

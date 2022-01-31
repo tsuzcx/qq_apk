@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import arik;
+import asyy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +27,7 @@ public class NowQQConnectFragment
       QLog.e("NowQQConnectFragment", 1, "argsBundle is null");
       return paramLayoutInflater;
     }
-    ((arik)arik.a().getManager(306)).a(paramViewGroup, paramBundle);
+    ((asyy)asyy.a().getManager(306)).a(paramViewGroup, paramBundle);
     return paramLayoutInflater;
   }
 }

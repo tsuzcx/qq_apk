@@ -1,21 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-
 class apmp
-  implements View.OnClickListener
+  extends bdvu
 {
-  apmp(apmi paramapmi, FileManagerEntity paramFileManagerEntity) {}
+  apmp(aply paramaply) {}
   
-  public void onClick(View paramView)
+  public void onCancel(bdvv parambdvv) {}
+  
+  public void onDone(bdvv parambdvv)
   {
-    axqy.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
-    apvm.a(this.jdField_a_of_type_Apmi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Apmi.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    super.onDone(parambdvv);
   }
+  
+  public void onDoneFile(bdvv parambdvv) {}
+  
+  public void onPause(bdvv parambdvv) {}
+  
+  public void onProgress(bdvv parambdvv) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apmp
  * JD-Core Version:    0.7.0.1
  */

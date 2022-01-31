@@ -1,21 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import com.tencent.widget.ListView;
 
-public class auhb
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface auhb
 {
-  public auhb(ScanIconAnimateView paramScanIconAnimateView) {}
+  public abstract ListView a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.invalidate();
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auhb
  * JD-Core Version:    0.7.0.1
  */

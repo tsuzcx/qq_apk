@@ -40,6 +40,7 @@ public class FileUtil
   private static final int DEFAULT_BUFFER_SIZE = 4096;
   public static final int ENU_NEW_TBS_BACKUP_PATH = 4;
   public static final int ENU_NEW_TBS_BACKUP_PATH1 = 7;
+  public static final int ENU_NEW_TBS_ENVIROMENT = 8;
   public static final int ENU_OLD_TBS_BACKUP_PATH1 = 1;
   public static final int ENU_OLD_TBS_BACKUP_PATH2 = 2;
   public static final int ENU_OLD_TBS_BACKUP_PATH3 = 3;
@@ -90,39 +91,39 @@ public class FileUtil
   private static boolean copyFileIfChanged(InputStream paramInputStream, ZipEntry paramZipEntry, String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: new 120	java/io/File
+    //   0: new 122	java/io/File
     //   3: dup
     //   4: aload_2
-    //   5: invokespecial 123	java/io/File:<init>	(Ljava/lang/String;)V
-    //   8: invokestatic 127	com/tencent/smtt/utils/FileUtil:ensureDirectory	(Ljava/io/File;)Z
+    //   5: invokespecial 125	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: invokestatic 129	com/tencent/smtt/utils/FileUtil:ensureDirectory	(Ljava/io/File;)Z
     //   11: pop
-    //   12: new 129	java/lang/StringBuilder
+    //   12: new 131	java/lang/StringBuilder
     //   15: dup
-    //   16: invokespecial 130	java/lang/StringBuilder:<init>	()V
+    //   16: invokespecial 132	java/lang/StringBuilder:<init>	()V
     //   19: aload_2
-    //   20: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: getstatic 137	java/io/File:separator	Ljava/lang/String;
-    //   26: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: getstatic 139	java/io/File:separator	Ljava/lang/String;
+    //   26: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   29: aload_3
-    //   30: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   36: astore 5
-    //   38: new 120	java/io/File
+    //   38: new 122	java/io/File
     //   41: dup
     //   42: aload 5
-    //   44: invokespecial 123	java/io/File:<init>	(Ljava/lang/String;)V
+    //   44: invokespecial 125	java/io/File:<init>	(Ljava/lang/String;)V
     //   47: astore_3
-    //   48: new 143	java/io/FileOutputStream
+    //   48: new 145	java/io/FileOutputStream
     //   51: dup
     //   52: aload_3
-    //   53: invokespecial 146	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   53: invokespecial 148	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   56: astore_2
     //   57: sipush 8192
     //   60: newarray byte
     //   62: astore 6
     //   64: aload_0
     //   65: aload 6
-    //   67: invokevirtual 152	java/io/InputStream:read	([B)I
+    //   67: invokevirtual 154	java/io/InputStream:read	([B)I
     //   70: istore 4
     //   72: iload 4
     //   74: ifle +65 -> 139
@@ -130,25 +131,25 @@ public class FileUtil
     //   78: aload 6
     //   80: iconst_0
     //   81: iload 4
-    //   83: invokevirtual 156	java/io/FileOutputStream:write	([BII)V
+    //   83: invokevirtual 158	java/io/FileOutputStream:write	([BII)V
     //   86: goto -22 -> 64
     //   89: astore_1
     //   90: aload_2
     //   91: astore_0
     //   92: aload_3
-    //   93: invokestatic 159	com/tencent/smtt/utils/FileUtil:delete	(Ljava/io/File;)V
-    //   96: new 118	java/io/IOException
+    //   93: invokestatic 161	com/tencent/smtt/utils/FileUtil:delete	(Ljava/io/File;)V
+    //   96: new 120	java/io/IOException
     //   99: dup
-    //   100: new 129	java/lang/StringBuilder
+    //   100: new 131	java/lang/StringBuilder
     //   103: dup
-    //   104: invokespecial 130	java/lang/StringBuilder:<init>	()V
-    //   107: ldc 161
-    //   109: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   107: ldc 163
+    //   109: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   112: aload_3
-    //   113: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   116: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   113: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   116: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   119: aload_1
-    //   120: invokespecial 167	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   120: invokespecial 169	java/io/IOException:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   123: athrow
     //   124: astore_2
     //   125: aload_0
@@ -158,49 +159,49 @@ public class FileUtil
     //   129: aload_1
     //   130: ifnull +7 -> 137
     //   133: aload_1
-    //   134: invokevirtual 168	java/io/FileOutputStream:close	()V
+    //   134: invokevirtual 170	java/io/FileOutputStream:close	()V
     //   137: aload_0
     //   138: athrow
     //   139: aload_2
     //   140: ifnull +7 -> 147
     //   143: aload_2
-    //   144: invokevirtual 168	java/io/FileOutputStream:close	()V
+    //   144: invokevirtual 170	java/io/FileOutputStream:close	()V
     //   147: aload 5
     //   149: aload_1
-    //   150: invokevirtual 174	java/util/zip/ZipEntry:getSize	()J
+    //   150: invokevirtual 176	java/util/zip/ZipEntry:getSize	()J
     //   153: aload_1
-    //   154: invokevirtual 177	java/util/zip/ZipEntry:getTime	()J
+    //   154: invokevirtual 179	java/util/zip/ZipEntry:getTime	()J
     //   157: aload_1
-    //   158: invokevirtual 180	java/util/zip/ZipEntry:getCrc	()J
-    //   161: invokestatic 184	com/tencent/smtt/utils/FileUtil:isFileDifferent	(Ljava/lang/String;JJJ)Z
+    //   158: invokevirtual 182	java/util/zip/ZipEntry:getCrc	()J
+    //   161: invokestatic 186	com/tencent/smtt/utils/FileUtil:isFileDifferent	(Ljava/lang/String;JJJ)Z
     //   164: ifeq +30 -> 194
-    //   167: ldc 40
-    //   169: new 129	java/lang/StringBuilder
+    //   167: ldc 42
+    //   169: new 131	java/lang/StringBuilder
     //   172: dup
-    //   173: invokespecial 130	java/lang/StringBuilder:<init>	()V
-    //   176: ldc 186
-    //   178: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   173: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   176: ldc 188
+    //   178: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   181: aload 5
-    //   183: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   186: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   189: invokestatic 192	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   183: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   186: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   189: invokestatic 194	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   192: iconst_0
     //   193: ireturn
     //   194: aload_3
     //   195: aload_1
-    //   196: invokevirtual 177	java/util/zip/ZipEntry:getTime	()J
-    //   199: invokevirtual 196	java/io/File:setLastModified	(J)Z
+    //   196: invokevirtual 179	java/util/zip/ZipEntry:getTime	()J
+    //   199: invokevirtual 198	java/io/File:setLastModified	(J)Z
     //   202: ifne +27 -> 229
-    //   205: ldc 40
-    //   207: new 129	java/lang/StringBuilder
+    //   205: ldc 42
+    //   207: new 131	java/lang/StringBuilder
     //   210: dup
-    //   211: invokespecial 130	java/lang/StringBuilder:<init>	()V
-    //   214: ldc 198
-    //   216: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   214: ldc 200
+    //   216: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   219: aload_3
-    //   220: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   223: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   226: invokestatic 192	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   220: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   223: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   226: invokestatic 194	com/tencent/smtt/utils/TbsLog:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   229: iconst_1
     //   230: ireturn
     //   231: astore_0
@@ -641,6 +642,7 @@ public class FileUtil
       Object localObject1 = localObject2;
     } while (((String)localObject2).equals(""));
     return (String)localObject2 + "tencent" + File.separator + "tbs" + File.separator + "backup" + File.separator + "core";
+    return getStandardExternalFilesDir(paramContext, "env");
   }
   
   public static FileLock getTbsCoreLoadFileLock(Context paramContext)
@@ -1018,133 +1020,133 @@ public class FileUtil
     //   14: ifnull +15 -> 29
     //   17: aload_2
     //   18: aload_0
-    //   19: invokeinterface 645 2 0
+    //   19: invokeinterface 649 2 0
     //   24: ifne +5 -> 29
     //   27: iconst_0
     //   28: ireturn
     //   29: aload_0
-    //   30: invokevirtual 211	java/io/File:exists	()Z
+    //   30: invokevirtual 213	java/io/File:exists	()Z
     //   33: ifeq +14 -> 47
     //   36: aload_0
-    //   37: invokevirtual 214	java/io/File:isFile	()Z
+    //   37: invokevirtual 216	java/io/File:isFile	()Z
     //   40: istore 4
     //   42: iload 4
     //   44: ifne +29 -> 73
     //   47: iconst_0
     //   48: ifeq +11 -> 59
-    //   51: new 647	java/lang/NullPointerException
+    //   51: new 651	java/lang/NullPointerException
     //   54: dup
-    //   55: invokespecial 648	java/lang/NullPointerException:<init>	()V
+    //   55: invokespecial 652	java/lang/NullPointerException:<init>	()V
     //   58: athrow
     //   59: iconst_0
     //   60: ifeq +11 -> 71
-    //   63: new 647	java/lang/NullPointerException
+    //   63: new 651	java/lang/NullPointerException
     //   66: dup
-    //   67: invokespecial 648	java/lang/NullPointerException:<init>	()V
+    //   67: invokespecial 652	java/lang/NullPointerException:<init>	()V
     //   70: athrow
     //   71: iconst_0
     //   72: ireturn
     //   73: aload_1
-    //   74: invokevirtual 211	java/io/File:exists	()Z
+    //   74: invokevirtual 213	java/io/File:exists	()Z
     //   77: ifeq +52 -> 129
     //   80: aload_3
     //   81: ifnull +44 -> 125
     //   84: aload_3
     //   85: aload_0
     //   86: aload_1
-    //   87: invokeinterface 652 3 0
+    //   87: invokeinterface 656 3 0
     //   92: istore 4
     //   94: iload 4
     //   96: ifeq +29 -> 125
     //   99: iconst_0
     //   100: ifeq +11 -> 111
-    //   103: new 647	java/lang/NullPointerException
+    //   103: new 651	java/lang/NullPointerException
     //   106: dup
-    //   107: invokespecial 648	java/lang/NullPointerException:<init>	()V
+    //   107: invokespecial 652	java/lang/NullPointerException:<init>	()V
     //   110: athrow
     //   111: iconst_0
     //   112: ifeq +11 -> 123
-    //   115: new 647	java/lang/NullPointerException
+    //   115: new 651	java/lang/NullPointerException
     //   118: dup
-    //   119: invokespecial 648	java/lang/NullPointerException:<init>	()V
+    //   119: invokespecial 652	java/lang/NullPointerException:<init>	()V
     //   122: athrow
     //   123: iconst_1
     //   124: ireturn
     //   125: aload_1
-    //   126: invokestatic 159	com/tencent/smtt/utils/FileUtil:delete	(Ljava/io/File;)V
+    //   126: invokestatic 161	com/tencent/smtt/utils/FileUtil:delete	(Ljava/io/File;)V
     //   129: aload_1
-    //   130: invokevirtual 638	java/io/File:getParentFile	()Ljava/io/File;
+    //   130: invokevirtual 642	java/io/File:getParentFile	()Ljava/io/File;
     //   133: astore_2
     //   134: aload_2
-    //   135: invokevirtual 214	java/io/File:isFile	()Z
+    //   135: invokevirtual 216	java/io/File:isFile	()Z
     //   138: ifeq +7 -> 145
     //   141: aload_2
-    //   142: invokestatic 159	com/tencent/smtt/utils/FileUtil:delete	(Ljava/io/File;)V
+    //   142: invokestatic 161	com/tencent/smtt/utils/FileUtil:delete	(Ljava/io/File;)V
     //   145: aload_2
-    //   146: invokevirtual 211	java/io/File:exists	()Z
+    //   146: invokevirtual 213	java/io/File:exists	()Z
     //   149: ifne +40 -> 189
     //   152: aload_2
-    //   153: invokevirtual 313	java/io/File:mkdirs	()Z
+    //   153: invokevirtual 315	java/io/File:mkdirs	()Z
     //   156: istore 4
     //   158: iload 4
     //   160: ifne +29 -> 189
     //   163: iconst_0
     //   164: ifeq +11 -> 175
-    //   167: new 647	java/lang/NullPointerException
+    //   167: new 651	java/lang/NullPointerException
     //   170: dup
-    //   171: invokespecial 648	java/lang/NullPointerException:<init>	()V
+    //   171: invokespecial 652	java/lang/NullPointerException:<init>	()V
     //   174: athrow
     //   175: iconst_0
     //   176: ifeq +11 -> 187
-    //   179: new 647	java/lang/NullPointerException
+    //   179: new 651	java/lang/NullPointerException
     //   182: dup
-    //   183: invokespecial 648	java/lang/NullPointerException:<init>	()V
+    //   183: invokespecial 652	java/lang/NullPointerException:<init>	()V
     //   186: athrow
     //   187: iconst_0
     //   188: ireturn
-    //   189: new 534	java/io/FileInputStream
+    //   189: new 538	java/io/FileInputStream
     //   192: dup
     //   193: aload_0
-    //   194: invokespecial 535	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   197: invokevirtual 653	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   194: invokespecial 539	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   197: invokevirtual 657	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
     //   200: astore_2
-    //   201: new 143	java/io/FileOutputStream
+    //   201: new 145	java/io/FileOutputStream
     //   204: dup
     //   205: aload_1
-    //   206: invokespecial 146	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   209: invokevirtual 654	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   212: astore_3
+    //   206: invokespecial 148	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   209: invokevirtual 658	java/io/FileOutputStream:getChannel	()Ljava/nio/channels/FileChannel;
+    //   212: astore_0
     //   213: aload_2
-    //   214: invokevirtual 657	java/nio/channels/FileChannel:size	()J
+    //   214: invokevirtual 661	java/nio/channels/FileChannel:size	()J
     //   217: lstore 5
-    //   219: aload_3
+    //   219: aload_0
     //   220: aload_2
     //   221: lconst_0
     //   222: lload 5
-    //   224: invokevirtual 661	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
+    //   224: invokevirtual 665	java/nio/channels/FileChannel:transferFrom	(Ljava/nio/channels/ReadableByteChannel;JJ)J
     //   227: lload 5
     //   229: lcmp
     //   230: ifeq +25 -> 255
     //   233: aload_1
-    //   234: invokestatic 159	com/tencent/smtt/utils/FileUtil:delete	(Ljava/io/File;)V
+    //   234: invokestatic 161	com/tencent/smtt/utils/FileUtil:delete	(Ljava/io/File;)V
     //   237: aload_2
     //   238: ifnull +7 -> 245
     //   241: aload_2
-    //   242: invokevirtual 662	java/nio/channels/FileChannel:close	()V
-    //   245: aload_3
+    //   242: invokevirtual 666	java/nio/channels/FileChannel:close	()V
+    //   245: aload_0
     //   246: ifnull +7 -> 253
-    //   249: aload_3
-    //   250: invokevirtual 662	java/nio/channels/FileChannel:close	()V
+    //   249: aload_0
+    //   250: invokevirtual 666	java/nio/channels/FileChannel:close	()V
     //   253: iconst_0
     //   254: ireturn
     //   255: aload_2
     //   256: ifnull +7 -> 263
     //   259: aload_2
-    //   260: invokevirtual 662	java/nio/channels/FileChannel:close	()V
-    //   263: aload_3
+    //   260: invokevirtual 666	java/nio/channels/FileChannel:close	()V
+    //   263: aload_0
     //   264: ifnull +7 -> 271
-    //   267: aload_3
-    //   268: invokevirtual 662	java/nio/channels/FileChannel:close	()V
+    //   267: aload_0
+    //   268: invokevirtual 666	java/nio/channels/FileChannel:close	()V
     //   271: iconst_1
     //   272: ireturn
     //   273: astore_0
@@ -1155,27 +1157,29 @@ public class FileUtil
     //   279: aload_2
     //   280: ifnull +7 -> 287
     //   283: aload_2
-    //   284: invokevirtual 662	java/nio/channels/FileChannel:close	()V
+    //   284: invokevirtual 666	java/nio/channels/FileChannel:close	()V
     //   287: aload_1
     //   288: ifnull +7 -> 295
     //   291: aload_1
-    //   292: invokevirtual 662	java/nio/channels/FileChannel:close	()V
+    //   292: invokevirtual 666	java/nio/channels/FileChannel:close	()V
     //   295: aload_0
     //   296: athrow
     //   297: astore_0
     //   298: aconst_null
     //   299: astore_1
     //   300: goto -21 -> 279
-    //   303: astore_0
-    //   304: aload_3
+    //   303: astore_3
+    //   304: aload_0
     //   305: astore_1
-    //   306: goto -27 -> 279
+    //   306: aload_3
+    //   307: astore_0
+    //   308: goto -29 -> 279
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	309	0	paramFile1	File
-    //   0	309	1	paramFile2	File
-    //   0	309	2	paramFileFilter	FileFilter
-    //   0	309	3	paramFileComparator	FileUtil.FileComparator
+    //   0	311	0	paramFile1	File
+    //   0	311	1	paramFile2	File
+    //   0	311	2	paramFileFilter	FileFilter
+    //   0	311	3	paramFileComparator	FileUtil.FileComparator
     //   40	119	4	bool	boolean
     //   217	11	5	l	long
     //   1	276	7	localObject	Object
@@ -1205,20 +1209,20 @@ public class FileUtil
     //   8: aload_1
     //   9: areturn
     //   10: aload_0
-    //   11: invokestatic 667	com/tencent/smtt/utils/FileUtil:openInputStream	(Ljava/io/File;)Ljava/io/FileInputStream;
+    //   11: invokestatic 671	com/tencent/smtt/utils/FileUtil:openInputStream	(Ljava/io/File;)Ljava/io/FileInputStream;
     //   14: astore_0
     //   15: aload_0
     //   16: astore_1
     //   17: aload_0
-    //   18: invokestatic 671	com/tencent/smtt/utils/FileUtil:toByteArrayOutputStream	(Ljava/io/InputStream;)Ljava/io/ByteArrayOutputStream;
-    //   21: invokevirtual 677	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   18: invokestatic 675	com/tencent/smtt/utils/FileUtil:toByteArrayOutputStream	(Ljava/io/InputStream;)Ljava/io/ByteArrayOutputStream;
+    //   21: invokevirtual 681	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   24: astore_2
     //   25: aload_2
     //   26: astore_1
     //   27: aload_0
     //   28: ifnull -20 -> 8
     //   31: aload_0
-    //   32: invokestatic 679	com/tencent/smtt/utils/FileUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   32: invokestatic 683	com/tencent/smtt/utils/FileUtil:closeQuietly	(Ljava/io/Closeable;)V
     //   35: aload_2
     //   36: areturn
     //   37: astore_2
@@ -1227,13 +1231,13 @@ public class FileUtil
     //   40: aload_0
     //   41: astore_1
     //   42: aload_2
-    //   43: invokevirtual 108	java/lang/Exception:printStackTrace	()V
+    //   43: invokevirtual 110	java/lang/Exception:printStackTrace	()V
     //   46: aload_3
     //   47: astore_1
     //   48: aload_0
     //   49: ifnull -41 -> 8
     //   52: aload_0
-    //   53: invokestatic 679	com/tencent/smtt/utils/FileUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   53: invokestatic 683	com/tencent/smtt/utils/FileUtil:closeQuietly	(Ljava/io/Closeable;)V
     //   56: aconst_null
     //   57: areturn
     //   58: astore_2
@@ -1242,7 +1246,7 @@ public class FileUtil
     //   61: aload_0
     //   62: astore_1
     //   63: aload_2
-    //   64: invokevirtual 680	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   64: invokevirtual 684	java/lang/OutOfMemoryError:printStackTrace	()V
     //   67: aload_0
     //   68: astore_1
     //   69: aload_2
@@ -1251,7 +1255,7 @@ public class FileUtil
     //   72: aload_1
     //   73: ifnull +7 -> 80
     //   76: aload_1
-    //   77: invokestatic 679	com/tencent/smtt/utils/FileUtil:closeQuietly	(Ljava/io/Closeable;)V
+    //   77: invokestatic 683	com/tencent/smtt/utils/FileUtil:closeQuietly	(Ljava/io/Closeable;)V
     //   80: aload_0
     //   81: athrow
     //   82: astore_0
@@ -1291,34 +1295,34 @@ public class FileUtil
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 40
-    //   5: new 129	java/lang/StringBuilder
+    //   3: ldc 42
+    //   5: new 131	java/lang/StringBuilder
     //   8: dup
-    //   9: invokespecial 130	java/lang/StringBuilder:<init>	()V
-    //   12: ldc_w 684
-    //   15: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   9: invokespecial 132	java/lang/StringBuilder:<init>	()V
+    //   12: ldc_w 688
+    //   15: invokevirtual 136	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   18: aload_1
-    //   19: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   22: invokevirtual 141	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   25: invokestatic 295	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   22: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   25: invokestatic 297	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   28: aload_1
-    //   29: invokevirtual 321	java/nio/channels/FileLock:channel	()Ljava/nio/channels/FileChannel;
+    //   29: invokevirtual 323	java/nio/channels/FileLock:channel	()Ljava/nio/channels/FileChannel;
     //   32: astore_0
     //   33: aload_0
     //   34: ifnull +16 -> 50
     //   37: aload_0
-    //   38: invokevirtual 326	java/nio/channels/FileChannel:isOpen	()Z
+    //   38: invokevirtual 328	java/nio/channels/FileChannel:isOpen	()Z
     //   41: istore_2
     //   42: iload_2
     //   43: ifeq +7 -> 50
     //   46: aload_1
-    //   47: invokevirtual 329	java/nio/channels/FileLock:release	()V
+    //   47: invokevirtual 331	java/nio/channels/FileLock:release	()V
     //   50: ldc 2
     //   52: monitorexit
     //   53: return
     //   54: astore_0
     //   55: aload_0
-    //   56: invokevirtual 353	java/io/IOException:printStackTrace	()V
+    //   56: invokevirtual 355	java/io/IOException:printStackTrace	()V
     //   59: goto -9 -> 50
     //   62: astore_0
     //   63: ldc 2
@@ -1495,7 +1499,7 @@ public class FileUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.utils.FileUtil
  * JD-Core Version:    0.7.0.1
  */

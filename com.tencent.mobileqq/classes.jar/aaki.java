@@ -1,32 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialStatus;
 
-public class aaki
-  implements View.OnClickListener
+public final class aaki
+  implements Parcelable.Creator<GdtInterstitialStatus>
 {
-  public aaki(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void onClick(View paramView)
+  public GdtInterstitialStatus a(Parcel paramParcel)
   {
-    if (paramView.getParent() == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramView = (View)paramView.getParent().getParent();
-      } while ((paramView == null) || (paramView.getTag() == null));
-      axqy.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
-    } while (!(paramView.getTag() instanceof SimpleAccount));
-    this.a.a((SimpleAccount)paramView.getTag());
+    return new GdtInterstitialStatus(paramParcel);
+  }
+  
+  public GdtInterstitialStatus[] a(int paramInt)
+  {
+    return new GdtInterstitialStatus[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaki
  * JD-Core Version:    0.7.0.1
  */

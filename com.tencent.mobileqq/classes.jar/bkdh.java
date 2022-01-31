@@ -1,40 +1,30 @@
-import android.animation.ValueAnimator;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bkdh
-  extends ValueAnimator
+class bkdh
+  implements View.OnTouchListener
 {
-  private bkdi jdField_a_of_type_Bkdi;
-  private boolean jdField_a_of_type_Boolean;
+  bkdh(bkdd parambkdd) {}
   
-  public bkdh()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    setInterpolator(new AccelerateDecelerateInterpolator());
-  }
-  
-  public void a(bkdg parambkdg1, bkdg parambkdg2)
-  {
-    setObjectValues(new Object[] { parambkdg1, parambkdg2 });
-    this.jdField_a_of_type_Boolean = bkdg.a(parambkdg1, parambkdg2);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void setObjectValues(Object... paramVarArgs)
-  {
-    super.setObjectValues(paramVarArgs);
-    if (this.jdField_a_of_type_Bkdi == null) {
-      this.jdField_a_of_type_Bkdi = new bkdi();
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.a.d();
+      return true;
     }
-    setEvaluator(this.jdField_a_of_type_Bkdi);
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.d();
+      return true;
+    }
+    return paramView.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkdh
  * JD-Core Version:    0.7.0.1
  */

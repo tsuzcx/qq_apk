@@ -13,20 +13,20 @@ public class TroopGiftAnimationController$5$5
     // Byte code:
     //   0: aload_0
     //   1: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   4: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   7: getfield 46	baro:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   4: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   7: getfield 46	bcqi:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
     //   10: ifnull +37 -> 47
     //   13: aload_0
     //   14: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   17: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   20: getfield 46	baro:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   17: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   20: getfield 46	bcqi:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
     //   23: invokevirtual 52	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:getVisibility	()I
     //   26: bipush 8
     //   28: if_icmpeq +19 -> 47
     //   31: aload_0
     //   32: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   35: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   38: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   35: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   38: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   41: invokevirtual 61	android/app/Activity:isFinishing	()Z
     //   44: ifeq +18 -> 62
     //   47: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -38,8 +38,8 @@ public class TroopGiftAnimationController$5$5
     //   61: return
     //   62: aload_0
     //   63: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   66: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   69: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   66: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   69: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   72: invokevirtual 78	android/app/Activity:getApplicationContext	()Landroid/content/Context;
     //   75: invokevirtual 84	android/content/Context:getPackageName	()Ljava/lang/String;
     //   78: astore 16
@@ -47,14 +47,14 @@ public class TroopGiftAnimationController$5$5
     //   81: astore 18
     //   83: aload_0
     //   84: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   87: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   90: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   87: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   90: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   93: instanceof 86
     //   96: ifeq +105 -> 201
     //   99: aload_0
     //   100: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   103: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   106: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   103: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   106: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   109: astore 15
     //   111: invokestatic 92	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
     //   114: invokevirtual 96	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
@@ -81,7 +81,7 @@ public class TroopGiftAnimationController$5$5
     //   164: instanceof 107
     //   167: ifeq +245 -> 412
     //   170: aload 15
-    //   172: checkcast 107	bccs
+    //   172: checkcast 107	bebt
     //   175: invokeinterface 110 1 0
     //   180: invokevirtual 114	com/tencent/mobileqq/webview/swift/WebViewFragment:b	()Z
     //   183: ifne +229 -> 412
@@ -94,21 +94,21 @@ public class TroopGiftAnimationController$5$5
     //   200: return
     //   201: aload_0
     //   202: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   205: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   208: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   205: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   208: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   211: instanceof 118
     //   214: ifeq +127 -> 341
     //   217: aload_0
     //   218: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   221: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   224: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   221: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   224: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   227: checkcast 118	com/tencent/mobileqq/pluginsdk/BasePluginActivity
     //   230: invokevirtual 122	com/tencent/mobileqq/pluginsdk/BasePluginActivity:getOutActivity	()Landroid/app/Activity;
     //   233: astore 17
     //   235: aload_0
     //   236: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   239: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   242: getfield 123	baro:jdField_a_of_type_Int	I
+    //   239: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   242: getfield 123	bcqi:jdField_a_of_type_Int	I
     //   245: iconst_2
     //   246: if_icmpne +51 -> 297
     //   249: new 125	java/lang/StringBuilder
@@ -135,8 +135,8 @@ public class TroopGiftAnimationController$5$5
     //   299: astore 15
     //   301: aload_0
     //   302: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   305: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   308: getfield 123	baro:jdField_a_of_type_Int	I
+    //   305: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   308: getfield 123	bcqi:jdField_a_of_type_Int	I
     //   311: bipush 20
     //   313: if_icmpne -42 -> 271
     //   316: new 125	java/lang/StringBuilder
@@ -151,8 +151,8 @@ public class TroopGiftAnimationController$5$5
     //   338: goto -67 -> 271
     //   341: aload_0
     //   342: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   345: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   348: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   345: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   348: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   351: instanceof 139
     //   354: ifeq +1851 -> 2205
     //   357: new 125	java/lang/StringBuilder
@@ -166,13 +166,13 @@ public class TroopGiftAnimationController$5$5
     //   377: astore 17
     //   379: aload_0
     //   380: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   383: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   386: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   383: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   386: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   389: astore 15
     //   391: aload_0
     //   392: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   395: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   398: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   395: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   398: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   401: checkcast 139	com/tencent/mobileqq/activity/QQBrowserActivity
     //   404: invokevirtual 145	com/tencent/mobileqq/activity/QQBrowserActivity:getAppInterface	()Lcom/tencent/common/app/AppInterface;
     //   407: astore 16
@@ -187,14 +187,14 @@ public class TroopGiftAnimationController$5$5
     //   430: ifne +665 -> 1095
     //   433: aload_0
     //   434: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   437: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   440: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   437: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   440: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   443: invokestatic 164	cooperation/qwallet/plugin/PropertyUtils:getStatusBarHeight	(Landroid/app/Activity;)I
     //   446: istore 6
     //   448: aload_0
     //   449: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   452: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   455: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   452: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   455: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   458: invokevirtual 168	android/app/Activity:getResources	()Landroid/content/res/Resources;
     //   461: ldc 169
     //   463: invokevirtual 175	android/content/res/Resources:getDimension	(I)F
@@ -202,16 +202,16 @@ public class TroopGiftAnimationController$5$5
     //   467: istore 11
     //   469: aload_0
     //   470: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   473: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   476: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   473: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   476: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   479: invokevirtual 179	android/app/Activity:getWindowManager	()Landroid/view/WindowManager;
     //   482: invokeinterface 185 1 0
     //   487: invokevirtual 190	android/view/Display:getWidth	()I
     //   490: istore 10
     //   492: aload_0
     //   493: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   496: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   499: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   496: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   499: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   502: invokevirtual 179	android/app/Activity:getWindowManager	()Landroid/view/WindowManager;
     //   505: invokeinterface 185 1 0
     //   510: invokevirtual 193	android/view/Display:getHeight	()I
@@ -221,14 +221,14 @@ public class TroopGiftAnimationController$5$5
     //   518: aload_0
     //   519: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
     //   522: getfield 153	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:a	Lcom/tencent/mobileqq/data/MessageForDeliverGiftTips;
-    //   525: invokestatic 198	balu:a	(Lcom/tencent/mobileqq/data/MessageForDeliverGiftTips;)Ljava/util/List;
+    //   525: invokestatic 198	bckh:a	(Lcom/tencent/mobileqq/data/MessageForDeliverGiftTips;)Ljava/util/List;
     //   528: astore 17
     //   530: aconst_null
     //   531: astore 16
     //   533: aload_0
     //   534: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
     //   537: getfield 153	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:a	Lcom/tencent/mobileqq/data/MessageForDeliverGiftTips;
-    //   540: invokestatic 201	balu:d	(Lcom/tencent/mobileqq/data/MessageForDeliverGiftTips;)Ljava/lang/String;
+    //   540: invokestatic 201	bckh:d	(Lcom/tencent/mobileqq/data/MessageForDeliverGiftTips;)Ljava/lang/String;
     //   543: astore 19
     //   545: aload_0
     //   546: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
@@ -238,11 +238,11 @@ public class TroopGiftAnimationController$5$5
     //   556: if_icmpne +545 -> 1101
     //   559: aload_0
     //   560: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   563: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   566: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   569: getfield 211	ascr:d	I
+    //   563: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   566: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   569: getfield 211	attr:d	I
     //   572: i2f
-    //   573: getstatic 216	bbdh:jdField_a_of_type_Float	F
+    //   573: getstatic 216	bdcb:jdField_a_of_type_Float	F
     //   576: fmul
     //   577: fconst_2
     //   578: fdiv
@@ -250,11 +250,11 @@ public class TroopGiftAnimationController$5$5
     //   580: istore_3
     //   581: aload_0
     //   582: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   585: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   588: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   591: getfield 219	ascr:e	I
+    //   585: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   588: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   591: getfield 219	attr:e	I
     //   594: i2f
-    //   595: getstatic 216	bbdh:jdField_a_of_type_Float	F
+    //   595: getstatic 216	bdcb:jdField_a_of_type_Float	F
     //   598: fmul
     //   599: fconst_2
     //   600: fdiv
@@ -313,16 +313,16 @@ public class TroopGiftAnimationController$5$5
     //   723: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   726: invokestatic 228	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
     //   729: astore 17
-    //   731: new 232	basg
+    //   731: new 232	bcra
     //   734: dup
-    //   735: invokespecial 233	basg:<init>	()V
+    //   735: invokespecial 233	bcra:<init>	()V
     //   738: astore 18
     //   740: aload 18
     //   742: iload 10
-    //   744: putfield 234	basg:jdField_a_of_type_Int	I
+    //   744: putfield 234	bcra:jdField_a_of_type_Int	I
     //   747: aload 18
     //   749: iload 9
-    //   751: putfield 236	basg:jdField_b_of_type_Int	I
+    //   751: putfield 236	bcra:jdField_b_of_type_Int	I
     //   754: iload 10
     //   756: i2f
     //   757: iload_3
@@ -341,69 +341,69 @@ public class TroopGiftAnimationController$5$5
     //   776: iload_3
     //   777: i2f
     //   778: fdiv
-    //   779: putfield 237	basg:jdField_a_of_type_Float	F
+    //   779: putfield 237	bcra:jdField_a_of_type_Float	F
     //   782: aload 18
     //   784: aload_0
     //   785: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   788: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   791: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   794: getfield 240	ascr:i	I
-    //   797: putfield 242	basg:c	I
+    //   788: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   791: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   794: getfield 240	attr:i	I
+    //   797: putfield 242	bcra:c	I
     //   800: aload 18
     //   802: aload_0
     //   803: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   806: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   809: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   812: getfield 245	ascr:k	I
-    //   815: putfield 248	basg:jdField_f_of_type_Int	I
+    //   806: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   809: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   812: getfield 245	attr:k	I
+    //   815: putfield 248	bcra:jdField_f_of_type_Int	I
     //   818: aload 18
     //   820: aload_0
     //   821: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   824: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   827: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   830: getfield 251	ascr:j	I
-    //   833: putfield 252	basg:d	I
+    //   824: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   827: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   830: getfield 251	attr:j	I
+    //   833: putfield 252	bcra:d	I
     //   836: aload 18
     //   838: aload_0
     //   839: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   842: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   845: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   848: getfield 253	ascr:jdField_f_of_type_Int	I
-    //   851: putfield 254	basg:e	I
+    //   842: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   845: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   848: getfield 253	attr:jdField_f_of_type_Int	I
+    //   851: putfield 254	bcra:e	I
     //   854: aload 18
     //   856: aload_0
     //   857: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   860: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   863: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   866: getfield 257	ascr:l	I
-    //   869: putfield 260	basg:g	I
+    //   860: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   863: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   866: getfield 257	attr:l	I
+    //   869: putfield 260	bcra:g	I
     //   872: aload 18
     //   874: aload_0
     //   875: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
     //   878: getfield 153	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:a	Lcom/tencent/mobileqq/data/MessageForDeliverGiftTips;
     //   881: getfield 263	com/tencent/mobileqq/data/MessageForDeliverGiftTips:senderName	Ljava/lang/String;
-    //   884: putfield 264	basg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   884: putfield 264	bcra:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   887: aload 18
     //   889: aload_0
     //   890: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   893: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   896: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   899: getfield 267	ascr:h	Ljava/lang/String;
-    //   902: putfield 269	basg:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   893: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   896: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   899: getfield 267	attr:h	Ljava/lang/String;
+    //   902: putfield 269	bcra:jdField_b_of_type_JavaLangString	Ljava/lang/String;
     //   905: aload 18
     //   907: aload_0
     //   908: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   911: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   914: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   917: getfield 272	ascr:jdField_f_of_type_Boolean	Z
-    //   920: putfield 274	basg:jdField_a_of_type_Boolean	Z
+    //   911: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   914: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   917: getfield 272	attr:jdField_f_of_type_Boolean	Z
+    //   920: putfield 274	bcra:jdField_a_of_type_Boolean	Z
     //   923: aload 18
     //   925: iload 5
-    //   927: putfield 276	basg:h	I
-    //   930: new 278	barx
+    //   927: putfield 276	bcra:h	I
+    //   930: new 278	bcqr
     //   933: dup
     //   934: aload_0
-    //   935: invokespecial 281	barx:<init>	(Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5;)V
+    //   935: invokespecial 281	bcqr:<init>	(Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5;)V
     //   938: astore 20
     //   940: aload_0
     //   941: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
@@ -413,8 +413,8 @@ public class TroopGiftAnimationController$5$5
     //   951: if_icmpne +422 -> 1373
     //   954: aload_0
     //   955: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   958: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   961: getfield 46	baro:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   958: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   961: getfield 46	bcqi:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
     //   964: checkcast 283	com/tencent/mobileqq/troopgift/TroopGiftToAllSurfaceView
     //   967: aload 17
     //   969: aload_0
@@ -423,7 +423,7 @@ public class TroopGiftAnimationController$5$5
     //   975: aload 19
     //   977: aload 20
     //   979: aload 18
-    //   981: invokevirtual 286	com/tencent/mobileqq/troopgift/TroopGiftToAllSurfaceView:a	(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Ljava/lang/String;Laych;Lbasg;)V
+    //   981: invokevirtual 286	com/tencent/mobileqq/troopgift/TroopGiftToAllSurfaceView:a	(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Ljava/lang/String;Lbaae;Lbcra;)V
     //   984: new 288	android/view/WindowManager$LayoutParams
     //   987: dup
     //   988: iconst_m1
@@ -438,44 +438,44 @@ public class TroopGiftAnimationController$5$5
     //   1004: putfield 294	android/view/WindowManager$LayoutParams:gravity	I
     //   1007: aload_0
     //   1008: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1011: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1014: invokestatic 297	baro:a	(Lbaro;)Landroid/view/WindowManager;
+    //   1011: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1014: invokestatic 297	bcqi:a	(Lbcqi;)Landroid/view/WindowManager;
     //   1017: aload_0
     //   1018: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1021: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1024: getfield 300	baro:jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout	Lcom/tencent/mobileqq/activity/fling/TopGestureLayout;
+    //   1021: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1024: getfield 300	bcqi:jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout	Lcom/tencent/mobileqq/activity/fling/TopGestureLayout;
     //   1027: invokeinterface 304 2 0
     //   1032: aload_0
     //   1033: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1036: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1039: invokestatic 297	baro:a	(Lbaro;)Landroid/view/WindowManager;
+    //   1036: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1039: invokestatic 297	bcqi:a	(Lbcqi;)Landroid/view/WindowManager;
     //   1042: aload_0
     //   1043: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1046: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1049: getfield 300	baro:jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout	Lcom/tencent/mobileqq/activity/fling/TopGestureLayout;
+    //   1046: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1049: getfield 300	bcqi:jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout	Lcom/tencent/mobileqq/activity/fling/TopGestureLayout;
     //   1052: aload 15
     //   1054: invokeinterface 308 3 0
     //   1059: aload_0
     //   1060: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1063: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1066: getfield 46	baro:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   1063: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1066: getfield 46	bcqi:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
     //   1069: iconst_0
     //   1070: invokevirtual 312	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:setVisibility	(I)V
     //   1073: aload_0
     //   1074: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1077: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
+    //   1077: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
     //   1080: iconst_0
     //   1081: aload_0
     //   1082: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1085: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1088: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   1091: invokevirtual 315	baro:a	(ILascr;)V
+    //   1085: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1088: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   1091: invokevirtual 315	bcqi:a	(ILattr;)V
     //   1094: return
     //   1095: iconst_0
     //   1096: istore 6
     //   1098: goto -650 -> 448
     //   1101: aload 17
-    //   1103: invokestatic 318	balu:a	(Ljava/util/List;)Z
+    //   1103: invokestatic 318	bckh:a	(Ljava/util/List;)Z
     //   1106: ifeq +19 -> 1125
     //   1109: invokestatic 66	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1112: ifeq -1051 -> 61
@@ -547,7 +547,7 @@ public class TroopGiftAnimationController$5$5
     //   1254: iconst_0
     //   1255: aaload
     //   1256: aconst_null
-    //   1257: invokestatic 350	bbef:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   1257: invokestatic 350	bdda:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   1260: astore 17
     //   1262: aload 17
     //   1264: invokevirtual 353	android/graphics/Bitmap:getWidth	()I
@@ -598,12 +598,12 @@ public class TroopGiftAnimationController$5$5
     //   1363: iload 4
     //   1365: i2f
     //   1366: fdiv
-    //   1367: putfield 237	basg:jdField_a_of_type_Float	F
+    //   1367: putfield 237	bcra:jdField_a_of_type_Float	F
     //   1370: goto -588 -> 782
     //   1373: aload_0
     //   1374: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1377: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1380: getfield 46	baro:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   1377: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1380: getfield 46	bcqi:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
     //   1383: checkcast 283	com/tencent/mobileqq/troopgift/TroopGiftToAllSurfaceView
     //   1386: aload 17
     //   1388: aload_0
@@ -612,12 +612,12 @@ public class TroopGiftAnimationController$5$5
     //   1394: aload 16
     //   1396: aload 20
     //   1398: aload 18
-    //   1400: invokevirtual 361	com/tencent/mobileqq/troopgift/TroopGiftToAllSurfaceView:a	(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;[Ljava/lang/String;Laych;Lbasg;)V
+    //   1400: invokevirtual 361	com/tencent/mobileqq/troopgift/TroopGiftToAllSurfaceView:a	(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;[Ljava/lang/String;Lbaae;Lbcra;)V
     //   1403: goto -419 -> 984
     //   1406: aload_0
     //   1407: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1410: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1413: getfield 46	baro:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   1410: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1413: getfield 46	bcqi:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
     //   1416: checkcast 363	com/tencent/mobileqq/troopgift/TroopGiftToPersonalSurfaceView
     //   1419: astore 15
     //   1421: aload_0
@@ -649,19 +649,19 @@ public class TroopGiftAnimationController$5$5
     //   1479: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1482: aload_0
     //   1483: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1486: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1489: invokestatic 372	baro:a	(Lbaro;)Laycd;
+    //   1486: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1489: invokestatic 372	bcqi:a	(Lbcqi;)Lbaaa;
     //   1492: ifnull -1431 -> 61
     //   1495: aload_0
     //   1496: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1499: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1502: invokestatic 372	baro:a	(Lbaro;)Laycd;
+    //   1499: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1502: invokestatic 372	bcqi:a	(Lbcqi;)Lbaaa;
     //   1505: invokeinterface 376 1 0
     //   1510: aload_0
     //   1511: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1514: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
+    //   1514: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
     //   1517: aconst_null
-    //   1518: invokestatic 379	baro:a	(Lbaro;Laycd;)Laycd;
+    //   1518: invokestatic 379	bcqi:a	(Lbcqi;Lbaaa;)Lbaaa;
     //   1521: pop
     //   1522: return
     //   1523: aload 15
@@ -677,30 +677,30 @@ public class TroopGiftAnimationController$5$5
     //   1544: goto -86 -> 1458
     //   1547: aload_0
     //   1548: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1551: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1554: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   1557: getfield 211	ascr:d	I
+    //   1551: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1554: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   1557: getfield 211	attr:d	I
     //   1560: ifeq +19 -> 1579
     //   1563: aload_0
     //   1564: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1567: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1570: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   1573: getfield 219	ascr:e	I
+    //   1567: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1570: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   1573: getfield 219	attr:e	I
     //   1576: ifne +36 -> 1612
     //   1579: aload_0
     //   1580: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1583: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1586: invokestatic 207	baro:a	(Lbaro;)Lascr;
+    //   1583: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1586: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
     //   1589: iload 10
-    //   1591: putfield 211	ascr:d	I
+    //   1591: putfield 211	attr:d	I
     //   1594: aload_0
     //   1595: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1598: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1601: invokestatic 207	baro:a	(Lbaro;)Lascr;
+    //   1598: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1601: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
     //   1604: iload 9
     //   1606: iload 11
     //   1608: isub
-    //   1609: putfield 219	ascr:e	I
+    //   1609: putfield 219	attr:e	I
     //   1612: iload 4
     //   1614: iload 10
     //   1616: imul
@@ -720,9 +720,9 @@ public class TroopGiftAnimationController$5$5
     //   1640: istore 4
     //   1642: aload_0
     //   1643: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1646: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1649: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   1652: getfield 383	ascr:g	I
+    //   1646: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1649: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   1652: getfield 383	attr:g	I
     //   1655: iload 9
     //   1657: imul
     //   1658: bipush 100
@@ -744,9 +744,9 @@ public class TroopGiftAnimationController$5$5
     //   1683: istore 13
     //   1685: aload_0
     //   1686: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1689: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1692: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   1695: getfield 253	ascr:jdField_f_of_type_Int	I
+    //   1689: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1692: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   1695: getfield 253	attr:jdField_f_of_type_Int	I
     //   1698: iload 4
     //   1700: imul
     //   1701: bipush 100
@@ -754,18 +754,18 @@ public class TroopGiftAnimationController$5$5
     //   1704: istore 10
     //   1706: aload_0
     //   1707: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1710: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1713: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   1710: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1713: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   1716: ldc_w 384
-    //   1719: invokestatic 389	baxn:a	(Landroid/content/Context;F)I
+    //   1719: invokestatic 389	bcwh:a	(Landroid/content/Context;F)I
     //   1722: iload 10
     //   1724: iadd
     //   1725: aload_0
     //   1726: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1729: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1732: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   1729: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1732: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   1735: ldc_w 390
-    //   1738: invokestatic 389	baxn:a	(Landroid/content/Context;F)I
+    //   1738: invokestatic 389	bcwh:a	(Landroid/content/Context;F)I
     //   1741: iadd
     //   1742: istore 12
     //   1744: iload 12
@@ -784,8 +784,8 @@ public class TroopGiftAnimationController$5$5
     //   1769: istore 4
     //   1771: aload_0
     //   1772: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1775: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1778: getfield 46	baro:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   1775: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1778: getfield 46	bcqi:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
     //   1781: invokevirtual 394	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
     //   1784: checkcast 396	android/widget/RelativeLayout$LayoutParams
     //   1787: astore 16
@@ -800,8 +800,8 @@ public class TroopGiftAnimationController$5$5
     //   1807: putfield 405	android/widget/RelativeLayout$LayoutParams:leftMargin	I
     //   1810: aload_0
     //   1811: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1814: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1817: getfield 46	baro:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
+    //   1814: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1817: getfield 46	bcqi:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
     //   1820: aload 16
     //   1822: invokevirtual 409	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
     //   1825: new 288	android/view/WindowManager$LayoutParams
@@ -830,15 +830,15 @@ public class TroopGiftAnimationController$5$5
     //   1869: istore 6
     //   1871: aload_0
     //   1872: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1875: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1878: invokestatic 55	baro:a	(Lbaro;)Landroid/app/Activity;
+    //   1875: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1878: invokestatic 55	bcqi:a	(Lbcqi;)Landroid/app/Activity;
     //   1881: ldc_w 416
-    //   1884: invokestatic 389	baxn:a	(Landroid/content/Context;F)I
+    //   1884: invokestatic 389	bcwh:a	(Landroid/content/Context;F)I
     //   1887: istore 7
     //   1889: aload_0
     //   1890: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1893: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1896: getfield 419	baro:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   1893: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1896: getfield 419	bcqi:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
     //   1899: invokevirtual 422	android/widget/ImageView:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
     //   1902: checkcast 396	android/widget/RelativeLayout$LayoutParams
     //   1905: astore 17
@@ -851,39 +851,39 @@ public class TroopGiftAnimationController$5$5
     //   1917: putfield 425	android/widget/RelativeLayout$LayoutParams:topMargin	I
     //   1920: aload_0
     //   1921: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1924: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1927: getfield 419	baro:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   1924: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1927: getfield 419	bcqi:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
     //   1930: aload 17
     //   1932: invokevirtual 426	android/widget/ImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
     //   1935: aload_0
     //   1936: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1939: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1942: invokestatic 429	baro:a	(Lbaro;)Lcom/tencent/mobileqq/data/MessageForDeliverGiftTips;
+    //   1939: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1942: invokestatic 429	bcqi:a	(Lbcqi;)Lcom/tencent/mobileqq/data/MessageForDeliverGiftTips;
     //   1945: getfield 432	com/tencent/mobileqq/data/MessageForDeliverGiftTips:showCloseBtn	Z
     //   1948: ifne +18 -> 1966
     //   1951: aload_0
     //   1952: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1955: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1958: getfield 419	baro:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   1955: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1958: getfield 419	bcqi:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
     //   1961: bipush 8
     //   1963: invokevirtual 433	android/widget/ImageView:setVisibility	(I)V
     //   1966: aload_0
     //   1967: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1970: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1973: invokestatic 297	baro:a	(Lbaro;)Landroid/view/WindowManager;
+    //   1970: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1973: invokestatic 297	bcqi:a	(Lbcqi;)Landroid/view/WindowManager;
     //   1976: aload_0
     //   1977: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1980: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1983: getfield 300	baro:jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout	Lcom/tencent/mobileqq/activity/fling/TopGestureLayout;
+    //   1980: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1983: getfield 300	bcqi:jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout	Lcom/tencent/mobileqq/activity/fling/TopGestureLayout;
     //   1986: invokeinterface 304 2 0
     //   1991: aload_0
     //   1992: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   1995: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   1998: invokestatic 297	baro:a	(Lbaro;)Landroid/view/WindowManager;
+    //   1995: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   1998: invokestatic 297	bcqi:a	(Lbcqi;)Landroid/view/WindowManager;
     //   2001: aload_0
     //   2002: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   2005: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   2008: getfield 300	baro:jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout	Lcom/tencent/mobileqq/activity/fling/TopGestureLayout;
+    //   2005: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   2008: getfield 300	bcqi:jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout	Lcom/tencent/mobileqq/activity/fling/TopGestureLayout;
     //   2011: aload 16
     //   2013: invokeinterface 308 3 0
     //   2018: aload_0
@@ -905,7 +905,7 @@ public class TroopGiftAnimationController$5$5
     //   2044: fstore_2
     //   2045: iload 14
     //   2047: ifeq +118 -> 2165
-    //   2050: getstatic 216	bbdh:jdField_a_of_type_Float	F
+    //   2050: getstatic 216	bdcb:jdField_a_of_type_Float	F
     //   2053: fconst_2
     //   2054: fdiv
     //   2055: fstore_1
@@ -937,13 +937,13 @@ public class TroopGiftAnimationController$5$5
     //   2113: invokestatic 74	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   2116: aload_0
     //   2117: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   2120: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
+    //   2120: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
     //   2123: iload 12
     //   2125: aload_0
     //   2126: getfield 16	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5$5:jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftAnimationController$5	Lcom/tencent/mobileqq/troopgift/TroopGiftAnimationController$5;
-    //   2129: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbaro;
-    //   2132: invokestatic 207	baro:a	(Lbaro;)Lascr;
-    //   2135: invokevirtual 315	baro:a	(ILascr;)V
+    //   2129: getfield 41	com/tencent/mobileqq/troopgift/TroopGiftAnimationController$5:this$0	Lbcqi;
+    //   2132: invokestatic 207	bcqi:a	(Lbcqi;)Lattr;
+    //   2135: invokevirtual 315	bcqi:a	(ILattr;)V
     //   2138: return
     //   2139: iload 5
     //   2141: iload 4
@@ -1014,7 +1014,7 @@ public class TroopGiftAnimationController$5$5
     //   2210	1	17	localException3	java.lang.Exception
     //   81	2132	18	localObject7	Object
     //   543	907	19	str	String
-    //   938	459	20	localbarx	barx
+    //   938	459	20	localbcqr	bcqr
     // Exception table:
     //   from	to	target	type
     //   1252	1268	1278	java/lang/Throwable
@@ -1027,7 +1027,7 @@ public class TroopGiftAnimationController$5$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.5
  * JD-Core Version:    0.7.0.1
  */

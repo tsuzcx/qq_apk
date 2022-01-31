@@ -1,183 +1,40 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.view.View;
-import com.tribe.async.dispatch.IEventReceiver;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class vhk
-  implements IEventReceiver
+final class vhk
+  implements URLDrawable.URLDrawableListener
 {
-  @NonNull
-  public final vhm a;
-  public vix a;
-  protected long c;
+  vhk(long paramLong, vhv paramvhv) {}
   
-  public vhk(@NonNull vhm paramvhm)
-  {
-    this.jdField_a_of_type_Vhm = paramvhm;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  private void f()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.jdField_a_of_type_Vix == null) {
-      throw new IllegalStateException("have not attached ui");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadFialed, exception: " + QLog.getStackTraceString(paramThrowable));
+    }
+    if (this.jdField_a_of_type_Vhv != null) {
+      this.jdField_a_of_type_Vhv.b();
     }
   }
   
-  public void V_()
-  {
-    f();
-  }
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void X_()
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    f();
-  }
-  
-  @NonNull
-  public Context a()
-  {
-    f();
-    return this.jdField_a_of_type_Vix.a();
-  }
-  
-  @NonNull
-  public Resources a()
-  {
-    f();
-    return this.jdField_a_of_type_Vix.a().getResources();
-  }
-  
-  @NonNull
-  protected View a(int paramInt)
-  {
-    f();
-    View localView = this.jdField_a_of_type_Vix.a().findViewById(paramInt);
-    if (localView == null) {
-      throw new IllegalArgumentException("can not find view by id " + paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.player.PlayModeUtils", 2, "urlDrawable onLoadSuccessed");
     }
-    return localView;
-  }
-  
-  protected String a(int paramInt)
-  {
-    f();
-    return a().getString(paramInt);
-  }
-  
-  public vhl a(Class<? extends vhl> paramClass)
-  {
-    f();
-    return this.jdField_a_of_type_Vhm.a(paramClass);
-  }
-  
-  @NonNull
-  public vix a()
-  {
-    f();
-    return this.jdField_a_of_type_Vix;
-  }
-  
-  public void a()
-  {
-    f();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    f();
-  }
-  
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    a(paramInt2, paramObject);
-  }
-  
-  public void a(int paramInt, Object paramObject) {}
-  
-  public void a(int paramInt, @NonNull vsa paramvsa)
-  {
-    a(paramvsa);
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    f();
-  }
-  
-  public void a(Class<? extends vhl> paramClass, vhl paramvhl)
-  {
-    f();
-    this.jdField_a_of_type_Vhm.a(paramClass, paramvhl);
-  }
-  
-  public void a(@NonNull Error paramError) {}
-  
-  public void a(vix paramvix)
-  {
-    if (this.jdField_a_of_type_Vix != null) {
-      throw new IllegalStateException("attach context duplicate");
+    wta.b("storypic", "load_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
+    if (this.jdField_a_of_type_Vhv != null) {
+      this.jdField_a_of_type_Vhv.a();
     }
-    if (paramvix == null) {
-      throw new IllegalArgumentException("ui should not be null");
-    }
-    this.jdField_a_of_type_Vix = paramvix;
-  }
-  
-  @Deprecated
-  public void a(@NonNull vsa paramvsa) {}
-  
-  public boolean a()
-  {
-    f();
-    return false;
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    return false;
-  }
-  
-  public void b(Bundle paramBundle)
-  {
-    f();
-  }
-  
-  public void b(@NonNull vsa paramvsa) {}
-  
-  public final boolean b(@NonNull Message paramMessage)
-  {
-    boolean bool = a(paramMessage);
-    paramMessage.recycle();
-    return bool;
-  }
-  
-  public void c()
-  {
-    f();
-  }
-  
-  public void d()
-  {
-    f();
-  }
-  
-  public void h()
-  {
-    f();
-  }
-  
-  public boolean isValidate()
-  {
-    return this.jdField_a_of_type_Vhm.isValidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vhk
  * JD-Core Version:    0.7.0.1
  */

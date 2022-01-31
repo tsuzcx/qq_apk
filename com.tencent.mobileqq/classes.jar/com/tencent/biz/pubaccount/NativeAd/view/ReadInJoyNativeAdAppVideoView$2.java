@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.NativeAd.view;
 
 import android.content.Context;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import nmm;
+import npi;
 
 public class ReadInJoyNativeAdAppVideoView$2
   implements Runnable
@@ -11,12 +11,12 @@ public class ReadInJoyNativeAdAppVideoView$2
   
   public void run()
   {
-    TVK_SDKMgr.installPlugin(this.a, new nmm(this));
+    TVK_SDKMgr.installPlugin(this.a, new npi(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.2
  * JD-Core Version:    0.7.0.1
  */

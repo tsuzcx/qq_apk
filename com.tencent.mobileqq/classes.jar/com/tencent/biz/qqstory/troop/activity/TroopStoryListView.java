@@ -12,19 +12,19 @@ import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 import com.tencent.biz.qqstory.view.segment.SegmentList;
 import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
 import com.tencent.widget.ListView;
-import szs;
-import ted;
-import vaq;
-import vba;
-import vdi;
-import vei;
+import uok;
+import usv;
+import wpi;
+import wps;
+import wsa;
+import wta;
 
 public class TroopStoryListView
   extends SegmentList
   implements View.OnTouchListener
 {
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private vaq jdField_a_of_type_Vaq;
+  private wpi jdField_a_of_type_Wpi;
   private boolean jdField_a_of_type_Boolean;
   
   public TroopStoryListView(Context paramContext)
@@ -45,19 +45,19 @@ public class TroopStoryListView
   public void a()
   {
     super.setActTAG("list_qqstory_troop");
-    vba localvba = new vba(getContext(), this.jdField_a_of_type_AndroidAppActivity, 11, this.jdField_a_of_type_Vaq, false);
-    a(localvba);
-    a(new vdi(getContext(), "FeedSegment", "暂时没有小视频\n你可以在这里查看群内的小视频", 2130845720, 2130845720));
-    localvba.e_(true);
+    wps localwps = new wps(getContext(), this.jdField_a_of_type_AndroidAppActivity, 11, this.jdField_a_of_type_Wpi, false);
+    a(localwps);
+    a(new wsa(getContext(), "FeedSegment", "暂时没有小视频\n你可以在这里查看群内的小视频", 2130846099, 2130846099));
+    localwps.e_(true);
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
     super.setBackgroundColor(-1);
   }
   
-  public void a(Activity paramActivity, vaq paramvaq)
+  public void a(Activity paramActivity, wpi paramwpi)
   {
-    this.jdField_a_of_type_Vaq = paramvaq;
+    this.jdField_a_of_type_Wpi = paramwpi;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     super.setOnTouchListener(this);
   }
@@ -87,7 +87,7 @@ public class TroopStoryListView
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = this.jdField_a_of_type_Vaq.a();
+    paramView = this.jdField_a_of_type_Wpi.a();
     int i;
     if (paramView.getVisibility() == 0)
     {
@@ -95,7 +95,7 @@ public class TroopStoryListView
       paramView.clearFocus();
       paramView.setVisibility(8);
       paramView = paramView.a.a;
-      i = vei.a(paramView.getOwner());
+      i = wta.a(paramView.getOwner());
       if (!paramView.getOwner().isMe()) {
         break label113;
       }
@@ -103,14 +103,14 @@ public class TroopStoryListView
     label113:
     for (paramView = "1";; paramView = "2")
     {
-      vei.a("home_page", "cancel_reply", i, 0, new String[] { paramView, "3", "", "" });
+      wta.a("home_page", "cancel_reply", i, 0, new String[] { paramView, "3", "", "" });
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.activity.TroopStoryListView
  * JD-Core Version:    0.7.0.1
  */

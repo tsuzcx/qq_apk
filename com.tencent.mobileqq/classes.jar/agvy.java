@@ -1,62 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
+import android.view.View;
 
-public class agvy
-  extends Handler
+public abstract interface agvy
+  extends agwc
 {
-  agvy(agvx paramagvx, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract int a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    int i = paramMessage.what;
-    boolean bool;
-    if (paramMessage.arg1 == 1)
-    {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("PasswdRedBagManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
-      }
-      if (bool) {
-        break label56;
-      }
-    }
-    for (;;)
-    {
-      return;
-      bool = false;
-      break;
-      label56:
-      if ((i == 1) || (i == 0))
-      {
-        ThreadManager.getFileThreadHandler().post(new PasswdRedBagManager.1.1(this, i));
-        paramMessage = (List)paramMessage.obj;
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.iterator();
-          while (paramMessage.hasNext())
-          {
-            oidb_0x438.RedBagInfo localRedBagInfo = (oidb_0x438.RedBagInfo)paramMessage.next();
-            this.a.a(localRedBagInfo);
-          }
-        }
-      }
-    }
-  }
+  public abstract View a(Object... paramVarArgs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agvy
  * JD-Core Version:    0.7.0.1
  */

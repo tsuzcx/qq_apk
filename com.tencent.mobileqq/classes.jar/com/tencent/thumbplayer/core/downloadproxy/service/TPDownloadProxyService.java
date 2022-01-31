@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.text.TextUtils;
 import com.tencent.thumbplayer.core.downloadproxy.aidl.TPDownloadProxyFactoryAidl.Stub;
+import com.tencent.thumbplayer.core.downloadproxy.apiinner.TPListenerManager;
+import com.tencent.thumbplayer.core.downloadproxy.jni.TPDownloadProxyNative;
 import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyLog;
 import java.util.Iterator;
 import java.util.List;
@@ -73,12 +75,26 @@ public class TPDownloadProxyService
   {
     TPDLProxyLog.i("TPDownloadProxyService", 0, "tpdlnative", "on unbind!");
     super.onUnbind(paramIntent);
-    return true;
+    if (!isExistMainProcess()) {}
+    try
+    {
+      TPDownloadProxyNative.getInstance().stopAllDownload(3);
+      TPListenerManager.getInstance().removeAllPlayListener();
+      TPListenerManager.getInstance().removeAllPreLoadListener();
+      return true;
+    }
+    catch (Throwable paramIntent)
+    {
+      for (;;)
+      {
+        TPDLProxyLog.e("TPDownloadProxyService", 0, "tpdlnative", paramIntent.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.service.TPDownloadProxyService
  * JD-Core Version:    0.7.0.1
  */

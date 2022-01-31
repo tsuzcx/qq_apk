@@ -1,84 +1,75 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class afwl
-  extends BroadcastReceiver
 {
-  public afwl(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  public static int a;
+  public static boolean a;
+  public static int b;
+  public static boolean b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    int j = 1;
-    paramContext = paramIntent.getAction();
-    if ((TextUtils.isEmpty(paramContext)) || (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM"))) {}
-    do
+    jdField_b_of_type_Boolean = true;
+    jdField_a_of_type_Int = 15;
+    jdField_b_of_type_Int = 20;
+  }
+  
+  public static void a()
+  {
+    Object localObject;
+    if (!jdField_a_of_type_Boolean)
     {
-      do
+      localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.PtvConfig.name(), null);
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), ptvConfig=" + (String)localObject);
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label211;
+      }
+      localObject = ((String)localObject).split("\\|");
+      if ((localObject != null) && (localObject.length >= 3) && (TextUtils.isEmpty(localObject[0]))) {}
+    }
+    try
+    {
+      jdField_b_of_type_Int = Integer.parseInt(localObject[0]);
+      label93:
+      if (!TextUtils.isEmpty(localObject[1])) {
+        jdField_b_of_type_Boolean = localObject[1].equals("1");
+      }
+      if (!TextUtils.isEmpty(localObject[2])) {}
+      for (;;)
       {
-        return;
-        if (this.a.getActivity() != null) {
-          break;
+        try
+        {
+          jdField_a_of_type_Int = Integer.parseInt(localObject[2]);
+          jdField_a_of_type_Boolean = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("ShortVideo.PtvPlayConfig", 2, "initConfig(), sReadFromDPC=" + jdField_a_of_type_Boolean + ", sAutoPlayInAIO:" + jdField_b_of_type_Boolean + ", sRequestedFPS:" + jdField_a_of_type_Int + ",sPtvMaxTime:" + jdField_b_of_type_Int);
+          }
+          return;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.history.C2CAllFragment", 2, "OpenDevLockReceiver get activity is null");
-      return;
-    } while (this.a.jdField_a_of_type_AndroidContentBroadcastReceiver == null);
-    this.a.getActivity().getApplicationContext().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
-    this.a.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-    boolean bool = paramIntent.getBooleanExtra("auth_dev_open", false);
-    int k = paramIntent.getIntExtra("auth_dev_open_cb_reason", 0);
-    paramIntent = paramIntent.getByteArrayExtra("devlock_roam_sig");
-    if (QLog.isColorLevel())
-    {
-      paramContext = new StringBuilder().append("openDevLock callback isOpen: ").append(bool).append(", reason: ").append(k).append(", da2 length: ");
-      if (paramIntent == null)
-      {
-        i = 0;
-        QLog.d("Q.history.C2CAllFragment", 2, i);
+        catch (Exception localException1)
+        {
+          jdField_a_of_type_Int = 15;
+          continue;
+        }
+        label211:
+        jdField_b_of_type_Boolean = true;
+        jdField_a_of_type_Int = 15;
       }
     }
-    else
+    catch (Exception localException2)
     {
-      QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      String str = k + "";
-      if (!bool) {
-        break label301;
-      }
-      paramContext = "true";
-      label211:
-      VipUtils.a(localQQAppInterface, "chat_history", "LockSet", "opendev_amount", 1, 0, new String[] { str, "0", paramContext });
-      paramContext = this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(29);
-      if (!bool) {
-        break label307;
-      }
-    }
-    label301:
-    label307:
-    for (int i = j;; i = 0)
-    {
-      paramContext.arg1 = i;
-      paramContext.arg2 = k;
-      paramContext.obj = paramIntent;
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramContext, 500L);
-      return;
-      i = paramIntent.length;
-      break;
-      paramContext = "false";
-      break label211;
+      break label93;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afwl
  * JD-Core Version:    0.7.0.1
  */

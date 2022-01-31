@@ -1,80 +1,119 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter.FilterPagerAdapter;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-public class vgo
-  implements ViewPager.OnPageChangeListener
+public abstract class vgo
 {
-  private vgo(EditVideoFilter paramEditVideoFilter) {}
+  private static Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
+  public bepp a;
+  public String a;
+  public WeakReference<Activity> a;
+  public List<int[]> a;
+  private vgn jdField_a_of_type_Vgn;
+  public boolean a;
+  public boolean b = true;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public vgo(Activity paramActivity)
   {
-    paramInt2 = 0;
-    int i = paramInt1 % this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a();
-    Object localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(i);
-    if (localObject != null) {}
-    for (paramInt1 = ((vpr)localObject).jdField_a_of_type_Int;; paramInt1 = 0)
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+  }
+  
+  public static boolean a()
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - jdField_a_of_type_JavaLangLong.longValue();
+    if ((l2 > 0L) && (l2 < 800L))
     {
-      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a((i + 1) % this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a());
-      if (localObject != null) {
-        paramInt2 = ((vpr)localObject).jdField_a_of_type_Int;
+      if (QLog.isColorLevel()) {
+        QLog.i("isFastDoubleClick", 2, "time:" + l1 + ", mLastClickTIme:" + jdField_a_of_type_JavaLangLong + ", timeDiff:" + l2);
       }
-      localObject = (vhy)this.a.a(vhy.class);
-      if (localObject != null) {
-        ((vhy)localObject).a(paramInt1, paramInt2, paramFloat);
-      }
+      return true;
+    }
+    jdField_a_of_type_JavaLangLong = Long.valueOf(l1);
+    return false;
+  }
+  
+  public Activity a()
+  {
+    return (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+  }
+  
+  protected abstract void a();
+  
+  protected void a(int paramInt)
+  {
+    if (a()) {
       return;
+    }
+    b();
+    this.jdField_a_of_type_Vgn.a(b(paramInt));
+  }
+  
+  public void a(vgn paramvgn)
+  {
+    this.jdField_a_of_type_Vgn = paramvgn;
+  }
+  
+  public abstract int b(int paramInt);
+  
+  public void b()
+  {
+    if (!this.b) {}
+    do
+    {
+      Activity localActivity;
+      do
+      {
+        return;
+        if (this.jdField_a_of_type_Bepp != null) {
+          break;
+        }
+        localActivity = a();
+      } while (localActivity == null);
+      int i = localActivity.getResources().getDimensionPixelSize(2131298914);
+      this.jdField_a_of_type_Bepp = new bepp(localActivity);
+      this.jdField_a_of_type_Bepp.a(alpo.a(2131714354));
+      this.jdField_a_of_type_Bepp.b(i);
+    } while (this.jdField_a_of_type_Bepp.isShowing());
+    this.jdField_a_of_type_Bepp.show();
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_Bepp != null) && (this.jdField_a_of_type_Bepp.isShowing())) {
+      this.jdField_a_of_type_Bepp.dismiss();
     }
   }
   
-  public void onPageSelected(int paramInt)
+  public void d()
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
-    if (localObject != null) {}
-    for (int i = ((vpr)localObject).jdField_a_of_type_Int;; i = 0)
-    {
-      this.a.jdField_a_of_type_AndroidUtilSparseArray.put(this.a.jdField_a_of_type_Vhm.a(), localObject);
-      if ((i == 2) || (i == 1) || (i == 3))
-      {
-        localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt);
-        if ((localObject != null) && (TextUtils.isEmpty(((vps)localObject).jdField_a_of_type_Vpr.b))) {
-          EditVideoFilter.a((vps)localObject);
-        }
-      }
-      localObject = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt - 1);
-      vps localvps = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter$FilterPagerAdapter.a(paramInt + 1);
-      if (localObject != null) {
-        ((vps)localObject).jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      if (localvps != null) {
-        localvps.jdField_a_of_type_AndroidViewView.clearAnimation();
-      }
-      this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.a.jdField_a_of_type_Int = i;
-      EditVideoFilter.a(this.a).put(this.a.jdField_a_of_type_Vhm.a(), paramInt);
-      localObject = (vhy)this.a.a(vhy.class);
-      if (localObject != null) {
-        ((vhy)localObject).b(i);
-      }
-      if (i != 0)
-      {
-        this.a.jdField_a_of_type_Vhm.a("608", "9", "0", true);
-        vej.a("0X80076DE");
-      }
-      ved.a("Q.qqstory.publish.edit.EditVideoFilter", "LastSelectVideoFilterTime : %s , LastSelectVideoPlayMode : %s .", Long.valueOf(this.a.jdField_a_of_type_Long), Integer.valueOf(this.a.jdField_a_of_type_Int));
-      return;
+    a();
+    if (this.jdField_a_of_type_Vgn != null) {
+      this.jdField_a_of_type_Vgn.a();
+    }
+  }
+  
+  protected void e()
+  {
+    if (this.jdField_a_of_type_Vgn != null) {
+      this.jdField_a_of_type_Vgn.b();
+    }
+  }
+  
+  protected void f()
+  {
+    if (this.jdField_a_of_type_Vgn != null) {
+      this.jdField_a_of_type_Vgn.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vgo
  * JD-Core Version:    0.7.0.1
  */

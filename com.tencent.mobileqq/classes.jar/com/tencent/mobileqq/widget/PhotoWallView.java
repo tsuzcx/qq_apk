@@ -2,8 +2,8 @@ package com.tencent.mobileqq.widget;
 
 import NS_MOBILE_MAIN_PAGE.PhotoWall;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
-import ajti;
-import ajtn;
+import alkv;
+import alla;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,11 +20,11 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import axqy;
-import bcny;
-import bcop;
-import bcoq;
-import bcor;
+import azmj;
+import bena;
+import benr;
+import bens;
+import bent;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -38,11 +38,11 @@ import java.util.List;
 
 public class PhotoWallView
   extends FrameLayout
-  implements Handler.Callback, View.OnClickListener, bcny
+  implements Handler.Callback, View.OnClickListener, bena
 {
   protected int a;
-  protected ajti a;
-  private ajtn a;
+  protected alkv a;
+  private alla a;
   protected Activity a;
   public Handler a;
   protected LayoutInflater a;
@@ -50,8 +50,8 @@ public class PhotoWallView
   public Button a;
   protected ImageView a;
   protected TextView a;
-  protected bcoq a;
-  protected bcor a;
+  protected bens a;
+  protected bent a;
   protected QQAppInterface a;
   protected ProfileCardNewPhotoWallView a;
   public String a;
@@ -66,16 +66,16 @@ public class PhotoWallView
   protected View d;
   protected View e;
   
-  public PhotoWallView(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, bcoq parambcoq)
+  public PhotoWallView(Context paramContext, QQAppInterface paramQQAppInterface, String paramString, bens parambens)
   {
     super(paramContext);
     this.jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Ajtn = new bcop(this);
+    this.jdField_a_of_type_Alla = new benr(this);
     this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Bcoq = parambcoq;
+    this.jdField_a_of_type_Bens = parambens;
     c();
   }
   
@@ -164,34 +164,34 @@ public class PhotoWallView
   {
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getContext());
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_Ajti = ((ajti)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2));
+    this.jdField_a_of_type_Alkv = ((alkv)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2));
     this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(a(), this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371573);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView = ((ProfileCardNewPhotoWallView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371582));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371585);
-    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371586);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371587));
-    this.d = findViewById(2131371574);
-    this.e = findViewById(2131371575);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371576));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371577));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371578));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371580));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371579));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.d.findViewById(2131371581));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131371890);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView = ((ProfileCardNewPhotoWallView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371899));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371902);
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371903);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371904));
+    this.d = findViewById(2131371891);
+    this.e = findViewById(2131371892);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371893));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371894));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371895));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371897));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371896));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.d.findViewById(2131371898));
     this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.e.setAlpha(0.15F);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695439);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695597);
     }
     for (;;)
     {
       this.jdField_c_of_type_AndroidViewView.setVisibility(8);
       ThreadManager.post(new PhotoWallView.1(this), 5, null, true);
       return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695438);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131695596);
     }
   }
   
@@ -222,26 +222,26 @@ public class PhotoWallView
   
   protected int a()
   {
-    return 2131560998;
+    return 2131561181;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_Bcor.c == 1) && (this.jdField_a_of_type_Bcor.jdField_a_of_type_Int < 9))
+    if ((this.jdField_a_of_type_Bent.c == 1) && (this.jdField_a_of_type_Bent.jdField_a_of_type_Int < 9))
     {
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_Ajti.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bcor.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Alkv.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Bent.jdField_a_of_type_JavaLangString);
     }
   }
   
   protected void a(int paramInt1, int paramInt2, String paramString, ArrayList<PhotoWall> paramArrayList, List<ProfilePhotoWall> paramList)
   {
-    if (this.jdField_a_of_type_Bcor == null) {
-      this.jdField_a_of_type_Bcor = new bcor();
+    if (this.jdField_a_of_type_Bent == null) {
+      this.jdField_a_of_type_Bent = new bent();
     }
-    this.jdField_a_of_type_Bcor.b = paramInt1;
-    this.jdField_a_of_type_Bcor.c = paramInt2;
-    this.jdField_a_of_type_Bcor.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Bent.b = paramInt1;
+    this.jdField_a_of_type_Bent.c = paramInt2;
+    this.jdField_a_of_type_Bent.jdField_a_of_type_JavaLangString = paramString;
     if (paramArrayList != null)
     {
       paramString = paramArrayList.iterator();
@@ -255,7 +255,7 @@ public class PhotoWallView
         localQZonePhotoInfo.photoUrls = paramArrayList.photoUrls;
         paramList.add(localQZonePhotoInfo);
       }
-      this.jdField_a_of_type_Bcor.jdField_a_of_type_Int = paramList.size();
+      this.jdField_a_of_type_Bent.jdField_a_of_type_Int = paramList.size();
     }
   }
   
@@ -279,8 +279,8 @@ public class PhotoWallView
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Bcor != null) {
-      return this.jdField_a_of_type_Bcor.c == 1;
+    if (this.jdField_a_of_type_Bent != null) {
+      return this.jdField_a_of_type_Bent.c == 1;
     }
     return false;
   }
@@ -308,11 +308,11 @@ public class PhotoWallView
             QLog.d("PhotoWallView", 2, "handleMessage MSG_LOAD_PHOTO_WALL");
           }
           this.jdField_a_of_type_Int = 0;
-          this.jdField_a_of_type_Ajti.a(this.jdField_a_of_type_JavaLangString, "");
+          this.jdField_a_of_type_Alkv.a(this.jdField_a_of_type_JavaLangString, "");
           try
           {
             long l = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-            this.jdField_a_of_type_Ajti.a(l, this.jdField_a_of_type_Ajtn);
+            this.jdField_a_of_type_Alkv.a(l, this.jdField_a_of_type_Alla);
             this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
             return true;
           }
@@ -330,8 +330,8 @@ public class PhotoWallView
             QLog.d("PhotoWallView", 2, "handleMessage MSG_LOAD_FROM_DATABASE");
           }
           a(paramMessage);
-          if ((this.jdField_a_of_type_Bcoq != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)) {
-            this.jdField_a_of_type_Bcoq.b(this.jdField_a_of_type_JavaUtilLinkedList.size());
+          if ((this.jdField_a_of_type_Bens != null) && (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)) {
+            this.jdField_a_of_type_Bens.b(this.jdField_a_of_type_JavaUtilLinkedList.size());
           }
           d();
           paramMessage = Message.obtain();
@@ -343,12 +343,12 @@ public class PhotoWallView
           }
           this.jdField_a_of_type_Int |= 0x1;
           a(paramMessage);
-          if ((this.jdField_a_of_type_Bcoq != null) && (this.jdField_a_of_type_Int == 17))
+          if ((this.jdField_a_of_type_Bens != null) && (this.jdField_a_of_type_Int == 17))
           {
-            this.jdField_a_of_type_Bcoq.b(this.jdField_a_of_type_JavaUtilLinkedList.size());
+            this.jdField_a_of_type_Bens.b(this.jdField_a_of_type_JavaUtilLinkedList.size());
             d();
           }
-        } while (this.jdField_a_of_type_Bcor.c == 1);
+        } while (this.jdField_a_of_type_Bent.c == 1);
         this.jdField_b_of_type_AndroidViewView.setVisibility(8);
         return true;
         if (QLog.isColorLevel()) {
@@ -357,8 +357,8 @@ public class PhotoWallView
         this.jdField_a_of_type_Int |= 0x10;
         a(this.jdField_a_of_type_JavaUtilLinkedList, this.jdField_a_of_type_JavaUtilArrayList);
         this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardNewPhotoWallView.a(this.jdField_a_of_type_JavaUtilLinkedList, this.jdField_a_of_type_JavaUtilLinkedList.size());
-      } while ((this.jdField_a_of_type_Bcoq == null) || (this.jdField_a_of_type_Int != 17));
-      this.jdField_a_of_type_Bcoq.b(this.jdField_a_of_type_JavaUtilLinkedList.size());
+      } while ((this.jdField_a_of_type_Bens == null) || (this.jdField_a_of_type_Int != 17));
+      this.jdField_a_of_type_Bens.b(this.jdField_a_of_type_JavaUtilLinkedList.size());
       d();
       return true;
     }
@@ -376,17 +376,17 @@ public class PhotoWallView
     {
     default: 
       return;
-    case 2131371587: 
+    case 2131371904: 
       b();
       if (bool)
       {
-        axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007EBE", "0X8007EBE", 0, 0, "", "", "", "");
+        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007EBE", "0X8007EBE", 0, 0, "", "", "", "");
         return;
       }
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007EBF", "0X8007EBF", 0, 0, "", "", "", "");
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007EBF", "0X8007EBF", 0, 0, "", "", "", "");
       return;
     }
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007EC0", "0X8007EC0", 0, 0, "", "", "", "");
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007EC0", "0X8007EC0", 0, 0, "", "", "", "");
     a(bool);
   }
   
@@ -395,7 +395,7 @@ public class PhotoWallView
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     float f = localDisplayMetrics.density;
-    paramInt2 = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels) - getResources().getDimensionPixelSize(2131297369) * 2;
+    paramInt2 = Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels) - getResources().getDimensionPixelSize(2131297388) * 2;
     paramInt1 = (int)(f * 2.0F + 0.5F);
     paramInt3 = (paramInt2 - paramInt1) * 2 / 3;
     this.jdField_a_of_type_AndroidWidgetImageView.layout(0, 0, 0 + paramInt3, paramInt3 + 0 + paramInt1);

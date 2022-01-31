@@ -1,60 +1,60 @@
-import android.app.Application;
-import android.support.annotation.NonNull;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+import cooperation.qzone.statistic.access.concept.Statistic;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class bjoy
-  extends bjpa
 {
-  private static bjoy jdField_a_of_type_Bjoy;
-  private Application jdField_a_of_type_AndroidAppApplication;
+  protected volatile ConcurrentLinkedQueue<Statistic> a = new ConcurrentLinkedQueue();
   
-  public bjoy(@NonNull Application paramApplication)
+  public int a()
   {
-    this.jdField_a_of_type_AndroidAppApplication = paramApplication;
+    return this.a.size();
   }
   
-  @NonNull
-  public static bjoy a(@NonNull Application paramApplication)
+  public Statistic a()
   {
-    if (jdField_a_of_type_Bjoy == null) {
-      jdField_a_of_type_Bjoy = new bjoy(paramApplication);
-    }
-    return jdField_a_of_type_Bjoy;
+    return (Statistic)this.a.poll();
   }
   
-  @NonNull
-  public <T extends bjow> T a(@NonNull Class<T> paramClass)
+  public List<Statistic> a()
   {
-    if (bjov.class.isAssignableFrom(paramClass)) {
-      try
-      {
-        bjow localbjow = (bjow)paramClass.getConstructor(new Class[] { Application.class }).newInstance(new Object[] { this.jdField_a_of_type_AndroidAppApplication });
-        return localbjow;
-      }
-      catch (NoSuchMethodException localNoSuchMethodException)
-      {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localNoSuchMethodException);
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
-      }
-      catch (InstantiationException localInstantiationException)
-      {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
-      }
-      catch (InvocationTargetException localInvocationTargetException)
-      {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localInvocationTargetException);
-      }
+    return a(a());
+  }
+  
+  public List<Statistic> a(int paramInt)
+  {
+    Object localObject;
+    if (paramInt < 1)
+    {
+      localObject = null;
+      return localObject;
     }
-    return super.a(paramClass);
+    ArrayList localArrayList = new ArrayList();
+    int i = Math.min(paramInt, a());
+    paramInt = 0;
+    for (;;)
+    {
+      localObject = localArrayList;
+      if (paramInt >= i) {
+        break;
+      }
+      localObject = a();
+      if (localObject != null) {
+        localArrayList.add(localObject);
+      }
+      paramInt += 1;
+    }
+  }
+  
+  public void a(Statistic paramStatistic)
+  {
+    this.a.add(paramStatistic);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjoy
  * JD-Core Version:    0.7.0.1
  */

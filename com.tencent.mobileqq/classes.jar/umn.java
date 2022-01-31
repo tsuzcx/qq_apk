@@ -1,21 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.app.Activity;
+import android.os.Bundle;
 
-class umn
-  implements View.OnClickListener
+public abstract interface umn<T extends Activity>
 {
-  umn(umm paramumm, String paramString) {}
+  public abstract void a(T paramT);
   
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Umm.jdField_a_of_type_Umg != null) {
-      this.jdField_a_of_type_Umm.jdField_a_of_type_Umg.a(null, 0, this.jdField_a_of_type_Umm.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void a(T paramT, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     umn
  * JD-Core Version:    0.7.0.1
  */

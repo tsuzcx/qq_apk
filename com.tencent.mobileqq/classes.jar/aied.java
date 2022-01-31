@@ -1,98 +1,109 @@
-import android.content.Intent;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class aied
-  extends akil
 {
-  public aied(SelectMemberActivity paramSelectMemberActivity) {}
+  private static final aied jdField_a_of_type_Aied = new aied();
+  private Map<String, List<WeakReference<aiea>>> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  protected void a(int paramInt1, int paramInt2)
+  private int a(List<WeakReference<aiea>> paramList, aiea paramaiea)
   {
-    if (paramInt1 == 8)
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "add troop member fail");
+      paramList = paramList.iterator();
+      int i = 0;
+      while (paramList.hasNext())
+      {
+        aiea localaiea = (aiea)((WeakReference)paramList.next()).get();
+        if ((localaiea != null) && (localaiea == paramaiea)) {
+          return i;
+        }
+        i += 1;
       }
-      SelectMemberActivity.a(this.a, paramInt2);
     }
+    return -1;
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  public static aied a()
   {
-    if (paramInt1 == 8)
+    return jdField_a_of_type_Aied;
+  }
+  
+  public void a(int paramInt, String paramString, aiea paramaiea)
+  {
+    try
     {
-      if (paramInt2 == 0)
+      String str = abot.a(paramString, paramInt);
+      List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(str);
+      paramString = localList;
+      if (localList == null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("SelectMemberActivity", 2, "add troop member success");
-        }
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-        if (!this.a.jdField_c_of_type_Boolean)
-        {
-          paramInt1 = this.a.b();
-          this.a.a(paramInt1 + 1);
-          axqy.b(this.a.app, "CliOper", "", "", "Grp", "Send_invite", 0, 0, "", "", "", "");
-        }
-        ArrayList localArrayList = this.a.a();
-        this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", Long.parseLong(paramString));
-        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set", this.a.e);
-        this.a.jdField_a_of_type_AndroidContentIntent.putParcelableArrayListExtra("result_set_for_out_Member ", localArrayList);
-        this.a.setResult(-1);
+        paramString = new ArrayList(2);
+        this.jdField_a_of_type_JavaUtilMap.put(str, paramString);
       }
-    }
-    else {
+      if (a(paramString, paramaiea) < 0) {
+        paramString.add(new WeakReference(paramaiea));
+      }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SelectMemberActivity", 2, "add troop member fail, troopUin: " + paramString + " result: " + paramInt2);
-    }
-    SelectMemberActivity.a(this.a, paramInt2);
+    finally {}
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
+  public boolean a(int paramInt, String paramString)
   {
-    String str = String.valueOf(paramLong1);
-    if ((paramBoolean) && (str.equals(this.a.jdField_c_of_type_JavaLangString)))
+    for (;;)
     {
-      this.a.jdField_a_of_type_Long = paramLong2;
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "troop" + str + " get inviteNoAuthLimitNum = " + paramLong2);
-      }
-      if ((this.a.i >= this.a.jdField_a_of_type_Long) && (this.a.jdField_a_of_type_Long > 0L))
+      try
       {
-        this.a.d.setVisibility(0);
-        axqy.b(this.a.app, "dc00899", "invite_friend", "", "friend_list", "exp_needagree", 0, 0, str, mua.a(this.a.app, this.a.app.getCurrentAccountUin(), str) + "", "", "");
+        paramString = abot.a(paramString, paramInt);
+        paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        if ((paramString != null) && (paramString.size() > 0))
+        {
+          paramString = paramString.iterator();
+          if (paramString.hasNext())
+          {
+            if ((aiea)((WeakReference)paramString.next()).get() == null) {
+              continue;
+            }
+            bool = true;
+            if (QLog.isColorLevel()) {
+              QLog.d(aifp.a, 2, "hasOtherInstance -->" + bool);
+            }
+            return bool;
+          }
+        }
       }
+      finally {}
+      boolean bool = false;
     }
   }
   
-  protected void a(boolean paramBoolean, Long paramLong, List<Long> paramList)
+  public void b(int paramInt, String paramString, aiea paramaiea)
   {
-    paramLong = String.valueOf(paramLong);
-    if ((paramBoolean) && (paramLong.equals(this.a.jdField_c_of_type_JavaLangString)))
+    try
     {
-      Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
+      paramString = abot.a(paramString, paramInt);
+      paramString = (List)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if ((paramString != null) && (paramString.size() > 0) && (paramaiea != null))
       {
-        Long localLong = (Long)localIterator.next();
-        this.a.jdField_a_of_type_JavaUtilList.add(String.valueOf(localLong));
+        paramInt = a(paramString, paramaiea);
+        if (paramInt >= 0) {
+          paramString.remove(paramInt);
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("SelectMemberActivity", 2, "troop" + paramLong + " get invitedUinList = " + paramList.toString());
-      }
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aied
  * JD-Core Version:    0.7.0.1
  */

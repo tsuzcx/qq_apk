@@ -1,69 +1,80 @@
+import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class ajhy
-  extends bbwt
+public class ajhy
+  extends ajhc
+  implements Cloneable
 {
-  ajhy(File paramFile) {}
+  private String d;
   
-  public void onDone(bbwu parambbwu)
+  public ajhy(Context paramContext)
   {
-    super.onDone(parambbwu);
-    if ((3 == parambbwu.a()) && (this.a.exists())) {}
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699984);
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.d = paramString;
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    QLog.d("TroopSpecialAttentionMsg", 2, "deSerialize");
+    paramArrayOfByte = new String(paramArrayOfByte);
     try
     {
-      nav.a(this.a, this.a.getParent() + File.separator);
-      label166:
+      paramArrayOfByte = new JSONObject(paramArrayOfByte);
+      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
+      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
+      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
+      this.c = paramArrayOfByte.getString("messageNavInfo");
+      this.d = paramArrayOfByte.getString("senderUin");
+      if ((this.c != null) && (this.c.length() != 0)) {
+        this.jdField_a_of_type_Bbkv.a(this.c);
+      }
       return;
     }
-    catch (Exception parambbwu)
+    catch (JSONException paramArrayOfByte)
     {
-      parambbwu = parambbwu;
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error  error->" + parambbwu.getMessage());
+      paramArrayOfByte.printStackTrace();
+    }
+  }
+  
+  public byte[] a()
+  {
+    return b();
+  }
+  
+  public byte[] b()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("time", this.jdField_a_of_type_Int);
+      localJSONObject.put("color", this.jdField_b_of_type_Int);
+      localJSONObject.put("senderUin", this.d);
+      if (this.jdField_a_of_type_Bbkv != null) {
+        this.c = this.jdField_a_of_type_Bbkv.a();
       }
-      try
+      localJSONObject.put("messageNavInfo", this.c);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        this.a.delete();
-        return;
-      }
-      catch (Exception parambbwu)
-      {
-        return;
+        localJSONException.printStackTrace();
       }
     }
-    catch (OutOfMemoryError parambbwu)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloResDownloader", 2, "unZipFile file error resType->" + parambbwu.getMessage());
-      }
-      try
-      {
-        this.a.delete();
-        return;
-      }
-      catch (Exception parambbwu)
-      {
-        return;
-      }
-    }
-    finally
-    {
-      try
-      {
-        this.a.delete();
-        throw parambbwu;
-      }
-      catch (Exception localException)
-      {
-        break label166;
-      }
-    }
+    return localJSONObject.toString().getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhy
  * JD-Core Version:    0.7.0.1
  */

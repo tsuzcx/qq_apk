@@ -26,7 +26,7 @@ class TPDownloadProxyService$DownloadProxy
     this.downloadProxy = TPDownloadProxyFactory.getTPDownloadProxy(paramInt);
   }
   
-  public String getClipPlayUrl(int paramInt1, int paramInt2)
+  public String getClipPlayUrl(int paramInt1, int paramInt2, int paramInt3)
   {
     return this.downloadProxy.getClipPlayUrl(paramInt1, paramInt2);
   }
@@ -36,9 +36,9 @@ class TPDownloadProxyService$DownloadProxy
     return this.downloadProxy.getPlayErrorCodeStr(paramInt);
   }
   
-  public String getPlayUrl(int paramInt)
+  public String getPlayUrl(int paramInt1, int paramInt2)
   {
-    return this.downloadProxy.getPlayUrl(paramInt);
+    return this.downloadProxy.getPlayUrl(paramInt1);
   }
   
   public int init(String paramString)
@@ -157,7 +157,7 @@ class TPDownloadProxyService$DownloadProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.service.TPDownloadProxyService.DownloadProxy
  * JD-Core Version:    0.7.0.1
  */

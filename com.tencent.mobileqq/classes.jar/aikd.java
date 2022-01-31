@@ -1,43 +1,27 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import java.util.HashMap;
-import java.util.List;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity;
+import com.tencent.widget.AdapterView;
 
-class aikd
-  implements aijc
+public class aikd
+  implements bhqp
 {
-  aikd(aikb paramaikb, String paramString) {}
+  public aikd(QzonePhotoPreviewActivity paramQzonePhotoPreviewActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramBoolean) {}
-    try
+    if (QzonePhotoPreviewActivity.a(this.a))
     {
-      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Aikb.mRuntime.a().getCurrentAccountUin();
-      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
-      aikb.a(this.jdField_a_of_type_Aikb, this.jdField_a_of_type_JavaLangString, (List)localObject);
+      this.a.getActivity().finish();
+      bdar.anim(this.a.getActivity(), true, false);
       return;
     }
-    catch (Exception localException1)
-    {
-      localException1.printStackTrace();
-      try
-      {
-        aikb.a(this.jdField_a_of_type_Aikb, this.jdField_a_of_type_JavaLangString, null);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
-    }
-    aikb.a(this.jdField_a_of_type_Aikb, this.jdField_a_of_type_JavaLangString, null);
-    return;
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aikd
  * JD-Core Version:    0.7.0.1
  */

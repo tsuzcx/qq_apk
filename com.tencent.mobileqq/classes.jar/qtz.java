@@ -1,42 +1,55 @@
-import android.graphics.Bitmap;
-import com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xe33.oidb_0xe33.RspBody;
+import tencent.im.oidb.cmd0xe33.oidb_0xe33.TopicInfoSetRsp;
 
-public abstract class qtz
+class qtz
+  extends nac
 {
-  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo) {}
+  qtz(qty paramqty, qts paramqts, int paramInt) {}
   
-  public void a(TVK_NetVideoInfo paramTVK_NetVideoInfo, qty paramqty)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    a(paramTVK_NetVideoInfo);
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {
+      try
+      {
+        paramBundle = new oidb_0xe33.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.topic_info_set_rsp.has())
+        {
+          paramArrayOfByte = paramBundle.topic_info_set_rsp;
+          this.jdField_a_of_type_Qts.a(paramInt, paramArrayOfByte.err_msg.get(), Integer.toString(paramArrayOfByte.ret_code.get()), paramArrayOfByte.topic_id.get());
+          return;
+        }
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        if (QLog.isColorLevel())
+        {
+          if (this.jdField_a_of_type_Int != 1) {
+            break label131;
+          }
+          QLog.d("RIJUGC.ManagerColumnModel", 1, "ManageColumnModel createColumn failed." + paramArrayOfByte.toString());
+        }
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Qts.a(paramInt, "", "", 0);
+      return;
+      label131:
+      if (this.jdField_a_of_type_Int == 2) {
+        QLog.d("RIJUGC.ManagerColumnModel", 1, "ManageColumnModel editColumn failed." + paramArrayOfByte.toString());
+      }
+    }
   }
-  
-  public void a(qty paramqty) {}
-  
-  public abstract void a(qty paramqty, Object paramObject);
-  
-  public void a(qty paramqty, String paramString) {}
-  
-  public void a(qty paramqty, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
-  
-  public boolean a(qty paramqty, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
-  {
-    return false;
-  }
-  
-  public boolean a(qty paramqty, int paramInt, Object paramObject)
-  {
-    return false;
-  }
-  
-  public void b(qty paramqty) {}
-  
-  public void b(qty paramqty, String paramString) {}
-  
-  public void d(qty paramqty) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qtz
  * JD-Core Version:    0.7.0.1
  */

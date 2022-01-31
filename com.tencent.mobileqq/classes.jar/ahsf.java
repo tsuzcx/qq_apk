@@ -1,34 +1,10 @@
-import android.widget.Filter;
-import android.widget.Filter.FilterResults;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import java.util.List;
-
-class ahsf
-  extends Filter
+public abstract interface ahsf
 {
-  ahsf(ahse paramahse) {}
-  
-  protected Filter.FilterResults performFiltering(CharSequence paramCharSequence)
-  {
-    paramCharSequence = new Filter.FilterResults();
-    paramCharSequence.values = this.a.a.a;
-    paramCharSequence.count = this.a.a.a.size();
-    return paramCharSequence;
-  }
-  
-  protected void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
-  {
-    if (paramFilterResults.count > 0)
-    {
-      this.a.notifyDataSetChanged();
-      return;
-    }
-    this.a.notifyDataSetInvalidated();
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahsf
  * JD-Core Version:    0.7.0.1
  */

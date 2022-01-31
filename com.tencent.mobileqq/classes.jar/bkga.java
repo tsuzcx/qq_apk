@@ -1,137 +1,92 @@
-import android.support.annotation.NonNull;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-public class bkga
-  extends bkfz
+public final class bkga
+  extends MSFServlet
 {
-  public static boolean b;
-  public List<bkgd> a = new ArrayList();
-  public Map<String, Map<String, bkgb>> a;
-  public int c;
-  public String f;
-  public String g = "default";
-  public String h;
-  public String i;
-  
-  public bkga(@NonNull String paramString)
+  private static void a(FromServiceMsg paramFromServiceMsg)
   {
-    super(paramString);
-  }
-  
-  public static List<bkgd> a(JSONArray paramJSONArray)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int j = 0;
-    while (j < paramJSONArray.length())
+    int i;
+    if (paramFromServiceMsg.getWupBuffer() != null)
     {
-      localArrayList.add(new bkgd(paramJSONArray.getJSONObject(j)));
-      j += 1;
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      if (i >= 0) {}
     }
-    return localArrayList;
-  }
-  
-  public static Map<String, Map<String, bkgb>> a(JSONArray paramJSONArray)
-  {
-    Object localObject1;
-    if (paramJSONArray != null) {
-      try
-      {
-        if (paramJSONArray.length() > 0)
-        {
-          HashMap localHashMap1 = new HashMap(paramJSONArray.length());
-          int j = 0;
-          for (;;)
-          {
-            localObject1 = localHashMap1;
-            if (j >= paramJSONArray.length()) {
-              break;
-            }
-            Object localObject2 = paramJSONArray.getJSONObject(j);
-            localObject1 = ((JSONObject)localObject2).getString("id");
-            localObject2 = ((JSONObject)localObject2).getJSONArray("res");
-            if ((localObject2 != null) && (((JSONArray)localObject2).length() > 0))
-            {
-              HashMap localHashMap2 = new HashMap(((JSONArray)localObject2).length());
-              int k = 0;
-              while (k < ((JSONArray)localObject2).length())
-              {
-                JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(k);
-                bkgb localbkgb = new bkgb();
-                localbkgb.a = localJSONObject.getString("resname");
-                localbkgb.b = localJSONObject.getString("resurl");
-                localbkgb.d = localJSONObject.getString("cityname");
-                localbkgb.c = localJSONObject.getString("md5");
-                localHashMap2.put(localbkgb.d, localbkgb);
-                k += 1;
-              }
-              localHashMap1.put(localObject1, localHashMap2);
-            }
-            j += 1;
-          }
-        }
-        localObject1 = null;
-      }
-      catch (JSONException paramJSONArray)
-      {
-        QLog.e("FacePackage", 1, paramJSONArray, new Object[0]);
-      }
-    }
-    return localObject1;
-  }
-  
-  public bkgd a(String paramString)
-  {
-    if ((!bbkk.a(paramString)) && (this.a != null))
+    else
     {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext())
-      {
-        bkgd localbkgd = (bkgd)localIterator.next();
-        if (paramString.equals(localbkgd.a)) {
-          return localbkgd;
-        }
+      return;
+    }
+    byte[] arrayOfByte = new byte[i];
+    bdlr.a(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+    paramFromServiceMsg.putWupBuffer(arrayOfByte);
+  }
+  
+  private static void a(ToServiceMsg paramToServiceMsg)
+  {
+    if (paramToServiceMsg.getWupBuffer() != null)
+    {
+      long l = paramToServiceMsg.getWupBuffer().length;
+      byte[] arrayOfByte = new byte[(int)l + 4];
+      bdlr.a(arrayOfByte, 0, 4L + l);
+      bdlr.a(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
+      paramToServiceMsg.putWupBuffer(arrayOfByte);
+    }
+  }
+  
+  public String[] getPreferSSOCommands()
+  {
+    return new String[] { "WeiyunV2Svc.TransCmd" };
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    a(paramFromServiceMsg);
+    if (paramIntent == null) {
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+    for (;;)
+    {
+      bkfx.a().a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent == null) {
+      QLog.e("WyServlet", 1, "onSend : req is null");
+    }
+    do
+    {
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent == null) {
+        break;
       }
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return "InformationFacePackage";
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.size())) {
-      return ((bkgd)this.a.get(paramInt)).c;
-    }
-    return null;
-  }
-  
-  public int b()
-  {
-    return this.a.size();
-  }
-  
-  public String b(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.a.size())) {
-      return ((bkgd)this.a.get(paramInt)).d;
-    }
-    return null;
+      if (QLog.isColorLevel()) {
+        QLog.d("WyServlet", 1, "onSend : cmd[" + paramIntent.getServiceCmd() + "]");
+      }
+      a(paramIntent);
+      paramPacket.setSSOCommand("WeiyunV2Svc.TransCmd");
+      paramPacket.putSendData(paramIntent.getWupBuffer());
+      paramPacket.setTimeout(paramIntent.getTimeout());
+      paramPacket.setAttributes(paramIntent.getAttributes());
+    } while (paramIntent.isNeedCallback());
+    paramPacket.setNoResponse();
+    return;
+    QLog.e("WyServlet", 1, "onSend : toMsg is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkga
  * JD-Core Version:    0.7.0.1
  */

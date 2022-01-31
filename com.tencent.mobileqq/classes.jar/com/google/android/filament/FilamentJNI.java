@@ -1,10 +1,11 @@
 package com.google.android.filament;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public class FilamentJNI
 {
   private long currentTime = 0L;
+  private Engine engine;
   private long mNativeObject;
   
   FilamentJNI(long paramLong)
@@ -23,6 +24,8 @@ public class FilamentJNI
   
   private static native boolean nCanUseShareContext(long paramLong);
   
+  private static native void nChangeAssetsDynamic(long paramLong, int[] paramArrayOfInt1, int paramInt1, int[] paramArrayOfInt2, int paramInt2);
+  
   private static native long nCreateFilamentAsset(Object paramObject, long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, byte[] paramArrayOfByte);
   
   private static native void nDestroy(long paramLong);
@@ -30,6 +33,8 @@ public class FilamentJNI
   private static native float[] nGetDirectionColor(long paramLong);
   
   private static native int nGetDirectionIntensity(long paramLong);
+  
+  private static native long nGetEngine(long paramLong);
   
   private static native int nGetIblIntensity(long paramLong);
   
@@ -45,15 +50,23 @@ public class FilamentJNI
   
   private static native float[] nGetScale(long paramLong);
   
+  private static native boolean nIsAnimationRunning(long paramLong, String paramString);
+  
   private static native void nLoadAllData(long paramLong);
   
   private static native void nNewFurLayers(long paramLong, int paramInt);
+  
+  private static native void nPlayAnimation(long paramLong, String paramString, int paramInt);
+  
+  private static native void nRegisterAnimation(long paramLong, String[] paramArrayOfString);
   
   private static native void nRender(long paramLong, float paramFloat);
   
   private static native void nResize(long paramLong, int paramInt1, int paramInt2);
   
   private static native void nSetAverageL(long paramLong, float paramFloat);
+  
+  private static native void nSetBaseColorImage(long paramLong1, String paramString1, String paramString2, long paramLong2);
   
   private static native void nSetDirectionColor(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3);
   
@@ -66,6 +79,8 @@ public class FilamentJNI
   private static native void nSetIblDegree(long paramLong, float paramFloat);
   
   private static native void nSetIblIntensity(long paramLong, int paramInt);
+  
+  private static native void nSetImage(long paramLong1, long paramLong2);
   
   private static native void nSetLightDirection(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3);
   
@@ -81,11 +96,18 @@ public class FilamentJNI
   
   private static native void nSetScale(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3);
   
+  private static native void nStopAnimation(long paramLong, String paramString);
+  
   private static native void nUpdateIntensityMap(long paramLong, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
   
   public boolean canUseShareContext()
   {
     return nCanUseShareContext(this.mNativeObject);
+  }
+  
+  public void changeAssetsDynamic(int[] paramArrayOfInt1, int paramInt1, int[] paramArrayOfInt2, int paramInt2)
+  {
+    nChangeAssetsDynamic(this.mNativeObject, paramArrayOfInt1, paramInt1, paramArrayOfInt2, paramInt2);
   }
   
   public void destroy()
@@ -101,6 +123,14 @@ public class FilamentJNI
   public int getDirectionIntensity()
   {
     return nGetDirectionIntensity(this.mNativeObject);
+  }
+  
+  public Engine getEngine()
+  {
+    if (this.engine == null) {
+      this.engine = new Engine(nGetEngine(this.mNativeObject));
+    }
+    return this.engine;
   }
   
   public int getIblIntensity()
@@ -138,9 +168,24 @@ public class FilamentJNI
     return nGetScale(this.mNativeObject);
   }
   
+  public boolean isAnimationRunning(String paramString)
+  {
+    return nIsAnimationRunning(this.mNativeObject, paramString);
+  }
+  
   public void loadAllData()
   {
     nLoadAllData(this.mNativeObject);
+  }
+  
+  public void playAnimation(String paramString, int paramInt)
+  {
+    nPlayAnimation(this.mNativeObject, paramString, paramInt);
+  }
+  
+  public void registerAnimation(String[] paramArrayOfString)
+  {
+    nRegisterAnimation(this.mNativeObject, paramArrayOfString);
   }
   
   public void render()
@@ -193,9 +238,19 @@ public class FilamentJNI
     nSetIblIntensity(this.mNativeObject, paramInt);
   }
   
+  public void setImage(Texture paramTexture)
+  {
+    nSetImage(this.mNativeObject, paramTexture.getNativeObject());
+  }
+  
   public void setLightDirection(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     nSetLightDirection(this.mNativeObject, paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public void setMaterialImage(String paramString1, String paramString2, Texture paramTexture)
+  {
+    nSetBaseColorImage(this.mNativeObject, paramString1, paramString2, paramTexture.getNativeObject());
   }
   
   public void setMaterialImage(String paramString1, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
@@ -233,6 +288,11 @@ public class FilamentJNI
     nSetScale(this.mNativeObject, paramFloat1, paramFloat2, paramFloat3);
   }
   
+  public void stopAnimation(String paramString)
+  {
+    nStopAnimation(this.mNativeObject, paramString);
+  }
+  
   public void updateIntensityMap(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
     nUpdateIntensityMap(this.mNativeObject, paramArrayOfFloat1, paramArrayOfFloat2);
@@ -240,7 +300,7 @@ public class FilamentJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.FilamentJNI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.appbrand.a.a;
 
 import android.text.TextUtils;
-import bbdx;
+import bdcs;
 import com.tencent.mobileqq.microapp.appbrand.utils.b;
 import com.tencent.mobileqq.microapp.webview.BaseAppBrandWebview;
 import java.io.File;
@@ -23,13 +23,13 @@ final class j
     if (new File(str).isDirectory()) {
       return f.a(this.e, this.b, this.c, null, "operation not permitted, unlink " + this.a, this.d);
     }
-    bbdx.a(str, false);
+    bdcs.a(str, false);
     return f.a(this.e, this.b, this.c, null, this.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.a.a.j
  * JD-Core Version:    0.7.0.1
  */

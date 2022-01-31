@@ -1,16 +1,16 @@
-import java.util.concurrent.Executor;
+import android.content.Context;
 
-final class bjoc
-  implements Executor
+class bjoc
+  extends bjoa
 {
-  public void execute(Runnable paramRunnable)
+  protected int b(Context paramContext, int[] paramArrayOfInt)
   {
-    bjoa.a().a(paramRunnable);
+    return -3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjoc
  * JD-Core Version:    0.7.0.1
  */

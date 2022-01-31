@@ -1,72 +1,20 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import java.net.MalformedURLException;
-import java.net.URL;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.open.agent.BragActivity;
 
 public class bezd
+  implements bfdo
 {
-  public static void a(MiniAppInfo paramMiniAppInfo, String paramString, long paramLong1, long paramLong2, int paramInt)
+  public bezd(BragActivity paramBragActivity) {}
+  
+  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    Object localObject;
-    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appId != null) && (!TextUtils.isEmpty(paramString)))
-    {
-      if (paramLong1 == 0L) {
-        break label349;
-      }
-      localObject = "1";
-    }
-    for (;;)
-    {
-      String str4 = bfhk.a();
-      String str5 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId();
-      String str6 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppVersion();
-      String str7 = bfhk.e();
-      try
-      {
-        String str1 = new URL(paramString).getHost();
-        if (paramString.indexOf('?') != -1)
-        {
-          str3 = paramString.substring(0, paramString.indexOf('?'));
-          paramString = paramMiniAppInfo.appId + '|' + paramString + '|' + (String)localObject + '|' + String.valueOf(paramInt) + '|' + paramLong2 + '|' + paramLong1 + '|' + str1 + '|' + str3 + '|' + beze.a() + '|' + paramMiniAppInfo.getReportType() + '|' + "Android" + '|' + System.currentTimeMillis();
-          paramMiniAppInfo = paramString;
-          if (!bfhk.a()) {
-            paramMiniAppInfo = paramString + '|' + str4 + '|' + str5 + '|' + str6 + '|' + str7;
-          }
-          localObject = new Bundle();
-          if (!bfhk.a()) {
-            break label379;
-          }
-          paramString = "dc05116";
-          ((Bundle)localObject).putString("log_key", paramString);
-          ((Bundle)localObject).putStringArray("data", new String[] { paramMiniAppInfo });
-          bepk.a().a("cmd_dc_report_log_key_data", (Bundle)localObject, null);
-          return;
-          label349:
-          localObject = "0";
-        }
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        for (;;)
-        {
-          betc.d("MiniProgramLpReportDC05", "reportOneHttpOrDownloadRequest", localMalformedURLException);
-          String str2 = paramString;
-          continue;
-          String str3 = paramString;
-          continue;
-          label379:
-          paramString = "dc05388";
-        }
-      }
-    }
+    this.a.a.setImageBitmap(paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezd
  * JD-Core Version:    0.7.0.1
  */

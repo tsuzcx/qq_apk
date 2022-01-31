@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vip;
 
-import ajya;
+import alpo;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import bbxl;
+import bdwm;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 
 public class KingCardActivationFragment
@@ -12,19 +12,19 @@ public class KingCardActivationFragment
 {
   public int getContentLayoutId()
   {
-    return 2131561519;
+    return 2131561710;
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    setTitle(ajya.a(2131705961));
-    bbxl.a().a((ViewGroup)paramView.findViewById(2131364689));
+    setTitle(alpo.a(2131706333));
+    bdwm.a().a((ViewGroup)paramView.findViewById(2131364768));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KingCardActivationFragment
  * JD-Core Version:    0.7.0.1
  */

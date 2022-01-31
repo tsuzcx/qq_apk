@@ -1,39 +1,48 @@
-public class trk
-  implements trj
+import android.arch.lifecycle.Observer;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import feedcloud.FeedCloudMeta.StDittoFeed;
+import feedcloud.FeedCloudMeta.StFeed;
+import mqq.app.AppRuntime;
+import qqcircle.QQCircleDitto.StItemContainer;
+
+class trk
+  implements Observer<FeedCloudMeta.StFeed>
 {
-  private tqh jdField_a_of_type_Tqh;
-  private trm jdField_a_of_type_Trm;
+  trk(trj paramtrj) {}
   
-  public trk(tqh paramtqh, trm paramtrm)
+  public void a(@Nullable FeedCloudMeta.StFeed paramStFeed)
   {
-    this.jdField_a_of_type_Tqh = paramtqh;
-    this.jdField_a_of_type_Trm = paramtrm;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Tqh != null) {
-      this.jdField_a_of_type_Tqh.c(this.jdField_a_of_type_Trm);
+    boolean bool = false;
+    if (paramStFeed == null)
+    {
+      this.a.a(false);
+      return;
     }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Tqh != null) {
-      this.jdField_a_of_type_Tqh.d(this.jdField_a_of_type_Trm);
+    trj.a(this.a, new QQCircleDitto.StItemContainer());
+    tyj.a(BaseApplicationImpl.getApplication().getRuntime().getAccount(), 9, 1L);
+    try
+    {
+      trj.a(this.a).mergeFrom(paramStFeed.dittoFeed.dittoData.get().toByteArray());
+      paramStFeed = this.a;
+      if (trj.a(this.a).items.size() > 0) {
+        bool = true;
+      }
+      paramStFeed.a(bool);
+      return;
     }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Tqh != null) {
-      this.jdField_a_of_type_Tqh.e(this.jdField_a_of_type_Trm);
+    catch (Exception paramStFeed)
+    {
+      paramStFeed.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trk
  * JD-Core Version:    0.7.0.1
  */

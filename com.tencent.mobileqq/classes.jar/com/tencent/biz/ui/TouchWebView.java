@@ -10,17 +10,20 @@ import android.view.View;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebViewCallbackClient;
-import xek;
+import java.util.ArrayList;
+import java.util.Iterator;
+import ytd;
 
 public class TouchWebView
   extends CustomWebView
   implements WebViewCallbackClient
 {
-  protected xek helper;
+  protected ytd helper;
   TouchWebView.OnOverScrollHandler l;
   GestureDetector mGesture;
   public float mLastYUp;
   GestureDetector.OnGestureListener mOnGesture = new TouchWebView.1(this);
+  private ArrayList<TouchWebView.OnScrollChangedListener> mScrollChangedListenerArrayList = new ArrayList();
   private TouchWebView.OnScrollChangedListener mScrollListenerForBiz;
   public int mTotalYoffset;
   protected boolean overscroll;
@@ -47,6 +50,13 @@ public class TouchWebView
     setFadingEdgeLength(0);
     if (getX5WebViewExtension() == null) {
       getSettings().setMixedContentMode(0);
+    }
+  }
+  
+  public void addScrollChangedListener(TouchWebView.OnScrollChangedListener paramOnScrollChangedListener)
+  {
+    if ((paramOnScrollChangedListener != null) && (!this.mScrollChangedListenerArrayList.contains(paramOnScrollChangedListener))) {
+      this.mScrollChangedListenerArrayList.add(paramOnScrollChangedListener);
     }
   }
   
@@ -118,6 +128,13 @@ public class TouchWebView
     if (this.mScrollListenerForBiz != null) {
       this.mScrollListenerForBiz.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
     }
+    if (this.mScrollChangedListenerArrayList != null)
+    {
+      Iterator localIterator = this.mScrollChangedListenerArrayList.iterator();
+      while (localIterator.hasNext()) {
+        ((TouchWebView.OnScrollChangedListener)localIterator.next()).onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+      }
+    }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
@@ -132,6 +149,11 @@ public class TouchWebView
   public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean, View paramView)
   {
     return super.super_overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
+  }
+  
+  public void removeScrollChangedListener(TouchWebView.OnScrollChangedListener paramOnScrollChangedListener)
+  {
+    this.mScrollChangedListenerArrayList.remove(paramOnScrollChangedListener);
   }
   
   public void resetForReuse()
@@ -156,14 +178,14 @@ public class TouchWebView
     this.mScrollListenerForBiz = paramOnScrollChangedListener;
   }
   
-  public void setWebViewHelper(xek paramxek)
+  public void setWebViewHelper(ytd paramytd)
   {
-    this.helper = paramxek;
+    this.helper = paramytd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.ui.TouchWebView
  * JD-Core Version:    0.7.0.1
  */

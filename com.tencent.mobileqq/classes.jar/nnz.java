@@ -1,34 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
-class nnz
-  extends BroadcastReceiver
+public class nnz
+  implements View.OnClickListener
 {
-  nnz(nnu paramnnu, String paramString, boolean paramBoolean) {}
+  public nnz(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    double d1 = Double.parseDouble(paramIntent.getStringExtra("latitude"));
-    double d2 = Double.parseDouble(paramIntent.getStringExtra("longitude"));
-    paramIntent = paramIntent.getStringExtra("name");
-    this.jdField_a_of_type_Nnu.a(d1, d2, paramIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    try
-    {
-      paramContext.unregisterReceiver(this.jdField_a_of_type_Nnu.c);
-      label58:
-      this.jdField_a_of_type_Nnu.c = null;
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      break label58;
-    }
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
+    ReadInJoyNativeAdFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nnz
  * JD-Core Version:    0.7.0.1
  */

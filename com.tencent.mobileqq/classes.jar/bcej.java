@@ -1,18 +1,52 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.smtt.sdk.WebView;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.Spannable;
+import android.text.method.ArrowKeyMovementMethod;
+import android.text.method.MovementMethod;
+import android.text.method.Touch;
+import android.view.MotionEvent;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface bcej
+public class bcej
+  extends ArrowKeyMovementMethod
 {
-  public abstract Activity a();
+  private static bcej a;
   
-  public abstract WebViewFragment a();
+  public static MovementMethod a()
+  {
+    if (a == null) {
+      a = new bcej();
+    }
+    return a;
+  }
   
-  public abstract WebView a();
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() == 1)
+    {
+      int i = (int)paramMotionEvent.getX();
+      int j = (int)paramMotionEvent.getY();
+      if (paramTextView.getTag(2131373095) != null)
+      {
+        bcek localbcek = (bcek)paramTextView.getTag(2131373095);
+        Drawable localDrawable = localbcek.getDrawable();
+        if ((localDrawable != null) && (new Rect(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight()).contains(i, j)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("zivonchen", 2, "我擦呢,命中------------------");
+          }
+          localbcek.a(paramTextView);
+          return true;
+        }
+      }
+    }
+    return Touch.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcej
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.apollo;
 
-import aitk;
-import aitu;
-import aitv;
-import aiuz;
-import aivb;
-import aivc;
-import aiwa;
-import aiwc;
-import aiwq;
-import ajeq;
-import ajfh;
-import ajkj;
+import akji;
+import akkw;
+import aklg;
+import aklh;
+import akml;
+import akmn;
+import akmo;
+import aknm;
+import akno;
+import akoc;
+import akwc;
+import akwt;
+import albv;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -38,16 +39,16 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ApolloTextureView
   extends GLTextureView
-  implements aiuz, aivb
+  implements akml, akmn
 {
   public static final String TAG = "ApolloTextureView";
   public static long sReAttachTime;
-  private aitu events = new aitu();
+  private aklg events = new aklg();
   private String mApolloId;
   protected ApolloRenderDriver mApolloWorker;
   private int mAttachCount;
-  private WeakReference<aiwc> mBarrageViewRef;
-  private aivc mCallback;
+  private WeakReference<akno> mBarrageViewRef;
+  private akmo mCallback;
   private float mDensity = super.getContext().getResources().getDisplayMetrics().density;
   private boolean mDetectTouchMoved;
   private boolean mDisableParentIntercept;
@@ -69,7 +70,7 @@ public class ApolloTextureView
   private float mPY;
   private ApolloTextureView.CheckForLongPress mPendingCheckForLongPress = new ApolloTextureView.CheckForLongPress(this);
   public ApolloRender mRender;
-  protected aitk mRenderImpl;
+  protected akkw mRenderImpl;
   private boolean mSendEventToNatived;
   private float mTouchDownX;
   private float mTouchDownY;
@@ -79,7 +80,7 @@ public class ApolloTextureView
   public ApolloTextureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    super.setEGLContextClientVersion(2);
+    super.setEGLContextClientVersion(akji.a());
     int i = ApolloUtil.a();
     if (QLog.isColorLevel()) {
       QLog.d("ApolloTextureView", 2, "ApolloTextureView MSAA_level:" + i);
@@ -87,16 +88,16 @@ public class ApolloTextureView
     if (i != 0) {
       if (1 == i)
       {
-        super.setEGLConfigChooser(new aitv(4));
+        super.setEGLConfigChooser(new aklh(4));
         super.setOpaque(false);
         this.mLongPressTimeout = ViewConfiguration.getLongPressTimeout();
         this.mIsDestroy = new AtomicBoolean(false);
         if (this.mDensity > 0.0F) {
-          break label283;
+          break label285;
         }
       }
     }
-    label283:
+    label285:
     for (float f = 1.2F;; f = this.mDensity)
     {
       this.mEngineWaitTime = ((300.0F / f));
@@ -118,7 +119,7 @@ public class ApolloTextureView
       return;
       if (2 == i)
       {
-        super.setEGLConfigChooser(new aitv(2));
+        super.setEGLConfigChooser(new aklh(2));
         break;
       }
       super.setEGLConfigChooser(8, 8, 8, 8, 16, 0);
@@ -144,7 +145,7 @@ public class ApolloTextureView
       this.events.jdField_a_of_type_ArrayOfInt[this.events.jdField_a_of_type_Int] = 2;
       this.events.jdField_b_of_type_ArrayOfInt[this.events.jdField_a_of_type_Int] = paramMotionEvent.getPointerId(i);
       Object localObject = this.events;
-      ((aitu)localObject).jdField_a_of_type_Int += 1;
+      ((aklg)localObject).jdField_a_of_type_Int += 1;
       if (this.events.jdField_a_of_type_Int <= 0) {
         break;
       }
@@ -291,8 +292,8 @@ public class ApolloTextureView
                 this.events.jdField_b_of_type_ArrayOfInt[i] = this.events.jdField_b_of_type_ArrayOfInt[(i + 1)];
                 i += 1;
               }
-              aitu localaitu = this.events;
-              localaitu.jdField_a_of_type_Int -= 1;
+              aklg localaklg = this.events;
+              localaklg.jdField_a_of_type_Int -= 1;
             }
           }
           else
@@ -335,9 +336,9 @@ public class ApolloTextureView
   {
     if ((this.mBarrageViewRef != null) && (!TextUtils.isEmpty(paramString2)))
     {
-      aiwc localaiwc = (aiwc)this.mBarrageViewRef.get();
-      if (localaiwc != null) {
-        aiwa.a(localaiwc, BaseApplicationImpl.getContext(), paramString1, paramString2, paramBoolean);
+      akno localakno = (akno)this.mBarrageViewRef.get();
+      if (localakno != null) {
+        aknm.a(localakno, BaseApplicationImpl.getContext(), paramString1, paramString2, paramBoolean);
       }
     }
   }
@@ -382,7 +383,7 @@ public class ApolloTextureView
       return 0.0F;
     }
     Iterator localIterator = this.mRender.mBoundingList.iterator();
-    for (float f = 0.0F; localIterator.hasNext(); f = Math.max(f, ((aiwq)localIterator.next()).d)) {}
+    for (float f = 0.0F; localIterator.hasNext(); f = Math.max(f, ((akoc)localIterator.next()).d)) {}
     if (QLog.isColorLevel()) {
       QLog.d("ApolloTextureView", 2, new Object[] { "[getManRectMaxHeight] height:", Float.valueOf(f) });
     }
@@ -394,7 +395,7 @@ public class ApolloTextureView
     return this.mRender;
   }
   
-  public aitk getRenderImpl()
+  public akkw getRenderImpl()
   {
     return this.mRenderImpl;
   }
@@ -425,122 +426,122 @@ public class ApolloTextureView
     return this.mApolloWorker;
   }
   
-  public void init(aivc paramaivc)
+  public void init(akmo paramakmo)
   {
     try
     {
-      init(paramaivc, 0, null);
+      init(paramakmo, 0, null);
       return;
     }
     finally
     {
-      paramaivc = finally;
-      throw paramaivc;
+      paramakmo = finally;
+      throw paramakmo;
     }
   }
   
-  public void init(aivc paramaivc, int paramInt)
+  public void init(akmo paramakmo, int paramInt)
   {
     try
     {
-      init(paramaivc, paramInt, null);
+      init(paramakmo, paramInt, null);
       return;
     }
     finally
     {
-      paramaivc = finally;
-      throw paramaivc;
+      paramakmo = finally;
+      throw paramakmo;
     }
   }
   
   /* Error */
-  public void init(aivc paramaivc, int paramInt, ApolloRender paramApolloRender)
+  public void init(akmo paramakmo, int paramInt, ApolloRender paramApolloRender)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   2: invokestatic 126	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   5: ifeq +51 -> 56
     //   8: ldc 12
     //   10: iconst_2
-    //   11: new 125	java/lang/StringBuilder
+    //   11: new 128	java/lang/StringBuilder
     //   14: dup
-    //   15: invokespecial 126	java/lang/StringBuilder:<init>	()V
-    //   18: ldc_w 467
-    //   21: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: invokespecial 129	java/lang/StringBuilder:<init>	()V
+    //   18: ldc_w 470
+    //   21: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   24: aload_1
-    //   25: invokevirtual 470	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   28: ldc_w 472
-    //   31: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: invokevirtual 473	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   28: ldc_w 475
+    //   31: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: iload_2
-    //   35: invokevirtual 135	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   38: ldc_w 474
-    //   41: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: invokestatic 476	com/tencent/mobileqq/apollo/ApolloEngine:a	()Z
-    //   47: invokevirtual 479	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   50: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   53: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   35: invokevirtual 138	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   38: ldc_w 477
+    //   41: invokevirtual 135	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: invokestatic 479	com/tencent/mobileqq/apollo/ApolloEngine:a	()Z
+    //   47: invokevirtual 482	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   50: invokevirtual 142	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   53: invokestatic 146	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   56: aload_0
     //   57: aload_1
-    //   58: putfield 234	com/tencent/mobileqq/apollo/ApolloTextureView:mCallback	Laivc;
+    //   58: putfield 237	com/tencent/mobileqq/apollo/ApolloTextureView:mCallback	Lakmo;
     //   61: aload_3
     //   62: ifnull +92 -> 154
     //   65: aload_0
     //   66: aload_3
-    //   67: putfield 390	com/tencent/mobileqq/apollo/ApolloTextureView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
+    //   67: putfield 393	com/tencent/mobileqq/apollo/ApolloTextureView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
     //   70: ldc 12
     //   72: iconst_1
-    //   73: ldc_w 481
-    //   76: invokestatic 484	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   73: ldc_w 484
+    //   76: invokestatic 487	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   79: aload_0
-    //   80: new 486	aitw
+    //   80: new 489	akli
     //   83: dup
     //   84: aload_0
     //   85: aconst_null
-    //   86: invokespecial 489	aitw:<init>	(Lcom/tencent/mobileqq/apollo/ApolloTextureView;Lcom/tencent/mobileqq/apollo/ApolloTextureView$1;)V
-    //   89: invokespecial 493	com/tencent/mobileqq/apollo/GLTextureView:setEGLContextFactory	(Laius;)V
+    //   86: invokespecial 492	akli:<init>	(Lcom/tencent/mobileqq/apollo/ApolloTextureView;Lcom/tencent/mobileqq/apollo/ApolloTextureView$1;)V
+    //   89: invokespecial 496	com/tencent/mobileqq/apollo/GLTextureView:setEGLContextFactory	(Lakme;)V
     //   92: aload_0
     //   93: aload_0
-    //   94: getfield 390	com/tencent/mobileqq/apollo/ApolloTextureView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
-    //   97: invokespecial 497	com/tencent/mobileqq/apollo/GLTextureView:setRenderer	(Landroid/opengl/GLSurfaceView$Renderer;)V
+    //   94: getfield 393	com/tencent/mobileqq/apollo/ApolloTextureView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
+    //   97: invokespecial 500	com/tencent/mobileqq/apollo/GLTextureView:setRenderer	(Landroid/opengl/GLSurfaceView$Renderer;)V
     //   100: aload_0
     //   101: iconst_0
-    //   102: invokespecial 500	com/tencent/mobileqq/apollo/GLTextureView:setRenderMode	(I)V
+    //   102: invokespecial 503	com/tencent/mobileqq/apollo/GLTextureView:setRenderMode	(I)V
     //   105: aload_0
-    //   106: new 314	com/tencent/mobileqq/apollo/ApolloRenderDriver
+    //   106: new 317	com/tencent/mobileqq/apollo/ApolloRenderDriver
     //   109: dup
     //   110: aload_0
     //   111: aload_0
-    //   112: getfield 390	com/tencent/mobileqq/apollo/ApolloTextureView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
-    //   115: invokevirtual 334	com/tencent/mobileqq/apollo/ApolloRender:getSavaWrapper	()Lcom/tencent/mobileqq/apollo/ApolloEngine;
-    //   118: invokespecial 503	com/tencent/mobileqq/apollo/ApolloRenderDriver:<init>	(Laivb;Lcom/tencent/mobileqq/apollo/ApolloEngine;)V
-    //   121: putfield 312	com/tencent/mobileqq/apollo/ApolloTextureView:mApolloWorker	Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;
+    //   112: getfield 393	com/tencent/mobileqq/apollo/ApolloTextureView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
+    //   115: invokevirtual 337	com/tencent/mobileqq/apollo/ApolloRender:getSavaWrapper	()Lcom/tencent/mobileqq/apollo/ApolloEngine;
+    //   118: invokespecial 506	com/tencent/mobileqq/apollo/ApolloRenderDriver:<init>	(Lakmn;Lcom/tencent/mobileqq/apollo/ApolloEngine;)V
+    //   121: putfield 315	com/tencent/mobileqq/apollo/ApolloTextureView:mApolloWorker	Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;
     //   124: aload_0
-    //   125: getfield 390	com/tencent/mobileqq/apollo/ApolloTextureView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
+    //   125: getfield 393	com/tencent/mobileqq/apollo/ApolloTextureView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
     //   128: aload_0
-    //   129: invokevirtual 507	com/tencent/mobileqq/apollo/ApolloRender:setRenderView	(Landroid/view/View;)V
+    //   129: invokevirtual 510	com/tencent/mobileqq/apollo/ApolloRender:setRenderView	(Landroid/view/View;)V
     //   132: aload_0
-    //   133: new 509	aitk
+    //   133: new 512	akkw
     //   136: dup
     //   137: aload_0
-    //   138: getfield 312	com/tencent/mobileqq/apollo/ApolloTextureView:mApolloWorker	Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;
+    //   138: getfield 315	com/tencent/mobileqq/apollo/ApolloTextureView:mApolloWorker	Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;
     //   141: aload_0
-    //   142: getfield 390	com/tencent/mobileqq/apollo/ApolloTextureView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
-    //   145: invokespecial 512	aitk:<init>	(Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;Lcom/tencent/mobileqq/apollo/ApolloRender;)V
-    //   148: putfield 443	com/tencent/mobileqq/apollo/ApolloTextureView:mRenderImpl	Laitk;
+    //   142: getfield 393	com/tencent/mobileqq/apollo/ApolloTextureView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
+    //   145: invokespecial 515	akkw:<init>	(Lcom/tencent/mobileqq/apollo/ApolloRenderDriver;Lcom/tencent/mobileqq/apollo/ApolloRender;)V
+    //   148: putfield 446	com/tencent/mobileqq/apollo/ApolloTextureView:mRenderImpl	Lakkw;
     //   151: aload_0
     //   152: monitorexit
     //   153: return
     //   154: aload_0
-    //   155: new 330	com/tencent/mobileqq/apollo/ApolloRender
+    //   155: new 333	com/tencent/mobileqq/apollo/ApolloRender
     //   158: dup
     //   159: aload_0
     //   160: getfield 107	com/tencent/mobileqq/apollo/ApolloTextureView:mDensity	F
     //   163: aload_0
-    //   164: getfield 234	com/tencent/mobileqq/apollo/ApolloTextureView:mCallback	Laivc;
+    //   164: getfield 237	com/tencent/mobileqq/apollo/ApolloTextureView:mCallback	Lakmo;
     //   167: iload_2
-    //   168: invokespecial 515	com/tencent/mobileqq/apollo/ApolloRender:<init>	(FLaivc;I)V
-    //   171: putfield 390	com/tencent/mobileqq/apollo/ApolloTextureView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
+    //   168: invokespecial 518	com/tencent/mobileqq/apollo/ApolloRender:<init>	(FLakmo;I)V
+    //   171: putfield 393	com/tencent/mobileqq/apollo/ApolloTextureView:mRender	Lcom/tencent/mobileqq/apollo/ApolloRender;
     //   174: goto -95 -> 79
     //   177: astore_1
     //   178: aload_0
@@ -550,7 +551,7 @@ public class ApolloTextureView
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	182	0	this	ApolloTextureView
-    //   0	182	1	paramaivc	aivc
+    //   0	182	1	paramakmo	akmo
     //   0	182	2	paramInt	int
     //   0	182	3	paramApolloRender	ApolloRender
     // Exception table:
@@ -595,7 +596,7 @@ public class ApolloTextureView
     do
     {
       return;
-      paramQQAppInterface = ajfh.a(paramQQAppInterface);
+      paramQQAppInterface = akwt.a(paramQQAppInterface);
     } while (paramQQAppInterface == null);
     int j = getWidth();
     int i = paramInt;
@@ -625,7 +626,7 @@ public class ApolloTextureView
       QLog.d("ApolloTextureView", 2, "[onGetDressRect], dressName:" + paramString);
     }
     RectF localRectF = new RectF();
-    ReentrantLock localReentrantLock = ajkj.a().a();
+    ReentrantLock localReentrantLock = albv.a().a();
     QLog.d("ApolloLock", 2, "onGetDressRect");
     localReentrantLock.lock();
     try
@@ -658,7 +659,7 @@ public class ApolloTextureView
     if (QLog.isColorLevel()) {
       QLog.d("ApolloTextureView", 2, "[onGetLittleManHeight]");
     }
-    ReentrantLock localReentrantLock = ajkj.a().a();
+    ReentrantLock localReentrantLock = albv.a().a();
     QLog.d("ApolloLock", 2, "onGetManHeight");
     localReentrantLock.lock();
     for (;;)
@@ -880,9 +881,9 @@ public class ApolloTextureView
   {
     if (this.mBarrageViewRef != null)
     {
-      aiwc localaiwc = (aiwc)this.mBarrageViewRef.get();
-      if (localaiwc != null) {
-        localaiwc.a(paramBoolean);
+      akno localakno = (akno)this.mBarrageViewRef.get();
+      if (localakno != null) {
+        localakno.a(paramBoolean);
       }
     }
   }
@@ -896,9 +897,9 @@ public class ApolloTextureView
   
   public void setBackgroundDrawable(Drawable paramDrawable) {}
   
-  public void setBarrageView(aiwc paramaiwc)
+  public void setBarrageView(akno paramakno)
   {
-    this.mBarrageViewRef = new WeakReference(paramaiwc);
+    this.mBarrageViewRef = new WeakReference(paramakno);
   }
   
   public void setBubbleType(int paramInt)
@@ -911,6 +912,11 @@ public class ApolloTextureView
   public void setDispatchEvent2Native(boolean paramBoolean)
   {
     this.mDispatchEvent2native = paramBoolean;
+  }
+  
+  public void setDumplicateCreateRenderThread(boolean paramBoolean)
+  {
+    this.mDisableCreateRenderThread = paramBoolean;
   }
   
   public void setForeground(Drawable paramDrawable) {}
@@ -939,7 +945,7 @@ public class ApolloTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloTextureView
  * JD-Core Version:    0.7.0.1
  */

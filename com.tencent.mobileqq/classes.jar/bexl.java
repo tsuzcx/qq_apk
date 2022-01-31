@@ -1,72 +1,34 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.triton.sdk.ITSoLoader;
-import com.tencent.qqmini.sdk.core.MiniAppEnv;
-import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
-import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
-import com.tencent.qqmini.sdk.manager.InstalledEngine;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.AuthorityAccountView;
+import com.tencent.open.agent.AuthorityActivity;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 
 public class bexl
-  implements ITSoLoader
+  implements View.OnClickListener
 {
-  private InstalledEngine jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine;
-  private String jdField_a_of_type_JavaLangString;
+  public bexl(AuthorityAccountView paramAuthorityAccountView, String paramString) {}
   
-  public bexl(InstalledEngine paramInstalledEngine)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine = paramInstalledEngine;
-    this.jdField_a_of_type_JavaLangString = a(this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine);
-  }
-  
-  private String a(InstalledEngine paramInstalledEngine)
-  {
-    if ((paramInstalledEngine != null) && (paramInstalledEngine.a)) {
-      return paramInstalledEngine.b;
+    if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof AuthorityActivity)) {
+      ((AuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
     }
-    return null;
-  }
-  
-  public String getSoPath(String paramString)
-  {
-    String str = this.jdField_a_of_type_JavaLangString;
-    if ((!TextUtils.isEmpty(str)) && (new File(str, paramString).exists())) {}
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      bexk.a().i("GameSoLoader", "[MiniEng] load so [" + paramString + "] from " + this.jdField_a_of_type_ComTencentQqminiSdkManagerInstalledEngine + ", isSoFileExits = " + bool);
-      if (!bool)
-      {
-        MiniAppProxy localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-        if ((!TextUtils.isEmpty(localMiniAppProxy.getSoPath())) && (new File(localMiniAppProxy.getSoPath(), paramString).exists()))
-        {
-          str = localMiniAppProxy.getSoPath();
-          bool = true;
-          bexk.a().i("GameSoLoader", "[MiniEng] load so [" + paramString + "] from " + localMiniAppProxy.getSoPath() + ", isSoFileExits = " + bool);
-        }
+      if (AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) != null) {
+        AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView).dismiss();
       }
-      for (;;)
-      {
-        if (!bool)
-        {
-          if (paramString.contains("png-armeabi-v7a"))
-          {
-            paramString = MiniAppEnv.g().getContext().getFilesDir().getParent() + "/txlib/libpng-armeabi-v7a.so";
-            if (new File(paramString).exists()) {
-              return paramString;
-            }
-            return null;
-          }
-          return null;
-        }
-        return str + "/" + paramString;
-        break;
+      return;
+      if ((AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
+        ((QuickLoginAuthorityActivity)AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bexl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,25 @@
-import android.graphics.Rect;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.quickat.ui.AtPanelTouchController;
 
-public class bcda
-  implements View.OnLayoutChangeListener
+class bcda
+  implements View.OnTouchListener
 {
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Rect b = new Rect();
+  bcda(bccy parambccy, View paramView1, View paramView2) {}
   
-  public bcda(WebViewFragment paramWebViewFragment) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(this.b);
-    paramView.getWindowVisibleDisplayFrame(this.b);
-    if (this.jdField_a_of_type_AndroidGraphicsRect.width() == this.b.width())
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a == null) {
-        break label100;
-      }
-      paramView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a.getPluginEngine();
-      if (paramView != null)
-      {
-        paramInt1 = this.jdField_a_of_type_AndroidGraphicsRect.height() - this.b.height();
-        if (paramInt1 >= -100) {
-          break label105;
-        }
-        paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.h, 8589934614L, null);
-      }
+    if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {}
+    for (int i = 1; (paramMotionEvent.getAction() == 4) && (AtPanelTouchController.a(this.b, paramMotionEvent)) && ((i == 0) || ((i != 0) && (!AtPanelTouchController.a(this.jdField_a_of_type_AndroidViewView, paramMotionEvent)))); i = 0) {
+      return true;
     }
-    label100:
-    label105:
-    while (paramInt1 <= 100)
-    {
-      return;
-      paramView = null;
-      break;
-    }
-    paramView.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.h, 8589934613L, null);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcda
  * JD-Core Version:    0.7.0.1
  */

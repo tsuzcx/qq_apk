@@ -1,60 +1,56 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import java.util.List;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.MD5;
+import org.json.JSONObject;
 
 public class atfh
-  extends Handler
+  implements ayre
 {
-  public atfh(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public atfh(UiApiPlugin paramUiApiPlugin, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString)
   {
-    switch (paramMessage.what)
+    if (paramString == null)
     {
-    default: 
-      return;
-    case 4097: 
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
-      return;
-    case 4098: 
-      ChooseInterestTagActivity.a(this.a).setVisibility(8);
-      paramMessage = (List)paramMessage.obj;
-      if (paramMessage != null) {
-        ChooseInterestTagActivity.a(this.a, paramMessage);
-      }
-      if (ChooseInterestTagActivity.a(this.a) == null)
-      {
-        ChooseInterestTagActivity.a(this.a, new atfn(this.a, ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a)));
-        ChooseInterestTagActivity.a(this.a).setAdapter(ChooseInterestTagActivity.a(this.a));
-        paramMessage = this.a;
-        if (ChooseInterestTagActivity.b(this.a) == -1) {
-          break label219;
-        }
-      }
-      for (boolean bool = true;; bool = false)
-      {
-        ChooseInterestTagActivity.a(paramMessage, false, bool);
-        return;
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
-        break;
-      }
-    case 4100: 
-      label219:
-      ChooseInterestTagActivity.a(this.a, false);
+      this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-4}" });
       return;
     }
-    ChooseInterestTagActivity.a(this.a, ajya.a(2131701808));
-    ChooseInterestTagActivity.a(this.a).setText("");
-    ChooseInterestTagActivity.a(this.a).setOnClickListener(null);
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        byte[] arrayOfByte = bdcs.a(paramString);
+        if (arrayOfByte == null) {
+          break;
+        }
+        localJSONObject.put("code", 0);
+        StringBuilder localStringBuilder = new StringBuilder("data:");
+        if (awgi.a(paramString))
+        {
+          str = "image/gif;";
+          localStringBuilder.append(str);
+          localStringBuilder.append("base64,");
+          localStringBuilder.append(bdbi.encodeToString(arrayOfByte, 0));
+          localJSONObject.put("imgData", localStringBuilder);
+          localJSONObject.put("md5", MD5.toMD5(arrayOfByte));
+          localJSONObject.put("imagePath", paramString);
+          this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
+        return;
+      }
+      String str = "image/jpg;";
+    }
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"code\":-3}" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atfh
  * JD-Core Version:    0.7.0.1
  */

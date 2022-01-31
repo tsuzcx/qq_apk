@@ -1,41 +1,33 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
 class apmh
-  implements aptw
+  implements akzo
 {
-  apmh(apmg paramapmg) {}
+  apmh(aply paramaply, int paramInt, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void a()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    int i = this.a.a.g();
-    if (this.a.a.f() == 6000) {
-      if (i == 0) {
-        if (this.a.a.h() == 2) {
-          apmc.c(this.a.a);
-        }
-      }
-    }
-    for (;;)
+    paramString = new Bundle();
+    if (paramBoolean)
     {
-      if (this.a.a.a != null) {
-        this.a.a.a.d();
-      }
+      paramString.putInt("apollo_result", 0);
+      paramString.putInt("apollo_roleId", paramInt1);
+      paramString.putInt("apollo_fromSelf", this.jdField_a_of_type_Int);
+      paramString.putIntArray("apollo_dressIds", paramArrayOfInt);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
       return;
-      apmc.a(this.a.a);
-      continue;
-      apmc.c(this.a.a);
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.i("DatalineFileModel<FileAssistant>", 2, "DatalineFileModel doStartDownload : error, this file is not from dataline");
-      }
     }
+    paramString.putInt("apollo_result", 1);
+    paramString.putInt("apollo_fromSelf", this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apmh
  * JD-Core Version:    0.7.0.1
  */

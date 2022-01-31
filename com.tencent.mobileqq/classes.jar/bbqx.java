@@ -1,292 +1,276 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.flatbuffers.FlatBuffersParser;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.URLDrawableHandler.Adapter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.mobileqq.vas.VasQuickUpdateEngine;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import java.io.File;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.filemanager.TroopFileTransferRetryController.1;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class bbqx
-  extends QIPCModule
-  implements ApngSoLoader
 {
-  private static bbqx jdField_a_of_type_Bbqx;
-  public static String a;
-  private CopyOnWriteArrayList<Integer> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private boolean jdField_a_of_type_Boolean;
-  private CopyOnWriteArrayList<URLDrawableHandler> b = new CopyOnWriteArrayList();
+  protected int a;
+  protected long a;
+  protected final aqto a;
+  public final bbqy a;
+  protected Map<String, bbqz> a;
+  protected boolean a;
+  protected int b;
+  protected boolean b;
+  protected int c;
+  protected int d;
+  protected int e = 3;
+  protected int f = 3;
+  protected int g = 3;
+  protected int h = 30;
   
-  static
+  public bbqx(QQAppInterface paramQQAppInterface, String paramString, long paramLong, bbqy parambbqy)
   {
-    jdField_a_of_type_JavaLangString = "action_download_apng_so";
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_Aqto = new aqto(paramQQAppInterface, paramString);
+    this.jdField_a_of_type_Bbqy = parambbqy;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  private bbqx(String paramString)
+  public bbqx(QQAppInterface paramQQAppInterface, List<String> paramList, String paramString, long paramLong, boolean paramBoolean, bbqy parambbqy)
   {
-    super(paramString);
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_Aqto = new aqto(paramQQAppInterface, paramList, paramString);
+    if (paramBoolean) {
+      this.jdField_a_of_type_Aqto.a(true);
+    }
+    this.jdField_a_of_type_Bbqy = parambbqy;
+    this.jdField_a_of_type_Long = paramLong;
   }
   
-  public static bbqx a()
+  public int a()
   {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    int i = 0;
+    int j = 1;
+    Object localObject1 = null;
+    for (;;)
+    {
+      String str = this.jdField_a_of_type_Aqto.a();
+      if (!TextUtils.isEmpty(str))
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(str, new bbqz(this));
+        Object localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = str;
+        }
+        bbrc.c("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] retryContrller init:" + str);
+        localObject1 = localObject2;
+        i += 1;
+      }
+      while ((j == 0) || (i >= 4))
+      {
+        return localObject1;
+        j = 0;
+      }
+    }
+  }
+  
+  protected String a(String paramString, int paramInt, boolean paramBoolean)
+  {
+    bbqz localbbqz;
     try
     {
-      if (jdField_a_of_type_Bbqx == null) {
-        jdField_a_of_type_Bbqx = new bbqx("VasApngIPCModule");
+      localbbqz = (bbqz)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if (localbbqz == null)
+      {
+        bbrc.a("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] selectUrl err. not find strErrUrl. urlCont:" + this.jdField_a_of_type_JavaUtilMap.size());
+        paramString = null;
       }
-      bbqx localbbqx = jdField_a_of_type_Bbqx;
-      return localbbqx;
+      for (;;)
+      {
+        return paramString;
+        if (((9056 != paramInt) && (!paramBoolean)) || (localbbqz.jdField_a_of_type_Int >= this.e)) {
+          break;
+        }
+        a(localbbqz, paramInt, paramBoolean);
+        bbrc.c("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] selectUrl:" + paramString + localbbqz.toString() + " eof err or serr, use cur errurl");
+      }
+      localObject1 = new bbqz(this);
     }
     finally {}
-  }
-  
-  private boolean a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(184);
-    if (paramQQAppInterface != null)
+    Object localObject1;
+    ((bbqz)localObject1).jdField_a_of_type_Int = 2147483647;
+    ((bbqz)localObject1).jdField_b_of_type_Int = 2147483647;
+    ((bbqz)localObject1).c = 2147483647;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    Object localObject2 = null;
+    label216:
+    Object localObject3;
+    while (localIterator.hasNext())
     {
-      QLog.e("VasApngUtil.IPCModule", 1, "start download so");
-      paramQQAppInterface.downloadItem(1004L, VasQuickUpdateManager.SCID_APNG_SO, "VasApngUtil.IPCModule");
-      return true;
+      Object localObject4 = (Map.Entry)localIterator.next();
+      localObject3 = (String)((Map.Entry)localObject4).getKey();
+      localObject4 = (bbqz)((Map.Entry)localObject4).getValue();
+      bbrc.c("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "]" + (String)localObject3 + " <->" + ((bbqz)localObject4).toString());
+      if (!paramString.equalsIgnoreCase((String)localObject3))
+      {
+        if (((bbqz)localObject4).jdField_a_of_type_Int >= ((bbqz)localObject1).jdField_a_of_type_Int) {
+          break label580;
+        }
+        localObject2 = localObject4;
+        localObject1 = localObject3;
+        break label592;
+      }
     }
-    QLog.d("VasApngUtil.IPCModule", 1, "load fail no manager");
-    return false;
-  }
-  
-  private void b(int paramInt)
-  {
-    callbackResult(paramInt, EIPCResult.createResult(0, null));
+    if ((localObject2 == null) || (((bbqz)localObject1).jdField_a_of_type_Int >= this.e)) {
+      if (localObject2 == null)
+      {
+        bbrc.b("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] no next url use cur errurl");
+        break label607;
+      }
+    }
+    for (;;)
+    {
+      if (((bbqz)localObject1).jdField_a_of_type_Int < this.e)
+      {
+        a((bbqz)localObject1, paramInt, paramBoolean);
+        bbrc.c("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] selectUrl:" + paramString + ((bbqz)localObject1).toString());
+        break;
+        bbrc.b("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] minurl retry over, use cur errurl. minRetryUrl:" + localObject2 + ((bbqz)localObject1).toString());
+        break label607;
+      }
+      this.jdField_a_of_type_Boolean = true;
+      bbrc.a("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] all retry over and fail");
+      paramString = null;
+      break;
+      paramString = localObject2;
+      continue;
+      label580:
+      localObject3 = localObject1;
+      localObject1 = localObject2;
+      localObject2 = localObject3;
+      label592:
+      localObject3 = localObject1;
+      localObject1 = localObject2;
+      localObject2 = localObject3;
+      break label216;
+      label607:
+      localObject1 = localbbqz;
+    }
   }
   
   public void a()
   {
-    a(new URLDrawableHandler.Adapter(), true);
+    this.e = 3;
+    this.f = 3;
+    this.g = 0;
+    this.h = 5;
   }
   
-  public void a(int paramInt)
+  protected void a(bbqz parambbqz, int paramInt, boolean paramBoolean)
   {
-    QLog.d("VasApngUtil.IPCModule", 1, "onDownloadCompleted: errCode=" + paramInt);
-    String str1;
-    String str2;
-    if (paramInt == 0)
+    if (9056 == paramInt)
     {
-      str1 = bblj.a();
-      str2 = BaseApplicationImpl.getContext().getFilesDir() + File.separator + "apng.zip";
-      if (bblj.a(str2, str1, "libAPNG_release_813.so"))
+      if (parambbqz.jdField_b_of_type_Int < this.f)
       {
-        QLog.d("VasApngUtil.IPCModule", 1, "unzip apng zip success");
-        b();
-        VasQuickUpdateEngine.safeDeleteFile(new File(str2));
+        parambbqz.jdField_b_of_type_Int += 1;
+        return;
       }
+      parambbqz.jdField_b_of_type_Int = 0;
+      parambbqz.jdField_a_of_type_Int += 1;
+      this.jdField_b_of_type_Int += 1;
+      return;
     }
+    if (paramBoolean)
+    {
+      if (parambbqz.c < this.g)
+      {
+        parambbqz.c += 1;
+        return;
+      }
+      parambbqz.c = 0;
+      parambbqz.jdField_a_of_type_Int += 1;
+      this.jdField_b_of_type_Int += 1;
+      return;
+    }
+    parambbqz.jdField_a_of_type_Int += 1;
+    this.jdField_b_of_type_Int += 1;
+  }
+  
+  public void a(String paramString)
+  {
     for (;;)
     {
-      b();
-      return;
-      QLog.e("VasApngUtil.IPCModule", 1, new Object[] { "unzip error, libDir=" + str1, " zipPath=" + str2 });
-      continue;
-      QLog.e("VasApngUtil.IPCModule", 1, "apng download error: " + paramInt);
+      bbqz localbbqz;
+      try
+      {
+        localbbqz = (bbqz)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        if (localbbqz == null) {
+          return;
+        }
+        if (!this.jdField_b_of_type_Boolean)
+        {
+          this.jdField_b_of_type_Boolean = true;
+          localbbqz.a();
+          this.jdField_a_of_type_JavaUtilMap.clear();
+          this.jdField_a_of_type_JavaUtilMap.put(paramString, localbbqz);
+          bbrc.c("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] data conned. lockedUseThisUrl:" + paramString);
+          continue;
+        }
+        if (this.d > this.h) {
+          continue;
+        }
+      }
+      finally {}
+      localbbqz.a();
+      this.d += 1;
+      bbrc.c("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] data conned. resetRetryInfo. resetcount:" + this.d);
     }
-  }
-  
-  public void a(URLDrawableHandler paramURLDrawableHandler, boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QLog.e("VasApngUtil.IPCModule", 1, "load by others");
-      paramURLDrawableHandler.onFileDownloadSucceed(0L);
-    }
-    Object localObject;
-    do
-    {
-      return;
-      localObject = BaseApplicationImpl.getApplication();
-      if (localObject == null)
-      {
-        QLog.e("VasApngUtil.IPCModule", 1, "load fail null application");
-        paramURLDrawableHandler.onFileDownloadFailed(10000);
-        return;
-      }
-      if (b())
-      {
-        QLog.e("VasApngUtil.IPCModule", 1, "load exists so success");
-        paramURLDrawableHandler.onFileDownloadSucceed(0L);
-        return;
-      }
-      if (!paramBoolean)
-      {
-        QLog.e("VasApngUtil.IPCModule", 1, "second try so not exists");
-        paramURLDrawableHandler.onFileDownloadFailed(10001);
-        return;
-      }
-      if (FlatBuffersParser.c())
-      {
-        QLog.e("VasApngUtil.IPCModule", 1, "isX86 can't download apng.so");
-        paramURLDrawableHandler.onFileDownloadFailed(10004);
-        return;
-      }
-      localObject = ((BaseApplicationImpl)localObject).getRuntime();
-      if (localObject == null)
-      {
-        QLog.e("VasApngUtil.IPCModule", 1, "load fail null runtime");
-        paramURLDrawableHandler.onFileDownloadFailed(10002);
-        return;
-      }
-      if (!(localObject instanceof QQAppInterface)) {
-        break;
-      }
-      this.b.add(paramURLDrawableHandler);
-    } while (a((QQAppInterface)localObject));
-    this.b.remove(paramURLDrawableHandler);
-    paramURLDrawableHandler.onFileDownloadFailed(10003);
-    return;
-    QLog.e("VasApngUtil.IPCModule", 1, "child progress callServer to load");
-    QIPCClientHelper.getInstance().callServer("VasApngIPCModule", jdField_a_of_type_JavaLangString, null, new bbqy(this, paramURLDrawableHandler));
   }
   
   public boolean a()
   {
-    String str = bblj.a();
-    return (!TextUtils.isEmpty(str)) && (new File(str + "libAPNG_release_813.so").exists());
-  }
-  
-  void b()
-  {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.b.iterator();
-    Object localObject;
-    while (localIterator.hasNext())
-    {
-      localObject = (URLDrawableHandler)localIterator.next();
-      a((URLDrawableHandler)localObject, false);
-      localArrayList.add(localObject);
-    }
-    this.b.removeAll(localArrayList);
-    localArrayList = new ArrayList();
-    localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      localObject = (Integer)localIterator.next();
-      b(((Integer)localObject).intValue());
-      localArrayList.add(localObject);
-    }
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.removeAll(localArrayList);
-  }
-  
-  public boolean b()
-  {
-    boolean bool2 = true;
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_Boolean)
-        {
-          bool1 = bool2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("VasApngUtil.IPCModule", 2, "loadSoLib: already loaded");
-            bool1 = bool2;
-          }
-          return bool1;
-        }
-        String str = bblj.a();
-        if (!TextUtils.isEmpty(str))
-        {
-          str = str + "libAPNG_release_813.so";
-          if (new File(str).exists())
-          {
-            QLog.d("VasApngUtil.IPCModule", 1, "loadSoLib: libAPNG_release_813.so");
-            try
-            {
-              System.load(str);
-              this.jdField_a_of_type_Boolean = true;
-              QLog.d("VasApngUtil.IPCModule", 1, "libAPNG.so load success.");
-              bool1 = bool2;
-            }
-            catch (Throwable localThrowable)
-            {
-              QLog.d("VasApngUtil.IPCModule", 1, "libAPNG.so load failed. :", localThrowable);
-              VasQuickUpdateEngine.safeDeleteFile(new File(str));
-              axqy.b(null, "CliOper", "", "", "Font_Mall", "0X80073FE", 0, 0, "101", "", "", "");
-              break label206;
-            }
-          }
-          QLog.e("VasApngUtil.IPCModule", 1, "loadSoLib not exists: " + str);
-        }
-      }
-      finally {}
-      label206:
-      boolean bool1 = false;
-    }
-  }
-  
-  public boolean isLoaded()
-  {
     return this.jdField_a_of_type_Boolean;
   }
   
-  public void load(URLDrawableHandler paramURLDrawableHandler)
+  public boolean a(String paramString, int paramInt, boolean paramBoolean)
   {
-    a(paramURLDrawableHandler, true);
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasApngUtil.IPCModule", 2, "onCall action = " + paramString);
-    }
-    if (jdField_a_of_type_JavaLangString.equals(paramString))
+    if (this.jdField_a_of_type_Bbqy == null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(Integer.valueOf(paramInt));
-      paramBundle = BaseApplicationImpl.getApplication();
-      if (paramBundle == null)
-      {
-        paramString = null;
-        if ((paramBundle == null) || (!(paramString instanceof QQAppInterface)) || (!a((QQAppInterface)paramString))) {
-          break label96;
-        }
-      }
+      bbrc.a("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] reqRetryOnErr fail. sink=null");
+      return false;
     }
-    label96:
-    while (!QLog.isColorLevel())
+    if (TextUtils.isEmpty(paramString))
     {
-      for (;;)
-      {
-        return null;
-        paramString = paramBundle.getRuntime();
-      }
-      QLog.e("VasApngUtil.IPCModule", 1, "download fail to start, application:" + paramBundle + " runtime:" + paramString);
-      b(paramInt);
-      try
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramInt);
-        return null;
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("VasApngUtil.IPCModule", 1, "callbacks.remove error : " + paramString.getMessage());
-        return null;
-      }
+      bbrc.a("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] reqRetryOnErr fail. strErrUrl=null");
+      return false;
     }
-    QLog.d("VasApngUtil.IPCModule", 2, "onCall action = " + paramString);
-    return null;
+    String str = a(paramString, paramInt, paramBoolean);
+    if (TextUtils.isEmpty(str))
+    {
+      bbrc.a("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] reqRetryOnErr fail. all retry over or has err. errCode:" + paramInt + " bSvrErr:" + paramBoolean + " ReportR:" + this.jdField_a_of_type_Int + "UrlChgedT:" + this.c + " strErrUrl:" + paramString);
+      return false;
+    }
+    long l = 100L;
+    if (9056 != paramInt) {
+      l = this.jdField_a_of_type_Bbqy.b();
+    }
+    ThreadManager.getSubThreadHandler().postDelayed(new TroopFileTransferRetryController.1(this, str), l);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int += 1;
+    if (!paramString.equalsIgnoreCase(str)) {
+      this.c += 1;
+    }
+    bbrc.c("TroopFileTransferRetryController", bbrc.jdField_a_of_type_Int, "[" + this.jdField_a_of_type_Long + "] reqRetryOnErr suc, delay:" + l + " errCode:" + paramInt + " bSvrErr:" + paramBoolean + " strErrUrl:" + paramString + " selectUrl:" + str + " ReportR:" + this.jdField_a_of_type_Int + "UrlChgedT:" + this.c);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbqx
  * JD-Core Version:    0.7.0.1
  */

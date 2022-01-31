@@ -1,25 +1,91 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffColorFilter;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.hotchat.anim.HeartLayout;
+import com.tencent.mobileqq.hotchat.ui.HeartView;
+import java.util.Random;
 
 public class aspe
-  implements View.OnClickListener
+  extends aspd
 {
-  public aspe(MultiAIOFragment paramMultiAIOFragment) {}
+  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Random jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
+  private int[] jdField_a_of_type_ArrayOfInt = { Color.parseColor("#c797ff"), Color.parseColor("#80b9f4"), Color.parseColor("#67d0d7"), Color.parseColor("#67d78e"), Color.parseColor("#b5e255"), Color.parseColor("#f2c64f"), Color.parseColor("#f6a455"), Color.parseColor("#ff96b9"), Color.parseColor("#ff6a6a") };
   
-  public void onClick(View paramView)
+  public aspe(Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "onClick() called with: v = [" + paramView + "]");
+    super(paramContext, paramInt);
+  }
+  
+  public aspe(Context paramContext, int paramInt, asox paramasox)
+  {
+    super(paramContext, paramInt, paramasox);
+  }
+  
+  public static void a(HeartLayout paramHeartLayout)
+  {
+    if ((paramHeartLayout == null) || (paramHeartLayout.a() == null)) {}
+    do
+    {
+      return;
+      paramHeartLayout = paramHeartLayout.a();
+    } while (paramHeartLayout == null);
+    paramHeartLayout.j = 2400;
+    asoz.b = 0.05F;
+  }
+  
+  public Bitmap a()
+  {
+    super.a();
+    return b();
+  }
+  
+  public Bitmap b()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
+    try
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
+      Bitmap localBitmap1;
+      Bitmap localBitmap2;
+      do
+      {
+        return null;
+        if (this.jdField_a_of_type_AndroidGraphicsPaint == null) {
+          this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(3);
+        }
+        if (this.jdField_a_of_type_AndroidGraphicsCanvas == null) {
+          this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
+        }
+        localBitmap1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+        localBitmap2 = HeartView.a(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      } while (localBitmap2 == null);
+      Canvas localCanvas = this.jdField_a_of_type_AndroidGraphicsCanvas;
+      localCanvas.setBitmap(localBitmap2);
+      Paint localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
+      localPaint.setColorFilter(new PorterDuffColorFilter(this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_ArrayOfInt.length)], PorterDuff.Mode.SRC_ATOP));
+      localCanvas.drawBitmap(localBitmap1, 0.0F, 0.0F, localPaint);
+      localPaint.setColorFilter(null);
+      if (Build.VERSION.SDK_INT >= 11) {
+        localCanvas.setBitmap(null);
+      }
+      return localBitmap2;
     }
-    this.a.getActivity().finish();
+    catch (OutOfMemoryError localOutOfMemoryError) {}
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aspe
  * JD-Core Version:    0.7.0.1
  */

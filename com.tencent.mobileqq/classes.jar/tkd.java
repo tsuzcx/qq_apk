@@ -1,43 +1,19 @@
-import com.tencent.biz.qqstory.network.handler.GetUserIconHandler.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import NS_KING_INTERFACE.stDeleteFeedCommentReq;
+import NS_KING_INTERFACE.stDeleteFeedCommentRsp;
+import NS_KING_SOCIALIZE_META.stMetaComment;
 
 public class tkd
+  extends thb<stDeleteFeedCommentRsp>
 {
-  private static final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
-  public static boolean a;
-  
-  public static void a(String paramString)
+  public tkd(String paramString, stMetaComment paramstMetaComment)
   {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (!jdField_a_of_type_JavaUtilSet.contains(paramString))
-      {
-        jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        jdField_a_of_type_JavaUtilSet.add(paramString);
-      }
-      if (!jdField_a_of_type_Boolean)
-      {
-        jdField_a_of_type_Boolean = true;
-        ThreadManager.post(new GetUserIconHandler.1(), 5, null, true);
-      }
-      return;
-    }
-  }
-  
-  public static void a(ArrayList<String> paramArrayList)
-  {
-    paramArrayList = new tke(paramArrayList);
-    tkf localtkf = new tkf();
-    tay.a().a(paramArrayList, localtkf);
+    super("DeleteFeedComment");
+    this.a = new stDeleteFeedCommentReq(paramString, paramstMetaComment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tkd
  * JD-Core Version:    0.7.0.1
  */

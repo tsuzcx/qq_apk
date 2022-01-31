@@ -1,59 +1,72 @@
-import android.content.Context;
-import android.support.v4.view.ViewPager.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Paint;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.now.model.MedalInfo;
+import java.util.List;
 
 public class avaf
-  implements bfpx
 {
-  public avaf(QzonePhotoView paramQzonePhotoView) {}
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public ImageView d;
   
-  public AdapterView a(Context paramContext, int paramInt)
+  public void a(long paramLong)
   {
-    do
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(auzv.a(1000L * paramLong));
+  }
+  
+  public void a(MedalInfo paramMedalInfo, int paramInt, Paint paramPaint, boolean paramBoolean)
+  {
+    paramInt = (int)(paramInt - (int)paramPaint.measureText(this.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) - mww.a(this.jdField_c_of_type_AndroidWidgetTextView.getContext(), 30.0F));
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    if ((paramMedalInfo == null) || (paramMedalInfo.a == null) || (paramMedalInfo.a.size() < 0))
     {
-      try
+      this.a.setMaxWidth(paramInt);
+      return;
+    }
+    this.a.setMaxWidth(paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((paramString1 != null) && (!paramString1.equals("")))
+    {
+      SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+      localSpannableStringBuilder.append("回复");
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-8947849), 0, localSpannableStringBuilder.length(), 17);
+      int i = localSpannableStringBuilder.length();
+      String str = paramString1;
+      if (paramString1.length() > 6)
       {
-        paramContext = new GridView(paramContext);
-        ViewPager.LayoutParams localLayoutParams;
-        Context localContext = paramContext;
+        paramString1 = paramString1.substring(0, 6);
+        str = paramString1 + "...";
       }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        try
-        {
-          paramContext.setNumColumns(4);
-          paramContext.setFadingEdgeLength(0);
-          paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
-          paramContext.setStretchMode(2);
-          paramContext.setScrollingCacheEnabled(false);
-          paramContext.setSelector(2131167087);
-          localLayoutParams = new ViewPager.LayoutParams();
-          localLayoutParams.gravity = 17;
-          localLayoutParams.height = -2;
-          localLayoutParams.width = -1;
-          paramContext.setLayoutParams(localLayoutParams);
-          localContext = paramContext;
-          return localContext;
-        }
-        catch (OutOfMemoryError localOutOfMemoryError2)
-        {
-          continue;
-        }
-        localOutOfMemoryError1 = localOutOfMemoryError1;
-        paramContext = null;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError1);
-    return paramContext;
+      localSpannableStringBuilder.append(str);
+      localSpannableStringBuilder.append(": ");
+      localSpannableStringBuilder.append(paramString2);
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-16777216), i, str.length() + i, 17);
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(-8947849), i + str.length(), localSpannableStringBuilder.length(), 17);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
+      return;
+    }
+    a(paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avaf
  * JD-Core Version:    0.7.0.1
  */

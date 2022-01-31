@@ -1,32 +1,23 @@
-class qvm
-  implements qtu
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.databinding.ObservableArrayList;
+import com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ReadInJoySelectMemberFragment;
+
+public class qvm
+  implements AdapterView.OnItemClickListener
 {
-  qvm(qvk paramqvk) {}
+  public qvm(ReadInJoySelectMemberFragment paramReadInJoySelectMemberFragment) {}
   
-  public void a(qtv paramqtv, qty paramqty, int paramInt1, int paramInt2, Object paramObject)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt2 == 0) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramInt2 == 1) || (paramInt2 == 2));
-        if (paramInt2 != 3) {
-          break;
-        }
-        this.a.a(this.a.b(), "video playing", 1);
-      } while (this.a.b());
-      this.a.a(true, "PLAY_STATE_PLAYING");
-      return;
-    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
+    this.a.a.remove(paramInt);
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qvm
  * JD-Core Version:    0.7.0.1
  */

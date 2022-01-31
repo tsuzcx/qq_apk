@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import atsc;
+import avjc;
 
 class NearbyProfileEditPanel$22$1
   implements Runnable
@@ -9,12 +9,12 @@ class NearbyProfileEditPanel$22$1
   
   public void run()
   {
-    atsc.d(this.a.this$0);
+    avjc.d(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.22.1
  * JD-Core Version:    0.7.0.1
  */

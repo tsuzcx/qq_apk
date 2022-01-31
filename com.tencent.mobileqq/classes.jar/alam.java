@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.1.1;
-
-public class alam
-  extends alxw
+public abstract interface alam
 {
-  alam(alal paramalal) {}
-  
-  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
-  {
-    alal.a(this.a).a(new ARTransferPromotionRenderable.1.1(this, paramArrayOfFloat));
-  }
+  public abstract void a(float paramFloat1, float paramFloat2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alam
  * JD-Core Version:    0.7.0.1
  */

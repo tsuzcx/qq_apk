@@ -1,26 +1,23 @@
-import android.os.Build.VERSION;
 import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyDiandianHeaderController;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class sdz
-  implements View.OnSystemUiVisibilityChangeListener
+  implements View.OnClickListener
 {
-  sdz(sdw paramsdw) {}
+  sdz(sdy paramsdy) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onClick(View paramView)
   {
-    if (Build.VERSION.SDK_INT >= 19) {}
-    for (paramInt = 5894;; paramInt = 1799)
-    {
-      sds.a(this.a.a).getWindow().getDecorView().setSystemUiVisibility(paramInt);
-      return;
-    }
+    ors.a(paramView.getContext(), this.a.a.a);
+    nrt.a(null, "", "0X8009BA1", "0X8009BA1", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), "", "", "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdz
  * JD-Core Version:    0.7.0.1
  */

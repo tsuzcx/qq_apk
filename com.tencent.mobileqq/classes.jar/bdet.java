@@ -1,38 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-
-class bdet
-  extends Handler
+public class bdet
 {
-  bdet(bdes parambdes, Looper paramLooper)
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public bdet(String paramString)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void handleMessage(Message paramMessage)
+  public bdet(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      bdes localbdes = this.a;
-      if (paramMessage.obj == null) {}
-      for (String str = null;; str = (String)paramMessage.obj)
-      {
-        localbdes.a(str);
-        break;
-      }
-      this.a.a();
-    }
+    this.d = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString4;
+    this.b = paramString3;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdet
  * JD-Core Version:    0.7.0.1
  */

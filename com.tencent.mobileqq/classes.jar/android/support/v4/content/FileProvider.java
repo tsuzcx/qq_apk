@@ -67,7 +67,7 @@ public class FileProvider
     return arrayOfString;
   }
   
-  private static FileProvider.PathStrategy getPathStrategy(Context paramContext, String paramString)
+  public static FileProvider.PathStrategy getPathStrategy(Context paramContext, String paramString)
   {
     FileProvider.PathStrategy localPathStrategy1;
     synchronized (sCache)

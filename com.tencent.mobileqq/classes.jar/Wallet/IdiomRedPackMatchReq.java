@@ -7,6 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class IdiomRedPackMatchReq
   extends JceStruct
 {
+  static int cache_subchannel = 0;
   public long appid;
   public String billno = "";
   public int fromType;
@@ -18,10 +19,11 @@ public final class IdiomRedPackMatchReq
   public int platform;
   public String qqVersion = "";
   public String sKey = "";
+  public int subchannel;
   
   public IdiomRedPackMatchReq() {}
   
-  public IdiomRedPackMatchReq(long paramLong1, String paramString1, String paramString2, String paramString3, long paramLong2, String paramString4, long paramLong3, int paramInt1, int paramInt2, String paramString5, String paramString6)
+  public IdiomRedPackMatchReq(long paramLong1, String paramString1, String paramString2, String paramString3, long paramLong2, String paramString4, long paramLong3, int paramInt1, int paramInt2, String paramString5, String paramString6, int paramInt3)
   {
     this.grabUin = paramLong1;
     this.billno = paramString1;
@@ -34,6 +36,7 @@ public final class IdiomRedPackMatchReq
     this.platform = paramInt2;
     this.qqVersion = paramString5;
     this.groupid = paramString6;
+    this.subchannel = paramInt3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -49,6 +52,7 @@ public final class IdiomRedPackMatchReq
     this.platform = paramJceInputStream.read(this.platform, 8, false);
     this.qqVersion = paramJceInputStream.readString(9, false);
     this.groupid = paramJceInputStream.readString(10, false);
+    this.subchannel = paramJceInputStream.read(this.subchannel, 11, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -76,6 +80,7 @@ public final class IdiomRedPackMatchReq
     if (this.groupid != null) {
       paramJceOutputStream.write(this.groupid, 10);
     }
+    paramJceOutputStream.write(this.subchannel, 11);
   }
 }
 

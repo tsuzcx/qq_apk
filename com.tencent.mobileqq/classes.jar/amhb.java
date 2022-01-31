@@ -1,70 +1,26 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.Comparator;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-public final class amhb
+class amhb
+  implements Comparator<structmsg.StructMsg>
 {
-  public int a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
+  amhb(amha paramamha) {}
   
-  public amhb()
+  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
   {
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public amhb a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public amhb a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public amhb a(byte[] paramArrayOfByte)
-  {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    return this;
-  }
-  
-  public ColorNote a()
-  {
-    return new ColorNote(this);
-  }
-  
-  public amhb b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public amhb b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public amhb c(String paramString)
-  {
-    this.c = paramString;
-    return this;
-  }
-  
-  public amhb d(String paramString)
-  {
-    this.d = paramString;
-    return this;
+    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
+      return 1;
+    }
+    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amhb
  * JD-Core Version:    0.7.0.1
  */

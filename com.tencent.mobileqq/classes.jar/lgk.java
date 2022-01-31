@@ -1,27 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
 class lgk
-  extends BroadcastReceiver
 {
-  lgk(lgj paramlgj) {}
+  public int a;
+  public int b = 0;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public lgk(lgh paramlgh)
   {
-    paramIntent = paramIntent.getAction();
-    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE")) {
-      this.a.d(paramContext);
-    }
-    while (!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) {
-      return;
-    }
-    this.a.d(paramContext);
+    this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lgk
  * JD-Core Version:    0.7.0.1
  */

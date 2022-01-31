@@ -5,32 +5,41 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Process;
 import android.os.ResultReceiver;
-import bepk;
-import bepl;
-import beps;
-import bepu;
-import beqb;
-import besv;
-import besw;
-import betc;
+import bgpn;
+import bgpo;
+import bgpr;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.ipc.MiniCmdCallback;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IAppBrandProxy;
+import com.tencent.qqmini.sdk.launcher.shell.ILaunchManager;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 public class AppBrandProxy
-  implements besv
+  implements IAppBrandProxy
 {
   private static final String TAG = "minisdk-start_AppBrandProxy";
-  private bepl mAppBrandProxyImpl;
+  private bgpo mAppBrandProxyImpl;
   private Context mContext;
   
   public AppBrandProxy()
   {
-    bepk.a().a(this);
+    bgpn.a().a(this);
   }
   
   public void init(Context paramContext)
   {
     this.mContext = paramContext;
-    this.mAppBrandProxyImpl = new bepl(this.mContext);
+    this.mAppBrandProxyImpl = new bgpo(this.mContext);
+  }
+  
+  public void notifyShareResult(MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
+  {
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
+    }
+    this.mAppBrandProxyImpl.a(paramMiniAppInfo, localBundle, paramResultReceiver);
   }
   
   public void onAppBackground(MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
@@ -40,7 +49,7 @@ public class AppBrandProxy
       localBundle = new Bundle();
     }
     localBundle.putInt("PID", Process.myPid());
-    this.mAppBrandProxyImpl.a(3, beqb.a().b(), paramMiniAppInfo, localBundle);
+    this.mAppBrandProxyImpl.a(3, AppLoaderFactory.g().getProcessName(), paramMiniAppInfo, localBundle);
   }
   
   public void onAppDestroy(Bundle paramBundle)
@@ -50,7 +59,7 @@ public class AppBrandProxy
       localBundle = new Bundle();
     }
     localBundle.putInt("PID", Process.myPid());
-    this.mAppBrandProxyImpl.a(4, beqb.a().b(), null, localBundle);
+    this.mAppBrandProxyImpl.a(4, AppLoaderFactory.g().getProcessName(), null, localBundle);
   }
   
   public void onAppForeground(MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
@@ -60,7 +69,7 @@ public class AppBrandProxy
       localBundle = new Bundle();
     }
     localBundle.putInt("PID", Process.myPid());
-    this.mAppBrandProxyImpl.a(2, beqb.a().b(), paramMiniAppInfo, localBundle);
+    this.mAppBrandProxyImpl.a(2, AppLoaderFactory.g().getProcessName(), paramMiniAppInfo, localBundle);
   }
   
   public void onAppStart(MiniAppInfo paramMiniAppInfo, Bundle paramBundle)
@@ -70,67 +79,79 @@ public class AppBrandProxy
       localBundle = new Bundle();
     }
     localBundle.putInt("PID", Process.myPid());
-    this.mAppBrandProxyImpl.a(1, beqb.a().b(), paramMiniAppInfo, localBundle);
+    this.mAppBrandProxyImpl.a(1, AppLoaderFactory.g().getProcessName(), paramMiniAppInfo, localBundle);
   }
   
   public void preloadDownloadPackage(MiniAppInfo paramMiniAppInfo)
   {
-    betc.d("minisdk-start_AppBrandProxy", "preloadDownloadPackage. pName=" + beqb.a().a() + " miniAppInfo:" + paramMiniAppInfo);
-    if (!beqb.a().a())
+    QMLog.e("minisdk-start_AppBrandProxy", "preloadDownloadPackage. pName=" + AppLoaderFactory.g().getCurrentProcessName() + " miniAppInfo:" + paramMiniAppInfo);
+    if (!AppLoaderFactory.g().isMainProcess())
     {
       this.mAppBrandProxyImpl.a(paramMiniAppInfo);
       return;
     }
-    beqb.a().a().preloadDownloadPackage(paramMiniAppInfo);
+    AppLoaderFactory.g().getLaunchManager().preloadDownloadPackage(paramMiniAppInfo);
   }
   
   public void preloadMiniApp()
   {
-    if (!beqb.a().a())
+    if (!AppLoaderFactory.g().isMainProcess())
     {
-      betc.d("minisdk-start_AppBrandProxy", "call preloadMiniApp not in MainProcess. pName=" + beqb.a().a());
+      QMLog.e("minisdk-start_AppBrandProxy", "call preloadMiniApp not in MainProcess. pName=" + AppLoaderFactory.g().getCurrentProcessName());
       return;
     }
-    beqb.a().a().preloadMiniApp(new Bundle());
+    AppLoaderFactory.g().getLaunchManager().preloadMiniApp(new Bundle());
   }
   
-  public void sendCmd(String paramString, Bundle paramBundle, bepu parambepu)
+  public void sendCmd(String paramString, Bundle paramBundle, MiniCmdCallback paramMiniCmdCallback)
   {
-    betc.b("minisdk-start_AppBrandProxy", "cmd. pName=" + beqb.a().a() + " cmd:" + paramString);
-    if (!beqb.a().a())
+    QMLog.i("minisdk-start_AppBrandProxy", "cmd. pName=" + AppLoaderFactory.g().getCurrentProcessName() + " cmd:" + paramString);
+    if (!AppLoaderFactory.g().isMainProcess())
     {
       if (this.mAppBrandProxyImpl != null) {
-        this.mAppBrandProxyImpl.a(paramString, paramBundle, parambepu);
+        this.mAppBrandProxyImpl.a(paramString, paramBundle, paramMiniCmdCallback);
       }
       return;
     }
-    beps.a().a(paramString, paramBundle, parambepu);
-  }
-  
-  public void share(int paramInt, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
-  {
-    Bundle localBundle = paramBundle;
-    if (paramBundle == null) {
-      localBundle = new Bundle();
-    }
-    localBundle.putInt("PID", Process.myPid());
-    this.mAppBrandProxyImpl.a(paramInt, paramMiniAppInfo, localBundle, paramResultReceiver);
+    bgpr.a().a(paramString, paramBundle, paramMiniCmdCallback);
   }
   
   public void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
-    betc.d("minisdk-start_AppBrandProxy", "startMiniApp. pName=" + beqb.a().a() + " miniAppInfo:" + paramMiniAppInfo);
-    if (!beqb.a().a())
+    QMLog.e("minisdk-start_AppBrandProxy", "startMiniApp. pName=" + AppLoaderFactory.g().getCurrentProcessName() + " miniAppInfo:" + paramMiniAppInfo);
+    if (!AppLoaderFactory.g().isMainProcess())
     {
       this.mAppBrandProxyImpl.a(paramActivity, paramMiniAppInfo, paramBundle, paramResultReceiver);
       return;
     }
-    beqb.a().a().startMiniApp(paramActivity, paramMiniAppInfo, paramBundle, paramResultReceiver);
+    AppLoaderFactory.g().getLaunchManager().startMiniApp(paramActivity, paramMiniAppInfo, paramBundle, paramResultReceiver);
+  }
+  
+  public void stopAllMiniApp()
+  {
+    QMLog.e("minisdk-start_AppBrandProxy", "stopAllMiniApp. pName=" + AppLoaderFactory.g().getCurrentProcessName());
+    if (!AppLoaderFactory.g().isMainProcess())
+    {
+      this.mAppBrandProxyImpl.b();
+      return;
+    }
+    AppLoaderFactory.g().getLaunchManager().stopAllMiniApp();
+  }
+  
+  public void stopMiniApp(MiniAppInfo paramMiniAppInfo)
+  {
+    QMLog.e("minisdk-start_AppBrandProxy", "stopMiniApp. pName=" + AppLoaderFactory.g().getCurrentProcessName() + " miniAppInfo:" + paramMiniAppInfo);
+    if (!AppLoaderFactory.g().isMainProcess())
+    {
+      this.mAppBrandProxyImpl.b(paramMiniAppInfo);
+      return;
+    }
+    AppLoaderFactory.g().getLaunchManager().stopMiniApp(paramMiniAppInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ipc.AppBrandProxy
  * JD-Core Version:    0.7.0.1
  */

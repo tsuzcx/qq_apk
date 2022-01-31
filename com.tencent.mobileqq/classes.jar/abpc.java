@@ -1,25 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-
 public class abpc
-  implements View.OnClickListener
 {
-  public abpc(NotificationActivity paramNotificationActivity) {}
+  public int a;
+  public Object a;
+  public String a;
+  public int b;
   
-  public void onClick(View paramView)
+  public abpc() {}
+  
+  public abpc(String paramString, int paramInt1, int paramInt2, Object paramObject)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abpc
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.aekit.openrender.util.AEProfiler;
 import com.tencent.aekit.plugin.core.AIActionCounter;
 import com.tencent.aekit.plugin.core.PTHandAttr;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
-import com.tencent.ttpic.openapi.initializer.RapidNetSDKInitializer;
+import com.tencent.ttpic.openapi.initializer.RapidNetGestureInitializer;
 import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -179,7 +179,7 @@ public class AEHandDetectImpl
     Object localObject2 = new float[48];
     Object localObject1 = localObject2;
     boolean bool;
-    if (FeatureManager.Features.RAPID_NET.isModelLoaded(3))
+    if (FeatureManager.Features.RAPID_NET_GESTURE.isModelLoaded(3))
     {
       localObject1 = localObject2;
       if (BitmapUtils.isLegal(paramBitmap))

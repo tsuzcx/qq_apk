@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.codeEngine;
 
-import axrn;
+import azmz;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -27,8 +27,8 @@ public final class MiniScanReport$2
       str = "";
       localHashMap.put("report_key_so_md5", str);
       localHashMap.put("report_key_qq_version", "0");
-      localHashMap.put("report_key_qq_subversion", "4480");
-      axrn.a(BaseApplication.getContext()).a("", "report_tag_so_cover", true, 0L, 0L, localHashMap, "");
+      localHashMap.put("report_key_qq_subversion", "4515");
+      azmz.a(BaseApplication.getContext()).a("", "report_tag_so_cover", true, 0L, 0L, localHashMap, "");
       if (QLog.isColorLevel())
       {
         bool = this.jdField_a_of_type_Boolean;
@@ -53,7 +53,7 @@ public final class MiniScanReport$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.codeEngine.MiniScanReport.2
  * JD-Core Version:    0.7.0.1
  */

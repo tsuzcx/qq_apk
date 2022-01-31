@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.selectmember;
 
 import android.text.TextUtils;
-import axqy;
+import azmj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.TroopMemberInfo;
 
@@ -28,7 +28,7 @@ final class TroopAddFrdsInnerFrame$6
     }
     for (;;)
     {
-      axqy.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str2, 0, 0, str3, str1, "", "");
+      azmj.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str2, 0, 0, str3, str1, "", "");
       return;
       str2 = "singleMode_add";
       break;
@@ -43,7 +43,7 @@ final class TroopAddFrdsInnerFrame$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame.6
  * JD-Core Version:    0.7.0.1
  */

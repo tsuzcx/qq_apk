@@ -7,7 +7,7 @@ public abstract interface PTSNativeModuleRegistry$IPTSMarkArticleRead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSMarkArticleRead
  * JD-Core Version:    0.7.0.1
  */

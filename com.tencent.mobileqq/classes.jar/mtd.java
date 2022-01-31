@@ -1,121 +1,98 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.av.VideoController;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class mtd
-  implements SensorEventListener
+public class mtd
 {
-  long jdField_a_of_type_Long = 0L;
-  long b = 0L;
+  public int a;
+  ArrayList<mtb> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  boolean jdField_a_of_type_Boolean = false;
   
-  mtd(mtc parammtc) {}
-  
-  String a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public mtd()
   {
-    return " x[" + paramFloat1 + "], y[" + paramFloat2 + "], z[" + paramFloat3 + "], acc[" + paramFloat4 + "], mIsMoving[" + mtc.b(this.jdField_a_of_type_Mtc) + "], mEnbaleProximiy[" + mtc.c(this.jdField_a_of_type_Mtc) + "], mIsAppOnForeground[" + mtc.d(this.jdField_a_of_type_Mtc) + "], mIsStarted[" + this.jdField_a_of_type_Mtc.d + "], mPowerkeyStatu[" + this.jdField_a_of_type_Mtc.jdField_a_of_type_Int + "], mlongDistense[" + mtc.a(this.jdField_a_of_type_Mtc) + "]";
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public int a()
   {
-    if (paramSensorEvent.sensor.getType() != 1) {
+    int i = 0;
+    int k;
+    for (int j = 0; i < this.jdField_a_of_type_JavaUtilArrayList.size(); j = k)
+    {
+      k = j;
+      if (((mtb)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
+        k = j + 1;
+      }
+      i += 1;
+    }
+    return j;
+  }
+  
+  public ArrayList<mtb> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public mtb a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      mtb localmtb = (mtb)localIterator.next();
+      if (localmtb.a() == paramInt) {
+        return localmtb;
+      }
+    }
+    return null;
+  }
+  
+  public void a(int paramInt)
+  {
+    b(a(paramInt));
+  }
+  
+  public void a(mtb parammtb)
+  {
+    if (parammtb == null) {
       return;
     }
-    long l = System.currentTimeMillis();
-    boolean bool6 = mtc.b(this.jdField_a_of_type_Mtc);
-    float f1 = paramSensorEvent.values[0];
-    float f2 = paramSensorEvent.values[1];
-    float f3 = paramSensorEvent.values[2];
-    float f4 = f1 * f1 + f2 * f2 + f3 * f3;
-    label94:
-    boolean bool1;
-    if ((f4 < 77.0F) || (f4 > 106.0F))
+    this.jdField_a_of_type_JavaUtilArrayList.add(parammtb);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public ArrayList<mtb> b()
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      this.b = l;
-      mtc.b(this.jdField_a_of_type_Mtc, true);
-      if (this.jdField_a_of_type_Mtc.jdField_a_of_type_ComTencentAvVideoController == null) {
-        break label571;
+      if (((mtb)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c()) {
+        localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
       }
-      paramSensorEvent = this.jdField_a_of_type_Mtc.jdField_a_of_type_ComTencentAvVideoController.a();
-      if (paramSensorEvent == null) {
-        break label571;
-      }
-      if (paramSensorEvent.d != 3) {
-        break label465;
-      }
-      bool1 = true;
+      i += 1;
     }
-    for (;;)
-    {
-      label130:
-      boolean bool4 = false;
-      boolean bool5 = false;
-      boolean bool2;
-      boolean bool3;
-      if ((bool1) && (mtc.c(this.jdField_a_of_type_Mtc)) && (mtc.d(this.jdField_a_of_type_Mtc)) && (!mtc.a(this.jdField_a_of_type_Mtc)) && (this.jdField_a_of_type_Mtc.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Mtc.jdField_a_of_type_Int != 3))
-      {
-        bool2 = bool5;
-        bool3 = bool4;
-        if (mtc.b(this.jdField_a_of_type_Mtc))
-        {
-          bool3 = true;
-          bool2 = bool5;
-        }
-      }
-      for (;;)
-      {
-        if ((QLog.isDevelopLevel()) && ((bool6 != mtc.b(this.jdField_a_of_type_Mtc)) || (l - this.jdField_a_of_type_Long > 1000L)))
-        {
-          QLog.d(this.jdField_a_of_type_Mtc.jdField_a_of_type_JavaLangString, 4, "onSensorChanged, bAudio[" + mtc.e(this.jdField_a_of_type_Mtc) + "->" + bool1 + "], IsMoving[" + bool6 + "->" + mtc.b(this.jdField_a_of_type_Mtc) + "], bOnScreen[" + bool2 + "], bOffScreen[" + bool3 + "]," + a(f1, f2, f3, f4));
-          this.jdField_a_of_type_Long = l;
-        }
-        mtc.c(this.jdField_a_of_type_Mtc, bool1);
-        if (!bool2) {
-          break label507;
-        }
-        if (!this.jdField_a_of_type_Mtc.d) {
-          break;
-        }
-        QLog.d(this.jdField_a_of_type_Mtc.jdField_a_of_type_JavaLangString, 1, "toggleProximityWakeLock[false], when[AccelerationSensorEventListener]," + a(f1, f2, f3, f4));
-        this.jdField_a_of_type_Mtc.a(false, false);
-        return;
-        if (l - this.b <= 300L) {
-          break label94;
-        }
-        mtc.b(this.jdField_a_of_type_Mtc, false);
-        break label94;
-        label465:
-        if (!paramSensorEvent.Q) {
-          break label571;
-        }
-        bool1 = true;
-        break label130;
-        bool2 = bool5;
-        bool3 = bool4;
-        if (this.jdField_a_of_type_Mtc.jdField_a_of_type_Int != 2)
-        {
-          bool2 = true;
-          bool3 = bool4;
-        }
-      }
-      label507:
-      if ((!bool3) || (this.jdField_a_of_type_Mtc.d)) {
-        break;
-      }
-      QLog.d(this.jdField_a_of_type_Mtc.jdField_a_of_type_JavaLangString, 1, "toggleProximityWakeLock[true], when[AccelerationSensorEventListener]" + a(f1, f2, f3, f4));
-      this.jdField_a_of_type_Mtc.a(true, false);
+    return localArrayList;
+  }
+  
+  public void b(mtb parammtb)
+  {
+    if (parammtb == null) {
       return;
-      label571:
-      bool1 = false;
     }
+    this.jdField_a_of_type_JavaUtilArrayList.remove(parammtb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mtd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,58 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
 
-class bkxm
+public class bkxm
 {
-  private final Drawable a;
-  private final Drawable b;
+  public int a;
+  public String a;
+  public List<String> a;
+  public int b = 6;
   
-  bkxm(Context paramContext)
+  public bkxm()
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837549);
-    this.b = paramContext.getDrawable(2130837553);
+    this.jdField_a_of_type_JavaLangString = "default";
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private Drawable a(Drawable paramDrawable)
+  public bkxm(List<String> paramList, String paramString, JSONObject paramJSONObject)
   {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
+    this.jdField_a_of_type_JavaLangString = "default";
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramJSONObject != null)
+    {
+      a(paramJSONObject);
+      return;
+    }
+    this.jdField_a_of_type_Int = 3;
+    this.b = 6;
   }
   
-  private Drawable b(Drawable paramDrawable)
+  public void a(JSONObject paramJSONObject)
   {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
-  
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    try
+    {
+      if (this.jdField_a_of_type_JavaLangString != null) {}
+      for (paramJSONObject = paramJSONObject.getJSONObject(this.jdField_a_of_type_JavaLangString);; paramJSONObject = paramJSONObject.getJSONObject("default"))
+      {
+        this.jdField_a_of_type_Int = paramJSONObject.getInt("wordNum");
+        this.b = paramJSONObject.getInt("pendantNum");
+        return;
+      }
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkxm
  * JD-Core Version:    0.7.0.1
  */

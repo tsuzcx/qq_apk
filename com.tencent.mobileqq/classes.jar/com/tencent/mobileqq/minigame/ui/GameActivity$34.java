@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import android.widget.FrameLayout;
-
 class GameActivity$34
   implements Runnable
 {
@@ -9,14 +7,12 @@ class GameActivity$34
   
   public void run()
   {
-    if (this.this$0.mBannerAdContainer != null) {
-      this.this$0.mBannerAdContainer.removeAllViews();
-    }
+    this.this$0.moveTaskToBack(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.34
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,16 @@
-import android.view.View;
 import android.view.View.OnClickListener;
 
-class snq
-  implements View.OnClickListener
+public abstract interface snq
 {
-  snq(snn paramsnn) {}
+  public abstract void a(String paramString, View.OnClickListener paramOnClickListener);
   
-  public void onClick(View paramView)
-  {
-    this.a.a(paramView);
-  }
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b(String paramString, View.OnClickListener paramOnClickListener);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snq
  * JD-Core Version:    0.7.0.1
  */

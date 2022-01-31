@@ -1,39 +1,26 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.core.utils.FileInfo;
+import java.util.Comparator;
 
-class bgks
-  implements ServiceConnection
+public class bgks
+  implements Comparator<FileInfo>
 {
-  bgks(bgkq parambgkq) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service connected!");
+    if (paramFileInfo1.a())
+    {
+      if (!paramFileInfo2.a()) {
+        return -1000;
+      }
     }
-    this.a.jdField_a_of_type_Loo = lop.a(paramIBinder);
-    if ((this.a.jdField_a_of_type_Loo != null) && (this.a.jdField_a_of_type_Bgkr != null)) {
-      this.a.jdField_a_of_type_Bgkr.a(this.a);
+    else if (paramFileInfo2.a()) {
+      return 1000;
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("GroupVideoRemoteManager", 2, "mQavProxy == null or mOnReadyListener == null");
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupVideoRemoteManager", 2, "Qav Service disconnected!");
-    }
-    this.a.jdField_a_of_type_Loo = null;
+    return paramFileInfo1.b().compareToIgnoreCase(paramFileInfo2.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgks
  * JD-Core Version:    0.7.0.1
  */

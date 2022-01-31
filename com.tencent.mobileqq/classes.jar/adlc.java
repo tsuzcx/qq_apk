@@ -1,51 +1,21 @@
-import android.text.SpannableStringBuilder;
-import android.text.style.ImageSpan;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.image.URLImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
-public class adlc
-  extends acuj
-  implements URLDrawable.URLDrawableListener
+class adlc
+  implements View.OnLongClickListener
 {
-  public SpannableStringBuilder a;
-  public ImageSpan a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public ImageView d;
-  public TextView d;
-  public int e;
-  public int f;
+  adlc(adlb paramadlb, long paramLong) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public boolean onLongClick(View paramView)
   {
-    if (this.d != null) {
-      this.d.setVisibility(8);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloItemBuilder", 2, "onLoadSuccessed,mDrawableCacheKey:" + paramURLDrawable);
-    }
+    bdcd.a(this.jdField_a_of_type_Adlb.a, 230).setTitle(this.jdField_a_of_type_Adlb.a.getString(2131720519)).setItems(2130968611, new adld(this)).show();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adlc
  * JD-Core Version:    0.7.0.1
  */

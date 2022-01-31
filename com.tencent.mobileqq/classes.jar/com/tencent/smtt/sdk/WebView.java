@@ -370,7 +370,7 @@ public class WebView
     if (paramContext == null) {
       return "";
     }
-    String str = "tbs_core_version:" + QbSdk.getTbsVersionForCrash(paramContext) + ";tbs_sdk_version:" + 43739 + ";";
+    String str = "tbs_core_version:" + QbSdk.getTbsVersionForCrash(paramContext) + ";tbs_sdk_version:" + 43752 + ";";
     if ("com.tencent.mm".equals(paramContext.getApplicationInfo().packageName)) {}
     for (;;)
     {
@@ -755,7 +755,7 @@ public class WebView
   
   public static int getTbsSDKVersion(Context paramContext)
   {
-    return 43739;
+    return 43752;
   }
   
   private long getWifiConnectedTime()
@@ -3281,7 +3281,7 @@ public class WebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebView
  * JD-Core Version:    0.7.0.1
  */

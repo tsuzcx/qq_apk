@@ -1,119 +1,27 @@
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+import com.tencent.mobileqq.widget.ksong.KSongView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
 
 public class airk
+  implements MediaPlayer.OnPreparedListener
 {
-  private static airk jdField_a_of_type_Airk;
-  private Map<Long, airl> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private Map<Long, Long> b = new HashMap();
+  public airk(RedPacketKSongFragment paramRedPacketKSongFragment, boolean paramBoolean) {}
   
-  public static airk a()
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (jdField_a_of_type_Airk == null) {
-      jdField_a_of_type_Airk = new airk();
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPacketKSongFragment", 2, "playSong onPrepared");
     }
-    return jdField_a_of_type_Airk;
-  }
-  
-  public int a(long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
-    {
-      airl localairl = (airl)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
-      if (l - localairl.jdField_a_of_type_Long < 3600000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is true");
-        }
-        return localairl.jdField_a_of_type_Int;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
-      }
-      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-      return 0;
+    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, true);
+    bdaz.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.getActivity(), true);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.a(true);
     }
-    if (this.b.containsKey(Long.valueOf(paramLong)))
-    {
-      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() < 43200000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "Found from local cache, the fraud flag is false");
-        }
-        return 0;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("AntiFraud", 4, "Found from local cache, timestamp is out of data");
-      }
-      this.b.remove(Long.valueOf(paramLong));
-      return 0;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AntiFraud", 4, "use default value, false");
-    }
-    return 0;
-  }
-  
-  public void a(long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (this.b.size() > 500) {
-      this.b.clear();
-    }
-    this.b.put(Long.valueOf(paramLong), Long.valueOf(l));
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-      this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-    }
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    long l = System.currentTimeMillis();
-    airl localairl = new airl(this);
-    localairl.jdField_a_of_type_Int = paramInt;
-    localairl.jdField_a_of_type_Long = l;
-    if (this.jdField_a_of_type_JavaUtilMap.size() > 500) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(paramLong), localairl);
-    if (this.b.containsKey(Long.valueOf(paramLong))) {
-      this.b.remove(Long.valueOf(paramLong));
-    }
-  }
-  
-  public boolean a(long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong)))
-    {
-      if (l - ((airl)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).jdField_a_of_type_Long > 3600000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "FraudUin, Found from local cache, timestamp is out of data");
-        }
-        this.jdField_a_of_type_JavaUtilMap.remove(Long.valueOf(paramLong));
-        return true;
-      }
-      return false;
-    }
-    if (this.b.containsKey(Long.valueOf(paramLong)))
-    {
-      if (l - ((Long)this.b.get(Long.valueOf(paramLong))).longValue() > 43200000L)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("AntiFraud", 4, "NonFraudUin, Found from local cache, timestamp is out of data");
-        }
-        this.b.remove(Long.valueOf(paramLong));
-        return true;
-      }
-      return false;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AntiFraud", 4, "Out of date, use default value, true!");
-    }
-    return true;
+    paramMediaPlayer.start();
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongView.a(this.jdField_a_of_type_Boolean);
   }
 }
 

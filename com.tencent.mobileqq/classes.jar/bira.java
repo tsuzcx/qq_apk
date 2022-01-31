@@ -1,51 +1,44 @@
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qqfav.QfavHelper.AsyncFavoritesProvider.1;
+import mqq.os.MqqHandler;
 
-public class bira
-  implements Cloneable
+public abstract class bira
+  extends OnPluginInstallListener.Stub
 {
-  public int a;
-  public String a;
-  public List<bire> a;
-  public boolean a;
-  public int b;
-  public String b;
+  public Bundle a;
   
-  public bira()
+  public bira(Bundle paramBundle)
   {
-    this.jdField_b_of_type_Int = 2;
+    this.a = paramBundle;
   }
   
-  public bira(String paramString)
+  public void a()
   {
-    this.jdField_b_of_type_Int = 2;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    biqv.a(BaseApplication.getContext(), this);
   }
   
-  public bira a()
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    bira localbira = new bira();
-    localbira.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-    localbira.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    localbira.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localbira.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-    localbira.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    localbira.jdField_a_of_type_JavaUtilList = new ArrayList();
-    localbira.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    return localbira;
+    a(false, this.a);
   }
   
-  public int hashCode()
+  public void onInstallFinish(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.hashCode()) {
-      return i + 31;
-    }
+    ThreadManager.getSubThreadHandler().post(new QfavHelper.AsyncFavoritesProvider.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bira
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,21 @@
-public abstract interface akto
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class akto
+  implements View.OnClickListener
 {
-  public abstract void a();
+  akto(aktn paramaktn) {}
   
-  public abstract boolean a();
-  
-  public abstract boolean b();
+  public void onClick(View paramView)
+  {
+    aktn.a(this.a, true);
+    this.a.a();
+    aktn.a(this.a, -1, -1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akto
  * JD-Core Version:    0.7.0.1
  */

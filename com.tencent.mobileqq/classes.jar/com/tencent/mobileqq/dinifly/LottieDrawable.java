@@ -26,6 +26,7 @@ import com.tencent.mobileqq.dinifly.manager.FontAssetManager;
 import com.tencent.mobileqq.dinifly.manager.ImageAssetManager;
 import com.tencent.mobileqq.dinifly.model.KeyPath;
 import com.tencent.mobileqq.dinifly.model.KeyPathElement;
+import com.tencent.mobileqq.dinifly.model.LottieCompositionCache;
 import com.tencent.mobileqq.dinifly.model.Marker;
 import com.tencent.mobileqq.dinifly.model.layer.CompositionLayer;
 import com.tencent.mobileqq.dinifly.parser.LayerParser;
@@ -212,6 +213,13 @@ public class LottieDrawable
     this.imageAssetManager = null;
     this.animator.clearComposition();
     invalidateSelf();
+  }
+  
+  public void clearCompositionAndCache(String paramString)
+  {
+    LottieCompositionCache.getInstance().removeCacheByKey(paramString);
+    LottieCompositionFactory.removeCacheByKey(paramString);
+    clearComposition();
   }
   
   public LayerInfo collectLayerInfo()
@@ -828,7 +836,7 @@ public class LottieDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieDrawable
  * JD-Core Version:    0.7.0.1
  */

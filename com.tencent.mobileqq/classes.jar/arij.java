@@ -1,93 +1,54 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.AdapterView;
 import java.util.List;
 
-public class arij
-  extends akgh
+class arij
+  implements bhqr
 {
-  public arij(ShareToQQActivity paramShareToQQActivity) {}
+  arij(arif paramarif) {}
   
-  protected void a(boolean paramBoolean, List<Long> paramList)
+  public void onItemSelected(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.a.a == null)
+    arif.a(this.a, paramInt);
+    paramAdapterView = this.a.jdField_a_of_type_Arjx;
+    if (arif.a(this.a) == arif.b(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.a.finish();
+      paramAdapterView.d(bool);
+      this.a.a(paramInt);
+      if (this.a.jdField_a_of_type_Ardo != null) {
+        this.a.jdField_a_of_type_Ardo.a(paramInt);
+      }
+      paramAdapterView = (argc)arif.a(this.a).get(paramInt);
+      if (paramAdapterView != null) {
+        break;
+      }
+      armz.b(BaseApplicationImpl.getContext().getString(2131692559));
       return;
     }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
+    this.a.jdField_a_of_type_Arfz.a().a(paramAdapterView);
+    this.a.jdField_a_of_type_Arfz.a(paramInt, paramAdapterView);
+    this.a.jdField_a_of_type_Arjx.c(arif.a(this.a, arif.a(this.a)));
+    this.a.jdField_a_of_type_Arjx.c();
+    if (this.a.jdField_a_of_type_Ardn != null) {
+      this.a.jdField_a_of_type_Ardn.e();
     }
-    for (;;)
+    if (this.a.jdField_a_of_type_Boolean)
     {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bbbr.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", false);
-        this.a.setResult(-1, paramList);
-      }
-      this.a.finish();
-      return;
+      this.a.jdField_a_of_type_Ardo.a(true);
+      this.a.jdField_a_of_type_Arjx.a(false);
+      arif.a(this.a, true);
     }
+    this.a.jdField_a_of_type_Boolean = true;
   }
   
-  protected void b(boolean paramBoolean, List<Long> paramList)
-  {
-    int k = 0;
-    if (this.a.a == null)
-    {
-      this.a.finish();
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.i(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
-    {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (bbbr.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k != 0)
-      {
-        paramList = new Intent();
-        paramList.putExtra("isSuccess", paramBoolean);
-        paramList.putExtra("isCancelShield", true);
-        this.a.setResult(-1, paramList);
-      }
-      this.a.finish();
-      return;
-    }
-  }
+  public void onNothingSelected(AdapterView<?> paramAdapterView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arij
  * JD-Core Version:    0.7.0.1
  */

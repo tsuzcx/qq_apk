@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet.redpacket.draw;
 
-import ahew;
+import aiza;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
@@ -21,13 +21,13 @@ class DrawRedpacketPannelPreviewFragment$11
       }
       String str = DrawRedpacketPannelPreviewFragment.a(DrawRedpacketPannelPreviewFragment.a(this.this$0), File.separator + System.currentTimeMillis() + ".png", DrawRedpacketPannelPreviewFragment.a(this.this$0));
       Message localMessage = Message.obtain();
-      ahew localahew = new ahew(null);
-      localahew.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      localahew.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      localahew.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      localahew.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      localahew.c = str;
-      localMessage.obj = localahew;
+      aiza localaiza = new aiza(null);
+      localaiza.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localaiza.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+      localaiza.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      localaiza.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
+      localaiza.c = str;
+      localMessage.obj = localaiza;
       localMessage.what = 1001;
       DrawRedpacketPannelPreviewFragment.a(this.this$0).sendMessage(localMessage);
       return;
@@ -40,7 +40,7 @@ class DrawRedpacketPannelPreviewFragment$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment.11
  * JD-Core Version:    0.7.0.1
  */

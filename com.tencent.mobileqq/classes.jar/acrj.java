@@ -1,49 +1,34 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
-import com.tencent.mobileqq.data.ActivateFriendItem;
-import java.util.ArrayList;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class acrj
-  extends ajxj
+  implements ActionMode.Callback
 {
-  public acrj(ActivateFriendView paramActivateFriendView) {}
+  public acrj(EditInfoActivity paramEditInfoActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    int i = 0;
-    for (;;)
-    {
-      if (i < ActivateFriendView.a(this.a).size())
-      {
-        String str = String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin);
-        if (paramString.equals(str))
-        {
-          paramString = bbcz.b(ActivateFriendView.a(this.a), str, false);
-          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(paramString);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
+    return false;
   }
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    int i = 0;
-    while (i < ActivateFriendView.a(this.a).size())
-    {
-      String str = bbcz.j(ActivateFriendView.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin));
-      ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(str);
-      i += 1;
-    }
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrj
  * JD-Core Version:    0.7.0.1
  */

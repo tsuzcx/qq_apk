@@ -1,34 +1,39 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl.9.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import mqq.os.MqqHandler;
 
 public class asrx
-  implements ValueAnimator.AnimatorUpdateListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public asrx(MultiCardFragment paramMultiCardFragment, assh paramassh, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4) {}
+  asrx(asrp paramasrp) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    float f1 = paramValueAnimator.getAnimatedFraction();
-    if (this.jdField_a_of_type_Assh == null) {
-      return;
+    asrp.a = false;
+    this.a.a(alpo.a(2131708782));
+    if (QLog.isColorLevel()) {
+      QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstalledFail");
     }
-    float f2 = this.jdField_a_of_type_Float + (1.0F - this.jdField_a_of_type_Float) * f1;
-    this.jdField_a_of_type_Assh.a.setScaleX(f2);
-    this.jdField_a_of_type_Assh.a.setScaleY(f2);
-    this.jdField_a_of_type_Assh.a.setTranslationX(0.0F);
-    this.jdField_a_of_type_Assh.a.setTranslationY(this.b * (1.0F - f1));
-    paramValueAnimator = this.jdField_a_of_type_Assh.a.getLayoutParams();
-    float f3 = this.c;
-    float f4 = this.d;
-    paramValueAnimator.height = ((int)((f1 * (1.0F - this.d) + f4) / f2 * f3));
-    this.jdField_a_of_type_Assh.a.requestLayout();
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    asrp.a = false;
+    if (!this.a.c)
+    {
+      ThreadManager.getSubThreadHandler().post(new PresenceInterfaceImpl.9.1(this));
+      QLog.d("PresenceInterfaceImpl", 2, "run installSDK here");
+    }
+    QLog.d("PresenceInterfaceImpl", 2, "tencent sdk onInstall sucess");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asrx
  * JD-Core Version:    0.7.0.1
  */

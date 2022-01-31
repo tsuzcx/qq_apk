@@ -1,26 +1,111 @@
-import com.tencent.ark.ark.VariantWrapper;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.event.ForeBackgroundEvent;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class alnr
-  implements alos
+public final class alnr
 {
-  alnr(alnj paramalnj, long paramLong) {}
+  private List<alnt> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(long paramLong)
+  public static alnr a()
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alnj.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    return alnu.a();
+  }
+  
+  public List<alnt> a()
+  {
+    try
+    {
+      List localList = this.jdField_a_of_type_JavaUtilList;
+      return localList;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  public final void a()
   {
-    alng.a(this.jdField_a_of_type_Alnj.a, this.jdField_a_of_type_Long, paramBoolean, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("ForeBackgroundSwitch", 2, "onAppBackground: invoked. ");
+    }
+    yej.a().a(new ForeBackgroundEvent(true));
+    QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppBackground ==============");
+    tld.a().a();
+    atpw.b();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((alnt)localIterator.next()).b();
+    }
+  }
+  
+  public void a(alnt paramalnt)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramalnt);
+      return;
+    }
+    finally
+    {
+      paramalnt = finally;
+      throw paramalnt;
+    }
+  }
+  
+  public final void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForeBackgroundSwitch", 2, "onAppForeground: invoked. " + paramString);
+    }
+    if (zdi.b <= 0L)
+    {
+      zdi.b = System.currentTimeMillis();
+      QLog.d("ForeBackgroundSwitch", 1, new Object[] { "onAppForeground: invoked. ", " sFirstForegroundTimestamp: ", Long.valueOf(zdi.b) });
+    }
+    atpw.a();
+    if ((TextUtils.equals("com.tencent.mobileqq:qzone", paramString)) || ((!TextUtils.isEmpty(paramString)) && (paramString.contains("mini")))) {
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+    for (;;)
+    {
+      QLog.i("QzoneVerticalVideoPluginApk", 1, "============== onAppForeground ==============");
+      paramString = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramString.hasNext()) {
+        ((alnt)paramString.next()).a();
+      }
+      paramString = new ForeBackgroundEvent(false);
+      yej.a().a(paramString);
+      continue;
+      paramString = new ForeBackgroundEvent(false);
+      yej.a().a(paramString);
+    }
+  }
+  
+  public void b(alnt paramalnt)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramalnt);
+      return;
+    }
+    finally
+    {
+      paramalnt = finally;
+      throw paramalnt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alnr
  * JD-Core Version:    0.7.0.1
  */

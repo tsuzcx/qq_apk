@@ -1,84 +1,33 @@
-import android.content.Context;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-class agfp
-  implements bfos
+public final class agfp
+  implements Parcelable.Creator<AIORichMediaData>
 {
-  int jdField_a_of_type_Int = 0;
-  int b;
-  int c = 0;
-  
-  agfp(agfk paramagfk)
+  public AIORichMediaData a(Parcel paramParcel)
   {
-    this.jdField_b_of_type_Int = 0;
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
-    this.jdField_b_of_type_Int = paramInt3;
-  }
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged, reach bottom, scrollState " + paramInt + " firstVisibleItem: " + this.c + ", lastItem:" + this.jdField_a_of_type_Int + ", totalItemCount = " + this.jdField_b_of_type_Int + ", mIsComplete: " + this.jdField_a_of_type_Agfk.d + ", requesting:" + this.jdField_a_of_type_Agfk.jdField_c_of_type_Boolean + ", mSearchMode: " + this.jdField_a_of_type_Agfk.jdField_b_of_type_Int + ", mCurrentKeyword: " + this.jdField_a_of_type_Agfk.jdField_a_of_type_JavaLangString);
-    }
-    if (this.jdField_b_of_type_Int == 0) {}
-    do
+    Object localObject = paramParcel.readString();
+    try
     {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_Int != this.jdField_b_of_type_Int) || (paramInt != 0));
-      if ((this.c != 0) && (!this.jdField_a_of_type_Agfk.jdField_c_of_type_Boolean))
-      {
-        this.jdField_a_of_type_Agfk.jdField_c_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Agfk.jdField_b_of_type_Int == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageLocal >>>>> isComplete: " + this.jdField_a_of_type_Agfk.d);
-          }
-          this.jdField_a_of_type_Agfk.jdField_a_of_type_Agbp.a(this.jdField_a_of_type_Agfk.jdField_a_of_type_Long, this.jdField_a_of_type_Agfk.jdField_a_of_type_JavaLangString, 2);
-          this.jdField_a_of_type_Agfk.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Agfk.jdField_a_of_type_AndroidContentContext.getString(2131719097));
-          this.jdField_a_of_type_Agfk.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          this.jdField_a_of_type_Agfk.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131371996).setVisibility(0);
-          this.jdField_a_of_type_Agfk.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("LinkMessageSearchDialog", 2, "onScrollStateChanged searchRoamMessageInCloud >>>>> isComplete: " + this.jdField_a_of_type_Agfk.d);
-        }
-        if (this.jdField_a_of_type_Agfk.d)
-        {
-          this.jdField_a_of_type_Agfk.jdField_c_of_type_AndroidWidgetTextView.setText(ajya.a(2131715190));
-          this.jdField_a_of_type_Agfk.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131371996).setVisibility(8);
-          this.jdField_a_of_type_Agfk.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-          this.jdField_a_of_type_Agfk.jdField_b_of_type_AndroidViewView.setVisibility(0);
-          return;
-        }
-        this.jdField_a_of_type_Agfk.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Agfk.jdField_a_of_type_AndroidContentContext.getString(2131719096));
-        this.jdField_a_of_type_Agfk.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_Agfk.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131371996).setVisibility(0);
-        this.jdField_a_of_type_Agfk.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        this.jdField_a_of_type_Agfk.jdField_a_of_type_Long = System.currentTimeMillis();
-        return;
-      }
-    } while ((this.c != 0) || (this.jdField_a_of_type_Agfk.jdField_c_of_type_Boolean) || (!this.jdField_a_of_type_Agfk.d) || (this.jdField_a_of_type_Agfk.jdField_b_of_type_Int != 1));
-    this.jdField_a_of_type_Agfk.jdField_c_of_type_AndroidWidgetTextView.setText(ajya.a(2131715194));
-    this.jdField_a_of_type_Agfk.jdField_c_of_type_AndroidWidgetLinearLayout.findViewById(2131371996).setVisibility(8);
-    this.jdField_a_of_type_Agfk.jdField_c_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.jdField_a_of_type_Agfk.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      localObject = AIORichMediaData.a((String)localObject);
+      ((AIORichMediaData)localObject).a(paramParcel);
+      return localObject;
+    }
+    catch (ClassNotFoundException paramParcel)
+    {
+      throw new RuntimeException(paramParcel);
+    }
+  }
+  
+  public AIORichMediaData[] a(int paramInt)
+  {
+    return new AIORichMediaData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agfp
  * JD-Core Version:    0.7.0.1
  */

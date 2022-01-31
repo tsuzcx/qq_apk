@@ -1,24 +1,34 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.ui.TouchWebView;
+import cooperation.qzone.webviewwrapper.IWebviewListener;
 
 class bjwc
-  extends QQUIEventReceiver<bjvt, bkcf>
+  implements bjwg
 {
-  public bjwc(@NonNull bjvt parambjvt)
+  bjwc(bjwb parambjwb, IWebviewListener paramIWebviewListener) {}
+  
+  public void a()
   {
-    super(parambjvt);
+    if (bjwb.a(this.jdField_a_of_type_Bjwb) == null) {}
+    do
+    {
+      return;
+      if (bjwb.a(this.jdField_a_of_type_Bjwb).getVisibility() != 0) {
+        bjwb.a(this.jdField_a_of_type_Bjwb).setVisibility(0);
+      }
+    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
+    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
   }
   
-  public void a(@NonNull bjvt parambjvt, @NonNull bkcf parambkcf) {}
-  
-  public Class acceptEventClass()
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    return bkcf.class;
+    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener != null) {
+      this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjwc
  * JD-Core Version:    0.7.0.1
  */

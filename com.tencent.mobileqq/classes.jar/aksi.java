@@ -1,35 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.common.app.AppInterface;
 
-final class aksi
-  extends bbwt
+public abstract interface aksi
 {
-  aksi(String paramString) {}
+  public abstract int a(int paramInt);
   
-  public void onCancel(bbwu parambbwu)
-  {
-    akse.jdField_a_of_type_Bbwu = null;
-    QLog.d(akse.jdField_a_of_type_JavaLangString, 1, "downloadZipFile cancel");
-  }
+  public abstract int a(akni paramakni, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat);
   
-  public void onDone(bbwu parambbwu)
-  {
-    akse.jdField_a_of_type_Bbwu = null;
-    if (parambbwu.a() == 3)
-    {
-      QLog.d(akse.jdField_a_of_type_JavaLangString, 1, "download finished " + akse.f);
-      parambbwu = new File(this.jdField_a_of_type_JavaLangString);
-      if ((parambbwu.exists()) && (akse.a(parambbwu))) {
-        QLog.d(akse.jdField_a_of_type_JavaLangString, 1, "downloadZipFile suc and zip succ");
-      }
-      return;
-    }
-    QLog.d(akse.jdField_a_of_type_JavaLangString, 1, new Object[] { "downloadZipFile failed: ", parambbwu.b, " code=", Integer.valueOf(parambbwu.a) });
-  }
+  public abstract int a(AppInterface paramAppInterface);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, AppInterface paramAppInterface);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract int b(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksi
  * JD-Core Version:    0.7.0.1
  */

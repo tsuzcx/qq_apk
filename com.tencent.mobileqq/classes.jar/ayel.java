@@ -1,52 +1,20 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.teamwork.TeamWorkFileExportHandler.1;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import mqq.manager.TicketManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
 
 public class ayel
-  extends ajtb
-  implements Handler.Callback
+  implements View.OnClickListener
 {
-  private String[] a = { "docs.qq.com" };
+  public ayel(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
   
-  public ayel(QQAppInterface paramQQAppInterface)
+  public void onClick(View paramView)
   {
-    super(paramQQAppInterface);
+    this.a.finish();
   }
-  
-  private void a(Runnable paramRunnable)
-  {
-    if (this.app == null) {}
-    while (((TicketManager)this.app.getManager(2)).GetPskey(this.app.getCurrentAccountUin(), 16L, this.a, new ayem(this, paramRunnable)) == null) {
-      return;
-    }
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    a(new TeamWorkFileExportHandler.1(this, paramString1, paramString2, paramString3, paramString4));
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    return false;
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return ayej.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayel
  * JD-Core Version:    0.7.0.1
  */

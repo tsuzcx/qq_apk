@@ -7,10 +7,12 @@ public class TPNativePlayerInitConfig
 {
   public static final int BOOL_ENABLE_ASYNC_MEDIA_CODEC = 206;
   public static final int BOOL_ENABLE_AUDIO_FRAME_CALLBACK = 402;
+  public static final int BOOL_ENABLE_AUDIO_PASSTHROUGH = 210;
   public static final int BOOL_ENABLE_AUDIO_RENDERER_LATENCY_COMPENSATION = 401;
   public static final int BOOL_ENABLE_AV_SYNC = 400;
   public static final int BOOL_ENABLE_FORCE_FFMPEG_DEMUXER = 114;
   public static final int BOOL_ENABLE_HEVC_OPTIMIZATION = 115;
+  public static final int BOOL_ENABLE_MULTI_RECEIVE_FRAMES = 209;
   public static final int BOOL_ENABLE_NATIVE_MEDIA_CODEC = 204;
   public static final int BOOL_ENABLE_SET_OUTPUT_SURFACE_API = 205;
   public static final int BOOL_ENABLE_VIDEO_FRAME_CALLBACK = 403;
@@ -19,11 +21,14 @@ public class TPNativePlayerInitConfig
   public static final int BOOL_KEEP_ORIGINAL_PTS = 112;
   public static final int BOOL_RESET_DECODER_ON_PARAMETER_CHANGE = 201;
   public static final int BOOL_START_PLAYING_TIME_ACCURATE_SEEK = 101;
+  public static final int FLOAT_REDUCE_LATENCY_SPEED_UP_RATE = 120;
+  public static final int FLOAT_VIDEO_DROP_FRAME_DETECT_MIN_RATE = 208;
   public static final int INT_AUDIO_RENDERER_TYPE = 404;
   public static final int INT_DECODER_MAX_TOLERATED_ERROR_COUNT = 200;
   public static final int INT_FRAME_SIZE_BYTE = 303;
   public static final int INT_HEIGHT = 312;
   public static final int INT_PIXEL_FORMAT = 310;
+  public static final int INT_REDUCE_LIVE_LATENCY_ACTION = 119;
   public static final int INT_ROTATION = 313;
   public static final int INT_SAMPLE_FORMAT = 300;
   public static final int INT_SAMPLE_RATE_HZ = 302;
@@ -39,8 +44,10 @@ public class TPNativePlayerInitConfig
   public static final int LONG_MIN_BUFFERING_PACKET_DURATION_MS = 104;
   public static final int LONG_MIN_BUFFERING_TIME_MS = 105;
   public static final int LONG_PRELOAD_PACKET_TOTAL_DURATION_MS = 103;
+  public static final int LONG_PREPARE_TIMEOUT_MS = 118;
   public static final int LONG_START_PLAYING_TIME_MS = 100;
   public static final int LONG_TCP_TIMEOUT_MS = 108;
+  public static final int LONG_VIDEO_DROP_FRAME_TIME_UNIT_MS = 207;
   public static final int QUEUE_INT_AUDIO_DECODER_TYPE = 202;
   public static final int QUEUE_INT_VIDEO_DECODER_TYPE = 203;
   public static final int QUEUE_STRING_HLS_TAG_CALLBACK = 113;
@@ -116,7 +123,7 @@ public class TPNativePlayerInitConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.TPNativePlayerInitConfig
  * JD-Core Version:    0.7.0.1
  */

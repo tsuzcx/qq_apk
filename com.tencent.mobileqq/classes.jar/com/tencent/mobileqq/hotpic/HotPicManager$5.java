@@ -2,14 +2,14 @@ package com.tencent.mobileqq.hotpic;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import aqze;
+import asps;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
 
 public class HotPicManager$5
   implements Runnable
 {
-  public HotPicManager$5(aqze paramaqze, int paramInt) {}
+  public HotPicManager$5(asps paramasps, int paramInt) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class HotPicManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicManager.5
  * JD-Core Version:    0.7.0.1
  */

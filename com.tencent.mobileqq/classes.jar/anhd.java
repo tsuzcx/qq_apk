@@ -1,43 +1,88 @@
-import android.graphics.Canvas;
-import android.text.TextPaint;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class anhd
-  extends anha
+class anhd
+  implements bfka
 {
-  private TextPaint a = new TextPaint();
+  anhd(anhb paramanhb) {}
   
-  private String a(anga paramanga)
+  public void installSucceed(String paramString1, String paramString2)
   {
-    return String.valueOf(paramanga.a());
+    if (anhb.a(this.a) != null) {
+      anhb.a(this.a).a(this.a.a(paramString1, 6, paramString2).toString());
+    }
   }
   
-  public anhy a(anga paramanga)
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    angz localangz = angj.a();
-    float f1 = anib.a(localangz.c(), a(paramanga)) + localangz.f() + localangz.f();
-    float f2 = anib.a(localangz.c());
-    f2 = localangz.e() * 2.0F + f2;
-    paramanga.a(f2);
-    paramanga.b(f1);
-    return new anhy(f1, f2);
+    if ((paramDownloadInfo != null) && (anhb.a(this.a) != null)) {
+      anhb.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
   }
   
-  public boolean a(anga paramanga)
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    return true;
+    if ((paramDownloadInfo != null) && (anhb.a(this.a) != null)) {
+      anhb.a(this.a).a(this.a.a(paramDownloadInfo.k, paramDownloadInfo.a(), paramDownloadInfo.f, paramDownloadInfo.e, paramString, paramInt1, paramDownloadInfo.j).toString());
+    }
   }
   
-  public void b(Canvas paramCanvas, anga paramanga, angj paramangj, float paramFloat1, float paramFloat2)
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    paramangj = angj.a();
-    this.a.setTextSize(paramangj.c());
-    this.a.setColor(-1);
-    paramCanvas.drawText(a(paramanga), paramangj.f() + paramFloat1, paramangj.e() + paramFloat2 - this.a.ascent(), this.a);
+    if ((paramDownloadInfo != null) && (anhb.a(this.a) != null)) {
+      anhb.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (anhb.a(this.a) != null)) {
+      anhb.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    if ((paramList != null) && (anhb.a(this.a) != null))
+    {
+      JSONArray localJSONArray = new JSONArray();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        localJSONArray.put(this.a.a(localDownloadInfo));
+      }
+      anhb.a(this.a).a(localJSONArray.toString());
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (anhb.a(this.a) != null)) {
+      anhb.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    if (anhb.a(this.a) != null) {
+      anhb.a(this.a).a(this.a.a(paramString1, 13, paramString2).toString());
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    if (anhb.a(this.a) != null) {
+      anhb.a(this.a).a(this.a.a(paramString1, 9, paramString2).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhd
  * JD-Core Version:    0.7.0.1
  */

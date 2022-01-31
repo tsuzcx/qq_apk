@@ -1,36 +1,34 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-class wys
-  implements ajyw
+public class wys
+  extends JobSegment<Bitmap, Bitmap>
 {
-  wys(wyj paramwyj, Bundle paramBundle) {}
+  public final float a;
+  public final boolean a;
   
-  public boolean a(ajzb paramajzb)
+  public wys(float paramFloat, boolean paramBoolean)
   {
-    Bundle localBundle = new Bundle();
-    ajzb localajzb = paramajzb;
-    if (paramajzb == null) {
-      localajzb = this.jdField_a_of_type_Wyj.a.a.jdField_a_of_type_Ajyx.a(this.jdField_a_of_type_Wyj.a.a.jdField_a_of_type_JavaLangString, 1, ajyv.a());
-    }
-    if (localajzb != null)
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  protected void a(JobContext paramJobContext, Bitmap paramBitmap)
+  {
+    paramJobContext = xmn.a(paramBitmap, this.jdField_a_of_type_Float, this.jdField_a_of_type_Boolean);
+    if (paramJobContext == null)
     {
-      localBundle.putString("url", localajzb.b);
-      localBundle.putString("content", localajzb.jdField_a_of_type_JavaLangString);
+      super.notifyError(new BitmapError("Q.qqstory.publish:ImageAdjustJobSegment", 5));
+      return;
     }
-    for (;;)
-    {
-      localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
-      this.jdField_a_of_type_Wyj.a.a(101, localBundle);
-      return false;
-      localBundle.putString("url", "");
-      localBundle.putString("content", "");
-    }
+    super.notifyResult(paramJobContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wys
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,57 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ValueAnimator;
+import com.tencent.component.network.module.base.inter.Log;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
 
 public class bjla
-  extends AnimatorListenerAdapter
+  implements Log
 {
-  public bjla(QIMCircleProgress paramQIMCircleProgress) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public void d(String paramString1, String paramString2)
   {
-    this.a.a = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator cancel");
-    }
+    QLog.d(paramString1, 1, paramString2);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    this.a.a = false;
-    if ((this.a.c) && (this.a.b != null)) {
-      this.a.b.start();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] capturedSegmentBlinkAnimator end");
-    }
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void e(String paramString1, String paramString2)
   {
-    this.a.a = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "capturedSegmentBlinkAnimator start");
-    }
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public int getLogLevel()
+  {
+    return 1;
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void w(String paramString1, String paramString2)
+  {
+    QLog.w(paramString1, 1, paramString2);
+  }
+  
+  public void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, 1, paramString2, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjla
  * JD-Core Version:    0.7.0.1
  */

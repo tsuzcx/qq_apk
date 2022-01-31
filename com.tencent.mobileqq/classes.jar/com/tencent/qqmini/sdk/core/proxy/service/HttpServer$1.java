@@ -1,10 +1,10 @@
 package com.tencent.qqmini.sdk.core.proxy.service;
 
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import betc;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy.SenderListener;
 import com.tencent.qqmini.sdk.core.proxy.RequestProxy.RequestListener;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +15,7 @@ final class HttpServer$1
   
   public void onRequestFailed(int paramInt, String paramString)
   {
-    betc.b("HttpServer", "code = " + paramInt + ", errorMsg = " + paramString);
+    QMLog.i("HttpServer", "code = " + paramInt + ", errorMsg = " + paramString);
     if (this.val$listener != null) {
       this.val$listener.onReply(paramInt, null, paramString);
     }
@@ -49,7 +49,7 @@ final class HttpServer$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.HttpServer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-
-class ldc
-  extends Handler
+public class ldc
+  extends lcv
 {
-  WeakReference<lda> a;
+  private String jdField_a_of_type_JavaLangString = "qqi_android";
+  private byte[] jdField_a_of_type_ArrayOfByte = { -124, -103, -119, 53, -84, -31, 44, -41, 18, 66, -17, 11, -91, -20, 57, -47, 11, -75, -75, 104, 32, 86, -43, -40, -17, 110, -103, -69, -10, -60, 125, 94, 113, -10, -57, -17, 56, 34, 69, -69, -13, -5, -102, -37, 9, -125, 124, -87, -89, -122, 103, 57, 119, -111, 83, -38 };
   
-  ldc(lda paramlda)
+  public String a()
   {
-    this.a = new WeakReference(paramlda);
+    return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void a()
+  public String b()
   {
-    sendMessage(obtainMessage(1));
-  }
-  
-  public void b()
-  {
-    sendMessage(obtainMessage(3));
-    removeMessages(1);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    super.handleMessage(paramMessage);
-    lda locallda = (lda)this.a.get();
-    if (locallda != null) {}
-    switch (paramMessage.what)
-    {
-    case 2: 
-    default: 
-    case 1: 
-      do
-      {
-        return;
-        lda.a(locallda, paramMessage.what);
-      } while (lda.a(locallda) == 2);
-      sendMessageDelayed(obtainMessage(paramMessage.what), 15000L);
-      return;
-    }
-    lda.a(locallda);
+    return a(this.jdField_a_of_type_ArrayOfByte, a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ldc
  * JD-Core Version:    0.7.0.1
  */

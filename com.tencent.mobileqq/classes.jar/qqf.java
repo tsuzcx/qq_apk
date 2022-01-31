@@ -1,20 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.view.View;
+import android.widget.SimpleAdapter.ViewBinder;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
 public class qqf
-  implements DialogInterface.OnClickListener
+  implements SimpleAdapter.ViewBinder
 {
-  public qqf(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public qqf(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean setViewValue(View paramView, Object paramObject, String paramString)
   {
-    qjm.b(this.a);
+    if (((paramView instanceof TextView)) && ((paramObject instanceof CharSequence)))
+    {
+      ((TextView)paramView).setText((CharSequence)paramObject);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qqf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,40 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.confess.ConfessHalfScreenActivity;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class adcn
-  extends BroadcastReceiver
+  extends ause
 {
-  public adcn(ConfessHalfScreenActivity paramConfessHalfScreenActivity) {}
+  public adcn(LikeSettingActivity paramLikeSettingActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ("com.tencent.mobileqq.action.ACTION_CONFESS_FINISH_EVENT".equals(paramIntent.getAction()))
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (paramBoolean1) {
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean2);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (!paramBoolean1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_QQBrowserActivity", 2, "Confess finish action! ");
-      }
-      this.a.finish();
+      QQToast.a(this.a, 1, 2131719872, 0).b(this.a.getTitleBarHeight());
+      paramBoolean1 = ((aupx)this.a.app.getManager(161)).a();
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adcn
  * JD-Core Version:    0.7.0.1
  */

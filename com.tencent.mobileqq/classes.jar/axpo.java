@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.startup.step.UpdateSecureFileStrategy;
-import java.io.File;
-import java.io.FileFilter;
-import mqq.app.SecurityFileFrameworkManagerImpl;
-
-public class axpo
-  implements FileFilter
+public abstract interface axpo
 {
-  public axpo(UpdateSecureFileStrategy paramUpdateSecureFileStrategy) {}
+  public abstract void a(int paramInt, Throwable paramThrowable);
   
-  public boolean accept(File paramFile)
-  {
-    if ((paramFile.isDirectory()) && (paramFile.getName().startsWith("NoRename#")))
-    {
-      paramFile = paramFile.getName().replaceAll("NoRename#", "");
-      return (paramFile.length() == 9) && (paramFile.charAt(0) == SecurityFileFrameworkManagerImpl.generateVerifyChar(paramFile.substring(1)));
-    }
-    return false;
-  }
+  public abstract void a(long paramLong);
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void i();
+  
+  public abstract void l();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axpo
  * JD-Core Version:    0.7.0.1
  */

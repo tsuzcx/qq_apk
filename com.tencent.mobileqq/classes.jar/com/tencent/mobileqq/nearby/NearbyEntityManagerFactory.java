@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.nearby;
 
-import akfu;
+import alxk;
 import android.database.Cursor;
-import aukp;
-import aulp;
-import aulv;
-import aulw;
+import awbw;
+import awcw;
+import awdc;
+import awdd;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
 import com.tencent.mobileqq.data.QQEntityManagerFactory.SQLiteOpenHelperImpl;
 import com.tencent.mobileqq.utils.SecurityUtile;
@@ -42,7 +42,7 @@ public class NearbyEntityManagerFactory
         localObject3 = (Class)a.get(str1.trim());
         if ((localCursor != null) && (localObject3 != null))
         {
-          localObject4 = aulp.a((Class)localObject3);
+          localObject4 = awcw.a((Class)localObject3);
           if (localCursor.moveToFirst())
           {
             localObject3 = SecurityUtile.b(localCursor.getString(0)).split(",");
@@ -74,20 +74,20 @@ public class NearbyEntityManagerFactory
           break label394;
         }
         boolean bool;
-        if (localField.isAnnotationPresent(aulw.class))
+        if (localField.isAnnotationPresent(awdd.class))
         {
           i = 0;
           bool = true;
         }
         for (;;)
         {
-          localArrayList.add(aulp.a(str1, localField.getName(), (String)aulp.a.get(localField.getType()), bool, i));
+          localArrayList.add(awcw.a(str1, localField.getName(), (String)awcw.a.get(localField.getType()), bool, i));
           break label138;
           i += 1;
           break label162;
-          if (localField.isAnnotationPresent(aulv.class))
+          if (localField.isAnnotationPresent(awdc.class))
           {
-            i = ((aulv)localField.getAnnotation(aulv.class)).a();
+            i = ((awdc)localField.getAnnotation(awdc.class)).a();
             bool = true;
             continue;
             if (localCursor == null) {
@@ -122,12 +122,12 @@ public class NearbyEntityManagerFactory
     }
   }
   
-  public akfu build(String paramString)
+  public alxk build(String paramString)
   {
     if (this.dbHelper == null)
     {
       this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "nearby_" + paramString + ".db", null, 1);
-      this.dbHelper = new akfu(this.mInnerDbHelper);
+      this.dbHelper = new alxk(this.mInnerDbHelper);
       this.name = ("nearby_" + paramString);
     }
     return this.dbHelper;
@@ -144,14 +144,14 @@ public class NearbyEntityManagerFactory
   {
     if (this.name.matches("^nearby_[0-9]*$"))
     {
-      aukp localaukp = createEntityManager();
-      NearbyEntityManagerFactory.VerifyEntity localVerifyEntity = (NearbyEntityManagerFactory.VerifyEntity)localaukp.a(NearbyEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "nearby_verify_entity" });
+      awbw localawbw = createEntityManager();
+      NearbyEntityManagerFactory.VerifyEntity localVerifyEntity = (NearbyEntityManagerFactory.VerifyEntity)localawbw.a(NearbyEntityManagerFactory.VerifyEntity.class, "flags=?", new String[] { "nearby_verify_entity" });
       if (localVerifyEntity == null)
       {
         localVerifyEntity = new NearbyEntityManagerFactory.VerifyEntity();
         localVerifyEntity.name = this.name;
         localVerifyEntity.flags = "nearby_verify_entity";
-        localaukp.b(localVerifyEntity);
+        localawbw.b(localVerifyEntity);
         return true;
       }
       if ((!localVerifyEntity.flags.equals("nearby_verify_entity")) || (!localVerifyEntity.name.equals(this.name)))
@@ -159,7 +159,7 @@ public class NearbyEntityManagerFactory
         this.mInnerDbHelper.dropAllTable();
         localVerifyEntity = new NearbyEntityManagerFactory.VerifyEntity();
         localVerifyEntity.name = this.name;
-        localaukp.b(localVerifyEntity);
+        localawbw.b(localVerifyEntity);
         return false;
       }
     }
@@ -168,7 +168,7 @@ public class NearbyEntityManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

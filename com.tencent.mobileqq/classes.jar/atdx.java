@@ -1,41 +1,51 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.mobileqq.jsp.QQApiPlugin.3;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class atdx
-  implements bcix<oidb_0x8e4.RspBody>
+  implements ymm
 {
-  public atdx(GameRoomTransActivity paramGameRoomTransActivity, long paramLong, int paramInt1, int paramInt2) {}
+  public atdx(QQApiPlugin.3 param3, Bitmap paramBitmap) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void callback(Bundle paramBundle)
   {
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
+    int j = 0;
+    int i = 0;
+    if (paramBundle.getInt("readinjoy_to_wx_config") == 0)
     {
-      String str = paramRspBody.string_invite_id.get().toStringUtf8();
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgu = atdy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str, paramRspBody.uint32_max_member_num.get(), this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_Bbgu.setOnDismissListener(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
+      paramBundle = WxShareHelperFromReadInjoy.a();
+      str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.this$0.c;
+      str2 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.d;
+      localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      str3 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.e;
+      str4 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.b;
+      if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.a)) {}
+      for (;;)
+      {
+        paramBundle.a(str1, str2, localBitmap, str3, str4, i);
+        return;
+        i = 1;
+      }
+    }
+    paramBundle = WXShareHelper.a();
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.this$0.c;
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.d;
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    String str3 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.e;
+    String str4 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.b;
+    if ("2".equals(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin$3.a)) {}
+    for (i = j;; i = 1)
+    {
+      paramBundle.b(str1, str2, localBitmap, str3, str4, i);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("qqBaseActivity", 2, "invitedId empty");
-    }
-    paramRspBody = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, GameRoomInviteActivity.class);
-    paramRspBody.putExtra("roomNum", this.jdField_a_of_type_Int);
-    paramRspBody.putExtra("zoneId", this.b);
-    paramRspBody.putExtra("gc", this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.startActivity(paramRspBody);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atdx
  * JD-Core Version:    0.7.0.1
  */

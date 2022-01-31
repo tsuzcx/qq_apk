@@ -1,21 +1,45 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPhotographyGuide;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class wnv
-  implements View.OnClickListener
+public class wnv
+  extends unk
 {
-  wnv(wns paramwns, CertifiedAccountMeta.StComment paramStComment) {}
+  public static final String a = ume.a("StorySvc.get_photography_guide");
   
-  public void onClick(View paramView)
+  public String a()
   {
-    wni.a(this.jdField_a_of_type_Wns.a, wni.a(this.jdField_a_of_type_Wns.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, null);
-    wni.a(this.jdField_a_of_type_Wns.a).dismiss();
+    return a;
+  }
+  
+  public unf a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetPhotographyGuide localRspGetPhotographyGuide = new qqstory_service.RspGetPhotographyGuide();
+    try
+    {
+      localRspGetPhotographyGuide.mergeFrom(paramArrayOfByte);
+      return new wnw(localRspGetPhotographyGuide);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wsv.d("Q.qqstory:GetPhotographyGuideRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetPhotographyGuide().toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetPhotographyGuideRequest{}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wnv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,63 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-class nyr
-  implements ViewFactory.FoundClickableViewListener
+public class nyr
+  implements INetInfoHandler
 {
-  nyr(nyq paramnyq, Context paramContext, BaseData paramBaseData, ViewBase paramViewBase) {}
+  private nyr(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onNetMobile2None()
   {
-    paramViewBase.setOnClickListener(new nys(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2None");
+    }
+    this.a.b(false);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2Wifi");
+    }
+    this.a.d(true);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Mobile");
+    }
+    this.a.c(false);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Wifi");
+    }
+    this.a.d(false);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2Mobile");
+    }
+    this.a.c(true);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2None");
+    }
+    this.a.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyr
  * JD-Core Version:    0.7.0.1
  */

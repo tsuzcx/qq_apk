@@ -1,25 +1,28 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import amgn;
-import android.content.res.Resources;
-import bcql;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import anxn;
+import bdfq;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 
 class OtherJsPlugin$6
   implements Runnable
 {
-  OtherJsPlugin$6(OtherJsPlugin paramOtherJsPlugin, amgn paramamgn) {}
+  OtherJsPlugin$6(OtherJsPlugin paramOtherJsPlugin, anxn paramanxn) {}
   
   public void run()
   {
-    OtherJsPlugin.access$300(this.this$0, this.val$finalColorNoteController);
-    bcql.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690852), 5000).a();
+    bdfq localbdfq = new bdfq(this.this$0.jsPluginEngine.getActivityContext(), 2131755801);
+    localbdfq.setContentView(2131559295);
+    localbdfq.setMessage("是否将" + this.this$0.jsPluginEngine.getAppInfo().name + "添加到彩签？");
+    localbdfq.setPositiveButton("确定", new OtherJsPlugin.6.1(this));
+    localbdfq.setNegativeButton("取消", new OtherJsPlugin.6.2(this));
+    localbdfq.setCanceledOnTouchOutside(false);
+    localbdfq.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.OtherJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

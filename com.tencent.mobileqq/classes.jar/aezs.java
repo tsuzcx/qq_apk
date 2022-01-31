@@ -1,45 +1,83 @@
-import android.os.Handler;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 class aezs
-  implements aysc
+  extends alsi
 {
-  private Handler a;
+  aezs(aezp paramaezp) {}
   
-  aezs(Handler paramHandler)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
   {
-    this.a = paramHandler;
-  }
-  
-  public void onResp(aysz paramaysz)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituManager", 2, "FontDownloadListener onResp: " + paramaysz);
-    }
-    if (paramaysz.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    if (paramaysz.jdField_a_of_type_Int == 0)
+    bcee localbcee;
+    if (paramBoolean1)
     {
-      if ("f832939458e5e54f73b1702bc4edb7e8".equalsIgnoreCase(aezl.a(paramaysz.jdField_a_of_type_Aysy.c)))
-      {
-        this.a.sendEmptyMessage(100);
-        return;
-      }
       if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, "font download but md5 is not matched");
+        QLog.i("AppShortcutBarAIOHelper", 2, "onGetSystemMsgFin.success");
       }
-      this.a.sendEmptyMessage(101);
-      return;
+      List localList = aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(aljq.N, 0);
+      localbcee = null;
+      paramList = localbcee;
+      if (localList != null)
+      {
+        paramList = localbcee;
+        if (localList.size() - 1 >= 0) {
+          paramList = (MessageRecord)localList.get(localList.size() - 1);
+        }
+      }
+      if ((paramList != null) && ((paramList instanceof MessageForSystemMsg))) {
+        break label98;
+      }
     }
-    this.a.sendEmptyMessage(101);
+    label98:
+    do
+    {
+      do
+      {
+        long l;
+        do
+        {
+          int i;
+          do
+          {
+            do
+            {
+              return;
+              paramList = ((MessageForSystemMsg)paramList).getSystemMsg();
+            } while ((paramList.msg_type.get() != 2) || (paramList.msg.get() == null));
+            i = paramList.msg.group_msg_type.get();
+          } while ((i != 3) && (i != 15));
+          l = paramList.msg.group_code.get();
+        } while ((aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == null) || (!aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equalsIgnoreCase("" + l)));
+        paramList = ((TroopManager)aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      } while (paramList == null);
+      localbcee = aezp.a(this.a).a(Long.valueOf(Long.parseLong(aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
+      if (localbcee != null)
+      {
+        localbcee.c(0);
+        aezp.a(this.a).a(Long.parseLong(aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), (int)paramList.dwGroupClassExt);
+      }
+      localbcee = aezp.a(this.a).b(Long.valueOf(Long.parseLong(aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
+    } while (localbcee == null);
+    localbcee.c(0);
+    aezp.a(this.a).b(Long.parseLong(aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), (int)paramList.dwGroupClassExt);
   }
-  
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezs
  * JD-Core Version:    0.7.0.1
  */

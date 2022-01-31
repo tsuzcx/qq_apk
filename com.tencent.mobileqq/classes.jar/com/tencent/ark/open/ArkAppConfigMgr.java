@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 public class ArkAppConfigMgr
 {
+  private static final String ALLOW_FORWARD = "*";
   public static final int DOWNLOAD_ICON_FAIL = 2;
   public static final int DOWNLOAD_ICON_FILE_ERROR = -1;
   public static final int DOWNLOAD_ICON_PARAM_ERROR = -2;
@@ -31,6 +32,7 @@ public class ArkAppConfigMgr
   private static final String JSON_KEY_APP_GLOBAL_URL_WHITE = "white";
   private static final String JSON_KEY_ENTRY = "entry";
   private static final String JSON_KEY_FLAG = "flag";
+  private static final String JSON_KEY_FORWARD_VIEWS = "fwdViews";
   private static final String JSON_KEY_ICON = "icon";
   private static final String JSON_KEY_NAME = "name";
   private static final String JSON_KEY_NAV = "nav";
@@ -102,6 +104,8 @@ public class ArkAppConfigMgr
         i += 1;
         continue;
         i += 1;
+        continue;
+        i += 1;
       }
     }
     if (i < ((ArrayList)localObject2).size())
@@ -123,10 +127,10 @@ public class ArkAppConfigMgr
         {
           localArkWhiteUrlItem = (ArkAppInfo.ArkWhiteUrlItem)((ArrayList)localObject2).get(i);
           if (localArkWhiteUrlItem == null) {
-            break label411;
+            break label489;
           }
           ((JSONArray)localObject3).put(localArkWhiteUrlItem.toString());
-          break label411;
+          break label489;
         }
         ((JSONObject)localObject1).put("nav", localObject3);
       }
@@ -139,16 +143,31 @@ public class ArkAppConfigMgr
         {
           localObject2 = (ArkAppInfo.AppTemplateView)paramAppConfig.views.get(i);
           if (localObject2 == null) {
-            break label418;
+            break label496;
           }
           localObject3 = new JSONObject();
           ((JSONObject)localObject3).put("view", ((ArkAppInfo.AppTemplateView)localObject2).view);
           ((JSONObject)localObject3).put("temp", ((ArkAppInfo.AppTemplateView)localObject2).template);
           ((JSONObject)localObject3).put("tempView", ((ArkAppInfo.AppTemplateView)localObject2).templateView);
           ((JSONArray)localObject1).put(localObject3);
-          break label418;
+          break label496;
         }
         localJSONObject.put("views", localObject1);
+      }
+      if ((paramAppConfig.forwardViews != null) && (paramAppConfig.forwardViews.size() > 0))
+      {
+        localObject1 = new JSONArray();
+        i = 0;
+        if (i < paramAppConfig.forwardViews.size())
+        {
+          localObject2 = (String)paramAppConfig.forwardViews.get(i);
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {
+            break label503;
+          }
+          ((JSONArray)localObject1).put(localObject2);
+          break label503;
+        }
+        localJSONObject.put("fwdViews", localObject1);
       }
       return localJSONObject.toString();
     }
@@ -175,6 +194,7 @@ public class ArkAppConfigMgr
         localAppConfig.type = paramJSONObject.optInt("type");
         Object localObject1 = paramJSONObject.optJSONObject("urlWhitelist");
         Object localObject2;
+        Object localObject3;
         if (localObject1 != null)
         {
           localAppConfig.urlWhitelist = new ArkAppInfo.AppUrlWhiteList();
@@ -184,12 +204,12 @@ public class ArkAppConfigMgr
             i = 0;
             if (i < ((JSONArray)localObject2).length())
             {
-              ArkAppInfo.ArkWhiteUrlItem localArkWhiteUrlItem = convertWhiteUrlToItem(((JSONArray)localObject2).optString(i));
-              if (localArkWhiteUrlItem == null) {
-                break label367;
+              localObject3 = convertWhiteUrlToItem(((JSONArray)localObject2).optString(i));
+              if (localObject3 == null) {
+                break label437;
               }
-              localAppConfig.urlWhitelist.resourceList.add(localArkWhiteUrlItem);
-              break label367;
+              localAppConfig.urlWhitelist.resourceList.add(localObject3);
+              break label437;
             }
           }
           localObject1 = ((JSONObject)localObject1).optJSONArray("nav");
@@ -200,14 +220,33 @@ public class ArkAppConfigMgr
             {
               localObject2 = convertWhiteUrlToItem(((JSONArray)localObject1).optString(i));
               if (localObject2 == null) {
-                break label374;
+                break label444;
               }
               localAppConfig.urlWhitelist.navigationList.add(localObject2);
-              break label374;
+              break label444;
             }
           }
         }
         localObject1 = paramJSONObject.optJSONArray("views");
+        if ((localObject1 != null) && (((JSONArray)localObject1).length() > 0))
+        {
+          localAppConfig.views = new ArrayList(((JSONArray)localObject1).length());
+          i = 0;
+          if (i < ((JSONArray)localObject1).length())
+          {
+            localObject2 = ((JSONArray)localObject1).optJSONObject(i);
+            if (localObject2 == null) {
+              break label451;
+            }
+            localObject3 = new ArkAppInfo.AppTemplateView();
+            ((ArkAppInfo.AppTemplateView)localObject3).view = ((JSONObject)localObject2).optString("view");
+            ((ArkAppInfo.AppTemplateView)localObject3).template = ((JSONObject)localObject2).optString("temp");
+            ((ArkAppInfo.AppTemplateView)localObject3).templateView = ((JSONObject)localObject2).optString("tempView");
+            localAppConfig.views.add(localObject3);
+            break label451;
+          }
+        }
+        localObject1 = paramJSONObject.optJSONArray("fwdViews");
         paramJSONObject = localAppConfig;
         if (localObject1 == null) {
           break;
@@ -216,20 +255,15 @@ public class ArkAppConfigMgr
         if (((JSONArray)localObject1).length() <= 0) {
           break;
         }
-        localAppConfig.views = new ArrayList(((JSONArray)localObject1).length());
+        localAppConfig.forwardViews = new ArrayList(((JSONArray)localObject1).length());
         i = 0;
         paramJSONObject = localAppConfig;
         if (i >= ((JSONArray)localObject1).length()) {
           break;
         }
-        paramJSONObject = ((JSONArray)localObject1).optJSONObject(i);
-        if (paramJSONObject != null)
-        {
-          localObject2 = new ArkAppInfo.AppTemplateView();
-          ((ArkAppInfo.AppTemplateView)localObject2).view = paramJSONObject.optString("view");
-          ((ArkAppInfo.AppTemplateView)localObject2).template = paramJSONObject.optString("temp");
-          ((ArkAppInfo.AppTemplateView)localObject2).templateView = paramJSONObject.optString("tempView");
-          localAppConfig.views.add(localObject2);
+        paramJSONObject = ((JSONArray)localObject1).optString(i);
+        if (paramJSONObject != null) {
+          localAppConfig.forwardViews.add(paramJSONObject);
         }
         i += 1;
         continue;
@@ -240,9 +274,12 @@ public class ArkAppConfigMgr
         ENV.logI("ArkApp.ArkAppConfigMgr", new Object[] { "ArkSafe.convert json exception:", paramJSONObject.toString() });
         return localAppConfig;
       }
-      label367:
+      label437:
       continue;
-      label374:
+      label444:
+      i += 1;
+      continue;
+      label451:
       i += 1;
     }
   }
@@ -314,78 +351,78 @@ public class ArkAppConfigMgr
     //   0: aconst_null
     //   1: astore_3
     //   2: aload_1
-    //   3: invokestatic 312	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3: invokestatic 265	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   6: ifeq +16 -> 22
-    //   9: getstatic 101	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   12: ldc 70
-    //   14: ldc_w 349
-    //   17: invokevirtual 352	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   9: getstatic 107	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   12: ldc 76
+    //   14: ldc_w 358
+    //   17: invokevirtual 361	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
     //   20: aconst_null
     //   21: areturn
-    //   22: getstatic 108	com/tencent/ark/open/ArkAppConfigMgr:lock	Ljava/lang/Object;
+    //   22: getstatic 114	com/tencent/ark/open/ArkAppConfigMgr:lock	Ljava/lang/Object;
     //   25: astore 6
     //   27: aload 6
     //   29: monitorenter
-    //   30: invokestatic 99	com/tencent/ark/ArkEnvironmentManager:getInstance	()Lcom/tencent/ark/ArkEnvironmentManager;
+    //   30: invokestatic 105	com/tencent/ark/ArkEnvironmentManager:getInstance	()Lcom/tencent/ark/ArkEnvironmentManager;
     //   33: pop
-    //   34: invokestatic 356	com/tencent/ark/ArkEnvironmentManager:getAppConfigSharedPreferences	()Landroid/content/SharedPreferences;
+    //   34: invokestatic 365	com/tencent/ark/ArkEnvironmentManager:getAppConfigSharedPreferences	()Landroid/content/SharedPreferences;
     //   37: astore 4
     //   39: aload 4
     //   41: ifnull +188 -> 229
     //   44: aload 4
     //   46: aload_1
     //   47: aconst_null
-    //   48: invokeinterface 362 3 0
+    //   48: invokeinterface 371 3 0
     //   53: astore 4
     //   55: aload 4
-    //   57: invokestatic 312	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   57: invokestatic 265	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   60: istore_2
     //   61: iload_2
     //   62: ifne +65 -> 127
-    //   65: new 179	org/json/JSONObject
+    //   65: new 185	org/json/JSONObject
     //   68: dup
     //   69: aload 4
-    //   71: invokespecial 365	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   74: invokestatic 367	com/tencent/ark/open/ArkAppConfigMgr:convertJsonToConfig	(Lorg/json/JSONObject;)Lcom/tencent/ark/open/ArkAppInfo$AppConfig;
+    //   71: invokespecial 374	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   74: invokestatic 376	com/tencent/ark/open/ArkAppConfigMgr:convertJsonToConfig	(Lorg/json/JSONObject;)Lcom/tencent/ark/open/ArkAppInfo$AppConfig;
     //   77: astore_3
     //   78: aload_0
-    //   79: getfield 123	com/tencent/ark/open/ArkAppConfigMgr:mAppConfigCache	Ljava/util/HashMap;
+    //   79: getfield 129	com/tencent/ark/open/ArkAppConfigMgr:mAppConfigCache	Ljava/util/HashMap;
     //   82: aload_1
     //   83: aload_3
-    //   84: invokevirtual 370	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   84: invokevirtual 379	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   87: pop
     //   88: aload_3
-    //   89: getfield 209	com/tencent/ark/open/ArkAppInfo$AppConfig:urlWhitelist	Lcom/tencent/ark/open/ArkAppInfo$AppUrlWhiteList;
+    //   89: getfield 215	com/tencent/ark/open/ArkAppInfo$AppConfig:urlWhitelist	Lcom/tencent/ark/open/ArkAppInfo$AppUrlWhiteList;
     //   92: ifnull +35 -> 127
-    //   95: new 372	com/tencent/ark/open/security/ArkAppUrlChecker
+    //   95: new 381	com/tencent/ark/open/security/ArkAppUrlChecker
     //   98: dup
     //   99: aload_3
-    //   100: getfield 209	com/tencent/ark/open/ArkAppInfo$AppConfig:urlWhitelist	Lcom/tencent/ark/open/ArkAppInfo$AppUrlWhiteList;
+    //   100: getfield 215	com/tencent/ark/open/ArkAppInfo$AppConfig:urlWhitelist	Lcom/tencent/ark/open/ArkAppInfo$AppUrlWhiteList;
     //   103: aload_0
-    //   104: getfield 125	com/tencent/ark/open/ArkAppConfigMgr:mGlobalWhiteList	Ljava/util/ArrayList;
+    //   104: getfield 131	com/tencent/ark/open/ArkAppConfigMgr:mGlobalWhiteList	Ljava/util/ArrayList;
     //   107: aload_0
-    //   108: getfield 127	com/tencent/ark/open/ArkAppConfigMgr:mGlobalBlackList	Ljava/util/ArrayList;
-    //   111: invokespecial 375	com/tencent/ark/open/security/ArkAppUrlChecker:<init>	(Lcom/tencent/ark/open/ArkAppInfo$AppUrlWhiteList;Ljava/util/ArrayList;Ljava/util/ArrayList;)V
+    //   108: getfield 133	com/tencent/ark/open/ArkAppConfigMgr:mGlobalBlackList	Ljava/util/ArrayList;
+    //   111: invokespecial 384	com/tencent/ark/open/security/ArkAppUrlChecker:<init>	(Lcom/tencent/ark/open/ArkAppInfo$AppUrlWhiteList;Ljava/util/ArrayList;Ljava/util/ArrayList;)V
     //   114: astore 5
     //   116: aload_0
-    //   117: getfield 129	com/tencent/ark/open/ArkAppConfigMgr:mAppUrlCheckerCache	Ljava/util/HashMap;
+    //   117: getfield 135	com/tencent/ark/open/ArkAppConfigMgr:mAppUrlCheckerCache	Ljava/util/HashMap;
     //   120: aload_1
     //   121: aload 5
-    //   123: invokevirtual 370	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   123: invokevirtual 379	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   126: pop
     //   127: aload 6
     //   129: monitorexit
     //   130: aload_0
     //   131: aload_1
     //   132: aload_3
-    //   133: invokespecial 377	com/tencent/ark/open/ArkAppConfigMgr:checkAppIcon	(Ljava/lang/String;Lcom/tencent/ark/open/ArkAppInfo$AppConfig;)V
-    //   136: getstatic 101	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   139: ldc 70
+    //   133: invokespecial 386	com/tencent/ark/open/ArkAppConfigMgr:checkAppIcon	(Ljava/lang/String;Lcom/tencent/ark/open/ArkAppInfo$AppConfig;)V
+    //   136: getstatic 107	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   139: ldc 76
     //   141: bipush 6
     //   143: anewarray 4	java/lang/Object
     //   146: dup
     //   147: iconst_0
-    //   148: ldc_w 379
+    //   148: ldc_w 388
     //   151: aastore
     //   152: dup
     //   153: iconst_1
@@ -393,7 +430,7 @@ public class ArkAppConfigMgr
     //   155: aastore
     //   156: dup
     //   157: iconst_2
-    //   158: ldc_w 381
+    //   158: ldc_w 390
     //   161: aastore
     //   162: dup
     //   163: iconst_3
@@ -401,33 +438,33 @@ public class ArkAppConfigMgr
     //   166: aastore
     //   167: dup
     //   168: iconst_4
-    //   169: ldc_w 383
+    //   169: ldc_w 392
     //   172: aastore
     //   173: dup
     //   174: iconst_5
     //   175: aload_0
-    //   176: invokespecial 151	com/tencent/ark/open/ArkAppConfigMgr:printEnvString	()Ljava/lang/String;
+    //   176: invokespecial 157	com/tencent/ark/open/ArkAppConfigMgr:printEnvString	()Ljava/lang/String;
     //   179: aastore
-    //   180: invokevirtual 306	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   180: invokevirtual 323	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   183: aload_3
     //   184: areturn
     //   185: astore 5
     //   187: aconst_null
     //   188: astore_3
-    //   189: getstatic 101	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   192: ldc 70
+    //   189: getstatic 107	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   192: ldc 76
     //   194: iconst_2
     //   195: anewarray 4	java/lang/Object
     //   198: dup
     //   199: iconst_0
-    //   200: ldc_w 385
+    //   200: ldc_w 394
     //   203: aastore
     //   204: dup
     //   205: iconst_1
     //   206: aload 5
-    //   208: invokevirtual 252	org/json/JSONException:toString	()Ljava/lang/String;
+    //   208: invokevirtual 269	org/json/JSONException:toString	()Ljava/lang/String;
     //   211: aastore
-    //   212: invokevirtual 306	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   212: invokevirtual 323	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   215: goto -88 -> 127
     //   218: astore_1
     //   219: aload 6
@@ -513,22 +550,22 @@ public class ArkAppConfigMgr
     // Byte code:
     //   0: iload_2
     //   1: ifne +102 -> 103
-    //   4: getstatic 101	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   7: ldc 70
-    //   9: ldc_w 405
-    //   12: invokevirtual 352	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   4: getstatic 107	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   7: ldc 76
+    //   9: ldc_w 414
+    //   12: invokevirtual 361	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
     //   15: aload 4
     //   17: ifnull +1012 -> 1029
     //   20: aload_0
-    //   21: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   21: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   24: astore_3
     //   25: aload_3
     //   26: monitorenter
     //   27: aload_0
-    //   28: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   28: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   31: aload 4
-    //   33: getfield 410	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
-    //   36: invokeinterface 416 2 0
+    //   33: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
+    //   36: invokeinterface 425 2 0
     //   41: pop
     //   42: aload_3
     //   43: monitorexit
@@ -536,22 +573,22 @@ public class ArkAppConfigMgr
     //   45: istore 5
     //   47: iload 5
     //   49: aload 4
-    //   51: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
-    //   54: invokevirtual 221	java/util/ArrayList:size	()I
+    //   51: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   54: invokevirtual 227	java/util/ArrayList:size	()I
     //   57: if_icmpge +972 -> 1029
     //   60: aload 4
-    //   62: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   62: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
     //   65: iload 5
-    //   67: invokevirtual 225	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   70: checkcast 421	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
+    //   67: invokevirtual 231	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   70: checkcast 430	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
     //   73: astore_3
     //   74: aload_3
     //   75: ifnull +14 -> 89
     //   78: aload_3
     //   79: iconst_2
     //   80: aload_1
-    //   81: ldc_w 328
-    //   84: invokeinterface 425 4 0
+    //   81: ldc_w 337
+    //   84: invokeinterface 434 4 0
     //   89: iload 5
     //   91: iconst_1
     //   92: iadd
@@ -572,61 +609,61 @@ public class ArkAppConfigMgr
     //   113: astore 11
     //   115: aconst_null
     //   116: astore 10
-    //   118: new 427	java/io/File
+    //   118: new 436	java/io/File
     //   121: dup
-    //   122: ldc_w 429
+    //   122: ldc_w 438
     //   125: iconst_2
     //   126: anewarray 4	java/lang/Object
     //   129: dup
     //   130: iconst_0
-    //   131: invokestatic 99	com/tencent/ark/ArkEnvironmentManager:getInstance	()Lcom/tencent/ark/ArkEnvironmentManager;
-    //   134: invokevirtual 432	com/tencent/ark/ArkEnvironmentManager:getAppIconDirectory	()Ljava/lang/String;
+    //   131: invokestatic 105	com/tencent/ark/ArkEnvironmentManager:getInstance	()Lcom/tencent/ark/ArkEnvironmentManager;
+    //   134: invokevirtual 441	com/tencent/ark/ArkEnvironmentManager:getAppIconDirectory	()Ljava/lang/String;
     //   137: aastore
     //   138: dup
     //   139: iconst_1
     //   140: aload_1
     //   141: aastore
-    //   142: invokestatic 436	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   145: invokespecial 437	java/io/File:<init>	(Ljava/lang/String;)V
+    //   142: invokestatic 445	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   145: invokespecial 446	java/io/File:<init>	(Ljava/lang/String;)V
     //   148: astore 6
     //   150: aload 6
-    //   152: invokevirtual 440	java/io/File:exists	()Z
+    //   152: invokevirtual 449	java/io/File:exists	()Z
     //   155: ifne +9 -> 164
     //   158: aload 6
-    //   160: invokevirtual 443	java/io/File:mkdirs	()Z
+    //   160: invokevirtual 452	java/io/File:mkdirs	()Z
     //   163: pop
     //   164: aload_0
     //   165: aload_1
-    //   166: invokevirtual 446	com/tencent/ark/open/ArkAppConfigMgr:getAppIconFilePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   166: invokevirtual 455	com/tencent/ark/open/ArkAppConfigMgr:getAppIconFilePath	(Ljava/lang/String;)Ljava/lang/String;
     //   169: astore 6
     //   171: aload 9
     //   173: astore 8
-    //   175: new 448	java/lang/StringBuilder
+    //   175: new 457	java/lang/StringBuilder
     //   178: dup
-    //   179: invokespecial 449	java/lang/StringBuilder:<init>	()V
+    //   179: invokespecial 458	java/lang/StringBuilder:<init>	()V
     //   182: aload 6
-    //   184: invokevirtual 453	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: ldc 19
-    //   189: invokevirtual 453	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: invokevirtual 454	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   184: invokevirtual 462	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   187: ldc 22
+    //   189: invokevirtual 462	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: invokevirtual 463	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   195: astore 7
     //   197: aload 7
     //   199: astore 8
-    //   201: new 456	java/io/FileOutputStream
+    //   201: new 465	java/io/FileOutputStream
     //   204: dup
     //   205: aload 7
-    //   207: invokespecial 457	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   207: invokespecial 466	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   210: astore 9
     //   212: aload 9
     //   214: aload_3
-    //   215: invokevirtual 461	java/io/FileOutputStream:write	([B)V
-    //   218: getstatic 101	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   221: ldc 70
+    //   215: invokevirtual 470	java/io/FileOutputStream:write	([B)V
+    //   218: getstatic 107	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   221: ldc 76
     //   223: iconst_4
     //   224: anewarray 4	java/lang/Object
     //   227: dup
     //   228: iconst_0
-    //   229: ldc_w 463
+    //   229: ldc_w 472
     //   232: aastore
     //   233: dup
     //   234: iconst_1
@@ -634,37 +671,37 @@ public class ArkAppConfigMgr
     //   236: aastore
     //   237: dup
     //   238: iconst_2
-    //   239: ldc_w 465
+    //   239: ldc_w 474
     //   242: aastore
     //   243: dup
     //   244: iconst_3
     //   245: aload 7
     //   247: aastore
-    //   248: invokevirtual 306	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   248: invokevirtual 323	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   251: aload 9
     //   253: ifnull +29 -> 282
     //   256: aload 9
-    //   258: invokevirtual 468	java/io/FileOutputStream:close	()V
+    //   258: invokevirtual 477	java/io/FileOutputStream:close	()V
     //   261: aload 7
     //   263: aload 6
-    //   265: invokestatic 474	com/tencent/ark/open/ArkUtil:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   265: invokestatic 483	com/tencent/ark/open/ArkUtil:rename	(Ljava/lang/String;Ljava/lang/String;)Z
     //   268: ifne +97 -> 365
-    //   271: getstatic 101	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   274: ldc 70
-    //   276: ldc_w 476
-    //   279: invokevirtual 352	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   271: getstatic 107	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   274: ldc 76
+    //   276: ldc_w 485
+    //   279: invokevirtual 361	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
     //   282: aload 4
     //   284: ifnull +745 -> 1029
     //   287: aload_0
-    //   288: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   288: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   291: astore_3
     //   292: aload_3
     //   293: monitorenter
     //   294: aload_0
-    //   295: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   295: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   298: aload 4
-    //   300: getfield 410	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
-    //   303: invokeinterface 416 2 0
+    //   300: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
+    //   303: invokeinterface 425 2 0
     //   308: pop
     //   309: aload_3
     //   310: monitorexit
@@ -672,22 +709,22 @@ public class ArkAppConfigMgr
     //   312: istore 5
     //   314: iload 5
     //   316: aload 4
-    //   318: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
-    //   321: invokevirtual 221	java/util/ArrayList:size	()I
+    //   318: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   321: invokevirtual 227	java/util/ArrayList:size	()I
     //   324: if_icmpge +705 -> 1029
     //   327: aload 4
-    //   329: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   329: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
     //   332: iload 5
-    //   334: invokevirtual 225	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   337: checkcast 421	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
+    //   334: invokevirtual 231	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   337: checkcast 430	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
     //   340: astore_3
     //   341: aload_3
     //   342: ifnull +14 -> 356
     //   345: aload_3
     //   346: iconst_2
     //   347: aload_1
-    //   348: ldc_w 328
-    //   351: invokeinterface 425 4 0
+    //   348: ldc_w 337
+    //   351: invokeinterface 434 4 0
     //   356: iload 5
     //   358: iconst_1
     //   359: iadd
@@ -696,15 +733,15 @@ public class ArkAppConfigMgr
     //   365: aload 4
     //   367: ifnull +662 -> 1029
     //   370: aload_0
-    //   371: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   371: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   374: astore_3
     //   375: aload_3
     //   376: monitorenter
     //   377: aload_0
-    //   378: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   378: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   381: aload 4
-    //   383: getfield 410	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
-    //   386: invokeinterface 416 2 0
+    //   383: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
+    //   386: invokeinterface 425 2 0
     //   391: pop
     //   392: aload_3
     //   393: monitorexit
@@ -712,14 +749,14 @@ public class ArkAppConfigMgr
     //   395: istore 5
     //   397: iload 5
     //   399: aload 4
-    //   401: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
-    //   404: invokevirtual 221	java/util/ArrayList:size	()I
+    //   401: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   404: invokevirtual 227	java/util/ArrayList:size	()I
     //   407: if_icmpge +622 -> 1029
     //   410: aload 4
-    //   412: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   412: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
     //   415: iload 5
-    //   417: invokevirtual 225	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   420: checkcast 421	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
+    //   417: invokevirtual 231	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   420: checkcast 430	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
     //   423: astore_3
     //   424: aload_3
     //   425: ifnull +13 -> 438
@@ -727,7 +764,7 @@ public class ArkAppConfigMgr
     //   429: iconst_1
     //   430: aload_1
     //   431: aload 6
-    //   433: invokeinterface 425 4 0
+    //   433: invokeinterface 434 4 0
     //   438: iload 5
     //   440: iconst_1
     //   441: iadd
@@ -739,20 +776,20 @@ public class ArkAppConfigMgr
     //   451: aload 6
     //   453: athrow
     //   454: astore_3
-    //   455: getstatic 101	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   458: ldc 70
+    //   455: getstatic 107	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   458: ldc 76
     //   460: iconst_2
     //   461: anewarray 4	java/lang/Object
     //   464: dup
     //   465: iconst_0
-    //   466: ldc_w 478
+    //   466: ldc_w 487
     //   469: aastore
     //   470: dup
     //   471: iconst_1
     //   472: aload_3
-    //   473: invokevirtual 303	java/lang/Exception:toString	()Ljava/lang/String;
+    //   473: invokevirtual 320	java/lang/Exception:toString	()Ljava/lang/String;
     //   476: aastore
-    //   477: invokevirtual 306	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   477: invokevirtual 323	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   480: goto -198 -> 282
     //   483: astore_1
     //   484: aload_3
@@ -766,44 +803,44 @@ public class ArkAppConfigMgr
     //   495: astore_3
     //   496: aload 10
     //   498: astore 8
-    //   500: getstatic 101	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   503: ldc 70
+    //   500: getstatic 107	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   503: ldc 76
     //   505: iconst_2
     //   506: anewarray 4	java/lang/Object
     //   509: dup
     //   510: iconst_0
-    //   511: ldc_w 478
+    //   511: ldc_w 487
     //   514: aastore
     //   515: dup
     //   516: iconst_1
     //   517: aload 7
-    //   519: invokevirtual 303	java/lang/Exception:toString	()Ljava/lang/String;
+    //   519: invokevirtual 320	java/lang/Exception:toString	()Ljava/lang/String;
     //   522: aastore
-    //   523: invokevirtual 306	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   523: invokevirtual 323	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   526: aload 8
     //   528: ifnull +28 -> 556
     //   531: aload 8
-    //   533: invokevirtual 468	java/io/FileOutputStream:close	()V
+    //   533: invokevirtual 477	java/io/FileOutputStream:close	()V
     //   536: aload 6
     //   538: aload_3
-    //   539: invokestatic 474	com/tencent/ark/open/ArkUtil:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   539: invokestatic 483	com/tencent/ark/open/ArkUtil:rename	(Ljava/lang/String;Ljava/lang/String;)Z
     //   542: ifne +97 -> 639
-    //   545: getstatic 101	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   548: ldc 70
-    //   550: ldc_w 476
-    //   553: invokevirtual 352	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   545: getstatic 107	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   548: ldc 76
+    //   550: ldc_w 485
+    //   553: invokevirtual 361	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
     //   556: aload 4
     //   558: ifnull +471 -> 1029
     //   561: aload_0
-    //   562: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   562: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   565: astore_3
     //   566: aload_3
     //   567: monitorenter
     //   568: aload_0
-    //   569: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   569: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   572: aload 4
-    //   574: getfield 410	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
-    //   577: invokeinterface 416 2 0
+    //   574: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
+    //   577: invokeinterface 425 2 0
     //   582: pop
     //   583: aload_3
     //   584: monitorexit
@@ -811,22 +848,22 @@ public class ArkAppConfigMgr
     //   586: istore 5
     //   588: iload 5
     //   590: aload 4
-    //   592: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
-    //   595: invokevirtual 221	java/util/ArrayList:size	()I
+    //   592: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   595: invokevirtual 227	java/util/ArrayList:size	()I
     //   598: if_icmpge +431 -> 1029
     //   601: aload 4
-    //   603: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   603: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
     //   606: iload 5
-    //   608: invokevirtual 225	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   611: checkcast 421	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
+    //   608: invokevirtual 231	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   611: checkcast 430	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
     //   614: astore_3
     //   615: aload_3
     //   616: ifnull +14 -> 630
     //   619: aload_3
     //   620: iconst_2
     //   621: aload_1
-    //   622: ldc_w 328
-    //   625: invokeinterface 425 4 0
+    //   622: ldc_w 337
+    //   625: invokeinterface 434 4 0
     //   630: iload 5
     //   632: iconst_1
     //   633: iadd
@@ -835,15 +872,15 @@ public class ArkAppConfigMgr
     //   639: aload 4
     //   641: ifnull +388 -> 1029
     //   644: aload_0
-    //   645: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   645: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   648: astore 6
     //   650: aload 6
     //   652: monitorenter
     //   653: aload_0
-    //   654: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   654: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   657: aload 4
-    //   659: getfield 410	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
-    //   662: invokeinterface 416 2 0
+    //   659: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
+    //   662: invokeinterface 425 2 0
     //   667: pop
     //   668: aload 6
     //   670: monitorexit
@@ -851,14 +888,14 @@ public class ArkAppConfigMgr
     //   672: istore 5
     //   674: iload 5
     //   676: aload 4
-    //   678: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
-    //   681: invokevirtual 221	java/util/ArrayList:size	()I
+    //   678: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   681: invokevirtual 227	java/util/ArrayList:size	()I
     //   684: if_icmpge +345 -> 1029
     //   687: aload 4
-    //   689: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   689: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
     //   692: iload 5
-    //   694: invokevirtual 225	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   697: checkcast 421	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
+    //   694: invokevirtual 231	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   697: checkcast 430	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
     //   700: astore 6
     //   702: aload 6
     //   704: ifnull +13 -> 717
@@ -866,7 +903,7 @@ public class ArkAppConfigMgr
     //   709: iconst_1
     //   710: aload_1
     //   711: aload_3
-    //   712: invokeinterface 425 4 0
+    //   712: invokeinterface 434 4 0
     //   717: iload 5
     //   719: iconst_1
     //   720: iadd
@@ -878,20 +915,20 @@ public class ArkAppConfigMgr
     //   730: aload_3
     //   731: athrow
     //   732: astore_3
-    //   733: getstatic 101	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   736: ldc 70
+    //   733: getstatic 107	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   736: ldc 76
     //   738: iconst_2
     //   739: anewarray 4	java/lang/Object
     //   742: dup
     //   743: iconst_0
-    //   744: ldc_w 478
+    //   744: ldc_w 487
     //   747: aastore
     //   748: dup
     //   749: iconst_1
     //   750: aload_3
-    //   751: invokevirtual 303	java/lang/Exception:toString	()Ljava/lang/String;
+    //   751: invokevirtual 320	java/lang/Exception:toString	()Ljava/lang/String;
     //   754: aastore
-    //   755: invokevirtual 306	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   755: invokevirtual 323	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   758: goto -202 -> 556
     //   761: astore_1
     //   762: aload_3
@@ -906,27 +943,27 @@ public class ArkAppConfigMgr
     //   774: aload 9
     //   776: ifnull +29 -> 805
     //   779: aload 9
-    //   781: invokevirtual 468	java/io/FileOutputStream:close	()V
+    //   781: invokevirtual 477	java/io/FileOutputStream:close	()V
     //   784: aload 7
     //   786: aload 6
-    //   788: invokestatic 474	com/tencent/ark/open/ArkUtil:rename	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   788: invokestatic 483	com/tencent/ark/open/ArkUtil:rename	(Ljava/lang/String;Ljava/lang/String;)Z
     //   791: ifne +103 -> 894
-    //   794: getstatic 101	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   797: ldc 70
-    //   799: ldc_w 476
-    //   802: invokevirtual 352	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   794: getstatic 107	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   797: ldc 76
+    //   799: ldc_w 485
+    //   802: invokevirtual 361	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
     //   805: aload 4
     //   807: ifnull +220 -> 1027
     //   810: aload_0
-    //   811: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   811: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   814: astore 6
     //   816: aload 6
     //   818: monitorenter
     //   819: aload_0
-    //   820: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   820: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   823: aload 4
-    //   825: getfield 410	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
-    //   828: invokeinterface 416 2 0
+    //   825: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
+    //   828: invokeinterface 425 2 0
     //   833: pop
     //   834: aload 6
     //   836: monitorexit
@@ -934,22 +971,22 @@ public class ArkAppConfigMgr
     //   838: istore 5
     //   840: iload 5
     //   842: aload 4
-    //   844: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
-    //   847: invokevirtual 221	java/util/ArrayList:size	()I
+    //   844: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   847: invokevirtual 227	java/util/ArrayList:size	()I
     //   850: if_icmpge +177 -> 1027
     //   853: aload 4
-    //   855: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   855: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
     //   858: iload 5
-    //   860: invokevirtual 225	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   863: checkcast 421	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
+    //   860: invokevirtual 231	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   863: checkcast 430	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
     //   866: astore 6
     //   868: aload 6
     //   870: ifnull +15 -> 885
     //   873: aload 6
     //   875: iconst_2
     //   876: aload_1
-    //   877: ldc_w 328
-    //   880: invokeinterface 425 4 0
+    //   877: ldc_w 337
+    //   880: invokeinterface 434 4 0
     //   885: iload 5
     //   887: iconst_1
     //   888: iadd
@@ -958,15 +995,15 @@ public class ArkAppConfigMgr
     //   894: aload 4
     //   896: ifnull +133 -> 1029
     //   899: aload_0
-    //   900: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   900: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   903: astore 7
     //   905: aload 7
     //   907: monitorenter
     //   908: aload_0
-    //   909: getfield 138	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
+    //   909: getfield 144	com/tencent/ark/open/ArkAppConfigMgr:mDownloadIconTaskList	Ljava/util/Map;
     //   912: aload 4
-    //   914: getfield 410	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
-    //   917: invokeinterface 416 2 0
+    //   914: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:url	Ljava/lang/String;
+    //   917: invokeinterface 425 2 0
     //   922: pop
     //   923: aload 7
     //   925: monitorexit
@@ -974,14 +1011,14 @@ public class ArkAppConfigMgr
     //   927: istore 5
     //   929: iload 5
     //   931: aload 4
-    //   933: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
-    //   936: invokevirtual 221	java/util/ArrayList:size	()I
+    //   933: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   936: invokevirtual 227	java/util/ArrayList:size	()I
     //   939: if_icmpge +90 -> 1029
     //   942: aload 4
-    //   944: getfield 419	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
+    //   944: getfield 428	com/tencent/ark/open/ArkAppConfigMgr$DownloadIconTask:callbackList	Ljava/util/ArrayList;
     //   947: iload 5
-    //   949: invokevirtual 225	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   952: checkcast 421	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
+    //   949: invokevirtual 231	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   952: checkcast 430	com/tencent/ark/open/ArkAppConfigMgr$IDownloadIconCallback
     //   955: astore 7
     //   957: aload 7
     //   959: ifnull +14 -> 973
@@ -989,7 +1026,7 @@ public class ArkAppConfigMgr
     //   964: iconst_1
     //   965: aload_1
     //   966: aload 6
-    //   968: invokeinterface 425 4 0
+    //   968: invokeinterface 434 4 0
     //   973: iload 5
     //   975: iconst_1
     //   976: iadd
@@ -1001,20 +1038,20 @@ public class ArkAppConfigMgr
     //   987: aload 6
     //   989: athrow
     //   990: astore 6
-    //   992: getstatic 101	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   995: ldc 70
+    //   992: getstatic 107	com/tencent/ark/open/ArkAppConfigMgr:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
+    //   995: ldc 76
     //   997: iconst_2
     //   998: anewarray 4	java/lang/Object
     //   1001: dup
     //   1002: iconst_0
-    //   1003: ldc_w 478
+    //   1003: ldc_w 487
     //   1006: aastore
     //   1007: dup
     //   1008: iconst_1
     //   1009: aload 6
-    //   1011: invokevirtual 303	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1011: invokevirtual 320	java/lang/Exception:toString	()Ljava/lang/String;
     //   1014: aastore
-    //   1015: invokevirtual 306	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1015: invokevirtual 323	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;[Ljava/lang/Object;)V
     //   1018: goto -213 -> 805
     //   1021: astore_1
     //   1022: aload 6
@@ -1137,6 +1174,67 @@ public class ArkAppConfigMgr
     //   175	197	1065	java/lang/Exception
     //   201	212	1080	java/lang/Exception
     //   212	251	1100	java/lang/Exception
+  }
+  
+  public boolean canForward(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1))
+    {
+      ENV.logI("ArkApp.ArkAppConfigMgr", "ArkSafe.canForward appname is empty return false");
+      return false;
+    }
+    ArkAppInfo.AppConfig localAppConfig = getAppConfig(paramString1);
+    if (localAppConfig == null)
+    {
+      ENV.logI("ArkApp.ArkAppConfigMgr", new Object[] { "ArkSafe.canForward app:", paramString1, ",config is null return true" });
+      return true;
+    }
+    if ((localAppConfig.forwardViews == null) || (localAppConfig.forwardViews.size() == 0))
+    {
+      ENV.logI("ArkApp.ArkAppConfigMgr", new Object[] { "ArkSafe.canForward app:", paramString1, ",config.forward view is null return true" });
+      return true;
+    }
+    int i = 0;
+    String str;
+    boolean bool1;
+    boolean bool2;
+    if (i < localAppConfig.forwardViews.size())
+    {
+      str = (String)localAppConfig.forwardViews.get(i);
+      if ("*".equals(str))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+    }
+    for (;;)
+    {
+      label155:
+      boolean bool3;
+      if (bool2) {
+        bool3 = true;
+      }
+      for (;;)
+      {
+        ENV.logI("ArkApp.ArkAppConfigMgr", new Object[] { "ArkSafe.canForward app:", paramString1, ",view:", paramString2, ",canForward=", Boolean.valueOf(bool3), ",allowAll:", Boolean.valueOf(bool2), ",findView:", Boolean.valueOf(bool1) });
+        return bool3;
+        if ((!TextUtils.isEmpty(str)) && (str.equals(paramString2)))
+        {
+          bool1 = true;
+          bool2 = false;
+          break label155;
+        }
+        i += 1;
+        break;
+        if (bool1) {
+          bool3 = true;
+        } else {
+          bool3 = false;
+        }
+      }
+      bool1 = false;
+      bool2 = false;
+    }
   }
   
   public void cleanAllConfig()
@@ -1460,7 +1558,7 @@ public class ArkAppConfigMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.ark.open.ArkAppConfigMgr
  * JD-Core Version:    0.7.0.1
  */

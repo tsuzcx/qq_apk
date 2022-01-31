@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import bbfj;
+import bdee;
 import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
 import com.tencent.common.app.BaseApplicationImpl;
 
@@ -9,7 +9,7 @@ public final class ReadinjoySPEventReport$4
 {
   public void run()
   {
-    int i = bbfj.a(BaseApplicationImpl.getContext());
+    int i = bdee.a(BaseApplicationImpl.getContext());
     String str;
     if ((i == 2) || (i == 3) || (i == 4)) {
       str = "WWAN";
@@ -29,7 +29,7 @@ public final class ReadinjoySPEventReport$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.4
  * JD-Core Version:    0.7.0.1
  */

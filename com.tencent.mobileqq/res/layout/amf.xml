@@ -3,14 +3,14 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="horizontal" android:id="@id/bby" android:background="@drawable/je" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="64.0dip">
         <ImageView android:layout_gravity="center_vertical" android:id="@id/l4t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/e8y" />
-        <TextView android:textSize="16.0sp" android:textColor="@color/r" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/q_a" />
+        <TextView android:textSize="16.0sp" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/q_a" style="@style/u7" />
     </LinearLayout>
     <LinearLayout android:orientation="horizontal" android:id="@id/bbn" android:background="@drawable/je" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="64.0dip">
         <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/e8x" />
-        <TextView android:textSize="16.0sp" android:textColor="@color/r" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/q_n" />
+        <TextView android:textSize="16.0sp" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/q_n" style="@style/u7" />
     </LinearLayout>
     <LinearLayout android:orientation="horizontal" android:id="@id/bbm" android:background="@drawable/je" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="64.0dip">
         <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qfile_file_action_sheet_txdoc_create_collect" />
-        <TextView android:textSize="16.0sp" android:textColor="@color/r" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/q9y" />
+        <TextView android:textSize="16.0sp" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/q9y" style="@style/u7" />
     </LinearLayout>
 </LinearLayout>

@@ -1,71 +1,27 @@
-import android.text.Editable;
-import android.text.SpannableString;
-import android.text.style.AbsoluteSizeSpan;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class ahrs
-  implements View.OnFocusChangeListener
+  implements URLDrawable.URLDrawableListener
 {
-  public ahrs(LoginView paramLoginView) {}
+  public ahrs(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
-      if (true == paramBoolean)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.length());
-        if (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.isPopupShowing()) {
-          this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.dismissDropDown();
-        }
-        if ((this.a.b != null) && (this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length() > 0)) {
-          this.a.b.setVisibility(0);
-        }
-        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
-        if (!ahrc.a(ahrc.a)) {}
-      }
-    }
-    while (paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText)
-    {
-      return;
-      if ((LoginView.a(this.a).isActive(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView)) && (QLog.isColorLevel())) {
-        QLog.d("InputMethodRelativeLayout", 2, "isActive(mAutoTextAccount)");
-      }
-      this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setHint("");
-      return;
-      if ((this.a.b != null) && (this.a.b.isShown())) {
-        this.a.b.setVisibility(8);
-      }
-      paramView = new SpannableString(ajya.a(2131707573));
-      paramView.setSpan(new AbsoluteSizeSpan(17, true), 0, paramView.length(), 33);
-      this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setHint(paramView);
-      return;
-    }
-    if (true == paramBoolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.getText().length());
-      this.a.c.setVisibility(0);
-      if (LoginView.a(this.a).isActive(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText)) {
-        LoginView.a(this.a).showSoftInput(this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText, 2);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setHint("");
-      return;
-    }
-    this.a.c.setVisibility(8);
-    paramView = new SpannableString(ajya.a(2131706365));
-    paramView.setSpan(new AbsoluteSizeSpan(17, true), 0, paramView.length(), 33);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setHint(paramView);
+    EmoticonGroupStoreFragment.a(this.a).invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,20 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentSmallVideo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeUsersCommentsView;
 
 public class pts
-  extends ptk
+  implements View.OnClickListener
 {
-  public pts(Context paramContext, baxy parambaxy, ram paramram)
-  {
-    super(paramContext, parambaxy, paramram);
-  }
+  public pts(NativeUsersCommentsView paramNativeUsersCommentsView) {}
   
-  public pqq g()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Pqp = new ComponentContentSmallVideo(this.jdField_a_of_type_AndroidContentContext);
-    return this;
+    this.a.callOnClick();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pts
  * JD-Core Version:    0.7.0.1
  */

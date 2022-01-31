@@ -1,22 +1,6 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-class bhed
-  implements EIPCResultCallback
-{
-  bhed(bheb parambheb) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FontManager", 2, "startFontSoDownload download so success");
-    }
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhed
  * JD-Core Version:    0.7.0.1
  */

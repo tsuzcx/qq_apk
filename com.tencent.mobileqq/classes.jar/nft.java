@@ -1,123 +1,137 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.biz.lebasearch.SearchProtocol;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResponseBody;
+import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResultItem;
+import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResultItemGroup;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class nft
-  implements nmw
+public final class nft
+  implements BusinessObserver
 {
-  nft(nfr paramnfr) {}
+  public nft(Handler paramHandler) {}
   
-  public void a(nms paramnms)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (paramnms == null) {}
-    label680:
-    do
+    if (paramBoolean)
     {
-      do
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
       {
-        do
+        Object localObject = new mobileqq_dynamic_search.ResponseBody();
+        for (;;)
         {
-          do
+          try
           {
-            do
+            ((mobileqq_dynamic_search.ResponseBody)localObject).mergeFrom(paramBundle);
+            paramInt = ((mobileqq_dynamic_search.ResponseBody)localObject).retcode.get();
+            if (paramInt != 0)
             {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return;
-                    String str = paramnms.jdField_c_of_type_JavaLangString;
-                    localObject = str;
-                    if (str == null) {
-                      localObject = "";
-                    }
-                    nol.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", this.a.jdField_a_of_type_JavaLangString, "0X8005A28", "0X8005A28", 0, 0, (String)localObject, "", "", "", false);
-                    if (paramnms.a != 3) {
-                      break label680;
-                    }
-                    if (paramnms.jdField_c_of_type_Int != 7) {
-                      break;
-                    }
-                  } while ((TextUtils.isEmpty(paramnms.g)) || (TextUtils.isEmpty(paramnms.f)) || (TextUtils.isEmpty(paramnms.b)));
-                  Object localObject = new Intent((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), QQMapActivity.class);
-                  ((Intent)localObject).putExtra("lat", paramnms.g);
-                  ((Intent)localObject).putExtra("lon", paramnms.f);
-                  ((Intent)localObject).putExtra("loc", paramnms.b);
-                  ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity((Intent)localObject);
-                  return;
-                  if (paramnms.jdField_c_of_type_Int != 8) {
-                    break;
-                  }
-                  paramnms = paramnms.h;
-                } while (TextUtils.isEmpty(paramnms));
-                paramnms = paramnms.trim();
-              } while (!Pattern.compile("[\\d-]+?").matcher(paramnms).matches());
-              nfr.b(this.a, paramnms);
-              return;
-            } while (paramnms.jdField_c_of_type_Int == 13);
-            if (paramnms.jdField_c_of_type_Int == 11)
-            {
-              paramnms = new Intent((Context)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), ScannerActivity.class);
-              paramnms.putExtra("from", this.a.jdField_a_of_type_JavaLangRefWeakReference.getClass().getName());
-              paramnms.putExtra("finishAfterSucc", true);
-              ((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity(paramnms);
+              if (!QLog.isColorLevel()) {
+                break label472;
+              }
+              QLog.d("lebasearch.SearchProtocol", 2, "retcode:" + paramInt);
               return;
             }
-          } while (paramnms.jdField_c_of_type_Int == 16);
-          if (paramnms.jdField_c_of_type_Int == 20)
-          {
-            nfr.a(this.a);
-            return;
+            if ((!((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.has()) || (!((mobileqq_dynamic_search.ResultItemGroup)((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.get(0)).result_items.has())) {
+              break label472;
+            }
+            paramBundle = ((mobileqq_dynamic_search.ResultItemGroup)((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.get(0)).result_items.get();
+            localArrayList = new ArrayList();
+            Iterator localIterator = paramBundle.iterator();
+            if (!localIterator.hasNext()) {
+              continue;
+            }
+            localResultItem = (mobileqq_dynamic_search.ResultItem)localIterator.next();
+            localWordItem = new SearchProtocol.WordItem();
+            if (!localResultItem.word.has()) {
+              continue;
+            }
+            localWordItem.word = localResultItem.word.get().toStringUtf8();
+            localWordItem.id = localResultItem.result_id.get().toStringUtf8();
+            if (localResultItem.extension.has())
+            {
+              localObject = localResultItem.extension.get().toStringUtf8();
+              if (QLog.isColorLevel()) {
+                QLog.d("lebasearch.SearchProtocol", 2, "extension info:" + (String)localObject);
+              }
+              paramBoolean = TextUtils.isEmpty((CharSequence)localObject);
+              if (!paramBoolean) {
+                paramBundle = null;
+              }
+            }
           }
-          if (paramnms.jdField_c_of_type_Int == 2)
+          catch (InvalidProtocolBufferMicroException paramBundle)
           {
-            xbi.b((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new xbk(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nfr.a(this.a));
+            ArrayList localArrayList;
+            mobileqq_dynamic_search.ResultItem localResultItem;
+            SearchProtocol.WordItem localWordItem;
+            if (!QLog.isColorLevel()) {
+              break label472;
+            }
+            QLog.d("lebasearch.SearchProtocol", 2, paramBundle.getMessage());
             return;
+            paramBundle = this.a.obtainMessage();
+            paramBundle.arg1 = 0;
+            paramBundle.obj = localArrayList;
+            this.a.sendMessage(paramBundle);
           }
-          if (paramnms.jdField_c_of_type_Int == 17)
+          try
           {
-            xbi.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new xbk(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nfr.a(this.a));
-            return;
+            localObject = new JSONObject((String)localObject);
+            paramBundle = (Bundle)localObject;
           }
-          if (paramnms.jdField_c_of_type_Int == 19)
+          catch (JSONException localJSONException)
           {
-            xbi.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new xbk(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nfr.a(this.a), 9);
-            return;
+            localJSONException.printStackTrace();
+            continue;
+            paramInt = paramBundle.optInt("type");
           }
-          if (paramnms.jdField_c_of_type_Int == 18)
-          {
-            xbi.a((BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), new xbk(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.name, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.summary), 1, nfr.a(this.a), 10);
-            return;
-          }
-        } while (paramnms.jdField_c_of_type_Int == 21);
-        if (paramnms.jdField_c_of_type_Int == 22)
-        {
-          paramnms = paramnms.jdField_c_of_type_JavaLangString;
-          nfr.c(this.a, paramnms);
-          return;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("AccountDetailGroupListContainer", 2, "unhandled event_id: " + paramnms.jdField_c_of_type_Int);
+        if (paramBundle == null)
+        {
+          paramInt = 0;
+          if ((paramInt == 2) && (localResultItem.jmp_url.has()) && (!TextUtils.isEmpty(localResultItem.jmp_url.get().toStringUtf8())))
+          {
+            localWordItem.type = paramInt;
+            localWordItem.jumpUrl = localResultItem.jmp_url.get().toStringUtf8();
+            paramInt = SearchProtocol.a(paramBundle.optString("color"));
+            if (paramInt == 0) {
+              break label473;
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      localWordItem.textColor = paramInt;
+      localWordItem.frameColor = SearchProtocol.a(paramBundle.optString("framecolor"));
+      localArrayList.add(localWordItem);
+      break;
+      label472:
       return;
-    } while (paramnms.a != 1);
-    paramnms = paramnms.jdField_c_of_type_JavaLangString;
-    nfr.c(this.a, paramnms);
+      label473:
+      paramInt = -16734752;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nft
  * JD-Core Version:    0.7.0.1
  */

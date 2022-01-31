@@ -1,76 +1,46 @@
-import android.app.Activity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
-import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
-import com.tencent.mobileqq.activity.selectable.TranslateSelectableMenu.1;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.ContainerView;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ScrollView;
-import java.lang.ref.WeakReference;
+import com.tencent.widget.XListView;
 
-public class aicm
-  extends aibx<TextPreviewTranslateActivity>
+class aicm
+  implements TextWatcher
 {
-  protected void a(ContainerView paramContainerView)
-  {
-    super.a(paramContainerView);
-    TextPreviewTranslateActivity localTextPreviewTranslateActivity = (TextPreviewTranslateActivity)this.b.get();
-    if (localTextPreviewTranslateActivity != null) {
-      paramContainerView.setOutScrollView((ScrollView)localTextPreviewTranslateActivity.findViewById(2131375655));
-    }
-    paramContainerView.jdField_a_of_type_Boolean = false;
-    paramContainerView.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.post(new TranslateSelectableMenu.1(this, paramContainerView));
-  }
+  aicm(aicl paramaicl) {}
   
-  protected void a(ContainerView paramContainerView, View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    super.a(paramContainerView, paramView);
-    axqy.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A435", "0X800A435", 0, 0, "", "", "", "");
-  }
-  
-  public void onClick(View paramView)
-  {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-    switch (paramView.getId())
+    paramEditable = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
+    if (paramEditable.length() == 0)
     {
+      this.a.jdField_b_of_type_JavaLangString = "";
+      this.a.findViewById(2131367807).setVisibility(8);
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.a.jdField_a_of_type_Ahzr.a();
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
-    for (;;)
-    {
-      if ((paramView.getId() != 2131375791) && (aibn.a().c())) {
-        aibn.a().d();
-      }
-      do
-      {
-        for (;;)
-        {
-          return;
-          try
-          {
-            ayle.a(a(), "TextPreview");
-            axqy.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A437", "0X800A437", 0, 0, "", "", "", "");
-          }
-          catch (Exception paramView) {}
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("TranslateSelectableMenu", 2, paramView.toString());
+    while (this.a.jdField_b_of_type_JavaLangString.equals(paramEditable)) {
       return;
-      ayle.a((Activity)paramView.getContext(), a());
-      axqy.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A438", "0X800A438", 0, 0, "", "", "", "");
-      continue;
-      if (localQQAppInterface != null) {
-        ayle.a((Activity)paramView.getContext(), localQQAppInterface, a());
-      }
-      axqy.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A439", "0X800A439", 0, 0, "", "", "", "");
-      continue;
-      aibn.a().a(null);
-      axqy.b((QQAppInterface)this.a.get(), "dc00898", "", "", "0X800A436", "0X800A436", 0, 0, "", "", "", "");
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("LinkMessageSearchDialog", 2, "afterTextChanged, lastChangedKeyword = " + this.a.jdField_b_of_type_JavaLangString + ",lastKeyWord:" + paramEditable);
+    }
+    this.a.jdField_b_of_type_JavaLangString = paramEditable;
+    this.a.findViewById(2131367807).setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    this.a.a();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aicm
  * JD-Core Version:    0.7.0.1
  */

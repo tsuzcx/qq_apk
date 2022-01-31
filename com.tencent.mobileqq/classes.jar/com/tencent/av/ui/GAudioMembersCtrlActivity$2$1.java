@@ -2,12 +2,12 @@ package com.tencent.av.ui;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mds;
+import mgi;
 
 public class GAudioMembersCtrlActivity$2$1
   implements Runnable
 {
-  public GAudioMembersCtrlActivity$2$1(mds parammds) {}
+  public GAudioMembersCtrlActivity$2$1(mgi parammgi) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class GAudioMembersCtrlActivity$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.GAudioMembersCtrlActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

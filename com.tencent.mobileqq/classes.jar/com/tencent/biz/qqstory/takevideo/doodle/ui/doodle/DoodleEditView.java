@@ -7,27 +7,27 @@ import android.view.MotionEvent;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import java.util.List;
-import vkm;
-import vkq;
-import vky;
-import vla;
-import vlc;
-import vnd;
-import vne;
-import vnf;
-import vnw;
-import vpp;
+import wze;
+import wzi;
+import wzq;
+import wzs;
+import wzu;
+import xbv;
+import xbw;
+import xbx;
+import xco;
+import xeh;
 
 public class DoodleEditView
   extends DoodleView
-  implements vnw
+  implements xco
 {
   private float jdField_a_of_type_Float;
   private DoodleView jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView;
   Runnable jdField_a_of_type_JavaLangRunnable = new DoodleEditView.2(this);
-  public vky a;
-  private vne jdField_a_of_type_Vne;
-  private vnf jdField_a_of_type_Vnf;
+  public wzq a;
+  private xbw jdField_a_of_type_Xbw;
+  private xbx jdField_a_of_type_Xbx;
   private float jdField_b_of_type_Float;
   private boolean jdField_b_of_type_Boolean;
   
@@ -39,7 +39,7 @@ public class DoodleEditView
   
   protected void a()
   {
-    this.jdField_a_of_type_Vky = new vky(this);
+    this.jdField_a_of_type_Wzq = new wzq(this);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -63,32 +63,32 @@ public class DoodleEditView
     Object localObject2;
     Object localObject1;
     if ((paramBoolean) || ((!paramBoolean) && (getVisibility() == 0))) {
-      if (this.jdField_a_of_type_Vky.b())
+      if (this.jdField_a_of_type_Wzq.b())
       {
-        localObject2 = this.jdField_a_of_type_Vky.a();
-        ((vpp)localObject2).d = false;
-        if (!(localObject2 instanceof vkq)) {
+        localObject2 = this.jdField_a_of_type_Wzq.a();
+        ((xeh)localObject2).d = false;
+        if (!(localObject2 instanceof wzi)) {
           break label112;
         }
-        localObject1 = (vkm)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a("FaceLayer");
-        localObject2 = (vkq)localObject2;
+        localObject1 = (wze)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a("FaceLayer");
+        localObject2 = (wzi)localObject2;
         if (localObject1 != null) {
-          ((vkm)localObject1).a.add(localObject2);
+          ((wze)localObject1).a.add(localObject2);
         }
       }
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
-      this.jdField_a_of_type_Vky.b();
+      this.jdField_a_of_type_Wzq.b();
       setVisibility(8);
       return;
       label112:
-      if ((localObject2 instanceof vlc))
+      if ((localObject2 instanceof wzu))
       {
-        localObject1 = (vla)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a("TextLayer");
+        localObject1 = (wzs)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a("TextLayer");
         if (localObject1 != null) {
-          ((vla)localObject1).d();
+          ((wzs)localObject1).d();
         }
       }
     }
@@ -97,7 +97,7 @@ public class DoodleEditView
   public void b()
   {
     super.b();
-    this.jdField_a_of_type_Vky.f();
+    this.jdField_a_of_type_Wzq.f();
     this.jdField_a_of_type_Float = 0.0F;
     this.jdField_b_of_type_Float = 0.0F;
   }
@@ -116,7 +116,7 @@ public class DoodleEditView
     if ((this.jdField_a_of_type_Float > 0.0F) || (this.jdField_b_of_type_Float > 0.0F)) {
       paramCanvas.translate(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
     }
-    this.jdField_a_of_type_Vky.d(paramCanvas);
+    this.jdField_a_of_type_Wzq.d(paramCanvas);
     paramCanvas.restore();
   }
   
@@ -130,13 +130,13 @@ public class DoodleEditView
     }
     for (int i = 1;; i = 0)
     {
-      if ((paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_Vky.b(paramMotionEvent))) {
+      if ((paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_Wzq.b(paramMotionEvent))) {
         this.jdField_b_of_type_Boolean = true;
       }
       boolean bool;
       if (this.jdField_b_of_type_Boolean)
       {
-        bool = this.jdField_a_of_type_Vky.e(paramMotionEvent);
+        bool = this.jdField_a_of_type_Wzq.e(paramMotionEvent);
         invalidate();
       }
       for (;;)
@@ -154,9 +154,9 @@ public class DoodleEditView
     }
   }
   
-  public void setDoodleEditViewListener(vne paramvne)
+  public void setDoodleEditViewListener(xbw paramxbw)
   {
-    this.jdField_a_of_type_Vne = paramvne;
+    this.jdField_a_of_type_Xbw = paramxbw;
   }
   
   public void setDoodleLayout(DoodleLayout paramDoodleLayout)
@@ -170,25 +170,25 @@ public class DoodleEditView
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView = paramDoodleView;
   }
   
-  public void setEditListener(vnf paramvnf)
+  public void setEditListener(xbx paramxbx)
   {
-    this.jdField_a_of_type_Vnf = paramvnf;
+    this.jdField_a_of_type_Xbx = paramxbx;
   }
   
   public void setOnLayerTouchListener()
   {
-    this.jdField_a_of_type_Vky.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Vny);
+    this.jdField_a_of_type_Wzq.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_Xcq);
     setOnTextEditListener();
   }
   
   public void setOnTextEditListener()
   {
-    this.jdField_a_of_type_Vky.a(new vnd(this));
+    this.jdField_a_of_type_Wzq.a(new xbv(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView
  * JD-Core Version:    0.7.0.1
  */

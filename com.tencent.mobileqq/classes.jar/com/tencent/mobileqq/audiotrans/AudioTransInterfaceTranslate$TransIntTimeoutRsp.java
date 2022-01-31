@@ -10,7 +10,7 @@ public final class AudioTransInterfaceTranslate$TransIntTimeoutRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.audiotrans.AudioTransInterfaceTranslate.TransIntTimeoutRsp
  * JD-Core Version:    0.7.0.1
  */

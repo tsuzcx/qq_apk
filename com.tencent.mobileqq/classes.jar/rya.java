@@ -1,40 +1,39 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
-import com.tencent.viola.bridge.ViolaBridgeManager;
-import com.tencent.viola.core.ViolaInstance;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
 
 public class rya
-  implements rwl
 {
-  public rya(BridgeModule paramBridgeModule, String paramString) {}
+  private static rya a;
   
-  public void a(int paramInt)
+  public static rya a()
   {
-    if ((BridgeModule.access$000(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule) != paramInt) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance() != null)) {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        if ((paramInt == CommonSuspensionGestureLayout.c) || (paramInt == CommonSuspensionGestureLayout.e)) {
-          localJSONObject.put("state", 1);
-        }
-        for (;;)
-        {
-          BridgeModule.access$002(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, paramInt);
-          ViolaBridgeManager.getInstance().callbackJavascript(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getInstanceId(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getModuleName(), "callback", this.jdField_a_of_type_JavaLangString, localJSONObject, true);
-          return;
-          localJSONObject.put("state", 0);
-        }
-        return;
+    try
+    {
+      if (a == null) {
+        a = new rya();
       }
-      catch (JSONException localJSONException) {}
+      rya localrya = a;
+      return localrya;
     }
+    finally {}
+  }
+  
+  public void a(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rya
  * JD-Core Version:    0.7.0.1
  */

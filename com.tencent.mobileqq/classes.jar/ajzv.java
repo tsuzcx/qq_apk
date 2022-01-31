@@ -1,62 +1,23 @@
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqMessageQueue;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import java.util.ArrayList;
 
-final class ajzv
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+public class ajzv
+  implements DialogInterface.OnClickListener
 {
-  public void onThreadMonitorEnd(int paramInt)
+  public ajzv(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Intent paramIntent, ArrayList paramArrayList) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      Looper.getMainLooper().setMessageLogging(null);
-      MqqMessageQueue.getSubMainThreadQueue().setMessageLogging(null);
-    }
-    do
-    {
-      Object localObject;
-      do
-      {
-        return;
-        if (paramInt == 4)
-        {
-          ThreadManager.getSubThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 5)
-        {
-          ThreadManager.getFileThreadLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt == 14)
-        {
-          Looper.getMainLooper().setMessageLogging(null);
-          return;
-        }
-        if (paramInt != 18) {
-          break;
-        }
-        localObject = MsfCore.sCore;
-        if (localObject == null)
-        {
-          QLog.e("AutoMonitor", 1, "msf core hasnot init");
-          return;
-        }
-        localObject = ((MsfCore)localObject).getNetworkHandlerThread();
-      } while ((localObject == null) || (((HandlerThread)localObject).getLooper() == null));
-      ((HandlerThread)localObject).getLooper().setMessageLogging(null);
-      return;
-    } while (paramInt != 19);
-    Looper.getMainLooper().setMessageLogging(null);
+    PhotoUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityShortvideoShortVideoPreviewActivity, this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzv
  * JD-Core Version:    0.7.0.1
  */

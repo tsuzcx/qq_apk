@@ -1,21 +1,93 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.splashad.SplashADView;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppActivity;
 
-class azkn
-  implements View.OnClickListener
+public final class azkn
+  extends azjh
 {
-  azkn(azkm paramazkm) {}
-  
-  public void onClick(View paramView)
+  public azkn(Object paramObject, SplashADView paramSplashADView, AppActivity paramAppActivity, ImageView paramImageView1, ImageView paramImageView2, long paramLong)
   {
-    GroupManagerActivity.a((Activity)azkm.a(this.a));
+    super(paramObject);
+  }
+  
+  protected void a()
+  {
+    try
+    {
+      awvi localawvi = (awvi)this.jdField_a_of_type_JavaLangObject;
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b = false;
+      switch (localawvi.a)
+      {
+      case 2: 
+        this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.d();
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("QSplash@QbossSplashUtil", 1, "show SplashAd end() error ", localException);
+      return;
+    }
+  }
+  
+  protected void a(azjg paramazjg)
+  {
+    awvi localawvi;
+    try
+    {
+      if (this.jdField_a_of_type_JavaLangObject == null) {
+        return;
+      }
+      localawvi = (awvi)this.jdField_a_of_type_JavaLangObject;
+      QLog.i("QSplash@QbossSplashUtil", 1, "bindView");
+      azjb.jdField_a_of_type_Long = System.currentTimeMillis();
+      if (!this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.jdField_a_of_type_Boolean)
+      {
+        paramazjg.jdField_a_of_type_Long = 0L;
+        return;
+      }
+    }
+    catch (Exception paramazjg)
+    {
+      QLog.e("QSplash@QbossSplashUtil", 1, "show SplashAd bindView error ", paramazjg);
+      return;
+    }
+    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_MqqAppAppActivity.findViewById(2131376901);
+    if (localViewGroup == null)
+    {
+      QLog.i("QSplash@QbossSplashUtil", 1, "bindView fail, root is null");
+      paramazjg.jdField_a_of_type_Long = 0L;
+      return;
+    }
+    localViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView, 0);
+    switch (localawvi.a)
+    {
+    }
+    for (;;)
+    {
+      awvh.a(localawvi.j, null, 1);
+      awvh.a(localawvi.b, this.jdField_a_of_type_Long, false);
+      azjb.a(localawvi.c, localawvi.g);
+      return;
+      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.b != null))
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.b.setVisibility(8);
+      }
+      paramazjg.jdField_a_of_type_Long = 3000L;
+      continue;
+      QLog.i("QSplash@QbossSplashUtil", 1, "show video");
+      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b();
+      paramazjg.jdField_a_of_type_Long = 10000L;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azkn
  * JD-Core Version:    0.7.0.1
  */

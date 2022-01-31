@@ -1,25 +1,32 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-class adfq
-  implements MessageQueue.IdleHandler
+public class adfq
+  implements DialogInterface.OnClickListener
 {
-  adfq(adfp paramadfp) {}
+  public adfq(NotificationActivity paramNotificationActivity) {}
   
-  public boolean queueIdle()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BaseChatDrawer", 2, "queueIdle");
+    try
+    {
+      azmj.b(null, "P_CliOper", "Safe_StartAppCheck", "", "DIALOG_PACKAGE_INVALID", "LeftButton", 0, 0, "", "", "", "");
+      this.a.finish();
+      return;
     }
-    if (adfn.b()) {
-      adfp.a(this.a);
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adfq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.etrump.mixlayout.ETDecoration;
+import com.etrump.mixlayout.ETTextView;
+import java.lang.ref.WeakReference;
 
-class fs
-  implements View.OnClickListener
+public class fs
 {
-  fs(fq paramfq) {}
+  public int a;
+  public long a;
+  public Bitmap a;
+  public fj a;
+  public WeakReference<ETTextView> a;
+  public long b;
   
-  public void onClick(View paramView)
+  public fs()
   {
-    paramView = (fw)paramView.getTag();
-    if (paramView == null) {}
-    DataLineMsgSet localDataLineMsgSet;
-    do
-    {
-      return;
-      localDataLineMsgSet = paramView.a();
-    } while (localDataLineMsgSet == null);
-    long l = 0L;
-    if (localDataLineMsgSet.getFirstItem() != null) {
-      l = localDataLineMsgSet.getFirstItem().sessionid;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public static fs a(ETTextView paramETTextView)
+  {
+    if (ETTextView.access$600(paramETTextView) == null) {
+      return null;
     }
-    for (;;)
-    {
-      localDataLineMsgSet.setPaused(true);
-      ((ajum)this.a.a.a(8)).a(localDataLineMsgSet.getGroupId(), l, false);
-      fq.a(this.a, paramView, localDataLineMsgSet);
-      return;
-      QLog.e("DatalineSessionAdapterUseNewFileBubble", 1, "stop recv but no sessionid");
-    }
+    fs localfs = new fs();
+    localfs.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramETTextView);
+    localfs.jdField_a_of_type_Long = paramETTextView.mMsgId;
+    localfs.jdField_a_of_type_Fj = paramETTextView.mLayout;
+    localfs.jdField_a_of_type_Int = ETTextView.access$600(paramETTextView).currentFrameIndex();
+    localfs.jdField_a_of_type_AndroidGraphicsBitmap = ETTextView.access$400(paramETTextView).a();
+    localfs.b = System.currentTimeMillis();
+    return localfs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     fs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package dov.com.qq.im.ae;
 
-import bijd;
-import bjrk;
+import bkle;
+import bmcu;
 
 class AEPituCameraUnit$11$1
   implements Runnable
@@ -10,12 +10,12 @@ class AEPituCameraUnit$11$1
   
   public void run()
   {
-    bijd.a(this.a.this$0).a(2);
+    bkle.a(this.a.this$0).a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.11.1
  * JD-Core Version:    0.7.0.1
  */

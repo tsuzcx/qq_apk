@@ -1,39 +1,39 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import com.tencent.biz.subscribe.event.FollowUpdateEvent;
-import com.tencent.biz.subscribe.widget.textview.FollowTextView;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.widget.ImageView;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class wwp
-  extends akdn
+class wwp
+  extends SimpleObserver<Bitmap>
 {
-  public wwp(FollowTextView paramFollowTextView) {}
+  wwp(wwo paramwwo) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(Bitmap paramBitmap)
   {
-    super.a(paramBoolean, paramString);
-    FollowTextView.a(this.a, true);
-    if (paramBoolean)
+    super.onNext(paramBitmap);
+    if (paramBitmap != null)
     {
-      if (!FollowTextView.a(this.a)) {
-        FollowTextView.a(this.a, true, FollowTextView.a(this.a));
-      }
-      this.a.a(1);
-      if (FollowTextView.a(this.a) != null)
+      if (this.a.b)
       {
-        if (FollowTextView.a(this.a) != null) {
-          FollowTextView.a(this.a).a(true, FollowTextView.a(this.a));
-        }
-        wpt.a().a(new FollowUpdateEvent(1, FollowTextView.a(this.a).poster.id.get()));
+        this.a.a.setImageBitmap(paramBitmap);
+        wsv.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
       }
+    }
+    else {
       return;
     }
-    bcql.a(this.a.getContext(), 2131690653, 0).a();
+    wsv.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    wsv.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wwp
  * JD-Core Version:    0.7.0.1
  */

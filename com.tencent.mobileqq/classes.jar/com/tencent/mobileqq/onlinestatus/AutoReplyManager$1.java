@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.onlinestatus;
 
-import auja;
-import aukp;
+import awad;
+import awbw;
 import com.tencent.mobileqq.data.AutoReplyText;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -10,23 +10,23 @@ import java.util.List;
 public class AutoReplyManager$1
   implements Runnable
 {
-  public AutoReplyManager$1(auja paramauja) {}
+  public AutoReplyManager$1(awad paramawad) {}
   
   public void run()
   {
     for (;;)
     {
-      synchronized (auja.a(this.this$0))
+      synchronized (awad.a(this.this$0))
       {
-        if (auja.a(this.this$0) == null)
+        if (awad.a(this.this$0) == null)
         {
-          List localList = auja.a(this.this$0).a(AutoReplyText.class);
+          List localList = awad.a(this.this$0).a(AutoReplyText.class);
           if ((localList != null) && (localList.size() > 0))
           {
-            if (auja.a(this.this$0) == null)
+            if (awad.a(this.this$0) == null)
             {
-              auja.a(this.this$0, new ArrayList());
-              auja.a(this.this$0).addAll(localList);
+              awad.a(this.this$0, new ArrayList());
+              awad.a(this.this$0).addAll(localList);
             }
           }
           else
@@ -36,7 +36,7 @@ public class AutoReplyManager$1
             }
             return;
           }
-          auja.a(this.this$0).clear();
+          awad.a(this.this$0).clear();
         }
       }
       if (QLog.isColorLevel()) {
@@ -47,7 +47,7 @@ public class AutoReplyManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.AutoReplyManager.1
  * JD-Core Version:    0.7.0.1
  */

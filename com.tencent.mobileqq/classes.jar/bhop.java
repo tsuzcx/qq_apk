@@ -1,24 +1,18 @@
-import android.app.Activity;
-import mqq.app.QQPermissionCallback;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
-final class bhop
-  implements QQPermissionCallback
+public class bhop
 {
-  bhop(String paramString1, String paramString2, Activity paramActivity) {}
-  
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static String a(Throwable paramThrowable)
   {
-    bbdj.b(bhoo.a(this.jdField_a_of_type_AndroidAppActivity));
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    bhoo.a(this.jdField_a_of_type_JavaLangString, this.b);
+    StringWriter localStringWriter = new StringWriter();
+    paramThrowable.printStackTrace(new PrintWriter(localStringWriter));
+    return localStringWriter.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhop
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,23 @@
-import java.io.File;
-
 class svg
-  implements Comparable<svg>
 {
-  public final long a;
-  public final File a;
+  int a;
+  int b;
+  int c;
+  int d;
   
-  public svg(svf paramsvf, File paramFile)
-  {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Long = paramFile.lastModified();
-  }
+  public svg() {}
   
-  public int a(svg paramsvg)
+  public svg(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_Long < paramsvg.jdField_a_of_type_Long) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Long == paramsvg.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     svg
  * JD-Core Version:    0.7.0.1
  */

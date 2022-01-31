@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.imaxad;
 
-import ardd;
-import ardf;
-import axqy;
+import astr;
+import astt;
+import azmj;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import nis;
-import niu;
-import njl;
+import nlo;
+import nlq;
+import nmh;
 
 public class ImaxAdRecentUserManager$2
   implements Runnable
 {
-  public ImaxAdRecentUserManager$2(ardf paramardf, QQAppInterface paramQQAppInterface, String paramString, int paramInt, nis paramnis) {}
+  public ImaxAdRecentUserManager$2(astt paramastt, QQAppInterface paramQQAppInterface, String paramString, int paramInt, nlo paramnlo) {}
   
   public void run()
   {
@@ -28,15 +28,15 @@ public class ImaxAdRecentUserManager$2
       {
         localMessage.saveExtInfoToExtStr("recent_list_advertisement_message_first_click", "true");
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessage.frienduin, localMessage.msgtype, localMessage.uniseq, "extStr", localMessage.extStr);
-        if (this.jdField_a_of_type_Nis.a != null) {
-          axqy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nis.a.jdField_a_of_type_JavaLangString, "0X8008F5E", "0X8008F5E", 0, 0, this.jdField_a_of_type_Nis.a.c, "", njl.a(), this.jdField_a_of_type_Nis.a.b);
+        if (this.jdField_a_of_type_Nlo.a != null) {
+          azmj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nlo.a.jdField_a_of_type_JavaLangString, "0X8008F5E", "0X8008F5E", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", nmh.a(), this.jdField_a_of_type_Nlo.a.b);
         }
       }
-      if (this.jdField_a_of_type_Nis.a != null)
+      if (this.jdField_a_of_type_Nlo.a != null)
       {
-        axqy.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nis.a.jdField_a_of_type_JavaLangString, "0X8008F60", "0X8008F60", 0, 0, this.jdField_a_of_type_Nis.a.c, "", "", this.jdField_a_of_type_Nis.a.b);
-        if (this.jdField_a_of_type_Nis.a.l == 2) {
-          ardd.a().b(this.jdField_a_of_type_Nis);
+        azmj.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_Nlo.a.jdField_a_of_type_JavaLangString, "0X8008F60", "0X8008F60", 0, 0, this.jdField_a_of_type_Nlo.a.c, "", "", this.jdField_a_of_type_Nlo.a.b);
+        if (this.jdField_a_of_type_Nlo.a.l == 2) {
+          astr.a().b(this.jdField_a_of_type_Nlo);
         }
       }
     }
@@ -44,7 +44,7 @@ public class ImaxAdRecentUserManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdRecentUserManager.2
  * JD-Core Version:    0.7.0.1
  */

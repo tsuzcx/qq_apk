@@ -10,7 +10,7 @@ import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenParams.Floatin
 import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 import com.tencent.qqlive.mediaplayer.view.IVideoViewBase;
-import ued;
+import vsv;
 
 class VideoPlayerView$9
   implements Runnable
@@ -61,7 +61,7 @@ class VideoPlayerView$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoPlayerView.9
  * JD-Core Version:    0.7.0.1
  */

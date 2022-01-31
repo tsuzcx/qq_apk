@@ -7,6 +7,7 @@ import com.tencent.aekit.openrender.UniformParam.Float2fParam;
 import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.aekit.openrender.UniformParam.IntParam;
 import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
+import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
@@ -17,6 +18,7 @@ import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
 import com.tencent.ttpic.openapi.config.MediaConfig;
+import com.tencent.ttpic.openapi.filter.RenderItem;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import java.io.File;
 import java.util.List;
@@ -27,7 +29,7 @@ public class CustomVideoFilter
 {
   private static final String TAG = CustomVideoFilter.class.getSimpleName();
   private long frameStartTime;
-  private List<NormalVideoFilter> normalFilters;
+  private List<RenderItem> normalRenderItems;
   private PTFaceAttr.PTExpression triggerType;
   
   public CustomVideoFilter(String paramString1, String paramString2, List<String> paramList, PTFaceAttr.PTExpression paramPTExpression, String paramString3)
@@ -85,14 +87,17 @@ public class CustomVideoFilter
   
   public float[] getElementDurations(long paramLong)
   {
-    if (CollectionUtils.isEmpty(this.normalFilters)) {
+    if (CollectionUtils.isEmpty(this.normalRenderItems)) {
       return new float[0];
     }
-    float[] arrayOfFloat = new float[this.normalFilters.size()];
+    float[] arrayOfFloat = new float[this.normalRenderItems.size()];
     int i = 0;
-    while (i < this.normalFilters.size())
+    while (i < this.normalRenderItems.size())
     {
-      arrayOfFloat[i] = ((NormalVideoFilter)this.normalFilters.get(i)).getFrameDuration(paramLong);
+      AEFilterI localAEFilterI = ((RenderItem)this.normalRenderItems.get(i)).filter;
+      if ((localAEFilterI instanceof NormalVideoFilter)) {
+        arrayOfFloat[i] = ((NormalVideoFilter)localAEFilterI).getFrameDuration(paramLong);
+      }
       i += 1;
     }
     return arrayOfFloat;
@@ -109,9 +114,9 @@ public class CustomVideoFilter
     addParam(new UniformParam.FloatParam(CustomVideoFilter.SHADER_FIELD.access$000(CustomVideoFilter.SHADER_FIELD.AUDIO_POWER_SCALE), 0.0F));
   }
   
-  public void setNormalFilters(List<NormalVideoFilter> paramList)
+  public void setNormalRenderItems(List<RenderItem> paramList)
   {
-    this.normalFilters = paramList;
+    this.normalRenderItems = paramList;
   }
   
   public void updatePreview(Object paramObject)

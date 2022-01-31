@@ -1,45 +1,45 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.app.Activity;
-import axqy;
-import bcql;
+import azmj;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import cooperation.plugin.PluginBaseActivity;
 import java.util.ArrayList;
 import java.util.List;
-import nol;
-import onh;
+import nrt;
 import org.json.JSONException;
 import org.json.JSONObject;
-import osg;
-import ram;
-import rar;
-import ras;
-import shu;
+import ors;
+import owy;
+import rqj;
+import rqo;
+import rqp;
+import szp;
 
 public class ReadInJoyBaseAdapter$17$1$1
   implements Runnable
 {
-  public ReadInJoyBaseAdapter$17$1$1(ras paramras) {}
+  public ReadInJoyBaseAdapter$17$1$1(rqp paramrqp) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.b.remove(this.a.jdField_a_of_type_Rar.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
-    ram.a(this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram, true);
-    this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.notifyDataSetChanged();
-    int i = 2131699674;
-    if (AdvertisementInfo.isAdvertisementInfo(this.a.jdField_a_of_type_Rar.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) {
-      i = 2131699675;
+    this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.b.remove(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    rqj.a(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj, true);
+    this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.notifyDataSetChanged();
+    int i = 2131700042;
+    if (AdvertisementInfo.isAdvertisementInfo(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) {
+      i = 2131700043;
     }
-    if ((this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.a instanceof BaseActivity)) {
-      bcql.a(this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.a, -1, this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.a.getString(i), 0).b(((BaseActivity)this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.a).getTitleBarHeight());
+    if ((this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a instanceof BaseActivity)) {
+      QQToast.a(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a, -1, this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a.getString(i), 0).b(((BaseActivity)this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a).getTitleBarHeight());
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.a(this.a.jdField_a_of_type_Rar.jdField_a_of_type_Int, this.a.jdField_a_of_type_Rar.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
-      if (AdvertisementInfo.isAdvertisementInfo(this.a.jdField_a_of_type_Rar.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))
+      this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Int, this.a.jdField_a_of_type_Rqo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_JavaUtilArrayList);
+      if (AdvertisementInfo.isAdvertisementInfo(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo))
       {
         long l2 = 0L;
         long l1 = l2;
@@ -50,34 +50,34 @@ public class ReadInJoyBaseAdapter$17$1$1
             l1 = ((DislikeInfo)this.a.jdField_a_of_type_JavaLangObject).a;
           }
         }
-        osg.a().a(this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.a, (AdvertisementInfo)this.a.jdField_a_of_type_Rar.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, l1, this.a.jdField_a_of_type_JavaUtilArrayList, false);
+        owy.a().a(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a, (AdvertisementInfo)this.a.jdField_a_of_type_Rqo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, l1, this.a.jdField_a_of_type_JavaUtilArrayList, false);
       }
       try
       {
         Object localObject = new JSONObject();
         ((JSONObject)localObject).put("time", System.currentTimeMillis() / 1000L);
-        ((JSONObject)localObject).put("channel_id", this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.c);
+        ((JSONObject)localObject).put("channel_id", this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.c);
         ((JSONObject)localObject).put("tag_num", this.a.jdField_a_of_type_JavaUtilArrayList.size());
-        if ((this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.a instanceof BaseActivity))
+        if ((this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a instanceof BaseActivity))
         {
-          ((JSONObject)localObject).put("folder_status", onh.d);
-          ((JSONObject)localObject).put("kandian_mode", onh.e());
-          ((JSONObject)localObject).put("feeds_type", "" + onh.a(this.a.jdField_a_of_type_Rar.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
-          ((JSONObject)localObject).put("rowkey", shu.a(this.a.jdField_a_of_type_Rar.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
+          ((JSONObject)localObject).put("folder_status", ors.d);
+          ((JSONObject)localObject).put("kandian_mode", ors.e());
+          ((JSONObject)localObject).put("feeds_type", "" + ors.a(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
+          ((JSONObject)localObject).put("rowkey", szp.a(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
           localObject = ((JSONObject)localObject).toString();
-          nol.a(null, "", "0X8007059", "0X8007059", 0, 0, "", "", onh.a(this.a.jdField_a_of_type_JavaUtilArrayList), (String)localObject, false);
+          nrt.a(null, "", "0X8007059", "0X8007059", 0, 0, "", "", ors.a(this.a.jdField_a_of_type_JavaUtilArrayList), (String)localObject, false);
         }
-        while (!(this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.a instanceof PluginBaseActivity))
+        while (!(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a instanceof PluginBaseActivity))
         {
           return;
-          if (!(this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.a instanceof PluginBaseActivity)) {
+          if (!(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a instanceof PluginBaseActivity)) {
             break;
           }
-          bcql.a(this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.a, -1, this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.a.getString(i), 0).b(((PluginBaseActivity)this.a.jdField_a_of_type_Rar.jdField_a_of_type_Ram.a).g());
+          QQToast.a(this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a, -1, this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a.getString(i), 0).b(((PluginBaseActivity)this.a.jdField_a_of_type_Rqo.jdField_a_of_type_Rqj.a).g());
           break;
         }
         ((JSONObject)localObject).put("folder_status", 1);
-        axqy.b(null, "CliOper", "", "", "0X8007060", "0X8007060", 0, 0, "", "", "", ((JSONObject)localObject).toString());
+        azmj.b(null, "CliOper", "", "", "0X8007060", "0X8007060", 0, 0, "", "", "", ((JSONObject)localObject).toString());
         return;
       }
       catch (JSONException localJSONException)
@@ -89,7 +89,7 @@ public class ReadInJoyBaseAdapter$17$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.17.1.1
  * JD-Core Version:    0.7.0.1
  */

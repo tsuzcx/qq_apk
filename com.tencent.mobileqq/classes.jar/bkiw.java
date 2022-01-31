@@ -1,57 +1,33 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class bkiw
-  extends bkip
+  implements Animation.AnimationListener
 {
-  public final int c;
+  public bkiw(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public bkiw(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramInt3, paramString, paramInt1);
-    this.c = paramInt2;
-  }
-  
-  @NonNull
-  public bkiq a(@NonNull Context paramContext, ViewGroup paramViewGroup)
-  {
-    return new bkix(this, paramContext, paramViewGroup);
-  }
-  
-  @NonNull
-  public Class<? extends bkiq> a()
-  {
-    return bkix.class;
-  }
-  
-  public String toString()
-  {
-    switch (this.a)
+    if (QIMEffectCameraCaptureUnit.e(this.a) != null)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return "";
-    case 0: 
-      return "normal";
-    case 3: 
-      return "slow";
-    case 2: 
-      return "fast";
-    case 9: 
-      return "very slow";
-    case 8: 
-      return "little fast";
+      QIMEffectCameraCaptureUnit.e(this.a).clearAnimation();
+      QIMEffectCameraCaptureUnit.e(this.a).setVisibility(8);
     }
-    return "rewind";
+    this.a.v = false;
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.v = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkiw
  * JD-Core Version:    0.7.0.1
  */

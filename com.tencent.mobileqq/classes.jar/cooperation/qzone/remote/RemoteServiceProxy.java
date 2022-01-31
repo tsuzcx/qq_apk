@@ -6,9 +6,9 @@ import android.content.ServiceConnection;
 import android.os.DeadObjectException;
 import android.os.Looper;
 import android.os.RemoteException;
-import bglh;
-import bglq;
-import bhla;
+import bimg;
+import bimp;
+import bjml;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -20,7 +20,7 @@ public class RemoteServiceProxy
 {
   private static final String tag = "RemoteServiceProxy";
   private Class<? extends Service> clazz;
-  protected ServiceConnection conn = new bhla(this);
+  protected ServiceConnection conn = new bjml(this);
   protected volatile long lastStartSerivceTime = -1L;
   private IActionListener mActionListener;
   private String mUin;
@@ -161,14 +161,14 @@ public class RemoteServiceProxy
     {
       Intent localIntent = new Intent(BaseApplicationImpl.getApplication(), this.clazz);
       localIntent.putExtra("useSkinEngine", 1);
-      bglq localbglq = new bglq(0);
-      localbglq.b = QzonePluginProxyActivity.a();
-      localbglq.d = "QQ空间";
-      localbglq.jdField_a_of_type_JavaLangString = this.mUin;
-      localbglq.e = this.serviceName;
-      localbglq.jdField_a_of_type_AndroidContentIntent = localIntent;
-      localbglq.jdField_a_of_type_AndroidContentServiceConnection = this.conn;
-      bglh.c(BaseApplicationImpl.getApplication(), localbglq);
+      bimp localbimp = new bimp(0);
+      localbimp.b = QzonePluginProxyActivity.a();
+      localbimp.d = "QQ空间";
+      localbimp.jdField_a_of_type_JavaLangString = this.mUin;
+      localbimp.e = this.serviceName;
+      localbimp.jdField_a_of_type_AndroidContentIntent = localIntent;
+      localbimp.jdField_a_of_type_AndroidContentServiceConnection = this.conn;
+      bimg.c(BaseApplicationImpl.getApplication(), localbimp);
       if (QLog.isColorLevel()) {
         QLog.d("RemoteServiceProxy", 2, " start service finish");
       }
@@ -213,7 +213,7 @@ public class RemoteServiceProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.remote.RemoteServiceProxy
  * JD-Core Version:    0.7.0.1
  */

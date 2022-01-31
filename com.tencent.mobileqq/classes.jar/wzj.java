@@ -1,25 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
 class wzj
-  extends wzo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  wzj(wze paramwze, long paramLong, wzb paramwzb, File paramFile)
-  {
-    super(paramwze.a);
-  }
+  wzj(wzi paramwzi) {}
   
-  public void a(boolean paramBoolean)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.trace_video_combine", 2, "combineVideos total = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    this.jdField_a_of_type_Wzb.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramBoolean, null);
+    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.b.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzj
  * JD-Core Version:    0.7.0.1
  */

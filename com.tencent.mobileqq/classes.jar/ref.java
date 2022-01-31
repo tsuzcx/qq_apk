@@ -1,16 +1,12 @@
-import android.view.View;
-import android.widget.TextView;
+import android.os.Bundle;
 
-class ref
+public abstract interface ref
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  
-  private ref(rec paramrec) {}
+  public abstract void a(String paramString, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ref
  * JD-Core Version:    0.7.0.1
  */

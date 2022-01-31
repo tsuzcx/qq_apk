@@ -1,26 +1,45 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
-final class svo
-  extends SimpleJob<Void>
+class svo
+  extends pen
 {
-  svo(String paramString1, String paramString2)
-  {
-    super(paramString1);
-  }
+  svo(svl paramsvl) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    int i = svl.a();
-    ved.d("Q.qqstory.publish.upload:StoryVideoUploadManager", this.a + " : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryShareHelper", 2, "handleDoFavoriteResult isSuccess = " + paramBoolean + ", operationType = " + paramInt + ", cid = " + paramString2);
+    }
+    if (TextUtils.isEmpty(paramString1)) {}
+    while (!svl.a(this.a).contains(paramString1)) {
+      return;
+    }
+    paramString2 = new QQToast(svl.a(this.a));
+    paramString2.d(2000);
+    if (paramBoolean)
+    {
+      paramString2.a(QQToast.a(2));
+      paramString2.c(2131692401);
+      paramString2.b(svl.a(this.a).getResources().getDimensionPixelSize(2131298914) - (int)bdcq.a(svl.a(this.a), 5.0F));
+    }
+    for (;;)
+    {
+      svl.a(this.a).remove(paramString1);
+      return;
+      paramString2.a(QQToast.a(1));
+      paramString2.c(2131692402);
+      paramString2.b(svl.a(this.a).getResources().getDimensionPixelSize(2131298914) - (int)bdcq.a(svl.a(this.a), 5.0F));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     svo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,120 +1,77 @@
-import android.content.Intent;
+import VIP.AIOKeyWordReq;
+import VIP.AIOSendReq;
+import VIP.AIOSendRes;
 import android.os.Bundle;
-import com.tencent.mobileqq.bigbrother.ServerApi.ErrorInfo;
-import com.tencent.mobileqq.bigbrother.ServerApi.ReqPreDownloadRecmd;
-import com.tencent.mobileqq.bigbrother.ServerApi.ReqUpdateDownCountRecmd;
-import com.tencent.mobileqq.bigbrother.ServerApi.RspUpdateDownCountRecmd;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.nio.ByteBuffer;
-import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
-import mqq.app.Packet;
-import mqq.observer.BusinessObserver;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class amas
-  extends MSFServlet
+  extends alko
 {
-  private String a = "RockDownloaderServlet";
+  public static int a;
+  public static String a;
+  public static String b = "AIOSendSvc.getUserKeyWordStips";
   
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, "onReceive with code: " + paramFromServiceMsg.getResultCode());
-    }
-    Object localObject = paramIntent.getStringExtra("BUNDLE_CMD");
-    boolean bool = paramFromServiceMsg.isSuccess();
-    try
-    {
-      ByteBuffer localByteBuffer = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-      paramFromServiceMsg = new byte[localByteBuffer.getInt() - 4];
-      localByteBuffer.get(paramFromServiceMsg);
-      if ("QQApkSvc.pre_download_apk".equals(localObject))
-      {
-        localObject = new Bundle();
-        ((Bundle)localObject).putByteArray("BUNDLE_KEY_RESPONSE_BYTE", paramFromServiceMsg);
-        if ((paramIntent instanceof NewIntent))
-        {
-          paramIntent = (NewIntent)paramIntent;
-          if (paramIntent.getObserver() != null) {
-            paramIntent.getObserver().onReceive(1, bool, (Bundle)localObject);
-          }
-        }
-      }
-      else if ("QQApkSvc.update_download_count".equals(localObject))
-      {
-        paramIntent = new ServerApi.RspUpdateDownCountRecmd();
-        paramIntent.mergeFrom(paramFromServiceMsg);
-        paramFromServiceMsg = (ServerApi.ErrorInfo)paramIntent.err_info.get();
-        if (paramFromServiceMsg != null)
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d(this.a, 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()), " ", paramFromServiceMsg.err_msg.get(), " ", Integer.valueOf(paramFromServiceMsg.err_code.get()), " ", paramFromServiceMsg.jump_url.get() });
-        }
-      }
-    }
-    catch (Exception paramIntent)
-    {
-      if (QLog.isColorLevel())
-      {
-        QLog.d(this.a, 2, paramIntent, new Object[0]);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d(this.a, 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()) });
-        }
-      }
-    }
+    jdField_a_of_type_Int = 1;
+    jdField_a_of_type_JavaLangString = "AIOSendSvc.CheckPopGrayStips";
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public amas(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, "onSend");
-    }
-    String str = paramIntent.getStringExtra("BUNDLE_CMD");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a, 2, new Object[] { "cmd=", str });
-    }
-    Object localObject;
-    if ("QQApkSvc.pre_download_apk".equals(str))
+    super(paramQQAppInterface);
+  }
+  
+  public void a(AIOSendReq paramAIOSendReq)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putSerializable("VIPAioSendRequest", paramAIOSendReq);
+    super.send(localToServiceMsg);
+  }
+  
+  public void a(String paramString)
+  {
+    paramString = new AIOKeyWordReq(this.app.c(), paramString);
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", this.app.getCurrentAccountUin(), b);
+    localToServiceMsg.extraData.putSerializable("VIPAioSendRequest", paramString);
+    super.send(localToServiceMsg);
+  }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return amat.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (paramObject == null))
     {
-      localObject = new ServerApi.ReqPreDownloadRecmd();
-      ((ServerApi.ReqPreDownloadRecmd)localObject).platform.set("android");
-      ((ServerApi.ReqPreDownloadRecmd)localObject).source.set(paramIntent.getStringExtra("BUNDLE_KEY_SOURCE"));
-      ((ServerApi.ReqPreDownloadRecmd)localObject).scene.set(paramIntent.getStringExtra("BUNDLE_KEY_SCENE"));
-      ((ServerApi.ReqPreDownloadRecmd)localObject).pkg_name.set(paramIntent.getStringExtra("BUNDLE_KEY_PKG_NAME"));
-      ((ServerApi.ReqPreDownloadRecmd)localObject).uin.set(paramIntent.getLongExtra("BUNDLE_KEY_UIN", 0L));
-      paramPacket.setSSOCommand(str);
-      paramPacket.putSendData(bbma.a(((ServerApi.ReqPreDownloadRecmd)localObject).toByteArray()));
+      notifyUI(jdField_a_of_type_Int, false, null);
+      return;
+    }
+    paramToServiceMsg = paramToServiceMsg.getServiceCmd();
+    if (jdField_a_of_type_JavaLangString.equals(paramToServiceMsg))
+    {
+      paramToServiceMsg = (AIOSendRes)paramObject;
+      bdvo.a().a(this.app, paramToServiceMsg);
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "onSendFinish");
-      }
+      notifyUI(jdField_a_of_type_Int, true, paramObject);
       return;
-      if ("QQApkSvc.update_download_count".equals(str))
+      if (b.equals(paramToServiceMsg))
       {
-        localObject = new ServerApi.ReqUpdateDownCountRecmd();
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).source.set(paramIntent.getStringExtra("BUNDLE_KEY_SOURCE"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).scene.set(paramIntent.getStringExtra("BUNDLE_KEY_SCENE"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).pkg_name.set(paramIntent.getStringExtra("BUNDLE_KEY_PKG_NAME"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).uin.set(paramIntent.getLongExtra("BUNDLE_KEY_UIN", 0L));
-        paramPacket.setSSOCommand(str);
-        paramPacket.putSendData(bbma.a(((ServerApi.ReqUpdateDownCountRecmd)localObject).toByteArray()));
+        paramToServiceMsg = (AIOSendRes)paramObject;
+        bdvp.a().a(this.app, paramToServiceMsg);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amas
  * JD-Core Version:    0.7.0.1
  */

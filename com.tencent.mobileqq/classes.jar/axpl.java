@@ -1,79 +1,94 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import com.tencent.mobileqq.startup.step.InitMemoryCache;
-import com.tencent.mobileqq.startup.step.LoadDex;
-import com.tencent.mobileqq.startup.step.OldApplication;
-import com.tencent.mobileqq.startup.step.SetSplash;
-import com.tencent.mobileqq.startup.step.StartService;
-import com.tencent.mobileqq.startup.step.Step;
-import com.tencent.mobileqq.startup.step.Update;
+import android.text.TextUtils;
 
 public class axpl
-  implements axpm
 {
-  private static axpm a;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public long b;
+  public boolean b;
+  public boolean c;
   
-  public static void a()
+  public axpl()
   {
-    a = (axpm)BaseApplicationImpl.sApplication.getClassLoader().loadClass("com.tencent.mobileqq.startup.step.Step$AfterDexStepFactory").newInstance();
+    this(null, 0, true, false);
   }
   
-  public static Step b(int paramInt, axnx paramaxnx, int[] paramArrayOfInt)
+  public axpl(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject;
-    switch (paramInt)
-    {
-    case 5: 
-    case 6: 
-    case 10: 
-    case 11: 
-    case 13: 
-    case 14: 
-    case 15: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    default: 
-      if (a != null) {
-        localObject = a.a(paramInt, paramaxnx, paramArrayOfInt);
-      }
-      break;
-    }
-    for (;;)
-    {
-      ((Step)localObject).mId = paramInt;
-      ((Step)localObject).mDirector = paramaxnx;
-      if (paramInt == 0) {
-        Step.access$002((Step)localObject, paramArrayOfInt);
-      }
-      return localObject;
-      localObject = new LoadDex();
-      continue;
-      localObject = new InitMemoryCache();
-      continue;
-      localObject = new OldApplication();
-      continue;
-      localObject = new SetSplash();
-      continue;
-      localObject = new CheckPermission();
-      continue;
-      localObject = new Update();
-      continue;
-      localObject = new StartService();
-      continue;
-      localObject = new Step();
-    }
+    this(paramString, paramInt, paramBoolean1, paramBoolean2, 0L, 0L);
   }
   
-  public Step a(int paramInt, axnx paramaxnx, int[] paramArrayOfInt)
+  public axpl(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
   {
-    return null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean2;
+    this.jdField_b_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+  }
+  
+  public boolean a(axpl paramaxpl)
+  {
+    if (paramaxpl == null) {
+      throw new NullPointerException();
+    }
+    boolean bool = false;
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramaxpl.jdField_a_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_JavaLangString = paramaxpl.jdField_a_of_type_JavaLangString;
+      bool = true;
+    }
+    if (this.jdField_a_of_type_Int != paramaxpl.jdField_a_of_type_Int)
+    {
+      this.jdField_a_of_type_Int = paramaxpl.jdField_a_of_type_Int;
+      bool = true;
+    }
+    if (this.jdField_a_of_type_Boolean != paramaxpl.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = paramaxpl.jdField_a_of_type_Boolean;
+      bool = true;
+    }
+    if (this.jdField_b_of_type_Boolean != paramaxpl.jdField_b_of_type_Boolean)
+    {
+      this.jdField_b_of_type_Boolean = paramaxpl.jdField_b_of_type_Boolean;
+      bool = true;
+    }
+    if (this.jdField_a_of_type_Long != paramaxpl.jdField_a_of_type_Long)
+    {
+      this.jdField_a_of_type_Long = paramaxpl.jdField_a_of_type_Long;
+      bool = true;
+    }
+    if (this.jdField_b_of_type_Long != paramaxpl.jdField_b_of_type_Long)
+    {
+      this.jdField_b_of_type_Long = paramaxpl.jdField_b_of_type_Long;
+      bool = true;
+    }
+    if (this.jdField_b_of_type_Int != paramaxpl.jdField_b_of_type_Int)
+    {
+      this.jdField_b_of_type_Int = paramaxpl.jdField_b_of_type_Int;
+      bool = true;
+    }
+    if (this.c != paramaxpl.c)
+    {
+      this.c = paramaxpl.c;
+      return true;
+    }
+    return bool;
+  }
+  
+  public String toString()
+  {
+    return "inputFilePath=" + this.jdField_a_of_type_JavaLangString + " speedType=" + this.jdField_a_of_type_Int + " noSleep=" + this.jdField_a_of_type_Boolean + " repeat=" + this.jdField_b_of_type_Boolean + " startTimeMillSecond=" + this.jdField_a_of_type_Long + " endTimeMillSecond=" + this.jdField_b_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axpl
  * JD-Core Version:    0.7.0.1
  */

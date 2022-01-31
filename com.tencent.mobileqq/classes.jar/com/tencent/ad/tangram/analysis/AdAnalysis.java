@@ -205,6 +205,11 @@ public enum AdAnalysis
   
   public void handleAsync(WeakReference<Context> paramWeakReference, List<AdAnalysisEvent> paramList)
   {
+    if (getAdapter() == null)
+    {
+      AdLog.e("AdAnalysis", "getAdapter() == null");
+      return;
+    }
     if ((paramList == null) || (paramList.isEmpty()))
     {
       AdLog.e("AdAnalysis", "handleAsync error");
@@ -217,21 +222,21 @@ public enum AdAnalysis
       str = ((AdAnalysisEvent)paramList.get(0)).getId();
       AdLog.i("AdAnalysis", String.format("handleAsync size:%d eventId:%s", new Object[] { Integer.valueOf(i), str }));
       if ((paramWeakReference == null) || (paramWeakReference.get() == null)) {
-        break label139;
+        break label155;
       }
     }
-    label139:
+    label155:
     for (paramWeakReference = new WeakReference(((Context)paramWeakReference.get()).getApplicationContext());; paramWeakReference = null)
     {
       if (paramWeakReference != null) {
-        break label144;
+        break label160;
       }
       AdLog.e("AdAnalysis", "handleAsync error");
       return;
       str = null;
       break;
     }
-    label144:
+    label160:
     if (AdSettingsUtil.INSTANCE.getSettingsCache((Context)paramWeakReference.get()) == null) {}
     for (long l = 3000L;; l = 0L)
     {

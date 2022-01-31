@@ -1,22 +1,26 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class abwl
-  implements awcf
+  implements DialogInterface.OnDismissListener
 {
-  public abwl(QQSettingMe paramQQSettingMe) {}
+  public abwl(AccountManageActivity paramAccountManageActivity) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.a.c) && (paramBitmap != null) && (QQSettingMe.a(this.a).a().actionId == paramInt1) && (paramInt2 == 200)) {
-      this.a.z();
+    if ((paramDialogInterface != null) && ((paramDialogInterface instanceof Dialog))) {
+      ((Dialog)paramDialogInterface).setOnDismissListener(null);
+    }
+    if (paramDialogInterface == this.a.c) {
+      this.a.c = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwl
  * JD-Core Version:    0.7.0.1
  */

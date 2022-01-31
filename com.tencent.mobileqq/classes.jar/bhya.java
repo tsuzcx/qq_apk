@@ -1,73 +1,49 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.widget.WaveView;
 
 public class bhya
-  extends ahpt
-  implements Cloneable
+  implements Handler.Callback
 {
-  public bhya(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131697689);
-  }
+  public bhya(WaveView paramWaveView) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public boolean handleMessage(Message paramMessage)
   {
-    QLog.d("TroopSpecialAttentionMsg", 2, "deSerialize");
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
+    if (paramMessage == null) {
+      return false;
+    }
+    switch (paramMessage.what)
     {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
-      this.b = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      if ((!TextUtils.isEmpty(this.c)) && (this.jdField_a_of_type_Azmm == null))
-      {
-        this.jdField_a_of_type_Azmm = new azmm();
-        this.jdField_a_of_type_Azmm.a(this.c);
+    }
+    for (;;)
+    {
+      return true;
+      this.a.invalidate();
+      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
+      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
+      if (WaveView.d(this.a) > 0) {
+        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
       }
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.b);
-      if (this.jdField_a_of_type_Azmm != null) {
-        this.c = this.jdField_a_of_type_Azmm.a();
+      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
+      continue;
+      this.a.invalidate();
+      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
+      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
+      if (WaveView.d(this.a) > 0) {
+        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
       }
-      localJSONObject.put("messageNavInfo", this.c);
+      WaveView.a(this.a).removeMessages(1002);
+      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
+      continue;
+      WaveView.a(this.a).removeMessages(1001);
+      WaveView.a(this.a).removeMessages(1002);
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-    return localJSONObject.toString().getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhya
  * JD-Core Version:    0.7.0.1
  */

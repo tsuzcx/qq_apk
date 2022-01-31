@@ -1,41 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import mqq.app.QQPermissionCallback;
 
 public class ajug
-  implements Manager
+  implements QQPermissionCallback
 {
-  private bayv jdField_a_of_type_Bayv;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public Object a;
+  public ajug(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity, int paramInt) {}
   
-  public ajug(QQAppInterface paramQQAppInterface)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.a.obtainMessage(2);
+    paramArrayOfString.arg1 = 1;
+    paramArrayOfString.arg2 = 2131699420;
+    paramArrayOfString.sendToTarget();
   }
   
-  public bayv a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (this.jdField_a_of_type_Bayv == null) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Bayv == null) {
-        this.jdField_a_of_type_Bayv = new bayv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      return this.jdField_a_of_type_Bayv;
-    }
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Bayv != null) {
-      this.jdField_a_of_type_Bayv.a();
-    }
+    CreateFaceToFaceDiscussionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajug
  * JD-Core Version:    0.7.0.1
  */

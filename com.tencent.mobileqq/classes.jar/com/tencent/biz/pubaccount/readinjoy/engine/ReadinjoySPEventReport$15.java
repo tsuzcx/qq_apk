@@ -5,8 +5,8 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
 import java.util.List;
-import osx;
-import sgg;
+import oxp;
+import syb;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public final class ReadinjoySPEventReport$15
@@ -21,10 +21,10 @@ public final class ReadinjoySPEventReport$15
     ArrayList localArrayList;
     oidb_cmd0x80a.AttributeList localAttributeList;
     PBStringField localPBStringField;
-    if (osx.b(60))
+    if (oxp.b(60))
     {
-      long l1 = osx.b();
-      l2 = osx.a(l1 * 1000L) / 1000L;
+      long l1 = oxp.b();
+      l2 = oxp.a(l1 * 1000L) / 1000L;
       int k = this.jdField_a_of_type_JavaUtilList.size() - 1;
       int i = 0;
       if (k >= 0)
@@ -55,7 +55,7 @@ public final class ReadinjoySPEventReport$15
       localObject = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(1);
       ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("aiotype");
-      ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(String.valueOf(osx.a(this.jdField_a_of_type_Int)));
+      ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(String.valueOf(oxp.a(this.jdField_a_of_type_Int)));
       localArrayList.add(localObject);
       localObject = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
@@ -91,7 +91,7 @@ public final class ReadinjoySPEventReport$15
       ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("costtime");
       ((oidb_cmd0x80a.AttributeList)localObject).att_value.set("" + l2);
       localArrayList.add(localObject);
-      sgg.a(60, localArrayList);
+      syb.a(60, localArrayList);
       return;
       localObject = "0";
       break;
@@ -100,7 +100,7 @@ public final class ReadinjoySPEventReport$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.15
  * JD-Core Version:    0.7.0.1
  */

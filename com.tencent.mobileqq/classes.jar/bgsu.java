@@ -1,135 +1,39 @@
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.RemoteException;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.1;
-import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import mqq.app.AppRuntime;
+import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
+import android.content.Context;
+import android.content.DialogInterface;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
-public class bgsu
+class bgsu
+  extends bgsi
 {
-  private ServiceConnection a;
-  protected bgsk a;
-  public final String a;
-  protected WeakReference<AppRuntime> a;
-  protected HashSet<String> a;
-  public ConcurrentLinkedQueue<bgsw> a;
-  protected boolean a;
-  public final String b = "com.qqindividuality.ipc.QQIndividualityRemoteProxyService";
-  
-  public bgsu(AppRuntime paramAppRuntime)
+  bgsu(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
   {
-    this.jdField_a_of_type_JavaLangString = "QQIndividualityRemoteProxy";
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
-    this.jdField_a_of_type_AndroidContentServiceConnection = new bgsv(this);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
-    a("qqindividuality_signature");
+    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
   }
   
-  private boolean a()
+  protected bgsh a()
   {
-    if ((this.jdField_a_of_type_Bgsk == null) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
-    {
-      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localAppRuntime != null)
-      {
-        QQIndividualityPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection, "com.qqindividuality.ipc.QQIndividualityRemoteProxyService");
-        this.jdField_a_of_type_Boolean = true;
-        return true;
-      }
-    }
-    return false;
+    return new bgsh(2131694387, new bgsw(this));
   }
   
-  private boolean a(bgsw parambgsw)
+  protected void a(DialogInterface paramDialogInterface)
   {
-    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(parambgsw);
+    a("expo");
   }
   
-  private boolean b()
+  protected bgsh b()
   {
-    if ((this.jdField_a_of_type_Bgsk != null) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
-    {
-      AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localAppRuntime != null)
-      {
-        QQIndividualityPluginProxyService.a(localAppRuntime, this.jdField_a_of_type_AndroidContentServiceConnection);
-        this.jdField_a_of_type_Bgsk = null;
-        this.jdField_a_of_type_Boolean = false;
-      }
-    }
-    return true;
+    return new bgsh(2131694331, new bgsv(this));
   }
   
-  public void a(bgsw parambgsw)
+  protected String b()
   {
-    if ((this.jdField_a_of_type_Bgsk != null) && (parambgsw != null))
-    {
-      Looper localLooper = Looper.getMainLooper();
-      if (Thread.currentThread() != localLooper.getThread()) {
-        new Handler(localLooper).post(new QQIndividualityRemoteProxy.1(this, parambgsw));
-      }
-    }
-    else
-    {
-      return;
-    }
-    try
-    {
-      this.jdField_a_of_type_Bgsk.a(parambgsw.jdField_a_of_type_Int, parambgsw.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-    catch (RemoteException parambgsw) {}
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.add(paramString);
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(String paramString, int paramInt, Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-    {
-      paramString = new bgsw(this, paramInt, paramBundle);
-      if (this.jdField_a_of_type_Bgsk != null) {
-        a(paramString);
-      }
-      for (;;)
-      {
-        return true;
-        a(paramString);
-        a();
-      }
-    }
-    return false;
-  }
-  
-  public boolean b(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashSet.contains(paramString))
-    {
-      this.jdField_a_of_type_JavaUtilHashSet.remove(paramString);
-      if (this.jdField_a_of_type_JavaUtilHashSet.isEmpty()) {
-        b();
-      }
-    }
-    return false;
+    return "off_idAlert";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgsu
  * JD-Core Version:    0.7.0.1
  */

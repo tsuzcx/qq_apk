@@ -1,98 +1,65 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.RIJRedPacketManager;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.protofile.cmd0xe40.cmd0xe40.RspBody;
+import com.tencent.qphone.base.util.QLog;
 
 public class qfn
-  extends BaseAdapter
-  implements View.OnClickListener
+  extends nac
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private List<Long> jdField_a_of_type_JavaUtilList;
+  public qfn(RIJRedPacketManager paramRIJRedPacketManager, qfo paramqfo) {}
   
-  public qfn(Context paramContext, List<Long> paramList)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= paramInt)) {
-      return null;
-    }
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559992, paramViewGroup, false);
-      paramViewGroup = new qfo();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131375503));
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131368583));
-      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131378269));
-      paramView.setTag(paramViewGroup);
+    QLog.i("RIJRedPacketManager", 1, "yyy_0xe40 error code: " + paramInt);
+    if (paramInt == 0) {
+      paramBundle = new cmd0xe40.RspBody();
     }
     for (;;)
     {
-      if (paramViewGroup != null)
+      try
       {
-        long l = ((Long)this.jdField_a_of_type_JavaUtilList.get(paramInt)).longValue();
-        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(l);
-        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setNickNameByUin(l);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setTag(2131374824, Integer.valueOf(paramInt));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (!paramBundle.status.has()) {
+          break label208;
+        }
+        paramInt = paramBundle.status.get();
+        if (!paramBundle.tips.has()) {
+          break label202;
+        }
+        paramArrayOfByte = paramBundle.tips.get();
+        QLog.i("RIJRedPacketManager", 1, "yyy_0xe40 status: " + paramInt + " | tips wording: " + paramArrayOfByte);
+        paramBundle = this.jdField_a_of_type_Qfo;
+        if (!TextUtils.isEmpty(paramArrayOfByte))
+        {
+          bool = true;
+          paramBundle.a(bool, paramArrayOfByte, paramInt);
+          return;
+        }
+        boolean bool = false;
+        continue;
+        this.jdField_a_of_type_Qfo.a(false, "", 0);
       }
-      return paramView;
-      if ((paramView.getTag() instanceof qfo)) {
-        paramViewGroup = (qfo)paramView.getTag();
-      } else {
-        paramViewGroup = null;
-      }
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    int i;
-    do
-    {
-      do
+      catch (Exception paramArrayOfByte)
       {
+        this.jdField_a_of_type_Qfo.a(false, "", 0);
+        QLog.i("RIJRedPacketManager", 1, "yyy_0xe40 error: " + paramArrayOfByte.toString());
         return;
-      } while (paramView.getTag(2131374824) == null);
-      i = ((Integer)paramView.getTag(2131374824)).intValue();
-    } while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= i));
-    ohf.a(String.valueOf(this.jdField_a_of_type_JavaUtilList.get(i)), this.jdField_a_of_type_AndroidContentContext);
+      }
+      return;
+      label202:
+      paramArrayOfByte = "";
+      continue;
+      label208:
+      paramInt = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qfn
  * JD-Core Version:    0.7.0.1
  */

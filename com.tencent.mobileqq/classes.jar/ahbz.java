@@ -1,131 +1,30 @@
-import Wallet.DownloadReportReq;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ahbz
-  extends bbwt
+  implements DialogInterface.OnClickListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  public ahbz(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public ahbz(PreloadResource paramPreloadResource, int paramInt, WeakReference paramWeakReference, bbwt parambbwt, long paramLong) {}
-  
-  public void onDoneFile(bbwu parambbwu)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (PreloadManager.a((PreloadManager)localObject)) {
-      ((PreloadManager)localObject).c();
-    }
-    if (this.jdField_a_of_type_Bbwt != null) {
-      this.jdField_a_of_type_Bbwt.onDoneFile(parambbwu);
-    }
-    localObject = new DownloadReportReq();
-    int i;
-    File localFile;
-    long l;
-    if (parambbwu.jdField_a_of_type_Int == 0)
+    switch (paramInt)
     {
-      ((DownloadReportReq)localObject).iType = 1;
-      int j = -1;
-      i = j;
-      if (parambbwu.jdField_a_of_type_JavaUtilMap != null)
-      {
-        i = j;
-        if (!TextUtils.isEmpty(parambbwu.jdField_a_of_type_JavaLangString))
-        {
-          localFile = (File)parambbwu.jdField_a_of_type_JavaUtilMap.get(parambbwu.jdField_a_of_type_JavaLangString);
-          if (localFile != null) {
-            break label242;
-          }
-          l = -2L;
-          label113:
-          i = (int)l;
-        }
-      }
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        ((DownloadReportReq)localObject).vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos(i);
-        ((DownloadReportReq)localObject).iUin = this.jdField_a_of_type_Long;
-        ((DownloadReportReq)localObject).sPhoneType = bbdh.i();
-        ((DownloadReportReq)localObject).sOsVersion = bbdh.e();
-        ((DownloadReportReq)localObject).sQQVersion = bbdh.c();
-        ((DownloadReportReq)localObject).iScene = parambbwu.a().getInt("scene");
-        agwt.a((JceStruct)localObject, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down result:" + parambbwu.jdField_a_of_type_Int + localObject);
-        }
-        return;
-        ((DownloadReportReq)localObject).iType = 2;
-        break;
-        try
-        {
-          label242:
-          if (localFile.exists())
-          {
-            l = localFile.length();
-            break label113;
-          }
-          l = -3L;
-        }
-        catch (Throwable localThrowable)
-        {
-          i = -4;
-          localThrowable.printStackTrace();
-        }
-      }
-    }
-  }
-  
-  public void onProgress(bbwu parambbwu)
-  {
-    double d;
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      long l1 = System.currentTimeMillis();
-      long l2 = parambbwu.g;
-      d = parambbwu.f / (l1 - l2);
-      if (d >= 1.0D) {
-        break label43;
-      }
-    }
-    label43:
-    do
-    {
+    default: 
       return;
-      parambbwu = new DownloadReportReq();
-      parambbwu.sSpeed = (d + "");
-      parambbwu.vecResInfo = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.getMyResInfos();
-      parambbwu.iType = 0;
-      parambbwu.iUin = this.jdField_a_of_type_Long;
-      agwt.a(parambbwu, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("PreloadResource", 2, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource.mResId + " flow down speed:" + d);
-  }
-  
-  public boolean onStart(bbwu parambbwu)
-  {
-    int i = 3;
-    parambbwu.f = 1048576L;
-    if (this.jdField_a_of_type_Int > 3) {
-      i = this.jdField_a_of_type_Int;
+    case 1: 
+      ThreadManager.post(new ClassificationSearchActivity.15.1(this), 10, null, true);
+      return;
     }
-    parambbwu.b = i;
-    return super.onStart(parambbwu);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahbz
  * JD-Core Version:    0.7.0.1
  */

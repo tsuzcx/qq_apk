@@ -1,30 +1,54 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.widget.ProgressPieView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qidian.QidianProfileCardActivity.QidianSimpleProfileItem;
 
-public class bfva
-  extends Handler
+public final class bfva
+  implements Parcelable.Creator<QidianProfileCardActivity.QidianSimpleProfileItem>
 {
-  long jdField_a_of_type_Long;
-  
-  public bfva(ProgressPieView paramProgressPieView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public QidianProfileCardActivity.QidianSimpleProfileItem a(Parcel paramParcel)
   {
-    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
-    if (i < this.jdField_a_of_type_ComTencentWidgetProgressPieView.a)
+    boolean bool2 = true;
+    QidianProfileCardActivity.QidianSimpleProfileItem localQidianSimpleProfileItem = new QidianProfileCardActivity.QidianSimpleProfileItem();
+    localQidianSimpleProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQidianSimpleProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
-      sendEmptyMessageDelayed(0, 1L);
-      return;
+      bool1 = true;
+      localQidianSimpleProfileItem.jdField_a_of_type_Boolean = bool1;
+      localQidianSimpleProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
+      localQidianSimpleProfileItem.jdField_b_of_type_Int = paramParcel.readInt();
+      localQidianSimpleProfileItem.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      if (paramParcel.readByte() == 0) {
+        break label109;
+      }
+      bool1 = true;
+      label80:
+      localQidianSimpleProfileItem.jdField_b_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label114;
+      }
     }
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.a);
+    label109:
+    label114:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localQidianSimpleProfileItem.jdField_c_of_type_Boolean = bool1;
+      return localQidianSimpleProfileItem;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label80;
+    }
+  }
+  
+  public QidianProfileCardActivity.QidianSimpleProfileItem[] a(int paramInt)
+  {
+    return new QidianProfileCardActivity.QidianSimpleProfileItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfva
  * JD-Core Version:    0.7.0.1
  */

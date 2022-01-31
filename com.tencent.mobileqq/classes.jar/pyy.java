@@ -1,109 +1,75 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class pyy
-  extends pyw
+  extends pxl
 {
-  public pyy(AppInterface paramAppInterface)
+  public pyy(Context paramContext, bcws parambcws, rqj paramrqj)
   {
-    super(paramAppInterface);
+    super(paramContext, parambcws, paramrqj);
   }
   
-  public int a(int paramInt)
+  public pxl a()
   {
-    int i = -1;
-    try
-    {
-      paramInt = this.jdField_a_of_type_Aukp.a(GuideData.class.getSimpleName(), "source=?", new String[] { String.valueOf(paramInt) });
-      return paramInt;
+    this.jdField_a_of_type_Boolean = true;
+    return h().i().k().l().n();
+  }
+  
+  public pxl d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
     }
-    catch (Exception localException)
-    {
-      do
-      {
-        paramInt = i;
-      } while (!QLog.isColorLevel());
-      QLog.e("ReadInJoyOperationManager", 2, localException, new Object[0]);
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderSpecialTopic);
     }
-    return -1;
-  }
-  
-  public BaseResData a(String paramString)
-  {
-    String str1 = paramString;
-    if (paramString == null) {
-      str1 = "";
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderFriendRecommend);
     }
-    if ("operation_guide".equals(str1)) {}
-    for (paramString = GuideData.class;; paramString = null)
-    {
-      if (paramString == null) {}
-      do
-      {
-        return null;
-        String str2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-        paramString = this.jdField_a_of_type_Aukp.a(paramString, paramString.getSimpleName(), true, "uin=? and showTime!=0 and business=?", new String[] { str2, str1 }, null, null, "showTime desc", "1");
-      } while ((paramString == null) || (paramString.size() <= 0));
-      return (BaseResData)paramString.get(0);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
     }
-  }
-  
-  public List<GuideData> a(String paramString1, String paramString2)
-  {
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "";
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentInfo);
     }
-    int i = (int)(System.currentTimeMillis() / 1000L);
-    paramString1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    return this.jdField_a_of_type_Aukp.a(GuideData.class, GuideData.class.getSimpleName(), true, "uin=? and showTime=? and business=? and endTime>? and id=?", new String[] { paramString1, "0", str, String.valueOf(i), paramString2 }, null, null, "seq desc", null);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Aukp != null)
-    {
-      this.jdField_a_of_type_Aukp.a(GuideData.class);
-      return;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump);
     }
-    QLog.e("ReadInJoyOperationManager", 1, "[clearGuideDataInDatabase] entity manager is null");
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentComment);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
   }
   
-  public void a(String paramString, BaseResData paramBaseResData)
+  public pxl e()
   {
-    paramBaseResData.isReady = true;
-    paramBaseResData.business = paramString;
-    this.jdField_a_of_type_Aukp.b(paramBaseResData);
+    return null;
   }
   
-  public void a(String[] paramArrayOfString) {}
-  
-  public boolean a(String paramString, BaseResData paramBaseResData)
+  public pxl o()
   {
-    return true;
+    return super.o();
   }
   
-  public void b(String paramString, BaseResData paramBaseResData)
+  public pxl p()
   {
-    paramBaseResData.showTime = ((int)(System.currentTimeMillis() / 1000L));
-    paramBaseResData.setStatus(1000);
-    this.jdField_a_of_type_Aukp.b(paramBaseResData);
+    return super.p();
   }
-  
-  public boolean b(String paramString, BaseResData paramBaseResData)
-  {
-    return aybs.a(new File(b(paramString, paramBaseResData.id)));
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pyy
  * JD-Core Version:    0.7.0.1
  */

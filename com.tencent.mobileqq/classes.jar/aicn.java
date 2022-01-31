@@ -1,27 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public class aicn
-  extends MqqHandler
+class aicn
+  implements View.OnClickListener
 {
-  public aicn(ContactsInnerFrame paramContactsInnerFrame) {}
+  aicn(aicl paramaicl) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
-    }
-    ContactsInnerFrame.a(this.a);
+    this.a.a.setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aicn
  * JD-Core Version:    0.7.0.1
  */

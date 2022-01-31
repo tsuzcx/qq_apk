@@ -1,22 +1,14 @@
-import android.os.Bundle;
-import org.json.JSONObject;
-
-class bhtb
-  implements bhte
+public class bhtb
 {
-  bhtb(bhta parambhta) {}
-  
-  public void a(JSONObject paramJSONObject, Bundle paramBundle)
-  {
-    paramJSONObject.put("recommend_on", paramBundle.getString("recommend_on"));
-    paramJSONObject.put("recommendPush_on", paramBundle.getString("recommendPush_on"));
-    paramJSONObject.put("recommendNotification_on", paramBundle.getString("recommendNotification_on"));
-    paramJSONObject.put("recommendChatCachePhoto_on", paramBundle.getString("recommendChatCachePhoto_on"));
-  }
+  public float a;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhtb
  * JD-Core Version:    0.7.0.1
  */

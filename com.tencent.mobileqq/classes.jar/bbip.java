@@ -1,18 +1,75 @@
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
+import java.util.ArrayList;
 
-class bbip
-  implements View.OnClickListener
+public class bbip
+  extends BaseAdapter
 {
-  bbip(bbin parambbin, DialogInterface.OnClickListener paramOnClickListener) {}
+  public static final String a;
+  public static final String b = alpo.a(2131701839);
+  protected Context a;
+  protected LayoutInflater a;
+  protected QQAppInterface a;
+  protected NewTroopCateView a;
+  protected ArrayList<bbkk> a;
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bbin, 1);
+    jdField_a_of_type_JavaLangString = alpo.a(2131701838);
+  }
+  
+  public bbip(NewTroopCateView paramNewTroopCateView, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramNewTroopCateView.a;
+    this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCateView = paramNewTroopCateView;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void a(ArrayList<bbkk> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560424, null);
+      paramView = new bbis(this, localView);
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
     }
-    this.jdField_a_of_type_Bbin.dismiss();
+    for (;;)
+    {
+      paramViewGroup.a((bbkk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+      return localView;
+      paramViewGroup = (bbis)paramView.getTag();
+      localView = paramView;
+    }
   }
 }
 

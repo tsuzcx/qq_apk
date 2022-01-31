@@ -1,146 +1,82 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import com.tencent.mobileqq.widget.MyGridView;
 import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class acpy
-  extends ajto
+  extends MqqHandler
 {
-  public acpy(VisitorsActivity paramVisitorsActivity) {}
+  public acpy(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  protected void onFavoritorsList(boolean paramBoolean, String paramString, ArrayList<CardProfile> paramArrayList, long paramLong1, long paramLong2, byte[] paramArrayOfByte, Card paramCard)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel())
+    switch (paramMessage.what)
     {
-      QLog.d("VisitorsActivity", 2, "onFavoritorsList.isSuccess=" + paramBoolean + ";uin=" + paramString + ";startMid=" + paramLong1 + ";nextMid=" + paramLong2);
-      if (paramArrayList != null) {
-        QLog.d("VisitorsActivity", 2, "onFavoritorsList.voters.size=" + paramArrayList.size());
-      }
     }
-    if (!this.a.app.getCurrentAccountUin().equals(paramString)) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      paramString = this.a.jdField_b_of_type_JavaUtilArrayList;
-      if (this.a.jdField_b_of_type_Boolean) {
-        paramString = new ArrayList();
-      }
-      this.a.jdField_b_of_type_Long = paramLong2;
-      paramArrayOfByte = this.a.jdField_b_of_type_Acqr;
-      if (this.a.jdField_b_of_type_Long != -1L) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        paramArrayOfByte.a(paramBoolean);
-        paramArrayOfByte = paramString;
-        if (paramArrayList != null) {
-          paramArrayOfByte = awzu.a(paramString, paramArrayList);
-        }
-        this.a.b(paramArrayOfByte, paramLong1);
-        return;
-      }
-    }
-    this.a.d();
-  }
-  
-  protected void onGetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorsActivity", 2, "onGetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ";isOn=" + paramBoolean2);
-    }
-    if (paramBoolean1) {
-      this.a.a(paramBoolean2);
-    }
-  }
-  
-  protected void onReqDelVoteRecord(boolean paramBoolean, long paramLong1, long paramLong2, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VisitorsActivity", 2, String.format("onReqDelVoteRecord selfUin:%s targetUin:%d type:%d", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt) }));
-    }
-    if (paramLong1 != Long.parseLong(this.a.app.getCurrentAccountUin())) {}
-    while (paramBoolean) {
-      return;
-    }
-    this.a.a(1, ajya.a(2131716823));
-  }
-  
-  protected void onReqFavoriteResult(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    if (!paramString1.equals(this.a.app.getCurrentAccountUin())) {}
+    label424:
     do
     {
-      return;
-      if (paramInt2 == 1)
+      do
       {
-        if (!paramBoolean)
+        do
         {
-          this.a.jdField_a_of_type_Avbc.b(paramString2, paramInt1, true);
           return;
-        }
-        this.a.jdField_a_of_type_Avbc.a(paramString2, paramInt1, true);
+          if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing())) {
+            DiscussionInfoCardActivity.a(this.a).dismiss();
+          }
+          paramMessage = new Intent();
+          paramMessage.putExtra("isNeedFinish", true);
+          this.a.setResult(-1, paramMessage);
+          this.a.finish();
+          return;
+        } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
+        DiscussionInfoCardActivity.a(this.a).dismiss();
         return;
-      }
-    } while (paramInt2 != 0);
-    this.a.jdField_a_of_type_Avbc.a(Long.parseLong(paramString2));
-  }
-  
-  protected void onSetPartakeLikeRankingList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VisitorsActivity", 2, "onSetPartakeLikeRankingList.isSuccess=" + paramBoolean1 + ";isOn=" + paramBoolean2);
-    }
-    if (paramBoolean1) {
-      this.a.a(paramBoolean2);
-    }
-  }
-  
-  protected void onVoterList(boolean paramBoolean, String paramString, ArrayList<CardProfile> paramArrayList, ArrayList<Long> paramArrayList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong1, long paramLong2, byte[] paramArrayOfByte, Card paramCard)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("VisitorsActivity", 2, "onVoterList.isSuccess=" + paramBoolean + ";uin=" + paramString + ";startMid=" + paramLong1 + ";nextMid=" + paramLong2 + "todayVoteCount=" + paramInt3 + "todayVoteRank=" + paramInt4 + "totalVoteCount=" + paramInt5);
-      if (paramArrayList != null) {
-        QLog.d("VisitorsActivity", 2, "onVoterList.voters.size=" + paramArrayList.size());
-      }
-    }
-    if (!this.a.app.getCurrentAccountUin().equals(paramString)) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_Avbc.a(paramArrayList1, paramInt1, paramInt2, paramLong1);
-      paramString = this.a.jdField_a_of_type_JavaUtilArrayList;
-      if (this.a.jdField_a_of_type_Boolean)
-      {
-        this.a.app.a().c(ajsd.E, 1001);
-        this.a.app.a().c(ajsd.E, 10002);
-        paramString = new ArrayList();
-      }
-      this.a.jdField_a_of_type_Long = paramLong2;
-      paramArrayList1 = this.a.jdField_a_of_type_Acqr;
-      if (this.a.jdField_a_of_type_Long != -1L) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        paramArrayList1.a(paramBoolean);
-        paramArrayList1 = paramString;
-        if (paramArrayList != null) {
-          paramArrayList1 = awzu.a(paramString, paramArrayList);
+        if (DiscussionInfoCardActivity.a(this.a) == 3000)
+        {
+          if (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) {
+            DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+          }
         }
-        this.a.a(paramArrayList1, paramLong1);
-        this.a.a(paramInt3, paramInt4, paramInt5);
-        return;
-      }
-    }
-    this.a.c();
+        else
+        {
+          paramMessage = (ArrayList)paramMessage.obj;
+          int i = paramMessage.size();
+          DiscussionInfoCardActivity.a(this.a).setText(alpo.a(2131703724) + i + alpo.a(2131703725));
+          DiscussionInfoCardActivity.a(this.a).setPadding(DiscussionInfoCardActivity.b(this.a), DiscussionInfoCardActivity.c(this.a), DiscussionInfoCardActivity.d(this.a), DiscussionInfoCardActivity.e(this.a));
+          DiscussionInfoCardActivity.a(this.a, paramMessage);
+          if (DiscussionInfoCardActivity.a(this.a) != null) {
+            break label424;
+          }
+          DiscussionInfoCardActivity.a(this.a, new acpz(this.a));
+          DiscussionInfoCardActivity.a(this.a).setAdapter(DiscussionInfoCardActivity.a(this.a));
+        }
+        for (;;)
+        {
+          removeMessages(0);
+          return;
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setText(this.a.getString(2131694610));
+          if (!AppSetting.c) {
+            break;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setContentDescription(alpo.a(2131703730) + this.a.getString(2131694610) + alpo.a(2131703722));
+          break;
+          DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
+        }
+      } while (DiscussionInfoCardActivity.a(this.a) != 0);
+      paramMessage = (String)paramMessage.obj;
+    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (paramMessage == null) || (!DiscussionInfoCardActivity.a(this.a).equals(paramMessage)));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpy
  * JD-Core Version:    0.7.0.1
  */

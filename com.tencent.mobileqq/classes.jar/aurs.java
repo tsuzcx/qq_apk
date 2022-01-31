@@ -1,26 +1,33 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class aurs
+class aurs
+  extends axhi
 {
-  public String a;
-  public String b;
+  aurs(aurr paramaurr, QQAppInterface paramQQAppInterface) {}
   
-  public boolean a()
+  public void a(String paramString, List<NumRedMsg.NumMsgBusi> paramList)
   {
-    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("PrecoverBusinessInfo:");
-    localStringBuilder.append("businessId=").append(this.a);
-    localStringBuilder.append(", name=").append(this.b);
-    return localStringBuilder.toString();
+    if (QLog.isColorLevel()) {
+      QLog.d("NearbyNewRedDotManagerQ.qqstory.redPoint", 2, "updateNumMsg: appid msgList.size = " + paramList.size());
+    }
+    if (("nearby_num_red_dot".equals(paramString)) && (paramList != null))
+    {
+      this.jdField_a_of_type_Aurr.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramList);
+      alwx.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      if ((paramString != null) && (paramString.a("businessbase_processor") != null)) {
+        paramString.a("businessbase_processor").a(105, true, null);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aurs
  * JD-Core Version:    0.7.0.1
  */

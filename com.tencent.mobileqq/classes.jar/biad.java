@@ -1,100 +1,93 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class biad
+public abstract class biad<M, VH extends biac<M>>
+  extends RecyclerView.Adapter<biac<M>>
 {
-  private static biad jdField_a_of_type_Biad;
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).getBoolean("HAS_PULL", false);
-  private boolean b;
+  protected Context a;
+  protected View a;
+  protected biaa a;
+  protected biab a;
+  protected View b;
   
-  private int a()
+  public biad(Context paramContext)
   {
-    if (this.b) {
-      return this.jdField_a_of_type_Int;
-    }
-    this.b = true;
-    long l = a(BaseApplicationImpl.getApplication());
-    if (b(BaseApplicationImpl.getApplication()) > l) {}
-    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0) {
-      return this.jdField_a_of_type_Int;
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static long a(Context paramContext)
-  {
-    String str = paramContext.getPackageName();
-    try
-    {
-      long l = paramContext.getPackageManager().getPackageInfo(str, 0).firstInstallTime;
-      return l;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return 0L;
-  }
+  public abstract VH a(ViewGroup paramViewGroup, int paramInt);
   
-  public static biad a()
+  public void a(View paramView)
   {
-    if (jdField_a_of_type_Biad == null) {}
-    try
+    if (paramView == null)
     {
-      if (jdField_a_of_type_Biad == null) {
-        jdField_a_of_type_Biad = new biad();
-      }
-      return jdField_a_of_type_Biad;
-    }
-    finally {}
-  }
-  
-  private void a()
-  {
-    SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("PackageUpdateManager", 4).edit();
-    localEditor.putBoolean("HAS_PULL", this.jdField_a_of_type_Boolean);
-    localEditor.apply();
-  }
-  
-  public static long b(Context paramContext)
-  {
-    String str = paramContext.getPackageName();
-    try
-    {
-      long l = paramContext.getPackageManager().getPackageInfo(str, 0).lastUpdateTime;
-      return l;
-    }
-    catch (Exception paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return 0L;
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      QLog.d("PackageUpdateManager", 1, "checkUpgrade has pulll");
-    }
-    while (a() != 1) {
+      Log.w("HeaderAndFooterAdapter", "add the footer view is null");
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    QLog.d("PackageUpdateManager", 1, "checkUpgrade need pull friendlist ");
-    ((FriendListHandler)paramQQAppInterface.a(1)).a(true);
-    a();
+    this.b = paramView;
+    notifyDataSetChanged();
+  }
+  
+  public abstract void a(VH paramVH, int paramInt);
+  
+  public final biac b(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt == 1024) {
+      paramViewGroup = new biac(this.jdField_a_of_type_AndroidViewView);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Biaa != null) {
+        paramViewGroup.itemView.setOnClickListener(new biae(this, paramViewGroup));
+      }
+      if (this.jdField_a_of_type_Biab != null) {
+        paramViewGroup.itemView.setOnLongClickListener(new biaf(this, paramViewGroup));
+      }
+      return paramViewGroup;
+      if (paramInt == 1025) {
+        paramViewGroup = new biac(this.b);
+      } else {
+        paramViewGroup = a(paramViewGroup, paramInt);
+      }
+    }
+  }
+  
+  public final void b(biac parambiac, int paramInt)
+  {
+    switch (parambiac.getItemViewType())
+    {
+    default: 
+      a(parambiac, paramInt);
+    }
+  }
+  
+  public int c()
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      i = 1;
+    }
+    int j = i;
+    if (this.b != null) {
+      j = i + 1;
+    }
+    return j;
+  }
+  
+  public int d()
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return 0;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biad
  * JD-Core Version:    0.7.0.1
  */

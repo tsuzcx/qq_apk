@@ -1,10 +1,12 @@
 package okio;
 
 import java.io.InputStream;
+import java.nio.channels.ReadableByteChannel;
 import java.nio.charset.Charset;
+import javax.annotation.Nullable;
 
 public abstract interface BufferedSource
-  extends Source
+  extends ReadableByteChannel, Source
 {
   public abstract Buffer buffer();
   
@@ -13,6 +15,8 @@ public abstract interface BufferedSource
   public abstract long indexOf(byte paramByte);
   
   public abstract long indexOf(byte paramByte, long paramLong);
+  
+  public abstract long indexOf(byte paramByte, long paramLong1, long paramLong2);
   
   public abstract long indexOf(ByteString paramByteString);
   
@@ -23,6 +27,10 @@ public abstract interface BufferedSource
   public abstract long indexOfElement(ByteString paramByteString, long paramLong);
   
   public abstract InputStream inputStream();
+  
+  public abstract boolean rangeEquals(long paramLong, ByteString paramByteString);
+  
+  public abstract boolean rangeEquals(long paramLong, ByteString paramByteString, int paramInt1, int paramInt2);
   
   public abstract int read(byte[] paramArrayOfByte);
   
@@ -70,19 +78,24 @@ public abstract interface BufferedSource
   
   public abstract int readUtf8CodePoint();
   
+  @Nullable
   public abstract String readUtf8Line();
   
   public abstract String readUtf8LineStrict();
+  
+  public abstract String readUtf8LineStrict(long paramLong);
   
   public abstract boolean request(long paramLong);
   
   public abstract void require(long paramLong);
   
+  public abstract int select(Options paramOptions);
+  
   public abstract void skip(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.BufferedSource
  * JD-Core Version:    0.7.0.1
  */

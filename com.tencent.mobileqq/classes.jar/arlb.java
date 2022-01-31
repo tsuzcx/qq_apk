@@ -1,44 +1,47 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
-public class arlb
-  extends Handler
+class arlb
+  implements bevo
 {
-  WeakReference<WatchTogetherFloatingView> a;
+  arlb(arky paramarky, List paramList, aqns paramaqns, arld paramarld) {}
   
-  public arlb(WatchTogetherFloatingView paramWatchTogetherFloatingView)
+  public void a(int paramInt)
   {
-    this.a = new WeakReference(paramWatchTogetherFloatingView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    if (paramInt == 2)
     {
-    }
-    do
-    {
-      return;
-      sendEmptyMessageDelayed(2, 20000L);
-      return;
-      removeMessages(2);
-      return;
-      try
+      armz.d(arky.a(this.jdField_a_of_type_Arky).getString(2131692912));
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        ((WatchTogetherFloatingView)this.a.get()).a();
-        return;
+        localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+          if (bdcs.b(localFileManagerEntity.getFilePath())) {
+            this.jdField_a_of_type_Aqns.a(localFileManagerEntity.getFilePath(), "", arky.a(this.jdField_a_of_type_Arky).getCurrentAccountUin(), 0, false);
+          } else {
+            this.jdField_a_of_type_Aqns.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+          }
+        }
       }
-      catch (NullPointerException paramMessage) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("WatchTogetherFloatingView", 2, "MESSAGE_WAIT_LOADING END, but View missing");
+      if (this.jdField_a_of_type_Arld != null) {
+        this.jdField_a_of_type_Arld.a(4, 0);
+      }
+    }
+    while (this.jdField_a_of_type_Arld == null)
+    {
+      Iterator localIterator;
+      FileManagerEntity localFileManagerEntity;
+      return;
+    }
+    this.jdField_a_of_type_Arld.a(4, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arlb
  * JD-Core Version:    0.7.0.1
  */

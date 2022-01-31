@@ -16,27 +16,22 @@ public class BridgeLoger
   private static final String HTTP_CALLBACK_PREFIX = "WeixinJSBridge.subscribeHandler(\"onRequestTaskStateChange\",";
   private static int MAX_CALLBACKID = 1048576;
   private static int MAX_UNIKEYID = 1024;
-  private static int RESERVER_BIT = 0;
+  private static int RESERVER_BIT = 11;
   private static Pattern SUBSCRIBE_PATTERN = Pattern.compile("(?<=\").*?(?=\")");
   private static final String SUBSCRIBE_PREFIX = "WeixinJSBridge.subscribeHandler";
   private static final String TAG = "<API>";
   private static final String TT_GLOBAL = "__TT__GLOBAL__";
   private static Pattern TT_GLOBAL_PATTERN = Pattern.compile(".*__TT__GLOBAL__.*");
   private static final String __JSBRIDGE_ALL_LOG__ = "__jsBridge_all_log__";
-  private static int gApiCount = 0;
-  private static int gUniKeyPrev = 0;
   private HashMap<Integer, Long> CallbackID2StartTime = new HashMap();
   private HashMap<Integer, String> EventName2CallbackID = new HashMap();
   private Set<String> LOG_BLACK_LIST;
   private Set<String> LOG_WHITE_LIST;
   private HashMap<Integer, Integer> RequestTaskID2CallbackID = new HashMap();
+  private int gApiCount = 0;
+  private int gUniKeyPrev = 0;
   private TTEngine mTritonEngine;
   private boolean printAllLog = false;
-  
-  static
-  {
-    RESERVER_BIT = 11;
-  }
   
   public BridgeLoger(TTEngine paramTTEngine)
   {
@@ -143,10 +138,10 @@ public class BridgeLoger
     if (paramInt < MAX_CALLBACKID)
     {
       int i = RESERVER_BIT;
-      int j = gUniKeyPrev;
-      gUniKeyPrev = j + 1;
-      if (gUniKeyPrev > MAX_UNIKEYID) {
-        gUniKeyPrev = 0;
+      int j = this.gUniKeyPrev;
+      this.gUniKeyPrev = (j + 1);
+      if (this.gUniKeyPrev > MAX_UNIKEYID) {
+        this.gUniKeyPrev = 0;
       }
       return (paramInt << i) + j;
     }
@@ -160,22 +155,22 @@ public class BridgeLoger
     if (paramInt == 1)
     {
       localStringBuilder = new StringBuilder().append(" api(");
-      paramInt = gApiCount;
-      gApiCount = paramInt + 1;
+      paramInt = this.gApiCount;
+      this.gApiCount = (paramInt + 1);
       return paramInt + ") : eventName=[" + paramString1 + "] Params=[" + cutString(paramString2) + "]";
     }
     if (paramInt == 2)
     {
       localStringBuilder = new StringBuilder().append("OPENCONTEXT api(");
-      paramInt = gApiCount;
-      gApiCount = paramInt + 1;
+      paramInt = this.gApiCount;
+      this.gApiCount = (paramInt + 1);
       return paramInt + ") : eventName=[" + paramString1 + "] Params=[" + cutString(paramString2) + "]";
     }
     if (paramInt == 3)
     {
       localStringBuilder = new StringBuilder().append("WORKER api(");
-      paramInt = gApiCount;
-      gApiCount = paramInt + 1;
+      paramInt = this.gApiCount;
+      this.gApiCount = (paramInt + 1);
       return paramInt + ") : eventName=[" + paramString1 + "] Params=[" + cutString(paramString2) + "]";
     }
     return "UNKNOW API";
@@ -292,7 +287,7 @@ public class BridgeLoger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.triton.bridge.BridgeLoger
  * JD-Core Version:    0.7.0.1
  */

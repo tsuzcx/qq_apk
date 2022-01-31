@@ -3,110 +3,104 @@ package com.tencent.mobileqq.mini.entry.desktop.item;
 import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
 import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
-import com.tencent.mobileqq.mini.apkg.RecommendAppInfo;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
 class DesktopDataManager$8
   implements Runnable
 {
-  DesktopDataManager$8(DesktopDataManager paramDesktopDataManager, INTERFACE.StModuleInfo paramStModuleInfo) {}
+  DesktopDataManager$8(DesktopDataManager paramDesktopDataManager, List paramList) {}
   
   public void run()
   {
-    int j = 0;
-    Object localObject1;
-    Object localObject2;
+    INTERFACE.StModuleInfo localStModuleInfo;
+    ArrayList localArrayList;
+    int j;
     int i;
-    try
+    label119:
+    Object localObject1;
+    if ((this.val$moduleInfos != null) && (this.val$moduleInfos.size() > 0))
     {
-      if ((this.val$moduleInfo != null) && (this.val$moduleInfo.useOld.get() == 1)) {
-        return;
-      }
-      if ((this.val$moduleInfo == null) || (DesktopDataManager.access$1500(this.this$0) == null) || (this.val$moduleInfo.useOld.get() != 0) || (this.val$moduleInfo.userAppList.get() == null) || (this.val$moduleInfo.userAppList.get().size() <= 0)) {
-        break label554;
-      }
-      localObject1 = new DesktopAppModuleInfo(this.val$moduleInfo.moduleType.get(), this.val$moduleInfo.title.get());
-      if (((DesktopAppModuleInfo)localObject1).getModuleType() == 2) {
-        DesktopDataManager.access$1600(this.this$0).clear();
-      }
-      ArrayList localArrayList1 = new ArrayList();
-      localObject2 = this.val$moduleInfo.userAppList.get().iterator();
+      Iterator localIterator1 = this.val$moduleInfos.iterator();
       for (;;)
       {
-        i = j;
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        Object localObject3 = (INTERFACE.StUserAppInfo)((Iterator)localObject2).next();
-        localObject3 = new DesktopAppInfo(this.val$moduleInfo.moduleType.get(), MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject3));
-        if ((((DesktopAppModuleInfo)localObject1).getModuleType() == 2) && (((DesktopAppInfo)localObject3).mMiniAppInfo != null))
+        if (localIterator1.hasNext())
         {
-          RecommendAppInfo localRecommendAppInfo = new RecommendAppInfo(((DesktopAppInfo)localObject3).mMiniAppInfo.appId, 0, System.currentTimeMillis());
-          QLog.d("DesktopDataManager-Recommend", 2, "updateModuleInfo add " + localRecommendAppInfo.toString());
-          DesktopDataManager.access$1600(this.this$0).add(localRecommendAppInfo);
-        }
-        localArrayList1.add(localObject3);
-      }
-      i += 1;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("DesktopDataManager-Recommend", 2, "updateModuleInfo error!!!", localThrowable);
-      return;
-    }
-    do
-    {
-      do
-      {
-        if (i >= DesktopDataManager.access$1500(this.this$0).size()) {
-          break;
-        }
-        localObject1 = (DesktopItemInfo)DesktopDataManager.access$1500(this.this$0).get(i);
-      } while ((!(localObject1 instanceof DesktopAppInfo)) || (((DesktopItemInfo)localObject1).mModuleType != this.val$moduleInfo.moduleType.get()));
-      localObject1 = (DesktopAppInfo)localObject1;
-    } while ((((DesktopAppInfo)localObject1).mMiniAppInfo == null) || (((DesktopAppInfo)localObject1).mMiniAppInfo.isSpecialMiniApp()));
-    for (;;)
-    {
-      localObject1 = DesktopDataManager.access$1500(this.this$0).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (DesktopItemInfo)((Iterator)localObject1).next();
-        if (((localObject2 instanceof DesktopAppInfo)) && (((DesktopItemInfo)localObject2).mModuleType == this.val$moduleInfo.moduleType.get()))
-        {
-          localObject2 = (DesktopAppInfo)localObject2;
-          if ((((DesktopAppInfo)localObject2).mMiniAppInfo != null) && (!((DesktopAppInfo)localObject2).mMiniAppInfo.isSpecialMiniApp())) {
-            ((Iterator)localObject1).remove();
+          localStModuleInfo = (INTERFACE.StModuleInfo)localIterator1.next();
+          if ((localStModuleInfo != null) && (localStModuleInfo.moduleType.get() == 1) && (localStModuleInfo.userAppList.get() != null) && (localStModuleInfo.userAppList.get().size() > 0))
+          {
+            localArrayList = new ArrayList();
+            j = -1;
+            i = DesktopDataManager.access$1600(this.this$0).size() - 1;
+            if (i >= 0)
+            {
+              localObject1 = (DesktopItemInfo)DesktopDataManager.access$1600(this.this$0).get(i);
+              if ((((DesktopItemInfo)localObject1).mModuleType == 1) && ((localObject1 instanceof DesktopAppInfo))) {
+                localArrayList.add(0, (DesktopAppInfo)localObject1);
+              }
+              if ((((DesktopItemInfo)localObject1).mModuleType != 1) || (j >= 0)) {
+                break label396;
+              }
+              j = i;
+            }
           }
         }
       }
-      if ((i != -1) && (localThrowable.size() > 0)) {
-        DesktopDataManager.access$1500(this.this$0).addAll(i, localThrowable);
-      }
-      QLog.d("DesktopDataManager", 1, "updateModuleInfo, recommend list: " + localThrowable.toString());
-      label554:
-      DesktopDataManager.access$1700(this.this$0);
-      DesktopDataManager.access$1800(DesktopDataManager.access$1500(this.this$0));
-      ArrayList localArrayList2 = new ArrayList();
-      localArrayList2.addAll(DesktopDataManager.access$1500(this.this$0));
-      DesktopDataManager.access$1900(this.this$0, localArrayList2);
-      if (DesktopDataManager.access$1400(this.this$0) == null) {
+    }
+    label394:
+    label396:
+    for (;;)
+    {
+      i -= 1;
+      break label119;
+      if (j < 0) {
         break;
       }
-      DesktopDataManager.access$1400(this.this$0).onDataChanged();
-      return;
-      i = -1;
+      localObject1 = new ArrayList();
+      Iterator localIterator2 = localStModuleInfo.userAppList.get().iterator();
+      for (;;)
+      {
+        label221:
+        Object localObject2;
+        if (localIterator2.hasNext())
+        {
+          localObject2 = (INTERFACE.StUserAppInfo)localIterator2.next();
+          localObject2 = new DesktopAppInfo(localStModuleInfo.moduleType.get(), MiniAppInfo.from((INTERFACE.StUserAppInfo)localObject2));
+          Iterator localIterator3 = localArrayList.iterator();
+          DesktopAppInfo localDesktopAppInfo;
+          do
+          {
+            if (!localIterator3.hasNext()) {
+              break;
+            }
+            localDesktopAppInfo = (DesktopAppInfo)localIterator3.next();
+          } while ((localDesktopAppInfo.mMiniAppInfo == null) || (((DesktopAppInfo)localObject2).mMiniAppInfo == null) || (!localDesktopAppInfo.mMiniAppInfo.equals(((DesktopAppInfo)localObject2).mMiniAppInfo)));
+        }
+        for (i = 1;; i = 0)
+        {
+          if (i != 0) {
+            break label394;
+          }
+          ((List)localObject1).add(localObject2);
+          break label221;
+          DesktopDataManager.access$1600(this.this$0).addAll(j + 1, (Collection)localObject1);
+          break;
+          if (DesktopDataManager.access$1500(this.this$0) != null) {
+            DesktopDataManager.access$1500(this.this$0).onDataChanged();
+          }
+          return;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.8
  * JD-Core Version:    0.7.0.1
  */

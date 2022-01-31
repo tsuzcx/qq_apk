@@ -1,72 +1,65 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.os.SystemClock;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public class mua
+class mua
+  extends amab
 {
-  public static int a(AppInterface paramAppInterface, String paramString1, String paramString2)
-  {
-    if ((paramAppInterface instanceof QQAppInterface)) {
-      return a((QQAppInterface)paramAppInterface, paramString1, paramString2);
-    }
-    return c(paramAppInterface, paramString1, paramString2);
-  }
+  mua(mtz parammtz) {}
   
-  private static int a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4, int paramInt5, long paramLong)
   {
-    if (paramQQAppInterface != null)
+    muf localmuf = (muf)mtz.a(this.a).a(paramLong);
+    if (paramBoolean)
     {
-      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
-      if (paramQQAppInterface != null)
+      mtz.a(this.a, SystemClock.elapsedRealtime());
+      paramString2 = new muh(SystemClock.elapsedRealtime(), paramInt3, paramString2, paramString3, paramString4);
+      mtz.a(this.a).put(paramString1, paramString2);
+      if (localmuf != null)
       {
-        if (paramQQAppInterface.b(paramString2, paramString1) == null) {
-          return 3;
+        localmuf.a(paramInt3, paramString2, paramInt5);
+        mtz.a(this.a).a(paramLong);
+        this.a.a = paramInt4;
+        if (mtz.a(this.a) == null) {
+          break label261;
         }
-        paramQQAppInterface = paramQQAppInterface.b(paramString2);
-        if ((paramQQAppInterface != null) && (paramQQAppInterface.isTroopOwner(paramString1))) {
-          return 0;
-        }
-        if ((paramQQAppInterface != null) && (paramQQAppInterface.isTroopAdmin(paramString1))) {
-          return 1;
-        }
-        if (paramQQAppInterface != null) {
-          return 2;
-        }
-        return -1;
+        mtz.a(this.a).a(paramInt4);
+        mtz.a(this.a, null);
       }
-      return -1;
     }
-    return -1;
-  }
-  
-  public static int b(AppInterface paramAppInterface, String paramString1, String paramString2)
-  {
-    switch (a(paramAppInterface, paramString1, paramString2))
+    for (;;)
     {
-    default: 
-      return 4;
-    case 0: 
-      return 3;
-    case 1: 
-      return 2;
-    case 2: 
-      return 1;
+      if (QLog.isColorLevel()) {
+        QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "onGetTroopHideWebConfig record gVideoStrategy:" + paramInt3 + " isSucc:" + paramBoolean);
+      }
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "mGVideoGrayConfigListener is null");
+      break;
+      paramString1 = (muf)mtz.a(this.a).a(paramLong);
+      if (paramString1 != null)
+      {
+        paramString1.a(-1, null, paramInt5);
+        mtz.a(this.a).a(paramLong);
+        break;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "mGVideoGrayConfigListener is null");
+      break;
+      label261:
+      if (QLog.isColorLevel()) {
+        QLog.e("GroupVideoManager.GVideoGrayConfig", 2, "mGVideoPreDownloadListener is null");
+      }
     }
-    return 0;
-  }
-  
-  private static int c(AppInterface paramAppInterface, String paramString1, String paramString2)
-  {
-    if ((paramAppInterface instanceof mub)) {
-      return ((mub)paramAppInterface).a(paramString1, paramString2);
-    }
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mua
  * JD-Core Version:    0.7.0.1
  */

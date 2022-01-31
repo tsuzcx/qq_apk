@@ -1,18 +1,22 @@
-public abstract interface asko
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+
+public class asko
+  implements View.OnTouchListener
 {
-  public abstract void a(int paramInt);
+  public asko(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(boolean paramBoolean, int paramInt);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void c(int paramInt);
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return QQGameFeedWebFragment.a(this.a).onTouchEvent(paramMotionEvent);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asko
  * JD-Core Version:    0.7.0.1
  */

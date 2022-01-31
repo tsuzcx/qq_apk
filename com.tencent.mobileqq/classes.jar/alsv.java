@@ -1,24 +1,62 @@
-import com.tencent.ark.ArkEnvironmentManager.IDataReport;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
+import java.util.List;
+import tencent.im.nearfield_group.nearfield_group.BusiRespHead;
 
-public final class alsv
-  implements ArkEnvironmentManager.IDataReport
+public class alsv
+  implements alkr
 {
-  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
+  public void a(aqgk paramaqgk) {}
+  
+  public void a(aqgo paramaqgo) {}
+  
+  public void a(nearfield_group.BusiRespHead paramBusiRespHead) {}
+  
+  public void a(nearfield_group.BusiRespHead paramBusiRespHead, String paramString) {}
+  
+  public void a(nearfield_group.BusiRespHead paramBusiRespHead, List<aqgk> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    QQAppInterface localQQAppInterface = null;
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)localAppRuntime;
+    switch (paramInt)
+    {
     }
-    altc.a(localQQAppInterface, paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
+    do
+    {
+      do
+      {
+        return;
+        if ((paramBoolean) && (paramObject != null))
+        {
+          paramObject = (Object[])paramObject;
+          a((nearfield_group.BusiRespHead)paramObject[0], (List)paramObject[1]);
+          return;
+        }
+        a(null, null);
+        return;
+        if ((paramBoolean) && (paramObject != null))
+        {
+          a((nearfield_group.BusiRespHead)((Object[])(Object[])paramObject)[0]);
+          return;
+        }
+        a(null);
+        return;
+        if ((paramBoolean) && (paramObject != null))
+        {
+          paramObject = (Object[])paramObject;
+          a((nearfield_group.BusiRespHead)paramObject[0], (String)paramObject[1]);
+          return;
+        }
+        a(null, "");
+        return;
+      } while ((!paramBoolean) || (paramObject == null));
+      a((aqgk)((Object[])(Object[])paramObject)[0]);
+      return;
+    } while ((!paramBoolean) || (paramObject == null));
+    a((aqgo)((Object[])(Object[])paramObject)[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alsv
  * JD-Core Version:    0.7.0.1
  */

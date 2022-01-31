@@ -3,8 +3,8 @@ package com.tencent.biz.qqstory.debug.activities;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.FrameLayout;
-import vyq;
-import vyr;
+import xni;
+import xnj;
 
 public class DebugPollLayoutActivity
   extends Activity
@@ -13,13 +13,13 @@ public class DebugPollLayoutActivity
   {
     super.onCreate(paramBundle);
     setContentView(2131558441);
-    paramBundle = vyq.a(this, 1, 1, null);
-    ((FrameLayout)findViewById(2131364656)).addView(paramBundle.a());
+    paramBundle = xni.a(this, 1, 1, null);
+    ((FrameLayout)findViewById(2131364735)).addView(paramBundle.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.debug.activities.DebugPollLayoutActivity
  * JD-Core Version:    0.7.0.1
  */

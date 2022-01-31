@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
-import afpm;
+import ahnd;
 
 public class ContactsTroopAdapter$5
   implements Runnable
 {
-  public ContactsTroopAdapter$5(afpm paramafpm) {}
+  public ContactsTroopAdapter$5(ahnd paramahnd) {}
   
   public void run()
   {
-    afpm.a(this.this$0);
+    ahnd.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter.5
  * JD-Core Version:    0.7.0.1
  */

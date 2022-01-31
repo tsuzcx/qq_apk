@@ -1,110 +1,94 @@
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.ref.WeakReference;
+import mqq.manager.AccountManager;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class accg
+  extends WtloginObserver
 {
-  private accj jdField_a_of_type_Accj;
-  private LinearLayoutManager jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
-  private RecyclerView jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
-  private View jdField_a_of_type_AndroidViewView;
-  private GeneralSettingActivity jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity;
+  public accg(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  private void a(URLImageView paramURLImageView, acci paramacci)
+  public void OnAskDevLockSms(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    localObject = URLDrawable.getDrawable(paramacci.jdField_b_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-    boolean bool = a((URLDrawable)localObject);
-    if (paramURLImageView != null)
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.c();
+    if ((paramInt == 0) && (paramDevlockInfo != null))
     {
-      paramURLImageView.setImageDrawable(null);
-      paramURLImageView.setImageDrawable((Drawable)localObject);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleUIChoiceView", 2, "onBindViewHolder loadPic colorDrawable=" + localObject + " bReady=" + bool + " checked=" + paramacci.jdField_a_of_type_Boolean);
-    }
-    paramacci.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject);
-    if (!bool)
-    {
-      ((URLDrawable)localObject).setURLDrawableListener(this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity);
-      ((URLDrawable)localObject).startDownload();
-    }
-  }
-  
-  private boolean a(URLDrawable paramURLDrawable)
-  {
-    return (paramURLDrawable != null) && ((paramURLDrawable.getStatus() == 1) || (paramURLDrawable.getStatus() == 4));
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleUIChoiceView", 2, "updateSimpleUIChoice bpref=" + paramInt + " needChangeTheme=" + paramBoolean);
-    }
-    if ((paramInt >= 0) && (this.jdField_a_of_type_Accj != null))
-    {
-      acci localacci = this.jdField_a_of_type_Accj.a(paramInt);
-      localacci.jdField_b_of_type_Boolean = paramBoolean;
-      if ((this.jdField_a_of_type_Accj.a(localacci, paramInt, true)) && (paramBoolean)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity.a(localacci.jdField_a_of_type_Int);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms DevlockInfo.TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount);
       }
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.scrollToPosition(paramInt);
-    }
-  }
-  
-  public void a(View paramView, GeneralSettingActivity paramGeneralSettingActivity)
-  {
-    ArrayList localArrayList = new ArrayList();
-    int j = axmv.c();
-    int i = 0;
-    while (i < axmq.a.length)
-    {
-      acci localacci = new acci(this, axmq.b[i], axmq.a[i], i);
-      if (i == j) {
-        localacci.jdField_a_of_type_Boolean = true;
+      if (paramDevlockInfo.TimeLimit <= 0) {
+        paramDevlockInfo.TimeLimit = 60;
       }
-      a(null, localacci);
-      localArrayList.add(localacci);
-      i += 1;
+      AuthDevVerifyCodeActivity.a(this.a, paramDevlockInfo.TimeLimit);
+      return;
     }
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131364364));
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setItemViewCacheSize(7);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(paramGeneralSettingActivity);
-    this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
-    this.jdField_a_of_type_ComTencentMobileqqActivityGeneralSettingActivity = paramGeneralSettingActivity;
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new acco(this, 8));
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Accj = new accj(this, localArrayList);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(this.jdField_a_of_type_Accj);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms  errMsg:" + paramErrMsg.getMessage());
+      }
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      this.a.a(paramErrMsg.getMessage(), 1);
+      return;
+    }
+    paramWUserSigInfo = this.a.getString(2131717515);
+    this.a.a(paramWUserSigInfo, 1);
   }
   
-  public boolean a(MotionEvent paramMotionEvent)
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView == null) {}
-    float f;
-    do
+    if (QLog.isColorLevel())
     {
-      return true;
-      f = paramMotionEvent.getY();
-      paramMotionEvent = new int[2];
-      this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLocationOnScreen(paramMotionEvent);
-    } while ((f <= paramMotionEvent[1]) || (f >= paramMotionEvent[1] + this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHeight()));
-    return false;
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms  errMsg:" + paramErrMsg.getMessage());
+      }
+    }
+    if (this.a.isFinishing()) {
+      return;
+    }
+    AuthDevVerifyCodeActivity.a(this.a);
+    if (paramInt == 0)
+    {
+      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
+      }
+      apwu.a().a(null, this.a.app.getCurrentAccountUin(), 9);
+      this.a.setResult(-1);
+      this.a.finish();
+      paramErrMsg = (AppInterface)AuthDevVerifyCodeActivity.a(this.a).get();
+      paramWUserSigInfo = "";
+      if (paramErrMsg != null) {
+        paramWUserSigInfo = paramErrMsg.getAccount();
+      }
+      apwu.a().a(paramErrMsg, this.a, paramWUserSigInfo, true);
+      return;
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      this.a.a(paramErrMsg.getMessage(), 1);
+      return;
+    }
+    this.a.a(2131717563, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     accg
  * JD-Core Version:    0.7.0.1
  */

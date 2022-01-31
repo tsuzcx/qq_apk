@@ -1,99 +1,87 @@
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import android.graphics.PointF;
+import android.view.animation.Interpolator;
 
-class atgg
-  implements atge
+public class atgg
+  implements Interpolator
 {
-  private IBinder a;
+  protected PointF a;
+  protected PointF b;
+  protected PointF c = new PointF();
+  protected PointF d = new PointF();
+  protected PointF e = new PointF();
   
-  atgg(IBinder paramIBinder)
+  public atgg(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4)
   {
-    this.a = paramIBinder;
+    this((float)paramDouble1, (float)paramDouble2, (float)paramDouble3, (float)paramDouble4);
   }
   
-  public Message a(Message paramMessage)
+  public atgg(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
+    this(new PointF(paramFloat1, paramFloat2), new PointF(paramFloat3, paramFloat4));
+  }
+  
+  public atgg(PointF paramPointF1, PointF paramPointF2)
+  {
+    if ((paramPointF1.x < 0.0F) || (paramPointF1.x > 1.0F)) {
+      throw new IllegalArgumentException("startX value must be in the range [0, 1]");
+    }
+    if ((paramPointF2.x < 0.0F) || (paramPointF2.x > 1.0F)) {
+      throw new IllegalArgumentException("endX value must be in the range [0, 1]");
+    }
+    this.a = paramPointF1;
+    this.b = paramPointF2;
+  }
+  
+  private float c(float paramFloat)
+  {
+    return this.e.x + (2.0F * this.d.x + 3.0F * this.c.x * paramFloat) * paramFloat;
+  }
+  
+  private float d(float paramFloat)
+  {
+    this.e.x = (this.a.x * 3.0F);
+    this.d.x = ((this.b.x - this.a.x) * 3.0F - this.e.x);
+    this.c.x = (1.0F - this.e.x - this.d.x);
+    return (this.e.x + (this.d.x + this.c.x * paramFloat) * paramFloat) * paramFloat;
+  }
+  
+  protected float a(float paramFloat)
+  {
+    this.e.y = (this.a.y * 3.0F);
+    this.d.y = ((this.b.y - this.a.y) * 3.0F - this.e.y);
+    this.c.y = (1.0F - this.e.y - this.d.y);
+    return (this.e.y + (this.d.y + this.c.y * paramFloat) * paramFloat) * paramFloat;
+  }
+  
+  protected float b(float paramFloat)
+  {
+    int i = 1;
+    float f1 = paramFloat;
     for (;;)
     {
-      try
+      float f2;
+      if (i < 14)
       {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-        if (paramMessage != null)
-        {
-          localParcel1.writeInt(1);
-          paramMessage.writeToParcel(localParcel1, 0);
-          this.a.transact(2, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramMessage = (Message)Message.CREATOR.createFromParcel(localParcel2);
-            return paramMessage;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramMessage = null;
+        f2 = d(f1) - paramFloat;
+        if (Math.abs(f2) >= 0.001D) {}
       }
-      finally
+      else
       {
-        localParcel2.recycle();
-        localParcel1.recycle();
+        return f1;
       }
+      f1 -= f2 / c(f1);
+      i += 1;
     }
   }
   
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
+  public float getInterpolation(float paramFloat)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
-    {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-        if (paramBasicTypeDataParcel != null)
-        {
-          localParcel1.writeInt(1);
-          paramBasicTypeDataParcel.writeToParcel(localParcel1, 0);
-          this.a.transact(1, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramBasicTypeDataParcel = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(localParcel2);
-            return paramBasicTypeDataParcel;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramBasicTypeDataParcel = null;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
-    }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    return a(b(paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atgg
  * JD-Core Version:    0.7.0.1
  */

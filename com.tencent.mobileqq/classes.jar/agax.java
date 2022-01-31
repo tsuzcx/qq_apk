@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import java.util.Comparator;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import java.io.File;
 
-public class agax
-  implements Comparator<agas>
+class agax
+  implements agaz
 {
-  public agax(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
+  agax(agau paramagau, String paramString, agba paramagba) {}
   
-  public int a(agas paramagas1, agas paramagas2)
+  public void a(int paramInt)
   {
-    return paramagas1.f.compareToIgnoreCase(paramagas2.f);
+    if (new File(this.jdField_a_of_type_JavaLangString).exists())
+    {
+      this.jdField_a_of_type_Agba.a.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Agba.f.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agax
  * JD-Core Version:    0.7.0.1
  */

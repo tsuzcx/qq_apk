@@ -1,57 +1,46 @@
-import android.content.Context;
-import android.content.IntentFilter;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import mqq.app.MobileQQ;
 
 public class lfk
+  extends lfv
 {
-  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private lfl jdField_a_of_type_Lfl;
-  
-  public lfk(VideoAppInterface paramVideoAppInterface)
+  public lfk(VideoController paramVideoController)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    super(paramVideoController);
   }
   
-  public void a()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    try
+    if (this.jdField_a_of_type_ComTencentAvVideoController.c != null)
     {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.jdField_a_of_type_Lfl = new lfl();
-      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().registerReceiver(this.jdField_a_of_type_Lfl, localIntentFilter);
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvVideoController.c);
+      this.jdField_a_of_type_ComTencentAvVideoController.c = null;
+    }
+    lek.d(VideoController.jdField_a_of_type_JavaLangString, "onCompletion onCloseDoubleVideoMeeting");
+    if (this.jdField_a_of_type_ComTencentAvVideoController.a().K)
+    {
+      if (paramMediaPlayer != null) {
+        paramMediaPlayer.release();
       }
+      long l = this.jdField_a_of_type_ComTencentAvVideoController.a().g;
+      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), String.valueOf(l), Boolean.valueOf(true) });
+      this.jdField_a_of_type_ComTencentAvVideoController.a(3, l, 85);
+      this.jdField_a_of_type_ComTencentAvVideoController.a().c("OnCloseDoubleVideoMeetingListener", false);
+      this.jdField_a_of_type_ComTencentAvVideoController.a().d("OnCloseDoubleVideoMeetingListener", false);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Long = 0L;
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
-  }
-  
-  public void b()
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_Lfl != null)) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().unregisterReceiver(this.jdField_a_of_type_Lfl);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+      lek.e(VideoController.jdField_a_of_type_JavaLangString, "mOnCloseDoubleVideoMeetingListener-->Is not in doubleMeetingRoom");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfk
  * JD-Core Version:    0.7.0.1
  */

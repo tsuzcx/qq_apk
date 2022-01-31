@@ -13,9 +13,13 @@ public class UrlRequestBuilderImpl
 {
   private static final String ACCEPT_ENCODING = "Accept-Encoding";
   private static final String TAG = UrlRequestBuilderImpl.class.getSimpleName();
+  private String mAddress;
+  private String mBody;
+  private byte[] mBodyBytes;
   private final UrlRequest.Callback mCallback;
   private boolean mDisableCache;
   private final Executor mExecutor;
+  private String mHost;
   private String mMethod;
   private int mPriority = 3;
   private final ArrayList<Pair<String, String>> mRequestHeaders = new ArrayList();
@@ -67,7 +71,11 @@ public class UrlRequestBuilderImpl
       boolean bool = this.mDisableCache;
       String str2 = this.mMethod;
       ArrayList localArrayList = this.mRequestHeaders;
-      localObject2 = (UrlRequest)((DexLoader)localObject1).invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "UrlRequest_getX5UrlRequestProvider", new Class[] { String.class, localObject2, UrlRequest.Callback.class, Executor.class, localClass, String.class, ArrayList.class }, new Object[] { str1, Integer.valueOf(i), localCallback, localExecutor, Boolean.valueOf(bool), str2, localArrayList });
+      String str3 = this.mBody;
+      byte[] arrayOfByte = this.mBodyBytes;
+      String str4 = this.mHost;
+      String str5 = this.mAddress;
+      localObject2 = (UrlRequest)((DexLoader)localObject1).invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "UrlRequest_getX5UrlRequestProvider", new Class[] { String.class, localObject2, UrlRequest.Callback.class, Executor.class, localClass, String.class, ArrayList.class, String.class, [B.class, String.class, String.class }, new Object[] { str1, Integer.valueOf(i), localCallback, localExecutor, Boolean.valueOf(bool), str2, localArrayList, str3, arrayOfByte, str4, str5 });
       localObject1 = localObject2;
       if (localObject2 == null) {
         throw new NullPointerException("UrlRequest build fail");
@@ -86,6 +94,16 @@ public class UrlRequestBuilderImpl
     return this;
   }
   
+  public UrlRequestBuilderImpl setDns(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString2 == null)) {
+      throw new NullPointerException("host and address are required.");
+    }
+    this.mHost = paramString1;
+    this.mAddress = paramString2;
+    return this;
+  }
+  
   public UrlRequest.Builder setHttpMethod(String paramString)
   {
     if (paramString == null) {
@@ -100,10 +118,28 @@ public class UrlRequestBuilderImpl
     this.mPriority = paramInt;
     return this;
   }
+  
+  public UrlRequest.Builder setRequestBody(String paramString)
+  {
+    if (paramString == null) {
+      throw new NullPointerException("Body is required.");
+    }
+    this.mBody = paramString;
+    return this;
+  }
+  
+  public UrlRequest.Builder setRequestBodyBytes(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      throw new NullPointerException("Body is required.");
+    }
+    this.mBodyBytes = paramArrayOfByte;
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.smtt.sdk.UrlRequestBuilderImpl
  * JD-Core Version:    0.7.0.1
  */

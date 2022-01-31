@@ -1,55 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
 public class acpq
-  implements DialogInterface.OnClickListener
+  implements bhqd
 {
-  public acpq(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public acpq(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, bhpy parambhpy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.l();
-    if (VipUtils.b(this.a.app))
+    switch (paramInt)
     {
-      if (this.a.jdField_a_of_type_Long != 0L) {
-        break label144;
-      }
-      paramDialogInterface = (String)this.a.jdField_a_of_type_JavaUtilHashMap.get(this.a.d);
-      if (!TextUtils.isEmpty(paramDialogInterface)) {
-        this.a.a(this.a.d, paramDialogInterface, false);
-      }
     }
-    else
+    for (;;)
     {
-      if ((this.a.jdField_a_of_type_Long != 0L) && (this.a.jdField_a_of_type_Long != 160L)) {
-        break label222;
-      }
-    }
-    label144:
-    label222:
-    for (paramDialogInterface = "3";; paramDialogInterface = "4")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, naj.a(), paramDialogInterface, "0");
+      this.jdField_a_of_type_Bhpy.dismiss();
       return;
-      this.a.a(this.a.d, false);
-      break;
-      if (((this.a.jdField_a_of_type_Long != 160L) && (this.a.jdField_a_of_type_Long != 1600L)) || (TextUtils.isEmpty(this.a.b))) {
-        break;
+      if (bdee.d(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getActivity()))
+      {
+        azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X80040EA", "0X80040EA", 0, 0, "", "", "", "");
+        azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "CliOper", "", "", "0X8006669", "0X8006669", 0, 0, "", "", "", "");
+        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).c(Long.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity)).longValue());
+        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131692289));
+        DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).show();
       }
-      paramDialogInterface = auuz.a(this.a, auvf.n, this.a.jdField_a_of_type_Long);
-      this.a.a(paramDialogInterface, this.a.b, false);
-      break;
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(1, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131694829));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpq
  * JD-Core Version:    0.7.0.1
  */

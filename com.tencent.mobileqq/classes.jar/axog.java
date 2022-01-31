@@ -1,53 +1,14 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.ApngSoLoader;
-import com.tencent.image.ProtocolDownloader;
-import com.tencent.image.URLDrawableParams;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.app.MobileQQ;
-
-public class axog
-  extends URLDrawableParams
+public abstract interface axog
 {
-  private ProtocolDownloader a;
+  public abstract void a(long paramLong);
   
-  public axog(MobileQQ paramMobileQQ)
-  {
-    super(paramMobileQQ);
-  }
+  public abstract void a(boolean paramBoolean);
   
-  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
-  {
-    if ((("http".equals(paramString)) || ("https".equals(paramString))) && (this.a == null)) {
-      this.a = new ayrp();
-    }
-    return this.a;
-  }
-  
-  public String doGetLocalFilePath(String paramString)
-  {
-    return null;
-  }
-  
-  public ApngSoLoader getApngSoLoader()
-  {
-    return bbqx.a();
-  }
-  
-  public Drawable getDefaultLoadingDrawable()
-  {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130846926);
-  }
-  
-  public Drawable getDefualtFailedDrawable()
-  {
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130846926);
-  }
+  public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axog
  * JD-Core Version:    0.7.0.1
  */

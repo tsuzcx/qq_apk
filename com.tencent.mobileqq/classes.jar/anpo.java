@@ -1,170 +1,280 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.FaceModelsData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.content.SharedPreferences;
+import android.os.Environment;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.Utils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager.2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.util.WeakReference;
 
 public class anpo
-  extends anpn
 {
-  private int a;
-  private boolean d;
+  private static File jdField_a_of_type_JavaIoFile;
+  public int a;
+  public long a;
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private ArrayList<WeakReference<anpq>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private ConcurrentHashMap<String, baqv> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public anpo(QQAppInterface paramQQAppInterface)
+  static
   {
-    super("qq.android.ar.face.models_v8.2.0", paramQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "FaceModelsDownloadHandler construct,STR_RES_NAME = qq.android.ar.face.models_v8.2.0");
-    }
-  }
-  
-  public int a()
-  {
-    return 10061;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return FaceModelsData.class;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "restoreState");
-    }
-    a().loadState = 0;
-    a().Version = 0;
-    anpb.a(a(), new String[0]);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    super.a(paramLong1, paramLong2);
-    this.jdField_a_of_type_Int = ((int)(100L * paramLong1 / paramLong2));
-    alcl.a(0, this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download progress: " + this.jdField_a_of_type_Int);
-    }
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if (!paramBoolean) {
-      alcl.a(0, false);
-    }
-    super.a(paramXmlData, paramBoolean, paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download finish: " + paramBoolean);
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download success: " + paramString);
-    }
-    if (alcn.a(paramString) != 0)
+    if ("mounted".equals(Environment.getExternalStorageState())) {}
+    for (File localFile = new File(aljq.bI);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
     {
-      a();
-      alcl.a(0, false);
-    }
-    for (;;)
-    {
-      super.a(paramString);
+      jdField_a_of_type_JavaIoFile = new File(localFile, "_dynamic");
       return;
-      alcl.a(0, true);
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008358", "0X8008358", 0, 0, "", "", "model", "");
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("res_type", "model");
-      axrn.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "FaceResDownloadSuccess", true, 0L, 0L, localHashMap, "", true);
     }
   }
   
-  public void a(boolean paramBoolean)
+  public anpo(AppInterface paramAppInterface)
   {
-    if (!this.d) {
-      this.d = paramBoolean;
-    }
-    super.a(paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download restart userClick = " + paramBoolean);
-    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    c();
   }
   
-  public boolean a()
+  public static File a(String paramString)
   {
-    return true;
+    paramString = a(paramString);
+    return new File(jdField_a_of_type_JavaIoFile, paramString);
   }
   
-  public String b()
+  public static String a(String paramString)
   {
-    return "prd";
+    return "cache_" + Utils.Crc64String(paramString) + ".mp4";
   }
   
-  public void b(XmlData paramXmlData)
+  private boolean a()
   {
-    super.b(paramXmlData);
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "download begin");
-    }
-  }
-  
-  public boolean b()
-  {
-    if (this.d)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceModelsDownloadHandler", 2, "isNetValid2Download by user ");
-      }
+    long l = System.currentTimeMillis();
+    if ((l - this.jdField_a_of_type_Long > 86400000L) || (l - this.jdField_a_of_type_Long < 0L)) {
       return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "isNetValid2Download by startup ");
-    }
-    return super.b();
-  }
-  
-  public boolean e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FaceModelsDownloadHandler", 2, "downloadResource,isDownloadReqedByUser = " + this.d);
-    }
-    if (!this.d)
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
     {
-      if (!alcl.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+      anpn localanpn = ((anpx)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(180)).a();
+      if (this.jdField_a_of_type_Int + 1 > localanpn.b)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("FaceModelsDownloadHandler", 2, "pre download config disable ");
+          QLog.i("Q.dynamicAvatar", 2, "isLoadCountSatisfy not satisfy.");
         }
         return false;
       }
-      if (BaseActivity.sTopActivity == null) {
-        break label115;
+      return true;
+    }
+    return true;
+  }
+  
+  public static String b(String paramString)
+  {
+    return a(paramString).getAbsolutePath();
+  }
+  
+  public static boolean b(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = a(paramString);
+      if ((paramString.exists()) && (paramString.isFile())) {
+        return true;
       }
     }
-    label115:
-    for (boolean bool = true;; bool = false)
+    return false;
+  }
+  
+  private void c()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("dynamic_avatar", 4).getString("dynamic_load_count_one_day", "");
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split("#");
+      if ((localObject == null) || (localObject.length != 2)) {}
+    }
+    try
+    {
+      this.jdField_a_of_type_Long = Long.valueOf(localObject[0]).longValue();
+      this.jdField_a_of_type_Int = Integer.valueOf(localObject[1]).intValue();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_Int += 1;
+    long l = System.currentTimeMillis();
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 86400000L)
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_Int = 0;
+    }
+    ThreadManager.executeOnFileThread(new DynamicAvatarDownloadManager.2(this, l));
+  }
+  
+  public final void a()
+  {
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values();
+    if ((localObject == null) || (((Collection)localObject).isEmpty())) {
+      return;
+    }
+    localObject = ((Collection)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      baqv localbaqv = (baqv)((Iterator)localObject).next();
+      if ((localbaqv != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)) {
+        this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).b(localbaqv);
+      }
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+  }
+  
+  public void a(anpq paramanpq)
+  {
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        if (localIterator.hasNext())
+        {
+          WeakReference localWeakReference = (WeakReference)localIterator.next();
+          if ((localWeakReference == null) || (localWeakReference.get() == null) || (localWeakReference.get() != paramanpq)) {
+            continue;
+          }
+          i = 1;
+          if (i == 0) {
+            this.jdField_a_of_type_JavaUtilArrayList.add(new WeakReference(paramanpq));
+          }
+          return;
+        }
+      }
+      int i = 0;
+    }
+  }
+  
+  public final void a(ArrayList<String> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        String str = (String)paramArrayList.next();
+        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str))
+        {
+          baqv localbaqv = (baqv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+          if ((localbaqv != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)) {
+            this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).b(localbaqv);
+          }
+          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+        }
+      }
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    ??? = a(paramString);
+    Iterator localIterator;
+    WeakReference localWeakReference;
+    if ((??? != null) && (((File)???).exists()) && (((File)???).isFile()))
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      {
+        if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+        {
+          localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (localIterator.hasNext())
+          {
+            localWeakReference = (WeakReference)localIterator.next();
+            if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+              ((anpq)localWeakReference.get()).a(paramString, true, true);
+            }
+          }
+        }
+      }
+      return true;
+    }
+    if ((!bdee.h(BaseApplicationImpl.getContext())) && (!a()))
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+      {
+        if (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+        {
+          localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (localIterator.hasNext())
+          {
+            localWeakReference = (WeakReference)localIterator.next();
+            if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+              ((anpq)localWeakReference.get()).a(paramString, false, false);
+            }
+          }
+        }
+      }
+      return false;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("FaceModelsDownloadHandler", 2, "downloadResource later " + bool);
+        QLog.i("Q.dynamicAvatar", 2, "url:" + paramString + " has contains");
       }
-      if (bool) {
-        break;
+      return false;
+    }
+    ??? = new baps();
+    ((baps)???).jdField_a_of_type_Bapx = new anpp(this);
+    ((baps)???).jdField_a_of_type_JavaLangString = paramString;
+    ((baps)???).jdField_a_of_type_Int = 0;
+    ((baps)???).jdField_c_of_type_JavaLangString = a(paramString).getPath();
+    ((baps)???).jdField_c_of_type_Int = 1;
+    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
+    {
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).a((baqv)???);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, ???);
+      QLog.i("Q.dynamicAvatar", 2, "startDownloadDynamicAvatar, url: " + paramString + ", uin:" + this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+  }
+  
+  public void b(anpq paramanpq)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if ((localWeakReference != null) && (localWeakReference.get() != null) && (localWeakReference.get() == paramanpq)) {
+          localIterator.remove();
+        }
       }
-      return super.e();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anpo
  * JD-Core Version:    0.7.0.1
  */

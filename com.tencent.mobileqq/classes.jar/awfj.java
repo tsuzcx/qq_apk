@@ -1,24 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.richstatus.comment.widget.LikesView;
-
-public class awfj
-  extends awfa
+public abstract interface awfj
 {
-  public awfj(LikesView paramLikesView, int paramInt, String paramString)
-  {
-    super(paramInt);
-  }
+  public abstract aweu getPicDownloadInfo();
   
-  public void onClick(View paramView)
-  {
-    if (LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView) != null) {
-      LikesView.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusCommentWidgetLikesView).a(this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract awfl getPicUploadInfo();
+  
+  public abstract boolean isSendFromLocal();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awfj
  * JD-Core Version:    0.7.0.1
  */

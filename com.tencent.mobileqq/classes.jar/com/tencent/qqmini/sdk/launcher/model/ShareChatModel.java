@@ -3,7 +3,6 @@ package com.tencent.qqmini.sdk.launcher.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import besi;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -11,36 +10,33 @@ import java.util.UUID;
 public class ShareChatModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<ShareChatModel> CREATOR = new besi();
-  public int a;
-  public long a;
-  public String a;
-  public Map<String, String> a;
-  private String b;
+  public static final Parcelable.Creator<ShareChatModel> CREATOR = new ShareChatModel.1();
+  public static final int TYPE_C2C = 1;
+  public static final int TYPE_GROUP = 2;
+  private String entryDataHash;
+  public String name;
+  public Map<String, String> reportData;
+  public int type;
+  public long uin;
   
   public ShareChatModel(int paramInt, long paramLong, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = UUID.randomUUID().toString();
+    this.type = paramInt;
+    this.uin = paramLong;
+    this.name = paramString;
+    this.entryDataHash = UUID.randomUUID().toString();
   }
   
   private ShareChatModel(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.b = paramParcel.readString();
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.type = paramParcel.readInt();
+    this.uin = paramParcel.readLong();
+    this.name = paramParcel.readString();
+    this.entryDataHash = paramParcel.readString();
+    if (this.reportData == null) {
+      this.reportData = new HashMap();
     }
-    paramParcel.readMap(this.jdField_a_of_type_JavaUtilMap, Map.class.getClassLoader());
-  }
-  
-  public String a()
-  {
-    return this.b;
+    paramParcel.readMap(this.reportData, Map.class.getClassLoader());
   }
   
   public int describeContents()
@@ -48,18 +44,23 @@ public class ShareChatModel
     return 0;
   }
   
+  public String getEntryHash()
+  {
+    return this.entryDataHash;
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.b);
-    paramParcel.writeMap(this.jdField_a_of_type_JavaUtilMap);
+    paramParcel.writeInt(this.type);
+    paramParcel.writeLong(this.uin);
+    paramParcel.writeString(this.name);
+    paramParcel.writeString(this.entryDataHash);
+    paramParcel.writeMap(this.reportData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.ShareChatModel
  * JD-Core Version:    0.7.0.1
  */

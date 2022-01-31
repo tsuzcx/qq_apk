@@ -5,14 +5,14 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import bbkb;
-import bjav;
-import bjbw;
-import bjcb;
-import bkrf;
+import bdiv;
+import blmf;
+import blng;
+import blnl;
+import blnx;
+import bncp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.item.DetectableAnimationDrawable;
-import dov.com.qq.im.capture.data.ComboLockManager;
 import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
 
 public class ComboProviderGridAdapter$LockAnimationDrawable
@@ -38,22 +38,22 @@ public class ComboProviderGridAdapter$LockAnimationDrawable
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
     this.jdField_a_of_type_AndroidWidgetImageView = null;
     this.jdField_a_of_type_AndroidWidgetPopupWindow = null;
-    Object localObject = (bjcb)bjav.a(5);
-    ((bjcb)localObject).a().a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
-    bbkb.p(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString, false);
-    bkrf.a().a(3, this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_Int, this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
+    Object localObject = (blnl)blmf.a(5);
+    ((blnl)localObject).a().a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
+    bdiv.q(BaseApplicationImpl.getApplication(), this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString, false);
+    bncp.a().a(3, this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_Int, this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem.jdField_a_of_type_JavaLangString);
     Bundle localBundle = new Bundle();
     localBundle.putInt("apply_source", 1);
     localBundle.putInt("capture_scene", 0);
-    ((bjcb)localObject).a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, (Activity)this.b.getContext(), localBundle);
+    ((blnl)localObject).a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem, (Activity)this.b.getContext(), localBundle);
     this.b.setVisibility(8);
-    localObject = ((bjcb)localObject).a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem);
-    ComboProviderGridAdapter.a(this.b, (bjbw)localObject, this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem);
+    localObject = ((blnl)localObject).a(this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem);
+    ComboProviderGridAdapter.a(this.b, (blng)localObject, this.jdField_a_of_type_DovComQqImCaptureDataQIMFilterCategoryItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.adapter.ComboProviderGridAdapter.LockAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

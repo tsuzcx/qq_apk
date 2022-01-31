@@ -1,48 +1,26 @@
-import android.text.TextUtils;
-import mqq.manager.Manager;
+import android.os.Bundle;
+import com.tencent.mobileqq.ark.image.ChooseImageIPCModule.2;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class anmi
-  implements Manager
+  extends bdvu
 {
-  public static long a;
-  public static long b;
-  public static long c;
-  protected aukp a;
+  public anmi(ChooseImageIPCModule.2 param2, String paramString) {}
   
-  public static void a(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  public void onDone(bdvv parambdvv)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    if (!atbr.c())
-    {
-      atbi.a(paramString, "DatingManager.maplng", Long.valueOf(paramLong1));
-      atbi.a(paramString, "DatingManager.maplat", Long.valueOf(paramLong2));
-      atbi.a(paramString, "DatingManager.timestamp", Long.valueOf(paramLong3));
-      return;
-    }
-    jdField_a_of_type_Long = paramLong1;
-    b = paramLong2;
-    c = paramLong3;
-  }
-  
-  public void onDestroy()
-  {
-    if (this.jdField_a_of_type_Aukp != null) {}
-    try
-    {
-      this.jdField_a_of_type_Aukp.a();
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    super.onDone(parambdvv);
+    QLog.d("ArkApp.ChooseImageIPCModule", 1, String.format("ArkMultiProc.download finish, url=%s, err=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(parambdvv.a) }));
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("code", parambdvv.a);
+    parambdvv = EIPCResult.createResult(0, localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$2.this$0.callbackResult(this.jdField_a_of_type_ComTencentMobileqqArkImageChooseImageIPCModule$2.a, parambdvv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmi
  * JD-Core Version:    0.7.0.1
  */

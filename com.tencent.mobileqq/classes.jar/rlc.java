@@ -1,20 +1,33 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import android.telephony.PhoneStateListener;
+import com.tencent.qphone.base.util.QLog;
 
-class rlc
-  implements ViewFactory.FoundClickableViewListener
+public class rlc
+  extends PhoneStateListener
 {
-  rlc(rlb paramrlb, Context paramContext) {}
+  rlc(rlb paramrlb) {}
   
-  public void onFound(ViewBase paramViewBase)
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    paramViewBase.setOnClickListener(new rld(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.d(true);
+      return;
+    case 2: 
+      this.a.d(true);
+      return;
+    }
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rlc
  * JD-Core Version:    0.7.0.1
  */

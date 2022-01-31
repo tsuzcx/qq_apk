@@ -1,49 +1,33 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adld
-  extends ImageSpan
+class adld
+  implements DialogInterface.OnClickListener
 {
-  public adld(Drawable paramDrawable)
-  {
-    super(paramDrawable);
-  }
+  adld(adlc paramadlc) {}
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramCharSequence = getDrawable();
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
-  }
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    paramCharSequence = getDrawable().getBounds();
-    if (paramFontMetricsInt != null)
+    switch (paramInt)
     {
-      paramPaint = paramPaint.getFontMetricsInt();
-      paramInt2 = paramPaint.bottom - paramPaint.top;
-      int i = paramCharSequence.bottom - paramCharSequence.top;
-      paramInt1 = i / 2 - paramInt2 / 4;
-      i /= 2;
-      paramInt2 = paramInt2 / 4 + i;
-      paramFontMetricsInt.ascent = (-paramInt2);
-      paramFontMetricsInt.top = (-paramInt2);
-      paramFontMetricsInt.bottom = paramInt1;
-      paramFontMetricsInt.descent = paramInt1;
     }
-    return paramCharSequence.right;
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_Adlb.a.app.a().b(this.a.jdField_a_of_type_Adlb.a.a(), 0, this.a.jdField_a_of_type_Long);
+      this.a.jdField_a_of_type_Adlb.a.b();
+      return;
+    } while (this.a.jdField_a_of_type_Adlb.a.jdField_a_of_type_Adlb.getCount() <= 0);
+    this.a.jdField_a_of_type_Adlb.a.app.a().a(this.a.jdField_a_of_type_Adlb.a.a(), 0);
+    this.a.jdField_a_of_type_Adlb.a.jdField_a_of_type_Adlb.changeCursor(this.a.jdField_a_of_type_Adlb.getCursor());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adld
  * JD-Core Version:    0.7.0.1
  */

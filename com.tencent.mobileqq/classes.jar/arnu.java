@@ -1,38 +1,32 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadPoolParams;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
 
-class arnu
-  implements wxt
+public class arnu
 {
-  arnu(arnr paramarnr) {}
+  static Executor a;
   
-  public void a(Bundle paramBundle)
+  static
   {
-    int i = paramBundle.getInt("state", 0);
-    int j = paramBundle.getInt("percentage", 0);
-    long l = paramBundle.getLong("errCode", 0L);
-    try
-    {
-      paramBundle = new JSONObject();
-      paramBundle.put("state", i);
-      paramBundle.put("percentage", j);
-      paramBundle.put("errCode", l);
-      this.a.callJs(this.a.g, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("TroopApiPlugin", 2, "huanjiDownload exp", paramBundle);
-      }
-      this.a.callJs(this.a.g, new String[] { "{\"errCode\":-10,\"message\":\"request fail\"}" });
-    }
+    ThreadPoolParams localThreadPoolParams = new ThreadPoolParams();
+    localThreadPoolParams.poolThreadName = "fileassistant_pool";
+    localThreadPoolParams.corePoolsize = 2;
+    localThreadPoolParams.maxPooolSize = 2;
+    localThreadPoolParams.priority = 8;
+    localThreadPoolParams.queue = new LinkedBlockingQueue();
+    localThreadPoolParams.keepAliveTime = 10;
+    a = ThreadManager.newFreeThreadPool(localThreadPoolParams);
+  }
+  
+  public static Executor a()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arnu
  * JD-Core Version:    0.7.0.1
  */

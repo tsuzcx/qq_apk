@@ -1,42 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-
-public class thm
-  extends QQUIEventReceiver<thh, tju>
+public abstract interface thm
 {
-  public thm(@NonNull thh paramthh)
-  {
-    super(paramthh);
-  }
+  public abstract void a(thl paramthl);
   
-  public void a(@NonNull thh paramthh, @NonNull tju paramtju)
-  {
-    if (paramtju.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver isSuccess sharegroupInfo: " + paramtju.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-      }
-      if (paramtju.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) {
-        paramthh.a(paramthh.a.a(8, paramtju.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.shareGroupId));
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("zivonchen", 2, "MsgTabStoryNodeDelegate#GetGroupInfoEventReceiver errorInfo: " + paramtju.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", sharegroupInfo = " + paramtju.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-  }
+  public abstract void a(thl paramthl, int paramInt);
   
-  public Class acceptEventClass()
-  {
-    return tju.class;
-  }
+  public abstract void a(thl paramthl, int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(thl paramthl, boolean paramBoolean);
+  
+  public abstract void b(thl paramthl);
+  
+  public abstract void c(thl paramthl);
+  
+  public abstract void d(thl paramthl);
+  
+  public abstract void e(thl paramthl);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thm
  * JD-Core Version:    0.7.0.1
  */

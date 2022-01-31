@@ -1,55 +1,49 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import android.text.Editable;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
 public class avtx
-  extends AnimatorListenerAdapter
+  implements avts
 {
-  public avtx(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  public avtx(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public Activity a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator cancel!");
-    }
+    return this.a;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator end, shortVideoShot:" + this.a.a.get() + ", mActionUpAnimator:" + this.a.b.get());
-    }
-    if (!this.a.b.get())
-    {
-      this.a.a.set(true);
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(2);
-      CameraCaptureButtonLayout.a(this.a, System.currentTimeMillis());
-      CameraCaptureButtonLayout.a(this.a).sendEmptyMessage(5);
+    if (paramView == null) {
+      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
     }
     for (;;)
     {
-      this.a.b.set(false);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+      a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim());
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
       return;
-      CameraCaptureButtonLayout.a(this.a).setVisibility(8);
-      CameraCaptureButtonLayout.a(this.a);
-      CameraCaptureButtonLayout.a(this.a, 1.0F);
+      this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
     }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CameraCaptureLayout", 2, "scaleAnimator start!");
-    }
+    this.a.a(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_Avty.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avtx
  * JD-Core Version:    0.7.0.1
  */

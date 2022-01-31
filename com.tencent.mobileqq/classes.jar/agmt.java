@@ -1,99 +1,78 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory.Options;
-import android.os.AsyncTask;
-import android.os.Handler;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.PortraitImageview;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
-import com.tencent.mobileqq.activity.photo.RegionView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
+import com.tencent.widget.PatchedButton;
+import com.tencent.widget.XEditTextEx;
+import com.tencent.widget.XPanelContainer;
+import java.util.HashMap;
 
-public class agmt
-  extends AsyncTask<Void, Void, Bitmap>
+class agmt
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
+  agmt(agmb paramagmb) {}
   
-  private agmt(PhotoCropActivity paramPhotoCropActivity) {}
-  
-  protected Bitmap a(Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    try
+    if (this.a.jdField_a_of_type_Beih == null) {}
+    HashMap localHashMap;
+    label229:
+    do
     {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_Boolean) {}
-      for (paramVarArgs = Bitmap.Config.ARGB_8888;; paramVarArgs = Bitmap.Config.RGB_565)
+      Object localObject;
+      do
       {
-        localOptions.inPreferredConfig = paramVarArgs;
-        localOptions.inJustDecodeBounds = true;
-        bbef.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString, localOptions);
-        localOptions.inSampleSize = agqq.a(localOptions, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.g, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.g);
-        localOptions.inJustDecodeBounds = false;
-        paramVarArgs = bbef.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString, localOptions);
-        return new ayxa(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_JavaLangString).a(paramVarArgs);
+        do
+        {
+          return;
+          localObject = this.a.jdField_a_of_type_Beih.a();
+        } while (localObject == null);
+        localHashMap = ((beig)localObject).b();
+        localObject = ((beig)localObject).a();
+        if (paramView != this.a.p) {
+          break label229;
+        }
+        if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getVisibility() == 0) {
+          break;
+        }
+        if (localHashMap != null) {
+          this.a.p.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
+        }
+        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
+        this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(0);
+        this.a.l.setVisibility(4);
+        agmb.a(this.a).a(25);
+      } while ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel == null) || (localObject == null));
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.setBackgroundColor(((Integer)((HashMap)localObject).get("quickWordBgColor")).intValue());
+      return;
+      if (localHashMap != null) {
+        this.a.p.setImageDrawable((Drawable)localHashMap.get("textIcon"));
       }
-      return null;
-    }
-    catch (OutOfMemoryError paramVarArgs)
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(4);
+      this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(4);
+      this.a.l.setVisibility(0);
+      this.a.aM();
+      return;
+    } while (paramView != this.a.q);
+    if (agmb.b(this.a).a() != 3)
     {
-      this.jdField_a_of_type_Int = 1;
-      return null;
-    }
-    catch (Exception paramVarArgs)
-    {
-      this.jdField_a_of_type_Int = 2;
-      QLog.d("PhotoCropActivity", 1, "LoadBitmapTask err " + paramVarArgs);
-    }
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    if (paramBitmap != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setRestrict(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.d);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageBitmap(paramBitmap);
-      paramBitmap = new ViewGroup.LayoutParams(-1, -1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView = new RegionView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.e, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.f, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.h, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, paramBitmap);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView, paramBitmap);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, 250L);
+      this.a.a(Integer.valueOf(3));
+      if (localHashMap != null) {
+        this.a.p.setImageDrawable((Drawable)localHashMap.get("audioIcon"));
       }
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
+      this.a.jdField_a_of_type_ComTencentWidgetPatchedButton.setVisibility(0);
+      this.a.l.setVisibility(4);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.getIntent().getBooleanExtra("open_chat_from_avator", false))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setRestrict(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_c_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.d);
-      paramBitmap = new ViewGroup.LayoutParams(-1, -1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView = new RegionView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.e, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.f, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.h, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.removeAllViews();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview, paramBitmap);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_ComTencentMobileqqActivityPhotoRegionView, paramBitmap);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-      return;
-    }
-    if (this.jdField_a_of_type_Int == 1) {
-      bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, ajya.a(2131708072), 0).a();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.finish();
-      return;
-      if (this.jdField_a_of_type_Int == 2) {
-        bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, ajya.a(2131708073), 0).a();
-      } else {
-        bcql.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity, ajya.a(2131708071), 0).a();
-      }
-    }
+    this.a.aM();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agmt
  * JD-Core Version:    0.7.0.1
  */

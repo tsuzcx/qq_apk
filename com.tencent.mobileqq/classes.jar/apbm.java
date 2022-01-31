@@ -1,342 +1,562 @@
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
+import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfig;
+import com.tencent.mobileqq.nativememorymonitor.library.NativeMemoryMonitor;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class apbm
 {
-  protected apbm a;
-  protected boolean a;
-  protected boolean b;
+  private static NativeMonitorConfig jdField_a_of_type_ComTencentMobileqqDataNativemonitorNativeMonitorConfig = new NativeMonitorConfig();
+  private static String jdField_a_of_type_JavaLangString = "";
+  private static boolean jdField_a_of_type_Boolean;
+  private static boolean b;
+  private static boolean c;
+  private static boolean d;
   
-  apbm(apbi paramapbi)
+  private static NativeMonitorConfig a(SharedPreferences paramSharedPreferences, String paramString)
   {
-    this.jdField_a_of_type_Apbm = this;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-  }
-  
-  apbm a()
-  {
-    return this.jdField_a_of_type_Apbm;
-  }
-  
-  public String a()
-  {
-    return "StateBase";
-  }
-  
-  protected void a()
-  {
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " can not handle onResumeTrans. ");
-  }
-  
-  protected void a(int paramInt)
-  {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow:" + String.valueOf(paramInt);
-    }
-    for (;;)
-    {
-      QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "] state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " can not handle onFileRequestBeHandledByPC.handleType = " + str);
-      return;
-      str = "(pc accept)";
-      continue;
-      str = "(pc refuse)";
-      continue;
-      str = "(pc cancel send";
-      continue;
-      str = "(pc save to weiyun)";
-      continue;
-      str = "(pc change to off trans)";
-    }
-  }
-  
-  protected void a(int paramInt1, int paramInt2)
-  {
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " can not handle onSenderUploadProgressNotify. speed:" + paramInt1 + " progress:" + paramInt2);
-  }
-  
-  protected void a(int paramInt, String paramString)
-  {
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " can not handle onSenderUploadException. errcode:" + paramInt + " resason:" + paramString);
-  }
-  
-  protected void a(long paramLong) {}
-  
-  protected final void a(String paramString)
-  {
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + "->" + paramString + ")");
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " can not handle onRecvOnLineFileResult. ret:" + paramBoolean);
-  }
-  
-  protected boolean a()
-  {
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " can not handle onRecvOnLineFile.");
-    return true;
-  }
-  
-  protected boolean a(int paramInt, String paramString, long paramLong)
-  {
-    if (this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return false;
-    }
-    this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid = new String(paramString);
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " can not handle onSenderUploadCompleted. type:" + paramInt + "time:" + paramLong);
-    return false;
-  }
-  
-  protected final boolean a(String paramString)
-  {
-    if (this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]. state:" + this.jdField_a_of_type_Apbm.a() + paramString + " entity is null ");
-      return true;
-    }
-    return false;
-  }
-  
-  protected void b()
-  {
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " can not handle onSenderCancelUpload. ");
-  }
-  
-  protected void b(int paramInt)
-  {
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " can not handle onFailedOfLocalSomeThingHappen. type:" + paramInt);
-  }
-  
-  protected final void b(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "] make progress entity = null.handleProgressNotify");
-      return;
-    }
-    if (paramInt2 > 100)
-    {
-      QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "] handleProgressNotify progress > 100. progress=" + paramInt2);
-      return;
-    }
-    int i;
-    if (paramInt1 == 0) {
-      i = 1;
-    }
-    for (;;)
-    {
-      long l = System.currentTimeMillis();
-      FileManagerEntity localFileManagerEntity;
-      if (i != 0)
+    paramSharedPreferences = paramSharedPreferences.getString(paramString + "_" + "native_monitor_config_content", "");
+    if (!TextUtils.isEmpty(paramSharedPreferences)) {
+      try
       {
-        QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  handleProgressNotify. state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + ". averspeed = " + paramInt1 + ". progress = " + paramInt2 + ". nOlSenderProgress =" + this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOlSenderProgress + ". err notify. return");
-        if (-1 != this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOlSenderProgress) {
-          break;
-        }
-        this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOlSenderProgress = 0;
-        this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime = l;
-        if ((this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 14) || (this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 15))
+        paramSharedPreferences = new JSONObject(paramSharedPreferences);
+        return (NativeMonitorConfig)atco.a(paramSharedPreferences, NativeMonitorConfig.class);
+      }
+      catch (JSONException paramSharedPreferences)
+      {
+        for (;;)
         {
-          localFileManagerEntity = this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.clone();
-          localFileManagerEntity.status = 11;
-          this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
-          return;
-          if (paramInt2 > this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOlSenderProgress) {
-            break label679;
+          if (QLog.isDevelopLevel()) {
+            paramSharedPreferences.printStackTrace();
           }
-          if (this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOlSenderProgress == 0)
-          {
-            if (this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fOlRecvSpeed <= 1.0E-007F) {
-              break label679;
-            }
-            i = 1;
-            continue;
-          }
-          i = 1;
-          continue;
+          paramSharedPreferences = null;
         }
-        this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-        return;
       }
-      this.jdField_b_of_type_Boolean = false;
-      b(l);
-      float f1 = (100 - paramInt2) / 100.0F / (paramInt1 * 1024 / (float)this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
-      float f2 = this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress;
-      this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fOlRecvSpeed = ((0.9F - f2) / f1);
-      this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime = l;
-      this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOlSenderProgress = paramInt2;
-      this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fOlRecvProgressOnNotify = this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress;
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  -----handleProgressNotify. state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + ". averspeed = " + paramInt1 + ". progress = " + paramInt2 + ". fOlRecvSpeed = " + this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fOlRecvSpeed + "f/s. fOlRecvProgressOnNotify =" + this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fOlRecvProgressOnNotify);
-      if ((this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 14) || (this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 15))
+    }
+    return null;
+  }
+  
+  public static NativeMonitorConfig a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime != null)
+    {
+      String str = paramAppRuntime.getAccount();
+      if ((!jdField_a_of_type_Boolean) || (!jdField_a_of_type_JavaLangString.equals(str)))
       {
-        localFileManagerEntity = this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.clone();
-        localFileManagerEntity.status = 11;
-        this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
-        return;
+        paramAppRuntime = PreferenceManager.getDefaultSharedPreferences(paramAppRuntime.getApplication());
+        if (paramAppRuntime.contains(str + "_" + "native_monitor_config_version"))
+        {
+          paramAppRuntime = a(paramAppRuntime, str);
+          if (paramAppRuntime != null) {
+            a(paramAppRuntime);
+          }
+        }
+        jdField_a_of_type_JavaLangString = str;
       }
-      this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      return;
-      label679:
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeMonitorConfig", 2, "NativeMonitorConfig:" + jdField_a_of_type_ComTencentMobileqqDataNativemonitorNativeMonitorConfig.toString());
+    }
+    jdField_a_of_type_Boolean = true;
+    return jdField_a_of_type_ComTencentMobileqqDataNativemonitorNativeMonitorConfig;
+  }
+  
+  /* Error */
+  public static void a()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 125	apbm:c	Z
+    //   6: ifne +13 -> 19
+    //   9: getstatic 131	android/os/Build$VERSION:SDK_INT	I
+    //   12: istore_0
+    //   13: iload_0
+    //   14: bipush 21
+    //   16: if_icmpge +7 -> 23
+    //   19: ldc 2
+    //   21: monitorexit
+    //   22: return
+    //   23: iconst_1
+    //   24: putstatic 125	apbm:c	Z
+    //   27: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   30: ifeq +11 -> 41
+    //   33: ldc 114
+    //   35: iconst_2
+    //   36: ldc 133
+    //   38: invokestatic 136	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   41: invokestatic 142	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   44: invokestatic 148	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor;
+    //   47: ldc 150
+    //   49: invokevirtual 153	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:initThreadHook	(Ljava/lang/String;)V
+    //   52: goto -33 -> 19
+    //   55: astore_1
+    //   56: ldc 2
+    //   58: monitorexit
+    //   59: aload_1
+    //   60: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   12	5	0	i	int
+    //   55	5	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	13	55	finally
+    //   23	41	55	finally
+    //   41	52	55	finally
+  }
+  
+  /* Error */
+  public static void a(android.content.Context paramContext, long paramLong1, String[] paramArrayOfString, long paramLong2, long paramLong3, long paramLong4)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 156	apbm:b	Z
+    //   6: istore 10
+    //   8: iload 10
+    //   10: ifeq +7 -> 17
+    //   13: ldc 2
+    //   15: monitorexit
+    //   16: return
+    //   17: iconst_1
+    //   18: putstatic 156	apbm:b	Z
+    //   21: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   24: ifeq +11 -> 35
+    //   27: ldc 114
+    //   29: iconst_2
+    //   30: ldc 158
+    //   32: invokestatic 136	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   35: aload_0
+    //   36: invokestatic 148	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor;
+    //   39: lload_1
+    //   40: aload_3
+    //   41: lload 4
+    //   43: lload 6
+    //   45: lload 8
+    //   47: invokevirtual 162	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:init	(J[Ljava/lang/String;JJJ)V
+    //   50: goto -37 -> 13
+    //   53: astore_0
+    //   54: ldc 2
+    //   56: monitorexit
+    //   57: aload_0
+    //   58: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	59	0	paramContext	android.content.Context
+    //   0	59	1	paramLong1	long
+    //   0	59	3	paramArrayOfString	String[]
+    //   0	59	4	paramLong2	long
+    //   0	59	6	paramLong3	long
+    //   0	59	8	paramLong4	long
+    //   6	3	10	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   3	8	53	finally
+    //   17	35	53	finally
+    //   35	50	53	finally
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, ConfigurationService.Config paramConfig)
+  {
+    int j = paramConfig.version.get();
+    int i = bdiv.aF(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
+    int k = bdiv.aG(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
+    int m = AppSetting.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeMonitorConfig", 1, String.format("received nativeMonitorConfig remote version: %d, localVersion: %d ,originalAppId:%d, currentAppId:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(m) }));
+    }
+    if (k != m)
+    {
+      bdiv.Y(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount(), m);
       i = 0;
     }
+    String str;
+    if (j != i)
+    {
+      str = aova.b(paramConfig, i, paramInt);
+      if (!TextUtils.isEmpty(str)) {
+        QLog.d("NativeMonitorConfig", 1, "receiveAllConfigs|type: " + paramInt + ",content: " + str + ",version: " + j);
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramConfig = new JSONObject(str);
+        paramConfig = (NativeMonitorConfig)atco.a(paramConfig, NativeMonitorConfig.class);
+        if (paramConfig == null)
+        {
+          a(new NativeMonitorConfig());
+          bdiv.e(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount(), j, "");
+          bdiv.t(paramQQAppInterface.getApp(), 0);
+          QLog.d("NativeMonitorConfig", 1, "Resolve Config failure, use default config");
+          a(true);
+          return;
+        }
+      }
+      catch (JSONException paramConfig)
+      {
+        if (QLog.isDevelopLevel()) {
+          paramConfig.printStackTrace();
+        }
+        paramConfig = null;
+        continue;
+        QLog.d("NativeMonitorConfig", 1, "start to update config:" + paramConfig.toString());
+        if (paramConfig.getTimeLimited() <= 0L)
+        {
+          paramConfig.setTimeLimitedDefault();
+          if (QLog.isColorLevel()) {
+            QLog.d("NativeMonitorConfig", 2, "time limited is too small, setToDefault");
+          }
+        }
+        if (paramConfig.getMemoryLimited() <= 0L)
+        {
+          paramConfig.setMemoryLimitedDefault();
+          if (QLog.isColorLevel()) {
+            QLog.d("NativeMonitorConfig", 2, "memory limited is too small, setToDefault");
+          }
+        }
+        if (paramConfig.getCountLimted() <= 0L)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("NativeMonitorConfig", 2, "count limited is too small, setToDefault");
+          }
+          paramConfig.setCountLimitedDefault();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("NativeMonitorConfig", 2, "soHook = " + paramConfig.soHook);
+        }
+        a(paramConfig);
+        bdiv.e(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount(), j, str);
+        bdiv.t(paramQQAppInterface.getApp(), paramConfig.soHook);
+        continue;
+      }
+      a(new NativeMonitorConfig());
+      bdiv.e(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount(), j, "");
+      bdiv.t(paramQQAppInterface.getApp(), 0);
+      QLog.d("NativeMonitorConfig", 1, "config is null, use default config");
+      continue;
+      QLog.d("NativeMonitorConfig", 1, "config version not updated, nothing to do");
+    }
   }
   
-  protected final void b(long paramLong)
+  public static void a(NativeMonitorConfig paramNativeMonitorConfig)
   {
-    if (this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "] make progress entity = null.makeProgress");
+    jdField_a_of_type_Boolean = true;
+    jdField_a_of_type_ComTencentMobileqqDataNativemonitorNativeMonitorConfig.update(paramNativeMonitorConfig);
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (AppSetting.g) {
+      NativeMemoryMonitor.getInstance(BaseApplicationImpl.getContext()).setupASanCallback();
     }
-    long l1;
-    float f1;
-    label493:
-    float f2;
-    float f3;
-    float f4;
+    NativeMonitorConfig localNativeMonitorConfig;
     do
     {
       do
       {
         return;
-      } while ((this.jdField_b_of_type_Boolean) || (!this.jdField_b_of_type_Apbi.b()));
-      if (0L == this.jdField_b_of_type_Apbi.d)
+        paramBoolean = azot.b();
+        if ((paramBoolean) && (Build.VERSION.SDK_INT <= 27) && (Build.VERSION.SDK_INT > 15) && (!AppSetting.g)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.i("NativeMonitorConfig", 2, "arm: " + paramBoolean + ", useASan: " + AppSetting.g);
+      return;
+      if (Build.VERSION.SDK_INT < 21)
       {
-        this.jdField_b_of_type_Apbi.d = 102400L;
-        l1 = this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-        long l2 = ((float)this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize * 0.1F);
-        if (l1 > 104857600L)
+        QLog.i("NativeMonitorConfig", 1, "skip in release");
+        return;
+      }
+      localNativeMonitorConfig = a(BaseApplicationImpl.getApplication().getRuntime());
+      if (localNativeMonitorConfig != null)
+      {
+        BaseApplicationImpl.sNativeMonitorEscapedMsg = "open: " + localNativeMonitorConfig.getNativeMonitorOpened() + ", flag: " + localNativeMonitorConfig.getSwitchFlag();
+        alzb.a(jdField_a_of_type_ComTencentMobileqqDataNativemonitorNativeMonitorConfig.getTmChance());
+      }
+    } while ((localNativeMonitorConfig == null) || (localNativeMonitorConfig.getNativeMonitorOpened() != 1));
+    Object localObject = localNativeMonitorConfig.getAndroidVersionBlackList();
+    long l2 = localNativeMonitorConfig.getSwitchFlag();
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localObject = ((String)localObject).split("\\|");
+      if (localObject != null)
+      {
+        str = Build.VERSION.SDK_INT + "";
+        int j = localObject.length;
+        int i = 0;
+        for (;;)
         {
-          this.jdField_b_of_type_Apbi.d = (l2 / 60L);
-          if (l1 > 524288000L)
-          {
-            this.jdField_b_of_type_Apbi.d = (l2 / 120L);
-            if (l1 > 1073741824L) {
-              this.jdField_b_of_type_Apbi.d = (l2 / 180L);
-            }
+          if (i >= j) {
+            break label279;
           }
-        }
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] initGoSpeed =" + this.jdField_b_of_type_Apbi.d + "b/s");
-      }
-      f1 = this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fOlRecvSpeed;
-      if (!this.jdField_b_of_type_Apbi.a())
-      {
-        l1 = (2000.0D * (this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize * (1.0D - this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fOlRecvProgressOnNotify) / 102400.0D));
-        f1 = (float)this.jdField_b_of_type_Apbi.d / (float)this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-        if (l1 <= 30000L) {
-          break label493;
-        }
-      }
-      for (;;)
-      {
-        if (paramLong - this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime > l1)
-        {
-          QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " the progress maker think time out. timeOutInterval=" + l1 + "curRecvSpeed = " + f1 + ".lastTime =" + this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime + ". makeTime =" + paramLong);
-          if (!this.jdField_b_of_type_Apbi.a())
-          {
-            this.jdField_b_of_type_Apbi.a(true, 0L);
-            this.jdField_b_of_type_Boolean = true;
-            return;
-            l1 = (2000.0F * (0.9F - this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fOlRecvProgressOnNotify) / f1);
+          if (str.equals(localObject[i])) {
             break;
-            l1 = 30000L;
-            continue;
           }
-          this.jdField_b_of_type_Apbi.a(true, 0L);
-          this.jdField_b_of_type_Boolean = true;
-          return;
+          i += 1;
         }
       }
-      f2 = (float)(paramLong - this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime) / 1000.0F;
-      f3 = f1 * f2;
-      f4 = this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fOlRecvProgressOnNotify + f3;
-      if (this.jdField_b_of_type_Apbi.a()) {
-        break;
-      }
-    } while ((this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress > 0.1F) || (Math.abs(this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress - 0.1F) < 1.0E-008D));
-    if (f4 > 0.1F) {
-      this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 0.1F;
     }
+    label279:
+    if (a(localNativeMonitorConfig))
+    {
+      QLog.i("NativeMonitorConfig", 1, "process id:" + BaseApplicationImpl.sProcessId + "  is in black list");
+      return;
+    }
+    QLog.i("NativeMonitorConfig", 1, "process id:" + BaseApplicationImpl.sProcessId + "  not in black list");
+    long l1 = l2;
+    if (Build.VERSION.SDK_INT >= 21) {
+      l1 = l2 & 0xFFFFFFFB;
+    }
+    l2 = l1;
+    if (Build.VERSION.SDK_INT != 21)
+    {
+      l2 = l1;
+      if (Build.VERSION.SDK_INT != 22) {
+        l2 = l1 & 0xFFFFFFBF;
+      }
+    }
+    String str = localNativeMonitorConfig.getSoWhiteList();
+    localObject = str;
+    if (str != null) {
+      localObject = str.trim();
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {}
     for (;;)
     {
-      if (paramLong - this.jdField_b_of_type_Apbi.c > 50000L)
-      {
-        this.jdField_b_of_type_Apbi.c = paramLong;
-        QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] -----state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " the making progress of upload is: " + this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress + "[curRecvSpeed=" + f1 + ".maketime=" + paramLong + ".lastTime=" + this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastTime + "f/s. makeTime_s=" + f2 + "s. addProgress = " + f3 + ". timeOutInterval=" + l1 + ". filesize=" + this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize + ". nOlSenderProgress=" + this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOlSenderProgress + ". fOlRecvProgressOnNotify =" + this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fOlRecvProgressOnNotify + " ] ");
-      }
-      this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
+      a(BaseApplicationImpl.getContext(), l2 & 0xFFFFFFFF & 0x7FFFFFFF & 0xFFFFFFFD, null, localNativeMonitorConfig.getTimeLimited(), localNativeMonitorConfig.getCountLimted(), localNativeMonitorConfig.getMemoryLimited());
       return;
-      this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = f4;
-      continue;
-      if ((this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress > 0.9F) || (Math.abs(this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress - 0.9F) < 1.0E-008D)) {
-        break;
-      }
-      if (f4 > 0.9F) {
-        this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 0.9F;
-      } else {
-        this.jdField_b_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = f4;
-      }
+      ((String)localObject).split("\\|");
     }
   }
   
-  protected void b(boolean paramBoolean)
+  private static boolean a(@NonNull NativeMonitorConfig paramNativeMonitorConfig)
   {
-    if (paramBoolean == true)
+    boolean bool2 = false;
+    paramNativeMonitorConfig = paramNativeMonitorConfig.getProcessBlackList();
+    boolean bool1;
+    int j;
+    int i;
+    if (TextUtils.isEmpty(paramNativeMonitorConfig))
     {
-      QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + " recv  success response of ask progress");
-      return;
+      paramNativeMonitorConfig = null;
+      bool1 = bool2;
+      if (paramNativeMonitorConfig != null)
+      {
+        j = paramNativeMonitorConfig.length;
+        i = 0;
+      }
     }
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + " recv  failed response of ask progress");
-    this.jdField_b_of_type_Apbi.c();
-    h();
+    label97:
+    for (;;)
+    {
+      bool1 = bool2;
+      String str;
+      if (i < j) {
+        str = paramNativeMonitorConfig[i];
+      }
+      try
+      {
+        int k = Integer.valueOf(str).intValue();
+        if (k != BaseApplicationImpl.sProcessId) {
+          break label97;
+        }
+        bool1 = true;
+        return bool1;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        if (!QLog.isColorLevel()) {
+          break label97;
+        }
+        QLog.d("NativeMonitorConfig", 2, localNumberFormatException, new Object[0]);
+        i += 1;
+      }
+      paramNativeMonitorConfig = paramNativeMonitorConfig.split("\\|");
+      break;
+    }
   }
   
-  protected void c()
+  /* Error */
+  private static String b(java.io.File paramFile)
   {
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " can not handle onPauseTrans. ");
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 392	java/io/File:isFile	()Z
+    //   4: ifne +5 -> 9
+    //   7: aconst_null
+    //   8: areturn
+    //   9: sipush 4096
+    //   12: newarray byte
+    //   14: astore 4
+    //   16: ldc_w 394
+    //   19: invokestatic 399	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   22: astore_3
+    //   23: new 401	java/io/FileInputStream
+    //   26: dup
+    //   27: aload_0
+    //   28: invokespecial 404	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   31: astore_2
+    //   32: aload_2
+    //   33: astore_0
+    //   34: aload_2
+    //   35: aload 4
+    //   37: iconst_0
+    //   38: aload 4
+    //   40: arraylength
+    //   41: invokevirtual 408	java/io/FileInputStream:read	([BII)I
+    //   44: istore_1
+    //   45: iload_1
+    //   46: iconst_m1
+    //   47: if_icmpeq +43 -> 90
+    //   50: aload_2
+    //   51: astore_0
+    //   52: aload_3
+    //   53: aload 4
+    //   55: iconst_0
+    //   56: iload_1
+    //   57: invokevirtual 411	java/security/MessageDigest:update	([BII)V
+    //   60: goto -28 -> 32
+    //   63: astore_3
+    //   64: aload_2
+    //   65: astore_0
+    //   66: ldc 114
+    //   68: iconst_1
+    //   69: aload_3
+    //   70: iconst_0
+    //   71: anewarray 4	java/lang/Object
+    //   74: invokestatic 382	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   77: aload_2
+    //   78: ifnull -71 -> 7
+    //   81: aload_2
+    //   82: invokevirtual 414	java/io/FileInputStream:close	()V
+    //   85: aconst_null
+    //   86: areturn
+    //   87: astore_0
+    //   88: aconst_null
+    //   89: areturn
+    //   90: aload_2
+    //   91: ifnull +7 -> 98
+    //   94: aload_2
+    //   95: invokevirtual 414	java/io/FileInputStream:close	()V
+    //   98: new 416	java/math/BigInteger
+    //   101: dup
+    //   102: iconst_1
+    //   103: aload_3
+    //   104: invokevirtual 420	java/security/MessageDigest:digest	()[B
+    //   107: invokespecial 423	java/math/BigInteger:<init>	(I[B)V
+    //   110: bipush 16
+    //   112: invokevirtual 426	java/math/BigInteger:toString	(I)Ljava/lang/String;
+    //   115: areturn
+    //   116: astore_2
+    //   117: aconst_null
+    //   118: astore_0
+    //   119: aload_0
+    //   120: ifnull +7 -> 127
+    //   123: aload_0
+    //   124: invokevirtual 414	java/io/FileInputStream:close	()V
+    //   127: aload_2
+    //   128: athrow
+    //   129: astore_0
+    //   130: goto -32 -> 98
+    //   133: astore_0
+    //   134: goto -7 -> 127
+    //   137: astore_2
+    //   138: goto -19 -> 119
+    //   141: astore_3
+    //   142: aconst_null
+    //   143: astore_2
+    //   144: goto -80 -> 64
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	147	0	paramFile	java.io.File
+    //   44	13	1	i	int
+    //   31	64	2	localFileInputStream	java.io.FileInputStream
+    //   116	12	2	localObject1	Object
+    //   137	1	2	localObject2	Object
+    //   143	1	2	localObject3	Object
+    //   22	31	3	localMessageDigest	java.security.MessageDigest
+    //   63	41	3	localException1	java.lang.Exception
+    //   141	1	3	localException2	java.lang.Exception
+    //   14	40	4	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   34	45	63	java/lang/Exception
+    //   52	60	63	java/lang/Exception
+    //   81	85	87	java/io/IOException
+    //   16	32	116	finally
+    //   94	98	129	java/io/IOException
+    //   123	127	133	java/io/IOException
+    //   34	45	137	finally
+    //   52	60	137	finally
+    //   66	77	137	finally
+    //   16	32	141	java/lang/Exception
   }
   
-  protected void d()
+  /* Error */
+  public static void b()
   {
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " can not handle onSenderReplayComeOnRecv:");
-  }
-  
-  protected void e()
-  {
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " can not handle onRecvButSenderReplayTimeOut:");
-  }
-  
-  protected void f()
-  {
-    QLog.w("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "]  state:" + apbi.a(this.jdField_b_of_type_Apbi).a() + " can not handle doSomeThingOnUploadDone:");
-  }
-  
-  protected void g() {}
-  
-  protected void h()
-  {
-    a(4, null);
-  }
-  
-  protected void i()
-  {
-    a(3, null);
-  }
-  
-  protected void j()
-  {
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_b_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + "->StateEnd)");
-    this.jdField_a_of_type_Apbm = new apbu(this.jdField_b_of_type_Apbi);
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 428	apbm:d	Z
+    //   6: ifne +13 -> 19
+    //   9: getstatic 131	android/os/Build$VERSION:SDK_INT	I
+    //   12: istore_0
+    //   13: iload_0
+    //   14: bipush 24
+    //   16: if_icmpge +7 -> 23
+    //   19: ldc 2
+    //   21: monitorexit
+    //   22: return
+    //   23: iconst_1
+    //   24: putstatic 428	apbm:d	Z
+    //   27: invokestatic 112	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   30: ifeq +12 -> 42
+    //   33: ldc 114
+    //   35: iconst_2
+    //   36: ldc_w 430
+    //   39: invokestatic 136	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   42: invokestatic 142	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   45: invokestatic 148	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor;
+    //   48: invokestatic 142	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   51: new 432	apbn
+    //   54: dup
+    //   55: invokespecial 433	apbn:<init>	()V
+    //   58: invokevirtual 436	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:setupSoLoadHook	(Landroid/content/Context;Lcom/tencent/mobileqq/nativememorymonitor/library/ExternalProvider;)V
+    //   61: goto -42 -> 19
+    //   64: astore_1
+    //   65: ldc 2
+    //   67: monitorexit
+    //   68: aload_1
+    //   69: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   12	5	0	i	int
+    //   64	5	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	13	64	finally
+    //   23	42	64	finally
+    //   42	61	64	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apbm
  * JD-Core Version:    0.7.0.1
  */

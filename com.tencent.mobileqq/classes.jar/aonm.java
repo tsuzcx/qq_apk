@@ -1,53 +1,69 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
 public class aonm
-  extends aonp
+  extends aofy<aonk>
 {
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  
-  public aonm(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public int a()
   {
-    super(2, paramString1);
-    this.a = paramString2;
-    this.b = paramString3;
-    this.c = paramString4;
-    this.d = paramString5;
-    if (this.b == null) {
-      this.b = "";
-    }
-    if (this.e == null) {
-      this.e = "";
-    }
+    return 418;
   }
   
-  public boolean equals(Object paramObject)
+  @NonNull
+  public aonk a(int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramObject instanceof aonm))
+    return new aonk();
+  }
+  
+  @Nullable
+  public aonk a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
     {
-      paramObject = (aonm)paramObject;
-      bool1 = bool2;
-      if (this.b.equals(paramObject.b))
-      {
-        bool1 = bool2;
-        if (this.e.equals(paramObject.e)) {
-          bool1 = true;
-        }
-      }
+      new aonk();
+      return aonk.a(paramArrayOfaogf);
     }
-    return bool1;
+    return null;
   }
   
-  public String toString()
+  public Class<aonk> a()
   {
-    return this.e + "_" + this.b;
+    return aonk.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aonk paramaonk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocsPushProcessor", 2, "onUpdate " + paramaonk.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonm
  * JD-Core Version:    0.7.0.1
  */

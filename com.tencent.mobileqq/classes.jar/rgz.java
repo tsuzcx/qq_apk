@@ -1,23 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class rgz
-  implements DialogInterface.OnClickListener
+public abstract interface rgz
 {
-  public rgz(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public abstract void b(VideoInfo paramVideoInfo);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("ReadInJoyTabFrame", 2, "showLocationChangedDialog change cancel");
-    }
-  }
+  public abstract void c(VideoInfo paramVideoInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgz
  * JD-Core Version:    0.7.0.1
  */

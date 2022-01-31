@@ -1,28 +1,31 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.Callback;
-import android.support.annotation.NonNull;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil.DrawableCallBack;
-import com.tencent.image.URLDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import cooperation.liveroom.LiveRoomProxyActivity;
 
 class pon
-  implements Drawable.Callback
+  implements View.OnClickListener
 {
-  pon(pom parampom, DrawableUtil.DrawableCallBack paramDrawableCallBack, URLDrawable paramURLDrawable) {}
+  pon(pol parampol, int paramInt, rqj paramrqj, pgd parampgd) {}
   
-  public void invalidateDrawable(@NonNull Drawable paramDrawable)
+  public void onClick(View paramView)
   {
-    QLog.i("Q.readinjoy.proteus", 1, "invalidateDrawable: ");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsDrawableUtil$DrawableCallBack.onCallBack(true, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    if (this.jdField_a_of_type_Int == 120) {
+      LiveRoomProxyActivity.open(this.jdField_a_of_type_Rqj.a(), this.jdField_a_of_type_Pgd.a().mSocialFeedInfo.a.c, "kandian feed click");
+    }
+    rro localrro;
+    do
+    {
+      return;
+      localrro = this.jdField_a_of_type_Rqj.a();
+    } while (localrro == null);
+    localrro.a(paramView, this.jdField_a_of_type_Pgd.a(), 2);
   }
-  
-  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
-  
-  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pon
  * JD-Core Version:    0.7.0.1
  */

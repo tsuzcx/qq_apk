@@ -1,23 +1,51 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
 
-public final class ahdc
-  implements Parcelable.Creator<RedPacketInfoBase>
+public class ahdc
+  extends ahad
 {
-  public RedPacketInfoBase a(Parcel paramParcel)
+  public ahdc(Context paramContext, QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    return new RedPacketInfoBase(paramParcel);
+    super(paramContext, paramQQAppInterface, paramBoolean);
   }
   
-  public RedPacketInfoBase[] a(int paramInt)
+  protected int a()
   {
-    return new RedPacketInfoBase[paramInt];
+    return 10028;
+  }
+  
+  protected void a(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.a(paramRecommendTroopItem);
+    azmj.b(null, "dc00899", "Grp_find_new", "", "grptab", "Clk_join", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int b()
+  {
+    return 21;
+  }
+  
+  protected void b(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.b(paramRecommendTroopItem);
+    azmj.b(null, "dc00899", "Grp_recom", "", "search", "recom_clk_add", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
+  }
+  
+  protected int c()
+  {
+    return 10003;
+  }
+  
+  protected void c(RecommendTroopItem paramRecommendTroopItem)
+  {
+    super.c(paramRecommendTroopItem);
+    azmj.b(null, "dc00899", "Grp_find_new", "", "grptab", "exp_grp", 0, 0, paramRecommendTroopItem.uin, paramRecommendTroopItem.recomAlgol, "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahdc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.startup.director;
 
-import aabg;
-import akhm;
-import axnx;
-import axpl;
+import absd;
+import alzc;
+import azjg;
+import azkw;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.startup.step.Step;
 
 public class StartupDirector$2
   implements Runnable
 {
-  public StartupDirector$2(axnx paramaxnx) {}
+  public StartupDirector$2(azjg paramazjg) {}
   
   public void run()
   {
     ThreadManager.initDPC();
-    akhm.a().a();
-    if (axnx.d != 0)
+    alzc.a().a();
+    if (azjg.d != 0)
     {
-      aabg.a().a(axnx.d);
-      axnx.d = 0;
+      absd.a().a(azjg.d);
+      azjg.d = 0;
     }
-    axpl.b(29, this.this$0, null).step();
+    azkw.b(29, this.this$0, null).step();
   }
 }
 

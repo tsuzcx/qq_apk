@@ -1,124 +1,38 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import org.json.JSONObject;
 
 public class bbvv
+  implements bcgo
 {
-  public static int a;
-  private static boolean a;
+  public bbvv(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public static void a(Context paramContext)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    StringBuilder localStringBuilder;
-    String str;
-    if (QLog.isColorLevel())
+    this.a.o();
+    if ((paramJSONObject != null) && (paramJSONObject.has("retcode")))
     {
-      localStringBuilder = new StringBuilder().append("init video plugin context ");
-      if (paramContext == null) {
-        break label79;
-      }
-      str = "is not null";
-    }
-    for (;;)
-    {
-      QLog.d("VipVideoManager", 2, str);
-      try
-      {
-        label79:
-        try
-        {
-          if (!jdField_a_of_type_Boolean)
-          {
-            TVK_SDKMgr.setOnLogListener(new bbvw());
-            if (paramContext != null)
-            {
-              TVK_SDKMgr.initSdk(paramContext, "ZDJ2DK+QcEksd+C8RIzfwQhjkPCNDsewhQBcxciUfYyphf1ntN4M1sXu5waGVy3CMB36XLopJFqaMtHxKS4BXScewkVRuSfBoAJVDEJHZv+opKWeviyxuUnc4R4MlMmTO2M2de47GRD6te9FtjtFCd1KLUPZuW QBq8aXUxi+IyhmKBZoXWUxLkdfIZ7Gleriirf7ewcykmS64TG7zbV1uMCdIaO9hwDhVJbRlGN2si1sepphKPCuuOoAdZz52edGEfp5oIgA7THflGFidFnsrPksn8nGbr+OYOI8kcixjzblTIjBAqHHFRJnIQhh74pVkqtiqE7iz46FclQB17JJmg==", "");
-              jdField_a_of_type_Boolean = true;
-            }
-          }
-          return;
-        }
-        finally {}
-        str = "is null";
-      }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
+      paramInt = paramJSONObject.optInt("retcode");
+      if (paramInt == 0) {
+        this.a.j();
       }
     }
-  }
-  
-  public static void a(Context paramContext, TVK_SDKMgr.InstallListener paramInstallListener)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    else
     {
-      localStringBuilder = new StringBuilder().append("install video plugin and context=");
-      if (paramContext != null) {
-        break label110;
-      }
-      str = "null";
-      localStringBuilder = localStringBuilder.append(str).append(",mMediaSdkInited").append(jdField_a_of_type_Boolean).append(",listener=");
-      if (paramInstallListener != null) {
-        break label116;
-      }
+      return;
     }
-    label110:
-    label116:
-    for (String str = "null";; str = "not null")
+    if (paramInt == 111000)
     {
-      QLog.d("VipVideoManager", 2, str);
-      if ((paramContext != null) && (paramInstallListener != null)) {}
-      try
-      {
-        if (!jdField_a_of_type_Boolean) {
-          a(paramContext);
-        }
-        jdField_a_of_type_Int = 0;
-        TVK_SDKMgr.installPlugin(paramContext, (TVK_SDKMgr.InstallListener)new WeakReference(paramInstallListener).get());
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        if (!QLog.isColorLevel()) {
-          break label157;
-        }
-        QLog.d("VipVideoManager", 2, "install video plugin exception msg=" + paramContext.getMessage());
-        paramContext.printStackTrace();
-      }
-      str = "not null";
-      break;
+      QQToast.a(this.a.getActivity(), 2131697871, 0).a();
+      return;
     }
-    label157:
-  }
-  
-  public static boolean a(Context paramContext)
-  {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("isInstalled Plugin=").append(TVK_SDKMgr.isInstalled(paramContext)).append(",Context=");
-      if (paramContext != null) {
-        break label65;
-      }
-    }
-    label65:
-    for (String str = "null";; str = "not null")
-    {
-      QLog.d("VipVideoManager", 2, str);
-      if ((paramContext == null) || (!TVK_SDKMgr.isInstalled(paramContext))) {
-        break;
-      }
-      return true;
-    }
-    return false;
+    QQToast.a(this.a.getActivity(), 2131697931, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbvv
  * JD-Core Version:    0.7.0.1
  */

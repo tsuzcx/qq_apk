@@ -1,70 +1,83 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.List;
 
-public abstract class aylr
-  extends Binder
-  implements aylq
+public class aylr
+  extends ayna
 {
-  private static final String DESCRIPTOR = "com.tencent.mobileqq.theme.ISwitchCallback";
-  static final int TRANSACTION_beginSwitch = 1;
-  static final int TRANSACTION_doSwitch = 3;
-  static final int TRANSACTION_onProgress = 2;
-  static final int TRANSACTION_postSwitch = 4;
-  
-  public aylr()
+  public aylr(bcws parambcws)
   {
-    attachInterface(this, "com.tencent.mobileqq.theme.ISwitchCallback");
+    super(parambcws);
   }
   
-  public static aylq asInterface(IBinder paramIBinder)
+  protected aymf<ayjl, ayru> a(bcws parambcws)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof aylq))) {
-      return (aylq)localIInterface;
-    }
-    return new ayls(paramIBinder);
+    return new aylv(parambcws);
   }
   
-  public IBinder asBinder()
+  public void a(ayjj paramayjj, ayrt paramayrt)
   {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    paramayjj = (ayjk)paramayjj;
+    LinearLayout localLinearLayout = ((ayrm)paramayrt).a();
+    if (localLinearLayout != null)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.theme.ISwitchCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-      beginSwitch();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-      onProgress(paramParcel1.readLong(), paramParcel1.readLong());
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-      doSwitch(paramParcel1.readString(), paramParcel1.readString());
-      return true;
+      List localList = paramayjj.a();
+      if (localList != null)
+      {
+        localLinearLayout.removeAllViews();
+        int k = Math.min(localList.size(), paramayjj.a());
+        int i = 0;
+        if (i < k)
+        {
+          ayjl localayjl = (ayjl)localList.get(i);
+          View localView = LayoutInflater.from(paramayrt.a().getContext()).inflate(2131562586, null);
+          ayro localayro = new ayro(localView);
+          localView.setTag(2131379913, localayjl);
+          localView.setTag(2131379918, localayro);
+          localView.setTag(2131379914, Integer.valueOf(i));
+          localView.setTag(2131379912, Integer.valueOf(localList.size()));
+          localView.setTag(2131379915, this.a);
+          ayrg.a(localayjl, k, i);
+          int m = localayjl.a();
+          int n = localayjl.b();
+          if ((localayjl instanceof ayjm)) {}
+          for (int j = ((ayjm)localayjl).r;; j = 0)
+          {
+            ayrg.a(m, n, localView, j);
+            localLinearLayout.addView(localView);
+            this.a.a(localayjl, localayro);
+            i += 1;
+            break;
+          }
+        }
+      }
     }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.theme.ISwitchCallback");
-    postSwitch(paramParcel1.readInt());
-    return true;
+    if (paramayrt.b() != null) {
+      paramayrt.b().setVisibility(8);
+    }
+    if ((paramayjj instanceof ayiv))
+    {
+      paramayjj = ((ayiv)paramayjj).a();
+      paramayrt = ((ayrm)paramayrt).a();
+      if (paramayrt != null)
+      {
+        if (paramayjj == null) {
+          break label325;
+        }
+        paramayrt.a().setVisibility(0);
+        this.a.a(paramayjj, paramayrt);
+      }
+    }
+    return;
+    label325:
+    paramayrt.a().setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aylr
  * JD-Core Version:    0.7.0.1
  */

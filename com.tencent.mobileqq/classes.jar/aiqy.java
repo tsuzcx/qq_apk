@@ -1,8 +1,13 @@
-public abstract interface aiqy
+public class aiqy
 {
-  public abstract Object a();
-  
-  public abstract void invalidateSelf();
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public int c = 0;
+  public long c;
 }
 
 

@@ -1,19 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class awsb
-  implements View.OnClickListener
+public abstract interface awsb
 {
-  awsb(awsa paramawsa, awoi paramawoi) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_Awoi.a(paramView);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awsb
  * JD-Core Version:    0.7.0.1
  */

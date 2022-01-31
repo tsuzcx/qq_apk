@@ -1,62 +1,33 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class ahlf
+public class ahlf
   implements View.OnClickListener
 {
-  ahlf(ahkd paramahkd, Bundle paramBundle) {}
+  public ahlf(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
   public void onClick(View paramView)
   {
-    if (ahkd.a(this.jdField_a_of_type_Ahkd) != null)
+    if (!(paramView.getTag() instanceof ahjv)) {}
+    do
     {
-      paramView = ahkd.a(this.jdField_a_of_type_Ahkd).obtainMessage(30);
-      ahkd.a(this.jdField_a_of_type_Ahkd).sendMessageDelayed(paramView, 2500L);
-    }
-    paramView = this.jdField_a_of_type_AndroidOsBundle.getString("activity");
-    if (!TextUtils.isEmpty(paramView)) {}
-    try
-    {
-      paramView = Class.forName(paramView);
-      if (paramView != null)
+      do
       {
-        paramView = new Intent(ahkd.a(this.jdField_a_of_type_Ahkd).getApplicationContext(), paramView);
-        String str = this.jdField_a_of_type_AndroidOsBundle.getString("action");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.setAction(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("category");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.addCategory(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
-        if (!TextUtils.isEmpty(str)) {
-          paramView.putExtra("url", str);
-        }
-        paramView.setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        paramView.putExtra("force_no_reload", true);
-        ahkd.a(this.jdField_a_of_type_Ahkd).startActivity(paramView);
-      }
-      axqy.a(ahkd.a(this.jdField_a_of_type_Ahkd).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 4, 0, "", "", "", "");
-      return;
-    }
-    catch (ClassNotFoundException paramView)
-    {
-      for (;;)
-      {
-        paramView = null;
-      }
-    }
+        return;
+        paramView = (ahjv)paramView.getTag();
+      } while (paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg_type.get() != 2);
+      this.a.a(paramView);
+    } while (paramView.jdField_a_of_type_Int != 82);
+    azmj.b(this.a.a, "P_CliOper", "Grp_public", "", "oper", "Clk_notice", 0, 0, "", "", "", paramView.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahlf
  * JD-Core Version:    0.7.0.1
  */

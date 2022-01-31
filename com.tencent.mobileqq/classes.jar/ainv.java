@@ -1,37 +1,29 @@
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 class ainv
-  implements View.OnTouchListener
+  extends aiml
 {
-  ainv(aint paramaint) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected ainv(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof ImageView))
-      {
-        ((ImageView)paramView).getDrawable().setColorFilter(855638016, PorterDuff.Mode.SRC_ATOP);
-        continue;
-        if ((paramView instanceof ImageView)) {
-          ((ImageView)paramView).getDrawable().clearColorFilter();
-        }
-      }
-    }
+    super(paramNewPhotoListActivity);
+  }
+  
+  public String getExceedMaxSelectNumStr(LocalMediaInfo paramLocalMediaInfo)
+  {
+    int i = this.mPhotoCommonData.maxSelectNum;
+    return ((NewPhotoListActivity)this.mActivity).getString(2131695251, new Object[] { Integer.valueOf(i) });
+  }
+  
+  public void initData(Intent paramIntent)
+  {
+    super.initData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ainv
  * JD-Core Version:    0.7.0.1
  */

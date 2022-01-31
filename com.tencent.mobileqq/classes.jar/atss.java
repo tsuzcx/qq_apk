@@ -1,19 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
-class atss
-  implements DialogInterface.OnClickListener
+public class atss
 {
-  atss(atso paramatso, bbgu parambbgu) {}
+  private List<atst> a = Collections.synchronizedList(new ArrayList());
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  void a(long paramLong)
   {
-    this.jdField_a_of_type_Bbgu.dismiss();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((atst)localIterator.next()).a(paramLong);
+    }
+  }
+  
+  void b(long paramLong)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((atst)localIterator.next()).b(paramLong);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atss
  * JD-Core Version:    0.7.0.1
  */

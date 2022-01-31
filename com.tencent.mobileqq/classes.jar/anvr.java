@@ -1,30 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator.5.1;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardUinInfo;
 
-public class anvr
-  implements anud
+public final class anvr
+  implements Parcelable.Creator<CardUinInfo>
 {
-  anvr(anvq paramanvq) {}
-  
-  public void a(int paramInt)
+  public CardUinInfo a(Parcel paramParcel)
   {
-    anvs localanvs = this.a.a(paramInt);
-    if (localanvs != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "on req timeout seq: " + paramInt);
-      }
-      Bundle localBundle = new Bundle();
-      this.a.a(localBundle, 1001);
-      localanvs.a.putBundle("response", localBundle);
-      this.a.a(new WebIPCOperator.5.1(this, localanvs));
-    }
+    return new CardUinInfo(paramParcel);
+  }
+  
+  public CardUinInfo[] a(int paramInt)
+  {
+    return new CardUinInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvr
  * JD-Core Version:    0.7.0.1
  */

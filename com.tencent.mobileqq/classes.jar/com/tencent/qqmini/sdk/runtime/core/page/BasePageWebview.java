@@ -2,7 +2,8 @@ package com.tencent.qqmini.sdk.runtime.core.page;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import bfce;
+import bhbr;
+import com.tencent.qqmini.sdk.log.QMLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebSettingsExtension;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
@@ -12,7 +13,7 @@ public class BasePageWebview
 {
   public static volatile int a;
   private static final String jdField_a_of_type_JavaLangString = BasePageWebview.class.getSimpleName();
-  protected bfce a;
+  protected bhbr a;
   private AppBrandPageContainer jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAppBrandPageContainer;
   protected int b;
   
@@ -41,7 +42,6 @@ public class BasePageWebview
       if (getSettingsExtension() != null) {
         getSettingsExtension().setFirstScreenDetect(false);
       }
-      label123:
       if (this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAppBrandPageContainer != null)
       {
         paramContext = this.jdField_a_of_type_ComTencentQqminiSdkRuntimeCorePageAppBrandPageContainer;
@@ -51,7 +51,10 @@ public class BasePageWebview
     }
     catch (Throwable paramContext)
     {
-      break label123;
+      for (;;)
+      {
+        QMLog.e(jdField_a_of_type_JavaLangString, "BasePageWebview init exception!", paramContext);
+      }
     }
   }
   
@@ -77,14 +80,14 @@ public class BasePageWebview
     }
   }
   
-  public void setPageEventListener(bfce parambfce)
+  public void setPageEventListener(bhbr parambhbr)
   {
-    this.jdField_a_of_type_Bfce = parambfce;
+    this.jdField_a_of_type_Bhbr = parambhbr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.BasePageWebview
  * JD-Core Version:    0.7.0.1
  */

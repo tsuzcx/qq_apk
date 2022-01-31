@@ -1,33 +1,33 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.LikeEntry;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-public class upt
-  extends ssh
+public abstract class upt
 {
   public int a;
   public String a;
-  public List<LikeEntry> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
   
-  public upt(ErrorMessage paramErrorMessage, String paramString)
+  public upt() {}
+  
+  public upt(qqstory_struct.ErrorInfo paramErrorInfo)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramErrorInfo.error_code.get();
+    this.jdField_a_of_type_JavaLangString = paramErrorInfo.error_desc.get().toStringUtf8();
   }
   
-  public String toString()
-  {
-    return "GetLikeListEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isForDetail=" + this.jdField_a_of_type_Boolean + ", mType=" + this.jdField_a_of_type_Int + ", mLikeCount=" + this.b + ", mHasLike=" + this.c + ", mLikeEntryList=" + this.jdField_a_of_type_JavaUtilList + '}';
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt, Bundle paramBundle);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public void a(boolean paramBoolean, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
-class alsf
-  implements ajte
+public class alsf
 {
-  alsf(alsb paramalsb) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (!paramBoolean)
-    {
-      ArkAppCenter.c("ArkApp.ArkAppCGI", "ArkSafe,doReport, sso request failed");
-      return;
-    }
-    ArkAppCenter.b("ArkApp.ArkAppCGI", "ArkSafe.doReport.server.back=" + paramObject);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public long c;
+  public boolean c;
+  public long d;
+  public long e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alsf
  * JD-Core Version:    0.7.0.1
  */

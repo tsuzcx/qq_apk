@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils.dialogutils;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.Layout;
@@ -50,8 +50,8 @@ public class QQCustomMenuLayout
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(TypedValue.applyDimension(2, 15.0F, ((Resources)localObject).getDisplayMetrics()));
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838608);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131710211));
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838679);
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131710583));
     this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F));
@@ -59,8 +59,8 @@ public class QQCustomMenuLayout
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, 0);
     this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130838592);
-    if (!AppSetting.d) {
+    this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130838663);
+    if (!AppSetting.c) {
       this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription("leftIcon");
     }
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -68,8 +68,8 @@ public class QQCustomMenuLayout
     this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     addView(this.jdField_c_of_type_AndroidWidgetImageView, 1);
     this.jdField_d_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838592);
-    if (!AppSetting.d) {
+    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838663);
+    if (!AppSetting.c) {
       this.jdField_d_of_type_AndroidWidgetImageView.setContentDescription("rightIcon");
     }
     this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -78,8 +78,8 @@ public class QQCustomMenuLayout
     addView(this.jdField_d_of_type_AndroidWidgetImageView, 2);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838613);
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(ajya.a(2131710197));
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838684);
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(alpo.a(2131710569));
     this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageView.setPadding((int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F));
@@ -328,7 +328,7 @@ public class QQCustomMenuLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.dialogutils.QQCustomMenuLayout
  * JD-Core Version:    0.7.0.1
  */

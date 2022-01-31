@@ -1,43 +1,19 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.List;
+import com.tencent.mobileqq.data.QCallRecord;
+import java.util.Comparator;
 
-public class awwm
-  implements awwq
+class awwm
+  implements Comparator<QCallRecord>
 {
-  protected View a;
+  awwm(awwk paramawwk) {}
   
-  public awwm(ViewGroup paramViewGroup)
+  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
   {
-    this.a = new LinearLayout(paramViewGroup.getContext());
-    this.a.setVisibility(8);
-  }
-  
-  public View a()
-  {
-    return this.a;
-  }
-  
-  public TextView a()
-  {
-    return null;
-  }
-  
-  public List<awwr> a()
-  {
-    return null;
-  }
-  
-  public TextView b()
-  {
-    return null;
+    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awwm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,23 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import java.util.List;
+import com.tencent.biz.qqcircle.requests.QCircleGetMainPageRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetMainPageRsp;
 
 class tzg
-  implements View.OnClickListener
+  implements yvn<FeedCloudRead.StGetMainPageRsp>
 {
-  tzg(tzf paramtzf) {}
+  tzg(tzf paramtzf, QCircleGetMainPageRequest paramQCircleGetMainPageRequest, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, FeedCloudRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    paramView = ((StoryPlayerGroupHolder)this.a.a()).a();
-    if (paramView != null) {
-      paramView.d = 2;
-    }
-    this.a.a().finish();
-    String str = "";
-    paramView = str;
-    if (this.a.jdField_a_of_type_Int >= 0)
-    {
-      paramView = str;
-      if (this.a.jdField_a_of_type_Int < this.a.jdField_a_of_type_JavaUtilList.size()) {
-        paramView = ((uas)this.a.jdField_a_of_type_JavaUtilList.get(this.a.jdField_a_of_type_Int)).a;
-      }
-    }
-    vei.a("play_video", "clk_quit", 0, 0, new String[] { "", "", "", paramView });
+    boolean bool = VSNetworkHelper.a(paramString);
+    QLog.d(tzf.a(), 1, "requestData onReceive: dispatch Success:" + paramBoolean + " | TraceId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizQqcircleRequestsQCircleGetMainPageRequest.getCurrentSeq() + " | retCode:" + paramLong + " | retMessage:" + paramString + " | isLoadMore:" + this.jdField_a_of_type_Boolean + " | isCache:" + bool);
+    this.jdField_a_of_type_Tzf.a(paramBoolean, paramLong, paramString, paramStGetMainPageRsp, Boolean.valueOf(this.jdField_a_of_type_Boolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tzg
  * JD-Core Version:    0.7.0.1
  */

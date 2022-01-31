@@ -1,74 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
+import android.view.View;
+import com.tencent.mobileqq.hotpic.HotPicPageView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 
 public class aspw
-  extends ampa<aspv>
+  implements StaggeredGridLayoutManager.ExceptionListener
 {
-  public int a()
-  {
-    return 478;
-  }
+  public aspw(HotPicPageView paramHotPicPageView) {}
   
-  @NonNull
-  public aspv a(int paramInt)
+  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
   {
-    return new aspv();
-  }
-  
-  @Nullable
-  public aspv a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOEntranceConfigProcessor", 2, "onParsed : " + paramArrayOfamph[0].a);
-      }
-      return aspv.a(paramArrayOfamph[0].a);
-    }
-    return new aspv();
-  }
-  
-  public Class<aspv> a()
-  {
-    return aspv.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramInt);
-    }
-  }
-  
-  public void a(aspv paramaspv)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOEntranceConfigProcessor", 2, "onUpdate : " + paramaspv);
-    }
-    ((aspx)BaseApplicationImpl.getApplication().getRuntime().getManager(325)).a(paramaspv);
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aspw
  * JD-Core Version:    0.7.0.1
  */

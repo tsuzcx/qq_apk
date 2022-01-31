@@ -1,0 +1,10 @@
+public abstract interface beec
+{
+  public abstract void onCheckOfflineFinish(int paramInt);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     beec
+ * JD-Core Version:    0.7.0.1
+ */

@@ -50,16 +50,14 @@ import com.tencent.mobileqq.msf.core.c.f;
 import com.tencent.mobileqq.msf.core.c.f.a;
 import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.net.n;
-import com.tencent.mobileqq.msf.core.t;
 import com.tencent.mobileqq.msf.sdk.CommandCallbackerInfo;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.PushRegisterInfo;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.msf.sdk.x;
+import com.tencent.mobileqq.msf.sdk.z;
 import com.tencent.mobileqq.msf.service.MsfService;
-import com.tencent.mobileqq.msf.service.q;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -1808,7 +1806,7 @@ public class g
   {
     try
     {
-      String str = q.b(paramToServiceMsg);
+      String str = com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg);
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.PushManager", 2, "recv processName:" + str + " appCmdCallbacker " + paramCommandCallbackerInfo);
       }
@@ -1816,7 +1814,7 @@ public class g
         this.i.putIfAbsent(str, new a(str));
       }
       ((a)this.i.get(str)).m = paramCommandCallbackerInfo;
-      paramCommandCallbackerInfo = q.a(paramToServiceMsg);
+      paramCommandCallbackerInfo = com.tencent.mobileqq.msf.service.t.a(paramToServiceMsg);
       paramCommandCallbackerInfo.setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, paramCommandCallbackerInfo);
       f(str);
@@ -1830,7 +1828,7 @@ public class g
     String str;
     try
     {
-      str = q.b(paramToServiceMsg);
+      str = com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg);
       if (!a(str, BaseApplication.getContext().getPackageName())) {
         break label322;
       }
@@ -1872,22 +1870,22 @@ public class g
     }
   }
   
-  public void a(x paramx, ToServiceMsg paramToServiceMsg)
+  public void a(com.tencent.mobileqq.msf.sdk.y paramy, ToServiceMsg paramToServiceMsg)
   {
     try
     {
-      QLog.d("MSF.C.PushManager", 1, "recv proxyRegister sendProcess=" + q.b(paramToServiceMsg) + " registerProcess" + paramx.b + " callbacker=" + paramx.e + " appid=" + paramx.a + " ProxyRegisterInfo=" + paramx);
-      if (!this.i.containsKey(paramx.b)) {
-        this.i.putIfAbsent(paramx.b, new a(paramx.b));
+      QLog.d("MSF.C.PushManager", 1, "recv proxyRegister sendProcess=" + com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg) + " registerProcess" + paramy.b + " callbacker=" + paramy.e + " appid=" + paramy.a + " ProxyRegisterInfo=" + paramy);
+      if (!this.i.containsKey(paramy.b)) {
+        this.i.putIfAbsent(paramy.b, new a(paramy.b));
       }
-      Object localObject = (a)this.i.get(paramx.b);
-      ((a)localObject).a = paramx.a;
-      ((a)localObject).m = paramx.e;
-      ((a)localObject).l = paramx.d;
-      localObject = t.a(paramToServiceMsg);
+      Object localObject = (a)this.i.get(paramy.b);
+      ((a)localObject).a = paramy.a;
+      ((a)localObject).m = paramy.e;
+      ((a)localObject).l = paramy.d;
+      localObject = com.tencent.mobileqq.msf.core.t.a(paramToServiceMsg);
       ((FromServiceMsg)localObject).setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, (FromServiceMsg)localObject);
-      f(paramx.b);
+      f(paramy.b);
       return;
     }
     finally {}
@@ -2130,7 +2128,7 @@ public class g
   
   public void a(ToServiceMsg paramToServiceMsg)
   {
-    String str = q.b(paramToServiceMsg);
+    String str = com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg);
     a locala = (a)this.i.get(str);
     if (locala != null)
     {
@@ -2158,13 +2156,13 @@ public class g
       }
       this.aB.removeMessages(1);
     }
-    String str = q.b(paramToServiceMsg);
+    String str = com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg);
     if (a(str, BaseApplication.getContext().getPackageName()))
     {
       if (!this.i.containsKey(str)) {
         this.i.putIfAbsent(str, new a(str));
       }
-      localPushRegisterInfo = com.tencent.mobileqq.msf.sdk.y.b(paramToServiceMsg);
+      localPushRegisterInfo = z.b(paramToServiceMsg);
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.PushManager", 2, "recv processName:" + str + " recv regPush  ,regPushReason:" + paramRegPushReason);
       }
@@ -2174,7 +2172,7 @@ public class g
         if (QLog.isColorLevel()) {
           QLog.e("MSF.C.PushManager", 2, "handlerPush also register Push " + MD5.toMD5(localPushRegisterInfo.uin) + "iStatus:" + localPushRegisterInfo.iStatus + " extStatus:" + localPushRegisterInfo.extStatus);
         }
-        paramRegPushReason = q.a(paramToServiceMsg);
+        paramRegPushReason = com.tencent.mobileqq.msf.service.t.a(paramToServiceMsg);
         paramRegPushReason.setMsgSuccess();
         this.c.addRespToQuque(paramToServiceMsg, paramRegPushReason);
         if ((localPushRegisterInfo.iStatus != 95) && (localPushRegisterInfo.iStatus != 21))
@@ -2225,9 +2223,9 @@ public class g
   {
     try
     {
-      QLog.d("MSF.C.PushManager", 1, "recv processName:" + q.b(paramToServiceMsg) + " recv proxyUnRegister " + paramString);
+      QLog.d("MSF.C.PushManager", 1, "recv processName:" + com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg) + " recv proxyUnRegister " + paramString);
       this.i.remove(paramString);
-      FromServiceMsg localFromServiceMsg = t.a(paramToServiceMsg);
+      FromServiceMsg localFromServiceMsg = com.tencent.mobileqq.msf.core.t.a(paramToServiceMsg);
       localFromServiceMsg.setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, localFromServiceMsg);
       MsfStore.getNativeConfigStore().removeConfig("app_push_info_" + paramString);
@@ -2558,7 +2556,7 @@ public class g
   {
     try
     {
-      String str = q.b(paramToServiceMsg);
+      String str = com.tencent.mobileqq.msf.service.t.b(paramToServiceMsg);
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.PushManager", 2, "recv processName:" + str + " recv unRegisterCmdCall ");
       }
@@ -2566,7 +2564,7 @@ public class g
         this.i.putIfAbsent(str, new a(str));
       }
       ((a)this.i.get(str)).m = paramCommandCallbackerInfo;
-      paramCommandCallbackerInfo = q.a(paramToServiceMsg);
+      paramCommandCallbackerInfo = com.tencent.mobileqq.msf.service.t.a(paramToServiceMsg);
       paramCommandCallbackerInfo.setMsgSuccess();
       this.c.addRespToQuque(paramToServiceMsg, paramCommandCallbackerInfo);
       f(str);

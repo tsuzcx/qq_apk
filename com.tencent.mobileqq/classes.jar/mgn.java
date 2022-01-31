@@ -1,59 +1,104 @@
-import android.content.Intent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.ui.GAudioMembersCtrlActivity.7.1;
+import com.tencent.av.ui.GAudioMembersCtrlActivity.7.2;
+import com.tencent.av.ui.GAudioMembersCtrlActivity.7.3;
+import com.tencent.av.ui.GAudioMembersCtrlActivity.7.4;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mqq.app.MobileQQ;
 
 public class mgn
-  implements AdapterView.OnItemClickListener
+  extends lhe
 {
-  public mgn(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
+  public mgn(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a(long paramLong)
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      paramAdapterView = (ldr)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      paramView = new Intent(this.a, QQBrowserActivity.class);
-      paramAdapterView = String.valueOf(paramAdapterView.a);
-      String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-      if (paramAdapterView.equals(str)) {}
-      for (paramAdapterView = "https://qvideo.qq.com/mobile/client/level/detail.html?_bid=2176&uin=" + str;; paramAdapterView = "https://qvideo.qq.com/mobile/client/level/pk.html?_bid=2176&my=" + str + "&pk=" + paramAdapterView)
-      {
-        paramView.putExtra("url", paramAdapterView);
-        paramView.putExtra("uin", str);
-        paramView.putExtra("portraitOnly", true);
-        paramView.putExtra("hide_more_button", true);
-        paramView.putExtra("hide_operation_bar", true);
-        paramView.putExtra("isShowAd", false);
-        this.a.startActivity(paramView);
-        axqy.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_member", "Clk_people", 0, 0, "" + this.a.jdField_a_of_type_ComTencentAvVideoController.a, "" + this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "", "");
-        return;
-      }
-    }
-    paramAdapterView = (ldr)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     if (QLog.isColorLevel()) {
-      QLog.d("MultiVideoMembersListviewAvtivity", 2, "onItemClick # mRelationUinStr = " + this.a.jdField_a_of_type_JavaLangString + " # memberUin = " + String.valueOf(paramAdapterView.a));
+      QLog.d("GAudioMembersCtrlActivity", 2, "onDestroyUI");
     }
-    paramView = new Intent();
-    paramView.setAction("tencent.video.v2q.GaudioOpenTroopCard");
-    paramView.putExtra("troopUin", this.a.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("memberUin", String.valueOf(paramAdapterView.a));
-    paramView.putExtra("uinType", this.a.jdField_a_of_type_Int);
-    paramView.setPackage(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName());
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(paramView);
+    this.a.finish();
+  }
+  
+  protected void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GAudioMembersCtrlActivity", 2, "onGAudioMemberMicChanged-->uin=" + paramLong + ",isMicOff=" + paramBoolean);
+    }
+    GAudioMembersCtrlActivity.c(this.a, new GAudioMembersCtrlActivity.7.3(this, paramLong, paramInt1, paramInt2, paramBoolean));
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    if (this.a.jdField_a_of_type_Long != paramLong1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("GAudioMembersCtrlActivity", 2, "onMemberJoin,wrong group uin.GroupUin = " + paramLong1 + " ,mGroupId = " + this.a.jdField_a_of_type_Long + " ,isQQUser = " + paramBoolean);
+      }
+      return;
+    }
+    super.a(paramLong1, paramLong2, paramBoolean);
+    this.a.a(paramLong2, 1, true, 71);
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    super.a(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
+    if (this.a.jdField_a_of_type_Long != paramLong1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("GAudioMembersCtrlActivity", 2, "onMemberJoin,wrong group uin.GroupUin = " + paramLong1 + " ,mGroupId = " + this.a.jdField_a_of_type_Long + " ,isQQUser = " + paramBoolean2);
+      }
+      return;
+    }
+    this.a.a(paramLong2, 0, paramBoolean1, 70);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GAudioMembersCtrlActivity", 2, "onGAudioRoomMicModeChanged-->uin=" + paramLong + ",isRoomMicOff=" + paramBoolean1);
+    }
+    GAudioMembersCtrlActivity.b(this.a, new GAudioMembersCtrlActivity.7.2(this));
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    super.a(paramLong, paramBoolean1, paramBoolean2, paramInt);
+    if (paramBoolean1) {}
+    for (paramInt = 42;; paramInt = 43)
+    {
+      this.a.a(paramLong, 2, paramBoolean2, paramInt);
+      return;
+    }
+  }
+  
+  protected void a(ArrayList<lps> paramArrayList)
+  {
+    GAudioMembersCtrlActivity.d(this.a, new GAudioMembersCtrlActivity.7.4(this, paramArrayList));
+  }
+  
+  protected void b(long paramLong, boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_Mgb.b(paramLong, paramBoolean);
+  }
+  
+  protected void c(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    this.a.finish();
+  }
+  
+  protected void d()
+  {
+    super.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("GAudioMembersCtrlActivity", 2, "onUpdatePstnInfo --> Start");
+    }
+    GAudioMembersCtrlActivity.a(this.a, new GAudioMembersCtrlActivity.7.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgn
  * JD-Core Version:    0.7.0.1
  */

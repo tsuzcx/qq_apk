@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.minigame.jsapi.webaudio;
 
+import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
+
 class WebAudioManager$4
   implements Runnable
 {
@@ -7,12 +9,14 @@ class WebAudioManager$4
   
   public void run()
   {
-    AudioNativeManager.stopSource(this.val$sourceId);
+    if (WebAudioManager.access$000(this.this$0) != null) {
+      WebAudioManager.access$000(this.this$0).stopSource(this.val$sourceId);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.webaudio.WebAudioManager.4
  * JD-Core Version:    0.7.0.1
  */

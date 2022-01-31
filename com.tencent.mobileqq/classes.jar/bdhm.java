@@ -1,23 +1,23 @@
-import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appstore.dl.DownloadManagerV2.19;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bdhm
-  implements DialogInterface.OnClickListener
+class bdhm
+  implements View.OnClickListener
 {
-  public bdhm(DownloadManagerV2.19 param19) {}
+  bdhm(bdhj parambdhj, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bdlb.r, false);
-    bdho.a().a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdhj, 0);
+    }
+    this.jdField_a_of_type_Bdhj.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdhm
  * JD-Core Version:    0.7.0.1
  */

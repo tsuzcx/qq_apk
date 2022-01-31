@@ -1,23 +1,38 @@
-import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.JoinGroupTransitActivity;
+import java.lang.ref.WeakReference;
 
 public class myt
-  implements ajte
+  extends Handler
 {
-  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo) {}
+  private WeakReference<JoinGroupTransitActivity> a;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public myt(JoinGroupTransitActivity paramJoinGroupTransitActivity)
   {
-    switch (paramInt)
+    this.a = new WeakReference(paramJoinGroupTransitActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    JoinGroupTransitActivity localJoinGroupTransitActivity = (JoinGroupTransitActivity)this.a.get();
+    if ((paramMessage == null) || (localJoinGroupTransitActivity == null) || (localJoinGroupTransitActivity.isFinishing())) {
+      return;
+    }
+    switch (paramMessage.what)
     {
     default: 
       return;
+    case 0: 
+      JoinGroupTransitActivity.a(localJoinGroupTransitActivity).a(JoinGroupTransitActivity.a(localJoinGroupTransitActivity));
+      return;
     }
-    a(paramBoolean, (BmqqUserSimpleInfo)paramObject);
+    localJoinGroupTransitActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myt
  * JD-Core Version:    0.7.0.1
  */

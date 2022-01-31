@@ -1,120 +1,75 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 import mqq.app.AppRuntime;
 
 public class ajlz
-  implements ajmd
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public QQAppInterface a()
+  public ajlz(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (BaseApplicationImpl.sProcessId == 1)
+    this.a.c = paramInt;
+    if (paramBoolean) {
+      NewFlowCameraActivity.a(this.a, this.a.c, false);
+    }
+    float f = this.a.c / 100.0F;
+    if (f != this.a.jdField_a_of_type_Float)
     {
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-        return (QQAppInterface)localAppRuntime;
+      this.a.jdField_a_of_type_Float = f;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewFSurfaceViewLayout.a(false, this.a.jdField_a_of_type_Float, this.a.c);
       }
     }
-    return null;
+    if (paramBoolean) {
+      NewFlowCameraActivity.a(this.a).setContentDescription(alpo.a(2131707851) + this.a.c + "%");
+    }
   }
   
-  public List<TraceData> a()
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
   {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface == null) {
-      return null;
+    if (this.a.jdField_a_of_type_Bhoe != null) {
+      this.a.jdField_a_of_type_Bhoe.removeMessages(1011);
     }
-    return localQQAppInterface.getEntityManagerFactory().createEntityManager().a(TraceData.class);
+    if (this.a.e != null) {
+      this.a.e.setVisibility(0);
+    }
   }
   
-  public boolean a(List<TraceData> paramList)
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
-    }
-    Object localObject;
-    aukr localaukr;
-    TraceData localTraceData;
-    try
+    if (this.a.jdField_a_of_type_Float >= 0.0F)
     {
-      localObject = a();
-      if (localObject == null) {
-        return false;
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("beauty_setting", 0);
+      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      localSharedPreferences.edit().putFloat("beauty_radius" + str, this.a.jdField_a_of_type_Float);
+      localSharedPreferences.edit().putFloat("beauty_whitenmag" + str, this.a.jdField_a_of_type_Float);
+      localSharedPreferences.edit().putInt("beauty_level" + str, paramSeekBar.getProgress());
+      localSharedPreferences.edit().commit();
+      if (QLog.isColorLevel()) {
+        QLog.d("beauty", 2, "onStopTrackingTouch mBeautyValue" + this.a.jdField_a_of_type_Float + " mBeautyProcess=" + paramSeekBar.getProgress());
       }
-      localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
-      localaukr = ((aukp)localObject).a();
-      localaukr.a();
-      paramList = paramList.iterator();
-      for (;;)
+      if (this.a.jdField_a_of_type_Bhoe != null)
       {
-        if (paramList.hasNext())
-        {
-          localTraceData = (TraceData)paramList.next();
-          if (localTraceData.getStatus() == 1000)
-          {
-            ((aukp)localObject).b(localTraceData);
-            continue;
-            return true;
-          }
-        }
+        this.a.jdField_a_of_type_Bhoe.removeMessages(1011);
+        this.a.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(1011, NewFlowCameraActivity.jdField_a_of_type_Long);
       }
-    }
-    catch (Throwable paramList)
-    {
-      QLog.e("TraceReport", 1, paramList, new Object[0]);
-    }
-    for (;;)
-    {
-      ((aukp)localObject).a(localTraceData);
-      break;
-      localaukr.c();
-      localaukr.b();
-      ((aukp)localObject).a();
-    }
-  }
-  
-  public boolean b(List<TraceData> paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return false;
-    }
-    Object localObject;
-    aukr localaukr;
-    try
-    {
-      localObject = a();
-      if (localObject == null) {
-        return false;
+      if (this.a.e != null) {
+        this.a.e.setVisibility(4);
       }
-      localObject = ((QQAppInterface)localObject).getEntityManagerFactory().createEntityManager();
-      localaukr = ((aukp)localObject).a();
-      localaukr.a();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ((aukp)localObject).b((TraceData)paramList.next());
-        continue;
-        return true;
-      }
-    }
-    catch (Throwable paramList)
-    {
-      QLog.e("TraceReport", 1, paramList, new Object[0]);
-    }
-    for (;;)
-    {
-      localaukr.c();
-      localaukr.b();
-      ((aukp)localObject).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajlz
  * JD-Core Version:    0.7.0.1
  */

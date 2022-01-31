@@ -1,27 +1,27 @@
 package com.tencent.mobileqq.activity;
 
-import acoe;
-import acof;
-import acog;
-import acoh;
-import acoi;
-import acoj;
-import acok;
-import acol;
-import acom;
-import acon;
-import acoo;
-import acop;
-import acoq;
-import acor;
-import acos;
-import acot;
-import acou;
-import acov;
-import ajya;
-import akuy;
-import akuz;
-import akve;
+import aefo;
+import aefp;
+import aefq;
+import aefr;
+import aefs;
+import aeft;
+import aefu;
+import aefv;
+import aefw;
+import aefx;
+import aefy;
+import aefz;
+import aega;
+import aegb;
+import aegc;
+import aegd;
+import aege;
+import aegf;
+import alpo;
+import amlo;
+import amlp;
+import amlu;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,18 +29,18 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.Window;
-import awzy;
-import axqy;
-import bbdj;
-import bbfk;
-import bbgu;
-import bbjm;
-import bbkb;
-import bdfh;
-import bdfj;
+import ayvc;
+import azmj;
+import bdcd;
+import bdef;
+import bdfq;
 import bdii;
-import bdis;
-import bdlr;
+import bdiv;
+import bfef;
+import bfeh;
+import bfhg;
+import bfhq;
+import bfko;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
@@ -72,7 +72,7 @@ public class UpgradeActivity
   
   private void a(boolean paramBoolean)
   {
-    if (akuz.a().a() == 4)
+    if (amlp.a().a() == 4)
     {
       Object localObject = this.app.getHandler(Conversation.class);
       if (localObject != null)
@@ -83,12 +83,12 @@ public class UpgradeActivity
       }
       return;
     }
-    UpgradeDetailActivity.a(this, akuz.a().a(), false, true, true);
+    UpgradeDetailActivity.a(this, amlp.a().a(), false, true, true);
   }
   
   private void c()
   {
-    this.jdField_b_of_type_JavaLangString = ajya.a(2131715925);
+    this.jdField_b_of_type_JavaLangString = alpo.a(2131716297);
     this.jdField_c_of_type_JavaLangString = "检测到你的网络环境处于2G/3G下，继续下载QQ将会产生流量。";
     showDialog(8192);
   }
@@ -96,7 +96,7 @@ public class UpgradeActivity
   private void d()
   {
     this.jdField_b_of_type_JavaLangString = "下载QQ失败";
-    this.jdField_c_of_type_JavaLangString = ajya.a(2131715928);
+    this.jdField_c_of_type_JavaLangString = alpo.a(2131716300);
     showDialog(16384);
   }
   
@@ -116,7 +116,7 @@ public class UpgradeActivity
     if (getIntent().hasExtra("strCancelButtonDesc")) {
       this.jdField_e_of_type_JavaLangString = getIntent().getStringExtra("strCancelButtonDesc");
     }
-    if (akuz.a().a() == 4) {}
+    if (amlp.a().a() == 4) {}
     int i;
     for (boolean bool = true;; bool = false)
     {
@@ -133,7 +133,7 @@ public class UpgradeActivity
     }
     if (this.jdField_c_of_type_Int == 1)
     {
-      this.jdField_a_of_type_Long = awzy.a();
+      this.jdField_a_of_type_Long = ayvc.a();
       Object localObject = this.app.getPreferences();
       ((SharedPreferences)localObject).getInt("upgrade_tip_count", 0);
       if (i == 0)
@@ -204,13 +204,13 @@ public class UpgradeActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    paramBundle = akuz.a().a();
+    paramBundle = amlp.a().a();
     if ((paramBundle == null) || (paramBundle.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (paramBundle.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType <= 0))
     {
       finish();
       return true;
     }
-    getWindow().setBackgroundDrawableResource(2131167087);
+    getWindow().setBackgroundDrawableResource(2131167138);
     this.jdField_a_of_type_Int = getIntent().getIntExtra("activity_type", 4096);
     switch (this.jdField_a_of_type_Int)
     {
@@ -231,10 +231,10 @@ public class UpgradeActivity
   public void doOnResume()
   {
     super.doOnResume();
-    if ((this.jdField_b_of_type_Boolean) && (bdlr.a().b()))
+    if ((this.jdField_b_of_type_Boolean) && (bfko.a().b()))
     {
-      if (!bdlr.a().f()) {
-        bbfk.a(this);
+      if (!bfko.a().f()) {
+        bdef.a(this);
       }
       finish();
     }
@@ -254,49 +254,49 @@ public class UpgradeActivity
     }
     while (localObject1 != null)
     {
-      ((bbgu)localObject1).setCanceledOnTouchOutside(false);
-      ((bbgu)localObject1).setOnDismissListener(new acon(this));
+      ((bdfq)localObject1).setCanceledOnTouchOutside(false);
+      ((bdfq)localObject1).setOnDismissListener(new aefx(this));
       return localObject1;
-      axqy.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, akuy.b(), String.valueOf(0), akuz.a(), "");
-      localObject1 = bbdj.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
-      ((bbgu)localObject1).setPositiveButton(2131720683, new acop(this)).setNegativeButton(2131717279, new acoo(this)).setOnKeyListener(new acoe(this));
+      azmj.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, amlo.b(), String.valueOf(0), amlp.a(), "");
+      localObject1 = bdcd.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
+      ((bdfq)localObject1).setPositiveButton(2131721223, new aefz(this)).setNegativeButton(2131717651, new aefy(this)).setOnKeyListener(new aefo(this));
       continue;
       if (this.jdField_d_of_type_Int == 0)
       {
-        axqy.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, akuy.b(), String.valueOf(0), akuz.a(), "");
-        localObject1 = bbdj.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
+        azmj.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, amlo.b(), String.valueOf(0), amlp.a(), "");
+        localObject1 = bdcd.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
         b();
-        if (akuz.a().a() == 4) {}
-        for (paramInt = 2131693592;; paramInt = 2131720683)
+        if (amlp.a().a() == 4) {}
+        for (paramInt = 2131693693;; paramInt = 2131721223)
         {
-          ((bbgu)localObject1).setPositiveButton(paramInt, new acos(this)).setNegativeButton(2131720682, new acor(this)).setOnKeyListener(new acoq(this));
+          ((bdfq)localObject1).setPositiveButton(paramInt, new aegc(this)).setNegativeButton(2131721222, new aegb(this)).setOnKeyListener(new aega(this));
           break;
         }
       }
       if (this.jdField_d_of_type_Int == 2)
       {
-        axqy.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, akuy.b(), String.valueOf(2), akuz.a(), "");
-        axqy.b(this.app, "CliOper", "", "", "0X800417D", "0X800417D", 0, 0, "", "", "", "");
+        azmj.b(this.app, "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, amlo.b(), String.valueOf(2), amlp.a(), "");
+        azmj.b(this.app, "CliOper", "", "", "0X800417D", "0X800417D", 0, 0, "", "", "", "");
         try
         {
           this.jdField_c_of_type_JavaLangString = String.format(this.jdField_c_of_type_JavaLangString, new Object[0]);
-          acot localacot = new acot(this);
-          acou localacou = new acou(this);
+          aegd localaegd = new aegd(this);
+          aege localaege = new aege(this);
           if (this.jdField_a_of_type_Boolean) {
             if ((this.g == null) || ("".equals(this.g)))
             {
-              localObject1 = ajya.a(2131715929);
+              localObject1 = alpo.a(2131716301);
               if ((this.h != null) && (!"".equals(this.h))) {
                 break label620;
               }
-              str = ajya.a(2131715922);
-              paramInt = bbkb.aO(this, this.app.c());
-              bbkb.ae(this, this.app.c(), paramInt + 1);
-              bbkb.j(this, this.app.c(), System.currentTimeMillis());
-              localObject1 = bbdj.a(this, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, (String)localObject1, str, this.f, localacou, localacot);
+              str = alpo.a(2131716294);
+              paramInt = bdiv.aP(this, this.app.c());
+              bdiv.af(this, this.app.c(), paramInt + 1);
+              bdiv.j(this, this.app.c(), System.currentTimeMillis());
+              localObject1 = bdcd.a(this, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, (String)localObject1, str, this.f, localaege, localaegd);
               b();
               ((Dialog)localObject1).setCanceledOnTouchOutside(false);
-              ((Dialog)localObject1).setOnDismissListener(new acov(this));
+              ((Dialog)localObject1).setOnDismissListener(new aegf(this));
               return localObject1;
             }
           }
@@ -315,28 +315,28 @@ public class UpgradeActivity
           }
           if ((this.jdField_e_of_type_JavaLangString == null) || ("".equals(this.jdField_e_of_type_JavaLangString)))
           {
-            localObject2 = ajya.a(2131715920);
+            localObject2 = alpo.a(2131716292);
             label657:
             if ((this.jdField_d_of_type_JavaLangString != null) && (!"".equals(this.jdField_d_of_type_JavaLangString))) {
               break label737;
             }
           }
           label737:
-          for (String str = ajya.a(2131715927);; str = this.jdField_d_of_type_JavaLangString)
+          for (String str = alpo.a(2131716299);; str = this.jdField_d_of_type_JavaLangString)
           {
-            paramInt = bbkb.aN(this, this.app.c());
-            bbkb.ad(this, this.app.c(), paramInt + 1);
-            bbkb.i(this, this.app.c(), System.currentTimeMillis());
+            paramInt = bdiv.aO(this, this.app.c());
+            bdiv.ae(this, this.app.c(), paramInt + 1);
+            bdiv.i(this, this.app.c(), System.currentTimeMillis());
             break;
             localObject2 = this.jdField_e_of_type_JavaLangString;
             break label657;
           }
         }
-        Object localObject2 = bbdj.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
-        ((bbgu)localObject2).setPositiveButton(ajya.a(2131715926), new acog(this)).setNegativeButton(ajya.a(2131715931), new acof(this));
+        Object localObject2 = bdcd.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
+        ((bdfq)localObject2).setPositiveButton(alpo.a(2131716298), new aefq(this)).setNegativeButton(alpo.a(2131716303), new aefp(this));
         continue;
-        localObject2 = bbdj.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
-        ((bbgu)localObject2).setPositiveButton(ajya.a(2131715923), new acoi(this)).setNegativeButton(ajya.a(2131715924), new acoh(this));
+        localObject2 = bdcd.a(this, 230).setTitle(this.jdField_b_of_type_JavaLangString).setMessage(this.jdField_c_of_type_JavaLangString);
+        ((bdfq)localObject2).setPositiveButton(alpo.a(2131716295), new aefs(this)).setNegativeButton(alpo.a(2131716296), new aefr(this));
         continue;
         long l = System.currentTimeMillis();
         if (l - jdField_c_of_type_Long <= 1000L)
@@ -345,10 +345,10 @@ public class UpgradeActivity
           return null;
         }
         jdField_c_of_type_Long = l;
-        localObject2 = akuz.a().a();
-        if ((localObject2 == null) || (((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Akve == null) || (((UpgradeDetailWrapper)localObject2).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null))
+        localObject2 = amlp.a().a();
+        if ((localObject2 == null) || (((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Amlu == null) || (((UpgradeDetailWrapper)localObject2).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null))
         {
-          bdis.a().a(ajya.a(2131715930));
+          bfhq.a().a(alpo.a(2131716302));
           finish();
           return null;
         }
@@ -357,20 +357,20 @@ public class UpgradeActivity
         try
         {
           this.jdField_c_of_type_JavaLangString = String.format(this.jdField_c_of_type_JavaLangString, new Object[0]);
-          l = ((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Akve.jdField_a_of_type_Long;
-          bbjm.b(true);
-          paramInt = ((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Akve.jdField_a_of_type_Int;
-          bbjm.b(paramInt);
-          if (bdlr.a().b())
+          l = ((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Amlu.jdField_a_of_type_Long;
+          bdii.b(true);
+          paramInt = ((UpgradeDetailWrapper)localObject2).jdField_a_of_type_Amlu.jdField_a_of_type_Int;
+          bdii.b(paramInt);
+          if (bfko.a().b())
           {
-            localObject2 = bbdj.a(this, this.jdField_b_of_type_JavaLangString, l, this.jdField_c_of_type_JavaLangString, new acoj(this), new acok(this));
-            ((bbgu)localObject2).setOnDismissListener(new acol(this));
-            bdii.b("qqBaseActivity", bdfj.a(10010, 1, 1, 100));
-            bdii.b("qqBaseActivity", bdfj.a(10010, 1, 2, 100));
-            bdii.b("qqBaseActivity", bdfj.a(10010, 1, 3, 100));
-            bdfh.a().a(16, bdfj.a(10010, 1, 1, 100));
-            bdfh.a().a(16, bdfj.a(10010, 1, 2, 100));
-            bdfh.a().a(16, bdfj.a(10010, 1, 3, 100));
+            localObject2 = bdcd.a(this, this.jdField_b_of_type_JavaLangString, l, this.jdField_c_of_type_JavaLangString, new aeft(this), new aefu(this));
+            ((bdfq)localObject2).setOnDismissListener(new aefv(this));
+            bfhg.b("qqBaseActivity", bfeh.a(10010, 1, 1, 100));
+            bfhg.b("qqBaseActivity", bfeh.a(10010, 1, 2, 100));
+            bfhg.b("qqBaseActivity", bfeh.a(10010, 1, 3, 100));
+            bfef.a().a(16, bfeh.a(10010, 1, 1, 100));
+            bfef.a().a(16, bfeh.a(10010, 1, 2, 100));
+            bfef.a().a(16, bfeh.a(10010, 1, 3, 100));
             return localObject2;
           }
         }
@@ -382,9 +382,9 @@ public class UpgradeActivity
             localException2.printStackTrace();
           }
           this.jdField_b_of_type_Boolean = true;
-          bdlr.a().a(false);
-          localObject2 = bbdj.a(this, this.jdField_b_of_type_JavaLangString, l, this.jdField_c_of_type_JavaLangString, "");
-          ((bbfk)localObject2).a(new acom(this, (bbfk)localObject2, paramInt), true);
+          bfko.a().a(false);
+          localObject2 = bdcd.a(this, this.jdField_b_of_type_JavaLangString, l, this.jdField_c_of_type_JavaLangString, "");
+          ((bdef)localObject2).a(new aefw(this, (bdef)localObject2, paramInt), true);
           return localObject2;
         }
       }
@@ -394,7 +394,7 @@ public class UpgradeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UpgradeActivity
  * JD-Core Version:    0.7.0.1
  */

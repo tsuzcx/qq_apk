@@ -1,62 +1,23 @@
-import android.text.TextUtils;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.LikeAnimationInfo;
 
-public class qza
+public final class qza
+  implements Parcelable.Creator<LikeAnimationInfo>
 {
-  private JSONObject a;
-  
-  public qza(String paramString)
+  public LikeAnimationInfo a(Parcel paramParcel)
   {
-    try
-    {
-      if (TextUtils.isEmpty(paramString))
-      {
-        this.a = new JSONObject();
-        return;
-      }
-      this.a = new JSONObject(paramString);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return new LikeAnimationInfo(paramParcel);
   }
   
-  public qza(String paramString1, String paramString2, String paramString3, String paramString4)
+  public LikeAnimationInfo[] a(int paramInt)
   {
-    this.a = new JSONObject();
-    npu.a(paramString1, paramString2, paramString3, paramString4, this.a);
-  }
-  
-  public qza(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    this(paramString1);
-    npu.a(paramString2, paramString3, paramString4, paramString5, this.a);
-  }
-  
-  public String a()
-  {
-    return this.a.toString();
-  }
-  
-  protected void a(String paramString, Object paramObject)
-  {
-    try
-    {
-      this.a.put(paramString, paramObject);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return new LikeAnimationInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qza
  * JD-Core Version:    0.7.0.1
  */

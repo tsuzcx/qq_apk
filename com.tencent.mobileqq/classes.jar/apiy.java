@@ -1,31 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.CustomEmotionData;
 
-final class apiy
-  implements View.OnClickListener
+class apiy
+  extends apkn<CustomEmotionData>
 {
-  apiy(FileManagerEntity paramFileManagerEntity, apkq paramapkq) {}
+  apiy(apiu paramapiu) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    try
-    {
-      if (bgtr.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
-      {
-        bgtr.a().a(this.jdField_a_of_type_Apkq.getActivity(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath, false);
-        return;
-      }
-      QLog.e("FileOperaterUtils-PUPU", 2, "Should not open the file with pupu: " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath);
-      return;
+    if (this.a.a != null) {
+      this.a.a.e();
     }
-    catch (Exception paramView) {}
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+  }
+  
+  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
+  {
+    if (((paramInt1 <= 28) || (paramInt2 % 28 == 0)) && (this.a.a != null)) {
+      this.a.a.e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apiy
  * JD-Core Version:    0.7.0.1
  */

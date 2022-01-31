@@ -1,26 +1,28 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import mqq.os.MqqHandler;
 
-class adux
-  extends actn
+public class adux
+  extends MqqHandler
 {
-  public long a;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
-  public String a;
-  TextView b;
-  TextView c;
-  TextView d;
-  TextView e;
+  public adux(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  adux(aduu paramaduu) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1981: 
+      this.a.finish();
+      return;
+    }
+    this.a.f();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adux
  * JD-Core Version:    0.7.0.1
  */

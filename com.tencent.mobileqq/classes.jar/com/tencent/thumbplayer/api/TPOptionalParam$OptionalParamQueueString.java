@@ -3,12 +3,10 @@ package com.tencent.thumbplayer.api;
 public class TPOptionalParam$OptionalParamQueueString
 {
   public String[] queueValue;
-  
-  public TPOptionalParam$OptionalParamQueueString(TPOptionalParam paramTPOptionalParam) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPOptionalParam.OptionalParamQueueString
  * JD-Core Version:    0.7.0.1
  */

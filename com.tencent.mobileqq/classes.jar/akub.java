@@ -1,33 +1,24 @@
-import android.content.Intent;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.Comparator;
 
-public class akub
-  implements pbx
+class akub
+  implements Comparator<akud>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private int b;
+  akub(akua paramakua) {}
   
-  public akub(int paramInt1, int paramInt2, String paramString)
+  public int a(akud paramakud1, akud paramakud2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt)
-  {
-    paramString = new Intent("notify_main_subscribe_follow_state");
-    paramString.putExtra("follow_uin", this.jdField_a_of_type_JavaLangString);
-    paramString.putExtra("follow_uin_position", this.jdField_a_of_type_Int);
-    paramString.putExtra("follow_uin_smooth_dx", this.b);
-    paramString.putExtra("follow_uin_status", paramBoolean);
-    BaseApplication.getContext().sendBroadcast(paramString);
+    if (paramakud1.a == paramakud2.a) {
+      return 0;
+    }
+    if (paramakud1.a > paramakud2.a) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akub
  * JD-Core Version:    0.7.0.1
  */

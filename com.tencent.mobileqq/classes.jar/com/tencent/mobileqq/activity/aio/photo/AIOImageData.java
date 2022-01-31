@@ -46,6 +46,7 @@ public class AIOImageData
   public String m;
   public String n;
   public String o;
+  public String p;
   
   public AIOImageData()
   {
@@ -183,7 +184,7 @@ public class AIOImageData
         label102:
         this.jdField_e_of_type_Boolean = bool1;
         if (paramParcel.readByte() == 0) {
-          break label328;
+          break label336;
         }
         bool1 = true;
         this.jdField_f_of_type_Boolean = bool1;
@@ -207,31 +208,32 @@ public class AIOImageData
           this.jdField_j_of_type_JavaLangString = paramParcel.readString();
           this.k = paramParcel.readString();
           if (paramParcel.readInt() != 1) {
-            break label364;
+            break label372;
           }
           bool1 = true;
           this.jdField_h_of_type_Boolean = bool1;
           this.jdField_e_of_type_Int = paramParcel.readInt();
           if (paramParcel.readInt() != 1) {
-            break label369;
+            break label377;
           }
           bool1 = true;
           this.jdField_i_of_type_Boolean = bool1;
           this.l = paramParcel.readString();
           if (paramParcel.readInt() != 1) {
-            break label374;
+            break label382;
           }
           bool1 = bool2;
           this.jdField_j_of_type_Boolean = bool1;
           this.m = paramParcel.readString();
           this.n = paramParcel.readString();
           this.o = paramParcel.readString();
+          this.p = paramParcel.readString();
           return;
           bool1 = false;
           continue;
           bool1 = false;
           break label102;
-          label328:
+          label336:
           bool1 = false;
         }
       }
@@ -246,13 +248,13 @@ public class AIOImageData
           continue;
           bool1 = false;
           continue;
-          label364:
+          label372:
           bool1 = false;
           continue;
-          label369:
+          label377:
           bool1 = false;
           continue;
-          label374:
+          label382:
           bool1 = false;
         }
       }
@@ -314,13 +316,13 @@ public class AIOImageData
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_e_of_type_Boolean) {
-        break label324;
+        break label332;
       }
       paramInt = 1;
       label104:
       paramParcel.writeByte((byte)paramInt);
       if (!this.jdField_f_of_type_Boolean) {
-        break label329;
+        break label337;
       }
       paramInt = 1;
       label119:
@@ -329,7 +331,7 @@ public class AIOImageData
       paramParcel.writeInt(this.jdField_b_of_type_Int);
       paramParcel.writeValue(this.jdField_a_of_type_JavaLangObject);
       if (!this.jdField_g_of_type_Boolean) {
-        break label334;
+        break label342;
       }
       paramInt = 1;
       label158:
@@ -344,35 +346,36 @@ public class AIOImageData
       paramParcel.writeString(this.jdField_j_of_type_JavaLangString);
       paramParcel.writeString(this.k);
       if (!this.jdField_h_of_type_Boolean) {
-        break label339;
+        break label347;
       }
       paramInt = 1;
       label245:
       paramParcel.writeInt(paramInt);
       paramParcel.writeInt(this.jdField_e_of_type_Int);
       if (!this.jdField_i_of_type_Boolean) {
-        break label344;
+        break label352;
       }
       paramInt = 1;
       label267:
       paramParcel.writeInt(paramInt);
       paramParcel.writeString(this.l);
       if (!this.jdField_j_of_type_Boolean) {
-        break label349;
+        break label357;
       }
     }
-    label324:
-    label329:
-    label334:
-    label339:
-    label344:
-    label349:
+    label332:
+    label337:
+    label342:
+    label347:
+    label352:
+    label357:
     for (paramInt = i1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
       paramParcel.writeString(this.m);
       paramParcel.writeString(this.n);
       paramParcel.writeString(this.o);
+      paramParcel.writeString(this.p);
       return;
       paramInt = 0;
       break;
@@ -391,7 +394,7 @@ public class AIOImageData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageData
  * JD-Core Version:    0.7.0.1
  */

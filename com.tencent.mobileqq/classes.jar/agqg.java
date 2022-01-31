@@ -1,28 +1,48 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import mqq.observer.AccountObserver;
+import android.app.Dialog;
+import android.os.Handler;
+import java.util.HashMap;
 
 class agqg
-  extends AccountObserver
+  extends bfvh
 {
-  agqg(agqf paramagqf) {}
+  agqg(agot paramagot) {}
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if (paramString1 == null)
+    if ((!paramBoolean) || (paramHashMap == null))
     {
-      agqf.b(this.a, null);
-      agqf.a(this.a, null);
-      this.a.b();
+      this.a.E(2);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
       return;
     }
-    this.a.a(agqf.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    agqf.a(this.a, null);
+    if (((Integer)paramHashMap.get("result")).intValue() == 0)
+    {
+      this.a.E(1);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
+    }
+    this.a.ao = true;
+    this.a.bH();
+    if ((agot.a(this.a) != null) && (agot.a(this.a).isShowing())) {
+      agot.a(this.a).dismiss();
+    }
+    this.a.bI();
+  }
+  
+  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    if ((!paramBoolean) || (paramHashMap == null)) {
+      return;
+    }
+    this.a.ar = true;
+    this.a.aq = ((Boolean)paramHashMap.get("result")).booleanValue();
+    this.a.bH();
+    this.a.bI();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,27 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
 
-public class azsh
+class azsh
+  implements View.OnLongClickListener
 {
-  static long a;
-  public int a;
-  public Bundle a;
-  public azsi a;
-  public String a;
-  public mxj a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c = 3;
-  public int d = 25;
-  public int e = 450000;
-  public int f = 1;
+  azsh(azsg paramazsg) {}
   
-  public azsh()
+  public boolean onLongClick(View paramView)
   {
-    this.jdField_a_of_type_Int = 480000;
-    this.jdField_b_of_type_Int = 9;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    long l = jdField_a_of_type_Long + 1L;
-    jdField_a_of_type_Long = l;
-    this.jdField_b_of_type_Long = l;
+    if (this.a.a != null)
+    {
+      aeov localaeov = (aeov)this.a.a.get();
+      if (localaeov != null) {
+        return localaeov.onLongClick(paramView);
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azsh
  * JD-Core Version:    0.7.0.1
  */

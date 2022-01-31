@@ -12,10 +12,10 @@ public class MultiVideoCtrlLayerUI4NewGroupChat$AutoCheckVideoRunnable
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.c, 2, "AutoCheckVideoRunnable");
+      QLog.d(this.this$0.d, 2, "AutoCheckVideoRunnable");
     }
     if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) {
-      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().aj = true;
+      this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().ak = true;
     }
     MultiVideoCtrlLayerUI4NewGroupChat.d(this.this$0);
     if (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
@@ -25,7 +25,7 @@ public class MultiVideoCtrlLayerUI4NewGroupChat$AutoCheckVideoRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat.AutoCheckVideoRunnable
  * JD-Core Version:    0.7.0.1
  */

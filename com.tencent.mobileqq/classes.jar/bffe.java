@@ -1,31 +1,92 @@
+import android.net.Uri;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.appcommon.js.OpenJsBridge.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.List;
+
 public class bffe
+  extends atck
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
+  public HashMap<String, atcm> b = new HashMap();
   
-  public float a()
+  public HashMap<String, atcm> a()
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      return 0.0F;
+    return this.b;
+  }
+  
+  public void a(atcm paramatcm, String paramString)
+  {
+    this.b.put(paramString, paramatcm);
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null)
+    {
+      this.b.clear();
+      return;
     }
-    return this.jdField_a_of_type_Float / this.jdField_a_of_type_Int;
+    this.b.remove(paramString);
   }
   
-  public void a()
+  public void a(String paramString1, String paramString2, List<String> paramList, atcl paramatcl)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Float = 0;
+    long l1 = System.currentTimeMillis();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j) {
+        try
+        {
+          paramList.set(i, URLDecoder.decode((String)paramList.get(i), "UTF-8"));
+          i += 1;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          for (;;)
+          {
+            localUnsupportedEncodingException.printStackTrace();
+            if (QLog.isDevelopLevel()) {
+              QLog.i("OpenJsBridge", 4, "[getResult]decode failed: " + (String)paramList.get(i));
+            }
+          }
+        }
+      }
+    }
+    long l2 = System.currentTimeMillis();
+    bfhg.b("OpenJsBridge", "[getResult]time4-time3=" + (l2 - l1));
+    paramString1 = (atcm)this.b.get(paramString1);
+    if (paramString1 != null) {
+      paramString1.call(paramString2, paramList, paramatcl);
+    }
+    while (!(paramatcl instanceof bfff)) {
+      return;
+    }
+    ((bfff)paramatcl).b(paramString2);
   }
   
-  public void a(float paramFloat)
+  public boolean a(WebView paramWebView, String paramString)
   {
-    this.jdField_a_of_type_Float += paramFloat;
-    this.jdField_a_of_type_Int += 1;
+    if (paramString == null) {}
+    Uri localUri;
+    do
+    {
+      return false;
+      localUri = Uri.parse(paramString);
+    } while ((localUri == null) || (localUri.getScheme() == null) || (!localUri.getScheme().equals("jsbridge")));
+    bfhg.b("OpenJsBridge", "[canHandleUrl] AsyncInterface_start:" + paramString);
+    ThreadManager.executeOnSubThread(new OpenJsBridge.1(this, paramString, paramWebView));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bffe
  * JD-Core Version:    0.7.0.1
  */

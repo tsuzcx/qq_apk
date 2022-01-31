@@ -1,49 +1,54 @@
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.qphone.base.util.QLog;
-
 class mqc
-  extends ClickableSpan
 {
-  mqc(mpx parammpx, boolean paramBoolean, String paramString1, String paramString2) {}
+  public int a;
+  public mqb a;
+  public boolean a;
   
-  public void onClick(View paramView)
+  public mqc(mqb parammqb, boolean paramBoolean)
   {
-    QLog.w(this.jdField_a_of_type_Mpx.i, 1, "closeUI showNoNameDialog, realName[" + this.jdField_a_of_type_Boolean + "]");
-    this.jdField_a_of_type_Mpx.a(this.jdField_a_of_type_JavaLangString);
-    paramView = this.jdField_a_of_type_Mpx.a();
-    if (paramView == null) {
-      return;
-    }
-    paramView.finish();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      mpg.a(this.jdField_a_of_type_Mpx.a, this.b);
-      return;
-    }
-    paramView = actj.a(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
-    paramView.putExtra("uin", this.jdField_a_of_type_Mpx.a.a().a().d);
-    paramView.putExtra("uintype", 0);
-    paramView.putExtra("uinname", this.jdField_a_of_type_Mpx.a.a().a().e);
-    paramView.putExtra("entrance", 8);
-    BaseApplicationImpl.getApplication().startActivity(paramView);
+    this.jdField_a_of_type_Mqb = parammqb;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public int a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    super.updateDrawState(paramTextPaint);
+    int i;
+    if (this.jdField_a_of_type_Boolean) {
+      for (;;)
+      {
+        i = paramInt2;
+        if (paramInt1 >= paramInt2) {
+          break;
+        }
+        if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Mqb.a.length) {
+          this.jdField_a_of_type_Int = 0;
+        }
+        i = Math.min(this.jdField_a_of_type_Mqb.a.length - this.jdField_a_of_type_Int, paramInt2 - paramInt1);
+        System.arraycopy(this.jdField_a_of_type_Mqb.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, i);
+        this.jdField_a_of_type_Int += i;
+        paramInt1 += i;
+      }
+    }
+    if (a())
+    {
+      i = 0;
+      return i;
+    }
+    paramInt2 = Math.min(this.jdField_a_of_type_Mqb.a.length - this.jdField_a_of_type_Int, paramInt2);
+    System.arraycopy(this.jdField_a_of_type_Mqb.a, this.jdField_a_of_type_Int, paramArrayOfByte, paramInt1, paramInt2);
+    this.jdField_a_of_type_Int += paramInt2;
+    return paramInt2;
+  }
+  
+  public boolean a()
+  {
+    return (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int >= this.jdField_a_of_type_Mqb.a.length);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mqc
  * JD-Core Version:    0.7.0.1
  */

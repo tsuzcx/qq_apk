@@ -1,19 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
 class aril
-  implements arjc
+  implements arnx
 {
-  aril(arik paramarik, arkh paramarkh) {}
+  aril(arik paramarik) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    QLog.i("XProxy|NowProxy", 1, "openWatchTogetherRoom  enter success  retCode= " + paramInt + ";msg=" + paramString);
-    this.jdField_a_of_type_Arkh.a(paramInt, paramString);
+    int i = aroo.b(this.a.a.e());
+    azmj.b(null, "dc00898", "", "", "0X800A689", "0X800A689", 0, 0, i + "", "", "", "");
+    this.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aril
  * JD-Core Version:    0.7.0.1
  */

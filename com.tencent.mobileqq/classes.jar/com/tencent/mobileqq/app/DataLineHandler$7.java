@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app;
 
-import ajum;
-import akpf;
-import bbmx;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import allz;
+import amfy;
+import bdlr;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
@@ -19,7 +19,7 @@ import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 public class DataLineHandler$7
   implements Runnable
 {
-  public DataLineHandler$7(ajum paramajum, FromServiceMsg paramFromServiceMsg, int paramInt, long paramLong) {}
+  public DataLineHandler$7(allz paramallz, FromServiceMsg paramFromServiceMsg, int paramInt, long paramLong) {}
   
   public void run()
   {
@@ -39,7 +39,7 @@ public class DataLineHandler$7
         if (i >= 0)
         {
           localObject = new byte[i];
-          bbmx.a((byte[])localObject, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
+          bdlr.a((byte[])localObject, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
         }
       }
       else if (localObject != null)
@@ -63,7 +63,7 @@ public class DataLineHandler$7
       this.this$0.a(localInvalidProtocolBufferMicroException);
       return;
     }
-    ajum.a(this.this$0, localInvalidProtocolBufferMicroException);
+    allz.a(this.this$0, localInvalidProtocolBufferMicroException);
   }
 }
 

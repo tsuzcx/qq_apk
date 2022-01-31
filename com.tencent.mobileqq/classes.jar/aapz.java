@@ -1,10 +1,10 @@
 public abstract interface aapz
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapz
  * JD-Core Version:    0.7.0.1
  */

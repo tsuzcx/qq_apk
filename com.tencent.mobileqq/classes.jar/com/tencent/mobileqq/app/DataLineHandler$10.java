@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app;
 
-import ajum;
-import akcs;
+import allz;
+import aluh;
 import msf.msgcomm.msg_comm.Msg;
 import tencent.im.s2c.msgtype0x211.submsgtype0x9.C2CType0x211_SubC2CType0x9.MsgBody;
 
 public class DataLineHandler$10
   implements Runnable
 {
-  public DataLineHandler$10(ajum paramajum1, ajum paramajum2, msg_comm.Msg paramMsg, C2CType0x211_SubC2CType0x9.MsgBody paramMsgBody) {}
+  public DataLineHandler$10(allz paramallz1, allz paramallz2, msg_comm.Msg paramMsg, C2CType0x211_SubC2CType0x9.MsgBody paramMsgBody) {}
   
   public void run()
   {
-    this.this$0.a.a(this.jdField_a_of_type_Ajum, this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg, this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x9C2CType0x211_SubC2CType0x9$MsgBody);
+    this.this$0.a.a(this.jdField_a_of_type_Allz, this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg, this.jdField_a_of_type_TencentImS2cMsgtype0x211Submsgtype0x9C2CType0x211_SubC2CType0x9$MsgBody);
   }
 }
 

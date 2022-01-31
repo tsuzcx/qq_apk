@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import amor;
 import android.os.Message;
-import bfnk;
+import aofp;
+import bhoe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class DeviceFragment$7
   implements Runnable
 {
-  DeviceFragment$7(DeviceFragment paramDeviceFragment, amor paramamor) {}
+  DeviceFragment$7(DeviceFragment paramDeviceFragment, aofp paramaofp) {}
   
   public void run()
   {
@@ -34,7 +34,7 @@ class DeviceFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment.7
  * JD-Core Version:    0.7.0.1
  */

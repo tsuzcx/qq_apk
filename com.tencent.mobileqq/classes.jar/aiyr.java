@@ -1,32 +1,33 @@
-import com.tencent.TMG.utils.QLog;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class aiyr
-  extends aizj
+public class aiyr
+  implements OnCompositionLoadedListener
 {
-  public QQAppInterface a;
+  public aiyr(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  aiyr(QQAppInterface paramQQAppInterface)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    this.a = paramQQAppInterface;
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    aiyp.a(((airx)this.a.getManager(153)).a(), paramInt);
-  }
-  
-  public void b(String paramString, int paramInt1, int paramInt2)
-  {
-    QLog.i("CmGameTemp_CmGameAudioManager", 0, "[onQueryAudioRoomId] friUin:" + paramString + ",roomID:" + paramInt1);
-    super.b(paramString, paramInt1, paramInt2);
-    ((airx)this.a.getManager(153)).a().a(paramString, String.valueOf(paramInt1), paramInt2);
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    if (DrawRedpacketPannelPreviewFragment.e(this.a) != null)
+    {
+      DrawRedpacketPannelPreviewFragment.e(this.a).setImageDrawable(localLottieDrawable);
+      aiqz.a(this.a.getActivity().app.getCurrentAccountUin(), "", true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyr
  * JD-Core Version:    0.7.0.1
  */

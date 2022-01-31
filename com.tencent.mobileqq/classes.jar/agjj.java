@@ -1,74 +1,72 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.os.Bundle;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class agjj
-  extends aumg
+class agjj
+  implements BusinessObserver
 {
-  private agjj(ContactListView paramContactListView) {}
+  agjj(agiy paramagiy) {}
   
-  protected void a(boolean paramBoolean)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ContactListView", 2, "onHideContact isSuccess=" + paramBoolean);
+      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
     }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_Int == 5)) {
-      this.a.j();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, int paramInt)
-  {
-    if ((!paramBoolean) || (!bbfj.d(this.a.getContext())))
-    {
-      this.a.i();
-      this.a.g();
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.d();
-    if (!paramBoolean1)
-    {
-      this.a.i();
-      this.a.g();
-      if (((i == 0) || (i == 7)) && ((this.a.jdField_a_of_type_Int != 2) || (!(this.a.jdField_a_of_type_Aqbe instanceof aqgd))) && (this.a.b == 0)) {
-        this.a.a(2131718748, 3000L);
-      }
-    }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    } while (!this.a.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.e());
-    this.a.a(2131719292, 0L, false);
-  }
-  
-  protected void d(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean)
-    {
-      this.a.i();
-      ContactListView.a(this.a, true);
-      if ((paramInt & 0x1) == 0) {
-        this.a.g();
-      }
+    if (!paramBoolean) {
+      this.a.A(2131695727);
     }
     for (;;)
     {
-      if (this.a.jdField_a_of_type_Int == 6) {
-        this.a.f();
-      }
+      ChatActivityUtils.b();
       return;
-      this.a.g();
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+          localFollowResponse.mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+          if (paramInt == 0)
+          {
+            ((FriendListHandler)this.a.a.a(1)).a(true, false);
+            paramBundle = (alnc)this.a.a.a(21);
+            if (paramBundle != null) {
+              paramBundle.a(SystemClock.uptimeMillis());
+            }
+          }
+          else if (paramInt == 58)
+          {
+            this.a.A(2131695724);
+          }
+          else if (paramInt == 65)
+          {
+            this.a.A(2131695697);
+          }
+          else if (paramInt == 20)
+          {
+            this.a.A(2131695698);
+          }
+          else
+          {
+            this.a.A(2131695727);
+          }
+        }
+      }
+      catch (Exception paramBundle) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agjj
  * JD-Core Version:    0.7.0.1
  */

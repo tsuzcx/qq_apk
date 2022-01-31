@@ -1,9 +1,9 @@
 package com.tencent.open.appstore.report;
 
 import android.text.TextUtils;
-import bdhi;
-import bdhz;
-import bdii;
+import bfgg;
+import bfgx;
+import bfhg;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.replacemonitor.replace.st.InstallFinishLog;
@@ -22,18 +22,18 @@ public final class AppCenterReporter$5
     do
     {
       return;
-      localObject = bdhi.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_b_of_type_JavaLangString);
+      localObject = bfgg.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_b_of_type_JavaLangString);
       if (localObject != null)
       {
-        bdii.b("AppCenterReporter", ">reportInstallComplete " + ((DownloadInfo)localObject).w + "|" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w);
+        bfhg.b("AppCenterReporter", ">reportInstallComplete " + ((DownloadInfo)localObject).w + "|" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w);
         this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w = ((DownloadInfo)localObject).w;
       }
       localObject = BaseApplicationImpl.getApplication().getQQProcessName();
       bool = TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w);
-      bdii.b("AppCenterReporter", ">reportInstallComplete " + bool + "|" + (String)localObject + "|" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w + "|");
+      bfhg.b("AppCenterReporter", ">reportInstallComplete " + bool + "|" + (String)localObject + "|" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w + "|");
     } while (!bool);
-    bdii.b("AppCenterReporter", "[reportInstallComplete]");
-    bdhz.a(3008, bdhz.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) + "|" + bdhz.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) + "|" + this.jdField_a_of_type_Int + "|" + bdhz.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e));
+    bfhg.b("AppCenterReporter", "[reportInstallComplete]");
+    bfgx.a(3008, bfgx.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) + "|" + bfgx.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) + "|" + this.jdField_a_of_type_Int + "|" + bfgx.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e));
     Object localObject = new InstallFinishLog();
     ((InstallFinishLog)localObject).packageName = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e;
     ((InstallFinishLog)localObject).versionCode = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_b_of_type_Int;

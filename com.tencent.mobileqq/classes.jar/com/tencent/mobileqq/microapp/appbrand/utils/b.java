@@ -2,7 +2,7 @@ package com.tencent.mobileqq.microapp.appbrand.utils;
 
 import android.os.Environment;
 import android.text.TextUtils;
-import bbdx;
+import bdcs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.microapp.apkg.f;
 import com.tencent.qphone.base.util.MD5;
@@ -55,7 +55,7 @@ public class b
   
   private void c()
   {
-    bbdx.a(a(0), false);
+    bdcs.a(a(0), false);
   }
   
   private String h(String paramString)
@@ -277,7 +277,7 @@ public class b
       if (TextUtils.isEmpty(paramString)) {
         return null;
       }
-      if (bbdx.d(str, new File(a(1), paramString).getAbsolutePath())) {
+      if (bdcs.d(str, new File(a(1), paramString).getAbsolutePath())) {
         return "wxfile://" + "store" + "_" + paramString;
       }
     }
@@ -300,7 +300,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.utils.b
  * JD-Core Version:    0.7.0.1
  */

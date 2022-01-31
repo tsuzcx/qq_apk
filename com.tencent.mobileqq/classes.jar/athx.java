@@ -1,86 +1,47 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import mqq.manager.TicketManager;
-import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.listentogether.ListenTogetherSession;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class athx
+  extends amab
 {
-  public int a;
-  public athz a;
-  public atia a;
-  public AppInterface a;
-  public int b;
+  public athx(ListenTogetherManager paramListenTogetherManager) {}
   
-  public athx(AppInterface paramAppInterface)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-  }
-  
-  private boolean a(oidb_0xada.ReqBody paramReqBody)
-  {
-    paramReqBody.uid.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    paramReqBody.tinyid.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2);
-    String str = ((TicketManager)localObject).getA2(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+    QLog.i("ListenTogether.Manager", 1, "onTroopManagerSuccess result: " + paramInt2 + " troopUin: " + paramString);
+    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2)))
     {
-      paramReqBody.a2.set(str);
-      paramReqBody.platform.set(1);
-      paramReqBody.version.set("8.3.0");
-      paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
-      paramReqBody.original_key.set((String)localObject);
-      paramReqBody.original_id_type.set(1);
-      return true;
+      String str = atii.a(1, paramString);
+      if (ListenTogetherManager.a(this.a).equals(str))
+      {
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
+        ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
+        athl.a(ListenTogetherManager.a(this.a), paramString, false);
+        this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
+        this.a.a(1, paramString, false);
+      }
     }
-    return false;
   }
   
-  public athx a(int paramInt)
+  protected void b(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    return this;
-  }
-  
-  public athx a(athz paramathz)
-  {
-    this.jdField_a_of_type_Athz = paramathz;
-    return this;
-  }
-  
-  public athx a(atia paramatia)
-  {
-    this.jdField_a_of_type_Atia = paramatia;
-    return this;
-  }
-  
-  public athx a(byte[] paramArrayOfByte)
-  {
-    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
-    if (a(localReqBody))
+    QLog.i("ListenTogether.Manager", 1, "onPassiveExit troopUin: " + paramString);
+    String str = atii.a(1, paramString);
+    if (ListenTogetherManager.a(this.a).equals(str))
     {
-      localReqBody.cmd.set(this.jdField_a_of_type_Int);
-      localReqBody.subcmd.set(this.b);
-      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-      mxf.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new athy(this), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).g = 3;
+      ((ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a))).h = 3;
+      athl.a(ListenTogetherManager.a(this.a), paramString, false);
+      this.a.a(true, (ListenTogetherSession)ListenTogetherManager.a(this.a).get(ListenTogetherManager.a(this.a)), 1007);
+      this.a.a(1, paramString, false);
     }
-    return this;
-  }
-  
-  public athx b(int paramInt)
-  {
-    this.b = paramInt;
-    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     athx
  * JD-Core Version:    0.7.0.1
  */

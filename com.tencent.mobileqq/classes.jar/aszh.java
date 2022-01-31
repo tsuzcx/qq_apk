@@ -1,14 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.intervideo.nowproxy.customized_interface.ActionCallback;
 
-final class aszh
-  implements DialogInterface.OnClickListener
+class aszh
+  implements ActionCallback
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  aszh(asyy paramasyy, aszq paramaszq) {}
+  
+  public void onResult(String paramString)
+  {
+    try
+    {
+      i = Integer.parseInt(paramString);
+      this.jdField_a_of_type_Aszq.a(i, "");
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        int i = -1;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszh
  * JD-Core Version:    0.7.0.1
  */

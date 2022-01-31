@@ -1,43 +1,19 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aezh
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  private long jdField_a_of_type_Long;
+  aezh(aezb paramaezb) {}
   
-  aezh(aezg paramaezg) {}
-  
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 200L) {
-      return;
-    }
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_Aezg.jdField_a_of_type_Aeyv.a();
-    paramView = new Intent(aezg.a(this.jdField_a_of_type_Aezg), QQBrowserActivity.class);
-    paramView.putExtra("hide_left_button", false);
-    paramView.putExtra("show_right_close_button", false);
-    paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-    String str = bbqd.a(aezg.a(this.jdField_a_of_type_Aezg), "call", "mvip.gongneng.anroid.individuation.web");
-    VasWebviewUtil.openQQBrowserWithoutAD(aezg.a(this.jdField_a_of_type_Aezg), str, 524288L, paramView, false, -1);
-    VipUtils.a(this.jdField_a_of_type_Aezg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "QQVIPFUNCALL", "0X8004D8C", "0X8004D8C", 4, 0, new String[0]);
-    paramView = this.jdField_a_of_type_Aezg.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-    paramView.putInt("funcall_tip_" + this.jdField_a_of_type_Aezg.jdField_a_of_type_JavaLangString, 4);
-    paramView.commit();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetConfig;
-import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloTicker;
+import com.tencent.mobileqq.apollo.EnginePreLoader.2;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class aklv
-  extends ResourcePluginListener
 {
-  private aklv(GetConfig paramGetConfig) {}
+  private ApolloEngine jdField_a_of_type_ComTencentMobileqqApolloApolloEngine;
+  private ApolloTicker jdField_a_of_type_ComTencentMobileqqApolloApolloTicker;
   
-  public void a(byte paramByte)
+  private void a()
   {
-    if (this.a.b == 44)
-    {
-      if ((paramByte != 2) && (paramByte == 3)) {}
-      this.a.a.app.c(GetConfig.a(this.a));
-      this.a.a(7);
-    }
-  }
-  
-  public void b(byte paramByte)
-  {
-    if ((paramByte != 2) && (paramByte == 3)) {}
-    this.a.a.app.d(this);
+    ThreadManagerV2.executeOnSubThread(new EnginePreLoader.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aklv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.9;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class arwd
-  implements DialogInterface.OnClickListener
+class arwd
+  implements URLDrawable.URLDrawableListener
 {
-  public arwd(LocationDialogUtil.9 param9) {}
+  arwd(arwc paramarwc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (arvm.a(this.a.a)) {
-      this.a.a.finish();
-    }
+    paramURLDrawable.setBounds(bdda.a(paramURLDrawable, 36, 100, this.a.a));
+    arwc.a(this.a).setImageDrawable(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arwd
  * JD-Core Version:    0.7.0.1
  */

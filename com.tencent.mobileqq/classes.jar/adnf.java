@@ -1,119 +1,87 @@
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.ImageItem;
-import com.tencent.mobileqq.structmsg.StructMsgSubImageVideo.VideoItem;
+import android.os.AsyncTask;
+import android.widget.TextView;
+import com.tencent.map.lib.basemap.data.GeoPoint;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.apache.http.client.HttpClient;
 
-class adnf
-  implements View.OnClickListener
+public class adnf
+  extends AsyncTask<GeoPoint, Void, String>
 {
-  adnf(adne paramadne) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  protected GeoPoint a;
+  protected HttpClient a;
   
-  public void onClick(View paramView)
+  public adnf(QQMapActivity paramQQMapActivity, GeoPoint paramGeoPoint, TextView paramTextView)
   {
-    int j = 1;
-    paramView = paramView.getTag();
-    if (!(paramView instanceof adng)) {}
-    adng localadng;
-    label42:
-    do
+    this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint = paramGeoPoint;
+    this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
+    this.jdField_a_of_type_AndroidWidgetTextView.setTag(this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint);
+  }
+  
+  protected String a(GeoPoint... paramVarArgs)
+  {
+    int i = 0;
+    if (i < 3)
     {
-      do
+      if (isCancelled())
       {
-        return;
-        localadng = (adng)paramView;
-        paramView = adng.a(localadng);
-        if (!TextUtils.isEmpty(paramView)) {
-          break;
-        }
-        Log.i("AutoVideoItemBuilder", "onClick: empty schema");
-        paramView = bbex.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.a.jdField_a_of_type_AndroidContentContext, paramView);
-        if (paramView != null) {
-          paramView.c();
-        }
-      } while (!(localadng.a instanceof MessageForStructing));
-      paramView = (MessageForStructing)localadng.a;
-    } while (!(paramView.structingMsg instanceof StructMsgSubImageVideo));
-    paramView = (StructMsgSubImageVideo)paramView.structingMsg;
-    label125:
-    int i;
-    label195:
-    label213:
-    int k;
-    if (paramView.getVideoItem() != null)
-    {
-      paramView = paramView.getVideoItem().title;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
-        break label461;
+        localObject = "";
+        label17:
+        return localObject;
       }
-      axqy.b(null, "dc00898", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "auth_aio", "clk_content", 0, 0, "", "", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, paramView);
-      return;
-      if ((!paramView.contains("&width=")) && (!paramView.contains("?width=")))
+      paramVarArgs = bdie.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D, this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D, 3, this.jdField_a_of_type_OrgApacheHttpClientHttpClient);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
       {
-        i = 1;
-        if ((paramView.contains("&height=")) || (paramView.contains("?height="))) {
-          break label308;
-        }
-        if ((i == 0) && (j == 0)) {
-          break label469;
-        }
-        k = paramView.indexOf("?");
-        if (k >= 0) {
-          break label313;
-        }
-        paramView = paramView + "?width=" + localadng.e + "&height=" + localadng.f;
-      }
-    }
-    label275:
-    label308:
-    label313:
-    label461:
-    label469:
-    for (;;)
-    {
-      Log.i("AutoVideoItemBuilder", "onClick: " + paramView);
-      break label42;
-      i = 0;
-      break label195;
-      j = 0;
-      break label213;
-      if (k == paramView.length() - 1)
-      {
-        paramView = paramView + "width=" + localadng.e + "&height=" + localadng.f;
-      }
-      else
-      {
-        if (i != 0) {}
-        for (Object localObject = paramView + "&width=" + localadng.e;; localObject = paramView)
-        {
-          paramView = (View)localObject;
-          if (j == 0) {
-            break label275;
-          }
-          paramView = (String)localObject + "&height=" + localadng.f;
-          break label275;
-          if (paramView.getImageItem() != null)
-          {
-            paramView = paramView.getImageItem().title;
-            break label125;
-          }
-          paramView = null;
+        localStringBuilder = new StringBuilder().append(i).append(" time: ReverseGeocode.getFromLocation, address: ");
+        if (paramVarArgs != null) {
           break label125;
-          break;
         }
       }
+      label125:
+      for (Object localObject = "";; localObject = paramVarArgs)
+      {
+        QLog.i("fetch_address", 2, (String)localObject);
+        if (paramVarArgs != null)
+        {
+          localObject = paramVarArgs;
+          if (paramVarArgs.length() > 0) {
+            break label17;
+          }
+        }
+        i += 1;
+        break;
+      }
     }
+    return "";
+  }
+  
+  protected void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("fetch_address", 2, "get address finish, onPostExecute, result:" + paramString);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      GeoPoint localGeoPoint = (GeoPoint)this.jdField_a_of_type_AndroidWidgetTextView.getTag();
+      if ((localGeoPoint.getLatitudeE6() == this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6()) && (localGeoPoint.getLongitudeE6() == this.jdField_a_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6()) && (paramString != null) && (paramString.length() > 0))
+      {
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
+          break label115;
+        }
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      }
+    }
+    return;
+    label115:
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.g = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adnf
  * JD-Core Version:    0.7.0.1
  */

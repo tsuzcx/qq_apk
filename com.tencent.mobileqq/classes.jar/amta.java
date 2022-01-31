@@ -1,293 +1,173 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.business.MiniAppConfBean.1;
-import com.tencent.mobileqq.minigame.splash.SplashMiniGameUtil;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import com.tencent.mobileqq.ar.DrawView2;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import org.json.JSONObject;
 
 public class amta
 {
-  private int jdField_a_of_type_Int = 60;
-  private String jdField_a_of_type_JavaLangString = "";
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new MiniAppConfBean.1(this);
-  private boolean jdField_a_of_type_Boolean = true;
-  private String jdField_b_of_type_JavaLangString = "";
-  private boolean jdField_b_of_type_Boolean = true;
-  private String jdField_c_of_type_JavaLangString = "";
-  private boolean jdField_c_of_type_Boolean;
-  private String jdField_d_of_type_JavaLangString = "";
-  private boolean jdField_d_of_type_Boolean;
-  private String jdField_e_of_type_JavaLangString = "";
-  private boolean jdField_e_of_type_Boolean;
-  private String jdField_f_of_type_JavaLangString = "";
-  private boolean jdField_f_of_type_Boolean;
-  private String jdField_g_of_type_JavaLangString = "";
-  private boolean jdField_g_of_type_Boolean;
-  private boolean h;
+  public float a;
+  public int a;
+  public Rect a;
+  public RectF a;
+  public String a;
+  public boolean a;
+  public float[] a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public String e;
+  public boolean e;
+  public String f;
+  public String g;
+  public String h;
   
-  public static amta a(amph[] paramArrayOfamph)
+  public static RectF a(Rect paramRect, float[] paramArrayOfFloat)
   {
-    amta localamta = new amta();
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    for (;;)
+    if ((paramRect == null) || (paramArrayOfFloat == null) || (paramArrayOfFloat.length < 180))
     {
-      int j;
-      try
-      {
-        if (i < paramArrayOfamph.length)
-        {
-          String str1 = paramArrayOfamph[i].jdField_a_of_type_JavaLangString;
-          if (str1 == null) {
-            break label671;
-          }
-          Object localObject = new JSONObject(str1);
-          if (((JSONObject)localObject).has("aio_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("aio_mini_app_on", 1) != 1) {
-              break label685;
-            }
-            bool = true;
-            localamta.jdField_a_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("mini_app_local_search"))
-          {
-            if (((JSONObject)localObject).optInt("mini_app_local_search", 1) != 1) {
-              break label691;
-            }
-            bool = true;
-            localamta.jdField_b_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("mini_app_refresh_time")) {
-            localamta.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("mini_app_refresh_time", 60);
-          }
-          if (((JSONObject)localObject).has("popBarShowMiniAppStore"))
-          {
-            if (((JSONObject)localObject).optInt("popBarShowMiniAppStore", 0) != 1) {
-              break label697;
-            }
-            bool = true;
-            localamta.jdField_c_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("minigame_splash")) {
-            SplashMiniGameUtil.saveConfigData(str1);
-          }
-          if (((JSONObject)localObject).has("mini_app_entry_auto_show"))
-          {
-            if (((JSONObject)localObject).optInt("mini_app_entry_auto_show", 0) != 1) {
-              break label703;
-            }
-            bool = true;
-            localamta.jdField_d_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("contact_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("contact_mini_app_on", 0) != 1) {
-              break label709;
-            }
-            bool = true;
-            localamta.jdField_f_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("more_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("more_mini_app_on", 0) != 1) {
-              break label715;
-            }
-            bool = true;
-            localamta.jdField_e_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("group_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("group_mini_app_on", 0) != 1) {
-              break label721;
-            }
-            bool = true;
-            localamta.jdField_g_of_type_Boolean = bool;
-          }
-          if (((JSONObject)localObject).has("avatar_mini_app_on"))
-          {
-            if (((JSONObject)localObject).optInt("avatar_mini_app_on", 0) != 1) {
-              break label727;
-            }
-            bool = true;
-            localamta.h = bool;
-            if (((JSONObject)localObject).has("avatar_mini_app_url")) {
-              localamta.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("avatar_mini_app_url");
-            }
-          }
-          if (((JSONObject)localObject).has("back_to_home_scene_list"))
-          {
-            if (localamta.jdField_a_of_type_JavaUtilArrayList == null) {
-              localamta.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-            }
-            localamta.jdField_a_of_type_JavaUtilArrayList.clear();
-            String[] arrayOfString = ((JSONObject)localObject).optString("back_to_home_scene_list", "1044|1007|1008|2003").split("\\|");
-            int k = arrayOfString.length;
-            j = 0;
-            if (j < k)
-            {
-              String str2 = arrayOfString[j];
-              if (TextUtils.isEmpty(str2)) {
-                break label678;
-              }
-              localamta.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(str2));
-              break label678;
-            }
-          }
-          if (1 == ((JSONObject)localObject).optInt("enable_c2c_plus_panel", 0))
-          {
-            localamta.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("url", "");
-            localamta.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("icon", "");
-            localamta.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("icon_night", "");
-            localamta.jdField_e_of_type_JavaLangString = ((JSONObject)localObject).optString("simple_icon", "");
-            localamta.jdField_f_of_type_JavaLangString = ((JSONObject)localObject).optString("simple_icon_night", "");
-            localamta.jdField_g_of_type_JavaLangString = ((JSONObject)localObject).optString("name", BaseApplicationImpl.sApplication.getString(2131698499));
-            localObject = BaseApplicationImpl.getApplication().getRuntime();
-            if ((localObject instanceof QQAppInterface))
-            {
-              localObject = (QQAppInterface)localObject;
-              aega.a((QQAppInterface)localObject).a((QQAppInterface)localObject, localamta);
-            }
-          }
-          localStringBuilder.append("config: ").append(str1).append(",");
-        }
+      paramRect = null;
+      return paramRect;
+    }
+    paramArrayOfFloat = (float[])paramArrayOfFloat.clone();
+    float[] arrayOfFloat1 = new float[2];
+    float[] arrayOfFloat2 = new float[2];
+    float[] arrayOfFloat3 = new float[2];
+    float[] arrayOfFloat4 = new float[2];
+    arrayOfFloat1[0] = paramArrayOfFloat[12];
+    arrayOfFloat1[1] = paramArrayOfFloat[13];
+    arrayOfFloat2[0] = paramArrayOfFloat[28];
+    arrayOfFloat2[1] = paramArrayOfFloat[29];
+    arrayOfFloat3[0] = paramArrayOfFloat[64];
+    arrayOfFloat3[1] = paramArrayOfFloat[65];
+    arrayOfFloat4[0] = (arrayOfFloat1[0] + arrayOfFloat2[0] - arrayOfFloat3[0]);
+    arrayOfFloat4[1] = (arrayOfFloat1[1] + arrayOfFloat2[1] - arrayOfFloat3[1]);
+    float f2 = Math.min(paramRect.left, arrayOfFloat4[0]);
+    float f3 = Math.max(paramRect.right, arrayOfFloat4[0]);
+    float f4 = Math.min(paramRect.top, arrayOfFloat4[1]);
+    float f5 = Math.max(paramRect.bottom, arrayOfFloat4[1]);
+    float f1 = DrawView2.c / DrawView2.d;
+    float f6 = Math.max(DrawView2.a, DrawView2.b);
+    float f7 = Math.min(DrawView2.a, DrawView2.b);
+    if (f1 > f7 / f6) {}
+    for (f1 = DrawView2.c / f7;; f1 = DrawView2.d / f6)
+    {
+      float f8 = (f1 * f7 - DrawView2.c) / 2.0F;
+      f7 = (f7 * f1 - DrawView2.c) / 2.0F;
+      paramArrayOfFloat = new RectF(f2 * f1 - f8, f4 * f1 - (f1 * f6 - DrawView2.d) / 2.0F, f3 * f1 - f7, f5 * f1 - (f1 * f6 - DrawView2.d) / 2.0F);
+      paramRect = paramArrayOfFloat;
+      if (!QLog.isColorLevel()) {
+        break;
       }
-      catch (Exception paramArrayOfamph)
-      {
-        QLog.d("MiniAppConfProcessor", 2, "parse, failed!");
-        paramArrayOfamph.printStackTrace();
-        return null;
-      }
-      QLog.e("MiniAppConfProcessor", 2, "parse, content:" + localStringBuilder.toString());
-      return localamta;
-      label671:
-      i += 1;
-      continue;
-      label678:
-      j += 1;
-      continue;
-      label685:
-      boolean bool = false;
-      continue;
-      label691:
-      bool = false;
-      continue;
-      label697:
-      bool = false;
-      continue;
-      label703:
-      bool = false;
-      continue;
-      label709:
-      bool = false;
-      continue;
-      label715:
-      bool = false;
-      continue;
-      label721:
-      bool = false;
-      continue;
-      label727:
-      bool = false;
+      QLog.d("DrawView", 2, "mapFaceRect2Screen  result = " + paramArrayOfFloat.toString());
+      return paramArrayOfFloat;
     }
   }
   
-  public int a()
+  public static RectF a(RectF paramRectF)
   {
-    return this.jdField_a_of_type_Int;
+    float f4 = 40.0F;
+    if (paramRectF == null) {
+      return null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DrawView", 2, "faceRect  result = " + paramRectF.toString());
+    }
+    if ((paramRectF.left == 0.0F) && (paramRectF.top == 0.0F) && (paramRectF.right == 0.0F)) {
+      return new RectF(DrawView2.c / 2 - 210, DrawView2.d / 2 - 210, DrawView2.c / 2 + 210, DrawView2.d / 2 + 210);
+    }
+    float f3 = paramRectF.left;
+    float f5 = paramRectF.right;
+    float f1 = paramRectF.top;
+    float f2 = paramRectF.bottom;
+    f3 = (f3 + f5) / 2.0F;
+    f2 = (f1 + f2) / 2.0F;
+    f1 = f3 * (DrawView2.c / 480);
+    f2 *= DrawView2.d / 856;
+    float f6 = f1 - 210.0F;
+    f3 = f2 - 210.0F;
+    float f7 = f1 + 210.0F;
+    f5 = f2 + 210.0F;
+    if (QLog.isColorLevel()) {
+      QLog.d("DrawView", 2, "mapMigObjectRect2Screen1  result = " + f6 + "   ：" + f3 + "  ：" + f7 + "  ：" + f5);
+    }
+    f2 = f7;
+    f1 = f6;
+    if (f6 < 40.0F)
+    {
+      f2 = f7 - f6 + 40.0F;
+      f1 = 40.0F;
+    }
+    if (f3 < 40.0F) {}
+    for (f3 = f5 - f3 + 40.0F;; f3 = f5)
+    {
+      if (f2 > DrawView2.c - 40)
+      {
+        f6 = DrawView2.c - 40 - (f2 - f1);
+        f5 = DrawView2.c - 40;
+      }
+      for (;;)
+      {
+        f2 = f3;
+        f1 = f4;
+        if (f3 > DrawView2.d - 40)
+        {
+          f1 = DrawView2.d - 40 - (f3 - f4);
+          f2 = DrawView2.d - 40;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("DrawView", 2, "mapMigObjectRect2Screen1  result = " + f6 + "   ：" + f1 + "  ：" + f5 + "  ：" + f2);
+        }
+        f4 = f5;
+        f3 = f6;
+        if ((f6 + f5) / 2.0F < DrawView2.c / 2 - 125)
+        {
+          f3 = DrawView2.c / 2 - 125 - 210;
+          f4 = DrawView2.c / 2 - 125 + 210;
+        }
+        f6 = f4;
+        f5 = f3;
+        if ((f3 + f4) / 2.0F > DrawView2.c / 2 + 125)
+        {
+          f5 = DrawView2.c / 2 + 125 - 210;
+          f6 = DrawView2.c / 2 + 125 + 210;
+        }
+        f4 = f2;
+        f3 = f1;
+        if ((f1 + f2) / 2.0F < DrawView2.d / 2 - 417)
+        {
+          f3 = DrawView2.d / 2 - 417 - 210;
+          f4 = DrawView2.d / 2 - 417 + 210;
+        }
+        f2 = f4;
+        f1 = f3;
+        if ((f3 + f4) / 2.0F > DrawView2.d / 2 + 417)
+        {
+          f1 = DrawView2.d / 2 + 417 - 210;
+          f2 = DrawView2.d / 2 + 417 + 210;
+        }
+        paramRectF = new RectF(f5, f1, f6, f2);
+        if (QLog.isColorLevel()) {
+          QLog.d("DrawView", 2, "mapMigObjectRect2Screen3  result = " + paramRectF.toString());
+        }
+        return paramRectF;
+        f5 = f2;
+        f6 = f1;
+      }
+      f4 = f3;
+    }
   }
   
-  public String a()
+  public RectF a()
   {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public ArrayList<Integer> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public String b()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public String c()
-  {
-    return this.jdField_c_of_type_JavaLangString;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_c_of_type_Boolean;
-  }
-  
-  public String d()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_d_of_type_Boolean;
-  }
-  
-  public String e()
-  {
-    return this.jdField_e_of_type_JavaLangString;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_f_of_type_Boolean;
-  }
-  
-  public String f()
-  {
-    return this.jdField_f_of_type_JavaLangString;
-  }
-  
-  public boolean f()
-  {
-    return this.jdField_e_of_type_Boolean;
-  }
-  
-  public String g()
-  {
-    return this.jdField_g_of_type_JavaLangString;
-  }
-  
-  public boolean g()
-  {
-    return this.jdField_g_of_type_Boolean;
-  }
-  
-  public boolean h()
-  {
-    return this.h;
-  }
-  
-  public String toString()
-  {
-    new StringBuilder().append("miniAppEntryEnable:").append(this.jdField_a_of_type_Boolean).append(", miniAppRefreshTime:").append(this.jdField_a_of_type_Int).append(",miniAppLocalSearchEnable").append(this.jdField_b_of_type_Boolean);
-    return super.toString();
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amta
  * JD-Core Version:    0.7.0.1
  */

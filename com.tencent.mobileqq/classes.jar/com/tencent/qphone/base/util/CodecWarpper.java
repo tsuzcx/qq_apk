@@ -219,7 +219,7 @@ public abstract class CodecWarpper
   
   private static synchronized native void onConnClose();
   
-  private native void onReceData(byte[] paramArrayOfByte);
+  private native void onReceData(byte[] paramArrayOfByte, int paramInt);
   
   private native FromServiceMsg parseData(byte[] paramArrayOfByte);
   
@@ -251,9 +251,9 @@ public abstract class CodecWarpper
     }
   }
   
-  public void nativeOnReceData(byte[] paramArrayOfByte)
+  public void nativeOnReceData(byte[] paramArrayOfByte, int paramInt)
   {
-    onReceData(paramArrayOfByte);
+    onReceData(paramArrayOfByte, paramInt);
   }
   
   public FromServiceMsg nativeParseData(byte[] paramArrayOfByte)

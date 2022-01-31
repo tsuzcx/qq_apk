@@ -1,37 +1,32 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
 
-public class atcz
-  implements bcix<oidb_0x8e4.RspBody>
+class atcz
+  implements apez
 {
-  public atcz(GameRoomInviteActivity paramGameRoomInviteActivity, atdn paramatdn) {}
+  atcz(atcy paramatcy) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void a(apey paramapey)
   {
-    if ((paramInt == 0) && (paramRspBody != null))
+    try
     {
-      paramRspBody = this.jdField_a_of_type_Atdn;
-      if (!this.jdField_a_of_type_Atdn.a)
-      {
-        bool = true;
-        paramRspBody.a = bool;
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a.notifyDataSetChanged();
-      }
+      paramapey.dismiss();
+      this.a.mRuntime.a().finish();
+      azmj.b(null, "CliOper", "", "", "0X80094EB", "0X80094EB", 0, 0, "", "", "", "");
+      return;
     }
-    while (paramRspBody == null) {
+    catch (Throwable paramapey)
+    {
       for (;;)
       {
-        return;
-        boolean bool = false;
+        QLog.e("DocxApiPlugin", 1, "handleEvent", paramapey);
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(paramInt, paramRspBody, ajya.a(2131705144));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcz
  * JD-Core Version:    0.7.0.1
  */

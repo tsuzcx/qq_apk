@@ -1,146 +1,50 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
-public class vrr
-  extends BaseAdapter
-  implements AdapterView.OnItemClickListener, vru
+public abstract interface vrr
 {
-  private int jdField_a_of_type_Int;
-  private List<vrt> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public abstract int a();
   
-  public vrr(@NonNull List<vrt> paramList)
-  {
-    if (paramList.isEmpty()) {
-      ved.d("Q.qqstory.publish.editPermissionListAdapter", "part list is empty.");
-    }
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    a();
-    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramList.hasNext()) {
-      ((vrt)paramList.next()).a(this);
-    }
-  }
+  public abstract long a();
   
-  @NonNull
-  private vrs a(int paramInt)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int j;
-    for (int i = 0; localIterator.hasNext(); i = j)
-    {
-      vrt localvrt = (vrt)localIterator.next();
-      j = localvrt.a() + i;
-      if (paramInt <= j - 1) {
-        return new vrs(localvrt, paramInt - i);
-      }
-    }
-    throw new IllegalStateException("unable find PermissionPart, position:" + paramInt);
-  }
+  public abstract View a();
   
-  private void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((vrt)localIterator.next()).a() + i) {}
-    this.jdField_a_of_type_Int = i;
-  }
+  public abstract vse a();
   
-  @Nullable
-  public vrt a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      vrt localvrt = (vrt)localIterator.next();
-      if (localvrt.a) {
-        return localvrt;
-      }
-    }
-    return null;
-  }
+  public abstract void a();
   
-  public void a(vrt paramvrt)
-  {
-    notifyDataSetChanged();
-  }
+  public abstract void a(int paramInt);
   
-  public int getCount()
-  {
-    return this.jdField_a_of_type_Int;
-  }
+  public abstract void a(long paramLong);
   
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
+  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2);
   
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
+  public abstract void a(vrs paramvrs);
   
-  public int getItemViewType(int paramInt)
-  {
-    vrs localvrs = a(paramInt);
-    return localvrs.jdField_a_of_type_Vrt.a(localvrs.jdField_a_of_type_Int);
-  }
+  public abstract void a(vrt paramvrt);
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = a(paramInt);
-    vrt localvrt = ((vrs)localObject).jdField_a_of_type_Vrt;
-    paramInt = ((vrs)localObject).jdField_a_of_type_Int;
-    localObject = paramView;
-    if (paramView == null) {
-      localObject = localvrt.a(paramInt, paramViewGroup);
-    }
-    localvrt.a(paramInt, (View)localObject);
-    return localObject;
-  }
+  public abstract void a(vru paramvru);
   
-  public int getViewTypeCount()
-  {
-    return 5;
-  }
+  public abstract void a(vrv paramvrv);
   
-  public void notifyDataSetChanged()
-  {
-    a();
-    super.notifyDataSetChanged();
-  }
+  public abstract void a(vrw paramvrw);
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramView = a(paramInt);
-    paramAdapterView = paramView.jdField_a_of_type_Vrt;
-    paramAdapterView.a(paramView.jdField_a_of_type_Int);
-    if ((paramAdapterView instanceof vrq)) {
-      return;
-    }
-    paramAdapterView.b(true);
-    paramView = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramView.hasNext())
-    {
-      vrt localvrt = (vrt)paramView.next();
-      if (localvrt != paramAdapterView)
-      {
-        localvrt.b(false);
-        localvrt.a(false);
-      }
-    }
-    notifyDataSetChanged();
-  }
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vrr
  * JD-Core Version:    0.7.0.1
  */

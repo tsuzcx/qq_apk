@@ -1,24 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class acoe
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnDismissListener
 {
-  public acoe(UpgradeActivity paramUpgradeActivity) {}
+  public acoe(Conversation paramConversation) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4) {
-      this.a.a();
-    }
-    return false;
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acoe
  * JD-Core Version:    0.7.0.1
  */

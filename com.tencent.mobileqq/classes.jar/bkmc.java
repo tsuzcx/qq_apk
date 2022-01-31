@@ -1,46 +1,34 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.util.LruCache;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.AdapterView;
 
 class bkmc
-  extends BroadcastReceiver
+  implements bhqp
 {
-  bkmc(bkma parambkma) {}
+  private bkmc(bklz parambklz) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ved.c("Q.qqstory.record.StoryFaceDrawableFactory", "mQQHeadBroadcastReceiver onReceive.");
-    if ((paramIntent != null) && ("com.tencent.qqhead.getheadresp".equals(paramIntent.getAction())))
-    {
-      paramContext = paramIntent.getStringArrayListExtra("uinList");
-      paramIntent = paramIntent.getStringArrayListExtra("headPathList");
-      int i;
-      if ((paramContext != null) && (paramContext.size() > 0) && (paramIntent != null) && (paramIntent.size() > 0))
-      {
-        ved.b("Q.qqstory.record.StoryFaceDrawableFactory", "mQQHeadBroadcastReceiver uinList.size()=%d headPathList.size()=%d.", Integer.valueOf(paramContext.size()), Integer.valueOf(paramIntent.size()));
-        i = 0;
-      }
-      while (i < paramContext.size())
-      {
-        String str = (String)paramContext.get(i);
-        if (this.a.a.contains(str))
-        {
-          this.a.a.remove(str);
-          this.a.b.put(str, paramIntent.get(i));
-          this.a.a(str, (String)paramIntent.get(i));
-        }
-        i += 1;
-        continue;
-        ved.e("Q.qqstory.record.StoryFaceDrawableFactory", "mQQHeadBroadcastReceiver uinList.size()=0 | headPathList.size()=0.");
-      }
+    paramAdapterView = this.a.jdField_a_of_type_Bklw.a(paramInt);
+    paramView = this.a.getActivity().getIntent();
+    if ((paramAdapterView == null) || (paramAdapterView.mMediaFileCount <= 0) || (TextUtils.isEmpty(paramAdapterView.name))) {
+      QQToast.a(this.a.getActivity(), 2131690067, 0).a();
     }
+    boolean bool;
+    do
+    {
+      return;
+      bool = this.a.jdField_a_of_type_Bkmp.a(paramAdapterView, paramInt, paramView);
+    } while (this.a.jdField_a_of_type_Bkmd == null);
+    this.a.jdField_a_of_type_Bkmd.a(paramAdapterView, paramInt, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkmc
  * JD-Core Version:    0.7.0.1
  */

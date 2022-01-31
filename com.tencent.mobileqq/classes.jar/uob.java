@@ -1,36 +1,47 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
 
 public class uob
-  extends atzo
+  extends upt
 {
-  public uob(QQStoryMainController paramQQStoryMainController) {}
+  qqstory_service.RspDelFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment;
+  upu jdField_a_of_type_Upu;
   
-  protected void a(Object paramObject)
+  public uob(qqstory_service.RspDelFeedComment paramRspDelFeedComment, upu paramupu)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    vcm localvcm;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQStoryMainController", 2, "refresh red point if needed");
-      }
-      paramObject = ((mxu)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(70)).a(52);
-      if (QLog.isColorLevel()) {
-        QLog.i("storyRedDotDebug", 2, "更新小黑条红点:" + mxu.a(paramObject));
-      }
-      localvcm = (vcm)this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a("MessageNotifySegment");
-    } while (localvcm == null);
-    localvcm.a(paramObject);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.p();
+    super(paramRspDelFeedComment.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment = paramRspDelFeedComment;
+    this.jdField_a_of_type_Upu = paramupu;
+  }
+  
+  public uob(upu paramupu)
+  {
+    this.jdField_a_of_type_Upu = paramupu;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Upu.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment);
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Upu.a(paramInt, paramBundle);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Upu.a(paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Upu.a(paramBoolean, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uob
  * JD-Core Version:    0.7.0.1
  */

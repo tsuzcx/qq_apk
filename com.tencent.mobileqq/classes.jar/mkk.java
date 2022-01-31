@@ -1,52 +1,14 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
 
-class mkk
-  extends BroadcastReceiver
+public abstract interface mkk
 {
-  mkk(mkj parammkj) {}
+  public abstract void a(View paramView, int paramInt);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    long l;
-    if (paramIntent != null)
-    {
-      paramContext = paramIntent.getAction();
-      l = mtj.a(paramIntent);
-      if (!paramContext.equals("tencent.video.invite.accept")) {
-        break label32;
-      }
-      this.a.a(l);
-    }
-    label32:
-    do
-    {
-      return;
-      if (paramContext.equals("tencent.video.invite.refuse"))
-      {
-        this.a.b(l);
-        return;
-      }
-      if (paramContext.equals("tencent.video.invite.gaaccept"))
-      {
-        this.a.d(l);
-        return;
-      }
-      if (paramContext.equals("tencent.video.invite.gaignore"))
-      {
-        this.a.c(l);
-        return;
-      }
-    } while (!paramContext.equals("tencent.video.q2v.sdk.onRequestVideo"));
-    QLog.d("VideoInviteFloatBarUICtr", 1, "onReceive action = " + paramContext);
-    this.a.b();
-  }
+  public abstract void a(View paramView1, View paramView2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mkk
  * JD-Core Version:    0.7.0.1
  */

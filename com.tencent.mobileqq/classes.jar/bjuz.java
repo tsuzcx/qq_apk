@@ -1,236 +1,316 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import android.widget.RelativeLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
-import java.util.Collections;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QZoneClickReport;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.webviewplugin.QzoneVipPaymentJsPlugin.1;
+import cooperation.vip.manager.MonitorManager;
+import java.util.Map;
+import mqq.manager.TicketManager;
+import org.json.JSONObject;
 
 public class bjuz
-  implements bkmd
+  extends bjts
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray<bkae> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  public bjva a;
-  private bkae jdField_a_of_type_Bkae;
-  private bkma jdField_a_of_type_Bkma;
-  private DoodleView jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView;
-  private ElasticImageView jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView;
+  private String a;
   
-  public bjuz(Context paramContext, RelativeLayout paramRelativeLayout)
+  private int a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView = ((DoodleView)paramRelativeLayout.findViewById(2131362833));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramRelativeLayout.findViewById(2131375553));
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView = ((ElasticImageView)paramRelativeLayout.findViewById(2131368680));
-    this.jdField_a_of_type_Bkma = new bkma(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Bkma.a(this);
-    c();
-    d();
+    bebx localbebx = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a());
+    int i = paramInt;
+    if ((localbebx instanceof becr)) {
+      i = ((becr)localbebx).switchRequestCode(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin, (byte)paramInt);
+    }
+    return i;
   }
   
-  public static String a(@NonNull String paramString)
+  private String a(String paramString1, String paramString2)
   {
-    if (paramString.getBytes().length <= 24)
+    return "qq_m_qq" + "-" + "2013" + "-" + paramString1.replaceAll("-", "_") + "-" + "2013" + "-" + paramString2.replaceAll("-", "_");
+  }
+  
+  private void a(Activity paramActivity, int paramInt1, String paramString, int paramInt2, int paramInt3, Intent paramIntent)
+  {
+    switch (paramInt1)
     {
-      ved.b("Q.qqstory.publish.edit.EditVideoAtDoodleController", "processReamrk no need to cut out. remark = %s. byte length = %d.", paramString, Integer.valueOf(paramString.getBytes().length));
-      return paramString;
+    default: 
+      paramString = paramIntent;
+      if (paramIntent == null) {
+        paramString = new Intent();
+      }
+      paramString.putExtra("key_qzone_vip_open_back_need_check_vipinfo", false);
+      paramActivity.setResult(0, paramString);
+      paramActivity.finish();
+    case 0: 
+      return;
+    case -5: 
+      paramActivity.finish();
+      return;
     }
-    ved.b("Q.qqstory.publish.edit.EditVideoAtDoodleController", "processReamrk need to cut out. remark = %s. byte length = %d.", paramString, Integer.valueOf(paramString.getBytes().length));
-    int k = "...".getBytes().length;
-    Object localObject2 = paramString.substring(0, 8);
-    int j = ((String)localObject2).getBytes().length;
-    int i = 8;
-    String str;
-    for (Object localObject1 = localObject2; i <= paramString.length(); localObject1 = str)
+    paramActivity.setResult(0, paramIntent);
+  }
+  
+  private void a(String paramString1, String paramString2)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+    if ((localObject == null) || (((Activity)localObject).isFinishing())) {}
+    for (;;)
     {
-      if (j + k == 24)
+      return;
+      try
       {
-        ved.b("Q.qqstory.publish.edit.EditVideoAtDoodleController", "processReamrk after cuting out. remark = %s. byte length = %d.", localObject1 + "...", Integer.valueOf((localObject1 + "...").getBytes().length));
-        return localObject1 + "...";
+        localObject = new JSONObject(paramString1);
+        a(((JSONObject)localObject).optString("openUin"), ((JSONObject)localObject).optString("openMonth"), ((JSONObject)localObject).optString("openVipType"), ((JSONObject)localObject).getBoolean("isAuto"), ((JSONObject)localObject).optString("aid"));
+        MonitorManager.a().a(1, 2, "native 支付", "js 回调 native 支付" + paramString1);
+        this.jdField_a_of_type_JavaLangString = paramString2;
+        if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() == null) {
+          continue;
+        }
+        paramString1 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getAccount();
+        paramString2 = new bizg();
+        paramString2.a("328");
+        paramString2.a(Long.parseLong(paramString1));
+        paramString2.b("10");
+        paramString2.c("1");
+        QZoneClickReport.startReportImediately(paramString1, paramString2);
+        return;
       }
-      if (j + k > 24)
+      catch (Exception localException)
       {
-        ved.b("Q.qqstory.publish.edit.EditVideoAtDoodleController", "processReamrk after cuting out. remark = %s. byte length = %d.", (String)localObject2 + "...", Integer.valueOf(((String)localObject2 + "...").getBytes().length));
-        return (String)localObject2 + "...";
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
       }
-      i += 1;
-      str = paramString.substring(0, i);
-      j = str.getBytes().length;
-      localObject2 = localObject1;
-    }
-    return localObject1;
-  }
-  
-  private void b(int paramInt)
-  {
-    if (this.jdField_a_of_type_Bjva != null) {
-      this.jdField_a_of_type_Bjva.a(paramInt);
     }
   }
   
-  private void c()
+  private void a(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
   {
-    bkbs localbkbs = new bkbu().a(new bkbl()).a(720).b(1280).a();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.setDoodleConfig(localbkbs);
-  }
-  
-  private void d()
-  {
-    int i = 0;
-    while (i < bkbl.a.length)
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+    if ((localObject2 == null) || (((Activity)localObject2).isFinishing())) {}
+    AppInterface localAppInterface;
+    do
     {
-      bkae localbkae = (bkae)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a(bkbl.a[i]);
-      localbkae.a(new bjvc(this));
-      localbkae.a(new bjvb(this));
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(i, localbkae);
-      i += 1;
-    }
-    this.jdField_a_of_type_Bkae = ((bkae)this.jdField_a_of_type_AndroidUtilSparseArray.get(0));
-  }
-  
-  public int a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_AndroidUtilSparseArray == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_AndroidUtilSparseArray.size()))
-    {
-      ved.e("Q.qqstory.publish.edit.EditVideoAtDoodleController", "getAtCount error. Invalid index.");
-      return 0;
-    }
-    bkae localbkae = (bkae)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localbkae == null)
-    {
-      ved.e("Q.qqstory.publish.edit.EditVideoAtDoodleController", "getAtCount error. layer is null.");
-      return 0;
-    }
-    return localbkae.a();
-  }
-  
-  public Bitmap a()
-  {
-    return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a();
-  }
-  
-  public String a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_AndroidUtilSparseArray == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_AndroidUtilSparseArray.size()))
-    {
-      ved.e("Q.qqstory.publish.edit.EditVideoAtDoodleController", "getAtJsonData error. Invalid index.");
-      return null;
-    }
-    bkae localbkae = (bkae)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localbkae == null)
-    {
-      ved.e("Q.qqstory.publish.edit.EditVideoAtDoodleController", "getAtJsonData error. layer is null.");
-      return null;
-    }
-    return localbkae.b();
-  }
-  
-  @NonNull
-  public List<String> a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_AndroidUtilSparseArray == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_AndroidUtilSparseArray.size())) {
-      return Collections.EMPTY_LIST;
-    }
-    bkae localbkae = (bkae)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localbkae == null) {
-      return Collections.EMPTY_LIST;
-    }
-    return localbkae.a();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bkae != null) {
-      this.jdField_a_of_type_Bkae.k();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    ved.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "changeAtLayer. index:" + paramInt);
-    if ((this.jdField_a_of_type_AndroidUtilSparseArray == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_AndroidUtilSparseArray.size()))
-    {
-      ved.e("Q.qqstory.publish.edit.EditVideoAtDoodleController", "changeAtLayer error. Invalid index.");
       return;
-    }
-    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
+      localAppInterface = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+    } while (localAppInterface == null);
+    Intent localIntent = new Intent(BaseApplication.getContext(), PayBridgeActivity.class);
+    String str2 = VipUtils.a(paramString4);
+    String str1 = ((Activity)localObject2).getString(2131718659);
+    String str3 = ((Activity)localObject2).getString(2131718660);
+    paramString4 = "";
+    Object localObject1 = "";
+    if ("1".equals(paramString3))
     {
-      ved.e("Q.qqstory.publish.edit.EditVideoAtDoodleController", "changeAtLayer error. Layer is null.");
-      return;
+      paramString4 = "xxjzgw";
+      str1 = ((Activity)localObject2).getString(2131718659);
+      localObject1 = "1450000153";
     }
-    this.jdField_a_of_type_Bkae = ((bkae)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    paramInt = 0;
-    while (paramInt < this.jdField_a_of_type_AndroidUtilSparseArray.size())
+    for (;;)
     {
-      bkae localbkae = (bkae)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-      if (localbkae != null) {
-        localbkae.a(false);
-      }
-      paramInt += 1;
-    }
-    this.jdField_a_of_type_Bkae.a(true);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
-  }
-  
-  public void a(bjva parambjva)
-  {
-    this.jdField_a_of_type_Bjva = parambjva;
-  }
-  
-  public void a(@NonNull String paramString1, @NonNull String paramString2, @NonNull String paramString3)
-  {
-    ved.b("Q.qqstory.publish.edit.EditVideoAtDoodleController", "addAtLabel uin = %s remark = %s name = %s.", paramString1, paramString2, paramString3);
-    if (this.jdField_a_of_type_Bkae.a(paramString1)) {
-      return;
-    }
-    int i = actj.a(20.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    Drawable localDrawable = this.jdField_a_of_type_Bkma.a(paramString1, i, i);
-    if (localDrawable == null)
-    {
-      ved.e("Q.qqstory.publish.edit.EditVideoAtDoodleController", "createStoryFaceDrawable failed, uin=%s, width=%s, height=%s.", new Object[] { paramString1, Integer.valueOf(i), Integer.valueOf(i) });
-      return;
-    }
-    paramString2 = a(paramString2);
-    bkah localbkah = bkil.a(this.jdField_a_of_type_AndroidContentContext, localDrawable, paramString2, 0);
-    if (localbkah != null)
-    {
-      if ((this.jdField_a_of_type_Bkae.c() == 0) || (this.jdField_a_of_type_Bkae.d() == 0))
+      try
       {
-        ved.e("Q.qqstory.publish.edit.EditVideoAtDoodleController", "Add the at label while the layer's size is 0. Force to set the layer's size to the screen's size.");
-        i = blcq.a;
-        int j = blcq.a(this.jdField_a_of_type_AndroidContentContext);
-        this.jdField_a_of_type_Bkae.a(i, j);
+        paramString3 = new JSONObject();
+        paramString3.put("offerId", localObject1);
+        localObject1 = (TicketManager)localAppInterface.getManager(2);
+        localObject2 = localAppInterface.getAccount();
+        paramString3.put("userId", localObject2);
+        paramString3.put("skey", ((TicketManager)localObject1).getSkey((String)localObject2));
+        paramString3.put("serviceCode", paramString4);
+        paramString3.put("serviceName", str1);
+        paramString3.put("channel", "");
+        paramString3.put("uint", str3);
+        paramString3.put("openMonth", paramString2);
+        paramString3.put("isCanChange", false);
+        paramString3.put("autoPay", paramBoolean);
+        paramString3.put("aid", str2);
+        paramString3.put("pf", a(bizf.a(), str2));
+        if ((!paramString1.equals(localAppInterface.getCurrentAccountUin())) && (!paramString1.equals("0")))
+        {
+          paramString3.put("provideUin", paramString1);
+          paramString3.put("provideType", "uin");
+        }
+        paramString3.put("discountId", "");
+        paramString3.put("other", "");
+        paramString1 = new Bundle();
+        paramString1.putInt("pay_requestcode", 4);
+        paramString1.putString("json", paramString3.toString());
+        localIntent.putExtras(paramString1);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.startActivityForResult(localIntent, (byte)16);
+        return;
       }
-      this.jdField_a_of_type_Bkae.a(paramString1, localDrawable, paramString2, paramString3, localbkah, null);
+      catch (Exception paramString1)
+      {
+        paramString1.printStackTrace();
+        return;
+      }
+      if ("2".equals(paramString3))
+      {
+        paramString4 = "XXJZGHH";
+        str1 = ((Activity)localObject2).getString(2131718273);
+        localObject1 = "1450001557";
+      }
+    }
+  }
+  
+  private void b()
+  {
+    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+    if ((localActivity == null) || (localActivity.isFinishing())) {
       return;
     }
-    ved.e("Q.qqstory.publish.edit.EditVideoAtDoodleController", "addAtLabel init params failed..");
+    localActivity.finish();
   }
   
-  public boolean a()
+  public void a(Intent paramIntent, byte paramByte, int paramInt)
   {
-    return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.c();
+    super.a(paramIntent, paramByte, paramInt);
+    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
+    if ((localActivity == null) || (localActivity.isFinishing())) {
+      break label32;
+    }
+    label32:
+    while (paramByte != 16) {
+      return;
+    }
+    Object localObject;
+    if (paramIntent != null)
+    {
+      localObject = paramIntent.getExtras();
+      if (localObject != null)
+      {
+        localActivity.setResult(paramInt, paramIntent);
+        localObject = ((Bundle)localObject).getString("result");
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject((String)localObject);
+        paramInt = localJSONObject.getInt("resultCode");
+        String str = localJSONObject.getString("resultMsg");
+        int i = localJSONObject.getInt("payState");
+        int j = localJSONObject.getInt("provideState");
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localObject });
+        }
+        a(localActivity, paramInt, str, i, j, paramIntent);
+        paramInt = 0;
+        paramIntent = (Intent)localObject;
+      }
+      catch (Exception paramIntent)
+      {
+        paramIntent.printStackTrace();
+        paramInt = 1;
+        paramIntent = (Intent)localObject;
+        continue;
+      }
+      MonitorManager.a().a(1, 3, "米大师支付结果回调", " 回调黄钻结果通知js " + paramIntent);
+      if (paramInt == 0) {
+        break;
+      }
+      paramIntent = new Intent();
+      paramIntent.putExtra("key_qzone_vip_open_back_need_check_vipinfo", false);
+      localActivity.setResult(0, paramIntent);
+      localActivity.finish();
+      return;
+      paramIntent = "";
+      paramInt = 1;
+      continue;
+      paramIntent = "";
+      paramInt = 1;
+    }
   }
   
-  public boolean a(String paramString)
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.a(paramString);
+    boolean bool2 = true;
+    boolean bool1;
+    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
+      bool1 = false;
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return bool1;
+              if ((paramString3.equals("payVipDirectly")) && (paramVarArgs != null) && (paramVarArgs.length >= 1)) {
+                try
+                {
+                  paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+                  a(paramVarArgs[0], paramJsBridgeListener.optString("callback"));
+                  return true;
+                }
+                catch (Exception paramJsBridgeListener)
+                {
+                  paramJsBridgeListener.printStackTrace();
+                  return true;
+                }
+              }
+              if ((paramString3.equals("closePayDialog")) || (paramString3.equals("closeFloatingWebView")))
+              {
+                b();
+                return true;
+              }
+              if (!paramString3.equals("SetNaviDeco")) {
+                break;
+              }
+              bool1 = bool2;
+            } while (paramVarArgs == null);
+            bool1 = bool2;
+          } while (TextUtils.isEmpty(paramVarArgs[0]));
+          paramJsBridgeListener = new Intent();
+          QzonePluginProxyActivity.a(paramJsBridgeListener, "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity");
+          paramJsBridgeListener.putExtra("open_what", 7);
+          paramJsBridgeListener.putExtra("navi_deco", paramVarArgs[0]);
+          bool1 = bool2;
+        } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null);
+        bool1 = bool2;
+      } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() == null);
+      bool1 = bool2;
+    } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() == null);
+    QzonePluginProxyActivity.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a(), this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getAccount(), paramJsBridgeListener, a(9));
+    return true;
+    if ("preloadQzone".equals(paramString3))
+    {
+      ThreadManagerV2.executeOnSubThread(new QzoneVipPaymentJsPlugin.1(this));
+      return true;
+    }
+    return false;
   }
   
-  public void b()
+  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    ved.c("Q.qqstory.publish.edit.EditVideoAtDoodleController", "onDestory");
-    this.jdField_a_of_type_Bkma.a();
+    if ((paramLong == 8589934595L) && (paramMap != null))
+    {
+      ((Integer)paramMap.get("errorCode")).intValue();
+      if (QLog.isColorLevel()) {
+        QLog.e("QzoneVipPaymentJsPlugin", 2, "VasWebReport:EVENT_LOAD_ERROR");
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjuz
  * JD-Core Version:    0.7.0.1
  */

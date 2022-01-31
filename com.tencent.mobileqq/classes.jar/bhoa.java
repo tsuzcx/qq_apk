@@ -1,65 +1,23 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import java.io.File;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.widget.RandomCoverView;
 
-class bhoa
-  implements Downloader.DownloadListener
+final class bhoa
+  extends VasQuickUpdateManager.CallBacker
 {
-  bhoa(bhnz parambhnz, String paramString1, Downloader.DownloadListener paramDownloadListener, String paramString2) {}
+  bhoa(BaseActivity paramBaseActivity, Card paramCard, RandomCoverView paramRandomCoverView, alos paramalos, boolean paramBoolean) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    File localFile = new File(bhnz.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadCanceled(paramString);
-    }
-    if (bhnz.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bhnz.jdField_a_of_type_ArrayOfBoolean[bhnz.a(this.jdField_a_of_type_Bhnz)] = false;
-    }
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    File localFile = new File(bhnz.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(paramString, paramDownloadResult);
-    }
-    if (bhnz.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bhnz.jdField_a_of_type_ArrayOfBoolean[bhnz.a(this.jdField_a_of_type_Bhnz)] = false;
-    }
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    File localFile = new File(bhnz.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    localFile = new File(bhnz.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.renameTo(new File(bhnz.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString));
-    }
-    LocalMultiProcConfig.putBool(this.b, true);
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(paramString, paramDownloadResult);
-    }
-    if (bhnz.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_Bhnz.jdField_a_of_type_ArrayOfBoolean[bhnz.a(this.jdField_a_of_type_Bhnz)] = false;
-    }
+    bhnz.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramVasQuickUpdateManager.app, this.jdField_a_of_type_ComTencentMobileqqDataCard, this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView, this.jdField_a_of_type_Alos, this.jdField_a_of_type_Boolean);
+    paramVasQuickUpdateManager.removeCallBacker(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhoa
  * JD-Core Version:    0.7.0.1
  */

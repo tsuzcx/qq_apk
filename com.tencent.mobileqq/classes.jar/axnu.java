@@ -1,34 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.splashad.SplashADView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
 
-public class axnu
-  implements View.OnClickListener
+public abstract interface axnu
 {
-  public axnu(SplashADView paramSplashADView) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute())
-      {
-        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(false);
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849328);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(true);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849329);
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(FilterCategoryItem paramFilterCategoryItem);
+  
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo);
+  
+  public abstract void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, String paramString);
+  
+  public abstract void b(FilterCategoryItem paramFilterCategoryItem);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axnu
  * JD-Core Version:    0.7.0.1
  */

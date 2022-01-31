@@ -1,87 +1,31 @@
-import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
-import com.tencent.TMG.channel.KSAppChannel;
-import com.tencent.TMG.sdk.AVContext.StartParam;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ajlf
-  extends KSAppChannel
+  implements bhqd
 {
-  public static String a;
-  public AVContext.StartParam a;
+  public ajlf(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  static
+  public void OnClick(View paramView, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = "SSOChannel";
-  }
-  
-  public long getTinyId()
-  {
-    try
+    switch (paramInt)
     {
-      long l = Long.valueOf(this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier).longValue();
-      return l;
+    default: 
+      return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (this.a.a.b.get() == 4) {
+      this.a.a(false);
     }
-    return 0L;
-  }
-  
-  public boolean loginWithParam(AVContext.StartParam paramStartParam)
-  {
-    this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam = paramStartParam;
-    return true;
-  }
-  
-  public boolean requestAppCmd(byte[] paramArrayOfByte, int paramInt, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    try
-    {
-      com.tencent.qphone.base.util.QLog.e(jdField_a_of_type_JavaLangString, 1, "requestAppCmd enter");
-      if ((this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam instanceof ajkr))
-      {
-        begs.a().a(paramArrayOfByte, "", this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, ((ajkr)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int, ((ajkr)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long, new ajlg(this, paramArrayOfByte, paramCsCmdCallback));
-        return true;
-      }
-      return false;
-    }
-    catch (NumberFormatException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return false;
-  }
-  
-  public boolean requestAppCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    return requestCmd("0", paramArrayOfByte, paramCsCmdCallback);
-  }
-  
-  public boolean requestCmd(String paramString, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    if (paramString.equals("VideoCCSvc.opensdk")) {
-      return super.requestCmd(paramString, paramArrayOfByte, paramCsCmdCallback);
-    }
-    return super.requestCmd(paramString, paramArrayOfByte, paramCsCmdCallback);
-  }
-  
-  public boolean requestInfoCmd(byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    return requestCmd("1", paramArrayOfByte, paramCsCmdCallback);
-  }
-  
-  public boolean requestReportCmd(int paramInt, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback)
-  {
-    if (paramArrayOfByte.length >= 0) {
-      return requestCmd("3", nativeConvertToIMReportData(paramArrayOfByte, paramInt, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, getTinyId(), (int)System.currentTimeMillis() / 1000), paramCsCmdCallback);
-    }
-    com.tencent.TMG.utils.QLog.e(jdField_a_of_type_JavaLangString, 0, "requestReportCmd reportData == NULL");
-    return false;
+    this.a.a.a("FlowCameraActivity");
+    this.a.b();
+    ajlj.b("", "0X800656F", "0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajlf
  * JD-Core Version:    0.7.0.1
  */

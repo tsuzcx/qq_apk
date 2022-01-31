@@ -1,23 +1,19 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public abstract interface ojq
-  extends ojp
+class ojq
+  implements ViewBase.OnClickListener
 {
-  public abstract void onCommentCreate(boolean paramBoolean, oif paramoif, List<oif> paramList, int paramInt);
+  ojq(ojn paramojn) {}
   
-  public abstract void onCommentCreate(boolean paramBoolean1, oif paramoif, boolean paramBoolean2, List<oif> paramList, int paramInt);
-  
-  public abstract void onCommentDelete(int paramInt1, boolean paramBoolean, oif paramoif, int paramInt2);
-  
-  public abstract void onCommentLikeOrDislike(boolean paramBoolean, String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void onCommentLoadMore(int paramInt1, boolean paramBoolean1, List<oif> paramList, boolean paramBoolean2, int paramInt2);
-  
-  public abstract void onCommentReply(boolean paramBoolean, oif paramoif);
+  public void onClick(ViewBase paramViewBase)
+  {
+    ((ola)this.a.jdField_a_of_type_Omg).a(this.a.jdField_a_of_type_Omt, ojm.a(this.a.jdField_a_of_type_Omt, 0));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ojq
  * JD-Core Version:    0.7.0.1
  */

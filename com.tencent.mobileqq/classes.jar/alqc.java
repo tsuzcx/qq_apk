@@ -1,27 +1,20 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-class alqc
-  extends alsi
+final class alqc
+  implements DialogInterface.OnDismissListener
 {
-  alqc(alqb paramalqb, String paramString1, String paramString2) {}
+  alqc(Activity paramActivity, int paramInt) {}
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2, Object paramObject)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!paramBoolean)
-    {
-      QLog.i("ArkApp", 1, "ArkAppSchemeCenter.AppSchemeHandler.get packagename failed.");
-      return;
-    }
-    alqb.a((alqb)paramObject, paramString2, this.jdField_a_of_type_JavaLangString, this.b, paramString1);
-    BaseApplication.getContext().getSharedPreferences("arkappid2pkname_entry", 4).edit().putString(paramString2, paramString1).commit();
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alqc
  * JD-Core Version:    0.7.0.1
  */

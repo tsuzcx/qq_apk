@@ -1,22 +1,22 @@
 package com.tencent.chirp;
 
 import android.content.Context;
-import xoi;
+import zdb;
 
 public class PCMRecorder
 {
   private int jdField_a_of_type_Int = 44100;
   private Context jdField_a_of_type_AndroidContentContext;
   private volatile PCMRecorder.RecordThread jdField_a_of_type_ComTencentChirpPCMRecorder$RecordThread;
-  private xoi jdField_a_of_type_Xoi;
+  private zdb jdField_a_of_type_Zdb;
   private int b;
   
-  public PCMRecorder(Context paramContext, int paramInt, xoi paramxoi)
+  public PCMRecorder(Context paramContext, int paramInt, zdb paramzdb)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Int = paramInt;
     this.b = (paramInt / 50 * 2 * 2);
-    this.jdField_a_of_type_Xoi = paramxoi;
+    this.jdField_a_of_type_Zdb = paramzdb;
   }
   
   public void a()
@@ -41,7 +41,7 @@ public class PCMRecorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.chirp.PCMRecorder
  * JD-Core Version:    0.7.0.1
  */

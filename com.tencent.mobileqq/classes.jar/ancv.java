@@ -1,65 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.ARScanEntryView.4.1;
 import com.tencent.qphone.base.util.QLog;
 
 public class ancv
-  extends ampa<ancu>
+  implements avyi
 {
-  public static ancu a()
-  {
-    return (ancu)ampl.a().a(335);
-  }
+  public ancv(ARScanEntryView paramARScanEntryView) {}
   
-  public int a()
+  public void a()
   {
-    return 335;
-  }
-  
-  @NonNull
-  public ancu a(int paramInt)
-  {
-    return new ancu();
-  }
-  
-  @Nullable
-  public ancu a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return ancu.a(paramArrayOfamph);
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onStart ");
     }
-    return null;
   }
   
-  public Class<ancu> a()
+  public void b()
   {
-    return ancu.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.d("TencentDocSelectAddDocsProcessor", 1, "handleTencentDocUniversalEntry FILE_SELECT_ADD_DOCS failed, resultCode:" + paramInt);
-  }
-  
-  public void a(ancu paramancu) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onEnd  needReportRedDot = " + ARScanEntryView.a(this.a));
+    }
+    if (ARScanEntryView.a(this.a) != null) {
+      ARScanEntryView.a(this.a).post(new ARScanEntryView.4.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancv
  * JD-Core Version:    0.7.0.1
  */

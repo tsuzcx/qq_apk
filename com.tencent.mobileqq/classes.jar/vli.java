@@ -1,22 +1,14 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
-
-public class vli
-  implements vlj
+public abstract class vli
+  implements vlh
 {
-  public void a(List<vlg> paramList, DoodleView paramDoodleView)
+  public boolean a(vle paramvle)
   {
-    vkm localvkm = new vkm(paramDoodleView);
-    vkw localvkw = new vkw(paramDoodleView);
-    paramDoodleView = new vla(paramDoodleView);
-    paramList.add(localvkm);
-    paramList.add(localvkw);
-    paramList.add(paramDoodleView);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vli
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,42 @@
-import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
+import mqq.os.MqqHandler;
 
-class ahwd
-  implements bfso
+public class ahwd
+  extends aqnl
 {
-  ahwd(ahvz paramahvz) {}
+  private ahwd(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
   
-  public void onScrollStateChanged(int paramInt)
+  protected void a(int paramInt, long paramLong, String paramString)
+  {
+    if ((bkev.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    }
+  }
+  
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    if ((bkev.a(paramInt)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state: " + paramInt);
+      QLog.d("ChatHistoryMediaBaseFragment", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
     }
-    if (paramInt == 4097)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state is idle.");
-      }
-      this.a.b = this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 400L);
+    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
+    if ((paramString1 != null) && (paramString1.nOpType == 6) && (bkev.a(paramInt2)) && (this.a.jdField_a_of_type_MqqOsMqqHandler != null)) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(102);
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,39 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.view.Surface;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-@TargetApi(14)
-public class avxn
+class avxn
+  implements ImageAssetDelegate
 {
-  public int a;
-  public SurfaceTexture a;
-  public Surface a;
+  avxn(avxm paramavxm) {}
   
-  public avxn(int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    Object localObject = null;
+    paramLottieImageAsset = paramLottieImageAsset.getFileName();
+    String str = this.a.jdField_a_of_type_JavaLangString + "guide_images" + File.separator + paramLottieImageAsset;
+    try
+    {
+      paramLottieImageAsset = msp.a(str, this.a.jdField_a_of_type_Int, this.a.b);
+      return paramLottieImageAsset;
+    }
+    catch (Exception localException)
+    {
+      do
+      {
+        paramLottieImageAsset = localObject;
+      } while (!AudioHelper.e());
+      QLog.w(avxl.jdField_a_of_type_JavaLangString, 1, "PromotionGuide Exception, imagePath[" + str + "]", localException);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avxn
  * JD-Core Version:    0.7.0.1
  */

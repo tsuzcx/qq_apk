@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment;
 
-import vcp;
-import vdc;
+import wrh;
+import wru;
 
 public class NewMyStorySegment$7$1
   implements Runnable
 {
-  public NewMyStorySegment$7$1(vdc paramvdc) {}
+  public NewMyStorySegment$7$1(wru paramwru) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class NewMyStorySegment$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.7.1
  * JD-Core Version:    0.7.0.1
  */

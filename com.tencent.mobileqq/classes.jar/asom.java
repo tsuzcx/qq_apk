@@ -1,25 +1,99 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.etrump.mixlayout.EMEmoticon;
+import com.etrump.mixlayout.ETFont;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import java.lang.ref.WeakReference;
 
-class asom
-  implements asup
+public class asom
+  extends Handler
 {
-  asom(asol paramasol) {}
-  
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    if ((asoj.a(this.a.jdField_a_of_type_Asoj) != null) && (asoj.a(this.a.jdField_a_of_type_Asoj).a != null)) {
-      this.a.jdField_a_of_type_Asuw.a(this.a.jdField_a_of_type_JavaUtilList, 2, asoj.a(this.a.jdField_a_of_type_Asoj).a.a);
-    }
-    this.a.jdField_a_of_type_Asuw.a();
-    if (asoj.a(this.a.jdField_a_of_type_Asoj) != null) {
-      asoj.a(this.a.jdField_a_of_type_Asoj).a(false, null, false);
+    asol localasol = (asol)paramMessage.obj;
+    if (localasol == null) {}
+    label277:
+    label299:
+    label322:
+    label344:
+    label377:
+    label380:
+    label381:
+    for (;;)
+    {
+      return;
+      HiBoomTextView localHiBoomTextView = (HiBoomTextView)asol.a(localasol).get();
+      if ((localHiBoomTextView != null) && (HiBoomTextView.a(localHiBoomTextView) != null)) {
+        switch (paramMessage.what)
+        {
+        case 258: 
+        default: 
+          return;
+        case 257: 
+          if ((localHiBoomTextView.getVisibility() == 0) && (HiBoomTextView.jdField_a_of_type_AndroidOsHandler != null))
+          {
+            HiBoomTextView.jdField_a_of_type_AndroidOsHandler.obtainMessage(258, asol.a(localHiBoomTextView)).sendToTarget();
+            return;
+          }
+          break;
+        case 259: 
+          if ((localHiBoomTextView != null) && (HiBoomTextView.a(localHiBoomTextView) != null) && (localHiBoomTextView.getVisibility() == 0) && (localasol != null) && (HiBoomTextView.a(localHiBoomTextView) == asol.a(localasol)) && (localHiBoomTextView.jdField_a_of_type_Asok.a() == asol.a(localasol)) && (HiBoomTextView.a(localHiBoomTextView).currentFrameIndex() == asol.b(localasol)) && (HiBoomTextView.a(localHiBoomTextView) != null) && (HiBoomTextView.a(localHiBoomTextView).equals(asol.a(localasol))))
+          {
+            localHiBoomTextView.invalidate();
+            boolean bool;
+            int i;
+            if ((HiBoomTextView.b(localHiBoomTextView)) && (!HiBoomTextView.c(localHiBoomTextView)) && (HiBoomTextView.c()))
+            {
+              bool = true;
+              if (!bool) {
+                break label380;
+              }
+              paramMessage = HiBoomTextView.a(localHiBoomTextView);
+              if (!paramMessage.nextFrame()) {
+                break label344;
+              }
+              i = paramMessage.getFrameDelay();
+              long l = System.currentTimeMillis() - asol.b(localasol);
+              if (l <= 0L) {
+                break label377;
+              }
+              i = (int)(i - l);
+              if (i > 1) {
+                break label322;
+              }
+              sendMessage(obtainMessage(257, asol.a(localHiBoomTextView)));
+              bool = true;
+            }
+            for (;;)
+            {
+              if (localHiBoomTextView.d()) {
+                break label381;
+              }
+              HiBoomTextView.b(localHiBoomTextView, bool);
+              return;
+              bool = false;
+              break;
+              sendMessageDelayed(obtainMessage(257, asol.a(localHiBoomTextView)), i);
+              break label299;
+              HiBoomTextView.a(localHiBoomTextView, true);
+              HiBoomTextView.b(localHiBoomTextView, false);
+              if (localHiBoomTextView.d()) {
+                localHiBoomTextView.a(true);
+              }
+              bool = false;
+              continue;
+              break label277;
+            }
+          }
+          break;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asom
  * JD-Core Version:    0.7.0.1
  */

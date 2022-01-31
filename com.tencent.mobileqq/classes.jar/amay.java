@@ -1,71 +1,28 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.util.SparseArray;
-import mqq.observer.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
 public class amay
-  implements BusinessObserver
+  implements DialogInterface.OnClickListener
 {
-  private static amay jdField_a_of_type_Amay;
-  private int jdField_a_of_type_Int;
-  private final SparseArray<amax> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  public amay(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public static amay a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (jdField_a_of_type_Amay == null) {}
-    try
-    {
-      if (jdField_a_of_type_Amay == null) {
-        jdField_a_of_type_Amay = new amay();
-      }
-      return jdField_a_of_type_Amay;
+    mtq.e(false, false);
+    VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
+    VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_JavaLangString, this.c, this.d);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    finally {}
-  }
-  
-  public int a(amax paramamax)
-  {
-    synchronized (this.jdField_a_of_type_AndroidUtilSparseArray)
-    {
-      SparseArray localSparseArray2 = this.jdField_a_of_type_AndroidUtilSparseArray;
-      int i = this.jdField_a_of_type_Int + 1;
-      this.jdField_a_of_type_Int = i;
-      localSparseArray2.append(i, paramamax);
-      i = this.jdField_a_of_type_Int;
-      return i;
-    }
-  }
-  
-  public int a(Context paramContext, amaf paramamaf)
-  {
-    return a(new amax(paramContext, paramamaf));
-  }
-  
-  public int a(Context paramContext, amak paramamak)
-  {
-    return a(new amax(paramContext, paramamak));
-  }
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("req_id");
-    amax localamax = (amax)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(i);
-      return;
-      localamax.b(paramBoolean, paramBundle.getBoolean("allow_download", true), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"), paramBundle.getString("jump_url"));
-      continue;
-      localamax.b(paramBoolean, paramBundle.getInt("jump", 0), paramBundle.getInt("err_code", 0), paramBundle.getString("err_msg"));
-    }
+    mtq.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amay
  * JD-Core Version:    0.7.0.1
  */

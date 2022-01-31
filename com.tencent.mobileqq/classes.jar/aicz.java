@@ -1,19 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aicz
+class aicz
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public String a;
-  boolean jdField_a_of_type_Boolean;
+  aicz(aicw paramaicw) {}
   
-  aicz(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aicz
  * JD-Core Version:    0.7.0.1
  */

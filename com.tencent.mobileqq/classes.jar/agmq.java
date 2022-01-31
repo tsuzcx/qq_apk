@@ -1,35 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.widget.TextView;
 import com.tencent.qphone.base.util.QLog;
 
-public class agmq
-  extends Handler
+class agmq
+  extends BroadcastReceiver
 {
-  public agmq(PhotoCropActivity paramPhotoCropActivity) {}
+  agmq(agmb paramagmb) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramMessage.what)
-    {
+    paramIntent.getStringExtra("peerUin");
+    paramIntent.getIntExtra("sessionType", -1);
+    paramContext = paramIntent.getStringExtra("sessionId");
+    if (TextUtils.isEmpty(paramContext)) {}
+    while (!paramContext.startsWith("10-")) {
+      return;
     }
-    do
-    {
-      return;
-      this.a.b();
-      this.a.a.sendMessageDelayed(Message.obtain(this.a.a, 1003), 10000L);
-      return;
-    } while (this.a.isFinishing());
+    this.a.jdField_a_of_type_Autg.c();
+    this.a.l.setEnabled(true);
     if (QLog.isColorLevel()) {
-      QLog.d("PhotoCropActivity", 2, "LOADING_TIMEOUT");
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onBind enter room setSoundDisable");
     }
-    PhotoCropActivity.a(this.a, 2131717375);
-    this.a.c();
+    this.a.jdField_a_of_type_Autg.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agmq
  * JD-Core Version:    0.7.0.1
  */

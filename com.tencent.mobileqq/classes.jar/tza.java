@@ -1,33 +1,29 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.AnimatorListenerAdapter;
+import java.lang.ref.WeakReference;
 
-final class tza
-  extends AnimatorListenerAdapter
+public class tza
+  implements yfu
 {
-  tza(Animator.AnimatorListener paramAnimatorListener) {}
+  private WeakReference<tyz> a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  tza(tyz paramtyz)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.onAnimationCancel(paramAnimator);
+    this.a = new WeakReference(paramtyz);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(Object[] paramArrayOfObject)
   {
-    ved.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation, onAnimationEnd");
-    this.a.onAnimationEnd(paramAnimator);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    this.a.onAnimationStart(paramAnimator);
+    if (this.a != null)
+    {
+      tyz localtyz = (tyz)this.a.get();
+      if (localtyz != null) {
+        localtyz.a(paramArrayOfObject);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tza
  * JD-Core Version:    0.7.0.1
  */

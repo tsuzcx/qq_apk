@@ -1,72 +1,101 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 class aezr
-  implements aysc
+  extends bceg
 {
-  private Handler a;
-  
-  aezr(Handler paramHandler)
+  aezr(aezp paramaezp, QQAppInterface paramQQAppInterface)
   {
-    this.a = paramHandler;
+    super(paramQQAppInterface);
   }
   
-  public void onResp(aysz paramaysz)
+  protected void a(long paramLong)
   {
-    Object localObject = this.a.obtainMessage(8);
-    ((Message)localObject).obj = paramaysz.jdField_a_of_type_Aysy;
-    this.a.sendMessage((Message)localObject);
-    Bundle localBundle = (Bundle)paramaysz.jdField_a_of_type_Aysy.a();
-    localObject = localBundle.getString("ReqUniqueKey");
-    int i = localBundle.getInt("IdxInRes");
-    if (QLog.isColorLevel())
-    {
-      long l = localBundle.getLong("StartTs");
-      QLog.d("ZhituManager", 2, aezl.a((String)localObject, "onResp", i, " zhitu img download onResp result fileSize = " + paramaysz.jdField_a_of_type_Long + " file.path = " + paramaysz.jdField_a_of_type_Aysy.c + " resp.result = " + paramaysz.jdField_a_of_type_Int + " take time: " + Long.toString(System.currentTimeMillis() - l)));
-    }
-    if (paramaysz.jdField_a_of_type_Int == 3)
+    if ((paramLong == Long.parseLong(aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (!aezp.a(this.a).N))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, aezl.a((String)localObject, "OnResp", i, "result downloading, "));
+        QLog.d("AppShortcutBarAIOHelper", 2, "onShortcutBarItemUpdated.");
       }
+      TroopInfo localTroopInfo = ((TroopManager)aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      if (localTroopInfo == null) {
+        break label133;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("AppShortcutBarAIOHelper", 2, "onShortcutBarItemUpdated. getTroopAIOShortCutBar.");
+      }
+      aezp.a(this.a).a(Long.parseLong(aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), (int)localTroopInfo.dwGroupClassExt);
+    }
+    label133:
+    while (!QLog.isColorLevel()) {
       return;
     }
-    if (paramaysz.jdField_a_of_type_Int == 0)
-    {
-      ZhituImgResponse localZhituImgResponse = (ZhituImgResponse)localBundle.getParcelable("ImgResponse");
-      aezl.a(paramaysz.jdField_a_of_type_Aysy.c);
-      if (localZhituImgResponse != null)
-      {
-        paramaysz = this.a.obtainMessage(3);
-        paramaysz.obj = localBundle;
-        this.a.sendMessage(paramaysz);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituManager", 2, aezl.a((String)localObject, "onResp", "download succ but md5 is mismatched"));
-      }
-      paramaysz = this.a.obtainMessage(4);
-      localBundle.putInt("ErrorCode", 99999);
-      paramaysz.obj = localBundle;
-    }
-    for (;;)
-    {
-      break;
-      localObject = this.a.obtainMessage(4);
-      localBundle.putInt("ErrorCode", paramaysz.b);
-      ((Message)localObject).obj = localBundle;
-      paramaysz = (aysz)localObject;
-    }
+    QLog.e("AppShortcutBarAIOHelper", 2, "onShortcutBarItemUpdated. TroopInfo is null!");
   }
   
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
+  protected void b(long paramLong, boolean paramBoolean)
+  {
+    if ((paramLong == Long.parseLong(aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (!aezp.a(this.a).N))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppShortcutBarAIOHelper", 2, "onGetAIOShortcutBarInfo.");
+      }
+      if (aezp.a(this.a) != null) {
+        break label59;
+      }
+    }
+    label58:
+    label59:
+    do
+    {
+      bcee localbcee;
+      List localList;
+      do
+      {
+        do
+        {
+          break label58;
+          do
+          {
+            return;
+          } while (aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null);
+          localbcee = aezp.a(this.a).a(Long.valueOf(Long.parseLong(aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
+          if (localbcee == null) {
+            break;
+          }
+          this.a.a(localbcee);
+        } while (localbcee.a().size() <= 0);
+        localList = localbcee.a();
+      } while (System.currentTimeMillis() <= localbcee.b());
+      if (QLog.isColorLevel()) {
+        QLog.d("AppShortcutBarAIOHelper", 2, "onGetAIOShortcutBarInfo.getTroopShortcutBarAppIdsRedPoint.");
+      }
+      aezp.a(this.a).a(Long.valueOf(paramLong), localList);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.e("AppShortcutBarAIOHelper", 2, "onGetAIOShortcutBarInfo. info is null. Will not update UI and redpoint.");
+  }
+  
+  protected void c(long paramLong, boolean paramBoolean)
+  {
+    if ((paramLong == Long.parseLong(aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) && (!aezp.a(this.a).N))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppShortcutBarAIOHelper", 2, "onGetTroopAppidsRedPoint.");
+      }
+      bcee localbcee = aezp.a(this.a).a(Long.valueOf(Long.parseLong(aezp.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
+      this.a.a(localbcee);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,31 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
-
 public class amyr
-  extends amyp<amyq>
 {
-  public int a()
-  {
-    return 479;
-  }
+  public double a;
+  public int a;
+  public String a;
+  public amys[] a;
+  public int b;
   
-  @NonNull
-  public amyq a()
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomOnlineStatusManager", 2, "migrateDefaultContent");
+    StringBuilder localStringBuilder = new StringBuilder("");
+    int i;
+    if ((this.jdField_a_of_type_ArrayOfAmys != null) && (this.jdField_a_of_type_ArrayOfAmys.length > 0)) {
+      i = 0;
     }
-    return new amyq();
-  }
-  
-  @NonNull
-  public amyq a(@NonNull amph[] paramArrayOfamph)
-  {
-    boolean bool = false;
-    amyq localamyq = new amyq();
-    try
+    while (i < this.jdField_a_of_type_ArrayOfAmys.length)
     {
-      if (paramArrayOfamph[0].a != null)
-      {
-        if (new JSONObject(paramArrayOfamph[0].a).optInt("show_custom_online_state", 1) == 1) {
-          bool = true;
-        }
-        localamyq.a = bool;
-        if (QLog.isColorLevel()) {
-          QLog.d("CustomOnlineStatusManager", 2, "parsed showVipIcon: " + localamyq.a);
-        }
-      }
-      return localamyq;
+      localStringBuilder.append("\n index:").append(i).append(this.jdField_a_of_type_ArrayOfAmys[i].toString()).append('\n');
+      i += 1;
+      continue;
+      localStringBuilder.append("\n only have one itemContent:" + this.jdField_a_of_type_JavaLangString + ",prob:" + this.jdField_a_of_type_Double).append('\n');
     }
-    catch (Exception paramArrayOfamph)
-    {
-      QLog.e("CustomOnlineStatusManager", 1, "parsed failed: ", paramArrayOfamph);
-    }
-    return localamyq;
-  }
-  
-  public Class<amyq> a()
-  {
-    return amyq.class;
-  }
-  
-  @NonNull
-  public amyq b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomOnlineStatusManager", 2, "migrateOldContent");
-    }
-    return new amyq();
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyr
  * JD-Core Version:    0.7.0.1
  */

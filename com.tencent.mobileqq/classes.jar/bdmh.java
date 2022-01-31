@@ -1,25 +1,33 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class bdmh
-  implements View.OnClickListener
 {
-  bdmh(bdmf parambdmf, DialogInterface.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean) {}
+  static final int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  static final long[] jdField_a_of_type_ArrayOfLong = new long[0];
+  static final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[0];
   
-  public void onClick(View paramView)
+  static int a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bdmf, this.jdField_a_of_type_Int);
+    int i = 0;
+    int j = paramInt1 - 1;
+    paramInt1 = i;
+    i = j;
+    while (paramInt1 <= i)
+    {
+      j = paramInt1 + i >>> 1;
+      int k = paramArrayOfInt[j];
+      if (k < paramInt2) {
+        paramInt1 = j + 1;
+      } else if (k > paramInt2) {
+        i = j - 1;
+      } else {
+        return j;
+      }
     }
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Bdmf.dismiss();
-    }
+    return paramInt1 ^ 0xFFFFFFFF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmh
  * JD-Core Version:    0.7.0.1
  */

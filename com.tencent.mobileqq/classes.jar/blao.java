@@ -1,102 +1,39 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.concurrent.Semaphore;
 
-public class blao
-  implements Handler.Callback
+class blao
+  implements blar
 {
-  private int jdField_a_of_type_Int;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  public HandlerThread a;
-  private blap jdField_a_of_type_Blap;
-  private int b;
-  private int c;
+  blao(blan paramblan, blak paramblak, String[] paramArrayOfString, Semaphore paramSemaphore) {}
   
-  public blao(int paramInt1, int paramInt2)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Int = (1000 / paramInt1);
-    this.b = ((int)(paramInt2 / 1000.0F * paramInt1) + 1);
-    this.c = 0;
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("shortvideo_Timer");
-    this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
-  }
-  
-  private boolean a(Message paramMessage)
-  {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (blbk.jdField_a_of_type_Boolean)
-    {
-      paramMessage = RMVideoStateMgr.a();
-      if (!paramMessage.jdField_a_of_type_Boolean) {
-        break label179;
-      }
-      paramMessage.jdField_a_of_type_Double = (System.currentTimeMillis() - paramMessage.jdField_a_of_type_Long);
-      if (paramMessage.jdField_a_of_type_Double >= axim.c) {
-        bool1 = true;
-      }
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        bool2 = bool1;
-        if (bool1)
-        {
-          QLog.d("TCTimer", 2, "handleLooperEvent startTime=" + paramMessage.jdField_a_of_type_Long + " total=" + paramMessage.jdField_a_of_type_Double);
-          bool2 = bool1;
-        }
-      }
+    QLog.d(blan.a(), 4, "create pngs for material index = " + this.jdField_a_of_type_Blak.a + " end, pngDir = " + paramString);
+    this.jdField_a_of_type_ArrayOfJavaLangString[0] = paramString;
+    String[] arrayOfString = new File(paramString).list();
+    String str = paramString + File.separator + "snapshot.png";
+    if (arrayOfString.length != 0) {
+      bkkd.a(paramString + File.separator + arrayOfString[0], 320, 320, str);
+    }
+    blan.a(this.jdField_a_of_type_Blan).c.add(str);
+    blan.a(this.jdField_a_of_type_Blan).a.add(paramString);
+    if ((this.jdField_a_of_type_Blak.c != null) && (!this.jdField_a_of_type_Blak.c.equals(""))) {
+      blan.a(this.jdField_a_of_type_Blan).b.add(this.jdField_a_of_type_Blak.c);
     }
     for (;;)
     {
-      if (bool2) {
-        this.c = this.b;
-      }
-      int i = this.c;
-      int j = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_Blap != null) {
-        this.jdField_a_of_type_Blap.a(this.jdField_a_of_type_Blap, bool2, i * j, this.c);
-      }
-      this.c += 1;
-      return true;
-      label179:
-      if (this.c >= this.b) {
-        bool2 = true;
-      }
+      blan.a(this.jdField_a_of_type_Blan).d.add(Integer.valueOf(this.jdField_a_of_type_Blak.a));
+      this.jdField_a_of_type_JavaUtilConcurrentSemaphore.release();
+      return;
+      blan.a(this.jdField_a_of_type_Blan).b.add(this.jdField_a_of_type_Blak.b);
     }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
-    {
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1398036036);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, this.jdField_a_of_type_Int);
-    }
-    return a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blao
  * JD-Core Version:    0.7.0.1
  */

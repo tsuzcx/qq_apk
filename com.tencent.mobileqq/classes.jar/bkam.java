@@ -1,20 +1,24 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import cooperation.qzone.util.QZLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class bkam
-  implements ValueAnimator.AnimatorUpdateListener
+  extends bfsy
 {
   bkam(bkal parambkal) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    this.a.d = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.k();
+    QZLog.i("VipARQGThreeController", 1, "qg so load success status = " + bfsz.b.get());
+  }
+  
+  public void b()
+  {
+    QZLog.i("VipARQGThreeController", 1, "qg so load fail status = " + bfsz.b.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkam
  * JD-Core Version:    0.7.0.1
  */

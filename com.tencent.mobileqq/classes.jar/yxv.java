@@ -1,37 +1,92 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 
-public final class yxv
+public class yxv
+  extends RecyclerView.ViewHolder
 {
-  private static yxw a(int paramInt)
+  private final View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private boolean jdField_a_of_type_Boolean;
+  private View b;
+  
+  public yxv(yxs paramyxs, View paramView)
   {
-    yyf localyyf = null;
-    if ((paramInt == 0) || (1 == paramInt) || (2 == paramInt) || (3 == paramInt)) {
-      localyyf = new yyf();
-    }
-    return localyyf;
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368902));
+    this.b = paramView.findViewById(2131366451);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370863);
   }
   
-  public static void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  private RotateAnimation a()
   {
-    if ((paramInt1 < 0) || (paramInt1 >= 3)) {}
-    yxw localyxw;
-    do
+    RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 360.0F, 1, 0.5F, 1, 0.5F);
+    localRotateAnimation.setDuration(3000L);
+    localRotateAnimation.setInterpolator(new LinearInterpolator());
+    localRotateAnimation.setRepeatCount(-1);
+    return localRotateAnimation;
+  }
+  
+  public void a()
+  {
+    a(true);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      do
-      {
-        yyc.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
-        return;
-      } while ((paramInt2 < 0) || (paramInt2 >= 4));
-      localyxw = a(paramInt2);
-    } while (localyxw == null);
-    localyxw.a(paramInt1, paramInt2, paramAdInfo);
+      if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 8) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      }
+      if (this.b.getVisibility() == 8) {
+        this.b.setVisibility(0);
+      }
+    }
+    while (this.b.getVisibility() != 0) {
+      return;
+    }
+    this.b.setVisibility(8);
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+    }
+    while (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void c()
+  {
+    b(true);
+  }
+  
+  public void d()
+  {
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(a());
+      this.jdField_a_of_type_Boolean = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yxv
  * JD-Core Version:    0.7.0.1
  */

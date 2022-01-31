@@ -1,12 +1,15 @@
-import com.tencent.ark.ark.PlayerStub;
-import com.tencent.ark.ark.PlayerStubFactory;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
-final class altu
-  implements ark.PlayerStubFactory
+public class altu
+  implements Comparator<PhoneContact>
 {
-  public ark.PlayerStub CreateStub()
+  public altu(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    return new altt();
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
   }
 }
 

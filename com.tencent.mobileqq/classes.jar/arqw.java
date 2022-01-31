@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
 public class arqw
-  implements arrq
+  implements DialogInterface.OnClickListener
 {
-  public arqw(ListenTogetherManager paramListenTogetherManager, BaseActivity paramBaseActivity, int paramInt, String paramString) {}
+  public arqw(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public void a()
-  {
-    if ((ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing())) {
-      return;
-    }
-    ListenTogetherManager.a(ListenTogetherManager.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherManager)).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 1002);
-  }
-  
-  public void b() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqw
  * JD-Core Version:    0.7.0.1
  */

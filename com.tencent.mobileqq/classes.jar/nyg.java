@@ -1,54 +1,24 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity.13.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class nyg
+  implements bhqf
 {
-  public long a;
-  public AdvertisementInfo a;
-  public String a;
-  public boolean a;
-  public long b;
-  public long c;
-  public long d;
+  public nyg(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a(Bundle paramBundle)
+  public void onDismiss()
   {
-    long l1;
-    long l2;
-    long l3;
-    if (paramBundle != null)
-    {
-      String str = paramBundle.getString("adid", "");
-      l1 = paramBundle.getLong("navigationStart", 0L);
-      l2 = paramBundle.getLong("htmlLoaded", 0L);
-      l3 = paramBundle.getLong("domComplete", 0L);
-      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (str.equals(this.jdField_a_of_type_JavaLangString))) {
-        break label71;
-      }
+    if ((!this.a.a) && (this.a.j != -1)) {
+      ThreadManager.getUIHandler().postDelayed(new ReadInJoyBaseDeliverActivity.13.1(this), 300L);
     }
-    label71:
-    do
-    {
-      return;
-      if (l1 > 0L) {
-        this.b = l1;
-      }
-      if (l2 > 0L) {
-        this.c = l2;
-      }
-    } while (l3 <= 0L);
-    this.d = l3;
-  }
-  
-  public boolean a()
-  {
-    return (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Long > 0L) && ((this.b > 0L) || (this.c > 0L) || (this.d > 0L));
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nyg
  * JD-Core Version:    0.7.0.1
  */

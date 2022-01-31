@@ -1,76 +1,85 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class xfq
-  extends ampa<xfp>
+class xfq
+  extends BroadcastReceiver
 {
-  public int a()
-  {
-    return 411;
-  }
+  xfq(xfp paramxfp) {}
   
-  public Class<xfp> a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return xfp.class;
-  }
-  
-  @NonNull
-  public xfp a(int paramInt)
-  {
-    return new xfp();
-  }
-  
-  @Nullable
-  public xfp a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
+    Object localObject = paramIntent.getAction();
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(localObject))
     {
-      xfp localxfp = xfp.a(paramArrayOfamph[0].a);
-      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
-      a(localxfp);
-      return localxfp;
+      localObject = paramIntent.getStringExtra("data");
+      paramIntent = paramIntent.getStringExtra("event");
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicCache", 2, "onReceive:" + (String)localObject);
+      }
+      if ((!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("kTribeSelectMusic")) && (!TextUtils.isEmpty((CharSequence)localObject))) {}
     }
-    QLog.e("Q.videostory.config.VSEntranceProcessor", 2, "onParsed conf content is null!");
-    return null;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(xfp paramxfp)
-  {
-    if (paramxfp != null)
+    do
     {
-      xfo.a().a("mine_videostory_entrance", paramxfp.a());
-      xfo.a().a("enable_click_take_picture", paramxfp.b());
-      xfo.a().a("mine_videostory_drawer_entrance", paramxfp.c());
-      QLog.i("Q.videostory.config.VSEntranceProcessor", 2, "onUpdate:" + paramxfp.toString());
-    }
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+      return;
+      xfp.a(this.a).a();
+      for (;;)
+      {
+        try
+        {
+          paramIntent = new JSONObject((String)localObject);
+          i = paramIntent.optInt("id");
+          paramContext = paramContext.getSharedPreferences("VideoMusicCache", 0).getString(String.valueOf(i), null);
+          if ((paramContext == null) || (!new File(paramContext).exists())) {
+            continue;
+          }
+          localObject = new xgc();
+          ((xgc)localObject).jdField_b_of_type_JavaLangString = paramIntent.optString("title");
+          ((xgc)localObject).jdField_b_of_type_Int = 2;
+          ((xgc)localObject).a = String.valueOf(i);
+          ((xgc)localObject).g = paramContext;
+          xfp.a(this.a).a((xgc)localObject);
+        }
+        catch (JSONException paramContext)
+        {
+          int i;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("MusicCache", 2, "on receiver error, ", paramContext);
+          continue;
+        }
+        wtb.a("0X80076D6");
+        return;
+        paramContext = new MusicItemInfo();
+        paramContext.mType = 5;
+        paramContext.mItemId = i;
+        paramContext.mMusicName = paramIntent.optString("title");
+        paramContext.mSingername = paramIntent.optString("desc");
+        paramContext.mSongMid = paramIntent.optString("mid");
+        xfp.a(this.a, paramIntent.optBoolean("is_from_story", false));
+        xfp.a(this.a, paramContext.mSongMid);
+      }
+      if ("action_music_start".equals(localObject))
+      {
+        xfp.a(this.a).b();
+        return;
+      }
+    } while (!"action_music_refresh_list".equals(localObject));
+    xfp.a(this.a).sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfq
  * JD-Core Version:    0.7.0.1
  */

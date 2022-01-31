@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import bbws;
+import bdvt;
 
 class ThemeJsPlugin$4
-  implements bbws
+  implements bdvt
 {
   ThemeJsPlugin$4(ThemeJsPlugin paramThemeJsPlugin, String paramString1, String paramString2, boolean paramBoolean, String paramString3) {}
   

@@ -1,31 +1,45 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
 public class tji
+  extends tjd<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  public int a;
-  public long a;
-  public String a;
+  private int jdField_a_of_type_Int;
+  private Intent jdField_a_of_type_AndroidContentIntent;
   
-  public tji(tjf paramtjf, String paramString)
+  public tji(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    paramtjf = ((tcm)tcz.a(19)).a(paramString);
-    if (paramtjf != null) {
-      a(paramtjf);
-    }
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
   }
   
-  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
-    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
-    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
-    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
+    boolean bool = false;
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      tlv.a(paramContext, null, 0, null, null, (WSRedDotPushMsg)this.jdField_a_of_type_Tiw, 2);
+      paramWSPushStrategyInfo = tlv.a();
+      if ((paramWSPushStrategyInfo != null) && ((paramContext instanceof Activity))) {
+        paramWSPushStrategyInfo.a((Activity)paramContext);
+      }
+      tlv.a();
+      bool = true;
+    }
+    while (this.jdField_a_of_type_Int != 6) {
+      return bool;
+    }
+    tch.a((Activity)paramContext, this.jdField_a_of_type_AndroidContentIntent, (WSRedDotPushMsg)this.jdField_a_of_type_Tiw);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tji
  * JD-Core Version:    0.7.0.1
  */

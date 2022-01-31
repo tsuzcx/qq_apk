@@ -1,44 +1,68 @@
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.mobileqq.startup.step.UpdateAvSo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface lpg
+public class lpg
 {
-  public abstract int a(int paramInt, boolean paramBoolean1, lpx paramlpx, boolean paramBoolean2);
+  public static int a(loy paramloy)
+  {
+    if (paramloy == null) {}
+    do
+    {
+      do
+      {
+        return 11;
+        if (!TextUtils.isEmpty(paramloy.c)) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("QavGPDownloadManager", 4, String.format("getEnableFlag, %s", new Object[] { paramloy }));
+      return 11;
+      if (!paramloy.a) {
+        break;
+      }
+    } while (!a(paramloy));
+    return 1;
+    return 2;
+  }
   
-  public abstract void a();
+  static SharedPreferences a()
+  {
+    return EffectConfigBase.a(298, EffectConfigBase.c);
+  }
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public static String a()
+  {
+    return UpdateAvSo.a();
+  }
   
-  public abstract void a(long paramLong);
-  
-  public abstract void a(PendantItem paramPendantItem, VideoMaterial paramVideoMaterial);
-  
-  public abstract void a(FilterDesc paramFilterDesc);
-  
-  public abstract void a(lpu paramlpu, lpx paramlpx);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(lpn paramlpn);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract void c(int paramInt1, int paramInt2);
-  
-  public abstract boolean c();
+  public static boolean a(loy paramloy)
+  {
+    String str1 = paramloy.b;
+    paramloy = a() + paramloy.d + ".so";
+    String str2 = a().getString("so_zip_md5", null);
+    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
+      }
+    }
+    do
+    {
+      return false;
+      if (bdcs.a(paramloy)) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramloy }));
+    return false;
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lpg
  * JD-Core Version:    0.7.0.1
  */

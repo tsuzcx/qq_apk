@@ -1,14 +1,27 @@
-public abstract interface acsj
+import android.content.Context;
+import android.view.View;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+
+public class acsj
+  extends afyl
 {
-  public abstract void a();
+  public acsj(FontSettingActivity paramFontSettingActivity, QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
+  {
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
+  }
   
-  public abstract void b(int paramInt, String paramString);
+  public void a(aelt paramaelt, ChatMessage paramChatMessage) {}
   
-  public abstract void c(int paramInt, String paramString);
+  public void b(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acsj
  * JD-Core Version:    0.7.0.1
  */

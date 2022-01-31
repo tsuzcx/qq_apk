@@ -1,71 +1,95 @@
 package com.tencent.mobileqq.msf.service;
 
-import android.text.TextUtils;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Process;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public class p
+final class p
   extends Thread
 {
-  private static String c = "MSF.S.RespHandler";
-  public volatile boolean a = true;
-  MsfCore b;
-  
-  public p(MsfCore paramMsfCore)
-  {
-    this.b = paramMsfCore;
-  }
-  
   public void run()
   {
-    while (this.a)
+    boolean bool = false;
+    for (;;)
     {
-      MsfMessagePair localMsfMessagePair;
-      for (;;)
+      int i;
+      try
       {
-        try
-        {
-          localMsfMessagePair = (MsfMessagePair)this.b.getMsfMessagePairs().take();
-          if (localMsfMessagePair == null) {
-            break;
-          }
-          if (localMsfMessagePair.toServiceMsg == null) {
-            break label225;
-          }
-          String str1 = q.b(localMsfMessagePair.toServiceMsg);
-          if ((!"LongConn.OffPicUp".equals(localMsfMessagePair.toServiceMsg.getServiceCmd())) && (!"ImgStore.GroupPicUp".equals(localMsfMessagePair.toServiceMsg.getServiceCmd()))) {
-            break label149;
-          }
-          QLog.d(c, 1, "recv " + str1 + " req:" + localMsfMessagePair.toServiceMsg.getStringForLog() + "resp:" + localMsfMessagePair.fromServiceMsg.getStringForLog());
-          e.a(str1, localMsfMessagePair.toServiceMsg, localMsfMessagePair.fromServiceMsg);
+        Thread.sleep(3000L);
+        HashMap localHashMap = new HashMap();
+        Object localObject1 = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningAppProcesses();
+        int j = Process.myPid();
+        localObject1 = ((List)localObject1).iterator();
+        if (!((Iterator)localObject1).hasNext()) {
+          break label417;
         }
-        catch (InterruptedException localInterruptedException)
-        {
-          localInterruptedException.printStackTrace();
-        }
-        break;
-        label149:
+        Object localObject2 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
         if (QLog.isColorLevel()) {
-          QLog.d(c, 2, localInterruptedException + " add resp to queue:" + localMsfMessagePair.toServiceMsg.getRequestSsoSeq() + " from:" + localMsfMessagePair.fromServiceMsg);
+          QLog.d("MSF.S.MsfService", 1, "process info: " + ((ActivityManager.RunningAppProcessInfo)localObject2).processName + " " + ((ActivityManager.RunningAppProcessInfo)localObject2).pid + " " + ((ActivityManager.RunningAppProcessInfo)localObject2).uid);
         }
-        if ((localInterruptedException != null) || (!"MessageSvc.PbSendMsg".equals(localMsfMessagePair.toServiceMsg.getServiceCmd()))) {}
+        if (!((ActivityManager.RunningAppProcessInfo)localObject2).processName.equals("com.tencent.mobileqq")) {
+          continue;
+        }
+        i = ((ActivityManager.RunningAppProcessInfo)localObject2).pid;
+        localHashMap.clear();
+        localHashMap.put("DEVICE", Build.DEVICE);
+        localHashMap.put("PRODUCT", Build.PRODUCT);
+        localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
+        localHashMap.put("MODEL", Build.MODEL);
+        localHashMap.put("RELEASE", Build.VERSION.RELEASE);
+        localHashMap.put("FROM", MsfService.access$000());
+        if (j < i)
+        {
+          localHashMap.put("WAY", "Daemon");
+          if (MsfService.core.statReporter == null) {
+            break label389;
+          }
+          localObject1 = MsfService.core.statReporter;
+          if (j < i) {
+            bool = true;
+          }
+          ((k)localObject1).a("msfstartway", bool, 0L, 0L, localHashMap, false, false);
+          if (!QLog.isColorLevel()) {
+            break label406;
+          }
+          localObject1 = localHashMap.keySet().iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break label406;
+          }
+          localObject2 = (String)((Iterator)localObject1).next();
+          QLog.d("MSF.S.MsfService", 1, "upload map: " + (String)localObject2 + ":" + (String)localHashMap.get(localObject2));
+          continue;
+        }
+        localThrowable.put("WAY", "QQ");
       }
-      label225:
-      if (localMsfMessagePair.fromServiceMsg != null)
+      catch (Throwable localThrowable)
       {
-        String str2 = localMsfMessagePair.sendProcess;
-        Object localObject = str2;
-        if (TextUtils.isEmpty(str2)) {
-          localObject = q.a(localMsfMessagePair.fromServiceMsg);
-        }
         if (QLog.isColorLevel()) {
-          QLog.d(c, 2, (String)localObject + " add push to queue: from:" + localMsfMessagePair.fromServiceMsg);
+          QLog.d("MSF.S.MsfService", 1, "upload start way fail : InterruptedException!");
         }
-        e.a((String)localObject, localMsfMessagePair.toServiceMsg, localMsfMessagePair.fromServiceMsg);
+        return;
+      }
+      continue;
+      label389:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("MSF.S.MsfService", 1, "upload start way fail: RDM NULL!");
+        continue;
+        label406:
+        j.a(MsfService.core.statReporter, false);
+        return;
+        label417:
+        i = 2147483647;
       }
     }
   }

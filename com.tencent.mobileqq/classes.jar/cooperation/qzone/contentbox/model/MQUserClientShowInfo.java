@@ -2,8 +2,8 @@ package cooperation.qzone.contentbox.model;
 
 import NS_CLIENT_SHOW_ALL_INFO.AllInfo;
 import NS_COMM_VIP_GROWTH.UserClientShowInfo;
-import bhyd;
-import biay;
+import bjzo;
+import bkcu;
 import cooperation.qzone.util.QZLog;
 import cooperation.vip.vipcomponent.QQUnionIconInfo;
 import java.io.Serializable;
@@ -58,10 +58,10 @@ public class MQUserClientShowInfo
     if (paramArrayOfByte == null) {
       return null;
     }
-    paramArrayOfByte = (AllInfo)bhyd.a(AllInfo.class, paramArrayOfByte);
+    paramArrayOfByte = (AllInfo)bjzo.a(AllInfo.class, paramArrayOfByte);
     if (paramArrayOfByte != null)
     {
-      Object localObject = (UserClientShowInfo)bhyd.a(UserClientShowInfo.class, paramArrayOfByte.vecQQBigVipInfo);
+      Object localObject = (UserClientShowInfo)bjzo.a(UserClientShowInfo.class, paramArrayOfByte.vecQQBigVipInfo);
       if (localObject == null) {
         return null;
       }
@@ -74,7 +74,7 @@ public class MQUserClientShowInfo
       paramArrayOfByte.iSpeed = ((UserClientShowInfo)localObject).iSpeed;
       paramArrayOfByte.iScore = ((UserClientShowInfo)localObject).iScore;
       paramArrayOfByte.iIsUseVipIcon = ((UserClientShowInfo)localObject).iIsUseVipIcon;
-      localObject = biay.a(8, (UserClientShowInfo)localObject);
+      localObject = bkcu.a(8, (UserClientShowInfo)localObject);
       if (localObject != null)
       {
         paramArrayOfByte.unionVipUrl = ((QQUnionIconInfo)localObject).mIconUrl;
@@ -113,7 +113,7 @@ public class MQUserClientShowInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQUserClientShowInfo
  * JD-Core Version:    0.7.0.1
  */

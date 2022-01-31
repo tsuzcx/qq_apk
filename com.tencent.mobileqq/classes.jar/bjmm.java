@@ -1,22 +1,23 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.remote.SendMsg;
 
-public class bjmm
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+public final class bjmm
+  implements Parcelable.Creator<SendMsg>
 {
-  public bjmm(CropVideoActivity paramCropVideoActivity) {}
-  
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public SendMsg a(Parcel paramParcel)
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    CropVideoActivity.a(this.a).b(f, f, 1.0F);
-    return true;
+    return new SendMsg(paramParcel);
+  }
+  
+  public SendMsg[] a(int paramInt)
+  {
+    return new SendMsg[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjmm
  * JD-Core Version:    0.7.0.1
  */

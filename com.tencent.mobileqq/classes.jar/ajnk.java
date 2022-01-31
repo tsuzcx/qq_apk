@@ -1,49 +1,30 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.apollo.utils.ApolloGameInvitation.1;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class ajnk
-  implements bcww
+class ajnk
+  implements Handler.Callback
 {
-  public ajnk(ApolloGameInvitation.1 param1) {}
+  ajnk(ajnj paramajnj) {}
   
-  public void a(BaseResp paramBaseResp)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramBaseResp == null) {}
-    do
+    switch (paramMessage.what)
     {
-      do
-      {
-        return;
-      } while ((ajnj.a(this.a.this$0) == null) || (!ajnj.a(this.a.this$0).equals(paramBaseResp.transaction)));
-      QLog.i("ApolloGameInvitation", 1, "[onWXShareResp], resp.errCode:" + paramBaseResp.errCode);
-      if (paramBaseResp.errCode != 0) {
-        break;
-      }
-    } while ((ajnj.a(this.a.this$0) == null) || (ajnj.a(this.a.this$0) == null) || ((AppInterface)ajnj.a(this.a.this$0).get() == null));
-    VipUtils.a(null, "cmshow", "Apollo", "wechat_invite_sent", 0, 0, new String[] { Integer.toString(ajnj.a(this.a.this$0).a) });
-    if (paramBaseResp.errCode == 0) {
-      ajnj.a(this.a.this$0, 0, 2);
     }
     for (;;)
     {
-      WXShareHelper.a().b(this);
-      return;
-      if (paramBaseResp.errCode == -2) {
-        ajnj.a(this.a.this$0, 2, 2);
-      } else {
-        ajnj.a(this.a.this$0, 1, 2);
+      return false;
+      this.a.a(null);
+      continue;
+      if (ajnj.a(this.a) != null) {
+        ajnj.a(this.a).j();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajnk
  * JD-Core Version:    0.7.0.1
  */

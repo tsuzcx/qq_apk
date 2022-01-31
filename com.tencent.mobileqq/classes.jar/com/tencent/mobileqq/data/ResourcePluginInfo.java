@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aukp;
-import aulz;
-import aumc;
+import awbv;
+import awbw;
+import awdg;
+import awdj;
 import java.util.List;
 
 public class ResourcePluginInfo
-  extends auko
+  extends awbv
 {
-  @aulz
+  @awdg
   public static final int MASK_FULL_CONFIG = 1;
   public static final int PLUGIN_TYPE_ABOUT = 32;
   public static final int PLUGIN_TYPE_LEBA = 64;
@@ -30,7 +30,7 @@ public class ResourcePluginInfo
   public String strGotoUrl;
   public String strNewPluginDesc;
   public String strNewPluginURL;
-  @aumc
+  @awdj
   public String strPkgName;
   public String strResDesc;
   public String strResName;
@@ -39,40 +39,40 @@ public class ResourcePluginInfo
   public long uiCurVer;
   public long uiResId;
   
-  public static ResourcePluginInfo find(aukp paramaukp, String paramString)
+  public static ResourcePluginInfo find(awbw paramawbw, String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (paramaukp != null)
+    if (paramawbw != null)
     {
       localObject1 = localObject2;
       if (paramString != null) {
-        localObject1 = (ResourcePluginInfo)paramaukp.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramString });
+        localObject1 = (ResourcePluginInfo)paramawbw.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramString });
       }
     }
     return localObject1;
   }
   
-  public static List<ResourcePluginInfo> getAll(aukp paramaukp, int paramInt, boolean paramBoolean)
+  public static List<ResourcePluginInfo> getAll(awbw paramawbw, int paramInt, boolean paramBoolean)
   {
     List localList = null;
-    if (paramaukp != null)
+    if (paramawbw != null)
     {
       if (paramBoolean) {
-        localList = paramaukp.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, "cLocalState desc", null);
+        localList = paramawbw.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, "cLocalState desc", null);
       }
     }
     else {
       return localList;
     }
-    return paramaukp.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
+    return paramawbw.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
   }
   
-  public static void persistOrReplace(aukp paramaukp, ResourcePluginInfo paramResourcePluginInfo)
+  public static void persistOrReplace(awbw paramawbw, ResourcePluginInfo paramResourcePluginInfo)
   {
-    if ((paramaukp != null) && (paramResourcePluginInfo != null) && (paramResourcePluginInfo.strPkgName != null) && (!paramResourcePluginInfo.strPkgName.equals("")))
+    if ((paramawbw != null) && (paramResourcePluginInfo != null) && (paramResourcePluginInfo.strPkgName != null) && (!paramResourcePluginInfo.strPkgName.equals("")))
     {
-      ResourcePluginInfo localResourcePluginInfo = (ResourcePluginInfo)paramaukp.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramResourcePluginInfo.strPkgName });
+      ResourcePluginInfo localResourcePluginInfo = (ResourcePluginInfo)paramawbw.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramResourcePluginInfo.strPkgName });
       if (localResourcePluginInfo != null)
       {
         localResourcePluginInfo.strResName = paramResourcePluginInfo.strResName;
@@ -96,23 +96,23 @@ public class ResourcePluginInfo
         localResourcePluginInfo.pluginSetTips = paramResourcePluginInfo.pluginSetTips;
         localResourcePluginInfo.lebaSearchResultType = paramResourcePluginInfo.lebaSearchResultType;
         localResourcePluginInfo.flags = paramResourcePluginInfo.flags;
-        paramaukp.a(localResourcePluginInfo);
+        paramawbw.a(localResourcePluginInfo);
       }
     }
     else
     {
       return;
     }
-    paramaukp.a(paramResourcePluginInfo);
+    paramawbw.a(paramResourcePluginInfo);
   }
   
-  public static void remove(aukp paramaukp, String paramString)
+  public static void remove(awbw paramawbw, String paramString)
   {
-    if ((paramaukp != null) && (paramString != null))
+    if ((paramawbw != null) && (paramString != null))
     {
-      paramString = find(paramaukp, paramString);
+      paramString = find(paramawbw, paramString);
       if (paramString != null) {
-        paramaukp.b(paramString);
+        paramawbw.b(paramString);
       }
     }
   }
@@ -139,7 +139,7 @@ public class ResourcePluginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ResourcePluginInfo
  * JD-Core Version:    0.7.0.1
  */

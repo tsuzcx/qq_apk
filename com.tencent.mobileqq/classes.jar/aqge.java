@@ -1,58 +1,39 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 import com.tencent.qphone.base.util.QLog;
 
-class aqge
-  extends akil
+public class aqge
+  implements Animation.AnimationListener
 {
-  aqge(aqgd paramaqgd) {}
+  public aqge(Face2FaceDetailBaseView paramFace2FaceDetailBaseView) {}
   
-  public void a(boolean paramBoolean, bauh parambauh)
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.setVisibility(4);
+    this.a.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.b();
+    this.a.c.setBackgroundDrawable(null);
+    this.a.jdField_a_of_type_Aqgf.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationEnd " + hashCode());
+    }
+    Face2FaceDetailBaseView.a(this.a, true);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onTroopShareLink start");
-    }
-    this.a.x();
-    if (aqgd.a(this.a) != -1)
-    {
-      if ((!paramBoolean) || (parambauh.jdField_a_of_type_Int != 0)) {
-        break label189;
-      }
-      if (parambauh.jdField_a_of_type_Boolean)
-      {
-        aqgd.a(this.a, parambauh.b);
-        if (aqgd.a(this.a) == 0) {}
-      }
-      else
-      {
-        do
-        {
-          return;
-          aqgd.b(this.a, parambauh.b);
-        } while (aqgd.a(this.a) != 1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + aqgd.a(this.a) + " mTroopNotNeedVefifyLink=" + aqgd.b(this.a));
-      }
-      if ((parambauh.jdField_a_of_type_JavaLangString != null) && (parambauh.jdField_a_of_type_JavaLangString.equals(aqgd.c(this.a)))) {
-        aqgd.a(this.a);
-      }
-    }
-    for (;;)
-    {
-      aqgd.a(this.a, -1);
-      return;
-      label189:
-      if (((parambauh.jdField_a_of_type_Boolean) && (aqgd.a(this.a) != 0)) || ((!parambauh.jdField_a_of_type_Boolean) && (aqgd.a(this.a) != 1))) {
-        break;
-      }
-      bcql.a(this.a.a, 1, this.a.a.getString(2131693033), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+      QLog.d("Face2FaceDetailBaseView", 2, "animHide, onAnimationStart " + hashCode());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqge
  * JD-Core Version:    0.7.0.1
  */

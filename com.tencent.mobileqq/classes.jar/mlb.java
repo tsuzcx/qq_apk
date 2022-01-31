@@ -1,122 +1,131 @@
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoLayerUI;
-import java.util.List;
+import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
+import android.widget.ImageView;
+import com.tencent.av.widget.shimmer.ShimmerTextView;
 
 public class mlb
-  extends ExploreByTouchHelper
+  implements View.OnTouchListener
 {
-  public mlb(VideoLayerUI paramVideoLayerUI, View paramView)
+  final int jdField_a_of_type_Int;
+  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
+  ImageView jdField_a_of_type_AndroidWidgetImageView = null;
+  ShimmerTextView jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = null;
+  public mla a;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = -1;
+  Rect jdField_b_of_type_AndroidGraphicsRect = new Rect();
+  ImageView jdField_b_of_type_AndroidWidgetImageView = null;
+  int jdField_c_of_type_Int = 0;
+  Rect jdField_c_of_type_AndroidGraphicsRect = new Rect();
+  ImageView jdField_c_of_type_AndroidWidgetImageView = null;
+  
+  public mlb(Context paramContext, ImageView paramImageView1, ImageView paramImageView2, ShimmerTextView paramShimmerTextView, ImageView paramImageView3)
   {
-    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView1;
+    this.jdField_b_of_type_AndroidWidgetImageView = paramImageView2;
+    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView = paramShimmerTextView;
+    this.jdField_c_of_type_AndroidWidgetImageView = paramImageView3;
+    this.jdField_c_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131297646);
+    this.jdField_a_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
   }
   
-  private Rect a(int paramInt)
+  private void a(int paramInt)
   {
-    Rect localRect = new Rect(0, 0, 1, 1);
-    if ((this.a.jdField_a_of_type_ArrayOfMdz != null) && (this.a.jdField_a_of_type_ArrayOfMdz[paramInt].a() == 0)) {
-      localRect.set(this.a.jdField_a_of_type_ArrayOfMdz[paramInt].b());
-    }
-    return localRect;
-  }
-  
-  private String a(int paramInt)
-  {
-    if ((this.a.jdField_a_of_type_ArrayOfMdz != null) && (paramInt >= 0) && (paramInt < this.a.jdField_a_of_type_ArrayOfMdz.length))
+    this.jdField_a_of_type_AndroidGraphicsRect.left = (this.jdField_b_of_type_AndroidGraphicsRect.left + paramInt - this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsRect.right = (this.jdField_b_of_type_AndroidGraphicsRect.right + paramInt - this.jdField_b_of_type_Int);
+    if (this.jdField_a_of_type_AndroidGraphicsRect.right >= this.jdField_c_of_type_Int)
     {
-      int i = -1;
-      int j = this.a.jdField_a_of_type_ComTencentAvVideoController.a().i;
-      if (j == 3000) {
-        i = 1004;
-      }
-      Resources localResources;
-      String str2;
-      for (;;)
-      {
-        localResources = this.a.jdField_a_of_type_AndroidContentContext.getApplicationContext().getResources();
-        String str1 = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-        str2 = this.a.jdField_a_of_type_ArrayOfMdz[paramInt].b();
-        if (str2 == null) {
-          break label214;
-        }
-        if (!str2.equals(str1)) {
-          break;
-        }
-        return localResources.getString(2131694516) + localResources.getString(2131695871);
-        if (j == 1) {
-          i = 1000;
-        } else if (j == 0) {
-          i = 0;
-        }
-      }
-      return this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(i, str2, String.valueOf(this.a.jdField_a_of_type_ComTencentAvVideoController.a().g)) + localResources.getString(2131695871);
+      this.jdField_a_of_type_AndroidGraphicsRect.right = this.jdField_c_of_type_Int;
+      this.jdField_a_of_type_AndroidGraphicsRect.left = (this.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_AndroidWidgetImageView.getWidth());
     }
-    label214:
-    return "";
-  }
-  
-  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
-  {
-    if (this.a.jdField_a_of_type_ArrayOfMdz != null)
+    if (this.jdField_a_of_type_AndroidGraphicsRect.left <= 0)
     {
-      int i = this.a.jdField_a_of_type_ArrayOfMdz.length - 1;
-      while (i >= 0)
-      {
-        if ((this.a.jdField_a_of_type_ArrayOfMdz[i].a() == 0) && (this.a.jdField_a_of_type_ArrayOfMdz[i].b().contains((int)paramFloat1, (int)paramFloat2))) {
-          return i;
-        }
-        i -= 1;
-      }
+      this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
+      this.jdField_a_of_type_AndroidGraphicsRect.right = (this.jdField_a_of_type_AndroidGraphicsRect.left + this.jdField_a_of_type_AndroidWidgetImageView.getWidth());
     }
-    return 0;
+    this.jdField_a_of_type_AndroidWidgetImageView.layout(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_b_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_AndroidGraphicsRect.bottom);
+    this.jdField_c_of_type_AndroidWidgetImageView.layout(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_c_of_type_AndroidGraphicsRect.bottom);
   }
   
-  public void getVisibleVirtualViews(List<Integer> paramList)
+  void a()
   {
-    if (this.a.jdField_a_of_type_ArrayOfMdz != null)
+    this.jdField_b_of_type_AndroidGraphicsRect.top = this.jdField_a_of_type_AndroidWidgetImageView.getTop();
+    this.jdField_b_of_type_AndroidGraphicsRect.bottom = this.jdField_a_of_type_AndroidWidgetImageView.getBottom();
+    this.jdField_b_of_type_AndroidGraphicsRect.left = this.jdField_a_of_type_AndroidWidgetImageView.getLeft();
+    this.jdField_b_of_type_AndroidGraphicsRect.right = this.jdField_a_of_type_AndroidWidgetImageView.getRight();
+    this.jdField_a_of_type_AndroidGraphicsRect.left = this.jdField_a_of_type_AndroidWidgetImageView.getLeft();
+    this.jdField_a_of_type_AndroidGraphicsRect.right = this.jdField_a_of_type_AndroidWidgetImageView.getRight();
+    this.jdField_c_of_type_AndroidGraphicsRect.top = this.jdField_c_of_type_AndroidWidgetImageView.getTop();
+    this.jdField_c_of_type_AndroidGraphicsRect.bottom = this.jdField_c_of_type_AndroidWidgetImageView.getBottom();
+    this.jdField_c_of_type_AndroidGraphicsRect.left = this.jdField_c_of_type_AndroidWidgetImageView.getLeft();
+    this.jdField_c_of_type_AndroidGraphicsRect.right = this.jdField_c_of_type_AndroidWidgetImageView.getRight();
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(mla parammla)
+  {
+    this.jdField_a_of_type_Mla = parammla;
+  }
+  
+  public void b()
+  {
+    a(this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(0);
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    int i = (int)paramMotionEvent.getRawX();
+    switch (paramMotionEvent.getAction())
     {
-      int j = this.a.jdField_a_of_type_ArrayOfMdz.length;
-      int i = 0;
-      while (i < j)
+    }
+    do
+    {
+      do
       {
-        paramList.add(Integer.valueOf(i));
-        i += 1;
-      }
-    }
-  }
-  
-  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
-  {
-    return false;
-  }
-  
-  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
-  {
-    paramAccessibilityEvent.setContentDescription(a(paramInt));
-  }
-  
-  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    paramAccessibilityNodeInfoCompat.addAction(16);
-    paramAccessibilityNodeInfoCompat.setContentDescription(a(paramInt));
-    Rect localRect = a(paramInt);
-    if (localRect.isEmpty()) {
-      localRect.set(0, 0, 1, 1);
-    }
-    paramAccessibilityNodeInfoCompat.setBoundsInParent(localRect);
+        do
+        {
+          do
+          {
+            return true;
+            this.jdField_b_of_type_Int = i;
+            a();
+            return true;
+            if (this.jdField_a_of_type_Boolean)
+            {
+              a(i);
+              return true;
+            }
+          } while (Math.abs(i - this.jdField_b_of_type_Int) <= this.jdField_a_of_type_Int);
+          this.jdField_a_of_type_Boolean = true;
+          this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(4);
+          this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+          return true;
+          if (this.jdField_a_of_type_AndroidGraphicsRect.right != this.jdField_c_of_type_Int) {
+            break;
+          }
+        } while (this.jdField_a_of_type_Mla == null);
+        this.jdField_a_of_type_Mla.a(true);
+        return true;
+      } while (this.jdField_a_of_type_AndroidGraphicsRect.right >= this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_AndroidWidgetImageView.layout(this.jdField_b_of_type_AndroidGraphicsRect.left, this.jdField_b_of_type_AndroidGraphicsRect.top, this.jdField_b_of_type_AndroidGraphicsRect.right, this.jdField_b_of_type_AndroidGraphicsRect.bottom);
+      this.jdField_c_of_type_AndroidWidgetImageView.layout(this.jdField_c_of_type_AndroidGraphicsRect.left, this.jdField_c_of_type_AndroidGraphicsRect.top, this.jdField_c_of_type_AndroidGraphicsRect.right, this.jdField_c_of_type_AndroidGraphicsRect.bottom);
+      this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    } while (this.jdField_a_of_type_Mla == null);
+    this.jdField_a_of_type_Mla.a(false);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mlb
  * JD-Core Version:    0.7.0.1
  */

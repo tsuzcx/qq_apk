@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import bbef;
+import bdda;
 import com.tencent.image.URLDrawable;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -33,29 +33,29 @@ class QidianProfileCardActivity$SavePhotoRunnable
         if (str1 == null) {
           continue;
         }
-        bbef.a(localQidianProfileCardActivity, str1);
-        str1 = localQidianProfileCardActivity.getString(2131695191) + " " + str1;
+        bdda.a(localQidianProfileCardActivity, str1);
+        str1 = localQidianProfileCardActivity.getString(2131695349) + " " + str1;
       }
       catch (IOException localIOException)
       {
         String str1;
-        String str2 = localQidianProfileCardActivity.getString(2131695190);
+        String str2 = localQidianProfileCardActivity.getString(2131695348);
         continue;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
-        String str3 = localQidianProfileCardActivity.getString(2131695190);
+        String str3 = localQidianProfileCardActivity.getString(2131695348);
         continue;
       }
       localQidianProfileCardActivity.runOnUiThread(new QidianProfileCardActivity.SavePhotoRunnable.1(this, localQidianProfileCardActivity, str1));
       return;
-      str1 = localQidianProfileCardActivity.getString(2131695190);
+      str1 = localQidianProfileCardActivity.getString(2131695348);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.SavePhotoRunnable
  * JD-Core Version:    0.7.0.1
  */

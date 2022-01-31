@@ -1,55 +1,44 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.PanelStrategy.1;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
 
-class aemr
-  implements View.OnClickListener
+public class aemr
+  implements aivw
 {
-  aemr(aemh paramaemh) {}
+  public aemr(CustomizeStrategyFactory.PanelStrategy.1 param1) {}
   
-  public void onClick(View paramView)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    boolean bool = true;
-    paramView = paramView.getTag();
-    if ((paramView == null) || (!(paramView instanceof Integer))) {
-      return;
-    }
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    switch (((Integer)paramView).intValue())
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
     {
-    default: 
-      return;
-    case 1: 
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true);
-      return;
-    case 2: 
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
-      return;
-    }
-    if (this.a.jdField_a_of_type_Bduf.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
-    {
-      paramView = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131690572);
-      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("param_return_addr") != null) {}
-      for (;;)
-      {
-        ChatActivityUtils.a(paramView, (SessionInfo)localObject, str, bool);
-        return;
-        bool = false;
+      Bitmap localBitmap = SafeBitmapFactory.decodeFile(paramPathResult, bdda.a(paramPathResult, (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D)));
+      if (localBitmap != null) {
+        this.a.a.icon = localBitmap;
+      }
+      this.a.a.resPath = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "PanelStrategy info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
       }
     }
-    this.a.br();
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
+    }
+    CustomizeStrategyFactory.a().a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aemr
  * JD-Core Version:    0.7.0.1
  */

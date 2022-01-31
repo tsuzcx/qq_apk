@@ -3,12 +3,12 @@ package cooperation.qzone.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhfl;
+import bjgv;
 
 public class PictureUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator<PictureUrl> CREATOR = new bhfl();
+  public static final Parcelable.Creator<PictureUrl> CREATOR = new bjgv();
   public float a;
   public int a;
   public String a;
@@ -49,7 +49,7 @@ public class PictureUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.PictureUrl
  * JD-Core Version:    0.7.0.1
  */

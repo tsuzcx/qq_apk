@@ -6,7 +6,7 @@ import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -34,7 +34,7 @@ public class MiniAppUpdateUserSettingServlet
           continue;
         }
         PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bbma.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bdku.b(paramFromServiceMsg.getWupBuffer()));
         new INTERFACE.StUpdateUserSettingRsp().mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
         if (QLog.isColorLevel()) {
           QLog.d("MiniAppUpdateUserSettingServlet", 2, "onReceive. inform MiniAppUpdateUserSettingServlet resultcode success.");
@@ -83,7 +83,7 @@ public class MiniAppUpdateUserSettingServlet
             localObject1 = new byte[4];
           }
           paramPacket.setSSOCommand("LightAppSvc.mini_user_info.UpdateUserSetting");
-          paramPacket.putSendData(bbma.a((byte[])localObject1));
+          paramPacket.putSendData(bdku.a((byte[])localObject1));
           paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
           super.onSend(paramIntent, paramPacket);
           return;
@@ -109,7 +109,7 @@ public class MiniAppUpdateUserSettingServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppUpdateUserSettingServlet
  * JD-Core Version:    0.7.0.1
  */

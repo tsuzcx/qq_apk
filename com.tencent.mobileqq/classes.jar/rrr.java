@@ -1,25 +1,38 @@
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class rrr
-  implements TypeEvaluator<Rect>
+  implements rrp
 {
-  public rrr(ReadInJoyDynamicGridView paramReadInJoyDynamicGridView) {}
+  public rrr(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
   
-  public int a(int paramInt1, int paramInt2, float paramFloat)
+  public void a()
   {
-    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
-  }
-  
-  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
-  {
-    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
+    if (ork.a(ork.a()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.c) });
+      }
+      if ((this.a.c == 0) && ((!szp.a(this.a.d)) || (!this.a.b)))
+      {
+        this.a.a(4);
+        QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch ON, loadingMore()");
+      }
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.c) });
+      }
+    } while ((szp.a(this.a.d)) && ((this.a.c != 0) || (this.a.b)));
+    this.a.a(4);
+    QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch OFF, loadingMore()");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rrr
  * JD-Core Version:    0.7.0.1
  */

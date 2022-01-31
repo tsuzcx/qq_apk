@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 
 public class AppShareID
-  extends auko
+  extends awbv
 {
   public String appstorelink;
   public String bundleid;
@@ -14,14 +14,14 @@ public class AppShareID
   public short sPriority;
   public short sResType;
   public String sourceUrl;
-  @aumc
+  @awdj
   public String strPkgName;
   public String strResDesc;
   public String strResName;
   public String strResURL_big;
   public String strResURL_small;
   public long uiNewVer;
-  @aumc
+  @awdj
   public long uiResID;
   public long updateTime;
   
@@ -34,7 +34,7 @@ public class AppShareID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.AppShareID
  * JD-Core Version:    0.7.0.1
  */

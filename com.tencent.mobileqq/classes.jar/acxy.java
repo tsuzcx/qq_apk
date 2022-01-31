@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-final class acxy
-  implements DialogInterface.OnClickListener
+public abstract interface acxy
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract void b(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acxy
  * JD-Core Version:    0.7.0.1
  */

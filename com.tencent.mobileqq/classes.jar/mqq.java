@@ -1,40 +1,24 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.View;
-import android.view.Window;
-import android.widget.FrameLayout;
-
 public class mqq
-  extends Dialog
 {
-  public mqq(Context paramContext, boolean paramBoolean) {}
+  public float a;
+  public int a;
+  public int b;
   
-  void a()
+  public mqq(int paramInt1, int paramInt2, int paramInt3)
   {
-    super.getWindow().setGravity(17);
-    super.setContentView(2131559593);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Float = paramInt3;
   }
   
-  public void a(View paramView, boolean paramBoolean)
+  public String toString()
   {
-    if (paramBoolean) {
-      b();
-    }
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131372531);
-    localFrameLayout.setOnClickListener(new mqr(this));
-    if (paramView != null) {
-      localFrameLayout.addView(paramView);
-    }
-  }
-  
-  void b()
-  {
-    findViewById(2131372530).setOnClickListener(new mqs(this));
+    return this.jdField_a_of_type_Int + "_" + this.b + "_" + this.jdField_a_of_type_Float;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mqq
  * JD-Core Version:    0.7.0.1
  */

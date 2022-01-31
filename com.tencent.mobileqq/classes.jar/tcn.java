@@ -1,125 +1,160 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.tencent.biz.pubaccount.weishi_new.cache.WSRedDotPreloadManager.1;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushPreloadModel;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.mobileqq.data.MessageForStructing;
+import cooperation.qzone.LocalMultiProcConfig;
 
 public class tcn
-  implements tch
 {
-  protected HashMap<String, WeakReference<QQStoryBaseActivity>> a;
-  public Map<String, WeakReference<QQStoryBaseActivity>> a;
-  public boolean a;
+  private long jdField_a_of_type_Long = LocalMultiProcConfig.getLong("weishi_usergrowth", "key_red_dot_msg_uin", 0L);
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public tcn()
+  private long a(WSRedDotPushMsg paramWSRedDotPushMsg)
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new LinkedHashMap();
+    paramWSRedDotPushMsg = a(paramWSRedDotPushMsg);
+    if (paramWSRedDotPushMsg != null) {
+      return paramWSRedDotPushMsg.jdField_a_of_type_Long;
+    }
+    return 7200000L;
   }
   
-  public ArrayList<Integer> a(QQStoryBaseActivity paramQQStoryBaseActivity)
+  private WSPushPreloadModel a(WSRedDotPushMsg paramWSRedDotPushMsg)
   {
-    ArrayList localArrayList1 = new ArrayList(this.jdField_a_of_type_JavaUtilHashMap.values());
-    ArrayList localArrayList2 = new ArrayList();
-    int j = localArrayList1.size();
-    int i = 0;
-    while (i < j)
-    {
-      QQStoryBaseActivity localQQStoryBaseActivity = (QQStoryBaseActivity)((WeakReference)localArrayList1.get(i)).get();
-      if ((localQQStoryBaseActivity != null) && (!localQQStoryBaseActivity.isFinishing()) && (localQQStoryBaseActivity.getActivityName().equals(paramQQStoryBaseActivity.getActivityName())))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "QQStoryActivityManager getActivityFirstIndex: " + i + ", class = " + paramQQStoryBaseActivity.getActivityName());
-        }
-        localArrayList2.add(Integer.valueOf(i));
-      }
-      i += 1;
+    if (paramWSRedDotPushMsg == null) {}
+    while (!(paramWSRedDotPushMsg.mStrategyInfo instanceof WSPushStrategyInfo)) {
+      return null;
     }
-    return localArrayList2;
+    return ((WSPushStrategyInfo)paramWSRedDotPushMsg.mStrategyInfo).mWSPushPreloadModel;
   }
   
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public static tcn a()
   {
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilHashMap.values());
-    paramInt2 -= 1;
-    while (paramInt2 >= paramInt1)
-    {
-      Object localObject = (QQStoryBaseActivity)((WeakReference)localArrayList.get(paramInt2)).get();
-      if ((localObject != null) && (!((QQStoryBaseActivity)localObject).isFinishing()))
-      {
-        ((QQStoryBaseActivity)localObject).finish();
-        localObject = ((QQStoryBaseActivity)localObject).getActivityName() + "_" + localObject.hashCode();
-        this.jdField_a_of_type_JavaUtilHashMap.remove(localObject);
-        if (this.jdField_a_of_type_JavaUtilMap != null) {
-          this.jdField_a_of_type_JavaUtilMap.remove(localObject);
-        }
-      }
-      paramInt2 -= 1;
-    }
+    return tcp.a();
   }
   
-  public void a(QQStoryBaseActivity paramQQStoryBaseActivity)
+  private void a(long paramLong)
   {
-    String str = paramQQStoryBaseActivity.getActivityName() + "_" + paramQQStoryBaseActivity.hashCode();
-    paramQQStoryBaseActivity = new WeakReference(paramQQStoryBaseActivity);
-    this.jdField_a_of_type_JavaUtilHashMap.put(str, paramQQStoryBaseActivity);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilMap != null)) {
-      this.jdField_a_of_type_JavaUtilMap.put(str, paramQQStoryBaseActivity);
-    }
-  }
-  
-  public boolean a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-    while (localIterator.hasNext())
-    {
-      QQStoryBaseActivity localQQStoryBaseActivity = (QQStoryBaseActivity)((WeakReference)localIterator.next()).get();
-      if ((localQQStoryBaseActivity != null) && (!localQQStoryBaseActivity.isFinishing())) {
-        localQQStoryBaseActivity.finish();
-      }
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
+    this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_Boolean = false;
-    return true;
+    LocalMultiProcConfig.putLong("weishi_usergrowth", "key_red_dot_msg_uin", this.jdField_a_of_type_Long);
+  }
+  
+  private void a(WSRedDotPushMsg paramWSRedDotPushMsg, long paramLong)
+  {
+    if (paramWSRedDotPushMsg == null)
+    {
+      tlo.d("WSRedDotPreloadManager", "sendRequest wsPushMsgData: null");
+      return;
+    }
+    tlo.d("WSRedDotPreloadManager", "=====realPreloadRedData redDotUinSeq=" + paramLong + ", wsPushMsgData.mMsgData=" + paramWSRedDotPushMsg.mMsgData);
+    tkn localtkn = new tkn(null, (byte)0, (byte)1, null, 8, null, null, null, paramWSRedDotPushMsg.mMsgData);
+    localtkn.b = String.valueOf(paramLong);
+    paramWSRedDotPushMsg = new the(localtkn, null, new tco(this, paramWSRedDotPushMsg), 1001);
+    this.jdField_a_of_type_Boolean = true;
+    tgx.a().a(paramWSRedDotPushMsg);
+  }
+  
+  private void a(WSRedDotPushMsg paramWSRedDotPushMsg, long paramLong, int paramInt)
+  {
+    tlo.b("WSRedDotPreloadManager", "checkSendRequest checkCount: " + paramInt);
+    if (paramInt == 0) {
+      return;
+    }
+    boolean bool = tlv.a();
+    tlo.b("WSRedDotPreloadManager", "checkSendRequest inRealActionLoginB: " + bool);
+    if (!bool)
+    {
+      a(paramWSRedDotPushMsg, paramLong);
+      tlo.b("WSRedDotPreloadManager", "checkSendRequest sendRequest!");
+      return;
+    }
+    this.jdField_a_of_type_JavaLangRunnable = new WSRedDotPreloadManager.1(this, paramWSRedDotPushMsg, paramLong, paramInt);
+    tgx.a().a(this.jdField_a_of_type_JavaLangRunnable, 30000L);
+    tlo.b("WSRedDotPreloadManager", "checkSendRequest postDelayed start!");
+  }
+  
+  private void a(MessageForStructing paramMessageForStructing, WSRedDotPushMsg paramWSRedDotPushMsg)
+  {
+    WSPushPreloadModel localWSPushPreloadModel = a(paramWSRedDotPushMsg);
+    if ((localWSPushPreloadModel == null) || (!localWSPushPreloadModel.jdField_a_of_type_Boolean))
+    {
+      tlo.d("WSRedDotPreloadManager", "preloadData wsPushPreloadModel:" + localWSPushPreloadModel + ", mHadCleanPreCache:" + this.b);
+      if (!this.b) {
+        tcq.a().a();
+      }
+      this.b = true;
+    }
+    do
+    {
+      return;
+      tlo.b("WSRedDotPreloadManager", "preloadData mCurrentUniSeq=structMsg.uniSeq: " + paramMessageForStructing.uniseq);
+      if (this.jdField_a_of_type_Long != paramMessageForStructing.uniseq) {
+        break;
+      }
+    } while (this.jdField_a_of_type_Boolean);
+    if (tcq.a().a())
+    {
+      tlo.d("WSRedDotPreloadManager", "preloadData isRedCacheInValidDuration: true");
+      return;
+    }
+    tlo.d("WSRedDotPreloadManager", "preloadData mIsPreloadOutValidDuration: " + localWSPushPreloadModel.b);
+    if (!localWSPushPreloadModel.b)
+    {
+      tlo.d("WSRedDotPreloadManager", "preloadData mIsPreloadOutValidDuration: false");
+      return;
+      a(paramMessageForStructing.uniseq);
+    }
+    tlo.d("WSRedDotPreloadManager", "preloadData mCurrentUniSeq: " + this.jdField_a_of_type_Long + ", mIsSendingRequest: " + this.jdField_a_of_type_Boolean);
+    b();
+    a(paramWSRedDotPushMsg, this.jdField_a_of_type_Long, 3);
+  }
+  
+  public void a()
+  {
+    for (;;)
+    {
+      try
+      {
+        tlo.b("WSRedDotPreloadManager", "===startPreloadRedData===");
+        Object localObject = tlv.a();
+        if (localObject == null)
+        {
+          tlo.d("WSRedDotPreloadManager", "preloadData weishiMgr: null");
+          return;
+        }
+        localObject = ((oye)localObject).a();
+        if (localObject == null) {
+          continue;
+        }
+        WSRedDotPushMsg localWSRedDotPushMsg = tlv.a((MessageForStructing)localObject);
+        if (localWSRedDotPushMsg == null)
+        {
+          tlo.d("WSRedDotPreloadManager", "preloadData wsPushMsgData: null");
+          continue;
+        }
+        a(localMessageForStructing, localWSRedDotPushMsg);
+      }
+      finally {}
+      tbv.a().a();
+    }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
-    }
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void b(QQStoryBaseActivity paramQQStoryBaseActivity)
-  {
-    paramQQStoryBaseActivity = paramQQStoryBaseActivity.getActivityName() + "_" + paramQQStoryBaseActivity.hashCode();
-    this.jdField_a_of_type_JavaUtilHashMap.remove(paramQQStoryBaseActivity);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilMap != null))
+    if (this.jdField_a_of_type_JavaLangRunnable != null)
     {
-      this.jdField_a_of_type_JavaUtilMap.remove(paramQQStoryBaseActivity);
-      if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
-      {
-        this.jdField_a_of_type_Boolean = false;
-        if (QLog.isColorLevel()) {
-          QLog.i("qqstory.QQStoryActivityManager", 2, "player activity stack is empty, disable!");
-        }
-      }
+      tgx.a().b(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_JavaLangRunnable = null;
+      tlo.b("WSRedDotPreloadManager", "===== cancelPostDelayRunnable ! =====");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tcn
  * JD-Core Version:    0.7.0.1
  */

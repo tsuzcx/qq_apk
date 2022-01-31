@@ -1,72 +1,56 @@
-import java.util.Random;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public final class lmg
+public class lmg
+  extends Handler
 {
-  private static final float jdField_a_of_type_Float;
-  static final int jdField_a_of_type_Int = (int)Math.sqrt(16384.0D);
-  public static Random a;
-  
-  static
+  public lmg(CameraUtils paramCameraUtils, Looper paramLooper)
   {
-    jdField_a_of_type_Float = 1.0F / (jdField_a_of_type_Int - 1);
-    jdField_a_of_type_JavaUtilRandom = new Random();
+    super(paramLooper);
   }
   
-  public static final float a()
+  public void handleMessage(Message paramMessage)
   {
-    return jdField_a_of_type_JavaUtilRandom.nextFloat();
-  }
-  
-  public static final float a(float paramFloat)
-  {
-    return lmh.a[((int)(45.511112F * paramFloat) & 0x3FFF)];
-  }
-  
-  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (paramFloat1 < paramFloat2) {
-      return paramFloat2;
+    boolean bool = true;
+    long l = mwd.a(paramMessage.obj);
+    if (AudioHelper.e()) {
+      QLog.w("CameraUtils", 1, "CameraHandlerThread, seq[" + l + "], event[" + paramMessage.what + "]");
     }
-    if (paramFloat1 > paramFloat3) {
-      return paramFloat3;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      CameraUtils.a(this.a, l);
+      return;
+    case 2: 
+      if (paramMessage.arg1 == 1) {}
+      for (;;)
+      {
+        CameraUtils.a(this.a, l, bool);
+        return;
+        bool = false;
+      }
+    case 3: 
+      i = paramMessage.arg1;
+      int j = paramMessage.arg2;
+      CameraUtils.a(this.a, l, i, j);
+      return;
+    case 4: 
+      CameraUtils.b(this.a, l);
+      return;
     }
-    return paramFloat1;
-  }
-  
-  public static final int a(int paramInt)
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextInt(paramInt + 1);
-  }
-  
-  public static int a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt1 < paramInt2) {
-      return paramInt2;
-    }
-    if (paramInt1 > paramInt3) {
-      return paramInt3;
-    }
-    return paramInt1;
-  }
-  
-  public static final boolean a()
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextBoolean();
-  }
-  
-  public static final float b(float paramFloat)
-  {
-    return lmh.a[((int)((90.0F + paramFloat) * 45.511112F) & 0x3FFF)];
-  }
-  
-  public static final float c(float paramFloat)
-  {
-    return jdField_a_of_type_JavaUtilRandom.nextFloat() * paramFloat;
+    int i = paramMessage.arg1;
+    CameraUtils.a(this.a, l, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmg
  * JD-Core Version:    0.7.0.1
  */

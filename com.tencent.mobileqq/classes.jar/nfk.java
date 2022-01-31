@@ -1,33 +1,27 @@
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.5;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
 
 public class nfk
-  implements TVK_SDKMgr.InstallListener
+  extends Handler
 {
-  public nfk(AccountDetailVideoManager.5 param5) {}
+  public nfk(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    nfg.a = false;
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledSuccessed");
-    }
-    nfg.a = true;
+    paramMessage = (Bundle)paramMessage.obj;
+    this.a.jdField_a_of_type_Ymk.a(17, paramMessage, this.a.jdField_a_of_type_Alkr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nfk
  * JD-Core Version:    0.7.0.1
  */

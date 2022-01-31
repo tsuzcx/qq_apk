@@ -1,240 +1,354 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Build.VERSION;
-import android.view.KeyEvent;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
-import com.tencent.common.galleryactivity.AnimationView;
-import com.tencent.common.galleryactivity.GalleryManager.1;
-import com.tencent.common.galleryactivity.GalleryManager.2;
-import com.tencent.image.QQLiveImage;
+import android.annotation.TargetApi;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.media.MediaMetadataRetriever;
+import android.media.MediaMuxer;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Gallery;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import java.io.File;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
-public abstract class xpw
+@TargetApi(18)
+public class xpw
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public xpd a;
-  public xpf a;
-  protected xpj a;
-  public xpk a;
-  private xqb jdField_a_of_type_Xqb;
-  public boolean a;
-  public boolean b;
-  private boolean c;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
+  private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
+  private String jdField_a_of_type_JavaLangString;
+  private xpy jdField_a_of_type_Xpy = new xpy(null);
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private MediaExtractor jdField_b_of_type_AndroidMediaMediaExtractor;
+  private String jdField_b_of_type_JavaLangString;
   
-  private void d()
+  public xpw(String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Xpj.a().a = this.jdField_a_of_type_Xpk.a();
-    this.jdField_a_of_type_Xpf.m();
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "startImageListScene");
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+  }
+  
+  private int a(MediaExtractor paramMediaExtractor, String paramString)
+  {
+    if (paramMediaExtractor == null) {
+      return -1;
     }
-    this.jdField_a_of_type_Xpf.o();
-    this.jdField_a_of_type_Xpf.a.setSelectionToNothing();
-    QQLiveImage.releaseAll(this.jdField_a_of_type_AndroidAppActivity);
+    int i = 0;
+    while (i < paramMediaExtractor.getTrackCount())
+    {
+      String str = paramMediaExtractor.getTrackFormat(i).getString("mime");
+      if (QLog.isColorLevel()) {
+        QLog.d("HwVideoMerge", 2, "format for track " + i + " is " + str);
+      }
+      if (str.startsWith(paramString))
+      {
+        paramMediaExtractor.selectTrack(i);
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
   }
   
-  public RelativeLayout a()
+  public static final int a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_AndroidAppActivity.addContentView(localRelativeLayout, new ViewGroup.LayoutParams(-1, -1));
-    return localRelativeLayout;
-  }
-  
-  public AnimationView a()
-  {
-    AnimationView localAnimationView = new AnimationView(this.jdField_a_of_type_AndroidAppActivity, null);
-    localAnimationView.setId(2131362548);
-    localAnimationView.setVisibility(4);
-    return localAnimationView;
-  }
-  
-  public xpd a()
-  {
-    return this.jdField_a_of_type_Xpd;
-  }
-  
-  public xpd a(Activity paramActivity, xpj paramxpj)
-  {
-    return new xpt(paramActivity, paramxpj);
-  }
-  
-  public xpf a()
-  {
-    return this.jdField_a_of_type_Xpf;
-  }
-  
-  public abstract xpf a(Activity paramActivity, xpj paramxpj);
-  
-  public abstract xpj a(Activity paramActivity);
-  
-  public xpk a()
-  {
-    return this.jdField_a_of_type_Xpk;
-  }
-  
-  public abstract xpk a(Activity paramActivity, xpj paramxpj);
-  
-  public xqb a()
-  {
-    return this.jdField_a_of_type_Xqb;
-  }
-  
-  public void a()
-  {
-    if (!a()) {}
-    label121:
+    paramString2 = new xpw(paramString1, paramString2, 0L, 0L);
+    int i = paramString2.a(paramString3, paramInt);
+    if ((i == -2) || (i == -4) || (i == -6)) {
+      if (new File(paramString1).renameTo(new File(paramString3))) {
+        paramInt = 0;
+      }
+    }
     do
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (a().a());
-        if (this.jdField_a_of_type_Xqb != this.jdField_a_of_type_Xpf) {
-          break label121;
-        }
-        if (this.jdField_a_of_type_Xpk != null) {
-          break;
-        }
-        this.jdField_a_of_type_Xpk = a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Xpj);
-      } while (this.jdField_a_of_type_Xpk == null);
-      this.jdField_a_of_type_Xpk.a(this);
-      this.jdField_a_of_type_Xpk.a(this.jdField_a_of_type_AndroidViewViewGroup);
-      this.jdField_a_of_type_Xpk.a(this);
-      this.jdField_a_of_type_Xpk.k();
-      this.jdField_a_of_type_Xpf.a().post(new GalleryManager.1(this));
-      this.jdField_a_of_type_Xqb = this.jdField_a_of_type_Xpk;
-      return;
-    } while (this.jdField_a_of_type_Xqb != this.jdField_a_of_type_Xpk);
-    this.jdField_a_of_type_Xpf.a().post(new GalleryManager.2(this));
+      return paramInt;
+      return -10;
+      paramInt = i;
+    } while (i != 0);
+    return paramString2.a();
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
+  public static final int a(String paramString1, String paramString2, String paramString3, int paramInt, long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_Xqb != null) {
-      this.jdField_a_of_type_Xqb.a(paramInt1, paramInt2, paramIntent);
-    }
-  }
-  
-  public void a(Activity paramActivity)
-  {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Xpj = a(paramActivity);
-    this.jdField_a_of_type_Xpd = a(paramActivity, this.jdField_a_of_type_Xpj);
-    if (this.jdField_a_of_type_Xpf == null)
-    {
-      this.jdField_a_of_type_Xpf = a(paramActivity, this.jdField_a_of_type_Xpj);
-      this.jdField_a_of_type_Xpf.a(this);
-    }
-    if (a()) {
-      this.jdField_a_of_type_AndroidViewViewGroup = a();
-    }
-    this.jdField_a_of_type_Xpf.a(this.jdField_a_of_type_AndroidViewViewGroup);
-    if (this.jdField_a_of_type_AndroidViewViewGroup == null) {
-      this.jdField_a_of_type_AndroidViewViewGroup = this.jdField_a_of_type_Xpf.a();
-    }
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(a());
-    }
-    this.jdField_a_of_type_Xqb = this.jdField_a_of_type_Xpf;
-    this.b = paramActivity.getIntent().getBooleanExtra("extra.IS_FROM_NEW_TROOP_CHAT_HISTORY", false);
-    if ((ImmersiveUtils.isSupporImmersive() == 1) && (this.jdField_a_of_type_AndroidViewViewGroup != null) && (!this.b) && (Build.VERSION.SDK_INT >= 16)) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(4);
-    }
-  }
-  
-  public void a(Configuration paramConfiguration)
-  {
-    if (this.jdField_a_of_type_Xqb != null) {
-      this.jdField_a_of_type_Xqb.a(paramConfiguration);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Xpf.k();
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "startGalleryScene jumpFromImageList:" + paramBoolean);
-    }
-    xpv localxpv = this.jdField_a_of_type_Xpj.a();
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_Xpf.n();
-      this.jdField_a_of_type_Xpk.a();
-      localxpv.a = this.jdField_a_of_type_Xpk.a();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Xpf.b(paramBoolean);
-      return;
-      this.jdField_a_of_type_Xpf.i();
-    }
-  }
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (this.jdField_a_of_type_Xqb != null) {
-      return this.jdField_a_of_type_Xqb.a(paramInt, paramKeyEvent);
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Xqb.p();
-  }
-  
-  public void b(Activity paramActivity)
-  {
-    if ((!this.c) && (this.jdField_a_of_type_Xqb == this.jdField_a_of_type_Xpf)) {
-      a(false);
-    }
-    this.c = true;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Xqb != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GalleryManager", 2, "onBackEvent, isAnimating: " + this.jdField_a_of_type_Xpd.a());
+    paramString2 = new xpw(paramString1, paramString2, paramLong1, paramLong2);
+    int i = paramString2.a(paramString3, paramInt);
+    if ((i == -2) || (i == -4) || (i == -6)) {
+      if (new File(paramString1).renameTo(new File(paramString3))) {
+        paramInt = 0;
       }
-      if ((!a().a()) && (!this.jdField_a_of_type_Xqb.e())) {}
+    }
+    do
+    {
+      return paramInt;
+      return -10;
+      paramInt = i;
+    } while (i != 0);
+    paramString2.a();
+    return i;
+  }
+  
+  private MediaExtractor a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      MediaExtractor localMediaExtractor = new MediaExtractor();
+      try
+      {
+        localMediaExtractor.setDataSource(paramString);
+        return localMediaExtractor;
+      }
+      catch (IOException localIOException)
+      {
+        a("createExtractor path:" + paramString, localIOException);
+        localMediaExtractor.release();
+        return null;
+      }
+    }
+    return null;
+  }
+  
+  private void a()
+  {
+    boolean bool2 = false;
+    int i = 0;
+    while ((!bool2) || (i == 0))
+    {
+      boolean bool1 = bool2;
+      if (!bool2)
+      {
+        bool2 = a();
+        bool1 = bool2;
+        if (!bool2)
+        {
+          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Xpy.jdField_a_of_type_Int, this.jdField_a_of_type_Xpy.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_Xpy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+          bool1 = bool2;
+        }
+      }
+      bool2 = bool1;
+      if (i == 0)
+      {
+        boolean bool3 = b();
+        bool2 = bool1;
+        i = bool3;
+        if (!bool3)
+        {
+          this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Xpy.jdField_b_of_type_Int, this.jdField_a_of_type_Xpy.jdField_a_of_type_JavaNioByteBuffer, this.jdField_a_of_type_Xpy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+          bool2 = bool1;
+          i = bool3;
+        }
+      }
+    }
+  }
+  
+  private static void a(String paramString, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel())
+    {
+      if (paramThrowable != null) {
+        QLog.d("HwVideoMerge", 2, paramString, paramThrowable);
+      }
+    }
+    else {
+      return;
+    }
+    QLog.d("HwVideoMerge", 2, paramString);
+  }
+  
+  private boolean a()
+  {
+    this.jdField_a_of_type_Xpy.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    if (this.jdField_a_of_type_AndroidMediaMediaExtractor == null) {}
+    int i;
+    do
+    {
+      return true;
+      i = this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Xpy.jdField_a_of_type_JavaNioByteBuffer, 0);
+    } while (i <= 0);
+    this.jdField_a_of_type_Xpy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleTime();
+    this.jdField_a_of_type_Xpy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = i;
+    this.jdField_a_of_type_Xpy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset = 0;
+    this.jdField_a_of_type_Xpy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags = this.jdField_a_of_type_AndroidMediaMediaExtractor.getSampleFlags();
+    this.jdField_a_of_type_AndroidMediaMediaExtractor.advance();
+    return false;
+  }
+  
+  private int b()
+  {
+    int i = 0;
+    this.jdField_a_of_type_Xpy.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    if (this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Xpy.jdField_a_of_type_JavaNioByteBuffer, 0) <= 0)
+    {
+      b();
+      i = -5;
+    }
+    do
+    {
+      return i;
+      this.jdField_a_of_type_Xpy.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    } while (this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Xpy.jdField_a_of_type_JavaNioByteBuffer, 0) > 0);
+    b();
+    return -6;
+  }
+  
+  private static int b(String paramString, int paramInt)
+  {
+    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+    try
+    {
+      localMediaMetadataRetriever.setDataSource(paramString);
+      paramString = null;
+      try
+      {
+        String str = localMediaMetadataRetriever.extractMetadata(24);
+        paramString = str;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("HwVideoMerge", 2, localException, new Object[0]);
+        }
+      }
+      localMediaMetadataRetriever.release();
+      if (paramString == null) {
+        return paramInt;
+      }
+      int i;
+      return paramInt;
+    }
+    catch (IllegalArgumentException paramString)
+    {
+      try
+      {
+        i = Integer.parseInt(paramString);
+        return i;
+      }
+      catch (NumberFormatException paramString) {}
+      paramString = paramString;
+      return paramInt;
+    }
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_AndroidMediaMediaExtractor != null)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaExtractor.release();
+      this.jdField_a_of_type_AndroidMediaMediaExtractor = null;
+    }
+    if (this.jdField_b_of_type_AndroidMediaMediaExtractor != null)
+    {
+      this.jdField_b_of_type_AndroidMediaMediaExtractor.release();
+      this.jdField_b_of_type_AndroidMediaMediaExtractor = null;
+    }
+  }
+  
+  private boolean b()
+  {
+    this.jdField_a_of_type_Xpy.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    if (this.jdField_b_of_type_AndroidMediaMediaExtractor == null) {
       return true;
     }
+    long l = this.jdField_b_of_type_AndroidMediaMediaExtractor.getSampleTime();
+    int i = this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Xpy.jdField_a_of_type_JavaNioByteBuffer, 0);
+    if ((i <= 0) || ((this.jdField_b_of_type_Long != 0L) && (l > this.jdField_b_of_type_Long * 1000L)))
+    {
+      QLog.d("HwVideoMerge", 2, "getAudioInputBuffer audio end. sampleTime:" + l);
+      return true;
+    }
+    this.jdField_a_of_type_Xpy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs = l;
+    this.jdField_a_of_type_Xpy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = i;
+    this.jdField_a_of_type_Xpy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset = 0;
+    this.jdField_a_of_type_Xpy.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags = this.jdField_b_of_type_AndroidMediaMediaExtractor.getSampleFlags();
+    this.jdField_b_of_type_AndroidMediaMediaExtractor.advance();
     return false;
   }
   
-  public void c()
+  public int a()
   {
-    this.jdField_a_of_type_Xqb.s();
+    int i = 0;
+    this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
+    try
+    {
+      a();
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.stop();
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
+      this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
+      b();
+      return i;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("HwVideoMerge", 1, "doWork error, ", localException);
+        i = -13;
+      }
+    }
   }
   
-  public void c(Activity paramActivity)
+  public int a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Xpf != null) {
-      this.jdField_a_of_type_Xpf.f();
+    this.jdField_a_of_type_AndroidMediaMediaExtractor = a(this.jdField_a_of_type_JavaLangString);
+    int i = a(this.jdField_a_of_type_AndroidMediaMediaExtractor, "video/");
+    if ((this.jdField_a_of_type_AndroidMediaMediaExtractor == null) || (i < 0)) {
+      i = -1;
     }
-    if (this.jdField_a_of_type_Xpk != null) {
-      this.jdField_a_of_type_Xpk.f();
+    int j;
+    MediaFormat localMediaFormat1;
+    MediaFormat localMediaFormat2;
+    do
+    {
+      return i;
+      this.jdField_b_of_type_AndroidMediaMediaExtractor = a(this.jdField_b_of_type_JavaLangString);
+      j = a(this.jdField_b_of_type_AndroidMediaMediaExtractor, "audio/");
+      if ((this.jdField_b_of_type_AndroidMediaMediaExtractor == null) || (j < 0)) {
+        return -2;
+      }
+      if (this.jdField_a_of_type_Long > 0L) {
+        this.jdField_b_of_type_AndroidMediaMediaExtractor.seekTo(this.jdField_b_of_type_Long * 1000L, 0);
+      }
+      localMediaFormat1 = this.jdField_a_of_type_AndroidMediaMediaExtractor.getTrackFormat(i);
+      localMediaFormat2 = this.jdField_b_of_type_AndroidMediaMediaExtractor.getTrackFormat(j);
+      this.jdField_a_of_type_Int = localMediaFormat1.getInteger("width");
+      this.jdField_b_of_type_Int = localMediaFormat1.getInteger("height");
+      this.jdField_a_of_type_Xpy.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      j = b();
+      i = j;
+    } while (j != 0);
+    if (TextUtils.isEmpty(paramString))
+    {
+      b();
+      return -9;
     }
+    try
+    {
+      if (new File(paramString).exists())
+      {
+        b();
+        return -8;
+      }
+      this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramString, 0);
+      paramInt = b(this.jdField_a_of_type_JavaLangString, paramInt);
+      this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramInt);
+      this.jdField_a_of_type_Xpy.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat1);
+      this.jdField_a_of_type_Xpy.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat2);
+      return j;
+    }
+    catch (IOException paramString)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
+      b();
+    }
+    return -7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xpw
  * JD-Core Version:    0.7.0.1
  */

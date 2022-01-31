@@ -1,76 +1,42 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class bczr
-  implements bdje
 {
-  public bczr(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
-  
-  public void a(Exception paramException)
+  public static String a(Context paramContext, String paramString)
   {
-    if ((this.a.jdField_a_of_type_Bcqf != null) && (this.a.jdField_a_of_type_Bcqf.isShowing())) {
-      this.a.jdField_a_of_type_Bcqf.dismiss();
+    if (paramContext != null) {
+      return paramContext.getSharedPreferences("c_profile_sharepreference", 0).getString(paramString, "");
     }
-    this.a.b(paramException);
+    return "";
   }
   
-  public void a(JSONObject paramJSONObject)
+  public static void a(Context paramContext, String paramString)
   {
-    if ((this.a.jdField_a_of_type_Bcqf != null) && (this.a.jdField_a_of_type_Bcqf.isShowing())) {
-      this.a.jdField_a_of_type_Bcqf.dismiss();
-    }
-    try
+    if (paramContext != null)
     {
-      if (paramJSONObject.getInt("ret") == 0)
-      {
-        if (this.a.jdField_a_of_type_Xnw == null)
-        {
-          this.a.jdField_a_of_type_Xnw = new xnw(this.a);
-          this.a.jdField_a_of_type_Xnw.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690481));
-          this.a.jdField_a_of_type_Xnw.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690480, new Object[] { this.a.e }), this.a);
-          this.a.jdField_a_of_type_Xnw.a(this.a);
-        }
-        if (this.a.jdField_a_of_type_Xnw.isShowing()) {
-          return;
-        }
-        this.a.jdField_a_of_type_Xnw.show();
-        return;
-      }
-      if ((paramJSONObject.getInt("ret") == 10071) || (paramJSONObject.getInt("ret") == 10000))
-      {
-        if (this.a.jdField_a_of_type_Bbgu == null) {
-          this.a.jdField_a_of_type_Bbgu = bbdj.a(this.a, 230, this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690484), this.a.jdField_a_of_type_AndroidContentResResources.getString(2131690485), 2131690832, 2131694794, this.a, null);
-        }
-        paramJSONObject = paramJSONObject.getString("msg");
-        if (!TextUtils.isEmpty(paramJSONObject)) {
-          this.a.jdField_a_of_type_Bbgu.setMessage(paramJSONObject);
-        }
-        if (this.a.jdField_a_of_type_Bbgu.isShowing()) {
-          return;
-        }
-        this.a.jdField_a_of_type_Bbgu.show();
-        return;
-      }
+      paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 0).edit();
+      paramContext.remove(paramString);
+      paramContext.commit();
     }
-    catch (Exception paramJSONObject)
-    {
-      a(paramJSONObject);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!");
-    }
-    paramJSONObject = paramJSONObject.getString("msg");
-    bcql.a(bcyb.a().a(), paramJSONObject, 0).a(this.a.getTitleBarHeight()).show();
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    b(paramContext, paramString1, paramString2);
+  }
+  
+  private static void b(Context paramContext, String paramString1, String paramString2)
+  {
+    paramContext = paramContext.getSharedPreferences("c_profile_sharepreference", 0).edit();
+    paramContext.putString(paramString1, paramString2);
+    paramContext.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bczr
  * JD-Core Version:    0.7.0.1
  */

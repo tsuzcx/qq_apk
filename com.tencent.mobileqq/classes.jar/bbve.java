@@ -1,29 +1,22 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public class bbve
-  extends EmojiUiPlugin
+class bbve
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public void OnActivityCreate()
-  {
-    this.mActivityType = 2;
-    super.OnActivityCreate();
-  }
+  bbve(bbvd parambbvd, bbvh parambbvh) {}
   
-  public void OnActivityPause()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    super.OnActivityPause();
-    this.mRuntime.a().loadUrl("javascript:var webviewEvent = document.createEvent('Events');webviewEvent.initEvent('webviewobserve');webviewEvent.name = 'stopAudio';document.dispatchEvent(webviewEvent);");
-  }
-  
-  public long getPluginBusiness()
-  {
-    return 8L;
+    if ((paramCompoundButton.isEnabled()) && (!((TroopInfo)this.jdField_a_of_type_Bbvh.a).troopuin.equals(bbvd.a(this.jdField_a_of_type_Bbvd)))) {
+      this.jdField_a_of_type_Bbvh.b = Boolean.valueOf(paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbve
  * JD-Core Version:    0.7.0.1
  */

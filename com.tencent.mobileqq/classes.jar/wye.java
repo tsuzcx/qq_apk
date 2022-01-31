@@ -1,63 +1,44 @@
-import NearbyGroup.RspGetAreaList;
-import NearbyGroup.RspGetGroupInArea;
-import NearbyGroup.RspGetNearbyGroup;
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import tencent.im.oidb.cmd0x7f5.cmd0x7f5.GroupInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 public class wye
-  extends ajzk
+  implements View.OnClickListener
 {
-  public wye(TroopMemberApiService paramTroopMemberApiService) {}
+  protected long a;
+  protected View a;
+  public wyf a;
   
-  protected void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, RspGetNearbyGroup paramRspGetNearbyGroup)
+  public wye(wyf paramwyf, View paramView)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 8);
-    localBundle.putInt("iFilterId", paramInt);
-    localBundle.putBoolean("isSuccess", paramBoolean1);
-    localBundle.putSerializable("data", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2), paramRspGetNearbyGroup });
-    localBundle.putSerializable("observer_type", Integer.valueOf(1));
-    this.a.a(3, localBundle);
+    this.jdField_a_of_type_Wyf = paramwyf;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    paramView.setOnClickListener(this);
   }
   
-  protected void a(boolean paramBoolean, int paramInt, cmd0x7f5.GroupInfo paramGroupInfo)
+  private boolean a()
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 28);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    if (paramGroupInfo != null) {
-      localBundle.putByteArray("groupInfo", paramGroupInfo.toByteArray());
+    long l1 = System.currentTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    if ((l2 > 0L) && (l2 < 2000L)) {
+      return true;
     }
-    localBundle.putInt("count", paramInt);
-    localBundle.putSerializable("observer_type", Integer.valueOf(1));
-    this.a.a(3, localBundle);
+    this.jdField_a_of_type_Long = l1;
+    return false;
   }
   
-  protected void a(boolean paramBoolean1, RspGetAreaList paramRspGetAreaList, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 12);
-    localBundle.putBoolean("isSuccess", paramBoolean1);
-    localBundle.putSerializable("data", new Object[] { Boolean.valueOf(paramBoolean2), paramRspGetAreaList });
-    localBundle.putSerializable("observer_type", Integer.valueOf(1));
-    this.a.a(3, localBundle);
-    localBundle.putSerializable("", paramRspGetAreaList);
-  }
-  
-  protected void a(boolean paramBoolean, RspGetGroupInArea paramRspGetGroupInArea)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 13);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { paramRspGetGroupInArea });
-    localBundle.putSerializable("observer_type", Integer.valueOf(1));
-    this.a.a(3, localBundle);
+    if (!a())
+    {
+      wta.a("home_page", "clk_shoot", 0, 0, new String[0]);
+      this.jdField_a_of_type_Wyf.a();
+    }
+    bato.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wye
  * JD-Core Version:    0.7.0.1
  */

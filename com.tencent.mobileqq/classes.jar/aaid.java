@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtAd;
 
-public class aaid
-  implements View.OnClickListener
+public final class aaid
+  implements Parcelable.Creator<GdtAd>
 {
-  public aaid(AddRequestActivity paramAddRequestActivity) {}
-  
-  public void onClick(View paramView)
+  public GdtAd a(Parcel paramParcel)
   {
-    axqy.b(this.a.app, "CliOper", "", "", "0X800AA46", "0X800AA46", 0, 0, "", "", "", "");
-    this.a.b();
+    return new GdtAd(paramParcel);
+  }
+  
+  public GdtAd[] a(int paramInt)
+  {
+    return new GdtAd[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaid
  * JD-Core Version:    0.7.0.1
  */

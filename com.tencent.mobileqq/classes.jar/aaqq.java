@@ -1,37 +1,63 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.widget.TipsBar;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.aditem.GdtHandler;
+import com.tencent.gdtad.aditem.GdtHandler.Params;
+import com.tencent.gdtad.views.video.GdtVideoData;
+import com.tencent.gdtad.views.videoimax.GdtImaxData;
+import com.tencent.gdtad.views.videoimax.GdtMotiveVideoMockQzoneImaxFeedsFragment;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo;
 
 public class aaqq
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aaqq(ChatHistory paramChatHistory) {}
+  public aaqq(GdtMotiveVideoMockQzoneImaxFeedsFragment paramGdtMotiveVideoMockQzoneImaxFeedsFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (bbfj.d(BaseApplication.getContext()))
+    GdtHandler.Params localParams = new GdtHandler.Params();
+    localParams.c = 2;
+    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.getActivity());
+    Object localObject = GdtMotiveVideoMockQzoneImaxFeedsFragment.a(this.a).getAd();
+    ((GdtAd)localObject).info.product_type.set(1000);
+    ((GdtAd)localObject).info.dest_info.dest_type.set(4);
+    ((GdtAd)localObject).info.display_info.video_info2.video_url.set(GdtMotiveVideoMockQzoneImaxFeedsFragment.a(this.a).getVideoData().getUrl());
+    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)localObject);
+    localParams.e = true;
+    localParams.jdField_a_of_type_Boolean = true;
+    localObject = new int[2];
+    paramView.getLocationInWindow((int[])localObject);
+    aanp.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onClick() getLocationInWindow = [" + Arrays.toString((int[])localObject) + "]");
+    paramView.getLocationOnScreen((int[])localObject);
+    aanp.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onClick() getLocationOnScreen = [" + Arrays.toString((int[])localObject) + "]");
+    localParams.jdField_a_of_type_AndroidGraphicsRect = new Rect(localObject[0], localObject[1], localObject[0] + paramView.getWidth(), localObject[1] + paramView.getHeight());
+    paramView = this.a.getActivity().getIntent();
+    if (TextUtils.isEmpty(paramView.getStringExtra("big_brother_ref_source_key"))) {}
+    for (paramView = paramView.getStringExtra("big_brother_source_key");; paramView = paramView.getStringExtra("big_brother_ref_source_key"))
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      this.a.h();
-      axqy.b(this.a.app, "CliOper", "", "", "AIO", "AIO_chatlog_lately", 0, 0, "", "", "", "");
+      localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
+      localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramView);
+      localParams.f = true;
+      GdtHandler.a(localParams);
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_c_of_type_AndroidAppDialog.dismiss();
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
-    this.a.jdField_c_of_type_AndroidWidgetTextView.setText(this.a.getString(2131692321));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqq
  * JD-Core Version:    0.7.0.1
  */

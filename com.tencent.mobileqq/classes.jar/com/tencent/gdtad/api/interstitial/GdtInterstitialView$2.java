@@ -1,9 +1,9 @@
 package com.tencent.gdtad.api.interstitial;
 
+import aakb;
+import aanp;
 import android.text.TextUtils;
 import java.lang.ref.WeakReference;
-import yui;
-import yxp;
 
 public final class GdtInterstitialView$2
   implements Runnable
@@ -18,9 +18,9 @@ public final class GdtInterstitialView$2
     }
     for (;;)
     {
-      yxp.b("GdtInterstitialView", String.format("close %b error:%d traceId:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
+      aanp.b("GdtInterstitialView", String.format("close %b error:%d traceId:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString }));
       return;
-      WeakReference localWeakReference = yui.a().a(this.jdField_a_of_type_JavaLangString);
+      WeakReference localWeakReference = aakb.a().a(this.jdField_a_of_type_JavaLangString);
       if (localWeakReference != null)
       {
         if (localWeakReference.get() == null)
@@ -29,7 +29,7 @@ public final class GdtInterstitialView$2
         }
         else
         {
-          ((GdtInterstitialFragment)localWeakReference.get()).a(this.jdField_a_of_type_Int, this.b, -2147483648);
+          ((GdtInterstitialFragment)localWeakReference.get()).a(4, this.jdField_a_of_type_Int, this.b, -2147483648, -2147483648L);
           bool = true;
         }
       }
@@ -41,7 +41,7 @@ public final class GdtInterstitialView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialView.2
  * JD-Core Version:    0.7.0.1
  */

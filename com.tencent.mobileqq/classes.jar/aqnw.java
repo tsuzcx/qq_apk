@@ -1,99 +1,232 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.gallery.model.pic.AIOFilePicData;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.app.FileMultiMsgManager.2;
+import com.tencent.mobileqq.filemanager.app.FileMultiMsgManager.3;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class aqnw
 {
-  public static Intent a(Activity paramActivity, Intent paramIntent, boolean paramBoolean)
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<Long, aqos> jdField_a_of_type_JavaUtilHashMap;
+  
+  private aqoq a(String paramString, int paramInt, long paramLong, MessageRecord paramMessageRecord)
   {
-    if (paramIntent == null)
+    if (paramLong <= 0L)
     {
-      aqmd.a().a().a("ForwardUtils", 4, "getForwardData return null from main process");
-      paramActivity = null;
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "createUploadTask: multiMrUniseq is null");
+      return null;
     }
-    Intent localIntent;
+    if (paramMessageRecord == null)
+    {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "createUploadTask: file message record is null");
+      return null;
+    }
+    aqoq localaqoq = new aqoq(this, paramLong, paramString, paramInt, paramMessageRecord);
+    paramString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    if (a(paramString)) {
+      if (paramInt == 0) {
+        paramString = new aqoe(this, paramMessageRecord);
+      }
+    }
+    for (;;)
+    {
+      label76:
+      localaqoq.a = paramString;
+      return localaqoq;
+      if (paramInt == 3000)
+      {
+        paramString = new aqon(this, paramMessageRecord);
+      }
+      else if (paramInt == 1)
+      {
+        paramString = new aqox(this, paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName"), paramString, null);
+      }
+      else
+      {
+        do
+        {
+          try
+          {
+            i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileType"));
+            switch (i)
+            {
+            default: 
+              paramString = null;
+            }
+          }
+          catch (NumberFormatException paramString)
+          {
+            do
+            {
+              for (;;)
+              {
+                QLog.e("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
+                int i = -1;
+              }
+              if (paramInt == 0)
+              {
+                paramString = new aqny(this, paramMessageRecord);
+                break;
+              }
+              if (paramInt == 3000)
+              {
+                paramString = new aqoa(this, paramMessageRecord);
+                break;
+              }
+            } while (paramInt != 1);
+            paramString = new aqoc(this, paramMessageRecord);
+          }
+          break;
+          if (paramInt == 0)
+          {
+            paramString = new aqoh(this, paramMessageRecord);
+            break;
+          }
+          if (paramInt == 3000)
+          {
+            paramString = new aqoj(this, paramMessageRecord);
+            break;
+          }
+        } while (paramInt != 1);
+        paramString = new aqol(this, paramMessageRecord);
+      }
+    }
+    if (paramInt == 0) {
+      paramInt = 3;
+    }
+    for (;;)
+    {
+      paramString = new aqov(this, paramMessageRecord, paramInt, null);
+      break label76;
+      if (paramInt == 3000)
+      {
+        paramInt = 106;
+      }
+      else
+      {
+        if (paramInt != 1) {
+          break;
+        }
+        paramInt = 102;
+      }
+    }
+  }
+  
+  private void a(long paramLong)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new FileMultiMsgManager.2(this, paramLong));
+  }
+  
+  private static void a(MessageRecord paramMessageRecord, Bundle paramBundle)
+  {
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      paramMessageRecord.saveExtInfoToExtStr(str, paramBundle.getString(str));
+    }
+  }
+  
+  private void a(MessageRecord paramMessageRecord, String paramString1, String paramString2, int paramInt, Bundle paramBundle)
+  {
+    if (paramMessageRecord == null)
+    {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "updateFileMessageRecordWithUuid: MessageRecord is null.");
+      return;
+    }
+    a(paramMessageRecord, paramBundle);
+    paramMessageRecord.saveExtInfoToExtStr("_m_ForwardFileStatus", "1");
+    paramMessageRecord.saveExtInfoToExtStr("_m_ForwardLasSuccess", String.valueOf(ayvc.a()));
+  }
+  
+  private boolean a(MessageRecord paramMessageRecord)
+  {
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardLasSuccess");
+    if (!TextUtils.isEmpty(paramMessageRecord))
+    {
+      long l = Long.parseLong(paramMessageRecord);
+      if (ayvc.a() - l < 86400L) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  private static boolean a(String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (paramString == null)
+    {
+      bool2 = bool1;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, "filePath is null");
+        bool2 = bool1;
+      }
+    }
     do
     {
       do
       {
-        return paramActivity;
-        paramIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-        paramActivity = paramIntent;
-      } while (paramBoolean);
-      paramIntent.putExtra("filepictest", true);
-      paramActivity = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
-      String str1 = paramIntent.getStringExtra("forward_filepath");
-      paramBoolean = paramIntent.getBooleanExtra("k_favorites", false);
-      String str2 = paramIntent.getStringExtra("forward_text");
-      boolean bool = paramIntent.getBooleanExtra("isFromShare", false);
-      int i = paramIntent.getIntExtra("forward_type", 0);
-      localIntent = new Intent();
-      localIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("forward_type", i);
-      localBundle.putParcelable("fileinfo", paramActivity);
-      localBundle.putBoolean("not_forward", true);
-      localIntent.putExtras(localBundle);
-      localIntent.putExtra("forward_filepath", str1);
-      localIntent.putExtra("forward_text", str2);
-      localIntent.putExtra("k_favorites", paramBoolean);
-      localIntent.putExtra("isFromShare", bool);
-      paramActivity = paramIntent;
-    } while (!AIOFilePicData.class.isInstance(paramIntent));
-    localIntent.putExtra("isPic", true);
-    localIntent.putExtra("direct_send_if_dataline_forward", true);
-    return paramIntent;
-  }
-  
-  public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean)
-  {
-    a(paramActivity, paramIntent, paramBoolean, -1, "");
-  }
-  
-  public static void a(Activity paramActivity, Intent paramIntent, boolean paramBoolean, int paramInt, String paramString)
-  {
-    if (paramIntent == null)
-    {
-      aqmd.a().a().a("ForwardUtils", 4, "getForwardData return null from main process");
-      return;
-    }
-    paramIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-    if (!paramBoolean)
-    {
-      paramIntent.putExtra("filepictest", true);
-      ForwardFileInfo localForwardFileInfo = (ForwardFileInfo)paramIntent.getParcelableExtra("fileinfo");
-      String str1 = paramIntent.getStringExtra("forward_filepath");
-      paramBoolean = paramIntent.getBooleanExtra("k_favorites", false);
-      String str2 = paramIntent.getStringExtra("forward_text");
-      boolean bool = paramIntent.getBooleanExtra("isFromShare", false);
-      int i = paramIntent.getIntExtra("forward_type", 0);
-      Intent localIntent = new Intent();
-      localIntent.setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("forward_type", i);
-      localBundle.putParcelable("fileinfo", localForwardFileInfo);
-      localBundle.putBoolean("not_forward", true);
-      localIntent.putExtras(localBundle);
-      localIntent.putExtra("forward_filepath", str1);
-      localIntent.putExtra("forward_text", str2);
-      localIntent.putExtra("k_favorites", paramBoolean);
-      localIntent.putExtra("isFromShare", bool);
-      if (AIOFilePicData.class.isInstance(paramIntent))
-      {
-        localIntent.putExtra("isPic", true);
-        localIntent.putExtra("direct_send_if_dataline_forward", true);
+        return bool2;
+        if (arni.b(paramString)) {
+          break;
+        }
+        bool2 = bool1;
+      } while (!QLog.isColorLevel());
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "file is not existed");
+      return false;
+      bool1 = bool2;
+      if (arni.a(paramString) <= 10485760L) {
+        bool1 = true;
       }
-      aqbe.a(paramActivity, paramIntent, 103, paramInt, paramString);
+      bool2 = bool1;
+    } while (!QLog.isColorLevel());
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "file is isSmall:" + bool1);
+    return bool1;
+  }
+  
+  private static String b(long paramLong, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692614);
+    }
+    if (paramLong > 10485760L) {
+      return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692616);
+    }
+    return BaseActivity.sTopActivity.app.getApplication().getResources().getString(2131692653);
+  }
+  
+  private void b(long paramLong)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new FileMultiMsgManager.3(this, paramLong));
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, String paramString, long paramLong2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean, Bundle paramBundle, aqot paramaqot)
+  {
+    if (paramaqot == null)
+    {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, "sendFeeds but callback is null fileid " + paramString);
       return;
     }
-    aqbe.a(paramActivity, paramIntent, 21, paramInt, paramString);
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "sendFeeds will call reqFeeds fileid " + paramString);
+    ypf.a(paramQQAppInterface, paramLong1, paramInt1, paramString, paramInt2, paramInt3, paramInt4, paramInt5, paramBoolean, paramBundle, new aqnx(paramString, paramaqot, paramLong2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqnw
  * JD-Core Version:    0.7.0.1
  */

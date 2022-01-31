@@ -1,73 +1,79 @@
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mobileqq.data.ExpiredPushBanner;
-import com.tencent.mobileqq.persistence.NoColumnError;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForLongTextMsg;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class auks
-  extends aula
+class auks
+  implements awfy
 {
-  public auks()
+  auks(aukr paramaukr, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean) {}
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.a = 3;
+    return null;
   }
   
-  public auko a(auko paramauko, Cursor paramCursor, boolean paramBoolean, aukz paramaukz)
+  public void a(awfz paramawfz) {}
+  
+  public void b(awfz paramawfz)
   {
-    paramauko = (ExpiredPushBanner)paramauko;
-    if (paramaukz == null)
+    try
     {
-      paramauko.cid = paramCursor.getLong(paramCursor.getColumnIndex("cid"));
-      paramauko.md5 = paramCursor.getString(paramCursor.getColumnIndex("md5"));
-      paramauko.endtime = paramCursor.getLong(paramCursor.getColumnIndex("endtime"));
-      return paramauko;
-    }
-    int i = paramCursor.getColumnIndex("cid");
-    if (i == -1)
-    {
-      paramaukz.a(new NoColumnError("cid", Long.TYPE));
-      i = paramCursor.getColumnIndex("md5");
-      if (i != -1) {
-        break label187;
+      if (paramawfz.jdField_a_of_type_Int == 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("StructLongTextMsg", 2, "step3: sendLongTextMsg pack upload cost: " + (System.currentTimeMillis() - aukr.a(this.jdField_a_of_type_Aukr)) + ",mResid:" + paramawfz.c);
+        }
+        AbsShareMsg localAbsShareMsg = acex.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
+        localAbsShareMsg.mResid = paramawfz.c;
+        localAbsShareMsg.mFileName = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
+        localAbsShareMsg.multiMsgFlag = 1;
+        MessageForLongTextMsg localMessageForLongTextMsg = (MessageForLongTextMsg)ayvw.a(-1051);
+        localMessageForLongTextMsg.structingMsg = localAbsShareMsg;
+        localMessageForLongTextMsg.frienduin = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin;
+        localMessageForLongTextMsg.istroop = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop;
+        localMessageForLongTextMsg.selfuin = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.selfuin;
+        localMessageForLongTextMsg.senderuin = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.senderuin;
+        localMessageForLongTextMsg.isread = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.isread;
+        localMessageForLongTextMsg.time = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time;
+        localMessageForLongTextMsg.msgseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq;
+        localMessageForLongTextMsg.msgUid = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgUid;
+        localMessageForLongTextMsg.shmsgseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq;
+        localMessageForLongTextMsg.issend = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.issend;
+        localMessageForLongTextMsg.uniseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq;
+        localMessageForLongTextMsg.mAnimFlag = true;
+        localMessageForLongTextMsg.longMsgCount = 1;
+        localMessageForLongTextMsg.longMsgIndex = 0;
+        localMessageForLongTextMsg.longMsgId = ((short)(int)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq);
+        localMessageForLongTextMsg.saveExtInfoToExtStr("long_text_msg_resid", paramawfz.c);
+        if (nav.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
+          nav.a().a(localMessageForLongTextMsg);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localMessageForLongTextMsg, null, this.jdField_a_of_type_Boolean);
+        return;
       }
-      paramaukz.a(new NoColumnError("md5", String.class));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("endtime");
-      if (i != -1) {
-        break label202;
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "MessageForReplyText upload multi msg pack failed, result.errStr=" + paramawfz.b + ",result.errStr=" + paramawfz.jdField_a_of_type_JavaLangString);
       }
-      paramaukz.a(new NoColumnError("endtime", Long.TYPE));
-      return paramauko;
-      paramauko.cid = paramCursor.getLong(i);
-      break;
-      label187:
-      paramauko.md5 = paramCursor.getString(i);
+      aukr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      return;
     }
-    label202:
-    paramauko.endtime = paramCursor.getLong(i);
-    return paramauko;
-  }
-  
-  public String a(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,cid INTEGER UNIQUE ,md5 TEXT ,endtime INTEGER)");
-    return localStringBuilder.toString();
-  }
-  
-  public void a(auko paramauko, ContentValues paramContentValues)
-  {
-    paramauko = (ExpiredPushBanner)paramauko;
-    paramContentValues.put("cid", Long.valueOf(paramauko.cid));
-    paramContentValues.put("md5", paramauko.md5);
-    paramContentValues.put("endtime", Long.valueOf(paramauko.endtime));
+    catch (Exception paramawfz)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StructLongTextMsg", 2, "MessageForReplyText upload multi msg pack failed, catch exception", paramawfz);
+      }
+      aukr.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auks
  * JD-Core Version:    0.7.0.1
  */

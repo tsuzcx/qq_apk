@@ -48,27 +48,28 @@ import android.widget.Filter.FilterListener;
 import android.widget.Filterable;
 import android.widget.ListAdapter;
 import android.widget.PopupWindow;
-import bbbn;
-import bfnj;
-import bfnz;
-import bfon;
-import bfoo;
-import bfop;
-import bfoq;
-import bfor;
-import bfos;
-import bfot;
-import bfou;
-import bfow;
-import bfpr;
-import bfpu;
-import bfrm;
-import bfuc;
-import bfww;
+import bdah;
+import bhod;
+import bhou;
+import bhpj;
+import bhpk;
+import bhpl;
+import bhpm;
+import bhpn;
+import bhpo;
+import bhpp;
+import bhpq;
+import bhps;
+import bhqn;
+import bhqq;
+import bhsi;
+import bhuz;
+import bhxt;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public abstract class AbsListView
@@ -131,13 +132,13 @@ public abstract class AbsListView
   boolean mCachingStarted;
   private boolean mCallbackOnUnClickItem;
   public SparseBooleanArray mCheckStates;
-  bfnj<Integer> mCheckedIdStates;
+  bhod<Integer> mCheckedIdStates;
   int mCheckedItemCount;
   public ActionMode mChoiceActionMode;
   int mChoiceMode = 0;
   private Runnable mClearScrollingCache;
   private ContextMenu.ContextMenuInfo mContextMenuInfo;
-  bfoo mDataSetObserver;
+  bhpk mDataSetObserver;
   private InputConnection mDefInputConnection;
   private boolean mDeferNotifyDataSetChanged;
   private float mDensityScale;
@@ -145,8 +146,8 @@ public abstract class AbsListView
   private boolean mDisableOverScrollTop;
   boolean mDrawSelectorOnTop = false;
   private boolean mEdgeEffectEnabled;
-  public bfrm mEdgeGlowBottom;
-  public bfrm mEdgeGlowTop;
+  public bhsi mEdgeGlowBottom;
+  public bhsi mEdgeGlowTop;
   public boolean mEnableStory;
   boolean mFastScrollEnabled;
   public FastScroller mFastScroller;
@@ -183,10 +184,11 @@ public abstract class AbsListView
   int mMotionViewOriginalTop;
   int mMotionX;
   int mMotionY;
-  bfoq mMultiChoiceModeCallback;
+  bhpm mMultiChoiceModeCallback;
   private boolean mNeedCheckSpringback;
-  private bfor mOnScrollButtomListener;
-  private bfos mOnScrollListener;
+  private bhpn mOnScrollButtomListener;
+  private bhpo mOnScrollListener;
+  private ArrayList<bhpo> mOnScrollListenerList = new ArrayList();
   private int mOverScrollMode;
   private int mOverScrollTouchMode = 0;
   int mOverscrollDistance;
@@ -199,7 +201,7 @@ public abstract class AbsListView
   private boolean mPopupHidden;
   AbsListView.PositionScroller mPositionScroller;
   private InputConnectionWrapper mPublicInputConnection;
-  public final bfot mRecycler = new bfot(this);
+  public final bhpp mRecycler = new bhpp(this);
   int mResurrectToPosition = -1;
   View mScrollDown;
   private boolean mScrollProfilingStarted;
@@ -262,7 +264,7 @@ public abstract class AbsListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     initAbsListView();
-    paramContext = new bfww(paramContext.obtainStyledAttributes(paramAttributeSet, ABSLISTVIEW, paramInt, 0));
+    paramContext = new bhxt(paramContext.obtainStyledAttributes(paramAttributeSet, ABSLISTVIEW, paramInt, 0));
     try
     {
       paramAttributeSet = paramContext.a(ABSLISTVIEW_LIST_SELECTOR);
@@ -365,7 +367,7 @@ public abstract class AbsListView
     {
       Context localContext = getContext();
       PopupWindow localPopupWindow = new PopupWindow(localContext);
-      this.mTextFilter = ((EditText)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131562577, null));
+      this.mTextFilter = ((EditText)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131562779, null));
       this.mTextFilter.setRawInputType(177);
       this.mTextFilter.setImeOptions(268435456);
       this.mTextFilter.addTextChangedListener(this);
@@ -382,10 +384,10 @@ public abstract class AbsListView
     }
     if (paramBoolean)
     {
-      this.mPopup.setAnimationStyle(2131755023);
+      this.mPopup.setAnimationStyle(2131755025);
       return;
     }
-    this.mPopup.setAnimationStyle(2131755024);
+    this.mPopup.setAnimationStyle(2131755026);
   }
   
   private void dismissPopup()
@@ -860,6 +862,11 @@ public abstract class AbsListView
     }
   }
   
+  public void addOnScrollListener(bhpo parambhpo)
+  {
+    this.mOnScrollListenerList.add(parambhpo);
+  }
+  
   public void addTouchables(ArrayList<View> paramArrayList)
   {
     int j = getChildCount();
@@ -1060,7 +1067,7 @@ public abstract class AbsListView
   
   ContextMenu.ContextMenuInfo createContextMenuInfo(View paramView, int paramInt, long paramLong)
   {
-    return new bfpr(paramView, paramInt, paramLong);
+    return new bhqn(paramView, paramInt, paramLong);
   }
   
   public void deferNotifyDataSetChanged()
@@ -1273,7 +1280,7 @@ public abstract class AbsListView
       return;
       VelocityTracker localVelocityTracker = this.mVelocityTracker;
       localVelocityTracker.computeCurrentVelocity(1000, this.mMaximumVelocity);
-      if (bfnz.b()) {}
+      if (bhou.b()) {}
       for (float f = localVelocityTracker.getYVelocity(this.mActivePointerId);; f = localVelocityTracker.getYVelocity())
       {
         int i1 = (int)(f * this.mVelocityScale);
@@ -1362,8 +1369,8 @@ public abstract class AbsListView
       localObject = new long[0];
       return localObject;
     }
-    bfnj localbfnj = this.mCheckedIdStates;
-    int j = localbfnj.a();
+    bhod localbhod = this.mCheckedIdStates;
+    int j = localbhod.a();
     long[] arrayOfLong = new long[j];
     for (;;)
     {
@@ -1371,7 +1378,7 @@ public abstract class AbsListView
       if (i >= j) {
         break;
       }
-      arrayOfLong[i] = localbfnj.a(i);
+      arrayOfLong[i] = localbhod.a(i);
       i += 1;
     }
   }
@@ -1468,7 +1475,7 @@ public abstract class AbsListView
     return this.mListPadding.top;
   }
   
-  public bfos getOnScrollListener()
+  public bhpo getOnScrollListener()
   {
     return this.mOnScrollListener;
   }
@@ -1722,6 +1729,10 @@ public abstract class AbsListView
     if (this.mOnScrollListener != null) {
       this.mOnScrollListener.onScroll(this, this.mFirstPosition, getChildCount(), this.mItemCount);
     }
+    Iterator localIterator = this.mOnScrollListenerList.iterator();
+    while (localIterator.hasNext()) {
+      ((bhpo)localIterator.next()).onScroll(this, this.mFirstPosition, getChildCount(), this.mItemCount);
+    }
     onScrollChanged(0, 0, 0, 0);
   }
   
@@ -1839,9 +1850,9 @@ public abstract class AbsListView
   
   protected void layoutChildren() {}
   
-  protected bfoo newObserver()
+  protected bhpk newObserver()
   {
-    return new bfoo(this);
+    return new bhpk(this);
   }
   
   View obtainView(int paramInt, boolean[] paramArrayOfBoolean)
@@ -1924,7 +1935,7 @@ public abstract class AbsListView
       if (paramInt == 0) {
         break label121;
       }
-      localObject = bfot.a(this.mRecycler);
+      localObject = bhpp.a(this.mRecycler);
       i = localObject.length;
       paramInt = 0;
       while (paramInt < i)
@@ -1935,10 +1946,10 @@ public abstract class AbsListView
         paramInt += 1;
       }
     }
-    if (!checkScrap(bfot.a(this.mRecycler))) {
+    if (!checkScrap(bhpp.a(this.mRecycler))) {
       bool1 = false;
     }
-    Object localObject = bfot.a(this.mRecycler);
+    Object localObject = bhpp.a(this.mRecycler);
     int i = localObject.length;
     paramInt = 0;
     for (;;)
@@ -1993,7 +2004,7 @@ public abstract class AbsListView
       if (this.mPublicInputConnection == null)
       {
         this.mDefInputConnection = new BaseInputConnection(this, false);
-        this.mPublicInputConnection = new bfon(this, this.mTextFilter.onCreateInputConnection(paramEditorInfo), true);
+        this.mPublicInputConnection = new bhpj(this, this.mTextFilter.onCreateInputConnection(paramEditorInfo), true);
       }
       paramEditorInfo.inputType = 177;
       paramEditorInfo.imeOptions = 6;
@@ -2400,11 +2411,11 @@ public abstract class AbsListView
       if (paramParcelable.jdField_a_of_type_AndroidUtilSparseBooleanArray != null) {
         this.mCheckStates = paramParcelable.jdField_a_of_type_AndroidUtilSparseBooleanArray;
       }
-      if (paramParcelable.jdField_a_of_type_Bfnj != null) {
-        this.mCheckedIdStates = paramParcelable.jdField_a_of_type_Bfnj;
+      if (paramParcelable.jdField_a_of_type_Bhod != null) {
+        this.mCheckedIdStates = paramParcelable.jdField_a_of_type_Bhod;
       }
       this.mCheckedItemCount = paramParcelable.d;
-      if ((bfnz.e()) && (paramParcelable.jdField_a_of_type_Boolean) && (this.mChoiceMode == 3) && (this.mMultiChoiceModeCallback != null)) {
+      if ((bhou.e()) && (paramParcelable.jdField_a_of_type_Boolean) && (this.mChoiceMode == 3) && (this.mMultiChoiceModeCallback != null)) {
         this.mChoiceActionMode = startActionMode(this.mMultiChoiceModeCallback);
       }
       requestLayout();
@@ -2492,12 +2503,12 @@ public abstract class AbsListView
       if (this.mCheckedIdStates == null) {
         break label566;
       }
-      localObject = new bfnj();
+      localObject = new bhod();
       int j = this.mCheckedIdStates.a();
       i = k;
       while (i < j)
       {
-        ((bfnj)localObject).a(this.mCheckedIdStates.a(i), this.mCheckedIdStates.a(i));
+        ((bhod)localObject).a(this.mCheckedIdStates.a(i), this.mCheckedIdStates.a(i));
         i += 1;
       }
       i = 0;
@@ -2558,7 +2569,7 @@ public abstract class AbsListView
       label553:
       bool = false;
     }
-    localSavedState.jdField_a_of_type_Bfnj = ((bfnj)localObject);
+    localSavedState.jdField_a_of_type_Bhod = ((bhod)localObject);
     label566:
     localSavedState.d = this.mCheckedItemCount;
     return localSavedState;
@@ -2857,7 +2868,7 @@ public abstract class AbsListView
                 {
                   paramMotionEvent = this.mVelocityTracker;
                   paramMotionEvent.computeCurrentVelocity(1000, this.mMaximumVelocity);
-                  if (bfnz.b()) {}
+                  if (bhou.b()) {}
                   for (f = paramMotionEvent.getYVelocity(this.mActivePointerId);; f = paramMotionEvent.getYVelocity())
                   {
                     int i1 = (int)(f * this.mVelocityScale);
@@ -2899,7 +2910,7 @@ public abstract class AbsListView
           this.mFlingRunnable.b(getSpringbackOffset());
           localObject = this.mVelocityTracker;
           ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.mMaximumVelocity);
-          if (bfnz.b()) {}
+          if (bhou.b()) {}
           for (float f = ((VelocityTracker)localObject).getYVelocity(this.mActivePointerId);; f = ((VelocityTracker)localObject).getYVelocity())
           {
             onTouchUpWithYVelocity((int)(f * this.mVelocityScale), (int)paramMotionEvent.getY());
@@ -2941,7 +2952,7 @@ public abstract class AbsListView
             recycleVelocityTracker();
           }
           bool1 = bool2;
-          if (!bfnz.b()) {
+          if (!bhou.b()) {
             break;
           }
           onSecondaryPointerUp(paramMotionEvent);
@@ -2956,7 +2967,7 @@ public abstract class AbsListView
           this.mLastY = i;
           return true;
           bool1 = bool2;
-          if (!bfnz.b()) {
+          if (!bhou.b()) {
             break;
           }
           k = paramMotionEvent.getActionIndex();
@@ -3200,7 +3211,7 @@ public abstract class AbsListView
   @TargetApi(14)
   protected boolean performButtonActionOnTouchDown(MotionEvent paramMotionEvent)
   {
-    return (bfnz.d()) && ((paramMotionEvent.getButtonState() & 0x2) != 0) && (showContextMenu(paramMotionEvent.getX(), paramMotionEvent.getY(), paramMotionEvent.getMetaState()));
+    return (bhou.d()) && ((paramMotionEvent.getButtonState() & 0x2) != 0) && (showContextMenu(paramMotionEvent.getX(), paramMotionEvent.getY(), paramMotionEvent.getMetaState()));
   }
   
   public boolean performItemClick(View paramView, int paramInt, long paramLong)
@@ -3290,7 +3301,7 @@ public abstract class AbsListView
     if (this.mChoiceMode == 3)
     {
       bool2 = bool1;
-      if (bfnz.e())
+      if (bhou.e())
       {
         bool2 = bool1;
         if (this.mChoiceActionMode == null)
@@ -3367,8 +3378,8 @@ public abstract class AbsListView
     }
     Rect localRect = this.mSelectorRect;
     localRect.set(paramView.getLeft(), paramView.getTop(), paramView.getRight(), paramView.getBottom());
-    if ((paramView instanceof bfow)) {
-      ((bfow)paramView).a(localRect);
+    if ((paramView instanceof bhps)) {
+      ((bhps)paramView).a(localRect);
     }
     positionSelector(localRect.left, localRect.top, localRect.right, localRect.bottom);
     boolean bool = this.mIsChildViewEnabled;
@@ -3391,7 +3402,7 @@ public abstract class AbsListView
   public void reclaimViews(List<View> paramList)
   {
     int j = getChildCount();
-    bfou localbfou = bfot.a(this.mRecycler);
+    bhpq localbhpq = bhpp.a(this.mRecycler);
     int i = 0;
     while (i < j)
     {
@@ -3400,8 +3411,8 @@ public abstract class AbsListView
       if ((localLayoutParams != null) && (this.mRecycler.a(localLayoutParams.jdField_a_of_type_Int)))
       {
         paramList.add(localView);
-        if (localbfou != null) {
-          localbfou.b(localView);
+        if (localbhpq != null) {
+          localbhpq.b(localView);
         }
       }
       i += 1;
@@ -3487,12 +3498,17 @@ public abstract class AbsListView
     }
   }
   
+  public void removeOnScrollListener(bhpo parambhpo)
+  {
+    this.mOnScrollListenerList.remove(parambhpo);
+  }
+  
   protected void reportScrollStateChange(int paramInt)
   {
     if (paramInt != this.mLastScrollState)
     {
       this.mLastScrollState = paramInt;
-      if (AppSetting.k) {
+      if (AppSetting.j) {
         if (paramInt == 0) {
           break label48;
         }
@@ -3501,7 +3517,7 @@ public abstract class AbsListView
     label48:
     for (boolean bool = true;; bool = false)
     {
-      bbbn.a(bool);
+      bdah.a(bool);
       if (this.mOnScrollListener != null) {
         this.mOnScrollListener.onScrollStateChanged(this, paramInt);
       }
@@ -3813,7 +3829,7 @@ public abstract class AbsListView
   public void setAdapter(ListAdapter paramListAdapter)
   {
     if ((paramListAdapter != null) && (this.mChoiceMode != 0) && (this.mAdapter.hasStableIds()) && (this.mCheckedIdStates == null)) {
-      this.mCheckedIdStates = new bfnj();
+      this.mCheckedIdStates = new bhod();
     }
     if (this.mCheckStates != null) {
       this.mCheckStates.clear();
@@ -3859,7 +3875,7 @@ public abstract class AbsListView
         this.mCheckStates = new SparseBooleanArray();
       }
       if ((this.mCheckedIdStates == null) && (this.mAdapter != null) && (this.mAdapter.hasStableIds())) {
-        this.mCheckedIdStates = new bfnj();
+        this.mCheckedIdStates = new bhod();
       }
       if (this.mChoiceMode == 3)
       {
@@ -3885,10 +3901,10 @@ public abstract class AbsListView
       if ((this.mOverScrollMode != 2) && (this.mEdgeGlowTop == null))
       {
         localContext = getContext();
-        this.mEdgeGlowTop = new bfrm(localContext);
+        this.mEdgeGlowTop = new bhsi(localContext);
       }
     }
-    for (this.mEdgeGlowBottom = new bfrm(localContext);; this.mEdgeGlowBottom = null)
+    for (this.mEdgeGlowBottom = new bhsi(localContext);; this.mEdgeGlowBottom = null)
     {
       this.mEdgeEffectEnabled = paramBoolean;
       return;
@@ -4016,7 +4032,7 @@ public abstract class AbsListView
     for (;;)
     {
       return;
-      if ((bfnz.e()) && (paramBoolean) && (this.mChoiceMode == 3) && (this.mChoiceActionMode == null)) {
+      if ((bhou.e()) && (paramBoolean) && (this.mChoiceMode == 3) && (this.mChoiceActionMode == null)) {
         this.mChoiceActionMode = startActionMode(this.mMultiChoiceModeCallback);
       }
       if ((this.mChoiceMode == 2) || (this.mChoiceMode == 3))
@@ -4095,12 +4111,12 @@ public abstract class AbsListView
     this.mMaximumVelocity = paramInt;
   }
   
-  public void setMultiChoiceModeListener(bfop parambfop)
+  public void setMultiChoiceModeListener(bhpl parambhpl)
   {
     if (this.mMultiChoiceModeCallback == null) {
-      this.mMultiChoiceModeCallback = new bfoq(this);
+      this.mMultiChoiceModeCallback = new bhpm(this);
     }
-    this.mMultiChoiceModeCallback.a(parambfop);
+    this.mMultiChoiceModeCallback.a(parambhpl);
   }
   
   public void setNeedCheckSpringback(boolean paramBoolean)
@@ -4108,15 +4124,15 @@ public abstract class AbsListView
     this.mNeedCheckSpringback = paramBoolean;
   }
   
-  public void setOnScrollListener(bfos parambfos)
+  public void setOnScrollListener(bhpo parambhpo)
   {
-    this.mOnScrollListener = parambfos;
+    this.mOnScrollListener = parambhpo;
     invokeOnItemScrollListener();
   }
   
-  public void setOnScrollToButtomListener(bfor parambfor)
+  public void setOnScrollToButtomListener(bhpn parambhpn)
   {
-    this.mOnScrollButtomListener = parambfor;
+    this.mOnScrollButtomListener = parambhpn;
   }
   
   public void setOverScrollEffectPadding(int paramInt1, int paramInt2)
@@ -4146,8 +4162,8 @@ public abstract class AbsListView
     }
     try
     {
-      this.mEdgeGlowTop = new bfrm(localContext);
-      for (this.mEdgeGlowBottom = new bfrm(localContext);; this.mEdgeGlowBottom = null)
+      this.mEdgeGlowTop = new bhsi(localContext);
+      for (this.mEdgeGlowBottom = new bhsi(localContext);; this.mEdgeGlowBottom = null)
       {
         label90:
         this.mOverScrollMode = paramInt;
@@ -4171,9 +4187,9 @@ public abstract class AbsListView
     this.mOverScrollTouchMode = paramInt;
   }
   
-  public void setRecyclerListener(bfou parambfou)
+  public void setRecyclerListener(bhpq parambhpq)
   {
-    bfot.a(this.mRecycler, parambfou);
+    bhpp.a(this.mRecycler, parambhpq);
   }
   
   public void setScrollIndicators(View paramView1, View paramView2)

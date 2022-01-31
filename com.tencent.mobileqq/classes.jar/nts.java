@@ -1,73 +1,53 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 
-class nts
-  extends osm
+public class nts
+  implements TouchWebView.OnScrollChangedListener
 {
-  nts(ntr paramntr) {}
+  public nts(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  public void a(int paramInt)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    if ((ntr.a(this.a) != null) && ((ntr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntr.a(this.a)).a(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, List<Long> paramList)
-  {
-    if ((ntr.a(this.a) != null) && ((ntr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntr.a(this.a)).a(paramInt, paramList);
-    }
-  }
-  
-  public void a(TopBannerInfo paramTopBannerInfo)
-  {
-    if ((ntr.a(this.a) != null) && ((ntr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntr.a(this.a)).a(paramTopBannerInfo);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((ntr.a(this.a) != null) && ((ntr.a(this.a) instanceof ReadInJoyListViewGroup)) && (paramInt == ntr.a(this.a)))
+    paramInt1 = paramInt2 - paramInt4;
+    if (paramInt1 > 0)
     {
-      ((ReadInJoyListViewGroup)ntr.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
-      ntr.a(this.a);
+      if (this.a.jdField_b_of_type_Int < 0) {
+        this.a.jdField_b_of_type_Int = 0;
+      }
+      paramView = this.a;
+      paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
+      if ((this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int) && (this.a.jdField_c_of_type_Boolean))
+      {
+        this.a.jdField_c_of_type_Boolean = false;
+        if (this.a.jdField_a_of_type_AndroidViewView != null)
+        {
+          this.a.a(this.a.jdField_b_of_type_AndroidViewView, 0);
+          this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+          this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+        }
+      }
     }
-  }
-  
-  public void ap_()
-  {
-    if ((ntr.a(this.a) != null) && ((ntr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntr.a(this.a)).q();
-    }
-  }
-  
-  public void b(int paramInt, List<Long> paramList)
-  {
-    if ((ntr.a(this.a) != null) && ((ntr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntr.a(this.a)).c(paramInt, paramList);
-    }
-  }
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
-  {
-    if ((ntr.a(this.a) != null) && ((ntr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntr.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
-    }
-  }
-  
-  public void c(int paramInt, List<Long> paramList)
-  {
-    if ((ntr.a(this.a) != null) && ((ntr.a(this.a) instanceof ReadInJoyListViewGroup))) {
-      ((ReadInJoyListViewGroup)ntr.a(this.a)).b(paramInt, paramList);
-    }
+    do
+    {
+      do
+      {
+        return;
+        if (this.a.jdField_b_of_type_Int > 0) {
+          this.a.jdField_b_of_type_Int = 0;
+        }
+        paramView = this.a;
+        paramView.jdField_b_of_type_Int = (paramInt1 + paramView.jdField_b_of_type_Int);
+      } while ((-this.a.jdField_b_of_type_Int <= this.a.jdField_c_of_type_Int) || (this.a.jdField_c_of_type_Boolean));
+      this.a.jdField_c_of_type_Boolean = true;
+    } while (this.a.jdField_a_of_type_AndroidViewView == null);
+    this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+    this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nts
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,46 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
 
-public class rco
-  implements okf
+class rco
+  extends Handler
 {
-  public rco(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, FastWebActivity paramFastWebActivity, ArticleInfo paramArticleInfo, FastWebArticleInfo paramFastWebArticleInfo) {}
+  rco(rcn paramrcn) {}
   
-  public void a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt != 2) {
-      ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+    int j = 1;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      int i;
+      if ((rcn.a(this.a) != null) && (rcn.a(this.a) != null))
+      {
+        i = 1;
+        label51:
+        if ((rcn.a(this.a) == null) || (!rcn.a(this.a).a())) {
+          break label130;
+        }
+      }
+      while ((i != 0) && (rcn.a(this.a).getVisibility() == 0) && (j == 0) && (bjxj.f()))
+      {
+        rcn.a(this.a, rcn.a(this.a));
+        sendEmptyMessageDelayed(2, 3000L);
+        return;
+        i = 0;
+        break label51;
+        label130:
+        j = 0;
+      }
     }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rco
  * JD-Core Version:    0.7.0.1
  */

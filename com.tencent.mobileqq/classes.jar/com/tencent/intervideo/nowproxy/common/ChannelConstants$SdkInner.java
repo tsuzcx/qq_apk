@@ -10,7 +10,7 @@ public class ChannelConstants$SdkInner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.common.ChannelConstants.SdkInner
  * JD-Core Version:    0.7.0.1
  */

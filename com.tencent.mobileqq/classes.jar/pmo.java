@@ -1,174 +1,163 @@
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class pmo
+  implements poa
 {
-  public static CharSequence a(ArticleInfo paramArticleInfo)
+  private void a(ArticleInfo paramArticleInfo, int paramInt)
   {
-    Object localObject;
+    Object localObject = paramArticleInfo.mNewPolymericInfo;
+    HashMap localHashMap = new HashMap();
+    localObject = (qlk)((qlj)localObject).jdField_a_of_type_JavaUtilList.get(paramInt);
+    localHashMap.put("rowkey", ((qlk)localObject).jdField_g_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(((qlk)localObject).k)) {
+      localHashMap.put("jump_report_info", ((qlk)localObject).k);
+    }
+    rqj.a(paramArticleInfo, "0X8007625", "0X8007625", (int)paramArticleInfo.mChannelID, localHashMap);
+  }
+  
+  private void a(ArticleInfo paramArticleInfo, String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    if (!TextUtils.isEmpty(paramArticleInfo.mReportCommonData)) {
+      localHashMap.put("jump_report_info", paramString);
+    }
+    rqj.a(paramArticleInfo, "0X8007625", "0X8007625", (int)paramArticleInfo.mChannelID, localHashMap);
+  }
+  
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  {
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mNewPolymericInfo == null)) {
+      return new JSONObject();
+    }
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    qlj localqlj = paramBaseArticleInfo.mNewPolymericInfo;
+    localJSONObject1.put("style_ID", "ReadInJoy_video_set_card");
+    localJSONObject1.put("common_header_text", localqlj.jdField_b_of_type_JavaLangString);
+    localJSONObject1.put("topic_header_big_icon_url", localqlj.jdField_a_of_type_JavaLangString);
+    localJSONObject1.put("topic_header_small_icon_url", localqlj.e);
+    localJSONObject1.put("topic_header_desc_text", localqlj.jdField_c_of_type_JavaLangString);
     String str2;
     String str1;
-    if (paramArticleInfo != null)
+    label175:
+    label177:
+    qlk localqlk;
+    switch (localqlj.jdField_b_of_type_Int)
     {
-      long l2 = paramArticleInfo.mTime;
-      long l1 = l2;
-      if (paramArticleInfo.mSocialFeedInfo != null)
+    default: 
+      localJSONObject1.put("empty_header_visibility", "1");
+      switch (localqlj.jdField_c_of_type_Int)
       {
-        l1 = l2;
-        if (paramArticleInfo.mSocialFeedInfo.e > 0) {
-          l1 = paramArticleInfo.mSocialFeedInfo.e;
+      default: 
+        str2 = "195";
+        str1 = "148";
+        paramInt = 0;
+        if (paramInt >= localqlj.jdField_a_of_type_JavaUtilList.size()) {
+          break label398;
         }
+        localqlk = (qlk)localqlj.jdField_a_of_type_JavaUtilList.get(paramInt);
+        if (localqlk != null) {}
+        break;
       }
-      if (l1 > 0L)
-      {
-        localObject = ong.a(l1, true);
-        str2 = "";
-        if ((!pek.b(paramArticleInfo)) || (paramArticleInfo.mSocialFeedInfo == null)) {
-          break label105;
-        }
-        str1 = paramArticleInfo.mSocialFeedInfo.d;
-        label79:
-        if (!TextUtils.isEmpty(str1)) {
-          break label171;
-        }
-      }
+      break;
     }
     for (;;)
     {
-      return onh.a((String)localObject, 36);
-      localObject = ajya.a(2131701150);
+      paramInt += 1;
+      break label177;
+      localJSONObject1.put("common_header_visibility", "1");
       break;
-      label105:
-      str1 = str2;
-      if (paramArticleInfo.mSocialFeedInfo == null) {
-        break label79;
-      }
-      str1 = str2;
-      if (TextUtils.isEmpty(paramArticleInfo.mSocialFeedInfo.d)) {
-        break label79;
-      }
-      str1 = (String)localObject + " · " + paramArticleInfo.mSocialFeedInfo.d;
-      break label79;
-      return "";
-      label171:
-      localObject = str1;
+      localJSONObject1.put("topic_header_visibility", "1");
+      break;
+      str2 = "260";
+      str1 = "146";
+      break label175;
+      str2 = "315";
+      str1 = "236";
+      break label175;
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("style_ID", "ReadInJoy_video_set_card_collection_cell");
+      localJSONObject2.put("videoWidth", str1);
+      localJSONObject2.put("videoHeight", str2);
+      localJSONObject2.put("video_cover_url", localqlk.jdField_c_of_type_JavaLangString);
+      localJSONObject2.put("video_title_text", localqlk.jdField_a_of_type_JavaLangString);
+      localJSONObject2.put("play_count_text", localqlk.j);
+      localJSONObject2.put("comment_count_text", localqlk.jdField_g_of_type_Int + "评论");
+      localJSONObject2.put("rowkey", localqlk.jdField_g_of_type_JavaLangString);
+      localJSONArray.put(paramInt, localJSONObject2);
+    }
+    label398:
+    if (paramBaseArticleInfo.mNewPolymericInfo.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo == null) {
+      localJSONObject1.put("canScroll", "0");
+    }
+    for (;;)
+    {
+      localJSONObject1.put("video_data", localJSONArray);
+      localJSONObject1.put("card_jump_report_info", "");
+      QLog.d("NewPolymericMultiVideoProteusItem", 1, localJSONObject1.toString());
+      return localJSONObject1;
+      localJSONObject1.put("canScroll", "1");
     }
   }
   
-  public static void a(ViewBase paramViewBase, ArticleInfo paramArticleInfo)
+  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
   {
-    NativeText localNativeText = (NativeText)paramViewBase.findViewBaseByName("id_biu_time");
-    if ((localNativeText != null) && (paramArticleInfo != null) && (paramArticleInfo.articleViewModel != null)) {
-      if ((paramArticleInfo.mFeedType != 32) || (paramArticleInfo.mSocialFeedInfo == null) || (paramArticleInfo.mSocialFeedInfo.a == null) || (TextUtils.isEmpty(paramArticleInfo.mSocialFeedInfo.a.d))) {
-        break label168;
-      }
-    }
-    label168:
-    for (paramViewBase = " · " + paramArticleInfo.mSocialFeedInfo.a.d;; paramViewBase = "")
+    ArticleInfo localArticleInfo = parampgd.a();
+    if (localArticleInfo == null) {}
+    Object localObject;
+    do
     {
-      localNativeText.setText(paramArticleInfo.articleViewModel.a() + paramViewBase);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.proteus", 2, " " + paramArticleInfo + " time : " + paramArticleInfo.mTime);
-      }
       return;
-    }
+      localObject = paramContainer.getVirtualView();
+      ptw localptw = (ptw)((ViewBase)localObject).findViewBaseByName("id_proteus_collection_view");
+      localptw.a(parampgd);
+      localptw.a(new pmp(this, localArticleInfo, paramContainer));
+      localptw.a(new pmq(this, localArticleInfo, parampgd));
+      parampgd = paramContainer.getLayoutParams();
+      localObject = ((ViewBase)localObject).getComLayoutParams();
+    } while ((parampgd == null) || (localObject == null));
+    parampgd.width = ((Layout.Params)localObject).mLayoutWidth;
+    parampgd.height = ((Layout.Params)localObject).mLayoutHeight;
+    paramContainer.setLayoutParams(parampgd);
   }
   
-  public static void a(ViewBase paramViewBase, pau parampau)
+  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
   {
-    String str = "";
-    ViewBase localViewBase = paramViewBase.findViewBaseByName("id_jump_channel_bar");
-    paramViewBase = str;
-    boolean bool;
-    if (parampau != null)
+    if (paramViewBase == null) {}
+    String str;
+    do
     {
-      paramViewBase = str;
-      if (localViewBase != null)
+      do
       {
-        bool = onh.c();
-        if ((!bool) || (!onh.k(parampau.a()))) {
-          break label93;
-        }
-        localViewBase.setVisibility(0);
-      }
-    }
-    for (paramViewBase = str;; paramViewBase = "no data bind, isintab:" + bool)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.proteus", 2, "bindJumpChannel,flag" + false + " resong : " + paramViewBase);
-      }
-      return;
-      label93:
-      localViewBase.setVisibility(8);
-    }
-  }
-  
-  public static void b(ViewBase paramViewBase, pau parampau)
-  {
-    paramViewBase = (plm)paramViewBase.findViewBaseByName("id_socialize_recommend_follow");
-    if (paramViewBase != null) {
-      paramViewBase.a(parampau);
-    }
-  }
-  
-  public static void c(ViewBase paramViewBase, pau parampau)
-  {
-    parampau = parampau.a();
-    paramViewBase = paramViewBase.findViewBaseByName("id_flow_guide_separator");
-    if (paramViewBase != null)
-    {
-      try
-      {
-        if (pek.a(parampau))
-        {
-          if ((parampau != null) && (parampau.isPGCShortContent()))
-          {
-            paramViewBase.setVisibility(0);
-            return;
-          }
-          paramViewBase.setVisibility(8);
-          return;
-        }
-      }
-      catch (JSONException paramViewBase)
-      {
-        QLog.e("BindViewHelper", 2, paramViewBase.getMessage());
-        return;
-      }
-      paramViewBase.setVisibility(8);
-    }
-  }
-  
-  public static void d(ViewBase paramViewBase, pau parampau)
-  {
-    paramViewBase = (NativeText)paramViewBase.findViewBaseByName("id_nickname");
-    parampau = parampau.a();
-    try
-    {
-      long l = Long.parseLong(parampau.mSubscribeID);
-      parampau = ReadInJoyUserInfoModule.a(l, null);
-      if (parampau == null) {
-        return;
-      }
-    }
-    catch (NumberFormatException paramViewBase)
-    {
-      paramViewBase.printStackTrace();
-      return;
-    }
-    paramViewBase.setText(parampau.nick);
+        return false;
+        str = paramViewBase.getClickEvnet();
+      } while (TextUtils.isEmpty(str));
+      parampgd = parampgd.a();
+    } while (!"cmd_video_set_card_click".equals(str));
+    paramViewBase.setOnClickListener(new pmr(this, parampgd, paramContainer));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pmo
  * JD-Core Version:    0.7.0.1
  */

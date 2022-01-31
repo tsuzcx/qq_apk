@@ -27,12 +27,14 @@ public class TPThumbPlayerUtils
   private static SparseArray<TPThumbPlayerUtils.OptionIdMapping> sOptionIdMappingArray = new SparseArray();
   private static HashMap<Integer, Integer> sPropertyIdMap;
   private static HashMap<Integer, Integer> sSeekModeMap = new HashMap();
+  private static HashMap<Integer, Integer> sSwitchDefModeMap;
   
   static
   {
     sNativePlayerMsgInfoMap = new HashMap();
     sPropertyIdMap = new HashMap();
     sErrorTypeMap = new HashMap();
+    sSwitchDefModeMap = new HashMap();
     sOptionIdMappingArray.append(100, new TPThumbPlayerUtils.OptionIdMapping(1, 100));
     sOptionIdMappingArray.append(101, new TPThumbPlayerUtils.OptionIdMapping(3, 101));
     sOptionIdMappingArray.append(104, new TPThumbPlayerUtils.OptionIdMapping(1, 104));
@@ -115,6 +117,9 @@ public class TPThumbPlayerUtils
     sErrorTypeMap.put(Integer.valueOf(1300), Integer.valueOf(1300));
     sErrorTypeMap.put(Integer.valueOf(1500), Integer.valueOf(1500));
     sErrorTypeMap.put(Integer.valueOf(1600), Integer.valueOf(1600));
+    sSwitchDefModeMap.put(Integer.valueOf(1), Integer.valueOf(1));
+    sSwitchDefModeMap.put(Integer.valueOf(2), Integer.valueOf(2));
+    sSwitchDefModeMap.put(Integer.valueOf(3), Integer.valueOf(3));
   }
   
   public static TPThumbPlayerUtils.OptionIdMapping convert2NativeOptionaID(int paramInt)
@@ -142,15 +147,24 @@ public class TPThumbPlayerUtils
     return ((Integer)sSeekModeMap.get(Integer.valueOf(paramInt))).intValue();
   }
   
+  public static int convert2NativeSwitchMode(int paramInt)
+  {
+    if (!sSwitchDefModeMap.containsKey(Integer.valueOf(paramInt)))
+    {
+      TPLogUtil.e(TAG, "player switch definition mode is invalid, return default mode instead");
+      return 2;
+    }
+    return ((Integer)sSwitchDefModeMap.get(Integer.valueOf(paramInt))).intValue();
+  }
+  
   public static TPAudioFrameBuffer convert2TPAudioFrameBuffer(TPAudioFrame paramTPAudioFrame)
   {
     TPAudioFrameBuffer localTPAudioFrameBuffer = new TPAudioFrameBuffer();
     localTPAudioFrameBuffer.data = paramTPAudioFrame.data;
-    localTPAudioFrameBuffer.size = paramTPAudioFrame.size;
+    localTPAudioFrameBuffer.size = paramTPAudioFrame.linesize;
     localTPAudioFrameBuffer.sampleRate = paramTPAudioFrame.sampleRate;
     localTPAudioFrameBuffer.channelLayout = paramTPAudioFrame.channelLayout;
     localTPAudioFrameBuffer.ptsMs = (paramTPAudioFrame.ptsUs / 1000L);
-    localTPAudioFrameBuffer.flags = paramTPAudioFrame.exFlags;
     return localTPAudioFrameBuffer;
   }
   
@@ -223,7 +237,7 @@ public class TPThumbPlayerUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.thumbplayer.TPThumbPlayerUtils
  * JD-Core Version:    0.7.0.1
  */

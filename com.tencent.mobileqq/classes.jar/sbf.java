@@ -1,22 +1,19 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
-import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class sbf
-  implements wkq
+class sbf
+  implements ViewFactory.FoundClickableViewListener
 {
-  public sbf(FolderFollowTabFragment paramFolderFollowTabFragment) {}
+  sbf(sbe paramsbe) {}
   
-  public void a()
+  public void onFound(ViewBase paramViewBase)
   {
-    if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing()) && (FolderFollowTabFragment.a(this.a) != null)) {
-      FolderFollowTabFragment.a(this.a).a(true);
-    }
+    paramViewBase.setOnClickListener(new sbg(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sbf
  * JD-Core Version:    0.7.0.1
  */

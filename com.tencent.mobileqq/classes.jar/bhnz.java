@@ -1,256 +1,205 @@
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.qphone.base.util.BaseApplication;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.QZLog;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.mobileqq.widget.RandomCoverView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.DrawerCoverUtil.1;
+import com.tencent.util.DrawerCoverUtil.3;
+import com.tencent.util.DrawerCoverUtil.4;
 import java.io.File;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class bhnz
 {
-  private static bhnz jdField_a_of_type_Bhnz;
-  public static File a;
   public static String a;
-  public static String b;
-  public static String c;
-  public static String d;
-  public static String e;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateGifSoLength", 38400L);
-  private bhar jdField_a_of_type_Bhar;
-  public boolean[] a;
-  private int jdField_b_of_type_Int = 2;
-  private long jdField_b_of_type_Long = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateGifSoLength64", 38672);
-  private long c;
-  private long d;
-  private long e;
-  private long jdField_f_of_type_Long = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideLibCShareSoLength64", 1058904);
-  private String jdField_f_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateGifSo", "https://d3g.qq.com/sngapp/app/update/20181219175050_4961/libandroidndkgif.so");
-  private long jdField_g_of_type_Long = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideQzoneVisionSoLength", 2422908);
-  private String jdField_g_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateGifSoMD5", "16dd3ecb57fac1a97a60a9cf3891accb");
-  private long jdField_h_of_type_Long = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideQzoneVisionSoLength64", 3755056);
-  private String jdField_h_of_type_JavaLangString = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateGifSo64", "https://d3g.qq.com/sngapp/app/update/20200214225316_4688/libandroidndkgif.so");
-  private String i = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateGifSoMD564", "01468c39f609eef93fcd9224dbe686d3");
-  private String j = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateBeautySo", "https://d3g.qq.com/sngapp/app/update/20180518104407_5319/libandroidndkbeauty.so");
-  private String k = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideQzoneVisionSoMD5", "f428bc70e52b7eb3fba4327e123a779b");
-  private String l = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideQzoneVisionSoMD5", "b186c1e0ee3995717d84fb682afcd7b5");
-  private String m = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideLibCShareSoMD5", "f507c0f741a32f7a30fa162faa894ebc");
-  private String n = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideLibCShareSoMD564", "a86a585f5560b0bff890a100fe32792b");
-  private String o = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateBeautySoMD5", "C6787CBD4DBC4331E8C443A27EFEA03B");
-  private final String p = jdField_a_of_type_JavaIoFile.getPath() + "/photoqulatity";
+  private static boolean a;
   
-  static
+  public static VasQuickUpdateManager.CallBacker a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, Card paramCard, RandomCoverView paramRandomCoverView, String paramString, alos paramalos, boolean paramBoolean)
   {
-    jdField_a_of_type_JavaLangString = "libandroidndkgif.so";
-    jdField_b_of_type_JavaLangString = "libdehaze.so";
-    jdField_c_of_type_JavaLangString = "libopencv_java3.so";
-    jdField_d_of_type_JavaLangString = "libqzone_vision.so";
-    jdField_e_of_type_JavaLangString = "libc++_shared.so";
-    jdField_a_of_type_JavaIoFile = BaseApplicationImpl.getContext().getDir("qzonealbum", 0);
-  }
-  
-  public bhnz()
-  {
-    this.jdField_a_of_type_ArrayOfBoolean = new boolean[] { 0, 0, 0 };
-    this.jdField_c_of_type_Long = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateBeautySoLength", 587284);
-    this.jdField_d_of_type_Long = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideCreateOpenSoLength", 9161452);
-    this.jdField_e_of_type_Long = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoGuideLibCShareSoLength", 657000);
-  }
-  
-  public static bhnz a()
-  {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.", 2, "now is in drawer frame?" + paramBoolean);
+    }
+    if (!a(paramQQAppInterface, paramCard))
     {
-      if (jdField_a_of_type_Bhnz == null) {
-        jdField_a_of_type_Bhnz = new bhnz();
-      }
-      bhnz localbhnz = jdField_a_of_type_Bhnz;
-      return localbhnz;
-    }
-    finally {}
-  }
-  
-  private boolean a(String paramString, long paramLong)
-  {
-    if (a(paramString) == 0L) {}
-    while (a(paramString) == paramLong) {
-      return true;
-    }
-    return false;
-  }
-  
-  private static void b(File paramFile1, File paramFile2)
-  {
-    bhoh.a(paramFile1, paramFile2);
-  }
-  
-  public long a(String paramString)
-  {
-    if (jdField_a_of_type_JavaLangString.equals(paramString))
-    {
-      if (AppSetting.b) {
-        return this.jdField_b_of_type_Long;
-      }
-      return this.jdField_a_of_type_Long;
-    }
-    if (jdField_d_of_type_JavaLangString.equals(paramString))
-    {
-      if (AppSetting.b) {
-        return this.jdField_h_of_type_Long;
-      }
-      return this.jdField_g_of_type_Long;
-    }
-    if (jdField_e_of_type_JavaLangString.equals(paramString))
-    {
-      if (AppSetting.b) {
-        return this.jdField_f_of_type_Long;
-      }
-      return this.jdField_e_of_type_Long;
-    }
-    if (jdField_b_of_type_JavaLangString.equals(paramString)) {
-      return this.jdField_c_of_type_Long;
-    }
-    if (jdField_c_of_type_JavaLangString.equals(paramString)) {
-      return this.jdField_d_of_type_Long;
-    }
-    return 0L;
-  }
-  
-  public String a(String paramString)
-  {
-    if (jdField_d_of_type_JavaLangString.equals(paramString))
-    {
-      if (AppSetting.b) {
-        return this.l;
-      }
-      return this.k;
-    }
-    if (jdField_e_of_type_JavaLangString.equals(paramString))
-    {
-      if (AppSetting.b) {
-        return this.n;
-      }
-      return this.m;
-    }
-    if (jdField_a_of_type_JavaLangString.equals(paramString))
-    {
-      if (AppSetting.b) {
-        return this.i;
-      }
-      return this.jdField_g_of_type_JavaLangString;
-    }
-    if (jdField_b_of_type_JavaLangString.equals(paramString)) {
-      return this.o;
-    }
-    return "";
-  }
-  
-  public void a()
-  {
-    a(null);
-  }
-  
-  public void a(Downloader.DownloadListener paramDownloadListener)
-  {
-    if (this.jdField_a_of_type_ArrayOfBoolean[this.jdField_a_of_type_Int] == 0)
-    {
-      this.jdField_a_of_type_ArrayOfBoolean[this.jdField_a_of_type_Int] = true;
-      if (AppSetting.b) {
-        a(this.jdField_h_of_type_JavaLangString, jdField_a_of_type_JavaLangString, paramDownloadListener);
-      }
-    }
-    while (paramDownloadListener == null)
-    {
-      return;
-      a(this.jdField_f_of_type_JavaLangString, jdField_a_of_type_JavaLangString, paramDownloadListener);
-      return;
-    }
-    paramDownloadListener.onDownloadCanceled("lib is downloading");
-  }
-  
-  public void a(String paramString1, String paramString2, Downloader.DownloadListener paramDownloadListener)
-  {
-    if (this.jdField_a_of_type_Bhar == null) {
-      this.jdField_a_of_type_Bhar = bhar.a();
-    }
-    boolean bool = LocalMultiProcConfig.getBool(paramString1, false);
-    File localFile = new File(jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + paramString2);
-    if ((bool) && (localFile.exists()) && (a(paramString2, localFile.length())))
-    {
-      if (paramDownloadListener != null) {
-        paramDownloadListener.onDownloadSucceed(null, null);
-      }
-      if (jdField_a_of_type_JavaLangString.equals(paramString2)) {
-        this.jdField_a_of_type_ArrayOfBoolean[this.jdField_a_of_type_Int] = false;
-      }
-      return;
-    }
-    paramDownloadListener = new bhoa(this, paramString2, paramDownloadListener, paramString1);
-    paramString2 = jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + paramString2;
-    this.jdField_a_of_type_Bhar.a(paramString1, paramString2, paramDownloadListener);
-  }
-  
-  public boolean a(String paramString, boolean paramBoolean)
-  {
-    File localFile = new File(b(paramString));
-    if (!localFile.exists())
-    {
-      QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "vertifySoIsOK. file not exists. libName=" + paramString });
-      return false;
-    }
-    if (localFile.length() == a(paramString)) {
-      if (paramBoolean)
-      {
-        String str1 = bdik.a(b(paramString));
-        String str2 = a(paramString);
-        if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (str2.equalsIgnoreCase(str1)))
-        {
-          LocalMultiProcConfig.putBool(paramString, false);
-          return true;
-        }
-        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "vertifySoIsOK. file md5 check failed. libName=" + paramString + " downloadMD5=" + str1 + " originalMD5=" + str2 });
-      }
+      ThreadManager.getUIHandler().post(new DrawerCoverUtil.1(paramRandomCoverView, paramString));
+      a();
     }
     for (;;)
     {
-      localFile.delete();
-      return false;
-      return true;
-      QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "vertifySoIsOK. file length check failed. libName=" + paramString + " file.length()=" + localFile.length() + " expect length=" + a(paramString) });
+      return null;
+      if (!b(paramQQAppInterface, paramCard))
+      {
+        if ((paramCard.lCurrentBgId == 160L) || (paramCard.lCurrentBgId == 1600L) || (awmr.a(paramCard.lCurrentStyleId)))
+        {
+          c(paramQQAppInterface, paramCard);
+          a(paramBaseActivity, paramQQAppInterface, paramCard, paramRandomCoverView, paramalos, paramBoolean);
+        }
+        else
+        {
+          ((bdqa)paramQQAppInterface.getManager(235)).a.a(paramQQAppInterface, "card." + paramCard.lCurrentBgId);
+          paramQQAppInterface = (VasQuickUpdateManager)paramQQAppInterface.getManager(184);
+          paramBaseActivity = new bhoa(paramBaseActivity, paramCard, paramRandomCoverView, paramalos, paramBoolean);
+          paramQQAppInterface.addWeakCallback(paramBaseActivity);
+          return paramBaseActivity;
+        }
+      }
+      else {
+        a(paramBaseActivity, paramQQAppInterface, paramCard, paramRandomCoverView, paramalos, paramBoolean);
+      }
     }
   }
   
-  public String b(String paramString)
+  public static void a()
   {
-    return jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + paramString;
+    jdField_a_of_type_JavaLangString = null;
   }
   
-  public void b()
+  public static void a(BaseActivity paramBaseActivity, QQAppInterface paramQQAppInterface, Card paramCard, RandomCoverView paramRandomCoverView, alos paramalos, boolean paramBoolean)
   {
-    QzoneModuleManager.getInstance().downloadModule("pictureMarkerSo.zip", new bhob(this));
-  }
-  
-  public void b(Downloader.DownloadListener paramDownloadListener)
-  {
-    if (AppSetting.b)
+    long l = paramCard.lCurrentBgId;
+    Object localObject = (Boolean)awml.a.get(Long.valueOf(l));
+    int i;
+    if ((localObject != null) && (((Boolean)localObject).booleanValue()))
     {
-      a(this.jdField_h_of_type_JavaLangString, jdField_a_of_type_JavaLangString, paramDownloadListener);
-      return;
+      i = 1;
+      awml.a.remove(Long.valueOf(l));
     }
-    a(this.jdField_f_of_type_JavaLangString, jdField_a_of_type_JavaLangString, paramDownloadListener);
+    for (;;)
+    {
+      localObject = paramalos.a(paramCard.strDrawerCardUrl);
+      a(paramCard.strDrawerCardUrl);
+      if ((localObject == null) || (i != 0))
+      {
+        if ((l == 160L) || (l == 1600L) || (awmr.a(paramCard.lCurrentStyleId))) {}
+        for (paramQQAppInterface = bcyw.a(paramBaseActivity, paramCard.strDrawerCardUrl);; paramQQAppInterface = awml.b(paramQQAppInterface.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId))
+        {
+          localObject = new BitmapFactory.Options();
+          ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.RGB_565;
+          localObject = bcwc.a(paramQQAppInterface, (BitmapFactory.Options)localObject);
+          if (localObject != null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.profilecard.", 2, "[personal card] fileName:" + paramQQAppInterface + " bitmap:" + localObject);
+            }
+            ThreadManager.getUIHandler().post(new DrawerCoverUtil.3(paramBaseActivity, (Bitmap)localObject, paramRandomCoverView, paramBoolean, paramalos, paramCard));
+          }
+          return;
+        }
+      }
+      ThreadManager.getUIHandler().post(new DrawerCoverUtil.4(paramRandomCoverView, (bhxu)localObject, paramBoolean));
+      return;
+      i = 0;
+    }
   }
   
-  public void c()
+  public static void a(QQAppInterface paramQQAppInterface, Card paramCard)
   {
-    QzoneModuleManager.getInstance().downloadModule("libandroidndkbeauty.so", new bhoc(this));
+    alkv localalkv = (alkv)paramQQAppInterface.a(2);
+    if (localalkv == null) {}
+    do
+    {
+      return;
+      byte b = (byte)bdiv.W(paramQQAppInterface.getApplication(), paramQQAppInterface.getCurrentAccountUin());
+      byte[] arrayOfByte1 = null;
+      byte[] arrayOfByte2 = null;
+      if (0 == 0)
+      {
+        arrayOfByte1 = new byte[1];
+        arrayOfByte1[0] = 0;
+      }
+      if (0 == 0)
+      {
+        arrayOfByte2 = new byte[1];
+        arrayOfByte2[0] = 0;
+      }
+      long l = paramCard.feedPreviewTime;
+      localalkv.a(paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.c(), 0, l, (byte)1, 0L, 0L, arrayOfByte1, "", 0L | 1L | 0x4 | 0x8 | 0x200 | 0x10 | 0x20 | 0x400 | 0x800 | 0x2000, 10004, arrayOfByte2, b);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.profilecard.", 2, "fetch profilecard info failure from cache,restart to fetch from net");
+  }
+  
+  public static void a(String paramString)
+  {
+    jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static boolean a()
+  {
+    return jdField_a_of_type_JavaLangString != null;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, Card paramCard)
+  {
+    paramQQAppInterface = bcyw.a(paramQQAppInterface, paramCard.lCurrentStyleId, true);
+    boolean bool = azib.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.", 2, "[check cardTemplate]lCurrentStyleId:" + paramCard.lCurrentStyleId + " backgroundUrl:" + paramCard.strDrawerCardUrl + " templateRet:" + paramCard.templateRet + " isSimpleUI:" + bool);
+    }
+    if (bool) {}
+    do
+    {
+      return false;
+      if (awmr.a(paramCard.lCurrentStyleId)) {
+        return true;
+      }
+    } while ((paramCard.lCurrentStyleId <= 0L) || (paramQQAppInterface == null) || (TextUtils.isEmpty(paramCard.strDrawerCardUrl)) || (paramCard.templateRet != 0));
+    return true;
+  }
+  
+  public static void b()
+  {
+    jdField_a_of_type_Boolean = true;
+  }
+  
+  public static boolean b()
+  {
+    return jdField_a_of_type_Boolean;
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, Card paramCard)
+  {
+    if ((paramCard.lCurrentBgId == 160L) || (paramCard.lCurrentBgId == 1600L) || (awmr.a(paramCard.lCurrentStyleId))) {
+      return bcyw.a(paramQQAppInterface.getApp(), paramCard.strDrawerCardUrl);
+    }
+    return new File(awml.b(paramQQAppInterface.getApp(), paramCard.lCurrentStyleId, paramCard.lCurrentBgId)).exists();
+  }
+  
+  public static void c()
+  {
+    jdField_a_of_type_Boolean = false;
+  }
+  
+  public static boolean c(QQAppInterface paramQQAppInterface, Card paramCard)
+  {
+    Object localObject = new File(bcyw.a(paramQQAppInterface.getApplication(), paramCard.strDrawerCardUrl));
+    localObject = new bdvv(paramCard.strDrawerCardUrl, (File)localObject);
+    ((bdvv)localObject).f = "profileCardDownload";
+    ((bdvv)localObject).e = "VIP_profilecard";
+    int i = bdvx.a((bdvv)localObject, paramQQAppInterface);
+    if (i == 0) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("DIYProfileTemplate.DrawerCover", 1, "download error:" + i);
+    }
+    for (;;)
+    {
+      return false;
+      QLog.e("DIYProfileTemplate.DrawerCover", 1, "download {" + paramCard.strDrawerCardUrl + "} error:" + i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhnz
  * JD-Core Version:    0.7.0.1
  */

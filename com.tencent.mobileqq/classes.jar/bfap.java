@@ -1,67 +1,34 @@
-import NS_MINI_INTERFACE.INTERFACE.StGetUserSettingReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetUserSettingRsp;
-import NS_MINI_INTERFACE.INTERFACE.StUserSettingInfo;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.open.agent.OpenAuthorityAccountView;
+import com.tencent.open.agent.PublicFragmentActivityForOpenSDK;
+import com.tencent.open.agent.QuickLoginAuthorityActivity;
 
 public class bfap
-  extends bfau
+  implements View.OnClickListener
 {
-  private INTERFACE.StGetUserSettingReq a = new INTERFACE.StGetUserSettingReq();
+  public bfap(OpenAuthorityAccountView paramOpenAuthorityAccountView, String paramString) {}
   
-  public bfap(String paramString1, String paramString2, String paramString3)
+  public void onClick(View paramView)
   {
-    this.a.appid.set(paramString1);
-    this.a.openid.set(paramString2);
-    this.a.settingItem.set(paramString3);
-  }
-  
-  protected String a()
-  {
-    return "mini_user_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    if (((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof PublicFragmentActivityForOpenSDK)) && (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null)) {
+      OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).a(this.jdField_a_of_type_JavaLangString, true);
     }
-    INTERFACE.StGetUserSettingRsp localStGetUserSettingRsp = new INTERFACE.StGetUserSettingRsp();
-    try
+    for (;;)
     {
-      localStGetUserSettingRsp.mergeFrom(a(paramArrayOfByte));
-      if ((localStGetUserSettingRsp != null) && (localStGetUserSettingRsp.setting != null))
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("settingItem", localStGetUserSettingRsp.setting.settingItem.get());
-        paramArrayOfByte.put("desc", localStGetUserSettingRsp.setting.desc.get());
-        paramArrayOfByte.put("authState", localStGetUserSettingRsp.setting.authState.get());
-        return paramArrayOfByte;
+      if (OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) != null) {
+        OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView).dismiss();
       }
-      betc.a("VerifyPluginRequest", "onResponse fail.rsp = null");
-      return null;
+      return;
+      if ((OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView) instanceof QuickLoginAuthorityActivity)) {
+        ((QuickLoginAuthorityActivity)OpenAuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentOpenAuthorityAccountView)).a(this.jdField_a_of_type_JavaLangString, true);
+      }
     }
-    catch (Exception paramArrayOfByte)
-    {
-      betc.a("VerifyPluginRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetUserSetting";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfap
  * JD-Core Version:    0.7.0.1
  */

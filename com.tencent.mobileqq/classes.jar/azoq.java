@@ -1,111 +1,74 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import mqq.manager.TicketManager;
-import tencent.im.oidb.cmd0x487.oidb_0x487.RspBody;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-class azoq
-  extends mxj
+public class azoq
 {
-  azoq(azop paramazop, long paramLong) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private LinkedList<azor> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public azoq(int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.troop_pubaccount", 2, "TroopEntranceBar fetchBindTroopInfo onResult, errorCode=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    for (;;)
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public static String a(List<azor> paramList)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      try
+      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("HH点mm分ss");
+      int i = paramList.size();
+      localStringBuilder.ensureCapacity((((azor)paramList.get(0)).jdField_a_of_type_JavaLangObject.toString().length() + 20) * i);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        Object localObject = new oidb_0x487.RspBody();
-        ((oidb_0x487.RspBody)localObject).mergeFrom(paramArrayOfByte);
-        paramInt = ((oidb_0x487.RspBody)localObject).uint32_result.get();
-        if (QLog.isColorLevel())
-        {
-          if (!((oidb_0x487.RspBody)localObject).bytes_errmsg.has()) {
-            break label563;
-          }
-          paramArrayOfByte = ((oidb_0x487.RspBody)localObject).bytes_errmsg.get().toStringUtf8();
-          QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo onResult, ret=" + paramInt + "," + paramArrayOfByte);
-        }
-        if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject).uint32_groups_flag.has()))
-        {
-          this.jdField_a_of_type_Azop.jdField_a_of_type_Int = ((oidb_0x487.RspBody)localObject).uint32_groups_flag.get();
-          azop.a(this.jdField_a_of_type_Azop);
-          this.jdField_a_of_type_Azop.notifyObservers(Integer.valueOf(0));
-          return;
-        }
-        if ((paramInt == 0) && (((oidb_0x487.RspBody)localObject).uint32_follow_state.has()))
-        {
-          paramBundle = (bajo)this.jdField_a_of_type_Azop.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(132);
-          paramInt = ((oidb_0x487.RspBody)localObject).uint32_follow_state.get();
-          int i = ((oidb_0x487.RspBody)localObject).uint32_remind_flag.get();
-          if (i == 1)
-          {
-            localObject = (QQAppInterface)this.b.get();
-            if (localObject == null) {
-              break label562;
-            }
-            String str = ((QQAppInterface)localObject).c();
-            paramArrayOfByte = (TicketManager)((QQAppInterface)localObject).getManager(2);
-            if (paramArrayOfByte == null) {
-              break label557;
-            }
-            paramArrayOfByte = paramArrayOfByte.getSkey(str);
-            HashMap localHashMap = new HashMap();
-            Bundle localBundle = new Bundle();
-            localBundle.putString("op", "0");
-            localBundle.putString("puin", "" + this.jdField_a_of_type_Long);
-            localBundle.putString("Cookie", "uin=" + str + ";skey=" + paramArrayOfByte);
-            localBundle.putString("Referer", "https://buluo.qq.com");
-            localHashMap.put("BUNDLE", localBundle);
-            localHashMap.put("CONTEXT", ((QQAppInterface)localObject).getApp().getApplicationContext());
-            new baid("https://buluo.qq.com/cgi-bin/bar/extra/clean_temp_follow_state", "", new azor(this, paramBundle, i), 1000, null).a(localHashMap);
-          }
-          paramBundle.a(this.jdField_a_of_type_Azop.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramInt, i);
-          if (paramInt == 1)
-          {
-            azop.b(this.jdField_a_of_type_Azop);
-            this.jdField_a_of_type_Azop.notifyObservers(Integer.valueOf(1));
-            return;
-          }
-        }
+        azor localazor = (azor)paramList.next();
+        localStringBuilder.append("[").append(localSimpleDateFormat.format(new Date(localazor.jdField_a_of_type_Long))).append(":").append(localazor.jdField_a_of_type_JavaLangObject.toString()).append("]");
       }
-      catch (Exception paramArrayOfByte)
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public List<azor> a(Object arg1)
+  {
+    Object localObject1 = new azor();
+    ((azor)localObject1).jdField_a_of_type_Long = System.currentTimeMillis();
+    ((azor)localObject1).jdField_a_of_type_JavaLangObject = ???;
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      this.jdField_a_of_type_JavaUtilLinkedList.addLast(localObject1);
+      if (this.jdField_a_of_type_JavaUtilLinkedList.size() < this.jdField_a_of_type_Int) {
+        return null;
+      }
+      azor localazor = (azor)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
+      if (((azor)localObject1).jdField_a_of_type_Long - localazor.jdField_a_of_type_Long < this.jdField_a_of_type_Long)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo, exception=" + paramArrayOfByte.toString());
-        }
+        localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedList);
+        return localObject1;
       }
-      for (;;)
-      {
-        azop.c(this.jdField_a_of_type_Azop);
-        this.jdField_a_of_type_Azop.notifyObservers();
-        return;
-        QLog.d(".troop.troop_pubaccount", 2, "fetchBindTroopInfo error. errorCode=" + paramInt);
-      }
-      label557:
-      paramArrayOfByte = null;
-      continue;
-      label562:
+    }
+    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+    return null;
+  }
+  
+  public void a()
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    {
+      this.jdField_a_of_type_JavaUtilLinkedList.clear();
       return;
-      label563:
-      paramArrayOfByte = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azoq
  * JD-Core Version:    0.7.0.1
  */

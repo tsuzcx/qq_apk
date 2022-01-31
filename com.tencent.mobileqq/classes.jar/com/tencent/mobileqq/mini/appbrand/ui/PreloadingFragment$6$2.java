@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -22,7 +22,7 @@ class PreloadingFragment$6$2
     QLog.e("PreloadingFragment", 1, "GetAppInfoByLink failed. retCode=" + l + " errMsg=" + str);
     try
     {
-      bcql.a(BaseApplicationImpl.getContext(), 1, "" + str, 1).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 1, "" + str, 1).a();
       return;
     }
     catch (Throwable localThrowable)
@@ -33,7 +33,7 @@ class PreloadingFragment$6$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment.6.2
  * JD-Core Version:    0.7.0.1
  */

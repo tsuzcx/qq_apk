@@ -1,44 +1,55 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import android.os.Handler;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.2;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.3;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.4;
+import com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchFragment.FileSelectorSearchAdapter.5;
+import java.util.List;
 
 public class aqyt
+  extends ayfe<ayjl, ayru>
 {
-  int a = 0;
+  public aqyt(FileSelectorSearchFragment paramFileSelectorSearchFragment) {}
   
-  public static aqyt a(String paramString)
+  protected aymg<ayjl, ayru> a(int paramInt)
   {
-    if (paramString == null) {}
-    do
+    aqyz localaqyz = new aqyz();
+    localaqyz.a(new aqyu(this));
+    return localaqyz;
+  }
+  
+  protected ayrv a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new aqzc(paramViewGroup);
+  }
+  
+  public void a(List<ayjl> paramList)
+  {
+    super.a(paramList);
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      for (;;)
-      {
-        return null;
-        try
-        {
-          paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
-          Object localObject = paramString.getElementsByTagName("hotpic_config");
-          if ((localObject != null) && (((NodeList)localObject).getLength() > 0))
-          {
-            localObject = new aqyt();
-            ((aqyt)localObject).a = Integer.parseInt(paramString.getElementsByTagName("entry").item(0).getFirstChild().getNodeValue());
-            return localObject;
-          }
-        }
-        catch (Exception paramString) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("HotPicConfProcessor", 1, "handleHotPicConfig failed" + paramString);
-    return null;
+      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.2(this));
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.3(this));
+  }
+  
+  public void a(List<ayjl> paramList, boolean paramBoolean)
+  {
+    super.a(paramList, paramBoolean);
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.4(this));
+      return;
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new FileSelectorSearchFragment.FileSelectorSearchAdapter.5(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqyt
  * JD-Core Version:    0.7.0.1
  */

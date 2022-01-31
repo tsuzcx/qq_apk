@@ -1,29 +1,50 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.ark.open.ArkAppInfo.AppTemplateView;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class afdv
-  extends akui
+public final class afdv
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  afdv(afdu paramafdu, String paramString)
+  protected WeakReference<afdt> a;
+  
+  public afdv(WeakReference<afdt> paramWeakReference)
   {
-    super(paramString);
+    this.a = paramWeakReference;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick tipswording3 grant onLocationFinish info = " + paramSosoLbsInfo);
+    paramObject = (afdt)this.a.get();
+    if (paramObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ArkApp.ArkAppContainer", 1, "onGetAppPathByName.wrapper == null");
+      }
+      return;
     }
-    if (paramInt != 0) {
-      QLog.i("ac_ft.AddContactViewPagerTroopFragment", 1, "onclick tipswording3 grant onLocationFinish, errorCode=" + paramInt);
+    String str1 = paramObject.a(paramString);
+    if (paramAppPathInfo != null) {}
+    for (paramString = paramAppPathInfo.path;; paramString = null)
+    {
+      paramObject.a.getAppFromLocal = false;
+      paramObject.a.endOfGetApp = System.currentTimeMillis();
+      if ((paramAppPathInfo != null) && (paramAppPathInfo.appTempInfo != null))
+      {
+        String str2 = paramAppPathInfo.appTempInfo.template;
+        str2 = paramAppPathInfo.appTempInfo.templateView;
+        afdt.a(paramObject).view = str2;
+      }
+      afdt.a(paramAppPathInfo);
+      paramObject.a(paramString, paramInt, str1);
+      return;
     }
-    this.a.a.a.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afdv
  * JD-Core Version:    0.7.0.1
  */

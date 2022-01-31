@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import beix;
-import bekr;
+import bgiy;
+import bgkd;
 
 class StorageJsPlugin$4
   implements StorageJsPlugin.StorageTask
 {
-  StorageJsPlugin$4(StorageJsPlugin paramStorageJsPlugin, String paramString, bekr parambekr) {}
+  StorageJsPlugin$4(StorageJsPlugin paramStorageJsPlugin, String paramString, bgkd parambgkd) {}
   
   public String run()
   {
@@ -18,7 +18,7 @@ class StorageJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.StorageJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

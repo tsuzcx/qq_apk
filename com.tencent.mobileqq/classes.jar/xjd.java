@@ -1,21 +1,17 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.videostory.widget.view.smartmusicview.SmartMusicRecyclerView;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class xjd
-  extends RecyclerView.OnScrollListener
+public final class xjd
+  implements FilenameFilter
 {
-  public xjd(SmartMusicRecyclerView paramSmartMusicRecyclerView) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public boolean accept(File paramFile, String paramString)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    SmartMusicRecyclerView.a(this.a, paramRecyclerView, paramInt);
+    return paramString.endsWith(".mp4");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xjd
  * JD-Core Version:    0.7.0.1
  */

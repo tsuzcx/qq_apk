@@ -1,27 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
 
 public class qnb
-  implements onx
 {
-  public qnb(VideoFeedsFirstVideoRecommendationManager.VideoFeedsFirstRecommendObserver.1 param1, VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
+  public int a;
+  public long a;
+  public UrlJumpInfo a;
+  public String a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void a(ooa paramooa)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(qmz.a(), 2, "UUIDToUrlCallback Callback vid=" + paramooa.jdField_b_of_type_JavaLangString + ", url=" + paramooa.jdField_a_of_type_JavaLangString + ", isH265=" + paramooa.jdField_a_of_type_Boolean + ", isHWCodec=" + paramooa.jdField_b_of_type_Boolean + ", fileBitRate=" + paramooa.c);
-    }
-    if ((!TextUtils.isEmpty(paramooa.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramooa.jdField_a_of_type_JavaLangString, paramooa.jdField_b_of_type_JavaLangString))) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreDownloadMgr.a(paramooa.jdField_a_of_type_JavaLangString, paramooa.jdField_b_of_type_JavaLangString, 0, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsFirstVideoRecommendationManager$VideoFeedsFirstRecommendObserver$1.a.d);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id=").append(this.jdField_a_of_type_Long).append("\n").append("rowKey=").append(this.jdField_a_of_type_JavaLangString).append("\n").append("title=").append(this.jdField_b_of_type_JavaLangString).append("\n").append("picUrl=").append(this.c).append("\n").append("jumpUrl=").append(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo).append("\n").append("playCount=").append(this.jdField_a_of_type_Int).append("\n").append("duration=").append(this.jdField_b_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qnb
  * JD-Core Version:    0.7.0.1
  */

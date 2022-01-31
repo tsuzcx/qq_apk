@@ -1,28 +1,24 @@
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.minigame.manager.JsApiUpdateManager.2.1;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public final class bewg
-  implements bevs
+final class bewg
+  extends BroadcastReceiver
 {
-  bewg(beuv parambeuv) {}
-  
-  public void onDownloadGpkgProgress(MiniAppInfo paramMiniAppInfo, float paramFloat, long paramLong) {}
-  
-  public void onInitGpkgInfo(int paramInt, bevt parambevt, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramInt == 0) && (parambevt != null))
-    {
-      bejl.a().a(parambevt, true);
-      bejn.a(new JsApiUpdateManager.2.1(this), 16, null, true);
-      bewe.b(this.a, true);
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    while ((!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramIntent.getIntExtra("type", 0) == 0)) {
       return;
     }
-    bewe.b(this.a, false);
+    bewd.a(paramIntent.getStringExtra("account"));
+    bewd.b(bewd.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bewg
  * JD-Core Version:    0.7.0.1
  */

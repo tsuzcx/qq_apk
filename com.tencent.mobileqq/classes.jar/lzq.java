@@ -1,12 +1,17 @@
-public abstract interface lzq
+class lzq
+  implements mag
 {
-  public abstract void a(int paramInt);
+  lzq(lzp paramlzp, String paramString) {}
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
+  public void a(maf parammaf)
+  {
+    parammaf.a(this.jdField_a_of_type_JavaLangString);
+    parammaf.a();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lzq
  * JD-Core Version:    0.7.0.1
  */

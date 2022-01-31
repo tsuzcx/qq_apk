@@ -1,31 +1,69 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLImageView;
+import com.tencent.qphone.base.util.QLog;
 
 class ajed
-  implements Animation.AnimationListener
+  implements URLDrawable.URLDrawableListener
 {
-  ajed(ajec paramajec, View paramView) {}
+  ajed(ajec paramajec, ajdy paramajdy, ajdz paramajdz) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimation.leftMargin = this.jdField_a_of_type_Ajec.e;
-    paramAnimation.topMargin = this.jdField_a_of_type_Ajec.f;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Ajec.a = false;
+    QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable load failed.");
+    paramURLDrawable = null;
+    if (paramThrowable != null) {
+      paramURLDrawable = paramThrowable.getMessage();
+    }
+    try
+    {
+      if (this.jdField_a_of_type_Ajdy != null) {
+        bjmf.a().a(2741, this.jdField_a_of_type_Ajdy.c, 100, "qboss load local photo fail throwable = " + paramURLDrawable + " url = " + this.jdField_a_of_type_Ajdz.a + " filePath = " + this.jdField_a_of_type_Ajdz.c);
+      }
+      this.jdField_a_of_type_Ajec.e();
+      return;
+    }
+    catch (Exception paramURLDrawable)
+    {
+      paramURLDrawable.printStackTrace();
+      QLog.e("QbossADBannerManager", 1, "onLoadFailed Exception");
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    QLog.i("QbossADBannerManager", 1, "showQbossADBanner urlDrawable load success.");
+    try
+    {
+      if ((this.jdField_a_of_type_Ajec.b != null) && (this.jdField_a_of_type_Ajec.a != null) && (paramURLDrawable != null))
+      {
+        this.jdField_a_of_type_Ajec.b.setVisibility(0);
+        this.jdField_a_of_type_Ajec.a.setImageDrawable(paramURLDrawable);
+        ajec.a(this.jdField_a_of_type_Ajec, this.jdField_a_of_type_Ajdy);
+        this.jdField_a_of_type_Ajec.a(this.jdField_a_of_type_Ajdy);
+        return;
+      }
+      if (this.jdField_a_of_type_Ajec.b != null)
+      {
+        this.jdField_a_of_type_Ajec.b.setVisibility(8);
+        return;
+      }
+    }
+    catch (Exception paramURLDrawable)
+    {
+      paramURLDrawable.printStackTrace();
+      QLog.e("QbossADBannerManager", 1, "onLoadSuccessed Exception");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajed
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,23 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import mqq.manager.WtloginManager;
-import mqq.observer.SSOAccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.vas.FriendCloneSettingFragment;
 
-class bdoj
-  extends SSOAccountObserver
+public class bdoj
+  implements DialogInterface.OnCancelListener
 {
-  bdoj(bdod parambdod, OpenSDKAppInterface paramOpenSDKAppInterface, bdol parambdol) {}
+  public bdoj(FriendCloneSettingFragment paramFriendCloneSettingFragment) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramBundle == null) {}
-    for (paramString = "null";; paramString = Integer.valueOf(paramBundle.getInt("code")))
-    {
-      QLog.d("SSOAccountObserver", 1, new Object[] { "-->getTicketNoPasswd onFailed", ", action", Integer.valueOf(paramInt1), ", code=", paramString });
-      this.jdField_a_of_type_Bdol.a();
-      return;
+    if (this.a.a != null) {
+      this.a.a.finish();
     }
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    QLog.d("SSOAccountObserver", 1, "-->getTicketNoPasswd onGetTicketNoPasswd");
-    if ((!paramBundle.getBoolean("fake_callback")) && (paramInt == 4096)) {
-      bdkt.a(paramString, System.currentTimeMillis());
-    }
-    WtloginManager localWtloginManager = (WtloginManager)this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.getManager(1);
-    bdnp localbdnp = new bdnp();
-    localbdnp.jdField_b_of_type_JavaLangString = new String(paramArrayOfByte);
-    localbdnp.jdField_a_of_type_JavaLangString = Long.toString(this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(localWtloginManager, paramString));
-    localbdnp.jdField_a_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp");
-    localbdnp.jdField_b_of_type_ArrayOfByte = paramBundle.getByteArray("st_temp_key");
-    this.jdField_a_of_type_Bdol.a(localbdnp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdoj
  * JD-Core Version:    0.7.0.1
  */

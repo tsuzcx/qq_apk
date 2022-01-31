@@ -1,35 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Toast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.4.1;
 
-class bcqm
-  implements View.OnTouchListener
+public class bcqm
+  implements baaa
 {
-  bcqm(bcql parambcql, Toast paramToast, View.OnTouchListener paramOnTouchListener) {}
+  bcqm(bcqi parambcqi) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    boolean bool = true;
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "start to cancel toast");
-      }
-      this.jdField_a_of_type_AndroidWidgetToast.cancel();
-      bcql.a(this.jdField_a_of_type_Bcql, true);
-      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
-        bool = this.jdField_a_of_type_AndroidViewView$OnTouchListener.onTouch(paramView, paramMotionEvent);
-      }
-      return bool;
-    }
-    return false;
+    this.a.a.post(new TroopGiftAnimationController.4.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcqm
  * JD-Core Version:    0.7.0.1
  */

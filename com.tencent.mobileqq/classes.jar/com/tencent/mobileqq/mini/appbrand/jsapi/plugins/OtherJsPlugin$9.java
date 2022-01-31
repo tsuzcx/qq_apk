@@ -1,53 +1,23 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import bdij;
-import com.tencent.mobileqq.mini.webview.JsRuntime;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class OtherJsPlugin$9
-  extends BroadcastReceiver
+  implements Runnable
 {
-  OtherJsPlugin$9(OtherJsPlugin paramOtherJsPlugin, JsRuntime paramJsRuntime, int paramInt) {}
+  OtherJsPlugin$9(OtherJsPlugin paramOtherJsPlugin) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    String str = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultData");
-    paramIntent = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultType");
-    QLog.d(OtherJsPlugin.access$000(), 2, "scanResult: " + str + "----scan_type: " + paramIntent);
-    try
-    {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("result", str);
-      localJSONObject2.put("scanType", paramIntent);
-      localJSONObject2.put("rawData", bdij.a(str));
-      localJSONObject2.put("charSet", "utf-8");
-      localJSONObject1.put("detail", localJSONObject2);
-      localJSONObject1.put("result", str);
-      localJSONObject1.put("scanType", paramIntent);
-      localJSONObject1.put("rawData", bdij.a(str));
-      localJSONObject1.put("charSet", "utf-8");
-      this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webView, "scanCode", localJSONObject1, this.val$callbackId);
-      paramContext.unregisterReceiver(OtherJsPlugin.access$400(this.this$0));
-      OtherJsPlugin.access$402(this.this$0, null);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        QLog.e(OtherJsPlugin.access$000(), 1, "scan result error." + paramContext);
-      }
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), 2, BaseApplicationImpl.getContext().getResources().getString(2131690904), 5000).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.OtherJsPlugin.9
  * JD-Core Version:    0.7.0.1
  */

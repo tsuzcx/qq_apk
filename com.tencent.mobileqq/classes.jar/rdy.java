@@ -1,30 +1,22 @@
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianMsgBoxRedPntInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import mqq.app.AppRuntime;
 
-public class rdy
-  implements View.OnClickListener
+final class rdy
+  extends AnimatorListenerAdapter
 {
-  public rdy(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  rdy(View paramView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ReadInJoyListViewGroup.b(this.a);
-    paramView = ((KandianMergeManager)onh.a().getManager(162)).a();
-    if ((paramView != null) && (paramView.isFromNotification))
-    {
-      onh.a(this.a.getContext(), 5, false, paramView.mMsgId);
-      return;
-    }
-    onh.a(this.a.getContext(), 3);
+    this.a.setLayerType(0, null);
+    this.a.setVisibility(8);
+    this.a.setTranslationY(0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rdy
  * JD-Core Version:    0.7.0.1
  */

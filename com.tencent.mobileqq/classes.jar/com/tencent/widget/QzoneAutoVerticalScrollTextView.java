@@ -14,7 +14,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher.ViewFactory;
-import bfvd;
+import bhwa;
 
 public class QzoneAutoVerticalScrollTextView
   extends TextSwitcher
@@ -24,10 +24,10 @@ public class QzoneAutoVerticalScrollTextView
   private long jdField_a_of_type_Long = 2500L;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private bfvd jdField_a_of_type_Bfvd;
+  private bhwa jdField_a_of_type_Bhwa;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private long jdField_b_of_type_Long = 1000L;
-  private bfvd jdField_b_of_type_Bfvd;
+  private bhwa jdField_b_of_type_Bhwa;
   
   public QzoneAutoVerticalScrollTextView(Context paramContext)
   {
@@ -41,30 +41,30 @@ public class QzoneAutoVerticalScrollTextView
     b();
   }
   
-  private bfvd a(boolean paramBoolean1, boolean paramBoolean2)
+  private bhwa a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    bfvd localbfvd = new bfvd(this, paramBoolean1, paramBoolean2);
-    localbfvd.setDuration(this.jdField_b_of_type_Long);
-    localbfvd.setFillAfter(false);
-    localbfvd.setInterpolator(new AccelerateInterpolator());
-    return localbfvd;
+    bhwa localbhwa = new bhwa(this, paramBoolean1, paramBoolean2);
+    localbhwa.setDuration(this.jdField_b_of_type_Long);
+    localbhwa.setFillAfter(false);
+    localbhwa.setInterpolator(new AccelerateInterpolator());
+    return localbhwa;
   }
   
   private void b()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     setFactory(this);
-    this.jdField_a_of_type_Bfvd = a(true, true);
-    this.jdField_b_of_type_Bfvd = a(false, true);
+    this.jdField_a_of_type_Bhwa = a(true, true);
+    this.jdField_b_of_type_Bhwa = a(false, true);
   }
   
   public void a()
   {
-    if (getInAnimation() != this.jdField_a_of_type_Bfvd) {
-      setInAnimation(this.jdField_a_of_type_Bfvd);
+    if (getInAnimation() != this.jdField_a_of_type_Bhwa) {
+      setInAnimation(this.jdField_a_of_type_Bhwa);
     }
-    if (getOutAnimation() != this.jdField_b_of_type_Bfvd) {
-      setOutAnimation(this.jdField_b_of_type_Bfvd);
+    if (getOutAnimation() != this.jdField_b_of_type_Bhwa) {
+      setOutAnimation(this.jdField_b_of_type_Bhwa);
     }
   }
   
@@ -129,8 +129,8 @@ public class QzoneAutoVerticalScrollTextView
       if (paramArrayOfString.length <= 1) {
         break label102;
       }
-      setInAnimation(this.jdField_a_of_type_Bfvd);
-      setOutAnimation(this.jdField_b_of_type_Bfvd);
+      setInAnimation(this.jdField_a_of_type_Bhwa);
+      setOutAnimation(this.jdField_b_of_type_Bhwa);
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(9001, this.jdField_a_of_type_Long);
       }
@@ -143,7 +143,7 @@ public class QzoneAutoVerticalScrollTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.QzoneAutoVerticalScrollTextView
  * JD-Core Version:    0.7.0.1
  */

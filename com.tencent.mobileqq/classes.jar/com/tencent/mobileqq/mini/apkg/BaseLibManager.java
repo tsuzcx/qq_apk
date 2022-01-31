@@ -3,8 +3,8 @@ package com.tencent.mobileqq.mini.apkg;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import apvd;
-import bdik;
+import arof;
+import bfhi;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -124,7 +124,7 @@ public class BaseLibManager
     if (paramBaseLibInfo == null) {
       return Boolean.valueOf(false);
     }
-    String str = StorageUtil.getPreference().getString("version", "1.13.0.00013");
+    String str = StorageUtil.getPreference().getString("version", "1.14.0.00225");
     return Boolean.valueOf(BaseLibInfo.needUpdateVersion(paramBaseLibInfo.baseLibVersion, str));
   }
   
@@ -243,7 +243,7 @@ public class BaseLibManager
     }
     try
     {
-      paramString1 = AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bdik.d(paramString1) + "_" + paramString2 + File.separator;
+      paramString1 = AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bfhi.d(paramString1) + "_" + paramString2 + File.separator;
       return paramString1;
     }
     catch (Throwable paramString1)
@@ -257,7 +257,7 @@ public class BaseLibManager
   {
     BaseLibInfo localBaseLibInfo = new BaseLibInfo();
     String str = StorageUtil.getPreference().getString("downloadUrl", null);
-    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.13.0.00013");
+    localBaseLibInfo.baseLibVersion = StorageUtil.getPreference().getString("version", "1.14.0.00225");
     localBaseLibInfo.baseLibUrl = str;
     return localBaseLibInfo;
   }
@@ -267,19 +267,19 @@ public class BaseLibManager
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return null;
     }
-    return AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bdik.d(paramString1) + "_" + paramString2 + ".zip";
+    return AppLoaderFactory.BASE_LIB_PATH_DIR + File.separator + bfhi.d(paramString1) + "_" + paramString2 + ".zip";
   }
   
   public boolean installInnerBaseLib()
   {
-    String str = g().getBaseLibDir("mini", "1.13.0.00013");
+    String str = g().getBaseLibDir("mini", "1.14.0.00225");
     if (g().isBaseLibDirValid(str))
     {
-      QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng]installInnerBaseLib, inner baseLib already installed, version:1.13.0.00013");
+      QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng]installInnerBaseLib, inner baseLib already installed, version:1.14.0.00225");
       return true;
     }
     int j = QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_inner_baselib_retry_count", MINI_APP_INNER_BASELIB_RETRY_COUNT_DEFAULT);
-    QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng]installInnerBaseLib, version:1.13.0.00013, totalCount:" + j);
+    QLog.i("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng]installInnerBaseLib, version:1.14.0.00225, totalCount:" + j);
     int i = 0;
     while (i < j)
     {
@@ -291,7 +291,7 @@ public class BaseLibManager
       }
       File localFile = new File(str);
       if (localFile.exists()) {
-        apvd.a(localFile);
+        arof.a(localFile);
       }
       QLog.w("miniapp-process_BaseLibManager[MiniEng]", 1, "[MiniEng] install inner baseLib fail, from mini to " + str + ", tryCount:" + i + ", totalCount:" + j);
       i += 1;
@@ -468,7 +468,7 @@ public class BaseLibManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.BaseLibManager
  * JD-Core Version:    0.7.0.1
  */

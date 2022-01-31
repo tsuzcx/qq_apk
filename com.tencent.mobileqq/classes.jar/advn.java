@@ -1,19 +1,28 @@
-class advn
-  extends actn
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import mqq.os.MqqHandler;
+
+public class advn
+  extends MqqHandler
 {
-  public Object a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
+  public advn(SubLoginActivity paramSubLoginActivity) {}
   
-  advn(advl paramadvl) {}
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1982: 
+      this.a.finish();
+      return;
+    }
+    this.a.e();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advn
  * JD-Core Version:    0.7.0.1
  */

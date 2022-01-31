@@ -1,31 +1,23 @@
-import com.qq.android.dexposed.XC_MethodHook;
-import com.qq.android.dexposed.XC_MethodHook.MethodHookParam;
-import com.tencent.mobileqq.config.QConfigureException;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRecognition;
 
-final class ampr
-  extends XC_MethodHook
+public final class ampr
+  implements Parcelable.Creator<ARRecognition>
 {
-  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
+  public ARRecognition a(Parcel paramParcel)
   {
-    try
-    {
-      paramMethodHookParam = ampo.a();
-      if ((!paramMethodHookParam.contains("QConfigManager.readSync")) && (!paramMethodHookParam.contains("QConfigManager.loadConObj")) && (!paramMethodHookParam.contains("QConfigManager.save"))) {
-        ampo.a(new QConfigureException(paramMethodHookParam), "Can not parse json beyond QConfigManager when app starting.", "QConfigWatchDog_Json");
-      }
-      return;
-    }
-    catch (Exception paramMethodHookParam)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QConfigWatchDog", 2, "hook json exception.", paramMethodHookParam);
-    }
+    return new ARRecognition(paramParcel);
+  }
+  
+  public ARRecognition[] a(int paramInt)
+  {
+    return new ARRecognition[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampr
  * JD-Core Version:    0.7.0.1
  */

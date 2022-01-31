@@ -116,39 +116,47 @@ public class ActionLivenessState
   public void enter()
   {
     super.enter();
-    Object localObject = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE));
-    this.continuousDetectCount = ((Integer)((YtFSMBaseState)localObject).getStateDataBy("continuous_detect_count")).intValue();
-    this.faceStatus = ((YTFaceTrack.FaceStatus[])((YtFSMBaseState)localObject).getStateDataBy("face_status"));
-    localObject = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.NET_FETCH_STATE));
-    int i;
-    if ((localObject != null) && (!this.needLocalConfig))
+    try
     {
-      localObject = (String)((YtFSMBaseState)localObject).getStateDataBy("action_data");
-      YtLogger.d(TAG, "action data :" + (String)localObject);
-      this.actionDataParsed = ((String)localObject).split(",");
-      if (this.actionDataParsed.length > this.actionCurrentIndex)
+      Object localObject = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.SILENT_STATE));
+      this.continuousDetectCount = ((Integer)((YtFSMBaseState)localObject).getStateDataBy("continuous_detect_count")).intValue();
+      this.faceStatus = ((YTFaceTrack.FaceStatus[])((YtFSMBaseState)localObject).getStateDataBy("face_status"));
+      localObject = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.NET_FETCH_STATE));
+      int i;
+      if ((localObject != null) && (!this.needLocalConfig))
       {
-        i = Integer.parseInt(this.actionDataParsed[this.actionCurrentIndex]);
-        switch (i)
-        {
+        localObject = (String)((YtFSMBaseState)localObject).getStateDataBy("action_data");
+        YtLogger.d(TAG, "action data :" + (String)localObject);
+        this.actionDataParsed = ((String)localObject).split(",");
+        if (this.actionDataParsed.length > this.actionCurrentIndex) {
+          i = Integer.parseInt(this.actionDataParsed[this.actionCurrentIndex]);
         }
       }
-    }
-    for (;;)
-    {
-      this.stateData.put("current_action_type", Integer.valueOf(i));
-      if ((!this.isActionFinished) && (this.faceStatus != null) && (this.faceStatus.length > 0) && (this.continuousDetectCount > 1)) {
-        sendFSMEvent(new ActionLivenessState.2(this));
+      switch (i)
+      {
+      default: 
+        this.stateData.put("current_action_type", Integer.valueOf(i));
+        if ((!this.isActionFinished) && (this.faceStatus != null) && (this.faceStatus.length > 0) && (this.continuousDetectCount > 1)) {
+          sendFSMEvent(new ActionLivenessState.2(this));
+        }
+        this.stateData.put("action_seq", this.actionDataParsed);
+        return;
       }
-      this.stateData.put("action_seq", this.actionDataParsed);
-      return;
-      this.actionLiveType = 1;
-      continue;
-      this.actionLiveType = 2;
-      continue;
-      this.actionLiveType = 3;
-      continue;
-      this.actionLiveType = 4;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        YtLogger.e(TAG, localException.getLocalizedMessage());
+        continue;
+        this.actionLiveType = 1;
+        continue;
+        this.actionLiveType = 2;
+        continue;
+        this.actionLiveType = 3;
+        continue;
+        this.actionLiveType = 4;
+      }
     }
   }
   
@@ -301,7 +309,7 @@ public class ActionLivenessState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.ActionLivenessState
  * JD-Core Version:    0.7.0.1
  */

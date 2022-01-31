@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.imaxad;
 
-import ardi;
+import astw;
 
 public class ImaxAdVideoPreloadManager$5
   implements Runnable
 {
-  public ImaxAdVideoPreloadManager$5(ardi paramardi) {}
+  public ImaxAdVideoPreloadManager$5(astw paramastw) {}
   
   public void run()
   {
-    ardi.a(this.this$0, 2);
+    astw.a(this.this$0, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager.5
  * JD-Core Version:    0.7.0.1
  */

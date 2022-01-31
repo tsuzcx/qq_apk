@@ -1,55 +1,25 @@
-import android.support.annotation.NonNull;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import java.util.List;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class uot
-  extends ste<StoryAtVideoFragment, uqd>
+class uot
+  extends vdz
 {
-  public uot(StoryAtVideoFragment paramStoryAtVideoFragment)
+  uot(uor paramuor) {}
+  
+  public void a()
   {
-    super(paramStoryAtVideoFragment);
+    super.a();
+    uoq.a(this.a.a, null);
   }
   
-  public void a(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull uqd paramuqd)
+  public void a(int paramInt)
   {
-    if ((!paramuqd.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString)) || (paramuqd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramStoryAtVideoFragment.jdField_a_of_type_Upp == null))
-    {
-      ved.b(this.TAG, "ignore this comment list event. %s.", paramuqd.toString());
-      return;
-    }
-    if (!paramStoryAtVideoFragment.jdField_a_of_type_Upp.c())
-    {
-      ved.e(this.TAG, "this feed does not support video list.ignore this comment list event. %s.", new Object[] { paramuqd.toString() });
-      return;
-    }
-    ved.a(this.TAG, "receive comment list event. %s.", paramuqd.toString());
-    paramStoryAtVideoFragment.jdField_a_of_type_Upp.a(paramuqd.jdField_a_of_type_JavaUtilList, paramuqd.c);
-    paramStoryAtVideoFragment.jdField_a_of_type_Upp.a().updateVideoInfo(paramuqd.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-    if (paramStoryAtVideoFragment.jdField_a_of_type_Upp.a().size() < 1)
-    {
-      paramStoryAtVideoFragment.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
-      paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
-      paramStoryAtVideoFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      return;
-    }
-    paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.jdField_a_of_type_Upp);
+    super.a(paramInt);
+    wta.a("home_page", "suc_share", 1, paramInt, new String[] { wta.b(this.a.a.a) + "", wta.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
-  
-  public Class acceptEventClass()
-  {
-    return uqd.class;
-  }
-  
-  public void b(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull uqd paramuqd) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uot
  * JD-Core Version:    0.7.0.1
  */

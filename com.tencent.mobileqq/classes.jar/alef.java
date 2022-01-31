@@ -1,63 +1,192 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public abstract class alef
-  extends Binder
-  implements alee
+public class alef
 {
-  public alef()
-  {
-    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-  }
+  public static String A;
+  public static String B;
+  public static String C;
+  public static String D;
+  public static String E;
+  public static String F;
+  public static String G;
+  public static String H;
+  public static String I;
+  public static String J;
+  public static String K;
+  public static String L;
+  public static String M;
+  public static String N;
+  public static String O;
+  public static String P;
+  public static String Q;
+  public static String R;
+  public static String S;
+  public static String T;
+  public static String U;
+  public static String V;
+  public static final String W;
+  public static String X;
+  public static String Y;
+  public static String Z;
+  public static int a;
+  public static long a;
+  public static String a;
+  public static final String[] a;
+  public static final String aA;
+  public static final String aB;
+  public static String aC = alpo.a(2131700689);
+  public static String aD = alpo.a(2131700688);
+  public static String aE = "https://cmshow.gtimg.cn/client/img/apollo_aio_game_guide2.png";
+  public static String aF = "#FFE746";
+  public static String aG = "https://cmshow.qq.com/apollo/html/game-platform/game-center.html?_wv=16777219&_wwv=4&_bid=2695";
+  public static String aH = alpo.a(2131700687);
+  public static String aa;
+  public static String ab;
+  public static String ac;
+  public static String ad;
+  public static String ae;
+  public static String af;
+  public static String ag;
+  public static String ah;
+  public static String ai;
+  public static String aj;
+  public static String ak;
+  public static String al;
+  public static String am;
+  public static String an;
+  public static String ao;
+  public static String ap;
+  public static String aq;
+  public static String ar;
+  public static String as;
+  public static String at;
+  public static String au;
+  public static String av;
+  public static String aw;
+  public static String ax;
+  public static String ay;
+  public static final String az;
+  public static int b;
+  public static long b;
+  public static String b;
+  public static final String[] b;
+  public static int c;
+  public static String c;
+  public static int d;
+  public static String d;
+  public static int e;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static String i;
+  public static String j;
+  public static String k;
+  public static String l;
+  public static String m;
+  public static String n;
+  public static String o;
+  public static String p;
+  public static String q;
+  public static String r;
+  public static String s;
+  public static String t;
+  public static String u;
+  public static String v;
+  public static String w;
+  public static String x;
+  public static String y;
+  public static String z;
   
-  public static alee a(IBinder paramIBinder)
+  static
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof alee))) {
-      return (alee)localIInterface;
-    }
-    return new aleg(paramIBinder);
-  }
-  
-  public IBinder asBinder()
-  {
-    return this;
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      a(paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-      a(paramParcel1.readInt(), paramParcel1.readInt());
-      paramParcel2.writeNoException();
-      return true;
-    }
-    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
-    b(paramParcel1.readInt(), paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    jdField_a_of_type_JavaLangString = bduw.a(aljq.aX + "/.apollo");
+    jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/rsc_jsonConfig/";
+    jdField_c_of_type_JavaLangString = BaseApplicationImpl.getApplication().getFilesDir() + "/apollo";
+    jdField_d_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/action/";
+    jdField_e_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/audio/";
+    f = jdField_a_of_type_JavaLangString + "/dress/";
+    g = jdField_a_of_type_JavaLangString + "/role/";
+    h = jdField_a_of_type_JavaLangString + "/room/";
+    i = jdField_a_of_type_JavaLangString + "/shader_code/";
+    j = f + "/face/";
+    k = jdField_a_of_type_JavaLangString + "/image_cache/";
+    l = k + "game/";
+    m = jdField_a_of_type_JavaLangString + "/drawer_action/";
+    n = jdField_d_of_type_JavaLangString + "packages/";
+    o = jdField_a_of_type_JavaLangString + "/ai";
+    p = o + "/audioRecord/";
+    q = o + "/action/";
+    r = o + "/audioFromSvr/";
+    s = jdField_a_of_type_JavaLangString + "/game/";
+    t = jdField_a_of_type_JavaLangString + "/pre_download/";
+    u = "def/role/0/3D/";
+    v = "apollo_dwonload_game_icon.png";
+    w = "action/action.png";
+    x = "action/action.json";
+    y = "action/action.atlas";
+    z = "action_peer/action.png";
+    A = "action_peer/action.json";
+    B = "action_peer/action.atlas";
+    C = "dress.png";
+    D = "dress.json";
+    E = "dress.atlas";
+    F = "Bubble";
+    G = "sayhi";
+    H = "interact";
+    I = "friendcard";
+    J = "ai";
+    K = "drawer";
+    L = "role.png";
+    M = "role.json";
+    N = "role.atlas";
+    O = "config.json";
+    P = "skeleton.bin";
+    Q = "dress.bin";
+    R = "action.bin";
+    jdField_a_of_type_Int = 300000;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "FaceOrnament", "BackSuit", "HeadDress", "FaceSuit", "HairType", "TopSuit", "BottomSuit" };
+    jdField_b_of_type_Int = 31104;
+    jdField_c_of_type_Int = 31105;
+    jdField_d_of_type_Int = 31102;
+    jdField_e_of_type_Int = 31106;
+    jdField_a_of_type_Long = 35001L;
+    jdField_b_of_type_Long = 35019L;
+    S = "https://cmshow.qq.com/apollo/html/direct_pay.html?_wv=1027";
+    T = "https://cmshow.qq.com/apollo/html/actlist.html?_wv=1027";
+    U = "https://cmshow.qq.com/apollo/html/not_support.html?_wv=1027";
+    V = "https://cmshow.qq.com/apollo/html/intro.html?_wv=1027&_bid=2326&actionId=";
+    StringBuilder localStringBuilder = new StringBuilder("https://cmshow.qq.com/apollo/html/index_v2.html");
+    localStringBuilder.append("?client=androidQQ").append("&version=").append("8.3.3.4515").append("&system=").append(Build.VERSION.RELEASE).append("&device=").append(Build.DEVICE);
+    W = localStringBuilder.toString();
+    X = "https://cmshow.qq.com/apollo/html/game-platform/index.html?_wv=16777219&_bid=2695&adtag=aio";
+    Y = "https://cmshow.qq.com/apollo/html/game-platform/my-coins.html?_wv=1027&_bid=2695&adtag=aio";
+    Z = "https://cmshow.qq.com/apollo/html/system/mycoins.html?_bid=2536&_wv=1027";
+    aa = "https://cmshow.qq.com/apollo/html/task_658.html?_bid=2345&_wv=1027";
+    ab = "https://cmshow.qq.com/apollo/html/system/task_detail.html?_bid=2536&_wwv=4&_wv=16778243";
+    ac = "https://cmshow.qq.com/apollo/html/island/crystal.html?_wv=1027";
+    ad = "https://cmshow.qq.com/apollo/html/production/machine.html?_wv=3&_bid=2630";
+    ae = "https://cmshow.qq.com/apollo/html/game-platform/my-game.html?_wv=1027&_bid=2695";
+    af = "http://sqimg.qq.com/qq_product_operations/tmg_sdk/QAVOPENSDK_1.9.6.16.zip";
+    ag = "dd3d6659ce42a5face3777902679834b";
+    ar = "https://cmshow.gtimg.cn/client/zip/apollo_drawer_game_box_lottie.zip";
+    as = "https://cmshow.qq.com/apollo/html/game-platform/game-feeds-gc.html?_wv=3&tab=hotplay&from=gamecenter&_bid=3143";
+    av = jdField_a_of_type_JavaLangString + "/script/" + au + "/";
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "103100.103200.103201", "103100.103200.103210.103211", "103100.103200.103201.103202", "103100.103200.103220" };
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(103100).append(".").append(103200).append(".").append(103240).append(".").append(103244);
+    aB = localStringBuilder.toString();
+    localStringBuilder.append(".").append(103245);
+    aA = localStringBuilder.toString();
+    localStringBuilder.append(".").append(103246);
+    az = localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alef
  * JD-Core Version:    0.7.0.1
  */

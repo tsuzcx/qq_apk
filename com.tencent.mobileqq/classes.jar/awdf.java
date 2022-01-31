@@ -1,24 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.richstatus.SignatureEditFragment;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
 
 public class awdf
-  implements DialogInterface.OnClickListener
 {
-  public awdf(SignatureEditFragment paramSignatureEditFragment) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public String[] a;
+  public int b = -1;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public awdf(String paramString, Class<? extends FTSEntity> paramClass, String[] paramArrayOfString, boolean paramBoolean, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    this.a.getActivity().finish();
-    VasWebviewUtil.reportCommercialDrainage("signature_update", "click_close", "click_close", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramClass.getName().replace('.', '/');
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awdf
  * JD-Core Version:    0.7.0.1
  */

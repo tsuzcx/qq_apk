@@ -1,31 +1,54 @@
-public class swr
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+
+public final class swr
 {
-  public int a;
-  String jdField_a_of_type_JavaLangString;
-  tei jdField_a_of_type_Tei;
-  tej jdField_a_of_type_Tej;
-  boolean jdField_a_of_type_Boolean;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  private ProfileParams a = new ProfileParams(null);
   
-  public swr(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, boolean paramBoolean)
+  public ProfileParams a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.d = (ssf.t + paramString1 + ".mp4");
-    this.e = tsr.a(paramString1, false);
+    return this.a;
+  }
+  
+  public swr a(int paramInt)
+  {
+    this.a.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public swr a(ProfileParams.CurLoginUsr paramCurLoginUsr)
+  {
+    this.a.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams$CurLoginUsr = paramCurLoginUsr;
+    return this;
+  }
+  
+  public swr a(String paramString)
+  {
+    this.a.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public swr b(String paramString)
+  {
+    this.a.b = paramString;
+    return this;
+  }
+  
+  public swr c(String paramString)
+  {
+    this.a.c = paramString;
+    return this;
+  }
+  
+  public swr d(String paramString)
+  {
+    this.a.d = paramString;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     swr
  * JD-Core Version:    0.7.0.1
  */

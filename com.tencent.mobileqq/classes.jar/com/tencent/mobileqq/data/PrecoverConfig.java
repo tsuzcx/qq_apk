@@ -3,16 +3,16 @@ package com.tencent.mobileqq.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anjr;
-import auko;
-import aumc;
+import apay;
+import awbv;
+import awdj;
 
 public class PrecoverConfig
-  extends auko
+  extends awbv
   implements Parcelable
 {
-  public static final Parcelable.Creator<PrecoverConfig> CREATOR = new anjr();
-  @aumc
+  public static final Parcelable.Creator<PrecoverConfig> CREATOR = new apay();
+  @awdj
   public String businessId;
   public int taskId;
   public String xmlContent;
@@ -64,7 +64,7 @@ public class PrecoverConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PrecoverConfig
  * JD-Core Version:    0.7.0.1
  */

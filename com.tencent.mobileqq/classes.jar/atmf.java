@@ -1,48 +1,82 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import com.tencent.theme.SkinnableBitmapDrawable;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 
-class atmf
-  implements atii
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"MAX_SHOWN_AVATAR_COUNT", "", "TAG", "", "getHalfAlphaDrawableList", "Landroid/graphics/drawable/Drawable;", "context", "Landroid/content/Context;", "d", "AQQLiteApp_release"}, k=2, mv={1, 1, 16})
+public final class atmf
 {
-  atmf(atlw paramatlw) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  @NotNull
+  public static final Drawable a(@NotNull Context paramContext, @NotNull Drawable paramDrawable)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    try
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    Intrinsics.checkParameterIsNotNull(paramDrawable, "d");
+    Drawable localDrawable;
+    Object localObject;
+    Bitmap localBitmap;
+    Resources localResources;
+    if (!(paramDrawable instanceof SkinnableBitmapDrawable))
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (QLog.isColorLevel()) {
-        QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + atlw.c(this.a));
+      localDrawable = paramDrawable;
+      if (!(paramDrawable instanceof BitmapDrawable)) {}
+    }
+    else
+    {
+      localObject = (Bitmap)null;
+      if (!(paramDrawable instanceof SkinnableBitmapDrawable)) {
+        break label175;
       }
-      if (paramBundle.busi_buf.has())
-      {
-        paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
-        paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + atlw.c(this.a));
+      localObject = ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
+      localBitmap = Bitmap.createBitmap((Bitmap)localObject);
+      localResources = paramContext.getResources();
+      localDrawable = paramDrawable;
+      if (localResources != null) {
+        if ((localObject == null) || (localBitmap != null)) {
+          break label193;
         }
       }
-      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    label175:
+    label193:
+    label204:
+    for (paramContext = (Context)localObject;; paramContext = localBitmap)
     {
-      paramArrayOfByte.printStackTrace();
+      paramDrawable = new BitmapDrawable(localResources, (Bitmap)localObject);
+      localObject = new BitmapDrawable(localResources, paramContext);
+      ((BitmapDrawable)localObject).setAlpha(127);
+      paramContext = new StateListDrawable();
+      localObject = (Drawable)localObject;
+      paramContext.addState(new int[] { 16842919, 16842910 }, (Drawable)localObject);
+      localObject = (Drawable)paramDrawable;
+      paramContext.addState(new int[] { 16842908 }, (Drawable)localObject);
+      paramDrawable = (Drawable)paramDrawable;
+      paramContext.addState(new int[0], paramDrawable);
+      localDrawable = (Drawable)paramContext;
+      do
+      {
+        return localDrawable;
+        if (!(paramDrawable instanceof BitmapDrawable)) {
+          break;
+        }
+        localObject = ((BitmapDrawable)paramDrawable).getBitmap();
+        break;
+        if (localObject != null) {
+          break label204;
+        }
+        localDrawable = paramDrawable;
+      } while (localBitmap == null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atmf
  * JD-Core Version:    0.7.0.1
  */

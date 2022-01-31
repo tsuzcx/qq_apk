@@ -1,20 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.ThreadManager;
-import dov.com.qq.im.ae.camera.ui.capture.VideoStoryCapturePart.11.1;
-
-public class bind
-  implements bijy
+public abstract interface bind
+  extends bine
 {
-  bind(bina parambina) {}
+  public abstract void b(boolean paramBoolean, String paramString);
   
-  public void a(Bitmap paramBitmap)
-  {
-    ThreadManager.excute(new VideoStoryCapturePart.11.1(this, paramBitmap), 64, null, false);
-  }
+  public abstract void e(String paramString);
+  
+  public abstract void f(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bind
  * JD-Core Version:    0.7.0.1
  */

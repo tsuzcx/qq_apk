@@ -1,30 +1,40 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.widget.PagingScrollView;
 
-class benh
-  implements View.OnClickListener
+public class benh
+  extends GestureDetector.SimpleOnGestureListener
 {
-  benh(bene parambene, DialogInterface.OnClickListener paramOnClickListener) {}
+  public benh(PagingScrollView paramPagingScrollView) {}
   
-  public void onClick(View paramView)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Bene, 1);
-    }
-    try
+    if (PagingScrollView.access$000(this.a))
     {
-      if (this.jdField_a_of_type_Bene.isShowing()) {
-        this.jdField_a_of_type_Bene.dismiss();
+      PagingScrollView.access$002(this.a, false);
+      paramFloat1 = Math.abs(paramFloat1);
+      paramFloat2 = Math.abs(paramFloat2);
+      if (paramFloat2 > paramFloat1)
+      {
+        if (paramFloat1 >= 0.01F) {
+          break label62;
+        }
+        PagingScrollView.access$002(this.a, true);
       }
-      return;
     }
-    catch (Exception paramView) {}
+    for (;;)
+    {
+      return PagingScrollView.access$000(this.a);
+      label62:
+      if (paramFloat2 / paramFloat1 > 1.73205F) {
+        PagingScrollView.access$002(this.a, true);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     benh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,37 @@
-import com.tencent.ark.open.delegate.IArkDelegateSetup;
-import java.util.ArrayList;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.qphone.base.util.BaseApplication;
 
-final class alvx
-  extends IArkDelegateSetup
+class alvx
+  implements muf
 {
-  public ArrayList<String> onGetPredownloadApp()
-  {
-    return null;
-  }
+  alvx(alvt paramalvt, long paramLong1, int paramInt, long paramLong2) {}
   
-  public void reportEvent(String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString4, String paramString5)
+  public void a(int paramInt1, muh parammuh, int paramInt2)
   {
-    axpr.a(null, paramString1, paramString2, paramString3, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString4, paramString5);
-  }
-  
-  public void setupArkEnvironment(boolean paramBoolean)
-  {
-    alvs.a(paramBoolean);
+    if (paramInt1 == 0)
+    {
+      if (this.jdField_a_of_type_Alvt.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter != null)
+      {
+        this.jdField_a_of_type_Alvt.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(3, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, 0, 0, 20, 1);
+        this.jdField_a_of_type_Alvt.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.b(this.jdField_a_of_type_Long, true);
+        this.jdField_a_of_type_Alvt.jdField_a_of_type_ComTencentAvGaudioAVNotifyCenter.a(21, 1, Long.valueOf(this.jdField_a_of_type_Long).longValue(), 0L);
+      }
+      VideoMsgTools.a(this.jdField_a_of_type_Alvt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, 13, false, Long.toString(this.jdField_a_of_type_Long), Long.toString(this.b), false, null, false, this.jdField_a_of_type_Int, new Object[0]);
+      if (this.jdField_a_of_type_Int == 2) {
+        new bilo(this.jdField_a_of_type_Alvt.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(new alvy(this));
+      }
+    }
+    else
+    {
+      return;
+    }
+    new maf(BaseApplication.getContext()).a(new alvz(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alvx
  * JD-Core Version:    0.7.0.1
  */

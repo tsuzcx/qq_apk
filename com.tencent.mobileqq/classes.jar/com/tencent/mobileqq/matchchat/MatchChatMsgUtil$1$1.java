@@ -14,7 +14,7 @@ class MatchChatMsgUtil$1$1
   {
     if (this.a <= 0)
     {
-      this.this$0.a.b();
+      this.this$0.a.d();
       return;
     }
     BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
@@ -27,7 +27,7 @@ class MatchChatMsgUtil$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.matchchat.MatchChatMsgUtil.1.1
  * JD-Core Version:    0.7.0.1
  */

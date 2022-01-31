@@ -1,12 +1,22 @@
-import android.content.Intent;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
 
-public abstract interface bbyk
+public class bbyk
+  implements xrv
 {
-  public abstract void a(Intent paramIntent, boolean paramBoolean, String paramString1, byte[] paramArrayOfByte, String paramString2);
+  public bbyk(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  
+  public void a() {}
+  
+  public boolean a(boolean paramBoolean)
+  {
+    this.a.b(this.a.a.getText().toString());
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbyk
  * JD-Core Version:    0.7.0.1
  */

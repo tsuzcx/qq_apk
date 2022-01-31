@@ -1,21 +1,58 @@
-import com.tencent.widget.AbsListView;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
-class req
-  extends oyd
+public class req
+  extends LinearLayoutManager
 {
-  req(reo paramreo, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  private VideoFeedsRecyclerView a;
+  
+  public req(Context paramContext, VideoFeedsRecyclerView paramVideoFeedsRecyclerView, int paramInt, boolean paramBoolean)
   {
-    super(paramString);
+    super(paramContext, paramInt, paramBoolean);
+    this.a = paramVideoFeedsRecyclerView;
   }
   
-  public void a(oxx paramoxx)
+  private boolean a(View paramView)
   {
-    paramoxx.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
+    if (paramView == null) {}
+    int i;
+    int j;
+    do
+    {
+      return false;
+      i = this.a.getChildViewHolder(paramView).getLayoutPosition();
+      j = this.a.b();
+    } while ((j < 0) || ((i != j + 1) && (i != j - 1)));
+    return true;
+  }
+  
+  public int getExtraLayoutSpace(RecyclerView.State paramState)
+  {
+    return super.getExtraLayoutSpace(paramState) + 200;
+  }
+  
+  public void removeAndRecycleView(View paramView, RecyclerView.Recycler paramRecycler)
+  {
+    if (!a(paramView)) {
+      super.removeAndRecycleView(paramView, paramRecycler);
+    }
+  }
+  
+  public void removeAndRecycleViewAt(int paramInt, RecyclerView.Recycler paramRecycler)
+  {
+    if (!a(getChildAt(paramInt))) {
+      super.removeAndRecycleViewAt(paramInt, paramRecycler);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     req
  * JD-Core Version:    0.7.0.1
  */

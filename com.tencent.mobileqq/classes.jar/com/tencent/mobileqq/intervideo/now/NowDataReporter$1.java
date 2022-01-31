@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import arib;
+import asyp;
 
 public class NowDataReporter$1
   implements Runnable
 {
-  public NowDataReporter$1(arib paramarib, long paramLong) {}
+  public NowDataReporter$1(asyp paramasyp, long paramLong) {}
   
   public void run()
   {

@@ -1,29 +1,46 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.upload.uinterface.IUploadService;
+import com.tencent.upload.uinterface.UploadServiceBuilder;
+import mqq.manager.Manager;
 
 public class awqc
-  extends awqb
+  implements Manager
 {
-  awoh a(afgv paramafgv, List<awoi> paramList, String paramString1, boolean paramBoolean, String paramString2)
+  public awqc(QQAppInterface paramQQAppInterface) {}
+  
+  private void b(QQAppInterface paramQQAppInterface, awpy paramawpy)
   {
-    awvz.a(70);
-    return new awnj(paramafgv, paramList, paramString1);
+    bjcv localbjcv = new bjcv();
+    if (paramawpy != null)
+    {
+      UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramawpy, null, null, localbjcv, localbjcv);
+      return;
+    }
+    paramawpy = new awqd(this, Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    UploadServiceBuilder.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramawpy, null, null, localbjcv, localbjcv);
   }
   
-  awoi a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  public void a(QQAppInterface paramQQAppInterface, awpy paramawpy)
   {
-    return null;
+    if (!UploadServiceBuilder.getInstance().isInitialized()) {
+      b(paramQQAppInterface, paramawpy);
+    }
   }
   
-  awoi a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  public void a(QQAppInterface paramQQAppInterface, awpz paramawpz, awpy paramawpy)
   {
-    return new awnk(paramrecord, paramString, paramCharSequence);
+    if (!UploadServiceBuilder.getInstance().isInitialized()) {
+      b(paramQQAppInterface, paramawpy);
+    }
+    paramawpz.a();
   }
+  
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awqc
  * JD-Core Version:    0.7.0.1
  */

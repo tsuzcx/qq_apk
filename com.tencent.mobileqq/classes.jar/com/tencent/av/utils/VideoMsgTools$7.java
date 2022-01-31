@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.ResultReceiver;
-import bbgg;
+import bdfc;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 final class VideoMsgTools$7
   extends ResultReceiver
 {
-  VideoMsgTools$7(Handler paramHandler, boolean paramBoolean, WeakReference paramWeakReference, int paramInt, String paramString)
+  VideoMsgTools$7(Handler paramHandler, boolean paramBoolean, WeakReference paramWeakReference, int paramInt, String paramString1, String paramString2)
   {
     super(paramHandler);
   }
@@ -33,7 +33,7 @@ final class VideoMsgTools$7
       }
       i = paramBundle.size();
       label86:
-      bbgg.a(i, this.jdField_a_of_type_Boolean);
+      bdfc.a(i, this.jdField_a_of_type_Boolean);
       if (paramBundle != null) {
         break label109;
       }
@@ -54,7 +54,7 @@ final class VideoMsgTools$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.utils.VideoMsgTools.7
  * JD-Core Version:    0.7.0.1
  */

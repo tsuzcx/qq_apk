@@ -1,28 +1,57 @@
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.app.InviteMemberObserver.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
+
 public class lhs
+  implements Observer
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c = "";
+  Handler a = null;
   
-  public lhs()
+  private void a(Object paramObject)
   {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 30;
-    this.jdField_b_of_type_Int = 3;
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("qav.GAudioUIObserver", 2, "OnUpdate，msgType = " + i);
+    }
+    if (paramObject.length < 4)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qav.GAudioUIObserver", 2, "quit for message length");
+      }
+      return;
+    }
+    switch (i)
+    {
+    default: 
+      return;
+    }
+    a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (ArrayList)paramObject[3]);
   }
   
-  public String toString()
+  protected void a(long paramLong1, long paramLong2, ArrayList<lfu> paramArrayList) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
   {
-    return "id[" + this.jdField_a_of_type_JavaLangString + "], text[" + this.jdField_b_of_type_JavaLangString + "], date[" + this.jdField_a_of_type_Long + "->" + this.jdField_b_of_type_Long + "], imageUrl[" + this.c + "], callTimeLen[" + this.jdField_a_of_type_Int + "], showTimeLen[" + this.jdField_b_of_type_Int + "]";
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
+    {
+      if (this.a == null) {
+        this.a = new Handler(paramObservable);
+      }
+      this.a.post(new InviteMemberObserver.1(this, paramObject));
+      return;
+    }
+    a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lhs
  * JD-Core Version:    0.7.0.1
  */

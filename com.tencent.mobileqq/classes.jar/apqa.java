@@ -1,21 +1,12 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.5.1;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import java.util.List;
 
-public class apqa
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+public abstract interface apqa
 {
-  apqa(appt paramappt) {}
-  
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    this.a.a.runOnUiThread(new VideoFilePresenter.5.1(this));
-  }
+  public abstract List<apsm> a(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apqa
  * JD-Core Version:    0.7.0.1
  */

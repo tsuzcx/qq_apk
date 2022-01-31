@@ -1,17 +1,10 @@
-class srx
-  implements vtq
+public abstract interface srx
 {
-  srx(srs paramsrs) {}
-  
-  public void a()
-  {
-    srs.c(this.a, false);
-    srs.a(this.a, -1L);
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srx
  * JD-Core Version:    0.7.0.1
  */

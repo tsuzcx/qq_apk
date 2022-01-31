@@ -1,14 +1,14 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request.Builder;
 import com.tencent.mobileqq.mini.http.MiniOkHttpClientFactory;
 import com.tencent.qqmini.sdk.core.proxy.UploaderProxy.UploadListener;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request.Builder;
 
 class UploaderProxyImpl$1
   implements Runnable
@@ -37,7 +37,7 @@ class UploaderProxyImpl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.UploaderProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

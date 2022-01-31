@@ -1,68 +1,28 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
-import com.tencent.mobileqq.widget.presseffect.PressEffectTextView;
-import java.util.ArrayList;
-
 public class azbm
-  extends BaseAdapter
 {
-  azcb jdField_a_of_type_Azcb;
-  ArrayList<azbz> jdField_a_of_type_JavaUtilArrayList;
+  public float a;
+  public int a;
+  public ajng a;
+  public boolean a;
+  public float b;
+  public int b;
+  public int c;
   
-  protected azbm(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public azbm() {}
   
-  public void a(ArrayList<azbz> paramArrayList, azcb paramazcb)
+  public azbm(boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_Azcb = paramazcb;
-    notifyDataSetChanged();
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public int getCount()
+  public boolean a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null) {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity()).inflate(2131560284, paramViewGroup, false);
-    }
-    for (;;)
-    {
-      paramViewGroup = (PressEffectTextView)paramView;
-      if (TextUtils.isEmpty(((azbz)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a))
-      {
-        paramViewGroup.setVisibility(8);
-        return paramView;
-      }
-      paramViewGroup.setVisibility(0);
-      paramViewGroup.setText(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.a(this.jdField_a_of_type_JavaUtilArrayList.size(), ((azbz)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a));
-      paramViewGroup.setOnClickListener(new azbn(this, paramInt));
-      return paramView;
-    }
+    return (this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_Ajng != null) && (this.jdField_a_of_type_Float > 0.01F) && (this.jdField_b_of_type_Float > 0.01F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azbm
  * JD-Core Version:    0.7.0.1
  */

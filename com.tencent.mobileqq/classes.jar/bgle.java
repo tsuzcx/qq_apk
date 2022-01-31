@@ -1,24 +1,28 @@
+import com.tencent.qqmini.sdk.core.utils.QZipIOException;
 import java.io.File;
-import java.util.Comparator;
+import java.io.InputStream;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
-public final class bgle
-  implements Comparator<File>
+public class bgle
+  extends ZipFile
 {
-  public int a(File paramFile1, File paramFile2)
+  public bgle(File paramFile)
   {
-    long l = paramFile1.length() - paramFile2.length();
-    if (l > 0L) {
-      return 1;
+    super(paramFile);
+  }
+  
+  public InputStream getInputStream(ZipEntry paramZipEntry)
+  {
+    if (QZipIOException.isInvalidEntry(paramZipEntry)) {
+      throw new QZipIOException();
     }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
+    return super.getInputStream(paramZipEntry);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgle
  * JD-Core Version:    0.7.0.1
  */

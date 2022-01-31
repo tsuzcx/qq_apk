@@ -1,107 +1,163 @@
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.inputstatus.InputStatusPushManager.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import java.lang.ref.WeakReference;
+import mqq.manager.Manager;
 
 public class asul
-  extends astq
+  implements Manager
 {
-  private static final String a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = ajya.a(2131716322);
-  }
+  private static final String jdField_a_of_type_JavaLangString = asul.class.getSimpleName();
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new InputStatusPushManager.1(this);
+  private WeakReference<BaseChatPie> jdField_a_of_type_JavaLangRefWeakReference;
   
   public asul(QQAppInterface paramQQAppInterface)
   {
-    super(paramQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap, ArrayList<MessageForShortVideo> paramArrayList, ArrayList<axdv> paramArrayList1, axei paramaxei, asug paramasug, astt paramastt)
+  private Handler a()
   {
-    axei localaxei = paramaxei;
-    if (paramaxei == null) {
-      localaxei = axdq.a(5, 5);
+    if (this.jdField_a_of_type_AndroidOsHandler == null) {
+      this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     }
-    localaxei.a(paramArrayList1);
-    localaxei.a(new asum(this, paramArrayList, paramHashMap, paramastt, paramasug));
-    axdq.a(localaxei, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return this.jdField_a_of_type_AndroidOsHandler;
   }
   
-  public void a(asug paramasug, HashMap<String, ArrayList<MessageRecord>> paramHashMap, astt paramastt)
+  private asuh a()
   {
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    Object localObject2 = null;
-    Iterator localIterator1 = paramHashMap.keySet().iterator();
-    Object localObject1;
-    if (localIterator1.hasNext())
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+      return (asuh)((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(16);
+    }
+    return null;
+  }
+  
+  private boolean a()
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && ((this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof agnp))) {
+      return c();
+    }
+    return b();
+  }
+  
+  private boolean b()
+  {
+    try
     {
-      Iterator localIterator2 = ((ArrayList)paramHashMap.get((String)localIterator1.next())).iterator();
-      localObject1 = localObject2;
-      do
+      asuf localasuf = (asuf)aogj.a().a(445);
+      if (localasuf != null)
       {
-        localObject2 = localObject1;
-        if (!localIterator2.hasNext()) {
-          break;
-        }
-        localObject2 = (MessageRecord)localIterator2.next();
-      } while ((!(localObject2 instanceof MessageForShortVideo)) && ((!(localObject2 instanceof MessageForReplyText)) || (((MessageForReplyText)localObject2).getSourceMessage() == null) || (!(((MessageForReplyText)localObject2).getSourceMessage() instanceof MessageForShortVideo))));
-      if ((localObject2 instanceof MessageForReplyText))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("VideoMultiMsgProcessor", 2, "[requestSendMultiMsg]MessageForReplyText source");
-        }
-        localObject2 = ((MessageForReplyText)localObject2).getSourceMessage();
-        ((MessageRecord)localObject2).createMessageUniseq();
-        localObject2 = (MessageForShortVideo)localObject2;
-        label179:
-        ((MessageForShortVideo)localObject2).videoFileName = ShortVideoUtils.c((MessageForShortVideo)localObject2);
-        if (localObject1 != null) {
-          break label343;
-        }
-        localObject1 = axdq.a(5, 5);
+        boolean bool = localasuf.a;
+        return bool;
       }
     }
-    label343:
+    catch (Exception localException)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
+    }
+    return false;
+  }
+  
+  private boolean c()
+  {
+    try
+    {
+      asuf localasuf = (asuf)aogj.a().a(445);
+      if (localasuf != null)
+      {
+        boolean bool = localasuf.b;
+        return bool;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
+    }
+    return true;
+  }
+  
+  void a()
+  {
+    a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void a(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "receive fromUin =" + paramLong1 + "，toUin，timeStamp =" + paramLong3 + "，interval =" + paramInt1 + "，showTime =" + paramInt2 + "，eventType = " + paramInt3 + "，statusText =" + paramString);
+    }
+    String str1;
+    boolean bool;
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (a()))
+    {
+      a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      if (a() != null)
+      {
+        a().a = (paramInt1 * 1000);
+        a().b = paramLong3;
+      }
+      str1 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      String str2 = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      if ((TextUtils.equals(str1, String.valueOf(paramLong1))) && (TextUtils.equals(str2, String.valueOf(paramLong2))))
+      {
+        if (paramInt3 == 2) {
+          break label284;
+        }
+        bool = true;
+        if (!bool) {
+          break label300;
+        }
+        str1 = paramString;
+        if (TextUtils.isEmpty(paramString))
+        {
+          if (paramInt3 != 1) {
+            break label290;
+          }
+          str1 = alpo.a(2131706169);
+        }
+        label246:
+        a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramInt2 * 1000);
+      }
+    }
     for (;;)
     {
-      axdv localaxdv = axdq.a(5, localObject2, (axei)localObject1);
-      if (localaxdv != null)
-      {
-        localArrayList1.add(localaxdv);
-        localArrayList2.add(localObject2);
-        break;
-        localObject2 = (MessageForShortVideo)localObject2;
-        break label179;
+      if (a() != null) {
+        a().a(bool, str1);
       }
-      if (QLog.isColorLevel()) {
-        QLog.e("VideoMultiMsgProcessor", 2, "[requestSendMultiMsg]createShortVideoForwardInfo failed");
-      }
-      break;
-      if ((localArrayList1.size() > 0) && (localArrayList2.size() > 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoMultiMsgProcessor", 2, "[requestSendMultiMsg]Upload videos, count is [" + localArrayList1.size() + "], goto requestUploadVideos");
-        }
-        a(paramHashMap, localArrayList2, localArrayList1, (axei)localObject2, paramasug, paramastt);
-        return;
-      }
-      paramastt.a(0, 8, paramasug);
       return;
+      label284:
+      bool = false;
+      break;
+      label290:
+      str1 = alpo.a(2131706170);
+      break label246;
+      label300:
+      str1 = "";
+    }
+  }
+  
+  public void a(BaseChatPie paramBaseChatPie)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
+  }
+  
+  public void onDestroy()
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asul
  * JD-Core Version:    0.7.0.1
  */

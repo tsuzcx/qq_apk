@@ -1,21 +1,61 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
-class aqph
-  implements DialogInterface.OnClickListener
+public class aqph
+  extends MSFServlet
 {
-  aqph(aqpf paramaqpf) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.a.setResult(8001);
+    if (QLog.isColorLevel()) {
+      QLog.d("FileTransferServlet<FileAssistant>", 2, "onReceive called");
+    }
+    if (paramIntent == null)
+    {
+      QLog.e("FileTransferServlet<FileAssistant>", 1, "onReceive : req is null");
+      return;
+    }
+    paramIntent.getExtras().putParcelable("response", paramFromServiceMsg);
+    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+    paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    localQQAppInterface.a().a(paramIntent, paramFromServiceMsg);
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FileTransferServlet<FileAssistant>", 2, "onSend called");
+    }
+    if (paramIntent == null) {
+      QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : req is null");
+    }
+    do
+    {
+      return;
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent == null) {
+        break;
+      }
+      paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+      paramPacket.putSendData(paramIntent.getWupBuffer());
+      paramPacket.setTimeout(paramIntent.getTimeout());
+      paramPacket.addAttribute("fastresend", Boolean.valueOf(true));
+    } while (paramIntent.isNeedCallback());
+    paramPacket.setNoResponse();
+    return;
+    QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : toMsg is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqph
  * JD-Core Version:    0.7.0.1
  */

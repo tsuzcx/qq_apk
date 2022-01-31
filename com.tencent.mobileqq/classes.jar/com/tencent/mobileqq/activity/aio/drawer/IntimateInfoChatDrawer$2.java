@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.drawer;
 
-import adfs;
+import aexv;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -9,7 +9,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 public class IntimateInfoChatDrawer$2
   implements Runnable
 {
-  public IntimateInfoChatDrawer$2(adfs paramadfs) {}
+  public IntimateInfoChatDrawer$2(aexv paramaexv) {}
   
   public void run()
   {
@@ -21,7 +21,7 @@ public class IntimateInfoChatDrawer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.drawer.IntimateInfoChatDrawer.2
  * JD-Core Version:    0.7.0.1
  */

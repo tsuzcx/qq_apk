@@ -1,74 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.WebpSoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.mobileqq.util.WebpSoLoader;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class anqh
-  extends anpn
+  implements azde
 {
-  QQAppInterface b = null;
+  public anqh(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public anqh(QQAppInterface paramQQAppInterface)
+  public void a(Exception paramException)
   {
-    super("qq.android.pic.webp.so", paramQQAppInterface);
-    this.b = paramQQAppInterface;
-  }
-  
-  public int a()
-  {
-    return 10056;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return WebpSoData.class;
-  }
-  
-  public String a()
-  {
-    return "QWebpSoDownloadDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QWebpSoDownloadHandler", 2, "onDownload success: " + paramString);
-      }
-      String str = WebpSoLoader.a(BaseApplicationImpl.getContext());
-      if (!TextUtils.isEmpty(str)) {
-        bbdx.a(paramString, str, false);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("DynamicAvatarRecordActivity", 2, "[onCameraException]", paramException);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QWebpSoDownloadHandler", 2, localException.getMessage());
-        }
-      }
+  }
+  
+  public void a(RuntimeException paramRuntimeException)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("DynamicAvatarRecordActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
     }
-    super.a(paramString);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,17 @@
-import android.graphics.Bitmap;
-import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bizo
+final class bizo
+  implements DialogInterface.OnClickListener
 {
-  public static Bitmap a(Bitmap paramBitmap, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!BitmapUtils.isLegal(paramBitmap)) {}
-    int i;
-    do
-    {
-      return paramBitmap;
-      i = BitmapUtils.getDegreeByExif(paramString) % 360;
-    } while (i == 0);
-    return BitmapUtils.rotateBitmap(paramBitmap, i);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bizo
  * JD-Core Version:    0.7.0.1
  */

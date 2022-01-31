@@ -1,98 +1,54 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.immersive.ImmersiveUtils;
-import java.util.List;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class abtl
-  extends aims
+class abtl
+  extends abtk
 {
-  private List<abti> jdField_a_of_type_JavaUtilList;
-  
-  public abtl(List<abti> paramList)
+  public abtl(absf paramabsf, long paramLong)
   {
-    super(paramList, paramList.app, paramList.jdField_a_of_type_ComTencentWidgetXListView, 1, true);
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilList = localObject;
+    super(paramabsf, 3, paramLong);
   }
   
-  public int getCount()
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
     }
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    this.jdField_a_of_type_Boolean = false;
+    if (paramInt == 0)
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559441, paramViewGroup, false);
-      paramViewGroup = new abto();
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131367679));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370647));
-      paramView.setTag(paramViewGroup);
-      Object localObject = getItem(paramInt);
-      if (localObject != null)
+      JSONObject localJSONObject = new JSONObject();
+      try
       {
-        localObject = (abti)localObject;
-        if (localObject != null)
+        localJSONObject.put("nation", paramSosoLbsInfo.a.c);
+        localJSONObject.put("province", paramSosoLbsInfo.a.d);
+        localJSONObject.put("city", paramSosoLbsInfo.a.e);
+        localJSONObject.put("district", paramSosoLbsInfo.a.g);
+        abvm.a(this.jdField_a_of_type_Absf, localJSONObject);
+        return;
+      }
+      catch (JSONException paramSosoLbsInfo)
+      {
+        for (;;)
         {
-          paramViewGroup.jdField_a_of_type_JavaLangString = ((abti)localObject).a.getUin();
-          paramViewGroup.jdField_a_of_type_Abti = ((abti)localObject);
-          paramViewGroup.c.setImageBitmap(super.a(paramViewGroup.jdField_a_of_type_JavaLangString, 1, (byte)0));
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((abti)localObject).a.name);
-          if (((abti)localObject).a.certifiedGrade <= 0L) {
-            break label256;
+          if (QLog.isColorLevel()) {
+            QLog.e("DoraemonOpenAPI.sensor", 2, paramSosoLbsInfo.getMessage(), paramSosoLbsInfo);
           }
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.getResources().getDrawable(2130841310);
-            this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, ImmersiveUtils.a(15.0F), ImmersiveUtils.a(15.0F));
-            ThemeUtil.setThemeFilter(this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, ThemeUtil.curThemeId);
-          }
-          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, this.jdField_a_of_type_ComTencentMobileqqActivityPublicAccountListActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
         }
       }
     }
-    for (;;)
-    {
-      if (AppSetting.d) {
-        paramView.setContentDescription(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.getText());
-      }
-      return paramView;
-      paramViewGroup = (abto)paramView.getTag();
-      break;
-      label256:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    }
+    abvm.a(this.jdField_a_of_type_Absf, paramInt, "error " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abtl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,17 @@
-import com.tencent.ark.open.delegate.IArkDelegateNetCallback;
-
 class alwa
-  implements ajte
+  implements bilp
 {
-  alwa(alvy paramalvy, IArkDelegateNetCallback paramIArkDelegateNetCallback) {}
+  alwa(alvt paramalvt, byte[] paramArrayOfByte) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(bilo parambilo)
   {
-    if (this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback != null) {
-      this.jdField_a_of_type_ComTencentArkOpenDelegateIArkDelegateNetCallback.onUpdate(paramInt, paramBoolean, paramObject);
-    }
+    parambilo.a(this.jdField_a_of_type_ArrayOfByte);
+    parambilo.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alwa
  * JD-Core Version:    0.7.0.1
  */

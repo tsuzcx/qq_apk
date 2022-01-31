@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import AvatarInfo.DestQQHeadInfo;
-import ajxh;
+import alov;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import android.os.Parcelable.Creator;
 public class FriendListHandler$QQHeadDetails
   implements Parcelable
 {
-  public static final Parcelable.Creator<QQHeadDetails> CREATOR = new ajxh();
+  public static final Parcelable.Creator<QQHeadDetails> CREATOR = new alov();
   public byte a;
   public int a;
   public long a;

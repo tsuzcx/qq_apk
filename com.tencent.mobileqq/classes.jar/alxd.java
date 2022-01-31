@@ -1,49 +1,35 @@
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-
-class alxd
-  implements Animator.AnimatorListener
+public class alxd
+  implements alkr
 {
-  alxd(alww paramalww, View paramView1, View paramView2) {}
+  protected void a(int paramInt) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  protected void a(int paramInt1, int paramInt2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-    paramAnimator.topMargin = (-this.jdField_a_of_type_Alww.d);
-    this.b.setLayoutParams(paramAnimator);
-    if (this.jdField_a_of_type_Alww.g)
+    switch (paramInt)
     {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    paramAnimator = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-    paramAnimator.topMargin = (-this.jdField_a_of_type_Alww.d);
-    this.b.setLayoutParams(paramAnimator);
-    if (this.jdField_a_of_type_Alww.g)
+    do
     {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (!this.jdField_a_of_type_Alww.g) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
+      do
+      {
+        do
+        {
+          return;
+        } while (paramObject == null);
+        paramObject = (Object[])paramObject;
+        a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    a(((Integer)paramObject[0]).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alxd
  * JD-Core Version:    0.7.0.1
  */

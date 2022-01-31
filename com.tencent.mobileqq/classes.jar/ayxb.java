@@ -1,27 +1,35 @@
 public class ayxb
 {
-  int a;
-  int b;
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public boolean c;
   
-  public ayxb(int paramInt1, int paramInt2)
+  public ayxb(aywz paramaywz)
   {
-    this.a = paramInt1;
-    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public int a()
+  public String toString()
   {
-    return this.a;
-  }
-  
-  public int b()
-  {
-    return this.b;
+    StringBuilder localStringBuilder = new StringBuilder(1024);
+    localStringBuilder.append("mUnread=" + this.jdField_a_of_type_Long);
+    localStringBuilder.append(",mNewMsg=" + this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("mText=" + this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mIconPath=" + this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("mRedPoint=" + this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(",mTab=" + this.c);
+    localStringBuilder.append(",mType=" + this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayxb
  * JD-Core Version:    0.7.0.1
  */

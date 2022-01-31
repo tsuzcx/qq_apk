@@ -1,28 +1,31 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-
 public class bfgd
 {
-  public static String a(int paramInt)
+  private android.webkit.CookieManager jdField_a_of_type_AndroidWebkitCookieManager = android.webkit.CookieManager.getInstance();
+  private com.tencent.smtt.sdk.CookieManager jdField_a_of_type_ComTencentSmttSdkCookieManager = com.tencent.smtt.sdk.CookieManager.getInstance();
+  
+  public void a(String paramString1, String paramString2)
   {
-    String str = b(paramInt);
-    return bfhm.a().getString(str, "");
+    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
+      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setCookie(paramString1, paramString2);
+    }
+    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
+      this.jdField_a_of_type_AndroidWebkitCookieManager.setCookie(paramString1, paramString2);
+    }
   }
   
-  public static void a(int paramInt, String paramString)
+  public void a(boolean paramBoolean)
   {
-    String str = b(paramInt);
-    bfhm.a().edit().putString(str, paramString).apply();
-  }
-  
-  private static String b(int paramInt)
-  {
-    return "gdt_cookie_" + beut.a().a() + "_" + paramInt;
+    if (this.jdField_a_of_type_ComTencentSmttSdkCookieManager != null) {
+      this.jdField_a_of_type_ComTencentSmttSdkCookieManager.setAcceptCookie(paramBoolean);
+    }
+    if (this.jdField_a_of_type_AndroidWebkitCookieManager != null) {
+      this.jdField_a_of_type_AndroidWebkitCookieManager.setAcceptCookie(paramBoolean);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfgd
  * JD-Core Version:    0.7.0.1
  */

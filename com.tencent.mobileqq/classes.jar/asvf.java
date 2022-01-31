@@ -1,40 +1,58 @@
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.DynamicPluginManager;
+import com.tencent.shadow.dynamic.host.EnterCallback;
 
-class asvf
-  extends auoo
+public class asvf
+  implements asux
 {
-  asvf(asuw paramasuw, String paramString, asur paramasur) {}
+  private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
+  private final DynamicPluginManager jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager;
+  private final String jdField_a_of_type_JavaLangString = "shadow::PluginManagerWrapper";
+  private final String b;
   
-  public void a(int paramInt, aunw paramaunw)
+  public asvf(String paramString, DynamicPluginManager paramDynamicPluginManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadPic key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
-    }
-    int j = 0;
-    String str2 = "";
-    String str1 = str2;
-    int i = j;
-    if (paramaunw != null)
-    {
-      str1 = str2;
-      i = j;
-      if (paramaunw.a != null)
-      {
-        i = paramaunw.a.a;
-        str1 = paramaunw.a.b;
-      }
-    }
-    asuw.a(this.jdField_a_of_type_Asuw, this.jdField_a_of_type_Asur, paramInt, i, str1);
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager = paramDynamicPluginManager;
+    this.b = paramString;
   }
   
-  public void a_(int paramInt, boolean paramBoolean)
+  public void a(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
   {
-    asuw.a(this.jdField_a_of_type_Asuw, this.jdField_a_of_type_Asur, paramInt);
+    boolean bool = TextUtils.isEmpty(asve.a().a());
+    if (bool) {}
+    for (String str = "idle";; str = "busy")
+    {
+      QLog.i("shadow::PluginManagerWrapper", 1, String.format("doPreLoad pps status is %s ", new Object[] { str }));
+      if (bool) {
+        enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+      }
+      return;
+    }
+  }
+  
+  public void enter(Context paramContext, long paramLong, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("shadow::PluginManagerWrapper", 2, "enter formId:" + paramLong + " enterCallback:" + paramEnterCallback);
+    }
+    asve.a().a(this.b, this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager);
+    this.jdField_a_of_type_ComTencentShadowDynamicHostDynamicPluginManager.enter(paramContext, paramLong, paramBundle, paramEnterCallback);
+    if ("Now".equals(this.b)) {}
+    for (paramContext = "33669800";; paramContext = "33669805")
+    {
+      aswy.b(paramContext);
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("shadow").opName(this.b).opType("enter").d1(paramLong + "").report();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asvf
  * JD-Core Version:    0.7.0.1
  */

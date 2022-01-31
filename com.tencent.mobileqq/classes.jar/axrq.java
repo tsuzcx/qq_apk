@@ -1,21 +1,14 @@
 class axrq
 {
-  int jdField_a_of_type_Int = 1;
-  boolean jdField_a_of_type_Boolean = true;
-  int b = 86400;
-  int c = 5;
+  axqz jdField_a_of_type_Axqz;
+  axrl jdField_a_of_type_Axrl;
+  axrm jdField_a_of_type_Axrm;
   
-  void a()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 1;
-    this.b = 86400;
-    this.c = 5;
-  }
+  private axrq(axrn paramaxrn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axrq
  * JD-Core Version:    0.7.0.1
  */

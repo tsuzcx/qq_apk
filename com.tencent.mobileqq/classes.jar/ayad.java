@@ -1,48 +1,29 @@
-import org.xmlpull.v1.XmlSerializer;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View.OnClickListener;
 
-public class ayad
-  extends axws
+public abstract class ayad
+  extends ClickableSpan
+  implements View.OnClickListener
 {
-  public ayad()
+  private int a;
+  
+  public ayad(int paramInt)
   {
-    this.a = "vote";
+    this.a = paramInt;
   }
   
-  public String a()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return "VoteCover";
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "vote");
-    if (this.S == null) {}
-    for (String str = "";; str = this.S)
-    {
-      paramXmlSerializer.attribute(null, "cover", str);
-      paramXmlSerializer.endTag(null, "vote");
-      return;
-    }
-  }
-  
-  public boolean a(axwg paramaxwg)
-  {
-    if (paramaxwg == null) {
-      return true;
-    }
-    paramaxwg = paramaxwg.a("cover");
-    if (paramaxwg != null) {}
-    for (;;)
-    {
-      this.S = paramaxwg;
-      return true;
-      paramaxwg = "";
-    }
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.a);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.clearShadowLayer();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayad
  * JD-Core Version:    0.7.0.1
  */

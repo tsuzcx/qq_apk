@@ -1,59 +1,56 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRResultActivity;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class avro
-  implements avrq
+public class avro
+  implements ActionMode.Callback
 {
-  avro(avrn paramavrn) {}
+  public avro(OCRResultActivity paramOCRResultActivity, EditText paramEditText) {}
   
-  public void a(int paramInt)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
-    }
-    if ((paramInt < 0) || (paramInt >= this.a.a.size())) {}
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-    do
+    if (paramMenuItem.getItemId() == 2131371318)
     {
-      return;
-      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.a.get(paramInt);
-      if (!localPtvTemplateInfo.advertisement) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("CapturePtvTemplateManager", 2, "info.advertisement is ture onItemClicked name: " + localPtvTemplateInfo.name);
-      }
-    } while (avrn.a(this.a) == null);
-    avrn.a(this.a).a(localPtvTemplateInfo);
-    return;
-    this.a.a(paramInt);
-    avtd.jdField_b_of_type_JavaLangString = avrn.a(this.a).a + "";
-    avtd.c = localPtvTemplateInfo.id;
-    avtd.a = localPtvTemplateInfo.hasGesture();
-    boolean bool;
-    if (localPtvTemplateInfo.kind == 3)
-    {
-      bool = true;
-      avtd.jdField_b_of_type_Boolean = bool;
-      if (axhr.a().a != 1) {
-        break label228;
+      paramActionMode = OCRResultActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, this.jdField_a_of_type_AndroidWidgetEditText);
+      if (TextUtils.isEmpty(paramActionMode)) {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, 1, alpo.a(2131708200), 0).a();
       }
     }
-    label228:
-    for (paramInt = i;; paramInt = 2)
+    else
     {
-      avtd.f(paramInt);
-      return;
-      bool = false;
-      break;
+      return false;
     }
+    OCRTextSearchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity, paramActionMode);
+    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultActivity.overridePendingTransition(2130771992, 0);
+    return true;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    paramActionMode = paramActionMode.getMenuInflater();
+    if (paramActionMode != null) {
+      paramActionMode.inflate(2131623940, paramMenu);
+    }
+    return true;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avro
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,34 @@
 package com.tencent.gdtad.statistics.c2s;
 
-import axqy;
-import yyf;
-import yyg;
+import aaoe;
+import aaof;
+import azmj;
 
 public class GdtC2SReportInterface$1$1
   implements Runnable
 {
-  public GdtC2SReportInterface$1$1(yyg paramyyg) {}
+  public GdtC2SReportInterface$1$1(aaof paramaaof) {}
   
   public void run()
   {
-    axqy.a(null, "dc00898", "", "", "0X8009EBE", "0X8009EBE", this.a.a.a, 0, "", "", yyf.a(this.a.a), "");
+    azmj.a(null, "dc00898", "", "", "0X8009EBE", "0X8009EBE", this.a.a.a, 0, "", "", aaoe.a(this.a.a), "");
     switch (this.a.a.a)
     {
     default: 
       return;
     case 0: 
-      yyf.a(this.a.a, yyf.a(this.a.a));
+      aaoe.a(this.a.a, aaoe.a(this.a.a));
       return;
     case 1: 
-      yyf.a(this.a.a, yyf.b(this.a.a));
+      aaoe.a(this.a.a, aaoe.b(this.a.a));
       return;
     }
-    yyf.a(this.a.a, yyf.c(this.a.a));
+    aaoe.a(this.a.a, aaoe.c(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.statistics.c2s.GdtC2SReportInterface.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,20 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import java.util.ArrayList;
 
-class tft
-  implements tsn
+abstract interface tft
 {
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex <= 0L);
-  }
+  public abstract void a(Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed);
+  
+  public abstract void a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed);
+  
+  public abstract void a(Context paramContext, stSimpleMetaFeed paramstSimpleMetaFeed, int paramInt);
+  
+  public abstract boolean a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tft
  * JD-Core Version:    0.7.0.1
  */

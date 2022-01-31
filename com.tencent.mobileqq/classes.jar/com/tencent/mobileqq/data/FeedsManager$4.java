@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import aukp;
+import awbw;
 import com.tencent.mobileqq.data.qzone.FeedInfo;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,18 +11,26 @@ class FeedsManager$4
   
   public void run()
   {
-    if (FeedsManager.access$000(this.this$0) != null)
+    try
     {
-      boolean bool = FeedsManager.access$000(this.this$0).a(this.jdField_a_of_type_ComTencentMobileqqDataQzoneFeedInfo);
-      if (QLog.isColorLevel()) {
-        QLog.e("FeedsManager", 2, "setFeedInfoRead  :" + this.jdField_a_of_type_JavaLangString + " ,success:" + bool);
+      if (FeedsManager.access$000(this.this$0) != null)
+      {
+        boolean bool = FeedsManager.access$000(this.this$0).a(this.jdField_a_of_type_ComTencentMobileqqDataQzoneFeedInfo);
+        if (QLog.isColorLevel()) {
+          QLog.e("FeedsManager", 2, "setFeedInfoRead  :" + this.jdField_a_of_type_JavaLangString + " ,success:" + bool);
+        }
       }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("FeedsManager", 1, localException, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.FeedsManager.4
  * JD-Core Version:    0.7.0.1
  */

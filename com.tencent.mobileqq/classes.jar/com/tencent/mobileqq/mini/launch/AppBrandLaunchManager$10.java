@@ -1,27 +1,26 @@
 package com.tencent.mobileqq.mini.launch;
 
-import android.util.LruCache;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 
 class AppBrandLaunchManager$10
   implements Runnable
 {
-  AppBrandLaunchManager$10(AppBrandLaunchManager paramAppBrandLaunchManager, String paramString1, String paramString2) {}
+  AppBrandLaunchManager$10(AppBrandLaunchManager paramAppBrandLaunchManager, MiniAppConfig paramMiniAppConfig) {}
   
   public void run()
   {
-    AppBrandLaunchManager.MiniAppSubProcessorInfo localMiniAppSubProcessorInfo = (AppBrandLaunchManager.MiniAppSubProcessorInfo)AppBrandLaunchManager.access$300(this.this$0).get(this.val$processName);
-    if (localMiniAppSubProcessorInfo != null)
+    AppBrandLaunchManager localAppBrandLaunchManager = this.this$0;
+    if (!this.val$appConfig.isEngineTypeMiniGame()) {}
+    for (boolean bool = true;; bool = false)
     {
-      QLog.i("miniapp-process_AppBrandLaunchManager", 1, "set preloadGameBaseLibVersion:" + this.val$gameBaseLibVersion + " to " + localMiniAppSubProcessorInfo);
-      localMiniAppSubProcessorInfo.preloadGameBaseLibVersion = this.val$gameBaseLibVersion;
-      AppBrandLaunchManager.access$300(this.this$0).put(this.val$processName, localMiniAppSubProcessorInfo);
+      localAppBrandLaunchManager.preloadExtraMiniApp(bool);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandLaunchManager.10
  * JD-Core Version:    0.7.0.1
  */

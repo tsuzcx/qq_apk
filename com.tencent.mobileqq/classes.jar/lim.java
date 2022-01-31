@@ -1,196 +1,113 @@
-import android.text.TextUtils;
-import com.tencent.av.business.manager.pendant.AVEffectPendantReport.1;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.beacon.event.UserAction;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.SecUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.av.config.ConfigInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class lim
 {
-  private static int jdField_a_of_type_Int;
-  private static ArrayList<PendantItem> jdField_a_of_type_JavaUtilArrayList;
-  private static int b;
+  private static lim jdField_a_of_type_Lim;
+  int jdField_a_of_type_Int = 0;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lin(this);
+  lnc jdField_a_of_type_Lnc = null;
   
-  private static Class<?> a()
+  public lim(Context paramContext)
   {
-    return PendantItem.class;
-  }
-  
-  private static String a()
-  {
-    return "content";
-  }
-  
-  private static String a(PendantItem paramPendantItem)
-  {
-    String str = null;
-    if (paramPendantItem != null) {
-      str = lcj.c() + paramPendantItem.getName();
-    }
-    return str;
-  }
-  
-  private static ArrayList<PendantItem> a(String paramString)
-  {
-    localArrayList = new ArrayList();
-    b = 0;
-    jdField_a_of_type_Int = 0;
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        int j = muc.b();
-        Object localObject = a();
-        if (paramString.has((String)localObject))
-        {
-          paramString = paramString.getJSONArray((String)localObject);
-          localObject = a();
-          int i = 0;
-          while (i < paramString.length())
-          {
-            PendantItem localPendantItem = (PendantItem)bazp.a((JSONObject)paramString.get(i), (Class)localObject);
-            if ((localPendantItem != null) && (!TextUtils.isEmpty(localPendantItem.getId())) && (localPendantItem.isShow()))
-            {
-              int k = localPendantItem.getPlatform();
-              if ((k == 0) || (j >= k))
-              {
-                boolean bool = b(localPendantItem);
-                localPendantItem.setUsable(bool);
-                localArrayList.add(localPendantItem);
-                b += 1;
-                if (bool) {
-                  jdField_a_of_type_Int += 1;
-                }
-              }
-            }
-            i += 1;
-          }
-        }
-        return localArrayList;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
+    if (QLog.isDevelopLevel()) {
+      QLog.w("AVConfigManager", 1, "构造", new Throwable("打印调用栈"));
     }
   }
   
-  public static void a()
+  public static lim a(Context paramContext)
   {
-    bbkb.b(jdField_a_of_type_Int, b);
-    lcg.c("AVEffectPendantReport", "setAVPendantDownloadInfo()  mTotalCount = " + b + "  mDownloadCount = " + jdField_a_of_type_Int);
-  }
-  
-  private static String b()
-  {
-    return lct.b(e()).a;
-  }
-  
-  public static void b()
-  {
-    bbkb.c();
-    lcg.c("AVEffectPendantReport", "setAVPendantUseInfo()  time = " + System.currentTimeMillis());
-  }
-  
-  private static boolean b(PendantItem paramPendantItem)
-  {
-    if ((e() <= 0) || (paramPendantItem == null) || (TextUtils.isEmpty(paramPendantItem.getId()))) {
-      lcg.e("AVEffectPendantReport", "isTemplateUsable:" + e() + "|");
-    }
-    do
-    {
-      return false;
-      if (TextUtils.isEmpty(paramPendantItem.getResurl())) {
-        return true;
-      }
-    } while (!new File(a(paramPendantItem)).exists());
-    System.currentTimeMillis();
-    String str = SecUtil.getFileMd5(a(paramPendantItem));
-    System.currentTimeMillis();
-    return paramPendantItem.getMd5().equalsIgnoreCase(str);
-  }
-  
-  public static void c()
-  {
-    ThreadManager.getFileThreadHandler().post(new AVEffectPendantReport.1());
-  }
-  
-  public static void d()
-  {
-    String str = b();
-    jdField_a_of_type_JavaUtilArrayList = null;
-    jdField_a_of_type_JavaUtilArrayList = a(str);
-  }
-  
-  private static int e()
-  {
-    return 106;
-  }
-  
-  public static void e()
-  {
-    long l1 = -1L;
+    if (jdField_a_of_type_Lim == null) {}
     try
     {
-      localHashMap = new HashMap();
-      bool = bbkb.b();
-      arrayOfInt = bbkb.b();
-      l2 = bbkb.b();
-      if ((!bool) && (arrayOfInt[1] <= 0))
+      if (jdField_a_of_type_Lim == null)
       {
-        avrv.a().b(false);
-        bbkb.d();
+        jdField_a_of_type_Lim = new lim(paramContext);
+        jdField_a_of_type_Lim.b(paramContext);
       }
-      if (l2 <= 0L) {
-        break label380;
-      }
-      l1 = (System.currentTimeMillis() - l2) / 1000L;
+      return jdField_a_of_type_Lim;
     }
-    catch (Throwable localThrowable)
+    finally {}
+  }
+  
+  public static lnc a(Context paramContext)
+  {
+    return a(paramContext).b(paramContext);
+  }
+  
+  public static void a(Context paramContext)
+  {
+    try
     {
-      int[] arrayOfInt;
-      do
+      if (jdField_a_of_type_Lim != null)
       {
-        HashMap localHashMap;
-        boolean bool;
-        long l2;
-        BigDecimal localBigDecimal;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AVEffectPendantReport", 2, "reportAVPendantDownloadInfo", localThrowable);
+        jdField_a_of_type_Lim.c(paramContext);
+        jdField_a_of_type_Lim = null;
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  lnc b(Context paramContext)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Lnc == null)
+      {
+        String str = ConfigInfo.getSharpConfigPayloadFromFile(paramContext);
+        this.jdField_a_of_type_Int = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
+        this.jdField_a_of_type_Lnc = new lnc(str);
+        QLog.w("AVConfigManager", 1, "getParser, Version[" + this.jdField_a_of_type_Int + "], data[\n" + str + "\n]");
+      }
+      paramContext = this.jdField_a_of_type_Lnc;
+      return paramContext;
+    }
+    finally {}
+  }
+  
+  public void b(Context paramContext)
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE");
+    localIntentFilter.addAction("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD");
+    paramContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+  }
+  
+  void c(Context paramContext)
+  {
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+    {
+      paramContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    }
+  }
+  
+  public void d(Context paramContext)
+  {
+    try
+    {
+      if (this.jdField_a_of_type_Lnc == null) {
         return;
-        if ((arrayOfInt[0] <= 0) && (arrayOfInt[1] <= 0)) {
-          break;
-        }
-      } while (arrayOfInt[0] <= arrayOfInt[1]);
+      }
+      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
+      if ((this.jdField_a_of_type_Int != i) || (this.jdField_a_of_type_Lnc.a()))
+      {
+        QLog.w("AVConfigManager", 1, "reload, Version[" + this.jdField_a_of_type_Int + "->" + i + "]");
+        this.jdField_a_of_type_Lnc = null;
+        this.jdField_a_of_type_Int = 0;
+      }
+      return;
     }
-    localBigDecimal = new BigDecimal(arrayOfInt[0] * 1.0F / arrayOfInt[1]);
-    localHashMap.put("filter_download", String.valueOf(arrayOfInt[0]));
-    localHashMap.put("filter_total", String.valueOf(arrayOfInt[1]));
-    localHashMap.put("filter_ratio", String.valueOf(localBigDecimal.setScale(2, 4).floatValue()));
-    localHashMap.put("filter_spacing", String.valueOf(l1));
-    if (QLog.isColorLevel()) {
-      QLog.d("DailyReport", 2, "reportAVPendantDownloadInfo filter_download = " + arrayOfInt[0] + ",filter_total = " + arrayOfInt[1] + ",filter_spacing" + l1);
-    }
-    bool = UserAction.onUserAction("AVFunChatExpression", true, -1L, -1L, localHashMap, true);
-    UserAction.flushObjectsToDB(true);
-    lcg.c("AVEffectPendantReport", "reportAVPendantDownloadInfo, filter_download[" + (String)localHashMap.get("filter_download") + "], filter_total[" + (String)localHashMap.get("filter_total") + "],filter_total[" + (String)localHashMap.get("filter_ratio") + "],filter_ratio[" + (String)localHashMap.get("filter_spacing") + "], lastUserTime = " + l2 + "    ret[" + bool + "]");
-    return;
-    label380:
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lim
  * JD-Core Version:    0.7.0.1
  */

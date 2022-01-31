@@ -1,56 +1,93 @@
-import NS_MOBILE_PHOTO.get_albumlist_num_req;
-import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import NS_MINI_REPORT.REPORT.StDcReportRsp;
+import NS_MINI_REPORT.REPORT.StGameDcReportRsp;
+import NS_MINI_REPORT.REPORT.StThirdDcReportRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
 public class bgyn
-  extends QzoneExternalRequest
+  extends bgzp
 {
-  public JceStruct a;
+  private String jdField_a_of_type_JavaLangString;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private String b;
   
-  public bgyn(long paramLong, String paramString)
+  public bgyn(byte[] paramArrayOfByte, String paramString1, String paramString2)
   {
-    super.setRefer(paramString);
-    super.setHostUin(paramLong);
-    super.setLoginUserId(paramLong);
-    paramString = new get_albumlist_num_req();
-    paramString.uin = paramLong;
-    this.a = paramString;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  public static get_albumlist_num_rsp a(byte[] paramArrayOfByte)
+  protected String a()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    return "mini_app_dcreport";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+      return null;
     }
-    get_albumlist_num_rsp localget_albumlist_num_rsp;
-    do
+    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+    try
     {
-      return paramArrayOfByte;
-      localget_albumlist_num_rsp = (get_albumlist_num_rsp)decode(paramArrayOfByte, "getAlbumListNum");
-      paramArrayOfByte = localget_albumlist_num_rsp;
-    } while (localget_albumlist_num_rsp != null);
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      int i;
+      if ("ThirdDcReport".equals(this.b))
+      {
+        paramArrayOfByte = new REPORT.StThirdDcReportRsp();
+        paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+        i = paramArrayOfByte.ret.get();
+      }
+      while (i == 0)
+      {
+        return new JSONObject();
+        if ("GameDcReport".equals(this.b))
+        {
+          paramArrayOfByte = new REPORT.StGameDcReportRsp();
+          paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+          i = paramArrayOfByte.ret.get();
+        }
+        else
+        {
+          paramArrayOfByte = new REPORT.StDcReportRsp();
+          paramArrayOfByte.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+          i = paramArrayOfByte.ret.get();
+        }
+      }
+      QMLog.d("ProtoBufRequest", "onResponse fail.retCode = " + i);
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+    }
     return null;
   }
   
-  public String getCmdString()
+  public byte[] a()
   {
-    return "QzoneNewService.getAlbumListNum";
+    return this.jdField_a_of_type_ArrayOfByte;
   }
   
-  public JceStruct getReq()
+  protected String b()
   {
-    return this.a;
-  }
-  
-  public String uniKey()
-  {
-    return "getAlbumListNum";
+    if (this.b != null) {
+      return this.b;
+    }
+    return "DcReport";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgyn
  * JD-Core Version:    0.7.0.1
  */

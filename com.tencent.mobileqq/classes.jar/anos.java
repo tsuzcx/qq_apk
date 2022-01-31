@@ -1,24 +1,28 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.PathMeasure;
-import com.tencent.mobileqq.doutu.combo.ComboMasterView;
-
-public class anos
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface anos
 {
-  public anos(ComboMasterView paramComboMasterView, PathMeasure paramPathMeasure, float[] paramArrayOfFloat) {}
+  public abstract void onRotationUpdateOriginal(float[] paramArrayOfFloat);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidGraphicsPathMeasure.getPosTan(f, this.jdField_a_of_type_ArrayOfFloat, null);
-    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationX(this.jdField_a_of_type_ArrayOfFloat[0]);
-    this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboMasterView.setTranslationY(this.jdField_a_of_type_ArrayOfFloat[1]);
-  }
+  public abstract void onRotationUpdateQuaternion(float[] paramArrayOfFloat);
+  
+  public abstract void onSensorSupport(int paramInt, boolean paramBoolean);
+  
+  public abstract void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  
+  public abstract void updateAzimuth(float paramFloat);
+  
+  public abstract void updateGyroscope(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  
+  public abstract void updatePitch(float paramFloat);
+  
+  public abstract void updateRoll(float paramFloat);
+  
+  public abstract void updateRotation(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void updateSensor(float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anos
  * JD-Core Version:    0.7.0.1
  */

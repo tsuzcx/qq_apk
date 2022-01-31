@@ -1,24 +1,13 @@
-class bfed
-  implements besu
+import com.tencent.tmassistant.common.jce.StatReportRequest;
+import com.tencent.tmassistant.common.jce.StatReportResponse;
+
+public abstract interface bfed
 {
-  bfed(bfec parambfec) {}
-  
-  public void a(int paramInt, String paramString, best parambest)
-  {
-    bezi.a(beze.a(), 11, "0");
-    if ((paramInt == 0) && (parambest != null) && (parambest.a()))
-    {
-      bfec.a(this.a, parambest);
-      beys.a = true;
-      this.a.c();
-      return;
-    }
-    this.a.f();
-  }
+  public abstract void a(int paramInt1, StatReportRequest paramStatReportRequest, StatReportResponse paramStatReportResponse, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfed
  * JD-Core Version:    0.7.0.1
  */

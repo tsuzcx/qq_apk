@@ -1,11 +1,11 @@
 package cooperation.vip.common;
 
 import android.app.Activity;
-import bhzd;
+import bkaz;
 import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 
 public class VipClass
-  extends bhzd
+  extends bkaz
 {
   private static VipClass a = new VipClass();
   
@@ -21,7 +21,7 @@ public class VipClass
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.vip.common.VipClass
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.out.activity;
 
 import android.view.View;
-import bfpt;
+import bhqp;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AdapterView;
 
 class MapActivity$1
-  implements bfpt
+  implements bhqp
 {
   MapActivity$1(MapActivity paramMapActivity) {}
   
@@ -22,7 +22,7 @@ class MapActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.MapActivity.1
  * JD-Core Version:    0.7.0.1
  */

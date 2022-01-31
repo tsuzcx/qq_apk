@@ -1,34 +1,24 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelController;
 
-class apqm
-  implements View.OnClickListener
+public class apqm
+  implements aubq<String, Integer>
 {
-  apqm(apql paramapql) {}
+  public apqm(EmoticonPanelController paramEmoticonPanelController, int paramInt) {}
   
-  public void onClick(View paramView)
+  public Integer a(String paramString)
   {
-    if (!apql.a(this.a)) {
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.d(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController.k);
+    int i = this.jdField_a_of_type_Int;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = EmoticonPanelController.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelController, paramString);
     }
-    if ((apug.a()) && (apel.c() > apei.a()))
-    {
-      aptt.a(SplashActivity.sTopActivity, 2131692673, 2131692678, new apqn(this));
-      return;
-    }
-    paramView = new ArrayList();
-    paramView.addAll(apel.a());
-    Intent localIntent = new Intent();
-    localIntent.putParcelableArrayListExtra("sFilesSelected", paramView);
-    apql.b(this.a, localIntent);
+    return Integer.valueOf(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apqm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,34 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
+import com.tencent.image.URLDrawable;
+import java.net.URL;
 
-public class aajh
-  implements CompoundButton.OnCheckedChangeListener
+class aajh
+  implements aapx
 {
-  public aajh(AssistantSettingActivity paramAssistantSettingActivity) {}
+  aajh(aajg paramaajg) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(URLDrawable paramURLDrawable)
   {
-    AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean);
-    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
-    if (paramBoolean)
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
     {
-      axqy.b(this.a.app, "dc00898", "", "", "0X8009C0C", "0X8009C0C", 0, 0, "", "", "", "");
+      aanp.b("GdtBannerImageView", String.format("onLoadSuccessful %s", new Object[] { paramURLDrawable }));
       return;
     }
-    axqy.b(this.a.app, "dc00898", "", "", "0X8009C0D", "0X8009C0D", 0, 0, "", "", "", "");
+  }
+  
+  public void b(URLDrawable paramURLDrawable)
+  {
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
+    {
+      aanp.b("GdtBannerImageView", String.format("onLoadFailed %s", new Object[] { paramURLDrawable }));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aajh
  * JD-Core Version:    0.7.0.1
  */

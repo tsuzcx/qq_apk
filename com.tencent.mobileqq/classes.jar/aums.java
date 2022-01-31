@@ -1,74 +1,37 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.qphone.base.util.QLog;
 
-class aums
-  extends Handler
+public class aums
+  extends BroadcastReceiver
 {
-  aums(aumr paramaumr, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aums(QQPlayerService paramQQPlayerService) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    aung.a(this.a.b, this.a.jdField_a_of_type_JavaLangString, "dispatchMessage", "what:" + paramMessage.what + ",result:" + paramMessage.arg1 + ",obj:" + paramMessage.obj);
-    if (this.a.jdField_a_of_type_Auon == null) {}
+    if (QQPlayerService.c(this.a)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("QQPlayerService", 2, "received broadcast after service destroy");
+      }
+    }
     do
     {
       return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        i = paramMessage.arg1;
-        paramMessage = (aunw)paramMessage.obj;
-        this.a.jdField_a_of_type_Auon.a(i, paramMessage);
-        return;
-      case 1: 
-        paramMessage = (aunw)paramMessage.obj;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQPlayerService", 2, "QQPlayerBroadcastReceiverReceiver onReceive,action:" + paramIntent.getAction());
       }
-    } while (!(paramMessage.a instanceof Integer));
-    this.a.jdField_a_of_type_Auon.a_(((Integer)paramMessage.a).intValue(), paramMessage.c);
-    return;
-    int i = paramMessage.arg1;
-    paramMessage = (aunw)paramMessage.obj;
-    this.a.jdField_a_of_type_Auon.b(i, paramMessage);
-    return;
-    i = paramMessage.arg1;
-    paramMessage = (aunw)paramMessage.obj;
-    this.a.jdField_a_of_type_Auon.c(i, paramMessage);
-    return;
-    i = paramMessage.arg1;
-    paramMessage = (aunw)paramMessage.obj;
-    this.a.jdField_a_of_type_Auon.d(i, paramMessage);
-    return;
-    if (paramMessage.obj != null) {}
-    for (;;)
-    {
-      try
-      {
-        ArrayList localArrayList = (ArrayList)paramMessage.obj;
-        this.a.jdField_a_of_type_Auon.a(paramMessage.arg1, localArrayList);
-        return;
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        localObject = null;
-        continue;
-      }
-      paramMessage = (aunw)paramMessage.obj;
-      this.a.jdField_a_of_type_Auon.a(((Integer)paramMessage.a).intValue());
-      return;
-      Object localObject = null;
+    } while ((!"com.tencent.mobileqq.intent.logout".equals(paramIntent.getAction())) && (!"qqplayer_exit_action".equals(paramIntent.getAction())));
+    if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.a != null)) {
+      this.a.a.b = true;
     }
+    QQPlayerService.c(this.a.getApplicationContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aums
  * JD-Core Version:    0.7.0.1
  */

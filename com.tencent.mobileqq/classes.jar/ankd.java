@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.SpecialCareInfo;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ankd
-  implements Parcelable.Creator<SpecialCareInfo>
+class ankd
+  implements ArkAppMgr.IGetAppPathByNameCallback
 {
-  public SpecialCareInfo a(Parcel paramParcel)
-  {
-    return new SpecialCareInfo(paramParcel);
-  }
+  ankd(ankc paramankc, String paramString) {}
   
-  public SpecialCareInfo[] a(int paramInt)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    return new SpecialCareInfo[paramInt];
+    QLog.i("ArkApp.ArkAppPreDownloadMgr", 1, "profiling onReleaseAndReload onGetAppPathByName app=" + this.jdField_a_of_type_JavaLangString + ",retcode=" + paramInt + ",msg=" + paramString);
+    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null)) {
+      anka.a(this.jdField_a_of_type_Ankc.a, this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path, anka.a(this.jdField_a_of_type_Ankc.a), 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ankd
  * JD-Core Version:    0.7.0.1
  */

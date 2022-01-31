@@ -1,26 +1,20 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoCropForPortraitActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agmv
-  implements View.OnClickListener
+class agmv
+  implements DialogInterface.OnClickListener
 {
-  public agmv(PhotoCropForPortraitActivity paramPhotoCropForPortraitActivity) {}
+  agmv(agmb paramagmb) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = this.a.getIntent();
-    String str = paramView.getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME");
-    int i = paramView.getIntExtra("PhotoConst.CLIP_WIDTH", 0);
-    PhotoUtils.a(paramView, this.a, str, i, i, 1080, 1080, bbac.a());
-    axqy.b(this.a.app, "dc00898", "", "", "0X800723F", "0X800723F", 0, 0, "", "", "", "");
+    this.a.aa = true;
+    agmb.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agmv
  * JD-Core Version:    0.7.0.1
  */

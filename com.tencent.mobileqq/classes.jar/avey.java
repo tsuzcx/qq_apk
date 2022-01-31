@@ -1,22 +1,36 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import java.util.Comparator;
+import android.app.Activity;
+import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
 
-class avey
-  implements Comparator<QCallRecord>
+public class avey
+  extends zep
 {
-  avey(avex paramavex) {}
+  public avey(PicBrowserActivity paramPicBrowserActivity) {}
   
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  public zdw a(Activity paramActivity, zec paramzec)
   {
-    if (paramQCallRecord1.type == QCallRecord.TYPE_DATE) {
-      return 0;
-    }
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+    return super.a(paramActivity, paramzec);
+  }
+  
+  public zdy a(Activity paramActivity, zec paramzec)
+  {
+    return new avfa((PicBrowserActivity)paramActivity, paramzec);
+  }
+  
+  public zec a(Activity paramActivity)
+  {
+    paramActivity = new avfg(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
+    paramActivity.a(this.a.jdField_b_of_type_Int);
+    return paramActivity;
+  }
+  
+  public zed a(Activity paramActivity, zec paramzec)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avey
  * JD-Core Version:    0.7.0.1
  */

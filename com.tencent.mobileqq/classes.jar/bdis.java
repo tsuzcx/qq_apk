@@ -1,63 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Toast;
-import com.tencent.open.base.ToastUtil.1;
-import com.tencent.open.base.ToastUtil.2;
-import com.tencent.open.base.ToastUtil.3;
+import com.tencent.qphone.base.util.QLog;
 
-public class bdis
+final class bdis
+  extends alsi
 {
-  protected static bdis a;
-  protected Handler a;
-  public Toast a;
-  public Toast b;
-  
-  public bdis()
+  public void a(boolean paramBoolean, long paramLong, alsj paramalsj)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  }
-  
-  public static bdis a()
-  {
-    if (jdField_a_of_type_Bdis == null) {
-      jdField_a_of_type_Bdis = new bdis();
-    }
-    return jdField_a_of_type_Bdis;
-  }
-  
-  public void a(int paramInt)
-  {
-    a(paramInt, 0);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.2(this, paramInt1, paramInt2));
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.3(this, paramView, paramInt));
-  }
-  
-  public void a(String paramString)
-  {
-    a(paramString, 0);
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (TextUtils.isEmpty(paramString)) {
+    if (paramalsj != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder(256);
+      localStringBuilder.append("StatictisInfo[ ");
+      localStringBuilder.append("appSeq: " + paramalsj.jdField_a_of_type_Int);
+      localStringBuilder.append("errCode: " + paramalsj.b);
+      localStringBuilder.append("retryCount: " + paramalsj.c);
+      localStringBuilder.append("detailErrorReason: " + paramalsj.jdField_a_of_type_Long);
+      localStringBuilder.append("timeoutReason: " + paramalsj.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(" ]");
+      QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + "," + localStringBuilder.toString());
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new ToastUtil.1(this, paramString, paramInt));
+    QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + ",statictisInfo == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdis
  * JD-Core Version:    0.7.0.1
  */

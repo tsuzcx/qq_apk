@@ -15,7 +15,7 @@ public final class Smartptt$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.smartptt.Smartptt.ReqBody
  * JD-Core Version:    0.7.0.1
  */

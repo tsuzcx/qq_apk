@@ -1,60 +1,26 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.FaceDownloader;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.2.1;
 
 public class ajvs
-  extends MqqHandler
+  implements View.OnClickListener
 {
-  public ajvs(FaceDownloader paramFaceDownloader, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ajvs(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage == null) {}
-    while (paramMessage.what != 100) {
-      return;
-    }
-    int i = 0;
-    label16:
-    if (i < this.a.b.size())
-    {
-      paramMessage = (ajvv)this.a.b.get(i);
-      if (paramMessage != null) {
-        break label56;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label16;
-      break;
-      label56:
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDownloader", 2, "handle download finish task.faceInfo=" + paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo + ",bitmap=" + paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-      if ((paramMessage != null) && (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo != null) && (paramMessage.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.a.a.size() > 0))
-      {
-        int j = 0;
-        while (j < this.a.a.size())
-        {
-          ((ajvt)this.a.a.get(j)).a(true, paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
-          j += 1;
-        }
-      }
-      this.a.b.remove(i);
-      i -= 1;
+    this.a.onBackEvent();
+    if (AppSetting.c) {
+      this.a.c.post(new SelectMemberActivity.2.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajvs
  * JD-Core Version:    0.7.0.1
  */

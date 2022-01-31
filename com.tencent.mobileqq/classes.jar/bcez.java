@@ -1,29 +1,42 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class bcez
-  implements myz
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public bcez(SwiftBrowserOfflineHandler.1 param1, long paramLong) {}
+  public bcez(VisitorTroopCardFragment paramVisitorTroopCardFragment) {}
   
-  public void loaded(int paramInt, String paramString)
+  public void onPageSelected(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserOfflineHandler", 2, "now offline bid has checked, bid " + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaLangString + ", loadMode: " + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", cost: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (paramInt != 0)
+    super.onPageSelected(paramInt);
+    String str1;
+    String str3;
+    if (this.a.a != null)
     {
-      xlb.c(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.jdField_a_of_type_JavaLangString);
-      xli.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.jdField_a_of_type_JavaLangString);
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label85;
+      }
+      str1 = "grpData_admin";
+      str3 = this.a.a.troopUin;
+      if (!VisitorTroopCardFragment.a(this.a)) {
+        break label91;
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler$1.this$0.a();
+    label85:
+    label91:
+    for (String str2 = bdaj.a(this.a.a);; str2 = "1")
+    {
+      bdaj.a("Grp_set_new", str1, "slide_head", 0, 0, new String[] { str3, str2 });
+      return;
+      str1 = "grpData_visitor";
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcez
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,19 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
 
-public class bahe
+class bahe
+  implements View.OnClickListener
 {
-  public View a;
-  public ImageView a;
-  TextView a;
-  public String a;
+  bahe(bahd parambahd) {}
   
-  public bahe(View paramView)
+  public void onClick(View paramView)
   {
-    this.a = paramView;
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bahe
  * JD-Core Version:    0.7.0.1
  */

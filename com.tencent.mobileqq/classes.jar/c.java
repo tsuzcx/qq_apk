@@ -175,17 +175,17 @@ public class c
             i1 = 1;
             label565:
             if ((i4 > paramInt1) && (i2 > i4)) {
-              a(null, ha.a(paramCharSequence, paramInt1, i4), paramInt1, (int)f2, 0, this.jdField_l_of_type_Int);
+              a(null, fj.a(paramCharSequence, paramInt1, i4), paramInt1, (int)f2, 0, this.jdField_l_of_type_Int);
             }
             if (!(localCharacterStyle instanceof ClickableSpan)) {
               break label694;
             }
-            a(null, ha.a(paramCharSequence, i4, i2), i4, (int)f2, 1, this.jdField_l_of_type_Int);
+            a(null, fj.a(paramCharSequence, i4, i2), i4, (int)f2, 1, this.jdField_l_of_type_Int);
           }
           for (;;)
           {
             if ((n == arrayOfCharacterStyle.length - 1) && (i1 == 0)) {
-              a(null, ha.a(paramCharSequence, i2, ((Spanned)localObject).length()), i2, (int)f2, 0, this.jdField_l_of_type_Int);
+              a(null, fj.a(paramCharSequence, i2, ((Spanned)localObject).length()), i2, (int)f2, 0, this.jdField_l_of_type_Int);
             }
             n += 1;
             paramInt1 = i2;
@@ -193,10 +193,10 @@ public class c
             i1 = 0;
             break label565;
             label694:
-            if (((localCharacterStyle instanceof aykr)) || ((localCharacterStyle instanceof awdb))) {
+            if (((localCharacterStyle instanceof bain)) || ((localCharacterStyle instanceof axye))) {
               a(localCharacterStyle);
             } else if ((localCharacterStyle instanceof RelativeSizeSpan)) {
-              a((RelativeSizeSpan)localCharacterStyle, ha.a(paramCharSequence, i4, i2), i4, (int)f2, 3, this.jdField_l_of_type_Int);
+              a((RelativeSizeSpan)localCharacterStyle, fj.a(paramCharSequence, i4, i2), i4, (int)f2, 3, this.jdField_l_of_type_Int);
             } else {
               i.b(a(), "Un Know CharacterStyle   start:" + i4 + "  end:" + i2);
             }
@@ -268,9 +268,9 @@ public class c
     Object localObject;
     int i1;
     int n;
-    if ((paramCharacterStyle instanceof aykr))
+    if ((paramCharacterStyle instanceof bain))
     {
-      localObject = ((aykr)paramCharacterStyle).a().getBounds();
+      localObject = ((bain)paramCharacterStyle).a().getBounds();
       i1 = ((Rect)localObject).width();
       n = ((Rect)localObject).height();
     }
@@ -285,11 +285,11 @@ public class c
       ((r)localObject).jdField_a_of_type_Int = 2;
       this.jdField_c_of_type_JavaUtilList.add(localObject);
       return true;
-      if ((paramCharacterStyle instanceof awdb))
+      if ((paramCharacterStyle instanceof axye))
       {
-        localObject = (awdb)paramCharacterStyle;
-        i1 = ((awdb)localObject).a();
-        n = ((awdb)localObject).b();
+        localObject = (axye)paramCharacterStyle;
+        i1 = ((axye)localObject).a();
+        n = ((axye)localObject).b();
       }
       else
       {
@@ -558,15 +558,15 @@ public class c
       localObject = a(i3, i1);
       this.jdField_b_of_type_AndroidGraphicsCanvas.drawBitmap((Bitmap)localObject, i5, i4 + i6 - i1, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       continue;
-      if ((((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof aykr))
+      if ((((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof bain))
       {
-        ((aykr)((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6 + i4, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        ((bain)((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6 + i4, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
-      else if ((((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof awdb))
+      else if ((((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof axye))
       {
-        localObject = (awdb)((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        ((awdb)localObject).jdField_a_of_type_Boolean = false;
-        ((awdb)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
+        localObject = (axye)((r)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+        ((axye)localObject).jdField_a_of_type_Boolean = false;
+        ((axye)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, i5, i6, i6, i6 + i4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
       }
     }
   }
@@ -651,16 +651,16 @@ public class c
     }
   }
   
-  public int a(int paramInt1, int paramInt2, hx paramhx)
+  public int a(int paramInt1, int paramInt2, gg paramgg)
   {
     int n = 0;
     while (n < this.jdField_b_of_type_JavaUtilList.size())
     {
-      paramhx = (r)this.jdField_b_of_type_JavaUtilList.get(n);
-      if ((paramInt1 >= paramhx.jdField_d_of_type_Int) && (paramInt1 <= paramhx.jdField_d_of_type_Int + paramhx.jdField_b_of_type_Int) && (paramInt2 >= paramhx.jdField_e_of_type_Int))
+      paramgg = (r)this.jdField_b_of_type_JavaUtilList.get(n);
+      if ((paramInt1 >= paramgg.jdField_d_of_type_Int) && (paramInt1 <= paramgg.jdField_d_of_type_Int + paramgg.jdField_b_of_type_Int) && (paramInt2 >= paramgg.jdField_e_of_type_Int))
       {
-        int i1 = paramhx.jdField_e_of_type_Int;
-        if (paramInt2 <= paramhx.jdField_c_of_type_Int + i1) {
+        int i1 = paramgg.jdField_e_of_type_Int;
+        if (paramInt2 <= paramgg.jdField_c_of_type_Int + i1) {
           return n;
         }
       }
@@ -977,7 +977,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,135 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 
 public class vpk
-  implements ViewPager.OnPageChangeListener
 {
-  public vpk(FaceViewPager paramFaceViewPager) {}
+  private ErrorMessage a;
+  @NonNull
+  public final String a;
+  public utx a;
+  public final String b;
+  private String c;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public vpk(@NonNull String paramString1, @NonNull String paramString2)
   {
-    Iterator localIterator = FaceViewPager.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((vpl)localIterator.next()).b(paramInt);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public static vpk a(String paramString1, String paramString2, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (paramString1 != null) {
+      if (paramString2 == null) {
+        break label31;
+      }
+    }
+    for (;;)
+    {
+      paramString1 = new vpk(paramString1, paramString2);
+      paramString1.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+      return paramString1;
+      paramString1 = "ERROR_NO_VID";
+      break;
+      label31:
+      paramString2 = "ERROR_NO_FEED";
+    }
+  }
+  
+  public static vpk a(String paramString1, String paramString2, String paramString3)
+  {
+    if (paramString1 != null) {
+      if (paramString2 == null) {
+        break label31;
+      }
+    }
+    for (;;)
+    {
+      paramString1 = new vpk(paramString1, paramString2);
+      paramString1.c = paramString3;
+      return paramString1;
+      paramString1 = "LOADING_NO_VID";
+      break;
+      label31:
+      paramString2 = "LOADING_NO_FEED";
+    }
+  }
+  
+  public ErrorMessage a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
+  }
+  
+  public StoryVideoItem a()
+  {
+    return ((uro)urr.a(5)).b(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public VideoListFeedItem a()
+  {
+    if (TextUtils.isEmpty(this.b)) {
+      return null;
+    }
+    FeedItem localFeedItem = ((wkp)urr.a(11)).a(this.b, true);
+    if (localFeedItem == null) {
+      return null;
+    }
+    if ((localFeedItem instanceof VideoListFeedItem)) {
+      return (VideoListFeedItem)localFeedItem;
+    }
+    return null;
+  }
+  
+  public boolean a()
+  {
+    return this.c != null;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage != null;
+  }
+  
+  public boolean c()
+  {
+    return (!a()) && (!b());
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = localStringBuilder1.append("VideoData{").append("msgTabNodeType=");
+    int i;
+    if (this.jdField_a_of_type_Utx == null)
+    {
+      i = 0;
+      localStringBuilder2.append(i).append(",");
+      if (!a()) {
+        break label89;
+      }
+      localStringBuilder1.append("loadingMessage='").append(this.c).append('\'');
+    }
+    for (;;)
+    {
+      localStringBuilder1.append("}");
+      return localStringBuilder1.toString();
+      i = this.jdField_a_of_type_Utx.a;
+      break;
+      label89:
+      if (b()) {
+        localStringBuilder1.append("errorMessage=").append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+      } else {
+        localStringBuilder1.append("vid='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", feedId='").append(this.b).append('\'');
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vpk
  * JD-Core Version:    0.7.0.1
  */

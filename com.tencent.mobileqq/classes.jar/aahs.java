@@ -1,48 +1,77 @@
+import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.data.KplRoleInfo.WZRYUIinfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ad.tangram.process.AdProcessManager;
+import com.tencent.ad.tangram.process.AdProcessManagerAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.ToolAppRuntime;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
 public class aahs
-  implements View.OnClickListener
+  implements AdProcessManagerAdapter
 {
-  public aahs(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onClick(View paramView)
+  public Boolean isOnMainProcess()
   {
-    paramView = AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, false);
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if ((str != null) && (paramView != null) && (!str.equals(paramView))) {
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B0", "0X80077B0", 0, 0, "", "", "", "");
+    if (BaseApplicationImpl.getApplication() == null) {}
+    while (BaseApplicationImpl.getApplication().getRuntime() == null) {
+      return null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(str, false);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.getString(2131692078).equals(str)) && (!AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) {
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo != null)
+    return Boolean.valueOf(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface);
+  }
+  
+  public Boolean isOnWebProcess()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
     {
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X8008439", "0X8008439", 0, 0, "", "", "", "");
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.verifyMsg)) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_ComTencentMobileqqDataKplRoleInfo$WZRYUIinfo.verifyMsg.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString()))) {
-        axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X800843A", "0X800843A", 0, 0, "", "", "", "");
+      return null;
+      localObject = AdProcessManager.INSTANCE.getCurrentProcessName((Context)localObject);
+    } while (TextUtils.isEmpty((CharSequence)localObject));
+    return Boolean.valueOf(TextUtils.equals((CharSequence)localObject, "com.tencent.mobileqq:tool"));
+  }
+  
+  public Boolean isWebProcessRunning()
+  {
+    Object localObject = isWebProcessRunningForPreloading();
+    if ((localObject != null) && (((Boolean)localObject).booleanValue())) {
+      return Boolean.valueOf(true);
+    }
+    localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    for (;;)
+    {
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+      if ((localObject != null) && ((localObject instanceof QQAppInterface))) {
+        try
+        {
+          boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+          return Boolean.valueOf(bool);
+        }
+        catch (Throwable localThrowable)
+        {
+          aanp.d("GdtProcessManagerAdapter", "isWebProcessRunning", localThrowable);
+        }
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim(), null, "");
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00898", "", "", "0X80077B4", "0X80077B4", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.b), "", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("AddFriendVerifyActivity", 2, "reportClickEvent action: 0X80077B4  sourceId = " + this.jdField_a_of_type_Int + " subSourceId = " + this.b);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.c)) {
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app, "dc00899", "Qidian", "", "0X8008802", "ClickAddFriendButton", 0, 0, "1", "", "", "");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_Int, this.c);
+  }
+  
+  public Boolean isWebProcessRunningForPreloading()
+  {
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject == null) {}
+    do
+    {
+      return null;
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    } while ((localObject == null) || (!(localObject instanceof ToolAppRuntime)));
+    return Boolean.valueOf(beep.s);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aahs
  * JD-Core Version:    0.7.0.1
  */

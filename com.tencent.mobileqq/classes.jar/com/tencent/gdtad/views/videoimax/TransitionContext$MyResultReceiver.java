@@ -1,10 +1,10 @@
 package com.tencent.gdtad.views.videoimax;
 
+import aanp;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import java.lang.ref.WeakReference;
-import yxp;
 
 final class TransitionContext$MyResultReceiver
   extends ResultReceiver
@@ -20,7 +20,7 @@ final class TransitionContext$MyResultReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    yxp.a("TransitionContext", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
+    aanp.a("TransitionContext", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
     TransitionContext localTransitionContext = (TransitionContext)this.a.get();
     if (localTransitionContext != null)
     {
@@ -45,7 +45,7 @@ final class TransitionContext$MyResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.TransitionContext.MyResultReceiver
  * JD-Core Version:    0.7.0.1
  */

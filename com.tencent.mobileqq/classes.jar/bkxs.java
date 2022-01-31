@@ -1,46 +1,34 @@
+import com.tencent.aekit.openrender.UniformParam.IntParam;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+
 public class bkxs
+  extends BaseFilter
 {
-  public int a;
-  public long a;
-  public axkh a;
-  public String a;
-  public boolean a;
-  public long b;
-  public axkh b;
-  public String b;
-  public boolean b;
-  public long c;
-  
   public bkxs()
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 0;
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform int isAlpha;\nvoid main() \n{\n  highp vec4 color = texture2D(inputImageTexture,textureCoordinate);\n  if(isAlpha == 1) {\n    gl_FragColor = vec4(1.0-color.a,1.0-color.a,1.0-color.a,1.0);\n  } else {\n    gl_FragColor = color;\n  }\n}");
+    addParam(new UniformParam.IntParam("isAlpha", 0));
   }
   
-  public void a(bkxs parambkxs)
+  private void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if (parambkxs == null) {
-      throw new NullPointerException();
-    }
-    this.jdField_a_of_type_JavaLangString = parambkxs.jdField_a_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = parambkxs.jdField_b_of_type_JavaLangString;
-    this.jdField_a_of_type_Axkh = parambkxs.jdField_a_of_type_Axkh;
-    this.jdField_a_of_type_Boolean = parambkxs.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Int = parambkxs.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Boolean = parambkxs.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Long = parambkxs.jdField_a_of_type_Long;
-    this.jdField_b_of_type_Long = parambkxs.jdField_b_of_type_Long;
-    this.c = parambkxs.c;
+    setPositions(new float[] { paramFloat1, paramFloat4, paramFloat1, paramFloat2, paramFloat3, paramFloat2, paramFloat3, paramFloat4 });
   }
   
-  public String toString()
+  public void a(Frame paramFrame1, Frame paramFrame2)
   {
-    return "AudioDecodeConfig=[audioFilePath:" + this.jdField_a_of_type_JavaLangString + " repeat:" + this.jdField_a_of_type_Boolean + " speedType:" + this.jdField_a_of_type_Int + " mMuteAudio:" + this.jdField_b_of_type_Boolean + " startTimeMs:" + this.jdField_a_of_type_Long + " endTimeMs:" + this.jdField_b_of_type_Long + " videoDuration:" + this.c + "]";
+    a(-1.0F, 0.0F, 1.0F, -1.0F);
+    addParam(new UniformParam.IntParam("isAlpha", 1));
+    RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, paramFrame1.width, paramFrame1.height, -1, 0.0D, paramFrame2);
+    a(-1.0F, 1.0F, 1.0F, 0.0F);
+    addParam(new UniformParam.IntParam("isAlpha", 0));
+    RenderProcess(paramFrame1.getTextureId(), paramFrame1.width, paramFrame1.height, paramFrame1.width, paramFrame1.height, -1, 0.0D, paramFrame2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkxs
  * JD-Core Version:    0.7.0.1
  */

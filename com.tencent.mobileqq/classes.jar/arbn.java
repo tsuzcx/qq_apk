@@ -1,57 +1,34 @@
-import android.os.SystemClock;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
-public class arbn
+class arbn
+  implements army
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  arbo jdField_a_of_type_Arbo;
-  boolean jdField_a_of_type_Boolean = false;
-  int b;
-  int c = 100;
+  arbn(arbm paramarbm) {}
   
-  public arbn(int paramInt, arbo paramarbo)
+  public void a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Arbo = paramarbo;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    localQQAppInterface.a().a(this.a.jdField_a_of_type_JavaLangString, null, localQQAppInterface.getAccount(), 0, false);
+    arni.a(this.a.jdField_a_of_type_JavaLangString);
+    armz.d(BaseActivity.sTopActivity.getString(2131692912));
+    if (this.a.jdField_a_of_type_Ardn != null) {
+      this.a.jdField_a_of_type_Ardn.a(1);
+    }
+    if (this.a.jdField_a_of_type_Ardn.b())
     {
-      return;
-      this.b += paramInt;
-      if (this.jdField_a_of_type_Long == 0L)
-      {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-        return;
-      }
-    } while (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long <= this.c);
-    arbo localarbo = this.jdField_a_of_type_Arbo;
-    if (this.b > this.jdField_a_of_type_Int) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localarbo.a(bool);
-      this.jdField_a_of_type_Long = 0L;
-      this.b = 0;
-      return;
+      long l = this.a.jdField_a_of_type_Ardn.a().b();
+      arni.a(this.a.jdField_a_of_type_Ardn.a(), l);
     }
   }
   
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.c = paramInt;
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arbn
  * JD-Core Version:    0.7.0.1
  */

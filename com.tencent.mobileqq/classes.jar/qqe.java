@@ -1,31 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyUgcSearchTopicFragment;
 
 public class qqe
-  implements TopGestureLayout.OnGestureListener
+  implements View.OnTouchListener
 {
-  public qqe(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public qqe(ReadInJoyUgcSearchTopicFragment paramReadInJoyUgcSearchTopicFragment) {}
   
-  public void flingLToR()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((VideoFeedsPlayActivity.a(this.a) != null) && (VideoFeedsPlayActivity.a(this.a).a())) {
-      return;
-    }
-    VideoFeedsPlayActivity.a(this.a, true);
-    this.a.d();
-  }
-  
-  public void flingRToL()
-  {
-    if (VideoFeedsPlayActivity.a(this.a) != null) {
-      VideoFeedsPlayActivity.a(this.a).b();
-    }
+    ReadInJoyUgcSearchTopicFragment.a(this.a);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qqe
  * JD-Core Version:    0.7.0.1
  */

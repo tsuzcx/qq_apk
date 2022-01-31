@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qzone.TranslucentActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.qqmini.sdk.runtime.core.page.BrandPageWebview.4;
 
 public class bhbl
-  implements DialogInterface.OnDismissListener
+  implements Animation.AnimationListener
 {
-  public bhbl(TranslucentActivity paramTranslucentActivity) {}
+  public bhbl(BrandPageWebview.4 param4) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhbl
  * JD-Core Version:    0.7.0.1
  */

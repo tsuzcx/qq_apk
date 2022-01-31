@@ -1,132 +1,144 @@
 import android.content.Context;
-import com.tencent.av.gaudio.QQGAudioCtrl;
-import com.tencent.av.video.call.ClientLogReport;
-import com.tencent.av.video.call.GAClientLogReport;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Rect;
+import android.graphics.drawable.NinePatchDrawable;
+import com.tencent.mobileqq.activity.aio.item.TroopPobingItemView;
+import com.tencent.mobileqq.vas.quickupdate.PobingUpdateCallback.1;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import java.io.File;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class bdse
-  implements bdrz
+  extends bdrz
 {
-  private long jdField_a_of_type_Long;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private bdsb jdField_a_of_type_Bdsb;
-  private bdsh jdField_a_of_type_Bdsh;
-  private QQGAudioCtrl jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl;
+  public static final bdse a;
+  public static final HashMap<Integer, String> a;
   
-  public bdse(Context paramContext, long paramLong, bdsb parambdsb)
+  static
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Bdsb = parambdsb;
-    this.jdField_a_of_type_Bdsb.a(this);
-    bdsm.a().a(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Bdsh = new bdsh(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Long, this.jdField_a_of_type_Bdsb);
-    this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = this.jdField_a_of_type_Bdsh.a();
-    ClientLogReport.instance();
-    GAClientLogReport.instance();
+    jdField_a_of_type_Bdse = new bdse();
+    jdField_a_of_type_JavaUtilHashMap = new PobingUpdateCallback.1();
   }
   
-  public static int a()
+  public static NinePatchDrawable a(Resources paramResources, Bitmap paramBitmap)
   {
-    int i;
-    if (AppNetConnInfo.isWifiConn()) {
-      i = 1;
-    }
-    for (;;)
+    int i = 0;
+    int[] arrayOfInt1 = new int[2];
+    arrayOfInt1[0] = (paramBitmap.getWidth() / 2);
+    arrayOfInt1[1] = (paramBitmap.getWidth() / 2 + 1);
+    int[] arrayOfInt2 = new int[2];
+    arrayOfInt2[0] = (paramBitmap.getHeight() / 2);
+    arrayOfInt2[1] = (paramBitmap.getHeight() / 2 + 1);
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(arrayOfInt1.length * 4 + arrayOfInt2.length * 4 + 36 + 32).order(ByteOrder.nativeOrder());
+    localByteBuffer.put((byte)1);
+    localByteBuffer.put((byte)2);
+    localByteBuffer.put((byte)2);
+    localByteBuffer.put((byte)9);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(0);
+    localByteBuffer.putInt(arrayOfInt1[0]);
+    localByteBuffer.putInt(arrayOfInt1[1]);
+    localByteBuffer.putInt(arrayOfInt2[0]);
+    localByteBuffer.putInt(arrayOfInt2[1]);
+    while (i < 9)
     {
-      bdsj.c("QavCtrl", String.format("getApn networkType=%s", new Object[] { Integer.valueOf(i) }));
-      return i;
-      if (AppNetConnInfo.isMobileConn()) {
-        switch (AppNetConnInfo.getMobileInfo())
-        {
-        default: 
-          i = 100;
-          break;
-        case 1: 
-          i = 3;
-          break;
-        case 2: 
-          i = 9;
-          break;
-        case 3: 
-          i = 11;
-          break;
-        case 4: 
-          i = 14;
-          break;
-        }
-      } else {
-        i = 0;
+      localByteBuffer.putInt(1);
+      i += 1;
+    }
+    return new NinePatchDrawable(paramResources, paramBitmap, localByteBuffer.array(), new Rect(), "");
+  }
+  
+  public static String a(int paramInt)
+  {
+    return "pobing.preview.cache." + paramInt;
+  }
+  
+  public static boolean a()
+  {
+    return QzoneConfig.getInstance().getConfig("qqsetting", "addgroupvasfeaturedisable", 0L) == 0L;
+  }
+  
+  public Bitmap a(Context paramContext, int paramInt, String paramString)
+  {
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inDensity = 320;
+    localOptions.inTargetDensity = 320;
+    paramContext = getDir(paramContext, getScid(paramInt));
+    paramContext = paramContext + File.separator + paramString;
+    paramString = new bcwd();
+    bcwc.a(paramContext, localOptions, paramString);
+    if (paramString.jdField_a_of_type_Int != 0)
+    {
+      QLog.e("PobingUpdateCallback", 1, paramContext + " decodeFail: " + paramString.jdField_a_of_type_Int);
+      return null;
+    }
+    return paramString.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public boolean a(Context paramContext, int paramInt)
+  {
+    Object localObject = "newComeCard." + paramInt;
+    paramContext = jdField_a_of_type_Bdse.getDir(paramContext, (String)localObject);
+    if (!new File(paramContext).exists()) {
+      return false;
+    }
+    if (paramInt == 2000) {
+      return new File(paramContext, "addgroup_preview.png").exists();
+    }
+    localObject = TroopPobingItemView.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    File localFile;
+    while (((Iterator)localObject).hasNext())
+    {
+      localFile = new File(paramContext, (String)((Iterator)localObject).next());
+      if (!localFile.exists())
+      {
+        QLog.e("PobingUpdateCallback", 1, "missing: " + localFile.getAbsolutePath());
+        return false;
       }
     }
-  }
-  
-  public static void a(bdsb parambdsb)
-  {
-    if (parambdsb != null) {
-      parambdsb.a();
-    }
-  }
-  
-  public static void a(bdsb parambdsb, Context paramContext, long paramLong)
-  {
-    if (parambdsb != null) {
-      parambdsb.a(lll.a(paramLong, String.valueOf(AppSetting.a()), paramContext));
-    }
-  }
-  
-  public bdsf a()
-  {
-    return this.jdField_a_of_type_Bdsh;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bdsh != null)
+    localObject = jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      this.jdField_a_of_type_Bdsh.c();
-      this.jdField_a_of_type_Bdsh = null;
+      localFile = new File(paramContext, (String)((Iterator)localObject).next());
+      if (!localFile.exists())
+      {
+        QLog.e("PobingUpdateCallback", 1, "missing: " + localFile.getAbsolutePath());
+        return false;
+      }
     }
-    this.jdField_a_of_type_AndroidContentContext = null;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Bdsb = null;
-    this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl = null;
+    return true;
   }
   
-  public void a(String paramString, int paramInt)
+  public long getBID()
   {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.setNetIPAndPort(paramString, paramInt);
-    }
+    return 40L;
   }
   
-  public void a(byte[] paramArrayOfByte)
+  protected String getRootDir()
   {
-    lll.a(String.valueOf(AppSetting.a()), this.jdField_a_of_type_AndroidContentContext, paramArrayOfByte);
+    return "newComeCard";
   }
   
-  public void b(byte[] paramArrayOfByte) {}
-  
-  public void c(byte[] paramArrayOfByte) {}
-  
-  public void d(byte[] paramArrayOfByte)
+  protected String getScidPrefix()
   {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.onNativeRecvGAudioCMD(1, paramArrayOfByte);
-    }
-  }
-  
-  public void e(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvGaudioQQGAudioCtrl.onNativeRecvGAudioCMD(2, paramArrayOfByte);
-    }
+    return "newComeCard.";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdse
  * JD-Core Version:    0.7.0.1
  */

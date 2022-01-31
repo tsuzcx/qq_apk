@@ -1,25 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.AIOFileVideoData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class aege
-  implements apvg
+  implements DialogInterface.OnClickListener
 {
-  public aege(AIOFileVideoData paramAIOFileVideoData, agqv paramagqv, View paramView) {}
+  public aege(UpgradeActivity paramUpgradeActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (AIOFileVideoData.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData))
-    {
-      AIOFileVideoData.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData, false);
-      this.jdField_a_of_type_Agqv.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOFileVideoData.a(false));
+    azmj.b(this.a.app, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
+    if (UpgradeActivity.a(this.a)) {
+      azmj.b(this.a.app, "CliOper", "", "", "0X800714C", "0X800714C", 0, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_Agqv.b();
-    this.jdField_a_of_type_Agqv.f();
+    UpgradeActivity.a(this.a, false);
+    azmj.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, amlo.b(), String.valueOf(2), amlp.a(), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aege
  * JD-Core Version:    0.7.0.1
  */

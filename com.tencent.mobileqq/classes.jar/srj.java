@@ -1,370 +1,154 @@
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.viola.CommonSuspensionGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.ui.dom.style.FlexConvertUtils;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class srj<T>
+public class srj
 {
-  private List<T> a;
-  private List<T> b;
-  private List<List<T>> c;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private int jdField_c_of_type_Int = 1;
+  private String jdField_c_of_type_JavaLangString;
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString = "120";
+  private String e = "0";
   
-  private String a(long[] paramArrayOfLong, List<List<List<T>>> paramList, List<List<T>> paramList1)
+  public srj(@NonNull String paramString1, @NonNull JSONObject paramJSONObject, String paramString2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && ((this.jdField_a_of_type_JavaLangString.contains("v_present=1")) || (this.jdField_a_of_type_JavaLangString.contains("v_present=2")))) {
+      this.jdField_a_of_type_Int = 1;
+    }
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.contains("v_present_auto_top=0"))) {
+      this.jdField_c_of_type_Int = 0;
+    }
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.contains("v_present_top"))) {
+      this.jdField_d_of_type_JavaLangString = Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("v_present_top");
+    }
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.contains("channelId"))) {
+      this.e = Uri.parse(this.jdField_a_of_type_JavaLangString).getQueryParameter("channelId");
+    }
+    paramString1 = (QQAppInterface)ors.a();
+    if (paramString1 != null) {
+      this.jdField_c_of_type_JavaLangString = paramString1.getAccount();
+    }
+    this.jdField_d_of_type_Int = bdkf.c(CommonSuspensionGestureLayout.a(BaseActivity.sTopActivity));
+  }
+  
+  public srj(@NonNull String paramString1, @NonNull JSONObject paramJSONObject, String paramString2, int paramInt)
+  {
+    this(paramString1, paramJSONObject, paramString2);
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  private int a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getResources();
+    if (localObject == null) {}
+    do
+    {
+      return 1;
+      localObject = ((Resources)localObject).getConfiguration();
+    } while (localObject == null);
+    return ((Configuration)localObject).orientation;
+  }
+  
+  public String a()
+  {
+    return a().toString();
+  }
+  
+  public JSONObject a()
   {
     int j = 0;
-    String[] arrayOfString = new String[paramArrayOfLong.length];
-    paramList = paramList.iterator();
-    int i = 0;
-    while (paramList.hasNext())
+    localJSONObject = new JSONObject();
+    try
     {
-      Object localObject = (List)paramList.next();
-      arrayOfString[i] = ("k=" + i + ":");
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      localJSONObject.put("url", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("param", this.jdField_a_of_type_OrgJsonJSONObject);
+      localJSONObject.put("cache", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("uin", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("isPresent", this.jdField_a_of_type_Int);
+      localJSONObject.put("isChannel", this.jdField_b_of_type_Int);
+      if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {}
+      for (int i = 1;; i = 0)
       {
-        List localList = (List)((Iterator)localObject).next();
-        arrayOfString[i] = (arrayOfString[i] + "+" + String.valueOf(localList.size()));
+        localJSONObject.put("isNightMode", i);
+        localJSONObject.put("isAutoTop", this.jdField_c_of_type_Int);
+        localJSONObject.put("presentMarginTop", this.jdField_d_of_type_JavaLangString);
+        localJSONObject.put("nowNavBarHeight", this.jdField_d_of_type_Int);
+        localJSONObject.put("orientation", a());
+        localJSONObject.put("screenWidth", FlexConvertUtils.getScreenWidth(BaseApplicationImpl.getApplication()));
+        localJSONObject.put("screenHeight", FlexConvertUtils.getScreenHeight(BaseApplicationImpl.getApplication()));
+        i = j;
+        if (bdvr.a() == 1) {
+          i = 1;
+        }
+        localJSONObject.put("isKindCard", i);
+        localJSONObject.put("channel_id", this.e);
+        return localJSONObject;
       }
-      i += 1;
+      return localJSONObject;
     }
-    paramArrayOfLong = Arrays.toString(paramArrayOfLong);
-    ved.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.K_means", "kmeans run k=" + paramList1.size() + " sse : " + paramArrayOfLong + " temp=" + Arrays.toString(arrayOfString));
-    paramList1 = "(k=" + paramList1.size() + " " + paramArrayOfLong + ");";
-    paramArrayOfLong = (String)((tcs)tcz.a(10)).b("key_album_debug_sse", "");
-    if (!TextUtils.isEmpty(paramArrayOfLong))
+    catch (JSONException localJSONException)
     {
-      arrayOfString = paramArrayOfLong.split(";");
-      paramArrayOfLong = "";
-      i = j;
-      for (;;)
-      {
-        paramList = paramArrayOfLong;
-        if (i < arrayOfString.length)
-        {
-          paramArrayOfLong = arrayOfString[i] + paramArrayOfLong;
-          if (i == 8) {
-            paramList = paramArrayOfLong;
-          }
-        }
-        else
-        {
-          return paramList1 + paramList;
-        }
-        i += 1;
-      }
+      QLog.e(ViolaBaseView.a(), 1, "ViolaCreactPageObject toJSON error = " + localJSONException.getMessage());
     }
-    return paramList1;
   }
   
-  private List<T> a(List<List<T>> paramList)
+  public String toString()
   {
-    if ((paramList == null) || (paramList.size() < 2)) {
-      return this.a;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    if (i < paramList.size())
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ViolaCreactPageObject : url:");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (((List)paramList.get(i)).size() > 0) {
-        localArrayList.add(a((List)paramList.get(i)));
+      str = "null";
+      localStringBuilder.append(str);
+      localStringBuilder.append("; ");
+      if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
+        break label100;
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        ved.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.kmeans", "点位置相同时，有空的堆出现");
+      str = "null";
+      label51:
+      localStringBuilder.append(str);
+      localStringBuilder.append("; ");
+      if (this.jdField_b_of_type_JavaLangString != null) {
+        break label111;
       }
     }
-    return localArrayList;
-  }
-  
-  private List<List<T>> a(List<T> paramList1, List<T> paramList2)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramList2 == null) || (paramList2.size() < 2))
+    label100:
+    label111:
+    for (String str = "null";; str = this.jdField_b_of_type_JavaLangString.toString())
     {
-      localArrayList.add(paramList1);
-      return localArrayList;
-    }
-    int j = paramList2.size();
-    int i = 0;
-    while (i < j)
-    {
-      localArrayList.add(new ArrayList());
-      i += 1;
-    }
-    j = 0;
-    while (j < paramList1.size())
-    {
-      Object localObject = paramList1.get(j);
-      i = 0;
-      int k = 0;
-      long l2;
-      for (long l1 = -1L; i < paramList2.size(); l1 = l2)
-      {
-        long l3 = a(localObject, paramList2.get(i));
-        if (l1 != -1L)
-        {
-          l2 = l1;
-          if (l1 <= l3) {}
-        }
-        else
-        {
-          k = i;
-          l2 = l3;
-        }
-        i += 1;
-      }
-      ((List)localArrayList.get(k)).add(localObject);
-      j += 1;
-    }
-    return localArrayList;
-  }
-  
-  private boolean a(List<T> paramList1, List<T> paramList2)
-  {
-    if (paramList1.size() != paramList2.size()) {
-      return false;
-    }
-    int i = 0;
-    for (;;)
-    {
-      if (i >= paramList1.size()) {
-        break label57;
-      }
-      if (!a(paramList1.get(i), paramList2.get(i))) {
-        break;
-      }
-      i += 1;
-    }
-    label57:
-    return true;
-  }
-  
-  private T b(List<T> paramList)
-  {
-    int j = 0;
-    long l2 = -1L;
-    int i = 0;
-    long l1;
-    int k;
-    label30:
-    long l4;
-    if (i < this.b.size())
-    {
-      l1 = -1L;
-      k = 0;
-      if (k >= paramList.size()) {
-        break label153;
-      }
-      l4 = a(paramList.get(k), this.b.get(i));
-      if (l4 == 0L) {
-        l1 = -1L;
-      }
-    }
-    label153:
-    for (;;)
-    {
-      long l3 = l2;
-      if (l1 > l2)
-      {
-        j = i;
-        l3 = l1;
-      }
-      i += 1;
-      l2 = l3;
+      localStringBuilder.append(str);
+      localStringBuilder.append("; ");
+      return localStringBuilder.toString();
+      str = this.jdField_a_of_type_JavaLangString;
       break;
-      if (l1 >= 0L)
-      {
-        l3 = l1;
-        if (l4 >= l1) {}
-      }
-      else
-      {
-        l3 = l4;
-      }
-      k += 1;
-      l1 = l3;
-      break label30;
-      return this.b.get(j);
+      str = this.jdField_a_of_type_OrgJsonJSONObject.toString();
+      break label51;
     }
-  }
-  
-  protected abstract double a();
-  
-  protected int a()
-  {
-    return 100;
-  }
-  
-  protected abstract long a(T paramT1, T paramT2);
-  
-  protected abstract T a(List<T> paramList);
-  
-  public List<List<T>> a(int paramInt1, List<T> paramList, long[] paramArrayOfLong, int paramInt2)
-  {
-    this.a = paramList;
-    paramInt1 = 0;
-    long l;
-    if (paramInt1 < 50)
-    {
-      this.c = a(this.b, this.a);
-      paramList = a(this.c);
-      if (!a(this.a, paramList)) {}
-    }
-    else
-    {
-      l = 0L;
-      paramInt1 = 0;
-    }
-    for (;;)
-    {
-      if (paramInt1 >= this.c.size()) {
-        break label155;
-      }
-      paramList = (List)this.c.get(paramInt1);
-      Object localObject = this.a.get(paramInt1);
-      int i = 0;
-      for (;;)
-      {
-        if (i < paramList.size())
-        {
-          l += a(localObject, paramList.get(i));
-          i += 1;
-          continue;
-          this.a = paramList;
-          paramInt1 += 1;
-          break;
-        }
-      }
-      paramInt1 += 1;
-    }
-    label155:
-    if (paramArrayOfLong != null) {
-      paramArrayOfLong[paramInt2] = l;
-    }
-    return this.c;
-  }
-  
-  public List<List<T>> a(int paramInt1, long[] paramArrayOfLong, int paramInt2)
-  {
-    this.a = new ArrayList();
-    this.a.add(this.b.get(0));
-    int i = 1;
-    while (i < paramInt1)
-    {
-      Object localObject = b(this.a);
-      this.a.add(localObject);
-      i += 1;
-    }
-    this.c = a(paramInt1, this.a, paramArrayOfLong, paramInt2);
-    return this.c;
-  }
-  
-  public List<List<T>> a(List<T> paramList, String[] paramArrayOfString)
-  {
-    if (this.b == null) {}
-    this.b = paramList;
-    int i = Math.min(Math.min(this.b.size() - 2, 20), a());
-    if (i > 0) {}
-    ArrayList localArrayList;
-    int j;
-    for (;;)
-    {
-      paramList = new long[i];
-      localArrayList = new ArrayList(i);
-      j = 0;
-      while (j < i)
-      {
-        localArrayList.add(a(j + 1, paramList, j));
-        j += 1;
-      }
-      i = 1;
-    }
-    int i1 = (paramList.length - 1) / 2;
-    int i2 = 1;
-    int n = 0;
-    int k = 0;
-    if (k < paramList.length)
-    {
-      int m;
-      if (k == 0)
-      {
-        j = i1;
-        i = i2;
-        m = n;
-      }
-      for (;;)
-      {
-        k += 1;
-        n = m;
-        i2 = i;
-        i1 = j;
-        break;
-        if (a(paramList[(k - 1)] - paramList[k]))
-        {
-          m = n;
-          i = i2;
-          j = i1;
-          if (n != 0) {}
-        }
-        else
-        {
-          double d = (paramList[(k - 1)] - paramList[k]) / paramList[(k - 1)];
-          if (((d < a()) || (a(paramList[(k - 1)] - paramList[k]))) && (i2 != 0))
-          {
-            j = k - 1;
-            i = 0;
-            m = 1;
-          }
-          else
-          {
-            m = n;
-            i = i2;
-            j = i1;
-            if (d > a())
-            {
-              i = 1;
-              j = k - 1;
-              m = n;
-            }
-          }
-        }
-      }
-    }
-    this.c = ((List)localArrayList.get(i1));
-    paramList = a(paramList, localArrayList, this.c);
-    if (paramArrayOfString != null) {
-      paramArrayOfString[0] = paramList;
-    }
-    return this.c;
-  }
-  
-  public void a(List<T> paramList)
-  {
-    if (this.b == null) {}
-    this.b = paramList;
-  }
-  
-  protected boolean a(long paramLong)
-  {
-    return false;
-  }
-  
-  protected abstract boolean a(T paramT1, T paramT2);
-  
-  protected int b()
-  {
-    if (this.b == null) {
-      return 0;
-    }
-    return this.b.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srj
  * JD-Core Version:    0.7.0.1
  */

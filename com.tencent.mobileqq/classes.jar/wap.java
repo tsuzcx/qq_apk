@@ -1,39 +1,31 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-final class wap
-  extends waa
+public class wap
+  extends whw
 {
-  wap(waa paramwaa, PublishVideoEntry paramPublishVideoEntry) {}
+  protected final int a;
+  protected final String a;
   
-  public void onFailure(String paramString)
+  public wap(String paramString1, int paramInt, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
-    }
-    this.jdField_a_of_type_Waa.onFailure(paramString);
-    if ((this.jdField_a_of_type_Waa instanceof swh)) {
-      ((swh)this.jdField_a_of_type_Waa).a(941005);
-    }
-    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio failed message：" + paramString);
+    super(paramString1, paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onStart()
+  protected uxv a(String paramString, List<String> paramList)
   {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio start");
+    return new vab(paramString, paramList);
   }
   
-  public void onSuccess(String paramString)
+  protected uxw a()
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio success cost：" + String.valueOf(l1 - l2) + "ms\n");
+    return new waq(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wap
  * JD-Core Version:    0.7.0.1
  */

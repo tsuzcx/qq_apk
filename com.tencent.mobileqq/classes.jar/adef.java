@@ -1,16 +1,22 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.MainFragment;
+
 public class adef
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public byte[] a;
+  public adef(MainFragment paramMainFragment) {}
   
-  adef(adee paramadee)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Int = 0;
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adef
  * JD-Core Version:    0.7.0.1
  */

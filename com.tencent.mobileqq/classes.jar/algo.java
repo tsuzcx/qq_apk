@@ -1,16 +1,27 @@
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder.1;
+import com.tencent.mobileqq.apollo.view.ApolloFavViewBinder.1.1.1;
+
 public class algo
+  implements Animation.AnimationListener
 {
-  public alfv a;
-  public boolean a;
+  public algo(ApolloFavViewBinder.1 param1) {}
   
-  public String toString()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return "ARCloudRecogResultBase{hasLBSLocation = " + this.jdField_a_of_type_Boolean + ", checkResult = " + this.jdField_a_of_type_Alfv + '}';
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new ApolloFavViewBinder.1.1.1(this), 300L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algo
  * JD-Core Version:    0.7.0.1
  */

@@ -35,12 +35,18 @@ public class VideoActItem
   
   public int getOrigHeight(int paramInt)
   {
-    return this.decoder.getHeight();
+    if (this.decoder != null) {
+      return this.decoder.getHeight();
+    }
+    return 0;
   }
   
   public int getOrigWidth(int paramInt)
   {
-    return this.decoder.getWidth() / 2;
+    if (this.decoder != null) {
+      return this.decoder.getWidth() / 2;
+    }
+    return 0;
   }
   
   public int getTexture(CanvasItem paramCanvasItem, long paramLong)
@@ -67,8 +73,11 @@ public class VideoActItem
   {
     BenchUtil.benchStart(TAG + "[update]");
     super.update(paramFrame, paramLong, paramList, paramList1, paramInt);
-    this.decoder.decodeFrame(paramLong);
-    this.decoder.updateFrame();
+    if (this.decoder != null)
+    {
+      this.decoder.decodeFrame(paramLong);
+      this.decoder.updateFrame();
+    }
     BenchUtil.benchEnd(TAG + "[update]");
   }
 }

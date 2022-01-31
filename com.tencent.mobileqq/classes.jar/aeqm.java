@@ -1,25 +1,24 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.XListView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
 class aeqm
-  implements bfos
+  extends AnimatorListenerAdapter
 {
-  aeqm(aeqb paramaeqb) {}
+  aeqm(aeql paramaeql) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_Ainh != null) && (this.a.jdField_a_of_type_Ainh.a() != 0) && (this.a.jdField_a_of_type_Ainh.a()))
-    {
-      this.a.jdField_a_of_type_Ainh.b();
-      aeqb.a(this.a, this.a.jdField_a_of_type_Ainh.a(), 10);
-    }
+    this.a.d();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeqm
  * JD-Core Version:    0.7.0.1
  */

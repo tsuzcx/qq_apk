@@ -859,6 +859,28 @@
         <item>收到的评论</item>
         <item>已结束的约会</item>
     </string-array>
+    <string-array name="bk">
+        <item>\#33C573FF</item>
+        <item>\#33FF80CA</item>
+        <item>\#33FF5967</item>
+        <item>\#33FF9F40</item>
+        <item>\#33FFC619</item>
+        <item>\#330BE076</item>
+        <item>\#3321D9C9</item>
+        <item>\#3300CAFC</item>
+        <item>\#3340A0FF</item>
+    </string-array>
+    <string-array name="bl">
+        <item>\#AB6ADB</item>
+        <item>\#F173BC</item>
+        <item>\#E85D69</item>
+        <item>\#EE9338</item>
+        <item>\#DAA60B</item>
+        <item>\#3DB87B</item>
+        <item>\#18BCAE</item>
+        <item>\#02B2DD</item>
+        <item>\#318CE6</item>
+    </string-array>
     <string-array name="bh">
         <item>发布广告</item>
         <item>内容涉黄</item>

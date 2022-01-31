@@ -1,61 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.content.Context;
+import android.graphics.Point;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
+import com.tencent.tencentmap.mapsdk.maps.MapView;
+import com.tencent.tencentmap.mapsdk.maps.Projection;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 
 public class anct
-  extends ampa<ancs>
+  implements TencentMap.OnMapLoadedCallback
 {
-  public static ancs a()
-  {
-    return (ancs)ampl.a().a(451);
-  }
+  public anct(ARScanEntryView paramARScanEntryView) {}
   
-  public int a()
+  public void onMapLoaded()
   {
-    return 451;
-  }
-  
-  @NonNull
-  public ancs a(int paramInt)
-  {
-    return new ancs();
-  }
-  
-  @Nullable
-  public ancs a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return ancs.a(paramArrayOfamph);
+    this.a.j = true;
+    if (ARScanEntryView.a(this.a) != null)
+    {
+      Projection localProjection = ARScanEntryView.a(this.a).getMap().getProjection();
+      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
+      if ((localProjection != null) && (localTencentMap != null))
+      {
+        Point localPoint = localProjection.toScreenLocation(localTencentMap.getCameraPosition().target);
+        if (localPoint != null)
+        {
+          localPoint.offset(0, aekt.a(60.0F, this.a.a.getResources()) * -1);
+          localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(localProjection.fromScreenLocation(localPoint)));
+        }
+      }
     }
-    return null;
-  }
-  
-  public Class<ancs> a()
-  {
-    return ancs.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(ancs paramancs) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anct
  * JD-Core Version:    0.7.0.1
  */

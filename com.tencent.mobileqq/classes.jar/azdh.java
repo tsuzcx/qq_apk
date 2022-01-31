@@ -1,27 +1,19 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
 
-public class azdh
-  implements InputFilter
+class azdh
+  implements Camera.AutoFocusCallback
 {
-  public azdh(AbsPublishActivity paramAbsPublishActivity) {}
+  azdh(azdf paramazdf, azdk paramazdk) {}
   
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    if (paramCharSequence != null)
-    {
-      paramCharSequence = paramCharSequence.toString();
-      if (paramCharSequence.contains("\n")) {
-        return paramCharSequence.replaceAll("\n", "");
-      }
-    }
-    return null;
+    this.jdField_a_of_type_Azdk.a(paramBoolean, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azdh
  * JD-Core Version:    0.7.0.1
  */

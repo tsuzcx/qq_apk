@@ -1,34 +1,186 @@
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import android.content.Context;
+import android.os.IBinder;
+import android.os.RemoteException;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import cooperation.qzone.plugin.PluginRecord;
 
-public class bjko
-  implements bjeb
+class bjko
+  extends bjjt
 {
-  public bjko(MusicProviderView paramMusicProviderView) {}
+  bjlv a;
   
-  public void a(int paramInt, boolean paramBoolean, Object paramObject)
+  bjko(bjlv parambjlv)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MusicProviderView", 2, "onStep:" + paramInt + " done:" + paramBoolean);
+    this.a = parambjlv;
+  }
+  
+  public PluginRecord a(String paramString)
+  {
+    try
+    {
+      paramString = this.a.a(paramString);
+      return paramString;
     }
-    if ((paramInt == 6) || (paramInt == 5) || (paramInt == 4)) {
-      this.a.a.sendEmptyMessage(3);
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
+      return null;
+    }
+    catch (NullPointerException paramString)
+    {
+      for (;;)
+      {
+        QLog.w("QZonePluginClient", 1, "", paramString);
+      }
     }
   }
   
-  public void a(MusicItemInfo paramMusicItemInfo)
+  public void a()
   {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.obj = paramMusicItemInfo;
-    localMessage.what = 4;
-    this.a.a.sendMessage(localMessage);
+    try
+    {
+      this.a.a();
+      return;
+    }
+    catch (NullPointerException localNullPointerException)
+    {
+      QLog.e("QZonePluginClient", 1, localNullPointerException, new Object[0]);
+    }
+  }
+  
+  public void a(Context paramContext, bjjz parambjjz, bjjy parambjjy)
+  {
+    try
+    {
+      a(parambjjz.b, new bjkp(this, parambjjy, paramContext, parambjjz), 0);
+      return;
+    }
+    catch (RemoteException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+  }
+  
+  public void a(bjka parambjka, int paramInt)
+  {
+    try
+    {
+      this.a.a(parambjka, paramInt);
+      return;
+    }
+    catch (NullPointerException parambjka)
+    {
+      QLog.e("QZonePluginClient", 1, parambjka, new Object[0]);
+    }
+  }
+  
+  public boolean a()
+  {
+    try
+    {
+      boolean bool = this.a.a();
+      return bool;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      localRemoteException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    try
+    {
+      boolean bool = this.a.a(paramString);
+      return bool;
+    }
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
+  }
+  
+  public boolean a(String paramString, bjkd parambjkd, int paramInt)
+  {
+    try
+    {
+      boolean bool = this.a.a(paramString, parambjkd, paramInt);
+      return bool;
+    }
+    catch (NullPointerException paramString)
+    {
+      QLog.e("QZonePluginClient", 1, paramString, new Object[0]);
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    this.a = null;
+  }
+  
+  boolean b()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    try
+    {
+      if (this.a != null)
+      {
+        IBinder localIBinder = this.a.asBinder();
+        bool1 = bool2;
+        if (localIBinder != null)
+        {
+          bool1 = bool2;
+          if (localIBinder.isBinderAlive())
+          {
+            boolean bool3 = localIBinder.pingBinder();
+            bool1 = bool2;
+            if (bool3) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+      return bool1;
+    }
+    catch (Exception localException) {}
+    return false;
+  }
+  
+  public boolean b(String paramString)
+  {
+    try
+    {
+      boolean bool = this.a.b(paramString);
+      return bool;
+    }
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
+  }
+  
+  public boolean c(String paramString)
+  {
+    try
+    {
+      boolean bool = this.a.c(paramString);
+      return bool;
+    }
+    catch (RemoteException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjko
  * JD-Core Version:    0.7.0.1
  */

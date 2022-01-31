@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajya;
+import alpo;
 import android.os.Build;
 import android.os.Handler;
 import android.os.SystemClock;
-import bbdx;
+import bdcs;
 import java.io.File;
-import ved;
-import vei;
+import wsv;
+import wta;
 
 class NewFlowCameraActivity$WaitStartEditActivityRunnable
   implements Runnable
@@ -26,7 +26,7 @@ class NewFlowCameraActivity$WaitStartEditActivityRunnable
     {
       this.b = a();
       this.jdField_a_of_type_Int = paramInt;
-      paramNewFlowCameraActivity.d(ajya.a(2131707478));
+      paramNewFlowCameraActivity.d(alpo.a(2131707850));
       return;
     }
   }
@@ -46,7 +46,7 @@ class NewFlowCameraActivity$WaitStartEditActivityRunnable
         if (i >= j) {
           break;
         }
-        l2 = bbdx.a(arrayOfFile[i].getAbsolutePath());
+        l2 = bdcs.a(arrayOfFile[i].getAbsolutePath());
         i += 1;
         l1 = l2 + l1;
       }
@@ -57,11 +57,11 @@ class NewFlowCameraActivity$WaitStartEditActivityRunnable
   public void run()
   {
     long l = a();
-    ved.a("PTV.NewFlowCameraActivity", "recordTime = %d, currentLength = %d, old length = %d", Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(l), Long.valueOf(this.b));
+    wsv.a("PTV.NewFlowCameraActivity", "recordTime = %d, currentLength = %d, old length = %d", Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(l), Long.valueOf(this.b));
     if (l == this.b)
     {
-      vei.b("video_shoot", "wait_start_edit", 0, 0, new String[] { Build.MODEL.toLowerCase(), String.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int) });
-      this.this$0.S();
+      wta.b("video_shoot", "wait_start_edit", 0, 0, new String[] { Build.MODEL.toLowerCase(), String.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int) });
+      this.this$0.R();
       NewFlowCameraActivity.a(this.this$0, this.jdField_a_of_type_Int);
       return;
     }
@@ -71,7 +71,7 @@ class NewFlowCameraActivity$WaitStartEditActivityRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.WaitStartEditActivityRunnable
  * JD-Core Version:    0.7.0.1
  */

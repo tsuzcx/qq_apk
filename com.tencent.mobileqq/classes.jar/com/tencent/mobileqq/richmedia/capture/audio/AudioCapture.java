@@ -2,12 +2,12 @@ package com.tencent.mobileqq.richmedia.capture.audio;
 
 import android.media.AudioRecord;
 import android.os.Handler;
-import avrs;
-import avru;
-import avzh;
-import avzj;
-import axhq;
-import axim;
+import axjq;
+import axjs;
+import axrg;
+import axri;
+import azcw;
+import azds;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
@@ -15,15 +15,15 @@ import com.tencent.mobileqq.utils.NoiseSuppression;
 import com.tencent.qphone.base.util.QLog;
 
 public class AudioCapture
-  implements avzj
+  implements axri
 {
   public static int a;
   public static int b;
   public AudioRecord a;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private avrs jdField_a_of_type_Avrs;
-  public avru a;
-  avzh jdField_a_of_type_Avzh;
+  private axjq jdField_a_of_type_Axjq;
+  public axjs a;
+  axrg jdField_a_of_type_Axrg;
   private AudioCapture.RecordRunnable jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture$RecordRunnable;
   private NoiseSuppression jdField_a_of_type_ComTencentMobileqqUtilsNoiseSuppression;
   private String jdField_a_of_type_JavaLangString;
@@ -55,7 +55,7 @@ public class AudioCapture
     jdField_b_of_type_Int = 4;
   }
   
-  public AudioCapture(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, avrs paramavrs, Handler paramHandler)
+  public AudioCapture(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, axjq paramaxjq, Handler paramHandler)
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangString = paramString;
@@ -63,7 +63,7 @@ public class AudioCapture
     this.i = paramInt2;
     this.j = paramInt3;
     this.k = paramInt4;
-    this.jdField_a_of_type_Avrs = paramavrs;
+    this.jdField_a_of_type_Axjq = paramaxjq;
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
     if (paramHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
@@ -87,7 +87,7 @@ public class AudioCapture
           bool = this.jdField_b_of_type_Boolean;
           return bool;
         }
-        this.jdField_e_of_type_Int = AudioRecord.getMinBufferSize(this.i, axim.o, axim.p);
+        this.jdField_e_of_type_Int = AudioRecord.getMinBufferSize(this.i, azds.o, azds.p);
         if ((this.jdField_e_of_type_Int == -2) || (this.jdField_e_of_type_Int == -1))
         {
           QLog.e("AudioCapture", 2, "getMinBufferSize error. mRecBufSize = " + this.jdField_e_of_type_Int);
@@ -158,8 +158,8 @@ public class AudioCapture
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture$RecordRunnable.jdField_c_of_type_Boolean = true;
     }
     d();
-    if (this.jdField_a_of_type_Avzh != null) {
-      this.jdField_a_of_type_Avzh.a(this.jdField_b_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Axrg != null) {
+      this.jdField_a_of_type_Axrg.a(this.jdField_b_of_type_JavaLangString);
     }
   }
   
@@ -193,7 +193,7 @@ public class AudioCapture
       boolean bool;
       if (!this.jdField_c_of_type_Boolean)
       {
-        bool = axhq.a(axhq.p);
+        bool = azcw.a(azcw.p);
         if ((!bool) || (this.jdField_d_of_type_Int >= 5)) {
           break label300;
         }
@@ -260,7 +260,7 @@ public class AudioCapture
       }
     }
     this.jdField_h_of_type_Boolean = paramBoolean;
-    this.i = axim.q;
+    this.i = azds.q;
   }
   
   public void a(boolean paramBoolean, String paramString)
@@ -273,21 +273,21 @@ public class AudioCapture
   {
     if ((paramArrayOfByte != null) && (paramInt > 0) && (paramInt <= paramArrayOfByte.length))
     {
-      if (this.jdField_a_of_type_Avru == null) {
+      if (this.jdField_a_of_type_Axjs == null) {
         break label80;
       }
-      this.jdField_a_of_type_Avru.a(paramArrayOfByte, 0, paramInt);
+      this.jdField_a_of_type_Axjs.a(paramArrayOfByte, 0, paramInt);
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Avzh != null)
+      if (this.jdField_a_of_type_Axrg != null)
       {
         byte[] arrayOfByte = new byte[paramInt];
         System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramInt);
-        this.jdField_a_of_type_Avzh.a(arrayOfByte, 0L);
+        this.jdField_a_of_type_Axrg.a(arrayOfByte, 0L);
       }
-      if (this.jdField_a_of_type_Avrs != null) {
-        this.jdField_a_of_type_Avrs.a(paramArrayOfByte, 0, paramInt);
+      if (this.jdField_a_of_type_Axjq != null) {
+        this.jdField_a_of_type_Axjq.a(paramArrayOfByte, 0, paramInt);
       }
       return;
       label80:
@@ -390,22 +390,22 @@ public class AudioCapture
     //   166: getfield 242	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_g_of_type_Boolean	Z
     //   169: ifeq -92 -> 77
     //   172: aload_0
-    //   173: getfield 172	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Avzh	Lavzh;
+    //   173: getfield 172	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Axrg	Laxrg;
     //   176: ifnonnull -99 -> 77
     //   179: aload_0
-    //   180: new 176	avzh
+    //   180: new 176	axrg
     //   183: dup
-    //   184: invokespecial 300	avzh:<init>	()V
-    //   187: putfield 172	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Avzh	Lavzh;
+    //   184: invokespecial 300	axrg:<init>	()V
+    //   187: putfield 172	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Axrg	Laxrg;
     //   190: aload_0
-    //   191: getfield 172	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Avzh	Lavzh;
+    //   191: getfield 172	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Axrg	Laxrg;
     //   194: aload_0
     //   195: getfield 56	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:i	I
-    //   198: invokevirtual 302	avzh:a	(I)V
+    //   198: invokevirtual 302	axrg:a	(I)V
     //   201: aload_0
-    //   202: getfield 172	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Avzh	Lavzh;
+    //   202: getfield 172	com/tencent/mobileqq/richmedia/capture/audio/AudioCapture:jdField_a_of_type_Axrg	Laxrg;
     //   205: aload_0
-    //   206: invokevirtual 305	avzh:a	(Lavzj;)V
+    //   206: invokevirtual 305	axrg:a	(Laxri;)V
     //   209: goto -132 -> 77
     //   212: astore_2
     //   213: aload_0
@@ -495,21 +495,21 @@ public class AudioCapture
   
   public void h()
   {
-    if (this.jdField_a_of_type_Avrs != null) {
-      this.jdField_a_of_type_Avrs.c(this.jdField_b_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Axjq != null) {
+      this.jdField_a_of_type_Axjq.c(this.jdField_b_of_type_JavaLangString);
     }
   }
   
   public void i()
   {
-    if (this.jdField_a_of_type_Avrs != null) {
-      this.jdField_a_of_type_Avrs.a(-6);
+    if (this.jdField_a_of_type_Axjq != null) {
+      this.jdField_a_of_type_Axjq.a(-6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.audio.AudioCapture
  * JD-Core Version:    0.7.0.1
  */

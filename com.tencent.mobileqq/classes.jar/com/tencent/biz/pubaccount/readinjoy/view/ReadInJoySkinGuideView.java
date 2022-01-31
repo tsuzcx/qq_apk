@@ -21,8 +21,8 @@ public class ReadInJoySkinGuideView
   {
     super(paramContext);
     this.jdField_a_of_type_Int = 2;
-    LayoutInflater.from(getContext()).inflate(2131562309, this);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131376253));
+    LayoutInflater.from(getContext()).inflate(2131562512, this);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131376756));
     setClickable(true);
     if (261 == paramInt2) {
       this.jdField_a_of_type_Int = 1;
@@ -69,7 +69,7 @@ public class ReadInJoySkinGuideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView
  * JD-Core Version:    0.7.0.1
  */

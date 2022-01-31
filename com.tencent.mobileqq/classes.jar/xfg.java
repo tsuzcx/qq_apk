@@ -1,46 +1,19 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
-
 public class xfg
-  implements Manager
 {
-  protected static BaseApplicationImpl a;
-  public static boolean a;
-  private AppInterface a;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = true;
-  }
-  
-  public xfg(AppInterface paramAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    a();
-  }
-  
-  public void a()
-  {
-    try
-    {
-      jdField_a_of_type_ComTencentCommonAppBaseApplicationImpl = BaseApplicationImpl.getApplication();
-      if (jdField_a_of_type_Boolean) {
-        jdField_a_of_type_Boolean = false;
-      }
-      xfo.a();
-      QLog.i("Q.videostory.VSManager", 1, "init");
-      return;
-    }
-    finally {}
-  }
-  
-  public void onDestroy() {}
+  public int a;
+  public String a;
+  public xfc<Boolean, xfh> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public xfc<Boolean, xfi> b;
+  public boolean b;
+  public int c;
+  public int d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,27 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.richstatus.SignatureHistoryFragment;
 
 public class axyx
-  extends axup
+  implements View.OnLayoutChangeListener
 {
-  String S = "";
+  public axyx(SignatureHistoryFragment paramSignatureHistoryFragment) {}
   
-  public axyx()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    this.a = "more";
-  }
-  
-  public axyx(String paramString)
-  {
-    this();
-    this.S = paramString;
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    paramBundle = paramView;
-    if (paramView == null) {
-      paramBundle = LayoutInflater.from(paramContext).inflate(2131562451, null);
-    }
-    paramContext = (TextView)paramBundle.findViewById(2131376581);
-    if (TextUtils.isEmpty(this.S)) {
-      this.S = ajya.a(2131714624);
-    }
-    paramContext.setText(this.S);
-    return paramBundle;
-  }
-  
-  public String a()
-  {
-    return "More";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.S = paramObjectInput.readUTF();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.S == null) {}
-    for (String str = "";; str = axau.a(this.S, false))
+    if ((paramInt2 < paramInt6) && (this.a.a != null))
     {
-      paramObjectOutput.writeUTF(str);
-      return;
+      paramInt1 = SignatureHistoryFragment.a(this.a, this.a.a);
+      paramInt3 = this.a.a.getHeight();
+      if (paramInt1 + paramInt3 > paramInt2) {
+        SignatureHistoryFragment.a(this.a, paramInt1, paramInt3, false);
+      }
     }
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "title");
-    paramXmlSerializer.text(this.S);
-    paramXmlSerializer.endTag(null, "title");
-  }
-  
-  public boolean a(axwg paramaxwg)
-  {
-    this.S = axau.a(axva.a(paramaxwg), false);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axyx
  * JD-Core Version:    0.7.0.1
  */

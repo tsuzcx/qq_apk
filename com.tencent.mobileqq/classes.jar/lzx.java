@@ -1,48 +1,72 @@
-import android.util.SparseArray;
+import android.content.Intent;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class lzx
+  extends alox
 {
-  public short a;
-  public byte[] a;
-  public short b = 240;
-  public short c;
-  public short d;
+  public lzx(QQServiceForAV paramQQServiceForAV) {}
   
-  public lzx(byte[] paramArrayOfByte)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Short = 320;
-    paramArrayOfByte = lpb.a(paramArrayOfByte);
-    lpa locallpa = (lpa)paramArrayOfByte.get(4);
-    if (locallpa != null) {
-      this.jdField_a_of_type_ArrayOfByte = locallpa.a();
+    Intent localIntent = new Intent("com.tencent.qqhead.getheadresp2");
+    localIntent.putExtra("uin", paramString);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    if (this.a.b.contains(paramString)) {
+      localQQAppInterface.getApp().sendBroadcast(localIntent);
     }
-    if (this.jdField_a_of_type_ArrayOfByte != null)
-    {
-      paramArrayOfByte = (lpa)paramArrayOfByte.get(3);
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte = paramArrayOfByte.a();
-        this.b = ((short)(paramArrayOfByte[0] << 8 | paramArrayOfByte[1] & 0xFF));
-        this.jdField_a_of_type_Short = ((short)(paramArrayOfByte[2] << 8 | paramArrayOfByte[3] & 0xFF));
-        this.c = ((short)(paramArrayOfByte[4] << 8 | paramArrayOfByte[5] & 0xFF));
-        int i = paramArrayOfByte[6];
-        this.d = ((short)(paramArrayOfByte[7] & 0xFF | i << 8));
-      }
+    this.a.b.remove(paramString);
+    if (this.a.b()) {
+      localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Alox);
     }
   }
   
-  public String toString()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("SwitchFaceItem face.length = ");
-    if (this.jdField_a_of_type_ArrayOfByte != null) {}
-    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
-      return i + ", width = " + this.jdField_a_of_type_Short + ", height = " + this.b + ", fameWidth = " + this.c + ", frameHeight = " + this.d;
+    if (QLog.isColorLevel())
+    {
+      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo uin = " + paramString);
+      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo isSuccess = " + paramBoolean);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    Intent localIntent;
+    if ((paramBoolean) && (paramString != null))
+    {
+      localIntent = new Intent();
+      localIntent.setAction("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO");
+      localIntent.putExtra("uin", paramString);
+      localObject = (aloz)QQServiceForAV.m(this.a).getManager(51);
+      if (localObject == null) {
+        break label205;
+      }
+      localObject = ((aloz)localObject).e(paramString);
+      if (localObject == null) {
+        break label205;
+      }
+    }
+    label205:
+    for (Object localObject = bdbt.a((Friends)localObject);; localObject = paramString)
+    {
+      localIntent.putExtra("nick", (String)localObject);
+      localIntent.setPackage(localQQAppInterface.getApplication().getPackageName());
+      localQQAppInterface.getApp().sendBroadcast(localIntent);
+      this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
+      if (this.a.b()) {
+        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Alox);
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lzx
  * JD-Core Version:    0.7.0.1
  */

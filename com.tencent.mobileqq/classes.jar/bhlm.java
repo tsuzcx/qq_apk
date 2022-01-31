@@ -1,103 +1,40 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.report.lp.LpReport_Retention_dc03208;
-import cooperation.qzone.util.QZLog;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-
-public class bhlm
+class bhlm
 {
-  public static final Set<String> a = new HashSet();
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
   
-  public static void a(int paramInt)
+  public bhlm(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt3, boolean paramBoolean, int paramInt4, long paramLong, int paramInt5)
   {
-    a(String.valueOf(paramInt), null);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_d_of_type_JavaLangString = paramString4;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_d_of_type_Int = paramInt4;
+    this.jdField_a_of_type_Long = paramLong;
+    this.e = paramInt5;
   }
   
-  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  public String toString()
   {
-    if (a(paramString))
-    {
-      i = QzoneConfig.getInstance().getConfig("ClientReport", "retention_report", 0);
-      if ((i == 0) || (i == 2)) {
-        b(paramString, paramHashMap);
-      }
-      if ((i == 0) || (i == 1)) {
-        LpReport_Retention_dc03208.report(paramString, paramHashMap);
-      }
-      if (QZLog.isColorLevel()) {
-        QZLog.i("Retention.Report", 2, new Object[] { "RetentionReport, functionid:", paramString });
-      }
-    }
-    while (!QZLog.isColorLevel())
-    {
-      int i;
-      return;
-    }
-    QZLog.i("Retention.Report", 2, new Object[] { "not meet condition, functionid:", paramString });
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (a.size() == 0)
-    {
-      Object localObject = QzoneConfig.getInstance().getConfig("ClientReport", "retention_report_blacklist", "");
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split(",");
-        int j = localObject.length;
-        int i = 0;
-        for (;;)
-        {
-          if (i < j)
-          {
-            CharSequence localCharSequence = localObject[i];
-            if (!TextUtils.isEmpty(localCharSequence)) {}
-            try
-            {
-              a.add(localCharSequence);
-              i += 1;
-            }
-            catch (Exception localException)
-            {
-              for (;;)
-              {
-                QZLog.e("Retention.Report", "meetConditon error", localException);
-              }
-            }
-          }
-        }
-      }
-    }
-    return (a.size() <= 0) || (!a.contains(paramString));
-  }
-  
-  public static void b(String paramString, HashMap<String, String> paramHashMap)
-  {
-    Object localObject = paramHashMap;
-    if (paramHashMap == null) {}
-    try
-    {
-      localObject = new HashMap();
-      ((HashMap)localObject).put("function_id", paramString);
-      paramHashMap = new Properties();
-      paramHashMap.putAll((Map)localObject);
-      axqn.a(BaseApplicationImpl.getContext()).reportKVEvent("qzone_retention_" + paramString, paramHashMap);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QZLog.e("Retention.Report", "统计率上报失败", paramString);
-    }
+    return "filePath=" + this.jdField_a_of_type_JavaLangString + ",fileName=" + this.jdField_b_of_type_JavaLangString + ",fileId=" + this.jdField_b_of_type_Int + ",fileUrl=" + this.jdField_c_of_type_JavaLangString + ",fileHash=" + this.jdField_d_of_type_JavaLangString + ",fileVersion=" + this.jdField_c_of_type_Int + ",zipFlag=" + this.jdField_a_of_type_Boolean + ",startTime=" + this.jdField_a_of_type_Long + ",tryTimes=" + this.jdField_d_of_type_Int + ",downloadFlag=" + this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhlm
  * JD-Core Version:    0.7.0.1
  */

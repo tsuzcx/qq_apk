@@ -1,39 +1,20 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.portal.FormalView;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.NearbyJsInterface;
 
 public class auqw
-  implements Animator.AnimatorListener
+  implements ymm
 {
-  public auqw(FormalView paramFormalView) {}
+  public auqw(NearbyJsInterface paramNearbyJsInterface, ymk paramymk, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void callback(Bundle paramBundle)
   {
-    this.a.d();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.d();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    FormalView.a(this.a).setVisibility(0);
-    if (this.a.a == 1)
-    {
-      FormalView.b(this.a).setVisibility(0);
-      return;
-    }
-    FormalView.b(this.a).setVisibility(8);
+    paramBundle = paramBundle.getString("nearbyVideoConfig");
+    this.jdField_a_of_type_Ymk.b(new auqx(this, paramBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auqw
  * JD-Core Version:    0.7.0.1
  */

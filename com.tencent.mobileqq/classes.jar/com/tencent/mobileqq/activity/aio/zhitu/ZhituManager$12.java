@@ -1,23 +1,20 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
-import aezl;
-import android.os.Looper;
+import agwq;
 
 public class ZhituManager$12
   implements Runnable
 {
-  public ZhituManager$12(aezl paramaezl) {}
+  public ZhituManager$12(agwq paramagwq) {}
   
   public void run()
   {
-    aezl.a(this.this$0, aezl.a(this.this$0));
-    aezl.a(this.this$0, false);
-    Looper.myLooper().quit();
+    agwq.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituManager.12
  * JD-Core Version:    0.7.0.1
  */

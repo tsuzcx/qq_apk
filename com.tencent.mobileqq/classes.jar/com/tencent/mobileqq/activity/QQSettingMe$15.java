@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import android.view.View;
-import axmv;
-import bayh;
+import azib;
+import bcxb;
 import com.tencent.mobileqq.vas.avatar.AvatarLayout;
 import com.tencent.mobileqq.vas.avatar.VasFaceManager;
 import com.tencent.qphone.base.util.QLog;
@@ -14,11 +14,11 @@ class QQSettingMe$15
   
   public void run()
   {
-    bayh localbayh = bayh.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a, (byte)3);
+    bcxb localbcxb = bcxb.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a, (byte)3);
     try
     {
-      localbayh.a(axmv.b());
-      this.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setFaceDrawable(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localbayh, 1, this.a, 200, true, true, 6);
+      localbcxb.a(azib.b());
+      this.this$0.jdField_a_of_type_ComTencentMobileqqVasAvatarAvatarLayout.setFaceDrawable(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localbcxb, 1, this.a, 200, true, true, 6);
       this.this$0.b.setVisibility(VasFaceManager.a(this.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
       this.this$0.y();
       if (QLog.isDevelopLevel()) {
@@ -37,7 +37,7 @@ class QQSettingMe$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.15
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.newfriend.connections;
 
-import aflw;
+import ahjb;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -11,9 +11,9 @@ import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
-import bbll;
+import bdkf;
 import java.util.ArrayList;
-import rtw;
+import skj;
 
 public class ThemeTabLayout
   extends FrameLayout
@@ -51,10 +51,10 @@ public class ThemeTabLayout
   
   public void a()
   {
-    Object localObject = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560917, this, false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout = ((ConnectionsTabLayout)((RelativeLayout)localObject).findViewById(2131364625));
+    Object localObject = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131561100, this, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout = ((ConnectionsTabLayout)((RelativeLayout)localObject).findViewById(2131364704));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
-    localLayoutParams.topMargin = bbll.a(10.0F);
+    localLayoutParams.topMargin = bdkf.a(10.0F);
     addView((View)localObject, localLayoutParams);
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTabThemeMaskView = new TabThemeMaskView(getContext());
     localObject = new FrameLayout.LayoutParams(-1, -1);
@@ -66,7 +66,7 @@ public class ThemeTabLayout
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.a(paramInt);
   }
   
-  public void a(ArrayList<aflw> paramArrayList, int paramInt)
+  public void a(ArrayList<ahjb> paramArrayList, int paramInt)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTabThemeMaskView == null)) {}
     while ((paramArrayList == null) || (paramInt < 0)) {
@@ -75,12 +75,12 @@ public class ThemeTabLayout
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.a(paramArrayList, paramInt);
   }
   
-  public void a(rtw paramrtw)
+  public void a(skj paramskj)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.b(paramrtw);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.b(paramskj);
   }
   
   public void b()
@@ -88,7 +88,7 @@ public class ThemeTabLayout
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.a();
   }
   
-  public void b(ArrayList<aflw> paramArrayList, int paramInt)
+  public void b(ArrayList<ahjb> paramArrayList, int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.b(paramArrayList, paramInt);
   }
@@ -121,13 +121,13 @@ public class ThemeTabLayout
     }
   }
   
-  public void setOnTabSelectedListener(rtw paramrtw)
+  public void setOnTabSelectedListener(skj paramskj)
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsTabThemeMaskView == null)) {}
-    while (paramrtw == null) {
+    while (paramskj == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.a(paramrtw);
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendConnectionsConnectionsTabLayout.a(paramskj);
   }
   
   public void setScrollPosition(float paramFloat)
@@ -139,7 +139,7 @@ public class ThemeTabLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.connections.ThemeTabLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,63 @@
-import android.graphics.Bitmap;
+import android.content.Intent;
 import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
-class adkh
-  implements baxz
+public class adkh
+  implements bhqp
 {
-  adkh(adke paramadke) {}
+  public adkh(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramBitmap == null)) {}
-    for (;;)
+    paramAdapterView = null;
+    paramView = paramView.getTag();
+    if ((paramView instanceof adks)) {}
+    String str;
+    do
     {
-      return;
-      if (paramString.equals(this.a.jdField_a_of_type_JavaLangString)) {
-        adke.b(this.a).setImageBitmap(paramBitmap);
-      }
-      while (QLog.isColorLevel())
+      paramAdapterView = ((adks)paramView).a;
+      while (paramAdapterView == null)
       {
-        QLog.d("intimate_relationship", 2, "onDecodeTaskCompleted, uin: " + paramString + ", type: " + paramInt2);
+        if (QLog.isColorLevel()) {
+          QLog.w("PublicAccountListActivity", 2, "onItemClick - info = null[position = " + paramInt + "]");
+        }
         return;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-          adke.a(this.a).setImageBitmap(paramBitmap);
+        if ((paramView instanceof adkw)) {
+          paramAdapterView = ((adkw)paramView).a;
         }
       }
-    }
+      paramView = new Intent(this.a, ChatActivity.class);
+      str = paramAdapterView.a.getUin();
+      paramInt = 1008;
+      if (paramAdapterView.a.extendType == 2)
+      {
+        paramView.putExtra("chat_subType", 1);
+        paramInt = 0;
+      }
+      if (!TextUtils.isEmpty(str)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("PublicAccountListActivity", 2, "onItemClick - uin = null");
+    return;
+    paramView.putExtra("uin", str);
+    paramView.putExtra("uintype", paramInt);
+    paramView.putExtra("uinname", paramAdapterView.a.name);
+    paramView.putExtra("selfSet_leftViewText", this.a.getString(2131695682));
+    paramView.putExtra("jump_from", 3);
+    this.a.startActivity(paramView);
+    nrt.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", str, "mp_msg_sys_4", "contacts_aio", 0, 0, str, "", "", "", false);
+    nrt.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573B", "0X800573B", 0, 0, str, "", "", "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkh
  * JD-Core Version:    0.7.0.1
  */

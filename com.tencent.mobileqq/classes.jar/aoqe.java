@@ -1,25 +1,73 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.ExpandableListView;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class aoqe
-  implements View.OnClickListener
+public class aoqe
+  extends aopw<aoqd>
 {
-  aoqe(aoqb paramaoqb, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (aoqb.a(this.jdField_a_of_type_Aoqb).c(this.jdField_a_of_type_Int))
+    return 95;
+  }
+  
+  @NonNull
+  public aoqd a()
+  {
+    return new aoqd();
+  }
+  
+  @NonNull
+  public aoqd a(aogf[] paramArrayOfaogf)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    int j = paramArrayOfaogf.length;
+    int i = 0;
+    for (;;)
     {
-      aoqb.a(this.jdField_a_of_type_Aoqb).b(this.jdField_a_of_type_Int);
-      return;
+      if (i < j)
+      {
+        String str = paramArrayOfaogf[i].a;
+        if (QLog.isColorLevel()) {
+          QLog.i("PushOpenNotify", 2, "config :" + str);
+        }
+        if (!TextUtils.isEmpty(str))
+        {
+          amij.a(localQQAppInterface, str, false);
+          PreferenceManager.getDefaultSharedPreferences(localQQAppInterface.getApp()).edit().putString(localQQAppInterface.c() + "_" + "push_open_notify_xml", str).commit();
+        }
+      }
+      else
+      {
+        return new aoqd();
+      }
+      i += 1;
     }
-    aoqb.a(this.jdField_a_of_type_Aoqb).a(this.jdField_a_of_type_Int);
+  }
+  
+  public Class<aoqd> a()
+  {
+    return aoqd.class;
+  }
+  
+  @NonNull
+  public aoqd b()
+  {
+    return new aoqd();
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqe
  * JD-Core Version:    0.7.0.1
  */

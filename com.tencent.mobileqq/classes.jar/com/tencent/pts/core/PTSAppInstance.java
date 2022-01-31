@@ -1,6 +1,5 @@
 package com.tencent.pts.core;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.text.TextUtils;
@@ -10,69 +9,76 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.pts.bridge.PTSJSBridge;
 import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.lite.PTSLiteBridge;
 import com.tencent.pts.utils.PTSDeviceUtil;
 import com.tencent.pts.utils.PTSLog;
 import com.tencent.pts.utils.PTSValueConvertUtil;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class PTSAppInstance
+public abstract class PTSAppInstance
 {
   private static final AtomicInteger NEXT_ID = new AtomicInteger(1);
   private static ThreadLocal<TextView> sTextView;
   private final String TAG = "PTSAppInstance";
-  private Activity mActivity;
-  private String mAppName;
-  private String mAppPath;
-  private PTSItemData mItemData;
-  private PTSJSBridge mPTSJSBridge;
-  private PTSRootNode mRootNode;
-  private int mRootNodeType;
-  private ViewGroup mRootView;
-  private int mUniqueID = NEXT_ID.getAndIncrement();
+  private String appName;
+  private Context context;
+  private String frameTreeJson;
+  private PTSItemData itemData;
+  private String pageJs;
+  private PTSRootNode rootNode;
+  private int rootNodeType;
+  private ViewGroup rootView;
+  private int uniqueId = NEXT_ID.getAndIncrement();
   
   private void init(int paramInt)
   {
-    this.mRootNode = new PTSRootNode(this, this.mRootView, paramInt);
-    this.mPTSJSBridge.initAppJSBundle(this.mAppName, this.mAppPath, this);
+    PTSDeviceUtil.init(this.context);
+    this.rootNode = new PTSRootNode(this, this.rootView, paramInt);
+    initPTSAppInstance(this.frameTreeJson, this.pageJs);
   }
   
   public void addOnRecyclerViewScrollListener(RecyclerView.OnScrollListener paramOnScrollListener)
   {
-    this.mRootNode.addOnRecyclerViewScrollListener(paramOnScrollListener);
+    this.rootNode.addOnRecyclerViewScrollListener(paramOnScrollListener);
   }
   
-  public Activity getActivity()
+  public Context getContext()
   {
-    return this.mActivity;
+    return this.context;
   }
   
   public PTSItemData getItemData()
   {
-    return this.mItemData;
+    return this.itemData;
   }
   
-  public PTSJSBridge getJSBridge()
+  public PTSJSBridge getJsBridge()
   {
-    return this.mPTSJSBridge;
+    return null;
+  }
+  
+  public PTSLiteBridge getLiteBridge()
+  {
+    return null;
   }
   
   public PTSRootNode getRootNode()
   {
-    return this.mRootNode;
+    return this.rootNode;
   }
   
   public int getRootNodeType()
   {
-    return this.mRootNodeType;
+    return this.rootNodeType;
   }
   
   public float getRootViewWidth()
   {
     float f2 = PTSDeviceUtil.getScreenWidthDp();
     float f1 = f2;
-    if (this.mRootView != null)
+    if (this.rootView != null)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.mRootView.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.rootView.getLayoutParams();
       f1 = f2;
       if (localLayoutParams != null)
       {
@@ -90,7 +96,7 @@ public class PTSAppInstance
   {
     try
     {
-      Object localObject = getActivity().getApplicationContext();
+      Object localObject = getContext().getApplicationContext();
       if (sTextView == null) {
         sTextView = new PTSAppInstance.1(this, (Context)localObject);
       }
@@ -137,7 +143,19 @@ public class PTSAppInstance
   
   public int getUniqueID()
   {
-    return this.mUniqueID;
+    return this.uniqueId;
+  }
+  
+  abstract void initPTSAppInstance(String paramString1, String paramString2);
+  
+  public boolean isJsAppInstance()
+  {
+    return this instanceof PTSAppInstance.PTSJsAppInstance;
+  }
+  
+  public boolean isLiteAppInstance()
+  {
+    return this instanceof PTSAppInstance.PTSLiteAppInstance;
   }
   
   public void onCreate() {}
@@ -145,7 +163,6 @@ public class PTSAppInstance
   public void onDestroy()
   {
     PTSLog.i("PTSAppInstance", "[onDestroy], destroy PTSJNIHandler.");
-    PTSJNIHandler.destroy(this, this.mPTSJSBridge.getJSEnvID());
     if (sTextView != null)
     {
       sTextView.remove();
@@ -156,10 +173,15 @@ public class PTSAppInstance
   public void onPause() {}
   
   public void onResume() {}
+  
+  public void setItemData(PTSItemData paramPTSItemData)
+  {
+    this.itemData = paramPTSItemData;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.core.PTSAppInstance
  * JD-Core Version:    0.7.0.1
  */

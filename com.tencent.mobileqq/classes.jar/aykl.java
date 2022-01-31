@@ -1,25 +1,14 @@
-import android.text.Spannable;
-import android.text.Spannable.Factory;
-
-final class aykl
-  extends Spannable.Factory
+public class aykl
 {
-  public Spannable newSpannable(CharSequence paramCharSequence)
-  {
-    if ((!aykk.b) && ((paramCharSequence instanceof aykk))) {
-      try
-      {
-        aykk localaykk = (aykk)((aykk)paramCharSequence).clone();
-        return localaykk;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    }
-    return super.newSpannable(paramCharSequence);
-  }
+  public int a;
+  public CharSequence a;
+  public String a;
+  
+  public aykl(aykk paramaykk) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aykl
  * JD-Core Version:    0.7.0.1
  */

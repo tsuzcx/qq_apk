@@ -7,13 +7,13 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
-import nqn;
-import nrf;
+import ntw;
+import nup;
 
 public class EcShopAssistantManager$1
   implements Runnable
 {
-  public EcShopAssistantManager$1(nqn paramnqn) {}
+  public EcShopAssistantManager$1(ntw paramntw) {}
   
   public void run()
   {
@@ -29,11 +29,11 @@ public class EcShopAssistantManager$1
     try
     {
       BaseApplicationImpl.getContext().registerReceiver(this.this$0.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-      ((nrf)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a();
-      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("ecshop_sp" + nqn.a(this.this$0), 0);
+      ((nup)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(88)).a();
+      localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("ecshop_sp" + ntw.a(this.this$0), 0);
       this.this$0.b = ((SharedPreferences)localObject).getBoolean("folder_tab_show", false);
       this.this$0.c = ((SharedPreferences)localObject).getBoolean("preload_web", false);
-      nqn.g = String.valueOf(((SharedPreferences)localObject).getLong("ad_puin", 0L));
+      ntw.g = String.valueOf(((SharedPreferences)localObject).getLong("ad_puin", 0L));
       this.this$0.jdField_a_of_type_Long = ((SharedPreferences)localObject).getLong("stayTime", 5000L);
       this.this$0.d = ((SharedPreferences)localObject).getInt("dayLimit", 3);
       this.this$0.b();
@@ -50,7 +50,7 @@ public class EcShopAssistantManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager.1
  * JD-Core Version:    0.7.0.1
  */

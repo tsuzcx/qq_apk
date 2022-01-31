@@ -1,19 +1,30 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.os.SystemClock;
 
 class bhef
-  implements FileFilter
+  implements bhay
 {
-  bhef(bheb parambheb) {}
+  long jdField_a_of_type_Long;
   
-  public boolean accept(File paramFile)
+  bhef(bhee parambhee, bhcv parambhcv, long paramLong) {}
+  
+  public void onStateChanged()
   {
-    return paramFile.getName().endsWith(".ftf");
+    if (this.jdField_a_of_type_Bhcv != null) {}
+    for (bhaz localbhaz = this.jdField_a_of_type_Bhcv.getCurrState();; localbhaz = null)
+    {
+      if ((localbhaz != null) && (localbhaz == this.jdField_a_of_type_Bhcv.b)) {
+        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      }
+      if ((localbhaz != null) && (localbhaz == this.jdField_a_of_type_Bhcv.e)) {
+        this.jdField_a_of_type_Bhee.a(this.jdField_a_of_type_Bhcv, this.b, SystemClock.uptimeMillis() - this.jdField_a_of_type_Long);
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhef
  * JD-Core Version:    0.7.0.1
  */

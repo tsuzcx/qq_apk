@@ -1,25 +1,44 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
-
 public class azzl
-  implements bckm
+  extends azzf
 {
-  public azzl(ReciteRecordLayout paramReciteRecordLayout) {}
+  private int f;
+  private int g;
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public azzl(int paramInt1, int paramInt2, int paramInt3)
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    super(paramInt1, 4, 0);
+    this.f = paramInt2;
+    this.g = paramInt3;
+  }
+  
+  public azzl(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super(paramInt1, 4, paramInt4);
+    this.f = paramInt2;
+    this.g = paramInt3;
+  }
+  
+  protected void a(int paramInt, float paramFloat)
+  {
+    this.a = ((int)(this.f + (this.g - this.f) * paramFloat));
+    if (this.g - this.f > 0) {
+      if (this.a >= this.g) {
+        this.a = this.g;
+      }
+    }
+    for (;;)
+    {
+      super.a(paramInt, paramFloat);
+      return;
+      if (this.a <= this.g) {
+        this.a = this.g;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azzl
  * JD-Core Version:    0.7.0.1
  */

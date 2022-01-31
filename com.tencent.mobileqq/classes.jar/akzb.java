@@ -1,23 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRecognition;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public final class akzb
-  implements Parcelable.Creator<ARRecognition>
+public class akzb
+  implements Animator.AnimatorListener
 {
-  public ARRecognition a(Parcel paramParcel)
+  public akzb(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return new ARRecognition(paramParcel);
+    ThreadManager.getUIHandler().postDelayed(new ApolloGuestsStateActivity.3.1(this), 200L);
   }
   
-  public ARRecognition[] a(int paramInt)
-  {
-    return new ARRecognition[paramInt];
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akzb
  * JD-Core Version:    0.7.0.1
  */

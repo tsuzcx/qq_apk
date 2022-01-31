@@ -1,22 +1,10 @@
-public class bitb
+public abstract interface bitb
 {
-  private Boolean a;
-  public String a;
-  
-  public bitb(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(paramBoolean);
-  }
+  public abstract void a(String paramString1, int paramInt, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bitb
  * JD-Core Version:    0.7.0.1
  */

@@ -20,6 +20,7 @@ public class ComponentConstant
   public static final String CMP_TYPE_KD_REFRESH = "kdrefresh";
   public static final String CMP_TYPE_LIST = "list";
   public static final String CMP_TYPE_LOADING = "loading";
+  public static final String CMP_TYPE_LOTTIE = "vlottie";
   public static final String CMP_TYPE_MODAL = "modal";
   public static final String CMP_TYPE_PAGE = "page";
   public static final String CMP_TYPE_PAGE_SLIDER = "page-slider";
@@ -42,7 +43,7 @@ public class ComponentConstant
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.ComponentConstant
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,60 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.image.URLDrawable.DownloadListener;
 
-abstract class qwm
+public class qwm
+  extends AsyncTask<Void, Void, Boolean>
 {
-  protected long a;
-  private ArrayList<qwm> a;
-  protected long b;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener;
+  private String jdField_a_of_type_JavaLangString;
   
-  qwm()
+  public qwm(Bitmap paramBitmap, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  abstract long a(long paramLong);
+  protected Boolean a(Void... paramVarArgs)
+  {
+    return Boolean.valueOf(xmn.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString));
+  }
   
   public void a()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((qwm)localIterator.next()).a();
-    }
-    this.b = 0L;
+    executeOnExecutor(alza.a(64), null);
   }
   
-  public void a(long paramLong)
+  public void a(URLDrawable.DownloadListener paramDownloadListener)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((qwm)localIterator.next()).a(paramLong);
-    }
-    this.b = a(paramLong);
-    if (this.b < 0L) {
-      this.b = 0L;
-    }
-    if ((float)Math.abs(this.b - this.jdField_a_of_type_Long) / (float)this.jdField_a_of_type_Long < 0.2F)
-    {
-      this.jdField_a_of_type_Long = Math.max(this.b, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = paramDownloadListener;
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    super.onPostExecute(paramBoolean);
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener == null) {
       return;
     }
-    this.jdField_a_of_type_Long = this.b;
+    if (paramBoolean.booleanValue())
+    {
+      this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadSucceed(0L);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadFailed(0);
   }
   
-  protected void a(qwm paramqwm)
+  protected void onPreExecute()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramqwm) < 0) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramqwm);
+    super.onPreExecute();
+    if (this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener.onFileDownloadStarted();
     }
-  }
-  
-  public void b()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((qwm)localIterator.next()).b();
-    }
-    this.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qwm
  * JD-Core Version:    0.7.0.1
  */

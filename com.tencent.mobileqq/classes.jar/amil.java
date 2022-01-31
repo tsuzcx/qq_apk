@@ -1,10 +1,29 @@
-public abstract interface amil
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class amil
+  implements View.OnClickListener
 {
-  public abstract void a(amia paramamia, int paramInt, boolean paramBoolean);
+  amil(amij paramamij) {}
+  
+  public void onClick(View paramView)
+  {
+    azmj.b(null, "CliOper", "", "", "0X8006B16", "0X8006B16", 0, 0, "", "", "", "");
+    azmj.b(null, "dc00898", "", "", "0X8009AC9", "0X8009AC9", 0, 0, "", "", "", "");
+    paramView = PreferenceManager.getDefaultSharedPreferences(amij.a(this.a));
+    int i = paramView.getInt("push_msg_notify_cancle", 0);
+    paramView = paramView.edit();
+    paramView.putInt("push_msg_notify_cancle", i + 1);
+    paramView.commit();
+    this.a.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amil
  * JD-Core Version:    0.7.0.1
  */

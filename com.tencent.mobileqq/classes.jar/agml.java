@@ -1,18 +1,19 @@
-public class agml
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+
+class agml
+  implements DialogInterface.OnDismissListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public String d;
-  public String e;
+  agml(agmb paramagmb) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.b(1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agml
  * JD-Core Version:    0.7.0.1
  */

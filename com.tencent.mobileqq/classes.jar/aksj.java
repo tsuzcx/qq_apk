@@ -1,197 +1,126 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.AsyncTask;
-import android.os.Build.VERSION;
-import android.preference.PreferenceManager;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.mobileqq.app.GuardManager;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
 
 public class aksj
-  extends AsyncTask<Void, Integer, Boolean>
+  implements bcwt
 {
-  WeakReference<QQAppInterface> a;
+  alox jdField_a_of_type_Alox = new aksk(this);
+  private bcws jdField_a_of_type_Bcws;
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Map<String, Integer> b = new HashMap();
   
   public aksj(QQAppInterface paramQQAppInterface)
   {
-    this.a = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Bcws = new bcws(paramQQAppInterface);
+    this.jdField_a_of_type_Bcws.a(this);
+    paramQQAppInterface.addObserver(this.jdField_a_of_type_Alox);
   }
   
-  protected Boolean a(Void... paramVarArgs)
+  public void a()
   {
-    for (;;)
+    QLog.i("apollochannel_CmGameAccountHandler", 1, "onDestroy");
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_JavaUtilMap.clear();
+    this.b.clear();
+    this.jdField_a_of_type_JavaUtilMap = null;
+    this.b = null;
+    if (this.jdField_a_of_type_Bcws != null)
     {
-      try
-      {
-        Object localObject = (QQAppInterface)this.a.get();
-        if (localObject == null) {
-          return Boolean.valueOf(false);
-        }
-        if (!((QQAppInterface)localObject).isLogin()) {
-          return Boolean.valueOf(false);
-        }
-        if (!GuardManager.jdField_a_of_type_Boolean) {
-          return Boolean.valueOf(false);
-        }
-        akse.a((QQAppInterface)localObject);
-        if ((!akse.jdField_a_of_type_Boolean) || (akse.jdField_c_of_type_Boolean) || (akse.jdField_a_of_type_AndroidContentIntent == null)) {
-          return Boolean.valueOf(false);
-        }
-        if ((akse.b != 0) && (Build.VERSION.SDK_INT > akse.b)) {
-          return Boolean.valueOf(false);
-        }
-        paramVarArgs = ((QQAppInterface)localObject).c();
-        if (bcql.a() == 0)
-        {
-          i = 1;
-          if (i != 0)
-          {
-            if (!akse.a((QQAppInterface)localObject)) {
-              return Boolean.valueOf(false);
-            }
-            localObject = PreferenceManager.getDefaultSharedPreferences(((QQAppInterface)localObject).getApp());
-            long l3 = System.currentTimeMillis();
-            if (akse.a() == -1L) {
-              akse.a(((SharedPreferences)localObject).getLong("push_open_notify_lasttime", l3));
-            }
-            long l1 = 0L;
-            i = 0;
-            int n = ((SharedPreferences)localObject).getInt("push_open_notify_stage", 1);
-            int i1 = ((SharedPreferences)localObject).getInt("push_open_notify_stage_count", 0);
-            int i2 = ((SharedPreferences)localObject).getInt("push_msg_notify_count", 0);
-            if (n == 1)
-            {
-              l1 = akse.jdField_c_of_type_Int * akse.jdField_a_of_type_Long;
-              i = akse.d;
-              j = i;
-              m = i1;
-              l2 = l1;
-              k = n;
-              if (i1 >= i)
-              {
-                SharedPreferences.Editor localEditor = ((SharedPreferences)localObject).edit();
-                n += 1;
-                localEditor.putInt("push_open_notify_stage", n);
-                localEditor.remove("push_open_notify_stage_count");
-                localEditor.commit();
-                i1 = 0;
-                if (n == 1)
-                {
-                  l2 = akse.jdField_c_of_type_Int * akse.jdField_a_of_type_Long;
-                  j = akse.d;
-                  k = n;
-                  m = i1;
-                }
-              }
-              else
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("PushOpenNotify", 2, new Object[] { "PopOpenMsgNotifation, stage:", Integer.valueOf(k), " stagecount:", Integer.valueOf(m), " count:", Integer.valueOf(i2), " countMax:", Integer.valueOf(j), " pushInteral:", Long.valueOf(l2), " timeDiff:", Long.valueOf(l3 - akse.a()) });
-                }
-                if ((l3 - akse.a() <= l2) && (i2 != 0)) {
-                  break label754;
-                }
-                akse.a(l3);
-                localObject = ((SharedPreferences)localObject).edit();
-                i = m + 1;
-                ((SharedPreferences.Editor)localObject).putInt("push_open_notify_stage_count", i);
-                ((SharedPreferences.Editor)localObject).putInt("push_msg_notify_count", i2 + 1);
-                ((SharedPreferences.Editor)localObject).putLong("push_open_notify_lasttime", l3);
-                if ((k == 1) && (i == 1))
-                {
-                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_count");
-                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_open");
-                  ((SharedPreferences.Editor)localObject).remove(paramVarArgs + "_" + "push_open_notify_cancle");
-                }
-                ((SharedPreferences.Editor)localObject).commit();
-                return Boolean.valueOf(true);
-              }
-            }
-            else
-            {
-              if (n == 2)
-              {
-                l1 = akse.e * akse.jdField_a_of_type_Long;
-                i = akse.f;
-                continue;
-              }
-              if (n != 3) {
-                continue;
-              }
-              l1 = akse.g * akse.jdField_a_of_type_Long;
-              i = 2147483647;
-              continue;
-            }
-            if (n == 2)
-            {
-              l2 = akse.e * akse.jdField_a_of_type_Long;
-              j = akse.f;
-              m = i1;
-              k = n;
-              continue;
-            }
-            int j = i;
-            int m = i1;
-            long l2 = l1;
-            int k = n;
-            if (n != 3) {
-              continue;
-            }
-            l1 = akse.g;
-            l2 = akse.jdField_a_of_type_Long;
-            l2 = l1 * l2;
-            j = 2147483647;
-            m = i1;
-            k = n;
-            continue;
-          }
-          return Boolean.valueOf(false);
-        }
-      }
-      catch (Exception paramVarArgs)
-      {
-        return Boolean.valueOf(false);
-      }
-      label754:
-      int i = 0;
+      this.jdField_a_of_type_Bcws.d();
+      this.jdField_a_of_type_Bcws = null;
     }
   }
   
-  protected void a(Boolean paramBoolean)
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    try
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
+    do
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
-      if (paramBoolean.booleanValue())
+      return;
+      switch (paramInt2)
       {
-        if (localQQAppInterface == null) {
-          return;
-        }
-        paramBoolean = new Intent(localQQAppInterface.getApp(), DialogActivity.class);
-        paramBoolean.addFlags(268435456);
-        paramBoolean.addFlags(536870912);
-        paramBoolean.addFlags(67108864);
-        paramBoolean.addFlags(131072);
-        paramBoolean.putExtra("key_dialog_type", DialogActivity.jdField_c_of_type_Int);
-        localQQAppInterface.getApp().startActivity(paramBoolean);
+      default: 
         return;
+      case 1: 
+        localObject = bdbt.c((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString, true);
+        if ((!bcgh.b((String)localObject)) || (!((String)localObject).equals(paramString))) {
+          break label147;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("apollochannel_CmGameAccountHandler", 2, "nickName.equals(uin):" + paramString);
+        }
+        break;
       }
+    } while (this.jdField_a_of_type_JavaUtilMap == null);
+    this.jdField_a_of_type_JavaUtilMap.put(paramString + "nick", Integer.valueOf(paramInt1));
+    return;
+    label147:
+    if (QLog.isColorLevel()) {
+      QLog.d("apollochannel_CmGameAccountHandler", 2, "nickName != null:" + paramString);
     }
-    catch (Exception paramBoolean)
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 1);
+    localBundle.putString("uin", paramString);
+    localBundle.putString("nickName", (String)localObject);
+    paramString = EIPCResult.createResult(0, localBundle);
+    akrg.a().callbackResult(paramInt1, paramString);
+    return;
+    Object localObject = this.jdField_a_of_type_Bcws.a(1, String.valueOf(paramString), 0, (byte)1);
+    if (localObject != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("PushOpenNotify", 2, "popOpenMsgNotifation, exception: ", paramBoolean);
+        QLog.d("qwe", 2, "bm != null:" + paramString);
+      }
+      localObject = ((Bitmap)localObject).copy(Bitmap.Config.ARGB_8888, true);
+      localBundle = new Bundle();
+      localBundle.putInt("type", 2);
+      localBundle.putString("uin", paramString);
+      localBundle.putParcelable("head", (Parcelable)localObject);
+      paramString = EIPCResult.createResult(0, localBundle);
+      akrg.a().callbackResult(paramInt1, paramString);
+      return;
+    }
+    if (this.b != null) {
+      this.b.put(paramString + "head", Integer.valueOf(paramInt1));
+    }
+    this.jdField_a_of_type_Bcws.a(paramString, 200, false, 1, true, (byte)0, 1);
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    if ((paramBitmap != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qwe", 2, "onDecodeTaskCompleted:" + paramString);
+      }
+      paramBitmap = paramBitmap.copy(Bitmap.Config.ARGB_8888, true);
+      if ((this.b != null) && (this.b.get(paramString + "head") != null))
+      {
+        paramInt1 = ((Integer)this.b.remove(paramString + "head")).intValue();
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("type", 2);
+        localBundle.putString("uin", paramString);
+        localBundle.putParcelable("head", paramBitmap);
+        paramString = EIPCResult.createResult(0, localBundle);
+        akrg.a().callbackResult(paramInt1, paramString);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aksj
  * JD-Core Version:    0.7.0.1
  */

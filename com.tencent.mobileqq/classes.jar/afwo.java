@@ -1,46 +1,111 @@
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.videoplatform.api.VideoPlayerCallback;
+import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
 
 public class afwo
-  extends AccountObserver
+  implements VideoPlayerCallback
 {
-  public afwo(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  public afwo(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
   
-  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
+  public void onCapFrame(long paramLong, boolean paramBoolean, int paramInt1, int paramInt2, Bitmap paramBitmap) {}
+  
+  public void onDownloadComplete(long paramLong) {}
+  
+  public void onDownloadProgress(long paramLong1, long paramLong2) {}
+  
+  public void onLoopBack(long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel())
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoRealItemBuilder", 2, "playShortVideoByPath, onLoopBack, id = " + paramLong1);
+    }
+    MessageForShortVideo localMessageForShortVideo = bdan.a().a(Long.valueOf(paramLong1));
+    this.a.a(localMessageForShortVideo, paramLong2);
+  }
+  
+  public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
+  
+  public void onPlayProgress(long paramLong1, long paramLong2) {}
+  
+  public void onStateChange(long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoRealItemBuilder", 2, "onStateChange , state =  " + paramInt + ", msgUniseq = " + paramLong);
+    }
+    if (paramInt == 4)
     {
-      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
-      if (paramString2 == null)
+      localObject = bdan.a().a(Long.valueOf(paramLong));
+      if ((localObject != null) && (!bdan.a().a(Long.valueOf(paramLong))))
       {
-        i = 0;
-        QLog.e("Q.history.C2CAllFragment", 2, i);
+        ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E51", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
+        if (!bdan.a().b(Long.valueOf(((MessageForShortVideo)localObject).uniseq)))
+        {
+          bdan.a().a(Long.valueOf(((MessageForShortVideo)localObject).uniseq));
+          ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X8008E50", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject, this.a.jdField_a_of_type_AndroidContentContext);
+        }
+        bdan.a().a(Long.valueOf(paramLong), true);
       }
     }
-    else
-    {
-      paramString1 = this.a.a.obtainMessage(39);
-      if (!paramBoolean) {
-        break label103;
+    Object localObject = this.a.a(paramLong);
+    if (localObject == null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("ShortVideoRealItemBuilder", 2, "holder == null, msgUniseq = " + paramLong);
       }
     }
-    label103:
-    for (int i = 1;; i = 0)
+    label219:
+    MessageForShortVideo localMessageForShortVideo;
+    do
     {
-      paramString1.arg1 = i;
-      paramString1.arg2 = 0;
-      this.a.a.sendMessage(paramString1);
-      return;
-      i = paramString2.length();
-      break;
-    }
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              break label219;
+              break label219;
+              break label219;
+              do
+              {
+                return;
+              } while (paramInt == 5);
+              if ((paramInt != 7) && (paramInt != 8)) {
+                break;
+              }
+              ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
+              ((afwt)localObject).a.setVisibility(0);
+              this.a.a((afwt)localObject);
+            } while (paramInt != 8);
+            localObject = bdan.a().a(Long.valueOf(paramLong));
+          } while (localObject == null);
+          this.a.a((MessageForShortVideo)localObject, ((MessageForShortVideo)localObject).videoFileTime * 1000);
+          return;
+          if (paramInt != 4) {
+            break;
+          }
+          ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
+          this.a.b((afwt)localObject);
+          localObject = bdan.a().a(Long.valueOf(paramLong));
+        } while (localObject == null);
+        this.a.a((MessageForShortVideo)localObject, 0L);
+        return;
+      } while (paramInt != 1);
+      localMessageForShortVideo = bdan.a().a(Long.valueOf(paramLong));
+    } while (localMessageForShortVideo == null);
+    ((afwt)localObject).a.setVisibility(0);
+    this.a.c(localMessageForShortVideo, (afwt)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afwo
  * JD-Core Version:    0.7.0.1
  */

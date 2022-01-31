@@ -1,129 +1,210 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bbzm
-  extends bbwt
+public class bbzm
+  extends bbzz
+  implements bbzt
 {
-  bbzm(bbzh parambbzh, String paramString1, String paramString2)
+  private CopyOnWriteArrayList<bbzn> a = new CopyOnWriteArrayList();
+  
+  public bbzm(JSONObject paramJSONObject)
   {
-    super(paramString1, paramString2);
+    a(paramJSONObject);
   }
   
-  public void onDone(bbwu parambbwu)
+  public int a()
   {
-    super.onDone(parambbwu);
-    if (QLog.isColorLevel()) {
-      QLog.d("VipFunCallManager", 2, "onDone, status=" + parambbwu.a() + ", task.errCode:" + parambbwu.jdField_a_of_type_Int + ", key=" + parambbwu.jdField_a_of_type_JavaLangString);
+    return 0;
+  }
+  
+  public bbzn a(int paramInt)
+  {
+    if (paramInt >= this.a.size()) {
+      return null;
     }
-    Bundle localBundle = parambbwu.a();
-    if (localBundle == null) {
-      QLog.e("VipFunCallManager", 1, "mDownloadListener onDone Err0, key:" + parambbwu.jdField_a_of_type_JavaLangString);
-    }
-    boolean bool;
-    label121:
-    do
+    return (bbzn)this.a.get(paramInt);
+  }
+  
+  public List<bbzn> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      return;
-      if ((parambbwu.a() != 3) || (parambbwu.jdField_a_of_type_Int != 0)) {
-        break;
+      bbzn localbbzn = (bbzn)localIterator.next();
+      if ((TextUtils.isEmpty(localbbzn.a)) && (!TextUtils.isEmpty(localbbzn.jdField_b_of_type_JavaLangString))) {
+        localArrayList.add(localbbzn);
       }
-      bool = true;
-      if (!bool) {
-        QLog.e("VipFunCallManager", 1, "mDownloadListener onDone fail, task.getStatus():" + parambbwu.a() + ", task.errCode:" + parambbwu.jdField_a_of_type_Int);
+    }
+    return localArrayList;
+  }
+  
+  public JSONObject a()
+  {
+    return a(0);
+  }
+  
+  public JSONObject a(int paramInt)
+  {
+    JSONArray localJSONArray = new JSONArray();
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      Iterator localIterator = this.a.iterator();
+      while (localIterator.hasNext())
+      {
+        JSONObject localJSONObject2 = ((bbzn)localIterator.next()).a(paramInt);
+        if (localJSONObject2 != null) {
+          localJSONArray.put(localJSONObject2);
+        }
       }
-    } while (localBundle.getInt("dealType") == 0);
-    int i = localBundle.getInt("callId");
-    int j = localBundle.getInt("resourceType");
-    Object localObject = localBundle.getString("path");
-    if (localBundle.getBoolean("isExists", false)) {}
+      localJSONObject1.put("type", "calculation").put("imgs", localJSONException);
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+      return localJSONObject1;
+    }
+    return localJSONObject1;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.a.iterator();
+    int i = 0;
+    if (localIterator.hasNext())
+    {
+      bbzn localbbzn = (bbzn)localIterator.next();
+      int j = this.b.indexOf(Integer.valueOf(localbbzn.jdField_b_of_type_Int));
+      if (j <= i) {
+        break label79;
+      }
+      i = j;
+    }
+    label79:
     for (;;)
     {
-      if (!bool) {
-        QLog.e("VipFunCallManager", 1, "mDownloadListener onDone rename failure. path:" + (String)localObject);
-      }
-      if ((localBundle.getBoolean("isIPC")) && (this.a.jdField_a_of_type_Bbxa != null))
-      {
-        localObject = new Bundle();
-        ((Bundle)localObject).putInt("fcStatus", 3);
-        ((Bundle)localObject).putInt("callId", i);
-        ((Bundle)localObject).putInt("srcType", localBundle.getInt("srcType"));
-        ((Bundle)localObject).putBoolean("result_boo", bool);
-        ((Bundle)localObject).putInt("resourceType", j);
-        this.a.jdField_a_of_type_Bbxa.a(i, parambbwu.a(), (Bundle)localObject);
-      }
-      if (9 != bbzh.a()) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VipFunCallManager", 2, "sendBroadcast :tencent.video.q2v.AnnimateDownloadFinish");
-      }
-      parambbwu = new Intent("tencent.video.q2v.AnnimateDownloadFinish");
-      parambbwu.putExtra("fun_call_id", i);
-      parambbwu.setPackage(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getPackageName());
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(parambbwu);
+      break;
+      this.g = ((Integer)this.b.get(i)).intValue();
       return;
-      bool = false;
-      break label121;
-      bool = bbdx.c((String)localObject + ".tmp", (String)localObject);
     }
   }
   
-  public void onProgress(bbwu parambbwu)
+  public void a(bbzn parambbzn)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipFunCallManager", 2, "onProgress, loaded=" + parambbwu.b + "percent=" + parambbwu.jdField_a_of_type_Float + ", key=" + parambbwu.jdField_a_of_type_JavaLangString);
-    }
-    Bundle localBundle1 = parambbwu.a();
-    if (localBundle1 == null) {
-      QLog.e("VipFunCallManager", 1, "mDownloadListener onProgress Err0, key:" + parambbwu.jdField_a_of_type_JavaLangString);
-    }
-    while ((localBundle1.getInt("dealType") == 0) || (!parambbwu.a().getBoolean("isIPC")) || (this.a.jdField_a_of_type_Bbxa == null)) {
-      return;
-    }
-    Bundle localBundle2 = new Bundle();
-    localBundle2.putInt("fcStatus", 2);
-    localBundle2.putInt("callId", localBundle1.getInt("callId"));
-    localBundle2.putInt("srcType", localBundle1.getInt("srcType"));
-    localBundle2.putInt("progress", (int)parambbwu.jdField_a_of_type_Float);
-    localBundle2.putInt("resourceType", localBundle1.getInt("resourceType"));
-    this.a.jdField_a_of_type_Bbxa.a(localBundle2);
+    this.a.add(parambbzn);
   }
   
-  public boolean onStart(bbwu parambbwu)
+  public void a(String paramString)
   {
-    Bundle localBundle = parambbwu.a();
-    if (localBundle == null) {
-      QLog.e("VipFunCallManager", 1, "mDownloadListener onStart Err0, key:" + parambbwu.jdField_a_of_type_JavaLangString);
-    }
-    int i;
-    boolean bool;
-    do
+    try
     {
-      do
+      CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
+      JSONArray localJSONArray = new JSONObject(paramString).getJSONArray("imgs");
+      int i = 0;
+      while (i < localJSONArray.length())
       {
-        return true;
-      } while (localBundle.getInt("dealType") == 0);
-      i = localBundle.getInt("resourceType");
-      bool = localBundle.getBoolean("isIPC");
-      if (QLog.isColorLevel()) {
-        QLog.d("VipFunCallManager", 2, "onStart, loaded=" + parambbwu.b + ", percent=" + parambbwu.jdField_a_of_type_Float + ", resType=" + i + ", isIPC=" + bool);
+        JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+        bbzn localbbzn = new bbzn();
+        localbbzn.a(localJSONObject);
+        int j = this.a.indexOf(localbbzn);
+        if (j >= 0) {
+          localbbzn.copy(this.a.get(j));
+        }
+        localCopyOnWriteArrayList.add(localbbzn);
+        i += 1;
       }
-    } while ((!bool) || (this.a.jdField_a_of_type_Bbxa == null));
-    parambbwu = new Bundle();
-    parambbwu.putInt("fcStatus", 1);
-    parambbwu.putInt("callId", localBundle.getInt("callId"));
-    parambbwu.putInt("srcType", localBundle.getInt("srcType"));
-    parambbwu.putInt("resourceType", i);
-    this.a.jdField_a_of_type_Bbxa.a(parambbwu);
+      if (QLog.isColorLevel()) {
+        QLog.d("ArithmeticInfo", 2, "mergeData ,json = " + paramString);
+      }
+      this.a = localCopyOnWriteArrayList;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+    super.a(paramString);
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    this.a = new CopyOnWriteArrayList();
+    paramJSONObject = paramJSONObject.optJSONArray("imgs");
+    if (paramJSONObject != null)
+    {
+      int i = 0;
+      while (i < paramJSONObject.length())
+      {
+        JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+        bbzn localbbzn = new bbzn();
+        localbbzn.a(localJSONObject);
+        this.a.add(localbbzn);
+        i += 1;
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      bbzn localbbzn = (bbzn)localIterator.next();
+      if ((localbbzn.jdField_b_of_type_Int != 3) && (localbbzn.jdField_b_of_type_Int != 0)) {
+        return false;
+      }
+    }
     return true;
+  }
+  
+  public int b()
+  {
+    return 7;
+  }
+  
+  public void b(bbzn parambbzn)
+  {
+    this.a.remove(parambbzn);
+  }
+  
+  public int c()
+  {
+    return this.a.size();
+  }
+  
+  public void c(bbzn parambbzn)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      bbzn localbbzn = (bbzn)localIterator.next();
+      if (localbbzn.equals(parambbzn)) {
+        localbbzn.copy(parambbzn);
+      }
+    }
+  }
+  
+  public int d()
+  {
+    if (this.a.size() > 0) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbzm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,78 +1,51 @@
-import android.content.Context;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.manager.Manager;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class wht
-  implements Manager
+class wht
+  extends QQUIEventReceiver<whs, uyb>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private whv jdField_a_of_type_Whv;
-  
-  public wht(QQAppInterface paramQQAppInterface)
+  public wht(@NonNull whs paramwhs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    super(paramwhs);
   }
   
-  private void b()
+  public void a(@NonNull whs paramwhs, @NonNull uyb paramuyb)
   {
-    if (this.jdField_a_of_type_Whv != null) {
-      this.jdField_a_of_type_Whv.a();
+    if (!TextUtils.equals(String.valueOf(paramwhs.hashCode()), paramuyb.jdField_a_of_type_JavaLangString)) {
+      return;
     }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_Whv != null) {
-      this.jdField_a_of_type_Whv.b();
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Whv != null)
+    wsv.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video collection list. %s.", paramuyb);
+    if (paramuyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      this.jdField_a_of_type_Whv.c();
-      this.jdField_a_of_type_Whv = null;
+      if (paramuyb.jdField_a_of_type_Int != -1) {
+        paramwhs.jdField_a_of_type_Int = paramuyb.jdField_a_of_type_Int;
+      }
+      paramwhs.jdField_a_of_type_Boolean = true;
+      paramwhs.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = null;
+      if (paramuyb.e)
+      {
+        paramwhs.a(paramuyb.jdField_a_of_type_JavaUtilList, paramuyb.c, paramuyb.jdField_a_of_type_Boolean);
+        paramwhs.b = paramuyb.jdField_a_of_type_Boolean;
+      }
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    switch (paramInt)
+    for (;;)
     {
-    case 1: 
-    default: 
+      whs.a(paramwhs).a(paramuyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
       return;
-    case 2: 
-      b();
-      return;
-    case 3: 
-      c();
-      return;
-    }
-    a();
-  }
-  
-  public void a(Context paramContext, ScannerParams paramScannerParams)
-  {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if ((paramScannerParams.f) && (!paramScannerParams.d) && (this.jdField_a_of_type_Whv == null)) {
-      this.jdField_a_of_type_Whv = new whv(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramwhs.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramuyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
     }
   }
   
-  public void onDestroy()
+  public Class acceptEventClass()
   {
-    a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_AndroidContentContext = null;
+    return uyb.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wht
  * JD-Core Version:    0.7.0.1
  */

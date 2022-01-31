@@ -1,183 +1,237 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamwork.PadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GPadInfo;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView;
+import java.util.ArrayList;
+import java.util.List;
 
-class bagw
-  implements baic
+public class bagw
+  extends bafj
 {
-  bagw(bagq parambagq) {}
+  private Context b;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public bagw(QQAppInterface paramQQAppInterface, Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
-    switch (paramInt)
-    {
+    super(paramQQAppInterface, paramContext, paramBaseAdapter, paramInt);
+    this.jdField_b_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private String a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString1)) {
+      paramString1 = alpo.a(2131715150);
     }
-    label295:
-    label820:
+    String str;
     do
     {
-      for (;;)
-      {
-        return;
-        if (paramJSONObject != null)
-        {
-          try
-          {
-            paramInt = ((Integer)paramJSONObject.get("retcode")).intValue();
-            paramJSONObject = (JSONObject)paramJSONObject.get("result");
-            if ((paramInt != 0) || (paramJSONObject == null)) {
-              continue;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult. retCode = " + paramInt + "\n");
-            }
-            paramBundle = (JSONObject)paramJSONObject.get("basics");
-            Object localObject2;
-            String str;
-            int i;
-            Object localObject1;
-            if (paramBundle != null)
-            {
-              paramBundle = (JSONArray)paramBundle.get("datas");
-              if (paramBundle != null)
-              {
-                paramInt = 0;
-                if (paramInt < paramBundle.length())
-                {
-                  localObject2 = (JSONObject)paramBundle.get(paramInt);
-                  str = (String)((JSONObject)localObject2).get("name");
-                  i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
-                  localObject1 = (String)((JSONObject)localObject2).get("api");
-                  localObject2 = (String)((JSONObject)localObject2).get("msg");
-                  if (!QLog.isColorLevel()) {
-                    break label1008;
-                  }
-                  QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, basics name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg = " + (String)localObject2 + "\n");
-                  break label1008;
-                }
-              }
-            }
-            paramBundle = (JSONObject)paramJSONObject.get("friendlink");
-            if (paramBundle != null)
-            {
-              paramBundle = (JSONArray)paramBundle.get("datas");
-              if (paramBundle != null)
-              {
-                paramInt = 0;
-                if (paramInt < paramBundle.length())
-                {
-                  localObject2 = (JSONObject)paramBundle.get(paramInt);
-                  str = (String)((JSONObject)localObject2).get("name");
-                  i = ((Integer)((JSONObject)localObject2).get("state")).intValue();
-                  localObject1 = (String)((JSONObject)localObject2).get("api");
-                  localObject2 = (String)((JSONObject)localObject2).get("msg");
-                  if (("add_group".equals(localObject1)) && (i != 1)) {
-                    bagq.a(this.a).b();
-                  }
-                  if (!QLog.isColorLevel()) {
-                    break label1015;
-                  }
-                  QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, friendlink name = " + str + " state = " + i + " api = " + (String)localObject1 + " msg= " + (String)localObject2 + "\n");
-                  break label1015;
-                }
-              }
-            }
-            paramInt = ((Integer)paramJSONObject.get("appid")).intValue();
-            if (QLog.isColorLevel()) {
-              QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, appid =" + paramInt + "\n");
-            }
-            paramJSONObject = (JSONObject)paramJSONObject.get("qqpay");
-            if (paramJSONObject == null) {
-              continue;
-            }
-            paramJSONObject = (JSONArray)paramJSONObject.get("datas");
-            if (paramJSONObject == null) {
-              continue;
-            }
-            paramInt = 0;
-            while (paramInt < paramJSONObject.length())
-            {
-              localObject1 = (JSONObject)paramJSONObject.get(paramInt);
-              paramBundle = (String)((JSONObject)localObject1).get("name");
-              i = ((Integer)((JSONObject)localObject1).get("state")).intValue();
-              str = (String)((JSONObject)localObject1).get("api");
-              localObject1 = (String)((JSONObject)localObject1).get("msg");
-              if (QLog.isColorLevel()) {
-                QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult, qqpay name = " + paramBundle + " state = " + i + " api = " + str + " msg= " + (String)localObject1 + "\n");
-              }
-              paramInt += 1;
-            }
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-          }
-          catch (Exception paramJSONObject) {}
-          QLog.d("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "checkApiState onResult " + paramJSONObject.toString());
-          return;
-          if ((bagq.a(this.a) != null) && (paramJSONObject != null)) {
-            try
-            {
-              paramJSONObject = (JSONObject)paramJSONObject.get("data");
-              if (paramJSONObject != null)
-              {
-                paramJSONObject = (JSONObject)paramJSONObject.get("key");
-                if (paramJSONObject != null)
-                {
-                  paramInt = ((Integer)paramJSONObject.get("retCode")).intValue();
-                  paramBundle = (String)paramJSONObject.get("retMsg");
-                  if (paramInt != 0) {
-                    break label921;
-                  }
-                  if (bagq.a(this.a) != null) {
-                    bagq.a(this.a).a(true);
-                  }
-                  bagx.a(9, new Object());
-                  if (QLog.isColorLevel())
-                  {
-                    QLog.i("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "joinGroup onResult retCode = " + paramInt + " retMsg = " + paramBundle);
-                    return;
-                  }
-                }
-              }
-            }
-            catch (Exception paramJSONObject)
-            {
-              bagq.a(this.a).d(bagq.a(this.a).getString(2131720481));
-            }
-          }
-        }
+      return paramString1;
+      str = bdbt.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString1, true);
+      if ((str != null) && (!str.equals(paramString1))) {
+        break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("VisitorTroopCardFragment.VisitorTroopCardPresenter", 2, "joinGroup onResult " + paramJSONObject.toString());
-    return;
-    label921:
-    paramJSONObject = bagq.a(this.a).getString(2131720481);
-    switch (paramInt)
+      paramString1 = paramString2;
+    } while (!TextUtils.isEmpty(paramString2));
+    return str;
+  }
+  
+  public List<bagq> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(c);
+    localArrayList.add(jdField_b_of_type_Bagq);
+    return localArrayList;
+  }
+  
+  public List<bagq> a(bagp parambagp)
+  {
+    ArrayList localArrayList = new ArrayList();
+    boolean bool;
+    int i;
+    if ((parambagp instanceof GPadInfo))
     {
+      parambagp = (GPadInfo)parambagp;
+      if ((this.jdField_b_of_type_AndroidContentContext == null) || (!(this.jdField_b_of_type_AndroidContentContext instanceof GroupTeamWorkListActivity))) {
+        break label142;
+      }
+      bool = bclo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((GroupTeamWorkListActivity)this.jdField_b_of_type_AndroidContentContext).a, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      if (parambagp.creatorUin != this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()) {
+        break label137;
+      }
+      i = 1;
     }
     for (;;)
     {
-      bagq.a(this.a).d(paramJSONObject);
-      break label820;
-      paramJSONObject = bagq.a(this.a).getString(2131720476);
+      if ((i != 0) && (BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).getBoolean("TIMDocLimitSettingFlag", false))) {}
+      localArrayList.add(c);
+      if ((i != 0) || (bool)) {
+        localArrayList.add(jdField_b_of_type_Bagq);
+      }
+      return localArrayList;
+      label137:
+      i = 0;
       continue;
-      paramJSONObject = bagq.a(this.a).getString(2131720482);
-      continue;
-      label1008:
-      paramInt += 1;
+      label142:
+      i = 0;
+      bool = false;
+    }
+  }
+  
+  public View b(int paramInt1, bagp parambagp, View paramView, ViewGroup paramViewGroup, boolean paramBoolean1, boolean paramBoolean2, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, boolean paramBoolean3, int paramInt2)
+  {
+    View localView;
+    PadInfo localPadInfo;
+    label151:
+    long l;
+    label271:
+    label295:
+    Object localObject;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562699, paramViewGroup, false);
+      paramViewGroup = new bagy(this, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131364354));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView = ((SingleLineHotwordTextView)localView.findViewById(2131364356));
+      paramViewGroup.c = ((TextView)localView.findViewById(2131364357));
+      paramViewGroup.b = ((TextView)localView.findViewById(2131364373));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131364374));
+      paramViewGroup.jdField_a_of_type_AndroidViewView = localView.findViewById(2131364358);
+      localView.setTag(paramViewGroup);
+      localPadInfo = (PadInfo)parambagp;
+      if (localPadInfo.type != 1) {
+        break label494;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849863);
+      if (((localPadInfo instanceof GPadInfo)) && (((GPadInfo)localPadInfo).searchKeyWordList.size() > 0))
+      {
+        paramView = (ArrayList)((GPadInfo)localPadInfo).searchKeyWordList;
+        paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView.setHotwords(paramView);
+      }
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqTroopWidgetSingleLineHotwordTextView.setText(localPadInfo.title);
+      paramInt2 = localPadInfo.type_list;
+      if ((paramInt2 != 1) && (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals("" + localPadInfo.creatorUin))) {
+        break label531;
+      }
+      paramView = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131720648);
+      paramViewGroup.c.setText(paramView);
+      if (!(localPadInfo instanceof GPadInfo)) {
+        break label659;
+      }
+      l = localPadInfo.lastEditTime;
+      localObject = null;
+      paramView = localObject;
+      if (l > 0L)
+      {
+        if (l != localPadInfo.lastEditTime) {
+          break label677;
+        }
+        paramView = a("" + localPadInfo.lastEditorUin, localPadInfo.lastEditorNick);
+        paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131720691), new Object[] { paramView });
+      }
+      label376:
+      if (paramView == null) {
+        break label768;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      paramViewGroup.b.setText(paramView);
+      paramView = badt.a(l);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
+      label413:
+      if (this.jdField_b_of_type_Int != 1) {
+        break label842;
+      }
+      if (localPadInfo.type_list != 4) {
+        break label812;
+      }
+      if (!localPadInfo.pinInAllList) {
+        break label801;
+      }
+      localView.setBackgroundResource(2130839324);
+    }
+    for (;;)
+    {
+      localView.setOnClickListener(paramOnClickListener);
+      localView.setOnLongClickListener(paramOnLongClickListener);
+      paramViewGroup.jdField_a_of_type_Bagp = parambagp;
+      localView.setTag(-1, Integer.valueOf(paramInt1));
+      return localView;
+      paramViewGroup = (bagy)paramView.getTag();
+      localView = paramView;
       break;
-      label1015:
-      paramInt += 1;
+      label494:
+      if (localPadInfo.type == 3)
+      {
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849864);
+        break label151;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849871);
+      break label151;
+      label531:
+      if (paramInt2 == 3)
+      {
+        paramView = a("" + localPadInfo.creatorUin, localPadInfo.shardNick);
+        paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131720692), new Object[] { paramView });
+        break label271;
+      }
+      paramView = a("" + localPadInfo.creatorUin, localPadInfo.creatorNick);
+      paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131720690), new Object[] { paramView });
+      break label271;
+      label659:
+      l = Math.max(localPadInfo.lastEditTime, localPadInfo.currentUserBrowseTime);
       break label295;
+      label677:
+      if (l == 0L)
+      {
+        paramView = alpo.a(2131715155);
+        paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131720689), new Object[] { paramView });
+        break label376;
+      }
+      paramView = localObject;
+      if (l != localPadInfo.currentUserBrowseTime) {
+        break label376;
+      }
+      paramView = alpo.a(2131715134);
+      paramView = String.format(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131720693), new Object[] { paramView });
+      break label376;
+      label768:
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      paramViewGroup.b.setText("");
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText("");
+      break label413;
+      label801:
+      localView.setBackgroundResource(2130839323);
+      continue;
+      label812:
+      if (localPadInfo.pinedFlag)
+      {
+        localView.setBackgroundResource(2130839324);
+      }
+      else
+      {
+        localView.setBackgroundResource(2130839323);
+        continue;
+        label842:
+        localView.setBackgroundResource(2130839323);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bagw
  * JD-Core Version:    0.7.0.1
  */

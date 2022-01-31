@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import atfz;
+import auwy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -18,11 +18,11 @@ final class NearbyHybridFragment$2
     }
     if ((localObject instanceof NearbyAppInterface))
     {
-      localObject = (atfz)((NearbyAppInterface)localObject).getManager(214);
+      localObject = (auwy)((NearbyAppInterface)localObject).getManager(214);
       if (localObject != null)
       {
         NearbyHybridFragment.m = true;
-        ((atfz)localObject).c();
+        ((auwy)localObject).c();
         if (QLog.isColorLevel()) {
           QLog.d("nearby.NearbyHybridFragment", 2, "pre load now plugin!");
         }
@@ -42,7 +42,7 @@ final class NearbyHybridFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.2
  * JD-Core Version:    0.7.0.1
  */

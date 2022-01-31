@@ -1,76 +1,16 @@
-import java.lang.ref.WeakReference;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
-
-public class aalm
-  extends VerifyDevLockManager.VerifyDevLockObserver
+class aalm
+  implements aalx
 {
-  private WeakReference<VerifyDevLockManager.VerifyDevLockObserver> a;
+  aalm(aall paramaall) {}
   
-  public aalm(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
+  public void a(Object... paramVarArgs)
   {
-    this.a = new WeakReference(paramVerifyDevLockObserver);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-    this.a = null;
-  }
-  
-  public int getSeq()
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        return localVerifyDevLockObserver.getSeq();
-      }
-    }
-    return super.getSeq();
-  }
-  
-  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        localVerifyDevLockObserver.onRecvNotice(paramNotifyType, paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-      }
-    }
-  }
-  
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        localVerifyDevLockObserver.onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
-      }
-    }
-  }
-  
-  public void setSeq(int paramInt)
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null)
-      {
-        localVerifyDevLockObserver.setSeq(paramInt);
-        return;
-      }
-    }
-    super.setSeq(paramInt);
+    aall.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aalm
  * JD-Core Version:    0.7.0.1
  */

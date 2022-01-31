@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.troop.data.AudioInfo;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bajh
+final class bajh
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public AudioInfo a;
-  public TroopBarPOI a;
-  public String a;
-  public ArrayList<String> a;
-  public int b;
-  public String b;
-  public ArrayList<TroopBarPOI> b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  bajh(baji parambaji) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    bajd.a("0X800A5CA");
+    if (this.a != null) {
+      this.a.onCancel();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bajh
  * JD-Core Version:    0.7.0.1
  */

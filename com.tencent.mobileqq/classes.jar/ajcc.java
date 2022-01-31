@@ -4,18 +4,19 @@ import android.view.View.OnClickListener;
 class ajcc
   implements View.OnClickListener
 {
-  ajcc(ajcb paramajcb) {}
+  ajcc(ajbm paramajbm) {}
   
   public void onClick(View paramView)
   {
-    ajcb.a(this.a, true);
-    this.a.a();
-    ajcb.a(this.a, -1, -1);
+    if (this.a.jdField_b_of_type_Long == 77313L) {
+      this.a.jdField_b_of_type_Boolean = true;
+    }
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajcc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,33 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
 class wzx
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends AnimatorListenerAdapter
 {
-  wzx(wzt paramwzt) {}
+  wzx(wzu paramwzu) {}
   
-  public void onGlobalLayout()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    int i = this.a.d.getMeasuredWidth();
-    i = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - i - bbdv.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 5.0F));
-    this.a.c.setMaxWidth(i);
-    this.a.c.setText(new ayjw(this.a.jdField_a_of_type_Azpg.h, 16).a());
+    wsv.b("TextLayer", "scaleAnimator cancel!");
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    wsv.b("TextLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.a.g();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    wsv.b("TextLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzx
  * JD-Core Version:    0.7.0.1
  */

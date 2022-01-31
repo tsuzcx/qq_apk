@@ -3,7 +3,7 @@ package dov.com.tencent.mobileqq.shortvideo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import axrn;
+import azmz;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -134,51 +134,46 @@ public class PtvTemplateManager$PtvTemplateInfo
         localArrayList = new ArrayList(j);
         i = 0;
         if (i >= j) {
-          break label192;
+          break label156;
         }
         PtvTemplateInfo localPtvTemplateInfo = parseContent(paramJSONArray.getJSONObject(i));
         if (localPtvTemplateInfo == null) {
-          break label197;
+          break label161;
         }
         try
         {
           Long.parseLong(localPtvTemplateInfo.id);
           switch (localPtvTemplateInfo.kind)
           {
-          case 3: 
-          case 4: 
+          case 1: 
             localArrayList.add(localPtvTemplateInfo);
           }
         }
         catch (Exception localException)
         {
           if (!QLog.isColorLevel()) {
-            break label197;
+            break label161;
           }
+        }
+        if (PtvTemplateManager.b()) {
+          break label161;
         }
         localArrayList.add(localPtvTemplateInfo);
       }
       catch (JSONException paramJSONArray) {}
       QLog.e("PtvTemplateManager", 1, "templateId must be a numeric string!");
-      break label197;
+      break label161;
       if (!QLog.isDevelopLevel()) {
         break;
       }
       paramJSONArray.printStackTrace();
       return null;
-      if (!PtvTemplateManager.b())
-      {
-        localArrayList.add(localException);
-        break label197;
-        localArrayList.add(localException);
-        break label197;
-        localArrayList.add(localException);
-        break label197;
-        label192:
-        return localArrayList;
-        continue;
-      }
-      label197:
+      localArrayList.add(localException);
+      break label161;
+      label156:
+      return localArrayList;
+      continue;
+      label161:
       i += 1;
     }
   }
@@ -324,7 +319,7 @@ public class PtvTemplateManager$PtvTemplateInfo
     localHashMap.put("timems", "" + (l1 - l2));
     localHashMap.put("totalsize", "" + this.totalLen);
     localHashMap.put("success", "" + this.usable);
-    axrn.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
+    azmz.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
   }
   
   public int getDisplayIconByType()
@@ -334,13 +329,13 @@ public class PtvTemplateManager$PtvTemplateInfo
     default: 
       return -1;
     case 1: 
-      return 2130843767;
+      return 2130844110;
     case 2: 
-      return 2130843768;
+      return 2130844111;
     case 3: 
-      return 2130843770;
+      return 2130844113;
     }
-    return 2130843769;
+    return 2130844112;
   }
   
   public String getLbsActivityType(int paramInt)
@@ -394,7 +389,7 @@ public class PtvTemplateManager$PtvTemplateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo
  * JD-Core Version:    0.7.0.1
  */

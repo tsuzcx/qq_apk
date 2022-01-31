@@ -1,26 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.startup.step.CheckPermission;
-import mqq.app.AppActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.4;
 
-class apmq
-  implements View.OnClickListener
+public class apmq
+  implements akqg
 {
-  apmq(apmi paramapmi) {}
+  public apmq(MessengerService.IncomingHandler.4 param4) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (!CheckPermission.isHasStoragePermission(this.a.a))
-    {
-      CheckPermission.requestSDCardPermission((AppActivity)this.a.a, new apmr(this));
-      return;
-    }
-    apug.a(this.a.a, this.a.c());
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", 0);
+    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+  }
+  
+  public void a(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", paramInt);
+    this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apmq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.anim;
 
-import aczd;
-import aczg;
+import aeqr;
+import aequ;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
@@ -18,8 +18,8 @@ class FloorJumperSet$Animator
     long l1 = -1L;
     if (localIterator.hasNext())
     {
-      Object localObject = (aczd)localIterator.next();
-      long l2 = ((aczd)localObject).a();
+      Object localObject = (aeqr)localIterator.next();
+      long l2 = ((aeqr)localObject).a();
       if (l2 >= 0L)
       {
         if (l1 < 0L) {}
@@ -29,9 +29,9 @@ class FloorJumperSet$Animator
       }
       localIterator.remove();
       if (QLog.isColorLevel()) {
-        QLog.d("FloorJumperSet", 2, "removed businessId:" + ((aczd)localObject).c);
+        QLog.d("FloorJumperSet", 2, "removed businessId:" + ((aeqr)localObject).c);
       }
-      if (((aczd)localObject).c == 1)
+      if (((aeqr)localObject).c == 1)
       {
         localObject = this.this$0.jdField_a_of_type_JavaUtilArrayList.iterator();
         do
@@ -39,7 +39,7 @@ class FloorJumperSet$Animator
           if (!((Iterator)localObject).hasNext()) {
             break;
           }
-        } while (((aczd)((Iterator)localObject).next()).c != 1);
+        } while (((aeqr)((Iterator)localObject).next()).c != 1);
       }
     }
     for (int i = 1;; i = 0)
@@ -68,7 +68,7 @@ class FloorJumperSet$Animator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.anim.FloorJumperSet.Animator
  * JD-Core Version:    0.7.0.1
  */

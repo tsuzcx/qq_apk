@@ -1,27 +1,43 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContact;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class agjk
+class agjk
+  extends alvc
 {
-  public int a;
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public PhoneContact a;
-  public String a;
-  public Button b;
-  public ImageView b;
-  public TextView b;
-  public Button c;
-  public TextView c;
+  agjk(agiy paramagiy) {}
+  
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.c(this.a.a.getIntent());
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      this.a.c(this.a.a.getIntent());
+    }
+  }
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.c(this.a.a.getIntent());
+    }
+  }
+  
+  public void t_()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agjk
  * JD-Core Version:    0.7.0.1
  */

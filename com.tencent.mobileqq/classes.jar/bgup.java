@@ -1,20 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class bgup
+final class bgup
+  implements DialogInterface.OnClickListener
 {
-  public static int a()
-  {
-    return bgwd.a(BaseApplicationImpl.context);
-  }
+  bgup(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public static boolean a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (bgwd.b(BaseApplicationImpl.context) == 1) || (bgwd.c(BaseApplicationImpl.context));
+    paramDialogInterface.dismiss();
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgup
  * JD-Core Version:    0.7.0.1
  */

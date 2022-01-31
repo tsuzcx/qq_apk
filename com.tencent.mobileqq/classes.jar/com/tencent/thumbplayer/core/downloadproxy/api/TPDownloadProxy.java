@@ -17,7 +17,7 @@ public class TPDownloadProxy
 {
   private static final String FILE_NAME = "TPDownloadProxy";
   private boolean IsInit = false;
-  private String mCurrentStoragePath;
+  private String mCurrentStoragePath = "";
   private int mServiceType;
   
   public TPDownloadProxy(int paramInt)
@@ -52,7 +52,7 @@ public class TPDownloadProxy
     }
     try
     {
-      localObject2 = TPDLProxyUtils.byteArrayToString(TPDownloadProxyNative.getInstance().getClipPlayUrl(paramInt1, paramInt2));
+      localObject2 = TPDLProxyUtils.byteArrayToString(TPDownloadProxyNative.getInstance().getClipPlayUrl(paramInt1, paramInt2, 1));
       localObject1 = localObject2;
       TPDownloadProxyNative.getInstance().startDownload(paramInt1);
       return localObject2;
@@ -91,7 +91,7 @@ public class TPDownloadProxy
     }
     try
     {
-      localObject2 = TPDLProxyUtils.byteArrayToString(TPDownloadProxyNative.getInstance().getClipPlayUrl(paramInt, 1));
+      localObject2 = TPDLProxyUtils.byteArrayToString(TPDownloadProxyNative.getInstance().getClipPlayUrl(paramInt, 1, 1));
       localObject1 = localObject2;
       TPDownloadProxyNative.getInstance().startDownload(paramInt);
       return localObject2;
@@ -108,6 +108,7 @@ public class TPDownloadProxy
     int i = 0;
     for (;;)
     {
+      String str1;
       try
       {
         if (this.IsInit)
@@ -117,7 +118,6 @@ public class TPDownloadProxy
         }
         boolean bool = TPDownloadProxyNative.getInstance().isNativeLoaded();
         String str2;
-        int j;
         if (bool) {
           try
           {
@@ -173,21 +173,23 @@ public class TPDownloadProxy
             paramContext.registerReceiver((BroadcastReceiver)localObject, paramTPDLProxyInitParam);
           }
           i = j;
-          if (j == 0)
-          {
-            this.IsInit = true;
-            i = j;
+          if (j != 0) {
             continue;
-            i = -1;
           }
+          this.IsInit = true;
+          i = j;
+          continue;
+          i = -1;
+          continue;
         }
-        else
-        {
-          String str1;
-          j = TPDownloadProxyNative.getInstance().initService(this.mServiceType, str1, paramTPDLProxyInitParam.getDataDir(), paramTPDLProxyInitParam.getConfigDir());
+        if (TextUtils.isEmpty(paramTPDLProxyInitParam.getDataDir())) {
+          break label366;
         }
       }
       finally {}
+      this.mCurrentStoragePath = paramTPDLProxyInitParam.getDataDir();
+      label366:
+      int j = TPDownloadProxyNative.getInstance().initService(this.mServiceType, str1, paramTPDLProxyInitParam.getDataDir(), paramTPDLProxyInitParam.getConfigDir());
     }
   }
   
@@ -223,7 +225,7 @@ public class TPDownloadProxy
     }
   }
   
-  public int removeOfflineDownload(String paramString)
+  public int removeStorageCache(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     while (!TPDownloadProxyNative.getInstance().isNativeLoaded()) {
@@ -231,12 +233,12 @@ public class TPDownloadProxy
     }
     try
     {
-      int i = TPDownloadProxyNative.getInstance().deleteOfflineCache(paramString);
+      int i = TPDownloadProxyNative.getInstance().deleteCache(this.mCurrentStoragePath, paramString);
       return i;
     }
     catch (Throwable paramString)
     {
-      TPDLProxyLog.e("TPDownloadProxy", 0, "tpdlnative", "removeOfflineDownload failed, error:" + paramString.toString());
+      TPDLProxyLog.e("TPDownloadProxy", 0, "tpdlnative", "deleteCache failed, error:" + paramString.toString());
     }
     return -1;
   }
@@ -637,7 +639,7 @@ public class TPDownloadProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,24 @@
-import android.content.Context;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout.DispatchKeyEventListener;
 
-public class bdhg
+class bdhg
+  implements MyLinearLayout.DispatchKeyEventListener
 {
-  private android.webkit.CookieSyncManager jdField_a_of_type_AndroidWebkitCookieSyncManager;
-  private com.tencent.smtt.sdk.CookieSyncManager jdField_a_of_type_ComTencentSmttSdkCookieSyncManager;
+  bdhg(bdhc parambdhc) {}
   
-  public bdhg(Context paramContext)
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager = com.tencent.smtt.sdk.CookieSyncManager.createInstance(paramContext);
-    this.jdField_a_of_type_AndroidWebkitCookieSyncManager = android.webkit.CookieSyncManager.createInstance(paramContext);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager.sync();
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.b))
+    {
+      this.a.a();
+      return true;
     }
-    if (this.jdField_a_of_type_AndroidWebkitCookieSyncManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieSyncManager.sync();
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdhg
  * JD-Core Version:    0.7.0.1
  */

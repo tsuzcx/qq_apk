@@ -1,28 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.emoticonview.FastImagePreviewLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Point;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenRelativeLayout;
 
-public class aoax
-  implements Animation.AnimationListener
+public abstract interface aoax
 {
-  public aoax(FastImagePreviewLayout paramFastImagePreviewLayout) {}
+  public abstract int a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(FastImagePreviewLayout.a, 2, "removeFastImage fadeoutanimation ended");
-    }
-    this.a.removeAllViews();
-  }
+  public abstract void a(Point paramPoint, int paramInt);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void a(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(Point paramPoint, boolean paramBoolean);
+  
+  public abstract int b(ColorNoteSmallScreenRelativeLayout paramColorNoteSmallScreenRelativeLayout);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoax
  * JD-Core Version:    0.7.0.1
  */

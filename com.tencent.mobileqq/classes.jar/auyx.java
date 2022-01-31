@@ -1,22 +1,68 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
-public class auyx
-  implements bble<Rect>
+class auyx
+  extends nab
 {
-  public auyx(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  auyx(auyw paramauyw) {}
   
-  public void a(bbky<Rect> parambbky, float paramFloat, Rect paramRect, Transformation paramTransformation)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView.invalidate(paramRect);
+    if ((paramInt == 0) && (paramArrayOfByte != null))
+    {
+      oidb_0xada.RspBody localRspBody = new oidb_0xada.RspBody();
+      try
+      {
+        localRspBody.mergeFrom(paramArrayOfByte);
+        QLog.i("QQ_NOW_TASK", 2, "err_msg:   " + localRspBody.err_msg.get());
+        if (!localRspBody.busi_buf.has()) {
+          break label202;
+        }
+        if ((this.a.jdField_a_of_type_Auyy != null) && (paramInt == 0))
+        {
+          this.a.jdField_a_of_type_Auyy.a(paramInt, localRspBody.busi_buf.get().toByteArray(), paramBundle);
+          return;
+        }
+        QLog.i("QQ_NOW_TASK", 1, "err_msg1:   " + localRspBody.err_msg.get());
+        if (this.a.jdField_a_of_type_Auyz == null) {
+          return;
+        }
+        this.a.jdField_a_of_type_Auyz.a(paramInt, paramArrayOfByte);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        paramArrayOfByte.printStackTrace();
+        QLog.i("QQ_NOW_TASK", 1, "err_msg3:   ");
+        if (this.a.jdField_a_of_type_Auyz == null) {
+          return;
+        }
+      }
+      this.a.jdField_a_of_type_Auyz.a(paramInt, null);
+      return;
+      label202:
+      QLog.i("QQ_NOW_TASK", 1, "err_msg2:   ");
+      if (this.a.jdField_a_of_type_Auyz != null) {
+        this.a.jdField_a_of_type_Auyz.a(paramInt, null);
+      }
+    }
+    else
+    {
+      QLog.i("QQ_NOW_TASK", 1, "err_msg4:   ");
+      if (this.a.jdField_a_of_type_Auyz != null) {
+        this.a.jdField_a_of_type_Auyz.a(paramInt, null);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auyx
  * JD-Core Version:    0.7.0.1
  */

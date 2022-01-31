@@ -1,34 +1,22 @@
-import java.net.URL;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface qbe
+class qbe
+  implements View.OnClickListener
 {
-  public abstract int getCommentCount();
+  qbe(qbd paramqbd) {}
   
-  public abstract String getInnerUniqueID();
-  
-  public abstract String getShareUrl();
-  
-  public abstract String getSubscribeName();
-  
-  public abstract String getSubscribeUin();
-  
-  public abstract URL getVideoCoverURL();
-  
-  public abstract URL getVideoCoverUrlWithSmartCut(boolean paramBoolean);
-  
-  public abstract URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2);
-  
-  public abstract int getVideoDuration();
-  
-  public abstract int getVideoHeight();
-  
-  public abstract String getVideoVid();
-  
-  public abstract int getVideoWidth();
+  public void onClick(View paramView)
+  {
+    paramView = this.a.jdField_a_of_type_Rqj.a();
+    if (paramView != null) {
+      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qbe
  * JD-Core Version:    0.7.0.1
  */

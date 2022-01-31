@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.widget.media;
 
-import bbkk;
+import bdje;
 import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.page.WebviewContainer;
 import com.tencent.mobileqq.mini.appbrand.utils.MiniAppFileManager;
@@ -16,7 +16,7 @@ class MiniAppCamera$1
   
   public void onGetPhoto(String paramString)
   {
-    if (bbkk.a(paramString))
+    if (bdje.a(paramString))
     {
       paramString = ApiUtil.wrapCallbackFail(this.val$event, null);
       if (paramString != null) {}
@@ -41,7 +41,7 @@ class MiniAppCamera$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppCamera.1
  * JD-Core Version:    0.7.0.1
  */

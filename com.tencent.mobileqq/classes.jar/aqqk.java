@@ -1,40 +1,58 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 class aqqk
-  implements View.OnClickListener
+  extends aqqt
 {
-  aqqk(aqqj paramaqqj) {}
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public void onClick(View paramView)
+  aqqk(aqpv paramaqpv, MessageRecord paramMessageRecord)
   {
-    if ((aqqj.a(this.a) == null) || (TextUtils.isEmpty(aqqj.a(this.a).jumpUrl))) {
+    super(paramaqpv);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+  }
+  
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, aqqr paramaqqr)
+  {
+    if ("1".equals(this.g))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2TroopTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
+      }
+      paramaqqr.a(aqpv.a(this.jdField_a_of_type_Long, false), false);
       return;
     }
-    paramView = new Intent(aqqc.a(aqqj.a(this.a)), QQBrowserActivity.class);
-    paramView.putExtra("url", aqqj.a(this.a).jumpUrl);
-    aqqc.a(aqqj.a(this.a)).startActivity(paramView);
-    paramView = new HashMap();
-    yoa.a(paramView, aqqj.a(this.a).msgId);
-    paramView.put(Integer.valueOf(2), aqqj.a(this.a).msgId);
-    paramView.put(Integer.valueOf(6), aqqj.a(this.a).feedId);
-    paramView.put(Integer.valueOf(4), "20");
-    paramView.put(Integer.valueOf(43), aqqj.a(this.a).algorithmId);
-    paramView.put(Integer.valueOf(44), aqqj.a(this.a).type + "");
-    yoa.a(ajac.a(), "769", "205022", aqqj.a(this.a).a().gameAppId, "76902", "1", "160", paramView);
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2TroopTaskExcuter send faild uuid is null");
+      }
+      paramaqqr.a(aqpv.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    aqpv.a(this.jdField_a_of_type_Aqpv).a().a().a(paramString, paramInt, this.d, 102, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aqql(this, paramString, paramaqqr));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqk
  * JD-Core Version:    0.7.0.1
  */

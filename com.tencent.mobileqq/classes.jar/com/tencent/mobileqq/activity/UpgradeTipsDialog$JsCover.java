@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
-import acpa;
-import akuy;
-import akuz;
-import arly;
-import axqy;
+import aegk;
+import amlo;
+import amlp;
+import atcm;
+import azmj;
 import com.tencent.qphone.base.util.QLog;
 
 public class UpgradeTipsDialog$JsCover
-  extends arly
+  extends atcm
 {
   protected UpgradeTipsDialog$JsCover(UpgradeTipsDialog paramUpgradeTipsDialog) {}
   
@@ -18,7 +18,7 @@ public class UpgradeTipsDialog$JsCover
       QLog.d("UpgradeController", 2, "loadTipsComplete");
     }
     UpgradeTipsDialog.a(this.a, true);
-    axqy.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, akuy.b(), String.valueOf(1), akuz.a(), "");
+    azmj.b(UpgradeTipsDialog.a(this.a), "CliOper", "", "", "0X8004DA0", "0X8004DA0", 0, 0, amlo.b(), String.valueOf(1), amlp.a(), "");
     if (UpgradeTipsDialog.a(this.a) != null)
     {
       UpgradeTipsDialog.a(this.a).a(this.a);
@@ -35,7 +35,7 @@ public class UpgradeTipsDialog$JsCover
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.UpgradeTipsDialog.JsCover
  * JD-Core Version:    0.7.0.1
  */

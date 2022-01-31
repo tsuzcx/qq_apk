@@ -1,64 +1,74 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import java.util.HashSet;
-import java.util.Set;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import java.util.ArrayList;
 
 public class bbkc
+  extends BaseAdapter
 {
-  public static SharedPreferences.Editor a(SharedPreferences.Editor paramEditor, String paramString, Set<String> paramSet)
+  protected int a;
+  protected Context a;
+  protected LayoutInflater a;
+  protected View.OnClickListener a;
+  protected bbkk a;
+  protected ArrayList<bbkk> a;
+  
+  public bbkc(Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    return a(paramEditor, paramString, paramSet.toArray());
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public static SharedPreferences.Editor a(SharedPreferences.Editor paramEditor, String paramString, Object[] paramArrayOfObject)
+  public void a(bbkk parambbkk)
   {
-    String str = "";
-    if ((paramArrayOfObject != null) && (paramArrayOfObject.length > 0))
-    {
-      int j = paramArrayOfObject.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramArrayOfObject[i];
-        str = str + localObject.toString();
-        str = str + " ";
-        i += 1;
-      }
-      paramEditor.putString(paramString, str);
-      return paramEditor;
-    }
-    paramEditor.putString(paramString, "");
-    return paramEditor;
+    this.jdField_a_of_type_Bbkk = parambbkk;
+    this.jdField_a_of_type_JavaUtilArrayList = parambbkk.jdField_a_of_type_JavaUtilArrayList;
+    super.notifyDataSetChanged();
   }
   
-  public static Set<String> a(SharedPreferences paramSharedPreferences, String paramString, Set<String> paramSet)
+  public int getCount()
   {
-    paramString = paramSharedPreferences.getString(paramString, "");
-    paramSharedPreferences = paramSet;
-    if (paramString != null)
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    bbkk localbbkk = (bbkk)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    bbkd localbbkd = new bbkd();
+    if (paramView != null)
     {
-      paramSharedPreferences = paramSet;
-      if (paramString.length() > 0)
-      {
-        paramSet = paramString.split(" ");
-        paramString = new HashSet();
-        int j = paramSet.length;
-        int i = 0;
-        for (;;)
-        {
-          paramSharedPreferences = paramString;
-          if (i >= j) {
-            break;
-          }
-          paramSharedPreferences = paramSet[i];
-          if ((paramSharedPreferences != null) && (paramSharedPreferences.length() > 0)) {
-            paramString.add(paramSharedPreferences);
-          }
-          i += 1;
-        }
-      }
+      localbbkd = (bbkd)paramView.getTag();
+      paramViewGroup = paramView;
     }
-    return paramSharedPreferences;
+    for (paramView = localbbkd;; paramView = localbbkd)
+    {
+      paramView.a.setText(localbbkk.b);
+      paramView.a.setTag(localbbkk);
+      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+        paramView.a.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      }
+      return paramViewGroup;
+      paramViewGroup = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560426, null);
+      localbbkd.a = ((TextView)paramViewGroup.findViewById(2131377552));
+      paramViewGroup.setTag(localbbkd);
+    }
   }
 }
 

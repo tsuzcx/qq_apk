@@ -1,21 +1,34 @@
-public abstract class aozw
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+
+public final class aozw
+  implements Parcelable.Creator
 {
-  public aooq a;
-  
-  public abstract int a();
-  
-  public void a(aooq paramaooq)
+  public IPSiteModel.Goods a(Parcel paramParcel)
   {
-    this.a = paramaooq;
+    IPSiteModel.Goods localGoods = new IPSiteModel.Goods();
+    localGoods.cover = paramParcel.readString();
+    localGoods.goodsTags = paramParcel.readString();
+    localGoods.id = paramParcel.readString();
+    localGoods.name = paramParcel.readString();
+    localGoods.price = paramParcel.readString();
+    localGoods.saleTags = paramParcel.readString();
+    localGoods.svipPrice = paramParcel.readString();
+    localGoods.url = paramParcel.readString();
+    localGoods.moreUrl = paramParcel.readString();
+    localGoods.saleNum = paramParcel.readString();
+    return localGoods;
   }
   
-  public abstract boolean a();
-  
-  public abstract void b();
+  public IPSiteModel.Goods[] a(int paramInt)
+  {
+    return new IPSiteModel.Goods[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozw
  * JD-Core Version:    0.7.0.1
  */

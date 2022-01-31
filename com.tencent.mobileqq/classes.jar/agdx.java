@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class agdx
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  agdx(agdv paramagdv) {}
+  agdx(agdi paramagdi) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setText("");
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agdx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import alae;
-import alal;
-import alan;
+import amqu;
+import amrb;
+import amrd;
 import com.tencent.mobileqq.ar.ARNativeBridge;
 import com.tencent.qphone.base.util.QLog;
 
 public class ARTransferPromotionRenderable$13
   implements Runnable
 {
-  public ARTransferPromotionRenderable$13(alal paramalal, int paramInt) {}
+  public ARTransferPromotionRenderable$13(amrb paramamrb, int paramInt) {}
   
   public void run()
   {
@@ -19,23 +19,23 @@ public class ARTransferPromotionRenderable$13
     }
     for (;;)
     {
-      alal.d(this.this$0);
+      amrb.d(this.this$0);
       return;
-      if ((this.a == 1) && (alal.a(this.this$0) != null) && (alal.a(this.this$0).a.booleanValue())) {
-        alal.a(this.this$0).b(0, 1);
+      if ((this.a == 1) && (amrb.a(this.this$0) != null) && (amrb.a(this.this$0).a.booleanValue())) {
+        amrb.a(this.this$0).b(0, 1);
       }
-      if (alal.a(this.this$0) != null)
+      if (amrb.a(this.this$0) != null)
       {
-        alal.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
+        amrb.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
         continue;
         if (this.this$0.b == 3)
         {
-          if (alal.a(this.this$0) != null) {
-            alal.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
+          if (amrb.a(this.this$0) != null) {
+            amrb.a(this.this$0).native_switchGameStatusWithNoParams(this.a);
           }
         }
         else {
-          alal.a(this.this$0, 4, alal.a(this.this$0).c + "360Video.mp4", false, alal.a(this.this$0).d, false);
+          amrb.a(this.this$0, 4, amrb.a(this.this$0).c + "360Video.mp4", false, amrb.a(this.this$0).d, false);
         }
       }
     }
@@ -43,7 +43,7 @@ public class ARTransferPromotionRenderable$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.13
  * JD-Core Version:    0.7.0.1
  */

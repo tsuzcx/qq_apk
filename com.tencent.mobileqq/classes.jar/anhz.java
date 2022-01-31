@@ -1,14 +1,12 @@
-public class anhz
-  implements Thread.UncaughtExceptionHandler
+import java.util.List;
+
+public abstract interface anhz
 {
-  public void uncaughtException(Thread paramThread, Throwable paramThrowable)
-  {
-    anic.a("DanmakuManager", "danmaku crash thread:" + paramThread.getName(), paramThrowable);
-  }
+  public abstract void a(List<anis> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhz
  * JD-Core Version:    0.7.0.1
  */

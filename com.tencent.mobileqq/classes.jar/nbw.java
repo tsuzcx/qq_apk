@@ -1,25 +1,10 @@
-import android.text.TextUtils;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class nbw
-  implements myy
+final class nbw
+  implements nbs
 {
-  public nbw(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
-  
   public void loaded(String paramString, int paramInt)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString))) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
+    if ((paramInt == 0) && (nbv.a.a())) {
+      nbv.a.a("HtmlCheckUpdate", 2, "CODE_SUCCESS");
     }
   }
   
@@ -27,7 +12,7 @@ public class nbw
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbw
  * JD-Core Version:    0.7.0.1
  */

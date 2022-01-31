@@ -1,57 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-
 public class axqo
-  extends ampa<axqp>
+  implements axqp
 {
-  public int a()
+  public void a()
   {
-    return 577;
+    wsv.b("FlowEdit_NeoVideoFilterPlayView", "onResetAndStart");
   }
   
-  @NonNull
-  public axqp a(int paramInt)
+  public void a(int paramInt1, int paramInt2)
   {
-    return new axqp();
+    wsv.a("FlowEdit_NeoVideoFilterPlayView", "onSpeedChange, old=%d, new=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
   }
   
-  @Nullable
-  public axqp a(amph[] paramArrayOfamph)
-  {
-    axqp localaxqp = new axqp();
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null)) {
-      axqp.a(localaxqp, paramArrayOfamph[0].a);
-    }
-    return localaxqp;
-  }
-  
-  public Class<axqp> a()
-  {
-    return axqp.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(axqp paramaxqp) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
+  public void a(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axqo
  * JD-Core Version:    0.7.0.1
  */

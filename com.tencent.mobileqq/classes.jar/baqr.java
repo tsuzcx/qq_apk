@@ -1,52 +1,82 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.widget.UsingTimeReportManager;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
 
 public class baqr
-  extends banv
+  implements bdcx
 {
-  private WeakReference<QQAppInterface> a;
-  private String d;
+  private baoa jdField_a_of_type_Baoa;
+  private DownloadParams jdField_a_of_type_ComTencentImageDownloadParams;
+  private URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
   
-  public baqr(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, String paramString4)
+  public baqr(baqq parambaqq, baoa parambaoa, URLDrawableHandler paramURLDrawableHandler)
   {
-    super(paramString2, paramString3, paramString4);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.d = paramString1;
+    this.jdField_a_of_type_Baoa = parambaoa;
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
   }
   
-  public UsingTimeReportManager a()
+  public baqr(baqq parambaqq, baoa parambaoa, URLDrawableHandler paramURLDrawableHandler, DownloadParams paramDownloadParams)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      return null;
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface == null) {
-      return null;
-    }
-    return (UsingTimeReportManager)localQQAppInterface.getManager(241);
+    this(parambaqq, parambaoa, paramURLDrawableHandler);
+    this.jdField_a_of_type_ComTencentImageDownloadParams = paramDownloadParams;
   }
   
-  public void a(long paramLong)
+  public boolean a(apnb paramapnb)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    do
+    Object localObject2 = null;
+    if (paramapnb.jdField_b_of_type_Int == 0) {
+      if ((this.jdField_a_of_type_ComTencentImageDownloadParams == null) || (!(this.jdField_a_of_type_ComTencentImageDownloadParams.mExtraInfo instanceof PicInfo))) {
+        break label257;
+      }
+    }
+    label257:
+    for (Object localObject1 = (PicInfo)this.jdField_a_of_type_ComTencentImageDownloadParams.mExtraInfo;; localObject1 = null)
     {
-      return;
-      localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localObject == null);
-    axrc localaxrc = new axrc((QQAppInterface)localObject).a("dc00899").b(this.jdField_a_of_type_JavaLangString).c(this.b).d(this.c);
-    if (this.d != null) {}
-    for (Object localObject = this.d;; localObject = "")
-    {
-      localaxrc.a(new String[] { localObject, String.valueOf(paramLong) }).a();
-      return;
+      if ((localObject1 != null) && ("type_history_head_pic".equals(((PicInfo)localObject1).g)) && (((!TextUtils.isEmpty(paramapnb.k)) && (!paramapnb.k.trim().equals("0"))) || ((!TextUtils.isEmpty(paramapnb.j)) && (!paramapnb.j.trim().equals("0")))))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("NearbyImgDownloader", 2, "historhead download fail, url : " + paramapnb.jdField_b_of_type_JavaLangString + " respXFailNo: " + paramapnb.j + " respXErrNo: " + paramapnb.k);
+        }
+        paramapnb.jdField_b_of_type_Int = 32;
+        return false;
+      }
+      if (paramapnb.a != null) {
+        try
+        {
+          localObject1 = paramapnb.a.getInputStream();
+          if (localObject1 != null) {
+            return baqq.a(this.jdField_a_of_type_Baqq, (InputStream)localObject1, paramapnb.e, this.jdField_a_of_type_Baoa, this.jdField_a_of_type_ComTencentImageURLDrawableHandler);
+          }
+        }
+        catch (IOException localIOException)
+        {
+          for (;;)
+          {
+            localObject1 = localObject2;
+            if (QLog.isColorLevel())
+            {
+              QLog.w("NearbyImgDownloader", 2, localIOException.toString());
+              localObject1 = localObject2;
+            }
+          }
+          paramapnb.jdField_b_of_type_Int = 11;
+          return false;
+        }
+      }
+      paramapnb.jdField_b_of_type_Int = 11;
+      return false;
+      return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baqr
  * JD-Core Version:    0.7.0.1
  */

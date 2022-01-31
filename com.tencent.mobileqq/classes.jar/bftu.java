@@ -1,34 +1,20 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import com.tencent.qg.video.videodecoder.MediaDecoder;
 
 public class bftu
-  extends ImageSpan
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public bftu(Drawable paramDrawable, int paramInt)
-  {
-    super(paramDrawable, paramInt);
-  }
+  public bftu(MediaDecoder paramMediaDecoder, bftv parambftv) {}
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    paramCharSequence = getDrawable();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
-    paramInt2 = paramCharSequence.getBounds().bottom / 2;
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    this.jdField_a_of_type_Bftv.a(paramSurfaceTexture);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bftu
  * JD-Core Version:    0.7.0.1
  */

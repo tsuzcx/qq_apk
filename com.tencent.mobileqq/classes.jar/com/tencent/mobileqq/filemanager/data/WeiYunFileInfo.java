@@ -3,12 +3,12 @@ package com.tencent.mobileqq.filemanager.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import apfa;
+import aqxy;
 
 public class WeiYunFileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeiYunFileInfo> CREATOR = new apfa();
+  public static final Parcelable.Creator<WeiYunFileInfo> CREATOR = new aqxy();
   public int a;
   public long a;
   public String a;
@@ -84,7 +84,7 @@ public class WeiYunFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.WeiYunFileInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,91 +1,107 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.javahook.BadTokenHooker.2;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(14)
 public class arll
+  extends arlr
 {
-  private static arln a = new arln(null);
+  private MessageForFile jdField_a_of_type_ComTencentMobileqqDataMessageForFile = (MessageForFile)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = arni.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
   
-  public static void a()
+  public arll(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    try
+    super(paramQQAppInterface, paramChatMessage);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      localClass1 = Class.forName("android.view.ViewRootImpl");
-      JavaHookBridge.findAndHookMethod(localClass1, "setView", new Object[] { View.class, WindowManager.LayoutParams.class, View.class, new arlm(localClass1) });
-    }
-    catch (NoSuchMethodException localNoSuchMethodException1)
-    {
-      for (;;)
-      {
-        try
-        {
-          localClass1 = Class.forName("android.view.WindowManagerImpl");
-          if (Build.VERSION.SDK_INT > 16) {
-            break;
-          }
-        }
-        catch (ClassNotFoundException localClassNotFoundException2)
-        {
-          Class localClass1;
-          Class localClass2;
-          bbbr.a(localClassNotFoundException2);
-          return;
-        }
-        try
-        {
-          localClass2 = Class.forName("android.view.CompatibilityInfoHolder");
-          if (localClass2 != null) {
-            JavaHookBridge.findAndHookMethod(localClass1, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, localClass2, Boolean.class, a });
-          }
-          return;
-        }
-        catch (NoSuchMethodException localNoSuchMethodException2)
-        {
-          bbbr.a(localNoSuchMethodException2);
-          return;
-        }
-        catch (ClassNotFoundException localClassNotFoundException3)
-        {
-          bbbr.a(localClassNotFoundException3);
-          return;
-        }
-        localNoSuchMethodException1 = localNoSuchMethodException1;
-        bbbr.a(localNoSuchMethodException1);
-      }
-    }
-    catch (ClassNotFoundException localClassNotFoundException1)
-    {
-      for (;;)
-      {
-        bbbr.a(localClassNotFoundException1);
-      }
-    }
-    try
-    {
-      JavaHookBridge.findAndHookMethod(localClassNotFoundException3, "addView", new Object[] { View.class, ViewGroup.LayoutParams.class, a });
+      QLog.e("OfflineFileSaveModel<QFile>", 1, "init: not find the target entity.");
       return;
     }
-    catch (NoSuchMethodException localNoSuchMethodException3)
-    {
-      bbbr.a(localNoSuchMethodException3);
-    }
+    QLog.e("OfflineFileSaveModel<QFile>", 1, "init: uniseq[" + paramChatMessage.uniseq + "] session[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]");
   }
   
-  private static void b(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public long a()
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new BadTokenHooker.2(paramString1, paramString2, paramInt1), paramInt2);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
+    }
+    return 0L;
+  }
+  
+  public arlo a()
+  {
+    arlk localarlk = new arlk(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    localarlk.a(new arlm(this));
+    return localarlk;
+  }
+  
+  public String a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
+    }
+    return "";
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OfflineFileSaveModel<QFile>", 1, "download: file entity is null.");
+      return false;
+    }
+    int i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType();
+    int j = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status;
+    String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath();
+    QLog.e("OfflineFileSaveModel<QFile>", 1, "download: uniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq + "] session[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] cloudType[" + i + "] status[" + j + "]");
+    if ((!bdcs.b(str)) && (i != 0))
+    {
+      if (j == 3)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+        return true;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      return true;
+    }
+    QLog.e("OfflineFileSaveModel<QFile>", 1, "download: error, file status is not right.");
+    return false;
+  }
+  
+  public String b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq;
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OfflineFileSaveModel<QFile>", 1, "stopDownload: file entity is null.");
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+    return true;
+  }
+  
+  public boolean c()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getStatus() == 2) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arll
  * JD-Core Version:    0.7.0.1
  */

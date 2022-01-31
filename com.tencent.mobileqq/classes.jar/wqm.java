@@ -1,28 +1,20 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class wqm
-  implements View.OnClickListener
+public abstract interface wqm
 {
-  public wqm(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, wpw paramwpw) {}
+  public abstract void a(String paramString, CommentEntry paramCommentEntry);
   
-  public void onClick(View paramView)
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Wpw.a.poster.registerCertifiedAccountUrl.get()))
-    {
-      wis.a(this.jdField_a_of_type_Wpw.a.poster.registerCertifiedAccountUrl.get());
-      xhb.b(this.jdField_a_of_type_Wpw.a.poster.id.get(), "auth_person", "apply_clk", 0, 0, new String[0]);
-    }
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqm
  * JD-Core Version:    0.7.0.1
  */

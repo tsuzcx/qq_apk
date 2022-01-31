@@ -6,6 +6,7 @@ import java.io.Serializable;
 public abstract class RockDownloadListener
   implements Serializable
 {
+  public static final int ERROR_CODE_BLOCK_IN_GP = 10012;
   public static final int ERROR_CODE_CKV_ERROR = 10005;
   public static final int ERROR_CODE_DOWNLOAD_INFO_VERIFY_FAIL = 10001;
   public static final int ERROR_CODE_GET_PERMISSION_ERROR = 10002;
@@ -38,7 +39,7 @@ public abstract class RockDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloadListener
  * JD-Core Version:    0.7.0.1
  */

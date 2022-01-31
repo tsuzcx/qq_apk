@@ -1,180 +1,89 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.av.VideoController;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class mte
-  implements SensorEventListener
+public class mte
 {
-  float jdField_a_of_type_Float = 3.1F;
-  long jdField_a_of_type_Long = 0L;
-  boolean jdField_a_of_type_Boolean = true;
-  float jdField_b_of_type_Float = 0.0F;
-  boolean jdField_b_of_type_Boolean = false;
-  boolean c = false;
-  boolean d = false;
+  public static String a;
   
-  mte(mtc parammtc) {}
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  static
   {
-    if (paramSensorEvent.sensor.getType() != 8) {}
-    label81:
-    boolean bool1;
-    label119:
-    Object localObject;
-    label199:
+    jdField_a_of_type_JavaLangString = "AVEnterPopActionSheetUtil";
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, "app == null || context == null || sessionInfo == null");
+    }
     do
     {
-      float f1;
-      float f2;
       do
       {
-        do
-        {
-          return;
-          f1 = this.jdField_b_of_type_Float;
-          f2 = paramSensorEvent.values[0];
-          this.jdField_b_of_type_Float = f2;
-          if (this.jdField_a_of_type_Float > this.jdField_a_of_type_Mtc.b.getMaximumRange()) {
-            this.jdField_a_of_type_Float = this.jdField_a_of_type_Mtc.b.getMaximumRange();
-          }
-          if ((f2 < 0.0D) || (f2 >= this.jdField_a_of_type_Float)) {
-            break;
-          }
-          i = 1;
-          if (this.jdField_a_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Boolean = false;
-            if (i != 0)
-            {
-              this.jdField_a_of_type_Mtc.jdField_a_of_type_Int = 3;
-              paramSensorEvent = this.jdField_a_of_type_Mtc;
-              if (i != 0) {
-                break label615;
-              }
-              bool1 = true;
-              mtc.a(paramSensorEvent, bool1);
-              this.jdField_a_of_type_Mtc.jdField_a_of_type_Mtg.d();
-            }
-          }
-        } while ((this.jdField_a_of_type_Mtc.b == null) || (this.jdField_a_of_type_Mtc.jdField_a_of_type_ComTencentAvVideoController == null));
-        paramSensorEvent = this.jdField_a_of_type_Mtc.jdField_a_of_type_ComTencentAvVideoController.a();
-      } while (paramSensorEvent == null);
-      long l = System.currentTimeMillis();
-      boolean bool2 = mtc.a(this.jdField_a_of_type_Mtc);
-      localObject = this.jdField_a_of_type_Mtc;
-      if (i != 0) {
-        break label621;
-      }
-      bool1 = true;
-      mtc.d((mtc)localObject, bool1);
-      if (mtc.f(this.jdField_a_of_type_Mtc) != mtc.a(this.jdField_a_of_type_Mtc))
-      {
-        if (3 == this.jdField_a_of_type_Mtc.jdField_a_of_type_Int) {
-          this.jdField_a_of_type_Mtc.jdField_a_of_type_Mtg.e();
-        }
-        this.jdField_a_of_type_Mtc.jdField_a_of_type_Int = 0;
-      }
-      if ((l - this.jdField_a_of_type_Long > 1000L) || (bool2 != mtc.a(this.jdField_a_of_type_Mtc)) || (this.jdField_b_of_type_Boolean != paramSensorEvent.N) || (this.c != this.jdField_a_of_type_Mtc.jdField_a_of_type_Boolean) || (this.d != mtc.b(this.jdField_a_of_type_Mtc)))
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d(this.jdField_a_of_type_Mtc.jdField_a_of_type_JavaLangString, 4, "onSensorChanged distance[" + f1 + "->" + f2 + "], mlongDistense[" + mtc.a(this.jdField_a_of_type_Mtc) + "], lastlongDistense[" + bool2 + "], mIsMoving[" + this.d + "->" + mtc.b(this.jdField_a_of_type_Mtc) + "], mSensorSet[" + this.c + "->" + this.jdField_a_of_type_Mtc.jdField_a_of_type_Boolean + "], isSpeakerOn[" + this.jdField_b_of_type_Boolean + "->" + paramSensorEvent.N + "]");
-        }
-        this.jdField_a_of_type_Long = l;
-      }
-      this.jdField_b_of_type_Boolean = paramSensorEvent.N;
-      this.c = this.jdField_a_of_type_Mtc.jdField_a_of_type_Boolean;
-      this.d = mtc.b(this.jdField_a_of_type_Mtc);
-      if ((i == 0) || (!mtc.b(this.jdField_a_of_type_Mtc))) {
-        break label732;
-      }
-      localObject = paramSensorEvent.a;
-    } while ((!paramSensorEvent.N) || (localObject == null));
-    int i = 0;
-    label543:
-    if (i < localObject.length) {
-      if ((!localObject[i].equals("DEVICE_WIREDHEADSET")) && (!localObject[i].equals("DEVICE_BLUETOOTHHEADSET"))) {}
-    }
-    for (i = 0;; i = 1)
-    {
-      if (!lze.f(BaseApplicationImpl.getApplication()))
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d(this.jdField_a_of_type_Mtc.jdField_a_of_type_JavaLangString, 2, "is App on background , Not execute sensor pressHandFreeBtn !!!");
         return;
-        i = 0;
-        break label81;
-        label615:
-        bool1 = false;
-        break label119;
-        label621:
-        bool1 = false;
-        break label199;
-        i += 1;
-        break label543;
-      }
-      if ((i == 0) || (!this.jdField_a_of_type_Mtc.c)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_Mtc.jdField_a_of_type_JavaLangString, 2, "1.setSensors pressHandFreeBtn, current mSensorSet = " + this.jdField_a_of_type_Mtc.jdField_a_of_type_Boolean);
-      }
-      if (this.jdField_a_of_type_Mtc.jdField_a_of_type_Mtq != null) {
-        this.jdField_a_of_type_Mtc.jdField_a_of_type_Mtq.d();
-      }
-      this.jdField_a_of_type_Mtc.jdField_a_of_type_Boolean = true;
-      mqw.j(this.jdField_a_of_type_Mtc.jdField_a_of_type_ComTencentAvVideoController);
+      } while (mwz.a());
+      mwz localmwz = mwz.a(paramContext);
+      int[] arrayOfInt = new int[5];
+      localmwz.a(2131689581);
+      arrayOfInt[0] = 1;
+      localmwz.b(2131720898);
+      arrayOfInt[1] = 2;
+      localmwz.b(2131720920);
+      localmwz.c(2131690648);
+      localmwz.a(new mtf());
+      localmwz.a(new mtg(localmwz, arrayOfInt, paramSessionInfo, paramQQAppInterface, paramContext, paramInt));
+      localmwz.show();
+    } while (paramInt != 3);
+    if (paramSessionInfo.jdField_a_of_type_Int == 1)
+    {
+      azmj.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 2, "", "", "", "");
       return;
-      label732:
-      if ((!this.jdField_a_of_type_Mtc.jdField_a_of_type_Boolean) || (i != 0)) {
-        break;
-      }
-      if (this.jdField_a_of_type_Mtc.jdField_a_of_type_ComTencentAvVideoController != null) {}
-      for (paramSensorEvent = paramSensorEvent.a;; paramSensorEvent = null)
-      {
-        if (paramSensorEvent != null)
-        {
-          i = 0;
-          if (i >= paramSensorEvent.length) {
-            break label908;
-          }
-          if ((!paramSensorEvent[i].equals("DEVICE_WIREDHEADSET")) && (!paramSensorEvent[i].equals("DEVICE_BLUETOOTHHEADSET"))) {
-            break label899;
-          }
-        }
-        label899:
-        label908:
-        for (i = 0;; i = 1)
-        {
-          if ((i != 0) && (this.jdField_a_of_type_Mtc.c))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_Mtc.jdField_a_of_type_JavaLangString, 2, "2.setSensors pressHandFreeBtn, current mSensorSet = " + this.jdField_a_of_type_Mtc.jdField_a_of_type_Boolean);
-            }
-            if (this.jdField_a_of_type_Mtc.jdField_a_of_type_Mtq != null) {
-              this.jdField_a_of_type_Mtc.jdField_a_of_type_Mtq.d();
-            }
-            mqw.j(this.jdField_a_of_type_Mtc.jdField_a_of_type_ComTencentAvVideoController);
-          }
-          this.jdField_a_of_type_Mtc.jdField_a_of_type_Boolean = false;
-          return;
-          i += 1;
-          break;
-        }
-      }
+    }
+    azmj.b(paramQQAppInterface, "CliOper", "", "", "0X800A517", "0X800A517", 0, 1, "", "", "", "");
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean)
+  {
+    boolean bool = true;
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {
+      return;
+    }
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "enterGroupVideo,, isAudio[" + paramBoolean + "], msgSelfUin[" + paramQQAppInterface.c() + "], uinType[" + paramSessionInfo.jdField_a_of_type_Int + "], groupId[" + paramSessionInfo.jdField_a_of_type_JavaLangString + "], curFriendNick[" + paramSessionInfo.d + "], troopUin[" + paramSessionInfo.b + "]");
+    if (!paramBoolean) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      agbu.a(paramQQAppInterface, paramContext, paramSessionInfo, 10, paramBoolean, paramQQAppInterface.c(), "");
+      return;
+    }
+  }
+  
+  private static void b(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, boolean paramBoolean, int paramInt, Map<String, String> paramMap)
+  {
+    if ((paramQQAppInterface == null) || (paramContext == null) || (paramSessionInfo == null)) {}
+    do
+    {
+      return;
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "enterC2CAudioVideo,, isAudio[" + paramBoolean + "], fromType[" + paramInt + "], msgSelfUin[" + paramQQAppInterface.c() + "], uinType[" + paramSessionInfo.jdField_a_of_type_Int + "], groupId[" + paramSessionInfo.jdField_a_of_type_JavaLangString + "], curFriendNick[" + paramSessionInfo.d + "], troopUin[" + paramSessionInfo.b + "]");
+      localObject = (aubm)paramQQAppInterface.getManager(11);
+    } while (localObject == null);
+    String str;
+    if (paramSessionInfo.jdField_a_of_type_Int == 1006) {
+      str = ((aubm)localObject).a(paramSessionInfo.jdField_a_of_type_JavaLangString);
+    }
+    for (Object localObject = paramSessionInfo.jdField_a_of_type_JavaLangString;; localObject = ((aubm)localObject).b(str))
+    {
+      ChatActivityUtils.a(paramQQAppInterface, paramContext, paramSessionInfo.jdField_a_of_type_Int, str, paramSessionInfo.d, (String)localObject, paramBoolean, paramSessionInfo.b, true, true, null, "from_internal", paramMap);
+      return;
+      str = paramSessionInfo.jdField_a_of_type_JavaLangString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mte
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,32 @@
 import android.os.Bundle;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.smtt.sdk.DownloadListener;
 
 public class yyh
-  implements BusinessObserver
+  implements DownloadListener
 {
-  protected void a(int paramInt, String paramString1, String paramString2) {}
+  public yyh(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, TouchWebView paramTouchWebView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    if (100 == paramInt)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("QBossC2SCheckerServlet", 2, "Observer .onReceive Success: " + paramBoolean);
-      }
-      a(paramBundle.getInt("code"), paramBundle.getString("msg"), paramBundle.getString("adid"));
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewBase", 2, "start UniformDownloadActivity");
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("QBossC2SCheckerServlet", 2, "ID__C2S_CHECKER NOT MATCH isSuc" + paramBoolean);
+    String str = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("_filesize", paramLong);
+    localBundle.putString("param_user_agent", paramString2);
+    localBundle.putString("param_content_des", paramString3);
+    localBundle.putString("param_mime_type", paramString4);
+    localBundle.putString("param_refer_url", str);
+    aqrb.a(this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity, paramString1, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yyh
  * JD-Core Version:    0.7.0.1
  */

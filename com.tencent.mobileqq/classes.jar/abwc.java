@@ -1,39 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class abwc
-  extends Handler
+  implements View.OnClickListener
 {
-  public abwc(QQSettingCleanActivity paramQQSettingCleanActivity) {}
+  public abwc(AccountManageActivity paramAccountManageActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
-    {
-    }
+    paramView = (View)paramView.getParent().getParent();
+    if ((paramView == null) || (paramView.getTag() == null)) {}
+    int i;
     do
     {
       return;
-      if (!this.a.isFinishing())
-      {
-        this.a.a.a(this.a.getString(2131690809));
-        this.a.a.d(2130848623);
-        this.a.a.b(false);
-      }
-      sendEmptyMessageDelayed(1, 1000L);
-      return;
-    } while ((this.a.a == null) || (!this.a.a.isShowing()));
-    this.a.a.cancel();
-    this.a.a.a(this.a.getString(2131690811));
-    this.a.a.c(true);
-    this.a.a.a(false);
-    this.a.a.b(true);
+      i = ((Integer)paramView.getTag()).intValue();
+    } while ((i == 0) && (!awdr.a().a(this.a.app, this.a)));
+    this.a.a(i);
+    azmj.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit_delete", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwc
  * JD-Core Version:    0.7.0.1
  */

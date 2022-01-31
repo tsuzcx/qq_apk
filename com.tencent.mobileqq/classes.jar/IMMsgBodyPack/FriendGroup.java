@@ -53,7 +53,7 @@ public final class FriendGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     IMMsgBodyPack.FriendGroup
  * JD-Core Version:    0.7.0.1
  */

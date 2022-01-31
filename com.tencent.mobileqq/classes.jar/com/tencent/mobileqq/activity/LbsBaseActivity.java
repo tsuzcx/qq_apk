@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import abka;
-import abkb;
-import abkc;
+import adba;
+import adbb;
+import adbc;
 import android.app.Dialog;
 import android.os.Bundle;
-import atbi;
-import baxm;
-import bcql;
+import aush;
+import bcwg;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class LbsBaseActivity
   extends IphoneTitleBarActivity
@@ -20,7 +20,7 @@ public class LbsBaseActivity
   
   private boolean a()
   {
-    return atbi.a(getAppInterface().getAccount());
+    return aush.a(getAppInterface().getAccount());
   }
   
   private void c(Runnable paramRunnable)
@@ -30,15 +30,15 @@ public class LbsBaseActivity
   
   private void d(Runnable paramRunnable)
   {
-    paramRunnable = new abka(this, paramRunnable);
-    this.b = baxm.a(this, 2131692090, a(), 2131691902, 2131691899, new abkb(this), new abkc(this));
+    paramRunnable = new adba(this, paramRunnable);
+    this.b = bcwg.a(this, 2131692145, a(), 2131691957, 2131691954, new adbb(this), new adbc(this));
     this.b.setOnDismissListener(paramRunnable);
     this.b.show();
   }
   
   protected int a()
   {
-    return 2131692085;
+    return 2131692140;
   }
   
   public void a()
@@ -49,7 +49,7 @@ public class LbsBaseActivity
   public void a(int paramInt, String paramString)
   {
     if (isResume()) {
-      bcql.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
+      QQToast.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
     }
   }
   
@@ -60,15 +60,15 @@ public class LbsBaseActivity
     //   0: aload_1
     //   1: invokevirtual 102	android/app/Dialog:dismiss	()V
     //   4: aload_1
-    //   5: invokestatic 106	zzp:a	(Landroid/app/Dialog;)V
+    //   5: invokestatic 106	abqm:a	(Landroid/app/Dialog;)V
     //   8: return
     //   9: astore_2
     //   10: aload_1
-    //   11: invokestatic 106	zzp:a	(Landroid/app/Dialog;)V
+    //   11: invokestatic 106	abqm:a	(Landroid/app/Dialog;)V
     //   14: return
     //   15: astore_2
     //   16: aload_1
-    //   17: invokestatic 106	zzp:a	(Landroid/app/Dialog;)V
+    //   17: invokestatic 106	abqm:a	(Landroid/app/Dialog;)V
     //   20: aload_2
     //   21: athrow
     // Local variable table:
@@ -120,7 +120,7 @@ public class LbsBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LbsBaseActivity
  * JD-Core Version:    0.7.0.1
  */

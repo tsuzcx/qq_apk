@@ -1,40 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.process.data.CmGameManager.GameEventReceiver.1;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajcq
-  extends BroadcastReceiver
+class ajcq
+  implements View.OnClickListener
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  ajcq(ajbm paramajbm) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramIntent == null) {
-      QLog.e("cmgame_process.CmGameManager", 1, "[onReceive] intent null");
+    if (amlp.a().a() == 4) {
+      azmj.b(ajbm.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, amlo.b(), amlp.b(), amlp.a(), "0");
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if (QLog.isColorLevel()) {
-          QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] action=", paramContext });
-        }
-      } while ((!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
-      paramContext = paramIntent.getStringExtra("data");
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] data=", paramContext });
-      }
-    } while (TextUtils.isEmpty(paramContext));
-    ThreadManagerV2.excute(new CmGameManager.GameEventReceiver.1(this, paramContext), 16, null, false);
+      this.a.a(14, 0);
+      this.a.a(-1, null);
+      return;
+      azmj.b(ajbm.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, amlo.b(), amlp.b(), amlp.a(), "0");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajcq
  * JD-Core Version:    0.7.0.1
  */

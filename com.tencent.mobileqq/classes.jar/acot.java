@@ -1,26 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.Conversation;
+import mqq.app.QQPermissionCallback;
 
-public class acot
-  implements DialogInterface.OnClickListener
+class acot
+  implements QQPermissionCallback
 {
-  public acot(UpgradeActivity paramUpgradeActivity) {}
+  acot(acos paramacos, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    axqy.b(this.a.app, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
-    if (UpgradeActivity.a(this.a)) {
-      axqy.b(this.a.app, "CliOper", "", "", "0X800714D", "0X800714D", 0, 0, "", "", "", "");
-    }
-    axqy.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, akuy.b(), String.valueOf(2), akuz.a(), "0");
-    akuz.a().a(this.a.app);
-    this.a.finish();
+    bdcd.b(acos.a(this.jdField_a_of_type_Acos).a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Acos.b(this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acot
  * JD-Core Version:    0.7.0.1
  */

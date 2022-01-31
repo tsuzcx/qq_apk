@@ -1,23 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import com.tencent.mobileqq.troop.activity.TroopAdminList;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-final class bbcg
-  implements asgr
+public class bbcg
+  extends alox
 {
-  public void a(int paramInt)
+  public bbcg(TroopAdminList paramTroopAdminList) {}
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    switch (paramInt)
-    {
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
+      this.a.c();
     }
-    AppRuntime localAppRuntime;
-    do
-    {
-      return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while (!(localAppRuntime instanceof QQAppInterface));
-    MediaPlayerManager.a((QQAppInterface)localAppRuntime).a(false);
+  }
+  
+  protected void onUpdateFriendInfoFinished(ArrayList paramArrayList, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
+    }
+    this.a.c();
   }
 }
 

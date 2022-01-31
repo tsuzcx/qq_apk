@@ -1,39 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pushdialog.AIOPushDialogHelper.1.1;
+import com.tencent.mobileqq.pushdialog.PushDialogTemplate;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public final class awum
-  extends ThreadPoolExecutor
+public class awum
+  implements awus
 {
-  public awum(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
-  {
-    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, paramThreadFactory);
-  }
+  awum(awul paramawul) {}
   
-  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
+  public void a(List<PushDialogTemplate> paramList)
   {
-    if ((paramRunnable instanceof FutureTask)) {}
-    try
-    {
-      ((FutureTask)paramRunnable).get();
-      return;
-    }
-    catch (ExecutionException paramRunnable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
-      return;
-    }
-    catch (Error paramRunnable) {}catch (Exception paramRunnable) {}
+    ThreadManager.getUIHandler().post(new AIOPushDialogHelper.1.1(this, paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awum
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class MSFAliveJobService
 {
   private static final int MESSAGE_ID_TASK = 1;
   public static final String TAG = "MSFAliveJobService";
-  public final Handler mHandler = new Handler(u.c().getLooper(), new f(this));
+  public final Handler mHandler = new Handler(u.c().getLooper(), new i(this));
   
   public void onCreate()
   {

@@ -1,18 +1,10 @@
-public final class ajnr
-  implements ajoc
+public abstract interface ajnr
 {
-  public ajnr(ajob paramajob) {}
-  
-  public void a(int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a(paramInt);
-    }
-  }
+  public abstract void c(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajnr
  * JD-Core Version:    0.7.0.1
  */

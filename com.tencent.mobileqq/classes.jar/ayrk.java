@@ -1,6 +1,18 @@
-// INTERNAL ERROR //
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+public final class ayrk
+  implements DialogInterface.OnClickListener
+{
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    com.tencent.mobileqq.search.util.VADHelper.c = false;
+    paramDialogInterface.dismiss();
+  }
+}
+
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayrk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,41 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager.1.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.subscribe.comment.EmoView;
 
-public class tdi
-  extends akil
+class tdi
+  implements ydj
 {
-  tdi(tdh paramtdh) {}
+  tdi(tdf paramtdf) {}
   
-  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
+  public void a()
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    if (tdf.a(this.a))
     {
-      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
-      if (paramArrayList != null) {
-        break label78;
-      }
+      tdf.b(this.a, false);
+      tdf.a(this.a).setVisibility(0);
     }
-    label78:
-    for (int i = 0;; i = paramArrayList.size())
+    for (;;)
     {
-      QLog.d("TroopNickNameManager", 2, i);
-      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-        ThreadManager.executeOnSubThread(new TroopNickNameManager.1.1(this, paramArrayList));
-      }
+      tdf.a(this.a, false);
       return;
+      this.a.dismiss();
     }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (tdf.a(this.a) != paramInt)
+    {
+      tdf.a(this.a, paramInt);
+      tdf.a(this.a);
+      tdf.a(this.a).putInt("GroupSoftKeyboardHeight", paramInt);
+      tdf.a(this.a).commit();
+    }
+    tdf.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tdi
  * JD-Core Version:    0.7.0.1
  */

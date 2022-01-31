@@ -1,14 +1,12 @@
-public abstract class azby
+public abstract interface azby
 {
-  public long a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
+  public abstract void a(int paramInt);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azby
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,32 @@
-class wae
-  extends waa
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+
+public class wae
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, vad>
 {
-  wae(wab paramwab, waj paramwaj) {}
-  
-  public void onFailure(String paramString)
+  public wae(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    ved.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
-    this.jdField_a_of_type_Waj.onFailure(paramString);
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public void onSuccess(String paramString)
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull vad paramvad)
   {
-    ved.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
+    if (paramvad.a.isSuccess()) {
+      paramQQStoryShareGroupProfileActivity.a.a(paramvad);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vad.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wae
  * JD-Core Version:    0.7.0.1
  */

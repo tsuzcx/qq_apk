@@ -1,38 +1,22 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.qphone.base.util.QLog;
-
 class akxq
-  implements SoundPool.OnLoadCompleteListener
+  extends akxp
 {
-  akxq(akxp paramakxp) {}
+  private int b;
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public akxq(int paramInt1, int paramInt2, akxr paramakxr, akxn paramakxn)
   {
-    if (paramInt2 != 0) {}
-    try
-    {
-      QLog.e("ARMusicController", 2, "load fire music failed. " + akxp.a(this.a));
-      return;
-    }
-    catch (Exception paramSoundPool)
-    {
-      paramSoundPool.printStackTrace();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMusicController", 2, "load fire music success. : " + akxp.a(this.a));
-    }
-    akxp.a(this.a, true);
-    if (akxp.a(this.a))
-    {
-      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
-      return;
-    }
+    super(paramInt1, paramakxr, paramakxn);
+    this.b = paramInt2;
+  }
+  
+  public aknh a(long paramLong, String paramString1, String paramString2)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxq
  * JD-Core Version:    0.7.0.1
  */

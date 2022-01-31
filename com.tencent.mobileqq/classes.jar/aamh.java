@@ -1,36 +1,39 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.text.TextUtils;
 
-public class aamh
-  implements bjpj
+public final class aamh
 {
-  public aamh(BaseChatPie paramBaseChatPie) {}
+  public Bundle a;
   
-  public Activity a()
+  public aamh(Bundle paramBundle)
   {
-    return this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    this.a = paramBundle;
   }
   
-  public SessionInfo a()
+  public String a()
   {
-    return this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (this.a != null) {
+      return this.a.getString("IPC_ACTION");
+    }
+    return null;
   }
   
   public boolean a()
   {
-    return this.a.c();
+    return (!TextUtils.isEmpty(a())) && (!TextUtils.isEmpty(b()));
+  }
+  
+  public String b()
+  {
+    if (this.a != null) {
+      return this.a.getString("IPC_TO_PROCESS_NAME");
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamh
  * JD-Core Version:    0.7.0.1
  */

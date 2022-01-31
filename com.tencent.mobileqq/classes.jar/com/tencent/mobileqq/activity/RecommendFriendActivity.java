@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abxu;
-import abxv;
-import abxw;
-import aiob;
-import aion;
-import akaa;
+import adpc;
+import adpd;
+import adpe;
+import akfm;
+import akfy;
+import alro;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import bfvx;
+import bhwu;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -31,12 +31,12 @@ import java.util.List;
 public class RecommendFriendActivity
   extends BaseActivity
 {
-  aiob jdField_a_of_type_Aiob = new abxu(this);
-  private aion jdField_a_of_type_Aion;
-  private akaa jdField_a_of_type_Akaa;
+  akfm jdField_a_of_type_Akfm = new adpc(this);
+  private akfy jdField_a_of_type_Akfy;
+  private alro jdField_a_of_type_Alro;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  bfvx jdField_a_of_type_Bfvx = new abxw(this);
+  bhwu jdField_a_of_type_Bhwu = new adpe(this);
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
   ArrayList<MayKnowRecommend> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -139,30 +139,30 @@ public class RecommendFriendActivity
     Intent localIntent = getIntent();
     int i = localIntent.getIntExtra("EntranceId", 0);
     paramBundle = localIntent.getStringExtra("uin");
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375493));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375981));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setFitsSystemWindows(true);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.c = ((TextView)findViewById(2131365658));
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131374959));
+    this.c = ((TextView)findViewById(2131365742));
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131375429));
     this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this.jdField_a_of_type_Bfvx);
-    this.jdField_a_of_type_Aion = new aion(this, this.app, this.jdField_a_of_type_ComTencentWidgetSwipListView, i, this.jdField_a_of_type_Aiob);
-    int j = getResources().getDimensionPixelSize(2131297276);
-    this.jdField_a_of_type_Aion.a(j);
-    this.jdField_a_of_type_Aion.a(paramBundle);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368472));
+    this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this.jdField_a_of_type_Bhwu);
+    this.jdField_a_of_type_Akfy = new akfy(this, this.app, this.jdField_a_of_type_ComTencentWidgetSwipListView, i, this.jdField_a_of_type_Akfm);
+    int j = getResources().getDimensionPixelSize(2131297295);
+    this.jdField_a_of_type_Akfy.a(j);
+    this.jdField_a_of_type_Akfy.a(paramBundle);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368659));
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694090);
-    setTitle(getString(2131694090));
-    this.b = ((TextView)findViewById(2131368429));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131694207);
+    setTitle(getString(2131694207));
+    this.b = ((TextView)findViewById(2131368613));
     this.b.setVisibility(0);
     this.b.setText("");
-    this.b.setOnClickListener(new abxv(this));
-    this.jdField_a_of_type_Akaa = ((akaa)this.app.getManager(159));
-    ArrayList localArrayList = this.jdField_a_of_type_Akaa.c();
+    this.b.setOnClickListener(new adpd(this));
+    this.jdField_a_of_type_Alro = ((alro)this.app.getManager(159));
+    ArrayList localArrayList = this.jdField_a_of_type_Alro.c();
     try
     {
       paramBundle = (ArrayList)localIntent.getSerializableExtra("may_know_recmmds");
@@ -173,7 +173,7 @@ public class RecommendFriendActivity
       }
       if (localArrayList.size() > 0)
       {
-        this.jdField_a_of_type_Aion.a(localArrayList);
+        this.jdField_a_of_type_Akfy.a(localArrayList);
         this.c.setVisibility(8);
         return true;
       }
@@ -188,7 +188,7 @@ public class RecommendFriendActivity
         paramBundle = null;
       }
       this.c.setVisibility(0);
-      this.jdField_a_of_type_Akaa.a(4);
+      this.jdField_a_of_type_Alro.a(4);
     }
     return true;
   }
@@ -196,30 +196,30 @@ public class RecommendFriendActivity
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Aion != null) {
-      this.jdField_a_of_type_Aion.c();
+    if (this.jdField_a_of_type_Akfy != null) {
+      this.jdField_a_of_type_Akfy.c();
     }
   }
   
   public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Aion != null) {
-      this.jdField_a_of_type_Aion.a();
+    if (this.jdField_a_of_type_Akfy != null) {
+      this.jdField_a_of_type_Akfy.a();
     }
   }
   
   public void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_Aion != null) {
-      this.jdField_a_of_type_Aion.b();
+    if (this.jdField_a_of_type_Akfy != null) {
+      this.jdField_a_of_type_Akfy.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RecommendFriendActivity
  * JD-Core Version:    0.7.0.1
  */

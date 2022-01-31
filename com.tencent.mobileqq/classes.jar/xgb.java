@@ -1,125 +1,59 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.animation.AnimationSet;
-import android.view.animation.OvershootInterpolator;
-import android.view.animation.ScaleAnimation;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import com.tencent.component.media.image.ImageLoader;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.view.MusicProviderView;
+import java.io.File;
 
 public class xgb
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private ImageView b;
-  
-  private Drawable a(String paramString, View paramView)
+  public static final String a(int paramInt, boolean paramBoolean)
   {
-    return ImageLoader.getInstance().loadImage(paramString, new xgc(this, paramView));
+    if (paramInt >= 86400000) {
+      return "unknow";
+    }
+    int i = (int)Math.floor(paramInt / 3600000);
+    int j = (int)Math.floor(paramInt % 3600000) / 60000;
+    if (paramBoolean) {}
+    for (paramInt = Math.round(paramInt % 60000 / 1000.0F); i > 0; paramInt = (int)Math.floor(paramInt % 60000 / 1000)) {
+      return String.format("%02d:%02d:%02d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(paramInt) });
+    }
+    return String.format("%02d:%02d", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt) });
   }
   
-  private AnimationSet a()
+  public static final String a(String paramString)
   {
-    AnimationSet localAnimationSet = new AnimationSet(false);
-    localAnimationSet.setFillAfter(true);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
-    localScaleAnimation.setDuration(200L);
-    localScaleAnimation.setStartOffset(280L);
-    localScaleAnimation.setAnimationListener(new xgd(this));
-    localAnimationSet.addAnimation(localScaleAnimation);
-    return localAnimationSet;
+    if (TextUtils.isEmpty(paramString)) {
+      throw new NullPointerException("MusicComposeDialog.createMusicFilePath() musicUrl is null");
+    }
+    File localFile = new File(ugx.f);
+    if ((!localFile.exists()) || (!localFile.isDirectory())) {
+      localFile.mkdirs();
+    }
+    paramString = ugx.f + bhma.a(paramString) + "." + xmx.c(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("zivonchen", 2, "createMusicFilePath destPath = " + paramString);
+    }
+    return paramString;
   }
   
-  private AnimationSet b()
+  public static void a(BaseActivity paramBaseActivity, int paramInt)
   {
-    AnimationSet localAnimationSet = new AnimationSet(false);
-    localAnimationSet.setFillAfter(true);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
-    localScaleAnimation.setDuration(200L);
-    localScaleAnimation.setStartOffset(2240L);
-    localScaleAnimation.setFillAfter(true);
-    localScaleAnimation.setAnimationListener(new xge(this));
-    localAnimationSet.addAnimation(localScaleAnimation);
-    return localAnimationSet;
-  }
-  
-  private AnimationSet c()
-  {
-    if (this.b != null)
-    {
-      AnimationSet localAnimationSet = new AnimationSet(false);
-      localAnimationSet.setFillAfter(true);
-      ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
-      localScaleAnimation.setInterpolator(new OvershootInterpolator());
-      localScaleAnimation.setDuration(440L);
-      localScaleAnimation.setStartOffset(400L);
-      localScaleAnimation.setAnimationListener(new xgf(this));
-      localAnimationSet.addAnimation(localScaleAnimation);
-      localScaleAnimation = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
-      localScaleAnimation.setDuration(320L);
-      localScaleAnimation.setStartOffset(2400L);
-      localAnimationSet.addAnimation(localScaleAnimation);
-      return localAnimationSet;
+    paramInt = MusicProviderView.a(paramInt);
+    Intent localIntent = new Intent(paramBaseActivity, QQBrowserActivity.class);
+    localIntent.putExtra("url", String.format("https://ti.qq.com/music/index.html?_wv=5&_bid=2831&device_id=%s&client_ip=%s&bustype=%s", new Object[] { bdcb.a(), "", Integer.valueOf(paramInt) }));
+    localIntent.putExtra("finish_animation_up_down", true);
+    paramBaseActivity.startActivityForResult(localIntent, 1000);
+    paramBaseActivity.overridePendingTransition(2130771979, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("MusicUtils", 1, new Object[] { "music busType:", Integer.valueOf(paramInt) });
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
-      this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-      this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(a());
-      this.b.clearAnimation();
-      this.b.startAnimation(c());
-    }
-    for (;;)
-    {
-      QLog.d("Q.videostory.config.VSEntranceWidget", 1, "playWidgetAnimationset resourceReady:" + this.jdField_a_of_type_Boolean);
-      return;
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-  }
-  
-  public void a(FrameLayout paramFrameLayout, View paramView, String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    paramFrameLayout = xgj.a().a(paramString);
-    if ((paramFrameLayout == null) || (!paramFrameLayout.a()))
-    {
-      QLog.e("Q.videostory.config.VSEntranceWidget", 1, "bindTargetView error!widgetConfig is null or resource not ready!");
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    this.jdField_a_of_type_Boolean = true;
-    paramView = a(paramFrameLayout.c, this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    if (paramView != null) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable(paramView);
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131363843));
-    paramView = a(paramFrameLayout.d, this.jdField_a_of_type_AndroidWidgetImageView);
-    if (paramView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.b = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131379438));
-    paramFrameLayout = a(paramFrameLayout.f, this.b);
-    if (paramFrameLayout != null) {
-      this.b.setImageDrawable(paramFrameLayout);
-    }
-    this.b.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgb
  * JD-Core Version:    0.7.0.1
  */

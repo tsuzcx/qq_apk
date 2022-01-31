@@ -1,17 +1,16 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
-import behp;
-import behq;
-import beke;
-import bekr;
-import betc;
-import bfex;
+import bghn;
+import bgie;
+import bgkd;
+import bhfq;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PickerJsPlugin$2$1
-  implements bfex
+  implements bhfq
 {
   PickerJsPlugin$2$1(PickerJsPlugin.2 param2) {}
   
@@ -30,14 +29,14 @@ class PickerJsPlugin$2$1
     {
       for (;;)
       {
-        betc.d("PickerJsPlugin", "showMultiPickerView error.", localException);
+        QMLog.e("PickerJsPlugin", "showMultiPickerView error.", localException);
       }
     }
   }
   
   public void onValChange(int paramInt1, int paramInt2)
   {
-    int i = ((Integer)PickerJsPlugin.access$300(this.this$1.this$0).a(beke.a())).intValue();
+    int i = bgie.a(PickerJsPlugin.access$300(this.this$1.this$0)).a();
     this.this$1.val$req.a.a("onMultiPickerViewChange", String.format("{\"column\":%d,\"current\":%d}", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), i);
   }
   
@@ -61,7 +60,7 @@ class PickerJsPlugin$2$1
     {
       for (;;)
       {
-        betc.d("PickerJsPlugin", "showMultiPickerView error.", paramArrayOfInt);
+        QMLog.e("PickerJsPlugin", "showMultiPickerView error.", paramArrayOfInt);
       }
     }
     if (PickerJsPlugin.access$100(this.this$1.this$0) != null) {
@@ -71,7 +70,7 @@ class PickerJsPlugin$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.plugin.PickerJsPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

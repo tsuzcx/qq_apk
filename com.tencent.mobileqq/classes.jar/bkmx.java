@@ -1,26 +1,19 @@
-import com.tencent.mobileqq.data.RecentUser;
-import dov.com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
-import java.util.Comparator;
+import android.content.Intent;
+import android.view.View;
 
-public class bkmx
-  implements Comparator<RecentUser>
+public abstract interface bkmx
 {
-  public bkmx(ShareToActivity paramShareToActivity) {}
+  public abstract Intent a(View paramView, int paramInt);
   
-  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
-  {
-    if (paramRecentUser1.lastmsgtime > paramRecentUser2.lastmsgtime) {
-      return -1;
-    }
-    if (paramRecentUser1.lastmsgtime < paramRecentUser2.lastmsgtime) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void a(View paramView, int paramInt);
+  
+  public abstract void b(View paramView, int paramInt);
+  
+  public abstract void c(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkmx
  * JD-Core Version:    0.7.0.1
  */

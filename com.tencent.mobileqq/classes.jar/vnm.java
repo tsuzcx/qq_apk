@@ -1,28 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class vnm
-  implements Animation.AnimationListener
+public abstract interface vnm
 {
-  public vnm(DoodleLayout paramDoodleLayout) {}
+  public abstract void a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.jdField_a_of_type_Vnn != null) {
-      this.a.jdField_a_of_type_Vnn.a(null);
-    }
-  }
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract void a(@NonNull weh paramweh, ErrorMessage paramErrorMessage);
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vnm
  * JD-Core Version:    0.7.0.1
  */

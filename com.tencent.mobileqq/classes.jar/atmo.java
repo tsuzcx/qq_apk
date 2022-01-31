@@ -1,27 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class atmo
-  implements View.OnTouchListener
+final class atmo
+  implements DialogInterface.OnClickListener
 {
-  atmo(atlw paramatlw) {}
+  atmo(BaseActivity paramBaseActivity, int paramInt, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131369179).setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.findViewById(2131369179).setAlpha(1.0F);
-    }
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app;
+    atln.a(paramDialogInterface).a.a(3, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    atlh localatlh = new atlh(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    atln.a(paramDialogInterface).a(localatlh, false);
+    azmj.b(null, "CliOper", "", "", "0X800A979", "0X800A979", 0, 0, "", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atmo
  * JD-Core Version:    0.7.0.1
  */

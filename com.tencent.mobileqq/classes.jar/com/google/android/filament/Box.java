@@ -1,7 +1,7 @@
 package com.google.android.filament;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Size;
+import androidx.annotation.NonNull;
+import androidx.annotation.Size;
 
 public class Box
 {
@@ -60,7 +60,7 @@ public class Box
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.Box
  * JD-Core Version:    0.7.0.1
  */

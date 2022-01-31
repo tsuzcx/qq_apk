@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.widget.ImageView;
 import android.widget.TextView;
-import bbbr;
+import bdal;
 
 class QQSettingMe$14$1
   implements Runnable
@@ -16,7 +16,7 @@ class QQSettingMe$14$1
     }
     for (;;)
     {
-      if (!bbbr.a(this.jdField_a_of_type_JavaLangString, QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe$14.this$0)))
+      if (!bdal.a(this.jdField_a_of_type_JavaLangString, QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe$14.this$0)))
       {
         QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe$14.this$0, this.jdField_a_of_type_JavaLangString);
         this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe$14.this$0.a.setText(QQSettingMe.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe$14.this$0));
@@ -28,7 +28,7 @@ class QQSettingMe$14$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.14.1
  * JD-Core Version:    0.7.0.1
  */

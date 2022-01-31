@@ -40,14 +40,14 @@ public class QQVasH5PayBrowserActivity
   public boolean showPreview()
   {
     boolean bool = super.showPreview();
-    getWindow().setBackgroundDrawableResource(2131167087);
-    findViewById(2131363418).setBackgroundResource(2131167087);
+    getWindow().setBackgroundDrawableResource(2131167138);
+    findViewById(2131363457).setBackgroundResource(2131167138);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

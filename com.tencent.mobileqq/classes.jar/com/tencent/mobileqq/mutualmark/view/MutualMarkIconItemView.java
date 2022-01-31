@@ -5,14 +5,14 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import asxj;
-import asyd;
+import auog;
+import aupa;
 
 public class MutualMarkIconItemView
   extends ImageView
 {
-  asxj jdField_a_of_type_Asxj;
-  asyd jdField_a_of_type_Asyd;
+  auog jdField_a_of_type_Auog;
+  aupa jdField_a_of_type_Aupa;
   
   public MutualMarkIconItemView(Context paramContext)
   {
@@ -31,31 +31,31 @@ public class MutualMarkIconItemView
   
   public int a()
   {
-    if (this.jdField_a_of_type_Asxj != null) {
-      return this.jdField_a_of_type_Asxj.getIntrinsicWidth();
+    if (this.jdField_a_of_type_Auog != null) {
+      return this.jdField_a_of_type_Auog.getIntrinsicWidth();
     }
     return getMeasuredWidth();
   }
   
   public long a()
   {
-    if (this.jdField_a_of_type_Asyd != null) {
-      return this.jdField_a_of_type_Asyd.a;
+    if (this.jdField_a_of_type_Aupa != null) {
+      return this.jdField_a_of_type_Aupa.a;
     }
     return 0L;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_Asxj != null) {
-      this.jdField_a_of_type_Asxj.b();
+    if (this.jdField_a_of_type_Auog != null) {
+      this.jdField_a_of_type_Auog.b();
     }
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_Asxj != null) {
-      this.jdField_a_of_type_Asxj.a(paramString);
+    if (this.jdField_a_of_type_Auog != null) {
+      this.jdField_a_of_type_Auog.a(paramString);
     }
   }
   
@@ -65,27 +65,27 @@ public class MutualMarkIconItemView
     setAlpha(paramFloat);
   }
   
-  public void setIconResource(asyd paramasyd)
+  public void setIconResource(aupa paramaupa)
   {
-    if (this.jdField_a_of_type_Asyd == paramasyd) {}
+    if (this.jdField_a_of_type_Aupa == paramaupa) {}
     do
     {
       return;
-      this.jdField_a_of_type_Asyd = paramasyd;
-      if (!TextUtils.isEmpty(paramasyd.jdField_c_of_type_JavaLangString))
+      this.jdField_a_of_type_Aupa = paramaupa;
+      if (!TextUtils.isEmpty(paramaupa.jdField_c_of_type_JavaLangString))
       {
-        this.jdField_a_of_type_Asxj = new asxj(getContext(), paramasyd.jdField_c_of_type_JavaLangString);
-        setImageDrawable(this.jdField_a_of_type_Asxj);
+        this.jdField_a_of_type_Auog = new auog(getContext(), paramaupa.jdField_c_of_type_JavaLangString);
+        setImageDrawable(this.jdField_a_of_type_Auog);
         return;
       }
-    } while (paramasyd.jdField_c_of_type_Int == 0);
-    this.jdField_a_of_type_Asxj = new asxj(getContext(), paramasyd.jdField_c_of_type_Int);
-    setImageDrawable(this.jdField_a_of_type_Asxj);
+    } while (paramaupa.jdField_c_of_type_Int == 0);
+    this.jdField_a_of_type_Auog = new auog(getContext(), paramaupa.jdField_c_of_type_Int);
+    setImageDrawable(this.jdField_a_of_type_Auog);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.view.MutualMarkIconItemView
  * JD-Core Version:    0.7.0.1
  */

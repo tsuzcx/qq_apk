@@ -1,41 +1,89 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class auvz
-  extends Handler
+  implements View.OnClickListener
 {
-  public auvz(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public auvz(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (!this.a.a(paramMessage)) {}
-    switch (paramMessage.what)
-    {
-    case 5: 
-    case 8: 
-    default: 
-      return;
-    case 6: 
-      if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String)))
+    if (paramView == ChooseInterestTagActivity.b(this.a)) {
+      if (TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
       {
-        Toast.makeText(this.a.a.getApplicationContext(), (String)paramMessage.obj, 0).show();
+        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.b(this.a), 30, 0, 0);
+        ChooseInterestTagActivity.a(this.a, true, true);
+      }
+    }
+    label371:
+    do
+    {
+      do
+      {
+        return;
+        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
+        break;
+        if (paramView == this.a.leftView)
+        {
+          bhoc.b(ChooseInterestTagActivity.a(this.a));
+          if (ChooseInterestTagActivity.a(this.a))
+          {
+            this.a.finish();
+            return;
+          }
+          localObject = this.a.getIntent();
+          paramView = (View)localObject;
+          if (localObject == null) {
+            paramView = new Intent();
+          }
+          Collections.reverse(ChooseInterestTagActivity.a(this.a));
+          paramView.putParcelableArrayListExtra("choosed_interest_tags", ChooseInterestTagActivity.a(this.a));
+          paramView.putExtra("interest_tag_type", ChooseInterestTagActivity.a(this.a));
+          this.a.setResult(-1, paramView);
+          this.a.finish();
+          return;
+        }
+        if (paramView != this.a.rightViewText) {
+          break label371;
+        }
+        bhoc.b(ChooseInterestTagActivity.a(this.a));
+      } while (!ChooseInterestTagActivity.a(this.a));
+      if (ChooseInterestTagActivity.a(this.a).isEmpty())
+      {
+        ChooseInterestTagActivity.a(this.a, alpo.a(2131702177));
         return;
       }
-      Toast.makeText(this.a.a.getApplicationContext(), 2131695480, 0).show();
+      ChooseInterestTagActivity.a(this.a, 0, alpo.a(2131702171), 0);
+      Collections.reverse(ChooseInterestTagActivity.a(this.a));
+      paramView = new auwl(ChooseInterestTagActivity.a(this.a));
+      paramView.a.addAll(ChooseInterestTagActivity.a(this.a));
+      Object localObject = new ArrayList(1);
+      ((List)localObject).add(paramView);
+      ChooseInterestTagActivity.a(this.a).a((List)localObject, 0, 1);
       return;
-    case 7: 
-      Toast.makeText(this.a.a.getApplicationContext(), 2131695434, 0).show();
+    } while (paramView != ChooseInterestTagActivity.a(this.a));
+    ChooseInterestTagActivity.a(this.a).setText(alpo.a(2131702194));
+    paramView = ChooseInterestTagActivity.a(this.a);
+    int j = ChooseInterestTagActivity.a(this.a);
+    int k = ChooseInterestTagActivity.b(this.a);
+    if (ChooseInterestTagActivity.a(this.a)) {}
+    for (int i = 1;; i = 0)
+    {
+      paramView.a("", j, k, 30, 0, i);
       return;
     }
-    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auvz
  * JD-Core Version:    0.7.0.1
  */

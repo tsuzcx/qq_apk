@@ -1,116 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public class lje
-  extends lja
+public abstract class lje<T1 extends MessageMicro, T2 extends MessageMicro>
 {
-  boolean a;
-  int c = -1;
-  int d = -1;
-  
-  public lje(VideoAppInterface paramVideoAppInterface)
+  protected final void a(long paramLong, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public int a(String paramString)
-  {
-    int j = 0;
-    int i;
-    if ("750".equalsIgnoreCase(paramString)) {
-      i = this.c;
-    }
-    for (;;)
+    Object localObject = ljb.a(this);
+    ((ljd)localObject).a("QAVMessageHandler", paramLong);
+    if ((((ljd)localObject).a != null) && (((ljd)localObject).b != null)) {}
+    try
     {
-      lcg.c("SupportZimu", "isSupportPeer:" + paramString + "|" + i);
-      return i;
-      if ("735".equalsIgnoreCase(paramString))
-      {
-        i = this.d;
+      MessageMicro localMessageMicro = (MessageMicro)((ljd)localObject).a.newInstance();
+      localObject = (MessageMicro)((ljd)localObject).b.newInstance();
+      paramToServiceMsg = paramToServiceMsg.getWupBuffer();
+      if ((paramToServiceMsg != null) && (paramToServiceMsg.length > 4)) {
+        localMessageMicro.mergeFrom(paramToServiceMsg, 4, paramToServiceMsg.length - 4);
       }
-      else
-      {
-        i = j;
-        if ("live".equalsIgnoreCase(paramString))
-        {
-          i = j;
-          if (this.jdField_a_of_type_Boolean) {
-            i = 1;
-          }
-        }
-      }
+      ((MessageMicro)localObject).mergeFrom(paramFromServiceMsg.getWupBuffer());
+      a(paramLong, paramFromServiceMsg.isSuccess(), localMessageMicro, (MessageMicro)localObject, paramObject);
+      return;
     }
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    lcg.c("SupportZimu", "onReceiveSupportMessage type:" + paramInt + "|" + paramString);
-    if (!TextUtils.isEmpty(paramString))
+    catch (Exception paramToServiceMsg)
     {
-      String[] arrayOfString = paramString.split("\\|");
-      paramString = null;
-      if (arrayOfString.length > 0) {
-        paramString = arrayOfString[0];
-      }
-      switch (paramInt)
-      {
-      }
-      while (("SUPPORT_TRUE".equalsIgnoreCase(paramString)) || ("SUPPORT_FALSE".equalsIgnoreCase(paramString)))
-      {
-        return true;
-        if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
-        {
-          this.c = 1;
-        }
-        else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
-        {
-          this.c = 0;
-          continue;
-          if ("SUPPORT_TRUE".equalsIgnoreCase(paramString))
-          {
-            this.d = 1;
-          }
-          else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString))
-          {
-            this.d = 0;
-            continue;
-            if ("SUPPORT_TRUE".equalsIgnoreCase(paramString)) {
-              this.jdField_a_of_type_Boolean = true;
-            } else if ("SUPPORT_FALSE".equalsIgnoreCase(paramString)) {
-              this.jdField_a_of_type_Boolean = false;
-            }
-          }
-        }
-      }
+      QLog.w("QAVMessageHandler", 1, "onSendMsgRsp, Exception, seq[" + paramLong + "]", paramToServiceMsg);
     }
-    return false;
   }
   
-  public boolean a(String paramString)
-  {
-    return false;
-  }
-  
-  public void b()
-  {
-    VideoController localVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
-    localVideoController.a(12, "SUPPORT_TRUE");
-    localVideoController.a(13, "SUPPORT_TRUE");
-    lcg.c("SupportZimu", "sendSupportMsg");
-  }
-  
-  public void c()
-  {
-    this.c = -1;
-    this.d = -1;
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public abstract void a(long paramLong, boolean paramBoolean, T1 paramT1, T2 paramT2, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lje
  * JD-Core Version:    0.7.0.1
  */

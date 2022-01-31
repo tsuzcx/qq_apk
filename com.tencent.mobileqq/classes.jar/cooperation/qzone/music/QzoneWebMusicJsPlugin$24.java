@@ -1,8 +1,8 @@
 package cooperation.qzone.music;
 
-import bcdp;
-import bhlc;
-import bhle;
+import becq;
+import bjmn;
+import bjmp;
 import com.tencent.common.app.AppInterface;
 
 class QzoneWebMusicJsPlugin$24
@@ -12,12 +12,12 @@ class QzoneWebMusicJsPlugin$24
   
   public void run()
   {
-    bhlc.a().a().a(this.this$0.mRuntime.a().getLongAccountUin(), this.a, this.b, this.c);
+    bjmn.a().a().a(this.this$0.mRuntime.a().getLongAccountUin(), this.a, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.24
  * JD-Core Version:    0.7.0.1
  */

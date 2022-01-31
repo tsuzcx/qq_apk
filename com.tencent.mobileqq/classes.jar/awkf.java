@@ -1,82 +1,28 @@
-import android.graphics.Bitmap;
+import android.content.res.Resources;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.ListView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
 
-public abstract class awkf<M extends awof, V extends awwp>
-  extends awke<M, V>
-  implements baxz, bfos
+public class awkf
+  extends RecyclerView.ViewHolder
 {
-  protected int a;
-  protected baxy a;
-  private ListView a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public awkf(ListView paramListView, baxy parambaxy)
+  public awkf(CustomCoverFragment paramCustomCoverFragment, View paramView)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-    this.jdField_a_of_type_Baxy = parambaxy;
-    parambaxy.a(this);
-    paramListView.setOnScrollListener(this);
-  }
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
-  {
-    if ((!this.jdField_a_of_type_Baxy.a()) && ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1)))
-    {
-      int i = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
-      paramInt1 = 0;
-      while (paramInt1 < i)
-      {
-        awof localawof = (awof)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag(2131379213);
-        if ((localawof != null) && (localawof.c() == paramInt2) && (paramString.equals(localawof.b())))
-        {
-          awrc localawrc = (awrc)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag(2131379215);
-          awwp localawwp = (awwp)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag(2131379218);
-          if ((localawrc != null) && (localawwp != null)) {
-            localawrc.a(localawof, localawwp, paramBitmap);
-          }
-        }
-        paramInt1 += 1;
-      }
-    }
-  }
-  
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetListView == null) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_Int = paramInt;
-      if ((paramInt != 0) && (paramInt != 1)) {
-        break;
-      }
-      if (this.jdField_a_of_type_Baxy.a()) {
-        this.jdField_a_of_type_Baxy.b();
-      }
-      int i = this.jdField_a_of_type_ComTencentWidgetListView.getChildCount();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        awof localawof = (awof)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt).getTag(2131379213);
-        awrc localawrc = (awrc)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt).getTag(2131379215);
-        awwp localawwp = (awwp)this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(paramInt).getTag(2131379218);
-        if ((localawrc != null) && (localawof != null) && (paramAbsListView != null)) {
-          localawrc.a(localawof, localawwp);
-        }
-        paramInt += 1;
-      }
-    }
-    this.jdField_a_of_type_Baxy.a();
-    this.jdField_a_of_type_Baxy.c();
+    super(paramView);
+    this.itemView.setTag(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366718));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366708));
+    this.itemView.setBackgroundColor(paramCustomCoverFragment.getResources().getColor(2131167192));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awkf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
 import android.content.Context;
-import behq;
-import bejn;
-import bekr;
-import betc;
+import bgho;
+import bgif;
+import bgkd;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
 import com.tencent.qqmini.sdk.core.plugins.IJsPlugin;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -21,18 +22,19 @@ public class JsPluginEngine
   extends BaseJsPluginEngine
 {
   public static final String TAG = "JsPluginEngine[Dispatcher]";
-  private final Map<String, IJsPlugin> mActivatedPlugins = new HashMap();
+  private final Map<String, IJsPlugin> mActivatedPlugins = new ConcurrentHashMap();
   private final Map<String, String> mEventPluginMap = new HashMap();
   private Map<String, WeakReference<Method>> mMethodCache = new ConcurrentHashMap();
+  private final Map<String, String> mSecondaryEventPluginMap = new HashMap();
   
   public JsPluginEngine(Context paramContext)
   {
     super(paramContext);
   }
   
-  private static String buildMessage(String paramString, bekr parambekr)
+  private static String buildMessage(String paramString, bgkd parambgkd)
   {
-    return paramString + "eventName=" + parambekr.jdField_a_of_type_JavaLangString + ", " + "jsonParams=" + parambekr.jdField_b_of_type_JavaLangString + ", " + "callbackId=" + parambekr.jdField_b_of_type_Int + "jsService=" + parambekr.jdField_a_of_type_Behp;
+    return paramString + "eventName=" + parambgkd.jdField_a_of_type_JavaLangString + ", " + "jsonParams=" + parambgkd.jdField_b_of_type_JavaLangString + ", " + "callbackId=" + parambgkd.jdField_b_of_type_Int + "jsService=" + parambgkd.jdField_a_of_type_Bghn;
   }
   
   /* Error */
@@ -42,11 +44,11 @@ public class JsPluginEngine
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 87	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginEngine:mMiniAppContext	Lbehq;
+    //   3: getfield 90	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginEngine:mMiniAppContext	Lbgho;
     //   6: ifnonnull +16 -> 22
     //   9: ldc 8
-    //   11: ldc 89
-    //   13: invokestatic 95	betc:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   11: ldc 92
+    //   13: invokestatic 98	com/tencent/qqmini/sdk/log/QMLog:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   16: aconst_null
     //   17: astore_3
     //   18: aload_0
@@ -54,50 +56,50 @@ public class JsPluginEngine
     //   20: aload_3
     //   21: areturn
     //   22: aload_0
-    //   23: getfield 28	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginEngine:mActivatedPlugins	Ljava/util/Map;
+    //   23: getfield 34	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginEngine:mActivatedPlugins	Ljava/util/Map;
     //   26: aload_1
-    //   27: invokeinterface 101 2 0
-    //   32: checkcast 103	com/tencent/qqmini/sdk/core/plugins/IJsPlugin
+    //   27: invokeinterface 104 2 0
+    //   32: checkcast 106	com/tencent/qqmini/sdk/core/plugins/IJsPlugin
     //   35: astore 4
     //   37: aload 4
     //   39: astore_3
     //   40: aload 4
     //   42: ifnonnull -24 -> 18
     //   45: aload_1
-    //   46: invokestatic 108	belq:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   46: invokestatic 111	bglg:a	(Ljava/lang/String;)Ljava/lang/Object;
     //   49: astore_3
     //   50: aload_3
-    //   51: instanceof 103
+    //   51: instanceof 106
     //   54: istore_2
     //   55: iload_2
     //   56: ifeq +59 -> 115
     //   59: aload_3
-    //   60: checkcast 103	com/tencent/qqmini/sdk/core/plugins/IJsPlugin
+    //   60: checkcast 106	com/tencent/qqmini/sdk/core/plugins/IJsPlugin
     //   63: astore_3
     //   64: aload_3
-    //   65: invokestatic 114	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginList:getServiceInjectors	(Lcom/tencent/qqmini/sdk/core/plugins/IJsPlugin;)Ljava/util/Map;
+    //   65: invokestatic 117	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginList:getServiceInjectors	(Lcom/tencent/qqmini/sdk/core/plugins/IJsPlugin;)Ljava/util/Map;
     //   68: astore 4
-    //   70: invokestatic 120	com/tencent/qqmini/sdk/core/proxy/engine/ProxyServiceEngine:g	()Lcom/tencent/qqmini/sdk/core/proxy/engine/ProxyServiceEngine;
+    //   70: invokestatic 123	com/tencent/qqmini/sdk/core/proxy/engine/ProxyServiceEngine:g	()Lcom/tencent/qqmini/sdk/core/proxy/engine/ProxyServiceEngine;
     //   73: aload_3
     //   74: aload 4
-    //   76: invokevirtual 124	com/tencent/qqmini/sdk/core/proxy/engine/ProxyServiceEngine:injectPluginProxyServices	(Lcom/tencent/qqmini/sdk/core/plugins/IJsPlugin;Ljava/util/Map;)V
+    //   76: invokevirtual 127	com/tencent/qqmini/sdk/core/proxy/engine/ProxyServiceEngine:injectPluginProxyServices	(Lcom/tencent/qqmini/sdk/core/plugins/IJsPlugin;Ljava/util/Map;)V
     //   79: aload_3
     //   80: aload_0
-    //   81: getfield 87	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginEngine:mMiniAppContext	Lbehq;
-    //   84: invokeinterface 128 2 0
+    //   81: getfield 90	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginEngine:mMiniAppContext	Lbgho;
+    //   84: invokeinterface 131 2 0
     //   89: aload_0
-    //   90: getfield 28	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginEngine:mActivatedPlugins	Ljava/util/Map;
+    //   90: getfield 34	com/tencent/qqmini/sdk/core/plugins/engine/JsPluginEngine:mActivatedPlugins	Ljava/util/Map;
     //   93: aload_1
     //   94: aload_3
-    //   95: invokeinterface 132 3 0
+    //   95: invokeinterface 135 3 0
     //   100: pop
     //   101: goto -83 -> 18
     //   104: astore_1
     //   105: ldc 8
     //   107: aload_1
-    //   108: invokevirtual 135	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   108: invokevirtual 138	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   111: aload_1
-    //   112: invokestatic 139	betc:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   112: invokestatic 142	com/tencent/qqmini/sdk/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   115: aconst_null
     //   116: astore_3
     //   117: goto -99 -> 18
@@ -123,75 +125,95 @@ public class JsPluginEngine
     //   105	115	120	finally
   }
   
-  public String dispatchRequestEvent(bekr parambekr)
+  private String dispatchRequestEventToPlugin(bgkd parambgkd, IJsPlugin paramIJsPlugin)
   {
-    IJsPlugin localIJsPlugin = getEventHandler(parambekr.jdField_a_of_type_JavaLangString);
-    if (localIJsPlugin == null)
-    {
-      betc.c("JsPluginEngine[Dispatcher]", buildMessage("handleNativeRequest failed, event not support!", parambekr));
-      return "";
-    }
-    if (localIJsPlugin.onInterceptJsEvent(parambekr))
-    {
-      betc.b("JsPluginEngine[Dispatcher]", buildMessage("handleNativeRequest aborted, event is intercepted", parambekr));
-      return "";
-    }
-    reportApiInvoke(this.mMiniAppContext.a(), parambekr.jdField_a_of_type_JavaLangString);
-    str1 = JsPluginList.getMethodName(localIJsPlugin, parambekr.jdField_a_of_type_JavaLangString);
+    str1 = JsPluginList.getMethodName(paramIJsPlugin, parambgkd.jdField_a_of_type_JavaLangString);
     try
     {
-      str2 = localIJsPlugin.getClass().getName() + "." + str1;
+      str2 = paramIJsPlugin.getClass().getName() + "." + str1;
       localObject1 = (WeakReference)this.mMethodCache.get(str2);
       if (localObject1 == null) {
-        break label431;
+        break label361;
       }
       localObject1 = (Method)((WeakReference)localObject1).get();
     }
-    catch (NoSuchMethodException localNoSuchMethodException)
+    catch (NoSuchMethodException paramIJsPlugin)
     {
       String str2;
-      Object localObject1;
-      Object localObject3;
-      betc.c("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambekr.jdField_a_of_type_JavaLangString + " failed, can NOT find declared method " + str1, localNoSuchMethodException);
-      parambekr.b();
+      Object localObject2;
+      QMLog.w("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambgkd.jdField_a_of_type_JavaLangString + " failed, can NOT find declared method " + str1, paramIJsPlugin);
+      parambgkd.b();
       return "";
     }
-    catch (IllegalAccessException localIllegalAccessException)
+    catch (IllegalAccessException paramIJsPlugin)
     {
       for (;;)
       {
-        betc.c("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambekr.jdField_a_of_type_JavaLangString + " failed, " + str1 + " access exception " + localIllegalAccessException.getMessage(), localIllegalAccessException);
+        QMLog.w("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambgkd.jdField_a_of_type_JavaLangString + " failed, " + str1 + " access exception " + paramIJsPlugin.getMessage(), paramIJsPlugin);
       }
     }
-    catch (InvocationTargetException localInvocationTargetException)
+    catch (InvocationTargetException paramIJsPlugin)
     {
       for (;;)
       {
-        betc.c("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambekr.jdField_a_of_type_JavaLangString + " failed, " + str1 + " invoke exception " + localInvocationTargetException.getMessage(), localInvocationTargetException);
+        QMLog.w("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambgkd.jdField_a_of_type_JavaLangString + " failed, " + str1 + " invoke exception " + paramIJsPlugin.getMessage(), paramIJsPlugin);
       }
     }
-    catch (RuntimeException localRuntimeException)
+    catch (RuntimeException paramIJsPlugin)
     {
       for (;;)
       {
-        betc.c("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambekr.jdField_a_of_type_JavaLangString + " failed, " + str1 + " runtime exception " + localRuntimeException.getMessage(), localRuntimeException);
+        QMLog.w("JsPluginEngine[Dispatcher]", "dispatchEvent " + parambgkd.jdField_a_of_type_JavaLangString + " failed, " + str1 + " runtime exception " + paramIJsPlugin.getMessage(), paramIJsPlugin);
         continue;
-        Object localObject2 = null;
+        Object localObject1 = null;
       }
     }
-    localObject3 = localObject1;
+    localObject2 = localObject1;
     if (localObject1 == null)
     {
-      localObject3 = localIJsPlugin.getClass().getDeclaredMethod(str1, new Class[] { bekr.class });
-      ((Method)localObject3).setAccessible(true);
-      this.mMethodCache.put(str2, new WeakReference(localObject3));
+      localObject2 = paramIJsPlugin.getClass().getDeclaredMethod(str1, new Class[] { bgkd.class });
+      ((Method)localObject2).setAccessible(true);
+      this.mMethodCache.put(str2, new WeakReference(localObject2));
     }
-    localObject1 = ((Method)localObject3).invoke(localIJsPlugin, new Object[] { parambekr });
-    if (localObject1 == null) {
+    paramIJsPlugin = ((Method)localObject2).invoke(paramIJsPlugin, new Object[] { parambgkd });
+    if (paramIJsPlugin == null) {
       return "";
     }
-    localObject1 = localObject1.toString();
-    return localObject1;
+    paramIJsPlugin = paramIJsPlugin.toString();
+    return paramIJsPlugin;
+  }
+  
+  String dispatchRequestEvent(bgkd parambgkd)
+  {
+    IJsPlugin localIJsPlugin = getEventHandler(parambgkd.jdField_a_of_type_JavaLangString);
+    if (localIJsPlugin == null)
+    {
+      QMLog.w("JsPluginEngine[Dispatcher]", buildMessage("handleNativeRequest failed, event not support! ", parambgkd));
+      return "";
+    }
+    if (localIJsPlugin.onInterceptJsEvent(parambgkd))
+    {
+      QMLog.i("JsPluginEngine[Dispatcher]", buildMessage("handleNativeRequest aborted, event is intercepted. ", parambgkd));
+      return "";
+    }
+    reportApiInvoke(this.mMiniAppContext.a(), parambgkd.jdField_a_of_type_JavaLangString);
+    return dispatchRequestEventToPlugin(parambgkd, localIJsPlugin);
+  }
+  
+  public String dispatchSecondaryRequestEvent(bgif parambgif)
+  {
+    IJsPlugin localIJsPlugin = getSecondaryEventHandler(parambgif.jdField_a_of_type_JavaLangString);
+    if (localIJsPlugin == null)
+    {
+      QMLog.w("JsPluginEngine[Dispatcher]", buildMessage("handleNativeRequest failed, secondary event not support! ", parambgif));
+      return "";
+    }
+    if (localIJsPlugin.onInterceptJsEvent(parambgif))
+    {
+      QMLog.i("JsPluginEngine[Dispatcher]", buildMessage("handleNativeRequest aborted, secondary event is intercepted. ", parambgif));
+      return "";
+    }
+    return dispatchRequestEventToPlugin(parambgif, localIJsPlugin);
   }
   
   protected final IJsPlugin getEventHandler(String paramString)
@@ -210,13 +232,30 @@ public class JsPluginEngine
     return createJsPlugin(str);
   }
   
-  public void onCreate(behq parambehq)
+  protected final IJsPlugin getSecondaryEventHandler(String paramString)
   {
-    super.onCreate(parambehq);
-    this.mEventPluginMap.putAll(JsPluginList.getEventPluginMap(parambehq.e()));
-    parambehq = JsPluginList.getPreloadPlugins(parambehq.e()).iterator();
-    while (parambehq.hasNext()) {
-      createJsPlugin((String)parambehq.next());
+    String str = (String)this.mSecondaryEventPluginMap.get(paramString);
+    if (str == null) {
+      paramString = null;
+    }
+    IJsPlugin localIJsPlugin;
+    do
+    {
+      return paramString;
+      localIJsPlugin = (IJsPlugin)this.mActivatedPlugins.get(str);
+      paramString = localIJsPlugin;
+    } while (localIJsPlugin != null);
+    return createJsPlugin(str);
+  }
+  
+  public void onCreate(bgho parambgho)
+  {
+    super.onCreate(parambgho);
+    this.mEventPluginMap.putAll(JsPluginList.getEventPluginMap(parambgho.b()));
+    this.mSecondaryEventPluginMap.putAll(JsPluginList.getSecondaryEventPluginMap(parambgho.b()));
+    parambgho = JsPluginList.getPreloadPlugins(parambgho.b()).iterator();
+    while (parambgho.hasNext()) {
+      createJsPlugin((String)parambgho.next());
     }
   }
   
@@ -230,6 +269,7 @@ public class JsPluginEngine
     this.mActivatedPlugins.clear();
     this.mMethodCache.clear();
     this.mEventPluginMap.clear();
+    this.mSecondaryEventPluginMap.clear();
     JsPluginList.clear();
   }
   
@@ -253,12 +293,12 @@ public class JsPluginEngine
   
   public void reportApiInvoke(MiniAppInfo paramMiniAppInfo, String paramString)
   {
-    bejn.a(new JsPluginEngine.1(this, paramString, paramMiniAppInfo), 16, null, true);
+    ThreadManager.a(new JsPluginEngine.1(this, paramString, paramMiniAppInfo), 16, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.engine.JsPluginEngine
  * JD-Core Version:    0.7.0.1
  */

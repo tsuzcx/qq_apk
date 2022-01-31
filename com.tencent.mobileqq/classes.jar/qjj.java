@@ -1,100 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
-public abstract class qjj<T>
-  implements quh
+class qjj
+  extends qip
 {
-  public int a()
+  qjj(qja paramqja, AppInterface paramAppInterface) {}
+  
+  public Drawable a()
   {
-    return 0;
-  }
-  
-  protected abstract List<T> a();
-  
-  public List<qui> a(int paramInt, boolean paramBoolean)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramInt >= 0)
-    {
-      List localList = a();
-      a(paramInt, paramBoolean, localList, localArrayList);
-      b(paramInt - a(), paramBoolean, localList, localArrayList);
-    }
-    return localArrayList;
-  }
-  
-  protected abstract qui a(T paramT);
-  
-  protected void a(int paramInt, boolean paramBoolean, List<T> paramList, List<qui> paramList1)
-  {
-    int j = paramInt + 1;
-    paramList1.size();
-    if (j < paramList.size())
-    {
-      if (paramBoolean) {}
-      for (int i = 4;; i = 3)
-      {
-        int k = Math.min(i + paramInt, paramList.size() - 1);
-        paramInt = 0;
-        i = j;
-        for (;;)
-        {
-          j = paramInt;
-          if (i > k) {
-            break;
-          }
-          paramList1.add(a(paramList.get(i)));
-          i += 1;
-          paramInt += 1;
-        }
-      }
-    }
-    j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("DefaultVideoPreDownloadController", 2, "scroll to next = " + paramBoolean + " preDownload to forward = " + j);
-    }
-  }
-  
-  public boolean a()
-  {
-    return bbfj.h(BaseApplicationImpl.getApplication().getApplicationContext());
-  }
-  
-  protected void b(int paramInt, boolean paramBoolean, List<T> paramList, List<qui> paramList1)
-  {
-    int j = paramInt - 1;
-    paramList1.size();
-    if (j >= 0)
-    {
-      if (paramBoolean) {}
-      for (int i = 1;; i = 2)
-      {
-        int k = Math.max(paramInt - i, 0);
-        paramInt = 0;
-        i = j;
-        for (;;)
-        {
-          j = paramInt;
-          if (i < k) {
-            break;
-          }
-          paramList1.add(a(paramList.get(i)));
-          i -= 1;
-          paramInt += 1;
-        }
-      }
-    }
-    j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("DefaultVideoPreDownloadController", 2, "scroll to next = " + paramBoolean + " preDownload to backward = " + j);
-    }
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_video_selected");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qjj
  * JD-Core Version:    0.7.0.1
  */

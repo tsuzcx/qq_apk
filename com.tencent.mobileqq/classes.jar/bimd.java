@@ -1,28 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import java.io.File;
+import java.util.Comparator;
 
-class bimd
-  implements Animation.AnimationListener
+public final class bimd
+  implements Comparator<File>
 {
-  bimd(bima parambima) {}
-  
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public int a(File paramFile1, File paramFile2)
   {
-    if ((bima.a(this.a) != null) && (!bima.a(this.a)))
-    {
-      bima.a(this.a).setAlpha(1.0F);
-      bima.a(this.a).setVisibility(0);
+    long l = paramFile1.length() - paramFile2.length();
+    if (l > 0L) {
+      return 1;
     }
+    if (l == 0L) {
+      return 0;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bimd
  * JD-Core Version:    0.7.0.1
  */

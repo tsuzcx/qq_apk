@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import ajuv;
-import ajuw;
+import almi;
+import almj;
 import android.app.Application;
 import android.app.Service;
 import android.content.ComponentName;
@@ -16,7 +16,7 @@ import android.os.Parcelable;
 import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.util.Base64;
-import bbfr;
+import bdem;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.utils.SecurityUtile;
@@ -41,7 +41,7 @@ import oicq.wlogin_sdk.tools.util;
 public class DataMigrationService
   extends Service
 {
-  private Handler a = new ajuv(this);
+  private Handler a = new almi(this);
   
   private void a(Intent paramIntent, int paramInt)
   {
@@ -64,7 +64,7 @@ public class DataMigrationService
       stopSelf(paramInt);
       return;
     }
-    if (("com.tencent.tim".equals(str1)) && (bbfr.b(this, "com.tencent.tim", "775E696D09856872FDD8AB4F3F06B1E0"))) {
+    if (("com.tencent.tim".equals(str1)) && (bdem.b(this, "com.tencent.tim", "775E696D09856872FDD8AB4F3F06B1E0"))) {
       a("com.tencent.tim", str2, str3, i, paramInt);
     }
     for (bool = true;; bool = false)
@@ -223,9 +223,9 @@ public class DataMigrationService
       WtloginHelper localWtloginHelper = new WtloginHelper(this);
       localWtloginHelper.SetTimeOut(20);
       localWtloginHelper.SetMsfTransportFlag(1);
-      localWtloginHelper.SetListener(new ajuw(this, paramString1, paramString2, paramString3, paramInt1, paramInt2, localWtloginHelper));
+      localWtloginHelper.SetListener(new almj(this, paramString1, paramString2, paramString3, paramInt1, paramInt2, localWtloginHelper));
       byte[] arrayOfByte = util.getPkgSigFromApkName(this, "com.tencent.tim");
-      i = localWtloginHelper.GetA1WithA1(localAppRuntime.getAccount(), 16L, 16L, "com.tencent.tim".getBytes(), 1L, 16L, 16L, "8.3.0".getBytes(), arrayOfByte, new WUserSigInfo(), new WFastLoginInfo());
+      i = localWtloginHelper.GetA1WithA1(localAppRuntime.getAccount(), 16L, 16L, "com.tencent.tim".getBytes(), 1L, 16L, 16L, "8.3.3".getBytes(), arrayOfByte, new WUserSigInfo(), new WFastLoginInfo());
       if (QLog.isColorLevel()) {
         QLog.d("DataMigrationService", 2, new Object[] { "sendActionAfterGetTicket| retCode=", Integer.valueOf(i), ", account=", localAppRuntime.getAccount() });
       }

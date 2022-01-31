@@ -1,28 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import com.tencent.biz.qqcircle.component.ComponentPageView;
 
-final class tvl
-  extends SimpleJob<Object>
+public class tvl
+  implements SwipeRefreshLayout.OnRefreshListener
 {
-  tvl(String paramString)
-  {
-    super(paramString);
-  }
+  public tvl(ComponentPageView paramComponentPageView) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onRefresh()
   {
-    paramJobContext = tvh.a();
-    if (paramJobContext != null) {
-      tvh.b(paramJobContext);
+    if (ComponentPageView.a(this.a) != null) {
+      ComponentPageView.b(this.a).b();
     }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvl
  * JD-Core Version:    0.7.0.1
  */

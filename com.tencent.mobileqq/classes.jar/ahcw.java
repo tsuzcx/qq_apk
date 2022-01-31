@@ -1,117 +1,111 @@
-import Wallet.RedInfoSyncReq;
-import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig;
-import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig.RedInfo;
-import com.tencent.mobileqq.activity.qwallet.red.QWalletRedManager.1;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import mqq.manager.Manager;
+import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
+import com.tencent.widget.FormMultiLineItem;
+import com.tencent.widget.MultiImageTextView;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
 
 public class ahcw
-  implements agzh, Manager
+  extends aked
 {
-  private QWRedConfig jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public ahcw(QQAppInterface paramQQAppInterface)
+  public ahcw(PublicView paramPublicView, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "QWalletRedManager init");
+    super(paramContext, paramQQAppInterface, paramXListView, 1, true);
+    paramXListView.setAdapter(this);
+  }
+  
+  public PublicRecommendAccountInfo a(int paramInt)
+  {
+    if ((PublicView.a(this.a) != null) && (paramInt >= 0) && (paramInt < PublicView.a(this.a).size())) {
+      return (PublicRecommendAccountInfo)PublicView.a(this.a).get(paramInt);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig = QWRedConfig.readConfig(paramQQAppInterface);
-    a();
+    return null;
   }
   
-  private void a()
+  public int getCount()
   {
-    ThreadManager.executeOnSubThread(new QWalletRedManager.1(this));
-  }
-  
-  public ahcy a(String paramString)
-  {
-    ahcy localahcy = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getShowInfoByPath(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "getShowInfo path=" + paramString + ",res=" + localahcy);
+    if ((PublicView.a(this.a) != null) && (PublicView.a(this.a).size() > 0)) {
+      return PublicView.a(this.a).size();
     }
-    return localahcy;
+    return 0;
   }
   
-  public String a()
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getNotShowListStr();
-  }
-  
-  public void a(String paramString)
-  {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getCurShowRedInfosByPath(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletRedManager", 2, "doClick" + paramString + "|" + localList);
-    }
-    paramString = new LinkedList();
-    Iterator localIterator = localList.iterator();
-    while (localIterator.hasNext())
+    if (paramView == null)
     {
-      QWRedConfig.RedInfo localRedInfo = (QWRedConfig.RedInfo)localIterator.next();
-      if (localRedInfo.doClick()) {
-        paramString.add(localRedInfo);
+      paramView = new FormMultiLineItem(this.a.a);
+      paramView.setId(2131373313);
+      paramViewGroup = new ahcy();
+      paramViewGroup.c = ((FormMultiLineItem)paramView).a();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((FormMultiLineItem)paramView).a(0);
+      paramViewGroup.b = ((FormMultiLineItem)paramView).a(1);
+      paramView.setTag(paramViewGroup);
+      paramView.setOnClickListener(this.a);
+    }
+    Object localObject;
+    for (;;)
+    {
+      localObject = a(paramInt);
+      if (localObject != null) {
+        break;
       }
+      return paramView;
+      paramViewGroup = (ahcy)paramView.getTag();
     }
-    if (paramString.size() > 0)
+    if (((PublicRecommendAccountInfo)localObject).mSource == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.saveConfig();
-      agwt.a(RedInfoSyncReq.createReq(paramString), new ahcx(this));
+      paramViewGroup.jdField_a_of_type_JavaLangString = ((PublicRecommendAccountInfo)localObject).mEqqNameAccount;
+      label124:
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqDataPublicRecommendAccountInfo = ((PublicRecommendAccountInfo)localObject);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramViewGroup.b.setVisibility(0);
+      paramViewGroup.c.setImageBitmap(a(1, paramViewGroup.jdField_a_of_type_JavaLangString));
+      if (((PublicRecommendAccountInfo)localObject).mSource != 1) {
+        break label367;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject).mEqqCs);
+      paramViewGroup.b.setText(((PublicRecommendAccountInfo)localObject).mEqqSi);
     }
-    if (localList.size() > 0) {
-      VACDReportUtil.a(null, "QWalletStat", "QWalletRedClick", "QWalletRedClick", QWRedConfig.RedInfo.transToReportStr(localList), 0, null);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, agzb paramagzb)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.parseConfig(paramagzb);
-  }
-  
-  public void a(List<String> paramList)
-  {
-    if (paramList == null) {}
-    LinkedList localLinkedList;
-    do
+    for (;;)
     {
-      return;
-      localLinkedList = new LinkedList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      if ((((PublicRecommendAccountInfo)localObject).mIsVerified != null) && (((PublicRecommendAccountInfo)localObject).mIsVerified.equalsIgnoreCase("1")))
       {
-        String str = (String)paramList.next();
-        localLinkedList.addAll(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedQWRedConfig.getCurShowRedInfosByPath(str));
+        localObject = this.a.getResources().getDrawable(2130841431);
+        paramInt = (int)bdcq.a(this.a.a, 15.0F);
+        ((Drawable)localObject).setBounds(0, 0, paramInt, paramInt);
+        ((MultiImageTextView)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView).a(6.0F);
+        ((MultiImageTextView)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView).a((Drawable)localObject, paramInt, paramInt);
+        ((MultiImageTextView)paramViewGroup.jdField_a_of_type_AndroidWidgetTextView).b();
       }
-    } while (localLinkedList.size() <= 0);
-    VACDReportUtil.a(null, "QWalletStat", "QWalletRedShow", "QWalletRedShow", QWRedConfig.RedInfo.transToReportStr(localLinkedList), 0, null);
-  }
-  
-  public void b(String paramString)
-  {
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(paramString);
-    a(localLinkedList);
-  }
-  
-  public void onDestroy()
-  {
-    agzd localagzd = (agzd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(245);
-    if (localagzd != null) {
-      localagzd.d("redPoint", this);
+      if (!AppSetting.c) {
+        break;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.getText().toString());
+      ((StringBuilder)localObject).append(paramViewGroup.b.getText().toString());
+      paramView.setContentDescription(((StringBuilder)localObject).toString());
+      return paramView;
+      paramViewGroup.jdField_a_of_type_JavaLangString = String.valueOf(((PublicRecommendAccountInfo)localObject).mPublicuin);
+      break label124;
+      label367:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject).mPublicname);
+      paramViewGroup.b.setText(((PublicRecommendAccountInfo)localObject).mPublicdesc);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahcw
  * JD-Core Version:    0.7.0.1
  */

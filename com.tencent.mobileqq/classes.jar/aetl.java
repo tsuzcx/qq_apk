@@ -1,86 +1,118 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceView;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SendMessageHandler;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
+import java.lang.ref.WeakReference;
 
-class aetl
-  extends akat
+public class aetl
+  extends Handler
 {
-  aetl(aert paramaert) {}
-  
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  public aetl(ListenChangeVoicePanel paramListenChangeVoicePanel, Looper paramLooper)
   {
-    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-      }
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
-    }
-    this.a.e(196608);
+    super(paramLooper);
   }
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void handleMessage(Message arg1)
   {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
+    switch (???.what)
     {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.m();
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    this.a.u = true;
-    this.a.a(262144, null, paramLong);
-  }
-  
-  protected void a(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    if ((paramBoolean) && (paramArrayOfString != null))
-    {
-      paramArrayOfString = paramArrayOfString[0];
-      if (this.a.jdField_a_of_type_Azop.b.contains(paramArrayOfString))
+    case 102: 
+    default: 
+    case 101: 
+    case 103: 
+    case 104: 
+    case 105: 
+    case 106: 
+      do
       {
-        this.a.jdField_a_of_type_Azop.a.put(paramArrayOfString, Integer.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramArrayOfString, 1)));
-        this.a.jdField_a_of_type_Azop.d();
-        this.a.jdField_a_of_type_Azop.e();
-        this.a.jdField_a_of_type_Azop.c();
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                return;
+                ListenChangeVoicePanel.a(this.a, -1);
+                this.a.jdField_a_of_type_Aeti.b = 0;
+                this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView = null;
+                synchronized (this.a.b)
+                {
+                  this.a.jdField_a_of_type_Aeti.a = this.a.b;
+                  this.a.jdField_a_of_type_Aeti.notifyDataSetChanged();
+                  return;
+                }
+              } while ((???.obj == null) || (!(???.obj instanceof Bundle)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null));
+              ??? = (Bundle)???.obj;
+            } while (??? == null);
+            this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(???.getInt("progress"), ???.getInt("playTime"), ???.getInt("level"));
+            return;
+          } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null);
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(1);
+          return;
+          if (ListenChangeVoicePanel.a(this.a).get() != null) {
+            QQToast.a(((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).getApp(), "播放变音error", 0);
+          }
+        } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView == null);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelChangeVoiceView.a(1);
+        return;
+      } while ((ListenChangeVoicePanel.a(this.a).get() == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
+      bdze.a(((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).getApp(), ListenChangeVoicePanel.a(this.a), PressToChangeVoicePanel.a, this.a);
+      int k = (int)ListenChangeVoicePanel.a(this.a);
+      String str;
+      QQRecorder.RecorderParam localRecorderParam;
+      if (!awud.a((QQAppInterface)ListenChangeVoicePanel.a(this.a).get()).a((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), ListenChangeVoicePanel.a(this.a)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PttPreSendManager", 2, "presend not hit, do origin logic");
+        }
+        ??? = (BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+        str = ListenChangeVoicePanel.a(this.a);
+        localRecorderParam = ListenChangeVoicePanel.a(this.a);
+        if (ListenChangeVoicePanel.a(this.a) <= 0) {
+          break label677;
+        }
+      }
+      label677:
+      for (int i = 1;; i = 0)
+      {
+        ???.a(str, 4, 0, localRecorderParam, i, false, 0);
+        ((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).b(ListenChangeVoicePanel.a(this.a), null);
+        if (ListenChangeVoicePanel.jdField_a_of_type_Awtp != null)
+        {
+          ListenChangeVoicePanel.jdField_a_of_type_Awtp.a((QQAppInterface)ListenChangeVoicePanel.a(this.a).get(), ListenChangeVoicePanel.a(this.a));
+          if (ListenChangeVoicePanel.a(this.a) > 0) {
+            azmj.b((QQAppInterface)ListenChangeVoicePanel.a(this.a).get(), "CliOper", "", "", "changevoice", "0X8006F7C", 0, 0, "" + ((BaseChatPie)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).a.a, "" + ListenChangeVoicePanel.a(this.a), "", "");
+          }
+        }
+        this.a.i();
+        int j = ListenChangeVoicePanel.b(this.a);
+        i = j;
+        if (this.a.jdField_a_of_type_Boolean) {
+          i = j + 10;
+        }
+        j = ListenChangeVoicePanel.a(this.a);
+        int m = ListenChangeVoicePanel.c(this.a);
+        this.a.a(j, m, k, i);
+        return;
       }
     }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
-    {
-      ChatActivityUtils.b();
-      if (paramBoolean) {
-        this.a.m();
-      }
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    this.a.e(65536);
+    this.a.a(???.arg1, ???.arg2, ???.obj, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetl
  * JD-Core Version:    0.7.0.1
  */

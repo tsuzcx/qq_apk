@@ -1,30 +1,22 @@
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-class ahlr
+public class ahlr
   implements View.OnClickListener
 {
-  ahlr(ahkd paramahkd) {}
+  public ahlr(TroopSuspiciousFragment paramTroopSuspiciousFragment, structmsg.SystemMsg paramSystemMsg) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
-    {
-      this.a.k();
-      return;
-    }
-    paramView = new Intent(ahkd.a(this.a), QRLoginMgrActivity.class);
-    paramView.putExtra("qrlogin_position", this.a.b);
-    paramView.putExtra("qrlogin_appid", this.a.a);
-    ahkd.a(this.a).startActivity(paramView);
+    awnk.a(TroopSuspiciousFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment), this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopSuspiciousFragment.getActivity(), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.group_code.get()), String.valueOf(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$SystemMsg.action_uin.get()), -1, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahlr
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import aquq;
+import asle;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -252,7 +252,7 @@ public class PatternLockUtils
     return (paramContext != null) && (paramContext.length() > 0);
   }
   
-  public static String patternToString(List<aquq> paramList)
+  public static String patternToString(List<asle> paramList)
   {
     if (paramList == null) {
       return "";
@@ -262,9 +262,9 @@ public class PatternLockUtils
     int i = 0;
     while (i < j)
     {
-      aquq localaquq = (aquq)paramList.get(i);
-      int k = localaquq.a();
-      localStringBuilder.append((char)(localaquq.b() + k * 3 + 49));
+      asle localasle = (asle)paramList.get(i);
+      int k = localasle.a();
+      localStringBuilder.append((char)(localasle.b() + k * 3 + 49));
       i += 1;
     }
     return localStringBuilder.toString();
@@ -367,7 +367,7 @@ public class PatternLockUtils
     paramContext.commit();
   }
   
-  public static List<aquq> stringToPattern(String paramString)
+  public static List<asle> stringToPattern(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
     if (TextUtils.isEmpty(paramString)) {
@@ -377,7 +377,7 @@ public class PatternLockUtils
     while (i < paramString.length())
     {
       int j = paramString.indexOf(i) - 49;
-      localArrayList.add(aquq.a(j / 3, j % 3));
+      localArrayList.add(asle.a(j / 3, j % 3));
       i += 1;
     }
     return localArrayList;
@@ -385,7 +385,7 @@ public class PatternLockUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.PatternLockUtils
  * JD-Core Version:    0.7.0.1
  */

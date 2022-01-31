@@ -5,7 +5,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
-import bavw;
+import bcuq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -31,8 +31,8 @@ final class a
     try
     {
       localObject1 = URLDrawable.getDrawable(URLDecoder.decode(LoadingFragment.access$000(this.a).config.icon_url), (URLDrawable.URLDrawableOptions)localObject2);
-      ((URLDrawable)localObject1).setTag(bavw.a(i, i));
-      ((URLDrawable)localObject1).setDecodeHandler(bavw.a);
+      ((URLDrawable)localObject1).setTag(bcuq.a(i, i));
+      ((URLDrawable)localObject1).setDecodeHandler(bcuq.a);
       localObject2 = Message.obtain();
       ((Message)localObject2).what = 7;
       ((Message)localObject2).obj = localObject1;
@@ -44,7 +44,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.activity.a
  * JD-Core Version:    0.7.0.1
  */

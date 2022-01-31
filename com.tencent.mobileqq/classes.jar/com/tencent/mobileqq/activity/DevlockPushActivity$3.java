@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcqf;
+import bepp;
 
 class DevlockPushActivity$3
   implements Runnable
@@ -13,8 +13,8 @@ class DevlockPushActivity$3
     {
       if ((this.this$0.a == null) && (!this.this$0.isFinishing()))
       {
-        this.this$0.a = new bcqf(this.this$0, this.this$0.getTitleBarHeight());
-        this.this$0.a.c(2131694931);
+        this.this$0.a = new bepp(this.this$0, this.this$0.getTitleBarHeight());
+        this.this$0.a.c(2131695088);
       }
       if ((this.this$0.a != null) && (!this.this$0.a.isShowing())) {
         this.this$0.a.show();
@@ -32,7 +32,7 @@ class DevlockPushActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DevlockPushActivity.3
  * JD-Core Version:    0.7.0.1
  */

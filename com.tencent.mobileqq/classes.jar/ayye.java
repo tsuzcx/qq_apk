@@ -1,273 +1,1176 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForRichText;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.shortvideo.redbag.VideoRedbagData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.cs.cmd0x346.cmd0x346.AddrList;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyDownloadReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ApplyDownloadRsp;
-import tencent.im.cs.cmd0x346.cmd0x346.DownloadInfo;
-import tencent.im.cs.cmd0x346.cmd0x346.ExtensionReq;
-import tencent.im.cs.cmd0x346.cmd0x346.ExtensionRsp;
-import tencent.im.cs.cmd0x346.cmd0x346.ReqBody;
-import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import mqq.app.AppRuntime;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class ayye
-  extends ayyb
+  extends BaseShortVideoOprerator
 {
-  int a;
+  public ayye() {}
   
-  public ayye()
+  public ayye(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = 17;
+    super(paramQQAppInterface);
   }
   
-  public void a(aytl paramaytl, aytk paramaytk)
+  public static String a(String paramString, int paramInt)
   {
-    Object localObject2 = paramaytl.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg;
-    Object localObject1 = paramaytl.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer();
-    ayyp localayyp = (ayyp)paramaytk.jdField_a_of_type_JavaLangObject;
-    ayze localayze = localayyp.jdField_a_of_type_Ayze;
-    akau localakau = paramaytl.jdField_a_of_type_Akau;
+    String str1 = BaseApplicationImpl.sApplication.getRuntime().getAccount();
+    int j;
     int i;
-    if (((FromServiceMsg)localObject2).getResultCode() != 1000)
+    if (str1 != null)
     {
-      i = ((FromServiceMsg)localObject2).getResultCode();
-      if ((i == 1002) || (i == 1013))
+      j = str1.length();
+      if (j < 10)
       {
-        localObject1 = MessageHandler.a((FromServiceMsg)localObject2);
-        paramaytk = ((FromServiceMsg)localObject2).getBusinessFailMsg();
-        paramaytl = paramaytk;
-        if (paramaytk == null) {
-          paramaytl = "";
+        i = 0;
+        while (i < 10 - j)
+        {
+          str1 = "0".concat(str1);
+          i += 1;
         }
-        a(-1, 9311, (String)localObject1, paramaytl, localakau, localayze.jdField_a_of_type_JavaUtilList);
+      }
+    }
+    label265:
+    for (;;)
+    {
+      String str2 = paramString;
+      if (paramString != null)
+      {
+        j = paramString.length();
+        if (j < 10)
+        {
+          i = 0;
+          for (;;)
+          {
+            str2 = paramString;
+            if (i >= 10 - j) {
+              break;
+            }
+            paramString = "0".concat(paramString);
+            i += 1;
+          }
+          if (j <= 10) {
+            break label265;
+          }
+          str1 = str1.substring(j - 10, j);
+          continue;
+        }
+        str2 = paramString;
+        if (j > 10) {
+          str2 = paramString.substring(j - 10, j);
+        }
+      }
+      if (paramInt == 0) {
+        paramInt = 0;
+      }
+      for (;;)
+      {
+        long l = ayvc.a();
+        paramString = new SimpleDateFormat("yyyyMMdd").format(new Date(1000L * l));
+        paramString = paramString + str1 + l + paramInt + str2;
+        if (QLog.isColorLevel()) {
+          QLog.d("AioShortVideoOperator", 2, new Object[] { "VideoRedbag, createRedbagVideoId, videoid = ", paramString });
+        }
+        return paramString;
+        if (paramInt == 3000) {
+          paramInt = 2;
+        } else if (paramInt == 1) {
+          paramInt = 1;
+        } else {
+          paramInt = 0;
+        }
+      }
+    }
+  }
+  
+  public ayyz a(Object paramObject, ayzo paramayzo)
+  {
+    if (paramObject == null)
+    {
+      awen.b("AioShortVideoOperator", this.jdField_f_of_type_JavaLangString, "createShortVideoForwardInfo", "input == null");
+      return null;
+    }
+    if (paramayzo == null)
+    {
+      awen.b("AioShortVideoOperator", this.jdField_f_of_type_JavaLangString, "createShortVideoForwardInfo", "ShortVideoReq == null");
+      return null;
+    }
+    Object localObject19 = "0";
+    Object localObject18 = "0";
+    int i9 = 0;
+    int i11 = 0;
+    int i10 = 0;
+    Object localObject17 = "";
+    Object localObject16 = "";
+    Object localObject15 = "";
+    Object localObject14 = "";
+    int i8 = 0;
+    int i7 = 0;
+    Object localObject13 = "";
+    Object localObject11 = "";
+    Object localObject10 = "";
+    int i6 = 2;
+    boolean bool3 = false;
+    int i3 = 0;
+    int i2 = 0;
+    Object localObject5 = "";
+    Object localObject4 = "";
+    Object localObject2 = "";
+    Object localObject3 = "";
+    int i12 = 0;
+    Object localObject6 = "";
+    Object localObject1;
+    Object localObject9;
+    int i4;
+    Object localObject12;
+    int i5;
+    Object localObject20;
+    int i1;
+    int n;
+    long l;
+    boolean bool2;
+    boolean bool1;
+    Object localObject7;
+    int i;
+    if ((paramObject instanceof Intent))
+    {
+      localObject1 = (Intent)paramObject;
+      localObject19 = ((Intent)localObject1).getStringExtra("uin");
+      localObject18 = ((Intent)localObject1).getStringExtra("troop_uin");
+      i9 = ((Intent)localObject1).getIntExtra("uintype", -1);
+      localObject9 = ((Intent)localObject1).getStringExtra("from_uin");
+      i4 = ((Intent)localObject1).getIntExtra("from_uin_type", -1);
+      localObject5 = ((Intent)localObject1).getStringExtra("from_session_uin");
+      ((Intent)localObject1).getIntExtra("from_busi_type", -1);
+      i11 = ((Intent)localObject1).getIntExtra("file_send_size", 0);
+      i10 = ((Intent)localObject1).getIntExtra("file_send_duration", -1);
+      localObject17 = ((Intent)localObject1).getStringExtra("file_send_path");
+      localObject16 = ((Intent)localObject1).getStringExtra("thumbfile_send_path");
+      localObject15 = ((Intent)localObject1).getStringExtra("file_shortvideo_md5");
+      localObject14 = ((Intent)localObject1).getStringExtra("file_shortvideo_local_md5");
+      i8 = ((Intent)localObject1).getIntExtra("thumbfile_send_width", 0);
+      i7 = ((Intent)localObject1).getIntExtra("thumbfile_send_height", 0);
+      localObject13 = ((Intent)localObject1).getStringExtra("thumbfile_md5");
+      localObject12 = ((Intent)localObject1).getStringExtra("file_source");
+      localObject11 = ((Intent)localObject1).getStringExtra("file_uuid");
+      localObject10 = ((Intent)localObject1).getStringExtra("file_name");
+      i6 = ((Intent)localObject1).getIntExtra("file_format", 2);
+      i5 = ((Intent)localObject1).getIntExtra("file_thumb_Size", 0);
+      bool3 = ((Intent)localObject1).getBooleanExtra("support_progressive", false);
+      i3 = ((Intent)localObject1).getIntExtra("file_width", 0);
+      i2 = ((Intent)localObject1).getIntExtra("file_height", 0);
+      localObject4 = ((Intent)localObject1).getStringExtra("hot_video_icon");
+      localObject3 = ((Intent)localObject1).getStringExtra("hot_video_title");
+      localObject20 = ((Intent)localObject1).getStringExtra("hot_video_url");
+      localObject2 = ((Intent)localObject1).getStringExtra("hot_video_icon_sub");
+      i1 = ((Intent)localObject1).getIntExtra("special_video_type", 0);
+      n = ((Intent)localObject1).getIntExtra("short_video_msg_tail_type", 0);
+      l = ((Intent)localObject1).getLongExtra("from_msg_uniseq", 0L);
+      bool2 = ((Intent)localObject1).getBooleanExtra("key_story_video_to_recent", false);
+      if (((Intent)localObject1).getIntExtra("forward_source_business_type", -1) == 100200)
+      {
+        bool1 = true;
+        localObject7 = ((Intent)localObject1).getStringExtra("widgetinfo");
+        localObject6 = ((Intent)localObject1).getStringExtra("key_camera_material_name");
+        i = ((Intent)localObject1).getIntExtra("param_key_redbag_type", 0);
+        if (i != LocalMediaInfo.REDBAG_TYPE_GET) {
+          break label2245;
+        }
+        if ((((String)localObject5).equals("0")) || (!((String)localObject5).equals(localObject19))) {
+          break label567;
+        }
+        localObject1 = ((Intent)localObject1).getStringExtra("param_key_redbag_video_id");
       }
     }
     for (;;)
     {
-      ayzv.a(localayyp, localayze);
-      return;
-      localObject1 = MessageHandler.a((FromServiceMsg)localObject2);
-      paramaytk = ((FromServiceMsg)localObject2).getBusinessFailMsg();
-      paramaytl = paramaytk;
-      if (paramaytk == null) {
-        paramaytl = "";
-      }
-      a(-1, 9044, (String)localObject1, paramaytl, localakau, localayze.jdField_a_of_type_JavaUtilList);
-      continue;
-      Object localObject3;
-      ayuq localayuq;
-      try
-      {
-        paramaytk = new cmd0x346.RspBody();
-        paramaytk.mergeFrom((byte[])localObject1);
-        localObject3 = (cmd0x346.ApplyDownloadRsp)paramaytk.msg_apply_download_rsp.get();
-        paramaytl = (ayzh)localayze.jdField_a_of_type_JavaUtilList.get(0);
-        if (paramaytl != null) {
-          paramaytl.d = ((Boolean)((FromServiceMsg)localObject2).getAttribute("_attr_send_by_quickHttp", Boolean.valueOf(false))).booleanValue();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.e("http_sideway", 2, "C2CPttDownHandler.onProtoResp:isSendByQuickHttp=" + paramaytl.d);
-        }
-        i = ((cmd0x346.ApplyDownloadRsp)localObject3).int32_ret_code.get();
-        paramaytk = (cmd0x346.ExtensionRsp)paramaytk.msg_extension_rsp.get();
-        if (i != 0) {
-          break label637;
-        }
-        localObject2 = (cmd0x346.DownloadInfo)((cmd0x346.ApplyDownloadRsp)localObject3).msg_download_info.get();
-        if ((localObject2 != null) && (((cmd0x346.DownloadInfo)localObject2).str_download_url.has()))
-        {
-          paramaytl.jdField_a_of_type_JavaLangString = ((cmd0x346.DownloadInfo)localObject2).str_download_url.get();
-          localObject2 = ((cmd0x346.DownloadInfo)localObject2).rpt_str_downloadip_list.get();
-          if ((localObject2 == null) || (((List)localObject2).size() <= 0)) {
-            break label477;
-          }
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            localObject3 = (String)((Iterator)localObject2).next();
-            localayuq = new ayuq();
-            localayuq.jdField_a_of_type_JavaLangString = ((String)localObject3);
-            paramaytl.jdField_a_of_type_JavaUtilArrayList.add(localayuq);
-          }
-        }
-      }
-      catch (Exception paramaytl)
-      {
-        a(-1, -9527, aypb.a("P", -9529L), paramaytl.getMessage() + " hex:" + HexUtil.bytes2HexStr((byte[])localObject1), localakau, localayze.jdField_a_of_type_JavaUtilList);
-      }
-      throw new Exception("no url");
-      label477:
-      if ((paramaytk != null) && (paramaytk.server_addr_ipv6_list.has()))
-      {
-        paramaytk = (cmd0x346.AddrList)paramaytk.server_addr_ipv6_list.get();
-        if (paramaytk != null)
-        {
-          localObject2 = paramaytk.rpt_str_ip.get();
-          i = paramaytk.uint32_port.get();
-          if ((localObject2 != null) && (((List)localObject2).size() > 0))
-          {
-            localObject2 = ((List)localObject2).iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              localObject3 = (String)((Iterator)localObject2).next();
-              localayuq = new ayuq();
-              localayuq.jdField_a_of_type_JavaLangString = ((String)localObject3);
-              localayuq.jdField_a_of_type_Int = i;
-              localayuq.jdField_a_of_type_Boolean = true;
-              paramaytl.jdField_b_of_type_JavaUtilArrayList.add(localayuq);
-            }
-          }
-          paramaytl.jdField_b_of_type_JavaLangString = paramaytk.rpt_str_domain.get();
-        }
-      }
-      a(0, 0, "", "", localakau, paramaytl);
-      continue;
-      label637:
-      if ((paramaytk != null) && (paramaytk.uint32_allow_retry.get() == 1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richmedia.BaseHandler", 2, "onReceive :c2c ptt server not allow retry");
-        }
-        paramaytl.e = false;
-      }
-      a(-1, -9527, aypb.a(i), "", localakau, paramaytl);
-    }
-  }
-  
-  public void a(ayyp paramayyp)
-  {
-    if ((paramayyp != null) && (paramayyp.jdField_a_of_type_JavaUtilList != null) && (paramayyp.jdField_a_of_type_ComTencentMobileqqTransfileProtoReqManager != null))
-    {
-      aytk localaytk = new aytk();
-      localaytk.jdField_a_of_type_ArrayOfByte = a(paramayyp.jdField_a_of_type_JavaUtilList);
-      localaytk.jdField_a_of_type_JavaLangObject = paramayyp;
-      localaytk.jdField_a_of_type_JavaLangString = "PttCenterSvr.pb_pttCenter_CMD_REQ_APPLY_DOWNLOAD-1200";
-      if (this.jdField_a_of_type_Int == 3) {
-        localaytk.jdField_a_of_type_JavaLangString = "OfflineFilleHandleSvr.pb_ftnPtt_CMD_REQ_APPLY_DOWNLOAD-1200";
-      }
-      localaytk.jdField_a_of_type_Aytj = this;
-      a(paramayyp, localaytk);
-    }
-  }
-  
-  byte[] a(List<ayza> paramList)
-  {
-    int i = 1;
-    cmd0x346.ReqBody localReqBody = new cmd0x346.ReqBody();
-    if (paramList.size() == 1)
-    {
-      paramList = (ayyr)paramList.get(0);
-      Object localObject;
-      if ("ftn".equals(paramList.jdField_b_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_Int = 3;
-        localObject = new cmd0x346.ApplyDownloadReq();
-        ((cmd0x346.ApplyDownloadReq)localObject).uint64_uin.set(Long.parseLong(paramList.c));
-        ((cmd0x346.ApplyDownloadReq)localObject).bytes_uuid.set(ByteStringMicro.copyFromUtf8(paramList.jdField_a_of_type_JavaLangString));
-        PBUInt32Field localPBUInt32Field = ((cmd0x346.ApplyDownloadReq)localObject).uint32_owner_type;
-        if (!paramList.jdField_a_of_type_Boolean) {
-          break label428;
-        }
-        label102:
-        localPBUInt32Field.set(i);
-        localReqBody.uint32_cmd.set(1200);
-        localReqBody.uint32_seq.set(0);
-        localReqBody.uint32_business_id.set(this.jdField_a_of_type_Int);
-        localReqBody.uint32_client_type.set(104);
-        localReqBody.msg_apply_download_req.set((MessageMicro)localObject);
-        if (paramList.f == 0) {
-          break label501;
-        }
-        localObject = new cmd0x346.ExtensionReq();
-        ((cmd0x346.ExtensionReq)localObject).uint64_id.set(3L);
-        switch (paramList.f)
-        {
-        default: 
-          i = 0;
-          label310:
-          ((cmd0x346.ExtensionReq)localObject).uint64_type.set(i);
-          ((cmd0x346.ExtensionReq)localObject).uint32_ptt_format.set(paramList.jdField_a_of_type_Int);
-          ((cmd0x346.ExtensionReq)localObject).uint32_file_type.set(paramList.jdField_b_of_type_Int);
-          ((cmd0x346.ExtensionReq)localObject).uint32_is_auto.set(paramList.d);
-          localReqBody.msg_extension_req.set((MessageMicro)localObject);
-        }
-      }
+      label519:
+      Object localObject8 = localObject1;
+      localObject1 = localObject20;
+      int j = 0;
+      int m = 0;
+      int k = 0;
       for (;;)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.richmedia.C2CPttDownHandler", 2, "constructReqBody C2CPttDownReq = " + paramList.toString());
-        }
-        return localReqBody.toByteArray();
-        if (!"pttcenter".equals(paramList.jdField_b_of_type_JavaLangString)) {
+        label567:
+        String str1;
+        String str2;
+        int i15;
+        int i16;
+        int i17;
+        if (TextUtils.isEmpty((CharSequence)localObject15))
+        {
+          awen.b(paramayzo.jdField_b_of_type_JavaLangString, paramayzo.jdField_a_of_type_JavaLangString, "createShortVideoForwardInfo", "md5 shouldn't be empty ");
+          return null;
+          bool1 = false;
           break;
+          localObject1 = a((String)localObject19, i9);
+          break label519;
+          if (!(paramObject instanceof MessageForShortVideo)) {
+            break label2174;
+          }
+          localObject15 = (MessageForShortVideo)paramObject;
+          str1 = ((MessageForShortVideo)localObject15).frienduin;
+          str2 = ((MessageForShortVideo)localObject15).frienduin;
+          i15 = ((MessageForShortVideo)localObject15).istroop;
+          i16 = ((MessageForShortVideo)localObject15).videoFileSize;
+          i17 = ((MessageForShortVideo)localObject15).videoFileTime;
+          localObject1 = ((MessageForShortVideo)localObject15).videoFileName;
+          localObject7 = ShortVideoUtils.a(((MessageForShortVideo)localObject15).thumbMD5, "jpg");
+          localObject8 = ((MessageForShortVideo)localObject15).md5;
+          localObject9 = ((MessageForShortVideo)localObject15).mLocalMd5;
+          i = ((MessageForShortVideo)localObject15).thumbWidth;
+          j = ((MessageForShortVideo)localObject15).thumbHeight;
+          localObject10 = ((MessageForShortVideo)localObject15).thumbMD5;
+          localObject11 = ((MessageForShortVideo)localObject15).fileSource;
+          localObject6 = ((MessageForShortVideo)localObject15).uuid;
+          k = ((MessageForShortVideo)localObject15).videoFileFormat;
+          m = ((MessageForShortVideo)localObject15).thumbFileSize;
+          n = ((MessageForShortVideo)localObject15).fromChatType;
+          i1 = ((MessageForShortVideo)localObject15).toChatType;
+          i2 = ((MessageForShortVideo)localObject15).busiType;
+          localObject12 = ShortVideoUtils.d((MessageForShortVideo)localObject15);
+          bool1 = ((MessageForShortVideo)localObject15).supportProgressive;
+          i3 = ((MessageForShortVideo)localObject15).fileWidth;
+          i4 = ((MessageForShortVideo)localObject15).fileHeight;
+          i5 = ((MessageForShortVideo)localObject15).specialVideoType;
+          i7 = ((MessageForShortVideo)localObject15).msgTailType;
+          l = ((MessageForShortVideo)localObject15).uniseq;
+          bool2 = ((MessageForShortVideo)localObject15).isStoryVideo;
+          if (((MessageForShortVideo)localObject15).CheckIsHotVideo())
+          {
+            localObject5 = ((MessageForShortVideo)localObject15).hotVideoIconUrl;
+            localObject2 = ((MessageForShortVideo)localObject15).hotVideoTitle;
+            localObject3 = ((MessageForShortVideo)localObject15).hotVideoUrl;
+            localObject4 = ((MessageForShortVideo)localObject15).hotVideoSubIconUrl;
+          }
+          localObject13 = ((MessageForShortVideo)localObject15).templateId;
+          localObject14 = ((MessageForShortVideo)localObject15).templateName;
+          i8 = i12;
+          if (paramayzo.jdField_b_of_type_Int == 5) {
+            break label1967;
+          }
+          i6 = ((MessageForShortVideo)localObject15).redBagType;
+          i8 = i6;
+          if (i6 != LocalMediaInfo.REDBAG_TYPE_GET) {
+            break label1967;
+          }
+          if ((!"0".equals("0")) && ("0".equals(str1)))
+          {
+            localObject19 = ((MessageForShortVideo)localObject15).shortVideoId;
+            localObject21 = localObject14;
+            bool4 = false;
+            i14 = i6;
+            localObject22 = localObject13;
+            bool3 = bool1;
+            str3 = "0";
+            localObject20 = localObject12;
+            i6 = i2;
+            i10 = i1;
+            i11 = n;
+            i12 = m;
+            i13 = k;
+            localObject18 = localObject1;
+            i18 = -1;
+            localObject12 = localObject11;
+            localObject13 = localObject10;
+            i8 = j;
+            i9 = i;
+            localObject14 = localObject9;
+            localObject15 = localObject8;
+            localObject16 = localObject7;
+            localObject17 = localObject1;
+            localObject11 = localObject6;
+            localObject6 = localObject21;
+            localObject7 = localObject22;
+            bool1 = bool4;
+            localObject8 = localObject19;
+            i = i14;
+            n = i7;
+            i1 = i5;
+            localObject1 = localObject3;
+            localObject3 = localObject2;
+            localObject2 = localObject4;
+            localObject4 = localObject5;
+            i2 = i4;
+            localObject5 = str3;
+            localObject9 = localObject20;
+            j = i6;
+            m = i10;
+            k = i11;
+            i5 = i12;
+            i6 = i13;
+            localObject10 = localObject18;
+            i4 = i18;
+            i7 = i8;
+            i8 = i9;
+            i10 = i17;
+            i11 = i16;
+            i9 = i15;
+            localObject18 = str2;
+            localObject19 = str1;
+            continue;
+          }
+          localObject19 = a(str1, i15);
+          localObject21 = localObject14;
+          bool4 = false;
+          i14 = i6;
+          localObject22 = localObject13;
+          bool3 = bool1;
+          str3 = "0";
+          localObject20 = localObject12;
+          i6 = i2;
+          i10 = i1;
+          i11 = n;
+          i12 = m;
+          i13 = k;
+          localObject18 = localObject1;
+          i18 = -1;
+          localObject12 = localObject11;
+          localObject13 = localObject10;
+          i8 = j;
+          i9 = i;
+          localObject14 = localObject9;
+          localObject15 = localObject8;
+          localObject16 = localObject7;
+          localObject17 = localObject1;
+          localObject11 = localObject6;
+          localObject6 = localObject21;
+          localObject7 = localObject22;
+          bool1 = bool4;
+          localObject8 = localObject19;
+          i = i14;
+          n = i7;
+          i1 = i5;
+          localObject1 = localObject3;
+          localObject3 = localObject2;
+          localObject2 = localObject4;
+          localObject4 = localObject5;
+          i2 = i4;
+          localObject5 = str3;
+          localObject9 = localObject20;
+          j = i6;
+          m = i10;
+          k = i11;
+          i5 = i12;
+          i6 = i13;
+          localObject10 = localObject18;
+          i4 = i18;
+          i7 = i8;
+          i8 = i9;
+          i10 = i17;
+          i11 = i16;
+          i9 = i15;
+          localObject18 = str2;
+          localObject19 = str1;
+          continue;
         }
-        this.jdField_a_of_type_Int = 17;
-        break;
-        label428:
-        i = 2;
-        break label102;
+        localObject20 = new ayyz();
+        ((ayyz)localObject20).jdField_c_of_type_JavaLangString = ((String)localObject19);
+        ((ayyz)localObject20).jdField_h_of_type_JavaLangString = ((String)localObject17);
+        ((ayyz)localObject20).jdField_i_of_type_JavaLangString = ((String)localObject16);
+        ((ayyz)localObject20).jdField_b_of_type_Int = i9;
+        ((ayyz)localObject20).jdField_d_of_type_JavaLangString = ((String)localObject18);
+        ((ayyz)localObject20).jdField_i_of_type_Int = i11;
+        ((ayyz)localObject20).jdField_j_of_type_Int = i10;
+        ((ayyz)localObject20).jdField_e_of_type_JavaLangString = ((String)localObject15);
+        ((ayyz)localObject20).jdField_f_of_type_JavaLangString = ((String)localObject14);
+        ((ayyz)localObject20).jdField_g_of_type_Int = i8;
+        ((ayyz)localObject20).jdField_h_of_type_Int = i7;
+        ((ayyz)localObject20).jdField_k_of_type_Int = paramayzo.jdField_a_of_type_Int;
+        ((ayyz)localObject20).jdField_a_of_type_JavaLangObject = paramObject;
+        ((ayyz)localObject20).jdField_g_of_type_JavaLangString = ((String)localObject13);
+        ((ayyz)localObject20).jdField_j_of_type_JavaLangString = ((String)localObject12);
+        ((ayyz)localObject20).jdField_a_of_type_JavaLangString = ((String)localObject11);
+        ((ayyz)localObject20).jdField_k_of_type_JavaLangString = ((String)localObject10);
+        ((ayyz)localObject20).jdField_l_of_type_Int = i6;
+        ((ayyz)localObject20).jdField_m_of_type_Int = i5;
+        ((ayyz)localObject20).jdField_a_of_type_Boolean = bool3;
+        ((ayyz)localObject20).jdField_n_of_type_Int = i3;
+        ((ayyz)localObject20).jdField_o_of_type_Int = i2;
+        ((ayyz)localObject20).jdField_l_of_type_JavaLangString = ((String)localObject9);
+        if (localObject5 != null)
+        {
+          ((ayyz)localObject20).jdField_m_of_type_JavaLangString = ((String)localObject5);
+          ((ayyz)localObject20).jdField_b_of_type_Long = l;
+          ((ayyz)localObject20).jdField_b_of_type_Boolean = bool2;
+          localObject5 = localObject4;
+          if (localObject4 == null) {
+            localObject5 = "";
+          }
+          ((ayyz)localObject20).jdField_n_of_type_JavaLangString = ((String)localObject5);
+          localObject4 = localObject3;
+          if (localObject3 == null) {
+            localObject4 = "";
+          }
+          ((ayyz)localObject20).p = ((String)localObject4);
+          localObject3 = localObject1;
+          if (localObject1 == null) {
+            localObject3 = "";
+          }
+          ((ayyz)localObject20).jdField_q_of_type_JavaLangString = ((String)localObject3);
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = "";
+          }
+          ((ayyz)localObject20).jdField_o_of_type_JavaLangString = ((String)localObject1);
+          ((ayyz)localObject20).jdField_q_of_type_Int = i1;
+          ((ayyz)localObject20).jdField_r_of_type_Int = n;
+          if (2 == paramayzo.jdField_b_of_type_Int)
+          {
+            ((ayyz)localObject20).jdField_s_of_type_Int = i;
+            ((ayyz)localObject20).jdField_r_of_type_JavaLangString = ((String)localObject8);
+          }
+          ((ayyz)localObject20).jdField_c_of_type_Boolean = bool1;
+          ((ayyz)localObject20).jdField_s_of_type_JavaLangString = ((String)localObject7);
+          ((ayyz)localObject20).t = ((String)localObject6);
+          if (!(paramObject instanceof Intent)) {
+            break label1827;
+          }
+          if (i4 != 0) {
+            break label1754;
+          }
+          k = 0;
+          label1657:
+          if (i9 != 0) {
+            break label1786;
+          }
+          i = 0;
+          n = k;
+          label1668:
+          if (i4 != 1008) {
+            break label1909;
+          }
+          k = 1007;
+        }
+        for (;;)
+        {
+          ((ayyz)localObject20).jdField_c_of_type_Int = n;
+          ((ayyz)localObject20).jdField_d_of_type_Int = i;
+          ((ayyz)localObject20).jdField_e_of_type_Int = k;
+          ((ayyz)localObject20).jdField_f_of_type_Int = j;
+          awen.a(paramayzo.jdField_b_of_type_JavaLangString, paramayzo.jdField_a_of_type_JavaLangString, "createShortVideoForwardInfo", "" + ((ayyz)localObject20).a());
+          return localObject20;
+          localObject5 = "0";
+          break;
+          label1754:
+          if (i4 == 1)
+          {
+            k = 1;
+            break label1657;
+          }
+          if (i4 == 3000)
+          {
+            k = 2;
+            break label1657;
+          }
+          k = 3;
+          break label1657;
+          label1786:
+          if (i9 == 1)
+          {
+            i = 1;
+            n = k;
+            break label1668;
+          }
+          if (i9 == 3000)
+          {
+            i = 2;
+            n = k;
+            break label1668;
+          }
+          i = 3;
+          n = k;
+          break label1668;
+          label1827:
+          i = m;
+          n = k;
+          if (!(paramObject instanceof MessageForShortVideo)) {
+            break label1668;
+          }
+          i = m;
+          n = k;
+          if (m != -1) {
+            break label1668;
+          }
+          if (i9 == 0)
+          {
+            i = 0;
+            n = k;
+            break label1668;
+          }
+          if (i9 == 1)
+          {
+            i = 1;
+            n = k;
+            break label1668;
+          }
+          if (i9 == 3000)
+          {
+            i = 2;
+            n = k;
+            break label1668;
+          }
+          i = 3;
+          n = k;
+          break label1668;
+          label1909:
+          if (2 == paramayzo.jdField_b_of_type_Int)
+          {
+            j = 1;
+            k = 1;
+          }
+          else if (3 == paramayzo.jdField_b_of_type_Int)
+          {
+            j = 2;
+            k = 2;
+          }
+          else if (5 == paramayzo.jdField_b_of_type_Int)
+          {
+            k = j;
+          }
+          else
+          {
+            j = 0;
+            k = 0;
+          }
+        }
+        label1967:
+        localObject20 = localObject14;
+        Object localObject22 = "";
+        boolean bool4 = false;
+        int i14 = i8;
+        Object localObject21 = localObject13;
+        bool3 = bool1;
+        String str3 = "0";
+        localObject19 = localObject12;
+        i6 = i2;
+        i10 = i1;
+        i11 = n;
+        i12 = m;
+        int i13 = k;
+        localObject18 = localObject1;
+        int i18 = -1;
+        localObject12 = localObject11;
+        localObject13 = localObject10;
+        i8 = j;
+        i9 = i;
+        localObject14 = localObject9;
+        localObject15 = localObject8;
+        localObject16 = localObject7;
+        localObject17 = localObject1;
+        localObject11 = localObject6;
+        localObject6 = localObject20;
+        localObject7 = localObject21;
+        bool1 = bool4;
+        localObject8 = localObject22;
+        i = i14;
+        n = i7;
+        i1 = i5;
+        localObject1 = localObject3;
+        localObject3 = localObject2;
+        localObject2 = localObject4;
+        localObject4 = localObject5;
+        i2 = i4;
+        localObject5 = str3;
+        localObject9 = localObject19;
+        j = i6;
+        m = i10;
+        k = i11;
+        i5 = i12;
+        i6 = i13;
+        localObject10 = localObject18;
+        i4 = i18;
+        i7 = i8;
+        i8 = i9;
+        i10 = i17;
+        i11 = i16;
+        i9 = i15;
+        localObject18 = str2;
+        localObject19 = str1;
+        continue;
+        label2174:
+        localObject8 = "";
+        bool1 = false;
+        n = 0;
+        i1 = 0;
+        localObject4 = "";
+        localObject2 = "";
+        l = 0L;
+        localObject1 = "";
+        localObject3 = "";
+        bool2 = false;
+        localObject7 = "";
         i = 0;
-        break label310;
-        i = 102;
-        break label310;
-        i = 104;
-        break label310;
-        i = 104;
-        break label310;
-        i = 105;
-        break label310;
-        i = 0;
-        break label310;
-        i = 0;
-        break label310;
-        i = 0;
-        break label310;
-        i = 101;
-        break label310;
-        i = 103;
-        break label310;
-        i = 100;
-        break label310;
-        i = 114;
-        break label310;
-        label501:
-        localObject = new cmd0x346.ExtensionReq();
-        ((cmd0x346.ExtensionReq)localObject).uint32_ptt_format.set(paramList.jdField_a_of_type_Int);
-        ((cmd0x346.ExtensionReq)localObject).uint32_is_auto.set(paramList.d);
-        localReqBody.msg_extension_req.set((MessageMicro)localObject);
+        localObject9 = "0";
+        localObject5 = "0";
+        m = 0;
+        k = 0;
+        i5 = 0;
+        j = 0;
+        localObject12 = "";
+        i4 = -1;
       }
+      label2245:
+      localObject1 = "";
     }
-    throw new RuntimeException("only support one request");
   }
   
-  void b(ayyp paramayyp)
+  public azae a(Object paramObject, ayzo paramayzo)
   {
-    ayze localayze = paramayyp.jdField_a_of_type_Ayze;
-    localayze.jdField_a_of_type_JavaUtilList.clear();
-    int i = 0;
-    while (i < paramayyp.jdField_a_of_type_JavaUtilList.size())
+    if (paramObject == null)
     {
-      ayzh localayzh = new ayzh();
-      localayze.jdField_a_of_type_JavaUtilList.add(i, localayzh);
-      i += 1;
+      awen.a(this.jdField_g_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, "createShortVideoUploadInfo", "unknow obj");
+      return null;
+    }
+    String str7 = "0";
+    String str6 = "0";
+    int i5 = 0;
+    long l2 = 0L;
+    int i4 = 0;
+    int i3 = 0;
+    String str5 = "";
+    String str4 = "";
+    String str3 = "";
+    String str2 = "";
+    int i2 = 0;
+    int i1 = 0;
+    Object localObject10 = "";
+    Object localObject9 = "";
+    boolean bool4 = false;
+    int n = 0;
+    int m = 0;
+    boolean bool3 = false;
+    Object localObject1 = "";
+    Object localObject2 = "";
+    Object localObject3;
+    boolean bool2;
+    Object localObject8;
+    Object localObject6;
+    Object localObject5;
+    Object localObject7;
+    Object localObject4;
+    long l1;
+    int k;
+    String str1;
+    int j;
+    int i;
+    boolean bool1;
+    Object localObject11;
+    if ((paramObject instanceof Intent))
+    {
+      localObject3 = (Intent)paramObject;
+      str7 = ((Intent)localObject3).getStringExtra("uin");
+      str6 = ((Intent)localObject3).getStringExtra("troop_uin");
+      i5 = ((Intent)localObject3).getIntExtra("uintype", 1003);
+      l2 = ((Intent)localObject3).getLongExtra("file_send_size", 0L);
+      i4 = ((Intent)localObject3).getIntExtra("file_send_business_type", 0);
+      i3 = ((Intent)localObject3).getIntExtra("file_send_duration", -1);
+      str5 = ((Intent)localObject3).getStringExtra("file_send_path");
+      str4 = ((Intent)localObject3).getStringExtra("thumbfile_send_path");
+      str2 = ((Intent)localObject3).getStringExtra("file_shortvideo_md5");
+      i2 = ((Intent)localObject3).getIntExtra("thumbfile_send_width", 0);
+      i1 = ((Intent)localObject3).getIntExtra("thumbfile_send_height", 0);
+      localObject10 = ((Intent)localObject3).getStringExtra("thumbfile_md5");
+      localObject9 = ((Intent)localObject3).getStringExtra("file_source");
+      str3 = ((Intent)localObject3).getStringExtra("file_video_source_dir");
+      bool4 = ((Intent)localObject3).getBooleanExtra("support_progressive", false);
+      n = ((Intent)localObject3).getIntExtra("file_width", 0);
+      m = ((Intent)localObject3).getIntExtra("file_height", 0);
+      bool3 = ((Intent)localObject3).getBooleanExtra("video_sync_to_story", false);
+      bool2 = ((Intent)localObject3).getBooleanExtra("mediacodec_encode_enable", false);
+      localObject8 = ((Intent)localObject3).getStringExtra("hot_video_icon");
+      localObject6 = ((Intent)localObject3).getStringExtra("hot_video_title");
+      localObject5 = ((Intent)localObject3).getStringExtra("hot_video_url");
+      localObject7 = ((Intent)localObject3).getStringExtra("hot_video_icon_sub");
+      localObject4 = ((Intent)localObject3).getStringExtra("file_uuid");
+      l1 = ((Intent)localObject3).getLongExtra("file_thumb_Size", 0L);
+      k = ((Intent)localObject3).getIntExtra("special_video_type", 0);
+      str1 = ((Intent)localObject3).getStringExtra("hot_video_name");
+      j = ((Intent)localObject3).getIntExtra("short_video_msg_tail_type", 0);
+      i = ((Intent)localObject3).getIntExtra("param_key_redbag_type", 0);
+      if (i == LocalMediaInfo.REDBAG_TYPE_GET) {
+        localObject1 = a(str7, i5);
+      }
+      bool1 = ((Intent)localObject3).getBooleanExtra("file_raw_size", false);
+      localObject2 = ((Intent)localObject3).getStringExtra("widgetinfo");
+      localObject11 = ((Intent)localObject3).getStringExtra("key_camera_material_name");
+      localObject3 = localObject1;
+      localObject1 = localObject11;
+    }
+    for (;;)
+    {
+      localObject11 = new azae();
+      ((azae)localObject11).jdField_c_of_type_JavaLangString = str7;
+      ((azae)localObject11).jdField_h_of_type_JavaLangString = str5;
+      ((azae)localObject11).jdField_j_of_type_JavaLangString = str4;
+      ((azae)localObject11).jdField_b_of_type_Int = i5;
+      ((azae)localObject11).jdField_d_of_type_JavaLangString = str6;
+      ((azae)localObject11).jdField_e_of_type_Int = ((int)l2);
+      ((azae)localObject11).jdField_f_of_type_Int = i3;
+      ((azae)localObject11).jdField_e_of_type_JavaLangString = str2;
+      ((azae)localObject11).jdField_c_of_type_Int = i2;
+      ((azae)localObject11).jdField_d_of_type_Int = i1;
+      ((azae)localObject11).jdField_g_of_type_Int = paramayzo.jdField_a_of_type_Int;
+      ((azae)localObject11).jdField_a_of_type_JavaLangObject = paramObject;
+      ((azae)localObject11).jdField_g_of_type_JavaLangString = ((String)localObject10);
+      ((azae)localObject11).jdField_l_of_type_JavaLangString = ((String)localObject9);
+      ((azae)localObject11).jdField_k_of_type_JavaLangString = str3;
+      ((azae)localObject11).jdField_a_of_type_Int = i4;
+      ((azae)localObject11).jdField_b_of_type_Boolean = bool4;
+      ((azae)localObject11).jdField_h_of_type_Int = n;
+      ((azae)localObject11).jdField_i_of_type_Int = m;
+      ((azae)localObject11).jdField_g_of_type_Boolean = bool3;
+      ((azae)localObject11).jdField_c_of_type_Boolean = bool2;
+      ((azae)localObject11).jdField_m_of_type_JavaLangString = ((String)localObject8);
+      ((azae)localObject11).jdField_o_of_type_JavaLangString = ((String)localObject6);
+      ((azae)localObject11).p = ((String)localObject5);
+      ((azae)localObject11).jdField_n_of_type_JavaLangString = ((String)localObject7);
+      ((azae)localObject11).jdField_a_of_type_JavaLangString = ((String)localObject4);
+      ((azae)localObject11).jdField_b_of_type_Long = l1;
+      ((azae)localObject11).jdField_j_of_type_Int = k;
+      ((azae)localObject11).jdField_q_of_type_JavaLangString = str1;
+      ((azae)localObject11).jdField_k_of_type_Int = j;
+      ((azae)localObject11).jdField_l_of_type_Int = i;
+      ((azae)localObject11).jdField_r_of_type_JavaLangString = ((String)localObject3);
+      ((azae)localObject11).jdField_h_of_type_Boolean = bool1;
+      ((azae)localObject11).jdField_s_of_type_JavaLangString = ((String)localObject2);
+      ((azae)localObject11).t = ((String)localObject1);
+      awen.a(this.jdField_g_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, "createShortVideoUploadInfo", "");
+      return localObject11;
+      if ((paramObject instanceof MessageForShortVideo))
+      {
+        localObject6 = (MessageForShortVideo)paramObject;
+        str7 = ((MessageForShortVideo)localObject6).frienduin;
+        str6 = ((MessageForShortVideo)localObject6).frienduin;
+        i5 = ((MessageForShortVideo)localObject6).istroop;
+        l2 = ((MessageForShortVideo)localObject6).videoFileSize;
+        i4 = paramayzo.jdField_b_of_type_Int;
+        i3 = ((MessageForShortVideo)localObject6).videoFileTime;
+        str5 = ((MessageForShortVideo)localObject6).videoFileName;
+        str4 = ShortVideoUtils.a(((MessageForShortVideo)localObject6).thumbMD5, "jpg");
+        str2 = ((MessageForShortVideo)localObject6).md5;
+        i2 = ((MessageForShortVideo)localObject6).thumbWidth;
+        i1 = ((MessageForShortVideo)localObject6).thumbHeight;
+        localObject11 = ((MessageForShortVideo)localObject6).thumbMD5;
+        String str8 = ((MessageForShortVideo)localObject6).fileSource;
+        str3 = ((MessageForShortVideo)localObject6).mVideoFileSourceDir;
+        bool4 = ((MessageForShortVideo)localObject6).supportProgressive;
+        n = ((MessageForShortVideo)localObject6).fileWidth;
+        m = ((MessageForShortVideo)localObject6).fileHeight;
+        bool3 = ((MessageForShortVideo)localObject6).syncToStory;
+        bool2 = ((MessageForShortVideo)localObject6).mediacodecEncode;
+        if (((MessageForShortVideo)localObject6).CheckIsHotVideo())
+        {
+          localObject4 = ((MessageForShortVideo)localObject6).hotVideoIconUrl;
+          localObject2 = ((MessageForShortVideo)localObject6).hotVideoTitle;
+          localObject1 = ((MessageForShortVideo)localObject6).hotVideoUrl;
+          localObject3 = ((MessageForShortVideo)localObject6).hotVideoSubIconUrl;
+          str1 = ((MessageForShortVideo)localObject6).videoFileName;
+          localObject5 = ((MessageForShortVideo)localObject6).uuid;
+        }
+        for (;;)
+        {
+          k = ((MessageForShortVideo)localObject6).specialVideoType;
+          j = ((MessageForShortVideo)localObject6).msgTailType;
+          i = ((MessageForShortVideo)localObject6).redBagType;
+          String str9 = ((MessageForShortVideo)localObject6).shortVideoId;
+          bool1 = ((MessageForShortVideo)localObject6).sendRawVideo;
+          localObject9 = ((MessageForShortVideo)localObject6).templateId;
+          String str10 = ((MessageForShortVideo)localObject6).templateName;
+          l1 = -1L;
+          localObject8 = localObject4;
+          localObject7 = localObject3;
+          localObject6 = localObject2;
+          localObject10 = localObject1;
+          localObject3 = str9;
+          localObject1 = str10;
+          localObject2 = localObject9;
+          localObject4 = localObject5;
+          localObject5 = localObject10;
+          localObject9 = str8;
+          localObject10 = localObject11;
+          break;
+          localObject5 = null;
+          str1 = "";
+          localObject1 = "";
+          localObject2 = "";
+          localObject3 = "";
+          localObject4 = "";
+        }
+      }
+      l1 = -1L;
+      localObject8 = "";
+      bool2 = false;
+      localObject4 = null;
+      localObject7 = "";
+      k = 0;
+      bool1 = false;
+      localObject6 = "";
+      j = 0;
+      localObject5 = "";
+      i = 0;
+      str1 = "";
+      localObject3 = "";
+      localObject11 = "";
+      localObject1 = localObject2;
+      localObject2 = localObject11;
+    }
+  }
+  
+  public MessageRecord a(ayyz paramayyz)
+  {
+    long l = System.currentTimeMillis();
+    MessageForShortVideo localMessageForShortVideo = ayvw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramayyz.jdField_c_of_type_JavaLangString, paramayyz.jdField_d_of_type_JavaLangString, paramayyz.jdField_b_of_type_Int);
+    localMessageForShortVideo.videoFileName = paramayyz.jdField_h_of_type_JavaLangString;
+    if (paramayyz.jdField_a_of_type_JavaLangString == null) {
+      paramayyz.jdField_a_of_type_JavaLangString = "";
+    }
+    localMessageForShortVideo.uuid = paramayyz.jdField_a_of_type_JavaLangString;
+    if (paramayyz.jdField_e_of_type_JavaLangString == null) {
+      paramayyz.jdField_e_of_type_JavaLangString = "";
+    }
+    localMessageForShortVideo.md5 = paramayyz.jdField_e_of_type_JavaLangString;
+    localMessageForShortVideo.mLocalMd5 = paramayyz.jdField_f_of_type_JavaLangString;
+    localMessageForShortVideo.videoFileName = paramayyz.jdField_k_of_type_JavaLangString;
+    localMessageForShortVideo.videoFileFormat = paramayyz.jdField_l_of_type_Int;
+    localMessageForShortVideo.videoFileSize = paramayyz.jdField_i_of_type_Int;
+    localMessageForShortVideo.videoFileTime = paramayyz.jdField_j_of_type_Int;
+    localMessageForShortVideo.thumbWidth = paramayyz.jdField_g_of_type_Int;
+    localMessageForShortVideo.thumbHeight = paramayyz.jdField_h_of_type_Int;
+    localMessageForShortVideo.videoFileStatus = 999;
+    localMessageForShortVideo.videoFileProgress = 0;
+    label284:
+    label341:
+    String str;
+    if (paramayyz.jdField_b_of_type_Int == 0)
+    {
+      localMessageForShortVideo.fileType = 6;
+      localMessageForShortVideo.thumbMD5 = paramayyz.jdField_g_of_type_JavaLangString;
+      if (paramayyz.jdField_j_of_type_JavaLangString == null) {
+        paramayyz.jdField_j_of_type_JavaLangString = "";
+      }
+      localMessageForShortVideo.fileSource = paramayyz.jdField_j_of_type_JavaLangString;
+      localMessageForShortVideo.lastModified = 0L;
+      localMessageForShortVideo.thumbFileSize = paramayyz.jdField_m_of_type_Int;
+      localMessageForShortVideo.busiType = paramayyz.jdField_f_of_type_Int;
+      localMessageForShortVideo.fromChatType = paramayyz.jdField_c_of_type_Int;
+      localMessageForShortVideo.toChatType = paramayyz.jdField_d_of_type_Int;
+      localMessageForShortVideo.uiOperatorFlag = 2;
+      localMessageForShortVideo.supportProgressive = paramayyz.jdField_a_of_type_Boolean;
+      localMessageForShortVideo.fileWidth = paramayyz.jdField_n_of_type_Int;
+      localMessageForShortVideo.fileHeight = paramayyz.jdField_o_of_type_Int;
+      if (paramayyz.jdField_a_of_type_Ayza == null) {
+        break label647;
+      }
+      i = 1;
+      if (i != 0)
+      {
+        localMessageForShortVideo.msgseq = paramayyz.jdField_a_of_type_Ayza.jdField_a_of_type_Long;
+        localMessageForShortVideo.shmsgseq = paramayyz.jdField_a_of_type_Ayza.jdField_b_of_type_Long;
+        localMessageForShortVideo.msgUid = paramayyz.jdField_a_of_type_Ayza.jdField_c_of_type_Long;
+      }
+      if (localMessageForShortVideo.busiType != 2) {
+        break label652;
+      }
+      localMessageForShortVideo.msg = ayyw.jdField_b_of_type_JavaLangString;
+      if (paramayyz.jdField_n_of_type_JavaLangString != null) {
+        break label663;
+      }
+      str = "";
+      label352:
+      localMessageForShortVideo.hotVideoIconUrl = str;
+      if (paramayyz.p != null) {
+        break label672;
+      }
+      str = "";
+      label370:
+      localMessageForShortVideo.hotVideoTitle = str;
+      if (paramayyz.jdField_q_of_type_JavaLangString != null) {
+        break label681;
+      }
+      str = "";
+      label388:
+      localMessageForShortVideo.hotVideoUrl = str;
+      if (paramayyz.jdField_o_of_type_JavaLangString != null) {
+        break label690;
+      }
+      str = "";
+      label406:
+      localMessageForShortVideo.hotVideoSubIconUrl = str;
+      localMessageForShortVideo.specialVideoType = paramayyz.jdField_q_of_type_Int;
+      localMessageForShortVideo.msgTailType = paramayyz.jdField_r_of_type_Int;
+      localMessageForShortVideo.redBagType = paramayyz.jdField_s_of_type_Int;
+      localMessageForShortVideo.shortVideoId = paramayyz.jdField_r_of_type_JavaLangString;
+      localMessageForShortVideo.isStoryVideo = paramayyz.jdField_b_of_type_Boolean;
+      if (localMessageForShortVideo.redBagType == LocalMediaInfo.REDBAG_TYPE_GET) {
+        if (!VideoRedbagData.queryRewardStat(localMessageForShortVideo.shortVideoId)) {
+          break label699;
+        }
+      }
+    }
+    label647:
+    label652:
+    label663:
+    label672:
+    label681:
+    label690:
+    label699:
+    for (int i = 1;; i = 0)
+    {
+      localMessageForShortVideo.redBagStat = i;
+      if (!TextUtils.isEmpty(paramayyz.jdField_s_of_type_JavaLangString))
+      {
+        localMessageForShortVideo.templateId = paramayyz.jdField_s_of_type_JavaLangString;
+        localMessageForShortVideo.templateName = paramayyz.t;
+      }
+      localMessageForShortVideo.serial();
+      paramayyz.jdField_a_of_type_Long = localMessageForShortVideo.uniseq;
+      awen.a(this.jdField_g_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, "packForwardMsg", "cost:" + (System.currentTimeMillis() - l));
+      awen.a(this.jdField_g_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, "packForwardMsg", "mr: " + localMessageForShortVideo.toString());
+      return localMessageForShortVideo;
+      if (paramayyz.jdField_b_of_type_Int == 3000)
+      {
+        localMessageForShortVideo.fileType = 17;
+        break;
+      }
+      if (paramayyz.jdField_b_of_type_Int != 1) {
+        break;
+      }
+      localMessageForShortVideo.fileType = 9;
+      break;
+      i = 0;
+      break label284;
+      localMessageForShortVideo.msg = ayyw.jdField_a_of_type_JavaLangString;
+      break label341;
+      str = paramayyz.jdField_n_of_type_JavaLangString;
+      break label352;
+      str = paramayyz.p;
+      break label370;
+      str = paramayyz.jdField_q_of_type_JavaLangString;
+      break label388;
+      str = paramayyz.jdField_o_of_type_JavaLangString;
+      break label406;
+    }
+  }
+  
+  public MessageRecord a(azae paramazae)
+  {
+    long l = System.currentTimeMillis();
+    MessageForShortVideo localMessageForShortVideo;
+    if (paramazae.jdField_d_of_type_Boolean)
+    {
+      localMessageForShortVideo = ayvw.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramazae.jdField_c_of_type_JavaLangString, paramazae.jdField_d_of_type_JavaLangString, paramazae.jdField_b_of_type_Int);
+      localMessageForShortVideo.subBusiType = 1;
+      localMessageForShortVideo.videoFileName = paramazae.jdField_h_of_type_JavaLangString;
+    }
+    label281:
+    label299:
+    label319:
+    label970:
+    label994:
+    label1001:
+    label1006:
+    label1017:
+    for (;;)
+    {
+      localMessageForShortVideo.specialVideoType = paramazae.jdField_j_of_type_Int;
+      localMessageForShortVideo.msgTailType = paramazae.jdField_k_of_type_Int;
+      localMessageForShortVideo.redBagType = paramazae.jdField_l_of_type_Int;
+      localMessageForShortVideo.shortVideoId = paramazae.jdField_r_of_type_JavaLangString;
+      if (paramazae.jdField_a_of_type_JavaLangString == null) {
+        paramazae.jdField_a_of_type_JavaLangString = "";
+      }
+      localMessageForShortVideo.uuid = paramazae.jdField_a_of_type_JavaLangString;
+      if (paramazae.jdField_e_of_type_JavaLangString == null) {
+        paramazae.jdField_e_of_type_JavaLangString = "";
+      }
+      localMessageForShortVideo.md5 = paramazae.jdField_e_of_type_JavaLangString;
+      localMessageForShortVideo.videoFileFormat = 2;
+      localMessageForShortVideo.videoFileSize = paramazae.jdField_e_of_type_Int;
+      localMessageForShortVideo.videoFileTime = paramazae.jdField_f_of_type_Int;
+      localMessageForShortVideo.thumbWidth = paramazae.jdField_c_of_type_Int;
+      localMessageForShortVideo.thumbHeight = paramazae.jdField_d_of_type_Int;
+      localMessageForShortVideo.mThumbFilePath = paramazae.jdField_j_of_type_JavaLangString;
+      localMessageForShortVideo.mVideoFileSourceDir = paramazae.jdField_k_of_type_JavaLangString;
+      localMessageForShortVideo.videoFileStatus = 999;
+      localMessageForShortVideo.videoFileProgress = 0;
+      localMessageForShortVideo.extraflag = 32772;
+      localMessageForShortVideo.thumbMD5 = paramazae.jdField_g_of_type_JavaLangString;
+      if ((paramazae.jdField_l_of_type_JavaLangString == null) || (paramazae.jdField_l_of_type_JavaLangString.length() == 0)) {
+        paramazae.jdField_l_of_type_JavaLangString = "camera";
+      }
+      localMessageForShortVideo.fileSource = paramazae.jdField_l_of_type_JavaLangString;
+      localMessageForShortVideo.lastModified = 0L;
+      localMessageForShortVideo.mediacodecEncode = paramazae.jdField_c_of_type_Boolean;
+      Object localObject;
+      String str;
+      int i;
+      if (localMessageForShortVideo.istroop == 0)
+      {
+        localMessageForShortVideo.fileType = 6;
+        if (paramazae.jdField_b_of_type_Int != 1008) {
+          break label927;
+        }
+        localMessageForShortVideo.busiType = 1007;
+        if (paramazae.jdField_b_of_type_Int != 0) {
+          break label970;
+        }
+        aoep.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForShortVideo, paramazae.jdField_c_of_type_JavaLangString);
+        localMessageForShortVideo.fromChatType = -1;
+        localMessageForShortVideo.toChatType = -1;
+        localMessageForShortVideo.uiOperatorFlag = 1;
+        localMessageForShortVideo.supportProgressive = paramazae.jdField_b_of_type_Boolean;
+        localMessageForShortVideo.fileWidth = paramazae.jdField_h_of_type_Int;
+        localMessageForShortVideo.fileHeight = paramazae.jdField_i_of_type_Int;
+        localMessageForShortVideo.syncToStory = paramazae.jdField_g_of_type_Boolean;
+        localObject = ayvj.jdField_n_of_type_JavaLangString;
+        if (!localMessageForShortVideo.syncToStory) {
+          break label994;
+        }
+        str = "1";
+        localMessageForShortVideo.saveExtInfoToExtStr((String)localObject, str);
+        localMessageForShortVideo.sendRawVideo = paramazae.jdField_h_of_type_Boolean;
+        if (paramazae.jdField_h_of_type_Boolean) {
+          localMessageForShortVideo.saveExtInfoToExtStr(ayvj.z, "1");
+        }
+        if (paramazae.jdField_a_of_type_Azaf == null) {
+          break label1001;
+        }
+        i = 1;
+        if (i != 0)
+        {
+          localMessageForShortVideo.msgseq = paramazae.jdField_a_of_type_Azaf.jdField_a_of_type_Long;
+          localMessageForShortVideo.shmsgseq = paramazae.jdField_a_of_type_Azaf.jdField_b_of_type_Long;
+          localMessageForShortVideo.msgUid = paramazae.jdField_a_of_type_Azaf.jdField_c_of_type_Long;
+        }
+        if (localMessageForShortVideo.busiType != 2) {
+          break label1006;
+        }
+      }
+      for (localMessageForShortVideo.msg = ayyw.jdField_b_of_type_JavaLangString;; localMessageForShortVideo.msg = ayyw.jdField_a_of_type_JavaLangString)
+      {
+        if (!TextUtils.isEmpty(paramazae.jdField_s_of_type_JavaLangString))
+        {
+          localMessageForShortVideo.templateId = paramazae.jdField_s_of_type_JavaLangString;
+          localMessageForShortVideo.templateName = paramazae.t;
+        }
+        localMessageForShortVideo.serial();
+        paramazae.jdField_a_of_type_Long = localMessageForShortVideo.uniseq;
+        awen.a(this.jdField_g_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, "packmsg", "cost:" + (System.currentTimeMillis() - l));
+        awen.a(this.jdField_g_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, "packMsg", "mr: " + localMessageForShortVideo.toLogString() + "-" + localMessageForShortVideo.toString());
+        return localMessageForShortVideo;
+        if (paramazae.jdField_e_of_type_Boolean)
+        {
+          localMessageForShortVideo = ayvw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramazae.jdField_c_of_type_JavaLangString, paramazae.jdField_d_of_type_JavaLangString, paramazae.jdField_b_of_type_Int);
+          localMessageForShortVideo.subBusiType = 0;
+          localMessageForShortVideo.hotVideoIconUrl = paramazae.jdField_m_of_type_JavaLangString;
+          localMessageForShortVideo.hotVideoTitle = paramazae.jdField_o_of_type_JavaLangString;
+          localMessageForShortVideo.hotVideoUrl = paramazae.p;
+          localMessageForShortVideo.hotVideoSubIconUrl = paramazae.jdField_n_of_type_JavaLangString;
+          localMessageForShortVideo.videoFileName = paramazae.jdField_q_of_type_JavaLangString;
+          localMessageForShortVideo.videoAttr = 0;
+          localMessageForShortVideo.videoKandianType = 0;
+          if ((localMessageForShortVideo.videoFileName != null) && (localMessageForShortVideo.videoFileName.length() != 0)) {
+            break label1017;
+          }
+          localObject = new StringBuilder();
+          if ((paramazae.jdField_e_of_type_JavaLangString == null) || (paramazae.jdField_e_of_type_JavaLangString.length() == 0)) {}
+          for (str = "HotVideo";; str = paramazae.jdField_e_of_type_JavaLangString)
+          {
+            localMessageForShortVideo.videoFileName = (str + ".mp4");
+            break;
+          }
+        }
+        if (paramazae.jdField_f_of_type_Boolean)
+        {
+          localMessageForShortVideo = ayvw.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramazae.jdField_c_of_type_JavaLangString, paramazae.jdField_d_of_type_JavaLangString, paramazae.jdField_b_of_type_Int);
+          localMessageForShortVideo.subBusiType = 2;
+          localMessageForShortVideo.videoFileName = paramazae.jdField_h_of_type_JavaLangString;
+          break;
+        }
+        localMessageForShortVideo = ayvw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramazae.jdField_c_of_type_JavaLangString, paramazae.jdField_d_of_type_JavaLangString, paramazae.jdField_b_of_type_Int);
+        localMessageForShortVideo.subBusiType = 0;
+        localMessageForShortVideo.videoFileName = paramazae.jdField_h_of_type_JavaLangString;
+        break;
+        if (localMessageForShortVideo.istroop == 3000)
+        {
+          localMessageForShortVideo.fileType = 17;
+          break label281;
+        }
+        if (localMessageForShortVideo.istroop != 1) {
+          break label281;
+        }
+        localMessageForShortVideo.fileType = 9;
+        break label281;
+        if (2 == paramazae.jdField_a_of_type_Int)
+        {
+          localMessageForShortVideo.busiType = 1;
+          break label299;
+        }
+        if (3 == paramazae.jdField_a_of_type_Int)
+        {
+          localMessageForShortVideo.busiType = 2;
+          break label299;
+        }
+        localMessageForShortVideo.busiType = 0;
+        break label299;
+        if (paramazae.jdField_b_of_type_Int != 1) {
+          break label319;
+        }
+        aoep.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForShortVideo, paramazae.jdField_c_of_type_JavaLangString);
+        break label319;
+        str = "0";
+        break label391;
+        i = 0;
+        break label436;
+      }
+    }
+  }
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    awen.a(this.jdField_g_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, "attachRichText2Msg", "");
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForRichText)) {
+      ((MessageForRichText)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).richText = paramRichText;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  }
+  
+  public void a(awfz paramawfz)
+  {
+    awen.a(this.jdField_g_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, "updateMsg", "resut:" + paramawfz);
+    if (paramawfz != null)
+    {
+      MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      localMessageForShortVideo.videoFileSize = ((int)paramawfz.jdField_a_of_type_Long);
+      localMessageForShortVideo.uuid = paramawfz.jdField_c_of_type_JavaLangString;
+      localMessageForShortVideo.md5 = paramawfz.jdField_d_of_type_JavaLangString;
+      localMessageForShortVideo.thumbFileSize = ((int)paramawfz.jdField_c_of_type_Long);
+      localMessageForShortVideo.videoAttr = paramawfz.jdField_c_of_type_Int;
+      localMessageForShortVideo.videoKandianType = paramawfz.jdField_d_of_type_Int;
+      localMessageForShortVideo.serial();
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, localMessageForShortVideo.msgData);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayye
  * JD-Core Version:    0.7.0.1
  */

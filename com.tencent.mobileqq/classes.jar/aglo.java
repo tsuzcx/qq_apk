@@ -1,38 +1,82 @@
-public class aglo
-  extends aglv
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+
+class aglo
+  implements View.OnTouchListener
 {
-  private aglv i;
+  long jdField_a_of_type_Long = 0L;
   
-  public aglo(aglv paramaglv)
-  {
-    this.i = paramaglv;
-  }
+  aglo(agld paramagld) {}
   
-  public boolean a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return this.i.a();
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (!super.a(paramString)) {
+    if ((this.jdField_a_of_type_Agld.L) || (!(paramView instanceof ImageView))) {
       return false;
     }
-    String[] arrayOfString = agmm.a(paramString);
-    if ((arrayOfString != null) && ("image".equals(arrayOfString[0])) && ("gif".equals(arrayOfString[1]))) {
-      return true;
+    Object localObject = (ImageView)paramView;
+    int i = paramMotionEvent.getAction();
+    localObject = null;
+    paramMotionEvent = (MotionEvent)localObject;
+    if (paramView.getTag() != null)
+    {
+      paramMotionEvent = (MotionEvent)localObject;
+      if ((paramView.getTag() instanceof aupa)) {
+        paramMotionEvent = (aupa)paramView.getTag();
+      }
     }
-    return this.i.a(paramString);
-  }
-  
-  public boolean b()
-  {
-    return this.i.b();
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if (paramMotionEvent != null)
+      {
+        paramView.setAlpha(paramMotionEvent.a() * 0.5F);
+      }
+      else
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        if (paramMotionEvent != null) {
+          paramView.setAlpha(paramMotionEvent.a());
+        }
+        while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
+        {
+          return true;
+          paramView.setAlpha(1.0F);
+        }
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        paramView = new Intent(this.jdField_a_of_type_Agld.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
+        localObject = aokh.a().a(this.jdField_a_of_type_Agld.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        aunx.a(this.jdField_a_of_type_Agld.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Agld.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramMotionEvent);
+        paramView.putExtra("url", (String)localObject);
+        paramView.putExtra("finish_animation_out_to_right", true);
+        paramView.putExtra("is_wrap_content", true);
+        paramView.putExtra("hide_left_button", false);
+        if (this.jdField_a_of_type_Agld.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
+        {
+          this.jdField_a_of_type_Agld.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
+          continue;
+          if (paramMotionEvent != null) {
+            paramView.setAlpha(paramMotionEvent.a());
+          } else {
+            paramView.setAlpha(1.0F);
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aglo
  * JD-Core Version:    0.7.0.1
  */

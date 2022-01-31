@@ -1,74 +1,47 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
 
-class bknv
-  implements Animator.AnimatorListener
+public class bknv
 {
-  bknv(bknr parambknr) {}
+  public final int a;
+  public final boolean a;
+  public final int b;
+  public final int c;
+  public final int d;
+  public final int e;
+  public final int f;
+  public final int g;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public bknv(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5, int paramInt6, int paramInt7)
   {
-    if (!bknr.a(this.a)) {
-      return;
-    }
-    if (!bknr.b(this.a))
-    {
-      bknr.a(this.a, false);
-      if (bknr.b(this.a) == 1)
-      {
-        bknr.a(this.a, 3);
-        return;
-      }
-      bknr.a(this.a, 0);
-      bknr.a(this.a, "");
-      return;
-    }
-    if (bknr.b(this.a) == 1)
-    {
-      bknr.a(this.a, 2);
-      bknr.a(this.a, bknr.b(this.a), 1000);
-      return;
-    }
-    bknr.a(this.a, "");
-    bknr.a(this.a, 0);
-    bknr.a(this.a, false);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.f = paramInt5;
+    this.e = paramInt6;
+    this.g = paramInt7;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public static bknv a(Bitmap paramBitmap, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!bknr.a(this.a)) {
-      return;
-    }
-    if (!bknr.b(this.a))
-    {
-      bknr.a(this.a, false);
-      if (bknr.b(this.a) == 1)
-      {
-        bknr.a(this.a, 3);
-        return;
-      }
-      bknr.a(this.a, 0);
-      bknr.a(this.a, "");
-      return;
-    }
-    if (bknr.b(this.a) == 1)
-    {
-      bknr.a(this.a, 2);
-      bknr.a(this.a, bknr.b(this.a), 1000);
-      return;
-    }
-    bknr.a(this.a, "");
-    bknr.a(this.a, 0);
-    bknr.a(this.a, false);
+    return new bknv(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), paramBoolean, paramInt1, paramInt2, paramInt3);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public static bknv a(Rect paramRect, boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
+  {
+    return new bknv(paramRect.left, paramRect.top, paramRect.width(), paramRect.height(), paramBoolean, paramInt1, paramInt2, paramInt3);
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public String toString()
+  {
+    return "CropConfig{x=" + this.jdField_a_of_type_Int + ", y=" + this.b + ", width=" + this.c + ", height=" + this.d + ", addPadding=" + this.jdField_a_of_type_Boolean + ", verticalPadding=" + this.e + ", horizontalPadding=" + this.f + '}';
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bknv
  * JD-Core Version:    0.7.0.1
  */

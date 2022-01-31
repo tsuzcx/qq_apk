@@ -1,32 +1,20 @@
-import android.app.Dialog;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qqfav.QfavLeakHelper.2.1;
+import com.tencent.qqmini.sdk.launcher.AppUIProxy;
 
-public final class bgqd
-  implements View.OnClickListener
+public class bgqd
+  extends bgpz
 {
-  public void onClick(View paramView)
+  public bgqd(AppUIProxy paramAppUIProxy) {}
+  
+  public void a(bgpy parambgpy)
   {
-    if (this.a != null) {
-      this.a.dismiss();
-    }
-    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131709609) + "/Tencent/MobileQQ/log/", 1).a();
-    paramView = ThreadManager.newFreeHandlerThread("Qfav-leaker", 10);
-    paramView.start();
-    paramView = paramView.getLooper();
-    if (paramView != null) {
-      new Handler(paramView).post(new QfavLeakHelper.2.1(this));
+    if (parambgpy.a == 11) {
+      this.a.hideLoading();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgqd
  * JD-Core Version:    0.7.0.1
  */

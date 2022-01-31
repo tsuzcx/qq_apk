@@ -1,28 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.graphics.Bitmap;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
-class agsm
-  implements DialogInterface.OnClickListener
+public class agsm
+  extends NativeGifImage
 {
-  agsm(agsj paramagsj) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public agsm(File paramFile, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
-    }
-    if (((NewPhotoListActivity)this.a.a.get()).c != null) {
-      ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
-    }
+    super(paramFile, paramBoolean);
+  }
+  
+  public int a()
+  {
+    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
+  }
+  
+  public Bitmap a()
+  {
+    return this.mCurrentFrameBitmap;
+  }
+  
+  public void a()
+  {
+    getNextFrame();
+    applyNextFrame();
+  }
+  
+  public int b()
+  {
+    return this.mMetaData[FRAME_COUNT_INDEX];
+  }
+  
+  public int c()
+  {
+    return this.mCurrentFrameIndex;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
 import android.text.TextUtils;
-import bcyb;
+import bexd;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine;
@@ -18,7 +18,7 @@ final class MiniAppUtils$2
   
   public void run()
   {
-    Object localObject2 = Storage.open(this.val$jsPluginEngine.activityContext, String.valueOf(bcyb.a().a()), this.val$jsPluginEngine.appBrandRuntime.getApkgInfo().appId);
+    Object localObject2 = Storage.open(this.val$jsPluginEngine.activityContext, String.valueOf(bexd.a().a()), this.val$jsPluginEngine.appBrandRuntime.getApkgInfo().appId);
     String[] arrayOfString;
     if (localObject2 != null)
     {
@@ -58,7 +58,7 @@ final class MiniAppUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.2
  * JD-Core Version:    0.7.0.1
  */

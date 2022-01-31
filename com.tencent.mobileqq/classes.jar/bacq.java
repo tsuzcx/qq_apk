@@ -1,26 +1,48 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class bacq
-  implements View.OnKeyListener
+public class bacq
 {
-  bacq(baco parambaco, bacu parambacu) {}
+  protected bacn a;
+  TeamWorkFileImportInfo a;
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public bacq(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
-    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.jdField_a_of_type_Bacu.a.getSelectionStart() == 0))
-    {
-      this.jdField_a_of_type_Baco.a.b(this.jdField_a_of_type_Bacu);
-      return true;
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = paramTeamWorkFileImportInfo;
+    if (paramQQAppInterface != null) {
+      this.jdField_a_of_type_Bacn = ((bacn)paramQQAppInterface.a(120));
     }
-    return false;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface) {}
+  
+  protected void a(boolean paramBoolean)
+  {
+    int i = 0;
+    if ((paramBoolean) && (bdcs.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("TeamWorkFileImportJob", 2, "---notifyUIFailed try local fileName: " + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
+      }
+      this.jdField_a_of_type_Bacn.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.a = false;
+      this.jdField_a_of_type_Bacn.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      this.jdField_a_of_type_Bacn.f(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        this.jdField_a_of_type_Bacn.d(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
+      }
+      return;
+      i = 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bacq
  * JD-Core Version:    0.7.0.1
  */

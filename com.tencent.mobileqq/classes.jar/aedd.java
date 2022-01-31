@@ -1,17 +1,24 @@
-import android.widget.RelativeLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aedd
-  extends acuj
+public class aedd
+  implements View.OnClickListener
 {
-  public long a;
-  public RelativeLayout a;
-  public String b;
+  public aedd(TroopRequestActivity paramTroopRequestActivity) {}
   
-  private aedd(aedb paramaedb) {}
+  public void onClick(View paramView)
+  {
+    TroopRequestActivity.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.security_verify", 2, "close warning tips");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aedd
  * JD-Core Version:    0.7.0.1
  */

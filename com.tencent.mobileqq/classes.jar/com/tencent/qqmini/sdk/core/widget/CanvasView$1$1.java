@@ -3,9 +3,9 @@ package com.tencent.qqmini.sdk.core.widget;
 import android.graphics.Bitmap;
 import android.util.Base64;
 import android.util.Log;
-import behp;
-import benc;
-import betc;
+import bghn;
+import bgms;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONObject;
 
 class CanvasView$1$1
@@ -17,7 +17,7 @@ class CanvasView$1$1
   {
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
-      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_Benc.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_Bgms.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_Int);
       return;
     }
     int i = (int)CanvasView.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.this$0);
@@ -53,13 +53,13 @@ class CanvasView$1$1
           ((JSONObject)localObject2).put("width", k);
           ((JSONObject)localObject2).put("height", m);
           ((JSONObject)localObject2).put("data", Base64.encode(CanvasView.a(arrayOfShort), 0));
-          this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_Behp.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_Int, ((JSONObject)localObject2).toString());
+          this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_Bghn.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_Int, ((JSONObject)localObject2).toString());
           return;
         }
         catch (Exception localException)
         {
-          betc.d(CanvasView.a(), "getImageData failed: " + Log.getStackTraceString(localException));
-          this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_Benc.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_Int);
+          QMLog.e(CanvasView.a(), "getImageData failed: " + Log.getStackTraceString(localException));
+          this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_Bgms.a(this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_ComTencentQqminiSdkCoreWidgetCanvasView$1.jdField_a_of_type_Int);
           return;
         }
         finally
@@ -75,7 +75,7 @@ class CanvasView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.widget.CanvasView.1.1
  * JD-Core Version:    0.7.0.1
  */

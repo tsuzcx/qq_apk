@@ -130,6 +130,8 @@ public class ServiceRemoteRuntime
     this.miniAppWebSocket.sendSetupContextCmd(paramOnLoadServiceWebvieJsListener);
   }
   
+  public void initService(ApkgInfo paramApkgInfo, String paramString, AppBrandRuntime.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener) {}
+  
   public void initWAServiceJS(String paramString)
   {
     if (QLog.isColorLevel()) {
@@ -193,7 +195,7 @@ public class ServiceRemoteRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.page.ServiceRemoteRuntime
  * JD-Core Version:    0.7.0.1
  */

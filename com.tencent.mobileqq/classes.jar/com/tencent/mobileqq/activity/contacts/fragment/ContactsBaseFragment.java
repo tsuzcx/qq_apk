@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.contacts.fragment;
 
-import afqq;
-import afqr;
-import afqs;
-import afsv;
+import ahoh;
+import ahoi;
+import ahoj;
+import ahqn;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.Rect;
@@ -13,7 +13,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import bfos;
+import bhpo;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -22,12 +22,12 @@ import com.tencent.widget.AbsListView;
 
 public abstract class ContactsBaseFragment
   extends Fragment
-  implements afsv, bfos
+  implements ahqn, bhpo
 {
   public static Rect a;
   private int a;
-  protected afqr a;
-  public afqs a;
+  protected ahoi a;
+  public ahoj a;
   public BaseActivity a;
   public QQAppInterface a;
   public boolean a;
@@ -49,14 +49,14 @@ public abstract class ContactsBaseFragment
   
   public abstract void a();
   
-  public void a(afqr paramafqr)
+  public void a(ahoi paramahoi)
   {
-    this.jdField_a_of_type_Afqr = paramafqr;
+    this.jdField_a_of_type_Ahoi = paramahoi;
   }
   
-  public void a(afqs paramafqs)
+  public void a(ahoj paramahoj)
   {
-    this.jdField_a_of_type_Afqs = paramafqs;
+    this.jdField_a_of_type_Ahoj = paramahoj;
   }
   
   public void a(BaseActivity paramBaseActivity)
@@ -72,7 +72,7 @@ public abstract class ContactsBaseFragment
   
   public abstract void a(boolean paramBoolean);
   
-  public abstract void an_();
+  public abstract void av_();
   
   public int b()
   {
@@ -147,7 +147,7 @@ public abstract class ContactsBaseFragment
     this.jdField_b_of_type_AndroidViewView = a(paramLayoutInflater, paramBundle);
     paramLayoutInflater = a();
     if ((paramLayoutInflater != null) && (Build.VERSION.SDK_INT >= 14)) {
-      paramLayoutInflater.setAccessibilityDelegate(new afqq(this));
+      paramLayoutInflater.setAccessibilityDelegate(new ahoh(this));
     }
     if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean))
     {
@@ -168,8 +168,8 @@ public abstract class ContactsBaseFragment
     super.onDestroy();
     this.jdField_b_of_type_AndroidViewView = null;
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_Afqr != null) {
-      this.jdField_a_of_type_Afqr.d(this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Ahoi != null) {
+      this.jdField_a_of_type_Ahoi.d(this.jdField_a_of_type_Int);
     }
   }
   
@@ -206,7 +206,7 @@ public abstract class ContactsBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment
  * JD-Core Version:    0.7.0.1
  */

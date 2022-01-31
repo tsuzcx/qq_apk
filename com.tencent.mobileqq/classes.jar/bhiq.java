@@ -1,73 +1,59 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-
-public abstract class bhiq
-  extends Binder
-  implements bhip
+public class bhiq
 {
+  private StringBuilder jdField_a_of_type_JavaLangStringBuilder;
+  private boolean jdField_a_of_type_Boolean;
+  
   public bhiq()
   {
-    attachInterface(this, "cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
+    a();
   }
   
-  public static bhip a(IBinder paramIBinder)
+  private void a()
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-    if ((localIInterface != null) && ((localIInterface instanceof bhip))) {
-      return (bhip)localIInterface;
-    }
-    return new bhir(paramIBinder);
+    a(",");
   }
   
-  public IBinder asBinder()
+  private void a(String paramString)
   {
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_JavaLangStringBuilder.append(paramString);
+    }
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public bhiq a()
+  {
+    this.jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
+    this.jdField_a_of_type_Boolean = false;
     return this;
   }
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public bhiq a(int paramInt)
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      a();
-      paramParcel2.writeNoException();
-      return true;
-    case 2: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      a(paramParcel1.readFloat());
-      paramParcel2.writeNoException();
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      c();
-      paramParcel2.writeNoException();
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-      b();
-      paramParcel2.writeNoException();
-      return true;
-    }
-    paramParcel1.enforceInterface("cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener");
-    a(paramParcel1.readInt());
-    paramParcel2.writeNoException();
-    return true;
+    return a(String.format("%d", new Object[] { Integer.valueOf(paramInt) }));
+  }
+  
+  public bhiq a(String paramString)
+  {
+    a();
+    paramString = paramString.replace(',', ';');
+    this.jdField_a_of_type_JavaLangStringBuilder.append(paramString);
+    return this;
+  }
+  
+  public bhiq a(byte[] paramArrayOfByte)
+  {
+    return a(bdcv.a(paramArrayOfByte));
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhiq
  * JD-Core Version:    0.7.0.1
  */

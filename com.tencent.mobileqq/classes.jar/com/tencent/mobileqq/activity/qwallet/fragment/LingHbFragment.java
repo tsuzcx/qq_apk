@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.qwallet.fragment;
 
-import agzd;
-import agzp;
-import agzq;
-import agzr;
-import agzs;
-import agzt;
-import agzz;
-import aham;
-import ahiw;
-import ajya;
+import aitd;
+import aitm;
+import aitn;
+import aito;
+import aitp;
+import aitq;
+import aitw;
+import aiuo;
+import ajaf;
+import alpo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -20,12 +20,12 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bcql;
-import bgxb;
+import bixy;
 import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,16 +51,16 @@ public class LingHbFragment
     do
     {
       return;
-      i = bgxb.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 1);
-      str1 = bgxb.a(String.valueOf(bgxb.a(this.b.getText().toString())));
+      i = bixy.a(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), 1);
+      str1 = bixy.a(String.valueOf(bixy.a(this.b.getText().toString())));
       if (TextUtils.isEmpty(str1))
       {
-        bcql.a(getActivity(), 2131693258, 0).a();
+        QQToast.a(getActivity(), 2131693359, 0).a();
         return;
       }
       str2 = c();
     } while (TextUtils.isEmpty(str2));
-    combineUploadData(this.jdField_a_of_type_Bgxj, this.channel, i, str1, "hongbao.wrap.go");
+    combineUploadData(this.jdField_a_of_type_Biyg, this.channel, i, str1, "hongbao.wrap.go");
     Map localMap = this.mActivity.a();
     localMap.put("channel", String.valueOf(this.channel));
     localMap.put("type", "1");
@@ -72,25 +72,25 @@ public class LingHbFragment
   
   public int a()
   {
-    return 2131561512;
+    return 2131561703;
   }
   
   protected String a()
   {
     if (32 == this.channel) {
-      return ajya.a(2131706114);
+      return alpo.a(2131706486);
     }
-    return ajya.a(2131706113);
+    return alpo.a(2131706485);
   }
   
   public void a()
   {
     super.a();
     c();
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new agzp(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a(this.jdField_a_of_type_JavaUtilList, new agzq(this), new agzr(this), new agzs(this));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aitm(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.a(this.jdField_a_of_type_JavaUtilList, new aitn(this), new aito(this), new aitp(this));
     this.c.setFocusable(true);
-    this.c.setOnFocusChangeListener(new agzt(this));
+    this.c.setOnFocusChangeListener(new aitq(this));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView.getLayoutParams();
     localLayoutParams.width = -1;
@@ -102,11 +102,11 @@ public class LingHbFragment
     super.a(paramBundle);
     QLog.i("LingHbFragment", 2, "init view...");
     this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketDrawChooseItemView = new ChooseItemView(this.mActivity);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368965));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369195));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.c.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     if (this.channel == 65536) {
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378213)).setText(2131693262);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378780)).setText(2131693363);
     }
   }
   
@@ -128,15 +128,15 @@ public class LingHbFragment
     String str1 = b();
     if (65536 == this.channel)
     {
-      if (aham.a(str1) < 4)
+      if (aiuo.a(str1) < 4)
       {
-        bcql.a(getActivity(), 2131697415, 0).a();
+        QQToast.a(getActivity(), 2131697590, 0).a();
         return null;
       }
-      String str2 = aham.a(str1);
+      String str2 = aiuo.a(str1);
       if (str2.length() > 0)
       {
-        bcql.a(getActivity(), String.format(getString(2131697413), new Object[] { Character.valueOf(str2.charAt(0)) }), 0).a();
+        QQToast.a(getActivity(), String.format(getString(2131697588), new Object[] { Character.valueOf(str2.charAt(0)) }), 0).a();
         return null;
       }
     }
@@ -145,7 +145,7 @@ public class LingHbFragment
   
   public void c()
   {
-    Object localObject = ((agzd)getActivity().app.getManager(245)).a("hb_recommend");
+    Object localObject = ((aitd)getActivity().app.getManager(245)).a("hb_recommend");
     for (;;)
     {
       int i;
@@ -171,8 +171,8 @@ public class LingHbFragment
             if (localJSONObject == null) {
               break label315;
             }
-            long l2 = ahiw.a(localJSONObject.optString("begintime"), -1L);
-            long l3 = ahiw.a(localJSONObject.optString("endtime"), 9223372036854775807L);
+            long l2 = ajaf.a(localJSONObject.optString("begintime"), -1L);
+            long l3 = ajaf.a(localJSONObject.optString("endtime"), 9223372036854775807L);
             if ((l1 < l2) || (l1 > l3)) {
               break label315;
             }
@@ -227,7 +227,7 @@ public class LingHbFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment
  * JD-Core Version:    0.7.0.1
  */

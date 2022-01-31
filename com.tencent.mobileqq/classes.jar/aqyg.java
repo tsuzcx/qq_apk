@@ -1,227 +1,249 @@
-import android.support.v4.util.LruCache;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchDetailActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class aqyg
+  extends ayjm
 {
-  final LruCache<String, aqyi> jdField_a_of_type_AndroidSupportV4UtilLruCache;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  final List<Object> jdField_a_of_type_JavaUtilList;
-  final ConcurrentHashMap<String, Object[]> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  public int a;
+  CharSequence a;
+  public String a;
+  public List<FileManagerEntity> a;
+  CharSequence b;
+  public String b;
   
-  public aqyg(QQAppInterface paramQQAppInterface)
+  public aqyg()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(3);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new aqyh(this, 20);
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public static final int a(QQAppInterface paramQQAppInterface)
+  public CharSequence a()
   {
-    int i = ((Integer)atbi.a(paramQQAppInterface.getAccount(), "self_gender", Integer.valueOf(0))).intValue();
-    if (i == 2) {
-      return 1;
-    }
-    if (i == 1) {
-      return 0;
-    }
-    return 2;
+    CharSequence localCharSequence = ayrd.a(((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).fileName.toLowerCase(), this.jdField_a_of_type_JavaLangString);
+    localCharSequence.toString();
+    return localCharSequence;
   }
   
-  private aqyi a(String paramString)
+  public String a()
   {
-    try
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(View paramView)
+  {
+    if ((paramView.getContext() instanceof UniteSearchActivity)) {
+      ayrd.a("all_result", "clk_file", new String[] { "" + this.jdField_a_of_type_JavaLangString });
+    }
+    ayrd.a(this.jdField_a_of_type_JavaLangString, 100, 0, paramView);
+    if (this.jdField_a_of_type_JavaUtilList.size() == 1)
     {
-      if (this.jdField_a_of_type_AndroidSupportV4UtilLruCache != null)
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+      Object localObject1 = (BaseActivity)paramView.getContext();
+      Object localObject2 = new arnh();
+      ((arnh)localObject2).jdField_b_of_type_JavaLangString = "file_viewer_in";
+      ((arnh)localObject2).jdField_a_of_type_Int = 73;
+      ((arnh)localObject2).c = arof.a(localFileManagerEntity.fileName);
+      ((arnh)localObject2).jdField_a_of_type_Long = localFileManagerEntity.fileSize;
+      arng.a(((BaseActivity)localObject1).app.getCurrentAccountUin(), (arnh)localObject2);
+      arng.a("0X8004AE4");
+      if (localFileManagerEntity.nFileType == 13)
       {
-        paramString = (aqyi)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString);
-        return paramString;
+        badt.a(localFileManagerEntity.Uuid, (Context)localObject1, this.jdField_a_of_type_Int, localFileManagerEntity, ((BaseActivity)localObject1).app);
+        if (this.jdField_a_of_type_Int == 8) {
+          azmj.b(null, "dc00898", "", "", "0X800A084", "0X800A084", 0, 0, "", "", "", "");
+        }
+      }
+      for (;;)
+      {
+        arng.a("0X8006062");
+        aynt.a(null, 0, this.jdField_a_of_type_Int, "0x8009D59", 0, 0, null, null);
+        return;
+        if (this.jdField_a_of_type_Int == 1)
+        {
+          azmj.b(null, "dc00898", "", "", "0X800A086", "0X800A086", 0, 0, "", "", "", "");
+          continue;
+          localObject2 = new arhh(((BaseActivity)localObject1).app, (Context)localObject1, localFileManagerEntity, 10001);
+          Bundle localBundle = new Bundle();
+          localBundle.putBoolean("from_qlink_enter_recent", false);
+          localBundle.putString("c2c_discussion_recentfile", localFileManagerEntity.peerUin);
+          if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+            localBundle.putString("file_browser_extra_params_uin", this.jdField_b_of_type_JavaLangString);
+          }
+          ((arhh)localObject2).a(localBundle);
+          localObject1 = new arhj((Context)localObject1, (arhm)localObject2);
+          ((arhj)localObject1).a(7);
+          if (this.jdField_a_of_type_Int != -1) {
+            ((arhj)localObject1).a(this.jdField_a_of_type_Int);
+          }
+          ((arhj)localObject1).a(alpo.a(2131704887));
+          ((arhj)localObject1).a(aroo.a(paramView.findViewById(2131366299), localFileManagerEntity.fileName));
+          ((arhj)localObject1).a();
+        }
       }
     }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
-    }
+    arng.a("0X8006099");
+    aynt.a(null, 0, this.jdField_a_of_type_Int, "0x8009D5B", 0, 0, null, null);
+    FileSearchDetailActivity.a(paramView.getContext(), a(), this);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public CharSequence b()
+  {
     return null;
   }
   
-  private void a(String paramString, aqyi paramaqyi)
+  public String b()
   {
-    try
+    return ((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).peerUin;
+  }
+  
+  public int c()
+  {
+    return 1;
+  }
+  
+  public CharSequence c()
+  {
+    Object localObject3;
+    if (this.jdField_a_of_type_JavaLangCharSequence == null)
     {
-      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString, paramaqyi);
-      return;
+      if (this.jdField_a_of_type_JavaUtilList.size() != 1) {
+        break label158;
+      }
+      localObject3 = (FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0);
+      localObject1 = new SpannableStringBuilder();
+      ((SpannableStringBuilder)localObject1).append(d());
+      if (((FileManagerEntity)localObject3).nFileType == 13) {
+        break label87;
+      }
+      ((SpannableStringBuilder)localObject1).append(" ").append(arni.c((FileManagerEntity)localObject3));
     }
-    catch (Throwable paramString)
+    label87:
+    Object localObject2;
+    for (;;)
     {
-      paramString.printStackTrace();
+      this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
+      return this.jdField_a_of_type_JavaLangCharSequence;
+      localObject2 = aroy.b(((FileManagerEntity)localObject3).srvTime);
+      localObject3 = arni.b((FileManagerEntity)localObject3);
+      ((SpannableStringBuilder)localObject1).clear();
+      ((SpannableStringBuilder)localObject1).append((String)localObject2 + " " + (String)localObject3 + " " + BaseApplicationImpl.getContext().getString(2131692509));
+    }
+    label158:
+    Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    long l = 0L;
+    label170:
+    if (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (FileManagerEntity)((Iterator)localObject1).next();
+      if (l >= ((FileManagerEntity)localObject2).srvTime) {
+        break label220;
+      }
+      l = ((FileManagerEntity)localObject2).srvTime;
+    }
+    label220:
+    for (;;)
+    {
+      break label170;
+      this.jdField_a_of_type_JavaLangCharSequence = d();
+      break;
     }
   }
   
-  public Object a(String paramString, int paramInt)
+  public CharSequence d()
   {
-    if ((paramString == null) || (paramString.length() == 0) || (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null))
-    {
-      paramString = null;
-      return paramString;
+    int i = 7;
+    if (this.jdField_b_of_type_JavaLangCharSequence != null) {
+      return this.jdField_b_of_type_JavaLangCharSequence;
     }
-    int i = 2;
-    aqyi localaqyi = a(paramString);
-    if (localaqyi == null) {
-      if (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
-      {
-        paramString = (String)atbi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "self_nick", String.valueOf(""));
-        i = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, i, NetConnInfoCenter.getServerTime());
-      }
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    Object localObject1;
+    if (j > 1)
+    {
+      localObject1 = new SpannableStringBuilder(j + alpo.a(2131704891) + "\"");
+      ((SpannableStringBuilder)localObject1).append(ayrd.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString));
+      ((SpannableStringBuilder)localObject1).append("\"").append("相关的同名文件记录");
+      this.jdField_b_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
+      return this.jdField_b_of_type_JavaLangCharSequence;
+    }
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    String str = arni.b((FileManagerEntity)this.jdField_a_of_type_JavaUtilList.get(0)).trim();
+    if (str.indexOf(alpo.a(2131704890)) == 0) {
+      localSpannableStringBuilder.append("来自多人聊天: ");
     }
     for (;;)
     {
-      switch (paramInt)
-      {
-      case 2: 
-      default: 
-        return null;
-        if (QLog.isDevelopLevel())
-        {
-          atbr.a("PttShow", "getGender no cache", new Object[] { paramString });
-          paramString = null;
-          continue;
-          i = localaqyi.jdField_a_of_type_Int;
-          paramString = localaqyi.b;
-        }
-        break;
-      case 1: 
-        return Integer.valueOf(i);
-        paramString = null;
-      }
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    if ((paramString == null) || (paramString.length() == 0) || (this.jdField_a_of_type_AndroidSupportV4UtilLruCache == null)) {
-      return null;
-    }
-    paramString = a(paramString, 2);
-    if ((paramString instanceof String)) {
-      return (String)paramString;
-    }
-    return null;
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    if ((paramMessageRecord == null) || ((paramMessageRecord.extLong & 0x1) == 0) || (paramMessageRecord.senderuin == null)) {}
-    label218:
-    do
-    {
-      Object localObject1;
-      do
-      {
-        return;
-        localObject1 = a(paramMessageRecord.senderuin);
-      } while ((localObject1 != null) && (((aqyi)localObject1).jdField_a_of_type_Long >= paramMessageRecord.time));
+      localObject1 = str;
+      if (i != 0) {}
       try
       {
-        String str1 = paramMessageRecord.getExtInfoFromExtStr("hotchat_nick");
-        i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("hotchat_gender"));
-        l1 = paramMessageRecord.time;
-        localObject2 = str1;
-        j = i;
-        if (!paramMessageRecord.senderuin.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
-          break label218;
+        localObject1 = str.toLowerCase().substring(i);
+        localSpannableStringBuilder.append(ayrd.a((String)localObject1, this.jdField_a_of_type_JavaLangString));
+        if (this.jdField_b_of_type_JavaLangCharSequence == null) {
+          this.jdField_b_of_type_JavaLangCharSequence = localSpannableStringBuilder;
         }
-        str2 = (String)atbi.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), "self_nick", String.valueOf(""));
-        k = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        localObject1 = str1;
-        if (str2 == null) {
-          break;
+        return this.jdField_b_of_type_JavaLangCharSequence;
+        if (str.indexOf(alpo.a(2131704888)) == 0)
+        {
+          localSpannableStringBuilder.append("发给多人聊天: ");
         }
-        localObject1 = str1;
-        if (str2.length() <= 0) {
-          break;
+        else if (str.indexOf(alpo.a(2131704889)) == 0)
+        {
+          localSpannableStringBuilder.append("来自群: ");
+          i = 4;
         }
-        localObject1 = str2;
+        else if (str.indexOf(alpo.a(2131704884)) == 0)
+        {
+          localSpannableStringBuilder.append("发给群: ");
+          i = 4;
+        }
+        else if (str.indexOf(alpo.a(2131704885)) == 0)
+        {
+          localSpannableStringBuilder.append("来自 ");
+          i = 2;
+        }
+        else if (str.indexOf(alpo.a(2131704886)) == 0)
+        {
+          localSpannableStringBuilder.append("发给  ");
+          i = 2;
+        }
+        else if (str.indexOf(alpo.a(2131704883)) == 0)
+        {
+          localSpannableStringBuilder.append("存到");
+          i = 2;
+        }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          int i;
-          long l1;
-          Object localObject2;
-          int j;
-          String str2;
-          int k;
-          long l2;
-          localException.printStackTrace();
-          continue;
-          if (k != 2) {
-            i = k;
-          }
+          Object localObject2 = str;
         }
+        i = 0;
       }
-      l2 = NetConnInfoCenter.getServerTime();
-      localObject2 = localObject1;
-      j = i;
-      l1 = l2;
-      if (QLog.isDevelopLevel())
-      {
-        atbr.a("PttShow", "cacheSelfGender", new Object[] { str2, Integer.valueOf(k), Long.valueOf(l2) });
-        l1 = l2;
-        j = i;
-        localObject2 = localObject1;
-      }
-      a(paramMessageRecord.senderuin, (String)localObject2, j, l1);
-    } while (!QLog.isDevelopLevel());
-    atbr.a("PttShow", "cacheGender", new Object[] { paramMessageRecord.extStr });
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt, long paramLong)
-  {
-    if ((paramString1 == null) || (paramString1.length() == 0)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localaqyi = a(paramString1);
-          if ((localaqyi == null) || (localaqyi.jdField_a_of_type_Long > paramLong)) {
-            break;
-          }
-          localaqyi.jdField_a_of_type_Int = paramInt;
-          if ((paramString2 != null) && (paramString2.length() > 0)) {
-            localaqyi.b = paramString2;
-          }
-          localaqyi.jdField_a_of_type_Long = paramLong;
-        } while (!QLog.isDevelopLevel());
-        atbr.a("PttShow", "cacheGender_update", new Object[] { paramString1, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-        return;
-      } while (localaqyi != null);
-      aqyi localaqyi = new aqyi();
-      localaqyi.jdField_a_of_type_JavaLangString = paramString1;
-      localaqyi.jdField_a_of_type_Int = paramInt;
-      if ((paramString2 != null) && (paramString2.length() > 0)) {
-        localaqyi.b = paramString2;
-      }
-      localaqyi.jdField_a_of_type_Long = paramLong;
-      a(paramString1, localaqyi);
-    } while (!QLog.isDevelopLevel());
-    atbr.a("PttShow", "cacheGender_add", new Object[] { paramString1, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqyg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,37 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.Leba.30.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class adbn
-  implements Animator.AnimatorListener
+public class adbn
+  extends avqr
 {
-  adbn(adbm paramadbm, ViewGroup paramViewGroup) {}
+  public adbn(Leba paramLeba) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+    if ((!paramBoolean1) || (paramInt == 2)) {}
+    for (;;)
+    {
+      return;
+      if (Leba.b(this.a))
+      {
+        ArrayList localArrayList = new ArrayList();
+        alrc.a(localArrayList, aiab.a().a(this.a.a));
+        this.a.a(new Leba.30.1(this, localArrayList));
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.i("Q.lebatab.leba", 2, "onGameCenterMsgReceive, " + Leba.c(this.a));
+        return;
+        aiab.a |= 0x2;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbn
  * JD-Core Version:    0.7.0.1
  */

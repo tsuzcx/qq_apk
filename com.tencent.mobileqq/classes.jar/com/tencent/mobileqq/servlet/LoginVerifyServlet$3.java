@@ -2,8 +2,8 @@ package com.tencent.mobileqq.servlet;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import axcd;
-import axce;
+import ayxh;
+import ayxi;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -19,14 +19,14 @@ import mqq.os.MqqHandler;
 public final class LoginVerifyServlet$3
   implements Runnable
 {
-  public LoginVerifyServlet$3(String paramString1, String paramString2, String paramString3, axce paramaxce) {}
+  public LoginVerifyServlet$3(String paramString1, String paramString2, String paramString3, ayxi paramayxi) {}
   
   public void run()
   {
     try
     {
       Object localObject5 = new URL(this.jdField_a_of_type_JavaLangString);
-      Object localObject1 = new axcd(this, (URL)localObject5);
+      Object localObject1 = new ayxh(this, (URL)localObject5);
       Object localObject2 = (HttpsURLConnection)((URL)localObject5).openConnection();
       ((HttpsURLConnection)localObject2).setHostnameVerifier((HostnameVerifier)localObject1);
       ((HttpsURLConnection)localObject2).setConnectTimeout(10000);
@@ -36,7 +36,7 @@ public final class LoginVerifyServlet$3
       ((HttpsURLConnection)localObject2).setUseCaches(false);
       ((HttpsURLConnection)localObject2).setRequestMethod("POST");
       ((HttpsURLConnection)localObject2).setRequestProperty("Connection", "Keep-Alive");
-      ((HttpsURLConnection)localObject2).setRequestProperty("User-Agent", "android" + "_" + Build.VERSION.SDK + "_" + Build.DEVICE + "_" + Build.VERSION.RELEASE + "_" + "8.3.0" + "_" + "QQ/" + "8.3.04480");
+      ((HttpsURLConnection)localObject2).setRequestProperty("User-Agent", "android" + "_" + Build.VERSION.SDK + "_" + Build.DEVICE + "_" + Build.VERSION.RELEASE + "_" + "8.3.3" + "_" + "QQ/" + "8.3.34515");
       ((HttpsURLConnection)localObject2).setRequestProperty("Accept", "*/*");
       ((HttpsURLConnection)localObject2).setRequestProperty("Content-Type", this.b);
       localObject1 = ((HttpsURLConnection)localObject2).getOutputStream();
@@ -107,7 +107,7 @@ public final class LoginVerifyServlet$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.LoginVerifyServlet.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,727 +1,635 @@
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
+import android.provider.Settings.SettingNotFoundException;
+import android.provider.Settings.System;
 import android.text.TextUtils;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import android.text.format.Time;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
+import java.util.GregorianCalendar;
 import java.util.TimeZone;
 
 public class bdjj
 {
-  protected static int a;
-  protected static String a;
-  protected static int b = 1048576;
+  private static int jdField_a_of_type_Int;
+  private static StringBuffer jdField_a_of_type_JavaLangStringBuffer;
+  private static java.text.DateFormat jdField_a_of_type_JavaTextDateFormat;
+  private static Calendar jdField_a_of_type_JavaUtilCalendar;
+  private static int jdField_b_of_type_Int;
+  private static java.text.DateFormat jdField_b_of_type_JavaTextDateFormat;
   
-  static
+  private static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    jdField_a_of_type_JavaLangString = "ImageDownloader";
-    jdField_a_of_type_Int = 2048;
+    GregorianCalendar localGregorianCalendar1 = new GregorianCalendar(paramInt1, paramInt2, paramInt3);
+    GregorianCalendar localGregorianCalendar2 = new GregorianCalendar(paramInt4, paramInt5, paramInt6);
+    return (int)((localGregorianCalendar1.getTimeInMillis() - localGregorianCalendar2.getTimeInMillis()) / 1000L / 60L / 60L / 24L);
   }
   
-  protected static long a(HttpURLConnection paramHttpURLConnection)
+  public static int a(long paramLong)
   {
-    paramHttpURLConnection = paramHttpURLConnection.getHeaderField("Cache-Control");
-    if (paramHttpURLConnection == null) {
-      return 0L;
+    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(jdField_b_of_type_Int + paramLong);
+    return jdField_a_of_type_JavaUtilCalendar.get(11);
+  }
+  
+  public static int a(long paramLong, Calendar paramCalendar)
+  {
+    paramCalendar = new Time();
+    paramCalendar.set(paramLong);
+    long l = System.currentTimeMillis();
+    Time localTime = new Time();
+    localTime.set(l);
+    int i = localTime.yearDay - 1;
+    int j = localTime.yearDay;
+    if (paramCalendar.year == localTime.year) {
+      if (localTime.yearDay >= paramCalendar.yearDay) {}
     }
-    paramHttpURLConnection = TextUtils.split(paramHttpURLConnection, ",");
-    int i = 0;
-    if (i < paramHttpURLConnection.length) {
-      if (!paramHttpURLConnection[i].contains("max-age")) {}
-    }
-    for (long l = Long.parseLong(paramHttpURLConnection[i].trim().replace("max-age=", ""));; l = 0L)
+    do
     {
-      return l;
-      i += 1;
-      break;
+      do
+      {
+        do
+        {
+          return -1;
+          if (localTime.yearDay == paramCalendar.yearDay) {
+            return 2131720882;
+          }
+          if (paramCalendar.yearDay == i) {
+            return 2131721491;
+          }
+        } while ((paramCalendar.yearDay >= i) || (paramCalendar.yearDay <= j - 7));
+        switch (paramCalendar.weekDay)
+        {
+        default: 
+          return -1;
+        case 0: 
+          return 2131720507;
+        case 1: 
+          return 2131694456;
+        case 2: 
+          return 2131721148;
+        case 3: 
+          return 2131721417;
+        case 4: 
+          return 2131720788;
+        case 5: 
+          return 2131692862;
+        }
+        return 2131719297;
+      } while (paramCalendar.year + 1 != localTime.year);
+      paramLong = (l - paramLong + 86400000L - 1L) / 86400000L;
+    } while ((paramLong <= 0L) || (paramLong > 7L));
+    if (paramLong == 1L) {
+      return 2131721491;
+    }
+    switch (paramCalendar.weekDay)
+    {
+    default: 
+      return -1;
+    case 0: 
+      return 2131720507;
+    case 1: 
+      return 2131694456;
+    case 2: 
+      return 2131721148;
+    case 3: 
+      return 2131721417;
+    case 4: 
+      return 2131720788;
+    case 5: 
+      return 2131692862;
+    }
+    return 2131719297;
+  }
+  
+  public static long a(long paramLong)
+  {
+    long l = paramLong;
+    if (paramLong == 0L) {
+      l = System.currentTimeMillis();
+    }
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(l / 1000L * 1000L);
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    return localCalendar.getTimeInMillis();
+  }
+  
+  public static CharSequence a(Context paramContext, int paramInt, long paramLong)
+  {
+    return a(paramContext, paramInt, paramLong, true);
+  }
+  
+  public static CharSequence a(Context paramContext, int paramInt, long paramLong, boolean paramBoolean)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    try
+    {
+      SimpleDateFormat localSimpleDateFormat1 = (SimpleDateFormat)a();
+      if (paramInt == 0)
+      {
+        localStringBuilder.append(localSimpleDateFormat1.toLocalizedPattern());
+        return android.text.format.DateFormat.format(localStringBuilder.append(" ").toString(), paramLong) + b().format(Long.valueOf(paramLong));
+      }
+    }
+    catch (Resources.NotFoundException localNotFoundException)
+    {
+      SimpleDateFormat localSimpleDateFormat2;
+      for (;;)
+      {
+        localSimpleDateFormat2 = new SimpleDateFormat("HH:mm");
+      }
+      return a(paramContext, paramLong, localStringBuilder, localSimpleDateFormat2, paramInt, paramBoolean);
     }
   }
   
-  protected static HttpURLConnection a(bdjk parambdjk)
+  public static CharSequence a(Context paramContext, long paramLong)
   {
+    if (jdField_a_of_type_JavaUtilCalendar == null) {
+      jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
+    }
+    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
+    int i = jdField_a_of_type_JavaUtilCalendar.get(2);
+    int j = jdField_a_of_type_JavaUtilCalendar.get(5);
+    return String.format("%s%s%s%s", new Object[] { Integer.valueOf(i + 1), paramContext.getString(2131694457), Integer.valueOf(j), paramContext.getString(2131691512) });
+  }
+  
+  private static CharSequence a(Context paramContext, long paramLong, StringBuilder paramStringBuilder, SimpleDateFormat paramSimpleDateFormat, int paramInt, boolean paramBoolean)
+  {
+    Time localTime1 = new Time();
+    localTime1.set(paramLong);
+    Time localTime2 = new Time();
+    localTime2.setToNow();
+    int i;
+    int j;
+    if ((paramInt & 0x2) != 0)
+    {
+      i = 1;
+      if ((paramInt & 0x1) == 0) {
+        break label118;
+      }
+      j = 1;
+      label49:
+      if ((paramInt & 0x4) == 0) {
+        break label124;
+      }
+      paramInt = 1;
+      label59:
+      if (localTime1.year == localTime2.year) {
+        break label130;
+      }
+      paramStringBuilder.append(paramSimpleDateFormat.toLocalizedPattern()).append(" ");
+      paramInt = 0;
+    }
     for (;;)
+    {
+      if ((paramInt == 0) && (!paramBoolean))
+      {
+        return android.text.format.DateFormat.format(paramStringBuilder.toString().trim(), paramLong);
+        i = 0;
+        break;
+        label118:
+        j = 0;
+        break label49;
+        label124:
+        paramInt = 0;
+        break label59;
+        label130:
+        if (localTime1.yearDay == localTime2.yearDay) {
+          break label472;
+        }
+        int m = Math.abs(localTime2.yearDay - localTime1.yearDay);
+        if (localTime2.yearDay > localTime1.yearDay) {}
+        for (int k = 1;; k = 0)
+        {
+          if (k != 0) {
+            break label207;
+          }
+          paramStringBuilder.append(paramSimpleDateFormat.toLocalizedPattern()).append(" ");
+          paramInt = 0;
+          break;
+        }
+        label207:
+        if ((m == 1) && (j != 0))
+        {
+          paramStringBuilder.append(paramContext.getString(2131690064)).append(" ");
+          if (!paramBoolean) {
+            return paramStringBuilder.toString().trim();
+          }
+          return paramStringBuilder.toString() + b().format(Long.valueOf(paramLong));
+        }
+        if ((m == 2) && (paramInt != 0))
+        {
+          paramStringBuilder.append(paramContext.getString(2131690507)).append(" ");
+          if (!paramBoolean) {
+            return paramStringBuilder.toString().trim();
+          }
+          return paramStringBuilder.toString() + b().format(Long.valueOf(paramLong));
+        }
+        if ((m > 1) && (m < 7) && (i != 0))
+        {
+          paramStringBuilder.append("EEEE").append(" ");
+          paramInt = 0;
+          continue;
+        }
+        if (localTime1.year == localTime2.year)
+        {
+          paramStringBuilder.append("MM-dd").append(" ");
+          paramInt = 0;
+          continue;
+        }
+        paramStringBuilder.append(paramSimpleDateFormat.toLocalizedPattern()).append(" ");
+        paramInt = 0;
+        continue;
+      }
+      return android.text.format.DateFormat.format(paramStringBuilder.toString(), paramLong) + b().format(Long.valueOf(paramLong));
+      label472:
+      paramInt = 1;
+    }
+  }
+  
+  public static String a(long paramLong)
+  {
+    int i = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
+    int j = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
+    if (i - j > 365) {
+      return (i - j) / 365 + alpo.a(2131715317);
+    }
+    if (i - j > 30) {
+      return (i - j) / 30 + alpo.a(2131715322);
+    }
+    if (i - j >= 1) {
+      return i - j + alpo.a(2131715321);
+    }
+    try
+    {
+      String str = a(paramLong, "HH:mm");
+      return str;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TimeFormatterUtils", 2, localException.getMessage());
+      }
+    }
+    return "";
+  }
+  
+  public static String a(long paramLong, String paramString)
+  {
+    if (paramLong <= 0L) {
+      return null;
+    }
+    Date localDate = new Date(paramLong);
+    return new SimpleDateFormat(paramString).format(localDate);
+  }
+  
+  public static String a(long paramLong, boolean paramBoolean, String paramString)
+  {
+    return a(jdField_a_of_type_JavaLangStringBuffer, paramLong, paramBoolean, paramString);
+  }
+  
+  public static String a(Context paramContext, long paramLong)
+  {
+    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
+    int i = jdField_a_of_type_JavaUtilCalendar.get(1);
+    int j = jdField_a_of_type_JavaUtilCalendar.get(2);
+    int k = jdField_a_of_type_JavaUtilCalendar.get(5);
+    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
+    i = a(i, j, k, jdField_a_of_type_JavaUtilCalendar.get(1), jdField_a_of_type_JavaUtilCalendar.get(2), jdField_a_of_type_JavaUtilCalendar.get(5));
+    if (i == 0)
     {
       try
       {
-        localObject1 = MsfSdkUtils.insertMtype("yingyongbao", parambdjk.jdField_b_of_type_JavaLangString);
-        if (bdid.a(bcyb.a().a()))
-        {
-          i = "http://".length();
-          localObject3 = bdid.c(bcyb.a().a());
-          String str = bdid.d(bcyb.a().a());
-          j = ((String)localObject1).indexOf('/', i);
-          if (j < 0)
+        i = Settings.System.getInt(paramContext.getContentResolver(), "time_12_24");
+        if (i == 12) {
+          if (jdField_a_of_type_JavaUtilCalendar.get(11) < 12)
           {
-            localObject2 = ((String)localObject1).substring(i);
-            localObject1 = "";
-            bdii.c(jdField_a_of_type_JavaLangString, "http://" + (String)localObject3 + ":" + str + (String)localObject1);
-            localObject3 = (HttpURLConnection)new URL("http://" + (String)localObject3 + ":" + str + (String)localObject1).openConnection();
-            localObject1 = localObject3;
+            i = 2131719905;
+            String str = paramContext.getString(i);
+            paramContext = new SimpleDateFormat("hh:mm", paramContext.getResources().getConfiguration().locale);
+            if (!alrh.a()) {
+              break label186;
+            }
+            return String.format("%s %s", new Object[] { str, paramContext.format(new Date(paramLong)) });
           }
         }
       }
-      catch (Exception parambdjk)
+      catch (Settings.SettingNotFoundException localSettingNotFoundException)
       {
-        int j;
-        Object localObject2;
-        localObject3 = null;
-        bdii.c(jdField_a_of_type_JavaLangString, "--getHttpConnection-- Exception!!!", parambdjk);
-        a((HttpURLConnection)localObject3);
-        return null;
-      }
-      try
-      {
-        ((HttpURLConnection)localObject3).setRequestProperty("X-Online-Host", (String)localObject2);
-        localObject1 = localObject3;
-        localObject3 = localObject1;
-      }
-      catch (Exception parambdjk)
-      {
-        localObject3 = localObject1;
-        continue;
-      }
-      try
-      {
-        ((HttpURLConnection)localObject1).setRequestMethod("GET");
-        localObject3 = localObject1;
-        ((HttpURLConnection)localObject1).setDoInput(true);
-        localObject3 = localObject1;
-        ((HttpURLConnection)localObject1).setAllowUserInteraction(true);
-        localObject3 = localObject1;
-        ((HttpURLConnection)localObject1).setConnectTimeout(60000);
-        localObject3 = localObject1;
-        ((HttpURLConnection)localObject1).setReadTimeout(120000);
-        localObject3 = localObject1;
-        if (parambdjk.jdField_c_of_type_Long > 0L)
+        for (;;)
         {
-          localObject3 = localObject1;
-          localObject2 = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss 'GMT'", Locale.US);
-          localObject3 = localObject1;
-          ((SimpleDateFormat)localObject2).setTimeZone(TimeZone.getTimeZone("GMT"));
-          localObject3 = localObject1;
-          ((HttpURLConnection)localObject1).setRequestProperty("If-Modified-Since", ((SimpleDateFormat)localObject2).format(new Date(parambdjk.jdField_c_of_type_Long)));
-        }
-        localObject3 = localObject1;
-        i = ((HttpURLConnection)localObject1).getResponseCode();
-        localObject3 = localObject1;
-        bdii.c(jdField_a_of_type_JavaLangString, "--getHttpConnection-- reponseCode=" + i);
-        if ((i == 302) || (i == 301))
-        {
-          localObject3 = localObject1;
-          parambdjk = ((HttpURLConnection)localObject1).getHeaderField("Location");
-          localObject3 = localObject1;
-          bdii.c(jdField_a_of_type_JavaLangString, "--getHttpConnection-- loc=" + parambdjk);
-          localObject3 = localObject1;
-          a((HttpURLConnection)localObject1);
-          parambdjk = null;
-          localObject1 = parambdjk;
-          bdii.c(jdField_a_of_type_JavaLangString, "--getHttpConnection-- uc=" + parambdjk);
-          return parambdjk;
-          localObject2 = ((String)localObject1).substring(i, j);
-          localObject1 = ((String)localObject1).substring(j);
+          i = 0;
           continue;
-          localObject1 = (HttpURLConnection)new URL((String)localObject1).openConnection();
-          continue;
+          i = 2131689901;
         }
-        if ((i != 200) && (i != 206)) {
-          continue;
-        }
-        localObject3 = localObject1;
-        localObject2 = ((HttpURLConnection)localObject1).getContentType();
-        if (localObject2 != null) {
-          continue;
-        }
-        localObject2 = "";
-        localObject3 = localObject1;
-        if (((String)localObject2).indexOf("text/vnd.wap.wml") != -1) {
-          break label743;
-        }
-        localObject3 = localObject1;
-        if (((String)localObject2).indexOf("application/vnd.wap.wmlc") != -1) {
-          break label743;
-        }
-        localObject3 = localObject1;
-        if (((String)localObject2).indexOf("text") == -1) {
-          break label748;
-        }
+        label186:
+        return String.format("%s %s", new Object[] { paramContext.format(new Date(paramLong)), localSettingNotFoundException });
       }
-      catch (Exception parambdjk)
+      return new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
+    }
+    if (i == 1) {
+      return paramContext.getString(2131721491);
+    }
+    if ((i < 7) && (i > 1)) {
+      return new SimpleDateFormat("E", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
+    }
+    return a().format(new Date(paramLong));
+  }
+  
+  public static String a(Context paramContext, long paramLong, boolean paramBoolean)
+  {
+    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
+    int i = jdField_a_of_type_JavaUtilCalendar.get(1);
+    int j = jdField_a_of_type_JavaUtilCalendar.get(2);
+    int k = jdField_a_of_type_JavaUtilCalendar.get(6);
+    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
+    switch (b(i, j, k, jdField_a_of_type_JavaUtilCalendar.get(1), jdField_a_of_type_JavaUtilCalendar.get(2), jdField_a_of_type_JavaUtilCalendar.get(6)))
+    {
+    default: 
+      return null;
+    case 1: 
+      if (paramBoolean) {}
+      for (str = "HH:mm:ss";; str = "HH:mm") {
+        return new SimpleDateFormat(str, paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
+      }
+    case 2: 
+      if (paramBoolean) {}
+      for (str = "HH:mm:ss";; str = "HH:mm")
       {
-        continue;
-        i = 1;
-        continue;
-        i = 0;
-        continue;
+        paramContext = new SimpleDateFormat(str, paramContext.getResources().getConfiguration().locale);
+        return String.format("%s %s", new Object[] { alpo.a(2131715324), paramContext.format(new Date(paramLong)) });
       }
-      localObject2 = localObject1;
+    case 3: 
+      if (paramBoolean) {}
+      for (str = "HH:mm:ss";; str = "HH:mm")
+      {
+        paramContext = new SimpleDateFormat(str, paramContext.getResources().getConfiguration().locale);
+        return String.format("%s %s", new Object[] { alpo.a(2131715330), paramContext.format(new Date(paramLong)) });
+      }
+    case 4: 
+      if (paramBoolean) {}
+      for (str = "MM-dd HH:mm:ss";; str = "MM-dd HH:mm") {
+        return new SimpleDateFormat(str, paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
+      }
+    }
+    if (paramBoolean) {}
+    for (String str = "yyyy-MM-dd HH:mm:ss";; str = "yyyy-MM-dd HH:mm") {
+      return new SimpleDateFormat(str, paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
+    }
+  }
+  
+  public static String a(StringBuffer paramStringBuffer, long paramLong, boolean paramBoolean, String paramString)
+  {
+    int i = 0;
+    Object localObject2;
+    int j;
+    int m;
+    if (paramStringBuffer != null)
+    {
+      paramStringBuffer.setLength(0);
+      localObject2 = Calendar.getInstance();
+      ((Calendar)localObject2).setTimeInMillis(paramLong);
+      int k = a(paramLong, (Calendar)localObject2);
+      if (k != -1)
+      {
+        j = 1;
+        i = j;
+        if (k != 2131720882)
+        {
+          paramStringBuffer.append(BaseApplication.getContext().getString(k));
+          i = j;
+        }
+      }
+      m = ((Calendar)localObject2).get(11);
+      j = ((Calendar)localObject2).get(12);
       if (i != 0)
       {
-        localObject3 = localObject1;
-        a((HttpURLConnection)localObject1);
-        localObject2 = null;
-      }
-      if (localObject2 != null)
-      {
-        localObject3 = localObject2;
-        parambdjk.jdField_a_of_type_Long = (a((HttpURLConnection)localObject2) * 1000L);
-        localObject3 = localObject2;
-        if (parambdjk.jdField_a_of_type_Long == 0L)
-        {
-          localObject3 = localObject2;
-          parambdjk.jdField_a_of_type_Long = 86400000L;
+        boolean bool = android.text.format.DateFormat.is24HourFormat(BaseApplication.getContext());
+        if (k == 2131720882) {
+          if (!bool)
+          {
+            paramString = BaseApplication.getContext().getString(2131689901);
+            if ((m < 0) || (m >= 12)) {
+              break label470;
+            }
+            paramString = BaseApplication.getContext().getString(2131719905);
+          }
         }
       }
-      localObject3 = localObject2;
-      parambdjk.jdField_b_of_type_Long = System.currentTimeMillis();
-      parambdjk = (bdjk)localObject2;
-      continue;
-      localObject3 = localObject1;
-      localObject2 = ((String)localObject2).toLowerCase();
-      continue;
-      if (i == 304)
+    }
+    label257:
+    label470:
+    for (;;)
+    {
+      Object localObject1;
+      if (m == 12)
       {
-        localObject3 = localObject1;
-        bdii.c(jdField_a_of_type_JavaLangString, "--getimg-- " + parambdjk.jdField_b_of_type_JavaLangString + " not modified");
-        localObject3 = localObject1;
-        parambdjk.jdField_a_of_type_Long = (a((HttpURLConnection)localObject1) * 1000L);
-        localObject3 = localObject1;
-        parambdjk.jdField_b_of_type_Long = System.currentTimeMillis();
-        localObject3 = localObject1;
-        a((HttpURLConnection)localObject1);
-        parambdjk = null;
+        i = 12;
+        localObject2 = String.valueOf(j);
+        localObject1 = localObject2;
+        if (j < 10) {
+          localObject1 = "0" + (String)localObject2;
+        }
+        localObject1 = i + ":" + (String)localObject1;
+        if (!alrh.a()) {
+          break label257;
+        }
+        paramStringBuffer.append(paramString).append((String)localObject1);
       }
-      else
+      for (;;)
       {
-        localObject3 = localObject1;
-        a((HttpURLConnection)localObject1);
-        parambdjk = null;
+        return paramStringBuffer.toString();
+        i = m % 12;
+        break;
+        paramStringBuffer.append((String)localObject1).append(paramString);
+        continue;
+        paramStringBuffer.append(m);
+        paramStringBuffer.append(':');
+        if (j < 10) {
+          paramStringBuffer.append('0');
+        }
+        paramStringBuffer.append(j);
+        continue;
+        if (!paramBoolean)
+        {
+          paramStringBuffer.append(' ');
+          paramStringBuffer.append(m);
+          paramStringBuffer.append(':');
+          if (j < 10) {
+            paramStringBuffer.append('0');
+          }
+          paramStringBuffer.append(j);
+          continue;
+          localObject1 = paramString;
+          if (TextUtils.isEmpty(paramString)) {
+            localObject1 = "yyyy-MM-dd";
+          }
+          try
+          {
+            paramString = new SimpleDateFormat((String)localObject1);
+            paramStringBuffer.append(paramString.format(((Calendar)localObject2).getTime()));
+            if (!paramBoolean)
+            {
+              paramStringBuffer.append(' ');
+              paramStringBuffer.append(m);
+              paramStringBuffer.append(':');
+              if (j < 10) {
+                paramStringBuffer.append('0');
+              }
+              paramStringBuffer.append(j);
+            }
+          }
+          catch (Exception paramString)
+          {
+            for (;;)
+            {
+              paramString = new SimpleDateFormat("yyyy-MM-dd");
+            }
+          }
+        }
       }
+      return null;
     }
   }
   
-  protected static void a(HttpURLConnection paramHttpURLConnection)
+  private static java.text.DateFormat a()
   {
-    if (paramHttpURLConnection != null) {}
     try
     {
-      paramHttpURLConnection.disconnect();
-      return;
+      if (jdField_b_of_type_JavaTextDateFormat == null) {
+        jdField_b_of_type_JavaTextDateFormat = android.text.format.DateFormat.getDateFormat(BaseApplicationImpl.getApplication().getApplicationContext());
+      }
+      java.text.DateFormat localDateFormat = jdField_b_of_type_JavaTextDateFormat;
+      return localDateFormat;
     }
-    catch (Exception paramHttpURLConnection)
-    {
-      bdii.c("", "", paramHttpURLConnection);
-    }
+    finally {}
   }
   
-  /* Error */
-  public static boolean a(bdjk parambdjk)
+  public static void a()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 12
-    //   3: aconst_null
-    //   4: astore 11
-    //   6: iconst_0
-    //   7: istore 6
-    //   9: aload_0
-    //   10: invokestatic 274	bdjj:a	(Lbdjk;)Ljava/net/HttpURLConnection;
-    //   13: astore 7
-    //   15: aload 7
-    //   17: ifnonnull +91 -> 108
-    //   20: getstatic 14	bdjj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   23: new 114	java/lang/StringBuilder
-    //   26: dup
-    //   27: invokespecial 117	java/lang/StringBuilder:<init>	()V
-    //   30: ldc_w 276
-    //   33: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: aload_0
-    //   37: getfield 72	bdjk:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   40: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: ldc_w 278
-    //   46: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   52: invokestatic 131	bdii:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   55: iconst_0
-    //   56: ifeq +11 -> 67
-    //   59: new 280	java/lang/NullPointerException
-    //   62: dup
-    //   63: invokespecial 281	java/lang/NullPointerException:<init>	()V
-    //   66: athrow
-    //   67: iconst_0
-    //   68: ifeq +11 -> 79
-    //   71: new 280	java/lang/NullPointerException
-    //   74: dup
-    //   75: invokespecial 281	java/lang/NullPointerException:<init>	()V
-    //   78: athrow
-    //   79: iload 6
-    //   81: istore 5
-    //   83: aload 7
-    //   85: ifnull +12 -> 97
-    //   88: aload 7
-    //   90: invokevirtual 271	java/net/HttpURLConnection:disconnect	()V
-    //   93: iload 6
-    //   95: istore 5
-    //   97: iload 5
-    //   99: ireturn
-    //   100: astore_0
-    //   101: aload_0
-    //   102: invokevirtual 284	java/lang/Exception:printStackTrace	()V
-    //   105: goto -26 -> 79
-    //   108: aload 7
-    //   110: invokevirtual 287	java/net/HttpURLConnection:getContentLength	()I
-    //   113: i2l
-    //   114: lstore_3
-    //   115: invokestatic 291	bdfn:a	()J
-    //   118: lload_3
-    //   119: lcmp
-    //   120: ifge +86 -> 206
-    //   123: getstatic 14	bdjj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   126: new 114	java/lang/StringBuilder
-    //   129: dup
-    //   130: invokespecial 117	java/lang/StringBuilder:<init>	()V
-    //   133: ldc_w 276
-    //   136: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   139: aload_0
-    //   140: getfield 72	bdjk:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   143: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   146: ldc_w 293
-    //   149: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   152: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   155: invokestatic 131	bdii:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   158: iconst_0
-    //   159: ifeq +11 -> 170
-    //   162: new 280	java/lang/NullPointerException
-    //   165: dup
-    //   166: invokespecial 281	java/lang/NullPointerException:<init>	()V
-    //   169: athrow
-    //   170: iconst_0
-    //   171: ifeq +11 -> 182
-    //   174: new 280	java/lang/NullPointerException
-    //   177: dup
-    //   178: invokespecial 281	java/lang/NullPointerException:<init>	()V
-    //   181: athrow
-    //   182: iload 6
-    //   184: istore 5
-    //   186: aload 7
-    //   188: ifnull -91 -> 97
-    //   191: aload 7
-    //   193: invokevirtual 271	java/net/HttpURLConnection:disconnect	()V
-    //   196: iconst_0
-    //   197: ireturn
-    //   198: astore_0
-    //   199: aload_0
-    //   200: invokevirtual 284	java/lang/Exception:printStackTrace	()V
-    //   203: goto -21 -> 182
-    //   206: aload 7
-    //   208: invokevirtual 297	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   211: astore 8
-    //   213: lconst_0
-    //   214: lstore_3
-    //   215: getstatic 16	bdjj:jdField_a_of_type_Int	I
-    //   218: newarray byte
-    //   220: astore 9
-    //   222: new 299	java/io/ByteArrayOutputStream
-    //   225: dup
-    //   226: invokespecial 300	java/io/ByteArrayOutputStream:<init>	()V
-    //   229: astore 13
-    //   231: aload 8
-    //   233: aload 9
-    //   235: iconst_0
-    //   236: getstatic 16	bdjj:jdField_a_of_type_Int	I
-    //   239: invokevirtual 306	java/io/InputStream:read	([BII)I
-    //   242: istore_2
-    //   243: iload_2
-    //   244: ifle +77 -> 321
-    //   247: getstatic 19	bdjj:b	I
-    //   250: istore_1
-    //   251: lload_3
-    //   252: iload_1
-    //   253: i2l
-    //   254: lcmp
-    //   255: iflt +49 -> 304
-    //   258: iconst_0
-    //   259: ifeq +11 -> 270
-    //   262: new 280	java/lang/NullPointerException
-    //   265: dup
-    //   266: invokespecial 281	java/lang/NullPointerException:<init>	()V
-    //   269: athrow
-    //   270: aload 8
-    //   272: ifnull +8 -> 280
-    //   275: aload 8
-    //   277: invokevirtual 309	java/io/InputStream:close	()V
-    //   280: iload 6
-    //   282: istore 5
-    //   284: aload 7
-    //   286: ifnull -189 -> 97
-    //   289: aload 7
-    //   291: invokevirtual 271	java/net/HttpURLConnection:disconnect	()V
-    //   294: iconst_0
-    //   295: ireturn
-    //   296: astore_0
-    //   297: aload_0
-    //   298: invokevirtual 284	java/lang/Exception:printStackTrace	()V
-    //   301: goto -21 -> 280
-    //   304: aload 13
-    //   306: aload 9
-    //   308: iconst_0
-    //   309: iload_2
-    //   310: invokevirtual 313	java/io/ByteArrayOutputStream:write	([BII)V
-    //   313: lload_3
-    //   314: iload_2
-    //   315: i2l
-    //   316: ladd
-    //   317: lstore_3
-    //   318: goto -87 -> 231
-    //   321: new 114	java/lang/StringBuilder
-    //   324: dup
-    //   325: invokespecial 117	java/lang/StringBuilder:<init>	()V
-    //   328: invokestatic 316	bdfn:e	()Ljava/lang/String;
-    //   331: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   334: getstatic 319	com/tencent/open/base/img/ImageCache:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   337: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   340: aload_0
-    //   341: getfield 321	bdjk:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   344: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   347: getstatic 326	java/io/File:separator	Ljava/lang/String;
-    //   350: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   353: aload_0
-    //   354: getfield 72	bdjk:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   357: invokestatic 330	bdif:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   360: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   363: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   366: astore 14
-    //   368: new 323	java/io/File
-    //   371: dup
-    //   372: new 114	java/lang/StringBuilder
-    //   375: dup
-    //   376: invokespecial 117	java/lang/StringBuilder:<init>	()V
-    //   379: aload 14
-    //   381: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   384: ldc_w 332
-    //   387: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   390: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   393: invokespecial 333	java/io/File:<init>	(Ljava/lang/String;)V
-    //   396: astore 10
-    //   398: aload 10
-    //   400: invokevirtual 336	java/io/File:getParent	()Ljava/lang/String;
-    //   403: ifnull +23 -> 426
-    //   406: aload 10
-    //   408: invokevirtual 340	java/io/File:getParentFile	()Ljava/io/File;
-    //   411: invokevirtual 344	java/io/File:exists	()Z
-    //   414: ifne +12 -> 426
-    //   417: aload 10
-    //   419: invokevirtual 340	java/io/File:getParentFile	()Ljava/io/File;
-    //   422: invokevirtual 347	java/io/File:mkdirs	()Z
-    //   425: pop
-    //   426: aload 10
-    //   428: invokevirtual 344	java/io/File:exists	()Z
-    //   431: ifeq +9 -> 440
-    //   434: aload 10
-    //   436: invokevirtual 350	java/io/File:delete	()Z
-    //   439: pop
-    //   440: aload 10
-    //   442: invokevirtual 353	java/io/File:createNewFile	()Z
-    //   445: pop
-    //   446: new 355	java/io/FileOutputStream
-    //   449: dup
-    //   450: new 114	java/lang/StringBuilder
-    //   453: dup
-    //   454: invokespecial 117	java/lang/StringBuilder:<init>	()V
-    //   457: aload 14
-    //   459: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   462: ldc_w 332
-    //   465: invokevirtual 121	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   468: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   471: invokespecial 356	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   474: astore 9
-    //   476: aload 9
-    //   478: aload 13
-    //   480: invokevirtual 360	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   483: invokevirtual 363	java/io/FileOutputStream:write	([B)V
-    //   486: aload 9
-    //   488: invokevirtual 366	java/io/FileOutputStream:flush	()V
-    //   491: new 323	java/io/File
-    //   494: dup
-    //   495: aload 14
-    //   497: invokespecial 333	java/io/File:<init>	(Ljava/lang/String;)V
-    //   500: astore 12
-    //   502: aload 12
-    //   504: invokevirtual 344	java/io/File:exists	()Z
-    //   507: ifeq +9 -> 516
-    //   510: aload 12
-    //   512: invokevirtual 350	java/io/File:delete	()Z
-    //   515: pop
-    //   516: aload 10
-    //   518: aload 12
-    //   520: invokevirtual 370	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   523: pop
-    //   524: ldc_w 372
-    //   527: aload_0
-    //   528: getfield 373	bdjk:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   531: invokestatic 131	bdii:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   534: aload_0
-    //   535: aload 7
-    //   537: invokevirtual 376	java/net/HttpURLConnection:getLastModified	()J
-    //   540: putfield 169	bdjk:jdField_c_of_type_Long	J
-    //   543: iconst_1
-    //   544: istore 5
-    //   546: aload 9
-    //   548: ifnull +8 -> 556
-    //   551: aload 9
-    //   553: invokevirtual 377	java/io/FileOutputStream:close	()V
-    //   556: aload 8
-    //   558: ifnull +8 -> 566
-    //   561: aload 8
-    //   563: invokevirtual 309	java/io/InputStream:close	()V
-    //   566: aload 7
-    //   568: ifnull -471 -> 97
-    //   571: aload 7
-    //   573: invokevirtual 271	java/net/HttpURLConnection:disconnect	()V
-    //   576: iconst_1
-    //   577: ireturn
-    //   578: astore_0
-    //   579: aload_0
-    //   580: invokevirtual 284	java/lang/Exception:printStackTrace	()V
-    //   583: goto -17 -> 566
-    //   586: astore 9
-    //   588: aconst_null
-    //   589: astore 10
-    //   591: aconst_null
-    //   592: astore_0
-    //   593: aconst_null
-    //   594: astore 7
-    //   596: aconst_null
-    //   597: astore 8
-    //   599: getstatic 14	bdjj:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   602: ldc_w 379
-    //   605: aload 9
-    //   607: invokestatic 268	bdii:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   610: aload 10
-    //   612: ifnull +17 -> 629
-    //   615: aload 10
-    //   617: invokevirtual 344	java/io/File:exists	()Z
-    //   620: ifeq +9 -> 629
-    //   623: aload 10
-    //   625: invokevirtual 350	java/io/File:delete	()Z
-    //   628: pop
-    //   629: aload 11
-    //   631: ifnull +17 -> 648
-    //   634: aload 11
-    //   636: invokevirtual 344	java/io/File:exists	()Z
-    //   639: ifeq +9 -> 648
-    //   642: aload 11
-    //   644: invokevirtual 350	java/io/File:delete	()Z
-    //   647: pop
-    //   648: aload_0
-    //   649: ifnull +7 -> 656
-    //   652: aload_0
-    //   653: invokevirtual 377	java/io/FileOutputStream:close	()V
-    //   656: aload 7
-    //   658: ifnull +8 -> 666
-    //   661: aload 7
-    //   663: invokevirtual 309	java/io/InputStream:close	()V
-    //   666: iload 6
-    //   668: istore 5
-    //   670: aload 8
-    //   672: ifnull -575 -> 97
-    //   675: aload 8
-    //   677: invokevirtual 271	java/net/HttpURLConnection:disconnect	()V
-    //   680: iconst_0
-    //   681: ireturn
-    //   682: astore_0
-    //   683: aload_0
-    //   684: invokevirtual 284	java/lang/Exception:printStackTrace	()V
-    //   687: goto -21 -> 666
-    //   690: astore_0
-    //   691: aconst_null
-    //   692: astore 8
-    //   694: aconst_null
-    //   695: astore 7
-    //   697: aload 12
-    //   699: astore 9
-    //   701: aload 9
-    //   703: ifnull +8 -> 711
-    //   706: aload 9
-    //   708: invokevirtual 377	java/io/FileOutputStream:close	()V
-    //   711: aload 8
-    //   713: ifnull +8 -> 721
-    //   716: aload 8
-    //   718: invokevirtual 309	java/io/InputStream:close	()V
-    //   721: aload 7
-    //   723: ifnull +8 -> 731
-    //   726: aload 7
-    //   728: invokevirtual 271	java/net/HttpURLConnection:disconnect	()V
-    //   731: aload_0
-    //   732: athrow
-    //   733: astore 8
-    //   735: aload 8
-    //   737: invokevirtual 284	java/lang/Exception:printStackTrace	()V
-    //   740: goto -19 -> 721
-    //   743: astore_0
-    //   744: aconst_null
-    //   745: astore 8
-    //   747: aload 12
-    //   749: astore 9
-    //   751: goto -50 -> 701
-    //   754: astore_0
-    //   755: aload 12
-    //   757: astore 9
-    //   759: goto -58 -> 701
-    //   762: astore_0
-    //   763: goto -62 -> 701
-    //   766: astore 11
-    //   768: aload_0
-    //   769: astore 9
-    //   771: aload 8
-    //   773: astore 10
-    //   775: aload 11
-    //   777: astore_0
-    //   778: aload 7
-    //   780: astore 8
-    //   782: aload 10
-    //   784: astore 7
-    //   786: goto -85 -> 701
-    //   789: astore 9
-    //   791: aconst_null
-    //   792: astore 10
-    //   794: aconst_null
-    //   795: astore_0
-    //   796: aconst_null
-    //   797: astore 12
-    //   799: aload 7
-    //   801: astore 8
-    //   803: aload 12
-    //   805: astore 7
-    //   807: goto -208 -> 599
-    //   810: astore 9
-    //   812: aconst_null
-    //   813: astore 10
-    //   815: aconst_null
-    //   816: astore_0
-    //   817: aload 7
-    //   819: astore 12
-    //   821: aload 8
-    //   823: astore 7
-    //   825: aload 12
-    //   827: astore 8
-    //   829: goto -230 -> 599
-    //   832: astore 9
-    //   834: aconst_null
-    //   835: astore_0
-    //   836: aload 7
-    //   838: astore 12
-    //   840: aload 8
-    //   842: astore 7
-    //   844: aload 12
-    //   846: astore 8
-    //   848: goto -249 -> 599
-    //   851: astore 13
-    //   853: aload 9
-    //   855: astore_0
-    //   856: aload 8
-    //   858: astore 12
-    //   860: aload 7
-    //   862: astore 8
-    //   864: aload 13
-    //   866: astore 9
-    //   868: aload 12
-    //   870: astore 7
-    //   872: goto -273 -> 599
-    //   875: astore 13
-    //   877: aload 12
-    //   879: astore 11
-    //   881: aload 9
-    //   883: astore_0
-    //   884: aload 7
-    //   886: astore 12
-    //   888: aload 13
-    //   890: astore 9
-    //   892: aload 8
-    //   894: astore 7
-    //   896: aload 12
-    //   898: astore 8
-    //   900: goto -301 -> 599
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	903	0	parambdjk	bdjk
-    //   250	3	1	i	int
-    //   242	73	2	j	int
-    //   114	204	3	l	long
-    //   81	588	5	bool1	boolean
-    //   7	660	6	bool2	boolean
-    //   13	882	7	localObject1	Object
-    //   211	506	8	localInputStream	java.io.InputStream
-    //   733	3	8	localException1	Exception
-    //   745	154	8	localObject2	Object
-    //   220	332	9	localObject3	Object
-    //   586	20	9	localException2	Exception
-    //   699	71	9	localObject4	Object
-    //   789	1	9	localException3	Exception
-    //   810	1	9	localException4	Exception
-    //   832	22	9	localException5	Exception
-    //   866	25	9	localObject5	Object
-    //   396	418	10	localObject6	Object
-    //   4	639	11	localObject7	Object
-    //   766	10	11	localObject8	Object
-    //   879	1	11	localObject9	Object
-    //   1	896	12	localObject10	Object
-    //   229	250	13	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   851	14	13	localException6	Exception
-    //   875	14	13	localException7	Exception
-    //   366	130	14	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   59	67	100	java/lang/Exception
-    //   71	79	100	java/lang/Exception
-    //   162	170	198	java/lang/Exception
-    //   174	182	198	java/lang/Exception
-    //   262	270	296	java/lang/Exception
-    //   275	280	296	java/lang/Exception
-    //   551	556	578	java/lang/Exception
-    //   561	566	578	java/lang/Exception
-    //   9	15	586	java/lang/Exception
-    //   652	656	682	java/lang/Exception
-    //   661	666	682	java/lang/Exception
-    //   9	15	690	finally
-    //   706	711	733	java/lang/Exception
-    //   716	721	733	java/lang/Exception
-    //   20	55	743	finally
-    //   108	158	743	finally
-    //   206	213	743	finally
-    //   215	231	754	finally
-    //   231	243	754	finally
-    //   247	251	754	finally
-    //   304	313	754	finally
-    //   321	398	754	finally
-    //   398	426	754	finally
-    //   426	440	754	finally
-    //   440	476	754	finally
-    //   476	502	762	finally
-    //   502	516	762	finally
-    //   516	543	762	finally
-    //   599	610	766	finally
-    //   615	629	766	finally
-    //   634	648	766	finally
-    //   20	55	789	java/lang/Exception
-    //   108	158	789	java/lang/Exception
-    //   206	213	789	java/lang/Exception
-    //   215	231	810	java/lang/Exception
-    //   231	243	810	java/lang/Exception
-    //   247	251	810	java/lang/Exception
-    //   304	313	810	java/lang/Exception
-    //   321	398	810	java/lang/Exception
-    //   398	426	832	java/lang/Exception
-    //   426	440	832	java/lang/Exception
-    //   440	476	832	java/lang/Exception
-    //   476	502	851	java/lang/Exception
-    //   502	516	875	java/lang/Exception
-    //   516	543	875	java/lang/Exception
+    TimeZone localTimeZone1 = TimeZone.getTimeZone("GMT+8");
+    TimeZone localTimeZone2 = TimeZone.getDefault();
+    jdField_a_of_type_Int = localTimeZone1.getRawOffset();
+    int i = localTimeZone2.getRawOffset();
+    jdField_b_of_type_Int = jdField_a_of_type_Int - i;
+    jdField_a_of_type_JavaUtilCalendar = Calendar.getInstance();
+    jdField_a_of_type_JavaLangStringBuffer = new StringBuffer();
+  }
+  
+  private static int b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    if (paramInt1 != paramInt4) {
+      return 5;
+    }
+    if (paramInt3 == paramInt6) {
+      return 1;
+    }
+    if (paramInt3 == paramInt6 + 1) {
+      return 2;
+    }
+    if (paramInt3 == paramInt6 + 2) {
+      return 3;
+    }
+    return 4;
+  }
+  
+  public static int b(long paramLong)
+  {
+    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(jdField_b_of_type_Int + paramLong);
+    return jdField_a_of_type_JavaUtilCalendar.get(12);
+  }
+  
+  public static String b(Context paramContext, long paramLong)
+  {
+    return a(paramContext, paramLong, false);
+  }
+  
+  private static java.text.DateFormat b()
+  {
+    try
+    {
+      if (jdField_a_of_type_JavaTextDateFormat == null) {
+        jdField_a_of_type_JavaTextDateFormat = android.text.format.DateFormat.getTimeFormat(BaseApplicationImpl.getApplication().getApplicationContext());
+      }
+      java.text.DateFormat localDateFormat = jdField_a_of_type_JavaTextDateFormat;
+      return localDateFormat;
+    }
+    finally {}
+  }
+  
+  public static int c(long paramLong)
+  {
+    int i = -1;
+    int j = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
+    int k = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
+    if (k == j) {
+      i = 2131720882;
+    }
+    do
+    {
+      return i;
+      if (k == j - 1) {
+        return 2131721491;
+      }
+    } while (k != j - 2);
+    return 2131690507;
+  }
+  
+  public static String c(Context paramContext, long paramLong)
+  {
+    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
+    int i = jdField_a_of_type_JavaUtilCalendar.get(1);
+    int j = jdField_a_of_type_JavaUtilCalendar.get(2);
+    int k = jdField_a_of_type_JavaUtilCalendar.get(6);
+    jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
+    switch (b(i, j, k, jdField_a_of_type_JavaUtilCalendar.get(1), jdField_a_of_type_JavaUtilCalendar.get(2), jdField_a_of_type_JavaUtilCalendar.get(6)))
+    {
+    default: 
+      return null;
+    case 1: 
+      paramContext = new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale);
+      return String.format("%s %s", new Object[] { alpo.a(2131715325), paramContext.format(new Date(paramLong)) });
+    case 2: 
+      paramContext = new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale);
+      return String.format("%s %s", new Object[] { alpo.a(2131715332), paramContext.format(new Date(paramLong)) });
+    case 3: 
+      paramContext = new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale);
+      return String.format("%s %s", new Object[] { alpo.a(2131715326), paramContext.format(new Date(paramLong)) });
+    case 4: 
+      return new SimpleDateFormat("MM-dd HH:mm", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
+    }
+    return new SimpleDateFormat("yyyy-MM-dd HH:mm", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
+  }
+  
+  public static int d(long paramLong)
+  {
+    try
+    {
+      jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(System.currentTimeMillis());
+      int i = jdField_a_of_type_JavaUtilCalendar.get(1);
+      int j = jdField_a_of_type_JavaUtilCalendar.get(2);
+      int k = jdField_a_of_type_JavaUtilCalendar.get(6);
+      jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
+      i = b(i, j, k, jdField_a_of_type_JavaUtilCalendar.get(1), jdField_a_of_type_JavaUtilCalendar.get(2), jdField_a_of_type_JavaUtilCalendar.get(6));
+      return i;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("calTimeInterval", 2, localException.getMessage());
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdjj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,49 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-final class wan
-  extends waa
+public class wan
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, wbc>
 {
-  wan(waa paramwaa, PublishVideoEntry paramPublishVideoEntry) {}
-  
-  public void onFailure(String paramString)
+  public wan(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
-    }
-    this.jdField_a_of_type_Waa.onFailure(paramString);
-    if ((this.jdField_a_of_type_Waa instanceof swh)) {
-      ((swh)this.jdField_a_of_type_Waa).a(941006);
-    }
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 failed msg：" + paramString);
+    super(paramQQStoryShareGroupProfileActivity);
   }
   
-  public void onStart()
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull wbc paramwbc)
   {
-    super.onStart();
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 start");
+    if (paramwbc.a == 1)
+    {
+      paramQQStoryShareGroupProfileActivity.g = true;
+      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Wbb.a();
+      paramQQStoryShareGroupProfileActivity.b(true);
+      paramwbc = paramQQStoryShareGroupProfileActivity.b;
+      if (!paramQQStoryShareGroupProfileActivity.g) {
+        break label82;
+      }
+    }
+    label82:
+    for (paramQQStoryShareGroupProfileActivity = "1";; paramQQStoryShareGroupProfileActivity = "2")
+    {
+      wta.a("share_story", "clk_rank", 0, 0, new String[] { paramwbc, paramQQStoryShareGroupProfileActivity });
+      return;
+      if (paramwbc.a != 0) {
+        break;
+      }
+      paramQQStoryShareGroupProfileActivity.g = false;
+      paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean = false;
+      break;
+    }
   }
   
-  public void onSuccess(String paramString)
+  public Class acceptEventClass()
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.b;
-    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " getVideoFromMp4 success cost：" + String.valueOf(l1 - l2));
+    return wbc.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wan
  * JD-Core Version:    0.7.0.1
  */

@@ -5,43 +5,43 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import rjy;
-import rmn;
+import saa;
+import scl;
 
 public class BaseData
   implements Parcelable
 {
-  public static final Parcelable.Creator<BaseData> CREATOR = new rjy();
+  public static final Parcelable.Creator<BaseData> CREATOR = new saa();
   public final float a;
   public FastWebArticleInfo a;
   public float b;
   public ArticleInfo b;
   public boolean e;
-  public final int p;
-  public int q = -1;
-  public int r = -1;
+  public final int s;
+  public int t = -1;
+  public int u = -1;
   
   public BaseData(int paramInt)
   {
     this.jdField_b_of_type_Float = -1000.0F;
-    this.p = paramInt;
+    this.s = paramInt;
     this.jdField_a_of_type_Float = a(this);
   }
   
   public BaseData(Parcel paramParcel)
   {
     this.jdField_b_of_type_Float = -1000.0F;
-    this.p = paramParcel.readInt();
+    this.s = paramParcel.readInt();
     this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = ((ArticleInfo)paramParcel.readParcelable(ArticleInfo.class.getClassLoader()));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo = ((FastWebArticleInfo)paramParcel.readParcelable(FastWebArticleInfo.class.getClassLoader()));
     this.jdField_a_of_type_Float = paramParcel.readFloat();
-    this.q = paramParcel.readInt();
-    this.r = paramParcel.readInt();
+    this.t = paramParcel.readInt();
+    this.u = paramParcel.readInt();
   }
   
   public static float a(BaseData paramBaseData)
   {
-    switch (paramBaseData.p)
+    switch (paramBaseData.s)
     {
     }
     do
@@ -52,8 +52,8 @@ public class BaseData
       return 2.0F;
       return 3.0F;
       return paramBaseData.jdField_b_of_type_Float;
-      return rmn.a(paramBaseData, false);
-      return rmn.a(paramBaseData, true);
+      return scl.a(paramBaseData, false);
+      return scl.a(paramBaseData, true);
       return 9.0F;
       return 10.0F;
       return 11.0F;
@@ -77,17 +77,17 @@ public class BaseData
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.p);
+    paramParcel.writeInt(this.s);
     paramParcel.writeParcelable(this.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 0);
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo, 0);
     paramParcel.writeFloat(this.jdField_a_of_type_Float);
-    paramParcel.writeInt(this.q);
-    paramParcel.writeInt(this.r);
+    paramParcel.writeInt(this.t);
+    paramParcel.writeInt(this.u);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData
  * JD-Core Version:    0.7.0.1
  */

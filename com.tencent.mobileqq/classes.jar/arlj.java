@@ -1,21 +1,22 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherVCtrlFragment;
+import java.util.List;
 
-public class arlj
-  implements DialogInterface.OnDismissListener
+class arlj
+  implements army
 {
-  public arlj(WatchTogetherVCtrlFragment paramWatchTogetherVCtrlFragment, Activity paramActivity) {}
+  arlj(arle paramarle, List paramList) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+    armz.d(arle.a(this.jdField_a_of_type_Arle).getString(2131692912));
+    bcjk.a(arle.a(this.jdField_a_of_type_Arle), arle.a(this.jdField_a_of_type_Arle), this.jdField_a_of_type_JavaUtilList);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arlj
  * JD-Core Version:    0.7.0.1
  */

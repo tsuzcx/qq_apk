@@ -1,82 +1,41 @@
-import android.graphics.Color;
-import android.text.SpannableString;
-import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import android.widget.TextView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.profile.view.ShimmerLinearLayout;
+import java.lang.ref.WeakReference;
 
 public class awry
-  implements awrd<awog, awwq>
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void a(awog paramawog, awwq paramawwq)
+  final int jdField_a_of_type_Int;
+  private WeakReference<ShimmerLinearLayout> jdField_a_of_type_JavaLangRefWeakReference;
+  final int b;
+  final int c;
+  final int d;
+  
+  private awry(ShimmerLinearLayout paramShimmerLinearLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    awye localawye = (awye)paramawwq;
-    awnp localawnp;
-    Object localObject;
-    if ((paramawog instanceof awnp))
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramShimmerLinearLayout);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f1 = Math.max(0.0F, Math.min(1.0F, ((Float)paramValueAnimator.getAnimatedValue()).floatValue()));
+    paramValueAnimator = (ShimmerLinearLayout)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramValueAnimator != null)
     {
-      localawnp = (awnp)paramawog;
-      localObject = localawnp.a();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break label342;
-      }
-      localObject = "";
-    }
-    label203:
-    label337:
-    label342:
-    for (;;)
-    {
-      if (((awnp)paramawog).b())
-      {
-        String str = localawnp.b();
-        if (!TextUtils.isEmpty(str))
-        {
-          str = awwa.a(localawye.a(), 10.0F * awwa.a(localawye.a(), ajya.a(2131713658)), 1, str, str, false, false, true).toString();
-          localObject = new SpannableString(str + "-" + (String)localObject);
-          ((SpannableString)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#12B7F5")), 0, str.length(), 34);
-          localawye.a().setText((CharSequence)localObject);
-          if (!localawnp.a()) {
-            break label312;
-          }
-          paramawwq.b().setText(localawnp.c());
-          paramawwq.b().setVisibility(0);
-          paramawwq.b().setTag(2131379214, Integer.valueOf(-1));
-          if ((paramawog instanceof awoh))
-          {
-            paramawog = (awoh)paramawog;
-            paramawwq.b().setOnClickListener(new awrz(this, paramawog));
-          }
-          paramawog = paramawwq.a().getTag(2131379214);
-          if (!(paramawog instanceof Integer)) {
-            break label337;
-          }
-        }
-      }
-      for (int i = ((Integer)paramawog).intValue();; i = -1)
-      {
-        if (i > 0) {
-          localawye.a(true);
-        }
-        while (i != 0)
-        {
-          return;
-          localawye.a().setText((CharSequence)localObject);
-          break;
-          localawye.a().setText((CharSequence)localObject);
-          break;
-          paramawwq.b().setVisibility(8);
-          break label203;
-        }
-        localawye.a(false);
-        return;
-      }
+      int i = (int)(this.jdField_a_of_type_Int * (1.0F - f1) + this.c * f1);
+      float f2 = this.b;
+      paramValueAnimator.a(i, (int)(f1 * this.d + f2 * (1.0F - f1)));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awry
  * JD-Core Version:    0.7.0.1
  */

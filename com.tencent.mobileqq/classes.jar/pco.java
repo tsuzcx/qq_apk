@@ -1,52 +1,91 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.1;
-import com.tencent.biz.pubaccount.readinjoy.position.SelectCityPresenter.2;
-import java.util.List;
-import mqq.util.WeakReference;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
 
 public class pco
-  implements pbm
 {
-  private SelectPositionModule jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule = osg.a().a();
-  private WeakReference<pcp> jdField_a_of_type_MqqUtilWeakReference;
-  
-  public pco(pcp parampcp)
+  public static String a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelSelectPositionModule.a(this);
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(parampcp);
-  }
-  
-  private void b(List<pcm> paramList)
-  {
-    pcp localpcp = (pcp)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((localpcp != null) && (paramList != null)) {
-      localpcp.a(paramList);
+    try
+    {
+      InetAddress localInetAddress;
+      do
+      {
+        localObject = NetworkInterface.getNetworkInterfaces();
+        Enumeration localEnumeration;
+        while (!localEnumeration.hasMoreElements())
+        {
+          if (!((Enumeration)localObject).hasMoreElements()) {
+            break;
+          }
+          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
+        }
+        localInetAddress = (InetAddress)localEnumeration.nextElement();
+      } while ((localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)));
+      Object localObject = localInetAddress.getHostAddress();
+      return localObject;
     }
+    catch (SocketException localSocketException) {}
+    return "0.0.0.0";
   }
   
-  public void a()
+  private static String a(int paramInt)
   {
-    SelectPositionModule localSelectPositionModule = osg.a().a();
-    if (localSelectPositionModule != null) {
-      b(localSelectPositionModule.a());
+    return (paramInt & 0xFF) + "." + (paramInt >> 8 & 0xFF) + "." + (paramInt >> 16 & 0xFF) + "." + (paramInt >> 24 & 0xFF);
+  }
+  
+  public static String a(Context paramContext)
+  {
+    Object localObject = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+    if ((localObject != null) && (((NetworkInfo)localObject).isConnected()))
+    {
+      if (((NetworkInfo)localObject).getType() != 0) {
+        break label104;
+      }
+      try
+      {
+        InetAddress localInetAddress;
+        do
+        {
+          paramContext = NetworkInterface.getNetworkInterfaces();
+          while (!((Enumeration)localObject).hasMoreElements())
+          {
+            if (!paramContext.hasMoreElements()) {
+              break;
+            }
+            localObject = ((NetworkInterface)paramContext.nextElement()).getInetAddresses();
+          }
+          localInetAddress = (InetAddress)((Enumeration)localObject).nextElement();
+        } while ((localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)));
+        paramContext = localInetAddress.getHostAddress();
+        return paramContext;
+      }
+      catch (SocketException paramContext)
+      {
+        paramContext.printStackTrace();
+      }
     }
-  }
-  
-  public void a(SelectPositionModule.PositionData paramPositionData)
-  {
-    bdst.a().post(new SelectCityPresenter.2(this, paramPositionData));
-  }
-  
-  public void a(List<pcm> paramList)
-  {
-    bdst.a().post(new SelectCityPresenter.1(this, paramList));
+    label104:
+    do
+    {
+      return null;
+      if (((NetworkInfo)localObject).getType() == 1) {
+        return a(((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getIpAddress());
+      }
+    } while (((NetworkInfo)localObject).getType() != 9);
+    return a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pco
  * JD-Core Version:    0.7.0.1
  */

@@ -5,39 +5,38 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import berx;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public class MiniGamePluginInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<MiniGamePluginInfo> CREATOR = new berx();
-  public final int a;
-  public final String a;
-  public final String b;
-  public final String c;
-  public final String d;
+  public static final Parcelable.Creator<MiniGamePluginInfo> CREATOR = new MiniGamePluginInfo.1();
+  public final String id;
+  public final String name;
+  public final int packageSize;
+  public final String url;
+  public final String version;
   
-  public MiniGamePluginInfo(Parcel paramParcel)
+  protected MiniGamePluginInfo(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.b = paramParcel.readString();
-    this.c = paramParcel.readString();
-    this.d = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.name = paramParcel.readString();
+    this.id = paramParcel.readString();
+    this.version = paramParcel.readString();
+    this.url = paramParcel.readString();
+    this.packageSize = paramParcel.readInt();
   }
   
   public MiniGamePluginInfo(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.jdField_a_of_type_Int = paramInt;
+    this.name = paramString1;
+    this.id = paramString2;
+    this.version = paramString3;
+    this.url = paramString4;
+    this.packageSize = paramInt;
   }
   
-  public static MiniGamePluginInfo a(INTERFACE.StPluginInfo paramStPluginInfo)
+  public static MiniGamePluginInfo fromProtocol(INTERFACE.StPluginInfo paramStPluginInfo)
   {
     if ((paramStPluginInfo != null) && (!TextUtils.isEmpty(paramStPluginInfo.pluginName.get())) && (!TextUtils.isEmpty(paramStPluginInfo.pluginId.get())) && (!TextUtils.isEmpty(paramStPluginInfo.version.get())) && (!TextUtils.isEmpty(paramStPluginInfo.url.get()))) {
       return new MiniGamePluginInfo(paramStPluginInfo.pluginName.get(), paramStPluginInfo.pluginId.get(), paramStPluginInfo.version.get(), paramStPluginInfo.url.get(), paramStPluginInfo.fileSize.get());
@@ -72,38 +71,38 @@ public class MiniGamePluginInfo
             } while (!(paramObject instanceof MiniGamePluginInfo));
             paramObject = (MiniGamePluginInfo)paramObject;
             bool1 = bool2;
-          } while (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int);
+          } while (this.packageSize != paramObject.packageSize);
           bool1 = bool2;
-        } while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
+        } while (!this.name.equals(paramObject.name));
         bool1 = bool2;
-      } while (!this.b.equals(paramObject.b));
+      } while (!this.id.equals(paramObject.id));
       bool1 = bool2;
-    } while (!this.c.equals(paramObject.c));
-    return this.d.equals(paramObject.d);
+    } while (!this.version.equals(paramObject.version));
+    return this.url.equals(paramObject.url);
   }
   
   public int hashCode()
   {
-    return (((this.jdField_a_of_type_JavaLangString.hashCode() * 31 + this.b.hashCode()) * 31 + this.c.hashCode()) * 31 + this.d.hashCode()) * 31 + this.jdField_a_of_type_Int;
+    return (((this.name.hashCode() * 31 + this.id.hashCode()) * 31 + this.version.hashCode()) * 31 + this.url.hashCode()) * 31 + this.packageSize;
   }
   
   public String toString()
   {
-    return "MiniGamePluginInfo{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", id='" + this.b + '\'' + ", version='" + this.c + '\'' + ", url='" + this.d + '\'' + ", packageSize=" + this.jdField_a_of_type_Int + '}';
+    return "MiniGamePluginInfo{name='" + this.name + '\'' + ", id='" + this.id + '\'' + ", version='" + this.version + '\'' + ", url='" + this.url + '\'' + ", packageSize=" + this.packageSize + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.b);
-    paramParcel.writeString(this.c);
-    paramParcel.writeString(this.d);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeString(this.name);
+    paramParcel.writeString(this.id);
+    paramParcel.writeString(this.version);
+    paramParcel.writeString(this.url);
+    paramParcel.writeInt(this.packageSize);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.MiniGamePluginInfo
  * JD-Core Version:    0.7.0.1
  */

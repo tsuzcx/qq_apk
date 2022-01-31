@@ -1,23 +1,32 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class rcr
-  implements View.OnLongClickListener
+class rcr
+  extends AnimatorListenerAdapter
 {
-  public rcr(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, FastWebActivity paramFastWebActivity, FastWebArticleInfo paramFastWebArticleInfo) {}
+  rcr(rcp paramrcp) {}
   
-  public boolean onLongClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebFastWebActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
-    return false;
+    paramAnimator = new Bundle();
+    paramAnimator.putBoolean("key_is_from_floating_window", true);
+    paramAnimator.putParcelable("VIDEO_OBJ", rcp.a(this.a).a);
+    if (rcp.a(this.a) != null) {}
+    for (long l = rcp.a(this.a).a() + 300L;; l = 0L)
+    {
+      paramAnimator.putLong("VIDEO_PLAY_POSITION", l);
+      rdm.a(BaseActivity.sTopActivity, paramAnimator, false, rcp.a(this.a));
+      rcp.a(this.a, 1);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rcr
  * JD-Core Version:    0.7.0.1
  */

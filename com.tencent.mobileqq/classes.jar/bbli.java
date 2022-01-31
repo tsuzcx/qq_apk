@@ -1,33 +1,35 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-final class bbli
-  implements Handler.Callback
+class bbli
+  implements Animation.AnimationListener
 {
-  public boolean handleMessage(Message paramMessage)
+  bbli(bblf parambblf, boolean paramBoolean) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QQAppInterface localQQAppInterface;
-    if ((BaseApplicationImpl.getApplication().waitAppRuntime(null) instanceof QQAppInterface))
+    if (bblf.a(this.jdField_a_of_type_Bblf) != null)
     {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null);
-      switch (paramMessage.what)
-      {
-      }
+      bblf.a(this.jdField_a_of_type_Bblf).a.clearAnimation();
+      bblf.a(this.jdField_a_of_type_Bblf).a.setVisibility(8);
     }
-    for (;;)
+    bblf.a(this.jdField_a_of_type_Bblf, false);
+    bblf.a(this.jdField_a_of_type_Bblf, null);
+    bblf.a(this.jdField_a_of_type_Bblf, null);
+    bblf.a(this.jdField_a_of_type_Bblf, -1);
+    if ((!this.jdField_a_of_type_Boolean) && (!bblf.b(this.jdField_a_of_type_Bblf)))
     {
-      return true;
-      bcql.a(localQQAppInterface.getApplication(), ajya.a(2131716058), 0).a();
-      continue;
-      bcql.a(localQQAppInterface.getApplication(), ajya.a(2131716057), 0).a();
-      continue;
-      bcql.a(localQQAppInterface.getApplication(), ajya.a(2131716056), 0).a();
-      continue;
-      bcql.a(localQQAppInterface.getApplication(), ajya.a(2131716059), 0).a();
+      ThreadManager.getUIHandler().post(bblf.a(this.jdField_a_of_type_Bblf));
+      bblf.b(this.jdField_a_of_type_Bblf, true);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

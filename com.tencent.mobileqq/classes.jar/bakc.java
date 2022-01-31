@@ -1,69 +1,92 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import java.util.Map;
-import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileRspBody;
+import android.text.TextUtils;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.theme.ThemeSwitcher;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.BinderWarpper;
+import eipc.EIPCResult;
 
-class bakc
-  extends xbd
+public class bakc
+  extends QIPCModule
 {
-  bakc(bajy parambajy) {}
+  private static bakc jdField_a_of_type_Bakc;
+  private static String jdField_a_of_type_JavaLangString = "setup";
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle)
+  private bakc(String paramString)
   {
-    Object localObject = this.a;
-    ((bajy)localObject).jdField_a_of_type_Int -= 1;
-    if ((!paramBoolean) || (paramTransFileRspBody == null)) {
-      azst.a("TroopFileManager", azst.jdField_a_of_type_Int, "onTransFileResult:  isSuccess:false");
-    }
-    do
+    super(paramString);
+  }
+  
+  public static bakc a()
+  {
+    try
     {
+      if (jdField_a_of_type_Bakc == null) {
+        jdField_a_of_type_Bakc = new bakc("ThemeIPCModule");
+      }
+      bakc localbakc = jdField_a_of_type_Bakc;
+      return localbakc;
+    }
+    finally {}
+  }
+  
+  public static void a(String paramString, aubp<bakf> paramaubp)
+  {
+    if ((TextUtils.isEmpty(paramString)) || ("1000".equals(paramString)))
+    {
+      paramaubp.postQuery(null);
       return;
-      localObject = paramBundle.getString("fileId");
-      paramBundle = (azpi)this.a.c.get(localObject);
-    } while (paramBundle == null);
-    int i = paramTransFileRspBody.int32_ret_code.get();
-    azst.c("TroopFileManager", azst.jdField_a_of_type_Int, "onTransFileResult: fileId:" + (String)localObject + " isSuccess:" + paramBoolean + " errCode:" + paramInt + " retCode:" + i);
-    if (i < 0)
+    }
+    if ("999".equals(paramString))
     {
-      paramInt = 501;
-      switch (i)
-      {
+      paramaubp.postQuery(new bakf().a());
+      return;
+    }
+    QuickUpdateIPCModule.a(3, ThemeUtil.getThemeConfigID(paramString), true, new bake(paramString, paramaubp));
+  }
+  
+  public static void a(String paramString, bajm parambajm)
+  {
+    Bundle localBundle = new Bundle();
+    if (parambajm != null) {
+      localBundle.putParcelable("binder", new BinderWarpper(parambajm.asBinder()));
+    }
+    localBundle.putString("themeId", paramString);
+    QIPCClientHelper.getInstance().callServer("ThemeIPCModule", jdField_a_of_type_JavaLangString, localBundle, null);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ThemeIPCModule", 2, "onCall action = " + paramString);
+    }
+    paramBundle.setClassLoader(BinderWarpper.class.getClassLoader());
+    String str = paramBundle.getString("themeId");
+    if (paramBundle.containsKey("binder")) {}
+    for (paramBundle = ((BinderWarpper)paramBundle.getParcelable("binder")).a;; paramBundle = null)
+    {
+      if (jdField_a_of_type_JavaLangString.equals(paramString)) {
+        if (paramBundle == null) {
+          break label135;
+        }
       }
-      for (;;)
+      label135:
+      for (paramString = new bakd(this, bajn.asInterface(paramBundle));; paramString = null)
       {
-        this.a.a(paramBundle, paramInt);
-        return;
-        paramInt = 504;
-        continue;
-        paramInt = 103;
-        continue;
-        paramInt = 101;
-        continue;
-        paramInt = 503;
-        continue;
-        paramInt = 502;
+        ThemeSwitcher.a(str, "200", paramString);
+        return null;
+        QLog.e("ThemeIPCModule", 1, "onCall missing action = " + paramString);
+        return null;
       }
     }
-    paramTransFileRspBody = paramTransFileRspBody.str_save_file_path.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(paramBundle.jdField_a_of_type_JavaUtilUUID, paramTransFileRspBody);
-    paramBundle.b = paramTransFileRspBody;
-    paramBundle.jdField_a_of_type_Int = 102;
-    paramBundle.c = 0;
-    this.a.c.remove(localObject);
-    this.a.c.put(paramTransFileRspBody, paramBundle);
-    this.a.d(paramBundle);
-    paramTransFileRspBody = (bake)this.a.d.get(paramBundle.f);
-    if (paramTransFileRspBody != null) {
-      paramTransFileRspBody.a = null;
-    }
-    this.a.a(paramBundle, 505);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bakc
  * JD-Core Version:    0.7.0.1
  */

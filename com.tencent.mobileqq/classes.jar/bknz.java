@@ -1,31 +1,35 @@
-import android.util.Property;
+import android.opengl.GLSurfaceView.EGLContextFactory;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-class bknz
-  extends Property<bknw, Float>
+public class bknz
+  implements GLSurfaceView.EGLContextFactory
 {
-  bknz(bknw parambknw, Class paramClass, String paramString)
+  private int jdField_a_of_type_Int = 12440;
+  
+  public bknz(AECameraGLSurfaceView paramAECameraGLSurfaceView) {}
+  
+  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    super(paramClass, paramString);
+    int i = this.jdField_a_of_type_Int;
+    paramEGL10 = paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 });
+    blfg.b("AECameraGLSurfaceView", "[EGLContext] createContext finish");
+    return paramEGL10;
   }
   
-  public Float a(bknw parambknw)
+  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    if (parambknw != null) {
-      return Float.valueOf(bknw.a(parambknw));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(bknw parambknw, Float paramFloat)
-  {
-    if (parambknw != null) {
-      bknw.a(parambknw, paramFloat.floatValue());
-    }
+    AECameraGLSurfaceView.a(this.jdField_a_of_type_DovComQqImAeCameraCoreAECameraGLSurfaceView);
+    paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext);
+    blfg.b("AECameraGLSurfaceView", "[EGLContext] destroyContext finish");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bknz
  * JD-Core Version:    0.7.0.1
  */

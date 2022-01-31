@@ -1,30 +1,10 @@
-import android.os.Bundle;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-class xkf
-  implements wxt
+public abstract interface xkf
 {
-  xkf(xkb paramxkb) {}
-  
-  public void a(Bundle paramBundle)
-  {
-    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
-    {
-      ArrayList localArrayList = paramBundle.getStringArrayList("uins");
-      paramBundle = paramBundle.getStringArrayList("tinyIds");
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        xkb.a(this.a).put(paramBundle.get(i), localArrayList.get(i));
-        i += 1;
-      }
-    }
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkf
  * JD-Core Version:    0.7.0.1
  */

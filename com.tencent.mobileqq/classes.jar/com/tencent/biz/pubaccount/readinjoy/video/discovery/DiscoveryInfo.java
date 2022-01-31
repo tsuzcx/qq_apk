@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
-import qwt;
+import rmi;
 
 public class DiscoveryInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DiscoveryInfo> CREATOR = new qwt();
+  public static final Parcelable.Creator<DiscoveryInfo> CREATOR = new rmi();
   public int a;
   public long a;
   public String a;
@@ -82,7 +82,7 @@ public class DiscoveryInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.mini.http;
 
 import android.text.TextUtils;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.MultipartBuilder;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.RequestBody;
 import com.tencent.plato.mqq.network.ProgressRequestBody;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.Iterator;
+import okhttp3.Call;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.MultipartBody.Builder;
+import okhttp3.OkHttpClient;
+import okhttp3.Request.Builder;
+import okhttp3.RequestBody;
 import org.json.JSONObject;
 
 public class MiniappHttpUtil$UploadTask
@@ -41,18 +42,14 @@ public class MiniappHttpUtil$UploadTask
   
   private RequestBody buildMultiPartBody(JSONObject paramJSONObject, String paramString1, String paramString2)
   {
-    MultipartBuilder localMultipartBuilder = new MultipartBuilder().type(MultipartBuilder.FORM);
+    MultipartBody.Builder localBuilder = new MultipartBody.Builder().setType(MultipartBody.FORM);
     if (paramJSONObject != null)
     {
-      new StringBuffer();
-      if (paramJSONObject != null)
+      localObject1 = paramJSONObject.keys();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject1 = paramJSONObject.keys();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (String)((Iterator)localObject1).next();
-          localMultipartBuilder.addFormDataPart((String)localObject2, paramJSONObject.optString((String)localObject2));
-        }
+        localObject2 = (String)((Iterator)localObject1).next();
+        localBuilder.addFormDataPart((String)localObject2, paramJSONObject.optString((String)localObject2));
       }
     }
     Object localObject2 = new File(this.filePath);
@@ -61,8 +58,8 @@ public class MiniappHttpUtil$UploadTask
     if (TextUtils.isEmpty(paramString2)) {
       paramJSONObject = ((File)localObject2).getName();
     }
-    localMultipartBuilder.addFormDataPart(paramString1, paramJSONObject, (RequestBody)localObject1);
-    return localMultipartBuilder.build();
+    localBuilder.addFormDataPart(paramString1, paramJSONObject, (RequestBody)localObject1);
+    return localBuilder.build();
   }
   
   public void abort()
@@ -111,7 +108,7 @@ public class MiniappHttpUtil$UploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.http.MiniappHttpUtil.UploadTask
  * JD-Core Version:    0.7.0.1
  */

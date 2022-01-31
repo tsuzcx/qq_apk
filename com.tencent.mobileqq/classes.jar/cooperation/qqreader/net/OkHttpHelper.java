@@ -1,13 +1,5 @@
 package cooperation.qqreader.net;
 
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Protocol;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.RequestBody;
-import com.squareup.okhttp.Response;
 import com.tencent.qphone.base.util.QLog;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,63 +12,19 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.zip.GZIPInputStream;
+import okhttp3.Call;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient.Builder;
+import okhttp3.Protocol;
+import okhttp3.Request;
+import okhttp3.Request.Builder;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public final class OkHttpHelper
 {
   private static OkHttpClient a;
-  
-  public static OkHttpClient a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null)
-      {
-        a = new OkHttpClient();
-        a.setProtocols(Arrays.asList(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 }));
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public static Request a(String paramString, OkHttpHelper.HttpMethodType paramHttpMethodType, HashMap<String, String> paramHashMap, MediaType paramMediaType, byte[] paramArrayOfByte)
-  {
-    Request.Builder localBuilder = new Request.Builder();
-    localBuilder.url(paramString);
-    if (paramHashMap != null)
-    {
-      paramString = paramHashMap.entrySet().iterator();
-      while (paramString.hasNext())
-      {
-        paramHashMap = (Map.Entry)paramString.next();
-        if ((paramHashMap.getKey() != null) && (paramHashMap.getValue() != null)) {
-          localBuilder.addHeader((String)paramHashMap.getKey(), (String)paramHashMap.getValue());
-        }
-      }
-    }
-    if (paramHttpMethodType == OkHttpHelper.HttpMethodType.GET) {
-      localBuilder.get();
-    }
-    for (;;)
-    {
-      return localBuilder.build();
-      paramString = paramArrayOfByte;
-      if (paramArrayOfByte == null) {
-        paramString = new byte[0];
-      }
-      localBuilder.post(RequestBody.create(paramMediaType, paramString));
-    }
-  }
-  
-  private static Response a(Request paramRequest)
-  {
-    paramRequest = a().newCall(paramRequest).execute();
-    if (!paramRequest.isSuccessful()) {
-      throw new HttpResponseException(paramRequest.code());
-    }
-    return paramRequest;
-  }
   
   private static InputStream a(InputStream paramInputStream)
   {
@@ -127,36 +75,36 @@ public final class OkHttpHelper
     //   2: aload_2
     //   3: aload_3
     //   4: aload 4
-    //   6: invokestatic 193	cooperation/qqreader/net/OkHttpHelper:a	(Ljava/lang/String;Lcooperation/qqreader/net/OkHttpHelper$HttpMethodType;Ljava/util/HashMap;Lcom/squareup/okhttp/MediaType;[B)Lcom/squareup/okhttp/Request;
-    //   9: invokestatic 195	cooperation/qqreader/net/OkHttpHelper:a	(Lcom/squareup/okhttp/Request;)Lcom/squareup/okhttp/Response;
+    //   6: invokestatic 73	cooperation/qqreader/net/OkHttpHelper:a	(Ljava/lang/String;Lcooperation/qqreader/net/OkHttpHelper$HttpMethodType;Ljava/util/HashMap;Lokhttp3/MediaType;[B)Lokhttp3/Request;
+    //   9: invokestatic 76	cooperation/qqreader/net/OkHttpHelper:a	(Lokhttp3/Request;)Lokhttp3/Response;
     //   12: astore_1
     //   13: aconst_null
     //   14: astore_0
     //   15: aload_1
-    //   16: invokevirtual 199	com/squareup/okhttp/Response:body	()Lcom/squareup/okhttp/ResponseBody;
-    //   19: invokevirtual 205	com/squareup/okhttp/ResponseBody:byteStream	()Ljava/io/InputStream;
+    //   16: invokevirtual 82	okhttp3/Response:body	()Lokhttp3/ResponseBody;
+    //   19: invokevirtual 88	okhttp3/ResponseBody:byteStream	()Ljava/io/InputStream;
     //   22: astore_1
     //   23: aload_1
     //   24: astore_0
     //   25: aload_1
-    //   26: invokestatic 207	cooperation/qqreader/net/OkHttpHelper:a	(Ljava/io/InputStream;)Ljava/io/InputStream;
+    //   26: invokestatic 90	cooperation/qqreader/net/OkHttpHelper:a	(Ljava/io/InputStream;)Ljava/io/InputStream;
     //   29: astore_1
     //   30: aload_1
     //   31: astore_0
     //   32: aload_1
-    //   33: invokestatic 209	cooperation/qqreader/net/OkHttpHelper:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   33: invokestatic 92	cooperation/qqreader/net/OkHttpHelper:a	(Ljava/io/InputStream;)Ljava/lang/String;
     //   36: astore_2
     //   37: aload_1
     //   38: ifnull +7 -> 45
     //   41: aload_1
-    //   42: invokevirtual 214	java/io/InputStream:close	()V
+    //   42: invokevirtual 97	java/io/InputStream:close	()V
     //   45: aload_2
     //   46: areturn
     //   47: astore_1
     //   48: aload_0
     //   49: ifnull +7 -> 56
     //   52: aload_0
-    //   53: invokevirtual 214	java/io/InputStream:close	()V
+    //   53: invokevirtual 97	java/io/InputStream:close	()V
     //   56: aload_1
     //   57: athrow
     //   58: astore_0
@@ -179,10 +127,61 @@ public final class OkHttpHelper
     //   41	45	58	java/io/IOException
     //   52	56	61	java/io/IOException
   }
+  
+  public static OkHttpClient a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new OkHttpClient().newBuilder().protocols(Arrays.asList(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 })).build();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public static Request a(String paramString, OkHttpHelper.HttpMethodType paramHttpMethodType, HashMap<String, String> paramHashMap, MediaType paramMediaType, byte[] paramArrayOfByte)
+  {
+    Request.Builder localBuilder = new Request.Builder();
+    localBuilder.url(paramString);
+    if (paramHashMap != null)
+    {
+      paramString = paramHashMap.entrySet().iterator();
+      while (paramString.hasNext())
+      {
+        paramHashMap = (Map.Entry)paramString.next();
+        if ((paramHashMap.getKey() != null) && (paramHashMap.getValue() != null)) {
+          localBuilder.addHeader((String)paramHashMap.getKey(), (String)paramHashMap.getValue());
+        }
+      }
+    }
+    if (paramHttpMethodType == OkHttpHelper.HttpMethodType.GET) {
+      localBuilder.get();
+    }
+    for (;;)
+    {
+      return localBuilder.build();
+      paramString = paramArrayOfByte;
+      if (paramArrayOfByte == null) {
+        paramString = new byte[0];
+      }
+      localBuilder.post(RequestBody.create(paramMediaType, paramString));
+    }
+  }
+  
+  private static Response a(Request paramRequest)
+  {
+    paramRequest = a().newCall(paramRequest).execute();
+    if (!paramRequest.isSuccessful()) {
+      throw new HttpResponseException(paramRequest.code());
+    }
+    return paramRequest;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.net.OkHttpHelper
  * JD-Core Version:    0.7.0.1
  */

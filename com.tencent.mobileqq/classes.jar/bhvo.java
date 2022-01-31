@@ -1,23 +1,21 @@
-import android.os.Handler;
-import cooperation.qzone.zipanimate.ZipAnimationDrawable.ZipAnimationState.1.1;
+import android.view.View;
+import android.widget.BaseExpandableListAdapter;
 
-public class bhvo
-  implements bhvw
+public abstract class bhvo
+  extends BaseExpandableListAdapter
 {
-  bhvo(bhvn parambhvn) {}
+  public abstract int a();
   
-  public void onZipLoaded(boolean paramBoolean)
+  public abstract void a(View paramView, int paramInt);
+  
+  public boolean a()
   {
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_Boolean = paramBoolean;
-      this.a.jdField_a_of_type_Bhvj.a.post(new ZipAnimationDrawable.ZipAnimationState.1.1(this));
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhvo
  * JD-Core Version:    0.7.0.1
  */

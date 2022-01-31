@@ -1,81 +1,70 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.view.MusicFragmentProviderView;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import java.util.LinkedList;
 
 public class bjkj
-  implements bjdy
+  implements ServiceConnection
 {
-  public bjkj(MusicFragmentProviderView paramMusicFragmentProviderView) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
   
-  public void a()
+  public bjkj(bjki parambjki, ServiceConnection paramServiceConnection, Context paramContext, int paramInt)
   {
-    this.a.i();
+    this.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo)
+  public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
   {
-    if (paramInt != -1)
+    do
     {
-      this.a.a(paramInt);
-      MusicFragmentProviderView.a(this.a).set(-1);
-      this.a.j();
-      return;
-    }
-    this.a.i();
-  }
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    if (this.a.a != null)
-    {
-      if (paramMusicItemInfo.mType == 2) {
-        this.a.a.a(true);
+      try
+      {
+        this.jdField_a_of_type_AndroidContentContext.getApplicationContext().unbindService(this);
+        if (QLog.isColorLevel()) {
+          QLog.i("QZonePluginManger", 2, "onServiceConnected, " + this);
+        }
+        this.jdField_a_of_type_AndroidContentServiceConnection.onServiceConnected(???, paramIBinder);
       }
-    }
-    else {
-      return;
-    }
-    this.a.a.a(false);
-  }
-  
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    this.a.a(paramInt);
-    if (paramInt != -1)
-    {
-      MusicFragmentProviderView.a(this.a).set(-1);
-      this.a.j();
-    }
-    for (;;)
-    {
-      if (MusicFragmentProviderView.a(this.a) != null) {
-        MusicFragmentProviderView.a(this.a).f();
+      catch (Exception localException)
+      {
+        synchronized (bjki.a(this.jdField_a_of_type_Bjki))
+        {
+          do
+          {
+            paramIBinder = (bjkj)bjki.a(this.jdField_a_of_type_Bjki).poll();
+            if (paramIBinder == null) {
+              break;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("QZonePluginManger", 2, "continue process");
+            }
+            bjki.a(this.jdField_a_of_type_Bjki, paramIBinder, 300);
+            return;
+            localException = localException;
+          } while (!QLog.isColorLevel());
+          QLog.i("QZonePluginManger", 2, "unbindService, " + this);
+        }
       }
-      return;
-      this.a.i();
-    }
+      bjki.a(this.jdField_a_of_type_Bjki, false);
+    } while (!QLog.isColorLevel());
+    QLog.i("QZonePluginManger", 2, "queue empty");
   }
   
-  public void b(MusicItemInfo paramMusicItemInfo) {}
-  
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (paramInt != -1)
-    {
-      this.a.j();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "onServiceDisconnected, " + this);
     }
-    this.a.i();
-  }
-  
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    this.a.i();
+    this.jdField_a_of_type_AndroidContentServiceConnection.onServiceDisconnected(paramComponentName);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjkj
  * JD-Core Version:    0.7.0.1
  */

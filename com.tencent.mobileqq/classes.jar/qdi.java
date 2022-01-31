@@ -1,28 +1,29 @@
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.cmd0xbc9.oidb_cmd0xbc9.AdReport;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class qdi
+  extends oxe
 {
-  public String a;
+  public qdi(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
   
-  public static qdi a(oidb_cmd0xbc9.AdReport paramAdReport)
+  public void b(long paramLong, boolean paramBoolean)
   {
-    qdi localqdi = new qdi();
-    localqdi.a = paramAdReport.bytes_report_url.get().toStringUtf8();
-    return localqdi;
-  }
-  
-  public oidb_cmd0xbc9.AdReport a()
-  {
-    oidb_cmd0xbc9.AdReport localAdReport = new oidb_cmd0xbc9.AdReport();
-    localAdReport.bytes_report_url.set(ByteStringMicro.copyFromUtf8(this.a));
-    return localAdReport;
+    ComponentContentRecommendFollowList.6.1 local1 = new ComponentContentRecommendFollowList.6.1(this, paramLong, paramBoolean);
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      ThreadManager.getUIHandler().post(local1);
+      return;
+    }
+    local1.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qdi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,19 @@
-import com.tencent.mobileqq.util.FaceInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajvx
-  implements ajte
+class ajvx
+  implements DialogInterface.OnClickListener
 {
-  public void a(boolean paramBoolean, FaceInfo paramFaceInfo) {}
+  ajvx(ajvv paramajvv) {}
   
-  public void b(boolean paramBoolean, FaceInfo paramFaceInfo) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = null;
-    if (paramInt == 0) {
-      if (paramObject == null)
-      {
-        paramObject = null;
-        a(paramBoolean, paramObject);
-      }
-    }
-    while (paramInt != 1) {
-      for (;;)
-      {
-        return;
-        paramObject = (FaceInfo)paramObject;
-      }
-    }
-    if (paramObject == null) {}
-    for (paramObject = localObject;; paramObject = (FaceInfo)paramObject)
-    {
-      b(paramBoolean, paramObject);
-      return;
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajvx
  * JD-Core Version:    0.7.0.1
  */

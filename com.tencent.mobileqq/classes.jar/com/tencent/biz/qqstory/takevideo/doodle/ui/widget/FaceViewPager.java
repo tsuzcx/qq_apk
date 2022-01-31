@@ -5,13 +5,13 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import java.util.ArrayList;
 import java.util.List;
-import vpk;
-import vpl;
+import xec;
+import xed;
 
 public class FaceViewPager
   extends ViewPager
 {
-  private List<vpl> a;
+  private List<xed> a;
   
   public FaceViewPager(Context paramContext)
   {
@@ -28,19 +28,19 @@ public class FaceViewPager
   private void a()
   {
     this.a = new ArrayList();
-    setOnPageChangeListener(new vpk(this));
+    setOnPageChangeListener(new xec(this));
   }
   
-  public void a(vpl paramvpl)
+  public void a(xed paramxed)
   {
-    if (!this.a.contains(paramvpl)) {
-      this.a.add(paramvpl);
+    if (!this.a.contains(paramxed)) {
+      this.a.add(paramxed);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager
  * JD-Core Version:    0.7.0.1
  */

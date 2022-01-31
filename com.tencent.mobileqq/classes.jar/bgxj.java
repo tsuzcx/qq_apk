@@ -1,19 +1,22 @@
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.report.GdtCgiReportRunnable;
+
 public class bgxj
 {
-  public String biz_params;
-  public String bus_type;
-  public String people_num;
-  public String pick_entry;
-  public String recv_type;
-  
-  public String toString()
+  public static void a(String paramString)
   {
-    return new StringBuilder().append("people_num: ").append(this.people_num).toString() + new StringBuilder().append("recv_type: ").append(this.recv_type).toString() + new StringBuilder().append("bus_type: ").append(this.bus_type).toString() + new StringBuilder().append("pick_entry: ").append(this.pick_entry).toString() + new StringBuilder().append("biz_params: ").append(this.biz_params).toString();
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    ThreadManager.a(new GdtCgiReportRunnable(paramString), 16, null, false);
+    QMLog.i("GDT_CGI_REPORT", paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgxj
  * JD-Core Version:    0.7.0.1
  */

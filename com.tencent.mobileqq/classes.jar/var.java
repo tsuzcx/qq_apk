@@ -1,93 +1,82 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertUinAndUnionId;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class var
-  implements bfos
+  extends unk<vcp>
 {
-  public var(MystoryListView paramMystoryListView) {}
+  public String a;
+  public List<usy> a;
+  public boolean a;
+  public boolean b;
+  public int c;
+  public boolean c;
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public var()
   {
-    int j;
-    int k;
-    int m;
-    int i;
-    if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0))
-    {
-      if (-MystoryListView.b(this.a) > vzl.d(this.a.jdField_a_of_type_AndroidAppActivity) * 3) {
-        this.a.jdField_a_of_type_Vaq.b(true);
-      }
-      if ((paramInt3 == 0) || (!MystoryListView.a(this.a))) {
-        return;
-      }
-      View localView = paramAbsListView.getChildAt(0);
-      j = localView.getTop();
-      k = localView.getBottom();
-      m = localView.getHeight();
-      if (paramInt1 <= MystoryListView.c(this.a)) {
-        break label257;
-      }
-      MystoryListView.b(this.a, MystoryListView.d(this.a) + MystoryListView.e(this.a));
-      i = j - MystoryListView.d(this.a);
-    }
-    for (;;)
-    {
-      MystoryListView.e(this.a, MystoryListView.g(this.a) + i);
-      MystoryListView.f(this.a, i + MystoryListView.b(this.a));
-      MystoryListView.b(this.a, j);
-      MystoryListView.c(this.a, k);
-      MystoryListView.d(this.a, m);
-      MystoryListView.a(this.a, paramInt1);
-      if (MystoryListView.a(this.a) == null) {
-        break;
-      }
-      MystoryListView.a(this.a).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-      return;
-      label257:
-      if (paramInt1 < MystoryListView.c(this.a))
-      {
-        MystoryListView.c(this.a, MystoryListView.f(this.a) - MystoryListView.e(this.a));
-        i = k - MystoryListView.f(this.a);
-      }
-      else
-      {
-        i = k - MystoryListView.f(this.a);
-      }
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public String a()
   {
-    if ((MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0)) {
-      switch (paramInt)
-      {
+    return ume.a("StorySvc.convert_uid_and_union_id");
+  }
+  
+  public vcp a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspConvertUinAndUnionId localRspConvertUinAndUnionId = new qqstory_service.RspConvertUinAndUnionId();
+    try
+    {
+      localRspConvertUinAndUnionId.mergeFrom(paramArrayOfByte);
+      return new vcp(localRspConvertUinAndUnionId);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wsv.d("Q.qqstory.user:ConvertUinAndUnionIdRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    int j = 1;
+    qqstory_service.ReqConvertUinAndUnionId localReqConvertUinAndUnionId = new qqstory_service.ReqConvertUinAndUnionId();
+    localReqConvertUinAndUnionId.convert_from.set(this.c);
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      usy localusy = (usy)((Iterator)localObject).next();
+      localReqConvertUinAndUnionId.user_id_list.add(localusy.a());
+    }
+    localObject = localReqConvertUinAndUnionId.need_medal;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = 1;
+      ((PBUInt32Field)localObject).set(i);
+      localObject = localReqConvertUinAndUnionId.need_grade_speed;
+      if (!this.b) {
+        break label121;
       }
     }
-    for (;;)
+    label121:
+    for (int i = j;; i = 0)
     {
-      if (MystoryListView.a(this.a) != null) {
-        MystoryListView.a(this.a).onScrollStateChanged(paramAbsListView, paramInt);
-      }
-      return;
-      MystoryListView.a(this.a, false);
-      continue;
-      View localView = paramAbsListView.getChildAt(0);
-      MystoryListView.a(this.a, paramAbsListView.getFirstVisiblePosition());
-      if (localView != null)
-      {
-        MystoryListView.b(this.a, localView.getTop());
-        MystoryListView.c(this.a, localView.getBottom());
-        MystoryListView.d(this.a, localView.getHeight());
-      }
-      MystoryListView.a(this.a, true);
-      MystoryListView.e(this.a, 0);
+      ((PBUInt32Field)localObject).set(i);
+      return localReqConvertUinAndUnionId.toByteArray();
+      i = 0;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     var
  * JD-Core Version:    0.7.0.1
  */

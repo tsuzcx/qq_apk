@@ -1,19 +1,10 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-
-public abstract class bacf<D extends babg>
-  extends RecyclerView.ViewHolder
+public abstract interface bacf
 {
-  public D a;
-  
-  public bacf(View paramView)
-  {
-    super(paramView);
-  }
+  public abstract void a(bepp parambepp);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bacf
  * JD-Core Version:    0.7.0.1
  */

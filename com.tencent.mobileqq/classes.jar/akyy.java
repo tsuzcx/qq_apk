@@ -1,41 +1,27 @@
-import android.content.res.Resources;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 class akyy
-  extends bbkl
+  implements akzo
 {
-  PromotionConfigInfo jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo;
-  final String jdField_a_of_type_JavaLangString;
-  WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  akyy(akyw paramakyw) {}
   
-  akyy(String paramString1, String paramString2, AppInterface paramAppInterface)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    super(paramString1);
-    this.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
-  }
-  
-  public void innerClean()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = null;
-  }
-  
-  public boolean runOnSubThread(Resources paramResources)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo = bbmd.a(this.jdField_a_of_type_JavaLangString, null);
-    QLog.w(this.TAG, 1, "ReadConfigTask,ConfigInfo[" + this.jdField_a_of_type_ComTencentMobileqqArARPromotionMgrPromotionConfigInfo + "]");
-    akyp.c();
-    AudioHelper.a((AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    return true;
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsPresenter", 2, "res download sucess roleId=" + paramInt1 + "dressIds=" + paramArrayOfInt);
+      }
+      if (akyw.a(this.a) != null) {
+        akyw.a(this.a).e();
+      }
+      this.a.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyy
  * JD-Core Version:    0.7.0.1
  */

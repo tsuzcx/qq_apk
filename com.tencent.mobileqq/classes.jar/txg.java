@@ -1,56 +1,73 @@
-import android.support.annotation.NonNull;
+import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.subscribe.widget.StatusView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import feedcloud.FeedCloudRead.StGetFeedDetailRsp;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
+import java.util.ArrayList;
 
 class txg
-  implements syq<tmc, toa>
+  implements Observer<trw>
 {
-  txg(txf paramtxf, twt paramtwt) {}
+  txg(txe paramtxe) {}
   
-  public void a(@NonNull tmc paramtmc, @Nullable toa paramtoa, @NonNull ErrorMessage paramErrorMessage)
+  public void a(@Nullable trw paramtrw)
   {
-    if ((paramtoa == null) || (paramErrorMessage.isFail()))
+    if (paramtrw != null)
     {
-      this.jdField_a_of_type_Twt.a(paramErrorMessage, Collections.singletonList(this.jdField_a_of_type_Txf.jdField_a_of_type_Twl));
+      if ((paramtrw.jdField_a_of_type_Boolean) || (paramtrw.jdField_a_of_type_Long == 0L)) {
+        break label103;
+      }
+      if (txe.a(this.a) != null)
+      {
+        txe.a(this.a).b();
+        QLog.w("QCircleContentPart", 1, String.format("retCode:%s; msg:%s", new Object[] { String.valueOf(paramtrw.jdField_a_of_type_Long), paramtrw.jdField_a_of_type_JavaLangString }));
+        if (txe.a(this.a) != null)
+        {
+          txe.a(this.a).a();
+          txe.a(this.a).notifyDataSetChanged();
+        }
+      }
+    }
+    return;
+    label103:
+    if (txe.a(this.a) != null) {
+      txe.a(this.a).c();
+    }
+    ArrayList localArrayList;
+    if ((txe.a(this.a) != null) && (paramtrw.jdField_a_of_type_ComTencentMobileqqPbMessageMicro != null))
+    {
+      if (!(paramtrw.jdField_a_of_type_ComTencentMobileqqPbMessageMicro instanceof FeedCloudRead.StGetFeedListRsp)) {
+        break label255;
+      }
+      localArrayList = (ArrayList)((FeedCloudRead.StGetFeedListRsp)paramtrw.jdField_a_of_type_ComTencentMobileqqPbMessageMicro).vecFeed.get();
+      if (!paramtrw.jdField_a_of_type_Boolean) {
+        break label241;
+      }
+      txe.a(this.a).a(localArrayList);
+      QLog.i("QCircleContentPart", 2, String.format("get feedListData size :%d attachinfo:%s", new Object[] { Integer.valueOf(localArrayList.size()), ((FeedCloudRead.StGetFeedListRsp)paramtrw.jdField_a_of_type_ComTencentMobileqqPbMessageMicro).feedAttchInfo.get() }));
+    }
+    for (;;)
+    {
+      txe.a(this.a, txe.a(this.a));
       return;
+      label241:
+      txe.a(this.a).a(localArrayList);
+      break;
+      label255:
+      if ((paramtrw.jdField_a_of_type_ComTencentMobileqqPbMessageMicro instanceof FeedCloudRead.StGetFeedDetailRsp))
+      {
+        txe.a(this.a).b().add(0, ((FeedCloudRead.StGetFeedDetailRsp)paramtrw.jdField_a_of_type_ComTencentMobileqqPbMessageMicro).feed);
+        txe.a(this.a).notifyDataSetChanged();
+      }
     }
-    paramtoa.jdField_a_of_type_JavaUtilList = ((tcw)tcz.a(5)).a(paramtoa.jdField_a_of_type_JavaUtilList);
-    paramtmc = paramtoa.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramtmc.hasNext()) {
-      ((StoryVideoItem)paramtmc.next()).mOwnerUid = txe.a(this.jdField_a_of_type_Txf.jdField_a_of_type_Txe).uid;
-    }
-    ((stl)tcz.a(28)).a(paramtoa.b);
-    paramtmc = paramtoa.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramtmc.hasNext())
-    {
-      paramErrorMessage = (StoryVideoItem)paramtmc.next();
-      txf.a(this.jdField_a_of_type_Txf).add(paramErrorMessage.mVid);
-    }
-    if ((paramtoa.jdField_a_of_type_Boolean) || (paramtoa.jdField_a_of_type_JavaUtilList.size() == 0))
-    {
-      paramtmc = new twm(this.jdField_a_of_type_Txf.jdField_a_of_type_Twl);
-      paramtmc.jdField_a_of_type_JavaUtilList = txf.a(this.jdField_a_of_type_Txf);
-      paramtmc.a(txe.a(this.jdField_a_of_type_Txf.jdField_a_of_type_Txe).feedId);
-      this.jdField_a_of_type_Twt.a(Collections.singletonList(paramtmc), true);
-      return;
-    }
-    txf.a(this.jdField_a_of_type_Txf);
-    if (txf.b(this.jdField_a_of_type_Txf) > 50)
-    {
-      this.jdField_a_of_type_Twt.a(new ErrorMessage(940001, "too much times"), Collections.singletonList(this.jdField_a_of_type_Txf.jdField_a_of_type_Twl));
-      return;
-    }
-    this.jdField_a_of_type_Txf.a(paramtoa.c, this.jdField_a_of_type_Twt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txg
  * JD-Core Version:    0.7.0.1
  */

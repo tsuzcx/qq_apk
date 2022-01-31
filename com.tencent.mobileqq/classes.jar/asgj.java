@@ -1,69 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mediafocus.MediaFocusStackItem;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCClient;
-import eipc.EIPCResult;
+import android.content.Context;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class asgj
-  extends QIPCModule
+class asgj
+  implements ViewSwitcher.ViewFactory
 {
-  public static boolean a;
-  private String a;
-  private boolean b;
+  asgj(asgi paramasgi) {}
   
-  private asgj()
+  public View makeView()
   {
-    super("MediaFocusModuleClient");
-    b();
-  }
-  
-  public static asgj a()
-  {
-    return asgm.a();
-  }
-  
-  public static void a()
-  {
-    asgj localasgj = a();
-    if (!jdField_a_of_type_Boolean)
-    {
-      QIPCClientHelper.getInstance().register(localasgj);
-      jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  private void b()
-  {
-    QIPCClientHelper.getInstance().getClient().connect(new asgk(this));
-    QIPCClientHelper.getInstance().getClient().addListener(new asgl(this));
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "action = " + paramString + ", params = " + paramBundle);
-    }
-    Bundle localBundle = new Bundle();
-    if ("actionCheckItemExist".equals(paramString))
-    {
-      paramBundle.setClassLoader(getClass().getClassLoader());
-      paramString = (MediaFocusStackItem)paramBundle.getParcelable("focusItem");
-      boolean bool = false;
-      if (paramString != null) {
-        bool = asgn.a().a(paramString.a(), paramString.b());
-      }
-      localBundle.putBoolean("isItemExist", bool);
-      localBundle.putBoolean("isConnected", this.b);
-      localBundle.putParcelable("focusItem", paramString);
-    }
-    return EIPCResult.createSuccessResult(localBundle);
+    CornerImageView localCornerImageView = new CornerImageView(asgi.a(this.a));
+    localCornerImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localCornerImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    localCornerImageView.setRadius(aekt.a(30.0F, asgi.a(this.a).getResources()) / 2);
+    return localCornerImageView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asgj
  * JD-Core Version:    0.7.0.1
  */

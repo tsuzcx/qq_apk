@@ -1,124 +1,24 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contacts.utils.ContactReportUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class afql
-  extends ampa<afss>
+class afql
+  implements beiq
 {
-  public int a()
-  {
-    return 438;
-  }
+  afql(afqh paramafqh) {}
   
-  @NonNull
-  public afss a(int paramInt)
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldOrDefaultContent");
+    if (athk.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
+      return;
     }
-    return new afss();
-  }
-  
-  @Nullable
-  public afss a(amph[] paramArrayOfamph)
-  {
-    int j;
-    int i;
-    Object localObject1;
-    if (QLog.isColorLevel())
-    {
-      QLog.d("ReportExposeConfigProcessor", 2, "onParsed :" + paramArrayOfamph);
-      if (paramArrayOfamph != null)
-      {
-        j = paramArrayOfamph.length;
-        i = 0;
-        while (i < j)
-        {
-          localObject1 = paramArrayOfamph[i];
-          if (localObject1 != null) {
-            QLog.d("ReportExposeConfigProcessor", 2, "onParsed item: " + ((amph)localObject1).a);
-          }
-          i += 1;
-        }
-      }
-    }
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
-    {
-      j = paramArrayOfamph.length;
-      i = 0;
-      while (i < j)
-      {
-        Object localObject2 = paramArrayOfamph[i];
-        if ((localObject2 != null) && (!TextUtils.isEmpty(((amph)localObject2).a))) {
-          try
-          {
-            localObject1 = new afss();
-            localObject2 = new JSONObject(((amph)localObject2).a);
-            if (((JSONObject)localObject2).has("enable")) {
-              ((afss)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).getBoolean("enable");
-            }
-            if (((JSONObject)localObject2).has("interval")) {
-              ((afss)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("interval");
-            }
-            return localObject1;
-          }
-          catch (Throwable localThrowable)
-          {
-            QLog.e("ReportExposeConfigProcessor", 1, localThrowable, new Object[0]);
-          }
-        }
-        i += 1;
-      }
-    }
-    return null;
-  }
-  
-  public Class<afss> a()
-  {
-    return afss.class;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportExposeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
-    }
-  }
-  
-  public void a(afss paramafss)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportExposeConfigProcessor", 2, "onUpdate");
-    }
-    if (paramafss != null) {
-      ContactReportUtils.a(paramafss);
-    }
-  }
-  
-  public int b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldVersion");
-    }
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    aekt.n = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afql
  * JD-Core Version:    0.7.0.1
  */

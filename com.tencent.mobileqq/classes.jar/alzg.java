@@ -1,26 +1,39 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.troop.org.pb.oidb_0x496.RspBody;
+import com.tencent.qphone.base.util.QLog;
 
-public class alzg
-  implements bfph
+class alzg
+  extends nac
 {
-  public alzg(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
+  alzg(alzf paramalzf) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    default: 
-      return;
+      paramBundle = new oidb_0x496.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        alzf.a(this.a, paramBundle);
+        alzf.b(this.a, paramBundle);
+        alzf.c(this.a, paramBundle);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.i("TroopHandler", 2, "getTroopConfig, e=" + paramArrayOfByte.toString());
+        return;
+      }
     }
-    this.a.a.a("DynamicAvatarRecordActivity");
-    this.a.finish();
+    QLog.i("TroopHandler", 1, "getTroopConfig, errorCode=" + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alzg
  * JD-Core Version:    0.7.0.1
  */

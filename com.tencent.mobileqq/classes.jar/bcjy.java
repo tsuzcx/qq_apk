@@ -1,56 +1,75 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
+import tencent.im.oidb.cmd0x6b5.oidb_0x6b5.Player;
+import tencent.im.oidb.cmd0x6b5.oidb_0x6b5.RspBody;
 
-public abstract class bcjy
+class bcjy
+  extends nab
 {
-  public DraggableGridView a;
+  bcjy(bcju parambcju, bcjt parambcjt, String paramString1, String paramString2) {}
   
-  public abstract int a();
-  
-  public abstract int a(int paramInt);
-  
-  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt1, int paramInt2, ViewGroup paramViewGroup);
-  
-  public abstract View a(LayoutInflater paramLayoutInflater, int paramInt, ViewGroup paramViewGroup);
-  
-  public abstract Object a(int paramInt);
-  
-  public abstract Object a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2);
-  
-  public int b()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    return 1;
-  }
-  
-  public int b(int paramInt)
-  {
-    return 0;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.a.a(paramInt1, paramInt2);
-  }
-  
-  public void c()
-  {
-    ((bclu)this.a.a()).notifyDataSetChanged();
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (this.jdField_a_of_type_Bcjt == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_oidb_0x6b5. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Bcjt);
+      }
+      if (this.jdField_a_of_type_Bcjt != null) {
+        this.jdField_a_of_type_Bcjt.a(paramInt, "sso request error or callback is null.");
+      }
+      return;
+    }
+    oidb_0x6b5.RspBody localRspBody;
+    try
+    {
+      localRspBody = new oidb_0x6b5.RspBody();
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramInt = localRspBody.uint32_result.get();
+      if ((paramInt != 0) || (paramBundle == null)) {
+        break label376;
+      }
+      paramInt = paramBundle.getInt("subCmd");
+      if ((paramInt == 0) && (localRspBody.msg_grab_result.has()))
+      {
+        paramArrayOfByte = (oidb_0x6b5.Player)localRspBody.msg_grab_result.get();
+        paramBundle = this.jdField_a_of_type_JavaLangString + "_" + this.b;
+        paramBundle = (TroopGiftBagInfo)this.jdField_a_of_type_Bcju.a.get(paramBundle);
+        if (paramBundle != null)
+        {
+          paramBundle.myGrabResult = new bbph(paramArrayOfByte.uint64_uin.get(), paramArrayOfByte.uint64_time.get(), paramArrayOfByte.int32_amount.get(), paramArrayOfByte.int32_index.get(), paramArrayOfByte.bytes_tips.get().toStringUtf8());
+          this.jdField_a_of_type_Bcju.a(paramBundle);
+        }
+        this.jdField_a_of_type_Bcjt.a(paramArrayOfByte.uint64_uin.get(), paramArrayOfByte.uint64_time.get(), paramArrayOfByte.int32_amount.get(), paramArrayOfByte.int32_index.get(), paramArrayOfByte.bytes_tips.get().toStringUtf8());
+        return;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "send_oidb_0x6b5. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
+      }
+      this.jdField_a_of_type_Bcjt.a(-1, "InvalidProtocolBufferMicroException");
+      return;
+    }
+    this.jdField_a_of_type_Bcjt.a(-1, "Invalid RspData. subCmd:" + paramInt);
+    return;
+    label376:
+    paramArrayOfByte = localRspBody.bytes_errmsg.get().toStringUtf8();
+    this.jdField_a_of_type_Bcjt.a(paramInt, paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcjy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,36 @@
-import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 
-public class akzu
-  extends Handler
+class akzu
+  implements akmo
 {
-  private WeakReference<VideoEncoderCore> a;
+  akzu(akzs paramakzs, DisplayMetrics paramDisplayMetrics, akzw paramakzw) {}
   
-  public akzu(Looper paramLooper, VideoEncoderCore paramVideoEncoderCore)
-  {
-    super(paramLooper);
-    this.a = new WeakReference(paramVideoEncoderCore);
-  }
+  public void onNotifyLongTouch(String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onNotifyStatusChanged(int paramInt, String paramString) {}
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
   {
-    if (this.a != null) {}
-    for (VideoEncoderCore localVideoEncoderCore = (VideoEncoderCore)this.a.get();; localVideoEncoderCore = null)
+    this.jdField_a_of_type_Akzs.jdField_c_of_type_Boolean = true;
+    float f = this.jdField_a_of_type_AndroidUtilDisplayMetrics.density;
+    this.jdField_a_of_type_Akzs.jdField_c_of_type_Float = (paramInt1 / 2 / f);
+    if ((this.jdField_a_of_type_Akzs.b != null) && (this.jdField_a_of_type_Akzs.a != null) && (akzs.a(this.jdField_a_of_type_Akzs) != null))
     {
-      switch (paramMessage.what)
-      {
+      this.jdField_a_of_type_Akzs.b.onExecDispose();
+      this.jdField_a_of_type_Akzs.a.onExecDispose();
+      Message localMessage = akzs.a(this.jdField_a_of_type_Akzs).obtainMessage(19, this.jdField_a_of_type_Akzw.c, this.jdField_a_of_type_Akzw.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Akzw.a) {
+        localMessage.obj = Float.valueOf(this.jdField_a_of_type_Akzw.jdField_b_of_type_Float);
       }
-      do
-      {
-        do
-        {
-          return;
-        } while (localVideoEncoderCore == null);
-        paramMessage = (Object[])paramMessage.obj;
-        try
-        {
-          VideoEncoderCore.a(localVideoEncoderCore, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
-          return;
-        }
-        catch (Exception paramMessage)
-        {
-          QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
-        }
-      } while (VideoEncoderCore.a(localVideoEncoderCore) == null);
-      VideoEncoderCore.a(localVideoEncoderCore).a(3);
-      return;
+      akzs.a(this.jdField_a_of_type_Akzs).sendMessageDelayed(localMessage, 100L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akzu
  * JD-Core Version:    0.7.0.1
  */

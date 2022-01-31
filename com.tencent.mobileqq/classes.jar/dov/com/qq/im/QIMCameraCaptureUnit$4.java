@@ -1,12 +1,12 @@
 package dov.com.qq.im;
 
-import bigp;
+import bkil;
 import com.tencent.qphone.base.util.QLog;
 
 public class QIMCameraCaptureUnit$4
   implements Runnable
 {
-  public QIMCameraCaptureUnit$4(bigp parambigp) {}
+  public QIMCameraCaptureUnit$4(bkil parambkil) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class QIMCameraCaptureUnit$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.QIMCameraCaptureUnit.4
  * JD-Core Version:    0.7.0.1
  */

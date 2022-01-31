@@ -1,23 +1,12 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-
-public class afeq
-  implements MessageQueue.IdleHandler
+public abstract interface afeq
 {
-  public afeq(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public abstract void a();
   
-  public boolean queueIdle()
-  {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
-  }
+  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afeq
  * JD-Core Version:    0.7.0.1
  */

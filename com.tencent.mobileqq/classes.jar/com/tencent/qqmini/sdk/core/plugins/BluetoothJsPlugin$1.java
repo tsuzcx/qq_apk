@@ -2,20 +2,20 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
-import bejc;
-import bejd;
-import bekr;
-import betc;
+import bgjd;
+import bgje;
+import bgkd;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class BluetoothJsPlugin$1
-  implements bejd
+  implements bgje
 {
-  BluetoothJsPlugin$1(BluetoothJsPlugin paramBluetoothJsPlugin, bekr parambekr) {}
+  BluetoothJsPlugin$1(BluetoothJsPlugin paramBluetoothJsPlugin, bgkd parambgkd) {}
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     boolean bool = false;
-    betc.a("BluetoothJsPlugin", "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
+    QMLog.d("BluetoothJsPlugin", "doOnActivityResult requestCode=" + paramInt1 + ",resultCode=" + paramInt2 + ",data=" + paramIntent);
     if (paramInt1 == 6)
     {
       BluetoothJsPlugin.access$002(this.this$0, false);
@@ -26,7 +26,7 @@ class BluetoothJsPlugin$1
     }
     for (;;)
     {
-      bejc.a().b(this);
+      bgjd.a().b(this);
       bool = true;
       return bool;
       label99:
@@ -36,7 +36,7 @@ class BluetoothJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.BluetoothJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

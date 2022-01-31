@@ -1,80 +1,71 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import org.json.JSONArray;
 
-public abstract class vyz
+public class vyz
+  extends wmk
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new vza(this);
-  View jdField_a_of_type_AndroidViewView;
-  vyu jdField_a_of_type_Vyu;
-  vyv jdField_a_of_type_Vyv;
-  vzb jdField_a_of_type_Vzb;
-  boolean b = false;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public vyz(vzb paramvzb, View paramView)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.jdField_a_of_type_Vzb = paramvzb;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public Rect a()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getHitRect(localRect);
-    return localRect;
-  }
-  
-  public abstract CharSequence a();
-  
-  public void a(float paramFloat) {}
-  
-  public void a(CharSequence paramCharSequence) {}
-  
-  void a(vyu paramvyu)
-  {
-    this.jdField_a_of_type_Vyu = paramvyu;
-  }
-  
-  public void a(vyv paramvyv)
-  {
-    this.jdField_a_of_type_Vyv = paramvyv;
-    if (this.jdField_a_of_type_Vyv != null)
+    switch (paramInt1)
     {
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    default: 
+      wsv.d("AddVideoMiddleCode", "unknown request code %d", new Object[] { Integer.valueOf(paramInt1) });
+      a(paramInt2, paramIntent);
+      e();
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(null);
-    this.jdField_a_of_type_AndroidViewView.setClickable(false);
-  }
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public boolean a()
-  {
-    return this.b;
-  }
-  
-  public abstract CharSequence b();
-  
-  public void b(CharSequence paramCharSequence) {}
-  
-  public void b(boolean paramBoolean)
-  {
-    if (this.b != paramBoolean)
+    if (paramInt2 == -1) {}
+    for (;;)
     {
-      this.b = paramBoolean;
-      vyu localvyu = this.jdField_a_of_type_Vyu;
-      if (localvyu != null) {
-        localvyu.a(this, paramBoolean);
+      try
+      {
+        LinkedHashSet localLinkedHashSet = (LinkedHashSet)paramIntent.getSerializableExtra("extra_checked_vidset");
+        if ((localLinkedHashSet != null) && (localLinkedHashSet.size() > 0))
+        {
+          wsv.d("AddVideoMiddleCode", "let's add video to group, count = %d, collection = %s", new Object[] { Integer.valueOf(localLinkedHashSet.size()), new JSONArray(localLinkedHashSet).toString() });
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.addAll(localLinkedHashSet);
+          ukd.a(this.jdField_a_of_type_JavaLangString, localArrayList, this.jdField_a_of_type_Int);
+          paramIntent.putExtra("totalPublishVideoCount", localLinkedHashSet.size());
+          paramIntent.putExtra("isAddFromExist", true);
+          a(paramInt2, paramIntent);
+          e();
+          return;
+        }
       }
+      catch (ClassCastException localClassCastException)
+      {
+        wsv.c("AddVideoMiddleCode", "StoryPickerFragment return illegal value", localClassCastException);
+        Object localObject = null;
+        continue;
+        wsv.d("AddVideoMiddleCode", "do not add video to group, exit ! result=%s, retValue=%s", new Object[] { Integer.valueOf(paramInt2), localObject });
+        paramInt2 = 0;
+        continue;
+      }
+      wsv.d("AddVideoMiddleCode", "add video to group cancel by user");
     }
   }
   
-  public void e(boolean paramBoolean) {}
+  public void a(Bundle paramBundle1, Bundle paramBundle2)
+  {
+    this.jdField_a_of_type_JavaLangString = paramBundle2.getString("shareGroupId");
+    this.b = paramBundle2.getString("shareGroupName");
+    this.jdField_a_of_type_Int = paramBundle2.getInt("add_video_source");
+    wsv.a("AddVideoMiddleCode", "shareGroupId = %s, shareGroupName = %s, source=%d", this.jdField_a_of_type_JavaLangString, this.b, Integer.valueOf(this.jdField_a_of_type_Int));
+    StoryPickerFragment.a(a(), null, this.b, 1000, 2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vyz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,87 +1,116 @@
-import java.io.BufferedReader;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.camera.QavCameraUsage.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class lmm
-  extends lmo
 {
-  private static float[] b;
-  float[] a;
-  private float[] c = { 1.0F, 1.0F, 1.0F };
+  public static String a;
   
-  static
+  public static void a(Context paramContext, String paramString)
   {
-    jdField_b_of_type_ArrayOfFloat = new float[4];
-  }
-  
-  public lmm()
-  {
-    this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F };
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(BufferedReader paramBufferedReader)
-  {
-    int j = 0;
-    super.a(paramBufferedReader);
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return;
-      this.c = new float[lml.a(paramBufferedReader, "colorsCount")];
-      int i = 0;
-      while (i < this.c.length)
-      {
-        this.c[i] = lml.a(paramBufferedReader, "colors" + i);
-        i += 1;
-      }
-      this.jdField_a_of_type_ArrayOfFloat = new float[lml.a(paramBufferedReader, "timelineCount")];
-      i = j;
-      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
-      {
-        this.jdField_a_of_type_ArrayOfFloat[i] = lml.a(paramBufferedReader, "timeline" + i);
-        i += 1;
-      }
+    }
+    String str = a;
+    paramString = paramString + "_" + System.currentTimeMillis();
+    QLog.w("QavCameraUsage", 1, "setCameraUsageState, last[" + str + "], cur[" + paramString + "]");
+    a = paramString;
+    paramContext = paramContext.getSharedPreferences("qav_camera_usage_sp", 4).edit();
+    paramContext.putString("camera_used_desc", paramString);
+    paramContext.putBoolean("camera_used", true);
+    paramContext.commit();
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    boolean bool = true;
+    if (paramContext == null) {
+      return false;
+    }
+    paramContext = paramContext.getSharedPreferences("qav_camera_usage_sp", 4).getString("camera_used_desc", null);
+    QLog.w("QavCameraUsage", 1, "getCameraUsageState, cameraIsUsing[" + paramContext + "]");
+    if (paramContext != null) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
     }
   }
   
-  public float[] a(float paramFloat)
+  public static boolean a(Context paramContext, boolean paramBoolean)
   {
-    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
-    int k = arrayOfFloat.length;
-    int i = 1;
-    int j = 0;
-    if (i < k) {
-      if (arrayOfFloat[i] <= paramFloat) {}
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if (paramContext == null) {
+      return bool2;
     }
+    Object localObject = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+    label43:
+    int j;
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      int i = 0;
+      j = i;
+      if (!((Iterator)localObject).hasNext()) {
+        break label83;
+      }
+      if (!((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName.equals("com.tencent.mobileqq:video")) {
+        break label135;
+      }
+      i = 1;
+    }
+    label135:
     for (;;)
     {
-      float f4 = arrayOfFloat[j];
-      j *= 3;
-      float f1 = this.c[j];
-      float f2 = this.c[(j + 1)];
-      float f3 = this.c[(j + 2)];
-      if (i == -1)
-      {
-        jdField_b_of_type_ArrayOfFloat[0] = f1;
-        jdField_b_of_type_ArrayOfFloat[1] = f2;
-        jdField_b_of_type_ArrayOfFloat[2] = f3;
-        return jdField_b_of_type_ArrayOfFloat;
-        j = i;
-        i += 1;
+      break label43;
+      j = 0;
+      label83:
+      if (j != 0) {
+        bool1 = a(paramContext);
+      }
+      bool2 = bool1;
+      if (!bool1) {
         break;
       }
-      paramFloat = (paramFloat - f4) / (arrayOfFloat[i] - f4);
-      i *= 3;
-      jdField_b_of_type_ArrayOfFloat[0] = ((this.c[i] - f1) * paramFloat + f1);
-      jdField_b_of_type_ArrayOfFloat[1] = ((this.c[(i + 1)] - f2) * paramFloat + f2);
-      jdField_b_of_type_ArrayOfFloat[2] = ((this.c[(i + 2)] - f3) * paramFloat + f3);
-      return jdField_b_of_type_ArrayOfFloat;
-      i = -1;
+      bool2 = bool1;
+      if (!paramBoolean) {
+        break;
+      }
+      new Handler(Looper.getMainLooper()).post(new QavCameraUsage.1(paramContext));
+      return bool1;
     }
+  }
+  
+  public static void b(Context paramContext, String paramString)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    QLog.w("QavCameraUsage", 1, "clearCameraUsageState, cameraIsUsing[" + a + "], type[" + paramString + "]");
+    a = null;
+    paramContext = paramContext.getSharedPreferences("qav_camera_usage_sp", 4).edit();
+    paramContext.remove("camera_used_desc");
+    paramContext.putBoolean("camera_used", false);
+    paramContext.commit();
+  }
+  
+  public static boolean b(Context paramContext)
+  {
+    return a(paramContext, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmm
  * JD-Core Version:    0.7.0.1
  */

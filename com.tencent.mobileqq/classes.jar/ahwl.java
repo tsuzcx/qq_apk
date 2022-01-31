@@ -1,27 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 
 public class ahwl
-  extends Handler
+  extends alkl
 {
-  public ahwl(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ahwl(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(Object paramObject)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == 10) {
-      postDelayed(QzoneSlideShowPreparingFragment.a(this.a), 200L);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwl
  * JD-Core Version:    0.7.0.1
  */

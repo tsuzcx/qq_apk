@@ -1,117 +1,36 @@
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class qar
-  implements qbe
+class qar
+  implements View.OnClickListener
 {
-  protected BaseArticleInfo a;
-  protected URL a;
+  qar(qap paramqap, ArticleInfo paramArticleInfo, qnm paramqnm) {}
   
-  public qar(BaseArticleInfo paramBaseArticleInfo)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
-  }
-  
-  protected Pair<Integer, Integer> a(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      return omr.g();
-    }
-    return omr.f();
-  }
-  
-  public int getCommentCount()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCommentCount;
-  }
-  
-  public String getInnerUniqueID()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID;
-  }
-  
-  public String getShareUrl()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mArticleContentUrl;
-  }
-  
-  public String getSubscribeName()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeName;
-  }
-  
-  public String getSubscribeUin()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSubscribeID;
-  }
-  
-  public URL getVideoCoverURL()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
-    }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSinglePicture != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mSinglePicture;
-    }
-    return onh.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mFirstPagePicUrl);
-  }
-  
-  public URL getVideoCoverUrlWithSmartCut(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaNetURL == null)
+    ors.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    ors.a(this.jdField_a_of_type_Qap.a, this.jdField_a_of_type_Qnm.b.b);
+    try
     {
-      Pair localPair = a(paramBoolean);
-      this.jdField_a_of_type_JavaNetURL = getVideoCoverWithSmartCut(((Integer)localPair.first).intValue(), ((Integer)localPair.second).intValue());
+      paramView = new JSONObject();
+      paramView.put("folder_status", ors.d);
+      paramView.put("kandian_mode", "" + ors.e());
+      paramView.put("tab_source", "" + ors.d());
+      nrt.a(null, "", "0X8008277", "0X8008277", 0, 0, "", "", "", paramView.toString(), false);
+      return;
     }
-    return this.jdField_a_of_type_JavaNetURL;
-  }
-  
-  public URL getVideoCoverWithSmartCut(int paramInt1, int paramInt2)
-  {
-    if (getVideoCoverURL() != null)
+    catch (JSONException paramView)
     {
-      String str2 = getVideoCoverURL().toString();
-      String str1 = str2;
-      if (!TextUtils.isEmpty(str2))
-      {
-        str1 = str2;
-        if (str2.startsWith("pubaccountimage:")) {
-          str1 = str2.replaceFirst("pubaccountimage:", "");
-        }
-      }
-      return onh.a(onh.a(str1, paramInt1, paramInt2));
+      paramView.printStackTrace();
     }
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoCoverUrl;
-  }
-  
-  public int getVideoDuration()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoDuration;
-    }
-    return 0;
-  }
-  
-  public int getVideoHeight()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoJsonHeight;
-  }
-  
-  public String getVideoVid()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoVid;
-  }
-  
-  public int getVideoWidth()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoJsonWidth;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qar
  * JD-Core Version:    0.7.0.1
  */

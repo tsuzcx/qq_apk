@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
+import android.support.v4.util.LruCache;
 
-public class ldl
-  implements DialogInterface.OnClickListener
+class ldl
+  extends LruCache<String, String>
 {
-  public ldl(VideoController paramVideoController) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ldl(ldk paramldk, int paramInt)
   {
-    axqy.b(null, "CliOper", "", "", "0x8006994", "0x8006994", 0, 0, "", "", "", "");
+    super(paramInt);
+  }
+  
+  protected int a(String paramString1, String paramString2)
+  {
+    return paramString2.length() + 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ldl
  * JD-Core Version:    0.7.0.1
  */

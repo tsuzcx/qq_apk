@@ -1,43 +1,147 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import UserGrowth.stReportItem;
+import android.app.Activity;
+import android.content.Context;
+import android.util.Log;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import mqq.util.WeakReference;
 
-class tet
-  extends akuo
+public class tet
+  extends bdfq
 {
-  tet(tes paramtes, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  private static WeakReference<tet> a;
+  
+  public tet(Context paramContext, int paramInt)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    super(paramContext, paramInt);
+    b();
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public static void a()
   {
-    ved.b("LbsManager", "onLocationFinish.");
-    boolean bool;
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if (a != null)
     {
-      bool = true;
-      if (!bool) {
-        break label114;
+      tet localtet = (tet)a.get();
+      if (localtet != null)
+      {
+        if (tfa.b()) {
+          tlo.c("WeishiDownloadUtil", "关闭qzone弹窗");
+        }
+        for (;;)
+        {
+          localtet.dismiss();
+          return;
+          tlo.c("WeishiDownloadUtil", "关闭qq弹窗");
+        }
       }
-      this.a.b = ter.a(paramSosoLbsInfo.a);
-      ved.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
-    }
-    for (;;)
-    {
-      if (!tes.a(this.a)) {
-        this.a.a(bool, this.a.b);
+      if (tfa.b())
+      {
+        tlo.d("WeishiDownloadUtil", "qzone弹窗 is null");
+        return;
       }
-      this.a.a = false;
+      tlo.d("WeishiDownloadUtil", "qq弹窗 is null");
       return;
-      bool = false;
-      break;
-      label114:
-      ved.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
     }
+    tlo.d("WeishiDownloadUtil", "download弹窗 mWeakRefrence is null");
+  }
+  
+  public static void a(int paramInt, WSDownloadParams paramWSDownloadParams)
+  {
+    if ((paramWSDownloadParams == null) || (paramWSDownloadParams.mStReportItem == null)) {
+      return;
+    }
+    paramWSDownloadParams.mStReportItem.downloadscene = tfa.a(paramWSDownloadParams.mScene, paramWSDownloadParams.mLinkStrategyType, paramWSDownloadParams.mEventId);
+    tjr.a(paramInt, paramWSDownloadParams.mStReportItem);
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    try
+    {
+      if (tfa.b()) {
+        tlo.d("WeishiDownloadUtil", "弹出qzone弹窗---");
+      }
+      for (;;)
+      {
+        if ((a == null) || (a.get() == null))
+        {
+          paramActivity = new tet(paramActivity, 2131755801);
+          paramActivity.setTitle("正在下载腾讯微视APP");
+          paramActivity.setMessage("️⬆完成安装即可领取最高188红包⬆");
+          paramActivity.setPositiveButton(alpo.a(2131717388), new teu());
+          a = new WeakReference(paramActivity);
+        }
+        ((tet)a.get()).show();
+        return;
+        tlo.d("WeishiDownloadUtil", "弹出qq弹窗");
+      }
+      return;
+    }
+    catch (Exception paramActivity)
+    {
+      tlo.d("WeishiDownloadUtil", "showDownloadDialog error:" + paramActivity.getLocalizedMessage());
+    }
+  }
+  
+  public static void a(Activity paramActivity, WSDownloadParams paramWSDownloadParams)
+  {
+    if (a(paramActivity, paramWSDownloadParams))
+    {
+      a(115, paramWSDownloadParams);
+      a(paramActivity);
+      return;
+    }
+    Log.e("WeishiDownloadUtil", "QQ download start error");
+  }
+  
+  public static void a(Activity paramActivity, String paramString, WSDownloadParams paramWSDownloadParams, int paramInt)
+  {
+    tet localtet = new tet(paramActivity, 2131755801);
+    localtet.setTitle("来腾讯微视，创造挖掘神评论");
+    localtet.setMessage("️⬆完成安装即可领取最高188红包⬆");
+    if (paramWSDownloadParams.mStReportItem == null) {}
+    for (int i = paramWSDownloadParams.mScene;; i = paramWSDownloadParams.mStReportItem.pagetype)
+    {
+      localtet.setPositiveButton(alpo.a(2131717390), new tev(paramActivity, paramString, paramWSDownloadParams, i, paramInt));
+      localtet.setNegativeButton(alpo.a(2131717389), new tew(i, paramInt));
+      localtet.show();
+      tju.b(6, 0, 0);
+      tjr.a(6, i, paramInt, null);
+      return;
+    }
+  }
+  
+  public static boolean a(Activity paramActivity, WSDownloadParams paramWSDownloadParams)
+  {
+    paramWSDownloadParams.mTestId = tju.b();
+    return tfa.a(paramActivity, paramWSDownloadParams, true, 3);
+  }
+  
+  private void b()
+  {
+    setContentView(2131558943);
+    setCanceledOnTouchOutside(true);
+  }
+  
+  public static void b(Activity paramActivity, WSDownloadParams paramWSDownloadParams)
+  {
+    if (tfa.c())
+    {
+      a(paramActivity, paramWSDownloadParams);
+      return;
+    }
+    tet localtet = new tet(paramActivity, 2131755801);
+    localtet.setTitle(alpo.a(2131717391));
+    localtet.setMessage("️⬆完成安装即可领取最高188红包⬆");
+    localtet.setPositiveButton(alpo.a(2131717387), new tex(paramActivity, paramWSDownloadParams));
+    localtet.setNegativeButton(alpo.a(2131717389), new tey(paramWSDownloadParams));
+    localtet.show();
+    tju.a(paramWSDownloadParams.mScene, true, false);
+    a(124, paramWSDownloadParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tet
  * JD-Core Version:    0.7.0.1
  */

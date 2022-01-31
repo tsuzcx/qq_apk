@@ -1,28 +1,27 @@
-import android.view.KeyEvent;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.qwallet.emoj.IBaseRecognizer;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.QIMEmojiRedPacketCameraCaptureUnit.6.1;
+import mqq.os.MqqHandler;
 
-class bkjm
-  implements TextView.OnEditorActionListener
+public class bkjm
+  implements IBaseRecognizer
 {
-  bkjm(bkjl parambkjl) {}
+  bkjm(bkjf parambkjf) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void OnInitResultCallback(boolean paramBoolean)
   {
-    if (paramInt == 6)
-    {
-      paramTextView = this.a.jdField_a_of_type_AndroidViewView$OnClickListener;
-      if (paramTextView != null) {
-        paramTextView.onClick(this.a.jdField_a_of_type_AndroidWidgetTextView);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("QIMEmojiRedPacketCameraCapture", 2, "init recoginzer result =" + paramBoolean);
     }
-    return false;
+    if (!paramBoolean) {
+      ThreadManager.getUIHandler().post(new QIMEmojiRedPacketCameraCaptureUnit.6.1(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkjm
  * JD-Core Version:    0.7.0.1
  */

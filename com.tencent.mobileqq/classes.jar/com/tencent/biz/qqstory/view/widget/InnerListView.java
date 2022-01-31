@@ -7,22 +7,22 @@ import android.view.View;
 import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
-import vap;
-import ved;
-import wct;
-import wcu;
-import wcv;
-import wcw;
-import wcx;
+import wph;
+import wsv;
+import xrl;
+import xrm;
+import xrn;
+import xro;
+import xrp;
 
 public class InnerListView
   extends LinearLayout
 {
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List<vap> jdField_a_of_type_JavaUtilList;
-  private wcv jdField_a_of_type_Wcv;
-  private wcw jdField_a_of_type_Wcw;
-  private wcx jdField_a_of_type_Wcx;
+  private List<wph> jdField_a_of_type_JavaUtilList;
+  private xrn jdField_a_of_type_Xrn;
+  private xro jdField_a_of_type_Xro;
+  private xrp jdField_a_of_type_Xrp;
   private List<View> b;
   
   public InnerListView(Context paramContext)
@@ -57,11 +57,11 @@ public class InnerListView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Wcx != null)
+    if (this.jdField_a_of_type_Xrp != null)
     {
-      if ((this.jdField_a_of_type_Wcx.a() != null) && (!this.jdField_a_of_type_Wcx.a().isEmpty()))
+      if ((this.jdField_a_of_type_Xrp.a() != null) && (!this.jdField_a_of_type_Xrp.a().isEmpty()))
       {
-        int j = this.jdField_a_of_type_Wcx.a().size();
+        int j = this.jdField_a_of_type_Xrp.a().size();
         if (j < getChildCount() - a()) {
           removeViews(j, getChildCount() - j - a());
         }
@@ -70,20 +70,20 @@ public class InnerListView
         {
           Object localObject;
           if (this.jdField_a_of_type_JavaUtilList.size() - 1 >= i) {
-            localObject = (vap)this.jdField_a_of_type_JavaUtilList.get(i);
+            localObject = (wph)this.jdField_a_of_type_JavaUtilList.get(i);
           }
           for (;;)
           {
-            this.jdField_a_of_type_Wcx.a(i, (vap)localObject);
-            localObject = ((vap)localObject).a();
+            this.jdField_a_of_type_Xrp.a(i, (wph)localObject);
+            localObject = ((wph)localObject).a();
             if (((View)localObject).getParent() == null) {
               addView((View)localObject, getChildCount() - a());
             }
-            ((View)localObject).setOnClickListener(new wct(this, i));
-            ((View)localObject).setOnLongClickListener(new wcu(this, i));
+            ((View)localObject).setOnClickListener(new xrl(this, i));
+            ((View)localObject).setOnLongClickListener(new xrm(this, i));
             i += 1;
             break;
-            localObject = new vap(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.jdField_a_of_type_Wcx.a(), this, false));
+            localObject = new wph(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.jdField_a_of_type_Xrp.a(), this, false));
             this.jdField_a_of_type_JavaUtilList.add(localObject);
           }
         }
@@ -103,11 +103,11 @@ public class InnerListView
     int i = 0;
     while (i < paramInt2)
     {
-      vap localvap = new vap(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt1, this, false));
-      this.jdField_a_of_type_JavaUtilList.add(localvap);
+      wph localwph = new wph(this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt1, this, false));
+      this.jdField_a_of_type_JavaUtilList.add(localwph);
       i += 1;
     }
-    ved.e("DEBUG_TIME", "InnerListView initVHCaches:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    wsv.e("DEBUG_TIME", "InnerListView initVHCaches:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
   }
   
   public void a(View paramView)
@@ -119,9 +119,9 @@ public class InnerListView
     addView(paramView);
   }
   
-  public void setAdapter(wcx paramwcx)
+  public void setAdapter(xrp paramxrp)
   {
-    this.jdField_a_of_type_Wcx = paramwcx;
+    this.jdField_a_of_type_Xrp = paramxrp;
     a();
   }
   
@@ -138,19 +138,19 @@ public class InnerListView
     addView(paramView, paramInt);
   }
   
-  public void setOnItemClickListener(wcv paramwcv)
+  public void setOnItemClickListener(xrn paramxrn)
   {
-    this.jdField_a_of_type_Wcv = paramwcv;
+    this.jdField_a_of_type_Xrn = paramxrn;
   }
   
-  public void setOnItemLongClickListener(wcw paramwcw)
+  public void setOnItemLongClickListener(xro paramxro)
   {
-    this.jdField_a_of_type_Wcw = paramwcw;
+    this.jdField_a_of_type_Xro = paramxro;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.InnerListView
  * JD-Core Version:    0.7.0.1
  */

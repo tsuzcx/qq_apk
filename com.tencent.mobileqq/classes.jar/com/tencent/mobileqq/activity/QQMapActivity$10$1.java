@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abvi;
+import admq;
 
 public class QQMapActivity$10$1
   implements Runnable
 {
-  public QQMapActivity$10$1(abvi paramabvi) {}
+  public QQMapActivity$10$1(admq paramadmq) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class QQMapActivity$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.10.1
  * JD-Core Version:    0.7.0.1
  */

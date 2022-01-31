@@ -5,15 +5,15 @@ import com.tribe.async.dispatch.Dispatcher;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import stb;
-import tcw;
-import tlh;
-import tli;
+import uht;
+import uro;
+import uzz;
+import vaa;
 
 public class StoryManager$1
   implements Runnable
 {
-  public StoryManager$1(tcw paramtcw, String paramString) {}
+  public StoryManager$1(uro paramuro, String paramString) {}
   
   public void run()
   {
@@ -22,17 +22,17 @@ public class StoryManager$1
     {
       localObject = new ArrayList(1);
       ((List)localObject).add(this.a);
-      new tlh((List)localObject, true).a();
+      new uzz((List)localObject, true).a();
       return;
     }
-    tli localtli = new tli();
-    localtli.a = Collections.singletonList(localObject);
-    stb.a().dispatch(localtli);
+    vaa localvaa = new vaa();
+    localvaa.a = Collections.singletonList(localObject);
+    uht.a().dispatch(localvaa);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryManager.1
  * JD-Core Version:    0.7.0.1
  */

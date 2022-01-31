@@ -1,52 +1,82 @@
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberInnerFrame;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
 public class ajvz
-  implements ajte
+  implements adsc
 {
-  protected void a(List<CustomEmotionData> paramList) {}
+  public ajvz(SelectMemberActivity paramSelectMemberActivity) {}
   
-  protected void a(boolean paramBoolean) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject) {}
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void a(Editable paramEditable)
   {
-    switch (paramInt)
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    }
+    for (;;)
     {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-      } while (paramObject == null);
-      a(((Boolean)paramObject).booleanValue());
+      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment.a(paramEditable);
+      }
       return;
-    case 1: 
-      try
-      {
-        a((ArrayList)paramObject);
-        return;
+      this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    }
+  }
+  
+  public void a(ResultRecord paramResultRecord)
+  {
+    String str = paramResultRecord.a;
+    if (this.a.b(str))
+    {
+      this.a.e(str);
+      this.a.a(paramResultRecord, false);
+      this.a.k();
+      int i = this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a();
+      if ((i == 6) || (i == 7) || (i == 5) || (i == 4) || (i == 1) || (i == 0) || (i == 8) || (i == 9)) {
+        ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).f();
       }
-      catch (Exception paramObject)
+      SelectMemberActivity.a(this.a, false);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && ((this.a.j == 6) || (this.a.j == 7) || (this.a.j != this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a())))
+    {
+      ContactSearchFragment localContactSearchFragment = ((SelectMemberInnerFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView()).a();
+      if (localContactSearchFragment != null)
       {
-        QLog.e("FavEmoRoamingObserver", 1, "onUploadReq error, ", paramObject);
-        return;
+        localContactSearchFragment.d(this.a.w);
+        localContactSearchFragment.a(this.a.a(), this.a.jdField_b_of_type_JavaUtilArrayList);
+        FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
+        if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
+          localFragmentTransaction.remove(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment);
+        }
+        localFragmentTransaction.add(2131375671, localContactSearchFragment);
+        localFragmentTransaction.commitAllowingStateLoss();
+        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment = localContactSearchFragment;
       }
-    case 2: 
-      b(paramBoolean, paramObject);
+      if (this.a.jdField_b_of_type_Int == 0) {
+        azmj.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 1, 0, "", "", "", "");
+      }
+    }
+    else
+    {
       return;
     }
-    a(paramBoolean, paramObject);
+    azmj.b(this.a.app, "CliOper", "", "", "0X800543F", "0X800543F", 2, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajvz
  * JD-Core Version:    0.7.0.1
  */

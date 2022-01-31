@@ -1,38 +1,17 @@
-import android.content.Context;
-import com.tencent.image.AbstractGifImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class awth
-  extends awtg
 {
-  protected awte a(Context paramContext)
-  {
-    return new awxt(this, paramContext);
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3)
-  {
-    super.a(paramString1, paramString2, paramString3);
-    paramString1 = a();
-    if (paramString1 != null) {
-      paramString1.e();
-    }
-  }
-  
-  public void b()
-  {
-    super.b();
-    AbstractGifImage.pauseAll();
-  }
-  
-  public void c()
-  {
-    super.c();
-    AbstractGifImage.resumeAll();
-  }
+  public ByteArrayOutputStream a;
+  public File a;
+  public FileOutputStream a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awth
  * JD-Core Version:    0.7.0.1
  */

@@ -13,6 +13,7 @@ public final class NotOnlineImageExtPb$ResvAttr
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_text_summary = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBStringField string_camera_capture_materialname = PBField.initString("");
   public final PBStringField string_camera_capture_templateinfo = PBField.initString("");
   public final PBStringField string_doutu_suppliers = PBField.initString("");
   public final PBStringField string_emoji_iconUrl = PBField.initString("");
@@ -30,7 +31,7 @@ public final class NotOnlineImageExtPb$ResvAttr
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 66, 80, 90, 98, 106, 114, 120, 130 }, new String[] { "uint32_image_biz_type", "uint32_customface_type", "uint32_emoji_packageid", "uint32_emoji_id", "string_text", "string_doutu_suppliers", "bytes_text_summary", "uint32_emoji_from", "string_emoji_source", "string_emoji_webUrl", "string_emoji_iconUrl", "string_emoji_marketFaceName", "uint32_source", "string_camera_capture_templateinfo" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", localByteStringMicro, Integer.valueOf(0), "", "", "", "", Integer.valueOf(0), "" }, ResvAttr.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 66, 80, 90, 98, 106, 114, 120, 130, 138 }, new String[] { "uint32_image_biz_type", "uint32_customface_type", "uint32_emoji_packageid", "uint32_emoji_id", "string_text", "string_doutu_suppliers", "bytes_text_summary", "uint32_emoji_from", "string_emoji_source", "string_emoji_webUrl", "string_emoji_iconUrl", "string_emoji_marketFaceName", "uint32_source", "string_camera_capture_templateinfo", "string_camera_capture_materialname" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", localByteStringMicro, Integer.valueOf(0), "", "", "", "", Integer.valueOf(0), "", "" }, ResvAttr.class);
   }
 }
 

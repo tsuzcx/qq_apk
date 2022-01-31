@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import autd;
-import autf;
+import awkp;
+import awkr;
 import java.util.List;
 
 public class PLUploadManager$1
   implements Runnable
 {
-  public PLUploadManager$1(autd paramautd, List paramList, long paramLong) {}
+  public PLUploadManager$1(awkp paramawkp, List paramList, long paramLong) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class PLUploadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PLUploadManager.1
  * JD-Core Version:    0.7.0.1
  */

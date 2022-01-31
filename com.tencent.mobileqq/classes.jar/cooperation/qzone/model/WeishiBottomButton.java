@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhfr;
+import bjhc;
 import java.util.HashMap;
 
 public class WeishiBottomButton
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeishiBottomButton> CREATOR = new bhfr();
+  public static final Parcelable.Creator<WeishiBottomButton> CREATOR = new bjhc();
   public int a;
   public String a;
   public HashMap<Integer, Integer> a;
@@ -82,7 +82,7 @@ public class WeishiBottomButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.model.WeishiBottomButton
  * JD-Core Version:    0.7.0.1
  */

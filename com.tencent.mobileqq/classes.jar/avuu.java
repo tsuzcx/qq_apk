@@ -1,132 +1,45 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class avuu
-  extends PagerAdapter
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public final SparseArray<View> a;
-  public ArrayList<FilterCategoryItem> a;
-  public final Map<Class<? extends View>, Queue<View>> a;
+  public avuu(ScanOcrView paramScanOcrView) {}
   
-  public avuu(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (i > 0) {
-      return paramInt % i;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int j = (int)(this.a.a.a * f);
+    int i = (int)(f * this.a.a.jdField_b_of_type_Int);
+    int m = j - this.a.a.a;
+    int k = i - this.a.a.jdField_b_of_type_Int;
+    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
+    i = j;
+    if (j > 255) {
+      i = 255;
     }
-    return -1;
-  }
-  
-  @Nullable
-  public View a(int paramInt)
-  {
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public FilterCategoryItem a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (FilterCategoryItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    j = i;
+    if (i < 0) {
+      j = 0;
     }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.a);
-    notifyDataSetChanged();
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "destroyItem position: " + paramInt);
-    }
-    View localView = (View)paramObject;
-    localView.removeCallbacks((Runnable)localView.getTag());
-    localView.clearAnimation();
-    paramViewGroup.removeView(localView);
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localView.getClass());
-    paramViewGroup = paramObject;
-    if (paramObject == null)
-    {
-      paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localView.getClass(), paramViewGroup);
-    }
-    paramViewGroup.offer(localView);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "instantiateItem position: " + paramInt);
-    }
-    FilterCategoryItem localFilterCategoryItem = a(paramInt);
-    if (localFilterCategoryItem == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("VideoFilterViewPager", 2, "instantiateItem find data is null!");
-      }
-      return null;
-    }
-    Object localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localFilterCategoryItem.getClass());
-    if (localObject1 != null) {}
-    for (localObject1 = (View)((Queue)localObject1).poll();; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject2 = ((LayoutInflater)this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.getContext().getSystemService("layout_inflater")).inflate(2131558659, null);
-        ((View)localObject2).setVisibility(8);
-      }
-      ((View)localObject2).setContentDescription(localFilterCategoryItem.b + "," + localFilterCategoryItem.f + ajya.a(2131701445));
-      paramViewGroup.addView((View)localObject2);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-      return localObject2;
-    }
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return ((paramObject instanceof View)) && (paramObject == paramView);
+    i = this.a.a.jdField_b_of_type_AndroidGraphicsRect.left;
+    int n = m / 2;
+    int i1 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.top;
+    int i2 = k / 2;
+    int i3 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.right;
+    m /= 2;
+    int i4 = this.a.a.jdField_b_of_type_AndroidGraphicsRect.bottom;
+    k /= 2;
+    this.a.a.e = j;
+    this.a.a.c.set(i - n, i1 - i2, m + i3, k + i4);
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avuu
  * JD-Core Version:    0.7.0.1
  */

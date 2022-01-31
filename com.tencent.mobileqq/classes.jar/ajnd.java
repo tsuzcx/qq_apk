@@ -1,48 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.RunnableUpdateThumb;
 
-final class ajnd
-  implements ajnh
+public class ajnd
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public ajnd(NewFlowCameraActivity.RunnableUpdateThumb paramRunnableUpdateThumb, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameBasicEventUtil", 2, "[notifyRoleDress], uin:" + paramString1 + ",roleId:" + paramInt1 + ",from:" + paramInt2 + ",cmd:" + paramString3);
-    }
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0)) {
-      return;
-    }
-    try
-    {
-      paramArrayOfInt = ajnc.a(paramInt1, paramArrayOfInt);
-      if (paramArrayOfInt == null)
-      {
-        QLog.e("ApolloGameBasicEventUtil", 1, "errInfo-> jsonObject is NULL");
-        return;
-      }
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("ApolloGameBasicEventUtil", 1, "[notifyRoleDress], errInfo->" + paramQQAppInterface.getMessage());
-      return;
-    }
-    if (!TextUtils.isEmpty(paramString2)) {
-      paramArrayOfInt.put("openId", paramString2);
-    }
-    for (;;)
-    {
-      ApolloCmdChannel.getChannel(paramQQAppInterface).callbackFromRequest(paramLong, 0, paramString3, paramArrayOfInt.toString());
-      return;
-      paramArrayOfInt.put("uin", paramString1);
-    }
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$RunnableUpdateThumb.this$0).getLayoutParams();
+    paramValueAnimator.width = ((int)((this.jdField_a_of_type_Int - this.b) * f1 + this.b));
+    paramValueAnimator.height = ((int)((this.c - this.d) * f1 + this.d));
+    paramValueAnimator.leftMargin = ((int)((this.e + 0) * f1 + 0.0F));
+    paramValueAnimator.bottomMargin = ((int)(f1 * (this.f + 0) + 0.0F));
+    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity$RunnableUpdateThumb.this$0).setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajnd
  * JD-Core Version:    0.7.0.1
  */

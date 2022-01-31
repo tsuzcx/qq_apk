@@ -1,40 +1,52 @@
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.guide.GuideHelper;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public class mbd
-  extends lfb
+class mbd
+  implements bevy
 {
-  public mbd(AVActivity paramAVActivity) {}
+  mbd(mbc parammbc, String paramString, Context paramContext, int paramInt1, int paramInt2) {}
   
-  protected void a(long paramLong1, long paramLong2)
+  public void a(BaseResp paramBaseResp)
   {
-    if (this.a.isDestroyed()) {
+    int i = 2;
+    QLog.w("ShareChat", 1, "onWXShareResp, mWXTransaction[" + this.jdField_a_of_type_JavaLangString + "], transaction[" + paramBaseResp.transaction + "], errCode[" + paramBaseResp.errCode + "], seq[" + this.jdField_a_of_type_Mbc.a + "]");
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)) {
       return;
     }
-    this.a.a.a(paramLong1, this.a, 4, 0);
-  }
-  
-  protected void b(long paramLong, int paramInt1, int paramInt2)
-  {
-    if (this.a.isDestroyed()) {
-      return;
+    mbc localmbc;
+    int j;
+    int k;
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131720019), 0).a();
+    case -2: 
+      WXShareHelper.a().b(this);
+      localmbc = this.jdField_a_of_type_Mbc;
+      j = this.jdField_a_of_type_Int;
+      k = this.b;
+      if (paramBaseResp.errCode != 0) {
+        break;
+      }
     }
-    paramLong = AudioHelper.b();
-    this.a.a.a(paramLong, this.a, 3, 2);
-  }
-  
-  protected void b(long paramLong1, long paramLong2)
-  {
-    if (this.a.isDestroyed()) {
+    for (;;)
+    {
+      localmbc.a(j, k, i);
       return;
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_AndroidContentContext.getString(2131720038), 0).a();
+      break;
+      i = 3;
     }
-    this.a.a.a(paramLong1, this.a, 4, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mbd
  * JD-Core Version:    0.7.0.1
  */

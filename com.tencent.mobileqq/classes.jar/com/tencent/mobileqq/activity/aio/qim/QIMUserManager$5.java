@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.qim;
 
-import aekp;
-import aekq;
+import aghg;
+import aghh;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -14,7 +14,7 @@ import mqq.os.MqqHandler;
 public class QIMUserManager$5
   implements Runnable
 {
-  public QIMUserManager$5(aekp paramaekp, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public QIMUserManager$5(aghg paramaghg, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
   
   public void run()
   {
@@ -26,25 +26,25 @@ public class QIMUserManager$5
         if (!localIterator.hasNext()) {
           break;
         }
-        aekq localaekq = (aekq)localIterator.next();
-        if ((this.b == null) || (this.b.size() <= localaekq.jdField_a_of_type_Int)) {
+        aghh localaghh = (aghh)localIterator.next();
+        if ((this.b == null) || (this.b.size() <= localaghh.jdField_a_of_type_Int)) {
           continue;
         }
-        if (((int[])this.b.get(localaekq.jdField_a_of_type_Int)).length >= 7)
+        if (((int[])this.b.get(localaghh.jdField_a_of_type_Int)).length >= 7)
         {
           i = 5;
-          if (((int[])this.b.get(localaekq.jdField_a_of_type_Int)).length < 7) {
+          if (((int[])this.b.get(localaghh.jdField_a_of_type_Int)).length < 7) {
             break label264;
           }
           j = 6;
           StateListDrawable localStateListDrawable = new StateListDrawable();
-          Drawable localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localaekq.jdField_a_of_type_Int))[j]);
+          Drawable localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localaghh.jdField_a_of_type_Int))[j]);
           localStateListDrawable.addState(new int[] { 16842913, 16842910 }, localDrawable);
-          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localaekq.jdField_a_of_type_Int))[j]);
+          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localaghh.jdField_a_of_type_Int))[j]);
           localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable);
-          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localaekq.jdField_a_of_type_Int))[i]);
+          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localaghh.jdField_a_of_type_Int))[i]);
           localStateListDrawable.addState(new int[] { 16842910 }, localDrawable);
-          localaekq.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
+          localaghh.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
           continue;
         }
         int i = 4;
@@ -66,7 +66,7 @@ public class QIMUserManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.qim.QIMUserManager.5
  * JD-Core Version:    0.7.0.1
  */

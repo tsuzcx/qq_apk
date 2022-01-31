@@ -1,30 +1,37 @@
 public class wol
+  extends woj
 {
-  public static String a(long paramLong)
+  public Object a;
+  public String a;
+  
+  public wol(Object paramObject)
   {
-    long l = paramLong;
-    if (paramLong < 0L) {
-      l = 0L;
-    }
-    String str1 = ajya.a(2131704731);
-    if (l < 10000L) {
-      return String.valueOf(l);
-    }
-    if (l < 10000000L)
-    {
-      str1 = String.valueOf(l / 10000.0D + 0.05D);
-      return str1.substring(0, str1.indexOf(".") + 2) + "w";
-    }
-    if (l < 100000000L) {
-      return l / 10000L + "w";
-    }
-    String str2 = String.valueOf(l / 100000000.0D);
-    return str2.substring(0, str2.indexOf(".") + 2) + str1;
+    this.jdField_a_of_type_JavaLangString = "InitParamSimpleStep";
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    d();
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wol
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import ahzv;
-import aiaa;
-import aiac;
-import aiah;
+import ajrf;
+import ajrk;
+import ajrm;
+import ajrr;
 import android.annotation.TargetApi;
 import android.media.MediaMetadataRetriever;
 import com.tencent.qphone.base.util.QLog;
@@ -15,16 +15,16 @@ import java.util.concurrent.PriorityBlockingQueue;
 
 @TargetApi(10)
 public class VideoFramesRetriever
-  implements aiac
+  implements ajrm
 {
   private static long jdField_a_of_type_Long;
   private float jdField_a_of_type_Float;
   private volatile int jdField_a_of_type_Int = 1;
-  private ahzv jdField_a_of_type_Ahzv;
+  private ajrf jdField_a_of_type_Ajrf;
   private MediaMetadataRetriever jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
   private String jdField_a_of_type_JavaLangString;
-  private BlockingQueue<aiah> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private ConcurrentHashMap<Integer, aiah> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private BlockingQueue<ajrr> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private ConcurrentHashMap<Integer, ajrr> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   private volatile boolean jdField_a_of_type_Boolean;
   private int b = 1000;
@@ -36,14 +36,14 @@ public class VideoFramesRetriever
     this.jdField_a_of_type_Float = paramFloat;
   }
   
-  private aiaa b(int paramInt)
+  private ajrk b(int paramInt)
   {
     if (!a()) {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFramesRetriever", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    aiah localaiah2;
+    ajrr localajrr2;
     do
     {
       return null;
@@ -51,10 +51,10 @@ public class VideoFramesRetriever
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          aiah localaiah1 = (aiah)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          ajrr localajrr1 = (ajrr)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localaiah1.jdField_a_of_type_Long = l;
+          localajrr1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -65,17 +65,17 @@ public class VideoFramesRetriever
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localaiah2 = new aiah(this, l, paramInt, paramInt + this.b);
+      localajrr2 = new ajrr(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localaiah2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localajrr2);
     return null;
   }
   
-  public int a(int paramInt1, int paramInt2, ahzv paramahzv)
+  public int a(int paramInt1, int paramInt2, ajrf paramajrf)
   {
     this.b = paramInt1;
     this.c = paramInt2;
-    this.jdField_a_of_type_Ahzv = paramahzv;
+    this.jdField_a_of_type_Ajrf = paramajrf;
     this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new PriorityBlockingQueue();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = new MediaMetadataRetriever();
@@ -85,7 +85,7 @@ public class VideoFramesRetriever
     return 0;
   }
   
-  public aiaa a(int paramInt)
+  public ajrk a(int paramInt)
   {
     if ((!a()) || (paramInt < 0))
     {
@@ -94,8 +94,8 @@ public class VideoFramesRetriever
       }
       return null;
     }
-    if (this.jdField_a_of_type_Ahzv.a(paramInt)) {
-      return this.jdField_a_of_type_Ahzv.a(paramInt);
+    if (this.jdField_a_of_type_Ajrf.a(paramInt)) {
+      return this.jdField_a_of_type_Ajrf.a(paramInt);
     }
     return b(this.b * paramInt);
   }
@@ -147,7 +147,7 @@ public class VideoFramesRetriever
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesRetriever
  * JD-Core Version:    0.7.0.1
  */

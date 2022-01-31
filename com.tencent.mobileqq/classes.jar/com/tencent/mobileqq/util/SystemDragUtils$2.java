@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import aanz;
+import acex;
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.ClipData.Item;
@@ -10,11 +10,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.webkit.MimeTypeMap;
-import aouu;
-import apug;
-import bbbg;
-import bflg;
-import bfny;
+import aqns;
+import arni;
+import bdaa;
+import bhma;
+import bhot;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendVideoInfo;
@@ -124,7 +124,7 @@ public final class SystemDragUtils$2
         if ("file".equalsIgnoreCase(localUri.getScheme()))
         {
           str1 = localUri.getPath();
-          k = apug.a(str1);
+          k = arni.a(str1);
           if (k != 0) {
             break label1341;
           }
@@ -149,19 +149,19 @@ public final class SystemDragUtils$2
             if (!"content".equalsIgnoreCase(localUri.getScheme())) {
               break label1313;
             }
-            str1 = bbbg.a(localUri, this.jdField_a_of_type_AndroidContentContext.getContentResolver());
+            str1 = bdaa.a(localUri, this.jdField_a_of_type_AndroidContentContext.getContentResolver());
             if (!TextUtils.isEmpty(str1)) {
               break label1302;
             }
-            str1 = bbbg.a(localUri, this.jdField_a_of_type_AndroidContentContext);
+            str1 = bdaa.a(localUri, this.jdField_a_of_type_AndroidContentContext);
             if (QLog.isColorLevel()) {
               QLog.d("SystemDragUtils", 2, "drag description.name=" + str1);
             }
             localObject3 = str1;
             if (TextUtils.isEmpty(str1)) {
-              localObject3 = bflg.a(localUri.toString()) + "." + str2;
+              localObject3 = bhma.a(localUri.toString()) + "." + str2;
             }
-            str1 = bbbg.a(this.jdField_a_of_type_AndroidContentContext, localUri, bbbg.a(), (String)localObject3);
+            str1 = bdaa.a(this.jdField_a_of_type_AndroidContentContext, localUri, bdaa.a(), (String)localObject3);
             localObject3 = localObject2;
             localObject2 = str1;
             break;
@@ -182,12 +182,12 @@ public final class SystemDragUtils$2
             while (((Iterator)localObject2).hasNext())
             {
               localObject3 = (String)((Iterator)localObject2).next();
-              aanz.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (String)localObject3);
+              acex.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (String)localObject3);
             }
           }
           if ((localArrayList2.size() > 0) && (localArrayList2.size() == localArrayList1.size()))
           {
-            bfny.a(new SystemDragUtils.2.1(this, localArrayList2, localHashMap));
+            bhot.a(new SystemDragUtils.2.1(this, localArrayList2, localHashMap));
             if ((this.jdField_a_of_type_AndroidAppProgressDialog == null) || (!this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
               break;
             }
@@ -199,7 +199,7 @@ public final class SystemDragUtils$2
             localObject2 = BaseApplicationImpl.sApplication.getRuntime();
             if ((localObject2 != null) && ((localObject2 instanceof QQAppInterface)))
             {
-              bfny.a(new SystemDragUtils.2.2(this));
+              bhot.a(new SystemDragUtils.2.2(this));
               if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
               {
                 localObject3 = localArrayList1.iterator();
@@ -215,7 +215,7 @@ public final class SystemDragUtils$2
                 str1 = (String)((Iterator)localObject3).next();
                 ((QQAppInterface)localObject2).a().a(str1, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
               }
-              bfny.a(new SystemDragUtils.2.3(this));
+              bhot.a(new SystemDragUtils.2.3(this));
             }
             if ((this.jdField_a_of_type_AndroidAppProgressDialog == null) || (!this.jdField_a_of_type_AndroidAppProgressDialog.isShowing())) {
               break;
@@ -254,7 +254,7 @@ public final class SystemDragUtils$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.SystemDragUtils.2
  * JD-Core Version:    0.7.0.1
  */

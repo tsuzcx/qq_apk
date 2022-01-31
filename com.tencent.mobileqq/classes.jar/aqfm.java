@@ -1,51 +1,29 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-class aqfm
-  extends naq
+public class aqfm
+  implements Animation.AnimationListener
 {
-  aqfm(aqfd paramaqfd) {}
+  public aqfm(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, View paramView) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (this.a.j)) {}
-    do
-    {
-      return;
-      this.a.x();
-      if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver success");
-        }
-        if (!paramOpenID.openID.equals(this.a.h))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->onGetOpenId--openid doesn't equal current openid");
-          }
-          this.a.L();
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("ForwardOption.ForwardSdkShareOption", 2, "openIdObserver fail");
-      }
-    } while (!aqfd.a(this.a));
-    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", aqau.e.intValue());
-    this.a.l();
+    paramAnimation = new AlphaAnimation(0.2F, 0.0F);
+    paramAnimation.setDuration(500L);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqfm
  * JD-Core Version:    0.7.0.1
  */

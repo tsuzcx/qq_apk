@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.emosm.web;
 
-import airx;
-import aixk;
-import ajya;
+import akji;
+import akow;
+import alpo;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Message;
-import anuq;
-import bbrd;
+import aply;
+import bdpx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
@@ -23,7 +23,7 @@ import org.json.JSONObject;
 public class MessengerService$IncomingHandler$29
   implements Runnable
 {
-  public MessengerService$IncomingHandler$29(anuq paramanuq, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public MessengerService$IncomingHandler$29(aply paramaply, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
@@ -61,7 +61,7 @@ public class MessengerService$IncomingHandler$29
               return;
             }
             localJSONObject.put("result", 1);
-            localJSONObject.put("msg", ajya.a(2131706676));
+            localJSONObject.put("msg", alpo.a(2131707048));
             continue;
             QLog.e("Q.emoji.web.MessengerService", 2, "delFavAction json error + " + localJSONException.toString());
           }
@@ -105,7 +105,7 @@ public class MessengerService$IncomingHandler$29
             else
             {
               localJSONException.put("result", 1);
-              localJSONException.put("msg", ajya.a(2131706696));
+              localJSONException.put("msg", alpo.a(2131707068));
             }
           }
           else
@@ -113,7 +113,7 @@ public class MessengerService$IncomingHandler$29
             if (!"danUpgrade".equals(localObject2)) {
               break;
             }
-            ((bbrd)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 128, "refreshAction");
+            ((bdpx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 128, "refreshAction");
             if (QLog.isColorLevel()) {
               QLog.d("Q.emoji.web.MessengerService", 2, "ipc call danUpgrade,maybe have new slave action");
             }
@@ -133,7 +133,7 @@ public class MessengerService$IncomingHandler$29
     }
     for (;;)
     {
-      aixk.a(bool);
+      akow.a(bool);
       break;
       QLog.e("ApolloJsApi", 1, "drawerVoice has no val");
       i = 0;
@@ -149,7 +149,7 @@ public class MessengerService$IncomingHandler$29
         break;
       }
       localObject1 = ((JSONObject)localObject1).optString("lastShopScheme");
-      ((airx)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).c((String)localObject1);
+      ((akji)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).c((String)localObject1);
       break;
       label787:
       label788:
@@ -168,7 +168,7 @@ public class MessengerService$IncomingHandler$29
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.29
  * JD-Core Version:    0.7.0.1
  */

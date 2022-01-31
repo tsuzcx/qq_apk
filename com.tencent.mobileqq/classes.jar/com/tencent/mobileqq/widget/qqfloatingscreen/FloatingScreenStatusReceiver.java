@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import bcuf;
+import beto;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 
@@ -13,7 +13,7 @@ public class FloatingScreenStatusReceiver
 {
   private static int jdField_a_of_type_Int = BaseApplicationImpl.sProcessId;
   private Context jdField_a_of_type_AndroidContentContext;
-  private bcuf jdField_a_of_type_Bcuf;
+  private beto jdField_a_of_type_Beto;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   
@@ -43,10 +43,10 @@ public class FloatingScreenStatusReceiver
     this.jdField_a_of_type_AndroidContentContext.getApplicationContext().unregisterReceiver(this);
   }
   
-  public void a(int paramInt, bcuf parambcuf)
+  public void a(int paramInt, beto parambeto)
   {
     this.b = paramInt;
-    this.jdField_a_of_type_Bcuf = parambcuf;
+    this.jdField_a_of_type_Beto = parambeto;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -89,15 +89,15 @@ public class FloatingScreenStatusReceiver
               default: 
                 return;
               case 102: 
-                this.jdField_a_of_type_Bcuf.b();
+                this.jdField_a_of_type_Beto.b();
                 this.jdField_a_of_type_Boolean = true;
                 return;
               case 103: 
-                this.jdField_a_of_type_Bcuf.a(true);
+                this.jdField_a_of_type_Beto.a(true);
                 this.jdField_a_of_type_Boolean = false;
                 return;
               }
-              this.jdField_a_of_type_Bcuf.c();
+              this.jdField_a_of_type_Beto.c();
             }
           }
         }
@@ -105,12 +105,12 @@ public class FloatingScreenStatusReceiver
         {
           if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
           {
-            this.jdField_a_of_type_Bcuf.a();
+            this.jdField_a_of_type_Beto.a();
             return;
           }
           if ("mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()))
           {
-            this.jdField_a_of_type_Bcuf.b();
+            this.jdField_a_of_type_Beto.b();
             return;
           }
           if (!"mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction())) {
@@ -120,7 +120,7 @@ public class FloatingScreenStatusReceiver
           if ((paramContext != null) && (paramContext.contains("openSdk"))) {}
           while ((i == 0) && (!this.jdField_a_of_type_Boolean))
           {
-            this.jdField_a_of_type_Bcuf.a(false);
+            this.jdField_a_of_type_Beto.a(false);
             return;
             i = 0;
           }
@@ -131,7 +131,7 @@ public class FloatingScreenStatusReceiver
     if (QLog.isColorLevel()) {
       QLog.d("FSReceiver", 2, "cnrType=" + i + " action=" + paramIntent.getAction());
     }
-    this.jdField_a_of_type_Bcuf.c();
+    this.jdField_a_of_type_Beto.c();
   }
 }
 

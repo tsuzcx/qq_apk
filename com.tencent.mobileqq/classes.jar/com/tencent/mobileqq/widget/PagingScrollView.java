@@ -7,9 +7,9 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
-import bcod;
-import bcoe;
-import bcof;
+import benf;
+import beng;
+import benh;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ScrollView;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class PagingScrollView
   private boolean mCanScroll = true;
   protected GestureDetector mGestureDetector;
   public boolean mIsOnSpecialView = false;
-  protected bcoe mScrollChangedListener;
+  protected beng mScrollChangedListener;
   protected ArrayList<View> pagingViews;
   
   public PagingScrollView(Context paramContext)
@@ -44,7 +44,7 @@ public class PagingScrollView
       this.pagingViews = new ArrayList();
     }
     this.pagingViews.add(paramView);
-    paramView.setOnTouchListener(new bcod(this));
+    paramView.setOnTouchListener(new benf(this));
   }
   
   public void clearPagingViews()
@@ -67,7 +67,7 @@ public class PagingScrollView
       setOverScrollMode(0);
     }
     setFadingEdgeLength(0);
-    this.mGestureDetector = new GestureDetector(paramContext, new bcof(this));
+    this.mGestureDetector = new GestureDetector(paramContext, new benh(this));
   }
   
   protected boolean isOnView(View paramView, float paramFloat1, float paramFloat2)
@@ -191,9 +191,9 @@ public class PagingScrollView
     }
   }
   
-  public void setOnScrollChangedListener(bcoe parambcoe)
+  public void setOnScrollChangedListener(beng parambeng)
   {
-    this.mScrollChangedListener = parambcoe;
+    this.mScrollChangedListener = parambeng;
   }
 }
 

@@ -1,23 +1,10 @@
-import com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-
-public class ynu
-  implements yoq
+public abstract interface ynu
 {
-  public ynu(GameCenterActivity.GameCenterFragment paramGameCenterFragment, WebView paramWebView) {}
-  
-  public void a(int paramInt, String paramString)
-  {
-    QLog.i("GameCenterFragment", 1, "addShot res code=" + paramInt);
-    if (paramInt == 304) {
-      yoo.a().a(this.jdField_a_of_type_ComTencentSmttSdkWebView);
-    }
-  }
+  public abstract void a(String paramString1, boolean paramBoolean, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ynu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,29 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class adyo
-  extends aece
+public class adyo
+  implements nfd
 {
-  protected ViewGroup a;
-  protected ImageView a;
-  protected TextView a;
-  protected ETTextView a;
-  protected BubbleImageView a;
-  protected TextView b;
-  protected ETTextView b;
-  protected TextView c;
-  public int e;
+  public adyo(TroopInfoActivity paramTroopInfoActivity) {}
   
-  adyo(adyf paramadyf) {}
+  public void a()
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = 4;
+    }
+    azmj.b(this.a.app, "P_CliOper", "Grp_create", "", "edit_data", "local_suc", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, "", "");
+    TroopInfoActivity.a(this.a, true, 0L, "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.j();
+    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyo
  * JD-Core Version:    0.7.0.1
  */

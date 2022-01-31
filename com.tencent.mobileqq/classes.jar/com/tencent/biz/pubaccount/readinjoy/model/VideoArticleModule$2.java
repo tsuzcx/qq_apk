@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import android.text.TextUtils;
-import bbdh;
-import bhvy;
+import bdcb;
+import bjxj;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -16,13 +16,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import onh;
-import ozo;
-import pbe;
-import pby;
-import pot;
-import poy;
-import poz;
+import ors;
+import pew;
+import pgp;
+import phk;
+import pvb;
+import pvg;
+import pvh;
 import tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.InnerMsg;
 import tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.ReqBody;
 import tencent.im.oidb.cmd0xbed.oidb_cmd0xbed.ReqChannelPara;
@@ -56,13 +56,13 @@ public class VideoArticleModule$2
         }
         localReqChannelPara.uint64_begin_collection_id.set(this.a.jdField_c_of_type_Long);
         localReqChannelPara.uint64_end_collection_id.set(this.a.jdField_d_of_type_Long);
-        localObject = bbdh.a();
+        localObject = bdcb.a();
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
           localReqChannelPara.bytes_device_id.set(ByteStringMicro.copyFromUtf8((String)localObject));
         }
         localReqChannelPara.uint32_update_times.set(this.a.jdField_c_of_type_Int);
-        localReqChannelPara.uint32_sim_type.set(bhvy.c());
-        localReqChannelPara.uint32_network_type.set(ozo.b());
+        localReqChannelPara.uint32_sim_type.set(bjxj.c());
+        localReqChannelPara.uint32_network_type.set(pew.b());
         if (this.a.jdField_a_of_type_ArrayOfByte != null) {
           localReqChannelPara.bytes_business_info.set(ByteStringMicro.copyFrom(this.a.jdField_a_of_type_ArrayOfByte));
         }
@@ -81,15 +81,15 @@ public class VideoArticleModule$2
         {
           localInnerMsg.uint32_jump_src_type.set(this.a.jdField_d_of_type_Int);
           localInnerMsg.bytes_inner_uniq_id.set(ByteStringMicro.copyFromUtf8(String.valueOf(localLong)));
-          if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Poz.c))
+          if (!TextUtils.isEmpty(this.a.jdField_a_of_type_Pvh.c))
           {
-            localInnerMsg.bytes_push_context.set(ByteStringMicro.copyFromUtf8(this.a.jdField_a_of_type_Poz.c));
+            localInnerMsg.bytes_push_context.set(ByteStringMicro.copyFromUtf8(this.a.jdField_a_of_type_Pvh.c));
             if (QLog.isColorLevel()) {
-              QLog.d(pby.jdField_a_of_type_JavaLangString, 2, "add push contenxt:" + this.a.jdField_a_of_type_Poz.c);
+              QLog.d(phk.jdField_a_of_type_JavaLangString, 2, "add push contenxt:" + this.a.jdField_a_of_type_Pvh.c);
             }
           }
-          localInnerMsg.uint64_algorithm_id.set(this.a.jdField_a_of_type_Poz.jdField_a_of_type_Long);
-          localInnerMsg.uint32_strategy_id.set(this.a.jdField_a_of_type_Poz.jdField_a_of_type_Int);
+          localInnerMsg.uint64_algorithm_id.set(this.a.jdField_a_of_type_Pvh.jdField_a_of_type_Long);
+          localInnerMsg.uint32_strategy_id.set(this.a.jdField_a_of_type_Pvh.jdField_a_of_type_Int);
           ((List)localObject).add(localInnerMsg);
         }
         else
@@ -100,7 +100,7 @@ public class VideoArticleModule$2
       catch (Throwable localThrowable)
       {
         if (QLog.isColorLevel()) {
-          QLog.e(pby.jdField_a_of_type_JavaLangString, 2, "request0xbedSendWeiShiArticleInfoList makeParams:" + onh.a(localThrowable));
+          QLog.e(phk.jdField_a_of_type_JavaLangString, 2, "request0xbedSendWeiShiArticleInfoList makeParams:" + ors.a(localThrowable));
         }
         return;
       }
@@ -108,12 +108,12 @@ public class VideoArticleModule$2
     localReqChannelPara.rpt_inner_msg_list.set((List)localObject);
     label587:
     localThrowable.reqChannelPara.set(localReqChannelPara);
-    ToServiceMsg localToServiceMsg = pot.a("OidbSvc.0xbed", 3053, 1, localThrowable.toByteArray());
+    ToServiceMsg localToServiceMsg = pvb.a("OidbSvc.0xbed", 3053, 1, localThrowable.toByteArray());
     if (localToServiceMsg != null)
     {
       localToServiceMsg.getAttributes().put("channelID", Integer.valueOf(this.a.jdField_a_of_type_Int));
-      localToServiceMsg.getAttributes().put(pbe.d, Long.valueOf(this.a.jdField_a_of_type_Long));
-      localToServiceMsg.getAttributes().put(pbe.e, Long.valueOf(this.a.jdField_b_of_type_Long));
+      localToServiceMsg.getAttributes().put(pgp.d, Long.valueOf(this.a.jdField_a_of_type_Long));
+      localToServiceMsg.getAttributes().put(pgp.e, Long.valueOf(this.a.jdField_b_of_type_Long));
       localToServiceMsg.getAttributes().put("CountOfRequest_0xbed", Integer.valueOf(1));
     }
     this.this$0.a(localToServiceMsg);
@@ -121,7 +121,7 @@ public class VideoArticleModule$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.VideoArticleModule.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,51 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import java.util.ArrayList;
+import java.util.List;
 
-class sct
-  extends akdn
+public class sct
 {
-  sct(scr paramscr) {}
+  private final String jdField_a_of_type_JavaLangString;
+  private List<BaseData> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private scu jdField_a_of_type_Scu;
+  private List<BaseData> b = new ArrayList();
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public sct(String paramString, scu paramscu)
   {
-    if (paramInt == 0) {
-      this.a.h();
+    this.jdField_a_of_type_Scu = paramscu;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  private void a()
+  {
+    try
+    {
+      if ((this.b != null) && (this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Scu != null)) {
+        this.jdField_a_of_type_Scu.a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.b);
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public void a(List<BaseData> paramList)
   {
-    if (paramInt == 0) {
-      this.a.h();
-    }
+    this.b = paramList;
+    a();
+  }
+  
+  public void b(List<BaseData> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sct
  * JD-Core Version:    0.7.0.1
  */

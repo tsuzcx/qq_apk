@@ -1,39 +1,16 @@
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import java.util.LinkedList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class uar
+class uar
+  implements DialogInterface.OnClickListener
 {
-  private final SparseArray<LinkedList<Object>> a = new SparseArray();
+  uar(uan paramuan) {}
   
-  public <CLASS> CLASS a(@NonNull Class<CLASS> paramClass)
-  {
-    paramClass = (LinkedList)this.a.get(paramClass.hashCode());
-    if (paramClass != null)
-    {
-      paramClass = paramClass.poll();
-      if (paramClass != null) {}
-      return paramClass;
-    }
-    return null;
-  }
-  
-  public void a(@NonNull Object paramObject)
-  {
-    int i = paramObject.getClass().hashCode();
-    LinkedList localLinkedList2 = (LinkedList)this.a.get(i);
-    LinkedList localLinkedList1 = localLinkedList2;
-    if (localLinkedList2 == null)
-    {
-      localLinkedList1 = new LinkedList();
-      this.a.put(i, localLinkedList1);
-    }
-    localLinkedList1.offer(paramObject);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,49 @@
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.util.SparseArray;
+import com.tencent.mobileqq.data.ApolloGameData;
 import java.util.Comparator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 class akqx
-  implements Comparator<structmsg.StructMsg>
+  implements Comparator<ApolloGameData>
 {
-  akqx(akqw paramakqw) {}
+  SparseArray<Long> a;
   
-  public int a(structmsg.StructMsg paramStructMsg1, structmsg.StructMsg paramStructMsg2)
+  akqx(SparseArray paramSparseArray)
   {
-    if (paramStructMsg1.msg_time.get() < paramStructMsg2.msg_time.get()) {
-      return 1;
+    this.a = paramSparseArray;
+  }
+  
+  public int a(ApolloGameData paramApolloGameData1, ApolloGameData paramApolloGameData2)
+  {
+    long l2 = 0L;
+    long l1;
+    if (this.a.get(paramApolloGameData1.gameId) == null)
+    {
+      l1 = 0L;
+      if (this.a.get(paramApolloGameData2.gameId) != null) {
+        break label63;
+      }
     }
-    if (paramStructMsg1.msg_time.get() > paramStructMsg2.msg_time.get()) {
+    for (;;)
+    {
+      if (l1 <= l2) {
+        break label85;
+      }
       return -1;
+      l1 = ((Long)this.a.get(paramApolloGameData1.gameId)).longValue();
+      break;
+      label63:
+      l2 = ((Long)this.a.get(paramApolloGameData2.gameId)).longValue();
+    }
+    label85:
+    if (l1 < l2) {
+      return 1;
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akqx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,245 +1,173 @@
 import android.content.Context;
-import android.content.res.Resources;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.comment.DanmuItemBean;
+import com.tencent.mobileqq.danmaku.core.DanmakuManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.List;
 
 public class aoci
-  extends anxi
+  implements aoxd
 {
-  BaseChatPie a;
-  protected EmoticonPackage a;
-  protected anyg b;
-  protected int f;
-  private int g;
+  private static final aoyf jdField_a_of_type_Aoyf = new aocj();
+  private static final String jdField_a_of_type_JavaLangString = aoci.class.getSimpleName();
+  private aocl jdField_a_of_type_Aocl;
+  private aocm jdField_a_of_type_Aocm;
+  private aoyg jdField_a_of_type_Aoyg;
+  private DanmakuManager jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager;
   
-  public aoci(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, anyg paramanyg, BaseChatPie paramBaseChatPie, int paramInt4)
+  public aoxh a(aocn paramaocn)
   {
-    super(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanyg);
-    this.g = paramInt4;
-    this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
-    this.b = paramanyg;
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    if ((this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (paramaocn != null)) {
+      return this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramaocn);
+    }
+    return null;
   }
   
-  public View a(anxj paramanxj, int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a()
   {
-    this.f = ((this.d - (int)(18.0F * this.jdField_a_of_type_Float) * (this.jdField_a_of_type_Int + 1)) / this.jdField_a_of_type_Int);
-    Object localObject1 = (aock)paramanxj;
-    int i;
-    if (getItemViewType(paramInt) == 0)
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_Aoyg != null)
     {
-      if (paramView != null) {
-        break label933;
+      this.jdField_a_of_type_Aoyg.b(paramInt);
+      if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+        this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.h();
       }
-      paramView = aoau.a().a(this.c);
-      if (paramView == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("SmallEmotionDownloadedAdapter", 2, "getEmotionView position = " + paramInt + ";view from inflater");
-        }
-        paramView = new EmoticonPanelLinearLayout(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.g);
-        paramView.setPanelType(EmoticonPanelLinearLayout.c);
-        paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-        paramView.setOrientation(0);
-        paramView.setPadding(0, (int)(18.0F * this.jdField_a_of_type_Float), 0, 0);
-        i = 0;
-        for (;;)
-        {
-          paramanxj = paramView;
-          if (i >= this.jdField_a_of_type_Int) {
-            break;
-          }
-          paramanxj = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
-          paramViewGroup = new LinearLayout.LayoutParams(this.f, this.f);
-          paramViewGroup.leftMargin = ((int)(18.0F * this.jdField_a_of_type_Float));
-          paramanxj.setLayoutParams(paramViewGroup);
-          paramanxj.setVisibility(8);
-          paramanxj.setScaleType(ImageView.ScaleType.FIT_XY);
-          paramanxj.setAdjustViewBounds(false);
-          paramanxj.setFocusable(true);
-          paramanxj.setFocusableInTouchMode(true);
-          paramView.addView(paramanxj);
-          i += 1;
-        }
-      }
-      paramanxj = paramView;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SmallEmotionDownloadedAdapter", 2, "getEmotionView position = " + paramInt + ";view from cache");
-        paramanxj = paramView;
-      }
-      ((EmoticonPanelLinearLayout)paramanxj).setCallBack(this.b);
-      a(this.c, paramanxj);
-      paramView = (ViewGroup)paramanxj;
-      ((aock)localObject1).jdField_a_of_type_ArrayOfComTencentImageURLImageView = new URLImageView[this.jdField_a_of_type_Int];
-      i = 0;
-      while (i < this.jdField_a_of_type_Int)
-      {
-        ((aock)localObject1).jdField_a_of_type_ArrayOfComTencentImageURLImageView[i] = ((URLImageView)paramView.getChildAt(i));
-        i += 1;
-      }
-      paramanxj.setTag(localObject1);
     }
-    for (;;)
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b(paramLong);
+    }
+  }
+  
+  public void a(Context paramContext, View paramView)
+  {
+    this.jdField_a_of_type_Aoyg = aoxq.a();
+    this.jdField_a_of_type_Aoyg.a(3);
+    this.jdField_a_of_type_Aoyg.c(7000);
+    this.jdField_a_of_type_Aoyg.f(8.0F);
+    this.jdField_a_of_type_Aoyg.c(12.0F);
+    this.jdField_a_of_type_Aoyg.b(12.0F);
+    this.jdField_a_of_type_Aoyg.b(false);
+    this.jdField_a_of_type_Aoyg.d(true);
+    aoxs localaoxs = aoxq.a();
+    localaoxs.a(new aock(this));
+    localaoxs.a(-4);
+    localaoxs.a(new aoco(paramContext));
+    paramContext = localaoxs.a();
+    aoye.a(jdField_a_of_type_Aoyf);
+    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager = new DanmakuManager(paramView, paramContext);
+  }
+  
+  public void a(aocl paramaocl)
+  {
+    this.jdField_a_of_type_Aocl = paramaocl;
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(this);
+    }
+  }
+  
+  public void a(aocm paramaocm)
+  {
+    this.jdField_a_of_type_Aocm = paramaocm;
+  }
+  
+  public void a(aoxh paramaoxh, aoze paramaoze, aoyu paramaoyu) {}
+  
+  public void a(DanmuItemBean paramDanmuItemBean)
+  {
+    if ((paramDanmuItemBean != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null))
     {
-      i = 0;
-      paramView = paramanxj;
-      int j;
-      if (i < this.jdField_a_of_type_Int)
-      {
-        j = this.jdField_a_of_type_Int * paramInt + i;
-        if (j > this.jdField_a_of_type_JavaUtilList.size() - 1)
-        {
-          localObject1.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setTag(null);
-          localObject1.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setVisibility(8);
-        }
-      }
-      label896:
-      label908:
-      label919:
-      label931:
-      for (;;)
-      {
-        i += 1;
-        break;
-        paramViewGroup = localObject1.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i];
-        paramView = (aoam)this.jdField_a_of_type_JavaUtilList.get(j);
-        if ((paramView instanceof anyh)) {}
-        for (paramView = (anyh)paramView;; paramView = null)
-        {
-          if (paramView == null) {
-            break label931;
-          }
-          localObject1.jdField_a_of_type_ArrayOfComTencentImageURLImageView[i].setTag(paramView);
-          paramViewGroup.setImageDrawable(paramView.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Float));
-          paramViewGroup.setVisibility(0);
-          break;
-          if (paramView == null)
-          {
-            paramViewGroup = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
-            paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(57.0F * this.jdField_a_of_type_Float)));
-            LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-            paramanxj = new RelativeLayout.LayoutParams(-2, -2);
-            paramanxj.addRule(13, -1);
-            localLinearLayout.setLayoutParams(paramanxj);
-            paramView = anzn.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId, true);
-            Object localObject2 = new LinearLayout.LayoutParams(-2, -2);
-            localLinearLayout.setOrientation(0);
-            ((LinearLayout.LayoutParams)localObject2).gravity = 16;
-            TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-            localTextView.setTextSize(14.0F);
-            if (paramView.a)
-            {
-              paramanxj = ajya.a(2131714205);
-              localTextView.setText(paramanxj);
-              localTextView.setTextColor(-8947849);
-              localLinearLayout.addView(localTextView, (ViewGroup.LayoutParams)localObject2);
-              paramanxj = new LinearLayout.LayoutParams(-2, -2);
-              paramanxj.leftMargin = ((int)(5.0F * this.jdField_a_of_type_Float));
-              paramanxj.gravity = 16;
-              localObject2 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-              ((ImageView)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846206));
-              localLinearLayout.addView((View)localObject2, paramanxj);
-              paramViewGroup.addView(localLinearLayout);
-              ((aock)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout = localLinearLayout;
-              ((aock)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new aocj(this, paramView));
-              if (this.g != 2) {
-                break label896;
-              }
-              ((aock)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-              label825:
-              paramViewGroup.setTag(localObject1);
-              if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-                break label908;
-              }
-              paramanxj = "";
-              label843:
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
-              if (!paramView.a) {
-                break label919;
-              }
-            }
-            for (paramView = "1";; paramView = "2")
-            {
-              VasWebviewUtil.reportCommercialDrainage(paramanxj, "ep_mall", "exp_bq_detail", null, 1, 0, 0, null, (String)localObject1, paramView);
-              paramView = paramViewGroup;
-              return paramView;
-              paramanxj = ajya.a(2131714204);
-              break;
-              ((aock)localObject1).jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-              break label825;
-              paramanxj = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-              break label843;
-            }
-          }
-          return paramView;
-        }
-      }
-      label933:
-      paramanxj = paramView;
+      paramDanmuItemBean = new aocn(paramDanmuItemBean);
+      paramDanmuItemBean = this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(-2147483647, paramDanmuItemBean);
+      paramDanmuItemBean.e(true);
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramDanmuItemBean);
     }
   }
   
-  public anxj a()
+  public void a(List<aoxh> paramList)
   {
-    return new aock();
+    if ((paramList == null) || (paramList.isEmpty())) {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 4, "addDanmakuList danmakuList is null");
+      }
+    }
+    while (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a(paramList);
   }
   
-  public EmoticonPackage a()
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage;
+    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d());
   }
   
-  public int getCount()
+  public void b()
   {
-    int i = super.getCount();
-    if (i > 0)
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
     {
-      if (this.g == 1) {
-        return i;
-      }
-      return i + 1;
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.g();
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.l();
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager = null;
     }
-    return 0;
   }
   
-  public int getItemViewType(int paramInt)
+  public void b(List<aoxh> paramList)
   {
-    if (this.g == 1) {}
-    while (paramInt != getCount() - 1) {
-      return 0;
+    if ((this.jdField_a_of_type_Aocl != null) && (!b())) {
+      this.jdField_a_of_type_Aocl.b();
     }
-    return 1;
   }
   
-  public int getViewTypeCount()
+  public boolean b()
   {
-    if (this.g == 1) {
-      return 1;
+    return (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.a());
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.d();
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.e();
     }
-    return 2;
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.c();
+    }
+  }
+  
+  public void e()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDanmakuCoreDanmakuManager.b();
+    }
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_Aocl != null) {
+      this.jdField_a_of_type_Aocl.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoci
  * JD-Core Version:    0.7.0.1
  */

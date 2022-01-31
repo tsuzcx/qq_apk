@@ -1,25 +1,74 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.os.Bundle;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtBaseAdItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
 public class aamk
-  implements bckm
+  extends QIPCModule
 {
-  public aamk(BaseChatPie paramBaseChatPie) {}
+  private static volatile aamk a;
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  private aamk(String paramString)
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    super(paramString);
+  }
+  
+  public static aamk a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new aamk("gdt_ipc");
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    aanp.b("gdt_ipc", "Action  " + paramString);
+    if ("do_app_jump".equals(paramString))
+    {
+      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+      {
+        paramString = (aanq)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(110);
+        paramBundle.setClassLoader(getClass().getClassLoader());
+        paramBundle = (GdtBaseAdItem)paramBundle.getParcelable("gdtBaseAdItem");
+        paramString.a(BaseApplicationImpl.getContext(), paramBundle);
+        callbackResult(paramInt, EIPCResult.createSuccessResult(null));
+      }
+      for (;;)
+      {
+        return null;
+        callbackResult(paramInt, EIPCResult.createResult(-1, null));
+      }
+    }
+    AdIPCManager.Params localParams = new AdIPCManager.Params();
+    localParams.bundle = paramBundle;
+    paramString = AdIPCManager.INSTANCE.receive(paramString, localParams);
+    if (paramString == null) {
+      return null;
+    }
+    paramBundle = new EIPCResult();
+    if (paramString.success) {}
+    for (paramInt = 0;; paramInt = -102)
+    {
+      paramBundle.code = paramInt;
+      paramBundle.data = paramString.bundle;
+      return paramBundle;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamk
  * JD-Core Version:    0.7.0.1
  */

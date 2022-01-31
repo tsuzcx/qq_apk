@@ -1,65 +1,95 @@
-import com.tencent.mobileqq.apollo.GLTextureView;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLDisplay;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import org.json.JSONObject;
 
 public class aiuo
-  extends aiun
 {
-  protected int a;
-  protected int b;
-  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
-  protected int c;
-  protected int d;
-  protected int e;
-  protected int f;
-  
-  public aiuo(GLTextureView paramGLTextureView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public static int a(int paramInt1, int paramInt2)
   {
-    super(paramGLTextureView, new int[] { 12324, paramInt1, 12323, paramInt2, 12322, paramInt3, 12321, paramInt4, 12325, paramInt5, 12326, paramInt6, 12344 });
-    this.a = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.e = paramInt5;
-    this.f = paramInt6;
-  }
-  
-  private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt1, int paramInt2)
-  {
-    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt1, this.jdField_b_of_type_ArrayOfInt)) {
-      paramInt2 = this.jdField_b_of_type_ArrayOfInt[0];
-    }
-    return paramInt2;
-  }
-  
-  public EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
-  {
-    int j = paramArrayOfEGLConfig.length;
-    int i = 0;
-    while (i < j)
+    int i = 1;
+    if (paramInt1 == 1)
     {
-      EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
-      int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325, 0);
-      int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326, 0);
-      if ((k >= this.e) && (m >= this.f))
-      {
-        k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324, 0);
-        m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323, 0);
-        int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322, 0);
-        int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321, 0);
-        if ((k == this.a) && (m == this.jdField_b_of_type_Int) && (n == this.c) && (i1 == this.d)) {
-          return localEGLConfig;
+      paramInt1 = i;
+      if (paramInt2 == 1) {
+        paramInt1 = 0;
+      }
+      return paramInt1;
+    }
+    return RedPacketManager.getEnterType(paramInt1);
+  }
+  
+  public static int a(String paramString)
+  {
+    int i = 0;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = paramString.replaceAll("[\\u4e00-\\u9fa5]", "aa").length() - paramString.length();
+    }
+    return i;
+  }
+  
+  public static String a(int paramInt, biyg parambiyg, aiun paramaiun, String paramString)
+  {
+    int i = 2;
+    if (parambiyg != null)
+    {
+      int j = bixy.a(parambiyg.bus_type, 2);
+      i = j;
+      if (!bdje.a(parambiyg.biz_params)) {
+        try
+        {
+          String str = new JSONObject(parambiyg.biz_params).optString("memo", "");
+          parambiyg = str;
+          if (a(str) >= 18) {
+            parambiyg = str.substring(0, 18) + "...";
+          }
+          boolean bool = bdje.a(parambiyg);
+          i = j;
+          if (!bool) {
+            return parambiyg;
+          }
+        }
+        catch (Exception parambiyg)
+        {
+          parambiyg.printStackTrace();
+          i = j;
         }
       }
-      i += 1;
     }
-    return null;
+    return paramaiun.a(paramInt, i, paramString);
+  }
+  
+  public static String a(EditText paramEditText)
+  {
+    String str = paramEditText.getText().toString();
+    Object localObject = str;
+    if (TextUtils.isEmpty(str))
+    {
+      localObject = paramEditText.getHint();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        localObject = paramEditText.getResources().getString(2131697273);
+      }
+    }
+    else
+    {
+      return localObject;
+    }
+    return ((CharSequence)localObject).toString();
+  }
+  
+  public static String a(String paramString)
+  {
+    String str = "";
+    if (!TextUtils.isEmpty(paramString)) {
+      str = paramString.replaceAll("[\\u4e00-\\u9fa5,，。、 ]", "");
+    }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiuo
  * JD-Core Version:    0.7.0.1
  */

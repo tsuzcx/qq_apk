@@ -1,15 +1,23 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
+import feedcloud.FeedCloudMeta.StFeed;
+import feedcloud.FeedCloudMeta.StTagInfo;
 
-public abstract interface twr
+class twr
+  implements View.OnClickListener
 {
-  public abstract void a(ErrorMessage paramErrorMessage, List<twl> paramList, boolean paramBoolean);
+  twr(twq paramtwq, FeedCloudMeta.StFeed paramStFeed, FeedCloudMeta.StTagInfo paramStTagInfo) {}
   
-  public abstract void b(ErrorMessage paramErrorMessage, List<twm> paramList, boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    tyk.a(16, 2, this.jdField_a_of_type_FeedcloudFeedCloudMeta$StFeed, 2, 0);
+    tqs.a(this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagId.get(), this.jdField_a_of_type_FeedcloudFeedCloudMeta$StTagInfo.tagName.get());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twr
  * JD-Core Version:    0.7.0.1
  */

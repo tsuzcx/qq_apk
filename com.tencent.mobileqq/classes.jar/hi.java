@@ -1,95 +1,57 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.etrump.mixlayout.ETDecoration;
-import com.etrump.mixlayout.ETEngine;
-import com.etrump.mixlayout.ETTextView;
-import java.lang.ref.WeakReference;
+import java.nio.FloatBuffer;
 
 public class hi
-  extends Handler
 {
-  public hi(Looper paramLooper)
+  private static final FloatBuffer jdField_a_of_type_JavaNioFloatBuffer = hj.a(jdField_a_of_type_ArrayOfFloat);
+  public static float[] a;
+  private static final FloatBuffer jdField_b_of_type_JavaNioFloatBuffer = hj.a(jdField_b_of_type_ArrayOfFloat);
+  private static final float[] jdField_b_of_type_ArrayOfFloat;
+  private int jdField_a_of_type_Int = jdField_a_of_type_ArrayOfFloat.length / this.jdField_b_of_type_Int;
+  private int jdField_b_of_type_Int = 2;
+  private int jdField_c_of_type_Int = this.jdField_b_of_type_Int * 4;
+  private FloatBuffer jdField_c_of_type_JavaNioFloatBuffer = jdField_a_of_type_JavaNioFloatBuffer;
+  private int jdField_d_of_type_Int = 8;
+  private FloatBuffer jdField_d_of_type_JavaNioFloatBuffer = jdField_b_of_type_JavaNioFloatBuffer;
+  
+  static
   {
-    super(paramLooper);
+    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+    jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
   }
   
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    int i;
-    ETEngine localETEngine;
-    Bitmap localBitmap;
-    switch (paramMessage.what)
-    {
-    default: 
-    case 2: 
-      do
-      {
-        return;
-        paramMessage = (hj)paramMessage.obj;
-      } while (paramMessage == null);
-      i = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      int j = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-      if ((ETTextView.access$300() != null) && ((ETTextView.access$300().getWidth() < i) || (ETTextView.access$300().getHeight() < j)))
-      {
-        ETTextView.access$300().recycle();
-        ETTextView.access$302(null);
-      }
-      if (ETTextView.access$300() == null)
-      {
-        ETTextView.access$302(Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888));
-        localETEngine = ETEngine.getInstanceForAnimation();
-        ??? = paramMessage.jdField_a_of_type_Ha.a(localETEngine, false);
-        if (??? != null) {
-          ((ETDecoration)???).gotoFrame(paramMessage.jdField_a_of_type_Int);
-        }
-        paramMessage.jdField_a_of_type_Ha.a(localETEngine, ETTextView.access$300(), (ETDecoration)???, true);
-        if (??? != null) {
-          ((ETDecoration)???).deleteDescriptor();
-        }
-        localBitmap = paramMessage.jdField_a_of_type_AndroidGraphicsBitmap;
-        if (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-          break label308;
-        }
-      }
-      break;
-    }
-    for (;;)
-    {
-      synchronized (ETTextView.access$400((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get()))
-      {
-        if ((localBitmap.isRecycled()) || (((ETTextView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get()).mMsgId != paramMessage.jdField_a_of_type_Long)) {
-          break label303;
-        }
-        localBitmap.eraseColor(0);
-        localETEngine.native_cloneBitmap(ETTextView.access$300(), localBitmap);
-        i = 1;
-        if (i == 0) {
-          break;
-        }
-        ETTextView.access$500().obtainMessage(1, paramMessage).sendToTarget();
-        return;
-        ETTextView.access$300().eraseColor(0);
-      }
-      if (ETTextView.access$300() == null) {
-        break;
-      }
-      ETTextView.access$300().recycle();
-      ETTextView.access$302(null);
-      return;
-      label303:
-      i = 0;
-      continue;
-      label308:
-      i = 0;
-    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public FloatBuffer a()
+  {
+    return this.jdField_c_of_type_JavaNioFloatBuffer;
+  }
+  
+  public int b()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public FloatBuffer b()
+  {
+    return this.jdField_d_of_type_JavaNioFloatBuffer;
+  }
+  
+  public int c()
+  {
+    return this.jdField_d_of_type_Int;
+  }
+  
+  public int d()
+  {
+    return this.jdField_b_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     hi
  * JD-Core Version:    0.7.0.1
  */

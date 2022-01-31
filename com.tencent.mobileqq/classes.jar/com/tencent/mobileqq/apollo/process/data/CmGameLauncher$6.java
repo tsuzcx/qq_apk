@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.process.data;
 
-import ajcf;
+import aktr;
 import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 import com.tencent.mobileqq.apollo.IApolloRunnableTask;
 import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
@@ -8,7 +8,7 @@ import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 public class CmGameLauncher$6
   extends IApolloRunnableTask
 {
-  public CmGameLauncher$6(ajcf paramajcf, ApolloCmdChannel paramApolloCmdChannel) {}
+  public CmGameLauncher$6(aktr paramaktr, ApolloCmdChannel paramApolloCmdChannel) {}
   
   public String a()
   {
@@ -18,13 +18,13 @@ public class CmGameLauncher$6
   public void run()
   {
     if (this.a != null) {
-      this.a.requestData(ajcf.a(this.this$0).getLuaState(), "cs.make_room_min.local", "{}", true, true);
+      this.a.requestData(aktr.a(this.this$0).getLuaState(), "cs.make_room_min.local", "{}", true, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.data.CmGameLauncher.6
  * JD-Core Version:    0.7.0.1
  */

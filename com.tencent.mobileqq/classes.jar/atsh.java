@@ -1,23 +1,24 @@
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.os.Handler;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
 
-class atsh
-  implements TextWatcher
+public class atsh
 {
-  atsh(atsc paramatsc) {}
+  private static final atsr<Handler, Void> a = new atsi();
+  private static atsr<TimerTaskManager, Void> b = new atsj();
   
-  public void afterTextChanged(Editable paramEditable)
+  public static Handler a()
   {
-    atbr.a(this.a.e, 90);
+    return (Handler)a.b(null);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public static TimerTaskManager a()
+  {
+    return (TimerTaskManager)b.b(null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsh
  * JD-Core Version:    0.7.0.1
  */

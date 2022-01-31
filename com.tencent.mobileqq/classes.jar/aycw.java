@@ -1,38 +1,20 @@
+import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
 
-public class aycw
-  extends aycz
-  implements aybd
+class aycw
+  implements View.OnClickListener
 {
-  protected String b;
+  aycw(aycv paramaycv) {}
   
-  public aycw(SpriteNativeView paramSpriteNativeView, String paramString)
+  public void onClick(View paramView)
   {
-    super(paramSpriteNativeView);
-    this.b = paramString;
-  }
-  
-  protected ImageView a()
-  {
-    return new PressEffectImageView(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.getContext());
-  }
-  
-  public String a()
-  {
-    return this.b;
-  }
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(paramOnClickListener);
+    int i = ((Integer)paramView.getTag(-1)).intValue();
+    aycv.a(this.a).onItemClick(this.a.a, paramView, i, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aycw
  * JD-Core Version:    0.7.0.1
  */

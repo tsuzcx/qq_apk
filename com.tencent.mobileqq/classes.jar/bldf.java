@@ -1,114 +1,55 @@
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import android.view.Surface;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
+import com.tencent.ttpic.videoshelf.model.VideoShelfEngine.Callback;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
+import java.lang.ref.WeakReference;
 
-@TargetApi(14)
 public class bldf
-  implements SurfaceTexture.OnFrameAvailableListener
+  implements VideoShelfEngine.Callback
 {
-  SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
-  public Surface a;
-  bldh jdField_a_of_type_Bldh;
-  Object jdField_a_of_type_JavaLangObject = new Object();
-  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
-  boolean jdField_a_of_type_Boolean;
+  private WeakReference<AEVideoShelfPreviewFragment> a;
   
-  public bldf()
+  public bldf(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment)
   {
-    a();
+    this.a = new WeakReference(paramAEVideoShelfPreviewFragment);
   }
   
-  void a()
+  public void onCancelCompleted()
   {
-    this.jdField_a_of_type_Bldh = new bldh();
-    this.jdField_a_of_type_Bldh.a();
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Bldh.a());
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    this.jdField_a_of_type_Bldh.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 != null)
-    {
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetCurrentContext().equals(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext)) {
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-      }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroySurface(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglDestroyContext(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
+    if ((this.a != null) && (this.a.get() != null)) {
+      AEVideoShelfPreviewFragment.e((AEVideoShelfPreviewFragment)this.a.get());
     }
-    this.jdField_a_of_type_AndroidViewSurface.release();
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = null;
-    this.jdField_a_of_type_Bldh = null;
-    this.jdField_a_of_type_AndroidViewSurface = null;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
   }
   
-  @SuppressLint({"NewApi"})
-  public void c()
+  public void onCompleted()
   {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      for (;;)
-      {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (!bool) {
-          try
-          {
-            this.jdField_a_of_type_JavaLangObject.wait(5000L);
-            if (!this.jdField_a_of_type_Boolean) {
-              throw new RuntimeException("Surface frame wait timed out");
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            Thread.currentThread().interrupt();
-          }
-        }
-      }
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((AEVideoShelfPreviewFragment)this.a.get()).onCompletion();
     }
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Bldh.a("before updateTexImage");
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
   }
   
-  public void d()
+  public void onError(int paramInt1, int paramInt2, String paramString)
   {
-    this.jdField_a_of_type_Bldh.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
-  }
-  
-  public void onFrameAvailable(SurfaceTexture arg1)
-  {
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        throw new RuntimeException("mFrameAvailable already set, frame could be dropped");
-      }
+    if ((this.a != null) && (this.a.get() != null)) {
+      AEVideoShelfPreviewFragment.a((AEVideoShelfPreviewFragment)this.a.get(), paramInt1, paramInt2, paramString);
     }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangObject.notifyAll();
+  }
+  
+  public void onProgress(int paramInt)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      AEVideoShelfPreviewFragment.b((AEVideoShelfPreviewFragment)this.a.get(), paramInt);
+    }
+  }
+  
+  public void onStartGenerate()
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      AEVideoShelfPreviewFragment.d((AEVideoShelfPreviewFragment)this.a.get());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bldf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package dov.com.qq.im.story.mode;
 
-import bjry;
+import bmdi;
 
 public class StoryEffectTextMode$2
   implements Runnable
 {
-  public StoryEffectTextMode$2(bjry parambjry) {}
+  public StoryEffectTextMode$2(bmdi parambmdi) {}
   
   public void run()
   {
-    bjry.a(this.this$0);
+    bmdi.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.story.mode.StoryEffectTextMode.2
  * JD-Core Version:    0.7.0.1
  */

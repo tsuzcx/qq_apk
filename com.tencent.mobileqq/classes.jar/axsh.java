@@ -1,17 +1,56 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.statistics.WtloginReporter.1;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
 
 public class axsh
 {
-  public static void a(QQAppInterface paramQQAppInterface)
+  private static final String a = aswh.class.getSimpleName();
+  
+  public static void a(Throwable paramThrowable)
   {
-    ThreadManagerV2.executeOnFileThread(new WtloginReporter.1(paramQQAppInterface.getCurrentAccountUin()));
+    Throwable localThrowable = new Throwable(paramThrowable);
+    try
+    {
+      arrayOfField = Class.forName("java.lang.Throwable").getDeclaredFields();
+      j = arrayOfField.length;
+      i = 0;
+    }
+    catch (Throwable paramThrowable)
+    {
+      for (;;)
+      {
+        Field[] arrayOfField;
+        int j;
+        int i;
+        Field localField;
+        label110:
+        QLog.e(a, 2, "addStackTag failed", paramThrowable);
+        continue;
+        i += 1;
+      }
+    }
+    if (i < j)
+    {
+      localField = arrayOfField[i];
+      if (!localField.getName().equals("detailMessage")) {
+        break label155;
+      }
+      localField.setAccessible(true);
+      if ((paramThrowable.getCause() == null) || (localThrowable.getCause() == null)) {
+        break label110;
+      }
+      localField.set(localThrowable.getCause(), "ShortVideoCatchedException:" + paramThrowable.getCause().getMessage());
+    }
+    for (;;)
+    {
+      azlf.a(localThrowable, "ShortVideo Fail");
+      return;
+      localField.set(localThrowable, "ShortVideoCatchedException:" + paramThrowable.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axsh
  * JD-Core Version:    0.7.0.1
  */

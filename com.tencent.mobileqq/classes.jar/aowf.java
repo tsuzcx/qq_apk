@@ -1,30 +1,61 @@
-public class aowf
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.text.TextUtils;
+
+public abstract class aowf
 {
-  public int a;
-  public long a;
-  public String a;
-  public short a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b = "";
-  public short b;
-  public byte[] b;
-  public int c;
-  public long c;
-  public String c;
-  public byte[] c;
-  public int d;
-  public String d = "";
-  public byte[] d;
-  public String e = "";
-  
-  public aowf(aowc paramaowc)
+  public static int a(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_c_of_type_JavaLangString = "";
+    try
+    {
+      int i = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
+      return i;
+    }
+    catch (Exception paramContext) {}
+    return 0;
+  }
+  
+  public static int a(Context paramContext, String paramString)
+  {
+    try
+    {
+      int i = paramContext.getPackageManager().getPackageInfo(paramString, 0).versionCode;
+      return i;
+    }
+    catch (Exception paramContext) {}
+    return 0;
+  }
+  
+  public static String a(Context paramContext)
+  {
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
+      return paramContext;
+    }
+    catch (Exception paramContext) {}
+    return "";
+  }
+  
+  public static boolean a(String paramString, Context paramContext)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    for (;;)
+    {
+      return false;
+      paramContext = paramContext.getPackageManager();
+      try
+      {
+        paramString = paramContext.getApplicationInfo(paramString, 0);
+        if (paramString != null) {
+          return true;
+        }
+      }
+      catch (PackageManager.NameNotFoundException paramString) {}
+    }
+    return false;
   }
 }
 

@@ -1,29 +1,61 @@
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.SignTextEditFragment;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.mobileqq.data.RoamSetting;
+import com.tencent.mobileqq.persistence.NoColumnError;
 
 public class awcq
-  implements awci
+  extends awch
 {
-  public awcq(SignTextEditFragment paramSignTextEditFragment) {}
-  
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public awcq()
   {
-    SignTextEditFragment.a(this.a, this.a.a, paramBoolean);
+    this.a = 2;
   }
   
-  public void b(int paramInt, boolean paramBoolean)
+  public awbv a(awbv paramawbv, Cursor paramCursor, boolean paramBoolean, awcg paramawcg)
   {
-    if (paramInt == -1) {
-      bcql.a(this.a.getActivity(), 2131719386, 1).a();
+    paramawbv = (RoamSetting)paramawbv;
+    if (paramawcg == null)
+    {
+      paramawbv.path = paramCursor.getString(paramCursor.getColumnIndex("path"));
+      paramawbv.value = paramCursor.getString(paramCursor.getColumnIndex("value"));
+      return paramawbv;
     }
-    SignTextEditFragment.a(this.a, this.a.a, SignTextEditFragment.a(this.a).b());
+    int i = paramCursor.getColumnIndex("path");
+    if (i == -1) {
+      paramawcg.a(new NoColumnError("path", String.class));
+    }
+    for (;;)
+    {
+      i = paramCursor.getColumnIndex("value");
+      if (i != -1) {
+        break;
+      }
+      paramawcg.a(new NoColumnError("value", String.class));
+      return paramawbv;
+      paramawbv.path = paramCursor.getString(i);
+    }
+    paramawbv.value = paramCursor.getString(i);
+    return paramawbv;
+  }
+  
+  public String a(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("CREATE TABLE IF NOT EXISTS ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" (_id INTEGER PRIMARY KEY AUTOINCREMENT ,path TEXT UNIQUE ,value TEXT)");
+    return localStringBuilder.toString();
+  }
+  
+  public void a(awbv paramawbv, ContentValues paramContentValues)
+  {
+    paramawbv = (RoamSetting)paramawbv;
+    paramContentValues.put("path", paramawbv.path);
+    paramContentValues.put("value", paramawbv.value);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awcq
  * JD-Core Version:    0.7.0.1
  */

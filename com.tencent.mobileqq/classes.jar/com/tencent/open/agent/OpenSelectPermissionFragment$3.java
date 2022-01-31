@@ -1,10 +1,11 @@
 package com.tencent.open.agent;
 
-import aqgj;
-import axqy;
-import bdah;
-import bdde;
-import bdod;
+import arzy;
+import azmj;
+import bezj;
+import bfcc;
+import bfna;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -16,24 +17,31 @@ class OpenSelectPermissionFragment$3
   
   public void run()
   {
+    if (OpenSelectPermissionFragment.a(this.this$0) == null)
+    {
+      QLog.d("OpenSelectPermissionFragment", 1, "doAuth null == mOpenVirtualMgr");
+      return;
+    }
     Object localObject1 = OpenSelectPermissionFragment.a(this.this$0).a(String.valueOf(OpenSelectPermissionFragment.a(this.this$0)));
-    if (localObject1 == null) {
+    if (localObject1 == null)
+    {
+      QLog.d("OpenSelectPermissionFragment", 1, "getAuthApiListResponse == null");
       return;
     }
     ArrayList localArrayList = new ArrayList();
     localObject1 = ((List)localObject1).iterator();
-    bdah localbdah1;
+    bezj localbezj1;
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
-      localbdah1 = (bdah)((Iterator)localObject1).next();
-      localObject2 = new bdah();
-      ((bdah)localObject2).jdField_a_of_type_Int = localbdah1.jdField_a_of_type_Int;
-      ((bdah)localObject2).jdField_b_of_type_JavaLangString = localbdah1.jdField_b_of_type_JavaLangString;
-      ((bdah)localObject2).jdField_b_of_type_Int = localbdah1.jdField_b_of_type_Int;
-      ((bdah)localObject2).jdField_a_of_type_Boolean = localbdah1.jdField_a_of_type_Boolean;
-      ((bdah)localObject2).jdField_a_of_type_JavaLangString = localbdah1.jdField_a_of_type_JavaLangString;
-      ((bdah)localObject2).jdField_b_of_type_Boolean = true;
+      localbezj1 = (bezj)((Iterator)localObject1).next();
+      localObject2 = new bezj();
+      ((bezj)localObject2).jdField_a_of_type_Int = localbezj1.jdField_a_of_type_Int;
+      ((bezj)localObject2).jdField_b_of_type_JavaLangString = localbezj1.jdField_b_of_type_JavaLangString;
+      ((bezj)localObject2).jdField_b_of_type_Int = localbezj1.jdField_b_of_type_Int;
+      ((bezj)localObject2).jdField_a_of_type_Boolean = localbezj1.jdField_a_of_type_Boolean;
+      ((bezj)localObject2).jdField_a_of_type_JavaLangString = localbezj1.jdField_a_of_type_JavaLangString;
+      ((bezj)localObject2).jdField_b_of_type_Boolean = true;
       localArrayList.add(localObject2);
     }
     localObject1 = OpenSelectPermissionFragment.a(this.this$0).a();
@@ -42,13 +50,13 @@ class OpenSelectPermissionFragment$3
       localObject1 = ((List)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localbdah1 = (bdah)((Iterator)localObject1).next();
+        localbezj1 = (bezj)((Iterator)localObject1).next();
         localObject2 = localArrayList.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          bdah localbdah2 = (bdah)((Iterator)localObject2).next();
-          if (localbdah1.jdField_b_of_type_Int == localbdah2.jdField_b_of_type_Int) {
-            localbdah2.jdField_b_of_type_Boolean = localbdah1.jdField_b_of_type_Boolean;
+          bezj localbezj2 = (bezj)((Iterator)localObject2).next();
+          if (localbezj1.jdField_b_of_type_Int == localbezj2.jdField_b_of_type_Int) {
+            localbezj2.jdField_b_of_type_Boolean = localbezj1.jdField_b_of_type_Boolean;
           }
         }
       }
@@ -56,15 +64,15 @@ class OpenSelectPermissionFragment$3
     if (OpenSelectPermissionFragment.a(this.this$0)) {}
     for (int i = 2;; i = 1)
     {
-      aqgj.a("KEY_AUTHORIZE_REQUEST");
+      arzy.a("KEY_AUTHORIZE_REQUEST");
       OpenSelectPermissionFragment.a(this.this$0).a(false, String.valueOf(OpenSelectPermissionFragment.a(this.this$0)), localArrayList, OpenSelectPermissionFragment.b(this.this$0), OpenSelectPermissionFragment.a(this.this$0), OpenSelectPermissionFragment.a(this.this$0), this.this$0.getActivity());
       if (OpenSelectPermissionFragment.b(this.this$0) != 0L) {
         break;
       }
-      axqy.b(null, "dc00898", "", "", "0X800A117", "0X800A117", i, 0, "", "", "", "");
+      azmj.b(null, "dc00898", "", "", "0X800A117", "0X800A117", i, 0, "", "", "", "");
       return;
     }
-    axqy.b(null, "dc00898", "", "", "0X800A116", "0X800A116", i, 0, "", "", "", "");
+    azmj.b(null, "dc00898", "", "", "0X800A116", "0X800A116", i, 0, "", "", "", "");
   }
 }
 

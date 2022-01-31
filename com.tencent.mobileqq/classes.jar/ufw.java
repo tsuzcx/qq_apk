@@ -1,19 +1,31 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnVideoSizeChangedListener;
-
-class ufw
-  implements MediaPlayer.OnVideoSizeChangedListener
+public class ufw
 {
-  ufw(ufr paramufr, ufp paramufp) {}
-  
-  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public static double a(int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_Ufp.a(this.jdField_a_of_type_Ufr, paramInt1, paramInt2);
+    int j = 0;
+    double d2 = 0.0D;
+    int k = paramArrayOfInt.length;
+    double d1 = 0.0D;
+    int i = 0;
+    while (i < k)
+    {
+      d1 += paramArrayOfInt[i];
+      i += 1;
+    }
+    double d3 = d1 / k;
+    i = j;
+    d1 = d2;
+    while (i < k)
+    {
+      d1 += (paramArrayOfInt[i] - d3) * (paramArrayOfInt[i] - d3);
+      i += 1;
+    }
+    return d1 / k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ufw
  * JD-Core Version:    0.7.0.1
  */

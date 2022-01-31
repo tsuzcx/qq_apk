@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajya;
+import alpo;
 import android.widget.Toast;
 import com.tencent.common.app.BaseApplicationImpl;
 
@@ -9,7 +9,7 @@ class SQLiteDatabase$2
 {
   public void run()
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), ajya.a(2131714339) + BaseApplicationImpl.processName + ajya.a(2131714340), 1).show();
+    Toast.makeText(BaseApplicationImpl.getContext(), alpo.a(2131714711) + BaseApplicationImpl.processName + alpo.a(2131714712), 1).show();
   }
 }
 

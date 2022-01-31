@@ -1,21 +1,32 @@
-import java.util.Random;
+import cooperation.qzone.panorama.widget.PanoramaView;
 
 public class bjjn
+  implements bjit
 {
-  private static Random a = new Random();
+  public bjjn(PanoramaView paramPanoramaView) {}
   
-  public static bjjo a()
+  public void a()
   {
-    int i = blcq.a / 4;
-    int j = a.nextInt(blcq.a / 2);
-    int k = blcq.a / 4;
-    int m = a.nextInt(blcq.a / 2);
-    return new bjjo(i - j + blcq.a / 2, k - m + (blcq.b - blcq.a(249.0F)) / 2);
+    if (PanoramaView.a(this.a) != null) {
+      PanoramaView.a(this.a).onPanoramaClick();
+    }
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (PanoramaView.a(this.a) != null) {
+      PanoramaView.a(this.a).a(paramFloat);
+    }
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    this.a.a(paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjjn
  * JD-Core Version:    0.7.0.1
  */

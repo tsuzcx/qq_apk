@@ -1,37 +1,67 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.List;
+import mqq.manager.TicketManager;
+import tencent.im.oidb.cmd0x876.oidb_0x876.ReqBody;
+import tencent.im.oidb.cmd0x877.oidb_0x877.ReqBody;
+import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
+import tencent.nearby.now.nearby_now_anchor.ReqBatchGetAnchorStatus;
 
-class aped
-  extends aoun
+public class aped
 {
-  aped(apec paramapec) {}
-  
-  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("PreviewStep_1", 4, "SUCCESS OnFileWeiYunPreview harcode[" + apei.a + "]");
-    }
-    if (apei.a)
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    localReqBody.uid.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    localReqBody.tinyid.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
+    Object localObject = (TicketManager)paramQQAppInterface.getManager(2);
+    String str = ((TicketManager)localObject).getA2(paramQQAppInterface.getCurrentAccountUin());
+    localObject = ((TicketManager)localObject).getSkey(paramQQAppInterface.getCurrentAccountUin());
+    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
     {
-      paramString4 = "183.61.37.13";
-      paramString5 = "443";
-      if (this.a.jdField_a_of_type_Aooq != null) {}
+      localReqBody.a2.set(str);
+      localReqBody.platform.set(1);
+      localReqBody.version.set("8.3.3");
+      localReqBody.original_id.set(paramQQAppInterface.getCurrentAccountUin());
+      localReqBody.original_key.set((String)localObject);
+      localReqBody.original_id_type.set(1);
     }
-    else
-    {
-      if ((paramString4 != null) && (paramString4.length() > 0)) {}
-      for (;;)
-      {
-        paramString5 = String.valueOf(paramInt2);
-        break;
-        paramString4 = paramString5;
-      }
+    localReqBody.cmd.set(24727);
+    localReqBody.subcmd.set(6);
+    mzy.a(paramQQAppInterface, new apee(), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, apef paramapef)
+  {
+    oidb_0x877.ReqBody localReqBody = new oidb_0x877.ReqBody();
+    localReqBody.uint32_refer.set(paramInt);
+    mzy.a(paramQQAppInterface, paramapef, localReqBody.toByteArray(), "OidbSvc.0x877_0", 2167, 0);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, apeg paramapeg)
+  {
+    mzy.a(paramQQAppInterface, paramapeg, new oidb_0x876.ReqBody().toByteArray(), "OidbSvc.0x876_" + paramInt, 2166, paramInt);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, List<Long> paramList, Bundle paramBundle, apeh paramapeh)
+  {
+    nearby_now_anchor.ReqBatchGetAnchorStatus localReqBatchGetAnchorStatus = new nearby_now_anchor.ReqBatchGetAnchorStatus();
+    localReqBatchGetAnchorStatus.uint64_uin.set(paramList);
+    paramList = paramBundle;
+    if (paramBundle == null) {
+      paramList = new Bundle();
     }
-    this.a.jdField_a_of_type_Aooq.a(paramBoolean, paramString4, paramString5, paramInt1, paramString1, paramString2, paramString3, this.a.jdField_a_of_type_JavaLangString, null);
+    mzy.a(paramQQAppInterface, paramapeh, localReqBatchGetAnchorStatus.toByteArray(), "NearbyNowTips.batch_get_anchor_stats", paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aped
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,27 @@
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
 
 public class qeb
+  extends ClickableSpan
 {
-  public static <T> int a(Iterable<T> paramIterable, qed<T> paramqed)
+  public qeb(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramIterable != null)
-    {
-      int i = 0;
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext())
-      {
-        if (paramqed.a(paramIterable.next())) {
-          return i;
-        }
-        i += 1;
-      }
-    }
-    return -1;
+    ors.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
   }
   
-  public static <T, E> List<E> a(Iterable<T> paramIterable, qec<T, E> paramqec)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramIterable != null) && (paramqec != null))
-    {
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext()) {
-        localArrayList.add(paramqec.a(paramIterable.next()));
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static <T> List<T> a(Iterable<T> paramIterable, qed<T> paramqed)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramIterable != null) && (paramqed != null))
-    {
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext())
-      {
-        Object localObject = paramIterable.next();
-        if (paramqed.a(localObject)) {
-          localArrayList.add(localObject);
-        }
-      }
-    }
-    return localArrayList;
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(aekt.a(2, 14, this.a.getResources()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qeb
  * JD-Core Version:    0.7.0.1
  */

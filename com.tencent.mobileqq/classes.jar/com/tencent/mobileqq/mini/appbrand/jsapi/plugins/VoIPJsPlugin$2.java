@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import ajya;
+import alpo;
 import com.tencent.mobileqq.mini.util.ApiUtil;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
@@ -17,7 +17,7 @@ class VoIPJsPlugin$2
     try
     {
       this.val$res.put("errCode", paramInt);
-      this.val$webview.evaluateCallbackJs(this.val$callbackId, ApiUtil.wrapCallbackFail(this.val$eventName, this.val$res, ajya.a(2131716868)).toString());
+      this.val$webview.evaluateCallbackJs(this.val$callbackId, ApiUtil.wrapCallbackFail(this.val$eventName, this.val$res, alpo.a(2131717240)).toString());
       return;
     }
     catch (JSONException localJSONException)
@@ -49,7 +49,7 @@ class VoIPJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.VoIPJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

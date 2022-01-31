@@ -30,13 +30,13 @@ public class PickerView
   
   public PickerView(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755360);
+    super(paramContext, 2131755367);
     initView(paramContext);
   }
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131558983, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559020, null);
     setContentView(paramContext);
     Window localWindow = getWindow();
     if (localWindow != null)
@@ -48,10 +48,10 @@ public class PickerView
       localWindow.setAttributes(localLayoutParams);
       localWindow.setGravity(80);
     }
-    this.mNumPicker = ((NumberPicker)paramContext.findViewById(2131370987));
-    this.mCancelTextView = ((TextView)paramContext.findViewById(2131378081));
+    this.mNumPicker = ((NumberPicker)paramContext.findViewById(2131371298));
+    this.mCancelTextView = ((TextView)paramContext.findViewById(2131378632));
     this.mCancelTextView.setOnClickListener(this);
-    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131378111));
+    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131378667));
     this.mConfirmTextView.setOnClickListener(this);
     setNumpickerDiverColor(this.mNumPicker);
     setOnCancelListener(this);
@@ -127,14 +127,14 @@ public class PickerView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131378081)
+    if (paramView.getId() == 2131378632)
     {
       if (this.mOnConfirmListener != null) {
         this.mOnConfirmListener.onValCancel();
       }
       dismissDlg();
     }
-    while (paramView.getId() != 2131378111) {
+    while (paramView.getId() != 2131378667) {
       return;
     }
     if (this.mOnConfirmListener != null) {
@@ -166,7 +166,7 @@ public class PickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.PickerView
  * JD-Core Version:    0.7.0.1
  */

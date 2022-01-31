@@ -1,44 +1,41 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity.1.1;
 
 public class wxq
-  implements BusinessObserver
+  implements ajxy
 {
-  public wxq(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  public wxq(EditWebVideoActivity paramEditWebVideoActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditUniqueTitleActivity", 2, "setUniqueTitle, onReceive. type=" + paramInt + ", isSuccess=" + paramBoolean);
-    }
-    if (!paramBoolean)
+    this.a.runOnUiThread(new EditWebVideoActivity.1.1(this));
+  }
+  
+  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  {
+    int i = ((wxr)this.a.a).a;
+    EditWebVideoActivity.a(this.a, paramString1);
+    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
+    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
+    paramString1 = this.a;
+    if (i <= 0) {}
+    for (;;)
     {
-      EditUniqueTitleActivity.a(this.a, -1);
+      EditWebVideoActivity.a(paramString1, paramInt3);
+      EditWebVideoActivity.c(this.a, paramString2);
+      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
+      EditWebVideoActivity.b(this.a, paramInt1);
+      EditWebVideoActivity.c(this.a, paramInt2);
+      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
       return;
-    }
-    paramBundle = paramBundle.getByteArray("data");
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    try
-    {
-      localOIDBSSOPkg.mergeFrom(paramBundle);
-      paramInt = localOIDBSSOPkg.uint32_result.get();
-      EditUniqueTitleActivity.a(this.a, paramInt);
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      EditUniqueTitleActivity.a(this.a, -1);
+      paramInt3 = i;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxq
  * JD-Core Version:    0.7.0.1
  */

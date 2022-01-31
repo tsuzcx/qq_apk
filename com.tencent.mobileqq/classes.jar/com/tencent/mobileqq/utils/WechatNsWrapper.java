@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.Context;
-import avcu;
-import avcw;
-import axrn;
-import bbjg;
+import awuh;
+import awuj;
+import azmz;
+import bdic;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -16,7 +16,7 @@ import java.nio.ShortBuffer;
 import java.util.HashMap;
 
 public final class WechatNsWrapper
-  extends avcw
+  extends awuj
 {
   public static boolean a;
   long jdField_a_of_type_Long;
@@ -55,7 +55,7 @@ public final class WechatNsWrapper
       HashMap localHashMap = new HashMap();
       localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
       localHashMap.put("throwable", localThrowable.getMessage());
-      axrn.a(BaseApplication.getContext()).a(null, "actWechatNsLoadFail", false, 0L, 0L, localHashMap, "");
+      azmz.a(BaseApplication.getContext()).a(null, "actWechatNsLoadFail", false, 0L, 0L, localHashMap, "");
     }
   }
   
@@ -99,7 +99,7 @@ public final class WechatNsWrapper
         jdField_a_of_type_Boolean = false;
         continue;
       }
-      this.jdField_a_of_type_Int = bbjg.a(paramInt1);
+      this.jdField_a_of_type_Int = bdic.a(paramInt1);
       this.jdField_a_of_type_ArrayOfShort = new short[this.jdField_a_of_type_Int / 2];
       this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
       this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
@@ -108,7 +108,7 @@ public final class WechatNsWrapper
         paramInt1 = this.jdField_a_of_type_Int * 2;
       }
       this.c = new byte[paramInt1];
-      this.jdField_a_of_type_Avcu = new avcu(this.c, 0);
+      this.jdField_a_of_type_Awuh = new awuh(this.c, 0);
       return;
       bool = false;
     }
@@ -170,7 +170,7 @@ public final class WechatNsWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.WechatNsWrapper
  * JD-Core Version:    0.7.0.1
  */

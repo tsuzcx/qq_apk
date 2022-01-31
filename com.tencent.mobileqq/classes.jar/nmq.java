@@ -1,27 +1,20 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class nmq
-  extends ContentObserver
+  implements View.OnClickListener
 {
-  public nmq(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  public nmq(VideoCoverView paramVideoCoverView) {}
   
-  public void onChange(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    super.onChange(paramBoolean);
-    if (ReadInJoyNativeAdAppVideoView.a(this.a) != null) {
-      ReadInJoyNativeAdAppVideoView.a(this.a).post(new ReadInJoyNativeAdAppVideoView.VolumeChangedObserver.1(this));
-    }
+    VideoCoverView.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nmq
  * JD-Core Version:    0.7.0.1
  */

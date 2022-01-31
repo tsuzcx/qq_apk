@@ -3,7 +3,7 @@ package cooperation.qzone.music;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import bhgc;
+import bjhn;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class BroadcastUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator<BroadcastUrl> CREATOR = new bhgc();
+  public static final Parcelable.Creator<BroadcastUrl> CREATOR = new bjhn();
   public Map<Byte, String> mapBroadcastUrl;
   
   public BroadcastUrl() {}
@@ -88,7 +88,7 @@ public class BroadcastUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.music.BroadcastUrl
  * JD-Core Version:    0.7.0.1
  */

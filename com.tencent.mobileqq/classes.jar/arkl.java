@@ -1,19 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class arkl
-  implements DialogInterface.OnClickListener
+public abstract interface arkl
 {
-  arkl(arkj paramarkj, bbgu parambbgu) {}
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bbgu.dismiss();
-  }
+  public abstract long a();
+  
+  public abstract arkm a();
+  
+  public abstract BaseActivity a();
+  
+  public abstract FileManagerEntity a();
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract boolean a(Bitmap paramBitmap, int paramInt, String paramString);
+  
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract String c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arkl
  * JD-Core Version:    0.7.0.1
  */

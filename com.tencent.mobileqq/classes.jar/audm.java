@@ -1,51 +1,30 @@
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.Rect;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
 
 public class audm
+  implements View.OnClickListener
 {
-  public float a;
-  public int a;
-  public Bitmap a;
-  public Rect a;
-  public String a;
-  public List<Point> a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  public int d = -2147483648;
-  public boolean d;
-  public int e = -2147483648;
-  public int f = 2147483647;
-  public int g = 2147483647;
-  public int h = -1;
-  public int i = -1;
-  public int j = -1;
-  public int k = -1;
-  public int l = -1;
-  public int m = -1;
-  public int n = -1;
+  public audm(MsgBackupDateFragment paramMsgBackupDateFragment) {}
   
-  public audm(aqnb paramaqnb)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_a_of_type_JavaLangString = paramaqnb.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramaqnb.a();
-    this.h = paramaqnb.b;
-    this.l = paramaqnb.jdField_a_of_type_Int;
-    if (((aqnc)paramaqnb.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_a_of_type_Int > ((aqnc)paramaqnb.jdField_a_of_type_JavaUtilArrayList.get(1)).jdField_a_of_type_Int) {
-      this.c = true;
+    if (MsgBackupDateFragment.a(this.a) == 0) {
+      auff.a("0X800A236");
+    }
+    for (;;)
+    {
+      this.a.onBackEvent();
+      return;
+      if (aucf.c) {
+        auff.a("0X800A25B");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     audm
  * JD-Core Version:    0.7.0.1
  */

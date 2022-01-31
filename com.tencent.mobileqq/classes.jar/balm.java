@@ -1,85 +1,117 @@
+import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.GiftBagInfo;
-import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.Player;
-import tencent.im.oidb.cmd0x6c2.oidb_0x6c2.RspBody;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-class balm
-  extends mxi
+public class balm
+  implements baln
 {
-  balm(balh parambalh, balg parambalg, String paramString1, String paramString2) {}
+  atbq jdField_a_of_type_Atbq;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public balm(QQAppInterface paramQQAppInterface)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null) || (this.jdField_a_of_type_Balg == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_oidb_0x6c2. onResult error=" + paramInt + " data=" + paramArrayOfByte + " callback=" + this.jdField_a_of_type_Balg);
-      }
-      if (this.jdField_a_of_type_Balg != null) {
-        this.jdField_a_of_type_Balg.a(paramInt, "sso request error or callback is null.");
-      }
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public int a()
+  {
+    return 7;
+  }
+  
+  public atbq a()
+  {
+    if (this.jdField_a_of_type_Atbq == null) {
+      this.jdField_a_of_type_Atbq = ((atbq)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(338));
     }
-    oidb_0x6c2.RspBody localRspBody;
-    try
+    return this.jdField_a_of_type_Atbq;
+  }
+  
+  public bdfq a()
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return bakx.b;
+  }
+  
+  public void a() {}
+  
+  public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, balk> paramMap, @Nullable Bundle paramBundle)
+  {
+    QLog.i("WatchTogetherManager", 1, "notifySessionChange  serviceType = " + paramInt1 + " from = " + paramInt3);
+  }
+  
+  public void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt)
+  {
+    if (paramInt == 4) {
+      a().a();
+    }
+  }
+  
+  public void a(balk parambalk, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject)
+  {
+    QLog.i("WatchTogetherManager", 1, "onPushMessageReceive");
+    a().a((WatchTogetherSession)parambalk, paramInt);
+  }
+  
+  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, Map<String, balk> paramMap, @Nullable Bundle paramBundle)
+  {
+    if (paramInt2 == 0) {}
+    for (paramContext = "2";; paramContext = "")
     {
-      localRspBody = new oidb_0x6c2.RspBody();
-      localRspBody.mergeFrom(paramArrayOfByte);
-      paramInt = localRspBody.uint32_result.get();
-      if ((paramInt != 0) || (paramBundle == null)) {
-        break label357;
-      }
-      paramInt = paramBundle.getInt("subCmd");
-      if ((paramInt == 0) && (localRspBody.msg_gift_bag_info.has()))
+      QLog.i("WatchTogetherManager", 1, "start  groupuin = " + paramString + " miniapp_from = " + paramContext);
+      WatchTogetherSession localWatchTogetherSession = (WatchTogetherSession)paramMap.get("2_1_" + paramString);
+      paramMap = localWatchTogetherSession;
+      if (localWatchTogetherSession == null) {}
+      try
       {
-        paramBundle = (oidb_0x6c2.GiftBagInfo)localRspBody.msg_gift_bag_info.get();
-        paramArrayOfByte = null;
-        if (localRspBody.msg_winner.has()) {
-          paramArrayOfByte = (oidb_0x6c2.Player)localRspBody.msg_winner.get();
-        }
-        paramBundle = new TroopGiftBagInfo(paramBundle, paramArrayOfByte);
-        if (paramArrayOfByte != null)
+        paramMap = (WatchTogetherSession)ball.a(2, 1, paramString);
+        a().a(paramContext, paramMap, paramBundle);
+        return false;
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
         {
-          paramArrayOfByte = this.jdField_a_of_type_JavaLangString + "_" + this.b;
-          this.jdField_a_of_type_Balh.a.put(paramArrayOfByte, paramBundle);
-          this.jdField_a_of_type_Balh.a(paramBundle);
+          paramMap = localWatchTogetherSession;
         }
-        this.jdField_a_of_type_Balg.a(paramBundle);
-        return;
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.send_gift", 2, "send_oidb_0x6c2. InvalidProtocolBufferMicroException:" + paramArrayOfByte);
-      }
-      this.jdField_a_of_type_Balg.a(-1, "InvalidProtocolBufferMicroException");
-      return;
+  }
+  
+  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, balk> paramMap, @Nullable Bundle paramBundle)
+  {
+    return true;
+  }
+  
+  public boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, Map<String, balk> paramMap, @Nullable Bundle paramBundle)
+  {
+    paramContext = (WatchTogetherSession)paramMap.get("2_1_" + paramString);
+    QLog.i("WatchTogetherManager", 1, "join  groupuin = " + paramString + " from = " + paramInt2);
+    if (paramInt2 == 2) {
+      a().a("4", paramContext, paramBundle);
     }
-    if ((paramInt == 1) && (localRspBody.int32_player.has()))
-    {
-      paramInt = localRspBody.int32_player.get();
-      this.jdField_a_of_type_Balg.c(paramInt);
-      return;
+    while (((paramInt2 != 1) && (paramInt2 != 8)) || (paramContext == null)) {
+      return false;
     }
-    this.jdField_a_of_type_Balg.a(-1, "Invalid RspData. subCmd:" + paramInt);
-    return;
-    label357:
-    paramArrayOfByte = localRspBody.bytes_errmsg.get().toStringUtf8();
-    this.jdField_a_of_type_Balg.a(paramInt, paramArrayOfByte);
+    if ((!TextUtils.isEmpty(paramContext.a)) && (!paramContext.a.contains("fromid"))) {
+      paramContext.a = (paramContext.a + "&fromid=" + "10011");
+    }
+    a().a(paramContext, paramBundle);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     balm
  * JD-Core Version:    0.7.0.1
  */

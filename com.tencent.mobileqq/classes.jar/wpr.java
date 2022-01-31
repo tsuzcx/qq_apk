@@ -1,38 +1,14 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.ViewGroup;
-import com.tencent.biz.subscribe.component.extendsadapter.ComponentRvInnerView;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 
-public class wpr
-  extends wox
+public abstract interface wpr
 {
-  public wpr(ComponentRvInnerView paramComponentRvInnerView) {}
-  
-  public wpq a(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView) != null) {
-      return ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView).a(paramViewGroup, paramInt);
-    }
-    return null;
-  }
-  
-  public int getItemCount()
-  {
-    if (ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView) != null) {
-      return ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView).b();
-    }
-    return 0;
-  }
-  
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
-  {
-    if ((!bfmy.a(paramInt, this.jdField_a_of_type_JavaUtilArrayList)) && (ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView) != null)) {
-      ComponentRvInnerView.a(this.jdField_a_of_type_ComTencentBizSubscribeComponentExtendsadapterComponentRvInnerView).a(paramViewHolder, paramInt);
-    }
-  }
+  public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, QQUserUIItem paramQQUserUIItem, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpr
  * JD-Core Version:    0.7.0.1
  */

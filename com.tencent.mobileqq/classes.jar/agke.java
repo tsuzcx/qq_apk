@@ -1,93 +1,101 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.confess.ConfessConvInfo;
+import com.tencent.mobileqq.confess.ConfessInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class agke
-  extends bcos
+class agke
+  extends aoeq
 {
-  private agke(NewStyleCountryActivity paramNewStyleCountryActivity) {}
+  agke(agkd paramagkd) {}
   
-  public int a()
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    return 2131562350;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(((agkf)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString)).intValue();
-    ((TextView)paramView).setText(((agkf)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return ((agkf)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
-  }
-  
-  public int getCount()
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((agkf)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    agkf localagkf = (agkf)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (getItemViewType(paramInt) == 0)
+    if (!aoeh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {}
+    do
     {
-      if (paramView != null) {
-        break label115;
-      }
-      paramView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
+      do
+      {
+        return;
+      } while ((!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e) || (paramInt2 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int));
+      agkd.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onCheckHolmesTipsView  frdUin:" + paramString + " type:" + paramInt2 + " topicid:" + paramInt1);
+  }
+  
+  public void a(boolean paramBoolean1, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean2)
+  {
+    if (!aoeh.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      return;
     }
-    label115:
+    if (paramBoolean2) {}
     for (;;)
     {
-      ((TextView)paramView).setText(localagkf.jdField_a_of_type_JavaLangString);
-      for (;;)
-      {
-        paramView.setVisibility(0);
-        return paramView;
-        View localView = paramView;
-        if (paramView == null)
-        {
-          localView = NewStyleCountryActivity.a(this.a, paramViewGroup, this.a.getLayoutInflater(), false);
-          localView.setOnClickListener(this.a);
-        }
-        this.a.a(localView, localagkf);
-        paramView = localView;
+      String str = Long.toString(paramLong2);
+      if ((!str.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e) || (paramInt2 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) {
+        break;
       }
+      if (paramBoolean1)
+      {
+        aoeu localaoeu = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+        ConfessConvInfo localConfessConvInfo = localaoeu.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e);
+        if ((localConfessConvInfo != null) && ((localConfessConvInfo.holmesCurCount != paramInt3) || (localConfessConvInfo.holmesTolCount != paramInt4))) {
+          localaoeu.a(str, paramInt2, paramInt1, paramInt3, paramInt4);
+        }
+        agkd.a(this.a, true);
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "onGetHolmesProgress " + paramBoolean1 + " frdUin:" + str + " type:" + paramInt2 + " topicid:" + paramInt1 + " curCount:" + paramInt3);
+      return;
+      paramLong2 = paramLong1;
     }
   }
   
-  public int getViewTypeCount()
+  public void a(boolean paramBoolean, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, ConfessInfo paramConfessInfo)
   {
-    return 2;
+    String str;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (bdal.a(paramString1, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramInt1 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) && (paramInt2 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e)) {
+      if (QLog.isColorLevel())
+      {
+        str = this.a.jdField_a_of_type_JavaLangString;
+        paramInt2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e;
+        if (paramString2 != null) {
+          break label190;
+        }
+      }
+    }
+    label190:
+    for (paramConfessInfo = "";; paramConfessInfo = paramString2)
+    {
+      QLog.i(str, 2, String.format("onSetShieldFlag suc:%b frdUin:%s uinType:%d topicId:%d hours:%d msg:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramConfessInfo }));
+      this.a.br();
+      if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (!this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()))
+      {
+        paramString1 = new StringBuilder();
+        if (!paramBoolean) {
+          break;
+        }
+      }
+      return;
+    }
+    if (TextUtils.isEmpty(paramString2))
+    {
+      paramString1.append("屏蔽失败，请重试。");
+      this.a.a(2, paramString1.toString(), 500);
+      return;
+    }
+    paramString1.append("屏蔽失败，").append(paramString2);
+    this.a.a(2, paramString1.toString(), 500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agke
  * JD-Core Version:    0.7.0.1
  */

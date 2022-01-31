@@ -2,8 +2,8 @@ package com.tencent.mobileqq.data;
 
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_rsp;
 import android.os.Parcel;
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.model.CoverCacheData;
 import java.util.ArrayList;
@@ -14,11 +14,11 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class QZoneCover
-  extends auko
+  extends awbv
 {
   public int jigsaw;
   public String type;
-  @aumc
+  @awdj
   public String uin;
   public byte[] vCoverInfo;
   public byte[] vPhotoInfo;
@@ -179,7 +179,7 @@ public class QZoneCover
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.QZoneCover
  * JD-Core Version:    0.7.0.1
  */

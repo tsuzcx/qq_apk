@@ -1,55 +1,45 @@
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.FlowMusic;
+import com.tencent.qphone.base.util.QLog;
 
-public class xfr
+class xfr
+  implements blne
 {
-  private String jdField_a_of_type_JavaLangString = "";
-  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-  private String b = "";
+  xfr(xfp paramxfp) {}
   
-  public static xfr a(String paramString)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    if (paramString == null) {
-      return null;
-    }
-    try
+    String str = xfp.a(this.a).getResources().getString(2131698618);
+    Object localObject = str;
+    if (paramBoolean)
     {
-      xfr localxfr = new xfr();
-      paramString = new JSONObject(paramString);
-      localxfr.jdField_a_of_type_JavaLangString = paramString.optString("icon_image_url", "");
-      localxfr.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("config");
-      localxfr.b = paramString.optString("md5", "");
-      return localxfr;
+      paramObject = (FlowMusic)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicCache", 2, "onGetSingleMusicInfo flowMusic:" + paramObject.toString());
+      }
+      if ((paramObject.playable == 1) && (!TextUtils.isEmpty(paramObject.url)))
+      {
+        localObject = new xgc();
+        ((xgc)localObject).jdField_b_of_type_JavaLangString = paramObject.songName;
+        ((xgc)localObject).d = paramObject.url;
+        ((xgc)localObject).jdField_b_of_type_Int = 2;
+        ((xgc)localObject).a = String.valueOf(paramObject.songId);
+        this.a.a(12, localObject);
+        return;
+      }
+      localObject = str;
+      if (paramObject.playable != 1) {
+        localObject = xfp.a(this.a).getResources().getString(2131698619);
+      }
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public JSONObject a()
-  {
-    return this.jdField_a_of_type_OrgJsonJSONObject;
-  }
-  
-  public String b()
-  {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    return "k = icon_image_url, value = " + this.jdField_a_of_type_JavaLangString + "\n k = config, value = " + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "\n k = md5, value = " + this.b;
+    this.a.a(7, localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xfr
  * JD-Core Version:    0.7.0.1
  */

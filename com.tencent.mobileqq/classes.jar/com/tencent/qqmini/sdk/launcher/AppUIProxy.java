@@ -4,17 +4,16 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.ViewGroup;
-import behm;
-import behn;
-import beqf;
-import beqj;
-import beqm;
-import beqp;
-import betc;
+import bghk;
+import bghl;
+import bgqd;
+import bgqg;
+import bgqj;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 public class AppUIProxy
-  extends beqp
+  extends bgqj
 {
   private AppUIProxy.LoadingUI mLoadingUI;
   
@@ -24,7 +23,7 @@ public class AppUIProxy
       return;
     }
     this.mMainHandler.post(new AppUIProxy.1(this));
-    behm.a(System.currentTimeMillis());
+    bghk.a(System.currentTimeMillis());
   }
   
   public void onCreate(Activity paramActivity, Bundle paramBundle, ViewGroup paramViewGroup)
@@ -35,7 +34,7 @@ public class AppUIProxy
   
   public void onDestroy(Activity paramActivity)
   {
-    betc.b("UIProxy", "onDestroy");
+    QMLog.i("UIProxy", "onDestroy");
     if (this.mActivity == paramActivity)
     {
       this.mActivity = null;
@@ -44,15 +43,15 @@ public class AppUIProxy
         this.mRuntime.a(paramActivity);
       }
     }
-    if (beqf.a().a() != null) {
-      beqf.a().a().notifyRuntimeEvent(62, new Object[0]);
+    if (AppRuntimeLoaderManager.g().getCurrentRunTimeLoader() != null) {
+      AppRuntimeLoaderManager.g().getCurrentRunTimeLoader().notifyRuntimeEvent(62, new Object[0]);
     }
   }
   
   public void onRuntimeReady()
   {
     if (!this.mActivatedRuntimeLoader.dismissLoadingAfterLoaded()) {
-      this.mActivatedRuntimeLoader.addRuntimeStateObserver(new beqj(this));
+      this.mActivatedRuntimeLoader.addRuntimeStateObserver(new bgqd(this));
     }
     for (;;)
     {
@@ -62,20 +61,20 @@ public class AppUIProxy
     }
   }
   
-  public void resumeRuntime(beqm parambeqm)
+  public void resumeRuntime(bgqg parambgqg)
   {
     if (this.mActivity == null) {
-      betc.c("UIProxy", "Failed to resumeRuntime. Activity is null");
+      QMLog.w("UIProxy", "Failed to resumeRuntime. Activity is null");
     }
     do
     {
       return;
-      if (parambeqm == null)
+      if (parambgqg == null)
       {
-        betc.c("UIProxy", "Failed to resumeRuntime. runtime loader is null");
+        QMLog.w("UIProxy", "Failed to resumeRuntime. runtime loader is null");
         return;
       }
-      this.mActivatedRuntimeLoader = parambeqm;
+      this.mActivatedRuntimeLoader = parambgqg;
       this.mMiniAppInfo = this.mActivatedRuntimeLoader.getMiniAppInfo();
       this.mRuntime = this.mActivatedRuntimeLoader.getRuntime();
       hideLoading();
@@ -101,7 +100,7 @@ public class AppUIProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.AppUIProxy
  * JD-Core Version:    0.7.0.1
  */

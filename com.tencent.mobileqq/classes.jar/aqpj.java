@@ -1,30 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.gallery.model.pic.AIOPicData;
+import com.tencent.qphone.base.util.QLog;
 
 class aqpj
-  implements DialogInterface.OnClickListener
+  implements aqzt
 {
-  aqpj(aqoz paramaqoz, int paramInt, Object paramObject) {}
+  aqpj(aqpi paramaqpi, aqpk paramaqpk) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      aqmd.a().a().a("AIOGalleryPicView", 4, "showSaveFileTips type = " + this.jdField_a_of_type_Int);
-    }
-    do
-    {
-      return;
-    } while (!(this.jdField_a_of_type_JavaLangObject instanceof AIOPicData));
-    this.jdField_a_of_type_Aqoz.a.a((AIOPicData)this.jdField_a_of_type_JavaLangObject);
-    this.jdField_a_of_type_Aqoz.j();
+    QLog.e("FileMultiMsg", 1, "sendDiscFile success");
+    this.jdField_a_of_type_Aqpi.a = true;
+    this.jdField_a_of_type_Aqpk.a(true);
+  }
+  
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void a(Object paramObject, int paramInt)
+  {
+    QLog.e("FileMultiMsg", 1, "sendDiscFile faild errCode" + paramInt);
+    this.jdField_a_of_type_Aqpk.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqpj
  * JD-Core Version:    0.7.0.1
  */

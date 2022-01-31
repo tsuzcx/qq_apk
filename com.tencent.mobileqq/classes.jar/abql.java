@@ -1,33 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import java.lang.ref.WeakReference;
-
 public class abql
-  extends BroadcastReceiver
 {
-  WeakReference<PayBridgeActivity> a;
+  public float a;
+  public int a;
+  public float b;
+  public int b;
+  public int c;
   
-  public abql(PayBridgeActivity paramPayBridgeActivity)
+  public abql(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3)
   {
-    this.a = new WeakReference(paramPayBridgeActivity);
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((paramIntent != null) && ("action_launch_completed".equals(paramIntent.getAction())) && ("qwallet_plugin.apk".equals(paramIntent.getStringExtra("plugin_apk"))) && (this.a != null))
-    {
-      paramContext = (PayBridgeActivity)this.a.get();
-      if (paramContext != null) {
-        paramContext.b = true;
-      }
-    }
+    this.jdField_a_of_type_Int = 100;
+    this.jdField_b_of_type_Int = 10;
+    this.jdField_a_of_type_Float = 0.001F;
+    this.jdField_b_of_type_Float = 0.1F;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.c = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abql
  * JD-Core Version:    0.7.0.1
  */

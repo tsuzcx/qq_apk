@@ -1,37 +1,56 @@
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback.1;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class bfbx
-  extends WebViewClient
+public class bfbx
+  implements bfic
 {
-  bfbx(bfbw parambfbw) {}
+  protected bfbx(bfbw parambfbw) {}
   
-  public void onPageFinished(WebView paramWebView, String paramString)
+  public void a(Exception paramException)
   {
-    super.onPageFinished(paramWebView, paramString);
-    this.a.a(bfbw.a(this.a));
-    this.a.d();
+    bfhg.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramException.getMessage(), paramException);
   }
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  public void a(JSONObject paramJSONObject)
   {
-    if ((paramWebResourceRequest != null) && (paramWebResourceRequest.getUrl() != null))
+    try
     {
-      String str = paramWebResourceRequest.getUrl().toString();
-      if ((!TextUtils.isEmpty(str)) && ((str.startsWith("https://appservice.qq.com/")) || (str.startsWith("wxfile://")))) {
-        return bfbw.a(this.a, paramWebView, paramWebResourceRequest.getUrl().toString());
+      int i = paramJSONObject.getInt("ret");
+      Object localObject = paramJSONObject.getString("msg");
+      if (i == 0)
+      {
+        localObject = paramJSONObject.getJSONArray("update_list");
+        i = ((JSONArray)localObject).length();
+        if (i > 0) {
+          ThreadManager.executeOnSubThread(new OpenSdkFriendService.CheckAvatarUpdateCallback.1(this, i, (JSONArray)localObject));
+        }
+        localObject = bfmy.a(bexd.a().a(), "prefer_last_avatar_update_time").edit();
+        ((SharedPreferences.Editor)localObject).putString(this.a.b, paramJSONObject.getString("time"));
+        ((SharedPreferences.Editor)localObject).commit();
+        if (this.a.a != null) {
+          this.a.a.a();
+        }
+      }
+      else
+      {
+        bfhg.e("OpenSdkFriendService", "CheckAvatarUpdateCallback error. ret=" + i + ", msg=" + (String)localObject);
+        return;
       }
     }
-    return super.shouldInterceptRequest(paramWebView, paramWebResourceRequest);
+    catch (JSONException paramJSONObject)
+    {
+      bfhg.c("OpenSdkFriendService", "CheckAvatarUpdate Exception. " + paramJSONObject.getMessage(), paramJSONObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfbx
  * JD-Core Version:    0.7.0.1
  */

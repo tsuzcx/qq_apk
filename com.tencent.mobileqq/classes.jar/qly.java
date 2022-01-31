@@ -1,25 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SimpleChannelInfo;
 
-class qly
-  implements View.OnClickListener
+public final class qly
+  implements Parcelable.Creator<SimpleChannelInfo>
 {
-  qly(qlv paramqlv, VideoInfo paramVideoInfo) {}
-  
-  public void onClick(View paramView)
+  public SimpleChannelInfo a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.c)
-    {
-      paramView = oav.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
-      oar.a(paramView, 2005, qlp.a(this.jdField_a_of_type_Qlv.a));
-      qlp.a(this.jdField_a_of_type_Qlv.a, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo, paramView, 2005);
-    }
+    return new SimpleChannelInfo(paramParcel);
+  }
+  
+  public SimpleChannelInfo[] a(int paramInt)
+  {
+    return new SimpleChannelInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qly
  * JD-Core Version:    0.7.0.1
  */

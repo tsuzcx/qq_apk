@@ -1,64 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel.1.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class apmu
-  extends ybw
+class apmu
+  implements bdqg<arsi>
 {
-  apmu(apmt paramapmt) {}
+  apmu(aply paramaply, int paramInt, alxl paramalxl, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void a(Session paramSession, float paramFloat)
+  public void a(arsi paramarsi, Object paramObject)
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Apkt.a();
-    if (localFileManagerEntity == null) {}
-    while ((this.a.jdField_a_of_type_Apnf == null) || (paramSession.uSessionID != apmt.a(this.a))) {
-      return;
-    }
-    localFileManagerEntity.fProgress = paramFloat;
-    this.a.jdField_a_of_type_Apnf.a(paramFloat);
-  }
-  
-  public void a(Session paramSession, boolean paramBoolean)
-  {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Apkt.a();
-    if (localFileManagerEntity == null) {}
-    do
+    paramObject = new Bundle();
+    paramObject.putInt("id", this.jdField_a_of_type_Int);
+    if ((paramarsi != null) || (this.jdField_a_of_type_Int == 0))
     {
-      return;
-      if ((this.a.jdField_a_of_type_Apne != null) && (paramSession.uSessionID == apmt.b(this.a)) && (paramBoolean))
-      {
-        localFileManagerEntity.strThumbPath = paramSession.strFilePathSrc;
-        this.a.jdField_a_of_type_Apne.a(String.valueOf(localFileManagerEntity.nSessionId), paramSession.strFilePathSrc);
-      }
-    } while ((this.a.jdField_a_of_type_Apnf == null) || (paramSession.uSessionID != apmt.a(this.a)));
-    if (paramBoolean)
-    {
-      localFileManagerEntity.fProgress = 1.0F;
-      localFileManagerEntity.setFilePath(paramSession.strFilePathSrc);
-      this.a.jdField_a_of_type_Apnf.f();
-      if (this.a.e() == 2)
-      {
-        new Handler(Looper.getMainLooper()).postDelayed(new DeviceFileModel.1.1(this), 1000L);
-        return;
-      }
-      this.a.jdField_a_of_type_Apnf.f();
-      return;
+      paramObject.putInt("result", 0);
+      this.jdField_a_of_type_Alxl.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int);
     }
-    this.a.jdField_a_of_type_Apnf.g();
-  }
-  
-  public void b(Session paramSession)
-  {
-    if ((this.a.jdField_a_of_type_Apnf != null) && (paramSession.uSessionID == apmt.a(this.a))) {
-      this.a.jdField_a_of_type_Apnf.d();
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      bdqk.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_colorscreen_set_fail", "0", "", Integer.toString(this.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
+      bdqj.a("individual_v2_colorscreen_set_fail", "id:" + this.jdField_a_of_type_Int);
+      paramObject.putInt("result", 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apmu
  * JD-Core Version:    0.7.0.1
  */

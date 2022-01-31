@@ -1,64 +1,62 @@
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.util.QZLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.io.File;
 
-class bkpy
+public class bkpy
 {
-  private int jdField_a_of_type_Int;
-  private final Class<? extends bjxl> jdField_a_of_type_JavaLangClass;
-  private Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
-  private final int b;
-  private final int c;
+  private static final String a = bkpy.class.getSimpleName();
   
-  private bkpy(int paramInt1, int paramInt2, int paramInt3, Class<? extends bjxl> paramClass)
+  public static bkwa a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangClass = paramClass;
+    bkwa localbkwa = new bkwa();
+    localbkwa.d = "http://sqdd.myapp.com/myapp/qqteam/QIM/zhinenglvjingdonghua/AutoAISceneAni.zip";
+    localbkwa.f = "AutoAISceneAni";
+    localbkwa.e = "6f6632b8106fe070a560abcec6051f0d";
+    localbkwa.a = "AutoAISceneAni";
+    localbkwa.o = bkkp.c;
+    localbkwa.p = bkkp.b;
+    return localbkwa;
   }
   
-  static bkpy a(int paramInt1, int paramInt2, int paramInt3, Class<? extends bjxl> paramClass)
+  public static void a(bkwa parambkwa)
   {
-    return new bkpy(paramInt1, paramInt2, paramInt3, paramClass);
-  }
-  
-  Class<? extends bjxl> a()
-  {
-    return this.jdField_a_of_type_JavaLangClass;
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilSet.size() > 0)
+    try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
-      {
-        Integer localInteger = (Integer)localIterator.next();
-        LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, localInteger.intValue());
-        QZLog.d("QzoneEditPictureAndVide", 2, new Object[] { "performReport ", toString() + " with " + localInteger });
+      File localFile = new File(parambkwa.c());
+      if (!localFile.exists()) {
+        return;
       }
+      ndr.a(localFile, parambkwa.b());
+      return;
     }
-    LpReportInfo_pf00064.allReport(this.jdField_a_of_type_Int, this.b, this.c);
-    QZLog.d("QzoneEditPictureAndVide", 2, "performReport " + toString());
+    catch (Exception parambkwa) {}
   }
   
-  void a(Set<Integer> paramSet)
+  public static bkwa b()
   {
-    this.jdField_a_of_type_JavaUtilSet.addAll(paramSet);
+    bkwa localbkwa = new bkwa();
+    localbkwa.d = "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/StorySticker/aiScreenAndroid/AISceneLoading.zip";
+    localbkwa.e = "da407ead2fb260d6b2570450f2e1bebd";
+    localbkwa.f = "AISceneLoading";
+    localbkwa.a = "AISceneLoading";
+    localbkwa.o = bkkp.c;
+    localbkwa.p = bkkp.b;
+    return localbkwa;
   }
   
-  public String toString()
+  public static bkwa c()
   {
-    return "QzoneEditPictureReportModel{actionType=" + this.jdField_a_of_type_Int + ", subActionType=" + this.b + ", reserve=" + this.c + '}';
+    bkwa localbkwa = new bkwa();
+    localbkwa.d = "https://qd.myapp.com/myapp/qqteam/shenqidegongneng/AISceneGuide19082601Android.zip";
+    localbkwa.e = "dcb9d44eb8872db03a17fe57ce231a76";
+    localbkwa.f = "AISceneGuide";
+    localbkwa.a = "AISceneGuide";
+    localbkwa.o = bkkp.c;
+    localbkwa.p = bkkp.b;
+    return localbkwa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkpy
  * JD-Core Version:    0.7.0.1
  */

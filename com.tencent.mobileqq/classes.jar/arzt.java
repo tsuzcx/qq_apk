@@ -1,142 +1,59 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class arzt
+class arzt
+  extends amab
 {
-  private static final arum jdField_a_of_type_Arum = new arum(-1, "-1");
-  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private final List<arzu> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private arum b = jdField_a_of_type_Arum;
+  arzt(arzs paramarzs) {}
   
-  public arzt(QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean, bctb parambctb)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  public arum a()
-  {
-    return this.b;
-  }
-  
-  public void a()
-  {
-    this.b = jdField_a_of_type_Arum;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((arzu)localIterator.next()).a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onTroopShareLink start");
     }
-  }
-  
-  public void a(arum paramarum)
-  {
-    this.b = paramarum;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((arzu)localIterator.next()).a(paramarum);
-    }
-  }
-  
-  public void a(arzu paramarzu)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilList)
+    this.a.x();
+    if (arzs.a(this.a) != -1)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramarzu)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramarzu);
+      if ((!paramBoolean) || (parambctb.jdField_a_of_type_Int != 0)) {
+        break label189;
       }
-      return;
+      if (parambctb.jdField_a_of_type_Boolean)
+      {
+        arzs.a(this.a, parambctb.b);
+        if (arzs.a(this.a) == 0) {}
+      }
+      else
+      {
+        do
+        {
+          return;
+          arzs.b(this.a, parambctb.b);
+        } while (arzs.a(this.a) != 1);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + arzs.a(this.a) + " mTroopNotNeedVefifyLink=" + arzs.b(this.a));
+      }
+      if ((parambctb.jdField_a_of_type_JavaLangString != null) && (parambctb.jdField_a_of_type_JavaLangString.equals(arzs.c(this.a)))) {
+        arzs.a(this.a);
+      }
     }
-  }
-  
-  /* Error */
-  public void b()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 33	arzt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: monitorenter
-    //   9: aload_0
-    //   10: getfield 33	arzt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   13: invokeinterface 70 1 0
-    //   18: aload_1
-    //   19: monitorexit
-    //   20: aload_0
-    //   21: monitorexit
-    //   22: return
-    //   23: astore_2
-    //   24: aload_1
-    //   25: monitorexit
-    //   26: aload_2
-    //   27: athrow
-    //   28: astore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_1
-    //   32: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	33	0	this	arzt
-    //   28	4	1	localObject1	Object
-    //   23	4	2	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   9	20	23	finally
-    //   24	26	23	finally
-    //   2	9	28	finally
-    //   26	28	28	finally
-  }
-  
-  /* Error */
-  public void b(arzu paramarzu)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 33	arzt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: monitorenter
-    //   9: aload_0
-    //   10: getfield 33	arzt:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   13: aload_1
-    //   14: invokeinterface 73 2 0
-    //   19: pop
-    //   20: aload_2
-    //   21: monitorexit
-    //   22: aload_0
-    //   23: monitorexit
-    //   24: return
-    //   25: astore_1
-    //   26: aload_2
-    //   27: monitorexit
-    //   28: aload_1
-    //   29: athrow
-    //   30: astore_1
-    //   31: aload_0
-    //   32: monitorexit
-    //   33: aload_1
-    //   34: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	35	0	this	arzt
-    //   0	35	1	paramarzu	arzu
-    // Exception table:
-    //   from	to	target	type
-    //   9	22	25	finally
-    //   26	28	25	finally
-    //   2	9	30	finally
-    //   28	30	30	finally
+    for (;;)
+    {
+      arzs.a(this.a, -1);
+      return;
+      label189:
+      if (((parambctb.jdField_a_of_type_Boolean) && (arzs.a(this.a) != 0)) || ((!parambctb.jdField_a_of_type_Boolean) && (arzs.a(this.a) != 1))) {
+        break;
+      }
+      QQToast.a(this.a.a, 1, this.a.a.getString(2131693134), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arzt
  * JD-Core Version:    0.7.0.1
  */

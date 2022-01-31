@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.report;
 
-import NS_MINI_APP_REPORT_TRANSFER.APP_REPORT_TRANSFER.SingleDcData;
+import NS_MINI_REPORT.REPORT.SingleDcData;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -16,8 +16,8 @@ class MiniProgramReporter$6
       Iterator localIterator = this.val$data.iterator();
       while (localIterator.hasNext())
       {
-        APP_REPORT_TRANSFER.SingleDcData localSingleDcData = (APP_REPORT_TRANSFER.SingleDcData)localIterator.next();
-        this.this$0.addData(localSingleDcData);
+        REPORT.SingleDcData localSingleDcData = (REPORT.SingleDcData)localIterator.next();
+        this.this$0.add(localSingleDcData);
       }
     }
     MiniProgramReporter.access$400(this.this$0);
@@ -25,7 +25,7 @@ class MiniProgramReporter$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramReporter.6
  * JD-Core Version:    0.7.0.1
  */

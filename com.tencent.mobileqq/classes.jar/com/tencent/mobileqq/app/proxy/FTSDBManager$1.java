@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.app.proxy;
 
-import akta;
-import aktl;
-import bbmo;
+import amjf;
+import amjq;
+import bdli;
 import com.tencent.mobileqq.app.ThreadRegulator;
 
 public class FTSDBManager$1
   implements Runnable
 {
-  public FTSDBManager$1(akta paramakta) {}
+  public FTSDBManager$1(amjf paramamjf) {}
   
   public void run()
   {
@@ -20,21 +20,21 @@ public class FTSDBManager$1
         do
         {
           return;
-          if (bbmo.g(akta.a(this.this$0)))
+          if (bdli.g(amjf.a(this.this$0)))
           {
-            akta.a(this.this$0);
+            amjf.a(this.this$0);
             return;
           }
-        } while ((!bbmo.h(akta.a(this.this$0))) || (this.this$0.b));
-        akta.a(this.this$0);
+        } while ((!bdli.h(amjf.a(this.this$0))) || (this.this$0.b));
+        amjf.a(this.this$0);
         ThreadRegulator.a().b();
-      } while (akta.a(this.this$0));
-      if ((akta.b(this.this$0) > 10) || (akta.c(this.this$0) == 1))
+      } while (amjf.a(this.this$0));
+      if ((amjf.b(this.this$0) > 10) || (amjf.c(this.this$0) == 1))
       {
-        akta.a(this.this$0);
+        amjf.a(this.this$0);
         return;
       }
-    } while (akta.c(this.this$0) != -1);
+    } while (amjf.c(this.this$0) != -1);
     this.this$0.a.postDelayed(this, 5000L);
   }
 }

@@ -1,33 +1,31 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 class aezc
-  implements View.OnClickListener
+  implements bhqd
 {
-  aezc(aeza paramaeza) {}
+  aezc(aezb paramaezb, boolean paramBoolean, bhpy parambhpy) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    aeza.a(this.a).a(aeza.a(this.a).a, Integer.valueOf(4));
-    aeza.a(this.a).a();
-    asfd.a().c(aeza.a(this.a).a, aeza.a(this.a));
-    asfd.a().c(aeza.a(this.a), aeza.a(this.a).a);
-    axqy.b(aeza.a(this.a), "P_CliOper", "Grp_msg", "", "AIOchat", "Clk_setmsg", 0, 0, aeza.a(this.a).a, "", "", "");
-    QQAppInterface localQQAppInterface = aeza.a(this.a);
-    String str = aeza.a(this.a).a;
-    if (aeza.a(this.a).b(aeza.a(this.a).a) == 3) {}
-    for (paramView = "1";; paramView = "0")
+    switch (paramInt)
     {
-      axqy.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_confirm", 0, 0, str, paramView, "", "");
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
       return;
+      if (aezb.a(this.jdField_a_of_type_Aezb) != null) {
+        aezb.a(this.jdField_a_of_type_Aezb, aezb.a(this.jdField_a_of_type_Aezb));
+      }
+      aezb.a(this.jdField_a_of_type_Aezb, "0X800A7F5", this.jdField_a_of_type_Boolean);
+      continue;
+      aezb.a(this.jdField_a_of_type_Aezb, "0X800A7F6", this.jdField_a_of_type_Boolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aezc
  * JD-Core Version:    0.7.0.1
  */

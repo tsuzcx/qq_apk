@@ -1,64 +1,75 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSSwitchManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.pts.nativemodule.PTSNativeModuleRegistry;
+import mqq.os.MqqHandler;
 
 public class pxb
-  implements pbx
 {
-  public pxb(ComponentHeaderPolymeric paramComponentHeaderPolymeric, ArticleInfo paramArticleInfo) {}
+  public static pxb a;
+  private boolean a;
+  private boolean b;
+  private boolean c;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderPolymeric", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString + " followStatus = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e);
-    }
-    if (!paramString.equals(ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric).getTag())) {}
-    label227:
-    do
-    {
-      do
-      {
-        return;
-        ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, true);
-        if (!paramBoolean) {
-          break label271;
-        }
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e == 1) {
-          ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, true);
-        }
-        for (;;)
-        {
-          if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e != 1) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e != 2)) {
-            break label227;
-          }
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e != 1) {
-            break;
-          }
-          ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2);
-          return;
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e == 2) {
-            ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, false);
-          }
-        }
-      } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e != 2);
-      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1);
-      return;
-      QLog.e("ComponentHeaderPolymeric", 2, "978 resp error, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
-      return;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e == 1)
-      {
-        ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, 1);
-        return;
-      }
-    } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e != 2);
-    label271:
-    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, 2);
+    jdField_a_of_type_Pxb = new pxb();
+  }
+  
+  private void b()
+  {
+    this.c = false;
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    d();
+  }
+  
+  private void c()
+  {
+    d();
+    pwt.b();
+    PTSNativeModuleRegistry.registerNativeModule("RequestFeedsModule", new pwo());
+    PTSNativeModuleRegistry.registerNativeModule("NavigateToModule", new pwm());
+    PTSNativeModuleRegistry.registerNativeModule("AllInOneJumpModule", new pwg());
+    PTSNativeModuleRegistry.registerNativeModule("LoadFeedsModule", new pwj());
+    PTSNativeModuleRegistry.registerNativeModule("HandleJSException", new pwi());
+    PTSNativeModuleRegistry.registerNativeModule("ReportTo1160", new pwn());
+    PTSNativeModuleRegistry.registerNativeModule("MarkArticleRead", new pwl());
+    pvy.a().a();
+    pvw.a().a();
+  }
+  
+  private void d()
+  {
+    pwt.c();
+    PTSNativeModuleRegistry.clearNativeModule();
+    pvi.a().a();
+  }
+  
+  void a()
+  {
+    b();
+    PTSSwitchManager.1 local1 = new PTSSwitchManager.1(this);
+    ThreadManager.getSubThreadHandler().post(local1);
+  }
+  
+  public boolean a()
+  {
+    return this.c;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_Boolean) || (this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pxb
  * JD-Core Version:    0.7.0.1
  */

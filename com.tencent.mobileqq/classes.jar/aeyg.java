@@ -1,121 +1,106 @@
-import android.content.res.Resources;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.listentogether.ui.MusicPanelView;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.QQBlurView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
-public class aeyg
-  extends aeyy
+class aeyg
+  extends aeye
 {
-  MusicPanelView a;
-  
-  public aeyg(BaseChatPie paramBaseChatPie, View.OnClickListener paramOnClickListener)
+  void a(long paramLong1, long paramLong2)
   {
-    super(paramBaseChatPie, paramOnClickListener);
-  }
-  
-  public int a()
-  {
-    return 1;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView;
-  }
-  
-  public View a(Object... paramVarArgs)
-  {
-    return super.a(paramVarArgs);
-  }
-  
-  protected void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131377529));
-    c();
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherTipBar", 2, "showBlurView() called mBlurBgView = " + Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
-    }
-    QLog.d("ListenTogetherTipBar", 1, new Object[] { "stack......\n", Log.getStackTraceString(new Throwable()) });
-    if (aylu.a().c()) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(8);
-    }
-    View localView;
-    do
+    if (this.b == null)
     {
-      return;
-      localView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371154);
-      if ((!ThemeUtil.isDefaultOrDIYTheme(false)) && (!ThemeUtil.isSimpleDayTheme(false))) {
-        break;
+      this.b = new HashSet();
+      this.b.add(Long.valueOf(paramLong1));
+      if (this.jdField_a_of_type_JavaUtilSet != null) {
+        break label77;
       }
-      localView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
-    } while (!QLog.isColorLevel());
-    QLog.d("ListenTogetherTipBar", 2, "showBlurView() visibility called mBlurBgView = " + Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
-    return;
-    localView.setBackgroundColor(this.jdField_a_of_type_AndroidViewViewGroup.getResources().getColor(2131166829));
-    localView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(8);
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherTipBar", 2, "showBlurView() gone called mBlurBgView = " + Integer.toHexString(System.identityHashCode(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView)));
+      this.jdField_a_of_type_JavaUtilSet = new HashSet();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.c();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = null;
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaUtilSet.add(Long.valueOf(paramLong1));
+      return;
+      this.b.clear();
+      break;
+      label77:
+      this.jdField_a_of_type_JavaUtilSet.clear();
+    }
   }
   
-  public void a(int paramInt, Object... paramVarArgs)
+  void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    super.a(paramInt, paramVarArgs);
+    if ((this.b != null) && (this.b.size() > 0) && (a(this.jdField_a_of_type_JavaUtilSet) == paramMessageRecord.uniseq) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
+    {
+      paramQQAppInterface = acex.a(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_JavaLangString = "";
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.length > 0)) {
+        this.jdField_a_of_type_Long = paramQQAppInterface[0];
+      }
+    }
   }
   
-  protected void a(FrameLayout.LayoutParams paramLayoutParams)
+  boolean a(long paramLong, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView = new MusicPanelView(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a());
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setLayoutParams(paramLayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setId(c());
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.jdField_a_of_type_AndroidViewView$OnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView.setOnTouchListener(muc.a);
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView);
+    if (paramBoolean) {}
+    for (Object localObject = this.b; (localObject != null) && (((Set)localObject).size() > 0); localObject = this.jdField_a_of_type_JavaUtilSet)
+    {
+      localObject = ((Set)localObject).iterator();
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+      } while (((Long)((Iterator)localObject).next()).longValue() != paramLong);
+      return true;
+    }
+    return false;
   }
   
-  public void a(ayno paramayno, QQAppInterface paramQQAppInterface)
+  boolean a(QQAppInterface paramQQAppInterface, long paramLong)
   {
-    super.a(paramayno, paramQQAppInterface);
-  }
-  
-  public int[] a()
-  {
-    return null;
-  }
-  
-  public int b()
-  {
-    return 26;
-  }
-  
-  protected void b()
-  {
-    super.b();
-    if (this.jdField_a_of_type_ComTencentMobileqqListentogetherUiMusicPanelView != null) {}
-  }
-  
-  public int c()
-  {
-    return 2131369316;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilSet != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaUtilSet.size() > 0)
+      {
+        bool1 = bool2;
+        if (a(this.jdField_a_of_type_JavaUtilSet) == paramLong)
+        {
+          bool1 = bool2;
+          if (a(this.jdField_a_of_type_JavaUtilSet) == paramLong)
+          {
+            bool1 = bool2;
+            if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
+            {
+              bool1 = bool2;
+              if (this.jdField_a_of_type_Long > 0L)
+              {
+                MessageRecord localMessageRecord = paramQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+                if (localMessageRecord != null) {
+                  paramQQAppInterface.a().b(localMessageRecord, null, false);
+                }
+                this.jdField_a_of_type_Long = 0L;
+                a();
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeyg
  * JD-Core Version:    0.7.0.1
  */

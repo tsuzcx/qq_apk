@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
-import pbj;
+import pgu;
 
 public class ReadInJoyUserInfoModule$1
   implements Runnable
@@ -40,7 +40,7 @@ public class ReadInJoyUserInfoModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
-
-public final class bjti
-  implements Parcelable.Creator<EditLocalVideoSource>
+public abstract interface bjti
 {
-  public EditLocalVideoSource a(Parcel paramParcel)
-  {
-    return new EditLocalVideoSource(paramParcel);
-  }
+  public abstract String a();
   
-  public EditLocalVideoSource[] a(int paramInt)
-  {
-    return new EditLocalVideoSource[paramInt];
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract void j();
+  
+  public abstract void setBannerHeight(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjti
  * JD-Core Version:    0.7.0.1
  */

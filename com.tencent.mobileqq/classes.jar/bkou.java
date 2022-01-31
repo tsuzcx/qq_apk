@@ -1,21 +1,20 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-
 public class bkou
-  implements AdapterView.OnItemClickListener
 {
-  public bkou(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  private static bkov a;
   
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static bkov a()
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
+    return a;
+  }
+  
+  public static void a(bkov parambkov)
+  {
+    a = parambkov;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkou
  * JD-Core Version:    0.7.0.1
  */

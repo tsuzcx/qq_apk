@@ -1,25 +1,23 @@
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class ajmz
-  implements Comparator<ApolloActionData>
+public class ajmz
+  implements azdk
 {
-  ajmz(ajmu paramajmu) {}
+  public ajmz(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramApolloActionData2.version == paramApolloActionData1.version) {
-      return 0;
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean1);
     }
-    if (paramApolloActionData2.version > paramApolloActionData1.version) {
-      return 1;
-    }
-    return -1;
+    ajnh.a(paramBoolean1);
+    NewFlowCameraActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmz
  * JD-Core Version:    0.7.0.1
  */

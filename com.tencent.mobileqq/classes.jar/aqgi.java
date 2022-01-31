@@ -1,39 +1,42 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.forward.ForwardShortVideoOption.PressDarkImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 
 public class aqgi
+  implements Animation.AnimationListener
 {
-  public ImageView a;
-  public ForwardShortVideoOption.PressDarkImageView a;
+  private int jdField_a_of_type_Int = 0;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void a(Drawable paramDrawable)
+  public aqgi(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption$PressDarkImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    if (paramDrawable == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShortVideoOption", 2, "setPreviewImage null");
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837912);
-      return;
-    }
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(13);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
-    this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(bbll.a(140.0F));
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 1);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqgi
  * JD-Core Version:    0.7.0.1
  */

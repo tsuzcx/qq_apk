@@ -1,20 +1,9 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderSubscribe;
-
-public class pxj
-  implements View.OnClickListener
-{
-  public pxj(ComponentHeaderSubscribe paramComponentHeaderSubscribe) {}
-  
-  public void onClick(View paramView)
-  {
-    ComponentHeaderSubscribe.a(this.a);
-  }
-}
+public abstract interface pxj
+  extends pxk
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pxj
  * JD-Core Version:    0.7.0.1
  */

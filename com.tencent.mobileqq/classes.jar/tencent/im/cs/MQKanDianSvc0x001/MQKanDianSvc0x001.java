@@ -3,7 +3,7 @@ package tencent.im.cs.MQKanDianSvc0x001;
 public final class MQKanDianSvc0x001 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.MQKanDianSvc0x001.MQKanDianSvc0x001
  * JD-Core Version:    0.7.0.1
  */

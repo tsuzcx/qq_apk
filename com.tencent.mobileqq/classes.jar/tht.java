@@ -1,28 +1,69 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgNodeShotView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Handler;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class tht
-  extends QQUIEventReceiver<thh, tge>
+  implements TVK_SDKMgr.InstallListener
 {
-  public tht(@NonNull thh paramthh)
+  private Handler a;
+  
+  public tht(Handler paramHandler)
   {
-    super(paramthh);
+    this.a = paramHandler;
   }
   
-  public void a(@NonNull thh paramthh, @NonNull tge paramtge)
+  public void onInstallProgress(float paramFloat)
   {
-    paramthh.a.a.d();
+    if (this.a != null) {
+      this.a.sendEmptyMessage(2);
+    }
   }
   
-  public Class acceptEventClass()
+  public void onInstalledFailed(int paramInt)
   {
-    return tge.class;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", "8.3.3");
+      localJSONObject.put("error_code", paramInt);
+      if (this.a != null) {
+        this.a.sendEmptyMessage(1);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        tlo.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][onInstalledFailed] JSONException: " + localException.getLocalizedMessage());
+      }
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", "8.3.3");
+      if (this.a != null) {
+        this.a.sendEmptyMessage(0);
+      }
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        tlo.d("WS_VIDEO_WSVideoPluginInstall", "[WSVideoPluginInstall.java][onInstalledSuccess] JSONException: " + localJSONException.getLocalizedMessage());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tht
  * JD-Core Version:    0.7.0.1
  */

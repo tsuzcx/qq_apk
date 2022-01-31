@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Global
 {
+  public static boolean isQueenFreeFlow;
   public static String sAppid;
   protected static Global sGlobal = new Global();
   public static InitData sInitData;
@@ -71,7 +72,7 @@ public class Global
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.intervideo.nowproxy.Global
  * JD-Core Version:    0.7.0.1
  */

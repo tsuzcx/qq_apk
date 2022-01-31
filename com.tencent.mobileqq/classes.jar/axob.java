@@ -1,31 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import mqq.app.AppActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class axob
-  implements DialogInterface.OnClickListener
+class axob
+  implements View.OnClickListener
 {
-  public axob(AppActivity paramAppActivity, axof paramaxof) {}
+  axob(axoa paramaxoa) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt == 1)
+    if (this.a.a.isShowing())
     {
-      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_MqqAppAppActivity.getPackageName(), null));
-      this.jdField_a_of_type_MqqAppAppActivity.startActivity(paramDialogInterface);
+      this.a.a.cancel();
+      this.a.a.dismiss();
     }
-    while (this.jdField_a_of_type_Axof == null) {
-      return;
-    }
-    this.jdField_a_of_type_Axof.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axob
  * JD-Core Version:    0.7.0.1
  */

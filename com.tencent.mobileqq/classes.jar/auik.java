@@ -1,35 +1,32 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-
-class auik
-  extends Animation
+public class auik
 {
-  auik(auid paramauid, View paramView, int paramInt) {}
+  public String a;
+  public String b;
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public auik(String paramString1, String paramString2)
   {
-    super.applyTransformation(paramFloat, paramTransformation);
-    if (paramFloat == 1.0F) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
-    do
-    {
-      return;
-      paramTransformation = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    } while (paramTransformation == null);
-    paramTransformation.height = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramTransformation);
+    this.a = paramString1;
+    this.b = paramString2;
   }
   
-  public boolean willChangeBounds()
+  public int a()
   {
-    return true;
+    return 0;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auik
  * JD-Core Version:    0.7.0.1
  */

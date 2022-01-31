@@ -1,38 +1,93 @@
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.redpacket.widget.RIJRedPacketProgressView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.25.1;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.25.2;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.25.3;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public abstract interface ryq
-  extends rzb
+public class ryq
+  extends oxe
 {
-  public abstract ViewGroup a();
+  public ryq(FastWebActivity paramFastWebActivity) {}
   
-  public abstract void a();
+  public void a(String paramString)
+  {
+    int j = 0;
+    QLog.d("Q.readinjoy.fast_web", 2, " onWebCallback : " + paramString);
+    if (!FastWebActivity.h(this.a)) {
+      return;
+    }
+    int i;
+    if ("onPageStarted".equals(paramString)) {
+      i = 300;
+    }
+    for (;;)
+    {
+      ThreadManager.getUIHandler().postDelayed(new FastWebActivity.25.2(this), i);
+      return;
+      i = j;
+      if ("onConversationJumpRestoreStack".equals(paramString)) {
+        i = j;
+      }
+    }
+  }
   
-  public abstract void a(int paramInt);
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (FastWebActivity.a(this.a) == null) {
+      return;
+    }
+    sda.a(FastWebActivity.a(this.a), paramString, paramInt1, paramInt2);
+    FastWebActivity.a(this.a).notifyDataSetChanged();
+  }
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
+    {
+      int[] arrayOfInt = new int[2];
+      FastWebActivity.a(this.a).postDelayed(new FastWebActivity.25.3(this, arrayOfInt, paramString), 200L);
+      return;
+    }
+    QLog.i(FastWebActivity.a(this.a), 1, " red packet task do not get Tips!");
+  }
   
-  public abstract void a(VideoPlayManager paramVideoPlayManager);
+  public void ax_()
+  {
+    super.ax_();
+    if ((FastWebActivity.f(this.a)) || (FastWebActivity.a(this.a) == null)) {
+      return;
+    }
+    this.a.runOnUiThread(new FastWebActivity.25.1(this));
+  }
   
-  public abstract void a(rza paramrza);
+  public void d()
+  {
+    super.d();
+    if ((FastWebActivity.g(this.a)) || (FastWebActivity.a(this.a) == null) || (FastWebActivity.a(this.a) == null) || (FastWebActivity.a(this.a) == null)) {
+      return;
+    }
+    FastWebActivity.a(this.a).a(FastWebActivity.a(this.a).a);
+    FastWebActivity.g(this.a);
+    FastWebActivity.a(this.a).notifyDataSetChanged();
+  }
   
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void c();
-  
-  public abstract void setControlType(int paramInt);
-  
-  public abstract void setEndWithLastFrame(boolean paramBoolean);
-  
-  public abstract void setEventListener(ryr paramryr);
-  
-  public abstract void setFullScreenDisable(boolean paramBoolean);
+  public void e()
+  {
+    if (FastWebActivity.a(this.a) == null) {
+      return;
+    }
+    FastWebActivity.g(this.a);
+    FastWebActivity.a(this.a).notifyDataSetChanged();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ryq
  * JD-Core Version:    0.7.0.1
  */

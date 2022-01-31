@@ -2,42 +2,51 @@ package okio;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
+import java.util.concurrent.TimeUnit;
+import javax.annotation.Nullable;
 
 public class AsyncTimeout
   extends Timeout
 {
-  private static AsyncTimeout head;
+  private static final long IDLE_TIMEOUT_MILLIS = TimeUnit.SECONDS.toMillis(60L);
+  private static final long IDLE_TIMEOUT_NANOS = TimeUnit.MILLISECONDS.toNanos(IDLE_TIMEOUT_MILLIS);
+  private static final int TIMEOUT_WRITE_SIZE = 65536;
+  @Nullable
+  static AsyncTimeout head;
   private boolean inQueue;
+  @Nullable
   private AsyncTimeout next;
   private long timeoutAt;
   
+  @Nullable
   static AsyncTimeout awaitTimeout()
   {
-    AsyncTimeout localAsyncTimeout1 = null;
-    for (;;)
+    Object localObject2 = null;
+    Object localObject1 = head.next;
+    if (localObject1 == null)
     {
-      AsyncTimeout localAsyncTimeout2;
-      try
+      l1 = System.nanoTime();
+      AsyncTimeout.class.wait(IDLE_TIMEOUT_MILLIS);
+      localObject1 = localObject2;
+      if (head.next == null)
       {
-        localAsyncTimeout2 = head.next;
-        if (localAsyncTimeout2 == null)
-        {
-          AsyncTimeout.class.wait();
-          return localAsyncTimeout1;
+        localObject1 = localObject2;
+        if (System.nanoTime() - l1 >= IDLE_TIMEOUT_NANOS) {
+          localObject1 = head;
         }
-        long l1 = localAsyncTimeout2.remainingNanos(System.nanoTime());
-        if (l1 > 0L)
-        {
-          long l2 = l1 / 1000000L;
-          AsyncTimeout.class.wait(l2, (int)(l1 - 1000000L * l2));
-          continue;
-        }
-        head.next = localAsyncTimeout2.next;
       }
-      finally {}
-      localAsyncTimeout2.next = null;
-      Object localObject2 = localAsyncTimeout2;
+      return localObject1;
     }
+    long l1 = ((AsyncTimeout)localObject1).remainingNanos(System.nanoTime());
+    if (l1 > 0L)
+    {
+      long l2 = l1 / 1000000L;
+      AsyncTimeout.class.wait(l2, (int)(l1 - 1000000L * l2));
+      return null;
+    }
+    head.next = ((AsyncTimeout)localObject1).next;
+    ((AsyncTimeout)localObject1).next = null;
+    return localObject1;
   }
   
   /* Error */
@@ -46,34 +55,34 @@ public class AsyncTimeout
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 20	okio/AsyncTimeout:head	Lokio/AsyncTimeout;
+    //   3: getstatic 49	okio/AsyncTimeout:head	Lokio/AsyncTimeout;
     //   6: astore_2
     //   7: aload_2
-    //   8: ifnonnull +10 -> 18
-    //   11: iconst_1
-    //   12: istore_1
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: iload_1
-    //   17: ireturn
-    //   18: aload_2
-    //   19: getfield 22	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
-    //   22: aload_0
-    //   23: if_acmpne +21 -> 44
-    //   26: aload_2
+    //   8: ifnull +39 -> 47
+    //   11: aload_2
+    //   12: getfield 51	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
+    //   15: aload_0
+    //   16: if_acmpne +23 -> 39
+    //   19: aload_2
+    //   20: aload_0
+    //   21: getfield 51	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
+    //   24: putfield 51	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
     //   27: aload_0
-    //   28: getfield 22	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
-    //   31: putfield 22	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
-    //   34: aload_0
-    //   35: aconst_null
-    //   36: putfield 22	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
-    //   39: iconst_0
-    //   40: istore_1
-    //   41: goto -28 -> 13
-    //   44: aload_2
-    //   45: getfield 22	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
-    //   48: astore_2
-    //   49: goto -42 -> 7
+    //   28: aconst_null
+    //   29: putfield 51	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
+    //   32: iconst_0
+    //   33: istore_1
+    //   34: ldc 2
+    //   36: monitorexit
+    //   37: iload_1
+    //   38: ireturn
+    //   39: aload_2
+    //   40: getfield 51	okio/AsyncTimeout:next	Lokio/AsyncTimeout;
+    //   43: astore_2
+    //   44: goto -37 -> 7
+    //   47: iconst_1
+    //   48: istore_1
+    //   49: goto -15 -> 34
     //   52: astore_0
     //   53: ldc 2
     //   55: monitorexit
@@ -82,13 +91,13 @@ public class AsyncTimeout
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	58	0	paramAsyncTimeout	AsyncTimeout
-    //   12	29	1	bool	boolean
-    //   6	43	2	localAsyncTimeout	AsyncTimeout
+    //   33	16	1	bool	boolean
+    //   6	38	2	localAsyncTimeout	AsyncTimeout
     // Exception table:
     //   from	to	target	type
     //   3	7	52	finally
-    //   18	39	52	finally
-    //   44	49	52	finally
+    //   11	32	52	finally
+    //   39	44	52	finally
   }
   
   private long remainingNanos(long paramLong)
@@ -180,7 +189,7 @@ public class AsyncTimeout
     return cancelScheduledTimeout(this);
   }
   
-  protected IOException newTimeoutException(IOException paramIOException)
+  protected IOException newTimeoutException(@Nullable IOException paramIOException)
   {
     InterruptedIOException localInterruptedIOException = new InterruptedIOException("timeout");
     if (paramIOException != null) {
@@ -203,7 +212,7 @@ public class AsyncTimeout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.AsyncTimeout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,34 @@
-import android.content.Context;
 import android.os.Handler;
-import android.os.Looper;
-import com.tencent.qqmini.sdk.task.AsyncTask.1;
+import android.os.Message;
+import com.tencent.smtt.sdk.WebView;
 
-public abstract class bffh
-  extends bffi
+public class bffh
+  extends Handler
 {
-  public bffh(Context paramContext, beqm parambeqm)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramContext, 2, parambeqm);
-  }
-  
-  public abstract void a();
-  
-  public boolean b()
-  {
-    return Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId();
-  }
-  
-  public void d()
-  {
-    if (!b())
+    switch (paramMessage.what)
     {
-      a();
+    }
+    do
+    {
+      return;
+      paramMessage = (bffg)paramMessage.obj;
+    } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView == null) || (paramMessage.jdField_a_of_type_JavaLangString == null));
+    try
+    {
+      paramMessage.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(paramMessage.jdField_a_of_type_JavaLangString);
       return;
     }
-    bejn.a().post(new AsyncTask.1(this));
+    catch (Exception paramMessage)
+    {
+      paramMessage.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bffh
  * JD-Core Version:    0.7.0.1
  */

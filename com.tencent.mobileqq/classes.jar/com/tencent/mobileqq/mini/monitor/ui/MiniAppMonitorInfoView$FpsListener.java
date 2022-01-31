@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.monitor.ui;
 
-import baxs;
+import bcwm;
 
 class MiniAppMonitorInfoView$FpsListener
-  implements baxs
+  implements bcwm
 {
   private MiniAppMonitorInfoView$FpsListener(MiniAppMonitorInfoView paramMiniAppMonitorInfoView) {}
   
@@ -14,7 +14,7 @@ class MiniAppMonitorInfoView$FpsListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.monitor.ui.MiniAppMonitorInfoView.FpsListener
  * JD-Core Version:    0.7.0.1
  */

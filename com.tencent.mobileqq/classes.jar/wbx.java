@@ -1,27 +1,44 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
 
-class wbx
-  implements View.OnTouchListener
+public class wbx
+  extends QQUIEventReceiver<StoryPickerFragment, vad>
 {
-  wbx(wbw paramwbw) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public wbx(@NonNull StoryPickerFragment paramStoryPickerFragment)
   {
-    switch (paramMotionEvent.getAction())
+    super(paramStoryPickerFragment);
+  }
+  
+  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull vad paramvad)
+  {
+    wsv.b(this.TAG, "GetSimpleInfoListEventReceiver. event=%s", paramvad.toString());
+    if ((paramvad.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramvad.jdField_a_of_type_JavaUtilList != null) && (!paramvad.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
+      Iterator localIterator = paramvad.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        wiu localwiu = (wiu)localIterator.next();
+        if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.contains(localwiu.jdField_a_of_type_JavaLangString)) {
+          localwiu.jdField_a_of_type_Boolean = true;
+        }
+      }
+      paramStoryPickerFragment.jdField_a_of_type_Wcf.a(paramvad.jdField_a_of_type_JavaLangString, paramvad.jdField_a_of_type_JavaUtilList);
     }
-    for (;;)
-    {
-      return true;
-      this.a.dismiss();
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vad.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wbx
  * JD-Core Version:    0.7.0.1
  */

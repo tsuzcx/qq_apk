@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video.discovery;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout.LayoutParams;
@@ -33,10 +33,10 @@ public class BannerView$DotsIndicator
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.f = paramInt1;
-    this.b = actj.a(6.0F, getResources());
-    this.c = actj.a(10.0F, getResources());
-    this.d = actj.a(7.0F, getResources());
-    this.e = actj.a(7.0F, getResources());
+    this.b = aekt.a(6.0F, getResources());
+    this.c = aekt.a(10.0F, getResources());
+    this.d = aekt.a(7.0F, getResources());
+    this.e = aekt.a(7.0F, getResources());
     paramContext = new FrameLayout.LayoutParams(-2, -2);
     paramContext.bottomMargin = this.b;
     paramContext.gravity = paramInt2;
@@ -89,7 +89,7 @@ public class BannerView$DotsIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.discovery.BannerView.DotsIndicator
  * JD-Core Version:    0.7.0.1
  */

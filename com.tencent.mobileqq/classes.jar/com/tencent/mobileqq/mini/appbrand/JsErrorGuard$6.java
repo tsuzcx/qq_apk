@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand;
 
-import ajya;
+import alpo;
 
 class JsErrorGuard$6
   implements Runnable
@@ -10,13 +10,13 @@ class JsErrorGuard$6
   public void run()
   {
     if ((JsErrorGuard.access$1300(this.this$0) != null) && (JsErrorGuard.access$1300(this.this$0).isShowing())) {
-      JsErrorGuard.access$1300(this.this$0).setTitle(ajya.a(2131705893) + this.val$progress + "%");
+      JsErrorGuard.access$1300(this.this$0).setTitle(alpo.a(2131706265) + this.val$progress + "%");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.JsErrorGuard.6
  * JD-Core Version:    0.7.0.1
  */

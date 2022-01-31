@@ -29,7 +29,7 @@ public final class YTOpenDetection$DetectFaceReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.YTOpenDetection.DetectFaceReq
  * JD-Core Version:    0.7.0.1
  */

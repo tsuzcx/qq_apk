@@ -1,35 +1,35 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
 
 public class wxz
-  extends ajyr
+  extends wyj
 {
-  public wxz(TroopMemberApiService paramTroopMemberApiService) {}
+  public final long a;
+  public final long b;
+  public final long c;
+  public final long d;
   
-  public void a(boolean paramBoolean, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
+  public wxz(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Bitmap paramBitmap)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("type", 1050);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putSerializable("data", new Object[] { paramString, paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayList });
-    localBundle.putSerializable("observer_type", Integer.valueOf(5));
-    this.a.a(3, localBundle);
+    super(paramInt, paramBitmap);
+    this.a = paramLong1;
+    this.b = paramLong2;
+    this.jdField_c_of_type_Long = paramLong3;
+    this.d = paramLong4;
   }
   
-  public void a(boolean paramBoolean, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
+  public wxz a(Bitmap paramBitmap)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", this.a.f);
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putStringArrayList("uins", paramArrayList1);
-    localBundle.putStringArrayList("tinyIds", paramArrayList2);
-    this.a.a(102, localBundle);
+    return new wxz(this.jdField_c_of_type_Int, this.a, this.b, this.jdField_c_of_type_Long, this.d, paramBitmap);
+  }
+  
+  public String toString()
+  {
+    return "RecordVideoBlockInfo{index:" + this.jdField_c_of_type_Int + ", vfFrame: " + this.a + " ~ " + this.b + ", afTime: " + this.jdField_c_of_type_Long + " ~ " + this.d + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxz
  * JD-Core Version:    0.7.0.1
  */

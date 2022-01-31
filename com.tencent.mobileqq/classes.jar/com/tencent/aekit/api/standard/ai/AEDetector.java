@@ -412,6 +412,11 @@ public class AEDetector
     return this.lastTextureSize;
   }
   
+  public AIAttr getResult()
+  {
+    return this.curAIAttr;
+  }
+  
   public float getRotation()
   {
     if (this.mFaceDetector != null) {
@@ -485,7 +490,7 @@ public class AEDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.aekit.api.standard.ai.AEDetector
  * JD-Core Version:    0.7.0.1
  */

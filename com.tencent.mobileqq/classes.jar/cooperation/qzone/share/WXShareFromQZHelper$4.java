@@ -1,22 +1,22 @@
 package cooperation.qzone.share;
 
-import bcql;
-import bhmi;
+import bjnt;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class WXShareFromQZHelper$4
   implements Runnable
 {
-  public WXShareFromQZHelper$4(bhmi parambhmi) {}
+  public WXShareFromQZHelper$4(bjnt parambjnt) {}
   
   public void run()
   {
-    bcql.a(BaseApplication.getContext(), 2131718036, 0).a();
+    QQToast.a(BaseApplication.getContext(), 2131718411, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.share.WXShareFromQZHelper.4
  * JD-Core Version:    0.7.0.1
  */

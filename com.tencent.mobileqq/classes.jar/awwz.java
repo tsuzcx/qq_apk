@@ -1,39 +1,47 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import NS_MOBILE_PHOTO.operation_red_touch_req;
+import android.content.Intent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class awwz
-  extends awwy
+  extends MSFServlet
 {
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  
-  public awwz(ViewGroup paramViewGroup, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super(paramViewGroup, paramInt);
+    if (paramFromServiceMsg != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedDotServlet", 2, "resultcode:" + paramFromServiceMsg.getResultCode() + ",failMsg:" + paramFromServiceMsg.getBusinessFailMsg());
+      }
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("QzoneAlbumRedDotServlet", 2, "fromServiceMsg==msg");
   }
   
-  protected void a()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    super.a();
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131368899));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131363169));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367679));
-    this.b = ((TextView)localView.findViewById(2131366292));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131375759));
-    this.d = ((TextView)localView.findViewById(2131361949));
+    paramIntent = paramIntent.getSerializableExtra("req");
+    if ((paramIntent != null) && ((paramIntent instanceof operation_red_touch_req)))
+    {
+      awwy localawwy = new awwy(getAppRuntime().getLongAccountUin(), (operation_red_touch_req)paramIntent);
+      byte[] arrayOfByte = localawwy.encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramIntent = new byte[4];
+      }
+      paramPacket.setTimeout(60000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + localawwy.uniKey());
+      paramPacket.putSendData(paramIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awwz
  * JD-Core Version:    0.7.0.1
  */

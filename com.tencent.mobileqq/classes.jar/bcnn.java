@@ -1,29 +1,23 @@
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
-import java.util.Stack;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class bcnn
+  implements bclf
 {
-  private Stack<AnimationTextView> jdField_a_of_type_JavaUtilStack = new Stack();
+  public bcnn(TroopAIORobotLayout paramTroopAIORobotLayout, bcnh parambcnh) {}
   
-  public bcnn(MixedMsgLinearLayout paramMixedMsgLinearLayout) {}
-  
-  public AnimationTextView a()
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    if (this.jdField_a_of_type_JavaUtilStack.isEmpty()) {
-      return null;
+    if (paramInt == 0) {
+      return;
     }
-    return (AnimationTextView)this.jdField_a_of_type_JavaUtilStack.pop();
-  }
-  
-  public void a(AnimationTextView paramAnimationTextView)
-  {
-    this.jdField_a_of_type_JavaUtilStack.push(paramAnimationTextView);
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotLayout.getContext(), 1, alpo.a(2131715552) + "", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcnn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,96 +1,37 @@
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
+import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
 
 public class vrq
-  extends vrt
+  implements Animation.AnimationListener
 {
-  private final int b;
-  private boolean c;
-  private boolean d;
+  public vrq(ExploreAnimalView paramExploreAnimalView) {}
   
-  public vrq(Context paramContext, String paramString, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramContext, paramString, -1);
-    int i = paramInt;
-    if (paramInt < 0) {
-      i = 0;
-    }
-    this.b = i;
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(600L);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatCount(-1);
+    this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setRepeatMode(2);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetEllipsizingTextView.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
+    paramAnimation = (ImageView)this.a.findViewById(2131365402);
+    ImageView localImageView1 = (ImageView)this.a.findViewById(2131365403);
+    ImageView localImageView2 = (ImageView)this.a.findViewById(2131362823);
+    this.a.a(paramAnimation, 100L);
+    this.a.a(localImageView1, 240L);
+    this.a.a(localImageView2, 360L);
   }
   
-  public int a()
-  {
-    return 1;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public int a(int paramInt)
-  {
-    return 4;
-  }
-  
-  public View a(int paramInt, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = new RelativeLayout(this.a);
-    paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, this.b));
-    paramViewGroup.setBackgroundResource(2130849031);
-    paramInt = -2170912;
-    QQStoryContext.a();
-    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
-      paramInt = -16444373;
-    }
-    View localView = new View(this.a);
-    Object localObject = new RelativeLayout.LayoutParams(-1, vzl.a(this.a, 1.0F));
-    ((RelativeLayout.LayoutParams)localObject).addRule(10);
-    localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localView.setBackgroundColor(paramInt);
-    localObject = new View(this.a);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, vzl.a(this.a, 1.0F));
-    localLayoutParams.addRule(12);
-    ((View)localObject).setLayoutParams(localLayoutParams);
-    ((View)localObject).setBackgroundColor(paramInt);
-    paramViewGroup.addView(localView);
-    paramViewGroup.addView((View)localObject);
-    return paramViewGroup;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, View paramView)
-  {
-    View localView = ((ViewGroup)paramView).getChildAt(0);
-    paramView = ((ViewGroup)paramView).getChildAt(1);
-    if (this.c) {
-      localView.setVisibility(0);
-    }
-    while (this.d)
-    {
-      paramView.setVisibility(0);
-      return;
-      localView.setVisibility(4);
-    }
-    paramView.setVisibility(4);
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.c = paramBoolean1;
-    this.d = paramBoolean2;
-  }
-  
-  public void b(boolean paramBoolean) {}
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vrq
  * JD-Core Version:    0.7.0.1
  */

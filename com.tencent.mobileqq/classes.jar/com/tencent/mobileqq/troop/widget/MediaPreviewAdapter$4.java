@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.troop.widget;
 
-import baoh;
-import baoj;
+import bcmu;
+import bcmw;
 import com.tencent.image.URLImageView;
 
 public class MediaPreviewAdapter$4
   implements Runnable
 {
-  public MediaPreviewAdapter$4(baoh parambaoh, baoj parambaoj) {}
+  public MediaPreviewAdapter$4(bcmu parambcmu, bcmw parambcmw) {}
   
   public void run()
   {

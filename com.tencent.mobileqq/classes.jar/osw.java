@@ -1,169 +1,90 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInjoyWebRenderSoLoader.1;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.os.Handler;
+import com.tencent.aladdin.config.network.AsyncTaskExecutor;
 
 public class osw
+  implements AsyncTaskExecutor
 {
-  private static int jdField_a_of_type_Int;
-  private static Object jdField_a_of_type_JavaLangObject;
-  public static String a;
-  public static String b = "_viola_reinstall_delJSC_succ_810";
-  private static String c = "";
-  private static String d;
+  public static final osw a;
+  private volatile Handler a;
   
   static
   {
-    jdField_a_of_type_JavaLangObject = new Object();
-    d = "https://sqimg.qq.com/qq_product_operations/kan/violaLibs/" + anqf.jdField_a_of_type_JavaLangString + ".js";
-    jdField_a_of_type_JavaLangString = "_viola_reinstall_delBiz_succ_810";
+    jdField_a_of_type_Osw = new osw();
   }
   
-  public static String a()
+  /* Error */
+  public void execute(java.lang.Runnable paramRunnable)
   {
-    if (TextUtils.isEmpty(c))
-    {
-      Object localObject = BaseApplicationImpl.getContext();
-      if (localObject == null) {
-        break label95;
-      }
-      localObject = ((Context)localObject).getFilesDir();
-      if (TextUtils.isEmpty(c))
-      {
-        c = ((File)localObject).getParent() + "/txlib/" + "readinjoy_viola/";
-        if (AppSetting.b) {
-          c += "arm64-v8a/";
-        }
-      }
-    }
-    for (;;)
-    {
-      return c;
-      label95:
-      QLog.w("viola.ReadInjoyWebRenderSoLoader", 2, "getSoLibPath but context is null");
-    }
-  }
-  
-  private static boolean a()
-  {
-    SharedPreferences localSharedPreferences = bhvy.a(onh.a(), true, true);
-    if (localSharedPreferences == null)
-    {
-      QLog.d("viola.ReadInjoyWebRenderSoLoader", 1, "isReinstallDelSucc  failed");
-      return false;
-    }
-    boolean bool = localSharedPreferences.getBoolean(b, false);
-    QLog.d("viola.ReadInjoyWebRenderSoLoader", 1, "isReinstallDelSucc sp result=" + bool);
-    return bool;
-  }
-  
-  public static boolean a(String paramString)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      a();
-      boolean bool = TextUtils.isEmpty(c);
-      if (!bool) {}
-      try
-      {
-        jdField_a_of_type_Int = 1;
-        bbdx.a(paramString, c, false);
-        jdField_a_of_type_Int = 0;
-        QLog.i("viola.ReadInjoyWebRenderSoLoader", 1, "succeed to unzip so.");
-        if (jdField_a_of_type_Int == 0) {
-          return true;
-        }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          jdField_a_of_type_Int = 2;
-          QLog.e("viola.ReadInjoyWebRenderSoLoader", 1, paramString, new Object[0]);
-        }
-      }
-    }
-    return false;
-  }
-  
-  public static boolean a(oss paramoss)
-  {
-    if (a()) {
-      return true;
-    }
-    ThreadManager.post(new ReadInjoyWebRenderSoLoader.1(paramoss), 8, null, true);
-    return false;
-  }
-  
-  private static void c()
-  {
-    Object localObject = bhvy.a(onh.a(), true, true);
-    if (localObject == null)
-    {
-      QLog.d("viola.ReadInjoyWebRenderSoLoader", 1, "delSoReinstall sp failed");
-      return;
-    }
-    QLog.d("Q.readinjoy.tt_report", 1, "delSoReinstall sp update to true");
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putBoolean(b, true);
-    bhvy.a((SharedPreferences.Editor)localObject, true);
-  }
-  
-  private static boolean c(String paramString)
-  {
-    QLog.i("viola.ReadInjoyWebRenderSoLoader", 1, "[delAllSo]" + paramString);
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return false;
-      try
-      {
-        String str = a();
-        bbdx.d(str + paramString);
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          try
-          {
-            if (new File(a(), paramString).exists()) {
-              break;
-            }
-            QLog.d("viola.ReadInjoyWebRenderSoLoader", 1, "reinstallDelSO  " + paramString + "succ");
-            return true;
-          }
-          catch (Throwable paramString) {}
-          localThrowable = localThrowable;
-          QLog.e("viola.ReadInjoyWebRenderSoLoader", 1, localThrowable, new Object[0]);
-        }
-      }
-    }
-    return false;
-  }
-  
-  private static void d()
-  {
-    Object localObject = bhvy.a(onh.a(), true, true);
-    if (localObject == null)
-    {
-      QLog.d("viola.ReadInjoyWebRenderSoLoader", 1, "delSoReinstall sp failed");
-      return;
-    }
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putBoolean(jdField_a_of_type_JavaLangString, true);
-    bhvy.a((SharedPreferences.Editor)localObject, true);
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 24	osw:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   4: ifnonnull +42 -> 46
+    //   7: aload_0
+    //   8: monitorenter
+    //   9: aload_0
+    //   10: getfield 24	osw:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   13: astore_2
+    //   14: aload_2
+    //   15: ifnonnull +29 -> 44
+    //   18: ldc 26
+    //   20: iconst_0
+    //   21: invokestatic 32	com/tencent/mobileqq/app/ThreadManagerV2:newFreeHandlerThread	(Ljava/lang/String;I)Landroid/os/HandlerThread;
+    //   24: astore_2
+    //   25: aload_2
+    //   26: invokevirtual 37	android/os/HandlerThread:start	()V
+    //   29: aload_0
+    //   30: new 39	android/os/Handler
+    //   33: dup
+    //   34: aload_2
+    //   35: invokevirtual 43	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
+    //   38: invokespecial 46	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   41: putfield 24	osw:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   44: aload_0
+    //   45: monitorexit
+    //   46: aload_0
+    //   47: getfield 24	osw:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   50: aload_1
+    //   51: invokevirtual 50	android/os/Handler:post	(Ljava/lang/Runnable;)Z
+    //   54: pop
+    //   55: return
+    //   56: astore_2
+    //   57: ldc 52
+    //   59: iconst_2
+    //   60: aload_2
+    //   61: iconst_0
+    //   62: anewarray 4	java/lang/Object
+    //   65: invokestatic 58	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   68: aload_0
+    //   69: new 39	android/os/Handler
+    //   72: dup
+    //   73: invokestatic 61	com/tencent/mobileqq/app/ThreadManagerV2:getFileThreadLooper	()Landroid/os/Looper;
+    //   76: invokespecial 46	android/os/Handler:<init>	(Landroid/os/Looper;)V
+    //   79: putfield 24	osw:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
+    //   82: goto -38 -> 44
+    //   85: astore_1
+    //   86: aload_0
+    //   87: monitorexit
+    //   88: aload_1
+    //   89: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	90	0	this	osw
+    //   0	90	1	paramRunnable	java.lang.Runnable
+    //   13	22	2	localObject	Object
+    //   56	5	2	localOutOfMemoryError	java.lang.OutOfMemoryError
+    // Exception table:
+    //   from	to	target	type
+    //   18	44	56	java/lang/OutOfMemoryError
+    //   9	14	85	finally
+    //   18	44	85	finally
+    //   44	46	85	finally
+    //   57	82	85	finally
+    //   86	88	85	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     osw
  * JD-Core Version:    0.7.0.1
  */

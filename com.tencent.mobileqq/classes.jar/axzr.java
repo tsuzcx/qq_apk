@@ -1,74 +1,67 @@
-import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.richstatus.StatusJsHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
 public class axzr
-  extends axup
+  implements BusinessObserver
 {
-  public int k;
+  public axzr(StatusJsHandler paramStatusJsHandler) {}
   
-  public axzr()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a = "type";
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return "type";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.k = paramObjectInput.readInt();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    paramObjectOutput.writeInt(this.k);
-  }
-  
-  public void a(XmlSerializer paramXmlSerializer)
-  {
-    paramXmlSerializer.startTag(null, "type");
-    paramXmlSerializer.text(this.k + "");
-    paramXmlSerializer.endTag(null, "type");
-  }
-  
-  public boolean a(axwg paramaxwg)
-  {
-    if (paramaxwg == null) {
-      return false;
+    BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localBaseActivity == null) || (localBaseActivity.isFinishing())) {
+      return;
     }
-    try
-    {
-      this.k = Integer.valueOf(axau.a(axva.a(paramaxwg), false)).intValue();
-      return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.richstatus.", 2, "success:" + String.valueOf(paramBoolean));
     }
-    catch (Exception paramaxwg)
+    if (!paramBoolean) {
+      this.a.a(2131695727);
+    }
+    for (;;)
     {
-      for (;;)
+      this.a.a(this.a.c, "false");
+      return;
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("StructMsgItemType", 2, paramaxwg, new Object[0]);
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+          localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
+          if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
+          {
+            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null))
+            {
+              paramBundle = new AccountDetail(localGetPublicAccountDetailInfoResponse);
+              this.a.a(localBaseActivity, paramBundle);
+              StatusJsHandler.a(this.a, localBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+            }
+          }
+          else {
+            this.a.a(2131695727);
+          }
+        }
+        else
+        {
+          this.a.a(2131695727);
         }
       }
+      catch (Exception paramBundle) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axzr
  * JD-Core Version:    0.7.0.1
  */

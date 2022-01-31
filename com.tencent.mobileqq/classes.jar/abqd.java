@@ -1,42 +1,94 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.Context;
+import java.io.File;
+import java.util.ArrayList;
 
-public class abqd
-  implements CompoundButton.OnCheckedChangeListener
+public abstract class abqd
 {
-  public abqd(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public static String a;
+  public abqe a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  static
   {
-    if (NotifyPushSettingActivity.a())
-    {
-      NotifyPushSettingActivity.b(this.a).setChecked(false);
-      NotifyPushSettingActivity.b(this.a).setVisibility(8);
-      if (!paramBoolean) {
-        break label113;
-      }
-    }
-    label113:
-    for (int i = 1;; i = 0)
-    {
-      axqy.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
-      return;
-      if (paramBoolean)
-      {
-        NotifyPushSettingActivity.b(this.a).setVisibility(0);
-        NotifyPushSettingActivity.b(this.a).setVisibility(8);
-        break;
-      }
-      NotifyPushSettingActivity.b(this.a).setVisibility(8);
-      break;
-    }
+    jdField_a_of_type_JavaLangString = File.separator;
   }
+  
+  public static ArrayList<String> a(String paramString1, String paramString2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramString2.equals("Native"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add("lib" + paramString1 + ".so");
+      localArrayList.add(paramString1 + ".subpatch");
+      return localArrayList;
+    }
+    if (paramString2.equals("DVM"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add(paramString1 + ".jar");
+      return localArrayList;
+    }
+    return null;
+  }
+  
+  public static abqd b(String paramString, abqe paramabqe)
+  {
+    String str = paramabqe.f;
+    if (str.equals("Native"))
+    {
+      paramString = abpy.a(paramString, paramabqe);
+      if (paramString == null) {
+        return null;
+      }
+    }
+    else
+    {
+      abpt.a("KingKongPatchInfo", "Unsupported patch type : " + str);
+      return null;
+    }
+    if ((!paramString.c.equals(paramabqe.jdField_a_of_type_JavaLangString)) || (!paramString.d.equals(paramabqe.b)) || (!paramString.e.equals(paramabqe.f)) || (!paramString.e.equals("Native")))
+    {
+      abpt.a("KingKongPatchInfo", "Patch name, version or type mismatch : " + paramString.c + ", " + paramString.d + ", " + paramString.e);
+      return null;
+    }
+    paramString.jdField_a_of_type_Abqe = paramabqe;
+    return paramString;
+  }
+  
+  public static ArrayList<String> b(String paramString1, String paramString2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramString2.equals("Native"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add("lib" + paramString1 + ".so");
+      localArrayList.add(paramString1 + ".subpatch");
+    }
+    while (!paramString2.equals("DVM")) {
+      return localArrayList;
+    }
+    localArrayList.add(paramString1 + ".cfg");
+    localArrayList.add(paramString1 + ".jar");
+    localArrayList.add(paramString1 + ".dex");
+    return localArrayList;
+  }
+  
+  public abstract int a(Context paramContext);
+  
+  public String a()
+  {
+    return this.b + jdField_a_of_type_JavaLangString + this.c + ".cfg";
+  }
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abqd
  * JD-Core Version:    0.7.0.1
  */

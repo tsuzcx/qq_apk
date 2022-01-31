@@ -1,18 +1,18 @@
 package dov.com.qq.im.lifecycle.livedata;
 
-import bjoo;
+import blzx;
 
 public class LiveData$1
   implements Runnable
 {
-  public LiveData$1(bjoo parambjoo) {}
+  public LiveData$1(blzx paramblzx) {}
   
   public void run()
   {
-    synchronized (bjoo.a(this.this$0))
+    synchronized (blzx.a(this.this$0))
     {
-      Object localObject2 = bjoo.b(this.this$0);
-      bjoo.a(this.this$0, bjoo.b());
+      Object localObject2 = blzx.b(this.this$0);
+      blzx.a(this.this$0, blzx.b());
       this.this$0.b(localObject2);
       return;
     }
@@ -20,7 +20,7 @@ public class LiveData$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.lifecycle.livedata.LiveData.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,82 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.math.BigInteger;
 
 public class awwo
-  implements awwq
 {
-  protected View a;
-  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private List<awwr> jdField_a_of_type_JavaUtilList;
-  private TextView b;
-  
-  public awwo(ViewGroup paramViewGroup)
+  public static long a(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131562374, paramViewGroup, false);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370397));
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369348));
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    try
+    {
+      long l = new BigInteger(paramString).longValue();
+      return l;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w(awwo.class.getSimpleName(), 2, "failed to long:" + paramString);
+      }
+    }
+    return 0L;
   }
   
-  public View a()
+  public static String a(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return String.valueOf(paramInt & 0xFFFFFFFF);
   }
   
-  public ViewGroup a()
+  public static String a(long paramLong)
   {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
+    BigInteger localBigInteger2 = BigInteger.valueOf(paramLong);
+    BigInteger localBigInteger1 = localBigInteger2;
+    if (localBigInteger2.signum() < 0) {
+      localBigInteger1 = localBigInteger2.add(BigInteger.ONE.shiftLeft(64));
+    }
+    return localBigInteger1.toString();
   }
   
-  public LinearLayout a()
+  public static String a(String paramString)
   {
-    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    int j = 0;
+    if (paramString == null) {
+      return null;
+    }
+    StringBuffer localStringBuffer = new StringBuffer(paramString);
+    int m = paramString.length() - 4;
+    int k = m - 4;
+    int i = m;
+    if (m < 0) {
+      i = 0;
+    }
+    if (k < 0) {}
+    for (;;)
+    {
+      if ((j < i) && (i > 0)) {
+        localStringBuffer.replace(j, i, "*");
+      }
+      return localStringBuffer.toString();
+      j = k;
+    }
   }
   
-  public TextView a()
+  public static long b(String paramString)
   {
-    return this.jdField_a_of_type_AndroidWidgetTextView;
-  }
-  
-  public List<awwr> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public TextView b()
-  {
-    return this.b;
+    try
+    {
+      long l = new BigInteger(paramString).longValue();
+      return l;
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(awwo.class.getSimpleName(), 2, "failed getLong, uin = " + paramString);
+      }
+    }
+    return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awwo
  * JD-Core Version:    0.7.0.1
  */

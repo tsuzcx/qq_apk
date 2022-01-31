@@ -1,117 +1,117 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-public class aknk
+public abstract class aknk<T>
 {
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
-  {
-    int k = 0;
-    int m = 0;
-    int j = 1;
-    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
-    TroopInfo localTroopInfo = localTroopManager.b(String.valueOf(paramLong));
-    if (localTroopInfo == null)
-    {
-      localTroopInfo = new TroopInfo();
-      localTroopInfo.cmdUinFlagEx2 = paramInt;
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopRankConfig", 2, "decodeSinglePbMsg_GroupDis, groupMemberFlagEx2=" + paramInt + ", troopUin=" + paramLong + ", hummer message cmdUinFlagEx2=" + localTroopInfo.cmdUinFlagEx2);
-      }
-      if (localTroopInfo.cmdUinFlagEx2 != paramInt)
-      {
-        i = m;
-        if (TroopInfo.isCmdUinFlagEx2Open(localTroopInfo.cmdUinFlagEx2, 512) != TroopInfo.isCmdUinFlagEx2Open(paramInt, 512)) {
-          i = 1;
-        }
-        localTroopInfo.cmdUinFlagEx2 = paramInt;
-        paramInt = j;
-      }
-      for (;;)
-      {
-        if (paramInt != 0)
-        {
-          localTroopManager.b(localTroopInfo);
-          if (i != 0) {
-            a(paramQQAppInterface, localTroopInfo);
-          }
-        }
-        return;
-        paramInt = i;
-        i = k;
-      }
-    }
-  }
+  protected final List<aknn> a = new ArrayList();
   
-  public static void a(QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo)
+  public void a(boolean paramBoolean)
   {
-    if (TroopInfo.isCmdUinFlagEx2Open(paramTroopInfo.cmdUinFlagEx2, 512)) {}
-    for (int i = 1;; i = 0)
+    try
     {
-      FriendsStatusUtil.a(paramQQAppInterface, paramTroopInfo.troopuin, 1, i);
+      this.a.clear();
       return;
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Map<String, Boolean> paramMap)
-  {
-    paramMap = paramMap.entrySet().iterator();
-    if (paramMap.hasNext())
+    finally
     {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
-      if (((Boolean)localEntry.getValue()).booleanValue()) {}
-      for (int i = 1;; i = 0)
-      {
-        FriendsStatusUtil.a(paramQQAppInterface, (String)localEntry.getKey(), 1, i);
-        break;
-      }
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public static void b(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  /* Error */
+  public boolean a()
   {
-    int i = 0;
-    int j = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopStatusUtil", 2, new Object[] { "HummerMessage::updateTroopRingId: invoked. ", " ringId: ", Integer.valueOf(paramInt), " groupCode: ", Long.valueOf(paramLong) });
-    }
-    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
-    TroopInfo localTroopInfo2 = localTroopManager.b(String.valueOf(paramLong));
-    TroopInfo localTroopInfo1 = localTroopInfo2;
-    if (localTroopInfo2 == null)
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 17	aknk:a	Ljava/util/List;
+    //   6: invokeinterface 28 1 0
+    //   11: istore_1
+    //   12: iload_1
+    //   13: ifne +9 -> 22
+    //   16: iconst_1
+    //   17: istore_1
+    //   18: aload_0
+    //   19: monitorexit
+    //   20: iload_1
+    //   21: ireturn
+    //   22: iconst_0
+    //   23: istore_1
+    //   24: goto -6 -> 18
+    //   27: astore_2
+    //   28: aload_0
+    //   29: monitorexit
+    //   30: aload_2
+    //   31: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	32	0	this	aknk
+    //   11	13	1	bool	boolean
+    //   27	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	12	27	finally
+  }
+  
+  public boolean a(aknn paramaknn)
+  {
+    try
     {
-      localTroopInfo1 = new TroopInfo();
-      localTroopInfo1.udwCmdUinRingtoneID = paramInt;
-      i = 1;
+      boolean bool = this.a.remove(paramaknn);
+      return bool;
     }
-    if (localTroopInfo1.udwCmdUinRingtoneID != paramInt)
+    finally
     {
-      localTroopInfo1.udwCmdUinRingtoneID = paramInt;
-      i = j;
+      paramaknn = finally;
+      throw paramaknn;
     }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        localTroopManager.b(localTroopInfo1);
-        amgb.a(paramQQAppInterface).a(paramInt);
-      }
-      return;
-    }
+  }
+  
+  public abstract boolean a(T paramT, float paramFloat);
+  
+  /* Error */
+  public boolean a(List<aknn> paramList)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +27 -> 30
+    //   6: aload_1
+    //   7: invokeinterface 28 1 0
+    //   12: ifne +18 -> 30
+    //   15: aload_0
+    //   16: getfield 17	aknk:a	Ljava/util/List;
+    //   19: aload_1
+    //   20: invokeinterface 39 2 0
+    //   25: istore_2
+    //   26: aload_0
+    //   27: monitorexit
+    //   28: iload_2
+    //   29: ireturn
+    //   30: iconst_0
+    //   31: istore_2
+    //   32: goto -6 -> 26
+    //   35: astore_1
+    //   36: aload_0
+    //   37: monitorexit
+    //   38: aload_1
+    //   39: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	40	0	this	aknk
+    //   0	40	1	paramList	List<aknn>
+    //   25	7	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   6	26	35	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aknk
  * JD-Core Version:    0.7.0.1
  */

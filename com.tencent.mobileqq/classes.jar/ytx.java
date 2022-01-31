@@ -1,28 +1,42 @@
-import android.content.Context;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-final class ytx
+class ytx
+  implements Animator.AnimatorListener
 {
-  public int a = -2147483648;
-  public int b = -2147483648;
-  public int c = -2147483648;
-  public int d = -2147483648;
+  ytx(ytv paramytv) {}
   
-  public ytx(Context paramContext, int paramInt1, int paramInt2)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0))
-    {
-      yxp.d("GdtBannerViewWithLetterStyle", "constructor");
-      return;
+    if (ytv.a(this.a) != null) {
+      ytv.a(this.a).a();
     }
-    this.a = Double.valueOf(0.02892561983471075D * paramInt1).intValue();
-    this.b = Double.valueOf(0.02666666666666667D * paramInt2).intValue();
-    this.c = Double.valueOf(0.06666666666666667D * paramInt2).intValue();
-    this.d = Double.valueOf(0.16D * paramInt2).intValue();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (ytv.a(this.a) != null) {
+      ytv.a(this.a).a();
+    }
+    if (ytv.a(this.a) != null)
+    {
+      ytv.a(ytv.a(this.a), null);
+      ytv.a(this.a).a();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (ytv.a(this.a) != null) {
+      ytv.a(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ytx
  * JD-Core Version:    0.7.0.1
  */

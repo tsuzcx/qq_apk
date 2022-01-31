@@ -1,95 +1,79 @@
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.hotpic.HotPicData;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class aspv
+  extends aspk
 {
-  public String a;
-  public List<String> a;
-  public boolean a;
-  
-  public aspv()
+  public static URL b(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public static aspv a(String paramString)
-  {
-    boolean bool = true;
-    if (paramString == null) {
-      return null;
-    }
     try
     {
-      aspv localaspv = new aspv();
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("mainswitch", 0) == 1) {}
-      for (;;)
-      {
-        localaspv.jdField_a_of_type_Boolean = bool;
-        localaspv.jdField_a_of_type_JavaLangString = paramString.optString("qmcf", "");
-        paramString = a(paramString.optJSONArray("black"));
-        localaspv.jdField_a_of_type_JavaUtilList.addAll(paramString);
-        return localaspv;
-        bool = false;
-      }
-      return null;
+      paramString = new URL("hot_pic_origin", "", paramString);
+      return paramString;
     }
-    catch (Exception paramString)
+    catch (MalformedURLException paramString)
     {
-      QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData parse error", paramString);
+      paramString.printStackTrace();
     }
+    return null;
   }
   
-  private static List<String> a(JSONArray paramJSONArray)
+  protected String a(HotPicData paramHotPicData)
   {
-    ArrayList localArrayList = new ArrayList();
-    if (paramJSONArray != null)
+    return paramHotPicData.originalUrl;
+  }
+  
+  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    paramDownloadParams = (HotPicData)paramDownloadParams.mExtraInfo;
+    String str = a(paramDownloadParams);
+    File localFile = a(str);
+    if (localFile.exists())
     {
-      int j = paramJSONArray.length();
-      int i = 0;
-      for (;;)
-      {
-        if (i < j) {
-          try
-          {
-            localArrayList.add(paramJSONArray.getString(i).trim());
-            i += 1;
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              QLog.e("MultiAIOEntranceConfigProcessor", 2, "MultiAIOEntranceConfigData processJsonArray error", localException);
-            }
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "loadImageFile file exist:" + localFile.getAbsolutePath());
       }
+      return localFile;
     }
-    return localArrayList;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
+    localFile.getParentFile().mkdirs();
+    if ((bdal.a()) && (bdal.b() < 20971520L)) {
+      throw new IOException("SD card free space is " + bdal.b());
+    }
+    Object localObject = new File(a);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdir();
+    }
+    int i = a(str, localFile);
+    if (i == 0)
+    {
+      localObject = awiz.a(localFile.getAbsolutePath());
+      if (!paramDownloadParams.originalMD5.equalsIgnoreCase((String)localObject))
+      {
+        localFile.delete();
+        paramURLDrawableHandler.onFileDownloadFailed(0);
+        return null;
+      }
+      paramURLDrawableHandler.onFileDownloadSucceed(localFile.length());
+      if (QLog.isColorLevel()) {
+        QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->0");
+      }
+      return localFile;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("HotPicManager.HotPicOriginDownLoader", 2, "url->" + str + " result->" + i);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aspv
  * JD-Core Version:    0.7.0.1
  */

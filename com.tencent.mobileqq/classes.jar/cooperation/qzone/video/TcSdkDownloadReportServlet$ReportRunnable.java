@@ -1,6 +1,6 @@
 package cooperation.qzone.video;
 
-import asyr;
+import aupo;
 import com.tencent.mobileqq.myapp.net.HttpResponseException;
 import com.tencent.qphone.base.util.QLog;
 
@@ -21,7 +21,7 @@ public class TcSdkDownloadReportServlet$ReportRunnable
       if (QLog.isDevelopLevel()) {
         QLog.d("TcSdkDownloadReportServlet", 4, "tcSdkReport, report:" + this.a);
       }
-      asyr.a(this.a, null, "GET", null);
+      aupo.a(this.a, null, "GET", null);
       if (QLog.isDevelopLevel()) {
         QLog.d("TcSdkDownloadReportServlet", 4, "report success");
       }
@@ -40,7 +40,7 @@ public class TcSdkDownloadReportServlet$ReportRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.video.TcSdkDownloadReportServlet.ReportRunnable
  * JD-Core Version:    0.7.0.1
  */

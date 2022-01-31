@@ -1,12 +1,22 @@
-import java.util.Map;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface zcd
+class zcd
+  implements View.OnClickListener
 {
-  public abstract boolean a(String paramString, long paramLong, Map<String, Object> paramMap);
+  zcd(zcc paramzcc, DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Zcc, 0);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zcd
  * JD-Core Version:    0.7.0.1
  */

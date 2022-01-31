@@ -1,26 +1,28 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nzx
-  implements zcd
+  implements bhqd
 {
-  public boolean a(String paramString, long paramLong, Map<String, Object> paramMap)
+  public nzx(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramLong == 8589934598L)
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GameWebReportLoad", 2, "handleEvent type=" + paramLong);
-      }
-      paramString = new Bundle();
-      wxr.a().a(138, paramString);
     }
-    return false;
+    for (;;)
+    {
+      ReadInJoySettingActivity.b(this.a).cancel();
+      return;
+      ReadInJoySettingActivity.e(this.a, false);
+      ReadInJoySettingActivity.d(this.a, ReadInJoySettingActivity.d(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzx
  * JD-Core Version:    0.7.0.1
  */

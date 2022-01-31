@@ -1,40 +1,26 @@
-import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
-import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuImageLayout;
+import com.tencent.widget.BubblePopupWindow;
 
-final class bdla
-  implements ITMAssistantExchangeURLListenner
+public class bdla
+  extends TextView
 {
-  public void onExchangedURLSucceed(ArrayList arg1, boolean paramBoolean)
+  public bdla(QQCustomMenuImageLayout paramQQCustomMenuImageLayout, Context paramContext)
   {
-    bdii.b(bdkx.jdField_a_of_type_JavaLangString, "onExchangedURLSucceed --- ");
-    if ((paramBoolean) && (??? != null) && (???.size() > 0))
-    {
-      ??? = ???.iterator();
-      while (???.hasNext())
-      {
-        Object localObject1 = ???.next();
-        if ((localObject1 instanceof AppSimpleDetail))
-        {
-          int i = ((AppSimpleDetail)localObject1).versionCode;
-          if (i > 0) {
-            bdkx.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(((AppSimpleDetail)localObject1).packageName, Integer.valueOf(i));
-          }
-        }
-      }
-    }
-    synchronized (bdkx.jdField_a_of_type_JavaLangObject)
-    {
-      bdkx.jdField_a_of_type_JavaLangObject.notify();
-      return;
-    }
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    boolean bool = super.performClick();
+    QQCustomMenuImageLayout.a(this.a).b();
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdla
  * JD-Core Version:    0.7.0.1
  */

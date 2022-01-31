@@ -1,86 +1,49 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.SurfaceHolder;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
-import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 public class ocr
-  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
 {
-  private WeakReference<ReadInJoyArticleBottomVideoView> a;
+  public static HashSet<String> a = new HashSet();
   
-  public ocr(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
+  public static void a()
   {
-    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
+    a.clear();
   }
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public static void a(int paramInt, rjg paramrjg)
   {
-    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (paramTVK_IMediaPlayer == null) {
-      return;
-    }
-    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 9);
-    nzb.c = true;
-    paramTVK_IMediaPlayer.j();
-    paramTVK_IMediaPlayer.q();
-    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).a = true;
-  }
-  
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
-  {
-    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (paramTVK_IMediaPlayer == null) {}
+    if (paramrjg == null) {}
+    rjk localrjk;
+    AdvertisementInfo localAdvertisementInfo;
     do
     {
+      do
+      {
+        return;
+        localrjk = paramrjg.a();
+        paramrjg = paramrjg.a();
+      } while ((paramrjg == null) || (localrjk == null) || (!(localrjk.a instanceof AdvertisementInfo)));
+      localAdvertisementInfo = (AdvertisementInfo)localrjk.a;
+    } while (paramInt < localAdvertisementInfo.mC2SReportTriggerTime / 1000);
+    a(paramrjg, localAdvertisementInfo, localrjk);
+  }
+  
+  public static boolean a(Activity paramActivity, AdvertisementInfo paramAdvertisementInfo, rjk paramrjk)
+  {
+    if ((paramrjk == null) || (paramActivity == null) || (paramAdvertisementInfo == null)) {}
+    while ((!(paramrjk.a instanceof AdvertisementInfo)) || (!paramrjk.b) || (a.contains(paramAdvertisementInfo.mAdTraceId)) || (paramAdvertisementInfo.mC2SVideoPlayUrl == null) || (paramAdvertisementInfo.mC2SVideoPlayUrl.size() <= 0)) {
       return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArticleBottomVideoView", 0, "error msg = " + paramString);
-      }
-      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 8);
-      paramTVK_IMediaPlayer.j();
-    } while (!QLog.isColorLevel());
-    QLog.i("ReadInJoyArticleBottomVideoView", 3, "WebFastProteusViewAdBannerVideoCreator start video error");
-    return false;
-  }
-  
-  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
-  
-  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
-  {
-    paramSurfaceHolder = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (paramSurfaceHolder == null) {
-      return;
     }
-    paramSurfaceHolder.p();
-  }
-  
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
-    if (paramTVK_IMediaPlayer == null) {
-      return;
-    }
-    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer) != null))
-    {
-      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
-      return;
-    }
-    ReadInJoyArticleBottomVideoView.b(paramTVK_IMediaPlayer);
+    noy.a(new obk().a(paramActivity).a(noy.E).b(noy.L).a(paramAdvertisementInfo).a());
+    a.add(paramAdvertisementInfo.mAdTraceId);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ocr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afhb
-  implements afta
+class afhb
+  implements DialogInterface.OnClickListener
 {
-  public afhb(TroopView paramTroopView) {}
+  afhb(afgz paramafgz) {}
   
-  public void a(int paramInt)
-  {
-    if (paramInt == SimpleCheckableSlidingIndicator.a) {
-      TroopView.a(this.a);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afhb
  * JD-Core Version:    0.7.0.1
  */

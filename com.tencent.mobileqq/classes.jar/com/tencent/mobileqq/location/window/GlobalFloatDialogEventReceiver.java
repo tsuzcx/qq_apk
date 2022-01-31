@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import arzc;
+import atpy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 public class GlobalFloatDialogEventReceiver
   extends BroadcastReceiver
 {
-  private arzc a;
+  private atpy a;
   
   private void b()
   {
@@ -40,20 +40,20 @@ public class GlobalFloatDialogEventReceiver
     BaseApplicationImpl.context.unregisterReceiver(this);
   }
   
-  public void a(arzc paramarzc)
+  public void a(atpy paramatpy)
   {
-    this.a = paramarzc;
-    paramarzc = new IntentFilter();
-    paramarzc.addAction("tencent.mobileqq.floatingscreen.statuschange");
-    paramarzc.addAction("mqq.intent.action.QQ_BACKGROUND");
-    paramarzc.addAction("mqq.intent.action.QQ_FOREGROUND");
-    paramarzc.addAction("mqq.intent.action.ACCOUNT_CHANGED");
-    paramarzc.addAction("mqq.intent.action.ACCOUNT_KICKED");
-    paramarzc.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
-    paramarzc.addAction("mqq.intent.action.FORCE_LOGOUT");
-    paramarzc.addAction("mqq.intent.action.LOGOUT");
-    paramarzc.addAction("android.intent.action.SCREEN_OFF");
-    BaseApplicationImpl.context.registerReceiver(this, paramarzc);
+    this.a = paramatpy;
+    paramatpy = new IntentFilter();
+    paramatpy.addAction("tencent.mobileqq.floatingscreen.statuschange");
+    paramatpy.addAction("mqq.intent.action.QQ_BACKGROUND");
+    paramatpy.addAction("mqq.intent.action.QQ_FOREGROUND");
+    paramatpy.addAction("mqq.intent.action.ACCOUNT_CHANGED");
+    paramatpy.addAction("mqq.intent.action.ACCOUNT_KICKED");
+    paramatpy.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
+    paramatpy.addAction("mqq.intent.action.FORCE_LOGOUT");
+    paramatpy.addAction("mqq.intent.action.LOGOUT");
+    paramatpy.addAction("android.intent.action.SCREEN_OFF");
+    BaseApplicationImpl.context.registerReceiver(this, paramatpy);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -86,7 +86,7 @@ public class GlobalFloatDialogEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.location.window.GlobalFloatDialogEventReceiver
  * JD-Core Version:    0.7.0.1
  */

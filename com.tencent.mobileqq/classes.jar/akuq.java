@@ -1,23 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
-
-public final class akuq
-  implements Parcelable.Creator<SosoInterface.SosoCell>
+public class akuq
 {
-  public SosoInterface.SosoCell a(Parcel paramParcel)
-  {
-    return new SosoInterface.SosoCell(paramParcel);
-  }
-  
-  public SosoInterface.SosoCell[] a(int paramInt)
-  {
-    return new SosoInterface.SosoCell[paramInt];
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akuq
  * JD-Core Version:    0.7.0.1
  */

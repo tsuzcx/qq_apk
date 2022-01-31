@@ -1,42 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.qphone.base.util.QLog;
-
-class aoqs
-  implements View.OnClickListener
+public class aoqs
 {
-  aoqs(aoqr paramaoqr, View paramView) {}
+  public String a;
+  public boolean a;
+  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
+  public String c = "https://club.vip.qq.com/interact/selector?from=setting";
   
-  public void onClick(View paramView)
+  public aoqs()
   {
-    paramView = this.jdField_a_of_type_AndroidViewView.getTag();
-    if ((paramView instanceof aoqa))
-    {
-      paramView = (WeiYunFileInfo)((aoqa)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-      if ((apel.a(paramView.a)) && (QLog.isColorLevel())) {
-        QLog.d(QfileBaseCloudFileTabView.b, 2, "there is a bug ");
-      }
-      QfileBaseCloudFileTabView.b(this.jdField_a_of_type_Aoqr.a).a().a(paramView);
-      this.jdField_a_of_type_Aoqr.a.au_();
-    }
-    do
-    {
-      return;
-      if ((paramView instanceof aorg))
-      {
-        paramView = (WeiYunFileInfo)((aorg)this.jdField_a_of_type_AndroidViewView.getTag()).a;
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e(QfileBaseCloudFileTabView.b, 2, "unknow Object");
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = alpo.a(2131711646);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqs
  * JD-Core Version:    0.7.0.1
  */

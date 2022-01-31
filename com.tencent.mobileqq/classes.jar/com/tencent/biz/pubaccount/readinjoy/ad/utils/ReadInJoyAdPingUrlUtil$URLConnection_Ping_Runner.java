@@ -1,6 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.ad.utils;
 
-import ajog;
+import aaoo;
+import aaop;
+import aaoq;
+import alft;
 import android.text.TextUtils;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -14,9 +17,6 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
-import yyp;
-import yyq;
-import yyr;
 
 class ReadInJoyAdPingUrlUtil$URLConnection_Ping_Runner
   implements Runnable
@@ -50,7 +50,7 @@ class ReadInJoyAdPingUrlUtil$URLConnection_Ping_Runner
           break label207;
         }
         localObject1 = (HttpsURLConnection)((URL)localObject1).openConnection();
-        localObject2 = ajog.a();
+        localObject2 = alft.a();
         localObject3 = new StringBuilder().append(" URLConnection_Ping_Runner https sslContext is not null :");
         if (localObject2 != null) {
           break label202;
@@ -94,11 +94,11 @@ class ReadInJoyAdPingUrlUtil$URLConnection_Ping_Runner
       ((StringBuilder)localObject3).append("sp-cuin=");
       ((StringBuilder)localObject3).append(this.a.get("uin").toString());
     }
-    Object localObject2 = new yyq();
-    ((yyq)localObject2).a = "ce2d9f";
-    localObject2 = yyp.a(BaseApplication.getContext(), (yyq)localObject2);
+    Object localObject2 = new aaop();
+    ((aaop)localObject2).a = "ce2d9f";
+    localObject2 = aaoo.a(BaseApplication.getContext(), (aaop)localObject2);
     if (localObject2 != null) {}
-    for (localObject2 = ((yyr)localObject2).a;; localObject2 = null)
+    for (localObject2 = ((aaoq)localObject2).a;; localObject2 = null)
     {
       if ((localObject2 != null) && (((qq_ad_get.QQAdGet.DeviceInfo)localObject2).client_ipv4.has()))
       {
@@ -134,7 +134,7 @@ class ReadInJoyAdPingUrlUtil$URLConnection_Ping_Runner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ad.utils.ReadInJoyAdPingUrlUtil.URLConnection_Ping_Runner
  * JD-Core Version:    0.7.0.1
  */

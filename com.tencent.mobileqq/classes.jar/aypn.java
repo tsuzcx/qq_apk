@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import java.util.List;
 
-class aypn
-  implements ITransCallbackForReport
+public class aypn
+  extends aypw
 {
-  aypn(aypl paramaypl) {}
-  
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public aypn(GroupSearchEngine paramGroupSearchEngine, aypx paramaypx, String paramString, int paramInt)
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    super(paramGroupSearchEngine, paramaypx, paramString, paramInt);
+  }
+  
+  public ayjk a(List<ayjl> paramList, String paramString)
+  {
+    return new ayhd(paramList, paramString, GroupSearchEngine.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aypn
  * JD-Core Version:    0.7.0.1
  */

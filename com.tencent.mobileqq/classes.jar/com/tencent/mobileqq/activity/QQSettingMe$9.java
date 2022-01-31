@@ -15,7 +15,7 @@ class QQSettingMe$9
   
   public void run()
   {
-    int i = (int)this.this$0.a.getResources().getDimension(2131296788);
+    int i = (int)this.this$0.a.getResources().getDimension(2131296804);
     Object localObject = new int[2];
     this.this$0.d.getLocationOnScreen((int[])localObject);
     int j = this.this$0.g.getWidth();
@@ -35,14 +35,14 @@ class QQSettingMe$9
         QLog.d("QQSettingRedesign", 2, "setBottomBtnMarginLeft, diffMargin = " + i);
       }
       return;
-      i = (int)this.this$0.a.getResources().getDimension(2131296793);
+      i = (int)this.this$0.a.getResources().getDimension(2131296809);
       QLog.e("QQSettingRedesign", 1, "setBottomBtnMarginLeft, but getWidth return 0");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingMe.9
  * JD-Core Version:    0.7.0.1
  */

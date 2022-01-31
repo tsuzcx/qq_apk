@@ -1,28 +1,29 @@
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
-class afso
-  implements afsl
+public class afso
+  extends RecyclerView.ViewHolder
 {
-  afso(afsn paramafsn) {}
+  public ImageView a;
+  public ProgressBar a;
+  public TextView a;
+  public ImageView b;
   
-  public void a(String paramString, int paramInt)
+  public afso(View paramView)
   {
-    ((akaa)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(159)).c(paramString);
-    if (paramInt == 0)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-      return;
-    }
-    if (this.a.jdField_a_of_type_Afrw != null) {
-      this.a.jdField_a_of_type_Afrw.a();
-    }
-    afsn.a(this.a);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131372111));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372110));
+    this.b = ((ImageView)paramView.findViewById(2131372108));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131372112));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afso
  * JD-Core Version:    0.7.0.1
  */

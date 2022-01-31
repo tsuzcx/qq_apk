@@ -1,27 +1,13 @@
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-final class bbdp
+public class bbdp
   implements DialogInterface.OnClickListener
 {
-  bbdp(Activity paramActivity, axof paramaxof) {}
+  public bbdp(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
-      paramDialogInterface.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramDialogInterface);
-    }
-    while (this.jdField_a_of_type_Axof == null) {
-      return;
-    }
-    this.jdField_a_of_type_Axof.b();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

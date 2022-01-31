@@ -1,143 +1,193 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.SparseIntArray;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.data.CmGamePushItem;
+import com.tencent.mobileqq.apollo.process.ui.framework.CmGameFloatView;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.view.ApolloGameInfoFragment;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
+import org.json.JSONObject;
+
 public class akvl
-  extends bbwt
+  implements bhqd
 {
-  /* Error */
-  public void onDone(bbwu parambbwu)
+  public akvl(CmGameFloatView paramCmGameFloatView) {}
+  
+  public void OnClick(View paramView, int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: aload_1
-    //   2: invokespecial 17	bbwt:onDone	(Lbbwu;)V
-    //   5: iconst_3
-    //   6: aload_1
-    //   7: invokevirtual 23	bbwu:a	()I
-    //   10: if_icmpne +103 -> 113
-    //   13: aload_1
-    //   14: getfield 26	bbwu:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   17: invokeinterface 31 1 0
-    //   22: iconst_1
-    //   23: if_icmpne +90 -> 113
-    //   26: aload_1
-    //   27: getfield 34	bbwu:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   30: aload_1
-    //   31: getfield 37	bbwu:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   34: invokeinterface 43 2 0
-    //   39: checkcast 45	java/io/File
-    //   42: astore 4
-    //   44: aload 4
-    //   46: invokevirtual 49	java/io/File:exists	()Z
-    //   49: ifeq +64 -> 113
-    //   52: aload 4
-    //   54: new 51	java/lang/StringBuilder
-    //   57: dup
-    //   58: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   61: aload 4
-    //   63: invokevirtual 56	java/io/File:getParent	()Ljava/lang/String;
-    //   66: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: getstatic 63	java/io/File:separator	Ljava/lang/String;
-    //   72: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   78: invokestatic 71	nav:a	(Ljava/io/File;Ljava/lang/String;)V
-    //   81: aload_1
-    //   82: invokevirtual 74	bbwu:a	()Landroid/os/Bundle;
-    //   85: astore_1
-    //   86: aload_1
-    //   87: ifnull +20 -> 107
-    //   90: aload_1
-    //   91: ldc 76
-    //   93: invokevirtual 82	android/os/Bundle:getLong	(Ljava/lang/String;)J
-    //   96: lstore_2
-    //   97: lconst_0
-    //   98: lload_2
-    //   99: lcmp
-    //   100: ifeq +7 -> 107
-    //   103: lload_2
-    //   104: invokestatic 87	akvi:a	(J)V
-    //   107: aload 4
-    //   109: invokevirtual 90	java/io/File:delete	()Z
-    //   112: pop
-    //   113: return
-    //   114: astore_1
-    //   115: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   118: ifeq +31 -> 149
-    //   121: ldc 97
-    //   123: iconst_2
-    //   124: new 51	java/lang/StringBuilder
-    //   127: dup
-    //   128: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   131: ldc 99
-    //   133: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   136: aload_1
-    //   137: invokevirtual 102	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   140: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   146: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   149: aload 4
-    //   151: invokevirtual 90	java/io/File:delete	()Z
-    //   154: pop
-    //   155: return
-    //   156: astore_1
-    //   157: return
-    //   158: astore_1
-    //   159: invokestatic 95	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   162: ifeq +31 -> 193
-    //   165: ldc 97
-    //   167: iconst_2
-    //   168: new 51	java/lang/StringBuilder
-    //   171: dup
-    //   172: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   175: ldc 108
-    //   177: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   180: aload_1
-    //   181: invokevirtual 109	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   184: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   187: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   190: invokestatic 106	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   193: aload 4
-    //   195: invokevirtual 90	java/io/File:delete	()Z
-    //   198: pop
-    //   199: return
-    //   200: astore_1
-    //   201: return
-    //   202: astore_1
-    //   203: aload 4
-    //   205: invokevirtual 90	java/io/File:delete	()Z
-    //   208: pop
-    //   209: aload_1
-    //   210: athrow
-    //   211: astore_1
-    //   212: return
-    //   213: astore 4
-    //   215: goto -6 -> 209
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	218	0	this	akvl
-    //   0	218	1	parambbwu	bbwu
-    //   96	8	2	l	long
-    //   42	162	4	localFile	java.io.File
-    //   213	1	4	localException	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   52	86	114	java/lang/Exception
-    //   90	97	114	java/lang/Exception
-    //   103	107	114	java/lang/Exception
-    //   149	155	156	java/lang/Exception
-    //   52	86	158	java/lang/OutOfMemoryError
-    //   90	97	158	java/lang/OutOfMemoryError
-    //   103	107	158	java/lang/OutOfMemoryError
-    //   193	199	200	java/lang/Exception
-    //   52	86	202	finally
-    //   90	97	202	finally
-    //   103	107	202	finally
-    //   115	149	202	finally
-    //   159	193	202	finally
-    //   107	113	211	java/lang/Exception
-    //   203	209	213	java/lang/Exception
+    CmGameFloatView.a(this.a).dismiss();
+    switch (CmGameFloatView.a(this.a).get(paramInt))
+    {
+    case 4: 
+    case 7: 
+    case 8: 
+    default: 
+      return;
+    case 0: 
+      if ((this.a.jdField_a_of_type_Aktr != null) && (this.a.jdField_a_of_type_Aktr.a()))
+      {
+        QLog.d("cmframe_CmGameFloatView", 1, "pack up game");
+        this.a.f();
+        if (this.a.jdField_a_of_type_Akpy != null) {
+          this.a.jdField_a_of_type_Akpy.c();
+        }
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) || ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter != 0) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter != 1) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter != 7))) {
+          break label1088;
+        }
+      }
+      break;
+    }
+    label291:
+    label1082:
+    label1088:
+    for (paramInt = 0;; paramInt = 1)
+    {
+      int i;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)
+      {
+        i = this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
+        label212:
+        if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {
+          break label291;
+        }
+      }
+      for (paramView = String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);; paramView = "")
+      {
+        VipUtils.a(null, "cmshow", "Apollo", "miniature_game", i, paramInt, new String[] { paramView });
+        return;
+        paramView = this.a.jdField_a_of_type_Aktr.a();
+        if ((paramView == null) || (paramView.isFinishing())) {
+          break;
+        }
+        paramView.finish();
+        break;
+        i = 0;
+        break label212;
+      }
+      if ((this.a.jdField_a_of_type_Aktr != null) && (this.a.jdField_a_of_type_Aktr.a()) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)) {}
+      try
+      {
+        paramView = new JSONObject();
+        paramView.put("gameId", this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
+        paramView.put("isSelectFriend", 1);
+        paramView.put("gameMode", this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameMode);
+        paramView.put("roomId", this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.roomId);
+        this.a.jdField_a_of_type_Aktr.b(paramView.toString());
+        if (this.a.jdField_a_of_type_Akpy != null) {
+          this.a.jdField_a_of_type_Akpy.b();
+        }
+        if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)
+        {
+          paramView = String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);
+          VipUtils.a(null, "cmshow", "Apollo", "clk_share", 0, 0, new String[] { paramView });
+          return;
+        }
+      }
+      catch (Exception paramView)
+      {
+        for (;;)
+        {
+          QLog.e("cmframe_CmGameFloatView", 1, "share game error, e=", paramView);
+          continue;
+          paramView = "";
+        }
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam != null)
+      {
+        paramInt = this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
+        if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {
+          break label631;
+        }
+      }
+      label631:
+      for (paramView = String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId);; paramView = "")
+      {
+        VipUtils.a(null, "cmshow", "Apollo", "about_game", paramInt, 0, new String[] { paramView });
+        paramView = new Intent();
+        paramView.putExtra("extra_startcheckparam", this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+        PublicFragmentActivity.a(this.a.jdField_a_of_type_Aktr.a(), paramView, ApolloGameInfoFragment.class, 10000);
+        if (this.a.jdField_a_of_type_Akpy == null) {
+          break;
+        }
+        this.a.jdField_a_of_type_Akpy.d();
+        return;
+        paramInt = 0;
+        break label518;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) {
+        break;
+      }
+      ApolloGameUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId, null);
+      VipUtils.a(null, "cmshow", "Apollo", "clk_create_shortcut", 0, 0, new String[] { String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId) });
+      return;
+      this.a.b();
+      return;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam == null) || (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem == null)) {
+        break;
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem.is_show_red == 1)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem.is_show_red = 0;
+        CmGameFloatView.a(this.a).setVisibility(8);
+        if (CmGameFloatView.a(this.a) != null) {
+          CmGameFloatView.a(this.a).a(CmGameFloatView.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem.content, 0);
+        }
+        paramView = new Bundle();
+        paramView.putSerializable("CmGamePushItem", this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem);
+        QIPCClientHelper.getInstance().callServer("cm_game_module", "action_update_game_push", paramView, null);
+      }
+      paramView = this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem.url;
+      Activity localActivity = (Activity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+      if ((!TextUtils.isEmpty(paramView)) && (localActivity != null)) {
+        akro.b(localActivity, paramView);
+      }
+      for (paramInt = 0;; paramInt = 1)
+      {
+        VipUtils.a(null, "cmshow", "Apollo", "clk_promote", this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.src, paramInt, new String[] { String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.gameId), this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.pushItem.msg_id });
+        return;
+      }
+      paramView = BaseApplicationImpl.getApplication().getSharedPreferences("cmgame_sp", 0);
+      boolean bool2 = paramView.getBoolean("game_debug_tool_switch", true);
+      paramView = paramView.edit();
+      if (!bool2) {}
+      for (boolean bool1 = true;; bool1 = false)
+      {
+        paramView.putBoolean("game_debug_tool_switch", bool1).commit();
+        if (this.a.jdField_a_of_type_MqqUtilWeakReference == null) {
+          break;
+        }
+        paramView = (Activity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+        if ((paramView == null) || (!(paramView instanceof ApolloGameActivity))) {
+          break;
+        }
+        paramView = (ApolloGameActivity)paramView;
+        if ((bool2) || (!akoe.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam))) {
+          break label1082;
+        }
+        paramView.b(true);
+        return;
+      }
+      paramView.b(false);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvl
  * JD-Core Version:    0.7.0.1
  */

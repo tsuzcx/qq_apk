@@ -1,10 +1,10 @@
 package cooperation.qqpim;
 
-import bgta;
-import bgtb;
-import bgtc;
-import bgte;
-import bgth;
+import bitz;
+import biua;
+import biub;
+import biud;
+import biug;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -18,9 +18,9 @@ public class QQPimGetTipsInfoIPC
   private static int jdField_a_of_type_Int = -1;
   private static QQPimGetTipsInfoIPC jdField_a_of_type_CooperationQqpimQQPimGetTipsInfoIPC;
   private long jdField_a_of_type_Long;
-  private bgte jdField_a_of_type_Bgte;
-  bgth jdField_a_of_type_Bgth = new bgtb(this);
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new bgtc(this, bgta.c);
+  private biud jdField_a_of_type_Biud;
+  biug jdField_a_of_type_Biug = new biua(this);
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new biub(this, bitz.c);
   private QQPimPluginLoadRunnable jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable;
   public QQPimTipsInfo a;
   private String jdField_a_of_type_JavaLangString;
@@ -51,7 +51,7 @@ public class QQPimGetTipsInfoIPC
   
   public void a()
   {
-    this.jdField_a_of_type_Bgte = null;
+    this.jdField_a_of_type_Biud = null;
     if (this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable != null)
     {
       this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable.a();
@@ -59,13 +59,13 @@ public class QQPimGetTipsInfoIPC
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, bgte parambgte, String paramString1, String paramString2)
+  public void a(QQAppInterface paramQQAppInterface, biud parambiud, String paramString1, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(bgta.jdField_a_of_type_JavaLangString, 2, "QQPimGetTipsInfoIPC.getContactTipsIpc()" + parambgte.hashCode());
+      QLog.i(bitz.jdField_a_of_type_JavaLangString, 2, "QQPimGetTipsInfoIPC.getContactTipsIpc()" + parambiud.hashCode());
     }
     jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Bgte = parambgte;
+    this.jdField_a_of_type_Biud = parambiud;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
     try
@@ -92,14 +92,14 @@ public class QQPimGetTipsInfoIPC
     if (this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable != null) {
       this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable.a();
     }
-    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_Bgth);
+    this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable = new QQPimPluginLoadRunnable(this.jdField_a_of_type_Biug);
     ThreadManager.postImmediately(this.jdField_a_of_type_CooperationQqpimQQPimPluginLoadRunnable, null, true);
   }
   
   public void c()
   {
     if (QLog.isColorLevel()) {
-      QLog.i(bgta.jdField_a_of_type_JavaLangString, 2, "QQPimGetTipsInfoIPC.noticeClickTipsIPC()");
+      QLog.i(bitz.jdField_a_of_type_JavaLangString, 2, "QQPimGetTipsInfoIPC.noticeClickTipsIPC()");
     }
     jdField_a_of_type_Int = 1;
     QQPimPluginProxyService.a(a());
@@ -107,7 +107,7 @@ public class QQPimGetTipsInfoIPC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqpim.QQPimGetTipsInfoIPC
  * JD-Core Version:    0.7.0.1
  */

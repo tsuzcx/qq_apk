@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo;
 
-import airx;
-import ajkn;
+import akji;
+import albz;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -9,21 +9,21 @@ import com.tencent.qphone.base.util.QLog;
 public class ApolloManager$9
   implements Runnable
 {
-  public ApolloManager$9(airx paramairx, SessionInfo paramSessionInfo) {}
+  public ApolloManager$9(akji paramakji, SessionInfo paramSessionInfo) {}
   
   public void run()
   {
     try
     {
       if ((this.a.jdField_a_of_type_Int == 0) && (this.this$0.a != null)) {
-        airx.a(this.this$0.a, this.a.jdField_a_of_type_JavaLangString, "C2CAIO");
+        akji.a(this.this$0.a, this.a.jdField_a_of_type_JavaLangString, "C2CAIO");
       }
       for (;;)
       {
-        ajkn.a().a(this.this$0.a, this.a);
+        albz.a().a(this.this$0.a, this.a);
         return;
         if ((this.a.jdField_a_of_type_Int == 1) && (this.this$0.a != null)) {
-          ((airx)this.this$0.a.getManager(153)).g();
+          ((akji)this.this$0.a.getManager(153)).g();
         }
       }
       return;
@@ -38,7 +38,7 @@ public class ApolloManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloManager.9
  * JD-Core Version:    0.7.0.1
  */

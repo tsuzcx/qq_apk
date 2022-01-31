@@ -1,60 +1,150 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Looper;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendBindContactGuideBuilderV2.1;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendBindContactGuideBuilderV2.2;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendBindContactGuideBuilderV2.3;
+import com.tencent.mobileqq.activity.phone.DenyRunnable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-class ahhd
-  implements ahbr
+public class ahhd
+  extends ahgy
+  implements View.OnClickListener
 {
-  ahhd(ahhb paramahhb, ahgg paramahgg) {}
+  public avqd a;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public ahhd(Context paramContext, QQAppInterface paramQQAppInterface, akgy paramakgy, avqe paramavqe)
   {
-    int j = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("springHb_SpringHbEntryPendantHolder", 2, "tryLoadActivityRes resCode:" + paramInt + ",pathRes:" + paramPathResult);
-    }
-    int i;
-    if (paramInt == 0)
+    super(paramContext, paramQQAppInterface, paramakgy, paramavqe);
+    this.jdField_a_of_type_Avqd = ((avqd)paramavqe);
+  }
+  
+  private void c()
+  {
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
-      i = 1;
-      if (paramPathResult == null) {
-        break label156;
-      }
-    }
-    for (;;)
-    {
-      if (((j & i) == 0) || (bbkk.a(paramPathResult.folderPath))) {
-        break label162;
-      }
-      ahhb.a(this.jdField_a_of_type_Ahhb, paramPathResult.folderPath + File.separator + "pendant" + File.separator);
-      ahhb.b(this.jdField_a_of_type_Ahhb);
-      if (!ahhb.b()) {
-        break label162;
-      }
-      ahhb.a(this.jdField_a_of_type_Ahhb, this.jdField_a_of_type_Ahgg);
-      ahhb.c(this.jdField_a_of_type_Ahhb);
-      ahhb.d(this.jdField_a_of_type_Ahhb);
+      this.jdField_a_of_type_Akgy.a(this);
+      this.jdField_a_of_type_Akgy.notifyDataSetChanged();
       return;
-      i = 0;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new NewFriendBindContactGuideBuilderV2.2(this));
+  }
+  
+  private void d()
+  {
+    NewFriendBindContactGuideBuilderV2.3 local3 = new NewFriendBindContactGuideBuilderV2.3(this);
+    DenyRunnable localDenyRunnable = new DenyRunnable(this.jdField_a_of_type_AndroidContentContext, new aihy(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    aovo.a((Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, local3, localDenyRunnable);
+  }
+  
+  public View a(int paramInt, View paramView)
+  {
+    Object localObject;
+    String str3;
+    String str2;
+    String str1;
+    if ((paramView == null) || (!(paramView.getTag() instanceof ahhe)))
+    {
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561316, null);
+      localObject = new ahhe(null);
+      ((ahhe)localObject).jdField_b_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131361894));
+      ((ahhe)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377884));
+      ((ahhe)localObject).jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377213));
+      ((ahhe)localObject).jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)paramView.findViewById(2131364325));
+      paramView.setTag(localObject);
+      if (this.jdField_a_of_type_Avqd.jdField_a_of_type_Boolean) {
+        break label277;
+      }
+      str3 = this.jdField_a_of_type_Avqd.jdField_a_of_type_Aoki.a.a;
+      str2 = this.jdField_a_of_type_Avqd.jdField_a_of_type_Aoki.a.b;
+      str1 = this.jdField_a_of_type_Avqd.jdField_a_of_type_Aoki.a.c;
+      label149:
+      ((ahhe)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(str3);
+      ((ahhe)localObject).jdField_b_of_type_AndroidWidgetTextView.setText(str2);
+      ((ahhe)localObject).jdField_b_of_type_AndroidWidgetButton.setText(str1);
+      paramView.setOnClickListener(this);
+      ((ahhe)localObject).jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
+      ((ahhe)localObject).jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
+      a(paramView, false);
+      localObject = (altc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34);
+      if (this.jdField_a_of_type_Avqd.jdField_a_of_type_Boolean) {
+        break label325;
+      }
+      if (!((altc)localObject).d)
+      {
+        ((altc)localObject).d = true;
+        azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F1D", "0X8009F1D", 0, 0, "", "", "", "");
+      }
+    }
+    label277:
+    label325:
+    while (((altc)localObject).e)
+    {
+      return paramView;
+      localObject = (ahhe)paramView.getTag();
       break;
-      label156:
-      j = 0;
+      str3 = this.jdField_a_of_type_Avqd.jdField_a_of_type_Aoki.b.a;
+      str2 = this.jdField_a_of_type_Avqd.jdField_a_of_type_Aoki.b.b;
+      str1 = this.jdField_a_of_type_Avqd.jdField_a_of_type_Aoki.b.c;
+      break label149;
     }
-    label162:
-    if (!bbkk.a(this.jdField_a_of_type_Ahgg.a)) {
-      ahhb.c(this.jdField_a_of_type_Ahhb, this.jdField_a_of_type_Ahgg);
+    ((altc)localObject).e = true;
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F1F", "0X8009F1F", 0, 0, "", "", "", "");
+    return paramView;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendBindContactGuideBuilderV2", 2, "uploadContact");
     }
-    for (;;)
+    ThreadManager.excute(new NewFriendBindContactGuideBuilderV2.1(this), 16, null, false);
+    ContactBindedActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 15, 2, null);
+    c();
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = paramView.getId();
+    if (i == 2131364325)
     {
-      QLog.e("springHb_SpringHbEntryPendantHolder", 2, "tryLoadActivityRes --> PreloadFailed，resCode：" + paramInt);
-      return;
-      ahhb.b(this.jdField_a_of_type_Ahhb, this.jdField_a_of_type_Ahgg);
+      ((altc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(34)).a();
+      c();
     }
+    while ((i != 2131361894) && (i != 2131363268)) {
+      return;
+    }
+    if (!bdee.d(this.jdField_a_of_type_AndroidContentContext))
+    {
+      paramView = BaseApplicationImpl.getContext();
+      QQToast.a(paramView, 1, 2131694829, 0).b(paramView.getResources().getDimensionPixelSize(2131298914));
+      return;
+    }
+    if (this.jdField_a_of_type_Avqd.jdField_a_of_type_Boolean)
+    {
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F20", "0X8009F20", 0, 0, "", "", "", "");
+      b();
+      return;
+    }
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F1E", "0X8009F1E", 0, 0, "", "", "", "");
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahhd
  * JD-Core Version:    0.7.0.1
  */

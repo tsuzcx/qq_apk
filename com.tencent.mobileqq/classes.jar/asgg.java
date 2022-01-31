@@ -1,21 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.gamecenter.adapter.QQGamePubFeedsAdapter.FeedsItemVH.2.1;
+import mqq.os.MqqHandler;
 
-class asgg
-  implements DialogInterface.OnDismissListener
+public class asgg
+  implements asij
 {
-  asgg(asge paramasge, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  asgg(asgd paramasgd) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
-    }
+    ThreadManager.getUIHandler().post(new QQGamePubFeedsAdapter.FeedsItemVH.2.1(this, paramInt1));
   }
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(boolean paramBoolean, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asgg
  * JD-Core Version:    0.7.0.1
  */

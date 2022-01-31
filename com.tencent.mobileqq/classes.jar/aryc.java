@@ -1,26 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class aryc
-  implements View.OnClickListener
+class aryc
+  extends BroadcastReceiver
 {
-  public aryc(LocationShareFragment paramLocationShareFragment, int paramInt, String paramString) {}
+  aryc(arya paramarya, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a()) {
+    if ((arya.a(this.jdField_a_of_type_Arya) == null) || (arya.a(this.jdField_a_of_type_Arya).isFinishing()))
+    {
+      QLog.e("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onReceive null == mActivity || mActivity.isFinishing()");
       return;
     }
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment.getActivity(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, LocationShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationShareFragment).a());
-    axqy.b(null, "CliOper", "", "", "0X800A95C", "0X800A95C", 0, 0, "", "0", "0", "");
+    arya.a(this.jdField_a_of_type_Arya);
+    arya.a(this.jdField_a_of_type_Arya).removeMessages(93);
+    arya.a(this.jdField_a_of_type_Arya).removeMessages(94);
+    paramContext = ((arzd)arya.a(this.jdField_a_of_type_Arya).a.getManager(350)).a(this.jdField_a_of_type_JavaLangString);
+    if (paramContext == null)
+    {
+      QLog.e("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onReceive b77Result == null");
+      return;
+    }
+    QLog.e("SDK_SHARE.ForwardSDKB77AIOHelper", 1, "onReceive parseB77Result");
+    arya.a(this.jdField_a_of_type_Arya, paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aryc
  * JD-Core Version:    0.7.0.1
  */

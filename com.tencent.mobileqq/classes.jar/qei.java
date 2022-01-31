@@ -1,18 +1,21 @@
-import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public abstract interface qei
+public class qei
+  implements phj
 {
-  public abstract void a(Bundle paramBundle, float paramFloat);
+  public qei(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public abstract void a(Bundle paramBundle, int paramInt, float paramFloat);
-  
-  public abstract void a(Bundle paramBundle, String paramString);
-  
-  public abstract void a(String paramString);
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if ((paramBoolean) && (paramInt == 1)) {
+      owy.a().a((int)ComponentHeaderTopicRecommend.a(this.a).businessId, 0);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qei
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,57 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 
 public class aghm
-  implements View.OnClickListener
+  extends aghi
 {
-  public aghm(AvatarPendantActivity paramAvatarPendantActivity, int paramInt, String paramString1, String paramString2) {}
+  aipw a;
   
-  public void onClick(View paramView)
+  public aghm(QQAppInterface paramQQAppInterface, agia paramagia, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, aemp paramaemp)
   {
-    bbrk.a(null, this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity, "mvip.gxh.android.faceaddon_nati_dft", this.jdField_a_of_type_Int, "1450000515", this.jdField_a_of_type_JavaLangString, this.b, "");
-    paramView = "0";
-    if (!TextUtils.isEmpty(this.b)) {
-      if (!"QQ会员".equals(this.b)) {
-        break label84;
-      }
-    }
-    label84:
-    for (paramView = "0";; paramView = "1")
+    super(paramQQAppInterface, paramagia, paramQQWalletTransferMsgElem, paramInt, paramaemp);
+    this.jdField_a_of_type_Aipw = ((aipw)paramQQAppInterface.getManager(125));
+    if (a(this.jdField_a_of_type_Aipw.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId)))
     {
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.app, "CliOper", "", "", "0X8005FD2", "0X8005FD2", 0, 0, paramView, "", "", "");
+      this.i = 0;
       return;
+    }
+    this.i = paramQQWalletTransferMsgElem.effectsId;
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.jdField_a_of_type_Agia.b.setVisibility(0);
+    this.jdField_a_of_type_Agia.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Agia.b.setText(aghn.d);
+    return true;
+  }
+  
+  public void f()
+  {
+    super.f();
+    try
+    {
+      this.jdField_a_of_type_Agia.a.setTextColor(Color.parseColor("#604121"));
+      this.jdField_a_of_type_Agia.a.setText(ajaf.a(this.jdField_a_of_type_Agia.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, 330, this.jdField_a_of_type_Agia.a.getPaint()));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aghm
  * JD-Core Version:    0.7.0.1
  */

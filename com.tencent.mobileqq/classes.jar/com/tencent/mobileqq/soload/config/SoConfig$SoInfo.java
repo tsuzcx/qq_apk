@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.soload.config;
 
 import android.text.TextUtils;
-import axnh;
+import azio;
 import java.io.Serializable;
 import org.json.JSONObject;
 
@@ -124,7 +124,7 @@ public class SoConfig$SoInfo
       do
       {
         return 1;
-        if (!axnh.a()) {
+        if (!azio.a()) {
           break;
         }
       } while (paramSoInfo.arm64Info == null);
@@ -168,7 +168,7 @@ public class SoConfig$SoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.soload.config.SoConfig.SoInfo
  * JD-Core Version:    0.7.0.1
  */

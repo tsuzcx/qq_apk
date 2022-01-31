@@ -1,194 +1,162 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager.TopicInfo;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aipo
-  extends BaseAdapter
+  extends Handler
 {
-  private aipp jdField_a_of_type_Aipp;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private List<SignatureManager.TopicInfo> jdField_a_of_type_JavaUtilList;
-  private List<SignatureManager.TopicInfo> b;
+  private long jdField_a_of_type_Long = 1000L;
+  public CopyOnWriteArrayList<aipp> a;
+  private boolean jdField_a_of_type_Boolean;
+  private long jdField_b_of_type_Long;
+  private boolean jdField_b_of_type_Boolean;
   
-  public aipo(Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, aipp paramaipp)
+  public aipo()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
-    this.jdField_a_of_type_Aipp = paramaipp;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   }
   
-  private float a(int paramInt)
+  public aipo(Looper paramLooper)
   {
-    return Math.round(paramInt / 10000.0F * 100.0F) / 100.0F;
+    super(paramLooper);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   }
   
-  private String a(SignatureManager.TopicInfo paramTopicInfo)
+  public void a()
   {
-    if ((paramTopicInfo == null) || ((paramTopicInfo.totalNum <= 0) && (paramTopicInfo.friendNum <= 0))) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramTopicInfo.friendNum > 0)
+    this.jdField_b_of_type_Boolean = false;
+    b();
+    c();
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_b_of_type_Long = Math.max(SystemClock.elapsedRealtime() + 1000L * paramLong, this.jdField_b_of_type_Long);
+    f();
+  }
+  
+  public void a(aipp paramaipp)
+  {
+    long l = SystemClock.elapsedRealtime();
+    if (aipp.a(paramaipp) > l)
     {
-      if (paramTopicInfo.friendNum >= 10000)
-      {
-        localStringBuilder.append(a(paramTopicInfo.friendNum));
-        localStringBuilder.append("万好友");
-      }
+      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramaipp);
+      a(aipp.a(paramaipp) - l);
+      return;
     }
-    else
-    {
-      if ((paramTopicInfo.friendNum > 0) && (paramTopicInfo.totalNum > 0)) {
-        localStringBuilder.append("、");
-      }
-      if (paramTopicInfo.totalNum > 0)
-      {
-        if (paramTopicInfo.totalNum < 10000) {
-          break label168;
-        }
-        localStringBuilder.append(a(paramTopicInfo.totalNum));
-        localStringBuilder.append("万人添加该话题");
-      }
+    paramaipp.b();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()) {
+      g();
     }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((aipp)localIterator.next()).a();
+    }
+  }
+  
+  public void b(aipp paramaipp)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramaipp);
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 2) {
+      g();
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((aipp)localIterator.next()).b();
+    }
+  }
+  
+  public void d()
+  {
+    removeMessages(1);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_b_of_type_Long >= SystemClock.elapsedRealtime()) {
+      sendMessage(obtainMessage(1));
+    }
+  }
+  
+  public void f()
+  {
     for (;;)
     {
-      if ((paramTopicInfo.totalNum <= 0) && (paramTopicInfo.friendNum > 0)) {
-        localStringBuilder.append("添加该话题");
-      }
-      return localStringBuilder.toString();
-      localStringBuilder.append(paramTopicInfo.friendNum);
-      localStringBuilder.append("个好友");
-      break;
-      label168:
-      localStringBuilder.append(paramTopicInfo.totalNum);
-      localStringBuilder.append("人添加该话题");
-    }
-  }
-  
-  private String a(String paramString)
-  {
-    if ((TextUtils.isEmpty(paramString)) && (paramString.length() <= 2)) {}
-    String str;
-    do
-    {
-      return paramString;
-      str = paramString;
-      if (paramString.charAt(0) == '#') {
-        str = paramString.substring(1);
-      }
-      paramString = str;
-    } while (str.charAt(str.length() - 1) != '#');
-    return str.substring(0, str.length() - 1);
-  }
-  
-  public SignatureManager.TopicInfo a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return null;
-    }
-    return (SignatureManager.TopicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public List<SignatureManager.TopicInfo> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public boolean a(List<SignatureManager.TopicInfo> paramList, boolean paramBoolean)
-  {
-    if (paramList != this.jdField_a_of_type_JavaUtilList) {
-      this.jdField_a_of_type_JavaUtilList = ((ArrayList)paramList);
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      if ((paramBoolean) && (paramList != this.b)) {
-        this.b = ((ArrayList)paramList);
-      }
-      return bool;
-    }
-  }
-  
-  public List<SignatureManager.TopicInfo> b()
-  {
-    return this.b;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    SignatureManager.TopicInfo localTopicInfo;
-    String str;
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561645, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-      paramViewGroup = new aipq();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368494));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378390));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131378391));
-      paramView.setTag(paramViewGroup);
-      localTopicInfo = a(paramInt);
-      if (localTopicInfo != null)
+      try
       {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTopicInfo.topicStr);
-        paramViewGroup.jdField_a_of_type_Int = localTopicInfo.topicId;
-        str = a(localTopicInfo);
-        if (!TextUtils.isEmpty(str)) {
-          break label212;
+        boolean bool = this.jdField_b_of_type_Boolean;
+        if (bool) {
+          return;
         }
-        paramViewGroup.b.setVisibility(8);
+        if (this.jdField_b_of_type_Long <= SystemClock.elapsedRealtime())
+        {
+          a();
+          continue;
+        }
+        this.jdField_b_of_type_Boolean = true;
       }
+      finally {}
+      sendMessage(obtainMessage(1));
     }
+  }
+  
+  public void g()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    removeMessages(1);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
     for (;;)
     {
-      paramView.setContentDescription(ajya.a(2131715036) + a(localTopicInfo.topicStr) + ajya.a(2131715035));
-      if (!ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-        break label232;
+      try
+      {
+        l = this.jdField_b_of_type_Long - SystemClock.elapsedRealtime();
+        if (l <= 0L)
+        {
+          a();
+          return;
+        }
+        if (l < this.jdField_a_of_type_Long)
+        {
+          sendMessageDelayed(obtainMessage(1), l);
+          continue;
+        }
+        l = SystemClock.elapsedRealtime();
       }
-      paramView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839124));
-      return paramView;
-      paramViewGroup = (aipq)paramView.getTag();
-      break;
-      label212:
-      paramViewGroup.b.setVisibility(0);
-      paramViewGroup.b.setText(str);
+      finally {}
+      b();
+      for (long l = l + this.jdField_a_of_type_Long - SystemClock.elapsedRealtime(); l < 0L; l += this.jdField_a_of_type_Long) {}
+      sendMessageDelayed(obtainMessage(1), l);
     }
-    label232:
-    paramView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839123));
-    return paramView;
+  }
+  
+  public boolean sendMessageAtTime(Message paramMessage, long paramLong)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return super.sendMessageAtTime(paramMessage, paramLong);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipo
  * JD-Core Version:    0.7.0.1
  */

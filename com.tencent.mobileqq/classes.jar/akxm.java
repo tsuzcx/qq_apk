@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig;
 
-class akxm
-  implements View.OnClickListener
+public final class akxm
+  implements Parcelable.Creator<CmShowRenderView.PlayActionConfig>
 {
-  akxm(akxl paramakxl) {}
-  
-  public void onClick(View paramView)
+  public CmShowRenderView.PlayActionConfig a(Parcel paramParcel)
   {
-    this.a.b();
+    return new CmShowRenderView.PlayActionConfig(paramParcel);
+  }
+  
+  public CmShowRenderView.PlayActionConfig[] a(int paramInt)
+  {
+    return new CmShowRenderView.PlayActionConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akxm
  * JD-Core Version:    0.7.0.1
  */

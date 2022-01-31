@@ -1,36 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
 public class agrq
-  implements View.OnClickListener
+  implements ViewPager.OnPageChangeListener
 {
-  int jdField_a_of_type_Int;
-  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  public agrq(TroopChatPie paramTroopChatPie) {}
   
-  public agrq(NewPhotoListActivity paramNewPhotoListActivity) {}
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public void a(int paramInt)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(CheckBox paramCheckBox)
-  {
-    this.jdField_a_of_type_AndroidWidgetCheckBox = paramCheckBox;
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.a.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.a.a.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetCheckBox);
-    }
+    TroopChatPie.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrq
  * JD-Core Version:    0.7.0.1
  */

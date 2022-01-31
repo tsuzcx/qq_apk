@@ -1,39 +1,46 @@
-import android.graphics.RectF;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class alhx
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public RectF a;
-  public String a;
-  alhw[] a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
+  public alhx(ApolloPanel paramApolloPanel, String paramString1, String paramString2, String paramString3) {}
   
-  public alhx()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_c_of_type_Int = -1;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ssoErrCode:").append(this.jdField_a_of_type_Int).append(",ssoErrMsg:").append(this.jdField_a_of_type_JavaLangString).append(",errCode:").append(this.jdField_b_of_type_Int).append(",errMsg:").append(this.jdField_b_of_type_JavaLangString).append(",sessionId:").append(this.jdField_c_of_type_JavaLangString).append(",moreUrl:").append(this.d);
-    int i = 0;
-    while ((this.jdField_a_of_type_ArrayOfAlhw != null) && (i < this.jdField_a_of_type_ArrayOfAlhw.length))
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.n();
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null))
     {
-      localStringBuilder.append("\n{index=").append(i).append(":").append(this.jdField_a_of_type_ArrayOfAlhw[i].toString()).append("}\n");
-      i += 1;
+      paramDialogInterface = (bdpx)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(71);
+      if (!this.jdField_a_of_type_JavaLangString.equals(String.valueOf(2))) {}
     }
-    return localStringBuilder.toString();
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+        VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "icon_alert_clickbuy", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + this.b });
+      }
+      String str = new JSONObject(this.c).getString("packageId");
+      paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin(), Integer.parseInt(this.b), Integer.parseInt(str));
+      return;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      QLog.e("ApolloPanel", 1, "[showAioDialog] Exception:", paramDialogInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alhx
  * JD-Core Version:    0.7.0.1
  */

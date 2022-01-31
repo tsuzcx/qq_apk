@@ -1,20 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import android.text.TextUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class auzo
-  implements View.OnClickListener
+final class auzo
+  implements bevy
 {
-  public auzo(ProfileHeaderView paramProfileHeaderView, auuy paramauuy) {}
+  auzo(String paramString, auzu paramauzu) {}
   
-  public void onClick(View paramView)
+  public void a(BaseResp paramBaseResp)
   {
-    ProfileHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView, this.jdField_a_of_type_Auuy);
+    if ((paramBaseResp != null) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    {
+      WXShareHelper.a().b(this);
+      if (paramBaseResp.errCode != 0) {
+        break label50;
+      }
+      if (this.jdField_a_of_type_Auzu != null) {
+        this.jdField_a_of_type_Auzu.a(true);
+      }
+    }
+    label50:
+    while (this.jdField_a_of_type_Auzu == null) {
+      return;
+    }
+    this.jdField_a_of_type_Auzu.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auzo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-final class aqfy
-  implements DialogInterface.OnClickListener
+class aqfy
+  implements Animation.AnimationListener
 {
-  aqfy(long paramLong, int paramInt, Activity paramActivity, BaseChatPie paramBaseChatPie) {}
+  aqfy(aqfv paramaqfv, int paramInt, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ForwardShareByServerHelper", 2, "qbShowShareResultDialog back");
-    }
-    aqfv.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie);
+    this.jdField_a_of_type_Aqfv.jdField_a_of_type_Float = this.jdField_a_of_type_Aqfv.b;
+    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Aqfv.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqfy
  * JD-Core Version:    0.7.0.1
  */

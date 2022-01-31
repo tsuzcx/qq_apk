@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.ecshopassit.view.CustomTabView;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class nvf
-  implements View.OnClickListener
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  public nvf(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public nvf(CustomTabView paramCustomTabView) {}
   
-  public void onClick(View paramView)
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    ReadInJoyBaseDeliverActivity.a(this.a);
+    QLog.i("EcshopCustomTabView", 2, "onLaunchResult" + paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvf
  * JD-Core Version:    0.7.0.1
  */

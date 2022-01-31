@@ -9,13 +9,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bdid;
-import bdii;
-import bdjd;
-import bdjl;
-import bdjs;
-import bdju;
-import bdjv;
+import bfhb;
+import bfhg;
+import bfib;
+import bfij;
+import bfiq;
+import bfir;
+import bfis;
 import com.tencent.smtt.sdk.WebView;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,10 +33,10 @@ public final class AppReport$1
     {
       try
       {
-        bdii.b("AppReport", "<AppReport> begin incrementalReport,packageName : " + this.jdField_a_of_type_JavaLangString + ", packageType :" + this.jdField_a_of_type_Int);
+        bfhg.b("AppReport", "<AppReport> begin incrementalReport,packageName : " + this.jdField_a_of_type_JavaLangString + ", packageType :" + this.jdField_a_of_type_Int);
         if (this.jdField_a_of_type_AndroidContentContext == null)
         {
-          bdii.e("AppReport", "<AppReport> incrementalReport context is null !");
+          bfhg.e("AppReport", "<AppReport> incrementalReport context is null !");
           return;
         }
         HashMap localHashMap = new HashMap();
@@ -47,9 +47,9 @@ public final class AppReport$1
         {
           Object localObject1 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("appcenter_app_report", 0);
           boolean bool1 = ((SharedPreferences)localObject1).getBoolean("is_app_last_fullReport_success", false);
-          if (!bdjl.a(this.jdField_a_of_type_AndroidContentContext))
+          if (!bfij.a(this.jdField_a_of_type_AndroidContentContext))
           {
-            bdii.c("AppReport", "<AppReport> Package scan is closed !!!!");
+            bfhg.c("AppReport", "<AppReport> Package scan is closed !!!!");
             if (bool1)
             {
               j = this.jdField_a_of_type_Int;
@@ -68,15 +68,15 @@ public final class AppReport$1
                   continue;
                 }
               }
-              bdjs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, i);
+              bfiq.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, i);
             }
             catch (PackageManager.NameNotFoundException localNameNotFoundException1)
             {
-              bdii.c("AppReport", "<AppReport> Package scan is closed, get packageinfo error : " + localNameNotFoundException1.toString());
+              bfhg.c("AppReport", "<AppReport> Package scan is closed, get packageinfo error : " + localNameNotFoundException1.toString());
               continue;
             }
             if ((this.b != null) && (this.jdField_a_of_type_ComTencentSmttSdkWebView != null)) {
-              bdjv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.b, true, this.c);
+              bfis.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.b, true, this.c);
             }
           }
           else
@@ -87,26 +87,26 @@ public final class AppReport$1
             {
               if (!bool1)
               {
-                bdii.c("AppReport", "last full report failed , do incremental report !!!");
-                bdjs.a(this.jdField_a_of_type_AndroidContentContext, this.b, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.c, true);
+                bfhg.c("AppReport", "last full report failed , do incremental report !!!");
+                bfiq.a(this.jdField_a_of_type_AndroidContentContext, this.b, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.c, true);
                 return;
               }
               if (bool2)
               {
-                bdii.c("AppReport", "last incremental report overflow , do full report !!!");
-                bdjs.a(this.jdField_a_of_type_AndroidContentContext, this.b, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.c, true);
+                bfhg.c("AppReport", "last incremental report overflow , do full report !!!");
+                bfiq.a(this.jdField_a_of_type_AndroidContentContext, this.b, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.c, true);
                 return;
               }
-              localObject2 = bdjs.a(this.jdField_a_of_type_AndroidContentContext);
+              localObject2 = bfiq.a(this.jdField_a_of_type_AndroidContentContext);
               if ((localObject2 != null) && (((Map)localObject2).size() >= 70))
               {
-                bdjs.a.lock();
+                bfiq.a.lock();
                 this.jdField_a_of_type_AndroidContentContext.deleteFile("appcenter_app_report_storage_file.txt");
-                bdjs.a.unlock();
+                bfiq.a.unlock();
                 localObject2 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("appcenter_app_report", 0).edit();
                 ((SharedPreferences.Editor)localObject2).putBoolean("is_incremental_report_overflow", true);
                 ((SharedPreferences.Editor)localObject2).commit();
-                bdjs.a(this.jdField_a_of_type_AndroidContentContext, this.b, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.c, true);
+                bfiq.a(this.jdField_a_of_type_AndroidContentContext, this.b, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.c, true);
                 return;
               }
               if ((localObject2 != null) && (((Map)localObject2).size() > 0)) {
@@ -117,7 +117,7 @@ public final class AppReport$1
                 break label1165;
               }
               i = ((Map)localObject2).size();
-              bdii.b("AppReport", i);
+              bfhg.b("AppReport", i);
             }
           }
         }
@@ -153,7 +153,7 @@ public final class AppReport$1
             localObject2 = str2;
             localObject3 = str1;
             i = m;
-            str2 = bdjl.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+            str2 = bfij.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
             localObject2 = str2;
             localObject3 = str1;
             i = m;
@@ -186,19 +186,19 @@ public final class AppReport$1
             if (this.jdField_a_of_type_Int == 8) {
               continue;
             }
-            bdii.e("AppReport", "<AppReport> get Package info form package <" + this.jdField_a_of_type_JavaLangString + "> error : " + localNameNotFoundException2.toString());
+            bfhg.e("AppReport", "<AppReport> get Package info form package <" + this.jdField_a_of_type_JavaLangString + "> error : " + localNameNotFoundException2.toString());
             j = k;
             localObject4 = localObject2;
             localObject5 = localObject3;
             n = i;
             continue;
-            bdii.b("AppReport", "<AppReport> increamental report package size : " + localHashMap.size());
-            localObject2 = bdjs.a(this.jdField_a_of_type_AndroidContentContext, localHashMap, "INC", this.c);
-            bdii.b("AppReport", "<AppReport> incremental report params : " + ((Bundle)localObject2).toString());
-            if (bdid.b(this.jdField_a_of_type_AndroidContentContext)) {
+            bfhg.b("AppReport", "<AppReport> increamental report package size : " + localHashMap.size());
+            localObject2 = bfiq.a(this.jdField_a_of_type_AndroidContentContext, localHashMap, "INC", this.c);
+            bfhg.b("AppReport", "<AppReport> incremental report params : " + ((Bundle)localObject2).toString());
+            if (bfhb.b(this.jdField_a_of_type_AndroidContentContext)) {
               continue;
             }
-            bdjs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, j);
+            bfiq.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, j);
             return;
             if (!TextUtils.isEmpty(((Bundle)localObject2).getString("sid"))) {
               continue;
@@ -206,18 +206,18 @@ public final class AppReport$1
             if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals("com.tencent.android.qqdownloader")) || (this.jdField_a_of_type_Int != 8)) {
               continue;
             }
-            bdii.b("AppReport", "<AppReport> incremental report sid is null but still report myapp uninstall event");
+            bfhg.b("AppReport", "<AppReport> incremental report sid is null but still report myapp uninstall event");
             ((Bundle)localObject2).putString("sid", "fakesid");
-            new bdjd("http://fusionbase.qq.com/cgi-bin/appstage/sdk_update", "POST", new bdju(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, j, this.b, this.jdField_a_of_type_ComTencentSmttSdkWebView)).execute(new Bundle[] { localObject2 });
+            new bfib("http://fusionbase.qq.com/cgi-bin/appstage/sdk_update", "POST", new bfir(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, j, this.b, this.jdField_a_of_type_ComTencentSmttSdkWebView)).execute(new Bundle[] { localObject2 });
             return;
-            bdjs.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, j);
+            bfiq.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, j);
             return;
-            new bdjd("http://fusionbase.qq.com/cgi-bin/appstage/sdk_update", "POST", new bdju(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, j, this.b, this.jdField_a_of_type_ComTencentSmttSdkWebView)).execute(new Bundle[] { localObject2 });
+            new bfib("http://fusionbase.qq.com/cgi-bin/appstage/sdk_update", "POST", new bfir(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, j, this.b, this.jdField_a_of_type_ComTencentSmttSdkWebView)).execute(new Bundle[] { localObject2 });
           }
-          localHashMap.put(this.jdField_a_of_type_JavaLangString, bdjs.a(this.jdField_a_of_type_JavaLangString, n, (String)localObject5, j, (String)localObject4));
+          localHashMap.put(this.jdField_a_of_type_JavaLangString, bfiq.a(this.jdField_a_of_type_JavaLangString, n, (String)localObject5, j, (String)localObject4));
           if (localHashMap.size() <= 0)
           {
-            bdii.b("AppReport", "<AppReport> Nothing to report, Incremental report finished !");
+            bfhg.b("AppReport", "<AppReport> Nothing to report, Incremental report finished !");
             return;
           }
         }

@@ -1,27 +1,23 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.SecondApiRightInfo;
+import com.tencent.mobileqq.widget.Workspace.SavedState;
 
 public final class besh
-  implements Parcelable.Creator<SecondApiRightInfo>
+  implements Parcelable.Creator<Workspace.SavedState>
 {
-  public SecondApiRightInfo a(Parcel paramParcel)
+  public Workspace.SavedState a(Parcel paramParcel)
   {
-    SecondApiRightInfo localSecondApiRightInfo = new SecondApiRightInfo();
-    localSecondApiRightInfo.apiName = paramParcel.readString();
-    localSecondApiRightInfo.secondName = paramParcel.readString();
-    localSecondApiRightInfo.right = paramParcel.readInt();
-    return localSecondApiRightInfo;
+    return new Workspace.SavedState(paramParcel, null);
   }
   
-  public SecondApiRightInfo[] a(int paramInt)
+  public Workspace.SavedState[] a(int paramInt)
   {
-    return new SecondApiRightInfo[paramInt];
+    return new Workspace.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     besh
  * JD-Core Version:    0.7.0.1
  */

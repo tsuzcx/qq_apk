@@ -1,100 +1,159 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.PathMeasure;
-import android.graphics.drawable.BitmapDrawable;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 public class lmk
 {
-  private final ArrayList<lml> a = new ArrayList(1);
+  private static volatile lmk jdField_a_of_type_Lmk;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private lml[] jdField_a_of_type_ArrayOfLml = new lml[4];
   
-  public void a(float paramFloat)
+  public static lmk a()
   {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
+    if (jdField_a_of_type_Lmk == null) {}
+    try
     {
-      ((lml)this.a.get(i)).a(paramFloat);
-      i += 1;
+      if (jdField_a_of_type_Lmk == null) {
+        jdField_a_of_type_Lmk = new lmk();
+      }
+      return jdField_a_of_type_Lmk;
     }
+    finally {}
   }
   
-  public void a(Context paramContext, int paramInt1, int paramInt2)
+  public int a()
   {
-    paramContext = paramContext.getResources();
-    this.a.clear();
-    if (paramInt1 != 0)
+    return this.jdField_a_of_type_ArrayOfLml.length;
+  }
+  
+  public void a()
+  {
+    int i = 0;
+    QLog.i("FrameBufMgr", 1, "clear.");
+    for (;;)
     {
-      Object localObject1 = paramContext.openRawResource(paramInt1);
-      try
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        localObject1 = new BufferedReader(new InputStreamReader((InputStream)localObject1), 512);
-        Object localObject2;
-        do
+        if (i < this.jdField_a_of_type_ArrayOfLml.length)
         {
-          localObject2 = new lml((BufferedReader)localObject1);
-          ((BufferedReader)localObject1).readLine();
-          ((BufferedReader)localObject1).readLine();
-          TypedArray localTypedArray = paramContext.obtainTypedArray(paramInt2);
-          int i = localTypedArray.length();
-          BitmapDrawable[] arrayOfBitmapDrawable = new BitmapDrawable[i];
-          paramInt1 = 0;
-          while (paramInt1 < i)
+          if (this.jdField_a_of_type_ArrayOfLml[i] != null)
           {
-            arrayOfBitmapDrawable[paramInt1] = ((BitmapDrawable)localTypedArray.getDrawable(paramInt1));
-            paramInt1 += 1;
+            this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_ArrayOfByte = null;
+            this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_Int = 0;
           }
-          ((lml)localObject2).a(arrayOfBitmapDrawable);
-          localTypedArray.recycle();
-          this.a.add(localObject2);
-          if (((BufferedReader)localObject1).readLine() == null) {
-            return;
-          }
-          localObject2 = ((BufferedReader)localObject1).readLine();
-        } while (localObject2 != null);
-        return;
-      }
-      catch (IOException paramContext)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("ParticleEffect", 2, "WL_DEBUG loadEmitters ex = " + paramContext);
+        }
+        else {
+          return;
         }
       }
-    }
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    int j = this.a.size();
-    int i = 0;
-    while (i < j)
-    {
-      ((lml)this.a.get(i)).a(paramCanvas);
       i += 1;
     }
   }
   
-  public void a(PathMeasure paramPathMeasure)
+  public void a(int paramInt1, int paramInt2)
   {
-    int j = this.a.size();
+    int j = 0;
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
     int i = 0;
-    while (i < j)
+    for (;;)
     {
-      ((lml)this.a.get(i)).a(paramPathMeasure);
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLml.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_Int == paramInt1)
+          {
+            this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_Int = paramInt2;
+            j = 1;
+          }
+        }
+        else
+        {
+          if (j == 0) {
+            QLog.i("FrameBufMgr", 1, "setFrameBufState failed. oldState = " + paramInt1 + ", newState = " + paramInt2);
+          }
+          return;
+        }
+      }
+      finally {}
+      i += 1;
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt)
+  {
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLml.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_ArrayOfByte == paramArrayOfByte) {
+            this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_Int = paramInt;
+          }
+        }
+        else
+        {
+          QLog.i("FrameBufMgr", 1, "setFrameBufState failed. dataBuf = " + paramArrayOfByte + ", state = " + paramInt);
+          return;
+        }
+      }
+      finally {}
+      i += 1;
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    int i = 0;
+    QLog.i("FrameBufMgr", 1, "init. bufSize = " + paramInt);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      while (i < this.jdField_a_of_type_ArrayOfLml.length)
+      {
+        if (this.jdField_a_of_type_ArrayOfLml[i] == null) {
+          this.jdField_a_of_type_ArrayOfLml[i] = new lml(this);
+        }
+        if ((this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_ArrayOfByte.length != paramInt)) {
+          this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_ArrayOfByte = new byte[paramInt];
+        }
+        this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_Int = 0;
+        i += 1;
+      }
+      return true;
+    }
+  }
+  
+  public byte[] a(int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (i < this.jdField_a_of_type_ArrayOfLml.length)
+        {
+          if (this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_Int == paramInt)
+          {
+            byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfLml[i].jdField_a_of_type_ArrayOfByte;
+            return arrayOfByte;
+          }
+        }
+        else
+        {
+          QLog.i("FrameBufMgr", 1, "getFrameBufByState failed. state = " + paramInt);
+          return null;
+        }
+      }
+      finally {}
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmk
  * JD-Core Version:    0.7.0.1
  */

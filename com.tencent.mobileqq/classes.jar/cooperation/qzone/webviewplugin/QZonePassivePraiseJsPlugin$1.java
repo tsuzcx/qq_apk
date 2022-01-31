@@ -1,11 +1,11 @@
 package cooperation.qzone.webviewplugin;
 
-import bhrf;
+import bjsq;
 
 public class QZonePassivePraiseJsPlugin$1
   implements Runnable
 {
-  public QZonePassivePraiseJsPlugin$1(bhrf parambhrf, String[] paramArrayOfString) {}
+  public QZonePassivePraiseJsPlugin$1(bjsq parambjsq, String[] paramArrayOfString) {}
   
   /* Error */
   public void run()
@@ -36,18 +36,18 @@ public class QZonePassivePraiseJsPlugin$1
     //   41: invokevirtual 34	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   44: astore_1
     //   45: aload_0
-    //   46: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbhrf;
+    //   46: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbjsq;
     //   49: aload_2
     //   50: ldc 36
     //   52: invokevirtual 34	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   55: invokestatic 41	bhrf:a	(Lbhrf;Ljava/lang/String;)Ljava/lang/String;
+    //   55: invokestatic 41	bjsq:a	(Lbjsq;Ljava/lang/String;)Ljava/lang/String;
     //   58: pop
     //   59: aload_1
     //   60: invokestatic 47	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   63: ifne +16 -> 79
     //   66: aload_0
-    //   67: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbhrf;
-    //   70: invokestatic 50	bhrf:a	(Lbhrf;)Ljava/lang/String;
+    //   67: getfield 14	cooperation/qzone/webviewplugin/QZonePassivePraiseJsPlugin$1:this$0	Lbjsq;
+    //   70: invokestatic 50	bjsq:a	(Lbjsq;)Ljava/lang/String;
     //   73: invokestatic 47	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   76: ifeq +15 -> 91
     //   79: return
@@ -57,11 +57,11 @@ public class QZonePassivePraiseJsPlugin$1
     //   84: aload_2
     //   85: invokevirtual 55	org/json/JSONException:printStackTrace	()V
     //   88: goto -29 -> 59
-    //   91: invokestatic 60	bhlc:a	()Lbhlc;
-    //   94: invokevirtual 63	bhlc:a	()Lbhle;
+    //   91: invokestatic 60	bjmn:a	()Lbjmn;
+    //   94: invokevirtual 63	bjmn:a	()Lbjmp;
     //   97: ldc 52
     //   99: aload_1
-    //   100: invokevirtual 68	bhle:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   100: invokevirtual 68	bjmp:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   103: return
     //   104: astore_2
     //   105: goto -21 -> 84
@@ -80,7 +80,7 @@ public class QZonePassivePraiseJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZonePassivePraiseJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

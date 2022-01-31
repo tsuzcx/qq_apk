@@ -1,12 +1,17 @@
-public abstract interface bfeu
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.appcommon.js.BaseJsCallBack;
+
+public class bfeu
+  implements DialogInterface.OnClickListener
 {
-  public abstract void onDateCancel();
+  public bfeu(BaseJsCallBack paramBaseJsCallBack) {}
   
-  public abstract void onDateConfirm(String paramString1, String paramString2, String paramString3);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfeu
  * JD-Core Version:    0.7.0.1
  */

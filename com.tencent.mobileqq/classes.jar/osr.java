@@ -1,51 +1,37 @@
-import android.os.Bundle;
+import com.tencent.aladdin.config.utils.AladdinLogger;
 import com.tencent.qphone.base.util.QLog;
 
-class osr
-  implements osv
+public class osr
+  implements AladdinLogger
 {
-  osr(osq paramosq) {}
-  
-  public int a(Bundle paramBundle)
+  public void d(String paramString1, String paramString2)
   {
-    int j = this.a.a;
-    int i = -1;
-    long l = System.currentTimeMillis();
-    switch (this.a.a)
-    {
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("viola.ReadInJoyWebRenderEngine", 1, "native_render CreateLoop:step[" + j + "] -> step[" + this.a.a + "] cost[" + (System.currentTimeMillis() - l) + "ms]" + " timestamps[" + System.currentTimeMillis() + "]");
-      }
-      onh.a(onh.a(), true, j, System.currentTimeMillis() - l);
-      return i;
-      i = this.a.b(paramBundle);
-      continue;
-      i = this.a.c(paramBundle);
-      continue;
-      i = this.a.d(paramBundle);
-      continue;
-      i = this.a.e(paramBundle);
-      continue;
-      i = this.a.f(paramBundle);
-      continue;
-      i = this.a.g(paramBundle);
-      continue;
-      i = this.a.h(paramBundle);
-      continue;
-      i = this.a.i(paramBundle);
-      continue;
-      i = this.a.j(paramBundle);
-      continue;
-      i = this.a.k(paramBundle);
-    }
+    QLog.d(paramString1, 2, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2)
+  {
+    QLog.e(paramString1, 1, paramString2);
+  }
+  
+  public void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, 1, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
+  public boolean isDebugVersion()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     osr
  * JD-Core Version:    0.7.0.1
  */

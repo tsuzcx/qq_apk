@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import njf;
-import rqj;
+import nmb;
+import sgi;
 
 class QQAppInterface$21
   implements Runnable
@@ -10,13 +10,13 @@ class QQAppInterface$21
   
   public void run()
   {
-    njf localnjf = (njf)this.this$0.getManager(238);
-    if (localnjf != null) {
-      localnjf.a(1);
+    nmb localnmb = (nmb)this.this$0.getManager(238);
+    if (localnmb != null) {
+      localnmb.a(1);
     }
     this.this$0.E();
     QQAppInterface.b(this.this$0);
-    rqj.b();
+    sgi.b();
   }
 }
 

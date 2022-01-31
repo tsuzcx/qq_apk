@@ -1,6 +1,6 @@
 {
     "ReadInjoy_article_text_cell": {
-        "view_type": "cell",
+        "view_type": "container",
         "direction": "vertical",
         "height": {
             
@@ -27,8 +27,8 @@
                 "attributes":{
                     "setRichText:": "$id_attribute_text",
                     "setNumberOfLinesString:":"0",
-                    "setTextAlignmentString:": "$text_align",
                     "setTextColorString:":"#262626",
+                    "setTextAlignmentString:": "$text_align",
                      "setFontSizeString:": "$attribute_text_size",
                      "setLineSpace:":"13"
                 }

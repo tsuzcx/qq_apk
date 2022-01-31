@@ -1,41 +1,25 @@
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import mqq.app.QQPermissionCallback;
 
-public class amqb
+class amqb
+  implements QQPermissionCallback
 {
-  private boolean a;
+  amqb(amqa paramamqa) {}
   
-  public static amqb a(String paramString)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
-      return null;
-      try
-      {
-        amqb localamqb = new amqb();
-        if (new JSONObject(paramString).optInt("showTakeSameEntrance", 0) == 1) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localamqb.a = bool;
-          return localamqb;
-        }
-        if (!QLog.isColorLevel()) {}
-      }
-      catch (Exception paramString) {}
-    }
-    QLog.e("PttAutoChangeProcessor", 1, new Object[] { "parse e:", paramString.toString() });
-    return null;
+    bdcd.a(amqa.a(this.a), paramArrayOfString, paramArrayOfInt);
+    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION deny");
   }
   
-  public boolean a()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return this.a;
+    QLog.i("ARVideoRecordUIControllerImpl", 1, "MSG_NOTIFY_USER_OPERATION allow restart it");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amqb
  * JD-Core Version:    0.7.0.1
  */

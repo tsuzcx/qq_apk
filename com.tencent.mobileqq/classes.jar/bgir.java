@@ -1,48 +1,70 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.comic.ui.QQComicTabBarView;
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
-public class bgir
-  extends Handler
+class bgir
+  extends FilterOutputStream
 {
-  public bgir(QQComicTabBarView paramQQComicTabBarView, Looper paramLooper)
+  private bgir(bgiq parambgiq, OutputStream paramOutputStream)
   {
-    super(paramLooper);
+    super(paramOutputStream);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void close()
   {
-    switch (paramMessage.what)
+    try
     {
-    default: 
-      return;
-    case 0: 
-      this.a.b = 0.0F;
-      QQComicTabBarView.a(this.a);
-      super.sendMessageDelayed(this.a.a.obtainMessage(1), 16L);
-      return;
-    case 1: 
-      if (this.a.b < 1.0F)
-      {
-        paramMessage = this.a;
-        paramMessage.b += 0.05F;
-        QQComicTabBarView.b(this.a);
-        super.sendMessageDelayed(this.a.a.obtainMessage(1), 16L);
-        return;
-      }
-      super.sendMessageDelayed(this.a.a.obtainMessage(2), 16L);
+      this.out.close();
       return;
     }
-    this.a.b = 1.0F;
-    this.a.a(this.a.i, this.a.h);
-    this.a.i = this.a.h;
-    QQComicTabBarView.c(this.a);
+    catch (IOException localIOException)
+    {
+      bgiq.a(this.a, true);
+    }
+  }
+  
+  public void flush()
+  {
+    try
+    {
+      this.out.flush();
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      bgiq.a(this.a, true);
+    }
+  }
+  
+  public void write(int paramInt)
+  {
+    try
+    {
+      this.out.write(paramInt);
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      bgiq.a(this.a, true);
+    }
+  }
+  
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    try
+    {
+      this.out.write(paramArrayOfByte, paramInt1, paramInt2);
+      return;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      bgiq.a(this.a, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgir
  * JD-Core Version:    0.7.0.1
  */

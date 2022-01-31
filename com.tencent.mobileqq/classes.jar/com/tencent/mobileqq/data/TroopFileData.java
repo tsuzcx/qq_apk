@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import java.io.Serializable;
 
 public class TroopFileData
-  extends auko
+  extends awbv
   implements Serializable
 {
   public static final long serialVersionUID = 0L;
@@ -16,7 +16,7 @@ public class TroopFileData
   public int duration;
   public long entitySessionId;
   public String fileName;
-  @aumc
+  @awdj
   public String fileUrl;
   public int height;
   public long lastTime;
@@ -32,7 +32,7 @@ public class TroopFileData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopFileData
  * JD-Core Version:    0.7.0.1
  */

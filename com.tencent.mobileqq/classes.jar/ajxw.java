@@ -1,31 +1,18 @@
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public class ajxw
-  extends MqqHandler
+abstract interface ajxw
 {
-  private WeakReference<Handler.Callback> a;
+  public abstract void a(int paramInt);
   
-  private ajxw(Looper paramLooper, Handler.Callback paramCallback)
-  {
-    super(paramLooper);
-    this.a = new WeakReference(paramCallback);
-  }
+  public abstract void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong);
   
-  public void handleMessage(Message paramMessage)
-  {
-    Handler.Callback localCallback = (Handler.Callback)this.a.get();
-    if (localCallback != null) {
-      localCallback.handleMessage(paramMessage);
-    }
-  }
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
+  
+  public abstract void b(PublishVideoEntry paramPublishVideoEntry, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxw
  * JD-Core Version:    0.7.0.1
  */

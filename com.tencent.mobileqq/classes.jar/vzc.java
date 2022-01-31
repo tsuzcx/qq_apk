@@ -1,39 +1,37 @@
-class vzc
-  implements vyu
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+
+public class vzc
 {
-  vzc(vzb paramvzb) {}
+  @NonNull
+  private final Bitmap a;
   
-  public void a(vyz paramvyz, boolean paramBoolean)
+  public vzc(Bitmap paramBitmap)
   {
-    int i = 0;
-    if (paramBoolean)
-    {
-      vyz[] arrayOfvyz = this.a.a();
-      j = arrayOfvyz.length;
-      i = 0;
-      while (i < j)
-      {
-        vyz localvyz = arrayOfvyz[i];
-        if (localvyz != paramvyz) {
-          localvyz.b(false);
-        }
-        i += 1;
-      }
+    if (paramBitmap == null) {
+      throw new NullPointerException("bitmap should not be null");
     }
-    paramvyz = this.a.a();
-    int j = paramvyz.length;
-    for (;;)
-    {
-      if ((i >= j) || (paramvyz[i].a())) {
-        return;
-      }
-      i += 1;
-    }
+    this.a = paramBitmap;
+  }
+  
+  public int a()
+  {
+    return this.a.getWidth();
+  }
+  
+  public Bitmap a()
+  {
+    return Bitmap.createBitmap(this.a);
+  }
+  
+  public int b()
+  {
+    return this.a.getHeight();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzc
  * JD-Core Version:    0.7.0.1
  */

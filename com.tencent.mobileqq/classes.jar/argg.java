@@ -1,12 +1,16 @@
+import java.util.List;
+
 public abstract interface argg
 {
-  public abstract void a(int paramInt);
+  public abstract void a(long paramLong);
   
-  public abstract void a(boolean paramBoolean, Throwable paramThrowable);
+  public abstract void a(List<arjn> paramList, String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, short paramShort);
+  
+  public abstract void b(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     argg
  * JD-Core Version:    0.7.0.1
  */

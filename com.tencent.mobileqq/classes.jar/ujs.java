@@ -1,20 +1,38 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.settings.QGSettingFragment;
+import android.annotation.TargetApi;
+import java.util.List;
 
+@TargetApi(14)
 public class ujs
-  implements CompoundButton.OnCheckedChangeListener
+  implements ujd
 {
-  public ujs(QGSettingFragment paramQGSettingFragment) {}
+  public int a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a()
   {
-    QGSettingFragment.c(paramBoolean);
+    ((ujl)urr.a(6)).a(this.a);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a = paramInt;
+  }
+  
+  public void a(List<uja> paramList, boolean paramBoolean)
+  {
+    if (paramList == null) {
+      return;
+    }
+    ((ujl)urr.a(6)).a(paramList, this.a, paramBoolean);
+  }
+  
+  public void a(uje paramuje)
+  {
+    ((ujl)urr.a(6)).a(paramuje);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ujs
  * JD-Core Version:    0.7.0.1
  */

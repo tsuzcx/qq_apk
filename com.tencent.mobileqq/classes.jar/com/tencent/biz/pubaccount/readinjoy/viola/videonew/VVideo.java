@@ -18,8 +18,8 @@ import java.util.Set;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import rys;
-import ryu;
+import spz;
+import sqb;
 
 public class VVideo
   extends VComponentContainer<VVideoView>
@@ -27,17 +27,17 @@ public class VVideo
   public static String TAG = "VVideo";
   private String mCurrentVid;
   private String mCurrentVideoUrl;
-  private VComponentAdapter.OnVideoViewMethodListener mVideoViewMethodListener = new rys(this);
+  private VComponentAdapter.OnVideoViewMethodListener mVideoViewMethodListener = new spz(this);
   
   public VVideo(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
     super(paramViolaInstance, paramDomObject, paramVComponentContainer);
   }
   
-  private void dealFullScreen(boolean paramBoolean, String paramString)
+  private void dealFullScreen(int paramInt, boolean paramBoolean, String paramString)
   {
     ((VVideoView)getHostView()).a(0);
-    getVideoViewControlListener().a((VVideoView)getHostView(), paramBoolean, paramString, this.mVideoViewMethodListener);
+    getVideoViewControlListener().a(paramInt, (VVideoView)getHostView(), paramBoolean, paramString, this.mVideoViewMethodListener);
   }
   
   private void invokeJS(String paramString, Object paramObject)
@@ -79,7 +79,7 @@ public class VVideo
       QLog.d(TAG, 2, "destroy: " + this.mCurrentVid);
     }
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().q();
+      getVideoViewControlListener().p();
     }
   }
   
@@ -97,7 +97,15 @@ public class VVideo
   public void fullLandspaceScreen(String paramString)
   {
     if (getVideoViewControlListener() != null) {
-      dealFullScreen(false, paramString);
+      dealFullScreen(0, false, paramString);
+    }
+  }
+  
+  @JSMethod
+  public void fullLandspaceScreenWithType(int paramInt, String paramString)
+  {
+    if (getVideoViewControlListener() != null) {
+      dealFullScreen(paramInt, false, paramString);
     }
   }
   
@@ -105,7 +113,7 @@ public class VVideo
   public void fullPortraitScreen(String paramString)
   {
     if (getVideoViewControlListener() != null) {
-      dealFullScreen(true, paramString);
+      dealFullScreen(0, true, paramString);
     }
   }
   
@@ -117,7 +125,7 @@ public class VVideo
     }
   }
   
-  public ryu getVideoViewControlListener()
+  public sqb getVideoViewControlListener()
   {
     if ((getHostView() != null) && (((VVideoView)getHostView()).a() != null)) {
       return ((VVideoView)getHostView()).a();
@@ -154,7 +162,7 @@ public class VVideo
             localEntry = (Map.Entry)localIterator.next();
             localObject = (String)localEntry.getKey();
             if (!"src".equals(localObject)) {
-              break label280;
+              break label282;
             }
             if ((localEntry.getValue() instanceof String))
             {
@@ -177,7 +185,7 @@ public class VVideo
         this.mCurrentVid = ((JSONObject)localEntry.getValue()).getString("vid");
         localJSONObject.put("video_info", localEntry.getValue());
         continue;
-        label280:
+        label282:
         if ("timeInterval".equals(localObject)) {
           localJSONObject.put("timeupdateRate", localEntry.getValue());
         } else if ("autoPlay".equals(localObject)) {
@@ -253,7 +261,7 @@ public class VVideo
   {
     super.onActivityCreate();
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().l();
+      getVideoViewControlListener().a();
     }
   }
   
@@ -264,7 +272,7 @@ public class VVideo
       QLog.d(TAG, 2, "onActivityDestroy: ");
     }
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().q();
+      getVideoViewControlListener().p();
     }
   }
   
@@ -272,7 +280,7 @@ public class VVideo
   {
     super.onActivityPause();
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().o();
+      getVideoViewControlListener().n();
     }
   }
   
@@ -280,7 +288,7 @@ public class VVideo
   {
     super.onActivityResume();
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().n();
+      getVideoViewControlListener().c();
     }
   }
   
@@ -288,7 +296,7 @@ public class VVideo
   {
     super.onActivityStart();
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().m();
+      getVideoViewControlListener().b();
     }
   }
   
@@ -296,7 +304,7 @@ public class VVideo
   {
     super.onActivityStop();
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().p();
+      getVideoViewControlListener().o();
     }
   }
   
@@ -330,7 +338,7 @@ public class VVideo
       QLog.d(TAG, 2, "removedByJs: ");
     }
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().q();
+      getVideoViewControlListener().p();
     }
   }
   
@@ -461,7 +469,7 @@ public class VVideo
   public void setstartPosition(int paramInt)
   {
     if (getVideoViewControlListener() != null) {
-      getVideoViewControlListener().c(paramInt);
+      getVideoViewControlListener().g_(paramInt);
     }
   }
   
@@ -500,7 +508,7 @@ public class VVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo
  * JD-Core Version:    0.7.0.1
  */

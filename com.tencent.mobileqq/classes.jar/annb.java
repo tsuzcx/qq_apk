@@ -1,287 +1,181 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import appoint.define.appoint_define.RichText;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewPropertyAnimator;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.ark.ArkViewImplement.ArkViewInterface;
+import com.tencent.ark.ArkViewImplement.InputCallback;
+import com.tencent.ark.open.ArkView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.widget.BubblePopupWindow;
 
-public class annb
+class annb
+  implements ArkViewImplement.InputCallback
 {
-  public static final Pattern a = Pattern.compile("\\{\\{(.\\d+):(.\\d?)\\}\\}", 2);
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private BubblePopupWindow jdField_a_of_type_ComTencentWidgetBubblePopupWindow;
+  private ImageView b;
+  private ImageView c;
   
-  public static aykk a(appoint_define.RichText paramRichText)
+  private void a(View paramView)
   {
-    return a(paramRichText, 16);
-  }
-  
-  public static aykk a(appoint_define.RichText paramRichText, int paramInt)
-  {
-    return a(aqkb.a(paramRichText), paramInt);
-  }
-  
-  public static aykk a(String paramString, int paramInt)
-  {
-    return new aykk(paramString, 5, paramInt);
-  }
-  
-  public static String a(String paramString)
-  {
-    if (paramString == null)
+    if (paramView != null)
     {
-      paramString = "";
-      return paramString;
+      paramView.clearAnimation();
+      paramView.setVisibility(8);
+    }
+  }
+  
+  private void a(View paramView, int paramInt1, int paramInt2)
+  {
+    if (paramView != null)
+    {
+      paramView.setVisibility(0);
+      paramView.animate().x(paramInt1).y(paramInt2).setDuration(0L).start();
+    }
+  }
+  
+  public void onFocusChanged(View paramView, boolean paramBoolean)
+  {
+    ArkView localArkView = (ArkView)paramView;
+    paramView = (ViewGroup)paramView.getParent();
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      paramView = this.jdField_a_of_type_AndroidViewViewGroup;
+    }
+    if (paramView == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      Object localObject2 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838549);
+      Object localObject1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838548);
+      localArkView.setInputSetSelectHolderSize(((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight());
+      localArkView.setInputSetCaretHolderSize(((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
+      if (this.jdField_a_of_type_AndroidWidgetImageView == null)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(localArkView.getContext());
+        this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable((Drawable)localObject2);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(-1.0F);
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+        paramView.addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(localArkView);
+      }
+      if (this.b == null)
+      {
+        this.b = new ImageView(localArkView.getContext());
+        this.b.setBackgroundDrawable((Drawable)localObject2);
+        localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+        paramView.addView(this.b, (ViewGroup.LayoutParams)localObject2);
+        this.b.setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(localArkView);
+      }
+      if (this.c == null)
+      {
+        this.c = new ImageView(localArkView.getContext());
+        this.c.setBackgroundDrawable((Drawable)localObject1);
+        localObject1 = new RelativeLayout.LayoutParams(-2, -2);
+        paramView.addView(this.c, (ViewGroup.LayoutParams)localObject1);
+        this.c.setVisibility(8);
+        this.c.setOnTouchListener(localArkView);
+      }
+    }
+    a(this.jdField_a_of_type_AndroidWidgetImageView);
+    a(this.b);
+    a(this.c);
+  }
+  
+  public void onHideMenu(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null)
+    {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
+    }
+  }
+  
+  public void onSelectChanged(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    ArkView localArkView = (ArkView)paramView;
+    paramView = (ViewGroup)paramView.getParent();
+    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
+      paramView = this.jdField_a_of_type_AndroidViewViewGroup;
+    }
+    if (paramView == null) {
+      return;
+    }
+    if ((paramInt1 > 0) && (paramInt2 > 0) && ((paramInt1 < paramInt3) || (paramInt2 < paramInt4)))
+    {
+      int j = this.jdField_a_of_type_AndroidWidgetImageView.getWidth();
+      int i = j;
+      if (j <= 0) {
+        i = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838549).getIntrinsicWidth();
+      }
+      a(this.jdField_a_of_type_AndroidWidgetImageView, localArkView.getLeft() + paramInt1 - i, localArkView.getTop() + paramInt2);
+      if ((paramInt3 <= 0) || (paramInt4 <= 0) || ((paramInt1 >= paramInt3) && (paramInt2 >= paramInt4))) {
+        break label245;
+      }
+      a(this.b, localArkView.getLeft() + paramInt3, localArkView.getTop() + paramInt4);
     }
     for (;;)
     {
-      for (;;)
-      {
-        Object localObject3;
-        Object localObject4;
-        int i;
-        try
-        {
-          localObject5 = new JSONObject(paramString);
-          localObject3 = ((JSONObject)localObject5).optString("content");
-          localObject4 = localObject3;
-        }
-        catch (JSONException localJSONException1)
-        {
-          Object localObject5;
-          Object localObject1;
-          String str;
-          localObject4 = paramString;
-        }
-        try
-        {
-          if (((JSONObject)localObject5).has("audio_list"))
-          {
-            localObject1 = localObject3;
-            localObject4 = localObject3;
-            if (((JSONObject)localObject5).optJSONArray("audio_list").length() > 0)
-            {
-              localObject4 = localObject3;
-              localObject1 = (String)localObject3 + ajya.a(2131706949);
-            }
-            localObject3 = a.matcher((CharSequence)localObject1);
-            paramString = (String)localObject1;
-            if (!((Matcher)localObject3).find()) {
-              break;
-            }
-            paramString = ((Matcher)localObject3).group(1);
-            localObject1 = ((String)localObject1).replace(((Matcher)localObject3).group(0), paramString);
-            continue;
-          }
-          localObject4 = localObject3;
-          if (((JSONObject)localObject5).has("video_list"))
-          {
-            localObject1 = localObject3;
-            localObject4 = localObject3;
-            if (((JSONObject)localObject5).optJSONArray("video_list").length() > 0)
-            {
-              localObject4 = localObject3;
-              localObject1 = (String)localObject3 + ajya.a(2131706950);
-            }
-          }
-          else
-          {
-            localObject4 = localObject3;
-            if (((JSONObject)localObject5).has("pic_list"))
-            {
-              localObject1 = localObject3;
-              localObject4 = localObject3;
-              if (((JSONObject)localObject5).optJSONArray("pic_list").length() > 0)
-              {
-                localObject4 = localObject3;
-                localObject1 = (String)localObject3 + ajya.a(2131706948);
-              }
-            }
-            else
-            {
-              localObject1 = localObject3;
-              localObject4 = localObject3;
-              if (((JSONObject)localObject5).has("post_array"))
-              {
-                localObject4 = localObject3;
-                localObject5 = ((JSONObject)localObject5).optJSONArray("post_array");
-                i = 0;
-              }
-            }
-          }
-        }
-        catch (JSONException localJSONException2)
-        {
-          label406:
-          Object localObject2;
-          break label406;
-          i += 1;
-          localObject3 = localJSONException2;
-        }
+      if ((paramInt1 <= 0) || (paramInt2 <= 0) || (paramInt1 != paramInt3) || (paramInt2 != paramInt4)) {
+        break label256;
       }
-      localObject1 = localObject3;
-      localObject4 = localObject3;
-      if (i < ((JSONArray)localObject5).length())
-      {
-        localObject4 = localObject3;
-        str = ((JSONArray)localObject5).optJSONObject(i).optString("type");
-        localObject4 = localObject3;
-        if (TextUtils.isEmpty(str))
-        {
-          localObject1 = localObject3;
-          break label450;
-        }
-        localObject4 = localObject3;
-        if (str.equals("qqmusic"))
-        {
-          localObject4 = localObject3;
-          localObject1 = (String)localObject3 + ajya.a(2131706946);
-          break label450;
-        }
-        localObject4 = localObject3;
-        localObject1 = localObject3;
-        if (!str.equals("audio")) {
-          break label450;
-        }
-        localObject4 = localObject3;
-        localObject1 = (String)localObject3 + ajya.a(2131706947);
-        break label450;
-        localObject2 = localObject4;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("Q..msgbox.util", 2, "getTribeJsonContent content:" + paramString);
-          localObject2 = localObject4;
-        }
+      paramInt2 = this.c.getWidth();
+      paramInt1 = paramInt2;
+      if (paramInt2 <= 0) {
+        paramInt1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838548).getIntrinsicWidth();
       }
+      a(this.c, localArkView.getLeft() + paramInt3 - paramInt1 / 2, localArkView.getTop() + paramInt4);
+      return;
+      a(this.jdField_a_of_type_AndroidWidgetImageView);
+      break;
+      label245:
+      a(this.b);
     }
+    label256:
+    a(this.c);
   }
   
-  public static boolean a()
+  public void onShowMenu(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return "0".equals(BaseApplicationImpl.getContext().getSharedPreferences("nearby_callback", 4).getString("nearby_settings_greetings_receive", "0"));
-  }
-  
-  public static boolean a(int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
-  {
-    return ((!a()) || (paramInt1 != 1001) || (a(paramInt2, paramString))) && (!paramBoolean);
-  }
-  
-  public static boolean a(int paramInt, String paramString)
-  {
-    return (paramInt == -2053) && (!paramString.equals(String.valueOf(1822701914L + ajsd.l))) && (!paramString.equals("1822701914"));
-  }
-  
-  public static boolean a(QQMessageFacade.Message paramMessage, QQAppInterface paramQQAppInterface)
-  {
-    MessageRecord localMessageRecord = null;
-    if (paramMessage.msgtype == -2011) {
-      localMessageRecord = paramQQAppInterface.a(1001).a(ajsd.I, 1001, paramMessage.uniseq);
-    }
-    return a(paramMessage.istroop, paramMessage.msgtype, a(localMessageRecord), paramMessage.senderuin);
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord == null) {
-      return false;
-    }
-    if ((paramMessageRecord instanceof MessageForStructing))
+    if (this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null)
     {
-      MessageForStructing localMessageForStructing = (MessageForStructing)paramMessageRecord;
-      if ((localMessageForStructing.structingMsg == null) || (localMessageForStructing.structingMsg.mMsgServiceID != 98)) {}
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = null;
     }
-    for (int i = 1;; i = 0) {
-      return (i != 0) || (paramMessageRecord.msgtype == -2070);
-    }
-  }
-  
-  public static String b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      str1 = "";
-    }
-    do
+    bdkz localbdkz = new bdkz();
+    if (paramInt4 == 2)
     {
-      return str1;
-      str1 = paramString;
-    } while (paramString.indexOf("/") == -1);
-    int i = 0;
-    String str1 = paramString;
+      localbdkz.a(0, alpo.a(2131701083));
+      localbdkz.a(1, alpo.a(2131701078));
+      localbdkz.a(2, alpo.a(2131701084));
+    }
     for (;;)
     {
-      try
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bdbk.a(paramView, paramInt1, paramInt2, paramInt3 + BaseApplicationImpl.getApplication().getResources().getDrawable(2130838548).getIntrinsicHeight(), localbdkz, new annc(this, paramInt4, (ArkViewImplement.ArkViewInterface)paramView));
+      return;
+      if (paramInt4 == 1)
       {
-        if (i >= ayjy.a.length) {
-          break label277;
-        }
-        str1 = paramString;
-        str2 = paramString;
-        if (paramString.indexOf('\024' + ayjy.a[i]) == -1) {
-          break label268;
-        }
-        str1 = paramString;
-        str2 = paramString.replace('\024' + ayjy.a[i], "\024" + (char)i);
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        paramString = new StringBuilder().append("TextUtils:");
-        if (str1.length() <= 200) {
-          break label258;
-        }
-        i = 200;
-        QLog.e("Q..msgbox.util", 2, str1.substring(0, i));
-        str2 = str1;
-      }
-      str1 = paramString;
-      String str2 = paramString;
-      if (i < ayjy.a.length)
-      {
-        str2 = paramString;
-        str1 = paramString;
-        if (paramString.indexOf(ayjy.a[i]) != -1)
-        {
-          str1 = paramString;
-          str2 = paramString.replace(ayjy.a[i], "\024" + (char)i);
-        }
-        i += 1;
-        paramString = str2;
+        localbdkz.a(0, alpo.a(2131701077));
+        localbdkz.a(1, alpo.a(2131701079));
+        localbdkz.a(2, alpo.a(2131701080));
       }
       else
       {
-        return str2;
-        label258:
-        i = str1.length() - 1;
-        continue;
-        label268:
-        i += 1;
-        paramString = str2;
-        break;
-        label277:
-        i = 0;
+        localbdkz.a(0, alpo.a(2131701082));
       }
     }
-  }
-  
-  public static boolean b(MessageRecord paramMessageRecord)
-  {
-    return a(paramMessageRecord.istroop, paramMessageRecord.msgtype, a(paramMessageRecord), paramMessageRecord.senderuin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     annb
  * JD-Core Version:    0.7.0.1
  */

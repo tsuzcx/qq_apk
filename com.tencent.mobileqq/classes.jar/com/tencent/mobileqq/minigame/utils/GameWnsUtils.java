@@ -3,7 +3,7 @@ package com.tencent.mobileqq.minigame.utils;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import bcyb;
+import bexd;
 import com.tencent.mobileqq.mini.sdk.BaseLibInfo;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -63,9 +63,38 @@ public class GameWnsUtils
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDefaultShareImg", "https://qzonestyle.gtimg.cn/aoi/sola/20190510161934_LYAUVguqnV.png");
   }
   
+  public static String downloaderPreConnectHost()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDownloaderPreConnectHost", "https://miniapp.gtimg.cn");
+  }
+  
+  public static boolean enableDownloaderPreConnect()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDownloaderPreConnectEnable", 1) > 0;
+  }
+  
+  public static boolean enableGameruntimePreload()
+  {
+    boolean bool = false;
+    if (QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameRuntimePreload", 0) > 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public static boolean enableGameruntimePreloadOnFirstFrame()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameRuntimePreloadOnFirstFrame", 1) > 0;
+  }
+  
   public static boolean enableHotReload()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniEnableHotReload", 1) > 0;
+  }
+  
+  public static boolean enableHttp2()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameEnableHttp2", 1) > 0;
   }
   
   public static boolean enableOpengles3()
@@ -81,6 +110,16 @@ public class GameWnsUtils
   public static boolean enablePreloadGameBaseLib()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePreloadBaseLibEnable", 1) > 0;
+  }
+  
+  public static boolean enableStorageExceedDialog()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameStorageExceedDialogEnable", 1) > 0;
+  }
+  
+  public static int enableStorageExceedLimit()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameStorageExceedLimit", 3);
   }
   
   public static String gameDisableHint()
@@ -122,6 +161,11 @@ public class GameWnsUtils
   public static String getBattleGameShowAlertViewScenes()
   {
     return QzoneConfig.getInstance().getConfig("qqminiapp", "qqMiniappRetainAlterViewScene", "{\"2\": [\"2072\"],\"3\": [\"1037\"]}");
+  }
+  
+  public static String getCacheFreeContent()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameCacheFreeDialogContent", "游戏存储异常,是否清缓存后重启游戏？");
   }
   
   public static int getCloseConfirmShowTimes()
@@ -206,6 +250,11 @@ public class GameWnsUtils
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameJsErrorDetectInterval", 5000);
   }
   
+  public static String getGameLaunchFailContent()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameLaunchFailDialogContent", "游戏加载异常，是否清缓存后重启游戏？");
+  }
+  
   public static long getGameOnShowReportInterval()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameOnShowReportInterval", 2000L);
@@ -214,6 +263,11 @@ public class GameWnsUtils
   public static int getGamePresentDetectInterval()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePresentDetectInterval", 1000);
+  }
+  
+  public static int getMaxRangeNumber()
+  {
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppMaxRangeNumber", 4);
   }
   
   public static int getNoPresentDurationLimit()
@@ -226,9 +280,29 @@ public class GameWnsUtils
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameNoPresentTouchLimit", 3);
   }
   
+  public static int getPreConnectNum()
+  {
+    return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGamePreConnectNum", 5);
+  }
+  
   public static String getQQUpdateUrl()
   {
     return QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_upgrade_url", "https://m.q.qq.com/upgrade/{appid}");
+  }
+  
+  public static String getRangeModeNetworkLevel()
+  {
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppRangeModeNetworkLevel", "1,2,3,6");
+  }
+  
+  public static String getRangeModePerfLevel()
+  {
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppRangeModePerfLevel", "1,2,3");
+  }
+  
+  public static long getRangeSize()
+  {
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppRangeSize", 524288L);
   }
   
   public static long getRecordDurationInterval()
@@ -264,6 +338,11 @@ public class GameWnsUtils
   public static boolean isCodeCacheEnable()
   {
     return QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameCodeCacheEnable", 1) == 1;
+  }
+  
+  public static boolean isDownloadOnRangeModeEnable()
+  {
+    return QzoneConfig.getInstance().getConfig("qqminiapp", "MiniAppDownloadOnRangeMode", 1) == 1;
   }
   
   public static boolean isForceDownloadInMainProcess()
@@ -340,13 +419,13 @@ public class GameWnsUtils
         localThrowable.printStackTrace();
       }
     }
-    l = bcyb.a().a() % 100L;
+    l = bexd.a().a() % 100L;
     return (l >= arrayOfInt[0]) && (l < arrayOfInt[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.GameWnsUtils
  * JD-Core Version:    0.7.0.1
  */

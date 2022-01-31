@@ -1,63 +1,21 @@
-import android.view.View;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.dataline.activities.LiteAdvanceActivity;
 
 public class ci
-  implements bfph
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public ci(LiteActivity paramLiteActivity, DataLineMsgSet paramDataLineMsgSet, fw paramfw, bfpc parambfpc) {}
+  public ci(LiteAdvanceActivity paramLiteAdvanceActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.cancel();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -1000)
-      {
-        paramView = this.jdField_a_of_type_Fw.a().jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(paramView, this.jdField_a_of_type_Fw.a().jdField_a_of_type_Long, -1);
-      }
-      else
-      {
-        DataLineMsgRecord localDataLineMsgRecord;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2000)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
-          paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
-          while (paramView.hasNext())
-          {
-            localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
-            if (DataLineMsgSet.isCanReciveOrResend(localDataLineMsgRecord)) {
-              this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(localDataLineMsgRecord.path, localDataLineMsgRecord.sessionid, 0);
-            }
-          }
-        }
-        else if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2005) || (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2009))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
-          paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
-          while (paramView.hasNext())
-          {
-            localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
-            if (DataLineMsgSet.isCanReciveOrResend(localDataLineMsgRecord)) {
-              this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(localDataLineMsgRecord.path, localDataLineMsgRecord.sessionid, 2);
-            }
-          }
-        }
-      }
-    }
+    LiteAdvanceActivity.d(this.a, paramBoolean);
+    LiteAdvanceActivity.b(this.a, LiteAdvanceActivity.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ci
  * JD-Core Version:    0.7.0.1
  */

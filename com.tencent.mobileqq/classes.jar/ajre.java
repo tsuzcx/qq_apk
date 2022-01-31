@@ -1,23 +1,15 @@
-import android.view.View;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
 
-public class ajre
+public abstract interface ajre
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  String jdField_a_of_type_JavaLangString;
-  int b;
+  public abstract void a(MediaPlayer paramMediaPlayer);
   
-  public ajre(View paramView, int paramInt1, String paramString, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
-  }
+  public abstract void a(FixedSizeVideoView paramFixedSizeVideoView, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajre
  * JD-Core Version:    0.7.0.1
  */

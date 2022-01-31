@@ -1,23 +1,23 @@
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class sae
-  implements View.OnSystemUiVisibilityChangeListener
+class sae
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public sae(ViolaLazyFragment paramViolaLazyFragment) {}
+  sae(sad paramsad, int paramInt, View paramView) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onGlobalLayout()
   {
-    paramInt = this.a.getActivity().getWindow().getDecorView().getSystemUiVisibility();
-    this.a.getActivity().getWindow().getDecorView().setSystemUiVisibility(paramInt | 0x2 | 0x400);
+    this.jdField_a_of_type_Sad.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidViewView.getHeight());
+    QLog.d("Q.readinjoy.fast_web", 2, " position : " + this.jdField_a_of_type_Int + "   height:" + this.jdField_a_of_type_AndroidViewView.getHeight());
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sae
  * JD-Core Version:    0.7.0.1
  */

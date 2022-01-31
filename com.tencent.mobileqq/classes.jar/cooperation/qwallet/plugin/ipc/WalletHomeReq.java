@@ -2,7 +2,7 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import avps;
+import axho;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -192,9 +192,9 @@ public class WalletHomeReq
   
   protected void getRedTouch(QQAppInterface paramQQAppInterface)
   {
-    avps localavps = (avps)paramQQAppInterface.getManager(36);
+    axho localaxho = (axho)paramQQAppInterface.getManager(36);
     ArrayList localArrayList = new ArrayList();
-    paramQQAppInterface = localavps.a();
+    paramQQAppInterface = localaxho.a();
     if (paramQQAppInterface == null)
     {
       onGetRedTouch(null);
@@ -263,7 +263,7 @@ public class WalletHomeReq
         i += 1;
       }
     }
-    int i = localavps.a("100007.102000", 100);
+    int i = localaxho.a("100007.102000", 100);
     if (i > 0) {
       localArrayList.add(new QWalletRedTouchInfo("100007.102000", 5, null, null, i + ""));
     }
@@ -309,7 +309,7 @@ public class WalletHomeReq
   protected void reportRedTouch(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface != null) {
-      ((avps)paramQQAppInterface.getManager(36)).b(this.redTouchPath);
+      ((axho)paramQQAppInterface.getManager(36)).b(this.redTouchPath);
     }
   }
   
@@ -324,7 +324,7 @@ public class WalletHomeReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.WalletHomeReq
  * JD-Core Version:    0.7.0.1
  */

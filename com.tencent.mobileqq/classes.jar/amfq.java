@@ -1,25 +1,11 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManagerImpl.PreviewCallbackForward.1;
-
-public class amfq
-  implements Camera.PreviewCallback
+public final class amfq
 {
-  private final amfg jdField_a_of_type_Amfg;
-  private final amfh jdField_a_of_type_Amfh;
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  
-  @TargetApi(8)
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PreviewCallbackForward.1(this, paramArrayOfByte));
-  }
+  public int a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amfq
  * JD-Core Version:    0.7.0.1
  */

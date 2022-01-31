@@ -1,95 +1,77 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.text.TextUtils.TruncateAt;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
 
-final class yua
-  extends LinearLayout
-  implements yts
+public class yua
 {
-  private int jdField_a_of_type_Int = -2147483648;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ytp jdField_a_of_type_Ytp;
-  private int jdField_b_of_type_Int = -2147483648;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private int a;
+  private int b;
   
-  public yua(Context paramContext, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public yua(int paramInt1, int paramInt2)
   {
-    super(paramContext);
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (paramInt1 < 0) || (paramInt2 < 0))
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static yua a(int paramInt)
+  {
+    switch (paramInt)
     {
-      yxp.d("GdtBannerViewForCreativeSize194", "constructor");
+    default: 
+      return new yua(0, -1);
+    case 0: 
+      return new yua(0, 0);
+    case 1: 
+      return new yua(0, -1);
+    }
+    return new yua(0, -2);
+  }
+  
+  public static yua b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return new yua(1, -1);
+    case 3: 
+      return new yua(1, 0);
+    case 1: 
+      return new yua(1, -1);
+    }
+    return new yua(1, -2);
+  }
+  
+  public void a(View paramView)
+  {
+    if (this.a == 0) {
+      switch (this.b)
+      {
+      default: 
+        paramView.setPivotX(this.b);
+      }
+    }
+    while (this.a != 1)
+    {
+      return;
+      paramView.setPivotX(paramView.getWidth() * 0.5F);
+      return;
+      paramView.setPivotX(paramView.getWidth());
       return;
     }
-    setOrientation(0);
-    setGravity(16);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Ytp = new ytp(paramContext, paramString1);
-    this.jdField_a_of_type_Ytp.setId(2131366951);
-    addView(this.jdField_a_of_type_Ytp);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
-    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131366954);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLines(1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#333333"));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_b_of_type_AndroidWidgetTextView.setId(2131366950);
-    this.jdField_b_of_type_AndroidWidgetTextView.setMaxLines(2);
-    this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#666666"));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString3);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView);
-  }
-  
-  public View a()
-  {
-    return this;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0) || (this.jdField_a_of_type_Ytp == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    switch (this.b)
     {
-      yxp.d("GdtBannerViewForCreativeSize194", "setSize error");
+    default: 
+      paramView.setPivotY(this.b);
+      return;
+    case -1: 
+      paramView.setPivotY(paramView.getHeight() * 0.5F);
       return;
     }
-    ytx localytx = new ytx(getContext(), paramInt1, paramInt2);
-    paramInt1 = Double.valueOf(1.0D * (paramInt2 - localytx.jdField_b_of_type_Int * 2) / this.jdField_b_of_type_Int * this.jdField_a_of_type_Int + localytx.jdField_b_of_type_Int * 2).intValue();
-    this.jdField_a_of_type_Ytp.setPadding(localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int, localytx.jdField_b_of_type_Int);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
-    this.jdField_a_of_type_Ytp.setLayoutParams(localLayoutParams);
-    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.leftMargin = localytx.jdField_a_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
-    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, localytx.d);
-    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-    localLayoutParams.topMargin = localytx.c;
-    this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, localytx.d);
+    paramView.setPivotY(paramView.getHeight());
   }
-  
-  public void a(Context paramContext) {}
-  
-  public void b(Context paramContext) {}
-  
-  public void c(Context paramContext) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yua
  * JD-Core Version:    0.7.0.1
  */

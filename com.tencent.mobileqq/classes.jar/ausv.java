@@ -1,36 +1,21 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.profile.CustomCoverFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.OldBigDataChannelManager.1.1;
+import mqq.observer.AccountObserver;
+import mqq.os.MqqHandler;
 
 public class ausv
-  extends RecyclerView.ItemDecoration
+  extends AccountObserver
 {
-  private int jdField_a_of_type_Int;
+  ausv(ausu paramausu) {}
   
-  public ausv(CustomCoverFragment paramCustomCoverFragment, int paramInt)
+  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    if (!(paramView.getTag() instanceof auss))
-    {
-      paramRect.left = 0;
-      return;
-    }
-    int i = paramRecyclerView.getChildLayoutPosition(paramView) - 1;
-    float f = this.jdField_a_of_type_Int * 2 * 1.0F / 3.0F;
-    paramRect.left = ((int)(i % 3 * (this.jdField_a_of_type_Int - f)));
-    paramRect.right = ((int)(f - i % 3 * (this.jdField_a_of_type_Int - f)));
+    ThreadManager.getFileThreadHandler().post(new OldBigDataChannelManager.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ausv
  * JD-Core Version:    0.7.0.1
  */

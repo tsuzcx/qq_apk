@@ -1,73 +1,27 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.location.ui.MapWidget;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
-import com.tencent.tencentmap.mapsdk.maps.model.TencentMapGestureListener;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class aryi
-  implements TencentMapGestureListener
+class aryi
+  implements Handler.Callback
 {
-  private boolean jdField_a_of_type_Boolean;
-  private volatile boolean b;
+  aryi(aryh paramaryh) {}
   
-  public aryi(MapWidget paramMapWidget) {}
-  
-  public boolean onDoubleTap(float paramFloat1, float paramFloat2)
+  public boolean handleMessage(Message paramMessage)
   {
-    return false;
-  }
-  
-  public boolean onDown(float paramFloat1, float paramFloat2)
-  {
-    this.b = true;
-    if (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(false, new Point(Math.round(paramFloat1), Math.round(paramFloat2)));
-    }
-    return false;
-  }
-  
-  public boolean onFling(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean onLongPress(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public void onMapStable()
-  {
-    if ((this.b) && (MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget) != null)) {
-      MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget).a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a.getCameraPosition().target);
-    }
-    this.b = false;
-  }
-  
-  public boolean onScroll(float paramFloat1, float paramFloat2)
-  {
-    this.jdField_a_of_type_Boolean = true;
-    return false;
-  }
-  
-  public boolean onSingleTap(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public boolean onUp(float paramFloat1, float paramFloat2)
-  {
-    if (this.jdField_a_of_type_Boolean)
+    switch (paramMessage.what)
     {
-      axqy.b(null, "CliOper", "", "", "0X800A772", "0X800A772", 0, 0, "", "0", "0", "");
-      this.jdField_a_of_type_Boolean = false;
+    default: 
+      return false;
     }
-    return false;
+    if ((this.a.jdField_a_of_type_Bdfq != null) && (this.a.jdField_a_of_type_Bdfq.isShowing()) && (this.a.jdField_a_of_type_Aryq != null)) {
+      this.a.jdField_a_of_type_Aryq.a();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aryi
  * JD-Core Version:    0.7.0.1
  */

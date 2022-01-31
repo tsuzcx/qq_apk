@@ -1,31 +1,37 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.mqsafeedit.libsafeedit;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class ahro
   implements View.OnClickListener
 {
-  public ahro(LoginView paramLoginView) {}
+  public ahro(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
   public void onClick(View paramView)
   {
-    if ((this.a.b != null) && (this.a.b.isShown())) {
-      this.a.b.setVisibility(8);
+    paramView = this.a.a.iterator();
+    while (paramView.hasNext()) {
+      ((EmoticonFromGroupEntity)paramView.next()).status = -1;
     }
-    this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setText("");
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("");
-    LoginView.c(this.a);
-    libsafeedit.clearPassBuffer();
-    LoginView.d(this.a);
+    this.a.a.clear();
+    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
+    EmoticonGroupStoreFragment.b(this.a).setVisibility(0);
+    EmoticonGroupStoreFragment.a(this.a).a = false;
+    EmoticonGroupStoreFragment.a(this.a).a(false);
+    EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+    EmoticonGroupStoreFragment.e(this.a);
+    this.a.a(true);
+    this.a.resetLeftButton();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahro
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.appcommon.now.download.js.DownloadJSApi.2;
+import android.view.KeyEvent;
+import android.view.Window;
+import android.view.WindowManager;
 
-public class bdgq
-  implements DialogInterface.OnClickListener
+class bdgq
+  implements apqc
 {
-  public bdgq(DownloadJSApi.2 param2) {}
+  bdgq(bdgl parambdgl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(KeyEvent paramKeyEvent)
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(bdlb.r, false);
-    bdgp.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.jdField_a_of_type_Int);
-    paramDialogInterface.dismiss();
+    if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 1) && (this.a.c))
+    {
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+      this.a.c = false;
+      paramKeyEvent = this.a.getWindow().getAttributes();
+      paramKeyEvent.y = 0;
+      this.a.getWindow().setAttributes(paramKeyEvent);
+      bdgl.a(this.a);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdgq
  * JD-Core Version:    0.7.0.1
  */

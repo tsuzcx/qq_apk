@@ -1,38 +1,27 @@
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import mqq.os.MqqHandler;
 
 class ajdi
-  implements ajnm
+  implements View.OnClickListener
 {
-  ajdi(ajdf paramajdf, String paramString) {}
+  private final int jdField_a_of_type_Int;
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void a(int paramInt)
+  public ajdi(int paramInt, MqqHandler paramMqqHandler)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "[onVerifyResult], retCode:", Integer.valueOf(paramInt) });
-      }
-      ApolloCmdChannel localApolloCmdChannel = ajac.a();
-      if (localApolloCmdChannel != null)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("packName", this.jdField_a_of_type_JavaLangString);
-        localJSONObject.put("result", paramInt);
-        localApolloCmdChannel.callbackFromRequest(ajdf.a(this.jdField_a_of_type_Ajdf), 0, "cs.file_correctness_check.local", localJSONObject.toString());
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajdi
  * JD-Core Version:    0.7.0.1
  */

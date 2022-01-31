@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.process.chanel;
 
-import ajba;
-import ajbb;
-import ajla;
+import aksm;
+import aksn;
+import alcm;
 import com.tencent.TMG.sdk.AVContext;
 import com.tencent.TMG.sdk.AVRoomMulti;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -12,12 +12,12 @@ import java.util.ArrayList;
 public class CmGameAvHandler$11
   implements Runnable
 {
-  public CmGameAvHandler$11(ajba paramajba, Boolean paramBoolean) {}
+  public CmGameAvHandler$11(aksm paramaksm, Boolean paramBoolean) {}
   
   public void run()
   {
     if (this.a.booleanValue()) {
-      if (ajba.a(this.this$0).size() > 0)
+      if (aksm.a(this.this$0).size() > 0)
       {
         localObject = BaseApplicationImpl.getApplication().getRuntime();
         if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {
@@ -32,16 +32,16 @@ public class CmGameAvHandler$11
         return;
       }
       localObject = ((QQAppInterface)localObject).c();
-      ajba.a(this.this$0, (String[])ajba.a(this.this$0).toArray(new String[ajba.a(this.this$0).size()]), (String)localObject);
+      aksm.a(this.this$0, (String[])aksm.a(this.this$0).toArray(new String[aksm.a(this.this$0).size()]), (String)localObject);
       return;
-      ajla.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new ajbb(this));
+      alcm.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new aksn(this));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.11
  * JD-Core Version:    0.7.0.1
  */

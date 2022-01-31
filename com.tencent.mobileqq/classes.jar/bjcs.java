@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.FilterCategory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qzone.TranslucentActivity;
 
-public final class bjcs
-  implements Parcelable.Creator<FilterCategory>
+public class bjcs
+  implements DialogInterface.OnDismissListener
 {
-  public FilterCategory a(Parcel paramParcel)
-  {
-    return new FilterCategory(paramParcel);
-  }
+  public bjcs(TranslucentActivity paramTranslucentActivity) {}
   
-  public FilterCategory[] a(int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    return new FilterCategory[paramInt];
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjcs
  * JD-Core Version:    0.7.0.1
  */

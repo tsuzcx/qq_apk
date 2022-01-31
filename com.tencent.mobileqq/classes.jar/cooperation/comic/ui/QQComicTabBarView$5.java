@@ -1,8 +1,8 @@
 package cooperation.comic.ui;
 
-import bgih;
-import bgja;
-import bgje;
+import bijf;
+import bijy;
+import bikc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -16,12 +16,12 @@ class QQComicTabBarView$5
   public void run()
   {
     this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
-    this.this$0.jdField_a_of_type_Bgje = ((bgje)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(213));
-    if (this.this$0.jdField_a_of_type_Bgje != null) {
-      this.this$0.jdField_a_of_type_Bgje.addObserver(this.this$0.jdField_a_of_type_Bgjg);
+    this.this$0.jdField_a_of_type_Bikc = ((bikc)this.this$0.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(213));
+    if (this.this$0.jdField_a_of_type_Bikc != null) {
+      this.this$0.jdField_a_of_type_Bikc.addObserver(this.this$0.jdField_a_of_type_Bike);
     }
-    if (bgja.a != null) {
-      bgja.a.a(this.this$0.jdField_a_of_type_Bgig);
+    if (bijy.a != null) {
+      bijy.a.a(this.this$0.jdField_a_of_type_Bije);
     }
     if (QLog.isColorLevel()) {
       QLog.d("WebViewTabBarView", 2, "register observers");
@@ -30,7 +30,7 @@ class QQComicTabBarView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.comic.ui.QQComicTabBarView.5
  * JD-Core Version:    0.7.0.1
  */

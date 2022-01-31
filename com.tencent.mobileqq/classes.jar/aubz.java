@@ -1,37 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-
-public class aubz
-  implements View.OnTouchListener
+public abstract interface aubz
 {
-  public aubz(ScanOcrActivity paramScanOcrActivity) {}
+  public abstract void a(int paramInt, aucl paramaucl, Object paramObject);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (paramView == ScanOcrActivity.a(this.a))
-      {
-        paramView.setAlpha(0.7F);
-      }
-      else
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        paramView.setAlpha(1.0F);
-      }
-    }
-  }
+  public abstract void a(aucl paramaucl, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aubz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package dov.com.qq.im.story;
 
-import bjrs;
+import bmdc;
 import com.tencent.qphone.base.util.QLog;
 
 public class StoryGameAudioMixManager$1
@@ -12,7 +12,7 @@ public class StoryGameAudioMixManager$1
     if (QLog.isColorLevel()) {
       QLog.d("StoryGameAudioMixManager", 2, "bgmBytes start");
     }
-    if (bjrs.a(this.a, this.b))
+    if (bmdc.a(this.a, this.b))
     {
       if (QLog.isColorLevel()) {
         QLog.d("StoryGameAudioMixManager", 2, "conver succeed");
@@ -26,7 +26,7 @@ public class StoryGameAudioMixManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.story.StoryGameAudioMixManager.1
  * JD-Core Version:    0.7.0.1
  */

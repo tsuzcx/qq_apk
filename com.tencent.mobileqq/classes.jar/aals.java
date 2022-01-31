@@ -1,36 +1,48 @@
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.media.AudioManager;
 
 class aals
-  implements bbzb
+  extends BroadcastReceiver
 {
-  private final WeakReference<aalo> a;
+  private aals(aall paramaall) {}
   
-  aals(aalo paramaalo)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a = new WeakReference(paramaalo);
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-      if (QLog.isColorLevel()) {
-        QLog.i("AutoLoginHelper", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
-      }
-    }
-    aalo localaalo;
-    do
+    if (aall.a(this.a))
     {
+      aall.b(this.a, false);
+      aanp.a("GdtMvViewController", "SilentModeReceiver first auto called! so skip!");
+    }
+    while ((aall.a(this.a) == null) || (!"android.media.RINGER_MODE_CHANGED".equalsIgnoreCase(paramIntent.getAction()))) {
       return;
-      localaalo = (aalo)this.a.get();
-    } while (localaalo == null);
-    localaalo.a(paramString, paramBoolean);
+    }
+    int i = aall.a(this.a).getRingerMode();
+    int j = aall.a(this.a).getStreamVolume(3);
+    aanp.a("GdtMvViewController", "system context mode: " + i + ", streamVolume = " + j);
+    switch (i)
+    {
+    default: 
+      aall.c(this.a, true);
+      this.a.a = true;
+      aall.a(this.a).a(true);
+    }
+    for (;;)
+    {
+      aall.a(this.a, j, aall.b(this.a), false);
+      return;
+      aall.c(this.a, false);
+      if (j > 0) {
+        this.a.a = false;
+      }
+      aall.a(this.a).a(this.a.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aals
  * JD-Core Version:    0.7.0.1
  */

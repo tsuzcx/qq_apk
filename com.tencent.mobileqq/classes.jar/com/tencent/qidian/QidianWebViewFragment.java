@@ -1,7 +1,7 @@
 package com.tencent.qidian;
 
-import bbeg;
-import bbex;
+import bddb;
+import bdds;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
@@ -14,10 +14,10 @@ public class QidianWebViewFragment
     if ((paramString.startsWith("mqqwpa://")) && (paramString.contains("request=videochat"))) {
       try
       {
-        bbeg localbbeg = bbex.a(null, getActivity(), paramString);
-        if (localbbeg != null)
+        bddb localbddb = bdds.a(null, getActivity(), paramString);
+        if (localbddb != null)
         {
-          boolean bool = localbbeg.c();
+          boolean bool = localbddb.c();
           return bool;
         }
       }
@@ -33,7 +33,7 @@ public class QidianWebViewFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qidian.QidianWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

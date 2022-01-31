@@ -1,145 +1,233 @@
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.os.Build.VERSION;
+import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AutoCompleteTextView;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ListAdapter;
+import android.widget.ListPopupWindow;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginPopupMaskView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginPopupRightMaskView;
+import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public class bemx
-  extends Dialog
+  extends AutoCompleteTextView
 {
-  Bundle jdField_a_of_type_AndroidOsBundle;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
   private boolean jdField_a_of_type_Boolean;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  private boolean jdField_b_of_type_Boolean;
-  TextView c;
-  TextView d;
-  TextView e;
-  TextView f;
   
-  public bemx(Context paramContext)
+  public bemx(NewStyleDropdownView paramNewStyleDropdownView, Context paramContext)
   {
-    super(paramContext, 2131755751);
-    a(paramContext);
+    super(paramContext);
+    setId(526);
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  private void a(Context paramContext)
+  public bemx(NewStyleDropdownView paramNewStyleDropdownView, Context paramContext, AttributeSet paramAttributeSet)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559285, null);
-    setContentView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131370206));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131370219));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362881));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131378763));
-    this.c = ((TextView)paramContext.findViewById(2131378791));
-    this.d = ((TextView)paramContext.findViewById(2131362871));
-    this.e = ((TextView)paramContext.findViewById(2131369106));
-    this.f = ((TextView)paramContext.findViewById(2131375272));
-    setCanceledOnTouchOutside(true);
-    paramContext = getWindow();
-    if (paramContext != null) {
-      paramContext.setGravity(80);
+    super(paramContext, paramAttributeSet);
+    setId(526);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public bemx(NewStyleDropdownView paramNewStyleDropdownView, Context paramContext, AttributeSet paramAttributeSet, int paramInt)
+  {
+    super(paramContext, paramAttributeSet, paramInt);
+    setId(526);
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public boolean enoughToFilter()
+  {
+    return true;
+  }
+  
+  public boolean isPopupShowing()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return super.isPopupShowing();
     }
+    return false;
   }
   
-  public Bundle a()
+  public void onEditorAction(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidOsBundle;
-  }
-  
-  public void a(Drawable paramDrawable1, String paramString1, String paramString2, Drawable paramDrawable2, String paramString3, String paramString4, String paramString5, View.OnClickListener paramOnClickListener1, String paramString6, View.OnClickListener paramOnClickListener2)
-  {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString2);
-    if (paramDrawable2 == null)
+    if (paramInt == 5)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      if (!TextUtils.isEmpty(paramString3)) {
-        break label141;
+      View localView = focusSearch(130);
+      if ((localView != null) && (!localView.requestFocus(130))) {
+        throw new IllegalStateException("focus search returned a view that wasn't able to take focus!");
       }
-      this.c.setVisibility(8);
-      label65:
-      if (!TextUtils.isEmpty(paramString5)) {
-        break label161;
-      }
-      this.e.setVisibility(8);
-      label82:
-      if (!TextUtils.isEmpty(paramString6)) {
-        break label190;
-      }
-      this.f.setVisibility(8);
-      label99:
-      if (!TextUtils.isEmpty(paramString4)) {
-        break label219;
-      }
-      this.d.setVisibility(8);
     }
+    else
+    {
+      super.onEditorAction(paramInt);
+    }
+  }
+  
+  protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    try
+    {
+      if (isPopupShowing()) {
+        dismissDropDown();
+      }
+      return;
+    }
+    catch (Exception paramCharSequence) {}
+  }
+  
+  protected void performFiltering(CharSequence paramCharSequence, int paramInt) {}
+  
+  public void showDropDown()
+  {
+    try
+    {
+      super.showDropDown();
+      if (Build.VERSION.SDK_INT <= 8) {
+        return;
+      }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localOutOfMemoryError.printStackTrace();
+      return;
+    }
+    try
+    {
+      Object localObject1 = getClass().getSuperclass().getDeclaredField("mDropDownList");
+      ((Field)localObject1).setAccessible(true);
+      localObject1 = ((Field)localObject1).get(this);
+      localObject1.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject1, new Object[] { Integer.valueOf(0) });
+      localObject1.getClass().getSuperclass().getMethod("setVerticalScrollBarEnabled", new Class[] { Boolean.TYPE }).invoke(localObject1, new Object[] { Boolean.valueOf(false) });
+      return;
+    }
+    catch (Exception localException1) {}
     for (;;)
     {
-      show();
+      int k;
+      int j;
+      int i;
+      boolean bool;
+      try
+      {
+        for (;;)
+        {
+          Object localObject2 = getClass().getSuperclass().getDeclaredField("mPopup");
+          ((Field)localObject2).setAccessible(true);
+          localObject2 = ((Field)localObject2).get(this);
+          Object localObject3 = localObject2.getClass().getDeclaredField("mDropDownList");
+          ((Field)localObject3).setAccessible(true);
+          localObject3 = ((Field)localObject3).get(localObject2);
+          localObject3.getClass().getSuperclass().getMethod("setDividerHeight", new Class[] { Integer.TYPE }).invoke(localObject3, new Object[] { Integer.valueOf(0) });
+          localObject3.getClass().getSuperclass().getMethod("setVerticalScrollBarEnabled", new Class[] { Boolean.TYPE }).invoke(localObject3, new Object[] { Boolean.valueOf(false) });
+          if ((localObject2 instanceof PopupWindow)) {
+            ((PopupWindow)localObject2).setAnimationStyle(2130772293);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("NewStyleDropdownView", 2, " showDropDown popupWindow:" + localObject2);
+          }
+          if (!(localObject2 instanceof ListPopupWindow)) {
+            break;
+          }
+          localObject2 = (ListPopupWindow)localObject2;
+          if (((ListPopupWindow)localObject2).getListView() == null) {
+            break;
+          }
+          localObject2 = ((ListPopupWindow)localObject2).getListView();
+          try
+          {
+            ((ListView)localObject2).setPadding(aekt.a(13.0F, getResources()), 0, aekt.a(13.0F, getResources()), 0);
+            ((ListView)localObject2).setOverScrollMode(2);
+            ((ListView)localObject2).setVerticalScrollBarEnabled(false);
+            ((ListView)localObject2).setDivider(null);
+            ((ListView)localObject2).setDividerHeight(0);
+            localObject2 = ((ListView)localObject2).getParent();
+            if (!(localObject2 instanceof FrameLayout)) {
+              break;
+            }
+            localObject3 = (FrameLayout)localObject2;
+            k = getAdapter().getCount();
+            j = 0;
+            i = 0;
+            bool = false;
+            localObject2 = null;
+            if (j >= ((FrameLayout)localObject3).getChildCount()) {
+              break label594;
+            }
+            if ((((FrameLayout)localObject3).getChildAt(j) == null) || (!(((FrameLayout)localObject3).getChildAt(j) instanceof LoginPopupMaskView))) {
+              break label557;
+            }
+            localObject2 = (LoginPopupMaskView)((FrameLayout)localObject3).getChildAt(j);
+            bool = true;
+          }
+          catch (Throwable localThrowable)
+          {
+            for (;;)
+            {
+              QLog.e("NewStyleDropdownView", 1, " showDropDown error:" + localThrowable.getMessage());
+            }
+          }
+        }
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+      }
+      catch (Exception localException2) {}
+      QLog.d("NewStyleDropdownView", 2, " showDropDown error::" + localException2.getMessage());
       return;
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable2);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      break;
-      label141:
-      this.c.setText(paramString3);
-      this.c.setVisibility(0);
-      break label65;
-      label161:
-      this.e.setText(paramString5);
-      this.e.setOnClickListener(paramOnClickListener1);
-      this.e.setVisibility(0);
-      break label82;
-      label190:
-      this.f.setText(paramString6);
-      this.f.setOnClickListener(paramOnClickListener2);
-      this.f.setVisibility(0);
-      break label99;
-      label219:
-      this.d.setVisibility(0);
-      this.d.setText(paramString4);
+      label557:
+      if ((localThrowable.getChildAt(j) != null) && ((localThrowable.getChildAt(j) instanceof LoginPopupRightMaskView)))
+      {
+        Object localObject4 = (LoginPopupRightMaskView)localThrowable.getChildAt(j);
+        i = 1;
+        break label780;
+        label594:
+        if (QLog.isColorLevel()) {
+          QLog.d("NewStyleDropdownView", 2, " showDropDown find: " + bool + " count: " + k);
+        }
+        if (i == 0)
+        {
+          localObject4 = new LoginPopupRightMaskView(localThrowable.getContext());
+          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(aekt.a(20.0F, getResources()), -1);
+          localLayoutParams.gravity = 5;
+          localThrowable.addView((View)localObject4, localLayoutParams);
+        }
+        if (localException2 != null)
+        {
+          if (k > 4)
+          {
+            localException2.setVisibility(0);
+            return;
+          }
+          localException2.setVisibility(8);
+          return;
+        }
+        if ((bool) || (k <= 4)) {
+          break;
+        }
+        LoginPopupMaskView localLoginPopupMaskView = new LoginPopupMaskView(localThrowable.getContext());
+        localObject4 = new FrameLayout.LayoutParams(-1, aekt.a(14.0F, getResources()));
+        ((FrameLayout.LayoutParams)localObject4).bottomMargin = 0;
+        ((FrameLayout.LayoutParams)localObject4).gravity = 80;
+        localThrowable.addView(localLoginPopupMaskView, (ViewGroup.LayoutParams)localObject4);
+        return;
+      }
+      label780:
+      j += 1;
     }
-  }
-  
-  public void a(Bundle paramBundle)
-  {
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bemx
  * JD-Core Version:    0.7.0.1
  */

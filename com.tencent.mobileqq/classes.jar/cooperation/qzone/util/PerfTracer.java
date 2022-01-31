@@ -2,7 +2,7 @@ package cooperation.qzone.util;
 
 import android.content.Intent;
 import android.os.SystemClock;
-import bhov;
+import bjqg;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -80,6 +80,8 @@ public final class PerfTracer
   public static final String PRELOAD_LOAD_USERHOME_CLASS = "Preload_Load_UserHome_Class";
   public static final String PRELOAD_NAVIGATOR_RES = "Preload_Navigator_Res";
   public static final String PRELOAD_NICK_NAME = "Preload_Nick_Name";
+  public static final String PRELOAD_QCIRCLE_PUBLISH_CLASS = "Preload_Qcircle_Publish_Class";
+  public static final String PRELOAD_QCIRCLE_PUBLISH_LAYOUT = "Preload_Qcircle_Publish_Layout";
   public static final String PRELOAD_QUNFEED_DATA = "Preload_QunFeedData";
   public static final String PRELOAD_USERHOME_LAYOUT = "Preload_UserHomeLayout";
   public static final String PUBLISHMOOD_INITDATA = "PublishMood_initData";
@@ -179,16 +181,16 @@ public final class PerfTracer
     traceEnd("click2LoadActivityCreate");
   }
   
-  public static void traceClick2Completed(bhov parambhov)
+  public static void traceClick2Completed(bjqg parambjqg)
   {
     traceEnd("click2LoadCompleted");
     TimeCostTrace localTimeCostTrace = TimeCostTrace.getTrace("qzone_launch");
     if (localTimeCostTrace == null) {
       return;
     }
-    if ((localTimeCostTrace.getTimeCost() > 0L) && (parambhov != null))
+    if ((localTimeCostTrace.getTimeCost() > 0L) && (parambjqg != null))
     {
-      parambhov.reportPerfTime(localTimeCostTrace);
+      parambjqg.reportPerfTime(localTimeCostTrace);
       return;
     }
     localTimeCostTrace.destroy();

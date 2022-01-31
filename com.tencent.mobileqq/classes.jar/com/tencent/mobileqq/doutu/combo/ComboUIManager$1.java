@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import anow;
+import apgd;
 
 public class ComboUIManager$1
   implements Runnable
 {
-  public ComboUIManager$1(anow paramanow) {}
+  public ComboUIManager$1(apgd paramapgd) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ComboUIManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.combo.ComboUIManager.1
  * JD-Core Version:    0.7.0.1
  */

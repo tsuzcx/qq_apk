@@ -1,13 +1,13 @@
 package cooperation.qzone.share;
 
-import ajya;
+import alpo;
 import android.text.TextUtils;
-import bcql;
-import bhmh;
-import bhve;
+import bjns;
+import bjwp;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneShareData;
 import java.util.ArrayList;
@@ -24,11 +24,11 @@ class QZoneShareActivity$7$1
   {
     if (this.jdField_a_of_type_Int > this.b)
     {
-      bcql.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 4, 2131718320, 0).a();
+      QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 4, 2131718698, 0).a();
       return;
     }
     this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.g();
-    String str1 = bhve.b(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.a());
+    String str1 = bjwp.b(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0.a());
     try
     {
       l1 = Long.parseLong(QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0).f);
@@ -54,7 +54,7 @@ class QZoneShareActivity$7$1
           i = 0;
           if (i != 0)
           {
-            localObject = new NewIntent(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, bhmh.class);
+            localObject = new NewIntent(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, bjns.class);
             ((NewIntent)localObject).putExtra("reason", str1);
             ((NewIntent)localObject).putExtra("uin", l1);
             ((NewIntent)localObject).putExtra("sharedata", QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0));
@@ -80,7 +80,7 @@ class QZoneShareActivity$7$1
         ThreadManager.postImmediately(new QZoneShareActivity.7.1.1(this, localException, str1), null, false);
         continue;
         label378:
-        bcql.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 5, ajya.a(2131712342), 0).a();
+        QQToast.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity$7.this$0, 5, alpo.a(2131712714), 0).a();
         continue;
         int i = 1;
         continue;
@@ -91,7 +91,7 @@ class QZoneShareActivity$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

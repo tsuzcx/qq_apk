@@ -1,31 +1,91 @@
-import com.jakewharton.disklrucache.DiskLruCache.Snapshot;
-import java.io.InputStream;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import java.util.ArrayList;
 
 public class xgp
+  extends bhyb
 {
-  private DiskLruCache.Snapshot jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
+  public static final TroopBarPOI a;
+  protected LayoutInflater a;
+  protected ArrayList<TroopBarPOI> a;
+  protected TroopBarPOI b;
   
-  public xgp(xgo paramxgo) {}
-  
-  public InputStream a()
+  static
   {
-    return this.jdField_a_of_type_JavaIoInputStream;
+    jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI = new TroopBarPOI("-1", "", alpo.a(2131711370), 0, "", 0, "");
   }
   
-  public void a(DiskLruCache.Snapshot paramSnapshot)
+  public xgp(Context paramContext)
   {
-    this.jdField_a_of_type_ComJakewhartonDisklrucacheDiskLruCache$Snapshot = paramSnapshot;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
-  public void a(InputStream paramInputStream)
+  public void a(ArrayList<TroopBarPOI> paramArrayList, TroopBarPOI paramTroopBarPOI)
   {
-    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    if (paramTroopBarPOI != null) {
+      this.b = new TroopBarPOI(paramTroopBarPOI);
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    TroopBarPOI localTroopBarPOI;
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561527, null);
+      paramViewGroup = new xgq();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376322));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131369298));
+      paramView.setTag(paramViewGroup);
+      localTroopBarPOI = (TroopBarPOI)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTroopBarPOI.c);
+      paramViewGroup = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
+      if (!localTroopBarPOI.equals(this.b)) {
+        break label135;
+      }
+    }
+    label135:
+    for (paramInt = 0;; paramInt = 8)
+    {
+      paramViewGroup.setVisibility(paramInt);
+      paramView.setContentDescription(localTroopBarPOI.c);
+      paramView.setFocusable(true);
+      paramView.setFocusableInTouchMode(true);
+      return paramView;
+      paramViewGroup = (xgq)paramView.getTag();
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgp
  * JD-Core Version:    0.7.0.1
  */

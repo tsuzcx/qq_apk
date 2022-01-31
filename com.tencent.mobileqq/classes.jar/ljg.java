@@ -1,113 +1,64 @@
+import android.content.Context;
 import android.content.SharedPreferences;
-import com.tencent.av.VideoController;
+import android.content.SharedPreferences.Editor;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.voiceRecog.VoiceRecogTips;
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class ljg
-  extends lhd
+public abstract class ljg
 {
-  VoiceRecogTips a;
+  protected static final String[] a;
+  public VideoAppInterface a;
+  public final String a;
   
-  public ljg(VideoAppInterface paramVideoAppInterface)
+  static
   {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = null;
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MANAGER_ZIMU", "MANAGER_FILTER", "MANAGER_PENDANT", "MANAGER_FACE", "MANAGER_NODE_REPORTER", "MANAGER_SUPPORT", "MANAGER_REDPACKET", "MANAGER_REDPACKET_Entry", "MANAGER_EFFECT_OPERATE", "MANAGER_ZIMU_LIVE", "MANAGER_Voice_Recog", "MANAGER_Tips", "MANAGER_mutex", "MANAGER_INTERACTIVEVideo" };
   }
   
-  public static SharedPreferences a(AppInterface paramAppInterface)
+  protected ljg(VideoAppInterface paramVideoAppInterface)
   {
-    return paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin() + "qav_voicerecog", 0);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + AudioHelper.b());
   }
   
-  public static lhs a(VideoAppInterface paramVideoAppInterface)
+  public static void a(String paramString, Context paramContext, int paramInt, boolean paramBoolean)
   {
-    paramVideoAppInterface = ((lhr)paramVideoAppInterface.a(3)).a();
-    long l = awzy.a();
-    paramVideoAppInterface = paramVideoAppInterface.iterator();
-    while (paramVideoAppInterface.hasNext())
+    if ((paramInt >= 0) && (paramInt < 14) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
     {
-      lhs locallhs = (lhs)paramVideoAppInterface.next();
-      if (a(l * 1000L, locallhs.a, locallhs.b)) {
-        return locallhs;
-      }
-    }
-    return null;
-  }
-  
-  public static boolean a(long paramLong1, long paramLong2, long paramLong3)
-  {
-    return (paramLong1 >= paramLong2) && (paramLong1 <= paramLong3);
-  }
-  
-  public static boolean a(VideoAppInterface paramVideoAppInterface)
-  {
-    return (ltm.b()) && (b(paramVideoAppInterface));
-  }
-  
-  public static boolean b(VideoAppInterface paramVideoAppInterface)
-  {
-    return ((liz)paramVideoAppInterface.a(5)).a(3, "normal");
-  }
-  
-  protected void a() {}
-  
-  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    if (1 == paramInt) {
-      b();
-    }
-    while (3 != paramInt) {
+      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      paramContext = bdiv.b(paramContext).edit();
+      paramContext.putBoolean(str, paramBoolean);
+      paramContext.commit();
+      lek.e(paramString, "setPreload zzzzz  bid=" + paramInt);
       return;
     }
-    c();
+    lek.e(paramString, "setPreload ERROR : bid=" + paramInt);
   }
   
-  protected void a(String paramString, boolean paramBoolean)
+  static boolean a(String paramString, VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    super.a(paramString, paramBoolean);
-  }
-  
-  protected boolean a(String paramString)
-  {
+    if ((paramInt >= 0) && (paramInt < 14) && (paramInt < jdField_a_of_type_ArrayOfJavaLangString.length))
+    {
+      String str = "Business_" + jdField_a_of_type_ArrayOfJavaLangString[paramInt];
+      boolean bool = bdiv.b(paramVideoAppInterface.getApplication()).getBoolean(str, false);
+      lek.c(paramString, "isPreloaded:" + str + "|" + bool);
+      return bool;
+    }
+    lek.e(paramString, "isPreloaded ERROR : bid=" + paramInt);
     return false;
   }
   
-  void b()
-  {
-    if (!a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {}
-    lga locallga;
-    lhs locallhs;
-    do
-    {
-      do
-      {
-        return;
-        locallga = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-      } while (locallga == null);
-      locallhs = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    } while (locallhs == null);
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips != null) {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    }
-    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = new VoiceRecogTips(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, locallga.d, locallhs);
-  }
+  protected abstract void a();
   
-  void c()
-  {
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips != null)
-    {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = null;
-    }
-  }
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2) {}
+  
+  protected void a(String paramString, boolean paramBoolean) {}
+  
+  protected abstract boolean a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ljg
  * JD-Core Version:    0.7.0.1
  */

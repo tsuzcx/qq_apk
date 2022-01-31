@@ -1,34 +1,31 @@
-import android.opengl.GLSurfaceView.EGLContextFactory;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.tencent.qphone.base.util.QLog;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.tencent.widget.XPanelContainer;
 
-class bhyn
-  implements GLSurfaceView.EGLContextFactory
+public class bhyn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private int jdField_a_of_type_Int = 12440;
+  public bhyn(XPanelContainer paramXPanelContainer, int paramInt) {}
   
-  private bhyn(bhyi parambhyi) {}
-  
-  public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = this.jdField_a_of_type_Int;
-    bhyi.a(this.jdField_a_of_type_Bhyi, paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, EGL10.EGL_NO_CONTEXT, new int[] { i, 2, 12344 }));
-    return bhyi.a(this.jdField_a_of_type_Bhyi);
-  }
-  
-  public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext)) {
-      QLog.e("VipARCameraController", 2, new Object[] { "DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext });
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("XPanelContainer", 2, "openAnim resetPosition");
+      }
+      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
+      return;
     }
+    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
+    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhyn
  * JD-Core Version:    0.7.0.1
  */

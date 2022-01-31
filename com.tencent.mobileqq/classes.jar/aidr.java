@@ -1,45 +1,20 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 
-public class aidr
-  extends aumg
+class aidr
+  implements View.OnClickListener
 {
-  public aidr(PhoneContactTabView paramPhoneContactTabView) {}
+  aidr(aidp paramaidp) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    this.a.a.unRegistObserver(this);
-    switch (PhoneContactTabView.a(this.a).d())
-    {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 8: 
-    default: 
-      PhoneContactTabView.b(this.a);
-      return;
-    case 9: 
-      this.a.d();
-      return;
-    case 0: 
-    case 1: 
-    case 5: 
-    case 7: 
-      PhoneContactTabView.a(this.a);
-      return;
-    }
-    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
-    {
-      this.a.d();
-      return;
-    }
-    PhoneContactTabView.a(this.a);
+    this.a.a.setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aidr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,246 +1,65 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.TextPaint;
-import android.text.TextUtils;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.VideoView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import java.io.File;
+import com.tencent.biz.qqstory.database.VideoUrlEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFullInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoUrl;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class vdj
-  extends Dialog
+  extends unf
 {
-  private int jdField_a_of_type_Int = -1;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private VideoView jdField_a_of_type_AndroidWidgetVideoView;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
-  private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean;
-  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener;
-  private String jdField_c_of_type_JavaLangString;
-  private String d;
-  private String e;
+  public List<StoryVideoItem> a = new ArrayList();
+  public int b;
+  public List<List<VideoUrlEntry>> b;
   
-  public vdj(Context paramContext, int paramInt)
+  public vdj(qqstory_service.RspBatchGetVideoFullInfoList paramRspBatchGetVideoFullInfoList)
   {
-    super(paramContext, paramInt);
-  }
-  
-  private void a()
-  {
-    if (!TextUtils.isEmpty(this.e))
+    super(paramRspBatchGetVideoFullInfoList.result);
+    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    Object localObject1 = paramRspBatchGetVideoFullInfoList.video_list.get();
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_AndroidWidgetVideoView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetVideoView.setVideoPath(this.e);
-      this.jdField_a_of_type_AndroidWidgetVideoView.setZOrderOnTop(true);
-      this.jdField_a_of_type_AndroidWidgetVideoView.start();
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetVideoView.setVisibility(8);
-  }
-  
-  private void b()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "story_rename_guide";
-      ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-      ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = vzl.a(getContext(), 3.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = vzl.a(getContext(), 155.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = vzl.a(getContext(), 307.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = aywm.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = aywm.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      if (this.jdField_b_of_type_Boolean)
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = URLDrawable.getDrawable(new File(this.jdField_a_of_type_JavaLangString), (URLDrawable.URLDrawableOptions)localObject);
-        if (((URLDrawable)localObject).getStatus() != 1) {
-          ((URLDrawable)localObject).restartDownload();
+        Object localObject2 = (qqstory_struct.StoryVideoFullInfo)((Iterator)localObject1).next();
+        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+        localStoryVideoItem.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject2);
+        this.a.add(localStoryVideoItem);
+        Object localObject3 = ((qqstory_struct.StoryVideoFullInfo)localObject2).compressed_video.get();
+        if (localObject3 != null)
+        {
+          localObject2 = new ArrayList(((List)localObject3).size());
+          localObject3 = ((List)localObject3).iterator();
+          while (((Iterator)localObject3).hasNext())
+          {
+            qqstory_struct.VideoUrl localVideoUrl = (qqstory_struct.VideoUrl)((Iterator)localObject3).next();
+            VideoUrlEntry localVideoUrlEntry = new VideoUrlEntry();
+            localVideoUrlEntry.vid = localStoryVideoItem.mVid;
+            localVideoUrlEntry.videoUrlLevel = localVideoUrl.video_level.get();
+            localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
+            ((List)localObject2).add(localVideoUrlEntry);
+          }
+          this.jdField_b_of_type_JavaUtilList.add(localObject2);
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-        return;
-      }
-      localObject = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-      if (((URLDrawable)localObject).getStatus() != 1) {
-        ((URLDrawable)localObject).restartDownload();
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      vzl.a(this.jdField_a_of_type_AndroidWidgetImageView, this.jdField_a_of_type_JavaLangString, vzl.a(getContext(), 307.0F), vzl.a(getContext(), 155.0F), new uxv(vzl.a(getContext(), 4.0F), 0, 0.504886F, null, null));
-      return;
-    }
-    if (this.jdField_a_of_type_Int != -1)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(this.jdField_a_of_type_Int);
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-  }
-  
-  public vdj a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    return this;
-  }
-  
-  public vdj a(String paramString)
-  {
-    this.e = paramString;
-    return this;
-  }
-  
-  public vdj a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public vdj b(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_b_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    return this;
-  }
-  
-  public vdj b(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public vdj b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    return this;
-  }
-  
-  public vdj c(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_c_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    return this;
-  }
-  
-  public vdj c(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public vdj d(String paramString)
-  {
-    this.jdField_c_of_type_JavaLangString = paramString;
-    return this;
-  }
-  
-  public void dismiss()
-  {
-    if ((this.jdField_a_of_type_AndroidWidgetVideoView != null) && (this.jdField_a_of_type_AndroidWidgetVideoView.isPlaying())) {
-      this.jdField_a_of_type_AndroidWidgetVideoView.stopPlayback();
-    }
-    super.dismiss();
-  }
-  
-  public vdj e(String paramString)
-  {
-    this.d = paramString;
-    return this;
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    setContentView(2131561261);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131373283));
-    this.jdField_a_of_type_AndroidWidgetVideoView = ((VideoView)findViewById(2131379125));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373284));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373282));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373281));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131373286));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131373287));
-    a();
-    b();
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      if (!TextUtils.isEmpty(this.d)) {
-        break label256;
-      }
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      label148:
-      if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-        break label314;
-      }
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
-    }
-    for (;;)
-    {
-      if (this.jdField_c_of_type_AndroidViewView$OnClickListener == null) {
-        break label372;
-      }
-      this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_c_of_type_AndroidViewView$OnClickListener);
-      return;
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(this.jdField_b_of_type_JavaLangString) > vzl.a(getContext(), 280.0F)) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setGravity(3);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-        break;
-        this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-      }
-      label256:
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(this.d);
-      if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null)
-      {
-        this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        break label148;
-      }
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new vdk(this));
-      break label148;
-      label314:
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetButton.setTag(this.jdField_c_of_type_JavaLangString);
-      if (this.jdField_b_of_type_AndroidViewView$OnClickListener != null) {
-        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
-      } else {
-        this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new vdl(this));
       }
     }
-    label372:
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(new vdm(this));
+    this.jdField_b_of_type_Int = paramRspBatchGetVideoFullInfoList.interact_status.get();
+  }
+  
+  public String toString()
+  {
+    return "GetVideoBasicInfoListResponse{mVideoItemList=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdj
  * JD-Core Version:    0.7.0.1
  */

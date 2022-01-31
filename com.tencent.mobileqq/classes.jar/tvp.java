@@ -1,39 +1,42 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.util.WeakReference;
 
-public class tvp
-  implements View.OnTouchListener
+class tvp
+  implements tvv
 {
-  float jdField_a_of_type_Float = -1.0F;
-  float b = -1.0F;
+  tvp(tvo paramtvo, tvr paramtvr, int paramInt) {}
   
-  public tvp(VideoCoverListBar paramVideoCoverListBar, int paramInt) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean, String paramString)
   {
-    switch (paramMotionEvent.getAction())
+    paramString = new tvq(this.jdField_a_of_type_Tvr.a, paramBoolean, paramString);
+    tvo.a(this.jdField_a_of_type_Tvo).put(this.jdField_a_of_type_Tvr.a, paramString);
+    if (paramBoolean)
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.b = paramMotionEvent.getY();
-      return false;
+      tvo.a(this.jdField_a_of_type_Tvo).incrementAndGet();
+      if ((tvo.a(this.jdField_a_of_type_Tvo).get() + tvo.b(this.jdField_a_of_type_Tvo).get() == this.jdField_a_of_type_Int) && (tvo.a(this.jdField_a_of_type_Tvo) != null))
+      {
+        paramString = (tvs)tvo.a(this.jdField_a_of_type_Tvo).get();
+        if (paramString != null) {
+          if (tvo.b(this.jdField_a_of_type_Tvo).get() != 0) {
+            break label153;
+          }
+        }
+      }
     }
-    if (Math.abs(paramMotionEvent.getY() - this.b) > Math.min(this.jdField_a_of_type_Int, 40)) {
-      vei.a("play_video", "slide_mini", 0, 0, new String[] { "2", "", "", VideoCoverListBar.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar) });
+    label153:
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramString.a(paramBoolean, tvo.a(this.jdField_a_of_type_Tvo));
+      return;
+      tvo.b(this.jdField_a_of_type_Tvo).incrementAndGet();
+      break;
     }
-    this.jdField_a_of_type_Float = -1.0F;
-    this.b = -1.0F;
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tvp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
-import ajya;
-import alay;
-import bcql;
+import alpo;
+import amro;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class MultiFragmentAnimRenderable$1
   implements Runnable
 {
-  public MultiFragmentAnimRenderable$1(alay paramalay) {}
+  public MultiFragmentAnimRenderable$1(amro paramamro) {}
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131707012), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, alpo.a(2131707384), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable.1
  * JD-Core Version:    0.7.0.1
  */

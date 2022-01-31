@@ -1,23 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class whu
-  implements Parcelable.Creator<ScannerParams>
+class whu
+  extends QQUIEventReceiver<whs, vad>
 {
-  public ScannerParams a(Parcel paramParcel)
+  public whu(@NonNull whs paramwhs)
   {
-    return new ScannerParams(paramParcel);
+    super(paramwhs);
   }
   
-  public ScannerParams[] a(int paramInt)
+  public void a(@NonNull whs paramwhs, @NonNull vad paramvad)
   {
-    return new ScannerParams[paramInt];
+    wsv.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video info list. %s.", paramvad.toString());
+    if (paramvad.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      whs.a(paramwhs).a(paramvad.jdField_a_of_type_JavaLangString, paramvad.jdField_a_of_type_JavaUtilList);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vad.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whu
  * JD-Core Version:    0.7.0.1
  */

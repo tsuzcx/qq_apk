@@ -1,37 +1,59 @@
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.handlers.DailyHandler.1;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.ListView;
+import java.util.Map;
 
-class pdd
-  implements View.OnClickListener
+public class pdd
+  extends pdc
 {
-  pdd(pcy parampcy, ArticleInfo paramArticleInfo) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    int i = 0;
-    nuq.a(pcy.a(this.jdField_a_of_type_Pcy), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
+    return 3;
+  }
+  
+  public void a(View paramView, ListView paramListView) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = (ArticleInfo)a((int)paramLong);
+    if (otf.c(b())) {
+      if (!ors.a(paramAdapterView)) {
+        break label35;
+      }
     }
-    try
+    label35:
+    for (paramInt = 4;; paramInt = 2)
     {
-      paramView = new JSONObject();
-      paramView.put("feeds_channel_entrance", i);
-      nol.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
+      opt.a(paramInt);
       return;
     }
-    catch (JSONException paramView)
+  }
+  
+  public void a(Map<Long, qkk> paramMap, boolean paramBoolean)
+  {
+    super.a(paramMap, paramBoolean);
+    if (otf.c(b()))
     {
-      paramView.printStackTrace();
+      paramMap = a();
+      if (bjxj.w()) {
+        break label36;
+      }
+      QLog.d("DailyHandler", 1, "detachFromViewGroup,now cmd is 0x68b");
     }
+    label36:
+    while (paramMap == null) {
+      return;
+    }
+    ThreadManager.executeOnSubThread(new DailyHandler.1(this, paramMap.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pdd
  * JD-Core Version:    0.7.0.1
  */

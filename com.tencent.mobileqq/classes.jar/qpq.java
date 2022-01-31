@@ -1,25 +1,12 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLikeAnimate.LikeExplosionView;
+import android.view.View;
 
-public class qpq
-  extends AnimatorListenerAdapter
+public abstract interface qpq
 {
-  public qpq(VideoFeedsLikeAnimate.LikeExplosionView paramLikeExplosionView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    VideoFeedsLikeAnimate.LikeExplosionView.a(this.a);
-  }
+  public abstract void a(View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qpq
  * JD-Core Version:    0.7.0.1
  */

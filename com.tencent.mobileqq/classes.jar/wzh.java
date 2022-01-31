@@ -1,33 +1,34 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class wzh
-  implements wzb
+  implements Animator.AnimatorListener
 {
-  wzh(wzg paramwzg, long paramLong) {}
+  wzh(wzf paramwzf) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
-      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
-    {
-      this.jdField_a_of_type_Wzg.a.jdField_a_of_type_Wzd.e = paramString1;
-      this.jdField_a_of_type_Wzg.a.jdField_a_of_type_Wze.a.b(this.jdField_a_of_type_Wzg.a.jdField_a_of_type_Wze);
-      this.jdField_a_of_type_Wzg.a.jdField_a_of_type_Wze.b();
-      return;
-    }
-    this.jdField_a_of_type_Wzg.a.jdField_a_of_type_Wze.d = paramString2;
-    this.jdField_a_of_type_Wzg.a.jdField_a_of_type_Wze.a.a(this.jdField_a_of_type_Wzg.a.jdField_a_of_type_Wze);
+    this.a.a = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a = false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    this.a.a = true;
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    this.a.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wzh
  * JD-Core Version:    0.7.0.1
  */

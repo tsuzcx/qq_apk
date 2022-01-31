@@ -1,70 +1,17 @@
-import SWEET_NEW_BASE.sweet_rsp_comm;
-import SWEET_NEW_PAIR.sweet_pair_check_rsp;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.QzoneExternalRequest;
+import android.view.animation.Interpolator;
 
-public class bhzq
-  extends bhzs
+final class bhzq
+  implements Interpolator
 {
-  public QQAppInterface a()
+  public float getInterpolation(float paramFloat)
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
-      return (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    }
-    return null;
-  }
-  
-  public QzoneExternalRequest a(Intent paramIntent)
-  {
-    return new bhzr(this, paramIntent);
-  }
-  
-  public void a(long paramLong)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("currentUin", paramLong);
-    a(localIntent);
-  }
-  
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    boolean bool = false;
-    paramIntent = a();
-    if (paramIntent != null)
-    {
-      paramIntent = (ajzy)paramIntent.a(172);
-      if (paramIntent != null) {
-        if (paramFromServiceMsg == null) {
-          break label90;
-        }
-      }
-    }
-    label90:
-    for (int i = paramFromServiceMsg.getResultCode(); i == 1000; i = -1)
-    {
-      paramFromServiceMsg = (sweet_pair_check_rsp)bhoz.a(paramFromServiceMsg.getWupBuffer(), "getPairState");
-      if (paramFromServiceMsg == null) {
-        break;
-      }
-      sweet_rsp_comm localsweet_rsp_comm = paramFromServiceMsg.rsp_comm;
-      if (localsweet_rsp_comm == null) {
-        break;
-      }
-      if (localsweet_rsp_comm.retcode == 0) {
-        bool = true;
-      }
-      paramIntent.a(bool, paramFromServiceMsg);
-      return;
-    }
-    paramIntent.a(false, null);
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhzq
  * JD-Core Version:    0.7.0.1
  */

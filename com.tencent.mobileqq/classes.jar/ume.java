@@ -1,27 +1,78 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryListLoadMoreView;
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class ume
-  implements View.OnClickListener
 {
-  public ume(MyMemoriesListView paramMyMemoriesListView) {}
-  
-  public void onClick(View paramView)
+  public static int a(int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 4) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a() != 1))
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewStoryListLoadMoreView.a(1);
-      if (this.a.jdField_a_of_type_Umf != null) {
-        this.a.jdField_a_of_type_Umf.c();
-      }
-    }
+    return BaseApplicationImpl.getApplication().getResources().getInteger(paramInt);
+  }
+  
+  public static Boolean a(int paramInt)
+  {
+    return Boolean.valueOf(BaseApplicationImpl.getApplication().getResources().getBoolean(paramInt));
+  }
+  
+  public static <T> T a(Class<T> paramClass, Object... paramVarArgs)
+  {
+    return umr.a(paramClass, paramVarArgs);
+  }
+  
+  public static String a(int paramInt)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getString(paramInt);
+  }
+  
+  public static String a(int paramInt, Object... paramVarArgs)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getString(paramInt, paramVarArgs);
+  }
+  
+  public static String a(String paramString)
+  {
+    return paramString;
+  }
+  
+  public static <T extends Activity> umn<T> a(Class<? extends umn<T>> paramClass, Class<umn<T>> paramClass1, Object... paramVarArgs)
+  {
+    return (umn)umr.a(paramClass, paramClass1, paramVarArgs);
+  }
+  
+  public static xrg a(Context paramContext, int paramInt)
+  {
+    return umu.a(paramContext, paramInt);
+  }
+  
+  public static void a(Context paramContext, int paramInt, long paramLong)
+  {
+    umx.a(paramContext, paramInt, paramLong);
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    umx.a(paramContext, paramInt, paramString);
+  }
+  
+  public static void a(Object paramObject)
+  {
+    umv.a(paramObject);
+  }
+  
+  public static boolean a()
+  {
+    return umw.a();
+  }
+  
+  public static String[] a(int paramInt)
+  {
+    return BaseApplicationImpl.getApplication().getResources().getStringArray(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ume
  * JD-Core Version:    0.7.0.1
  */

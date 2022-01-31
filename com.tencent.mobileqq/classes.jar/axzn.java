@@ -1,176 +1,130 @@
-import android.content.Context;
 import android.os.Bundle;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
-import android.view.View;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
-import java.io.ObjectInput;
-import java.io.ObjectOutput;
-import org.xmlpull.v1.XmlSerializer;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.SignatureManagerForTool.1;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResultCallback;
+import java.util.Observable;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class axzn
-  extends axzj
+  extends Observable
 {
-  private String ai;
-  private String aj;
-  protected long c;
-  protected long d;
-  protected boolean d;
-  protected long e;
-  protected int m;
-  protected int n;
+  private static axzn jdField_a_of_type_Axzn;
+  public RichStatus a;
+  public EIPCResultCallback a;
+  private ConcurrentHashMap<Integer, bdpm> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public RichStatus b;
+  private EIPCResultCallback jdField_b_of_type_EipcEIPCResultCallback = new axzo(this);
+  private ConcurrentHashMap<Integer, String> jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public axzn()
+  private axzn()
   {
-    this.a = "timer";
+    this.jdField_a_of_type_EipcEIPCResultCallback = new axzp(this);
   }
   
-  private long a()
+  public static axzn a()
   {
-    if (!this.jdField_d_of_type_Boolean)
+    try
     {
-      long l1 = awzy.a();
-      long l2 = this.c + this.m - l1;
-      if (l2 < 0L)
-      {
-        this.jdField_d_of_type_Boolean = true;
-        l1 = 0L;
+      if (jdField_a_of_type_Axzn == null) {
+        jdField_a_of_type_Axzn = new axzn();
       }
-      do
+      axzn localaxzn = jdField_a_of_type_Axzn;
+      return localaxzn;
+    }
+    finally {}
+  }
+  
+  public static String a(int paramInt, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("https://gxh.vip.qq.com/xydata/");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  public bdpm a(int paramInt)
+  {
+    return a(paramInt, false);
+  }
+  
+  public bdpm a(int paramInt, boolean paramBoolean)
+  {
+    bdpm localbdpm2 = (bdpm)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    Object localObject;
+    if ((localbdpm2 != null) && (!localbdpm2.a.get()))
+    {
+      localObject = localbdpm2;
+      if (!paramBoolean) {}
+    }
+    else
+    {
+      bdpm localbdpm1 = localbdpm2;
+      if (localbdpm2 == null)
       {
-        return l1;
-        if (l2 <= 0L) {
-          break;
+        localbdpm1 = new bdpm(Integer.toString(paramInt));
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), localbdpm1);
+      }
+      localObject = localbdpm1;
+      if (paramInt != 0)
+      {
+        localbdpm1.a.set(true);
+        if (QLog.isColorLevel()) {
+          QLog.e("Signature.TOOL", 2, "before getTemplateInfo info");
         }
-        l1 = l2;
-      } while (l2 < this.m);
-      return this.m;
-      this.jdField_d_of_type_Boolean = true;
-      return l2;
-    }
-    return 0L;
-  }
-  
-  private SpannableStringBuilder a(long paramLong)
-  {
-    ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-91585);
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(this.ai);
-    localSpannableStringBuilder.append('\n');
-    if (paramLong > 0L)
-    {
-      int i = localSpannableStringBuilder.length();
-      String str = String.valueOf(paramLong) + ajya.a(2131714617);
-      localSpannableStringBuilder.append(str);
-      localSpannableStringBuilder.append(this.Y);
-      localSpannableStringBuilder.setSpan(localForegroundColorSpan, i, str.length() + i, 33);
-      return localSpannableStringBuilder;
-    }
-    localSpannableStringBuilder.append(this.aj);
-    return localSpannableStringBuilder;
-  }
-  
-  public View a(Context paramContext, View paramView, Bundle paramBundle)
-  {
-    if ((paramView != null) && ((paramView instanceof CountdownTextView)))
-    {
-      paramContext = (CountdownTextView)paramView;
-      paramContext.a(a(), new axzo(this, paramContext));
-      paramContext.setTag(this);
-      return paramContext;
-    }
-    paramContext = new CountdownTextView(paramContext);
-    paramContext.setId(2131378117);
-    paramContext.setTag(this);
-    paramContext.setMaxLines(3);
-    paramContext.setTextColor(-10987432);
-    paramContext.setTextSize(2, 12.0F);
-    long l = a();
-    if (this.Y != null) {
-      paramContext.setText(a(l));
-    }
-    paramContext.a(l, new axzp(this, paramContext));
-    return paramContext;
-  }
-  
-  public String a()
-  {
-    return "Timer";
-  }
-  
-  public void a(ObjectInput paramObjectInput)
-  {
-    super.a(paramObjectInput);
-    this.ai = axau.a(paramObjectInput.readUTF(), false);
-    this.aj = axau.a(paramObjectInput.readUTF(), false);
-    this.c = paramObjectInput.readLong();
-    this.m = paramObjectInput.readInt();
-    this.n = paramObjectInput.readInt();
-    this.jdField_d_of_type_Long = paramObjectInput.readLong();
-    this.e = paramObjectInput.readLong();
-    this.jdField_d_of_type_Boolean = paramObjectInput.readBoolean();
-  }
-  
-  public void a(ObjectOutput paramObjectOutput)
-  {
-    super.a(paramObjectOutput);
-    if (this.ai == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.aj != null) {
-        break label108;
+        ThreadManager.excute(new SignatureManagerForTool.1(this, paramInt), 128, null, true);
+        localObject = localbdpm1;
       }
     }
-    label108:
-    for (String str = "";; str = this.aj)
+    return localObject;
+  }
+  
+  public String a(int paramInt)
+  {
+    String str = (String)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    if (TextUtils.isEmpty(str))
     {
-      paramObjectOutput.writeUTF(str);
-      paramObjectOutput.writeLong(this.c);
-      paramObjectOutput.writeInt(this.m);
-      paramObjectOutput.writeInt(this.n);
-      paramObjectOutput.writeLong(this.jdField_d_of_type_Long);
-      paramObjectOutput.writeLong(this.e);
-      paramObjectOutput.writeBoolean(this.jdField_d_of_type_Boolean);
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("id", paramInt);
+      QIPCClientHelper.getInstance().callServer("VasFontIPCModule", gh.g, localBundle, this.jdField_b_of_type_EipcEIPCResultCallback);
+    }
+    return str;
+  }
+  
+  public void a(RichStatus paramRichStatus)
+  {
+    if (paramRichStatus == null) {
       return;
-      str = this.ai;
-      break;
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus == null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramRichStatus);
+    QLog.d("Signature.TOOL", 2, "updateHandleStatus: tpdId=" + this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.tplId + " fontId=" + this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
   }
   
-  public void a(XmlSerializer paramXmlSerializer)
+  public void b(RichStatus paramRichStatus)
   {
-    paramXmlSerializer.startTag(null, "timer");
-    paramXmlSerializer.attribute(null, "st", String.valueOf(this.c));
-    paramXmlSerializer.attribute(null, "dr", String.valueOf(this.m));
-    paramXmlSerializer.attribute(null, "index", String.valueOf(this.n));
-    if (!TextUtils.isEmpty(this.ai)) {
-      paramXmlSerializer.attribute(null, "summary", this.ai);
+    if (paramRichStatus == null) {
+      return;
     }
-    if (!TextUtils.isEmpty(this.aj)) {
-      paramXmlSerializer.attribute(null, "ending", this.aj);
+    if (this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus == null) {
+      this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus = new RichStatus(null);
     }
-    paramXmlSerializer.text(this.Y);
-    paramXmlSerializer.endTag(null, "timer");
-  }
-  
-  public boolean a(axwg paramaxwg)
-  {
-    if (paramaxwg == null) {
-      return true;
-    }
-    this.c = axwj.a(paramaxwg.a("st"));
-    this.m = axwj.a(paramaxwg.a("dr"));
-    this.n = axwj.a(paramaxwg.a("index"));
-    this.ai = axau.a(paramaxwg.a("summary"), false);
-    this.aj = axau.a(paramaxwg.a("st"), false);
-    this.Y = axau.a(axva.a(paramaxwg), false);
-    return true;
+    this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.copyFrom(paramRichStatus);
+    QLog.d("Signature.TOOL", 2, "updateSaveStatus: tpdId=" + this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.tplId + " fontId=" + this.jdField_b_of_type_ComTencentMobileqqRichstatusRichStatus.fontId);
+    a(paramRichStatus);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axzn
  * JD-Core Version:    0.7.0.1
  */

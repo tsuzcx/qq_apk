@@ -1,21 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTranslateToken;
 
-class vcg
-  implements vcl
+public class vcg
+  extends unf
 {
-  vcg(vcf paramvcf, ImageView paramImageView) {}
+  public long a;
+  public String a;
+  public String c;
   
-  public void a(Drawable paramDrawable)
+  public vcg(qqstory_service.RspTranslateToken paramRspTranslateToken) {}
+  
+  public String toString()
   {
-    if (paramDrawable != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-    }
+    return "StoryShareTranslateTokenResponse{coverUrl='" + this.c + '\'' + ", dstBuffer='" + this.jdField_a_of_type_JavaLangString + '\'' + ", shootTimeMillis=" + this.jdField_a_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vcg
  * JD-Core Version:    0.7.0.1
  */

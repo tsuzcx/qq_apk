@@ -1,17 +1,32 @@
-final class axix
-  extends axiz
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.revokemsg.RevokeMsgInfo;
+
+public final class axix
+  implements Parcelable.Creator<RevokeMsgInfo>
 {
-  public double a(int paramInt1, int paramInt2)
+  public RevokeMsgInfo a(Parcel paramParcel)
   {
-    if (paramInt1 > paramInt2) {
-      return paramInt2 / (paramInt1 + paramInt2);
-    }
-    return paramInt1 / (paramInt1 + paramInt2);
+    RevokeMsgInfo localRevokeMsgInfo = new RevokeMsgInfo();
+    localRevokeMsgInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localRevokeMsgInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localRevokeMsgInfo.b = paramParcel.readLong();
+    localRevokeMsgInfo.jdField_c_of_type_Long = paramParcel.readLong();
+    localRevokeMsgInfo.d = paramParcel.readString();
+    localRevokeMsgInfo.e = paramParcel.readInt();
+    return localRevokeMsgInfo;
+  }
+  
+  public RevokeMsgInfo[] a(int paramInt)
+  {
+    return new RevokeMsgInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axix
  * JD-Core Version:    0.7.0.1
  */

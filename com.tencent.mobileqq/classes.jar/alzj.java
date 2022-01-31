@@ -1,43 +1,73 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.VideoDrawable;
-import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x971.oidb_0x971.NoticeInfo;
+import tencent.im.oidb.cmd0x971.oidb_0x971.RspBody;
 
-public class alzj
-  implements VideoDrawable.OnPlayRepeatListener
+public abstract class alzj
+  extends nac
 {
-  public alzj(DynamicAvatarView paramDynamicAvatarView) {}
-  
-  public void onPlayRepeat(int paramInt)
+  public alzj()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.dynamicAvatar", 2, "onPlayRepeat: " + paramInt);
-    }
-    if ((this.a.b) || (paramInt < 1)) {}
-    while (this.a.a == null) {
-      return;
-    }
-    Object localObject = this.a.a.jdField_a_of_type_ComTencentImageURLDrawable;
-    if ((localObject instanceof URLDrawable))
+    super(false);
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt == 0)
     {
-      localObject = ((URLDrawable)localObject).getCurrDrawable();
-      if ((localObject instanceof VideoDrawable))
+      paramBundle = new oidb_0x971.RspBody();
+      try
       {
-        ((VideoDrawable)localObject).removeOnPlayRepeatListener(this);
-        this.a.a.jdField_a_of_type_Alyy.a(this.a.a, true);
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.03");
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.notices.has())
+        {
+          paramArrayOfByte = new ArrayList();
+          paramBundle = paramBundle.notices.get().iterator();
+          while (paramBundle.hasNext())
+          {
+            oidb_0x971.NoticeInfo localNoticeInfo = (oidb_0x971.NoticeInfo)paramBundle.next();
+            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = new TroopAioKeywordTipInfo();
+            localTroopAioKeywordTipInfo.ruleId = localNoticeInfo.rule_id.get();
+            localTroopAioKeywordTipInfo.title = localNoticeInfo.title.get();
+            localTroopAioKeywordTipInfo.summary = localNoticeInfo.summary.get();
+            localTroopAioKeywordTipInfo.url = localNoticeInfo.url.get();
+            localTroopAioKeywordTipInfo.icon = localNoticeInfo.icon.get();
+            localTroopAioKeywordTipInfo.version = localNoticeInfo.version.get();
+            paramArrayOfByte.add(localTroopAioKeywordTipInfo);
+          }
+          a(true, paramArrayOfByte);
         }
       }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("TroopHandler", 1, "KeywordTipInfoObserver, e=" + paramArrayOfByte.toString());
+        a(false, null);
+        return;
+      }
     }
-    this.a.a.jdField_a_of_type_ComTencentImageURLDrawable = null;
-    this.a.a();
+    for (;;)
+    {
+      return;
+      QLog.i("TroopHandler", 1, "KeywordTipInfoObserver, errorCode=" + paramInt);
+      a(false, null);
+      return;
+      paramArrayOfByte = null;
+    }
   }
+  
+  protected abstract void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alzj
  * JD-Core Version:    0.7.0.1
  */

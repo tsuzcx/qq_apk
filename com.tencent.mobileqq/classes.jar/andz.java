@@ -1,83 +1,176 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.ark.open.ArkAppCacheMgr;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.qphone.base.util.QLog;
+
 public class andz
+  implements andy
 {
-  private static amot a;
-  private static amot b;
-  public String a;
-  public String b;
-  private amot c;
-  public String c;
-  public String d = "";
-  public String e = "";
-  public String f = "";
-  public String g = "";
+  private andz(andw paramandw) {}
   
-  public andz()
+  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-  }
-  
-  public void a()
-  {
-    if (this.e.equals("LOCAL")) {
-      if (!this.f.equals("1")) {}
-    }
-    label24:
-    do
+    long l;
+    String str;
+    if ("AttachEvent".equals(paramString))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              break label24;
-              break label24;
-              break label24;
-              do
-              {
-                return;
-              } while ((this.f.equals("2")) || (this.f.equals("4")) || (this.f.equals("5")) || (this.f.equals("6")) || (!this.f.equals("7")));
-              return;
-            } while ((this.e.equals("WAP")) || (this.e.equals("TMTWAP")) || (this.e.equals("WAPI")) || (this.e.equals("TMTWAPI")) || (this.e.equals("VOICECALL")));
-            if (!this.e.equals("QQMSG")) {
-              break;
-            }
-          } while (!this.jdField_c_of_type_JavaLangString.equals("AUTO"));
-          return;
-        } while ((this.e.equals("AUTOQQMSG")) || (this.e.equals("HTTP")) || (this.e.equals("AUTOSMS")));
-        if (!this.e.equals("USERSMS")) {
-          break;
-        }
-      } while (!this.jdField_c_of_type_JavaLangString.equals("AUTO"));
-      return;
-    } while (!this.e.equals("RESET"));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    amot[] arrayOfamot = new amot[2];
-    if ((this.d != null) && (!this.e.equals("")))
-    {
-      if (this.jdField_c_of_type_Amot == null) {
-        this.jdField_c_of_type_Amot = new amot(this.d, 1, 1);
+      if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 2) || (!paramArrayOfVariantWrapper[0].IsString()) || (!paramArrayOfVariantWrapper[1].IsFunction())) {
+        return false;
       }
-      arrayOfamot[0] = this.jdField_c_of_type_Amot;
+      paramVariantWrapper = paramArrayOfVariantWrapper[0].GetString();
+      l = this.a.a(paramArrayOfVariantWrapper[1].Copy());
+      paramString = null;
+      if ("Motion".equals(paramVariantWrapper))
+      {
+        if (!anfp.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.SENSORS")) {
+          return false;
+        }
+        paramString = new anea(this, l);
+      }
+      while ((paramString != null) && (!"Position".equals(paramVariantWrapper)))
+      {
+        this.a.jdField_a_of_type_Anff.a(paramString, l);
+        return true;
+        if ("Orientation".equals(paramVariantWrapper))
+        {
+          if (!anfp.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.SENSORS")) {
+            return false;
+          }
+          paramString = new aneb(this, l);
+        }
+        else
+        {
+          if ("Position".equals(paramVariantWrapper))
+          {
+            if (!anfp.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.POSITION")) {
+              return false;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("ArkAppDeviceModule", 2, String.format("Position.app.%s", new Object[] { this.a.jdField_a_of_type_JavaLangString }));
+            }
+            paramString = null;
+            paramArrayOfVariantWrapper = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+            if (paramArrayOfVariantWrapper != null) {
+              paramString = paramArrayOfVariantWrapper.getCurrentAccountUin();
+            }
+            if ((paramArrayOfVariantWrapper == null) || (TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
+              return false;
+            }
+            paramVariantWrapper = ArkAppCacheMgr.getApplicationDesc(this.a.jdField_a_of_type_JavaLangString);
+            paramArrayOfVariantWrapper = paramVariantWrapper;
+            if (TextUtils.isEmpty(paramVariantWrapper)) {
+              paramArrayOfVariantWrapper = this.a.jdField_a_of_type_JavaLangString;
+            }
+            paramVariantWrapper = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0);
+            str = "key_ark_authority_show_dialog" + "_" + paramArrayOfVariantWrapper + "_" + "ark_authority_api_location" + "_" + paramString;
+            if ((!paramVariantWrapper.getBoolean(str, false)) && (anft.a))
+            {
+              ArkAppCenter.a().postToMainThread(new ArkAppDeviceModule.ObserverMethod.3(this, paramArrayOfVariantWrapper, l, paramString));
+              paramVariantWrapper.edit().putBoolean(str, true).commit();
+              anfv.a(paramArrayOfVariantWrapper, paramString);
+            }
+            for (;;)
+            {
+              return true;
+              if (1 == anfv.a(paramArrayOfVariantWrapper, "ark_authority_api_location", paramString))
+              {
+                paramString = new aneg(this, l);
+                this.a.jdField_a_of_type_Anff.a(paramString, l);
+              }
+              else
+              {
+                andw.a(this.a, l, false, 0.0D, 0.0D);
+                paramString = this.a.a(l);
+                if (paramString != null) {
+                  paramString.Reset();
+                }
+              }
+            }
+          }
+          if ("ConnectionTypeChange".equals(paramVariantWrapper))
+          {
+            if (!anfp.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.CONNECTION_TYPE")) {
+              return false;
+            }
+            paramString = new aneh(this, l);
+          }
+        }
+      }
+      return false;
     }
-    if (paramBoolean)
+    if ("DetachEvent".equals(paramString))
     {
-      arrayOfamot[1] = jdField_b_of_type_Amot;
-      return;
+      if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsString()) || (TextUtils.isEmpty(paramArrayOfVariantWrapper[0].GetString()))) {
+        return false;
+      }
+      this.a.jdField_a_of_type_Anff.a(paramArrayOfVariantWrapper[0].GetString());
+      return true;
     }
-    arrayOfamot[1] = jdField_a_of_type_Amot;
+    if ("GetCurrentPosition".equals(paramString))
+    {
+      if (!anfp.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentArkArk$Application, "permission.POSITION")) {
+        return false;
+      }
+      if ((paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {
+        return false;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("ArkAppDeviceModule", 2, String.format("GetCurrentPosition.app.%s", new Object[] { this.a.jdField_a_of_type_JavaLangString }));
+      }
+      l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
+      paramString = null;
+      paramArrayOfVariantWrapper = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      if (paramArrayOfVariantWrapper != null) {
+        paramString = paramArrayOfVariantWrapper.getCurrentAccountUin();
+      }
+      if ((paramArrayOfVariantWrapper == null) || (TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
+        return false;
+      }
+      paramVariantWrapper = ArkAppCacheMgr.getApplicationDesc(this.a.jdField_a_of_type_JavaLangString);
+      paramArrayOfVariantWrapper = paramVariantWrapper;
+      if (TextUtils.isEmpty(paramVariantWrapper)) {
+        paramArrayOfVariantWrapper = this.a.jdField_a_of_type_JavaLangString;
+      }
+      paramVariantWrapper = BaseApplicationImpl.getApplication().getSharedPreferences("sp_ark_authority", 0);
+      str = "key_ark_authority_show_dialog" + "_" + paramArrayOfVariantWrapper + "_" + "ark_authority_api_location" + "_" + paramString;
+      if ((!paramVariantWrapper.getBoolean(str, false)) && (anft.a))
+      {
+        ArkAppCenter.a().postToMainThread(new ArkAppDeviceModule.ObserverMethod.6(this, paramArrayOfVariantWrapper, l, paramString));
+        paramVariantWrapper.edit().putBoolean(str, true).commit();
+        anfv.a(paramArrayOfVariantWrapper, paramString);
+      }
+      for (;;)
+      {
+        return true;
+        if (1 == anfv.a(paramArrayOfVariantWrapper, "ark_authority_api_location", paramString))
+        {
+          paramString = new anem(this, l);
+          this.a.jdField_a_of_type_Anff.a(paramString, l);
+        }
+        else
+        {
+          andw.a(this.a, l, false, 0.0D, 0.0D);
+          paramString = this.a.a(l);
+          if (paramString != null) {
+            paramString.Reset();
+          }
+        }
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andz
  * JD-Core Version:    0.7.0.1
  */

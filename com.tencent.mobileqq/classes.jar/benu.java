@@ -1,10 +1,23 @@
-public abstract interface benu
+import android.view.View;
+import android.widget.BaseAdapter;
+
+public abstract class benu
+  extends BaseAdapter
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public abstract int a();
+  
+  public abstract void a(View paramView, int paramInt);
+  
+  public abstract boolean a(int paramInt);
+  
+  public boolean a(View paramView, int paramInt)
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     benu
  * JD-Core Version:    0.7.0.1
  */

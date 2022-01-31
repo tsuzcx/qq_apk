@@ -1,38 +1,39 @@
-import com.tencent.av.redpacket.AVRedPacketManager.LocalEmojiInfo;
-import com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo;
-import java.util.List;
+import android.graphics.Bitmap;
 
-public abstract interface ltz
+public class ltz
+  extends lue
 {
-  public abstract void a();
+  protected Bitmap a;
   
-  public abstract void a(int paramInt);
+  public ltz(Bitmap paramBitmap)
+  {
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      bhnt.a(bool);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      return;
+    }
+  }
   
-  public abstract void a(int paramInt, List<AVRedPacketManager.LocalEmojiInfo> paramList);
+  protected Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
   
-  public abstract void a(int paramInt, lua paramlua);
+  protected void a(Bitmap paramBitmap) {}
   
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract void b(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
-  
-  public abstract void d();
-  
-  public abstract void e();
-  
-  public abstract void f();
+  public int[] a(lsv paramlsv)
+  {
+    if (!c()) {
+      b(paramlsv);
+    }
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ltz
  * JD-Core Version:    0.7.0.1
  */

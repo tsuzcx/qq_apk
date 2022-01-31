@@ -1,26 +1,18 @@
-import android.view.KeyEvent;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.app.Activity;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
-public class begy
-  implements TextView.OnEditorActionListener
+public abstract interface begy
+  extends bebx
 {
-  public begy(Login paramLogin) {}
+  public abstract int a(WebViewPlugin paramWebViewPlugin, byte paramByte, boolean paramBoolean);
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 6)
-    {
-      this.a.b();
-      return true;
-    }
-    return false;
-  }
+  public abstract Activity b();
+  
+  public abstract boolean e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     begy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,39 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import org.json.JSONObject;
 
 public class abqb
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public abqb(NotifyPushSettingActivity paramNotifyPushSettingActivity, BubbleManager paramBubbleManager) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public abqb(abpy paramabpy) {}
+  
+  public boolean a(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(paramBoolean);
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getCurrentAccountUin();
-    if (paramBoolean) {}
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    try
     {
-      VasWebviewUtil.reportCommercialDrainage(str, "bubble_new", "change", "0", 0, 0, 0, "", "", paramCompoundButton, "", "", "", "", 0, 0, 0, 0);
-      return;
+      this.jdField_a_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_index"));
+      this.jdField_b_of_type_Int = Integer.parseInt(paramJSONObject.getString("param_type"));
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("param_value1").trim();
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("param_value2").trim();
+      return true;
     }
+    catch (Exception paramJSONObject)
+    {
+      abpt.a("KingKongNativePatch", "Parse parameter error!");
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    return "Index " + this.jdField_a_of_type_Int + ": " + this.jdField_b_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_b_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abqb
  * JD-Core Version:    0.7.0.1
  */

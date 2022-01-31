@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.identification;
 
 import android.app.Activity;
-import arcu;
+import asti;
 import com.tencent.youtu.ytcommon.YTCommonExInterface;
 
 public class IdentificationPoseReflect$1
   implements Runnable
 {
-  public IdentificationPoseReflect$1(arcu paramarcu, Activity paramActivity) {}
+  public IdentificationPoseReflect$1(asti paramasti, Activity paramActivity) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class IdentificationPoseReflect$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.identification.IdentificationPoseReflect.1
  * JD-Core Version:    0.7.0.1
  */

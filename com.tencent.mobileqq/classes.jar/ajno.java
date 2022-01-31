@@ -1,25 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.1;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.5.2;
+import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import com.tencent.widget.HorizontalListView;
 
-class ajno
-  implements AdapterView.OnItemClickListener
+public class ajno
+  implements ayyn
 {
-  ajno(ajnn paramajnn, String paramString) {}
-  
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
   {
-    paramAdapterView = this.jdField_a_of_type_Ajnn.a.obtainMessage();
-    paramAdapterView.what = ((int)paramLong);
-    paramAdapterView.obj = this.jdField_a_of_type_JavaLangString;
-    paramAdapterView.sendToTarget();
+    this.a.a.post(new PtvTemplateAdapter.5.2(this, paramPtvTemplateInfo, paramInt));
+  }
+  
+  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
+  {
+    this.a.a.post(new PtvTemplateAdapter.5.1(this, paramPtvTemplateInfo, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajno
  * JD-Core Version:    0.7.0.1
  */

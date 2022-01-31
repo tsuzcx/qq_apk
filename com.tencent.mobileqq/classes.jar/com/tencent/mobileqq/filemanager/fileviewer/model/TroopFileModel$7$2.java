@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import apkq;
-import apnq;
+import ardn;
+import argq;
 import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.mobileqq.data.MessageRecord;
 
@@ -19,7 +19,7 @@ class TroopFileModel$7$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.7.2
  * JD-Core Version:    0.7.0.1
  */

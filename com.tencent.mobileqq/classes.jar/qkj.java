@@ -1,40 +1,12 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import java.util.concurrent.ConcurrentHashMap;
+import java.net.URL;
 
-class qkj
-  extends Handler
+public abstract interface qkj
 {
-  qkj(qki paramqki, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      return;
-      paramMessage = this.a.a(false);
-    } while (paramMessage == null);
-    qki.a(this.a).remove(Integer.valueOf(paramMessage.jdField_a_of_type_Int));
-    AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)paramMessage.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
-    if (localAdvertisementInfo != null) {
-      localAdvertisementInfo.isShowingGuide = false;
-    }
-    this.a.a(null, paramMessage);
-  }
+  public abstract URL a(URL paramURL);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qkj
  * JD-Core Version:    0.7.0.1
  */

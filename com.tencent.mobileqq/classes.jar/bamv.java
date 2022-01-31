@@ -1,78 +1,45 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 
 public class bamv
+  extends Handler
 {
-  public static final void a()
+  public bamv(bamu parambamu, Looper paramLooper)
   {
-    a("gfile", "gfile_upload", "", "", "", "");
+    super(paramLooper);
   }
   
-  public static final void a(int paramInt1, int paramInt2)
+  public void a(bamw parambamw)
   {
-    int i = bbfj.b(BaseApplicationImpl.getContext());
-    a("gfile", "gfile_upload_result", "" + paramInt1, "" + paramInt2, "" + i, "");
+    sendMessage(obtainMessage(0, parambamw));
   }
   
-  public static final void a(int paramInt1, int paramInt2, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    int i = bbfj.b(BaseApplicationImpl.getContext());
-    a("gfile", "gfile_upload_result", "" + paramInt1, "" + paramInt2, "" + i, paramString);
-  }
-  
-  public static final void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      axqy.b((QQAppInterface)localObject, "dc00899", "Grp_tech_report", "", paramString1, paramString2, 0, 0, paramString3, paramString4, paramString5, paramString6);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportTech", 2, "opType=" + paramString1 + ", opName=" + paramString2 + ", r1=" + paramString3 + ", r2=" + paramString4 + ",r3=" + paramString5 + ", r4" + paramString6);
-      }
-      return;
+    if ((paramMessage.what == 0) && (paramMessage.obj != null) && ((paramMessage.obj instanceof bamw))) {
+      paramMessage = (bamw)paramMessage.obj;
     }
-  }
-  
-  public static final void a(String paramString, String... paramVarArgs)
-  {
-    String[] arrayOfString = new String[4];
-    arrayOfString[0] = "";
-    arrayOfString[1] = "";
-    arrayOfString[2] = "";
-    arrayOfString[3] = "";
-    if ((paramVarArgs != null) && (paramVarArgs.length <= 4))
+    try
     {
-      int i = 0;
-      while (i < paramVarArgs.length)
-      {
-        arrayOfString[i] = paramVarArgs[i];
-        i += 1;
+      baub localbaub = paramMessage.a();
+      if ((localbaub != null) && (localbaub.jdField_a_of_type_Long != 0L) && (localbaub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) && ((paramMessage.a instanceof QQAppInterface))) {
+        localbaub.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((QQAppInterface)paramMessage.a).a().b(localbaub.c, localbaub.jdField_a_of_type_Int, localbaub.jdField_a_of_type_Long);
       }
     }
-    a("page_exp", paramString, arrayOfString[0], arrayOfString[1], arrayOfString[2], arrayOfString[3]);
-  }
-  
-  public static final void b()
-  {
-    a("gfile", "gfile_download", "", "", "", "");
-  }
-  
-  public static final void b(int paramInt1, int paramInt2)
-  {
-    b(paramInt1, paramInt2, "");
-  }
-  
-  public static final void b(int paramInt1, int paramInt2, String paramString)
-  {
-    int i = bbfj.b(BaseApplicationImpl.getContext());
-    a("gfile", "gfile_download_result", "" + paramInt1, "" + paramInt2, "" + i, paramString);
+    catch (Exception localException)
+    {
+      label96:
+      break label96;
+    }
+    paramMessage.aS_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bamv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.tfs.mini;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
@@ -38,11 +38,11 @@ public class BaselibLoadAsyncTask
       try
       {
         MiniReportManager.reportEventType(MiniProgramReportHelper.miniAppConfigForPreload(), 10, null, null, null, 0);
-        String str = StorageUtil.getPreference().getString("version", "1.13.0.00013");
-        if (!BaseLibInfo.needUpdateVersion("1.13.0.00013", str)) {
+        String str = StorageUtil.getPreference().getString("version", "1.14.0.00225");
+        if (!BaseLibInfo.needUpdateVersion("1.14.0.00225", str)) {
           break label363;
         }
-        QLog.e("miniapp-start", 1, "download baselib invalid! use assert baselib. download_version=" + str + " assert_version=" + "1.13.0.00013");
+        QLog.e("miniapp-start", 1, "download baselib invalid! use assert baselib. download_version=" + str + " assert_version=" + "1.14.0.00225");
         i = 0;
         if ((!isBaseLibInit()) && (i != 0))
         {
@@ -79,7 +79,7 @@ public class BaselibLoadAsyncTask
       }
       finally {}
       return;
-      onTaskFailed(-3, ajya.a(2131701014));
+      onTaskFailed(-3, alpo.a(2131701383));
       continue;
       label363:
       int i = 1;
@@ -95,9 +95,9 @@ public class BaselibLoadAsyncTask
       return;
     }
     String str1 = StorageUtil.getPreference().getString("downloadUrl", "");
-    String str2 = StorageUtil.getPreference().getString("version", "1.13.0.00013");
+    String str2 = StorageUtil.getPreference().getString("version", "1.14.0.00225");
     QLog.i("miniapp-start", 1, "execute baseLibLoad task. url=" + str1 + " version=" + str2);
-    if ("1.13.0.00013".equals(str2))
+    if ("1.14.0.00225".equals(str2))
     {
       QLog.e("miniapp-start", 1, "current is default version:" + str2);
       mBaseLibInfo = new BaseLibInfo();
@@ -133,8 +133,8 @@ public class BaselibLoadAsyncTask
     if (mBaseLibInfo == null)
     {
       str1 = StorageUtil.getPreference().getString("downloadUrl", "");
-      str2 = StorageUtil.getPreference().getString("version", "1.13.0.00013");
-      if (!"1.13.0.00013".equals(str2)) {
+      str2 = StorageUtil.getPreference().getString("version", "1.14.0.00225");
+      if (!"1.14.0.00225".equals(str2)) {
         break label69;
       }
       mBaseLibInfo = new BaseLibInfo();
@@ -213,7 +213,7 @@ public class BaselibLoadAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.tfs.mini.BaselibLoadAsyncTask
  * JD-Core Version:    0.7.0.1
  */

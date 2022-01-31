@@ -1,13 +1,20 @@
-public abstract interface vfq
-  extends vhl
+class vfq
+  extends veh
 {
-  public abstract void a(long paramLong);
+  vfq(vez paramvez, String paramString1, String paramString2, boolean paramBoolean, vgi paramvgi)
+  {
+    super(paramString1, paramString2, paramBoolean);
+  }
   
-  public abstract void b();
+  public boolean b()
+  {
+    this.jdField_a_of_type_Vgi.d = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vfq
  * JD-Core Version:    0.7.0.1
  */

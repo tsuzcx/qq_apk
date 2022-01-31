@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.vip.lianghao.net;
 
 import android.os.SystemClock;
-import bbyv;
-import bbza;
+import bdxw;
+import bdyb;
 
 public class CheckRegisterLiangHao$1
   implements Runnable
 {
-  public CheckRegisterLiangHao$1(bbza parambbza) {}
+  public CheckRegisterLiangHao$1(bdyb parambdyb) {}
   
   public void run()
   {
-    bbza.a(this.this$0, SystemClock.elapsedRealtime());
-    bbyv localbbyv = bbza.a(this.this$0);
-    bbza.a(this.this$0, localbbyv);
+    bdyb.a(this.this$0, SystemClock.elapsedRealtime());
+    bdxw localbdxw = bdyb.a(this.this$0);
+    bdyb.a(this.this$0, localbdxw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.net.CheckRegisterLiangHao.1
  * JD-Core Version:    0.7.0.1
  */

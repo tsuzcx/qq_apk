@@ -4,19 +4,19 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bigp;
-import bjah;
-import bkze;
+import bkil;
+import blfg;
+import bnko;
 import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
 
 public class QIMCameraBroadcastReceiver
   extends BroadcastReceiver
 {
-  private bigp a;
+  private bkil a;
   
-  public QIMCameraBroadcastReceiver(bigp parambigp)
+  public QIMCameraBroadcastReceiver(bkil parambkil)
   {
-    this.a = parambigp;
+    this.a = parambkil;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -33,7 +33,7 @@ public class QIMCameraBroadcastReceiver
           {
             return;
             paramContext = paramIntent.getAction();
-            bjah.b("QIMCameraBroadcastReceiver", "receive boardcast, action:" + paramContext);
+            blfg.b("QIMCameraBroadcastReceiver", "receive boardcast, action:" + paramContext);
             if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
               break;
             }
@@ -41,16 +41,16 @@ public class QIMCameraBroadcastReceiver
           this.a.r();
           return;
         } while (!"new_qq_android_native_ptu_res_".equals(paramContext));
-        axeh.a = true;
-      } while (bkze.a == null);
+        ayzn.a = true;
+      } while (bnko.a == null);
       paramContext = this.a.a();
     } while (!(paramContext instanceof EffectsCameraCaptureView));
-    ((EffectsCameraCaptureView)paramContext).setFaceEffect(bkze.a);
+    ((EffectsCameraCaptureView)paramContext).setFaceEffect(bnko.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.QIMCameraBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

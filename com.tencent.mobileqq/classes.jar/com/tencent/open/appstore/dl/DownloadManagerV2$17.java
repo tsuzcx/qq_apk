@@ -1,17 +1,17 @@
 package com.tencent.open.appstore.dl;
 
-import bdhi;
-import bdhk;
+import bfgg;
+import bfgi;
 import com.tencent.open.downloadnew.DownloadInfo;
 
 public class DownloadManagerV2$17
   implements Runnable
 {
-  public DownloadManagerV2$17(bdhk parambdhk, DownloadInfo paramDownloadInfo, boolean paramBoolean) {}
+  public DownloadManagerV2$17(bfgi parambfgi, DownloadInfo paramDownloadInfo, boolean paramBoolean) {}
   
   public void run()
   {
-    bdhi.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, this.jdField_a_of_type_Boolean);
+    bfgg.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, this.jdField_a_of_type_Boolean);
   }
 }
 

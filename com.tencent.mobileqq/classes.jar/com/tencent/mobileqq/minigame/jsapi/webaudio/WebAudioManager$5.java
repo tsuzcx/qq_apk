@@ -2,72 +2,36 @@ package com.tencent.mobileqq.minigame.jsapi.webaudio;
 
 import android.os.Build.VERSION;
 import android.os.Environment;
-import bbdx;
+import bdcs;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.minigame.utils.GameLog;
 import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 class WebAudioManager$5
   implements Runnable
 {
-  WebAudioManager$5(WebAudioManager paramWebAudioManager, byte[] paramArrayOfByte, int paramInt, JsRuntime paramJsRuntime) {}
+  WebAudioManager$5(WebAudioManager paramWebAudioManager, int paramInt, JsRuntime paramJsRuntime, byte[] paramArrayOfByte) {}
   
   public void run()
   {
+    GameLog.getInstance().d("decodeWebAudioData", "decodeId:" + this.val$decodeId + " new AudioDecoder And start decode");
     AudioDecoder localAudioDecoder = new AudioDecoder();
-    Object localObject = null;
-    int j;
-    int k;
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      localObject = localAudioDecoder.decodeInMemory(this.val$audioData);
-      j = AudioNativeManager.loadRawData((byte[])localObject, localAudioDecoder.getSampleRate(), localAudioDecoder.getChannelCount(), localAudioDecoder.getBitsPerChannel());
-      k = localAudioDecoder.getSampleRate();
-      if (localObject == null) {
-        break label266;
-      }
+    localAudioDecoder.setOnDecodeProcessListener(new WebAudioManager.5.1(this, localAudioDecoder));
+    if (Build.VERSION.SDK_INT >= 23) {
+      localAudioDecoder.decodeInMemory(this.val$audioData, this.val$decodeId);
     }
-    label266:
-    for (int i = localObject.length;; i = 0)
-    {
-      int m = localAudioDecoder.getChannelCount();
-      int n = localAudioDecoder.getBitsPerChannel() / 8;
-      n = i / m / n / k;
-      localObject = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject).put("bufferId", j);
-        ((JSONObject)localObject).put("sampleRate", k);
-        ((JSONObject)localObject).put("length", i);
-        ((JSONObject)localObject).put("duration", n);
-        ((JSONObject)localObject).put("numberOfChannels", m);
-        ((JSONObject)localObject).put("decodeId", this.val$decodeId);
-        ((JSONObject)localObject).put("status", "ok");
-        if (this.val$jsRuntime != null) {
-          this.val$jsRuntime.evaluateSubcribeJS("onDecodeWebAudioDataDone", ((JSONObject)localObject).toString(), 0);
-        }
-        return;
-      }
-      catch (JSONException localJSONException)
-      {
-        String str;
-        localJSONException.printStackTrace();
-      }
-      if (Build.VERSION.SDK_INT < 16) {
-        break;
-      }
-      str = Environment.getExternalStorageDirectory().getPath() + "/minigame/audio_" + System.currentTimeMillis();
-      bbdx.a(this.val$audioData, str);
-      localObject = localAudioDecoder.decodeByPath(str);
-      bbdx.d(str);
-      break;
+    while (Build.VERSION.SDK_INT < 16) {
+      return;
     }
+    String str = Environment.getExternalStorageDirectory().getPath() + "/minigame/audio_" + System.currentTimeMillis();
+    bdcs.a(this.val$audioData, str);
+    localAudioDecoder.decodeByPath(str, this.val$decodeId);
+    bdcs.d(str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.webaudio.WebAudioManager.5
  * JD-Core Version:    0.7.0.1
  */

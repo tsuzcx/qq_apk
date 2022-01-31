@@ -1,25 +1,31 @@
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class ahxg
-  implements vra
+  implements View.OnClickListener
 {
-  public ahxg(P2VEditMusicDialog paramP2VEditMusicDialog) {}
+  public ahxg(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void a() {}
-  
-  public void a(vrk paramvrk)
+  public void onClick(View paramView)
   {
-    this.a.b(paramvrk);
-  }
-  
-  public void b()
-  {
-    this.a.a();
+    this.a.f = false;
+    this.a.u = "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.d != 22) {
+      this.a.b.setVisibility(0);
+    }
+    if (this.a.jdField_a_of_type_Ahys != null) {
+      this.a.jdField_a_of_type_Ahys.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxg
  * JD-Core Version:    0.7.0.1
  */

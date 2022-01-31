@@ -1,16 +1,16 @@
 package com.tencent.biz;
 
 import android.os.Bundle;
-import mxh;
+import naa;
 
 public class ProtoUtils$StoryProtocolObserver$1
   implements Runnable
 {
-  public ProtoUtils$StoryProtocolObserver$1(mxh parammxh, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  public ProtoUtils$StoryProtocolObserver$1(naa paramnaa, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
-    mxh.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    naa.a(this.this$0, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

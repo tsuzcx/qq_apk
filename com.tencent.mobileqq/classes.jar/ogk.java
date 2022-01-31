@@ -1,103 +1,86 @@
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewTreeObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.SurfaceHolder;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import java.lang.ref.WeakReference;
 
 public class ogk
-  implements oia
+  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
 {
-  private ReadInJoyCommentListView jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView;
-  private List<oif> jdField_a_of_type_JavaUtilList;
+  private WeakReference<ReadInJoyArticleBottomVideoView> a;
   
-  public ogk(ReadInJoyCommentListView paramReadInJoyCommentListView, List<oif> paramList, ohs paramohs)
+  public ogk(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView = paramReadInJoyCommentListView;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    paramohs.a(this);
+    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
   }
   
-  private ohs a()
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getAdapter() instanceof bfsi)))
-    {
-      bfsi localbfsi = (bfsi)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getAdapter();
-      if ((localbfsi.getWrappedAdapter() instanceof ohs)) {
-        return (ohs)localbfsi.getWrappedAdapter();
-      }
-    }
-    return null;
-  }
-  
-  private void a(int paramInt1, int paramInt2)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt1 < this.jdField_a_of_type_JavaUtilList.size()) && (this.jdField_a_of_type_JavaUtilList.get(paramInt1) != null))
-    {
-      ((oif)this.jdField_a_of_type_JavaUtilList.get(paramInt1)).c = paramInt2;
-      QLog.d("ReadInJoyCommentItemHeightHelper", 2, "setHeight | postion " + paramInt1 + " itemHeight " + paramInt2);
-    }
-  }
-  
-  private int b(int paramInt)
-  {
-    int j = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getWidth();
-    int i = Utils.dp2px(300.0D);
-    j = View.MeasureSpec.makeMeasureSpec(j, -2147483648);
-    if ((Build.VERSION.SDK_INT <= 19) && (paramInt == 0)) {}
-    Object localObject;
-    do
-    {
-      return i;
-      localObject = a();
-    } while (localObject == null);
-    try
-    {
-      localObject = ((ohs)localObject).a(paramInt, null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView, true);
-      ((View)localObject).measure(j, 0);
-      j = ((View)localObject).getMeasuredHeight();
-      QLog.d("ReadInJoyCommentItemHeightHelper", 2, "getItemMeasureHeight index : " + paramInt + " height : " + j);
-      return j;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("ReadInJoyCommentItemHeightHelper", 2, localException, new Object[] { " index : " + paramInt });
-    }
-    return i;
-  }
-  
-  public int a(int paramInt)
-  {
-    if ((paramInt < 0) || ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() <= paramInt))) {
-      return -1;
-    }
-    oif localoif = (oif)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if (localoif.c > 0) {
-      return localoif.c;
-    }
-    localoif.c = b(paramInt);
-    return localoif.c;
-  }
-  
-  public void a(int paramInt, View paramView)
-  {
-    if (paramView == null) {
-      QLog.d("ReadInJoyCommentItemHeightHelper", 2, "onGetView view is null");
-    }
-    ViewTreeObserver localViewTreeObserver;
-    do
-    {
+    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
       return;
-      localViewTreeObserver = paramView.getViewTreeObserver();
-    } while (localViewTreeObserver == null);
-    localViewTreeObserver.addOnGlobalLayoutListener(new ogl(this, paramInt, paramView));
+    }
+    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 9);
+    ocl.c = true;
+    paramTVK_IMediaPlayer.j();
+    paramTVK_IMediaPlayer.q();
+    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).a = true;
+  }
+  
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {}
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyArticleBottomVideoView", 0, "error msg = " + paramString);
+      }
+      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 8);
+      paramTVK_IMediaPlayer.j();
+    } while (!QLog.isColorLevel());
+    QLog.i("ReadInJoyArticleBottomVideoView", 3, "WebFastProteusViewAdBannerVideoCreator start video error");
+    return false;
+  }
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    paramSurfaceHolder = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramSurfaceHolder == null) {
+      return;
+    }
+    paramSurfaceHolder.p();
+  }
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
+      return;
+    }
+    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer) != null))
+    {
+      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
+      return;
+    }
+    ReadInJoyArticleBottomVideoView.b(paramTVK_IMediaPlayer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ogk
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package com.tencent.mobileqq.emoticonview;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aoaw;
+import apst;
 
 public class EmotionPreviewInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<EmotionPreviewInfo> CREATOR = new aoaw();
+  public static final Parcelable.Creator<EmotionPreviewInfo> CREATOR = new apst();
   public String a;
   public boolean a;
   
@@ -53,7 +53,7 @@ public class EmotionPreviewInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPreviewInfo
  * JD-Core Version:    0.7.0.1
  */

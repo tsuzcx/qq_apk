@@ -1,12 +1,42 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public abstract interface admf
+public class admf
+  implements alti
 {
-  public abstract void a(boolean paramBoolean, SosoInterface.SosoLbsInfo paramSosoLbsInfo);
+  public admf(QQLSActivity paramQQLSActivity) {}
+  
+  public void ao_() {}
+  
+  public void b() {}
+  
+  public void j_(int paramInt)
+  {
+    if ((paramInt == 0) && (this.a.a.a().size() > 0))
+    {
+      Iterator localIterator = this.a.a.a().iterator();
+      while (localIterator.hasNext())
+      {
+        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
+        if ((localRecentBaseData instanceof RecentItemNewFriendMsgData))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QQLSActivity", 2, "Need to delete RecentItemNewFriendMsgData");
+          }
+          this.a.a.a().remove(localRecentBaseData);
+          this.a.b();
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     admf
  * JD-Core Version:    0.7.0.1
  */

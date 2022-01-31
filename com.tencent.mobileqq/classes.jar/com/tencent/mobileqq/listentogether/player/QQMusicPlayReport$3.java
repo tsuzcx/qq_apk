@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.listentogether.player;
 
-import axrn;
+import azmz;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -19,7 +19,7 @@ public final class QQMusicPlayReport$3
       localHashMap.put("qqmusicplay_report_key_play_cache", str);
       localHashMap.put("qqmusicplay_report_key_net_type", String.valueOf(this.jdField_a_of_type_Int));
       localHashMap.put("qqmusicplay_report_key_seek_count_per_song", String.valueOf(this.b));
-      axrn.a(BaseApplication.getContext()).a("", "qqmusicplay_report_tag_seek_count_per_song", true, 0L, 0L, localHashMap, "");
+      azmz.a(BaseApplication.getContext()).a("", "qqmusicplay_report_tag_seek_count_per_song", true, 0L, 0L, localHashMap, "");
       if (QLog.isColorLevel()) {}
       return;
     }
@@ -27,7 +27,7 @@ public final class QQMusicPlayReport$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayReport.3
  * JD-Core Version:    0.7.0.1
  */

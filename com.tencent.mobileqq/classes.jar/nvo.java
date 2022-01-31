@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
 
-public class nvo
-  implements View.OnClickListener
+final class nvo
+  extends bcuq
 {
-  public nvo(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
-  
-  public void onClick(View paramView)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    ReadInJoyChannelActivity.a(this.a);
+    paramDownloadParams = paramBitmap.copy(paramBitmap.getConfig(), true);
+    bdjc.a(paramDownloadParams, 40);
+    return paramDownloadParams;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.device.msg.data;
 
-import ajya;
-import akwa;
+import alpo;
+import ammq;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,7 +24,7 @@ public class MessageForDevPtt
       return;
       try
       {
-        MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)akwa.a(this.msgData);
+        MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)ammq.a(this.msgData);
         if (localMessageForDevPttSerial == null) {
           continue;
         }
@@ -76,18 +76,18 @@ public class MessageForDevPtt
       if (this.fileSize > 0L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131691298);
+          return ((QQAppInterface)localObject).getApp().getString(2131691351);
         }
-        return ajya.a(2131706615);
+        return alpo.a(2131706987);
       }
       if (this.fileSize == -1L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131691298);
+          return ((QQAppInterface)localObject).getApp().getString(2131691351);
         }
-        return ajya.a(2131706586);
+        return alpo.a(2131706958);
       }
-      return ajya.a(2131706587);
+      return alpo.a(2131706959);
     }
     return null;
   }
@@ -123,7 +123,7 @@ public class MessageForDevPtt
     localMessageForDevPttSerial.strFileKey2 = this.strFileKey2;
     try
     {
-      this.msgData = akwa.a(localMessageForDevPttSerial);
+      this.msgData = ammq.a(localMessageForDevPttSerial);
       return;
     }
     catch (Exception localException)
@@ -134,7 +134,7 @@ public class MessageForDevPtt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.device.msg.data.MessageForDevPtt
  * JD-Core Version:    0.7.0.1
  */

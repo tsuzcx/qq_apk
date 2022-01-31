@@ -6,11 +6,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.debug.EnvSwitchActivity;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.BaseApplication;
+import mqq.app.AppRuntime;
 
 public class MiniAppGameDebugSettingFragment
   extends IphoneTitleBarFragment
@@ -36,7 +38,7 @@ public class MiniAppGameDebugSettingFragment
   
   public int getContentLayoutId()
   {
-    return 2131561969;
+    return 2131562161;
   }
   
   public void onAttach(Activity paramActivity)
@@ -48,17 +50,20 @@ public class MiniAppGameDebugSettingFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    paramBundle = (FormSwitchItem)paramView.findViewById(2131370317);
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131370616);
     paramBundle.setChecked(this.sharedPreferences.getBoolean("pref_key_use_system_webview", false));
     paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.1(this));
-    paramView = (FormSwitchItem)paramView.findViewById(2131370316);
-    paramView.setChecked(this.sharedPreferences.getBoolean("pref_key_use_old_desktop", false));
-    paramView.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.2(this));
+    paramBundle = (FormSwitchItem)paramView.findViewById(2131370614);
+    paramBundle.setChecked(this.sharedPreferences.getBoolean("pref_key_use_old_desktop", false));
+    paramBundle.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.2(this));
+    paramView = (FormSwitchItem)paramView.findViewById(2131370615);
+    paramView.setChecked(BaseApplicationImpl.getApplication().getSharedPreferences(BaseApplicationImpl.getApplication().getRuntime().getAccount() + "_user_sdk_minigame_", 4).getBoolean("_minigame_start_with_sdk", false));
+    paramView.setOnCheckedChangeListener(new MiniAppGameDebugSettingFragment.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.MiniAppGameDebugSettingFragment
  * JD-Core Version:    0.7.0.1
  */

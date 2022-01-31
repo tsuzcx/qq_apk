@@ -40,7 +40,7 @@ public class NoiseSuppression
     //   40: dup
     //   41: invokespecial 37	com/tencent/mobileqq/utils/NoiseSuppression:<init>	()V
     //   44: putstatic 26	com/tencent/mobileqq/utils/NoiseSuppression:jdField_a_of_type_ComTencentMobileqqUtilsNoiseSuppression	Lcom/tencent/mobileqq/utils/NoiseSuppression;
-    //   47: getstatic 40	bbjg:jdField_a_of_type_Int	I
+    //   47: getstatic 40	bdic:jdField_a_of_type_Int	I
     //   50: istore_1
     //   51: getstatic 26	com/tencent/mobileqq/utils/NoiseSuppression:jdField_a_of_type_ComTencentMobileqqUtilsNoiseSuppression	Lcom/tencent/mobileqq/utils/NoiseSuppression;
     //   54: iload_1
@@ -129,7 +129,7 @@ public class NoiseSuppression
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.NoiseSuppression
  * JD-Core Version:    0.7.0.1
  */

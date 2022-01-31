@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import asua;
-import avqu;
+import aukx;
+import axis;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -19,7 +19,7 @@ class MiniMultiForwardFragment$1
     ArrayList localArrayList = new ArrayList();
     if (MiniMultiForwardFragment.a(this.this$0) == 3)
     {
-      ChatMessage localChatMessage = ((avqu)this.this$0.a.getManager(340)).a(MiniMultiForwardFragment.a(this.this$0));
+      ChatMessage localChatMessage = ((axis)this.this$0.a.getManager(340)).a(MiniMultiForwardFragment.a(this.this$0));
       if (localChatMessage == null) {
         break label161;
       }
@@ -41,7 +41,7 @@ class MiniMultiForwardFragment$1
       }
       else if (MiniMultiForwardFragment.a(this.this$0) == 1)
       {
-        localArrayList = MiniMultiForwardFragment.a(this.this$0, asua.a().a);
+        localArrayList = MiniMultiForwardFragment.a(this.this$0, aukx.a().a);
       }
       else
       {
@@ -52,7 +52,7 @@ class MiniMultiForwardFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniMultiForwardFragment.1
  * JD-Core Version:    0.7.0.1
  */

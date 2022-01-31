@@ -3,7 +3,7 @@ package com.tencent.mobileqq.mini.report;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import bcyb;
+import bexd;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.qphone.base.util.QLog;
 
@@ -16,7 +16,7 @@ final class MiniAppReportManager$9
   {
     try
     {
-      long l = bcyb.a().a();
+      long l = bexd.a().a();
       Object localObject = MiniAppReportManager.access$1100(this.val$miniAppConfig);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
@@ -38,7 +38,7 @@ final class MiniAppReportManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportManager.9
  * JD-Core Version:    0.7.0.1
  */

@@ -1,126 +1,55 @@
-import android.graphics.Color;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.av.doodle.DoodleSurfaceView;
+import com.tencent.qphone.base.util.QLog;
 
-public class lmd
+class lmd
 {
-  public static boolean a;
+  int jdField_a_of_type_Int = -99;
+  boolean jdField_a_of_type_Boolean = false;
+  int b = -99;
+  int c = -99;
+  int d = -99;
+  int e = -99;
+  int f = -99;
+  int g = -99;
+  int h = -99;
+  int i = -99;
+  int j = -99;
   
-  public static int a(int paramInt1, int paramInt2, float paramFloat)
+  void a()
   {
-    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
+    a(-101, this.b, this.c, this.jdField_a_of_type_Boolean, -101, -101, -101, -101, -101, -101);
   }
   
-  public static int a(int[] paramArrayOfInt, float paramFloat)
+  void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
   {
-    if (paramFloat <= 0.0F) {
-      return paramArrayOfInt[0];
-    }
-    if (paramFloat >= 1.0F) {
-      return paramArrayOfInt[(paramArrayOfInt.length - 1)];
-    }
-    paramFloat = (paramArrayOfInt.length - 1) * paramFloat;
-    int j = (int)paramFloat;
-    paramFloat -= j;
-    int i = paramArrayOfInt[j];
-    j = paramArrayOfInt[(j + 1)];
-    return Color.argb(a(Color.alpha(i), Color.alpha(j), paramFloat), a(Color.red(i), Color.red(j), paramFloat), a(Color.green(i), Color.green(j), paramFloat), a(Color.blue(i), Color.blue(j), paramFloat));
-  }
-  
-  public static DoodleSurfaceView a(ViewGroup paramViewGroup)
-  {
-    Object localObject2 = (DoodleSurfaceView)paramViewGroup.findViewById(2131372242);
-    Object localObject1 = localObject2;
-    View localView;
-    if (localObject2 == null)
+    long l = this.j;
+    if (paramInt1 <= -99) {}
+    for (this.j = 0;; this.j += 1)
     {
-      localObject1 = new DoodleSurfaceView(paramViewGroup.getContext());
-      localObject2 = new ViewGroup.LayoutParams(-1, -1);
-      localView = paramViewGroup.findViewById(2131372534);
-      if (localView == null) {
-        break label67;
+      if ((this.jdField_a_of_type_Int != paramInt1) || (this.b != paramInt2) || (this.c != paramInt3) || (this.jdField_a_of_type_Boolean != paramBoolean) || (this.d != paramInt4) || (this.e != paramInt5) || (this.f != paramInt6) || (this.g != paramInt7) || (this.h != paramInt8) || (this.i != paramInt9)) {
+        QLog.w("AndroidCamera", 1, "PreviewCallback, Index[" + l + "->" + this.j + "], degree[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], CUR_CAMERA[" + this.b + "->" + paramInt2 + "], nInFPS[" + this.c + "->" + paramInt3 + "], mSupportLandscape[" + this.jdField_a_of_type_Boolean + "->" + paramBoolean + "], cameraImageOrientation[" + this.d + "->" + paramInt4 + "], displayRotation[" + this.e + "->" + paramInt5 + "], mobileRotation[" + this.f + "->" + paramInt6 + "], dataLength[" + this.g + "->" + paramInt7 + "], w[" + this.h + "->" + paramInt8 + "], h[" + this.i + "->" + paramInt9 + "]");
       }
-    }
-    label67:
-    for (int i = paramViewGroup.indexOfChild(localView);; i = -1)
-    {
-      paramViewGroup.addView((View)localObject1, i, (ViewGroup.LayoutParams)localObject2);
-      return localObject1;
-    }
-  }
-  
-  public static lly a(int paramInt)
-  {
-    Object localObject;
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      localObject = new lme();
-    }
-    for (;;)
-    {
-      ((lly)localObject).a = paramInt;
-      return localObject;
-      localObject = new lme();
-      continue;
-      localObject = new lmj(2130968654);
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      this.c = paramInt3;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.d = paramInt4;
+      this.e = paramInt5;
+      this.f = paramInt6;
+      this.g = paramInt7;
+      this.h = paramInt8;
+      this.i = paramInt9;
+      return;
     }
   }
   
-  public static void a(ViewGroup paramViewGroup)
+  void b()
   {
-    View localView = paramViewGroup.findViewById(2131372242);
-    if (localView != null) {
-      paramViewGroup.removeView(localView);
-    }
-  }
-  
-  public static void a(String paramString)
-  {
-    axqy.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static boolean a()
-  {
-    if (a) {
-      return true;
-    }
-    if (!b()) {
-      return false;
-    }
-    a = true;
-    return a;
-  }
-  
-  public static boolean b()
-  {
-    int i = llw.e();
-    if (i < 4)
-    {
-      lcg.c("DoodleUtils", "isSupportOfDevice error cpucount = " + i);
-      return false;
-    }
-    long l = llw.c();
-    if (l < 1400000L)
-    {
-      lcg.c("DoodleUtils", "isSupportOfDevice error cpuFrequency = " + l);
-      return false;
-    }
-    l = bbdh.d();
-    if (l < 1073741824L)
-    {
-      lcg.c("DoodleUtils", "isSupportOfDevice error memory = " + l);
-      return false;
-    }
-    return true;
+    a(-100, this.b, this.c, this.jdField_a_of_type_Boolean, -100, -100, -100, -100, -100, -100);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lmd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+import android.hardware.camera2.CameraCharacteristics;
+import android.text.TextUtils;
 
 public class azbf
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public azbf(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
+  public CameraCharacteristics a;
+  public String a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public azbf(String paramString, CameraCharacteristics paramCameraCharacteristics)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.setAlpha(f);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics = paramCameraCharacteristics;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidHardwareCamera2CameraCharacteristics != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azbf
  * JD-Core Version:    0.7.0.1
  */

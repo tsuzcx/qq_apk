@@ -1,49 +1,58 @@
-import android.content.Context;
 import android.content.Intent;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
-import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity.1;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 
-public class agkm
-  extends aumg
+class agkm
+  implements View.OnClickListener
 {
-  public agkm(PhoneLaunchActivity.1 param1) {}
+  agkm(agkk paramagkk) {}
   
-  protected void a(boolean paramBoolean, int paramInt)
+  public void onClick(View paramView)
   {
-    PhoneLaunchActivity.a(this.a.this$0).setEnabled(true);
-    if (this.a.this$0.a != null)
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(aljq.y))
     {
-      this.a.this$0.app.unRegistObserver(this.a.this$0.a);
-      this.a.this$0.a = null;
-    }
-    this.a.this$0.b();
-    if (paramBoolean)
-    {
-      Object localObject = this.a.this$0;
-      if ((PhoneLaunchActivity.a(this.a.this$0)) || (PhoneLaunchActivity.b(this.a.this$0)))
+      if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue())
       {
-        this.a.this$0.setResult(-1);
-        this.a.this$0.finish();
+        this.a.I();
         return;
       }
-      localObject = new Intent((Context)localObject, SettingActivity2.class);
-      if (PhoneLaunchActivity.c(this.a.this$0)) {
-        ((Intent)localObject).putExtra("kSrouce", 7);
+      paramView = new Intent();
+      paramView.putExtra("nickname", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
+      paramView.putExtra("bitmap", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), (byte)2, false));
+      localObject = BaseApplicationImpl.getApplication().getSharedPreferences("smartdevice_entry", 4).getString("square_url_" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "");
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        paramView.putExtra("url", (String)localObject);
       }
-      this.a.this$0.startActivityForResult((Intent)localObject, 2);
-      this.a.this$0.setResult(-1);
-      this.a.this$0.finish();
+      for (;;)
+      {
+        bjxx.a().a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceSquareActivity", 0, null, SmartDevicePluginProxyActivity.class);
+        return;
+        paramView.putExtra("url", "https://qzs.qq.com/open/mobile/iot_public_device_2/html/devDiscover.html");
+      }
+    }
+    paramView = (zpa)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51);
+    Object localObject = paramView.a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a));
+    if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue())
+    {
+      if (agkk.a(this.a)) {
+        paramView.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, (DeviceInfo)localObject, false);
+      }
+      this.a.I();
       return;
     }
-    this.a.this$0.a(ajya.a(2131708020));
+    paramView.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, (DeviceInfo)localObject, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agkm
  * JD-Core Version:    0.7.0.1
  */

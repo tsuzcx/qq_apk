@@ -1,16 +1,7 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class qss
-  implements View.OnClickListener
-{
-  qss(qsq paramqsq) {}
-  
-  public void onClick(View paramView) {}
-}
+public abstract interface qss {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qss
  * JD-Core Version:    0.7.0.1
  */

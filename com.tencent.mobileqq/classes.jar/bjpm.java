@@ -1,94 +1,65 @@
-import android.app.Activity;
-import android.graphics.drawable.ColorDrawable;
-import android.view.Window;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ptv.LWMotionEvent;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.io.File;
 
-public class bjpm
+class bjpm
+  implements Downloader.DownloadListener
 {
-  private static ArrayList<bjrc> a = new ArrayList();
+  bjpm(bjpl parambjpl, String paramString1, Downloader.DownloadListener paramDownloadListener, String paramString2) {}
   
-  public static bjrm a(String paramString, bjrl parambjrl, bjrk parambjrk)
+  public void onDownloadCanceled(String paramString)
   {
-    if (paramString.equals(bjpq.class.getName())) {
-      return new bjpq(parambjrl, parambjrk);
+    File localFile = new File(bjpl.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      localFile.delete();
     }
-    return null;
-  }
-  
-  public static void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCExitEvent size: " + a.size());
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadCanceled(paramString);
     }
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext())
-    {
-      bjrc localbjrc = (bjrc)localIterator.next();
-      if (localbjrc != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCExitEvent newCode= " + localbjrc.hashCode());
-        }
-        localbjrc.u();
-      }
+    if (bjpl.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Bjpl.jdField_a_of_type_ArrayOfBoolean[bjpl.a(this.jdField_a_of_type_Bjpl)] = false;
     }
   }
   
-  public static void a(Activity paramActivity, String paramString, boolean paramBoolean)
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (paramString.equals(bjpq.class.getName()))
-    {
-      if (!paramBoolean) {
-        paramActivity.getWindow().setBackgroundDrawableResource(2130843771);
-      }
+    File localFile = new File(bjpl.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      localFile.delete();
     }
-    else {
-      return;
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(paramString, paramDownloadResult);
     }
-    paramActivity.getWindow().setBackgroundDrawable(new ColorDrawable(-1));
-  }
-  
-  public static void a(bjrc parambjrc)
-  {
-    a.remove(parambjrc);
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "removeIPCEvent: " + a.size() + " newCode=" + parambjrc.hashCode());
+    if (bjpl.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Bjpl.jdField_a_of_type_ArrayOfBoolean[bjpl.a(this.jdField_a_of_type_Bjpl)] = false;
     }
   }
   
-  public static void a(LWMotionEvent paramLWMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCEvent size: " + a.size());
-    }
-    Iterator localIterator = a.iterator();
-    while (localIterator.hasNext())
-    {
-      bjrc localbjrc = (bjrc)localIterator.next();
-      if (localbjrc != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "IPC touchIPCEvent newCode= " + localbjrc.hashCode());
-        }
-        localbjrc.a(paramLWMotionEvent);
-      }
-    }
-  }
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
   
-  public static void b(bjrc parambjrc)
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    a.add(parambjrc);
-    if (QLog.isColorLevel()) {
-      QLog.i("LightVideoCameraCaptureUnitBuilder", 2, "addIPCEventHook: " + a.size() + " newCode=" + parambjrc.hashCode());
+    File localFile = new File(bjpl.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      localFile.delete();
+    }
+    localFile = new File(bjpl.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      localFile.renameTo(new File(bjpl.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString));
+    }
+    LocalMultiProcConfig.putBool(this.b, true);
+    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
+      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(paramString, paramDownloadResult);
+    }
+    if (bjpl.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Bjpl.jdField_a_of_type_ArrayOfBoolean[bjpl.a(this.jdField_a_of_type_Bjpl)] = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjpm
  * JD-Core Version:    0.7.0.1
  */

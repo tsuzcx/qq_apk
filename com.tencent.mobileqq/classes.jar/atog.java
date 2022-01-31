@@ -1,120 +1,98 @@
-import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
 import java.util.List;
 
-public class atog
-  implements xpj
+class atog
+  implements atlm
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ArrayList<atod> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  atog(atof paramatof) {}
   
-  public atog(Context paramContext, List<PicInfo> paramList)
+  public void a(atlh paramatlh, int paramInt)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if ((paramList != null) && (!paramList.isEmpty()))
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "[LocationShareController] onKickOff: invoked. roomKey: " + paramatlh + " mRoomKey: " + atof.a(this.a));
+    }
+    QQToast.a(atof.a(this.a), "已在其他设备进行共享", 0).a();
+    atof.a(this.a).finish();
+  }
+  
+  public void a(atlh paramatlh, int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, new Object[] { "onOperateRoomResponse: invoked. ", " roomKey: ", paramatlh, " errorCode: ", Integer.valueOf(paramInt1), " operateType: ", Integer.valueOf(paramInt2) });
+    }
+    if (!paramatlh.equals(atof.a(this.a))) {}
+    do
     {
-      int i = 0;
-      if (i < paramList.size())
+      do
       {
-        paramContext = (PicInfo)paramList.get(i);
-        if ((ShortVideoUtils.a()) && ((!TextUtils.isEmpty(paramContext.d)) || (!TextUtils.isEmpty(paramContext.e)))) {}
-        for (paramContext = new atnt(this.jdField_a_of_type_AndroidContentContext, paramContext);; paramContext = new atns(this.jdField_a_of_type_AndroidContentContext, paramContext))
+        do
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
-          i += 1;
-          break;
-        }
-      }
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public atod a()
-  {
-    if ((this.jdField_a_of_type_Int < 0) || (this.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return null;
-    }
-    return (atod)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
-  }
-  
-  public atod a(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return null;
-    }
-    return (atod)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public ArrayList<PicInfo> a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      localArrayList.add(((atod)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a);
-      i += 1;
-    }
-    return localArrayList;
-  }
-  
-  public void a()
-  {
-    if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      ((atod)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).c();
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-    {
-      atod localatod = (atod)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (paramInt == i) {}
-      for (boolean bool = true;; bool = false)
+          return;
+          if (paramInt1 != 10100) {
+            break;
+          }
+          if ((paramInt2 == 2) && (atof.a(this.a).a() == 1))
+          {
+            if (atof.a(this.a) != null)
+            {
+              atof.a(this.a).a.a(1, atof.a(this.a).a(), atof.a(this.a).a());
+              QLog.d("LocationShareController", 1, new Object[] { "onOperateRoomResponse: invoked. 兜底处理房间关闭状态，在进房失败后创建房间。 ", " errorCode: ", Integer.valueOf(paramInt1) });
+              return;
+            }
+            QLog.e("LocationShareController", 1, "onOperateRoomResponse: failed. not valid room key. ", new RuntimeException());
+            return;
+          }
+        } while ((atof.a(this.a) == null) || (atof.a(this.a).isFinishing()));
+        atmi.a(atof.a(this.a));
+        return;
+      } while (paramInt1 != 10101);
+      if ((atof.a(this.a) != null) && (!atof.a(this.a).isFinishing()))
       {
-        localatod.a(bool);
-        i += 1;
-        break;
+        atmi.b(atof.a(this.a));
+        return;
       }
+    } while (!QLog.isColorLevel());
+    QLog.d("LocationShareController", 2, new Object[] { "join limit, onOperateRoomResponse: invoked. ", " roomKey: ", paramatlh });
+  }
+  
+  public void a(atlh paramatlh, LocationRoom.Venue paramVenue, List<atlf> paramList)
+  {
+    if ((!paramatlh.equals(atof.a(this.a))) || (atof.a(this.a).isFinishing())) {
+      return;
     }
-  }
-  
-  public int b()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public atod b(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    paramVenue = paramList.iterator();
+    while (paramVenue.hasNext())
     {
-      localObject1 = localObject2;
-      if (paramInt >= 0)
+      atlf localatlf = (atlf)paramVenue.next();
+      Bitmap localBitmap = this.a.a(localatlf.a());
+      if (localBitmap != null)
       {
-        localObject1 = localObject2;
-        if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          localObject1 = (atod)this.jdField_a_of_type_JavaUtilArrayList.remove(paramInt);
-        }
+        localBitmap = bdda.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+        atof.a(this.a).a(localatlf.a(), localBitmap);
       }
     }
-    return localObject1;
+    atof.a(this.a).a(paramList);
+    atof.a(this.a).a(paramatlh);
+  }
+  
+  public void b(atlh paramatlh, int paramInt)
+  {
+    if (!paramatlh.equals(atof.a(this.a))) {}
+    while ((paramInt == 2) || (paramInt == 1)) {
+      return;
+    }
+    atmi.a(atof.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atog
  * JD-Core Version:    0.7.0.1
  */

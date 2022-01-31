@@ -1,16 +1,24 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import java.util.ArrayList;
+
 class pab
-  implements osk
+  implements View.OnClickListener
 {
-  pab(paa parampaa, int paramInt, String paramString) {}
+  pab(paa parampaa) {}
   
-  public void a(osm paramosm)
+  public void onClick(View paramView)
   {
-    paramosm.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    int i = ((Integer)paramView.getTag()).intValue();
+    this.a.a.a(paramView, i);
+    opn.a(this.a.a.getActivity(), "0X8009A71", this.a.a.a(), ((ozz)this.a.a.a.get(i)).a.mChannelCoverId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pab
  * JD-Core Version:    0.7.0.1
  */

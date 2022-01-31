@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.util.ShareUtils;
 
-import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public final class ShareImageUtils$3
   implements Runnable
@@ -10,12 +10,12 @@ public final class ShareImageUtils$3
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getContext(), this.a, 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), this.a, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,8 @@
-class bbgq
-  implements adlm
+import android.graphics.Bitmap;
+
+public abstract interface bbgq
 {
-  bbgq(bbgp parambbgp) {}
-  
-  public boolean a(adlj paramadlj)
-  {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(adlj paramadlj, String paramString1, String paramString2)
-  {
-    return false;
-  }
+  public abstract void a(Bitmap paramBitmap);
 }
 
 

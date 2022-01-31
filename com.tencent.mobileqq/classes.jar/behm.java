@@ -1,67 +1,51 @@
-public class behm
+import org.json.JSONObject;
+
+public abstract interface behm
+  extends bebx
 {
-  public static int a;
-  private static long jdField_a_of_type_Long;
-  private static boolean jdField_a_of_type_Boolean;
-  public static int b;
-  private static long jdField_b_of_type_Long;
-  private static boolean jdField_b_of_type_Boolean;
-  public static int c;
-  private static long c;
-  private static int d;
-  private static int e;
+  public abstract long getDetect302Time();
   
-  static
-  {
-    jdField_a_of_type_Int = 2001;
-    jdField_b_of_type_Int = 2002;
-    jdField_c_of_type_Int = 2003;
-    d = bema.a("MiniApp", "MiniAppGameStartLimit", 30) * 1000;
-    e = bema.a("MiniApp", "MiniAppLastShowLimit", 60) * 1000;
-    jdField_a_of_type_Long = -1L;
-    jdField_b_of_type_Long = -1L;
-    jdField_c_of_type_Long = -1L;
-  }
+  public abstract boolean getIsReloadUrl();
   
-  public static int a()
-  {
-    long l = System.currentTimeMillis();
-    if (l - jdField_a_of_type_Long < d) {
-      return jdField_a_of_type_Int;
-    }
-    if ((l - jdField_b_of_type_Long < e) || (l - jdField_c_of_type_Long < e)) {
-      return jdField_b_of_type_Int;
-    }
-    if ((jdField_a_of_type_Boolean) || (jdField_b_of_type_Boolean)) {
-      return jdField_c_of_type_Int;
-    }
-    return 0;
-  }
+  public abstract long getOpenUrlAfterCheckOfflineTime();
   
-  public static void a(long paramLong)
-  {
-    jdField_a_of_type_Long = paramLong;
-  }
+  public abstract long getReadIndexFromOfflineTime();
   
-  public static void a(boolean paramBoolean)
-  {
-    jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {
-      jdField_b_of_type_Long = System.currentTimeMillis();
-    }
-  }
+  public abstract JSONObject getX5Performance();
   
-  public static void b(boolean paramBoolean)
-  {
-    jdField_b_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {
-      jdField_c_of_type_Long = System.currentTimeMillis();
-    }
-  }
+  public abstract long getgetWebViewTime();
+  
+  public abstract long getinitBrowserTime();
+  
+  public abstract long getinitTBSTime();
+  
+  public abstract long getinitTime();
+  
+  public abstract boolean getisWebViewCache();
+  
+  public abstract long getmClickTime();
+  
+  public abstract long getmOnCreateMilliTimeStamp();
+  
+  public abstract boolean getmPerfFirstLoadTag();
+  
+  public abstract long getmStartLoadUrlMilliTimeStamp();
+  
+  public abstract long getmTimeBeforeLoadUrl();
+  
+  public abstract long getonCreateTime();
+  
+  public abstract long getpluginFinished();
+  
+  public abstract long getviewInflateTime();
+  
+  public abstract boolean isMainPageUseLocalFile();
+  
+  public abstract void setX5Performance(JSONObject paramJSONObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     behm
  * JD-Core Version:    0.7.0.1
  */

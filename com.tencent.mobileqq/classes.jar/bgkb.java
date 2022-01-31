@@ -1,16 +1,7 @@
-public abstract interface bgkb
-{
-  public abstract void a();
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(int paramInt, String[] paramArrayOfString);
-  
-  public abstract void a(String[] paramArrayOfString);
-}
+public class bgkb {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgkb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,18 @@
-public abstract interface wpg
+import com.tencent.biz.qqstory.base.ErrorMessage;
+
+class wpg
+  implements wop
 {
-  public abstract void a(String paramString, wpf paramwpf);
+  wpg(wou paramwou) {}
+  
+  public void a(ErrorMessage paramErrorMessage)
+  {
+    wsv.e("Q.qqstory.home.StoryListPresenter", "step %s error occur when requestAllDataFromNet error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpg
  * JD-Core Version:    0.7.0.1
  */

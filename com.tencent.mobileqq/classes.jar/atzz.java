@@ -1,29 +1,19 @@
-import com.tencent.mobileqq.ocr.OCRPerformFragment;
-import com.tencent.mobileqq.ocr.view.OcrImageTextView;
+import java.lang.ref.WeakReference;
 
-public class atzz
-  implements audl
+public abstract class atzz<T>
 {
-  public atzz(OCRPerformFragment paramOCRPerformFragment) {}
+  public WeakReference<T> a;
   
-  public void a()
+  public atzz(T paramT)
   {
-    auad.a("0X800AAE1", 0);
-    if (OCRPerformFragment.a(this.a).a()) {
-      OCRPerformFragment.a(this.a).setShowTextMask(false);
-    }
+    this.a = new WeakReference(paramT);
   }
   
-  public void b()
-  {
-    if (!OCRPerformFragment.a(this.a).a()) {
-      OCRPerformFragment.a(this.a).setShowTextMask(true);
-    }
-  }
+  public abstract void a(T paramT, boolean paramBoolean, atzw paramatzw);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atzz
  * JD-Core Version:    0.7.0.1
  */

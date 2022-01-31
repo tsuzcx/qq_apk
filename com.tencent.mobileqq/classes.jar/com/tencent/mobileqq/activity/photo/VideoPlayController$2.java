@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agqs;
-import agqu;
+import ailq;
+import ails;
 
 public class VideoPlayController$2
   implements Runnable
 {
-  public VideoPlayController$2(agqs paramagqs) {}
+  public VideoPlayController$2(ailq paramailq) {}
   
   public void run()
   {
     this.this$0.b(0);
-    if (this.this$0.jdField_a_of_type_Agqu != null) {
-      this.this$0.jdField_a_of_type_Agqu.b(this.this$0.jdField_a_of_type_Agra);
+    if (this.this$0.jdField_a_of_type_Ails != null) {
+      this.this$0.jdField_a_of_type_Ails.b(this.this$0.jdField_a_of_type_Ailz);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.VideoPlayController.2
  * JD-Core Version:    0.7.0.1
  */

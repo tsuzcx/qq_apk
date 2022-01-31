@@ -1,25 +1,10 @@
-import android.content.Intent;
-import cooperation.qzone.util.QZLog;
-
-public class bhcb
+public abstract interface bhcb
 {
-  public static boolean a(Object paramObject, int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    QZLog.i("QZoneEventHandler", "handleActivityEvent: " + paramInt1 + " " + paramInt2);
-    switch (paramInt1)
-    {
-    default: 
-      return false;
-    }
-    if (((paramObject instanceof aeom)) && (((aeom)paramObject).a != null)) {
-      ((aeom)paramObject).a.a(paramInt1, paramInt2, paramIntent);
-    }
-    return true;
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhcb
  * JD-Core Version:    0.7.0.1
  */

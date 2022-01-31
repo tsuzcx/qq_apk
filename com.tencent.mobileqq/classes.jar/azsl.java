@@ -1,30 +1,51 @@
-import java.util.Set;
-
-class azsl
-  extends azuy
+public class azsl
+  extends azql
 {
-  azsl(azsk paramazsk) {}
+  public boolean c;
+  public int k;
+  public int l = 3;
   
-  protected void a(Set<Long> paramSet)
+  public azsl()
   {
-    this.a.a = 1;
-    if ((paramSet != null) && (paramSet.contains(Long.valueOf(azsk.a(this.a))))) {
-      this.a.a = 2;
+    this(null);
+  }
+  
+  public azsl(String paramString)
+  {
+    super(paramString, "content");
+  }
+  
+  public String a()
+  {
+    return "Content";
+  }
+  
+  public int b()
+  {
+    return this.l;
+  }
+  
+  public int c()
+  {
+    return 2131378668;
+  }
+  
+  public int e()
+  {
+    if ((this.c) && (this.k != 0)) {
+      return -1;
     }
-    azst.c("TroopFileTransferMgr", azst.a, "onW2MPausedUpload mW2MPausedUploadState:" + this.a.a + " mW2MPausedDownloadState:" + this.a.b);
-    if (this.a.b > 0)
-    {
-      if ((this.a.b == 2) || (this.a.a == 2)) {
-        bajt.a(azsk.a(this.a), azsk.b(this.a), 107);
-      }
-      this.a.a = 0;
-      this.a.b = 0;
-    }
+    return -8355712;
+  }
+  
+  public int f()
+  {
+    return 28;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azsl
  * JD-Core Version:    0.7.0.1
  */

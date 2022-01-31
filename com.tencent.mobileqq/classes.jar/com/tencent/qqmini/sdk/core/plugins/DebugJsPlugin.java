@@ -4,9 +4,9 @@ import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import behq;
-import bekp;
-import bekr;
+import bgho;
+import bgjw;
+import bgkd;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -16,18 +16,18 @@ public class DebugJsPlugin
   private String mAppId;
   private SharedPreferences mSharedPref;
   
-  public void onCreate(behq parambehq)
+  public void onCreate(bgho parambgho)
   {
-    super.onCreate(parambehq);
-    this.mAppId = this.mApkgInfo.d;
+    super.onCreate(parambgho);
+    this.mAppId = this.mApkgInfo.appId;
     this.mSharedPref = this.mContext.getSharedPreferences("miniapp", 4);
   }
   
-  public void setEnableDebug(bekr parambekr)
+  public void setEnableDebug(bgkd parambgkd)
   {
     try
     {
-      boolean bool = new JSONObject(parambekr.b).optBoolean("enableDebug");
+      boolean bool = new JSONObject(parambgkd.b).optBoolean("enableDebug");
       if (this.mAppId != null)
       {
         if (bool != Boolean.valueOf(this.mSharedPref.getBoolean(this.mAppId + "_debug", false)).booleanValue())
@@ -35,19 +35,19 @@ public class DebugJsPlugin
           new AlertDialog.Builder(this.mContext).setTitle("重启后生效").setPositiveButton(17039370, new DebugJsPlugin.1(this, bool)).create().show();
           return;
         }
-        parambekr.a();
+        parambgkd.a();
         return;
       }
     }
     catch (JSONException localJSONException)
     {
-      parambekr.b();
+      parambgkd.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.DebugJsPlugin
  * JD-Core Version:    0.7.0.1
  */

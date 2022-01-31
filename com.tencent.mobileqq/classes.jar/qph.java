@@ -1,35 +1,21 @@
-import android.content.Context;
-import android.content.ContextWrapper;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
 
-class qph
-  implements rwf
+public class qph
+  implements View.OnClickListener
 {
-  qph(qpd paramqpd, String paramString) {}
+  public qph(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    QLog.w("Q.pubaccount.video.feeds.VideoFeedsIPCServer", 1, "loadViolaPageFailed");
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      if ((SplashActivity.a == null) || (SplashActivity.a.get() == null)) {
-        break label53;
-      }
-    }
-    label53:
-    for (Object localObject = (ContextWrapper)SplashActivity.a.get();; localObject = BaseApplicationImpl.getContext())
-    {
-      onh.a((Context)localObject, this.jdField_a_of_type_JavaLangString, null);
-      return;
-    }
+    ReadInJoyDeliverVideoActivity.b(this.a, true);
+    ReadInJoyDeliverVideoActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qph
  * JD-Core Version:    0.7.0.1
  */

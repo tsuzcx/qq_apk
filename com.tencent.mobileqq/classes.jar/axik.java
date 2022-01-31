@@ -1,20 +1,13 @@
-import android.graphics.Rect;
-import java.io.File;
-
 class axik
+  implements axir
 {
-  int jdField_a_of_type_Int;
-  aiai jdField_a_of_type_Aiai;
-  Rect jdField_a_of_type_AndroidGraphicsRect;
-  File jdField_a_of_type_JavaIoFile;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  axik(axij paramaxij) {}
   
-  private axik(axhz paramaxhz) {}
+  public void a(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axik
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,33 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
 public class afxr
-  implements asuu
+  implements View.OnClickListener
 {
-  public afxr(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, asun paramasun, asuw paramasuw, List paramList) {}
+  public afxr(StructingMsgItemBuilder paramStructingMsgItemBuilder, AbsShareMsg paramAbsShareMsg) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Asun.a(new afxs(this));
-    this.jdField_a_of_type_Asun.show();
-  }
-  
-  public void a(asus paramasus)
-  {
-    if ((paramasus != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity().isFinishing())) {
-      switch (paramasus.a)
-      {
-      }
-    }
-    for (;;)
+    paramView = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData;
+    int i = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.uinType;
+    if (!TextUtils.isEmpty(paramView))
     {
-      if (this.jdField_a_of_type_Asun.isShowing()) {
-        this.jdField_a_of_type_Asun.dismiss();
+      paramView = bdds.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, paramView);
+      if (paramView != null)
+      {
+        paramView.a("webview");
+        paramView.a("uin_type", i + "");
+        paramView.c();
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
-      this.jdField_a_of_type_Asuw.b();
-      return;
-      asut.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
-      continue;
-      asut.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
-      continue;
-      asut.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
     }
-  }
-  
-  public void a(asus paramasus, int paramInt)
-  {
-    this.jdField_a_of_type_Asun.a(paramInt);
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_Asun.isShowing()) {
-      this.jdField_a_of_type_Asun.dismiss();
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
-    this.jdField_a_of_type_Asuw.b();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Asuw.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity(), this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afxr
  * JD-Core Version:    0.7.0.1
  */

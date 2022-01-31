@@ -4,9 +4,9 @@ import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import if;
-import ih;
-import nau;
+import go;
+import gq;
+import ndq;
 
 class SensorAPIJavaScript$10
   extends Thread
@@ -18,8 +18,8 @@ class SensorAPIJavaScript$10
     if (QLog.isDevelopLevel()) {
       QLog.d("SensorApi", 4, "start connectToWiFi");
     }
-    Object localObject = new ih(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Boolean);
-    if (new if(this.jdField_a_of_type_AndroidNetWifiWifiManager).a((ih)localObject))
+    Object localObject = new gq(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Boolean);
+    if (new go(this.jdField_a_of_type_AndroidNetWifiWifiManager).a((gq)localObject))
     {
       localObject = new Message();
       ((Message)localObject).what = 5;
@@ -28,12 +28,12 @@ class SensorAPIJavaScript$10
       return;
     }
     this.this$0.c = false;
-    this.this$0.callJs(this.d, new String[] { nau.a(Integer.toString(1)) });
+    this.this$0.callJs(this.d, new String[] { ndq.a(Integer.toString(1)) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.10
  * JD-Core Version:    0.7.0.1
  */

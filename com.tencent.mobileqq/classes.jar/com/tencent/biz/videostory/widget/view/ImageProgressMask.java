@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.view.View;
-import bbbb;
+import bczv;
 
 public class ImageProgressMask
   extends View
@@ -40,7 +40,7 @@ public class ImageProgressMask
   private void a()
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165420));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165455));
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
@@ -76,7 +76,7 @@ public class ImageProgressMask
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != 0) && (paramInt2 != 0) && ((paramInt1 != paramInt3) || (paramInt2 != paramInt4))) {
-      this.jdField_a_of_type_AndroidGraphicsPath = bbbb.a(paramInt1, paramInt2);
+      this.jdField_a_of_type_AndroidGraphicsPath = bczv.a(paramInt1, paramInt2);
     }
   }
   
@@ -91,7 +91,7 @@ public class ImageProgressMask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.ImageProgressMask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,19 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
 class tsj
-  implements tsn
+  implements MediaPlayer.OnCompletionListener
 {
-  tsj(tsi paramtsi) {}
+  tsj(tsf paramtsf) {}
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
+    tsf.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsj
  * JD-Core Version:    0.7.0.1
  */

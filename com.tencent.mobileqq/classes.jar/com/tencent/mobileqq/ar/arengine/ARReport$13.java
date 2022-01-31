@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import alip;
-import axrn;
+import amzf;
+import azmz;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
 public class ARReport$13
   implements Runnable
 {
-  public ARReport$13(alip paramalip, long paramLong, boolean paramBoolean) {}
+  public ARReport$13(amzf paramamzf, long paramLong, boolean paramBoolean) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ARReport$13
     }
     for (;;)
     {
-      axrn.a(BaseApplication.getContext()).a("", "ARLocalFaceRecogInit", true, 0L, 0L, localHashMap, "");
+      azmz.a(BaseApplication.getContext()).a("", "ARLocalFaceRecogInit", true, 0L, 0L, localHashMap, "");
       return;
       localHashMap.put("result", "1");
     }
@@ -27,7 +27,7 @@ public class ARReport$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARReport.13
  * JD-Core Version:    0.7.0.1
  */

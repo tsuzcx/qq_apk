@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.trooponline.data;
 
-import auko;
-import aumc;
+import awbv;
+import awdj;
 import java.util.List;
 
 public class TroopAllOnlineData
-  extends auko
+  extends awbv
 {
   public static final String TAG = "TroopAllOnlineData";
   public List<String> memberUinList;
   public long nextReqTime;
-  @aumc
+  @awdj
   public String troopUin;
   public byte[] uinData;
   
@@ -19,7 +19,7 @@ public class TroopAllOnlineData
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 29	auko:postRead	()V
+    //   1: invokespecial 29	awbv:postRead	()V
     //   4: aload_0
     //   5: getfield 31	com/tencent/mobileqq/trooponline/data/TroopAllOnlineData:uinData	[B
     //   8: ifnull +11 -> 19
@@ -182,7 +182,7 @@ public class TroopAllOnlineData
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 80	auko:prewrite	()V
+    //   1: invokespecial 80	awbv:prewrite	()V
     //   4: aload_0
     //   5: getfield 49	com/tencent/mobileqq/trooponline/data/TroopAllOnlineData:memberUinList	Ljava/util/List;
     //   8: ifnull +15 -> 23
@@ -342,7 +342,7 @@ public class TroopAllOnlineData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooponline.data.TroopAllOnlineData
  * JD-Core Version:    0.7.0.1
  */

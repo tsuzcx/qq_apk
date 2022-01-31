@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qcm;
+import qmi;
 
 public class SocializeFeedsInfo$JumpInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<JumpInfo> CREATOR = new qcm();
+  public static final Parcelable.Creator<JumpInfo> CREATOR = new qmi();
   private final long jdField_a_of_type_Long;
   private final String jdField_a_of_type_JavaLangString;
   private final String b;
@@ -67,7 +67,7 @@ public class SocializeFeedsInfo$JumpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.JumpInfo
  * JD-Core Version:    0.7.0.1
  */

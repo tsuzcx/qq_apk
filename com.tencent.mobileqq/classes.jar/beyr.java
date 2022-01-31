@@ -1,130 +1,106 @@
-import org.json.JSONObject;
+import android.content.Context;
+import android.os.Looper;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.open.agent.BindGroupAdapter.1;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class beyr
+  extends aked
 {
-  public static boolean b;
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public int c;
-  public long c;
-  public String c;
-  public boolean c;
-  public int d;
-  public long d;
-  public boolean d;
-  public long e;
-  public long f;
-  public long g;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private List<TroopInfo> jdField_a_of_type_JavaUtilList;
   
-  public beyr()
+  public beyr(Context paramContext, QQAppInterface paramQQAppInterface, ListView paramListView, int paramInt, boolean paramBoolean)
   {
-    this.jdField_d_of_type_Int = 0;
+    super(paramContext, paramQQAppInterface, paramListView, paramInt, paramBoolean);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public String a()
+  private void a(beys parambeys, TroopInfo paramTroopInfo)
   {
-    try
+    parambeys.jdField_a_of_type_JavaLangString = paramTroopInfo.troopuin;
+    parambeys.jdField_c_of_type_Int = 4;
+    parambeys.jdField_a_of_type_ComTencentMobileqqDataTroopInfo = paramTroopInfo;
+    parambeys.jdField_a_of_type_AndroidWidgetTextView.setText(paramTroopInfo.getTroopName());
+    if (paramTroopInfo.isThirdAppBind())
     {
-      Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("appid", this.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("engineType", this.jdField_a_of_type_Int);
-      ((JSONObject)localObject).put("reportType", this.jdField_b_of_type_Int);
-      ((JSONObject)localObject).put("verType", this.jdField_c_of_type_Int);
-      ((JSONObject)localObject).put("launchId", this.jdField_b_of_type_JavaLangString);
-      ((JSONObject)localObject).put("clickTime", this.jdField_a_of_type_Long);
-      ((JSONObject)localObject).put("loadTime", this.jdField_b_of_type_Long);
-      ((JSONObject)localObject).put("launchTime", this.jdField_c_of_type_Long);
-      ((JSONObject)localObject).put("launchResult", this.jdField_d_of_type_Int);
-      ((JSONObject)localObject).put("activeTime", this.jdField_d_of_type_Long);
-      ((JSONObject)localObject).put("showTime", this.e);
-      ((JSONObject)localObject).put("hideTime", this.f);
-      ((JSONObject)localObject).put("jsError", this.jdField_c_of_type_JavaLangString);
-      ((JSONObject)localObject).put("needReportLaunchResult", this.jdField_a_of_type_Boolean);
-      ((JSONObject)localObject).put("hasPkg", this.jdField_c_of_type_Boolean);
-      ((JSONObject)localObject).put("flutterMode", this.jdField_d_of_type_Boolean);
-      ((JSONObject)localObject).put("loadEndTime", this.g);
-      localObject = ((JSONObject)localObject).toString();
-      return localObject;
+      parambeys.b.setVisibility(0);
+      parambeys.b.setText(alpo.a(2131701496));
     }
-    catch (Throwable localThrowable) {}
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-    this.jdField_d_of_type_Int = 0;
-    this.e = 0L;
-    this.f = 0L;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.g = 0L;
-  }
-  
-  public void a(String paramString)
-  {
-    try
+    for (;;)
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString.getString("appid");
-      this.jdField_a_of_type_Int = paramString.getInt("engineType");
-      this.jdField_b_of_type_Int = paramString.getInt("reportType");
-      this.jdField_c_of_type_Int = paramString.getInt("verType");
-      this.jdField_b_of_type_JavaLangString = paramString.getString("launchId");
-      this.jdField_a_of_type_Long = paramString.getLong("clickTime");
-      this.jdField_b_of_type_Long = paramString.getLong("loadTime");
-      this.jdField_c_of_type_Long = paramString.getLong("launchTime");
-      this.jdField_d_of_type_Int = paramString.getInt("launchResult");
-      this.jdField_d_of_type_Long = paramString.getLong("activeTime");
-      this.e = paramString.getLong("showTime");
-      this.f = paramString.getLong("hideTime");
-      this.jdField_c_of_type_JavaLangString = paramString.getString("jsError");
-      this.jdField_a_of_type_Boolean = paramString.getBoolean("needReportLaunchResult");
-      this.jdField_c_of_type_Boolean = paramString.getBoolean("hasPkg");
-      this.jdField_d_of_type_Boolean = paramString.optBoolean("flutterMode");
-      this.g = paramString.optLong("loadEndTime");
+      parambeys.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(4, paramTroopInfo.troopuin));
+      return;
+      parambeys.b.setVisibility(8);
+    }
+  }
+  
+  public TroopInfo a(int paramInt)
+  {
+    return (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a(List<TroopInfo> paramList)
+  {
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      if (paramList != null)
+      {
+        this.jdField_a_of_type_JavaUtilList.clear();
+        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+        notifyDataSetChanged();
+      }
       return;
     }
-    catch (Throwable paramString) {}
+    ThreadManager.getUIHandler().post(new BindGroupAdapter.1(this, paramList));
   }
   
-  public String b()
+  public int getCount()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("SDK_");
-    if (jdField_b_of_type_Boolean)
-    {
-      str = "hasX5";
-      localStringBuilder = localStringBuilder.append(str);
-      if (!this.jdField_c_of_type_Boolean) {
-        break label53;
-      }
-    }
-    label53:
-    for (String str = "_hasPkg";; str = "")
-    {
-      return str;
-      str = "";
-      break;
-    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public String toString()
+  public long getItemId(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("launchId: ").append(this.jdField_b_of_type_JavaLangString).append(", appId: ").append(0);
-    return localStringBuilder.toString();
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView;
+    if (paramView == null)
+    {
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559813, null);
+      paramView = new beys();
+      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131368169));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379140));
+      paramView.b = ((TextView)localView.findViewById(2131379149));
+      localView.setTag(paramView);
+      paramViewGroup = paramView;
+    }
+    for (;;)
+    {
+      a(paramViewGroup, a(paramInt));
+      return localView;
+      paramViewGroup = (beys)paramView.getTag();
+      localView = paramView;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment.9.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.widget.AnimationView;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.graphics.Paint;
 
 public class agxo
-  implements ahbr
 {
-  public agxo(RedPacketKSongFragment paramRedPacketKSongFragment) {}
+  public final Paint a;
+  public final float[] a;
+  public final String[] a;
+  public final Paint b;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public agxo(float[] paramArrayOfFloat, String[] paramArrayOfString, Paint paramPaint1, Paint paramPaint2)
   {
-    if ((!this.a.c()) && (paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath)))
-    {
-      paramPathResult = AnimationView.AnimationInfo.loadFromFolder(paramPathResult.folderPath);
-      this.a.a.post(new RedPacketKSongFragment.9.1(this, paramPathResult));
-    }
+    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_AndroidGraphicsPaint = paramPaint1;
+    this.b = paramPaint2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agxo
  * JD-Core Version:    0.7.0.1
  */

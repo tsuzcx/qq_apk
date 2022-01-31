@@ -62,11 +62,23 @@ public class StickerFilters
     setRenderOrderList(this.mSticker);
     if (this.mSticker.isUseStickerPlugin())
     {
-      this.stickersMap.setRenderOrder(this.mRenderOrderList);
-      return this.stickersMap.chainStickerFilters(this.mSticker, paramFrame, this.mFaceAttr, this.mSegAttr, this.mAIAttr);
+      this.mSticker.updateTriggerManager();
+      if (this.mSticker != null) {
+        paramFrame = this.mSticker.updateInputFrame(paramFrame);
+      }
+      for (;;)
+      {
+        this.stickersMap.setRenderOrder(this.mRenderOrderList);
+        return this.stickersMap.chainStickerFilters(this.mSticker, paramFrame, this.mFaceAttr, this.mSegAttr, this.mAIAttr);
+      }
     }
-    if (isBeforeFaceTransform()) {
-      return this.mSticker.processTransformRelatedFilters(paramFrame, this.mFaceAttr, this.mSegAttr, this.mAIAttr);
+    if (isBeforeFaceTransform())
+    {
+      Frame localFrame = paramFrame;
+      if (this.mSticker != null) {
+        localFrame = this.mSticker.updateInputFrame(paramFrame);
+      }
+      return this.mSticker.processTransformRelatedFilters(localFrame, this.mFaceAttr, this.mSegAttr, this.mAIAttr);
     }
     return this.mSticker.processStickerFilters(paramFrame, this.mFaceAttr, this.mSegAttr, this.mAIAttr);
   }
@@ -83,7 +95,11 @@ public class StickerFilters
   
   public void setFaceAttr(PTFaceAttr paramPTFaceAttr)
   {
-    this.mFaceAttr = paramPTFaceAttr;
+    PTFaceAttr localPTFaceAttr = paramPTFaceAttr;
+    if (this.mSticker != null) {
+      localPTFaceAttr = this.mSticker.updatePTFaceAttr(paramPTFaceAttr);
+    }
+    this.mFaceAttr = localPTFaceAttr;
   }
   
   public void setRenderOrderList(AESticker paramAESticker)
@@ -95,7 +111,11 @@ public class StickerFilters
   
   public void setSegAttr(PTSegAttr paramPTSegAttr)
   {
-    this.mSegAttr = paramPTSegAttr;
+    PTSegAttr localPTSegAttr = paramPTSegAttr;
+    if (this.mSticker != null) {
+      localPTSegAttr = this.mSticker.updatePTSegAttr(paramPTSegAttr);
+    }
+    this.mSegAttr = localPTSegAttr;
   }
   
   public void setSticker(AESticker paramAESticker)

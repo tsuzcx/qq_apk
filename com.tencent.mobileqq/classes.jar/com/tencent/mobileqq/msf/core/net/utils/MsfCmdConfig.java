@@ -53,45 +53,51 @@ public class MsfCmdConfig
     int i = 0;
     String str1 = paramJSONObject.optString("cmd", "");
     JSONArray localJSONArray = paramJSONObject.optJSONArray("params");
-    if (paramJSONObject.optString("multiprocess", "").equals("true")) {}
-    for (boolean bool = true;; bool = false)
+    String str2 = paramJSONObject.optString("multiprocess", "");
+    paramJSONObject = paramJSONObject.optString("deleteonetimemode", "");
+    if (str2.equals("true")) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      paramJSONObject = new ArrayList();
-      for (;;)
+      if (paramJSONObject.equals("true")) {}
+      for (boolean bool2 = true;; bool2 = false)
       {
-        if (i < localJSONArray.length()) {
-          try
-          {
-            Object localObject = localJSONArray.getJSONObject(i);
-            String str2 = ((JSONObject)localObject).optString("key", "");
-            localObject = ((JSONObject)localObject).optString("value", "");
-            if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
-              paramJSONObject.add(new Pair(str2, localObject));
-            }
-            i += 1;
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
+        paramJSONObject = new ArrayList();
+        for (;;)
+        {
+          if (i < localJSONArray.length()) {
+            try
             {
-              QLog.d("MsfCmdConfig", 1, "getCmdFactory JSONException=", localJSONException);
+              Object localObject = localJSONArray.getJSONObject(i);
+              str2 = ((JSONObject)localObject).optString("key", "");
+              localObject = ((JSONObject)localObject).optString("value", "");
+              if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty((CharSequence)localObject))) {
+                paramJSONObject.add(new Pair(str2, localObject));
+              }
+              i += 1;
+            }
+            catch (JSONException localJSONException)
+            {
+              for (;;)
+              {
+                QLog.d("MsfCmdConfig", 1, "getCmdFactory JSONException=", localJSONException);
+              }
             }
           }
         }
+        if ("rm".equals(str1)) {
+          return new MsfCmdConfig.b(str1, paramJSONObject, bool1, bool2);
+        }
+        if ("rm_kv".equals(str1)) {
+          return new MsfCmdConfig.c(str1, paramJSONObject, bool1, bool2);
+        }
+        if ("not_exit".equals(str1)) {
+          return new MsfCmdConfig.d(str1, paramJSONObject, bool1);
+        }
+        if ("test_flag".equals(str1)) {
+          return new MsfCmdConfig.e(str1, paramJSONObject, bool1);
+        }
+        return null;
       }
-      if ("rm".equals(str1)) {
-        return new MsfCmdConfig.b(str1, paramJSONObject, bool);
-      }
-      if ("rm_kv".equals(str1)) {
-        return new MsfCmdConfig.c(str1, paramJSONObject, bool);
-      }
-      if ("not_exit".equals(str1)) {
-        return new MsfCmdConfig.d(str1, paramJSONObject, bool);
-      }
-      if ("test_flag".equals(str1)) {
-        return new MsfCmdConfig.e(str1, paramJSONObject, bool);
-      }
-      return null;
     }
   }
 }

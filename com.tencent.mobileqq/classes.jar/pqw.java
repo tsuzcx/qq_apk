@@ -1,27 +1,18 @@
-import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class pqw
-  implements PopupWindow.OnDismissListener
+public class pqw
+  implements ViewBase.IBuilder
 {
-  pqw(pqq parampqq, bfst parambfst) {}
-  
-  public void onDismiss()
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_Bfst.a(1.0F);
-    if (this.jdField_a_of_type_Pqq.a.b)
-    {
-      qtr localqtr = this.jdField_a_of_type_Pqq.a.a();
-      if (localqtr != null)
-      {
-        localqtr.c();
-        this.jdField_a_of_type_Pqq.a.b = false;
-      }
-    }
+    return new pqv(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pqw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.agent.AuthorityAccountView;
-import com.tencent.open.agent.AuthorityAccountView.DelAccountRunnable;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class bcyk
-  implements DialogInterface.OnClickListener
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface bcyk
 {
-  public bcyk(AuthorityAccountView paramAuthorityAccountView, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 1) {
-      ThreadManager.executeOnSubThread(new AuthorityAccountView.DelAccountRunnable(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView, this.jdField_a_of_type_JavaLangString));
-    }
-    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a == null)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a = null;
-  }
+  String a() default "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcyk
  * JD-Core Version:    0.7.0.1
  */

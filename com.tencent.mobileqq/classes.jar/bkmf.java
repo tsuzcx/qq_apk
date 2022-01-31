@@ -1,20 +1,26 @@
-import java.util.List;
-
-public abstract interface bkmf
+class bkmf
+  implements bklu
 {
-  public abstract void a(int paramInt, bkmo parambkmo);
+  bkmf(bkme parambkme) {}
   
-  public abstract void a(List<bkmo> paramList);
+  public void a(float paramFloat)
+  {
+    this.a.a.a(paramFloat);
+  }
   
-  public abstract void c();
+  public void a(int paramInt)
+  {
+    this.a.a.a(paramInt);
+  }
   
-  public abstract void d();
-  
-  public abstract void e();
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    this.a.a.a(paramInt, paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkmf
  * JD-Core Version:    0.7.0.1
  */

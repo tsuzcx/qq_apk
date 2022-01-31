@@ -1,79 +1,80 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_INTERFACE.INTERFACE.StCurrChannelInfo;
-import NS_MINI_INTERFACE.INTERFACE.StUseUserAppReq;
-import NS_MINI_INTERFACE.INTERFACE.StUseUserAppRsp;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.os.Message;
+import android.widget.Button;
+import com.tencent.open.agent.OpenAuthorityFragment;
+import com.tencent.open.model.GetVirtualListResult;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
+import cooperation.qqfav.util.HandlerPlus;
 
 public class bfbb
-  extends bfau
+  implements bfnk
 {
-  private INTERFACE.StUseUserAppReq a = new INTERFACE.StUseUserAppReq();
+  public bfbb(OpenAuthorityFragment paramOpenAuthorityFragment) {}
   
-  public bfbb(COMM.StCommonExt paramStCommonExt, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  public void a()
   {
-    this.a.appId.set(paramString1);
-    this.a.verType.set(paramInt1);
-    this.a.source.set(paramInt2);
-    paramString1 = new INTERFACE.StCurrChannelInfo();
-    paramString1.refer.set(paramString2);
-    paramString1.via.set(paramString3);
-    this.a.channelInfo.set(paramString1);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-  }
-  
-  protected String a()
-  {
-    return "mini_app_userapp";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StUseUserAppRsp localStUseUserAppRsp = new INTERFACE.StUseUserAppRsp();
-    try
+    if (!OpenAuthorityFragment.b(this.a))
     {
-      localStUseUserAppRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStUseUserAppRsp != null)
+      QLog.e("OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess for activity is finished");
+      return;
+    }
+    Object localObject1 = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
+    QLog.d("OpenAuthorityFragment", 1, new Object[] { "updatePreAuthFromServer use cached appid=", OpenAuthorityFragment.a(this.a), ", appInfo=", ((arua)localObject1).toString() });
+    Object localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+    ((Message)localObject2).what = 3;
+    ((Message)localObject2).obj = localObject1;
+    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
+    localObject1 = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
+    boolean bool;
+    if (localObject1 != null)
+    {
+      QLog.d("OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess null != virtualResult");
+      localObject2 = this.a.jdField_a_of_type_Bfnj;
+      if (((GetVirtualListResult)localObject1).a == 0)
       {
-        if (localStUseUserAppRsp.extInfo != null)
-        {
-          paramArrayOfByte = new JSONObject();
-          paramArrayOfByte.put("ext", localStUseUserAppRsp.extInfo.get());
-          return paramArrayOfByte;
-        }
-        betc.a("UseUserAppRequest", "onResponse fail.extInfo = null");
-        return null;
+        bool = true;
+        ((bfnj)localObject2).a(bool, (GetVirtualListResult)localObject1);
       }
     }
-    catch (Exception paramArrayOfByte)
+    for (;;)
     {
-      betc.a("UseUserAppRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      if (!this.a.b) {
+        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      }
+      localObject1 = this.a.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a().a(OpenAuthorityFragment.a(this.a));
+      localObject2 = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+      ((Message)localObject2).what = 0;
+      ((Message)localObject2).obj = localObject1;
+      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject2);
+      return;
+      bool = false;
+      break;
+      QLog.d("OpenAuthorityFragment", 1, "updatePreAuthFromServer onSuccess null == virtualResult");
+      this.a.jdField_a_of_type_Bfnj.a(false, null);
     }
-    betc.a("UseUserAppRequest", "onResponse fail.rsp = null");
-    return null;
   }
   
-  public byte[] a()
+  public void a(int paramInt, String paramString)
   {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "UseUserApp";
+    QLog.d("OpenAuthorityFragment", 1, new Object[] { "updatePreAuthFromServer | onFail: | uin : *" + bfdz.a(this.a.jdField_a_of_type_Bfmm.a), ", errorCode=", Integer.valueOf(paramInt), ", errorMsg=", paramString });
+    if (!OpenAuthorityFragment.b(this.a))
+    {
+      QLog.e("OpenAuthorityFragment", 1, "updatePreAuthFromServer onFail for activity is finished");
+      return;
+    }
+    this.a.jdField_a_of_type_Bfnj.a(false, null);
+    this.a.jdField_a_of_type_ComTencentProtofileSdkauthorizeSdkAuthorize$AuthorizeResponse = null;
+    paramString = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
+    paramString.what = 6;
+    paramString.arg1 = 3001;
+    paramString.obj = this.a.getResources().getString(2131695054);
+    this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfbb
  * JD-Core Version:    0.7.0.1
  */

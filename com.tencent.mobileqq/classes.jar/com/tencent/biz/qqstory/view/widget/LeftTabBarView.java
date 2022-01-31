@@ -13,8 +13,8 @@ import com.tencent.mobileqq.widget.TabBarView;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import wcz;
-import wda;
+import xrr;
+import xrs;
 
 public class LeftTabBarView
   extends TabBarView
@@ -45,9 +45,9 @@ public class LeftTabBarView
     localRedDotTextView.setContentDescription(paramString);
     localRedDotTextView.setGravity(17);
     if (!TextUtils.isEmpty(paramString)) {
-      localLinearLayout1.setOnClickListener(new wcz(this, paramInt));
+      localLinearLayout1.setOnClickListener(new xrr(this, paramInt));
     }
-    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new wda(this));
+    ViewCompat.setAccessibilityDelegate(localRedDotTextView, new xrs(this));
     this.jdField_a_of_type_JavaUtilList.add(localRedDotTextView);
     this.b.add(localLinearLayout1);
     this.c.add(paramString);
@@ -126,7 +126,7 @@ public class LeftTabBarView
           }
         }
         label660:
-        localRedDotTextView.setId(2131377107);
+        localRedDotTextView.setId(2131377628);
         if ((localHashMap != null) && (localHashMap.get("paddingLeft") != null)) {
           localLinearLayout1.addView(localRedDotTextView, paramString);
         }
@@ -143,7 +143,7 @@ public class LeftTabBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.LeftTabBarView
  * JD-Core Version:    0.7.0.1
  */

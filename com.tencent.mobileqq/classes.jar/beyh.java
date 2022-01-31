@@ -1,87 +1,90 @@
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.open.agent.AuthorityControlFragment;
+import com.tencent.open.model.AppInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+
 public class beyh
+  extends bfml
 {
-  volatile int jdField_a_of_type_Int = 0;
-  private beyi jdField_a_of_type_Beyi = new beyi();
-  volatile int b = 0;
+  public beyh(AuthorityControlFragment paramAuthorityControlFragment) {}
   
-  public beyh(Class<? extends beyi> paramClass, int paramInt)
+  protected void a(boolean paramBoolean, List<AppInfo> paramList)
   {
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorityControlActivity", 2, "onDelApp: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
+    }
+    QQAppInterface localQQAppInterface;
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0))
     {
-      int i;
-      synchronized (this.jdField_a_of_type_Beyi)
-      {
-        this.b = paramInt;
-        this.jdField_a_of_type_Beyi.a = true;
-        i = 0;
-        if (i >= paramInt) {}
+      AuthorityControlFragment.a(this.a).b(paramList);
+      AuthorityControlFragment.a(this.a).a();
+      if (AuthorityControlFragment.a(this.a).getCount() == 0) {
+        AuthorityControlFragment.a(this.a);
       }
-      try
-      {
-        beyi localbeyi2 = (beyi)paramClass.newInstance();
-        localbeyi2.a = true;
-        localbeyi2.a(this.jdField_a_of_type_Beyi.a(), false);
-        this.jdField_a_of_type_Beyi.a(localbeyi2, false);
-        this.jdField_a_of_type_Int += 1;
-        label102:
-        i += 1;
-        continue;
-        return;
-        paramClass = finally;
-        throw paramClass;
+      int i = paramList.size();
+      paramList = String.format(alpo.a(2131701169), new Object[] { Integer.valueOf(i) });
+      QQToast.a(AuthorityControlFragment.a(this.a), 2, paramList, 0).a();
+      localQQAppInterface = AuthorityControlFragment.a(this.a);
+      if (!paramBoolean) {
+        break label207;
       }
-      catch (Throwable localThrowable)
-      {
-        break label102;
-      }
+    }
+    label207:
+    for (paramList = "0";; paramList = "1")
+    {
+      azmj.b(localQQAppInterface, "dc00898", "", "", "0X8009E1D", "0X8009E1D", 0, 0, paramList, "", "", "");
+      return;
+      QQToast.a(AuthorityControlFragment.a(this.a), 1, alpo.a(2131701173), 0).a();
+      break;
     }
   }
   
-  public beyi a(Class<? extends beyi> paramClass)
+  protected void a(boolean paramBoolean, List<AppInfo> paramList, String paramString)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    beyi localbeyi;
-    if (this.jdField_a_of_type_Int > 0)
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorityControlActivity", 2, "onGetAuthorizeAppList: invoked.  isSuccess: " + paramBoolean + " infos: " + paramList);
+    }
+    if (paramBoolean)
     {
-      localbeyi = this.jdField_a_of_type_Beyi;
-      localObject1 = localObject2;
-      try
-      {
-        if (this.jdField_a_of_type_Int <= 0) {
-          break label101;
-        }
-        localObject1 = this.jdField_a_of_type_Beyi.a();
-        if (localObject1 == null) {
-          throw new RuntimeException("WTF");
-        }
+      paramString = paramList;
+      if (paramList == null) {
+        paramString = new ArrayList();
       }
-      finally {}
-      if (!((beyi)localObject1).a) {
-        throw new RuntimeException("WTF");
-      }
-      this.jdField_a_of_type_Beyi.a(beyi.a((beyi)localObject1), false);
-      ((beyi)localObject1).a = false;
-      this.jdField_a_of_type_Int -= 1;
-    }
-    label101:
-    if (localObject1 == null) {
-      try
-      {
-        paramClass = (beyi)paramClass.newInstance();
-        return paramClass;
-      }
-      catch (Throwable paramClass)
-      {
-        return localObject1;
+      AuthorityControlFragment.a(this.a).a(paramString);
+      AuthorityControlFragment.a(this.a, new ArrayList(paramString));
+      if (AuthorityControlFragment.a(this.a).getCount() == 0) {
+        AuthorityControlFragment.a(this.a);
       }
     }
-    return localObject1;
+    for (;;)
+    {
+      AuthorityControlFragment.a(this.a).notifyDataSetChanged();
+      if ((AuthorityControlFragment.a(this.a).isShowing()) && (!this.a.isRemoving())) {}
+      try
+      {
+        AuthorityControlFragment.a(this.a).dismiss();
+        label148:
+        AuthorityControlFragment.a(this.a, paramBoolean);
+        return;
+        AuthorityControlFragment.a(this.a).setVisibility(0);
+        this.a.setRightButton(2131690335, this.a);
+        continue;
+        AuthorityControlFragment.a(this.a);
+      }
+      catch (Throwable paramList)
+      {
+        break label148;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beyh
  * JD-Core Version:    0.7.0.1
  */

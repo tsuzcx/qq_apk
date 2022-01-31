@@ -1,48 +1,27 @@
-import android.os.AsyncTask;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.gdtad.views.videoimax.TransitionContext;
 
-class aaqy
-  extends AsyncTask<MessageRecord, Object, Object>
+public class aaqy
+  extends AnimatorListenerAdapter
 {
-  aaqy(aaqx paramaaqx) {}
+  public aaqy(TransitionContext paramTransitionContext) {}
   
-  protected Object a(MessageRecord... paramVarArgs)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (this.a.a.d) {
-      if (this.a.a.jdField_a_of_type_Aumb != null) {
-        this.a.a.jdField_a_of_type_Aumb.a(paramVarArgs[0], true);
-      }
-    }
-    for (;;)
-    {
-      if ((paramVarArgs[0] instanceof MessageForApollo)) {
-        ajey.a(this.a.a.app, "chat_history_start_del_msg");
-      }
-      return null;
-      this.a.a.app.a().a(paramVarArgs[0], true);
-    }
+    super.onAnimationCancel(paramAnimator);
+    this.a.a();
   }
   
-  protected void onPostExecute(Object paramObject)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.onPostExecute(paramObject);
-    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    if ((this.a.a.jdField_a_of_type_Bcqf != null) && (this.a.a.jdField_a_of_type_Bcqf.isShowing())) {
-      this.a.a.jdField_a_of_type_Bcqf.dismiss();
-    }
-    if (this.a.a.d) {
-      this.a.a.a(11, false);
-    }
+    super.onAnimationEnd(paramAnimator);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaqy
  * JD-Core Version:    0.7.0.1
  */

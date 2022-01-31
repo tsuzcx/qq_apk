@@ -1,23 +1,21 @@
-import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
 
-class bcfm
-  implements wxt
+public class bcfm
+  implements View.OnTouchListener
 {
-  bcfm(bcfh parambcfh) {}
+  public bcfm(BulkSendMessageFragment paramBulkSendMessageFragment) {}
   
-  public void a(Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = paramBundle.getInt("fontSize", 1);
-    if (i != this.a.b)
-    {
-      this.a.b = i;
-      this.a.b(this.a.b);
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcfm
  * JD-Core Version:    0.7.0.1
  */

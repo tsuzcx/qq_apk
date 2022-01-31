@@ -1,32 +1,14 @@
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.net.Uri;
 
-public class asmp
-  implements RadioGroup.OnCheckedChangeListener
+public abstract interface asmp
 {
-  public asmp(MsgBackupDateFragment paramMsgBackupDateFragment) {}
+  public abstract void a(Uri paramUri);
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "checkedId = " + paramInt);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 2131364706: 
-      MsgBackupDateFragment.a(this.a, 1);
-      return;
-    }
-    MsgBackupDateFragment.a(this.a, 2);
-  }
+  public abstract void a(String paramString1, String paramString2, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asmp
  * JD-Core Version:    0.7.0.1
  */

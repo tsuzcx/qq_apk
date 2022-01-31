@@ -1,28 +1,23 @@
-import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
 
-public abstract interface aozz
+public final class aozz
+  implements Parcelable.Creator<IntimateInfo.CommonTroopInfo>
 {
-  public abstract void a(long paramLong);
+  public IntimateInfo.CommonTroopInfo a(Parcel paramParcel)
+  {
+    return new IntimateInfo.CommonTroopInfo(paramParcel);
+  }
   
-  public abstract void a(String paramString);
-  
-  public abstract void a(boolean paramBoolean, long paramLong, int paramInt, String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2);
-  
-  public abstract byte[] a(Bundle paramBundle);
-  
-  public abstract void f();
-  
-  public abstract void g();
-  
-  public abstract void h();
-  
-  public abstract void i();
+  public IntimateInfo.CommonTroopInfo[] a(int paramInt)
+  {
+    return new IntimateInfo.CommonTroopInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozz
  * JD-Core Version:    0.7.0.1
  */

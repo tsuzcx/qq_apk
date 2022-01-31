@@ -1,109 +1,64 @@
-import android.content.Context;
-import android.content.Intent;
+import android.text.Editable;
 import android.text.TextUtils;
-import com.tencent.ark.open.ArkAppCacheMgr;
-import com.tencent.ark.open.ArkAppMgr;
-import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
-import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.tribe.view.TEditText;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
 
-class bbeo
-  implements ArkAppMgr.IGetAppPathByNameCallback
+public class bbeo
+  implements bbal
 {
-  bbeo(bbeg parambbeg, bcqf parambcqf, String paramString1, String paramString2, String paramString3) {}
+  public bbeo(TroopBarPublishActivity paramTroopBarPublishActivity) {}
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Bcqf != null) && (this.jdField_a_of_type_Bcqf.isShowing())) {
-      this.jdField_a_of_type_Bcqf.dismiss();
-    }
-    if ((paramAppPathInfo != null) && (paramInt == 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("JumpAction", 2, new Object[] { "Ark mqqapi://ligthapp/open goToLightAppOpen get path succeed, appPath: ", paramAppPathInfo.path });
-      }
-      paramObject = this.jdField_a_of_type_JavaLangString;
-      if (!TextUtils.isEmpty(paramObject)) {
-        break label426;
-      }
-      paramString = ArkAppCacheMgr.getApplicationLauncher(paramAppPathInfo.path);
-      if ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
-      {
-        paramAppPathInfo = paramObject;
-        paramInt = 0;
-      }
-    }
+    int k = 1;
+    if (this.a.b.getText().length() <= 0) {}
     for (;;)
     {
-      paramObject = this.b;
-      if (TextUtils.isEmpty(paramObject)) {
-        paramObject = "{}";
-      }
-      for (;;)
+      return;
+      if (paramInt1 < 0)
       {
-        if (paramInt != 0)
+        if (paramInt2 > this.a.G.length() + 1) {}
+        for (;;)
         {
-          altc.a(null, this.c, "FullScreenOrH5Show", 0, 0, 0L, 0L, 0L, "", "");
-          if (this.jdField_a_of_type_Bbeg.a != null) {
-            ArkFullScreenAppActivity.a(this.jdField_a_of_type_Bbeg.a, this.c, paramAppPathInfo, "0.0.0.1", paramObject, alsz.a(), null, 1);
-          }
-        }
-        do
-        {
-          do
-          {
-            return;
-            paramAppPathInfo = paramString;
-            paramInt = 1;
-            paramString = null;
-            break;
-            paramObject = new Intent();
-            paramObject.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserDelegationActivity");
-            paramObject.putExtra("param_force_internal_browser", true);
-            paramObject.putExtra("url", paramString);
-            paramObject.putExtra("injectrecommend", false);
-            paramObject.putExtra("browserType", 3);
-            if (!TextUtils.isEmpty(this.c))
-            {
-              paramObject.putExtra("h5_ark_app_name", this.c);
-              paramString = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.c, paramAppPathInfo, null, false);
-              if (!TextUtils.isEmpty(paramString))
-              {
-                paramObject.putExtra("h5_ark_app_path", paramString);
-                paramString = ArkAppCacheMgr.getApplicationDesc(this.c);
-                if (!TextUtils.isEmpty(paramString)) {
-                  paramObject.putExtra("h5_ark_app_des", paramString);
-                }
-              }
-            }
-            paramString = amqq.b(186);
-            if (paramString != null)
-            {
-              paramString = paramString.a();
-              if (!TextUtils.isEmpty(paramString)) {
-                paramObject.putExtra("h5_ark_check_config", paramString);
-              }
-            }
-            paramObject.addFlags(603979776);
-          } while (this.jdField_a_of_type_Bbeg.a == null);
-          this.jdField_a_of_type_Bbeg.a.startActivity(paramObject);
+          this.a.b.setSelection(paramInt2);
           return;
-          bcql.a(this.jdField_a_of_type_Bbeg.a, 2131690190, 0).a();
-        } while (!QLog.isColorLevel());
-        QLog.d("JumpAction", 2, "Ark mqqapi://ligthapp/open goToLightAppOpen appPath is null ");
-        return;
+          paramInt2 = this.a.G.length() + 1;
+        }
       }
-      label426:
-      paramAppPathInfo = paramObject;
-      paramString = null;
-      paramInt = 1;
+      if (paramInt2 < 0)
+      {
+        if (paramInt1 > this.a.G.length() + 1) {}
+        for (;;)
+        {
+          this.a.b.setSelection(paramInt1);
+          return;
+          paramInt1 = this.a.G.length() + 1;
+        }
+      }
+      if (!TextUtils.isEmpty(this.a.G))
+      {
+        int i = 0;
+        int j = paramInt1;
+        if (paramInt1 < this.a.G.length() + 1)
+        {
+          j = this.a.G.length() + 1;
+          i = 1;
+        }
+        if (paramInt2 < this.a.G.length() + 1) {
+          paramInt2 = this.a.G.length() + 1;
+        }
+        for (paramInt1 = k; paramInt1 != 0; paramInt1 = i)
+        {
+          this.a.b.setSelection(j, paramInt2);
+          return;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbeo
  * JD-Core Version:    0.7.0.1
  */

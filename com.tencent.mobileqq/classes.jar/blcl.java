@@ -1,111 +1,64 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Build.VERSION;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.FrameLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.ttpic.videoshelf.model.template.VideoShelfTemplate;
+import dov.com.qq.im.ae.play.AETemplateInfoFragment;
 
 public class blcl
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  public static boolean a;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
+  public blcl(AETemplateInfoFragment paramAETemplateInfoFragment) {}
   
-  public static byte a(String paramString)
+  public void onGlobalLayout()
   {
-    byte b = 0;
-    if (paramString == null) {
-      b = -1;
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      AETemplateInfoFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      if (AETemplateInfoFragment.a(this.a) != null) {
+        break label50;
+      }
     }
+    label50:
+    float f1;
+    float f2;
     do
     {
-      for (;;)
+      do
       {
-        return b;
-        paramString = a() + "/lib" + paramString + ".so";
-        if (QLog.isColorLevel()) {
-          QLog.i("TK_Config_NativeSoLoader", 2, "start TKNativeSo: " + paramString);
-        }
-        File localFile = new File(paramString);
-        if ((!jdField_a_of_type_Boolean) && (localFile.exists())) {
-          try
-          {
-            System.load(paramString);
-            if (QLog.isColorLevel())
-            {
-              QLog.i("TK_Config_NativeSoLoader", 2, "load " + paramString + " success!");
-              return 0;
-            }
-          }
-          catch (UnsatisfiedLinkError paramString)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.i("TK_Config_NativeSoLoader", 2, "load from tk dir failed: " + paramString.getMessage());
-            }
-            return -3;
-          }
-        }
+        return;
+        AETemplateInfoFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+        break;
+      } while ((AETemplateInfoFragment.a(this.a).getVideoHeight() == 0) || (AETemplateInfoFragment.a(this.a).getVideoWidth() == 0));
+      f1 = AETemplateInfoFragment.a(this.a).getVideoWidth() / AETemplateInfoFragment.a(this.a).getVideoHeight();
+      i = AETemplateInfoFragment.a(this.a).getWidth();
+      int j = AETemplateInfoFragment.a(this.a).getHeight();
+      f2 = i / j;
+      if (QLog.isDebugVersion()) {
+        QLog.d("AETemplateInfoFragment", 2, new Object[] { "adjust player size---origin w:h=", Integer.valueOf(i), ":", Integer.valueOf(j), " availableRatio(w/h)=", Float.valueOf(f2), " video aspectRation(w/h)=" + f1 });
       }
-      b = -2;
-    } while (!QLog.isColorLevel());
-    QLog.i("TK_Config_NativeSoLoader", 2, "no tk so in ar dir");
-    return -2;
-  }
-  
-  public static String a()
-  {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TK_Config_NativeSoLoader", 2, "getFilesDir is null");
-      }
-      return "";
-    }
-    return localFile.getParent() + "/tk";
-  }
-  
-  public static boolean a(String paramString)
-  {
-    boolean bool2 = false;
-    String str1 = a() + "/lib" + paramString + ".so";
-    ??? = new File(str1);
-    if (QLog.isColorLevel()) {
-      QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: exist= " + ((File)???).exists() + " isUncompressZip=" + jdField_a_of_type_Boolean);
-    }
-    if ((!jdField_a_of_type_Boolean) && (((File)???).exists())) {
-      for (;;)
+      if (f1 < f2)
       {
-        synchronized (jdField_a_of_type_ArrayOfByte)
-        {
-          String str2 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("tk_native_" + paramString, null);
-          if (str2 != null) {
-            if (str2.equalsIgnoreCase(aurn.a(str1)))
-            {
-              break label221;
-              return bool1;
-            }
-            else
-            {
-              bool1 = bool2;
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("TK_Config_NativeSoLoader", 2, "isSoFileExist: soName= " + paramString + " check md5 false!");
-              bool1 = bool2;
-            }
-          }
-        }
-        label221:
-        boolean bool1 = true;
+        double d = AETemplateInfoFragment.a(this.a).getHeight();
+        i = (int)(f1 * d);
+        localObject = AETemplateInfoFragment.a(this.a).getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).width = i;
+        AETemplateInfoFragment.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
+        return;
       }
-    }
-    return false;
+    } while (f1 <= f2);
+    int i = (int)(AETemplateInfoFragment.a(this.a).getWidth() / f1);
+    Object localObject = (ViewGroup.MarginLayoutParams)AETemplateInfoFragment.a(this.a).getLayoutParams();
+    ((ViewGroup.MarginLayoutParams)localObject).height = i;
+    AETemplateInfoFragment.a(this.a).setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blcl
  * JD-Core Version:    0.7.0.1
  */

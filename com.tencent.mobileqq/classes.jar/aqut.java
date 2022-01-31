@@ -1,77 +1,68 @@
-public class aqut
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+
+class aqut
+  extends aquk
 {
-  aquu a;
-  
-  public aqut(int paramInt)
+  public aqut(aqug paramaqug)
   {
-    this.a = new aquu(paramInt);
+    super(paramaqug);
   }
   
-  public static String a(int paramInt)
+  protected String a()
   {
-    switch (paramInt)
+    return "StateExcepInvalidWhenChangeToOff";
+  }
+  
+  protected void a(int paramInt1, int paramInt2)
+  {
+    b(paramInt1, paramInt2);
+    aqug.b(this.jdField_a_of_type_Aqug, 11, 11);
+    aqug.c(this.jdField_a_of_type_Aqug, 11, 14);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateUploadingWhenChangeToOff)");
+    this.jdField_a_of_type_Aquk = new aqvk(this.jdField_a_of_type_Aqug);
+  }
+  
+  protected boolean a()
+  {
+    if (this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-    default: 
-      return "";
-    case 1: 
-      return "graytip";
-    case 2: 
-      return "nor_text";
-    case 3: 
-      return "url";
-    case 4: 
-      return "qq";
-    case 5: 
-      return "img";
-    case 6: 
-      return "dialog";
-    case 7: 
-      return "title";
-    case 8: 
-      return "alter";
-    case 9: 
-      return "btn";
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
     }
-    return "item";
+    aqug.b(this.jdField_a_of_type_Aqug, 9, 12);
+    aqug.c(this.jdField_a_of_type_Aqug, 9, 12);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateExcepInvalidWhenRecv)");
+    this.jdField_a_of_type_Aquk = new aquv(this.jdField_a_of_type_Aqug);
+    return true;
   }
   
-  public static String b(int paramInt)
+  protected boolean a(int paramInt, String paramString, long paramLong)
   {
-    switch (paramInt)
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    if (localFileManagerEntity == null)
     {
-    default: 
-      return "";
-    case 1: 
-      return "align";
-    case 2: 
-      return "text";
-    case 3: 
-      return "size";
-    case 4: 
-      return "jump";
-    case 5: 
-      return "color";
-    case 6: 
-      return "uin";
-    case 7: 
-      return "name";
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return false;
     }
-    return "src";
-  }
-  
-  public aquu a()
-  {
-    return this.a;
-  }
-  
-  public String toString()
-  {
-    return aquu.a(this.a, 0);
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((arni.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
+    }
+    localFileManagerEntity.setCloudType(1);
+    aqug.b(this.jdField_a_of_type_Aqug, 11, 13);
+    aqug.c(this.jdField_a_of_type_Aqug, 11, 13);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aqug.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aquk.a() + "->StateUploadoneWhenChangeToOff)");
+    this.jdField_a_of_type_Aqug.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Aquk = new aqvn(this.jdField_a_of_type_Aqug);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqut
  * JD-Core Version:    0.7.0.1
  */

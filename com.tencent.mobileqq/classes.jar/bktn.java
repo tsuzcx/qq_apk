@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
 public class bktn
-  implements DialogInterface.OnClickListener
+  extends blpe
 {
-  public bktn(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public bktn(AEMaterialProviderView paramAEMaterialProviderView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.s();
+    if (QLog.isColorLevel()) {
+      QLog.d("AEMaterialProviderView", 2, "material list updated!");
+    }
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bktn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,7 @@
-public class lgn
-{
-  public int[] a = { 9, 11 };
-}
+public class lgn {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lgn
  * JD-Core Version:    0.7.0.1
  */

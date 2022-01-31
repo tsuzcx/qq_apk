@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adlj;
+import afdt;
 import com.tencent.ark.open.ArkAppInfo.TimeRecord;
 
 public class ArkAppContainer$3
   implements Runnable
 {
-  public ArkAppContainer$3(adlj paramadlj) {}
+  public ArkAppContainer$3(afdt paramafdt) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class ArkAppContainer$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppContainer.3
  * JD-Core Version:    0.7.0.1
  */

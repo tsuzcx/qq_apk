@@ -1,27 +1,32 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import java.util.Map;
 
-public class pxm
-  implements bfph
+class pxm
+  implements pxt
 {
-  public pxm(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  pxm(pxl parampxl) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(View paramView, Map<String, Object> paramMap)
   {
-    switch (paramInt)
-    {
+    if (paramView.getId() == 2131379242) {
+      this.a.a(paramView);
     }
-    for (;;)
+    do
     {
-      ComponentHeaderTopicRecommend.a(this.a).dismiss();
       return;
-      ComponentHeaderTopicRecommend.a(this.a, false);
-    }
+      if (paramView != this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead) {
+        break;
+      }
+      paramView = this.a.jdField_a_of_type_Rqj.a();
+    } while (paramView == null);
+    paramView.c();
+    return;
+    this.a.a(paramView, paramMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pxm
  * JD-Core Version:    0.7.0.1
  */

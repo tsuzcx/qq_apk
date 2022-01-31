@@ -1,23 +1,10 @@
-import android.support.annotation.Nullable;
-import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
-
-class bine
-  implements bjos<Boolean>
+public abstract interface bine
 {
-  bine(bina parambina) {}
-  
-  public void a(@Nullable Boolean paramBoolean)
-  {
-    if (paramBoolean == null) {}
-    while (bina.a(this.a) == null) {
-      return;
-    }
-    bina.a(this.a).a(paramBoolean.booleanValue());
-  }
+  public abstract void a(String paramString1, String paramString2, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bine
  * JD-Core Version:    0.7.0.1
  */

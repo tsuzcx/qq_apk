@@ -1,43 +1,46 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class sdu
-  implements bcww
+public abstract class sdu
 {
-  sdu(sds paramsds, String paramString, shc paramshc) {}
+  protected abstract void a();
   
-  public void a(BaseResp paramBaseResp)
+  public abstract void a(ListView paramListView);
+  
+  protected void a(String paramString, JSONObject paramJSONObject)
   {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
+    try
+    {
+      paramJSONObject.put("folder_status", ors.d);
+      paramJSONObject.put("kandian_mode", ors.e());
+      paramJSONObject = paramJSONObject.toString();
+      nrt.a(null, "", paramString, paramString, 0, 0, "", "", "", paramJSONObject, false);
+      QLog.d("HeaderViewController", 2, "report: T - " + paramString + " r5 - " + paramJSONObject);
       return;
     }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
+    catch (JSONException paramString)
     {
-    case -1: 
-    default: 
-      wij.b(1, 2131719487);
-      bool = false;
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      if (this.jdField_a_of_type_Shc == null) {
-        break;
-      }
-      this.jdField_a_of_type_Shc.a(bool);
-      return;
-      wij.b(2, 2131719506);
-      continue;
-      bool = false;
+      QLog.d("HeaderViewController", 2, "report failed due to JSONException: " + paramString.getMessage());
+      throw new IllegalArgumentException("fail to construct r5 json");
     }
   }
+  
+  public abstract void b();
+  
+  public void c()
+  {
+    a();
+  }
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sdu
  * JD-Core Version:    0.7.0.1
  */

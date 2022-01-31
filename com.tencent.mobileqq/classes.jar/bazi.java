@@ -1,61 +1,31 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.util.CustomLruCache;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 
-class bazi
-  extends CustomLruCache<String, Drawable>
+public abstract class bazi
+  extends RecyclerView.ViewHolder
 {
-  bazi(bazh parambazh, int paramInt)
-  {
-    super(paramInt);
-  }
+  public int a;
+  public SeekBar a;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  public RelativeLayout b;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  ImageView d;
   
-  protected int a(String paramString, Drawable paramDrawable)
+  public bazi(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, View paramView)
   {
-    int i = 0;
-    int j = 0;
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramString = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramString != null) {
-        j = paramString.getRowBytes() * paramString.getHeight();
-      }
-    }
-    int m;
-    int k;
-    do
-    {
-      do
-      {
-        return j;
-      } while (!(paramDrawable instanceof AnimationDrawable));
-      paramString = (AnimationDrawable)paramDrawable;
-      m = paramString.getNumberOfFrames();
-      k = 0;
-      j = i;
-    } while (k >= m);
-    paramDrawable = paramString.getFrame(k);
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        j = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * j + i;
-      }
-    }
-    for (;;)
-    {
-      k += 1;
-      break;
-    }
+    super(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bazi
  * JD-Core Version:    0.7.0.1
  */

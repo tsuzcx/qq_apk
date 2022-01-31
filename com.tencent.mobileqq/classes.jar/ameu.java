@@ -1,47 +1,35 @@
-import android.annotation.TargetApi;
-import android.view.View;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(11)
-final class ameu
+public class ameu
+  extends alox
 {
-  static void a(View paramView, float paramFloat)
-  {
-    paramView.setPivotX(paramFloat);
-  }
+  public ameu(HiddenChatFragment paramHiddenChatFragment) {}
   
-  static void b(View paramView, float paramFloat)
+  protected void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    paramView.setPivotY(paramFloat);
-  }
-  
-  static void c(View paramView, float paramFloat)
-  {
-    paramView.setAlpha(paramFloat);
-  }
-  
-  static void d(View paramView, float paramFloat)
-  {
-    paramView.setScaleX(paramFloat);
-  }
-  
-  static void e(View paramView, float paramFloat)
-  {
-    paramView.setScaleY(paramFloat);
-  }
-  
-  static void f(View paramView, float paramFloat)
-  {
-    paramView.setTranslationY(paramFloat);
-  }
-  
-  static void g(View paramView, float paramFloat)
-  {
-    paramView.setX(paramFloat);
+    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2)) {
+      QLog.e("tag_hidden_chat", 1, "data not right");
+    }
+    do
+    {
+      do
+      {
+        return;
+        String[] arrayOfString = (String[])paramArrayOfObject[0];
+        paramArrayOfObject = (boolean[])paramArrayOfObject[1];
+        if (QLog.isColorLevel()) {
+          QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(arrayOfString.length), " len2:", Integer.valueOf(paramArrayOfObject.length) });
+        }
+      } while (!paramBoolean);
+      this.a.a();
+    } while (!QLog.isColorLevel());
+    QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ameu
  * JD-Core Version:    0.7.0.1
  */

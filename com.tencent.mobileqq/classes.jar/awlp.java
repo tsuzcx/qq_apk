@@ -1,179 +1,541 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
-import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment.2.1;
-import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment.2.2;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.BeancurdMsg;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.MessageForPLNews;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelHandler.1;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelInfo;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import mqq.os.MqqHandler;
-import pb.unite.search.DynamicTabSearch.SubHotWord;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.label.comm.PersonalityTagComm.LabelInfo;
+import tencent.im.oidb.cmd0x8f0.cmd0x8f0.ReqBody;
+import tencent.im.oidb.cmd0x8f0.cmd0x8f0.RspBody;
+import tencent.im.oidb.cmd0x8f1.oidb_0x8f1.ReqBody;
+import tencent.im.oidb.cmd0x8f1.oidb_0x8f1.RspBody;
+import tencent.im.oidb.cmd0x8f3.oidb_0x8f3.ReqBody;
+import tencent.im.oidb.cmd0x909.oidb_0x909.ReqBody;
+import tencent.im.oidb.cmd0x90c.oidb_0x90c.ReqBody;
+import tencent.im.oidb.cmd0x90c.oidb_0x90c.RspBody;
+import tencent.im.oidb.cmd0x91d.cmd0x91d.LabelUpdateInfo;
+import tencent.im.oidb.cmd0x91d.cmd0x91d.ReqBody;
+import tencent.im.oidb.cmd0x91d.cmd0x91d.RspBody;
 
 public class awlp
-  extends akjb
+  extends alko
 {
-  public awlp(PublicAcntSearchFragment paramPublicAcntSearchFragment) {}
-  
-  public void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt, String paramString3, long[] paramArrayOfLong)
+  public awlp(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PublicAcntSearchFragment", 2, "handleTabSearchError!!!");
-    }
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    super(paramQQAppInterface);
   }
   
-  public void a(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List<awoh> paramList, long[] paramArrayOfLong, String paramString3, List<DynamicTabSearch.SubHotWord> paramList1, boolean paramBoolean3, String paramString4)
+  private void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("PublicAcntSearchFragment", 2, "handleTabSearchResult， keyword=" + this.a.jdField_c_of_type_JavaLangString + ", isFirstReq=" + paramBoolean1 + " ,cookie = " + paramArrayOfByte + ",result=" + paramList.size());
+      QLog.i("PersonalityLabelHandler", 2, "handleDeleteLabel");
     }
-    ThreadManager.getUIHandler().post(new PublicAcntSearchFragment.2.1(this, paramBoolean2));
-    if (!TextUtils.equals(paramString2, this.a.jdField_a_of_type_JavaLangString))
+  }
+  
+  public static void a(Activity paramActivity, String paramString, QQAppInterface paramQQAppInterface, PersonalityLabel paramPersonalityLabel, awmk paramawmk)
+  {
+    byte[] arrayOfByte = PersonalityLabel.convertToBytes(paramPersonalityLabel);
+    paramActivity.runOnUiThread(new PersonalityLabelHandler.1(paramString, paramQQAppInterface, paramawmk, arrayOfByte));
+    paramActivity = (aloz)paramQQAppInterface.getManager(51);
+    paramString = paramActivity.b(paramString);
+    if (paramString != null)
     {
-      QLog.d("PublicAcntSearchFragment", 2, "handleTabSearchResult. reqKeyword=" + paramString1 + " keyword=" + this.a.jdField_c_of_type_JavaLangString + " reqTime=" + paramString2 + " lastReqTime=" + this.a.jdField_a_of_type_JavaLangString + " isEnd1=" + paramBoolean2);
-      return;
-    }
-    if (!TextUtils.equals(paramString1, this.a.jdField_c_of_type_JavaLangString))
-    {
-      QLog.d("PublicAcntSearchFragment", 2, "handleTabSearchResult. masks=" + paramArrayOfLong[0] + " reqKeyword=" + paramString1 + " keyword=" + this.a.jdField_c_of_type_JavaLangString + " isEnd1=" + paramBoolean2);
-      return;
-    }
-    if (paramList == null)
-    {
+      paramString.vPersonalityLabelV2 = arrayOfByte;
+      paramString.personalityLabel = paramPersonalityLabel;
+      paramActivity.a(paramString);
       if (QLog.isColorLevel()) {
-        QLog.i("PublicAcntSearchFragment", 2, "handleTabSearchResult result is null");
+        QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabel,update card");
       }
-      a(paramString1, paramBoolean1, paramString2, -1, "result = null", paramArrayOfLong);
-      return;
     }
-    paramString1 = paramList.iterator();
-    int i = 0;
-    long l2 = -1L;
-    long l1 = -1L;
-    label307:
-    int j;
-    if (paramString1.hasNext())
-    {
-      paramString2 = (awoh)paramString1.next();
-      if (paramString2.a() == null) {
-        break label1056;
+  }
+  
+  private void a(String paramString1, String paramString2, long paramLong)
+  {
+    aely localaely = (aely)this.mApp.getManager(282);
+    Object localObject = localaely.a(paramString2, 0, 3);
+    if (localObject != null) {
+      if (((BeancurdMsg)localObject).originTime < paramLong) {
+        break label229;
       }
-      long l3 = l1;
-      if ((paramString2 instanceof awnf))
-      {
-        paramString3 = (awnf)paramString2;
-        l3 = l1;
-        if (l1 == -1L) {
-          l3 = paramString3.a;
-        }
-        l2 = paramString3.a;
-      }
-      j = paramString2.a().size();
-      l1 = l3;
-      i += j;
     }
-    label1049:
-    label1056:
-    for (;;)
-    {
-      break label307;
-      if (!paramBoolean1) {
-        awwa.a("sub_result", "load_result", new String[] { this.a.jdField_c_of_type_JavaLangString, awwa.a(paramArrayOfLong), "", awwa.a("dynamic_tab_search.1", paramArrayOfLong) });
-      }
-      if (i == 0)
-      {
-        awwa.a("sub_result", "no_result", new String[] { this.a.jdField_c_of_type_JavaLangString, awwa.a(paramArrayOfLong), "", awwa.a("dynamic_tab_search.1", paramArrayOfLong) });
-        this.a.f = paramBoolean2;
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-        if ((this.a.jdField_c_of_type_JavaUtilList == null) || (this.a.jdField_c_of_type_JavaUtilList.isEmpty())) {
-          break label949;
-        }
-        paramString1 = awiw.a(paramList, paramBoolean1);
-        if ((paramBoolean1) || (l1 != PublicAcntSearchFragment.a(this.a)) || (paramString1 == null) || (paramString1.size() <= 0) || (paramBoolean3)) {
-          break label865;
-        }
-        paramString2 = (awog)this.a.jdField_c_of_type_JavaUtilList.get(this.a.jdField_c_of_type_JavaUtilList.size() - 1);
-        if ((!(this.a.jdField_c_of_type_JavaUtilList.get(this.a.jdField_c_of_type_JavaUtilList.size() - 1) instanceof awpm)) || (!(paramString1.get(0) instanceof awnp))) {
-          paramString1.remove(0);
-        }
-        j = 0;
-        i = 0;
-        label685:
-        if (i >= paramString1.size()) {
-          break label1049;
-        }
-        if (!((awog)paramString1.get(i) instanceof awnp)) {
-          break label852;
-        }
-      }
+    label229:
+    for (int i = 0;; i = 1) {
       for (;;)
       {
-        if ((paramString2 instanceof awoi))
+        if (i != 0) {}
+        try
         {
-          paramString2 = (awoi)paramString2;
-          j = paramString2.a();
-          awwd.a(paramString2, j + i, j - 1);
-        }
-        for (;;)
-        {
-          int k = 0;
-          for (;;)
-          {
-            if (k < i)
-            {
-              paramString2 = (awog)paramString1.get(k);
-              if ((paramString2 instanceof awoi)) {
-                awwd.a((awoi)paramString2, j + i, j + k);
-              }
-              k += 1;
-              continue;
-              if (!paramBoolean1) {
-                break;
-              }
-              awwa.a("sub_result", "exp_result", new String[] { this.a.jdField_c_of_type_JavaLangString, awwa.a(paramArrayOfLong), "", awwa.a("dynamic_tab_search.1", paramArrayOfLong) });
-              break;
-              label852:
-              j = i;
-              i += 1;
-              break label685;
-            }
-          }
-          label865:
-          this.a.jdField_c_of_type_JavaUtilList.addAll(paramString1);
-          for (;;)
-          {
-            i = 0;
-            while (i < this.a.jdField_c_of_type_JavaUtilList.size())
-            {
-              if ((this.a.jdField_c_of_type_JavaUtilList.get(i) instanceof awor)) {
-                ((awor)this.a.jdField_c_of_type_JavaUtilList.get(i)).r = 0;
-              }
-              i += 1;
-            }
-            label949:
-            paramString1 = awiw.a(paramList, paramBoolean1);
-            this.a.jdField_c_of_type_JavaUtilList = paramString1;
-          }
-          this.a.jdField_a_of_type_Awke.a(this.a.jdField_c_of_type_JavaUtilList);
-          PublicAcntSearchFragment.a(this.a, l2);
-          if ((this.a.jdField_c_of_type_JavaUtilList.size() != 0) || (TextUtils.isEmpty(this.a.jdField_c_of_type_JavaLangString)) || (!paramBoolean2)) {
-            break;
-          }
-          ThreadManager.getUIHandler().post(new PublicAcntSearchFragment.2.2(this));
+          localObject = new BeancurdMsg();
+          ((BeancurdMsg)localObject).frienduin = paramString2;
+          ((BeancurdMsg)localObject).busiid = 3;
+          ((BeancurdMsg)localObject).isNeedDelHistory = true;
+          ((BeancurdMsg)localObject).ispush = false;
+          ((BeancurdMsg)localObject).originTime = paramLong;
+          ((BeancurdMsg)localObject).startTime = ayvc.a();
+          ((BeancurdMsg)localObject).validTime = 2592000L;
+          ((BeancurdMsg)localObject).buffer = paramString1;
+          localaely.a((BeancurdMsg)localObject);
           return;
-          j = 0;
+          localObject = this.app.a().a(paramString2, 0, new int[] { -2060 });
+          if ((localObject != null) && (((List)localObject).size() > 0) && (((MessageForPLNews)((List)localObject).get(((List)localObject).size() - 1)).ts >= paramLong)) {
+            i = 0;
+          }
         }
-        i = j;
+        catch (Exception paramString1)
+        {
+          do
+          {
+            paramString1.printStackTrace();
+          } while (!QLog.isColorLevel());
+          QLog.i("PersonalityLabelHandler", 2, "handleAIOQQStoryFeedMessage: parse data to MessageRecord has error. Message: " + paramString1.getMessage());
+          return;
+        }
       }
     }
+  }
+  
+  private void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
+    {
+      notifyUI(3, false, null);
+      return;
+    }
+    oidb_0x8f1.RspBody localRspBody = new oidb_0x8f1.RspBody();
+    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+    paramFromServiceMsg = paramToServiceMsg.extraData.getString("key_uin", "");
+    long l = paramToServiceMsg.extraData.getLong("label_id", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelPhotos : result = " + i + ", uin = " + paramFromServiceMsg);
+    }
+    if (i == 0)
+    {
+      notifyUI(3, true, new Object[] { paramFromServiceMsg, Long.valueOf(l), PersonalityLabelInfo.convertFromPb((PersonalityTagComm.LabelInfo)localRspBody.msg_label_info.get()), Integer.valueOf(localRspBody.uint32_complete_flag.get()), localRspBody.bytes_label_cookie.get().toByteArray() });
+      return;
+    }
+    notifyUI(3, false, new Object[] { paramFromServiceMsg, Long.valueOf(l), null, null, null });
+  }
+  
+  private void d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelHandler", 2, "handleZan");
+    }
+  }
+  
+  private void e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
+    {
+      notifyUI(4, false, null);
+      return;
+    }
+    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, new oidb_0x90c.RspBody());
+    paramFromServiceMsg = paramToServiceMsg.extraData.getString("key_uin", "");
+    long l1 = paramToServiceMsg.extraData.getLong("label_id", 0L);
+    long l2 = paramToServiceMsg.extraData.getLong("photo_id", 0L);
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder().append("handleDeletePhoto, result==0 ");
+      if (i == 0)
+      {
+        bool = true;
+        QLog.i("PersonalityLabelHandler", 2, bool + "," + paramFromServiceMsg + "," + l2 + "," + l1);
+      }
+    }
+    else
+    {
+      if (i != 0) {
+        break label188;
+      }
+    }
+    label188:
+    for (boolean bool = true;; bool = false)
+    {
+      notifyUI(4, bool, new Object[] { paramFromServiceMsg, Long.valueOf(l1), Long.valueOf(l2) });
+      return;
+      bool = false;
+      break;
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelHandler", 2, "deleteLabel, labelId = " + paramLong);
+    }
+    oidb_0x8f3.ReqBody localReqBody = new oidb_0x8f3.ReqBody();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(Long.valueOf(paramLong));
+    localReqBody.rpt_uint64_labels.set(localArrayList);
+    sendPbReq(makeOIDBPkg("OidbSvc.0x8f3", 2291, 0, localReqBody.toByteArray()));
+  }
+  
+  @TargetApi(12)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null))
+    {
+      notifyUI(1, false, null);
+      return;
+    }
+    Object localObject = new cmd0x8f0.RspBody();
+    int i = parseOIDBPkg(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+    paramFromServiceMsg = paramToServiceMsg.extraData.getString("key_uin", "");
+    if (QLog.isColorLevel())
+    {
+      paramObject = new StringBuilder().append("handleGetPersonalityLabel, result==0 ");
+      if (i != 0) {
+        break label220;
+      }
+    }
+    int j;
+    label220:
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.i("PersonalityLabelHandler", 2, bool + "," + paramFromServiceMsg);
+      j = paramToServiceMsg.extraData.getInt("flag", 0);
+      if (i != 0) {
+        break;
+      }
+      paramToServiceMsg = PersonalityLabel.convertFromPb((cmd0x8f0.RspBody)localObject);
+      paramObject = PersonalityLabel.convertToBytes(paramToServiceMsg);
+      localObject = (aloz)this.app.getManager(51);
+      Card localCard = ((aloz)localObject).b(paramFromServiceMsg);
+      if (localCard != null)
+      {
+        localCard.vPersonalityLabelV2 = paramObject;
+        localCard.personalityLabel = paramToServiceMsg;
+        ((aloz)localObject).a(localCard);
+        if (QLog.isColorLevel()) {
+          QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabel,update card");
+        }
+      }
+      notifyUI(1, true, new Object[] { paramFromServiceMsg, paramToServiceMsg, paramObject, Integer.valueOf(j) });
+      return;
+    }
+    notifyUI(1, false, new Object[] { paramFromServiceMsg, null, null, Integer.valueOf(j) });
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelHandler", 2, "getPersonalityLabel:" + paramString);
+    }
+    Object localObject = new cmd0x8f0.ReqBody();
+    ((cmd0x8f0.ReqBody)localObject).uint64_req_uin.set(Long.valueOf(paramString).longValue());
+    ((cmd0x8f0.ReqBody)localObject).uint32_req_digest.set(paramInt);
+    localObject = makeOIDBPkg("OidbSvc.0x8f0", 2288, 0, ((cmd0x8f0.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).extraData.putString("key_uin", paramString);
+    ((ToServiceMsg)localObject).extraData.putInt("flag", paramInt);
+    ((ToServiceMsg)localObject).extraData.putBoolean("req_pb_protocol_flag", true);
+    send((ToServiceMsg)localObject);
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelHandler", 2, "zan");
+    }
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong(paramString);
+      l1 = l2;
+    }
+    catch (NumberFormatException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    paramString = new oidb_0x909.ReqBody();
+    paramString.uint64_to.set(l1);
+    paramString.uint64_labelid.set(paramLong);
+    paramString.int32_count.set(1);
+    sendPbReq(makeOIDBPkg("OidbSvc.0x909", 2313, 0, paramString.toByteArray()));
+  }
+  
+  public void a(String paramString, long paramLong, int paramInt, byte[] paramArrayOfByte)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelHandler", 2, "getPersonalityLabelPhotos : uin = " + paramString + ", labelId = " + paramLong + ", count = " + paramInt + ", cookie = " + paramArrayOfByte);
+    }
+    oidb_0x8f1.ReqBody localReqBody = new oidb_0x8f1.ReqBody();
+    localReqBody.uint64_req_uin.set(Long.valueOf(paramString).longValue());
+    localReqBody.uint64_label_id.set(paramLong);
+    localReqBody.uint32_req_num.set(paramInt);
+    if (paramArrayOfByte != null) {
+      localReqBody.bytes_label_cookie.set(ByteStringMicro.copyFrom(paramArrayOfByte));
+    }
+    paramArrayOfByte = makeOIDBPkg("OidbSvc.0x8f1", 2289, 0, localReqBody.toByteArray());
+    paramArrayOfByte.extraData.putString("key_uin", paramString);
+    paramArrayOfByte.extraData.putLong("label_id", paramLong);
+    sendPbReq(paramArrayOfByte);
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelHandler", 2, "getPersonalityLabelNews uin:" + paramString + " ts:" + paramLong1);
+    }
+    Object localObject = new cmd0x91d.ReqBody();
+    ((cmd0x91d.ReqBody)localObject).uint64_req_uin.set(Long.valueOf(paramString).longValue());
+    ((cmd0x91d.ReqBody)localObject).uint64_last_time.set((int)paramLong1);
+    localObject = makeOIDBPkg("OidbSvc.0x91d", 2333, 0, ((cmd0x91d.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).extraData.putString("key_uin", paramString);
+    ((ToServiceMsg)localObject).extraData.putLong("key_timestamp", paramLong1);
+    ((ToServiceMsg)localObject).extraData.putLong("latestPLUpdateTimestamp", paramLong2);
+    ((ToServiceMsg)localObject).extraData.putBoolean("req_pb_protocol_flag", true);
+    send((ToServiceMsg)localObject);
+  }
+  
+  public void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null)) {}
+    label94:
+    label503:
+    do
+    {
+      long l1;
+      aloz localaloz;
+      do
+      {
+        int i;
+        do
+        {
+          for (;;)
+          {
+            return;
+            cmd0x91d.RspBody localRspBody = new cmd0x91d.RspBody();
+            i = parseOIDBPkg(paramFromServiceMsg, paramObject, localRspBody);
+            paramObject = paramToServiceMsg.extraData.getString("key_uin", "0");
+            long l2 = paramToServiceMsg.extraData.getLong("key_timestamp", 0L);
+            l1 = paramToServiceMsg.extraData.getLong("latestPLUpdateTimestamp", 0L);
+            boolean bool;
+            if (QLog.isColorLevel())
+            {
+              paramToServiceMsg = new StringBuilder().append("handleGetPersonalityLabelNews, result==0 ");
+              if (i == 0)
+              {
+                bool = true;
+                QLog.i("PersonalityLabelHandler", 2, bool + "," + paramObject);
+              }
+            }
+            else
+            {
+              localaloz = (aloz)this.app.getManager(51);
+              paramFromServiceMsg = localaloz.a(paramObject);
+              paramToServiceMsg = paramFromServiceMsg;
+              if (paramFromServiceMsg == null)
+              {
+                paramToServiceMsg = new ExtensionInfo();
+                paramToServiceMsg.uin = paramObject;
+              }
+              paramToServiceMsg.lastPullPLNewsTimestamp = (System.currentTimeMillis() / 1000L);
+              if (i != 0) {
+                break label519;
+              }
+              if (!localRspBody.uint64_last_time.has()) {
+                break label261;
+              }
+              l1 = localRspBody.uint64_last_time.get();
+              if ((l1 > l2) && (localRspBody.msg_update_info.has())) {
+                break label270;
+              }
+              if (l2 < l1) {
+                break label267;
+              }
+              l1 = l2;
+            }
+            for (;;)
+            {
+              paramToServiceMsg.latestPLUpdateTimestamp = l1;
+              localaloz.a(paramToServiceMsg);
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews no update");
+              return;
+              bool = false;
+              break label94;
+              l1 = 0L;
+              break label196;
+            }
+            paramToServiceMsg.lastPLNewsTimestamp = l1;
+            paramToServiceMsg.latestPLUpdateTimestamp = l1;
+            localaloz.a(paramToServiceMsg);
+            if (localRspBody.msg_update_info.has())
+            {
+              paramToServiceMsg = (cmd0x91d.LabelUpdateInfo)localRspBody.msg_update_info.get();
+              if ((paramToServiceMsg == null) || (!paramToServiceMsg.msg_label_info.has())) {
+                break label503;
+              }
+              paramFromServiceMsg = paramToServiceMsg.msg_label_info;
+              if (paramToServiceMsg.uint32_upload_photos.has()) {
+                paramToServiceMsg.uint32_upload_photos.get();
+              }
+              paramToServiceMsg = PersonalityLabelInfo.convertFromPb(paramFromServiceMsg);
+              paramFromServiceMsg = new JSONObject();
+            }
+            try
+            {
+              paramFromServiceMsg.put("text", paramToServiceMsg.text);
+              paramFromServiceMsg.put("bgColor", paramToServiceMsg.bgColor);
+              paramFromServiceMsg.put("ts", l1);
+              if (paramToServiceMsg.getSize() > 0) {}
+              for (paramToServiceMsg = ((PersonalityLabelPhoto)paramToServiceMsg.personalityLabelPhotos.get(0)).get128SizeUrl() + awkm.d;; paramToServiceMsg = "")
+              {
+                paramFromServiceMsg.put("cover", paramToServiceMsg);
+                if (QLog.isColorLevel()) {
+                  QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews insert gray msg");
+                }
+                a(paramFromServiceMsg.toString(), paramObject, l1);
+                return;
+                paramToServiceMsg = null;
+                break;
+              }
+              if (!QLog.isColorLevel()) {}
+            }
+            catch (JSONException paramToServiceMsg) {}
+          }
+          QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews", paramToServiceMsg);
+          return;
+        } while (!QLog.isColorLevel());
+        QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews update, no data");
+        return;
+        if (i != 1206) {
+          break;
+        }
+        paramToServiceMsg.lastPLNewsTimestamp = l1;
+        paramToServiceMsg.latestPLUpdateTimestamp = l1;
+        localaloz.a(paramToServiceMsg);
+      } while (!QLog.isColorLevel());
+      QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews 1206 " + l1);
+      return;
+      localaloz.a(paramToServiceMsg);
+    } while (!QLog.isColorLevel());
+    label196:
+    QLog.i("PersonalityLabelHandler", 2, "handleGetPersonalityLabelNews failed");
+    label261:
+    label267:
+    label270:
+    return;
+  }
+  
+  public void b(String paramString, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("PersonalityLabelHandler", 2, "deletePhoto, uin = " + paramString + ", labelId = " + paramLong1 + ", photoId = " + paramLong2);
+    }
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong(paramString);
+      l1 = l2;
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        Object localObject;
+        ArrayList localArrayList;
+        localNumberFormatException.printStackTrace();
+      }
+    }
+    localObject = new oidb_0x90c.ReqBody();
+    ((oidb_0x90c.ReqBody)localObject).uint64_to.set(l1);
+    ((oidb_0x90c.ReqBody)localObject).uint64_labelid.set(paramLong1);
+    localArrayList = new ArrayList();
+    localArrayList.add(Long.valueOf(paramLong2));
+    ((oidb_0x90c.ReqBody)localObject).rpt_photoids.set(localArrayList);
+    localObject = makeOIDBPkg("OidbSvc.0x90c", 2316, 0, ((oidb_0x90c.ReqBody)localObject).toByteArray());
+    ((ToServiceMsg)localObject).extraData.putString("key_uin", paramString);
+    ((ToServiceMsg)localObject).extraData.putLong("label_id", paramLong1);
+    ((ToServiceMsg)localObject).extraData.putLong("photo_id", paramLong2);
+    sendPbReq((ToServiceMsg)localObject);
+  }
+  
+  protected boolean msgCmdFilter(String paramString)
+  {
+    if (this.allowCmdSet == null)
+    {
+      this.allowCmdSet = new HashSet();
+      this.allowCmdSet.add("OidbSvc.0x8f0");
+      this.allowCmdSet.add("OidbSvc.0x91d");
+      this.allowCmdSet.add("OidbSvc.0x909");
+      this.allowCmdSet.add("OidbSvc.0x90c");
+      this.allowCmdSet.add("OidbSvc.0x8f3");
+      this.allowCmdSet.add("OidbSvc.0x8f1");
+    }
+    return !this.allowCmdSet.contains(paramString);
+  }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return awlr.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("OidbSvc.0x8f0".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    do
+    {
+      return;
+      if ("OidbSvc.0x91d".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
+      {
+        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if ("OidbSvc.0x909".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
+      {
+        d(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if ("OidbSvc.0x90c".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
+      {
+        e(paramToServiceMsg, paramFromServiceMsg, paramObject);
+        return;
+      }
+      if ("OidbSvc.0x8f3".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))
+      {
+        a();
+        return;
+      }
+    } while (!"OidbSvc.0x8f1".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()));
+    c(paramToServiceMsg, paramFromServiceMsg, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awlp
  * JD-Core Version:    0.7.0.1
  */

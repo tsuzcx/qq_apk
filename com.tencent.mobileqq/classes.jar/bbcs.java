@@ -1,29 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bbcs
-  extends BroadcastReceiver
+class bbcs
+  implements View.OnTouchListener
 {
-  public bbcs(BusinessCommonConfig paramBusinessCommonConfig, QQAppInterface paramQQAppInterface) {}
+  bbcs(bbcq parambbcq) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    int i;
-    do
+    switch (paramMotionEvent.getAction())
     {
-      do
+    }
+    for (;;)
+    {
+      return false;
+      if (Build.VERSION.SDK_INT >= 11)
       {
-        return;
-      } while (!"tencent.businessnotify.subprocess.to.qq".equals(paramIntent.getAction()));
-      i = paramIntent.getIntExtra("event", 0);
-      QLog.w(this.jdField_a_of_type_ComTencentMobileqqUtilsBusinessCommonConfig.TAG, 1, "收到其他进程的通知, event[" + i + "]");
-    } while (i != 1);
-    BusinessCommonConfig.onDownloadRequest(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramIntent);
+        paramView.setAlpha(0.5F);
+        continue;
+        if (Build.VERSION.SDK_INT >= 11) {
+          paramView.setAlpha(1.0F);
+        }
+      }
+    }
   }
 }
 

@@ -1,72 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.ar.ScanningData;
+import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.mobileqq.ar.ScanningSurfaceView.8;
 import com.tencent.qphone.base.util.QLog;
 
 public class amuh
-  extends ampa<amug>
+  implements avwy
 {
-  public int a()
-  {
-    return 488;
-  }
+  public amuh(ScanningSurfaceView.8 param8) {}
   
-  @NonNull
-  public amug a(int paramInt)
-  {
-    return new amug();
-  }
-  
-  @Nullable
-  public amug a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0) && (paramArrayOfamph[0] != null))
-    {
-      amug localamug = amug.a(paramArrayOfamph[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfamph[0].a);
-      }
-      return localamug;
-    }
-    return null;
-  }
-  
-  public Class<amug> a()
-  {
-    return amug.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(amug paramamug)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramamug.toString());
+      QLog.d("ScanningSurfaceView", 2, "onContentClick subFaceData.wikiurl = " + this.a.b.c);
     }
+    ScanningSurfaceView.b(this.a.this$0, this.a.b.c);
+    azmj.b(null, "dc00898", "", "", "0X8008351", "0X8008351", 0, 0, "", "", "", "");
   }
   
-  public boolean a()
+  public void b()
   {
-    return true;
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanningSurfaceView", 2, "onFeedbackClick subFaceData.wikiurl = " + this.a.b.c);
+    }
+    this.a.this$0.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amuh
  * JD-Core Version:    0.7.0.1
  */

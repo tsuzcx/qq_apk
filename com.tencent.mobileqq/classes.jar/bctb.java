@@ -1,25 +1,13 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.AbsListView.LayoutParams;
-import com.tencent.mobileqq.widget.datepicker.SimpleMonthView;
-
 public class bctb
-  extends RecyclerView.ViewHolder
 {
-  final SimpleMonthView a;
-  
-  public bctb(View paramView, bctc parambctc)
-  {
-    super(paramView);
-    this.a = ((SimpleMonthView)paramView);
-    this.a.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-    this.a.setClickable(true);
-    this.a.setOnDayClickListener(parambctc);
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bctb
  * JD-Core Version:    0.7.0.1
  */

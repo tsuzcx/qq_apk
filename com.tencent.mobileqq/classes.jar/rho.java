@@ -1,25 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class rho
+class rho
+  implements URLDrawable.URLDrawableListener
 {
-  public ReadInJoyBaseFragment a;
-  public qzg a;
-  public boolean a;
-  public boolean b;
+  rho(rhf paramrhf) {}
   
-  public rho()
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public ReadInJoyBaseFragment a()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoyBaseFragment;
+    if ((rhf.a(this.a) != null) && (rhf.a(this.a).getStatus() == 1) && ((rhf.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    {
+      paramURLDrawable = (RegionDrawable)rhf.a(this.a).getCurrDrawable();
+      rhf.a(this.a, paramURLDrawable.getBitmap());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rho
  * JD-Core Version:    0.7.0.1
  */

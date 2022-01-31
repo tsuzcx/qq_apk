@@ -1,26 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
 
-class srm
-  implements DialogInterface.OnClickListener
+public class srm
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  srm(srk paramsrk) {}
+  public srm(ViolaLazyFragment paramViolaLazyFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-    } while (srk.a(this.a) == null);
-    srk.a(this.a).b(srk.a(this.a));
+    paramInt = this.a.getActivity().getWindow().getDecorView().getSystemUiVisibility();
+    this.a.getActivity().getWindow().getDecorView().setSystemUiVisibility(paramInt | 0x2 | 0x400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     srm
  * JD-Core Version:    0.7.0.1
  */

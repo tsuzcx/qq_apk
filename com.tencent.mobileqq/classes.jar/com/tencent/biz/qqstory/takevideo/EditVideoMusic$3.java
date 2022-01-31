@@ -1,16 +1,16 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import acts;
+import aelc;
 import android.content.Context;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import vrk;
+import xgc;
 
 class EditVideoMusic$3
   extends AudioPlayer
 {
-  EditVideoMusic$3(EditVideoMusic paramEditVideoMusic, Context paramContext, acts paramacts, vrk paramvrk)
+  EditVideoMusic$3(EditVideoMusic paramEditVideoMusic, Context paramContext, aelc paramaelc, xgc paramxgc)
   {
-    super(paramContext, paramacts);
+    super(paramContext, paramaelc);
   }
   
   public void a()
@@ -21,7 +21,7 @@ class EditVideoMusic$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditVideoMusic.3
  * JD-Core Version:    0.7.0.1
  */

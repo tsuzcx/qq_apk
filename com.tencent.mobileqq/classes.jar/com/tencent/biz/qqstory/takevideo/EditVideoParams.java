@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import vhj;
+import wwb;
 
 public class EditVideoParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<EditVideoParams> CREATOR = new vhj();
+  public static final Parcelable.Creator<EditVideoParams> CREATOR = new wwb();
   public int a;
   public final Bundle a;
   public EditVideoParams.EditSource a;
@@ -258,7 +258,7 @@ public class EditVideoParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditVideoParams
  * JD-Core Version:    0.7.0.1
  */

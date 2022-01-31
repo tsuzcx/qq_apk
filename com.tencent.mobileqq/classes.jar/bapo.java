@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-
 public class bapo
 {
-  int jdField_a_of_type_Int;
-  TroopFeedItem jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem;
-  
-  public bapo(bapj parambapj) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bapo
  * JD-Core Version:    0.7.0.1
  */

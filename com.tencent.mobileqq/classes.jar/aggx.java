@@ -1,13 +1,10 @@
-class aggx
-  implements aefz
+public abstract interface aggx
 {
-  aggx(aggw paramaggw) {}
-  
-  public void a(Object paramObject) {}
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggx
  * JD-Core Version:    0.7.0.1
  */

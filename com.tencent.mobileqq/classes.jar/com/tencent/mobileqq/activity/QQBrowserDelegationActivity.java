@@ -3,16 +3,16 @@ package com.tencent.mobileqq.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import axqy;
-import ayfx;
+import azmj;
+import badt;
 import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import nqn;
+import ntw;
 
 public class QQBrowserDelegationActivity
   extends BaseActivity
@@ -31,20 +31,20 @@ public class QQBrowserDelegationActivity
     do
     {
       int i;
-      nqn localnqn;
+      ntw localntw;
       do
       {
         return;
         i = 0;
-        localnqn = (nqn)paramQQAppInterface.getManager(88);
-        if ("3046055438".equals(localnqn.i)) {
+        localntw = (ntw)paramQQAppInterface.getManager(88);
+        if ("3046055438".equals(localntw.i)) {
           i = 1;
         }
-        localnqn.i = null;
+        localntw.i = null;
       } while (i == 0);
       paramIntent.setClass(this, BusinessBrowser.class);
       paramIntent.putExtra("jump_from", 1);
-      paramQQAppInterface = paramQQAppInterface.a().a(localnqn.i, 1008);
+      paramQQAppInterface = paramQQAppInterface.a().a(localntw.i, 1008);
     } while (paramQQAppInterface == null);
     paramIntent.putExtra("msg_id", paramQQAppInterface.getExtInfoFromExtStr("public_account_msg_id"));
   }
@@ -72,7 +72,7 @@ public class QQBrowserDelegationActivity
       default: 
         localIntent.setClass(this, QQBrowserActivity.class);
         str = localIntent.getStringExtra("url");
-        if (!ayfx.b(str)) {
+        if (!badt.b(str)) {
           break label244;
         }
         paramBundle = null;
@@ -84,10 +84,10 @@ public class QQBrowserDelegationActivity
       }
       for (;;)
       {
-        if ((TextUtils.isEmpty(paramBundle)) || (!ayfx.a(this, str, ayfx.a(this.app, paramBundle, i)))) {
+        if ((TextUtils.isEmpty(paramBundle)) || (!badt.a(this, str, badt.a(this.app, paramBundle, i)))) {
           break label244;
         }
-        axqy.b(this.app, "dc00898", "", paramBundle, "0X8009FCF", "0X8009FCF", 0, 0, "", "", "", "");
+        azmj.b(this.app, "dc00898", "", paramBundle, "0X8009FCF", "0X8009FCF", 0, 0, "", "", "", "");
         finish();
         return false;
         localIntent.setClass(this, QQH5BrowserActivity.class);
@@ -100,7 +100,7 @@ public class QQBrowserDelegationActivity
         }
       }
       paramBundle = localIntent;
-      if (!ayfx.a(str)) {
+      if (!badt.a(str)) {
         break label309;
       }
       if (!localIntent.getBooleanExtra("h5_ark_is_from_share", false)) {
@@ -144,7 +144,7 @@ public class QQBrowserDelegationActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserDelegationActivity
  * JD-Core Version:    0.7.0.1
  */

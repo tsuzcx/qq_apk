@@ -1,32 +1,77 @@
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-class upg
-  extends ParallelJobSegment<String, upc>
+public class upg
 {
-  public int a;
+  private static HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
+  private static HashSet<String> jdField_a_of_type_JavaUtilHashSet;
+  private static upg jdField_a_of_type_Upg;
   
-  public upg(upa paramupa, int paramInt)
+  public static upg a()
   {
-    super("RequestLikeListSegment");
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Int = paramInt;
+    if (jdField_a_of_type_Upg == null)
+    {
+      jdField_a_of_type_Upg = new upg();
+      jdField_a_of_type_JavaUtilHashSet = new HashSet();
+      jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      Iterator localIterator = ((uqo)urr.a(17)).a().iterator();
+      while (localIterator.hasNext())
+      {
+        CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
+        if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+        {
+          jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
+          jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+        }
+      }
+    }
+    return jdField_a_of_type_Upg;
   }
   
-  protected void a(JobContext paramJobContext, String paramString)
+  public int a(String paramString)
   {
-    upu localupu = new upu();
-    localupu.jdField_a_of_type_JavaLangString = paramString;
-    localupu.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Int != -1) {
-      localupu.c = this.jdField_a_of_type_Int;
+    paramString = (Integer)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString == null) {
+      return -1;
     }
-    syo.a().a(localupu, new uph(this, paramJobContext, paramString));
+    return paramString.intValue();
+  }
+  
+  public void a()
+  {
+    jdField_a_of_type_JavaUtilHashSet.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    Iterator localIterator = ((uqo)urr.a(17)).a().iterator();
+    while (localIterator.hasNext())
+    {
+      CommentEntry localCommentEntry = (CommentEntry)localIterator.next();
+      if (!jdField_a_of_type_JavaUtilHashSet.contains(localCommentEntry.feedId))
+      {
+        jdField_a_of_type_JavaUtilHashSet.add(localCommentEntry.feedId);
+        jdField_a_of_type_JavaUtilHashMap.put(localCommentEntry.feedId, Integer.valueOf(localCommentEntry.commentId));
+      }
+    }
+    wsv.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(jdField_a_of_type_JavaUtilHashSet.size()) });
+  }
+  
+  public boolean a(String paramString)
+  {
+    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
+  }
+  
+  public void b()
+  {
+    jdField_a_of_type_JavaUtilHashSet.clear();
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    jdField_a_of_type_Upg = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     upg
  * JD-Core Version:    0.7.0.1
  */

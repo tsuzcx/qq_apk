@@ -1,25 +1,35 @@
-import android.content.Context;
-
-public class asut
+class asut
 {
-  public static void a(Context paramContext)
+  public static asut a;
+  private String jdField_a_of_type_JavaLangString;
+  private Throwable jdField_a_of_type_JavaLangThrowable;
+  private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
+  
+  static
   {
-    bcql.a(paramContext, paramContext.getString(2131718834), 0).a();
+    jdField_a_of_type_Asut = new asut(null);
   }
   
-  public static void b(Context paramContext)
+  public asut(String paramString)
   {
-    bcql.a(paramContext, paramContext.getString(2131718829), 0).a();
+    this(paramString, null, null);
   }
   
-  public static void c(Context paramContext)
+  public asut(String paramString, Object[] paramArrayOfObject, Throwable paramThrowable)
   {
-    bcql.a(paramContext, paramContext.getString(2131718846), 0).a();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
+    this.jdField_a_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asut
  * JD-Core Version:    0.7.0.1
  */

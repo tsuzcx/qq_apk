@@ -1,82 +1,68 @@
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
+import com.tencent.mobileqq.data.TroopFeedItem;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class bbnh
+public class bbnh
+  extends bbnf
 {
-  public static Object a(Object paramObject, String paramString, Class<?>[] paramArrayOfClass, Object[] paramArrayOfObject)
+  public TroopFeedItem a(JSONObject paramJSONObject)
   {
-    paramString = paramObject.getClass().getMethod(paramString, paramArrayOfClass);
-    paramString.setAccessible(true);
-    return paramString.invoke(paramObject, paramArrayOfObject);
-  }
-  
-  public static Object a(Object paramObject, String paramString, Object[] paramArrayOfObject)
-  {
-    return a(paramObject, paramString, a(paramArrayOfObject), paramArrayOfObject);
-  }
-  
-  public static Object a(String paramString1, Object paramObject, String paramString2)
-  {
-    paramString1 = Class.forName(paramString1).getDeclaredField(paramString2);
-    paramString1.setAccessible(true);
-    return paramString1.get(paramObject);
-  }
-  
-  public static Object a(String paramString1, String paramString2)
-  {
-    return a(paramString1, paramString2, (Object[])null);
-  }
-  
-  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject)
-  {
-    return a(paramString1, paramString2, paramArrayOfObject, a(paramArrayOfObject));
-  }
-  
-  public static Object a(String paramString1, String paramString2, Object[] paramArrayOfObject, Class<?>[] paramArrayOfClass)
-  {
-    paramString1 = Class.forName(paramString1);
-    return paramString1.getDeclaredMethod(paramString2, paramArrayOfClass).invoke(paramString1, paramArrayOfObject);
-  }
-  
-  private static Class<?>[] a(Object[] paramArrayOfObject)
-  {
-    Object localObject = (Class[])null;
-    if (paramArrayOfObject != null)
+    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
+    if (localTroopFeedItem == null) {
+      return null;
+    }
+    for (;;)
     {
-      Class[] arrayOfClass = new Class[paramArrayOfObject.length];
-      int i = 0;
-      int j = paramArrayOfObject.length;
-      localObject = arrayOfClass;
-      if (i < j)
+      int i;
+      int j;
+      try
       {
-        if (paramArrayOfObject[i] != null)
-        {
-          arrayOfClass[i] = paramArrayOfObject[i].getClass();
-          label45:
-          if (arrayOfClass[i] != Integer.class) {
-            break label77;
-          }
-          arrayOfClass[i] = Integer.TYPE;
+        localTroopFeedItem.type = paramJSONObject.getInt("feed_type");
+        JSONArray localJSONArray = paramJSONObject.getJSONArray("content");
+        localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
+        i = 0;
+        if (i >= localJSONArray.length()) {
+          break label200;
         }
-        for (;;)
+        paramJSONObject = localJSONArray.getJSONObject(i);
+        j = paramJSONObject.getInt("type");
+        if (j == 0)
         {
-          i += 1;
-          break;
-          arrayOfClass[i] = String.class;
-          break label45;
-          label77:
-          if (arrayOfClass[i] == Boolean.class) {
-            arrayOfClass[i] = Boolean.TYPE;
+          localTroopFeedItem.content = paramJSONObject.getString("value");
+        }
+        else if (j == 3)
+        {
+          if (!paramJSONObject.has("pic_url")) {
+            break label203;
           }
+          localTroopFeedItem.picPath = (paramJSONObject.getString("pic_url") + "/109");
         }
       }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
+      }
+      if (j == 10)
+      {
+        localTroopFeedItem.title = paramJSONObject.getString("value");
+      }
+      else if ((j == 6) && (bdje.a(localTroopFeedItem.picPath)) && (paramJSONObject.has("pic_url")))
+      {
+        localTroopFeedItem.picPath = paramJSONObject.getString("pic_url");
+        break label203;
+        label200:
+        return localTroopFeedItem;
+      }
+      label203:
+      i += 1;
     }
-    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbnh
  * JD-Core Version:    0.7.0.1
  */

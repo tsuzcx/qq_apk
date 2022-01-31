@@ -1,33 +1,49 @@
+import android.media.MediaFormat;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 import com.tencent.qphone.base.util.QLog;
 
-class xji
-  extends bbwt
+public abstract class xji
 {
-  xji(xjf paramxjf, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  protected int a;
+  protected axrn a;
+  protected String a;
+  protected String b;
   
-  public void onDone(bbwu parambbwu)
+  protected void a(int paramInt, String paramString1, String paramString2, MediaFormat paramMediaFormat, SlideItemInfo paramSlideItemInfo, xjh paramxjh)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "downloadUpdate loaded json = " + parambbwu.c + " code = " + parambbwu.jdField_a_of_type_Int);
+    if (paramxjh != null)
+    {
+      xig localxig = new xig();
+      localxig.jdField_a_of_type_Long = paramxjh.b;
+      localxig.jdField_a_of_type_Int = paramInt;
+      localxig.jdField_b_of_type_JavaLangString = paramString2;
+      localxig.jdField_a_of_type_JavaLangString = paramString1;
+      localxig.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+      localxig.c = this.jdField_b_of_type_JavaLangString;
+      localxig.jdField_a_of_type_Boolean = false;
+      localxig.jdField_b_of_type_Int = 1;
+      if (paramSlideItemInfo != null)
+      {
+        localxig.jdField_a_of_type_Boolean = paramSlideItemInfo.jdField_a_of_type_Boolean;
+        localxig.jdField_b_of_type_Int = paramSlideItemInfo.c;
+      }
+      if (paramxjh.a != null) {
+        paramxjh.a.a(localxig);
+      }
     }
-    boolean bool = this.jdField_a_of_type_Xjf.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.d("ViewPluginLoader", 2, "downloadUpdate unCompressOffline" + bool);
-    }
-    this.jdField_a_of_type_Xjf.a();
   }
   
-  public void onProgress(bbwu parambbwu)
+  protected boolean a(xjh paramxjh)
   {
-    int i = (int)(parambbwu.jdField_a_of_type_Float * 100.0F);
-    if (((i % 10 == 0) || (i > 90)) && (QLog.isColorLevel())) {
-      QLog.d("ViewPluginLoader", 2, "downding progress = " + i);
+    if ((!paramxjh.d) && (QLog.isColorLevel())) {
+      QLog.d("ToVideoConverter", 2, "run exit:" + paramxjh.b + " currContext.isRun:" + paramxjh.d);
     }
+    return !paramxjh.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xji
  * JD-Core Version:    0.7.0.1
  */

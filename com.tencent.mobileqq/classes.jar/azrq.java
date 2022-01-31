@@ -1,23 +1,41 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.3.1.1;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
+import android.widget.LinearLayout.LayoutParams;
 
 public class azrq
-  implements aycb
+  extends Animation
 {
-  public azrq(TroopEnterEffectController.3 param3) {}
+  int jdField_a_of_type_Int;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   
-  public void a(aybe paramaybe)
+  public azrq(ViewGroup paramViewGroup)
   {
-    if (this.a.this$0.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
-      return;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+  }
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    paramTransformation = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+    paramTransformation.height = ((int)(this.jdField_a_of_type_Int * (1.0F - paramFloat)));
+    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
+    if (paramFloat == 1.0F)
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      paramTransformation.height = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramTransformation);
     }
-    this.a.this$0.jdField_a_of_type_AndroidOsHandler.post(new TroopEnterEffectController.3.1.1(this, paramaybe));
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azrq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flashchat;
 
-import ajya;
+import alpo;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Handler.Callback;
@@ -9,13 +9,13 @@ import android.os.SystemClock;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import apyt;
-import apyw;
-import apyz;
-import apza;
-import apzd;
-import apze;
-import bfnk;
+import arrv;
+import arry;
+import arsb;
+import arsc;
+import arsf;
+import arsg;
+import bhoe;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -39,11 +39,11 @@ public class FlashChatTextEffectView
   private static final int[] jdField_a_of_type_ArrayOfInt = { 10000, 12000, 7000, 8000, 8000 };
   int jdField_a_of_type_Int;
   GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
-  apyt jdField_a_of_type_Apyt = new apyz(this);
-  apza jdField_a_of_type_Apza;
-  apze jdField_a_of_type_Apze;
+  arrv jdField_a_of_type_Arrv = new arsb(this);
+  arsc jdField_a_of_type_Arsc;
+  arsg jdField_a_of_type_Arsg;
   WeakReference<BaseChatPie> jdField_a_of_type_JavaLangRefWeakReference;
-  ArrayList<apyw> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ArrayList<arry> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public HashMap<Integer, Long> a;
   public MqqHandler a;
   
@@ -53,54 +53,54 @@ public class FlashChatTextEffectView
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  public FlashChatTextEffectView(Context paramContext, BaseChatPie paramBaseChatPie, apze paramapze, int paramInt)
+  public FlashChatTextEffectView(Context paramContext, BaseChatPie paramBaseChatPie, arsg paramarsg, int paramInt)
   {
     super(paramContext);
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseChatPie);
-    this.jdField_a_of_type_Apze = paramapze;
+    this.jdField_a_of_type_Arsg = paramarsg;
     this.jdField_a_of_type_Int = paramInt;
     setClipToPadding(false);
     a();
     b();
   }
   
-  private static void b(apzd paramapzd)
+  private static void b(arsf paramarsf)
   {
-    if ((paramapzd != null) && (paramapzd.a != null))
+    if ((paramarsf != null) && (paramarsf.a != null))
     {
-      String str = paramapzd.a.ark_app_message.appName;
-      ArkAppCenter.a().post(str, new FlashChatTextEffectView.2(paramapzd));
+      String str = paramarsf.a.ark_app_message.appName;
+      ArkAppCenter.a().post(str, new FlashChatTextEffectView.2(paramarsf));
     }
   }
   
-  private static void c(apzd paramapzd)
+  private static void c(arsf paramarsf)
   {
-    if ((paramapzd != null) && (paramapzd.a != null))
+    if ((paramarsf != null) && (paramarsf.a != null))
     {
-      String str = paramapzd.a.ark_app_message.appName;
-      ArkAppCenter.a().post(str, new FlashChatTextEffectView.3(paramapzd));
+      String str = paramarsf.a.ark_app_message.appName;
+      ArkAppCenter.a().post(str, new FlashChatTextEffectView.3(paramarsf));
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_Apza.getItemCount();
+    return this.jdField_a_of_type_Arsc.getItemCount();
   }
   
-  public apyw a(int paramInt)
+  public arry a(int paramInt)
   {
     if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
       return null;
     }
-    return (apyw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return (arry)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
   }
   
   public FlashChatItem a(int paramInt)
   {
     try
     {
-      FlashChatItem localFlashChatItem = ((apyw)this.jdField_a_of_type_Apza.a.get(paramInt)).jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem;
+      FlashChatItem localFlashChatItem = ((arry)this.jdField_a_of_type_Arsc.a.get(paramInt)).jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem;
       return localFlashChatItem;
     }
     catch (Exception localException)
@@ -116,34 +116,34 @@ public class FlashChatTextEffectView
     setOverScrollMode(2);
     this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(getContext(), 3);
     setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
-    this.jdField_a_of_type_MqqOsMqqHandler = new bfnk(this);
-    apze localapze = this.jdField_a_of_type_Apze;
+    this.jdField_a_of_type_MqqOsMqqHandler = new bhoe(this);
+    arsg localarsg = this.jdField_a_of_type_Arsg;
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
     for (BaseChatPie localBaseChatPie = null;; localBaseChatPie = (BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get())
     {
-      this.jdField_a_of_type_Apza = new apza(localapze, localBaseChatPie, this.jdField_a_of_type_Int, this.jdField_a_of_type_MqqOsMqqHandler);
-      setAdapter(this.jdField_a_of_type_Apza);
+      this.jdField_a_of_type_Arsc = new arsc(localarsg, localBaseChatPie, this.jdField_a_of_type_Int, this.jdField_a_of_type_MqqOsMqqHandler);
+      setAdapter(this.jdField_a_of_type_Arsc);
       return;
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Apza.a != null)
+    if (this.jdField_a_of_type_Arsc.a != null)
     {
       int i = 0;
-      if (i < this.jdField_a_of_type_Apza.a.size())
+      if (i < this.jdField_a_of_type_Arsc.a.size())
       {
-        apyw localapyw = (apyw)this.jdField_a_of_type_Apza.a.get(i);
+        arry localarry = (arry)this.jdField_a_of_type_Arsc.a.get(i);
         if (i == paramInt) {}
-        for (localapyw.jdField_a_of_type_Boolean = true;; localapyw.jdField_a_of_type_Boolean = false)
+        for (localarry.jdField_a_of_type_Boolean = true;; localarry.jdField_a_of_type_Boolean = false)
         {
           i += 1;
           break;
         }
       }
     }
-    this.jdField_a_of_type_Apza.notifyDataSetChanged();
+    this.jdField_a_of_type_Arsc.notifyDataSetChanged();
   }
   
   public void b()
@@ -159,19 +159,19 @@ public class FlashChatTextEffectView
     while (((Iterator)localObject).hasNext())
     {
       FlashChatItem localFlashChatItem = (FlashChatItem)((Iterator)localObject).next();
-      apyw localapyw = new apyw();
-      localapyw.jdField_b_of_type_Int = localFlashChatItem.id;
+      arry localarry = new arry();
+      localarry.jdField_b_of_type_Int = localFlashChatItem.id;
       if (localFlashChatItem.id != -100000)
       {
-        localapyw.jdField_b_of_type_JavaLangString = ajya.a(2131704625);
-        localapyw.jdField_a_of_type_JavaLangString = localFlashChatItem.name;
-        localapyw.jdField_a_of_type_Boolean = false;
-        localapyw.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem = localFlashChatItem;
-        this.jdField_a_of_type_JavaUtilArrayList.add(localapyw);
+        localarry.jdField_b_of_type_JavaLangString = alpo.a(2131704997);
+        localarry.jdField_a_of_type_JavaLangString = localFlashChatItem.name;
+        localarry.jdField_a_of_type_Boolean = false;
+        localarry.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem = localFlashChatItem;
+        this.jdField_a_of_type_JavaUtilArrayList.add(localarry);
       }
     }
-    this.jdField_a_of_type_Apza.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Apza.notifyDataSetChanged();
+    this.jdField_a_of_type_Arsc.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Arsc.notifyDataSetChanged();
   }
   
   public void c()
@@ -183,8 +183,8 @@ public class FlashChatTextEffectView
       if (localObject != null)
       {
         localObject = getChildViewHolder((View)localObject);
-        if ((localObject instanceof apzd)) {
-          c((apzd)localObject);
+        if ((localObject instanceof arsf)) {
+          c((arsf)localObject);
         }
       }
       i += 1;
@@ -193,46 +193,47 @@ public class FlashChatTextEffectView
   
   public void d()
   {
-    if (this.jdField_a_of_type_Apza != null) {
-      this.jdField_a_of_type_Apza.a();
+    if (this.jdField_a_of_type_Arsc != null) {
+      this.jdField_a_of_type_Arsc.a();
     }
     if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
       this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
     }
+    setAdapter(null);
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_Apza != null) {
-      this.jdField_a_of_type_Apza.b();
+    if (this.jdField_a_of_type_Arsc != null) {
+      this.jdField_a_of_type_Arsc.b();
     }
   }
   
   public void f()
   {
-    if (this.jdField_a_of_type_Apza != null) {
-      this.jdField_a_of_type_Apza.c();
+    if (this.jdField_a_of_type_Arsc != null) {
+      this.jdField_a_of_type_Arsc.c();
     }
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_Apza != null) {
-      this.jdField_a_of_type_Apza.d();
+    if (this.jdField_a_of_type_Arsc != null) {
+      this.jdField_a_of_type_Arsc.d();
     }
   }
   
   public void h()
   {
-    if (this.jdField_a_of_type_Apza != null) {
+    if (this.jdField_a_of_type_Arsc != null) {
       i();
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    if ((paramMessage.obj instanceof apzd)) {}
-    for (Object localObject = (apzd)paramMessage.obj;; localObject = null)
+    if ((paramMessage.obj instanceof arsf)) {}
+    for (Object localObject = (arsf)paramMessage.obj;; localObject = null)
     {
       switch (paramMessage.what)
       {
@@ -266,7 +267,7 @@ public class FlashChatTextEffectView
             QLog.i("shinkencai", 2, "plays position:" + paramMessage.what);
           }
           if (localObject != null) {
-            b((apzd)localObject);
+            b((arsf)localObject);
           }
           localObject = Message.obtain();
           ((Message)localObject).what = paramMessage.what;
@@ -295,14 +296,20 @@ public class FlashChatTextEffectView
       if (localObject != null)
       {
         localObject = getChildViewHolder((View)localObject);
-        if ((localObject instanceof apzd))
+        if ((localObject instanceof arsf))
         {
-          localObject = (apzd)localObject;
-          this.jdField_a_of_type_Apza.a((apzd)localObject, ((apzd)localObject).getPosition());
+          localObject = (arsf)localObject;
+          this.jdField_a_of_type_Arsc.a((arsf)localObject, ((arsf)localObject).getPosition());
         }
       }
       i += 1;
     }
+  }
+  
+  public void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    d();
   }
   
   protected void onVisibilityChanged(View paramView, int paramInt)
@@ -311,15 +318,15 @@ public class FlashChatTextEffectView
     if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {}
     for (paramView = ((BaseChatPie)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a; paramInt == 0; paramView = BaseApplicationImpl.getApplication().getRuntime())
     {
-      paramView.registObserver(this.jdField_a_of_type_Apyt);
+      paramView.registObserver(this.jdField_a_of_type_Arrv);
       return;
     }
-    paramView.unRegistObserver(this.jdField_a_of_type_Apyt);
+    paramView.unRegistObserver(this.jdField_a_of_type_Arrv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatTextEffectView
  * JD-Core Version:    0.7.0.1
  */

@@ -13,21 +13,26 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import bibw;
-import biby;
+import bkds;
+import bkdu;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 
 public class WadlProvider
   extends ContentProvider
 {
   private static final UriMatcher jdField_a_of_type_AndroidContentUriMatcher = new UriMatcher(-1);
+  public static String a;
+  public static boolean a;
   ContentResolver jdField_a_of_type_AndroidContentContentResolver;
-  bibw jdField_a_of_type_Bibw;
+  bkds jdField_a_of_type_Bkds;
+  private volatile AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   
   static
   {
+    jdField_a_of_type_JavaLangString = "";
     try
     {
       jdField_a_of_type_AndroidContentUriMatcher.addURI("cooperation.wadl.provider", "query_task_qqgame", 0);
@@ -48,68 +53,77 @@ public class WadlProvider
     return Uri.parse("content://cooperation.wadl.provider/" + paramString).buildUpon();
   }
   
+  private void a()
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlProvider", 2, "init...");
+      }
+      this.jdField_a_of_type_Bkds = new bkds(getContext());
+      this.jdField_a_of_type_Bkds.a(this.jdField_a_of_type_Bkds.getReadableDatabase(), this.jdField_a_of_type_Bkds.getWritableDatabase());
+      this.jdField_a_of_type_AndroidContentContentResolver = getContext().getContentResolver();
+    }
+  }
+  
   @Nullable
   public Bundle call(@NonNull String paramString1, @Nullable String paramString2, @Nullable Bundle paramBundle)
   {
-    Object localObject3 = null;
-    Object localObject2 = null;
+    boolean bool2 = false;
+    Object localObject = null;
     if (!"Success".equals(BaseApplicationImpl.sInjectResult)) {}
-    while (!"isAvailable".equals(paramString1)) {
-      return localObject2;
-    }
-    Object localObject1 = BaseApplicationImpl.getApplication();
-    if (localObject1 != null) {}
-    for (localObject1 = ((BaseApplicationImpl)localObject1).getRuntime();; localObject1 = null)
+    do
     {
-      boolean bool;
-      if (localObject1 != null)
+      do
       {
-        bool = ((AppRuntime)localObject1).isLogin();
-        label58:
-        if (!bool) {
-          break label162;
-        }
-        localObject1 = new Bundle();
-        ((Bundle)localObject1).putBoolean("isLogin", true);
+        return null;
+        a();
+      } while (!"isAvailable".equals(paramString1));
+      if (jdField_a_of_type_Boolean) {
+        break;
       }
-      for (;;)
-      {
-        localObject2 = localObject1;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("WadlProvider", 2, "call method=" + paramString1 + ",arg=" + paramString2 + ",extras=" + paramBundle + ",isLogin=" + bool + ",retBundle=" + localObject1);
-        return localObject1;
-        bool = false;
-        break label58;
-        label162:
-        localObject1 = localObject3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("WadlProvider", 2, "call provider fail, is not login");
-          localObject1 = localObject3;
-        }
+    } while (!QLog.isColorLevel());
+    QLog.d("WadlProvider", 2, "call method=" + paramString1 + ",arg=" + paramString2 + ",extras=" + paramBundle + ",providerSwitch=" + jdField_a_of_type_Boolean + ",retBundle=" + null);
+    return null;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    if (localBaseApplicationImpl != null) {
+      localObject = localBaseApplicationImpl.getRuntime();
+    }
+    boolean bool3 = bkdu.a("com.tencent.mobileqq:TMAssistantDownloadSDKService");
+    if (localObject != null) {
+      bool2 = ((AppRuntime)localObject).isLogin();
+    }
+    for (boolean bool1 = ((AppRuntime)localObject).isRunning();; bool1 = false)
+    {
+      localObject = new Bundle();
+      ((Bundle)localObject).putBoolean("isRunning", bool1);
+      ((Bundle)localObject).putBoolean("isLogin", bool2);
+      ((Bundle)localObject).putBoolean("isTMRunning", bool3);
+      if (QLog.isColorLevel()) {
+        QLog.d("WadlProvider", 2, "call method=" + paramString1 + ",arg=" + paramString2 + ",extras=" + paramBundle + ",isRunning=" + bool1 + ",isLogin=" + bool2 + ",isTMRunning=" + bool3);
       }
+      return localObject;
     }
   }
   
   public int delete(@NonNull Uri paramUri, @Nullable String paramString, @Nullable String[] paramArrayOfString)
   {
-    if (!"Success".equals(BaseApplicationImpl.sInjectResult)) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlProvider", 2, "delete uri=" + paramUri);
+    }
+    if ((!"Success".equals(BaseApplicationImpl.sInjectResult)) || (!jdField_a_of_type_Boolean)) {}
     do
     {
       return 0;
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlProvider", 2, "delete uri=" + paramUri);
-      }
+      a();
       switch (jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
       {
       default: 
         return 0;
       }
-      if (!TextUtils.isEmpty(biby.b(paramUri.getQueryParameter("encryptStr"), "^*^%&$((2020ggy!")))
+      if (!TextUtils.isEmpty(bkdu.b(paramUri.getQueryParameter("encryptStr"), jdField_a_of_type_JavaLangString)))
       {
-        int i = this.jdField_a_of_type_Bibw.a(paramString, paramArrayOfString);
+        int i = this.jdField_a_of_type_Bkds.a(paramString, paramArrayOfString);
         this.jdField_a_of_type_AndroidContentContentResolver.notifyChange(paramUri, null);
         return i;
       }
@@ -127,23 +141,24 @@ public class WadlProvider
   @Nullable
   public Uri insert(@NonNull Uri paramUri, @Nullable ContentValues paramContentValues)
   {
-    if (!"Success".equals(BaseApplicationImpl.sInjectResult)) {
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlProvider", 2, "insert uri=" + paramUri);
+    }
+    if ((!"Success".equals(BaseApplicationImpl.sInjectResult)) || (!jdField_a_of_type_Boolean)) {
       paramContentValues = null;
     }
     do
     {
       return paramContentValues;
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlProvider", 2, "insert uri=" + paramUri);
-      }
+      a();
       switch (jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
       {
       default: 
         return paramUri;
       }
-      if (!TextUtils.isEmpty(biby.b(paramUri.getQueryParameter("encryptStr"), "^*^%&$((2020ggy!")))
+      if (!TextUtils.isEmpty(bkdu.b(paramUri.getQueryParameter("encryptStr"), jdField_a_of_type_JavaLangString)))
       {
-        this.jdField_a_of_type_Bibw.a(paramContentValues);
+        this.jdField_a_of_type_Bkds.a(paramContentValues);
         this.jdField_a_of_type_AndroidContentContentResolver.notifyChange(paramUri, null);
         return paramUri;
       }
@@ -158,9 +173,6 @@ public class WadlProvider
     if (QLog.isColorLevel()) {
       QLog.d("WadlProvider", 2, "onCreate");
     }
-    this.jdField_a_of_type_Bibw = new bibw(getContext());
-    this.jdField_a_of_type_Bibw.a(this.jdField_a_of_type_Bibw.getReadableDatabase(), this.jdField_a_of_type_Bibw.getWritableDatabase());
-    this.jdField_a_of_type_AndroidContentContentResolver = getContext().getContentResolver();
     return true;
   }
   
@@ -170,7 +182,7 @@ public class WadlProvider
     if (QLog.isColorLevel()) {
       QLog.d("WadlProvider", 2, "query uri=" + paramUri);
     }
-    if (!"Success".equals(BaseApplicationImpl.sInjectResult))
+    if ((!"Success".equals(BaseApplicationImpl.sInjectResult)) || (!jdField_a_of_type_Boolean))
     {
       paramUri = new MatrixCursor(new String[] { "ret_code" });
       paramUri.addRow(new Object[] { Integer.valueOf(-1000) });
@@ -181,16 +193,17 @@ public class WadlProvider
       do
       {
         return paramUri;
+        a();
         localObject = null;
         switch (jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
         {
         default: 
           return null;
         }
-        if (TextUtils.isEmpty(biby.b(paramUri.getQueryParameter("encryptStr"), "^*^%&$((2020ggy!"))) {
+        if (TextUtils.isEmpty(bkdu.b(paramUri.getQueryParameter("encryptStr"), jdField_a_of_type_JavaLangString))) {
           break;
         }
-        paramArrayOfString1 = this.jdField_a_of_type_Bibw.a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+        paramArrayOfString1 = this.jdField_a_of_type_Bkds.a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
         paramUri = paramArrayOfString1;
       } while (!QLog.isColorLevel());
       QLog.d("WadlProvider", 2, "query cursor=" + paramArrayOfString1);
@@ -203,21 +216,22 @@ public class WadlProvider
   
   public int update(@NonNull Uri paramUri, @Nullable ContentValues paramContentValues, @Nullable String paramString, @Nullable String[] paramArrayOfString)
   {
-    if (!"Success".equals(BaseApplicationImpl.sInjectResult)) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("WadlProvider", 2, "update uri=" + paramUri + ",selection=" + paramString);
+    }
+    if ((!"Success".equals(BaseApplicationImpl.sInjectResult)) || (!jdField_a_of_type_Boolean)) {}
     do
     {
       return 0;
-      if (QLog.isColorLevel()) {
-        QLog.d("WadlProvider", 2, "update uri=" + paramUri + ",selection=" + paramString);
-      }
+      a();
       switch (jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
       {
       default: 
         return 0;
       }
-      if (!TextUtils.isEmpty(biby.b(paramUri.getQueryParameter("encryptStr"), "^*^%&$((2020ggy!")))
+      if (!TextUtils.isEmpty(bkdu.b(paramUri.getQueryParameter("encryptStr"), jdField_a_of_type_JavaLangString)))
       {
-        int i = this.jdField_a_of_type_Bibw.a(paramContentValues, paramString, paramArrayOfString);
+        int i = this.jdField_a_of_type_Bkds.a(paramContentValues, paramString, paramArrayOfString);
         this.jdField_a_of_type_AndroidContentContentResolver.notifyChange(paramUri, null);
         return i;
       }

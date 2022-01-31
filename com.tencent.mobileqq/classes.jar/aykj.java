@@ -1,32 +1,52 @@
-import android.graphics.Paint;
-import android.support.annotation.NonNull;
+import com.tencent.TMG.utils.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
+import pb.unite.search.DynamicSearch.ResultItem;
 
-public abstract class aykj
+public class aykj
+  extends ayju
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  public static final String a = aykj.class.getSimpleName();
+  public String b;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
   
-  public aykj(int paramInt, @NonNull String paramString)
+  public aykj(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  abstract float a(@NonNull Paint paramPaint);
-  
-  int a()
+  public aykj(String paramString, long paramLong, List<String> paramList, DynamicSearch.ResultItem paramResultItem, int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
-  String a()
+  public void a(String paramString)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.b = paramString.optString("leftIcon");
+      this.j = paramString.optString("firstTitle");
+      this.k = paramString.optString("secondTitle");
+      this.l = paramString.optString("moreText");
+      this.m = paramString.optString("jumpUrl");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d(a, 0, paramString.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aykj
  * JD-Core Version:    0.7.0.1
  */

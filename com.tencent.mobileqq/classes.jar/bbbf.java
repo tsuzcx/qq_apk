@@ -1,40 +1,27 @@
-import android.view.SurfaceView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.qphone.base.util.QLog;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
 public class bbbf
+  implements InputFilter
 {
-  public static void a(SurfaceView paramSurfaceView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public bbbf(AbsPublishActivity paramAbsPublishActivity) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if (paramSurfaceView == null)
+    if (paramCharSequence != null)
     {
-      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: surfaceView==null");
-      return;
+      paramCharSequence = paramCharSequence.toString();
+      if (bcht.a(paramCharSequence, '\n') + bcht.a(paramSpanned.toString(), '\n') > 100) {
+        return paramCharSequence.replaceAll("\n", "");
+      }
     }
-    if ((paramInt2 <= 0) || (paramInt1 <= 0) || (paramInt3 <= 0) || (paramInt4 <= 0))
-    {
-      QLog.e("SurfaceViewUtil", 2, "SurfaceViewUtil resetLayoutParams error: width height <= 0");
-      return;
-    }
-    if (paramInt2 / paramInt1 > paramInt4 / paramInt3)
-    {
-      paramInt1 = (int)(paramInt1 * paramInt4 / paramInt3);
-      paramInt1 = (int)((paramInt2 - paramInt1) / 2.0F);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.setMargins(0, paramInt1, 0, paramInt1);
-      paramSurfaceView.setLayoutParams(localLayoutParams);
-      return;
-    }
-    paramInt2 = (int)(paramInt2 * paramInt3 / paramInt4);
-    paramInt1 = (int)((paramInt1 - paramInt2) / 2.0F);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.setMargins(paramInt1, 0, paramInt1, 0);
-    paramSurfaceView.setLayoutParams(localLayoutParams);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbbf
  * JD-Core Version:    0.7.0.1
  */

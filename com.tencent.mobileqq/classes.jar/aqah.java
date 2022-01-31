@@ -1,36 +1,32 @@
-import android.content.Context;
-import com.idlefish.flutterboost.interfaces.INativeRouter;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import java.util.List;
 
 public class aqah
-  implements INativeRouter
+  extends apxc
 {
-  private static aqah a;
+  public aqah(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  public static aqah a()
+  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<apyo> paramList, apyb paramapyb)
   {
-    if (a == null) {}
+    if (this.a.b != paramLong) {
+      return;
+    }
     try
     {
-      if (a == null) {
-        a = new aqah();
-      }
-      return a;
+      ExtendFriendSearchFragment.a(this.a, 1);
+      ExtendFriendSearchFragment.a(this.a, paramBoolean1, paramString, paramBoolean2, paramArrayOfByte, paramBoolean3, paramBoolean4, paramInt, paramList, paramapyb);
+      return;
     }
-    finally {}
-  }
-  
-  public void openContainer(Context paramContext, String paramString, Map<String, Object> paramMap1, int paramInt, Map<String, Object> paramMap2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.router", 2, String.format("openContainer: %s", new Object[] { paramString }));
+    catch (Exception paramString)
+    {
+      QLog.e("ExtendFriendSearchFragment", 1, "onGetSquareStrangerList exception", paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqah
  * JD-Core Version:    0.7.0.1
  */

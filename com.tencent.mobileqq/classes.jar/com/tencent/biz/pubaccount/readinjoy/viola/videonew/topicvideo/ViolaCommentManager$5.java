@@ -4,12 +4,12 @@ import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
-import rzh;
+import sqo;
 
 public class ViolaCommentManager$5
   implements Runnable
 {
-  public ViolaCommentManager$5(rzh paramrzh, VVideoView paramVVideoView, View paramView, ArticleInfo paramArticleInfo, AnchorData paramAnchorData, int paramInt) {}
+  public ViolaCommentManager$5(sqo paramsqo, VVideoView paramVVideoView, View paramView, ArticleInfo paramArticleInfo, AnchorData paramAnchorData, int paramInt) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class ViolaCommentManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.ViolaCommentManager.5
  * JD-Core Version:    0.7.0.1
  */

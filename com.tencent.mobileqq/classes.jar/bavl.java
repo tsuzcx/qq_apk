@@ -1,23 +1,52 @@
+import android.content.res.XmlResourceParser;
+import org.xmlpull.v1.XmlPullParser;
+
 public class bavl
 {
-  final int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  final String jdField_a_of_type_JavaLangString;
-  public final long b;
-  final String b;
+  private bavm jdField_a_of_type_Bavm;
+  private XmlPullParser jdField_a_of_type_OrgXmlpullV1XmlPullParser;
   
-  public bavl(bavg parambavg, String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2)
+  private void a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    String str1 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "extension");
+    String str2 = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getAttributeValue(null, "mimetype");
+    this.jdField_a_of_type_Bavm.a(str1, str2);
+  }
+  
+  public bavm a()
+  {
+    this.jdField_a_of_type_Bavm = new bavm();
+    int i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getEventType();
+    if (i != 1)
+    {
+      String str = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.getName();
+      if (i == 2) {
+        if (!str.equals("MimeTypes")) {}
+      }
+      for (;;)
+      {
+        i = this.jdField_a_of_type_OrgXmlpullV1XmlPullParser.next();
+        break;
+        if (str.equals("type"))
+        {
+          a();
+          continue;
+          if ((i != 3) || (!str.equals("MimeTypes"))) {}
+        }
+      }
+    }
+    return this.jdField_a_of_type_Bavm;
+  }
+  
+  public bavm a(XmlResourceParser paramXmlResourceParser)
+  {
+    this.jdField_a_of_type_OrgXmlpullV1XmlPullParser = paramXmlResourceParser;
+    return a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bavl
  * JD-Core Version:    0.7.0.1
  */

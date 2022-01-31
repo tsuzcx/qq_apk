@@ -1,32 +1,71 @@
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 class ldb
+  extends lcn
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  long b;
-  long c;
-  long d;
-  long e;
-  long f;
+  ldb(lda paramlda, ldq paramldq, Long paramLong) {}
   
-  ldb(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6)
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONArray paramJSONArray)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.d = paramLong4;
-    this.e = paramLong5;
-    this.f = paramLong6;
+    if (QLog.isColorLevel()) {
+      QLog.e("GoogleTranslator", 2, "[ERROR][SHOULD NOT GO HERE][onSuccess] statusCode:" + paramInt);
+    }
   }
   
-  boolean a()
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    return (this.jdField_a_of_type_Long > 0L) && (this.b > 0L) && (this.c > 0L);
+    paramArrayOfHeader = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      paramJSONObject = paramJSONObject.getJSONObject("data");
+      if (paramJSONObject != null)
+      {
+        paramJSONObject = paramJSONObject.getJSONArray("translations");
+        if (paramJSONObject != null)
+        {
+          paramInt = 0;
+          while (paramInt < paramJSONObject.length())
+          {
+            String str1 = ((JSONObject)paramJSONObject.get(paramInt)).getString("translatedText");
+            String str2 = ((JSONObject)paramJSONObject.get(paramInt)).getString("detectedSourceLanguage");
+            if ((paramArrayOfHeader != null) && (localArrayList != null))
+            {
+              paramArrayOfHeader.add(Language.fromString(str2));
+              localArrayList.add(str1);
+            }
+            paramInt += 1;
+          }
+        }
+      }
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
+      this.jdField_a_of_type_Ldq.a(paramArrayOfHeader, localArrayList, this.jdField_a_of_type_JavaLangLong);
+    }
+  }
+  
+  public void a(Throwable paramThrowable, String paramString)
+  {
+    this.jdField_a_of_type_Ldq.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
+    if (QLog.isColorLevel()) {
+      QLog.e("GoogleTranslator", 2, " [onFailure][GoogleTranslateClient] Throwable:" + paramThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ldb
  * JD-Core Version:    0.7.0.1
  */

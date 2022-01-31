@@ -1,38 +1,38 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
-final class vmz
-  implements Animator.AnimatorListener
+public class vmz
+  extends SimpleObserver<weh>
 {
-  vmz(vna paramvna, ValueAnimator paramValueAnimator) {}
+  public vmz(vmu paramvmu) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(weh paramweh)
   {
-    if (this.jdField_a_of_type_Vna != null) {
-      this.jdField_a_of_type_Vna.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
+    super.onNext(paramweh);
+    vmu.a(this.a, paramweh, new ErrorMessage(), true);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onCancel()
   {
-    if (this.jdField_a_of_type_Vna != null) {
-      this.jdField_a_of_type_Vna.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
-    }
+    super.onCancel();
+    wsv.d("Q.qqstory.player.CommentFloatDialogController", "refresh data cancel");
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onError(@NonNull Error paramError)
   {
-    if (this.jdField_a_of_type_Vna != null) {
-      this.jdField_a_of_type_Vna.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    super.onError(paramError);
+    if (((ErrorMessage)paramError).errorCode == 2223)
+    {
+      vmu.a(this.a, vmu.a(this.a), new ErrorMessage(), false);
+      return;
     }
+    vmu.a(this.a, vmu.a(this.a), (ErrorMessage)paramError, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmz
  * JD-Core Version:    0.7.0.1
  */

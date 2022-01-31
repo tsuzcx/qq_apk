@@ -1,31 +1,39 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
+import android.view.View;
 
-public class bkab
-  implements Animation.AnimationListener
+class bkab
+  extends View
 {
-  public bkab(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public bkab(bkaa parambkaa, Context paramContext, View paramView, Drawable paramDrawable)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
-    }
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
-    }
+    super(paramContext);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    setBackgroundDrawable(paramDrawable);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void invalidateDrawable(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
+  {
+    long l = SystemClock.uptimeMillis();
+    this.jdField_a_of_type_AndroidViewView.postDelayed(paramRunnable, paramLong - l);
+  }
+  
+  public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_AndroidViewView.removeCallbacks(paramRunnable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkab
  * JD-Core Version:    0.7.0.1
  */

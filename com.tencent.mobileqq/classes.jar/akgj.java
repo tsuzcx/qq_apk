@@ -1,28 +1,25 @@
-public class akgj
-  implements ajte
+import com.tencent.qphone.base.util.QLog;
+
+class akgj
+  extends amab
 {
-  public void a(boolean paramBoolean, int paramInt) {}
+  akgj(akge paramakge) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
   {
-    if ((paramObject != null) && ((paramObject instanceof Object[]))) {}
-    for (paramObject = (Object[])paramObject;; paramObject = null)
+    String str = String.valueOf(paramLong1);
+    if ((str != null) && (str.equals(akge.a(this.a))))
     {
-      switch (paramInt)
-      {
-      }
-      do
-      {
-        return;
-      } while (paramObject == null);
-      a(paramBoolean, ((Integer)paramObject[0]).intValue());
+      akge.a(this.a, String.valueOf(paramLong2), paramBoolean, paramInt);
+      QLog.d("RobotAdapter", 2, "onAddRobot  success" + paramBoolean + " resultCode " + paramInt);
       return;
     }
+    QLog.i("RobotAdapter", 2, "onAddRobot  troop" + paramLong1 + " cur " + akge.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgj
  * JD-Core Version:    0.7.0.1
  */

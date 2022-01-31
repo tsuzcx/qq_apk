@@ -1,44 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.articlesummary.articlesummary.OutsideLinkInfo;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class qcu
+  implements phj
 {
-  public String a;
-  public String b;
-  public String c;
+  public qcu(ComponentContentRecommend paramComponentContentRecommend, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public qcu(articlesummary.OutsideLinkInfo paramOutsideLinkInfo)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (paramOutsideLinkInfo.title.has()) {
-      this.a = paramOutsideLinkInfo.title.get();
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d(ComponentContentRecommend.a, 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
     }
-    if (paramOutsideLinkInfo.bring_goods_url.has()) {
-      this.b = paramOutsideLinkInfo.bring_goods_url.get();
+    if (paramBoolean)
+    {
+      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (paramInt == 2) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramString.isFollowed = paramBoolean;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+        ComponentContentRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend).notifyDataSetChanged();
+        return;
+      }
     }
-    if (paramOutsideLinkInfo.icon_url.has()) {
-      this.c = paramOutsideLinkInfo.icon_url.get();
-    }
-  }
-  
-  public articlesummary.OutsideLinkInfo a()
-  {
-    articlesummary.OutsideLinkInfo localOutsideLinkInfo = new articlesummary.OutsideLinkInfo();
-    if (!TextUtils.isEmpty(this.c)) {
-      localOutsideLinkInfo.icon_url.set(this.c);
-    }
-    if (!TextUtils.isEmpty(this.b)) {
-      localOutsideLinkInfo.bring_goods_url.set(this.b);
-    }
-    if (!TextUtils.isEmpty(this.a)) {
-      localOutsideLinkInfo.title.set(this.a);
-    }
-    return localOutsideLinkInfo;
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommend.getContext(), 1, 2131718949, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qcu
  * JD-Core Version:    0.7.0.1
  */

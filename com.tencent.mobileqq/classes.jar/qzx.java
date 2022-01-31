@@ -1,15 +1,31 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoAdExposureManager.PosListener.1;
+import java.lang.ref.WeakReference;
 
-public abstract interface qzx
+public final class qzx
+  implements pfu
 {
-  public abstract void a(View paramView, int paramInt, ArticleInfo paramArticleInfo, ArrayList<DislikeInfo> paramArrayList);
+  private WeakReference<qzw> a;
+  
+  public qzx(qzw paramqzw)
+  {
+    this.a = new WeakReference(paramqzw);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.a != null)
+    {
+      qzw localqzw = (qzw)this.a.get();
+      if ((localqzw != null) && (qzw.a(localqzw) != null)) {
+        qzw.a(localqzw).post(new VideoAdExposureManager.PosListener.1(this, localqzw, paramInt));
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qzx
  * JD-Core Version:    0.7.0.1
  */

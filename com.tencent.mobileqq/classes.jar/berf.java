@@ -1,22 +1,45 @@
-import java.lang.reflect.Field;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.SlideTabWidget;
 
-public final class berf
+public class berf
+  extends Handler
 {
-  public final int a;
-  public final String a;
-  public final Field a;
+  public berf(SlideTabWidget paramSlideTabWidget) {}
   
-  public berf(String paramString, int paramInt, Field paramField)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangReflectField = paramField;
-    paramField.setAccessible(true);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      SlideTabWidget.a(this.a, 0.0F);
+      SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
+      this.a.invalidate();
+      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
+      return;
+    case 1: 
+      if (SlideTabWidget.a(this.a) < 1.0F)
+      {
+        SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
+        if (SlideTabWidget.a(this.a) >= 1.0F) {
+          SlideTabWidget.a(this.a, false);
+        }
+        this.a.invalidate();
+        sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
+        return;
+      }
+      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(2), 10L);
+      return;
+    }
+    SlideTabWidget.a(this.a, 1.0F);
+    SlideTabWidget.a(this.a, SlideTabWidget.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     berf
  * JD-Core Version:    0.7.0.1
  */

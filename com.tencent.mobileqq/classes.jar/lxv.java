@@ -1,23 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.ui.RedPacketGameView;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
 
-public final class lxv
-  implements Parcelable.Creator<RecvMsg>
+public class lxv
+  implements View.OnClickListener
 {
-  public RecvMsg a(Parcel paramParcel)
-  {
-    return new RecvMsg(paramParcel);
-  }
+  public lxv(RedPacketGameView paramRedPacketGameView, long paramLong) {}
   
-  public RecvMsg[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new RecvMsg[paramInt];
+    paramView = this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameView.a();
+    if (paramView != null)
+    {
+      paramView.a.i(this.jdField_a_of_type_Long);
+      ((VideoAppInterface)paramView.getAppRuntime()).a(new Object[] { Integer.valueOf(105), Boolean.valueOf(true), Long.valueOf(this.jdField_a_of_type_Long) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxv
  * JD-Core Version:    0.7.0.1
  */

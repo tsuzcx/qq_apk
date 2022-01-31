@@ -1,29 +1,19 @@
-import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class arih
-  implements wxt
+  implements View.OnClickListener
 {
-  arih(arig paramarig) {}
+  arih(arif paramarif) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    int i = paramBundle.getInt("msg");
-    if (i == 90)
-    {
-      arig.a(this.a, paramBundle.getInt("state"));
-      arig.a(this.a, arig.a(this.a), arig.b(this.a));
-    }
-    while (i != 91) {
-      return;
-    }
-    i = paramBundle.getInt("errCode");
-    paramBundle = paramBundle.getString("desc");
-    arig.a(this.a, i, paramBundle);
+    arif.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arih
  * JD-Core Version:    0.7.0.1
  */

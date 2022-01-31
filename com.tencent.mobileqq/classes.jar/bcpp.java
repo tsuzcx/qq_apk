@@ -1,28 +1,101 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ProfileNameView;
+import android.graphics.Color;
+import com.tencent.mobileqq.data.RecommendLabel;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.Color;
+import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.Label;
+import tencent.im.oidb.cmd0xe3b.oidb_0xe3b.RecommendPerson;
 
 public class bcpp
-  implements View.OnClickListener
 {
-  public bcpp(ProfileNameView paramProfileNameView, auuy paramauuy) {}
+  public int a;
+  public String a;
+  public ArrayList<RecommendLabel> a;
+  public int b;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public static bcpp a(oidb_0xe3b.RecommendPerson paramRecommendPerson)
   {
-    String str = balw.a().a(this.jdField_a_of_type_Auuy.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Auuy.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("url", str);
-    paramView.getContext().startActivity(localIntent);
-    axqy.b(null, "dc00898", "", "", "0X800A708", "0X800A708", 0, 0, "", "", "", "");
+    int j = -1;
+    bcpp localbcpp = new bcpp();
+    localbcpp.jdField_a_of_type_JavaLangString = String.valueOf(paramRecommendPerson.uint64_uin.get());
+    Object localObject;
+    label74:
+    int i;
+    label98:
+    oidb_0xe3b.Label localLabel;
+    label173:
+    RecommendLabel localRecommendLabel;
+    if (paramRecommendPerson.bytes_title.has())
+    {
+      localObject = paramRecommendPerson.bytes_title.get().toStringUtf8();
+      localbcpp.jdField_b_of_type_JavaLangString = ((String)localObject);
+      if (!paramRecommendPerson.bytes_reason.has()) {
+        break label404;
+      }
+      localObject = paramRecommendPerson.bytes_reason.get().toStringUtf8();
+      localbcpp.c = ((String)localObject);
+      if (!paramRecommendPerson.uint32_age.has()) {
+        break label410;
+      }
+      i = paramRecommendPerson.uint32_age.get();
+      localbcpp.jdField_a_of_type_Int = i;
+      i = j;
+      if (paramRecommendPerson.uint32_gender.has()) {
+        i = paramRecommendPerson.uint32_gender.get();
+      }
+      localbcpp.jdField_b_of_type_Int = i;
+      if (!paramRecommendPerson.rpt_msg_label.has()) {
+        break label421;
+      }
+      paramRecommendPerson = paramRecommendPerson.rpt_msg_label.get();
+      localbcpp.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramRecommendPerson.size());
+      localObject = paramRecommendPerson.iterator();
+      if (!((Iterator)localObject).hasNext()) {
+        break label421;
+      }
+      localLabel = (oidb_0xe3b.Label)((Iterator)localObject).next();
+      localRecommendLabel = new RecommendLabel();
+      if (!localLabel.bytes_name.has()) {
+        break label415;
+      }
+    }
+    label404:
+    label410:
+    label415:
+    for (paramRecommendPerson = localLabel.bytes_name.get().toStringUtf8();; paramRecommendPerson = "")
+    {
+      localRecommendLabel.bytes_name = paramRecommendPerson;
+      localRecommendLabel.uint32_label_type = localLabel.uint32_label_type.get();
+      if (localLabel.text_color.has()) {
+        localRecommendLabel.text_color = Color.rgb(((oidb_0xe3b.Color)localLabel.text_color.get()).uint32_r.get(), ((oidb_0xe3b.Color)localLabel.text_color.get()).uint32_g.get(), ((oidb_0xe3b.Color)localLabel.text_color.get()).uint32_b.get());
+      }
+      if (localLabel.edging_color.has()) {
+        localRecommendLabel.edging_color = Color.rgb(((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_r.get(), ((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_g.get(), ((oidb_0xe3b.Color)localLabel.edging_color.get()).uint32_b.get());
+      }
+      localbcpp.jdField_a_of_type_JavaUtilArrayList.add(localRecommendLabel);
+      break label173;
+      localObject = "";
+      break;
+      localObject = "";
+      break label74;
+      i = -1;
+      break label98;
+    }
+    label421:
+    return localbcpp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcpp
  * JD-Core Version:    0.7.0.1
  */

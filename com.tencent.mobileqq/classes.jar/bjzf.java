@@ -1,67 +1,124 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import java.util.Iterator;
-import java.util.List;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadVideoThumbJob;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONObject;
 
 class bjzf
-  extends SimpleObserver<bkld>
+  implements bjyt
 {
   bjzf(bjze parambjze) {}
   
-  public void a(bkld parambkld)
+  public void a(int paramInt)
   {
-    super.onNext(parambkld);
-    this.a.jdField_a_of_type_Bjyv.b();
-    this.a.jdField_a_of_type_Bjyv.getActivity().overridePendingTransition(0, 0);
-    this.a.p();
-    this.a.jdField_b_of_type_Boolean = false;
-    Object localObject = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((bjxl)((Iterator)localObject).next()).b(parambkld);
-    }
-    this.a.jdField_b_of_type_Boolean = false;
-    this.a.jdField_a_of_type_Bjyv.b();
-    localObject = (bjxx)this.a.a(bjxx.class);
-    if (localObject != null) {
-      ((bjxx)localObject).l();
-    }
-    if (this.a.jdField_b_of_type_JavaUtilList.isEmpty())
+    JSONObject localJSONObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_Bjzd.c, this.a.jdField_a_of_type_Int, this.a.b, "uploading", "", 0);
+    try
     {
-      localObject = this.a.jdField_a_of_type_Bjyv.getActivity();
-      if (localObject != null)
+      if (this.a.b == 2)
       {
-        ((EditWebVideoActivity)localObject).d(ajya.a(2131703976));
-        bjze.a(this.a, (Activity)localObject, this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a, parambkld.a);
+        float f2 = paramInt / 100.0F * 0.85F + 0.1F;
+        f1 = f2;
+        if (f2 <= 1.0F) {}
+      }
+      for (float f1 = 1.0F;; f1 = paramInt / 100.0F)
+      {
+        localJSONObject.put("progress", f1);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("TroopHWJsPlugin", 4, "id = " + this.a.jdField_a_of_type_Int + " progress = " + paramInt + " realProgress = " + f1);
+        }
+        this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_Bjzd.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+        this.a.jdField_a_of_type_Boolean = true;
+        return;
       }
       return;
     }
-    bcql.a(this.a.jdField_a_of_type_Bjyv.a(), ajya.a(2131703972), 0).a();
-    this.a.jdField_a_of_type_Bjyv.getActivity().finish();
-  }
-  
-  public void onCancel()
-  {
-    super.onCancel();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    this.a.jdField_b_of_type_JavaUtilList.add(paramError);
-    if (QLog.isColorLevel()) {
-      QLog.e("EditWebVideoActivity", 2, "publish error:", paramError);
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
-    bcql.a(this.a.jdField_a_of_type_Bjyv.a(), ajya.a(2131703975), 0).a();
-    this.a.jdField_a_of_type_Bjyv.getActivity().finish();
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHWJsPlugin", 2, "onComplete id = " + this.a.jdField_a_of_type_Int + " url = " + paramString);
+    }
+    if (this.a.b == 0) {}
+    for (int i = 11;; i = 0)
+    {
+      Object localObject = "uploaded";
+      if (this.a.b == 2) {
+        localObject = "uploading";
+      }
+      localObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_Bjzd.c, this.a.jdField_a_of_type_Int, this.a.b, (String)localObject, paramString, i);
+      this.a.jdField_a_of_type_JavaLangString = paramString;
+      do
+      {
+        for (;;)
+        {
+          try
+          {
+            ((JSONObject)localObject).put("result", 0);
+            if (2 == this.a.b)
+            {
+              ((JSONObject)localObject).put("progress", 0.949999988079071D);
+              if (this.a.b != 2) {
+                this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_Bjzd.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+              }
+              this.a.jdField_a_of_type_Boolean = false;
+              if (!this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+                break;
+              }
+              return;
+            }
+            if (this.a.b == 1)
+            {
+              ((JSONObject)localObject).put("progress", 1.0D);
+              ((JSONObject)localObject).put("size", "[0,400,694,1000]");
+              continue;
+            }
+            if (this.a.b != 0) {
+              continue;
+            }
+          }
+          catch (Exception paramString)
+          {
+            paramString.printStackTrace();
+            return;
+          }
+          ((JSONObject)localObject).put("progress", 1.0D);
+        }
+      } while (this.a.b != 2);
+      paramString = new bjzg(this);
+      ThreadManager.postImmediately(new TroopHWJsPlugin.UploadVideoThumbJob(this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, this.a, paramString, TroopHWJsPlugin.a(this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin)), null, false);
+      return;
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    QLog.d("TroopHWJsPlugin", 1, "upload failed! errorCode = " + paramInt);
+    this.a.jdField_a_of_type_Boolean = false;
+    JSONObject localJSONObject = this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.a.jdField_a_of_type_Bjzd.c, this.a.jdField_a_of_type_Int, this.a.b, "uploaded", "", 0);
+    try
+    {
+      localJSONObject.put("result", paramInt);
+      this.a.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.callJs(this.a.jdField_a_of_type_Bjzd.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("TroopHWJsPlugin", 1, "upload error!", localException);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjzf
  * JD-Core Version:    0.7.0.1
  */

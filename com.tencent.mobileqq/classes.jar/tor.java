@@ -1,65 +1,51 @@
-import com.tencent.biz.qqstory.database.VideoUrlEntry;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFullInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoUrl;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionListView;
 
-public class tor
-  extends syn
+class tor
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public List<StoryVideoItem> a = new ArrayList();
-  public int b;
-  public List<List<VideoUrlEntry>> b;
+  private tor(toi paramtoi) {}
   
-  public tor(qqstory_service.RspBatchGetVideoFullInfoList paramRspBatchGetVideoFullInfoList)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    super(paramRspBatchGetVideoFullInfoList.result);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    Object localObject1 = paramRspBatchGetVideoFullInfoList.video_list.get();
-    if (localObject1 != null)
-    {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (qqstory_struct.StoryVideoFullInfo)((Iterator)localObject1).next();
-        StoryVideoItem localStoryVideoItem = new StoryVideoItem();
-        localStoryVideoItem.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject2);
-        this.a.add(localStoryVideoItem);
-        Object localObject3 = ((qqstory_struct.StoryVideoFullInfo)localObject2).compressed_video.get();
-        if (localObject3 != null)
-        {
-          localObject2 = new ArrayList(((List)localObject3).size());
-          localObject3 = ((List)localObject3).iterator();
-          while (((Iterator)localObject3).hasNext())
-          {
-            qqstory_struct.VideoUrl localVideoUrl = (qqstory_struct.VideoUrl)((Iterator)localObject3).next();
-            VideoUrlEntry localVideoUrlEntry = new VideoUrlEntry();
-            localVideoUrlEntry.vid = localStoryVideoItem.mVid;
-            localVideoUrlEntry.videoUrlLevel = localVideoUrl.video_level.get();
-            localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
-            ((List)localObject2).add(localVideoUrlEntry);
-          }
-          this.jdField_b_of_type_JavaUtilList.add(localObject2);
-        }
-      }
-    }
-    this.jdField_b_of_type_Int = paramRspBatchGetVideoFullInfoList.interact_status.get();
+    com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity.a = true;
+    toi.b(this.a);
+    return false;
   }
   
-  public String toString()
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    return "GetVideoBasicInfoListResponse{mVideoItemList=" + this.a + '}';
+    return super.onDoubleTapEvent(paramMotionEvent);
+  }
+  
+  public boolean onDown(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent)
+  {
+    super.onShowPress(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    if ((!(toi.a(this.a).getTag() instanceof top)) || (((toi.a(this.a).getTag() instanceof top)) && (!toi.a(this.a).a(toi.a(this.a)).booleanValue()))) {
+      toi.c(this.a);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tor
  * JD-Core Version:    0.7.0.1
  */

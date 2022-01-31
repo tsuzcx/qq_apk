@@ -1,121 +1,56 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class biwp
-  extends bjow
+class biwp
+  extends biwh
 {
-  private biwo jdField_a_of_type_Biwo;
-  private bjor<biwo> jdField_a_of_type_Bjor = new bjor();
-  private boolean jdField_a_of_type_Boolean;
-  private biwo jdField_b_of_type_Biwo;
-  private boolean jdField_b_of_type_Boolean;
+  biwp(biwo parambiwo) {}
   
-  public biwo a(bijd parambijd)
+  public void b(@NonNull biwi parambiwi)
   {
-    String str;
-    if (this.jdField_b_of_type_Biwo == null) {
-      str = biij.a;
-    }
-    try
+    int i = 1;
+    for (;;)
     {
-      i = Integer.parseInt(str);
-      int j;
-      if (i >= 0)
+      try
       {
-        j = i;
-        if (i < biwo.a(parambijd).length) {}
+        parambiwi = parambiwi.a();
+        bixe.c("ReaderShadowGrayManager", "onReceiveDataOnSubThread: jsonResult:" + parambiwi);
+        if (parambiwi == null) {
+          break;
+        }
+        if (parambiwi.length() == 0) {
+          return;
+        }
+        if ((parambiwi.getInt("ret") == 0) && (parambiwi.getJSONObject("data").getBoolean("isGrayUser")))
+        {
+          bool = true;
+          biwo.a(true);
+          parambiwi = biwo.a().edit();
+          if (!bool) {
+            break label140;
+          }
+          parambiwi.putInt("KEY_SHADOW_GRAY", i).apply();
+          bixe.c("ReaderShadowGrayManager", "onReceiveDataOnSubThread: result=" + bool);
+          return;
+        }
       }
-      else
+      catch (Exception parambiwi)
       {
-        j = 0;
+        bixe.a("ReaderShadowGrayManager", "onReceiveDataOnSubThread: Exception happened ---> ", parambiwi);
+        return;
       }
-      this.jdField_b_of_type_Biwo = biwo.a(parambijd)[j];
-      if (QLog.isColorLevel()) {
-        QLog.i("AEVideoStoryCaptureModeViewModel", 2, "[getTestingMode], app_alg_entrance_id=" + j);
-      }
-      return this.jdField_b_of_type_Biwo;
+      boolean bool = false;
+      continue;
+      label140:
+      i = 0;
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
-      {
-        int i = 0;
-      }
-    }
-  }
-  
-  public bjor<biwo> a()
-  {
-    return this.jdField_a_of_type_Bjor;
-  }
-  
-  public void a(@NonNull biwo parambiwo)
-  {
-    this.jdField_a_of_type_Biwo = parambiwo;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Bjor.a() == null) {
-      if (this.jdField_a_of_type_Biwo != biwo.c) {}
-    }
-    while (this.jdField_a_of_type_Bjor.a() == biwo.c)
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_b_of_type_Boolean = paramBoolean;
-  }
-  
-  public boolean b()
-  {
-    if (this.jdField_a_of_type_Bjor.a() == null) {
-      if (this.jdField_a_of_type_Biwo != biwo.jdField_a_of_type_Biwo) {}
-    }
-    while (this.jdField_a_of_type_Bjor.a() == biwo.jdField_a_of_type_Biwo)
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  public boolean c()
-  {
-    if (this.jdField_a_of_type_Bjor.a() == null) {
-      if (this.jdField_a_of_type_Biwo != biwo.jdField_b_of_type_Biwo) {}
-    }
-    while (this.jdField_a_of_type_Bjor.a() == biwo.jdField_b_of_type_Biwo)
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean e()
-  {
-    return this.jdField_b_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biwp
  * JD-Core Version:    0.7.0.1
  */

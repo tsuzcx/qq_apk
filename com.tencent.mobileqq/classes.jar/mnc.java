@@ -1,72 +1,329 @@
 import android.content.Context;
-import android.os.Environment;
-import android.os.StatFs;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager;
+import android.view.WindowManager.BadTokenException;
+import android.view.WindowManager.LayoutParams;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.av.ui.VideoInviteFloatBar.1;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FileInputStream;
-import java.text.SimpleDateFormat;
 
 public class mnc
+  implements View.OnClickListener, View.OnTouchListener
 {
-  public static String a = ".mp4";
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int = 0;
+  private Context jdField_a_of_type_AndroidContentContext;
+  Intent jdField_a_of_type_AndroidContentIntent = null;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  private View jdField_a_of_type_AndroidViewView;
+  private WindowManager.LayoutParams jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+  WindowManager jdField_a_of_type_AndroidViewWindowManager;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new VideoInviteFloatBar.1(this);
+  String jdField_a_of_type_JavaLangString = null;
+  boolean jdField_a_of_type_Boolean = false;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int = 2131755815;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  boolean jdField_b_of_type_Boolean = true;
+  private float jdField_c_of_type_Float;
+  boolean jdField_c_of_type_Boolean = false;
+  private float jdField_d_of_type_Float;
+  private boolean jdField_d_of_type_Boolean;
   
-  public static long a()
+  public mnc(Context paramContext)
   {
-    File localFile = Environment.getExternalStorageDirectory();
-    try
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131559650, null);
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(this);
+  }
+  
+  public TextView a()
+  {
+    return (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370958);
+  }
+  
+  public void a()
+  {
+    Log.i("VideoInviteFloatBar", "hide");
+    if (!this.jdField_d_of_type_Boolean) {}
+    do
     {
-      StatFs localStatFs = new StatFs(localFile.getPath());
-      long l1 = localStatFs.getBlockSize();
-      long l2 = localStatFs.getAvailableBlocks();
-      if (QLog.isColorLevel()) {
-        QLog.d("FileSwapHelper", 2, "getStorageLeft left=" + l1 * l2);
+      for (;;)
+      {
+        return;
+        this.jdField_d_of_type_Boolean = false;
+        try
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VideoInviteFloatBar", 2, "hide removeView start");
+          }
+          if (this.jdField_a_of_type_AndroidViewWindowManager != null) {
+            this.jdField_a_of_type_AndroidViewWindowManager.removeView(this.jdField_a_of_type_AndroidViewView);
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("VideoInviteFloatBar", 2, "hide removeView end");
+            return;
+          }
+        }
+        catch (Exception localException) {}
       }
-      return l1 * l2;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("FileSwapHelper", 1, "getSpaceLeft exception:" + localThrowable + ", path=" + localFile, localThrowable);
-    }
-    return 2147483647L;
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoInviteFloatBar", 2, "hide error : " + localException);
   }
   
-  public static long a(File paramFile)
+  public void a(Bitmap paramBitmap)
   {
-    if (paramFile.exists())
-    {
-      paramFile = new FileInputStream(paramFile);
-      long l = paramFile.available();
-      paramFile.close();
-      return l;
-    }
-    QLog.e("FileSwapHelper", 1, new Object[] { "获取文件大小", "文件不存在!" });
-    return 0L;
+    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365910)).setImageBitmap(paramBitmap);
   }
   
-  public static String a()
+  public void a(Bitmap paramBitmap, String paramString)
   {
-    String str = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM).getAbsolutePath();
-    str = str + "/QQVideo/";
-    str = str + new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(Long.valueOf(System.currentTimeMillis()));
-    str = str + a;
-    File localFile = new File(str).getParentFile();
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return str;
+    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365910)).setImageBitmap(paramBitmap);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370958)).setText(paramString);
   }
   
-  public static void a(String paramString, Context paramContext)
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370205));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean1;
+    this.jdField_c_of_type_Boolean = paramBoolean2;
+    this.jdField_a_of_type_Boolean = paramBoolean3;
+    QLog.w("VideoInviteFloatBar", 1, "show, mIsAudioMode[" + this.jdField_b_of_type_Boolean + "], misMultiCall[" + this.jdField_c_of_type_Boolean + "], mIsMultiIncomingCall[" + this.jdField_a_of_type_Boolean + "]");
+    if (this.jdField_d_of_type_Boolean) {
+      return;
+    }
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370205);
+    Button localButton1 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131361813);
+    Button localButton2 = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131375573);
+    localButton1.setClickable(true);
+    localButton2.setClickable(true);
+    localButton1.setOnClickListener(this);
+    localButton2.setOnClickListener(this);
+    if (paramBoolean3) {
+      if (this.jdField_b_of_type_Boolean) {
+        localTextView.setText(localTextView.getResources().getString(2131695821));
+      }
+    }
+    for (;;)
+    {
+      b();
+      if (this.jdField_a_of_type_Int <= 0) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int * 1000);
+      return;
+      localTextView.setText(localTextView.getResources().getString(2131695822));
+      continue;
+      if (this.jdField_b_of_type_Boolean) {
+        localTextView.setText(localTextView.getResources().getString(2131695820));
+      } else {
+        localTextView.setText(localTextView.getResources().getString(2131695823));
+      }
+    }
+  }
+  
+  void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("FileSwapHelper", 2, "notifyMp4Saved=" + paramString);
+      QLog.d("VideoInviteFloatBar", 2, "initTN");
     }
-    vyf.a(paramContext, new File(paramString));
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
+        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -2;
+        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -1;
+        this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 2098088;
+        if (Build.VERSION.SDK_INT >= 26)
+        {
+          this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2038;
+          this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = -3;
+          if (Build.VERSION.SDK_INT >= 19)
+          {
+            WindowManager.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+            localLayoutParams.flags |= 0x4000000;
+          }
+          this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 49;
+          if (this.jdField_b_of_type_Int != -1) {
+            this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.windowAnimations = this.jdField_b_of_type_Int;
+          }
+        }
+      }
+      catch (Exception localException1)
+      {
+        localException1.printStackTrace();
+        continue;
+      }
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoInviteFloatBar", 2, "startHandler addView start");
+        }
+        this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+        this.jdField_d_of_type_Boolean = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoInviteFloatBar", 2, "startHandler addView end");
+        }
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        this.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("VideoInviteFloatBar", 2, "startHandler error : " + localIllegalStateException);
+        return;
+      }
+      catch (WindowManager.BadTokenException localBadTokenException)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("VideoInviteFloatBar", 2, "startHandler error : " + localBadTokenException);
+        return;
+      }
+      catch (SecurityException localSecurityException)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("VideoInviteFloatBar", 2, "startHandler error : " + localSecurityException);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        lek.e("VideoInviteFloatBar", "startHandler error : " + localException2);
+      }
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 2010;
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131377830));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+  }
+  
+  public void c()
+  {
+    Object localObject = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131361813);
+    Button localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131375573);
+    ((Button)localObject).setVisibility(4);
+    localButton.setVisibility(4);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+    localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370205);
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370205));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    this.jdField_a_of_type_AndroidViewView.invalidate();
+  }
+  
+  public void d(String paramString)
+  {
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370958)).setText(paramString);
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131361813: 
+      l = AudioHelper.b();
+      QLog.w("VideoInviteFloatBar", 1, "onClick accept, mIsMultiIncomingCall[" + this.jdField_a_of_type_Boolean + "], misMultiCall[" + this.jdField_c_of_type_Boolean + "], seq[" + l + "]");
+      paramView = new Intent();
+      mwd.a(paramView, l);
+      if (this.jdField_a_of_type_Boolean) {
+        paramView.setAction("tencent.video.invite.multiaccept");
+      }
+      for (;;)
+      {
+        ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131361813)).setClickable(false);
+        ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131375573)).setClickable(false);
+        paramView.setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
+        this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramView);
+        return;
+        if (this.jdField_c_of_type_Boolean) {
+          paramView.setAction("tencent.video.invite.gaaccept");
+        } else {
+          paramView.setAction("tencent.video.invite.accept");
+        }
+      }
+    }
+    long l = AudioHelper.b();
+    QLog.w("VideoInviteFloatBar", 1, "onClick reject, mIsMultiIncomingCall[" + this.jdField_a_of_type_Boolean + "], misMultiCall[" + this.jdField_c_of_type_Boolean + "], seq[" + l + "]");
+    paramView = new Intent();
+    mwd.a(paramView, l);
+    if (this.jdField_a_of_type_Boolean) {
+      paramView.setAction("tencent.video.invite.multirefuse");
+    }
+    for (;;)
+    {
+      paramView.setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
+      this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramView);
+      a();
+      return;
+      if (this.jdField_c_of_type_Boolean) {
+        paramView.setAction("tencent.video.invite.gaignore");
+      } else {
+        paramView.setAction("tencent.video.invite.refuse");
+      }
+    }
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    this.jdField_c_of_type_Float = paramMotionEvent.getRawX();
+    this.jdField_d_of_type_Float = paramMotionEvent.getRawY();
+    Log.i("currP", "currX" + this.jdField_c_of_type_Float + "====currY" + this.jdField_d_of_type_Float);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.jdField_b_of_type_Float = paramMotionEvent.getY();
+      continue;
+      if (paramMotionEvent.getY() - this.jdField_b_of_type_Float < 0.0F) {
+        a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mnc
  * JD-Core Version:    0.7.0.1
  */

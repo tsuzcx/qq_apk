@@ -1,13 +1,13 @@
 package com.tencent.open.virtual;
 
-import bdnp;
-import bdod;
-import bdom;
+import bfmm;
+import bfna;
+import bfnj;
 
 public class OpenSdkVirtualManager$4
   implements Runnable
 {
-  public OpenSdkVirtualManager$4(bdod parambdod, String paramString1, String paramString2, bdnp parambdnp, bdom parambdom) {}
+  public OpenSdkVirtualManager$4(bfna parambfna, String paramString1, String paramString2, bfmm parambfmm, bfnj parambfnj) {}
   
   /* Error */
   public void run()
@@ -24,7 +24,7 @@ public class OpenSdkVirtualManager$4
     //   14: iconst_0
     //   15: putfield 45	com/tencent/mobileqq/pic/CompressInfo:f	I
     //   18: aload_2
-    //   19: invokestatic 50	auos:a	(Lcom/tencent/mobileqq/pic/CompressInfo;)Z
+    //   19: invokestatic 50	awga:a	(Lcom/tencent/mobileqq/pic/CompressInfo;)Z
     //   22: pop
     //   23: invokestatic 56	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   26: ifeq +41 -> 67
@@ -57,7 +57,7 @@ public class OpenSdkVirtualManager$4
     //   64: invokestatic 66	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;I[Ljava/lang/Object;)V
     //   67: aload_2
     //   68: getfield 69	com/tencent/mobileqq/pic/CompressInfo:e	Ljava/lang/String;
-    //   71: invokestatic 74	bbkk:a	(Ljava/lang/String;)Z
+    //   71: invokestatic 74	bdje:a	(Ljava/lang/String;)Z
     //   74: ifne +558 -> 632
     //   77: new 76	java/io/File
     //   80: dup
@@ -199,8 +199,8 @@ public class OpenSdkVirtualManager$4
     //   309: aload 4
     //   311: ldc 144
     //   313: aload_0
-    //   314: getfield 23	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bdnp	Lbdnp;
-    //   317: getfield 147	bdnp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   314: getfield 23	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bfmm	Lbfmm;
+    //   317: getfield 147	bfmm:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   320: invokestatic 153	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   323: invokevirtual 156	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
     //   326: pop
@@ -235,22 +235,22 @@ public class OpenSdkVirtualManager$4
     //   372: aload_3
     //   373: astore_2
     //   374: aload_0
-    //   375: getfield 17	com/tencent/open/virtual/OpenSdkVirtualManager$4:this$0	Lbdod;
+    //   375: getfield 17	com/tencent/open/virtual/OpenSdkVirtualManager$4:this$0	Lbfna;
     //   378: iconst_0
-    //   379: invokestatic 169	bdod:a	(Lbdod;I)I
+    //   379: invokestatic 169	bfna:a	(Lbfna;I)I
     //   382: pop
     //   383: aload_3
     //   384: astore_2
     //   385: aload_0
-    //   386: getfield 17	com/tencent/open/virtual/OpenSdkVirtualManager$4:this$0	Lbdod;
+    //   386: getfield 17	com/tencent/open/virtual/OpenSdkVirtualManager$4:this$0	Lbfna;
     //   389: aload_0
-    //   390: getfield 23	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bdnp	Lbdnp;
+    //   390: getfield 23	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bfmm	Lbfmm;
     //   393: aload_0
     //   394: getfield 19	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   397: aload 4
     //   399: aload_0
-    //   400: getfield 25	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bdom	Lbdom;
-    //   403: invokestatic 172	bdod:a	(Lbdod;Lbdnp;Ljava/lang/String;Lorg/json/JSONObject;Lbdom;)V
+    //   400: getfield 25	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bfnj	Lbfnj;
+    //   403: invokestatic 172	bfna:a	(Lbfna;Lbfmm;Ljava/lang/String;Lorg/json/JSONObject;Lbfnj;)V
     //   406: aload_3
     //   407: ifnull +7 -> 414
     //   410: aload_3
@@ -264,16 +264,16 @@ public class OpenSdkVirtualManager$4
     //   423: ldc 177
     //   425: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   428: aload_0
-    //   429: getfield 25	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bdom	Lbdom;
+    //   429: getfield 25	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bfnj	Lbfnj;
     //   432: ifnull +18 -> 450
     //   435: aload_0
-    //   436: getfield 25	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bdom	Lbdom;
+    //   436: getfield 25	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_Bfnj	Lbfnj;
     //   439: iconst_0
     //   440: aload_0
     //   441: getfield 19	com/tencent/open/virtual/OpenSdkVirtualManager$4:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   444: aconst_null
     //   445: bipush 254
-    //   447: invokevirtual 185	bdom:a	(ZLjava/lang/String;Ljava/lang/String;I)V
+    //   447: invokevirtual 185	bfnj:a	(ZLjava/lang/String;Ljava/lang/String;I)V
     //   450: return
     //   451: astore_2
     //   452: ldc 58

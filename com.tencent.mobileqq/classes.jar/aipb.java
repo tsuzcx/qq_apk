@@ -1,112 +1,52 @@
-import android.content.Context;
-import android.graphics.Color;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class aipb
-  extends BaseAdapter
+class aipb
+  implements View.OnClickListener
 {
-  protected int a;
-  protected akgc a;
-  protected Context a;
-  protected View a;
-  protected QQAppInterface a;
-  public List<String> a;
+  aipb(aipa paramaipa) {}
   
-  public aipb(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Akgc = ((akgc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(299));
-  }
-  
-  public String a(int paramInt)
-  {
-    return (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Akgc.a();
-    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    paramView = new Intent();
+    int i = ((NewPhotoPreviewActivity)this.a.mActivity).getCurrentSelectedPostion();
+    if ((aipa.a(this.a).selectedPhotoList == null) || (aipa.b(this.a).selectedPhotoList.size() == 0)) {
+      if ((aipa.a(this.a).paths != null) && (i != -1))
+      {
+        ArrayList localArrayList = new ArrayList();
+        String str = (String)aipa.b(this.a).paths.get(i);
+        if (TextUtils.isEmpty(str)) {
+          break label172;
+        }
+        localArrayList.add(str);
+        paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", localArrayList);
+        azmj.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, "1", "", "", "");
+      }
     }
     for (;;)
     {
-      notifyDataSetChanged();
+      ((NewPhotoPreviewActivity)this.a.mActivity).setResult(-1, paramView);
+      ((NewPhotoPreviewActivity)this.a.mActivity).finish();
       return;
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559621, paramViewGroup, false);
-      paramViewGroup = new aipc(this);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367530));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367533));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView = ((PressEffectImageView)paramView.findViewById(2131375368));
-      paramViewGroup.b = paramView.findViewById(2131365282);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView;
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+      label172:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("PhotoPreviewActivity", 2, "sendBtn click currentPath is null");
+        continue;
+        paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", aipa.c(this.a).selectedPhotoList);
+        azmj.b(null, "CliOper", "", "", "0X800A6DB", "0X800A6DB", 0, 0, String.valueOf(aipa.d(this.a).selectedPhotoList.size()), "", "", "");
       }
-      if (!ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
-        break label210;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991B8"));
-      paramViewGroup.b.setBackgroundColor(Color.parseColor("#040E1C"));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845181);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839124);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130845179);
-    }
-    for (;;)
-    {
-      paramView.setOnClickListener(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setOnClickListener(paramViewGroup);
-      return paramView;
-      paramViewGroup = (aipc)paramView.getTag();
-      break;
-      label210:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#4D4D4D"));
-      paramViewGroup.b.setBackgroundColor(Color.parseColor("#E6E6E6"));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845180);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839123);
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView.setImageResource(2130845178);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipb
  * JD-Core Version:    0.7.0.1
  */

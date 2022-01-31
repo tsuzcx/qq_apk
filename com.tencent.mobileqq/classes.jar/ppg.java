@@ -1,185 +1,44 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSItemViewBuilder.1;
-import com.tencent.biz.pubaccount.readinjoy.pts.PTSItemViewBuilder.2;
+import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.pts.core.itemview.PTSItemData;
-import com.tencent.pts.core.itemview.PTSItemData.Builder;
-import com.tencent.pts.core.itemview.PTSItemView;
-import com.tencent.pts.core.itemview.PTSItemViewManager;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 public class ppg
+  implements ViewBase.OnClickListener
 {
-  private PTSItemViewManager a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public ppg(Activity paramActivity)
+  public ppg(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    this.a = new PTSItemViewManager(paramActivity);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  private PTSItemData a(ArticleInfo paramArticleInfo)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (paramArticleInfo == null) {
-      return null;
-    }
-    Object localObject = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        ((JSONObject)localObject).put("articleID", paramArticleInfo.mArticleID);
-        ((JSONObject)localObject).put("rowKey", paramArticleInfo.innerUniqueID);
-        ((JSONObject)localObject).put("title", paramArticleInfo.mTitle);
-        ((JSONObject)localObject).put("coverImageUrl", paramArticleInfo.mFirstPagePicUrl);
-        ((JSONObject)localObject).put("jsonImageUrl", paramArticleInfo.mJsonPictureList);
-        ((JSONObject)localObject).put("articleContentUrl", paramArticleInfo.mArticleContentUrl);
-        ((JSONObject)localObject).put("subscribeName", paramArticleInfo.mSubscribeName);
-        ((JSONObject)localObject).put("channelID", paramArticleInfo.mChannelID);
-        ((JSONObject)localObject).put("recommendSeq", paramArticleInfo.mRecommendSeq);
-        ((JSONObject)localObject).put("algorithmID", paramArticleInfo.mAlgorithmID);
-        ((JSONObject)localObject).put("strategyID", paramArticleInfo.mStrategyId);
-        ((JSONObject)localObject).put("feedsType", paramArticleInfo.mFeedType);
-        ((JSONObject)localObject).put("proteusItemData", paramArticleInfo.proteusItemsData);
-      }
-      catch (JSONException localJSONException)
-      {
-        int i;
-        String str;
-        QLog.e("PTSItemViewBuilder", 1, "[getItemData], articleInfo = " + paramArticleInfo);
-        continue;
-      }
-      try
-      {
-        if (!osg.a().a(paramArticleInfo.mArticleID)) {
-          continue;
-        }
-        i = 1;
-        ((JSONObject)localObject).put("hasRead", i);
-      }
-      catch (Exception localException)
-      {
-        QLog.e("PTSItemViewBuilder", 1, "[getItemData], e = " + localException);
-        continue;
-      }
-      localObject = ((JSONObject)localObject).toString();
-      str = pph.a().a("3978");
-      ppj.a().getClass();
-      return new PTSItemData.Builder().withItemID(paramArticleInfo.innerUniqueID).withAppName(a(paramArticleInfo)).withAppPath(str).withJsonData((String)localObject).build();
-      i = 0;
-    }
-  }
-  
-  private static String a(ArticleInfo paramArticleInfo)
-  {
-    if (paramArticleInfo == null) {
-      return "";
-    }
-    if (ram.c(paramArticleInfo) == 3) {
-      return "triple_img_card";
-    }
-    return "";
-  }
-  
-  private void a(PTSItemData paramPTSItemData)
-  {
-    if (paramPTSItemData == null)
-    {
-      QLog.i("PTSItemViewBuilder", 1, "[reportItemViewExpose], itemData is null.");
+    int i = rqj.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_AndroidContentContext == null) || (i == 76) || (i == 78) || (i == 77)) {
       return;
     }
-    bdst.a(new PTSItemViewBuilder.1(this, paramPTSItemData));
-  }
-  
-  private void a(PTSItemData paramPTSItemData, long paramLong)
-  {
-    if (paramPTSItemData == null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.isPGCShortContent())
     {
-      QLog.i("PTSItemViewBuilder", 1, "[reportItemViewExpose], itemData is null.");
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.click_area = 6;
+      pqd.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      ors.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
       return;
     }
-    bdst.a(new PTSItemViewBuilder.2(this, paramPTSItemData, paramLong));
-  }
-  
-  public static boolean a(long paramLong)
-  {
-    return paramLong == 1L;
-  }
-  
-  public static boolean a(ArticleInfo paramArticleInfo)
-  {
-    if (paramArticleInfo == null)
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedType == 36)
     {
-      QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = false, articleInfo is null.");
-      return false;
+      ors.c(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 6);
+      return;
     }
-    if (!pqg.a.c())
-    {
-      QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = false, isViewEnabled = false.");
-      return false;
-    }
-    if (!b(paramArticleInfo))
-    {
-      QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = false, isArticleAvailable = false.");
-      return false;
-    }
-    paramArticleInfo = a(paramArticleInfo);
-    if (!pph.a().a(paramArticleInfo))
-    {
-      QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = false, appName = " + paramArticleInfo + ", isAppExists = false");
-      return false;
-    }
-    QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = true");
-    return true;
-  }
-  
-  private static boolean b(ArticleInfo paramArticleInfo)
-  {
-    boolean bool2 = true;
-    if (paramArticleInfo == null) {
-      return false;
-    }
-    boolean bool3 = a(paramArticleInfo.mChannelID);
-    if (ram.c(paramArticleInfo) == 3)
-    {
-      bool1 = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("PTSItemViewBuilder", 1, "[isArticleAvailable], isChannelIDValid = " + bool3 + ", isViewTypeValid = " + bool1);
-      }
-      if ((!bool3) || (!bool1)) {
-        break label83;
-      }
-    }
-    label83:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      return bool1;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public PTSItemView a(View paramView, ArticleInfo paramArticleInfo)
-  {
-    long l1 = System.currentTimeMillis();
-    paramArticleInfo = a(paramArticleInfo);
-    paramView = this.a.getView(paramView, paramArticleInfo);
-    long l2 = System.currentTimeMillis();
-    a(paramArticleInfo);
-    a(paramArticleInfo, l2 - l1);
-    return paramView;
-  }
-  
-  public void a()
-  {
-    this.a.destroy();
+    ors.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ppg
  * JD-Core Version:    0.7.0.1
  */

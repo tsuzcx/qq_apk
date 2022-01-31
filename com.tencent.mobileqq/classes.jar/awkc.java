@@ -1,26 +1,25 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.profile.CustomCoverFragment;
+import mqq.app.QQPermissionCallback;
 
 public class awkc
-  extends ClickableSpan
+  implements QQPermissionCallback
 {
-  public awkc(UniteSearchActivity paramUniteSearchActivity) {}
+  public awkc(CustomCoverFragment paramCustomCoverFragment, FragmentActivity paramFragmentActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.openContextMenu(this.a.a);
+    bdcd.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramTextPaint.setUnderlineText(false);
+    CustomCoverFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileCustomCoverFragment, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awkc
  * JD-Core Version:    0.7.0.1
  */

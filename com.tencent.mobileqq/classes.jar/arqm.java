@@ -1,10 +1,18 @@
-public abstract interface arqm
+class arqm
+  implements army
 {
-  public abstract void a(boolean paramBoolean);
+  arqm(arqk paramarqk) {}
+  
+  public void a()
+  {
+    this.a.c();
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqm
  * JD-Core Version:    0.7.0.1
  */

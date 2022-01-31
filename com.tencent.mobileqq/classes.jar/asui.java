@@ -1,182 +1,37 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 
-public class asui
-  extends astq
+class asui
+  implements TextWatcher
 {
-  private static final String a;
+  asui(asuh paramasuh) {}
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = ajya.a(2131708164);
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  public asui(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  private void a(asug paramasug, MessageRecord paramMessageRecord, ArrayList<aunp> paramArrayList, ArrayList<MessageRecord> paramArrayList1, int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramMessageRecord instanceof MessageForPic))
+    if (asuh.a(this.a) != null)
     {
-      paramasug = aunl.a(7, (MessageForPic)paramMessageRecord, paramInt1, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-      if (paramasug != null) {
-        paramArrayList.add(paramasug);
+      if (TextUtils.isEmpty(paramCharSequence)) {
+        break label45;
       }
-    }
-    label47:
-    label224:
-    do
-    {
-      do
+      if (!asuh.b(this.a))
       {
-        do
-        {
-          Object localObject;
-          do
-          {
-            do
-            {
-              paramArrayList1.add(paramMessageRecord);
-              break label47;
-              break label47;
-              break label47;
-              break label47;
-              for (;;)
-              {
-                return;
-                if (QLog.isColorLevel())
-                {
-                  QLog.e("PicMultiMsgProcessor", 2, "[requestSendMultiMsg]createForwardPicInfo from MessageForPic failed");
-                  return;
-                  if ((paramMessageRecord instanceof MessageForMixedMsg))
-                  {
-                    paramasug = aunl.a(7, (MessageForMixedMsg)paramMessageRecord, paramInt1, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-                    if (paramasug != null)
-                    {
-                      paramArrayList.addAll(paramasug);
-                      paramArrayList1.add(paramMessageRecord);
-                      return;
-                    }
-                    if (!QLog.isColorLevel()) {
-                      break;
-                    }
-                    QLog.e("PicMultiMsgProcessor", 2, "[requestSendMultiMsg]createForwardPicInfos from MessageForMixedMsg failed");
-                    return;
-                  }
-                  if (paramMessageRecord.msgtype != -1036) {
-                    break label224;
-                  }
-                  paramasug = ((MessageForLongMsg)paramMessageRecord).longMsgFragmentList.iterator();
-                  while (paramasug.hasNext())
-                  {
-                    localObject = (MessageRecord)paramasug.next();
-                    if ((localObject instanceof MessageForMixedMsg))
-                    {
-                      localObject = aunl.a(7, (MessageForMixedMsg)localObject, paramInt1, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-                      if (localObject != null)
-                      {
-                        paramArrayList.addAll((Collection)localObject);
-                        paramArrayList1.add(paramMessageRecord);
-                      }
-                    }
-                  }
-                }
-              }
-              if (!(paramMessageRecord instanceof MessageForStructing)) {
-                break;
-              }
-              paramasug = ((MessageForStructing)paramMessageRecord).structingMsg;
-            } while ((paramasug == null) || (!(paramasug instanceof StructMsgForImageShare)));
-            localObject = ((StructMsgForImageShare)paramasug).getFirstImageElement();
-          } while (localObject == null);
-          if (((axwv)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic == null)
-          {
-            if (((axwv)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare == null) {
-              ((axwv)localObject).jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForImageShare = ((StructMsgForImageShare)paramasug);
-            }
-            ((axwv)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic = ((axwv)localObject).a();
-          }
-          paramasug = aunl.a(7, ((axwv)localObject).jdField_a_of_type_ComTencentMobileqqDataMessageForPic, paramInt2, paramString1, paramString2, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-          if (paramasug != null)
-          {
-            paramArrayList.add(paramasug);
-            paramArrayList1.add(paramMessageRecord);
-            return;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.e("PicMultiMsgProcessor", 2, "[requestSendMultiMsg]createForwardPicInfo from MessageForPic failed");
-        return;
-      } while (!(paramMessageRecord instanceof MessageForReplyText));
-      paramMessageRecord = ((MessageForReplyText)paramMessageRecord).getSourceMessage();
-    } while ((paramMessageRecord == null) || ((!(paramMessageRecord instanceof MessageForPic)) && (!(paramMessageRecord instanceof MessageForMixedMsg)) && (!(paramMessageRecord instanceof MessageForStructing)) && (paramMessageRecord.msgtype != -1036)));
-    if (QLog.isColorLevel()) {
-      QLog.e("PicMultiMsgProcessor", 2, "[requestSendMultiMsg] MessageForReplyText add to list");
-    }
-    if (paramasug.b == 2) {}
-    for (paramInt1 = 0;; paramInt1 = paramMessageRecord.istroop)
-    {
-      a(paramasug, paramMessageRecord, paramArrayList, paramArrayList1, paramInt1, paramMessageRecord.selfuin, paramMessageRecord.frienduin, paramMessageRecord.istroop);
-      return;
-    }
-  }
-  
-  private void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap, MessageRecord paramMessageRecord, ArrayList<MessageRecord> paramArrayList, ArrayList<aunp> paramArrayList1, int paramInt, asug paramasug, astt paramastt)
-  {
-    aunv localaunv = aunl.a(8, 7);
-    localaunv.a(paramArrayList1);
-    localaunv.a(new asuj(this, paramArrayList, paramHashMap, paramMessageRecord, paramastt, paramasug));
-    aunl.a(localaunv, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void a(asug paramasug, HashMap<String, ArrayList<MessageRecord>> paramHashMap, astt paramastt)
-  {
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    if (paramasug.b == 2) {}
-    for (int i = 0;; i = paramasug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
-    {
-      String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-      String str2 = paramasug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      int j = paramasug.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-      Iterator localIterator1 = paramHashMap.keySet().iterator();
-      while (localIterator1.hasNext())
-      {
-        Iterator localIterator2 = ((ArrayList)paramHashMap.get((String)localIterator1.next())).iterator();
-        while (localIterator2.hasNext()) {
-          a(paramasug, (MessageRecord)localIterator2.next(), localArrayList1, localArrayList2, i, str1, str2, j);
-        }
+        asuh.b(this.a, true);
+        asuh.a(this.a, 1);
       }
     }
-    if ((localArrayList1.size() > 0) && (localArrayList2.size() > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PicMultiMsgProcessor", 2, "[requestSendMultiMsg]Upload pictures, count is [" + localArrayList1.size() + "], goto requestUploadPics");
-      }
-      a(paramHashMap, paramasug.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, localArrayList2, localArrayList1, paramasug.b, paramasug, paramastt);
-      return;
-    }
-    paramastt.a(0, 1, paramasug);
+    return;
+    label45:
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asui
  * JD-Core Version:    0.7.0.1
  */

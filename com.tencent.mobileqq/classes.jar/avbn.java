@@ -1,33 +1,28 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.OperationView;
+import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
+import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
 
 public class avbn
-  extends avbi
 {
-  public avbn(LSRecordPanel paramLSRecordPanel) {}
+  public int a;
+  public View a;
+  public ViewGroup a;
+  public RelativeLayout a;
+  public VideoData a;
+  public OperationView a;
+  public QQStoryVideoPlayerErrorView a;
+  public ImageDisplayView a;
   
-  public void a(Animation paramAnimation, float paramFloat)
-  {
-    if ((this.a.c == null) && (this.a.a != null) && (paramFloat >= 0.5F)) {
-      this.a.f();
-    }
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startExpandAnimation onAnimationEnd");
-    }
-    if (paramAnimation == this.a.a) {
-      this.a.h();
-    }
-    this.a.a = null;
-  }
+  public avbn(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avbn
  * JD-Core Version:    0.7.0.1
  */

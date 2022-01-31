@@ -1,141 +1,297 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.richmedia.FlowActivity;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import java.util.ArrayList;
+import java.util.HashMap;
 import mqq.app.AppRuntime;
 
 public class ajlj
 {
-  private static ajlj jdField_a_of_type_Ajlj;
-  ajli jdField_a_of_type_Ajli;
-  ajlk jdField_a_of_type_Ajlk = new ajlk();
-  ajlm jdField_a_of_type_Ajlm;
+  public static int a;
   
-  static ajlj a()
+  static
   {
-    if (jdField_a_of_type_Ajlj == null) {
-      jdField_a_of_type_Ajlj = new ajlj();
-    }
-    return jdField_a_of_type_Ajlj;
+    jdField_a_of_type_Int = 0;
   }
   
-  static SharedPreferences a()
+  public static String a(FlowActivity paramFlowActivity)
   {
-    return BaseApplication.getContext().getSharedPreferences("config_qq.android.tmg_opensdk", 4);
+    return paramFlowActivity.getAppRuntime().getAccount();
   }
   
-  public static String a()
+  public static void a(int paramInt)
   {
-    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject == null)
+    int j = 0;
+    int i = j;
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("TMG_Downloader", 2, "getFilesDir is null");
+    default: 
+      i = j;
+    }
+    for (;;)
+    {
+      jdField_a_of_type_Int = i;
+      return;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
+      continue;
+      i = 4;
+      continue;
+      i = 5;
+      continue;
+      i = 6;
+      continue;
+      i = 7;
+    }
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2, HashMap<String, String> paramHashMap)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    String str1 = paramString2;
+    String str2;
+    String str3;
+    if (paramHashMap != null)
+    {
+      str2 = (String)paramHashMap.get("cameraType");
+      str3 = (String)paramHashMap.get("isTemplateMode");
+      paramHashMap = (String)paramHashMap.get("templateId");
+      if ((!String.valueOf(2).equals(str2)) || ((!String.valueOf(false).equals(str3)) && (paramHashMap != null))) {
+        break label99;
       }
-      localObject = "";
+      str1 = "0X8007819";
     }
-    String str;
-    File localFile;
-    do
+    for (;;)
     {
-      return localObject;
-      str = ((File)localObject).getParent() + "/txlib/tmg/";
-      localFile = new File(str);
-      localObject = str;
-    } while (localFile.exists());
-    localFile.mkdirs();
-    return str;
-  }
-  
-  public static String a(ajli paramajli)
-  {
-    return a() + "tmg_sdk_" + paramajli.a + "_" + paramajli.b + ".zip";
-  }
-  
-  public static void a()
-  {
-    ArrayList localArrayList = bbdx.a(a());
-    if (localArrayList != null)
-    {
-      int i = 0;
-      while (i < localArrayList.size())
+      b(paramString1, str1);
+      return;
+      label99:
+      if ((String.valueOf(2).equals(str2)) && (String.valueOf(true).equals(str3)) && (paramHashMap != null))
       {
-        QLog.e("TMG_Downloader", 1, String.format("ListSoDirs file i=" + i + ", name=" + (String)localArrayList.get(i), new Object[0]));
-        i += 1;
+        str1 = "0X800781A";
       }
-    }
-  }
-  
-  static void a(String paramString)
-  {
-    SharedPreferences.Editor localEditor = a().edit();
-    localEditor.putString("tmg_opensdk_download_md5", paramString);
-    localEditor.commit();
-  }
-  
-  static String b()
-  {
-    return a().getString("tmg_opensdk_download_md5", null);
-  }
-  
-  public static boolean b(ajli paramajli)
-  {
-    String str1 = paramajli.b;
-    paramajli = a(paramajli);
-    String str2 = b();
-    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("TMG_Downloader", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
-      }
-    }
-    do
-    {
-      return false;
-      if (bbdx.a(paramajli)) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("TMG_Downloader", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramajli }));
-    return false;
-    a();
-    return true;
-  }
-  
-  boolean a(ajli paramajli)
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface))
-    {
-      if (((QQAppInterface)localAppRuntime).getManager(21) == null)
+      else if ((String.valueOf(1).equals(str2)) && ((String.valueOf(false).equals(str3)) || (paramHashMap == null)))
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("TMG_Downloader", 4, "innerDownload, getNetEngine 为空");
+        str1 = "0X800781B";
+      }
+      else
+      {
+        str1 = paramString2;
+        if (String.valueOf(1).equals(str2))
+        {
+          str1 = paramString2;
+          if (String.valueOf(true).equals(str3))
+          {
+            str1 = paramString2;
+            if (paramHashMap != null) {
+              str1 = "0X800781C";
+            }
+          }
         }
-        return false;
       }
     }
-    else if (QLog.isDevelopLevel()) {
-      QLog.d("TMG_Downloader", 4, "appRuntime 不是 QQAppInterface");
-    }
-    this.jdField_a_of_type_Ajli = paramajli;
-    return this.jdField_a_of_type_Ajlk.a(paramajli, this.jdField_a_of_type_Ajlm);
   }
   
-  boolean a(ajli paramajli, ajlm paramajlm)
+  public static void a(Activity paramActivity, RMVideoStateMgr paramRMVideoStateMgr, float paramFloat, boolean paramBoolean, double paramDouble1, double paramDouble2, ajlk paramajlk, int paramInt)
   {
-    this.jdField_a_of_type_Ajlm = paramajlm;
-    return a(paramajli);
+    a(paramActivity, paramRMVideoStateMgr, paramFloat, paramBoolean, paramDouble1, paramDouble2, paramajlk, false, paramInt, 0);
+  }
+  
+  private static void a(Activity paramActivity, RMVideoStateMgr paramRMVideoStateMgr, float paramFloat, boolean paramBoolean1, double paramDouble1, double paramDouble2, ajlk paramajlk, boolean paramBoolean2, int paramInt1, int paramInt2)
+  {
+    String str1 = "";
+    int i = 0;
+    String str2 = "";
+    try
+    {
+      SessionInfo localSessionInfo = (SessionInfo)paramActivity.getIntent().getParcelableExtra("PhotoConst.SEND_SESSION_INFO");
+      if (localSessionInfo != null)
+      {
+        str1 = localSessionInfo.jdField_a_of_type_JavaLangString;
+        i = localSessionInfo.jdField_a_of_type_Int;
+        str2 = localSessionInfo.b;
+      }
+      paramActivity = new ajlo(paramActivity, paramRMVideoStateMgr, str1, i, str2, paramFloat, paramBoolean1, paramDouble1, paramDouble2, paramajlk, paramInt1, paramInt2, false);
+      paramActivity.a(paramBoolean2);
+      paramActivity.execute(new Void[0]);
+      if (paramBoolean1) {
+        a("", "0X8005E94");
+      }
+      return;
+    }
+    catch (Exception paramActivity) {}
+  }
+  
+  public static void a(Activity paramActivity, RMVideoStateMgr paramRMVideoStateMgr, float paramFloat, boolean paramBoolean1, double paramDouble1, double paramDouble2, ajlk paramajlk, boolean paramBoolean2, int paramInt1, int paramInt2, String paramString1, int paramInt3, ArrayList<String> paramArrayList, boolean paramBoolean3, String paramString2, boolean paramBoolean4, int paramInt4, int paramInt5, String paramString3)
+  {
+    String str1 = "";
+    int i = 0;
+    String str2 = "";
+    try
+    {
+      SessionInfo localSessionInfo = (SessionInfo)paramActivity.getIntent().getParcelableExtra("PhotoConst.SEND_SESSION_INFO");
+      if (localSessionInfo != null)
+      {
+        str1 = localSessionInfo.jdField_a_of_type_JavaLangString;
+        i = localSessionInfo.jdField_a_of_type_Int;
+        str2 = localSessionInfo.b;
+      }
+      paramActivity = new ajlo(paramActivity, paramRMVideoStateMgr, str1, i, str2, paramFloat, paramBoolean1, paramDouble1, paramDouble2, paramajlk, paramInt1, paramInt2, paramString1, paramInt3, paramArrayList, paramBoolean3, paramString2, paramBoolean4, paramInt4, paramInt5, paramString3);
+      paramActivity.a(paramBoolean2);
+      paramActivity.execute(new Void[0]);
+      if (paramBoolean1) {
+        a("", "0X8005E94");
+      }
+      return;
+    }
+    catch (Exception paramActivity) {}
+  }
+  
+  public static void a(Activity paramActivity, RMVideoStateMgr paramRMVideoStateMgr, float paramFloat, boolean paramBoolean1, double paramDouble1, double paramDouble2, ajlk paramajlk, boolean paramBoolean2, int paramInt1, int paramInt2, String paramString1, int paramInt3, ArrayList<String> paramArrayList, boolean paramBoolean3, String paramString2, boolean paramBoolean4, String paramString3, String paramString4, int paramInt4, int paramInt5, String paramString5, String paramString6, long paramLong, int paramInt6, boolean paramBoolean5)
+  {
+    String str1 = "";
+    int i = 0;
+    String str2 = "";
+    try
+    {
+      SessionInfo localSessionInfo = (SessionInfo)paramActivity.getIntent().getParcelableExtra("PhotoConst.SEND_SESSION_INFO");
+      if (localSessionInfo != null)
+      {
+        str1 = localSessionInfo.jdField_a_of_type_JavaLangString;
+        i = localSessionInfo.jdField_a_of_type_Int;
+        str2 = localSessionInfo.b;
+      }
+      paramActivity = new ajlo(paramActivity, paramRMVideoStateMgr, str1, i, str2, paramFloat, paramBoolean1, paramDouble1, paramDouble2, paramajlk, paramInt1, paramInt2, paramString1, paramInt3, paramArrayList, paramBoolean3, paramString2, paramBoolean4, paramString3, paramString4, paramInt4, paramInt5, paramString5, paramString6, paramLong, paramInt6, paramBoolean5);
+      paramActivity.a(paramBoolean2);
+      paramActivity.execute(new Void[0]);
+      if (paramBoolean1) {
+        a("", "0X8005E94");
+      }
+      return;
+    }
+    catch (Exception paramActivity) {}
+  }
+  
+  public static void a(Activity paramActivity, RMVideoStateMgr paramRMVideoStateMgr, float paramFloat, boolean paramBoolean1, double paramDouble1, double paramDouble2, ajlk paramajlk, boolean paramBoolean2, int paramInt1, int paramInt2, String paramString1, int paramInt3, ArrayList<String> paramArrayList, boolean paramBoolean3, String paramString2, boolean paramBoolean4, String paramString3, String paramString4, int paramInt4, int paramInt5, String paramString5, String paramString6, long paramLong, int paramInt6, boolean paramBoolean5, int paramInt7, boolean paramBoolean6, int paramInt8, String paramString7)
+  {
+    String str1 = "";
+    int i = 0;
+    String str2 = "";
+    try
+    {
+      SessionInfo localSessionInfo = (SessionInfo)paramActivity.getIntent().getParcelableExtra("PhotoConst.SEND_SESSION_INFO");
+      if (localSessionInfo != null)
+      {
+        str1 = localSessionInfo.jdField_a_of_type_JavaLangString;
+        i = localSessionInfo.jdField_a_of_type_Int;
+        str2 = localSessionInfo.b;
+      }
+      paramActivity = new ajlo(paramActivity, paramRMVideoStateMgr, str1, i, str2, paramFloat, paramBoolean1, paramDouble1, paramDouble2, paramajlk, paramInt1, paramInt2, paramString1, paramInt3, paramArrayList, paramBoolean3, paramString2, paramBoolean4, paramString3, paramString4, paramInt4, paramInt5, paramString5, paramString6, paramLong, paramInt6, paramBoolean5);
+      paramActivity.o = paramInt8;
+      paramActivity.n = paramString7;
+      paramActivity.i = paramBoolean6;
+      paramActivity.a(paramBoolean2);
+      paramActivity.a(paramInt7);
+      paramActivity.execute(new Void[0]);
+      if (paramBoolean1) {
+        a("", "0X8005E94");
+      }
+      return;
+    }
+    catch (Exception paramActivity) {}
+  }
+  
+  public static void a(Activity paramActivity, RMVideoStateMgr paramRMVideoStateMgr, float paramFloat, boolean paramBoolean1, double paramDouble1, double paramDouble2, ajlk paramajlk, boolean paramBoolean2, int paramInt1, int paramInt2, String paramString1, int paramInt3, ArrayList<String> paramArrayList, boolean paramBoolean3, String paramString2, boolean paramBoolean4, String paramString3, String paramString4, int paramInt4, boolean paramBoolean5, boolean paramBoolean6)
+  {
+    String str1 = "";
+    int i = 0;
+    String str2 = "";
+    try
+    {
+      SessionInfo localSessionInfo = (SessionInfo)paramActivity.getIntent().getParcelableExtra("PhotoConst.SEND_SESSION_INFO");
+      if (localSessionInfo != null)
+      {
+        str1 = localSessionInfo.jdField_a_of_type_JavaLangString;
+        i = localSessionInfo.jdField_a_of_type_Int;
+        str2 = localSessionInfo.b;
+      }
+      paramActivity = new ajlo(paramActivity, paramRMVideoStateMgr, str1, i, str2, paramFloat, paramBoolean1, paramDouble1, paramDouble2, paramajlk, paramInt1, paramInt2, paramString1, paramInt3, paramArrayList, paramBoolean3, paramString2, paramBoolean4, paramString3, paramString4, paramInt4, paramBoolean5, paramBoolean6);
+      paramActivity.a(paramBoolean2);
+      paramActivity.execute(new Void[0]);
+      if (paramBoolean1) {
+        a("", "0X8005E94");
+      }
+      return;
+    }
+    catch (Exception paramActivity) {}
+  }
+  
+  public static void a(Activity paramActivity, ArrayList<String> paramArrayList)
+  {
+    SessionInfo localSessionInfo = (SessionInfo)paramActivity.getIntent().getParcelableExtra("PhotoConst.SEND_SESSION_INFO");
+    Intent localIntent = new Intent(paramActivity, SendPhotoActivity.class);
+    if (localSessionInfo != null)
+    {
+      localIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1008);
+      localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", paramArrayList);
+      localIntent.putExtra("uin", localSessionInfo.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("uintype", localSessionInfo.jdField_a_of_type_Int);
+      localIntent.putExtra("troop_uin", localSessionInfo.b);
+      localIntent.putExtra("key_confess_topicid", localSessionInfo.e);
+      localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
+      paramActivity.startActivity(localIntent);
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    b(paramString1, paramString2, "");
+  }
+  
+  public static void a(String paramString1, String paramString2, int paramInt, String paramString3)
+  {
+    azmj.b(null, "CliOper", paramString1, "", paramString2, paramString2, jdField_a_of_type_Int, paramInt, 0, paramString3, "", "", "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    azmj.b(null, "dc00898", paramString1, "", paramString2, paramString2, jdField_a_of_type_Int, 0, paramString3, "", "", "");
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    azmj.b(null, "dc00898", paramString1, "", paramString2, paramString2, jdField_a_of_type_Int, 0, paramString3, paramString4, paramString5, paramString6);
+  }
+  
+  public static boolean a()
+  {
+    return lmm.b(BaseApplicationImpl.getContext());
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    a(paramString1, paramString2, "");
+  }
+  
+  public static void b(String paramString1, String paramString2, String paramString3)
+  {
+    azmj.b(null, "CliOper", paramString1, "", paramString2, paramString2, jdField_a_of_type_Int, 0, paramString3, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajlj
  * JD-Core Version:    0.7.0.1
  */

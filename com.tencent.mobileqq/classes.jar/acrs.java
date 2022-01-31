@@ -1,34 +1,81 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class acrs
-  implements View.OnClickListener
+  implements aubp<List<EmoticonPackage>>
 {
-  public acrs(PositionActivatePage paramPositionActivatePage) {}
+  public acrs(EmosmActivity paramEmosmActivity) {}
   
-  public void onClick(View paramView)
+  public void a(List<EmoticonPackage> paramList)
   {
-    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
+    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.a.jdField_a_of_type_Apkp != null) {
+      this.a.jdField_a_of_type_Apkp.a();
+    }
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      paramView = new Intent((Context)PositionActivatePage.a(this.a).get(), NearbyActivity.class);
-      paramView.putExtra("ENTER_TIME", System.currentTimeMillis());
-      paramView.putExtra("FROM_WHERE", 1002);
-      paramView.putExtra("is_skip_nearby_guide", true);
-      paramView.setFlags(67108864);
-      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivity(paramView);
-      axqy.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E07", "0X8004E07", 0, 0, "", "", "", "");
+      EmoticonPackage localEmoticonPackage;
+      if (this.a.b == 1)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localEmoticonPackage = (EmoticonPackage)paramList.next();
+          if ((3 != localEmoticonPackage.jobType) && (1 != localEmoticonPackage.jobType) && (5 != localEmoticonPackage.jobType)) {
+            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
+          }
+        }
+      }
+      if (this.a.b == 2)
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localEmoticonPackage = (EmoticonPackage)paramList.next();
+          if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
+            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
+          }
+        }
+      }
+    }
+    if (this.a.b == 1)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.findHeaderViewPosition(this.a.jdField_a_of_type_AndroidViewView) == -1) {
+        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.addHeaderView(this.a.jdField_a_of_type_AndroidViewView);
+      }
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.a.d();
+      if (this.a.b != 2) {
+        break label344;
+      }
+      this.a.setTitle(2131692093);
+    }
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_Apkp != null) {
+        this.a.jdField_a_of_type_Apkp.notifyDataSetChanged();
+      }
+      return;
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        break;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.removeHeaderView(this.a.jdField_a_of_type_AndroidViewView);
+      break;
+      label344:
+      this.a.setTitle(2131692340);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrs
  * JD-Core Version:    0.7.0.1
  */

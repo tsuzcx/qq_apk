@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile.predownload;
 
-import ayxp;
+import bavo;
 
 public class AbsPreDownloadTask$1
   implements Runnable
 {
-  public AbsPreDownloadTask$1(ayxp paramayxp) {}
+  public AbsPreDownloadTask$1(bavo parambavo) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class AbsPreDownloadTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask.1
  * JD-Core Version:    0.7.0.1
  */

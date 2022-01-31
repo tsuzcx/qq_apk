@@ -1,31 +1,28 @@
-import android.util.Property;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Matrix;
+import dov.com.qq.im.ae.album.nocropper.AECropperImageView;
 
-class bknn
-  extends Property<bknf, Float>
+public class bknn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  bknn(bknf parambknf, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public bknn(AECropperImageView paramAECropperImageView, float paramFloat) {}
   
-  public Float a(bknf parambknf)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (parambknf != null) {
-      return Float.valueOf(bknf.d(parambknf));
+    paramValueAnimator = this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.getImageMatrix();
+    if (AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView, paramValueAnimator) <= AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView)) {
+      return;
     }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(bknf parambknf, Float paramFloat)
-  {
-    if (parambknf != null) {
-      bknf.c(parambknf, paramFloat.floatValue());
-    }
+    double d = Math.pow(AECropperImageView.a(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView) / this.jdField_a_of_type_Float, 0.0500000007450581D);
+    paramValueAnimator.postScale((float)d, (float)d, AECropperImageView.b(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView), AECropperImageView.c(this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView));
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.setImageMatrix(paramValueAnimator);
+    this.jdField_a_of_type_DovComQqImAeAlbumNocropperAECropperImageView.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bknn
  * JD-Core Version:    0.7.0.1
  */

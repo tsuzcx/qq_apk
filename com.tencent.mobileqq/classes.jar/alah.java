@@ -1,15 +1,10 @@
-public abstract class alah
+public abstract interface alah
 {
-  public int b;
-  
-  public alah(int paramInt)
-  {
-    this.b = paramInt;
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alah
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.proteus.view.impl;
 
-import actj;
+import aekt;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
-import badv;
-import bbdh;
+import bcch;
+import bdcb;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
@@ -19,18 +19,18 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import pke;
-import pmz;
-import pna;
-import pnb;
-import ram;
+import pqm;
+import pth;
+import pti;
+import ptj;
+import rqj;
 
 public class NativeGridImageView
   extends GridView
   implements IView
 {
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  private pna jdField_a_of_type_Pna;
+  private pti jdField_a_of_type_Pti;
   
   public NativeGridImageView(Context paramContext)
   {
@@ -71,9 +71,9 @@ public class NativeGridImageView
     }
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)
     {
-      ram.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt1, paramInt2);
+      rqj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt1, paramInt2);
       paramInt1 = (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID;
-      ram.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt1);
+      rqj.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt1);
       return;
     }
     QLog.d("Proteus.NativeGridImageView", 1, "reportData failed, articleInfo is null!");
@@ -94,28 +94,28 @@ public class NativeGridImageView
         if (QLog.isColorLevel()) {
           QLog.d("Proteus.NativeGridImageView", 2, new Object[] { "ReadInJoy grid image show content url and title, articleUrl: " + str1, " articleTitle: " + str2 });
         }
-        badv.a((Activity)getContext(), paramInt, a(paramList), null, null, false, false, "4", 100, null, str1, str2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "");
+        bcch.a((Activity)getContext(), paramInt, a(paramList), null, null, false, false, "4", 100, null, str1, str2, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "");
       }
       while (paramList != null)
       {
         a(paramInt, paramList.size());
         return;
-        badv.a((Activity)getContext(), paramInt, a(paramList), null, null, false, false, "4", 100, null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "");
+        bcch.a((Activity)getContext(), paramInt, a(paramList), null, null, false, false, "4", 100, null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "");
       }
     }
   }
   
   public void a()
   {
-    setOnItemClickListener(new pmz(this));
+    setOnItemClickListener(new pth(this));
   }
   
   public void a(Context paramContext)
   {
     setLayoutParams(new AbsListView.LayoutParams(-1, -2));
     setNumColumns(3);
-    setVerticalSpacing(actj.a(3.0F, paramContext.getResources()));
-    setHorizontalSpacing(actj.a(3.0F, paramContext.getResources()));
+    setVerticalSpacing(aekt.a(3.0F, paramContext.getResources()));
+    setHorizontalSpacing(aekt.a(3.0F, paramContext.getResources()));
     setSelector(17170445);
     a();
   }
@@ -124,50 +124,50 @@ public class NativeGridImageView
   {
     if (paramArticleInfo != null)
     {
-      if (this.jdField_a_of_type_Pna != null) {
+      if (this.jdField_a_of_type_Pti != null) {
         break label53;
       }
-      this.jdField_a_of_type_Pna = new pna(this);
-      this.jdField_a_of_type_Pna.a(new pnb(this, paramArticleInfo));
-      setAdapter(this.jdField_a_of_type_Pna);
+      this.jdField_a_of_type_Pti = new pti(this);
+      this.jdField_a_of_type_Pti.a(new ptj(this, paramArticleInfo));
+      setAdapter(this.jdField_a_of_type_Pti);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
       return;
       label53:
-      this.jdField_a_of_type_Pna.a(new pnb(this, paramArticleInfo));
+      this.jdField_a_of_type_Pti.a(new ptj(this, paramArticleInfo));
     }
   }
   
-  public void a(pke parampke)
+  public void a(pqm parampqm)
   {
-    if (this.jdField_a_of_type_Pna != null) {
-      this.jdField_a_of_type_Pna.notifyDataSetChanged();
+    if (this.jdField_a_of_type_Pti != null) {
+      this.jdField_a_of_type_Pti.notifyDataSetChanged();
     }
-    b(parampke);
+    b(parampqm);
   }
   
-  public void b(pke parampke)
+  public void b(pqm parampqm)
   {
     int i = getCount();
     Layout.Params localParams;
     if (i == 1)
     {
       setNumColumns(1);
-      localParams = parampke.getComLayoutParams();
+      localParams = parampqm.getComLayoutParams();
       if (i != 4) {
         break label173;
       }
       if (localParams != null)
       {
-        i = (int)bbdh.m() - actj.a(24.0F, getResources());
-        localParams.mLayoutWidth = ((i - actj.a(6.0F, getResources())) * 2 / 3 + actj.a(3.0F, getResources()));
+        i = (int)bdcb.m() - aekt.a(24.0F, getResources());
+        localParams.mLayoutWidth = ((i - aekt.a(6.0F, getResources())) * 2 / 3 + aekt.a(3.0F, getResources()));
         if (localParams.mLayoutWidth > 0) {
-          parampke.setComLayoutParams(localParams);
+          parampqm.setComLayoutParams(localParams);
         }
         if (QLog.isColorLevel()) {
-          QLog.d("Proteus.NativeGridImageView", 2, new Object[] { "contentWidth: ", Integer.valueOf(i), ", layout.width: ", Integer.valueOf(localParams.mLayoutWidth), ", MinOfWidthAndHeight: ", Long.valueOf(bbdh.m()) });
+          QLog.d("Proteus.NativeGridImageView", 2, new Object[] { "contentWidth: ", Integer.valueOf(i), ", layout.width: ", Integer.valueOf(localParams.mLayoutWidth), ", MinOfWidthAndHeight: ", Long.valueOf(bdcb.m()) });
         }
       }
     }
@@ -185,13 +185,13 @@ public class NativeGridImageView
         setNumColumns(3);
         break;
       } while (localParams == null);
-      i = (int)bbdh.m() - actj.a(24.0F, getResources());
+      i = (int)bdcb.m() - aekt.a(24.0F, getResources());
       localParams.mLayoutWidth = i;
       if (localParams.mLayoutWidth > 0) {
-        parampke.setComLayoutParams(localParams);
+        parampqm.setComLayoutParams(localParams);
       }
     } while (!QLog.isColorLevel());
-    QLog.d("Proteus.NativeGridImageView", 2, new Object[] { "contentWidth: ", Integer.valueOf(i), ", layout.width: ", Integer.valueOf(localParams.mLayoutWidth), ", MinOfWidthAndHeight: ", Long.valueOf(bbdh.m()) });
+    QLog.d("Proteus.NativeGridImageView", 2, new Object[] { "contentWidth: ", Integer.valueOf(i), ", layout.width: ", Integer.valueOf(localParams.mLayoutWidth), ", MinOfWidthAndHeight: ", Long.valueOf(bdcb.m()) });
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -234,7 +234,7 @@ public class NativeGridImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView
  * JD-Core Version:    0.7.0.1
  */

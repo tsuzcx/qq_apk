@@ -1,59 +1,44 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.handlers.DailyHandler.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.ListView;
-import java.util.Map;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class oxy
-  extends oxx
+class oxy
 {
-  public int a()
+  public long a;
+  public ArrayList<Pair<BaseArticleInfo, Float>> a;
+  public long b;
+  
+  private oxy(oxp paramoxp)
   {
-    return 3;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void a(View paramView, ListView paramListView) {}
-  
-  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public ArrayList<Long> a()
   {
-    paramAdapterView = (ArticleInfo)a((int)paramLong);
-    if (oou.c(b())) {
-      if (!onh.a(paramAdapterView)) {
-        break label35;
-      }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.add(Long.valueOf(((BaseArticleInfo)((Pair)localIterator.next()).first).mArticleID));
     }
-    label35:
-    for (paramInt = 4;; paramInt = 2)
-    {
-      olj.a(paramInt);
-      return;
-    }
+    return localArrayList;
   }
   
-  public void a(Map<Long, qao> paramMap, boolean paramBoolean)
+  public String toString()
   {
-    super.a(paramMap, paramBoolean);
-    if (oou.c(b()))
+    StringBuilder localStringBuilder = new StringBuilder("screenInfo : \n");
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      paramMap = a();
-      if (bhvy.v()) {
-        break label36;
-      }
-      QLog.d("DailyHandler", 1, "detachFromViewGroup,now cmd is 0x68b");
+      Pair localPair = (Pair)localIterator.next();
+      localStringBuilder.append("【").append(((BaseArticleInfo)localPair.first).mTitle).append("】");
     }
-    label36:
-    while (paramMap == null) {
-      return;
-    }
-    ThreadManager.executeOnSubThread(new DailyHandler.1(this, paramMap.a));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oxy
  * JD-Core Version:    0.7.0.1
  */

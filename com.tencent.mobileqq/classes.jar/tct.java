@@ -1,25 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class tct
-  implements syq<tmb, tnz>
+  implements View.OnClickListener
 {
-  tct(tcs paramtcs, long paramLong) {}
+  tct(tcs paramtcs, int paramInt) {}
   
-  public void a(@NonNull tmb paramtmb, @Nullable tnz paramtnz, @NonNull ErrorMessage paramErrorMessage)
+  public void onClick(View paramView)
   {
-    if (paramtnz != null)
-    {
-      this.jdField_a_of_type_Tcs.b("qqstory_black_status", Integer.valueOf(paramtnz.b));
-      this.jdField_a_of_type_Tcs.b("qqstory_black_status_update_interval", Integer.valueOf(paramtnz.c));
-      this.jdField_a_of_type_Tcs.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
+    if (tcs.a(this.jdField_a_of_type_Tcs) != null) {
+      tcs.a(this.jdField_a_of_type_Tcs).a(paramView, 12, this.jdField_a_of_type_Int, tcs.a(this.jdField_a_of_type_Tcs));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tct
  * JD-Core Version:    0.7.0.1
  */

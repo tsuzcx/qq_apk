@@ -1,21 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.WebFastShareBottomCreator.ViewHolder.ShareCallBack.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class sbj
-  implements View.OnClickListener
+public class sbj
+  extends pfq
 {
-  sbj(sbi paramsbi) {}
+  public ArticleInfo a;
   
-  public void onClick(View paramView)
+  public sbj(sbi paramsbi, ArticleInfo paramArticleInfo)
   {
-    xhb.a("", "auth_discover", "fold_clk", 0, 0, new String[0]);
-    wsg.a(sbi.a(this.a), FolderRecommendTabFragment.a(this.a.a), new sbk(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, scw paramscw)
+  {
+    super.a(paramBoolean, paramInt, paramscw);
+    if ((paramBoolean) && (paramscw != null) && (!TextUtils.isEmpty(paramscw.a(paramInt)))) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      ThreadManager.getUIHandler().post(new WebFastShareBottomCreator.ViewHolder.ShareCallBack.1(this, paramBoolean, paramInt, paramscw));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sbj
  * JD-Core Version:    0.7.0.1
  */

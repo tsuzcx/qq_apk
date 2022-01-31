@@ -1,17 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialPanel;
+import dov.com.qq.im.ae.camera.ui.panel.AEMaterialProviderView;
 
 public class bktl
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public bktl(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public bktl(AEMaterialPanel paramAEMaterialPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (AEMaterialPanel.a(this.a) != null)
+    {
+      AEMaterialPanel.a(this.a).setAlpha(1.0F);
+      AEMaterialPanel.a(this.a).setVisibility(8);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bktl
  * JD-Core Version:    0.7.0.1
  */

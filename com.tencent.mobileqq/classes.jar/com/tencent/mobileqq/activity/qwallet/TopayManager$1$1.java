@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet;
 
 import Wallet.PfaFriendRsp;
-import agya;
+import aisa;
 
 class TopayManager$1$1
   implements Runnable
@@ -13,9 +13,9 @@ class TopayManager$1$1
     if (this.a != null) {}
     for (boolean bool = true;; bool = false)
     {
-      agya.a(bool, this.a, true);
+      aisa.a(bool, this.a, true);
       if (this.this$0.jdField_a_of_type_Boolean) {
-        agya.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
+        aisa.a(this.this$0.jdField_a_of_type_Int, this.this$0.b);
       }
       return;
     }
@@ -23,7 +23,7 @@ class TopayManager$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.TopayManager.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,36 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class ahfi
-  implements aycd
+public class ahfi
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public int a;
+  public String a;
+  public String b;
   
-  ahfi(ahfh paramahfh, aycd paramaycd) {}
-  
-  public void a()
+  public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim onFrameEnd");
-    }
-    if ((this.jdField_a_of_type_Boolean) || (ahfh.a(this.jdField_a_of_type_Ahfh))) {}
-    do
+    return this.jdField_a_of_type_Int != 1;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if ((paramObject instanceof ahfi))
     {
-      return;
-      this.jdField_a_of_type_Boolean = true;
-      if (ahfh.a(this.jdField_a_of_type_Ahfh) != null) {
-        ThreadManager.getUIHandler().removeCallbacks(ahfh.a(this.jdField_a_of_type_Ahfh));
-      }
-    } while (this.jdField_a_of_type_Aycd == null);
-    this.jdField_a_of_type_Aycd.a();
+      paramObject = (ahfi)paramObject;
+      return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+    }
+    return super.equals(paramObject);
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "Face2FaceFriendInfo uin:" + this.jdField_a_of_type_JavaLangString + " nick:" + this.b + " type:" + this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahfi
  * JD-Core Version:    0.7.0.1
  */

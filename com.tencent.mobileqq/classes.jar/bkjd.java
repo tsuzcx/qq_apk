@@ -1,19 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class bkjd
-  implements DialogInterface.OnClickListener
+public class bkjd
+  implements View.OnClickListener
 {
-  bkjd(bkjb parambkjb) {}
+  public bkjd(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkjd
  * JD-Core Version:    0.7.0.1
  */

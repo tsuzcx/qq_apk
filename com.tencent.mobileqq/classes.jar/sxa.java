@@ -1,40 +1,45 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
-import com.tribe.async.reactive.SimpleObserver;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class sxa
-  extends SimpleObserver<ErrorMessage>
+  implements adca
 {
-  private sxa(BasePublishTask paramBasePublishTask) {}
+  String jdField_a_of_type_JavaLangString = "";
+  WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference = null;
+  swz jdField_a_of_type_Swz = null;
   
-  public void a(ErrorMessage paramErrorMessage)
+  public sxa(swz paramswz, QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (paramErrorMessage.isSuccess())
-    {
-      this.a.a(new ErrorMessage());
-      return;
-    }
-    this.a.a(paramErrorMessage);
+    this.jdField_a_of_type_Swz = paramswz;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onCancel() {}
-  
-  public void onComplete() {}
-  
-  public void onError(@NonNull Error paramError)
+  public void a(int paramInt, String paramString, Drawable paramDrawable, Object... paramVarArgs)
   {
-    if ((paramError instanceof ErrorMessage))
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder IDownloadListener fail, status: " + paramInt + " | icon: " + paramDrawable + " | mFolder: " + this.jdField_a_of_type_Swz);
+    }
+    if ((paramInt == 2) && (paramDrawable != null) && (this.jdField_a_of_type_Swz != null)) {
+      this.jdField_a_of_type_Swz.a = paramDrawable;
+    }
+    try
     {
-      this.a.a((ErrorMessage)paramError);
+      ((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(1).notifyUI(4, true, new Object[] { this.jdField_a_of_type_JavaLangString });
       return;
     }
-    this.a.a(new ErrorMessage(940005, "upload file fail:" + paramError));
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("PublicAccountConfigUtil", 2, "PublicAccountConfigFolder IDownloadListener fail", paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxa
  * JD-Core Version:    0.7.0.1
  */

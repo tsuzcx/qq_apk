@@ -1,69 +1,34 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import dov.com.qq.im.capture.poi.FacePoiUI.3.1;
-import dov.com.qq.im.capture.poi.FacePoiUI.3.2;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.CoverCacheData.GameCoverInfo;
 
-public class bjgk
-  implements bfub
+public final class bjgk
+  implements Parcelable.Creator<CoverCacheData.GameCoverInfo>
 {
-  bjgk(bjgi parambjgi) {}
-  
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public CoverCacheData.GameCoverInfo a(Parcel paramParcel)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.a == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.a)
+    CoverCacheData.GameCoverInfo localGameCoverInfo = new CoverCacheData.GameCoverInfo();
+    if (paramParcel != null)
     {
-      paramView.c(l);
-      return;
+      localGameCoverInfo.jdField_a_of_type_Double = paramParcel.readDouble();
+      localGameCoverInfo.jdField_b_of_type_Double = paramParcel.readDouble();
+      localGameCoverInfo.c = paramParcel.readDouble();
+      localGameCoverInfo.d = paramParcel.readDouble();
+      localGameCoverInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localGameCoverInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localGameCoverInfo.jdField_a_of_type_Int = paramParcel.readInt();
     }
+    return localGameCoverInfo;
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public CoverCacheData.GameCoverInfo[] a(int paramInt)
   {
-    paramListView = (PullRefreshHeader)paramView;
-    long l;
-    if (this.a.a == 0L)
-    {
-      l = System.currentTimeMillis();
-      paramListView.a(l);
-      if (!bbfj.g(this.a.e.getContext())) {
-        break label114;
-      }
-      bjgi.a(this.a).d();
-      bjgi.a(this.a).a();
-      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.1(this), 300L);
-    }
-    for (;;)
-    {
-      ((aavt)paramView.getTag()).a = true;
-      return true;
-      l = this.a.a;
-      break;
-      label114:
-      new Handler(Looper.getMainLooper()).postDelayed(new FacePoiUI.3.2(this), 300L);
-    }
+    return null;
   }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.a == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.a)
-    {
-      paramView.b(l);
-      return;
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjgk
  * JD-Core Version:    0.7.0.1
  */

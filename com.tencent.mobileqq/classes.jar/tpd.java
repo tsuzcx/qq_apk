@@ -1,45 +1,25 @@
-import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-class tpd
-  implements tpf
+public class tpd
+  extends Handler
 {
-  tpd(tpb paramtpb) {}
+  public tpd(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  public void a(trm paramtrm)
+  public void handleMessage(Message paramMessage)
   {
-    tpb.a(this.a).c();
-    Activity localActivity = tpb.a(this.a).a();
-    if (localActivity == null)
+    switch (paramMessage.what)
     {
-      c(paramtrm);
+    default: 
       return;
     }
-    try.a(localActivity, paramtrm, tpb.a(this.a));
-  }
-  
-  public void b(trm paramtrm)
-  {
-    tpb.a(this.a).c();
-    if (tpb.a(this.a) != null)
-    {
-      tpb.a(this.a).c(paramtrm.a);
-      tpb.a(this.a).a();
-    }
-  }
-  
-  public void c(trm paramtrm)
-  {
-    tpb.a(this.a).c();
-    if (tpb.a(this.a) != null)
-    {
-      tpb.a(this.a).d(paramtrm.a);
-      tpb.a(this.a).a();
-    }
+    PublicAccountImageCollectionMainActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tpd
  * JD-Core Version:    0.7.0.1
  */

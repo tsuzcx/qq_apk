@@ -1,53 +1,60 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import java.lang.ref.WeakReference;
 
-public class qzc
-  extends Handler
+class qzc
+  extends OrientationEventListener
 {
-  public qzc(BaseTabbar paramBaseTabbar) {}
-  
-  public void handleMessage(Message paramMessage)
+  qzc(qzb paramqzb, Context paramContext, WeakReference paramWeakReference)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 0: 
-      int i;
-      do
-      {
-        return;
-        BaseTabbar.a(this.a, 0.0F);
-        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
-        this.a.invalidate();
-        i = paramMessage.arg1;
-        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
-      } while (i == 1);
-      BaseTabbar.a(this.a, BaseTabbar.a(this.a), BaseTabbar.b(this.a));
-      return;
-    case 1: 
-      if (BaseTabbar.a(this.a) < 1.0F)
-      {
-        BaseTabbar.a(this.a, (float)(BaseTabbar.a(this.a) + 0.05D));
-        this.a.invalidate();
-        sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(1), 10L);
-        return;
-      }
-      sendMessageDelayed(BaseTabbar.a(this.a).obtainMessage(2), 10L);
-      return;
+    super(paramContext);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    if (!qzb.a(this.jdField_a_of_type_Qzb, paramInt)) {
+      break label11;
     }
-    BaseTabbar.a(this.a);
-    this.a.a(BaseTabbar.a(this.a), BaseTabbar.b(this.a));
-    BaseTabbar.a(this.a, 1.0F);
-    BaseTabbar.a(this.a, BaseTabbar.b(this.a));
-    this.a.invalidate();
-    BaseTabbar.a(this.a).set(false);
+    label11:
+    label159:
+    for (;;)
+    {
+      return;
+      if (!(this.jdField_a_of_type_Qzb.a() instanceof SplashActivity))
+      {
+        int i = qzb.a(this.jdField_a_of_type_Qzb);
+        if (((paramInt >= 0) && (paramInt <= 30)) || (paramInt > 330)) {
+          paramInt = 1;
+        }
+        for (;;)
+        {
+          if (paramInt == qzb.a(this.jdField_a_of_type_Qzb)) {
+            break label159;
+          }
+          qzb.a(this.jdField_a_of_type_Qzb, paramInt);
+          if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+            break;
+          }
+          ((qzd)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramInt);
+          return;
+          if ((paramInt > 70) && (paramInt <= 110)) {
+            paramInt = 8;
+          } else if ((paramInt > 150) && (paramInt <= 210)) {
+            paramInt = 9;
+          } else if ((paramInt > 250) && (paramInt <= 290)) {
+            paramInt = 0;
+          } else {
+            paramInt = i;
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qzc
  * JD-Core Version:    0.7.0.1
  */

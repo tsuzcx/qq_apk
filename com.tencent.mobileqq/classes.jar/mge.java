@@ -1,62 +1,25 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiMembersAudioUI;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
 
-public class mge
-  extends lfb
+final class mge
 {
-  public mge(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public int a;
+  public long a;
+  public Bitmap a;
+  public AVPhoneUserInfo a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
+  public boolean e = true;
   
-  protected void a(int paramInt)
-  {
-    if (this.a.b()) {
-      return;
-    }
-    this.a.c(paramInt);
-  }
-  
-  protected void a(long paramLong, ArrayList<ldr> paramArrayList, int paramInt1, int paramInt2)
-  {
-    if (this.a.b()) {
-      return;
-    }
-    this.a.a(paramLong, paramArrayList, paramInt1, paramInt2);
-  }
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt)
-  {
-    if (this.a.b()) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (paramLong != this.a.jdField_a_of_type_Long);
-      if (paramBoolean)
-      {
-        this.a.b(paramInt);
-        return;
-      }
-    } while (((paramInt != 10) && (paramInt != 1)) || (!MultiVideoEnterPageActivity.a(this.a)));
-    this.a.a(paramInt);
-  }
-  
-  protected void d()
-  {
-    if (this.a.b()) {}
-    while (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    super.d();
-    ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.e();
-    localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a(localArrayList.size(), localArrayList);
-    this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(localArrayList);
-  }
+  private mge(mgb parammgb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mge
  * JD-Core Version:    0.7.0.1
  */

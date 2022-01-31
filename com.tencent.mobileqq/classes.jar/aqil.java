@@ -1,46 +1,36 @@
 import android.view.View;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View.OnClickListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class aqil
-  implements bfph
+  implements View.OnClickListener
 {
-  public aqil(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public aqil(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (bdee.d(this.a.getActivity()))
     {
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_Bfpc != null) {
-        this.a.jdField_a_of_type_Bfpc.dismiss();
+      UniformDownloadActivity.a(this.a).setVisibility(8);
+      if (arni.a())
+      {
+        armv.a(this.a.getActivity(), 2131692752, 2131721154, new aqim(this));
+        return;
       }
-      this.a.o();
+      UniformDownloadActivity.a(this.a);
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
       return;
-      this.a.p();
-      continue;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a() == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.b();
-      }
-      if ((bbfj.d(BaseApplication.getContext())) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.isFinishing()))
-      {
-        aqhw.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.finish();
-      }
-      else
-      {
-        bcql.a(BaseApplication.getContext(), 1, this.a.getString(2131694608), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getTitleBarHeight());
-      }
     }
+    armz.a(2131692745);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import android.view.View;
-import bfpc;
-import bfph;
+import bhpy;
+import bhqd;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class UIJsPlugin$13$3
-  implements bfph
+  implements bhqd
 {
-  UIJsPlugin$13$3(UIJsPlugin.13 param13, bfpc parambfpc) {}
+  UIJsPlugin$13$3(UIJsPlugin.13 param13, bhpy parambhpy) {}
   
   public void OnClick(View paramView, int paramInt)
   {
@@ -30,7 +30,7 @@ class UIJsPlugin$13$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.UIJsPlugin.13.3
  * JD-Core Version:    0.7.0.1
  */

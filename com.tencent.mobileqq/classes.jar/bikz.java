@@ -1,22 +1,16 @@
-import dov.com.qq.im.capture.view.CountDownView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
-
-class bikz
-  implements bkvr
+public abstract interface bikz
 {
-  bikz(biky parambiky, bipq parambipq) {}
+  public abstract void a();
   
-  public void a()
-  {
-    if (bikt.a(this.jdField_a_of_type_Biky.a) != null) {
-      bikt.a(this.jdField_a_of_type_Biky.a).a(this.jdField_a_of_type_Bipq.a(), false);
-    }
-    bikt.a(this.jdField_a_of_type_Biky.a).setTouchEnable(false);
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(int paramInt, String[] paramArrayOfString);
+  
+  public abstract void a(String[] paramArrayOfString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bikz
  * JD-Core Version:    0.7.0.1
  */

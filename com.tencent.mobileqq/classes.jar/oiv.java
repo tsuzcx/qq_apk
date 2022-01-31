@@ -1,21 +1,23 @@
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyUgcVideoReportItem;
 
-class oiv
-  extends ojn
+public final class oiv
+  implements Parcelable.Creator<ReadInJoyUgcVideoReportItem>
 {
-  oiv(oil paramoil, boolean paramBoolean1, List paramList, boolean paramBoolean2)
+  public ReadInJoyUgcVideoReportItem a(Parcel paramParcel)
   {
-    super(paramoil, null);
+    return new ReadInJoyUgcVideoReportItem(paramParcel);
   }
   
-  void a(ojq paramojq)
+  public ReadInJoyUgcVideoReportItem[] a(int paramInt)
   {
-    paramojq.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 3);
+    return new ReadInJoyUgcVideoReportItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oiv
  * JD-Core Version:    0.7.0.1
  */

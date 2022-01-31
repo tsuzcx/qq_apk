@@ -1,44 +1,61 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager.3;
-import com.tribe.async.dispatch.Dispatcher;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.ViewGroup;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class uvy
-  implements syq<tlw, syn>
+  extends upv<utx, upy<utx>>
 {
-  public uvy(FeedManager.3 param3) {}
+  private int a;
   
-  public void a(@NonNull tlw paramtlw, @Nullable syn paramsyn, @NonNull ErrorMessage paramErrorMessage)
+  public uvy(Context paramContext)
   {
-    paramtlw = (tlx)paramsyn;
-    paramsyn = new uwc();
-    paramsyn.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
-    if ((paramErrorMessage.isFail()) || (paramtlw == null)) {
-      uvx.a().remove(this.a.a);
+    super(paramContext);
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public int a(int paramInt)
+  {
+    utx localutx = (utx)a(paramInt);
+    if (localutx != null) {
+      return localutx.jdField_a_of_type_Int;
     }
-    for (;;)
+    return 0;
+  }
+  
+  public int a(String paramString)
+  {
+    List localList = a();
+    int i = 0;
+    while (i < localList.size())
     {
-      ved.a("Q.qqstory.home.data.FeedManager", "request feed item, net rec , feed id: %s , err :%d", this.a.a, Integer.valueOf(paramErrorMessage.errorCode));
-      stb.a().dispatch(paramsyn);
-      return;
-      if (!paramtlw.a.isEmpty())
-      {
-        paramsyn.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem = this.a.this$0.a(((uxm)paramtlw.a.get(0)).a());
+      if (TextUtils.equals(((utx)localList.get(i)).jdField_a_of_type_JavaLangString, paramString)) {
+        return b() + i;
       }
-      else
-      {
-        ved.e("Q.qqstory.home.data.FeedManager", "request feed item, no data return for feedId:%s", new Object[] { this.a.a });
-        uvx.a().remove(this.a.a);
-      }
+      i += 1;
     }
+    return b();
+  }
+  
+  public void a(upy<utx> paramupy)
+  {
+    super.onViewDetachedFromWindow(paramupy);
+    paramupy.a();
+  }
+  
+  public upy b(ViewGroup paramViewGroup, int paramInt)
+  {
+    return uxl.a(paramViewGroup, paramInt);
+  }
+  
+  public void b(upy paramupy, int paramInt)
+  {
+    paramupy.a((utx)a(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uvy
  * JD-Core Version:    0.7.0.1
  */

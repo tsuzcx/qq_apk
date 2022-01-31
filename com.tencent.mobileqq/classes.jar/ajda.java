@@ -1,48 +1,30 @@
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ajda
+class ajda
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
+  ajda(ajbm paramajbm) {}
   
-  public String a()
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (this.d == 0) {
-      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.c).append("_").append(this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
+    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameShareDataHandler", 2, new Object[] { "getCacheKey:", localStringBuilder.toString() });
-      }
-      return localStringBuilder.toString();
-      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.d);
+      this.a.k();
+      return;
     }
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer("GameShareResult{");
-    localStringBuffer.append("mGameId=").append(this.jdField_a_of_type_Int);
-    localStringBuffer.append(", mActivityId=").append(this.b);
-    localStringBuffer.append(", mUin='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", mAIOType=").append(this.c);
-    localStringBuffer.append(", mShareTo=").append(this.d);
-    localStringBuffer.append(", mShareTS=").append(this.jdField_a_of_type_Long);
-    localStringBuffer.append(", mShareRet=").append(this.e);
-    localStringBuffer.append('}');
-    return localStringBuffer.toString();
+    paramView = new Intent(ajbm.a(this.a), QRLoginMgrActivity.class);
+    paramView.putExtra("qrlogin_position", this.a.b);
+    paramView.putExtra("qrlogin_appid", this.a.a);
+    ajbm.a(this.a).startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajda
  * JD-Core Version:    0.7.0.1
  */

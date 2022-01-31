@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
-import ajya;
+import alpo;
 import com.tencent.mobileqq.widget.FormMutiWithAvatarItem;
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ class AddContactsView$11$1
         localFormMutiWithAvatarItem.setOverloading();
       }
       if (this.jdField_a_of_type_Int != 0) {
-        localFormMutiWithAvatarItem.setPeopleText(this.jdField_a_of_type_Int + ajya.a(2131699828));
+        localFormMutiWithAvatarItem.setPeopleText(this.jdField_a_of_type_Int + alpo.a(2131700197));
       }
     } while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0));
     String[] arrayOfString = new String[this.jdField_a_of_type_JavaUtilArrayList.size()];
@@ -39,7 +39,7 @@ class AddContactsView$11$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsView.11.1
  * JD-Core Version:    0.7.0.1
  */

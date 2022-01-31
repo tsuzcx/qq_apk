@@ -1,70 +1,88 @@
-import android.content.Context;
-import android.graphics.Rect;
-import com.tencent.common.app.BaseApplicationImpl;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class amcc
+public abstract class amcc
 {
-  public int a;
-  public long a;
-  public Rect a;
-  public String a;
-  public boolean a;
-  public int b;
-  public Rect b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
+  protected amcg a;
+  public QQAppInterface a;
+  protected Class<? extends awbv> a;
+  protected ArrayList<amcf> a;
+  public ConcurrentHashMap<String, awbv> a;
   
-  public amcc()
+  public amcc(QQAppInterface paramQQAppInterface, amcg paramamcg, Class<? extends awbv> paramClass)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Amcg = paramamcg;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void a(int paramInt, String paramString, JSONObject paramJSONObject)
+  public awbv a(String paramString)
   {
-    if (paramJSONObject == null) {}
-    do
+    return (awbv)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+  }
+  
+  protected String a(awbv paramawbv)
+  {
+    return Long.toString(paramawbv.getId());
+  }
+  
+  protected abstract void a();
+  
+  public void a(int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((amcf)localIterator.next()).a(paramInt);
+    }
+  }
+  
+  public void a(awbv paramawbv)
+  {
+    a(paramawbv, 0, null);
+  }
+  
+  public abstract void a(awbv paramawbv, int paramInt, amci paramamci);
+  
+  protected abstract void b();
+  
+  public void b(awbv paramawbv)
+  {
+    b(paramawbv, 0, null);
+  }
+  
+  public void b(awbv paramawbv, int paramInt, amci paramamci)
+  {
+    String str = a(paramawbv);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, paramawbv);
+    if (paramawbv.getStatus() == 1000)
     {
+      this.jdField_a_of_type_Amcg.a(paramawbv, 0, paramInt, paramamci);
       return;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_d_of_type_Int = paramInt;
-      paramString = BaseApplicationImpl.getContext();
-      if (paramJSONObject.has("rect"))
-      {
-        JSONArray localJSONArray = paramJSONObject.getJSONArray("rect");
-        this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-        this.jdField_a_of_type_AndroidGraphicsRect.left = actj.a(localJSONArray.getInt(0) / 2, paramString.getResources());
-        this.jdField_a_of_type_AndroidGraphicsRect.top = actj.a(localJSONArray.getInt(1) / 2, paramString.getResources());
-        this.jdField_a_of_type_AndroidGraphicsRect.right = actj.a(localJSONArray.getInt(2) / 2, paramString.getResources());
-        this.jdField_a_of_type_AndroidGraphicsRect.bottom = actj.a(localJSONArray.getInt(3) / 2, paramString.getResources());
-      }
-      this.jdField_a_of_type_Long = paramJSONObject.optInt("time", 0);
-      this.jdField_a_of_type_Int = paramJSONObject.optInt("cycle_count", 1);
-      this.jdField_b_of_type_Int = paramJSONObject.optInt("count", 0);
-      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("img_prefix", "");
-      this.jdField_c_of_type_Int = paramJSONObject.optInt("alpha", 0);
-      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("align", "");
-      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("zip_name", "");
-      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("img_reverse", true);
-      paramJSONObject = paramJSONObject.optJSONArray("padding");
-    } while ((paramJSONObject == null) || (paramJSONObject.length() <= 0));
-    this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_b_of_type_AndroidGraphicsRect.left = actj.a(paramJSONObject.getInt(0) / 2, paramString.getResources());
-    this.jdField_b_of_type_AndroidGraphicsRect.top = actj.a(paramJSONObject.getInt(1) / 2, paramString.getResources());
-    this.jdField_b_of_type_AndroidGraphicsRect.right = actj.a(paramJSONObject.getInt(2) / 2, paramString.getResources());
-    this.jdField_b_of_type_AndroidGraphicsRect.bottom = actj.a(paramJSONObject.getInt(3) / 2, paramString.getResources());
+    }
+    this.jdField_a_of_type_Amcg.a(paramawbv, 1, paramInt, paramamci);
+  }
+  
+  public void c(awbv paramawbv)
+  {
+    c(paramawbv, 0, null);
+  }
+  
+  public void c(awbv paramawbv, int paramInt, amci paramamci)
+  {
+    String str = a(paramawbv);
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
+    }
+    this.jdField_a_of_type_Amcg.a(paramawbv, 2, paramInt, paramamci);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amcc
  * JD-Core Version:    0.7.0.1
  */

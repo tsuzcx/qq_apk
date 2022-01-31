@@ -2,12 +2,12 @@ package com.tencent.mobileqq.database.corrupt;
 
 import android.app.Activity;
 import android.app.Dialog;
-import ankn;
+import apbu;
 
 public class DBFixDialogUI$2
   implements Runnable
 {
-  public DBFixDialogUI$2(ankn paramankn, Dialog paramDialog) {}
+  public DBFixDialogUI$2(apbu paramapbu, Dialog paramDialog) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class DBFixDialogUI$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixDialogUI.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
 
 public class pah
+  extends RecyclerView.ItemDecoration
 {
-  public void a(int paramInt, String paramString) {}
+  private int jdField_a_of_type_Int;
   
-  public void a(long paramLong, String paramString) {}
+  public pah(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
   
-  public void a(FusionBiuInfo paramFusionBiuInfo) {}
-  
-  public void a(FastWebArticleInfo paramFastWebArticleInfo, int paramInt, String paramString) {}
-  
-  public void a(FastWebArticleInfo paramFastWebArticleInfo, String paramString) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(boolean paramBoolean, int paramInt, rmx paramrmx) {}
-  
-  public void a(boolean paramBoolean, String paramString) {}
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0)
+    {
+      paramRect.left = (this.jdField_a_of_type_Int * 2);
+      paramRect.right = this.jdField_a_of_type_Int;
+      return;
+    }
+    paramRect.left = (this.jdField_a_of_type_Int / 2);
+    paramRect.right = this.jdField_a_of_type_Int;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pah
  * JD-Core Version:    0.7.0.1
  */

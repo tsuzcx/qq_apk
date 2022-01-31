@@ -1,54 +1,32 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import java.util.List;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
 class wdy
-  extends RecyclerView.AdapterDataObserver
+  extends ParallelJobSegment<String, wdu>
 {
-  wdy(wdx paramwdx) {}
+  public int a;
   
-  public void onChanged()
+  public wdy(wds paramwds, int paramInt)
   {
-    this.a.notifyDataSetChanged();
-    if (wdx.a(this.a) != null) {
-      wdx.a(this.a).a(wdx.a(this.a));
-    }
+    super("RequestLikeListSegment");
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    this.a.notifyItemRangeChanged(wdx.a(this.a).size() + paramInt1, paramInt2);
-    if (wdx.a(this.a) != null) {
-      wdx.a(this.a).a(wdx.a(this.a));
+    wem localwem = new wem();
+    localwem.jdField_a_of_type_JavaLangString = paramString;
+    localwem.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int != -1) {
+      localwem.c = this.jdField_a_of_type_Int;
     }
-  }
-  
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeInserted(wdx.a(this.a).size() + paramInt1, paramInt2);
-    if (wdx.a(this.a) != null) {
-      wdx.a(this.a).a(wdx.a(this.a));
-    }
-  }
-  
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.a.notifyItemMoved(wdx.a(this.a).size() + paramInt1, wdx.a(this.a).size() + paramInt2);
-    if (wdx.a(this.a) != null) {
-      wdx.a(this.a).a(wdx.a(this.a));
-    }
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    this.a.notifyItemRangeRemoved(wdx.a(this.a).size() + paramInt1, paramInt2);
-    if (wdx.a(this.a) != null) {
-      wdx.a(this.a).a(wdx.a(this.a));
-    }
+    ung.a().a(localwem, new wdz(this, paramJobContext, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wdy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,70 @@
-import android.view.View;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.content.res.Resources;
+import android.widget.Button;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.av.ui.MultiVideoEnterPageMembersControlUI;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.QQPermissionCallback;
 
 public class mjd
-  implements QQPermissionCallback
+  extends lij
 {
-  public mjd(VideoControlUI paramVideoControlUI, String paramString, long paramLong, View paramView) {}
+  public mjd(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "onClick_Camera, deny, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p = false;
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.e(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null))
+    {
+      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, empty");
+      return;
+    }
+    if (paramLong != this.a.jdField_a_of_type_Long)
+    {
+      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, ignore");
+      return;
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin(), paramLong, this.a.b);
+      this.a.b(paramInt2);
+      return;
+    }
+    if (paramInt3 == -5)
+    {
+      if (this.a.jdField_a_of_type_Boolean) {
+        if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI != null) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI.length > 1) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1] != null)) {
+          this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1].b.setVisibility(8);
+        }
+      }
+      for (;;)
+      {
+        QQToast.a(this.a, 2131693340, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131298914));
+        return;
+        this.a.jdField_a_of_type_Mjc.b.setVisibility(8);
+      }
+    }
+    QQToast.a(this.a, 2131693339, 1).b(MultiVideoEnterPageActivity.c(this.a).getDimensionPixelSize(2131298914));
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected void c(long paramLong)
   {
-    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c, 1, "onClick_Camera, grant, i[" + paramInt + "], mRequestPermissionIng[" + this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.p = false;
-    if ("android.permission.CAMERA".equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
+    super.c(paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin:" + paramLong + ", mRelationId = " + this.a.jdField_a_of_type_Long);
     }
-    do
+    if ((paramLong != 0L) && (paramLong == this.a.jdField_a_of_type_Long))
     {
-      return;
-      if ("android.permission.RECORD_AUDIO".equals(this.jdField_a_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_ComTencentAvUiVideoControlUI.c(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidViewView);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin matched");
       }
-    } while (!"android.permission.WRITE_EXTERNAL_STORAGE".equals(this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentAvUiVideoControlUI.f(this.jdField_a_of_type_Long);
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mjd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import osj;
-import ozo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleExposureInfo;
+import pew;
 
 public class ArticleInfoModule$54
   implements Runnable
 {
-  public ArticleInfoModule$54(ozo paramozo, List paramList1, List paramList2) {}
+  public ArticleInfoModule$54(pew parampew, ArticleExposureInfo paramArticleExposureInfo) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArticleInfoModule", 2, "onTopicInfoListFetched: keywordList: " + this.a + " topicInfoList: " + this.b);
-    }
-    osj.a().a(this.a, this.b);
+    this.this$0.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule.54
  * JD-Core Version:    0.7.0.1
  */

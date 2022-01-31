@@ -1,46 +1,28 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.Share.7.1;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-
 public class xmt
-  implements BusinessObserver
 {
-  xmt(xmq paramxmq) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static String a(String paramString, int paramInt)
   {
-    if (!paramBoolean) {}
-    byte[] arrayOfByte;
-    do
-    {
-      return;
-      arrayOfByte = paramBundle.getByteArray("data");
-    } while (arrayOfByte == null);
-    paramBundle = new GetAppInfoProto.GetAppinfoResponse();
-    try
-    {
-      paramBundle.mergeFrom(arrayOfByte);
-      ThreadManager.post(new Share.7.1(this, paramBundle), 5, null, true);
-      return;
+    if (paramString.getBytes().length <= paramInt) {
+      return paramString;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
+    int k = paramString.length();
+    int j = 0;
+    for (int i = 0;; i = j) {
+      if (j < k)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(xmq.a, 2, localInvalidProtocolBufferMicroException.getMessage());
-        }
+        j += Character.charCount(paramString.codePointAt(j));
+        if (paramString.substring(0, j).getBytes().length <= paramInt) {}
+      }
+      else
+      {
+        return paramString.substring(0, i);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xmt
  * JD-Core Version:    0.7.0.1
  */

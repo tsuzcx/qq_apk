@@ -1,23 +1,30 @@
-import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.FontBubble;
-import java.util.List;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.upload.UploadManager;
 
-public abstract interface aqwx<T>
+class aqwx
+  implements bkhz
 {
-  public abstract int a();
+  aqwx(aqwl paramaqwl) {}
   
-  public abstract String a(Context paramContext);
+  public void a(long paramLong, float paramFloat) {}
   
-  public abstract String a(FontBubble paramFontBubble);
+  public void a(String paramString)
+  {
+    aqwl.b(this.a, false);
+  }
   
-  public abstract List<FontBubble> a(QQAppInterface paramQQAppInterface, T paramT);
-  
-  public abstract void a(akfv paramakfv);
+  public void a(String paramString1, String paramString2)
+  {
+    aqwl.a(this.a, true);
+    aqwl.b(this.a, false);
+    bkex.a(aqwl.a(this.a).getApplication(), true);
+    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqwx
  * JD-Core Version:    0.7.0.1
  */

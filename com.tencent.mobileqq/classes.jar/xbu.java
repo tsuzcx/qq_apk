@@ -1,27 +1,16 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.graphics.Bitmap;
 
-public class xbu
+public abstract interface xbu
 {
-  public View a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public xcb a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
+  public abstract void a(int paramInt);
+  
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xbu
  * JD-Core Version:    0.7.0.1
  */

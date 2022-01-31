@@ -1,55 +1,50 @@
-import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import android.view.View;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.aio.item.ChatThumbView;
+import com.tencent.mobileqq.activity.TroopGagActivity;
+import com.tencent.mobileqq.activity.TroopGagActivity.3.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-final class adyh
-  implements adyq
+public class adyh
+  extends amab
 {
-  adyh(ETTextView paramETTextView1, ETTextView paramETTextView2, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, BubbleImageView paramBubbleImageView, int paramInt, String paramString, MessageRecord paramMessageRecord, Context paramContext) {}
+  public adyh(TroopGagActivity paramTroopGagActivity) {}
   
-  public void a(Context paramContext, QQAppInterface paramQQAppInterface, View paramView, MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2, String paramString)
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    if ((paramView instanceof ChatThumbView))
-    {
-      if (paramMessageRecord2 == null) {
-        break label154;
-      }
-      if ((!(paramMessageRecord2 instanceof MessageForText)) || (((MessageForText)paramMessageRecord2).msg == null)) {
-        break label84;
-      }
-      adyf.a(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, 1, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgText, paramMessageRecord2);
-      QLog.e("ReplyTextItemBuilder", 1, "returned text msg error!" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgText);
+    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
+      return;
     }
-    label84:
-    do
+    if (paramBoolean)
     {
-      return;
-      if (((paramMessageRecord1 instanceof MessageForReplyText)) && (((MessageForReplyText)paramMessageRecord1).getSourceMessage() != null)) {
-        ((MessageForReplyText)paramMessageRecord1).setSourceMessageRecord(paramMessageRecord2);
+      this.a.jdField_a_of_type_Adyj.notifyDataSetChanged();
+      if (this.a.jdField_a_of_type_Adyj.getCount() != 0) {
+        break label209;
       }
-      adyf.a(paramMessageRecord2, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_AndroidContentContext, paramQQAppInterface, paramString);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.w("ReplyTextItemBuilder", 2, "processReplyMsg:source msg has been deleted.");
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    for (;;)
+    {
+      this.a.getSharedPreferences("last_update_time" + this.a.app.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.a.jdField_a_of_type_JavaLangString, System.currentTimeMillis()).commit();
+      ThreadManager.post(new TroopGagActivity.3.1(this, (bcjl)this.a.app.getManager(48)), 8, null, false);
+      if (!QLog.isColorLevel()) {
+        break;
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView == null);
-    label154:
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setVisibility(0);
-    adyf.a(this.jdField_a_of_type_AndroidContentContext, paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null);
-    adyf.a(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView, this.b, 1, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo.mSourceMsgText, null);
+      QLog.d("TroopGagActivity", 2, "onUpdateTroopGetMemberList: isSuccess=" + paramBoolean);
+      return;
+      label209:
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyh
  * JD-Core Version:    0.7.0.1
  */

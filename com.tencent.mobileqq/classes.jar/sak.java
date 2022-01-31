@@ -1,30 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.5.1;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.AbsListView;
 
-public class sak
-  implements DialogInterface.OnClickListener
+public abstract interface sak
 {
-  public sak(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new ReadInJoyNewSearchActivity.5.1(this), 10, null, true);
-      return;
-    }
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(AbsListView paramAbsListView, int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sak
  * JD-Core Version:    0.7.0.1
  */

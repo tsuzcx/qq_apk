@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import bdhk;
+import aaon;
+import bfgi;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import nmc;
-import qjc;
-import yyn;
+import noy;
+import qyj;
 
 class ADVideoAppDownloadManager$3
   implements Runnable
 {
-  ADVideoAppDownloadManager$3(ADVideoAppDownloadManager paramADVideoAppDownloadManager, qjc paramqjc) {}
+  ADVideoAppDownloadManager$3(ADVideoAppDownloadManager paramADVideoAppDownloadManager, qyj paramqyj) {}
   
   public void run()
   {
-    if (nmc.a(ADVideoAppDownloadManager.a(this.this$0), this.a.d))
+    if (noy.a(ADVideoAppDownloadManager.a(this.this$0), this.a.d))
     {
       QLog.d("ADVideoAppDownloadManager", 1, "already installed." + this.a.d);
       this.this$0.a(this.a, 1, 100);
@@ -29,8 +29,8 @@ class ADVideoAppDownloadManager$3
         {
           QLog.d("ADVideoAppDownloadManager", 1, "already finishDownload." + this.a.d);
           this.this$0.a(this.a, 5, 100);
-          DownloadInfo localDownloadInfo = bdhk.a().c(this.a.a);
-          bdhk.a().a(localDownloadInfo);
+          DownloadInfo localDownloadInfo = bfgi.a().c(this.a.a);
+          bfgi.a().a(localDownloadInfo);
           return;
         }
         i = ADVideoAppDownloadManager.a(this.this$0, ADVideoAppDownloadManager.a(this.this$0), this.a);
@@ -40,7 +40,7 @@ class ADVideoAppDownloadManager$3
       } while (!QLog.isColorLevel());
       QLog.d("ADVideoAppDownloadManager", 2, "isPkgDownloading.isPkgDownloading." + this.a.d + " " + i);
       return;
-      if (yyn.a())
+      if (aaon.a())
       {
         this.this$0.a(this.a, 0);
         return;
@@ -51,7 +51,7 @@ class ADVideoAppDownloadManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.ADVideoAppDownloadManager.3
  * JD-Core Version:    0.7.0.1
  */

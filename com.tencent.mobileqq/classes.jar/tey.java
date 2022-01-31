@@ -1,57 +1,21 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import java.util.HashSet;
+import android.content.DialogInterface;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
-public class tey
+final class tey
+  extends bdco
 {
-  final int jdField_a_of_type_Int;
-  public final Bundle a;
-  String jdField_a_of_type_JavaLangString = "";
-  HashSet<String> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  boolean jdField_a_of_type_Boolean = true;
-  String jdField_b_of_type_JavaLangString = "";
-  boolean jdField_b_of_type_Boolean = true;
+  tey(WSDownloadParams paramWSDownloadParams) {}
   
-  public tey(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public static tey a()
-  {
-    return new tey(20);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaUtilHashSet.clear();
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.equals(paramString, this.jdField_b_of_type_JavaLangString))
-    {
-      this.jdField_b_of_type_JavaLangString = paramString;
-      a();
-    }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
+    paramDialogInterface.dismiss();
+    tet.a(126, this.a);
+    tju.a(this.a.mScene, false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tey
  * JD-Core Version:    0.7.0.1
  */

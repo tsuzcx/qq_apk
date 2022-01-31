@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.util;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.os.SystemClock;
-import awwh;
-import bbdj;
-import bbgu;
-import bbjg;
+import ayrk;
+import bdcd;
+import bdfq;
+import bdic;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,7 +23,7 @@ public class VADHelper
   
   static
   {
-    jdField_a_of_type_Int = bbjg.b;
+    jdField_a_of_type_Int = bdic.b;
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
     jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap());
     jdField_a_of_type_Boolean = false;
@@ -118,7 +118,7 @@ public class VADHelper
     QLog.i(jdField_a_of_type_JavaLangString, 2, localStringBuilder.toString());
     if ((jdField_b_of_type_Boolean) && (!c))
     {
-      bbdj.a(paramContext, 230, ajya.a(2131716044), localStringBuilder.toString(), "", "ok", new awwh(), null).show();
+      bdcd.a(paramContext, 230, alpo.a(2131716416), localStringBuilder.toString(), "", "ok", new ayrk(), null).show();
       c = true;
     }
     a();
@@ -181,7 +181,7 @@ public class VADHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.VADHelper
  * JD-Core Version:    0.7.0.1
  */

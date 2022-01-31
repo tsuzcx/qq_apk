@@ -1,21 +1,20 @@
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
+import android.text.Editable;
+import com.tencent.open.agent.datamodel.Friend;
+import java.util.Comparator;
 
 class bfcs
-  implements MethodChannel.MethodCallHandler
+  implements Comparator<Friend>
 {
-  bfcs(bfcr parambfcr) {}
+  bfcs(bfcr parambfcr, Editable paramEditable) {}
   
-  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
+  public int a(Friend paramFriend1, Friend paramFriend2)
   {
-    paramResult.success(null);
-    betc.a("miniapp-start-TISSUE-flutter_method_channel", paramMethodCall.method);
+    return this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend2) - this.jdField_a_of_type_AndroidTextEditable.getSpanStart(paramFriend1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfcs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,45 @@
-import com.tencent.component.network.downloader.strategy.ConfigKeepAliveStrategy;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-public class bhjh
-  extends ConfigKeepAliveStrategy
-  implements bggk
+final class bhjh
+  implements bhjw
 {
-  public bhjh()
+  private long a;
+  
+  public bhjh(long paramLong)
   {
-    a();
-    QzoneConfig.getInstance().addListener(this);
+    this.a = paramLong;
   }
   
-  private void a()
+  public void a(int paramInt, bhjv parambhjv, bhjx parambhjx)
   {
-    String str = QzoneConfig.getInstance().getConfig("PhotoDownload", "KpDomainList", "m.qpic.cn,a[0-9].qpic.cn,b\\d+\\.photo\\.store\\.qq\\.com,a\\d+\\.photo\\.store\\.qq\\.com,.*d3g\\.qq\\.com,.*i.gtimg.cn,.*qzonestyle.gtimg.cn,.*qzs.qq.com,qlogo[0-9].store.qq.com,group.store.qq.com,pgdt.gtimg.cn,img[0-7].paipaiimg.com");
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadConfigKeepAliveStrategy", 2, "loadConfig, kp_domain_list=" + str);
+    long l1 = 0L;
+    if (this.a != 0L)
+    {
+      if ((paramInt != 1) && (paramInt != 2) && (paramInt != 4)) {
+        break label46;
+      }
+      QSecFramework.a(5L, this.a, paramInt, 0L, null, null, null, null);
     }
-    setConfig(str);
-  }
-  
-  public void onConfigChange()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadConfigKeepAliveStrategy", 2, "KeepAlive receive change");
+    label46:
+    while (paramInt != 3) {
+      return;
     }
-    a();
+    int i = parambhjx.jdField_a_of_type_Int;
+    int j = parambhjx.b;
+    int k = parambhjx.c;
+    int m = parambhjx.d;
+    parambhjv = parambhjx.jdField_a_of_type_ArrayOfByte;
+    long l2 = this.a;
+    long l3 = paramInt;
+    if (parambhjx.jdField_a_of_type_Boolean) {
+      l1 = 1L;
+    }
+    QSecFramework.a(5L, l2, l3, l1, null, null, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), parambhjv }, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhjh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
 
-final class ayll
-  implements DialogInterface.OnClickListener
+public class ayll
+  extends ayle
 {
-  ayll(aylm paramaylm) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ayjk a(ahea paramahea, List<ayjl> paramList, String paramString1, boolean paramBoolean, String paramString2)
   {
-    aylh.a("0X800A5CA");
-    if (this.a != null) {
-      this.a.onCancel();
-    }
+    ayrc.a(80);
+    return new ayiq(paramahea, paramList, paramString1, paramBoolean);
+  }
+  
+  ayjl a(AccountSearchPb.hotwordrecord paramhotwordrecord, String paramString1, CharSequence paramCharSequence1, String paramString2, CharSequence paramCharSequence2)
+  {
+    return null;
+  }
+  
+  ayjl a(AccountSearchPb.record paramrecord, String paramString, CharSequence paramCharSequence)
+  {
+    return new ayir(paramrecord, paramString, paramCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayll
  * JD-Core Version:    0.7.0.1
  */

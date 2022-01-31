@@ -1,45 +1,51 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class azwt
-  implements View.OnClickListener
+public final class azwt
 {
-  public azwt(HomeWorkTroopSelectorFragment paramHomeWorkTroopSelectorFragment) {}
+  public int a;
+  public boolean a;
   
-  public void onClick(View paramView)
+  public static azwt a(aogf[] paramArrayOfaogf)
   {
-    paramView = new ArrayList();
-    ArrayList localArrayList = new ArrayList();
-    if (HomeWorkTroopSelectorFragment.a(this.a) != null)
+    azwt localazwt = new azwt();
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
     {
-      int j = HomeWorkTroopSelectorFragment.a(this.a).getCount();
       int i = 0;
-      while (i < j)
+      for (;;)
       {
-        localObject = (azwy)HomeWorkTroopSelectorFragment.a(this.a).getItem(i);
-        if ((((Boolean)((azwy)localObject).b).booleanValue()) && (!HomeWorkTroopSelectorFragment.a(this.a).equals(((TroopInfo)((azwy)localObject).a).troopuin)))
+        if (i < paramArrayOfaogf.length)
         {
-          paramView.add(((TroopInfo)((azwy)localObject).a).troopname);
-          localArrayList.add(((TroopInfo)((azwy)localObject).a).troopuin);
+          String str = paramArrayOfaogf[i].a;
+          try
+          {
+            localazwt.jdField_a_of_type_Int = new JSONObject(str).optInt("ConfigEnableStudyMode");
+            localazwt.jdField_a_of_type_Boolean = true;
+            azwu.c(a(localazwt));
+            QLog.i("StudyModeConfigProcessor", 1, "[study mode config], mGraySwitch:" + localazwt.jdField_a_of_type_Int);
+            i += 1;
+          }
+          catch (Throwable localThrowable)
+          {
+            for (;;)
+            {
+              QLog.e("StudyModeConfigProcessor", 1, localThrowable, new Object[0]);
+            }
+          }
         }
-        i += 1;
       }
     }
-    Object localObject = new Intent();
-    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_uin_list_key", localArrayList);
-    ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_name_list_key", paramView);
-    this.a.getActivity().setResult(262, (Intent)localObject);
-    this.a.getActivity().doOnBackPressed();
+    return localazwt;
+  }
+  
+  public static boolean a(azwt paramazwt)
+  {
+    return paramazwt.jdField_a_of_type_Int == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azwt
  * JD-Core Version:    0.7.0.1
  */

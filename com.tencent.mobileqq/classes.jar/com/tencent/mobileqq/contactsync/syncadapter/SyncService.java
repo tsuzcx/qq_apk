@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.IBinder;
-import anew;
+import aowd;
 import mqq.app.MobileQQ;
 
 public class SyncService
   extends Service
 {
-  private static anew jdField_a_of_type_Anew;
+  private static aowd jdField_a_of_type_Aowd;
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   
   public static void a(Context paramContext, boolean paramBoolean)
@@ -41,7 +41,7 @@ public class SyncService
   
   public IBinder onBind(Intent paramIntent)
   {
-    return jdField_a_of_type_Anew.getSyncAdapterBinder();
+    return jdField_a_of_type_Aowd.getSyncAdapterBinder();
   }
   
   public void onCreate()
@@ -56,8 +56,8 @@ public class SyncService
     }
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (jdField_a_of_type_Anew == null) {
-        jdField_a_of_type_Anew = new anew(getApplicationContext(), true);
+      if (jdField_a_of_type_Aowd == null) {
+        jdField_a_of_type_Aowd = new aowd(getApplicationContext(), true);
       }
       return;
     }

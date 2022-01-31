@@ -1,9 +1,9 @@
 package com.tencent.open.appstore.dl;
 
-import bdhk;
-import bdho;
-import bdii;
-import bdll;
+import bfgi;
+import bfgm;
+import bfhg;
+import bfki;
 import com.tencent.open.downloadnew.DownloadInfo;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +11,12 @@ import java.util.List;
 public class DownloadProxy$2
   implements Runnable
 {
-  public DownloadProxy$2(bdho parambdho, List paramList, bdll parambdll) {}
+  public DownloadProxy$2(bfgm parambfgm, List paramList, bfki parambfki) {}
   
   public void run()
   {
-    bdii.b("DownloadResolver", "[queryByDownloadManagerV2] enter");
-    bdhk.a().a();
+    bfhg.b("DownloadResolver", "[queryByDownloadManagerV2] enter");
+    bfgi.a().a();
     for (;;)
     {
       int i;
@@ -28,27 +28,27 @@ public class DownloadProxy$2
         if (i < j)
         {
           DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (bdhk.a().b(localDownloadInfo))
+          if (bfgi.a().b(localDownloadInfo))
           {
-            bdii.b("DownloadResolver", "[queryByDownloadManagerV2] refreshDownloadInfo true " + localDownloadInfo);
+            bfhg.b("DownloadResolver", "[queryByDownloadManagerV2] refreshDownloadInfo true " + localDownloadInfo);
             localArrayList.add(localDownloadInfo);
           }
         }
         else
         {
-          if (this.jdField_a_of_type_Bdll != null) {
-            this.jdField_a_of_type_Bdll.a(localArrayList);
+          if (this.jdField_a_of_type_Bfki != null) {
+            this.jdField_a_of_type_Bfki.a(localArrayList);
           }
           return;
         }
       }
       catch (Exception localException)
       {
-        bdii.c("DownloadResolver", "[queryByDownloadManagerV2] Exception>>>", localException);
-        if (this.jdField_a_of_type_Bdll == null) {
+        bfhg.c("DownloadResolver", "[queryByDownloadManagerV2] Exception>>>", localException);
+        if (this.jdField_a_of_type_Bfki == null) {
           continue;
         }
-        this.jdField_a_of_type_Bdll.a(-1, localException.getMessage());
+        this.jdField_a_of_type_Bfki.a(-1, localException.getMessage());
         return;
       }
       i += 1;

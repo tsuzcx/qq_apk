@@ -1,25 +1,27 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public class afgo
-  implements afip
+class afgo
+  implements bhqd
 {
-  public afgo(SearchContactsFragment paramSearchContactsFragment) {}
+  afgo(afgn paramafgn, MessageForDeviceFile paramMessageForDeviceFile, bhpy parambhpy) {}
   
-  public Activity a()
+  public void OnClick(View paramView, int paramInt)
   {
-    return this.a.a();
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.a;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      this.jdField_a_of_type_Afgn.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afgo
  * JD-Core Version:    0.7.0.1
  */

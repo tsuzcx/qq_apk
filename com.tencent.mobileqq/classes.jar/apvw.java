@@ -1,91 +1,172 @@
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import java.io.File;
+import java.util.List;
 
 public class apvw
+  extends BaseAdapter
+  implements URLDrawableDownListener
 {
-  private static Calendar a = ;
+  protected Context a;
+  protected Handler a;
+  protected apvv a;
+  public List<apvv> a;
   
-  public static String a(long paramLong)
+  public apvw(Context paramContext, Handler paramHandler, apvv paramapvv)
   {
-    Calendar localCalendar1 = Calendar.getInstance();
-    Calendar localCalendar2 = Calendar.getInstance();
-    localCalendar1.setTimeInMillis(awzy.a() * 1000L);
-    localCalendar2.setTimeInMillis(paramLong);
-    int k = localCalendar1.get(1);
-    int i = localCalendar1.get(6) - localCalendar2.get(6);
-    int j = i;
-    if (localCalendar2.get(1) != k)
-    {
-      localCalendar1 = (Calendar)localCalendar2.clone();
-      do
-      {
-        j = i + localCalendar1.getActualMaximum(6);
-        localCalendar1.add(1, 1);
-        i = j;
-      } while (localCalendar1.get(1) != k);
-    }
-    if (j <= 7) {
-      return "7天内";
-    }
-    return a(paramLong, "yyyy年MM月");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
+    this.jdField_a_of_type_Apvv = paramapvv;
   }
   
-  public static String a(long paramLong, String paramString)
+  public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    if (paramLong == 0L) {
-      return "";
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    float f1 = paramInt1 / i;
+    float f2 = paramInt2 / j;
+    Matrix localMatrix = new Matrix();
+    localMatrix.postScale(f1, f2);
+    return Bitmap.createBitmap(paramBitmap, 0, 0, i, j, localMatrix, true);
+  }
+  
+  public int a(apvv paramapvv)
+  {
+    return paramapvv.a(this.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public apvv a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (apvv)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
+    return this.jdField_a_of_type_Apvv;
+  }
+  
+  public Long a(int paramInt)
+  {
+    return Long.valueOf(a(paramInt).a());
+  }
+  
+  public List<apvv> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(List<apvv> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return a(paramInt).a(this.jdField_a_of_type_Apvv);
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 1;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {
+      paramView = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
+    }
+    for (;;)
+    {
+      com.tencent.qphone.base.util.QLog.d("EmotionAdapter", 1, "getView position:" + paramInt);
+      Drawable localDrawable;
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+      {
+        paramViewGroup = (apvv)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localDrawable = paramViewGroup.a(this.jdField_a_of_type_AndroidContentContext);
+        if ((paramViewGroup.a()) || (!paramViewGroup.b())) {
+          break label200;
+        }
+        ((URLImageView)paramView).setURLDrawableDownListener(this);
+        label106:
+        if ((!(localDrawable instanceof attb)) || (((attb)localDrawable).a() == null)) {
+          break label211;
+        }
+        int i = aekt.a(100.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        paramViewGroup = a(((attb)localDrawable).a(), i, i);
+        ((ImageView)paramView).setImageBitmap(paramViewGroup);
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+        this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, paramInt, 0, localDrawable).sendToTarget();
+        return paramView;
+        paramViewGroup = this.jdField_a_of_type_Apvv;
+        break;
+        label200:
+        ((URLImageView)paramView).setURLDrawableDownListener(null);
+        break label106;
+        label211:
+        ((ImageView)paramView).setImageDrawable(localDrawable);
+      }
+    }
+  }
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
     try
     {
-      paramString = new SimpleDateFormat(paramString).format(new Date(paramLong));
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString = new SimpleDateFormat("yyyy-MM-dd");
-      try
-      {
-        paramString = paramString.format(new Date(paramLong));
-        return paramString;
+      File localFile = paramURLDrawable.getFileInLocal();
+      if (localFile == null) {
+        break label74;
       }
-      catch (Exception paramString) {}
+      i = bdda.c(localFile.getAbsolutePath());
     }
-    return null;
-  }
-  
-  public static String b(long paramLong)
-  {
-    a.setTimeInMillis(System.currentTimeMillis());
-    int i = a.get(1);
-    int j = a.get(2);
-    int k = a.get(5);
-    a.setTimeInMillis(paramLong);
-    int m = a.get(1);
-    int n = a.get(2);
-    int i1 = a.get(5);
-    if (i != m) {
-      return new SimpleDateFormat("yyyy-MM-dd ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+        label74:
+        int i = 0;
+      }
     }
-    if (j != n) {
-      return new SimpleDateFormat("MM-dd ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
+    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+      com.tencent.TMG.utils.QLog.d("EmotionAdapter", 0, "onLoadSuccessed,orientation");
     }
-    if (k == i1) {
-      return new SimpleDateFormat("HH:mm ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
-    }
-    if (k - i1 <= 1) {
-      return ajya.a(2131709721);
-    }
-    return new SimpleDateFormat("MM-dd ", BaseApplicationImpl.getContext().getResources().getConfiguration().locale).format(new Date(paramLong));
+    AIOGalleryAdapter.a(paramView, paramURLDrawable, i);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+    this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1001, -1, 1, paramURLDrawable).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apvw
  * JD-Core Version:    0.7.0.1
  */

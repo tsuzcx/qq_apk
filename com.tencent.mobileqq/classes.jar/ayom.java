@@ -1,78 +1,131 @@
-public class ayom
-  extends akat
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+
+public abstract class ayom
+  implements ayof
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  int jdField_b_of_type_Int;
-  boolean jdField_b_of_type_Boolean;
+  private int jdField_a_of_type_Int;
+  protected Context a;
+  private ayoh jdField_a_of_type_Ayoh;
+  private ayol jdField_a_of_type_Ayol = new ayol();
+  protected QQAppInterface a;
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<ayog> jdField_a_of_type_JavaLangRefWeakReference;
   
-  /* Error */
-  protected void a(boolean paramBoolean, QQService.RespTmpChatPicDownload paramRespTmpChatPicDownload)
+  public ayoh a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: iload_1
-    //   4: putfield 18	ayom:jdField_b_of_type_Boolean	Z
-    //   7: iload_1
-    //   8: ifeq +56 -> 64
-    //   11: aload_2
-    //   12: ifnull +35 -> 47
-    //   15: aload_2
-    //   16: getfield 23	QQService/RespTmpChatPicDownload:lReplyCode	I
-    //   19: ifne +28 -> 47
-    //   22: aload_2
-    //   23: getfield 26	QQService/RespTmpChatPicDownload:strDownloadURL	Ljava/lang/String;
-    //   26: ifnull +21 -> 47
-    //   29: aload_2
-    //   30: getfield 26	QQService/RespTmpChatPicDownload:strDownloadURL	Ljava/lang/String;
-    //   33: invokevirtual 32	java/lang/String:length	()I
-    //   36: ifle +11 -> 47
-    //   39: aload_0
-    //   40: aload_2
-    //   41: getfield 26	QQService/RespTmpChatPicDownload:strDownloadURL	Ljava/lang/String;
-    //   44: putfield 34	ayom:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   47: aload_0
-    //   48: iconst_1
-    //   49: putfield 36	ayom:jdField_a_of_type_Int	I
-    //   52: aload_0
-    //   53: iconst_1
-    //   54: putfield 38	ayom:jdField_a_of_type_Boolean	Z
-    //   57: aload_0
-    //   58: invokevirtual 43	java/lang/Object:notify	()V
-    //   61: aload_0
-    //   62: monitorexit
-    //   63: return
-    //   64: aload_0
-    //   65: sipush 9006
-    //   68: putfield 45	ayom:jdField_b_of_type_Int	I
-    //   71: goto -19 -> 52
-    //   74: astore_2
-    //   75: aload_0
-    //   76: monitorexit
-    //   77: aload_2
-    //   78: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	79	0	this	ayom
-    //   0	79	1	paramBoolean	boolean
-    //   0	79	2	paramRespTmpChatPicDownload	QQService.RespTmpChatPicDownload
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	74	finally
-    //   15	47	74	finally
-    //   47	52	74	finally
-    //   52	63	74	finally
-    //   64	71	74	finally
-    //   75	77	74	finally
+    return this.jdField_a_of_type_Ayoh;
+  }
+  
+  protected abstract ayoh a(Context paramContext);
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_Ayol.a();
+  }
+  
+  protected void a() {}
+  
+  public void a(ayog paramayog)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramayog);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "create, serverdata:" + paramString1 + "  extredata:" + paramString2 + " config:" + paramString3 + " templateid:" + paramInt);
+    }
+    this.jdField_a_of_type_Ayol.a(true);
+    this.jdField_a_of_type_Ayol.a(paramString1);
+    this.jdField_a_of_type_Ayol.b(paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Ayoh = a(paramContext);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "updateData, serverdata:" + paramString1 + "  extredata:" + paramString2 + " config:" + paramString3);
+    }
+    this.jdField_a_of_type_Ayol.a(paramString1);
+    this.jdField_a_of_type_Ayol.b(paramString2);
+    this.jdField_a_of_type_JavaLangString = paramString3;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "pause");
+    }
+  }
+  
+  protected void b(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "fireEvent, key:" + paramString1 + " value:" + paramString2);
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      ayog localayog = (ayog)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localayog != null) {
+        localayog.a(this, paramString1, paramString2);
+      }
+    }
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "resume");
+    }
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "destroy");
+    }
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    if (this.jdField_a_of_type_Ayoh != null)
+    {
+      this.jdField_a_of_type_Ayoh.f();
+      this.jdField_a_of_type_Ayoh = null;
+    }
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Ayol = null;
+  }
+  
+  protected void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RichNodeBase", 2, "fireOnRichViewChangedEvent");
+    }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      ayog localayog = (ayog)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localayog != null) {
+        localayog.a(this);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayom
  * JD-Core Version:    0.7.0.1
  */

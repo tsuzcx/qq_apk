@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app.utils;
 
-import axqy;
-import barb;
+import azmj;
+import bcpq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
@@ -13,7 +13,7 @@ public final class BatchAddFriendData$1
   
   public void run()
   {
-    String str1 = barb.a(false, this.jdField_a_of_type_Int);
+    String str1 = bcpq.a(false, this.jdField_a_of_type_Int);
     Object localObject2 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
     Object localObject1 = ((TroopManager)localObject2).b(this.jdField_a_of_type_JavaLangString);
     String str2;
@@ -33,11 +33,11 @@ public final class BatchAddFriendData$1
     label103:
     for (localObject1 = "0";; localObject1 = "1")
     {
-      axqy.b((QQAppInterface)localObject2, "dc00899", "Grp_addFrd", "", "Grp_AIO", str1, 0, 0, str2, (String)localObject1, "", "");
+      azmj.b((QQAppInterface)localObject2, "dc00899", "Grp_addFrd", "", "Grp_AIO", str1, 0, 0, str2, (String)localObject1, "", "");
       return;
     }
     label109:
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_addFrd", "", "Grp_AIO", str1, 0, 0, this.jdField_a_of_type_JavaLangString, "0", Integer.toString(((TroopInfo)localObject1).wMemberNum), "");
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_addFrd", "", "Grp_AIO", str1, 0, 0, this.jdField_a_of_type_JavaLangString, "0", Integer.toString(((TroopInfo)localObject1).wMemberNum), "");
   }
 }
 

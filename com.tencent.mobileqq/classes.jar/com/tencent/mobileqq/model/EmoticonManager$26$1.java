@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.model;
 
 import android.util.SparseArray;
-import askf;
+import aube;
 import com.tencent.pb.emosm.EmosmPb.SubCmd0x5RspBQRecommend;
 
 class EmoticonManager$26$1
@@ -16,7 +16,7 @@ class EmoticonManager$26$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.model.EmoticonManager.26.1
  * JD-Core Version:    0.7.0.1
  */

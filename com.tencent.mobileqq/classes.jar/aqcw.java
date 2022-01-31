@@ -1,167 +1,170 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.TextUtils.TruncateAt;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.widget.AnimationTextView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.Color;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aqcw
-  extends aqbe
 {
-  protected MessageForMixedMsg a;
-  
-  public aqcw(Intent paramIntent)
+  public static apya a(apyo paramapyo, Context paramContext)
   {
-    super(paramIntent);
-  }
-  
-  protected View a()
-  {
-    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidAppActivity);
-    localLinearLayout.setOrientation(0);
-    Object localObject2 = new AnimationTextView(this.jdField_a_of_type_AndroidAppActivity);
-    ((AnimationTextView)localObject2).setText(new aykk(a(), 5, 16));
-    ((AnimationTextView)localObject2).setMaxLines(2);
-    ((AnimationTextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-    ((AnimationTextView)localObject2).setTextColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColorStateList(2131165613));
-    ((AnimationTextView)localObject2).setTextSize(14.0F);
-    Object localObject1 = new ImageView(this.jdField_a_of_type_AndroidAppActivity);
-    ((ImageView)localObject1).setImageResource(2130839611);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2, 1.0F);
-    localLayoutParams.gravity = 17;
-    localLinearLayout.addView((View)localObject2, localLayoutParams);
-    localObject2 = new LinearLayout.LayoutParams(bbll.a(8.0F), bbll.a(14.0F));
-    ((LinearLayout.LayoutParams)localObject2).gravity = 17;
-    ((LinearLayout.LayoutParams)localObject2).setMargins(bbll.a(3.0F), 0, 0, 0);
-    localLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-    localLinearLayout.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
-    localObject1 = new View(this.jdField_a_of_type_AndroidAppActivity);
-    ((View)localObject1).setBackgroundResource(2130839621);
-    ((View)localObject1).setOnClickListener(new aqcx(this));
-    localObject2 = new FrameLayout(this.jdField_a_of_type_AndroidAppActivity);
-    int i = bbll.a(20.0F);
-    ((FrameLayout)localObject2).setPadding(0, i, 0, i);
-    ((FrameLayout)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
-    ((FrameLayout)localObject2).addView((View)localObject1, new FrameLayout.LayoutParams(-1, -1, 16));
-    ((FrameLayout)localObject2).addView(localLinearLayout, new FrameLayout.LayoutParams(-1, -2));
-    return localObject2;
-  }
-  
-  public String a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg != null)
+    if (paramapyo == null) {}
+    while ((paramapyo.mGender != 1) && (paramapyo.mGender != 2) && (paramapyo.mAge == -1)) {
+      return null;
+    }
+    apya localapya = new apya();
+    int i;
+    String str;
+    if (paramapyo.mGender == 2)
     {
-      MessageForMixedMsg localMessageForMixedMsg = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg;
-      return MessageForMixedMsg.getTextFromMixedMsgForForwardPreview(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg);
+      i = 0;
+      localapya.jdField_a_of_type_Int = i;
+      if (paramapyo.mAge != -1) {
+        break label154;
+      }
+      str = "";
+      label66:
+      localapya.jdField_a_of_type_JavaLangString = str;
+      if ((paramapyo.mGender == 1) || (paramapyo.mGender == 2))
+      {
+        if (paramapyo.mGender != 2) {
+          break label165;
+        }
+        paramContext = paramContext.getResources().getDrawable(2130844640);
+        label106:
+        localapya.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext;
+        if (paramapyo.mGender != 2) {
+          break label178;
+        }
+        paramContext = "#FF80BF";
+        label123:
+        localapya.b = paramContext;
+        if (paramapyo.mGender != 2) {
+          break label184;
+        }
+      }
     }
-    return super.a();
-  }
-  
-  protected void a()
-  {
-    if (k()) {
-      this.jdField_a_of_type_JavaUtilSet.add(d);
-    }
-    if (l()) {
-      this.jdField_a_of_type_JavaUtilSet.add(c);
-    }
-    if (m()) {
-      this.jdField_a_of_type_JavaUtilSet.add(b);
-    }
-  }
-  
-  public boolean a()
-  {
-    super.a();
-    long l = this.jdField_a_of_type_AndroidOsBundle.getLong("FORWARD_MSG_UNISEQ", -1L);
-    Object localObject;
-    if (l != -1L)
+    label154:
+    label165:
+    label178:
+    label184:
+    for (paramapyo = "#33FF80BF";; paramapyo = "#3300CAFC")
     {
-      localObject = (ChatMessage)((asju)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(174)).a.get(Long.valueOf(l));
-      if (localObject == null) {
-        break label176;
-      }
-      if (!(localObject instanceof MessageForMixedMsg)) {
-        break label88;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "MessageForMixedMsg");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg = ((MessageForMixedMsg)localObject);
+      localapya.c = paramapyo;
+      return localapya;
+      i = 1;
+      break;
+      str = String.valueOf(paramapyo.mAge);
+      break label66;
+      paramContext = paramContext.getResources().getDrawable(2130844641);
+      break label106;
+      paramContext = "#02B2DD";
+      break label123;
     }
-    label176:
+  }
+  
+  public static List<afpy> a(Context paramContext, JSONArray paramJSONArray)
+  {
+    ArrayList localArrayList = new ArrayList();
     for (;;)
     {
-      return true;
-      label88:
-      if ((localObject instanceof MessageForLongMsg))
+      int i;
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "MessageForLongMsg");
-        }
-        localObject = (MessageForLongMsg)localObject;
-        try
+        String[] arrayOfString = paramContext.getResources().getStringArray(2130968658);
+        paramContext = paramContext.getResources().getStringArray(2130968657);
+        int k = paramJSONArray.length();
+        i = 0;
+        if (i < k)
         {
-          localObject = ((MessageForLongMsg)localObject).rebuildLongMsg();
-          if (!(localObject instanceof MessageForMixedMsg)) {
-            continue;
+          JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
+          if (localJSONObject != null)
+          {
+            afpy localafpy = new afpy();
+            localafpy.jdField_a_of_type_JavaLangCharSequence = localJSONObject.optString("tagName");
+            int j;
+            if (TextUtils.isEmpty(localafpy.jdField_a_of_type_JavaLangCharSequence))
+            {
+              j = 0;
+              localafpy.b = Color.parseColor(arrayOfString[(j % arrayOfString.length)]);
+              localafpy.jdField_a_of_type_Int = Color.parseColor(paramContext[(j % paramContext.length)]);
+              localArrayList.add(localafpy);
+            }
+            else
+            {
+              j = localafpy.jdField_a_of_type_JavaLangCharSequence.charAt(0);
+              continue;
+            }
           }
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg = ((MessageForMixedMsg)localObject);
         }
-        catch (Exception localException) {}
-        if (QLog.isColorLevel())
+        else
         {
-          QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "rebuildLongMsg error :" + localException.toString());
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.e("ForwardOption.ForwardMixedMsgOption", 2, "no msg: " + l);
-          }
+          return localArrayList;
         }
       }
+      catch (JSONException paramContext) {}
+      i += 1;
     }
   }
   
-  public boolean b()
+  public static List<apya> a(apyo paramapyo, Context paramContext)
   {
-    return true;
+    if (paramapyo == null) {
+      return null;
+    }
+    if ((paramapyo.mLabelInfos == null) || (paramapyo.mLabelInfos.size() <= 0)) {
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    String[] arrayOfString = paramContext.getResources().getStringArray(2130968658);
+    paramContext = paramContext.getResources().getStringArray(2130968657);
+    int i = 0;
+    while (i < paramapyo.mLabelInfos.size())
+    {
+      apya localapya = new apya();
+      localapya.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+      localapya.jdField_a_of_type_Int = 3;
+      localapya.jdField_a_of_type_JavaLangString = ((apyp)paramapyo.mLabelInfos.get(i)).jdField_a_of_type_JavaLangString;
+      if (TextUtils.isEmpty(localapya.jdField_a_of_type_JavaLangString))
+      {
+        i += 1;
+      }
+      else
+      {
+        if (TextUtils.isEmpty(localapya.jdField_a_of_type_JavaLangString)) {}
+        for (int j = 0;; j = localapya.jdField_a_of_type_JavaLangString.charAt(0))
+        {
+          localapya.b = arrayOfString[(j % arrayOfString.length)];
+          localapya.c = paramContext[(j % paramContext.length)];
+          localArrayList.add(localapya);
+          break;
+        }
+      }
+    }
+    return localArrayList;
   }
   
-  protected boolean h()
+  public static apya b(apyo paramapyo, Context paramContext)
   {
-    return true;
-  }
-  
-  public void j()
-  {
-    super.j();
-    AbstractGifImage.pauseAll();
-  }
-  
-  public void k()
-  {
-    super.k();
-    AbstractGifImage.resumeAll();
+    if (paramapyo == null) {
+      return null;
+    }
+    apya localapya = new apya();
+    localapya.jdField_a_of_type_Int = 2;
+    localapya.jdField_a_of_type_JavaLangString = String.valueOf(paramapyo.mPopularity);
+    localapya.b = "#8173FF";
+    localapya.c = "#338173FF";
+    localapya.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844642);
+    return localapya;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqcw
  * JD-Core Version:    0.7.0.1
  */

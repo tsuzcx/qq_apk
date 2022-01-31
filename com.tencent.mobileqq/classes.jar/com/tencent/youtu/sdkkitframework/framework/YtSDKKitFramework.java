@@ -13,7 +13,7 @@ public class YtSDKKitFramework
 {
   private static final String TAG = YtSDKKitFramework.class.getSimpleName();
   private static YtSDKKitFramework instance;
-  private static final String version = "1.0.8.2f";
+  private static final String version = "1.0.8.2h";
   private Rect detectRect = new Rect(20, 270, 700, 1130);
   private YtSDKKitFramework.IYtSDKKitFrameworkEventListener eventListener;
   private Rect previewRect = new Rect(0, 0, 720, 1280);
@@ -112,6 +112,7 @@ public class YtSDKKitFramework
       YtLogger.e(TAG, "Event listener cannot be null");
       return -1;
     }
+    YtFSM.getInstance().stop();
     YtFSM.getInstance().setEventListener(paramIYtSDKKitFrameworkEventListener);
     YtFSM.getInstance().setContext(paramYtSDKPlatformContex);
     paramYtSDKPlatformContex = paramArrayList.iterator();
@@ -147,12 +148,12 @@ public class YtSDKKitFramework
   
   public String version()
   {
-    return "1.0.8.2f";
+    return "1.0.8.2h";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework
  * JD-Core Version:    0.7.0.1
  */

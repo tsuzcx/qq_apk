@@ -1,63 +1,58 @@
-import java.nio.ByteBuffer;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class nbe
-  extends nbg
+class nbe
+  implements aumt
 {
-  public int a;
+  nbe(nbd paramnbd) {}
   
-  public byte a(int paramInt)
+  public String getToken()
   {
-    paramInt = this.c + paramInt;
-    if (a(paramInt, 1)) {
-      return this.jdField_a_of_type_JavaNioByteBuffer.get(paramInt);
+    return QQPlayerService.a(5, "" + this.a.a);
+  }
+  
+  public void onPlaySongChanged(SongInfo paramSongInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicService", 2, "onPlaySongChanged:" + paramSongInfo.c);
     }
-    return 0;
   }
   
-  public int a()
+  public void onPlayStateChanged(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return a(this.c - 4, true);
-  }
-  
-  public String a(int paramInt)
-  {
-    return b(this.c + paramInt * 4);
-  }
-  
-  public nbe a(int paramInt, ByteBuffer paramByteBuffer)
-  {
-    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicService", 2, "onPlayStateChanged:" + paramInt);
     }
-    this.jdField_a_of_type_Int = paramByteBuffer.getInt(paramInt);
-    this.c = (paramInt + 4);
-    this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
-    return this;
-  }
-  
-  public nbe a(int paramInt, nbe paramnbe)
-  {
-    return paramnbe.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
-  }
-  
-  public nbf a(int paramInt)
-  {
-    return a(paramInt, new nbf());
-  }
-  
-  public nbf a(int paramInt, nbf paramnbf)
-  {
-    return paramnbf.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
+    Object localObject = QQPlayerService.b();
+    localObject = nbd.a(this.a, (SongInfo)localObject);
+    if (localObject != null) {}
+    try
+    {
+      ((JSONObject)localObject).put("state", paramInt);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add("*.qq.com");
+      atda.a("qbrowserMusicStateChange", (JSONObject)localObject, localArrayList, null);
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMusicService", 2, "onPlayStateChanged:" + localJSONException.getStackTrace());
+        }
+        localJSONException.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbe
  * JD-Core Version:    0.7.0.1
  */

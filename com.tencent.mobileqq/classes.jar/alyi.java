@@ -1,32 +1,53 @@
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.ims.signature.SignatureReport;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import mqq.app.NewIntent;
+
 class alyi
+  extends Handler
 {
-  static final float[] a;
-  
-  static
+  alyi(alyh paramalyh, Looper paramLooper)
   {
-    int k = 0;
-    a = new float[8192];
-    int i = 0;
-    int j;
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      j = k;
-      if (i >= 8192) {
-        break;
+    case 2: 
+    default: 
+      return;
+    case 1: 
+      Object localObject;
+      if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface != null))
+      {
+        localObject = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), mzx.class);
+        ((NewIntent)localObject).putExtra("data", ((alym)paramMessage.obj).a.toByteArray());
+        ((NewIntent)localObject).putExtra("cmd", "SecCheckSigSvc.UploadReq");
+        ((NewIntent)localObject).setObserver(this.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppBrowserAppInterface.startServlet((NewIntent)localObject);
       }
-      a[i] = ((float)Math.sin((i + 0.5F) / 8192.0F * 6.283186F));
-      i += 1;
+      for (;;)
+      {
+        this.a.jdField_a_of_type_Boolean = false;
+        this.a.jdField_a_of_type_Alym = null;
+        return;
+        localObject = this.a.createToServiceMsg("SecCheckSigSvc.UploadReq");
+        ((ToServiceMsg)localObject).putWupBuffer(((alym)paramMessage.obj).a.toByteArray());
+        this.a.sendPbReq((ToServiceMsg)localObject);
+      }
     }
-    while (j < 360)
-    {
-      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.sin(j * 0.01745329F));
-      j += 90;
-    }
+    new Thread(this.a.jdField_a_of_type_JavaLangRunnable).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alyi
  * JD-Core Version:    0.7.0.1
  */

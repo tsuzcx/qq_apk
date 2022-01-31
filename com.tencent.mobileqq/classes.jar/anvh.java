@@ -1,24 +1,21 @@
-class anvh
-  extends bbwt
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+
+public class anvh
+  implements bhqd
 {
-  anvh(anuq paramanuq) {}
+  public anvh(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, bhpy parambhpy) {}
   
-  public void onCancel(bbwu parambbwu) {}
-  
-  public void onDone(bbwu parambbwu)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.onDone(parambbwu);
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_Bhpy.dismiss();
   }
-  
-  public void onDoneFile(bbwu parambbwu) {}
-  
-  public void onPause(bbwu parambbwu) {}
-  
-  public void onProgress(bbwu parambbwu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvh
  * JD-Core Version:    0.7.0.1
  */

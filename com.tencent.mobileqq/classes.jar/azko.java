@@ -1,87 +1,91 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter.2.1;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
-import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.minigame.splash.SplashMiniGameData;
+import com.tencent.mobileqq.minigame.splash.SplashMiniGameStarter;
+import com.tencent.mobileqq.splashad.SplashADView;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppActivity;
 
-public class azko
-  implements View.OnClickListener
+public final class azko
+  extends azjh
 {
-  azko(azkm paramazkm) {}
-  
-  public void onClick(View paramView)
+  public azko(Object paramObject, SplashADView paramSplashADView, AppActivity paramAppActivity)
   {
-    QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick");
-    azku localazku = (azku)paramView.getTag();
-    String str;
-    boolean bool;
-    if ((localazku != null) && (localazku.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localazku.jdField_a_of_type_JavaLangObject != null))
+    super(paramObject);
+  }
+  
+  protected void a()
+  {
+    try
     {
-      str = "";
-      if (!(localazku.jdField_a_of_type_JavaLangObject instanceof Friends)) {
-        break label256;
-      }
-      str = ((Friends)localazku.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
-      if (localazku.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+      awvk localawvk = (awvk)this.jdField_a_of_type_JavaLangObject;
+      this.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b = false;
+      switch (localawvk.a)
       {
-        if (!localazku.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          break label320;
-        }
-        bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(localazku.jdField_a_of_type_JavaLangString, str, 4, "-1");
-        label108:
-        if (QLog.isDevelopLevel()) {
-          QLog.d("createNewTroop.ContactListAdapter", 2, "----->onBuddyListClick = " + bool);
-        }
-        if (localazku.jdField_a_of_type_Long == 1007L) {
-          this.a.jdField_a_of_type_Azlq.b();
-        }
-        localazku.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (AppSetting.d)
-        {
-          if (!localazku.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label343;
-          }
-          paramView.setContentDescription(localazku.d.getText().toString() + ajya.a(2131702508));
-        }
+      case 2: 
+        this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.d();
+        return;
       }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("SplashMiniGameStarter", 1, "show SplashAd end() error ", localException);
+      return;
+    }
+  }
+  
+  protected void a(azjg paramazjg)
+  {
+    awvk localawvk;
+    try
+    {
+      if (this.jdField_a_of_type_JavaLangObject == null) {
+        return;
+      }
+      localawvk = (awvk)this.jdField_a_of_type_JavaLangObject;
+      QLog.i("SplashMiniGameStarter", 1, "bindView");
+      azjb.a = System.currentTimeMillis();
+      if (!this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.jdField_a_of_type_Boolean)
+      {
+        paramazjg.a = 0L;
+        return;
+      }
+    }
+    catch (Exception paramazjg)
+    {
+      QLog.e("SplashMiniGameStarter", 1, "show SplashAd bindView error ", paramazjg);
+      return;
+    }
+    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_MqqAppAppActivity.findViewById(2131376901);
+    if (localViewGroup == null)
+    {
+      QLog.i("SplashMiniGameStarter", 1, "bindView fail, root is null");
+      paramazjg.a = 0L;
+      return;
+    }
+    SplashMiniGameStarter.setNeedShow(false);
+    localViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView, 0);
+    switch (localawvk.a)
+    {
     }
     for (;;)
     {
-      this.a.a();
-      if (AppSetting.d) {
-        paramView.postDelayed(new ContactListAdapter.2.1(this, paramView), 2000L);
-      }
+      SplashMiniGameStarter.preloadMiniGame();
       return;
-      label256:
-      if ((localazku.jdField_a_of_type_JavaLangObject instanceof PhoneContact))
+      QLog.i("SplashMiniGameStarter", 1, "show video");
+      this.jdField_a_of_type_ComTencentMobileqqSplashadSplashADView.b();
+      if (SplashMiniGameStarter.curData != null) {}
+      for (long l = SplashMiniGameStarter.curData.videoDuration * 1000;; l = 5000L)
       {
-        str = ((PhoneContact)localazku.jdField_a_of_type_JavaLangObject).name;
+        paramazjg.a = l;
         break;
       }
-      if (!(localazku.jdField_a_of_type_JavaLangObject instanceof RelationTroopEntity)) {
-        break;
-      }
-      paramView = (RelationTroopEntity)localazku.jdField_a_of_type_JavaLangObject;
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(paramView.troopInfo.troopuin);
-      return;
-      label320:
-      bool = this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.a(localazku.jdField_a_of_type_JavaLangString, str, 0, "-1");
-      break label108;
-      label343:
-      paramView.setContentDescription(localazku.d.getText().toString() + ajya.a(2131702507));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azko
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.utils.httputils;
 
-import bbms;
+import bdlm;
 
 public class HttpCommunicator$HttpCommunicatorHandler$1
   implements Runnable
 {
-  public HttpCommunicator$HttpCommunicatorHandler$1(bbms parambbms) {}
+  public HttpCommunicator$HttpCommunicatorHandler$1(bdlm parambdlm) {}
   
   public void run()
   {

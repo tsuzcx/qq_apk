@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import amsy;
-import amsz;
+import aoka;
+import aokb;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.appbrand.BaseAppBrandRuntime;
 import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
@@ -14,15 +14,15 @@ class BaseJsPluginEngine$4
   
   public void run()
   {
-    amsy localamsy = amsz.a();
-    if ((localamsy != null) && (localamsy.a() != null) && (localamsy.a().contains(this.val$eventName))) {
+    aoka localaoka = aokb.a();
+    if ((localaoka != null) && (localaoka.a() != null) && (localaoka.a().contains(this.val$eventName))) {
       MiniProgramLpReportDC04239.reportApiInvoke(this.this$0.appBrandRuntime.getApkgInfo().appConfig, this.val$eventName);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BaseJsPluginEngine.4
  * JD-Core Version:    0.7.0.1
  */

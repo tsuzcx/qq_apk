@@ -1,364 +1,116 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import android.content.Context;
+import android.opengl.GLSurfaceView;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import dov.com.qq.im.ae.camera.core.AECameraGLSurfaceView;
 
 public class axkt
+  implements GLGestureListener
 {
-  public static axkt a;
-  public float a;
-  public int a;
-  public int b = 1;
-  public int c = 1;
-  public int d = 1;
-  public int e = 1;
-  public int f = -1;
-  public int g = 1;
-  public int h = 6000;
-  public int i = 1;
-  public int j = 0;
-  public int k = 3;
-  public int l = 0;
-  public int m = 0;
-  public int n = 1;
-  public int o = 0;
-  public int p = 1;
-  public int q = 1;
-  public int r = 1;
-  public int s = 1;
-  public int t = 1;
-  public int u = -1;
-  public int v = -1;
+  int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
+  int jdField_b_of_type_Int;
+  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
+  private final int c;
+  private final int d;
+  private final int e;
   
-  public axkt()
+  public axkt(Context paramContext)
   {
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_Float = 1.0F;
+    paramContext = ViewConfiguration.get(paramContext);
+    this.c = ViewConfiguration.getDoubleTapTimeout();
+    this.d = 1000;
+    this.jdField_a_of_type_Int = paramContext.getScaledDoubleTapSlop();
+    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int * this.jdField_a_of_type_Int);
+    this.e = paramContext.getScaledTouchSlop();
+    this.jdField_a_of_type_Long = 0L;
   }
   
-  public static float a()
+  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    axkt localaxkt = a();
-    if (localaxkt != null) {
-      return localaxkt.jdField_a_of_type_Float;
-    }
-    return 1.0F;
+    int i = (int)paramFloat3 - (int)paramFloat1;
+    int j = (int)paramFloat4 - (int)paramFloat2;
+    return i * i + j * j > this.e;
   }
   
-  public static int a()
+  private boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, MotionEvent paramMotionEvent3)
   {
-    axkt localaxkt = a();
-    if (localaxkt != null) {
-      return localaxkt.f;
-    }
-    return -1;
-  }
-  
-  public static axkt a()
-  {
-    if (jdField_a_of_type_Axkt == null) {
-      jdField_a_of_type_Axkt = b();
-    }
-    return jdField_a_of_type_Axkt;
-  }
-  
-  public static boolean a()
-  {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.jdField_a_of_type_Int == 1);
-  }
-  
-  public static int b()
-  {
-    axkt localaxkt = a();
-    if (localaxkt != null) {
-      return localaxkt.h;
-    }
-    return 6000;
-  }
-  
-  public static axkt b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaCodecDPC", 2, "loadMediaCodecDPC!");
-    }
-    axkt localaxkt = new axkt();
-    Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.SVideoCfg.name());
-    if (QLog.isColorLevel()) {
-      QLog.i("MediaCodecDPC", 2, "loadMediaCodecDPC dpcValue: " + (String)localObject);
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return localaxkt;
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject == null) {
-          break;
-        }
-        if (localObject.length >= 1) {
-          localaxkt.jdField_a_of_type_Int = Integer.valueOf(localObject[0]).intValue();
-        }
-        if (localObject.length >= 2) {
-          localaxkt.b = Integer.valueOf(localObject[1]).intValue();
-        }
-        if (localObject.length >= 4)
-        {
-          f1 = Float.valueOf(localObject[2]).floatValue();
-          localaxkt.c = Integer.valueOf(localObject[3]).intValue();
-          if ((f1 > 1.0D) || (f1 <= 0.0F)) {
-            continue;
-          }
-          localaxkt.jdField_a_of_type_Float = f1;
-        }
-        if (localObject.length >= 5) {
-          localaxkt.d = Integer.valueOf(localObject[4]).intValue();
-        }
-        if (localObject.length >= 6) {
-          localaxkt.e = Integer.valueOf(localObject[5]).intValue();
-        }
-        if (localObject.length >= 7) {
-          localaxkt.f = Integer.valueOf(localObject[6]).intValue();
-        }
-        if (localObject.length >= 8) {
-          localaxkt.g = Integer.valueOf(localObject[7]).intValue();
-        }
-        if (localObject.length >= 9) {
-          localaxkt.h = Integer.valueOf(localObject[8]).intValue();
-        }
-        if (localObject.length >= 10) {
-          localaxkt.i = Integer.valueOf(localObject[9]).intValue();
-        }
-        if (localObject.length >= 12)
-        {
-          localaxkt.j = Integer.valueOf(localObject[10]).intValue();
-          localaxkt.k = Integer.valueOf(localObject[11]).intValue();
-        }
-        if (localObject.length >= 13) {
-          localaxkt.l = Integer.valueOf(localObject[12]).intValue();
-        }
-        if (localObject.length >= 14) {
-          localaxkt.m = Integer.valueOf(localObject[13]).intValue();
-        }
-        if (localObject.length >= 15) {
-          localaxkt.n = Integer.valueOf(localObject[14]).intValue();
-        }
-        if (localObject.length >= 16) {
-          localaxkt.o = Integer.valueOf(localObject[15]).intValue();
-        }
-        if (localObject.length >= 17) {
-          localaxkt.p = Integer.valueOf(localObject[16]).intValue();
-        }
-        if (localObject.length >= 18) {
-          localaxkt.q = Integer.valueOf(localObject[17]).intValue();
-        }
-        if (localObject.length >= 19) {
-          localaxkt.r = Integer.valueOf(localObject[18]).intValue();
-        }
-        if (localObject.length >= 21)
-        {
-          localaxkt.s = Integer.valueOf(localObject[19]).intValue();
-          localaxkt.t = Integer.valueOf(localObject[20]).intValue();
-        }
-        if (localObject.length >= 23)
-        {
-          localaxkt.u = Integer.valueOf(localObject[21]).intValue();
-          localaxkt.v = Integer.valueOf(localObject[22]).intValue();
-        }
-      }
-      catch (Exception localException)
-      {
-        float f1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("MediaCodecDPC", 2, "loadMediaCodecDPC exception:", localException);
-        continue;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("MediaCodecDPC", 2, "MediaCodecDPC:" + localaxkt.toString());
-      return localaxkt;
-      QLog.e("MediaCodecDPC", 1, new Object[] { "MediaCodecDPC:  beautyRate: ", Float.valueOf(f1) });
-    }
-  }
-  
-  public static boolean b()
-  {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.b == 1);
-  }
-  
-  public static int c()
-  {
-    axkt localaxkt = a();
-    if (localaxkt != null) {
-      return localaxkt.k;
-    }
-    return 3;
-  }
-  
-  public static boolean c()
-  {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.c == 1);
-  }
-  
-  public static int d()
-  {
-    int i2 = 1;
-    axkt localaxkt = a();
-    int i1 = i2;
-    if (localaxkt != null)
-    {
-      i1 = localaxkt.t;
-      if (i1 != 1) {
-        return i1;
-      }
-      i1 = i2;
-      if (axku.a()) {
-        i1 = 2;
-      }
-    }
-    return i1;
-    return i1;
-  }
-  
-  public static boolean d()
-  {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.d == 1);
-  }
-  
-  public static int e()
-  {
-    axkt localaxkt = a();
-    if (localaxkt != null) {
-      return localaxkt.u;
-    }
-    return -1;
-  }
-  
-  public static boolean e()
-  {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.e == 1);
-  }
-  
-  public static int f()
-  {
-    axkt localaxkt = a();
-    if (localaxkt != null) {
-      return localaxkt.v;
-    }
-    return -1;
-  }
-  
-  public static boolean f()
-  {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.g == 1);
-  }
-  
-  public static boolean g()
-  {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.i == 1);
-  }
-  
-  public static boolean h()
-  {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.j == 1);
-  }
-  
-  public static boolean i()
-  {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.l == 1);
-  }
-  
-  public static boolean j()
-  {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.m == 1);
-  }
-  
-  public static boolean k()
-  {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.n == 1);
-  }
-  
-  public static boolean l()
-  {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.o == 1);
-  }
-  
-  public static boolean m()
-  {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.p == 1);
-  }
-  
-  public static boolean n()
-  {
-    if (!axhq.f()) {}
-    axkt localaxkt;
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {}
+    int i;
+    int j;
     do
     {
-      return false;
-      localaxkt = a();
-    } while ((localaxkt != null) && (localaxkt.r == 0));
+      do
+      {
+        return false;
+      } while ((Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) < this.d) || (paramMotionEvent3.getEventTime() - paramMotionEvent2.getEventTime() > this.c) || (a(paramMotionEvent1.getX(), paramMotionEvent1.getY(), paramMotionEvent2.getX(), paramMotionEvent2.getY())));
+      i = (int)paramMotionEvent1.getX() - (int)paramMotionEvent3.getX();
+      j = (int)paramMotionEvent1.getY() - (int)paramMotionEvent3.getY();
+    } while (i * i + j * j >= this.jdField_b_of_type_Int);
     return true;
   }
   
-  public static boolean o()
+  public int onGetPriority()
   {
-    axkt localaxkt = a();
-    return (localaxkt != null) && (localaxkt.q == 1);
+    return 0;
   }
   
-  public static boolean p()
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    axkt localaxkt = a();
-    return (localaxkt == null) || (localaxkt.s == 1);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mediaCodecSwitch: ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(" beautySwitch: ").append(this.b);
-    localStringBuilder.append(" beautyRate: ").append(this.jdField_a_of_type_Float);
-    localStringBuilder.append(" svafSwitch: ").append(this.c);
-    localStringBuilder.append(" gestureDPCSwitch: ").append(this.d);
-    localStringBuilder.append(" deNoiseDPCSwitch: ").append(this.e);
-    localStringBuilder.append(" qmcfDPCFrameType: ").append(this.f);
-    localStringBuilder.append(" cqBitrateModeSwitch: ").append(this.g);
-    localStringBuilder.append(" cqMaxBitrate: ").append(this.h);
-    localStringBuilder.append(" faceDanceDPCSwitch: ").append(this.i);
-    localStringBuilder.append(" portraitDPCSwitch: ").append(this.l);
-    localStringBuilder.append(" danceRankingSwitch: ").append(this.m);
-    localStringBuilder.append(" arParticleDPCSwitch: ").append(this.n);
-    localStringBuilder.append(" rijiCameraDPCSwitch: ").append(this.o);
-    localStringBuilder.append(" segmentMediaCodecEncodeSwitch: ").append(this.p);
-    localStringBuilder.append(" transitionSwitch: ").append(this.q);
-    localStringBuilder.append(" rijiCamera720PSwitch: ").append(this.r);
-    localStringBuilder.append(" followCaptureSwitch: ").append(this.s);
-    localStringBuilder.append(" followCaptureGopSize: ").append(this.t);
-    localStringBuilder.append(" mLimittedSdkVersion: ").append(this.u);
-    localStringBuilder.append(" camera2Switch: ").append(this.v);
-    return localStringBuilder.toString();
+    int i = paramMotionEvent.getPointerCount();
+    int j = paramMotionEvent.getAction();
+    if ((i == 1) && (!paramBoolean)) {}
+    switch (j & 0xFF)
+    {
+    default: 
+      return false;
+    case 0: 
+      GLSurfaceView localGLSurfaceView;
+      if (a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent, paramMotionEvent))
+      {
+        localGLSurfaceView = GLGestureProxy.getInstance().getGLSurfaceView();
+        if (localGLSurfaceView != null)
+        {
+          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          if (!(localGLSurfaceView instanceof CameraCaptureView)) {
+            break label168;
+          }
+          ((CameraCaptureView)localGLSurfaceView).q();
+        }
+      }
+      for (;;)
+      {
+        wta.a("camera_clkdouble", axlc.jdField_a_of_type_Int, 0, new String[0]);
+        axlc.g();
+        if (QLog.isColorLevel()) {
+          QLog.d("GLGestureListener", 2, new Object[] { "", "CameraSwitchGesture" });
+        }
+        if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
+          this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+        }
+        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+        return false;
+        label168:
+        if ((localGLSurfaceView instanceof AECameraGLSurfaceView)) {
+          ((AECameraGLSurfaceView)localGLSurfaceView).j();
+        }
+      }
+    }
+    if (this.jdField_b_of_type_AndroidViewMotionEvent != null) {
+      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+    }
+    this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axkt
  * JD-Core Version:    0.7.0.1
  */

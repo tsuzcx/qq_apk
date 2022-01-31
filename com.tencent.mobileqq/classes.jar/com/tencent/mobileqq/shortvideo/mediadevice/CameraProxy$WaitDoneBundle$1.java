@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.shortvideo.mediadevice;
 
-import axil;
+import azdr;
 
 public class CameraProxy$WaitDoneBundle$1
   implements Runnable
 {
-  public CameraProxy$WaitDoneBundle$1(axil paramaxil) {}
+  public CameraProxy$WaitDoneBundle$1(azdr paramazdr) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class CameraProxy$WaitDoneBundle$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.WaitDoneBundle.1
  * JD-Core Version:    0.7.0.1
  */

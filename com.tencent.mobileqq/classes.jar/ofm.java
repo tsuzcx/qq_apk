@@ -1,20 +1,25 @@
-import android.graphics.Color;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class ofm
-  implements bfqj
+  implements Animator.AnimatorListener
 {
-  ofm(ofl paramofl) {}
+  ofm(ofi paramofi) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.getNativeView().setBackgroundColor(Color.parseColor("#FFFFFF"));
+    ofi.b(this.a);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofm
  * JD-Core Version:    0.7.0.1
  */

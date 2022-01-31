@@ -1,21 +1,38 @@
 package com.tencent.mobileqq.mini.widget.media;
 
-import android.view.View;
+import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class MiniAppVideoPlayer$13
-  implements Runnable
+  implements TVK_IMediaPlayer.OnSeekCompleteListener
 {
   MiniAppVideoPlayer$13(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public void run()
+  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    MiniAppVideoPlayer.access$2200(this.this$0).setVisibility(8);
-    MiniAppVideoPlayer.access$4000(this.this$0);
+    AppBrandTask.runTaskOnUiThread(new MiniAppVideoPlayer.13.1(this));
+    try
+    {
+      paramTVK_IMediaPlayer = new JSONObject();
+      paramTVK_IMediaPlayer.put("data", this.this$0.data);
+      this.this$0.serviceWebview.evaluateSubcribeJS("onVideoSeeked", paramTVK_IMediaPlayer.toString(), this.this$0.webviewId);
+      QLog.d("MiniAppVideoPlayer", 4, "evaluateSubcribeJS onVideoSeeked = " + paramTVK_IMediaPlayer.toString());
+      return;
+    }
+    catch (JSONException paramTVK_IMediaPlayer)
+    {
+      paramTVK_IMediaPlayer.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppVideoPlayer.13
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,14 @@
-public abstract interface axhy
+public class axhy
 {
-  public abstract void a(Exception paramException);
+  public int a;
+  public long a;
+  public String a;
   
-  public abstract void a(RuntimeException paramRuntimeException);
+  public axhy(axhw paramaxhw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axhy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
 class bkqg
-  implements View.OnClickListener
+  implements bmac<blbb>
 {
-  bkqg(bkqf parambkqf) {}
+  bkqg(bkqa parambkqa) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable blbb paramblbb)
   {
-    vei.a("video_edit_new", "clk_cutdown", 0, 0, new String[0]);
-    if (!this.a.a().g())
-    {
-      bkqf.a(this.a);
+    if (paramblbb == null) {}
+    while (paramblbb.a != AECaptureMode.PLAY) {
       return;
     }
-    this.a.a().f(false);
-    bkqf.a(this.a).setSelected(false);
-    this.a.a().d(3003);
+    bkqa.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkqg
  * JD-Core Version:    0.7.0.1
  */

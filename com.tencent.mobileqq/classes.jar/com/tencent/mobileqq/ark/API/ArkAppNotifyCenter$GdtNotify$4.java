@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.ark.API;
 
-import alpv;
+import aano;
+import aaoo;
+import aaop;
+import aaoq;
 import android.content.Context;
 import android.text.TextUtils;
+import angm;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
-import yxo;
-import yyp;
-import yyq;
-import yyr;
 
 public class ArkAppNotifyCenter$GdtNotify$4
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$4(alpv paramalpv, WeakReference paramWeakReference, String paramString1, String paramString2) {}
+  public ArkAppNotifyCenter$GdtNotify$4(angm paramangm, WeakReference paramWeakReference, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -41,16 +41,16 @@ public class ArkAppNotifyCenter$GdtNotify$4
         for (;;)
         {
           Object localObject1;
-          yyq localyyq;
+          aaop localaaop;
           QLog.e("ark.ArkAppNotifyCenter", 1, "ark get_device_info error", localJSONException);
           localObject2 = null;
         }
-        localObject2 = yxo.a(localObject2.a);
+        localObject2 = aano.a(localObject2.a);
       }
-      localyyq = new yyq();
-      localyyq.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      localObject1 = yyp.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localyyq);
-      if ((localObject1 == null) || (((yyr)localObject1).a == null))
+      localaaop = new aaop();
+      localaaop.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      localObject1 = aaoo.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), localaaop);
+      if ((localObject1 == null) || (((aaoq)localObject1).a == null))
       {
         QLog.e("ark.ArkAppNotifyCenter", 1, "ark get_device_info error", null);
         return;
@@ -61,7 +61,7 @@ public class ArkAppNotifyCenter$GdtNotify$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.4
  * JD-Core Version:    0.7.0.1
  */

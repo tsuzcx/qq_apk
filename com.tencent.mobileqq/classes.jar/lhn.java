@@ -1,49 +1,57 @@
-import android.util.SparseArray;
+import android.content.Context;
+import android.content.IntentFilter;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.EffectMutexManager.1;
-import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class lhn
-  extends lhd
 {
-  private volatile SparseArray<lho> a;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private lho jdField_a_of_type_Lho;
   
-  protected lhn(VideoAppInterface paramVideoAppInterface)
+  public lhn(VideoAppInterface paramVideoAppInterface)
   {
-    super(paramVideoAppInterface);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
   }
   
-  protected void a() {}
-  
-  public void a(int paramInt, String paramString)
+  public void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.w("EffectMutexManager", 1, "notifyMutex, fromMuteKey[" + paramInt + "], data[" + paramString + "]");
-    }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.runOnUiThread(new EffectMutexManager.1(this, paramInt, paramString));
-  }
-  
-  public void a(int paramInt, lho paramlho)
-  {
-    if (paramlho == null) {
+    try
+    {
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
+      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      this.jdField_a_of_type_Lho = new lho();
+      if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().registerReceiver(this.jdField_a_of_type_Lho, localIntentFilter);
+      }
       return;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.w("EffectMutexManager", 1, "registerMutexItem, key[" + paramInt + "]");
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramlho);
   }
   
-  protected boolean a(String paramString)
+  public void b()
   {
-    return false;
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) && (this.jdField_a_of_type_Lho != null)) {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext().unregisterReceiver(this.jdField_a_of_type_Lho);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lhn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,25 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
-class xnf
-  extends Handler
+final class xnf
+  implements INetEventHandler
 {
-  xnf(xne paramxne, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  xnf(Context paramContext) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
+    if (paramBoolean)
     {
-      paramMessage = (Bundle)paramMessage.obj;
-      xne.a(this.a, paramMessage);
+      xne.a(this.a);
+      return;
     }
+    xne.a("");
+    xne.b("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xnf
  * JD-Core Version:    0.7.0.1
  */

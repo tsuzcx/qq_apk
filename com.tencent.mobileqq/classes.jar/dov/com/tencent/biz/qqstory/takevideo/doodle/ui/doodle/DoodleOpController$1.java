@@ -1,10 +1,10 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle;
 
-import bjal;
-import bkev;
-import bkew;
-import bkfs;
-import bkft;
+import bllv;
+import bmqf;
+import bmqg;
+import bmrc;
+import bmrd;
 import com.tencent.common.app.AppInterface;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -17,20 +17,20 @@ public class DoodleOpController$1
     Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
     while (localIterator.hasNext())
     {
-      bkev localbkev = (bkev)localIterator.next();
-      if ((localbkev instanceof bkfs))
+      bmqf localbmqf = (bmqf)localIterator.next();
+      if ((localbmqf instanceof bmrc))
       {
-        AppInterface localAppInterface = bjal.a();
-        this.this$0.a(localAppInterface, ((bkfs)localbkev).c);
+        AppInterface localAppInterface = bllv.a();
+        this.this$0.a(localAppInterface, ((bmrc)localbmqf).c);
       }
     }
     this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
-    this.this$0.jdField_a_of_type_Bkft.g();
+    this.this$0.jdField_a_of_type_Bmrd.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController.1
  * JD-Core Version:    0.7.0.1
  */

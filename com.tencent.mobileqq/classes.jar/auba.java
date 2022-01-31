@@ -1,59 +1,25 @@
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import android.os.Bundle;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.mobileqq.theme.diy.ResData;
 
 public class auba
-  implements View.OnTouchListener
+  implements baks
 {
-  public auba(OCRResultFragmentNew paramOCRResultFragmentNew) {}
+  public auba(ChatBackgroundManager paramChatBackgroundManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
   {
-    paramView = (EditText)paramView;
-    int j = paramMotionEvent.getAction();
-    if (j == 1)
-    {
-      Object localObject = paramView.getText();
-      int m = (int)paramMotionEvent.getX();
-      i = (int)paramMotionEvent.getY();
-      int n = paramView.getTotalPaddingLeft();
-      int k = paramView.getTotalPaddingTop();
-      m = m - n + paramView.getScrollX();
-      n = paramView.getScrollY();
-      Layout localLayout = paramView.getLayout();
-      i = localLayout.getLineForVertical(i - k + n);
-      float f = localLayout.getLineWidth(i);
-      if (m <= f)
-      {
-        i = localLayout.getOffsetForHorizontal(i, m);
-        localObject = (ClickableSpan[])((Spannable)localObject).getSpans(i, i, ClickableSpan.class);
-        if (localObject.length != 0)
-        {
-          localObject[0].onClick(paramView);
-          axqy.b(null, "dc00898", "", "", "0X80082E3", "0X80082E3", 0, 0, "", "", "", "");
-        }
-      }
+    if (paramInt2 == 4) {
+      BaseApplicationImpl.sImageCache.evictAll();
     }
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        return true;
-      }
-      if ((j == 1) && (!paramView.isFocused())) {
-        axqy.b(null, "dc00898", "", "", "0X80082E2", "0X80082E2", 0, 0, "", "", "", "");
-      }
-      return paramView.onTouchEvent(paramMotionEvent);
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auba
  * JD-Core Version:    0.7.0.1
  */

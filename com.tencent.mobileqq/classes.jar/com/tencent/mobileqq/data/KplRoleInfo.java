@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import acup;
-import aetq;
-import ajxl;
+import aelz;
+import agqq;
+import aloz;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import auko;
+import awbv;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import tencent.im.oidb.cmd0xa28.oidb_0xa28.RoleInfo;
 
 public class KplRoleInfo
-  extends auko
+  extends awbv
 {
   public static final String KPL_TAG = "KplMessage";
   public static final String MSG_EXT_KEY = "msg_ext_key";
@@ -108,7 +108,7 @@ public class KplRoleInfo
   public static boolean isKplPie(BaseChatPie paramBaseChatPie)
   {
     boolean bool;
-    if (aetq.a(paramBaseChatPie.jdField_a_of_type_AndroidContentContext, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, false, false) != null) {
+    if (agqq.a(paramBaseChatPie.jdField_a_of_type_AndroidContentContext, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, false, false) != null) {
       bool = true;
     }
     for (;;)
@@ -119,9 +119,9 @@ public class KplRoleInfo
       return bool;
       if (paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1022)
       {
-        List localList = paramBaseChatPie.jdField_a_of_type_Acup.a();
-        ajxl localajxl = (ajxl)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-        if ((localList != null) && (localList.size() > 0) && (!localajxl.b(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(((ChatMessage)localList.get(localList.size() - 1)).getExtInfoFromExtStr("msg_ext_key"))))
+        List localList = paramBaseChatPie.jdField_a_of_type_Aelz.a();
+        aloz localaloz = (aloz)paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+        if ((localList != null) && (localList.size() > 0) && (!localaloz.b(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(((ChatMessage)localList.get(localList.size() - 1)).getExtInfoFromExtStr("msg_ext_key"))))
         {
           bool = true;
           continue;
@@ -134,7 +134,7 @@ public class KplRoleInfo
   public static boolean isKplSession(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, int paramInt)
   {
     boolean bool;
-    if (aetq.a(paramContext, paramInt, false, false) != null) {
+    if (agqq.a(paramContext, paramInt, false, false) != null) {
       bool = true;
     }
     for (;;)
@@ -144,7 +144,7 @@ public class KplRoleInfo
       }
       return bool;
       paramContext = paramQQAppInterface.a().a(paramString, paramInt);
-      paramQQAppInterface = (ajxl)paramQQAppInterface.getManager(51);
+      paramQQAppInterface = (aloz)paramQQAppInterface.getManager(51);
       if ((paramContext != null) && (paramContext.size() > 0) && (!paramQQAppInterface.b(paramString)) && (!TextUtils.isEmpty(((ChatMessage)paramContext.get(paramContext.size() - 1)).getExtInfoFromExtStr("msg_ext_key")))) {
         bool = true;
       } else {
@@ -253,7 +253,7 @@ public class KplRoleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.data.KplRoleInfo
  * JD-Core Version:    0.7.0.1
  */

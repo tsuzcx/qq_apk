@@ -1,84 +1,77 @@
-import SummaryCardTaf.SSummaryCardRsp;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Pair;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity.2.1;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class auwa
-  extends ajto
+  implements View.OnClickListener
 {
-  public auwa(VipProfileCardBaseActivity paramVipProfileCardBaseActivity) {}
+  public auwa(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
   
-  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileCard.VipProfileCardBaseActivity", 2, "CardObserver onSetCardTemplateReturn isSuccess : " + paramBoolean + ", obj : " + paramObject);
-    }
-    String str = this.a.app.getCurrentAccountUin();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_BackgroundId", String.valueOf(this.a.g));
-    localHashMap.put("param_StyleId", String.valueOf(this.a.jdField_a_of_type_Long));
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.b();
-    if ((paramBoolean) && (paramObject != null))
+    if ((ChooseInterestTagActivity.a(this.a) == 3) || (ChooseInterestTagActivity.a(this.a) == 2) || (ChooseInterestTagActivity.a(this.a) == 1) || (ChooseInterestTagActivity.a(this.a) == 4))
     {
-      if ((paramObject instanceof Card)) {
-        ThreadManager.post(new VipProfileCardBaseActivity.2.1(this, (Card)paramObject, localHashMap, str), 5, null, true);
-      }
-      while (!(paramObject instanceof Pair)) {
-        return;
-      }
-      paramObject = (Pair)paramObject;
-      Message localMessage;
-      if (((Integer)paramObject.first).intValue() == 101107)
+      paramView = (InterestTagInfo)paramView.getTag();
+      if (paramView != null)
       {
-        this.a.jdField_a_of_type_Int = 1;
-        this.a.d = 2;
-        localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+        ChooseInterestTagActivity.a(this.a).remove(paramView);
+        ChooseInterestTagActivity.a(this.a, paramView);
+        ChooseInterestTagActivity.b(this.a, paramView);
       }
+    }
+    do
+    {
       for (;;)
       {
-        localHashMap.put("param_FailCode", String.valueOf(paramObject.first));
-        axrn.a(this.a.app.getApp()).a(str, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
         return;
-        if (((Integer)paramObject.first).intValue() == 101108)
+        try
         {
-          this.a.jdField_a_of_type_Int = 2;
-          this.a.d = 5;
-          localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(9);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-        }
-        else
-        {
-          localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
-          if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999)) {
-            localMessage.obj = ((SSummaryCardRsp)paramObject.second).emsg;
+          int[] arrayOfInt = new int[2];
+          paramView.getLocationInWindow(arrayOfInt);
+          if (arrayOfInt[0] > 0)
+          {
+            InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramView.getTag();
+            if (localInterestTagInfo != null)
+            {
+              Paint localPaint = new Paint();
+              localPaint.setTextSize((float)(ChooseInterestTagActivity.a(this.a) * 14.0F + 0.5D));
+              localPaint.setColor(this.a.getResources().getColor(2131166959));
+              localPaint.setFakeBoldText(false);
+              localPaint.setAntiAlias(true);
+              Object localObject2 = localInterestTagInfo.tagName;
+              Object localObject1 = localObject2;
+              if (TextUtils.isEmpty((CharSequence)localObject2)) {
+                localObject1 = " ";
+              }
+              localObject2 = localObject1;
+              if (((String)localObject1).length() > 8) {
+                localObject2 = ((String)localObject1).substring(0, 8) + "...";
+              }
+              float f = localPaint.measureText((String)localObject2);
+              int i = (int)(ChooseInterestTagActivity.a(this.a) * 64.0F + 0.5D + f);
+              localObject1 = new auwq(this.a, arrayOfInt[0], i);
+              ((auwq)localObject1).a(ChooseInterestTagActivity.a(this.a));
+              ((auwq)localObject1).a(localInterestTagInfo);
+              ((auwq)localObject1).showAsDropDown(paramView, -(int)((i - 40.0F * ChooseInterestTagActivity.a(this.a)) / 2.0F), 10);
+              return;
+            }
           }
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
         }
+        catch (Exception paramView) {}
       }
-    }
-    if (!paramBoolean) {}
-    for (paramObject = "-104";; paramObject = "-105")
-    {
-      localHashMap.put("param_FailCode", paramObject);
-      axrn.a(this.a.app.getApp()).a(str, "profileCardSet", false, 0L, 0L, localHashMap, "", false);
-      paramObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(6);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramObject);
-      return;
-    }
+    } while (!QLog.isDevelopLevel());
+    QLog.i("choose_interest_tag", 4, paramView.getMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auwa
  * JD-Core Version:    0.7.0.1
  */

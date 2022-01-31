@@ -1,14 +1,10 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.widget.TextView;
 
-final class bbcj
-  implements MediaPlayer.OnCompletionListener
+public class bbcj
+  extends akee
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
-  {
-    paramMediaPlayer.release();
-    bbcf.a = null;
-  }
+  public TextView a;
+  public TextView b;
 }
 
 

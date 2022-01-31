@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -15,20 +15,20 @@ import android.os.Process;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.widget.CheckBox;
-import aqyd;
-import axrv;
-import bbdj;
-import bbgu;
-import bbll;
-import bgyp;
-import bhal;
-import bham;
-import bhan;
-import bhao;
-import bhaq;
-import bhbs;
-import bhkh;
-import bhph;
+import asor;
+import aznh;
+import bdcd;
+import bdfq;
+import bdkf;
+import bizm;
+import bjbs;
+import bjbt;
+import bjbu;
+import bjbv;
+import bjbx;
+import bjcz;
+import bjls;
+import bjqs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
@@ -52,7 +52,7 @@ public class QzonePluginProxyActivity
   public static volatile ClassLoader a;
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "com.qzone.preview.QzonePictureViewer", "com.qzone.preview.LocalPictureViewer", "com.qzone.preview.QZonePanoramaActivity", "com.qzone.preview.QzonePictureSelectViewer" };
   private static final String[] b = { "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity", "com.qzone.common.activities.QzoneAdaptVideoActivity", "com.qzone.log.CrashNotificationActivity", "com.qzone.common.activities.NotificationActivity", "com.qzone.cover.ui.activity.QZoneCoverSetCustomActivity", "com.qzone.misc.web.QZoneTranslucentActivity", "com.qzone.misc.web.QZoneTranslucentActivity2", "com.qzone.bulletscreen.BulletScreenActivity", "com.qzone.album.business.dlna.activity.DLNAActivity", "com.qzone.bulletscreen.BulletScreenActivity", "com.qzone.common.activities.base.QzoneGiftPanelActivity", "com.qzone.common.activities.QzoneDualWarmActivity" };
-  private bhbs jdField_a_of_type_Bhbs = new bhbs();
+  private bjcz jdField_a_of_type_Bjcz = new bjcz();
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   
   public static ClassLoader a()
@@ -85,14 +85,14 @@ public class QzonePluginProxyActivity
     sendBroadcast(localIntent);
   }
   
-  public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
-  {
-    a(paramActivity, paramString, paramIntent, paramInt, null);
-  }
-  
   public static void a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt, boolean paramBoolean)
   {
     a(paramActivity, paramString, paramIntent, paramInt, null, true, null, paramBoolean);
+  }
+  
+  public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt)
+  {
+    a(paramContext, paramString, paramIntent, paramInt, null);
   }
   
   public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean)
@@ -100,14 +100,14 @@ public class QzonePluginProxyActivity
     a(paramContext, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean, null, false);
   }
   
-  public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, aqyd paramaqyd, boolean paramBoolean2)
+  public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, asor paramasor, boolean paramBoolean2)
   {
-    b(paramContext, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean1, paramaqyd, paramBoolean2);
+    b(paramContext, paramString, paramIntent, paramInt, paramOnDismissListener, paramBoolean1, paramasor, paramBoolean2);
   }
   
-  public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt, aqyd paramaqyd)
+  public static void a(Context paramContext, String paramString, Intent paramIntent, int paramInt, asor paramasor)
   {
-    a(paramContext, paramString, paramIntent, paramInt, null, true, paramaqyd, false);
+    a(paramContext, paramString, paramIntent, paramInt, null, true, paramasor, false);
   }
   
   public static void a(Intent paramIntent, String paramString)
@@ -150,30 +150,30 @@ public class QzonePluginProxyActivity
     return PluginStatic.getOrCreateClassLoader(paramContext, "Photoplus.apk");
   }
   
-  private static void b(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, aqyd paramaqyd, boolean paramBoolean2)
+  private static void b(Context paramContext, String paramString, Intent paramIntent, int paramInt, DialogInterface.OnDismissListener paramOnDismissListener, boolean paramBoolean1, asor paramasor, boolean paramBoolean2)
   {
-    if ((bgyp.a) && ((paramContext instanceof SplashActivity)))
+    if ((bizm.a) && ((paramContext instanceof SplashActivity)))
     {
       paramInt = LocalMultiProcConfig.getInt("qzapp_vercode", 84);
       if (!LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false))
       {
-        paramContext = bbdj.a(paramContext, 230, 2131562128, ajya.a(2131712187), "空间出问题了，启用空间保护模式点\"确定\"；点击\"取消\"，保护模式不会生效。", ajya.a(2131712199), ajya.a(2131712183), new bhal(paramContext, paramInt, paramString, paramIntent), new bham());
-        ((CheckBox)paramContext.findViewById(2131365182)).setOnCheckedChangeListener(new bhan());
+        paramContext = bdcd.a(paramContext, 230, 2131562320, alpo.a(2131712559), "空间出问题了，启用空间保护模式点\"确定\"；点击\"取消\"，保护模式不会生效。", alpo.a(2131712571), alpo.a(2131712555), new bjbs(paramContext, paramInt, paramString, paramIntent), new bjbt());
+        ((CheckBox)paramContext.findViewById(2131365267)).setOnCheckedChangeListener(new bjbu());
         paramContext.show();
       }
-      while (bgyp.a(paramContext, paramInt, Long.valueOf(paramString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
+      while (bizm.a(paramContext, paramInt, Long.valueOf(paramString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
         return;
       }
-      bgyp.a(paramIntent.getStringExtra("sid"), paramContext);
+      bizm.a(paramIntent.getStringExtra("sid"), paramContext);
       return;
     }
     if ((paramContext instanceof FriendProfileCardActivity)) {
-      axrv.a().c(paramString);
+      aznh.a().c(paramString);
     }
     if (QLog.isColorLevel()) {
       QLog.d("PluginDebug", 2, "launchPluingActivityForResult.isPluginInstalled start， showProgressDialog：" + paramBoolean1);
     }
-    bgyp.a(paramBoolean1, new bhao(paramIntent, paramString, paramaqyd, paramInt, paramBoolean2, paramContext, paramOnDismissListener));
+    bizm.a(paramBoolean1, new bjbv(paramIntent, paramString, paramasor, paramInt, paramBoolean2, paramContext, paramOnDismissListener));
   }
   
   private static boolean b(String[] paramArrayOfString, String paramString)
@@ -197,7 +197,7 @@ public class QzonePluginProxyActivity
   public static ClassLoader c(Context paramContext)
   {
     ClassLoader localClassLoader = null;
-    String str = bhkh.a();
+    String str = bjls.a();
     if (str.equals("qzone_live_video_plugin_hack.apk")) {
       localClassLoader = PluginStatic.getOrCreateClassLoader(paramContext, str);
     }
@@ -231,9 +231,9 @@ public class QzonePluginProxyActivity
     return paramContext;
   }
   
-  public bhbs a()
+  public bjcz a()
   {
-    return this.jdField_a_of_type_Bhbs;
+    return this.jdField_a_of_type_Bjcz;
   }
   
   public IPluginActivity a()
@@ -253,7 +253,7 @@ public class QzonePluginProxyActivity
   
   public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
-    return bhaq.a(paramString);
+    return bjbx.a(paramString);
   }
   
   public int getThemeResId()
@@ -263,7 +263,7 @@ public class QzonePluginProxyActivity
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    bbll.a();
+    bdkf.a();
     super.onConfigurationChanged(paramConfiguration);
   }
   
@@ -281,10 +281,10 @@ public class QzonePluginProxyActivity
       for (;;)
       {
         paramBundle = paramBundle.getString("pluginsdk_launchActivity");
-        localObject = new StringBuffer(ajya.a(2131712201));
+        localObject = new StringBuffer(alpo.a(2131712573));
         ((StringBuffer)localObject).append(paramBundle).append(" ").append(this.mCreateErrorInfo);
         QLog.e("QZLog", 1, ((StringBuffer)localObject).toString());
-        bhph.a(new QZoneStartupFailException(this.mCreateErrorInfo), ajya.a(2131712188) + getPluginActivity());
+        bjqs.a(new QZoneStartupFailException(this.mCreateErrorInfo), alpo.a(2131712560) + getPluginActivity());
         a();
         return;
         paramBundle = getIntent().getExtras();
@@ -300,18 +300,18 @@ public class QzonePluginProxyActivity
         a(this, (String)localObject, getIntent(), 1000);
       }
     }
-    this.jdField_a_of_type_Bhbs.a(this);
+    this.jdField_a_of_type_Bjcz.a(this);
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_Bhbs.c();
+    this.jdField_a_of_type_Bjcz.c();
     super.onDestroy();
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Bhbs.a(paramInt, paramKeyEvent);
+    this.jdField_a_of_type_Bjcz.a(paramInt, paramKeyEvent);
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
@@ -323,13 +323,13 @@ public class QzonePluginProxyActivity
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_Bhbs.a();
+    this.jdField_a_of_type_Bjcz.a();
   }
   
   public void onStop()
   {
     super.onStop();
-    this.jdField_a_of_type_Bhbs.b();
+    this.jdField_a_of_type_Bjcz.b();
   }
   
   public boolean shouldHandleStartPluginFailed(String paramString)
@@ -385,7 +385,7 @@ public class QzonePluginProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QzonePluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

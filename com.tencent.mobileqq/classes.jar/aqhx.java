@@ -1,40 +1,35 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-final class aqhx
-  extends mxg
+public class aqhx
+  implements View.OnLongClickListener
 {
-  aqhx(NearbyAppInterface paramNearbyAppInterface) {}
+  public aqhx(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean onLongClick(View paramView)
   {
-    boolean bool2 = false;
-    if (paramInt == 0) {
-      atbi.b(this.a.getCurrentAccountUin(), false);
+    if (paramView == null) {
+      return false;
     }
-    for (boolean bool1 = false;; bool1 = atbi.b(this.a.getCurrentAccountUin()))
+    if (!this.a.b())
     {
-      paramArrayOfByte = new HashMap();
-      paramArrayOfByte.put("param_reason", String.valueOf(paramInt));
-      paramBundle = axrn.a(BaseApplicationImpl.getContext());
-      String str = this.a.getCurrentAccountUin();
-      if (paramInt == 0) {
-        bool2 = true;
-      }
-      paramBundle.a(str, "oidb_0x91f", bool2, 0L, 0L, paramArrayOfByte, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby", 2, "oidb_0x91f| visible:" + bool1 + "replyCode:" + paramInt);
-      }
-      return;
+      this.a.jdField_a_of_type_Aqxt.a(null);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+      return false;
     }
+    paramView.setSelected(true);
+    bdkz localbdkz = new bdkz();
+    localbdkz.a(2131365063, paramView.getContext().getString(2131691561));
+    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = bdbk.a(paramView, localbdkz, new aqhy(this, paramView), new aqhz(this, paramView));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhx
  * JD-Core Version:    0.7.0.1
  */

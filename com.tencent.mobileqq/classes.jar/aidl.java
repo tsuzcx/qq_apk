@@ -1,89 +1,48 @@
+import android.app.Activity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame.2.1;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.activity.history.tendoc.TenDocMessageResultAdapter;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
 
-public class aidl
-  implements View.OnClickListener
+class aidl
+  implements bhqp
 {
-  public aidl(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  aidl(aidj paramaidj) {}
   
-  public void onClick(View paramView)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QLog.d("FriendTeamListInnerFrameNew", 2, "----->onBuddyListClick");
-    aiez localaiez = (aiez)paramView.getTag();
-    String str;
-    boolean bool;
-    if ((localaiez != null) && (localaiez.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localaiez.jdField_a_of_type_JavaLangObject != null))
+    if (QLog.isColorLevel()) {
+      QLog.i("TenDocMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
+    }
+    if ((aidj.a(this.a).getCount() <= 0) || (paramInt <= 0)) {
+      return;
+    }
+    paramAdapterView = (aicu)aidj.a(this.a).getItem(paramInt - 1);
+    if ((paramAdapterView != null) && (paramAdapterView.a != null))
     {
-      str = "";
-      if (!(localaiez.jdField_a_of_type_JavaLangObject instanceof Friends)) {
-        break label256;
+      paramAdapterView = paramAdapterView.a;
+      QLog.d("TenDocMessageSearchDialog", 4, "jump to mr: " + paramAdapterView.msgseq + " " + paramAdapterView.shmsgseq);
+      if (abot.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)) {
+        ChatHistoryBubbleListForTroopFragment.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramAdapterView.shmsgseq, 0, 2);
       }
-      str = ((Friends)localaiez.jdField_a_of_type_JavaLangObject).getFriendNickWithAlias();
-      if (localaiez.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled())
+      for (;;)
       {
-        if (!localaiez.jdField_a_of_type_JavaLangString.startsWith("+")) {
-          break label330;
-        }
-        bool = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localaiez.jdField_a_of_type_JavaLangString, str, 4, "-1");
-        label108:
-        if (QLog.isDevelopLevel()) {
-          QLog.d("FriendTeamListInnerFrameNew", 2, "----->onBuddyListClick = " + bool);
-        }
-        if (localaiez.jdField_a_of_type_Long == 1007L) {
-          this.a.jdField_a_of_type_Azlq.b();
-        }
-        localaiez.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-        if (AppSetting.d)
-        {
-          if (!localaiez.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-            break label353;
-          }
-          paramView.setContentDescription(localaiez.d.getText().toString() + ajya.a(2131704956));
-        }
+        azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A175", "0X800A175", aidj.a(this.a), 0, "", "", "s_qq_history_tab", "");
+        this.a.a(true);
+        return;
+        ChatHistoryActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.h, paramAdapterView.time, paramAdapterView.shmsgseq, 0);
       }
     }
-    for (;;)
-    {
-      this.a.f();
-      if (AppSetting.d) {
-        paramView.postDelayed(new FriendTeamListInnerFrame.2.1(this, paramView), 2000L);
-      }
-      return;
-      label256:
-      if ((localaiez.jdField_a_of_type_JavaLangObject instanceof PhoneContact))
-      {
-        str = ((PhoneContact)localaiez.jdField_a_of_type_JavaLangObject).name;
-        break;
-      }
-      if (!(localaiez.jdField_a_of_type_JavaLangObject instanceof RelationTroopEntity)) {
-        break;
-      }
-      paramView = (RelationTroopEntity)localaiez.jdField_a_of_type_JavaLangObject;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.f(paramView.troopInfo.troopuin);
-      this.a.jdField_a_of_type_Azlq.d();
-      return;
-      label330:
-      bool = this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localaiez.jdField_a_of_type_JavaLangString, str, 0, "-1");
-      break label108;
-      label353:
-      paramView.setContentDescription(localaiez.d.getText().toString() + ajya.a(2131704955));
-    }
+    QLog.e("TenDocMessageSearchDialog", 2, "null item: " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aidl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,30 @@
-import dov.com.qq.im.capture.text.DynamicTextItem;
+import android.content.Context;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.Downloader;
+import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface bkbb
+public class bkbb
+  extends ApolloLottieAnim
 {
-  public abstract void a(float paramFloat);
+  private Downloader a;
   
-  public abstract void a(DynamicTextItem paramDynamicTextItem);
+  public bkbb(QQAppInterface paramQQAppInterface, Context paramContext)
+  {
+    super(paramQQAppInterface, paramContext);
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(paramContext).getCommonDownloader();
+  }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
-  
-  public abstract boolean a(bkbd parambkbd);
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_Int = 1;
+    paramString3 = new bkbc(this, paramString2, paramString3);
+    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(paramString1, paramString2, false, paramString3);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkbb
  * JD-Core Version:    0.7.0.1
  */

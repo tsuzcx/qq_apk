@@ -9,8 +9,8 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import bjlx;
-import bjly;
+import blxh;
+import blxi;
 
 public abstract class StoryToastView
   extends LinearLayout
@@ -44,7 +44,7 @@ public abstract class StoryToastView
     {
       this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this, "alpha", new float[] { 0.0F, 1.0F });
       this.jdField_a_of_type_AndroidAnimationAnimator.setDuration(300L);
-      this.jdField_a_of_type_AndroidAnimationAnimator.addListener(new bjlx(this));
+      this.jdField_a_of_type_AndroidAnimationAnimator.addListener(new blxh(this));
     }
     return this.jdField_a_of_type_AndroidAnimationAnimator;
   }
@@ -55,7 +55,7 @@ public abstract class StoryToastView
     {
       this.b = ObjectAnimator.ofFloat(this, "alpha", new float[] { 1.0F, 0.0F });
       this.b.setDuration(300L);
-      this.b.addListener(new bjly(this));
+      this.b.addListener(new blxi(this));
     }
     return this.b;
   }
@@ -113,7 +113,7 @@ public abstract class StoryToastView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.view.StoryToastView
  * JD-Core Version:    0.7.0.1
  */

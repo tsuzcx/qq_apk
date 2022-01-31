@@ -65,7 +65,7 @@ public class ViewPager
   private int mCloseEnough;
   private int mCurItem;
   private int mDecorChildCount;
-  private int mDefaultGutterSize;
+  public int mDefaultGutterSize;
   private int mDrawingOrder;
   protected ArrayList<View> mDrawingOrderedChildren;
   private boolean mEdgeEffectEnabled;
@@ -93,7 +93,7 @@ public class ViewPager
   private int mMaximumVelocity;
   private int mMinimumVelocity;
   private boolean mNeedCalculatePageOffsets = false;
-  private ViewPager.PagerObserver mObserver;
+  protected ViewPager.PagerObserver mObserver;
   private int mOffscreenPageLimit = 1;
   private ViewPager.OnPageChangeListener mOnPageChangeListener;
   private int mPageMargin;

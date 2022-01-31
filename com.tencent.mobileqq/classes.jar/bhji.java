@@ -1,90 +1,78 @@
-import android.text.TextUtils;
-import com.tencent.component.network.downloader.strategy.IPConfigStrategy;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-
-class bhji
-  extends IPConfigStrategy
-  implements bggk
+final class bhji
+  implements bhkm
 {
-  private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private ReadWriteLock jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock = new ReentrantReadWriteLock();
+  private bhji(bhix parambhix) {}
   
-  public bhji()
+  public int a(long paramLong1, long paramLong2, long paramLong3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
   {
-    a();
-    QzoneConfig.getInstance().addListener(this);
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "DownloadDirectIP");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_a");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_a");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_b");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_b");
-    a(this.jdField_a_of_type_JavaUtilMap, "VideoSvrList", "DownloadDirectIPVideo");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "video_masterIplist");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "optimumip_qzvv", "video_host_qzvv", "qzvv.video.qq.com");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "qzpb.qq.com", "video_host_qzpb", "qzpb.qq.com");
-    super.setConfig(this.jdField_a_of_type_JavaUtilMap);
-  }
-  
-  private void a(Map<String, String> paramMap, String paramString1, String paramString2)
-  {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    String str = paramString1 + "||" + paramString2;
-    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadIPStracyConfig", 2, "addConfigItem, key=" + str + ", content=" + paramString1);
-    }
-    paramMap.put(str, paramString1);
-  }
-  
-  private void a(Map<String, String> paramMap, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    Object localObject = null;
-    paramString4 = QzoneConfig.getInstance().getConfig(paramString1, paramString3, paramString4);
-    paramString3 = paramString1 + "||" + paramString2;
-    paramString2 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    paramString1 = localObject;
-    if (!TextUtils.isEmpty(paramString2))
+    if (paramLong1 == 2L) {}
+    try
     {
-      paramString1 = localObject;
-      if (!TextUtils.isEmpty(paramString4)) {
-        paramString1 = paramString2.replace("ips", paramString4);
+      this.a.flushRequest();
+      return 0;
+    }
+    catch (Exception paramObject1)
+    {
+      label62:
+      paramObject1.printStackTrace();
+      return -1;
+    }
+    if ((paramObject1 != null) && (paramObject2 != null) && (paramArrayOfObject1 != null))
+    {
+      if (paramArrayOfObject1.length >= 6) {
+        break label241;
+      }
+      break label238;
+      if (paramLong2 != 0L)
+      {
+        paramArrayOfObject2 = new bhjh(paramLong2);
+        break label251;
+        if (((Integer)paramObject1).intValue() == 0) {
+          break label270;
+        }
       }
     }
-    if (TextUtils.isEmpty(paramString1))
+    label270:
+    for (boolean bool2 = true;; bool2 = false)
     {
-      paramMap.put(paramString3, paramString2);
-      return;
+      if (((Integer)paramObject2).intValue() == 1) {
+        paramObject1 = new bhju((String)paramArrayOfObject1[2]);
+      }
+      for (;;)
+      {
+        return this.a.cloudDetect(paramObject1, bool1, bool2, paramArrayOfObject2);
+        paramObject1 = new bhjv();
+        paramObject1.jdField_a_of_type_Int = ((Integer)paramObject2).intValue();
+        paramObject1.b = ((Integer)paramArrayOfObject1[0]).intValue();
+        paramObject1.jdField_a_of_type_JavaLangString = ((String)paramArrayOfObject1[1]);
+        paramObject1.c = ((String)paramArrayOfObject1[2]);
+        paramObject1.d = ((String)paramArrayOfObject1[3]);
+        paramObject1.e = ((String)paramArrayOfObject1[4]);
+        paramObject1.jdField_a_of_type_ArrayOfByte = ((byte[])paramArrayOfObject1[5]);
+      }
+      paramArrayOfObject2 = null;
+      break label251;
+      label238:
+      return 13;
+      label241:
+      if (paramArrayOfObject1[0] != null) {
+        break;
+      }
+      return 13;
+      label251:
+      if (paramLong3 != 0L)
+      {
+        bool1 = true;
+        break label62;
+      }
+      boolean bool1 = false;
+      break label62;
     }
-    paramMap.put(paramString3, paramString1);
-  }
-  
-  public void onConfigChange()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneIPStracyConfig", 2, "QzoneIPStracyConfig receive change");
-    }
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhji
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,27 @@
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class aito
+public class aito
+  implements View.OnClickListener
 {
-  View jdField_a_of_type_AndroidViewView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public aito(LingHbFragment paramLingHbFragment) {}
   
-  aito(aitl paramaitl) {}
+  public void onClick(View paramView)
+  {
+    QLog.i("LingHbFragment", 2, "change others...");
+    if (this.a.channel == 65536) {}
+    for (paramView = "yyhongbao.word.change";; paramView = "klhongbao.word.change")
+    {
+      this.a.addUploadData(paramView, "");
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aito
  * JD-Core Version:    0.7.0.1
  */

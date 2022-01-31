@@ -1,37 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ShortVideoUpInfo;
-import mqq.manager.Manager;
-
-public class akgk
-  implements Manager
+class akgk
 {
-  private aukp a;
+  bckw jdField_a_of_type_Bckw;
+  Boolean jdField_a_of_type_JavaLangBoolean;
   
-  public akgk(QQAppInterface paramQQAppInterface)
+  public akgk(akge paramakge, bckw parambckw)
   {
-    this.a = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
+    this.jdField_a_of_type_Bckw = parambckw;
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
   }
-  
-  public ShortVideoUpInfo a(String paramString)
-  {
-    return (ShortVideoUpInfo)this.a.a(ShortVideoUpInfo.class, paramString);
-  }
-  
-  public boolean a(String paramString)
-  {
-    boolean bool = false;
-    paramString = a(paramString);
-    if (paramString != null) {
-      bool = this.a.b(paramString);
-    }
-    return bool;
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akgk
  * JD-Core Version:    0.7.0.1
  */

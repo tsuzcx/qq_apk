@@ -1,54 +1,71 @@
-import android.os.SystemClock;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class advx
-  implements bfph
+public class advx
+  implements Handler.Callback
 {
-  advx(advs paramadvs, MessageForPic paramMessageForPic, bfpc parambfpc) {}
+  public advx(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    switch (paramInt)
+    switch (paramMessage.what)
     {
-    }
-    label172:
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      long l;
-      do
+    default: 
+      return true;
+    case 2: 
+      if ((this.a.a.c != null) && (!this.a.a.c.isEnabled())) {
+        this.a.a.c.setEnabled(true);
+      }
+      Object localObject = (String)paramMessage.obj;
+      if (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a))
       {
-        return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_Advs.d < 500L);
-      this.jdField_a_of_type_Advs.d = l;
-      paramView = this.jdField_a_of_type_Advs.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
-      if ((paramView != null) && ((paramView instanceof aypb)))
-      {
-        paramView = (aypb)paramView;
-        if ((paramView.c()) && (paramView.d()))
-        {
-          paramInt = 1;
-          this.jdField_a_of_type_Advs.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq));
+        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, 1);
+        this.a.getActivity().finish();
+        paramMessage = new Bundle();
+        paramMessage.putString("savedUrl", (String)localObject);
+        localObject = (TeamWorkFileImportInfo)this.a.a().getParcelableExtra("key_team_work_file_import_info");
+        if (((TeamWorkFileImportInfo)localObject).e != 3) {
+          break label226;
         }
+        paramMessage.putInt("editType", 1);
       }
       for (;;)
       {
-        if (paramInt != 0) {
-          break label172;
+        if (this.a.a().getParcelableExtra("key_team_work_file_import_info") != null) {
+          paramMessage.putParcelable("key_team_work_file_import_info", this.a.a().getParcelableExtra("key_team_work_file_import_info"));
         }
-        this.jdField_a_of_type_Advs.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+        paramMessage = apic.a("ipc_save_team_work", "", -1, paramMessage);
+        apmy.a().a(paramMessage);
+        return true;
+        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, 0);
+        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, (String)localObject);
         break;
-        paramInt = 0;
+        label226:
+        if (((TeamWorkFileImportInfo)localObject).e == 6) {
+          paramMessage.putInt("editType", 2);
+        }
       }
     }
+    if ((this.a.a.c != null) && (!this.a.a.c.isEnabled())) {
+      this.a.a.c.setEnabled(true);
+    }
+    QQToast.a(this.a.getActivity(), alpo.a(2131715127), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advx
  * JD-Core Version:    0.7.0.1
  */

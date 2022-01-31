@@ -2,10 +2,10 @@ package com.tencent.mobileqq.mini.appbrand;
 
 import android.app.Activity;
 import android.view.View;
-import bbgu;
+import bdfq;
 
 class JsErrorGuard$PermissionDialog
-  extends bbgu
+  extends bdfq
 {
   private Activity mActivity;
   
@@ -18,13 +18,13 @@ class JsErrorGuard$PermissionDialog
   
   public void initUI()
   {
-    setContentView(2131558897);
-    findViewById(2131368929).setVisibility(8);
+    setContentView(2131558934);
+    findViewById(2131369159).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.JsErrorGuard.PermissionDialog
  * JD-Core Version:    0.7.0.1
  */

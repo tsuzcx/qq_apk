@@ -1,34 +1,19 @@
-import com.tencent.biz.ui.TouchWebView;
-import cooperation.qzone.webviewwrapper.IWebviewListener;
+import android.view.View;
+import com.tencent.widget.ListView;
 
-class bhuy
-  implements bhuv
+public abstract interface bhuy
 {
-  bhuy(bhux parambhux, IWebviewListener paramIWebviewListener) {}
+  public abstract void a(int paramInt, View paramView, ListView paramListView);
   
-  public void a()
-  {
-    if (bhux.a(this.jdField_a_of_type_Bhux) == null) {}
-    do
-    {
-      return;
-      if (bhux.a(this.jdField_a_of_type_Bhux).getVisibility() != 0) {
-        bhux.a(this.jdField_a_of_type_Bhux).setVisibility(0);
-      }
-    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
-    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
-  }
+  public abstract boolean a(int paramInt, View paramView, ListView paramListView);
   
-  public void a(int paramInt, String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener != null) {
-      this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onReceiveError(paramInt, paramString1, paramString2);
-    }
-  }
+  public abstract void b(int paramInt, View paramView, ListView paramListView);
+  
+  public abstract void c(int paramInt, View paramView, ListView paramListView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhuy
  * JD-Core Version:    0.7.0.1
  */

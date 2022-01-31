@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.activity;
 
-import azej;
+import bbci;
 
 class TroopAdminList$4
   implements Runnable

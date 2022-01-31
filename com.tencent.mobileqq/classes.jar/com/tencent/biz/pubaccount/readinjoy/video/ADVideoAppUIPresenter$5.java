@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import qjc;
-import qje;
+import qyj;
+import qyl;
 
 public class ADVideoAppUIPresenter$5
   implements Runnable
 {
-  public ADVideoAppUIPresenter$5(qje paramqje, qjc paramqjc) {}
+  public ADVideoAppUIPresenter$5(qyl paramqyl, qyj paramqyj) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ADVideoAppUIPresenter$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.ADVideoAppUIPresenter.5
  * JD-Core Version:    0.7.0.1
  */

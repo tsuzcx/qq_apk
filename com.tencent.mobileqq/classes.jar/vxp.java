@@ -1,103 +1,37 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 
-public class vxp
+class vxp
+  extends vox
 {
-  public static <T> T a(T paramT)
-  {
-    if (paramT == null) {
-      ved.e("Q.qqstory.AssertUtils", "checkNotNull failed:" + a(2));
-    }
-    return paramT;
-  }
+  vxp(vxo paramvxo) {}
   
-  public static String a(int paramInt)
+  public void d()
   {
-    for (;;)
+    super.d();
+    if (bngs.b(this.a.b()))
     {
-      try
-      {
-        localObject = new RuntimeException("getStackTrace").getStackTrace();
-        localStringBuilder = new StringBuilder();
-        i = paramInt;
-        if (localObject.length > paramInt) {
-          break label87;
-        }
-        i = localObject.length;
+      LinearLayout localLinearLayout = (LinearLayout)this.a.a().a.findViewById(2131363407);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
+      localLayoutParams.height = vxo.a(this.a);
+      if (!azgq.a(this.a.a.getContext())) {
+        localLinearLayout.setBackgroundColor(Color.parseColor("#181818"));
       }
-      catch (Exception localException)
-      {
-        Object localObject;
-        StringBuilder localStringBuilder;
-        int i;
-        return "";
-      }
-      if (paramInt < i)
-      {
-        localStringBuilder.append("\n" + localObject[paramInt].toString());
-        paramInt += 1;
-      }
-      else
-      {
-        localObject = localStringBuilder.toString();
-        return localObject;
-        label87:
-        paramInt = 2;
-      }
+      localLinearLayout.setLayoutParams(localLayoutParams);
     }
   }
   
-  public static void a() {}
-  
-  public static <T> void a(T paramT)
+  public void g()
   {
-    if (paramT == null)
-    {
-      paramT = vzg.a("StoryAssertUtils Exception!");
-      axpu.a(paramT, "StoryAssertUtils assertNotNull_DEBUG()");
-      ved.c("Q.qqstory.AssertUtils", "assertNotNull_DEBUG failed: ", paramT);
-    }
+    super.g();
+    vxo.a(this.a).a();
   }
-  
-  public static void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    ved.e("Q.qqstory.AssertUtils", "checkNotEmpty failed :" + a(2));
-  }
-  
-  public static void a(String paramString, Object... paramVarArgs)
-  {
-    if (paramVarArgs.length == 0) {}
-    for (;;)
-    {
-      ved.e("Q.qqstory.AssertUtils", paramString);
-      return;
-      paramString = String.format(paramString, paramVarArgs);
-    }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    if (!paramBoolean) {
-      ved.e("Q.qqstory.AssertUtils", "assertTrue failed:" + a(4));
-    }
-  }
-  
-  public static void a(boolean paramBoolean, @NonNull String paramString)
-  {
-    if (paramBoolean) {
-      return;
-    }
-    ved.e("Q.qqstory.AssertUtils", paramString);
-  }
-  
-  public static void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vxp
  * JD-Core Version:    0.7.0.1
  */

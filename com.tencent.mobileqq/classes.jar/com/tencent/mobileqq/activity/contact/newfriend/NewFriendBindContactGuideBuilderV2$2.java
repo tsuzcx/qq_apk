@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
-import afjy;
-import aipn;
+import ahhd;
+import akgy;
 
 public class NewFriendBindContactGuideBuilderV2$2
   implements Runnable
 {
-  public NewFriendBindContactGuideBuilderV2$2(afjy paramafjy) {}
+  public NewFriendBindContactGuideBuilderV2$2(ahhd paramahhd) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class NewFriendBindContactGuideBuilderV2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.NewFriendBindContactGuideBuilderV2.2
  * JD-Core Version:    0.7.0.1
  */

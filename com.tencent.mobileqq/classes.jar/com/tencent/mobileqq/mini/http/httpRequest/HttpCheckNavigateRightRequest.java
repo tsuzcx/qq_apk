@@ -4,7 +4,7 @@ import NS_MINI_INTERFACE.INTERFACE.StCheckNavigateRightReq;
 import NS_MINI_INTERFACE.INTERFACE.StCheckNavigateRightRsp;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.util.Log;
-import bbma;
+import bdku;
 import com.tencent.mobileqq.mini.http.HttpProtoBufRequest;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -51,7 +51,7 @@ public class HttpCheckNavigateRightRequest
     INTERFACE.StCheckNavigateRightRsp localStCheckNavigateRightRsp = new INTERFACE.StCheckNavigateRightRsp();
     try
     {
-      localStQWebRsp.mergeFrom(bbma.b(paramArrayOfByte));
+      localStQWebRsp.mergeFrom(bdku.b(paramArrayOfByte));
       localStCheckNavigateRightRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
       QLog.d("HttpCheckNavigateRightRequest", 1, "[miniapp-http].onResponse, retCode: " + localStQWebRsp.retCode.get() + ", errMsg: " + localStQWebRsp.errMsg.get().toStringUtf8());
       if (localStCheckNavigateRightRsp != null)
@@ -79,7 +79,7 @@ public class HttpCheckNavigateRightRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.http.httpRequest.HttpCheckNavigateRightRequest
  * JD-Core Version:    0.7.0.1
  */

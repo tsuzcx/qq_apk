@@ -1,21 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment.6.1;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIPosters;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.POIPosterData;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
 
 public class vdb
-  implements uzw
+  extends unf
 {
-  vdb(vcp paramvcp) {}
+  public final ArrayList<usw> a = new ArrayList();
   
-  public void a()
+  public vdb(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
   {
-    ved.d("NewMyStorySegment", "finish get all data from server steps");
-    new Handler(Looper.getMainLooper()).post(new NewMyStorySegment.6.1(this));
+    a(paramRspGetPOIPosters);
+  }
+  
+  private void a(qqstory_service.RspGetPOIPosters paramRspGetPOIPosters)
+  {
+    int i = 0;
+    while (i < paramRspGetPOIPosters.poi_posters.size())
+    {
+      Object localObject = (qqstory_struct.POIPosterData)paramRspGetPOIPosters.poi_posters.get(i);
+      localObject = new usw(((qqstory_struct.POIPosterData)localObject).poster_name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).name.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).thumb_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_url.get().toStringUtf8(), ((qqstory_struct.POIPosterData)localObject).poster_json_layout_desc.get().toStringUtf8());
+      this.a.add(localObject);
+      i += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdb
  * JD-Core Version:    0.7.0.1
  */

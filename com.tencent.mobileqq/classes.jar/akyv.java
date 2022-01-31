@@ -1,101 +1,199 @@
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.data.ApolloGameData;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-class akyv
-  implements alxr
+public class akyv
+  extends aknt
 {
-  int jdField_a_of_type_Int = 0;
-  final long jdField_a_of_type_Long = AudioHelper.b();
-  long jdField_b_of_type_Long = System.currentTimeMillis();
-  
-  akyv(akyu paramakyu, AppInterface paramAppInterface, String paramString, int paramInt) {}
-  
-  public void a(String paramString1, String paramString2, int paramInt)
+  public akyv(ApolloGameActivity paramApolloGameActivity, AppInterface paramAppInterface)
   {
-    boolean bool2 = false;
-    if ((paramInt == 100) || (paramInt == 0) || (Math.abs(paramInt - this.jdField_a_of_type_Int) >= 10)) {}
-    for (boolean bool1 = true;; bool1 = false)
+    super(paramAppInterface, false);
+  }
+  
+  public void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, aknu paramaknu, long paramLong)
+  {
+    if (ApolloGameActivity.a(this.a)) {}
+    do
     {
-      long l = System.currentTimeMillis();
-      if (l - this.jdField_b_of_type_Long >= 1000L) {
-        bool2 = true;
-      }
-      if ((QLog.isDevelopLevel()) && ((bool2) || (bool1))) {
-        QLog.w(this.jdField_a_of_type_Akyu.jdField_a_of_type_JavaLangString, 1, "onDownloadUpdate, md5[" + paramString2 + "], activityid[" + this.jdField_a_of_type_JavaLangString + "], index[" + this.jdField_b_of_type_Int + "], curPercent[" + paramInt + "], lastPercent[" + this.jdField_a_of_type_Int + "], needNotify[" + bool1 + "], needNotify2[" + bool2 + "]");
-      }
-      if (bool1) {
-        this.jdField_a_of_type_Int = paramInt;
-      }
-      if (bool2) {
-        this.jdField_b_of_type_Long = l;
-      }
-      if ((bool1) || (bool2)) {
-        this.jdField_a_of_type_Akyu.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, paramInt);
-      }
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d(this.a.b, 2, "onDownloadConfirm mStartCheckParam == null || mStartCheckParam.game == null");
+          return;
+          if ((ApolloGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloGameActivity.a(this.a).requestCode)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d(this.a.b, 2, "onDownloadConfirm startCheckParam.requestCode != mStartCheckParam.requestCode");
+        return;
+        if (paramLong > 0L) {
+          break;
+        }
+        QLog.d(this.a.b, 2, new Object[] { "[onDownloadConfirm] packageSize is invalid, packageSize=", Long.valueOf(paramLong) });
+      } while (paramaknu == null);
+      paramaknu.a(paramStartCheckParam);
       return;
+      if ((ApolloGameActivity.a(this.a) != null) && (ApolloGameActivity.a(this.a).statMap != null)) {
+        ApolloGameActivity.a(this.a).statMap.put("download_confirm", Long.valueOf(1L));
+      }
+    } while (ApolloGameActivity.a(this.a) == null);
+    ApolloGameActivity.a(this.a).a(paramStartCheckParam, paramaknu, paramLong);
+  }
+  
+  public void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    super.onDownloadGameResDown(paramStartCheckParam);
+    if ((ApolloGameActivity.a(this.a) != null) && (ApolloGameActivity.a(this.a).statMap != null)) {
+      ApolloGameActivity.a(this.a).statMap.put("download_game_res", Long.valueOf(1L));
     }
   }
   
-  public void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
+  public void onDownloadGameResFail(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    int i;
-    if ((paramObject instanceof akyo))
+    QLog.d(this.a.b, 1, "[onDownloadGameResFail]");
+    onGameFailed(paramStartCheckParam, -12L);
+  }
+  
+  public void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt)
+  {
+    if (ApolloGameActivity.a(this.a) != null) {
+      ApolloGameActivity.a(this.a).a(paramStartCheckParam, paramInt);
+    }
+  }
+  
+  public void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
+  {
+    if (ApolloGameActivity.a(this.a)) {}
+    do
     {
-      paramString1 = (akyo)paramObject;
-      paramString1.c = System.currentTimeMillis();
-      paramObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount();
-      boolean bool = false;
-      if (paramInt == 0) {
-        bool = akyu.a(paramString1);
-      }
-      QLog.w(this.jdField_a_of_type_Akyu.jdField_a_of_type_JavaLangString, 1, "onDownloadFinish, md5[" + paramString2 + "], errCode[" + paramInt + "], check[" + bool + "], path[" + paramString3 + "], id[" + paramString1.e + "], request[" + paramString1.jdField_a_of_type_Long + "], Begin[" + paramString1.jdField_b_of_type_Long + "], End[" + paramString1.c + "], 调度耗时[" + (paramString1.jdField_b_of_type_Long - paramString1.jdField_a_of_type_Long) + "], 下载耗时[" + (paramString1.c - paramString1.jdField_b_of_type_Long) + "], fromPreCover[" + paramString1.d + "], seq[" + this.jdField_a_of_type_Long + "], Uin[" + paramObject + "], zipItem[" + paramString1 + "]");
-      if (paramString1.jdField_a_of_type_Alxr == this) {
-        paramString1.jdField_a_of_type_Alxr = null;
-      }
-      i = paramInt;
-      if (paramInt == 0)
+      return;
+      QLog.d(this.a.b, 1, new Object[] { "[onCheckGameFinish] resultCode=", Long.valueOf(paramLong) });
+      if (paramStartCheckParam == null)
       {
-        i = paramInt;
-        if (!bool) {
-          i = -5;
-        }
+        QLog.e(this.a.b, 1, "onCheckGameFinish mStartCheckParam == null");
+        return;
       }
-      if (i != 0) {
-        break label339;
+      if (paramLong != 0L)
+      {
+        onGameFailed(paramStartCheckParam, paramLong);
+        return;
       }
-      paramString1.a(2);
-      bbmd.a(paramObject, paramString1.e, paramString1.jdField_a_of_type_Int, paramString1.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_Akyu.a(paramString1.e, paramString1.jdField_a_of_type_Int, 100);
-      paramString1.d = -1;
+    } while (ApolloGameActivity.a(this.a) == null);
+    ApolloGameActivity.a(this.a).a(paramLong, paramStartCheckParam);
+  }
+  
+  public void onGameCheckRetry(int paramInt)
+  {
+    if (ApolloGameActivity.a(this.a)) {}
+    while (ApolloGameActivity.a(this.a) == null) {
+      return;
+    }
+    ApolloGameActivity.a(this.a).a(paramInt, ApolloGameActivity.a(this.a));
+  }
+  
+  public void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong)
+  {
+    if (ApolloGameActivity.a(this.a) != null) {
+      ApolloGameActivity.a(this.a).b(paramStartCheckParam, paramLong);
+    }
+  }
+  
+  public void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (ApolloGameActivity.a(this.a)) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      if (paramStartCheckParam != null) {
+        break label43;
+      }
+      QLog.d(this.a.b, 2, "showGameLifeTip mStartCheckParam is null");
     }
     for (;;)
     {
-      this.jdField_a_of_type_Akyu.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramString1.jdField_a_of_type_Boolean, paramString1.e, paramString1.jdField_a_of_type_Int + 1);
+      onGameFailed(paramStartCheckParam, -1L);
       return;
-      label339:
-      if (i == 100)
-      {
-        paramString1.a(2);
-        this.jdField_a_of_type_Akyu.a(paramString1.e, paramString1.jdField_a_of_type_Int, 100);
-      }
-      else
-      {
-        paramString1.a(-1);
-        this.jdField_a_of_type_Akyu.a(paramString1.e, paramString1.jdField_a_of_type_Int, -1);
-      }
+      label43:
+      QLog.d(this.a.b, 2, new Object[] { "showGameLifeTip mStartCheckParam:", paramStartCheckParam });
     }
   }
   
-  protected void finalize()
+  public void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    super.finalize();
-    QLog.w(this.jdField_a_of_type_Akyu.jdField_a_of_type_JavaLangString, 1, "ZipItem.finalize, activityid[" + this.jdField_a_of_type_JavaLangString + "], index[" + this.jdField_b_of_type_Int + "], seq[" + this.jdField_a_of_type_Long + "]");
+    super.onGetGameData(paramStartCheckParam);
+    if ((paramStartCheckParam == null) || (paramStartCheckParam.game == null)) {
+      QLog.e(this.a.b, 1, "onGetGameData startCheckParam == null or game is null");
+    }
+    do
+    {
+      return;
+      ApolloGameActivity.a(this.a).game = paramStartCheckParam.game;
+      if (ApolloGameActivity.a(this.a) != null) {
+        ApolloGameActivity.a(this.a).a(ApolloGameActivity.a(this.a));
+      }
+    } while (ApolloGameActivity.a(this.a) == null);
+    ApolloGameActivity.a(this.a).b(paramStartCheckParam);
+  }
+  
+  public void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
+  {
+    if (ApolloGameActivity.a(this.a)) {}
+    do
+    {
+      do
+      {
+        return;
+        QLog.d(this.a.b, 1, new Object[] { "[onVerifyGameFinish] resultCode=", Long.valueOf(paramLong) });
+        if (paramStartCheckParam != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(this.a.b, 2, "onVerifyGameFinish mStartCheckParam == null");
+      return;
+      if ((ApolloGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloGameActivity.a(this.a).requestCode)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.a.b, 2, "onVerifyGameFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
+    return;
+    if (ApolloGameActivity.a(this.a) != null) {
+      ApolloGameActivity.a(this.a).a(paramStartCheckParam, paramLong);
+    }
+    if (paramLong != 0L)
+    {
+      onGameFailed(paramStartCheckParam, paramLong);
+      return;
+    }
+    if (paramCmGameInitParams != null)
+    {
+      paramCmGameInitParams.appId = ApolloGameActivity.a(this.a).game.appId;
+      paramCmGameInitParams.commFlag = ApolloGameActivity.a(this.a).commFlag;
+      paramCmGameInitParams.rpUrl = ApolloGameActivity.a(this.a).rpUrl;
+      paramCmGameInitParams.rpIconUrl = ApolloGameActivity.a(this.a).rpIconUrl;
+    }
+    if (paramCmGameInitParams != null) {
+      paramCmGameInitParams.accessTokenRet = 0;
+    }
+    this.a.a(paramCmGameInitParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,32 @@
-import android.content.Context;
-import android.os.Bundle;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-public class baid
-  extends baib
+class baid
+  extends baif
 {
-  public baid(String paramString1, String paramString2, baic parambaic, int paramInt, Bundle paramBundle)
+  private bain a;
+  
+  baid(@NonNull String paramString, int paramInt1, int paramInt2)
   {
-    super(paramString1, paramString2, parambaic, paramInt, paramBundle);
+    super(2, paramString);
+    this.a = new bain(paramInt1, paramInt2, 1);
   }
   
-  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
+  float a(@NonNull Paint paramPaint)
   {
-    if (isCancelled()) {
-      return null;
+    float f = this.a.a().getBounds().width();
+    if (QLog.isColorLevel()) {
+      QLog.d("NickWrapper", 2, "getWidth normal span width " + f);
     }
-    Object localObject = paramVarArgs[0];
-    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
-    {
-      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
-      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
-    }
-    for (;;)
-    {
-      try
-      {
-        Bundle localBundle = new Bundle();
-        String str1 = ((Bundle)localObject).getString("Cookie");
-        String str2 = ((Bundle)localObject).getString("Referer");
-        String str3 = ((Bundle)localObject).getString("Origin");
-        if (str1 != null)
-        {
-          localBundle.putString("Cookie", str1);
-          ((Bundle)localObject).remove("Cookie");
-        }
-        if (str2 != null)
-        {
-          localBundle.putString("Referer", str2);
-          ((Bundle)localObject).remove("Referer");
-        }
-        if (str3 != null)
-        {
-          localBundle.putString("Origin", str3);
-          ((Bundle)localObject).remove("Origin");
-        }
-        paramVarArgs = new JSONObject(naj.a(paramVarArgs, this.a, this.b, (Bundle)localObject, localBundle));
-      }
-      catch (IOException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
-      }
-      catch (JSONException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
-      }
-      catch (OutOfMemoryError paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-      }
-      return paramVarArgs;
-      paramVarArgs = null;
-    }
+    return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baid
  * JD-Core Version:    0.7.0.1
  */

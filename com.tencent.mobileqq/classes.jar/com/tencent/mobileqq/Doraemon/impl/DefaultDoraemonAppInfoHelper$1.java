@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.Doraemon.impl;
 
-import aabx;
+import absu;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
+import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request.Builder;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import org.json.JSONObject;
 
 public class DefaultDoraemonAppInfoHelper$1
   implements Runnable
 {
-  public DefaultDoraemonAppInfoHelper$1(aabx paramaabx) {}
+  public DefaultDoraemonAppInfoHelper$1(absu paramabsu) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ public class DefaultDoraemonAppInfoHelper$1
     long l2;
     try
     {
-      ??? = "https://cgi.connect.qq.com/mqqapi/privilege_group_config?platform=1&platform_version=8.3.0&data_version=" + this.this$0.b;
+      ??? = "https://cgi.connect.qq.com/mqqapi/privilege_group_config?platform=1&platform_version=8.3.3&data_version=" + this.this$0.b;
       localObject7 = BaseApplicationImpl.getApplication().getRuntime();
       if (localObject7 == null)
       {
@@ -76,7 +76,7 @@ public class DefaultDoraemonAppInfoHelper$1
       {
         this.this$0.jdField_a_of_type_OrgJsonJSONObject = localJSONObject;
         this.this$0.jdField_a_of_type_JavaUtilMap.clear();
-        BaseApplicationImpl.getApplication().getSharedPreferences("DoraemonApiGroup.json", 4).edit().putString("content", (String)localObject7).putLong("version", l1).putString("app_version", "8.3.0").apply();
+        BaseApplicationImpl.getApplication().getSharedPreferences("DoraemonApiGroup.json", 4).edit().putString("content", (String)localObject7).putLong("version", l1).putString("app_version", "8.3.3").apply();
         return;
       }
     }
@@ -84,7 +84,7 @@ public class DefaultDoraemonAppInfoHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.1
  * JD-Core Version:    0.7.0.1
  */

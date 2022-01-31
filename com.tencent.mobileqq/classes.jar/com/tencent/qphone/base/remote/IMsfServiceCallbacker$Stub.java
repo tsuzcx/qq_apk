@@ -11,8 +11,10 @@ public abstract class IMsfServiceCallbacker$Stub
   implements IMsfServiceCallbacker
 {
   private static final String DESCRIPTOR = "com.tencent.qphone.base.remote.IMsfServiceCallbacker";
-  static final int TRANSACTION_onRecvPushResp = 2;
+  static final int TRANSACTION_onReceivePushResp = 2;
   static final int TRANSACTION_onResponse = 1;
+  static final int TRANSACTION_onSyncReceivePushResp = 4;
+  static final int TRANSACTION_onSyncResponse = 3;
   
   public IMsfServiceCallbacker$Stub()
   {
@@ -38,6 +40,7 @@ public abstract class IMsfServiceCallbacker$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
+    FromServiceMsg localFromServiceMsg = null;
     switch (paramInt1)
     {
     default: 
@@ -47,29 +50,49 @@ public abstract class IMsfServiceCallbacker$Stub
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
-      ToServiceMsg localToServiceMsg;
       if (paramParcel1.readInt() != 0)
       {
-        localToServiceMsg = (ToServiceMsg)ToServiceMsg.CREATOR.createFromParcel(paramParcel1);
+        localObject = (ToServiceMsg)ToServiceMsg.CREATOR.createFromParcel(paramParcel1);
         if (paramParcel1.readInt() == 0) {
-          break label120;
+          break label140;
         }
       }
-      label120:
       for (paramParcel1 = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
       {
-        onResponse(localToServiceMsg, paramParcel1);
+        onResponse((ToServiceMsg)localObject, paramParcel1);
         paramParcel2.writeNoException();
         return true;
-        localToServiceMsg = null;
+        localObject = null;
         break;
+      }
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
+      if (paramParcel1.readInt() != 0) {}
+      for (paramParcel1 = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      {
+        onReceivePushResp(paramParcel1);
+        paramParcel2.writeNoException();
+        return true;
+      }
+    case 3: 
+      label140:
+      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
+      if (paramParcel1.readInt() != 0) {}
+      for (localObject = (ToServiceMsg)ToServiceMsg.CREATOR.createFromParcel(paramParcel1);; localObject = null)
+      {
+        if (paramParcel1.readInt() != 0) {
+          localFromServiceMsg = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);
+        }
+        onSyncResponse((ToServiceMsg)localObject, localFromServiceMsg, paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
+        paramParcel2.writeNoException();
+        return true;
       }
     }
     paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IMsfServiceCallbacker");
     if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    for (Object localObject = (FromServiceMsg)FromServiceMsg.CREATOR.createFromParcel(paramParcel1);; localObject = null)
     {
-      onRecvPushResp(paramParcel1);
+      onSyncReceivePushResp((FromServiceMsg)localObject, paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
     }

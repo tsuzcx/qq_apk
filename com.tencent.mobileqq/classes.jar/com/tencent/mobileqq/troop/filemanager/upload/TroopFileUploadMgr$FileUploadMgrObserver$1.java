@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import azuy;
+import bbth;
 
 public class TroopFileUploadMgr$FileUploadMgrObserver$1
   implements Runnable
 {
-  public TroopFileUploadMgr$FileUploadMgrObserver$1(azuy paramazuy, Object paramObject) {}
+  public TroopFileUploadMgr$FileUploadMgrObserver$1(bbth parambbth, Object paramObject) {}
   
   public void run()
   {
-    azuy.a(this.this$0, this.a);
+    bbth.a(this.this$0, this.a);
   }
 }
 

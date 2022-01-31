@@ -1,59 +1,34 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import dov.com.qq.im.ae.camera.ui.panel.AEProviderContainerView;
 
 public class bkto
-  implements SeekBar.OnSeekBarChangeListener
+  implements View.OnClickListener
 {
-  public bkto(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public bkto(AEProviderContainerView paramAEProviderContainerView) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
-    }
-    if (paramBoolean)
+    switch (paramView.getId())
     {
-      paramSeekBar = this.a;
-      paramSeekBar.g += 1;
-      ShortVideoPlayActivity.b(this.a, true);
     }
-    this.a.b(paramInt * this.a.b / 10000L);
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    ShortVideoPlayActivity.b(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.a.l();
-    paramSeekBar = this.a;
-    paramSeekBar.h += 1;
-    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
-    int j = (int)(i * this.a.b / 10000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
-    }
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    do
     {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(j);
-    }
-    ShortVideoPlayActivity.b(this.a, false);
+      do
+      {
+        return;
+        wta.a("clk_filter", wta.b(axlc.a), 0, false, new String[0]);
+      } while (AEProviderContainerView.a(this.a) == 0);
+      AEProviderContainerView.a(this.a);
+      return;
+      wta.a("clk_beauty", wta.b(axlc.a), 0, false, new String[0]);
+    } while (AEProviderContainerView.a(this.a) == 1);
+    AEProviderContainerView.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkto
  * JD-Core Version:    0.7.0.1
  */

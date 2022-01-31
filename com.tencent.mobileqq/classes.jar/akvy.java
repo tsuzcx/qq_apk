@@ -1,23 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil.UpdateFriendStatusItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 
-public final class akvy
-  implements Parcelable.Creator<FriendsStatusUtil.UpdateFriendStatusItem>
+class akvy
+  implements View.OnClickListener
 {
-  public FriendsStatusUtil.UpdateFriendStatusItem a(Parcel paramParcel)
-  {
-    return new FriendsStatusUtil.UpdateFriendStatusItem(paramParcel);
-  }
+  akvy(akvu paramakvu) {}
   
-  public FriendsStatusUtil.UpdateFriendStatusItem[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new FriendsStatusUtil.UpdateFriendStatusItem[paramInt];
+    if ((akvu.a(this.a).d()) || (akvu.b(this.a)))
+    {
+      akvu.b(this.a, false);
+      akvu.a(this.a).a();
+      akvu.c(this.a).setVisibility(8);
+      akvu.b(this.a).setVisibility(8);
+    }
+    while (!akvu.a(this.a).c()) {
+      return;
+    }
+    akvu.b(this.a, true);
+    akvu.a(this.a).b();
+    akvu.b(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akvy
  * JD-Core Version:    0.7.0.1
  */

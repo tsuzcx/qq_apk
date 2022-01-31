@@ -1,29 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
-class uma
-  extends SimpleJob<Object>
+public class uma
+  implements ulq
 {
-  uma(uly paramuly, String paramString)
-  {
-    super(paramString);
-  }
+  public uma(StoryVideoUploadTask paramStoryVideoUploadTask) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(ulp paramulp)
   {
-    if (this.a.a == null) {
-      this.a.a = new umb(this.a, this.a.c);
-    }
-    this.a.d = this.a.a.a;
-    uly.a(this.a);
-    return null;
+    ((ulw)this.a.a).j = ((ulk)paramulp).b;
+    wsv.b("Q.qqstory.publish.upload:StoryVideoUploadTask", "make video thumbnail finish:%s", ((ulw)this.a.a).j);
+    this.a.a(1, new ErrorMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uma
  * JD-Core Version:    0.7.0.1
  */

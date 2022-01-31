@@ -1,44 +1,60 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.widget.ArrayAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class qqt
-  extends siv
+  extends ArrayAdapter<TagInfo>
 {
-  private qqt(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  final Set<TagInfo> a = new LinkedHashSet();
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public qqt(@NonNull Context paramContext, int paramInt)
   {
-    VideoFeedsPlayActivity.a("onGetDianZanState isSuccess: " + paramBoolean);
-    if ((!paramBoolean) || (paramBundle == null)) {}
-    int i;
-    do
+    super(paramContext, paramInt);
+  }
+  
+  public void a(@Nullable TagInfo paramTagInfo)
+  {
+    if (!this.a.contains(paramTagInfo))
     {
-      String str;
-      do
-      {
-        return;
-        str = paramBundle.getString("VALUE_VIDEO_ARTICLE_ID");
-        i = paramBundle.getInt("VALUE_VIDEO_FAVORITE_STATE");
-      } while (str == null);
-      paramBundle = VideoFeedsRecommendFragment.a(this.a).a(str);
-    } while (paramBundle == null);
-    if (i == 1) {
-      paramBundle.l = true;
+      this.a.add(paramTagInfo);
+      super.add(paramTagInfo);
     }
-    for (;;)
-    {
-      VideoFeedsRecommendFragment.a(this.a).b(paramBundle);
-      return;
-      if (i == 0) {
-        paramBundle.l = false;
-      }
-    }
+  }
+  
+  public void a(TagInfo... paramVarArgs)
+  {
+    addAll(Arrays.asList(paramVarArgs));
+  }
+  
+  public void addAll(@NonNull Collection<? extends TagInfo> paramCollection)
+  {
+    paramCollection = new LinkedHashSet(paramCollection);
+    paramCollection.removeAll(this.a);
+    this.a.addAll(paramCollection);
+    super.addAll(paramCollection);
+  }
+  
+  public void b(@Nullable TagInfo paramTagInfo)
+  {
+    this.a.remove(paramTagInfo);
+    super.remove(paramTagInfo);
+  }
+  
+  public void clear()
+  {
+    super.clear();
+    this.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qqt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,41 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.1;
-import com.tencent.mobileqq.identification.IdentificationPoseReflect.5.2;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitFrameworkEventListener;
-import com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework.IYtSDKKitNetResponseParser;
-import java.util.HashMap;
-import org.json.JSONObject;
+import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
-public class arcw
-  implements YtSDKKitFramework.IYtSDKKitFrameworkEventListener
+public final class arcw
+  extends WebChromeClient
 {
-  arcw(arcu paramarcu) {}
+  private final IHostInterface.IWebClient a;
   
-  public void onFrameworkEvent(HashMap<String, Object> paramHashMap)
+  private arcw(IHostInterface.IWebClient paramIWebClient)
   {
-    arcu.a(this.a, new IdentificationPoseReflect.5.1(this, paramHashMap));
+    this.a = paramIWebClient;
   }
   
-  public void onNetworkRequestEvent(String paramString1, String paramString2, HashMap<String, String> paramHashMap, YtSDKKitFramework.IYtSDKKitNetResponseParser paramIYtSDKKitNetResponseParser)
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    paramHashMap = ardb.a().a(5);
-    if (paramHashMap == null) {
-      QLog.e("qq_Identification.Model", 1, "post face data error : config is empty");
+    if ((this.a == null) || (!this.a.onConsoleMessage(paramConsoleMessage.message(), paramConsoleMessage.lineNumber(), paramConsoleMessage.sourceId()))) {
+      return super.onConsoleMessage(paramConsoleMessage);
     }
-    do
-    {
-      return;
-      paramHashMap = paramHashMap.optString("result_api_url", "");
-      if (TextUtils.isEmpty(paramHashMap))
-      {
-        QLog.e("qq_Identification.Model", 1, "post face data error : config url is empty");
-        return;
-      }
-    } while (!paramHashMap.equals(paramString1));
-    QLog.d("qq_Identification.Model", 1, "start upload face data");
-    if (this.a.jdField_a_of_type_Arch == null) {
-      this.a.jdField_a_of_type_Arch = new arcf(arcu.a(this.a), paramString2, this.a.jdField_a_of_type_Arcz);
+    return true;
+  }
+  
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  {
+    if ((this.a == null) || (!this.a.onJsPrompt(paramWebView, paramString1, paramString2, paramString3))) {
+      return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
     }
-    for (;;)
-    {
-      arcu.a(this.a, new IdentificationPoseReflect.5.2(this));
-      if (!bbfj.g(BaseApplicationImpl.getApplication())) {
-        break;
-      }
-      ((arcf)this.a.jdField_a_of_type_Arch).b();
-      return;
-      ((arcf)this.a.jdField_a_of_type_Arch).a(paramString2);
+    if (paramJsPromptResult != null) {
+      paramJsPromptResult.cancel();
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arcw
  * JD-Core Version:    0.7.0.1
  */

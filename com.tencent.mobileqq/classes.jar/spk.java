@@ -1,23 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 
-class spk
-  extends SimpleJob<Void>
+public class spk
+  extends syv
 {
-  spk(spj paramspj) {}
+  public spk(BridgeModule paramBridgeModule) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public ShareActionSheetBuilder.ActionSheetItem a(Integer paramInteger)
   {
-    spj.a(this.a);
-    spj.a(this.a, false);
-    return null;
+    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = super.a(paramInteger);
+    if ((paramInteger.intValue() == 11) && (localActionSheetItem != null))
+    {
+      localActionSheetItem.icon = 2130843784;
+      localActionSheetItem.label = BaseApplicationImpl.getApplication().getString(2131693495);
+    }
+    return localActionSheetItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     spk
  * JD-Core Version:    0.7.0.1
  */

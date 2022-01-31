@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.filemanager;
 
-import azsd;
+import bbqm;
 
 public class TroopFileDataCenter$2
   implements Runnable
 {
-  public TroopFileDataCenter$2(azsd paramazsd) {}
+  public TroopFileDataCenter$2(bbqm parambbqm) {}
   
   public void run()
   {
-    azsd.a(this.this$0);
+    bbqm.a(this.this$0);
   }
 }
 

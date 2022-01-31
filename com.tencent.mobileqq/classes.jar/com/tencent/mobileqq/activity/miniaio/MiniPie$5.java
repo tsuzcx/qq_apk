@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.miniaio;
 
-import aggw;
+import aifb;
 import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class MiniPie$5
   implements Runnable
 {
-  public MiniPie$5(aggw paramaggw) {}
+  public MiniPie$5(aifb paramaifb) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class MiniPie$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.5
  * JD-Core Version:    0.7.0.1
  */

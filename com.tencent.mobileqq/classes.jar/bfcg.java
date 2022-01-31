@@ -1,23 +1,28 @@
-import com.tencent.qqmini.sdk.runtime.core.page.NativeViewContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.PageWebviewContainer;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.widget.QQToast;
+import eipc.EIPCResult;
 
-public class bfcg
-  implements bfcf
+class bfcg
+  extends QIPCModule
 {
-  public bfcg(PageWebviewContainer paramPageWebviewContainer) {}
-  
-  public void a(int paramInt)
+  bfcg(bfcf parambfcf, String paramString)
   {
-    NativeViewContainer localNativeViewContainer = PageWebviewContainer.a(this.a);
-    if (PageWebviewContainer.a(this.a)) {
-      paramInt = 0;
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("QIPC_SHOW_TOAST_ACTION".equals(paramString)) {
+      QQToast.a(BaseApplicationImpl.context, alpo.a(2131711568), 1).a();
     }
-    localNativeViewContainer.scrollTo(0, paramInt);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfcg
  * JD-Core Version:    0.7.0.1
  */

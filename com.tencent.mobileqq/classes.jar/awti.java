@@ -1,93 +1,121 @@
 import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
 
 public class awti
+  implements almm, Manager
 {
-  private int jdField_a_of_type_Int = 1;
-  private String jdField_a_of_type_JavaLangString = "";
-  private String b = "";
+  private QQAppInterface a;
   
-  public static String a(int paramInt, boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public awti(QQAppInterface paramQQAppInterface)
   {
-    int i = 1;
-    try
+    this.a = paramQQAppInterface;
+    String str = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.SilkCfg.name(), "null");
+    if (!"null".equalsIgnoreCase(str))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("entry", paramInt);
-      if (paramBoolean1)
+      bdic.a(paramQQAppInterface, str);
+      bdic.a(paramQQAppInterface, true);
+      str = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.StreamCfg.name(), "null");
+      if ("null".equalsIgnoreCase(str)) {
+        break label161;
+      }
+      awtq.a(paramQQAppInterface, str);
+      awtq.a(paramQQAppInterface, true);
+    }
+    for (;;)
+    {
+      paramQQAppInterface = DeviceProfileManager.a(paramQQAppInterface).a(DeviceProfileManager.DpcNames.aio_config.name(), "").split("\\|");
+      if (paramQQAppInterface.length > 13)
       {
-        paramInt = 1;
-        localJSONObject.put("match", paramInt);
-        localJSONObject.put("keyword", paramString);
-        if (!paramBoolean2) {
-          break label74;
+        boolean bool = "1".equals(paramQQAppInterface[12]);
+        SyncService.b(BaseApplicationImpl.sApplication, bool);
+        if (paramQQAppInterface.length > 14)
+        {
+          bool = "1".equals(paramQQAppInterface[13]);
+          azlt.a(BaseApplicationImpl.sApplication, bool);
         }
       }
-      label74:
-      for (paramInt = i;; paramInt = 0)
-      {
-        localJSONObject.put("nightmode", paramInt);
-        paramString = localJSONObject.toString();
-        return paramString;
-        paramInt = 0;
-        break;
-      }
-      return null;
+      DeviceProfileManager.a(this);
+      return;
+      bdic.a(paramQQAppInterface, false);
+      break;
+      label161:
+      awtq.a(paramQQAppInterface, false);
     }
-    catch (JSONException paramString)
-    {
-      QLog.e("RichMetaData", 2, "setLayout101ExtraData exception:" + paramString);
-    }
-  }
-  
-  public String a()
-  {
-    JSONObject localJSONObject1 = new JSONObject();
-    try
-    {
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("serverdata", new JSONObject(this.jdField_a_of_type_JavaLangString));
-      localJSONObject2.put("state", this.jdField_a_of_type_Int);
-      if (!TextUtils.isEmpty(this.b)) {
-        localJSONObject2.put("extradata", new JSONObject(this.b));
-      }
-      localJSONObject1.put("data", localJSONObject2);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("RichMetaData", 2, "convertMetaData exception : " + localJSONException);
-      }
-    }
-    return localJSONObject1.toString();
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    QQAppInterface localQQAppInterface = this.a;
+    baqx.a();
+    if (localQQAppInterface != null)
+    {
+      awtq.b(localQQAppInterface, paramString);
+      awtq.b(localQQAppInterface, true);
+    }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean)
+    Object localObject = this.a;
+    if ((localObject != null) && (paramBoolean))
     {
-      this.jdField_a_of_type_Int = 1;
-      return;
+      bdic.a((QQAppInterface)localObject, DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.SilkCfg.name(), ""));
+      bdic.a((QQAppInterface)localObject, true);
+      awtq.a((QQAppInterface)localObject, DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.StreamCfg.name(), ""));
+      awtq.a((QQAppInterface)localObject, true);
+      localObject = DeviceProfileManager.a((AppRuntime)localObject).a(DeviceProfileManager.DpcNames.aio_config.name(), "").split("\\|");
+      if (localObject.length > 13)
+      {
+        paramBoolean = "1".equals(localObject[12]);
+        SyncService.b(BaseApplicationImpl.sApplication, paramBoolean);
+        if (localObject.length > 14)
+        {
+          paramBoolean = "1".equals(localObject[13]);
+          azlt.a(BaseApplicationImpl.sApplication, paramBoolean);
+        }
+      }
     }
-    this.jdField_a_of_type_Int = 0;
   }
   
   public void b(String paramString)
   {
-    this.b = paramString;
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface != null)
+    {
+      awtk.a(localQQAppInterface, paramString);
+      awtk.a(localQQAppInterface, true);
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    baqx.a();
+    QQAppInterface localQQAppInterface = this.a;
+    if (localQQAppInterface != null)
+    {
+      awtz.a(localQQAppInterface, paramString);
+      awtz.a(localQQAppInterface, true);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    awtz.a();
+    DeviceProfileManager.b(this);
+    bdic.a();
+    awtq.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awti
  * JD-Core Version:    0.7.0.1
  */

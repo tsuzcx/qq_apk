@@ -1,20 +1,41 @@
-public abstract interface bdsf
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.io.File;
+
+public class bdsf
+  extends bdrz
 {
-  public abstract int a(bdrv parambdrv);
+  public static bdsf a = new bdsf();
   
-  public abstract void a();
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, bdpj parambdpj, boolean paramBoolean)
+  {
+    a.download(paramQQAppInterface, "qqVipLevel." + paramInt, parambdpj, paramBoolean);
+  }
   
-  public abstract void a(int paramInt);
+  public static boolean a(Context paramContext, int paramInt)
+  {
+    String str = "qqVipLevel." + paramInt;
+    return new File(a.getDir(paramContext, str)).exists();
+  }
   
-  public abstract void a(boolean paramBoolean);
+  public long getBID()
+  {
+    return 41L;
+  }
   
-  public abstract void b();
+  protected String getRootDir()
+  {
+    return "qqlevel_icon";
+  }
   
-  public abstract void b(boolean paramBoolean);
+  protected String getScidPrefix()
+  {
+    return "qqVipLevel.";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdsf
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import bekr;
-import betc;
+import bgkd;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class ImageJsPlugin$4
   extends BroadcastReceiver
@@ -14,7 +14,7 @@ class ImageJsPlugin$4
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    betc.a("ImageJsPlugin", String.format("receiver.onReceive action=%s", new Object[] { paramContext }));
+    QMLog.d("ImageJsPlugin", String.format("receiver.onReceive action=%s", new Object[] { paramContext }));
     if ("micro_api_choose_image".equals(paramContext))
     {
       paramContext = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
@@ -26,7 +26,7 @@ class ImageJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.ImageJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

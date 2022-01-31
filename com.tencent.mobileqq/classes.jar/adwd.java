@@ -1,34 +1,29 @@
-import android.os.SystemClock;
 import android.view.View;
-import com.tencent.mobileqq.data.MessageForPokeEmo;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
 
-class adwd
-  implements bfph
+public class adwd
+  implements View.OnClickListener
 {
-  adwd(adwc paramadwc, MessageForPokeEmo paramMessageForPokeEmo, bfpc parambfpc) {}
+  public adwd(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (this.a.jdField_a_of_type_Bebk != null)
     {
+      this.a.jdField_a_of_type_Bebk.jdField_a_of_type_Befb.d = false;
+      this.a.jdField_a_of_type_Bebk.jdField_a_of_type_Befb.a = Boolean.valueOf(true);
+      if (this.a.jdField_a_of_type_Beey != null) {
+        this.a.jdField_a_of_type_Beey.l();
+      }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      long l;
-      do
-      {
-        return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_Adwc.c < 500L);
-      this.jdField_a_of_type_Adwc.c = l;
-      aanz.b(this.jdField_a_of_type_Adwc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adwc.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adwc.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
-    }
+    this.a.onClick(this.a.jdField_a_of_type_Bebk.jdField_a_of_type_AndroidWidgetImageView);
+    this.a.a(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adwd
  * JD-Core Version:    0.7.0.1
  */

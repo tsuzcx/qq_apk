@@ -1,82 +1,117 @@
-import android.os.Message;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.component.network.downloader.handler.ReportHandler.DownloadReportObject;
-import com.tencent.component.network.module.report.ImageDownloadReporter;
+import android.util.Xml;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.security.Key;
+import java.security.spec.AlgorithmParameterSpec;
+import java.util.Iterator;
+import java.util.List;
+import javax.crypto.Cipher;
+import javax.crypto.CipherOutputStream;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import org.xmlpull.v1.XmlSerializer;
 
-class bhjc
-  implements Downloader.DownloadListener
+final class bhjc
+  extends bhje
 {
-  bhja jdField_a_of_type_Bhja;
+  File jdField_a_of_type_JavaIoFile;
+  private OutputStream jdField_a_of_type_JavaIoOutputStream;
+  private XmlSerializer jdField_a_of_type_OrgXmlpullV1XmlSerializer;
   
-  public bhjc(bhiz parambhiz, bhja parambhja)
+  public bhjc(bhiz parambhiz, File paramFile)
   {
-    this.jdField_a_of_type_Bhja = parambhja;
+    super(null);
+    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
   
-  public void onDownloadCanceled(String paramString)
+  public void a()
   {
-    paramString = Message.obtain(this.jdField_a_of_type_Bhiz.a, 2);
-    paramString.obj = this.jdField_a_of_type_Bhja;
-    paramString.sendToTarget();
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramString = Message.obtain(this.jdField_a_of_type_Bhiz.a, 3);
-    paramString.obj = this.jdField_a_of_type_Bhja;
-    paramString.arg1 = -9999;
-    if ((paramDownloadResult != null) && (paramDownloadResult.getReport() != null)) {}
-    for (;;)
+    try
     {
-      try
+      Object localObject1;
+      Object localObject2;
+      if (this.jdField_a_of_type_OrgXmlpullV1XmlSerializer == null)
       {
-        paramDownloadResult = new ImageDownloadReporter().obtainReportObj(paramDownloadResult, paramDownloadResult.getReport());
-        if (paramDownloadResult != null)
+        localObject1 = new IvParameterSpec(bhiz.a());
+        localObject2 = new SecretKeySpec(bhiz.b(), "AES");
+        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+        localCipher.init(1, (Key)localObject2, (AlgorithmParameterSpec)localObject1);
+        this.jdField_a_of_type_JavaIoOutputStream = new CipherOutputStream(new BufferedOutputStream(new FileOutputStream(this.jdField_a_of_type_JavaIoFile)), localCipher);
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = Xml.newSerializer();
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(this.jdField_a_of_type_JavaIoOutputStream, "UTF-8");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(null, "AVCloudCache");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(null, "Ver", Integer.toString(1));
+      }
+      if (bhiz.a(this.jdField_a_of_type_Bhiz).size() > 0)
+      {
+        localObject1 = bhiz.a(this.jdField_a_of_type_Bhiz).iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          paramString.arg1 = paramDownloadResult.retCode;
-          QLog.w("QZoneLiveSoDownloader", 1, "So download failed, code=" + paramDownloadResult.retCode);
-          this.jdField_a_of_type_Bhja.jdField_a_of_type_Int = paramDownloadResult.retCode;
+          localObject2 = (Pair)((Iterator)localObject1).next();
+          if (QLog.isColorLevel()) {
+            QLog.d("QSec.AVEngine", 2, "Add new cache entry: " + ((bhjx)((Pair)localObject2).second).toString());
+          }
+          bhiz.a(this.jdField_a_of_type_Bhiz, (String)((Pair)localObject2).first, (bhjx)((Pair)localObject2).second, this.jdField_a_of_type_OrgXmlpullV1XmlSerializer);
         }
       }
-      catch (Exception paramDownloadResult)
-      {
-        QLog.w("QZoneLiveSoDownloader", 1, "", paramDownloadResult);
-        continue;
-      }
-      paramString.sendToTarget();
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneLiveSoDownloader", 2, "So download failed downloadResult:null");
+    }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      for (;;)
+      {
+        if (this.jdField_a_of_type_JavaIoOutputStream != null) {}
+        try
+        {
+          this.jdField_a_of_type_JavaIoOutputStream.close();
+          return;
+        }
+        catch (Exception localException2) {}
+        bhiz.a(this.jdField_a_of_type_Bhiz).clear();
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endTag(null, "AVCloudCache");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.endDocument();
+        bhiz.a(this.jdField_a_of_type_Bhiz).delete();
       }
     }
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  public boolean a(String paramString, bhjx parambhjx)
   {
-    int i = (int)(100.0F * paramFloat);
-    if (this.jdField_a_of_type_Bhja != null) {
-      this.jdField_a_of_type_Bhja.jdField_a_of_type_Float = i;
+    try
+    {
+      if (this.jdField_a_of_type_OrgXmlpullV1XmlSerializer == null)
+      {
+        IvParameterSpec localIvParameterSpec = new IvParameterSpec(bhiz.a());
+        SecretKeySpec localSecretKeySpec = new SecretKeySpec(bhiz.b(), "AES");
+        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
+        localCipher.init(1, localSecretKeySpec, localIvParameterSpec);
+        this.jdField_a_of_type_JavaIoOutputStream = new CipherOutputStream(new BufferedOutputStream(new FileOutputStream(this.jdField_a_of_type_JavaIoFile)), localCipher);
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = Xml.newSerializer();
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.setOutput(this.jdField_a_of_type_JavaIoOutputStream, "UTF-8");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startDocument("UTF-8", Boolean.valueOf(true));
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.startTag(null, "AVCloudCache");
+        this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.attribute(null, "Ver", Integer.toString(1));
+      }
+      bhiz.a(this.jdField_a_of_type_Bhiz, paramString, parambhjx, this.jdField_a_of_type_OrgXmlpullV1XmlSerializer);
+      return true;
     }
-    paramString = Message.obtain(this.jdField_a_of_type_Bhiz.a, 5);
-    paramString.obj = this.jdField_a_of_type_Bhja;
-    paramString.sendToTarget();
-  }
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneLiveSoDownloader", 2, "onDownloadSucceed path:" + paramDownloadResult.getPath());
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      this.jdField_a_of_type_OrgXmlpullV1XmlSerializer = null;
     }
-    paramString = Message.obtain(this.jdField_a_of_type_Bhiz.a, 4);
-    paramString.obj = this.jdField_a_of_type_Bhja;
-    paramString.sendToTarget();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhjc
  * JD-Core Version:    0.7.0.1
  */

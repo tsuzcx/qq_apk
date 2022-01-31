@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.database;
 
-import auko;
+import awbv;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="taskId")
 public class PromoteTaskEntry
-  extends auko
+  extends awbv
 {
   public long expireTime;
   public String feedId;
@@ -24,7 +24,7 @@ public class PromoteTaskEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.PromoteTaskEntry
  * JD-Core Version:    0.7.0.1
  */

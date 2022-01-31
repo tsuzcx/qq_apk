@@ -1,71 +1,191 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.YybHandleUtil.1;
-import java.io.File;
-import java.text.DecimalFormat;
-import mqq.os.MqqHandler;
+import android.support.annotation.FloatRange;
+import android.support.annotation.NonNull;
 
-public class bdmo
+public final class bdmo
 {
-  public static String a = "YybHandleUtil";
-  public static String b = "APK/MobileAssistant_main.apk";
-  public static String c = "yyb.apk";
-  public static final String d = ajya.a(2131717043);
+  @NonNull
+  public static final bdmo a;
+  @NonNull
+  public static final bdmo b;
+  @NonNull
+  public static final bdmo c;
+  @NonNull
+  public static final bdmo d;
+  @NonNull
+  public static final bdmo e;
+  @NonNull
+  public static final bdmo f;
+  boolean jdField_a_of_type_Boolean = true;
+  final float[] jdField_a_of_type_ArrayOfFloat = new float[3];
+  final float[] b;
+  final float[] c;
   
-  public static String a(int paramInt)
+  static
   {
-    if (paramInt < 0) {
-      return null;
-    }
-    float f2 = paramInt;
-    paramInt = 0;
-    float f1;
-    String str2;
-    String str1;
-    if (f2 / 1048576.0F > 1.0F)
+    jdField_a_of_type_Bdmo = new bdmo();
+    c(jdField_a_of_type_Bdmo);
+    d(jdField_a_of_type_Bdmo);
+    jdField_b_of_type_Bdmo = new bdmo();
+    b(jdField_b_of_type_Bdmo);
+    d(jdField_b_of_type_Bdmo);
+    jdField_c_of_type_Bdmo = new bdmo();
+    a(jdField_c_of_type_Bdmo);
+    d(jdField_c_of_type_Bdmo);
+    d = new bdmo();
+    c(d);
+    e(d);
+    e = new bdmo();
+    b(e);
+    e(e);
+    f = new bdmo();
+    a(f);
+    e(f);
+  }
+  
+  bdmo()
+  {
+    this.jdField_b_of_type_ArrayOfFloat = new float[3];
+    this.jdField_c_of_type_ArrayOfFloat = new float[3];
+    a(this.jdField_a_of_type_ArrayOfFloat);
+    a(this.jdField_b_of_type_ArrayOfFloat);
+    b();
+  }
+  
+  private static void a(bdmo parambdmo)
+  {
+    parambdmo.jdField_b_of_type_ArrayOfFloat[1] = 0.26F;
+    parambdmo.jdField_b_of_type_ArrayOfFloat[2] = 0.45F;
+  }
+  
+  private static void a(float[] paramArrayOfFloat)
+  {
+    paramArrayOfFloat[0] = 0.0F;
+    paramArrayOfFloat[1] = 0.5F;
+    paramArrayOfFloat[2] = 1.0F;
+  }
+  
+  private void b()
+  {
+    this.jdField_c_of_type_ArrayOfFloat[0] = 0.24F;
+    this.jdField_c_of_type_ArrayOfFloat[1] = 0.52F;
+    this.jdField_c_of_type_ArrayOfFloat[2] = 0.24F;
+  }
+  
+  private static void b(bdmo parambdmo)
+  {
+    parambdmo.jdField_b_of_type_ArrayOfFloat[0] = 0.3F;
+    parambdmo.jdField_b_of_type_ArrayOfFloat[1] = 0.5F;
+    parambdmo.jdField_b_of_type_ArrayOfFloat[2] = 0.7F;
+  }
+  
+  private static void c(bdmo parambdmo)
+  {
+    parambdmo.jdField_b_of_type_ArrayOfFloat[0] = 0.55F;
+    parambdmo.jdField_b_of_type_ArrayOfFloat[1] = 0.74F;
+  }
+  
+  private static void d(bdmo parambdmo)
+  {
+    parambdmo.jdField_a_of_type_ArrayOfFloat[0] = 0.35F;
+    parambdmo.jdField_a_of_type_ArrayOfFloat[1] = 1.0F;
+  }
+  
+  private static void e(bdmo parambdmo)
+  {
+    parambdmo.jdField_a_of_type_ArrayOfFloat[1] = 0.3F;
+    parambdmo.jdField_a_of_type_ArrayOfFloat[2] = 0.4F;
+  }
+  
+  @FloatRange(from=0.0D, to=1.0D)
+  public float a()
+  {
+    return this.jdField_a_of_type_ArrayOfFloat[0];
+  }
+  
+  void a()
+  {
+    int j = 0;
+    int k = this.jdField_c_of_type_ArrayOfFloat.length;
+    int i = 0;
+    float f2;
+    for (float f1 = 0.0F; i < k; f1 = f2)
     {
-      f1 = f2 / 1048576.0F;
-      paramInt = 2;
-      str2 = new DecimalFormat("#.#").format(f1);
-      if (paramInt != 2) {
-        break label92;
+      float f3 = this.jdField_c_of_type_ArrayOfFloat[i];
+      f2 = f1;
+      if (f3 > 0.0F) {
+        f2 = f1 + f3;
       }
-      str1 = "MB";
+      i += 1;
     }
-    for (;;)
+    if (f1 != 0.0F)
     {
-      return str2 + str1;
-      f1 = f2;
-      if (f2 / 1024.0F <= 1.0F) {
-        break;
-      }
-      f1 = f2 / 1024.0F;
-      paramInt = 1;
-      break;
-      label92:
-      if (paramInt == 1) {
-        str1 = "KB";
-      } else {
-        str1 = "B";
+      k = this.jdField_c_of_type_ArrayOfFloat.length;
+      i = j;
+      while (i < k)
+      {
+        if (this.jdField_c_of_type_ArrayOfFloat[i] > 0.0F)
+        {
+          float[] arrayOfFloat = this.jdField_c_of_type_ArrayOfFloat;
+          arrayOfFloat[i] /= f1;
+        }
+        i += 1;
       }
     }
   }
   
-  public static void a()
+  public boolean a()
   {
-    bdii.c(a, "---deleteYYBApkPackage--");
-    ThreadManager.getSubThreadHandler().post(new YybHandleUtil.1());
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public static boolean a()
+  @FloatRange(from=0.0D, to=1.0D)
+  public float b()
   {
-    String str = bcyb.a().a().getFilesDir().getAbsolutePath() + File.separator + c;
-    return bdjl.a(bcyb.a().a(), str);
+    return this.jdField_a_of_type_ArrayOfFloat[1];
+  }
+  
+  @FloatRange(from=0.0D, to=1.0D)
+  public float c()
+  {
+    return this.jdField_a_of_type_ArrayOfFloat[2];
+  }
+  
+  @FloatRange(from=0.0D, to=1.0D)
+  public float d()
+  {
+    return this.jdField_b_of_type_ArrayOfFloat[0];
+  }
+  
+  @FloatRange(from=0.0D, to=1.0D)
+  public float e()
+  {
+    return this.jdField_b_of_type_ArrayOfFloat[1];
+  }
+  
+  @FloatRange(from=0.0D, to=1.0D)
+  public float f()
+  {
+    return this.jdField_b_of_type_ArrayOfFloat[2];
+  }
+  
+  public float g()
+  {
+    return this.jdField_c_of_type_ArrayOfFloat[0];
+  }
+  
+  public float h()
+  {
+    return this.jdField_c_of_type_ArrayOfFloat[1];
+  }
+  
+  public float i()
+  {
+    return this.jdField_c_of_type_ArrayOfFloat[2];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmo
  * JD-Core Version:    0.7.0.1
  */

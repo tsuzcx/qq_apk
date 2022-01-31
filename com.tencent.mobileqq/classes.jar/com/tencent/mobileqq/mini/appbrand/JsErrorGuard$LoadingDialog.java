@@ -12,8 +12,8 @@ public class JsErrorGuard$LoadingDialog
 {
   JsErrorGuard$LoadingDialog(Context paramContext)
   {
-    super(paramContext, 2131755648);
-    setContentView(2131561839);
+    super(paramContext, 2131755657);
+    setContentView(2131562027);
     getWindow().setFlags(1024, 2048);
   }
   
@@ -42,7 +42,7 @@ public class JsErrorGuard$LoadingDialog
   
   public void setTitle(String paramString)
   {
-    ((TextView)findViewById(2131377350)).setText(paramString);
+    ((TextView)findViewById(2131377884)).setText(paramString);
   }
   
   public void show()
@@ -60,7 +60,7 @@ public class JsErrorGuard$LoadingDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.JsErrorGuard.LoadingDialog
  * JD-Core Version:    0.7.0.1
  */

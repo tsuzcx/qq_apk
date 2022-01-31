@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 
 class PersonalityLabelGalleryActivity$4$2
   implements Runnable
@@ -10,12 +10,12 @@ class PersonalityLabelGalleryActivity$4$2
   public void run()
   {
     String str = String.format("上传图片失败", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int + 1) });
-    bcql.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$4.this$0.getApplicationContext(), 0, str, 0).a();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity$4.this$0.getApplicationContext(), 0, str, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity.4.2
  * JD-Core Version:    0.7.0.1
  */

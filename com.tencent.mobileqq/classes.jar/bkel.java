@@ -1,28 +1,59 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-
-class bkel
-  implements Animation.AnimationListener
+public class bkel
 {
-  bkel(bkek parambkek) {}
+  private static bkem a;
+  public static String a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  static
   {
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_Bkee != null) {
-      this.a.a.jdField_a_of_type_Bkee.a(null);
+    jdField_a_of_type_JavaLangString = "WadlProxyServiceUtil";
+  }
+  
+  public static bkem a()
+  {
+    if (jdField_a_of_type_Bkem == null) {
+      a();
+    }
+    return jdField_a_of_type_Bkem;
+  }
+  
+  public static void a()
+  {
+    synchronized (jdField_a_of_type_JavaLangString)
+    {
+      if (jdField_a_of_type_Bkem == null) {
+        jdField_a_of_type_Bkem = new bkem();
+      }
+      jdField_a_of_type_Bkem.a();
+      return;
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public static void a(bked parambked)
+  {
+    if (jdField_a_of_type_Bkem != null) {
+      jdField_a_of_type_Bkem.a(parambked);
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public static void b()
+  {
+    if (jdField_a_of_type_Bkem != null)
+    {
+      jdField_a_of_type_Bkem.d();
+      jdField_a_of_type_Bkem = null;
+    }
+  }
+  
+  public static void b(bked parambked)
+  {
+    if (jdField_a_of_type_Bkem != null) {
+      jdField_a_of_type_Bkem.b(parambked);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkel
  * JD-Core Version:    0.7.0.1
  */

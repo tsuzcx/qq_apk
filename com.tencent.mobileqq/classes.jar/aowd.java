@@ -1,19 +1,83 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.accounts.Account;
+import android.annotation.SuppressLint;
+import android.content.AbstractThreadedSyncAdapter;
+import android.content.ContentProviderClient;
+import android.content.Context;
+import android.content.SyncResult;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
-final class aowd
-  extends Handler
+public class aowd
+  extends AbstractThreadedSyncAdapter
 {
-  aowd(Looper paramLooper)
+  private Context a;
+  
+  public aowd(Context paramContext, boolean paramBoolean)
   {
-    super(paramLooper);
+    super(paramContext, paramBoolean);
+    this.a = paramContext;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onPerformSync(Account paramAccount, Bundle paramBundle, String paramString, ContentProviderClient paramContentProviderClient, SyncResult paramSyncResult)
   {
-    Object[] arrayOfObject = (Object[])paramMessage.obj;
-    ((aowi)arrayOfObject[0]).a(paramMessage.what, ((Boolean)arrayOfObject[1]).booleanValue(), arrayOfObject[2]);
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync");
+    }
+    if (!"Success".equals(BaseApplicationImpl.sInjectResult)) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramAccount = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+          if ((paramAccount == null) || (!paramAccount.isLogin()))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync | app is null or not login, " + paramAccount);
+          }
+        }
+        catch (Throwable paramAccount)
+        {
+          for (;;)
+          {
+            QLog.e("ContactSync.SyncAdapter", 1, "onPerformSync exception", paramAccount);
+            paramAccount = null;
+          }
+          try
+          {
+            ((aovt)paramAccount.getManager(41)).a();
+            return;
+          }
+          catch (Throwable paramAccount) {}
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ContactSync.SyncAdapter", 2, "onPerformSync | syncAllContacts exception", paramAccount);
+  }
+  
+  @SuppressLint({"NewApi"})
+  public void onSyncCanceled()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.SyncAdapter", 2, "onSyncCanceled()");
+    }
+    super.onSyncCanceled();
+  }
+  
+  @SuppressLint({"NewApi"})
+  public void onSyncCanceled(Thread paramThread)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ContactSync.SyncAdapter", 2, "onSyncCanceled(thread)");
+    }
+    super.onSyncCanceled(paramThread);
   }
 }
 

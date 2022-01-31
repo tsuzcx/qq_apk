@@ -1,18 +1,20 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
 
 public final class bjag
+  implements DialogInterface.OnDismissListener
 {
-  public static boolean a(View paramView)
+  public bjag(FragmentActivity paramFragmentActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Object localObject = paramView.getTag(2131362185);
-    long l = System.currentTimeMillis();
-    paramView.setTag(2131362185, Long.valueOf(l));
-    return ((localObject instanceof Long)) && (Math.abs(l - ((Long)localObject).longValue()) <= 500L);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjag
  * JD-Core Version:    0.7.0.1
  */

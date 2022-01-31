@@ -1,35 +1,70 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.mobileqq.apollo.view.ApolloPanelGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.media.AudioManager;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
 
 public class ajqx
-  implements ajrg
 {
-  public ajqx(ApolloPanel paramApolloPanel) {}
+  public static long a;
+  public static Context a;
+  public static String a;
   
-  public void a(ApolloPanelGuideView paramApolloPanelGuideView)
+  static
   {
-    ApolloPanel.e(this.a);
-    if (!ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip"))
+    jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
+    jdField_a_of_type_Long = -1L;
+  }
+  
+  public static void a()
+  {
+    try
     {
-      ApolloPanel.a(this.a, "sp_key_apollo_show_guide_tip");
-      ApolloPanel.a(this.a, ApolloPanel.a(this.a), 49, this.a.getResources().getString(2131690116), 5);
+      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).requestAudioFocus(null, 3, 1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
   
-  public void b(ApolloPanelGuideView paramApolloPanelGuideView)
+  public static boolean a(long paramLong)
   {
-    ApolloPanel.e(this.a);
-    paramApolloPanelGuideView = (bbrd)this.a.a.a.a(71);
-    paramApolloPanelGuideView.a(new ajqy(this, paramApolloPanelGuideView));
-    paramApolloPanelGuideView.c("guide_page", 1);
+    if ((jdField_a_of_type_Long > 0L) && (jdField_a_of_type_Long == paramLong)) {}
+    Object localObject;
+    do
+    {
+      return true;
+      localObject = ajqy.a().a();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return false;
+      }
+      jdField_a_of_type_JavaLangString = (String)localObject + File.separator + "cover" + File.separator + paramLong;
+      localObject = new File(jdField_a_of_type_JavaLangString);
+    } while ((((File)localObject).mkdirs()) || (((File)localObject).isDirectory()));
+    QLog.e("GloableValue", 2, "make cover dir: " + jdField_a_of_type_JavaLangString + " failed.");
+    return false;
+  }
+  
+  public static void b()
+  {
+    try
+    {
+      ((AudioManager)MobileQQ.getContext().getSystemService("audio")).abandonAudioFocus(null);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqx
  * JD-Core Version:    0.7.0.1
  */

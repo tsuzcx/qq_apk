@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.conditionsearch.data;
 
-import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class AddressData$1
   implements Runnable
@@ -11,14 +11,14 @@ class AddressData$1
     int i = 0;
     while (i < 3)
     {
-      bcql.a(BaseApplicationImpl.sApplication, "条件搜素配置文件存在不同code对应相同name的问题！！！ name = " + this.a, 1).a();
+      QQToast.a(BaseApplicationImpl.sApplication, "条件搜素配置文件存在不同code对应相同name的问题！！！ name = " + this.a, 1).a();
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.data.AddressData.1
  * JD-Core Version:    0.7.0.1
  */

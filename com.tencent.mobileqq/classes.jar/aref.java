@@ -1,35 +1,73 @@
-class aref
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class aref
+  implements anxw
 {
-  public static aref a;
+  private bbpe jdField_a_of_type_Bbpe;
   private String jdField_a_of_type_JavaLangString;
-  private Throwable jdField_a_of_type_JavaLangThrowable;
-  private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
   
-  static
+  public aref(long paramLong, bbpe parambbpe)
   {
-    jdField_a_of_type_Aref = new aref(null);
+    this.jdField_a_of_type_JavaLangString = (paramLong + "");
+    this.jdField_a_of_type_Bbpe = parambbpe;
   }
   
-  public aref(String paramString)
+  private String a()
   {
-    this(paramString, null, null);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("file_color_note_peerType", 1);
+      localJSONObject.put("file_color_note_peerUin", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("file_color_note_fileName", this.jdField_a_of_type_Bbpe.g);
+      localJSONObject.put("file_color_note_fileSize", this.jdField_a_of_type_Bbpe.c);
+      if (this.jdField_a_of_type_Bbpe.a != null) {
+        localJSONObject.put("file_color_note_file_uuid", this.jdField_a_of_type_Bbpe.a.toString());
+      }
+      for (;;)
+      {
+        localJSONObject.put("file_color_note_file_url", this.jdField_a_of_type_Bbpe.e);
+        localJSONObject.put("file_color_note_busId", this.jdField_a_of_type_Bbpe.h);
+        return localJSONObject.toString();
+        localJSONObject.put("file_color_note_file_uuid", "");
+      }
+      return "";
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
   }
   
-  public aref(String paramString, Object[] paramArrayOfObject, Throwable paramThrowable)
+  public ColorNote getColorNote()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramArrayOfObject;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Bbpe != null) {}
+    anyc localanyc = new anyc();
+    localanyc.a(17039360);
+    String str = aroo.b(2, this.jdField_a_of_type_Bbpe.e);
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    }
+    localanyc.a(str);
+    localanyc.b(this.jdField_a_of_type_Bbpe.g);
+    localanyc.c(arof.a(this.jdField_a_of_type_Bbpe.c));
+    int i = arni.a(arni.a(this.jdField_a_of_type_Bbpe.g));
+    localanyc.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localanyc.a(str.getBytes());
+    }
+    return localanyc.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aref
  * JD-Core Version:    0.7.0.1
  */

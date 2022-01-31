@@ -1,18 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.widget.AdapterView;
 
-class anvg
-  implements acsr
+public class anvg
+  implements bhqq
 {
-  anvg(anuq paramanuq) {}
+  public anvg(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void a()
+  public boolean a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    QLog.i("MessengerService$IncomingHandler", 2, "@qqnotify delete faield ");
+    this.a.a();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvg
  * JD-Core Version:    0.7.0.1
  */

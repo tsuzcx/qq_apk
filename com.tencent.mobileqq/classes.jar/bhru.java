@@ -1,185 +1,29 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.model.BaseBusinessAlbumInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.widget.DynamicGridView;
 
 public class bhru
-  extends bhsh
+  extends AnimatorListenerAdapter
 {
-  private static String a;
+  public bhru(DynamicGridView paramDynamicGridView, View paramView) {}
   
-  static
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    jdField_a_of_type_JavaLangString = bhru.class.getSimpleName();
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, false);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, this.jdField_a_of_type_AndroidViewView);
   }
   
-  private void a(bcdp parambcdp, String[] paramArrayOfString)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((localActivity == null) || (localActivity.isFinishing())) {}
-    do
-    {
-      String str;
-      do
-      {
-        return;
-        try
-        {
-          paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-          localObject2 = new Intent();
-          ((Intent)localObject2).putExtra("key_item_id", paramArrayOfString.optInt("item_id"));
-          ((Intent)localObject2).putExtra("key_thumb_url", paramArrayOfString.optString("thumb"));
-          ((Intent)localObject2).putExtra("key_item_type", paramArrayOfString.optInt("item_type"));
-          ((Intent)localObject2).setAction("action_album_skin_js_to_qzone");
-          str = paramArrayOfString.optString("callback");
-          localObject1 = paramArrayOfString.optString("entry");
-          if (TextUtils.isEmpty((CharSequence)localObject1))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(str, new String[] { "{\"result\":\"false\"}" });
-            return;
-          }
-        }
-        catch (JSONException parambcdp)
-        {
-          parambcdp.printStackTrace();
-          return;
-        }
-      } while ((!"createAlbum".equals(localObject1)) && (!"editAlbum".equals(localObject1)) && (!"personal".equals(localObject1)) && (!"photolist".equals(localObject1)));
-      if (parambcdp.a() != null) {
-        parambcdp.a().sendBroadcast((Intent)localObject2);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs(str, new String[] { "{\"result\":\"true\"}" });
-      parambcdp = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    } while ((!"personal".equals(localObject1)) || (parambcdp == null));
-    Object localObject1 = bgyw.a();
-    ((bgyw)localObject1).jdField_a_of_type_JavaLangString = parambcdp.getCurrentAccountUin();
-    Object localObject2 = new BaseBusinessAlbumInfo();
-    ((BaseBusinessAlbumInfo)localObject2).jdField_a_of_type_JavaLangString = paramArrayOfString.optString("albumid");
-    ((BaseBusinessAlbumInfo)localObject2).jdField_a_of_type_Long = parambcdp.getLongAccountUin();
-    ((BaseBusinessAlbumInfo)localObject2).c = 0;
-    ((BaseBusinessAlbumInfo)localObject2).jdField_a_of_type_Boolean = true;
-    bgyp.a(localActivity, (bgyw)localObject1, (BaseBusinessAlbumInfo)localObject2, -1);
-  }
-  
-  private void a(bcdp parambcdp, String[] paramArrayOfString, String paramString)
-  {
-    try
-    {
-      paramArrayOfString = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-      if ((paramArrayOfString != null) && (!paramArrayOfString.isFinishing()))
-      {
-        paramArrayOfString = new Intent();
-        paramArrayOfString.setAction(paramString);
-        if (parambcdp.a() != null) {
-          parambcdp.a().sendBroadcast(paramArrayOfString);
-        }
-      }
-      return;
-    }
-    catch (Exception parambcdp)
-    {
-      parambcdp.printStackTrace();
-    }
-  }
-  
-  private void b(bcdp parambcdp, String[] paramArrayOfString)
-  {
-    try
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-      if ((localObject != null) && (!((Activity)localObject).isFinishing()))
-      {
-        paramArrayOfString = new JSONObject(paramArrayOfString[0]);
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("key_album_comment_list_count", paramArrayOfString.optInt("count"));
-        ((Intent)localObject).setAction("broadcastActionUpdateAlbumCommentList");
-        if (parambcdp.a() != null) {
-          parambcdp.a().sendBroadcast((Intent)localObject);
-        }
-      }
-      return;
-    }
-    catch (Exception parambcdp)
-    {
-      parambcdp.printStackTrace();
-    }
-  }
-  
-  private void c(bcdp parambcdp, String[] paramArrayOfString)
-  {
-    a(parambcdp, paramArrayOfString, "broadcastActionRefreshPhotoList");
-  }
-  
-  private void d(bcdp parambcdp, String[] paramArrayOfString)
-  {
-    a(parambcdp, paramArrayOfString, "broadcastActionRefreshAlbumList");
-  }
-  
-  private void e(bcdp parambcdp, String[] paramArrayOfString)
-  {
-    try
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-      if ((localObject != null) && (!((Activity)localObject).isFinishing()))
-      {
-        localObject = new Intent();
-        ((Intent)localObject).setAction("broadcastActionBlogShareData");
-        if ((paramArrayOfString != null) && (paramArrayOfString.length > 0)) {
-          ((Intent)localObject).putExtra("share_data", paramArrayOfString[0]);
-        }
-        if (parambcdp.a() != null) {
-          parambcdp.a().sendBroadcast((Intent)localObject);
-        }
-      }
-      return;
-    }
-    catch (Exception parambcdp)
-    {
-      parambcdp.printStackTrace();
-    }
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {
-      return false;
-    }
-    if ((paramString3.equalsIgnoreCase("SetAlbumSkin")) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ((paramString3.equalsIgnoreCase("UpdateAlbumCommentList")) && (paramVarArgs != null) && (paramVarArgs.length > 0))
-    {
-      b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("refreshPhotoList".equalsIgnoreCase(paramString3))
-    {
-      c(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("RefreshAlbumList".equalsIgnoreCase(paramString3))
-    {
-      d(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    if ("getBlogArkShareData".equalsIgnoreCase(paramString3))
-    {
-      e(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime, paramVarArgs);
-      return true;
-    }
-    return false;
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, true);
+    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhru
  * JD-Core Version:    0.7.0.1
  */

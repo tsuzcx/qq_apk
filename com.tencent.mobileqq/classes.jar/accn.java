@@ -1,21 +1,42 @@
-import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class accn
-  implements aylm
+  extends WtloginObserver
 {
   accn(accm paramaccm) {}
   
-  public void onCancel() {}
-  
-  public void onConfirm()
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    accg.a(this.a.jdField_a_of_type_Accj.a).b();
-    accj.a(this.a.jdField_a_of_type_Accj, this.a.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      }
+    }
+    if (paramInt2 == 0) {}
+    do
+    {
+      return;
+      accm.a(this.a);
+    } while (accm.a(this.a) == null);
+    paramString = new Intent(accm.a(this.a), LoginActivity.class);
+    paramString.putExtra("uin", accm.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.b);
+    paramString.addFlags(131072);
+    accm.a(this.a).startActivity(paramString);
+    accm.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     accn
  * JD-Core Version:    0.7.0.1
  */

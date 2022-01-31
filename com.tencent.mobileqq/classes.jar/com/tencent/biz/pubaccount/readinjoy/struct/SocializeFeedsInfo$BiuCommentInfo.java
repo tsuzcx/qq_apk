@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.struct;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qcf;
+import qmb;
 
 public class SocializeFeedsInfo$BiuCommentInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator<BiuCommentInfo> CREATOR = new qcf();
+  public static final Parcelable.Creator<BiuCommentInfo> CREATOR = new qmb();
   public int a;
   public SocializeFeedsInfo.JumpInfo a;
   public SocializeFeedsInfo.UGCVoiceInfo a;
@@ -113,7 +113,7 @@ public class SocializeFeedsInfo$BiuCommentInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo
  * JD-Core Version:    0.7.0.1
  */

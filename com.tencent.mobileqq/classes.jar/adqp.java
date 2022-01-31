@@ -1,75 +1,138 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.ViewAnimation;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
 
-class adqp
-  extends AnimatorListenerAdapter
+public class adqp
+  extends AsyncTask<Void, Void, Void>
 {
-  adqp(adqe paramadqe, adqq paramadqq, MessageForPoke paramMessageForPoke) {}
+  WeakReference<RegisterVerifyCodeActivity> a = null;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public adqp(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity)
   {
-    int i = 1;
-    super.onAnimationEnd(paramAnimator);
-    adqe.f = false;
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-    if ((!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (this.jdField_a_of_type_Adqq.b == adqe.a()) && (!(this.jdField_a_of_type_Adqe.jdField_a_of_type_AndroidContentContext instanceof ChatHistoryActivity)) && (!adqe.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Adqq.c.setVisibility(0);
-    }
-    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isPlayed) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.setPlayed(this.jdField_a_of_type_Adqe.b);
-    }
-    if (!adwj.a("fullscreen", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId))
-    {
-      if (ajfh.a(this.jdField_a_of_type_Adqe.b).d == 1) {
-        i = 0;
-      }
-      if (i != 0)
-      {
-        ajey.a(this.jdField_a_of_type_Adqe.b, "vas_poke", false);
-        if (QLog.isColorLevel()) {
-          QLog.i("GivingHeart.sprite", 2, "show sprite (normal) in bubble.");
-        }
-      }
-    }
+    this.a = new WeakReference(paramRegisterVerifyCodeActivity);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  protected Void a(Void... paramVarArgs)
   {
-    super.onAnimationStart(paramAnimator);
-    adqe.f = true;
-    if (adwj.a()) {
-      HapticManager.a().a(String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId), 2);
+    boolean bool3 = true;
+    File localFile = new File(BaseApplication.getContext().getFilesDir(), "RegDevLockCfg.xml");
+    if (!HttpDownloadUtil.a(null, "http://dldir1.qq.com/qqfile/qd/RegDevLockCfg.xml?mType=ConfigCheck", localFile))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RegisterVerifyCodeActivity", 2, "download cfg file failed.");
+      }
+      return null;
     }
-    adwf.a().a(7, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend());
-    if (this.jdField_a_of_type_Adqe.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()) {
-      this.jdField_a_of_type_Adqe.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.endAnimation();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) {
-      this.jdField_a_of_type_Adqe.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setEnableXCoordinateMirrored(false);
-    }
+    paramVarArgs = DocumentBuilderFactory.newInstance();
+    label524:
+    label530:
+    label536:
+    label542:
+    label547:
+    label553:
+    label558:
+    label563:
     for (;;)
     {
-      adwj.a(this.jdField_a_of_type_Adqe.b, this.jdField_a_of_type_Adqe.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adqe.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, null, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.subId, "view_aio");
-      return;
-      this.jdField_a_of_type_Adqe.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setEnableXCoordinateMirrored(true);
+      try
+      {
+        localObject3 = paramVarArgs.newDocumentBuilder().parse(localFile).getDocumentElement();
+        paramVarArgs = ((Element)localObject3).getElementsByTagName("Enable");
+        if (paramVarArgs.getLength() <= 0) {
+          break label553;
+        }
+        if (Integer.parseInt(((Text)((Element)paramVarArgs.item(0)).getChildNodes().item(0)).getNodeValue()) == 1)
+        {
+          bool1 = true;
+          break label558;
+          paramVarArgs = ((Element)localObject3).getElementsByTagName("EnableVersion");
+          if (paramVarArgs.getLength() <= 0) {
+            break label547;
+          }
+          paramVarArgs = ((Text)((Element)paramVarArgs.item(0)).getChildNodes().item(0)).getNodeValue();
+          localObject1 = ((Element)localObject3).getElementsByTagName("CheckBoxDefStatus");
+          if (((NodeList)localObject1).getLength() <= 0) {
+            break label542;
+          }
+          if (Integer.parseInt(((Text)((Element)((NodeList)localObject1).item(0)).getChildNodes().item(0)).getNodeValue()) == 1)
+          {
+            bool1 = bool3;
+            break label563;
+            localObject1 = ((Element)localObject3).getElementsByTagName("CheckBoxWording");
+            if (((NodeList)localObject1).getLength() <= 0) {
+              break label536;
+            }
+            localObject1 = ((Text)((Element)((NodeList)localObject1).item(0)).getChildNodes().item(0)).getNodeValue();
+            localObject2 = ((Element)localObject3).getElementsByTagName("CheckBoxHighlightWording");
+            if (((NodeList)localObject2).getLength() <= 0) {
+              break label530;
+            }
+            localObject2 = ((Text)((Element)((NodeList)localObject2).item(0)).getChildNodes().item(0)).getNodeValue();
+            localObject3 = ((Element)localObject3).getElementsByTagName("IntroductionURL");
+            if (((NodeList)localObject3).getLength() <= 0) {
+              break label524;
+            }
+            localObject3 = ((Text)((Element)((NodeList)localObject3).item(0)).getChildNodes().item(0)).getNodeValue();
+            Bundle localBundle = new Bundle();
+            localBundle.putBoolean("visibility", bool2);
+            localBundle.putString("enableVersion", paramVarArgs);
+            localBundle.putBoolean("checked", bool1);
+            localBundle.putString("openDevLockText", (String)localObject1);
+            localBundle.putString("openDevLockHelpText", (String)localObject2);
+            localBundle.putString("openDevLockHelpURL", (String)localObject3);
+            paramVarArgs = (RegisterVerifyCodeActivity)this.a.get();
+            return null;
+          }
+        }
+        else
+        {
+          bool1 = false;
+          break label558;
+        }
+        bool1 = false;
+      }
+      catch (Exception paramVarArgs)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RegisterVerifyCodeActivity", 2, "parse cfg file failed.");
+        }
+        paramVarArgs.printStackTrace();
+        return null;
+      }
+      finally
+      {
+        localFile.delete();
+      }
+      Object localObject3 = null;
+      continue;
+      Object localObject2 = null;
+      continue;
+      Object localObject1 = null;
+      continue;
+      boolean bool1 = false;
+      continue;
+      paramVarArgs = "";
+      continue;
+      boolean bool2 = false;
+      continue;
+      bool2 = bool1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqp
  * JD-Core Version:    0.7.0.1
  */

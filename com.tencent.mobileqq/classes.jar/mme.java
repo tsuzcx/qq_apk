@@ -1,27 +1,43 @@
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.widget.TextView;
+import com.tencent.av.ui.VideoControlUI;
 
-class mme
-  implements View.OnKeyListener
+public class mme
+  implements GestureDetector.OnGestureListener
 {
-  mme(mmb parammmb) {}
+  public mme(VideoControlUI paramVideoControlUI) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (paramKeyEvent.getAction() == 0) {}
-    switch (paramInt)
-    {
-    default: 
-      return false;
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if ((this.a.f != null) && (this.a.f.isShown())) {
+      this.a.r(false);
     }
-    mmb.b(this.a);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mme
  * JD-Core Version:    0.7.0.1
  */

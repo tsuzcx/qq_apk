@@ -1,27 +1,27 @@
-public final class bkst
-  implements aiau
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
+
+class bkst
+  extends RecyclerView.ViewHolder
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  private TextView a;
+  
+  public bkst(View paramView)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131362157));
   }
   
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void a(@NonNull bksu parambksu)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
+    this.a.setText(parambksu.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkst
  * JD-Core Version:    0.7.0.1
  */

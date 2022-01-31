@@ -1,12 +1,18 @@
-public abstract interface pqp
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
+
+public class pqp
+  implements ViewBase.IBuilder
 {
-  public abstract void a(Object paramObject);
-  
-  public abstract void a(pqy parampqy);
+  public ViewBase build(VafContext paramVafContext)
+  {
+    return new pqo(paramVafContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pqp
  * JD-Core Version:    0.7.0.1
  */

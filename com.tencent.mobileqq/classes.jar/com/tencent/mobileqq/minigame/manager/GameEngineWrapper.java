@@ -13,6 +13,7 @@ import com.tencent.mobileqq.triton.sdk.ITLog;
 import com.tencent.mobileqq.triton.sdk.ITSoLoader;
 import com.tencent.mobileqq.triton.sdk.ITTEngine;
 import com.tencent.mobileqq.triton.sdk.ITTEngine.IListener;
+import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
 import com.tencent.mobileqq.triton.sdk.audio.IAudioPlayerBuilder;
 import com.tencent.mobileqq.triton.sdk.bridge.IInspectorAgent;
 import com.tencent.mobileqq.triton.sdk.bridge.IJSEngine;
@@ -58,6 +59,14 @@ public class GameEngineWrapper
       return this.baseEngine.getApiProxy();
     }
     return this.mAPIProxy;
+  }
+  
+  public IAudioNativeManager getAudioNativeManager()
+  {
+    if (this.baseEngine != null) {
+      return this.baseEngine.getAudioNativeManager();
+    }
+    return null;
   }
   
   public long getCurrentDrawCount()
@@ -299,7 +308,7 @@ public class GameEngineWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameEngineWrapper
  * JD-Core Version:    0.7.0.1
  */

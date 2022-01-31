@@ -1,258 +1,208 @@
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class asxg
 {
-  public static int a(long paramLong1, long paramLong2)
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new asxq(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new asxp(this, Looper.getMainLooper());
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private aswf jdField_a_of_type_Aswf = new asxl(this);
+  bepp jdField_a_of_type_Bepp;
+  private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private long jdField_c_of_type_Long;
+  String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
+  String d;
+  String e = null;
+  String f = null;
+  String g = null;
+  String h = null;
+  String i = null;
+  
+  public asxg(Activity paramActivity)
   {
-    if ((paramLong1 > 0L) && (paramLong2 >= 0L)) {
-      return asxm.a(paramLong1, paramLong2);
-    }
-    return 0;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
-  public static int a(acvt paramacvt)
+  private void a(boolean paramBoolean)
   {
-    long l1 = paramacvt.a();
-    long l2 = paramacvt.b();
-    if (l1 == 17L)
-    {
-      if (paramacvt.a()) {
-        return 999;
-      }
-      return 0;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    if (paramBoolean) {
+      this.jdField_c_of_type_JavaLangString = "checkVersion";
     }
-    return a(l1, l2);
-  }
-  
-  public static ArrayList<asxi> a(QQAppInterface paramQQAppInterface, String paramString, StringBuilder paramStringBuilder)
-  {
-    Object localObject = Pattern.compile("#(name|icon)_(\\d+)").matcher(paramStringBuilder);
-    ArrayList localArrayList = new ArrayList();
-    asxi localasxi;
-    int i;
-    if (((Matcher)localObject).find())
+    for (;;)
     {
-      localasxi = new asxi();
-      localasxi.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localasxi.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localasxi.jdField_b_of_type_JavaLangString = ((Matcher)localObject).group(2);
-      if (localasxi.a()) {}
-      for (i = 2;; i = 1)
+      this.jdField_a_of_type_Int = 0;
+      Object localObject2 = aswd.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_JavaLangString);
+      String str1 = this.d;
+      String str2 = this.e;
+      String str3 = this.h;
+      String str4 = this.jdField_c_of_type_JavaLangString;
+      String str5 = this.e;
+      Object localObject1;
+      if (this.f == null)
       {
-        localasxi.jdField_a_of_type_Int = i;
-        localArrayList.add(localasxi);
-        break;
+        localObject1 = "";
+        ((aswd)localObject2).a(str1, str2, "", str3, 0, str4, "", "", str5, (String)localObject1, this.jdField_a_of_type_Aswf);
+        return;
+        this.jdField_b_of_type_Long = System.currentTimeMillis();
+        this.jdField_c_of_type_Long = System.currentTimeMillis();
+        asxx.a.a(40, String.valueOf(this.jdField_a_of_type_Boolean));
+        this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("huiyin").opName("download").d1(String.valueOf(bdee.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))).d2(String.valueOf(this.jdField_a_of_type_Boolean)).report();
+        if (this.f == null) {}
       }
-    }
-    localObject = Pattern.compile("\\(([^\\(]+?)\\)\\[([^\\)]+?)\\]").matcher(paramStringBuilder);
-    while (((Matcher)localObject).find())
-    {
-      localasxi = new asxi();
-      localasxi.jdField_a_of_type_Int = 3;
-      localasxi.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localasxi.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localasxi.jdField_c_of_type_JavaLangString = ((Matcher)localObject).group(1);
-      localasxi.jdField_d_of_type_JavaLangString = ((Matcher)localObject).group(2);
-      localArrayList.add(localasxi);
-    }
-    localObject = Pattern.compile("#image_url\\{([^\\)]+?)\\}").matcher(paramStringBuilder);
-    while (((Matcher)localObject).find())
-    {
-      localasxi = new asxi();
-      localasxi.jdField_a_of_type_Int = 4;
-      localasxi.jdField_a_of_type_JavaLangString = ((Matcher)localObject).group();
-      localasxi.jdField_b_of_type_Int = ((Matcher)localObject).start();
-      localasxi.jdField_d_of_type_JavaLangString = ((Matcher)localObject).group(1);
-      localasxi.jdField_c_of_type_JavaLangString = localasxi.jdField_a_of_type_JavaLangString;
-      localArrayList.add(localasxi);
-    }
-    Collections.sort(localArrayList, new asxh());
-    localObject = localArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      localasxi = (asxi)((Iterator)localObject).next();
-      if (!TextUtils.isEmpty(localasxi.jdField_a_of_type_JavaLangString))
+      try
       {
-        i = paramStringBuilder.indexOf(localasxi.jdField_a_of_type_JavaLangString);
-        int j = localasxi.jdField_a_of_type_JavaLangString.length() + i;
-        if ((i >= 0) && (j <= paramStringBuilder.length()))
+        localObject1 = new JSONObject(this.f);
+        ((JSONObject)localObject1).put("startTS", System.currentTimeMillis());
+        this.f = ((JSONObject)localObject1).toString();
+        label211:
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("huiyin").opName("launch");
+        if (bdee.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
         {
-          switch (localasxi.jdField_a_of_type_Int)
-          {
+          localObject1 = "1";
+          label242:
+          localObject2 = ((IVPluginDataReporter)localObject2).d1((String)localObject1);
+          if (!this.jdField_c_of_type_Boolean) {
+            break label291;
           }
-          for (;;)
-          {
-            if (localasxi.jdField_c_of_type_JavaLangString == null) {
-              localasxi.jdField_c_of_type_JavaLangString = localasxi.jdField_a_of_type_JavaLangString;
-            }
-            localasxi.jdField_c_of_type_Int = i;
-            localasxi.jdField_d_of_type_Int = (localasxi.jdField_c_of_type_JavaLangString.length() + i);
-            paramStringBuilder.replace(i, j, localasxi.jdField_c_of_type_JavaLangString);
-            break;
-            localasxi.jdField_c_of_type_JavaLangString = asxb.a(paramQQAppInterface, localasxi.jdField_b_of_type_JavaLangString);
-            continue;
-            localasxi.jdField_c_of_type_JavaLangString = asxb.a(paramQQAppInterface, paramString, localasxi.jdField_b_of_type_JavaLangString);
+          localObject1 = "1";
+          label258:
+          localObject2 = ((IVPluginDataReporter)localObject2).d2((String)localObject1);
+          if (!this.jdField_a_of_type_Boolean) {
+            break label297;
           }
         }
-      }
-    }
-    return localArrayList;
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, acvt paramacvt, akqm paramakqm)
-  {
-    int i = 2097153;
-    acvv localacvv = paramacvt.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkGrayTipsHelper", 2, "checkAndInsertGrayTips grayInfo:" + localacvv + " onlinePush:" + paramakqm.a);
-    }
-    int j;
-    if ((localacvv != null) && (localacvv.a()))
-    {
-      j = 0;
-      paramakqm = paramacvt.jdField_b_of_type_JavaLangString + "_" + paramacvt.jdField_a_of_type_Int + "_" + paramakqm.b + "_" + localacvv.jdField_a_of_type_Long;
-      switch (paramacvt.jdField_a_of_type_Int)
-      {
-      default: 
-        i = 2097155;
-      }
-    }
-    for (;;)
-    {
-      a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramacvt, localacvv.jdField_a_of_type_JavaLangString, -5040, i, j, paramakqm);
-      return;
-      j = a(paramacvt);
-      continue;
-      i = 2097154;
-      continue;
-      if ((paramacvt.jdField_a_of_type_Acvw == null) || (paramacvt.jdField_b_of_type_Acvw == null)) {
-        break;
-      }
-      if (paramacvt.jdField_a_of_type_Acvw.a() > paramacvt.jdField_b_of_type_Acvw.a())
-      {
-        i = 2097154;
-      }
-      else
-      {
-        if (paramacvt.jdField_a_of_type_Acvw.a() >= paramacvt.jdField_b_of_type_Acvw.a()) {
-          break;
-        }
-        j = a(paramacvt);
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, Friends paramFriends, ExtensionInfo paramExtensionInfo, acvt paramacvt, String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MutualMarkGrayTipsHelper", 2, "insertGrayTips friendUin:" + paramacvt.jdField_b_of_type_JavaLangString + " grayType:" + paramInt1 + " grayID:" + paramInt2 + " subType:" + paramInt3 + " grayTipKey:" + paramString2 + " _grayTipTemplate:" + paramString1);
-    }
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    Object localObject = paramString1;
-    if (paramString1.contains("#nick")) {
-      localObject = paramString1.replaceAll("#nick", bbcz.m(paramQQAppInterface, paramacvt.jdField_b_of_type_JavaLangString));
-    }
-    localObject = new StringBuilder((String)localObject);
-    asxx.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramacvt, (StringBuilder)localObject);
-    paramString1 = a(paramQQAppInterface, paramacvt.jdField_b_of_type_JavaLangString, (StringBuilder)localObject);
-    localObject = ((StringBuilder)localObject).toString();
-    aqvb localaqvb = new aqvb(paramacvt.jdField_b_of_type_JavaLangString, paramacvt.jdField_b_of_type_JavaLangString, (String)localObject, 0, paramInt1, paramInt2, awzy.a());
-    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-    localMessageForUniteGrayTip.hasRead = 0;
-    localMessageForUniteGrayTip.subType = paramInt3;
-    localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, localaqvb);
-    localMessageForUniteGrayTip.tipParam.jdField_d_of_type_JavaLangString = paramString2;
-    if (paramInt3 == 998) {
-      localMessageForUniteGrayTip.caidanAnimUrl = paramacvt.a();
-    }
-    for (;;)
-    {
-      a(paramQQAppInterface, (String)localObject, localaqvb, paramString1);
-      localMessageForUniteGrayTip.saveExtInfoToExtStr("mutualmark_id", asxm.a(paramacvt.a(), paramacvt.b()));
-      asxx.a(paramQQAppInterface, paramFriends, paramExtensionInfo, paramacvt, (String)localObject, localaqvb, paramString1);
-      aqvc.a(paramQQAppInterface, localMessageForUniteGrayTip);
-      asxa.a(paramQQAppInterface, localMessageForUniteGrayTip, localMessageForUniteGrayTip.tipParam.jdField_b_of_type_Int);
-      return;
-      if (paramInt3 == 999)
-      {
-        localMessageForUniteGrayTip.caidanAnimUrl = paramacvt.b();
-        localMessageForUniteGrayTip.caidanAnimUrlMd5 = paramacvt.c();
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, aqvb paramaqvb, ArrayList<asxi> paramArrayList)
-  {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
-    for (;;)
-    {
-      return;
-      paramQQAppInterface = paramArrayList.iterator();
-      while (paramQQAppInterface.hasNext())
-      {
-        paramString = (asxi)paramQQAppInterface.next();
-        if (QLog.isColorLevel()) {
-          QLog.d("MutualMarkGrayTipsHelper", 2, "handleHighlightInfo item=" + paramString);
-        }
-        switch (paramString.jdField_a_of_type_Int)
+        label291:
+        label297:
+        for (localObject1 = "1";; localObject1 = "2")
         {
-        default: 
+          ((IVPluginDataReporter)localObject2).d3((String)localObject1).report();
           break;
-        case 1: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putInt("key_action", 11);
-            paramArrayList.putString("key_action_DATA", paramString.jdField_c_of_type_JavaLangString);
-            paramaqvb.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
-        case 2: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putString("image_resource", paramString.jdField_c_of_type_JavaLangString);
-            paramaqvb.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
-        case 3: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putInt("key_action", 1);
-            paramArrayList.putString("key_action_DATA", paramString.jdField_d_of_type_JavaLangString);
-            paramaqvb.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
-        case 4: 
-          if (!TextUtils.isEmpty(paramString.jdField_c_of_type_JavaLangString))
-          {
-            paramArrayList = new Bundle();
-            paramArrayList.putString("image_resource", paramString.jdField_c_of_type_JavaLangString);
-            paramaqvb.a(paramString.jdField_c_of_type_Int, paramString.jdField_d_of_type_Int, paramArrayList);
-          }
-          break;
+          localObject1 = "2";
+          break label242;
+          localObject1 = "2";
+          break label258;
         }
+        localObject1 = this.f;
+      }
+      catch (Exception localException)
+      {
+        break label211;
       }
     }
+  }
+  
+  private void c()
+  {
+    if (!bdee.g(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext()))
+    {
+      asxx.a.a(32, null);
+      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(alpo.a(2131706033));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(alpo.a(2131706037));
+      this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+      this.jdField_a_of_type_AndroidAppActivity.findViewById(16908290).setVisibility(0);
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new asxi(this));
+      return;
+    }
+    asvu.a(this.d, new asxj(this));
+  }
+  
+  void a()
+  {
+    this.jdField_a_of_type_AndroidAppActivity.setContentView(2131561038);
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131372348));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131367423));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131365420));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131372312));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppActivity.findViewById(2131372340));
+    this.jdField_a_of_type_AndroidAppActivity.findViewById(16908290).setVisibility(8);
+    this.jdField_a_of_type_AndroidAppActivity.findViewById(2131367835).setOnClickListener(new asxh(this));
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("huiyin");
+    this.h = this.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("uin");
+    this.f = this.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("extra");
+    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidAppActivity.getIntent().getBooleanExtra("preloadOnly", false);
+    this.jdField_c_of_type_Long = System.currentTimeMillis();
+    paramBundle = this.jdField_a_of_type_AndroidAppActivity.getIntent().getStringExtra("param_general");
+    try
+    {
+      paramBundle = new JSONObject(paramBundle);
+      this.e = paramBundle.optString("opentype");
+      this.g = paramBundle.optString("uri");
+      this.jdField_b_of_type_JavaLangString = paramBundle.optString("notifyJsCallback");
+      this.jdField_c_of_type_JavaLangString = paramBundle.optString("action");
+      this.jdField_a_of_type_JavaLangString = paramBundle.optString("pluginPackageName");
+      this.i = paramBundle.optString("pluginData");
+      this.d = paramBundle.optString("appType");
+      c();
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidAppActivity.finish();
+      }
+      this.jdField_b_of_type_Long = 0L;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        asxx.a.a(20, null);
+        paramBundle = new IntentFilter();
+        paramBundle.addAction("close.activity");
+        paramBundle.addAction("close.loading");
+        this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
+        return;
+      }
+    }
+    catch (JSONException paramBundle)
+    {
+      for (;;)
+      {
+        paramBundle.printStackTrace();
+        continue;
+        asxx.a.a(30, null);
+      }
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_AndroidAppActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asxg
  * JD-Core Version:    0.7.0.1
  */

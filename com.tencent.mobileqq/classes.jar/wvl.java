@@ -1,29 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 class wvl
-  implements View.OnClickListener
+  implements uni<vbf, vcz>
 {
-  wvl(wvk paramwvk, int paramInt) {}
+  wvl(wvj paramwvj) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull vbf paramvbf, @Nullable vcz paramvcz, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (this.jdField_a_of_type_Int < wvk.a(this.jdField_a_of_type_Wvk).size())
+    wsv.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramvcz != null))
     {
-      wvk.b(this.jdField_a_of_type_Wvk).remove(this.jdField_a_of_type_Int);
-      ((ArrayList)this.jdField_a_of_type_Wvk.a.a()).remove(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Wvk.notifyDataSetChanged();
-      if (CommodityListView.a(this.jdField_a_of_type_Wvk.a) != null) {
-        CommodityListView.a(this.jdField_a_of_type_Wvk.a).a(wvk.c(this.jdField_a_of_type_Wvk).size());
-      }
+      wsv.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramvcz.toString());
+      paramvbf = new uqm(paramvcz.a, paramvcz.c, paramvcz.d, paramvcz.e, paramvcz.f, paramvbf.d, paramvbf.e);
+      this.a.a(0, paramvbf);
+      return;
     }
+    wsv.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wvl
  * JD-Core Version:    0.7.0.1
  */

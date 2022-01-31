@@ -1,23 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.commonsdk.cache.QQLruCache;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.Map;
+import java.util.Set;
 
-class pag
-  extends QQLruCache<String, List<BaseData>>
+public abstract interface pag
+  extends ozp<BaseArticleInfo>
 {
-  pag(paf parampaf, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  public abstract void a(Map<Long, qkk> paramMap, boolean paramBoolean);
   
-  protected void a(boolean paramBoolean, String paramString, List<BaseData> paramList1, List<BaseData> paramList2)
-  {
-    super.entryRemoved(paramBoolean, paramString, paramList1, paramList2);
-  }
+  public abstract void a(Map<Long, qkk> paramMap, boolean paramBoolean, Map<Long, szu> paramMap1, String paramString);
+  
+  public abstract void a(Set<Long> paramSet, Map<Long, qkk> paramMap);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pag
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.text.TextUtils;
-import bekr;
-import betc;
-import bfeu;
+import bgkd;
+import bhew;
+import com.tencent.qqmini.sdk.log.QMLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PickerJsPlugin$3$1
-  implements bfeu
+  implements bhew
 {
   PickerJsPlugin$3$1(PickerJsPlugin.3 param3) {}
   
@@ -21,7 +21,7 @@ class PickerJsPlugin$3$1
     }
     catch (Exception localException)
     {
-      betc.d("PickerJsPlugin", "showDatePickerView onDateCancel error.", localException);
+      QMLog.e("PickerJsPlugin", "showDatePickerView onDateCancel error.", localException);
       this.this$1.val$req.b();
     }
   }
@@ -51,14 +51,14 @@ class PickerJsPlugin$3$1
     }
     catch (JSONException paramString1)
     {
-      betc.d("PickerJsPlugin", "showDatePickerView onDateConfirm error.", paramString1);
+      QMLog.e("PickerJsPlugin", "showDatePickerView onDateConfirm error.", paramString1);
       this.this$1.val$req.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.plugin.PickerJsPlugin.3.1
  * JD-Core Version:    0.7.0.1
  */

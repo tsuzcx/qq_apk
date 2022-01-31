@@ -1,24 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class agyn
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public agyn(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
+  public agyn(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopUnAccalimedRedPacketList.a(this.a, true);
-    if (this.a.a != null) {
-      this.a.a.dismiss();
+    if (!bdee.g(this.a.getApplicationContext())) {
+      QQToast.a(this.a, 2131695129, 1).a();
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      this.a.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agyn
  * JD-Core Version:    0.7.0.1
  */

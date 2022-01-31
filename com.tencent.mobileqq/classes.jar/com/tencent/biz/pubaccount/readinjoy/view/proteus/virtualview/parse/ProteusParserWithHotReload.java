@@ -36,7 +36,7 @@ public class ProteusParserWithHotReload
   private static final String BROADCAST_ACTION = "com.tencent.proteus.ReloadBroadcast";
   private static final String PROTEUS_DEBUG_FOLDER = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ProteusDebug/";
   private static final String SPLIT_FLAG = "^#^";
-  private static final String TAG = "ProteusParserWithHotReload";
+  private static final String TAG = "ProteusParserHotReload";
   private HashMap<String, ArrayList<String>> mComplementMap = new HashMap();
   private ArrayList<ProteusParserWithHotReload.IHotReloadChangedObserver> mHotReloadChangedObservers = new ArrayList();
   private HashMap<String, String> mHotReloadMap = new HashMap();
@@ -147,22 +147,20 @@ public class ProteusParserWithHotReload
   private void parseAndCreateViewTemplate(BaseTemplateFactory paramBaseTemplateFactory, JSONObject paramJSONObject, ComplementFileStringLoader paramComplementFileStringLoader, String paramString1, String paramString2, String paramString3)
   {
     int i = paramBaseTemplateFactory.getTemplateId();
-    Iterator localIterator = paramJSONObject.keys();
-    while ((localIterator != null) && (localIterator.hasNext()))
+    ArrayMap localArrayMap = new ArrayMap();
+    String str = getStyleId(paramJSONObject);
+    try
     {
-      String str = (String)localIterator.next();
-      try
-      {
-        paramBaseTemplateFactory.createTemplate(i, str, parseItemView(paramJSONObject.getJSONObject(str), paramComplementFileStringLoader, paramString1, paramString2, paramString3));
-      }
-      catch (IllegalArgumentException paramBaseTemplateFactory)
-      {
-        throw new IllegalArgumentException("问题源:" + str + paramBaseTemplateFactory.getMessage());
-      }
+      paramBaseTemplateFactory.createTemplate(i, str, parseItemView(paramJSONObject.getJSONObject(str), paramComplementFileStringLoader, paramString1, paramString2, paramString3, localArrayMap), localArrayMap);
+      return;
+    }
+    catch (IllegalArgumentException paramBaseTemplateFactory)
+    {
+      throw new IllegalArgumentException("问题源:" + str + paramBaseTemplateFactory.getMessage());
     }
   }
   
-  private void parseAttr(JSONObject paramJSONObject, ViewBean paramViewBean, String paramString)
+  private void parseAttr(JSONObject paramJSONObject, ViewBean paramViewBean, String paramString, Map<String, Object> paramMap)
   {
     Iterator localIterator = paramJSONObject.keys();
     Object localObject = new ArrayMap();
@@ -182,7 +180,7 @@ public class ProteusParserWithHotReload
     {
       paramString = (String)localIterator.next();
       localObject = paramJSONObject.get(paramString);
-      dealMethod(paramViewBean.valueBean, paramString, localObject, new ProteusParserWithHotReload.1(this, paramViewBean, paramString, localObject));
+      dealMethod(paramViewBean.valueBean, paramString, localObject, new ProteusParserWithHotReload.1(this, paramViewBean, paramString, localObject, paramMap));
     }
   }
   
@@ -202,7 +200,7 @@ public class ProteusParserWithHotReload
     }
   }
   
-  private ViewBean parseItemView(JSONObject paramJSONObject, ComplementFileStringLoader paramComplementFileStringLoader, String paramString1, String paramString2, String paramString3)
+  private ViewBean parseItemView(JSONObject paramJSONObject, ComplementFileStringLoader paramComplementFileStringLoader, String paramString1, String paramString2, String paramString3, Map<String, Object> paramMap)
   {
     ViewBean localViewBean = new ViewBean();
     Iterator localIterator = paramJSONObject.keys();
@@ -253,7 +251,7 @@ public class ProteusParserWithHotReload
           {
             JSONObject localJSONObject = maybeIncludeComponent(((JSONArray)localObject1).getJSONObject(i), paramComplementFileStringLoader, paramString1, paramString2);
             if (localJSONObject != null) {
-              ((List)localObject2).add(parseItemView(localJSONObject, paramComplementFileStringLoader, paramString1, paramString2, paramString3));
+              ((List)localObject2).add(parseItemView(localJSONObject, paramComplementFileStringLoader, paramString1, paramString2, paramString3, paramMap));
             }
             i += 1;
           }
@@ -262,11 +260,11 @@ public class ProteusParserWithHotReload
         }
         else if (((String)localObject1).equals("attributes"))
         {
-          parseAttr(paramJSONObject.getJSONObject((String)localObject1), localViewBean, paramString3);
+          parseAttr(paramJSONObject.getJSONObject((String)localObject1), localViewBean, paramString3, paramMap);
         }
         else if (((String)localObject1).equals("data_attributes"))
         {
-          parseDataAttr(paramJSONObject.getJSONObject((String)localObject1), localViewBean);
+          parseDataAttr(paramJSONObject.getJSONObject((String)localObject1), localViewBean, paramMap);
         }
         else
         {
@@ -301,14 +299,14 @@ public class ProteusParserWithHotReload
       {
         for (;;)
         {
-          Log.e("ProteusParserWithHotReload", "readInputStreamAsString: fail to close InputStream", paramInputStream);
+          Log.e("ProteusParserHotReload", "readInputStreamAsString: fail to close InputStream", paramInputStream);
         }
       }
     }
     catch (IOException localIOException)
     {
       localIOException = localIOException;
-      Log.d("ProteusParserWithHotReload", "fail to read string from input stream");
+      Log.d("ProteusParserHotReload", "fail to read string from input stream");
       try
       {
         paramInputStream.close();
@@ -321,7 +319,7 @@ public class ProteusParserWithHotReload
           }
           catch (IOException paramInputStream)
           {
-            Log.e("ProteusParserWithHotReload", "readInputStreamAsString: fail to close InputStream", paramInputStream);
+            Log.e("ProteusParserHotReload", "readInputStreamAsString: fail to close InputStream", paramInputStream);
           }
         }
       }
@@ -329,7 +327,7 @@ public class ProteusParserWithHotReload
       {
         for (;;)
         {
-          Log.e("ProteusParserWithHotReload", "readInputStreamAsString: fail to close InputStream", paramInputStream);
+          Log.e("ProteusParserHotReload", "readInputStreamAsString: fail to close InputStream", paramInputStream);
         }
       }
     }
@@ -356,12 +354,12 @@ public class ProteusParserWithHotReload
     }
     catch (IOException paramContext)
     {
-      Log.e("ProteusParserWithHotReload", "Fail to create view template from assets " + paramString1 + " " + paramContext.toString());
+      Log.e("ProteusParserHotReload", "Fail to create view template from assets " + paramString1 + " " + paramContext.toString());
       return;
     }
     catch (JSONException paramContext)
     {
-      Log.e("ProteusParserWithHotReload", "Json error: " + paramContext.toString());
+      Log.e("ProteusParserHotReload", "Json error: " + paramContext.toString());
     }
   }
   
@@ -440,8 +438,7 @@ public class ProteusParserWithHotReload
       LogUtil.QLog.e("readinjoy.proteus", 2, "proteus error : there is not Template: " + str);
       return null;
     }
-    paramBaseTemplateFactory.setData(paramJSONObject);
-    paramBaseTemplateFactory.getViewBean().bindData(paramJSONObject, paramBaseTemplateFactory.getViewDataBinding());
+    paramBaseTemplateFactory.bindData(paramJSONObject);
     return paramBaseTemplateFactory;
   }
   
@@ -477,7 +474,7 @@ public class ProteusParserWithHotReload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParserWithHotReload
  * JD-Core Version:    0.7.0.1
  */

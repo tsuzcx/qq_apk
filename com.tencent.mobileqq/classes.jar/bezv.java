@@ -1,92 +1,41 @@
-import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
-import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkReq;
-import NS_MINI_INTERFACE.INTERFACE.StGetAppInfoByLinkRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import android.os.Handler;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.request.GetAppInfoByLinkRequest.1;
-import org.json.JSONObject;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.common.app.InnerFrameManager;
+import com.tencent.open.agent.FriendChooser;
+import com.tencent.open.agent.OpenFrame;
+import com.tencent.open.agent.datamodel.Friend;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class bezv
-  extends bfau
+  implements bhqp
 {
-  private INTERFACE.StGetAppInfoByLinkReq a = new INTERFACE.StGetAppInfoByLinkReq();
+  public bezv(FriendChooser paramFriendChooser) {}
   
-  public bezv(String paramString, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.link.set(paramString);
-    this.a.linkType.set(paramInt);
-  }
-  
-  private void a(MiniAppInfo paramMiniAppInfo)
-  {
-    bejn.b().post(new GetAppInfoByLinkRequest.1(this, paramMiniAppInfo));
-  }
-  
-  protected String a()
-  {
-    return "mini_app_info";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
+    paramAdapterView = (Friend)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((paramAdapterView == null) || (this.a.jdField_a_of_type_Bfdi.a(paramAdapterView.a))) {
+      return;
     }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    INTERFACE.StGetAppInfoByLinkRsp localStGetAppInfoByLinkRsp = new INTERFACE.StGetAppInfoByLinkRsp();
-    try
+    if (this.a.jdField_a_of_type_Bfdi.c() >= this.a.jdField_a_of_type_Int)
     {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStGetAppInfoByLinkRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if ((localStGetAppInfoByLinkRsp != null) && (localStGetAppInfoByLinkRsp.appInfo != null))
-      {
-        paramArrayOfByte = new JSONObject();
-        MiniAppInfo localMiniAppInfo = MiniAppInfo.from(localStGetAppInfoByLinkRsp.appInfo);
-        localMiniAppInfo.link = this.a.link.get();
-        localMiniAppInfo.linkType = this.a.linkType.get();
-        String str = localStGetAppInfoByLinkRsp.shareTicket.get();
-        paramArrayOfByte.put("appInfo", localMiniAppInfo);
-        paramArrayOfByte.put("shareTicket", str);
-        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        if (localStGetAppInfoByLinkRsp.appInfo.type.get() == 3) {
-          a(localMiniAppInfo);
-        }
-      }
-      else
-      {
-        betc.a("ProtoBufRequest", "onResponse fail.rsp = null");
-        return null;
-      }
+      this.a.h();
+      return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      betc.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
-    }
-    return paramArrayOfByte;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetAppInfoByLink";
+    paramView = (OpenFrame)this.a.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.getCurrentView();
+    this.a.b.add(paramAdapterView);
+    this.a.jdField_a_of_type_Bfdi.a(paramAdapterView.a);
+    this.a.e();
+    paramView.g();
+    this.a.b(false);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezv
  * JD-Core Version:    0.7.0.1
  */

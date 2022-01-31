@@ -4,7 +4,6 @@ import com.tencent.aekit.api.standard.filter.AESticker;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIActionCounter;
-import com.tencent.aekit.plugin.core.AIActionCounter.AI_TYPE;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.aekit.plugin.core.PTHandAttr;
 import com.tencent.ttpic.filter.MultiViewerFilter;
@@ -96,7 +95,7 @@ public class StickersMap
     }
     for (Object localObject2 = ((PTHandAttr)localObject2).getHandPointList();; localObject2 = null)
     {
-      Object localObject3 = new PTDetectInfo.Builder().aiAttr(paramAIAttr).triggeredExpression(localSet).handPoints((List)localObject2).faceActionCounter((Map)localObject1).handActionCounter(AIActionCounter.getActions(AIActionCounter.AI_TYPE.HAND)).faceDetector(paramPTFaceAttr.getFaceDetector()).starPoints(localList3).phoneAngle((i + 360) % 360).timestamp(l);
+      Object localObject3 = new PTDetectInfo.Builder().aiAttr(paramAIAttr).triggeredExpression(localSet).handPoints((List)localObject2).faceActionCounter((Map)localObject1).handActionCounter(AIActionCounter.getActions(AEDetectorType.HAND)).faceDetector(paramPTFaceAttr.getFaceDetector()).starPoints(localList3).phoneAngle((i + 360) % 360).timestamp(l);
       localObject1 = localObject3;
       if (localList1 != null)
       {
@@ -296,7 +295,7 @@ public class StickersMap
           }
           if (paramAESticker != null)
           {
-            localObject1 = paramAESticker.renderFaceTransform(paramAESticker.processTransformRelatedFiltersPluggable((Frame)localObject1, paramPTFaceAttr, paramAIAttr, localSet));
+            localObject1 = paramAESticker.processTransformRelatedFiltersPluggable(paramAESticker.renderFaceTransform((Frame)localObject1), paramPTFaceAttr, paramAIAttr, localSet);
             continue;
             if (paramAESticker != null)
             {
@@ -469,7 +468,7 @@ public class StickersMap
     }
     for (;;)
     {
-      localObject2 = AIActionCounter.getActions(AIActionCounter.AI_TYPE.HAND);
+      localObject2 = AIActionCounter.getActions(AEDetectorType.HAND);
       localObject2 = new PTDetectInfo.Builder().handPoints(localList1).faceActionCounter(paramPTFaceAttr.getFaceActionCounter()).handActionCounter((Map)localObject2).triggeredExpression(localSet).timestamp(l).faceDetector(paramPTFaceAttr.getFaceDetector());
       PTDetectInfo localPTDetectInfo;
       label192:

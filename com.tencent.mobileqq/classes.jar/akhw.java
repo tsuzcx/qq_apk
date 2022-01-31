@@ -1,37 +1,29 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.contact.SimpleTextView;
+import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
 
-class akhw
-  implements mrl
+public class akhw
+  extends akia
 {
-  private final batf jdField_a_of_type_Batf;
-  private final WeakReference<akhp> jdField_a_of_type_JavaLangRefWeakReference;
-  private final long[] jdField_a_of_type_ArrayOfLong;
-  
-  akhw(akhp paramakhp, batf parambatf, long[] paramArrayOfLong)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramakhp);
-    this.jdField_a_of_type_Batf = parambatf;
-    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
-  }
-  
-  public void a(int paramInt1, mrn parammrn, int paramInt2)
-  {
-    parammrn = (akhp)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((parammrn != null) && (parammrn.app != null))
-    {
-      if (paramInt1 == 0) {
-        parammrn.app.a().a(1, this.jdField_a_of_type_Batf.a, this.jdField_a_of_type_Batf.b, this.jdField_a_of_type_ArrayOfLong, 2, 0, 0);
-      }
-      return;
-    }
-    QLog.e("TroopHandler", 1, "WeakGVideoGrayConfigListener#onResult get weakAppReference " + parammrn);
-  }
+  public LinearLayout a;
+  public URLImageView a;
+  public SimpleTextView a;
+  public MutualMarkIconsView a;
+  public OnlineStatusView a;
+  public StringBuilder a;
+  public boolean a;
+  public ImageView b;
+  public URLImageView b;
+  public boolean b;
+  public ImageView c;
+  public ImageView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhw
  * JD-Core Version:    0.7.0.1
  */

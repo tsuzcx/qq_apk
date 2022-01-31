@@ -1,33 +1,23 @@
-import com.tencent.mobileqq.data.TroopInfo;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class azdo
-  extends akil
+public class azdo
 {
-  azdo(azdn paramazdn) {}
+  int jdField_a_of_type_Int;
+  public azda a;
+  public AtomicBoolean a;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  azda jdField_b_of_type_Azda;
+  int c;
   
-  protected void a(int paramInt1, int paramInt2)
+  public azdo()
   {
-    azdn.a(this.a, false, paramInt1, paramInt2, null);
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    azdn.a(this.a, true, paramInt1, paramInt2, paramString);
-  }
-  
-  protected void a(String paramString)
-  {
-    azdn.a(this.a, paramString);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    azdn.a(this.a, paramBoolean, paramLong, paramTroopInfo);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azdo
  * JD-Core Version:    0.7.0.1
  */

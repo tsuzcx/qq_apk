@@ -1,57 +1,48 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.app.InviteMemberObserverWithoutCache.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.av.VideoController;
 
 public class lfq
-  implements Observer
+  extends OrientationEventListener
 {
-  Handler a = null;
+  private long jdField_a_of_type_Long;
   
-  private void a(Object paramObject)
+  public lfq(VideoController paramVideoController, Context paramContext, int paramInt)
   {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("qav.GAudioUIObserver", 2, "OnUpdate，msgType = " + i);
-    }
-    if (paramObject.length < 4)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("qav.GAudioUIObserver", 2, "quit for message length");
-      }
-      return;
-    }
-    switch (i)
-    {
-    default: 
-      return;
-    }
-    a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (ArrayList)paramObject[3]);
+    super(paramContext, paramInt);
   }
   
-  protected void a(long paramLong1, long paramLong2, ArrayList<loh> paramArrayList) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public void onOrientationChanged(int paramInt)
   {
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
+    if (paramInt == -1) {}
+    long l;
+    do
     {
-      if (this.a == null) {
-        this.a = new Handler(paramObservable);
-      }
-      this.a.post(new InviteMemberObserverWithoutCache.1(this, paramObject));
+      return;
+      l = System.currentTimeMillis();
+    } while (l - this.jdField_a_of_type_Long < 50L);
+    this.jdField_a_of_type_Long = l;
+    if ((paramInt > 315) || (paramInt <= 45))
+    {
+      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 1);
       return;
     }
-    a(paramObject);
+    if ((paramInt > 45) && (paramInt <= 135))
+    {
+      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 2);
+      return;
+    }
+    if ((paramInt > 135) && (paramInt <= 225))
+    {
+      VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 3);
+      return;
+    }
+    VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfq
  * JD-Core Version:    0.7.0.1
  */

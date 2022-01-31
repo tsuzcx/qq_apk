@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajrq;
-import ajrr;
-import ajya;
+import aljd;
+import alje;
+import alpo;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -15,12 +15,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import bcql;
-import bfpc;
-import bfph;
-import bgzl;
+import bhpy;
+import bhqd;
+import bjao;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -28,19 +28,19 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 
 public class ShareImageHandler
-  implements ajrr, DialogInterface.OnDismissListener, Handler.Callback, AdapterView.OnItemClickListener, bfph
+  implements alje, DialogInterface.OnDismissListener, Handler.Callback, AdapterView.OnItemClickListener, bhqd
 {
   private long jdField_a_of_type_Long;
-  private ajrq jdField_a_of_type_Ajrq;
-  private bfpc jdField_a_of_type_Bfpc;
+  private aljd jdField_a_of_type_Aljd;
+  private bhpy jdField_a_of_type_Bhpy;
   private WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private WeakReference<Activity> b;
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_Bfpc != null) {
-      this.jdField_a_of_type_Bfpc.dismiss();
+    if (this.jdField_a_of_type_Bhpy != null) {
+      this.jdField_a_of_type_Bhpy.dismiss();
     }
   }
   
@@ -72,10 +72,10 @@ public class ShareImageHandler
                     } while (this.jdField_a_of_type_Boolean);
                     paramMessage = (String)paramMessage.obj;
                   } while ((TextUtils.isEmpty(paramMessage)) || (this.b == null) || (this.b.get() == null));
-                  bcql.a((Context)this.b.get(), ajya.a(2131713956) + paramMessage, 1).a();
+                  QQToast.a((Context)this.b.get(), alpo.a(2131714328) + paramMessage, 1).a();
                   return false;
-                  if (this.jdField_a_of_type_Bfpc != null) {
-                    this.jdField_a_of_type_Bfpc.dismiss();
+                  if (this.jdField_a_of_type_Bhpy != null) {
+                    this.jdField_a_of_type_Bhpy.dismiss();
                   }
                 } while ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.b == null) || (this.b.get() == null));
                 localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
@@ -93,10 +93,10 @@ public class ShareImageHandler
             {
               localArrayList.add(URLDecoder.decode(paramMessage));
               localBundle.putStringArrayList("images", localArrayList);
-              localBundle.putString("summary", ajya.a(2131713955));
+              localBundle.putString("summary", alpo.a(2131714327));
               localBundle.putInt("req_type", 7);
               localBundle.putBoolean("key_need_save_draft", false);
-              bgzl.a(localAppInterface, (Context)this.b.get(), localBundle, this, 15);
+              bjao.a(localAppInterface, (Context)this.b.get(), localBundle, this, 15);
               return false;
             }
             catch (Exception paramMessage)
@@ -104,8 +104,8 @@ public class ShareImageHandler
               QLog.d("ShareImageHandler", 2, "publishToQzone:" + paramMessage.getMessage());
               return false;
             }
-            if (this.jdField_a_of_type_Bfpc != null) {
-              this.jdField_a_of_type_Bfpc.dismiss();
+            if (this.jdField_a_of_type_Bhpy != null) {
+              this.jdField_a_of_type_Bhpy.dismiss();
             }
           } while (this.jdField_a_of_type_Boolean);
           paramMessage = (String)paramMessage.obj;
@@ -142,16 +142,16 @@ public class ShareImageHandler
         if (paramLong != 1L) {
           break;
         }
-      } while (this.jdField_a_of_type_Ajrq == null);
-      this.jdField_a_of_type_Ajrq.a(this, 16);
+      } while (this.jdField_a_of_type_Aljd == null);
+      this.jdField_a_of_type_Aljd.a(this, 16);
       return;
-    } while (this.jdField_a_of_type_Ajrq == null);
-    this.jdField_a_of_type_Ajrq.a(this, 17);
+    } while (this.jdField_a_of_type_Aljd == null);
+    this.jdField_a_of_type_Aljd.a(this, 17);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ShareImageHandler
  * JD-Core Version:    0.7.0.1
  */

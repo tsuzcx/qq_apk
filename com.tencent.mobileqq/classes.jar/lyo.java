@@ -1,51 +1,61 @@
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.Intent;
+import com.tencent.av.screenshare.floatingwindow.ScreenShareFloatingWindowService;
 import com.tencent.qphone.base.util.QLog;
 
-class lyo
-  implements bcww
+public final class lyo
 {
-  lyo(lyn paramlyn, String paramString, Context paramContext, int paramInt1, int paramInt2) {}
-  
-  public void a(BaseResp paramBaseResp)
+  public static void a(Context paramContext)
   {
-    int i = 2;
-    QLog.w("ShareChat", 1, "onWXShareResp, mWXTransaction[" + this.jdField_a_of_type_JavaLangString + "], transaction[" + paramBaseResp.transaction + "], errCode[" + paramBaseResp.errCode + "], seq[" + this.jdField_a_of_type_Lyn.a + "]");
-    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)) {
+    Intent localIntent = new Intent(paramContext, ScreenShareFloatingWindowService.class);
+    try
+    {
+      paramContext.stopService(localIntent);
+      paramContext.startService(localIntent);
+      if ((!a(paramContext)) && (QLog.isColorLevel())) {
+        QLog.d("ScreenShareFloatingWindowUtils", 2, "requestScreenSharePermissionDialog fail");
+      }
       return;
     }
-    lyn locallyn;
-    int j;
-    int k;
-    switch (paramBaseResp.errCode)
+    catch (Exception localException)
     {
-    case -1: 
-    default: 
-      bcql.a(this.jdField_a_of_type_AndroidContentContext, 1, this.jdField_a_of_type_AndroidContentContext.getString(2131719487), 0).a();
-    case -2: 
-      WXShareHelper.a().b(this);
-      locallyn = this.jdField_a_of_type_Lyn;
-      j = this.jdField_a_of_type_Int;
-      k = this.b;
-      if (paramBaseResp.errCode != 0) {
-        break;
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ScreenShareFloatingWindowUtils", 2, "actionOn e = " + localException);
+        }
       }
     }
-    for (;;)
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return mbt.a(paramContext, true, null, false);
+  }
+  
+  public static void b(Context paramContext)
+  {
+    Intent localIntent = new Intent(paramContext, ScreenShareFloatingWindowService.class);
+    try
     {
-      locallyn.a(j, k, i);
+      paramContext.stopService(localIntent);
       return;
-      bcql.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_AndroidContentContext.getString(2131719506), 0).a();
-      break;
-      i = 3;
     }
+    catch (Throwable paramContext)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ScreenShareFloatingWindowUtils", 2, "tryStopScreenRecordFloatingWindowService= " + paramContext);
+    }
+  }
+  
+  public static boolean b(Context paramContext)
+  {
+    return mbt.c(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lyo
  * JD-Core Version:    0.7.0.1
  */

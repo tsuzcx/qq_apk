@@ -1,47 +1,19 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment;
-
-public class szh
-  extends tbb
+class szh
 {
-  qqstory_service.RspAddFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment;
-  tbc jdField_a_of_type_Tbc;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
   
-  public szh(qqstory_service.RspAddFeedComment paramRspAddFeedComment, tbc paramtbc)
+  public szh(String paramString, int paramInt, boolean paramBoolean)
   {
-    super(paramRspAddFeedComment.result);
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment = paramRspAddFeedComment;
-    this.jdField_a_of_type_Tbc = paramtbc;
-  }
-  
-  public szh(tbc paramtbc)
-  {
-    this.jdField_a_of_type_Tbc = paramtbc;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Tbc.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspAddFeedComment);
-  }
-  
-  public void a(int paramInt, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Tbc.a(paramInt, paramBundle);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_Tbc.a(paramInt, paramString);
-  }
-  
-  public void a(boolean paramBoolean, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Tbc.a(paramBoolean, paramBundle);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     szh
  * JD-Core Version:    0.7.0.1
  */

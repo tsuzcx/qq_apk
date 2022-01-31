@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import aowc;
-import apbc;
+import aqpa;
+import aqua;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class FileTransferHandler$8
   implements Runnable
 {
-  public FileTransferHandler$8(aowc paramaowc, long paramLong, boolean paramBoolean, String paramString) {}
+  public FileTransferHandler$8(aqpa paramaqpa, long paramLong, boolean paramBoolean, String paramString) {}
   
   public void run()
   {

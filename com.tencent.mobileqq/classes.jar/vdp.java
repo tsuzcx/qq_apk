@@ -1,12 +1,16 @@
-public abstract interface vdp
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
+
+public class vdp
+  extends unf
 {
-  public abstract void P_();
-  
-  public abstract void Q_();
+  public vdp(qqstory_service.RspReportEvil paramRspReportEvil)
+  {
+    super(paramRspReportEvil.result);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdp
  * JD-Core Version:    0.7.0.1
  */

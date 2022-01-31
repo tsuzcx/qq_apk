@@ -1,140 +1,117 @@
-import android.annotation.TargetApi;
-import android.hardware.Camera;
-import android.hardware.Camera.CameraInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-@TargetApi(9)
 public class amez
 {
-  private static amez jdField_a_of_type_Amez;
-  private static Camera.CameraInfo[] jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
-  private final int jdField_a_of_type_Int;
-  private amft jdField_a_of_type_Amft = amft.a();
-  private final Camera.CameraInfo[] jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
-  private int jdField_b_of_type_Int = -1;
-  private int c = -1;
-  private int d = -1;
-  
-  private amez()
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
   {
-    int i;
-    if (jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo != null)
+    int k = 0;
+    int m = 0;
+    int j = 1;
+    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
+    TroopInfo localTroopInfo = localTroopManager.b(String.valueOf(paramLong));
+    if (localTroopInfo == null)
     {
-      this.jdField_a_of_type_Int = jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo.length;
-      this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo = jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
-      i = k;
-      if (i >= this.jdField_a_of_type_Int) {
+      localTroopInfo = new TroopInfo();
+      localTroopInfo.cmdUinFlagEx2 = paramInt;
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopRankConfig", 2, "decodeSinglePbMsg_GroupDis, groupMemberFlagEx2=" + paramInt + ", troopUin=" + paramLong + ", hummer message cmdUinFlagEx2=" + localTroopInfo.cmdUinFlagEx2);
+      }
+      if (localTroopInfo.cmdUinFlagEx2 != paramInt)
+      {
+        i = m;
+        if (TroopInfo.isCmdUinFlagEx2Open(localTroopInfo.cmdUinFlagEx2, 512) != TroopInfo.isCmdUinFlagEx2Open(paramInt, 512)) {
+          i = 1;
+        }
+        localTroopInfo.cmdUinFlagEx2 = paramInt;
+        paramInt = j;
+      }
+      for (;;)
+      {
+        if (paramInt != 0)
+        {
+          localTroopManager.b(localTroopInfo);
+          if (i != 0) {
+            a(paramQQAppInterface, localTroopInfo);
+          }
+        }
         return;
+        paramInt = i;
+        i = k;
       }
-      if ((this.c != -1) || (this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[i].facing != 0)) {
-        break label203;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, TroopInfo paramTroopInfo)
+  {
+    if (TroopInfo.isCmdUinFlagEx2Open(paramTroopInfo.cmdUinFlagEx2, 512)) {}
+    for (int i = 1;; i = 0)
+    {
+      FriendsStatusUtil.a(paramQQAppInterface, paramTroopInfo.troopuin, 1, i);
+      return;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, Map<String, Boolean> paramMap)
+  {
+    paramMap = paramMap.entrySet().iterator();
+    if (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      if (((Boolean)localEntry.getValue()).booleanValue()) {}
+      for (int i = 1;; i = 0)
+      {
+        FriendsStatusUtil.a(paramQQAppInterface, (String)localEntry.getKey(), 1, i);
+        break;
       }
-      this.c = i;
+    }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, long paramLong, int paramInt)
+  {
+    int i = 0;
+    int j = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopStatusUtil", 2, new Object[] { "HummerMessage::updateTroopRingId: invoked. ", " ringId: ", Integer.valueOf(paramInt), " groupCode: ", Long.valueOf(paramLong) });
+    }
+    TroopManager localTroopManager = (TroopManager)paramQQAppInterface.getManager(52);
+    TroopInfo localTroopInfo2 = localTroopManager.b(String.valueOf(paramLong));
+    TroopInfo localTroopInfo1 = localTroopInfo2;
+    if (localTroopInfo2 == null)
+    {
+      localTroopInfo1 = new TroopInfo();
+      localTroopInfo1.udwCmdUinRingtoneID = paramInt;
+      i = 1;
+    }
+    if (localTroopInfo1.udwCmdUinRingtoneID != paramInt)
+    {
+      localTroopInfo1.udwCmdUinRingtoneID = paramInt;
+      i = j;
     }
     for (;;)
     {
-      i += 1;
-      break;
-      this.jdField_a_of_type_Int = a();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.camera.CameraHolder", 1, "[CameraHolder] mNumberOfCameras = " + this.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo = new Camera.CameraInfo[this.jdField_a_of_type_Int];
-      int j = 0;
-      for (;;)
+      if (i != 0)
       {
-        i = k;
-        if (j >= this.jdField_a_of_type_Int) {
-          break;
-        }
-        this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[j] = new Camera.CameraInfo();
-        try
-        {
-          Camera.getCameraInfo(j, this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[j]);
-          j += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            QLog.e("Q.camera.CameraHolder", 2, localException, new Object[0]);
-          }
-        }
+        localTroopManager.b(localTroopInfo1);
+        anxb.a(paramQQAppInterface).a(paramInt);
       }
-      label203:
-      if ((this.d == -1) && (this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[i].facing == 1)) {
-        this.d = i;
-      }
+      return;
     }
-  }
-  
-  /* Error */
-  public static amez a()
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 90	amez:jdField_a_of_type_Amez	Lamez;
-    //   6: ifnonnull +25 -> 31
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 90	amez:jdField_a_of_type_Amez	Lamez;
-    //   15: ifnonnull +13 -> 28
-    //   18: new 2	amez
-    //   21: dup
-    //   22: invokespecial 91	amez:<init>	()V
-    //   25: putstatic 90	amez:jdField_a_of_type_Amez	Lamez;
-    //   28: ldc 2
-    //   30: monitorexit
-    //   31: getstatic 90	amez:jdField_a_of_type_Amez	Lamez;
-    //   34: astore_0
-    //   35: ldc 2
-    //   37: monitorexit
-    //   38: aload_0
-    //   39: areturn
-    //   40: astore_0
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: aload_0
-    //   45: athrow
-    //   46: astore_0
-    //   47: ldc 2
-    //   49: monitorexit
-    //   50: aload_0
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   34	5	0	localamez	amez
-    //   40	5	0	localObject1	Object
-    //   46	5	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	28	40	finally
-    //   28	31	40	finally
-    //   41	44	40	finally
-    //   3	12	46	finally
-    //   31	35	46	finally
-    //   44	46	46	finally
-  }
-  
-  public int a()
-  {
-    return amft.a().b();
-  }
-  
-  public amft a()
-  {
-    return amft.a();
-  }
-  
-  public Camera.CameraInfo[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amez
  * JD-Core Version:    0.7.0.1
  */

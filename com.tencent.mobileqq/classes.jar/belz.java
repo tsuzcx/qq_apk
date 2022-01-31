@@ -1,38 +1,20 @@
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
+import android.util.Pair;
+import android.view.View;
+import android.view.View.OnClickListener;
+import java.util.ArrayList;
 
-public abstract class belz
+class belz
 {
-  public static String a(String paramString)
-  {
-    try
-    {
-      paramString = URLEncoder.encode(paramString, "UTF-8");
-      return paramString;
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      throw new IllegalArgumentException(paramString);
-    }
-  }
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = null;
+  View jdField_a_of_type_AndroidViewView;
+  ArrayList<Pair<View, bely>> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  int[] jdField_a_of_type_ArrayOfInt;
   
-  public static String b(String paramString)
-  {
-    try
-    {
-      paramString = URLDecoder.decode(paramString, "UTF-8");
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      throw new IllegalArgumentException(paramString);
-    }
-  }
+  private belz(belw parambelw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     belz
  * JD-Core Version:    0.7.0.1
  */

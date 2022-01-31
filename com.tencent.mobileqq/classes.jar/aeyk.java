@@ -1,24 +1,49 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 class aeyk
-  implements View.OnClickListener
+  extends alsi
 {
-  aeyk(aeyj paramaeyj) {}
+  private WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(View paramView)
+  private aeyk(aeyh paramaeyh, BaseActivity paramBaseActivity)
   {
-    paramView = new Intent(aeyj.a(this.a), QQBrowserActivity.class);
-    paramView.putExtra("url", aeyj.a(this.a));
-    aeyj.a(this.a).startActivity(paramView);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
+  }
+  
+  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
+  {
+    super.a(paramBoolean1, paramList, paramBoolean2);
+    if ((aeyh.a(this.jdField_a_of_type_Aeyh, paramList)) && (paramBoolean1)) {}
+    for (paramBoolean2 = true;; paramBoolean2 = false)
+    {
+      paramList = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("MergeForwardRevokeHelper", 2, "onMsgRevokeNotice  hasMsgRevoked:" + paramBoolean2 + "; isSuccess:" + paramBoolean1);
+      }
+      if ((paramBoolean2) && (paramList != null))
+      {
+        if (!this.jdField_a_of_type_Aeyh.a) {
+          break;
+        }
+        paramList.finish();
+      }
+      return;
+    }
+    if (aeyh.a() == paramList)
+    {
+      aeyh.a(this.jdField_a_of_type_Aeyh, paramList);
+      return;
+    }
+    paramList.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeyk
  * JD-Core Version:    0.7.0.1
  */

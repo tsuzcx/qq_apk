@@ -1,39 +1,64 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.sdk.MsfCommand;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class bduo
-  implements bfph
+  extends MSFServlet
 {
-  public bduo(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
-      if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
+    QLog.i("health_manager", 1, "MyServlet onReceive." + paramFromServiceMsg.getServiceCmd());
+    if ((paramFromServiceMsg.isSuccess()) && (paramFromServiceMsg.getServiceCmd().equals("cmd_refresh_steps")))
+    {
+      String str = paramIntent.getStringExtra("json_string");
+      paramFromServiceMsg = (String)paramFromServiceMsg.getAttribute("StepInfoJSON");
+      Bundle localBundle = new Bundle();
+      if (!TextUtils.isEmpty(str)) {
+        localBundle.putString("json_string", str);
       }
+      if (!TextUtils.isEmpty(paramFromServiceMsg)) {
+        localBundle.putString("StepInfoJSON", paramFromServiceMsg);
+      }
+      if (paramIntent.getExtras().getString("json_getstepcallback") != null) {
+        localBundle.putString("json_getstepcallback", paramIntent.getExtras().getString("json_getstepcallback"));
+      }
+      notifyObserver(paramIntent, 0, true, localBundle, null);
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    paramPacket = paramIntent.getStringExtra("msf_cmd_type");
+    ToServiceMsg localToServiceMsg = new ToServiceMsg(null, "0", paramPacket);
+    localToServiceMsg.setMsfCommand(MsfCommand.msf_step_counter);
+    localToServiceMsg.setNeedCallback(true);
+    localToServiceMsg.setTimeout(30000L);
+    if (paramPacket.equals("cmd_health_switch")) {
+      localToServiceMsg.addAttribute("isOpen", Boolean.valueOf(paramIntent.getBooleanExtra("isOpen", false)));
     }
     for (;;)
     {
-      QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
+      sendToMSF(paramIntent, localToServiceMsg);
       return;
-      if (paramInt == 1)
+      if (paramPacket.equals("cmd_update_lastreport_time"))
       {
-        if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Bduf.d(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_Auuy.a.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-        } else {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
-        }
+        long l = paramIntent.getLongExtra("last_report_time", 0L);
+        boolean bool = paramIntent.getBooleanExtra("has_report_yes", false);
+        localToServiceMsg.addAttribute("last_report_time", Long.valueOf(l));
+        localToServiceMsg.addAttribute("has_report_yes", Boolean.valueOf(bool));
+        localToServiceMsg.setNeedCallback(false);
       }
-      else if (paramInt == 2)
+      else if (paramPacket.equals("cmd_reset_step"))
       {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
-        continue;
-        if (paramInt == 0) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-        } else if (paramInt == 1) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
+        int i = paramIntent.getIntExtra("server_step", -1);
+        if (-1 != i) {
+          localToServiceMsg.addAttribute("server_step", Integer.valueOf(i));
         }
       }
     }
@@ -41,7 +66,7 @@ public class bduo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bduo
  * JD-Core Version:    0.7.0.1
  */

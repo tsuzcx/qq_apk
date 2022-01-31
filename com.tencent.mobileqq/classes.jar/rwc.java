@@ -1,47 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
-final class rwc
-  implements rzz
+public abstract interface rwc
 {
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaAccessHelper", 2, "pre load all offline from net is fail");
-    }
-  }
+  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, int paramInt);
   
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = (JSONArray)new JSONObject(paramString).get("preload_bids");
-      int i = 0;
-      while (i < paramString.length())
-      {
-        rvx.a((String)paramString.get(i), null);
-        i += 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ViolaAccessHelper", 2, "pre load all offline from net is success");
-      }
-      rvx.jdField_a_of_type_JavaLangString = onh.a();
-      rvx.jdField_a_of_type_Long = System.currentTimeMillis();
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ViolaAccessHelper", 2, "pre load all offline from net is exception:" + paramString.getMessage());
-    }
-  }
+  public abstract void a(ReadInjoyXRecyclerView paramReadInjoyXRecyclerView, boolean paramBoolean);
+  
+  public abstract void m();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rwc
  * JD-Core Version:    0.7.0.1
  */

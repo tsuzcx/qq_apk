@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.util;
 
-import ajti;
-import bbdx;
-import bbef;
+import alkv;
+import bdcs;
+import bdda;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class ProfileCardUtil$1
@@ -12,17 +12,17 @@ public final class ProfileCardUtil$1
   
   public void run()
   {
-    String str1 = ajti.a(this.a, ajti.b(BaseApplication.getContext()));
-    int i = ajti.c(BaseApplication.getContext());
-    String str2 = ajti.a(this.a, i);
-    bbef.a(this.b, str1);
-    bbef.a(this.b, str2, i, i);
-    bbdx.a(this.b, true);
+    String str1 = alkv.a(this.a, alkv.b(BaseApplication.getContext()));
+    int i = alkv.c(BaseApplication.getContext());
+    String str2 = alkv.a(this.a, i);
+    bdda.a(this.b, str1);
+    bdda.a(this.b, str2, i, i);
+    bdcs.a(this.b, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.ProfileCardUtil.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 
 class aqft
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  aqft(aqfq paramaqfq, bbgu parambbgu) {}
+  aqft(aqfq paramaqfq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_Bbgu.dismiss();
+    aqfq.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqft
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,24 @@
-public abstract interface ahxj
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+
+public class ahxj
+  implements View.OnClickListener
 {
-  public abstract vrk a();
+  public ahxj(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(vrk paramvrk);
-  
-  public abstract boolean a();
-  
-  public abstract void b();
-  
-  public abstract boolean b();
-  
-  public abstract void c();
-  
-  public abstract boolean c();
-  
-  public abstract void d();
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("url", "https://m.vip.qq.com/freedom/freedom_group_all.html?_wv=1");
+    this.a.startActivity(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahxj
  * JD-Core Version:    0.7.0.1
  */

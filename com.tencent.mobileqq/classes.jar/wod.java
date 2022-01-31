@@ -1,31 +1,43 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.subscribe.comment.EmoView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserSelfInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class wod
-  extends Handler
+  extends unk<woe>
 {
-  public wod(EmoView paramEmoView) {}
+  public static final String a = ume.a("StorySvc.get_user_base_info");
   
-  public void handleMessage(Message paramMessage)
+  public String a()
   {
-    int i;
-    if (paramMessage.what == 0)
+    return a;
+  }
+  
+  public woe a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetUserSelfInfo localRspGetUserSelfInfo = new qqstory_service.RspGetUserSelfInfo();
+    try
     {
-      i = EmoView.a(this.a) + 1;
-      if ((i <= 4) && (EmoView.a(this.a)[EmoView.a(this.a)] == 0)) {}
+      localRspGetUserSelfInfo.mergeFrom(paramArrayOfByte);
+      return new woe(localRspGetUserSelfInfo);
     }
-    else
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      return;
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        wsv.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+      }
     }
-    EmoView.a(this.a, i);
-    EmoView.a(this.a)[EmoView.a(this.a)] = 1;
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wod
  * JD-Core Version:    0.7.0.1
  */

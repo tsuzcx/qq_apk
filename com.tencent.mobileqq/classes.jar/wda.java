@@ -1,32 +1,30 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class wda
-  extends AccessibilityDelegateCompat
+class wda
+  extends SimpleObserver<Void>
 {
-  public wda(LeftTabBarView paramLeftTabBarView) {}
+  wda(wcy paramwcy, wdc paramwdc) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void a(Void paramVoid)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
-    }
+    super.onNext(paramVoid);
+    wsv.b("QQStoryTakeVideoHelper", "generate video manifest success.");
+    this.jdField_a_of_type_Wcy.a = 2;
+    this.jdField_a_of_type_Wdc.a();
   }
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void onError(@NonNull Error paramError)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    super.onError(paramError);
+    wsv.e("QQStoryTakeVideoHelper", "generate video manifest failed.");
+    this.jdField_a_of_type_Wcy.a = -1;
+    this.jdField_a_of_type_Wdc.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wda
  * JD-Core Version:    0.7.0.1
  */

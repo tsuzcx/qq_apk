@@ -1,131 +1,73 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.support.annotation.NonNull;
 import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.List;
 
 public class bkwh
-  extends PagerAdapter
 {
-  public final SparseArray<View> a;
-  public ArrayList<FilterCategoryItem> a;
-  public final Map<Class<? extends View>, Queue<View>> a;
+  public static final bkwh a;
+  public static final bkwh[] a;
+  public static final bkwh b;
+  public static final bkwh[] b;
+  public static final bkwh c;
+  public final int a;
+  public final String a;
+  public final boolean a;
+  public final int b;
+  public final String b;
   
-  public bkwh(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager)
+  static
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_Bkwh = new bkwh(-1, "215Config");
+    jdField_b_of_type_Bkwh = new bkwh(0, "AEBasePackage", "new_qq_android_native_short_filter_", 72);
+    c = new bkwh(1, "AEAdditionalPackage", "new_qq_android_native_ptu_res_", 77);
+    jdField_a_of_type_ArrayOfBkwh = new bkwh[] { jdField_a_of_type_Bkwh, jdField_b_of_type_Bkwh, c };
+    jdField_b_of_type_ArrayOfBkwh = a();
   }
   
-  public int a()
+  private bkwh(int paramInt, String paramString)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public int a(int paramInt)
+  private bkwh(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (i > 0) {
-      return paramInt % i;
-    }
-    return -1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  @Nullable
-  public View a(int paramInt)
+  private static bkwh[] a()
   {
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public FilterCategoryItem a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (FilterCategoryItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.a);
-    notifyDataSetChanged();
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "destroyItem position: " + paramInt);
-    }
-    View localView = (View)paramObject;
-    localView.removeCallbacks((Runnable)localView.getTag());
-    localView.clearAnimation();
-    paramViewGroup.removeView(localView);
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localView.getClass());
-    paramViewGroup = paramObject;
-    if (paramObject == null)
+    LinkedList localLinkedList = new LinkedList();
+    bkwh[] arrayOfbkwh = jdField_a_of_type_ArrayOfBkwh;
+    int j = arrayOfbkwh.length;
+    int i = 0;
+    while (i < j)
     {
-      paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localView.getClass(), paramViewGroup);
-    }
-    paramViewGroup.offer(localView);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "instantiateItem position: " + paramInt);
-    }
-    Object localObject1 = a(paramInt);
-    if (localObject1 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("VideoFilterViewPager", 2, "instantiateItem find data is null!");
+      bkwh localbkwh = arrayOfbkwh[i];
+      if (localbkwh.jdField_a_of_type_Boolean) {
+        localLinkedList.add(localbkwh);
       }
-      return null;
+      i += 1;
     }
-    localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localObject1.getClass());
-    if (localObject1 != null) {}
-    for (localObject1 = (View)((Queue)localObject1).poll();; localObject1 = null)
-    {
-      Object localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject2 = ((LayoutInflater)this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.getContext().getSystemService("layout_inflater")).inflate(2131558659, null);
-        ((View)localObject2).setVisibility(8);
-      }
-      paramViewGroup.addView((View)localObject2);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-      return localObject2;
-    }
+    return (bkwh[])localLinkedList.toArray(new bkwh[0]);
   }
   
-  public boolean isViewFromObject(View paramView, Object paramObject)
+  @NonNull
+  public String toString()
   {
-    return ((paramObject instanceof View)) && (paramObject == paramView);
+    return "{index:" + this.jdField_a_of_type_Int + ", description:" + this.jdField_a_of_type_JavaLangString + ", resPrefix:" + this.jdField_b_of_type_JavaLangString + ", resVersion:" + this.jdField_b_of_type_Int + ", isPackage:" + this.jdField_a_of_type_Boolean + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkwh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,52 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class anbx
-  extends ampa<anbv>
+  implements TVK_SDKMgr.OnLogListener
 {
-  public static anbv a()
+  public int d(String paramString1, String paramString2)
   {
-    return (anbv)ampl.a().a(429);
-  }
-  
-  public int a()
-  {
-    return 429;
-  }
-  
-  @NonNull
-  public anbv a(int paramInt)
-  {
-    return new anbv();
-  }
-  
-  @Nullable
-  public anbv a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return anbv.a(paramArrayOfamph);
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
     }
-    return null;
-  }
-  
-  public Class<anbv> a()
-  {
-    return anbv.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(anbv paramanbv) {}
-  
-  public int b()
-  {
     return 0;
   }
   
-  public boolean b()
+  public int e(String paramString1, String paramString2)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
   }
   
-  public boolean c()
+  public int i(String paramString1, String paramString2)
   {
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,46 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.etrump.mixlayout.AnimatedImageDrawable;
-
-public class gz
-  extends gw
+public final class gz
 {
-  public gz(Drawable paramDrawable)
+  private final int jdField_a_of_type_Int;
+  private final gy[] jdField_a_of_type_ArrayOfGy;
+  
+  gz(int paramInt, gy... paramVarArgs)
   {
-    super(paramDrawable);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfGy = paramVarArgs;
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public int a()
   {
-    paramPaint = getDrawable();
-    paramCharSequence = paramPaint;
-    if ((paramPaint instanceof AnimatedImageDrawable)) {
-      paramCharSequence = ((AnimatedImageDrawable)paramPaint).a();
-    }
-    if (paramCharSequence == null) {
-      return;
-    }
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt5 - getDrawable().getBounds().height());
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    return this.jdField_a_of_type_Int;
   }
   
-  public Drawable getDrawable()
+  public gy[] a()
   {
-    return super.getDrawable();
+    return this.jdField_a_of_type_ArrayOfGy;
+  }
+  
+  public int b()
+  {
+    int i = 0;
+    gy[] arrayOfgy = this.jdField_a_of_type_ArrayOfGy;
+    int k = arrayOfgy.length;
+    int j = 0;
+    while (i < k)
+    {
+      j += arrayOfgy[i].a();
+      i += 1;
+    }
+    return j;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int * b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     gz
  * JD-Core Version:    0.7.0.1
  */

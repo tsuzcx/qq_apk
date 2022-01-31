@@ -1,31 +1,18 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler;
-import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
-import com.tencent.mobileqq.utils.confighandler.ReadConfigTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.TroopBarMyBar;
 
-public class bbmb
-  implements bbkm
+public final class bbmb
+  implements Parcelable.Creator<TroopBarMyBar>
 {
-  public bbmb(NormalConfigHandler paramNormalConfigHandler, NormalConfigHandler.GetConfigListen paramGetConfigListen, AppInterface paramAppInterface) {}
-  
-  public void a(boolean paramBoolean, ArrayList<bbkl> paramArrayList)
+  public TroopBarMyBar a(Parcel paramParcel)
   {
-    paramArrayList = (ReadConfigTask)paramArrayList.get(0);
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.mReadConfigTask != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.mReadConfigTask == paramArrayList))
-    {
-      QLog.w(this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.TAG, 1, "异步加载config返回, bsuc[" + paramBoolean + "], TAG[" + paramArrayList.TAG + "], config[" + paramArrayList.mConfigInfo + "]");
-      this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.mReadConfigTask = null;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler$GetConfigListen != null) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler$GetConfigListen.onGetConfig(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramArrayList.mConfigInfo);
-      }
-      return;
-      QLog.w(this.jdField_a_of_type_ComTencentMobileqqUtilsConfighandlerNormalConfigHandler.TAG, 1, "异步加载config返回[" + paramArrayList.TAG + "], 但原请求取消了");
-    }
+    return new TroopBarMyBar(paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+  }
+  
+  public TroopBarMyBar[] a(int paramInt)
+  {
+    return null;
   }
 }
 

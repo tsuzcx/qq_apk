@@ -16,31 +16,31 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import axlk;
-import wod;
-import woe;
-import wof;
-import wog;
-import woi;
-import wom;
-import wov;
+import azgq;
+import ycs;
+import yct;
+import ycu;
+import ycv;
+import ycx;
+import ydb;
+import ydl;
 
 public class EmoView
   extends LinearLayout
-  implements wom, wov
+  implements ydb, ydl
 {
-  private int jdField_a_of_type_Int = 2130838746;
+  private int jdField_a_of_type_Int = 2130838908;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private WorkSpaceView jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView;
-  private wog jdField_a_of_type_Wog;
-  private wov jdField_a_of_type_Wov;
+  private ycv jdField_a_of_type_Ycv;
+  private ydl jdField_a_of_type_Ydl;
   private boolean jdField_a_of_type_Boolean = true;
   private boolean[] jdField_a_of_type_ArrayOfBoolean = { 1, 0, 0, 0 };
   private int jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-  private wog jdField_b_of_type_Wog = new wof(this);
+  private ycv jdField_b_of_type_Ycv = new ycu(this);
   private final int c = 28;
   private int d = 1;
   private int e = -1;
@@ -94,7 +94,7 @@ public class EmoView
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
     localLayoutParams.gravity = 81;
     this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidOsHandler = new wod(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ycs(this);
     this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView.setHandler(this.jdField_a_of_type_AndroidOsHandler);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(0);
@@ -110,18 +110,18 @@ public class EmoView
   {
     int i = 27;
     int j = (int)Math.ceil(107.0D / (27 * 1.0D));
-    GridView localGridView = (GridView)LayoutInflater.from(getContext()).inflate(2131558706, null);
+    GridView localGridView = (GridView)LayoutInflater.from(getContext()).inflate(2131558742, null);
     localGridView.setNumColumns(7);
     if (paramInt == j) {
       i = 26;
     }
-    woi localwoi = new woi(getContext(), paramInt, i, 28, paramInt, this);
-    localGridView.setAdapter(localwoi);
+    ycx localycx = new ycx(getContext(), paramInt, i, 28, paramInt, this);
+    localGridView.setAdapter(localycx);
     localGridView.setColumnWidth(this.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay().getWidth() / 7);
-    localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, axlk.a(196.0F)));
+    localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, azgq.a(196.0F)));
     this.jdField_a_of_type_ComTencentBizSubscribeCommentWorkSpaceView.addView(localGridView);
-    postDelayed(new EmoView.2(this, paramInt, localGridView, localwoi), 1000L);
-    localGridView.setOnItemClickListener(new woe(this, paramInt));
+    postDelayed(new EmoView.2(this, paramInt, localGridView, localycx), 1000L);
+    localGridView.setOnItemClickListener(new yct(this, paramInt));
   }
   
   private void c()
@@ -182,28 +182,28 @@ public class EmoView
   {
     this.d = (paramInt + 1);
     c(paramInt);
-    if (this.jdField_a_of_type_Wov != null) {
-      this.jdField_a_of_type_Wov.a(paramInt);
+    if (this.jdField_a_of_type_Ydl != null) {
+      this.jdField_a_of_type_Ydl.a(paramInt);
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     if (paramInt1 == 27) {
-      this.jdField_b_of_type_Wog.a();
+      this.jdField_b_of_type_Ycv.a();
     }
     do
     {
       return;
       paramInt1 = (paramInt2 - 1) * 27 + paramInt1;
     } while (paramInt1 >= 107);
-    String str = wor.b[woi.b[paramInt1]];
-    this.jdField_b_of_type_Wog.a(str);
+    String str = ydg.b[ycx.b[paramInt1]];
+    this.jdField_b_of_type_Ycv.a(str);
   }
   
-  public void a(Activity paramActivity, Context paramContext, EditText paramEditText, wog paramwog)
+  public void a(Activity paramActivity, Context paramContext, EditText paramEditText, ycv paramycv)
   {
-    this.jdField_a_of_type_Wog = paramwog;
+    this.jdField_a_of_type_Ycv = paramycv;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     a();
     this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
@@ -235,14 +235,14 @@ public class EmoView
     }
   }
   
-  public void setOnScreenChangeListener(wov paramwov)
+  public void setOnScreenChangeListener(ydl paramydl)
   {
-    this.jdField_a_of_type_Wov = paramwov;
+    this.jdField_a_of_type_Ydl = paramydl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.EmoView
  * JD-Core Version:    0.7.0.1
  */

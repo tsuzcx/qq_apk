@@ -2,7 +2,7 @@ package com.tencent.mobileqq.mini.apkg;
 
 import android.content.SharedPreferences;
 import android.text.TextUtils;
-import bgyi;
+import bizf;
 import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
 import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.minigame.utils.GameLog;
@@ -16,19 +16,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public abstract class ApkgBaseInfo
 {
-  private static final String CONFIG_SPLIT = ",";
+  private static final String CONFIG_SPLIT = ";";
   private static final String[] DOMAIN_NAME_LIST = { "Request", "Websocket", "Download", "Upload", "Webview" };
   public static final int DOMIAN_TYPE_DOWNLOAD = 2;
   public static final int DOMIAN_TYPE_REQUEST = 0;
   public static final int DOMIAN_TYPE_UPLOAD = 3;
   public static final int DOMIAN_TYPE_WEBSOCKET = 1;
   public static final int DOMIAN_TYPE_WEBVIEW = 4;
-  public static boolean isRdmBuild = bgyi.a().toLowerCase().contains("rdm");
+  public static boolean isRdmBuild = bizf.a().toLowerCase().contains("rdm");
   private static String mCurWhiteListConfig;
   private static ArrayList<String> sDominWhiteList;
   public String apkgFolderPath;
@@ -49,20 +47,20 @@ public abstract class ApkgBaseInfo
     this.appConfig = paramMiniAppConfig;
   }
   
-  private static ArrayList<String> getDefaultRegularPatterns()
+  private static ArrayList<String> getDomainWhiteList()
   {
     try
     {
       if (sDominWhiteList == null)
       {
-        String str1 = QzoneConfig.getInstance().getConfig("qqtriton", "MiniGameDomainWhiteList", "\\S*\\.qq\\.com,thirdqq\\.qlogo\\.cn,c\\d{4}\\.myh5\\.90wmoyu\\.com,\\S*\\.gtimg\\.cn");
+        String str1 = QzoneConfig.getInstance().getConfig("qqminiapp", "defaultAllowedHostList", ".qlogo.cn;.tcb.qcloud.la;open.mp.qq.com");
         if ((str1 != null) && (!str1.equals(mCurWhiteListConfig)))
         {
           QLog.i("[mini] http.", 1, "Default white domain:" + str1);
           sDominWhiteList = new ArrayList();
           try
           {
-            String[] arrayOfString = str1.split(",");
+            String[] arrayOfString = str1.split(";");
             if (arrayOfString != null)
             {
               int j = arrayOfString.length;
@@ -223,89 +221,76 @@ public abstract class ApkgBaseInfo
     if (isDomainConfigCached(localDomainConfig, paramInt)) {
       return true;
     }
-    if ((localDomainConfig != null) && (!TextUtils.isEmpty(localDomainConfig.host)))
+    if ((localDomainConfig != null) && (!TextUtils.isEmpty(localDomainConfig.host)) && (this.appConfig != null) && (this.appConfig.config != null))
     {
-      localObject1 = getDefaultRegularPatterns().iterator();
-      for (;;)
+      localObject1 = this.appConfig.config.requestDomainList;
+      switch (paramInt)
       {
-        if (((Iterator)localObject1).hasNext())
-        {
-          Pattern localPattern = Pattern.compile((String)((Iterator)localObject1).next(), 2);
-          if (localPattern == null) {
-            continue;
-          }
-          try
-          {
-            paramBoolean = localPattern.matcher(localDomainConfig.host).matches();
-            if (paramBoolean)
-            {
-              putDomainConfigToCache(localDomainConfig, paramInt);
-              return true;
-            }
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              QLog.e("[mini] http.", 1, "", localException);
-              paramBoolean = false;
-            }
-          }
+      default: 
+        if (localObject1 != null) {
+          localObject1 = ((List)localObject1).iterator();
         }
-      }
-      if ((this.appConfig != null) && (this.appConfig.config != null))
-      {
-        localObject1 = this.appConfig.config.requestDomainList;
-        switch (paramInt)
+        break;
+      case 1: 
+      case 2: 
+      case 3: 
+      case 4: 
+        for (;;)
         {
-        default: 
-          if (localObject1 != null) {
-            localObject1 = ((List)localObject1).iterator();
-          }
-          break;
-        case 1: 
-        case 2: 
-        case 3: 
-        case 4: 
           for (;;)
           {
-            for (;;)
+            if (!((Iterator)localObject1).hasNext()) {
+              break label673;
+            }
+            Object localObject2 = (String)((Iterator)localObject1).next();
+            try
             {
-              if (!((Iterator)localObject1).hasNext()) {
-                break label761;
-              }
-              Object localObject2 = (String)((Iterator)localObject1).next();
-              try
+              if (!TextUtils.isEmpty((CharSequence)localObject2))
               {
-                if (!TextUtils.isEmpty((CharSequence)localObject2))
+                localObject2 = DomainConfig.getDomainConfig(((String)localObject2).toLowerCase());
+                if (DomainConfig.isDomainConfigMatch((DomainConfig)localObject2, localDomainConfig))
                 {
-                  localObject2 = DomainConfig.getDomainConfig(((String)localObject2).toLowerCase());
-                  if (DomainConfig.isDomainConfigMatch((DomainConfig)localObject2, localDomainConfig))
-                  {
-                    putDomainConfigToCache(localDomainConfig, paramInt);
-                    return true;
-                    localObject1 = this.appConfig.config.socketDomainList;
-                    break;
-                    localObject1 = this.appConfig.config.downloadFileDomainList;
-                    break;
-                    localObject1 = this.appConfig.config.uploadFileDomainList;
-                    break;
-                    localObject1 = this.appConfig.config.businessDomainList;
-                    break;
-                  }
-                  QLog.i("[mini] http.domainValid", 1, "request:" + localDomainConfig + ",allow:" + localObject2);
+                  putDomainConfigToCache(localDomainConfig, paramInt);
+                  return true;
+                  localObject1 = this.appConfig.config.socketDomainList;
+                  break;
+                  localObject1 = this.appConfig.config.downloadFileDomainList;
+                  break;
+                  localObject1 = this.appConfig.config.uploadFileDomainList;
+                  break;
+                  localObject1 = this.appConfig.config.businessDomainList;
+                  break;
                 }
+                QLog.i("[mini] http.domainValid", 1, "request:" + localDomainConfig + ",allow:" + localObject2);
               }
-              catch (Throwable localThrowable)
-              {
-                QLog.e("[mini] http.domainValid", 1, "check domainValid error, requestUrl:" + paramString, localThrowable);
-              }
+            }
+            catch (Throwable localThrowable2)
+            {
+              QLog.e("[mini] http.domainValid", 1, "check domainValid error, requestUrl:" + paramString, localThrowable2);
             }
           }
         }
       }
+      label673:
+      localObject1 = getDomainWhiteList();
+      try
+      {
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          String str = (String)((Iterator)localObject1).next();
+          if (((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(localDomainConfig.host)) && (str.startsWith(".")) && (str.split("\\.").length >= 1) && (localDomainConfig.host.endsWith(str))) || (str.equals(localDomainConfig.host)))
+          {
+            putDomainConfigToCache(localDomainConfig, paramInt);
+            return true;
+          }
+        }
+      }
+      catch (Throwable localThrowable1)
+      {
+        QLog.e("[mini] http.domainValid", 1, "check domainValid error, requestUrl:" + paramString, localThrowable1);
+      }
     }
-    label761:
     GameLog.vconsoleLog(DOMAIN_NAME_LIST[paramInt] + ":Invalid domain, please config requestUrl: " + paramString);
     QLog.e("[mini] http.domainValid", 1, DOMAIN_NAME_LIST[paramInt] + ":Invalid domain, please config requestUrl: " + paramString);
     if (!isOnlineVersion())
@@ -387,7 +372,7 @@ public abstract class ApkgBaseInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgBaseInfo
  * JD-Core Version:    0.7.0.1
  */

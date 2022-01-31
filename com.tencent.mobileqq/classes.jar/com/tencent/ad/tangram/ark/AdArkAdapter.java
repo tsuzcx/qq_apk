@@ -8,11 +8,13 @@ import java.lang.ref.WeakReference;
 @Keep
 public abstract interface AdArkAdapter
 {
+  public abstract View buildArkView(AdArkAdapter.Params paramParams);
+  
+  public abstract View buildSelectWindowArkView(AdArkAdapter.Params paramParams);
+  
+  public abstract String getArkFormData(AdArkAdapter.DataParams paramDataParams);
+  
   public abstract Rect getArkInputRect(View paramView);
-  
-  public abstract View getArkView(AdArkAdapter.Params paramParams);
-  
-  public abstract View getSelectWindowArkView(AdArkAdapter.Params paramParams);
   
   public abstract void setNotify(WeakReference<AdArkAdapter.ArkNotifyCallback> paramWeakReference);
 }

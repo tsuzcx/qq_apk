@@ -1,54 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import java.util.List;
-
 public class ogq
-  implements ojp
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public float a;
+  public float b;
+  public float c;
+  public float d;
   
-  public ogq(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
-  
-  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<oif> paramList, boolean paramBoolean2, int paramInt2, int paramInt3)
+  public ogq(float paramFloat1, float paramFloat2)
   {
-    QLog.d("ReadInJoyCommentListFragment", 1, "onCommentListLoad anchor");
-    if (!paramBoolean1) {}
-    do
-    {
-      return;
-      paramList = ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).a().a();
-    } while (paramList == null);
-    if (!TextUtils.isEmpty(paramList.b))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.f();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(true, paramList.a, paramList.b);
-    }
-    for (;;)
-    {
-      paramList.a(false);
-      return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.f();
-    }
+    this.a = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public void onCommentStateError(int paramInt)
+  public ogq(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = true;
-      if (paramInt == 1001) {
-        wij.a(1, 2131718368);
-      }
-    } while (paramInt != 1003);
-    wij.a(1, 2131718369);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
+  }
+  
+  public ogq(ogq paramogq)
+  {
+    this.a = paramogq.a;
+    this.b = paramogq.b;
+  }
+  
+  public void a(ogq paramogq)
+  {
+    float f = this.a;
+    this.a = paramogq.a;
+    paramogq.a = f;
+    f = this.b;
+    this.b = paramogq.b;
+    paramogq.b = f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ogq
  * JD-Core Version:    0.7.0.1
  */

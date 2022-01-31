@@ -1,27 +1,36 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.location.data.LocationRoom.Venue;
-import com.tencent.mobileqq.location.ui.MapWidget;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
-public class aryj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class aryj
+  implements zcv
 {
-  public aryj(MapWidget paramMapWidget, LocationRoom.Venue paramVenue) {}
+  aryj(aryh paramaryh) {}
   
-  public void onGlobalLayout()
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(true, Float.valueOf(15.0F));
-      return;
+    if (ForwardRecentActivity.class.isInstance(this.a.a)) {
+      if (!this.a.a.isFinishing())
+      {
+        if (!paramBoolean) {
+          break label75;
+        }
+        this.a.a(0, "", "");
+      }
     }
-    MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
+    for (;;)
+    {
+      if (this.a.k) {
+        aryh.a(this.a.a, true, "shareToQQ", this.a.b);
+      }
+      return;
+      label75:
+      this.a.a(-1, bfik.d, bfik.d);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aryj
  * JD-Core Version:    0.7.0.1
  */

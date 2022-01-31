@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import ajya;
+import alpo;
 import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
@@ -20,8 +20,8 @@ public class NearbyAppInterface$1
         this.this$0.logout(true);
       }
       Intent localIntent = new Intent("mqq.intent.action.ACCOUNT_KICKED");
-      localIntent.putExtra("title", ajya.a(2131707110));
-      localIntent.putExtra("msg", ajya.a(2131707111));
+      localIntent.putExtra("title", alpo.a(2131707482));
+      localIntent.putExtra("msg", alpo.a(2131707483));
       localIntent.putExtra("reason", Constants.LogoutReason.kicked);
       localIntent.addFlags(268435456);
       BaseApplicationImpl.sApplication.startActivity(localIntent);
@@ -30,7 +30,7 @@ public class NearbyAppInterface$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyAppInterface.1
  * JD-Core Version:    0.7.0.1
  */

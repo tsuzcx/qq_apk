@@ -1,33 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
 
-class ahos
-  implements bfph
+public class ahos
+  extends alsi
 {
-  ahos(ahoo paramahoo, QQAppInterface paramQQAppInterface, RecentBaseData paramRecentBaseData, bfpc parambfpc) {}
+  private ahos(FriendFragment paramFriendFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void f()
   {
-    if (ahoo.a(this.jdField_a_of_type_Ahoo)) {
-      return;
-    }
-    ahoo.a(this.jdField_a_of_type_Ahoo, true);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData.a(), "0X800991E", "0X800991E", 0, 0, "", "", "", "");
-      ahoo.c(this.jdField_a_of_type_Ahoo, this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentBaseData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (FriendFragment.b(this.a)) {
+      FriendFragment.a(this.a, 1400L, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahos
  * JD-Core Version:    0.7.0.1
  */

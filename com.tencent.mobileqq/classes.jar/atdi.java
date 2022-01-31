@@ -1,26 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class atdi
-  implements DialogInterface.OnClickListener
+  extends WebViewPlugin
 {
-  public atdi(GameRoomInviteActivity paramGameRoomInviteActivity, boolean paramBoolean, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-    String str = this.jdField_a_of_type_JavaLangString;
-    paramDialogInterface.b = str;
-    GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str;
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.jdField_a_of_type_Atch.d();
+    if (("nvPopToRoot".equals(paramString3)) && (paramVarArgs.length > 0))
+    {
+      paramJsBridgeListener = this.mRuntime.a();
+      paramString1 = new Intent(paramJsBridgeListener, SplashActivity.class);
+      paramString1.setFlags(67108864);
+      paramJsBridgeListener.startActivity(paramString1);
+      return false;
+    }
+    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atdi
  * JD-Core Version:    0.7.0.1
  */

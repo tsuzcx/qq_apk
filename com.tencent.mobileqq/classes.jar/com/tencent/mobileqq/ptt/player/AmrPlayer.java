@@ -10,10 +10,10 @@ import android.os.Build.VERSION;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
-import avcg;
-import avch;
-import axrn;
-import bfob;
+import awtt;
+import awtu;
+import azmz;
+import bhow;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -21,12 +21,12 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class AmrPlayer
-  implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener, Handler.Callback, avcg
+  implements MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener, Handler.Callback, awtt
 {
   private int jdField_a_of_type_Int = -1;
   private MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
-  private avch jdField_a_of_type_Avch;
-  private bfob jdField_a_of_type_Bfob;
+  private awtu jdField_a_of_type_Awtu;
+  private bhow jdField_a_of_type_Bhow;
   private AmrPlayer.AmrPlayerThread jdField_a_of_type_ComTencentMobileqqPttPlayerAmrPlayer$AmrPlayerThread;
   Runnable jdField_a_of_type_JavaLangRunnable = new AmrPlayer.1(this);
   private String jdField_a_of_type_JavaLangString;
@@ -35,13 +35,13 @@ public final class AmrPlayer
   public AmrPlayer()
   {
     this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-    this.jdField_a_of_type_Bfob = new bfob(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Bhow = new bhow(Looper.getMainLooper(), this);
   }
   
   public AmrPlayer(Context paramContext, int paramInt)
   {
     this.jdField_a_of_type_AndroidMediaMediaPlayer = MediaPlayer.create(paramContext, paramInt);
-    this.jdField_a_of_type_Bfob = new bfob(this);
+    this.jdField_a_of_type_Bhow = new bhow(this);
   }
   
   public int a()
@@ -79,9 +79,9 @@ public final class AmrPlayer
   
   public void a(int paramInt, byte paramByte) {}
   
-  public void a(avch paramavch)
+  public void a(awtu paramawtu)
   {
-    this.jdField_a_of_type_Avch = paramavch;
+    this.jdField_a_of_type_Awtu = paramawtu;
   }
   
   public void a(String paramString)
@@ -172,21 +172,21 @@ public final class AmrPlayer
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 1) {
-      if (this.jdField_a_of_type_Avch != null)
+      if (this.jdField_a_of_type_Awtu != null)
       {
-        this.jdField_a_of_type_Avch.a(this, 0, 0);
+        this.jdField_a_of_type_Awtu.a(this, 0, 0);
         paramMessage = new HashMap();
         paramMessage.put("param_succ_flag", "0");
         paramMessage.put("errCode", "0");
         paramMessage.put("param_version", Build.VERSION.SDK_INT + "");
         paramMessage.put("param_deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-        axrn.a(BaseApplication.getContext()).a(null, "PttAmrPlaryerError", true, 0L, 0L, paramMessage, null);
+        azmz.a(BaseApplication.getContext()).a(null, "PttAmrPlaryerError", true, 0L, 0L, paramMessage, null);
       }
     }
-    while ((paramMessage.what != 2) || (this.jdField_a_of_type_Avch == null)) {
+    while ((paramMessage.what != 2) || (this.jdField_a_of_type_Awtu == null)) {
       return true;
     }
-    this.jdField_a_of_type_Avch.a();
+    this.jdField_a_of_type_Awtu.a();
     return true;
   }
   
@@ -196,8 +196,8 @@ public final class AmrPlayer
       QLog.d("AmrPlayer", 2, "playAmr onCompletion");
     }
     this.jdField_a_of_type_ComTencentMobileqqPttPlayerAmrPlayer$AmrPlayerThread = null;
-    if (this.jdField_a_of_type_Avch != null) {
-      this.jdField_a_of_type_Avch.a();
+    if (this.jdField_a_of_type_Awtu != null) {
+      this.jdField_a_of_type_Awtu.a();
     }
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
   }
@@ -208,15 +208,15 @@ public final class AmrPlayer
       QLog.d("AmrPlayer", 2, "playAmr onError");
     }
     this.jdField_a_of_type_ComTencentMobileqqPttPlayerAmrPlayer$AmrPlayerThread = null;
-    if (this.jdField_a_of_type_Avch != null) {
-      this.jdField_a_of_type_Avch.a(this, paramInt1, paramInt2);
+    if (this.jdField_a_of_type_Awtu != null) {
+      this.jdField_a_of_type_Awtu.a(this, paramInt1, paramInt2);
     }
     paramMediaPlayer = new HashMap();
     paramMediaPlayer.put("param_succ_flag", "0");
     paramMediaPlayer.put("errCode", paramInt1 + "");
     paramMediaPlayer.put("param_version", Build.VERSION.SDK_INT + "");
     paramMediaPlayer.put("param_deviceName", Build.MANUFACTURER + "_" + Build.MODEL);
-    axrn.a(BaseApplication.getContext()).a(null, "PttAmrPlaryerError", true, 0L, 0L, paramMediaPlayer, null);
+    azmz.a(BaseApplication.getContext()).a(null, "PttAmrPlaryerError", true, 0L, 0L, paramMediaPlayer, null);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
     return true;
   }
@@ -230,7 +230,7 @@ public final class AmrPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.player.AmrPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,110 +1,65 @@
-import android.content.Context;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import javax.annotation.Nullable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import java.util.Set;
 
 public class aynq
-  implements aynr
+  extends aylv
 {
-  arlc jdField_a_of_type_Arlc;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  
-  public aynq(QQAppInterface paramQQAppInterface)
+  public aynq(bcws parambcws, aylz paramaylz, Set<String> paramSet)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Arlc = ((arlc)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(338));
+    super(parambcws, paramaylz, paramSet);
   }
   
-  public int a()
+  public void b(ayjl paramayjl, ayru paramayru)
   {
-    return 7;
-  }
-  
-  public bbgu a()
-  {
-    return null;
-  }
-  
-  public String a()
-  {
-    return aynb.b;
-  }
-  
-  public void a() {}
-  
-  public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, @Nullable Map<String, ayno> paramMap, @Nullable Bundle paramBundle)
-  {
-    QLog.i("WatchTogetherManager", 1, "notifySessionChange  serviceType = " + paramInt1 + " from = " + paramInt3);
-  }
-  
-  public void a(Context paramContext, SessionInfo paramSessionInfo, int paramInt)
-  {
-    if (paramInt == 4) {
-      this.jdField_a_of_type_Arlc.a();
-    }
-  }
-  
-  public void a(ayno paramayno, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject)
-  {
-    QLog.i("WatchTogetherManager", 1, "onPushMessageReceive");
-    this.jdField_a_of_type_Arlc.a((WatchTogetherSession)paramayno, paramInt);
-  }
-  
-  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, Map<String, ayno> paramMap, @Nullable Bundle paramBundle)
-  {
-    if (paramInt2 == 0) {}
-    for (paramContext = "2";; paramContext = "")
+    boolean bool = true;
+    super.b(paramayjl, paramayru);
+    if (paramayru.c() != null)
     {
-      QLog.i("WatchTogetherManager", 1, "start  groupuin = " + paramString + " miniapp_from = " + paramContext);
-      WatchTogetherSession localWatchTogetherSession = (WatchTogetherSession)paramMap.get("2_1_" + paramString);
-      paramMap = localWatchTogetherSession;
-      if (localWatchTogetherSession == null) {}
-      try
-      {
-        paramMap = (WatchTogetherSession)aynp.a(2, 1, paramString);
-        this.jdField_a_of_type_Arlc.a(paramContext, paramMap, paramBundle);
-        return false;
+      paramayjl = (ayih)paramayjl;
+      if ((this.a == null) || (!this.a.contains(paramayjl.b()))) {
+        break label144;
       }
-      catch (Throwable paramString)
+    }
+    label138:
+    label144:
+    for (int i = 1;; i = 0)
+    {
+      if (!TextUtils.isEmpty(paramayjl.c()))
       {
-        for (;;)
-        {
-          paramMap = localWatchTogetherSession;
+        paramayru.c().setText(paramayjl.c());
+        i = 1;
+      }
+      paramayjl = paramayru.c();
+      int j;
+      if (i != 0)
+      {
+        j = 0;
+        paramayjl.setVisibility(j);
+        paramayjl = paramayru.a();
+        if (i != 0) {
+          break label138;
         }
       }
+      for (;;)
+      {
+        paramayjl.setClickable(bool);
+        if (paramayru.a() != null) {
+          paramayru.a().setVisibility(8);
+        }
+        return;
+        j = 8;
+        break;
+        bool = false;
+      }
     }
-  }
-  
-  public boolean a(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean, Map<String, ayno> paramMap, @Nullable Bundle paramBundle)
-  {
-    return true;
-  }
-  
-  public boolean b(Context paramContext, String paramString, int paramInt1, int paramInt2, Map<String, ayno> paramMap, @Nullable Bundle paramBundle)
-  {
-    paramContext = (WatchTogetherSession)paramMap.get("2_1_" + paramString);
-    QLog.i("WatchTogetherManager", 1, "join  groupuin = " + paramString + " from = " + paramInt2);
-    if (paramInt2 == 2) {
-      this.jdField_a_of_type_Arlc.a("4", paramContext, paramBundle);
-    }
-    while (((paramInt2 != 1) && (paramInt2 != 8)) || (paramContext == null)) {
-      return false;
-    }
-    if ((!TextUtils.isEmpty(paramContext.a)) && (!paramContext.a.contains("fromid"))) {
-      paramContext.a = (paramContext.a + "&fromid=" + "10011");
-    }
-    this.jdField_a_of_type_Arlc.a(paramContext, paramBundle);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aynq
  * JD-Core Version:    0.7.0.1
  */

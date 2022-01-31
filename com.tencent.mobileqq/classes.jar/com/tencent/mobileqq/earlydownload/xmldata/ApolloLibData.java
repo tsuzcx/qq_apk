@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import anpi;
-
 public class ApolloLibData
   extends XmlData
 {
   public String getSharedPreferencesName()
   {
-    return "preload_" + anpi.a;
+    return "preload_android.qq.apollo.js.833g1";
   }
   
   public String getStrResName()
   {
-    return anpi.a;
+    return "android.qq.apollo.js.833g1";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.ApolloLibData
  * JD-Core Version:    0.7.0.1
  */

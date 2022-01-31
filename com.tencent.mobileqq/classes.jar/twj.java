@@ -1,29 +1,32 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.qqcircle.fragments.QCirclePersonalDetailFragment;
 
 public class twj
+  extends RecyclerView.OnScrollListener
 {
-  public ErrorMessage a;
-  public List<twm> a;
-  public boolean a;
-  public ErrorMessage b;
-  public boolean b;
-  public boolean c;
+  public twj(QCirclePersonalDetailFragment paramQCirclePersonalDetailFragment) {}
   
-  public twj()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    if (paramInt == 0)
+    {
+      abqw.a().a("qcircle_personal_detail_page", false);
+      return;
+    }
+    abqw.a().a("qcircle_personal_detail_page");
   }
   
-  public String toString()
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
   {
-    return "Data{upErrorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", isUpEnd=" + this.jdField_a_of_type_Boolean + ", mGroupInfoList=" + this.jdField_a_of_type_JavaUtilList + ", isDownEnd=" + this.jdField_b_of_type_Boolean + ", isFastData=" + this.c + ", downErrorMessage=" + this.jdField_b_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    QCirclePersonalDetailFragment.a(this.a, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     twj
  * JD-Core Version:    0.7.0.1
  */

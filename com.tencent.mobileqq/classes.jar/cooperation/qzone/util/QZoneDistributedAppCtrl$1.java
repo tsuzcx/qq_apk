@@ -1,21 +1,21 @@
 package cooperation.qzone.util;
 
-import bhpf;
-import bhpg;
+import bjqq;
+import bjqr;
 
 public class QZoneDistributedAppCtrl$1
   implements Runnable
 {
-  public QZoneDistributedAppCtrl$1(bhpf parambhpf, bhpg parambhpg) {}
+  public QZoneDistributedAppCtrl$1(bjqq parambjqq, bjqr parambjqr) {}
   
   public void run()
   {
-    bhpf.a(this.this$0, this.a);
+    bjqq.a(this.this$0, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.util.QZoneDistributedAppCtrl.1
  * JD-Core Version:    0.7.0.1
  */

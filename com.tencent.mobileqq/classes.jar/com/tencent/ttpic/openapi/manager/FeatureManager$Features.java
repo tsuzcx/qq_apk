@@ -14,7 +14,10 @@ import com.tencent.ttpic.openapi.initializer.PagInitializer;
 import com.tencent.ttpic.openapi.initializer.ParticleSystemInitializer;
 import com.tencent.ttpic.openapi.initializer.PtuAlgoInitializer;
 import com.tencent.ttpic.openapi.initializer.PtuToolsInitializer;
-import com.tencent.ttpic.openapi.initializer.RapidNetSDKInitializer;
+import com.tencent.ttpic.openapi.initializer.RapidNetGenderSwitchInitializer;
+import com.tencent.ttpic.openapi.initializer.RapidNetGestureInitializer;
+import com.tencent.ttpic.openapi.initializer.RapidNetSegCpuInitializer;
+import com.tencent.ttpic.openapi.initializer.RapidNetSegGpuInitializer;
 import com.tencent.ttpic.openapi.initializer.Voice2TextInitializer;
 import com.tencent.ttpic.openapi.initializer.VoiceChangerInitializer;
 import com.tencent.ttpic.openapi.initializer.YTCommonInitializer;
@@ -35,7 +38,10 @@ public class FeatureManager$Features
   public static final ParticleSystemInitializer PARTICLE_SYSTEM;
   public static final PtuAlgoInitializer PTU_ALGO;
   public static final PtuToolsInitializer PTU_TOOLS;
-  public static final RapidNetSDKInitializer RAPID_NET;
+  public static final RapidNetGenderSwitchInitializer RAPID_NET_GENDER_SWITCH;
+  public static final RapidNetGestureInitializer RAPID_NET_GESTURE;
+  public static final RapidNetSegCpuInitializer RAPID_NET_SEG_CPU;
+  public static final RapidNetSegGpuInitializer RAPID_NET_SEG_GPU;
   public static final VoiceChangerInitializer VOICE_CHANGDER;
   public static final Voice2TextInitializer VOICE_TO_TEXT;
   public static final YTCommonInitializer YT_COMMON = new YTCommonInitializer();
@@ -56,7 +62,10 @@ public class FeatureManager$Features
     AGE_DETECT = new AgeDetectorInitailizer();
     FACE_KIT = new FaceKitInitializer();
     PAG = new PagInitializer();
-    RAPID_NET = new RapidNetSDKInitializer();
+    RAPID_NET_SEG_CPU = new RapidNetSegCpuInitializer();
+    RAPID_NET_SEG_GPU = new RapidNetSegGpuInitializer();
+    RAPID_NET_GENDER_SWITCH = new RapidNetGenderSwitchInitializer();
+    RAPID_NET_GESTURE = new RapidNetGestureInitializer();
     MEDIA = new MediaInitializer();
   }
 }

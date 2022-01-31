@@ -1,48 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import java.lang.ref.WeakReference;
 
 public class aigt
+  extends Handler
 {
-  public static AtomicBoolean a;
-  public static String[] a;
+  private WeakReference<BaseActivityView> a;
   
-  static
+  public aigt(BaseActivityView paramBaseActivityView)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "MI 3", "Coolpad 8675", "OPPO R7", "Redmi Note 2", "MX4", "vivo X5L", "m3 note", "PRO 6" };
+    this.a = new WeakReference(paramBaseActivityView);
   }
   
-  public static void a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      try
-      {
-        if (Integer.valueOf(paramString).intValue() == 0)
-        {
-          jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideo.ProgressiveUtils", 2, "parseConfig(): config = " + paramString + ", sProgressiveEnable = " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-          }
-          return;
-        }
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        continue;
-      }
-      catch (Exception localException)
-      {
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-        continue;
-      }
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    boolean bool = true;
+    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
+    if (localBaseActivityView == null) {
+      return;
     }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        localBaseActivityView.b(i, bool);
+        return;
+        bool = false;
+      }
+    case 2: 
+      localBaseActivityView.f();
+      return;
+    }
+    localBaseActivityView.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,25 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class wwk
-  extends ClickableSpan
+class wwk
+  extends SimpleJob<Object>
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
-  private wwl jdField_a_of_type_Wwl;
-  private String b;
-  
-  public void onClick(View paramView)
+  wwk(wwe paramwwe, String paramString)
   {
-    if (this.jdField_a_of_type_Wwl != null) {
-      this.jdField_a_of_type_Wwl.a(this.jdField_a_of_type_JavaLangString, this.b);
-    }
+    super(paramString);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (this.jdField_a_of_type_Int != -2147483648)
-    {
-      paramTextPaint.setColor(this.jdField_a_of_type_Int);
-      return;
-    }
-    super.updateDrawState(paramTextPaint);
+    wtb.a("0X80076BC");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wwk
  * JD-Core Version:    0.7.0.1
  */

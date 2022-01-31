@@ -1,30 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-
 class lff
-  extends BroadcastReceiver
 {
-  lff(lfe paramlfe) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  long b;
+  long c;
+  long d;
+  long e;
+  long f;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  lff(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6)
   {
-    if ((this.a.a() != null) && (paramIntent != null))
-    {
-      long l = mtj.a(paramIntent);
-      paramContext = paramIntent.getStringExtra("camera_id");
-      int i = paramIntent.getIntExtra("availability", 1);
-      this.a.a(paramContext, i);
-      if (QLog.isColorLevel()) {
-        QLog.w("GCameraAvailabilityMonitor", 1, "CameraAvailabilityReceiver, id[" + paramContext + "], available[" + i + "], seq[" + l + "]");
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.c = paramLong3;
+    this.d = paramLong4;
+    this.e = paramLong5;
+    this.f = paramLong6;
+  }
+  
+  boolean a()
+  {
+    return (this.jdField_a_of_type_Long > 0L) && (this.b > 0L) && (this.c > 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lff
  * JD-Core Version:    0.7.0.1
  */

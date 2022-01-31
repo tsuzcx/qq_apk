@@ -1,7 +1,6 @@
 package com.tencent.widget;
 
-import actj;
-import amco;
+import aekt;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -21,21 +20,22 @@ import android.view.WindowManager.LayoutParams;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
-import anzk;
-import bbkj;
-import bbna;
-import bfmw;
-import bfnz;
-import bfxo;
-import bfxp;
-import bfxq;
-import bfxr;
-import bfxs;
-import bfxt;
-import bfxu;
-import bfxv;
-import bfxw;
-import bfyf;
+import antn;
+import aprh;
+import bdjd;
+import bdlu;
+import bhnq;
+import bhou;
+import bhyl;
+import bhym;
+import bhyn;
+import bhyo;
+import bhyp;
+import bhyq;
+import bhyr;
+import bhys;
+import bhyt;
+import bhzc;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -61,10 +61,10 @@ public class XPanelContainer
   private long jdField_a_of_type_Long = -1L;
   private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(4);
   private View jdField_a_of_type_AndroidViewView;
-  public bfxs a;
-  private bfxu jdField_a_of_type_Bfxu;
-  private bfxv jdField_a_of_type_Bfxv;
-  public WeakReference<bfxt> a;
+  public bhyp a;
+  private bhyr jdField_a_of_type_Bhyr;
+  private bhys jdField_a_of_type_Bhys;
+  public WeakReference<bhyq> a;
   public boolean a;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private View b;
@@ -89,7 +89,7 @@ public class XPanelContainer
   
   static
   {
-    jdField_d_of_type_Boolean = bfnz.e();
+    jdField_d_of_type_Boolean = bhou.e();
   }
   
   public XPanelContainer(Context paramContext)
@@ -107,10 +107,10 @@ public class XPanelContainer
     {
       jdField_a_of_type_Int = (int)(b() * paramContext.getResources().getDisplayMetrics().density);
       jdField_b_of_type_Int = jdField_a_of_type_Int;
-      if (!bfyf.a(paramContext)) {
+      if (!bhzc.a(paramContext)) {
         break label309;
       }
-      i1 = bfyf.a(paramContext);
+      i1 = bhzc.a(paramContext);
     }
     label309:
     for (jdField_c_of_type_Int = (int)((paramContext.getResources().getDisplayMetrics().heightPixels + i1) * 0.4D);; jdField_c_of_type_Int = (int)(paramContext.getResources().getDisplayMetrics().heightPixels * 0.4D))
@@ -122,8 +122,8 @@ public class XPanelContainer
         QLog.d("XPanelContainer", 2, " mDefaultExternalPanelheight = " + jdField_b_of_type_Int + "mMAXExternalPanelheight=" + jdField_c_of_type_Int + "density=" + paramContext.getResources().getDisplayMetrics().density + "mNavigationBarHeight=" + i1);
       }
       this.l = ImmersiveUtils.getStatusBarHeight(getContext());
-      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT < 24) && (!bbna.a())) {
-        setOnSystemUiVisibilityChangeListener(new bfxo(this));
+      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT < 24) && (!bdlu.a())) {
+        setOnSystemUiVisibilityChangeListener(new bhyl(this));
       }
       return;
     }
@@ -132,10 +132,10 @@ public class XPanelContainer
   private void a(int paramInt1, int paramInt2)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    for (bfxt localbfxt = null;; localbfxt = (bfxt)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    for (bhyq localbhyq = null;; localbhyq = (bhyq)this.jdField_a_of_type_JavaLangRefWeakReference.get())
     {
-      if (localbfxt != null) {
-        localbfxt.b(paramInt1, paramInt2);
+      if (localbhyq != null) {
+        localbhyq.b(paramInt1, paramInt2);
       }
       return;
     }
@@ -159,8 +159,8 @@ public class XPanelContainer
   
   private void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Bfxv != null) {
-      this.jdField_a_of_type_Bfxv.a(paramBoolean);
+    if (this.jdField_a_of_type_Bhys != null) {
+      this.jdField_a_of_type_Bhys.a(paramBoolean);
     }
   }
   
@@ -178,8 +178,8 @@ public class XPanelContainer
     {
       int i1 = this.jdField_f_of_type_Int;
       this.jdField_f_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Bfxu != null) {
-        this.jdField_a_of_type_Bfxu.a(i1, this.jdField_f_of_type_Int);
+      if (this.jdField_a_of_type_Bhyr != null) {
+        this.jdField_a_of_type_Bhyr.a(i1, this.jdField_f_of_type_Int);
       }
       URLDrawable.resume();
       ApngImage.playByTag(0);
@@ -207,8 +207,8 @@ public class XPanelContainer
   
   private int c()
   {
-    if ((this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView instanceof bfxw))) {
-      return ((bfxw)this.jdField_b_of_type_AndroidViewView).a();
+    if ((this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView instanceof bhyt))) {
+      return ((bhyt)this.jdField_b_of_type_AndroidViewView).a();
     }
     return jdField_b_of_type_Int;
   }
@@ -238,7 +238,7 @@ public class XPanelContainer
       return;
     }
     float f1 = (float)(AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long) / 0.0F;
-    this.n = ((int)(jdField_a_of_type_Int - bfmw.a(f1) * jdField_a_of_type_Int));
+    this.n = ((int)(jdField_a_of_type_Int - bhnq.a(f1) * jdField_a_of_type_Int));
   }
   
   public int a()
@@ -288,7 +288,7 @@ public class XPanelContainer
                 if (QLog.isColorLevel()) {
                   QLog.d("Q.aio.XPanelContainer", 2, " requestFocusFromTouch success ");
                 }
-                actj.a(this.jdField_a_of_type_AndroidViewView);
+                aekt.a(this.jdField_a_of_type_AndroidViewView);
                 if (this.jdField_b_of_type_AndroidViewView != null) {
                   this.jdField_b_of_type_AndroidViewView.setVisibility(8);
                 }
@@ -316,7 +316,7 @@ public class XPanelContainer
                   if (localObject2 != null)
                   {
                     localObject1 = localObject2;
-                    if (this.jdField_a_of_type_Bfxu.a(paramInt))
+                    if (this.jdField_a_of_type_Bhyr.a(paramInt))
                     {
                       this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
                       removeView((View)localObject2);
@@ -328,7 +328,7 @@ public class XPanelContainer
                   if (localObject1 == null) {}
                   try
                   {
-                    localObject2 = this.jdField_a_of_type_Bfxu.a(paramInt);
+                    localObject2 = this.jdField_a_of_type_Bhyr.a(paramInt);
                     if (localObject2 == null) {
                       break;
                     }
@@ -362,7 +362,7 @@ public class XPanelContainer
           }
           if (paramInt == 1)
           {
-            actj.a(this.jdField_a_of_type_AndroidViewView);
+            aekt.a(this.jdField_a_of_type_AndroidViewView);
             return;
           }
           if (paramInt <= 1) {
@@ -372,13 +372,13 @@ public class XPanelContainer
           if (paramInt == 3)
           {
             EmoticonMainPanel.jdField_a_of_type_Long = System.currentTimeMillis();
-            bbkj.a(null, "AIO_EmoticonPanel_OpenDuration");
+            bdjd.a(null, "AIO_EmoticonPanel_OpenDuration");
             localObject2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
             localObject1 = localObject2;
             if (localObject2 != null)
             {
               localObject1 = localObject2;
-              if (this.jdField_a_of_type_Bfxu.a(paramInt))
+              if (this.jdField_a_of_type_Bhyr.a(paramInt))
               {
                 this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
                 removeView((View)localObject2);
@@ -391,7 +391,7 @@ public class XPanelContainer
           }
           try
           {
-            localObject2 = this.jdField_a_of_type_Bfxu.a(paramInt);
+            localObject2 = this.jdField_a_of_type_Bhyr.a(paramInt);
             if (localObject2 != null)
             {
               addView((View)localObject2);
@@ -423,13 +423,13 @@ public class XPanelContainer
                   int i1 = jdField_a_of_type_Int;
                   localObject1 = ValueAnimator.ofInt(new int[] { paramInt, paramInt - jdField_a_of_type_Int });
                   ((ValueAnimator)localObject1).setDuration(150L);
-                  ((ValueAnimator)localObject1).addUpdateListener(new bfxq(this, paramInt));
+                  ((ValueAnimator)localObject1).addUpdateListener(new bhyn(this, paramInt));
                   ((ValueAnimator)localObject1).start();
                   return;
                   if (paramInt != 21) {
                     break label409;
                   }
-                  bbkj.a(null, "apollo_panel_open");
+                  bdjd.a(null, "apollo_panel_open");
                 }
               }
             }
@@ -487,7 +487,7 @@ public class XPanelContainer
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
     if (paramView.getOnFocusChangeListener() == null) {
-      paramView.setOnFocusChangeListener(new bfxp(this));
+      paramView.setOnFocusChangeListener(new bhym(this));
     }
     if ((paramBoolean) && (paramView.getParent() != null) && ((paramView.getParent() instanceof ViewGroup)))
     {
@@ -515,10 +515,10 @@ public class XPanelContainer
     if ((this.jdField_b_of_type_AndroidViewView instanceof EmoticonMainPanel))
     {
       EmoticonMainPanel localEmoticonMainPanel = (EmoticonMainPanel)this.jdField_b_of_type_AndroidViewView;
-      localEmoticonMainPanel.removeView(localEmoticonMainPanel.jdField_b_of_type_AndroidViewView);
+      localEmoticonMainPanel.removeView(localEmoticonMainPanel.jdField_a_of_type_AndroidViewView);
     }
-    if (this.jdField_a_of_type_Bfxu != null) {
-      this.jdField_a_of_type_Bfxu.r();
+    if (this.jdField_a_of_type_Bhyr != null) {
+      this.jdField_a_of_type_Bhyr.s();
     }
     boolean bool;
     if (this.jdField_f_of_type_Int > 0)
@@ -586,7 +586,7 @@ public class XPanelContainer
       i1 = getHeight();
       ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { i1 - jdField_a_of_type_Int, i1 });
       localValueAnimator.setDuration(150L);
-      localValueAnimator.addUpdateListener(new bfxr(this, i1));
+      localValueAnimator.addUpdateListener(new bhyo(this, i1));
       localValueAnimator.start();
       return bool;
     }
@@ -596,13 +596,13 @@ public class XPanelContainer
   
   public void b()
   {
-    amco localamco;
-    if ((this.jdField_a_of_type_Bfxu instanceof BaseChatPie))
+    antn localantn;
+    if ((this.jdField_a_of_type_Bhyr instanceof BaseChatPie))
     {
-      localamco = (amco)((BaseChatPie)this.jdField_a_of_type_Bfxu).a(50);
-      if (localamco == null) {}
+      localantn = (antn)((BaseChatPie)this.jdField_a_of_type_Bhyr).a(50);
+      if (localantn == null) {}
     }
-    for (boolean bool = localamco.a();; bool = true)
+    for (boolean bool = localantn.a();; bool = true)
     {
       if (bool)
       {
@@ -665,7 +665,7 @@ public class XPanelContainer
     {
       this.jdField_a_of_type_AndroidUtilSparseArray.clear();
       this.jdField_b_of_type_AndroidViewView = null;
-      anzk.b();
+      aprh.b();
     }
   }
   
@@ -678,7 +678,7 @@ public class XPanelContainer
   {
     if (jdField_b_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Bfxu != null) {}
+      if (this.jdField_a_of_type_Bhyr != null) {}
       this.jdField_f_of_type_Int = 1;
       this.m = 1;
       this.jdField_g_of_type_Int = 0;
@@ -700,7 +700,7 @@ public class XPanelContainer
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (bfnz.f()) {
+    if (bhou.f()) {
       if ((paramConfiguration.orientation != this.jdField_i_of_type_Int) && ((this.jdField_j_of_type_Int != paramConfiguration.screenWidthDp) || (this.jdField_k_of_type_Int != paramConfiguration.screenHeightDp)))
       {
         this.jdField_i_of_type_Int = -1;
@@ -759,16 +759,16 @@ public class XPanelContainer
     {
       if (this.jdField_c_of_type_Boolean)
       {
-        if (this.jdField_a_of_type_Bfxs != null) {
-          this.jdField_a_of_type_Bfxs.l(jdField_b_of_type_Boolean);
+        if (this.jdField_a_of_type_Bhyp != null) {
+          this.jdField_a_of_type_Bhyp.l(jdField_b_of_type_Boolean);
         }
         this.jdField_c_of_type_Boolean = false;
       }
       if (this.jdField_h_of_type_Boolean)
       {
         this.jdField_h_of_type_Boolean = false;
-        if (this.jdField_a_of_type_Bfxs != null) {
-          this.jdField_a_of_type_Bfxs.l(jdField_b_of_type_Boolean);
+        if (this.jdField_a_of_type_Bhyp != null) {
+          this.jdField_a_of_type_Bhyp.l(jdField_b_of_type_Boolean);
         }
         if (this.jdField_b_of_type_AndroidViewView != null)
         {
@@ -825,7 +825,7 @@ public class XPanelContainer
     {
       localObject = getResources().getConfiguration();
       this.jdField_i_of_type_Int = ((Configuration)localObject).orientation;
-      if (bfnz.f())
+      if (bhou.f())
       {
         this.jdField_j_of_type_Int = ((Configuration)localObject).screenWidthDp;
         this.jdField_k_of_type_Int = ((Configuration)localObject).screenHeightDp;
@@ -977,7 +977,7 @@ public class XPanelContainer
         }
         label1983:
         if ((!paramBoolean) || (!bool)) {
-          break label3373;
+          break label3361;
         }
         paramInt1 = 1;
         this.jdField_g_of_type_Int = -1;
@@ -1148,14 +1148,13 @@ public class XPanelContainer
           ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3 - jdField_a_of_type_Int, 1073741824));
           ((View)localObject).layout(i2, i3, paramInt3, paramInt2 - jdField_a_of_type_Int);
           ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(i2, i3, paramInt3, paramInt2, bool);
-          ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(bool);
           break label1983;
         }
         ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3, 1073741824));
         ((View)localObject).layout(i2, i3, paramInt3, paramInt2);
         break label1983;
         if (this.jdField_g_of_type_Int == 0) {
-          break label3395;
+          break label3383;
         }
         paramInt1 = i1;
       } while (!paramBoolean);
@@ -1167,7 +1166,7 @@ public class XPanelContainer
     if (paramBoolean)
     {
       if (i1 == 28) {
-        break label3429;
+        break label3417;
       }
       if (i1 == 35) {
         paramInt1 = i1;
@@ -1175,13 +1174,13 @@ public class XPanelContainer
     }
     for (;;)
     {
-      label3373:
-      label3395:
+      label3361:
+      label3383:
       this.jdField_g_of_type_Int = -1;
       break;
       paramInt1 = 0;
       continue;
-      label3429:
+      label3417:
       paramInt1 = i1;
     }
   }
@@ -1205,19 +1204,19 @@ public class XPanelContainer
     }
   }
   
-  public void setOnChangeMultiScreenListener(bfxs parambfxs)
+  public void setOnChangeMultiScreenListener(bhyp parambhyp)
   {
-    this.jdField_a_of_type_Bfxs = parambfxs;
+    this.jdField_a_of_type_Bhyp = parambhyp;
   }
   
-  public void setOnGoingToShowPanelListener(bfxt parambfxt)
+  public void setOnGoingToShowPanelListener(bhyq parambhyq)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambfxt);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambhyq);
   }
   
-  public void setOnPanelChangeListener(bfxu parambfxu)
+  public void setOnPanelChangeListener(bhyr parambhyr)
   {
-    this.jdField_a_of_type_Bfxu = parambfxu;
+    this.jdField_a_of_type_Bhyr = parambhyr;
   }
   
   public void setReadyToShow(boolean paramBoolean)
@@ -1232,14 +1231,14 @@ public class XPanelContainer
     }
   }
   
-  public void setReadyToShowChangeListener(bfxv parambfxv)
+  public void setReadyToShowChangeListener(bhys parambhys)
   {
-    this.jdField_a_of_type_Bfxv = parambfxv;
+    this.jdField_a_of_type_Bhys = parambhys;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.XPanelContainer
  * JD-Core Version:    0.7.0.1
  */

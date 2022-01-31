@@ -1,195 +1,68 @@
-import android.text.TextUtils;
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
-public class baie
+class baie
+  extends baif
 {
-  public static long a(byte[] paramArrayOfByte)
-  {
-    long l = 0L;
-    int i = 0;
-    while (i < 4)
-    {
-      l += ((paramArrayOfByte[i] & 0xFF) << (3 - i) * 8);
-      i += 1;
-    }
-    return l;
-  }
+  private baip a;
   
-  public static ArrayList<baif> a(long paramLong, DataInputStream paramDataInputStream, int paramInt1, int paramInt2)
+  baie(@NonNull String paramString, int paramInt1, int paramInt2)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramDataInputStream.read(new byte[10]);
-    paramDataInputStream.read(new byte[3]);
-    paramDataInputStream.readByte();
-    paramDataInputStream.readInt();
-    paramDataInputStream.readInt();
-    paramDataInputStream.readInt();
-    paramDataInputStream.readInt();
-    paramDataInputStream.readByte();
-    paramDataInputStream.readByte();
-    paramDataInputStream.readByte();
-    paramDataInputStream.readByte();
-    int i = paramDataInputStream.readShort();
-    paramDataInputStream.read(new byte[i]);
-    int j = paramDataInputStream.readShort();
-    paramDataInputStream.read(new byte[j]);
-    int m;
-    for (i = i + 36 + 2 + j; i < paramInt1; i = i + 3 + m)
+    super(3, paramString);
+    if (paramString.length() >= 6)
     {
-      int k = paramDataInputStream.readByte();
-      m = paramDataInputStream.readShort();
-      j = 0;
-      Object localObject1 = null;
-      Object localObject4 = null;
-      if (j < m)
+      char[] arrayOfChar = new char[3];
+      arrayOfChar[0] = paramString.charAt(3);
+      arrayOfChar[1] = paramString.charAt(4);
+      arrayOfChar[2] = ((char)(paramString.charAt(5) & 0xFF));
+      int i = 0;
+      if (i < 3)
       {
-        int i1 = paramDataInputStream.readByte();
-        int n = paramDataInputStream.readShort();
-        Object localObject5 = new byte[n];
-        paramDataInputStream.read((byte[])localObject5);
-        Object localObject2;
-        Object localObject3;
-        if (k == 3) {
-          if (i1 == 2)
-          {
-            localObject5 = new String((byte[])localObject5);
-            if (((String)localObject5).startsWith("{"))
-            {
-              i1 = ((String)localObject5).lastIndexOf('}');
-              localObject2 = localObject4;
-              localObject3 = localObject1;
-              if (i1 != -1)
-              {
-                localObject2 = localObject4;
-                localObject3 = localObject1;
-                if (((String)localObject5).length() > 1)
-                {
-                  localObject2 = ((String)localObject5).substring(1, i1).replaceAll("-", "").toUpperCase();
-                  localObject3 = localObject1;
-                }
-              }
-            }
-          }
+        if (arrayOfChar[i] == 'ú') {
+          arrayOfChar[i] = '\n';
         }
         for (;;)
         {
-          j = j + 3 + n;
-          localObject4 = localObject2;
-          localObject1 = localObject3;
+          i += 1;
           break;
-          i1 = ((String)localObject5).lastIndexOf('.');
-          localObject2 = localObject4;
-          localObject3 = localObject1;
-          if (i1 != -1)
-          {
-            localObject2 = localObject4;
-            localObject3 = localObject1;
-            if (((String)localObject5).length() > 1)
-            {
-              localObject2 = ((String)localObject5).substring(0, i1).toUpperCase();
-              localObject3 = localObject1;
-              continue;
-              localObject2 = localObject4;
-              localObject3 = localObject1;
-              if (i1 == 4)
-              {
-                long l = a((byte[])localObject5);
-                localObject2 = localObject4;
-                localObject3 = localObject1;
-                if (!TextUtils.isEmpty(localObject4))
-                {
-                  localObject2 = localObject4;
-                  localObject3 = localObject1;
-                  if (l != -1L)
-                  {
-                    localObject3 = localObject1;
-                    if (localObject1 == null) {
-                      localObject3 = new baif();
-                    }
-                    ((baif)localObject3).jdField_a_of_type_Long = paramLong;
-                    ((baif)localObject3).jdField_a_of_type_Int = paramInt2;
-                    ((baif)localObject3).b = l;
-                    ((baif)localObject3).jdField_a_of_type_JavaLangString = localObject4;
-                    localArrayList.add(localObject3);
-                    localObject2 = localObject4;
-                    continue;
-                    if (k == 5)
-                    {
-                      localObject2 = localObject4;
-                      localObject3 = localObject1;
-                      if (i1 == 255)
-                      {
-                        localObject2 = localObject4;
-                        localObject3 = localObject1;
-                      }
-                    }
-                    else
-                    {
-                      localObject2 = localObject4;
-                      localObject3 = localObject1;
-                      if (k == 6)
-                      {
-                        localObject2 = localObject4;
-                        localObject3 = localObject1;
-                      }
-                    }
-                  }
-                }
-              }
-            }
+          if (arrayOfChar[i] == 'þ') {
+            arrayOfChar[i] = '\r';
           }
         }
       }
+      if (paramInt1 == 511) {
+        bool = true;
+      }
+      this.a = new baip(arrayOfChar, paramInt2, true, bool);
     }
-    return localArrayList;
   }
   
-  public static ArrayList<baif> a(long paramLong, byte[] paramArrayOfByte, int paramInt)
+  float a(@NonNull Paint paramPaint)
   {
-    ArrayList localArrayList1 = new ArrayList();
-    HashMap localHashMap = new HashMap();
-    paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
-    DataInputStream localDataInputStream = new DataInputStream(paramArrayOfByte);
-    int i = 0;
-    while (i < paramInt)
+    if (this.a != null)
     {
-      localDataInputStream.readShort();
-      localDataInputStream.readShort();
-      localDataInputStream.readInt();
-      localDataInputStream.readInt();
-      localDataInputStream.readInt();
-      localDataInputStream.readByte();
-      localDataInputStream.readInt();
-      localDataInputStream.readInt();
-      int j = localDataInputStream.readInt();
-      localDataInputStream.readInt();
-      ArrayList localArrayList2 = a(paramLong, localDataInputStream, localDataInputStream.readShort(), j);
-      int k = localArrayList2.size();
-      j = 0;
-      while (j < k)
+      paramPaint = this.a.a();
+      if (paramPaint != null)
       {
-        baif localbaif = (baif)localArrayList2.get(j);
-        if (!localHashMap.containsKey(Long.valueOf(localbaif.b)))
-        {
-          localArrayList1.add(localbaif);
-          localHashMap.put(Long.valueOf(localbaif.b), Boolean.valueOf(true));
+        float f = paramPaint.getBounds().width();
+        if (QLog.isColorLevel()) {
+          QLog.d("NickWrapper", 2, "getWidth small span width " + f);
         }
-        j += 1;
+        return f;
       }
-      i += 1;
     }
-    localDataInputStream.close();
-    paramArrayOfByte.close();
-    localHashMap.clear();
-    return localArrayList1;
+    if (QLog.isColorLevel()) {
+      QLog.d("NickWrapper", 2, "getWidth with error drawable");
+    }
+    return 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baie
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,27 @@
 package dov.com.tencent.mobileqq.shortvideo.musicwavesupport;
 
 import android.os.SystemClock;
-import blbp;
-import blbr;
+import bnmz;
+import bnnb;
 import com.tencent.qphone.base.util.QLog;
 
 public class MusicWaveformManager$2
   implements Runnable
 {
-  public MusicWaveformManager$2(blbr paramblbr) {}
+  public MusicWaveformManager$2(bnnb parambnnb) {}
   
   public void run()
   {
     try
     {
       long l = SystemClock.elapsedRealtimeNanos();
-      boolean bool = blbr.a(this.this$0).a(blbr.a(this.this$0), blbr.a(this.this$0), blbr.a(this.this$0));
+      boolean bool = bnnb.a(this.this$0).a(bnnb.a(this.this$0), bnnb.a(this.this$0), bnnb.a(this.this$0));
       if (QLog.isColorLevel()) {
         QLog.d("MusicWaveformManager", 2, "createSoundFile time: " + (SystemClock.elapsedRealtimeNanos() - l) / 1000000L + "ms");
       }
       if (!bool)
       {
-        blbr.a(this.this$0, false);
+        bnnb.a(this.this$0, false);
         if (QLog.isColorLevel()) {
           QLog.e("MusicWaveformManager", 2, "create musicSoundFile fail");
         }
@@ -32,7 +32,7 @@ public class MusicWaveformManager$2
     {
       do
       {
-        blbr.a(this.this$0, false);
+        bnnb.a(this.this$0, false);
         localException.printStackTrace();
       } while (!QLog.isColorLevel());
       QLog.e("MusicWaveformManager", 2, localException.toString());
@@ -41,7 +41,7 @@ public class MusicWaveformManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicWaveformManager.2
  * JD-Core Version:    0.7.0.1
  */

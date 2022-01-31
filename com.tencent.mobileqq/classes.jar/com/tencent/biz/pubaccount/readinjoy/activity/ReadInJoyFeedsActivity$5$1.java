@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import nvx;
+import nzb;
 
 public class ReadInJoyFeedsActivity$5$1
   implements Runnable
 {
-  public ReadInJoyFeedsActivity$5$1(nvx paramnvx) {}
+  public ReadInJoyFeedsActivity$5$1(nzb paramnzb) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ReadInJoyFeedsActivity$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.5.1
  * JD-Core Version:    0.7.0.1
  */

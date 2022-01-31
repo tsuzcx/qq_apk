@@ -1,61 +1,119 @@
-import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.now.ilive_feeds_like.FeedsLikeRsp;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.LbsShareChangePushInfo;
+import tencent.im.oidb.cmd0x857.TroopTips0x857.NotifyMsgBody;
+import tencent.im.oidb.location.qq_lbs_share.PushExtInfo;
 
-class atmb
-  implements atii
+public class atmb
 {
-  atmb(atlw paramatlw, VideoData paramVideoData) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, long paramLong, TroopTips0x857.NotifyMsgBody paramNotifyMsgBody)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    paramNotifyMsgBody = (TroopTips0x857.LbsShareChangePushInfo)paramNotifyMsgBody.opt_lbs_share_change_plus_info.get();
+    atln localatln = atln.a(paramQQAppInterface);
+    long l = paramNotifyMsgBody.uint64_group_id.get();
+    int i = paramNotifyMsgBody.uint32_msg_type.get();
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopLocationPushDecoder", 2, new Object[] { "processPacket: invoked. ", "msgSeq = [" + paramInt + "], msgTime = [" + paramLong + "], ", " pushType: ", Integer.valueOf(i), " sessionUin: ", Long.valueOf(l) });
+    }
+    if (i == 4)
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
+      atpu.b(paramQQAppInterface, String.valueOf(l));
+      localatln.notifyUI(5, true, new Object[] { Integer.valueOf(1), String.valueOf(l) });
+      atpv.a(paramQQAppInterface);
+    }
+    for (;;)
+    {
+      localatln.notifyUI(3, true, new Object[] { paramNotifyMsgBody });
+      return;
+      if ((i == 1) || (i == 2))
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + atlw.a(this.jdField_a_of_type_Atlw));
-        }
-        if (paramBundle.busi_buf.has())
-        {
-          paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          this.jdField_a_of_type_Atlw.f(true);
-          this.jdField_a_of_type_Atlw.d(paramArrayOfByte.total.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Int = atlw.a(this.jdField_a_of_type_Atlw);
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_b_of_type_Boolean = true;
-          atlw.b(this.jdField_a_of_type_Atlw, false);
-          atlw.b(this.jdField_a_of_type_Atlw, false);
-          ((atvs)this.jdField_a_of_type_Atlw.a.getManager(263)).a(atlw.a(this.jdField_a_of_type_Atlw), paramArrayOfByte.total.get());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "total:   " + paramArrayOfByte.total.get() + ",ret:     " + paramArrayOfByte.ret.get());
-          }
-        }
-        return;
+        atpv.a(paramQQAppInterface, 1, String.valueOf(l), true);
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      else
       {
-        QLog.w("PlayOperationViewModel", 1, "err_msg:   " + paramBundle.err_msg.get() + " isLiked=" + atlw.a(this.jdField_a_of_type_Atlw) + "  e:" + paramArrayOfByte);
-        return;
+        if (i == 5)
+        {
+          paramInt = 4;
+          try
+          {
+            byte[] arrayOfByte = paramNotifyMsgBody.bytes_ext_info.get().toByteArray();
+            qq_lbs_share.PushExtInfo localPushExtInfo = new qq_lbs_share.PushExtInfo();
+            localPushExtInfo.mergeFrom(arrayOfByte);
+            i = localPushExtInfo.client_type.get();
+            paramInt = i;
+          }
+          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+          {
+            for (;;)
+            {
+              localInvalidProtocolBufferMicroException.printStackTrace();
+            }
+          }
+          atpu.b(paramQQAppInterface, String.valueOf(l));
+          localatln.notifyUI(6, true, new Object[] { Integer.valueOf(1), String.valueOf(l), Integer.valueOf(paramInt) });
+          atpv.a(paramQQAppInterface);
+          continue;
+        }
+        if (i == 3) {
+          a(paramQQAppInterface, paramNotifyMsgBody.uint64_oper_uin.get(), l);
+        }
       }
     }
-    QLog.w("PlayOperationViewModel", 1, "errorCode:   " + paramInt + " isLiked=" + atlw.a(this.jdField_a_of_type_Atlw));
-    atlw.b(this.jdField_a_of_type_Atlw, false);
+  }
+  
+  private static void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopLocationPushDecoder", 2, new Object[] { "onDecodeTroopLbsUserQuitRoom: invoked. ", " operateUin: ", Long.valueOf(paramLong1), " sessionUin: ", Long.valueOf(paramLong2) });
+    }
+    if (paramLong1 == paramQQAppInterface.getLongAccountUin()) {
+      atln.a(paramQQAppInterface).a(new atlh(1, String.valueOf(paramLong2)), false);
+    }
+  }
+  
+  static void a(QQAppInterface paramQQAppInterface, TroopTips0x857.LbsShareChangePushInfo paramLbsShareChangePushInfo)
+  {
+    paramQQAppInterface = atln.a(paramQQAppInterface);
+    long l = paramLbsShareChangePushInfo.uint64_group_id.get();
+    paramQQAppInterface.a.a(1, String.valueOf(l));
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopLocationPushDecoder", 2, new Object[] { "onPushRoomMemberChanged: invoked. ", " troopUin: ", Long.valueOf(l) });
+    }
+  }
+  
+  static void a(QQAppInterface paramQQAppInterface, TroopTips0x857.LbsShareChangePushInfo paramLbsShareChangePushInfo, int paramInt)
+  {
+    paramQQAppInterface = atln.a(paramQQAppInterface);
+    long l1 = paramLbsShareChangePushInfo.uint64_group_id.get();
+    long l2 = paramLbsShareChangePushInfo.uint64_oper_uin.get();
+    paramLbsShareChangePushInfo = new atlh(1, String.valueOf(l1));
+    paramQQAppInterface.a.a(1, String.valueOf(l1));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopLocationPushDecoder", 2, new Object[] { "[venue] troop onPushRoomVenueChanged: invoked. roomKey: ", paramLbsShareChangePushInfo + " opt: " + paramInt + " optUin: " + l2 });
+      }
+      return;
+      paramQQAppInterface.a(paramLbsShareChangePushInfo, String.valueOf(l2));
+      continue;
+      paramQQAppInterface.a(paramLbsShareChangePushInfo);
+      continue;
+      paramQQAppInterface.b(paramLbsShareChangePushInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atmb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,29 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
 class snp
-  implements View.OnTouchListener
+  implements snq
 {
-  snp(snn paramsnn, int paramInt) {}
+  snp(sno paramsno) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString, View.OnClickListener paramOnClickListener)
   {
-    snn.a(this.jdField_a_of_type_Snn, paramView);
-    this.jdField_a_of_type_Snn.d = this.jdField_a_of_type_Int;
-    snn.a(this.jdField_a_of_type_Snn).onTouchEvent(paramMotionEvent);
-    return false;
+    sno.a(this.a).b(paramString, paramOnClickListener);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    sno.a(this.a).c(paramBoolean);
+  }
+  
+  public void b(String paramString, View.OnClickListener paramOnClickListener)
+  {
+    sno.a(this.a).a(paramString, paramOnClickListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     snp
  * JD-Core Version:    0.7.0.1
  */

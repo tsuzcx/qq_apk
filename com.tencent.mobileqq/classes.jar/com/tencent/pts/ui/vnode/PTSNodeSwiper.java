@@ -38,107 +38,72 @@ public class PTSNodeSwiper
     if (super.setAttribute(paramString, paramObject)) {
       return true;
     }
-    int i = -1;
-    switch (paramString.hashCode())
+    if ("indicator-dots".equalsIgnoreCase(paramString))
     {
+      ((PTSSwiperView)getView()).setIndicatorVisible(PTSValueConvertUtil.getBoolean(paramObject));
+      return true;
     }
-    for (;;)
+    if ("indicator-color".equalsIgnoreCase(paramString))
     {
-      switch (i)
-      {
-      default: 
-        return false;
-      case 0: 
-        ((PTSSwiperView)getView()).setIndicatorVisible(PTSValueConvertUtil.getBoolean(paramObject));
-        return true;
-        if (paramString.equals("indicator-dots"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("indicator-color"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("indicator-active-color"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("autoplay"))
-              {
-                i = 3;
-                continue;
-                if (paramString.equals("interval"))
-                {
-                  i = 4;
-                  continue;
-                  if (paramString.equals("duration"))
-                  {
-                    i = 5;
-                    continue;
-                    if (paramString.equals("circular"))
-                    {
-                      i = 6;
-                      continue;
-                      if (paramString.equals("pts:indicator-width"))
-                      {
-                        i = 7;
-                        continue;
-                        if (paramString.equals("pts:indicator-height"))
-                        {
-                          i = 8;
-                          continue;
-                          if (paramString.equals("pts:indicator-gap"))
-                          {
-                            i = 9;
-                            continue;
-                            if (paramString.equals("pts:indicator-bottom"))
-                            {
-                              i = 10;
-                              continue;
-                              if (paramString.equals("pts:indicator-radius")) {
-                                i = 11;
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        break;
-      }
+      ((PTSSwiperView)getView()).setIndicatorNormalColor(PTSValueConvertUtil.getColor(paramObject));
+      return true;
     }
-    ((PTSSwiperView)getView()).setIndicatorNormalColor(PTSValueConvertUtil.getColor(paramObject));
-    return true;
-    ((PTSSwiperView)getView()).setIndicatorFocusedColor(PTSValueConvertUtil.getColor(paramObject));
-    return true;
-    ((PTSSwiperView)getView()).setAutoPlay(PTSValueConvertUtil.getBoolean(paramObject));
-    return true;
-    ((PTSSwiperView)getView()).setAutoPlayInterval(PTSValueConvertUtil.getInt(paramObject));
-    return true;
-    ((PTSSwiperView)getView()).setAutoPlayDuration(PTSValueConvertUtil.getInt(paramObject));
-    return true;
-    ((PTSSwiperView)getView()).setCircularAutoPlay(PTSValueConvertUtil.getBoolean(paramObject));
-    return true;
-    ((PTSSwiperView)getView()).setIndicatorWidth(PTSValueConvertUtil.getFloat(paramObject));
-    return true;
-    ((PTSSwiperView)getView()).setIndicatorHeight(PTSValueConvertUtil.getFloat(paramObject));
-    return true;
-    ((PTSSwiperView)getView()).setIndicatorGap(PTSValueConvertUtil.getFloat(paramObject));
-    return true;
-    ((PTSSwiperView)getView()).setIndicatorMarginBottom(PTSValueConvertUtil.getFloat(paramObject));
-    return true;
-    ((PTSSwiperView)getView()).setIndicatorRadius(PTSValueConvertUtil.getFloat(paramObject));
-    return true;
+    if ("indicator-active-color".equalsIgnoreCase(paramString))
+    {
+      ((PTSSwiperView)getView()).setIndicatorFocusedColor(PTSValueConvertUtil.getColor(paramObject));
+      return true;
+    }
+    if ("autoplay".equalsIgnoreCase(paramString))
+    {
+      ((PTSSwiperView)getView()).setAutoPlay(PTSValueConvertUtil.getBoolean(paramObject));
+      return true;
+    }
+    if ("interval".equalsIgnoreCase(paramString))
+    {
+      ((PTSSwiperView)getView()).setAutoPlayInterval(PTSValueConvertUtil.getInt(paramObject));
+      return true;
+    }
+    if ("duration".equalsIgnoreCase(paramString))
+    {
+      ((PTSSwiperView)getView()).setAutoPlayDuration(PTSValueConvertUtil.getInt(paramObject));
+      return true;
+    }
+    if ("circular".equalsIgnoreCase(paramString))
+    {
+      ((PTSSwiperView)getView()).setCircularAutoPlay(PTSValueConvertUtil.getBoolean(paramObject));
+      return true;
+    }
+    if ("pts:indicator-width".equalsIgnoreCase(paramString))
+    {
+      ((PTSSwiperView)getView()).setIndicatorWidth(PTSValueConvertUtil.getFloat(paramObject));
+      return true;
+    }
+    if ("pts:indicator-height".equalsIgnoreCase(paramString))
+    {
+      ((PTSSwiperView)getView()).setIndicatorHeight(PTSValueConvertUtil.getFloat(paramObject));
+      return true;
+    }
+    if ("pts:indicator-gap".equalsIgnoreCase(paramString))
+    {
+      ((PTSSwiperView)getView()).setIndicatorGap(PTSValueConvertUtil.getFloat(paramObject));
+      return true;
+    }
+    if ("pts:indicator-bottom".equalsIgnoreCase(paramString))
+    {
+      ((PTSSwiperView)getView()).setIndicatorMarginBottom(PTSValueConvertUtil.getFloat(paramObject));
+      return true;
+    }
+    if ("pts:indicator-radius".equalsIgnoreCase(paramString))
+    {
+      ((PTSSwiperView)getView()).setIndicatorRadius(PTSValueConvertUtil.getFloat(paramObject));
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeSwiper
  * JD-Core Version:    0.7.0.1
  */

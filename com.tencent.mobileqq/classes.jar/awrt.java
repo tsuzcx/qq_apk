@@ -1,101 +1,46 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.view.QzonePhotoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class awrt
-  implements awrd<awog, awwq>
+  implements View.OnClickListener
 {
-  private awrx jdField_a_of_type_Awrx;
-  private baxy jdField_a_of_type_Baxy;
-  boolean jdField_a_of_type_Boolean;
+  private long jdField_a_of_type_Long;
   
-  public awrt(baxy parambaxy, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Baxy = parambaxy;
-    this.jdField_a_of_type_Awrx = new awrx(parambaxy, paramBoolean);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public awrt(QzonePhotoView paramQzonePhotoView) {}
   
-  public void a(awog paramawog, awwq paramawwq)
+  public void onClick(View paramView)
   {
-    awoh localawoh = (awoh)paramawog;
-    awyc localawyc = (awyc)paramawwq;
-    int i = localawoh.a();
-    LinearLayout localLinearLayout = localawyc.a();
-    ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
-    if (localLinearLayout != null)
+    long l = System.currentTimeMillis();
+    if (Math.abs(l - this.jdField_a_of_type_Long) < 1000L) {}
+    do
     {
-      List localList = localawoh.a();
-      if ((localList != null) && (!localList.isEmpty()))
+      do
       {
-        localLinearLayout.removeAllViews();
-        int k = Math.min(localList.size(), i);
-        i = 0;
-        if (i < k)
-        {
-          awoi localawoi = (awoi)localList.get(i);
-          View localView;
-          label142:
-          int m;
-          int n;
-          if (this.jdField_a_of_type_Boolean)
-          {
-            localView = LayoutInflater.from(paramawwq.a().getContext()).inflate(2131562386, null);
-            paramawog = new awwn(localView);
-            localView.setTag(2131379213, localawoi);
-            localView.setTag(2131379218, paramawog);
-            localView.setTag(2131379214, Integer.valueOf(i));
-            localView.setTag(2131379212, Integer.valueOf(localList.size()));
-            localView.setTag(2131379215, this.jdField_a_of_type_Awrx);
-            awwd.a(localawoi, k, i);
-            m = localawoi.a();
-            n = localawoi.b();
-            if (!(localawoi instanceof awoj)) {
-              break label334;
-            }
-          }
-          label334:
-          for (int j = ((awoj)localawoi).r;; j = 0)
-          {
-            awwd.a(m, n, localView, j);
-            localLinearLayout.addView(localView);
-            if (this.jdField_a_of_type_Awrx.a() != null) {
-              this.jdField_a_of_type_Awrx.a().a((awog)localList.get(i), paramawog);
-            }
-            i += 1;
-            break;
-            localView = LayoutInflater.from(paramawwq.a().getContext()).inflate(2131562385, null);
-            paramawog = new awyh(localView);
-            break label142;
-          }
-        }
-      }
-    }
-    paramawog = localawoh.a();
-    if ((paramawog == null) || (paramawog.isEmpty()))
+        return;
+        this.jdField_a_of_type_Long = l;
+      } while ((paramView == null) || (!(paramView.getTag() instanceof awki)));
+      paramView = (awki)paramView.getTag();
+    } while (paramView == null);
+    int i = paramView.a;
+    paramView = QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView).a.a;
+    switch (i)
     {
-      if (paramawwq.b() != null) {
-        paramawwq.b().setVisibility(8);
-      }
-      localawyc.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      localawyc.jdField_a_of_type_AndroidViewView.setTag(2131379214, Integer.valueOf(-1));
-      localawyc.jdField_a_of_type_AndroidWidgetTextView.setText(localawoh.b());
-      localawyc.b.setText(ajya.a(2131713656));
-      localawyc.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845183);
-      localawyc.jdField_a_of_type_AndroidViewView.setOnClickListener(new awru(this, localawoh));
+    default: 
       return;
     }
-    localawyc.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a, "CliOper", "", "", "card_mall", "0X80066C4", 0, 0, "2", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.i("ProfileCard.QzonePhotoView", 2, "View.OnClickListener click type is photo wall view");
+    }
+    QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView, QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awrt
  * JD-Core Version:    0.7.0.1
  */

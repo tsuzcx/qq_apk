@@ -1,98 +1,33 @@
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qhuanji.QHuanjiPluginProxyActivity;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import mqq.app.AppRuntime;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Toast;
+import com.tencent.qqmini.sdk.log.QMLog;
 
-public class bgng
+class bgng
+  implements View.OnTouchListener
 {
-  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  bgng(bgnf parambgnf, Toast paramToast, View.OnTouchListener paramOnTouchListener) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QLog.d("QHuanji", 1, "start create HuanjiAppInterface. processName=" + paramString);
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    try
+    boolean bool = true;
+    if (paramMotionEvent.getAction() == 0)
     {
-      paramString = Class.forName("com.tencent.huanji.QHuanjiAppInterface");
-      paramBaseApplicationImpl = paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      for (;;)
-      {
-        try
-        {
-          QLog.e("QHuanji", 1, "*createQHuanjiAppInterface load class fail");
-          return null;
-        }
-        catch (ClassNotFoundException paramBaseApplicationImpl)
-        {
-          paramBaseApplicationImpl.printStackTrace();
-        }
-        paramString = paramString;
-        paramString = QHuanjiPluginProxyActivity.a(paramBaseApplicationImpl);
-        paramBaseApplicationImpl = paramString.loadClass("com.tencent.huanji.QHuanjiAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, paramString);
+      QMLog.d("QQToast", "start to cancel toast");
+      this.jdField_a_of_type_AndroidWidgetToast.cancel();
+      bgnf.a(this.jdField_a_of_type_Bgnf, true);
+      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
+        bool = this.jdField_a_of_type_AndroidViewView$OnTouchListener.onTouch(paramView, paramMotionEvent);
       }
-      do
-      {
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppRuntime)));
-      paramBaseApplicationImpl = (AppRuntime)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
+      return bool;
     }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    if (paramBaseApplicationImpl != null) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgng
  * JD-Core Version:    0.7.0.1
  */

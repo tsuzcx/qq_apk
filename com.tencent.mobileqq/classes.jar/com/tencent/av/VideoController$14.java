@@ -1,12 +1,12 @@
 package com.tencent.av;
 
 import com.tencent.av.app.VideoAppInterface;
-import lga;
+import lid;
 
 class VideoController$14
   implements Runnable
 {
-  VideoController$14(VideoController paramVideoController, lga paramlga) {}
+  VideoController$14(VideoController paramVideoController, lid paramlid) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ class VideoController$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.VideoController.14
  * JD-Core Version:    0.7.0.1
  */

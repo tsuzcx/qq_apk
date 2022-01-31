@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.mini.entry;
 
-import akwq;
-import amtb;
+import amng;
+import aokd;
 import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopLayout;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.WeakReference;
 
 class MiniAppDesktop$RedDotAppletsObserver
-  extends akwq
+  extends amng
 {
   private WeakReference<MiniAppDesktopLayout> layoutReference;
   
@@ -26,7 +26,7 @@ class MiniAppDesktop$RedDotAppletsObserver
     if (QLog.isColorLevel()) {
       QLog.d("MiniAppDesktop", 2, "updateAppletsSettingSwitchState:  switchState: " + paramInt);
     }
-    if ((amtb.l()) && (this.layoutReference != null))
+    if ((aokd.l()) && (this.layoutReference != null))
     {
       MiniAppDesktopLayout localMiniAppDesktopLayout = (MiniAppDesktopLayout)this.layoutReference.get();
       if (localMiniAppDesktopLayout != null) {
@@ -37,7 +37,7 @@ class MiniAppDesktop$RedDotAppletsObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDesktop.RedDotAppletsObserver
  * JD-Core Version:    0.7.0.1
  */

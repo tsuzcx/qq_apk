@@ -1,56 +1,33 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.Display;
-import android.view.MotionEvent;
-import android.view.WindowManager;
+import android.content.Intent;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class amkr
+  implements phj
 {
-  private static double jdField_a_of_type_Double = 0.25D;
-  private static float jdField_a_of_type_Float;
-  private static double jdField_b_of_type_Double = 0.5D;
-  private static float jdField_b_of_type_Float;
-  private static float c;
   private int jdField_a_of_type_Int;
-  private int jdField_b_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
   
-  public amkr(Context paramContext)
+  public amkr(int paramInt1, int paramInt2, String paramString)
   {
-    a(paramContext);
-    paramContext = paramContext.getResources();
-    jdField_a_of_type_Float = paramContext.getDimensionPixelSize(2131297356);
-    jdField_b_of_type_Float = paramContext.getDimensionPixelSize(2131297357);
-    c = paramContext.getDimensionPixelSize(2131297355);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  private void a(Context paramContext)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    paramContext = (WindowManager)paramContext.getSystemService("window");
-    this.jdField_a_of_type_Int = paramContext.getDefaultDisplay().getWidth();
-    this.jdField_b_of_type_Int = paramContext.getDefaultDisplay().getHeight();
-  }
-  
-  public double a(MotionEvent paramMotionEvent)
-  {
-    float f = paramMotionEvent.getRawX();
-    paramMotionEvent.getRawY();
-    if (f <= jdField_a_of_type_Double * this.jdField_a_of_type_Int) {
-      return 0.0D;
-    }
-    if (f >= jdField_b_of_type_Double * this.jdField_a_of_type_Int) {
-      return 1.0D;
-    }
-    return (f - jdField_a_of_type_Double * this.jdField_a_of_type_Int) / ((jdField_b_of_type_Double - jdField_a_of_type_Double) * this.jdField_a_of_type_Int);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent, Context paramContext)
-  {
-    return (a(paramMotionEvent) + 1.0E-008D > 1.0D) && (paramMotionEvent.getRawX() > this.jdField_a_of_type_Int - jdField_b_of_type_Float) && (paramMotionEvent.getRawY() > this.jdField_b_of_type_Int - jdField_a_of_type_Float - c);
+    paramString = new Intent("notify_main_subscribe_follow_state");
+    paramString.putExtra("follow_uin", this.jdField_a_of_type_JavaLangString);
+    paramString.putExtra("follow_uin_position", this.jdField_a_of_type_Int);
+    paramString.putExtra("follow_uin_smooth_dx", this.b);
+    paramString.putExtra("follow_uin_status", paramBoolean);
+    BaseApplication.getContext().sendBroadcast(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkr
  * JD-Core Version:    0.7.0.1
  */

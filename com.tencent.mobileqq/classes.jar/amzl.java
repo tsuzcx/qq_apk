@@ -1,19 +1,12 @@
-public class amzl
+public abstract interface amzl
 {
-  public String a;
-  public boolean a;
-  public String b = "https://club.vip.qq.com/interact/recovery?_wv=16777218&friend=%s&type=%d";
-  public String c = "https://club.vip.qq.com/interact/selector?from=setting";
+  public abstract void a(long paramLong1, long paramLong2);
   
-  public amzl()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangString = ajya.a(2131711274);
-  }
+  public abstract void a(boolean paramBoolean, amzm paramamzm);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzl
  * JD-Core Version:    0.7.0.1
  */

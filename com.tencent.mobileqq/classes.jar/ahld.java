@@ -1,38 +1,32 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import cooperation.comic.VipComicJumpActivity;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotifyAndRecommendView.10.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class ahld
-  implements View.OnClickListener
+public class ahld
+  extends amab
 {
-  ahld(ahkd paramahkd, String paramString) {}
+  public ahld(TroopNotifyAndRecommendView paramTroopNotifyAndRecommendView) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    paramView = new JSONObject();
-    try
-    {
-      paramView.put("from", "20");
-      label17:
-      Intent localIntent = new Intent(ahkd.a(this.jdField_a_of_type_Ahkd), VipComicJumpActivity.class);
-      localIntent.putExtra("options", paramView.toString());
-      ahkd.a(this.jdField_a_of_type_Ahkd).startActivity(localIntent);
-      bghx.a(ahkd.a(this.jdField_a_of_type_Ahkd).getAppInterface(), "100007", "2", "40040", this.jdField_a_of_type_JavaLangString, new String[0]);
-      axqy.a(ahkd.a(this.jdField_a_of_type_Ahkd).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 2, 0, "", "", "", "");
-      return;
+    if (1 == paramInt1) {
+      ThreadManager.getUIHandler().post(new TroopNotifyAndRecommendView.10.1(this, paramString));
     }
-    catch (Exception localException)
-    {
-      break label17;
+  }
+  
+  protected void b(boolean paramBoolean, List<RecommendTroopItem> paramList)
+  {
+    if ((paramBoolean) && (paramList != null)) {
+      this.a.a(paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahld
  * JD-Core Version:    0.7.0.1
  */

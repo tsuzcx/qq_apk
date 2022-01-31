@@ -1,23 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.chatroom.ChatRoomInfo;
-
-public final class lkn
-  implements Parcelable.Creator<ChatRoomInfo>
+public class lkn
 {
-  public ChatRoomInfo a(Parcel paramParcel)
-  {
-    return new ChatRoomInfo(paramParcel);
-  }
+  int a;
+  int b;
   
-  public ChatRoomInfo[] a(int paramInt)
+  public lkn(int paramInt1, int paramInt2)
   {
-    return new ChatRoomInfo[paramInt];
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lkn
  * JD-Core Version:    0.7.0.1
  */

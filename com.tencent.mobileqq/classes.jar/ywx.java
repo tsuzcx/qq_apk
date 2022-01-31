@@ -1,42 +1,24 @@
-import android.os.Bundle;
-import org.json.JSONObject;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 
-class ywx
-  implements wxt
+public class ywx
+  extends AnimatorListenerAdapter
 {
-  ywx(yww paramyww, ywk paramywk, String paramString, String[] paramArrayOfString, wxr paramwxr) {}
+  public ywx(SingleLyricView paramSingleLyricView) {}
   
-  public void a(Bundle paramBundle)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    String str1 = paramBundle.getString("phone");
-    String str2 = paramBundle.getString("name");
-    String str3 = paramBundle.getString("city");
-    String str4 = paramBundle.getString("area");
-    paramBundle = new JSONObject();
-    try
-    {
-      paramBundle.put("phone", str1);
-      paramBundle.put("name", str2);
-      paramBundle.put("city", str3);
-      paramBundle.put("area", str4);
-      paramBundle = paramBundle.toString();
-      yxp.a("GdtGetUserInfoHandler", "handleJsCallRequest() called with: webPlugin = [" + this.jdField_a_of_type_Ywk + "], callback = [" + this.jdField_a_of_type_JavaLangString + "], args = [" + this.jdField_a_of_type_ArrayOfJavaLangString + "], result = [" + paramBundle + "]");
-      this.jdField_a_of_type_Ywk.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-      this.jdField_a_of_type_Wxr.b();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        yxp.d("GdtGetUserInfoHandler", localException.toString());
-      }
+    super.onAnimationCancel(paramAnimator);
+    if (SingleLyricView.a(this.a) != null) {
+      SingleLyricView.a(this.a).setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ywx
  * JD-Core Version:    0.7.0.1
  */

@@ -6,11 +6,10 @@ import com.tencent.aekit.api.standard.AEModule;
 import com.tencent.aekit.api.standard.GLCapabilities;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.collection.CollectionUtils;
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
-import com.tencent.ttpic.model.TriggerCtrlItem;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.StickerItem;
 import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
@@ -21,6 +20,7 @@ public class GPUParticleFilter
   extends VideoFilterBase
 {
   private static final String TAG = GPUParticleFilter.class.getSimpleName();
+  private float audioScaleFactor = 1.0F;
   private BaseFilter copyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private Frame copyedFrame = new Frame();
   private String dataPath;
@@ -28,14 +28,12 @@ public class GPUParticleFilter
   private boolean needRender;
   private PDSystem pdSystem;
   private float phoneAngles;
-  protected TriggerCtrlItem triggerCtrlItem;
   
   public GPUParticleFilter(String paramString, StickerItem paramStickerItem)
   {
     super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
     this.dataPath = paramString;
     this.item = paramStickerItem;
-    this.triggerCtrlItem = new TriggerCtrlItem(paramStickerItem);
     init();
   }
   
@@ -62,7 +60,7 @@ public class GPUParticleFilter
     for (;;)
     {
       localParticleEmitterParam.emitPosition = paramList;
-      localParticleEmitterParam.extraScale *= (float)this.triggerCtrlItem.getAudioScaleFactor();
+      localParticleEmitterParam.extraScale *= this.audioScaleFactor;
       localParticleEmitterParam.extraScale *= this.width * 1.0F / 720.0F;
       return localParticleEmitterParam;
       int i;
@@ -89,7 +87,7 @@ public class GPUParticleFilter
           break;
         }
         PointF localPointF1 = (PointF)paramList.get(this.item.alignFacePoints[0]);
-        label346:
+        label342:
         float f;
         if (this.item.alignFacePoints.length == 1)
         {
@@ -122,35 +120,31 @@ public class GPUParticleFilter
             localParticleEmitterParam.extraScale = ((float)d);
             f = (float)Math.pow(4.0D, 0.5D - d);
             if (f <= 0.25D) {
-              break label881;
+              break label872;
             }
-            label746:
-            localVector3.z = ((1.0F - f) * this.height);
-          }
-          if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length < 3)) {
-            break label889;
-          }
-          localParticleEmitterParam.rotateX = paramArrayOfFloat[0];
-          localParticleEmitterParam.rotateY = paramArrayOfFloat[1];
-          localParticleEmitterParam.rotateZ = paramArrayOfFloat[2];
-          if ((this.phoneAngles == 270.0F) || (this.phoneAngles == 180.0F)) {
-            localParticleEmitterParam.rotateX = (-localParticleEmitterParam.rotateX);
-          }
-          if ((this.phoneAngles == 90.0F) || (this.phoneAngles == 180.0F)) {
-            localParticleEmitterParam.rotateY = (-localParticleEmitterParam.rotateY);
           }
         }
         for (;;)
         {
+          localVector3.z = ((1.0F - f) * this.height);
+          if ((paramArrayOfFloat != null) && (paramArrayOfFloat.length >= 3))
+          {
+            localParticleEmitterParam.rotateX = paramArrayOfFloat[0];
+            localParticleEmitterParam.rotateY = paramArrayOfFloat[1];
+            localParticleEmitterParam.rotateZ = (paramArrayOfFloat[2] - (float)Math.toRadians(360.0F - this.phoneAngles));
+            if ((this.phoneAngles == 90.0F) || (this.phoneAngles == 270.0F))
+            {
+              f = localParticleEmitterParam.rotateX;
+              localParticleEmitterParam.rotateX = (-localParticleEmitterParam.rotateY);
+              localParticleEmitterParam.rotateY = (-f);
+            }
+          }
           paramList = localVector3;
           break;
           i = this.item.alignFacePoints[1];
-          break label346;
-          label881:
+          break label342;
+          label872:
           f = 0.25F;
-          break label746;
-          label889:
-          localParticleEmitterParam.rotateZ = ((float)Math.toRadians((360.0F - this.phoneAngles) % 360.0F));
         }
         if ((paramList == null) || (paramList.isEmpty())) {
           break;
@@ -169,7 +163,7 @@ public class GPUParticleFilter
   {
     Vector3 localVector3 = paramParticleEmitterParam.emitPosition;
     localVector3.y = (this.height - localVector3.y);
-    this.pdSystem.setBaseRotation(this.phoneAngles);
+    this.pdSystem.setBaseRotation(360.0F - this.phoneAngles);
     if ((this.pdSystem.totalFinished()) || ((!this.needRender) && ((this.item.gpuParticleConfig.emitterType == 2) || (this.item.gpuParticleConfig.emitterType == 3))))
     {
       this.pdSystem.reset();
@@ -204,7 +198,9 @@ public class GPUParticleFilter
       localFrame.bindDepthBuffer(localFrame.width, localFrame.height);
       this.pdSystem.updateFboSize(paramFrame.getTextureId(), localFrame.getFBO(), this.width, this.height);
       this.pdSystem.render(System.currentTimeMillis(), this.needRender);
-      if (!GLCapabilities.isSupportFramebufferFetch()) {
+      if (!GLCapabilities.isSupportFramebufferFetch())
+      {
+        GlUtil.setBlendMode(true);
         this.copyFilter.RenderProcess(localFrame.getTextureId(), this.width, this.height, -1, 0.0D, paramFrame);
       }
       return paramFrame;
@@ -221,19 +217,14 @@ public class GPUParticleFilter
     updateParticle(updateEmitterParam(paramList, paramArrayOfFloat));
   }
   
-  protected TRIGGERED_STATUS updateActionTriggered(PTDetectInfo paramPTDetectInfo)
-  {
-    return this.triggerCtrlItem.getTriggeredStatus(paramPTDetectInfo);
-  }
-  
   public void updatePreview(Object paramObject)
   {
     if ((paramObject instanceof PTDetectInfo))
     {
       paramObject = (PTDetectInfo)paramObject;
       this.phoneAngles = paramObject.phoneAngle;
-      updateActionTriggered(paramObject);
-      this.needRender = this.triggerCtrlItem.isTriggered();
+      this.needRender = paramObject.needRender;
+      this.audioScaleFactor = ((float)paramObject.audioScaleFactor);
       if (!VideoMaterialUtil.isGestureItem(this.item)) {
         break label89;
       }

@@ -1,6 +1,6 @@
 package com.google.android.filament;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import com.google.android.filament.proguard.UsedByReflection;
 
 public class Engine
@@ -13,7 +13,7 @@ public class Engine
   @NonNull
   private final TransformManager mTransformManager;
   
-  private Engine(long paramLong)
+  public Engine(long paramLong)
   {
     this.mNativeObject = paramLong;
     this.mTransformManager = new TransformManager(nGetTransformManager(paramLong));
@@ -374,7 +374,7 @@ public class Engine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.Engine
  * JD-Core Version:    0.7.0.1
  */

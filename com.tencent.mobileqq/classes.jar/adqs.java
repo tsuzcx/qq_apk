@@ -1,36 +1,32 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-class adqs
-  implements adnx
+public class adqs
+  extends alka
 {
-  adqs(adqr paramadqr, adqq paramadqq, MessageForPoke paramMessageForPoke) {}
+  public adqs(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    this.jdField_a_of_type_Adqq.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_Adqq.b == adqe.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Adqr.a.a instanceof ChatHistoryActivity)) && (!adqe.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
-      this.jdField_a_of_type_Adqq.c.setVisibility(0);
-    }
-    for (;;)
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_Adqq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
+      if (!TextUtils.isEmpty(this.a.f)) {
+        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
+      }
+      if (this.a.a == 13) {
+        this.a.b();
+      }
+      this.a.finish();
       return;
-      this.jdField_a_of_type_Adqq.c.setVisibility(8);
     }
+    QQToast.a(this.a.app.getApp(), 1, alpo.a(2131713825), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqs
  * JD-Core Version:    0.7.0.1
  */

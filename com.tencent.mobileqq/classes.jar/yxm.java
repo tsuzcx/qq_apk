@@ -1,46 +1,20 @@
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
-import com.tencent.gdtad.aditem.GdtAd;
-import org.json.JSONObject;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-public class yxm
-  implements yxe
+class yxm
+  implements View.OnClickListener
 {
-  public boolean a(ywk paramywk, String paramString, String... paramVarArgs)
+  yxm(yxj paramyxj) {}
+  
+  public void onClick(View paramView)
   {
-    try
-    {
-      paramVarArgs = new JSONObject(paramVarArgs[0]);
-      yxp.b("GdtPreLoaderJsCallHandler", paramVarArgs.toString());
-      paramVarArgs = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramVarArgs.getJSONObject("adInfo"))));
-      ysu.a().a(paramVarArgs);
-      paramywk.callJs(paramString, null);
-      if (paramywk != null)
-      {
-        paramString = paramywk.a();
-        if (paramywk == null) {
-          break label99;
-        }
-      }
-      label99:
-      for (paramywk = paramywk.a();; paramywk = null)
-      {
-        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "preLoadAfterAdLoaded", paramywk, paramVarArgs);
-        return true;
-        paramString = null;
-        break;
-      }
-      return true;
-    }
-    catch (Throwable paramywk)
-    {
-      paramywk.printStackTrace();
-    }
+    yxj.b(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yxm
  * JD-Core Version:    0.7.0.1
  */

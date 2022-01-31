@@ -1,319 +1,314 @@
-import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.PgcSmallView;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeMiddleBodyView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGridImage;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentPgcVideo;
+import com.tencent.biz.pubaccount.readinjoy.question.bean.QuestionSquareBean;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import org.json.JSONObject;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
 
-public class pgp
-  implements php
+public abstract class pgp
+  implements pft
 {
-  private View a(int paramInt, Context paramContext, pau parampau)
+  protected static String b = "ReqType";
+  protected static String c = "NotifyType";
+  public static String d = "BeginSeq";
+  public static String e = "EndSeq";
+  public static String f = "CountOfRequest_0x68b";
+  public static String g = "CountOfRequest_0x886";
+  public static String h = "repeatedReqFlag";
+  public static String i = "asyncRequestChannelFlag";
+  public Handler a;
+  public awbw a;
+  public AppInterface a;
+  protected ExecutorService a;
+  protected puz a;
+  
+  public pgp(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    parampau = parampau.a();
-    if ((parampau != null) && (parampau.mSocialFeedInfo != null) && (parampau.mSocialFeedInfo.jdField_a_of_type_Qcv != null) && (parampau.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_JavaUtilArrayList != null) && (parampau.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (ComponentContentGridImage.a(parampau.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_JavaUtilArrayList.size(), parampau.mSocialFeedInfo.jdField_a_of_type_Int) == 1)) {
-      return new ComponentContentBig(paramContext);
-    }
-    return new ComponentContentGridImage(paramContext);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService = paramExecutorService;
+    this.jdField_a_of_type_Puz = parampuz;
+    this.jdField_a_of_type_Awbw = paramawbw;
+    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
   }
   
-  private void a(Context paramContext, ArticleInfo paramArticleInfo, int paramInt1, String paramString, int paramInt2, int paramInt3, ram paramram)
-  {
-    int i = a(paramArticleInfo, paramram);
-    paramram = paramram.a();
-    if (paramram != null) {
-      paramram.a(paramContext, paramArticleInfo, paramInt1, paramString, i, paramInt2, paramInt3);
-    }
-  }
-  
-  private void a(Context paramContext, pau parampau, int paramInt)
-  {
-    rbo localrbo = parampau.a().a();
-    parampau = parampau.a();
-    if ((parampau != null) && (localrbo != null)) {
-      localrbo.a(paramContext, parampau, 0, parampau.innerUniqueID, 5, paramInt, 0);
-    }
-  }
-  
-  private void b(int paramInt1, pau parampau, NativeMiddleBodyView paramNativeMiddleBodyView, int paramInt2, Container paramContainer)
-  {
-    ArticleInfo localArticleInfo = parampau.a();
-    if ((localArticleInfo != null) && (localArticleInfo.mSocialFeedInfo != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcv != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_JavaUtilArrayList != null) && (localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_JavaUtilArrayList.size() > 0) && (ComponentContentGridImage.a(localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_JavaUtilArrayList.size(), localArticleInfo.mSocialFeedInfo.jdField_a_of_type_Int) == 1))
-    {
-      c(paramInt1, parampau, paramNativeMiddleBodyView, paramInt2, paramContainer);
-      return;
-    }
-    paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
-    paramNativeMiddleBodyView.a(ComponentContentGridImage.a(parampau, paramInt1));
-    paramNativeMiddleBodyView.setMIReadInJoyModel(parampau);
-    paramNativeMiddleBodyView.setGalleryClickListener(new pgu(this, parampau, paramContainer, paramInt2));
-  }
-  
-  private void c(int paramInt1, pau parampau, NativeMiddleBodyView paramNativeMiddleBodyView, int paramInt2, Container paramContainer)
-  {
-    paramNativeMiddleBodyView.a().setOnClickListener(new pgv(this, parampau, paramContainer, paramInt2));
-    ((pqp)paramNativeMiddleBodyView.a()).a(parampau);
-  }
-  
-  public int a(ArticleInfo paramArticleInfo, ram paramram)
-  {
-    return old.a(paramram.a(), onh.a(paramArticleInfo));
-  }
-  
-  protected View a(int paramInt, Context paramContext, pau parampau, pli parampli)
-  {
-    switch (paramInt)
-    {
-    default: 
-      throw new IllegalArgumentException("" + paramInt);
-    case 34: 
-    case 85: 
-      paramContext = new ComponentContentGridImage(paramContext);
-      if (parampli.a())
-      {
-        paramContext.jdField_a_of_type_Int = parampli.getComPaddingLeft();
-        paramContext.b = parampli.getComPaddingRight();
-      }
-      return paramContext;
-    case 16: 
-    case 20: 
-    case 83: 
-    case 86: 
-      return new PgcSmallView(paramInt, paramContext);
-    case 17: 
-    case 19: 
-    case 32: 
-    case 84: 
-      return new ComponentContentPgcVideo(paramContext);
-    case 18: 
-      return new ComponentContentBig(paramContext);
-    case 48: 
-    case 64: 
-    case 65: 
-      return a(paramInt, paramContext, parampau);
-    case 29: 
-      return new ComponentContentBig(paramContext);
-    }
-    return new ComponentContentBig(paramContext);
-  }
-  
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  public ArrayList<BaseArticleInfo> a(int paramInt)
   {
     return null;
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, pfu parampfu) {}
+  
+  public void a(awbv paramawbv)
   {
-    bfwu.a("PgcProteusItem.getDataJson");
-    long l2 = System.currentTimeMillis();
-    pdm localpdm = new pdm();
-    try
+    Object localObject3 = null;
+    Object localObject2 = null;
+    Object localObject1;
+    if ((paramawbv instanceof AdvertisementInfo))
     {
-      l1 = Long.parseLong(paramBaseArticleInfo.mSubscribeID);
-      bfwu.a("PgcProteusItem.bindArticleComment");
-      if ((paramInt != 20) && (paramInt != 16) && (paramInt != 83) && (paramInt != 86) && ((!TextUtils.isEmpty(paramBaseArticleInfo.mSummary)) || (!TextUtils.isEmpty(paramBaseArticleInfo.mTitle)) || ((paramBaseArticleInfo.mSocialFeedInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcv != null) && (paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_JavaLangString != null)))) {
-        localpdm.p(paramBaseArticleInfo);
-      }
-      bfwu.a();
-      bfwu.a("PgcProteusItem.bindReadArticle");
-      if ((paramInt == 34) || (paramInt == 85)) {
-        localpdm.b(paramBaseArticleInfo, ajya.a(2131707984));
-      }
-      bfwu.a();
-      if (paramInt == 29) {
-        localpdm.b(paramBaseArticleInfo, ajya.a(2131707983));
-      }
-      bfwu.a("PgcProteusItem.bindTopicCapsule");
-      if (paramInt != 29) {
-        localpdm.A(paramBaseArticleInfo).D(paramBaseArticleInfo).B(paramBaseArticleInfo);
-      }
-      bfwu.a();
-      bfwu.a("PgcProteusItem.bindPublicAccountFollowButton");
-      if (((paramBaseArticleInfo instanceof ArticleInfo)) && (ram.h((ArticleInfo)paramBaseArticleInfo))) {
-        localpdm.h(paramBaseArticleInfo);
-      }
-      bfwu.a();
-      localpdm.a(paramBaseArticleInfo).b(paramBaseArticleInfo).r(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).d(paramBaseArticleInfo).j(paramBaseArticleInfo).g(paramBaseArticleInfo).k(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).C(paramBaseArticleInfo).a("ReadInjoy_original_cell").E(paramBaseArticleInfo).l(paramBaseArticleInfo).I(paramBaseArticleInfo).t(paramBaseArticleInfo).u(paramBaseArticleInfo);
-      bfwu.a("PgcProteusItem.bindMiddleBody");
-      localpdm.z(paramBaseArticleInfo);
-      bfwu.a();
-      bfwu.a();
-      saf.a("PgcProteusItem", String.valueOf(paramInt), "PgcProteusItem.getDataJson", System.currentTimeMillis() - l2);
-      return localpdm.a();
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_Awbw.d(AdvertisementInfo.class.getSimpleName()))
       {
-        localNumberFormatException.printStackTrace();
-        long l1 = 0L;
-      }
-    }
-  }
-  
-  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2)
-  {
-    long l = System.currentTimeMillis();
-    bfwu.a("PgcProteusItem.bindView");
-    ViewBase localViewBase = paramContainer.getVirtualView();
-    c(paramInt1, paramContainer, parampau, paramInt2, localViewBase);
-    b(parampau, localViewBase);
-    a(parampau, localViewBase);
-    b(paramInt1, paramContainer, parampau, paramInt2, localViewBase);
-    a(paramInt1, paramContainer, parampau, paramInt2, localViewBase);
-    bfwu.a("PgcProteusItem.bindView.bindJumpChannel");
-    pmo.a(localViewBase, parampau);
-    bfwu.a();
-    bfwu.a("PgcProteusItem.bindView.bindSocialCommon");
-    pmo.b(localViewBase, parampau);
-    bfwu.a();
-    bfwu.a("PgcProteusItem.bindView.bindFlowGuideSperator");
-    pmo.c(localViewBase, parampau);
-    bfwu.a();
-    bfwu.a();
-    saf.a("PgcProteusItem", String.valueOf(paramInt1), "PgcProteusItem.bindView", System.currentTimeMillis() - l);
-  }
-  
-  protected void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2, ViewBase paramViewBase)
-  {
-    bfwu.a("PgcProteusItem.bindView.socialBottomBar");
-    paramViewBase = paramViewBase.findViewBaseByName("id_social_bottom");
-    if (((paramInt1 == 48) || (paramInt1 == 64) || (paramInt1 == 65)) && (paramViewBase != null) && (paramViewBase.getNativeView() != null)) {
-      paramViewBase.getNativeView().setOnClickListener(new pgq(this, paramContainer, parampau, paramInt2));
-    }
-    bfwu.a();
-  }
-  
-  protected void a(int paramInt1, pau parampau, NativeMiddleBodyView paramNativeMiddleBodyView, int paramInt2, Container paramContainer)
-  {
-    if ((paramNativeMiddleBodyView.a() == null) || (parampau.a() == null)) {
-      return;
-    }
-    ram localram = parampau.a();
-    switch (paramInt1)
-    {
-    default: 
-      throw new IllegalArgumentException("" + paramInt1);
-    case 34: 
-    case 85: 
-      paramNativeMiddleBodyView = (ComponentContentGridImage)paramNativeMiddleBodyView.a();
-      paramNativeMiddleBodyView.a(ComponentContentGridImage.a(parampau, paramInt1));
-      paramNativeMiddleBodyView.setMIReadInJoyModel(parampau);
-      paramNativeMiddleBodyView.setOnNoItemClickListener(new pgs(this, parampau));
-      return;
-    case 16: 
-    case 17: 
-    case 18: 
-    case 19: 
-    case 20: 
-    case 31: 
-    case 32: 
-    case 83: 
-    case 84: 
-    case 86: 
-      paramNativeMiddleBodyView.a().setOnClickListener(new pgt(this, parampau, localram));
-      ((pqp)paramNativeMiddleBodyView.a()).a(parampau);
-      return;
-    case 48: 
-    case 64: 
-    case 65: 
-      b(paramInt1, parampau, paramNativeMiddleBodyView, paramInt2, paramContainer);
-      return;
-    }
-    ((pqp)paramNativeMiddleBodyView.a()).a(parampau);
-  }
-  
-  protected void a(pau parampau, ViewBase paramViewBase)
-  {
-    bfwu.a("PgcProteusItem.bindView.bindBiuTime");
-    pmo.a(paramViewBase, parampau.a());
-    bfwu.a();
-  }
-  
-  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
-  {
-    return false;
-  }
-  
-  protected void b(int paramInt1, Container paramContainer, pau parampau, int paramInt2, ViewBase paramViewBase)
-  {
-    paramViewBase = (pjs)paramViewBase.findViewBaseByName("id_article_comment");
-    bfwu.a("PgcProteusItem.bindView.commentView");
-    if (paramViewBase != null)
-    {
-      if ((paramInt1 == 48) || (paramInt1 == 64) || (paramInt1 == 65)) {
-        paramViewBase.setOnClickListener(new pgr(this, paramContainer, parampau, paramInt2));
-      }
-      paramViewBase.setVisibility(0);
-    }
-    if ((paramViewBase != null) && (paramViewBase.isVisible())) {
-      paramViewBase.a(parampau);
-    }
-    bfwu.a();
-  }
-  
-  protected void b(pau parampau, ViewBase paramViewBase)
-  {
-    paramViewBase = (pju)paramViewBase.findViewBaseByName("id_info_avator");
-    if (paramViewBase != null)
-    {
-      bfwu.a("PgcProteusItem.bindView. avatar.setModel");
-      paramViewBase.a(parampau);
-      bfwu.a();
-    }
-  }
-  
-  protected void c(int paramInt1, Container paramContainer, pau parampau, int paramInt2, ViewBase paramViewBase)
-  {
-    bfwu.a("PgcProteusItem.bindView.findViewBaseByName");
-    pli localpli = (pli)paramViewBase.findViewBaseByName("id_middle_body_content");
-    bfwu.a();
-    bfwu.a("PgcProteusItem.bindView.bodyviewContent");
-    NativeMiddleBodyView localNativeMiddleBodyView;
-    View localView;
-    if (localpli != null)
-    {
-      localNativeMiddleBodyView = (NativeMiddleBodyView)localpli.getNativeView();
-      if (localNativeMiddleBodyView.a() == null)
-      {
-        localView = a(paramInt1, paramContainer.getContext(), parampau, localpli);
-        if ((localView == null) || (!(localView.getLayoutParams() instanceof RelativeLayout.LayoutParams))) {
-          break label136;
+        paramawbv = (AdvertisementInfo)paramawbv;
+        localObject1 = localObject2;
+        if (!TextUtils.isEmpty(paramawbv.mAdTraceId)) {
+          localObject1 = this.jdField_a_of_type_Awbw.a(AdvertisementInfo.class, "mAdTraceId = ?", new String[] { paramawbv.mAdTraceId });
         }
-        paramViewBase = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       }
     }
     for (;;)
     {
-      localpli.a(paramViewBase);
-      if (localView != null) {
-        localNativeMiddleBodyView.a(localView, paramViewBase);
+      if (localObject1 != null) {
+        this.jdField_a_of_type_Awbw.b((awbv)localObject1);
       }
-      bfwu.a("PgcProteusItem.bindView.bindBodyView");
-      a(paramInt1, parampau, localNativeMiddleBodyView, paramInt2, paramContainer);
-      bfwu.a();
-      bfwu.a();
       return;
-      label136:
-      paramViewBase = new RelativeLayout.LayoutParams(-2, -2);
-      paramViewBase.setMargins(bbll.a(12.0F), 0, bbll.a(12.0F), 0);
+      if ((paramawbv instanceof ArticleInfo))
+      {
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_Awbw.d(ArticleInfo.class.getSimpleName()))
+        {
+          localObject2 = (ArticleInfo)paramawbv;
+          paramawbv = localObject3;
+          if (((ArticleInfo)localObject2).mChannelID != 70L) {
+            paramawbv = this.jdField_a_of_type_Awbw.a(ArticleInfo.class, "mArticleID = ? and mChannelID = ?", new String[] { String.valueOf(((ArticleInfo)localObject2).mArticleID), String.valueOf(((ArticleInfo)localObject2).mChannelID) });
+          }
+          localObject1 = this.jdField_a_of_type_Awbw.a(ArticleInfo.class, "mRecommendSeq = ? and mChannelID = ?", new String[] { String.valueOf(((ArticleInfo)localObject2).mRecommendSeq), String.valueOf(((ArticleInfo)localObject2).mChannelID) });
+          if (paramawbv != null) {}
+          for (;;)
+          {
+            if ((QLog.isColorLevel()) && (paramawbv != null)) {
+              QLog.e("ReadInJoyEngineModule", 2, "removeEntityIfExistsInDB, article duplicated, article been channelID=" + ((ArticleInfo)localObject2).mChannelID + "articleID=" + ((ArticleInfo)localObject2).mArticleID + "recommendSeq=" + ((ArticleInfo)localObject2).mRecommendSeq);
+            }
+            localObject1 = paramawbv;
+            if (((ArticleInfo)localObject2).mChannelID != 70L) {
+              break;
+            }
+            localObject1 = paramawbv;
+            if (((ArticleInfo)localObject2).mFeedId == 0L) {
+              break;
+            }
+            localObject2 = this.jdField_a_of_type_Awbw.a(ArticleInfo.class, "mFeedId = ? and mChannelID = ?", new String[] { String.valueOf(((ArticleInfo)localObject2).mFeedId), String.valueOf(((ArticleInfo)localObject2).mChannelID) });
+            localObject1 = paramawbv;
+            if (localObject2 == null) {
+              break;
+            }
+            this.jdField_a_of_type_Awbw.b((awbv)localObject2);
+            localObject1 = paramawbv;
+            break;
+            paramawbv = (awbv)localObject1;
+          }
+        }
+      }
+      else if ((paramawbv instanceof ArticleReadInfo))
+      {
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_Awbw.d(ArticleInfo.class.getSimpleName()))
+        {
+          paramawbv = (ArticleReadInfo)paramawbv;
+          localObject1 = this.jdField_a_of_type_Awbw.a(ArticleReadInfo.class, "mArticleID = ?", new String[] { String.valueOf(paramawbv.mArticleID) });
+        }
+      }
+      else if ((paramawbv instanceof ChannelInfo))
+      {
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_Awbw.d(ChannelInfo.class.getSimpleName()))
+        {
+          paramawbv = (ChannelInfo)paramawbv;
+          localObject1 = this.jdField_a_of_type_Awbw.a(ChannelInfo.class, "mChannelID = ?", new String[] { String.valueOf(paramawbv.mChannelID) });
+        }
+      }
+      else if ((paramawbv instanceof TabChannelCoverInfo))
+      {
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_Awbw.d(TabChannelCoverInfo.class.getSimpleName()))
+        {
+          paramawbv = (TabChannelCoverInfo)paramawbv;
+          localObject1 = this.jdField_a_of_type_Awbw.a(TabChannelCoverInfo.class, "mChannelCoverId = ?", new String[] { String.valueOf(paramawbv.mChannelCoverId) });
+        }
+      }
+      else if ((paramawbv instanceof ChannelCoverInfo))
+      {
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_Awbw.d(ChannelCoverInfo.class.getSimpleName()))
+        {
+          paramawbv = (ChannelCoverInfo)paramawbv;
+          localObject1 = this.jdField_a_of_type_Awbw.a(ChannelCoverInfo.class, "mChannelCoverId = ?", new String[] { String.valueOf(paramawbv.mChannelCoverId) });
+        }
+      }
+      else if ((paramawbv instanceof ReadInJoyUserInfo))
+      {
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_Awbw.d(ReadInJoyUserInfo.class.getSimpleName()))
+        {
+          paramawbv = (ReadInJoyUserInfo)paramawbv;
+          localObject1 = this.jdField_a_of_type_Awbw.a(ReadInJoyUserInfo.class, "uin = ?", new String[] { paramawbv.uin });
+        }
+      }
+      else if ((paramawbv instanceof TopBannerInfo))
+      {
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_Awbw.d(TopBannerInfo.class.getSimpleName()))
+        {
+          paramawbv = (TopBannerInfo)paramawbv;
+          localObject1 = this.jdField_a_of_type_Awbw.a(TopBannerInfo.class, "mChannelId = ?", new String[] { "" + paramawbv.mChannelId });
+        }
+      }
+      else if ((paramawbv instanceof QuestionSquareBean))
+      {
+        localObject1 = localObject2;
+        if (this.jdField_a_of_type_Awbw.d(QuestionSquareBean.class.getSimpleName()))
+        {
+          paramawbv = (QuestionSquareBean)paramawbv;
+          localObject1 = this.jdField_a_of_type_Awbw.a(QuestionSquareBean.class, "uin = ? and rowKey = ?", new String[] { paramawbv.uin, paramawbv.rowKey });
+        }
+      }
+      else
+      {
+        localObject1 = localObject2;
+        if ((paramawbv instanceof WeiShiVideoArticleInfo))
+        {
+          localObject1 = localObject2;
+          if (this.jdField_a_of_type_Awbw.d(WeiShiVideoArticleInfo.class.getSimpleName()))
+          {
+            paramawbv = (WeiShiVideoArticleInfo)paramawbv;
+            localObject1 = this.jdField_a_of_type_Awbw.a(WeiShiVideoArticleInfo.class, "articleID = ? and channelID = ?", new String[] { String.valueOf(paramawbv.articleID), String.valueOf(paramawbv.channelID) });
+          }
+        }
+      }
     }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    if (paramToServiceMsg != null)
+    {
+      paramToServiceMsg.extraData.putBoolean("req_pb_protocol_flag", true);
+      long l = System.currentTimeMillis();
+      paramToServiceMsg.extraData.putLong("time_stamp", l);
+      if (this.jdField_a_of_type_Puz != null) {
+        this.jdField_a_of_type_Puz.a(paramToServiceMsg, this);
+      }
+    }
+  }
+  
+  public abstract void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject);
+  
+  /* Error */
+  public boolean a(awbv paramawbv)
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_3
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: aload_1
+    //   5: invokevirtual 266	awbv:getStatus	()I
+    //   8: sipush 1000
+    //   11: if_icmpne +34 -> 45
+    //   14: aload_0
+    //   15: aload_1
+    //   16: invokevirtual 268	pgp:a	(Lawbv;)V
+    //   19: aload_0
+    //   20: getfield 68	pgp:jdField_a_of_type_Awbw	Lawbw;
+    //   23: aload_1
+    //   24: invokevirtual 270	awbw:b	(Lawbv;)V
+    //   27: aload_1
+    //   28: invokevirtual 266	awbv:getStatus	()I
+    //   31: istore_2
+    //   32: iload_2
+    //   33: sipush 1001
+    //   36: if_icmpne +5 -> 41
+    //   39: iconst_1
+    //   40: istore_3
+    //   41: aload_0
+    //   42: monitorexit
+    //   43: iload_3
+    //   44: ireturn
+    //   45: aload_1
+    //   46: invokevirtual 266	awbv:getStatus	()I
+    //   49: sipush 1001
+    //   52: if_icmpeq +13 -> 65
+    //   55: aload_1
+    //   56: invokevirtual 266	awbv:getStatus	()I
+    //   59: sipush 1002
+    //   62: if_icmpne -21 -> 41
+    //   65: aload_0
+    //   66: getfield 68	pgp:jdField_a_of_type_Awbw	Lawbw;
+    //   69: aload_1
+    //   70: invokevirtual 272	awbw:a	(Lawbv;)Z
+    //   73: istore_3
+    //   74: goto -33 -> 41
+    //   77: astore_1
+    //   78: aload_0
+    //   79: monitorexit
+    //   80: aload_1
+    //   81: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	82	0	this	pgp
+    //   0	82	1	paramawbv	awbv
+    //   31	6	2	j	int
+    //   1	73	3	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   4	32	77	finally
+    //   45	55	77	finally
+    //   55	65	77	finally
+    //   65	74	77	finally
+  }
+  
+  public int[] a(int paramInt)
+  {
+    return new int[0];
+  }
+  
+  public void b(ToServiceMsg paramToServiceMsg)
+  {
+    if (paramToServiceMsg != null)
+    {
+      paramToServiceMsg.addAttribute("req_enable_msf_retry", Boolean.valueOf(true));
+      QLog.d("ReadInJoyEngineModule", 2, "sendPbReqWithAutoRetry ");
+    }
+    a(paramToServiceMsg);
+  }
+  
+  public List<ArticleInfo> c(int paramInt)
+  {
+    List localList = null;
+    if (this.jdField_a_of_type_Awbw.d(ArticleInfo.class.getSimpleName())) {
+      localList = this.jdField_a_of_type_Awbw.a(ArticleInfo.class, true, "(mFeedType = ? OR mFeedType = ? OR mFeedType = ? OR mFeedType = ?) AND businessId = ?", new String[] { String.valueOf(17), String.valueOf(19), String.valueOf(0), String.valueOf(24), String.valueOf(paramInt) }, null, null, null, null);
+    }
+    return localList;
+  }
+  
+  public List<ArticleInfo> d(int paramInt)
+  {
+    List localList = null;
+    if (this.jdField_a_of_type_Awbw.d(ArticleInfo.class.getSimpleName())) {
+      localList = this.jdField_a_of_type_Awbw.a(ArticleInfo.class, true, "(mFeedType = ? OR mFeedType = ?) AND businessId = ?", new String[] { String.valueOf(0), String.valueOf(4), String.valueOf(paramInt) }, null, null, null, null);
+    }
+    return localList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgp
  * JD-Core Version:    0.7.0.1
  */

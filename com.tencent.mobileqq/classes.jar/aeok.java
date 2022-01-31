@@ -1,28 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.RecentUser;
+import android.graphics.Rect;
+import android.widget.ImageView.ScaleType;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-class aeok
-  implements DialogInterface.OnClickListener
+public class aeok
+  implements OnCompositionLoadedListener
 {
-  aeok(aeoj paramaeoj, String paramString) {}
+  public aeok(IntimateTitleSwitchView paramIntimateTitleSwitchView, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    ((ajvi)this.jdField_a_of_type_Aeoj.a.a.getManager(53)).c(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface = this.jdField_a_of_type_Aeoj.a.a.a().a();
-    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
-    if (localRecentUser != null) {
-      paramDialogInterface.b(localRecentUser);
+    if ((paramLottieComposition == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.getVisibility() != 0) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.c)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("IntimateTitleSwitchView", 0, "composition is null ,return");
+      }
     }
-    this.jdField_a_of_type_Aeoj.a.H();
+    for (;;)
+    {
+      return;
+      int i = aekt.a(75.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.getResources());
+      int j = aekt.a(90.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.getResources());
+      Rect localRect = paramLottieComposition.getBounds();
+      float f1 = i / localRect.width();
+      float f2 = j / localRect.height();
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.setImageAssetDelegate(new aeol(this));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.setComposition(paramLottieComposition);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.setScaleXY(f1, f2);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.setScaleType(ImageView.ScaleType.FIT_XY);
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.c) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.getVisibility() == 0)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.playAnimation();
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d("IntimateTitleSwitchView", 0, "onCompositionLoaded playAnim duration: " + this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.getDuration() + " mIsResumed:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.c);
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.cancelAnimation();
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioIntimateTitleSwitchView.a.removeAllLottieOnCompositionLoadedListener();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeok
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.thumbplayer.composition;
 
-import android.support.annotation.Nullable;
 import android.util.Xml;
+import androidx.annotation.Nullable;
 import com.tencent.thumbplayer.api.composition.ITPMediaComposition;
 import com.tencent.thumbplayer.api.composition.ITPMediaDRMAsset;
 import com.tencent.thumbplayer.api.composition.ITPMediaTrack;
@@ -408,7 +408,7 @@ public class TPMediaCompositionXmlGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.composition.TPMediaCompositionXmlGenerator
  * JD-Core Version:    0.7.0.1
  */

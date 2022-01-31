@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.troop.filemanager.upload;
 
-import azsr;
-import azst;
-import azuw;
+import bbra;
+import bbrc;
+import bbtf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 
 public class TroopFileUploadMgr$1
   implements Runnable
 {
-  public TroopFileUploadMgr$1(azuw paramazuw) {}
+  public TroopFileUploadMgr$1(bbtf parambbtf) {}
   
   public void run()
   {
     if (this.this$0.a) {
       return;
     }
-    QQAppInterface localQQAppInterface = azsr.a();
+    QQAppInterface localQQAppInterface = bbra.a();
     if (localQQAppInterface != null)
     {
       AppNetConnInfo.registerConnectionChangeReceiver(localQQAppInterface.getApplication(), this.this$0);
       this.this$0.a = true;
       return;
     }
-    azst.a("TroopFileUploadMgr", azst.a, "init registerConnectionChangeReceiver fail");
+    bbrc.a("TroopFileUploadMgr", bbrc.a, "init registerConnectionChangeReceiver fail");
   }
 }
 

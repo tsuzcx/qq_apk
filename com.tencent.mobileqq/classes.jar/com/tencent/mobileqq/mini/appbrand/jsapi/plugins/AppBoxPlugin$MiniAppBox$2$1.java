@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
+import aajb;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
-import ytk;
 
 class AppBoxPlugin$MiniAppBox$2$1
-  implements ytk
+  implements aajb
 {
   AppBoxPlugin$MiniAppBox$2$1(AppBoxPlugin.MiniAppBox.2 param2) {}
   
@@ -22,7 +22,7 @@ class AppBoxPlugin$MiniAppBox$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.AppBoxPlugin.MiniAppBox.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,35 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class uhv
-  extends QQUIEventReceiver<uhu, svv>
+class uhv
+  extends alox
 {
-  public uhv(@NonNull uhu paramuhu)
-  {
-    super(paramuhu);
-  }
+  uhv(uhu paramuhu) {}
   
-  public void a(@NonNull uhu paramuhu, @NonNull svv paramsvv)
+  protected void onAddFriend(String paramString)
   {
-    if ((uhu.a(paramuhu) == null) || (paramsvv.a == null) || (!TextUtils.equals(uhu.a(paramuhu).a, paramsvv.a.mVid))) {
+    if (QLog.isColorLevel()) {
+      QLog.i("StoryHaloManager", 2, "onAddFriend: invoked.  addUin: " + paramString);
+    }
+    try
+    {
+      paramString = Long.valueOf(paramString);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(paramString);
+      this.a.a(3, localArrayList);
+      this.a.a();
       return;
     }
-    paramuhu.a.i();
-  }
-  
-  public Class acceptEventClass()
-  {
-    return svv.class;
+    catch (NumberFormatException paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("StoryHaloManager", 2, "onAddFriend: failed.  exception: " + paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uhv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,59 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class pkn
-  extends ViewBase
+  implements poa
 {
-  private NativeAwesomeCommentView a;
-  
-  public pkn(VafContext paramVafContext)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    super(paramVafContext);
-    this.a = new NativeAwesomeCommentView(paramVafContext.getContext());
+    return null;
   }
   
-  public int getComMeasuredHeight()
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    return this.a.getComMeasuredHeight();
-  }
-  
-  public int getComMeasuredWidth()
-  {
-    return this.a.getComMeasuredWidth();
-  }
-  
-  public View getNativeView()
-  {
-    return this.a;
-  }
-  
-  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (this.a != null) {
-      this.a.layout(paramInt1, paramInt2, paramInt3, paramInt4);
+    long l2 = 0L;
+    if (paramBaseArticleInfo == null) {
+      return null;
     }
-  }
-  
-  public void onComMeasure(int paramInt1, int paramInt2)
-  {
-    if (this.a != null) {
-      this.a.measure(paramInt1, paramInt2);
-    }
-  }
-  
-  public boolean setAttribute(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
+    long l1 = l2;
+    if (paramBaseArticleInfo.mSocialFeedInfo != null)
     {
-    }
-    for (;;)
-    {
-      return super.setAttribute(paramInt, paramObject);
-      if (((paramObject instanceof qam)) && (this.a != null)) {
-        this.a.setAwesomeCommentInfo((qam)paramObject);
+      l1 = l2;
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        l1 = paramBaseArticleInfo.mSocialFeedInfo.a.a;
       }
     }
+    return new pjo().a(paramBaseArticleInfo).b(paramBaseArticleInfo).a(paramBaseArticleInfo, l1).f(paramBaseArticleInfo).g(paramBaseArticleInfo).i(paramBaseArticleInfo).j(paramBaseArticleInfo).k(paramBaseArticleInfo).C(paramBaseArticleInfo).q(paramBaseArticleInfo).r(paramBaseArticleInfo).v(paramBaseArticleInfo).w(paramBaseArticleInfo).A(paramBaseArticleInfo).B(paramBaseArticleInfo).a("ReadInjoy_original_cell").F(paramBaseArticleInfo).E(paramBaseArticleInfo).H(paramBaseArticleInfo).I(paramBaseArticleInfo).a();
+  }
+  
+  public void a(int paramInt1, Container paramContainer, pgd parampgd, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    Object localObject = (pqg)paramContainer.findViewBaseByName("id_info_avator");
+    if (localObject != null) {
+      ((pqg)localObject).a(parampgd);
+    }
+    localObject = (pqe)paramContainer.findViewBaseByName("id_article_comment");
+    if (localObject != null) {
+      ((pqe)localObject).a(parampgd);
+    }
+    psw.a(paramContainer, parampgd.a());
+    pkm.a(paramContainer, parampgd);
+    psw.b(paramContainer, parampgd);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, pgd parampgd, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pkn
  * JD-Core Version:    0.7.0.1
  */

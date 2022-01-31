@@ -1,68 +1,51 @@
+import UserGrowth.stGlobalConfig;
+import UserGrowth.stNotificationRsp;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+
 public class tca
-  implements tch
+  implements tmc
 {
-  public final tby[] a = new tby[2];
+  public tca(WSRecommendFragment paramWSRecommendFragment) {}
   
-  private void a(tby paramtby, int paramInt)
+  public void a(String paramString, int paramInt)
   {
-    this.a[paramInt] = paramtby;
-  }
-  
-  public <T extends tby> T a(int paramInt)
-  {
-    tby localtby = this.a[paramInt];
-    if (localtby == null) {}
-    for (;;)
+    if (WSRecommendFragment.a(this.a) == null) {}
+    for (int i = 1;; i = WSRecommendFragment.a(this.a).link_strategy_type)
     {
-      synchronized (this.a)
-      {
-        localtby = this.a[paramInt];
-        if (localtby == null) {
-          break label80;
-        }
-        return localtby;
-        a(localtby, paramInt);
-        if (localtby != null) {
-          localtby.b();
-        }
-        return localtby;
-      }
-      Object localObject2 = new tdn();
-      continue;
-      localObject2 = new tbr();
-      continue;
-      return localObject2;
-      label80:
-      switch (paramInt)
-      {
-      }
+      tlq.a(this.a.getActivity(), "biz_src_jc_gzh_weishi", paramString, 1, i, WSRecommendFragment.a(this.a, WSRecommendFragment.a(this.a)));
+      tjr.a(4, 114, 0, null, null);
+      tju.a(114, paramInt, WSRecommendFragment.a(this.a).cid);
+      WSPublicAccReport.getInstance().reportMsgEntry("gzh_click", paramInt, 1000003, WSRecommendFragment.a(this.a).cid, WSRecommendFragment.a(this.a).trace_id);
+      return;
     }
   }
   
-  public void a()
+  public void b(String paramString, int paramInt)
   {
-    ved.b("DataProviderManager", "onInit");
+    ors.d(this.a.getActivity(), paramString);
+    tju.a(140, paramInt, WSRecommendFragment.a(this.a).cid);
+    WSPublicAccReport.getInstance().reportMsgEntry("gzh_click", paramInt, 1000004, WSRecommendFragment.a(this.a).cid, WSRecommendFragment.a(this.a).trace_id);
   }
   
-  public void b()
+  public void c(String paramString, int paramInt)
   {
-    ved.b("DataProviderManager", "onDestroy");
-    tby[] arrayOftby = this.a;
-    int j = arrayOftby.length;
-    int i = 0;
-    while (i < j)
+    if (WSRecommendFragment.a(this.a) == null) {}
+    for (int i = 1;; i = WSRecommendFragment.a(this.a).link_strategy_type)
     {
-      tby localtby = arrayOftby[i];
-      if (localtby != null) {
-        localtby.c();
-      }
-      i += 1;
+      paramString = WSRecommendFragment.a(this.a, i);
+      tfa.a(this.a.getActivity(), paramString, false);
+      tju.a(115, paramInt, WSRecommendFragment.a(this.a).cid);
+      WSPublicAccReport.getInstance().reportMsgEntry("gzh_click", paramInt, 1000002, WSRecommendFragment.a(this.a).cid, WSRecommendFragment.a(this.a).trace_id);
+      return;
     }
   }
+  
+  public void d(String paramString, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tca
  * JD-Core Version:    0.7.0.1
  */

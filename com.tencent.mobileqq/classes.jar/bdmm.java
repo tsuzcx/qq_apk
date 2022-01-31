@@ -1,186 +1,140 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.WebViewDownloadListener.1;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import java.util.Arrays;
 
-public class bdmm
-  implements bdld
+public final class bdmm
 {
-  protected static bdmm a;
-  protected Handler a;
+  private final int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  @Nullable
+  private float[] jdField_a_of_type_ArrayOfFloat;
+  private final int b;
+  private final int c;
+  private final int d;
+  private final int e;
+  private int f;
+  private int g;
   
-  protected bdmm()
+  public bdmm(@ColorInt int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    this.jdField_a_of_type_Int = Color.red(paramInt1);
+    this.b = Color.green(paramInt1);
+    this.c = Color.blue(paramInt1);
+    this.d = paramInt1;
+    this.e = paramInt2;
   }
   
-  public static bdmm a()
+  private void a()
   {
-    if (jdField_a_of_type_Bdmm == null) {
-      jdField_a_of_type_Bdmm = new bdmm();
-    }
-    return jdField_a_of_type_Bdmm;
-  }
-  
-  protected String a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, int paramInt4, int paramInt5)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    int j;
+    if (!this.jdField_a_of_type_Boolean)
     {
-      localJSONObject.put("packagename", paramString2);
-      localJSONObject.put("appid", paramString1);
-      localJSONObject.put("state", paramInt1);
-      localJSONObject.put("pro", paramInt2);
-      localJSONObject.put("ismyapp", paramInt3);
-      localJSONObject.put("errorMsg", paramString3);
-      localJSONObject.put("errorCode", paramInt4);
-      localJSONObject.put("writecodestate", paramInt5);
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramString1)
-    {
-      for (;;)
+      i = bdmg.a(-1, this.d, 4.5F);
+      j = bdmg.a(-1, this.d, 3.0F);
+      if ((i != -1) && (j != -1))
       {
-        bdii.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
+        this.g = bdmg.b(-1, i);
+        this.f = bdmg.b(-1, j);
+        this.jdField_a_of_type_Boolean = true;
       }
     }
-  }
-  
-  protected String a(String paramString1, int paramInt, String paramString2)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    else
     {
-      localJSONObject.put("packagename", paramString2);
-      localJSONObject.put("appid", paramString1);
-      localJSONObject.put("state", paramInt);
-      localJSONObject.put("pro", 0);
-      return localJSONObject.toString();
+      return;
     }
-    catch (JSONException paramString1)
+    int m = bdmg.a(-16777216, this.d, 4.5F);
+    int k = bdmg.a(-16777216, this.d, 3.0F);
+    if ((m != -1) && (k != -1))
     {
-      for (;;)
-      {
-        bdii.c("WebViewDownloadListener", "getCallBackJsonObject >>> ", paramString1);
-      }
+      this.g = bdmg.b(-16777216, m);
+      this.f = bdmg.b(-16777216, k);
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
-  }
-  
-  protected void a(String paramString)
-  {
-    bdjo localbdjo = bdjo.a();
-    for (;;)
+    if (i != -1)
     {
-      int i;
-      try
-      {
-        int j = localbdjo.a().size();
-        i = 0;
-        if (i < j)
-        {
-          Object localObject = (bdjn)localbdjo.a().get(i);
-          WebView localWebView = ((bdjn)localObject).getWebview();
-          if (localWebView != null) {
-            if (TextUtils.isEmpty(((bdjn)localObject).getJsCallbackMethod()))
-            {
-              localObject = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('loadProcess'," + paramString + ");}void(0);";
-              bdii.a("WebViewDownloadListener", " commonJsCallBack >>> " + (String)localObject);
-              this.jdField_a_of_type_AndroidOsHandler.post(new WebViewDownloadListener.1(this, localWebView, (String)localObject));
-            }
-            else
-            {
-              localObject = "javascript:" + ((bdjn)localObject).getJsCallbackMethod() + "(" + paramString + ")";
-              continue;
-            }
-          }
-        }
-        else
-        {
-          return;
-        }
+      i = bdmg.b(-1, i);
+      this.g = i;
+      if (j == -1) {
+        break label175;
       }
-      catch (Exception paramString)
-      {
-        bdii.c("WebViewDownloadListener", "doJsCallback >>> ", paramString);
-      }
-      i += 1;
     }
-  }
-  
-  public void installSucceed(String paramString1, String paramString2)
-  {
-    a(a(paramString1, 6, paramString2));
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    if (paramDownloadInfo != null) {
-      a(a(paramDownloadInfo.jdField_c_of_type_JavaLangString, paramInt2, paramDownloadInfo.f, paramDownloadInfo.e, paramDownloadInfo.jdField_c_of_type_Int, paramString, paramInt1, paramDownloadInfo.j));
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    if (paramList != null)
+    label175:
+    for (int i = bdmg.b(-1, j);; i = bdmg.b(-16777216, k))
     {
-      JSONArray localJSONArray = new JSONArray();
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        localJSONArray.put(((DownloadInfo)paramList.next()).a());
+      this.f = i;
+      this.jdField_a_of_type_Boolean = true;
+      return;
+      i = bdmg.b(-16777216, m);
+      break;
+    }
+  }
+  
+  @ColorInt
+  public int a()
+  {
+    return this.d;
+  }
+  
+  @NonNull
+  public float[] a()
+  {
+    if (this.jdField_a_of_type_ArrayOfFloat == null) {
+      this.jdField_a_of_type_ArrayOfFloat = new float[3];
+    }
+    bdmg.a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_ArrayOfFloat);
+    return this.jdField_a_of_type_ArrayOfFloat;
+  }
+  
+  public int b()
+  {
+    return this.e;
+  }
+  
+  @ColorInt
+  public int c()
+  {
+    a();
+    return this.f;
+  }
+  
+  @ColorInt
+  public int d()
+  {
+    a();
+    return this.g;
+  }
+  
+  public boolean equals(@Nullable Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
       }
-      a(localJSONArray.toString());
-    }
+      paramObject = (bdmm)paramObject;
+    } while ((this.e == paramObject.e) && (this.d == paramObject.d));
+    return false;
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public int hashCode()
   {
-    if (paramDownloadInfo != null) {
-      a(paramDownloadInfo.a().toString());
-    }
+    return this.d * 31 + this.e;
   }
   
-  public void packageReplaced(String paramString1, String paramString2)
+  @NonNull
+  public String toString()
   {
-    a(a(paramString1, 13, paramString2));
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    a(a(paramString1, 9, paramString2));
+    return getClass().getSimpleName() + " [RGB: #" + Integer.toHexString(a()) + ']' + " [HSL: " + Arrays.toString(a()) + ']' + " [Population: " + this.e + ']' + " [Title Text: #" + Integer.toHexString(c()) + ']' + " [Body Text: #" + Integer.toHexString(d()) + ']';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmm
  * JD-Core Version:    0.7.0.1
  */

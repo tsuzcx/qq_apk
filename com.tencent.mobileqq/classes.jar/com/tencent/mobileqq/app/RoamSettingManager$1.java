@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app;
 
-import akft;
-import aukp;
-import bbjl;
+import alxj;
+import awbw;
+import bdih;
 import com.tencent.commonsdk.cache.QQHashMap;
 import com.tencent.mobileqq.data.RoamSetting;
 import java.util.ArrayList;
@@ -11,12 +11,12 @@ import java.util.concurrent.locks.Lock;
 public class RoamSettingManager$1
   implements Runnable
 {
-  public RoamSettingManager$1(akft paramakft) {}
+  public RoamSettingManager$1(alxj paramalxj) {}
   
   public void run()
   {
     int i = 0;
-    ArrayList localArrayList = (ArrayList)this.this$0.jdField_a_of_type_Aukp.a(RoamSetting.class, false, null, null, null, null, null, null);
+    ArrayList localArrayList = (ArrayList)this.this$0.jdField_a_of_type_Awbw.a(RoamSetting.class, false, null, null, null, null, null, null);
     if ((localArrayList != null) && (localArrayList.size() > 0)) {
       this.this$0.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
     }
@@ -27,7 +27,7 @@ public class RoamSettingManager$1
         if (i < localArrayList.size())
         {
           RoamSetting localRoamSetting = (RoamSetting)localArrayList.get(i);
-          if (bbjl.a(localRoamSetting.path) == 1) {
+          if (bdih.a(localRoamSetting.path) == 1) {
             this.this$0.b.put(localRoamSetting.path, localRoamSetting);
           } else {
             this.this$0.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(localRoamSetting.path, localRoamSetting);

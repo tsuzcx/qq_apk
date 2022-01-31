@@ -1,7 +1,9 @@
 package com.tencent.qqconnect.wtlogin;
 
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler.Callback;
@@ -16,26 +18,27 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import axrn;
-import bbdj;
-import bbgu;
-import bcqf;
-import bcxy;
-import bdfb;
-import begu;
-import begv;
-import begw;
-import begx;
-import begy;
-import begz;
-import beha;
-import behb;
-import behc;
-import behd;
-import behe;
-import behf;
-import bfpc;
-import bfpp;
+import azmz;
+import bdcd;
+import bdfq;
+import bepp;
+import bexa;
+import bfdz;
+import bggs;
+import bggt;
+import bggu;
+import bggv;
+import bggw;
+import bggx;
+import bggy;
+import bggz;
+import bgha;
+import bghb;
+import bghc;
+import bghd;
+import bghe;
+import bhpy;
+import bhql;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -56,17 +59,18 @@ public class Login
   public static String b;
   public int a;
   public long a;
+  public BroadcastReceiver a;
   protected Handler.Callback a;
-  TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new behb(this);
+  TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new bgha(this);
   protected View.OnClickListener a;
-  View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new begz(this);
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new beha(this);
+  View.OnFocusChangeListener jdField_a_of_type_AndroidViewView$OnFocusChangeListener = new bggy(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new bggz(this);
   public View a;
   public Button a;
   public EditText a;
   public TextView a;
-  protected bcqf a;
-  private bfpc jdField_a_of_type_Bfpc;
+  protected bepp a;
+  private bhpy jdField_a_of_type_Bhpy;
   public OpenSDKAppInterface a;
   public HandlerPlus a;
   protected List<WloginLoginInfo> a;
@@ -83,6 +87,7 @@ public class Login
   protected boolean c;
   boolean d = false;
   private boolean e;
+  private boolean f;
   
   static
   {
@@ -94,12 +99,13 @@ public class Login
   {
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new begu(this);
-    this.jdField_b_of_type_AndroidTextTextWatcher = new behc(this);
-    this.jdField_a_of_type_MqqOsMqqHandler = new behd(this);
-    this.jdField_a_of_type_AndroidOsHandler$Callback = new behe(this);
+    this.jdField_a_of_type_MqqObserverSSOAccountObserver = new bggs(this);
+    this.jdField_b_of_type_AndroidTextTextWatcher = new bghb(this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new bghc(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bghd(this);
+    this.jdField_a_of_type_AndroidOsHandler$Callback = new bghe(this);
     this.jdField_a_of_type_CooperationQqfavUtilHandlerPlus = new HandlerPlus(this.jdField_a_of_type_AndroidOsHandler$Callback);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new behf(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new bggt(this);
   }
   
   public static String a(String paramString1, String paramString2)
@@ -134,16 +140,16 @@ public class Login
   public void a(String paramString)
   {
     if (!isFinishing()) {
-      bbdj.b(this, 230).setMessageWithUrl(paramString).setTitle(getString(2131718891)).setPositiveButton(17039370, new begv(this)).show();
+      bdcd.b(this, 230).setMessageWithUrl(paramString).setTitle(getString(2131719367)).setPositiveButton(17039370, new bggu(this)).show();
     }
   }
   
   public void a(String paramString1, String paramString2, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.quicklogin.Login", 2, "-->loginSucess--mReqSrc = " + this.jdField_a_of_type_Int + ", userAccount = *" + bdfb.a(paramString1));
+      QLog.d("Q.quicklogin.Login", 2, "-->loginSucess--mReqSrc = " + this.jdField_a_of_type_Int + ", userAccount = *" + bfdz.a(paramString1));
     }
-    bcxy.a().a(paramString1);
+    bexa.a().a(paramString1);
     if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3))
     {
       paramString2 = "" + this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.a(this.jdField_a_of_type_MqqManagerWtloginManager, paramString1);
@@ -190,25 +196,25 @@ public class Login
   {
     if ("".equals(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim()))
     {
-      a(String.format(getResources().getString(2131696782), new Object[] { getResources().getString(2131694746), Integer.valueOf(3103) }));
+      a(String.format(getResources().getString(2131696957), new Object[] { getResources().getString(2131694903), Integer.valueOf(3103) }));
       localObject = new HashMap();
       ((HashMap)localObject).put("error", "3103");
-      axrn.a(this).a("0", "connect_sso_authfail", false, 0L, 0L, (HashMap)localObject, "");
+      azmz.a(this).a("0", "connect_sso_authfail", false, 0L, 0L, (HashMap)localObject, "");
       return;
     }
     if ("".equals(this.jdField_b_of_type_AndroidWidgetEditText.getText().toString().trim()))
     {
-      a(String.format(getResources().getString(2131696782), new Object[] { getResources().getString(2131694966), Integer.valueOf(3104) }));
+      a(String.format(getResources().getString(2131696957), new Object[] { getResources().getString(2131695123), Integer.valueOf(3104) }));
       localObject = new HashMap();
       ((HashMap)localObject).put("error", "3104");
-      axrn.a(this).a("0", "connect_sso_authfail", false, 0L, 0L, (HashMap)localObject, "");
+      azmz.a(this).a("0", "connect_sso_authfail", false, 0L, 0L, (HashMap)localObject, "");
       return;
     }
     Object localObject = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
     String str = this.jdField_b_of_type_AndroidWidgetEditText.getText().toString();
     this.jdField_b_of_type_Long = (((String)localObject).length() + str.length());
     if (QLog.isColorLevel()) {
-      QLog.d("Login", 2, "-->doLogin--account = *" + bdfb.a((String)localObject) + "mReqSrc = " + this.jdField_a_of_type_Int);
+      QLog.d("Login", 2, "-->doLogin--account = *" + bfdz.a((String)localObject) + "mReqSrc = " + this.jdField_a_of_type_Int);
     }
     if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 3))
     {
@@ -230,14 +236,14 @@ public class Login
         }
         else
         {
-          QLog.d("Login", 1, new Object[] { "send | cmd: s_s_o_l | uin : *", bdfb.a((String)localObject) });
+          QLog.d("Login", 1, new Object[] { "send | cmd: s_s_o_l | uin : *", bfdz.a((String)localObject) });
           a(true);
           this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.ssoLogin((String)localObject, str, 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
           c();
           return;
         }
       }
-      QLog.d("Login", 1, new Object[] { "send | cmd: s_s_o_l | uin : *", bdfb.a((String)localObject) });
+      QLog.d("Login", 1, new Object[] { "send | cmd: s_s_o_l | uin : *", bfdz.a((String)localObject) });
       a(true);
       this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.ssoLogin((String)localObject, str, 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
       c();
@@ -246,7 +252,7 @@ public class Login
     if (this.jdField_a_of_type_MqqManagerWtloginManager.IsNeedLoginWithPasswd((String)localObject, 16))
     {
       a(true);
-      QLog.d("Login", 1, "send | cmd: s_s_o_l | uin : *" + bdfb.a((String)localObject));
+      QLog.d("Login", 1, "send | cmd: s_s_o_l | uin : *" + bfdz.a((String)localObject));
       this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.ssoLogin((String)localObject, str, 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
     }
     for (;;)
@@ -255,13 +261,13 @@ public class Login
       return;
       if (this.jdField_b_of_type_Boolean)
       {
-        QLog.d("Login", 1, "send | cmd: g_t_n_p | uin : *" + bdfb.a((String)localObject));
+        QLog.d("Login", 1, "send | cmd: g_t_n_p | uin : *" + bfdz.a((String)localObject));
         this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.ssoGetTicketNoPasswd((String)localObject, 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
       }
       else
       {
         a(true);
-        QLog.d("Login", 1, "send | cmd: s_s_o_l | uin : *" + bdfb.a((String)localObject));
+        QLog.d("Login", 1, "send | cmd: s_s_o_l | uin : *" + bfdz.a((String)localObject));
         this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.ssoLogin((String)localObject, str, 4096, this.jdField_a_of_type_MqqObserverSSOAccountObserver);
       }
     }
@@ -269,21 +275,21 @@ public class Login
   
   protected void c()
   {
-    this.jdField_a_of_type_Bcqf.a(getResources().getString(2131694904));
-    if (!this.jdField_a_of_type_Bcqf.isShowing()) {
-      this.jdField_a_of_type_Bcqf.show();
+    this.jdField_a_of_type_Bepp.a(getResources().getString(2131695061));
+    if (!this.jdField_a_of_type_Bepp.isShowing()) {
+      this.jdField_a_of_type_Bepp.show();
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Bcqf == null) {}
-    while (!this.jdField_a_of_type_Bcqf.isShowing()) {
+    if (this.jdField_a_of_type_Bepp == null) {}
+    while (!this.jdField_a_of_type_Bepp.isShowing()) {
       return;
     }
     try
     {
-      this.jdField_a_of_type_Bcqf.dismiss();
+      this.jdField_a_of_type_Bepp.dismiss();
       return;
     }
     catch (Exception localException)
@@ -294,19 +300,19 @@ public class Login
   
   public void e()
   {
-    if (this.jdField_a_of_type_Bfpc == null)
+    if (this.jdField_a_of_type_Bhpy == null)
     {
-      this.jdField_a_of_type_Bfpc = ((bfpc)bfpp.a(this, null));
-      this.jdField_a_of_type_Bfpc.b(2131692595);
-      this.jdField_a_of_type_Bfpc.b(2131719688);
-      this.jdField_a_of_type_Bfpc.c(2131690596);
-      this.jdField_a_of_type_Bfpc.setOnDismissListener(new begw(this));
-      this.jdField_a_of_type_Bfpc.a(new begx(this));
+      this.jdField_a_of_type_Bhpy = ((bhpy)bhql.a(this, null));
+      this.jdField_a_of_type_Bhpy.b(2131692674);
+      this.jdField_a_of_type_Bhpy.b(2131720221);
+      this.jdField_a_of_type_Bhpy.c(2131690648);
+      this.jdField_a_of_type_Bhpy.setOnDismissListener(new bggv(this));
+      this.jdField_a_of_type_Bhpy.a(new bggw(this));
     }
-    if (!this.jdField_a_of_type_Bfpc.isShowing())
+    if (!this.jdField_a_of_type_Bhpy.isShowing())
     {
-      this.e = false;
-      this.jdField_a_of_type_Bfpc.show();
+      this.f = false;
+      this.jdField_a_of_type_Bhpy.show();
     }
   }
   
@@ -359,41 +365,47 @@ public class Login
     if (QLog.isColorLevel()) {
       QLog.d("Q.quicklogin.Login", 2, "oncreate mReqSrc:" + this.jdField_a_of_type_Int);
     }
-    setContentView(2131562437);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363775));
+    setContentView(2131562641);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363831));
     if (getIntent().getBooleanExtra("is_first_login", false))
     {
-      setTitle(2131694888);
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131690572);
+      setTitle(2131695045);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131690623);
     }
     for (;;)
     {
       this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131365012);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131364986);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378442));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378603));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131365097);
+      this.jdField_b_of_type_AndroidViewView = findViewById(2131365071);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379055));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379219));
       this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131361822));
-      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131371280));
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371068));
+      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131371592));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371381));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      this.jdField_a_of_type_Bcqf = new bcqf(this, getTitleBarHeight());
-      findViewById(2131366502).requestFocus();
+      this.jdField_a_of_type_Bepp = new bepp(this, getTitleBarHeight());
+      findViewById(2131366610).requestFocus();
       this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
       this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       this.jdField_b_of_type_AndroidWidgetEditText.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
       this.jdField_b_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this.jdField_a_of_type_AndroidViewView$OnFocusChangeListener);
-      this.jdField_b_of_type_AndroidWidgetEditText.setOnEditorActionListener(new begy(this));
+      this.jdField_b_of_type_AndroidWidgetEditText.setOnEditorActionListener(new bggx(this));
       this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
       this.jdField_b_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_b_of_type_AndroidTextTextWatcher);
       a();
       this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.setHandler(Login.class, this.jdField_a_of_type_MqqOsMqqHandler);
+      if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+      {
+        paramBundle = new IntentFilter();
+        paramBundle.addAction("com.tencent.mobileqq.InvitationWebViewPlugin");
+        registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
+      }
       return;
-      setTitle(2131694908);
+      setTitle(2131695065);
     }
   }
   
@@ -404,6 +416,9 @@ public class Login
     this.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
     this.jdField_b_of_type_AndroidWidgetEditText.removeTextChangedListener(this.jdField_b_of_type_AndroidTextTextWatcher);
     this.jdField_a_of_type_ComTencentQqconnectWtloginOpenSDKAppInterface.removeHandler(Login.class);
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) {
+      unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    }
   }
   
   public void onResume()
@@ -420,11 +435,19 @@ public class Login
       d();
       a(false);
     }
+    if (this.e)
+    {
+      QLog.d("Login", 1, "mShouldAutoLogin: true, then login");
+      this.e = false;
+      if (this.jdField_a_of_type_AndroidWidgetButton != null) {
+        this.jdField_a_of_type_AndroidWidgetButton.performClick();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login
  * JD-Core Version:    0.7.0.1
  */

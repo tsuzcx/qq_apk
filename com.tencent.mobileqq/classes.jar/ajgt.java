@@ -1,27 +1,32 @@
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
 
-final class ajgt
-  implements EIPCResultCallback
+@Deprecated
+public class ajgt
+  extends ajff
 {
-  public void onCallback(EIPCResult paramEIPCResult)
+  public View a(int paramInt, Object paramObject, ajfa paramajfa, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajgx paramajgx)
   {
-    if (paramEIPCResult.code == 0) {
-      ApolloUtil.b("测试版本tips:预下载动作成功");
+    paramObject = paramView;
+    if (paramView == null) {
+      paramObject = View.inflate(paramContext, 2131562731, null);
     }
-    for (;;)
-    {
-      QLog.i("CmShow_RenderViewController", 1, "CmShow_ preLoadRes result.code:" + paramEIPCResult.code);
-      return;
-      ApolloUtil.b("测试版本tips:预下载动作失败 ret:" + paramEIPCResult.code);
-    }
+    paramajfa = paramObject.findViewById(2131378286);
+    paramajfa.setTag(-1, Integer.valueOf(paramInt));
+    paramajfa.setOnClickListener(paramOnClickListener);
+    paramajfa = paramObject.findViewById(2131378285);
+    paramajfa.setTag(-1, Integer.valueOf(paramInt));
+    paramajfa.setOnClickListener(paramOnClickListener);
+    paramObject.setTag(-1, Integer.valueOf(paramInt));
+    return paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgt
  * JD-Core Version:    0.7.0.1
  */

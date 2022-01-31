@@ -1,30 +1,33 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
 
 class bkuz
-  implements aysc
+  implements ActionMode.Callback
 {
-  bkuz(bkuv parambkuv) {}
+  bkuz(bkus parambkus) {}
   
-  public void onResp(aysz paramaysz)
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    FilterDesc localFilterDesc = (FilterDesc)paramaysz.jdField_a_of_type_Aysy.a();
-    if (paramaysz.jdField_a_of_type_Int != 0)
-    {
-      lcg.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + paramaysz.b + ", errorMsg: " + paramaysz.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
-      return;
-    }
-    if ((bkuv.a(this.a).decrementAndGet() == 0) && (bkuv.a(this.a) != null)) {
-      bkuv.a(this.a).a(true);
-    }
-    lcg.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.iconurl);
+    return false;
   }
   
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkuz
  * JD-Core Version:    0.7.0.1
  */

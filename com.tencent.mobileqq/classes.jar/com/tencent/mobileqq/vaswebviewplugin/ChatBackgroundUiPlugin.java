@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import bcdp;
+import becq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import java.util.Map;
@@ -20,7 +20,7 @@ public class ChatBackgroundUiPlugin
     this.uin = this.mRuntime.a().getAccount();
     WebViewFragment localWebViewFragment = this.mRuntime.a();
     if (localWebViewFragment != null) {
-      localWebViewFragment.h = super.decodeUrl(localWebViewFragment.h);
+      localWebViewFragment.g = super.decodeUrl(localWebViewFragment.g);
     }
   }
   

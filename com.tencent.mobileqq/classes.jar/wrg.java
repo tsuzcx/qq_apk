@@ -1,20 +1,41 @@
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-class wrg
-  implements xgu<CertifiedAccountRead.StGetFeedDetailRsp>
+public class wrg
+  extends xrg
 {
-  wrg(wrf paramwrf, wrd paramwrd) {}
+  public static final String KEY = "NewDividerSegment";
   
-  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp)
+  public wrg(Context paramContext)
   {
-    if (this.jdField_a_of_type_Wrd != null) {
-      this.jdField_a_of_type_Wrd.a(new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong), paramString, paramStGetFeedDetailRsp });
-    }
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, wph paramwph, ViewGroup paramViewGroup)
+  {
+    return paramwph.a();
+  }
+  
+  public String a()
+  {
+    return "NewDividerSegment";
+  }
+  
+  public wph a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new wph(LayoutInflater.from(this.a).inflate(2131561411, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wrg
  * JD-Core Version:    0.7.0.1
  */

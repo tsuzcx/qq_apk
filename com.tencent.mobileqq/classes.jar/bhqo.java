@@ -1,32 +1,59 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.video.QzoneVerticalVideoTopicInfo;
+import android.database.DataSetObserver;
+import android.os.Parcelable;
+import android.widget.Adapter;
+import com.tencent.widget.AdapterView;
 
-public final class bhqo
-  implements Parcelable.Creator<QzoneVerticalVideoTopicInfo>
+public class bhqo
+  extends DataSetObserver
 {
-  public QzoneVerticalVideoTopicInfo a(Parcel paramParcel)
+  private Parcelable jdField_a_of_type_AndroidOsParcelable;
+  
+  public bhqo(AdapterView paramAdapterView) {}
+  
+  public void a()
   {
-    QzoneVerticalVideoTopicInfo localQzoneVerticalVideoTopicInfo = new QzoneVerticalVideoTopicInfo();
-    QzoneVerticalVideoTopicInfo.a(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.b(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.c(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.d(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.e(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.f(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.g(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    QzoneVerticalVideoTopicInfo.h(localQzoneVerticalVideoTopicInfo, paramParcel.readString());
-    return localQzoneVerticalVideoTopicInfo;
+    this.jdField_a_of_type_AndroidOsParcelable = null;
   }
   
-  public QzoneVerticalVideoTopicInfo[] a(int paramInt)
+  public void onChanged()
   {
-    return new QzoneVerticalVideoTopicInfo[paramInt];
+    this.jdField_a_of_type_ComTencentWidgetAdapterView.mDataChanged = true;
+    this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount;
+    this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().getCount();
+    if ((this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().hasStableIds()) && (this.jdField_a_of_type_AndroidOsParcelable != null) && (this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount == 0) && (this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount > 0))
+    {
+      AdapterView.access$000(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidOsParcelable);
+      this.jdField_a_of_type_AndroidOsParcelable = null;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetAdapterView.checkFocus();
+      this.jdField_a_of_type_ComTencentWidgetAdapterView.requestLayout();
+      return;
+      this.jdField_a_of_type_ComTencentWidgetAdapterView.rememberSyncState();
+    }
+  }
+  
+  public void onInvalidated()
+  {
+    this.jdField_a_of_type_ComTencentWidgetAdapterView.mDataChanged = true;
+    if (this.jdField_a_of_type_ComTencentWidgetAdapterView.getAdapter().hasStableIds()) {
+      this.jdField_a_of_type_AndroidOsParcelable = AdapterView.access$100(this.jdField_a_of_type_ComTencentWidgetAdapterView);
+    }
+    this.jdField_a_of_type_ComTencentWidgetAdapterView.mOldItemCount = this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount;
+    this.jdField_a_of_type_ComTencentWidgetAdapterView.mItemCount = 0;
+    this.jdField_a_of_type_ComTencentWidgetAdapterView.mSelectedPosition = -1;
+    this.jdField_a_of_type_ComTencentWidgetAdapterView.mSelectedRowId = -9223372036854775808L;
+    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNextSelectedPosition = -1;
+    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNextSelectedRowId = -9223372036854775808L;
+    this.jdField_a_of_type_ComTencentWidgetAdapterView.mNeedSync = false;
+    this.jdField_a_of_type_ComTencentWidgetAdapterView.checkFocus();
+    this.jdField_a_of_type_ComTencentWidgetAdapterView.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bhqo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package dov.com.qq.im.capture.music;
 
-import bjdx;
+import blpi;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 
 public class MusicPlayerScene$1
   implements Runnable
 {
-  public MusicPlayerScene$1(bjdx parambjdx, String paramString, int paramInt) {}
+  public MusicPlayerScene$1(blpi paramblpi, String paramString, int paramInt) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class MusicPlayerScene$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.music.MusicPlayerScene.1
  * JD-Core Version:    0.7.0.1
  */

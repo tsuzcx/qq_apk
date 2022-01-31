@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.List;
 
-class aypy
+public abstract interface aypy<M extends ayjj>
 {
-  public LocalMediaInfo a;
-  public boolean a;
+  public abstract void a(List<M> paramList);
   
-  aypy(aypx paramaypx) {}
+  public abstract void a(List<M> paramList, int paramInt);
+  
+  public abstract void a(List<M> paramList, ayqm paramayqm);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aypy
  * JD-Core Version:    0.7.0.1
  */

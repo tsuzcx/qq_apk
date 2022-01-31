@@ -1,70 +1,51 @@
-import android.text.TextUtils;
-import java.util.HashMap;
-import java.util.Map;
+import android.text.TextPaint;
 
-class mtw
+public class mtw
 {
-  private Map<String, mtx> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  
-  public mtw(String[] paramArrayOfString)
+  public static float a(String paramString, TextPaint paramTextPaint)
   {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    if (paramArrayOfString != null)
+    return paramTextPaint.measureText(paramString);
+  }
+  
+  public static float a(StringBuilder paramStringBuilder, String paramString, TextPaint paramTextPaint, float paramFloat)
+  {
+    float f1;
+    if (paramString == null)
     {
-      int j = paramArrayOfString.length;
-      int i = 0;
-      if (i < j)
-      {
-        String str = paramArrayOfString[i];
-        if ("DEVICE_BLUETOOTHHEADSET".equals(str)) {
-          this.jdField_a_of_type_JavaUtilMap.put(str, new mtx(this, 2130841760, ajya.a(2131715045), str));
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          if ("DEVICE_EARPHONE".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new mtx(this, 2130841762, ajya.a(2131715046), str));
-          } else if ("DEVICE_SPEAKERPHONE".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new mtx(this, 2130841765, ajya.a(2131715049), str));
-          } else if ("DEVICE_WIREDHEADSET".equals(str)) {
-            this.jdField_a_of_type_JavaUtilMap.put(str, new mtx(this, 2130841767, ajya.a(2131715047), str));
-          }
-        }
+      f1 = paramFloat;
+      return f1;
+    }
+    paramString = paramString.toCharArray();
+    int i = 0;
+    for (;;)
+    {
+      f1 = paramFloat;
+      if (i >= paramString.length) {
+        break;
       }
+      float f2 = paramTextPaint.measureText(paramString, i, 1);
+      f1 = paramFloat;
+      if (f2 >= paramFloat) {
+        break;
+      }
+      paramFloat -= f2;
+      paramStringBuilder.append(paramString[i]);
+      i += 1;
     }
   }
   
-  public int a()
+  public static float b(StringBuilder paramStringBuilder, String paramString, TextPaint paramTextPaint, float paramFloat)
   {
-    return this.jdField_a_of_type_JavaUtilMap.size();
-  }
-  
-  public mtx a(String paramString)
-  {
-    return (mtx)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  public void a(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      mtx localmtx = (mtx)this.jdField_a_of_type_JavaUtilMap.get("DEVICE_BLUETOOTHHEADSET");
-      if (localmtx != null) {
-        localmtx.b = (ajya.a(2131715048) + paramString + "）");
-      }
+    float f = paramTextPaint.measureText("...");
+    if (f > a(paramStringBuilder, paramString, paramTextPaint, paramFloat - f)) {
+      paramStringBuilder.append("...");
     }
-  }
-  
-  public String[] a()
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString;
+    return f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mtw
  * JD-Core Version:    0.7.0.1
  */

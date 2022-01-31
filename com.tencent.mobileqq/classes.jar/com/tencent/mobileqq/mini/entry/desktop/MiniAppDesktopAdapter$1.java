@@ -10,7 +10,7 @@ class MiniAppDesktopAdapter$1
   public int getSpanSize(int paramInt)
   {
     if (this.this$0.getItemViewType(paramInt) == 1) {}
-    while ((this.this$0.getItemViewType(paramInt) == 4) || (this.this$0.getItemViewType(paramInt) == 5) || (this.this$0.getItemViewType(paramInt) == 6) || (this.this$0.getItemViewType(paramInt) == 9) || (this.this$0.getItemViewType(paramInt) == 8) || (this.this$0.getItemViewType(paramInt) == 10) || (this.this$0.getItemViewType(paramInt) == -99) || (this.this$0.getItemViewType(paramInt) == 11)) {
+    while ((this.this$0.getItemViewType(paramInt) == 4) || (this.this$0.getItemViewType(paramInt) == 5) || (this.this$0.getItemViewType(paramInt) == 6) || (this.this$0.getItemViewType(paramInt) == 9) || (this.this$0.getItemViewType(paramInt) == 8) || (this.this$0.getItemViewType(paramInt) == 10) || (this.this$0.getItemViewType(paramInt) == 11)) {
       return 4;
     }
     return 1;
@@ -18,7 +18,7 @@ class MiniAppDesktopAdapter$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.1
  * JD-Core Version:    0.7.0.1
  */

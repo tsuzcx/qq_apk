@@ -1,37 +1,53 @@
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
-class ahce
-  implements EIPCOnGetConnectionListener
+public class ahce
+  implements View.OnClickListener
 {
-  ahce(ahcd paramahcd) {}
+  public ahce(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void onClick(View paramView)
   {
-    if (paramEIPCConnection != null) {
-      ahcd.a(this.a, paramEIPCConnection.procName);
+    if ((TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText())) || (this.a.f == ClassificationSearchActivity.c))
+    {
+      paramView = (InputMethodManager)this.a.getSystemService("input_method");
+      if ((paramView != null) && (paramView.isActive())) {
+        paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+      }
+      this.a.setResult(0);
+      this.a.finish();
+      if ((this.a.f == ClassificationSearchActivity.d) || (this.a.f == ClassificationSearchActivity.e)) {
+        this.a.sendBroadcast(new Intent("com.tencent.mobileqq.search.cancel"));
+      }
+      return;
     }
-    ahcd.a(this.a, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectBind");
+    paramView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(paramView.trim())))
+    {
+      this.a.a(paramView);
+      ClassificationSearchActivity.a(this.a, paramView);
+      nrt.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramView, "", true);
+      return;
     }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    if (paramEIPCConnection != null) {
-      ahcd.a(this.a, paramEIPCConnection.procName);
+    if (this.a.f == ClassificationSearchActivity.d)
+    {
+      nrt.a(null, "", "0X800742D", "0X800742D", 0, 0, paramView, "", "", "");
+      ClassificationSearchActivity.a(this.a, paramView);
+      return;
     }
-    ahcd.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletIPCConnector", 2, "onConnectUnbind");
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramView, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahce
  * JD-Core Version:    0.7.0.1
  */

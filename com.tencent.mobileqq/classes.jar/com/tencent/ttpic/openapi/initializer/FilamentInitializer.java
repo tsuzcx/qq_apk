@@ -15,11 +15,11 @@ public class FilamentInitializer
   private static boolean isFilamentInited = false;
   private static boolean isGltfioInited = false;
   private static final ModelInfo[] modelFiles;
-  private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("filament-jni_01061518"), new SharedLibraryInfo("gltfio-jni_01061518") };
+  private static final SharedLibraryInfo[] sharedLibraries = { new SharedLibraryInfo("filament-jni_02190000"), new SharedLibraryInfo("gltfio-jni_02190000") };
   
   static
   {
-    modelFiles = new ModelInfo[] { new ModelInfo(true, "filament", "filament_head.filamat", 0), new ModelInfo(true, "filament", "head_index.txt", 0), new ModelInfo(true, "filament", "head_vertex.txt", 0), new ModelInfo(true, "filament", "fur.filamat", 0), new ModelInfo(true, "filament", "bloom_blur.filamat", 0), new ModelInfo(true, "filament", "bloom_mix.filamat", 0) };
+    modelFiles = new ModelInfo[] { new ModelInfo(true, "filament", "filament_head.filamat", 0), new ModelInfo(true, "filament", "head_index.txt", 0), new ModelInfo(true, "filament", "head_vertex.txt", 0), new ModelInfo(true, "filament", "fur.filamat", 0), new ModelInfo(true, "filament", "bloom_blur.filamat", 0), new ModelInfo(true, "filament", "bloom_mix.filamat", 0), new ModelInfo(true, "filament", "reflection.filamat", 0) };
   }
   
   private static boolean checkModelFilesExist(String paramString)
@@ -53,13 +53,14 @@ public class FilamentInitializer
           break;
         }
         Filament.initBeforeSoLoaded();
-        isFilamentInited = loadSoFile(sharedLibraries[0]);
+        isFilamentInited = true;
       } while (!isFilamentInited);
       if (isGltfioInited) {
         break;
       }
       isGltfioInited = loadSoFile(sharedLibraries[1]);
     } while (!isGltfioInited);
+    com.google.android.filament.gltfio.ImageLoader.desiredSize = 1024;
     if ((isFilamentInited) && (isGltfioInited)) {}
     for (;;)
     {

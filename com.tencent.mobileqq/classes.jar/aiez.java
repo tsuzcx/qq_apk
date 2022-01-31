@@ -1,14 +1,12 @@
-import android.view.View;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-public class aiez
-  extends aifb
+public abstract interface aiez
 {
-  public long a;
-  public View a;
+  public abstract void a(RecentBaseData paramRecentBaseData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiez
  * JD-Core Version:    0.7.0.1
  */

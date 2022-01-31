@@ -1,19 +1,19 @@
 public class lps
 {
   public int a;
+  public long a;
   public String a;
-  public String b;
+  public int b;
+  public int c = 2;
   
-  public lps(int paramInt, String paramString1, String paramString2)
+  public String toString()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
+    return "AVUserInfo{account=" + this.jdField_a_of_type_Long + ", openId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", accountType=" + this.jdField_a_of_type_Int + ", pstnStatus=" + this.b + ", micAuthByAdmin=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lps
  * JD-Core Version:    0.7.0.1
  */

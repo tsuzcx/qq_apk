@@ -1,18 +1,21 @@
-import android.content.Context;
+import java.util.List;
 
-final class onj
-  implements rwf
+class onj
+  extends oob
 {
-  onj(Context paramContext, String paramString) {}
-  
-  public void a()
+  onj(omz paramomz, boolean paramBoolean1, List paramList, boolean paramBoolean2)
   {
-    onh.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+    super(paramomz, null);
+  }
+  
+  void a(ooe paramooe)
+  {
+    paramooe.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.b, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     onj
  * JD-Core Version:    0.7.0.1
  */

@@ -3,52 +3,43 @@ package com.tencent.qqmini.sdk.launcher.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import berq;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 public class EntryModel
   implements Parcelable
 {
-  public static final Parcelable.Creator<EntryModel> CREATOR = new berq();
-  public int a;
-  public long a;
-  public String a;
-  public Map<String, String> a;
-  public boolean a;
-  private String b;
+  public static final Parcelable.Creator<EntryModel> CREATOR = new EntryModel.1();
+  public static final int TYPE_C2C = 1;
+  public static final int TYPE_GROUP = 2;
+  private String entryDataHash;
+  public boolean isAdmin;
+  public String name;
+  public String reportData;
+  public int type;
+  public long uin;
   
   public EntryModel(int paramInt, long paramLong, String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = UUID.randomUUID().toString();
+    this.type = paramInt;
+    this.uin = paramLong;
+    this.name = paramString;
+    this.isAdmin = paramBoolean;
+    this.entryDataHash = UUID.randomUUID().toString();
   }
   
   private EntryModel(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.type = paramParcel.readInt();
+    this.uin = paramParcel.readLong();
+    this.name = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.b = paramParcel.readString();
-      if (this.jdField_a_of_type_JavaUtilMap == null) {
-        this.jdField_a_of_type_JavaUtilMap = new HashMap();
-      }
-      paramParcel.readMap(this.jdField_a_of_type_JavaUtilMap, Map.class.getClassLoader());
+      this.isAdmin = bool;
+      this.entryDataHash = paramParcel.readString();
+      this.reportData = paramParcel.readString();
       return;
     }
-  }
-  
-  public String a()
-  {
-    return this.b;
   }
   
   public int describeContents()
@@ -56,24 +47,29 @@ public class EntryModel
     return 0;
   }
   
+  public String getEntryHash()
+  {
+    return this.entryDataHash;
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean) {}
+    paramParcel.writeInt(this.type);
+    paramParcel.writeLong(this.uin);
+    paramParcel.writeString(this.name);
+    if (this.isAdmin) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.b);
-      paramParcel.writeMap(this.jdField_a_of_type_JavaUtilMap);
+      paramParcel.writeString(this.entryDataHash);
+      paramParcel.writeString(this.reportData);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.EntryModel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,60 @@
-public abstract interface bkhu
+public class bkhu
 {
-  public abstract void a(int paramInt1, float paramFloat, int paramInt2);
+  private static int a;
+  private static int b;
+  private static int c;
+  private static int d;
   
-  public abstract void c(int paramInt);
+  public static int a()
+  {
+    a();
+    return a;
+  }
   
-  public abstract void e(int paramInt);
+  private static void a()
+  {
+    String[] arrayOfString;
+    if (c == 0)
+    {
+      arrayOfString = basj.a().split("\\.");
+      if (arrayOfString.length >= 4) {}
+    }
+    else
+    {
+      return;
+    }
+    try
+    {
+      a = Integer.valueOf(arrayOfString[0]).intValue();
+      b = Integer.valueOf(arrayOfString[1]).intValue();
+      d = Integer.valueOf(arrayOfString[2]).intValue();
+      c = Integer.valueOf(arrayOfString[3]).intValue();
+      return;
+    }
+    catch (NumberFormatException localNumberFormatException) {}
+  }
+  
+  public static int b()
+  {
+    a();
+    return b;
+  }
+  
+  public static int c()
+  {
+    a();
+    return c;
+  }
+  
+  public static int d()
+  {
+    a();
+    return d;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkhu
  * JD-Core Version:    0.7.0.1
  */

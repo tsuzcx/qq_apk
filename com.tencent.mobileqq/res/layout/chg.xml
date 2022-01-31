@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/mjx" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:background="@drawable/e5s" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/mk1" android:layout="@layout/chf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/mk0" android:layout="@layout/che" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <FrameLayout android:id="@id/mjz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <ViewStub android:id="@id/mk2" android:layout="@layout/chh" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/mk6" android:layout="@layout/chk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:layout_gravity="bottom|center|right" android:id="@id/mk5" android:layout="@layout/chi" android:inflatedId="@id/mkg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </FrameLayout>
+        <ViewStub android:id="@id/mln" android:layout="@layout/chj" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/mjy" android:layout="@layout/chc" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ImageView android:background="@drawable/e5p" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ViewStub android:id="@id/mjw" android:layout="@layout/cha" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

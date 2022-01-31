@@ -1,38 +1,35 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArLBSActivity;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public abstract interface algz
+class algz
+  implements View.OnClickListener
 {
-  public abstract void a();
+  algz(algy paramalgy) {}
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt1, int paramInt2);
-  
-  public abstract void a(int paramInt1, albj paramalbj, int paramInt2);
-  
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(long paramLong, int paramInt, alah paramalah, alht paramalht);
-  
-  public abstract void a(long paramLong, albj paramalbj);
-  
-  public abstract void a(long paramLong, boolean paramBoolean, albj paramalbj);
-  
-  public abstract void a(alfv paramalfv, ArLBSActivity paramArLBSActivity);
-  
-  public abstract void a(ArCloudConfigInfo paramArCloudConfigInfo1, ArCloudConfigInfo paramArCloudConfigInfo2, int paramInt1, int paramInt2, Object paramObject);
-  
-  public abstract void a(ArVideoResourceInfo paramArVideoResourceInfo, alae paramalae);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    if (algy.a(this.a) != null)
+    {
+      if (algy.a(this.a).a != 1036) {
+        break label62;
+      }
+      ((akji)algy.a(this.a).a.getManager(153)).a().c(algy.a(this.a).c());
+    }
+    label62:
+    do
+    {
+      return;
+      paramView = (akje)algy.a(this.a).getManager(211);
+    } while (paramView == null);
+    paramView.e();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     algz
  * JD-Core Version:    0.7.0.1
  */

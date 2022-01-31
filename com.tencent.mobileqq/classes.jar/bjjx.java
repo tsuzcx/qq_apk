@@ -1,24 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.view.AdvancedProviderView;
-import java.util.List;
+import android.content.Context;
 
-public class bjjx
-  implements View.OnClickListener
+final class bjjx
+  implements bjlm
 {
-  public bjjx(AdvancedProviderView paramAdvancedProviderView) {}
+  bjjx(Context paramContext, bjjz parambjjz, bjjy parambjjy) {}
   
-  public void onClick(View paramView)
+  public void onQzonePluginClientReady(bjjt parambjjt)
   {
-    paramView = bkzo.a().a();
-    if (paramView.size() > 0) {
-      vzw.a(this.a.a, paramView.get(0));
+    if (parambjjt == null)
+    {
+      bjlk.a(this.jdField_a_of_type_AndroidContentContext, this);
+      return;
     }
+    parambjjt.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Bjjz, this.jdField_a_of_type_Bjjy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjjx
  * JD-Core Version:    0.7.0.1
  */

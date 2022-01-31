@@ -1,20 +1,30 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback.1;
 
-public class unj
-  implements bfso
+public abstract class unj<Request extends unk, Respond extends unf>
+  implements uni<Request, Respond>
 {
-  public unj(StoryPickerHorizontalListView paramStoryPickerHorizontalListView) {}
+  public static Handler a = new Handler(Looper.getMainLooper());
   
-  public void onScrollStateChanged(int paramInt)
+  public void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramInt == 4097) && (this.a.jdField_a_of_type_Unm != null)) {
-      this.a.jdField_a_of_type_Unm.a(this.a.jdField_a_of_type_Ung.a);
+    if (Thread.currentThread() == a.getLooper().getThread())
+    {
+      b(paramRequest, paramRespond, paramErrorMessage);
+      return;
     }
+    a.post(new CmdTaskManger.UIThreadCallback.1(this, paramRequest, paramRespond, paramErrorMessage));
   }
+  
+  public abstract void b(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     unj
  * JD-Core Version:    0.7.0.1
  */

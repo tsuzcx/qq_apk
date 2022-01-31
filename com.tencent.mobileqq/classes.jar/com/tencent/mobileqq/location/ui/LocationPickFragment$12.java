@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.location.ui;
 
-import arwj;
+import atnf;
 
 class LocationPickFragment$12
   implements Runnable
@@ -24,7 +24,7 @@ class LocationPickFragment$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationPickFragment.12
  * JD-Core Version:    0.7.0.1
  */

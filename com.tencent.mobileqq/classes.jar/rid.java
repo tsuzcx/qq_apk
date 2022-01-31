@@ -1,28 +1,22 @@
-import android.view.ViewGroup.LayoutParams;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class rid
-  implements ValueAnimator.AnimatorUpdateListener
+class rid
+  implements rqc
 {
-  public rid(VariableSizeTextView paramVariableSizeTextView, ViewGroup.LayoutParams paramLayoutParams) {}
+  rid(ric paramric, rbt paramrbt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(@NonNull View paramView, int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (f == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.b)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setFocusable(true);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setClickable(true);
+    if ((paramInt == 0) && (this.jdField_a_of_type_Rbt.t.getVisibility() == 0)) {
+      ric.a(this.jdField_a_of_type_Ric).resumeAnimation();
     }
-    this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = ((int)(f + 0.5F));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rid
  * JD-Core Version:    0.7.0.1
  */

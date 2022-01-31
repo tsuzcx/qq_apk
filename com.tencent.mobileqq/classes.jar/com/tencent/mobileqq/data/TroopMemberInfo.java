@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.data;
 
 import android.database.Cursor;
-import auko;
-import aulz;
+import awbv;
+import awdg;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.io.Serializable;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="troopuin,memberuin")
 public class TroopMemberInfo
-  extends auko
+  extends awbv
   implements Serializable
 {
   public static final long VALUE_DISTANCE_TO_SELF_EXPIRED = -1000L;
   public static final long VALUE_DISTANCE_TO_SELF_UNKOWN = -100L;
   public static final long VALUE_MEMBER_CLOSE_SHARE_LBS = -1001L;
   public long active_point;
-  @aulz
+  @awdg
   public int addState;
   public byte age;
   public String alias;
@@ -24,7 +24,7 @@ public class TroopMemberInfo
   public int commonFrdCnt = -2147483648;
   public long credit_level;
   public long datetime;
-  @aulz
+  @awdg
   public String displayedNamePinyinFirst;
   public int distance;
   public double distanceToSelf = -100.0D;

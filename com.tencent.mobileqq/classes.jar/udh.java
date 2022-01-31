@@ -1,24 +1,23 @@
 class udh
-  implements udc
+  implements ubq
 {
-  public udc a;
+  udh(udf paramudf) {}
   
-  private udh(udf paramudf) {}
+  public void a() {}
   
-  public boolean a(ucz paramucz, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void a(boolean paramBoolean)
   {
-    if (udf.a(this.jdField_a_of_type_Udf) != null) {
-      udf.a(this.jdField_a_of_type_Udf).c(udf.a(this.jdField_a_of_type_Udf));
+    if (paramBoolean) {}
+    for (int i = 35;; i = 37)
+    {
+      tyg.a(i, 2, this.a.a);
+      return;
     }
-    if (this.jdField_a_of_type_Udc != null) {
-      return this.jdField_a_of_type_Udc.a(paramucz, paramInt1, paramInt2, paramInt3, paramString, paramObject);
-    }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     udh
  * JD-Core Version:    0.7.0.1
  */

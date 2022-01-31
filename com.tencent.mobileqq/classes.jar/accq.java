@@ -1,38 +1,36 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class accq
-  implements CompoundButton.OnCheckedChangeListener
+class accq
+  implements bdyc
 {
-  public accq(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  private final WeakReference<accm> a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  accq(accm paramaccm)
   {
-    int i = 1;
-    if (paramBoolean)
-    {
-      this.a.app.d(1);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label68;
+    this.a = new WeakReference(paramaccm);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+      if (QLog.isColorLevel()) {
+        QLog.i("AutoLoginHelper", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
       }
     }
-    for (;;)
+    accm localaccm;
+    do
     {
-      axqy.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
       return;
-      this.a.app.d(0);
-      break;
-      label68:
-      i = 0;
-    }
+      localaccm = (accm)this.a.get();
+    } while (localaccm == null);
+    localaccm.a(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     accq
  * JD-Core Version:    0.7.0.1
  */

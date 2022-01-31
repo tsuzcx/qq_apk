@@ -1,30 +1,24 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment;
-import com.tencent.widget.ListView;
-import java.util.List;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelShareActivity;
+import mqq.app.QQPermissionCallback;
 
 public class awlt
-  extends awls<awlw, awyh>
+  implements QQPermissionCallback
 {
-  public awlt(FTSEntitySearchDetailFragment paramFTSEntitySearchDetailFragment, ListView paramListView, baxy parambaxy, List paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
+  public awlt(PersonalityLabelShareActivity paramPersonalityLabelShareActivity) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    super(paramListView, parambaxy, paramList, paramString, paramFTSEntitySearchDetailActivity);
+    bdcd.a(this.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  protected awrd a(int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new awra(FTSEntitySearchDetailFragment.a(this.a));
-  }
-  
-  protected awws a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new awwn(paramViewGroup, 2131562384);
+    PersonalityLabelShareActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awlt
  * JD-Core Version:    0.7.0.1
  */

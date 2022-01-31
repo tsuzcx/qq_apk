@@ -1,58 +1,20 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 
 public class npy
+  implements TouchWebView.OnScrollChangedListener
 {
-  private static npy a;
+  public npy(PublicAccountBrowser paramPublicAccountBrowser) {}
   
-  private npy()
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    a = this;
-  }
-  
-  public static npy a()
-  {
-    if (a == null) {
-      a = new npy();
-    }
-    return a;
-  }
-  
-  public Drawable a(Resources paramResources, int paramInt)
-  {
-    Object localObject = BaseApplicationImpl.sImageCache.get(String.valueOf(paramInt));
-    if ((localObject != null) && ((localObject instanceof Drawable))) {
-      localObject = (Drawable)localObject;
-    }
-    for (;;)
-    {
-      return localObject;
-      localObject = null;
-      try
-      {
-        paramResources = paramResources.getDrawable(paramInt);
-        localObject = paramResources;
-        if (paramResources == null) {
-          continue;
-        }
-        BaseApplicationImpl.sImageCache.put(String.valueOf(paramInt), paramResources);
-        return paramResources;
-      }
-      catch (OutOfMemoryError paramResources)
-      {
-        for (;;)
-        {
-          paramResources = (Resources)localObject;
-        }
-      }
-    }
+    PublicAccountBrowser.b(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npy
  * JD-Core Version:    0.7.0.1
  */

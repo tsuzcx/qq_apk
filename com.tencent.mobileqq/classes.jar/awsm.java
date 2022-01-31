@@ -1,68 +1,103 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Set;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.SystemClock;
+import android.view.animation.AccelerateInterpolator;
 
 public class awsm
-  extends awqs
+  extends BitmapDrawable
 {
-  private Set<String> b;
+  private static int d;
+  private static int e;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private AccelerateInterpolator jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator = new AccelerateInterpolator(1.5F);
+  private float jdField_b_of_type_Float = 0.5F;
+  private int jdField_b_of_type_Int = 50;
+  private int c;
   
-  public awsm(baxy parambaxy, awqw paramawqw, Set<String> paramSet1, Set<String> paramSet2)
+  public awsm(Resources paramResources, Bitmap paramBitmap)
   {
-    super(parambaxy, paramawqw, paramSet1);
-    this.b = paramSet2;
+    super(paramResources, paramBitmap);
   }
   
-  public void b(awoi paramawoi, awwr paramawwr)
+  public static awsm[] a(int paramInt, Resources paramResources, Bitmap paramBitmap)
   {
-    super.b(paramawoi, paramawwr);
-    if (paramawwr.c() != null)
+    if ((paramBitmap != null) && (paramResources != null))
     {
-      localObject = paramawoi.b();
-      if ((this.b != null) && (this.b.contains(localObject))) {
-        paramawwr.c().setText(ajya.a(2131713739));
-      }
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    boolean bool = bail.b((QQAppInterface)localObject, paramawoi.b());
-    if ((localObject instanceof QQAppInterface))
-    {
-      if (!(paramawwr instanceof awwl)) {
-        break label165;
-      }
-      ((awwl)paramawwr).a(bool);
-    }
-    for (;;)
-    {
-      if (paramawwr.a() != null)
+      awsm[] arrayOfawsm2 = new awsm[paramInt];
+      e = paramBitmap.getWidth() / 2;
+      d = paramBitmap.getHeight() / 2;
+      int i = 0;
+      for (;;)
       {
-        if ((!(paramawoi instanceof awnd)) && (!(paramawoi instanceof awmq)) && (!(paramawoi instanceof awmy))) {
+        arrayOfawsm1 = arrayOfawsm2;
+        if (i >= paramInt) {
           break;
         }
-        if (paramawwr.c() != null) {
-          paramawwr.c().setVisibility(8);
-        }
-        paramawwr.a().setVisibility(0);
-      }
-      return;
-      label165:
-      if ((paramawwr instanceof awyk)) {
-        ((awyk)paramawwr).a(bool);
+        arrayOfawsm2[i] = new awsm(paramResources, paramBitmap);
+        i += 1;
       }
     }
-    if (paramawwr.c() != null) {
-      paramawwr.c().setVisibility(0);
-    }
-    paramawwr.a().setVisibility(8);
+    awsm[] arrayOfawsm1 = null;
+    return arrayOfawsm1;
   }
   
-  public void d(awoi paramawoi, awwr paramawwr) {}
+  public void a(long paramLong, int paramInt)
+  {
+    this.jdField_a_of_type_Float = ((float)paramLong);
+    this.jdField_a_of_type_Int = paramInt;
+    this.c = 1;
+    invalidateSelf();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    int j = 1;
+    int i = j;
+    switch (this.c)
+    {
+    default: 
+      i = j;
+    }
+    float f2;
+    for (;;)
+    {
+      if (i == 0) {
+        invalidateSelf();
+      }
+      return;
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+      this.c = 2;
+      i = 0;
+      continue;
+      f2 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.jdField_a_of_type_Float;
+      if (f2 <= 1.0F) {
+        break;
+      }
+      this.c = 3;
+      i = j;
+    }
+    paramCanvas.save();
+    float f3 = this.jdField_a_of_type_AndroidViewAnimationAccelerateInterpolator.getInterpolation(f2);
+    if (f3 > 0.5F) {}
+    for (float f1 = -f3 * this.jdField_b_of_type_Int;; f1 = -(1.0F - f3) * this.jdField_b_of_type_Int)
+    {
+      paramCanvas.translate(f1, this.jdField_a_of_type_Int - f3 * this.jdField_a_of_type_Int);
+      paramCanvas.scale(this.jdField_b_of_type_Float * f2, this.jdField_b_of_type_Float * f2, e, d);
+      setAlpha((int)(255.0F - f2 * 255.0F));
+      super.draw(paramCanvas);
+      paramCanvas.restore();
+      i = 0;
+      break;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awsm
  * JD-Core Version:    0.7.0.1
  */

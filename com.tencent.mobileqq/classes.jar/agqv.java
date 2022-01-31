@@ -1,135 +1,74 @@
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
 import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qidian.data.QidianExternalInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.HashMap;
 
-public class agqv
-  extends agqs
+class agqv
+  extends bfvh
 {
-  protected int a;
-  protected agqw a;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  private final String jdField_a_of_type_JavaLangString = "VideoPlayControllerForAIO";
-  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private ImageView b;
+  agqv(agqq paramagqq) {}
   
-  public agqv()
+  protected void d(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.b = null;
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (paramInt == 0) {
-      b(8);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
-      if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131365742));
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+      this.a.jdField_a_of_type_Aelz.notifyDataSetChanged();
+      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131698539), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+      return;
     }
+    QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131698538), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
   }
   
-  public void a(agqw paramagqw)
+  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    this.jdField_a_of_type_Agqw = paramagqw;
-  }
-  
-  public void a(View paramView)
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371919));
-    this.b = ((ImageView)paramView.findViewById(2131371918));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131371920));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
-      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-    }
-    return false;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    if (this.b == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is null.");
+    if (((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1025) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024)) && (paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
+    {
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramHashMap.uin)))
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1025;
+        }
+        paramHashMap = this.a.jdField_a_of_type_Bfua.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        if (paramHashMap != null)
+        {
+          agqq.a(this.a, true);
+          this.a.f.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+          agqq.a(this.a).setOnClickListener(null);
+          agqq.b(this.a).setOnClickListener(null);
+          this.a.f.setText(paramHashMap);
+          if (acew.S) {
+            this.a.f.setContentDescription(paramHashMap);
+          }
+          agqq.a(this.a, true);
+          this.a.m();
+        }
       }
     }
-    do
+    while (!QLog.isColorLevel())
     {
       do
       {
-        return false;
-        if (this.b.getVisibility() != 0) {
-          break;
+        for (;;)
+        {
+          return;
+          agqq.b(this.a, false);
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, event.getRawX() = " + paramMotionEvent.getRawX() + " , event.getRawY() = " + paramMotionEvent.getRawY() + " , mCenterPlayBtn left = " + this.b.getLeft() + " , top = " + this.b.getTop() + " , right = " + this.b.getRight() + ", bottom = " + this.b.getBottom());
-        }
-      } while (!new Rect(this.b.getLeft(), this.b.getTop(), this.b.getRight(), this.b.getBottom()).contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY()));
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, playbtn contains event");
-      }
-      return true;
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoPlayControllerForAIO", 2, "onItemClick, mCenterPlayBtn is not visible.");
-    return false;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.b != null)
-    {
-      if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getVisibility() == 0)) {
-        this.b.setVisibility(8);
-      }
-    }
-    else {
+      } while (!QLog.isColorLevel());
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo not current curFriendUin");
       return;
     }
-    this.b.setVisibility(paramInt);
-  }
-  
-  public void e(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
+    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqv
  * JD-Core Version:    0.7.0.1
  */

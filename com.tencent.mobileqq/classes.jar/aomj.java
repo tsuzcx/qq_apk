@@ -1,75 +1,84 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import java.io.UnsupportedEncodingException;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aomj
-  implements TextWatcher
+  extends aofy<aomi>
 {
-  public aomj(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
-  
-  private int a(String paramString)
+  public static aomi a()
   {
-    byte[] arrayOfByte = new byte[0];
-    try
-    {
-      paramString = paramString.getBytes("utf-8");
-      if (paramString.length % 3 == 0) {
-        return paramString.length / 3;
-      }
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = arrayOfByte;
-      }
-    }
-    return paramString.length / 3 + 1;
+    return (aomi)aogj.a().a(441);
   }
   
-  private String a(String paramString)
+  public int a()
   {
-    while (a(paramString) > 32)
-    {
-      int i = paramString.length();
-      if ((i >= 2) && (Character.isHighSurrogate(paramString.charAt(i - 2)))) {
-        paramString = paramString.substring(0, i - 2);
-      } else {
-        paramString = paramString.substring(0, i - 1);
-      }
-    }
-    return paramString;
+    return 441;
   }
   
-  public void afterTextChanged(Editable paramEditable)
+  @NonNull
+  public aomi a(int paramInt)
   {
-    paramEditable = this.a.a.getText().toString();
-    if (a(paramEditable) > 32)
-    {
-      int i = this.a.a.getSelectionStart();
-      paramEditable = a(paramEditable);
-      this.a.a.setText(paramEditable);
-      if (i >= paramEditable.length()) {
-        this.a.a.setSelection(paramEditable.length());
-      }
+    return new aomi();
+  }
+  
+  @Nullable
+  public aomi a(aogf[] paramArrayOfaogf)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfProcessor", 2, "onParsed ");
     }
-    if (this.a.h)
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0))
     {
-      axqy.b(null, "CliOper", "", "", "0X80050F0", "0X80050F0", 0, 0, "", "", "", "");
-      this.a.h = false;
+      new aomi();
+      return aomi.a(paramArrayOfaogf);
+    }
+    return null;
+  }
+  
+  public Class<aomi> a()
+  {
+    return aomi.class;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfProcessor", 2, "onReqFailed " + paramInt);
     }
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(aomi paramaomi)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQGameConfProcessor", 2, "onUpdate " + paramaomi.toString());
+    }
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomj
  * JD-Core Version:    0.7.0.1
  */

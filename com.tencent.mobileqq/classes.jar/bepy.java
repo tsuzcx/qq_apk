@@ -1,38 +1,36 @@
-import com.tencent.qqmini.sdk.launcher.AppBrandLaunchManager;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.widget.QQToast;
+import java.lang.ref.WeakReference;
 
 public class bepy
-  implements beti
 {
-  public bepy(AppBrandLaunchManager paramAppBrandLaunchManager) {}
+  private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
+  private WeakReference<bepw> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void a(int paramInt)
+  public bepy(QQToast paramQQToast, bepw parambepw)
   {
-    betc.c("minisdk-start_AppBrandLaunchManager", "updateBaseLib ret=" + paramInt);
-    if (paramInt == 0) {
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = paramQQToast;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambepw);
+  }
+  
+  private boolean a()
+  {
+    bepw localbepw = (bepw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    return (localbepw != null) && (localbepw.a());
+  }
+  
+  @Nullable
+  QQToast a()
+  {
+    if (a()) {
+      return this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
     }
-    if (paramInt == 1)
-    {
-      betc.c("minisdk-start_AppBrandLaunchManager", "基础库无更新.");
-      return;
-    }
-    String str = "基础库更新失败.";
-    if (paramInt == 1100) {
-      str = "础库更新请求失败.";
-    }
-    for (;;)
-    {
-      betc.c("minisdk-start_AppBrandLaunchManager", str);
-      return;
-      if (paramInt == 1101) {
-        str = "基础库下载失败.";
-      }
-    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bepy
  * JD-Core Version:    0.7.0.1
  */

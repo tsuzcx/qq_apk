@@ -95,7 +95,7 @@ public final class c
   {
     this.s.a(paramStrategyBean);
     this.t.onStrategyChanged(paramStrategyBean);
-    this.w.a(paramStrategyBean);
+    this.w.c();
     w.a().a(new c.2(this), 3000L);
   }
   
@@ -171,7 +171,7 @@ public final class c
       this.w.a(true);
       return;
     }
-    this.w.c();
+    this.w.d();
   }
   
   public final void g()
@@ -181,7 +181,7 @@ public final class c
       this.w.a(false);
       return;
     }
-    this.w.d();
+    this.w.e();
   }
   
   public final boolean h()

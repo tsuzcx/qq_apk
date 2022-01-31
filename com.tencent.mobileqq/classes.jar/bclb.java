@@ -1,29 +1,18 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-@TargetApi(16)
-public class bclb
-  implements bfqj
+class bclb
+  implements bclf
 {
-  bclb(ContextMenuTextView paramContextMenuTextView) {}
+  bclb(bckx parambckx, String paramString) {}
   
-  public void a()
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      ContextMenuTextView.a(this.a, null);
-    }
-    for (;;)
-    {
-      this.a.a = null;
-      return;
-      ContextMenuTextView.b(this.a, null);
-    }
+    if (paramInt == 0) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bclb
  * JD-Core Version:    0.7.0.1
  */

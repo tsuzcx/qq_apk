@@ -1,13 +1,13 @@
 package com.tencent.av.business.manager.pendant;
 
 import android.text.TextUtils;
-import lip;
-import mao;
+import lks;
+import mdd;
 
 public class EffectPendantTips$3
   implements Runnable
 {
-  public EffectPendantTips$3(lip paramlip, int paramInt) {}
+  public EffectPendantTips$3(lks paramlks, int paramInt) {}
   
   public void run()
   {
@@ -15,9 +15,9 @@ public class EffectPendantTips$3
     {
       if (this.a != 0)
       {
-        String str = this.this$0.a(lip.a(this.this$0), this.a);
+        String str = this.this$0.a(lks.a(this.this$0), this.a);
         if (!TextUtils.isEmpty(str)) {
-          mao.a(lip.a(this.this$0), 1016, str);
+          mdd.a(lks.a(this.this$0), 1016, str);
         }
       }
       return;
@@ -30,7 +30,7 @@ public class EffectPendantTips$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.EffectPendantTips.3
  * JD-Core Version:    0.7.0.1
  */

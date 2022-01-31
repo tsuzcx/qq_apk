@@ -1,26 +1,12 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-
-class swd
-  implements xhe
+abstract interface swd
 {
-  swd(swc paramswc, xhf paramxhf, PublishVideoEntry paramPublishVideoEntry) {}
+  public abstract void a();
   
-  public void a(xhf paramxhf)
-  {
-    this.jdField_a_of_type_Xhf.a(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd = 60000;
-    swc.a(this.jdField_a_of_type_Swc, "convertImageToVideo ");
-  }
-  
-  public void b(xhf paramxhf)
-  {
-    this.jdField_a_of_type_Xhf.a(paramxhf.a());
-    swc.a(this.jdField_a_of_type_Swc, "convertImageToVideo ");
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     swd
  * JD-Core Version:    0.7.0.1
  */

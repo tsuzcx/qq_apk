@@ -1,18 +1,18 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.confighandler.NormalConfigHandler.GetConfigListen;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallConfig;
-import com.tencent.mobileqq.utils.confighandler.QAVFunCallHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-public class bbmc
-  implements NormalConfigHandler.GetConfigListen<QAVFunCallConfig>
+public final class bbmc
+  implements Parcelable.Creator<TroopBarPOI>
 {
-  public bbmc(QAVFunCallHandler paramQAVFunCallHandler) {}
-  
-  public void a(AppInterface paramAppInterface, QAVFunCallConfig paramQAVFunCallConfig)
+  public TroopBarPOI a(Parcel paramParcel)
   {
-    this.a.setConfig(paramQAVFunCallConfig);
-    this.a.onGetConfig(paramAppInterface);
-    QAVFunCallHandler.access$000(this.a, "onGetConfig", paramAppInterface);
+    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+  }
+  
+  public TroopBarPOI[] a(int paramInt)
+  {
+    return null;
   }
 }
 

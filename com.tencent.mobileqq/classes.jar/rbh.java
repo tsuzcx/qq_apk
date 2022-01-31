@@ -1,27 +1,19 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
 class rbh
-  extends akgf
+  extends ClickableSpan
 {
-  rbh(ram paramram) {}
+  rbh(rbd paramrbd) {}
   
-  protected void a()
+  public void onClick(View paramView)
   {
-    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    if (pcb.a(this.a.a(), str) < qcb.d)
-    {
-      this.a.a.c(6);
-      return;
-    }
-    bcql.a(this.a.a(), 0, this.a.a().getString(2131718594), 0).a();
+    raw.j(this.a.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rbh
  * JD-Core Version:    0.7.0.1
  */

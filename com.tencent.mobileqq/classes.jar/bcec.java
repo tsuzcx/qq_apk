@@ -1,41 +1,70 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.webview.swift.SwiftFragmentTabBar;
-import com.tencent.mobileqq.webview.swift.WebViewTabBarData;
-import cooperation.comic.ui.QQComicTabBarView;
-import cooperation.qqreader.view.ReaderTabBarView;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import javax.annotation.Nullable;
+import mqq.app.AppRuntime;
 
 public class bcec
+  extends aofy<bceb>
 {
-  public static View a(Context paramContext, Intent paramIntent, List<WebViewTabBarData> paramList, bcsc parambcsc)
+  public int a()
   {
-    int i = 0;
-    if (paramIntent != null) {
-      i = paramIntent.getIntExtra("tabBarStyle", 0);
+    return 590;
+  }
+  
+  @NonNull
+  public bceb a(int paramInt)
+  {
+    QLog.d("TroopShortcutBarConfig.config", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    return new bceb();
+  }
+  
+  @Nullable
+  public bceb a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return bceb.a(paramArrayOfaogf[0].a);
     }
-    bgwf.d("WebviewFragmentTabBarBuilder", "tab bar style =" + i);
-    if (i == 1)
-    {
-      paramContext = new QQComicTabBarView(paramContext);
-      paramContext.a(paramIntent, paramList, parambcsc);
-      return paramContext;
+    return null;
+  }
+  
+  public Class<bceb> a()
+  {
+    return bceb.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("TroopShortcutBarConfig.config", 1, "onReqFailed, failCode = " + paramInt);
+  }
+  
+  public void a(bceb parambceb)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((bcef)((QQAppInterface)localAppRuntime).getManager(355)).a(parambceb, false);
     }
-    if (i == 2)
-    {
-      paramContext = new ReaderTabBarView(paramContext);
-      paramContext.a(paramIntent, paramList, parambcsc);
-      return paramContext;
-    }
-    paramContext = new SwiftFragmentTabBar(paramContext);
-    paramContext.a(paramList, parambcsc);
-    return paramContext;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcec
  * JD-Core Version:    0.7.0.1
  */

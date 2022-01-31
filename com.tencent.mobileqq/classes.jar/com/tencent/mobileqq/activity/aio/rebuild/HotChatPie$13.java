@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aeqb;
-import akhp;
+import agmy;
+import alzf;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -10,25 +10,25 @@ import java.util.ArrayList;
 public class HotChatPie$13
   implements Runnable
 {
-  public HotChatPie$13(aeqb paramaeqb) {}
+  public HotChatPie$13(agmy paramagmy) {}
   
   public void run()
   {
-    akhp localakhp = (akhp)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if (localakhp != null)
+    alzf localalzf = (alzf)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if (localalzf != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d(this.this$0.jdField_a_of_type_JavaLangString + "Q.hotchat.aio_post_red_point", 2, "send_oidb_0x8c9_2");
       }
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(Long.valueOf(1105933138L));
-      localakhp.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localArrayList, true);
+      localalzf.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localArrayList, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.13
  * JD-Core Version:    0.7.0.1
  */

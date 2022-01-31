@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 
-class atsf
-  implements DialogInterface.OnClickListener
+public class atsf
 {
-  atsf(atsc paramatsc, bbgu parambbgu) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Bbgu.dismiss();
-  }
+  public int a = 1;
+  public Bitmap a;
+  public int b = Color.parseColor("#FFFF0000");
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atsf
  * JD-Core Version:    0.7.0.1
  */

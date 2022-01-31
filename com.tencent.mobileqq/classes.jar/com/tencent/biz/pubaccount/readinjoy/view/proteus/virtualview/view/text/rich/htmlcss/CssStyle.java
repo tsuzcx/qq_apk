@@ -12,63 +12,41 @@ public class CssStyle
   {
     CssStyle localCssStyle = new CssStyle();
     localCssStyle.styleName = paramString1;
-    int i = -1;
-    switch (paramString1.hashCode())
+    if ("line-height".equalsIgnoreCase(paramString1))
     {
+      localCssStyle.styleValue = getSize(paramString2);
+      localCssStyle.isInherit = true;
+      return localCssStyle;
     }
-    for (;;)
+    if ("font-size".equalsIgnoreCase(paramString1))
     {
-      switch (i)
-      {
-      default: 
-        localCssStyle.styleValue = paramString2;
-        localCssStyle.isInherit = true;
-        return localCssStyle;
-        if (paramString1.equals("line-height"))
-        {
-          i = 0;
-          continue;
-          if (paramString1.equals("font-size"))
-          {
-            i = 1;
-            continue;
-            if (paramString1.equals("color"))
-            {
-              i = 2;
-              continue;
-              if (paramString1.equals("width"))
-              {
-                i = 3;
-                continue;
-                if (paramString1.equals("height"))
-                {
-                  i = 4;
-                  continue;
-                  if (paramString1.equals("-webkit-line-clamp")) {
-                    i = 5;
-                  }
-                }
-              }
-            }
-          }
-        }
-        break;
-      }
+      localCssStyle.styleValue = getSize(paramString2);
+      localCssStyle.isInherit = true;
+      return localCssStyle;
     }
-    localCssStyle.styleValue = getSize(paramString2);
-    localCssStyle.isInherit = true;
-    return localCssStyle;
-    localCssStyle.styleValue = getSize(paramString2);
-    localCssStyle.isInherit = true;
-    return localCssStyle;
+    if ("color".equalsIgnoreCase(paramString1))
+    {
+      localCssStyle.styleValue = paramString2;
+      localCssStyle.isInherit = true;
+      return localCssStyle;
+    }
+    if ("width".equalsIgnoreCase(paramString1))
+    {
+      localCssStyle.styleValue = getSize(paramString2);
+      return localCssStyle;
+    }
+    if ("height".equalsIgnoreCase(paramString1))
+    {
+      localCssStyle.styleValue = getSize(paramString2);
+      return localCssStyle;
+    }
+    if ("-webkit-line-clamp".equalsIgnoreCase(paramString1))
+    {
+      localCssStyle.styleValue = Integer.valueOf(paramString2);
+      localCssStyle.isInherit = true;
+      return localCssStyle;
+    }
     localCssStyle.styleValue = paramString2;
-    localCssStyle.isInherit = true;
-    return localCssStyle;
-    localCssStyle.styleValue = getSize(paramString2);
-    return localCssStyle;
-    localCssStyle.styleValue = getSize(paramString2);
-    return localCssStyle;
-    localCssStyle.styleValue = Integer.valueOf(paramString2);
     localCssStyle.isInherit = true;
     return localCssStyle;
   }
@@ -100,7 +78,7 @@ public class CssStyle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.htmlcss.CssStyle
  * JD-Core Version:    0.7.0.1
  */

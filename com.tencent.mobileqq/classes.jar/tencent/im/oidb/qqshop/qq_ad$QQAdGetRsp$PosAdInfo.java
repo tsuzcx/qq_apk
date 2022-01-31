@@ -19,7 +19,7 @@ public final class qq_ad$QQAdGetRsp$PosAdInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.qqshop.qq_ad.QQAdGetRsp.PosAdInfo
  * JD-Core Version:    0.7.0.1
  */

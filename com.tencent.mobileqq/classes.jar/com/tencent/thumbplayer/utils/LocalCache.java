@@ -27,7 +27,7 @@ public class LocalCache
       this.mCache = null;
       return;
     }
-    this.mCache = new LocalCache.ACacheManager(this, paramFile, paramLong, paramInt, null);
+    this.mCache = new LocalCache.ACacheManager(paramFile, paramLong, paramInt, null);
   }
   
   public static LocalCache get(Context paramContext)
@@ -1128,7 +1128,7 @@ public class LocalCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.LocalCache
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.richmedia.capture.util;
 
 import android.text.TextUtils;
-import avto;
-import bbdx;
+import axln;
+import bdcs;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.BadDataFrame;
@@ -25,18 +25,18 @@ public final class ReportBadCase$3
     String str;
     for (;;)
     {
-      synchronized (avto.a())
+      synchronized (axln.a())
       {
-        j = avto.a().size();
+        j = axln.a().size();
         arrayOfBadDataFrame = new BadcaseReportUtils.BadDataFrame[j];
         i = 0;
         if (i < j)
         {
-          arrayOfBadDataFrame[i] = ((BadcaseReportUtils.BadDataFrame)avto.a().get(i));
+          arrayOfBadDataFrame[i] = ((BadcaseReportUtils.BadDataFrame)axln.a().get(i));
           i += 1;
           break;
         }
-        avto.a().clear();
+        axln.a().clear();
         if ((arrayOfBadDataFrame == null) || (arrayOfBadDataFrame.length <= 0))
         {
           if (QLog.isColorLevel()) {
@@ -60,7 +60,7 @@ public final class ReportBadCase$3
       {
         ??? = localObject1[i];
         if ((((BadcaseReportUtils.BadDataFrame)???).zipPath != null) && (!"".equals(((BadcaseReportUtils.BadDataFrame)???).zipPath))) {
-          bbdx.d(((BadcaseReportUtils.BadDataFrame)???).zipPath);
+          bdcs.d(((BadcaseReportUtils.BadDataFrame)???).zipPath);
         }
         i += 1;
       }
@@ -77,7 +77,7 @@ public final class ReportBadCase$3
       if ((localBadDataFrame.mZipSuccess) && (localBadDataFrame.zipPath != null) && (!"".equals(localBadDataFrame.zipPath))) {}
       try
       {
-        avto.a(localBadDataFrame, avto.b(), m, (String)???, str);
+        axln.a(localBadDataFrame, axln.b(), m, (String)???, str);
         j += 1;
       }
       catch (Exception localException)
@@ -94,7 +94,7 @@ public final class ReportBadCase$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.util.ReportBadCase.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,60 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.random.RandomController;
-import com.tencent.av.random.RandomController.2.1;
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.graphics.Bitmap;
 
-public class lsv
-  implements mrx
+public abstract interface lsv
 {
-  public lsv(RandomController paramRandomController) {}
+  public abstract float a();
   
-  public void a(String paramString, mry parammry)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RandomController", 2, "onGetNearbyPeopleProfile uin :" + paramString + ", nickname:" + parammry.b + ", gender:" + parammry.a);
-    }
-    if (paramString.equals(RandomController.a(this.a).getAccount()))
-    {
-      if (parammry.a != -1) {
-        RandomController.a(this.a).a(parammry.a);
-      }
-      if (RandomController.a(this.a).a())
-      {
-        if (!RandomController.a(this.a)) {
-          break label209;
-        }
-        RandomController.b(this.a, false);
-        RandomController.a(this.a).set(0);
-        RandomController.a(this.a).a(RandomController.b(this.a), RandomController.c(this.a), 1, new String[0]);
-        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
-      }
-    }
-    for (;;)
-    {
-      RandomController.a(this.a).a().post(new RandomController.2.1(this));
-      return;
-      label209:
-      if (RandomController.b(this.a))
-      {
-        RandomController.c(this.a, false);
-        RandomController.a(this.a).a(this.a.b, RandomController.b(this.a));
-        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
-      }
-    }
-  }
+  public abstract int a();
+  
+  public abstract Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2);
+  
+  public abstract lsy a();
+  
+  public abstract void a();
+  
+  public abstract void a(float paramFloat);
+  
+  public abstract void a(float paramFloat1, float paramFloat2);
+  
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
+  
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt);
+  
+  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, lsz paramlsz);
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(lty paramlty);
+  
+  public abstract void a(lty paramlty, int paramInt1, int paramInt2);
+  
+  public abstract void a(lty paramlty, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void a(lty paramlty, int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3, int paramInt4);
+  
+  public abstract void a(lty paramlty, Bitmap paramBitmap);
+  
+  public abstract boolean a(lty paramlty);
+  
+  public abstract int b();
+  
+  public abstract void b();
+  
+  public abstract void b(float paramFloat1, float paramFloat2, float paramFloat3);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lsv
  * JD-Core Version:    0.7.0.1
  */

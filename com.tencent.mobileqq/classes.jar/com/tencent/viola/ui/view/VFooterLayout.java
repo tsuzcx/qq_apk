@@ -85,6 +85,13 @@ public class VFooterLayout
     }
   }
   
+  public void onFooterReachEnd()
+  {
+    if (this.listener != null) {
+      this.listener.onFooterReachEnd();
+    }
+  }
+  
   public void onMove(int paramInt)
   {
     if (this.listener != null) {
@@ -171,7 +178,7 @@ public class VFooterLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.view.VFooterLayout
  * JD-Core Version:    0.7.0.1
  */

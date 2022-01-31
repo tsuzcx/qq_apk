@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.widget.Button;
 import android.widget.EditText;
-import bbbr;
+import bdal;
 
 class LoginVerifyCodeActivity2$6
   implements Runnable
@@ -11,7 +11,7 @@ class LoginVerifyCodeActivity2$6
   
   public void run()
   {
-    String str = bbbr.b(this.a, this.b);
+    String str = bdal.b(this.a, this.b);
     if ((str != null) && (str.length() > 0) && (LoginVerifyCodeActivity2.a(this.this$0) != null))
     {
       LoginVerifyCodeActivity2.a(this.this$0).setText(str);
@@ -22,7 +22,7 @@ class LoginVerifyCodeActivity2$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginVerifyCodeActivity2.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,26 @@
-import android.animation.TypeEvaluator;
-import android.annotation.TargetApi;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
 
-@TargetApi(11)
 public class amcb
-  implements TypeEvaluator<amca>
 {
-  public amcb(ambv paramambv) {}
+  public View a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public AddFriendBlockedInfo a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  public amca a(float paramFloat, amca paramamca1, amca paramamca2)
-  {
-    return paramamca2;
-  }
+  public amcb(amca paramamca) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amcb
  * JD-Core Version:    0.7.0.1
  */

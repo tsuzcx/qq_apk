@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.mini.share;
 
 import android.app.Activity;
-import bbdj;
-import bbgu;
-import bcql;
+import bdcd;
+import bdfq;
+import com.tencent.mobileqq.widget.QQToast;
 
 class MiniProgramShareUtils$2$1
   implements Runnable
@@ -20,15 +20,15 @@ class MiniProgramShareUtils$2$1
       if (this.this$0.val$listener != null) {
         this.this$0.val$listener.onShared(this.val$finalNeedShareCallback.booleanValue(), false);
       }
-      bbdj.a(this.this$0.val$activity, 233, this.this$0.val$activity.getString(2131719491), this.val$finalErrMsg, new MiniProgramShareUtils.2.1.1(this), null).show();
+      bdcd.a(this.this$0.val$activity, 233, this.this$0.val$activity.getString(2131720023), this.val$finalErrMsg, new MiniProgramShareUtils.2.1.1(this), null).show();
       return;
     }
-    bcql.a(this.this$0.val$activity, 1, 2131719491, 0).a();
+    QQToast.a(this.this$0.val$activity, 1, 2131720023, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniProgramShareUtils.2.1
  * JD-Core Version:    0.7.0.1
  */

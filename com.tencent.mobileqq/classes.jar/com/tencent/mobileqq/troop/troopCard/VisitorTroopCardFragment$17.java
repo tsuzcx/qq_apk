@@ -2,9 +2,9 @@ package com.tencent.mobileqq.troop.troopCard;
 
 import android.content.res.Resources;
 import android.support.v4.app.FragmentActivity;
-import bagi;
-import bbdj;
-import bbgu;
+import bceu;
+import bdcd;
+import bdfq;
 
 public class VisitorTroopCardFragment$17
   implements Runnable
@@ -21,10 +21,10 @@ public class VisitorTroopCardFragment$17
     do
     {
       return;
-      this.this$0.a = bbdj.a(this.this$0.getActivity(), 230);
-      this.this$0.a.setMessage(this.this$0.getActivity().getResources().getString(2131720485));
-      bagi localbagi = new bagi(this);
-      this.this$0.a.setPositiveButton(2131691035, localbagi);
+      this.this$0.a = bdcd.a(this.this$0.getActivity(), 230);
+      this.this$0.a.setMessage(this.this$0.getActivity().getResources().getString(2131721024));
+      bceu localbceu = new bceu(this);
+      this.this$0.a.setPositiveButton(2131691088, localbceu);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }

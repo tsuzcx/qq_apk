@@ -1,21 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.beauty.BeautyView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
 
 public class mlv
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public mlv(BeautyView paramBeautyView) {}
+  public mlv(VideoControlUI paramVideoControlUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.onClick(this.a.a);
-    paramDialogInterface.dismiss();
+    mtq.c(paramView.getId());
+    AVActivity localAVActivity = this.a.a();
+    if (localAVActivity != null) {
+      localAVActivity.BtnOnClick(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mlv
  * JD-Core Version:    0.7.0.1
  */

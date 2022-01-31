@@ -1,34 +1,37 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListScrollView;
+import dov.com.qq.im.ae.mode.AECaptureMode;
 
 class bkqy
-  extends waa
+  implements bmac<blbb>
 {
-  bkqy(bkqw parambkqw, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
+  bkqy(bkqr parambkqr) {}
   
-  public void onFailure(String paramString)
+  public void a(@Nullable blbb paramblbb)
   {
-    bkqw.a(this.jdField_a_of_type_Bkqw, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-  }
-  
-  public void onFinish(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
-    }
-    bbdx.d(this.jdField_a_of_type_JavaLangString);
-    if (paramBoolean)
+    if (paramblbb == null) {}
+    do
     {
-      bkqw.a(this.jdField_a_of_type_Bkqw, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
       return;
-    }
-    bkqw.a(this.jdField_a_of_type_Bkqw, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+      bkqr.a(this.a).q();
+      paramblbb = paramblbb.a;
+      if (paramblbb == AECaptureMode.NORMAL)
+      {
+        bkqr.a(this.a);
+        return;
+      }
+      if (paramblbb == AECaptureMode.GIF)
+      {
+        bkqr.a(this.a).setVisibility(8);
+        return;
+      }
+    } while (paramblbb != AECaptureMode.PLAY);
+    bkqr.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkqy
  * JD-Core Version:    0.7.0.1
  */

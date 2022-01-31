@@ -1,44 +1,66 @@
-import android.content.Context;
-import android.net.Uri;
-import java.util.Map;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class ufg
-  implements ufe
+  extends uff<ufn>
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Uri jdField_a_of_type_AndroidNetUri;
-  private Map<String, String> jdField_a_of_type_JavaUtilMap;
-  private Uri jdField_b_of_type_AndroidNetUri;
-  private Map<String, String> jdField_b_of_type_JavaUtilMap;
-  
-  public ufg(Context paramContext, Uri paramUri, Map<String, String> paramMap)
+  public String a(AddressItem paramAddressItem)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidNetUri = paramUri;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    return "city:" + paramAddressItem.city + " district:" + paramAddressItem.district + " building:" + paramAddressItem.building;
   }
   
-  public uez a()
+  protected List<ueq> a(List<uer> paramList)
   {
-    uez localuez = new uez();
-    localuez.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaUtilMap);
-    return localuez;
-  }
-  
-  public uez b()
-  {
-    if (this.jdField_b_of_type_AndroidNetUri != null)
+    Object localObject1 = new HashMap();
+    paramList = paramList.iterator();
+    Object localObject2;
+    while (paramList.hasNext())
     {
-      uez localuez = new uez();
-      localuez.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidNetUri, this.jdField_b_of_type_JavaUtilMap);
-      return localuez;
+      localObject2 = (uer)paramList.next();
+      Object localObject3 = ((uer)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemAddressItem;
+      if (localObject3 != null)
+      {
+        localObject3 = a((AddressItem)localObject3);
+        if (((HashMap)localObject1).containsKey(localObject3))
+        {
+          ((List)((HashMap)localObject1).get(localObject3)).add(localObject2);
+        }
+        else
+        {
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.add(localObject2);
+          ((HashMap)localObject1).put(localObject3, localArrayList);
+        }
+      }
+      else
+      {
+        wsv.a("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "handleSplit pic poi is null picPath=%s", ((uer)localObject2).jdField_a_of_type_JavaLangString);
+      }
     }
-    return null;
+    paramList = new ArrayList();
+    localObject1 = ((HashMap)localObject1).entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (List)((Map.Entry)((Iterator)localObject1).next()).getValue();
+      if (((List)localObject2).size() >= a().b)
+      {
+        localObject2 = new ueq(a().a, (List)localObject2);
+        ((ueq)localObject2).a(this.a);
+        ((ueq)localObject2).a(a());
+        paramList.add(localObject2);
+      }
+    }
+    return paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ufg
  * JD-Core Version:    0.7.0.1
  */

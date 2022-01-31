@@ -1,28 +1,61 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aoqr
-  implements View.OnLongClickListener
+  extends aopw<aoqq>
 {
-  public aoqr(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
-  
-  public boolean onLongClick(View paramView)
+  public int a()
   {
-    if ((paramView == null) || (QfileBaseCloudFileTabView.b(this.a))) {
-      return false;
+    return 465;
+  }
+  
+  @NonNull
+  public aoqq a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipExtendIconProcessor", 2, "migrateDefaultContent");
     }
-    paramView.setSelected(true);
-    bbmf localbbmf = new bbmf();
-    localbbmf.a(2131364978, paramView.getContext().getString(2131691507));
-    this.a.a = bbcq.a(paramView, localbbmf, new aoqs(this, paramView), new aoqt(this, paramView));
-    return true;
+    return new aoqq();
+  }
+  
+  @NonNull
+  public aoqq a(@NonNull aogf[] paramArrayOfaogf)
+  {
+    aoqq localaoqq = new aoqq();
+    try
+    {
+      localaoqq.a = new JSONObject(paramArrayOfaogf[0].a).optBoolean("showVipIcon", false);
+      if (QLog.isColorLevel()) {
+        QLog.d("QVipExtendIconProcessor", 2, "parsed showVipIcon: " + localaoqq.a);
+      }
+      return localaoqq;
+    }
+    catch (JSONException paramArrayOfaogf)
+    {
+      QLog.e("QVipExtendIconProcessor", 1, "parsed failed: ", paramArrayOfaogf);
+    }
+    return localaoqq;
+  }
+  
+  public Class<aoqq> a()
+  {
+    return aoqq.class;
+  }
+  
+  @NonNull
+  public aoqq b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVipExtendIconProcessor", 2, "migrateOldContent");
+    }
+    return new aoqq();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoqr
  * JD-Core Version:    0.7.0.1
  */

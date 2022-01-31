@@ -1,80 +1,131 @@
-import com.tencent.mobileqq.data.TroopFeedItem;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.statistics.fdcount.FdTrie.1;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class azoz
-  extends azow
 {
-  public TroopFeedItem a(JSONObject paramJSONObject)
+  static final List<String> jdField_a_of_type_JavaUtilList = new FdTrie.1(10);
+  private azoy jdField_a_of_type_Azoy = new azoy();
+  private HashMap<azoy, String> jdField_a_of_type_JavaUtilHashMap = new HashMap(100);
+  private HashMap<azoy, String> b = new HashMap(jdField_a_of_type_JavaUtilList.size());
+  
+  static String a(String paramString)
   {
-    TroopFeedItem localTroopFeedItem = super.a(paramJSONObject);
-    if (localTroopFeedItem == null) {
-      return null;
-    }
-    Object localObject;
-    try
+    Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      localObject = paramJSONObject.getJSONArray("content");
-      if (((JSONArray)localObject).length() <= 0) {
-        break label333;
+      String str = (String)localIterator.next();
+      if ((paramString != null) && (paramString.contains(str))) {
+        return str;
       }
-      localObject = ((JSONArray)localObject).getJSONObject(0);
-      int i = ((JSONObject)localObject).getInt("type");
-      if (i == 5)
+    }
+    return null;
+  }
+  
+  private static List<String> a(String paramString)
+  {
+    paramString = paramString.split("/");
+    ArrayList localArrayList = new ArrayList(paramString.length);
+    localArrayList.addAll(Arrays.asList(paramString));
+    return localArrayList;
+  }
+  
+  private void a(azoy paramazoy, String paramString)
+  {
+    if (paramazoy == null) {
+      return;
+    }
+    Object localObject = a(paramString);
+    if (localObject != null) {
+      this.b.put(paramazoy, localObject);
+    }
+    localObject = paramazoy.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    azoy localazoy;
+    do
+    {
+      if (!((Iterator)localObject).hasNext()) {
+        break;
+      }
+      localazoy = (azoy)((Iterator)localObject).next();
+    } while ((localazoy == null) || (localazoy.a()));
+    for (int i = 0;; i = 1)
+    {
+      if ((i != 0) && (!paramazoy.jdField_a_of_type_JavaUtilHashMap.isEmpty()))
       {
-        if (((JSONObject)localObject).has("file_path")) {
-          localTroopFeedItem.linkUrl = ((JSONObject)localObject).getString("file_path");
-        }
-        localTroopFeedItem.type = 131;
-        if (((JSONObject)localObject).has("sharesize")) {
-          localTroopFeedItem.ex_1 = ("" + ((JSONObject)localObject).getLong("sharesize"));
-        }
-        boolean bool = ((JSONObject)localObject).has("bus_id");
-        if (bool) {}
-        try
-        {
-          localTroopFeedItem.content = ("" + ((JSONObject)localObject).getLong("bus_id"));
-          if (((JSONObject)localObject).has("sharefile")) {
-            localTroopFeedItem.title = ((JSONObject)localObject).getString("sharefile");
-          }
-          if (((JSONObject)localObject).has("shareexpire")) {
-            localTroopFeedItem.shareExpire = ((JSONObject)localObject).getLong("shareexpire");
-          }
-          if (!((JSONObject)localObject).has("sharefromuin")) {
-            break label333;
-          }
-          localTroopFeedItem.shareFromUin = ((JSONObject)localObject).getString("sharefromuin");
-        }
-        catch (JSONException paramJSONObject)
-        {
-          for (;;)
-          {
-            localTroopFeedItem.content = ("" + ((JSONObject)localObject).getString("bus_id"));
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramazoy, paramString);
+        return;
+      }
+      localObject = paramazoy.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      label117:
+      while (((Iterator)localObject).hasNext())
+      {
+        localazoy = (azoy)((Iterator)localObject).next();
+        if (localazoy != null) {
+          if (paramString == null) {
+            break label186;
           }
         }
       }
-      if (i != 4) {
-        break label333;
+      label186:
+      for (paramazoy = paramString + "/" + localazoy.jdField_a_of_type_JavaLangString;; paramazoy = localazoy.jdField_a_of_type_JavaLangString)
+      {
+        a(localazoy, paramazoy);
+        break label117;
+        break;
       }
     }
-    catch (JSONException paramJSONObject)
+  }
+  
+  private void b(azoy paramazoy, String paramString)
+  {
+    Iterator localIterator = a(paramString).iterator();
+    while (localIterator.hasNext())
     {
-      paramJSONObject.printStackTrace();
-      return null;
+      String str = (String)localIterator.next();
+      paramString = paramazoy.a(str);
+      if (paramString != null)
+      {
+        paramString.jdField_a_of_type_Int += 1;
+        paramazoy = paramString;
+      }
+      else
+      {
+        paramString = new azoy(str);
+        paramString.jdField_a_of_type_Int = 1;
+        paramazoy.jdField_a_of_type_JavaUtilHashMap.put(paramString.jdField_a_of_type_JavaLangString, paramString);
+        paramazoy = paramString;
+      }
     }
-    localTroopFeedItem.type = 132;
-    localTroopFeedItem.linkUrl = paramJSONObject.getString("open_url");
-    localTroopFeedItem.title = ((JSONObject)localObject).getString("musicname");
-    localTroopFeedItem.ex_1 = ((JSONObject)localObject).getString("musicid");
-    localTroopFeedItem.picPath = ((JSONObject)localObject).getString("pic_url");
-    label333:
-    return localTroopFeedItem;
+  }
+  
+  public HashMap<azoy, String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap;
+  }
+  
+  public void a()
+  {
+    a(this.jdField_a_of_type_Azoy, null);
+  }
+  
+  public void a(@NonNull String paramString)
+  {
+    b(this.jdField_a_of_type_Azoy, paramString);
+  }
+  
+  public HashMap<azoy, String> b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azoz
  * JD-Core Version:    0.7.0.1
  */

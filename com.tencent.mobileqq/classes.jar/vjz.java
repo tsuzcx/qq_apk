@@ -1,207 +1,261 @@
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.10;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.4;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.5;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.7;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.8;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.CopyOnWriteArraySet;
+import javax.annotation.concurrent.GuardedBy;
+
 public class vjz
 {
-  public int a;
-  public long a;
-  public String a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public String b;
+  @GuardedBy("sPendingPreloadQueue")
+  private static long jdField_a_of_type_Long;
+  private static Context jdField_a_of_type_AndroidContentContext;
+  private static Handler jdField_a_of_type_AndroidOsHandler;
+  private static TVK_ICacheMgr.IPreloadCallback jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCallback = new vkb();
+  private static TVK_ICacheMgr.IPreloadCompleteCallback jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback;
+  @GuardedBy("sPendingPreloadQueue")
+  private static final Queue<vkf> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private static final CopyOnWriteArraySet<vkg> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet;
+  @GuardedBy("sPendingPreloadQueue")
+  private static vkf jdField_a_of_type_Vkf;
   
-  /* Error */
-  public static vjz a(String paramString, long paramLong)
+  static
   {
-    // Byte code:
-    //   0: new 2	vjz
-    //   3: dup
-    //   4: invokespecial 21	vjz:<init>	()V
-    //   7: astore 6
-    //   9: new 23	java/io/File
-    //   12: dup
-    //   13: aload_0
-    //   14: invokespecial 26	java/io/File:<init>	(Ljava/lang/String;)V
-    //   17: astore 5
-    //   19: invokestatic 32	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   22: ifeq +41 -> 63
-    //   25: ldc 34
-    //   27: iconst_2
-    //   28: new 36	java/lang/StringBuilder
-    //   31: dup
-    //   32: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   35: ldc 39
-    //   37: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: aload_0
-    //   41: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: ldc 45
-    //   46: invokevirtual 43	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: aload 5
-    //   51: invokevirtual 48	java/io/File:exists	()Z
-    //   54: invokevirtual 51	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   57: invokevirtual 55	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   60: invokestatic 59	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   63: new 61	java/io/FileInputStream
-    //   66: dup
-    //   67: aload 5
-    //   69: invokespecial 64	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   72: astore 4
-    //   74: aload 4
-    //   76: astore_3
-    //   77: aload 6
-    //   79: aload 5
-    //   81: invokevirtual 68	java/io/File:length	()J
-    //   84: putfield 70	vjz:jdField_a_of_type_Long	J
-    //   87: aload 4
-    //   89: astore_3
-    //   90: aload 6
-    //   92: aload 4
-    //   94: aload 6
-    //   96: getfield 70	vjz:jdField_a_of_type_Long	J
-    //   99: invokestatic 76	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   102: putfield 78	vjz:jdField_a_of_type_ArrayOfByte	[B
-    //   105: aload 4
-    //   107: astore_3
-    //   108: aload 6
-    //   110: aload 6
-    //   112: getfield 78	vjz:jdField_a_of_type_ArrayOfByte	[B
-    //   115: invokestatic 83	bbea:a	([B)Ljava/lang/String;
-    //   118: putfield 85	vjz:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   121: aload 4
-    //   123: astore_3
-    //   124: new 87	android/graphics/BitmapFactory$Options
-    //   127: dup
-    //   128: invokespecial 88	android/graphics/BitmapFactory$Options:<init>	()V
-    //   131: astore 5
-    //   133: aload 4
-    //   135: astore_3
-    //   136: aload 5
-    //   138: iconst_1
-    //   139: putfield 92	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   142: aload 4
-    //   144: astore_3
-    //   145: aload_0
-    //   146: aload 5
-    //   148: invokestatic 98	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   151: pop
-    //   152: aload 4
-    //   154: astore_3
-    //   155: aload 6
-    //   157: aload 5
-    //   159: getfield 101	android/graphics/BitmapFactory$Options:outHeight	I
-    //   162: putfield 103	vjz:jdField_a_of_type_Int	I
-    //   165: aload 4
-    //   167: astore_3
-    //   168: aload 6
-    //   170: aload 5
-    //   172: getfield 106	android/graphics/BitmapFactory$Options:outWidth	I
-    //   175: putfield 108	vjz:jdField_b_of_type_Int	I
-    //   178: aload 4
-    //   180: astore_3
-    //   181: aload 6
-    //   183: aload_0
-    //   184: putfield 110	vjz:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   187: aload 4
-    //   189: astore_3
-    //   190: aload 6
-    //   192: lload_1
-    //   193: putfield 112	vjz:jdField_b_of_type_Long	J
-    //   196: aload 4
-    //   198: ifnull +8 -> 206
-    //   201: aload 4
-    //   203: invokevirtual 115	java/io/FileInputStream:close	()V
-    //   206: aload 6
-    //   208: areturn
-    //   209: astore_0
-    //   210: aload_0
-    //   211: invokevirtual 118	java/io/IOException:printStackTrace	()V
-    //   214: aload 6
-    //   216: areturn
-    //   217: astore 5
-    //   219: aconst_null
-    //   220: astore_0
-    //   221: aload_0
-    //   222: astore_3
-    //   223: aload 5
-    //   225: invokevirtual 119	java/lang/Exception:printStackTrace	()V
-    //   228: aload_0
-    //   229: ifnull +7 -> 236
-    //   232: aload_0
-    //   233: invokevirtual 115	java/io/FileInputStream:close	()V
-    //   236: aconst_null
-    //   237: areturn
-    //   238: astore_0
-    //   239: aload_0
-    //   240: invokevirtual 118	java/io/IOException:printStackTrace	()V
-    //   243: goto -7 -> 236
-    //   246: astore_0
-    //   247: aconst_null
-    //   248: astore_3
-    //   249: aload_3
-    //   250: ifnull -44 -> 206
-    //   253: aload_3
-    //   254: invokevirtual 115	java/io/FileInputStream:close	()V
-    //   257: aload 6
-    //   259: areturn
-    //   260: astore_0
-    //   261: aload_0
-    //   262: invokevirtual 118	java/io/IOException:printStackTrace	()V
-    //   265: aload 6
-    //   267: areturn
-    //   268: astore_0
-    //   269: goto -20 -> 249
-    //   272: astore 5
-    //   274: aload 4
-    //   276: astore_0
-    //   277: goto -56 -> 221
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	280	0	paramString	String
-    //   0	280	1	paramLong	long
-    //   76	178	3	localObject1	Object
-    //   72	203	4	localFileInputStream	java.io.FileInputStream
-    //   17	154	5	localObject2	Object
-    //   217	7	5	localException1	java.lang.Exception
-    //   272	1	5	localException2	java.lang.Exception
-    //   7	259	6	localvjz	vjz
-    // Exception table:
-    //   from	to	target	type
-    //   201	206	209	java/io/IOException
-    //   9	63	217	java/lang/Exception
-    //   63	74	217	java/lang/Exception
-    //   232	236	238	java/io/IOException
-    //   9	63	246	finally
-    //   63	74	246	finally
-    //   253	257	260	java/io/IOException
-    //   77	87	268	finally
-    //   90	105	268	finally
-    //   108	121	268	finally
-    //   124	133	268	finally
-    //   136	142	268	finally
-    //   145	152	268	finally
-    //   155	165	268	finally
-    //   168	178	268	finally
-    //   181	187	268	finally
-    //   190	196	268	finally
-    //   223	228	268	finally
-    //   77	87	272	java/lang/Exception
-    //   90	105	272	java/lang/Exception
-    //   108	121	272	java/lang/Exception
-    //   124	133	272	java/lang/Exception
-    //   136	142	272	java/lang/Exception
-    //   145	152	272	java/lang/Exception
-    //   155	165	272	java/lang/Exception
-    //   168	178	272	java/lang/Exception
-    //   181	187	272	java/lang/Exception
-    //   190	196	272	java/lang/Exception
+    jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getApplication();
+    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+    jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback = new vka();
   }
   
-  public String toString()
+  public static int a(vkf paramvkf)
   {
-    return "FilterUploadInfo{mFileOringinPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mFileSize=" + this.jdField_a_of_type_Long + ", mLocalMd5=" + new String(this.jdField_a_of_type_ArrayOfByte) + ", mFileName='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mHeight=" + this.jdField_a_of_type_Int + ", mWidth=" + this.jdField_b_of_type_Int + '}';
+    int i = 1;
+    if (paramvkf == null) {
+      throw new NullPointerException("preloadItem is null");
+    }
+    paramvkf = new File(paramvkf.c);
+    if (ujb.a(paramvkf)) {
+      return 1;
+    }
+    if ((paramvkf.isFile()) && (paramvkf.length() >= 409600L)) {}
+    while (i != 0)
+    {
+      return 2;
+      i = 0;
+    }
+    if (paramvkf.length() > 0L) {
+      return 3;
+    }
+    return 4;
+  }
+  
+  private static TVK_ICacheMgr a()
+  {
+    if (TVK_SDKMgr.isInstalled(BaseApplicationImpl.getApplication())) {
+      return TVK_SDKMgr.getProxyFactory().getCacheMgr(BaseApplicationImpl.getApplication());
+    }
+    return null;
+  }
+  
+  public static void a()
+  {
+    synchronized (jdField_a_of_type_JavaUtilQueue)
+    {
+      Object localObject1 = new ArrayList(jdField_a_of_type_JavaUtilQueue);
+      jdField_a_of_type_JavaUtilQueue.clear();
+      localObject1 = ((List)localObject1).iterator();
+      if (((Iterator)localObject1).hasNext())
+      {
+        vkf localvkf = (vkf)((Iterator)localObject1).next();
+        jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.4(localvkf));
+      }
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    a(paramString, vst.a(BaseApplicationImpl.getContext()).a());
+  }
+  
+  public static void a(String paramString, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      File localFile = ujb.a(paramString, 0, true, true);
+      if (localFile != null) {
+        ((uid)urr.a(28)).a(paramString, 0, new vkc(localFile, paramString));
+      }
+    }
+  }
+  
+  public static void a(vkf paramvkf)
+  {
+    if (paramvkf == null) {
+      throw new IllegalArgumentException("item should not be null");
+    }
+    synchronized (jdField_a_of_type_JavaUtilQueue)
+    {
+      if (!jdField_a_of_type_JavaUtilQueue.contains(paramvkf)) {
+        jdField_a_of_type_JavaUtilQueue.offer(paramvkf);
+      }
+      b(false);
+      return;
+    }
+  }
+  
+  public static void b()
+  {
+    ??? = a();
+    if (??? != null)
+    {
+      ((TVK_ICacheMgr)???).removePreloadCallback();
+      ((TVK_ICacheMgr)???).releasePreload(20161223);
+    }
+    synchronized (jdField_a_of_type_JavaUtilQueue)
+    {
+      Object localObject2 = new ArrayList(jdField_a_of_type_JavaUtilQueue);
+      if (jdField_a_of_type_Vkf != null) {
+        ((List)localObject2).add(0, jdField_a_of_type_Vkf);
+      }
+      jdField_a_of_type_Vkf = null;
+      jdField_a_of_type_JavaUtilQueue.clear();
+      localObject2 = ((List)localObject2).iterator();
+      if (((Iterator)localObject2).hasNext())
+      {
+        vkf localvkf = (vkf)((Iterator)localObject2).next();
+        jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.5(localvkf));
+      }
+    }
+  }
+  
+  private static void b(TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo, String paramString, vkf paramvkf)
+  {
+    paramString = paramString.replace("https://", "http://");
+    paramTVK_ICacheMgr.setOnPreLoadCompleteCallback(jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCompleteCallback);
+    paramTVK_ICacheMgr.setPreloadCallback(jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr$IPreloadCallback);
+    jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    paramTVK_ICacheMgr.preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, paramTVK_PlayerVideoInfo);
+    jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.10(paramvkf));
+  }
+  
+  /* Error */
+  private static void b(boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: getstatic 27	vjz:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
+    //   3: astore_1
+    //   4: aload_1
+    //   5: monitorenter
+    //   6: iload_0
+    //   7: ifne +9 -> 16
+    //   10: getstatic 119	vjz:jdField_a_of_type_Vkf	Lvkf;
+    //   13: ifnonnull +45 -> 58
+    //   16: getstatic 27	vjz:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
+    //   19: invokeinterface 260 1 0
+    //   24: checkcast 76	vkf
+    //   27: putstatic 119	vjz:jdField_a_of_type_Vkf	Lvkf;
+    //   30: getstatic 119	vjz:jdField_a_of_type_Vkf	Lvkf;
+    //   33: ifnull +22 -> 55
+    //   36: invokestatic 266	com/tribe/async/async/Bosses:get	()Lcom/tribe/async/async/Boss;
+    //   39: new 268	vkd
+    //   42: dup
+    //   43: ldc_w 270
+    //   46: invokespecial 271	vkd:<init>	(Ljava/lang/String;)V
+    //   49: invokeinterface 277 2 0
+    //   54: pop
+    //   55: aload_1
+    //   56: monitorexit
+    //   57: return
+    //   58: ldc_w 270
+    //   61: ldc_w 279
+    //   64: getstatic 119	vjz:jdField_a_of_type_Vkf	Lvkf;
+    //   67: invokestatic 284	wsv:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;)V
+    //   70: goto -15 -> 55
+    //   73: astore_2
+    //   74: aload_1
+    //   75: monitorexit
+    //   76: aload_2
+    //   77: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	78	0	paramBoolean	boolean
+    //   3	72	1	localQueue	Queue
+    //   73	4	2	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   10	16	73	finally
+    //   16	55	73	finally
+    //   55	57	73	finally
+    //   58	70	73	finally
+    //   74	76	73	finally
+  }
+  
+  private static void c(@NonNull vkf paramvkf)
+  {
+    TVK_ICacheMgr localTVK_ICacheMgr;
+    switch (a(paramvkf))
+    {
+    default: 
+      localTVK_ICacheMgr = a();
+      if (localTVK_ICacheMgr == null)
+      {
+        jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.8(paramvkf));
+        b(true);
+        return;
+      }
+      break;
+    case 1: 
+    case 2: 
+      jdField_a_of_type_AndroidOsHandler.post(new TVKPreloader.7(paramvkf));
+      b(true);
+      return;
+    }
+    String[] arrayOfString = new String[1];
+    arrayOfString[0] = paramvkf.b;
+    int i = ((Integer)((urk)urr.a(10)).b("key_story_video_preload_duration", Integer.valueOf(2))).intValue();
+    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = vsd.a(paramvkf.a, paramvkf.c);
+    localTVK_PlayerVideoInfo.setConfigMap("cache_duration", String.valueOf(i));
+    if (arrayOfString[0].contains("qqstocdnd"))
+    {
+      uhx localuhx = (uhx)urr.a(4);
+      String str = localuhx.b();
+      if (!TextUtils.isEmpty(str))
+      {
+        arrayOfString[0] = bhos.a(arrayOfString[0], "authkey", str);
+        b(localTVK_ICacheMgr, localTVK_PlayerVideoInfo, arrayOfString[0], paramvkf);
+        return;
+      }
+      Bosses.get().postJob(new vke("Q.qqstory.playernew.TVKPreloader", localuhx, arrayOfString, i, paramvkf, localTVK_ICacheMgr, localTVK_PlayerVideoInfo));
+      return;
+    }
+    b(localTVK_ICacheMgr, localTVK_PlayerVideoInfo, arrayOfString[0], paramvkf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vjz
  * JD-Core Version:    0.7.0.1
  */

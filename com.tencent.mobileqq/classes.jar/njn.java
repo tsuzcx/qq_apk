@@ -1,28 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class njn
-  extends AnimatorListenerAdapter
+class njn
+  implements View.OnClickListener
 {
-  public njn(AdControlView paramAdControlView) {}
+  njn(nin paramnin, npo paramnpo) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    super.onAnimationCancel(paramAnimator);
-    this.a.b = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    super.onAnimationEnd(paramAnimator);
-    this.a.b = false;
-    this.a.setVisibility(4);
+    nin.a(this.jdField_a_of_type_Nin);
+    nin.a(this.jdField_a_of_type_Nin, this.jdField_a_of_type_Npo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     njn
  * JD-Core Version:    0.7.0.1
  */

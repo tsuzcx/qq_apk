@@ -1,11 +1,11 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face;
 
-import bkfz;
+import bmrj;
 
 class FaceListPage$1
   implements Runnable
 {
-  FaceListPage$1(FaceListPage paramFaceListPage, bkfz parambkfz) {}
+  FaceListPage$1(FaceListPage paramFaceListPage, bmrj parambmrj) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ class FaceListPage$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage.1
  * JD-Core Version:    0.7.0.1
  */

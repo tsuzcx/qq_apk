@@ -67,7 +67,8 @@ public final class InflaterSource
       try
       {
         Segment localSegment = paramBuffer.writableSegment(1);
-        int i = this.inflater.inflate(localSegment.data, localSegment.limit, 8192 - localSegment.limit);
+        int i = (int)Math.min(paramLong, 8192 - localSegment.limit);
+        i = this.inflater.inflate(localSegment.data, localSegment.limit, i);
         if (i > 0)
         {
           localSegment.limit += i;
@@ -99,7 +100,7 @@ public final class InflaterSource
     return -1L;
   }
   
-  public boolean refill()
+  public final boolean refill()
   {
     if (!this.inflater.needsInput()) {
       return false;
@@ -124,7 +125,7 @@ public final class InflaterSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okio.InflaterSource
  * JD-Core Version:    0.7.0.1
  */

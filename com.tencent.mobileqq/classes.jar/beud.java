@@ -1,19 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
+import com.tencent.mobileqq.widget.qqfloatingscreen.videoview.VideoTextureView;
 
-class beud
-  implements DialogInterface.OnShowListener
+public class beud
+  implements MediaPlayer.OnPreparedListener
 {
-  beud(beub parambeub) {}
+  public beud(VideoTextureView paramVideoTextureView) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    betx.a(this.a.a(), beub.a(this.a), this.a.a());
+    if (VideoTextureView.a(this.a) != null)
+    {
+      VideoTextureView.a(this.a).start();
+      VideoTextureView.a(this.a, VideoTextureView.a(this.a).getDuration());
+    }
+    if (VideoTextureView.a() != null)
+    {
+      VideoTextureView.a().onVideoStart(VideoTextureView.a(this.a));
+      VideoTextureView.a().onVideoProgressUpdate(0);
+      VideoTextureView.a().onVideoSize(VideoTextureView.a(this.a).getVideoWidth(), VideoTextureView.a(this.a).getVideoHeight());
+    }
+    if (VideoTextureView.a(this.a) != null) {
+      VideoTextureView.a(this.a).post(this.a.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beud
  * JD-Core Version:    0.7.0.1
  */

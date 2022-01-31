@@ -1,64 +1,19 @@
-import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeReq;
-import NS_STORE_APP_CLIENT.MiniAppStore.StGetFirstPageByTypeRsp;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 
-public class bezy
-  extends bfau
+class bezy
+  implements bfdo
 {
-  private MiniAppStore.StGetFirstPageByTypeReq a = new MiniAppStore.StGetFirstPageByTypeReq();
+  bezy(bezx parambezx, ImageView paramImageView) {}
   
-  public bezy(int paramInt)
+  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
-    this.a.uiPageType.set(paramInt);
-  }
-  
-  protected String a()
-  {
-    return "store_app_client";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    MiniAppStore.StGetFirstPageByTypeRsp localStGetFirstPageByTypeRsp = new MiniAppStore.StGetFirstPageByTypeRsp();
-    try
-    {
-      localStGetFirstPageByTypeRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStGetFirstPageByTypeRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("data", bfgq.a(localStGetFirstPageByTypeRsp.vecAppInfo.get()).toString());
-        paramArrayOfByte.put("dataType", "string");
-        return paramArrayOfByte;
-      }
-      betc.a("GetFirstPageByTypeRequest", "onResponse fail.rsp = null");
-      return null;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      betc.a("GetFirstPageByTypeRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "GetFirstPageByType";
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezy
  * JD-Core Version:    0.7.0.1
  */

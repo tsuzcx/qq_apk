@@ -1,147 +1,162 @@
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import java.io.File;
 
 public class vte
-  extends BaseAdapter
+  implements vrr
 {
-  protected Context a;
-  protected QQAppInterface a;
-  protected ArrayList<vtg> a;
-  protected vtf a;
+  TextureVideoView jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+  private String jdField_a_of_type_JavaLangString = "VideoViewTextureImpl";
+  vse jdField_a_of_type_Vse = new vse();
   
-  public vte(Context paramContext, ArrayList<TroopInfo> paramArrayList, ArrayList<String> paramArrayList1)
+  public vte(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = tsr.a();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaUtilArrayList = vtg.a(paramArrayList, paramArrayList1);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView = new TextureVideoView(paramContext.getApplicationContext());
+    this.jdField_a_of_type_JavaLangString += paramString;
   }
   
-  public ArrayList<String> a()
+  public int a()
   {
-    ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    return 0;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getCurrentPosition();
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+  }
+  
+  public vse a()
+  {
+    return this.jdField_a_of_type_Vse;
+  }
+  
+  public void a()
+  {
+    wsv.d(this.jdField_a_of_type_JavaLangString, "stopPlayback");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.a();
+  }
+  
+  @TargetApi(14)
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVisibility(paramInt);
+  }
+  
+  public void a(long paramLong)
+  {
+    wsv.d(this.jdField_a_of_type_JavaLangString, "seekTo");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.seekTo((int)paramLong);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Vse.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Vse.jdField_a_of_type_Boolean = true;
+    paramString1 = paramString3;
+    if (!TextUtils.isEmpty(paramString2))
     {
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        vtg localvtg = (vtg)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if ((localvtg.jdField_a_of_type_Boolean) && (!localArrayList.contains(localvtg.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin))) {
-          localArrayList.add(localvtg.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
-        }
-        i += 1;
+      paramString1 = paramString3;
+      if (ujb.a(new File(paramString2))) {
+        paramString1 = paramString2;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.publish.edit.ShareToGrouopAdapter", 2, "selectTroopUinList" + localArrayList);
-    }
-    return localArrayList;
+    wsv.d(this.jdField_a_of_type_JavaLangString, "setVideoPath");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoPath(paramString1);
   }
   
-  public void a(vtf paramvtf)
+  public void a(vrs paramvrs)
   {
-    this.jdField_a_of_type_Vtf = paramvtf;
-  }
-  
-  public void a(vtg paramvtg)
-  {
-    if ((this.jdField_a_of_type_Vtf == null) || (this.jdField_a_of_type_Vtf.a(a(), paramvtg))) {
-      if (paramvtg.jdField_a_of_type_Boolean) {
-        break label63;
-      }
-    }
-    label63:
-    for (boolean bool = true;; bool = false)
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramvrs == null) {}
+    for (paramvrs = null;; paramvrs = new vtf(this, paramvrs))
     {
-      paramvtg.jdField_a_of_type_Boolean = bool;
-      notifyDataSetChanged();
-      if (this.jdField_a_of_type_Vtf != null) {
-        this.jdField_a_of_type_Vtf.a(a());
-      }
+      localTextureVideoView.setOnCompletionListener(paramvrs);
       return;
     }
   }
   
-  public int getCount()
+  public void a(vrt paramvrt) {}
+  
+  public void a(vru paramvru)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return 0;
+    Object localObject = null;
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramvru == null) {}
+    for (paramvru = localObject;; paramvru = new vtg(this, paramvru, null))
+    {
+      localTextureVideoView.setOnErrorListener(paramvru);
+      return;
     }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public Object getItem(int paramInt)
+  public void a(vrv paramvrv)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramvrv == null) {}
+    for (paramvrv = null;; paramvrv = new vth(this, paramvrv))
+    {
+      localTextureVideoView.setOnInfoListener(paramvrv);
+      return;
+    }
   }
   
-  public long getItemId(int paramInt)
+  public void a(vrw paramvrw)
   {
-    return paramInt;
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramvrw == null) {}
+    for (paramvrw = null;; paramvrw = new vti(this, paramvrw))
+    {
+      localTextureVideoView.setOnPreparedListener(paramvrw);
+      return;
+    }
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public boolean a()
   {
-    vtg localvtg = (vtg)getItem(paramInt);
-    TroopInfo localTroopInfo = localvtg.jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
-    Object localObject;
-    Drawable localDrawable;
-    if (paramView != null)
-    {
-      localObject = (vap)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
-      localObject = (ImageView)paramView.a(2131367185);
-      localDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localTroopInfo.troopuin);
-      if (localDrawable != null) {
-        break label154;
-      }
-      ((ImageView)localObject).setImageBitmap(bbef.f());
-    }
-    for (;;)
-    {
-      ((TextView)paramView.a(2131367230)).setText(localTroopInfo.getTroopName());
-      ((CheckBox)paramView.a(2131364197)).setChecked(localvtg.jdField_a_of_type_Boolean);
-      if (getCount() > 1) {
-        break label164;
-      }
-      paramViewGroup.setBackgroundResource(2130839169);
-      return paramViewGroup;
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560396, null);
-      paramView = new vap(paramViewGroup);
-      paramViewGroup.setTag(paramView);
-      break;
-      label154:
-      ((ImageView)localObject).setImageDrawable(localDrawable);
-    }
-    label164:
-    if (paramInt == 0)
-    {
-      paramViewGroup.setBackgroundResource(2130839185);
-      return paramViewGroup;
-    }
-    if (paramInt == getCount() - 1)
-    {
-      paramViewGroup.setBackgroundResource(2130839176);
-      return paramViewGroup;
-    }
-    paramViewGroup.setBackgroundResource(2130839179);
-    return paramViewGroup;
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.isPlaying();
   }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getDuration();
+  }
+  
+  public void b()
+  {
+    wsv.d(this.jdField_a_of_type_JavaLangString, "start");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.start();
+  }
+  
+  public void c()
+  {
+    wsv.d(this.jdField_a_of_type_JavaLangString, "pause");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.pause();
+  }
+  
+  public void d()
+  {
+    wsv.d(this.jdField_a_of_type_JavaLangString, "restart");
+    b();
+  }
+  
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vte
  * JD-Core Version:    0.7.0.1
  */

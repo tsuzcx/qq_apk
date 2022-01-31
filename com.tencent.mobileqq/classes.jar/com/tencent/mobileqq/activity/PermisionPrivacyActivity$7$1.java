@@ -18,15 +18,15 @@ class PermisionPrivacyActivity$7$1
     }
     if (this.jdField_a_of_type_Int > 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$7.this$0.b.setRightText(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$7.this$0.getString(2131699408, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+      this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$7.this$0.c.setRightText(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$7.this$0.getString(2131699759, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$7.this$0.b.setRightText("");
+    this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity$7.this$0.c.setRightText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.7.1
  * JD-Core Version:    0.7.0.1
  */

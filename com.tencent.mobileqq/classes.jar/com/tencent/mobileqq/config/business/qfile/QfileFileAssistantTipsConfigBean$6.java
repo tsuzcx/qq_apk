@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.config.business.qfile;
 
-import amyj;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import aopq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class QfileFileAssistantTipsConfigBean$6
   implements Runnable
 {
-  public QfileFileAssistantTipsConfigBean$6(amyj paramamyj) {}
+  public QfileFileAssistantTipsConfigBean$6(aopq paramaopq) {}
   
   public void run()
   {
@@ -32,10 +32,10 @@ public class QfileFileAssistantTipsConfigBean$6
       try
       {
         localObject3 = new JSONObject((String)localObject3);
-        amyj.a(this.this$0, amyj.d(this.this$0) + amyj.e(this.this$0));
-        amyj.b(this.this$0, 9999);
-        ((JSONObject)localObject3).put("local_day_times", amyj.c(this.this$0));
-        ((JSONObject)localObject3).put("local_max_times", amyj.d(this.this$0));
+        aopq.a(this.this$0, aopq.d(this.this$0) + aopq.e(this.this$0));
+        aopq.b(this.this$0, 9999);
+        ((JSONObject)localObject3).put("local_day_times", aopq.c(this.this$0));
+        ((JSONObject)localObject3).put("local_max_times", aopq.d(this.this$0));
         localObject3 = ((JSONObject)localObject3).toString();
         if (QLog.isDebugVersion()) {
           QLog.i("QfileFileAssistantTipsConfigBean<FileAssistant>", 1, (String)localObject3);

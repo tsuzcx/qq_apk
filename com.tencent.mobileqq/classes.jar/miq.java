@@ -1,23 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-
 public class miq
-  extends Animation
 {
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public int a;
+  public String a;
+  
+  public miq(String paramString, int paramInt)
   {
-    if (paramFloat < 0.5F) {}
-    for (float f = (0.5F - paramFloat) / 0.5F;; f = (paramFloat - 0.5F) / 0.5F)
-    {
-      paramTransformation.setAlpha(f);
-      super.applyTransformation(paramFloat, paramTransformation);
-      return;
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     miq
  * JD-Core Version:    0.7.0.1
  */

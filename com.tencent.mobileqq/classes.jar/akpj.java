@@ -1,51 +1,59 @@
-import IMMsgBodyPack.SlaveMasterMsg;
-import OnlinePushPack.MsgInfo;
-import OnlinePushPack.SvcReqPushMsg;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.game.ApolloGameInterfaceProxy;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONObject;
 
-public class akpj
-  extends akon
+class akpj
+  implements EIPCResultCallback
 {
-  public akpj(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
-  {
-    super(paramQQAppInterface, paramMessageHandler);
-  }
+  akpj(akpi paramakpi) {}
   
-  private boolean a(MsgInfo paramMsgInfo)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    JceInputStream localJceInputStream = new JceInputStream(paramMsgInfo.vMsg);
-    SlaveMasterMsg localSlaveMasterMsg = new SlaveMasterMsg();
-    localSlaveMasterMsg.readFrom(localJceInputStream);
-    if (((int)localSlaveMasterMsg.uMsgType == 529) && (4L == localSlaveMasterMsg.uCmd))
-    {
-      axaq.a(this.a.a(), paramMsgInfo, localSlaveMasterMsg);
-      return true;
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("type");
+    if (i == 1) {
+      paramEIPCResult = paramEIPCResult.getString("nickName");
     }
-    return false;
-  }
-  
-  public akqi a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
-  {
-    boolean bool = false;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      return new akqi(null, bool);
-      if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
-        bool = a(paramMsgInfo);
-      } else {
-        a(getClass().getName(), paramInt);
+    JSONObject localJSONObject;
+    while (i != 2) {
+      try
+      {
+        localJSONObject = new JSONObject();
+        localJSONObject.put("nickname", 1);
+        localJSONObject.put("data", paramEIPCResult);
+        localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
+        ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
+        return;
       }
+      catch (Throwable paramEIPCResult)
+      {
+        QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
+        return;
+      }
+    }
+    paramEIPCResult = akpq.a((Bitmap)paramEIPCResult.getParcelable("head"), 100);
+    try
+    {
+      localJSONObject = new JSONObject();
+      localJSONObject.put("avatar", 1);
+      localJSONObject.put("data", paramEIPCResult);
+      localJSONObject.put("openId", this.a.jdField_a_of_type_JavaLangString);
+      ApolloGameInterfaceProxy.a(this.a.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameInterfaceProxy, "cs.get_userInfo.local", "" + localJSONObject.toString() + "");
+      return;
+    }
+    catch (Throwable paramEIPCResult)
+    {
+      QLog.e("ApolloGameInterfaceProxy", 1, paramEIPCResult, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akpj
  * JD-Core Version:    0.7.0.1
  */

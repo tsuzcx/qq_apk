@@ -1,14 +1,14 @@
 package com.tencent.qqmini.sdk.core.plugins.engine;
 
-import bejc;
-import beje;
-import bekr;
-import betc;
+import bgjd;
+import bgjf;
+import bgkd;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 class BaseJsPluginEngine$1
-  implements beje
+  implements bgjf
 {
-  BaseJsPluginEngine$1(BaseJsPluginEngine paramBaseJsPluginEngine, String paramString1, String paramString2, String paramString3, bekr parambekr) {}
+  BaseJsPluginEngine$1(BaseJsPluginEngine paramBaseJsPluginEngine, String paramString1, String paramString2, String paramString3, bgkd parambgkd) {}
   
   public boolean doOnRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
@@ -17,7 +17,7 @@ class BaseJsPluginEngine$1
     do
     {
       return false;
-      bejc.a().b(this);
+      bgjd.a().b(this);
     } while ((paramArrayOfString == null) || (paramArrayOfString.length == 0));
     if (paramArrayOfString[0].equals(this.val$systemPermission))
     {
@@ -28,7 +28,7 @@ class BaseJsPluginEngine$1
       if (paramInt == 0) {
         break label128;
       }
-      betc.a("JsPluginEngine[AuthGuard]", "request system permission user granted");
+      QMLog.d("JsPluginEngine[AuthGuard]", "request system permission user granted");
       paramArrayOfString = BaseJsPluginEngine.access$000(this.val$event, this.val$jsonParams);
       BaseJsPluginEngine.access$100(this.this$0, paramArrayOfString, true);
       if (!"authorize".equals(this.val$req.a)) {
@@ -43,14 +43,14 @@ class BaseJsPluginEngine$1
       this.this$0.dispatchRequestEvent(this.val$req);
       continue;
       label128:
-      betc.a("JsPluginEngine[AuthGuard]", "request system permission user denied");
+      QMLog.d("JsPluginEngine[AuthGuard]", "request system permission user denied");
       this.val$req.a("system permission denied");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.engine.BaseJsPluginEngine.1
  * JD-Core Version:    0.7.0.1
  */

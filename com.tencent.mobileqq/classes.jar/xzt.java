@@ -1,40 +1,28 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.device.qfind.BluetoothLeService;
+import android.widget.PopupWindow;
+import com.tencent.biz.subscribe.bizdapters.DetailBaseAdapter.4.1;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-class xzt
-  implements ServiceConnection
+public class xzt
+  implements xyx
 {
-  xzt(xzr paramxzr) {}
+  public xzt(DetailBaseAdapter.4.1 param1) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a()
   {
-    xzr.a(this.a, ((yga)paramIBinder).a());
-    if ((!xzr.a(this.a).a()) && (QLog.isColorLevel())) {
-      QLog.e("DeviceBLE2", 2, "Unable to initialize Bluetooth");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceBLE2", 2, "ServiceConnection onServiceConnected ");
-    }
-    if (!xzr.a(this.a).isEmpty())
-    {
-      this.a.a = ((ygf)xzr.a(this.a).get(0));
-      xzr.a(this.a).remove(0);
-      xzr.a(this.a).a(this.a.a.a, this.a.a.b);
-    }
+    QLog.d(xzn.jdField_a_of_type_JavaLangString, 2, "showPraiseTipView");
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void b()
   {
-    xzr.a(this.a, null);
+    QLog.d(xzn.jdField_a_of_type_JavaLangString, 2, "dismiss popupWindow priseTipView");
+    if (this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow != null) {
+      this.a.a.a.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xzt
  * JD-Core Version:    0.7.0.1
  */

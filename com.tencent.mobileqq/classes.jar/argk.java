@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.intervideo.huayang.Monitor.1;
-
-public class argk
+class argk
+  implements aqic
 {
-  public static boolean a = true;
+  argk(argh paramargh) {}
   
-  public static void a(String paramString)
+  public void a(long paramLong)
   {
-    if (a) {
-      b(paramString);
-    }
-  }
-  
-  public static void b(String paramString)
-  {
-    ThreadManager.executeOnNetWorkThread(new Monitor.1("https://cgi.pub.qq.com/report/report_vm?monitors=[$ID$]&t=$TIMESTAMP$".replace("$ID$", paramString).replace("$TIMESTAMP$", String.valueOf(System.currentTimeMillis()))));
+    argh.b(this.a, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     argk
  * JD-Core Version:    0.7.0.1
  */

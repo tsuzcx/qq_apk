@@ -1,9 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import bhvy;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import acex;
+import aljq;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class KandianMergeManager$17
   implements Runnable
@@ -12,14 +11,15 @@ class KandianMergeManager$17
   
   public void run()
   {
-    SharedPreferences.Editor localEditor = bhvy.a(KandianMergeManager.a(this.this$0), 1).edit();
-    localEditor.putString("kandian_red_touch_pnt_article_id", KandianMergeManager.a(this.this$0)).putLong("kandian_push_msg_time", NetConnInfoCenter.getServerTime());
-    bhvy.a(localEditor, true);
+    SessionInfo localSessionInfo = new SessionInfo();
+    localSessionInfo.jdField_a_of_type_JavaLangString = aljq.az;
+    localSessionInfo.jdField_a_of_type_Int = 1008;
+    acex.a(KandianMergeManager.a(this.this$0), localSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.17
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.qwallet;
 
-import agwj;
+import aiqi;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -15,7 +15,7 @@ import mqq.app.MobileQQ;
 public class PreloadImgManager$3
   implements Runnable
 {
-  public PreloadImgManager$3(agwj paramagwj, Set paramSet, String paramString1, String paramString2, AppInterface paramAppInterface, List paramList, String paramString3, Map paramMap, Bundle paramBundle) {}
+  public PreloadImgManager$3(aiqi paramaiqi, Set paramSet, String paramString1, String paramString2, AppInterface paramAppInterface, List paramList, String paramString3, Map paramMap, Bundle paramBundle) {}
   
   public void run()
   {
@@ -35,7 +35,7 @@ public class PreloadImgManager$3
         {
           localObject2 = this.this$0;
           this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication();
-          if (agwj.a((agwj)localObject2, MobileQQ.getContext(), ((File)localObject1).getPath(), str1) != null) {}
+          if (aiqi.a((aiqi)localObject2, MobileQQ.getContext(), ((File)localObject1).getPath(), str1) != null) {}
         }
         else
         {
@@ -50,7 +50,7 @@ public class PreloadImgManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.PreloadImgManager.3
  * JD-Core Version:    0.7.0.1
  */

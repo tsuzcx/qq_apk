@@ -1,46 +1,41 @@
 import android.support.annotation.NonNull;
-import android.view.LayoutInflater;
-import android.view.LayoutInflater.Factory;
-import java.lang.reflect.Field;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-public class vwf
+public final class vwf
+  extends QQUIEventReceiver<vvy, uyg>
 {
-  public static void a(@NonNull LayoutInflater paramLayoutInflater, @NonNull LayoutInflater.Factory paramFactory)
+  public vwf(@NonNull vvy paramvvy)
   {
-    try
+    super(paramvvy);
+  }
+  
+  public void a(@NonNull vvy paramvvy, @NonNull uyg paramuyg)
+  {
+    if ((paramuyg.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramuyg.jdField_a_of_type_JavaUtilList != null) && (paramvvy.a != null))
     {
-      paramLayoutInflater.setFactory(paramFactory);
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      vwh.c("LayoutModifier", "LayoutInflater.setFactory IllegalStateException " + localIllegalStateException);
-      try
+      paramuyg = paramuyg.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramuyg.hasNext())
       {
-        Field localField1 = LayoutInflater.class.getDeclaredField("mFactory");
-        localField1.setAccessible(true);
-        Field localField2 = LayoutInflater.class.getDeclaredField("mFactory2");
-        localField2.setAccessible(true);
-        localField1.set(paramLayoutInflater, paramFactory);
-        localField2.set(paramLayoutInflater, paramFactory);
-        if ((paramLayoutInflater.getFactory() == paramFactory) && (paramLayoutInflater.getFactory2() == paramFactory))
-        {
-          vwh.b("LayoutModifier", "hookLayoutInflaterFactory success");
-          return;
+        usu localusu = (usu)paramuyg.next();
+        if (TextUtils.equals(paramvvy.a.b, localusu.a)) {
+          paramvvy.i();
         }
       }
-      catch (Exception paramLayoutInflater)
-      {
-        vwh.d("LayoutModifier", "hook setFactory " + paramLayoutInflater);
-        return;
-      }
-      vwh.b("LayoutModifier", "hookLayoutInflaterFactory failed");
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uyg.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vwf
  * JD-Core Version:    0.7.0.1
  */

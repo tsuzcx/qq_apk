@@ -4,8 +4,8 @@ import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.List;
-import ntz;
-import oie;
+import nxe;
+import oms;
 
 public abstract class BaseCommentData
   implements Serializable
@@ -40,8 +40,8 @@ public abstract class BaseCommentData
   public int level;
   public int like;
   public int likeCnt;
-  public ntz medalInfo;
-  public List<oie> mediaDataList;
+  public nxe medalInfo;
+  public List<oms> mediaDataList;
   public int myself;
   public String nickName;
   public String passthrough;
@@ -66,9 +66,9 @@ public abstract class BaseCommentData
   {
     if ((this.mediaDataList != null) && (this.mediaDataList.size() > 0))
     {
-      oie localoie = (oie)this.mediaDataList.get(0);
-      if (localoie != null) {
-        return localoie.e;
+      oms localoms = (oms)this.mediaDataList.get(0);
+      if (localoms != null) {
+        return localoms.e;
       }
     }
     return 0;
@@ -166,7 +166,7 @@ public abstract class BaseCommentData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData
  * JD-Core Version:    0.7.0.1
  */

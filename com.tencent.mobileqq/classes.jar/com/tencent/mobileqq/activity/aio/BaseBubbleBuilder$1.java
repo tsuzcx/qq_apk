@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio;
 
-import ayoi;
-import aywm;
+import bame;
+import baul;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -16,7 +16,7 @@ public class BaseBubbleBuilder$1
   
   public void run()
   {
-    File localFile = ayoi.a(aywm.a((MessageForPic)this.a, 1, null).toString());
+    File localFile = bame.a(baul.a((MessageForPic)this.a, 1, null).toString());
     if ((localFile == null) || (!localFile.exists())) {
       this.this$0.a.a().a((MessageForPic)this.a, 2);
     }
@@ -24,7 +24,7 @@ public class BaseBubbleBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.1
  * JD-Core Version:    0.7.0.1
  */

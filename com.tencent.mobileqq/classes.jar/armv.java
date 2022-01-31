@@ -1,42 +1,71 @@
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.SpannableString;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.3;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.liveroom.LiveRoomHelper;
-import cooperation.liveroom.LiveRoomPluginInstaller;
 
-class armv
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class armv
 {
-  armv(armu paramarmu, String paramString) {}
-  
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public static void a(Context paramContext, int paramInt1, int paramInt2, army paramarmy)
   {
-    PluginBaseInfo localPluginBaseInfo = paramPluginManagerClient.queryPlugin("LiveRoomPlugin.apk");
-    if (QLog.isColorLevel()) {
-      QLog.d("LiveRoomBusinessPlugin", 2, "get plugin info by ipc");
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseActivity.sTopActivity;
     }
-    if ((localPluginBaseInfo != null) && (localPluginBaseInfo.mState == 4))
+    if (localObject == null)
     {
-      LiveRoomHelper.setPluginInstalledInTool();
-      LiveRoomHelper.setPluginVersionInTool("" + localPluginBaseInfo.mCurVersion);
-      this.jdField_a_of_type_Armu.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0\"version\":\"" + localPluginBaseInfo.mCurVersion + "\"}" });
       if (QLog.isColorLevel()) {
-        QLog.d("LiveRoomBusinessPlugin", 2, "plugin is installed: version=" + localPluginBaseInfo.mCurVersion);
+        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
       }
+      return;
     }
+    a((Context)localObject, ((Context)localObject).getString(paramInt1), ((Context)localObject).getString(paramInt2), paramarmy);
+  }
+  
+  public static void a(Context paramContext, String paramString, int paramInt, army paramarmy)
+  {
+    Object localObject = paramContext;
+    if (paramContext == null) {
+      localObject = BaseActivity.sTopActivity;
+    }
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FMDialogUtil<FileAssistant>", 2, "show dialog fail, context is null!");
+      }
+      return;
+    }
+    a((Context)localObject, paramString, ((Context)localObject).getString(paramInt), paramarmy);
+  }
+  
+  public static void a(Context paramContext, String paramString, CharSequence paramCharSequence, army paramarmy)
+  {
+    armw localarmw = new armw(paramarmy);
+    paramarmy = new armx(paramarmy);
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() != localLooper.getThread()) {}
     do
     {
-      return;
-      this.jdField_a_of_type_Armu.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1}" });
-      LiveRoomPluginInstaller.getInstance().installFromTool(paramPluginManagerClient, "checkSDKInstalled");
-    } while (!QLog.isColorLevel());
-    QLog.d("LiveRoomBusinessPlugin", 2, "plugin is not installed");
+      new Handler(localLooper).post(new FMDialogUtil.3(paramContext, paramCharSequence, paramString, localarmw, paramarmy));
+      do
+      {
+        return;
+      } while (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()));
+      if ((paramCharSequence instanceof String))
+      {
+        bdcd.a(paramContext, 230, paramString, (String)paramCharSequence, 2131692475, 2131692479, localarmw, paramarmy).show();
+        return;
+      }
+    } while (!(paramCharSequence instanceof SpannableString));
+    bdcd.a(paramContext, 230, paramString, paramCharSequence, 2131692475, 2131692479, localarmw, paramarmy).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     armv
  * JD-Core Version:    0.7.0.1
  */

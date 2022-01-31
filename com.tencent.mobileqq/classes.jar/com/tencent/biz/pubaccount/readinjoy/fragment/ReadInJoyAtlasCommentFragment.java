@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
-import abtq;
+import adky;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -31,15 +31,15 @@ import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.SystemBarCompact;
 import java.math.BigInteger;
-import onh;
-import onz;
-import osj;
-import otq;
-import otr;
-import ots;
-import ott;
-import qcv;
-import vzl;
+import ors;
+import osk;
+import oxb;
+import oyu;
+import oyv;
+import oyw;
+import oyx;
+import qmr;
+import xod;
 
 public class ReadInJoyAtlasCommentFragment
   extends PublicBaseFragment
@@ -84,7 +84,7 @@ public class ReadInJoyAtlasCommentFragment
         if (!bool)
         {
           localArticleInfo.mSocialFeedInfo = new SocializeFeedsInfo();
-          localArticleInfo.mSocialFeedInfo.a = new qcv();
+          localArticleInfo.mSocialFeedInfo.a = new qmr();
           localArticleInfo.mSocialFeedInfo.a.jdField_a_of_type_Boolean = true;
         }
         if ((localCommonCommentData != null) && (!TextUtils.isEmpty(localCommonCommentData.getArticleId()))) {}
@@ -112,7 +112,7 @@ public class ReadInJoyAtlasCommentFragment
             paramString1.putExtra("bundle", paramBundle);
           }
           QLog.d(jdField_a_of_type_JavaLangString, 1, "readToStartComment");
-          abtq.a((Activity)paramContext, paramString1, PublicTransFragmentActivity.class, ReadInJoyAtlasCommentFragment.class, 6003);
+          adky.a((Activity)paramContext, paramString1, PublicTransFragmentActivity.class, ReadInJoyAtlasCommentFragment.class, 6003);
           return;
           j = 0;
         }
@@ -138,9 +138,9 @@ public class ReadInJoyAtlasCommentFragment
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment = new ReadInJoyCommentListFragment();
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataCommonCommentData);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a((Bundle)localObject, new ott(this), (ViewGroup)getView().findViewById(2131374783));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a((Bundle)localObject, new oyx(this), (ViewGroup)getView().findViewById(2131375246));
       localObject = getActivity().getSupportFragmentManager().beginTransaction();
-      ((FragmentTransaction)localObject).add(2131374783, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
+      ((FragmentTransaction)localObject).add(2131375246, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
       ((FragmentTransaction)localObject).commitAllowingStateLoss();
     }
   }
@@ -150,7 +150,7 @@ public class ReadInJoyAtlasCommentFragment
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment != null)
     {
       AnchorData localAnchorData = (AnchorData)getActivity().getIntent().getParcelableExtra("anchorData");
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.c(2131374783);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.c(2131375246);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment.a(paramArticleInfo, localAnchorData, this.jdField_a_of_type_Int);
     }
   }
@@ -194,16 +194,16 @@ public class ReadInJoyAtlasCommentFragment
       paramLayoutInflater = new FrameLayout(getActivity());
       paramViewGroup = new View(getActivity());
       paramLayoutInflater.addView(paramViewGroup, new LinearLayout.LayoutParams(-1, -1));
-      paramViewGroup.setOnClickListener(new otq(this));
+      paramViewGroup.setOnClickListener(new oyu(this));
       paramLayoutInflater.post(new ReadInJoyAtlasCommentFragment.2(this));
       paramViewGroup = new FrameLayout(getActivity());
-      paramViewGroup.setId(2131374783);
+      paramViewGroup.setId(2131375246);
       if (!this.jdField_a_of_type_Boolean) {
         break label328;
       }
-      paramBundle = onh.a(getActivity());
+      paramBundle = ors.a(getActivity());
       i = (int)(paramBundle[1] - paramBundle[0] / 16.0F * 9.0F);
-      paramBundle = new FrameLayout.LayoutParams(vzl.a(getActivity()), i);
+      paramBundle = new FrameLayout.LayoutParams(xod.a(getActivity()), i);
       paramBundle.gravity = 80;
       paramLayoutInflater.addView(paramViewGroup, paramBundle);
     }
@@ -217,9 +217,9 @@ public class ReadInJoyAtlasCommentFragment
       getActivity().mSystemBarComp.setStatusColor(0);
       break;
       label328:
-      i = vzl.c(getActivity());
-      int j = vzl.e(getActivity());
-      paramBundle = new FrameLayout.LayoutParams(vzl.a(getActivity()), i - j);
+      i = xod.c(getActivity());
+      int j = xod.e(getActivity());
+      paramBundle = new FrameLayout.LayoutParams(xod.a(getActivity()), i - j);
       paramBundle.gravity = 80;
       paramLayoutInflater.addView(paramViewGroup, paramBundle);
     }
@@ -228,9 +228,9 @@ public class ReadInJoyAtlasCommentFragment
   public void onResume()
   {
     super.onResume();
-    onz.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
+    osk.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
     getActivity().getWindow().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#80000000")));
-    osj.a().i();
+    oxb.a().h();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
@@ -240,18 +240,18 @@ public class ReadInJoyAtlasCommentFragment
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = ((TranslateAnimation)AnimationUtils.loadAnimation(getActivity(), 2130772001));
     if (this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation != null)
     {
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new otr(this));
+      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(new oyv(this));
       this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(300L);
       this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setInterpolator(new LinearInterpolator());
     }
     if (this.b != null) {
-      this.b.setAnimationListener(new ots(this));
+      this.b.setAnimationListener(new oyw(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment
  * JD-Core Version:    0.7.0.1
  */

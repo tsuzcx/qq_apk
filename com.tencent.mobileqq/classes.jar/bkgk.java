@@ -1,20 +1,89 @@
-import java.io.File;
-import java.io.FileFilter;
-
-class bkgk
-  implements FileFilter
+public class bkgk
+  implements Cloneable
 {
-  bkgk(bkgj parambkgj) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
   
-  public boolean accept(File paramFile)
+  /* Error */
+  public bkgk a()
   {
-    paramFile = paramFile.getName();
-    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp")) || (paramFile.endsWith(".apng")) || (paramFile.endsWith(".gif"));
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: invokespecial 23	java/lang/Object:clone	()Ljava/lang/Object;
+    //   6: checkcast 2	bkgk
+    //   9: astore_1
+    //   10: aload_0
+    //   11: monitorexit
+    //   12: aload_1
+    //   13: areturn
+    //   14: astore_1
+    //   15: aconst_null
+    //   16: astore_1
+    //   17: goto -7 -> 10
+    //   20: astore_1
+    //   21: aload_0
+    //   22: monitorexit
+    //   23: aload_1
+    //   24: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	25	0	this	bkgk
+    //   9	4	1	localbkgk	bkgk
+    //   14	1	1	localCloneNotSupportedException	java.lang.CloneNotSupportedException
+    //   16	1	1	localObject1	Object
+    //   20	4	1	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	10	14	java/lang/CloneNotSupportedException
+    //   2	10	20	finally
+  }
+  
+  public bkgk a(bkgi parambkgi, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 != paramInt2) {
+      switch (paramInt1)
+      {
+      case 4: 
+      default: 
+        switch (paramInt2)
+        {
+        }
+        break;
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        parambkgi = a();
+        return parambkgi;
+      }
+      finally {}
+      this.a -= 1;
+      break;
+      this.b -= 1;
+      break;
+      this.c -= 1;
+      break;
+      this.d -= 1;
+      break;
+      this.a += 1;
+      continue;
+      this.b += 1;
+      continue;
+      this.c += 1;
+      continue;
+      this.d += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkgk
  * JD-Core Version:    0.7.0.1
  */

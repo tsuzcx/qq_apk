@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-
-public class behh
-  implements DialogInterface.OnClickListener
+public abstract interface behh
+  extends bebx
 {
-  public behh(OpenSDKAppInterface paramOpenSDKAppInterface) {}
+  public abstract String g();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract String h();
+  
+  public abstract String i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     behh
  * JD-Core Version:    0.7.0.1
  */

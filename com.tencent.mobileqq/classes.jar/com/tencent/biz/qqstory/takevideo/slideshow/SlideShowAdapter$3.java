@@ -5,15 +5,15 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.widget.TextView;
-import baxn;
-import vtr;
-import vtu;
-import xbt;
+import bcwh;
+import xij;
+import xim;
+import yqm;
 
 public class SlideShowAdapter$3
   implements Runnable
 {
-  public SlideShowAdapter$3(vtr paramvtr, vtu paramvtu) {}
+  public SlideShowAdapter$3(xij paramxij, xim paramxim) {}
   
   public void run()
   {
@@ -22,19 +22,19 @@ public class SlideShowAdapter$3
     if ((i == 0) || (j == 0)) {
       return;
     }
-    if (vtr.a(this.this$0) == null)
+    if (xij.a(this.this$0) == null)
     {
-      int k = baxn.a(vtr.a(this.this$0), 1.0F);
-      new Paint().setTextSize(baxn.a(vtr.a(this.this$0), 11.0F));
-      int m = baxn.a(vtr.a(this.this$0), 2.0F);
-      vtr.a(this.this$0, xbt.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
+      int k = bcwh.a(xij.a(this.this$0), 1.0F);
+      new Paint().setTextSize(bcwh.a(xij.a(this.this$0), 11.0F));
+      int m = bcwh.a(xij.a(this.this$0), 2.0F);
+      xij.a(this.this$0, yqm.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
     }
-    this.a.a.setBackgroundDrawable(new BitmapDrawable(vtr.a(this.this$0).getResources(), vtr.a(this.this$0)));
+    this.a.a.setBackgroundDrawable(new BitmapDrawable(xij.a(this.this$0).getResources(), xij.a(this.this$0)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.SlideShowAdapter.3
  * JD-Core Version:    0.7.0.1
  */

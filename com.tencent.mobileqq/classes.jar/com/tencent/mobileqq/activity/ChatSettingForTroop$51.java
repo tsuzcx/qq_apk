@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import aauw;
-import bbdj;
-import bbgu;
+import aclu;
+import bdcd;
+import bdfq;
 
 public class ChatSettingForTroop$51
   implements Runnable
@@ -19,18 +19,18 @@ public class ChatSettingForTroop$51
     do
     {
       return;
-      this.this$0.a = bbdj.a(this.this$0, 230);
+      this.this$0.a = bdcd.a(this.this$0, 230);
       this.this$0.a.setMessage(this.a);
-      aauw localaauw = new aauw(this);
-      this.this$0.a.setPositiveButton(2131691035, localaauw);
-      this.this$0.a.setNegativeButton(2131690596, localaauw);
+      aclu localaclu = new aclu(this);
+      this.this$0.a.setPositiveButton(2131691088, localaclu);
+      this.this$0.a.setNegativeButton(2131690648, localaclu);
     } while (this.this$0.a.isShowing());
     this.this$0.a.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingForTroop.51
  * JD-Core Version:    0.7.0.1
  */

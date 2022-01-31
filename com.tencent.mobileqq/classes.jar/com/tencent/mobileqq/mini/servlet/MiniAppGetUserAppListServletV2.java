@@ -6,7 +6,7 @@ import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import bbma;
+import bdku;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.RecommendAppInfo;
 import com.tencent.mobileqq.mini.util.AdUtils;
@@ -28,8 +28,10 @@ public class MiniAppGetUserAppListServletV2
 {
   public static final String KEY_EXT_INFO = "key_ext_info";
   public static final String KEY_GET_USER_APP_LIST_V2 = "getUserAppListV2";
+  public static final String KEY_ITEM_IDS = "key_item_ids";
   public static final String KEY_MODULE_TYPES = "key_module_types";
   public static final String KEY_OLD_RECOMMEND_LIST = "key_old_recommend_list";
+  public static final String KEY_SUB_TYPES = "key_sub_types";
   public static final String KEY_USE_CACHE = "key_use_cache";
   public static final String TAG = "MiniAppGetUserAppListServletV2";
   
@@ -53,7 +55,7 @@ public class MiniAppGetUserAppListServletV2
           continue;
         }
         PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bbma.b(paramFromServiceMsg.getWupBuffer()));
+        localStQWebRsp.mergeFrom(bdku.b(paramFromServiceMsg.getWupBuffer()));
         localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
         localBundle.putLong("retCode", localStQWebRsp.retCode.get());
         localBundle.putString("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
@@ -78,29 +80,29 @@ public class MiniAppGetUserAppListServletV2
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     int i = paramIntent.getIntExtra("key_index", -1);
-    Object localObject2 = paramIntent.getParcelableArrayListExtra("key_old_recommend_list");
-    Object localObject3 = paramIntent.getByteArrayExtra("key_ext_info");
+    Object localObject3 = paramIntent.getParcelableArrayListExtra("key_old_recommend_list");
+    Object localObject2 = paramIntent.getByteArrayExtra("key_ext_info");
     Object localObject1 = null;
-    if (localObject3 != null) {
+    if (localObject2 != null) {
       localObject1 = new COMM.StCommonExt();
     }
     try
     {
-      ((COMM.StCommonExt)localObject1).mergeFrom((byte[])localObject3);
-      localObject3 = new ArrayList();
-      if (localObject2 != null)
+      ((COMM.StCommonExt)localObject1).mergeFrom((byte[])localObject2);
+      localObject2 = new ArrayList();
+      if (localObject3 != null)
       {
-        localObject2 = ((ArrayList)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
+        localObject3 = ((ArrayList)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          RecommendAppInfo localRecommendAppInfo = (RecommendAppInfo)((Iterator)localObject2).next();
-          if (localRecommendAppInfo != null)
+          localObject4 = (RecommendAppInfo)((Iterator)localObject3).next();
+          if (localObject4 != null)
           {
-            INTERFACE.StRecommendApp localStRecommendApp = new INTERFACE.StRecommendApp();
-            localStRecommendApp.appId.set(localRecommendAppInfo.getAppId());
-            localStRecommendApp.exposuredNum.set(localRecommendAppInfo.getExposuredNum());
-            localStRecommendApp.pullTime.set(localRecommendAppInfo.getPullTime());
-            ((ArrayList)localObject3).add(localStRecommendApp);
+            localObject5 = new INTERFACE.StRecommendApp();
+            ((INTERFACE.StRecommendApp)localObject5).appId.set(((RecommendAppInfo)localObject4).getAppId());
+            ((INTERFACE.StRecommendApp)localObject5).exposuredNum.set(((RecommendAppInfo)localObject4).getExposuredNum());
+            ((INTERFACE.StRecommendApp)localObject5).pullTime.set(((RecommendAppInfo)localObject4).getPullTime());
+            ((ArrayList)localObject2).add(localObject5);
           }
         }
       }
@@ -114,13 +116,17 @@ public class MiniAppGetUserAppListServletV2
         }
         localInvalidProtocolBufferMicroException.printStackTrace();
       }
-      localObject2 = new GetUserAppListRequestV2((COMM.StCommonExt)localObject1, localInvalidProtocolBufferMicroException, paramIntent.getIntegerArrayListExtra("key_module_types"), paramIntent.getIntExtra("key_use_cache", 0), AdUtils.getDeviceInfo(BaseApplicationImpl.getContext())).encode(paramIntent, i, getTraceId());
-      localObject1 = localObject2;
-      if (localObject2 == null) {
+      localObject3 = paramIntent.getIntegerArrayListExtra("key_module_types");
+      int j = paramIntent.getIntExtra("key_use_cache", 0);
+      Object localObject4 = paramIntent.getIntegerArrayListExtra("key_sub_types");
+      Object localObject5 = paramIntent.getStringArrayListExtra("key_item_ids");
+      byte[] arrayOfByte = new GetUserAppListRequestV2((COMM.StCommonExt)localObject1, localInvalidProtocolBufferMicroException, (ArrayList)localObject3, j, AdUtils.getDeviceInfo(BaseApplicationImpl.getContext()), (ArrayList)localObject4, (ArrayList)localObject5).encode(paramIntent, i, getTraceId());
+      localObject1 = arrayOfByte;
+      if (arrayOfByte == null) {
         localObject1 = new byte[4];
       }
       paramPacket.setSSOCommand("LightAppSvc.mini_app_userapp.GetDropdownAppList");
-      paramPacket.putSendData(bbma.a((byte[])localObject1));
+      paramPacket.putSendData(bdku.a((byte[])localObject1));
       paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
       super.onSend(paramIntent, paramPacket);
     }
@@ -128,7 +134,7 @@ public class MiniAppGetUserAppListServletV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppGetUserAppListServletV2
  * JD-Core Version:    0.7.0.1
  */

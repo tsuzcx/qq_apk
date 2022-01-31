@@ -1,89 +1,63 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMultiRcmdDisLike;
-import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetLocation;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLocation;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class vbf
-  implements bfph
+public class vbf
+  extends unk<vcz>
 {
-  vbf(vba paramvba, bfpc parambfpc, QQUserUIItem paramQQUserUIItem, StoryVideoItem paramStoryVideoItem, HotRecommendFeedItem paramHotRecommendFeedItem) {}
+  private static final String a = ume.a("StorySvc.get_location");
+  public final int c;
+  public final int d;
+  public final int e;
   
-  public void OnClick(View paramView, int paramInt)
+  public vbf(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_Bfpc.e();
-    switch (paramInt)
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+  }
+  
+  public String a()
+  {
+    return a;
+  }
+  
+  public unf a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetLocation localRspGetLocation = new qqstory_service.RspGetLocation();
+    try
     {
-    default: 
-      vei.a("home_page", "multi_press_clk", 0, 5, new String[0]);
-    case 0: 
-    case 1: 
-      Object localObject;
-      do
-      {
-        return;
-        localObject = vba.a(this.jdField_a_of_type_Vba);
-        if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) {}
-        for (paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;; paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid)
-        {
-          sxm.a((Context)localObject, 4, paramView);
-          vei.a("home_page", "multi_press_clk", 0, 1, new String[0]);
-          return;
-        }
-        if (!bbfj.g(vba.f(this.jdField_a_of_type_Vba)))
-        {
-          bcql.a(vba.a(this.jdField_a_of_type_Vba), 1, ajya.a(2131704460), 0).a();
-          return;
-        }
-      } while (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isSubscribe;
-      paramView = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isSubscribe())
-      {
-        paramInt = 0;
-        paramView.isSubscribe = paramInt;
-        vba.a(this.jdField_a_of_type_Vba, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
-        paramView = (sss)tsr.a().a(98);
-        localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
-        if (i != 1) {
-          break label255;
-        }
-        paramInt = 1;
-        label220:
-        paramView.a(1, (String)localObject, paramInt, 1);
-        if (i != 1) {
-          break label260;
-        }
-      }
-      label260:
-      for (paramInt = 3;; paramInt = 2)
-      {
-        vei.a("home_page", "multi_press_clk", 0, paramInt, new String[0]);
-        return;
-        paramInt = 1;
-        break;
-        label255:
-        paramInt = 0;
-        break label220;
-      }
+      localRspGetLocation.mergeFrom(paramArrayOfByte);
+      return new vcz(localRspGetLocation);
     }
-    if (!bbfj.g(vba.g(this.jdField_a_of_type_Vba)))
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      bcql.a(vba.a(this.jdField_a_of_type_Vba), 1, ajya.a(2131704463), 0).a();
-      return;
+      paramArrayOfByte.printStackTrace();
     }
-    paramView = new qqstory_service.ReqMultiRcmdDisLike();
-    paramView.vid.set(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
-    mxf.a(tsr.a(), new vbg(this), paramView.toByteArray(), sxm.a("StorySvc.multi_rcmd_dis_like"));
-    vei.a("home_page", "multi_press_clk", 0, 4, new String[0]);
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetLocation localReqGetLocation = new qqstory_service.ReqGetLocation();
+    localReqGetLocation.coordinate.set(this.c);
+    localReqGetLocation.gps.lng.set(this.d);
+    localReqGetLocation.gps.lat.set(this.e);
+    localReqGetLocation.gps.setHasFlag(true);
+    return localReqGetLocation.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetLocationRequest{mCoordinate=" + this.c + ", mLng=" + this.d + ", mLat=" + this.e + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vbf
  * JD-Core Version:    0.7.0.1
  */

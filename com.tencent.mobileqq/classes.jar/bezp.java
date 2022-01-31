@@ -1,76 +1,38 @@
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StMiniCheckOfferIdReq;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StMiniCheckOfferIdRsp;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.open.agent.CreateVirtualAccountFragment;
+import com.tencent.open.agent.CreateVirtualAccountFragment.6.1;
+import com.tencent.open.agent.CreateVirtualAccountFragment.6.2;
+import com.tencent.open.model.CreateVirtualResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class bezp
-  extends bfau
+  extends bfnj
 {
-  private MiniAppMidasPay.StMiniCheckOfferIdReq a = new MiniAppMidasPay.StMiniCheckOfferIdReq();
+  public bezp(CreateVirtualAccountFragment paramCreateVirtualAccountFragment) {}
   
-  public bezp(COMM.StCommonExt paramStCommonExt, String paramString1, String paramString2)
+  protected void a(boolean paramBoolean, CreateVirtualResult paramCreateVirtualResult, int paramInt)
   {
-    this.a.appId.set(paramString1);
-    this.a.offerId.set(paramString2);
-    if (paramStCommonExt != null) {
-      this.a.extInfo.set(paramStCommonExt);
-    }
-  }
-  
-  protected String a()
-  {
-    return "mini_app_pay";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-    MiniAppMidasPay.StMiniCheckOfferIdRsp localStMiniCheckOfferIdRsp = new MiniAppMidasPay.StMiniCheckOfferIdRsp();
-    try
+    if (this.a.getActivity() == null)
     {
-      localStQWebRsp.mergeFrom(paramArrayOfByte);
-      localStMiniCheckOfferIdRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
-      if (localStMiniCheckOfferIdRsp != null)
-      {
-        paramArrayOfByte = new JSONObject();
-        paramArrayOfByte.put("result", localStMiniCheckOfferIdRsp.result.get());
-        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
-        paramArrayOfByte.put("ext", localStMiniCheckOfferIdRsp.extInfo);
-        paramArrayOfByte.put("firstRefer", localStMiniCheckOfferIdRsp.firstRefer);
-        paramArrayOfByte.put("firstVia", localStMiniCheckOfferIdRsp.firstVia);
-        return paramArrayOfByte;
-      }
-      betc.a("CheckOfferIdRequest", "onResponse fail.rsp = null");
-      return null;
+      QLog.e("CreateVirtualAccountFragment", 1, "onCreate activity is null");
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    this.a.getActivity().runOnUiThread(new CreateVirtualAccountFragment.6.2(this, paramBoolean, paramCreateVirtualResult, paramInt));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  {
+    if (this.a.getActivity() == null)
     {
-      betc.a("CheckOfferIdRequest", "onResponse fail." + paramArrayOfByte);
+      QLog.e("CreateVirtualAccountFragment", 1, "onUploadAvatar activity is null");
+      return;
     }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "MiniCheckOfferId";
+    this.a.getActivity().runOnUiThread(new CreateVirtualAccountFragment.6.1(this, paramBoolean, paramString1, paramString2, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezp
  * JD-Core Version:    0.7.0.1
  */

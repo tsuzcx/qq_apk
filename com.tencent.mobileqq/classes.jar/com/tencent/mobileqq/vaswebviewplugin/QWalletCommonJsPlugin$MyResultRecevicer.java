@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import bgxk;
+import biyh;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,7 +31,7 @@ public class QWalletCommonJsPlugin$MyResultRecevicer
     }
     String str2 = paramBundle.getString("detail");
     if ((TextUtils.isEmpty(QWalletCommonJsPlugin.mParamForGarpHb)) && (!TextUtils.isEmpty(QWalletCommonJsPlugin.mListid))) {
-      QWalletCommonJsPlugin.mParamForGarpHb = bgxk.a().b(QWalletCommonJsPlugin.mListid);
+      QWalletCommonJsPlugin.mParamForGarpHb = biyh.a().b(QWalletCommonJsPlugin.mListid);
     }
     str1 = "";
     paramBundle = str1;

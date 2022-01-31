@@ -51,6 +51,7 @@ public class FabbyMvPart
   public int transitionMaskType = 1;
   public List<Pair<Float, Double>> translateXMap = new ArrayList();
   public List<Pair<Float, Double>> translateYMap = new ArrayList();
+  public int triggerDelay;
   
   public double getAlpha(float paramFloat)
   {

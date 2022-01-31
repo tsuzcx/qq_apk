@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity;
 
-import abzg;
+import adqo;
 
 public class RegisterVerifyCodeActivity$5$1$1
   implements Runnable
 {
-  public RegisterVerifyCodeActivity$5$1$1(abzg paramabzg) {}
+  public RegisterVerifyCodeActivity$5$1$1(adqo paramadqo) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class RegisterVerifyCodeActivity$5$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterVerifyCodeActivity.5.1.1
  * JD-Core Version:    0.7.0.1
  */

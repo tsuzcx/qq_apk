@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import dov.com.qq.im.ae.camera.ui.bottom.AEBottomListAdapter.1.1;
+import mqq.os.MqqHandler;
 
-class bkql
-  implements acts
+public class bkql
+  implements INetEventHandler
 {
-  bkql(bkqj parambkqj) {}
+  bkql(bkqk parambkqk) {}
   
-  public void a(AudioPlayer paramAudioPlayer)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    bkqj.b(this.a);
-    bkqj.a(this.a, bkqj.a(this.a));
+    ThreadManager.getUIHandler().post(new AEBottomListAdapter.1.1(this));
   }
-  
-  public void a(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void b(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
-  
-  public void d(AudioPlayer paramAudioPlayer, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkql
  * JD-Core Version:    0.7.0.1
  */

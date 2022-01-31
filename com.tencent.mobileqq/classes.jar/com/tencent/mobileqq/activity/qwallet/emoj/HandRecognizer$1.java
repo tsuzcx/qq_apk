@@ -1,29 +1,27 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import ahbr;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.openai.ttpicmodule.AEHandDetector;
 
 class HandRecognizer$1
-  implements ahbr
+  implements Runnable
 {
-  HandRecognizer$1(HandRecognizer paramHandRecognizer, String paramString) {}
+  HandRecognizer$1(HandRecognizer paramHandRecognizer) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(HandRecognizer.TAG, 2, "dowload url: " + this.val$url + " resCode " + paramInt + " filePath: " + paramPathResult.folderPath);
+    if (this.this$0.box.confidence < 0.5D)
+    {
+      int i = this.this$0.doHandDetection(this.this$0.box);
+      if (QLog.isColorLevel()) {
+        QLog.i(HandRecognizer.TAG, 2, "doHandDetection return " + i + "---" + this.this$0.box.confidence);
+      }
     }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.folderPath))) {
-      HandRecognizer.access$000(this.this$0).init(paramPathResult.folderPath, paramPathResult.folderPath);
-    }
+    this.this$0.isDetecting = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.HandRecognizer.1
  * JD-Core Version:    0.7.0.1
  */

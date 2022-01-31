@@ -1,32 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class agxx
-  implements DialogInterface.OnClickListener
+  implements MediaPlayer.OnErrorListener
 {
-  public agxx(SendHbActivity paramSendHbActivity) {}
+  public agxx(BlessActivity paramBlessActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("hb_id", SendHbActivity.a(this.a));
-    paramDialogInterface.putExtra("send_uin", SendHbActivity.b(this.a));
-    paramDialogInterface.putExtra("hb_type", "1");
-    paramDialogInterface.putExtra("forward_text", this.a.getString(2131697317));
-    if (SendHbActivity.a(this.a)) {
-      paramDialogInterface.putExtra("item", 1);
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onError what=" + paramInt1 + ", extra=" + paramInt2);
     }
-    paramDialogInterface.putExtra("forward_type", 17);
-    paramDialogInterface.putExtra("invoke_from", "qwallet");
-    aqbe.a(this.a, paramDialogInterface);
-    this.a.a(SendHbActivity.b(this.a), this.a.a(), "hongbao.wrapped.send", "", "");
+    BlessActivity.a(this.a, true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agxx
  * JD-Core Version:    0.7.0.1
  */

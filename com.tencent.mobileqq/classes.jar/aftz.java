@@ -1,47 +1,31 @@
-import android.graphics.Color;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
 
 public class aftz
-  extends RecyclerView.OnScrollListener
+  implements View.OnClickListener
 {
-  public aftz(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public aftz(QQStoryItemBuilder paramQQStoryItemBuilder) {}
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-    paramInt1 = paramRecyclerView.findFirstVisibleItemPosition();
-    String str = EmoticonGroupStoreFragment.a(this.a).a(paramInt1);
-    if ((str != null) && (paramInt2 != 0))
-    {
-      EmoticonGroupStoreFragment.a(this.a).setTextSize(16.0F);
-      EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF000000"));
-      EmoticonGroupStoreFragment.a(this.a).setText(str);
+    afuf localafuf = (afuf)aekt.a(paramView);
+    if (paramView == localafuf.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localafuf);
     }
-    if (paramInt2 < 0)
+    for (;;)
     {
-      paramRecyclerView = paramRecyclerView.findViewByPosition(paramInt1);
-      if (paramRecyclerView != null)
-      {
-        float f = paramRecyclerView.getY();
-        if ((paramInt1 == 0) && (0.0F == f))
-        {
-          EmoticonGroupStoreFragment.a(this.a).setTextSize(14.0F);
-          EmoticonGroupStoreFragment.a(this.a).setTextColor(Color.parseColor("#FF777777"));
-          EmoticonGroupStoreFragment.a(this.a).setText(EmoticonGroupStoreFragment.a(this.a));
-        }
+      azmj.b(this.a.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "5", "", "");
+      return;
+      if (paramView == localafuf.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+        this.a.a(localafuf);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aftz
  * JD-Core Version:    0.7.0.1
  */

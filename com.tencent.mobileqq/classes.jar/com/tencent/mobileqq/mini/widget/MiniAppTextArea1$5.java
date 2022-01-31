@@ -10,12 +10,12 @@ class MiniAppTextArea1$5
   public void run()
   {
     QLog.d("MiniAppTextArea1", 1, "hideCurrentInput set isFocused false");
-    MiniAppTextArea1.access$102(false);
+    MiniAppTextArea1.access$102(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppTextArea1.5
  * JD-Core Version:    0.7.0.1
  */

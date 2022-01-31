@@ -4,20 +4,20 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import auko;
+import awbv;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import qbv;
+import qlr;
 import tencent.im.oidb.articlesummary.articlesummary.RecommendAccountInfo;
 import tencent.im.oidb.oidb_0xc2f.RecommendAccountInfo;
 
 public class RecommendFollowInfo
-  extends auko
+  extends awbv
   implements Parcelable
 {
-  public static Parcelable.Creator<RecommendFollowInfo> CREATOR = new qbv();
+  public static Parcelable.Creator<RecommendFollowInfo> CREATOR = new qlr();
   public long algorithmId;
   public String className;
   public boolean hasReport;
@@ -252,7 +252,7 @@ public class RecommendFollowInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,35 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
-final class qoy
-  implements Animation.AnimationListener
+public class qoy
+  implements bhqd
 {
-  qoy(View paramView) {}
+  public qoy(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.getTag(-1) != null) && (((Integer)this.a.getTag(-1)).intValue() == 8))
+    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
+      return;
+    }
+    ReadInJoyDeliverUGCActivity.b(this.a, true);
+    ReadInJoyDeliverUGCActivity.c(this.a, ReadInJoyDeliverUGCActivity.c(this.a));
+    switch (paramInt)
     {
-      this.a.clearAnimation();
-      this.a.setVisibility(8);
-      this.a.setTag(-1, null);
+    }
+    for (;;)
+    {
+      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
+      return;
+      ReadInJoyDeliverUGCActivity.b(this.a);
+      nrt.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", ors.e(), false);
+      continue;
+      ReadInJoyDeliverUGCActivity.c(this.a);
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qoy
  * JD-Core Version:    0.7.0.1
  */

@@ -30,6 +30,7 @@ public class ProteusParser
   private static AtomicInteger defalutId = new AtomicInteger(1);
   private Set<String> aladdinKey = new HashSet();
   private Map<String, Map<String, String>> dynamicValueKeyMap = new ArrayMap();
+  private Map<String, Object> globalVariable = new ArrayMap();
   private String version;
   
   private boolean check$ValueItem(ValueBean paramValueBean, String paramString, Object paramObject)
@@ -145,6 +146,35 @@ public class ProteusParser
     }
   }
   
+  private List<String> getDollarName(Object paramObject)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (((paramObject instanceof String)) && (((String)paramObject).startsWith("$")))
+    {
+      localArrayList.add(((String)paramObject).substring("$".length()));
+      return localArrayList;
+    }
+    if ((paramObject instanceof JSONObject))
+    {
+      paramObject = (JSONObject)paramObject;
+      Iterator localIterator = paramObject.keys();
+      while (localIterator.hasNext()) {
+        localArrayList.addAll(getDollarName(paramObject.opt((String)localIterator.next())));
+      }
+    }
+    if ((paramObject instanceof JSONArray))
+    {
+      paramObject = (JSONArray)paramObject;
+      int i = 0;
+      while (i < paramObject.length())
+      {
+        localArrayList.addAll(getDollarName(paramObject.get(i)));
+        i += 1;
+      }
+    }
+    return localArrayList;
+  }
+  
   private Object getLayoutParamValue(Object paramObject)
   {
     if ((paramObject instanceof JSONObject))
@@ -204,31 +234,6 @@ public class ProteusParser
     return j;
   }
   
-  private String getStyleId(JSONObject paramJSONObject)
-  {
-    Iterator localIterator = paramJSONObject.keys();
-    while ((localIterator != null) && (localIterator.hasNext()))
-    {
-      String str = (String)localIterator.next();
-      try
-      {
-        Object localObject = paramJSONObject.get(str);
-        if ((localObject instanceof JSONObject))
-        {
-          boolean bool = ((JSONObject)localObject).has("view_type");
-          if (bool) {
-            return str;
-          }
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        LogUtil.QLog.d("readinjoy.proteus", 2, "getStyleId : " + paramJSONObject);
-      }
-    }
-    return null;
-  }
-  
   public static TemplateBean getTemplateBean(BaseTemplateFactory paramBaseTemplateFactory, JSONObject paramJSONObject)
   {
     if ((paramJSONObject == null) || (paramBaseTemplateFactory == null)) {
@@ -241,8 +246,7 @@ public class ProteusParser
       LogUtil.QLog.e("readinjoy.proteus", 2, "proteus error : there is not Template: " + str);
       return null;
     }
-    paramBaseTemplateFactory.setData(paramJSONObject);
-    paramBaseTemplateFactory.getViewBean().bindData(paramJSONObject, paramBaseTemplateFactory.getViewDataBinding());
+    paramBaseTemplateFactory.bindData(paramJSONObject);
     return paramBaseTemplateFactory;
   }
   
@@ -379,7 +383,7 @@ public class ProteusParser
     return null;
   }
   
-  private void parseAttr(JSONObject paramJSONObject, ViewBean paramViewBean)
+  private void parseAttr(JSONObject paramJSONObject, ViewBean paramViewBean, Map<String, Object> paramMap)
   {
     Iterator localIterator = paramJSONObject.keys();
     Object localObject1 = (Map)this.dynamicValueKeyMap.get(paramViewBean.viewId);
@@ -397,7 +401,7 @@ public class ProteusParser
     {
       localObject1 = (String)localIterator.next();
       localObject2 = paramJSONObject.get((String)localObject1);
-      dealMethod(paramViewBean.valueBean, (String)localObject1, localObject2, new ProteusParser.1(this, paramViewBean, (String)localObject1, localObject2));
+      dealMethod(paramViewBean.valueBean, (String)localObject1, localObject2, new ProteusParser.1(this, paramViewBean, (String)localObject1, localObject2, paramMap));
     }
   }
   
@@ -412,18 +416,18 @@ public class ProteusParser
     }
   }
   
-  private void parseDataAttrSetRemoteData(JSONObject paramJSONObject, ViewBean paramViewBean)
+  private void parseDataAttrSetRemoteData(JSONObject paramJSONObject, ViewBean paramViewBean, Map<String, Object> paramMap)
   {
     Iterator localIterator = paramJSONObject.keys();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       Object localObject = paramJSONObject.get(str);
-      dealMethod(paramViewBean.valueBean, str, localObject, new ProteusParser.3(this, paramViewBean, str, localObject));
+      dealMethod(paramViewBean.valueBean, str, localObject, new ProteusParser.3(this, paramViewBean, str, localObject, paramMap));
     }
   }
   
-  private ViewBean parseItemView(JSONObject paramJSONObject, ComplementFileStringLoader paramComplementFileStringLoader)
+  private ViewBean parseItemView(JSONObject paramJSONObject, ComplementFileStringLoader paramComplementFileStringLoader, Map<String, Object> paramMap)
   {
     ViewBean localViewBean = new ViewBean();
     Iterator localIterator = paramJSONObject.keys();
@@ -474,7 +478,7 @@ public class ProteusParser
           {
             JSONObject localJSONObject = maybeIncludeComponent(((JSONArray)localObject1).getJSONObject(i), paramComplementFileStringLoader);
             if (localJSONObject != null) {
-              ((List)localObject2).add(parseItemView(localJSONObject, paramComplementFileStringLoader));
+              ((List)localObject2).add(parseItemView(localJSONObject, paramComplementFileStringLoader, paramMap));
             }
             i += 1;
           }
@@ -483,11 +487,11 @@ public class ProteusParser
         }
         else if (((String)localObject1).equals("attributes"))
         {
-          parseAttr(paramJSONObject.getJSONObject((String)localObject1), localViewBean);
+          parseAttr(paramJSONObject.getJSONObject((String)localObject1), localViewBean, paramMap);
         }
         else if (((String)localObject1).equals("data_attributes"))
         {
-          parseDataAttr(paramJSONObject.getJSONObject((String)localObject1), localViewBean);
+          parseDataAttr(paramJSONObject.getJSONObject((String)localObject1), localViewBean, paramMap);
         }
         else
         {
@@ -513,9 +517,10 @@ public class ProteusParser
     }
     int i = paramBaseTemplateFactory.getTemplateId();
     String str = getStyleId(paramJSONObject);
+    ArrayMap localArrayMap = new ArrayMap();
     try
     {
-      paramBaseTemplateFactory.createTemplate(i, str, parseItemView(paramJSONObject.getJSONObject(str), paramComplementFileStringLoader));
+      paramBaseTemplateFactory.createTemplate(i, str, parseItemView(paramJSONObject.getJSONObject(str), paramComplementFileStringLoader, localArrayMap), localArrayMap);
       return;
     }
     catch (IllegalArgumentException paramBaseTemplateFactory)
@@ -617,7 +622,50 @@ public class ProteusParser
     return null;
   }
   
-  void parseDataAttr(JSONObject paramJSONObject, ViewBean paramViewBean)
+  protected String getStyleId(JSONObject paramJSONObject)
+  {
+    Iterator localIterator = paramJSONObject.keys();
+    while ((localIterator != null) && (localIterator.hasNext()))
+    {
+      String str = (String)localIterator.next();
+      try
+      {
+        Object localObject = paramJSONObject.get(str);
+        if ((localObject instanceof JSONObject))
+        {
+          boolean bool = ((JSONObject)localObject).has("view_type");
+          if (bool) {
+            return str;
+          }
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        LogUtil.QLog.d("readinjoy.proteus", 2, "getStyleId : " + paramJSONObject);
+      }
+    }
+    return null;
+  }
+  
+  protected Map<String, Object> getTemplateGlobalVarKey(Object paramObject)
+  {
+    localArrayMap = new ArrayMap();
+    try
+    {
+      paramObject = getDollarName(paramObject).iterator();
+      while (paramObject.hasNext())
+      {
+        String str = (String)paramObject.next();
+        if (this.globalVariable.containsKey(str)) {
+          localArrayMap.put(str, this.globalVariable.get(str));
+        }
+      }
+      return localArrayMap;
+    }
+    catch (JSONException paramObject) {}
+  }
+  
+  void parseDataAttr(JSONObject paramJSONObject, ViewBean paramViewBean, Map<String, Object> paramMap)
   {
     Iterator localIterator = paramJSONObject.keys();
     while (localIterator.hasNext())
@@ -633,12 +681,12 @@ public class ProteusParser
       else if ("setRemoteInfo:".equals(str)) {
         if ((localObject instanceof JSONObject))
         {
-          parseDataAttrSetRemoteData((JSONObject)localObject, paramViewBean);
+          parseDataAttrSetRemoteData((JSONObject)localObject, paramViewBean, paramMap);
         }
         else if (((localObject instanceof String)) && (((String)localObject).startsWith("$")))
         {
           str = (String)localObject;
-          dealMethod(paramViewBean.valueBean, "$setRemoteInfo:", localObject, new ProteusParser.2(this, paramViewBean, localObject));
+          dealMethod(paramViewBean.valueBean, "$setRemoteInfo:", localObject, new ProteusParser.2(this, paramViewBean, localObject, paramMap));
         }
       }
     }
@@ -660,6 +708,24 @@ public class ProteusParser
       JSONObject localJSONObject = paramString.getJSONObject(str);
       this.dynamicValueKeyMap.put(str, getKeyValue(localJSONObject));
     }
+  }
+  
+  public void parseGlobalVariable(String paramString)
+  {
+    paramString = new JSONObject(paramString);
+    Iterator localIterator = paramString.keys();
+    StringBuilder localStringBuilder = new StringBuilder("globaleVariable : ");
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Object localObject = paramString.get(str);
+      if (localObject != null)
+      {
+        localStringBuilder.append("key : ").append(str).append(", value : ").append(localObject).append(";");
+        this.globalVariable.put(str, localObject);
+      }
+    }
+    LogUtil.QLog.d("ProteusParser", 1, localStringBuilder.toString());
   }
   
   void parseLayoutParams(String paramString, Object paramObject, ValueBean paramValueBean)
@@ -710,7 +776,7 @@ public class ProteusParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParser
  * JD-Core Version:    0.7.0.1
  */

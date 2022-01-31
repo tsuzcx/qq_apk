@@ -1,36 +1,144 @@
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 public class aytk
+  implements ayru
 {
-  public int a;
-  public aytj a;
-  public aytl a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public int b;
-  public boolean b;
-  public int c = 3;
-  public int d = 25;
-  public int e = 450000;
+  protected View b;
+  public int c;
+  protected View c;
+  protected View d;
+  protected ImageView e;
+  protected ImageView f;
+  protected TextView h;
+  protected TextView i;
+  protected TextView j;
+  protected TextView k;
   
-  public aytk()
+  protected aytk() {}
+  
+  public aytk(View paramView)
   {
-    this.jdField_a_of_type_Int = 480000;
-    this.jdField_b_of_type_Int = 9;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
+    this.b = paramView;
+    a();
   }
   
-  public void a()
+  public aytk(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_Int = 30000;
-    this.jdField_b_of_type_Int = 1;
-    this.c = 1;
+    this.jdField_c_of_type_Int = paramInt;
+    LayoutInflater localLayoutInflater = LayoutInflater.from(paramViewGroup.getContext());
+    if (a(paramInt)) {}
+    for (this.b = localLayoutInflater.inflate(paramInt, null, false);; this.b = localLayoutInflater.inflate(paramInt, paramViewGroup, false))
+    {
+      a();
+      return;
+    }
+  }
+  
+  public View a()
+  {
+    return this.b;
+  }
+  
+  public View a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return this.b;
+    }
+    return this.b.findViewById(2131376228);
+  }
+  
+  public View a(String paramString)
+  {
+    return null;
+  }
+  
+  public ImageView a()
+  {
+    return this.f;
+  }
+  
+  public TextView a()
+  {
+    return this.h;
+  }
+  
+  protected void a()
+  {
+    View localView = this.b.findViewById(2131377884);
+    if (localView != null)
+    {
+      this.h = ((TextView)localView);
+      this.h.setEditableFactory(baiq.a);
+    }
+    localView = this.b.findViewById(2131377143);
+    if (localView != null) {
+      this.i = ((TextView)localView);
+    }
+    localView = this.b.findViewById(2131365127);
+    if (localView != null) {
+      this.j = ((TextView)localView);
+    }
+    localView = this.b.findViewById(2131366333);
+    if (localView != null) {
+      this.k = ((TextView)localView);
+    }
+    localView = this.b.findViewById(2131367910);
+    if (localView != null) {
+      this.e = ((ImageView)localView);
+    }
+    localView = this.b.findViewById(2131375742);
+    if (localView != null) {
+      this.f = ((ImageView)localView);
+    }
+    this.jdField_c_of_type_AndroidViewView = this.b.findViewById(2131365367);
+    this.d = this.b.findViewById(2131375755);
+    b();
+  }
+  
+  public boolean a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return true;
+    }
+    return false;
+  }
+  
+  public ImageView b()
+  {
+    return this.e;
+  }
+  
+  public TextView b()
+  {
+    return this.i;
+  }
+  
+  public void b()
+  {
+    if (a(this.jdField_c_of_type_Int)) {}
+  }
+  
+  public TextView c()
+  {
+    return this.j;
+  }
+  
+  public TextView d()
+  {
+    return this.k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aytk
  * JD-Core Version:    0.7.0.1
  */

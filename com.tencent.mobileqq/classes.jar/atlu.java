@@ -1,36 +1,15 @@
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.qphone.base.util.QLog;
+import android.util.Pair;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
 
-class atlu
-  implements atha
+public abstract interface atlu
 {
-  atlu(atls paramatls) {}
+  public abstract Pair<atlh, LocationRoom.Venue> a();
   
-  public void a(Comments.Comment paramComment)
-  {
-    if (atls.a(this.a) != null)
-    {
-      atls.a(this.a).a(paramComment);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.bindphone", 2, "onPublishSuccess");
-      }
-    }
-  }
-  
-  public void a(Comments.Comment paramComment, int paramInt, String paramString)
-  {
-    if (atls.a(this.a) != null)
-    {
-      atls.a(this.a).a(paramComment, paramInt, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby.bindphone", 2, "onDataNotAvailable, code=" + paramInt + ", tip=" + paramString + ", comment=" + paramComment);
-      }
-    }
-  }
+  public abstract void a(atlh paramatlh, LocationRoom.Venue paramVenue, int paramInt1, boolean paramBoolean, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atlu
  * JD-Core Version:    0.7.0.1
  */

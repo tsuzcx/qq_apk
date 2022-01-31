@@ -1,29 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
-import java.util.Collections;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
 
 public class ahdp
-  implements View.OnClickListener
+  implements TextWatcher
 {
-  public ahdp(ChooseItemView paramChooseItemView) {}
+  public ahdp(SearchContactsActivity paramSearchContactsActivity, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if ((ChooseItemView.a(this.a) != null) && (ChooseItemView.a(this.a).size() > 1))
+    paramEditable = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    SearchContactsActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity, paramEditable);
+    ImageButton localImageButton = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity.jdField_a_of_type_AndroidWidgetImageButton;
+    if (paramEditable.equals("")) {}
+    for (int i = 8;; i = 0)
     {
-      Collections.shuffle(ChooseItemView.a(this.a));
-      this.a.a(ChooseItemView.a(this.a), true);
-    }
-    if (ChooseItemView.a(this.a) != null) {
-      ChooseItemView.a(this.a).onClick(paramView);
+      localImageButton.setVisibility(i);
+      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity.h != 1)) {
+        ((SearchContactsFragment)this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchContactsActivity.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment).c(paramEditable);
+      }
+      return;
     }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahdp
  * JD-Core Version:    0.7.0.1
  */

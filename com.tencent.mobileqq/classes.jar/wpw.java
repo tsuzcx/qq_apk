@@ -1,24 +1,19 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
-import NS_COMM.COMM.StCommonExt;
 import java.util.List;
 
-public class wpw
+class wpw
+  implements bhqf
 {
-  public CertifiedAccountMeta.StFeed a;
-  public CertifiedAccountMeta.StUser a;
-  public CertifiedAccountRead.StGetMainPageRsp a;
-  public COMM.StCommonExt a;
-  public String a;
-  public List<CertifiedAccountMeta.StFeed> a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  wpw(wps paramwps, int paramInt) {}
+  
+  public void onDismiss()
+  {
+    wme localwme = (wme)this.jdField_a_of_type_Wps.a.a().get(this.jdField_a_of_type_Int);
+    wps.a(this.jdField_a_of_type_Wps, localwme, "clk_hide");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpw
  * JD-Core Version:    0.7.0.1
  */

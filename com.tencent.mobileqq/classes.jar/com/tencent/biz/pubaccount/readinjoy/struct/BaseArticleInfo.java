@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import actj;
-import akiz;
+import aekt;
+import amap;
 import android.graphics.Paint;
 import android.text.TextUtils;
-import auko;
-import aulz;
-import awsq;
-import bbdh;
+import awbv;
+import awdg;
+import aynt;
+import bdcb;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
@@ -24,51 +24,55 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.pts.core.itemview.PTSItemData;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.utils.ViolaLogUtils;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import onh;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ove;
-import oxl;
-import oxm;
+import ors;
+import pai;
 import pb.unite.search.RequestSearchWord.Rcmd;
-import poq;
-import qad;
-import qak;
-import qan;
-import qav;
-import qax;
-import qbc;
-import qbe;
-import qbf;
-import qbm;
-import qbn;
-import qbs;
-import qbx;
-import qcb;
-import qcg;
-import qci;
-import qcv;
-import qda;
-import qdq;
-import qdt;
-import qdv;
-import rvk;
+import pcq;
+import pcr;
+import puy;
+import pww;
+import qjy;
+import qkf;
+import qkh;
+import qkj;
+import qks;
+import qku;
+import qky;
+import qla;
+import qlb;
+import qli;
+import qlj;
+import qlo;
+import qlt;
+import qlx;
+import qmc;
+import qme;
+import qmr;
+import qmw;
+import qnm;
+import qnp;
+import qns;
+import slx;
 import tencent.im.oidb.articlesummary.articlesummary.AggregatedList;
 import tencent.im.oidb.articlesummary.articlesummary.ArkAppFeedsInfo;
 import tencent.im.oidb.articlesummary.articlesummary.ArticleSummary;
 import tencent.im.oidb.articlesummary.articlesummary.ChannelInfo;
 import tencent.im.oidb.articlesummary.articlesummary.CommentInfo;
 import tencent.im.oidb.articlesummary.articlesummary.FamilyCommentInfo;
-import tencent.im.oidb.articlesummary.articlesummary.FusionBiuInfo;
 import tencent.im.oidb.articlesummary.articlesummary.HotWordInfo;
 import tencent.im.oidb.articlesummary.articlesummary.KdLiveInfo;
 import tencent.im.oidb.articlesummary.articlesummary.MultiBiuSameContent;
@@ -87,19 +91,19 @@ import tencent.im.oidb.articlesummary.articlesummary.WeishiUGInfo;
 import tencent.im.oidb.gallery.galleryFeeds.GalleryFeedsInfo;
 
 public class BaseArticleInfo
-  extends auko
-  implements qbe
+  extends awbv
+  implements qla
 {
-  @aulz
+  @awdg
   public static final int ARTICLE_TYPE_NOMAL = 0;
-  @aulz
+  @awdg
   public static final int ARTICLE_TYPE_SHORT_CONTENT = 1;
-  @aulz
+  @awdg
   private static final String TAG = "Q.readinjoy.BaseArticleInfo";
   public String adReportCommonData;
   public int articleStyle;
-  @aulz
-  public rvk articleViewModel;
+  @awdg
+  public slx articleViewModel;
   public String avatar;
   public int busiType = 1;
   public long businessId;
@@ -108,24 +112,27 @@ public class BaseArticleInfo
   public String businessUrl = "";
   public byte[] bytesBusiData;
   public int click_area;
+  public String click_jump_target;
+  @awdg
+  public List<VideoColumnInfo> columnEntrances;
+  public byte[] columnEntrancesBytes;
+  public String commentBtnJumpUrl;
   public String comment_id;
   public String comment_jump_url;
   public String content;
-  @aulz
-  public qax familyCommentInfo;
+  @awdg
+  public qku familyCommentInfo;
   public byte[] familyCommentInfoByte;
-  @aulz
+  @awdg
   public int feedsFirstExposurePos = -1;
-  @aulz
-  public FusionBiuInfo fusionBiuInfo;
-  public byte[] fusionBiuInfoByte;
   public String galleryReprotExdData;
   public String gifCoverUrl;
   public boolean hasAwesome;
-  @aulz
+  public boolean hasWalletIcon;
+  @awdg
   public boolean hintFlag;
-  @aulz
-  public qbc hotWordInfo;
+  @awdg
+  public qky hotWordInfo;
   public byte[] hotWordInfoListBytes;
   public int icon_height;
   public String icon_url;
@@ -135,33 +142,35 @@ public class BaseArticleInfo
   public boolean isAccountShown;
   public int isCardJumpUrlAvailable;
   public int isCloseDislike;
+  public boolean isColumnAnimationPlay;
   public boolean isExtraBiuExpanded;
-  @aulz
+  @awdg
   public boolean isNeeaRealExposureFilter;
-  @aulz
+  @awdg
   public boolean isNeedShowBtnWhenFollowed;
-  @aulz
+  @awdg
   public boolean isPublicAccountFollowed;
-  @aulz
+  public boolean isShowColumnAnimation;
+  @awdg
   public boolean isShowFreeNetFlow;
-  @aulz
+  @awdg
   public boolean isShowGif;
-  @aulz
+  @awdg
   public boolean isShowRecommendList;
   public int isSuperTop;
   public boolean isSuperTopic;
-  @aulz
+  @awdg
   public boolean isTwoItem;
   public boolean isUseGif;
   public String jump_url;
-  @aulz
+  @awdg
   public boolean like;
   public int mAbandonRepeatFlag;
   public int mAccountLess;
   public long mAlgorithmGroup = -1L;
   public long mAlgorithmID = -1L;
-  @aulz
-  public qak mArkAppFeedsInfo;
+  @awdg
+  public qkf mArkAppFeedsInfo;
   public byte[] mArkAppFeedsInfoBytes;
   public String mArticleContentUrl = "";
   public String mArticleFriendLikeText;
@@ -169,7 +178,7 @@ public class BaseArticleInfo
   public String mArticleSubscriptColor;
   public String mArticleSubscriptText;
   public int mArticleType;
-  @aulz
+  @awdg
   private URL mCacheVideoURL;
   public String mCardJumpUrl;
   public long mChannelID = -1L;
@@ -181,184 +190,191 @@ public class BaseArticleInfo
   public long mCommentCount = -1L;
   public int mCommentIconType;
   public byte[] mCommentInfoBytes;
-  @aulz
+  @awdg
   public List<articlesummary.CommentInfo> mCommentsObj;
-  @aulz
+  @awdg
   public int mCurrentX;
   public String mDianDianLabelIconUrl;
   public String mDianDianLabelText;
   public String mDiskLikeInfoString;
-  @aulz
+  @awdg
   public ArrayList<DislikeInfo> mDislikeInfos;
   public byte[] mExtraBiuBriefBytes;
-  @aulz
-  public qav mExtraBiuBriefInfo;
+  @awdg
+  public qks mExtraBiuBriefInfo;
   public String mFeedCookie;
   public long mFeedId;
-  @aulz
+  @awdg
   public long mFeedIndexInGroup;
   public int mFeedType;
   public String mFirstPagePicUrl = "";
   public String mGWCommonData;
-  @aulz
+  @awdg
   public galleryFeeds.GalleryFeedsInfo mGalleryFeedsInfo;
   public int mGalleryPicNumber;
-  @aulz
+  @awdg
   public long mGroupCount;
-  @aulz
+  @awdg
   public long mGroupId = -1L;
-  @aulz
+  @awdg
   public List<BaseArticleInfo> mGroupSubArticleList;
-  @aulz
+  @awdg
   public URL mHeaderIconUrl;
   public int mIsDispTimestamp;
   public int mIsGallery;
-  @aulz
+  @awdg
   public boolean mIsGalleryChannel;
-  @aulz
+  @awdg
   public boolean mIsInPolymeric;
   public boolean mIsPolymericGallery;
   public int mIsShowSearchord;
   public String mJsonPictureList;
   public String mJsonVideoList;
-  @aulz
+  @awdg
   public int mJumpType;
-  @aulz
-  public qbf mKdLiveInfo;
+  @awdg
+  public qlb mKdLiveInfo;
   public byte[] mKdLiveInfoBytes;
-  @aulz
+  @awdg
   public List<articlesummary.ChannelInfo> mLabelListObj;
   public byte[] mLableListInfoBytes;
   public long mMergeVideoId;
-  @aulz
-  private qbe mModel;
+  @awdg
+  private qla mModel;
   public byte[] mMultiBiuSameListBytes;
-  @aulz
+  @awdg
   public List<articlesummary.MultiBiuSameContent> mMultiBiuSameListObj;
   public byte[] mNewPackInfoBytes;
-  @aulz
-  public qbn mNewPolymericInfo;
+  @awdg
+  public qlj mNewPolymericInfo;
   public String mOriginalUrl = "";
   public boolean mPUinIsActive;
   public byte[] mPackInfoBytes;
-  @aulz
+  @awdg
   public articlesummary.PackInfo mPackInfoObj;
-  @aulz
+  @awdg
   public articlesummary.PartnerAccountInfo mPartnerAccountInfo;
   public byte[] mPartnerAccountInfoBytes;
-  @aulz
+  @awdg
   public URL[] mPictures;
-  @aulz
-  public qbs mPolymericInfo;
-  @aulz
+  @awdg
+  public qlo mPolymericInfo;
+  @awdg
   public URL mPolymericSmallVideoCoverUrl;
-  @aulz
-  public TemplateBean mProteusTemplateBean;
+  @awdg
+  public volatile TemplateBean mProteusTemplateBean;
   public long mRecommendFollowId;
   public byte[] mRecommendFollowInfoBytes;
-  @aulz
-  public qbx mRecommendFollowInfos;
+  @awdg
+  public qlt mRecommendFollowInfos;
   public long mRecommendSeq = -1L;
   public long mRecommendTime = -1L;
   public String mRecommentdReason = "";
-  @aulz
+  @awdg
   public String mRefreshTime = "0";
   public String mReportCommonData;
-  @aulz
+  @awdg
   public int mResolvedFeedType;
   public String mSearchWordSessionId;
   public String mSearchWordTitle;
   public ArrayList<RequestSearchWord.Rcmd> mSearchWords = new ArrayList();
   public byte[] mServerContext;
   public boolean mShowBigPicture;
-  @aulz
+  @awdg
   public VideoColumnInfo mSimpleVideoColumnInfo;
   public byte[] mSimpleVideoColumnInfoBytes;
-  @aulz
+  @awdg
   public URL mSinglePicture;
-  @aulz
+  @awdg
   public SocializeFeedsInfo mSocialFeedInfo;
   public byte[] mSocialFeedInfoByte;
   public String mStrCircleId;
   public int mStrategyId;
   public byte[] mSubArticleListBytes;
-  @aulz
+  @awdg
   public List<ArticleInfo> mSubArtilceList;
-  @aulz
+  @awdg
   public List<articlesummary.ArticleSummary> mSubSummaryListObj;
   public String mSubscribeID = "";
   public byte[] mSubscribeInfoBytes;
-  @aulz
+  @awdg
   public articlesummary.SubscribeInfo mSubscribeInfoObj;
   public String mSubscribeName = "";
   public String mSummary = "";
-  @aulz
+  @awdg
   public String mThirdVideoURL;
-  @aulz
+  @awdg
   public long mThirdVideoURLExpireTime;
   public long mTime = -1L;
   public String mTitle = "";
   public String mTopicPicInfo = "";
   public double mTopicPicWHRatio;
-  @aulz
-  public qdq mTopicRecommendFeedsInfo;
+  @awdg
+  public qnm mTopicRecommendFeedsInfo;
   public byte[] mTopicRecommendFeedsInfoByte;
   public int mVideoAdsJumpType;
   public String mVideoAdsJumpUrl;
   public int mVideoAdsSource;
   public String mVideoArticleSubsColor;
   public String mVideoArticleSubsText;
-  @aulz
+  @awdg
   public VideoColumnInfo mVideoColumnInfo;
   public byte[] mVideoColumnInfoBytes;
   public int mVideoCommentCount;
-  @aulz
-  private qan mVideoCoverInterceptor;
-  @aulz
+  @awdg
+  private qkj mVideoCoverInterceptor;
+  @awdg
   public URL mVideoCoverUrl;
-  @aulz
+  @awdg
   public articlesummary.VideoDownloadBarInfo mVideoDownloadBarInfo;
   public byte[] mVideoDownloadBarInfoBytes;
-  @aulz
+  @awdg
   public int mVideoDuration;
-  @aulz
+  @awdg
   public int mVideoJsonHeight;
-  @aulz
+  @awdg
   public int mVideoJsonWidth;
   public String mVideoLogoUrl;
   public int mVideoPlayCount;
   public int mVideoType;
-  @aulz
+  @awdg
   public String mVideoVid;
   public byte[] mWeishiUGInfo;
-  @aulz
+  @awdg
   public long mXGFileSize;
   public String msgBoxBriefContent;
   public String msgBoxBriefPreFix;
   public int msgBoxBriefPreFixType;
-  @aulz
+  @awdg
   public ArrayList<MultiBiuSameContent> multiBiuSameContentList;
-  @aulz
-  public qbm multiVideoColumnInfo;
+  @awdg
+  public qli multiVideoColumnInfo;
   public byte[] multiVideoColumnInfoBytes;
   public String nick_name;
+  @awdg
+  public qkh patchStatus = new qkh();
   public String proteusItemsData;
+  @awdg
+  public PTSItemData ptsItemData;
+  public byte[] ptsItemDataBytes;
+  public String ptsLiteAppName;
   public long publishUin;
   public String rawkey;
-  @aulz
-  public qcb scripCmsInfo;
+  @awdg
+  public qlx scripCmsInfo;
   public byte[] scripCmsInfoByte;
-  @aulz
+  public boolean showBreathAnimation;
+  @awdg
   public List<articlesummary.SRTUniversalID> srtUniversalID;
   public byte[] srtUniversalIDBytesList;
-  public oxl strategy;
-  public oxm strategyCallback;
+  public pcq strategy;
+  public pcr strategyCallback;
   public String thirdAction;
   public String thirdIcon;
   public String thirdName;
-  @aulz
+  @awdg
   public String thirdUin;
-  @aulz
+  @awdg
   public String thirdUinName;
   public long uin;
   public String vIconUrl;
@@ -367,15 +383,17 @@ public class BaseArticleInfo
   public int videoJumpChannelType = -1;
   public String videoReportInfo;
   public String viewRowkey;
-  @aulz
-  public ove waterFallPic;
-  @aulz
+  @awdg
+  public pai waterFallPic;
+  @awdg
   public articlesummary.WeishiUGInfo weishiUGInfo;
+  private String wormholeData;
+  private String wormholeId;
   
-  private qbe getLazyModel()
+  private qla getLazyModel()
   {
     if (this.mModel == null) {
-      this.mModel = qdv.a(this);
+      this.mModel = qns.a(this);
     }
     return this.mModel;
   }
@@ -388,20 +406,37 @@ public class BaseArticleInfo
     return null;
   }
   
+  private String getSocialCardJumpInfo()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("card_jump_url", this.mCardJumpUrl);
+    return localJSONObject.toString();
+  }
+  
+  private String getSocialInfo()
+  {
+    if (this.mSocialFeedInfo == null) {
+      return "";
+    }
+    JSONObject localJSONObject = new JSONObject();
+    localJSONObject.put("like_count", this.mSocialFeedInfo.b).put("myself_like_status", this.mSocialFeedInfo.c).put("comments_count", this.mSocialFeedInfo.d).put("biu_count", this.mSocialFeedInfo.f).put("follow_status", this.mSocialFeedInfo.h).put("follow_count", this.mSocialFeedInfo.i).put("card_jump_info", getSocialCardJumpInfo());
+    return localJSONObject.toString();
+  }
+  
   private void handlerFeedsTypeInOldVersionDatabase()
   {
-    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qde != null))
+    if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qna != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.BaseArticleInfo", 2, "rewrite feedstype for wenda article articleinfo = " + toString());
       }
-      if ((this.mFeedType != 1) || (this.mSocialFeedInfo.jdField_a_of_type_Qcg == null) || (this.mSocialFeedInfo.jdField_a_of_type_Qcg.b == null) || (this.mSocialFeedInfo.jdField_a_of_type_Qda == null)) {
+      if ((this.mFeedType != 1) || (this.mSocialFeedInfo.jdField_a_of_type_Qmc == null) || (this.mSocialFeedInfo.jdField_a_of_type_Qmc.b == null) || (this.mSocialFeedInfo.jdField_a_of_type_Qmw == null)) {
         break label529;
       }
-      if ((this.mSocialFeedInfo.jdField_a_of_type_Qda.b != 3) || (this.mSocialFeedInfo.jdField_a_of_type_Qcg.b.intValue() == 21)) {
+      if ((this.mSocialFeedInfo.jdField_a_of_type_Qmw.b != 3) || (this.mSocialFeedInfo.jdField_a_of_type_Qmc.b.intValue() == 21)) {
         break label463;
       }
-      this.mSocialFeedInfo.jdField_a_of_type_Qcg.b = Long.valueOf(21L);
+      this.mSocialFeedInfo.jdField_a_of_type_Qmc.b = Long.valueOf(21L);
       if (QLog.isColorLevel()) {
         QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for biu question card");
       }
@@ -426,7 +461,7 @@ public class BaseArticleInfo
               }
             }
           }
-          if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qcv != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qcv.c == 1) && ((this.mSocialFeedInfo.jdField_a_of_type_Int == 9) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 3) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 8)))
+          if ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qmr != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qmr.c == 1) && ((this.mSocialFeedInfo.jdField_a_of_type_Int == 9) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 3) || (this.mSocialFeedInfo.jdField_a_of_type_Int == 8)))
           {
             if (QLog.isColorLevel()) {
               QLog.d("Q.readinjoy.BaseArticleInfo", 2, "rewrite feedstype for gallery card articleinfo = " + toString());
@@ -434,34 +469,34 @@ public class BaseArticleInfo
             if (this.mFeedType != 1) {
               break;
             }
-            if (this.mSocialFeedInfo.jdField_a_of_type_Qcg == null) {
-              this.mSocialFeedInfo.jdField_a_of_type_Qcg = new qcg();
+            if (this.mSocialFeedInfo.jdField_a_of_type_Qmc == null) {
+              this.mSocialFeedInfo.jdField_a_of_type_Qmc = new qmc();
             }
-            if ((this.mSocialFeedInfo.jdField_a_of_type_Qcg.b == null) || (this.mSocialFeedInfo.jdField_a_of_type_Qcg.b.intValue() != 23))
+            if ((this.mSocialFeedInfo.jdField_a_of_type_Qmc.b == null) || (this.mSocialFeedInfo.jdField_a_of_type_Qmc.b.intValue() != 23))
             {
-              this.mSocialFeedInfo.jdField_a_of_type_Qcg.b = new Long(23L);
+              this.mSocialFeedInfo.jdField_a_of_type_Qmc.b = new Long(23L);
               if (QLog.isColorLevel()) {
                 QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for biu gallery card");
               }
             }
           }
           return;
-          if ((this.mSocialFeedInfo.jdField_a_of_type_Qda.b == 4) && (this.mSocialFeedInfo.jdField_a_of_type_Qcg.b.intValue() != 22))
+          if ((this.mSocialFeedInfo.jdField_a_of_type_Qmw.b == 4) && (this.mSocialFeedInfo.jdField_a_of_type_Qmc.b.intValue() != 22))
           {
-            this.mSocialFeedInfo.jdField_a_of_type_Qcg.b = Long.valueOf(22L);
+            this.mSocialFeedInfo.jdField_a_of_type_Qmc.b = Long.valueOf(22L);
             if (QLog.isColorLevel())
             {
               QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for biu answer card");
               continue;
-              if ((this.mFeedType != 1) && (this.mSocialFeedInfo.jdField_a_of_type_Qda != null)) {
-                if ((this.mSocialFeedInfo.jdField_a_of_type_Qda.b == 3) && (this.mFeedType != 21))
+              if ((this.mFeedType != 1) && (this.mSocialFeedInfo.jdField_a_of_type_Qmw != null)) {
+                if ((this.mSocialFeedInfo.jdField_a_of_type_Qmw.b == 3) && (this.mFeedType != 21))
                 {
                   this.mFeedType = 21;
                   if (QLog.isColorLevel()) {
                     QLog.d("Q.readinjoy.BaseArticleInfo", 2, "real rewrite feedstype for question card");
                   }
                 }
-                else if ((this.mSocialFeedInfo.jdField_a_of_type_Qda.b == 4) && (this.mFeedType != 22))
+                else if ((this.mSocialFeedInfo.jdField_a_of_type_Qmw.b == 4) && (this.mFeedType != 22))
                 {
                   this.mFeedType = 22;
                   if (QLog.isColorLevel()) {
@@ -541,9 +576,9 @@ public class BaseArticleInfo
   {
     if (this.mPolymericSmallVideoCoverUrl == null)
     {
-      qbe localqbe = getLazyModel();
-      if ((localqbe instanceof qdt)) {
-        this.mPolymericSmallVideoCoverUrl = ((qdt)localqbe).getVideoCoverWithSmartCut(paramInt1, paramInt2);
+      qla localqla = getLazyModel();
+      if ((localqla instanceof qnp)) {
+        this.mPolymericSmallVideoCoverUrl = ((qnp)localqla).getVideoCoverWithSmartCut(paramInt1, paramInt2);
       }
     }
     else
@@ -558,7 +593,7 @@ public class BaseArticleInfo
     if (this.mPolymericSmallVideoCoverUrl == null)
     {
       if (!TextUtils.isEmpty(paramString)) {
-        this.mPolymericSmallVideoCoverUrl = onh.a(onh.a(paramString, paramInt1, paramInt2));
+        this.mPolymericSmallVideoCoverUrl = ors.a(ors.a(paramString, paramInt1, paramInt2));
       }
     }
     else {
@@ -597,6 +632,37 @@ public class BaseArticleInfo
     return getLazyModel().getVideoWidth();
   }
   
+  public String getWormholeData()
+  {
+    if (this.wormholeData != null) {
+      return this.wormholeData;
+    }
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("feeds_type", this.mFeedType).put("feeds_id", this.mFeedId).put("rowkey", this.innerUniqueID).put("article_id", String.valueOf(this.mArticleID)).put("article_title", this.mTitle).put("video_json", this.mJsonVideoList).put("article_content_url", this.mArticleContentUrl).put("comment_count", this.mCommentCount).put("video_comment_count", this.mVideoCommentCount).put("firstpage_pic_url", this.mFirstPagePicUrl).put("video_logo_url", this.mVideoLogoUrl).put("socialize_info", getSocialInfo()).put("bind_json", this.proteusItemsData).put("video_play_count", this.mVideoPlayCount).put("ads_jump_url", this.mVideoAdsJumpUrl).put("ads_jump_type", this.mVideoAdsJumpType).put("ads_source", this.mVideoAdsSource).put("channel_id", this.mChannelID).put("algorithm_id", this.mAlgorithmID).put("strategy_id", this.mStrategyId).put("article_type", this.mArticleType).put("recommend_time", this.mRecommendTime).put("recommend_seq", this.mRecommendSeq).put("article_time", this.mTime).put("article_style", getWormholeId());
+      localJSONObject1.put("loadInstance", new JSONObject().put("id", getWormholeId()).put("param", localJSONObject2));
+      this.wormholeData = localJSONObject1.toString();
+      return this.wormholeData;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        ViolaLogUtils.e("Q.readinjoy.BaseArticleInfo", "createDataError: " + localJSONException.getMessage());
+      }
+    }
+  }
+  
+  public String getWormholeId()
+  {
+    if (this.wormholeId == null) {
+      this.wormholeId = (this.mChannelID + "_" + this.articleStyle + "_" + this.mArticleID);
+    }
+    return this.wormholeId;
+  }
+  
   public boolean hasFamilyCommentIcon()
   {
     return (this.familyCommentInfo != null) && (this.familyCommentInfo.a());
@@ -604,13 +670,13 @@ public class BaseArticleInfo
   
   public boolean hasOnlyTwoVideoFeeds()
   {
-    if ((!onh.a(this)) && (!onh.w(this))) {
+    if ((!ors.a(this)) && (!ors.w(this))) {
       return false;
     }
     if ((this.mSubArtilceList != null) && (this.mSubArtilceList.size() == 1))
     {
       ArticleInfo localArticleInfo = (ArticleInfo)this.mSubArtilceList.get(0);
-      if ((localArticleInfo != null) && ((onh.a(localArticleInfo)) || (onh.w(localArticleInfo)))) {
+      if ((localArticleInfo != null) && ((ors.a(localArticleInfo)) || (ors.w(localArticleInfo)))) {
         return true;
       }
     }
@@ -629,12 +695,12 @@ public class BaseArticleInfo
   
   public boolean isPGCShortContent()
   {
-    return ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qcv != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qcv.jdField_a_of_type_Boolean)) || (this.mArticleType == 1);
+    return ((this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qmr != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qmr.jdField_a_of_type_Boolean)) || (this.mArticleType == 1);
   }
   
   public boolean isSocialFeed()
   {
-    return (this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qci != null);
+    return (this.mSocialFeedInfo != null) && (this.mSocialFeedInfo.jdField_a_of_type_Qme != null);
   }
   
   public boolean isSubscriptFeed()
@@ -673,6 +739,11 @@ public class BaseArticleInfo
     return false;
   }
   
+  public boolean isWormhole()
+  {
+    return this.mFeedType == 55;
+  }
+  
   public void postRead()
   {
     Object localObject1;
@@ -691,9 +762,9 @@ public class BaseArticleInfo
           break label180;
         }
       }
-      catch (Exception localException9)
+      catch (Exception localException8)
       {
-        localException9.printStackTrace();
+        localException8.printStackTrace();
         this.mCommentsObj = ((PBRepeatMessageField)localObject1).get();
       }
     }
@@ -712,10 +783,10 @@ public class BaseArticleInfo
           break label250;
         }
       }
-      catch (Exception localException10)
+      catch (Exception localException9)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("Q.readinjoy.BaseArticleInfo", 2, "postRead_mMultiBiuSameListBytes" + QLog.getStackTraceString(localException10));
+          QLog.e("Q.readinjoy.BaseArticleInfo", 2, "postRead_mMultiBiuSameListBytes" + QLog.getStackTraceString(localException9));
         }
         this.mMultiBiuSameListObj = ((PBRepeatMessageField)localObject1).get();
         this.multiBiuSameContentList = MultiBiuSameContent.a(this.mMultiBiuSameListObj);
@@ -730,7 +801,7 @@ public class BaseArticleInfo
       this.mPackInfoObj.mergeFrom(this.mPackInfoBytes);
       this.mGroupId = this.mPackInfoObj.uint64_pack_id.get();
       if (this.mPackInfoObj != null) {
-        this.mPolymericInfo = qbs.a(this.mPackInfoObj);
+        this.mPolymericInfo = qlo.a(this.mPackInfoObj);
       }
       label250:
       if ((this.mSubscribeInfoBytes != null) && (this.mSubscribeInfoBytes.length > 0)) {
@@ -771,7 +842,7 @@ public class BaseArticleInfo
             try
             {
               ((articlesummary.VideoColumnInfo)localObject1).mergeFrom(this.multiVideoColumnInfoBytes);
-              this.multiVideoColumnInfo = qbm.a((articlesummary.VideoColumnInfo)localObject1);
+              this.multiVideoColumnInfo = qli.a((articlesummary.VideoColumnInfo)localObject1);
               if ((this.mKdLiveInfoBytes != null) && (this.mKdLiveInfoBytes.length > 0)) {
                 localObject1 = new articlesummary.KdLiveInfo();
               }
@@ -781,7 +852,7 @@ public class BaseArticleInfo
               try
               {
                 ((articlesummary.KdLiveInfo)localObject1).mergeFrom(this.mKdLiveInfoBytes);
-                this.mKdLiveInfo = qbf.a((articlesummary.KdLiveInfo)localObject1);
+                this.mKdLiveInfo = qlb.a((articlesummary.KdLiveInfo)localObject1);
                 if ((this.mSimpleVideoColumnInfoBytes != null) && (this.mSimpleVideoColumnInfoBytes.length > 0)) {
                   localObject1 = new articlesummary.VideoColumnInfo();
                 }
@@ -801,7 +872,7 @@ public class BaseArticleInfo
                   try
                   {
                     ((articlesummary.ScripCmsInfo)localObject1).mergeFrom(this.scripCmsInfoByte);
-                    this.scripCmsInfo = qcb.a((articlesummary.ScripCmsInfo)localObject1);
+                    this.scripCmsInfo = qlx.a((articlesummary.ScripCmsInfo)localObject1);
                     if ((this.familyCommentInfoByte != null) && (this.familyCommentInfoByte.length > 0)) {
                       localObject1 = new articlesummary.FamilyCommentInfo();
                     }
@@ -811,299 +882,310 @@ public class BaseArticleInfo
                     try
                     {
                       ((articlesummary.FamilyCommentInfo)localObject1).mergeFrom(this.familyCommentInfoByte);
-                      this.familyCommentInfo = qax.a((articlesummary.FamilyCommentInfo)localObject1);
-                      if ((this.fusionBiuInfoByte != null) && (this.fusionBiuInfoByte.length > 0)) {
-                        localObject1 = new articlesummary.FusionBiuInfo();
+                      this.familyCommentInfo = qku.a((articlesummary.FamilyCommentInfo)localObject1);
+                      if ((this.mLableListInfoBytes != null) && (this.mLableListInfoBytes.length > 0))
+                      {
+                        CodedInputStreamMicro localCodedInputStreamMicro3 = CodedInputStreamMicro.newInstance(this.mLableListInfoBytes);
+                        localObject1 = PBField.initRepeatMessage(articlesummary.ChannelInfo.class);
+                        try
+                        {
+                          while (!localCodedInputStreamMicro3.isAtEnd())
+                          {
+                            localCodedInputStreamMicro3.readTag();
+                            ((PBRepeatMessageField)localObject1).readFrom(localCodedInputStreamMicro3);
+                          }
+                          if (this.mTopicRecommendFeedsInfoByte == null) {
+                            break label677;
+                          }
+                        }
+                        catch (Exception localException10)
+                        {
+                          localException10.printStackTrace();
+                          this.mLabelListObj = ((PBRepeatMessageField)localObject1).get();
+                        }
+                      }
+                      if (this.mTopicRecommendFeedsInfoByte.length > 0) {
+                        localObject1 = new articlesummary.TopicRecommendFeedsInfo();
                       }
                     }
                     catch (Exception localInvalidProtocolBufferMicroException4)
                     {
                       try
                       {
-                        ((articlesummary.FusionBiuInfo)localObject1).mergeFrom(this.fusionBiuInfoByte);
-                        this.fusionBiuInfo = FusionBiuInfo.a((articlesummary.FusionBiuInfo)localObject1);
-                        if ((this.mLableListInfoBytes != null) && (this.mLableListInfoBytes.length > 0))
-                        {
-                          CodedInputStreamMicro localCodedInputStreamMicro3 = CodedInputStreamMicro.newInstance(this.mLableListInfoBytes);
-                          localObject1 = PBField.initRepeatMessage(articlesummary.ChannelInfo.class);
-                          try
-                          {
-                            while (!localCodedInputStreamMicro3.isAtEnd())
-                            {
-                              localCodedInputStreamMicro3.readTag();
-                              ((PBRepeatMessageField)localObject1).readFrom(localCodedInputStreamMicro3);
-                            }
-                            if (this.mTopicRecommendFeedsInfoByte == null) {
-                              break label717;
-                            }
-                          }
-                          catch (Exception localException11)
-                          {
-                            localException11.printStackTrace();
-                            this.mLabelListObj = ((PBRepeatMessageField)localObject1).get();
-                          }
-                        }
-                        if (this.mTopicRecommendFeedsInfoByte.length > 0) {
-                          localObject1 = new articlesummary.TopicRecommendFeedsInfo();
+                        ((articlesummary.TopicRecommendFeedsInfo)localObject1).mergeFrom(this.mTopicRecommendFeedsInfoByte);
+                        this.mTopicRecommendFeedsInfo = qnm.a((articlesummary.TopicRecommendFeedsInfo)localObject1);
+                        label677:
+                        if ((this.mArkAppFeedsInfoBytes != null) && (this.mArkAppFeedsInfoBytes.length > 0)) {
+                          localObject1 = new articlesummary.ArkAppFeedsInfo();
                         }
                       }
-                      catch (Exception localInvalidProtocolBufferMicroException4)
+                      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException4)
                       {
+                        label1209:
+                        label1752:
                         try
                         {
-                          ((articlesummary.TopicRecommendFeedsInfo)localObject1).mergeFrom(this.mTopicRecommendFeedsInfoByte);
-                          this.mTopicRecommendFeedsInfo = qdq.a((articlesummary.TopicRecommendFeedsInfo)localObject1);
-                          label717:
-                          if ((this.mArkAppFeedsInfoBytes != null) && (this.mArkAppFeedsInfoBytes.length > 0)) {
-                            localObject1 = new articlesummary.ArkAppFeedsInfo();
-                          }
-                        }
-                        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException4)
-                        {
-                          try
+                          for (;;)
                           {
-                            for (;;)
-                            {
-                              ((articlesummary.ArkAppFeedsInfo)localObject1).mergeFrom(this.mArkAppFeedsInfoBytes);
-                              this.mArkAppFeedsInfo = qak.a((articlesummary.ArkAppFeedsInfo)localObject1);
-                              if ((this.mSubArticleListBytes == null) || (this.mSubArticleListBytes.length <= 0)) {
-                                break label1258;
-                              }
-                              CodedInputStreamMicro localCodedInputStreamMicro4 = CodedInputStreamMicro.newInstance(this.mSubArticleListBytes);
-                              localObject1 = PBField.initRepeatMessage(articlesummary.ArticleSummary.class);
-                              try
-                              {
-                                while (!localCodedInputStreamMicro4.isAtEnd())
-                                {
-                                  localCodedInputStreamMicro4.readTag();
-                                  ((PBRepeatMessageField)localObject1).readFrom(localCodedInputStreamMicro4);
-                                }
-                                if (this.mSubSummaryListObj.size() <= 0) {
-                                  break label1258;
-                                }
-                              }
-                              catch (Exception localException12)
-                              {
-                                localException12.printStackTrace();
-                                this.mSubSummaryListObj = ((PBRepeatMessageField)localObject1).get();
-                                if (this.mSubSummaryListObj == null) {
-                                  break label1258;
-                                }
-                              }
-                              localObject1 = new ArrayList(this.mSubSummaryListObj.size());
-                              localObject5 = this.mSubSummaryListObj.iterator();
-                              int j;
-                              for (int i = 0; ((Iterator)localObject5).hasNext(); i = j)
-                              {
-                                ArticleInfo localArticleInfo = poq.a((articlesummary.ArticleSummary)((Iterator)localObject5).next(), (int)this.mChannelID, 0, null);
-                                ((ArrayList)localObject1).add(localArticleInfo);
-                                if ((!QLog.isColorLevel()) || (localArticleInfo == null)) {
-                                  break label1840;
-                                }
-                                StringBuilder localStringBuilder = new StringBuilder().append("postRead(): 解析 sub articleSummary【");
-                                j = i + 1;
-                                QLog.e("Q.readinjoy.BaseArticleInfo", 2, i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + onh.c(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " algorithmID : " + localArticleInfo.mAlgorithmID + " mAlgorithmGroup:" + localArticleInfo.mAlgorithmGroup + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName);
-                              }
-                              localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
-                              localInvalidProtocolBufferMicroException1.printStackTrace();
-                              this.mPackInfoObj = null;
-                              continue;
-                              localInvalidProtocolBufferMicroException2 = localInvalidProtocolBufferMicroException2;
-                              localInvalidProtocolBufferMicroException2.printStackTrace();
-                              this.mSubscribeInfoObj = null;
-                              continue;
-                              localInvalidProtocolBufferMicroException3 = localInvalidProtocolBufferMicroException3;
-                              QLog.e("Q.readinjoy.BaseArticleInfo", 1, "postRead: ", localInvalidProtocolBufferMicroException3);
-                              this.mSocialFeedInfo = null;
-                              continue;
-                              localException1 = localException1;
-                              QLog.e("Q.readinjoy.BaseArticleInfo", 1, "mergeFrom VideoColumnInfo error: ", localException1);
-                              this.mVideoColumnInfo = null;
-                              continue;
-                              localException2 = localException2;
-                              this.multiVideoColumnInfo = null;
-                              continue;
-                              localException3 = localException3;
-                              this.mKdLiveInfo = null;
-                              continue;
-                              localException4 = localException4;
-                              this.mSimpleVideoColumnInfo = null;
-                              continue;
-                              localException5 = localException5;
-                              this.scripCmsInfo = null;
-                              continue;
-                              localException6 = localException6;
-                              this.familyCommentInfo = null;
-                              continue;
-                              localException7 = localException7;
-                              this.fusionBiuInfo = null;
+                            ((articlesummary.ArkAppFeedsInfo)localObject1).mergeFrom(this.mArkAppFeedsInfoBytes);
+                            this.mArkAppFeedsInfo = qkf.a((articlesummary.ArkAppFeedsInfo)localObject1);
+                            if ((this.mSubArticleListBytes == null) || (this.mSubArticleListBytes.length <= 0)) {
+                              break label1209;
                             }
-                            localInvalidProtocolBufferMicroException4 = localInvalidProtocolBufferMicroException4;
-                            localInvalidProtocolBufferMicroException4.printStackTrace();
-                            this.mTopicRecommendFeedsInfo = null;
-                          }
-                          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException5)
-                          {
-                            label1690:
-                            label1840:
-                            for (;;)
+                            CodedInputStreamMicro localCodedInputStreamMicro4 = CodedInputStreamMicro.newInstance(this.mSubArticleListBytes);
+                            localObject1 = PBField.initRepeatMessage(articlesummary.ArticleSummary.class);
+                            try
                             {
-                              Object localObject5;
-                              localInvalidProtocolBufferMicroException5.printStackTrace();
-                              if (QLog.isColorLevel()) {
-                                QLog.d("Q.readinjoy.", 2, "arkAppFeedsInfo convertPBToInfo failed.");
+                              while (!localCodedInputStreamMicro4.isAtEnd())
+                              {
+                                localCodedInputStreamMicro4.readTag();
+                                ((PBRepeatMessageField)localObject1).readFrom(localCodedInputStreamMicro4);
                               }
-                              this.mArkAppFeedsInfo = null;
-                              continue;
-                              this.mSubArtilceList = localInvalidProtocolBufferMicroException5;
-                              label1258:
-                              Object localObject2;
-                              if ((this.mNewPackInfoBytes != null) && (this.mNewPackInfoBytes.length > 0)) {
-                                localObject2 = new articlesummary.NewPackInfo();
+                              if (this.mSubSummaryListObj.size() <= 0) {
+                                break label1209;
                               }
+                            }
+                            catch (Exception localException11)
+                            {
+                              localException11.printStackTrace();
+                              this.mSubSummaryListObj = ((PBRepeatMessageField)localObject1).get();
+                              if (this.mSubSummaryListObj == null) {
+                                break label1209;
+                              }
+                            }
+                            localObject1 = new ArrayList(this.mSubSummaryListObj.size());
+                            localObject5 = this.mSubSummaryListObj.iterator();
+                            int j;
+                            for (int i = 0; ((Iterator)localObject5).hasNext(); i = j)
+                            {
+                              ArticleInfo localArticleInfo = puy.a((articlesummary.ArticleSummary)((Iterator)localObject5).next(), (int)this.mChannelID, 0, null);
+                              ((ArrayList)localObject1).add(localArticleInfo);
+                              if ((!QLog.isColorLevel()) || (localArticleInfo == null)) {
+                                break label1898;
+                              }
+                              StringBuilder localStringBuilder = new StringBuilder().append("postRead(): 解析 sub articleSummary【");
+                              j = i + 1;
+                              QLog.e("Q.readinjoy.BaseArticleInfo", 2, i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + ors.c(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " algorithmID : " + localArticleInfo.mAlgorithmID + " mAlgorithmGroup:" + localArticleInfo.mAlgorithmGroup + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName);
+                            }
+                            localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
+                            localInvalidProtocolBufferMicroException1.printStackTrace();
+                            this.mPackInfoObj = null;
+                            continue;
+                            localInvalidProtocolBufferMicroException2 = localInvalidProtocolBufferMicroException2;
+                            localInvalidProtocolBufferMicroException2.printStackTrace();
+                            this.mSubscribeInfoObj = null;
+                            continue;
+                            localInvalidProtocolBufferMicroException3 = localInvalidProtocolBufferMicroException3;
+                            QLog.e("Q.readinjoy.BaseArticleInfo", 1, "postRead: ", localInvalidProtocolBufferMicroException3);
+                            this.mSocialFeedInfo = null;
+                            continue;
+                            localException1 = localException1;
+                            QLog.e("Q.readinjoy.BaseArticleInfo", 1, "mergeFrom VideoColumnInfo error: ", localException1);
+                            this.mVideoColumnInfo = null;
+                            continue;
+                            localException2 = localException2;
+                            this.multiVideoColumnInfo = null;
+                            continue;
+                            localException3 = localException3;
+                            this.mKdLiveInfo = null;
+                            continue;
+                            localException4 = localException4;
+                            this.mSimpleVideoColumnInfo = null;
+                            continue;
+                            localException5 = localException5;
+                            this.scripCmsInfo = null;
+                            continue;
+                            localException6 = localException6;
+                            this.familyCommentInfo = null;
+                          }
+                          localInvalidProtocolBufferMicroException4 = localInvalidProtocolBufferMicroException4;
+                          localInvalidProtocolBufferMicroException4.printStackTrace();
+                          this.mTopicRecommendFeedsInfo = null;
+                        }
+                        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException5)
+                        {
+                          label1641:
+                          label1898:
+                          for (;;)
+                          {
+                            Object localObject5;
+                            localInvalidProtocolBufferMicroException5.printStackTrace();
+                            if (QLog.isColorLevel()) {
+                              QLog.d("Q.readinjoy.", 2, "arkAppFeedsInfo convertPBToInfo failed.");
+                            }
+                            this.mArkAppFeedsInfo = null;
+                            continue;
+                            this.mSubArtilceList = localInvalidProtocolBufferMicroException5;
+                            Object localObject2;
+                            if ((this.mNewPackInfoBytes != null) && (this.mNewPackInfoBytes.length > 0)) {
+                              localObject2 = new articlesummary.NewPackInfo();
+                            }
+                            try
+                            {
+                              ((articlesummary.NewPackInfo)localObject2).mergeFrom(this.mNewPackInfoBytes);
+                              if (localObject2 != null) {
+                                this.mNewPolymericInfo = qlj.a((articlesummary.NewPackInfo)localObject2);
+                              }
+                              if ((this.mRecommendFollowInfoBytes != null) && (this.mRecommendFollowInfoBytes.length > 0)) {
+                                localObject2 = new articlesummary.RecommendFollowInfos();
+                              }
+                            }
+                            catch (InvalidProtocolBufferMicroException localException7)
+                            {
                               try
                               {
-                                ((articlesummary.NewPackInfo)localObject2).mergeFrom(this.mNewPackInfoBytes);
+                                ((articlesummary.RecommendFollowInfos)localObject2).mergeFrom(this.mRecommendFollowInfoBytes);
                                 if (localObject2 != null) {
-                                  this.mNewPolymericInfo = qbn.a((articlesummary.NewPackInfo)localObject2);
+                                  this.mRecommendFollowInfos = qlt.a((articlesummary.RecommendFollowInfos)localObject2);
                                 }
-                                if ((this.mRecommendFollowInfoBytes != null) && (this.mRecommendFollowInfoBytes.length > 0)) {
-                                  localObject2 = new articlesummary.RecommendFollowInfos();
+                                if ((this.hotWordInfoListBytes != null) && (this.hotWordInfoListBytes.length > 0)) {
+                                  localObject2 = new articlesummary.HotWordInfo();
                                 }
                               }
-                              catch (InvalidProtocolBufferMicroException localException8)
+                              catch (InvalidProtocolBufferMicroException localException7)
                               {
                                 try
                                 {
-                                  ((articlesummary.RecommendFollowInfos)localObject2).mergeFrom(this.mRecommendFollowInfoBytes);
+                                  ((articlesummary.HotWordInfo)localObject2).mergeFrom(this.hotWordInfoListBytes);
                                   if (localObject2 != null) {
-                                    this.mRecommendFollowInfos = qbx.a((articlesummary.RecommendFollowInfos)localObject2);
+                                    this.hotWordInfo = qky.a((articlesummary.HotWordInfo)localObject2);
                                   }
-                                  if ((this.hotWordInfoListBytes != null) && (this.hotWordInfoListBytes.length > 0)) {
-                                    localObject2 = new articlesummary.HotWordInfo();
+                                  if ((this.mExtraBiuBriefBytes != null) && (this.mExtraBiuBriefBytes.length > 0)) {
+                                    localObject2 = new articlesummary.AggregatedList();
                                   }
                                 }
-                                catch (InvalidProtocolBufferMicroException localException8)
+                                catch (InvalidProtocolBufferMicroException localException7)
                                 {
                                   try
                                   {
-                                    ((articlesummary.HotWordInfo)localObject2).mergeFrom(this.hotWordInfoListBytes);
+                                    ((articlesummary.AggregatedList)localObject2).mergeFrom(this.mExtraBiuBriefBytes);
                                     if (localObject2 != null) {
-                                      this.hotWordInfo = qbc.a((articlesummary.HotWordInfo)localObject2);
+                                      this.mExtraBiuBriefInfo = qks.a((articlesummary.AggregatedList)localObject2);
                                     }
-                                    if ((this.mExtraBiuBriefBytes != null) && (this.mExtraBiuBriefBytes.length > 0)) {
-                                      localObject2 = new articlesummary.AggregatedList();
+                                    handlerFeedsTypeInOldVersionDatabase();
+                                    if ((this.bytesBusiData != null) && (this.bytesBusiData.length > 0)) {
+                                      this.mGalleryFeedsInfo = new galleryFeeds.GalleryFeedsInfo();
                                     }
                                   }
-                                  catch (InvalidProtocolBufferMicroException localException8)
+                                  catch (InvalidProtocolBufferMicroException localException7)
                                   {
                                     try
                                     {
-                                      ((articlesummary.AggregatedList)localObject2).mergeFrom(this.mExtraBiuBriefBytes);
-                                      if (localObject2 != null) {
-                                        this.mExtraBiuBriefInfo = qav.a((articlesummary.AggregatedList)localObject2);
-                                      }
-                                      handlerFeedsTypeInOldVersionDatabase();
-                                      if ((this.bytesBusiData != null) && (this.bytesBusiData.length > 0)) {
-                                        this.mGalleryFeedsInfo = new galleryFeeds.GalleryFeedsInfo();
+                                      this.mGalleryFeedsInfo.mergeFrom(this.bytesBusiData);
+                                      if ((this.mVideoDownloadBarInfoBytes != null) && (this.mVideoDownloadBarInfoBytes.length > 0)) {
+                                        this.mVideoDownloadBarInfo = new articlesummary.VideoDownloadBarInfo();
                                       }
                                     }
-                                    catch (InvalidProtocolBufferMicroException localException8)
+                                    catch (InvalidProtocolBufferMicroException localException7)
                                     {
                                       try
                                       {
-                                        this.mGalleryFeedsInfo.mergeFrom(this.bytesBusiData);
-                                        if ((this.mVideoDownloadBarInfoBytes != null) && (this.mVideoDownloadBarInfoBytes.length > 0)) {
-                                          this.mVideoDownloadBarInfo = new articlesummary.VideoDownloadBarInfo();
+                                        this.mVideoDownloadBarInfo.mergeFrom(this.mVideoDownloadBarInfoBytes);
+                                        if ((this.mPartnerAccountInfoBytes != null) && (this.mPartnerAccountInfoBytes.length > 0)) {
+                                          this.mPartnerAccountInfo = new articlesummary.PartnerAccountInfo();
                                         }
                                       }
-                                      catch (InvalidProtocolBufferMicroException localException8)
+                                      catch (InvalidProtocolBufferMicroException localException7)
                                       {
                                         try
                                         {
-                                          this.mVideoDownloadBarInfo.mergeFrom(this.mVideoDownloadBarInfoBytes);
-                                          if ((this.mPartnerAccountInfoBytes != null) && (this.mPartnerAccountInfoBytes.length > 0)) {
-                                            this.mPartnerAccountInfo = new articlesummary.PartnerAccountInfo();
+                                          this.mPartnerAccountInfo.mergeFrom(this.mPartnerAccountInfoBytes);
+                                          if ((this.srtUniversalIDBytesList != null) && (this.srtUniversalIDBytesList.length > 0))
+                                          {
+                                            localObject5 = CodedInputStreamMicro.newInstance(this.srtUniversalIDBytesList);
+                                            localObject2 = PBField.initRepeatMessage(articlesummary.SRTUniversalID.class);
+                                            try
+                                            {
+                                              while (!((CodedInputStreamMicro)localObject5).isAtEnd())
+                                              {
+                                                ((CodedInputStreamMicro)localObject5).readTag();
+                                                ((PBRepeatMessageField)localObject2).readFrom((CodedInputStreamMicro)localObject5);
+                                              }
+                                              if (this.mWeishiUGInfo == null) {
+                                                break label1641;
+                                              }
+                                            }
+                                            catch (Exception localException12)
+                                            {
+                                              if (QLog.isColorLevel()) {
+                                                QLog.e("Q.readinjoy.BaseArticleInfo", 2, "postRead_mMultiBiuSameListBytes" + QLog.getStackTraceString(localException12));
+                                              }
+                                              this.srtUniversalID = ((PBRepeatMessageField)localObject2).get();
+                                            }
+                                          }
+                                          if (this.mWeishiUGInfo.length > 0) {
+                                            this.weishiUGInfo = new articlesummary.WeishiUGInfo();
                                           }
                                         }
-                                        catch (InvalidProtocolBufferMicroException localException8)
+                                        catch (Exception localException7)
                                         {
                                           try
                                           {
-                                            this.mPartnerAccountInfo.mergeFrom(this.mPartnerAccountInfoBytes);
-                                            if ((this.srtUniversalIDBytesList != null) && (this.srtUniversalIDBytesList.length > 0))
+                                            for (;;)
                                             {
-                                              localObject5 = CodedInputStreamMicro.newInstance(this.srtUniversalIDBytesList);
-                                              localObject2 = PBField.initRepeatMessage(articlesummary.SRTUniversalID.class);
-                                              try
+                                              this.weishiUGInfo.mergeFrom(this.mWeishiUGInfo);
+                                              qjy.a(this);
+                                              if ((this.columnEntrancesBytes != null) && (this.columnEntrancesBytes.length > 0))
                                               {
-                                                while (!((CodedInputStreamMicro)localObject5).isAtEnd())
+                                                CodedInputStreamMicro localCodedInputStreamMicro5 = CodedInputStreamMicro.newInstance(this.columnEntrancesBytes);
+                                                localObject2 = PBField.initRepeatMessage(articlesummary.VideoColumnInfo.class);
+                                                try
                                                 {
-                                                  ((CodedInputStreamMicro)localObject5).readTag();
-                                                  ((PBRepeatMessageField)localObject2).readFrom((CodedInputStreamMicro)localObject5);
-                                                }
-                                                if (this.mWeishiUGInfo == null) {
-                                                  break label1690;
-                                                }
-                                              }
-                                              catch (Exception localException13)
-                                              {
-                                                if (QLog.isColorLevel()) {
-                                                  QLog.e("Q.readinjoy.BaseArticleInfo", 2, "postRead_mMultiBiuSameListBytes" + QLog.getStackTraceString(localException13));
-                                                }
-                                                this.srtUniversalID = ((PBRepeatMessageField)localObject2).get();
-                                              }
-                                            }
-                                            if (this.mWeishiUGInfo.length > 0) {
-                                              this.weishiUGInfo = new articlesummary.WeishiUGInfo();
-                                            }
-                                          }
-                                          catch (Exception localException8)
-                                          {
-                                            try
-                                            {
-                                              for (;;)
-                                              {
-                                                this.weishiUGInfo.mergeFrom(this.mWeishiUGInfo);
-                                                qad.a(this);
-                                                return;
-                                                localInvalidProtocolBufferMicroException6 = localInvalidProtocolBufferMicroException6;
-                                                localInvalidProtocolBufferMicroException6.printStackTrace();
-                                                Object localObject3 = null;
-                                                continue;
-                                                localInvalidProtocolBufferMicroException11 = localInvalidProtocolBufferMicroException11;
-                                                if (QLog.isColorLevel())
-                                                {
-                                                  QLog.e("Q.readinjoy.BaseArticleInfo", 2, "postRead" + QLog.getStackTraceString(localInvalidProtocolBufferMicroException11));
-                                                  continue;
-                                                  localInvalidProtocolBufferMicroException12 = localInvalidProtocolBufferMicroException12;
-                                                  if (QLog.isColorLevel())
+                                                  while (!localCodedInputStreamMicro5.isAtEnd())
                                                   {
-                                                    QLog.e("Q.readinjoy.BaseArticleInfo", 2, "postRead" + QLog.getStackTraceString(localInvalidProtocolBufferMicroException12));
-                                                    continue;
-                                                    localInvalidProtocolBufferMicroException7 = localInvalidProtocolBufferMicroException7;
-                                                    localInvalidProtocolBufferMicroException7.printStackTrace();
-                                                    Object localObject4 = null;
-                                                    continue;
-                                                    localInvalidProtocolBufferMicroException8 = localInvalidProtocolBufferMicroException8;
-                                                    localInvalidProtocolBufferMicroException8.printStackTrace();
-                                                    continue;
-                                                    localInvalidProtocolBufferMicroException9 = localInvalidProtocolBufferMicroException9;
-                                                    localInvalidProtocolBufferMicroException9.printStackTrace();
-                                                    this.mVideoDownloadBarInfo = null;
+                                                    localCodedInputStreamMicro5.readTag();
+                                                    ((PBRepeatMessageField)localObject2).readFrom(localCodedInputStreamMicro5);
+                                                  }
+                                                  if (this.ptsItemDataBytes == null) {
+                                                    break label1752;
                                                   }
                                                 }
+                                                catch (Exception localException13)
+                                                {
+                                                  QLog.e("Q.readinjoy.BaseArticleInfo", 1, "", localException13);
+                                                  this.columnEntrances = VideoColumnInfo.a((PBRepeatMessageField)localObject2);
+                                                }
                                               }
-                                              localException8 = localException8;
-                                              this.mPartnerAccountInfo = null;
-                                            }
-                                            catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException10)
-                                            {
-                                              for (;;)
+                                              if (this.ptsItemDataBytes.length > 0) {
+                                                this.ptsItemData = ((PTSItemData)pww.a(this.ptsItemDataBytes, PTSItemData.CREATOR));
+                                              }
+                                              return;
+                                              localInvalidProtocolBufferMicroException6 = localInvalidProtocolBufferMicroException6;
+                                              localInvalidProtocolBufferMicroException6.printStackTrace();
+                                              Object localObject3 = null;
+                                              continue;
+                                              localInvalidProtocolBufferMicroException11 = localInvalidProtocolBufferMicroException11;
+                                              if (QLog.isColorLevel())
                                               {
-                                                localInvalidProtocolBufferMicroException10.printStackTrace();
-                                                this.weishiUGInfo = null;
+                                                QLog.e("Q.readinjoy.BaseArticleInfo", 2, "postRead" + QLog.getStackTraceString(localInvalidProtocolBufferMicroException11));
+                                                continue;
+                                                localInvalidProtocolBufferMicroException12 = localInvalidProtocolBufferMicroException12;
+                                                if (QLog.isColorLevel())
+                                                {
+                                                  QLog.e("Q.readinjoy.BaseArticleInfo", 2, "postRead" + QLog.getStackTraceString(localInvalidProtocolBufferMicroException12));
+                                                  continue;
+                                                  localInvalidProtocolBufferMicroException7 = localInvalidProtocolBufferMicroException7;
+                                                  localInvalidProtocolBufferMicroException7.printStackTrace();
+                                                  Object localObject4 = null;
+                                                  continue;
+                                                  localInvalidProtocolBufferMicroException8 = localInvalidProtocolBufferMicroException8;
+                                                  localInvalidProtocolBufferMicroException8.printStackTrace();
+                                                  continue;
+                                                  localInvalidProtocolBufferMicroException9 = localInvalidProtocolBufferMicroException9;
+                                                  localInvalidProtocolBufferMicroException9.printStackTrace();
+                                                  this.mVideoDownloadBarInfo = null;
+                                                }
                                               }
+                                            }
+                                            localException7 = localException7;
+                                            this.mPartnerAccountInfo = null;
+                                          }
+                                          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException10)
+                                          {
+                                            for (;;)
+                                            {
+                                              localInvalidProtocolBufferMicroException10.printStackTrace();
+                                              this.weishiUGInfo = null;
                                             }
                                           }
                                         }
@@ -1129,35 +1211,36 @@ public class BaseArticleInfo
   
   public void prewrite()
   {
-    Object localObject;
-    ByteArrayOutputStream localByteArrayOutputStream;
+    Object localObject1;
+    Object localObject2;
     if ((this.mCommentsObj != null) && (this.mCommentsObj.size() > 0))
     {
-      localObject = PBField.initRepeatMessage(articlesummary.CommentInfo.class);
-      ((PBRepeatMessageField)localObject).addAll(this.mCommentsObj);
-      localByteArrayOutputStream = new ByteArrayOutputStream(((PBRepeatMessageField)localObject).computeSize(1));
+      localObject1 = PBField.initRepeatMessage(articlesummary.CommentInfo.class);
+      ((PBRepeatMessageField)localObject1).addAll(this.mCommentsObj);
+      localObject2 = new ByteArrayOutputStream(((PBRepeatMessageField)localObject1).computeSize(1));
     }
+    CodedOutputStreamMicro localCodedOutputStreamMicro;
     try
     {
-      localCodedOutputStreamMicro = CodedOutputStreamMicro.newInstance(localByteArrayOutputStream);
-      ((PBRepeatMessageField)localObject).writeTo(localCodedOutputStreamMicro, 1);
+      localCodedOutputStreamMicro = CodedOutputStreamMicro.newInstance((OutputStream)localObject2);
+      ((PBRepeatMessageField)localObject1).writeTo(localCodedOutputStreamMicro, 1);
       localCodedOutputStreamMicro.flush();
-      this.mCommentInfoBytes = localByteArrayOutputStream.toByteArray();
+      this.mCommentInfoBytes = ((ByteArrayOutputStream)localObject2).toByteArray();
       if ((this.mMultiBiuSameListObj != null) && (this.mMultiBiuSameListObj.size() > 0))
       {
-        localObject = PBField.initRepeatMessage(articlesummary.MultiBiuSameContent.class);
-        ((PBRepeatMessageField)localObject).addAll(this.mMultiBiuSameListObj);
-        localByteArrayOutputStream = new ByteArrayOutputStream(((PBRepeatMessageField)localObject).computeSize(1));
+        localObject1 = PBField.initRepeatMessage(articlesummary.MultiBiuSameContent.class);
+        ((PBRepeatMessageField)localObject1).addAll(this.mMultiBiuSameListObj);
+        localObject2 = new ByteArrayOutputStream(((PBRepeatMessageField)localObject1).computeSize(1));
       }
     }
     catch (IOException localIOException4)
     {
       try
       {
-        localCodedOutputStreamMicro = CodedOutputStreamMicro.newInstance(localByteArrayOutputStream);
-        ((PBRepeatMessageField)localObject).writeTo(localCodedOutputStreamMicro, 1);
+        localCodedOutputStreamMicro = CodedOutputStreamMicro.newInstance((OutputStream)localObject2);
+        ((PBRepeatMessageField)localObject1).writeTo(localCodedOutputStreamMicro, 1);
         localCodedOutputStreamMicro.flush();
-        this.mMultiBiuSameListBytes = localByteArrayOutputStream.toByteArray();
+        this.mMultiBiuSameListBytes = ((ByteArrayOutputStream)localObject2).toByteArray();
         if (this.mPackInfoObj != null) {
           this.mPackInfoBytes = this.mPackInfoObj.toByteArray();
         }
@@ -1167,8 +1250,8 @@ public class BaseArticleInfo
         if (this.mSocialFeedInfo != null)
         {
           this.mSocialFeedInfoByte = this.mSocialFeedInfo.a();
-          if (this.mSocialFeedInfo.jdField_a_of_type_Qci != null) {
-            this.publishUin = this.mSocialFeedInfo.jdField_a_of_type_Qci.jdField_a_of_type_Long;
+          if (this.mSocialFeedInfo.jdField_a_of_type_Qme != null) {
+            this.publishUin = this.mSocialFeedInfo.jdField_a_of_type_Qme.jdField_a_of_type_Long;
           }
         }
         if (this.mTopicRecommendFeedsInfo != null) {
@@ -1176,41 +1259,41 @@ public class BaseArticleInfo
         }
         if (this.mArkAppFeedsInfo != null)
         {
-          localObject = this.mArkAppFeedsInfo.a();
-          if (localObject != null) {
-            this.mArkAppFeedsInfoBytes = ((articlesummary.ArkAppFeedsInfo)localObject).toByteArray();
+          localObject1 = this.mArkAppFeedsInfo.a();
+          if (localObject1 != null) {
+            this.mArkAppFeedsInfoBytes = ((articlesummary.ArkAppFeedsInfo)localObject1).toByteArray();
           }
         }
         if ((this.mLabelListObj != null) && (this.mLabelListObj.size() > 0))
         {
-          localObject = PBField.initRepeatMessage(articlesummary.ChannelInfo.class);
-          ((PBRepeatMessageField)localObject).addAll(this.mLabelListObj);
-          localByteArrayOutputStream = new ByteArrayOutputStream(((PBRepeatMessageField)localObject).computeSize(1));
+          localObject1 = PBField.initRepeatMessage(articlesummary.ChannelInfo.class);
+          ((PBRepeatMessageField)localObject1).addAll(this.mLabelListObj);
+          localObject2 = new ByteArrayOutputStream(((PBRepeatMessageField)localObject1).computeSize(1));
         }
       }
       catch (IOException localIOException4)
       {
         try
         {
-          localCodedOutputStreamMicro = CodedOutputStreamMicro.newInstance(localByteArrayOutputStream);
-          ((PBRepeatMessageField)localObject).writeTo(localCodedOutputStreamMicro, 1);
+          localCodedOutputStreamMicro = CodedOutputStreamMicro.newInstance((OutputStream)localObject2);
+          ((PBRepeatMessageField)localObject1).writeTo(localCodedOutputStreamMicro, 1);
           localCodedOutputStreamMicro.flush();
-          this.mLableListInfoBytes = localByteArrayOutputStream.toByteArray();
+          this.mLableListInfoBytes = ((ByteArrayOutputStream)localObject2).toByteArray();
           if ((this.mSubSummaryListObj != null) && (this.mSubSummaryListObj.size() > 0))
           {
-            localObject = PBField.initRepeatMessage(articlesummary.ArticleSummary.class);
-            ((PBRepeatMessageField)localObject).addAll(this.mSubSummaryListObj);
-            localByteArrayOutputStream = new ByteArrayOutputStream(((PBRepeatMessageField)localObject).computeSize(1));
+            localObject1 = PBField.initRepeatMessage(articlesummary.ArticleSummary.class);
+            ((PBRepeatMessageField)localObject1).addAll(this.mSubSummaryListObj);
+            localObject2 = new ByteArrayOutputStream(((PBRepeatMessageField)localObject1).computeSize(1));
           }
         }
         catch (IOException localIOException4)
         {
           try
           {
-            CodedOutputStreamMicro localCodedOutputStreamMicro = CodedOutputStreamMicro.newInstance(localByteArrayOutputStream);
-            ((PBRepeatMessageField)localObject).writeTo(localCodedOutputStreamMicro, 1);
+            localCodedOutputStreamMicro = CodedOutputStreamMicro.newInstance((OutputStream)localObject2);
+            ((PBRepeatMessageField)localObject1).writeTo(localCodedOutputStreamMicro, 1);
             localCodedOutputStreamMicro.flush();
-            this.mSubArticleListBytes = localByteArrayOutputStream.toByteArray();
+            this.mSubArticleListBytes = ((ByteArrayOutputStream)localObject2).toByteArray();
             if (this.mVideoColumnInfo != null) {
               this.mVideoColumnInfoBytes = this.mVideoColumnInfo.a();
             }
@@ -1252,7 +1335,14 @@ public class BaseArticleInfo
                 if (this.mPartnerAccountInfo != null) {
                   this.mPartnerAccountInfoBytes = this.mPartnerAccountInfo.toByteArray();
                 }
-                return;
+                if ((this.columnEntrances == null) || (this.columnEntrances.size() <= 0)) {
+                  break label823;
+                }
+                localObject1 = PBField.initRepeatMessage(articlesummary.VideoColumnInfo.class);
+                localObject2 = this.columnEntrances.iterator();
+                while (((Iterator)localObject2).hasNext()) {
+                  ((PBRepeatMessageField)localObject1).add(((VideoColumnInfo)((Iterator)localObject2).next()).a());
+                }
                 localIOException1 = localIOException1;
                 localIOException1.printStackTrace();
                 continue;
@@ -1274,16 +1364,36 @@ public class BaseArticleInfo
               {
                 QLog.e("Q.readinjoy.BaseArticleInfo", 2, "新聚合卡片帐号pgc类uin解析失败，e = " + localException + " articleID = " + this.mArticleID + " mSubscribeID = " + this.mSubscribeID);
               }
+              localObject2 = new ByteArrayOutputStream(localException.computeSize(1));
             }
           }
         }
       }
     }
+    try
+    {
+      localCodedOutputStreamMicro = CodedOutputStreamMicro.newInstance((OutputStream)localObject2);
+      localException.writeTo(localCodedOutputStreamMicro, 1);
+      localCodedOutputStreamMicro.flush();
+      this.columnEntrancesBytes = ((ByteArrayOutputStream)localObject2).toByteArray();
+      label823:
+      if (this.ptsItemData != null) {
+        this.ptsItemDataBytes = pww.a(this.ptsItemData);
+      }
+      return;
+    }
+    catch (IOException localIOException5)
+    {
+      for (;;)
+      {
+        QLog.e("Q.readinjoy.BaseArticleInfo", 1, "", localIOException5);
+      }
+    }
   }
   
-  public void setOnVideoCoverInterceptor(qan paramqan)
+  public void setOnVideoCoverInterceptor(qkj paramqkj)
   {
-    this.mVideoCoverInterceptor = paramqan;
+    this.mVideoCoverInterceptor = paramqkj;
   }
   
   public void setSearchWordInfo(String paramString, PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField)
@@ -1301,8 +1411,8 @@ public class BaseArticleInfo
     this.mSearchWords.clear();
     localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     Paint localPaint = new Paint();
-    localPaint.setTextSize(actj.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()));
-    int i = (int)bbdh.k() - actj.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()) - (int)localPaint.measureText(paramString);
+    localPaint.setTextSize(aekt.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()));
+    int i = (int)bdcb.k() - aekt.a(14.0F, ((QQAppInterface)localObject).getApp().getResources()) - (int)localPaint.measureText(paramString);
     int j;
     label146:
     RequestSearchWord.Rcmd localRcmd;
@@ -1322,13 +1432,13 @@ public class BaseArticleInfo
         {
           localRcmd = (RequestSearchWord.Rcmd)paramPBStringField.next();
           int k = (int)localPaint.measureText(localRcmd.word.get().toStringUtf8());
-          k = actj.a(38.0F, ((QQAppInterface)localObject).getApp().getResources()) + k;
+          k = aekt.a(38.0F, ((QQAppInterface)localObject).getApp().getResources()) + k;
           if (i - k > 0) {
             if (TextUtils.isEmpty(paramString))
             {
               paramString = paramString + localRcmd.word.get().toStringUtf8();
               label264:
-              int m = actj.a(14.0F, ((QQAppInterface)localObject).getApp().getResources());
+              int m = aekt.a(14.0F, ((QQAppInterface)localObject).getApp().getResources());
               this.mSearchWords.add(localRcmd);
               paramPBStringField.remove();
               i -= k - m;
@@ -1350,8 +1460,8 @@ public class BaseArticleInfo
       if (this.innerUniqueID != null) {
         paramPBRepeatMessageField = ByteStringMicro.copyFromUtf8(this.innerUniqueID).toStringUtf8();
       }
-      awsq.a(null, new ReportModelDC02528().module("all_result").action("exp_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(this.mArticleContentUrl).ver4(paramString).ver5(this.mTitle).ver6(paramPBRepeatMessageField).session_id(this.mSearchWordSessionId));
-      ((akiz)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(111)).a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "exp_Kdfeedsback_list", this.mSearchWordSessionId, this.mArticleContentUrl, paramString, this.mTitle, paramPBRepeatMessageField);
+      aynt.a(null, new ReportModelDC02528().module("all_result").action("exp_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(this.mArticleContentUrl).ver4(paramString).ver5(this.mTitle).ver6(paramPBRepeatMessageField).session_id(this.mSearchWordSessionId));
+      ((amap)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(111)).a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), "exp_Kdfeedsback_list", this.mSearchWordSessionId, this.mArticleContentUrl, paramString, this.mTitle, paramPBRepeatMessageField);
       return;
     }
   }
@@ -1371,13 +1481,13 @@ public class BaseArticleInfo
     StringBuilder localStringBuilder = new StringBuilder().append("BaseArticleInfo{mArticleID=").append(this.mArticleID).append("\n, mRecommendSeq=").append(this.mRecommendSeq).append("\n, mTitle=").append(this.mTitle).append("\n, mSummary=").append(this.mSummary).append("\n, mPUinIsActive=").append(this.mPUinIsActive).append("\n, mFeedType=").append(this.mFeedType).append("\n, mResolvedFeedType=").append(this.mResolvedFeedType).append("\n, mRowKey=").append(this.innerUniqueID).append("\n, icon_url=").append(this.icon_url).append("\n, icon_with=").append(this.icon_with).append("\n, icon_height=").append(this.icon_height).append("\n, uin=").append(this.uin).append("\n, nick_name=").append(this.nick_name).append("\n, comment_id=").append(this.comment_id).append("\n, content=").append(this.content).append("\n, jump_url=").append(this.jump_url).append("\n, isUseGif=").append(this.isUseGif).append("\n, mFirstPagePicUrl= ").append(this.mFirstPagePicUrl).append("\n, mJsonPictureList= ").append(this.mJsonPictureList).append("\n, mJsonVideoList= ").append(this.mJsonVideoList).append("\n, proteusItemsData= ").append(this.proteusItemsData).append("\n, mNewPolymericInfo= ").append(this.mNewPolymericInfo).append("\n, mFeedId=");
     if (this.mSocialFeedInfo != null) {}
     for (long l = this.mSocialFeedInfo.jdField_a_of_type_Long;; l = 0L) {
-      return l + "\n, isShowRecommendList= " + this.isShowRecommendList + "\n, isPGCShortContent= " + isPGCShortContent() + "\n, isAccountShown= " + this.isAccountShown + "\n, mSocialFeedInfo= " + this.mSocialFeedInfo + "\n, mExtraBiuLevel= " + qav.a(this) + "\n, mArticleContentUrl= " + this.mArticleContentUrl + "\n, isCardJumpUrlAvailable= " + this.isCardJumpUrlAvailable + "\n, mCardJumpUrl= " + this.mCardJumpUrl + "\n, mPartnerAccountInfo= " + getPartnerAccountInfoStr() + "\n, comment_jump_url= " + this.comment_jump_url + "\n, adReportCommonData= " + this.adReportCommonData + '}';
+      return l + "\n, isShowRecommendList= " + this.isShowRecommendList + "\n, isPGCShortContent= " + isPGCShortContent() + "\n, isAccountShown= " + this.isAccountShown + "\n, mSocialFeedInfo= " + this.mSocialFeedInfo + "\n, mExtraBiuLevel= " + qks.a(this) + "\n, mArticleContentUrl= " + this.mArticleContentUrl + "\n, isCardJumpUrlAvailable= " + this.isCardJumpUrlAvailable + "\n, mCardJumpUrl= " + this.mCardJumpUrl + "\n, commentBtnJumpUrl= " + this.commentBtnJumpUrl + "\n, mPartnerAccountInfo= " + getPartnerAccountInfoStr() + "\n, comment_jump_url= " + this.comment_jump_url + "\n, adReportCommonData= " + this.adReportCommonData + '}';
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo
  * JD-Core Version:    0.7.0.1
  */

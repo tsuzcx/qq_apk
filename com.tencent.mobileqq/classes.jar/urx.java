@@ -1,25 +1,57 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import android.os.Handler;
+import com.tencent.biz.qqstory.model.TrimmableManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-class urx
-  extends tph
+public class urx
+  implements uqz
 {
-  urx(urv paramurv, FeedItem paramFeedItem) {}
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
+  private CopyOnWriteArraySet<ura> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
   
-  public void a()
+  public urx()
   {
-    super.a();
-    urv.a(this.jdField_a_of_type_Urv, null);
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new ury());
   }
+  
+  private void b(int paramInt)
+  {
+    wsv.d("TrimmableManager", "trimMemory : level = %d", new Object[] { Integer.valueOf(paramInt) });
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
+    while (localIterator.hasNext()) {
+      ((ura)localIterator.next()).a(paramInt);
+    }
+    System.gc();
+  }
+  
+  public void a() {}
   
   public void a(int paramInt)
   {
-    super.a(paramInt);
-    vei.a("home_page", "suc_share", 2, paramInt, new String[] { vei.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", vei.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem) + "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId });
+    this.jdField_a_of_type_AndroidOsHandler.post(new TrimmableManager.1(this, paramInt));
+  }
+  
+  public void a(ura paramura)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(paramura);
+  }
+  
+  public void b() {}
+  
+  public void b(ura paramura)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(paramura);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     urx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,28 @@
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.StoryChatVideoView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class adxs
-  extends acuj
+  extends lpr
 {
-  public ViewGroup a;
-  public FrameLayout a;
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public AutoStartProgressBar a;
-  public URLDrawable a;
-  public QQStoryItemBuilder.StoryChatVideoView a;
-  public BubbleImageView a;
-  public boolean a;
-  public ImageView b;
-  public TextView b;
-  public BubbleImageView b;
-  public String b;
-  public TextView c;
-  public BubbleImageView c;
-  public TextView d;
-  public TextView e;
+  public adxs(TroopAssistantActivity paramTroopAssistantActivity) {}
+  
+  protected void a(int paramInt, long paramLong)
+  {
+    this.a.c();
+  }
+  
+  protected void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    this.a.c();
+  }
+  
+  protected void b(int paramInt, long paramLong)
+  {
+    this.a.c();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxs
  * JD-Core Version:    0.7.0.1
  */

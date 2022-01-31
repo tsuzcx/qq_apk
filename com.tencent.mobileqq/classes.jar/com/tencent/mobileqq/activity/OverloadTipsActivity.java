@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import abqh;
-import abqi;
+import adhp;
+import adhq;
 import android.content.Intent;
 import android.os.Bundle;
-import bbdj;
-import bbgu;
+import bdcd;
+import bdfq;
 import com.tencent.mobileqq.app.BaseActivity;
 
 public class OverloadTipsActivity
   extends BaseActivity
 {
-  private bbgu a;
+  private bdfq a;
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559347);
+    super.setContentView(2131559399);
     if ((getIntent() != null) && (getIntent().getExtras() != null)) {}
     for (paramBundle = getIntent().getExtras().getString("msg");; paramBundle = null)
     {
@@ -29,11 +29,11 @@ public class OverloadTipsActivity
         this.a.dismiss();
       }
       this.a = null;
-      this.a = bbdj.a(this, 230);
-      this.a.setContentView(2131558883);
-      this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131694938, new abqh(this));
+      this.a = bdcd.a(this, 230);
+      this.a.setContentView(2131558920);
+      this.a.setTitle(null).setMessage(paramBundle).setPositiveButton(2131695095, new adhp(this));
       this.a.setTextContentDescription(paramBundle);
-      this.a.setOnKeyListener(new abqi(this));
+      this.a.setOnKeyListener(new adhq(this));
       this.a.show();
       return false;
     }
@@ -52,7 +52,7 @@ public class OverloadTipsActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.OverloadTipsActivity
  * JD-Core Version:    0.7.0.1
  */

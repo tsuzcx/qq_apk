@@ -1,42 +1,64 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class abux
-  implements akbt
+  implements abut
 {
-  public abux(QQLSActivity paramQQLSActivity) {}
+  abuu jdField_a_of_type_Abuu;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   
-  public void ag_() {}
-  
-  public void b() {}
-  
-  public void i_(int paramInt)
+  private void a()
   {
-    if ((paramInt == 0) && (this.a.a.a().size() > 0))
-    {
-      Iterator localIterator = this.a.a.a().iterator();
-      while (localIterator.hasNext())
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
+      try
       {
-        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
-        if ((localRecentBaseData instanceof RecentItemNewFriendMsgData))
+        if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQLSActivity", 2, "Need to delete RecentItemNewFriendMsgData");
-          }
-          this.a.a.a().remove(localRecentBaseData);
-          this.a.b();
+          IntentFilter localIntentFilter = new IntentFilter();
+          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update");
+          localIntentFilter.addAction("com.tencent.mobileqq.Doraemon.monitor.update_batch");
+          abuy localabuy = new abuy(this);
+          BaseApplicationImpl.getContext().registerReceiver(localabuy, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
+          this.jdField_a_of_type_AndroidContentBroadcastReceiver = localabuy;
         }
+        return;
       }
+      finally {}
     }
+  }
+  
+  public void a(abuu paramabuu)
+  {
+    this.jdField_a_of_type_Abuu = paramabuu;
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    a();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("key", paramString1);
+    localBundle.putInt("type", paramInt);
+    localBundle.putString("appid", paramString2);
+    absl.a(2, localBundle, null);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2, String paramString3)
+  {
+    a();
+    Bundle localBundle = new Bundle();
+    localBundle.putString("key", paramString1);
+    localBundle.putInt("type", paramInt);
+    localBundle.putString("appid", paramString2);
+    localBundle.putString("api", paramString3);
+    absl.a(3, localBundle, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abux
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,51 @@
-import android.view.animation.Transformation;
-import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.app.proxy.GroupActionResp;
+import com.tencent.qphone.base.util.QLog;
 
 public class aczh
-  extends TranslateAnimation
+  extends alox
 {
-  public int a = 0;
+  public aczh(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public aczh()
+  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    this(1, 0.0F, 1, -1.0F, 1, 0.0F, 1, 0.0F);
-  }
-  
-  public aczh(int paramInt1, float paramFloat1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, int paramInt4, float paramFloat4)
-  {
-    super(paramInt1, paramFloat1, paramInt2, paramFloat2, paramInt3, paramFloat3, paramInt4, paramFloat4);
-  }
-  
-  public boolean getTransformation(long paramLong, Transformation paramTransformation)
-  {
-    if (!acym.a) {
-      setStartTime(paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onAddGroupResp isSuccess = " + paramBoolean);
     }
-    return super.getTransformation(paramLong, paramTransformation);
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onDeleteGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onRenameGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(paramBoolean);
+    GroupManagerActivity.c(this.a, true);
+  }
+  
+  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "onResortGroupResp isSuccess = " + paramBoolean);
+    }
+    this.a.a(true);
+    GroupManagerActivity.c(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aczh
  * JD-Core Version:    0.7.0.1
  */

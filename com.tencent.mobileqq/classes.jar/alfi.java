@@ -1,55 +1,58 @@
-import com.tencent.common.config.AppSetting;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.2;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.4;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil.6.6;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class alfi
-  implements alfe
+public final class alfi
+  implements absf
 {
-  private static final boolean jdField_a_of_type_Boolean = AppSetting.b;
-  private final String jdField_a_of_type_JavaLangString = "huawei_arcore";
-  private final ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private final String b = "huawei_arcore_arch64";
-  private final String c = "v8.0.0";
-  private final String d = "v8.2.0";
-  private final String e = "md5_config.xml";
+  final String jdField_a_of_type_JavaLangString = "https://open.hudong.qq.com/devtool/authorize";
   
-  public alfi()
+  public alfi(int paramInt1, int paramInt2, String paramString1, String paramString2) {}
+  
+  private String[] a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add("libarengine_api");
-    this.jdField_a_of_type_JavaUtilArrayList.add("libhuawei_arengine_impl");
-    this.jdField_a_of_type_JavaUtilArrayList.add("libhuawei_arengine_ndk");
-    this.jdField_a_of_type_JavaUtilArrayList.add("libhuawei_arengine_jni");
+    return new String[] { "Content-Type", "application/x-www-form-urlencoded", "Content-Length", "" + paramInt, "Cookie", "uin=" + this.jdField_b_of_type_JavaLangString + ";skey=" + this.c };
   }
   
-  public String a()
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    if (jdField_a_of_type_Boolean) {
-      return "huawei_arcore_arch64";
+    paramString = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=2";
+    ThreadManager.post(new ApolloGameUtil.6.6(this, paramString, a(paramString.length()), new alfl(this)), 8, null, false);
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    String str = "openID=&&accesstoken=&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=0";
+    ThreadManager.post(new ApolloGameUtil.6.2(this, str, a(str.length()), new alfj(this)), 8, null, false);
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    QLog.d("ApolloGameUtil", 2, new Object[] { "get openid and accessToken on Success result = ", paramJSONObject.toString() });
+    try
+    {
+      String str = paramJSONObject.optString("openid");
+      paramJSONObject = paramJSONObject.optString("access_token");
+      paramJSONObject = "openID=" + str + "&&accesstoken=" + paramJSONObject + "&&token=" + this.jdField_a_of_type_Int + "&&gameid=" + this.jdField_b_of_type_Int + "&&subcode=1";
+      ThreadManager.post(new ApolloGameUtil.6.4(this, paramJSONObject, a(paramJSONObject.length()), new alfk(this)), 8, null, false);
+      return;
     }
-    return "huawei_arcore";
-  }
-  
-  public List<String> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public String b()
-  {
-    if (jdField_a_of_type_Boolean) {
-      return "v8.2.0";
+    catch (Exception paramJSONObject)
+    {
+      QLog.e("ApolloGameUtil", 2, "getOpenIdAndAccessToken failed ", paramJSONObject);
     }
-    return "v8.0.0";
   }
   
-  public String c()
-  {
-    return "md5_config.xml";
-  }
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alfi
  * JD-Core Version:    0.7.0.1
  */

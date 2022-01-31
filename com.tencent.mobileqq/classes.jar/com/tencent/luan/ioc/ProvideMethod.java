@@ -1,18 +1,13 @@
 package com.tencent.luan.ioc;
 
-public abstract interface ProvideMethod
+public abstract interface ProvideMethod<T>
+  extends InjectConstructor<T>
 {
-  public abstract Object provide(Injector paramInjector);
-  
   public abstract InjectParam provideParam();
-  
-  public abstract Class<?> provider();
-  
-  public abstract int scope();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.luan.ioc.ProvideMethod
  * JD-Core Version:    0.7.0.1
  */

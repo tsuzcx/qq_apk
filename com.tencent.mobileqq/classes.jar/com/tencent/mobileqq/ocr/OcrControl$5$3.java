@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ocr;
 
-import aubp;
-import axrn;
+import avst;
+import azmz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class OcrControl$5$3
   implements Runnable
 {
-  public OcrControl$5$3(aubp paramaubp, int paramInt1, int paramInt2, int paramInt3) {}
+  public OcrControl$5$3(avst paramavst, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class OcrControl$5$3
     localHashMap.put("ret_code", String.valueOf(this.c));
     try
     {
-      axrn.a(BaseApplicationImpl.getContext()).a("", "ocr_server_fail", true, 0L, 0L, localHashMap, "", false);
+      azmz.a(BaseApplicationImpl.getContext()).a("", "ocr_server_fail", true, 0L, 0L, localHashMap, "", false);
       return;
     }
     catch (Exception localException)
@@ -31,7 +31,7 @@ public class OcrControl$5$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OcrControl.5.3
  * JD-Core Version:    0.7.0.1
  */

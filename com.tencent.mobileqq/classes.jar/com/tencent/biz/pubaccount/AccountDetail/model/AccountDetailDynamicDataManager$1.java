@@ -1,12 +1,12 @@
 package com.tencent.biz.pubaccount.AccountDetail.model;
 
 import com.tencent.qphone.base.util.QLog;
-import nfd;
+import nhz;
 
 public class AccountDetailDynamicDataManager$1
   implements Runnable
 {
-  public AccountDetailDynamicDataManager$1(nfd paramnfd, long paramLong, byte[] paramArrayOfByte) {}
+  public AccountDetailDynamicDataManager$1(nhz paramnhz, long paramLong, byte[] paramArrayOfByte) {}
   
   public void run()
   {

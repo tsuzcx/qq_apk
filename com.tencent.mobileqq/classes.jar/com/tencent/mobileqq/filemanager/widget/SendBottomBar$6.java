@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import apyh;
+import arrj;
 
 public class SendBottomBar$6
   implements Runnable
@@ -9,12 +9,12 @@ public class SendBottomBar$6
   
   public void run()
   {
-    new apyh(this).execute(new Object[0]);
+    new arrj(this).execute(new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.6
  * JD-Core Version:    0.7.0.1
  */

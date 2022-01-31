@@ -1,10 +1,23 @@
-public abstract interface bjgn
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.DynamicPhotoData;
+
+public final class bjgn
+  implements Parcelable.Creator<DynamicPhotoData>
 {
-  public abstract void a(boolean paramBoolean, bjgm parambjgm);
+  public DynamicPhotoData a(Parcel paramParcel)
+  {
+    return new DynamicPhotoData(paramParcel);
+  }
+  
+  public DynamicPhotoData[] a(int paramInt)
+  {
+    return new DynamicPhotoData[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjgn
  * JD-Core Version:    0.7.0.1
  */

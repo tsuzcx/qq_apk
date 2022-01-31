@@ -1,39 +1,24 @@
-import android.app.Activity;
-import android.graphics.Rect;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawHbFragment;
 
 public class aiyk
-  implements View.OnLayoutChangeListener
+  implements View.OnClickListener
 {
-  public aiyk(ApolloWebViewFragment paramApolloWebViewFragment) {}
+  public aiyk(DrawHbFragment paramDrawHbFragment) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    paramView = this.a.a();
-    if (paramView == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramView = paramView.findViewById(16908290);
-      } while (paramView == null);
-      paramView.getWindowVisibleDisplayFrame(ApolloWebViewFragment.a(this.a));
-      paramInt1 = ApolloWebViewFragment.a(this.a).right - ApolloWebViewFragment.a(this.a).left;
-      paramInt2 = ApolloWebViewFragment.a(this.a).bottom - ApolloWebViewFragment.a(this.a).top;
-    } while ((ApolloWebViewFragment.a(this.a) == paramInt1) && (ApolloWebViewFragment.b(this.a) == paramInt2));
-    ThreadManager.getUIHandler().post(this.a.a);
-    ApolloWebViewFragment.a(this.a, paramInt1);
-    ApolloWebViewFragment.b(this.a, paramInt2);
+    if (this.a.a != null) {
+      this.a.a.a(DrawHbFragment.a(this.a).getText().toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyk
  * JD-Core Version:    0.7.0.1
  */

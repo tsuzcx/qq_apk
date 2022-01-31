@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import atqy;
+import avhy;
 import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
 
 public class NearbyProfileDisplayTribePanel$10$1
   implements Runnable
 {
-  public NearbyProfileDisplayTribePanel$10$1(atqy paramatqy) {}
+  public NearbyProfileDisplayTribePanel$10$1(avhy paramavhy) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class NearbyProfileDisplayTribePanel$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.10.1
  * JD-Core Version:    0.7.0.1
  */

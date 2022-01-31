@@ -2,10 +2,10 @@ package com.tencent.qqmini.sdk.utils;
 
 import java.util.HashMap;
 
-public final class MiniSDKConst$AdConst$1
+final class MiniSDKConst$AdConst$1
   extends HashMap<Integer, String>
 {
-  public MiniSDKConst$AdConst$1()
+  MiniSDKConst$AdConst$1()
   {
     put(Integer.valueOf(1000), "后端接口调用失败");
     put(Integer.valueOf(1001), "参数错误");
@@ -20,7 +20,7 @@ public final class MiniSDKConst$AdConst$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.MiniSDKConst.AdConst.1
  * JD-Core Version:    0.7.0.1
  */

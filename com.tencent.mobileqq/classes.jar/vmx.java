@@ -1,24 +1,52 @@
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-@TargetApi(11)
 public class vmx
+  extends uhw<vmu, uow>
 {
-  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, vna paramvna)
+  public vmx(vmu paramvmu)
   {
-    float f = (paramFloat2 - paramFloat1) / 5.0F;
-    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2, paramFloat2 - 3.0F * f, paramFloat2, paramFloat2 - f, paramFloat2 });
-    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    localValueAnimator.addUpdateListener(new vmy(paramvna));
-    localValueAnimator.addListener(new vmz(paramvna, localValueAnimator));
-    localValueAnimator.setDuration(paramLong);
-    return localValueAnimator;
+    super(paramvmu);
   }
+  
+  public void a(@NonNull vmu paramvmu, @NonNull uow paramuow)
+  {
+    if ((paramuow.jdField_a_of_type_Int == 2) || (!paramuow.jdField_a_of_type_JavaLangString.equals(vmu.a(paramvmu))) || (vmu.a(paramvmu) == null) || (vmu.a(paramvmu).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null)) {
+      wsv.b(this.TAG, "ignore this feed info change event. %s.", paramuow.toString());
+    }
+    vnd localvnd;
+    do
+    {
+      return;
+      wsv.a(this.TAG, "receive feed info change event. %s.", paramuow.toString());
+      localvnd = paramvmu.a();
+      switch (paramuow.b)
+      {
+      default: 
+        return;
+      }
+      if (paramuow.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem != null)
+      {
+        vmu.a(paramvmu).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount = paramuow.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount;
+        vmu.a(paramvmu).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount = paramuow.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFriendCommentCount;
+        vmu.a(paramvmu).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount = paramuow.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mFanCommentCount;
+      }
+      vmu.a(paramvmu).a(paramuow.c);
+    } while (localvnd == null);
+    localvnd.a(vmu.a(paramvmu), paramuow.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uow.class;
+  }
+  
+  public void b(@NonNull vmu paramvmu, @NonNull uow paramuow) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vmx
  * JD-Core Version:    0.7.0.1
  */

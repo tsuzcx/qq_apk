@@ -5,37 +5,37 @@ import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import babf;
-import babx;
-import baca;
-import bacb;
+import bbzo;
+import bcag;
+import bcaj;
+import bcak;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 
 public class AudioItem$AudioUploadCallback$2
   implements Runnable
 {
-  public AudioItem$AudioUploadCallback$2(baca parambaca) {}
+  public AudioItem$AudioUploadCallback$2(bcaj parambcaj) {}
   
   public void run()
   {
-    bacb localbacb = (bacb)this.a.jdField_a_of_type_Babx.a.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Babf.c);
-    if (localbacb != null)
+    bcak localbcak = (bcak)this.a.jdField_a_of_type_Bcag.a.findViewHolderForAdapterPosition(this.a.jdField_a_of_type_Bbzo.c);
+    if (localbcak != null)
     {
-      if (!this.a.jdField_a_of_type_Babf.a) {
+      if (!this.a.jdField_a_of_type_Bbzo.a) {
         break label103;
       }
-      AnimationDrawable localAnimationDrawable = (AnimationDrawable)babx.a(this.a.jdField_a_of_type_Babx).getResources().getDrawable(2130772249);
-      localbacb.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localAnimationDrawable);
+      AnimationDrawable localAnimationDrawable = (AnimationDrawable)bcag.a(this.a.jdField_a_of_type_Bcag).getResources().getDrawable(2130772263);
+      localbcak.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localAnimationDrawable);
       localAnimationDrawable.start();
     }
     for (;;)
     {
-      localbacb.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      localbacb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      localbacb.c.setVisibility(0);
+      localbcak.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+      localbcak.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+      localbcak.c.setVisibility(0);
       return;
       label103:
-      localbacb.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846127);
+      localbcak.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846506);
     }
   }
 }

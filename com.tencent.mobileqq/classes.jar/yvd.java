@@ -1,36 +1,25 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public class yvd
-  implements ywa
+class yvd
+  implements Downloader.DownloadListener
 {
-  public yvd(GdtMotiveVideoFragment paramGdtMotiveVideoFragment) {}
+  yvd(yvc paramyvc, yuk paramyuk, String paramString) {}
   
-  public Activity a()
-  {
-    return this.a.getActivity();
-  }
+  public void onDownloadCanceled(String paramString) {}
   
-  public void a()
-  {
-    Activity localActivity = a();
-    if (localActivity != null) {
-      localActivity.finish();
-    }
-  }
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
   
-  public void a(int paramInt, Intent paramIntent)
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    Activity localActivity = a();
-    if (localActivity != null) {
-      localActivity.setResult(paramInt, paramIntent);
-    }
+    yvc.a(this.jdField_a_of_type_Yvc, this.jdField_a_of_type_Yuk, yuz.a().b(this.jdField_a_of_type_JavaLangString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvd
  * JD-Core Version:    0.7.0.1
  */

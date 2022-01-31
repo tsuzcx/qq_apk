@@ -1,20 +1,17 @@
-import android.app.Activity;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-final class ajyo
-  implements DialogInterface.OnDismissListener
+public class ajyo
+  implements DialogInterface.OnClickListener
 {
-  ajyo(Activity paramActivity, int paramInt) {}
+  public ajyo(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyo
  * JD-Core Version:    0.7.0.1
  */

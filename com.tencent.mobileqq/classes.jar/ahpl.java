@@ -1,73 +1,56 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.widget.AbsListView.LayoutParams;
+import android.text.TextUtils;
 
 public class ahpl
-  extends ahnw
 {
-  private int a;
-  private int b;
-  private int c;
-  private int d;
+  public int a;
+  public Object a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
+  public String d;
+  public boolean d;
+  public String e;
+  public boolean e;
   
-  public View a(int paramInt, Object paramObject, ahnr paramahnr, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ahpo paramahpo)
+  public boolean a()
   {
-    int i;
-    if (paramView == null)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    boolean bool2;
+    for (boolean bool1 = true;; bool1 = false)
     {
-      paramahnr = null;
-      if (!"TroopAssistantEmptyItemBuilder".equals(paramahnr))
-      {
-        paramView = View.inflate(paramContext, 2131562526, null);
-        paramView.setTag("TroopAssistantEmptyItemBuilder");
-        paramahnr = paramContext.getResources();
-        this.b = paramahnr.getDimensionPixelSize(2131298605);
-        this.a = paramahnr.getDimensionPixelSize(2131298610);
-        this.c = paramahnr.getDimensionPixelSize(2131298612);
-        i = paramahnr.getDimensionPixelSize(2131298893);
-        this.d = (paramahnr.getDimensionPixelSize(2131298894) + i);
+      bool2 = bool1;
+      if (bool1) {
+        bool2 = this.c;
       }
-      i = paramViewGroup.getMeasuredHeight() - this.a - this.b - 10 - this.d;
-      if (i <= this.c) {
-        break label210;
+      if (!bool2) {
+        return bool2;
       }
-      label124:
-      paramahnr = new AbsListView.LayoutParams(-1, -1);
-      paramahnr.width = -1;
-      paramahnr.height = i;
-      paramView.setLayoutParams(paramahnr);
-      if ((paramObject instanceof Integer))
+      switch (this.jdField_a_of_type_Int)
       {
-        paramObject = (Integer)paramObject;
-        paramahnr = (TextView)paramView.findViewById(2131377743);
-        if (paramObject.intValue() != 4) {
-          break label219;
+      default: 
+        if (this.jdField_a_of_type_Short == 0) {
+          break;
         }
-        paramahnr.setText(2131720426);
+      case 1: 
+      case 2: 
+      case 3: 
+      case 4: 
+      case 5: 
+        return true;
       }
     }
-    for (;;)
-    {
-      paramView.setTag(-1, Integer.valueOf(paramInt));
-      return paramView;
-      paramahnr = paramView.getTag();
-      break;
-      label210:
-      i = this.c;
-      break label124;
-      label219:
-      paramahnr.setText(2131695129);
-    }
+    return false;
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahpl
  * JD-Core Version:    0.7.0.1
  */

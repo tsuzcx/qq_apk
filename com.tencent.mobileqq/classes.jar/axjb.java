@@ -1,127 +1,100 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Binder;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-public class axjb
+public abstract class axjb
+  extends Binder
+  implements axja
 {
-  int jdField_a_of_type_Int;
-  axjb jdField_a_of_type_Axjb;
-  List<axja> jdField_a_of_type_JavaUtilList;
-  axjb[] jdField_a_of_type_ArrayOfAxjb;
-  int b;
-  int c = -1;
-  
-  axjb(axjb paramaxjb, List<axja> paramList)
+  public axjb()
   {
-    this.jdField_a_of_type_Axjb = paramaxjb;
-    this.jdField_a_of_type_ArrayOfAxjb = new axjb[axja.jdField_a_of_type_Int];
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = ((axja)paramList.get(0)).jdField_a_of_type_ArrayOfInt.length;
-    this.jdField_a_of_type_Int = -1;
-    paramaxjb = new int[2];
-    axjb tmp57_56 = paramaxjb;
-    tmp57_56[0] = 0;
-    axjb tmp61_57 = tmp57_56;
-    tmp61_57[1] = 0;
-    tmp61_57;
-    paramList = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramList.hasNext())
-    {
-      i = ((axja)paramList.next()).b;
-      paramaxjb[i] += 1;
-    }
-    if (paramaxjb[0] > paramaxjb[1]) {}
-    for (int i = 0;; i = 1)
-    {
-      this.c = i;
-      return;
-    }
+    attachInterface(this, "com.tencent.mobileqq.richmedia.ICallBack");
   }
   
-  private void a(PrintWriter paramPrintWriter)
+  public static axja a(IBinder paramIBinder)
   {
-    int j = 0;
-    if (this.jdField_a_of_type_Int != -1)
-    {
-      paramPrintWriter.println("<branch>");
-      paramPrintWriter.print("<attribute name=\"name\" value=\"");
-      if (this.jdField_a_of_type_Axjb != null) {
-        break label93;
-      }
-      paramPrintWriter.print("root");
+    if (paramIBinder == null) {
+      return null;
     }
-    for (;;)
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.richmedia.ICallBack");
+    if ((localIInterface != null) && ((localIInterface instanceof axja))) {
+      return (axja)localIInterface;
+    }
+    return new axjc(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    Object localObject2 = null;
+    Object localObject3 = null;
+    Object localObject1 = null;
+    switch (paramInt1)
     {
-      paramPrintWriter.println("\" />");
-      if (this.jdField_a_of_type_Int == -1) {
-        break label167;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.richmedia.ICallBack");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
+      paramInt1 = paramParcel1.readInt();
+      if (paramParcel1.readInt() != 0) {
+        localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      int i = j;
-      while (i < axja.jdField_a_of_type_Int)
+      paramParcel1 = a(paramInt1, (Bundle)localObject1);
+      paramParcel2.writeNoException();
+      if (paramParcel1 != null)
       {
-        if (this.jdField_a_of_type_ArrayOfAxjb[i] != null) {
-          this.jdField_a_of_type_ArrayOfAxjb[i].a(paramPrintWriter);
-        }
-        i += 1;
+        paramParcel2.writeInt(1);
+        paramParcel1.writeToParcel(paramParcel2, 1);
       }
-      paramPrintWriter.println("<leaf>");
-      break;
-      label93:
-      i = 0;
-      while (i < axja.jdField_a_of_type_Int)
+      for (;;)
       {
-        if (this == this.jdField_a_of_type_Axjb.jdField_a_of_type_ArrayOfAxjb[i]) {
-          paramPrintWriter.print("fts" + this.jdField_a_of_type_Axjb.jdField_a_of_type_Int + " = " + i);
-        }
-        i += 1;
+        return true;
+        paramParcel2.writeInt(0);
+      }
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
+      localObject1 = localObject2;
+      if (paramParcel1.readInt() != 0) {
+        localObject1 = (CompressInfo)CompressInfo.CREATOR.createFromParcel(paramParcel1);
+      }
+      a((CompressInfo)localObject1);
+      paramParcel2.writeNoException();
+      if (localObject1 != null)
+      {
+        paramParcel2.writeInt(1);
+        ((CompressInfo)localObject1).writeToParcel(paramParcel2, 1);
+      }
+      for (;;)
+      {
+        return true;
+        paramParcel2.writeInt(0);
       }
     }
-    paramPrintWriter.println("</branch>");
-    return;
-    label167:
-    paramPrintWriter.println("<attribute name=\"weight\" value=\"" + this.jdField_a_of_type_JavaUtilList.size() + "\" />");
-    paramPrintWriter.println("</leaf>");
-  }
-  
-  public int a(axja paramaxja)
-  {
-    int i = -1;
-    if (this.jdField_a_of_type_Int == -1) {
-      i = this.c;
+    paramParcel1.enforceInterface("com.tencent.mobileqq.richmedia.ICallBack");
+    paramInt1 = paramParcel1.readInt();
+    localObject1 = localObject3;
+    if (paramParcel1.readInt() != 0) {
+      localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
     }
-    while (this.jdField_a_of_type_ArrayOfAxjb[paramaxja.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int]] == null) {
-      return i;
-    }
-    return this.jdField_a_of_type_ArrayOfAxjb[paramaxja.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int]].a(paramaxja);
-  }
-  
-  public void a(String paramString)
-  {
-    try
-    {
-      paramString = new PrintWriter(new FileWriter(paramString));
-      paramString.println("<?xml version=\"1.0\" ?>");
-      paramString.println("<tree>");
-      paramString.println("<declarations>");
-      paramString.println("<attributeDecl name=\"name\" type=\"String\" />");
-      paramString.println("<attributeDecl name=\"weight\" type=\"Real\" />");
-      paramString.println("</declarations>");
-      a(paramString);
-      paramString.println("</tree>");
-      paramString.close();
-      return;
-    }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    a(paramInt1, (Bundle)localObject1);
+    paramParcel2.writeNoException();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axjb
  * JD-Core Version:    0.7.0.1
  */

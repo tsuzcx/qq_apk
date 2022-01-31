@@ -1,24 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.TextView;
-import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import com.tencent.biz.qqstory.takevideo.slideshow.ConvertRunnable;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import java.lang.ref.WeakReference;
 
 public class xib
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xib(SingleLyricView paramSingleLyricView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    if (SingleLyricView.a(this.a) != null) {
-      SingleLyricView.a(this.a).setAlpha(f);
-    }
-  }
+  public static int a = 3;
+  public long a;
+  public ConvertRunnable a;
+  public SlideItemInfo a;
+  public WeakReference<xic> a;
+  public int b;
+  public long b;
+  public int c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xib
  * JD-Core Version:    0.7.0.1
  */

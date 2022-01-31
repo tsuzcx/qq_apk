@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import auko;
+import awbv;
 import com.tencent.qphone.base.util.MD5;
 import java.io.Serializable;
 
 public class RockDownloadInfo
-  extends auko
+  extends awbv
   implements Serializable
 {
   public static final int CHECK_LEVEL_DELETE = 3;
@@ -181,7 +181,7 @@ public class RockDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RockDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

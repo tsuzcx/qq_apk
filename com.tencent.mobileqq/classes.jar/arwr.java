@@ -1,35 +1,28 @@
-import android.app.Dialog;
-import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
-import mqq.app.QQPermissionCallback;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
-public class arwr
-  implements QQPermissionCallback
+class arwr
+  implements TextWatcher
 {
-  public arwr(LocationPickFragment paramLocationPickFragment, BaseActivity paramBaseActivity) {}
+  arwr(arwl paramarwl, int paramInt) {}
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramArrayOfString = bbdj.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-    if (paramArrayOfString != null) {
-      paramArrayOfString.setOnDismissListener(new arws(this));
+    if ((arwl.a(this.jdField_a_of_type_Arwl).getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
+    {
+      arwl.a(this.jdField_a_of_type_Arwl).setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
+      arwl.a(this.jdField_a_of_type_Arwl).setSelection(this.jdField_a_of_type_Int - 1);
     }
-    paramArrayOfInt = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
-    paramArrayOfString = paramArrayOfInt.getStringExtra("uin");
-    paramInt = paramArrayOfInt.getIntExtra("uintype", -1);
-    paramArrayOfInt = arus.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
-    paramArrayOfInt.a(paramInt, paramArrayOfString, paramArrayOfInt.a(), 1);
-  }
-  
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    LocationPickFragment.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiLocationPickFragment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arwr
  * JD-Core Version:    0.7.0.1
  */

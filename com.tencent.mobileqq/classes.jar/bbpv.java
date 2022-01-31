@@ -1,16 +1,12 @@
-import android.graphics.Rect;
-
 public class bbpv
-  extends bbpx
 {
-  public int a;
-  public acvd a;
-  public Rect a;
-  public String a;
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbpv
  * JD-Core Version:    0.7.0.1
  */

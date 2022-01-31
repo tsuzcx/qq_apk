@@ -8,8 +8,8 @@
         </com.tencent.widget.DragView>
         <ImageView android:id="@id/k0" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_centerInParent="true" />
         <ImageView android:id="@id/k2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-        <RelativeLayout android:id="@id/oq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/k2" android:layout_centerHorizontal="true">
-            <RelativeLayout android:id="@id/ou" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <RelativeLayout android:id="@id/oq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/k2" android:layout_centerHorizontal="true">
+            <RelativeLayout android:id="@id/ou" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
                 <com.tencent.mobileqq.activity.contact.newfriend.connections.TriangleView android:id="@id/c3l" android:layout_width="9.0dip" android:layout_height="5.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:translationY="1.0dip" android:rotation="180.0" />
                 <RelativeLayout android:id="@id/ov" android:layout_width="wrap_content" android:layout_height="37.0dip" android:layout_below="@id/c3l" android:layout_centerHorizontal="true">
                     <com.tencent.mobileqq.activity.aio.item.PttAudioPlayView android:id="@id/ow" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="3.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />

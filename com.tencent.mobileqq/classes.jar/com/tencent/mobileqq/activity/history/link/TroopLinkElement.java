@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.history.link;
 
 import android.text.TextUtils;
-import auko;
+import android.webkit.URLUtil;
+import awbv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -13,7 +14,7 @@ import mqq.app.AppRuntime;
 import org.json.JSONObject;
 
 public class TroopLinkElement
-  extends auko
+  extends awbv
   implements Serializable
 {
   private static final String TAG = "TroopLinkElement";
@@ -38,33 +39,46 @@ public class TroopLinkElement
   public static TroopLinkElement mergeFromJson(String paramString, JSONObject paramJSONObject)
   {
     TroopLinkElement localTroopLinkElement = new TroopLinkElement();
-    localTroopLinkElement.url = paramJSONObject.optString("raw_url", "");
-    localTroopLinkElement.msgSeq = String.valueOf(paramJSONObject.optLong("seq", 0L));
-    localTroopLinkElement.timeSecond = String.valueOf(paramJSONObject.optLong("time", 0L));
+    Object localObject = paramJSONObject.optString("raw_url", "");
     try
     {
-      new Date(Long.parseLong(localTroopLinkElement.timeSecond) * 1000L);
-      localTroopLinkElement.title = paramJSONObject.optString("title", "");
-      localTroopLinkElement.uin = String.valueOf(paramJSONObject.optLong("uin", 0L));
-      QQAppInterface localQQAppInterface = localTroopLinkElement.getQQAppInterface();
-      if (localQQAppInterface != null)
-      {
-        localTroopLinkElement.nickname = ((TroopManager)localQQAppInterface.getManager(52)).c(paramString, localTroopLinkElement.uin);
-        localTroopLinkElement.iconUrl = paramJSONObject.optString("thumbnail", "");
-        if (TextUtils.isEmpty(localTroopLinkElement.title)) {
-          localTroopLinkElement.title = localTroopLinkElement.url;
-        }
-        return localTroopLinkElement;
+      localTroopLinkElement.url = URLUtil.guessUrl((String)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopLinkElement", 2, new Object[] { "rawUrl:", localObject, " url:", localTroopLinkElement.url });
       }
+      localTroopLinkElement.msgSeq = String.valueOf(paramJSONObject.optLong("seq", 0L));
+      localTroopLinkElement.timeSecond = String.valueOf(paramJSONObject.optLong("time", 0L));
     }
-    catch (Exception localException)
+    catch (Throwable localThrowable)
     {
-      for (;;)
+      try
       {
-        QLog.e("TroopLinkElement", 1, "mergeFromJson: failed. ", localException);
-        localTroopLinkElement.timeSecond = String.valueOf(System.currentTimeMillis() / 1000L);
-        continue;
-        localTroopLinkElement.nickname = localTroopLinkElement.uin;
+        new Date(Long.parseLong(localTroopLinkElement.timeSecond) * 1000L);
+        localTroopLinkElement.title = paramJSONObject.optString("title", "");
+        localTroopLinkElement.uin = String.valueOf(paramJSONObject.optLong("uin", 0L));
+        localObject = localTroopLinkElement.getQQAppInterface();
+        if (localObject != null)
+        {
+          localTroopLinkElement.nickname = ((TroopManager)((QQAppInterface)localObject).getManager(52)).c(paramString, localTroopLinkElement.uin);
+          localTroopLinkElement.iconUrl = paramJSONObject.optString("thumbnail", "");
+          if (TextUtils.isEmpty(localTroopLinkElement.title)) {
+            localTroopLinkElement.title = localTroopLinkElement.url;
+          }
+          return localTroopLinkElement;
+          localThrowable = localThrowable;
+          QLog.e("TroopLinkElement", 1, localThrowable, new Object[0]);
+          localTroopLinkElement.url = ((String)localObject);
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("TroopLinkElement", 1, "mergeFromJson: failed. ", localException);
+          localTroopLinkElement.timeSecond = String.valueOf(System.currentTimeMillis() / 1000L);
+          continue;
+          localTroopLinkElement.nickname = localTroopLinkElement.uin;
+        }
       }
     }
   }
@@ -97,7 +111,7 @@ public class TroopLinkElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.TroopLinkElement
  * JD-Core Version:    0.7.0.1
  */

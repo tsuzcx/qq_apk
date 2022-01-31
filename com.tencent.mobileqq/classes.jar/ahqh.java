@@ -1,68 +1,27 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahqh
-  extends ahpt
+class ahqh
+  implements View.OnClickListener
 {
-  public ahqh(Context paramContext)
-  {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131699611);
-    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  ahqh(ahqf paramahqf) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    QLog.d("TroopKeyWordMsg", 2, "deSerialize");
-    paramArrayOfByte = new String(paramArrayOfByte);
-    try
-    {
-      paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.jdField_a_of_type_JavaLangString = paramArrayOfByte.getString("content");
-      this.jdField_a_of_type_Int = paramArrayOfByte.getInt("time");
-      this.jdField_b_of_type_Int = paramArrayOfByte.getInt("color");
-      this.c = paramArrayOfByte.getString("messageNavInfo");
-      if ((this.c != null) && (this.c.length() != 0)) {
-        this.jdField_a_of_type_Azmm.a(this.c);
-      }
-      return;
-    }
-    catch (JSONException paramArrayOfByte)
-    {
-      QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", paramArrayOfByte);
-    }
-  }
-  
-  public byte[] a()
-  {
-    return b();
-  }
-  
-  public byte[] b()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("content", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("time", this.jdField_a_of_type_Int);
-      localJSONObject.put("color", this.jdField_b_of_type_Int);
-      this.c = this.jdField_a_of_type_Azmm.a();
-      localJSONObject.put("messageNavInfo", this.c);
-      return localJSONObject.toString().getBytes();
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("TroopKeyWordMsg", 1, "deSerialize: ", localJSONException);
-      }
-    }
+    paramView = (alro)this.a.a.getManager(159);
+    Intent localIntent = new Intent(ahqf.a(this.a), QQBrowserActivity.class);
+    localIntent.putExtra("url", paramView.a);
+    ahqf.b(this.a).startActivity(localIntent);
+    azmj.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_skip_page", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqh
  * JD-Core Version:    0.7.0.1
  */

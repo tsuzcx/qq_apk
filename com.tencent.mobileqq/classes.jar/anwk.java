@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.AFCallbackForward.1;
 
-public abstract class anwk
+public class anwk
+  implements Camera.AutoFocusCallback
 {
-  public void a(EmoticonPackage paramEmoticonPackage) {}
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final anwb jdField_a_of_type_Anwb;
+  private final anwh jdField_a_of_type_Anwh;
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt) {}
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt) {}
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.AFCallbackForward.1(this, paramBoolean));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwk
  * JD-Core Version:    0.7.0.1
  */

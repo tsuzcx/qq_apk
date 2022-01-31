@@ -1,43 +1,53 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.sdk.WebView;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class atfk
-  implements View.OnKeyListener
+  extends BroadcastReceiver
 {
-  public atfk(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public atfk(UiApiPlugin paramUiApiPlugin) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramInt == 67) && (paramKeyEvent.getAction() == 0)) {
-      if (ChooseInterestTagActivity.a(this.a).getText() == null)
-      {
-        paramView = "";
-        if (TextUtils.isEmpty(paramView))
-        {
-          ChooseInterestTagActivity.a(this.a).fullScroll(66);
-          ChooseInterestTagActivity.a(this.a, ChooseInterestTagActivity.d(this.a) + 1);
-        }
-      }
+    paramContext = (ResultReceiver)paramIntent.getParcelableExtra("receiver");
+    long l = paramIntent.getLongExtra("seq", 0L);
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("seq", l);
+    if (UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() != -1L) {
+      paramContext.send(-1, localBundle);
     }
-    for (;;)
+    String str = paramIntent.getStringExtra("date");
+    paramIntent = paramIntent.getStringExtra("id");
+    Object localObject = this.a.mRuntime.a();
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
-      return false;
-      paramView = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break;
-      if ((paramInt == 66) && (paramKeyEvent.getAction() == 0)) {
-        bfni.b(ChooseInterestTagActivity.a(this.a));
+      localObject = this.a.mRuntime.a();
+      if ((localObject == null) || (((WebView)localObject).getX5WebViewExtension() == null))
+      {
+        paramContext.send(-2, localBundle);
+        return;
       }
+      localBundle = new Bundle();
+      localBundle.putString("date", str);
+      localBundle.putString("id", paramIntent);
+      UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(l);
+      UiApiPlugin.jdField_a_of_type_AndroidOsResultReceiver = paramContext;
+      ((WebView)localObject).getX5WebViewExtension().invokeMiscMethod("uploadX5CoreLiveLog", localBundle);
+      return;
     }
+    paramContext.send(-2, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atfk
  * JD-Core Version:    0.7.0.1
  */

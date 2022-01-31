@@ -1,390 +1,337 @@
-import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.Matrix;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseReq;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
-import com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX.Req;
-import com.tencent.mm.opensdk.modelmsg.WXImageObject;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
-import com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject;
-import com.tencent.mm.opensdk.modelmsg.WXTextObject;
-import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
-import com.tencent.mm.opensdk.openapi.WXAPIFactory;
-import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.IntentFilter;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.share.WXShareFromQZHelper.1;
-import cooperation.qzone.share.WXShareFromQZHelper.2;
-import cooperation.qzone.share.WXShareFromQZHelper.3;
-import cooperation.qzone.share.WXShareFromQZHelper.4;
-import cooperation.qzone.share.WXShareFromQZHelper.5;
-import cooperation.qzone.util.QZLog;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import com.tencent.sharp.jni.AudioDeviceInterface;
+import com.tencent.sharp.jni.TraeAudioManager;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class bhmi
-  implements IWXAPIEventHandler
+  extends bhmj
 {
-  private static bhmi jdField_a_of_type_Bhmi;
-  public static String a;
-  private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  public static final String b;
-  private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wx34b037fdb0f655ee", true);
-  private CopyOnWriteArrayList<bhmj> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference = null;
+  Context jdField_a_of_type_AndroidContentContext = null;
+  bhmk jdField_a_of_type_Bhmk = null;
+  Class<?> jdField_a_of_type_JavaLangClass = null;
+  Object jdField_a_of_type_JavaLangObject = null;
+  Method jdField_a_of_type_JavaLangReflectMethod = null;
+  Class<?> b = null;
   
-  static
+  public bhmi(TraeAudioManager paramTraeAudioManager)
   {
-    jdField_a_of_type_JavaLangString = bhmi.class.getSimpleName();
-    b = bbvj.a(ajsd.aW + "photo/");
+    super(paramTraeAudioManager);
   }
   
-  private bhmi()
+  public String a()
   {
-    a();
-  }
-  
-  public static bhmi a()
-  {
-    if (jdField_a_of_type_Bhmi == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_Bhmi == null) {
-        jdField_a_of_type_Bhmi = new bhmi();
-      }
-      return jdField_a_of_type_Bhmi;
-    }
-  }
-  
-  public static void a(Activity paramActivity)
-  {
-    if (paramActivity != null)
-    {
-      Intent localIntent = new Intent(BaseApplication.getContext(), QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", QzoneConfig.getInstance().getConfig("H5Url", "WeiXinDownload", "http://app.qq.com/#id=detail&appid=100733732"));
-      localIntent.putExtra("fromQZone", true);
-      localIntent.addFlags(268435456);
-      paramActivity.startActivity(localIntent);
-    }
-  }
-  
-  public static void a(Activity paramActivity, BaseReq paramBaseReq)
-  {
-    if ((paramActivity != null) && (paramBaseReq != null)) {
-      for (;;)
-      {
-        Object localObject2;
-        Object localObject1;
-        try
-        {
-          localObject2 = ((ShowMessageFromWX.Req)paramBaseReq).message.messageExt;
-          paramBaseReq = axbl.b((String)localObject2);
-          if ((paramBaseReq.get("actiontype") != null) && (((String)paramBaseReq.get("actiontype")).equals("schema")) && (paramBaseReq.get("schema") != null))
-          {
-            localObject1 = Uri.decode((String)paramBaseReq.get("schema"));
-            if ((TextUtils.isEmpty((CharSequence)localObject1)) || ((!((String)localObject1).startsWith("mqzone")) && (!((String)localObject1).startsWith("mqqzone")) && (!((String)localObject1).startsWith("mqqapi://qzoneschema")))) {
-              break;
-            }
-            localObject2 = new Intent();
-            ((Intent)localObject2).putExtra("cmd", "Schema");
-            ((Intent)localObject2).putExtra("schema", (String)localObject1);
-            bgyp.a(paramActivity, bgyw.a(), (Intent)localObject2);
-            paramActivity = (String)paramBaseReq.get("appid");
-            if (paramActivity == null)
-            {
-              i = 0;
-              new LpReportInfo_pf00064(2000, 3000, i).reportImediately();
-              return;
-            }
-            int i = Integer.parseInt(paramActivity);
-            continue;
-          }
-          if ((paramBaseReq.get("appid") == null) || (!((String)paramBaseReq.get("appid")).equals("1000398")) || ((!paramBaseReq.containsKey("albumId")) && (!paramBaseReq.containsKey("aid")))) {
-            break;
-          }
-          localObject1 = new Intent();
-          ((Intent)localObject1).putExtra("cmd", "Schema");
-          if ("1".equals(paramBaseReq.get("pagetype")))
-          {
-            paramBaseReq = ((String)localObject2).replace("aid", "albumid");
-            ((Intent)localObject1).putExtra("schema", "mqzone://arouse/album?" + paramBaseReq + "&source=doNotJumpQzone");
-            bgyp.a(paramActivity, bgyw.a(), (Intent)localObject1);
-            return;
-          }
-        }
-        catch (Throwable paramActivity)
-        {
-          paramActivity.printStackTrace();
-          return;
-        }
-        if ("0".equals(paramBaseReq.get("pagetype"))) {
-          ((Intent)localObject1).putExtra("schema", "mqzone://arouse/photofromwxapp?" + (String)localObject2 + "&source=doNotJumpQzone");
-        }
-      }
-    }
-  }
-  
-  public static byte[] a(Bitmap paramBitmap, int paramInt)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramBitmap.compress(Bitmap.CompressFormat.JPEG, paramInt, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
-  }
-  
-  public String a(String paramString)
-  {
-    if (paramString == null) {
-      return String.valueOf(System.currentTimeMillis());
-    }
-    return paramString + System.currentTimeMillis();
+    return "BluetoohHeadsetCheckFor2x";
   }
   
   public void a()
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.registerApp("wx34b037fdb0f655ee");
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
-    }
-  }
-  
-  public void a(Activity paramActivity, Intent paramIntent)
-  {
-    if (this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI != null)
-    {
-      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
-      this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.handleIntent(paramIntent, this);
-    }
-  }
-  
-  public void a(Context paramContext, ArrayList<File> paramArrayList)
-  {
-    Intent localIntent = new Intent();
-    localIntent.setComponent(new ComponentName("com.tencent.mm", "com.tencent.mm.ui.tools.ShareToTimeLineUI"));
-    localIntent.setAction("android.intent.action.SEND_MULTIPLE");
-    localIntent.setFlags(268435456);
-    localIntent.setType("image/*");
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      localArrayList.add(Uri.fromFile((File)paramArrayList.next()));
-    }
-    localIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", localArrayList);
-    FileProvider7Helper.intentCompatForN(BaseApplicationImpl.getApplication(), localIntent);
-    paramContext.startActivity(localIntent);
-  }
-  
-  public void a(bhmj parambhmj)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(parambhmj)) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(parambhmj);
-      }
-      return;
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    Object localObject = new WXTextObject(paramString);
-    paramString = new WXMediaMessage();
-    paramString.mediaObject = ((WXMediaMessage.IMediaObject)localObject);
-    localObject = new SendMessageToWX.Req();
-    ((SendMessageToWX.Req)localObject).transaction = a("text");
-    ((SendMessageToWX.Req)localObject).message = paramString;
-    ((SendMessageToWX.Req)localObject).scene = paramInt;
-    if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq((BaseReq)localObject)) {
-      ThreadManager.getUIHandler().post(new WXShareFromQZHelper.3(this));
-    }
-  }
-  
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2, String paramString3, int paramInt)
-  {
-    paramString3 = new WXMediaMessage(new WXWebpageObject(paramString3));
-    paramString3.description = paramString2;
-    paramString3.title = paramString1;
-    paramString3.thumbData = WXShareHelper.a(paramBitmap, false, true);
-    paramString1 = new SendMessageToWX.Req();
-    paramString1.transaction = a("webpage");
-    paramString1.message = paramString3;
-    paramString1.scene = paramInt;
-    if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramString1)) {
-      ThreadManager.getUIHandler().post(new WXShareFromQZHelper.1(this));
-    }
-  }
-  
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt)
-  {
-    WXMiniProgramObject localWXMiniProgramObject = new WXMiniProgramObject();
-    localWXMiniProgramObject.webpageUrl = paramString3;
-    localWXMiniProgramObject.userName = paramString5;
-    if (!TextUtils.isEmpty(paramString6))
-    {
-      localWXMiniProgramObject.path = (paramString4 + "&sk=" + paramString6);
-      paramString3 = new WXMediaMessage(localWXMiniProgramObject);
-      paramString3.title = paramString1;
-      paramString3.description = paramString2;
-      if (paramBitmap == null) {
-        break label431;
-      }
-      try
-      {
-        float f = Math.min(400.0F / paramBitmap.getWidth(), 400.0F / paramBitmap.getHeight());
-        paramString1 = new Matrix();
-        paramString1.postScale(f, f);
-        paramString1 = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), paramString1, true);
-        paramString3.thumbData = a(paramString1, 100);
-        QZLog.e(jdField_a_of_type_JavaLangString, "wxshare thumbData:" + paramString3.thumbData.length);
-        int j = 4;
-        int i = 100;
-        while ((paramString3.thumbData != null) && (paramString3.thumbData.length >= 131072))
-        {
-          j -= 1;
-          if (j > 0)
-          {
-            i -= 10;
-            paramString3.thumbData = a(paramString1, i);
-            QZLog.e(jdField_a_of_type_JavaLangString, "wxshare thumbData -- :" + paramString3.thumbData.length);
-            continue;
-            paramString1 = new SendMessageToWX.Req();
-          }
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        QZLog.e(jdField_a_of_type_JavaLangString, "excetion:" + paramString1.getMessage());
-        ThreadManager.getUIHandler().post(new WXShareFromQZHelper.4(this));
-      }
-    }
+    AudioDeviceInterface.LogTraceEntry("");
+    if (this.jdField_a_of_type_JavaLangObject == null) {}
     for (;;)
     {
-      paramString1.transaction = a("webpage");
-      paramString1.message = paramString3;
-      paramString1.scene = paramInt;
-      boolean bool = this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramString1);
-      if (!bool)
-      {
-        QZLog.e(jdField_a_of_type_JavaLangString, "wxshare failed ,ret:" + bool);
-        ThreadManager.getUIHandler().post(new WXShareFromQZHelper.5(this));
-      }
       return;
-      localWXMiniProgramObject.path = paramString4;
-      break;
-      paramString1.recycle();
-      continue;
-      label431:
-      QZLog.e(jdField_a_of_type_JavaLangString, "wxshare bmp null");
+      try
+      {
+        localMethod = this.jdField_a_of_type_JavaLangClass.getDeclaredMethod("close", new Class[0]);
+        if (localMethod == null) {
+          continue;
+        }
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        try
+        {
+          Method localMethod;
+          localMethod.invoke(this.jdField_a_of_type_JavaLangObject, new Object[0]);
+          label44:
+          this.jdField_a_of_type_JavaLangClass = null;
+          this.b = null;
+          this.jdField_a_of_type_JavaLangObject = null;
+          this.jdField_a_of_type_JavaLangReflectMethod = null;
+          AudioDeviceInterface.LogTraceExit();
+          return;
+          localNoSuchMethodException = localNoSuchMethodException;
+          if (QLog.isColorLevel()) {
+            QLog.e("TraeAudioManager", 2, "BTLooperThread _uninitHeadsetfor2x method close NoSuchMethodException");
+          }
+          Object localObject = null;
+        }
+        catch (InvocationTargetException localInvocationTargetException)
+        {
+          break label44;
+        }
+        catch (IllegalAccessException localIllegalAccessException)
+        {
+          break label44;
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          break label44;
+        }
+      }
     }
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte, int paramInt)
+  void a(Context paramContext, Intent paramIntent)
   {
-    WXImageObject localWXImageObject = new WXImageObject();
-    localWXImageObject.imagePath = paramString;
-    paramString = new WXMediaMessage();
-    paramString.mediaObject = localWXImageObject;
-    if (paramInt == 0)
+    int i;
+    int j;
+    int k;
+    if ("android.bluetooth.headset.action.AUDIO_STATE_CHANGED".equals(paramIntent.getAction()))
     {
-      paramString.thumbData = paramArrayOfByte;
-      if ((paramString.thumbData == null) || ((paramString.thumbData != null) && (paramString.thumbData.length > 32768))) {
-        QLog.e(jdField_a_of_type_JavaLangString, 1, "wxmsg.thumbData is invalid");
+      i = paramIntent.getIntExtra("android.bluetooth.headset.extra.STATE", -2);
+      j = paramIntent.getIntExtra("android.bluetooth.headset.extra.PREVIOUS_STATE", -2);
+      k = paramIntent.getIntExtra("android.bluetooth.headset.extra.AUDIO_STATE", -2);
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "++ AUDIO_STATE_CHANGED|  STATE " + i);
       }
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "       PREVIOUS_STATE " + j);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "       AUDIO_STATE " + k);
+      }
+      if (k != 2) {}
     }
-    paramArrayOfByte = new SendMessageToWX.Req();
-    paramArrayOfByte.transaction = a("img");
-    paramArrayOfByte.message = paramString;
-    paramArrayOfByte.scene = paramInt;
-    if (!this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.sendReq(paramArrayOfByte)) {
-      ThreadManager.getUIHandler().post(new WXShareFromQZHelper.2(this));
+    do
+    {
+      do
+      {
+        this.jdField_a_of_type_Bhmk.a("DEVICE_BLUETOOTHHEADSET", true);
+        do
+        {
+          return;
+        } while (k != 0);
+        this.jdField_a_of_type_Bhmk.a("DEVICE_BLUETOOTHHEADSET", false);
+        return;
+      } while (!"android.bluetooth.headset.action.STATE_CHANGED".equals(paramIntent.getAction()));
+      i = paramIntent.getIntExtra("android.bluetooth.headset.extra.STATE", -2);
+      j = paramIntent.getIntExtra("android.bluetooth.headset.extra.PREVIOUS_STATE", -2);
+      k = paramIntent.getIntExtra("android.bluetooth.headset.extra.AUDIO_STATE", -2);
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "++ STATE_CHANGED|  STATE " + i);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "       PREVIOUS_STATE " + j);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeAudioManager", 2, "       AUDIO_STATE " + k);
+      }
+      if (k == 2)
+      {
+        this.jdField_a_of_type_Bhmk.a("DEVICE_BLUETOOTHHEADSET", true);
+        return;
+      }
+    } while (k != 0);
+    this.jdField_a_of_type_Bhmk.a("DEVICE_BLUETOOTHHEADSET", false);
+  }
+  
+  void a(IntentFilter paramIntentFilter)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("TraeAudioManager", 2, " " + a() + " _addAction");
     }
+    paramIntentFilter.addAction("android.bluetooth.headset.action.AUDIO_STATE_CHANGED");
+    paramIntentFilter.addAction("android.bluetooth.headset.action.STATE_CHANGED");
   }
   
   public boolean a()
   {
+    String str4 = null;
+    if ((this.jdField_a_of_type_JavaLangReflectMethod == null) || (this.jdField_a_of_type_JavaLangReflectMethod == null)) {
+      return false;
+    }
     try
     {
-      boolean bool = this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppInstalled();
-      return bool;
+      Object localObject = this.jdField_a_of_type_JavaLangReflectMethod.invoke(this.jdField_a_of_type_JavaLangObject, new Object[0]);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder().append("BTLooperThread BluetoothHeadset method getCurrentHeadset res:");
+        if (localObject != null)
+        {
+          str4 = " Y";
+          QLog.w("TraeAudioManager", 2, str4);
+        }
+      }
+      else
+      {
+        if (localObject == null) {
+          break label152;
+        }
+        return true;
+      }
     }
-    catch (Throwable localThrowable)
+    catch (IllegalArgumentException localIllegalArgumentException)
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "isWXinstalled error ", localThrowable);
+      for (;;)
+      {
+        String str1 = str4;
+        if (QLog.isColorLevel())
+        {
+          QLog.w("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset IllegalArgumentException");
+          str1 = str4;
+        }
+      }
     }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      for (;;)
+      {
+        String str2 = str4;
+        if (QLog.isColorLevel())
+        {
+          QLog.w("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset IllegalAccessException");
+          str2 = str4;
+        }
+      }
+    }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      for (;;)
+      {
+        String str3 = str4;
+        if (QLog.isColorLevel())
+        {
+          QLog.w("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset InvocationTargetException");
+          str3 = str4;
+          continue;
+          str4 = "N";
+        }
+      }
+    }
+    label152:
     return false;
   }
   
-  public void b(bhmj parambhmj)
+  public boolean a(Context paramContext, bhmk parambhmk)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
+    AudioDeviceInterface.LogTraceEntry("");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Bhmk = parambhmk;
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_Bhmk == null)) {}
+    for (;;)
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(parambhmj)) {
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(parambhmj);
+      return false;
+      try
+      {
+        this.jdField_a_of_type_JavaLangClass = Class.forName("android.bluetooth.BluetoothHeadset");
+        if (this.jdField_a_of_type_JavaLangClass == null) {
+          continue;
+        }
       }
-      return;
-    }
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() >= 620756993;
-  }
-  
-  public boolean c()
-  {
-    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() >= 553779201;
-  }
-  
-  public void onReq(BaseReq paramBaseReq)
-  {
-    if (this.jdField_a_of_type_MqqUtilWeakReference != null) {}
-    for (Activity localActivity = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();; localActivity = null)
-    {
-      a(localActivity, paramBaseReq);
-      return;
-    }
-  }
-  
-  public void onResp(BaseResp paramBaseResp)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      if (localIterator.hasNext()) {
-        ((bhmj)localIterator.next()).a(paramBaseResp);
+      catch (Exception parambhmk)
+      {
+        try
+        {
+          this.b = Class.forName("android.bluetooth.BluetoothHeadset$ServiceListener");
+        }
+        catch (Exception parambhmk)
+        {
+          try
+          {
+            this.jdField_a_of_type_JavaLangReflectMethod = this.jdField_a_of_type_JavaLangClass.getDeclaredMethod("getCurrentHeadset", new Class[0]);
+            if (this.jdField_a_of_type_JavaLangReflectMethod == null) {
+              continue;
+            }
+          }
+          catch (NoSuchMethodException parambhmk)
+          {
+            try
+            {
+              do
+              {
+                for (;;)
+                {
+                  this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangClass.getConstructor(new Class[] { Context.class, this.b }).newInstance(new Object[] { paramContext, null });
+                  if (this.jdField_a_of_type_JavaLangObject == null) {
+                    break;
+                  }
+                  this.jdField_a_of_type_Bhmk.a("DEVICE_BLUETOOTHHEADSET", a());
+                  if (!a()) {
+                    break label337;
+                  }
+                  this.jdField_a_of_type_Bhmk.a("DEVICE_BLUETOOTHHEADSET", true);
+                  this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a("DEVICE_BLUETOOTHHEADSET", true);
+                  AudioDeviceInterface.LogTraceExit();
+                  return true;
+                  parambhmk = parambhmk;
+                  if (QLog.isColorLevel())
+                  {
+                    QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset class not found");
+                    continue;
+                    parambhmk = parambhmk;
+                    if (QLog.isColorLevel()) {
+                      QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset.ServiceListener class not found:" + parambhmk);
+                    }
+                  }
+                }
+                parambhmk = parambhmk;
+              } while (!QLog.isColorLevel());
+              QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset method getCurrentHeadset NoSuchMethodException");
+            }
+            catch (IllegalArgumentException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor IllegalArgumentException");
+                }
+              }
+            }
+            catch (InstantiationException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor InstantiationException");
+                }
+              }
+            }
+            catch (IllegalAccessException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor IllegalAccessException");
+                }
+              }
+            }
+            catch (InvocationTargetException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor InvocationTargetException");
+                }
+              }
+            }
+            catch (NoSuchMethodException paramContext)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel())
+                {
+                  QLog.e("TraeAudioManager", 2, "BTLooperThread BluetoothHeadset getConstructor NoSuchMethodException");
+                  continue;
+                  label337:
+                  this.jdField_a_of_type_Bhmk.a("DEVICE_BLUETOOTHHEADSET", false);
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhmi
  * JD-Core Version:    0.7.0.1
  */

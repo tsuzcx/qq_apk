@@ -1,29 +1,23 @@
-import android.animation.TypeEvaluator;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
 
-class adbb
-  implements TypeEvaluator
+public class adbb
+  implements View.OnClickListener
 {
-  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
+  public adbb(LbsBaseActivity paramLbsBaseActivity) {}
+  
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdditionalAnimController", 2, "AlphaEvaluator value: " + paramFloat);
+    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
+      this.a.a(LbsBaseActivity.a(this.a));
     }
-    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
-      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
-    }
-    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
-      return Double.valueOf(0.5D);
-    }
-    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
-      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
-    }
-    return Double.valueOf(0.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbb
  * JD-Core Version:    0.7.0.1
  */

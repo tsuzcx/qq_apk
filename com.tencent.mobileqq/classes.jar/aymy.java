@@ -1,48 +1,22 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qq.effect.IQEffect;
-import com.tencent.qq.effect.IQEffectLoad;
-import com.tencent.qq.effect.engine.QEffectData;
+import android.view.View;
+import android.widget.TextView;
 
 public class aymy
-  implements IQEffectLoad
+  implements aymg<ayjj, ayrt>
 {
-  public void load(Context paramContext, IQEffect paramIQEffect, QEffectData paramQEffectData)
+  public void a(ayjj paramayjj, ayrt paramayrt)
   {
-    switch (paramQEffectData.resType)
-    {
-    case 2: 
-    default: 
-      return;
-    case 1: 
-      loadFromFile(paramContext, paramIQEffect, paramQEffectData.src);
-      return;
-    }
-    loadFromResource(paramContext, paramIQEffect, paramQEffectData.resId);
-  }
-  
-  public void loadFromAsset(Context paramContext, IQEffect paramIQEffect, String paramString) {}
-  
-  public void loadFromFile(Context paramContext, IQEffect paramIQEffect, String paramString)
-  {
-    paramContext = URLDrawable.URLDrawableOptions.obtain();
-    paramContext.mLoadingDrawable = aywm.a;
-    paramContext.mFailedDrawable = aywm.a;
-    paramIQEffect.complete(URLDrawable.getFileDrawable(paramString, paramContext));
-  }
-  
-  public void loadFromResource(Context paramContext, IQEffect paramIQEffect, int paramInt)
-  {
-    if (paramContext != null) {
-      paramIQEffect.complete(paramContext.getResources().getDrawable(paramInt));
+    paramayjj = (ayjk)paramayjj;
+    paramayrt.b().setText(paramayjj.b());
+    paramayrt.a().setOnClickListener(new aymz(this, paramayjj));
+    if ((paramayjj instanceof ayja)) {
+      azmj.b(null, "CliOper", "", "", "0X80061B6", "0X80061B6", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aymy
  * JD-Core Version:    0.7.0.1
  */

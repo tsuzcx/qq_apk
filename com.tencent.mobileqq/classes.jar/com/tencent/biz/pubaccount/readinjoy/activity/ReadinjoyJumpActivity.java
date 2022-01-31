@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
-import bbbm;
-import bcsr;
+import bdag;
+import besa;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoFragment;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
@@ -28,30 +28,31 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import mqq.os.MqqHandler;
-import nol;
-import nxm;
-import onh;
-import onq;
-import ope;
+import nrt;
+import oat;
 import org.json.JSONException;
 import org.json.JSONObject;
-import osg;
-import osj;
-import osm;
-import pai;
+import ors;
+import osb;
+import otf;
+import otp;
+import owy;
+import oxb;
+import oxe;
+import pfr;
 
 public class ReadinjoyJumpActivity
   extends IphoneTitleBarFragment
-  implements pai
+  implements pfr
 {
   private static Runnable jdField_b_of_type_JavaLangRunnable;
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = -1L;
-  private bcsr jdField_a_of_type_Bcsr;
+  private besa jdField_a_of_type_Besa;
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   private WebViewProgressBar jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar;
   private Runnable jdField_a_of_type_JavaLangRunnable = new ReadinjoyJumpActivity.1(this);
-  private osm jdField_a_of_type_Osm = new nxm(this);
+  private oxe jdField_a_of_type_Oxe = new oat(this);
   private boolean jdField_a_of_type_Boolean;
   private boolean jdField_b_of_type_Boolean;
   private boolean c;
@@ -77,11 +78,16 @@ public class ReadinjoyJumpActivity
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)this.mContentView.findViewById(2131372005));
-    this.jdField_a_of_type_Bcsr = new bcsr();
-    this.jdField_a_of_type_Bcsr.a(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_Bcsr);
-    this.jdField_a_of_type_Bcsr.a((byte)0);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar = ((WebViewProgressBar)this.mContentView.findViewById(2131372322));
+    this.jdField_a_of_type_Besa = new besa();
+    this.jdField_a_of_type_Besa.a(this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setController(this.jdField_a_of_type_Besa);
+    this.jdField_a_of_type_Besa.a((byte)0);
+  }
+  
+  public static boolean b(Intent paramIntent)
+  {
+    return paramIntent.hasExtra("daily_lock_screen_flag");
   }
   
   private void c()
@@ -110,7 +116,7 @@ public class ReadinjoyJumpActivity
     }
     finally {}
     this.c = true;
-    int i = onq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    int i = osb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
     switch (i)
     {
     }
@@ -118,22 +124,22 @@ public class ReadinjoyJumpActivity
     {
       for (;;)
       {
-        osg.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID, System.currentTimeMillis());
+        owy.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID, System.currentTimeMillis());
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
         Object localObject = new JSONObject();
         try
         {
           ((JSONObject)localObject).put("algorithm_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mAlgorithmID);
           ((JSONObject)localObject).put("rowkey", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID);
-          onh.a(false, (JSONObject)localObject);
-          nol.a(null, "", "0X80094C3", "0X80094C3", 0, 0, "" + this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId + "", ((JSONObject)localObject).toString(), false);
+          ors.a(false, (JSONObject)localObject);
+          nrt.a(null, "", "0X80094C3", "0X80094C3", 0, 0, "" + this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId + "", ((JSONObject)localObject).toString(), false);
           QLog.d("ReadinjoyJumpActivity", 1, new Object[] { "do dump action, type : ", Integer.valueOf(i), ", needFinfishActivity : " + this.jdField_b_of_type_Boolean });
           if (!this.jdField_b_of_type_Boolean) {
             break;
           }
           localContext.finish();
           break;
-          localObject = onq.b(localContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+          localObject = osb.b(localContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
           ((Intent)localObject).putExtra("from_native", true);
           if (!((Intent)localObject).getBooleanExtra("is_native_fast_web", false)) {
             this.jdField_b_of_type_Boolean = false;
@@ -141,13 +147,13 @@ public class ReadinjoyJumpActivity
           localContext.startActivity((Intent)localObject);
           localContext.overridePendingTransition(0, 0);
           continue;
-          Intent localIntent = onq.a(localContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+          Intent localIntent = osb.a(localContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
           localIntent.putExtra("VIDEO_FROM_TYPE", 27);
           localObject = localIntent.getExtras();
           bool1 = false;
           try
           {
-            boolean bool2 = ope.a(((Bundle)localObject).getInt("VIDEO_FROM_TYPE", -1), Integer.valueOf(((Bundle)localObject).getString("VIDEO_WIDTH")).intValue(), Integer.valueOf(((Bundle)localObject).getString("VIDEO_HEIGHT")).intValue(), Integer.valueOf(((Bundle)localObject).getString("VIDEO_TIME")).intValue());
+            boolean bool2 = otp.a(((Bundle)localObject).getInt("VIDEO_FROM_TYPE", -1), Integer.valueOf(((Bundle)localObject).getString("VIDEO_WIDTH")).intValue(), Integer.valueOf(((Bundle)localObject).getString("VIDEO_HEIGHT")).intValue(), Integer.valueOf(((Bundle)localObject).getString("VIDEO_TIME")).intValue());
             bool1 = bool2;
           }
           catch (Exception localException)
@@ -177,6 +183,11 @@ public class ReadinjoyJumpActivity
     }
   }
   
+  public static boolean c(Intent paramIntent)
+  {
+    return paramIntent.hasExtra("kan_dian_lock_screen_flag");
+  }
+  
   private void d()
   {
     if (this.jdField_a_of_type_Boolean) {
@@ -186,13 +197,13 @@ public class ReadinjoyJumpActivity
     if (this.leftView != null)
     {
       this.leftView.setTextColor(-14408926);
-      this.leftView.setText(ajya.a(2131713005));
-      this.leftView.setBackgroundResource(2130848498);
+      this.leftView.setText(alpo.a(2131713377));
+      this.leftView.setBackgroundResource(2130848925);
     }
     if (getTitleBarView() != null)
     {
       getTitleBarView().setBackgroundResource(0);
-      if (!ThemeUtil.isInNightMode(onh.a())) {
+      if (!ThemeUtil.isInNightMode(ors.a())) {
         break label95;
       }
       getTitleBarView().setBackgroundColor(Color.parseColor("#888888"));
@@ -208,9 +219,9 @@ public class ReadinjoyJumpActivity
   
   private void e()
   {
-    this.jdField_a_of_type_Bcsr.a((byte)2);
+    this.jdField_a_of_type_Besa.a((byte)2);
     if (this.mContentView != null) {
-      this.mContentView.findViewById(2131365737).setVisibility(0);
+      this.mContentView.findViewById(2131365821).setVisibility(0);
     }
     QLog.d("ReadinjoyJumpActivity", 1, "show error page!");
   }
@@ -227,7 +238,7 @@ public class ReadinjoyJumpActivity
         if (!ThemeUtil.isInNightMode(((PublicFragmentActivity)localFragmentActivity).getAppRuntime())) {
           break label95;
         }
-        if ((bbbm.b()) || (bbbm.d())) {
+        if ((bdag.b()) || (bdag.d())) {
           break label82;
         }
         localSystemBarCompact.setStatusBarColor(-7829368);
@@ -239,13 +250,13 @@ public class ReadinjoyJumpActivity
     localSystemBarCompact.setStatusBarDarkMode(true);
     return;
     label95:
-    if ((Build.VERSION.SDK_INT >= 23) && (!bbbm.b()) && (!bbbm.d()))
+    if ((Build.VERSION.SDK_INT >= 23) && (!bdag.b()) && (!bdag.d()))
     {
       ((PublicFragmentActivity)localFragmentActivity).getWindow().getDecorView().setSystemUiVisibility(9216);
       localSystemBarCompact.setStatusBarColor(-1);
       return;
     }
-    if (!bbbm.d())
+    if (!bdag.d())
     {
       localSystemBarCompact.setStatusBarColor(-2368549);
       return;
@@ -283,36 +294,40 @@ public class ReadinjoyJumpActivity
     {
       return;
       paramLayoutInflater = new JSONObject();
-      onh.a(false, paramLayoutInflater);
-      nol.a(null, "", "0X80094C1", "0X80094C1", 0, 0, "" + this.jdField_a_of_type_Int, this.jdField_a_of_type_Long + "", "", paramLayoutInflater.toString(), false);
+      ors.a(false, paramLayoutInflater);
+      nrt.a(null, "", "0X80094C1", "0X80094C1", 0, 0, "" + this.jdField_a_of_type_Int, this.jdField_a_of_type_Long + "", "", paramLayoutInflater.toString(), false);
       QLog.d("ReadinjoyJumpActivity", 1, "param_article_id : " + this.jdField_a_of_type_Long);
-      if (this.jdField_a_of_type_Int == 0) {
-        i = getActivity().getIntent().getIntExtra("arg_channel_cover_id", 0);
+      if (getActivity().getIntent().getBooleanExtra("daily_lock_screen_param", false)) {
+        i = otf.b();
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = osg.a().b(i, this.jdField_a_of_type_Long);
+      int j = i;
+      if (this.jdField_a_of_type_Int == 0) {
+        j = getActivity().getIntent().getIntExtra("arg_channel_cover_id", i);
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = owy.a().b(j, this.jdField_a_of_type_Long);
     } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null);
     ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 60000L);
-    osj.a().a(this.jdField_a_of_type_Osm);
+    oxb.a().a(this.jdField_a_of_type_Oxe);
   }
   
   public int getContentLayoutId()
   {
-    return 2131559952;
+    return 2131560050;
   }
   
   public boolean onBackEvent()
   {
     String str = this.jdField_a_of_type_Long + "";
     JSONObject localJSONObject = new JSONObject();
-    onh.a(false, localJSONObject);
-    nol.a(null, "", "0X80094C2", "0X80094C2", 0, 0, this.jdField_a_of_type_Int + "", str, "", localJSONObject.toString(), false);
+    ors.a(false, localJSONObject);
+    nrt.a(null, "", "0X80094C2", "0X80094C2", 0, 0, this.jdField_a_of_type_Int + "", str, "", localJSONObject.toString(), false);
     this.jdField_b_of_type_Boolean = true;
     return super.onBackEvent();
   }
   
   public void onDestroy()
   {
-    osj.a().b(this.jdField_a_of_type_Osm);
+    oxb.a().b(this.jdField_a_of_type_Oxe);
     super.onDestroy();
   }
   
@@ -327,7 +342,7 @@ public class ReadinjoyJumpActivity
     super.onStop();
     if (this.jdField_b_of_type_Boolean)
     {
-      osj.a().b(this.jdField_a_of_type_Osm);
+      oxb.a().b(this.jdField_a_of_type_Oxe);
       getActivity().finish();
     }
     QLog.d("ReadinjoyJumpActivity", 2, "onStop, needFinfish : " + this.jdField_b_of_type_Boolean);
@@ -346,7 +361,7 @@ public class ReadinjoyJumpActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyJumpActivity
  * JD-Core Version:    0.7.0.1
  */

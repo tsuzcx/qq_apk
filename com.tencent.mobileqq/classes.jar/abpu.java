@@ -1,24 +1,13 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-
-public class abpu
-  implements View.OnClickListener
+public abstract class abpu
 {
-  public abpu(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    paramView = new Intent(this.a.getActivity(), SoundAndVibrateActivity.class);
-    this.a.startActivity(paramView);
-    axqy.b(this.a.app, "CliOper", "", "", "0X800403C", "0X800403C", 0, 0, "", "", "", "");
-  }
+  public static int a;
+  public static String a = "http://zyjc.sec.qq.com/config?b=";
+  public static String b = "http://zyjc.sec.qq.com/reportFixer.php";
+  public static String c = "/sdcard/";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abpu
  * JD-Core Version:    0.7.0.1
  */

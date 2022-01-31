@@ -1,33 +1,19 @@
-public class aynl
-  implements ajte
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class aynl
+  implements View.OnClickListener
 {
-  protected void a() {}
+  aynl(aynf paramaynf, aykh paramaykh, ayss paramayss) {}
   
-  protected void a(ayno paramayno, int paramInt, String paramString, long paramLong1, long paramLong2, Object paramObject) {}
-  
-  protected void a(boolean paramBoolean, ayno paramayno, int paramInt, String paramString) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (ayno)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-      return;
-      paramObject = (Object[])paramObject;
-      a((ayno)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Long)paramObject[3]).longValue(), ((Long)paramObject[4]).longValue(), paramObject[5]);
-      return;
-    } while (!paramBoolean);
-    a();
+    this.jdField_a_of_type_Aykh.a(this.jdField_a_of_type_Ayss.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aynl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,109 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import org.json.JSONObject;
 
-class bjgb
-  extends tew
+public class bjgb
 {
-  bjgb(bjga parambjga, String paramString)
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
+  final int jdField_b_of_type_Int;
+  final String jdField_b_of_type_JavaLangString;
+  final String c;
+  final String d;
+  
+  private bjgb(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4)
   {
-    super(paramString);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramString3;
+    this.d = paramString4;
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public static bjgb a(@NonNull BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    super.onLocationFinish(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      this.a.jdField_a_of_type_Bjfz.jdField_a_of_type_Double = paramSosoLbsInfo.a.jdField_a_of_type_Double;
-      this.a.jdField_a_of_type_Bjfz.b = paramSosoLbsInfo.a.b;
-      ved.b("FacePoiManager", "onLocationUpdate() latitude=" + this.a.jdField_a_of_type_Bjfz.jdField_a_of_type_Double + " longitude=" + this.a.jdField_a_of_type_Bjfz.b);
-      if (this.a.jdField_a_of_type_Boolean) {
-        this.a.jdField_a_of_type_Bjfz.a();
-      }
-      return;
+    int j = 0;
+    Object localObject1 = "0";
+    Object localObject2 = "0";
+    Object localObject4 = paramAppInfo.buffer.get();
+    Object localObject3;
+    if (!TextUtils.isEmpty((CharSequence)localObject4)) {
+      localObject3 = localObject1;
     }
-    this.a.jdField_a_of_type_Bjfz.jdField_a_of_type_Double = 0.0D;
-    this.a.jdField_a_of_type_Bjfz.b = 0.0D;
-    ved.b("FacePoiManager", "onLocationUpdate() error");
-    this.a.jdField_a_of_type_Bjfz.jdField_a_of_type_Bjgc.a(false, false, null, null);
+    for (;;)
+    {
+      try
+      {
+        localObject4 = new JSONObject((String)localObject4);
+        localObject3 = localObject1;
+        localObject1 = ((JSONObject)localObject4).getString("trace_id");
+        localObject3 = localObject1;
+        i = ((JSONObject)localObject4).getInt("trace_num");
+        i += 1;
+        int k;
+        paramAppInfo.printStackTrace();
+      }
+      catch (Exception paramAppInfo)
+      {
+        try
+        {
+          localObject3 = ((JSONObject)localObject4).getString("ad_id");
+          localObject2 = localObject3;
+          k = paramAppInfo.uiAppId.get();
+          j = k;
+          localObject2 = localObject3;
+          return new bjgb((String)localObject1, i, (String)localObject2, j, "vab_red", "vab_red");
+        }
+        catch (Exception paramAppInfo)
+        {
+          break label123;
+        }
+        paramAppInfo = paramAppInfo;
+        i = 0;
+        localObject1 = localObject3;
+      }
+      label123:
+      continue;
+      int i = 0;
+    }
+  }
+  
+  public String a()
+  {
+    return "trace_detail_ad_id=" + this.jdField_b_of_type_JavaLangString + "&trace_detail_app_id=" + this.jdField_b_of_type_Int;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (bjgb)paramObject;
+    } while ((this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) && (this.jdField_b_of_type_JavaLangString.equals(paramObject.jdField_b_of_type_JavaLangString)) && (this.jdField_b_of_type_Int == paramObject.jdField_b_of_type_Int));
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  public String toString()
+  {
+    return "ReportKey{traceId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", traceNum=" + this.jdField_a_of_type_Int + ", adId=" + this.jdField_b_of_type_JavaLangString + ", appId=" + this.jdField_b_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjgb
  * JD-Core Version:    0.7.0.1
  */

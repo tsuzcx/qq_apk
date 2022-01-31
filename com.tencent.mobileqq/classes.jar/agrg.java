@@ -1,13 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface agrg
+class agrg
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent);
+  agrg(agrf paramagrf) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agrg
  * JD-Core Version:    0.7.0.1
  */

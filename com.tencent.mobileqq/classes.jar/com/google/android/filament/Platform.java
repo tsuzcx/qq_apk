@@ -1,6 +1,6 @@
 package com.google.android.filament;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 abstract class Platform
 {
@@ -62,7 +62,7 @@ abstract class Platform
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.Platform
  * JD-Core Version:    0.7.0.1
  */

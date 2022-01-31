@@ -1,29 +1,53 @@
-public class vzg
+import android.support.annotation.NonNull;
+import java.lang.ref.WeakReference;
+
+class vzg
+  implements vzf
 {
-  public static Throwable a(String paramString)
+  private final int jdField_a_of_type_Int;
+  @NonNull
+  private final WeakReference<vzf> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public vzg(@NonNull vzf paramvzf)
   {
-    return new NullPointerException(paramString);
+    this.jdField_a_of_type_Int = System.identityHashCode(paramvzf);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramvzf);
   }
   
-  public static Throwable a(String paramString, Throwable paramThrowable)
+  private boolean a()
   {
-    if (paramThrowable == null) {
-      return new IllegalStateException(paramString);
-    }
-    return new IllegalStateException(paramString, paramThrowable);
+    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
   }
   
-  public static Throwable b(String paramString, Throwable paramThrowable)
+  public void a(@NonNull vzd paramvzd)
   {
-    if (paramThrowable == null) {
-      return new Throwable(paramString);
+    vzf localvzf = (vzf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localvzf != null) {
+      localvzf.a(paramvzd);
     }
-    return new Throwable(paramString, paramThrowable);
+  }
+  
+  public void b(@NonNull vzd paramvzd)
+  {
+    vzf localvzf = (vzf)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localvzf != null) {
+      localvzf.b(paramvzd);
+    }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof vzg)) && (((vzg)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vzg
  * JD-Core Version:    0.7.0.1
  */

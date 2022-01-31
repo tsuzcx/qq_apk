@@ -1,163 +1,277 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.os.Build.VERSION;
-import android.preference.PreferenceManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.bgprobe.BackgroundException;
-import com.tencent.mobileqq.bgprobe.BackgroundProbeManager.1;
-import com.tencent.mobileqq.bgprobe.BackgroundProbeManager.2;
-import com.tencent.mobileqq.bgprobe.BackgroundService;
+import android.content.ServiceConnection;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import android.util.SparseArray;
+import android.view.View;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler.2;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class amad
+  extends alko
 {
-  private static final long jdField_a_of_type_Long = TimeUnit.DAYS.toMillis(1L);
-  private static boolean jdField_a_of_type_Boolean;
-  private static boolean jdField_b_of_type_Boolean;
-  private static boolean c;
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.context;
-  private long jdField_b_of_type_Long = PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).getLong("KEY_LAST_PROBE_SERVICE_START_TIME_MS", 0L);
+  private volatile int jdField_a_of_type_Int = 0;
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new amaf(this);
+  public Handler a;
+  private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  public Messenger a;
+  SparseArray<amai> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private final ArrayList<amah> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final LinkedBlockingQueue<Integer> jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue = new LinkedBlockingQueue();
+  private volatile boolean jdField_a_of_type_Boolean;
+  private Handler jdField_b_of_type_AndroidOsHandler;
+  public Messenger b;
+  private volatile boolean jdField_b_of_type_Boolean;
   
-  private amad()
+  public amad(QQAppInterface paramQQAppInterface)
   {
-    if (new Random(System.currentTimeMillis()).nextInt(100000) == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      c = bool;
-      return;
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_AndroidOsMessenger = null;
+    this.jdField_b_of_type_AndroidOsMessenger = null;
+    this.jdField_a_of_type_AndroidOsHandler = new amae(this, Looper.getMainLooper(), paramQQAppInterface);
+  }
+  
+  private void a(int paramInt)
+  {
+    if ((this.jdField_b_of_type_Boolean) && (QLog.isColorLevel())) {
+      QLog.w("UploadPhoto", 2, "TroopQZoneUploadAlbumHandler 已经被销毁，不能sumbmit");
+    }
+    b();
+    if (!this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.contains(Integer.valueOf(paramInt))) {
+      this.jdField_a_of_type_JavaUtilConcurrentLinkedBlockingQueue.offer(Integer.valueOf(paramInt));
     }
   }
   
-  private static int a()
+  private void a(int paramInt1, amai paramamai, int paramInt2, int paramInt3)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getPackageManager();
-    try
-    {
-      localObject = ((PackageManager)localObject).getApplicationInfo("com.tencent.mobileqq", 128);
-      if (localObject != null)
-      {
-        int i = ((ApplicationInfo)localObject).targetSdkVersion;
-        return i;
-      }
-    }
-    catch (Throwable localThrowable) {}
-    return 0;
-  }
-  
-  public static amad a()
-  {
-    return amae.a();
-  }
-  
-  public static void a()
-  {
-    amad localamad = a();
-    BackgroundProbeManager.1 local1 = new BackgroundProbeManager.1(localamad);
-    BackgroundProbeManager.2 local2 = new BackgroundProbeManager.2(localamad);
-    boolean bool = localamad.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("BackgroundProbeManager", 2, "onRunningBackground: invoked.  probeEnabled: " + bool);
-    }
-    if (bool) {
-      azjx.a(local1, 180000L);
-    }
-    azjx.a(local2, 181000L);
-  }
-  
-  public static void a(Intent paramIntent)
-  {
-    if (new Random(System.currentTimeMillis()).nextInt(400) == 0) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((c) && (b()) && (!jdField_b_of_type_Boolean) && (i != 0) && (paramIntent.getComponent() == null))
-      {
-        BackgroundException localBackgroundException = new BackgroundException("Implicit Broadcast");
-        axpu.a(localBackgroundException, "intent: " + paramIntent.toString());
-        jdField_b_of_type_Boolean = true;
-        if (QLog.isColorLevel()) {
-          QLog.i("BackgroundProbeManager", 2, "reportImplicitBroadcast: invoked.  exception: " + localBackgroundException);
-        }
-      }
-      return;
-    }
-  }
-  
-  private boolean a()
-  {
-    if (System.currentTimeMillis() - this.jdField_b_of_type_Long > jdField_a_of_type_Long) {}
-    for (int i = 1; (b()) && (i != 0); i = 0) {
-      return true;
-    }
-    return false;
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+    localMessage.what = 1;
+    localMessage.obj = new Object[] { Integer.valueOf(paramInt1), paramamai, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) };
+    localMessage.sendToTarget();
   }
   
   private void b()
   {
-    try
+    if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 1)) {}
+    do
     {
-      if (!jdField_a_of_type_Boolean)
-      {
-        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, BackgroundService.class);
-        this.jdField_a_of_type_AndroidContentContext.startService(localIntent);
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
-        jdField_a_of_type_Boolean = true;
-        PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit().putLong("KEY_LAST_PROBE_SERVICE_START_TIME_MS", this.jdField_b_of_type_Long).apply();
-      }
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      axpu.a(new BackgroundException("startProbeService failed"));
-    }
+      if (!this.jdField_b_of_type_Boolean) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w("UploadPhoto", 2, "TroopQZoneUploadAlbumHandler 已经被销毁，不能doBindService");
+    return;
+    this.jdField_a_of_type_Int = 1;
+    bizm.a(this.app, this.jdField_a_of_type_AndroidContentServiceConnection);
   }
   
-  private static boolean b()
+  private void b(int paramInt)
   {
-    int i;
-    if (a() >= 26)
-    {
-      i = 1;
-      if (Build.VERSION.SDK_INT < 24) {
-        break label35;
-      }
+    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.size() == 0) {
+      a();
     }
-    label35:
-    for (int j = 1;; j = 0)
-    {
-      if ((i == 0) || (j == 0)) {
-        break label40;
-      }
-      return true;
-      i = 0;
-      break;
+    while (this.jdField_a_of_type_AndroidOsMessenger == null) {
+      return;
     }
-    label40:
-    return false;
+    Message localMessage = Message.obtain(null, 999, paramInt, 0);
+    try
+    {
+      this.jdField_a_of_type_AndroidOsMessenger.send(localMessage);
+      return;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      localRemoteException.printStackTrace();
+    }
   }
   
   private void c()
   {
-    try
+    if (this.jdField_a_of_type_AndroidOsHandlerThread == null)
     {
-      if (jdField_a_of_type_Boolean)
-      {
-        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, BackgroundService.class);
-        this.jdField_a_of_type_AndroidContentContext.stopService(localIntent);
-      }
+      this.jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("UploadPhoto", 5);
+      this.jdField_a_of_type_AndroidOsHandlerThread.start();
+      this.jdField_b_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    }
+    this.jdField_b_of_type_AndroidOsHandler.post(new TroopQZoneUploadAlbumHandler.2(this));
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 3) {
       return;
     }
-    catch (Throwable localThrowable)
+    BaseApplication.getContext().unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  protected void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    amai localamai = (amai)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt2, null);
+    if (localamai == null) {
+      return;
+    }
+    a(paramInt2, localamai, paramInt1, paramInt3);
+  }
+  
+  public void a(int paramInt, String paramString, long paramLong)
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray.append(paramInt, new amai(this, paramString, paramLong));
+    }
+    a(paramInt);
+  }
+  
+  void a(long paramLong, int paramInt1, int paramInt2)
+  {
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("BackgroundProbeManager", 2, "stopProbeService: failed. ", localThrowable);
+      Object localObject = (amah)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      View localView = ((amah)localObject).a();
+      localObject = ((amah)localObject).a();
+      if ((localView != null) && (localObject != null)) {
+        ((amag)localObject).a(localView, paramLong, paramInt1, paramInt2);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        this.jdField_a_of_type_JavaUtilArrayList.remove(i);
+        i -= 1;
+      }
     }
   }
+  
+  public void a(View paramView, amag paramamag)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      amah localamah = (amah)localIterator.next();
+      if (localamah.a() == paramView)
+      {
+        localamah.b = new WeakReference(paramamag);
+        return;
+      }
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(new amah(this, paramView, paramamag));
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, long paramLong, int paramInt2, int paramInt3)
+  {
+    Object localObject1 = paramQQAppInterface.a().a(paramString, 1, paramLong);
+    if (localObject1 == null)
+    {
+      b(paramInt1);
+      return;
+    }
+    if (((MessageRecord)localObject1).msgtype == -2011)
+    {
+      localObject2 = ((MessageForStructing)localObject1).structingMsg;
+      if (!(localObject2 instanceof StructMsgForGeneralShare)) {}
+    }
+    for (Object localObject2 = (StructMsgForGeneralShare)localObject2;; localObject2 = null)
+    {
+      if ((localObject2 == null) || (((StructMsgForGeneralShare)localObject2).getProgress() < 0))
+      {
+        b(paramInt1);
+        return;
+      }
+      if ((paramInt2 == 1001) && (((MessageRecord)localObject1).extraflag != 32768))
+      {
+        ((StructMsgForGeneralShare)localObject2).setSummary(BaseApplication.getContext().getResources().getString(2131690826));
+        ((StructMsgForGeneralShare)localObject2).setProgress(paramInt3);
+        return;
+      }
+      paramInt1 = 32772;
+      localObject1 = BaseApplication.getContext().getResources().getString(2131690827);
+      if ((paramInt2 == 1000) || (paramInt2 == 1004))
+      {
+        localObject1 = BaseApplication.getContext().getResources().getString(2131690827);
+        paramInt1 = 32772;
+      }
+      for (;;)
+      {
+        ((StructMsgForGeneralShare)localObject2).setProgress(100);
+        ((StructMsgForGeneralShare)localObject2).setSummary((String)localObject1);
+        ((StructMsgForGeneralShare)localObject2).mMsgBrief = (alpo.a(2131716101) + (String)localObject1);
+        paramQQAppInterface.a().a(paramString, 1, paramLong);
+        paramQQAppInterface.a().a(paramString, 1, paramLong, paramInt1, 0);
+        paramQQAppInterface.a().a(paramString, 1, paramLong, ((StructMsgForGeneralShare)localObject2).getBytes());
+        notifyUI(999, true, paramString);
+        return;
+        if (paramInt2 == 1003)
+        {
+          localObject1 = BaseApplication.getContext().getResources().getString(2131690825);
+          paramInt1 = 32768;
+        }
+        else if (paramInt2 == 1005)
+        {
+          localObject1 = BaseApplication.getContext().getResources().getString(2131690824);
+          paramInt1 = 32770;
+          ((StructMsgForGeneralShare)localObject2).mMsgActionData = "";
+          ((StructMsgForGeneralShare)localObject2).mMsg_A_ActionData = "";
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    a();
+    try
+    {
+      bizm.a(this.app.getApp());
+      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+      return true;
+    }
+    catch (Exception localException)
+    {
+      QLog.i("UploadPhoto", 1, "", localException);
+    }
+    return false;
+  }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return amaj.class;
+  }
+  
+  public void onDestroy()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("UploadPhoto", 2, "onDestroy");
+    }
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null) {
+      this.jdField_a_of_type_AndroidOsHandlerThread.interrupt();
+    }
+    a();
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

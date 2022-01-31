@@ -1,46 +1,20 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-import mqq.observer.ServerNotifyObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class acpb
-  extends ServerNotifyObserver
+  implements DialogInterface.OnClickListener
 {
-  public acpb(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public acpb(DialogActivity paramDialogActivity) {}
   
-  public void onReceiveVerifyCode(String paramString1, int paramInt, String paramString2, byte[] paramArrayOfByte)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b = false;
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setText("");
-      bcql.a(this.a.getApplicationContext(), 1, this.a.getString(2131720723), 0).a();
-    }
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setKey(paramString1);
-    this.a.jdField_a_of_type_MqqObserverServerNotifyObserver.setSeq(paramInt);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString().length() > 4)) {
-      VerifyCodeActivity.a(this.a, true);
-    }
-    if (paramArrayOfByte != null)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(baxi.a(paramArrayOfByte, 0, paramArrayOfByte.length));
-      this.a.a(false);
-      return;
-    }
-    Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131720718), 1).show();
-  }
-  
-  public void onVerifyClose()
-  {
-    this.a.finish();
+    paramDialogInterface.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acpb
  * JD-Core Version:    0.7.0.1
  */

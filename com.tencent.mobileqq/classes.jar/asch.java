@@ -1,58 +1,32 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.4;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
 
 public class asch
-  extends bbwt
+  extends amle
 {
-  public asch(PngFrameManager.4 param4, String paramString) {}
-  
-  public void onDone(bbwu parambbwu)
+  public asch(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngFrameManager", 2, "func onDone.【pngZip】");
-    }
-    for (;;)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt != 0)
     {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a != null)
-        {
-          if (parambbwu.a() != 3) {
-            this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a.obtainMessage(226, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a).sendToTarget();
-          }
-        }
-        else {
-          return;
-        }
-      }
-      try
-      {
-        bbdx.a(this.jdField_a_of_type_JavaLangString, anzr.z.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a.jdField_a_of_type_JavaLangString), false);
-        new File(this.jdField_a_of_type_JavaLangString).delete();
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.b(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a.jdField_a_of_type_Adus.a.a.epId);
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.this$0.a.obtainMessage(225, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$4.a).sendToTarget();
-        continue;
-        parambbwu = finally;
-        throw parambbwu;
-      }
-      catch (IOException parambbwu)
-      {
-        for (;;)
-        {
-          parambbwu.printStackTrace();
-        }
-      }
+      QQToast.a(this.a.a, 1, alpo.a(2131708051), 1).a();
+      this.a.f();
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
+    }
+    this.a.a(paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asch
  * JD-Core Version:    0.7.0.1
  */

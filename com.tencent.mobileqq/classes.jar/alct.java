@@ -1,98 +1,62 @@
+import android.app.ActivityManager;
+import android.os.Debug.MemoryInfo;
+import android.os.Process;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.theme.SkinEngine;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Iterator;
 
 public class alct
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private int b;
-  
-  public alct(int paramInt)
+  public static String a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  private int a(float paramFloat)
-  {
-    if ((paramFloat > 1.0F) || (paramFloat <= 0.0F)) {
-      throw new IndexOutOfBoundsException("the percent out of index");
-    }
-    int j = (int)(this.jdField_a_of_type_JavaUtilArrayList.size() * paramFloat - 1.0F);
-    int i = j;
-    if (j < 0) {
-      i = 0;
-    }
-    return i;
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public alcu a()
-  {
-    long l1;
-    long l2;
-    long l3;
-    long l4;
-    long l5;
-    double d;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    StringBuilder localStringBuilder = new StringBuilder("RAM Info:all=");
+    try
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0)
+      Object localObject = new DecimalFormat();
+      ((DecimalFormat)localObject).applyPattern("0.0");
+      long l1 = bdcb.d() / 1024L / 1024L;
+      long l2 = bdcb.e() / 1024L / 1024L;
+      Debug.MemoryInfo[] arrayOfMemoryInfo = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getProcessMemoryInfo(new int[] { Process.myPid() });
+      float f2 = -1.0F;
+      float f1 = f2;
+      if (arrayOfMemoryInfo != null)
       {
-        localObject = new alcu(-1L, -1L, -1L, -1L, -1L, -1.0D, null, 0);
-        return localObject;
+        f1 = f2;
+        if (arrayOfMemoryInfo.length > 0) {
+          f1 = arrayOfMemoryInfo[0].getTotalPss() / 1024.0F;
+        }
       }
-      Object localObject = new long[this.jdField_a_of_type_JavaUtilArrayList.size()];
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      f2 = (float)Runtime.getRuntime().freeMemory() / 1024.0F / 1024.0F;
+      float f3 = (float)Runtime.getRuntime().totalMemory() / 1024.0F / 1024.0F;
+      float f4 = (float)Runtime.getRuntime().maxMemory() / 1024.0F / 1024.0F;
+      localStringBuilder.append(l1).append("M,avaiable:").append(l2).append("M used:").append(((DecimalFormat)localObject).format(f1)).append("M freeMemory:").append(f2).append("M,appTotalMemory:").append(f3).append("M,maxMemory:").append(f4).append("M, ImgCache:").append(BaseApplicationImpl.sImageCache.size() / 1024 / 1024).append("M,SkinCache:").append(SkinEngine.dumpDrawableCacheMemSize() / 1024L / 1024L).append("M,LeakMonitor=").append(amfn.a().jdField_a_of_type_Boolean);
+      localObject = (ArrayList)amfn.jdField_a_of_type_JavaUtilArrayList.clone();
+      if (((ArrayList)localObject).size() > 0)
       {
-        localObject[i] = ((Long)this.jdField_a_of_type_JavaUtilArrayList.get(i)).longValue();
-        i += 1;
+        localStringBuilder.append(",Leaked=[");
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          localStringBuilder.append((String)((Iterator)localObject).next());
+          localStringBuilder.append(",");
+        }
       }
-      Arrays.sort((long[])localObject);
-      l1 = localObject[a(0.9F)];
-      l2 = localObject[a(0.8F)];
-      l3 = localObject[a(0.7F)];
-      l4 = localObject[0];
-      l5 = localObject[(localObject.length - 1)];
-      d = 0.0D;
-      i = 0;
-      if (i < localObject.length)
-      {
-        d += localObject[i];
-        i += 1;
-      }
+      return localStringBuilder.toString();
     }
-    return new alcu(l1, l2, l3, l4, l5, d / arrayOfLong.length, arrayOfLong, this.b);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.b = 0;
-  }
-  
-  public boolean a(long paramLong)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    catch (Throwable localThrowable) {}
+    for (;;)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(0);
-      }
+      localStringBuilder.append("]");
     }
-    if (!this.jdField_a_of_type_JavaUtilArrayList.add(Long.valueOf(paramLong))) {
-      return false;
-    }
-    this.b += 1;
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alct
  * JD-Core Version:    0.7.0.1
  */

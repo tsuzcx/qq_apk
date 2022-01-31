@@ -1,23 +1,21 @@
-import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
-public class akdf
-  extends RecyclablePool.Recyclable
+class akdf
+  implements View.OnClickListener
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public long c;
-  public long d;
+  akdf(akdd paramakdd) {}
   
-  public void recycle()
+  public void onClick(View paramView)
   {
-    super.recycle();
+    GroupManagerActivity.a(this.a.a);
+    azmj.b(akdd.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akdf
  * JD-Core Version:    0.7.0.1
  */

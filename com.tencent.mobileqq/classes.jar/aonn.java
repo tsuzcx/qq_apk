@@ -1,113 +1,78 @@
-import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.ArrayList;
-import java.util.List;
 
 public class aonn
-  extends aims
+  extends aofy<aono>
 {
-  private List<aonp> a;
-  
-  public aonn(BaseActivity paramBaseActivity, XListView paramXListView)
+  public int a()
   {
-    super(paramBaseActivity, paramBaseActivity.app, paramXListView, 1, true);
-    paramXListView.setAdapter(this);
+    return 535;
   }
   
-  public aonq a(int paramInt)
+  @NonNull
+  public aono a(int paramInt)
   {
-    if ((this.a != null) && (this.a.size() > paramInt)) {
-      return (aonq)this.a.get(paramInt);
+    return new aono();
+  }
+  
+  @Nullable
+  public aono a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null))
+    {
+      aono localaono = aono.a(paramArrayOfaogf[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("TogetherBusinessConfProcessor", 2, "onParsed " + paramArrayOfaogf[0].a);
+      }
+      return localaono;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, "onParsed is null");
     }
     return null;
   }
   
-  public void a(aonq paramaonq)
+  public Class<aono> a()
   {
-    if (getCount() == 0) {
-      this.a = new ArrayList();
+    return aono.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
     }
-    this.a.add(0, paramaonq);
-    notifyDataSetChanged();
   }
   
-  public void a(List<aonp> paramList)
+  public void a(aono paramaono)
   {
-    this.a = new ArrayList(paramList);
-    notifyDataSetChanged();
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, "onUpdate " + paramaono.toString());
+    }
   }
   
-  public int getCount()
+  public int b()
   {
-    if (this.a != null) {
-      return this.a.size();
+    if (QLog.isColorLevel()) {
+      QLog.d("TogetherBusinessConfProcessor", 2, "migrateOldVersion");
     }
     return 0;
   }
   
-  public long getItemId(int paramInt)
+  public boolean b()
   {
-    return 0L;
+    return false;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public boolean c()
   {
-    long l3 = System.currentTimeMillis();
-    View localView;
-    aonq localaonq;
-    long l1;
-    String str;
-    if (paramView == null)
-    {
-      localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559059, null);
-      paramViewGroup = new aono();
-      paramViewGroup.c = ((ImageView)localView.findViewById(2131366785));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366808));
-      localView.setTag(paramViewGroup);
-      long l2 = System.currentTimeMillis();
-      localaonq = a(paramInt);
-      l1 = l2;
-      if (localaonq != null)
-      {
-        paramViewGroup.jdField_a_of_type_JavaLangString = localaonq.e;
-        paramViewGroup.c.setImageBitmap(a(1, localaonq.e));
-        l1 = System.currentTimeMillis() - l2;
-        str = localaonq.jdField_a_of_type_JavaLangString;
-        if (str != null) {
-          break label213;
-        }
-        paramView = localaonq.e;
-      }
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, paramInt + ": totalTime = " + (System.currentTimeMillis() - l3) + ", faceBitmap = " + l1);
-      }
-      return localView;
-      paramViewGroup = (aono)paramView.getTag();
-      localView = paramView;
-      break;
-      label213:
-      paramView = str;
-      if (TextUtils.isEmpty(str.trim())) {
-        paramView = localaonq.e;
-      }
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonn
  * JD-Core Version:    0.7.0.1
  */

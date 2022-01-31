@@ -1,81 +1,39 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.quickat.ui.AIOAtSearchManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.util.SparseArray;
+import android.view.View;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
-class baen
-  extends akil
+public class baen
+  implements bhqd
 {
-  baen(baem parambaem) {}
+  public baen(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment, SparseArray paramSparseArray, bhpy parambhpy) {}
   
-  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AtPanel", 2, "onUpdateTroopGetMemberList troopUin=" + paramString + " isSuccess=" + paramBoolean + " reqType=" + paramInt1 + " type" + paramInt2 + " reqTimestamp=" + paramLong);
-    }
-    if (paramInt1 != 2) {}
-    do
+    if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
     {
-      return;
-      if ((paramString != null) && (paramString.equals(baem.a(this.a).a))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("AtPanel", 2, " onUpdateTroopGetMemberList troopUin =" + paramString + " mSession.troopUin=" + baem.a(this.a).a);
-    return;
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      if (QLog.isColorLevel())
+      paramInt = -1;
+      switch (paramInt)
       {
-        paramString = new StringBuilder().append(" onUpdateTroopGetMemberList troopMemberInfoList =");
-        if (paramList != null) {
-          break label224;
-        }
       }
-      label224:
-      for (paramInt1 = 0;; paramInt1 = paramList.size())
-      {
-        QLog.d("AtPanel", 2, paramInt1);
-        if (baem.a(this.a) != null) {
-          break label235;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AtPanel", 2, " onUpdateTroopGetMemberList mPopupWindow = null");
-        return;
-      }
-      label235:
-      baem.a(this.a).a(0, 2131689877);
-      return;
     }
-    paramString = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    for (;;)
     {
-      TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)paramList.next();
-      paramString.add(baes.a(baem.a(this.a), localTroopMemberInfo));
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment);
+      if (this.jdField_a_of_type_Bhpy.isShowing()) {
+        this.jdField_a_of_type_Bhpy.dismiss();
+      }
+      return;
+      paramInt = ((Integer)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt)).intValue();
+      break;
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 2);
+      continue;
+      TeamWorkAuthorizeSettingFragment.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkFragmentTeamWorkAuthorizeSettingFragment, 3);
     }
-    baem.a(this.a).a(paramString);
-    baem.a(this.a).a(baem.a(this.a), baem.a(this.a), baem.a(this.a).F());
-  }
-  
-  protected void b()
-  {
-    super.b();
-    if (QLog.isColorLevel()) {
-      QLog.d("AtPanel", 2, "onTroopMemberUpdate: invoked. ");
-    }
-    baem.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baen
  * JD-Core Version:    0.7.0.1
  */

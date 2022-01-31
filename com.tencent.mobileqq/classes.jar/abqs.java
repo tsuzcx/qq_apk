@@ -1,30 +1,19 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-
 public class abqs
-  implements awci
 {
-  public abqs(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public int a;
+  public long a;
+  public boolean a;
   
-  public void a(int paramInt, RichStatus paramRichStatus, Object paramObject) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  abqs(long paramLong, int paramInt)
   {
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean);
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    if (paramInt == -1) {
-      PermisionPrivacyActivity.a(this.a, 2131719386);
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.h.a(), PermisionPrivacyActivity.a(this.a).b());
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abqs
  * JD-Core Version:    0.7.0.1
  */

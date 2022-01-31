@@ -1,21 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.LocalMultiProcConfig;
-
-public final class bham
-  implements DialogInterface.OnClickListener
+public abstract interface bham
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false)) {
-      LocalMultiProcConfig.putBool("comboqz_protect_enable", false);
-    }
-    paramDialogInterface.dismiss();
-  }
+  public abstract void onRecordFrame(byte[] paramArrayOfByte, boolean paramBoolean);
+  
+  public abstract void onRecordPause();
+  
+  public abstract void onRecordResume();
+  
+  public abstract void onRecordStart();
+  
+  public abstract void onRecordStop(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract void onRecordUpdate(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bham
  * JD-Core Version:    0.7.0.1
  */

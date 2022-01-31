@@ -1,27 +1,21 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.widget.AbsListView;
 
 public class whh
-  implements Handler.Callback
+  implements bhpo
 {
-  public whh(ScannerActivity paramScannerActivity) {}
+  public whh(StoryMemoriesFragment paramStoryMemoriesFragment, xob paramxob) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.c();
-    }
+    this.jdField_a_of_type_Xob.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
   }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,11 @@
 package com.tencent.pts.core.itemview;
 
 import android.content.Context;
-import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
 import com.tencent.pts.core.PTSAppInstance;
 import com.tencent.pts.core.PTSRootNode;
-import com.tencent.pts.ui.PTSNodeAttribute;
 import com.tencent.pts.ui.PTSNodeFactory;
 import com.tencent.pts.ui.PTSNodeInfo;
 import com.tencent.pts.ui.vnode.PTSNodeVirtual;
@@ -15,16 +13,16 @@ import com.tencent.pts.utils.PTSLog;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.List;
 
 public class PTSItemView
   extends FrameLayout
 {
   public final String TAG = "PTSItemView";
-  private PTSAppInstance mAppInstance;
-  private HashMap<String, PTSNodeVirtual> mViewIDToNodeMap = new HashMap();
+  private PTSAppInstance appInstance;
+  private HashMap<String, List<PTSNodeVirtual>> viewIdToNodeListMap = new HashMap();
   
-  PTSItemView(Context paramContext)
+  public PTSItemView(Context paramContext)
   {
     super(paramContext);
   }
@@ -34,99 +32,58 @@ public class PTSItemView
     if ((paramPTSNodeVirtual == null) || (paramPTSNodeVirtual.getView() == null)) {
       return;
     }
+    ViewGroup.LayoutParams localLayoutParams;
     if (paramPTSNodeVirtual.getView().getParent() == null)
     {
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
-      addView(paramPTSNodeVirtual.getView(), localLayoutParams);
-      return;
+      addView(paramPTSNodeVirtual.getView());
+      localLayoutParams = getLayoutParams();
+      if (localLayoutParams != null) {
+        break label116;
+      }
     }
-    PTSLog.d("PTSItemView", "[attachRootNode], do not attach again.");
+    for (paramPTSNodeVirtual = new ViewGroup.LayoutParams(paramPTSNodeVirtual.getWidth(), paramPTSNodeVirtual.getHeight());; paramPTSNodeVirtual = localLayoutParams)
+    {
+      if (PTSLog.isDebug()) {
+        PTSLog.i("PTSItemView", "[attachRootNode], lp.width = " + paramPTSNodeVirtual.width + ", lp.height = " + paramPTSNodeVirtual.height);
+      }
+      setLayoutParams(paramPTSNodeVirtual);
+      return;
+      PTSLog.d("PTSItemView", "[attachRootNode], do not attach again.");
+      break;
+      label116:
+      localLayoutParams.width = paramPTSNodeVirtual.getWidth();
+      localLayoutParams.height = paramPTSNodeVirtual.getHeight();
+    }
   }
   
-  private void bindDataImpl(PTSAppInstance paramPTSAppInstance, PTSNodeInfo paramPTSNodeInfo)
+  private void bindDataImpl(PTSAppInstance paramPTSAppInstance, PTSNodeInfo paramPTSNodeInfo, HashMap<String, List<PTSNodeVirtual>> paramHashMap)
   {
-    HashMap localHashMap1 = this.mViewIDToNodeMap;
-    HashMap localHashMap2 = new HashMap(localHashMap1);
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(paramPTSNodeInfo);
-    paramPTSNodeInfo = null;
-    label321:
-    for (;;)
-    {
-      PTSNodeInfo localPTSNodeInfo;
-      Object localObject2;
-      Object localObject1;
-      if (!localLinkedList.isEmpty())
-      {
-        localPTSNodeInfo = (PTSNodeInfo)localLinkedList.remove();
-        localObject2 = localPTSNodeInfo.getAttributes().getViewID();
-        localObject1 = (PTSNodeVirtual)localHashMap1.get(localObject2);
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-          localHashMap2.remove(localObject2);
-        }
-        if (localObject1 == null)
-        {
-          localObject1 = PTSNodeFactory.buildVirtualNodeBFS(localPTSNodeInfo, paramPTSAppInstance, localHashMap1);
-          if (localObject1 != null) {
-            ((PTSNodeVirtual)localObject1).bindNodeInfo(localPTSNodeInfo);
-          }
-          if (localPTSNodeInfo.isRootNode())
-          {
-            paramPTSNodeInfo = (PTSNodeInfo)localObject1;
-            localObject2 = localObject1;
-            localObject1 = paramPTSNodeInfo;
-            paramPTSNodeInfo = (PTSNodeInfo)localObject2;
-          }
-        }
-      }
-      for (;;)
-      {
-        if (localObject1 != null) {
-          ((PTSNodeVirtual)localObject1).showNode();
-        }
-        if (!localPTSNodeInfo.isContainer()) {
-          break label321;
-        }
-        localLinkedList.addAll(localPTSNodeInfo.getChildren());
-        break;
-        if (localPTSNodeInfo.hasParent())
-        {
-          localObject2 = localPTSNodeInfo.getParentID();
-          Iterator localIterator = localHashMap1.values().iterator();
-          while (localIterator.hasNext())
-          {
-            PTSNodeVirtual localPTSNodeVirtual = (PTSNodeVirtual)localIterator.next();
-            if ((localPTSNodeVirtual.getNodeInfo() != null) && (TextUtils.equals(localPTSNodeVirtual.getNodeInfo().getUniqueID(), (CharSequence)localObject2)))
-            {
-              localPTSNodeVirtual.addChild((PTSNodeVirtual)localObject1);
-              PTSLog.d("PTSItemView", "[bindDataImpl] has find parent node, currentNodeInfo = " + localPTSNodeInfo);
-            }
-          }
-          continue;
-          ((PTSNodeVirtual)localObject1).bindNodeInfo(localPTSNodeInfo);
-          continue;
-          paramPTSAppInstance = localHashMap2.values().iterator();
-          while (paramPTSAppInstance.hasNext()) {
-            ((PTSNodeVirtual)paramPTSAppInstance.next()).hideNode();
-          }
-          attachRootNode(paramPTSNodeInfo);
-          return;
-        }
-      }
-    }
+    attachRootNode(PTSNodeFactory.bindData(paramPTSAppInstance, paramPTSNodeInfo, paramHashMap));
   }
   
   private void updateAppInstance(PTSAppInstance paramPTSAppInstance)
   {
-    this.mAppInstance = paramPTSAppInstance;
-    this.mAppInstance.getRootNode().setRootView(this);
-    Iterator localIterator = this.mViewIDToNodeMap.values().iterator();
-    while (localIterator.hasNext()) {
-      ((PTSNodeVirtual)localIterator.next()).setPTSAppInstance(paramPTSAppInstance);
+    this.appInstance = paramPTSAppInstance;
+    this.appInstance.getRootNode().setRootView(this);
+    Iterator localIterator = this.viewIdToNodeListMap.values().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (List)localIterator.next();
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          PTSNodeVirtual localPTSNodeVirtual = (PTSNodeVirtual)((Iterator)localObject).next();
+          if (localPTSNodeVirtual != null) {
+            localPTSNodeVirtual.setPTSAppInstance(paramPTSAppInstance);
+          }
+        }
+      }
     }
   }
   
-  void bindData(PTSAppInstance paramPTSAppInstance)
+  public void bindData(PTSAppInstance paramPTSAppInstance)
   {
     if (paramPTSAppInstance == null)
     {
@@ -140,17 +97,17 @@ public class PTSItemView
       PTSLog.i("PTSItemView", "[bindData], rootNodeInfo is null.");
       return;
     }
-    bindDataImpl(paramPTSAppInstance, localPTSNodeInfo);
+    bindDataImpl(paramPTSAppInstance, localPTSNodeInfo, this.viewIdToNodeListMap);
   }
   
   public PTSAppInstance getAppInstance()
   {
-    return this.mAppInstance;
+    return this.appInstance;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.core.itemview.PTSItemView
  * JD-Core Version:    0.7.0.1
  */

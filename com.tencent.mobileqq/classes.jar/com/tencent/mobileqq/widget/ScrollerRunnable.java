@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.widget;
 
-import acup;
+import aelz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.ViewConfiguration;
-import bbdh;
+import bdcb;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
@@ -45,11 +45,11 @@ public class ScrollerRunnable
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
     this.e = ViewConfiguration.get(this.jdField_a_of_type_ComTencentWidgetListView.getContext()).getScaledFadingEdgeLength();
-    if (bbdh.d() / 1048576L > 512L) {}
+    if (bdcb.d() / 1048576L > 512L) {}
     for (;;)
     {
       this.jdField_a_of_type_Boolean = bool;
-      this.l = ((int)(this.jdField_a_of_type_ComTencentWidgetListView.getContext().getResources().getDimension(2131298865) + 0.5D));
+      this.l = ((int)(this.jdField_a_of_type_ComTencentWidgetListView.getContext().getResources().getDimension(2131298914) + 0.5D));
       return;
       bool = false;
     }
@@ -298,9 +298,9 @@ public class ScrollerRunnable
     if ((this.k == 5) && (this.jdField_a_of_type_Long > 0L))
     {
       localObject = this.jdField_a_of_type_ComTencentWidgetListView.getAdapter();
-      if ((localObject instanceof acup))
+      if ((localObject instanceof aelz))
       {
-        localObject = ((acup)localObject).a();
+        localObject = ((aelz)localObject).a();
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
           i1 = ((List)localObject).size();

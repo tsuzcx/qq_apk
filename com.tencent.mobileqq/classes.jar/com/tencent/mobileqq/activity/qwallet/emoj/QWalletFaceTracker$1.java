@@ -1,69 +1,153 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import ahbr;
-import android.content.Context;
-import android.text.TextUtils;
-import axna;
-import axnb;
-import axni;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Iterator;
+import com.tencent.ttpic.openapi.PTFaceAttr;
+import java.util.ArrayList;
 import java.util.List;
-import ltq;
+import lvw;
+import lvx;
+import lvy;
 
 class QWalletFaceTracker$1
-  implements ahbr
+  implements Runnable
 {
-  QWalletFaceTracker$1(QWalletFaceTracker paramQWalletFaceTracker, String paramString1, String paramString2, Context paramContext, IBaseRecognizer paramIBaseRecognizer) {}
+  QWalletFaceTracker$1(QWalletFaceTracker paramQWalletFaceTracker, int paramInt1, int paramInt2, QWalletFaceTracker.OnPreviewFrameHandlerListener paramOnPreviewFrameHandlerListener) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(QWalletFaceTracker.TAG, 2, "getResPath onResult: " + this.val$url + " resCode " + paramInt + " filePath: " + paramPathResult.folderPath);
-    }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(this.val$configPath)))
+    try
     {
-      if (this.this$0.expressionItemList == null) {
-        this.this$0.expressionItemList = FaceDetector.getInstance().parseExpressionConfigFromJson(this.val$context, this.val$configPath, "expression");
-      }
-      Object localObject2;
-      if ((this.this$0.normalFaceExpression == null) && (this.this$0.expressionItemList != null) && (this.this$0.expressionItemList.size() > 0))
+      if (QWalletFaceTracker.access$000(this.this$0) == null)
       {
-        localObject1 = this.this$0.expressionItemList.iterator();
-        while (((Iterator)localObject1).hasNext())
+        if (!QLog.isColorLevel()) {
+          break label633;
+        }
+        QLog.d(QWalletFaceTracker.TAG, 2, "【onPreviewFrameHandler】init QQFilterRenderManage error");
+        return;
+      }
+      localObject = QWalletFaceTracker.access$000(this.this$0).getFaceAttr();
+      if (QLog.isColorLevel()) {
+        QLog.d(QWalletFaceTracker.TAG, 2, "【onPreviewFrameHandler】faceAttr score: " + localObject);
+      }
+      if (localObject != null) {
+        break label131;
+      }
+      if (!QLog.isColorLevel()) {
+        break label633;
+      }
+      QLog.d(QWalletFaceTracker.TAG, 2, "【onPreviewFrameHandler】 QQFilterRenderManage.getFaceAttr() error  PTFaceAttr is null");
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      if (!QLog.isColorLevel()) {
+        break label633;
+      }
+    }
+    QLog.e(QWalletFaceTracker.TAG, 2, "error: " + localThrowable.getLocalizedMessage());
+    return;
+    label131:
+    List localList = ((PTFaceAttr)localObject).getAllFacePoints();
+    Object localObject = ((PTFaceAttr)localObject).getAllFaceAngles();
+    float f2;
+    float f1;
+    if ((localList != null) && (localList.size() > 0) && (localObject != null) && (((List)localObject).size() > 0))
+    {
+      localList = (List)localList.get(0);
+      localObject = (float[])((List)localObject).get(0);
+      if ((localList != null) && (localList.size() > 0) && (localObject != null) && (localObject.length > 0)) {
+        if (this.this$0.expressionItemList != null)
         {
-          localObject2 = (QWalletFaceTracker.ExpressionInfo)((Iterator)localObject1).next();
-          if (((QWalletFaceTracker.ExpressionInfo)localObject2).expressionItem.expressionID.equals("99")) {
-            this.this$0.normalFaceExpression = ((QWalletFaceTracker.ExpressionInfo)localObject2).expressionItem;
+          QWalletFaceTracker.ExpressionInfo localExpressionInfo = (QWalletFaceTracker.ExpressionInfo)this.this$0.expressionItemList.get(this.val$index);
+          if (localExpressionInfo != null)
+          {
+            lvx locallvx = localExpressionInfo.expressionItem;
+            lvy locallvy = lvw.a(locallvx, new ArrayList(localList), lvw.b((float[])localObject));
+            f2 = locallvy.a;
+            if (QLog.isColorLevel()) {
+              QLog.d(QWalletFaceTracker.TAG, 2, "detectFaceExpression score: " + f2 + " threshold: " + this.val$threshold);
+            }
+            f1 = f2;
+            if (f2 > this.val$threshold)
+            {
+              f1 = f2;
+              if (this.this$0.normalFaceExpression != null)
+              {
+                if ((locallvx.expressionWeight[0] <= 0.0D) || (locallvx.expressionWeight[1] <= 0.0D) || (lvw.a(locallvy))) {
+                  break label628;
+                }
+                if (!QLog.isColorLevel()) {
+                  break label634;
+                }
+                QLog.d(QWalletFaceTracker.TAG, 2, "detectFaceExpression, invalid EyeOpenClose,reset score");
+                break label634;
+                boolean bool = QWalletFaceTracker.access$100(this.this$0, locallvy.a, localExpressionInfo.coolValue, locallvx.expressionWeight, locallvx.a, this.this$0.normalFaceExpression, localList, lvw.b((float[])localObject));
+                if (QLog.isColorLevel()) {
+                  QLog.d(QWalletFaceTracker.TAG, 2, "isNormalExpression: " + f1);
+                }
+                if (!bool) {
+                  break label625;
+                }
+                if (!QLog.isColorLevel()) {
+                  break label639;
+                }
+                QLog.d(QWalletFaceTracker.TAG, 2, "detectFaceExpression, is normalFaceExpression,reset score");
+                break label639;
+              }
+            }
           }
         }
       }
-      Object localObject1 = new axna[this.this$0.soFileNames.length];
-      paramInt = 0;
-      while (paramInt < this.this$0.soFileNames.length)
-      {
-        localObject2 = this.this$0.soFileNames[paramInt];
-        localObject1[paramInt] = new axnb().a(new File(paramPathResult.folderPath, (String)localObject2).getAbsolutePath()).a();
-        paramInt += 1;
-      }
-      axni.a().a(this.this$0.soNames, new QWalletFaceTracker.1.1(this, paramPathResult), (axna[])localObject1);
     }
-    do
+    for (;;)
     {
-      return;
-      this.this$0.hasSDkInit = false;
       if (QLog.isColorLevel()) {
-        QLog.e(QWalletFaceTracker.TAG, 2, "download fail url: " + this.val$url + " resCode " + paramInt);
+        QLog.d(QWalletFaceTracker.TAG, 2, "similarityResult: " + f1);
       }
-    } while (this.val$baseRecognizer == null);
-    this.val$baseRecognizer.OnInitResultCallback(this.this$0.hasSDkInit);
+      if (this.val$listener != null)
+      {
+        this.val$listener.getFaceRecognizeResult(f1);
+        return;
+        if (QLog.isColorLevel())
+        {
+          QLog.d(QWalletFaceTracker.TAG, 2, "【onPreviewFrameHandler】 expressionInfo is null ");
+          return;
+          if (QLog.isColorLevel())
+          {
+            QLog.d(QWalletFaceTracker.TAG, 2, "【onPreviewFrameHandler】 userPoints.get(0) or userAngels.get(0) is null ");
+            return;
+            if (QLog.isColorLevel())
+            {
+              QLog.d(QWalletFaceTracker.TAG, 2, "【onPreviewFrameHandler】 expressionItemList is null ");
+              return;
+              if (QLog.isColorLevel())
+              {
+                QLog.d(QWalletFaceTracker.TAG, 2, "【onPreviewFrameHandler】 faceAttr.getAllFacePoints() or faceAttr.getAllFaceAngles() is error ");
+                return;
+                label625:
+                continue;
+                label628:
+                f1 = f2;
+                break;
+              }
+            }
+          }
+        }
+      }
+      label633:
+      return;
+      label634:
+      f1 = 0.0F;
+      break;
+      label639:
+      f1 = 0.0F;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.QWalletFaceTracker.1
  * JD-Core Version:    0.7.0.1
  */

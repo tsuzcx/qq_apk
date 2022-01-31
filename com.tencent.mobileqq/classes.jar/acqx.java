@@ -1,31 +1,25 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.view.View;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public class acqx
-  implements Comparator<MessageRecord>
+class acqx
+  extends acrq
 {
-  public acqx(ActivateFriendActivity paramActivateFriendActivity) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  acqx(acqw paramacqw, int paramInt1, int paramInt2, String paramString)
   {
-    long l2 = paramMessageRecord1.time - paramMessageRecord2.time;
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = paramMessageRecord1.getId() - paramMessageRecord2.getId();
+    super(paramacqw.a, paramInt1, paramInt2);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Acqw.a.a != null) {
+      this.jdField_a_of_type_Acqw.a.a.setText(this.jdField_a_of_type_JavaLangString);
     }
-    if (l1 > 0L) {
-      return -1;
-    }
-    if (l1 < 0L) {
-      return 1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acqx
  * JD-Core Version:    0.7.0.1
  */

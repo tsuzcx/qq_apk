@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.view;
 
-import auuy;
+import awmk;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.data.Card;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 class ProfileTagView$2
   implements Runnable
 {
-  ProfileTagView$2(ProfileTagView paramProfileTagView, auuy paramauuy) {}
+  ProfileTagView$2(ProfileTagView paramProfileTagView, awmk paramawmk) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ class ProfileTagView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.ProfileTagView.2
  * JD-Core Version:    0.7.0.1
  */

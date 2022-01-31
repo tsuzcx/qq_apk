@@ -1,47 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
-import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment.3.1;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.os.MqqHandler;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class agxd
-  implements ahbs
+class agxd
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public agxd(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
+  agxd(agxc paramagxc) {}
   
-  private boolean a(HashMap<String, PreloadManager.PathResult> paramHashMap)
+  public int getSpanSize(int paramInt)
   {
-    if (RedPacketEmojiFragment.a(this.a))
+    switch (this.a.getItemViewType(paramInt))
     {
-      if (paramHashMap == null) {}
-      do
-      {
-        return false;
-        paramHashMap = (PreloadManager.PathResult)paramHashMap.get(this.a.c);
-      } while (paramHashMap == null);
-      this.a.d = paramHashMap.filePath;
-      if (QLog.isColorLevel()) {
-        QLog.i("RedPacketEmojiFragment", 2, "doLoading faceConfigPath:" + this.a.d);
-      }
-      if (!TextUtils.isEmpty(this.a.d)) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
+    case 1: 
+    default: 
+      return 1;
     }
-    return true;
-  }
-  
-  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
-  {
-    ThreadManager.getUIHandler().post(new RedPacketEmojiFragment.3.1(this, paramInt, paramHashMap));
+    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agxd
  * JD-Core Version:    0.7.0.1
  */

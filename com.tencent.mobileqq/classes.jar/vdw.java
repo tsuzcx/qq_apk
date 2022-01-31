@@ -1,32 +1,40 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-
 class vdw
+  implements vgn
 {
-  public TextView a;
+  vdw(vdt paramvdt) {}
   
-  public vdw(View paramView)
+  public void a()
   {
-    this.a = ((TextView)paramView.findViewById(2131376835));
+    if (vdt.a(this.a) != null) {
+      vdt.a(this.a).c();
+    }
   }
   
-  public void a(vve paramvve, vdv paramvdv)
+  public void a(int paramInt)
   {
-    if (TextUtils.isEmpty(paramvve.a))
-    {
-      this.a.setVisibility(8);
-      return;
+    vdt.a(this.a).a(paramInt);
+    if (vdt.a(this.a) != null) {
+      vdt.a(this.a).b(paramInt);
     }
-    this.a.setVisibility(0);
-    this.a.setText(vdr.a(paramvve));
-    vdr.a(this.a);
-    this.a.setOnClickListener(new vdx(this, paramvdv, paramvve));
+  }
+  
+  public void b()
+  {
+    if (vdt.a(this.a) != null) {
+      vdt.a(this.a).d();
+    }
+  }
+  
+  public void c()
+  {
+    if (vdt.a(this.a) != null) {
+      vdt.a(this.a).d(-1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vdw
  * JD-Core Version:    0.7.0.1
  */

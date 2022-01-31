@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import aplw;
-import aplx;
-import apnf;
+import arev;
+import arew;
+import argf;
 
 public class C2CFileModel$1$1
   implements Runnable
 {
-  public C2CFileModel$1$1(aplx paramaplx) {}
+  public C2CFileModel$1$1(arew paramarew) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class C2CFileModel$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel.1.1
  * JD-Core Version:    0.7.0.1
  */

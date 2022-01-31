@@ -1,18 +1,12 @@
-class aerb
-  extends ajsy
+import android.graphics.Bitmap;
+
+public abstract interface aerb
 {
-  aerb(aeqz paramaeqz) {}
-  
-  protected void a(Object paramObject)
-  {
-    if (aeqz.a(this.a) != null) {
-      aeqz.a(this.a).notifyDataSetChanged();
-    }
-  }
+  public abstract Bitmap a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerb
  * JD-Core Version:    0.7.0.1
  */

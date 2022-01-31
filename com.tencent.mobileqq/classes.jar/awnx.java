@@ -1,55 +1,17 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
-import java.util.List;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity.StylePagerAdapter;
+import com.tencent.mobileqq.widget.ProfileCardScrollImageView;
 
 public class awnx
-  implements awoh
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  public HiBoomTextView a;
+  public ProfileCardScrollImageView a;
   
-  public awnx(String paramString, int paramInt)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a()
-  {
-    return 0;
-  }
-  
-  public String a()
-  {
-    return ajya.a(2131705380);
-  }
-  
-  public List<awoi> a()
-  {
-    return null;
-  }
-  
-  public void a(View paramView)
-  {
-    Intent localIntent = new Intent((Activity)paramView.getContext(), SearchContactsActivity.class);
-    localIntent.putExtra("start_search_key", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("jump_src_key", 0);
-    localIntent.putExtra("fromType", this.jdField_a_of_type_Int);
-    ((Activity)paramView.getContext()).startActivity(localIntent);
-    awwa.a(this.jdField_a_of_type_JavaLangString, 0, 0, paramView);
-    axqy.b(null, "CliOper", "", "", "0X80061B7", "0X80061B7", 0, 0, "", "", "", "");
-  }
-  
-  public String b()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
+  public awnx(VipProfileCardPreviewActivity.StylePagerAdapter paramStylePagerAdapter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awnx
  * JD-Core Version:    0.7.0.1
  */

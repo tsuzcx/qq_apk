@@ -1,26 +1,30 @@
-import com.tencent.mobileqq.app.NearbyGrayTipsManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler.1;
 
 public class akbk
-  implements Comparator<MessageRecord>
+  extends Handler
 {
-  public akbk(NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
-  
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public akbk(VipSpecialCareHandler.1 param1, Looper paramLooper)
   {
-    if (paramMessageRecord1.time < paramMessageRecord2.time) {
-      return 1;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    if (paramMessageRecord1.time > paramMessageRecord2.time) {
-      return -1;
-    }
-    return 0;
+    akbj.a(this.a.this$0, "-->request timeout");
+    akbj.a(this.a.this$0, -2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akbk
  * JD-Core Version:    0.7.0.1
  */

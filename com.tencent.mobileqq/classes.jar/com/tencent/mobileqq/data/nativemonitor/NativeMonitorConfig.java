@@ -1,28 +1,28 @@
 package com.tencent.mobileqq.data.nativemonitor;
 
-import arlz;
+import atcn;
 
 public class NativeMonitorConfig
 {
-  @arlz(a="androidVersionBlackList")
+  @atcn(a="androidVersionBlackList")
   private String androidVersionBlackList;
-  @arlz(a="countLimted")
+  @atcn(a="countLimted")
   private long countLimted = 1000L;
-  @arlz(a="memoryLimited")
+  @atcn(a="memoryLimited")
   private long memoryLimited = 5242880L;
-  @arlz(a="nativeMonitorOpened")
+  @atcn(a="nativeMonitorOpened")
   private int nativeMonitorOpened;
-  @arlz(a="processBlackList")
+  @atcn(a="processBlackList")
   private String processBlackList;
-  @arlz(a="soHook")
+  @atcn(a="soHook")
   public int soHook;
-  @arlz(a="soWhiteList")
+  @atcn(a="soWhiteList")
   private String soWhiteList;
-  @arlz(a="switchFlag")
+  @atcn(a="switchFlag")
   private long switchFlag;
-  @arlz(a="timeLimited")
+  @atcn(a="timeLimited")
   private long timeLimited = 1000000L;
-  @arlz(a="tmChance")
+  @atcn(a="tmChance")
   private long tmChance;
   
   public String getAndroidVersionBlackList()
@@ -120,7 +120,7 @@ public class NativeMonitorConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfig
  * JD-Core Version:    0.7.0.1
  */

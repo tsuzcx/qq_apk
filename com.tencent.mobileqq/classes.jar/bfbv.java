@@ -1,26 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer;
-import com.tencent.qqmini.sdk.runtime.core.page.AppBrandPageContainer.4;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.open.agent.OpenCardContainer;
 
 public class bfbv
-  implements DialogInterface.OnClickListener
+  extends bhxb
 {
-  public bfbv(AppBrandPageContainer.4 param4) {}
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    bfhm.a().edit().putBoolean(AppBrandPageContainer.a(this.a.this$0).a().appId + "_debug", this.a.a);
-    this.a.this$0.a(this.a.this$0);
-    bfhj.a(AppBrandPageContainer.a(this.a.this$0));
-  }
+  private bfbv(OpenCardContainer paramOpenCardContainer) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfbv
  * JD-Core Version:    0.7.0.1
  */

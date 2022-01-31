@@ -1,27 +1,17 @@
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Point;
+import android.view.View;
 
-public class aplc
-  implements amgv
+public abstract interface aplc
 {
-  public ColorNote getColorNote()
-  {
-    amhb localamhb = new amhb();
-    localamhb.a(17039360);
-    String str = apvm.b(-1, "");
-    if (QLog.isColorLevel()) {
-      QLog.i("DefaultFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
-    }
-    localamhb.a(str);
-    localamhb.b("default_file");
-    localamhb.c("0MB");
-    localamhb.d("resdrawable://2130843550");
-    return localamhb.a();
-  }
+  public abstract View a(int paramInt);
+  
+  public abstract void a(View paramView);
+  
+  public abstract void a(View paramView, Point paramPoint1, Point paramPoint2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aplc
  * JD-Core Version:    0.7.0.1
  */

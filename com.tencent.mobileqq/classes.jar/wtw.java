@@ -1,24 +1,23 @@
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
 
-public class wtw
-  implements bcue
+public final class wtw
+  implements Parcelable.Creator<EditLocalVideoSource>
 {
-  public wtw(VideoPlayerView paramVideoPlayerView) {}
-  
-  public boolean a()
+  public EditLocalVideoSource a(Parcel paramParcel)
   {
-    return false;
+    return new EditLocalVideoSource(paramParcel);
   }
   
-  public boolean a(int paramInt1, int paramInt2)
+  public EditLocalVideoSource[] a(int paramInt)
   {
-    VideoPlayerView.d(this.a, true);
-    return false;
+    return new EditLocalVideoSource[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtw
  * JD-Core Version:    0.7.0.1
  */

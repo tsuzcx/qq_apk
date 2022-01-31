@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import agwy;
+import aiqx;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Intent;
@@ -15,7 +15,7 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.provider.Settings.System;
 import android.view.Window;
-import axrn;
+import azmz;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -115,7 +115,7 @@ public class QQLSUnlockActivity
         QQNotificationManager.getInstance().cancel("QQLSActivity", 238);
         paramBundle = BaseApplicationImpl.getApplication().getRuntime();
         if ((paramBundle instanceof QQAppInterface)) {
-          agwy.a((QQAppInterface)paramBundle, false);
+          aiqx.a((QQAppInterface)paramBundle, false);
         }
       }
       return;
@@ -136,13 +136,13 @@ public class QQLSUnlockActivity
   protected void onPause()
   {
     super.onPause();
-    axrn.a(this).c(this);
+    azmz.a(this).c(this);
   }
   
   protected void onResume()
   {
     super.onResume();
-    axrn.a(this).b(this);
+    azmz.a(this).b(this);
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
@@ -154,7 +154,7 @@ public class QQLSUnlockActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSUnlockActivity
  * JD-Core Version:    0.7.0.1
  */

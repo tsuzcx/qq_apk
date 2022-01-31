@@ -1,35 +1,28 @@
-import NS_USER_ACTION_REPORT.UserCommReport;
+import android.widget.DatePicker;
+import android.widget.DatePicker.OnDateChangedListener;
 
 class bhev
+  implements DatePicker.OnDateChangedListener
 {
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
+  bhev(bheu parambheu) {}
   
-  public UserCommReport a()
+  public void onDateChanged(DatePicker paramDatePicker, int paramInt1, int paramInt2, int paramInt3)
   {
-    UserCommReport localUserCommReport = new UserCommReport();
-    localUserCommReport.uin = this.jdField_a_of_type_Long;
-    localUserCommReport.platform = "AND";
-    localUserCommReport.client_type = "SQ";
-    localUserCommReport.network_type = this.jdField_a_of_type_JavaLangString;
-    return localUserCommReport;
-  }
-  
-  public bhev a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    return this;
-  }
-  
-  public bhev a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    return this;
+    if (paramDatePicker != null)
+    {
+      bheu.a(this.a, paramDatePicker.getYear());
+      bheu.b(this.a, paramDatePicker.getMonth());
+      bheu.c(this.a, paramDatePicker.getDayOfMonth());
+      return;
+    }
+    bheu.a(this.a, paramInt1);
+    bheu.b(this.a, paramInt2);
+    bheu.c(this.a, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhev
  * JD-Core Version:    0.7.0.1
  */

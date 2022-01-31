@@ -1,51 +1,24 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.QQWalletTransferMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
-class adxx
-  extends ahbe
+public class adxx
+  implements View.OnClickListener
 {
-  adxx(adxv paramadxv) {}
+  public adxx(TroopDisbandActivity paramTroopDisbandActivity, Dialog paramDialog) {}
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(adxv.jdField_a_of_type_JavaLangString, 2, "onNotifyMsg btype:" + paramInt + " bid:" + paramString);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    if ((paramInt == 1) && (!TextUtils.isEmpty(paramString)) && (paramBundle != null))
-    {
-      SparseArray localSparseArray = (SparseArray)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (localSparseArray != null)
-      {
-        paramInt = 0;
-        while (paramInt < localSparseArray.size())
-        {
-          Object localObject = (WeakReference)localSparseArray.valueAt(paramInt);
-          paramBundle = null;
-          if (localObject != null) {
-            paramBundle = (adxy)((WeakReference)localObject).get();
-          }
-          if ((paramBundle != null) && ((paramBundle.a instanceof MessageForQQWalletMsg)))
-          {
-            localObject = (MessageForQQWalletMsg)paramBundle.a;
-            if ((localObject != null) && (((MessageForQQWalletMsg)localObject).messageType == 16) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg != null) && (((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId != null) && (paramString.equals(((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.listId))) {
-              this.a.a(paramBundle, (MessageForQQWalletMsg)localObject, ((MessageForQQWalletMsg)localObject).mQQWalletTransferMsg.elem);
-            }
-          }
-          paramInt += 1;
-        }
-      }
-    }
+    TroopDisbandActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxx
  * JD-Core Version:    0.7.0.1
  */

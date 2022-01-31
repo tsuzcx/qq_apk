@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import ajga;
+import akxm;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +9,7 @@ import android.os.Parcelable.Creator;
 public class CmShowRenderView$PlayActionConfig
   implements Parcelable
 {
-  public static final Parcelable.Creator<PlayActionConfig> CREATOR = new ajga();
+  public static final Parcelable.Creator<PlayActionConfig> CREATOR = new akxm();
   public int a;
   public Bundle a;
   public String a;
@@ -94,7 +94,7 @@ public class CmShowRenderView$PlayActionConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.sdk.CmShowRenderView.PlayActionConfig
  * JD-Core Version:    0.7.0.1
  */

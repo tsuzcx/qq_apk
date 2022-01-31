@@ -1,7 +1,7 @@
 package com.tencent.qqprotect.qsec;
 
-import bfjb;
-import bfjc;
+import bhjv;
+import bhjw;
 
 public abstract interface ICloudAVEngine
 {
@@ -10,7 +10,7 @@ public abstract interface ICloudAVEngine
   public static final int EVENT_SERVER_REPLY = 3;
   public static final int EVENT_WAIT_TIMEOUT = 2;
   
-  public abstract int cloudDetect(bfjb parambfjb, boolean paramBoolean1, boolean paramBoolean2, bfjc parambfjc);
+  public abstract int cloudDetect(bhjv parambhjv, boolean paramBoolean1, boolean paramBoolean2, bhjw parambhjw);
   
   public abstract void flushRequest();
 }

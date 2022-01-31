@@ -14,10 +14,11 @@ public final class e_container_subtype
   public static final int _enum_multi_adv_type = 0;
   public static final int _enum_secret_container = 5;
   public static final int _enum_single_adv_type = 1;
+  public static final int _enum_videocircle_container = 9;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_container_subtype
  * JD-Core Version:    0.7.0.1
  */

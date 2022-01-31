@@ -1,68 +1,94 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class bcya
-  extends QIPCModule
 {
-  private static volatile bcya a;
+  axzt jdField_a_of_type_Axzt;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  private bcya(String paramString)
+  public bcya(QQAppInterface paramQQAppInterface)
   {
-    super(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public static bcya a()
+  public Bundle a(Bundle paramBundle)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new bcya("open_sdk_qipc_module");
-      }
-      return a;
+    paramBundle = paramBundle.getStringArrayList("key");
+    Bundle localBundle = new Bundle();
+    localBundle.putStringArrayList("key", paramBundle);
+    if ((paramBundle == null) || (paramBundle.size() == 0)) {
+      return localBundle;
     }
-    finally {}
-  }
-  
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
-  {
-    QLog.i("Q.quicklogin.OpenSdkQIPCModule", 1, "onCall main proc action : " + paramString);
-    if ("action_get_accountInfo".equals(paramString))
-    {
-      paramString = new Bundle();
-      EIPCResult localEIPCResult = EIPCResult.createResult(0, paramString);
-      paramBundle = paramBundle.getString("key_uin");
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((!TextUtils.isEmpty(paramBundle)) && ((localAppRuntime instanceof QQAppInterface))) {
-        paramString.putString("key_nickname", bbcz.i((QQAppInterface)localAppRuntime, paramBundle));
-      }
-      callbackResult(paramInt, localEIPCResult);
+    if (this.jdField_a_of_type_Axzt == null) {
+      this.jdField_a_of_type_Axzt = ((axzt)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(15));
     }
-    for (;;)
+    if (this.jdField_a_of_type_Axzt == null) {
+      return localBundle;
+    }
+    ArrayList localArrayList = new ArrayList(paramBundle.size());
+    Iterator localIterator = paramBundle.iterator();
+    String str1;
+    if (localIterator.hasNext())
     {
-      return null;
-      if ("action_ptlogin_cancel".equals(paramString))
+      String str2 = (String)localIterator.next();
+      str1 = "";
+      Object localObject;
+      if (str2 == null)
       {
-        paramString = BaseActivity.sTopActivity;
-        QLog.i("Q.quicklogin.OpenSdkQIPCModule", 1, "onCall ptlogin cancel activity=" + paramString);
-        if ((paramString instanceof SplashActivity)) {
-          paramString.doOnBackPressed();
+        localObject = null;
+        label124:
+        paramBundle = str1;
+        if (localObject != null)
+        {
+          paramBundle = str1;
+          if (localObject.length != 3) {}
         }
       }
+      for (;;)
+      {
+        try
+        {
+          int j = Integer.parseInt(localObject[0]);
+          String str3 = localObject[1];
+          int i = Integer.parseInt(localObject[2]);
+          paramBundle = str1;
+          if (j == 1)
+          {
+            j = Integer.parseInt(str3);
+            localObject = this.jdField_a_of_type_Axzt.a(j);
+            paramBundle = str1;
+            if (localObject != null)
+            {
+              if (i != 201) {
+                continue;
+              }
+              paramBundle = ((axwp)localObject).a;
+            }
+          }
+        }
+        catch (Exception paramBundle)
+        {
+          paramBundle.printStackTrace();
+          paramBundle = str1;
+          continue;
+        }
+        ausq.a("getIconUrl", "getIconUrl", new Object[] { str2, paramBundle });
+        localArrayList.add(paramBundle);
+        break;
+        localObject = str2.split("_s_");
+        break label124;
+        paramBundle = ((axwp)localObject).b;
+      }
     }
+    localBundle.putStringArrayList("path", localArrayList);
+    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcya
  * JD-Core Version:    0.7.0.1
  */

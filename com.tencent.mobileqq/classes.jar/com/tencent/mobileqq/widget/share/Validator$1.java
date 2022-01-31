@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.widget.share;
 
 import android.content.Context;
-import bcql;
-import bcvw;
+import beuy;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class Validator$1
   implements Runnable
 {
-  public Validator$1(bcvw parambcvw, String paramString) {}
+  public Validator$1(beuy parambeuy, String paramString) {}
   
   public void run()
   {
-    Context localContext = bcvw.a(this.this$0).a;
+    Context localContext = beuy.a(this.this$0).a;
     if (localContext != null) {
-      bcql.a(localContext, this.a, 0).a();
+      QQToast.a(localContext, this.a, 0).a();
     }
   }
 }

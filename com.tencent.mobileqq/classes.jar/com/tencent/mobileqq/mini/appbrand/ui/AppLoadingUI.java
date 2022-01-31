@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -121,7 +121,7 @@ public class AppLoadingUI
     {
       if (bool)
       {
-        String str3 = StorageUtil.getPreference().getString("version", "1.13.0.00013");
+        String str3 = StorageUtil.getPreference().getString("version", "1.14.0.00225");
         if (QLog.isColorLevel()) {
           QLog.i("miniapp-start", 1, "checkBaseLibVersionMatch 需要升级 sp MaxVersion:" + str3);
         }
@@ -368,7 +368,7 @@ public class AppLoadingUI
       }
       QLog.e("miniapp-start", 1, "LoadingFragment 小程序参数错误！");
       if (getActivity() != null) {
-        Toast.makeText(getActivity(), ajya.a(2131700620), 1).show();
+        Toast.makeText(getActivity(), alpo.a(2131700989), 1).show();
       }
       callActivityBackPressed();
       return;
@@ -381,7 +381,7 @@ public class AppLoadingUI
         break label330;
       }
       this.mDeveloperInfoContainer.setVisibility(0);
-      this.mDeveloperInfoDesc.setText(ajya.a(2131700622) + this.appConfig.config.developerDesc + ajya.a(2131700624));
+      this.mDeveloperInfoDesc.setText(alpo.a(2131700991) + this.appConfig.config.developerDesc + alpo.a(2131700993));
     }
     while ((this.mDeveloperQualifications != null) && (this.appConfig.config.qualifications != null) && (this.appConfig.config.qualifications.size() > 0))
     {
@@ -442,29 +442,29 @@ public class AppLoadingUI
   public void initUI(ViewGroup paramViewGroup)
   {
     this.mRootView = paramViewGroup;
-    this.mStatusBar = paramViewGroup.findViewById(2131376453);
+    this.mStatusBar = paramViewGroup.findViewById(2131376953);
     new ImmersionBar(getActivity(), 0, this.mStatusBar);
     this.uiHandler = new Handler(this);
-    this.rightContainer = ((RelativeLayout)paramViewGroup.findViewById(2131364687));
+    this.rightContainer = ((RelativeLayout)paramViewGroup.findViewById(2131364766));
     Object localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getActivity(), 80.0F), DisplayUtil.dip2px(getActivity(), 30.0F));
     ((RelativeLayout.LayoutParams)localObject).addRule(11, -1);
     ((RelativeLayout.LayoutParams)localObject).topMargin = (DisplayUtil.dip2px(paramViewGroup.getContext(), 9.0F) + ImmersiveUtils.getStatusBarHeight(getActivity()));
     ((RelativeLayout.LayoutParams)localObject).rightMargin = DisplayUtil.dip2px(paramViewGroup.getContext(), 12.5F);
     this.rightContainer.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.mMoreView = ((ImageView)paramViewGroup.findViewById(2131363585));
-    this.mCloseView = ((ImageView)paramViewGroup.findViewById(2131363500));
+    this.mMoreView = ((ImageView)paramViewGroup.findViewById(2131363630));
+    this.mCloseView = ((ImageView)paramViewGroup.findViewById(2131363541));
     if (!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_URL))
     {
-      localObject = MiniAppUtils.getIcon(getActivity(), MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840862, 40, 30);
+      localObject = MiniAppUtils.getIcon(getActivity(), MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840978, 40, 30);
       this.mCloseView.setImageDrawable((Drawable)localObject);
     }
-    this.mProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131368887));
-    this.mContentLayout = ((ViewGroup)paramViewGroup.findViewById(2131364708));
-    this.mNameView = ((TextView)paramViewGroup.findViewById(2131366923));
-    this.mLogoView = ((ImageView)paramViewGroup.findViewById(2131369582));
-    this.mDeveloperInfoContainer = paramViewGroup.findViewById(2131365087);
-    this.mDeveloperInfoDesc = ((TextView)paramViewGroup.findViewById(2131365088));
-    this.mDeveloperQualifications = ((TextView)paramViewGroup.findViewById(2131365089));
+    this.mProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131369117));
+    this.mContentLayout = ((ViewGroup)paramViewGroup.findViewById(2131364787));
+    this.mNameView = ((TextView)paramViewGroup.findViewById(2131367041));
+    this.mLogoView = ((ImageView)paramViewGroup.findViewById(2131369845));
+    this.mDeveloperInfoContainer = paramViewGroup.findViewById(2131365172);
+    this.mDeveloperInfoDesc = ((TextView)paramViewGroup.findViewById(2131365173));
+    this.mDeveloperQualifications = ((TextView)paramViewGroup.findViewById(2131365174));
     this.mMoreView.setOnClickListener(this);
     this.mCloseView.setOnClickListener(this);
   }
@@ -476,14 +476,14 @@ public class AppLoadingUI
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131363500)
+    if (paramView.getId() == 2131363541)
     {
       MiniReportManager.reportEventType(this.appConfig, 1026, "1");
       MiniProgramLpReportDC04239.reportPageView(this.appConfig, "0", null, "close", "loading_page");
       MiniAppReportManager2.reportPageView("2close", "loading_page", null, this.appConfig);
       callActivityBackPressed();
     }
-    while (paramView.getId() != 2131363585) {
+    while (paramView.getId() != 2131363630) {
       return;
     }
   }
@@ -552,7 +552,7 @@ public class AppLoadingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.AppLoadingUI
  * JD-Core Version:    0.7.0.1
  */

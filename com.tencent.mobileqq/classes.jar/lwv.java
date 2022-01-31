@@ -1,62 +1,54 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.LBSInfo;
-
-public abstract class lwv
-  extends Binder
-  implements lwu
+public class lwv
+  extends lwt
 {
-  public static lwu a(IBinder paramIBinder)
+  public void a(long paramLong)
   {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IQQServiceLocationCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof lwu))) {
-      return (lwu)localIInterface;
-    }
-    return new lww(paramIBinder);
-  }
-  
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-  {
-    switch (paramInt1)
+    paramLong -= this.a;
+    int j = 0;
+    float f2 = 1.0F;
+    int i;
+    float f1;
+    if ((paramLong > 3099L) && (paramLong < 3432L))
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.service.IQQServiceLocationCallback");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
-      a(paramParcel1.readInt(), paramParcel1.readString());
-      return true;
+      i = (int)(255L * (paramLong - 3099L) / 333L);
+      f1 = (0.5F * (float)(paramLong + 3432L) - 3099.0F) / 333.0F;
     }
-    paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
-    boolean bool;
-    if (paramParcel1.readInt() != 0)
+    for (;;)
     {
-      bool = true;
-      if (paramParcel1.readInt() == 0) {
-        break label125;
+      a(i);
+      b(f1);
+      return;
+      if ((paramLong >= 3432L) && (paramLong <= 3865L))
+      {
+        i = 255;
+        f1 = f2;
+      }
+      else
+      {
+        f1 = f2;
+        i = j;
+        if (paramLong > 3865L)
+        {
+          f1 = f2;
+          i = j;
+          if (paramLong < 4032L)
+          {
+            i = (int)(255L * (4032L - paramLong) / 167L);
+            f1 = (167.0F - (float)(3865L - paramLong) * 0.5F) / 167.0F;
+          }
+        }
       }
     }
-    label125:
-    for (paramParcel1 = (LBSInfo)LBSInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(bool, paramParcel1);
-      return true;
-      bool = false;
-      break;
-    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(paramInt1 * 548 / 1500, paramInt2 - paramInt1 * 1032 / 1500, paramInt1 * 952 / 1500, paramInt2 - paramInt1 * 472 / 1500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lwv
  * JD-Core Version:    0.7.0.1
  */

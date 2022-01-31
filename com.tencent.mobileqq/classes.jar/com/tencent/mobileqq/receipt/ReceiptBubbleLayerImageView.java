@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.receipt;
 
-import acui;
+import aels;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
@@ -10,7 +10,7 @@ import com.tencent.widget.LayerImageView;
 
 public class ReceiptBubbleLayerImageView
   extends LayerImageView
-  implements acui
+  implements aels
 {
   public ReceiptBubbleLayerImageView(Context paramContext)
   {
@@ -50,7 +50,7 @@ public class ReceiptBubbleLayerImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptBubbleLayerImageView
  * JD-Core Version:    0.7.0.1
  */

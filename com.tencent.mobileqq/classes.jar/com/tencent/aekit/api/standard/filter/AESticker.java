@@ -10,7 +10,6 @@ import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.aekit.plugin.core.AEDetectorType;
 import com.tencent.aekit.plugin.core.AIActionCounter;
-import com.tencent.aekit.plugin.core.AIActionCounter.AI_TYPE;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.aekit.plugin.core.AISegAttr;
 import com.tencent.aekit.plugin.core.HotAreaActionCounter;
@@ -22,8 +21,9 @@ import com.tencent.filter.BaseFilter;
 import com.tencent.ttpic.audio.AudioDataManager;
 import com.tencent.ttpic.audio.LocalAudioDataManager;
 import com.tencent.ttpic.baseutils.fps.BenchUtil;
-import com.tencent.ttpic.filter.MaterialLoadFinishListener;
+import com.tencent.ttpic.facedetect.FaceStatus;
 import com.tencent.ttpic.filter.SplitFilter;
+import com.tencent.ttpic.manager.RandomGroupManager;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.PTDetectInfo.Builder;
 import com.tencent.ttpic.openapi.PTFaceAttr;
@@ -32,10 +32,12 @@ import com.tencent.ttpic.openapi.PTSegAttr;
 import com.tencent.ttpic.openapi.PTSkyAttr;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.filter.BuckleFaceFilter;
+import com.tencent.ttpic.openapi.filter.MaterialLoadFinishListener;
+import com.tencent.ttpic.openapi.filter.RenderItem;
 import com.tencent.ttpic.openapi.filter.StickerFilters;
+import com.tencent.ttpic.openapi.filter.TransformFilter;
 import com.tencent.ttpic.openapi.filter.VideoFilterList;
 import com.tencent.ttpic.openapi.manager.TouchTriggerManager;
-import com.tencent.ttpic.openapi.manager.TriggerStateManager;
 import com.tencent.ttpic.openapi.model.RedPacketPosition;
 import com.tencent.ttpic.openapi.model.VideoMaterial;
 import com.tencent.ttpic.openapi.util.VideoFilterUtil;
@@ -44,6 +46,7 @@ import com.tencent.ttpic.openapi.util.VideoPrefsUtil;
 import com.tencent.ttpic.openapi.util.VideoSDKMaterialParser;
 import com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector;
 import com.tencent.ttpic.util.AudioUtil;
+import com.tencent.ttpic.util.youtu.bodydetector.BodyDetectResult;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -58,6 +61,7 @@ public class AESticker
   private boolean doStrokeShake;
   private boolean enableBGTransparent = true;
   private boolean enableStrokeShakeGauss;
+  private PTFaceAttr faceAttr;
   private VideoPreviewFaceOutlineDetector faceDetector;
   private AEFaceTransform faceTransform;
   private PTHairAttr hairAttr;
@@ -105,16 +109,16 @@ public class AESticker
     construct(this.mVideoMaterial, paramVideoPreviewFaceOutlineDetector);
   }
   
-  private boolean allBusinessPrivateProcess(List<VideoFilterBase> paramList)
+  private boolean allBusinessPrivateProcess(List<RenderItem> paramList)
   {
     if (paramList != null)
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
-        VideoFilterBase localVideoFilterBase = (VideoFilterBase)paramList.next();
-        if ((localVideoFilterBase instanceof BuckleFaceFilter)) {
-          return ((BuckleFaceFilter)localVideoFilterBase).isNeedRender();
+        RenderItem localRenderItem = (RenderItem)paramList.next();
+        if ((localRenderItem.filter instanceof BuckleFaceFilter)) {
+          return ((BuckleFaceFilter)localRenderItem.filter).isNeedRender();
         }
       }
     }
@@ -140,20 +144,22 @@ public class AESticker
       bool1 = bool2;
       if (!VideoMaterialUtil.is3DMaterial(paramVideoMaterial)) {
         if (!VideoMaterialUtil.isFilamentMaterial(paramVideoMaterial)) {
-          break label186;
+          break label198;
         }
       }
     }
-    label186:
+    label198:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       paramVideoPreviewFaceOutlineDetector.setNeedDetect3D(bool1);
       paramVideoPreviewFaceOutlineDetector.setNeedFaceKit(VideoMaterialUtil.is3DCosMaterial(paramVideoMaterial));
       paramVideoPreviewFaceOutlineDetector.setNeedExpressionWeights(VideoMaterialUtil.isAnimojiMaterial(paramVideoMaterial));
       VideoPreviewFaceOutlineDetector.setFov(paramVideoMaterial.getFov());
-      AIActionCounter.clearAction(AIActionCounter.AI_TYPE.HAND);
+      AIActionCounter.clearAction(AEDetectorType.HAND);
+      AIActionCounter.clearAction(AEDetectorType.VOICE_RECOGNIZE);
       HotAreaActionCounter.reset();
       AudioDataManager.getInstance().setNeedDecible(paramVideoMaterial.isDBTriggered());
+      RandomGroupManager.getInstance().clearAll();
       this.splitScreen = paramVideoMaterial.getSplitScreen();
       this.faceDetector = paramVideoPreviewFaceOutlineDetector;
       this.mPause = false;
@@ -176,6 +182,13 @@ public class AESticker
     return localFrame;
   }
   
+  public void addFilter(VideoFilterBase paramVideoFilterBase)
+  {
+    if (paramVideoFilterBase != null) {
+      this.mVideoFilters.addRenderItem(new RenderItem(paramVideoFilterBase, null));
+    }
+  }
+  
   public void addMaskTouchPoint(PointF paramPointF)
   {
     this.mVideoFilters.addMaskTouchPoint(paramPointF);
@@ -184,6 +197,13 @@ public class AESticker
   public void addTouchPoint(PointF paramPointF)
   {
     this.mVideoFilters.addTouchPoint(paramPointF);
+  }
+  
+  public void addTransformFilter(VideoFilterBase paramVideoFilterBase)
+  {
+    if ((paramVideoFilterBase != null) && ((paramVideoFilterBase instanceof TransformFilter))) {
+      this.mVideoFilters.addTransformRenderItem(new RenderItem(paramVideoFilterBase, null));
+    }
   }
   
   public void apply()
@@ -302,11 +322,21 @@ public class AESticker
     this.mIsApplied = false;
   }
   
+  public void clearFilters()
+  {
+    this.mVideoFilters.clearRenderItems();
+  }
+  
   public void clearTouchPoint()
   {
     if (this.mVideoFilters != null) {
       this.mVideoFilters.clearTouchPoint();
     }
+  }
+  
+  public void clearTransformFilters()
+  {
+    this.mVideoFilters.clearTransformRenderItems();
   }
   
   public void destroyAudio()
@@ -408,6 +438,11 @@ public class AESticker
   public int getOnlyDetectOneGesture()
   {
     return this.mVideoFilters.getOnlyDetectOneGesture();
+  }
+  
+  public List<RenderItem> getRenderItems()
+  {
+    return this.mVideoFilters.getRenderItems();
   }
   
   public int getShookHeadCount()
@@ -674,7 +709,7 @@ public class AESticker
         if (this.mVideoFilters.renderStaticStickerFirst())
         {
           localObject1 = localObject2;
-          if (allBusinessPrivateProcess(this.mVideoFilters.getFilters())) {
+          if (allBusinessPrivateProcess(this.mVideoFilters.getRenderItems())) {
             localObject1 = this.mVideoFilters.updateAndRenderStaticStickers((Frame)localObject2, paramPTFaceAttr);
           }
         }
@@ -693,7 +728,6 @@ public class AESticker
         BenchUtil.benchStart("[showPreview]updateAndRender - DO_NOT_RENDER_FACE_OFF_FILTER");
         localObject2 = this.mVideoFilters.updateAndRenderDynamicStickers((Frame)localObject1, paramPTFaceAttr, paramAIAttr);
         BenchUtil.benchEnd("[showPreview]updateAndRender - DO_NOT_RENDER_FACE_OFF_FILTER");
-        this.mVideoFilters.updateAndRenderMultiViewerMaterial(localHashMap, (Frame)localObject2, paramAIAttr, paramPTFaceAttr, paramPTSegAttr, this.hairAttr);
         localObject1 = localObject2;
         if (!this.mVideoFilters.render3DFirst())
         {
@@ -705,12 +739,13 @@ public class AESticker
             BenchUtil.benchEnd("[showPreview]updateAndRender_gameplay");
           }
         }
+        this.mVideoFilters.updateAndRenderMultiViewerMaterial(localHashMap, (Frame)localObject1, paramAIAttr, paramPTFaceAttr, paramPTSegAttr, this.hairAttr);
         localObject2 = this.mVideoFilters.updateAndRenderFilamentParticleFilter((Frame)localObject1, paramPTFaceAttr);
         localObject1 = localObject2;
         if (!this.mVideoFilters.renderStaticStickerFirst())
         {
           localObject1 = localObject2;
-          if (allBusinessPrivateProcess(this.mVideoFilters.getFilters())) {
+          if (allBusinessPrivateProcess(this.mVideoFilters.getRenderItems())) {
             localObject1 = this.mVideoFilters.updateAndRenderStaticStickers((Frame)localObject2, paramPTFaceAttr);
           }
         }
@@ -721,7 +756,7 @@ public class AESticker
         if (localHashMap.isEmpty()) {
           localHashMap.put(Integer.valueOf(0), this.mVideoFilters.zoomFrame((Frame)localObject1));
         }
-        localObject1 = this.mVideoFilters.updateAndRenderFabbyMV(paramFrame, paramAIAttr, localHashMap, paramPTFaceAttr.getFaceActionCounter(), localSet, paramPTFaceAttr.getTimeStamp());
+        localObject1 = this.mVideoFilters.updateAndRenderFabbyMVRenderItem(paramFrame, paramAIAttr, localHashMap, paramPTFaceAttr.getFaceActionCounter(), localSet, paramPTFaceAttr.getTimeStamp());
         paramFrame = (Frame)localObject1;
         if (this.mVideoFilters.renderOder() == 1)
         {
@@ -773,27 +808,65 @@ public class AESticker
   {
     setAIAttr(paramAIAttr);
     Set localSet = paramPTFaceAttr.getTriggeredExpression();
+    List localList = null;
+    Object localObject1 = localList;
+    Object localObject2;
     if (paramAIAttr != null)
     {
-      localObject = (PTHandAttr)paramAIAttr.getAvailableData(AEDetectorType.HAND.value);
-      if (localObject != null)
+      localObject2 = (PTHandAttr)paramAIAttr.getAvailableData(AEDetectorType.HAND.value);
+      localObject1 = localList;
+      if (localObject2 != null)
       {
-        ((PTHandAttr)localObject).getHandPointList();
-        localSet.add(Integer.valueOf(((PTHandAttr)localObject).getHandType()));
+        localObject1 = ((PTHandAttr)localObject2).getHandPointList();
+        localSet.add(Integer.valueOf(((PTHandAttr)localObject2).getHandType()));
       }
     }
     long l = getUpdateTimeStamp(paramPTFaceAttr.getTimeStamp());
     paramPTFaceAttr.setTimeStamp(l);
-    Object localObject = new PTDetectInfo.Builder().triggeredExpression(localSet).aiAttr(paramAIAttr).timestamp(l).faceDetector(paramPTFaceAttr.getFaceDetector()).build();
-    TouchTriggerManager.getInstance().updateTouchTriggerState((PTDetectInfo)localObject);
-    TriggerStateManager.getInstance().setPTDetectInfo((PTDetectInfo)localObject);
-    TriggerStateManager.getInstance().updateAllTriggerState();
-    paramPTSegAttr = this.mVideoFilters.blurBeforeRender(paramFrame, paramPTFaceAttr, paramPTSegAttr, paramAIAttr);
-    this.mVideoFilters.updateFaceParams(paramAIAttr, paramPTFaceAttr, paramFrame.width);
-    BenchUtil.benchStart("updateTextureParam2");
-    this.mVideoFilters.updateTextureParam(paramPTFaceAttr.getFaceActionCounter(), localSet, paramPTFaceAttr.getTimeStamp(), paramAIAttr);
-    BenchUtil.benchEnd("updateTextureParam2");
-    return this.mVideoFilters.processTransformRelatedFilters(paramPTSegAttr, paramPTFaceAttr);
+    Map localMap = paramPTFaceAttr.getFaceActionCounter();
+    int i = paramPTFaceAttr.getRotation();
+    localList = paramPTFaceAttr.getAllFacePoints();
+    if ((localList != null) && (localList.size() > 0)) {}
+    for (localList = (List)localList.get(0);; localList = null)
+    {
+      Object localObject3 = new ArrayList();
+      localObject2 = localObject3;
+      Object localObject4;
+      if (needDetectBody())
+      {
+        localObject2 = localObject3;
+        if (paramAIAttr != null)
+        {
+          localObject4 = (List)paramAIAttr.getAvailableData(AEDetectorType.BODY.value);
+          localObject2 = localObject3;
+          if (localObject4 != null)
+          {
+            localObject2 = localObject3;
+            if (((List)localObject4).size() > 0) {
+              localObject2 = ((BodyDetectResult)((List)localObject4).get(0)).bodyPoints;
+            }
+          }
+        }
+      }
+      localObject3 = paramPTFaceAttr.getAllFaceAngles();
+      if ((localObject3 != null) && (((List)localObject3).size() > 0)) {}
+      for (localObject3 = (float[])((List)localObject3).get(0);; localObject3 = null)
+      {
+        if ((paramPTFaceAttr.getFaceStatusList() != null) && (paramPTFaceAttr.getFaceStatusList().size() > 0)) {}
+        for (localObject4 = (FaceStatus)paramPTFaceAttr.getFaceStatusList().get(0);; localObject4 = null)
+        {
+          localObject1 = new PTDetectInfo.Builder().facePoints(localList).faceAngles((float[])localObject3).phoneAngle((i + 360) % 360).faceActionCounter(localMap).aiAttr(paramAIAttr).bodyPoints((List)localObject2).handActionCounter(AIActionCounter.getActions(AEDetectorType.HAND)).triggeredExpression(localSet).handPoints((List)localObject1).faceStatus((FaceStatus)localObject4).timestamp(l).faceDetector(paramPTFaceAttr.getFaceDetector()).build();
+          TouchTriggerManager.getInstance().updateTouchTriggerState((PTDetectInfo)localObject1);
+          this.mVideoFilters.updateTriggerManager((PTDetectInfo)localObject1);
+          paramPTSegAttr = this.mVideoFilters.blurBeforeRender(paramFrame, paramPTFaceAttr, paramPTSegAttr, paramAIAttr);
+          this.mVideoFilters.updateFaceParams(paramAIAttr, paramPTFaceAttr, paramFrame.width);
+          BenchUtil.benchStart("updateTextureParam2");
+          this.mVideoFilters.updateTextureParam(paramPTFaceAttr.getFaceActionCounter(), localSet, paramPTFaceAttr.getTimeStamp(), paramAIAttr);
+          BenchUtil.benchEnd("updateTextureParam2");
+          return this.mVideoFilters.processTransformRelatedFilters(paramPTSegAttr, paramPTFaceAttr);
+        }
+      }
+    }
   }
   
   public Frame processTransformRelatedFiltersPluggable(Frame paramFrame, PTFaceAttr paramPTFaceAttr, AIAttr paramAIAttr, Set<Integer> paramSet)
@@ -953,7 +1026,7 @@ public class AESticker
   {
     Frame localFrame = paramFrame;
     if (this.mVideoFilters != null) {
-      localFrame = this.mVideoFilters.updateAndRenderFabbyMV(paramFrame, paramAIAttr, paramMap, paramPTFaceAttr.getFaceActionCounter(), paramSet, paramPTFaceAttr.getTimeStamp());
+      localFrame = this.mVideoFilters.updateAndRenderFabbyMVRenderItem(paramFrame, paramAIAttr, paramMap, paramPTFaceAttr.getFaceActionCounter(), paramSet, paramPTFaceAttr.getTimeStamp());
     }
     return localFrame;
   }
@@ -1100,7 +1173,7 @@ public class AESticker
       if (!this.mVideoFilters.renderStaticStickerFirst())
       {
         localFrame = paramFrame;
-        if (allBusinessPrivateProcess(this.mVideoFilters.getFilters())) {
+        if (allBusinessPrivateProcess(this.mVideoFilters.getRenderItems())) {
           localFrame = this.mVideoFilters.updateAndRenderStaticStickersPluggable(paramFrame, paramPTFaceAttr);
         }
       }
@@ -1117,7 +1190,7 @@ public class AESticker
       if (this.mVideoFilters.renderStaticStickerFirst())
       {
         localFrame = paramFrame;
-        if (allBusinessPrivateProcess(this.mVideoFilters.getFilters())) {
+        if (allBusinessPrivateProcess(this.mVideoFilters.getRenderItems())) {
           localFrame = this.mVideoFilters.updateAndRenderStaticStickersPluggable(paramFrame, paramPTFaceAttr);
         }
       }
@@ -1141,6 +1214,7 @@ public class AESticker
   
   public void reset()
   {
+    this.faceDetector.clearActionCounter();
     this.mVideoFilters.reset();
     this.mLastTimeStamp = 0L;
     this.mPauseTimeDiff = 0L;
@@ -1168,6 +1242,7 @@ public class AESticker
   
   public void setFaceAttr(PTFaceAttr paramPTFaceAttr)
   {
+    this.faceAttr = paramPTFaceAttr;
     this.mBeforeTransFilter.setFaceAttr(paramPTFaceAttr);
     this.mAfterTransFilter.setFaceAttr(paramPTFaceAttr);
   }
@@ -1277,6 +1352,11 @@ public class AESticker
     TouchTriggerManager.getInstance().setTouchState(paramInt);
   }
   
+  public void setTouchTriggerEvent(int paramInt, float paramFloat1, float paramFloat2)
+  {
+    TouchTriggerManager.getInstance().setTouchState(paramInt, paramFloat1, paramFloat2);
+  }
+  
   public void setUseStickerPlugin(boolean paramBoolean)
   {
     this.isUseStickerPlugin = paramBoolean;
@@ -1303,15 +1383,114 @@ public class AESticker
     this.mVideoFilters.updateCosAlpha(paramInt);
   }
   
+  public Frame updateInputFrame(Frame paramFrame)
+  {
+    Frame localFrame = paramFrame;
+    if (this.mVideoFilters != null)
+    {
+      localFrame = paramFrame;
+      if (this.mVideoFilters.isFreezeFrame()) {
+        localFrame = this.mVideoFilters.updateInputFrame(paramFrame);
+      }
+    }
+    return localFrame;
+  }
+  
   public void updateIntensity(float paramFloat, int paramInt1, int paramInt2)
   {
     this.mVideoFilters.updateIntensity(paramFloat, paramInt1, paramInt2);
+  }
+  
+  public PTFaceAttr updatePTFaceAttr(PTFaceAttr paramPTFaceAttr)
+  {
+    PTFaceAttr localPTFaceAttr = paramPTFaceAttr;
+    if (this.mVideoFilters != null)
+    {
+      localPTFaceAttr = paramPTFaceAttr;
+      if (this.mVideoFilters.isFreezeFrame()) {
+        localPTFaceAttr = this.mVideoFilters.updatePTFaceAttr(paramPTFaceAttr);
+      }
+    }
+    return localPTFaceAttr;
+  }
+  
+  public PTSegAttr updatePTSegAttr(PTSegAttr paramPTSegAttr)
+  {
+    PTSegAttr localPTSegAttr = paramPTSegAttr;
+    if (this.mVideoFilters != null)
+    {
+      localPTSegAttr = paramPTSegAttr;
+      if (this.mVideoFilters.isFreezeFrame()) {
+        localPTSegAttr = this.mVideoFilters.updatePTSegAttr(paramPTSegAttr);
+      }
+    }
+    return localPTSegAttr;
   }
   
   public void updatePcmBuffer8Bit(byte[] paramArrayOfByte, int paramInt)
   {
     paramInt = AudioUtil.getPcmDB8Bit(paramArrayOfByte, paramInt);
     AudioDataManager.getInstance().setPcmDecibel(paramInt);
+  }
+  
+  public void updateTriggerManager()
+  {
+    Set localSet = this.faceAttr.getTriggeredExpression();
+    Object localObject2;
+    Object localObject1;
+    if (this.mAIAttr != null)
+    {
+      localObject2 = (PTHandAttr)this.mAIAttr.getAvailableData(AEDetectorType.HAND.value);
+      if (localObject2 != null)
+      {
+        localObject1 = ((PTHandAttr)localObject2).getHandPointList();
+        localSet.add(Integer.valueOf(((PTHandAttr)localObject2).getHandType()));
+      }
+    }
+    for (;;)
+    {
+      long l = getUpdateTimeStamp(this.faceAttr.getTimeStamp());
+      this.faceAttr.setTimeStamp(l);
+      Map localMap = this.faceAttr.getFaceActionCounter();
+      int i = this.faceAttr.getRotation();
+      localObject2 = this.faceAttr.getAllFacePoints();
+      if ((localObject2 != null) && (((List)localObject2).size() > 0)) {}
+      for (localObject2 = (List)((List)localObject2).get(0);; localObject2 = null)
+      {
+        Object localObject4 = new ArrayList();
+        Object localObject3 = localObject4;
+        Object localObject5;
+        if (needDetectBody())
+        {
+          localObject3 = localObject4;
+          if (this.mAIAttr != null)
+          {
+            localObject5 = (List)this.mAIAttr.getAvailableData(AEDetectorType.BODY.value);
+            localObject3 = localObject4;
+            if (localObject5 != null)
+            {
+              localObject3 = localObject4;
+              if (((List)localObject5).size() > 0) {
+                localObject3 = ((BodyDetectResult)((List)localObject5).get(0)).bodyPoints;
+              }
+            }
+          }
+        }
+        localObject4 = this.faceAttr.getAllFaceAngles();
+        if ((localObject4 != null) && (((List)localObject4).size() > 0)) {}
+        for (localObject4 = (float[])((List)localObject4).get(0);; localObject4 = null)
+        {
+          if ((this.faceAttr.getFaceStatusList() != null) && (this.faceAttr.getFaceStatusList().size() > 0)) {}
+          for (localObject5 = (FaceStatus)this.faceAttr.getFaceStatusList().get(0);; localObject5 = null)
+          {
+            localObject1 = new PTDetectInfo.Builder().facePoints((List)localObject2).faceAngles((float[])localObject4).phoneAngle((i + 360) % 360).faceActionCounter(localMap).aiAttr(this.mAIAttr).bodyPoints((List)localObject3).handActionCounter(AIActionCounter.getActions(AEDetectorType.HAND)).triggeredExpression(localSet).handPoints((List)localObject1).faceStatus((FaceStatus)localObject5).timestamp(l).faceDetector(this.faceAttr.getFaceDetector()).build();
+            this.mVideoFilters.updateTriggerManager((PTDetectInfo)localObject1);
+            return;
+          }
+        }
+      }
+      localObject1 = null;
+    }
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
@@ -1325,7 +1504,7 @@ public class AESticker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.aekit.api.standard.filter.AESticker
  * JD-Core Version:    0.7.0.1
  */

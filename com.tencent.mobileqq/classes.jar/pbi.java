@@ -1,47 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
-import java.util.List;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
 public class pbi
+  implements View.OnTouchListener
 {
-  private int jdField_a_of_type_Int = 1;
-  private List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> jdField_a_of_type_JavaUtilList;
-  private int b;
-  private int c;
-  private int d;
+  public pbi(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, GestureDetector paramGestureDetector) {}
   
-  public ReadInJoyUserInfoModule.Request0xb81Params a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return new ReadInJoyUserInfoModule.Request0xb81Params(this, null);
-  }
-  
-  public pbi a(int paramInt)
-  {
-    this.b = paramInt;
-    return this;
-  }
-  
-  public pbi a(List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    return this;
-  }
-  
-  public pbi b(int paramInt)
-  {
-    this.c = paramInt;
-    return this;
-  }
-  
-  public pbi c(int paramInt)
-  {
-    this.d = paramInt;
-    return this;
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pbi
  * JD-Core Version:    0.7.0.1
  */

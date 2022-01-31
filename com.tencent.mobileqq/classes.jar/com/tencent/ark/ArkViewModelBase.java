@@ -594,6 +594,7 @@ public class ArkViewModelBase
   
   public void doOnEvent(int paramInt)
   {
+    ENV.logE("ArkApp.ArkViewModelBase", new Object[] { "doOnEvent() type=", Integer.valueOf(paramInt) });
     if (paramInt == 0) {
       if (this.mHasLoaded) {
         SafeAsyncRun(new ArkViewModelBase.7(this));
@@ -1007,7 +1008,7 @@ public class ArkViewModelBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.ark.ArkViewModelBase
  * JD-Core Version:    0.7.0.1
  */

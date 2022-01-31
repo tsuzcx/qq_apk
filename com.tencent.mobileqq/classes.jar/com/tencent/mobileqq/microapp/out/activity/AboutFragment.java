@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.microapp.out.activity;
 
 import Wallet.ApkgConfig;
-import abtq;
+import adky;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import bbkk;
+import bdje;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForMiniApp;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
@@ -52,7 +52,7 @@ public class AboutFragment
     localIntent.putExtra("public_fragment_window_feature", 1);
     localIntent.putExtra("app_config", paramMiniAppConfig);
     localIntent.putExtra("versionType", paramInt);
-    abtq.a(paramContext, localIntent, PublicFragmentActivityForMiniApp.class, AboutFragment.class);
+    adky.a(paramContext, localIntent, PublicFragmentActivityForMiniApp.class, AboutFragment.class);
   }
   
   public boolean needImmersive()
@@ -187,7 +187,7 @@ public class AboutFragment
     {
       return;
       paramView = this.mConfig.desc_info;
-    } while (bbkk.a(paramView));
+    } while (bdje.a(paramView));
     try
     {
       this.mDescObj = new JSONObject(paramView);
@@ -209,7 +209,7 @@ public class AboutFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.out.activity.AboutFragment
  * JD-Core Version:    0.7.0.1
  */

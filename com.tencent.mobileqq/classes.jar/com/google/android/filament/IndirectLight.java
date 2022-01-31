@@ -1,8 +1,8 @@
 package com.google.android.filament;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.Size;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.Size;
 import com.google.android.filament.proguard.UsedByReflection;
 
 public class IndirectLight
@@ -15,6 +15,30 @@ public class IndirectLight
     this.mNativeObject = paramLong;
   }
   
+  @NonNull
+  @Size(min=4L)
+  public static float[] getColorEstimate(@Nullable @Size(min=4L) float[] paramArrayOfFloat1, @NonNull float[] paramArrayOfFloat2, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (paramArrayOfFloat2.length < 27) {
+      throw new ArrayIndexOutOfBoundsException("3 bands SH required, array must be at least 9 x float3");
+    }
+    paramArrayOfFloat1 = Asserts.assertFloat4(paramArrayOfFloat1);
+    nGetColorEstimateStatic(paramArrayOfFloat1, paramArrayOfFloat2, paramFloat1, paramFloat2, paramFloat3);
+    return paramArrayOfFloat1;
+  }
+  
+  @NonNull
+  @Size(min=3L)
+  public static float[] getDirectionEstimate(@NonNull float[] paramArrayOfFloat1, @Nullable @Size(min=3L) float[] paramArrayOfFloat2)
+  {
+    if (paramArrayOfFloat1.length < 27) {
+      throw new ArrayIndexOutOfBoundsException("3 bands SH required, array must be at least 9 x float3");
+    }
+    paramArrayOfFloat2 = Asserts.assertFloat3(paramArrayOfFloat2);
+    nGetDirectionEstimateStatic(paramArrayOfFloat1, paramArrayOfFloat2);
+    return paramArrayOfFloat2;
+  }
+  
   private static native long nBuilderBuild(long paramLong1, long paramLong2);
   
   private static native void nBuilderReflections(long paramLong1, long paramLong2);
@@ -25,7 +49,11 @@ public class IndirectLight
   
   private static native void nGetColorEstimate(long paramLong, float[] paramArrayOfFloat, float paramFloat1, float paramFloat2, float paramFloat3);
   
+  private static native void nGetColorEstimateStatic(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat1, float paramFloat2, float paramFloat3);
+  
   private static native void nGetDirectionEstimate(long paramLong, float[] paramArrayOfFloat);
+  
+  private static native void nGetDirectionEstimateStatic(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
   
   private static native float nGetIntensity(long paramLong);
   
@@ -103,7 +131,7 @@ public class IndirectLight
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.IndirectLight
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.app;
 
-import akfv;
-import akfw;
-import ambe;
+import alxl;
+import alxm;
+import ansd;
 
 public class SVIPHandler$1
   implements Runnable
 {
-  public SVIPHandler$1(akfv paramakfv, String paramString) {}
+  public SVIPHandler$1(alxl paramalxl, String paramString) {}
   
   public void run()
   {
-    ambe localambe = ambe.a();
-    localambe.a(this.this$0.app, this.a, new akfw(this, localambe));
+    ansd localansd = ansd.a();
+    localansd.a(this.this$0.app, this.a, new alxm(this, localansd));
   }
 }
 

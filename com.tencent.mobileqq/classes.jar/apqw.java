@@ -1,27 +1,25 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelFavHelper.5.1;
+import mqq.os.MqqHandler;
 
 public class apqw
-  implements bfph
+  extends alnn
 {
-  public apqw(SimpleFileViewer paramSimpleFileViewer, QQAppInterface paramQQAppInterface, TeamWorkFileImportInfo paramTeamWorkFileImportInfo, bfpc parambfpc) {}
+  apqw(apqu paramapqu) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void b(boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
+    if (paramBoolean) {
+      this.a.j();
     }
-    ayee.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-    this.jdField_a_of_type_Bfpc.dismiss();
+    if ((paramObject != null) && ((paramObject instanceof Integer))) {
+      ThreadManager.getUIHandler().post(new EmoticonPanelFavHelper.5.1(this, paramObject));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apqw
  * JD-Core Version:    0.7.0.1
  */

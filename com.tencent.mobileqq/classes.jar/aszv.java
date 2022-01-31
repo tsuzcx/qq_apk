@@ -1,62 +1,52 @@
-import android.graphics.Bitmap;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbyIconDecoder.1;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.intervideo.nowproxy.customized_interface.IShadow;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.1;
+import com.tencent.mobileqq.intervideo.now.dynamic.NowShadowImpl.2;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import java.util.concurrent.ExecutorService;
 
 public class aszv
-  implements Handler.Callback, awby, bazd
+  implements IShadow
 {
-  NearbyAppInterface a;
-  public List<baze> a;
-  List<String> b;
-  List<String> c;
+  private asux a;
   
-  protected void a(String paramString, Bitmap paramBitmap)
+  private void a(String paramString)
   {
-    atbr.a("NearbyIconDecoder", "notifyGetIcon", new Object[] { paramString, paramBitmap });
-    this.a.runOnUiThread(new NearbyIconDecoder.1(this, paramString, paramBitmap));
-  }
-  
-  public void a(String paramString1, String paramString2, Bitmap paramBitmap, int paramInt)
-  {
-    atbr.a("NearbyIconDecoder", "onDecodeBitmap", new Object[] { paramString1, paramString2, paramBitmap, Integer.valueOf(paramInt) });
-    if (paramString1 == null) {}
-    while (paramBitmap == null) {
+    try
+    {
+      aszx.a().a().b("enter_shadow_err").c(paramString).b();
+      ThreadManagerV2.getUIHandlerV2().post(new NowShadowImpl.2(this));
       return;
     }
-    a(paramString1, paramBitmap);
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public asux a(Context paramContext, String paramString1, String paramString2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    atbr.a("NearbyIconDecoder", "MSG_GET_ICON_URL", new Object[] { Integer.valueOf(this.b.size()), Integer.valueOf(this.c.size()) });
-    paramMessage = new ArrayList(this.b.size());
-    synchronized (this.b)
-    {
-      paramMessage.addAll(this.b);
-      this.b.clear();
-    }
-    synchronized (this.c)
-    {
-      this.c.addAll(paramMessage);
-      this.a.a().a(paramMessage);
-      return false;
-      paramMessage = finally;
-      throw paramMessage;
-    }
+    return asvg.a(paramContext, paramString1, paramString2);
   }
+  
+  public void enter(Context paramContext, long paramLong, String paramString1, String paramString2, Bundle paramBundle, EnterCallback paramEnterCallback)
+  {
+    alza.b(192).execute(new NowShadowImpl.1(this, paramContext, paramString1, paramString2, paramLong, paramBundle, paramEnterCallback));
+  }
+  
+  public boolean hasPluginManager()
+  {
+    return this.a != null;
+  }
+  
+  public void setILoggerFactory() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszv
  * JD-Core Version:    0.7.0.1
  */

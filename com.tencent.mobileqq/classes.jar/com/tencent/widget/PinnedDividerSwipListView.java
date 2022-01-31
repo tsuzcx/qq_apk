@@ -7,23 +7,23 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListAdapter;
-import bcot;
-import bfos;
-import bfug;
-import bfuh;
+import benv;
+import bhpo;
+import bhvd;
+import bhve;
 import java.util.LinkedList;
 
 public class PinnedDividerSwipListView
   extends SwipListView
-  implements bfos
+  implements bhpo
 {
   private int jdField_a_of_type_Int = 0;
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
-  private bcot jdField_a_of_type_Bcot;
-  private bfos jdField_a_of_type_Bfos;
-  private bfug jdField_a_of_type_Bfug;
-  private bfuh jdField_a_of_type_Bfuh;
+  private benv jdField_a_of_type_Benv;
+  private bhpo jdField_a_of_type_Bhpo;
+  private bhvd jdField_a_of_type_Bhvd;
+  private bhve jdField_a_of_type_Bhve;
   private LinkedList<View> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   private int b;
   
@@ -83,7 +83,7 @@ public class PinnedDividerSwipListView
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.layout(0, -this.b, this.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), this.jdField_a_of_type_AndroidViewView.getMeasuredHeight() - this.b);
-      this.jdField_a_of_type_Bfug.a(this.jdField_a_of_type_AndroidViewView, i);
+      this.jdField_a_of_type_Bhvd.a(this.jdField_a_of_type_AndroidViewView, i);
     }
     for (;;)
     {
@@ -100,8 +100,8 @@ public class PinnedDividerSwipListView
       label145:
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);
     }
-    if (this.jdField_a_of_type_Bcot != null) {
-      this.jdField_a_of_type_Bcot.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.jdField_a_of_type_Benv != null) {
+      this.jdField_a_of_type_Benv.a(this, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -123,8 +123,8 @@ public class PinnedDividerSwipListView
         break label351;
       }
       i = paramInt1 - this.jdField_a_of_type_JavaUtilLinkedList.size();
-      this.jdField_a_of_type_Bfug.a(this.jdField_a_of_type_AndroidViewView, i);
-      if (this.jdField_a_of_type_Bfug.a(i))
+      this.jdField_a_of_type_Bhvd.a(this.jdField_a_of_type_AndroidViewView, i);
+      if (this.jdField_a_of_type_Bhvd.a(i))
       {
         this.jdField_a_of_type_Int = 0;
         paramInt1 = 1;
@@ -159,7 +159,7 @@ public class PinnedDividerSwipListView
           paramInt1 = 0;
           break;
         }
-        if (this.jdField_a_of_type_Bfug.a(i + 1))
+        if (this.jdField_a_of_type_Bhvd.a(i + 1))
         {
           this.jdField_a_of_type_Int = 1;
           paramInt1 = 0;
@@ -188,11 +188,11 @@ public class PinnedDividerSwipListView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bfos != null) {
-        this.jdField_a_of_type_Bfos.onScroll(paramAbsListView, i, paramInt2, paramInt3);
+      if (this.jdField_a_of_type_Bhpo != null) {
+        this.jdField_a_of_type_Bhpo.onScroll(paramAbsListView, i, paramInt2, paramInt3);
       }
-      if (this.jdField_a_of_type_Bfuh != null) {
-        this.jdField_a_of_type_Bfuh.onScroll(paramAbsListView, i, paramInt2, paramInt3);
+      if (this.jdField_a_of_type_Bhve != null) {
+        this.jdField_a_of_type_Bhve.onScroll(paramAbsListView, i, paramInt2, paramInt3);
       }
       return;
       label338:
@@ -206,10 +206,10 @@ public class PinnedDividerSwipListView
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);
       j = this.jdField_a_of_type_JavaUtilLinkedList.size();
       i = paramInt1;
-      if (this.jdField_a_of_type_Bfug.getCount() > 0)
+      if (this.jdField_a_of_type_Bhvd.getCount() > 0)
       {
         i = paramInt1;
-        if (this.jdField_a_of_type_Bfug.a(0))
+        if (this.jdField_a_of_type_Bhvd.a(0))
         {
           i = paramInt1;
           if (j >= paramInt1)
@@ -228,11 +228,11 @@ public class PinnedDividerSwipListView
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_Bfos != null) {
-      this.jdField_a_of_type_Bfos.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_Bhpo != null) {
+      this.jdField_a_of_type_Bhpo.onScrollStateChanged(paramAbsListView, paramInt);
     }
-    if (this.jdField_a_of_type_Bfuh != null) {
-      this.jdField_a_of_type_Bfuh.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.jdField_a_of_type_Bhve != null) {
+      this.jdField_a_of_type_Bhve.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
@@ -247,40 +247,40 @@ public class PinnedDividerSwipListView
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if ((paramListAdapter instanceof bfug))
+    if ((paramListAdapter instanceof bhvd))
     {
-      this.jdField_a_of_type_Bfug = ((bfug)paramListAdapter);
-      int i = this.jdField_a_of_type_Bfug.a();
+      this.jdField_a_of_type_Bhvd = ((bhvd)paramListAdapter);
+      int i = this.jdField_a_of_type_Bhvd.a();
       if (i != 0)
       {
         this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, this, false);
         requestLayout();
       }
-      super.setAdapter(this.jdField_a_of_type_Bfug);
+      super.setAdapter(this.jdField_a_of_type_Bhvd);
       return;
     }
-    this.jdField_a_of_type_Bfug = null;
+    this.jdField_a_of_type_Bhvd = null;
     super.setAdapter(paramListAdapter);
   }
   
-  public void setOnLayoutListener(bcot parambcot)
+  public void setOnLayoutListener(benv parambenv)
   {
-    this.jdField_a_of_type_Bcot = parambcot;
+    this.jdField_a_of_type_Benv = parambenv;
   }
   
-  public void setOnScrollListener(bfos parambfos)
+  public void setOnScrollListener(bhpo parambhpo)
   {
-    this.jdField_a_of_type_Bfos = parambfos;
+    this.jdField_a_of_type_Bhpo = parambhpo;
   }
   
-  public void setOnScrollListenerAdapter(bfuh parambfuh)
+  public void setOnScrollListenerAdapter(bhve parambhve)
   {
-    this.jdField_a_of_type_Bfuh = parambfuh;
+    this.jdField_a_of_type_Bhve = parambhve;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.widget.PinnedDividerSwipListView
  * JD-Core Version:    0.7.0.1
  */

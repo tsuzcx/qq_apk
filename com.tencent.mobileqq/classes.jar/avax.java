@@ -1,31 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class avax
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public avax(VipTagView paramVipTagView) {}
+  public avax(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (VipTagView.a(this.a)) {
-      VipTagView.a(this.a).a();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    VipTagView.a(this.a, false);
-    this.a.invalidate();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    VipTagView.a(this.a, 0.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avax
  * JD-Core Version:    0.7.0.1
  */

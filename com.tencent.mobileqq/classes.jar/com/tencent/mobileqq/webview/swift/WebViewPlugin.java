@@ -3,12 +3,12 @@ package com.tencent.mobileqq.webview.swift;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
-import bccw;
-import bcdo;
-import bcdp;
-import bcdq;
-import bcee;
-import bcek;
+import bebx;
+import becp;
+import becq;
+import becr;
+import bedf;
+import bedl;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -18,7 +18,7 @@ import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
-import nau;
+import ndq;
 import org.json.JSONObject;
 
 public class WebViewPlugin
@@ -44,7 +44,7 @@ public class WebViewPlugin
   public boolean isDestroy;
   public HashMap<String, JsBridgeListener> mOpenApiListeners;
   public String mPluginNameSpace = "";
-  public bcdp mRuntime;
+  public becq mRuntime;
   public long pluginEventFlag;
   
   public static JSONObject getJsonFromJSBridge(String paramString)
@@ -68,7 +68,7 @@ public class WebViewPlugin
   
   public static String toJsScript(String paramString, JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    return "window.mqq && mqq.execEventCallback && mqq.execEventCallback(" + nau.a(paramString) + "," + String.valueOf(paramJSONObject1) + "," + String.valueOf(paramJSONObject2) + ");";
+    return "window.mqq && mqq.execEventCallback && mqq.execEventCallback(" + ndq.a(paramString) + "," + String.valueOf(paramJSONObject1) + "," + String.valueOf(paramJSONObject2) + ");";
   }
   
   public void addOpenApiListenerIfNeeded(String paramString, JsBridgeListener paramJsBridgeListener)
@@ -187,8 +187,8 @@ public class WebViewPlugin
       if (localWebViewFragment != null) {
         return localWebViewFragment.b().a(paramInt);
       }
-      if ((this.mRuntime.a() instanceof bcek)) {
-        return ((bcek)this.mRuntime.a()).b().a(paramInt);
+      if ((this.mRuntime.a() instanceof bedl)) {
+        return ((bedl)this.mRuntime.a()).b().a(paramInt);
       }
     }
     return null;
@@ -197,8 +197,8 @@ public class WebViewPlugin
   public int getRequestCode(byte paramByte)
   {
     if (this.mRuntime != null) {}
-    for (bccw localbccw = this.mRuntime.a(this.mRuntime.a()); (localbccw instanceof bcdq); localbccw = null) {
-      return ((bcdq)localbccw).switchRequestCode(this, paramByte);
+    for (bebx localbebx = this.mRuntime.a(this.mRuntime.a()); (localbebx instanceof becr); localbebx = null) {
+      return ((becr)localbebx).switchRequestCode(this, paramByte);
     }
     if (QLog.isDevelopLevel()) {
       QLog.d(this.TAG, 4, "startActivityForResult not called, activity need implement Interface WebViewPluginContainer");
@@ -229,7 +229,7 @@ public class WebViewPlugin
   final void initRuntime(Activity paramActivity, AppInterface paramAppInterface)
   {
     if (this.inited.compareAndSet(false, true)) {
-      this.mRuntime = new bcdp(paramActivity, paramAppInterface);
+      this.mRuntime = new becq(paramActivity, paramAppInterface);
     }
   }
   
@@ -260,7 +260,7 @@ public class WebViewPlugin
   
   public void postPluginAsyncTask(Runnable paramRunnable)
   {
-    ThreadManager.post(paramRunnable, 5, new bcdo(this), false);
+    ThreadManager.post(paramRunnable, 5, new becp(this), false);
   }
   
   public WebViewPlugin setHandler(Handler paramHandler)
@@ -268,37 +268,37 @@ public class WebViewPlugin
     return this;
   }
   
-  public void setWebUiInterface(bccw parambccw)
+  public void setWebUiInterface(bebx parambebx)
   {
-    if (parambccw != null) {
-      this.mRuntime.a(parambccw);
+    if (parambebx != null) {
+      this.mRuntime.a(parambebx);
     }
   }
   
   public void startActivityForResult(Intent paramIntent, byte paramByte)
   {
     Activity localActivity = null;
-    bccw localbccw;
+    bebx localbebx;
     if (this.mRuntime != null)
     {
-      localbccw = this.mRuntime.a(this.mRuntime.a());
+      localbebx = this.mRuntime.a(this.mRuntime.a());
       if (this.mRuntime != null) {
         localActivity = this.mRuntime.a();
       }
-      if (!(localbccw instanceof bcdq)) {
+      if (!(localbebx instanceof becr)) {
         break label67;
       }
-      ((bcdq)localbccw).pluginStartActivityForResult(this, paramIntent, paramByte);
+      ((becr)localbebx).pluginStartActivityForResult(this, paramIntent, paramByte);
     }
     label67:
     do
     {
       return;
-      localbccw = null;
+      localbebx = null;
       break;
-      if ((localActivity instanceof bcdq))
+      if ((localActivity instanceof becr))
       {
-        ((bcdq)localActivity).pluginStartActivityForResult(this, paramIntent, paramByte);
+        ((becr)localActivity).pluginStartActivityForResult(this, paramIntent, paramByte);
         return;
       }
     } while (!QLog.isDevelopLevel());
@@ -307,7 +307,7 @@ public class WebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.WebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

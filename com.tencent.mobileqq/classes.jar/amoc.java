@@ -1,19 +1,19 @@
-import android.graphics.Rect;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class amoc
+class amoc
+  implements View.OnClickListener
 {
-  public Rect a;
-  public String a;
+  amoc(amob paramamob) {}
   
-  public amoc(Rect paramRect, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amoc
  * JD-Core Version:    0.7.0.1
  */

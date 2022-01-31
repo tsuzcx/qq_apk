@@ -3,7 +3,7 @@ package com.tencent.mobileqq.nearby.widget;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import atxv;
+import avoz;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class AvatarWallPagerAdapter$InnerPagerAdapter
   
   public int getItemPosition(Object paramObject)
   {
-    paramObject = (atxv)((View)paramObject).getTag(2131376843);
+    paramObject = (avoz)((View)paramObject).getTag(2131377357);
     int i = 0;
     while (i < this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaUtilList.size())
     {
@@ -97,7 +97,7 @@ public class AvatarWallPagerAdapter$InnerPagerAdapter
           }
         }
         localView = this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.a(paramInt), this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaUtilList.get(paramInt));
-        localView.setTag(2131376843, new atxv(this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter, this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaUtilList.get(paramInt)));
+        localView.setTag(2131377357, new avoz(this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter, this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter.jdField_a_of_type_JavaUtilList.get(paramInt)));
         if (paramViewGroup != null)
         {
           paramViewGroup.addView(localView);
@@ -129,7 +129,7 @@ public class AvatarWallPagerAdapter$InnerPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.widget.AvatarWallPagerAdapter.InnerPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

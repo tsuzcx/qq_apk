@@ -1,19 +1,60 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
+import java.util.List;
 
 class ofe
-  implements ViewBase.OnClickListener
+  extends BaseAdapter
 {
   ofe(ofb paramofb) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public int getCount()
   {
-    ((ogn)this.a.jdField_a_of_type_Ohs).a(this.a.jdField_a_of_type_Oif, ofa.a(this.a.jdField_a_of_type_Oif, 0));
+    return ofb.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return ofb.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560043, null);
+      paramViewGroup = new off(this.a);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378975));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368725));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      GiftServiceBean localGiftServiceBean = (GiftServiceBean)getItem(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localGiftServiceBean.t);
+      if (ofb.a(this.a) != paramInt) {
+        break;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842504);
+      return paramView;
+      paramViewGroup = (off)paramView.getTag();
+    }
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842505);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ofe
  * JD-Core Version:    0.7.0.1
  */

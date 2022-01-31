@@ -1,47 +1,79 @@
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.WebAccelerator;
+import java.io.IOException;
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bcgp
+  extends bcgn
 {
-  public static long a;
-  static final AtomicBoolean a;
-  
-  static
+  public bcgp(String paramString1, String paramString2, bcgo parambcgo, int paramInt, Bundle paramBundle)
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    super(paramString1, paramString2, parambcgo, paramInt, paramBundle);
   }
   
-  public static boolean a()
+  protected JSONObject a(HashMap<String, Object>... paramVarArgs)
   {
-    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
-  }
-  
-  public static boolean b()
-  {
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-    {
-      long l = System.currentTimeMillis();
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("use_speedy_classloader", Boolean.valueOf(true));
-      localHashMap.put("use_dexloader_service", Boolean.valueOf(false));
-      QbSdk.initTbsSettings(localHashMap);
-      WebAccelerator.initTbsEnvironment(BaseApplicationImpl.sApplication.getApplicationContext(), 2);
-      bcfo.D = SystemClock.elapsedRealtime();
-      jdField_a_of_type_Long = System.currentTimeMillis() - l;
-      QLog.d("WebLog_SwiftWebAccelerator", 1, "WebAccelerator.initTbsEnvironment, cost=" + (System.currentTimeMillis() - l));
-      return true;
+    if (isCancelled()) {
+      return null;
     }
-    return false;
+    Object localObject = paramVarArgs[0];
+    if (((((HashMap)localObject).get("CONTEXT") instanceof Context)) && ((((HashMap)localObject).get("BUNDLE") instanceof Bundle)))
+    {
+      paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
+      localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
+    }
+    for (;;)
+    {
+      try
+      {
+        Bundle localBundle = new Bundle();
+        String str1 = ((Bundle)localObject).getString("Cookie");
+        String str2 = ((Bundle)localObject).getString("Referer");
+        String str3 = ((Bundle)localObject).getString("Origin");
+        if (str1 != null)
+        {
+          localBundle.putString("Cookie", str1);
+          ((Bundle)localObject).remove("Cookie");
+        }
+        if (str2 != null)
+        {
+          localBundle.putString("Referer", str2);
+          ((Bundle)localObject).remove("Referer");
+        }
+        if (str3 != null)
+        {
+          localBundle.putString("Origin", str3);
+          ((Bundle)localObject).remove("Origin");
+        }
+        paramVarArgs = new JSONObject(ndd.a(paramVarArgs, this.a, this.b, (Bundle)localObject, localBundle));
+      }
+      catch (IOException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
+      }
+      catch (JSONException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        paramVarArgs = null;
+        continue;
+      }
+      catch (OutOfMemoryError paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+      }
+      return paramVarArgs;
+      paramVarArgs = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcgp
  * JD-Core Version:    0.7.0.1
  */

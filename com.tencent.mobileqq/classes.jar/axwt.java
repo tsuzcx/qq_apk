@@ -1,106 +1,73 @@
+import android.graphics.drawable.ColorDrawable;
+import android.support.v4.view.PagerAdapter;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.widget.PAHighLightImageView;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.HashMap;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import com.tencent.mobileqq.richstatus.ActionListActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class axwt
-  extends URLDrawableDownListener.Adapter
+public class axwt
+  extends PagerAdapter
 {
-  axwt(axws paramaxws) {}
+  private ArrayList<GridView> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
-  {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadCancelled");
-    }
-  }
+  private axwt(ActionListActivity paramActionListActivity) {}
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a()
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null))
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    try
     {
-      paramThrowable = paramURLDrawable.getURL().toString();
-      if (paramThrowable.startsWith("http://url.cn"))
+      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        paramThrowable = paramThrowable.replace("http://", "https://");
-        try
-        {
-          paramThrowable = URLDrawable.getDrawable(new URL(paramThrowable), (URLDrawable.URLDrawableOptions)paramURLDrawable.getTag());
-          paramThrowable.setAutoDownload(true);
-          ((PAHighLightImageView)paramView).setImageDrawable(paramThrowable);
-          return;
-        }
-        catch (Exception paramThrowable)
-        {
-          paramThrowable.printStackTrace();
-        }
+        axzq localaxzq = (axzq)localIterator.next();
+        GridView localGridView = new GridView(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getApplicationContext());
+        localGridView.setNumColumns(3);
+        localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+        localGridView.setSelector(new ColorDrawable(0));
+        localGridView.setScrollingCacheEnabled(false);
+        localGridView.setAdapter(new axws(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity, localaxzq.jdField_a_of_type_JavaUtilArrayList));
+        this.jdField_a_of_type_JavaUtilArrayList.add(localGridView);
       }
-    }
-    try
-    {
-      paramThrowable = new HashMap();
-      paramThrowable.put("param_Url", paramURLDrawable.getURL().toString());
-      axrn.a(BaseApplication.getContext()).a(null, "StructMsgPicShow", false, 0L, 0L, paramThrowable, null);
-      label152:
-      this.a.a(paramView, 0, 1001);
       return;
     }
-    catch (Exception paramURLDrawable)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      break label152;
+      System.gc();
+      super.notifyDataSetChanged();
     }
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public void destroyItem(View paramView, int paramInt, Object paramObject) {}
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("StructMsgItemCover", 2, "onLoadInterrupted");
-    }
+    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public int getCount()
   {
-    if (paramView == null) {
-      return;
-    }
-    paramView.setBackgroundDrawable(null);
-    if ((paramView instanceof ImageView)) {
-      ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-    }
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_Url", paramURLDrawable.getURL().toString());
-      axrn.a(BaseApplication.getContext()).a(null, "StructMsgPicShow", true, 0L, 0L, localHashMap, null);
-      label66:
-      if (QLog.isColorLevel()) {
-        QLog.d("StructMsgItemCover", 2, "onLoadSuccessed");
-      }
-      this.a.a(paramView, 1, 1001);
-      return;
-    }
-    catch (Exception paramURLDrawable)
-    {
-      break label66;
-    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    GridView localGridView = (GridView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramViewGroup.addView(localGridView);
+    return localGridView;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axwt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import osj;
-import paa;
+import oxb;
+import pfi;
 
 public class ChannelInfoModule$10
   implements Runnable
 {
-  public ChannelInfoModule$10(paa parampaa, int paramInt) {}
+  public ChannelInfoModule$10(pfi parampfi, int paramInt) {}
   
   public void run()
   {
-    osj.a().e(this.a);
+    oxb.a().e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule.10
  * JD-Core Version:    0.7.0.1
  */

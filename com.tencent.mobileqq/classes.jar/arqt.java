@@ -1,23 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
 
-class arqt
-  implements ajuz
+public class arqt
+  implements army
 {
-  arqt(arqs paramarqs) {}
+  public arqt(QfileEditBottomBar paramQfileEditBottomBar) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    if (paramBoolean) {
-      arqs.a(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogether.dpc", 2, "onDpcPullFinished, hasChanged = " + paramBoolean);
-    }
+    QfileEditBottomBar.a(this.a);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arqt
  * JD-Core Version:    0.7.0.1
  */

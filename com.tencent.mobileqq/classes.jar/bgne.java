@@ -1,40 +1,10 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qappcenter.remote.SendMsg;
-
-class bgne
-  implements ServiceConnection
+public abstract interface bgne
 {
-  bgne(bgnd parambgnd) {}
-  
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + bgnd.a(this.a));
-    }
-    this.a.a = bgna.a(paramIBinder);
-    if (bgnd.a(this.a) != null)
-    {
-      paramComponentName = new SendMsg("cmd.registerListener");
-      paramComponentName.a = bgnd.a(this.a);
-      this.a.b(paramComponentName);
-    }
-    this.a.a();
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + bgnd.a(this.a));
-    }
-    this.a.a = null;
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgne
  * JD-Core Version:    0.7.0.1
  */

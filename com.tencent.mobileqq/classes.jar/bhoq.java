@@ -1,25 +1,41 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import mqq.app.QQPermissionCallback;
-
-final class bhoq
-  implements QQPermissionCallback
+public class bhoq<T>
 {
-  bhoq(Bitmap paramBitmap, int paramInt, String paramString, Activity paramActivity) {}
+  private long jdField_a_of_type_Long;
+  private bhor<T> jdField_a_of_type_Bhor;
+  private long b;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  private bhoq(bhor<T> parambhor)
   {
-    bbdj.b(bhoo.a(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_Bhor = parambhor;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public static <T> bhoq<T> a(bhor<T> parambhor)
   {
-    bhoo.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+    return new bhoq(parambhor);
+  }
+  
+  public bhoq<T> a(long paramLong)
+  {
+    this.b = paramLong;
+    return this;
+  }
+  
+  public bhoq<T> a(T paramT)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long > this.b)
+    {
+      this.jdField_a_of_type_Long = l;
+      if (this.jdField_a_of_type_Bhor != null) {
+        this.jdField_a_of_type_Bhor.a(paramT);
+      }
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhoq
  * JD-Core Version:    0.7.0.1
  */

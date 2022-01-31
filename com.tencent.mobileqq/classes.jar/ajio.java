@@ -1,20 +1,69 @@
-import java.util.List;
+import android.content.Context;
+import android.graphics.Rect;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginAnimBtnView.2;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract interface ajio
+public class ajio
+  implements OnCompositionLoadedListener
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  public ajio(LoginAnimBtnView.2 param2) {}
   
-  public abstract void a(int[] paramArrayOfInt, int paramInt);
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(List<ajim> paramList);
-  
-  public abstract void e();
+  public void onCompositionLoaded(LottieComposition arg1)
+  {
+    if ((??? == null) || (LoginAnimBtnView.a(this.a.this$0)))
+    {
+      QLog.e("LoginAnimBtnView", 1, "onCompositionLoaded lottieComposition is null or mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
+      return;
+    }
+    int i = aekt.a(70.0F, this.a.this$0.getResources());
+    int j = aekt.a(70.0F, this.a.this$0.getResources());
+    Object localObject1 = ???.getBounds();
+    float f1 = i / ((Rect)localObject1).width();
+    float f2 = j / ((Rect)localObject1).height();
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded iw:" + i + ", ih:" + j + ": : rw:" + ((Rect)localObject1).width() + ", rh:" + ((Rect)localObject1).height());
+    }
+    localObject1 = new LottieDrawable();
+    ((LottieDrawable)localObject1).setImageAssetDelegate(new ajip(this.a.this$0.getContext().getApplicationContext()));
+    ((LottieDrawable)localObject1).setComposition(???);
+    ((LottieDrawable)localObject1).setScale(f1, f2);
+    ((LottieDrawable)localObject1).loop(true);
+    ??? = ((LottieDrawable)localObject1).getBounds();
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginAnimBtnView", 2, "onCompositionLoaded rw:" + ???.width() + ", rh:" + ???.height() + " mIsDestroyed:" + LoginAnimBtnView.a(this.a.this$0));
+    }
+    LoginAnimBtnView.a(this.a.this$0, (LottieDrawable)localObject1);
+    if (LoginAnimBtnView.a(this.a.this$0))
+    {
+      ((LottieDrawable)localObject1).cancelAnimation();
+      ((LottieDrawable)localObject1).recycleBitmaps();
+      ((LottieDrawable)localObject1).clearComposition();
+      ((LottieDrawable)localObject1).setImageAssetDelegate(null);
+      LoginAnimBtnView.a(this.a.this$0, null);
+    }
+    for (;;)
+    {
+      synchronized (LoginAnimBtnView.a(this.a.this$0))
+      {
+        LoginAnimBtnView.a(this.a.this$0, null);
+        LoginAnimBtnView.a(this.a.this$0, null);
+        return;
+      }
+      if (this.a.this$0.isEnabled())
+      {
+        this.a.this$0.removeCallbacks(LoginAnimBtnView.a(this.a.this$0));
+        this.a.this$0.post(LoginAnimBtnView.a(this.a.this$0));
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajio
  * JD-Core Version:    0.7.0.1
  */

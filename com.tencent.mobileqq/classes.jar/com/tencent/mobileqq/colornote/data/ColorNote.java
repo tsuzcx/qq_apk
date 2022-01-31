@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.colornote.data;
 
-import amhb;
-import amhh;
 import android.os.Bundle;
-import android.text.TextUtils;
-import auko;
-import aulz;
+import anyc;
+import anyi;
+import awbv;
+import awdg;
+import bdje;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.Arrays;
 
 public class ColorNote
-  extends auko
+  extends awbv
   implements Serializable, Cloneable
 {
   public static final String PARAM_EXTRA = "param_extra";
@@ -28,7 +28,7 @@ public class ColorNote
   public static final int TYPE_HISTORY = 2;
   public static final int TYPE_NORMAL = 0;
   private static final long serialVersionUID = -2145926824830169542L;
-  @aulz
+  @awdg
   public boolean animate;
   public int mExtra = 0;
   public String mMainTitle;
@@ -50,22 +50,6 @@ public class ColorNote
     this.mTime = NetConnInfoCenter.getServerTime();
   }
   
-  public ColorNote(amhb paramamhb)
-  {
-    this.mServiceType = paramamhb.jdField_a_of_type_Int;
-    this.mSubType = paramamhb.jdField_a_of_type_JavaLangString;
-    this.mSubTitle = paramamhb.c;
-    this.mMainTitle = paramamhb.jdField_b_of_type_JavaLangString;
-    this.mPicUrl = paramamhb.d;
-    this.mReserve = paramamhb.jdField_a_of_type_ArrayOfByte;
-    this.mExtra = paramamhb.jdField_b_of_type_Int;
-    this.mUniKey = (paramamhb.jdField_a_of_type_Int + paramamhb.jdField_a_of_type_JavaLangString + paramamhb.jdField_b_of_type_Int);
-    this.mTime = NetConnInfoCenter.getServerTime();
-    if (((this.mServiceType == -1) || (TextUtils.isEmpty(this.mSubType))) && (QLog.isColorLevel())) {
-      QLog.d("ColorNote", 2, "Illegal param mServiceType = " + this.mServiceType + ", mSubType = " + this.mSubType);
-    }
-  }
-  
   public ColorNote(Bundle paramBundle)
   {
     this.mServiceType = paramBundle.getInt("param_service_type", -1);
@@ -77,7 +61,23 @@ public class ColorNote
     this.mSubTitle = paramBundle.getString("param_sub_title");
     this.mPicUrl = paramBundle.getString("param_pic_url");
     this.mReserve = paramBundle.getByteArray("param_reserve");
-    if (((this.mServiceType == -1) || (TextUtils.isEmpty(this.mSubType))) && (QLog.isColorLevel())) {
+    if (((this.mServiceType == -1) || (bdje.a(this.mSubType))) && (QLog.isColorLevel())) {
+      QLog.d("ColorNote", 2, "Illegal param mServiceType = " + this.mServiceType + ", mSubType = " + this.mSubType);
+    }
+  }
+  
+  public ColorNote(anyc paramanyc)
+  {
+    this.mServiceType = paramanyc.jdField_a_of_type_Int;
+    this.mSubType = paramanyc.jdField_a_of_type_JavaLangString;
+    this.mSubTitle = paramanyc.c;
+    this.mMainTitle = paramanyc.jdField_b_of_type_JavaLangString;
+    this.mPicUrl = paramanyc.d;
+    this.mReserve = paramanyc.jdField_a_of_type_ArrayOfByte;
+    this.mExtra = paramanyc.jdField_b_of_type_Int;
+    this.mUniKey = (paramanyc.jdField_a_of_type_Int + paramanyc.jdField_a_of_type_JavaLangString + paramanyc.jdField_b_of_type_Int);
+    this.mTime = NetConnInfoCenter.getServerTime();
+    if (((this.mServiceType == -1) || (bdje.a(this.mSubType))) && (QLog.isColorLevel())) {
       QLog.d("ColorNote", 2, "Illegal param mServiceType = " + this.mServiceType + ", mSubType = " + this.mSubType);
     }
   }
@@ -115,7 +115,7 @@ public class ColorNote
     {
       return false;
       paramObject = (ColorNote)paramObject;
-    } while ((this.mServiceType != paramObject.getServiceType()) || (!amhh.a(this.mSubType, paramObject.getSubType())) || (!amhh.a(this.mMainTitle, paramObject.getMainTitle())) || (!amhh.a(this.mSubTitle, paramObject.getSubTitle())) || (this.mExtra != paramObject.mExtra));
+    } while ((this.mServiceType != paramObject.getServiceType()) || (!anyi.a(this.mSubType, paramObject.getSubType())) || (!anyi.a(this.mMainTitle, paramObject.getMainTitle())) || (!anyi.a(this.mSubTitle, paramObject.getSubTitle())) || (this.mExtra != paramObject.mExtra));
     return true;
   }
   
@@ -171,7 +171,7 @@ public class ColorNote
   
   public boolean isTitleAndPicValid()
   {
-    return (!TextUtils.isEmpty(this.mMainTitle)) && (!TextUtils.isEmpty(this.mSubTitle)) && (!TextUtils.isEmpty(this.mPicUrl));
+    return (!bdje.a(this.mMainTitle)) && (!bdje.a(this.mSubTitle)) && (!bdje.a(this.mPicUrl));
   }
   
   public Bundle parseBundle()
@@ -218,7 +218,7 @@ public class ColorNote
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.data.ColorNote
  * JD-Core Version:    0.7.0.1
  */

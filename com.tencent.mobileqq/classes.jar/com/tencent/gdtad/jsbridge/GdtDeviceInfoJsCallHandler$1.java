@@ -1,41 +1,41 @@
 package com.tencent.gdtad.jsbridge;
 
+import aamm;
+import aamv;
+import aano;
+import aanp;
+import aaoo;
+import aaop;
+import aaoq;
 import android.app.Activity;
 import android.content.Context;
 import com.tencent.mobileqq.pb.PBField;
 import java.lang.ref.WeakReference;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ywk;
-import ywv;
-import yxo;
-import yxp;
-import yyp;
-import yyq;
-import yyr;
 
 public class GdtDeviceInfoJsCallHandler$1
   implements Runnable
 {
-  public GdtDeviceInfoJsCallHandler$1(ywv paramywv, WeakReference paramWeakReference, String[] paramArrayOfString, String paramString) {}
+  public GdtDeviceInfoJsCallHandler$1(aamv paramaamv, WeakReference paramWeakReference, String[] paramArrayOfString, String paramString) {}
   
   public void run()
   {
     JSONObject localJSONObject2 = null;
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (((ywk)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a() == null))
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (((aamm)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a() == null))
     {
-      yxp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest error");
+      aanp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest error");
       return;
     }
     try
     {
       localObject1 = new JSONObject(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
-      yxp.b("GdtDeviceInfoJsCallHandler", String.format("handleJsCallRequest %s", new Object[] { ((JSONObject)localObject1).toString() }));
+      aanp.b("GdtDeviceInfoJsCallHandler", String.format("handleJsCallRequest %s", new Object[] { ((JSONObject)localObject1).toString() }));
       localObject1 = ((JSONObject)localObject1).getJSONObject("params").optString("businessIdForAidTicketAndTaidTicket");
-      localObject2 = ((ywk)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().getApplicationContext();
-      yyq localyyq = new yyq();
-      localyyq.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      localObject1 = yyp.a((Context)localObject2, localyyq);
+      localObject2 = ((aamm)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().getApplicationContext();
+      aaop localaaop = new aaop();
+      localaaop.jdField_a_of_type_JavaLangString = ((String)localObject1);
+      localObject1 = aaoo.a((Context)localObject2, localaaop);
       if (localObject1 == null)
       {
         localObject1 = localJSONObject2;
@@ -55,16 +55,16 @@ public class GdtDeviceInfoJsCallHandler$1
           localJSONObject2.put("deviceInfo", localObject1);
           try
           {
-            ((ywk)this.jdField_a_of_type_JavaLangRefWeakReference.get()).callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject2.toString() });
+            ((aamm)this.jdField_a_of_type_JavaLangRefWeakReference.get()).callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject2.toString() });
             return;
           }
           catch (Throwable localThrowable1)
           {
-            yxp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest", localThrowable1);
+            aanp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest", localThrowable1);
             return;
           }
           localThrowable2 = localThrowable2;
-          yxp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest", localThrowable2);
+          aanp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest", localThrowable2);
           JSONObject localJSONObject1 = null;
           continue;
           Object localObject2 = localJSONObject1.a;
@@ -72,7 +72,7 @@ public class GdtDeviceInfoJsCallHandler$1
           if (localObject2 == null) {
             continue;
           }
-          localObject2 = yxo.a((PBField)localObject2);
+          localObject2 = aano.a((PBField)localObject2);
           localJSONObject1 = localJSONObject2;
           if (localObject2 == null) {
             continue;
@@ -85,18 +85,18 @@ public class GdtDeviceInfoJsCallHandler$1
         }
         catch (JSONException localJSONException)
         {
-          yxp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest", localJSONException);
+          aanp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest", localJSONException);
           continue;
         }
         label271:
-        yxp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest error");
+        aanp.d("GdtDeviceInfoJsCallHandler", "handleJsCallRequest error");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtDeviceInfoJsCallHandler.1
  * JD-Core Version:    0.7.0.1
  */

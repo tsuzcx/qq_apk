@@ -1,47 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sveffects.Logger;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.open.filedownload.ui.ApkFileDownloadButton;
 
 public class bfmh
-  implements Logger
+  implements DialogInterface.OnClickListener
 {
-  public void d(String paramString1, String paramString2)
-  {
-    QLog.d(paramString1, 2, paramString2);
-  }
+  public bfmh(ApkFileDownloadButton paramApkFileDownloadButton) {}
   
-  public void e(String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.e(paramString1, 2, paramString2);
-  }
-  
-  public void e(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    QLog.e(paramString1, 2, paramString2, paramThrowable);
-  }
-  
-  public void e(String paramString, Throwable paramThrowable)
-  {
-    QLog.e(paramString, 2, paramThrowable, new Object[0]);
-  }
-  
-  public void i(String paramString1, String paramString2)
-  {
-    QLog.i(paramString1, 2, paramString2);
-  }
-  
-  public boolean isEnable()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public void w(String paramString1, String paramString2)
-  {
-    QLog.w(paramString1, 2, paramString2);
+    this.a.b(false, true);
+    paramDialogInterface.dismiss();
+    bfgx.b(bfgz.a().a("203").k(this.a.a.a).j("5").l(this.a.a.c).m(this.a.a.d).a(this.a.a.h).b(this.a.a.f).g(this.a.a.e));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfmh
  * JD-Core Version:    0.7.0.1
  */

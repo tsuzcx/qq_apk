@@ -1,39 +1,37 @@
-import android.os.SystemClock;
-import com.tribe.async.async.JobSegment;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import dov.com.qq.im.ae.album.AEAlbumLinearLayout;
 
-public abstract class bklt<IN, OUT>
-  extends JobSegment<IN, OUT>
+public class bklt
+  implements Animator.AnimatorListener
 {
-  protected long a;
-  private final String a;
-  private long b;
+  public bklt(AEAlbumLinearLayout paramAEAlbumLinearLayout) {}
   
-  public bklt()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
+    AEAlbumLinearLayout.a(this.a, 0);
   }
   
-  public void call(IN paramIN)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    super.call(paramIN);
+    if (AEAlbumLinearLayout.a(this.a) != null) {
+      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.a(this.a), AEAlbumLinearLayout.a(this.a, AEAlbumLinearLayout.a(this.a)));
+    }
+    AEAlbumLinearLayout.a(this.a, 0);
   }
   
-  public void notifyError(Error paramError)
-  {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyError(paramError);
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void notifyResult(OUT paramOUT)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.b = SystemClock.uptimeMillis();
-    super.notifyResult(paramOUT);
+    if (AEAlbumLinearLayout.a(this.a) != null) {
+      AEAlbumLinearLayout.a(this.a).a(AEAlbumLinearLayout.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bklt
  * JD-Core Version:    0.7.0.1
  */

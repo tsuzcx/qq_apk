@@ -1,23 +1,20 @@
-import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
 import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.os.Handler;
+import java.lang.ref.WeakReference;
 
-class beuh
-  extends beub
+public class beuh
+  extends Handler
 {
-  beuh(INTERFACE.GuardInstruction paramGuardInstruction, Context paramContext, MiniAppInfo paramMiniAppInfo)
-  {
-    super(paramGuardInstruction, paramContext, paramMiniAppInfo);
-  }
+  WeakReference<Context> a;
   
-  protected beua a()
+  public beuh(Context paramContext)
   {
-    return new beua(2131694219, new beui(this));
+    this.a = new WeakReference(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beuh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,55 @@
-import android.content.res.Resources;
-import android.widget.Button;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
-import com.tencent.av.ui.MultiVideoEnterPageMembersControlUI;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mgl
-  extends lgg
+  implements View.OnClickListener
 {
-  public mgl(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public mgl(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity, bhpy parambhpy) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString)
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null))
-    {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, empty");
-      return;
+    boolean bool = false;
+    if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().V) {
+      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
+        azmj.b(null, "CliOper", "", "", "0X8005C28", "0X8005C28", 0, 0, "", "", "", "");
+      }
     }
-    if (paramLong != this.a.jdField_a_of_type_Long)
+    for (;;)
     {
-      QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onKickOutResult, ignore");
-      return;
-    }
-    if (paramBoolean)
-    {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getLongAccountUin(), paramLong, this.a.b);
-      this.a.b(paramInt2);
-      return;
-    }
-    if (paramInt3 == -5)
-    {
-      if (this.a.jdField_a_of_type_Boolean) {
-        if ((this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI != null) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI.length > 1) && (this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1] != null)) {
-          this.a.jdField_a_of_type_ArrayOfComTencentAvUiMultiVideoEnterPageMembersControlUI[1].b.setVisibility(8);
+      if (!this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().V) {
+        bool = true;
+      }
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.b(bool);
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().b("OnClick", bool);
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a();
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.b();
+      try
+      {
+        this.jdField_a_of_type_Bhpy.dismiss();
+        return;
+      }
+      catch (Throwable paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000)
+      {
+        azmj.b(null, "CliOper", "", "", "0X8005C23", "0X8005C23", 0, 0, "", "", "", "");
+        continue;
+        if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
+          azmj.b(null, "CliOper", "", "", "0X8005C27", "0X8005C27", 0, 0, "", "", "", "");
+        } else if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000) {
+          azmj.b(null, "CliOper", "", "", "0X8005C22", "0X8005C22", 0, 0, "", "", "", "");
         }
       }
-      for (;;)
-      {
-        bcql.a(this.a, 2131693239, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131298865));
-        return;
-        this.a.jdField_a_of_type_Mgk.b.setVisibility(8);
-      }
-    }
-    bcql.a(this.a, 2131693238, 1).b(MultiVideoEnterPageActivity.c(this.a).getDimensionPixelSize(2131298865));
-  }
-  
-  protected void c(long paramLong)
-  {
-    super.c(paramLong);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin:" + paramLong + ", mRelationId = " + this.a.jdField_a_of_type_Long);
-    }
-    if ((paramLong != 0L) && (paramLong == this.a.jdField_a_of_type_Long))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin matched");
-      }
-      this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgl
  * JD-Core Version:    0.7.0.1
  */

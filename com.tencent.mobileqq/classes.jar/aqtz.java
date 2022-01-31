@@ -1,30 +1,19 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class aqtz
-  extends GestureDetector.SimpleOnGestureListener
+  extends aqrt
 {
-  public aqtz(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  int a;
+  int b;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public aqtz(FileManagerEntity paramFileManagerEntity)
   {
-    return super.onDoubleTap(paramMotionEvent);
-  }
-  
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
-  {
-    return super.onDoubleTapEvent(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return super.onSingleTapConfirmed(paramMotionEvent);
+    super(paramFileManagerEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqtz
  * JD-Core Version:    0.7.0.1
  */

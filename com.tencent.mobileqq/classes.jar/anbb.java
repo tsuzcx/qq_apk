@@ -1,21 +1,23 @@
-import org.jetbrains.annotations.NotNull;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ARRelationShip;
 
-public class anbb
+public final class anbb
+  implements Parcelable.Creator<ARRelationShip>
 {
-  public int a;
-  public String a;
-  
-  @NotNull
-  public String toString()
+  public ARRelationShip a(Parcel paramParcel)
   {
-    StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("topicId: ").append(this.jdField_a_of_type_Int).append(",topicName: ").append(this.jdField_a_of_type_JavaLangString).append("}");
-    return localStringBuilder.toString();
+    return new ARRelationShip(paramParcel);
+  }
+  
+  public ARRelationShip[] a(int paramInt)
+  {
+    return new ARRelationShip[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbb
  * JD-Core Version:    0.7.0.1
  */

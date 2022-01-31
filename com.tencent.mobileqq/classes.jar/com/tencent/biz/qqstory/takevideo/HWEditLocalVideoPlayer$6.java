@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import vff;
-import vfq;
+import wtx;
+import wui;
 
 class HWEditLocalVideoPlayer$6
   implements Runnable
@@ -10,19 +10,19 @@ class HWEditLocalVideoPlayer$6
   
   public void run()
   {
-    Object localObject = (vff)this.this$0.a(vff.class);
+    Object localObject = (wtx)this.this$0.a(wtx.class);
     if (localObject != null) {
-      ((vff)localObject).b();
+      ((wtx)localObject).b();
     }
-    localObject = (vfq)this.this$0.a(vfq.class);
+    localObject = (wui)this.this$0.a(wui.class);
     if (localObject != null) {
-      ((vfq)localObject).b();
+      ((wui)localObject).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.6
  * JD-Core Version:    0.7.0.1
  */

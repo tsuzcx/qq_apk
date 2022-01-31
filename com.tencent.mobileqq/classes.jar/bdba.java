@@ -1,19 +1,28 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.AppRuntime;
 
-class bdba
-  implements bdeq
+final class bdba
+  implements atxr
 {
-  bdba(bdaz parambdaz, ImageView paramImageView) {}
-  
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    switch (paramInt)
+    {
+    }
+    AppRuntime localAppRuntime;
+    do
+    {
+      return;
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(localAppRuntime instanceof QQAppInterface));
+    MediaPlayerManager.a((QQAppInterface)localAppRuntime).a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdba
  * JD-Core Version:    0.7.0.1
  */

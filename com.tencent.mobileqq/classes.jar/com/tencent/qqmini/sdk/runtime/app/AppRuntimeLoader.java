@@ -1,56 +1,58 @@
 package com.tencent.qqmini.sdk.runtime.app;
 
 import android.content.Context;
-import beqm;
-import beqn;
-import betc;
-import bfbd;
-import bfbe;
-import bfbf;
-import bfea;
-import bfec;
-import bfee;
-import bfef;
-import bfeg;
-import bfeh;
-import bfej;
-import bffi;
+import bgqg;
+import bgqh;
+import bhaf;
+import bhag;
+import bhah;
+import bhdu;
+import bhdw;
+import bhdz;
+import bhea;
+import bheb;
+import bhec;
+import bhee;
+import bheg;
+import bhhn;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 
 public class AppRuntimeLoader
-  extends beqm
+  extends bgqg
 {
-  public static final beqn<AppRuntimeLoader> CREATOR = new bfbd();
+  public static final bgqh<AppRuntimeLoader> CREATOR = new bhaf();
   public static final String TAG = "AppRuntimeLoader";
-  private bfea apkgLoadTask;
-  private bfec baselibLoadTask;
-  private bfbe pageCreateTask;
-  private bfbf pageInitTask;
-  private bfee preloadFlagTask;
-  public bfef runtimeCreateTask;
-  private bfeg runtimeInitTask;
-  public bfeh serviceCreateTask;
-  public bfej serviceInitTask;
+  private bhdu apkgLoadTask;
+  private bhdw baselibLoadTask;
+  private bhag pageCreateTask;
+  private bhah pageInitTask;
+  private bhdz preloadFlagTask;
+  public bhea runtimeCreateTask;
+  private bheb runtimeInitTask;
+  public bhec serviceCreateTask;
+  public bhee serviceInitTask;
+  bheg tbsTask;
   
   public AppRuntimeLoader(Context paramContext)
   {
     super(paramContext);
   }
   
-  public bffi[] createTasks()
+  public bhhn[] createTasks()
   {
     Context localContext = this.mContext;
-    this.runtimeCreateTask = new bfef(localContext, this);
-    this.serviceCreateTask = new bfeh(localContext, this);
-    this.runtimeInitTask = new bfeg(localContext, this);
-    this.baselibLoadTask = new bfec(localContext, this);
-    this.apkgLoadTask = new bfea(localContext, this);
-    this.serviceInitTask = new bfej(localContext, this);
-    this.preloadFlagTask = new bfee(localContext, this);
-    this.pageCreateTask = new bfbe(localContext, this);
-    this.pageInitTask = new bfbf(localContext, this);
-    this.runtimeInitTask.a(this.preloadFlagTask.a(this.serviceInitTask.a(this.serviceCreateTask.a(this.runtimeCreateTask)).a(this.baselibLoadTask)).a(this.pageInitTask.a(this.pageCreateTask.a(this.runtimeCreateTask)).a(this.baselibLoadTask))).a(this.apkgLoadTask);
-    return new bffi[] { this.runtimeInitTask };
+    this.runtimeCreateTask = new bhea(localContext, this);
+    this.tbsTask = new bheg(localContext, this);
+    this.serviceCreateTask = new bhec(localContext, this);
+    this.runtimeInitTask = new bheb(localContext, this);
+    this.baselibLoadTask = new bhdw(localContext, this);
+    this.apkgLoadTask = new bhdu(localContext, this);
+    this.serviceInitTask = new bhee(localContext, this);
+    this.preloadFlagTask = new bhdz(localContext, this);
+    this.pageCreateTask = new bhag(localContext, this);
+    this.pageInitTask = new bhah(localContext, this);
+    this.runtimeInitTask.a(this.preloadFlagTask.a(this.serviceInitTask.a(this.serviceCreateTask.a(this.tbsTask).a(this.runtimeCreateTask)).a(this.baselibLoadTask)).a(this.pageInitTask.a(this.pageCreateTask.a(this.runtimeCreateTask)).a(this.baselibLoadTask))).a(this.apkgLoadTask);
+    return new bhhn[] { this.runtimeInitTask };
   }
   
   public void loadMiniAppInfo(MiniAppInfo paramMiniAppInfo)
@@ -59,39 +61,38 @@ public class AppRuntimeLoader
     this.apkgLoadTask.a(paramMiniAppInfo);
   }
   
-  public void onTaskDone(bffi parambffi)
+  public void onTaskDone(bhhn parambhhn)
   {
-    if (parambffi == null) {
+    if (parambhhn == null) {
       return;
     }
-    betc.a("AppRuntimeLoader", "onTaskDone " + parambffi);
-    if (!parambffi.d())
+    if (!parambhhn.d())
     {
       notifyRuntimeEvent(12, new Object[0]);
-      onRuntimeLoadResult(parambffi.jdField_a_of_type_Int, parambffi.jdField_a_of_type_JavaLangString);
+      onRuntimeLoadResult(parambhhn.a, parambhhn.b);
       return;
     }
-    if (parambffi == this.preloadFlagTask) {
+    if (parambhhn == this.preloadFlagTask) {
       notifyRuntimeEvent(3, new Object[0]);
     }
     for (;;)
     {
-      super.onTaskDone(parambffi);
+      super.onTaskDone(parambhhn);
       return;
-      if (parambffi == this.runtimeCreateTask)
+      if (parambhhn == this.runtimeCreateTask)
       {
         if (this.runtimeCreateTask.d()) {
           this.mRuntime = this.runtimeCreateTask.a();
         }
       }
-      else if (parambffi == this.runtimeInitTask)
+      else if (parambhhn == this.runtimeInitTask)
       {
         if (this.runtimeInitTask.d()) {
           notifyRuntimeEvent(4, new Object[0]);
         }
         this.mIsRunning = false;
       }
-      else if ((parambffi == this.apkgLoadTask) && (this.apkgLoadTask.d()) && (this.mMiniAppInfo != null))
+      else if ((parambhhn == this.apkgLoadTask) && (this.apkgLoadTask.d()) && (this.mMiniAppInfo != null))
       {
         this.mMiniAppInfo.apkgInfo = this.apkgLoadTask.a();
       }
@@ -100,7 +101,7 @@ public class AppRuntimeLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.app.AppRuntimeLoader
  * JD-Core Version:    0.7.0.1
  */

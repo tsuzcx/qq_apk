@@ -1,137 +1,169 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Message;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.AdvancedTipsBar;
-import com.tencent.mobileqq.widget.TipsBar;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.ConversationInfo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import java.util.Map;
 
 public class amgf
-  implements Manager
+  extends abnw
 {
-  QQAppInterface a;
-  
-  public amgf(QQAppInterface paramQQAppInterface)
+  public amgf(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade, aboq paramaboq)
   {
-    this.a = paramQQAppInterface;
+    super(paramQQAppInterface, paramQQMessageFacade, paramaboq);
   }
   
-  public static amgf a(QQAppInterface paramQQAppInterface)
+  public int a(int paramInt, ConversationInfo paramConversationInfo)
   {
-    return (amgf)paramQQAppInterface.getManager(157);
+    if (abol.a(paramConversationInfo) > 0) {
+      return 0;
+    }
+    return super.a(paramInt, paramConversationInfo);
   }
   
-  private void a(BaseActivity paramBaseActivity)
+  protected String a(String paramString1, String paramString2)
   {
-    Intent localIntent = bbfa.a(this.a.getApp());
-    if (BaseActivity.sTopActivity != null)
+    if (this.a.getCurrentAccountUin().equals(paramString1)) {}
+    String str;
+    for (paramString2 = alpo.a(2131705818);; paramString2 = bdbt.h(this.a, paramString2, paramString1))
     {
-      BaseActivity.sTopActivity.startActivity(localIntent);
+      if ((paramString2 != null) && (paramString2.length() != 0))
+      {
+        str = paramString2;
+        if (!paramString2.equals(paramString1)) {}
+      }
+      else
+      {
+        str = this.a.a(true).a(true).a(paramString1);
+      }
+      if (str != null) {
+        break;
+      }
+      return paramString1;
+    }
+    return str;
+  }
+  
+  public void a(MessageRecord paramMessageRecord, awbw paramawbw, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, abnu paramabnu)
+  {
+    if (paramMessageRecord == null) {
       return;
     }
-    paramBaseActivity.startActivity(localIntent);
-  }
-  
-  private void b(ahkd paramahkd, Message paramMessage)
-  {
-    paramahkd.a(18, 2);
-    paramahkd.a(18, paramMessage);
-    axqy.a(this.a, "dc00898", "", "", "0X8009EDE", "0X8009EDE", 23, 0, "", "", "", "");
-  }
-  
-  private boolean c()
-  {
-    long l = bbkb.c(this.a.c());
-    return System.currentTimeMillis() - l < amtk.a().a();
-  }
-  
-  public void a()
-  {
-    long l = System.currentTimeMillis();
-    bbkb.b(this.a.c(), l);
-  }
-  
-  public void a(ahkd paramahkd)
-  {
-    paramahkd.a(18, 0);
-    paramahkd.a(-1, null);
-  }
-  
-  public void a(ahkd paramahkd, Message paramMessage)
-  {
-    if (b())
+    Map localMap2 = paramabnu.jdField_a_of_type_JavaUtilMap;
+    Map localMap1 = paramabnu.d;
+    Object localObject = paramabnu.jdField_a_of_type_Amjk;
+    String str1 = paramMessageRecord.frienduin;
+    long l = paramMessageRecord.time;
+    if (paramMessageRecord.time == 0L) {
+      paramMessageRecord.time = ayvc.a();
+    }
+    if (paramMessageRecord.msgseq == 0L) {
+      paramMessageRecord.msgseq = ((int)paramMessageRecord.time);
+    }
+    localObject = ((amjk)localObject).a(str1, 1);
+    if (localMap2.containsKey(abot.a(((RecentUser)localObject).uin, ((RecentUser)localObject).getType()))) {
+      localObject = (RecentUser)localMap2.get(abot.a(((RecentUser)localObject).uin, ((RecentUser)localObject).getType()));
+    }
+    for (;;)
     {
-      b(paramahkd, paramMessage);
-      return;
+      int i;
+      String str2;
+      if (!abot.h(paramMessageRecord.msgtype))
+      {
+        i = 1;
+        int j = i;
+        if (paramMessageRecord.isLongMsg())
+        {
+          j = i;
+          if (this.a.a().a(paramMessageRecord))
+          {
+            i = 0;
+            j = i;
+            if (QLog.isColorLevel())
+            {
+              QLog.i("Q.msg.BaseMessageManager", 2, "addMessageRecord, long msg uncompleted");
+              j = i;
+            }
+          }
+        }
+        if (j != 0)
+        {
+          str2 = abot.a(str1, 1);
+          ((RecentUser)localObject).uin = str1;
+          ((RecentUser)localObject).setType(1);
+          boolean bool = true;
+          if ((paramMessageRecord instanceof MessageForUniteGrayTip)) {
+            bool = ((MessageForUniteGrayTip)paramMessageRecord).tipParam.d;
+          }
+          if ((l > ((RecentUser)localObject).lastmsgtime) && (bool)) {
+            ((RecentUser)localObject).lastmsgtime = l;
+          }
+          localMap2.put(str2, localObject);
+          localObject = (MessageRecord)localMap1.get(str2);
+          if ((localObject != null) && (!paramMessageRecord.isSendFromLocal())) {
+            break label358;
+          }
+          localMap1.put(str2, paramMessageRecord);
+        }
+      }
+      for (;;)
+      {
+        if (paramMessageRecord.isSendFromLocal())
+        {
+          paramMessageRecord.extraflag = 32772;
+          paramMessageRecord.sendFailCode = 0;
+        }
+        super.a(paramMessageRecord, paramawbw, paramBoolean1, paramBoolean2, paramBoolean3, paramBoolean4, paramabnu);
+        return;
+        i = 0;
+        break;
+        label358:
+        if (a(paramMessageRecord) >= a((MessageRecord)localObject)) {
+          localMap1.put(str2, paramMessageRecord);
+        }
+      }
     }
-    a(paramahkd);
   }
   
-  public void a(ahkd paramahkd, View paramView)
+  protected String b(String paramString1, String paramString2)
   {
-    paramView = (TipsBar)paramView;
-    a(paramahkd, null, paramView);
-    paramahkd.a(paramView);
-    if (b())
+    return a(paramString1, paramString2);
+  }
+  
+  protected void b(QQMessageFacade.Message paramMessage)
+  {
+    paramMessage.nickName = a(paramMessage.senderuin, paramMessage.frienduin);
+    Object localObject;
+    if ((paramMessage.nickName == null) || (paramMessage.nickName.equals(paramMessage.senderuin))) {
+      localObject = paramMessage.nickName;
+    }
+    try
     {
-      paramView.setVisibility(0);
-      return;
+      String str = paramMessage.getExtInfoFromExtStr("hotchat_nick");
+      localObject = str;
     }
-    paramView.setVisibility(8);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    if ((localObject != null) && (((String)localObject).length() > 0)) {
+      paramMessage.nickName = ((String)localObject);
+    }
+    if (QLog.isDevelopLevel()) {
+      ausq.a("PttShow", "processNickName", new Object[] { paramMessage.senderuin, paramMessage.nickName });
+    }
   }
-  
-  public void a(ahkd paramahkd, BaseActivity paramBaseActivity, TipsBar paramTipsBar)
-  {
-    String str1 = amtk.a().a();
-    String str2 = amtk.a().b();
-    paramTipsBar.setTipsIcon(this.a.getApp().getResources().getDrawable(2130840918));
-    paramTipsBar.setTipsText(str1);
-    paramTipsBar.a().setClickable(false);
-    paramTipsBar.setButtonText(str2);
-    paramTipsBar.a(true);
-    if ((paramTipsBar instanceof AdvancedTipsBar)) {
-      ((AdvancedTipsBar)paramTipsBar).a();
-    }
-    paramTipsBar.a().setBackgroundResource(0);
-    paramTipsBar.setCloseListener(new amgg(this, paramahkd));
-    if (paramBaseActivity != null) {
-      paramTipsBar.setOriginalOnClickListener(new amgh(this, paramBaseActivity));
-    }
-    paramTipsBar.setVisibility(8);
-  }
-  
-  public boolean a()
-  {
-    boolean bool = QQNotificationManager.getInstance().areNotificationsEnabled(BaseApplicationImpl.getContext());
-    if (QLog.isColorLevel()) {
-      QLog.d("NotificationBannerManager", 2, new Object[] { "systemNotificationEnabled: invoked. ", " enable: ", Boolean.valueOf(bool) });
-    }
-    return bool;
-  }
-  
-  public boolean b()
-  {
-    boolean bool1 = amtk.a().a();
-    boolean bool2 = a();
-    boolean bool3 = c();
-    if (QLog.isColorLevel()) {
-      QLog.d("NotificationBannerManager", 2, new Object[] { "bannerVisible: invoked. ", " confVisible: ", Boolean.valueOf(bool1), " systemNotificationEnabled: ", Boolean.valueOf(bool2), " limitedByDuration: ", Boolean.valueOf(bool3) });
-    }
-    return (bool1) && (!bool2) && (!bool3);
-  }
-  
-  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgf
  * JD-Core Version:    0.7.0.1
  */

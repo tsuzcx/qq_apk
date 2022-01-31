@@ -1,26 +1,12 @@
-import com.tencent.mobileqq.app.ThreadManager;
-
-public class nar
-  implements mzq
+public abstract interface nar
 {
-  public void a(Runnable paramRunnable)
-  {
-    ThreadManager.executeOnNetWorkThread(paramRunnable);
-  }
+  public abstract void a();
   
-  public void b(Runnable paramRunnable)
-  {
-    ThreadManager.executeOnFileThread(paramRunnable);
-  }
-  
-  public void c(Runnable paramRunnable)
-  {
-    ThreadManager.post(paramRunnable, 5, null, false);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nar
  * JD-Core Version:    0.7.0.1
  */

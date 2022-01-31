@@ -19,15 +19,15 @@ class ByteData$QdataHandler
     default: 
       return;
     case 161: 
-      ByteData.access$600(this.this$0, paramMessage.obj);
+      ByteData.access$200(this.this$0, paramMessage.obj);
       return;
     }
-    ByteData.access$700(this.this$0, Long.valueOf((String)paramMessage.obj).longValue());
+    ByteData.access$300(this.this$0, Long.valueOf((String)paramMessage.obj).longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.secprotocol.ByteData.QdataHandler
  * JD-Core Version:    0.7.0.1
  */

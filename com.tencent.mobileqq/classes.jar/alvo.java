@@ -1,152 +1,129 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.ark.image.PhotoListLogicArk.2;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Locale;
-import mqq.util.WeakReference;
 
 public class alvo
-  extends agsj
+  extends Handler
 {
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private String b;
-  
-  private alvo(NewPhotoListActivity paramNewPhotoListActivity)
+  public alvo(QQAppInterface paramQQAppInterface, Looper paramLooper)
   {
-    super(paramNewPhotoListActivity);
+    super(paramLooper);
   }
   
-  public static agsc b(NewPhotoListActivity paramNewPhotoListActivity)
+  public void handleMessage(Message paramMessage)
   {
-    if ((jdField_a_of_type_Agsc == null) || (jdField_a_of_type_Agsc.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {}
-    try
+    int i;
+    if (paramMessage.what == 990)
     {
-      if ((jdField_a_of_type_Agsc == null) || (jdField_a_of_type_Agsc.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {
-        jdField_a_of_type_Agsc = new alvo(paramNewPhotoListActivity);
-      }
-      return jdField_a_of_type_Agsc;
-    }
-    finally {}
-  }
-  
-  public Intent a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    Intent localIntent = ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent();
-    localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
-    localIntent.putExtra("key_ark_app_res_path", this.jdField_a_of_type_JavaLangString);
-    localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
-    localIntent.putExtra("key_ark_app_engine_res_dir", this.b);
-    localIntent.putExtra("enter_from", 3);
-    return super.a(paramAdapterView, paramView, paramInt, paramLong);
-  }
-  
-  protected void a(Intent paramIntent)
-  {
-    super.a(paramIntent);
-    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_ark_app_res_path");
-    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
-    this.b = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
-  }
-  
-  protected void a(View paramView)
-  {
-    alvj.a().a("callbackArk", null, null);
-    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
-    super.a(paramView);
-  }
-  
-  protected void b(Intent paramIntent)
-  {
-    paramIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
-    paramIntent.putExtra("enter_from", 3);
-    super.b(paramIntent);
-  }
-  
-  protected void c()
-  {
-    super.c();
-    NewPhotoListActivity localNewPhotoListActivity = (NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (localNewPhotoListActivity != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoListLogicArk", 2, "ArkApp ark app res:" + this.jdField_a_of_type_JavaLangString);
-      }
-      localNewPhotoListActivity.findViewById(2131371910).setVisibility(4);
-    }
-  }
-  
-  protected void c(Intent paramIntent)
-  {
-    super.c(paramIntent);
-  }
-  
-  protected void c(View paramView)
-  {
-    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c.setClickable(false);
-    if (!this.jdField_a_of_type_Agrz.a.isEmpty()) {
-      ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b((String)this.jdField_a_of_type_Agrz.a.get(this.jdField_a_of_type_Agrz.a.size() - 1));
-    }
-    bbbx.a();
-    if (this.jdField_a_of_type_Agrz.a.size() == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("PhotoList", 2, "size == 0");
-      }
-      return;
-    }
-    if (((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
-    {
-      paramView = this.jdField_a_of_type_Agrz.a.iterator();
-      for (long l = 0L; paramView.hasNext(); l = bbdx.a((String)paramView.next()) + l) {}
-      if (apug.a())
+      paramMessage = new ArrayList();
+      synchronized (QQAppInterface.a(this.a))
       {
-        aptt.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), 2131692673, 2131692678, new alvp(this));
-        return;
-      }
-    }
-    if (this.jdField_a_of_type_Agrz.a.size() > 0)
-    {
-      if (QLog.isColorLevel())
-      {
-        paramView = new StringBuilder(this.jdField_a_of_type_Agrz.a.size() * 128);
-        int i = 0;
-        while (i < this.jdField_a_of_type_Agrz.a.size())
+        paramMessage.addAll(QQAppInterface.a(this.a));
+        QQAppInterface.a(this.a).clear();
+        QQAppInterface.a(this.a).removeMessages(990);
+        ??? = new ArrayList();
+        if ((paramMessage == null) || (paramMessage.size() <= 0)) {
+          break label138;
+        }
+        i = 0;
+        if (i < paramMessage.size())
         {
-          paramView.append(String.format(Locale.CHINA, "choose image[%d],path=%s \r\n", new Object[] { Integer.valueOf(i), this.jdField_a_of_type_Agrz.a.get(i) }));
+          ???.add(this.a.a(1, (String)paramMessage.get(i), 0));
           i += 1;
         }
-        QLog.d("PhotoListLogicArk", 2, paramView.toString());
       }
-      ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c();
-      ThreadManagerV2.executeOnSubThread(new PhotoListLogicArk.2(this));
+      QQAppInterface.a(this.a, 1, paramMessage, ???);
+      label138:
+      if (QLog.isColorLevel()) {
+        bdhy.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, user getQQHead resp uinList: ", paramMessage);
+      }
     }
-    for (;;)
+    do
     {
-      ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
-      return;
-      alvj.a().a("callbackArk", null, null);
-    }
-  }
-  
-  protected void e()
-  {
-    alvj.a().a("callbackArk", null, null);
-    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
-    bbbx.a((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get(), false, false);
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (paramMessage.what != 991) {
+              break;
+            }
+            paramMessage = new ArrayList();
+            synchronized (QQAppInterface.b(this.a))
+            {
+              paramMessage.addAll(QQAppInterface.b(this.a));
+              QQAppInterface.b(this.a).clear();
+              QQAppInterface.a(this.a).removeMessages(991);
+              ??? = new ArrayList();
+              if ((paramMessage == null) || (paramMessage.size() <= 0)) {
+                continue;
+              }
+              i = 0;
+              if (i < paramMessage.size())
+              {
+                ???.add(this.a.a(4, (String)paramMessage.get(i), 0));
+                i += 1;
+              }
+            }
+            QQAppInterface.a(this.a, 4, paramMessage, ???);
+          } while (!QLog.isColorLevel());
+          bdhy.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, group getQQHead resp uinList: ", paramMessage);
+          return;
+          if (paramMessage.what != 993) {
+            break;
+          }
+          paramMessage = new ArrayList();
+          synchronized (QQAppInterface.c(this.a))
+          {
+            paramMessage.addAll(QQAppInterface.c(this.a));
+            QQAppInterface.c(this.a).clear();
+            QQAppInterface.a(this.a).removeMessages(993);
+            ??? = new ArrayList();
+            if ((paramMessage == null) || (paramMessage.size() <= 0)) {
+              continue;
+            }
+            i = 0;
+            if (i < paramMessage.size())
+            {
+              ???.add(this.a.a(101, (String)paramMessage.get(i), 0));
+              i += 1;
+            }
+          }
+          QQAppInterface.a(this.a, 101, paramMessage, ???);
+        } while (!QLog.isColorLevel());
+        bdhy.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, dis getQQHead resp uinList: ", paramMessage);
+        return;
+      } while (paramMessage.what != 992);
+      paramMessage = new ArrayList();
+      synchronized (QQAppInterface.d(this.a))
+      {
+        paramMessage.addAll(QQAppInterface.d(this.a));
+        QQAppInterface.d(this.a).clear();
+        QQAppInterface.a(this.a).removeMessages(992);
+        ??? = new ArrayList();
+        if ((paramMessage == null) || (paramMessage.size() <= 0)) {
+          continue;
+        }
+        i = 0;
+        if (i < paramMessage.size())
+        {
+          ???.add(this.a.a(113, (String)paramMessage.get(i), 0));
+          i += 1;
+        }
+      }
+      QQAppInterface.a(this.a, 113, paramMessage, ???);
+    } while (!QLog.isColorLevel());
+    bdhy.a("Q.qqhead.broadcast", 2, "headQQHeadBroadcast, newGroup getQQHead resp uinList: ", paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alvo
  * JD-Core Version:    0.7.0.1
  */

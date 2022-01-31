@@ -1,62 +1,16 @@
-import android.app.Dialog;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.40.1;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agah
-  extends ajvj
+class agah
+  extends agae
 {
-  public agah(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
-  
-  protected void a(boolean paramBoolean, Long paramLong)
+  public agah(QQAppInterface paramQQAppInterface)
   {
-    if (this.a.c != null) {
-      this.a.c.dismiss();
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
-  {
-    if (paramBoolean)
-    {
-      axqy.b(this.a.b, "CliOper", "", "", "0X80040F5", "0X80040F5", 0, 0, "", "", "", "");
-      this.a.a(paramLong2 + "");
-      if (this.a.jdField_a_of_type_Agau != null) {
-        this.a.jdField_a_of_type_Agau.a();
-      }
-      if (this.a.k)
-      {
-        this.a.d(paramLong2 + "");
-        if (this.a.jdField_a_of_type_Agaw != null) {
-          this.a.jdField_a_of_type_Agaw.notifyDataSetChanged();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (this.a.c != null) {
-        this.a.c.dismiss();
-      }
-      return;
-      bcql.a(this.a.getActivity(), 1, this.a.getString(2131693711), 0).b(this.a.getActivity().getTitleBarHeight());
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, int paramInt1, int paramInt2, boolean paramBoolean3)
-  {
-    this.a.getActivity().runOnUiThread(new ChatHistoryTroopMemberFragment.40.1(this, paramBoolean1, paramString, paramBoolean2, paramInt1, paramInt2, paramBoolean3));
-  }
-  
-  protected void b(boolean paramBoolean, Long paramLong)
-  {
-    if (this.a.c != null) {
-      this.a.c.dismiss();
-    }
+    super(paramQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agah
  * JD-Core Version:    0.7.0.1
  */

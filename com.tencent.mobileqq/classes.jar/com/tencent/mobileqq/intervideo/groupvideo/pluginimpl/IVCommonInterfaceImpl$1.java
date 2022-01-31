@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo.pluginimpl;
 
-import akuf;
+import amkv;
 import android.os.Bundle;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
@@ -14,7 +14,7 @@ class IVCommonInterfaceImpl$1
   {
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
     Bundle[] arrayOfBundle = new Bundle[1];
-    akuf.a(new IVCommonInterfaceImpl.1.1(this, this.val$businessId, arrayOfBundle, localCountDownLatch));
+    amkv.a(new IVCommonInterfaceImpl.1.1(this, this.val$businessId, arrayOfBundle, localCountDownLatch));
     localCountDownLatch.await();
     return arrayOfBundle[0];
   }

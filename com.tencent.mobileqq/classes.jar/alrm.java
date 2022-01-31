@@ -1,59 +1,70 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1;
-import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1.1.1;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.lang.ref.WeakReference;
+import SWEET_NEW_BASE.sweet_req_comm;
+import SWEET_NEW_PAIR.sweet_pair_check_rsp;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class alrm
-  implements alrx
+  extends alko
 {
-  public alrm(ArkAiDictUpdateMgr.1 param1, amro paramamro, alrz paramalrz, amrc paramamrc) {}
-  
-  public void a(boolean paramBoolean)
+  public alrm(QQAppInterface paramQQAppInterface)
   {
-    if (!paramBoolean)
+    super(paramQQAppInterface);
+  }
+  
+  private void a(long paramLong)
+  {
+    if ((this.app != null) && (paramLong > 0L))
     {
-      ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateWordDict, one task failed, dict-id=%s", new Object[] { alrl.a(this.jdField_a_of_type_Amro) }));
-      this.jdField_a_of_type_Alrz.jdField_a_of_type_Boolean = false;
-    }
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_Alrz)
-      {
-        alrz localalrz2 = this.jdField_a_of_type_Alrz;
-        int i = localalrz2.jdField_a_of_type_Int - 1;
-        localalrz2.jdField_a_of_type_Int = i;
-        if (i != 0) {
-          return;
-        }
-        if (this.jdField_a_of_type_Alrz.jdField_a_of_type_Boolean)
-        {
-          ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, all success");
-          alrl.a(this.jdField_a_of_type_Amrc);
-          alrl.b(this.jdField_a_of_type_Amrc);
-          alri.b((AppInterface)alrl.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0).get());
-          try
-          {
-            alrl.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
-            if (alrl.b(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0))
-            {
-              alrl.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiDictUpdateMgr$1.this$0, false);
-              ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, pending update task exists, wait 5 second and update");
-              ArkAppCenter.a().postToMainThreadDelayed(new ArkAiDictUpdateMgr.1.1.1(this), 5000L);
-            }
-            return;
-          }
-          finally {}
-        }
+      SharedPreferences localSharedPreferences = this.app.getPreferences();
+      if (localSharedPreferences != null) {
+        localSharedPreferences.edit().putLong("love_uin_for_current_user", paramLong).apply();
       }
-      ArkAppCenter.c("ArkApp.Dict.Update", "updateWordDict, one or more tasks failed.");
     }
   }
+  
+  public void a(int paramInt)
+  {
+    if (this.app != null)
+    {
+      SharedPreferences localSharedPreferences = this.app.getPreferences();
+      if (localSharedPreferences != null) {
+        localSharedPreferences.edit().putInt("love_state_for_current_uin" + this.app.c(), paramInt).apply();
+      }
+    }
+    notifyUI(1, true, Integer.valueOf(paramInt));
+  }
+  
+  public void a(boolean paramBoolean, sweet_pair_check_rsp paramsweet_pair_check_rsp)
+  {
+    if ((paramBoolean) && (paramsweet_pair_check_rsp != null)) {
+      if (paramsweet_pair_check_rsp.host_state != 3) {
+        break label42;
+      }
+    }
+    label42:
+    for (int i = 1;; i = 0)
+    {
+      a(i);
+      if (paramsweet_pair_check_rsp.req_comm != null) {
+        a(paramsweet_pair_check_rsp.req_comm.loveuin);
+      }
+      return;
+    }
+  }
+  
+  protected Class<? extends alkr> observerClass()
+  {
+    return alrn.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alrm
  * JD-Core Version:    0.7.0.1
  */

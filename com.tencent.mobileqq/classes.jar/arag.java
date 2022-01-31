@@ -1,15 +1,22 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.hotpic.HotPicTab;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadSpeedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
 
-public class arag
+public abstract interface arag
 {
-  public TextView a;
+  public abstract void a();
   
-  arag(HotPicTab paramHotPicTab) {}
+  public abstract void a(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo);
+  
+  public abstract void a(int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete);
+  
+  public abstract void a(long paramLong1, long paramLong2, long paramLong3);
+  
+  public abstract void a(ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arag
  * JD-Core Version:    0.7.0.1
  */

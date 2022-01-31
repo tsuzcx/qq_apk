@@ -1,32 +1,43 @@
+import com.tencent.mobileqq.data.MedalList;
+import com.tencent.mobileqq.data.MedalList.Info;
+import java.util.ArrayList;
+
 public class beqd
 {
-  public int a;
-  public beqm a;
-  public Object a;
+  private MedalList a;
   
-  public beqd(int paramInt, beqm parambeqm)
+  public int a()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Beqm = parambeqm;
-  }
-  
-  public static beqd a(int paramInt, beqm parambeqm)
-  {
-    return new beqd(paramInt, parambeqm);
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder().append("{RuntimeLoader@");
-    if (this.jdField_a_of_type_Beqm != null) {}
-    for (Object localObject = Integer.valueOf(this.jdField_a_of_type_Beqm.hashCode());; localObject = "=") {
-      return localObject + this.jdField_a_of_type_Beqm + " what=" + this.jdField_a_of_type_Int + "}";
+    if (this.a != null) {
+      return this.a.infoList.size();
     }
+    return 0;
+  }
+  
+  public int a(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).type;
+    }
+    return 0;
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((this.a != null) && (this.a.infoList.size() > paramInt)) {
+      return ((MedalList.Info)this.a.infoList.get(paramInt)).value;
+    }
+    return null;
+  }
+  
+  public void a(MedalList paramMedalList)
+  {
+    this.a = paramMedalList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beqd
  * JD-Core Version:    0.7.0.1
  */

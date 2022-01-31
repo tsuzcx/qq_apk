@@ -1,79 +1,113 @@
-import android.os.SystemClock;
-import android.util.Printer;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
+import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.File;
 
-class ajzw
-  implements Printer
+public class ajzw
+  implements azhm
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private String jdField_a_of_type_JavaLangString;
-  private int jdField_b_of_type_Int = 0;
-  private long jdField_b_of_type_Long;
-  private long c;
+  final int jdField_a_of_type_Int;
+  final long jdField_a_of_type_Long;
+  final String jdField_a_of_type_JavaLangString;
+  public Throwable a;
+  final int jdField_b_of_type_Int;
+  final long jdField_b_of_type_Long;
   
-  ajzw(int paramInt)
+  public ajzw(String paramString, int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    ajzu.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void println(String paramString)
-  {
-    if (paramString.startsWith(">>"))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    if (paramInt2 > 0) {}
+    for (this.jdField_b_of_type_Int = paramInt2;; this.jdField_b_of_type_Int = 30)
     {
-      this.c = SystemClock.uptimeMillis();
-      this.jdField_a_of_type_JavaLangString = paramString;
-      if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_b_of_type_Int)) {
-        UnifiedMonitor.a().reportStackIfTimeout(this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_JavaLangThrowable = null;
+      if (paramString == null) {}
+      return;
+    }
+  }
+  
+  public azhn a(int paramInt1, int paramInt2)
+  {
+    int j = 1280;
+    int i = 30;
+    azhn localazhn = new azhn();
+    Object localObject;
+    if (paramInt1 <= paramInt2)
+    {
+      localObject = new File(this.jdField_a_of_type_JavaLangString);
+      if (((File)localObject).exists()) {
+        ((File)localObject).delete();
+      }
+      localazhn.jdField_a_of_type_JavaIoFile = ((File)localObject);
+      if (paramInt2 < 1280) {
+        break label278;
+      }
+      localObject = "720p";
+      paramInt1 = j;
+      label70:
+      if (paramInt2 >= paramInt1) {
+        break label307;
       }
     }
-    long l;
-    do
+    label278:
+    label307:
+    for (localazhn.jdField_a_of_type_Int = ((int)(819200 * 1.0D / paramInt1 * paramInt2));; localazhn.jdField_a_of_type_Int = 819200)
     {
-      do
-      {
-        return;
-      } while ((this.c == 0L) || (!paramString.startsWith("<<")));
-      this.jdField_a_of_type_Long += 1L;
-      l = SystemClock.uptimeMillis() - this.c;
-      this.c = 0L;
-      this.jdField_b_of_type_Long += l;
-      if (l <= ajzu.jdField_a_of_type_Int) {
-        break;
+      localazhn.jdField_a_of_type_Float = (paramInt1 / paramInt2);
+      paramInt2 = i;
+      if (this.jdField_b_of_type_Int <= 30) {
+        paramInt2 = this.jdField_b_of_type_Int;
       }
-      if (!UnifiedMonitor.a().whetherReportThisTime(this.jdField_b_of_type_Int))
-      {
-        this.jdField_a_of_type_Int = 0;
-        return;
+      localazhn.jdField_b_of_type_Int = paramInt2;
+      localazhn.jdField_b_of_type_Boolean = a();
+      localazhn.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+      localazhn.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCompressTask", 2, "CompressTask, step: getEncodeConfig() config.setRotation = " + localazhn.jdField_b_of_type_Boolean + ", scaleRate=" + localazhn.jdField_a_of_type_Float + ", videoBitRate=" + localazhn.jdField_a_of_type_Int + ", videoFrameRate=" + localazhn.jdField_b_of_type_Int + ", beginTime=" + localazhn.jdField_a_of_type_Long + ", endTime=" + localazhn.jdField_b_of_type_Long + ",quality:" + (String)localObject + ",videoLongestEdge=" + paramInt1);
       }
-      paramString = this.jdField_a_of_type_JavaLangString;
-      HashMap localHashMap = UnifiedMonitor.a();
-      UnifiedMonitor.a().addEvent(this.jdField_b_of_type_Int, paramString, (int)l, this.jdField_a_of_type_Int, localHashMap);
-      this.jdField_a_of_type_Int = 0;
-    } while (!QLog.isColorLevel());
-    QLog.d("AutoMonitor", 2, "MainLooper, cost=" + l + ", " + paramString);
-    return;
-    if (UnifiedMonitor.a().whetherStackEnabled(this.jdField_b_of_type_Int)) {
-      UnifiedMonitor.a().notifyNotTimeout(this.jdField_b_of_type_Int);
+      return localazhn;
+      paramInt2 = paramInt1;
+      break;
+      if (paramInt2 >= 960)
+      {
+        localObject = "540p";
+        paramInt1 = 960;
+        break label70;
+      }
+      paramInt1 = 640;
+      localObject = "480p";
+      break label70;
     }
-    this.jdField_a_of_type_Int += 1;
   }
   
-  public String toString()
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(Throwable paramThrowable)
   {
-    return super.toString() + "(msgCount = " + this.jdField_a_of_type_Long + ", totalCost = " + this.jdField_b_of_type_Long + ")";
+    QLog.e("VideoCompressTask", 1, "CompressTask, step: HWCompressProcessor onFailed:" + paramThrowable.getMessage());
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
   }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    if ((Build.VERSION.SDK_INT >= 18) && (Build.VERSION.SDK_INT <= 19)) {
+      bool = true;
+    }
+    while (Build.VERSION.SDK_INT <= 19) {
+      return bool;
+    }
+    return false;
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzw
  * JD-Core Version:    0.7.0.1
  */

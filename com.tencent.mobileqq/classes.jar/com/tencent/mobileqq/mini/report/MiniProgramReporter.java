@@ -7,7 +7,7 @@ import NS_MINI_REPORT.REPORT.StDcReportReq;
 import NS_MINI_REPORT.REPORT.StThirdDcReportReq;
 import android.os.Handler;
 import android.os.HandlerThread;
-import bazp;
+import bcyj;
 import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -409,7 +409,7 @@ public class MiniProgramReporter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramSingleDcData != null) {
-      localStringBuilder.append(bazp.a(paramSingleDcData));
+      localStringBuilder.append(bcyj.a(paramSingleDcData));
     }
     return localStringBuilder.toString();
   }
@@ -418,7 +418,7 @@ public class MiniProgramReporter
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramSingleDcData != null) {
-      localStringBuilder.append(bazp.a(paramSingleDcData));
+      localStringBuilder.append(bcyj.a(paramSingleDcData));
     }
     return localStringBuilder.toString();
   }
@@ -430,17 +430,17 @@ public class MiniProgramReporter
   
   public void addAll(Collection<? extends REPORT.SingleDcData> paramCollection)
   {
-    this.reportHandler.post(new MiniProgramReporter.5(this, paramCollection));
+    this.reportHandler.post(new MiniProgramReporter.6(this, paramCollection));
   }
   
   public void addData(APP_REPORT_TRANSFER.SingleDcData paramSingleDcData)
   {
-    this.reportHandler.post(new MiniProgramReporter.4(this, paramSingleDcData));
+    this.reportHandler.post(new MiniProgramReporter.5(this, paramSingleDcData));
   }
   
   public void addDataAll(Collection<? extends APP_REPORT_TRANSFER.SingleDcData> paramCollection)
   {
-    this.reportHandler.post(new MiniProgramReporter.6(this, paramCollection));
+    this.reportHandler.post(new MiniProgramReporter.7(this, paramCollection));
   }
   
   public void addDcData(APP_REPORT_TRANSFER.SingleDcData paramSingleDcData)
@@ -461,6 +461,11 @@ public class MiniProgramReporter
   public void addLaunchMiniAppRecord(String paramString1, String paramString2)
   {
     this.launchedMiniAppMap.put(paramString1, paramString2);
+  }
+  
+  public void batchAddAll(List<APP_REPORT_TRANSFER.SingleDcData> paramList)
+  {
+    this.reportHandler.post(new MiniProgramReporter.4(this, paramList));
   }
   
   public void checkLaunchDcDataConditionAndReport()
@@ -493,7 +498,7 @@ public class MiniProgramReporter
   
   public void flush()
   {
-    this.reportHandler.post(new MiniProgramReporter.7(this));
+    this.reportHandler.post(new MiniProgramReporter.8(this));
   }
   
   public String getLaunchMiniAppRecord(String paramString)
@@ -523,7 +528,7 @@ public class MiniProgramReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramReporter
  * JD-Core Version:    0.7.0.1
  */

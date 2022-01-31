@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import aede;
+import afzs;
 import android.os.Handler;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.ChatMessage;
 
 public class TroopFileItemBuilder$6
   implements Runnable
 {
-  public TroopFileItemBuilder$6(aede paramaede, ChatMessage paramChatMessage) {}
+  public TroopFileItemBuilder$6(afzs paramafzs, ChatMessage paramChatMessage) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class TroopFileItemBuilder$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder.6
  * JD-Core Version:    0.7.0.1
  */

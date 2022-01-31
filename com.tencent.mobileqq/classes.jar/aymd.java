@@ -1,72 +1,75 @@
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.widget.TextView;
 
-class aymd
-  extends aymo
+public class aymd
+  extends aynd
 {
-  aymd(aymc paramaymc) {}
-  
-  public void a()
+  public aymd(bcws parambcws)
   {
-    if (aymc.a(this.a) == null) {}
-    for (Activity localActivity = null;; localActivity = (Activity)aymc.a(this.a).get())
+    super(parambcws);
+  }
+  
+  public void b(ayjl paramayjl, ayru paramayru)
+  {
+    super.b(paramayjl, paramayru);
+    TextView localTextView;
+    CharSequence localCharSequence;
+    if ((paramayjl instanceof ayha))
     {
-      if (localActivity != null) {
-        this.a.jdField_a_of_type_Ayml.a(localActivity);
+      ayha localayha = (ayha)paramayjl;
+      localTextView = ((ayrq)paramayru).e();
+      paramayjl = ((ayrq)paramayru).f();
+      paramayru = ((ayrq)paramayru).g();
+      if (localTextView != null)
+      {
+        localCharSequence = localayha.e();
+        if (localCharSequence != null) {
+          break label96;
+        }
+        localTextView.setText("");
+        if (paramayru != null) {
+          paramayru.setVisibility(8);
+        }
       }
+      if (paramayjl != null)
+      {
+        paramayru = localayha.f();
+        if (paramayru != null) {
+          break label115;
+        }
+        paramayjl.setText("");
+      }
+    }
+    label96:
+    label115:
+    do
+    {
+      do
+      {
+        return;
+        localTextView.setText(localCharSequence);
+        if (paramayru == null) {
+          break;
+        }
+        paramayru.setVisibility(0);
+        break;
+        paramayjl.setText(paramayru);
+        return;
+      } while (!(paramayjl instanceof aygz));
+      paramayjl = (aygz)paramayjl;
+      paramayru = ((ayrq)paramayru).h();
+    } while (paramayru == null);
+    paramayjl = paramayjl.e();
+    if (paramayjl == null)
+    {
+      paramayru.setText("");
       return;
     }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    int i = 100;
-    if (paramLong2 <= 0L)
-    {
-      QLog.e("NightModeLogic", 1, "mThemeDownloadListener onDownloadProgress dwProgressMax <= 0");
-      i = 4;
-    }
-    if (paramLong1 <= paramLong2) {
-      i = (int)(100.0D * paramLong1 / paramLong2);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NightModeLogic", 2, "mThemeDownloadListener onDownloadProgress readSize:" + paramLong1 + ", allSize:" + paramLong2 + ", percent:" + i);
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("percent", i);
-    localBundle.putInt("start_status", 3);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, 1, 0, localBundle));
-  }
-  
-  public boolean a(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("start_status", 2);
-    if (paramInt == 0) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, 1, 0, localBundle));
-    }
-    for (;;)
-    {
-      return super.a(paramInt);
-      this.a.jdField_a_of_type_Ayml.b();
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4100);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 4099, -2, 0, localBundle));
-    }
-  }
-  
-  public boolean a(aymj paramaymj)
-  {
-    this.a.jdField_a_of_type_Ayml.a();
-    return false;
+    paramayru.setText(paramayjl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aymd
  * JD-Core Version:    0.7.0.1
  */

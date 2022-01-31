@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troopgift;
 
-import aybi;
-import aybk;
-import ayci;
-import basf;
-import basg;
+import azzf;
+import azzh;
+import baaf;
+import bcqz;
+import bcra;
 
 public class TroopGiftToAllSurfaceView$5
   implements Runnable
@@ -13,18 +13,18 @@ public class TroopGiftToAllSurfaceView$5
   
   public void run()
   {
-    TroopGiftToAllSurfaceView.a(this.this$0, new ayci(this.this$0, this.this$0.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b));
+    TroopGiftToAllSurfaceView.a(this.this$0, new baaf(this.this$0, this.this$0.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b));
     TroopGiftToAllSurfaceView.a(this.this$0).a(TroopGiftToAllSurfaceView.a(this.this$0).jdField_a_of_type_Int / 2, TroopGiftToAllSurfaceView.a(this.this$0).b * TroopGiftToAllSurfaceView.a(this.this$0).f / 100);
     this.this$0.a(TroopGiftToAllSurfaceView.a(this.this$0));
     TroopGiftToAllSurfaceView.a(this.this$0).jdField_a_of_type_Int = 0;
-    aybk localaybk = new aybk(500);
-    localaybk.a(new basf(this));
-    TroopGiftToAllSurfaceView.a(this.this$0).a(new aybi[] { localaybk });
+    azzh localazzh = new azzh(500);
+    localazzh.a(new bcqz(this));
+    TroopGiftToAllSurfaceView.a(this.this$0).a(new azzf[] { localazzh });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView.5
  * JD-Core Version:    0.7.0.1
  */

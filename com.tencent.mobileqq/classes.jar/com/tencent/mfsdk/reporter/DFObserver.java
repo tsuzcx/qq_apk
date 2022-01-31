@@ -1,7 +1,7 @@
 package com.tencent.mfsdk.reporter;
 
-import aaad;
-import aaai;
+import abra;
+import abrf;
 import android.os.HandlerThread;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -18,7 +18,7 @@ public class DFObserver
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    paramObservable = ((aaai)paramObservable).a;
+    paramObservable = ((abrf)paramObservable).a;
     try
     {
       paramObject = new long[6];
@@ -46,7 +46,7 @@ public class DFObserver
         j += 1;
         i += 1;
       }
-      paramObject = new aaad(Long.parseLong((String)paramObservable.get("dropCount")), Long.parseLong((String)paramObservable.get("totalMs")), paramObject);
+      paramObject = new abra(Long.parseLong((String)paramObservable.get("dropCount")), Long.parseLong((String)paramObservable.get("totalMs")), paramObject);
       paramObject.a = Integer.parseInt(MagnifierSDK.a());
       paramObservable = new DFObserver.InsertRunnable(MagnifierSDK.a, (String)paramObservable.get("scene"), paramObject);
       a.post(paramObservable);
@@ -61,7 +61,7 @@ public class DFObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mfsdk.reporter.DFObserver
  * JD-Core Version:    0.7.0.1
  */

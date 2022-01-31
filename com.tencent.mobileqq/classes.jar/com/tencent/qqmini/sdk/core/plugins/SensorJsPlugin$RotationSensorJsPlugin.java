@@ -3,14 +3,14 @@ package com.tencent.qqmini.sdk.core.plugins;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
-import behp;
+import bghn;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class SensorJsPlugin$RotationSensorJsPlugin
   implements SensorEventListener
 {
-  private behp jsService;
+  private bghn jsService;
   
   private SensorJsPlugin$RotationSensorJsPlugin(SensorJsPlugin paramSensorJsPlugin) {}
   
@@ -36,14 +36,14 @@ class SensorJsPlugin$RotationSensorJsPlugin
     }
   }
   
-  public void setJsService(behp parambehp)
+  public void setJsService(bghn parambghn)
   {
-    this.jsService = parambehp;
+    this.jsService = parambghn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.SensorJsPlugin.RotationSensorJsPlugin
  * JD-Core Version:    0.7.0.1
  */

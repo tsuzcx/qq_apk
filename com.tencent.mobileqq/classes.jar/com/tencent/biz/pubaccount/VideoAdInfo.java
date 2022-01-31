@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import aulz;
+import awdg;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
@@ -18,7 +18,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import noy;
+import nsg;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,23 +29,23 @@ import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PosAdInfo;
 public class VideoAdInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<VideoAdInfo> CREATOR = new noy();
+  public static final Parcelable.Creator<VideoAdInfo> CREATOR = new nsg();
   public String A;
   public String B;
   public String C;
-  @aulz
+  @awdg
   public String D = "";
-  @aulz
+  @awdg
   public String E = "";
-  @aulz
+  @awdg
   public String F = "";
-  @aulz
+  @awdg
   public String G = "";
-  @aulz
+  @awdg
   public String H = "";
-  @aulz
+  @awdg
   public String I;
-  @aulz
+  @awdg
   public String J;
   public int a;
   public long a;
@@ -61,13 +61,13 @@ public class VideoAdInfo
   public long c;
   public String c;
   public ArrayList<String> c;
-  @aulz
+  @awdg
   public boolean c;
   public int d;
   public long d;
   public String d;
   public ArrayList<String> d;
-  @aulz
+  @awdg
   public boolean d;
   public int e;
   public long e;
@@ -76,17 +76,17 @@ public class VideoAdInfo
   public int f;
   public long f;
   public String f;
-  @aulz
+  @awdg
   public ArrayList<String> f;
   public int g;
   public long g;
   public String g;
-  @aulz
+  @awdg
   public ArrayList<String> g;
   public int h;
   public long h;
   public String h;
-  @aulz
+  @awdg
   public ArrayList<String> h;
   public int i;
   public String i;
@@ -100,16 +100,16 @@ public class VideoAdInfo
   public String m;
   public int n;
   public String n;
-  @aulz
+  @awdg
   public int o;
   public String o;
-  @aulz
+  @awdg
   public int p;
   public String p;
-  @aulz
+  @awdg
   public int q;
   public String q;
-  @aulz
+  @awdg
   public int r;
   public String r;
   public String s;
@@ -655,7 +655,7 @@ public class VideoAdInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.VideoAdInfo
  * JD-Core Version:    0.7.0.1
  */

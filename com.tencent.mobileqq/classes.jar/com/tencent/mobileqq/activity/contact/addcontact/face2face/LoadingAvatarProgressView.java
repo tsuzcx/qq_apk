@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.contact.addcontact.face2face;
 
-import actj;
-import afif;
-import afig;
+import aekt;
+import ahfk;
+import ahfl;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -23,7 +23,7 @@ public class LoadingAvatarProgressView
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private afig jdField_a_of_type_Afig;
+  private ahfl jdField_a_of_type_Ahfl;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private PathMeasure jdField_a_of_type_AndroidGraphicsPathMeasure;
@@ -79,7 +79,7 @@ public class LoadingAvatarProgressView
     this.jdField_c_of_type_Float = this.jdField_a_of_type_AndroidGraphicsPathMeasure.getLength();
     localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     ((ValueAnimator)localObject).setDuration(this.e);
-    ((ValueAnimator)localObject).addUpdateListener(new afif(this));
+    ((ValueAnimator)localObject).addUpdateListener(new ahfk(this));
     ((ValueAnimator)localObject).start();
   }
   
@@ -87,9 +87,9 @@ public class LoadingAvatarProgressView
   {
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.CircleLoadingView);
     this.jdField_a_of_type_Float = paramContext.getInteger(2, 5);
-    this.jdField_a_of_type_Float = actj.a(this.jdField_a_of_type_Float, getResources());
+    this.jdField_a_of_type_Float = aekt.a(this.jdField_a_of_type_Float, getResources());
     this.i = paramContext.getInteger(1, 5);
-    this.i = actj.a(this.i, getResources());
+    this.i = aekt.a(this.i, getResources());
     this.d = paramContext.getInteger(0, -16776961);
     paramContext.recycle();
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
@@ -126,8 +126,8 @@ public class LoadingAvatarProgressView
   
   private void b()
   {
-    int j = actj.a(12.0F, getResources());
-    int k = actj.a(4.0F, getResources());
+    int j = aekt.a(12.0F, getResources());
+    int k = aekt.a(4.0F, getResources());
     float f1 = this.jdField_a_of_type_Int - j + k;
     float f2 = this.jdField_b_of_type_Int;
     float f3 = this.jdField_a_of_type_Int - j / 2 + k;
@@ -159,8 +159,8 @@ public class LoadingAvatarProgressView
         paramCanvas.drawRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.i, this.i, this.jdField_b_of_type_AndroidGraphicsPaint);
         paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-    } while (this.jdField_a_of_type_Afig == null);
-    this.jdField_a_of_type_Afig.a(this.f);
+    } while (this.jdField_a_of_type_Ahfl == null);
+    this.jdField_a_of_type_Ahfl.a(this.f);
   }
   
   private void c(Canvas paramCanvas)
@@ -180,8 +180,8 @@ public class LoadingAvatarProgressView
         paramCanvas.drawCircle(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, Math.min(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int), this.jdField_b_of_type_AndroidGraphicsPaint);
         paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-    } while (this.jdField_a_of_type_Afig == null);
-    this.jdField_a_of_type_Afig.a(this.f);
+    } while (this.jdField_a_of_type_Ahfl == null);
+    this.jdField_a_of_type_Ahfl.a(this.f);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -233,9 +233,9 @@ public class LoadingAvatarProgressView
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setProgressListener(afig paramafig)
+  public void setProgressListener(ahfl paramahfl)
   {
-    this.jdField_a_of_type_Afig = paramafig;
+    this.jdField_a_of_type_Ahfl = paramahfl;
   }
   
   public void setRoundSize(int paramInt)
@@ -245,7 +245,7 @@ public class LoadingAvatarProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.face2face.LoadingAvatarProgressView
  * JD-Core Version:    0.7.0.1
  */

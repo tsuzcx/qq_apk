@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.Advertisement.view;
 import android.content.Context;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import njw;
+import nms;
 
 public class VideoCoverView$5
   implements Runnable
@@ -14,7 +14,7 @@ public class VideoCoverView$5
   {
     try
     {
-      TVK_SDKMgr.installPlugin(this.a, new njw(this));
+      TVK_SDKMgr.installPlugin(this.a, new nms(this));
       return;
     }
     catch (Throwable localThrowable)
@@ -26,7 +26,7 @@ public class VideoCoverView$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.5
  * JD-Core Version:    0.7.0.1
  */

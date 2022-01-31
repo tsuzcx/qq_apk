@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.scribble;
 
-import awgu;
+import ayby;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForScribble;
 import com.tencent.qphone.base.util.QLog;
 
 public class ScribbleBaseOperator$1
   implements Runnable
 {
-  public ScribbleBaseOperator$1(awgu paramawgu, MessageForScribble paramMessageForScribble) {}
+  public ScribbleBaseOperator$1(ayby paramayby, MessageForScribble paramMessageForScribble) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class ScribbleBaseOperator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleBaseOperator.1
  * JD-Core Version:    0.7.0.1
  */

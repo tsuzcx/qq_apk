@@ -1,198 +1,93 @@
-import android.text.TextUtils;
-import android.view.WindowManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyGiftView;
-import com.tencent.mobileqq.activity.qwallet.redpacket.specify.SpecifyRedPacketAnimMsg.2;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.SystemClock;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForQQWalletMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.QQWalletAioBodyReserve;
-import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.List;
-import mqq.os.MqqHandler;
 
 public class ahfh
-  implements baht
 {
-  public WindowManager a;
-  public SpecifyGiftView a;
-  public MessageForQQWalletMsg a;
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public ahfh(MessageForQQWalletMsg paramMessageForQQWalletMsg)
+  public static void a(long paramLong, List<ahfi> paramList)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg = paramMessageForQQWalletMsg;
-  }
-  
-  public static void a(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
-  {
-    if (paramMessageRecord != null)
+    int j = (int)(SystemClock.elapsedRealtime() - paramLong) / 1000;
+    paramList = paramList.iterator();
+    int i = 0;
+    if (paramList.hasNext())
     {
-      paramMessageRecord.saveExtInfoToExtStr("specify_redpack_is_reply", "1");
-      ahiw.a(paramQQAppInterface, paramMessageRecord);
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, MessageForQQWalletMsg paramMessageForQQWalletMsg)
-  {
-    if ((paramQQAppInterface == null) || (paramMessageForQQWalletMsg == null)) {
-      return false;
-    }
-    boolean bool = a(paramMessageForQQWalletMsg, paramQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.i("SpecifyRedPacketAnimMsg", 2, "tryScheduleSpecifyAnim isValidAnim=" + bool);
-    }
-    if (bool)
-    {
-      ((bahf)paramQQAppInterface.getManager(223)).a(new ahfh(paramMessageForQQWalletMsg), false);
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    if (paramMessageRecord != null)
-    {
-      try
-      {
-        i = Integer.parseInt(paramMessageRecord.getExtInfoFromExtStr("specify_redpack_is_reply"));
-        if (i == 1) {
-          return true;
-        }
+      if (!((ahfi)paramList.next()).a()) {
+        break label99;
       }
-      catch (Throwable paramMessageRecord)
-      {
-        for (;;)
-        {
-          int i = 0;
-        }
-      }
-      return false;
+      i += 1;
     }
-    return false;
-  }
-  
-  public static boolean a(Object paramObject, QQAppInterface paramQQAppInterface)
-  {
-    if (!(paramObject instanceof MessageForQQWalletMsg)) {
-      return false;
-    }
-    paramObject = (MessageForQQWalletMsg)paramObject;
-    int i = paramObject.messageType;
-    if ((i == 7) || (i == 8) || (i == 11) || (i == 12))
+    label99:
+    for (;;)
     {
-      if (TextUtils.isEmpty(paramObject.mQQWalletRedPacketMsg.body.feedId)) {
-        return false;
-      }
-      if (paramObject.isRedPackExpired()) {
-        return false;
-      }
-      if ((!ahdb.a().a()) && (!paramQQAppInterface.c().equals(paramObject.senderuin)))
-      {
-        if (paramObject.mQQWalletRedPacketMsg.specifyUinList == null) {
-          break label176;
-        }
-        paramObject = paramObject.mQQWalletRedPacketMsg.specifyUinList.iterator();
-        Long localLong;
-        do
-        {
-          if (!paramObject.hasNext()) {
-            break;
-          }
-          localLong = (Long)paramObject.next();
-        } while (!paramQQAppInterface.c().equals(localLong + ""));
-      }
-    }
-    label176:
-    for (i = 1;; i = 0)
-    {
-      return i != 0;
-      return false;
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView.removeAllViews();
-      this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView);
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpecifySpecifyGiftView = null;
-      this.jdField_a_of_type_AndroidViewWindowManager = null;
-      this.jdField_a_of_type_Boolean = true;
+      break;
+      a("0X800AB63", i + "", j + "", "");
       return;
     }
-    catch (Exception localException)
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface != null)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(".troop.send_gift", 2, "closeRedPackGiftAnimation exception ", localException);
-        }
+      paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
+      paramQQAppInterface.putBoolean("face2face_add_contact_guide_tip", true);
+      paramQQAppInterface.commit();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Face2FaceAddContactUtils", 2, " face2faceReport tValue = " + paramString1 + " r2 = " + paramString2 + " r3 = " + paramString3 + " r4 =" + paramString4);
+    }
+    azmj.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, "");
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramQQAppInterface != null)
+    {
+      bool1 = bool2;
+      if (!paramQQAppInterface.getPreferences().getBoolean("face2face_add_contact_guide_tip", false)) {
+        bool1 = true;
       }
     }
+    return bool1;
   }
   
-  public void a(BaseChatPie paramBaseChatPie, aycd paramaycd)
+  public static void b(QQAppInterface paramQQAppInterface)
   {
-    ahiw.a(ahiw.a(), "212", "only.animation.show");
-    String str = ahff.a() + this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.body.feedId + ".zip";
-    WeakReference localWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg);
-    paramBaseChatPie = new WeakReference(paramBaseChatPie);
-    if (QLog.isColorLevel()) {
-      QLog.i("SpecifyRedPacketAnimMsg", 2, "showAnim start");
-    }
-    paramaycd = new ahfi(this, paramaycd);
-    this.jdField_a_of_type_JavaLangRunnable = new SpecifyRedPacketAnimMsg.2(this, paramaycd);
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 10000L);
-    PreloadManager.a().c(str, new ahfj(this, localWeakReference, paramaycd, paramBaseChatPie));
-  }
-  
-  public String getFriendUin()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.frienduin;
-  }
-  
-  public int getLimitType()
-  {
-    return 1;
-  }
-  
-  public long getSenderUin()
-  {
-    try
+    if (paramQQAppInterface != null)
     {
-      long l = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.senderuin);
-      return l;
+      paramQQAppInterface = paramQQAppInterface.getPreferences().edit();
+      paramQQAppInterface.putBoolean("face2face_add_contact_guide_dialog", true);
+      paramQQAppInterface.commit();
     }
-    catch (Throwable localThrowable)
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramQQAppInterface != null)
     {
-      localThrowable.printStackTrace();
+      bool1 = bool2;
+      if (!paramQQAppInterface.getPreferences().getBoolean("face2face_add_contact_guide_dialog", false)) {
+        bool1 = true;
+      }
     }
-    return 0L;
-  }
-  
-  public long getShmsgseq()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.shmsgseq;
-  }
-  
-  public boolean isReaded()
-  {
-    return false;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahfh
  * JD-Core Version:    0.7.0.1
  */

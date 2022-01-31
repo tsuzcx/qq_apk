@@ -1,76 +1,71 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XListView;
-import java.util.List;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.util.ArrayList;
 
-class aiop
-  extends ajxj
+public class aiop
+  extends aimu
 {
-  aiop(aion paramaion) {}
+  private final String a;
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  aiop(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean)
+    super(paramNewPhotoPreviewActivity);
+    this.jdField_a_of_type_JavaLangString = "PhotoPreviewLogicAEPlay";
+  }
+  
+  private void c(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Aimr.lastTimeShowToast >= 700L)
     {
-      if ((this.a.jdField_a_of_type_Aiob != null) && ((this.a.jdField_a_of_type_Aiob instanceof aioc))) {
-        ((aioc)this.a.jdField_a_of_type_Aiob).a(paramString);
-      }
-      aion.a(this.a);
+      this.jdField_a_of_type_Aimr.lastTimeShowToast = l;
+      QQToast.a(this.mActivity, paramString, 0).b(((NewPhotoPreviewActivity)this.mActivity).getResources().getDimensionPixelSize(2131298914));
     }
   }
   
-  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  private boolean c()
   {
-    if (paramBoolean) {
-      aion.a(this.a);
-    }
+    return this.mPhotoCommonData.selectedPhotoList.size() < this.mPhotoCommonData.maxSelectNum;
   }
   
-  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  public void initUI()
   {
-    super.onMayKnowListPushAdd(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      aion.a(this.a);
-    }
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new aioq(this));
   }
   
-  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  public void onSelectClick(View paramView)
   {
-    super.onMayKnowListPushDel(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean) {
-      aion.a(this.a);
-    }
-  }
-  
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
-    }
-    if (paramBoolean)
+    if ((!this.mPhotoCommonData.selectedIndex.contains(Integer.valueOf(((NewPhotoPreviewActivity)this.mActivity).getCurrentSelectedPostion()))) && (this.mPhotoCommonData.selectedPhotoList.size() >= this.mPhotoCommonData.maxSelectNum))
     {
-      this.a.notifyDataSetChanged();
-      if (aion.a(this.a) != null)
-      {
-        aion.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-        aion.a(this.a).postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
-      }
+      c(String.format(((NewPhotoPreviewActivity)this.mActivity).getString(2131689820), new Object[] { Integer.valueOf(this.mPhotoCommonData.maxSelectNum) }));
+      return;
     }
+    super.onSelectClick(paramView);
+  }
+  
+  public void updateButton()
+  {
+    super.updateButton();
+    String str = ((NewPhotoPreviewActivity)this.mActivity).getString(2131717485);
+    int i = this.mPhotoCommonData.selectedPhotoList.size();
+    str = str + " " + i + "/" + this.mPhotoCommonData.maxSelectNum;
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setText(str);
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setEnabled(true);
+    if (c())
+    {
+      ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setBackgroundResource(2130849134);
+      return;
+    }
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setBackgroundResource(2130837723);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiop
  * JD-Core Version:    0.7.0.1
  */

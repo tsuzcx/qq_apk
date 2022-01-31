@@ -1,350 +1,345 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.os.Handler;
+import android.os.Looper;
+import com.dataline.activities.LiteActivity;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.imcore.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.DatalineMessageManager.1;
+import com.tencent.mobileqq.app.message.DatalineMessageManager.2;
+import com.tencent.mobileqq.app.message.DatalineMessageManager.3;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.mobileqq.data.DataLineMsgSetList;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
 import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class amfy
-  extends WebViewPlugin
+  implements amgi
 {
-  public amfy()
+  public int a;
+  public QQMessageFacade a;
+  public QQAppInterface a;
+  public String a;
+  
+  public amfy(QQAppInterface paramQQAppInterface, QQMessageFacade paramQQMessageFacade)
   {
-    this.mPluginNameSpace = "campus_circle";
+    this.jdField_a_of_type_JavaLangString = aljq.z;
+    this.jdField_a_of_type_Int = 6000;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade = paramQQMessageFacade;
   }
   
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private void a(DataLineMsgRecord paramDataLineMsgRecord, awbw paramawbw)
   {
-    paramString2 = (bcfx)super.getBrowserComponent(2);
-    int i1;
-    int k;
-    int i;
-    int j;
-    int m;
-    if (paramString2 != null)
+    a().b(paramDataLineMsgRecord);
+    paramawbw = a().a(paramDataLineMsgRecord.groupId);
+    QQMessageFacade.Message localMessage = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+    localMessage.selfuin = String.valueOf(this.jdField_a_of_type_JavaLangString);
+    localMessage.senderuin = String.valueOf(this.jdField_a_of_type_JavaLangString);
+    localMessage.msgtype = paramDataLineMsgRecord.msgtype;
+    if (localMessage.msgtype == -2009) {
+      localMessage.msgtype = -2005;
+    }
+    localMessage.msg = paramDataLineMsgRecord.msg;
+    localMessage.emoRecentMsg = null;
+    if (paramDataLineMsgRecord.time > localMessage.time)
     {
-      paramString3 = paramString2.d.getContext().getResources();
-      i1 = (int)(30.0F * paramString3.getDisplayMetrics().density);
-      int i2 = 0;
-      k = 0;
-      paramString1 = "";
-      int n = 10;
-      i = n;
-      paramJsBridgeListener = paramString1;
-      j = k;
-      if (paramVarArgs != null)
+      QLog.d("DatalineMessageManager", 2, "updateLastMsg mr msg time[" + localMessage.time + "] to time[" + paramDataLineMsgRecord.time + "]");
+      localMessage.time = paramDataLineMsgRecord.time;
+    }
+    localMessage.msgseq = paramDataLineMsgRecord.msgseq;
+    localMessage.isread = paramDataLineMsgRecord.isread;
+    localMessage.issend = paramDataLineMsgRecord.issend;
+    localMessage.frienduin = String.valueOf(this.jdField_a_of_type_JavaLangString);
+    localMessage.istroop = this.jdField_a_of_type_Int;
+    localMessage.fileType = -1;
+    localMessage.msgId = paramDataLineMsgRecord.msgId;
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localMessage);
+    if (!paramDataLineMsgRecord.isSend()) {
+      localMessage.hasReply = true;
+    }
+    if ((!paramDataLineMsgRecord.isSendFromLocal()) && (!paramDataLineMsgRecord.isread))
+    {
+      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.c(localMessage);
+      if (!DataLineMsgSet.isSingle(paramDataLineMsgRecord)) {
+        break label290;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(localMessage.frienduin, localMessage.istroop, 1);
+    }
+    label290:
+    while ((paramawbw != null) && (paramawbw.getComeCount() != 1)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().d(localMessage.frienduin, localMessage.istroop, 1);
+  }
+  
+  public int a()
+  {
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() != ((Looper)localObject).getThread()) {
+      throw new RuntimeException("clearHistory in no-main thread");
+    }
+    localObject = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() == null) {
+      return 0;
+    }
+    int i = a().a();
+    if (i > 0)
+    {
+      ((QQMessageFacade.Message)localObject).msg = null;
+      ((QQMessageFacade.Message)localObject).emoRecentMsg = null;
+      ((QQMessageFacade.Message)localObject).fileType = -1;
+    }
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localObject);
+    return i;
+  }
+  
+  public int a(long paramLong)
+  {
+    DataLineMsgSet localDataLineMsgSet = a().a(paramLong);
+    if (localDataLineMsgSet == null) {
+      return -1;
+    }
+    Looper localLooper = Looper.getMainLooper();
+    if (Thread.currentThread() == localLooper.getThread()) {
+      return a(localDataLineMsgSet);
+    }
+    new Handler(localLooper).post(new DatalineMessageManager.2(this, localDataLineMsgSet));
+    return 0;
+  }
+  
+  public int a(DataLineMsgSet paramDataLineMsgSet)
+  {
+    boolean bool = false;
+    Object localObject = Looper.getMainLooper();
+    if (Thread.currentThread() == ((Looper)localObject).getThread())
+    {
+      int i = a().a(paramDataLineMsgSet);
+      if (i > 0)
       {
-        i = n;
-        paramJsBridgeListener = paramString1;
-        j = k;
-        if (paramVarArgs.length > 0)
+        paramDataLineMsgSet = abot.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.containsKey(paramDataLineMsgSet))
         {
-          k = n;
-          m = i2;
+          bool = ((QQMessageFacade.Message)this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.get(paramDataLineMsgSet)).hasReply;
+          this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.remove(paramDataLineMsgSet);
         }
-      }
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        k = n;
-        m = i2;
-        j = paramJsBridgeListener.optInt("iconIndex");
-        k = n;
-        m = j;
-        i = paramJsBridgeListener.optInt("iconPad");
-        k = i;
-        m = j;
-        paramJsBridgeListener = paramJsBridgeListener.optString("iconRes");
-      }
-      catch (Exception paramVarArgs)
-      {
-        for (;;)
+        long l = a().a().size();
+        if (l > 0L)
         {
-          i = k;
-          paramJsBridgeListener = paramString1;
-          j = m;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("CampusCirclePlugin", 2, "getRedPoint exception", paramVarArgs);
-            i = k;
-            paramJsBridgeListener = paramString1;
-            j = m;
-            continue;
-            if ("arrow_down".equals(paramJsBridgeListener))
+          localObject = a().a();
+          paramDataLineMsgSet = (DataLineMsgSet)localObject;
+          if (localObject != null) {
+            if ((((DataLineMsgRecord)localObject).msgtype != -5000) && (((DataLineMsgRecord)localObject).msgtype != -5041))
             {
-              paramJsBridgeListener = paramString3.getDrawable(2130844131);
-            }
-            else if ("none".equals(paramJsBridgeListener))
-            {
-              paramJsBridgeListener = null;
+              paramDataLineMsgSet = (DataLineMsgSet)localObject;
+              if (((DataLineMsgRecord)localObject).msgtype != -2073) {}
             }
             else
             {
-              paramJsBridgeListener = null;
-              continue;
-              k = j;
-              if (j < 0)
-              {
-                k = 0;
-                continue;
-                j = i;
-                if (i > i1) {
-                  j = i1;
-                }
+              paramDataLineMsgSet = (DataLineMsgSet)localObject;
+              if (l > 1L) {
+                paramDataLineMsgSet = a().a().get((int)(l - 2L)).getLastItem();
               }
             }
           }
-        }
-      }
-      if ("arrow_up".equals(paramJsBridgeListener))
-      {
-        paramJsBridgeListener = paramString3.getDrawable(2130844132);
-        if (j <= 3) {
-          break label278;
-        }
-        k = 3;
-        if (i >= 0) {
-          break label293;
-        }
-        j = 0;
-        paramString2.a.a(k, paramJsBridgeListener, j);
-        return true;
-      }
-    }
-    label278:
-    label293:
-    return false;
-  }
-  
-  public boolean b(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    paramString1 = "";
-    paramJsBridgeListener = paramString1;
-    if (paramVarArgs != null)
-    {
-      paramJsBridgeListener = paramString1;
-      if (paramVarArgs.length <= 0) {}
-    }
-    try
-    {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-      if (QLog.isColorLevel()) {
-        QLog.d("CampusCirclePlugin", 2, "getRedPoint callback=" + paramJsBridgeListener);
-      }
-      if (TextUtils.isEmpty(paramJsBridgeListener)) {
-        return true;
-      }
-    }
-    catch (Exception paramString2)
-    {
-      for (;;)
-      {
-        paramJsBridgeListener = paramString1;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("CampusCirclePlugin", 2, "getRedPoint exception", paramString2);
-          paramJsBridgeListener = paramString1;
-        }
-      }
-      paramString1 = new JSONObject();
-      paramString2 = amfw.a().a();
-      bool = false;
-      j = 1;
-      i = 0;
-      l = 0L;
-      if (paramString2 == null) {
-        break label277;
-      }
-    }
-    boolean bool = paramString2.getBoolean("hasRedTouch", false);
-    int j = paramString2.getInt("type", 1);
-    int i = paramString2.getInt("count", 0);
-    long l = paramString2.getLong("seq", 0L);
-    int k = paramString2.getInt("code");
-    for (;;)
-    {
-      try
-      {
-        paramString1.put("code", k);
-        if (!bool) {
-          continue;
-        }
-        k = 1;
-        paramString1.put("hasRedTouch", k);
-        paramString1.put("type", j);
-        paramString1.put("count", i);
-        paramString1.put("seq", l);
-      }
-      catch (JSONException paramString2)
-      {
-        label277:
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("CampusCirclePlugin", 2, paramString2, new Object[] { "getRedPoint, exception" });
-        continue;
-      }
-      paramString1 = paramString1.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("CampusCirclePlugin", 2, "getRedPoint, json=" + paramString1);
-      }
-      callJs(paramJsBridgeListener, new String[] { paramString1 });
-      return true;
-      k = -1;
-      continue;
-      k = 0;
-    }
-  }
-  
-  public boolean c(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    long l2 = -1L;
-    long l1 = l2;
-    if (paramVarArgs != null)
-    {
-      l1 = l2;
-      if (paramVarArgs.length <= 0) {}
-    }
-    try
-    {
-      l1 = new JSONObject(paramVarArgs[0]).optLong("seq", -1L);
-      if (QLog.isColorLevel()) {
-        QLog.d("CampusCirclePlugin", 2, "getRedPoint seq=" + l1);
-      }
-      if (l1 < 0L) {
-        return true;
-      }
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        l1 = l2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("CampusCirclePlugin", 2, "getRedPoint exception", paramJsBridgeListener);
-          l1 = l2;
-        }
-      }
-      amfw.a().a(l1);
-    }
-    return true;
-  }
-  
-  public boolean d(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {}
-    try
-    {
-      paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-      long l = paramJsBridgeListener.getLong("schoolId");
-      paramJsBridgeListener = paramJsBridgeListener.getString("schoolName");
-      paramString1 = this.mRuntime.a();
-      if (paramString1 != null)
-      {
-        paramString2 = new Intent();
-        paramString2.putExtra("campus_school_id", l);
-        paramString2.putExtra("campus_school", paramJsBridgeListener);
-        paramString1.setResult(-1, paramString2);
-        paramString1.finish();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("CampusCirclePlugin", 2, String.format(Locale.getDefault(), "onSearchSchoolResult schoolId: %d schoolName: %s activity: %s", new Object[] { Long.valueOf(l), paramJsBridgeListener, paramString1 }));
-      }
-    }
-    catch (Exception paramJsBridgeListener)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("CampusCirclePlugin", 2, "onSearchSchoolResult exception", paramJsBridgeListener);
-    }
-    return false;
-    return false;
-  }
-  
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
-  {
-    boolean bool2 = super.handleEvent(paramString, paramLong, paramMap);
-    boolean bool3;
-    if (paramLong == 8589934598L)
-    {
-      if (this.mRuntime.a().getIntent().getIntExtra("uintype", -1) == 1030) {
-        bool3 = false;
-      }
-      try
-      {
-        paramString = Uri.parse(this.mRuntime.a().getIntent().getStringExtra("url"));
-        bool1 = bool3;
-        if (paramString != null)
-        {
-          bool1 = bool3;
-          if (paramString.isHierarchical()) {
-            bool1 = "1".equals(paramString.getQueryParameter("__iscomic"));
+          localObject = new QQMessageFacade.Message();
+          if (paramDataLineMsgSet != null)
+          {
+            MessageRecord.copyMessageRecordBaseField((MessageRecord)localObject, paramDataLineMsgSet);
+            ((QQMessageFacade.Message)localObject).emoRecentMsg = null;
+            ((QQMessageFacade.Message)localObject).hasReply = bool;
+            this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a((QQMessageFacade.Message)localObject);
+            this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a.put(abot.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int), localObject);
           }
         }
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          bool1 = bool3;
+        paramDataLineMsgSet = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+        paramDataLineMsgSet.a();
+        if (localObject != null) {
+          this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localObject);
         }
       }
-      if (bool1) {
-        return bool2;
-      }
-      paramString = new Intent(this.mRuntime.a(), SplashActivity.class);
-      paramString.putExtra("fragment_id", 1);
-      paramString.putExtra("main_tab_id", 4);
-      paramString.setFlags(603979776);
-      paramString.putExtra("from", "campus_notice");
-      this.mRuntime.a().startActivity(paramString);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("CampusNoticeManager", 4, "EVENT_BEFORE_ACTIVITY_FINISH");
+      return i;
+    }
+    new Handler((Looper)localObject).post(new DatalineMessageManager.3(this, paramDataLineMsgSet));
+    return 0;
+  }
+  
+  public long a(DataLineMsgRecord paramDataLineMsgRecord, boolean paramBoolean)
+  {
+    long l2 = -1L;
+    long l1;
+    if (paramDataLineMsgRecord == null)
+    {
+      l1 = l2;
+      if (QLog.isColorLevel())
+      {
+        QLog.w("Q.msg.DatalineMessageManager", 2, "mr is null");
+        l1 = l2;
       }
     }
-    for (boolean bool1 = true;; bool1 = bool2) {
-      return bool1;
+    Object localObject1;
+    Object localObject2;
+    for (;;)
+    {
+      return l1;
+      a();
+      localObject1 = new ew(false, false);
+      localObject2 = Looper.getMainLooper();
+      if (Thread.currentThread() == ((Looper)localObject2).getThread())
+      {
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+        try
+        {
+          if (paramDataLineMsgRecord.time == 0L) {
+            paramDataLineMsgRecord.time = ayvc.a();
+          }
+          if (paramDataLineMsgRecord.msgseq == 0L) {
+            paramDataLineMsgRecord.msgseq = ((int)paramDataLineMsgRecord.time);
+          }
+          localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+          RecentUser localRecentUser = ((amjk)localObject2).a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+          localRecentUser.setType(this.jdField_a_of_type_Int);
+          localRecentUser.lastmsgtime = paramDataLineMsgRecord.time;
+          ((amjk)localObject2).a(localRecentUser);
+          a(paramDataLineMsgRecord, (awbw)localObject1);
+          l2 = paramDataLineMsgRecord.msgId;
+          if (paramBoolean) {
+            paramDataLineMsgRecord.issuc = true;
+          }
+          this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(paramDataLineMsgRecord);
+          ((awbw)localObject1).a();
+          l1 = l2;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("Q.msg.DatalineMessageManager", 2, "mr.msgId: " + l2);
+            return l2;
+          }
+        }
+        finally
+        {
+          ((awbw)localObject1).a();
+        }
+      }
+    }
+    new Handler((Looper)localObject2).post(new DatalineMessageManager.1(this, paramDataLineMsgRecord, (ew)localObject1));
+    ((ew)localObject1).a(-1L);
+    return 0L;
+  }
+  
+  public amjd a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(0);
+  }
+  
+  public DataLineMsgRecord a(long paramLong)
+  {
+    return a().b(paramLong);
+  }
+  
+  public DataLineMsgSet a(long paramLong)
+  {
+    return a().b(paramLong);
+  }
+  
+  protected void a()
+  {
+    ((allz)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(false);
+  }
+  
+  public void a(int paramInt, amje paramamje)
+  {
+    a().a(paramInt, paramamje);
+  }
+  
+  public void a(long paramLong)
+  {
+    a().b(paramLong);
+  }
+  
+  public void a(long paramLong, String paramString)
+  {
+    a().b(paramLong, paramString);
+  }
+  
+  public void a(long paramLong, String paramString, byte[] paramArrayOfByte)
+  {
+    a().a(paramLong, paramString, paramArrayOfByte);
+  }
+  
+  public void b()
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    try
+    {
+      amjk localamjk = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+      RecentUser localRecentUser = localamjk.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+      localRecentUser.setType(this.jdField_a_of_type_Int);
+      localRecentUser.lastmsgtime = ayvc.a();
+      localamjk.a(localRecentUser);
+      ((awbw)localObject1).a();
+      localObject1 = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(localObject1);
+      return;
+    }
+    finally
+    {
+      ((awbw)localObject1).a();
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public void b(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CampusCirclePlugin", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
-    }
-    if ("campus_circle".equals(paramString2))
+    a().c(paramLong);
+  }
+  
+  public void c()
+  {
+    a().d();
+  }
+  
+  public void c(long paramLong)
+  {
+    a().a(paramLong);
+  }
+  
+  public void d()
+  {
+    a().c();
+  }
+  
+  public void d(long paramLong)
+  {
+    QQMessageFacade.Message localMessage = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(String.valueOf(this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_Int);
+    if (paramLong > localMessage.time)
     {
-      if ("getRedPoint".equals(paramString3)) {
-        return b(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-      }
-      if ("reportRedPoint".equals(paramString3)) {
-        return c(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-      }
-      if ("setTitleIcon".equals(paramString3)) {
-        return a(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-      }
-      if ("onSearchSchoolResult".equals(paramString3)) {
-        return d(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-      }
-      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+      QLog.d("DatalineMessageManager", 2, "updateLastMsg msg time[" + localMessage.time + "] to time[" + paramLong + "]");
+      localMessage.time = paramLong;
     }
-    return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+  }
+  
+  public void e()
+  {
+    if (!LiteActivity.class.getName().equals(allq.a(BaseApplication.getContext()))) {}
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.msg.DatalineMessageManager", 2, "setDataLineMsgReaded,unread=" + this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int));
+      }
+    } while (this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) <= 0);
+    a().e();
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amfy
  * JD-Core Version:    0.7.0.1
  */

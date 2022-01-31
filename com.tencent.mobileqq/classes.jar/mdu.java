@@ -1,20 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class mdu
-  implements View.OnClickListener
+  implements URLDrawable.URLDrawableListener
 {
-  public mdu(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
+  public mdu(AVActivity paramAVActivity) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.a.finish();
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadCanceled().");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    AVActivity.a(this.a, false);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadFialed().");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadProgressed(). i = " + paramInt);
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    AVActivity.a(this.a, true);
+    QLog.i(this.a.b, 1, "MoreBtnTips. onLoadSuccessed().");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,41 @@
-class aous
-  extends aowr
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class aous
 {
-  aous(aouo paramaouo, aout paramaout) {}
+  private int a;
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public static aous a(aogf paramaogf)
   {
-    if (paramBoolean)
+    localaous = new aous();
+    if (paramaogf != null)
     {
-      this.jdField_a_of_type_Aout.a(paramString2);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("SuspiciousTroopConfBean", 2, "parse taskid->" + paramaogf.jdField_a_of_type_Int + " content->" + paramaogf.jdField_a_of_type_JavaLangString);
+      }
+      try
+      {
+        if (paramaogf.jdField_a_of_type_JavaLangString == null) {}
+        for (paramaogf = "";; paramaogf = paramaogf.jdField_a_of_type_JavaLangString)
+        {
+          localaous.jdField_a_of_type_Int = new JSONObject(paramaogf).optInt("suspiciousSwitch", 0);
+          return localaous;
+        }
+        return localaous;
+      }
+      catch (JSONException paramaogf)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("SuspiciousTroopConfBean", 2, "parse error->" + paramaogf.toString());
+        }
+      }
     }
-    this.jdField_a_of_type_Aout.a(paramInt, paramString1);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
   }
 }
 

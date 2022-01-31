@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.pic;
 
-import aunn;
-import aunv;
+import aweu;
+import awfc;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -19,7 +19,7 @@ class PicPreDownloader$5
     {
       int j;
       int i;
-      aunv localaunv;
+      awfc localawfc;
       synchronized (this.this$0.jdField_a_of_type_JavaUtilList)
       {
         Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilList.iterator();
@@ -28,27 +28,27 @@ class PicPreDownloader$5
         if (!localIterator.hasNext()) {
           break label310;
         }
-        localaunv = (aunv)localIterator.next();
-        switch (localaunv.f)
+        localawfc = (awfc)localIterator.next();
+        switch (localawfc.f)
         {
         case 4: 
           k += 1;
-          localaunv.e = localaunv.f;
-          this.this$0.jdField_a_of_type_JavaUtilMap.put(localaunv.a.g, Integer.valueOf(localaunv.e));
-          this.this$0.d.add(0, localaunv);
-          localaunv.e = localaunv.f;
-          this.this$0.jdField_a_of_type_JavaUtilMap.put(localaunv.a.g, Integer.valueOf(localaunv.e));
+          localawfc.e = localawfc.f;
+          this.this$0.jdField_a_of_type_JavaUtilMap.put(localawfc.a.g, Integer.valueOf(localawfc.e));
+          this.this$0.d.add(0, localawfc);
+          localawfc.e = localawfc.f;
+          this.this$0.jdField_a_of_type_JavaUtilMap.put(localawfc.a.g, Integer.valueOf(localawfc.e));
         }
       }
       i += 1;
-      localaunv.e = localaunv.f;
-      this.this$0.jdField_a_of_type_JavaUtilMap.put(localaunv.a.g, Integer.valueOf(localaunv.e));
-      this.this$0.b.add(0, localaunv);
+      localawfc.e = localawfc.f;
+      this.this$0.jdField_a_of_type_JavaUtilMap.put(localawfc.a.g, Integer.valueOf(localawfc.e));
+      this.this$0.b.add(0, localawfc);
       continue;
       j += 1;
-      localaunv.e = localaunv.f;
-      this.this$0.jdField_a_of_type_JavaUtilMap.put(localaunv.a.g, Integer.valueOf(localaunv.e));
-      this.this$0.c.add(0, localaunv);
+      localawfc.e = localawfc.f;
+      this.this$0.jdField_a_of_type_JavaUtilMap.put(localawfc.a.g, Integer.valueOf(localawfc.e));
+      this.this$0.c.add(0, localawfc);
       continue;
       label310:
       this.this$0.jdField_a_of_type_JavaUtilList.clear();
@@ -61,7 +61,7 @@ class PicPreDownloader$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicPreDownloader.5
  * JD-Core Version:    0.7.0.1
  */

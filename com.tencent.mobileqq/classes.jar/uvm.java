@@ -1,25 +1,12 @@
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.List;
-
-class uvm
-  extends JobSegment<uvo, uoy>
+public abstract interface uvm
 {
-  private int jdField_a_of_type_Int;
-  private List<CommentEntry> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private uov jdField_a_of_type_Uov;
+  public abstract void a();
   
-  protected void a(JobContext paramJobContext, uvo paramuvo)
-  {
-    this.jdField_a_of_type_Uov = new uov(paramuvo, new uvn(this, paramJobContext, paramuvo));
-    this.jdField_a_of_type_Uov.c();
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uvm
  * JD-Core Version:    0.7.0.1
  */

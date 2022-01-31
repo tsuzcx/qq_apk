@@ -10,7 +10,7 @@ public final class oidb_0x98d$ZListRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x98d.oidb_0x98d.ZListRsp
  * JD-Core Version:    0.7.0.1
  */

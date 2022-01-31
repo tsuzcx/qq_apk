@@ -1,35 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import com.tencent.biz.subscribe.component.base.ComponentPageView;
 
-class ydz
-  implements bfph
+public class ydz
+  implements SwipeRefreshLayout.OnRefreshListener
 {
-  ydz(ydy paramydy, MessageForShortVideo paramMessageForShortVideo, adzp paramadzp, bfpc parambfpc) {}
+  public ydz(ComponentPageView paramComponentPageView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onRefresh()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      this.jdField_a_of_type_Ydy.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-      if ((bbfj.d(BaseApplication.getContext())) && (this.jdField_a_of_type_Adzp != null) && (this.jdField_a_of_type_Adzp.a != null))
-      {
-        this.jdField_a_of_type_Adzp.a.setFailedIconVisable(false, this.jdField_a_of_type_Ydy);
-        ydy.a(this.jdField_a_of_type_Ydy, this.jdField_a_of_type_Adzp, ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, 10), true);
-      }
+    if (this.a.a != null) {
+      this.a.a.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ydz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,23 @@
-import android.os.Parcelable;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.video.discovery.DiscoveryBannerInfo;
 
-public class rmh
+public final class rmh
+  implements Parcelable.Creator<DiscoveryBannerInfo>
 {
-  public Parcelable a;
-  public ArticleInfo a;
-  public ItemShowDispatcher a;
-  public String a;
-  public rkb a;
-  public boolean a;
+  public DiscoveryBannerInfo a(Parcel paramParcel)
+  {
+    return new DiscoveryBannerInfo(paramParcel);
+  }
+  
+  public DiscoveryBannerInfo[] a(int paramInt)
+  {
+    return new DiscoveryBannerInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rmh
  * JD-Core Version:    0.7.0.1
  */

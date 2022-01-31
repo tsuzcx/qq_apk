@@ -1,26 +1,35 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.TimeInfo;
-import java.util.Comparator;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 
-class ahga
-  implements Comparator<SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo>
+public abstract class ahga<T>
+  extends ahge<T>
 {
-  ahga(ahfx paramahfx) {}
+  protected int a;
+  protected Context a;
+  protected LayoutInflater a;
   
-  public int a(SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo paramBannerInfo1, SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.PendantEntryInfo.BannerInfo paramBannerInfo2)
+  public ahga(Context paramContext, int paramInt)
   {
-    if (paramBannerInfo1.bannerTime.beginTime == paramBannerInfo2.bannerTime.beginTime) {
-      return 0;
-    }
-    if (paramBannerInfo1.bannerTime.beginTime > paramBannerInfo2.bannerTime.beginTime) {
-      return 1;
-    }
-    return -1;
+    super(paramContext);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_Int = paramInt;
+    a(new ahgb(this, paramInt));
   }
+  
+  public ahgk a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    return b(paramContext, paramViewGroup, paramInt);
+  }
+  
+  protected abstract void a(ahgk paramahgk, T paramT, int paramInt);
+  
+  protected abstract ahgk b(Context paramContext, ViewGroup paramViewGroup, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahga
  * JD-Core Version:    0.7.0.1
  */

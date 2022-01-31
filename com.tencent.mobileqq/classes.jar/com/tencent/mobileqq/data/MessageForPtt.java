@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.data;
 
-import acxh;
-import ajya;
+import aeot;
+import alpo;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import aulz;
-import aypp;
-import ayrf;
-import azac;
-import bbbr;
-import bbea;
-import bbga;
-import bbkk;
-import bfko;
+import awdg;
+import bank;
+import bapa;
+import bayb;
+import bdal;
+import bdcv;
+import bdew;
+import bdje;
+import bhli;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -39,7 +39,7 @@ import tencent.im.msg.im_msg_body.RichText;
 
 public class MessageForPtt
   extends MessageForRichText
-  implements acxh
+  implements aeot
 {
   public static final int PTT_SIZE_ANIM_START = -2;
   public static final int PTT_SIZE_RECV_ERROR = -4;
@@ -60,7 +60,7 @@ public class MessageForPtt
   public int busiType;
   public boolean c2cViaOffline;
   public String directUrl = "";
-  @aulz
+  @awdg
   public long estimatedSize;
   public boolean expandStt = true;
   public long extFlag;
@@ -70,18 +70,18 @@ public class MessageForPtt
   public String groupFileKeyStr;
   public boolean isReadPtt;
   public int isReport;
-  @aulz
+  @awdg
   public boolean isResend;
   public int itemType;
   public int longPttVipFlag;
-  @aulz
+  @awdg
   public String mInputContent;
   public String md5;
   public long msgRecTime = 0L;
   public long msgTime = 0L;
   public int msgVia;
   public float playProgress;
-  @aulz
+  @awdg
   public float playSpeedPos = MediaPlayerManager.a;
   public int sampleRate;
   public String storageSource;
@@ -109,7 +109,7 @@ public class MessageForPtt
         str = paramString + ".slk";
       }
     }
-    return azac.a(str, true);
+    return bayb.a(str, true);
   }
   
   public static String getMsgFilePath(int paramInt, String paramString)
@@ -553,7 +553,7 @@ public class MessageForPtt
     //   884: aload_0
     //   885: aload_0
     //   886: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   889: invokestatic 428	bbbu:a	(Ljava/lang/String;)LActionMsg/MsgBody;
+    //   889: invokestatic 428	bdao:a	(Ljava/lang/String;)LActionMsg/MsgBody;
     //   892: getfield 431	ActionMsg/MsgBody:msg	Ljava/lang/String;
     //   895: putfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
     //   898: iconst_1
@@ -678,7 +678,7 @@ public class MessageForPtt
     //   1137: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1140: aload_0
     //   1141: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   1144: invokestatic 467	bbbr:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1144: invokestatic 467	bdal:a	(Ljava/lang/String;)Ljava/lang/String;
     //   1147: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1150: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1153: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -703,7 +703,7 @@ public class MessageForPtt
     //   1198: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1201: aload_0
     //   1202: getfield 362	com/tencent/mobileqq/data/MessageForPtt:msg	Ljava/lang/String;
-    //   1205: invokestatic 467	bbbr:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   1205: invokestatic 467	bdal:a	(Ljava/lang/String;)Ljava/lang/String;
     //   1208: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1211: invokevirtual 134	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   1214: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -841,14 +841,14 @@ public class MessageForPtt
     if (TextUtils.isEmpty(this.md5)) {}
     try
     {
-      this.md5 = bfko.a(new File(getLocalFilePath()));
+      this.md5 = bhli.a(new File(getLocalFilePath()));
       serial();
       if ((this.istroop == 1) || (this.istroop == 3000))
       {
         localPtt.uint32_file_type.set(4);
         localPtt.uint32_file_id.set((int)this.groupFileID);
         localPtt.uint32_file_size.set((int)this.fileSize);
-        localPtt.bytes_file_md5.set(ByteStringMicro.copyFrom(bbea.a(this.md5)));
+        localPtt.bytes_file_md5.set(ByteStringMicro.copyFrom(bdcv.a(this.md5)));
         localPtt.bytes_file_uuid.set(ByteStringMicro.copyFromUtf8(this.urlAtServer));
         if (this.urlAtServer != null)
         {
@@ -859,13 +859,13 @@ public class MessageForPtt
           if (this.groupFileKeyStr != null) {
             localPtt.bytes_group_file_key.set(ByteStringMicro.copyFromUtf8(this.groupFileKeyStr));
           }
-          Object localObject1 = ayrf.a(this);
+          Object localObject1 = bapa.a(this);
           localPtt.bytes_pb_reserve.set(ByteStringMicro.copyFrom((byte[])localObject1));
           localObject1 = new im_msg_body.GeneralFlags();
           localResvAttr = new generalflags.ResvAttr();
           if (this.waveformArray != null)
           {
-            localResvAttr.bytes_pb_ptt_waveform.set(ByteStringMicro.copyFrom(bbga.a(this.waveformArray).toByteArray()));
+            localResvAttr.bytes_pb_ptt_waveform.set(ByteStringMicro.copyFrom(bdew.a(this.waveformArray).toByteArray()));
             ((im_msg_body.GeneralFlags)localObject1).bytes_pb_reserve.set(ByteStringMicro.copyFrom(localResvAttr.toByteArray()));
           }
           localElem.general_flags.set((MessageMicro)localObject1);
@@ -889,15 +889,15 @@ public class MessageForPtt
         localPtt.uint32_file_type.set(4);
         localPtt.bytes_file_uuid.set(ByteStringMicro.copyFromUtf8(this.urlAtServer));
         localPtt.uint32_file_size.set((int)this.fileSize);
-        localPtt.bytes_file_md5.set(ByteStringMicro.copyFrom(bbea.a(this.md5)));
-        localObject2 = aypp.b(this);
+        localPtt.bytes_file_md5.set(ByteStringMicro.copyFrom(bdcv.a(this.md5)));
+        localObject2 = bank.b(this);
         localPtt.bytes_reserve.set(ByteStringMicro.copyFrom((byte[])localObject2));
         localPtt.bytes_down_para.set(ByteStringMicro.copyFromUtf8(this.directUrl));
         localObject2 = new im_msg_body.GeneralFlags();
         generalflags.ResvAttr localResvAttr = new generalflags.ResvAttr();
         if (this.waveformArray != null)
         {
-          localResvAttr.bytes_pb_ptt_waveform.set(ByteStringMicro.copyFrom(bbga.a(this.waveformArray).toByteArray()));
+          localResvAttr.bytes_pb_ptt_waveform.set(ByteStringMicro.copyFrom(bdew.a(this.waveformArray).toByteArray()));
           ((im_msg_body.GeneralFlags)localObject2).bytes_pb_reserve.set(ByteStringMicro.copyFrom(localResvAttr.toByteArray()));
         }
         localElem.general_flags.set((MessageMicro)localObject2);
@@ -908,14 +908,14 @@ public class MessageForPtt
   public String getSummaryMsg()
   {
     if (hasSttTxt()) {
-      return BaseApplicationImpl.sApplication.getResources().getString(2131691298) + this.sttText;
+      return BaseApplicationImpl.sApplication.getResources().getString(2131691351) + this.sttText;
     }
-    return ajya.a(2131706613);
+    return alpo.a(2131706985);
   }
   
   public boolean hasSttTxt()
   {
-    return (!bbkk.a(this.sttText)) && (!BaseApplicationImpl.sApplication.getResources().getString(2131719815).equals(this.sttText)) && (this.sttAbility != 3);
+    return (!bdje.a(this.sttText)) && (!BaseApplicationImpl.sApplication.getResources().getString(2131720341).equals(this.sttText)) && (this.sttAbility != 3);
   }
   
   public boolean isReady()
@@ -993,7 +993,7 @@ public class MessageForPtt
         ((RichMsg.PttRec)localObject2).msgTime.set(this.msgTime);
         ((RichMsg.PttRec)localObject2).msgRecTime.set(this.msgRecTime);
         ((RichMsg.PttRec)localObject2).voiceType.set(this.voiceType);
-        ((RichMsg.PttRec)localObject2).voiceLength.set(bbbr.a(this.voiceLength));
+        ((RichMsg.PttRec)localObject2).voiceLength.set(bdal.a(this.voiceLength));
         ((RichMsg.PttRec)localObject2).voiceChangeFlag.set(this.voiceChangeFlag);
         ((RichMsg.PttRec)localObject2).busiType.set(this.busiType);
         ((RichMsg.PttRec)localObject2).directUrl.set(this.directUrl);
@@ -1051,7 +1051,7 @@ public class MessageForPtt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForPtt
  * JD-Core Version:    0.7.0.1
  */

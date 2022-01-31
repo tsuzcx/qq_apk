@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
 
-public class autm
-  implements bcqh
+class autm
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public autm(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity) {}
+  autm(autj paramautj, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!this.a.e) {
-      this.a.e = true;
+    if (this.jdField_a_of_type_Autj.b)
+    {
+      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = i;
+      this.jdField_a_of_type_Autj.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_Autj.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
+      return;
     }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     autm
  * JD-Core Version:    0.7.0.1
  */

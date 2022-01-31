@@ -1,37 +1,36 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
-class bipt
-  extends akui
+public class bipt
+  implements DialogInterface.OnClickListener
 {
-  bipt(bips parambips, String paramString, boolean paramBoolean)
-  {
-    super(paramString, paramBoolean);
-  }
+  public bipt(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-      {
-        SosoInterface.SosoLocation localSosoLocation = paramSosoLbsInfo.a;
-        bips.a(this.a, paramSosoLbsInfo.a);
-        double d1 = localSosoLocation.a;
-        double d2 = localSosoLocation.b;
-        bips.a(this.a, d1, d2);
-        return;
+    if (this.jdField_a_of_type_Boolean) {
+      if (this.b) {
+        arni.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 777, false, 0);
       }
-      QLog.i("Q.videostory.capture", 2, "LbsManagerService.startLocation: location is null");
-      return;
     }
-    QLog.i("Q.videostory.capture", 2, "LbsManagerService.startLocation: failed");
+    for (;;)
+    {
+      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
+      return;
+      arni.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 888, false, 0);
+      continue;
+      paramDialogInterface = new Intent(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, ScannerActivity.class);
+      paramDialogInterface.putExtra("from", "qlink");
+      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(paramDialogInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bipt
  * JD-Core Version:    0.7.0.1
  */

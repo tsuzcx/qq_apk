@@ -1,45 +1,31 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.subscribe.comment.CommentEditText;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class wmy
-  implements TextWatcher
+  extends QQUIEventReceiver<wmw, vaa>
 {
-  int jdField_a_of_type_Int = -1;
-  String jdField_a_of_type_JavaLangString = null;
-  
-  public wmy(CommentEditText paramCommentEditText) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public wmy(@NonNull wmw paramwmw)
   {
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      int i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setText(this.jdField_a_of_type_JavaLangString);
-      if (i > this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length()) {
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.setSelection(this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.length());
-      }
-    }
+    super(paramwmw);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(@NonNull wmw paramwmw, @NonNull vaa paramvaa)
   {
-    paramInt2 = paramCharSequence.toString().indexOf("[/", paramInt1);
-    int i = paramCharSequence.toString().indexOf(']', paramInt1);
-    if ((paramInt2 >= paramInt1) && (paramInt2 < paramInt1 + paramInt3) && ((i > paramInt1 + paramInt3) || (i == -1)))
-    {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizSubscribeCommentCommentEditText.getSelectionEnd();
-      this.jdField_a_of_type_JavaLangString = (paramCharSequence.subSequence(0, paramInt2).toString() + paramCharSequence.subSequence(paramInt1 + paramInt3, paramCharSequence.length()));
+    if ((paramvaa.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramvaa.jdField_a_of_type_JavaUtilList == null)) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = null;
+    paramwmw.b(paramvaa.jdField_a_of_type_JavaUtilList);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return vaa.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wmy
  * JD-Core Version:    0.7.0.1
  */

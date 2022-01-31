@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
+import bgkd;
 
 class VideoJsPlugin$4
   implements Runnable
 {
-  VideoJsPlugin$4(VideoJsPlugin paramVideoJsPlugin, int paramInt, bekr parambekr) {}
+  VideoJsPlugin$4(VideoJsPlugin paramVideoJsPlugin, int paramInt, bgkd parambgkd) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ class VideoJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.VideoJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

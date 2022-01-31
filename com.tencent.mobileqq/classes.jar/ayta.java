@@ -1,45 +1,16 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ayta
+class ayta
+  implements View.OnClickListener
 {
-  public static ayta a;
+  ayta(aysx paramaysx) {}
   
-  public static ayta a()
-  {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new ayta();
-      }
-      return a;
-    }
-    finally {}
-  }
-  
-  public int a()
-  {
-    return bbfj.a(BaseApplication.getContext());
-  }
-  
-  public String a()
-  {
-    try
-    {
-      String str = AppNetConnInfo.getCurrentAPN();
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayta
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,53 @@
-public class avyr
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
+
+class avyr
+  extends alyr
 {
-  private final int jdField_a_of_type_Int;
-  private final long jdField_a_of_type_Long;
-  private final long b;
+  avyr(avyo paramavyo) {}
   
-  private avyr(long paramLong1, long paramLong2, int paramInt)
+  protected void a(boolean paramBoolean, azyv paramazyv)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.b = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
+    if ((!paramBoolean) || (avyo.a(this.a) == null) || (avyo.a(this.a).isFinishing()) || (avyo.a(this.a) == null) || (paramazyv == null)) {
+      QLog.d("AccountPanel", 1, String.format("onGetBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    do
+    {
+      return;
+      avyo.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onGetBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
   
-  public String toString()
+  protected void b(boolean paramBoolean, azyv paramazyv)
   {
-    return "VideoTimeStamp{TIME-CLOCK=" + this.jdField_a_of_type_Long + ", TIME-FRAME=" + this.b + ", CYCLE=" + this.jdField_a_of_type_Int + '}';
+    if ((!paramBoolean) || (avyo.a(this.a) == null) || (avyo.a(this.a).isFinishing()) || (avyo.a(this.a) == null) || (paramazyv == null)) {
+      QLog.d("AccountPanel", 1, String.format("onBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    do
+    {
+      return;
+      avyo.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+  }
+  
+  protected void c(boolean paramBoolean, azyv paramazyv)
+  {
+    if ((!paramBoolean) || (avyo.a(this.a) == null) || (avyo.a(this.a).isFinishing()) || (avyo.a(this.a) == null) || (paramazyv == null)) {
+      QLog.d("AccountPanel", 1, String.format("onUnBindSubAccount return, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    do
+    {
+      return;
+      avyo.a(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("AccountPanel", 2, String.format("onUnBindSubAccount, isSuccess: %s", new Object[] { Boolean.valueOf(paramBoolean) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avyr
  * JD-Core Version:    0.7.0.1
  */

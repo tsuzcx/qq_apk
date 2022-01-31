@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import android.graphics.Bitmap;
 
-public final class vft
-  implements Parcelable.Creator<EditTakeVideoSource>
+class vft
+  extends ver
 {
-  public EditTakeVideoSource a(Parcel paramParcel)
+  vft(vez paramvez, boolean paramBoolean1, boolean paramBoolean2, vgi paramvgi)
   {
-    return new EditTakeVideoSource(paramParcel);
+    super(paramBoolean1, paramBoolean2);
   }
   
-  public EditTakeVideoSource[] a(int paramInt)
+  public boolean b()
   {
-    return new EditTakeVideoSource[paramInt];
+    this.jdField_a_of_type_Vgi.a = ((Bitmap)a("WeChatImageJob_out_bitmap"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vft
  * JD-Core Version:    0.7.0.1
  */

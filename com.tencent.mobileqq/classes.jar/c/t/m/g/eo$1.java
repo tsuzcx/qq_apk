@@ -7,14 +7,12 @@ final class eo$1
   
   public final void run()
   {
-    eo.a(this.a);
-    long l = eo.b(this.a).b.k;
-    eo.a(this.a, l);
+    this.a.h = new eo.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.eo.1
  * JD-Core Version:    0.7.0.1
  */

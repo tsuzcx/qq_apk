@@ -1,48 +1,36 @@
-import Wallet.AcsGetMsgRsp;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.1;
-import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1.2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
 public class acru
-  implements BusinessObserver
+  implements aplb
 {
-  public acru(QQNotifySettingBaseFragment paramQQNotifySettingBaseFragment) {}
+  public acru(EmosmActivity paramEmosmActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a_(int paramInt1, int paramInt2)
   {
-    if ((QQNotifySettingBaseFragment.a(this.a).isShowing()) && (QQNotifySettingBaseFragment.a(this.a) != null)) {
-      QQNotifySettingBaseFragment.a(this.a).dismiss();
-    }
-    if (paramInt == 2005)
+    if (paramInt1 != paramInt2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(QQNotifySettingBaseFragment.a(), 2, "acs msg succ");
-      }
-      if (!paramBoolean) {
-        break label114;
-      }
-      paramBundle = (AcsGetMsgRsp)paramBundle.getSerializable("rsp");
-      if (paramBundle != null) {
-        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.1(this, paramBundle));
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
+      this.a.a.a(localEmoticonPackage);
+      this.a.a.b(true);
+      this.a.a.a(localEmoticonPackage, paramInt2);
+      apne.a().a(localEmoticonPackage, paramInt1, paramInt2);
+      this.a.d = true;
+      azmj.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
+      if (this.a.b == 1) {
+        azmj.b(this.a.app, "dc00898", "", "", "0X800AB10", "0X800AB10", 0, 0, "", "", "", "");
       }
     }
     else
     {
       return;
     }
-    QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.2(this));
-    return;
-    label114:
-    this.a.a();
+    azmj.b(this.a.app, "dc00898", "", "", "0X800AB18", "0X800AB18", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acru
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
 
-class aodm
-  implements askq<Emoticon>
+public class aodm
+  extends Handler
 {
-  aodm(aodl paramaodl, int paramInt1, QQAppInterface paramQQAppInterface, int paramInt2, String paramString) {}
+  public aodm(LocationSelectActivity paramLocationSelectActivity) {}
   
-  public void a(Emoticon paramEmoticon)
+  public void handleMessage(Message paramMessage)
   {
-    adue.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Aodl.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aodl.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true);
+    if (paramMessage.what == 1000) {
+      this.a.a(((Boolean)((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[0]).booleanValue(), (String[])((java.lang.Object[])(java.lang.Object[])paramMessage.obj)[1]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aodm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,204 +1,223 @@
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.util.Arrays;
-import java.util.zip.CRC32;
-import java.util.zip.CheckedOutputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
+import android.text.Layout.Alignment;
+import android.text.StaticLayout;
+import android.text.TextPaint;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.widgets.ElasticHorScrView;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.utils.ShareWithPictureActionSheetBuilder.2;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bdit
+  extends ShareActionSheetBuilder
 {
-  protected static final String a = File.separator;
+  protected Bitmap a;
   
-  public static void a(File paramFile1, File paramFile2)
+  public bdit(Context paramContext)
   {
-    paramFile2 = new ZipOutputStream(new BufferedOutputStream(new CheckedOutputStream(new FileOutputStream(paramFile2), new CRC32())));
-    paramFile2.setLevel(0);
-    a(paramFile1, paramFile2, "", false);
-    paramFile2.flush();
-    paramFile2.close();
+    super(paramContext, false);
   }
   
-  public static void a(File paramFile, String paramString)
+  public View a()
   {
-    a(paramFile, new File(paramString));
-  }
-  
-  /* Error */
-  protected static void a(File paramFile, ZipOutputStream paramZipOutputStream, String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: new 66	java/util/zip/ZipEntry
-    //   6: dup
-    //   7: new 68	java/lang/StringBuilder
-    //   10: dup
-    //   11: invokespecial 69	java/lang/StringBuilder:<init>	()V
-    //   14: aload_2
-    //   15: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   18: aload_0
-    //   19: invokevirtual 77	java/io/File:getName	()Ljava/lang/String;
-    //   22: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   28: invokespecial 81	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   31: astore_2
-    //   32: aload_2
-    //   33: lconst_0
-    //   34: invokevirtual 85	java/util/zip/ZipEntry:setTime	(J)V
-    //   37: aload_1
-    //   38: aload_2
-    //   39: invokevirtual 89	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
-    //   42: new 91	java/io/BufferedInputStream
-    //   45: dup
-    //   46: new 93	java/io/FileInputStream
-    //   49: dup
-    //   50: aload_0
-    //   51: invokespecial 94	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   54: invokespecial 97	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   57: astore_2
-    //   58: aload_2
-    //   59: astore_0
-    //   60: sipush 8192
-    //   63: newarray byte
-    //   65: astore 4
-    //   67: aload_2
-    //   68: astore_0
-    //   69: aload_2
-    //   70: aload 4
-    //   72: iconst_0
-    //   73: sipush 8192
-    //   76: invokevirtual 101	java/io/BufferedInputStream:read	([BII)I
-    //   79: istore_3
-    //   80: iload_3
-    //   81: iconst_m1
-    //   82: if_icmpeq +43 -> 125
-    //   85: aload_2
-    //   86: astore_0
-    //   87: aload_1
-    //   88: aload 4
-    //   90: iconst_0
-    //   91: iload_3
-    //   92: invokevirtual 105	java/util/zip/ZipOutputStream:write	([BII)V
-    //   95: goto -28 -> 67
-    //   98: astore_1
-    //   99: aload_2
-    //   100: astore_0
-    //   101: new 64	java/lang/Exception
-    //   104: dup
-    //   105: aload_1
-    //   106: invokespecial 108	java/lang/Exception:<init>	(Ljava/lang/Throwable;)V
-    //   109: athrow
-    //   110: astore_2
-    //   111: aload_0
-    //   112: astore_1
-    //   113: aload_2
-    //   114: astore_0
-    //   115: aload_1
-    //   116: ifnull +7 -> 123
-    //   119: aload_1
-    //   120: invokevirtual 109	java/io/BufferedInputStream:close	()V
-    //   123: aload_0
-    //   124: athrow
-    //   125: aload_2
-    //   126: astore_0
-    //   127: aload_1
-    //   128: invokevirtual 112	java/util/zip/ZipOutputStream:closeEntry	()V
-    //   131: aload_2
-    //   132: ifnull +7 -> 139
-    //   135: aload_2
-    //   136: invokevirtual 109	java/io/BufferedInputStream:close	()V
-    //   139: return
-    //   140: astore_0
-    //   141: aload 4
-    //   143: astore_1
-    //   144: goto -29 -> 115
-    //   147: astore_1
-    //   148: aconst_null
-    //   149: astore_0
-    //   150: goto -49 -> 101
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	153	0	paramFile	File
-    //   0	153	1	paramZipOutputStream	ZipOutputStream
-    //   0	153	2	paramString	String
-    //   79	13	3	i	int
-    //   1	141	4	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   60	67	98	java/lang/Exception
-    //   69	80	98	java/lang/Exception
-    //   87	95	98	java/lang/Exception
-    //   127	131	98	java/lang/Exception
-    //   60	67	110	finally
-    //   69	80	110	finally
-    //   87	95	110	finally
-    //   101	110	110	finally
-    //   127	131	110	finally
-    //   3	58	140	finally
-    //   3	58	147	java/lang/Exception
-  }
-  
-  protected static void a(File paramFile, ZipOutputStream paramZipOutputStream, String paramString, boolean paramBoolean)
-  {
-    if (paramFile.isDirectory())
+    View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131562629, null);
+    this.jdField_a_of_type_Bdiq.a((RelativeLayout)localView.findViewById(2131362143));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131361920));
+    Object localObject2;
+    Object localObject1;
+    if (this.jdField_b_of_type_Boolean)
     {
-      b(paramFile, paramZipOutputStream, paramString, paramBoolean);
-      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (this.jdField_a_of_type_JavaLangCharSequence != null) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+      }
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131376156));
+      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView = ((ElasticHorScrView)localView.findViewById(2131376158));
+      localObject2 = a();
+      if (localObject2.length <= 0) {
+        break label390;
+      }
+      localObject1 = localObject2[0];
+      label122:
+      if (!((List)localObject1).isEmpty()) {
+        break label1200;
+      }
     }
-    a(paramFile, paramZipOutputStream, paramString);
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a(new File(paramString1), paramString2);
-  }
-  
-  protected static void b(File paramFile, ZipOutputStream paramZipOutputStream, String paramString, boolean paramBoolean)
-  {
-    File[] arrayOfFile = paramFile.listFiles();
-    Arrays.sort(arrayOfFile);
-    int i;
-    label85:
-    File localFile;
-    if (arrayOfFile.length == 0)
+    label147:
+    label1183:
+    label1189:
+    label1192:
+    label1195:
+    label1200:
+    for (int j = 0;; j = 1)
     {
-      if (paramBoolean)
+      if (localObject2.length > 1)
       {
-        localObject = paramString + paramFile.getName() + a;
-        localObject = new ZipEntry((String)localObject);
-        ((ZipEntry)localObject).setTime(0L);
-        paramZipOutputStream.putNextEntry((ZipEntry)localObject);
-        paramZipOutputStream.closeEntry();
+        localObject2 = localObject2[1];
+        if (!((List)localObject2).isEmpty()) {
+          break label1195;
+        }
+      }
+      for (int k = 0;; k = 1)
+      {
+        Object localObject3 = new TextPaint();
+        ((TextPaint)localObject3).setTextSize(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298843));
+        Object localObject4 = new StaticLayout(a((TextPaint)localObject3, this.e, a((List)localObject1), 5), (TextPaint)localObject3, this.e, Layout.Alignment.ALIGN_CENTER, 1.0F, this.g, true);
+        StaticLayout localStaticLayout = new StaticLayout(a((TextPaint)localObject3, this.e, a((List)localObject2), 5), (TextPaint)localObject3, this.e, Layout.Alignment.ALIGN_CENTER, 1.0F, this.g, true);
+        localObject3 = localStaticLayout;
+        if (((StaticLayout)localObject4).getHeight() >= localStaticLayout.getHeight()) {
+          localObject3 = localObject4;
+        }
+        int m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelOffset(2131296684);
+        int i;
+        if (j != 0)
+        {
+          this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)localView.findViewById(2131367298));
+          if (Build.VERSION.SDK_INT >= 9) {
+            this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
+          }
+          localObject4 = ((List)localObject1).iterator();
+          i = 0;
+          label350:
+          if (((Iterator)localObject4).hasNext())
+          {
+            if (((ShareActionSheetBuilder.ActionSheetItem)((Iterator)localObject4).next()).visibility != 0) {
+              break label1192;
+            }
+            i += 1;
+          }
+        }
+        for (;;)
+        {
+          break label350;
+          hideTitle();
+          break;
+          localObject1 = new ArrayList(0);
+          break label122;
+          localObject2 = new ArrayList(0);
+          break label147;
+          int n = this.d + getIconWidth() + this.d;
+          this.jdField_a_of_type_AndroidWidgetGridView.setColumnWidth(n);
+          this.jdField_a_of_type_AndroidWidgetGridView.setNumColumns(i);
+          localObject4 = this.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams();
+          this.jdField_a_of_type_AndroidWidgetGridView.setPadding(this.h, this.jdField_a_of_type_AndroidWidgetGridView.getPaddingTop(), this.h, this.jdField_a_of_type_AndroidWidgetGridView.getPaddingBottom());
+          ((ViewGroup.LayoutParams)localObject4).width = (n * i + this.h + this.h);
+          this.jdField_a_of_type_Int = ((ViewGroup.LayoutParams)localObject4).width;
+          ((ViewGroup.LayoutParams)localObject4).height = (this.c + this.f + ((StaticLayout)localObject3).getHeight() + m);
+          this.jdField_a_of_type_AndroidWidgetGridView.setLayoutParams((ViewGroup.LayoutParams)localObject4);
+          this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(new bdin(this.jdField_a_of_type_AndroidContentContext, (List)localObject1));
+          this.jdField_a_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
+          this.jdField_a_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
+          if (k != 0)
+          {
+            this.jdField_b_of_type_AndroidWidgetGridView = ((GridView)localView.findViewById(2131367299));
+            if (Build.VERSION.SDK_INT >= 9) {
+              this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setOverScrollMode(2);
+            }
+            this.jdField_b_of_type_AndroidWidgetGridView.setSmoothScrollbarEnabled(false);
+            localObject1 = ((List)localObject2).iterator();
+            i = 0;
+            if (((Iterator)localObject1).hasNext())
+            {
+              if (((ShareActionSheetBuilder.ActionSheetItem)((Iterator)localObject1).next()).visibility != 0) {
+                break label1189;
+              }
+              i += 1;
+            }
+          }
+          for (;;)
+          {
+            break;
+            n = this.d + getIconWidth() + this.d;
+            this.jdField_b_of_type_AndroidWidgetGridView.setColumnWidth(n);
+            this.jdField_b_of_type_AndroidWidgetGridView.setNumColumns(i);
+            localObject1 = this.jdField_b_of_type_AndroidWidgetGridView.getLayoutParams();
+            this.jdField_b_of_type_AndroidWidgetGridView.setPadding(this.h, this.jdField_b_of_type_AndroidWidgetGridView.getPaddingTop(), this.h, this.jdField_b_of_type_AndroidWidgetGridView.getPaddingBottom());
+            ((ViewGroup.LayoutParams)localObject1).width = (n * i + this.h + this.h);
+            this.jdField_b_of_type_Int = ((ViewGroup.LayoutParams)localObject1).width;
+            ((ViewGroup.LayoutParams)localObject1).height = (this.c + this.f + ((StaticLayout)localObject3).getHeight() + m);
+            this.jdField_b_of_type_AndroidWidgetGridView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+            this.jdField_b_of_type_AndroidWidgetGridView.setNumColumns(i);
+            this.jdField_b_of_type_AndroidWidgetGridView.setAdapter(new bdin(this.jdField_a_of_type_AndroidContentContext, (List)localObject2));
+            this.jdField_b_of_type_AndroidWidgetGridView.setSelector(new ColorDrawable(0));
+            this.jdField_b_of_type_AndroidWidgetGridView.setOnItemClickListener(this.jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener);
+            localObject1 = (TextView)localView.findViewById(2131361912);
+            ((TextView)localObject1).setText(2131690648);
+            ((TextView)localObject1).setOnClickListener(new bdiu(this));
+            if (j == 0) {
+              this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
+            }
+            if (k == 0) {
+              this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setVisibility(8);
+            }
+            localView.post(new ShareWithPictureActionSheetBuilder.2(this));
+            j = bdkf.a(90.0F);
+            i = j;
+            if (this.jdField_a_of_type_AndroidWidgetGridView != null) {
+              i = j + this.jdField_a_of_type_AndroidWidgetGridView.getLayoutParams().height;
+            }
+            if (this.jdField_b_of_type_AndroidWidgetGridView != null) {
+              i += this.jdField_b_of_type_AndroidWidgetGridView.getLayoutParams().height;
+            }
+            for (;;)
+            {
+              k = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
+              j = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
+              localObject1 = (RelativeLayout)localView.findViewById(2131376523);
+              localObject2 = ((RelativeLayout)localObject1).getLayoutParams();
+              ((ViewGroup.LayoutParams)localObject2).height = (j - i);
+              ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+              if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+              {
+                m = bdkf.a(20.0F);
+                j = j - i - bdkf.a(30.0F) * 2;
+                i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() * j / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+                if (i <= k - m * 2) {
+                  break label1183;
+                }
+                i = k - m * 2;
+                j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * i / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+              }
+              for (;;)
+              {
+                localObject1 = (ImageView)localView.findViewById(2131376522);
+                localObject2 = (RelativeLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
+                ((RelativeLayout.LayoutParams)localObject2).height = j;
+                ((RelativeLayout.LayoutParams)localObject2).width = i;
+                ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+                ((ImageView)localObject1).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+                return localView;
+              }
+            }
+          }
+        }
       }
     }
-    else
-    {
-      int j = arrayOfFile.length;
-      i = 0;
-      if (i >= j) {
-        return;
-      }
-      localFile = arrayOfFile[i];
-      if (!paramBoolean) {
-        break label156;
-      }
-    }
-    label156:
-    for (Object localObject = paramString + paramFile.getName() + a;; localObject = paramString)
-    {
-      a(localFile, paramZipOutputStream, (String)localObject, true);
-      i += 1;
-      break label85;
-      localObject = paramString;
-      break;
-    }
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdit
  * JD-Core Version:    0.7.0.1
  */

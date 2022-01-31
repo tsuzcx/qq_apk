@@ -1,15 +1,21 @@
-import android.opengl.GLSurfaceView.EGLConfigChooser;
-import android.opengl.GLSurfaceView.EGLContextFactory;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
-public abstract interface avye
+public class avye
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abstract GLSurfaceView.EGLConfigChooser a();
+  public avye(ScanIconAnimateView paramScanIconAnimateView) {}
   
-  public abstract GLSurfaceView.EGLContextFactory a();
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avye
  * JD-Core Version:    0.7.0.1
  */

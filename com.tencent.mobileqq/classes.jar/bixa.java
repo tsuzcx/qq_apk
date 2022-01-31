@@ -1,19 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qqreader.ui.ReaderHomeTabFragment;
+import cooperation.qqreader.view.ReaderTabBarView;
 
-class bixa
-  implements DialogInterface.OnClickListener
+public class bixa
+  extends BroadcastReceiver
 {
-  bixa(biwy parambiwy, bire parambire) {}
+  public bixa(ReaderHomeTabFragment paramReaderHomeTabFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    biwy.a(this.jdField_a_of_type_Biwy, this.jdField_a_of_type_Bire);
+    bixc.c(this.a.getActivity());
+    ReaderHomeTabFragment.a(this.a).setUnReadMsg(1, 20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bixa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,24 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.appstore.component.CommonTitleBar;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-public class bdhd
-  implements View.OnClickListener
+class bdhd
+  implements View.OnTouchListener
 {
-  public bdhd(CommonTitleBar paramCommonTitleBar) {}
+  bdhd(bdhc parambdhc) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (CommonTitleBar.a(this.a) != null) {
-      CommonTitleBar.a(this.a).b();
-    }
+    this.a.a.setImageResource(2130846765);
+    this.a.a.setTag(Integer.valueOf(2130846765));
+    this.a.a();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bdhd
  * JD-Core Version:    0.7.0.1
  */

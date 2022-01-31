@@ -1,12 +1,7 @@
-public abstract interface mho
-{
-  public abstract void a();
-  
-  public abstract void b();
-}
+public abstract interface mho {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mho
  * JD-Core Version:    0.7.0.1
  */

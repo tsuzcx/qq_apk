@@ -1,18 +1,16 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import java.util.Comparator;
 
-public abstract interface bchx
-  extends bccw
+public final class bchx
+  implements Comparator<bchy>
 {
-  public abstract int a(WebViewPlugin paramWebViewPlugin, byte paramByte, boolean paramBoolean);
-  
-  public abstract Activity b();
-  
-  public abstract boolean e();
+  public int a(bchy parambchy1, bchy parambchy2)
+  {
+    return Long.signum(parambchy2.a - parambchy1.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bchx
  * JD-Core Version:    0.7.0.1
  */

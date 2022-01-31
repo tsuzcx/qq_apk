@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import akuo;
+import amle;
 import android.util.Log;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
@@ -11,7 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 class MapJsPlugin$4
-  extends akuo
+  extends amle
 {
   MapJsPlugin$4(MapJsPlugin paramMapJsPlugin, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, boolean paramBoolean5, boolean paramBoolean6, ApiUtil.OnLocationFinish paramOnLocationFinish, JsRuntime paramJsRuntime, String paramString2, int paramInt2)
   {
@@ -73,7 +73,7 @@ class MapJsPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.MapJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

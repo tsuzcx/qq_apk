@@ -1,25 +1,25 @@
-public class bdmr
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+
+class bdmr
+  extends URLDrawableDownListener.Adapter
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public String b;
+  bdmr(bdmq parambdmq) {}
   
-  public bdmr(bdmq parambdmq)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
+    this.a.onLoadFialed(paramURLDrawable, paramThrowable);
   }
   
-  public String toString()
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return this.jdField_a_of_type_Int + "," + this.jdField_b_of_type_JavaLangString + "," + this.jdField_b_of_type_Int + "," + this.jdField_a_of_type_JavaLangString;
+    this.a.onLoadSuccessed(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmr
  * JD-Core Version:    0.7.0.1
  */

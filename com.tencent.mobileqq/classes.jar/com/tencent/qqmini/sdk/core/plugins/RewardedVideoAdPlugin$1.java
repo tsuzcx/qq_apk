@@ -2,7 +2,7 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.app.Activity;
 import android.os.Bundle;
-import bekr;
+import bgkd;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy;
 import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsRewardVideoAdView;
 import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
@@ -10,7 +10,7 @@ import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 class RewardedVideoAdPlugin$1
   implements Runnable
 {
-  RewardedVideoAdPlugin$1(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, Activity paramActivity, String paramString1, String paramString2, bekr parambekr, String paramString3, Bundle paramBundle) {}
+  RewardedVideoAdPlugin$1(RewardedVideoAdPlugin paramRewardedVideoAdPlugin, Activity paramActivity, String paramString1, String paramString2, bgkd parambgkd, String paramString3, Bundle paramBundle) {}
   
   public void run()
   {
@@ -39,7 +39,7 @@ class RewardedVideoAdPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.RewardedVideoAdPlugin.1
  * JD-Core Version:    0.7.0.1
  */

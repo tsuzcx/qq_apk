@@ -2,19 +2,19 @@ package com.tencent.biz.pubaccount.AccountDetail.adapter;
 
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
-import nea;
-import nes;
+import ngw;
+import nho;
 
 public class AccountDetailBaseAdapter$10
   implements Runnable
 {
-  public AccountDetailBaseAdapter$10(nea paramnea, nes paramnes, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2, RelativeLayout.LayoutParams paramLayoutParams3) {}
+  public AccountDetailBaseAdapter$10(ngw paramngw, nho paramnho, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2, RelativeLayout.LayoutParams paramLayoutParams3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Nes.b.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_Nes.c.setLayoutParams(this.b);
-    this.jdField_a_of_type_Nes.d.setLayoutParams(this.c);
+    this.jdField_a_of_type_Nho.b.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    this.jdField_a_of_type_Nho.c.setLayoutParams(this.b);
+    this.jdField_a_of_type_Nho.d.setLayoutParams(this.c);
   }
 }
 

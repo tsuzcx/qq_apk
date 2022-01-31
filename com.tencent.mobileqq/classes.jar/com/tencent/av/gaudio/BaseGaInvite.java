@@ -1,9 +1,11 @@
 package com.tencent.av.gaudio;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.av.VideoController;
@@ -12,12 +14,13 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Timer;
-import lga;
-import lnq;
-import lnr;
-import lns;
+import lfb;
+import lid;
+import lpt;
+import lpu;
+import lpv;
 import mqq.app.BaseActivity;
-import muc;
+import mww;
 
 public abstract class BaseGaInvite
   extends BaseActivity
@@ -31,8 +34,8 @@ public abstract class BaseGaInvite
   BaseGaInvite.GetGaFaceRunnable jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = null;
   public String a;
   Timer jdField_a_of_type_JavaUtilTimer = null;
-  lnr jdField_a_of_type_Lnr = new lnq(this);
-  lns jdField_a_of_type_Lns = new lns(this);
+  lpu jdField_a_of_type_Lpu = new lpt(this);
+  lpv jdField_a_of_type_Lpv = new lpv(this);
   public long[] a;
   public int b;
   public long b;
@@ -67,10 +70,10 @@ public abstract class BaseGaInvite
     String str = paramString1;
     if (paramTextView != null)
     {
-      float f = paramVideoAppInterface.getApp().getResources().getDimensionPixelSize(2131297234);
-      str = muc.a(paramVideoAppInterface.getApp(), paramString1, paramTextView, f);
+      float f = paramVideoAppInterface.getApp().getResources().getDimensionPixelSize(2131297253);
+      str = mww.a(paramVideoAppInterface.getApp(), paramString1, paramTextView, f);
     }
-    paramTextView = paramVideoAppInterface.getApp().getString(2131695820);
+    paramTextView = paramVideoAppInterface.getApp().getString(2131695981);
     int i = paramVideoAppInterface.a(paramInt, paramString2);
     paramInt = i;
     if (i == 0) {
@@ -86,6 +89,63 @@ public abstract class BaseGaInvite
     }
   }
   
+  public String a(int paramInt, long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    Context localContext = getApplicationContext();
+    Object localObject1 = lfb.a(paramInt, String.valueOf(paramLong), new int[0]);
+    localObject1 = lfb.a().c((String)localObject1);
+    int i = 0;
+    if (localObject1 != null) {
+      if (((lid)localObject1).ac != 4) {
+        break label161;
+      }
+    }
+    label161:
+    for (i = 1; i != 0; i = 0)
+    {
+      localObject2 = localContext.getString(2131696117);
+      localObject1 = paramString;
+      paramString = (String)localObject2;
+      if (QLog.isColorLevel()) {
+        QLog.i(this.jdField_b_of_type_JavaLangString, 2, "getGInviteWording, relationType[" + paramInt + "], groupId[" + paramInt + "], groupName[" + (String)localObject1 + "], isOnlyAudio[" + paramBoolean1 + "], fromMultiCall[" + paramBoolean2 + "], inviteHintStr[" + paramString + "]");
+      }
+      return paramString;
+    }
+    if (paramBoolean2)
+    {
+      f = localContext.getResources().getDimensionPixelSize(2131297665);
+      localObject2 = "";
+      localObject1 = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        localObject1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.jdField_a_of_type_Int, String.valueOf(this.jdField_a_of_type_Long), null);
+      }
+      paramString = (String)localObject2;
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        paramString = mww.a(localContext, (String)localObject1, this.jdField_a_of_type_AndroidWidgetTextView, f);
+      }
+      localObject2 = localContext.getResources();
+      if (paramBoolean1) {}
+      for (i = 2131696135;; i = 2131696137)
+      {
+        paramString = String.format(((Resources)localObject2).getString(i), new Object[] { paramString });
+        break;
+      }
+    }
+    localObject1 = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      localObject1 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.jdField_a_of_type_Int, String.valueOf(this.jdField_a_of_type_Long), null);
+    }
+    float f = localContext.getResources().getDimensionPixelSize(2131297038);
+    paramString = mww.a(localContext, (String)localObject1, this.jdField_a_of_type_AndroidWidgetTextView, f);
+    Object localObject2 = localContext.getResources();
+    if (paramBoolean1) {}
+    for (i = 2131696135;; i = 2131696137)
+    {
+      paramString = String.format(((Resources)localObject2).getString(i), new Object[] { paramString });
+      break;
+    }
+  }
+  
   protected void a()
   {
     if (this.jdField_a_of_type_JavaUtilTimer != null)
@@ -93,10 +153,10 @@ public abstract class BaseGaInvite
       this.jdField_a_of_type_JavaUtilTimer.cancel();
       this.jdField_a_of_type_JavaUtilTimer = null;
     }
-    if (this.jdField_a_of_type_Lns != null)
+    if (this.jdField_a_of_type_Lpv != null)
     {
-      this.jdField_a_of_type_Lns.removeMessages(0);
-      this.jdField_a_of_type_Lns = null;
+      this.jdField_a_of_type_Lpv.removeMessages(0);
+      this.jdField_a_of_type_Lpv = null;
     }
   }
   
@@ -123,7 +183,7 @@ public abstract class BaseGaInvite
       this.jdField_b_of_type_Long = paramIntent.getLongExtra("friendUin", 0L);
       this.jdField_b_of_type_Int = paramIntent.getIntExtra("relationType", this.jdField_b_of_type_Int);
       this.jdField_a_of_type_ArrayOfLong = paramIntent.getLongArrayExtra("memberList");
-      i = muc.c(this.jdField_b_of_type_Int);
+      i = mww.c(this.jdField_b_of_type_Int);
     } while (i == this.jdField_a_of_type_Int);
     QLog.w(this.jdField_b_of_type_JavaLangString, 1, "processIntent, mUinType与mRelationType不匹配，mRelationType[" + this.jdField_b_of_type_Int + "], uinTpye[" + i + "], mUinType[" + this.jdField_a_of_type_Int + "]");
   }
@@ -134,24 +194,24 @@ public abstract class BaseGaInvite
     if (this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable == null)
     {
       if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-        break label121;
+        break label123;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839081);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839162);
       if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
-        break label156;
+        break label160;
       }
       String str = Long.toString(this.jdField_b_of_type_Long);
       this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = new BaseGaInvite.GetGaFaceRunnable(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Lnr);
+      this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = new BaseGaInvite.GetGaFaceRunnable(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Lpu);
       this.jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable.a(paramString);
       return;
-      label121:
+      label123:
       QLog.w(this.jdField_b_of_type_JavaLangString, 1, "refreshUI[" + paramString + "], mHeadImage为空");
       break;
-      label156:
+      label160:
       QLog.w(this.jdField_b_of_type_JavaLangString, 1, "refreshUI[" + paramString + "], mCallersName为空");
     }
   }
@@ -168,7 +228,7 @@ public abstract class BaseGaInvite
       bool1 = bool2;
       if (this.jdField_a_of_type_ComTencentAvVideoController != null)
       {
-        if ((this.jdField_a_of_type_ComTencentAvVideoController.a().m()) || (this.jdField_a_of_type_ComTencentAvVideoController.a().n()))
+        if ((this.jdField_a_of_type_ComTencentAvVideoController.a().n()) || (this.jdField_a_of_type_ComTencentAvVideoController.a().o()))
         {
           if (QLog.isColorLevel()) {
             QLog.d(this.jdField_b_of_type_JavaLangString, 2, "initEnvParam closeSession");
@@ -236,7 +296,7 @@ public abstract class BaseGaInvite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.gaudio.BaseGaInvite
  * JD-Core Version:    0.7.0.1
  */

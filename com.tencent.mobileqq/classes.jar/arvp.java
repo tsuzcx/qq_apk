@@ -1,27 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.location.ui.LocationDialogUtil.11;
-import com.tencent.mobileqq.location.ui.LocationShareFragment;
 
-public class arvp
+class arvp
   implements DialogInterface.OnClickListener
 {
-  public arvp(LocationDialogUtil.11 param11) {}
+  arvp(arvo paramarvo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = arus.a((QQAppInterface)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppInterface());
-    paramDialogInterface.c(new arum(this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString));
-    paramDialogInterface.a(true);
-    paramDialogInterface.a(this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString);
-    LocationShareFragment.b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_JavaLangString, this.a.jdField_b_of_type_Int);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arvp
  * JD-Core Version:    0.7.0.1
  */

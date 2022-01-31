@@ -1,23 +1,25 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 public class abwp
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends AccountObserver
 {
-  public abwp(QQSettingMe paramQQSettingMe) {}
+  public abwp(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onGlobalLayout()
+  public void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, boolean paramBoolean3, long paramLong, boolean paramBoolean4)
   {
-    if (QQSettingMe.a(this.a)) {
-      QQSettingMe.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
+    AccountManageActivity.b(this.a);
+  }
+  
+  public void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
+  {
+    AccountManageActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwp
  * JD-Core Version:    0.7.0.1
  */

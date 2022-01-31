@@ -1,81 +1,57 @@
-import android.widget.Button;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.pendant.PendantItem;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.EffectToolbar;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Map;
+import android.graphics.drawable.Drawable;
 
 public class mdh
-  implements mgx
+  extends mdf
 {
-  public mdh(EffectToolbar paramEffectToolbar) {}
+  protected Drawable a;
+  protected String b;
+  protected int k = 0;
   
-  public void a(long paramLong)
+  public mdh(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
-    EffectSettingUi.a(this.a.mApp, paramLong);
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
   }
   
-  public void a(long paramLong, mhr parammhr)
+  public mdh(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2)
   {
-    EffectSettingUi.a(this.a.mApp, paramLong);
-    Object localObject1 = VideoController.a();
-    Object localObject2 = ((VideoController)localObject1).a(((AVActivity)this.a.mActivity.get()).getApplicationContext());
-    if (localObject2 != null)
-    {
-      if (AudioHelper.e()) {
-        QLog.w("EffectToolbar", 1, "onEffectClick, clearState, seq[" + paramLong + "], info[" + parammhr + "]");
-      }
-      ((lpt)localObject2).a(paramLong);
-    }
-    if (parammhr.jdField_a_of_type_JavaLangString.equals("0"))
-    {
-      EffectToolbar.access$000(this.a, paramLong, null);
-      this.a.mEarbackBtn.setVisibility(4);
-      this.a.mApp.a().a().U = 0;
-      this.a.mApp.a().A();
-    }
-    while (!parammhr.jdField_a_of_type_Boolean) {
-      return;
-    }
-    Object localObject3 = PtvTemplateManager.jdField_a_of_type_JavaLangString + parammhr.jdField_c_of_type_JavaLangString;
-    localObject2 = parammhr.jdField_a_of_type_JavaLangString;
-    boolean bool = this.a.isEffectBtnEnable();
-    if (QLog.isColorLevel()) {
-      QLog.w("EffectToolbar", 1, "onEffectClick, path[" + (String)localObject3 + "], bSuc[" + bool + "], seq[" + paramLong + "]");
-    }
-    EffectToolbar.access$000(this.a, paramLong, parammhr.jdField_a_of_type_JavaLangString);
-    axqq.b((String)localObject2);
-    localObject3 = ((VideoController)localObject1).a();
-    int i = ((lga)localObject3).M;
-    int j = ((lga)localObject3).E;
-    paramLong = ((VideoController)localObject1).f();
-    localObject1 = (PendantItem)this.a.mPtvTemplateInfoMap.get(localObject2);
-    QLog.i("EffectToolbar", 2, "onEffectClick voiceid : " + parammhr.jdField_c_of_type_Int);
-    this.a.mApp.a().a().U = parammhr.jdField_c_of_type_Int;
-    this.a.mApp.a().A();
-    if (parammhr.jdField_c_of_type_Int > 0)
-    {
-      this.a.mEarbackBtn.setVisibility(0);
-      EffectToolbar.access$100(this.a);
-    }
-    for (;;)
-    {
-      lim.b();
-      mbm.a(j, i, paramLong, (String)localObject2, ((PendantItem)localObject1).getCategory());
-      return;
-      this.a.mEarbackBtn.setVisibility(4);
-    }
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString1);
+    this.b = paramString2;
+    this.k = paramInt5;
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public Drawable a()
+  {
+    return this.a;
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    this.a = paramDrawable;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.k = paramInt;
+  }
+  
+  public int k()
+  {
+    return this.k;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mdh
  * JD-Core Version:    0.7.0.1
  */

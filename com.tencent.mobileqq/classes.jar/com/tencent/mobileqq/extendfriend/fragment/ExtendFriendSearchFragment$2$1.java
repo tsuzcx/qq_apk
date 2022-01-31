@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.extendfriend.fragment;
 
-import aoie;
-import aoiz;
+import aqai;
+import aqay;
 
 public class ExtendFriendSearchFragment$2$1
   implements Runnable
 {
-  public ExtendFriendSearchFragment$2$1(aoie paramaoie) {}
+  public ExtendFriendSearchFragment$2$1(aqai paramaqai) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ExtendFriendSearchFragment$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

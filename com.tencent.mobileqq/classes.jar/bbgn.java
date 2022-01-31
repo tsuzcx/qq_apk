@@ -1,35 +1,16 @@
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.2.1;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.2.2;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public class bbgn
-  implements ArkViewImplement.LoadCallback
+  implements bbgq
 {
-  bbgn(bbgl parambbgl) {}
+  public bbgn(TroopCreateLogicActivity paramTroopCreateLogicActivity, String paramString1, String paramString2, String paramString3) {}
   
-  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public void a(Bitmap paramBitmap)
   {
-    onLoadState(paramInt1);
-  }
-  
-  public void onLoadState(int paramInt)
-  {
-    WeakReference localWeakReference = new WeakReference(this.a);
-    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.1(this, localWeakReference, paramInt));
-    if (paramInt == 0) {}
-    do
-    {
-      return;
-      bbgl.a(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQCustomArkDialog", 2, new Object[] { "arkView init finish,load state = ", Integer.valueOf(paramInt), ";outsideShowDialog = ", Boolean.valueOf(bbgl.a(this.a)), ";alreadyShowDialog:", Boolean.valueOf(bbgl.b(this.a)) });
-      }
-    } while (!bbgl.a(this.a));
-    ThreadManager.getUIHandler().post(new QQCustomArkDialog.2.2(this));
+    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_Bevy);
+    WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateLogicActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, paramBitmap, this.b, this.c);
   }
 }
 

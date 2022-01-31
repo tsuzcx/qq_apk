@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
 
-public class wuh
-  implements View.OnClickListener
+public final class wuh
+  implements Parcelable.Creator<EditRecordVideoSource>
 {
-  public wuh(VideoPlayerView paramVideoPlayerView) {}
-  
-  public void onClick(View paramView)
+  public EditRecordVideoSource a(Parcel paramParcel)
   {
-    VideoPlayerView.b(this.a);
+    return new EditRecordVideoSource(paramParcel);
+  }
+  
+  public EditRecordVideoSource[] a(int paramInt)
+  {
+    return new EditRecordVideoSource[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wuh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,103 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloaderFirstPkgRp;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class aqzz
-  extends RecyclerView.OnScrollListener
 {
-  public aqzz(HotPicRecyclerView paramHotPicRecyclerView) {}
+  protected long a;
+  protected aqzx a;
+  protected final QQAppInterface a;
+  protected ExcitingTransferDownloadCompletedInfo a;
+  protected ExcitingTransferDownloaderFirstPkgRp a;
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public aqzz(QQAppInterface paramQQAppInterface)
   {
-    if (paramInt == 0)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  protected String a()
+  {
+    return "actGroupPDFileDownload";
+  }
+  
+  public void a(int paramInt, long paramLong1, String paramString, long paramLong2, long paramLong3)
+  {
+    this.jdField_a_of_type_Aqzx = new aqzx();
+    this.jdField_a_of_type_Aqzx.jdField_a_of_type_Long = paramInt;
+    this.jdField_a_of_type_Aqzx.jdField_b_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Aqzx.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Aqzx.d = paramLong2;
+    this.jdField_a_of_type_Aqzx.c = paramLong3;
+    this.jdField_a_of_type_Aqzx.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Aqzx.jdField_b_of_type_Int = 1;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
+  {
+    if (paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataTime > paramExcitingTransferDownloadCompletedInfo.m_uStartTime) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHttpFirstTime = (paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataTime - paramExcitingTransferDownloadCompletedInfo.m_uStartTime);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mHtpFirstDataSize = paramExcitingTransferDownloadCompletedInfo.m_uFirstRecvDataSize;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = paramExcitingTransferDownloadCompletedInfo;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_Aqzx == null) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo == null))
     {
-      AbstractGifImage.resumeAll();
-      arah.c();
-      this.a.b();
-      if (paramInt != 2) {
-        break label128;
-      }
-      this.a.jdField_a_of_type_Arbn.a(true);
+      QLog.e("ExtfGroupDownloadDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] GroupDownloadDataReport err. param err");
+      return;
+    }
+    HashMap localHashMap = new HashMap();
+    if (this.jdField_a_of_type_Aqzx != null) {
+      localHashMap.putAll(this.jdField_a_of_type_Aqzx.a());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo != null) {
+      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.getReportData());
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp != null) {
+      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.getReportData());
     }
     for (;;)
     {
-      if ((paramInt == 0) && (this.a.jdField_a_of_type_Int == 2))
-      {
-        ((StaggeredGridLayoutManager)this.a.getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.a.jdField_a_of_type_ArrayOfInt);
-        if ((this.a.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.a.jdField_a_of_type_Araa != null)) {
-          this.a.jdField_a_of_type_Araa.d();
-        }
-      }
-      this.a.jdField_a_of_type_Int = paramInt;
+      QLog.i("ExtfGroupDownloadDataReport<FileAssistant>", 1, "Id[" + this.jdField_a_of_type_Long + "] >>> GroupDownloadDataReport: act=" + a() + localHashMap.toString());
+      azmz.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), a(), paramBoolean, 0L, 0L, localHashMap, "");
+      this.jdField_a_of_type_Aqzx = null;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = null;
       return;
-      this.a.c();
-      AbstractGifImage.pauseAll();
-      arah.b();
-      break;
-      label128:
-      this.a.jdField_a_of_type_Arbn.a(false);
+      localHashMap.put("param_CSTime", String.valueOf(0));
+      localHashMap.put("param_HttpFirstTime", String.valueOf(0));
+      localHashMap.put("param_HttpFirstDataSize", String.valueOf(0));
     }
   }
   
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  public void b(long paramLong)
   {
-    if (paramInt2 > 0) {
-      this.a.jdField_a_of_type_Arbn.a(paramInt2);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp == null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp = new ExcitingTransferDownloaderFirstPkgRp();
     }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mCSStartTime = paramLong;
+  }
+  
+  public void c(long paramLong)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp == null) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.mCSEndTime = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzz
  * JD-Core Version:    0.7.0.1
  */

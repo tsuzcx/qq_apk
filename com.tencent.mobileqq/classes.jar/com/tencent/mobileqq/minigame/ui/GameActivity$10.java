@@ -33,11 +33,11 @@ class GameActivity$10
     for (String str = "show";; str = "hide")
     {
       QLog.d("[minigame] GameActivity", 1, str + " monitor view!");
-      if (GameActivity.access$1300(this.this$0) != paramBoolean) {
-        GameActivity.access$1302(this.this$0, this.this$0.clickMonitorPanel());
+      if (GameActivity.access$1500(this.this$0) != paramBoolean) {
+        GameActivity.access$1502(this.this$0, this.this$0.clickMonitorPanel());
       }
-      if (GameActivity.access$1400(this.this$0) == null) {
-        GameActivity.access$1500(this.this$0);
+      if (GameActivity.access$1600(this.this$0) == null) {
+        GameActivity.access$1700(this.this$0);
       }
       return;
     }
@@ -45,7 +45,7 @@ class GameActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.10
  * JD-Core Version:    0.7.0.1
  */

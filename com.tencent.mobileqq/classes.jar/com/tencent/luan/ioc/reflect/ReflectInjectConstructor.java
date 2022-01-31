@@ -1,24 +1,21 @@
 package com.tencent.luan.ioc.reflect;
 
-import com.tencent.luan.ioc.InjectConstructor;
+import com.tencent.luan.ioc.AbstractInjectConstructor;
+import com.tencent.luan.ioc.InjectChecker;
 import com.tencent.luan.ioc.InjectException;
 import com.tencent.luan.ioc.InjectParam;
 import com.tencent.luan.ioc.Injector;
 import java.lang.reflect.Constructor;
 
 class ReflectInjectConstructor<T>
-  implements InjectConstructor<T>
+  extends AbstractInjectConstructor<T>
 {
   private final Constructor<T> constructor;
   private final InjectParam param;
   
-  ReflectInjectConstructor(Constructor<T> paramConstructor)
-  {
-    this(paramConstructor, null);
-  }
-  
   ReflectInjectConstructor(Constructor<T> paramConstructor, InjectParam paramInjectParam)
   {
+    super(paramConstructor.getDeclaringClass(), InjectChecker.checkAndGetScope(paramConstructor.getDeclaringClass()));
     paramConstructor.setAccessible(true);
     this.constructor = paramConstructor;
     this.param = paramInjectParam;
@@ -50,7 +47,7 @@ class ReflectInjectConstructor<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.luan.ioc.reflect.ReflectInjectConstructor
  * JD-Core Version:    0.7.0.1
  */

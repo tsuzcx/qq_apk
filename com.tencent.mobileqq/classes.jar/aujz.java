@@ -1,19 +1,17 @@
-public final class aujz
+import android.view.MotionEvent;
+import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+
+public abstract interface aujz
 {
-  public int a;
-  public long a;
-  public String a;
+  public abstract void a(MultiCardRootLayout paramMultiCardRootLayout);
   
-  public aujz(int paramInt, long paramLong, String paramString)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract boolean a(int paramInt);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aujz
  * JD-Core Version:    0.7.0.1
  */

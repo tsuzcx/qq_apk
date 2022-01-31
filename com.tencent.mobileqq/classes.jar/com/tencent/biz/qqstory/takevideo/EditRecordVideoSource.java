@@ -5,12 +5,12 @@ import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import java.io.File;
-import vfp;
+import wuh;
 
 public class EditRecordVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator<EditRecordVideoSource> CREATOR = new vfp();
+  public static final Parcelable.Creator<EditRecordVideoSource> CREATOR = new wuh();
   public final float a;
   public final int a;
   public final long a;
@@ -124,7 +124,7 @@ public class EditRecordVideoSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditRecordVideoSource
  * JD-Core Version:    0.7.0.1
  */

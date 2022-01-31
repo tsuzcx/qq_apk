@@ -1,63 +1,41 @@
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Rect;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.aditem.GdtHandler;
-import com.tencent.gdtad.aditem.GdtHandler.Params;
-import com.tencent.gdtad.views.video.GdtVideoData;
-import com.tencent.gdtad.views.videoimax.GdtImaxData;
-import com.tencent.gdtad.views.videoimax.GdtMotiveVideoMockQzoneImaxFeedsFragment;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DestInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo;
-import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.VideoInfo;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 
 public class zbs
-  implements View.OnClickListener
+  extends WebViewPlugin
 {
-  public zbs(GdtMotiveVideoMockQzoneImaxFeedsFragment paramGdtMotiveVideoMockQzoneImaxFeedsFragment) {}
-  
-  public void onClick(View paramView)
+  public zbs()
   {
-    GdtHandler.Params localParams = new GdtHandler.Params();
-    localParams.c = 2;
-    localParams.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this.a.getActivity());
-    Object localObject = GdtMotiveVideoMockQzoneImaxFeedsFragment.a(this.a).getAd();
-    ((GdtAd)localObject).info.product_type.set(1000);
-    ((GdtAd)localObject).info.dest_info.dest_type.set(4);
-    ((GdtAd)localObject).info.display_info.video_info2.video_url.set(GdtMotiveVideoMockQzoneImaxFeedsFragment.a(this.a).getVideoData().getUrl());
-    localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = ((GdtAd)localObject);
-    localParams.e = true;
-    localParams.jdField_a_of_type_Boolean = true;
-    localObject = new int[2];
-    paramView.getLocationInWindow((int[])localObject);
-    yxp.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onClick() getLocationInWindow = [" + Arrays.toString((int[])localObject) + "]");
-    paramView.getLocationOnScreen((int[])localObject);
-    yxp.a("GdtMotiveVideoMockQzoneImaxFeedsFragment", "onClick() getLocationOnScreen = [" + Arrays.toString((int[])localObject) + "]");
-    localParams.jdField_a_of_type_AndroidGraphicsRect = new Rect(localObject[0], localObject[1], localObject[0] + paramView.getWidth(), localObject[1] + paramView.getHeight());
-    paramView = this.a.getActivity().getIntent();
-    if (TextUtils.isEmpty(paramView.getStringExtra("big_brother_ref_source_key"))) {}
-    for (paramView = paramView.getStringExtra("big_brother_source_key");; paramView = paramView.getStringExtra("big_brother_ref_source_key"))
-    {
-      localParams.jdField_a_of_type_AndroidOsBundle = new Bundle();
-      localParams.jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramView);
-      localParams.f = true;
-      GdtHandler.a(localParams);
-      return;
+    this.mPluginNameSpace = "troop_member_level_JS_API";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"troop_member_level_JS_API".equals(paramString2)) {
+      return false;
     }
+    if (("setTitleBar".equals(paramString3)) && (paramVarArgs.length == 3))
+    {
+      paramString2 = (beey)super.getBrowserComponent(2);
+      if (paramString2 != null)
+      {
+        paramString1 = paramVarArgs[0];
+        paramJsBridgeListener = paramString1;
+        if ("RETURN".equals(paramString1)) {
+          paramJsBridgeListener = this.mRuntime.a().getIntent().getStringExtra("leftViewText");
+        }
+        paramString2.a.a(paramJsBridgeListener, paramVarArgs[1], paramVarArgs[2]);
+      }
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     zbs
  * JD-Core Version:    0.7.0.1
  */

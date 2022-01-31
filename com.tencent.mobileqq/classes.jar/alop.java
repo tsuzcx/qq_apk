@@ -1,40 +1,30 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.1;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.1.2;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import java.lang.ref.WeakReference;
 
 public class alop
-  extends akuo
+  implements Handler.Callback
 {
-  alop(aloo paramaloo, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  private WeakReference<FrameHelperActivity> a;
+  
+  public alop(FrameHelperActivity paramFrameHelperActivity)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.a = new WeakReference(paramFrameHelperActivity);
   }
   
-  public void onConsecutiveFailure(int paramInt1, int paramInt2)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onConsecutiveFailure errCode=" + paramInt1 + ", failCount=" + paramInt2);
+    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
+    if (localFrameHelperActivity != null) {
+      localFrameHelperActivity.a(paramMessage);
     }
-    if (paramInt2 < 3) {
-      return;
-    }
-    ArkAppCenter.a().post(aloo.a(this.a), new ArkAppEventObserverManager.1.2(this));
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onLocationFinish errCode=" + paramInt);
-    }
-    ArkAppCenter.a().post(aloo.a(this.a), new ArkAppEventObserverManager.1.1(this, paramSosoLbsInfo, paramInt));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alop
  * JD-Core Version:    0.7.0.1
  */

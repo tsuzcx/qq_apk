@@ -1,36 +1,50 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class adih
-  implements aknt
+public class adih
+  extends BroadcastReceiver
 {
-  adih(adig paramadig) {}
+  public adih(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void a(boolean paramBoolean, List<aewf> paramList)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetIceBreakHotPic, success: ").append(paramBoolean).append(" hotPiceList size: ");
-    int i;
-    if (paramList == null)
+    if (paramIntent == null) {}
+    do
     {
-      i = 0;
-      QLog.i("IceBreak.HotPic", 1, i);
-      if (paramBoolean) {
-        break label59;
+      do
+      {
+        return;
+        localObject = paramIntent.getAction();
+      } while ((TextUtils.isEmpty((CharSequence)localObject)) || (!TextUtils.equals((CharSequence)localObject, "mqq.intent.action.DEVLOCK_ROAM")));
+      if (paramContext != null) {
+        paramContext.unregisterReceiver(this);
       }
-    }
-    label59:
-    while (this.a.a == null)
-    {
-      return;
-      i = paramList.size();
-      break;
-    }
-    this.a.a.a(paramList);
+      Object localObject = apwo.a();
+      if (paramIntent.getIntExtra("guardphone_state", apwo.d) == apwo.c)
+      {
+        paramIntent = paramIntent.getStringExtra("guardphone_mask");
+        paramContext = paramIntent;
+        if (paramIntent == null) {
+          paramContext = "";
+        }
+        ((apwo)localObject).a(this.a, paramContext);
+        return;
+      }
+      this.a.jdField_a_of_type_Alud.a = true;
+      paramContext = (alxt)this.a.app.a(34);
+    } while (paramContext == null);
+    this.a.app.addObserver(this.a.jdField_a_of_type_Alxu);
+    PhoneUnityBindInfoActivity.a(this.a, this.a.c, 2, 1);
+    paramContext.a(4, 31, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adih
  * JD-Core Version:    0.7.0.1
  */

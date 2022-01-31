@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.hiboom;
 
-import aqxc;
-import aqxd;
+import asnq;
+import asnr;
 import com.Vas.ColorFont.FreeTypeLib;
 import com.tencent.qphone.base.util.QLog;
 import g;
@@ -22,7 +22,7 @@ class HiBoomFontDrawer$1$1
     }
     if (this.a.this$0.c == -1)
     {
-      String str = this.a.this$0.jdField_a_of_type_Aqxc.a() + this.a.this$0.jdField_b_of_type_Int + File.separator + this.a.this$0.jdField_b_of_type_Int + ".fz4";
+      String str = this.a.this$0.jdField_a_of_type_Asnq.a() + this.a.this$0.jdField_b_of_type_Int + File.separator + this.a.this$0.jdField_b_of_type_Int + ".fz4";
       this.a.this$0.c = g.a().a(this.a.this$0.jdField_b_of_type_Int, str);
       if (QLog.isColorLevel()) {
         QLog.d("HiBoomFont.FontDrawer", 2, "initColorFont: fontid=" + this.a.this$0.jdField_b_of_type_Int + " result=" + this.a.this$0.c);
@@ -30,14 +30,14 @@ class HiBoomFontDrawer$1$1
       this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
       this.a.this$0.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       if (this.a.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        aqxd.a(this.a.this$0);
+        asnr.a(this.a.this$0);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomFontDrawer.1.1
  * JD-Core Version:    0.7.0.1
  */

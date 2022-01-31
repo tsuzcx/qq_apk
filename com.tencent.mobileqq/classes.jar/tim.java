@@ -1,65 +1,46 @@
+import android.app.Activity;
+import android.content.Context;
 import android.text.TextUtils;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
-public class tim
-  extends tin
+class tim
+  implements tmc
 {
-  public tim(ViewGroup paramViewGroup)
+  tim(tij paramtij, Context paramContext, int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    super(paramViewGroup, 2131561301);
+    tlq.a(this.jdField_a_of_type_AndroidContentContext, "biz_src_jc_gzh_weishi", paramString, 1, tij.a(this.jdField_a_of_type_Tij), this.jdField_a_of_type_Int);
   }
   
-  private void c(tff paramtff)
+  public void b(String paramString, int paramInt)
   {
-    paramtff.d = false;
-    tfy.a(QQStoryContext.a()).a(paramtff);
-    tgn localtgn = new tgn();
-    localtgn.jdField_b_of_type_JavaLangString = paramtff.jdField_a_of_type_JavaLangString;
-    localtgn.c = paramtff.jdField_a_of_type_Int;
-    localtgn.d = 4;
-    localtgn.jdField_b_of_type_Long = paramtff.e;
-    syo.a().a(localtgn, null);
-  }
-  
-  public void a(tff paramtff)
-  {
-    super.a(paramtff);
-    if (!TextUtils.isEmpty(paramtff.g)) {
-      c(paramtff.g);
-    }
-    if (!TextUtils.isEmpty(paramtff.j))
-    {
-      localStoryMsgNodeFrameLayout = this.a;
-      if (TextUtils.isEmpty(paramtff.c)) {}
-      for (str = ajya.a(2131706954);; str = paramtff.c)
-      {
-        localStoryMsgNodeFrameLayout.setNodeName(str, paramtff.j);
-        if (paramtff.d) {
-          c(paramtff);
-        }
-        return;
-      }
-    }
-    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout = this.a;
-    if (TextUtils.isEmpty(paramtff.c)) {}
-    for (String str = ajya.a(2131706953);; str = paramtff.c)
-    {
-      localStoryMsgNodeFrameLayout.setNodeName(str, 0);
-      break;
+    if (!TextUtils.isEmpty(paramString)) {
+      tch.a(this.jdField_a_of_type_AndroidContentContext, paramString);
     }
   }
   
-  protected void b(tff paramtff)
+  public void c(String paramString, int paramInt)
   {
-    this.a.setDisplayState(6);
-    this.a.a(paramtff);
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = 1;
+    localWSDownloadParams.mLinkStrategyType = tij.a(this.jdField_a_of_type_Tij);
+    localWSDownloadParams.mEventId = 401;
+    localWSDownloadParams.mTestId = tju.b();
+    localWSDownloadParams.mScheme = paramString;
+    tfa.a((Activity)this.jdField_a_of_type_AndroidContentContext, localWSDownloadParams, false);
+  }
+  
+  public void d(String paramString, int paramInt)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      tij.a(this.jdField_a_of_type_Tij, this.jdField_a_of_type_AndroidContentContext, paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tim
  * JD-Core Version:    0.7.0.1
  */

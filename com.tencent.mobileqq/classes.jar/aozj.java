@@ -1,48 +1,138 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import com.tencent.qphone.base.util.QLog;
-
-class aozj
-  extends aoun
+public class aozj
 {
-  aozj(aozi paramaozi) {}
+  public static final int a;
+  private static aoyf jdField_a_of_type_Aoyf;
+  private static final StringBuilder jdField_a_of_type_JavaLangStringBuilder;
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileManagerRSCenter<FileAssistant>", 2, "recive TransferEnd, rmove task[" + String.valueOf(paramLong2) + "]!");
-    }
-    bigj.a(null, paramInt2);
-    paramString1 = this.a.a.a().a(paramLong2);
-    Bundle localBundle;
-    if ((paramString1 != null) && (paramString1.nOpType == 50))
+    if (aowq.a().a().a()) {}
+    for (int i = 4;; i = 3)
     {
-      localBundle = new Bundle();
-      localBundle.putString("taskId", paramString1.miniAppDownloadId);
-      if (!paramBoolean) {
-        break label163;
-      }
-    }
-    label163:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      localBundle.putInt("retCode", paramInt1);
-      paramString1 = paramString2;
-      if (paramString2 == null) {
-        paramString1 = "";
-      }
-      localBundle.putString("retMsg", paramString1);
-      QIPCServerHelper.getInstance().callClient(apee.a, "Module_WeiyunDownloadClient", "WeiyunDownloadClientIPC_Action__Complete", localBundle, null);
-      this.a.a(paramLong2);
+      jdField_a_of_type_Int = i;
+      jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
       return;
+    }
+  }
+  
+  public static void a(aoyf paramaoyf)
+  {
+    jdField_a_of_type_Aoyf = paramaoyf;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    if ((jdField_a_of_type_Int >= 5) && (jdField_a_of_type_Aoyf != null)) {
+      jdField_a_of_type_Aoyf.a(paramString1, paramString2);
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_Aoyf != null)) {
+      jdField_a_of_type_Aoyf.a(paramString1, paramString2, paramThrowable);
+    }
+  }
+  
+  public static void a(String paramString, Object... paramVarArgs)
+  {
+    int i = 0;
+    if ((jdField_a_of_type_Int >= 5) && (jdField_a_of_type_Aoyf != null))
+    {
+      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      int j = paramVarArgs.length;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
+        i += 1;
+      }
+      jdField_a_of_type_Aoyf.a(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
+    }
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    if ((jdField_a_of_type_Int >= 4) && (jdField_a_of_type_Aoyf != null)) {
+      jdField_a_of_type_Aoyf.b(paramString1, paramString2);
+    }
+  }
+  
+  public static void b(String paramString, Object... paramVarArgs)
+  {
+    int i = 0;
+    if ((jdField_a_of_type_Int >= 4) && (jdField_a_of_type_Aoyf != null))
+    {
+      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      int j = paramVarArgs.length;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
+        i += 1;
+      }
+      jdField_a_of_type_Aoyf.b(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
+    }
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    if ((jdField_a_of_type_Int >= 3) && (jdField_a_of_type_Aoyf != null)) {
+      jdField_a_of_type_Aoyf.c(paramString1, paramString2);
+    }
+  }
+  
+  public static void c(String paramString, Object... paramVarArgs)
+  {
+    int i = 0;
+    if ((jdField_a_of_type_Int >= 3) && (jdField_a_of_type_Aoyf != null))
+    {
+      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      int j = paramVarArgs.length;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
+        i += 1;
+      }
+      jdField_a_of_type_Aoyf.c(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
+    }
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    if ((jdField_a_of_type_Int >= 2) && (jdField_a_of_type_Aoyf != null)) {
+      jdField_a_of_type_Aoyf.d(paramString1, paramString2);
+    }
+  }
+  
+  public static void d(String paramString, Object... paramVarArgs)
+  {
+    int i = 0;
+    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_Aoyf != null))
+    {
+      jdField_a_of_type_JavaLangStringBuilder.setLength(0);
+      int j = paramVarArgs.length;
+      while (i < j)
+      {
+        Object localObject = paramVarArgs[i];
+        jdField_a_of_type_JavaLangStringBuilder.append(localObject);
+        i += 1;
+      }
+      jdField_a_of_type_Aoyf.e(paramString, jdField_a_of_type_JavaLangStringBuilder.toString());
+    }
+  }
+  
+  public static void e(String paramString1, String paramString2)
+  {
+    if ((jdField_a_of_type_Int >= 1) && (jdField_a_of_type_Aoyf != null)) {
+      jdField_a_of_type_Aoyf.e(paramString1, paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aozj
  * JD-Core Version:    0.7.0.1
  */

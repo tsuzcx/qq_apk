@@ -1,54 +1,27 @@
-import MQQ.PayRuleCfg;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
 
 public class abwf
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public abwf(QQSettingMe paramQQSettingMe, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abwf(AccountManageActivity paramAccountManageActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.j();
-      return;
-    case 1: 
-      QQSettingMe.a(this.a);
-      return;
-    case 2: 
-      this.a.u();
-      return;
-    }
-    int i = ((Bundle)paramMessage.obj).getInt("type");
-    QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess " + i);
-    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).payHide == 1))
-    {
-      QQSettingMe.a(this.a).enable = 0;
-      QLog.e("QQSettingRedesign", 1, "VipInfoHandler paySuccess clear bubble");
-      akjn.a(this.a.a.c(), QQSettingMe.a(this.a));
-      sendEmptyMessage(2);
-    }
-    bbxj.a(this.a.a, "last_pull_pay_rule", 0L);
-    paramMessage = ((TicketManager)this.a.a.getManager(2)).getSkey(this.a.a.getCurrentAccountUin());
-    ((akjn)this.a.a.a(27)).a(paramMessage, this.a.a.c());
+    paramDialogInterface = new Intent();
+    paramDialogInterface.setClass(this.a, SubAccountBindActivity.class);
+    paramDialogInterface.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+    this.a.startActivity(paramDialogInterface);
+    azmj.b(this.a.app, "CliOper", "", "", "0X80040A6", "0X80040A6", 0, 0, "", "", "", "");
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abwf
  * JD-Core Version:    0.7.0.1
  */

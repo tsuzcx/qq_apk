@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import auko;
-import aumc;
-import bahv;
+import awbv;
+import awdj;
+import bcgh;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -15,7 +15,7 @@ import tencent.im.group.group_label.GroupLabel.Label;
 import tencent.im.oidb.cmd0x8b4.GroupInfo;
 
 public class ShowExternalTroop
-  extends auko
+  extends awbv
 {
   public long addedTimestamp;
   public List<GroupLabel.Label> labelList;
@@ -23,7 +23,7 @@ public class ShowExternalTroop
   public String troopDesRich;
   public String troopDesText;
   public String troopName;
-  @aumc
+  @awdj
   public String troopUin;
   
   public ShowExternalTroop() {}
@@ -39,7 +39,7 @@ public class ShowExternalTroop
       this.troopDesRich = paramGroupInfo.bytes_rich_intro.get().toStringUtf8();
       this.labelList = paramGroupInfo.rpt_group_label.get();
       if (TextUtils.isEmpty(paramGroupInfo.str_face_url.get())) {
-        this.strFaceUrl = bahv.a(bahv.a(null, this.troopUin, 0));
+        this.strFaceUrl = bcgh.a(bcgh.a(null, this.troopUin, 0));
       }
     }
     else
@@ -58,13 +58,13 @@ public class ShowExternalTroop
     localShowExternalTroop.troopUin = paramString1;
     localShowExternalTroop.troopName = paramString2;
     localShowExternalTroop.addedTimestamp = paramLong;
-    localShowExternalTroop.strFaceUrl = bahv.a(bahv.a(null, paramString1, 0));
+    localShowExternalTroop.strFaceUrl = bcgh.a(bcgh.a(null, paramString1, 0));
     return localShowExternalTroop;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.ShowExternalTroop
  * JD-Core Version:    0.7.0.1
  */

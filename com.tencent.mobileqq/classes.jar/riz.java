@@ -1,25 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 
-public class riz
-  implements rmg
+class riz
+  extends bhnr
 {
-  public riz(FastWebActivity paramFastWebActivity) {}
+  riz(riw paramriw, AlphaAnimation paramAlphaAnimation) {}
   
-  public void a(rmh paramrmh)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ArticleInfo localArticleInfo = paramrmh.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    int i = FastWebActivity.c(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.i(FastWebActivity.a(this.a), 2, "articleInfo" + localArticleInfo);
-    }
-    rno.a(localArticleInfo, FastWebActivity.d(this.a), i, paramrmh.jdField_a_of_type_Boolean, this.a.b, FastWebActivity.e(this.a));
+    this.jdField_a_of_type_Riw.a.s.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation);
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     riz
  * JD-Core Version:    0.7.0.1
  */

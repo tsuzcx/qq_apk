@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.settings;
 
-import actj;
-import ajya;
+import aekt;
+import alpo;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -11,16 +11,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import bbfj;
-import bcqi;
-import bcql;
+import bdee;
+import beps;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import ssf;
-import sss;
-import sst;
-import ssv;
-import ujt;
+import com.tencent.mobileqq.widget.QQToast;
+import ugx;
+import uhk;
+import uhl;
+import uhn;
+import vyl;
 
 public class QQStoryBasicSettingsActivity
   extends IphoneTitleBarActivity
@@ -29,10 +29,10 @@ public class QQStoryBasicSettingsActivity
   public int a;
   View jdField_a_of_type_AndroidViewView;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public bcqi a;
-  public sss a;
-  public sst a;
-  ssv jdField_a_of_type_Ssv = new ujt(this);
+  public beps a;
+  public uhk a;
+  public uhl a;
+  uhn jdField_a_of_type_Uhn = new vyl(this);
   View[] jdField_a_of_type_ArrayOfAndroidViewView = new View[3];
   public int b = this.jdField_a_of_type_Int;
   
@@ -57,12 +57,12 @@ public class QQStoryBasicSettingsActivity
   
   protected View a(int paramInt, String paramString)
   {
-    View localView = View.inflate(this, 2131561161, null);
-    ((TextView)localView.findViewById(2131377350)).setText(paramString);
-    ((TextView)localView.findViewById(2131368086)).setText("");
-    paramString = (ImageView)localView.findViewById(2131362791);
+    View localView = View.inflate(this, 2131561349, null);
+    ((TextView)localView.findViewById(2131377884)).setText(paramString);
+    ((TextView)localView.findViewById(2131368224)).setText("");
+    paramString = (ImageView)localView.findViewById(2131362823);
     paramString.setVisibility(4);
-    paramString.setBackgroundResource(2130839025);
+    paramString.setBackgroundResource(2130839106);
     localView.setTag(Integer.valueOf(paramInt));
     localView.setOnClickListener(this);
     return localView;
@@ -72,34 +72,34 @@ public class QQStoryBasicSettingsActivity
   {
     Object localObject = new LinearLayout(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    ((LinearLayout)localObject).setBackgroundResource(2130838514);
+    ((LinearLayout)localObject).setBackgroundResource(2130838591);
     ((LinearLayout)localObject).setLayoutParams(localLayoutParams);
     ((LinearLayout)localObject).setOrientation(1);
-    ((LinearLayout)localObject).setPadding(0, actj.a(20.0F, getResources()), 0, 0);
+    ((LinearLayout)localObject).setPadding(0, aekt.a(20.0F, getResources()), 0, 0);
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject);
     localObject = new TextView(this);
-    ((TextView)localObject).setText(ssf.a + ajya.a(2131710813));
-    ((TextView)localObject).setPadding(getResources().getDimensionPixelSize(2131298255), 0, getResources().getDimensionPixelSize(2131298255), getResources().getDimensionPixelSize(2131298252));
+    ((TextView)localObject).setText(ugx.a + alpo.a(2131711185));
+    ((TextView)localObject).setPadding(getResources().getDimensionPixelSize(2131298280), 0, getResources().getDimensionPixelSize(2131298280), getResources().getDimensionPixelSize(2131298277));
     ((TextView)localObject).setTextSize(14.0F);
-    ((TextView)localObject).setTextColor(getResources().getColor(2131165479));
+    ((TextView)localObject).setTextColor(getResources().getColor(2131165515));
     this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
     localObject = a(0, "移动流量和WiFi");
     this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
     this.jdField_a_of_type_ArrayOfAndroidViewView[0] = localObject;
-    ((View)localObject).setBackgroundResource(2130839185);
+    ((View)localObject).setBackgroundResource(2130839269);
     this.jdField_a_of_type_AndroidViewView = ((View)localObject);
     localObject = a(1, "仅WiFi");
     this.jdField_a_of_type_ArrayOfAndroidViewView[1] = localObject;
     this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
-    ((View)localObject).setBackgroundResource(2130839179);
+    ((View)localObject).setBackgroundResource(2130839263);
     this.jdField_a_of_type_AndroidViewView = ((View)localObject);
-    localObject = a(2, ajya.a(2131710811));
+    localObject = a(2, alpo.a(2131711183));
     this.jdField_a_of_type_ArrayOfAndroidViewView[2] = localObject;
     this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
-    ((View)localObject).setBackgroundResource(2130839176);
+    ((View)localObject).setBackgroundResource(2130839260);
     this.jdField_a_of_type_AndroidViewView = ((View)localObject);
     super.setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_Bcqi = new bcqi(this, 2131561032);
+    this.jdField_a_of_type_Beps = new beps(this, 2131561218);
   }
   
   public void a(int paramInt)
@@ -108,19 +108,19 @@ public class QQStoryBasicSettingsActivity
     if (i < this.jdField_a_of_type_ArrayOfAndroidViewView.length)
     {
       View localView = this.jdField_a_of_type_ArrayOfAndroidViewView[i];
-      ImageView localImageView = (ImageView)localView.findViewById(2131362791);
-      TextView localTextView = (TextView)localView.findViewById(2131377350);
+      ImageView localImageView = (ImageView)localView.findViewById(2131362823);
+      TextView localTextView = (TextView)localView.findViewById(2131377884);
       if (i != paramInt)
       {
         localImageView.setVisibility(4);
-        localView.setContentDescription(localTextView.getText() + ajya.a(2131710809));
+        localView.setContentDescription(localTextView.getText() + alpo.a(2131711181));
       }
       for (;;)
       {
         i += 1;
         break;
         localImageView.setVisibility(0);
-        localView.setContentDescription(localTextView.getText() + ajya.a(2131710814));
+        localView.setContentDescription(localTextView.getText() + alpo.a(2131711186));
       }
     }
     this.jdField_a_of_type_Int = paramInt;
@@ -143,37 +143,37 @@ public class QQStoryBasicSettingsActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Sst = ((sst)this.app.getManager(181));
-    this.jdField_a_of_type_Sss = ((sss)this.app.a(98));
+    this.jdField_a_of_type_Uhl = ((uhl)this.app.getManager(181));
+    this.jdField_a_of_type_Uhk = ((uhk)this.app.a(98));
     a();
-    int i = a(this.jdField_a_of_type_Sst.a());
+    int i = a(this.jdField_a_of_type_Uhl.a());
     this.b = i;
     this.jdField_a_of_type_Int = i;
     a(this.jdField_a_of_type_Int);
-    super.setTitle(ssf.a + ajya.a(2131710818));
-    this.app.addObserver(this.jdField_a_of_type_Ssv);
-    if (!bbfj.g(this))
+    super.setTitle(ugx.a + alpo.a(2131711190));
+    this.app.addObserver(this.jdField_a_of_type_Uhn);
+    if (!bdee.g(this))
     {
-      bcql.a(this, 1, 2131692321, 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, 2131692397, 0).b(getTitleBarHeight());
       super.startTitleProgress();
       return true;
     }
-    this.jdField_a_of_type_Sss.d();
+    this.jdField_a_of_type_Uhk.d();
     super.startTitleProgress();
     return true;
   }
   
   public void doOnDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Ssv);
+    this.app.removeObserver(this.jdField_a_of_type_Uhn);
     super.doOnDestroy();
   }
   
   public void onClick(View paramView)
   {
-    if (!bbfj.g(this))
+    if (!bdee.g(this))
     {
-      bcql.a(this, 1, 2131692321, 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, 2131692397, 0).b(getTitleBarHeight());
       return;
     }
     int i = ((Integer)paramView.getTag()).intValue();
@@ -183,20 +183,20 @@ public class QQStoryBasicSettingsActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_Bcqi.b(0, 2131718679, 0);
+      this.jdField_a_of_type_Beps.b(0, 2131719152, 0);
       a(i);
       return;
-      this.jdField_a_of_type_Sss.d(3);
+      this.jdField_a_of_type_Uhk.d(3);
       continue;
-      this.jdField_a_of_type_Sss.d(1);
+      this.jdField_a_of_type_Uhk.d(1);
       continue;
-      this.jdField_a_of_type_Sss.d(2);
+      this.jdField_a_of_type_Uhk.d(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity
  * JD-Core Version:    0.7.0.1
  */

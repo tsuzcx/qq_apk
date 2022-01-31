@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import wkm;
-import wun;
+import xzf;
+import yjf;
 
 public class SubscribeVideoSharedCardView
   extends SubscribeMultiPicSharedCardView
@@ -37,25 +37,25 @@ public class SubscribeVideoSharedCardView
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364021));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131364082));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
-  public void a(wkm paramwkm, Bitmap paramBitmap, wun paramwun)
+  public void a(xzf paramxzf, Bitmap paramBitmap, yjf paramyjf)
   {
-    super.a(paramwkm, paramBitmap, paramwun);
-    paramwkm = paramwkm.a();
-    a(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramwkm.cover.width.get(), paramwkm.cover.height.get());
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramwkm.poster.icon.get());
+    super.a(paramxzf, paramBitmap, paramyjf);
+    paramxzf = paramxzf.a();
+    a(this.jdField_a_of_type_AndroidWidgetFrameLayout, paramxzf.cover.width.get(), paramxzf.cover.height.get());
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramxzf.poster.icon.get());
     this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramwkm.cover.url.get());
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramxzf.cover.url.get());
     this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView);
-    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramwun);
+    a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, paramyjf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeVideoSharedCardView
  * JD-Core Version:    0.7.0.1
  */

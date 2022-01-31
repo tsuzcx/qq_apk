@@ -1,43 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment;
+import java.util.HashMap;
 
-public class uiy
-  extends BroadcastReceiver
+class uiy
+  implements bapw
 {
-  public uiy(StoryPlayerWebFragment paramStoryPlayerWebFragment) {}
+  uiy(uiw paramuiw) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(baqv parambaqv, baqw parambaqw)
   {
-    ved.a("StoryPlayerWebFragment", "onReceive() Action: %s", paramIntent.getAction());
-    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
-    {
-      paramContext = paramIntent.getStringExtra("event");
-      ved.a("StoryPlayerWebFragment", "onReceive() Event: %s", paramContext);
-      if (!"closeMeEvent".equals(paramContext)) {
-        break label70;
-      }
-      if (this.a.a != null) {
-        this.a.a.a();
-      }
-    }
-    label70:
-    do
-    {
+    if ((parambaqv == null) || (parambaqw == null)) {}
+    while (!(parambaqv instanceof baps)) {
       return;
-      if (!"readyEvent".equals(paramContext)) {
-        break;
-      }
-    } while (this.a.a == null);
-    this.a.a.b();
-    return;
-    bcql.a(this.a.getActivity(), 1, "unknown event: " + paramContext, 1).a();
+    }
+    baps localbaps = (baps)parambaqv;
+    localbaps.jdField_a_of_type_Long += parambaqw.c;
+    parambaqw.c = 0L;
+    parambaqw = "bytes=" + localbaps.jdField_a_of_type_Long + "-";
+    localbaps.jdField_a_of_type_JavaUtilHashMap.put("Range", parambaqw);
+    String str1 = localbaps.jdField_a_of_type_JavaLangString;
+    if (str1.contains("range="))
+    {
+      String str2 = str1.substring(0, str1.lastIndexOf("range="));
+      localbaps.jdField_a_of_type_JavaLangString = (str2 + "range=" + localbaps.jdField_a_of_type_Long);
+    }
+    parambaqv = parambaqv.a();
+    if ((parambaqv != null) && ((parambaqv instanceof uja))) {
+      ((uja)parambaqv).b = true;
+    }
+    wsv.b("AsyncFileDownloader", String.format("breakDown , range = %s , url = %s", new Object[] { parambaqw, str1 }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uiy
  * JD-Core Version:    0.7.0.1
  */

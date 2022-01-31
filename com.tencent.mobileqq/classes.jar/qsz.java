@@ -1,50 +1,54 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ColumnInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.editvideo.EditVideoFragment;
+import java.util.ArrayList;
 
-class qsz
-  extends AnimatorListenerAdapter
+public class qsz
+  extends BaseAdapter
 {
-  qsz(qsu paramqsu) {}
+  public qsz(EditVideoFragment paramEditVideoFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public ColumnInfo a(int paramInt)
   {
-    super.onAnimationCancel(paramAnimator);
-    if (qsu.a(this.a).t != null) {
-      qsu.a(this.a).t.setTag(2131362550, null);
-    }
-    if (qsu.a(this.a) != null) {
-      qsu.a(this.a).b(qsu.a(this.a));
-    }
+    return (ColumnInfo)EditVideoFragment.a(this.a).get(paramInt);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public int getCount()
   {
-    super.onAnimationEnd(paramAnimator);
-    if (qsu.a(this.a) != null)
+    return EditVideoFragment.a(this.a).size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      paramAnimator = qsu.a(this.a).a();
-      qsu.a(this.a, qsu.a(this.a).g, paramAnimator, qsu.a(this.a), 18, -1);
+      paramViewGroup = LayoutInflater.from(this.a.getActivity()).inflate(2131560010, paramViewGroup, false);
+      paramView = new qta(this.a.getActivity(), (ViewGroup)paramViewGroup);
+      paramViewGroup.setTag(paramView);
     }
-    if (qsu.a(this.a).t != null) {
-      qsu.a(this.a).t.setTag(2131362550, null);
-    }
-    if (qsu.a(this.a) != null) {
-      qsu.a(this.a).c(qsu.a(this.a));
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    if (qsu.a(this.a) != null) {
-      qsu.a(this.a).a(qsu.a(this.a));
+    for (;;)
+    {
+      if (EditVideoFragment.a(this.a) != null) {
+        paramView.a(a(paramInt), EditVideoFragment.a(this.a).columnID);
+      }
+      return paramViewGroup;
+      qta localqta = (qta)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = localqta;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qsz
  * JD-Core Version:    0.7.0.1
  */

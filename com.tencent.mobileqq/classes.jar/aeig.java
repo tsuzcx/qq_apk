@@ -1,19 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
 
-class aeig
-  implements DialogInterface.OnDismissListener
+public class aeig
+  extends ClickableSpan
 {
-  aeig(aeid paramaeid) {}
+  public aeig(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    aeid.a(this.a, null);
+    this.a.b();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(0, 165, 224));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeig
  * JD-Core Version:    0.7.0.1
  */

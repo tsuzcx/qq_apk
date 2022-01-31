@@ -55,9 +55,9 @@ public class PTSRootNodeRecyclerViewDelegate
   
   public View onCreateNativeView()
   {
-    this.mRecyclerView = new RecyclerView(this.mAppInstance.getActivity());
+    this.mRecyclerView = new RecyclerView(this.mAppInstance.getContext());
     this.mRecyclerView.setHasFixedSize(true);
-    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.mAppInstance.getActivity());
+    LinearLayoutManager localLinearLayoutManager = new LinearLayoutManager(this.mAppInstance.getContext());
     this.mRecyclerView.setLayoutManager(localLinearLayoutManager);
     this.mAdapter = new PTSRecyclerViewAdapter(this.mAppInstance);
     this.mRecyclerView.setAdapter(this.mAdapter);
@@ -102,7 +102,7 @@ public class PTSRootNodeRecyclerViewDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.core.PTSRootNodeRecyclerViewDelegate
  * JD-Core Version:    0.7.0.1
  */

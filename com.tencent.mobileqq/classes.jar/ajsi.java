@@ -1,1068 +1,326 @@
+import android.annotation.TargetApi;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.os.Environment;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.BitmapFactory;
+import android.graphics.ImageFormat;
+import android.opengl.GLES20;
+import android.opengl.GLUtils;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.app.MobileQQ;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import tencent.im.babyq.babyq_cookie.BabyQCookie;
-import tencent.im.oidb.cmd0x77d.oidb_cmd0x77d.ReqBody;
-import tencent.im.oidb.cmd0x8db.oidb_0x8db.ReqBody;
-import tencent.im.oidb.cmd0x8db.oidb_0x8db.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import tencent.im.s2c.msgtype0x210.submsgtype0x6f.SubMsgType0x6f.ForwardBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0x6f.SubMsgType0x6f.RewardInfo;
 
+@TargetApi(9)
 public class ajsi
-  extends ajtb
-  implements aysb, aysc
 {
-  private static String c;
-  private static String d;
-  private int jdField_a_of_type_Int = -1;
-  private long jdField_a_of_type_Long = -1L;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private Bundle jdField_a_of_type_AndroidOsBundle;
-  public String a;
-  public ArrayList<String> a;
-  public HashMap<String, String[]> a;
-  private boolean jdField_a_of_type_Boolean;
-  private SharedPreferences b;
-  public String b;
+  private static final FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  public static final float[] a;
+  public static boolean b;
+  public static final float[] b;
+  private static final int c;
+  public static boolean c;
+  public int a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  public awin a;
+  public ByteBuffer a;
+  public boolean a;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[3];
+  int jdField_b_of_type_Int;
+  public ByteBuffer b;
+  private int[] jdField_b_of_type_ArrayOfInt = new int[1];
+  public ByteBuffer c;
+  private int d;
+  public boolean d;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
   
-  public ajsi(QQAppInterface paramQQAppInterface)
+  static
   {
-    super(paramQQAppInterface);
-    c = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "babyQIconRes" + File.separator + "babyQIconRes.zip";
-    d = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "tencent" + File.separator + "MobileQQ" + File.separator + "babyQIconRes";
+    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, -1.0F, 1.0F, -1.0F, 1.0F, 1.0F, -1.0F, 1.0F };
+    jdField_b_of_type_ArrayOfFloat = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F };
+    jdField_c_of_type_Int = jdField_a_of_type_ArrayOfFloat.length * 4 + jdField_b_of_type_ArrayOfFloat.length * 4;
+    jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(jdField_c_of_type_Int * 2).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    int i = jdField_a_of_type_JavaNioFloatBuffer.capacity();
+    jdField_a_of_type_JavaNioFloatBuffer.limit(i);
+    jdField_a_of_type_JavaNioFloatBuffer.position(0);
+    jdField_a_of_type_JavaNioFloatBuffer.put(jdField_a_of_type_ArrayOfFloat);
+    jdField_a_of_type_JavaNioFloatBuffer.put(jdField_b_of_type_ArrayOfFloat);
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "Unknow error";
+    case 0: 
+      return "GL_NO_ERROR";
+    case 1280: 
+      return "GL_INVALID_ENUM";
+    case 1281: 
+      return "GL_INVALID_VALUE";
+    case 1282: 
+      return "GL_INVALID_OPERATION";
+    case 1285: 
+      return "GL_OUT_OF_MEMORY";
+    }
+    return "GL_INVALID_FRAMEBUFFER_OPERATION";
+  }
+  
+  private void a()
+  {
+    GLES20.glUseProgram(this.jdField_a_of_type_Int);
+    this.jdField_d_of_type_Int = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "SamplerY");
+    this.e = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "SamplerU");
+    this.f = GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "SamplerV");
+    this.g = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "position");
+    this.h = GLES20.glGetAttribLocation(this.jdField_a_of_type_Int, "textureCoordinateIn");
+    Object localObject1;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Awin.a.put("percent1", Integer.valueOf(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "percent1")));
+      this.jdField_a_of_type_Awin.a.put("percent2", Integer.valueOf(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "percent2")));
+      this.jdField_a_of_type_Awin.a.put("percent3", Integer.valueOf(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "percent3")));
+      this.jdField_a_of_type_Awin.a.put("percent4", Integer.valueOf(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "percent4")));
+      this.jdField_a_of_type_Awin.a.put("percent5", Integer.valueOf(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "percent5")));
+      this.jdField_a_of_type_Awin.a.put("percent6", Integer.valueOf(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "percent6")));
+      this.jdField_a_of_type_Awin.a.put("percent7", Integer.valueOf(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "percent7")));
+      this.jdField_a_of_type_Awin.a.put("quality", Integer.valueOf(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "quality")));
+      this.jdField_a_of_type_Awin.a.put("add_red", Integer.valueOf(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "add_red")));
+      this.jdField_a_of_type_Awin.a.put("red_m", Integer.valueOf(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "red_m")));
+      this.jdField_a_of_type_Awin.a.put("green_m", Integer.valueOf(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "green_m")));
+      this.jdField_a_of_type_Awin.a.put("blue_m", Integer.valueOf(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "blue_m")));
+      this.jdField_a_of_type_Awin.a.put("inputImageTexture2", Integer.valueOf(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "inputImageTexture2")));
+      localObject1 = null;
+    }
     try
     {
-      this.jdField_a_of_type_AndroidContentSharedPreferences = paramQQAppInterface.getApp().getSharedPreferences("pref_babyq" + paramQQAppInterface.getCurrentAccountUin(), 0);
-      this.jdField_b_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "_" + "babyQ_pluspanel_config_sp_name", 0);
-      this.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_zipMd5", "");
-      this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_zipUrl", "");
-      paramQQAppInterface = this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_profile_config_Url", "");
-      if (!TextUtils.isEmpty(paramQQAppInterface)) {
-        bbbr.jdField_a_of_type_JavaLangString = paramQQAppInterface;
-      }
-      d();
+      localObject2 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130844795);
+      localObject1 = localObject2;
     }
-    catch (Exception paramQQAppInterface)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
       for (;;)
       {
-        QLog.i("Q.BabyQ", 1, "init plusPanelItems error!" + paramQQAppInterface);
+        Object localObject2;
+        QLog.i("GLSurfaceUtil", 2, "decode hongbao filter mask oom!");
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.BabyQ", 2, "BabyQHandler | Utils.sBabyQProfileUrl :" + bbbr.jdField_a_of_type_JavaLangString);
-    }
-  }
-  
-  public static void a(Context paramContext, View paramView)
-  {
-    paramView.setVisibility(0);
-    paramContext = AnimationUtils.loadAnimation(paramContext, 2130772209);
-    paramContext.setAnimationListener(new ajsj(paramView));
-    paramView.startAnimation(paramContext);
-  }
-  
-  private void a(SharedPreferences paramSharedPreferences, ArrayList<String> paramArrayList, String paramString)
-  {
-    if (paramArrayList == null) {}
-    do
+    if (localObject1 != null)
     {
-      return;
-      paramArrayList.clear();
-      paramSharedPreferences = paramSharedPreferences.getString(paramString, "");
-    } while (paramSharedPreferences.length() <= 0);
-    int j;
-    for (int i = 0;; i = j + 1)
-    {
-      j = paramSharedPreferences.indexOf(",", i);
-      if (j == -1) {
-        break;
-      }
-      paramArrayList.add(paramSharedPreferences.substring(i, j));
-    }
-    paramArrayList.add(paramSharedPreferences.substring(i));
-  }
-  
-  public static void a(View paramView)
-  {
-    if ((paramView != null) && (paramView.getVisibility() == 0))
-    {
-      paramView.setVisibility(8);
-      paramView.clearAnimation();
+      localObject2 = new int[1];
+      GLES20.glGenTextures(1, (int[])localObject2, 0);
+      GLES20.glBindTexture(3553, localObject2[0]);
+      GLES20.glTexParameteri(3553, 10242, 33071);
+      GLES20.glTexParameteri(3553, 10243, 33071);
+      GLES20.glTexParameteri(3553, 10241, 9729);
+      GLES20.glTexParameteri(3553, 10240, 9729);
+      GLUtils.texImage2D(3553, 0, localObject1, 0);
+      this.jdField_b_of_type_Int = localObject2[0];
+      GLES20.glBindTexture(3553, 0);
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
-  {
-    int j = 1;
-    int i = 1;
-    String str = "";
-    if ((paramInt1 == 1) || (paramInt1 == 2)) {
-      if (paramInt2 == 1)
-      {
-        str = "0X800724C";
-        if (paramInt1 != 1) {
-          break label73;
-        }
-      }
-    }
-    for (;;)
-    {
-      label33:
-      if (!TextUtils.isEmpty(str)) {
-        axqy.b(paramQQAppInterface, "dc00898", "", "", str, str, i, 0, "", "", "", "");
-      }
-      label73:
-      label97:
-      label115:
-      while (!QLog.isColorLevel())
-      {
-        return;
-        str = "0X800724D";
-        break;
-        i = 2;
-        break label33;
-        if ((paramInt1 == 3) || (paramInt1 == 4))
-        {
-          if (paramInt2 == 1)
-          {
-            str = "0X800724E";
-            if (paramInt1 != 3) {
-              break label115;
-            }
-          }
-          for (i = j;; i = 2)
-          {
-            break;
-            str = "0X800724F";
-            break label97;
-          }
-        }
-        if (paramInt1 != 5) {
-          break label187;
-        }
-        if (paramInt2 == 1) {}
-        for (str = "0X8007250";; str = "0X8007251")
-        {
-          i = 0;
-          break;
-        }
-      }
-      QLog.d("Q.BabyQ", 2, "reportRewardAction error type:" + paramInt1 + " action:" + paramInt2);
-      return;
-      label187:
-      i = 0;
-    }
-  }
-  
-  private void a(String paramString1, String paramString2, int paramInt)
+  public static void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.e("Q.BabyQ", 2, "downloadIconRes | tryTimes : " + paramInt);
+      QLog.d("GLSurfaceUtil", 2, paramString);
     }
-    if (paramInt > 2) {
-      return;
-    }
-    aysa localaysa = this.app.getNetEngine(0);
-    ayrx localayrx = new ayrx();
-    localayrx.jdField_a_of_type_Aysc = this;
-    localayrx.jdField_a_of_type_Aysb = this;
-    localayrx.jdField_a_of_type_JavaLangString = paramString1;
-    localayrx.c = c;
-    localayrx.jdField_a_of_type_Int = 0;
-    localayrx.e = 1;
-    localayrx.a(new ajsk(this, paramInt + 1, paramString1, paramString2));
-    localaysa.a(localayrx);
   }
   
-  private boolean a(String paramString1, String paramString2)
+  public static void a(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    try
-    {
-      bbdx.a(paramString1, paramString2, false);
-      return true;
-    }
-    catch (Exception paramString1)
-    {
-      paramString1.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.BabyQ", 2, "unZipResource : delete and uncompress Exception=>", paramString1);
-      }
-    }
-    return false;
+    jdField_a_of_type_JavaNioFloatBuffer.position(0);
+    GLES20.glGenBuffers(1, paramArrayOfInt, 0);
+    GLES20.glBindBuffer(34962, paramArrayOfInt[0]);
+    GLES20.glBufferData(34962, jdField_c_of_type_Int, jdField_a_of_type_JavaNioFloatBuffer, 35044);
+    GLES20.glVertexAttribPointer(paramInt1, 2, 5126, false, 0, 0);
+    GLES20.glEnableVertexAttribArray(paramInt1);
+    GLES20.glVertexAttribPointer(paramInt2, 2, 5126, false, 0, jdField_a_of_type_ArrayOfFloat.length * 4);
+    GLES20.glEnableVertexAttribArray(paramInt2);
   }
   
-  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  private void b()
   {
-    boolean bool;
-    oidb_0x8db.RspBody localRspBody;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.BabyQ", 2, "BabyQ funcall handleAddBabyQAsFriend success = " + bool);
-      }
-      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-      localRspBody = new oidb_0x8db.RspBody();
-      paramFromServiceMsg = new Bundle();
-      if (paramObject == null) {}
-    }
+    GLES20.glActiveTexture(33984);
+    GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[0]);
+    GLES20.glTexParameteri(3553, 10240, 9729);
+    GLES20.glTexParameteri(3553, 10241, 9729);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    GLES20.glPixelStorei(3317, 1);
+    GLES20.glActiveTexture(33985);
+    GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[1]);
+    GLES20.glTexParameteri(3553, 10240, 9729);
+    GLES20.glTexParameteri(3553, 10241, 9729);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    GLES20.glPixelStorei(3317, 1);
+    GLES20.glActiveTexture(33986);
+    GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[2]);
+    GLES20.glTexParameteri(3553, 10240, 9729);
+    GLES20.glTexParameteri(3553, 10241, 9729);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    GLES20.glPixelStorei(3317, 1);
+  }
+  
+  public int a(int paramInt1, int paramInt2)
+  {
+    return paramInt1 * paramInt2 * 3 / 2;
+  }
+  
+  public int a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramInt1 = ImageFormat.getBitsPerPixel(paramInt1);
+    float f1 = paramInt1 * 1.0F / 8.0F;
+    a("handleMessage:byteBufferProcessFrame:[getBufferSize]bitpixel=" + paramInt1 + " byteNum=" + f1);
+    return (int)(paramInt2 * paramInt3 * f1);
+  }
+  
+  public int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, byte[] paramArrayOfByte)
+  {
     for (;;)
     {
       try
       {
-        paramToServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom((byte[])paramObject);
-        if (paramToServiceMsg != null)
+        int i = a(paramInt1, paramInt4, paramInt5);
+        if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= i)) {
+          break label332;
+        }
+        bool1 = true;
+        boolean bool2 = bool1;
+        if (bool1)
         {
-          int i = paramToServiceMsg.uint32_result.get();
-          paramFromServiceMsg.putInt("ad_bbq_code", i);
-          if (i != 0) {
-            break label349;
-          }
-          bool = true;
-          if ((paramToServiceMsg.bytes_bodybuffer.has()) && (paramToServiceMsg.bytes_bodybuffer.get() != null))
-          {
-            localRspBody.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-            if (localRspBody != null)
-            {
-              paramToServiceMsg = localRspBody.bytes_welcome_msg.get().toStringUtf8();
-              paramFromServiceMsg.putString("ad_bbq_message", paramToServiceMsg);
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.BabyQ", 2, "BabyQ funcall handleAddBabyQAsFriend result = " + i + " msg = " + paramToServiceMsg);
-              }
-              ((FriendListHandler)this.app.a(1)).a(ajsd.aC, 0, 3999, "", true, false, -1L);
-              notifyUI(4, bool, paramFromServiceMsg);
-            }
+          bool2 = bool1;
+          if (paramArrayOfByte.length == a(paramInt4, paramInt5)) {
+            bool2 = false;
           }
         }
-        else
+        if (bool2)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.BabyQ", 2, "BabyQ funcall handleAddBabyQAsFriend false ");
-          }
-          notifyUI(4, false, null);
-          return;
+          a("handleMessage:byteBufferProcessFrame:[data length error]dataLenErr=" + bool2 + " mPreviewWidth=" + paramInt4 + " mPreviewWidth" + paramInt4 + " mVideoFormat=" + paramInt1);
+          a("handleMessage:byteBufferProcessFrame:[data length error]dataLenErr=" + bool2 + " totalSize=" + i + " data.length=" + paramArrayOfByte.length);
+          return -1;
+        }
+        if ((this.jdField_a_of_type_JavaNioByteBuffer == null) || (!this.jdField_d_of_type_Boolean)) {
+          jdField_c_of_type_Boolean = false;
         }
       }
-      catch (InvalidProtocolBufferMicroException paramToServiceMsg)
+      catch (UnsatisfiedLinkError paramArrayOfByte)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.BabyQ", 2, "BabyQ funcall handleAddBabyQAsFriend exception =" + paramToServiceMsg.getStackTrace());
-        }
-        notifyUI(4, false, paramFromServiceMsg);
-        return;
+        paramInt1 = 0;
+        continue;
+        a("handleMessage:byteBufferProcessFrame:panelY=" + this.jdField_a_of_type_JavaNioByteBuffer);
+        return paramInt1;
       }
-      paramToServiceMsg = "";
-      continue;
-      continue;
-      bool = false;
-      break;
-      label349:
-      bool = false;
-    }
-  }
-  
-  private void d()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    }
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    a(this.jdField_b_of_type_AndroidContentSharedPreferences, localArrayList2, "babyq_pluspanel_config_reds");
-    a(this.jdField_b_of_type_AndroidContentSharedPreferences, this.jdField_a_of_type_JavaUtilArrayList, "babyq_pluspanel_config_titles");
-    a(this.jdField_b_of_type_AndroidContentSharedPreferences, localArrayList1, "babyq_pluspanel_config_codes");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.BabyQ", 2, "BabyQHandler | titleList :" + this.jdField_a_of_type_JavaUtilArrayList + " | codeList : " + localArrayList1 + " | redList : " + localArrayList2 + " | zipMd5 : " + this.jdField_b_of_type_JavaLangString + " | zipUrl : " + this.jdField_a_of_type_JavaLangString);
-    }
-    if ((this.jdField_a_of_type_JavaUtilArrayList.size() != localArrayList1.size()) || (localArrayList1.size() != localArrayList2.size()) || (this.jdField_a_of_type_JavaUtilArrayList.size() != localArrayList2.size())) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      }
-      int i = 0;
-      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      try
       {
-        this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaUtilArrayList.get(i), new String[] { (String)localArrayList1.get(i), (String)localArrayList2.get(i) });
-        i += 1;
-      }
-    }
-  }
-  
-  public int a(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "babyq_pluspanel_config_version", 0);
-  }
-  
-  public long a()
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-        this.jdField_a_of_type_AndroidContentSharedPreferences = this.app.getApp().getSharedPreferences("pref_babyq" + this.app.getCurrentAccountUin(), 0);
-      }
-      if (this.jdField_a_of_type_Long == -1L)
-      {
-        this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("Key_Ability", 0L);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.BabyQ", 2, "getAbility " + this.jdField_a_of_type_Long);
+        CameraGLSurfaceView.initTotalBufferSize(paramInt4, paramInt5, paramInt1);
+        jdField_c_of_type_Boolean = true;
+        this.jdField_a_of_type_JavaNioByteBuffer = null;
+        this.jdField_b_of_type_JavaNioByteBuffer = null;
+        this.jdField_c_of_type_JavaNioByteBuffer = null;
+        a(paramInt2, paramInt3);
+        this.jdField_d_of_type_Boolean = true;
+        paramInt1 = CameraGLSurfaceView.processVideoFrame(paramArrayOfByte, paramInt4, paramInt5, paramInt1, paramInt6, false, this.jdField_a_of_type_JavaNioByteBuffer, this.jdField_b_of_type_JavaNioByteBuffer, this.jdField_c_of_type_JavaNioByteBuffer, jdField_b_of_type_Boolean);
+        if (this.jdField_a_of_type_JavaNioByteBuffer != null)
+        {
+          this.jdField_a_of_type_JavaNioByteBuffer.position(0);
+          this.jdField_b_of_type_JavaNioByteBuffer.position(0);
+          this.jdField_c_of_type_JavaNioByteBuffer.position(0);
+          return paramInt1;
         }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.BabyQ", 2, "getAbility error e:" + localException.toString());
-        }
+        jdField_c_of_type_Boolean = false;
+        continue;
       }
+      label332:
+      boolean bool1 = false;
     }
-    return this.jdField_a_of_type_Long;
-  }
-  
-  public Drawable a(int paramInt)
-  {
-    String str = d + File.separator + "babyq_" + paramInt + ".png";
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.BabyQ", 2, "getBabyQPlusPanelIcon iconPath: " + str);
-    }
-    if (bbdx.b(str)) {
-      return new BitmapDrawable(this.app.getApplication().getResources(), str);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = -1;
-    notifyUI(3, true, null);
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.BabyQ", 2, "handleBabyQGuide handleType:" + paramInt);
-    }
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences = this.app.getApp().getSharedPreferences("pref_babyq" + this.app.getCurrentAccountUin(), 0);
-    }
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("Key_Guide_" + paramInt, false))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.BabyQ", 2, "handleBabyQGuide return");
-      }
-      return;
-    }
-    if (this.jdField_a_of_type_Int != -1) {
-      a();
-    }
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("Key_Guide_" + paramInt, true).commit();
-    notifyUI(2, true, Integer.valueOf(paramInt));
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject = new oidb_0x8db.ReqBody();
-    ((oidb_0x8db.ReqBody)localObject).uint32_user_type.set(paramInt1);
-    ((oidb_0x8db.ReqBody)localObject).uint32_from_type.set(paramInt2);
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder("BabyQ funcall addBabyQAsFreind ");
-      localStringBuilder.append(" userType = ").append(paramInt1);
-      localStringBuilder.append(" fromType = ").append(paramInt2);
-      localStringBuilder.append("\n");
-      QLog.i("Q.BabyQ", 2, localStringBuilder.toString());
+    int i = paramInt1 * paramInt2;
+    if ((this.jdField_a_of_type_JavaNioByteBuffer == null) || (this.jdField_a_of_type_JavaNioByteBuffer.capacity() < i)) {
+      this.jdField_a_of_type_JavaNioByteBuffer = ajsj.a(0, i);
     }
-    localObject = makeOIDBPkg("OidbSvc.0x8db_0", 2267, 0, ((oidb_0x8db.ReqBody)localObject).toByteArray());
-    ((ToServiceMsg)localObject).extraData.putBoolean("req_pb_protocol_flag", true);
-    send((ToServiceMsg)localObject);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    Object localObject2;
-    Object localObject1;
-    StringBuilder localStringBuilder1;
-    StringBuilder localStringBuilder2;
-    int i;
-    try
-    {
-      if (TextUtils.isEmpty(paramString)) {
-        break label763;
-      }
-      paramString = new JSONObject(paramString);
-      if (paramString == null) {
-        break label743;
-      }
-      this.jdField_a_of_type_JavaLangString = paramString.optString("zip_url");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("zip_md5");
-      localObject2 = paramString.getJSONArray("babyq_items");
-      if ((localObject2 == null) || (((JSONArray)localObject2).length() <= 0)) {
-        break label659;
-      }
-      localObject1 = new StringBuilder(64);
-      localStringBuilder1 = new StringBuilder(32);
-      localStringBuilder2 = new StringBuilder(32);
-      if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      while (this.jdField_a_of_type_JavaUtilHashMap == null)
-      {
-        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-        break label918;
-        while (i < ((JSONArray)localObject2).length())
-        {
-          Object localObject3 = ((JSONArray)localObject2).optJSONObject(i);
-          String str1 = ((JSONObject)localObject3).optString("title");
-          String str2 = ((JSONObject)localObject3).optString("code");
-          localObject3 = ((JSONObject)localObject3).optString("redpoint");
-          this.jdField_a_of_type_JavaUtilHashMap.put(str1, new String[] { str2, localObject3 });
-          this.jdField_a_of_type_JavaUtilArrayList.add(str1);
-          ((StringBuilder)localObject1).append(str1).append(",");
-          localStringBuilder1.append(str2).append(",");
-          localStringBuilder2.append((String)localObject3).append(",");
-          i += 1;
-        }
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    i = 0 + i;
+    paramInt1 = paramInt1 / 2 * (paramInt2 / 2);
+    if ((this.jdField_b_of_type_JavaNioByteBuffer == null) || (this.jdField_b_of_type_JavaNioByteBuffer.capacity() < paramInt1)) {
+      this.jdField_b_of_type_JavaNioByteBuffer = ajsj.a(i, paramInt1);
     }
-    catch (Exception paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.BabyQ", 2, "updateBabyQPlusPanelConfig error " + paramString.getMessage());
-      }
-      return;
-    }
-    break label918;
-    if (this.jdField_b_of_type_AndroidContentSharedPreferences == null) {
-      this.jdField_b_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(this.app.getCurrentAccountUin() + "_" + "babyQ_pluspanel_config_sp_name", 0);
-    }
-    if (!this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_zipMd5", "").equalsIgnoreCase(this.jdField_b_of_type_JavaLangString)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localObject2 = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
-      if (((StringBuilder)localObject1).length() > 1)
-      {
-        ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
-        ((SharedPreferences.Editor)localObject2).putString("babyq_pluspanel_config_titles", ((StringBuilder)localObject1).toString());
-      }
-      if (localStringBuilder1.length() > 1)
-      {
-        localStringBuilder1.deleteCharAt(localStringBuilder1.length() - 1);
-        ((SharedPreferences.Editor)localObject2).putString("babyq_pluspanel_config_codes", localStringBuilder1.toString());
-      }
-      if (localStringBuilder2.length() > 1)
-      {
-        localStringBuilder2.deleteCharAt(localStringBuilder2.length() - 1);
-        ((SharedPreferences.Editor)localObject2).putString("babyq_pluspanel_config_reds", localStringBuilder2.toString());
-      }
-      ((SharedPreferences.Editor)localObject2).putString("babyq_pluspanel_config_zipMd5", this.jdField_b_of_type_JavaLangString);
-      ((SharedPreferences.Editor)localObject2).putString("babyq_pluspanel_config_zipUrl", this.jdField_a_of_type_JavaLangString);
-      ((SharedPreferences.Editor)localObject2).commit();
-      a(true, bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.BabyQ", 2, "updateBabyQPlusPanelConfig|version:" + paramInt + "|sbTitle:" + ((StringBuilder)localObject1).toString() + "|sbCode:" + localStringBuilder1.toString() + "|sbRed:" + localStringBuilder2 + "|zipUrl:" + this.jdField_a_of_type_JavaLangString + "|zipMd5:" + this.jdField_b_of_type_JavaLangString);
-      }
-      label659:
-      paramString = paramString.optString("babyq_profile_url");
-      bbbr.jdField_a_of_type_JavaLangString = paramString;
-      localObject1 = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
-      ((SharedPreferences.Editor)localObject1).putString("babyq_profile_config_Url", paramString);
-      ((SharedPreferences.Editor)localObject1).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.BabyQ", 2, "updateBabyQPlusPanelConfig| version:" + paramInt + "|profile_url:" + paramString);
-      }
-      for (;;)
-      {
-        label743:
-        a(this.app.getApp(), this.app.getCurrentAccountUin(), paramInt);
-        return;
-        label763:
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.BabyQ", 2, "updateBabyQPlusPanelConfig|content is empty|version:" + paramInt);
-        }
-        if (this.jdField_b_of_type_AndroidContentSharedPreferences == null) {
-          this.jdField_b_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(this.app.getCurrentAccountUin() + "_" + "babyQ_pluspanel_config_sp_name", 0);
-        }
-        paramString = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
-        paramString.clear();
-        paramString.commit();
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        this.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.jdField_a_of_type_JavaUtilHashMap = null;
-        this.jdField_a_of_type_JavaUtilArrayList = null;
-        this.jdField_a_of_type_JavaLangString = null;
-        this.jdField_b_of_type_JavaLangString = null;
-        bbdx.a(c, false);
-        bbdx.a(d, false);
-      }
-      label918:
-      i = 0;
-      break;
+    if ((this.jdField_c_of_type_JavaNioByteBuffer == null) || (this.jdField_c_of_type_JavaNioByteBuffer.capacity() < paramInt1)) {
+      this.jdField_c_of_type_JavaNioByteBuffer = ajsj.a(i + paramInt1, paramInt1);
     }
   }
   
-  public void a(Context paramContext, String paramString, int paramInt)
+  public boolean a(Context paramContext)
   {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt(paramString + "_" + "babyq_pluspanel_config_version", paramInt);
-    paramContext.commit();
-  }
-  
-  public void a(Context paramContext, String paramString, boolean paramBoolean)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putBoolean(paramString + "_" + "babyq_pluspanel_auto_show", paramBoolean);
-    paramContext.commit();
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    if (paramIntent.getBooleanExtra("from_babyq", false))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Awin = new awin();
+    }
+    for (this.jdField_a_of_type_Int = ajsk.a("precision highp float;\nattribute vec4 position;\nattribute vec2 textureCoordinateIn;\nvarying   vec2 texturecoordinateOut;\nvoid main()\n{\ntexturecoordinateOut = textureCoordinateIn;\ngl_Position = position;\n}\n", "precision mediump float;\nvarying   vec2 texturecoordinateOut;\nuniform sampler2D SamplerY;\nuniform sampler2D SamplerU;\nuniform sampler2D SamplerV;\nuniform float percent1;\nuniform float percent2;\nuniform float percent3;\nuniform float percent4;\nuniform float percent5;\nuniform float percent6;\nuniform float percent7;\nuniform sampler2D inputImageTexture2;\nuniform float quality;\nuniform float add_red;\nuniform float red_m;\nuniform float green_m;\nuniform float blue_m;\nfloat percent_value(float min_percent, float percent)\n{\nfloat result_percent = 0.0;\nif(percent > 0.0)\nresult_percent = min(min_percent, percent);\nelse\nresult_percent = max(min_percent - 1.0, percent);\nreturn result_percent;\n}\nvoid main()\n{\nvec3 yuv;\nvec3 rgb;\nvec4 rgba;\nyuv.x = texture2D(SamplerY, texturecoordinateOut).r;\nyuv.y = texture2D(SamplerU, texturecoordinateOut).r-0.5;\nyuv.z = texture2D(SamplerV, texturecoordinateOut).r-0.5;\nrgb = mat3(      1,       1,      1,\n0, \t\t-.34414, 1.772,\n1.402, \t-.71414, 0) * yuv;\nfloat r = rgb.r;\nfloat g = rgb.g;\nfloat b = rgb.b;\nfloat max_c = max(r, max(g, b));\nfloat min_c = min(r, min(g, b));\nfloat median = r + g + b - max_c - min_c;\nfloat amount = max_c - median;\nfloat amount2 = median - min_c;\nfloat min_percent_r = 1.0 - r;\nfloat min_percent_g = 1.0 - g;\nfloat min_percent_b = 1.0 - b;\nfloat p;\nfloat gray = dot(rgb, vec3(0.299, 0.587, 0.114));\nfloat tmp_r = r;\nfloat tmp_g = g;\nfloat tmp_b = b;\nif(tmp_r == max_c) //red\n{\nfloat tmp_percent7 = percent7 * (1.0 - gray);\np = percent_value(min_percent_r, percent1 + tmp_percent7);\nr = r + amount * p;\np = percent_value(min_percent_g, percent4 + tmp_percent7);\ng = g + amount * p;\np = percent_value(min_percent_b, percent6 + tmp_percent7);\nb = b + amount * p;\n}\nif(tmp_b == max_c) //blue\n{\np = percent_value(min_percent_r, percent3);\nr = r + amount * p;\n}\nif(tmp_b == min_c) //yellow\n{\np = percent_value(min_percent_b, percent2);\nb = b + amount2 * p;\np = percent_value(min_percent_g, percent5);\ng = g + amount2 * p;\n}\nlowp vec4 color;\ncolor = vec4(r, g, b, 1.0);\ncolor *= quality;\nlowp vec4 newColor;\nnewColor = color;\nif(newColor.r > newColor.g && newColor.r > newColor.b)\n{\nnewColor.r *= 1.0 - red_m * add_red;\nnewColor.g *= 1.0 - green_m * add_red;\nnewColor.b *= 1.0 - blue_m * add_red;\n}\nnewColor.r = texture2D(inputImageTexture2, vec2(newColor.r,0.5)).r;\nnewColor.g = texture2D(inputImageTexture2, vec2(newColor.g,0.5)).g;\nnewColor.b = texture2D(inputImageTexture2, vec2(newColor.b,0.5)).b;\nnewColor.a = 1.0;\ngl_FragColor = newColor;\n}\n"); this.jdField_a_of_type_Int == 0; this.jdField_a_of_type_Int = ajsk.a())
     {
-      this.jdField_a_of_type_Boolean = true;
-      this.app.a().b("babyq_add_friend");
-      axqy.b(this.app, "dc00898", "", "", "0X8007242", "0X8007242", 0, 0, "", "", "", "");
+      CameraGLSurfaceView.a("GLVideoHelper.createShaderProgram: mGLProgram=" + this.jdField_a_of_type_Int);
+      return false;
     }
+    a();
+    a(this.jdField_b_of_type_ArrayOfInt, this.g, this.h);
+    GLES20.glGenTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    b();
+    return true;
   }
   
-  public void a(aysy paramaysy, aysz paramaysz)
+  public boolean a(boolean paramBoolean, int paramInt1, int paramInt2, ByteBuffer paramByteBuffer1, ByteBuffer paramByteBuffer2, ByteBuffer paramByteBuffer3)
   {
-    if ((paramaysy == null) || (paramaysz == null)) {}
-    do
+    GLES20.glActiveTexture(33984);
+    if (!paramBoolean) {
+      GLES20.glTexImage2D(3553, 0, 6409, paramInt1, paramInt2, 0, 6409, 5121, null);
+    }
+    GLES20.glTexSubImage2D(3553, 0, 0, 0, paramInt1, paramInt2, 6409, 5121, paramByteBuffer1);
+    GLES20.glUniform1i(this.jdField_d_of_type_Int, 0);
+    GLES20.glActiveTexture(33985);
+    if (!paramBoolean) {
+      GLES20.glTexImage2D(3553, 0, 6409, paramInt1 / 2, paramInt2 / 2, 0, 6409, 5121, null);
+    }
+    GLES20.glTexSubImage2D(3553, 0, 0, 0, paramInt1 / 2, paramInt2 / 2, 6409, 5121, paramByteBuffer2);
+    GLES20.glUniform1i(this.e, 1);
+    GLES20.glActiveTexture(33986);
+    boolean bool = paramBoolean;
+    if (!paramBoolean)
     {
-      do
-      {
-        return;
-      } while (!(paramaysy instanceof ayrx));
-      paramaysy = (ayrx)paramaysy;
-      paramaysy.jdField_a_of_type_Long += paramaysz.c;
-      paramaysz.c = 0L;
-      paramaysz = "bytes=" + paramaysy.jdField_a_of_type_Long + "-";
-      paramaysy.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaysz);
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.BabyQ", 2, "fixReq|mWrittenBlockLen : " + paramaysy.jdField_a_of_type_Long);
-  }
-  
-  void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    boolean bool5 = false;
-    boolean bool1;
-    boolean bool3;
-    boolean bool4;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
-      bool1 = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.BabyQ", 2, "handleGetReward success=" + bool1);
-      }
-      if (!bool1) {
-        break label383;
-      }
-      bool3 = bool1;
-      bool4 = bool1;
+      GLES20.glTexImage2D(3553, 0, 6409, paramInt1 / 2, paramInt2 / 2, 0, 6409, 5121, null);
+      bool = true;
     }
-    label383:
-    for (;;)
-    {
-      try
-      {
-        paramToServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])paramObject);
-        if (paramToServiceMsg == null) {
-          continue;
-        }
-        bool3 = bool1;
-        bool4 = bool1;
-        if (paramToServiceMsg.uint32_result.get() != 0) {
-          continue;
-        }
-        bool2 = true;
-        bool3 = bool2;
-        bool4 = bool2;
-        if (QLog.isColorLevel())
-        {
-          bool3 = bool2;
-          bool4 = bool2;
-          QLog.d("Q.BabyQ", 2, "handleGetReward result=" + bool2);
-        }
-        bool1 = bool5;
-        if (bool2)
-        {
-          bool1 = bool5;
-          bool3 = bool2;
-          bool4 = bool2;
-          if (paramToServiceMsg.bytes_bodybuffer.has())
-          {
-            bool3 = bool2;
-            bool4 = bool2;
-            paramToServiceMsg = paramToServiceMsg.bytes_bodybuffer.get();
-            bool1 = bool5;
-            if (paramToServiceMsg != null) {
-              bool1 = true;
-            }
-          }
-        }
-        bool2 = bool1;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("Q.BabyQ", 2, "handleGetReward result=" + bool1);
-          bool2 = bool1;
-        }
-      }
-      catch (Exception paramToServiceMsg) {}finally
-      {
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.BabyQ", 2, "handleGetReward ex", paramToServiceMsg);
-          }
-          boolean bool2 = bool3;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("Q.BabyQ", 2, "handleGetReward result=" + bool3);
-          bool2 = bool3;
-          continue;
-        }
-        finally
-        {
-          bool4 = bool3;
-        }
-        paramToServiceMsg = finally;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.BabyQ", 2, "handleGetReward result=" + bool4);
-      }
-      notifyUI(1, bool2, null);
-      return;
-      bool1 = false;
-      break;
-      bool2 = false;
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    int i = 0;
-    if (TextUtils.isEmpty(paramString)) {}
-    label9:
-    do
-    {
-      ArrayList localArrayList;
-      do
-      {
-        do
-        {
-          break label9;
-          do
-          {
-            return;
-          } while ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.isEmpty()));
-          localObject = (String[])this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        } while ((localObject == null) || (localObject.length != 2));
-        localObject[1] = "0";
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject);
-        if (this.jdField_b_of_type_AndroidContentSharedPreferences == null) {
-          this.jdField_b_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(this.app.getCurrentAccountUin() + "_" + "babyQ_pluspanel_config_sp_name", 0);
-        }
-        localArrayList = new ArrayList();
-        localObject = new ArrayList();
-        a(this.jdField_b_of_type_AndroidContentSharedPreferences, localArrayList, "babyq_pluspanel_config_titles");
-        a(this.jdField_b_of_type_AndroidContentSharedPreferences, (ArrayList)localObject, "babyq_pluspanel_config_reds");
-      } while (localArrayList.size() != ((ArrayList)localObject).size());
-      for (;;)
-      {
-        if (i < localArrayList.size())
-        {
-          if (paramString.equalsIgnoreCase((String)localArrayList.get(i))) {
-            ((ArrayList)localObject).set(i, "0");
-          }
-        }
-        else
-        {
-          paramString = new StringBuilder();
-          localObject = ((ArrayList)localObject).iterator();
-          while (((Iterator)localObject).hasNext()) {
-            paramString.append((String)((Iterator)localObject).next()).append(",");
-          }
-        }
-        i += 1;
-      }
-    } while (paramString.length() <= 1);
-    paramString.deleteCharAt(paramString.length() - 1);
-    Object localObject = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
-    ((SharedPreferences.Editor)localObject).putString("babyq_pluspanel_config_reds", paramString.toString());
-    ((SharedPreferences.Editor)localObject).commit();
-  }
-  
-  public void a(SubMsgType0x6f.ForwardBody paramForwardBody)
-  {
-    Object localObject = (SubMsgType0x6f.RewardInfo)paramForwardBody.msg_babyq_reward_info.get();
-    paramForwardBody = new Bundle();
-    if (((SubMsgType0x6f.RewardInfo)localObject).uint32_type.has()) {
-      paramForwardBody.putInt("rewardType", ((SubMsgType0x6f.RewardInfo)localObject).uint32_type.get());
-    }
-    if (((SubMsgType0x6f.RewardInfo)localObject).bytes_name.has()) {
-      paramForwardBody.putByteArray("rewardName", ((SubMsgType0x6f.RewardInfo)localObject).bytes_name.get().toByteArray());
-    }
-    if (((SubMsgType0x6f.RewardInfo)localObject).bytes_jmp_url.has()) {
-      paramForwardBody.putByteArray("rewardUrl", ((SubMsgType0x6f.RewardInfo)localObject).bytes_jmp_url.get().toByteArray());
-    }
-    if (((SubMsgType0x6f.RewardInfo)localObject).bytes_cookies.has()) {
-      paramForwardBody.putByteArray("rewardCookie", ((SubMsgType0x6f.RewardInfo)localObject).bytes_cookies.get().toByteArray());
-    }
-    if (((SubMsgType0x6f.RewardInfo)localObject).bytes_jmp_wording.has()) {
-      paramForwardBody.putByteArray("rewardJupWording", ((SubMsgType0x6f.RewardInfo)localObject).bytes_jmp_wording.get().toByteArray());
-    }
-    if (((SubMsgType0x6f.RewardInfo)localObject).bytes_opt_wording.has()) {
-      paramForwardBody.putByteArray("rewardOptWording", ((SubMsgType0x6f.RewardInfo)localObject).bytes_opt_wording.get().toByteArray());
-    }
-    if (((SubMsgType0x6f.RewardInfo)localObject).bytes_opt_url.has()) {
-      paramForwardBody.putByteArray("rewardOptUrl", ((SubMsgType0x6f.RewardInfo)localObject).bytes_opt_url.get().toByteArray());
-    }
-    if (((SubMsgType0x6f.RewardInfo)localObject).uint64_face_addon_id.has()) {
-      paramForwardBody.putLong("rewardFaceId", ((SubMsgType0x6f.RewardInfo)localObject).uint64_face_addon_id.get());
-    }
-    if (((SubMsgType0x6f.RewardInfo)localObject).bytes_icon_url.has()) {
-      paramForwardBody.putByteArray("rewardIconUrl", ((SubMsgType0x6f.RewardInfo)localObject).bytes_icon_url.get().toByteArray());
-    }
-    if (((SubMsgType0x6f.RewardInfo)localObject).bytes_toast_wording.has()) {
-      paramForwardBody.putByteArray("rewardToastWording", ((SubMsgType0x6f.RewardInfo)localObject).bytes_toast_wording.get().toByteArray());
-    }
-    if (((SubMsgType0x6f.RewardInfo)localObject).uint32_report_type.has()) {
-      paramForwardBody.putInt("rewardReportType", ((SubMsgType0x6f.RewardInfo)localObject).uint32_report_type.get());
-    }
+    GLES20.glTexSubImage2D(3553, 0, 0, 0, paramInt1 / 2, paramInt2 / 2, 6409, 5121, paramByteBuffer3);
+    GLES20.glUniform1i(this.f, 2);
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidOsBundle = paramForwardBody;
-      return;
+      this.jdField_a_of_type_Awin.a(awin.jdField_c_of_type_Int);
+      GLES20.glActiveTexture(33987);
+      GLES20.glBindTexture(3553, this.jdField_b_of_type_Int);
+      GLES20.glUniform1i(GLES20.glGetUniformLocation(this.jdField_a_of_type_Int, "inputImageTexture2"), 3);
     }
-    localObject = new Intent(BaseActivity.sTopActivity, RewardNoticeActivity.class);
-    ((Intent)localObject).putExtras(paramForwardBody);
-    BaseActivity.sTopActivity.startActivity((Intent)localObject);
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.BabyQ", 2, "checkDownloadIconRes | isConfigChanged : " + paramBoolean1 + ", isMD5Changed : " + paramBoolean2);
+    GLES20.glDrawArrays(6, 0, 4);
+    paramInt1 = GLES20.glGetError();
+    if (paramInt1 != 0) {
+      a("glDrawFrame:err=" + paramInt1 + " errname=" + a(paramInt1));
     }
-    if (this.jdField_b_of_type_AndroidContentSharedPreferences == null) {
-      this.jdField_b_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(this.app.getCurrentAccountUin() + "_" + "babyQ_pluspanel_config_sp_name", 0);
-    }
-    if (TextUtils.isEmpty(this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_titles", ""))) {}
-    label110:
-    Object localObject;
-    File localFile;
-    do
-    {
-      String str1;
-      String str2;
-      do
-      {
-        do
-        {
-          do
-          {
-            break label110;
-            break label110;
-            do
-            {
-              return;
-            } while (TextUtils.isEmpty(this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_codes", "")));
-            str1 = this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_zipMd5", "");
-          } while (TextUtils.isEmpty(str1));
-          str2 = this.jdField_b_of_type_AndroidContentSharedPreferences.getString("babyq_pluspanel_config_zipUrl", "");
-        } while (TextUtils.isEmpty(str2));
-        if (paramBoolean2)
-        {
-          bbdx.a(d, false);
-          a(str2, str1, 1);
-          return;
-        }
-        localObject = new File(d);
-        localFile = new File(c);
-        if (!((File)localObject).exists())
-        {
-          a(str2, str1, 1);
-          return;
-        }
-      } while (!((File)localObject).isDirectory());
-      localObject = ((File)localObject).listFiles();
-      if ((localObject == null) || (localObject.length == 0))
-      {
-        a(str2, str1, 1);
-        return;
-      }
-    } while ((localObject.length != 1) || (!localFile.exists()));
-    notifyUI(5, a(c, d), null);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-          this.jdField_a_of_type_AndroidContentSharedPreferences = this.app.getApp().getSharedPreferences("pref_babyq" + this.app.getCurrentAccountUin(), 0);
-        }
-        paramArrayOfByte = (babyq_cookie.BabyQCookie)new babyq_cookie.BabyQCookie().mergeFrom(paramArrayOfByte);
-        if (paramArrayOfByte.uint64_client_ability.has())
-        {
-          long l2 = paramArrayOfByte.uint64_client_ability.get();
-          l1 = l2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("Q.BabyQ", 2, "decodePBMsgElems, babyQ ability:" + l2);
-            l1 = l2;
-          }
-          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("Key_Ability", l1).commit();
-          this.jdField_a_of_type_Long = l1;
-          return;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.BabyQ", 2, "setAbility " + paramArrayOfByte.toString());
-        return;
-      }
-      long l1 = 0L;
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return this.jdField_a_of_type_Int == paramInt;
-  }
-  
-  public boolean a(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getBoolean(paramString + "_" + "babyq_pluspanel_auto_show", false);
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    if ((this.jdField_a_of_type_JavaUtilHashMap == null) || (this.jdField_a_of_type_JavaUtilHashMap.isEmpty())) {
-      return false;
-    }
-    String[] arrayOfString = (String[])this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.BabyQ", 2, "babyQPlusPanelShowRed codeAndRed.length: " + arrayOfString.length);
-    }
-    if ((arrayOfString == null) || (arrayOfString.length != 2)) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.BabyQ", 2, "babyQPlusPanelShowRed title: " + paramString + ", showRed : " + arrayOfString[1]);
-    }
-    return "1".equalsIgnoreCase(arrayOfString[1]);
-  }
-  
-  public int b(Context paramContext, String paramString)
-  {
-    return PreferenceManager.getDefaultSharedPreferences(paramContext).getInt(paramString + "_" + "babyq_pluspanel_config_appid", 0);
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidOsBundle != null))
-    {
-      Intent localIntent = new Intent(BaseActivity.sTopActivity, RewardNoticeActivity.class);
-      localIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
-      BaseActivity.sTopActivity.startActivity(localIntent);
-      this.jdField_a_of_type_AndroidOsBundle = null;
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public void b(Context paramContext, String paramString, int paramInt)
-  {
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt(paramString + "_" + "babyq_pluspanel_config_appid", paramInt);
-    paramContext.commit();
-  }
-  
-  public void b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.BabyQ", 2, "BabyQ funcall addBabyQGreetingMsg error for empty greeting");
-      }
-    }
-    do
-    {
-      return;
-      aqvb localaqvb = new aqvb(ajsd.aC, this.app.getCurrentAccountUin(), paramString, 9002, -5040, 655362, awzy.a());
-      MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-      localMessageForUniteGrayTip.initGrayTipMsg(this.app, localaqvb);
-      aqvc.a(this.app, localMessageForUniteGrayTip);
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.BabyQ", 2, "BabyQ funcall addBabyQGreetingMsg success greeting =" + paramString);
-  }
-  
-  public void b(byte[] paramArrayOfByte)
-  {
-    oidb_cmd0x77d.ReqBody localReqBody = new oidb_cmd0x77d.ReqBody();
-    localReqBody.bytes_reward_cookie.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.BabyQ", 2, "getReward");
-    }
-    paramArrayOfByte = makeOIDBPkg("OidbSvc.0x77d_0", 1917, 0, localReqBody.toByteArray());
-    paramArrayOfByte.extraData.putBoolean("req_pb_protocol_flag", true);
-    send(paramArrayOfByte);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_b_of_type_AndroidContentSharedPreferences == null) {
-      this.jdField_b_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences(this.app.getCurrentAccountUin() + "_" + "babyQ_pluspanel_config_sp_name", 0);
-    }
-    SharedPreferences.Editor localEditor = this.jdField_b_of_type_AndroidContentSharedPreferences.edit();
-    localEditor.clear();
-    localEditor.commit();
-  }
-  
-  protected boolean msgCmdFilter(String paramString)
-  {
-    if (this.allowCmdSet == null)
-    {
-      this.allowCmdSet = new HashSet();
-      this.allowCmdSet.add("OidbSvc.0x77d_0");
-      this.allowCmdSet.add("OidbSvc.0x8db_0");
-    }
-    return !this.allowCmdSet.contains(paramString);
-  }
-  
-  protected Class<? extends ajte> observerClass()
-  {
-    return ajsn.class;
-  }
-  
-  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
-  {
-    if ("OidbSvc.0x77d_0".equals(paramFromServiceMsg.getServiceCmd())) {
-      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
-    }
-    while (!"OidbSvc.0x8db_0".equals(paramFromServiceMsg.getServiceCmd())) {
-      return;
-    }
-    b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-  }
-  
-  public void onResp(aysz paramaysz)
-  {
-    if (paramaysz.jdField_a_of_type_Int == 3) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.BabyQ", 2, "onResp is downloading...");
-      }
-    }
-    do
-    {
-      return;
-      localObject1 = paramaysz.jdField_a_of_type_Aysy.a();
-    } while ((localObject1 == null) || (!(localObject1 instanceof ajsk)));
-    Object localObject1 = (ajsk)localObject1;
-    int i;
-    label57:
-    Object localObject2;
-    if (paramaysz.jdField_a_of_type_Int == 0)
-    {
-      i = 1;
-      if (QLog.isColorLevel())
-      {
-        localObject2 = new StringBuilder().append("onResp|download ");
-        if (i == 0) {
-          break label204;
-        }
-      }
-    }
-    label204:
-    for (paramaysz = "success";; paramaysz = "failed")
-    {
-      QLog.d("Q.BabyQ", 2, paramaysz);
-      if (i == 0) {
-        break label229;
-      }
-      paramaysz = new File(c);
-      localObject2 = aurn.a(paramaysz.getAbsolutePath());
-      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (((String)localObject2).equalsIgnoreCase(((ajsk)localObject1).jdField_b_of_type_JavaLangString))) {
-        break label211;
-      }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("Q.BabyQ", 2, "onResp|Md5 error，fileMD5 = " + (String)localObject2 + ", configMD5 = " + ((ajsk)localObject1).jdField_b_of_type_JavaLangString);
-      bbdx.a(d, false);
-      return;
-      i = 0;
-      break label57;
-    }
-    label211:
-    notifyUI(5, a(paramaysz.getAbsolutePath(), d), null);
-    return;
-    label229:
-    a(((ajsk)localObject1).jdField_a_of_type_JavaLangString, ((ajsk)localObject1).jdField_b_of_type_JavaLangString, ((ajsk)localObject1).jdField_a_of_type_Int);
-  }
-  
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.BabyQ", 2, "onUpdateProgeress|curOffset : " + paramLong1 + ", totalLen : " + paramLong2);
-    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsi
  * JD-Core Version:    0.7.0.1
  */

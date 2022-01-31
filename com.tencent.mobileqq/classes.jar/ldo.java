@@ -1,44 +1,92 @@
-import android.media.MediaPlayer;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class ldo
-  extends lds
 {
-  public ldo(VideoController paramVideoController)
+  static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+  
+  @TargetApi(8)
+  public static File a(Context paramContext)
   {
-    super(paramVideoController);
+    if (Build.VERSION.SDK_INT >= 8) {
+      return paramContext.getExternalCacheDir();
+    }
+    paramContext = "/Android/data/" + paramContext.getPackageName() + "/cache/";
+    return new File(Environment.getExternalStorageDirectory().getPath() + paramContext);
   }
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public static String a(String paramString)
   {
-    QLog.w(VideoController.jdField_a_of_type_JavaLangString, 1, "onCompletion, request, mainSession[" + this.jdField_a_of_type_ComTencentAvVideoController.a() + "], seq[" + this.jdField_a_of_type_Long + "]");
-    if (paramMediaPlayer != null) {
-      paramMediaPlayer.release();
-    }
-    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().m())
+    try
     {
-      this.jdField_a_of_type_Long = 0L;
-      return;
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      localMessageDigest.update(paramString.getBytes("UTF-8"));
+      paramString = a(localMessageDigest.digest());
+      return paramString;
     }
-    this.jdField_a_of_type_ComTencentAvVideoController.b.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-    paramMediaPlayer = this.jdField_a_of_type_ComTencentAvVideoController;
-    long l = this.jdField_a_of_type_Long;
-    if (this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_Long == 2L) {}
-    for (int i = 4;; i = 1)
+    catch (NoSuchAlgorithmException paramString)
     {
-      paramMediaPlayer.a(l, 2131230741, i, this.jdField_a_of_type_ComTencentAvVideoController.b);
-      this.jdField_a_of_type_ComTencentAvVideoController.a().a("OnCompletionListener", 6);
-      this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(14), Integer.valueOf(this.jdField_a_of_type_ComTencentAvVideoController.a().y), this.jdField_a_of_type_ComTencentAvVideoController.a().jdField_d_of_type_JavaLangString, Long.valueOf(this.jdField_a_of_type_Long) });
-      this.jdField_a_of_type_Long = 0L;
-      return;
+      throw new AssertionError();
     }
+    catch (UnsupportedEncodingException paramString)
+    {
+      throw new AssertionError();
+    }
+    catch (Throwable paramString)
+    {
+      throw new AssertionError();
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    return paramString1 + "{@}" + paramString2;
+  }
+  
+  public static String a(String paramString1, String paramString2, long paramLong)
+  {
+    return paramString1 + "[@]" + paramString2 + "[id:]" + paramLong;
+  }
+  
+  static String a(byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
+    int k = paramArrayOfByte.length;
+    int j = 0;
+    while (i < k)
+    {
+      int m = paramArrayOfByte[i];
+      int n = j + 1;
+      arrayOfChar[j] = a[(m >>> 4 & 0xF)];
+      j = n + 1;
+      arrayOfChar[n] = a[(m & 0xF)];
+      i += 1;
+    }
+    return new String(arrayOfChar);
+  }
+  
+  @TargetApi(9)
+  public static boolean a()
+  {
+    if (Build.VERSION.SDK_INT >= 9) {
+      return Environment.isExternalStorageRemovable();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ldo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.av.business.manager;
 
-import ayrx;
-import aysa;
+import baps;
+import bapv;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class EffectConfigBase$NetReqRunnable
   implements Runnable
 {
-  final ayrx a;
+  final baps a;
   
-  public EffectConfigBase$NetReqRunnable(EffectConfigBase paramEffectConfigBase, ayrx paramayrx)
+  public EffectConfigBase$NetReqRunnable(EffectConfigBase paramEffectConfigBase, baps parambaps)
   {
-    this.a = paramayrx;
+    this.a = parambaps;
   }
   
   public void run()
@@ -33,7 +33,7 @@ class EffectConfigBase$NetReqRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.business.manager.EffectConfigBase.NetReqRunnable
  * JD-Core Version:    0.7.0.1
  */

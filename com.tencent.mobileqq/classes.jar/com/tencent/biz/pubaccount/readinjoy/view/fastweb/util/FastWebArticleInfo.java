@@ -6,7 +6,6 @@ import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AuthorData;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusBookData;
@@ -24,12 +23,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import org.json.JSONObject;
-import osg;
-import paf;
-import rjw;
-import rka;
-import rmi;
-import rnn;
+import owy;
+import pfo;
+import rzy;
+import sab;
+import scg;
+import sdm;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.Article;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ArticleCommonInfo;
 import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.ArticleCover;
@@ -40,14 +39,13 @@ import tencent.im.oidb.cmd0xad6.oidb_cmd0xad6.RspBody;
 public class FastWebArticleInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<FastWebArticleInfo> CREATOR = new rmi();
+  public static final Parcelable.Creator<FastWebArticleInfo> CREATOR = new scg();
   public int a;
   public long a;
-  public SparseArray<rnn> a;
-  public FusionBiuInfo a;
+  public SparseArray<sdm> a;
   public RelatedSearchData a;
   public String a;
-  public List<rjw> a;
+  public List<rzy> a;
   private Map<String, JSONObject> a;
   public boolean a;
   public int b;
@@ -75,6 +73,7 @@ public class FastWebArticleInfo
   public String p = "";
   public String q;
   public String r;
+  public String s;
   
   public FastWebArticleInfo()
   {
@@ -137,7 +136,7 @@ public class FastWebArticleInfo
     //   96: astore 7
     //   98: aload 7
     //   100: ldc 107
-    //   102: invokestatic 112	onh:a	()Ljava/lang/String;
+    //   102: invokestatic 112	ors:a	()Ljava/lang/String;
     //   105: invokevirtual 116	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   108: pop
     //   109: aload 7
@@ -190,7 +189,7 @@ public class FastWebArticleInfo
     //   198: invokevirtual 116	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   201: pop
     //   202: invokestatic 164	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   205: invokestatic 169	axrn:a	(Landroid/content/Context;)Laxrn;
+    //   205: invokestatic 169	azmz:a	(Landroid/content/Context;)Lazmz;
     //   208: aconst_null
     //   209: ldc 171
     //   211: iload_3
@@ -198,7 +197,7 @@ public class FastWebArticleInfo
     //   214: lconst_0
     //   215: aload 7
     //   217: aconst_null
-    //   218: invokevirtual 174	axrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   218: invokevirtual 174	azmz:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   221: aload 6
     //   223: areturn
     //   224: aload 6
@@ -265,9 +264,9 @@ public class FastWebArticleInfo
     {
       localAuthorData.jdField_d_of_type_JavaLangString = this.f;
       localAuthorData.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      localAuthorData.jdField_a_of_type_Boolean = osg.a().a(paramArticleInfo.getSubscribeUin());
-      localAuthorData.V = this.q;
-      localAuthorData.t = 1;
+      localAuthorData.jdField_a_of_type_Boolean = owy.a().a(paramArticleInfo.getSubscribeUin());
+      localAuthorData.W = this.q;
+      localAuthorData.w = 1;
       localAuthorData.jdField_b_of_type_Float = 1.0F;
       return localAuthorData;
       label127:
@@ -285,9 +284,9 @@ public class FastWebArticleInfo
     TitleData localTitleData = new TitleData();
     localTitleData.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
     localTitleData.b = paramArticleInfo;
-    localTitleData.V = this.q;
-    localTitleData.t = 1;
-    localTitleData.s = 1;
+    localTitleData.W = this.q;
+    localTitleData.w = 1;
+    localTitleData.v = 1;
     return localTitleData;
   }
   
@@ -326,7 +325,7 @@ public class FastWebArticleInfo
       while (paramList.hasNext())
       {
         Object localObject = (BaseData)paramList.next();
-        if (((BaseData)localObject).p == 18)
+        if (((BaseData)localObject).s == 18)
         {
           localObject = (ProteusBookData)localObject;
           if (((ProteusBookData)localObject).jdField_b_of_type_JavaLangString != null) {
@@ -368,6 +367,9 @@ public class FastWebArticleInfo
         this.o = localArticleCommonInfo.bytes_article_id.get().toStringUtf8();
         this.jdField_d_of_type_Long = localArticleCommonInfo.uint64_public_uin.get();
         this.q = localArticleCommonInfo.bytes_proteus_json_data.get().toStringUtf8();
+        if (localArticleCommonInfo.bytes_article_url.has()) {
+          this.s = localArticleCommonInfo.bytes_article_url.get().toStringUtf8();
+        }
         if ((localArticleCommonInfo.msg_cover.has()) && (((oidb_cmd0xad6.ArticleCover)localArticleCommonInfo.msg_cover.get()).bytes_cover_url.has())) {
           this.r = ((oidb_cmd0xad6.ArticleCover)localArticleCommonInfo.msg_cover.get()).bytes_cover_url.get().toStringUtf8();
         }
@@ -393,7 +395,7 @@ public class FastWebArticleInfo
           }
           else
           {
-            QLog.d(paf.jdField_a_of_type_JavaLangString, 1, "uncompress article content data error !");
+            QLog.d(pfo.jdField_a_of_type_JavaLangString, 1, "uncompress article content data error !");
             return false;
           }
         }
@@ -498,10 +500,10 @@ public class FastWebArticleInfo
       localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        localObject = (rjw)localIterator.next();
-        paramParcel.writeString(((rjw)localObject).jdField_a_of_type_JavaLangString);
-        paramParcel.writeLong(((rjw)localObject).jdField_a_of_type_Long);
-        paramParcel.writeString(((rjw)localObject).jdField_b_of_type_JavaLangString);
+        localObject = (rzy)localIterator.next();
+        paramParcel.writeString(((rzy)localObject).jdField_a_of_type_JavaLangString);
+        paramParcel.writeLong(((rzy)localObject).jdField_a_of_type_Long);
+        paramParcel.writeString(((rzy)localObject).jdField_b_of_type_JavaLangString);
       }
       paramInt = 0;
       break;
@@ -515,12 +517,12 @@ public class FastWebArticleInfo
         localIterator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator.hasNext())
         {
-          localObject = (rka)localIterator.next();
-          paramParcel.writeString(((rka)localObject).jdField_a_of_type_JavaLangString);
-          paramParcel.writeString(((rka)localObject).jdField_b_of_type_JavaLangString);
-          paramParcel.writeFloat(((rka)localObject).jdField_a_of_type_Float);
-          paramParcel.writeString(((rka)localObject).jdField_c_of_type_JavaLangString);
-          paramParcel.writeInt(((rka)localObject).jdField_a_of_type_Int);
+          localObject = (sab)localIterator.next();
+          paramParcel.writeString(((sab)localObject).jdField_a_of_type_JavaLangString);
+          paramParcel.writeString(((sab)localObject).jdField_b_of_type_JavaLangString);
+          paramParcel.writeFloat(((sab)localObject).jdField_a_of_type_Float);
+          paramParcel.writeString(((sab)localObject).jdField_c_of_type_JavaLangString);
+          paramParcel.writeInt(((sab)localObject).jdField_a_of_type_Int);
         }
         paramParcel.writeString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataRelatedSearchData.jdField_a_of_type_JavaLangString);
       }
@@ -538,7 +540,7 @@ public class FastWebArticleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo
  * JD-Core Version:    0.7.0.1
  */

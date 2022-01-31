@@ -1,22 +1,44 @@
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 
-class xnk
-  implements View.OnClickListener
+public class xnk
+  extends xno
 {
-  xnk(xnj paramxnj, DialogInterface.OnClickListener paramOnClickListener) {}
+  public int a;
   
-  public void onClick(View paramView)
+  public xnk(xnt paramxnt, View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Xnj, 0);
-    }
+    super(paramxnt, paramView);
+    this.a = paramInt;
+  }
+  
+  public int a()
+  {
+    wsv.e("NullOptionElement", "getOptionIndex() on %d", new Object[] { Integer.valueOf(this.a) });
+    return this.a;
+  }
+  
+  public CharSequence a()
+  {
+    wsv.e("NullOptionElement", "getText() on %d", new Object[] { Integer.valueOf(this.a) });
+    return "";
+  }
+  
+  public void a(CharSequence paramCharSequence)
+  {
+    wsv.e("NullOptionElement", "setText() on %d", new Object[] { Integer.valueOf(this.a) });
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public CharSequence b()
+  {
+    wsv.e("NullOptionElement", "getHint() on %d", new Object[] { Integer.valueOf(this.a) });
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xnk
  * JD-Core Version:    0.7.0.1
  */

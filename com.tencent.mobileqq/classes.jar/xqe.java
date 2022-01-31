@@ -1,35 +1,24 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
 
-class xqe
-  extends URLDrawableDownListener.Adapter
+public class xqe
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  xqe(xqd paramxqd, int paramInt, ViewGroup paramViewGroup) {}
+  public xqe(NeoVideoRecordButton paramNeoVideoRecordButton) {}
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_Xqd.a(this.jdField_a_of_type_Int, false);
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    this.jdField_a_of_type_Xqd.b(this.jdField_a_of_type_Int, paramInt / 100);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_Xqd.a(this.jdField_a_of_type_Int, true);
-    paramView = this.jdField_a_of_type_Xqd.a(paramURLDrawable.getURL(), this.jdField_a_of_type_AndroidViewViewGroup);
-    if (paramView != null) {
-      this.jdField_a_of_type_Xqd.a(paramView, paramURLDrawable);
-    }
+    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
+    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
+    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
+    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xqe
  * JD-Core Version:    0.7.0.1
  */

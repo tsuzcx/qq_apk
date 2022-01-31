@@ -1,421 +1,449 @@
-import android.app.ActivityManager;
-import android.content.Context;
-import android.content.pm.ConfigurationInfo;
-import android.os.Looper;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.2;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.4;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.5;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.8;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.9;
+import com.tencent.biz.pubaccount.readinjoy.struct.MySelfNormalItemRedPointInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc5.submsgtype0xc5.BBInfo;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc5.submsgtype0xc5.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc5.submsgtype0xc5.NotifyBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc5.submsgtype0xc5.RedPointInfo;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc5.submsgtype0xc5.StyleSheet;
+import tencent.im.s2c.msgtype0x210.submsgtype0xc5.submsgtype0xc5.TipsBody;
 
 public class qlc
 {
-  private static long jdField_a_of_type_Long;
-  private static ArrayList<qlf> jdField_a_of_type_JavaUtilArrayList;
-  private static AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private static JSONObject jdField_a_of_type_OrgJsonJSONObject;
-  private static qlg jdField_a_of_type_Qlg;
-  private static long jdField_b_of_type_Long;
-  private static AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  private static JSONObject jdField_b_of_type_OrgJsonJSONObject;
-  private static long c;
+  public static int j = -1;
+  public static int k = j + 1;
+  public static int l = k + 1;
+  public static int m = -1;
+  public static int n = m + 1;
+  public static int o = n + 1;
+  public static int p = o + 1;
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<MySelfNormalItemRedPointInfo> a;
+  private byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e;
+  public long e;
+  public String e;
+  public int f;
+  public String f;
+  public int g;
+  public String g;
+  public int h;
+  public String h;
+  public int i;
   
-  private static ArrayList<qlf> a()
+  public qlc()
   {
-    if (jdField_a_of_type_OrgJsonJSONObject == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    try
-    {
-      JSONArray localJSONArray = jdField_a_of_type_OrgJsonJSONObject.getJSONArray("videoList");
-      int i = 0;
-      while (i < localJSONArray.length())
-      {
-        qlf localqlf = new qlf();
-        Object localObject = (JSONObject)localJSONArray.get(i);
-        localqlf.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).getString("vid");
-        localqlf.jdField_a_of_type_Long = ((JSONObject)localObject).getLong("bitrate");
-        localqlf.jdField_b_of_type_Long = ((JSONObject)localObject).getLong("timeout_ms");
-        localqlf.jdField_a_of_type_Float = Float.valueOf(((JSONObject)localObject).getString("hevc_level")).floatValue();
-        localqlf.jdField_a_of_type_Int = ((JSONObject)localObject).getInt("max_hashdiff");
-        localqlf.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).optString("tag");
-        localObject = ((JSONObject)localObject).getJSONArray("frameInfo");
-        int j = 0;
-        while (j < ((JSONArray)localObject).length())
-        {
-          qln localqln = new qln();
-          JSONObject localJSONObject = (JSONObject)((JSONArray)localObject).get(j);
-          localqln.jdField_a_of_type_Int = localJSONObject.getInt("index");
-          localqln.jdField_a_of_type_Long = localJSONObject.getLong("serverHash");
-          localqlf.jdField_a_of_type_JavaUtilArrayList.add(localqln);
-          j += 1;
-        }
-        localArrayList.add(localqlf);
-        i += 1;
-      }
-      return localThrowable;
-    }
-    catch (Throwable localThrowable)
-    {
-      return null;
-    }
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public static void a()
+  public static int a(byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoExtractFrame", 2, "onEnterBackground() mHasRun = " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", mHasDestory = " + jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-    }
-    if (Looper.getMainLooper() == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoExtractFrame", 2, "Looper == null, 直接返回");
-      }
-    }
-    do
+    int i1 = j;
+    for (;;)
     {
-      do
+      try
       {
-        do
+        submsgtype0xc5.MsgBody localMsgBody = new submsgtype0xc5.MsgBody();
+        localMsgBody.mergeFrom(paramArrayOfByte);
+        if ((localMsgBody.msg_notify_infos.has()) && (localMsgBody.msg_notify_infos.get() != null) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.has()) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get() != null) && (((submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get()).msg_type.has()))
         {
-          do
+          i2 = ((submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get()).msg_type.get();
+          switch (i2)
           {
-            return;
-            if (TVK_SDKMgr.isInstalled(BaseApplication.getContext())) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("VideoExtractFrame", 2, "视频SDK未初始化，直接返回");
-          return;
-          if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) {
-            break;
           }
-        } while (!QLog.isColorLevel());
-        QLog.d("VideoExtractFrame", 2, "当前进程已执行过一次，直接返回");
-        return;
-        if (a()) {
-          break;
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("VideoExtractFrame", 2, "条件不满足，不进行检测逻辑");
-      return;
-      if (b()) {
-        break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("VideoExtractFrame", 2, "当前设备OPENGL版本号低于2.0，直接返回");
-    return;
-    c();
-  }
-  
-  private static boolean a()
-  {
-    String str1 = (String)bhvy.a("kandian_video_extract_frame", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoExtractFrame", 2, "serverConfig = " + str1);
-    }
-    if (TextUtils.isEmpty(str1)) {
-      return false;
-    }
-    int i;
-    int j;
-    try
-    {
-      jdField_a_of_type_OrgJsonJSONObject = new JSONObject(str1);
-      str1 = jdField_a_of_type_OrgJsonJSONObject.getString("version");
-      i = jdField_a_of_type_OrgJsonJSONObject.getInt("tryCount");
-      j = jdField_a_of_type_OrgJsonJSONObject.getInt("succCount");
-      boolean bool = TextUtils.isEmpty(str1);
-      if (bool) {
-        return false;
-      }
-    }
-    catch (Exception localException1)
-    {
-      return false;
-    }
-    if (bbfj.a(null) != 1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoExtractFrame", 2, "当前网络环境非WIFI，不进行检测逻辑");
-      }
-      return false;
-    }
-    String str2 = (String)bhvy.a("kandian_video_extract_frame_local_result", "");
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoExtractFrame", 2, "localResult = " + str2);
-    }
-    if (!TextUtils.isEmpty(str2)) {}
-    for (;;)
-    {
-      try
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        jdField_b_of_type_OrgJsonJSONObject = new JSONObject(str2);
-        str2 = jdField_b_of_type_OrgJsonJSONObject.optString("KEY_LOCAL_RESULT_VERSION", "");
-        int k = jdField_b_of_type_OrgJsonJSONObject.optInt("KEY_LOCAL_RESULT_TRY_COUNT", 0);
-        int m = jdField_b_of_type_OrgJsonJSONObject.optInt("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
-        if ((localException1.equals(str2)) && ((k >= i) || (m >= j)))
-        {
-          if (!QLog.isColorLevel()) {
-            break label411;
-          }
-          QLog.d("VideoExtractFrame", 2, "已到达运行上限");
-          break label411;
-        }
-        if (!localException1.equals(str2))
-        {
-          jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_VERSION", localException1);
-          jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_TRY_COUNT", 0);
-          jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
-          bhvy.a("kandian_video_extract_frame_local_result", jdField_b_of_type_OrgJsonJSONObject.toString());
-        }
-        jdField_a_of_type_JavaUtilArrayList = a();
-        if (jdField_a_of_type_JavaUtilArrayList != null) {
-          break;
-        }
-        return false;
-      }
-      catch (Exception localException2)
-      {
-        return false;
-      }
-      try
-      {
-        jdField_b_of_type_OrgJsonJSONObject = new JSONObject();
-        jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_VERSION", localException2);
-        jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_TRY_COUNT", 0);
-        jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_SUCC_COUNT", 0);
-        bhvy.a("kandian_video_extract_frame_local_result", jdField_b_of_type_OrgJsonJSONObject.toString());
-      }
-      catch (Exception localException3)
-      {
-        return false;
-      }
-    }
-    return true;
-    label411:
-    return false;
-  }
-  
-  public static void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoExtractFrame", 2, "onEnterForeground() mHasRun = " + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", mHasDestory = " + jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
-    }
-    if ((jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true)) && (jdField_a_of_type_Qlg != null))
-    {
-      jdField_a_of_type_Qlg.b();
-      jdField_a_of_type_Qlg = null;
-    }
-  }
-  
-  private static void b(Context paramContext, qlf paramqlf, int paramInt, String paramString, HashMap<Integer, qln> paramHashMap)
-  {
-    HashMap localHashMap = new HashMap();
-    JSONObject localJSONObject = new JSONObject();
-    Object localObject;
-    boolean bool1;
-    label185:
-    int k;
-    int j;
-    try
-    {
-      localJSONObject.put("version", "8.3.0.4480");
-      localJSONObject.put("subversion", "8.3.0");
-      if (jdField_a_of_type_OrgJsonJSONObject == null) {
-        break label632;
-      }
-      localObject = jdField_a_of_type_OrgJsonJSONObject.optString("version");
-      localJSONObject.put("server_version", localObject);
-      localJSONObject.put("video_tag", paramqlf.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("video_vid", paramqlf.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("video_bitrate", paramqlf.jdField_a_of_type_Long);
-      localJSONObject.put("video_width", paramqlf.jdField_b_of_type_Int);
-      localJSONObject.put("video_height", paramqlf.c);
-      localJSONObject.put("task_cost_time", jdField_b_of_type_Long);
-      localJSONObject.put("extract_frame_cost_time", c);
-      localJSONObject.put("return_code", paramInt);
-      localJSONObject.put("return_code_detail", paramString);
-      if (paramInt != 1) {
-        break label639;
-      }
-      bool1 = true;
-      k = 0;
-      j = 2147483647;
-      int i = 0;
-      int m = 0;
-      paramInt = 0;
-      boolean bool2 = bool1;
-      if (bool1)
-      {
-        paramString = paramHashMap.values().iterator();
-        j = 2147483647;
-        i = 0;
-        paramInt = m;
-        label232:
-        if (paramString.hasNext())
-        {
-          localObject = (qln)paramString.next();
-          if (((qln)localObject).jdField_b_of_type_Int > paramqlf.jdField_a_of_type_Int) {
-            bool1 = false;
-          }
-          i += ((qln)localObject).jdField_b_of_type_Int;
-          k = j;
-          if (j > ((qln)localObject).jdField_b_of_type_Int) {
-            k = ((qln)localObject).jdField_b_of_type_Int;
-          }
-          if (paramInt >= ((qln)localObject).jdField_b_of_type_Int) {
-            break label645;
-          }
-          paramInt = ((qln)localObject).jdField_b_of_type_Int;
-          break label625;
-        }
-        k = i / paramHashMap.size();
-        m = i;
-        bool2 = bool1;
-        i = paramInt;
-        paramInt = m;
-      }
-      localJSONObject.put("is_success", String.valueOf(bool2));
-      localJSONObject.put("avg_hash_diff", k);
-      localJSONObject.put("min_hash_diff", j);
-      localJSONObject.put("max_hash_diff", i);
-      localJSONObject.put("total_hash_diff", paramInt);
-      paramqlf = new JSONArray();
-      paramString = paramHashMap.values().iterator();
-      while (paramString.hasNext())
-      {
-        paramHashMap = (qln)paramString.next();
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("frame_index", paramHashMap.jdField_a_of_type_Int);
-        ((JSONObject)localObject).put("hash_diff", paramHashMap.jdField_b_of_type_Int);
-        ((JSONObject)localObject).put("server_hash", paramHashMap.jdField_a_of_type_Long);
-        ((JSONObject)localObject).put("local_hash", paramHashMap.jdField_b_of_type_Long);
-        paramqlf.put(localObject);
+        int i2;
+        paramArrayOfByte.printStackTrace();
         continue;
-        localHashMap.put("param_content", localJSONObject.toString());
       }
-    }
-    catch (Exception paramqlf) {}
-    for (;;)
-    {
-      localHashMap.put("param_device", qkx.a(false));
       if (QLog.isColorLevel()) {
-        QLog.d("VideoExtractFrame", 2, "灯塔数据上报 reportMap = " + localHashMap.toString());
+        QLog.d("KandianOx210MsgInfo", 2, "get0x210MsgType = " + i1);
       }
-      paramqlf = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      if (paramqlf != null) {
-        axrn.a(paramContext).a(paramqlf.c(), "actKandianVideoExtractFrame", true, -1L, 0L, localHashMap, null);
-      }
-      return;
-      localJSONObject.put("detail_list", paramqlf);
+      return i1;
+      i2 = k;
+      i1 = i2;
+      continue;
+      i2 = l;
+      i1 = i2;
+      continue;
+      i2 = k;
+      i1 = i2;
+      continue;
+      i2 = k;
+      i1 = i2;
+      continue;
+      i2 = k;
+      i1 = i2;
     }
-    label645:
+  }
+  
+  public static qlc a()
+  {
+    SharedPreferences localSharedPreferences = bjxj.a(ors.a(), true, false);
+    return a(a(localSharedPreferences.getString("kandian_push_ox210_msg", ""), localSharedPreferences.getInt("kandian_push_ox210_c5_msg_count", 1)));
+  }
+  
+  private static qlc a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    return a(bdlr.a(paramString), paramInt);
+  }
+  
+  private static qlc a(qlc paramqlc)
+  {
+    SharedPreferences localSharedPreferences = bjxj.a(ors.a(), true, false);
+    if ((localSharedPreferences == null) || (paramqlc == null)) {
+      return paramqlc;
+    }
+    paramqlc.jdField_d_of_type_Long = localSharedPreferences.getLong("kandian_push_0x210_c5_msg_time", 0L);
+    return paramqlc;
+  }
+  
+  public static qlc a(byte[] paramArrayOfByte)
+  {
+    return a(paramArrayOfByte, 1);
+  }
+  
+  public static qlc a(byte[] paramArrayOfByte, int paramInt)
+  {
+    int i1 = 0;
+    qlc localqlc = new qlc();
     for (;;)
     {
-      label625:
-      j = k;
-      break label232;
-      label632:
-      localObject = "";
-      break;
-      label639:
-      bool1 = false;
-      break label185;
-    }
-  }
-  
-  private static void b(qlf paramqlf, String paramString, HashMap<Integer, qln> paramHashMap, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoExtractFrame", 2, "innerDoExtractFrame start() videoInfo.tag = " + paramqlf.jdField_b_of_type_JavaLangString);
-    }
-    jdField_a_of_type_Long = System.currentTimeMillis();
-    jdField_a_of_type_Qlg = new qlg(BaseApplication.getContext(), paramString, paramHashMap, paramLong);
-    jdField_a_of_type_Qlg.a(new qle(paramqlf));
-    jdField_a_of_type_Qlg.a();
-  }
-  
-  private static boolean b()
-  {
-    boolean bool2 = false;
-    try
-    {
-      Object localObject = (ActivityManager)BaseApplicationImpl.getApplication().getSystemService("activity");
-      boolean bool1 = bool2;
-      if (localObject != null)
+      try
       {
-        localObject = ((ActivityManager)localObject).getDeviceConfigurationInfo();
-        bool1 = bool2;
-        if (localObject != null)
+        submsgtype0xc5.MsgBody localMsgBody = new submsgtype0xc5.MsgBody();
+        localMsgBody.mergeFrom(paramArrayOfByte);
+        localqlc.jdField_a_of_type_Int = paramInt;
+        localqlc.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+        localqlc.jdField_b_of_type_Int = localMsgBody.uint32_source.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("KandianOx210MsgInfo", 2, "receive push 0xc5, bid = " + localqlc.jdField_b_of_type_Int);
+        }
+        localqlc.jdField_c_of_type_Int = localMsgBody.uint32_bid.get();
+        if (QLog.isColorLevel()) {
+          QLog.d("KandianOx210MsgInfo", 2, "receive push 0xc5, realbid = " + localqlc.jdField_c_of_type_Int);
+        }
+        localqlc.jdField_a_of_type_Long = localMsgBody.uint64_article_id.get();
+        localqlc.jdField_b_of_type_Long = localMsgBody.uint64_seq.get();
+        if (localMsgBody.bytes_diandian_cookie.has()) {
+          localqlc.jdField_c_of_type_JavaLangString = localMsgBody.bytes_diandian_cookie.get().toStringUtf8();
+        }
+        if ((localMsgBody.msg_notify_infos.has()) && (localMsgBody.msg_notify_infos.get() != null) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.has()) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get() != null))
         {
-          int i = ((ConfigurationInfo)localObject).reqGlEsVersion;
-          if (i < 131072) {
-            break label48;
+          Object localObject2;
+          if ((((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).red_point_info.has()) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).red_point_info.get() != null))
+          {
+            localqlc.jdField_a_of_type_JavaUtilArrayList.clear();
+            paramArrayOfByte = ((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).red_point_info.get();
+            paramInt = 0;
+            if (paramInt < paramArrayOfByte.size())
+            {
+              localObject1 = (submsgtype0xc5.RedPointInfo)paramArrayOfByte.get(paramInt);
+              localObject2 = new MySelfNormalItemRedPointInfo();
+              if (((submsgtype0xc5.RedPointInfo)localObject1).uint32_item_id.has()) {
+                ((MySelfNormalItemRedPointInfo)localObject2).itemId = ((submsgtype0xc5.RedPointInfo)localObject1).uint32_item_id.get();
+              }
+              if (((submsgtype0xc5.RedPointInfo)localObject1).red_point_item_type.has()) {
+                ((MySelfNormalItemRedPointInfo)localObject2).redPointType = ((submsgtype0xc5.RedPointInfo)localObject1).red_point_item_type.get();
+              }
+              if (((submsgtype0xc5.RedPointInfo)localObject1).bytes_url.has()) {
+                ((MySelfNormalItemRedPointInfo)localObject2).imgUrl = ((submsgtype0xc5.RedPointInfo)localObject1).bytes_url.get().toStringUtf8();
+              }
+              if (((submsgtype0xc5.RedPointInfo)localObject1).uint64_effect_time.has()) {
+                ((MySelfNormalItemRedPointInfo)localObject2).effectTime = ((submsgtype0xc5.RedPointInfo)localObject1).uint64_effect_time.get();
+              }
+              if (((submsgtype0xc5.RedPointInfo)localObject1).uint64_failure_time.has()) {
+                ((MySelfNormalItemRedPointInfo)localObject2).failureTime = ((submsgtype0xc5.RedPointInfo)localObject1).uint64_failure_time.get();
+              }
+              localqlc.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+              paramInt += 1;
+              continue;
+            }
+          }
+          Object localObject1 = (submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get();
+          if (((submsgtype0xc5.StyleSheet)localObject1).uint32_show_folder.has())
+          {
+            paramInt = ((submsgtype0xc5.StyleSheet)localObject1).uint32_show_folder.get();
+            localqlc.jdField_e_of_type_Int = paramInt;
+            if (!((submsgtype0xc5.StyleSheet)localObject1).folder_red_type.has()) {
+              break label1234;
+            }
+            paramInt = ((submsgtype0xc5.StyleSheet)localObject1).folder_red_type.get();
+            localqlc.jdField_g_of_type_Int = paramInt;
+            if (!((submsgtype0xc5.StyleSheet)localObject1).bytes_orange_word.has()) {
+              break label1239;
+            }
+            paramArrayOfByte = ((submsgtype0xc5.StyleSheet)localObject1).bytes_orange_word.get().toStringUtf8();
+            localqlc.jdField_a_of_type_JavaLangString = paramArrayOfByte;
+            if (!((submsgtype0xc5.StyleSheet)localObject1).bytes_summary.has()) {
+              break label1244;
+            }
+            paramArrayOfByte = ((submsgtype0xc5.StyleSheet)localObject1).bytes_summary.get().toStringUtf8();
+            localqlc.jdField_b_of_type_JavaLangString = paramArrayOfByte;
+            if (((!((submsgtype0xc5.StyleSheet)((submsgtype0xc5.StyleSheet)localObject1).get()).msg_tip_body.has()) || (((submsgtype0xc5.StyleSheet)((submsgtype0xc5.StyleSheet)localObject1).get()).msg_tip_body.get() == null)) && (localqlc.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
+              return null;
+            }
+            if (((!((submsgtype0xc5.StyleSheet)((submsgtype0xc5.StyleSheet)localObject1).get()).msg_tip_body.has()) || (((submsgtype0xc5.StyleSheet)((submsgtype0xc5.StyleSheet)localObject1).get()).msg_tip_body.get() == null)) && (localqlc.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
+              return localqlc;
+            }
+            localObject2 = (submsgtype0xc5.TipsBody)((submsgtype0xc5.StyleSheet)((submsgtype0xc5.StyleSheet)localObject1).get()).msg_tip_body.get();
+            if (((submsgtype0xc5.StyleSheet)localObject1).uint32_show_lock_screen.has())
+            {
+              paramInt = ((submsgtype0xc5.StyleSheet)localObject1).uint32_show_lock_screen.get();
+              localqlc.jdField_f_of_type_Int = paramInt;
+              paramInt = i1;
+              if (((submsgtype0xc5.TipsBody)localObject2).tips_ui_type.has()) {
+                paramInt = ((submsgtype0xc5.StyleSheet)localObject1).msg_tip_body.tips_ui_type.get();
+              }
+              localqlc.jdField_h_of_type_Int = paramInt;
+              if (((submsgtype0xc5.TipsBody)localObject2).uint64_uin.has())
+              {
+                l1 = ((submsgtype0xc5.StyleSheet)localObject1).msg_tip_body.uint64_uin.get();
+                localqlc.jdField_e_of_type_Long = l1;
+                if (!((submsgtype0xc5.TipsBody)localObject2).bytes_icon_url.has()) {
+                  continue;
+                }
+                paramArrayOfByte = ((submsgtype0xc5.StyleSheet)localObject1).msg_tip_body.bytes_icon_url.get().toStringUtf8();
+                localqlc.jdField_e_of_type_JavaLangString = paramArrayOfByte;
+                if (!((submsgtype0xc5.TipsBody)localObject2).bytes_content.has()) {
+                  continue;
+                }
+                paramArrayOfByte = ((submsgtype0xc5.StyleSheet)localObject1).msg_tip_body.bytes_content.get().toStringUtf8();
+                localqlc.jdField_d_of_type_JavaLangString = paramArrayOfByte;
+                if (!((submsgtype0xc5.TipsBody)localObject2).bytes_schema.has()) {
+                  continue;
+                }
+                paramArrayOfByte = ((submsgtype0xc5.StyleSheet)localObject1).msg_tip_body.bytes_schema.get().toStringUtf8();
+                localqlc.jdField_f_of_type_JavaLangString = paramArrayOfByte;
+                if (!((submsgtype0xc5.TipsBody)localObject2).bytes_business_info.has()) {
+                  continue;
+                }
+                paramArrayOfByte = ((submsgtype0xc5.StyleSheet)localObject1).msg_tip_body.bytes_business_info.get().toStringUtf8();
+                localqlc.jdField_g_of_type_JavaLangString = paramArrayOfByte;
+                if ((localMsgBody.msg_notify_infos.has()) && (localMsgBody.msg_notify_infos.get() != null) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.has()) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get() != null) && (((submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get()).msg_type.has())) {
+                  localqlc.i = ((submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get()).msg_type.get();
+                }
+                if ((((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_bb_info.has()) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_bb_info.get() != null))
+                {
+                  paramArrayOfByte = (submsgtype0xc5.BBInfo)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_bb_info.get();
+                  localqlc.jdField_c_of_type_Long = paramArrayOfByte.uint64_bb_uin.get();
+                  localqlc.jdField_d_of_type_Int = paramArrayOfByte.uint32_src.get();
+                }
+                localqlc.jdField_h_of_type_JavaLangString = localMsgBody.str_msgid.get();
+                return localqlc;
+              }
+            }
+            else
+            {
+              paramInt = 0;
+              continue;
+            }
+            long l1 = -1L;
+            continue;
+            paramArrayOfByte = null;
+            continue;
+            paramArrayOfByte = null;
+            continue;
+            paramArrayOfByte = null;
+            continue;
+            paramArrayOfByte = null;
+            continue;
           }
         }
-      }
-      label48:
-      for (bool1 = true;; bool1 = false) {
-        return bool1;
-      }
-      return false;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  private static void c()
-  {
-    try
-    {
-      int i = jdField_b_of_type_OrgJsonJSONObject.optInt("KEY_LOCAL_RESULT_TRY_COUNT", 0);
-      jdField_b_of_type_OrgJsonJSONObject.put("KEY_LOCAL_RESULT_TRY_COUNT", i + 1);
-      bhvy.a("kandian_video_extract_frame_local_result", jdField_b_of_type_OrgJsonJSONObject.toString());
-      float f = qkx.a();
-      Object localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (((qlf)((Iterator)localObject).next()).jdField_a_of_type_Float > f) {
-          ((Iterator)localObject).remove();
+        else
+        {
+          return null;
         }
       }
-      if (jdField_a_of_type_JavaUtilArrayList.size() == 0)
+      catch (Exception paramArrayOfByte)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("VideoExtractFrame", 2, "当前设备无支持播放的视频，直接返回");
+          QLog.w("KandianOx210MsgInfo", 2, "receive push 0xc5, parse msgBody err,", paramArrayOfByte);
         }
-        return;
+        return null;
       }
-      i = jdField_a_of_type_JavaUtilArrayList.size();
-      i = new Random().nextInt(i);
-      localObject = (qlf)jdField_a_of_type_JavaUtilArrayList.get(i);
-      HashMap localHashMap = new HashMap();
-      Iterator localIterator = ((qlf)localObject).jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        qln localqln = (qln)localIterator.next();
-        localHashMap.put(Integer.valueOf(localqln.jdField_a_of_type_Int), localqln);
-      }
-      onu.a().a(((qlf)localObject).jdField_a_of_type_JavaLangString, "PubAccountArticleCenter.GetUrlByVid", new qld((qlf)localObject, localHashMap));
-      return;
+      paramInt = 0;
+      continue;
+      label1234:
+      paramInt = 0;
+      continue;
+      label1239:
+      paramArrayOfByte = null;
+      continue;
+      label1244:
+      paramArrayOfByte = null;
     }
-    catch (Exception localException) {}
+  }
+  
+  public static int b(byte[] paramArrayOfByte)
+  {
+    int i1 = m;
+    for (;;)
+    {
+      try
+      {
+        submsgtype0xc5.MsgBody localMsgBody = new submsgtype0xc5.MsgBody();
+        localMsgBody.mergeFrom(paramArrayOfByte);
+        if ((localMsgBody.msg_notify_infos.has()) && (localMsgBody.msg_notify_infos.get() != null) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.has()) && (((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get() != null) && (((submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get()).msg_type.has()))
+        {
+          i2 = ((submsgtype0xc5.StyleSheet)((submsgtype0xc5.NotifyBody)localMsgBody.msg_notify_infos.get()).msg_style_sheet.get()).msg_type.get();
+          switch (i2)
+          {
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        int i2;
+        paramArrayOfByte.printStackTrace();
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("KandianOx210MsgInfo", 2, "get0x210MsgType = " + i1);
+      }
+      return i1;
+      i2 = n;
+      i1 = i2;
+      continue;
+      i2 = n;
+      i1 = i2;
+      continue;
+      i2 = o;
+      i1 = i2;
+      continue;
+      i2 = p;
+      i1 = i2;
+    }
+  }
+  
+  public static qlc b()
+  {
+    return a(a(bjxj.a(ors.a(), true, false).getString("kandian_push_0x210_msg_for_follow", ""), 1));
+  }
+  
+  public static int c(byte[] paramArrayOfByte)
+  {
+    try
+    {
+      submsgtype0xc5.MsgBody localMsgBody = new submsgtype0xc5.MsgBody();
+      localMsgBody.mergeFrom(paramArrayOfByte);
+      if (!localMsgBody.uint32_bid.has()) {
+        break label85;
+      }
+      int i2 = localMsgBody.uint32_bid.get();
+      if (i2 <= 2)
+      {
+        i1 = i2;
+        if (i2 >= 1) {}
+      }
+      else
+      {
+        i1 = 0;
+      }
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        label85:
+        int i1 = 0;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("KandianOx210MsgInfo", 2, "get0x210MsgBID = " + i1);
+    }
+    return i1;
+  }
+  
+  public static qlc c()
+  {
+    return a(a(bjxj.a(ors.a(), true, false).getString("kandian_push_0x210_msg_for_follow_show_in_folder", ""), 1));
+  }
+  
+  public static qlc d()
+  {
+    SharedPreferences localSharedPreferences = bjxj.a(ors.a(), true, false);
+    return a(a(localSharedPreferences.getString("kandian_push_0x210_msg_sys", ""), localSharedPreferences.getInt("kandian_push_0x210_msg_sys_count", 1)));
+  }
+  
+  public static qlc e()
+  {
+    SharedPreferences localSharedPreferences = bjxj.a(ors.a(), true, false);
+    return a(a(localSharedPreferences.getString("kandian_0x210_c5_normal_item_body", ""), localSharedPreferences.getInt("kandian_0x210_c5_normal_item_msg_count", 1)));
+  }
+  
+  public String a()
+  {
+    return bdlr.a(this.jdField_a_of_type_ArrayOfByte);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.getSubThreadHandler().post(new KandianOx210MsgInfo.2(this, paramQQAppInterface));
+  }
+  
+  public void a(AppRuntime paramAppRuntime)
+  {
+    ThreadManager.getSubThreadHandler().post(new KandianOx210MsgInfo.8(this, paramAppRuntime));
+  }
+  
+  public void b(QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.getSubThreadHandler().post(new KandianOx210MsgInfo.4(this, paramQQAppInterface));
+  }
+  
+  public void c(QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.getSubThreadHandler().post(new KandianOx210MsgInfo.5(this, paramQQAppInterface));
+  }
+  
+  public void d(QQAppInterface paramQQAppInterface)
+  {
+    ThreadManager.getSubThreadHandler().post(new KandianOx210MsgInfo.9(this, paramQQAppInterface));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qlc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class afwx
-  implements DialogInterface.OnCancelListener
+  implements Animator.AnimatorListener
 {
-  private final WeakReference<ChatHistoryC2CDateFragment> a;
+  public afwx(SixCombolEffectView paramSixCombolEffectView) {}
   
-  afwx(ChatHistoryC2CDateFragment paramChatHistoryC2CDateFragment)
-  {
-    this.a = new WeakReference(paramChatHistoryC2CDateFragment);
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    ChatHistoryC2CDateFragment localChatHistoryC2CDateFragment = (ChatHistoryC2CDateFragment)this.a.get();
-    if ((localChatHistoryC2CDateFragment != null) && (localChatHistoryC2CDateFragment.getActivity() != null) && (!localChatHistoryC2CDateFragment.getActivity().isFinishing())) {
-      paramDialogInterface.dismiss();
-    }
-  }
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afwx
  * JD-Core Version:    0.7.0.1
  */

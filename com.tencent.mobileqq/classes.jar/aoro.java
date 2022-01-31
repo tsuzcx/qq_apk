@@ -1,19 +1,12 @@
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import java.util.HashMap;
 
-public abstract interface aoro
+public class aoro
 {
-  public abstract View.OnClickListener a(TextView paramTextView);
-  
-  public abstract boolean a();
-  
-  public abstract boolean b();
-  
-  public abstract boolean c();
+  public HashMap<String, String> a = new HashMap();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoro
  * JD-Core Version:    0.7.0.1
  */

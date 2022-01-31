@@ -1,51 +1,55 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.hiboom.SquareRelativeLayout;
+import com.tencent.mobileqq.widget.NumberCheckBox;
+import mqq.util.WeakReference;
 
 public class aggv
-  implements adif
+  extends RecyclerView.ViewHolder
 {
-  private aggw jdField_a_of_type_Aggw;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public boolean a;
+  aggq jdField_a_of_type_Aggq;
+  public View a;
+  public FrameLayout a;
+  public ImageView a;
+  public TextView a;
+  public URLDrawable a;
+  public URLImageView a;
+  public SquareRelativeLayout a;
+  public NumberCheckBox a;
+  public ImageView b;
   
-  public aggv(aggw paramaggw)
+  public aggv(aggt paramaggt, View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramaggw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramaggw.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_Aggw = paramaggw;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramaggw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-  }
-  
-  public void a(int paramInt)
-  {
-    QLog.i("MiniMultiForwardHelper", 2, "RESUME onMoveToState：=" + paramInt);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 4: 
-      this.jdField_a_of_type_Boolean = BaseChatItemLayout.jdField_a_of_type_Boolean;
-      BaseChatItemLayout.jdField_a_of_type_Boolean = false;
-      QLog.i("MiniMultiForwardHelper", 2, "RESUME mPreCheckBoxVisibleStat：=" + this.jdField_a_of_type_Boolean + "  BaseChatItemLayout.CheckBoxVisible :" + BaseChatItemLayout.jdField_a_of_type_Boolean);
-      return;
+    super(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqHiboomSquareRelativeLayout = ((SquareRelativeLayout)paramView.findViewById(2131366593));
+    if (PhotoListPanel.g() == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqHiboomSquareRelativeLayout.setCloseSquare(true);
     }
-    BaseChatItemLayout.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    QLog.i("MiniMultiForwardHelper", 2, "RESUME mPreCheckBoxVisibleStat：=" + this.jdField_a_of_type_Boolean + "  BaseChatItemLayout.CheckBoxVisible :" + BaseChatItemLayout.jdField_a_of_type_Boolean);
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 2, 4, 8, 11 };
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131368509));
+    this.jdField_a_of_type_Aggq = ((PhotoListPanel)paramaggt.a.get()).a();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNumberCheckBox = ((NumberCheckBox)paramView.findViewById(2131368469));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371827);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131368470));
+    if (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setOnClickListener(this.jdField_a_of_type_Aggq);
+    }
+    if ((((PhotoListPanel)paramaggt.a.get()).m) && (this.jdField_a_of_type_AndroidWidgetFrameLayout != null)) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368578));
+    this.b = ((ImageView)paramView.findViewById(2131368510));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368577));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aggv
  * JD-Core Version:    0.7.0.1
  */

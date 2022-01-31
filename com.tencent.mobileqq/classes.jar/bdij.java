@@ -1,249 +1,510 @@
+import android.content.Context;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import android.os.StatFs;
+import android.os.storage.StorageManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class bdij
 {
-  public static char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
+  private static String[] a = { "MI 2", "MI 3", "X9007" };
   
-  /* Error */
-  public static String a(java.io.File paramFile)
-  {
-    // Byte code:
-    //   0: ldc 36
-    //   2: astore_3
-    //   3: aload_3
-    //   4: astore_1
-    //   5: aload_0
-    //   6: ifnull +62 -> 68
-    //   9: aload_3
-    //   10: astore_1
-    //   11: aload_0
-    //   12: invokevirtual 42	java/io/File:exists	()Z
-    //   15: ifeq +53 -> 68
-    //   18: aload_3
-    //   19: astore_1
-    //   20: aload_0
-    //   21: invokevirtual 46	java/io/File:length	()J
-    //   24: lconst_0
-    //   25: lcmp
-    //   26: ifle +42 -> 68
-    //   29: aconst_null
-    //   30: astore_2
-    //   31: aconst_null
-    //   32: astore_1
-    //   33: new 48	java/io/BufferedInputStream
-    //   36: dup
-    //   37: new 50	java/io/FileInputStream
-    //   40: dup
-    //   41: aload_0
-    //   42: invokespecial 54	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   45: invokespecial 57	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   48: astore_0
-    //   49: aload_0
-    //   50: astore_1
-    //   51: aload_0
-    //   52: invokestatic 60	bdij:a	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   55: astore_2
-    //   56: aload_2
-    //   57: astore_1
-    //   58: aload_0
-    //   59: ifnull +9 -> 68
-    //   62: aload_0
-    //   63: invokevirtual 63	java/io/BufferedInputStream:close	()V
-    //   66: aload_2
-    //   67: astore_1
-    //   68: aload_1
-    //   69: areturn
-    //   70: astore_0
-    //   71: aload_0
-    //   72: invokevirtual 66	java/io/IOException:printStackTrace	()V
-    //   75: aload_2
-    //   76: areturn
-    //   77: astore_2
-    //   78: aconst_null
-    //   79: astore_0
-    //   80: aload_0
-    //   81: astore_1
-    //   82: aload_2
-    //   83: invokevirtual 67	java/io/FileNotFoundException:printStackTrace	()V
-    //   86: aload_3
-    //   87: astore_1
-    //   88: aload_0
-    //   89: ifnull -21 -> 68
-    //   92: aload_0
-    //   93: invokevirtual 63	java/io/BufferedInputStream:close	()V
-    //   96: ldc 36
-    //   98: areturn
-    //   99: astore_0
-    //   100: aload_0
-    //   101: invokevirtual 66	java/io/IOException:printStackTrace	()V
-    //   104: ldc 36
-    //   106: areturn
-    //   107: astore_0
-    //   108: aload_1
-    //   109: astore_0
-    //   110: aload_3
-    //   111: astore_1
-    //   112: aload_0
-    //   113: ifnull -45 -> 68
-    //   116: aload_0
-    //   117: invokevirtual 63	java/io/BufferedInputStream:close	()V
-    //   120: ldc 36
-    //   122: areturn
-    //   123: astore_0
-    //   124: aload_0
-    //   125: invokevirtual 66	java/io/IOException:printStackTrace	()V
-    //   128: ldc 36
-    //   130: areturn
-    //   131: astore_0
-    //   132: aload_2
-    //   133: astore_1
-    //   134: aload_1
-    //   135: ifnull +7 -> 142
-    //   138: aload_1
-    //   139: invokevirtual 63	java/io/BufferedInputStream:close	()V
-    //   142: aload_0
-    //   143: athrow
-    //   144: astore_1
-    //   145: aload_1
-    //   146: invokevirtual 66	java/io/IOException:printStackTrace	()V
-    //   149: goto -7 -> 142
-    //   152: astore_0
-    //   153: goto -19 -> 134
-    //   156: astore_1
-    //   157: goto -47 -> 110
-    //   160: astore_2
-    //   161: goto -81 -> 80
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	164	0	paramFile	java.io.File
-    //   4	135	1	localObject	Object
-    //   144	2	1	localIOException	IOException
-    //   156	1	1	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   30	46	2	str1	String
-    //   77	56	2	localFileNotFoundException1	java.io.FileNotFoundException
-    //   160	1	2	localFileNotFoundException2	java.io.FileNotFoundException
-    //   2	109	3	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   62	66	70	java/io/IOException
-    //   33	49	77	java/io/FileNotFoundException
-    //   92	96	99	java/io/IOException
-    //   33	49	107	java/lang/OutOfMemoryError
-    //   116	120	123	java/io/IOException
-    //   33	49	131	finally
-    //   138	142	144	java/io/IOException
-    //   51	56	152	finally
-    //   82	86	152	finally
-    //   51	56	156	java/lang/OutOfMemoryError
-    //   51	56	160	java/io/FileNotFoundException
-  }
-  
-  public static String a(InputStream paramInputStream)
-  {
-    int i = 0;
-    do
-    {
-      try
-      {
-        MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-        byte[] arrayOfByte = new byte[4196];
-        for (;;)
-        {
-          int j = paramInputStream.read(arrayOfByte, 0, arrayOfByte.length);
-          if (j == -1) {
-            break;
-          }
-          if (j > 0)
-          {
-            localMessageDigest.update(arrayOfByte, 0, j);
-            i += j;
-          }
-        }
-        paramInputStream = a(localMessageDigest.digest());
-        return paramInputStream;
-      }
-      catch (NoSuchAlgorithmException paramInputStream)
-      {
-        paramInputStream.printStackTrace();
-        return "";
-      }
-      catch (IOException paramInputStream)
-      {
-        paramInputStream.printStackTrace();
-        return "";
-      }
-    } while (i != 0);
-    return "";
-  }
-  
-  public static String a(String paramString)
-  {
-    paramString = a(paramString);
-    if (paramString == null) {
-      return "";
-    }
-    return a(paramString);
-  }
-  
-  public static String a(byte[] paramArrayOfByte)
-  {
-    int i = 0;
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length == 16))
-    {
-      char[] arrayOfChar = new char[32];
-      int j = 0;
-      while (i < 16)
-      {
-        int k = paramArrayOfByte[i];
-        int m = j + 1;
-        arrayOfChar[j] = a[(k >>> 4 & 0xF)];
-        j = m + 1;
-        arrayOfChar[m] = a[(k & 0xF)];
-        i += 1;
-      }
-      return new String(arrayOfChar);
-    }
-    return "";
-  }
-  
-  public static byte[] a(String paramString)
+  public static long a()
   {
     try
     {
-      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      return null;
+      StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
+      long l = localStatFs.getBlockSize();
+      int i = localStatFs.getBlockCount();
+      return i * l;
     }
-    catch (Exception paramString)
+    catch (IllegalArgumentException localIllegalArgumentException) {}
+    return 0L;
+  }
+  
+  public static long a(Context paramContext)
+  {
+    paramContext = a(paramContext).iterator();
+    long l1 = 0L;
+    while (paramContext.hasNext())
     {
+      Object localObject = (String)paramContext.next();
       try
       {
-        paramString = paramString.getBytes("UTF-8");
-        return localMessageDigest.digest(paramString);
+        localObject = new StatFs((String)localObject);
+        long l2 = ((StatFs)localObject).getBlockSize();
+        int i = ((StatFs)localObject).getBlockCount();
+        l1 = i * l2 + l1;
       }
-      catch (UnsupportedEncodingException paramString)
+      catch (IllegalArgumentException localIllegalArgumentException)
       {
-        paramString.printStackTrace();
-        bdii.e("andygzyu-MD5", "toMD5Byte, source.getBytes crash!");
+        localIllegalArgumentException.printStackTrace();
       }
-      paramString = paramString;
-      paramString.printStackTrace();
-      bdii.e("andygzyu-MD5", "toMD5Byte, MessageDigest.getInstance crash!");
-      return null;
     }
-    catch (Throwable paramString)
+    return l1;
+  }
+  
+  public static String a()
+  {
+    if (c()) {
+      return Environment.getExternalStorageDirectory().getAbsolutePath();
+    }
+    return null;
+  }
+  
+  /* Error */
+  public static ArrayList<String> a()
+  {
+    // Byte code:
+    //   0: new 86	java/util/ArrayList
+    //   3: dup
+    //   4: invokespecial 88	java/util/ArrayList:<init>	()V
+    //   7: astore_3
+    //   8: aconst_null
+    //   9: astore_0
+    //   10: invokestatic 91	bdij:b	()Z
+    //   13: ifeq +20 -> 33
+    //   16: invokestatic 76	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   19: invokevirtual 79	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   22: astore_1
+    //   23: aload_1
+    //   24: ifnull +9 -> 33
+    //   27: aload_3
+    //   28: aload_1
+    //   29: invokevirtual 95	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   32: pop
+    //   33: new 97	java/io/BufferedReader
+    //   36: dup
+    //   37: new 99	java/io/FileReader
+    //   40: dup
+    //   41: ldc 101
+    //   43: invokespecial 102	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   46: invokespecial 105	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   49: astore_1
+    //   50: aload_1
+    //   51: invokevirtual 108	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   54: astore_0
+    //   55: aload_0
+    //   56: ifnull +187 -> 243
+    //   59: aload_0
+    //   60: ldc 110
+    //   62: invokevirtual 114	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   65: ifne +30 -> 95
+    //   68: aload_0
+    //   69: ldc 116
+    //   71: invokevirtual 114	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   74: ifne +21 -> 95
+    //   77: aload_0
+    //   78: ldc 118
+    //   80: invokevirtual 114	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   83: ifne +12 -> 95
+    //   86: aload_0
+    //   87: ldc 120
+    //   89: invokevirtual 114	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   92: ifeq -42 -> 50
+    //   95: aload_0
+    //   96: ldc 122
+    //   98: invokevirtual 126	java/lang/String:split	(Ljava/lang/String;)[Ljava/lang/String;
+    //   101: astore_2
+    //   102: aload_2
+    //   103: iconst_1
+    //   104: aaload
+    //   105: invokestatic 76	android/os/Environment:getExternalStorageDirectory	()Ljava/io/File;
+    //   108: invokevirtual 36	java/io/File:getPath	()Ljava/lang/String;
+    //   111: invokevirtual 129	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   114: ifeq +43 -> 157
+    //   117: aload_3
+    //   118: aload_2
+    //   119: iconst_1
+    //   120: aaload
+    //   121: invokestatic 132	bdij:a	(Ljava/util/ArrayList;Ljava/lang/String;)Z
+    //   124: ifne -74 -> 50
+    //   127: aload_3
+    //   128: aload_2
+    //   129: iconst_1
+    //   130: aaload
+    //   131: invokevirtual 95	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   134: pop
+    //   135: goto -85 -> 50
+    //   138: astore_2
+    //   139: aload_1
+    //   140: astore_0
+    //   141: aload_2
+    //   142: astore_1
+    //   143: aload_1
+    //   144: invokevirtual 133	java/lang/Exception:printStackTrace	()V
+    //   147: aload_0
+    //   148: ifnull +7 -> 155
+    //   151: aload_0
+    //   152: invokevirtual 136	java/io/BufferedReader:close	()V
+    //   155: aload_3
+    //   156: areturn
+    //   157: aload_0
+    //   158: ldc 138
+    //   160: invokevirtual 114	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   163: ifeq -113 -> 50
+    //   166: aload_0
+    //   167: ldc 140
+    //   169: invokevirtual 114	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   172: ifne -122 -> 50
+    //   175: aload_0
+    //   176: ldc 142
+    //   178: invokevirtual 114	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   181: ifne -131 -> 50
+    //   184: aload_0
+    //   185: ldc 144
+    //   187: invokevirtual 114	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   190: ifne -140 -> 50
+    //   193: aload_0
+    //   194: ldc 146
+    //   196: invokevirtual 114	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   199: ifne -149 -> 50
+    //   202: aload_0
+    //   203: ldc 148
+    //   205: invokevirtual 114	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   208: ifne -158 -> 50
+    //   211: aload_3
+    //   212: aload_2
+    //   213: iconst_1
+    //   214: aaload
+    //   215: invokestatic 132	bdij:a	(Ljava/util/ArrayList;Ljava/lang/String;)Z
+    //   218: ifne -168 -> 50
+    //   221: aload_3
+    //   222: aload_2
+    //   223: iconst_1
+    //   224: aaload
+    //   225: invokevirtual 95	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   228: pop
+    //   229: goto -179 -> 50
+    //   232: astore_0
+    //   233: aload_1
+    //   234: ifnull +7 -> 241
+    //   237: aload_1
+    //   238: invokevirtual 136	java/io/BufferedReader:close	()V
+    //   241: aload_0
+    //   242: athrow
+    //   243: aload_3
+    //   244: invokestatic 151	bdij:a	(Ljava/util/ArrayList;)V
+    //   247: aload_1
+    //   248: ifnull -93 -> 155
+    //   251: aload_1
+    //   252: invokevirtual 136	java/io/BufferedReader:close	()V
+    //   255: aload_3
+    //   256: areturn
+    //   257: astore_0
+    //   258: aload_0
+    //   259: invokevirtual 152	java/io/IOException:printStackTrace	()V
+    //   262: aload_3
+    //   263: areturn
+    //   264: astore_0
+    //   265: aload_0
+    //   266: invokevirtual 152	java/io/IOException:printStackTrace	()V
+    //   269: aload_3
+    //   270: areturn
+    //   271: astore_1
+    //   272: aload_1
+    //   273: invokevirtual 152	java/io/IOException:printStackTrace	()V
+    //   276: goto -35 -> 241
+    //   279: astore_0
+    //   280: aconst_null
+    //   281: astore_1
+    //   282: goto -49 -> 233
+    //   285: astore_2
+    //   286: aload_0
+    //   287: astore_1
+    //   288: aload_2
+    //   289: astore_0
+    //   290: goto -57 -> 233
+    //   293: astore_1
+    //   294: goto -151 -> 143
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   9	194	0	localObject1	Object
+    //   232	10	0	localObject2	Object
+    //   257	2	0	localIOException1	IOException
+    //   264	2	0	localIOException2	IOException
+    //   279	8	0	localObject3	Object
+    //   289	1	0	localObject4	Object
+    //   22	230	1	localObject5	Object
+    //   271	2	1	localIOException3	IOException
+    //   281	7	1	localObject6	Object
+    //   293	1	1	localException1	Exception
+    //   101	28	2	arrayOfString	String[]
+    //   138	85	2	localException2	Exception
+    //   285	4	2	localObject7	Object
+    //   7	263	3	localArrayList	ArrayList
+    // Exception table:
+    //   from	to	target	type
+    //   50	55	138	java/lang/Exception
+    //   59	95	138	java/lang/Exception
+    //   95	135	138	java/lang/Exception
+    //   157	229	138	java/lang/Exception
+    //   243	247	138	java/lang/Exception
+    //   50	55	232	finally
+    //   59	95	232	finally
+    //   95	135	232	finally
+    //   157	229	232	finally
+    //   243	247	232	finally
+    //   251	255	257	java/io/IOException
+    //   151	155	264	java/io/IOException
+    //   237	241	271	java/io/IOException
+    //   10	23	279	finally
+    //   27	33	279	finally
+    //   33	50	279	finally
+    //   143	147	285	finally
+    //   10	23	293	java/lang/Exception
+    //   27	33	293	java/lang/Exception
+    //   33	50	293	java/lang/Exception
+  }
+  
+  private static List<String> a(Context paramContext)
+  {
+    paramContext = a(paramContext, true);
+    if ((a()) && (!d()))
     {
-      paramString.printStackTrace();
-      return null;
+      Iterator localIterator = paramContext.iterator();
+      while (localIterator.hasNext()) {
+        if (((String)localIterator.next()).toLowerCase().contains("emulated")) {
+          localIterator.remove();
+        }
+      }
+    }
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        paramContext.remove(Environment.getExternalStorageDirectory().getAbsolutePath());
+      }
+      return paramContext;
+    }
+  }
+  
+  public static List<String> a(Context paramContext, boolean paramBoolean)
+  {
+    if (Build.VERSION.SDK_INT < 9) {
+      return a();
+    }
+    ArrayList localArrayList = new ArrayList();
+    for (;;)
+    {
+      int i;
+      try
+      {
+        paramContext = (StorageManager)paramContext.getSystemService("storage");
+        Object[] arrayOfObject = (Object[])paramContext.getClass().getMethod("getVolumeList", new Class[0]).invoke(paramContext, new Object[0]);
+        if ((arrayOfObject != null) && (arrayOfObject.length > 0))
+        {
+          Method localMethod1 = arrayOfObject[0].getClass().getDeclaredMethod("getPath", new Class[0]);
+          Method localMethod2 = paramContext.getClass().getMethod("getVolumeState", new Class[] { String.class });
+          int j = arrayOfObject.length;
+          i = 0;
+          if (i < j)
+          {
+            String str1 = (String)localMethod1.invoke(arrayOfObject[i], new Object[0]);
+            if (str1 == null) {
+              break label239;
+            }
+            String str2 = (String)localMethod2.invoke(paramContext, new Object[] { str1 });
+            if ((paramBoolean) && ("mounted".equals(str2))) {
+              localArrayList.add(str1);
+            } else if ((!paramBoolean) && (!"mounted".equals(str2)) && (str1.contains("sd"))) {
+              localArrayList.add(str1);
+            }
+          }
+        }
+      }
+      catch (Throwable paramContext)
+      {
+        paramContext.printStackTrace();
+        return a();
+      }
+      return localArrayList;
+      label239:
+      i += 1;
+    }
+  }
+  
+  static void a(ArrayList<String> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramArrayList.size())
+      {
+        while (((String)paramArrayList.get(i)).endsWith("/")) {
+          paramArrayList.set(i, ((String)paramArrayList.get(i)).substring(0, ((String)paramArrayList.get(i)).length() - 1));
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public static boolean a()
+  {
+    if (Build.VERSION.SDK_INT >= 14) {
+      try
+      {
+        boolean bool = ((Boolean)Environment.class.getMethod("isExternalStorageEmulated", new Class[0]).invoke(null, new Object[0])).booleanValue();
+        return bool;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+    return false;
+  }
+  
+  static boolean a(ArrayList<String> paramArrayList, String paramString)
+  {
+    boolean bool2 = false;
+    paramArrayList = paramArrayList.iterator();
+    do
+    {
+      boolean bool1 = bool2;
+      String str1;
+      if (paramArrayList.hasNext())
+      {
+        str1 = (String)paramArrayList.next();
+        if (paramString.equals(str1)) {
+          bool1 = true;
+        }
+      }
+      else
+      {
+        return bool1;
+      }
+      try
+      {
+        str1 = new File(str1).getCanonicalPath();
+        String str2 = new File(paramString).getCanonicalPath();
+        if ((str1 == null) || (str2 == null)) {
+          break;
+        }
+        bool1 = str1.equals(str2);
+      }
+      catch (IOException localIOException)
+      {
+        for (;;)
+        {
+          localIOException.printStackTrace();
+          bool1 = false;
+        }
+      }
+    } while (!bool1);
+    return bool1;
+  }
+  
+  public static long b()
+  {
+    l1 = 0L;
+    try
+    {
+      StatFs localStatFs = new StatFs(Environment.getDataDirectory().getPath());
+      l2 = localStatFs.getBlockSize();
+      int i = localStatFs.getAvailableBlocks();
+      l2 *= i;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException1)
+    {
+      long l3;
+      label121:
+      l1 = 0L;
+      localIllegalArgumentException1.printStackTrace();
+      return l1;
+    }
+    try
+    {
+      QLog.d("SdCardUtil", 1, "SpaceInfo ava: " + l2);
+    }
+    catch (IllegalArgumentException localIllegalArgumentException2)
+    {
+      l1 = l2;
+      break label135;
+    }
+    try
+    {
+      l3 = ((Long)Class.forName("android.os.SystemProperties").getMethod("getLong", new Class[] { String.class, Long.TYPE }).invoke(null, new Object[] { "sys.memory.threshold.low", Long.valueOf(0L) })).longValue();
+      l1 = l3;
+    }
+    catch (Exception localException)
+    {
+      break label121;
+    }
+    l1 = Math.min(l2, l1);
+    return l2 - l1;
+  }
+  
+  public static long b(Context paramContext)
+  {
+    paramContext = a(paramContext).iterator();
+    long l1 = 0L;
+    while (paramContext.hasNext())
+    {
+      Object localObject = (String)paramContext.next();
+      try
+      {
+        localObject = new StatFs((String)localObject);
+        long l2 = ((StatFs)localObject).getBlockSize();
+        int i = ((StatFs)localObject).getAvailableBlocks();
+        l1 = i * l2 + l1;
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        localIllegalArgumentException.printStackTrace();
+      }
+    }
+    return l1;
+  }
+  
+  public static boolean b()
+  {
+    try
+    {
+      boolean bool = Environment.getExternalStorageState().equals("mounted");
+      return bool;
+    }
+    catch (Throwable localThrowable) {}
+    return false;
+  }
+  
+  public static boolean c()
+  {
+    return Environment.getExternalStorageState().equals("mounted");
+  }
+  
+  private static boolean d()
+  {
+    boolean bool2 = false;
+    String str = Build.MODEL;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < a.length)
+      {
+        if ((str != null) && (str.contains(a[i]))) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdij
  * JD-Core Version:    0.7.0.1
  */

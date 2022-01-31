@@ -1,27 +1,21 @@
-import java.lang.ref.WeakReference;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
 
-class wtf
-  extends akdn
+public class wtf
+  implements View.OnClickListener
 {
-  WeakReference<wth> a;
+  public wtf(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
   
-  public wtf(wth paramwth)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramwth);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    super.a(paramBoolean, paramString);
-    wth localwth = (wth)this.a.get();
-    if (localwth != null) {
-      localwth.a(paramBoolean, paramString, false);
-    }
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wtf
  * JD-Core Version:    0.7.0.1
  */

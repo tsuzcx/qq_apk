@@ -1,30 +1,50 @@
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.ad.tangram.canvas.report.AdDMPReportUtil;
+import com.tencent.ad.tangram.canvas.views.form.AdFormData;
+import com.tencent.ad.tangram.canvas.views.form.AdFormError;
+import com.tencent.ad.tangram.canvas.views.form.framework.AdFormCommitListener;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.views.form.framework.GdtFormCommitUtil.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
 
-public final class aapi
-  implements aapz
+public class aapi
 {
-  public aapi(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public static void a(Context paramContext, GdtAd paramGdtAd, AdFormData paramAdFormData, WeakReference<AdFormCommitListener> paramWeakReference)
   {
-    AudioHelper.b("发起音视频_获取会议id_rsp");
-    Bundle localBundle2 = this.jdField_a_of_type_AndroidOsBundle;
-    Bundle localBundle1 = localBundle2;
-    if (localBundle2 == null) {
-      localBundle1 = new Bundle();
+    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
+      ((AdFormCommitListener)paramWeakReference.get()).beforeCommit();
     }
-    localBundle1.putInt("ConfAppID", paramInt1);
-    localBundle1.putInt("MeetingConfID", paramInt2);
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, localBundle1);
+    ThreadManager.post(new GdtFormCommitUtil.1(paramContext, paramGdtAd, paramAdFormData, paramWeakReference), 5, null, true);
+  }
+  
+  private static AdFormError b(Context paramContext, GdtAd paramGdtAd, AdFormData paramAdFormData)
+  {
+    Object localObject;
+    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (paramGdtAd.actionSetId == -2147483648L) || (paramAdFormData == null) || (!paramAdFormData.isValid()))
+    {
+      aanp.d("GdtFormCommitUtil", "commit error");
+      localObject = new AdFormError(4, -1, null);
+    }
+    AdFormError localAdFormError;
+    do
+    {
+      do
+      {
+        return localObject;
+        aapj.a(paramContext, paramGdtAd, paramAdFormData);
+        localAdFormError = aapp.a(paramAdFormData);
+        localObject = localAdFormError;
+      } while (localAdFormError == null);
+      localObject = localAdFormError;
+    } while (localAdFormError.type != 1);
+    AdDMPReportUtil.reportUpload(paramContext, paramGdtAd, paramAdFormData);
+    return localAdFormError;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,249 +1,110 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.Conversation;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.util.SearchConfigManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import java.lang.ref.WeakReference;
 
 public class ahmr
+  implements View.OnClickListener
 {
-  private static ahmr jdField_a_of_type_Ahmr;
-  private Downloader jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(BaseApplicationImpl.getContext()).getCommonDownloader();
-  private File jdField_a_of_type_JavaIoFile = new File(BaseApplicationImpl.getApplication().getCacheDir(), "qboss_ad");
-  private Map<String, ahmp> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private volatile boolean jdField_a_of_type_Boolean;
+  public static final String a;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private EditText jdField_a_of_type_AndroidWidgetEditText;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public static ahmr a()
+  static
   {
-    if (jdField_a_of_type_Ahmr == null) {}
-    try
-    {
-      if (jdField_a_of_type_Ahmr == null) {
-        jdField_a_of_type_Ahmr = new ahmr();
-      }
-      return jdField_a_of_type_Ahmr;
-    }
-    finally {}
+    jdField_a_of_type_JavaLangString = ahmr.class.getSimpleName();
   }
   
-  private void a(ahmp paramahmp, String paramString, boolean paramBoolean)
+  public ahmr(BaseActivity paramBaseActivity, int paramInt, View paramView)
   {
-    if ((paramahmp == null) || (TextUtils.isEmpty(paramString)) || (paramahmp.a == null)) {
-      return;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
+    this.jdField_a_of_type_Int = paramInt;
+    paramBaseActivity = paramView.findViewById(2131376196);
+    IphoneTitleBarActivity.setLayerType(paramBaseActivity);
+    paramView = paramBaseActivity.findViewById(2131363520);
+    if (paramView != null) {
+      paramView.setVisibility(8);
     }
-    int i = 0;
-    label22:
-    ahmq localahmq;
-    if (i < paramahmp.a.size())
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBaseActivity.findViewById(2131365849));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBaseActivity.findViewById(2131378930));
+    this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
+    this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(aydn.b());
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {}
+    do
     {
-      localahmq = (ahmq)paramahmp.a.valueAt(i);
-      if ((localahmq != null) && (!TextUtils.isEmpty(localahmq.a))) {
-        break label73;
-      }
+      return;
+      paramQQAppInterface = paramQQAppInterface.c();
+    } while ((TextUtils.isEmpty(paramQQAppInterface)) || (paramQQAppInterface.equals(SearchConfigManager.curUin)));
+    SearchConfigManager.isConfigLoaded = false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Int == 1) {
+      swe.a().a();
     }
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = 2;
+    switch (paramView.getId())
+    {
+    }
+    long l;
+    do
+    {
+      return;
+      l = System.currentTimeMillis();
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "onClick() time stamp = " + (l - this.jdField_a_of_type_Long));
+      }
+    } while (Math.abs(l - this.jdField_a_of_type_Long) < 1500L);
+    if (this.jdField_a_of_type_Int == 2) {}
     for (;;)
     {
-      i += 1;
-      break label22;
-      break;
-      label73:
-      if (localahmq.a.equalsIgnoreCase(paramString)) {
-        localahmq.a(paramBoolean);
+      this.jdField_a_of_type_Long = l;
+      FrameHelperActivity.c(false);
+      paramView = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramView == null) {
+        break;
+      }
+      aynt.a(null, i, 0, "0X8009D15", 0, 0, null, null);
+      UniteSearchActivity.a(paramView, null, this.jdField_a_of_type_Int, i);
+      return;
+      if (this.jdField_a_of_type_Int == 1) {
+        i = 1;
+      } else {
+        i = 1;
       }
     }
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    QLog.i("QbossADBannerConfigManager", 1, "notifyBannerShow");
-    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface.sendEmptyMessage(1062);
-      return;
-    }
-    QLog.i("QbossADBannerConfigManager", 1, "handle is null.");
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    QLog.i("QbossADBannerConfigManager", 1, "notifyBannerHide");
-    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface.sendEmptyMessage(1063);
-      return;
-    }
-    QLog.i("QbossADBannerConfigManager", 1, "handle is null.");
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface, ahmp paramahmp)
-  {
-    if ((paramahmp == null) || (paramahmp.a == null) || (paramahmp.a.size() == 0))
-    {
-      b(paramQQAppInterface);
-      return;
-    }
-    paramQQAppInterface = new ahms(this, paramQQAppInterface, paramahmp, paramahmp.a.size());
-    int i = 0;
-    label47:
-    ahmq localahmq;
-    if (i < paramahmp.a.size())
-    {
-      localahmq = (ahmq)paramahmp.a.valueAt(i);
-      if ((localahmq != null) && (!TextUtils.isEmpty(localahmq.a))) {
-        break label94;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label47;
-      break;
-      label94:
-      if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader != null) {
-        this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(localahmq.a, localahmq.c, false, paramQQAppInterface);
-      }
-    }
-  }
-  
-  public ahmp a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.i("QbossADBannerConfigManager", 1, "getQBossADBannerConfig uin is empty. return.");
-      return null;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      paramString = (ahmp)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-      return paramString;
-    }
-  }
-  
-  public String a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return "";
-    }
-    return this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + File.separator + Utils.Crc64String(paramString) + paramString.substring(paramString.lastIndexOf("."));
-  }
-  
-  public void a(long paramLong)
-  {
-    a(paramLong, 2741);
-    a(paramLong, 2742);
-  }
-  
-  public void a(long paramLong, int paramInt)
-  {
-    long l2 = NetConnInfoCenter.getServerTime();
-    long l1 = paramLong;
-    if (paramLong > l2 + 86400L)
-    {
-      paramLong = l2 + 86400L;
-      l1 = paramLong;
-      if (QLog.isDevelopLevel())
-      {
-        QLog.i("QbossADBannerConfigManager", 4, "saveQbossNextRequestTime nextRequestTime upper limit 24 " + paramLong);
-        l1 = paramLong;
-      }
-    }
-    SharedPreferences.Editor localEditor = avdu.a().edit();
-    localEditor.putLong("qbossNextRequestTime_" + paramInt, l1);
-    localEditor.commit();
-    if (QLog.isDevelopLevel()) {
-      QLog.i("QbossADBannerConfigManager", 4, "saveQbossNextRequestTime appid = " + paramInt + " nextRequestTime =  " + l1);
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, ahmp paramahmp)
-  {
-    if (paramQQAppInterface == null)
-    {
-      QLog.i("QbossADBannerConfigManager", 1, "saveQBossADBannerConfigAndNotify app is null. return.");
-      return;
-    }
-    String str = paramQQAppInterface.c();
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.i("QbossADBannerConfigManager", 1, "saveQBossADBannerConfigAndNotify uin is empty. return.");
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QLog.i("QbossADBannerConfigManager", 1, "saveQBossADBannerConfigAndNotify mIsDownloading = " + this.jdField_a_of_type_Boolean + " multi banner show");
-      return;
-    }
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
-    if (paramahmp == null) {}
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_JavaUtilMap.remove(str);
-        if (paramahmp != null) {
-          break;
-        }
-        QLog.i("QbossADBannerConfigManager", 1, "saveQBossADBannerConfigAndNotify QBossADBannerConfigInfo = null notifyBannerHide");
-        b(paramQQAppInterface);
-        return;
-      }
-      finally {}
-      this.jdField_a_of_type_JavaUtilMap.put(str, paramahmp);
-    }
-    if (paramahmp.b())
-    {
-      QLog.i("QbossADBannerConfigManager", 1, "checkIsFileExist exist , notifyBannerShow ");
-      a(paramQQAppInterface);
-      return;
-    }
-    QLog.i("QbossADBannerConfigManager", 1, "checkIsFileExist is not exist , start downloadFile ");
-    this.jdField_a_of_type_Boolean = true;
-    b(paramQQAppInterface, paramahmp);
-  }
-  
-  public void a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      QLog.i("QbossADBannerConfigManager", 1, "removeQBossADBannerConfig uin is empty. return.");
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-      return;
-    }
-  }
-  
-  public boolean a(int paramInt)
-  {
-    long l = avdu.a().getLong("qbossNextRequestTime_" + paramInt, 0L);
-    return NetConnInfoCenter.getServerTime() > l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahmr
  * JD-Core Version:    0.7.0.1
  */

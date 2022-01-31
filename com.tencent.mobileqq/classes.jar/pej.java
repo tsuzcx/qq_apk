@@ -1,124 +1,150 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import java.net.URL;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.FavoriteCKVData.KandianFavoriteBizData;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteReqBody;
+import tencent.im.oidb.cmd0xb40.oidb_0xb40.ReqBody;
 
 public class pej
 {
-  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  public static final String a;
+  static HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap;
+  public static pej a;
+  public static final String b;
+  public static final String c;
+  public static final String d;
+  private pfc jdField_a_of_type_Pfc = new pfc();
+  
+  static
   {
-    Object localObject3 = null;
-    JSONObject localJSONObject = new JSONObject();
-    pek.a(paramBaseArticleInfo, localJSONObject, true);
-    pek.a(paramBaseArticleInfo, localJSONObject);
-    pek.b(paramBaseArticleInfo, localJSONObject);
-    pek.m(paramBaseArticleInfo, localJSONObject);
-    pek.e(paramBaseArticleInfo, localJSONObject);
-    pek.f(paramBaseArticleInfo, localJSONObject);
-    pek.Y(paramBaseArticleInfo, localJSONObject);
-    pek.ab(paramBaseArticleInfo, localJSONObject);
-    pek.ac(paramBaseArticleInfo, localJSONObject);
-    localJSONObject.put("style_ID", "ReadInjoy_triple_img_cell");
-    pek.a(localJSONObject, paramBaseArticleInfo);
-    Object localObject1;
-    Object localObject2;
-    label152:
-    Object localObject4;
-    if ((paramBaseArticleInfo.mPictures == null) || (paramBaseArticleInfo.mPictures.length <= 0))
+    jdField_a_of_type_JavaLangString = "Q.readinjoy.atlas.." + pej.class.getSimpleName();
+    b = alpo.a(2131713281);
+    c = alpo.a(2131713192);
+    d = alpo.a(2131713352);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(1), b);
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(2), c);
+    jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(3), d);
+  }
+  
+  public static pej a()
+  {
+    if (jdField_a_of_type_Pej == null) {}
+    try
     {
-      localObject3 = ram.a(paramBaseArticleInfo.mJsonPictureList, "pictures");
-      if ((localObject3 == null) || (((JSONArray)localObject3).length() < 3)) {
-        return localJSONObject;
+      if (jdField_a_of_type_Pej == null) {
+        jdField_a_of_type_Pej = new pej();
       }
-      localObject1 = ((JSONArray)localObject3).optJSONObject(0);
-      if (localObject1 == null)
-      {
-        localObject1 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject2 = ((JSONArray)localObject3).optJSONObject(1);
-        if (localObject2 != null) {
-          break label261;
-        }
-        localObject2 = paramBaseArticleInfo.mFirstPagePicUrl;
-        localObject3 = ((JSONArray)localObject3).optJSONObject(2);
-        if (localObject3 != null) {
-          break label271;
-        }
+      return jdField_a_of_type_Pej;
+    }
+    finally {}
+  }
+  
+  private void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, ArrayList<byte[]> paramArrayList)
+  {
+    new biqt(6).a("nLinkType", 0).b("sTitle", paramString2).b("sUrl", paramString6).a("bAppShare", false).a("lAppId", 0L).b("sPublisher", paramString4).b("sBrief", paramString3).b("sPath", paramString5).b("sResUrl", paramString6).a("lCategory", 8L).b("sBizDataList", paramArrayList).b(paramActivity, paramString1, -1, null);
+  }
+  
+  public static boolean a(Context paramContext, boolean paramBoolean)
+  {
+    boolean bool = false;
+    if (ors.a(BaseApplicationImpl.getApplication().getRuntime(), "Key_First_ReadInJoy_Favorite", true) == null)
+    {
+      ors.a("Key_First_ReadInJoy_Favorite", Integer.valueOf(1), true);
+      if (!paramBoolean) {
+        bdcd.a(paramContext, 230, paramContext.getString(2131692442), "你可在看点内点击“我的”找到“我的收藏”。\n收藏的内容将会上传保存，在其他手机上登录QQ，也可以在看点内找到你收藏的内容。\n", 2131690648, 2131692440, new pel(), null).setMessageCount(null).show();
       }
-      label261:
-      label271:
-      for (paramBaseArticleInfo = paramBaseArticleInfo.mFirstPagePicUrl;; paramBaseArticleInfo = ((JSONObject)localObject3).optString("picture"))
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public void a(Activity paramActivity, String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, Bundle paramBundle)
+  {
+    FavoriteCKVData.KandianFavoriteBizData localKandianFavoriteBizData = new FavoriteCKVData.KandianFavoriteBizData();
+    localKandianFavoriteBizData.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(paramString2));
+    localKandianFavoriteBizData.uint32_type.set(paramInt);
+    ArrayList localArrayList = new ArrayList();
+    if (paramBundle != null)
+    {
+      paramInt = paramBundle.getInt("videoDuration");
+      localKandianFavoriteBizData.uint32_video_duration.set(paramInt);
+      paramInt = paramBundle.getInt("picNum");
+      localKandianFavoriteBizData.uint32_pic_num.set(paramInt);
+      long l = paramBundle.getLong("publishAccountUin");
+      localKandianFavoriteBizData.uint64_account_id.set(l);
+      paramString2 = paramBundle.getString("publishAccountName");
+      if (!TextUtils.isEmpty(paramString2))
       {
-        localObject3 = localObject2;
-        localObject4 = localObject1;
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url1", localObject4);
-        localJSONObject.put("id_multi_img_1", localObject1);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url2", localObject3);
-        localJSONObject.put("id_multi_img_2", localObject1);
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("multi_img_url3", paramBaseArticleInfo);
-        localJSONObject.put("id_multi_img_3", localObject1);
-        return localJSONObject;
-        localObject1 = ((JSONObject)localObject1).optString("picture");
-        break;
-        localObject2 = ((JSONObject)localObject2).optString("picture");
-        break label152;
+        localKandianFavoriteBizData.bytes_account_name.set(ByteStringMicro.copyFromUtf8(paramString2));
+        l = paramBundle.getLong("feedsId");
+        localKandianFavoriteBizData.uint64_feeds_id.set(l);
+        paramInt = paramBundle.getInt("feedsType");
+        localKandianFavoriteBizData.uint32_feeds_type.set(paramInt);
+        paramInt = paramBundle.getInt("videoType");
+        localKandianFavoriteBizData.uint32_video_type.set(paramInt);
       }
     }
-    if ((paramBaseArticleInfo.mPictures.length < 1) || (paramBaseArticleInfo.mPictures[0] == null))
+    for (;;)
     {
-      localObject1 = paramBaseArticleInfo.mSinglePicture;
-      label304:
-      if (localObject1 == null) {
-        break label405;
-      }
-      localObject1 = ((URL)localObject1).getFile();
-      label313:
-      if ((paramBaseArticleInfo.mPictures.length >= 2) && (paramBaseArticleInfo.mPictures[1] != null)) {
-        break label410;
-      }
-      localObject2 = paramBaseArticleInfo.mSinglePicture;
-      label336:
-      if (localObject2 == null) {
-        break label420;
-      }
-      localObject2 = ((URL)localObject2).getFile();
-      label345:
-      if ((paramBaseArticleInfo.mPictures.length >= 3) && (paramBaseArticleInfo.mPictures[2] != null)) {
-        break label425;
-      }
-    }
-    label405:
-    label410:
-    label420:
-    label425:
-    for (URL localURL = paramBaseArticleInfo.mSinglePicture;; localURL = paramBaseArticleInfo.mPictures[2])
-    {
-      localObject4 = localObject1;
-      paramBaseArticleInfo = (BaseArticleInfo)localObject3;
-      localObject3 = localObject2;
-      if (localURL == null) {
-        break;
-      }
-      paramBaseArticleInfo = localURL.getFile();
-      localObject4 = localObject1;
-      localObject3 = localObject2;
+      localArrayList.add(localKandianFavoriteBizData.toByteArray());
+      a(paramActivity, paramString1, paramString3, paramString4, paramString2, paramString5, paramString6, localArrayList);
+      return;
+      paramString2 = "";
       break;
-      localObject1 = paramBaseArticleInfo.mPictures[0];
-      break label304;
-      localObject1 = null;
-      break label313;
-      localObject2 = paramBaseArticleInfo.mPictures[1];
-      break label336;
-      localObject2 = null;
-      break label345;
+      paramString2 = "";
     }
+  }
+  
+  public void a(Activity paramActivity, String paramString1, int paramInt, String paramString2, ArrayList<String> paramArrayList)
+  {
+    FavoriteCKVData.KandianFavoriteBizData localKandianFavoriteBizData = new FavoriteCKVData.KandianFavoriteBizData();
+    localKandianFavoriteBizData.bytes_rowkey.set(ByteStringMicro.copyFromUtf8(paramString2));
+    localKandianFavoriteBizData.uint32_type.set(paramInt);
+    paramString2 = new ArrayList();
+    paramString2.add(localKandianFavoriteBizData.toByteArray());
+    new biqt(6).a("sCIDListToBeDelete", paramArrayList).b("sBizDataList", paramString2).a(paramActivity, paramString1, -1, null);
+  }
+  
+  public void a(List<String> paramList, pem parampem)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "getAtlasFavoriteStatus, rowKeyList = " + paramList + ", callback = " + parampem);
+    }
+    oidb_0xb40.ReqBody localReqBody = new oidb_0xb40.ReqBody();
+    oidb_0xb40.CheckFavoriteReqBody localCheckFavoriteReqBody = new oidb_0xb40.CheckFavoriteReqBody();
+    if (paramList == null) {
+      return;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      String str = (String)paramList.next();
+      if (!TextUtils.isEmpty(str)) {
+        localCheckFavoriteReqBody.rpt_bytes_rowkey.add(ByteStringMicro.copyFromUtf8(str));
+      }
+    }
+    localReqBody.msg_check_favorite_req.set(localCheckFavoriteReqBody);
+    paramList = new Bundle();
+    mzy.a((AppInterface)BaseApplicationImpl.getApplication().getRuntime(), new pek(this, parampem), localReqBody.toByteArray(), "OidbSvc.0xb40", 2880, 1, paramList, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pej
  * JD-Core Version:    0.7.0.1
  */

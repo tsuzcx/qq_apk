@@ -1,16 +1,32 @@
-public abstract interface apxv
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendCampusVerifyTipsView;
+
+public class apxv
+  extends RecyclerView.ViewHolder
 {
-  public abstract void a(int paramInt1, int paramInt2);
+  private ExtendFriendCampusVerifyTipsView a;
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public apxv(View paramView, aqds paramaqds)
+  {
+    super(paramView);
+    this.a = ((ExtendFriendCampusVerifyTipsView)paramView);
+    this.a.setOnClickListener(paramaqds);
+  }
   
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt1, int paramInt2);
+  public void a(apyo paramapyo, int paramInt)
+  {
+    if ((paramapyo instanceof apxw))
+    {
+      paramapyo = (apxw)paramapyo;
+      this.a.setTipsType(paramapyo.a);
+      this.a.setPadding(0, paramInt, 0, 0);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apxv
  * JD-Core Version:    0.7.0.1
  */

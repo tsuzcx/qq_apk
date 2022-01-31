@@ -1,44 +1,36 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 
 class bbkg
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends AnimatorListenerAdapter
 {
-  bbkg(bbkf parambbkf) {}
+  bbkg(bbke parambbke, boolean paramBoolean, View paramView, int paramInt) {}
   
-  public void onGlobalLayout()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (!bbkf.a(this.a)) {}
-    for (;;)
+    boolean bool = false;
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    if (!this.jdField_a_of_type_Boolean)
     {
-      return;
-      Object localObject = new Rect();
-      bbkf.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
-      int j = bbkf.a(this.a) - ((Rect)localObject).height();
-      bbkf.a(this.a, ((Rect)localObject).height());
-      if (j > bbkf.b(this.a) / 3) {}
-      for (int i = 1; i != 0; i = 0)
+      paramAnimator = new int[2];
+      this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(paramAnimator);
+      i = xod.d(this.jdField_a_of_type_Bbke.jdField_a_of_type_AndroidContentContext) - paramAnimator[1];
+      if (i >= this.jdField_a_of_type_Int) {}
+    }
+    for (int i = this.jdField_a_of_type_Int - i;; i = 0)
+    {
+      if (this.jdField_a_of_type_Bbke.jdField_a_of_type_Bbki != null)
       {
-        bbkf.a(this.a, false);
-        if (QLog.isColorLevel()) {
-          QLog.d("SoftKeyboardHeight", 2, new Object[] { "onGlobalLayout, keyboard height:", Integer.valueOf(j) });
+        paramAnimator = this.jdField_a_of_type_Bbke.jdField_a_of_type_Bbki;
+        if (!this.jdField_a_of_type_Boolean) {
+          bool = true;
         }
-        localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_soft_keyboard", 0);
-        if (((SharedPreferences)localObject).getInt("key_height", 0) != j) {
-          ((SharedPreferences)localObject).edit().putInt("key_height", j).commit();
-        }
-        if (bbkf.a(this.a) != null) {
-          bbkf.a(this.a).a(j, false);
-        }
-        this.a.a();
-        return;
+        paramAnimator.a(bool, i);
       }
+      return;
     }
   }
 }

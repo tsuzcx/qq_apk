@@ -1,25 +1,21 @@
-import com.tencent.common.app.AppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
-class bipx
-  extends biqy
+public class bipx
+  implements DialogInterface.OnClickListener
 {
-  bipx(bipv parambipv, AppInterface paramAppInterface) {}
+  public bipx(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
-    if (paramBoolean) {
-      synchronized (bipv.a(this.jdField_a_of_type_Bipv))
-      {
-        bipv.a(this.jdField_a_of_type_Bipv, paramInt);
-        return;
-      }
-    }
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bipx
  * JD-Core Version:    0.7.0.1
  */

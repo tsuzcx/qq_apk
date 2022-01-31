@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import axpv;
+import azlg;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public final class CrashUtils$1
@@ -10,12 +10,12 @@ public final class CrashUtils$1
   
   public void run()
   {
-    axpv.a(this.a);
+    azlg.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.CrashUtils.1
  * JD-Core Version:    0.7.0.1
  */

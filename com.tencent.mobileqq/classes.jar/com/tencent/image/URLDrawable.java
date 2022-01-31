@@ -63,6 +63,7 @@ public class URLDrawable
   public static final int SUCCESSED = 1;
   public static final String TAG = "URLDrawable_";
   public static final String THREAD_SUB_TAG = "Thread";
+  public static boolean isPublicVersion = false;
   static Context mApplicationContext;
   static URLDrawable.DebuggableCallback sDebugCallback;
   static URLDrawableParams sDefaultDrawableParms;
@@ -201,6 +202,24 @@ public class URLDrawable
     sMemoryCache.evictAll();
   }
   
+  private static URLDrawable doIllegalURL(String paramString)
+  {
+    QLog.d("URLDrawable_", 1, "doIllegalURL :" + paramString + " isPublicVersion:" + isPublicVersion);
+    if (!isPublicVersion) {
+      throw new IllegalArgumentException("illegal url format: " + paramString);
+    }
+    try
+    {
+      paramString = getDrawable(new URL("illegalurl", null, ""));
+      return paramString;
+    }
+    catch (MalformedURLException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
   /* Error */
   @Deprecated
   public static URLDrawable getDrawable(File paramFile, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
@@ -209,8 +228,8 @@ public class URLDrawable
     //   0: aconst_null
     //   1: astore_2
     //   2: aload_0
-    //   3: invokevirtual 391	java/io/File:toURI	()Ljava/net/URI;
-    //   6: invokevirtual 396	java/net/URI:toURL	()Ljava/net/URL;
+    //   3: invokevirtual 425	java/io/File:toURI	()Ljava/net/URI;
+    //   6: invokevirtual 430	java/net/URI:toURL	()Ljava/net/URL;
     //   9: astore_3
     //   10: aload_2
     //   11: astore_0
@@ -218,38 +237,38 @@ public class URLDrawable
     //   13: ifnull +9 -> 22
     //   16: aload_3
     //   17: aload_1
-    //   18: invokestatic 399	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
+    //   18: invokestatic 433	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
     //   21: astore_0
     //   22: aload_0
     //   23: areturn
-    //   24: aload_0
-    //   25: athrow
+    //   24: astore_0
+    //   25: aload_2
     //   26: astore_0
-    //   27: aload_2
-    //   28: astore_0
-    //   29: iconst_0
-    //   30: ifeq -8 -> 22
-    //   33: aconst_null
-    //   34: aload_1
-    //   35: invokestatic 399	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
-    //   38: areturn
-    //   39: astore_0
-    //   40: iconst_0
-    //   41: ifeq -17 -> 24
-    //   44: aconst_null
-    //   45: aload_1
-    //   46: invokestatic 399	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
-    //   49: areturn
+    //   27: iconst_0
+    //   28: ifeq -6 -> 22
+    //   31: aconst_null
+    //   32: aload_1
+    //   33: invokestatic 433	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
+    //   36: areturn
+    //   37: astore_0
+    //   38: iconst_0
+    //   39: ifeq +9 -> 48
+    //   42: aconst_null
+    //   43: aload_1
+    //   44: invokestatic 433	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
+    //   47: areturn
+    //   48: aload_0
+    //   49: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	50	0	paramFile	File
     //   0	50	1	paramURLDrawableOptions	URLDrawable.URLDrawableOptions
-    //   1	27	2	localObject	Object
+    //   1	25	2	localObject	Object
     //   9	8	3	localURL	URL
     // Exception table:
     //   from	to	target	type
-    //   2	10	26	java/net/MalformedURLException
-    //   2	10	39	finally
+    //   2	10	24	java/net/MalformedURLException
+    //   2	10	37	finally
   }
   
   @Deprecated
@@ -278,10 +297,8 @@ public class URLDrawable
       paramDrawable1 = getDrawable(new URL(paramString), paramInt1, paramInt2, paramDrawable1, paramDrawable2, paramBoolean, 0.0F);
       return paramDrawable1;
     }
-    catch (MalformedURLException paramDrawable1)
-    {
-      throw new IllegalArgumentException("illegal url format: " + paramString);
-    }
+    catch (MalformedURLException paramDrawable1) {}
+    return doIllegalURL(paramString);
   }
   
   @Deprecated
@@ -309,10 +326,8 @@ public class URLDrawable
       paramURLDrawableOptions = getDrawable(new URL(paramString), paramURLDrawableOptions);
       return paramURLDrawableOptions;
     }
-    catch (MalformedURLException paramURLDrawableOptions)
-    {
-      throw new IllegalArgumentException("illegal url format: " + paramString);
-    }
+    catch (MalformedURLException paramURLDrawableOptions) {}
+    return doIllegalURL(paramString);
   }
   
   @Deprecated
@@ -537,7 +552,7 @@ public class URLDrawable
   
   public static URLDrawable getFileDrawable(String paramString, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
-    Object localObject = null;
+    localObject = null;
     try
     {
       URL localURL = new URI("file", null, paramString, null).toURL();
@@ -550,21 +565,20 @@ public class URLDrawable
     {
       paramString.printStackTrace();
       paramString = localObject;
-      return getDrawable(null, paramURLDrawableOptions);
     }
     catch (URISyntaxException paramString)
     {
       paramString.printStackTrace();
       paramString = localObject;
-      return getDrawable(null, paramURLDrawableOptions);
-      throw paramString;
     }
     finally
     {
-      while (0 == 0) {}
+      if (0 == 0) {
+        break label78;
+      }
+      return getDrawable(null, paramURLDrawableOptions);
     }
     return paramString;
-    return getDrawable(null, paramURLDrawableOptions);
   }
   
   public static int getPoolSize()

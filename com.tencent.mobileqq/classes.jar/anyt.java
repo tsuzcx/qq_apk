@@ -1,28 +1,52 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.os.Parcel;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 
 public class anyt
-  implements DialogInterface.OnClickListener
+  implements anyn
 {
-  public anyt(EmoticonMainPanel paramEmoticonMainPanel) {}
+  private String a = "ReadInJoyLauncher";
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Context paramContext, ColorNote paramColorNote)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Intent(this.a.a, FavEmosmManageActivity.class);
-    paramDialogInterface.putExtra("camera_emo_mode", 1);
-    this.a.a.startActivity(paramDialogInterface);
-    axqy.b(((BaseActivity)this.a.a).app, "dc00898", "", "", "0X800A36F", "0X800A36F", 0, 0, "", "", "", "");
+    paramColorNote = paramColorNote.getReserve();
+    if (paramColorNote == null) {
+      return;
+    }
+    try
+    {
+      Parcel localParcel = Parcel.obtain();
+      localParcel.unmarshall(paramColorNote, 0, paramColorNote.length);
+      localParcel.setDataPosition(0);
+      paramColorNote = new ArticleInfo(localParcel);
+      if (paramColorNote == null)
+      {
+        QLog.d(this.a, 2, "init color error something is null");
+        return;
+      }
+    }
+    catch (Exception paramColorNote)
+    {
+      for (;;)
+      {
+        QLog.e(this.a, 2, "unmarshall error");
+        paramColorNote.printStackTrace();
+        paramColorNote = null;
+      }
+      QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + paramColorNote.toString());
+      paramColorNote = osb.b(paramContext, paramColorNote);
+      paramColorNote.addFlags(268435456);
+      paramColorNote.putExtra("from_color_note", true);
+      paramContext.startActivity(paramColorNote);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anyt
  * JD-Core Version:    0.7.0.1
  */

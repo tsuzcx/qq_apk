@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
-import nvc;
+import nyg;
 
 public class ReadInJoyBaseDeliverActivity$13$1
   implements Runnable
 {
-  public ReadInJoyBaseDeliverActivity$13$1(nvc paramnvc) {}
+  public ReadInJoyBaseDeliverActivity$13$1(nyg paramnyg) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ReadInJoyBaseDeliverActivity$13$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity.13.1
  * JD-Core Version:    0.7.0.1
  */

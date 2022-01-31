@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import bcqf;
+import bepp;
 
 class AuthDevActivity$11
   implements Runnable
@@ -12,7 +12,7 @@ class AuthDevActivity$11
     try
     {
       if ((AuthDevActivity.a(this.this$0) == null) && (!this.this$0.isFinishing())) {
-        AuthDevActivity.a(this.this$0, new bcqf(this.this$0, this.this$0.getTitleBarHeight()));
+        AuthDevActivity.a(this.this$0, new bepp(this.this$0, this.this$0.getTitleBarHeight()));
       }
       if ((AuthDevActivity.a(this.this$0) != null) && (!AuthDevActivity.a(this.this$0).isShowing())) {
         AuthDevActivity.a(this.this$0).show();
@@ -30,7 +30,7 @@ class AuthDevActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevActivity.11
  * JD-Core Version:    0.7.0.1
  */

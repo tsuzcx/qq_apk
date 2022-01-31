@@ -1,30 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.datareportviewer.DataReportViewer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class anlr
-  implements Animation.AnimationListener
+class anlr
+  implements DialogInterface.OnDismissListener
 {
-  public anlr(DataReportViewer paramDataReportViewer) {}
+  anlr(anlq paramanlq, bhpy parambhpy) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    this.a.e();
+    this.jdField_a_of_type_Bhpy.dismiss();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearApp actionsheet is closed", new Object[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anlr
  * JD-Core Version:    0.7.0.1
  */

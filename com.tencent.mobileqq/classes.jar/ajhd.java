@@ -1,25 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.content.Context;
+import android.text.TextUtils;
 
 public class ajhd
-  implements EIPCResultCallback
+  extends ajhi
 {
-  public ajhd(ApolloGameActivity paramApolloGameActivity) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public ajhd(Context paramContext, String paramString)
   {
-    paramEIPCResult = paramEIPCResult.data;
-    boolean bool1 = paramEIPCResult.getBoolean("isOpen");
-    boolean bool2 = paramEIPCResult.getBoolean("display", false);
-    this.a.a(bool2, bool1, ApolloGameActivity.a(this.a).mTempAIOUin);
+    a(paramString);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (paramString = "";; paramString = '[' + paramString + ']')
+    {
+      this.a = paramString;
+      this.b = this.a;
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhd
  * JD-Core Version:    0.7.0.1
  */

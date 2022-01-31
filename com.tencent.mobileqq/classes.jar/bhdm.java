@@ -1,74 +1,22 @@
-import NS_QZONE_MQMSG.BottomContentItem;
-import cooperation.qzone.util.QZLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qqmini.sdk.core.tissue.TissueEnv;
+import com.tencent.qqmini.sdk.core.tissue.TissueGlobal;
 
-public class bhdm
+class bhdm
+  implements TissueEnv
 {
-  public String a;
-  public String b;
+  bhdm(bhdl parambhdl, String paramString) {}
   
-  public bhdm() {}
-  
-  public bhdm(String paramString1, String paramString2)
+  public String getNativeLibDir()
   {
-    this.a = paramString1;
-    this.b = paramString2;
-  }
-  
-  public static bhdm a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return null;
+    if (TissueGlobal.verifyTissueEngine(this.jdField_a_of_type_JavaLangString)) {
+      return this.jdField_a_of_type_JavaLangString;
     }
-    bhdm localbhdm = new bhdm();
-    localbhdm.a = paramJSONObject.optString("content");
-    localbhdm.b = paramJSONObject.optString("url");
-    return localbhdm;
-  }
-  
-  public static ArrayList<bhdm> a(ArrayList<BottomContentItem> paramArrayList)
-  {
-    if (paramArrayList == null) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      BottomContentItem localBottomContentItem = (BottomContentItem)paramArrayList.next();
-      if (localBottomContentItem != null)
-      {
-        bhdm localbhdm = new bhdm();
-        localbhdm.a = localBottomContentItem.content;
-        localbhdm.b = localBottomContentItem.url;
-        localArrayList.add(localbhdm);
-      }
-    }
-    return localArrayList;
-  }
-  
-  public JSONObject a()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("content", this.a);
-      localJSONObject.put("url", this.b);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      QZLog.e("BottomItem", "convert json error", localJSONException);
-    }
-    return localJSONObject;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhdm
  * JD-Core Version:    0.7.0.1
  */

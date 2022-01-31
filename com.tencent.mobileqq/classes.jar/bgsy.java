@@ -1,20 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.qqpim.QQPimBridgeActivity;
+import android.content.DialogInterface.OnClickListener;
 
-public class bgsy
-  implements DialogInterface.OnDismissListener
+class bgsy
+  implements DialogInterface.OnClickListener
 {
-  public bgsy(QQPimBridgeActivity paramQQPimBridgeActivity) {}
+  bgsy(bgsx parambgsx) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    paramDialogInterface.dismiss();
+    this.a.a("later_click");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgsy
  * JD-Core Version:    0.7.0.1
  */

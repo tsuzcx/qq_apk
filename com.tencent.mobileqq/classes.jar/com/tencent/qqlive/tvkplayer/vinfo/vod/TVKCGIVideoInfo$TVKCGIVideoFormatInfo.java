@@ -18,8 +18,10 @@ public class TVKCGIVideoInfo$TVKCGIVideoFormatInfo
   private int lmt;
   private String name;
   private int profile;
+  private String resolution;
   private int sb;
   private int sl;
+  private String sname;
   private int superNode;
   private int video;
   
@@ -86,6 +88,11 @@ public class TVKCGIVideoInfo$TVKCGIVideoFormatInfo
     return this.profile;
   }
   
+  public String getResolution()
+  {
+    return this.resolution;
+  }
+  
   public int getSb()
   {
     return this.sb;
@@ -94,6 +101,11 @@ public class TVKCGIVideoInfo$TVKCGIVideoFormatInfo
   public int getSl()
   {
     return this.sl;
+  }
+  
+  public String getSname()
+  {
+    return this.sname;
   }
   
   public int getSuperNode()
@@ -122,6 +134,8 @@ public class TVKCGIVideoInfo$TVKCGIVideoFormatInfo
     this.br = paramParcel.readInt();
     this.fs = paramParcel.readLong();
     this.hdr10enh = paramParcel.readInt();
+    this.sname = paramParcel.readString();
+    this.resolution = paramParcel.readString();
   }
   
   public void setAudio(int paramInt)
@@ -174,6 +188,11 @@ public class TVKCGIVideoInfo$TVKCGIVideoFormatInfo
     this.profile = paramInt;
   }
   
+  public void setResolution(String paramString)
+  {
+    this.resolution = paramString;
+  }
+  
   public void setSb(int paramInt)
   {
     this.sb = paramInt;
@@ -182,6 +201,11 @@ public class TVKCGIVideoInfo$TVKCGIVideoFormatInfo
   public void setSl(int paramInt)
   {
     this.sl = paramInt;
+  }
+  
+  public void setSname(String paramString)
+  {
+    this.sname = paramString;
   }
   
   public void setSuperNode(int paramInt)
@@ -210,11 +234,13 @@ public class TVKCGIVideoInfo$TVKCGIVideoFormatInfo
     paramParcel.writeInt(this.br);
     paramParcel.writeLong(this.fs);
     paramParcel.writeInt(this.hdr10enh);
+    paramParcel.writeString(this.sname);
+    paramParcel.writeString(this.resolution);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVideoInfo.TVKCGIVideoFormatInfo
  * JD-Core Version:    0.7.0.1
  */

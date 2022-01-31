@@ -1,23 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.InterruptedWeishiAd;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-public final class npk
-  implements Parcelable.Creator<VideoInfo.InterruptedWeishiAd>
+public class npk
+  implements army
 {
-  public VideoInfo.InterruptedWeishiAd a(Parcel paramParcel)
+  public npk(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  
+  public void a()
   {
-    return new VideoInfo.InterruptedWeishiAd(paramParcel);
+    aanp.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
+    if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
+    {
+      ReadInJoyNativeAdAppVideoView.a(this.a).start();
+      ReadInJoyNativeAdAppVideoView.e(this.a, 5);
+      ReadInJoyNativeAdAppVideoView.a(this.a);
+      ReadInJoyNativeAdAppVideoView.f(this.a, 2);
+    }
   }
   
-  public VideoInfo.InterruptedWeishiAd[] a(int paramInt)
-  {
-    return new VideoInfo.InterruptedWeishiAd[paramInt];
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npk
  * JD-Core Version:    0.7.0.1
  */

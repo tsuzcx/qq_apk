@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.activity.delDownloadFile;
 
-import ajya;
+import alpo;
 import android.content.Context;
-import aoqb;
-import aoqf;
-import aorp;
-import apel;
-import apxx;
-import axqy;
+import aqiz;
+import aqjd;
+import aqkn;
+import aqxj;
+import arqz;
+import azmj;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
@@ -23,7 +23,7 @@ import java.util.Set;
 
 public class QfileLocalFileDelMediaTabView
   extends QfileLocalFilePicTabView
-  implements aoqf
+  implements aqjd
 {
   int jdField_a_of_type_Int = 0;
   LinkedHashMap<String, List<FileInfo>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
@@ -34,7 +34,7 @@ public class QfileLocalFileDelMediaTabView
   boolean jdField_b_of_type_Boolean = false;
   List<FileInfo> c;
   
-  public QfileLocalFileDelMediaTabView(Context paramContext, List<apxx> paramList, boolean paramBoolean)
+  public QfileLocalFileDelMediaTabView(Context paramContext, List<arqz> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     this.jdField_c_of_type_JavaUtilList = new ArrayList();
@@ -82,18 +82,17 @@ public class QfileLocalFileDelMediaTabView
     {
       try
       {
-        localObject = a(paramFileInfo);
-        paramFileInfo = new File((String)localObject);
-        if (!paramFileInfo.exists())
+        paramFileInfo = a(paramFileInfo);
+        localObject = new File(paramFileInfo);
+        if (!((File)localObject).exists())
         {
-          paramFileInfo = "file not exists";
-          if (QLog.isColorLevel()) {
-            paramFileInfo = "file not exists" + " : " + (String)localObject;
+          if (!QLog.isColorLevel()) {
+            break;
           }
-          QLog.w("delDownloadFiles<FileAssistant>", 1, paramFileInfo);
+          new StringBuilder().append("file not exists").append(" : ").append(paramFileInfo).toString();
           return bool1;
         }
-        paramFileInfo.delete();
+        ((File)localObject).delete();
         return bool1;
       }
       catch (Exception paramFileInfo)
@@ -102,13 +101,14 @@ public class QfileLocalFileDelMediaTabView
         return bool1;
       }
     }
+    return bool1;
   }
   
-  public aoqb a()
+  public aqiz a()
   {
-    aorp localaorp = new aorp(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, 2);
-    localaorp.a(this);
-    return localaorp;
+    aqkn localaqkn = new aqkn(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, 2);
+    localaqkn.a(this);
+    return localaqkn;
   }
   
   public String a(FileInfo paramFileInfo)
@@ -186,7 +186,7 @@ public class QfileLocalFileDelMediaTabView
       this.jdField_c_of_type_JavaUtilList.clear();
       i();
       l2 /= 1048576L;
-      axqy.b(null, "dc00898", "", "", "0X800A0CC", "0X800A0CC", 2, 0, "" + l1, "" + l2, "", "");
+      azmj.b(null, "dc00898", "", "", "0X800A0CC", "0X800A0CC", 2, 0, "" + l1, "" + l2, "", "");
       return;
     }
   }
@@ -200,8 +200,8 @@ public class QfileLocalFileDelMediaTabView
   {
     this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
     this.jdField_c_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    long l = apel.d() / 1048576L;
-    axqy.b(null, "dc00898", "", "", "0X800A0CB", "0X800A0CB", 2, 0, "" + this.jdField_a_of_type_Int, "" + l, "", "");
+    long l = aqxj.d() / 1048576L;
+    azmj.b(null, "dc00898", "", "", "0X800A0CB", "0X800A0CB", 2, 0, "" + this.jdField_a_of_type_Int, "" + l, "", "");
     super.d();
   }
   
@@ -217,7 +217,7 @@ public class QfileLocalFileDelMediaTabView
     boolean bool = false;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.a(this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.l();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnIndexChangedListener(this.jdField_a_of_type_Apxv);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.setOnIndexChangedListener(this.jdField_a_of_type_Arqx);
     if (this.jdField_a_of_type_JavaUtilList != null) {}
     for (int i = this.jdField_a_of_type_JavaUtilList.size();; i = 0)
     {
@@ -249,12 +249,12 @@ public class QfileLocalFileDelMediaTabView
       i();
       setSelect(0);
       return;
-      axqy.b(null, "dc00898", "", "", "0X800A0C8", "0X800A0C8", 2, 0, "", "", "", "");
+      azmj.b(null, "dc00898", "", "", "0X800A0C8", "0X800A0C8", 2, 0, "", "", "", "");
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
-        this.jdField_c_of_type_JavaUtilLinkedHashMap.put(ajya.a(2131709691), this.jdField_a_of_type_JavaUtilList);
+        this.jdField_c_of_type_JavaUtilLinkedHashMap.put(alpo.a(2131710063), this.jdField_a_of_type_JavaUtilList);
         continue;
-        axqy.b(null, "dc00898", "", "", "0X800A0C9", "0X800A0C9", 2, 0, "", "", "", "");
+        azmj.b(null, "dc00898", "", "", "0X800A0C9", "0X800A0C9", 2, 0, "", "", "", "");
         this.jdField_c_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
       }
     }
@@ -262,7 +262,7 @@ public class QfileLocalFileDelMediaTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView
  * JD-Core Version:    0.7.0.1
  */

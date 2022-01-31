@@ -1,30 +1,51 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aonj
-  implements Animation.AnimationListener
 {
-  public aonj(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
+  public boolean a = true;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static aonj a(String paramString)
   {
-    if ((Face2FaceFriendBubbleView.a(this.a) == 2) || (Face2FaceFriendBubbleView.a(this.a) == 3) || (Face2FaceFriendBubbleView.a(this.a) == 4))
+    aonj localaonj = new aonj();
+    if (TextUtils.isEmpty(paramString))
     {
-      Face2FaceFriendBubbleView.a(this.a).startAnimation(Face2FaceFriendBubbleView.a(this.a));
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("SubAccountConfigBean", 0, "parse content is empty");
+      }
+      return localaonj;
     }
-    Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+    for (;;)
+    {
+      try
+      {
+        if (new JSONObject(paramString).optInt("isSideAccountGroupMsgEnabled", 0) != 0) {
+          break label109;
+        }
+        bool = true;
+        localaonj.a = bool;
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        QLog.d("SubAccountConfigBean", 0, "parse configValue=" + localaonj.a);
+        return localaonj;
+      }
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("SubAccountConfigBean", 0, "parse e:", paramString);
+      return localaonj;
+      label109:
+      boolean bool = false;
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,42 @@
-import com.tencent.biz.qqstory.base.preload.PreloadQueue;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
+import java.util.Comparator;
 
-public final class suw
+class suw
+  implements Comparator<TroopBarData>
 {
-  protected int a = 0;
+  suw(suv paramsuv) {}
   
-  public PreloadQueue a()
+  public int a(TroopBarData paramTroopBarData1, TroopBarData paramTroopBarData2)
   {
-    PreloadQueue localPreloadQueue = new PreloadQueue();
-    PreloadQueue.access$002(localPreloadQueue, this.a);
-    return localPreloadQueue;
-  }
-  
-  public suw a(int paramInt)
-  {
-    this.a = paramInt;
-    return this;
+    long l1 = Math.max(paramTroopBarData1.mLastMsgTime, paramTroopBarData1.mLastDraftTime);
+    long l2 = Math.max(paramTroopBarData2.mLastMsgTime, paramTroopBarData2.mLastDraftTime);
+    if ((paramTroopBarData2.mIsSticky) && (!paramTroopBarData1.mIsSticky)) {}
+    do
+    {
+      do
+      {
+        return 1;
+        if ((!paramTroopBarData2.mIsSticky) && (paramTroopBarData1.mIsSticky)) {
+          return -1;
+        }
+        if ((!paramTroopBarData2.mIsSticky) || (!paramTroopBarData1.mIsSticky)) {
+          break;
+        }
+      } while (paramTroopBarData2.mLastStickyTime > paramTroopBarData1.mLastStickyTime);
+      if (paramTroopBarData2.mLastStickyTime == paramTroopBarData1.mLastStickyTime) {
+        return 0;
+      }
+      return -1;
+    } while (l1 < l2);
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     suw
  * JD-Core Version:    0.7.0.1
  */

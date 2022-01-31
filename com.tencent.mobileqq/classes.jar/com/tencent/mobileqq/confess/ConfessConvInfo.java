@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.confess;
 
-import auko;
+import awbv;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type,topicId,holmesCurCount,holmesTolCount")
 public class ConfessConvInfo
-  extends auko
+  extends awbv
 {
   private static final String tableName = "confess_conv_info";
   public int holmesCurCount;
@@ -47,7 +47,7 @@ public class ConfessConvInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessConvInfo
  * JD-Core Version:    0.7.0.1
  */

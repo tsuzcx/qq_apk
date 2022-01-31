@@ -1,283 +1,280 @@
-public class bgyg<T>
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
+import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
+import com.tencent.qqmini.sdk.launcher.model.LaunchParam;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.launcher.shell.IMiniAppEnv;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.1;
+import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.10;
+import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.14;
+import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.15;
+import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.3;
+import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.8;
+import com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.9;
+import com.tencent.qqmini.sdk.utils.QUAUtil;
+import java.util.ArrayList;
+import java.util.List;
+
+public class bgyg
 {
-  private int jdField_a_of_type_Int = 10;
-  private Object[] jdField_a_of_type_ArrayOfJavaLangObject;
-  private int b;
-  private int c;
-  private int d;
+  private static long jdField_a_of_type_Long = 5000L;
+  private static MiniAppInfo jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+  private static Runnable jdField_a_of_type_JavaLangRunnable = new SDKMiniProgramLpReportDC04239.14();
   
-  public bgyg()
+  public static String a(MiniAppInfo paramMiniAppInfo)
   {
-    this.b = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = new Object[this.b];
-  }
-  
-  public bgyg(int paramInt)
-  {
-    if (paramInt < 1) {
-      throw new IllegalArgumentException("size不能小于1,size=" + paramInt);
-    }
-    this.b = paramInt;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = new Object[this.b];
-  }
-  
-  /* Error */
-  public int a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokevirtual 48	bgyg:b	()Z
-    //   6: istore 4
-    //   8: iload 4
-    //   10: ifeq +9 -> 19
-    //   13: iconst_0
-    //   14: istore_1
-    //   15: aload_0
-    //   16: monitorexit
-    //   17: iload_1
-    //   18: ireturn
-    //   19: aload_0
-    //   20: getfield 50	bgyg:d	I
-    //   23: aload_0
-    //   24: getfield 52	bgyg:c	I
-    //   27: if_icmple +16 -> 43
-    //   30: aload_0
-    //   31: getfield 50	bgyg:d	I
-    //   34: aload_0
-    //   35: getfield 52	bgyg:c	I
-    //   38: isub
-    //   39: istore_1
-    //   40: goto -25 -> 15
-    //   43: aload_0
-    //   44: getfield 19	bgyg:b	I
-    //   47: istore_1
-    //   48: aload_0
-    //   49: getfield 52	bgyg:c	I
-    //   52: istore_2
-    //   53: aload_0
-    //   54: getfield 50	bgyg:d	I
-    //   57: istore_3
-    //   58: iload_1
-    //   59: iload_2
-    //   60: iload_3
-    //   61: isub
-    //   62: isub
-    //   63: istore_1
-    //   64: goto -49 -> 15
-    //   67: astore 5
-    //   69: aload_0
-    //   70: monitorexit
-    //   71: aload 5
-    //   73: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	74	0	this	bgyg
-    //   14	50	1	i	int
-    //   52	10	2	j	int
-    //   57	5	3	k	int
-    //   6	3	4	bool	boolean
-    //   67	5	5	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	8	67	finally
-    //   19	40	67	finally
-    //   43	58	67	finally
-  }
-  
-  public T a()
-  {
-    try
+    if (paramMiniAppInfo != null)
     {
-      if (b()) {
-        throw new IndexOutOfBoundsException(ajya.a(2131706395));
+      if (paramMiniAppInfo.isReportTypeMiniGame()) {
+        return "1";
+      }
+      return "0";
+    }
+    return "0";
+  }
+  
+  public static void a()
+  {
+    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
+      QMLog.i("MiniProgramLpReportDC04239", "deleteRecordDurationMsg");
+    }
+    bgya.a().a().removeCallbacks(jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, long paramLong)
+  {
+    ThreadManager.a(new SDKMiniProgramLpReportDC04239.15(paramMiniAppInfo, paramLong), 16, null, false);
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, String paramString)
+  {
+    bgya.a().a().post(new SDKMiniProgramLpReportDC04239.8(paramString, paramMiniAppInfo));
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    bgya.a().a().post(new SDKMiniProgramLpReportDC04239.3(paramString3, paramString4, paramString1, paramMiniAppInfo, paramString2));
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    bgya.a().a().post(new SDKMiniProgramLpReportDC04239.1(paramString3, paramString4, paramString5, paramString1, paramMiniAppInfo, paramString2));
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    bgya.a().a().post(new SDKMiniProgramLpReportDC04239.9(paramMiniAppInfo, paramString1, paramString2, paramString3, paramString4, paramString5, paramString6));
+  }
+  
+  public static void a(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10)
+  {
+    if ((a(paramString4)) && (!bgxl.a))
+    {
+      bgya.a().a().post(new SDKMiniProgramLpReportDC04239.10(paramMiniAppInfo, paramString3, paramString4, paramString2, paramString5, paramString6, paramString1));
+      if (("unload".equals(paramString4)) || ("close".equals(paramString4)) || ("hide".equals(paramString4)) || ("finishshow".equals(paramString4)) || ("sys_alert".equals(paramString3)))
+      {
+        bgya.a().b();
+        if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
+          QMLog.d("MiniProgramLpReportDC04239", "reportPageView() called flush()");
+        }
+      }
+      if (!"show".equals(paramString4)) {
+        break label283;
+      }
+      jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo = paramMiniAppInfo;
+      c();
+    }
+    label183:
+    while ((!"unload".equals(paramString4)) && (!"hide".equals(paramString4)) && (!"close".equals(paramString4)))
+    {
+      return;
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(bgxz.b());
+      String str = bgkl.a(paramString2);
+      if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null))
+      {
+        paramString2 = String.valueOf(paramMiniAppInfo.launchParam.scene);
+        localArrayList.addAll(bgxz.a(paramMiniAppInfo, str, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString1, null));
+        localArrayList.addAll(bgxz.c());
+        if (!QUAUtil.isQQApp()) {
+          localArrayList.addAll(bgxz.a());
+        }
+        if (!QUAUtil.isQQApp()) {
+          break label276;
+        }
+      }
+      for (int i = 2;; i = 12)
+      {
+        paramString1 = bgxz.a(i, localArrayList, null);
+        bgya.a().a(paramString1);
+        break;
+        paramString2 = null;
+        break label183;
       }
     }
-    finally {}
-    Object localObject2 = this.jdField_a_of_type_ArrayOfJavaLangObject[this.c];
-    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
-    int i = this.c;
-    this.c = (i + 1);
-    arrayOfObject[i] = null;
-    if (this.c == this.b) {}
-    for (i = 0;; i = this.c)
+    label276:
+    label283:
+    a();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return ("click".equals(paramString)) || ("load".equals(paramString)) || ("load_fail".equals(paramString)) || ("show".equals(paramString)) || ("show_fail".equals(paramString)) || ("finishshow".equals(paramString)) || ("hide".equals(paramString)) || ("unload".equals(paramString)) || ("close".equals(paramString));
+  }
+  
+  private static SharedPreferences b(String paramString1, String paramString2)
+  {
+    return AppLoaderFactory.g().getMiniAppEnv().getContext().getSharedPreferences(paramString1 + "_" + paramString2, 0);
+  }
+  
+  private static String b(String paramString1, String paramString2)
+  {
+    return paramString1 + "_" + paramString2 + "_duration";
+  }
+  
+  public static void b(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(bgxz.b());
+    String str = bgkl.a(paramString2);
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null))
     {
-      this.c = i;
-      return localObject2;
+      paramString2 = String.valueOf(paramMiniAppInfo.launchParam.scene);
+      localArrayList.addAll(bgxz.a(paramMiniAppInfo, str, paramString2, paramString3, paramString4, paramString5, paramString6, null, null, null, null, paramString1, ""));
+      localArrayList.addAll(bgxz.c());
+      if ((paramMiniAppInfo != null) && (paramMiniAppInfo.reportData != null) && (!TextUtils.isEmpty(paramMiniAppInfo.reportData))) {
+        localArrayList.addAll(bgxz.a(paramMiniAppInfo.reportData));
+      }
+      if (!QUAUtil.isQQApp()) {
+        localArrayList.addAll(bgxz.a());
+      }
+      if (!QUAUtil.isQQApp()) {
+        break label173;
+      }
+    }
+    label173:
+    for (int i = 2;; i = 12)
+    {
+      paramMiniAppInfo = bgxz.a(i, localArrayList, null);
+      bgya.a().a(paramMiniAppInfo);
+      return;
+      paramString2 = null;
+      break;
     }
   }
   
-  public void a(T paramT)
+  private static void b(String paramString1, String paramString2, String paramString3)
   {
-    try
-    {
-      if ((this.d == this.c) && (this.jdField_a_of_type_ArrayOfJavaLangObject[this.c] != null)) {
-        throw new IndexOutOfBoundsException(ajya.a(2131706394));
-      }
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(bgxz.b());
+    localArrayList.addAll(bgxz.a(paramString1, paramString2, paramString3, null, null, null, null));
+    localArrayList.addAll(bgxz.c());
+    if (!QUAUtil.isQQApp()) {
+      localArrayList.addAll(bgxz.a());
     }
-    finally {}
-    if (paramT == null) {
-      throw new IllegalArgumentException("element不能为null,element=null");
-    }
-    Object[] arrayOfObject = this.jdField_a_of_type_ArrayOfJavaLangObject;
-    int i = this.d;
-    this.d = (i + 1);
-    arrayOfObject[i] = paramT;
-    if (this.d == this.b) {}
-    for (i = 0;; i = this.d)
+    if (QUAUtil.isQQApp()) {}
+    for (int i = 2;; i = 12)
     {
-      this.d = i;
+      paramString1 = bgxz.a(i, localArrayList, null);
+      bgya.a().a(paramString1);
+      bgya.a().b();
       return;
     }
   }
   
-  /* Error */
-  public boolean a()
+  private static void b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokevirtual 71	bgyg:a	()I
-    //   6: istore_1
-    //   7: aload_0
-    //   8: getfield 19	bgyg:b	I
-    //   11: istore_2
-    //   12: iload_1
-    //   13: iload_2
-    //   14: if_icmpne +9 -> 23
-    //   17: iconst_1
-    //   18: istore_3
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: iload_3
-    //   22: ireturn
-    //   23: iconst_0
-    //   24: istore_3
-    //   25: goto -6 -> 19
-    //   28: astore 4
-    //   30: aload_0
-    //   31: monitorexit
-    //   32: aload 4
-    //   34: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	35	0	this	bgyg
-    //   6	9	1	i	int
-    //   11	4	2	j	int
-    //   18	7	3	bool	boolean
-    //   28	5	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	12	28	finally
-  }
-  
-  /* Error */
-  public boolean b()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 50	bgyg:d	I
-    //   6: aload_0
-    //   7: getfield 52	bgyg:c	I
-    //   10: if_icmpne +23 -> 33
-    //   13: aload_0
-    //   14: getfield 21	bgyg:jdField_a_of_type_ArrayOfJavaLangObject	[Ljava/lang/Object;
-    //   17: aload_0
-    //   18: getfield 50	bgyg:d	I
-    //   21: aaload
-    //   22: astore_2
-    //   23: aload_2
-    //   24: ifnonnull +9 -> 33
-    //   27: iconst_1
-    //   28: istore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: iload_1
-    //   32: ireturn
-    //   33: iconst_0
-    //   34: istore_1
-    //   35: goto -6 -> 29
-    //   38: astore_2
-    //   39: aload_0
-    //   40: monitorexit
-    //   41: aload_2
-    //   42: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	43	0	this	bgyg
-    //   28	7	1	bool	boolean
-    //   22	2	2	localObject1	Object
-    //   38	4	2	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	23	38	finally
-  }
-  
-  public String toString()
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject1;
-        if (b())
-        {
-          localObject1 = "[]";
-          return localObject1;
-        }
-        int i;
-        if (this.c < this.d)
-        {
-          localObject1 = new StringBuilder("[");
-          i = this.c;
-          if (i < this.d)
-          {
-            ((StringBuilder)localObject1).append(this.jdField_a_of_type_ArrayOfJavaLangObject[i].toString() + "->");
-            i += 1;
-          }
-          else
-          {
-            i = ((StringBuilder)localObject1).length();
-            localObject1 = "]";
-          }
-        }
-        else
-        {
-          localObject1 = new StringBuilder("[");
-          i = this.c;
-          if (i < this.b)
-          {
-            ((StringBuilder)localObject1).append(this.jdField_a_of_type_ArrayOfJavaLangObject[i].toString() + "->");
-            i += 1;
-            continue;
-            if (i < this.d)
-            {
-              ((StringBuilder)localObject1).append(this.jdField_a_of_type_ArrayOfJavaLangObject[i].toString() + "->");
-              i += 1;
-            }
-            else
-            {
-              i = ((StringBuilder)localObject1).length();
-              localObject1 = "]";
-            }
-          }
-          else
-          {
-            i = 0;
-          }
-        }
-      }
-      finally {}
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(bgxz.b());
+    localArrayList.addAll(bgxz.a(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, null));
+    localArrayList.addAll(bgxz.c());
+    if (!QUAUtil.isQQApp()) {
+      localArrayList.addAll(bgxz.a());
     }
+    if (QUAUtil.isQQApp()) {}
+    for (int i = 2;; i = 12)
+    {
+      paramString1 = bgxz.a(i, localArrayList, null);
+      bgya.a().a(paramString1);
+      bgya.a().b();
+      return;
+    }
+  }
+  
+  private static String c(MiniAppInfo paramMiniAppInfo)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramMiniAppInfo != null)
+    {
+      localObject1 = localObject2;
+      if (paramMiniAppInfo.launchParam != null) {
+        localObject1 = paramMiniAppInfo.launchParam.miniAppId;
+      }
+    }
+    localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = paramMiniAppInfo.appId;
+    }
+    return localObject2;
+  }
+  
+  private static void c()
+  {
+    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
+      QMLog.i("MiniProgramLpReportDC04239", "sendRecordDurationMsg");
+    }
+    bgya.a().a().removeCallbacks(jdField_a_of_type_JavaLangRunnable);
+    bgya.a().a().postDelayed(jdField_a_of_type_JavaLangRunnable, jdField_a_of_type_Long);
+  }
+  
+  private static void c(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(bgxz.b());
+    String str1 = "0";
+    if (paramMiniAppInfo != null) {
+      str1 = a(paramMiniAppInfo);
+    }
+    String str2;
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null))
+    {
+      str2 = String.valueOf(paramMiniAppInfo.launchParam.scene);
+      localArrayList.addAll(bgxz.a(paramMiniAppInfo, null, str2, paramString1, paramString2, paramString3, paramString4, null, null, null, null, str1, ""));
+      localArrayList.addAll(bgxz.c());
+      if (!QUAUtil.isQQApp()) {
+        localArrayList.addAll(bgxz.a());
+      }
+      if (!QUAUtil.isQQApp()) {
+        break label152;
+      }
+    }
+    label152:
+    for (int i = 2;; i = 12)
+    {
+      paramMiniAppInfo = bgxz.a(i, localArrayList, null);
+      bgya.a().a(paramMiniAppInfo);
+      bgya.a().b();
+      return;
+      str2 = null;
+      break;
+    }
+  }
+  
+  private static void c(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    a(paramMiniAppInfo, paramString1, paramString2, paramString3, paramString4, paramString5, "", null, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgyg
  * JD-Core Version:    0.7.0.1
  */

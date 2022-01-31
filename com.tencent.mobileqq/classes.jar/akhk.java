@@ -1,65 +1,17 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.app.SingleThreadExecutor;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import java.util.List;
-import java.util.concurrent.AbstractExecutorService;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.TimeUnit;
-
 public class akhk
-  extends AbstractExecutorService
 {
-  private final int a;
+  public int a;
+  public awbv a;
   
-  protected akhk(int paramInt)
+  public akhk(int paramInt, awbv paramawbv)
   {
-    this.a = paramInt;
-  }
-  
-  public static ExecutorService a(int paramInt)
-  {
-    return new akhk(paramInt);
-  }
-  
-  public static ExecutorService b(int paramInt)
-  {
-    return new SingleThreadExecutor(paramInt);
-  }
-  
-  public boolean awaitTermination(long paramLong, @NonNull TimeUnit paramTimeUnit)
-  {
-    return false;
-  }
-  
-  public void execute(@NonNull Runnable paramRunnable)
-  {
-    ThreadManagerV2.excute(paramRunnable, this.a, null, false);
-  }
-  
-  public boolean isShutdown()
-  {
-    return false;
-  }
-  
-  public boolean isTerminated()
-  {
-    return false;
-  }
-  
-  public void shutdown()
-  {
-    throw new UnsupportedOperationException();
-  }
-  
-  @NonNull
-  public List<Runnable> shutdownNow()
-  {
-    throw new UnsupportedOperationException();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Awbv = paramawbv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhk
  * JD-Core Version:    0.7.0.1
  */

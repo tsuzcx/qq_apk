@@ -1,35 +1,29 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 class uxy
-  extends LruCache<uya, Drawable>
+  extends SimpleJob<Object>
 {
-  uxy(uxx paramuxx, int paramInt)
+  uxy(uxx paramuxx, String paramString)
   {
-    super(paramInt);
+    super(paramString);
   }
   
-  protected int a(uya paramuya, Drawable paramDrawable)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if ((paramDrawable instanceof BitmapDrawable))
-    {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
-      {
-        int i = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * i;
-        uyj.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramuya, " size=", Integer.valueOf(i) });
-        return i;
-      }
+    if (this.a.jdField_a_of_type_Uya == null) {
+      this.a.jdField_a_of_type_Uya = new uya(this.a, this.a.d);
     }
-    return 524288;
+    this.a.jdField_a_of_type_JavaLangString = "";
+    uxx.a(this.a);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uxy
  * JD-Core Version:    0.7.0.1
  */

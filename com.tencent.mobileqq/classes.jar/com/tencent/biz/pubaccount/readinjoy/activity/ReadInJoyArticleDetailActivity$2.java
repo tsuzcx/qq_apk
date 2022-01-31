@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.activity;
 
 import java.util.List;
-import osg;
+import owy;
 
 class ReadInJoyArticleDetailActivity$2
   implements Runnable
@@ -10,12 +10,12 @@ class ReadInJoyArticleDetailActivity$2
   
   public void run()
   {
-    osg.a().a(this.a);
+    owy.a().a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.2
  * JD-Core Version:    0.7.0.1
  */

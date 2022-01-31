@@ -1,37 +1,21 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.ThemeImageView;
 
-class akfd
-  implements BusinessObserver
+public class akfd
 {
-  akfd(akfc paramakfc, long paramLong) {}
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public aovj a;
+  public ThemeImageView a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_Akfc.a.append(2, Boolean.valueOf(false));
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer onReceive :" + paramBoolean);
-    }
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null) {
-        break label79;
-      }
-      akfc.a(this.jdField_a_of_type_Akfc, 2, this.jdField_a_of_type_Long, paramBundle);
-    }
-    label79:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.e("RecommendTroopManagerImp", 2, "getRecommendTroopFromServer success data is null");
-  }
+  public akfd(akfc paramakfc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akfd
  * JD-Core Version:    0.7.0.1
  */

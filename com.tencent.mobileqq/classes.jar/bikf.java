@@ -1,20 +1,17 @@
+import java.util.Observable;
+
 public class bikf
+  extends Observable
 {
-  private static bikg a;
-  
-  public static bikg a()
+  public void a()
   {
-    return a;
-  }
-  
-  public static void a(bikg parambikg)
-  {
-    a = parambikg;
+    setChanged();
+    notifyObservers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bikf
  * JD-Core Version:    0.7.0.1
  */

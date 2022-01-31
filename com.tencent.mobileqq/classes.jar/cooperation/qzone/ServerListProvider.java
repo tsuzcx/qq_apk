@@ -4,7 +4,7 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.os.Process;
-import bhcq;
+import bjea;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import java.util.Iterator;
@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ServerListProvider
 {
-  private static String SERVER_DIR = bhcq.l;
+  private static String SERVER_DIR = bjea.l;
   private static final String TAG = "ServerListProvider";
   public static final int VALUE_DB2 = 13;
   public static final int VALUE_DB3 = 86;
@@ -91,7 +91,7 @@ public class ServerListProvider
   {
     try
     {
-      File localFile = new File(bhcq.m);
+      File localFile = new File(bjea.m);
       if ((localFile != null) && (localFile.exists())) {
         localFile.delete();
       }
@@ -133,7 +133,7 @@ public class ServerListProvider
     //   33: pop
     //   34: new 170	java/io/File
     //   37: dup
-    //   38: getstatic 173	bhcq:m	Ljava/lang/String;
+    //   38: getstatic 173	bjea:m	Ljava/lang/String;
     //   41: invokespecial 176	java/io/File:<init>	(Ljava/lang/String;)V
     //   44: astore_0
     //   45: aload_0
@@ -286,156 +286,7 @@ public class ServerListProvider
   
   public static String getCmdPrefix()
   {
-    switch ()
-    {
-    case 52: 
-    case 53: 
-    case 54: 
-    case 55: 
-    case 56: 
-    case 57: 
-    case 58: 
-    case 59: 
-    default: 
-      return "SQQzoneSvc.";
-    case 11: 
-      return "SQQzoneSvcTest001.";
-    case 12: 
-      return "SQQzoneSvcTouch001.";
-    case 13: 
-      return "SQQzoneSvcDb2.";
-    case 14: 
-      return "SQQzoneSvcPublish.";
-    case 15: 
-      return "SQQzoneSvcDev001.";
-    case 16: 
-      return "SQQzoneSvcDev002.";
-    case 17: 
-      return "SQQzoneSvcDev003.";
-    case 18: 
-      return "SQQzoneSvcDev004.";
-    case 19: 
-      return "SQQzoneSvcDev005.";
-    case 20: 
-      return "SQQzoneSvcDev006.";
-    case 21: 
-      return "SQQzoneSvcDev007.";
-    case 22: 
-      return "SQQzoneSvcDev008.";
-    case 23: 
-      return "SQQzoneSvcDev009.";
-    case 24: 
-      return "SQQzoneSvcDev010.";
-    case 25: 
-      return "SQQzoneSvcDev011.";
-    case 26: 
-      return "SQQzoneSvcDev012.";
-    case 27: 
-      return "SQQzoneSvcDev013.";
-    case 28: 
-      return "SQQzoneSvcDev014.";
-    case 29: 
-      return "SQQzoneSvcDev015.";
-    case 30: 
-      return "SQQzoneSvcDev016.";
-    case 31: 
-      return "SQQzoneSvcDev017.";
-    case 32: 
-      return "SQQzoneSvcDev018.";
-    case 33: 
-      return "SQQzoneSvcDev019.";
-    case 34: 
-      return "SQQzoneSvcDev020.";
-    case 35: 
-      return "SQQzoneSvcDev021.";
-    case 36: 
-      return "SQQzoneSvcDev022.";
-    case 37: 
-      return "SQQzoneSvcDev023.";
-    case 38: 
-      return "SQQzoneSvcDev024.";
-    case 39: 
-      return "SQQzoneSvcDev025.";
-    case 40: 
-      return "SQQzoneSvcDev026.";
-    case 41: 
-      return "SQQzoneSvcDev027.";
-    case 42: 
-      return "SQQzoneSvcDev028.";
-    case 43: 
-      return "SQQzoneSvcDev029.";
-    case 44: 
-      return "SQQzoneSvcDev030.";
-    case 45: 
-      return "SQQzoneSvcDev031.";
-    case 46: 
-      return "SQQzoneSvcDev032.";
-    case 47: 
-      return "SQQzoneSvcDev033.";
-    case 48: 
-      return "SQQzoneSvcDev034.";
-    case 49: 
-      return "SQQzoneSvcDev035.";
-    case 50: 
-      return "SQQzoneSvcDev036.";
-    case 51: 
-      return "SQQzoneSvcDev037.";
-    case 60: 
-      return "SQQzoneSvcDev050.";
-    case 61: 
-      return "SQQzoneSvcDev051.";
-    case 62: 
-      return "SQQzoneSvcDev052.";
-    case 63: 
-      return "SQQzoneSvcDev053.";
-    case 64: 
-      return "SQQzoneSvcDev054.";
-    case 65: 
-      return "SQQzoneSvcDev055.";
-    case 66: 
-      return "SQQzoneSvcDev056.";
-    case 67: 
-      return "SQQzoneSvcDev057.";
-    case 68: 
-      return "SQQzoneSvcDev058.";
-    case 69: 
-      return "SQQzoneSvcDev059.";
-    case 70: 
-      return "SQQzoneSvcDev060.";
-    case 71: 
-      return "SQQzoneSvcDev061.";
-    case 72: 
-      return "SQQzoneSvcDev062.";
-    case 73: 
-      return "SQQzoneSvcDev063.";
-    case 74: 
-      return "SQQzoneSvcDev064.";
-    case 75: 
-      return "SQQzoneSvcDev065.";
-    case 76: 
-      return "SQQzoneSvcDev066.";
-    case 77: 
-      return "SQQzoneSvcDev067.";
-    case 78: 
-      return "SQQzoneSvcDev068.";
-    case 79: 
-      return "SQQzoneSvcDev069.";
-    case 80: 
-      return "SQQzoneSvcDev089.";
-    case 81: 
-      return "SQQzoneSvcTest007.";
-    case 82: 
-      return "SQQzoneSvcDev070.";
-    case 83: 
-      return "SQQzoneSvcDev071.";
-    case 84: 
-      return "SQQzoneSvcTest008.";
-    case 85: 
-      return "SQQzoneSvcTest009.";
-    case 86: 
-      return "SQQzoneSvcDb3.";
-    }
-    return "SQQzoneSvcTest195.";
+    return "SQQzoneSvc.";
   }
   
   public static int getType()
@@ -458,7 +309,7 @@ public class ServerListProvider
     boolean bool2 = false;
     try
     {
-      File localFile = new File(bhcq.m);
+      File localFile = new File(bjea.m);
       boolean bool1 = bool2;
       if (localFile.exists())
       {
@@ -529,7 +380,7 @@ public class ServerListProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.ServerListProvider
  * JD-Core Version:    0.7.0.1
  */

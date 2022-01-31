@@ -1,24 +1,12 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.graphics.Bitmap;
 
-public class bcwv
-  extends BroadcastReceiver
+abstract interface bcwv
 {
-  public bcwv(WXShareHelper paramWXShareHelper) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (WXShareHelper.a(this.a) != null) {
-      WXShareHelper.a(this.a).handleIntent(paramIntent, this.a);
-    }
-  }
+  public abstract void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bcwv
  * JD-Core Version:    0.7.0.1
  */

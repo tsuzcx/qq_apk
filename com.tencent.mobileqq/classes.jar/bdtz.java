@@ -1,20 +1,20 @@
-import android.graphics.SurfaceTexture;
-import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import com.tencent.qg.video.videodecoder.MediaDecoder;
+import com.tencent.mobileqq.pluginsdk.PluginInterface;
+import com.tencent.mobileqq.pluginsdk.PluginInterfaceHelper.OnPluginInterfaceLoadedListener;
+import com.tencent.mobileqq.vashealth.PathTraceManager;
 
 public class bdtz
-  implements SurfaceTexture.OnFrameAvailableListener
+  implements PluginInterfaceHelper.OnPluginInterfaceLoadedListener
 {
-  public bdtz(MediaDecoder paramMediaDecoder, bdua parambdua) {}
+  public bdtz(PathTraceManager paramPathTraceManager) {}
   
-  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
+  public void onPluginInterfaceLoaded(PluginInterface paramPluginInterface)
   {
-    this.jdField_a_of_type_Bdua.a(paramSurfaceTexture);
+    PathTraceManager.a(this.a, paramPluginInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdtz
  * JD-Core Version:    0.7.0.1
  */

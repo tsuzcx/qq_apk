@@ -1,28 +1,20 @@
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class mgm
-  implements Comparator<ldr>
+  implements DialogInterface.OnDismissListener
 {
-  public mgm(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
+  public mgm(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public int a(ldr paramldr1, ldr paramldr2)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramldr2.b) && (paramldr1.b)) {
-      return paramldr2.d - paramldr1.d;
-    }
-    if ((!paramldr2.b) && (!paramldr1.b)) {
-      return paramldr2.d - paramldr1.d;
-    }
-    if ((paramldr2.b) && (!paramldr1.b)) {
-      return 1;
-    }
-    return -1;
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mgm
  * JD-Core Version:    0.7.0.1
  */

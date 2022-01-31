@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="17.5dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.qqcircle.widgets.QCircleAvatarView android:id="@id/dvu" android:layout_width="85.0dip" android:layout_height="85.0dip" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_toRightOf="@id/dvu" android:layout_centerVertical="true">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/mh8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="24.0dip" android:textStyle="bold" android:textColor="#ff03081a" android:id="@id/mcg" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0dip" android:textColor="#ff404040" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/we3" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/lqf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="24.0dip" android:textStyle="bold" android:textColor="#ff03081a" android:id="@id/k7x" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0dip" android:textColor="#ff404040" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/weq" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/eda" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="24.0dip" android:textStyle="bold" android:textColor="#ff03081a" android:id="@id/k86" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                <TextView android:textSize="12.0dip" android:textColor="#ff404040" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="@string/wfa" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/mh6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.biz.qqcircle.widgets.QCircleFollowView android:textSize="11.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/k85" android:background="@drawable/e0i" android:visibility="visible" android:layout_width="69.0dip" android:layout_height="41.0dip" android:text="@string/wfa" android:layout_weight="1.0" />
+            <TextView android:textSize="11.0dip" android:textColor="@color/bp" android:gravity="center" android:id="@id/mrn" android:background="@drawable/e0i" android:visibility="visible" android:layout_width="69.0dip" android:layout_height="41.0dip" android:text="@string/weo" android:layout_weight="1.0" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

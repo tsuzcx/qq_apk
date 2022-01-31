@@ -1,67 +1,67 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
-import NS_COMM.COMM.StCommonExt;
-import NS_MINI_APP_PAY.MiniAppMidasPay.StQueryStarCurrencyRsp;
-import ajya;
-import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.mini.sdk.MiniAppController;
+import com.tencent.mobileqq.mini.sdk.MiniAppController.ActivityResultListener;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class PayJsPlugin$5
-  implements MiniAppCmdInterface
+  implements MiniAppController.ActivityResultListener
 {
-  PayJsPlugin$5(PayJsPlugin paramPayJsPlugin, int paramInt, String paramString) {}
+  PayJsPlugin$5(PayJsPlugin paramPayJsPlugin, int paramInt, MiniAppConfig paramMiniAppConfig, JsRuntime paramJsRuntime, String paramString) {}
   
-  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    QLog.d("PayJsPlugin", 1, "invokeMidasQuery receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
-    if (paramJSONObject == null)
+    QLog.d("PayJsPlugin", 1, "doOnActivityResult requestCode" + paramInt1 + " resultCode:" + paramInt2 + " callbackId:" + this.val$callbackId);
+    if (paramInt1 == 3003)
     {
-      paramJSONObject = new JSONObject();
-      try
+      JSONObject localJSONObject = new JSONObject();
+      if (paramInt2 == -1)
       {
-        paramJSONObject.put("resultCode", -1);
-        PayJsPlugin.access$200(this.this$0, this.val$seq, this.val$event, null, ajya.a(2131707913));
-        return;
+        paramIntent = paramIntent.getExtras();
+        if (paramIntent != null)
+        {
+          paramInt1 = paramIntent.getInt("errCode");
+          String str = paramIntent.getString("errMsg");
+          if ((paramIntent.getLong("errType", -1L) == 8589934612L) && (this.val$miniAppConfig != null)) {
+            MiniProgramLpReportDC04239.reportUserClick(this.val$miniAppConfig, MiniProgramLpReportDC04239.getAppType(this.val$miniAppConfig), null, "midas", "h5midas", "openfail");
+          }
+          try
+          {
+            localJSONObject.put("resultCode", paramInt1);
+            localJSONObject.put("resultMsg", str);
+            if (paramInt1 == 0)
+            {
+              this.this$0.jsPluginEngine.callbackJsEventOK(this.val$webview, this.val$event, localJSONObject, this.val$callbackId);
+              MiniAppController.getInstance().removeActivityResultListener(this);
+              return true;
+            }
+          }
+          catch (JSONException paramIntent)
+          {
+            for (;;)
+            {
+              paramIntent.printStackTrace();
+            }
+          }
+        }
       }
-      catch (JSONException paramJSONObject)
-      {
-        QLog.e("PayJsPlugin", 1, "invokeMidasQuery JSONException ", paramJSONObject);
-        return;
-      }
+      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, localJSONObject, this.val$callbackId);
+      MiniAppController.getInstance().removeActivityResultListener(this);
+      return true;
     }
-    try
-    {
-      MiniAppMidasPay.StQueryStarCurrencyRsp localStQueryStarCurrencyRsp = (MiniAppMidasPay.StQueryStarCurrencyRsp)paramJSONObject.get("response");
-      int i = paramJSONObject.getInt("resultCode");
-      paramJSONObject = paramJSONObject.getString("errMsg");
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      JSONObject localJSONObject3 = new JSONObject(new HashMap());
-      localJSONObject2.put("attachInfo", localStQueryStarCurrencyRsp.extInfo.attachInfo.get());
-      localJSONObject2.put("mapInfo", localJSONObject3);
-      localJSONObject1.put("resultCode", i);
-      localJSONObject1.put("extInfo", localJSONObject2);
-      localJSONObject1.put("rechargeNum", String.valueOf(localStQueryStarCurrencyRsp.rechargeNum.get()));
-      localJSONObject1.put("remainder", String.valueOf(localStQueryStarCurrencyRsp.remainder.get()));
-      localJSONObject1.put("errMsg", paramJSONObject);
-      QLog.d("PayJsPlugin", 1, "invokeMidasQuery receive isSuc= " + paramBoolean + " resObj=" + localJSONObject1.toString());
-      PayJsPlugin.access$400(this.this$0, this.val$seq, this.val$event, localJSONObject1);
-      return;
-    }
-    catch (Throwable paramJSONObject)
-    {
-      QLog.e("PayJsPlugin", 1, "invokeMidasQuery failed", paramJSONObject);
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.PayJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

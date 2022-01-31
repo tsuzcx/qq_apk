@@ -717,7 +717,7 @@ public class ProtocolDet
   {
     // Byte code:
     //   0: sipush 4096
-    //   3: istore_2
+    //   3: istore_1
     //   4: aconst_null
     //   5: astore 5
     //   7: new 127	java/io/File
@@ -752,114 +752,114 @@ public class ProtocolDet
     //   58: astore_0
     //   59: aload 4
     //   61: invokevirtual 212	java/io/FileInputStream:available	()I
-    //   64: istore_1
-    //   65: iload_1
+    //   64: istore_2
+    //   65: iload_2
     //   66: sipush 4096
-    //   69: if_icmple +139 -> 208
-    //   72: iload_2
-    //   73: istore_1
-    //   74: aload 4
-    //   76: astore_0
-    //   77: iload_1
-    //   78: newarray byte
-    //   80: astore 5
-    //   82: aload 4
-    //   84: astore_0
-    //   85: aload 4
-    //   87: aload 5
-    //   89: invokevirtual 213	java/io/FileInputStream:read	([B)I
-    //   92: pop
-    //   93: aload 5
-    //   95: astore_0
-    //   96: aload 4
-    //   98: ifnull +11 -> 109
-    //   101: aload 4
-    //   103: invokevirtual 214	java/io/FileInputStream:close	()V
-    //   106: aload 5
-    //   108: astore_0
-    //   109: aload_0
-    //   110: areturn
-    //   111: astore_0
-    //   112: aload_0
-    //   113: invokevirtual 108	java/lang/Exception:printStackTrace	()V
-    //   116: aload 5
-    //   118: astore_0
-    //   119: goto -10 -> 109
-    //   122: astore 5
-    //   124: aconst_null
-    //   125: astore 4
-    //   127: aload 4
-    //   129: astore_0
-    //   130: aload 5
-    //   132: invokevirtual 108	java/lang/Exception:printStackTrace	()V
-    //   135: aload 4
-    //   137: ifnull +66 -> 203
-    //   140: aload 4
-    //   142: invokevirtual 214	java/io/FileInputStream:close	()V
-    //   145: aconst_null
-    //   146: astore_0
-    //   147: goto -38 -> 109
-    //   150: astore_0
-    //   151: aload_0
-    //   152: invokevirtual 108	java/lang/Exception:printStackTrace	()V
-    //   155: aconst_null
-    //   156: astore_0
-    //   157: goto -48 -> 109
-    //   160: astore_0
-    //   161: aload 5
-    //   163: astore 4
-    //   165: aload 4
-    //   167: ifnull +8 -> 175
-    //   170: aload 4
-    //   172: invokevirtual 214	java/io/FileInputStream:close	()V
-    //   175: aload_0
-    //   176: athrow
-    //   177: astore 4
-    //   179: aload 4
-    //   181: invokevirtual 108	java/lang/Exception:printStackTrace	()V
-    //   184: goto -9 -> 175
-    //   187: astore 5
-    //   189: aload_0
-    //   190: astore 4
-    //   192: aload 5
-    //   194: astore_0
-    //   195: goto -30 -> 165
-    //   198: astore 5
-    //   200: goto -73 -> 127
-    //   203: aconst_null
-    //   204: astore_0
-    //   205: goto -96 -> 109
-    //   208: goto -134 -> 74
+    //   69: if_icmple +137 -> 206
+    //   72: aload 4
+    //   74: astore_0
+    //   75: iload_1
+    //   76: newarray byte
+    //   78: astore 5
+    //   80: aload 4
+    //   82: astore_0
+    //   83: aload 4
+    //   85: aload 5
+    //   87: invokevirtual 213	java/io/FileInputStream:read	([B)I
+    //   90: pop
+    //   91: aload 5
+    //   93: astore_0
+    //   94: aload 4
+    //   96: ifnull +11 -> 107
+    //   99: aload 4
+    //   101: invokevirtual 214	java/io/FileInputStream:close	()V
+    //   104: aload 5
+    //   106: astore_0
+    //   107: aload_0
+    //   108: areturn
+    //   109: astore_0
+    //   110: aload_0
+    //   111: invokevirtual 108	java/lang/Exception:printStackTrace	()V
+    //   114: aload 5
+    //   116: astore_0
+    //   117: goto -10 -> 107
+    //   120: astore 5
+    //   122: aconst_null
+    //   123: astore 4
+    //   125: aload 4
+    //   127: astore_0
+    //   128: aload 5
+    //   130: invokevirtual 108	java/lang/Exception:printStackTrace	()V
+    //   133: aload 4
+    //   135: ifnull +66 -> 201
+    //   138: aload 4
+    //   140: invokevirtual 214	java/io/FileInputStream:close	()V
+    //   143: aconst_null
+    //   144: astore_0
+    //   145: goto -38 -> 107
+    //   148: astore_0
+    //   149: aload_0
+    //   150: invokevirtual 108	java/lang/Exception:printStackTrace	()V
+    //   153: aconst_null
+    //   154: astore_0
+    //   155: goto -48 -> 107
+    //   158: astore_0
+    //   159: aload 5
+    //   161: astore 4
+    //   163: aload 4
+    //   165: ifnull +8 -> 173
+    //   168: aload 4
+    //   170: invokevirtual 214	java/io/FileInputStream:close	()V
+    //   173: aload_0
+    //   174: athrow
+    //   175: astore 4
+    //   177: aload 4
+    //   179: invokevirtual 108	java/lang/Exception:printStackTrace	()V
+    //   182: goto -9 -> 173
+    //   185: astore 5
+    //   187: aload_0
+    //   188: astore 4
+    //   190: aload 5
+    //   192: astore_0
+    //   193: goto -30 -> 163
+    //   196: astore 5
+    //   198: goto -73 -> 125
+    //   201: aconst_null
+    //   202: astore_0
+    //   203: goto -96 -> 107
+    //   206: iload_2
+    //   207: istore_1
+    //   208: goto -136 -> 72
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	211	0	paramString	String
-    //   64	14	1	i	int
-    //   3	70	2	j	int
+    //   3	205	1	i	int
+    //   64	143	2	j	int
     //   20	2	3	bool	boolean
-    //   54	117	4	localObject1	Object
-    //   177	3	4	localException1	Exception
-    //   190	1	4	str	String
-    //   5	112	5	arrayOfByte	byte[]
-    //   122	40	5	localException2	Exception
-    //   187	6	5	localObject2	Object
-    //   198	1	5	localException3	Exception
+    //   54	115	4	localObject1	Object
+    //   175	3	4	localException1	Exception
+    //   188	1	4	str	String
+    //   5	110	5	arrayOfByte	byte[]
+    //   120	40	5	localException2	Exception
+    //   185	6	5	localObject2	Object
+    //   196	1	5	localException3	Exception
     // Exception table:
     //   from	to	target	type
     //   29	37	39	java/lang/Exception
-    //   101	106	111	java/lang/Exception
-    //   7	21	122	java/lang/Exception
-    //   46	56	122	java/lang/Exception
-    //   140	145	150	java/lang/Exception
-    //   7	21	160	finally
-    //   46	56	160	finally
-    //   170	175	177	java/lang/Exception
-    //   59	65	187	finally
-    //   77	82	187	finally
-    //   85	93	187	finally
-    //   130	135	187	finally
-    //   59	65	198	java/lang/Exception
-    //   77	82	198	java/lang/Exception
-    //   85	93	198	java/lang/Exception
+    //   99	104	109	java/lang/Exception
+    //   7	21	120	java/lang/Exception
+    //   46	56	120	java/lang/Exception
+    //   138	143	148	java/lang/Exception
+    //   7	21	158	finally
+    //   46	56	158	finally
+    //   168	173	175	java/lang/Exception
+    //   59	65	185	finally
+    //   75	80	185	finally
+    //   83	91	185	finally
+    //   128	133	185	finally
+    //   59	65	196	java/lang/Exception
+    //   75	80	196	java/lang/Exception
+    //   83	91	196	java/lang/Exception
   }
   
   /* Error */

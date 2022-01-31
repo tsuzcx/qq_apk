@@ -1,24 +1,26 @@
-import java.util.Comparator;
-
 class ahgb
-  implements Comparator<ahgi>
+  implements ahgc<T>
 {
-  ahgb(ahfx paramahfx) {}
+  ahgb(ahga paramahga, int paramInt) {}
   
-  public int a(ahgi paramahgi1, ahgi paramahgi2)
+  public int a()
   {
-    if (paramahgi1.a == paramahgi2.a) {
-      return 0;
-    }
-    if (paramahgi1.a > paramahgi2.a) {
-      return 1;
-    }
-    return -1;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(ahgk paramahgk, T paramT, int paramInt)
+  {
+    this.jdField_a_of_type_Ahga.a(paramahgk, paramT, paramInt);
+  }
+  
+  public boolean a(T paramT, int paramInt)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgb
  * JD-Core Version:    0.7.0.1
  */

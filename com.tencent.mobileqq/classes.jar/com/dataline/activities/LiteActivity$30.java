@@ -1,6 +1,6 @@
 package com.dataline.activities;
 
-import bbdx;
+import bdcs;
 import com.tencent.mobileqq.data.MessageForPic;
 
 class LiteActivity$30
@@ -10,13 +10,13 @@ class LiteActivity$30
   
   public void run()
   {
-    this.a.md5 = bbdx.c(this.a.path);
+    this.a.md5 = bdcs.c(this.a.path);
     this.this$0.runOnUiThread(new LiteActivity.30.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.30
  * JD-Core Version:    0.7.0.1
  */

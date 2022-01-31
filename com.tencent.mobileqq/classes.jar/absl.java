@@ -1,67 +1,60 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.biz.troop.TroopMemberApiService;
+import mqq.app.AppRuntime;
 
 public class absl
-  extends ajto
 {
-  public absl(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
+  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   
-  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  public absl(AppRuntime paramAppRuntime, TroopMemberApiService paramTroopMemberApiService)
   {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
-    {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
-    }
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
   }
   
-  protected void onImpeach(boolean paramBoolean, String paramString)
+  public static void a(int paramInt, Bundle paramBundle, absm paramabsm)
   {
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString)) {
-      return;
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
     }
-    this.a.f();
-    if (paramBoolean)
+    localBundle.putInt("key_sub_cmd", paramInt);
+    if (paramabsm != null)
     {
-      this.a.a(2131690624, 2);
+      ymk.a().a(118, localBundle, paramabsm);
       return;
     }
-    this.a.a(2131690622, 1);
+    ymk.a().a(118, localBundle);
   }
   
-  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  public void a(int paramInt1, Bundle paramBundle, int paramInt2)
   {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
+    switch (paramBundle.getInt("key_sub_cmd"))
     {
-      this.a.d.setOnCheckedChangeListener(null);
-      this.a.d.setChecked(paramBoolean2);
-      this.a.d.setOnCheckedChangeListener(this.a);
-    }
-  }
-  
-  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
-  {
-    if (((paramBoolean) && (paramInt == 0)) || ((!paramBoolean) && (paramInt == 34))) {}
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_AndroidOsBundle == null) {
-        this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
-      }
-      if (paramCard != null) {
-        this.a.jdField_a_of_type_AndroidOsBundle.putShort("key_personality_label_switch", paramCard.switch_disable_personality_label);
-      }
+    default: 
       return;
-      this.a.a(2131695447, 1);
+    case 1: 
+      paramBundle.putBundle("key_result", abtp.a());
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(paramInt1, paramBundle);
+      return;
+    case 2: 
+      str1 = paramBundle.getString("key");
+      paramInt1 = paramBundle.getInt("type");
+      paramBundle = paramBundle.getString("appid");
+      abuz.a().b(str1, paramInt1, paramBundle);
+      return;
     }
+    String str1 = paramBundle.getString("key");
+    paramInt1 = paramBundle.getInt("type");
+    String str2 = paramBundle.getString("appid");
+    paramBundle = paramBundle.getString("api");
+    abuz.a().b(str1, paramInt1, str2, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absl
  * JD-Core Version:    0.7.0.1
  */

@@ -7,16 +7,18 @@ import com.qq.taf.jce.JceStruct;
 public final class GetRandomHbIdiomReq
   extends JceStruct
 {
+  static int cache_subchannel = 0;
   public long appid;
   public int fromType;
   public long makeUin;
   public int platform;
   public String qqVersion = "";
   public String sKey = "";
+  public int subchannel;
   
   public GetRandomHbIdiomReq() {}
   
-  public GetRandomHbIdiomReq(long paramLong1, String paramString1, long paramLong2, int paramInt1, int paramInt2, String paramString2)
+  public GetRandomHbIdiomReq(long paramLong1, String paramString1, long paramLong2, int paramInt1, int paramInt2, String paramString2, int paramInt3)
   {
     this.makeUin = paramLong1;
     this.sKey = paramString1;
@@ -24,6 +26,7 @@ public final class GetRandomHbIdiomReq
     this.fromType = paramInt1;
     this.platform = paramInt2;
     this.qqVersion = paramString2;
+    this.subchannel = paramInt3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -34,6 +37,7 @@ public final class GetRandomHbIdiomReq
     this.fromType = paramJceInputStream.read(this.fromType, 3, false);
     this.platform = paramJceInputStream.read(this.platform, 4, false);
     this.qqVersion = paramJceInputStream.readString(5, false);
+    this.subchannel = paramJceInputStream.read(this.subchannel, 6, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -48,6 +52,7 @@ public final class GetRandomHbIdiomReq
     if (this.qqVersion != null) {
       paramJceOutputStream.write(this.qqVersion, 5);
     }
+    paramJceOutputStream.write(this.subchannel, 6);
   }
 }
 

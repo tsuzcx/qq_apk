@@ -1,6 +1,6 @@
 {
     "ReadInjoy_article_forbid_comment_operate_cell":{
-        "view_type":"cell",
+        "view_type":"container",
         "direction":"vertical",
         "layout_type":"layout_relative",
         "height":{

@@ -1,14 +1,22 @@
 package com.tencent.mobileqq.soload.config;
 
-import amph;
 import android.text.TextUtils;
-import axnp;
+import aogf;
+import azis;
+import azix;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
@@ -18,6 +26,7 @@ public class SoConfig
   implements Serializable
 {
   private static final byte[] a = new byte[0];
+  public int mLastAppId;
   public Map<String, SoConfig.SoInfo> mSoInfos = new HashMap();
   
   private static String a()
@@ -36,21 +45,21 @@ public class SoConfig
     //   1: astore_2
     //   2: aconst_null
     //   3: astore_1
-    //   4: invokestatic 63	com/tencent/mobileqq/soload/config/SoConfig:a	()Ljava/lang/String;
+    //   4: invokestatic 65	com/tencent/mobileqq/soload/config/SoConfig:a	()Ljava/lang/String;
     //   7: astore 4
     //   9: aload 4
-    //   11: invokestatic 73	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   11: invokestatic 75	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   14: ifne +92 -> 106
     //   17: aload_2
     //   18: astore_0
-    //   19: getstatic 15	com/tencent/mobileqq/soload/config/SoConfig:a	[B
+    //   19: getstatic 17	com/tencent/mobileqq/soload/config/SoConfig:a	[B
     //   22: astore_3
     //   23: aload_2
     //   24: astore_0
     //   25: aload_3
     //   26: monitorenter
     //   27: aload 4
-    //   29: invokestatic 78	ahiw:a	(Ljava/lang/String;)Ljava/lang/Object;
+    //   29: invokestatic 80	ajaf:a	(Ljava/lang/String;)Ljava/lang/Object;
     //   32: checkcast 2	com/tencent/mobileqq/soload/config/SoConfig
     //   35: astore_0
     //   36: aload_3
@@ -61,21 +70,21 @@ public class SoConfig
     //   41: ifnonnull +11 -> 52
     //   44: new 2	com/tencent/mobileqq/soload/config/SoConfig
     //   47: dup
-    //   48: invokespecial 79	com/tencent/mobileqq/soload/config/SoConfig:<init>	()V
+    //   48: invokespecial 81	com/tencent/mobileqq/soload/config/SoConfig:<init>	()V
     //   51: astore_1
-    //   52: invokestatic 85	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   52: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   55: ifeq +28 -> 83
-    //   58: ldc 87
+    //   58: ldc 89
     //   60: iconst_2
-    //   61: new 27	java/lang/StringBuilder
+    //   61: new 29	java/lang/StringBuilder
     //   64: dup
-    //   65: invokespecial 88	java/lang/StringBuilder:<init>	()V
-    //   68: ldc 90
-    //   70: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: invokespecial 90	java/lang/StringBuilder:<init>	()V
+    //   68: ldc 92
+    //   70: invokevirtual 53	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   73: aload_1
-    //   74: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   77: invokevirtual 58	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: invokestatic 97	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   74: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   77: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: invokestatic 99	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   83: aload_1
     //   84: areturn
     //   85: astore_2
@@ -89,7 +98,7 @@ public class SoConfig
     //   93: athrow
     //   94: astore_1
     //   95: aload_1
-    //   96: invokevirtual 100	java/lang/Exception:printStackTrace	()V
+    //   96: invokevirtual 102	java/lang/Exception:printStackTrace	()V
     //   99: goto -61 -> 38
     //   102: astore_2
     //   103: goto -15 -> 88
@@ -116,9 +125,14 @@ public class SoConfig
     //   36	38	102	finally
   }
   
+  public boolean isValid(String paramString)
+  {
+    return (this.mLastAppId == AppSetting.a()) && (this.mSoInfos != null) && (this.mSoInfos.size() > 0) && (this.mSoInfos.get(paramString) != null);
+  }
+  
   public void saveConfig()
   {
-    ThreadManager.getFileThreadHandler().post(new SoConfig.1(this));
+    ThreadManager.getFileThreadHandler().post(new SoConfig.2(this));
   }
   
   public String toString()
@@ -126,75 +140,82 @@ public class SoConfig
     return "SoConfig{mSoInfos=" + this.mSoInfos + '}';
   }
   
-  public void update(axnp paramaxnp)
+  public void update(azix paramazix)
   {
     HashMap localHashMap = new HashMap();
-    int i;
-    Object localObject;
-    if ((paramaxnp != null) && (paramaxnp.a != null))
+    if ((paramazix != null) && (paramazix.a != null))
     {
-      paramaxnp = paramaxnp.a;
-      int k = paramaxnp.length;
-      i = 0;
-      if (i < k)
-      {
-        localObject = paramaxnp[i];
-        if (TextUtils.isEmpty(localObject.jdField_a_of_type_JavaLangString)) {}
-      }
-    }
-    for (;;)
-    {
-      int j;
-      SoConfig.SoInfo localSoInfo1;
       try
       {
-        JSONArray localJSONArray = new JSONObject(localObject.jdField_a_of_type_JavaLangString).optJSONArray("so_info_list");
-        if (localJSONArray != null)
+        localObject = new LinkedList(Arrays.asList(paramazix.a));
+        Collections.sort((List)localObject, new azis(this));
+        paramazix = (azix)localObject;
+      }
+      catch (Throwable localThrowable1)
+      {
+        for (;;)
         {
-          j = 0;
-          if (j < localJSONArray.length())
+          SoConfig.SoInfo localSoInfo1;
+          try
           {
-            localSoInfo1 = SoConfig.SoInfo.create(localJSONArray.optJSONObject(j));
-            if (localSoInfo1 == null) {
-              break label268;
+            Object localObject;
+            JSONArray localJSONArray = new JSONObject(((aogf)localObject).jdField_a_of_type_JavaLangString).optJSONArray("so_info_list");
+            if (localJSONArray == null) {
+              continue;
             }
-            if (!localHashMap.containsKey(localSoInfo1.name)) {
-              break label239;
+            int i = 0;
+            if (i >= localJSONArray.length()) {
+              continue;
             }
-            SoConfig.SoInfo localSoInfo2 = (SoConfig.SoInfo)localHashMap.get(localSoInfo1.name);
-            if (localSoInfo2 == null)
+            localSoInfo1 = SoConfig.SoInfo.create(localJSONArray.optJSONObject(i));
+            if (localSoInfo1 != null)
             {
-              localHashMap.put(localSoInfo1.name, localSoInfo1);
+              if (!localHashMap.containsKey(localSoInfo1.name)) {
+                break label295;
+              }
+              localSoInfo2 = (SoConfig.SoInfo)localHashMap.get(localSoInfo1.name);
+              if (localSoInfo2 == null) {
+                localHashMap.put(localSoInfo1.name, localSoInfo1);
+              }
             }
             else
             {
-              localSoInfo2 = localSoInfo2.merge(localSoInfo1);
-              localHashMap.put(localSoInfo1.name, localSoInfo2);
+              i += 1;
+              continue;
+              localThrowable1 = localThrowable1;
+              paramazix = new LinkedList(Arrays.asList(paramazix.a));
+              continue;
             }
+            SoConfig.SoInfo localSoInfo2 = localSoInfo2.merge(localSoInfo1);
+            localHashMap.put(localSoInfo1.name, localSoInfo2);
+            continue;
           }
+          catch (Throwable localThrowable2)
+          {
+            QLog.e("SoLoadWidget.SoConfig", 1, localThrowable2, new Object[0]);
+            VACDReportUtil.a(null, "SoLoadModule", "SoLoadSingle", "Exception", localThrowable1.jdField_a_of_type_Int + "", 1, localThrowable2.getMessage());
+          }
+          localHashMap.put(localSoInfo1.name, localSoInfo1);
         }
       }
-      catch (Throwable localThrowable)
+      paramazix = paramazix.iterator();
+      do
       {
-        localThrowable.printStackTrace();
-        VACDReportUtil.a(null, "SoLoadModule", "SoLoadSingle", "Exception", localObject.jdField_a_of_type_Int + "", 1, localObject.jdField_a_of_type_JavaLangString);
-      }
-      i += 1;
-      break;
-      label239:
-      localHashMap.put(localSoInfo1.name, localSoInfo1);
-      break label268;
-      this.mSoInfos = localHashMap;
-      saveConfig();
-      return;
-      label268:
-      j += 1;
+        if (!paramazix.hasNext()) {
+          break;
+        }
+        localObject = (aogf)paramazix.next();
+      } while (TextUtils.isEmpty(((aogf)localObject).jdField_a_of_type_JavaLangString));
     }
+    label295:
+    this.mSoInfos = localHashMap;
+    this.mLastAppId = AppSetting.a();
+    saveConfig();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.soload.config.SoConfig
  * JD-Core Version:    0.7.0.1
  */

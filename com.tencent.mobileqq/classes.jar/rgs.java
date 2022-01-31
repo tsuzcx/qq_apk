@@ -1,26 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame.10.1;
-import com.tencent.biz.pubaccount.readinjoy.view.RecommendFeedsDiandianEntranceManager;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class rgs
-  implements View.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  public rgs(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public rgs(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
   
-  public void onClick(View paramView)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    ReadinjoyTabFrame.a(this.a).postDelayed(new ReadinjoyTabFrame.10.1(this), 300L);
-    if (!RecommendFeedsDiandianEntranceManager.a().a()) {
-      RecommendFeedsDiandianEntranceManager.a().c();
+    if (paramInt == 0)
+    {
+      VideoFeedsRecyclerView.a(this.a, false);
+      return;
     }
+    VideoFeedsRecyclerView.a(this.a, true);
   }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rgs
  * JD-Core Version:    0.7.0.1
  */

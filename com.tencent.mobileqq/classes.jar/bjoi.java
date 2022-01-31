@@ -1,24 +1,24 @@
-class bjoi<K, V>
-  extends bjom<K, V>
+class bjoi
+  extends bjol
 {
-  bjoi(bjok<K, V> parambjok1, bjok<K, V> parambjok2)
+  bjoi(bjoh parambjoh, String paramString, boolean paramBoolean)
   {
-    super(parambjok1, parambjok2);
+    super(paramString, paramBoolean);
   }
   
-  bjok<K, V> a(bjok<K, V> parambjok)
+  public String a()
   {
-    return parambjok.a;
+    return null;
   }
   
-  bjok<K, V> b(bjok<K, V> parambjok)
+  public String b()
   {
-    return parambjok.b;
+    return "wspeed.qq.com";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjoi
  * JD-Core Version:    0.7.0.1
  */

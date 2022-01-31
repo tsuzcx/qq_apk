@@ -1,73 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.QQPhotoInfo;
 
-class apbe
-  extends aoun
+public final class apbe
+  implements Parcelable.Creator<QQPhotoInfo>
 {
-  apbe(apbc paramapbc) {}
-  
-  protected void a(long paramLong)
+  public QQPhotoInfo a(Parcel paramParcel)
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileProgressDirectDone sessionid error.return");
-    }
-    apbi localapbi;
-    do
-    {
-      return;
-      localapbi = this.a.a(paramLong);
-      if (localapbi == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileProgressDirectDone");
-        return;
-      }
-      localapbi.h();
-    } while (!localapbi.c());
-    this.a.c(paramLong);
+    return new QQPhotoInfo(paramParcel, null);
   }
   
-  protected void b(long paramLong)
+  public QQPhotoInfo[] a(int paramInt)
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
-    }
-    apbi localapbi;
-    do
-    {
-      return;
-      localapbi = this.a.a(paramLong);
-      if (localapbi == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
-        return;
-      }
-      localapbi.j();
-    } while (!localapbi.c());
-    this.a.c(paramLong);
-  }
-  
-  protected void c(long paramLong)
-  {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
-    }
-    apbi localapbi;
-    do
-    {
-      return;
-      localapbi = this.a.a(paramLong);
-      if (localapbi == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
-        return;
-      }
-      localapbi.l();
-    } while (!localapbi.c());
-    this.a.c(paramLong);
+    return new QQPhotoInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apbe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,21 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class arfo
+class arfo
+  implements View.OnClickListener
 {
-  final Context jdField_a_of_type_AndroidContentContext;
-  final String jdField_a_of_type_JavaLangString;
-  String b = "";
-  String c = "";
-  String d = "";
-  String e;
-  String f;
-  String g;
-  String h;
+  arfo(arfh paramarfh, FileManagerEntity paramFileManagerEntity) {}
   
-  public arfo(Context paramContext, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(String paramString)
-  {
-    this.b = paramString;
-  }
-  
-  public void b(String paramString)
-  {
-    this.c = paramString;
-  }
-  
-  public void c(String paramString)
-  {
-    this.d = paramString;
-  }
-  
-  public void d(String paramString)
-  {
-    this.e = paramString;
-  }
-  
-  public void e(String paramString)
-  {
-    this.g = paramString;
-  }
-  
-  public void f(String paramString)
-  {
-    this.h = paramString;
-  }
-  
-  @NonNull
-  public String toString()
-  {
-    return "uin: " + this.jdField_a_of_type_JavaLangString + " roomId: " + this.b + " roomGroupCode: " + this.c + " roomShowNumber: " + this.d + " fromId: " + this.e + " openType: " + this.f + " fromGroupId: " + this.g + " fromGroupOwnerUin: " + this.h;
+    azmj.b(null, "dc00898", "", "", "0X800A60E", "0X800A60E", 0, 0, "", "", "", "");
+    aroo.a(this.jdField_a_of_type_Arfh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Arfh.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfo
  * JD-Core Version:    0.7.0.1
  */

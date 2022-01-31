@@ -1,21 +1,50 @@
-import android.content.Context;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
+import android.view.View;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class bepb
+  implements URLDrawableDownListener
 {
-  public static Animation a(Context paramContext, int paramInt1, int paramInt2)
+  final String jdField_a_of_type_JavaLangString;
+  final WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  final String b;
+  
+  public bepb(View paramView, String paramString1, String paramString2)
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(paramInt1, paramInt2, 0.0F, 0.0F);
-    localTranslateAnimation.setDuration((Math.abs(paramInt2 - paramInt1) * 1.0F / bfgl.a(paramContext) * 3000.0F));
-    localTranslateAnimation.setInterpolator(new bepg());
-    localTranslateAnimation.setFillAfter(true);
-    return localTranslateAnimation;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = paramString1;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+  }
+  
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramView != null)
+    {
+      QLog.e("Q.profilecard.FrdProfileCard", 1, this.jdField_a_of_type_JavaLangString + this.b);
+      paramView.setVisibility(8);
+    }
+  }
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    paramView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramView != null) {
+      paramView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bepb
  * JD-Core Version:    0.7.0.1
  */

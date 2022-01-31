@@ -1,16 +1,13 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.av.VideoController;
-
-public class ldi
-  implements AudioManager.OnAudioFocusChangeListener
+class ldi
 {
-  public ldi(VideoController paramVideoController) {}
+  public long a;
+  public String a;
   
-  public void onAudioFocusChange(int paramInt) {}
+  private ldi(lde paramlde) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ldi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qlink.SendMsg;
+import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
+import java.util.Observable;
+import java.util.Observer;
 
-public final class bgoz
-  implements Parcelable.Creator<SendMsg>
+public class bgoz
+  implements Observer
 {
-  public SendMsg a(Parcel paramParcel)
-  {
-    return new SendMsg(paramParcel);
-  }
+  public bgoz(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public SendMsg[] a(int paramInt)
+  public void update(Observable paramObservable, Object paramObject)
   {
-    return new SendMsg[paramInt];
+    if (!(paramObject instanceof String)) {}
+    do
+    {
+      return;
+      if (("resetPlayer".equals((String)paramObject)) && (this.a.y))
+      {
+        this.a.g();
+        this.a.c();
+        return;
+      }
+    } while (!"resumePlayer".equals((String)paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgoz
  * JD-Core Version:    0.7.0.1
  */

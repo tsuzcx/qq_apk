@@ -1,175 +1,111 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.style.ReplacementSpan;
-import com.tencent.image.URLDrawable;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
+import pb.unify.search.UnifySearchCommon.ResultItem;
 
 public class aykr
-  extends ReplacementSpan
+  extends ayju
 {
-  public float a;
-  public int a;
-  private WeakReference<Drawable> a;
-  protected volatile boolean a;
-  public float b;
-  int b;
-  public float c;
-  public int c;
-  public float d;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private int d;
+  private String j;
   
-  public aykr(int paramInt1, int paramInt2, int paramInt3)
+  public aykr(String paramString, long paramLong, List<String> paramList, UnifySearchCommon.ResultItem paramResultItem, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
-  }
-  
-  public int a()
-  {
-    return 0x7FFFFFFF & this.jdField_a_of_type_Int;
-  }
-  
-  public Drawable a()
-  {
-    Object localObject1 = this.jdField_a_of_type_JavaLangRefWeakReference;
-    if (localObject1 != null) {}
-    for (localObject1 = (Drawable)((WeakReference)localObject1).get();; localObject1 = null)
-    {
-      Object localObject2;
-      if ((localObject1 instanceof URLDrawable))
-      {
-        localObject2 = (URLDrawable)localObject1;
-        if ((this.jdField_a_of_type_Boolean) && (!((URLDrawable)localObject2).mUseApngImage))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQText", 2, "getDrawable: change to apng");
-          }
-          localObject1 = null;
-        }
-      }
-      for (;;)
-      {
-        localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          localObject2 = b();
-          this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject2);
-        }
-        return localObject2;
-      }
-    }
-  }
-  
-  public String a()
-  {
-    return "";
+    super(paramString, paramLong, paramList, paramResultItem, paramInt);
   }
   
   public void a(int paramInt)
   {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    try
+    {
+      this.d = new JSONObject(this.jdField_a_of_type_JavaLangString).getInt("appid");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e(c, 2, "parseLayoutExtensions exception:" + paramString);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(String paramString)
+  {
+    this.j = paramString;
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void c(int paramInt)
+  {
     this.jdField_b_of_type_Int = paramInt;
-    Drawable localDrawable = a();
-    if (localDrawable != null) {
-      localDrawable.setBounds(0, 0, paramInt, paramInt);
-    }
   }
   
-  protected Drawable b()
+  public void c(String paramString)
   {
-    Drawable localDrawable2;
-    Drawable localDrawable1;
-    if (this.jdField_c_of_type_Int == 0)
-    {
-      localDrawable2 = aylc.a(this.jdField_a_of_type_Int);
-      localDrawable1 = localDrawable2;
-      if (localDrawable2 != null)
-      {
-        localDrawable2.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
-        localDrawable1 = localDrawable2;
-      }
-    }
-    do
-    {
-      int i;
-      do
-      {
-        do
-        {
-          return localDrawable1;
-          if ((0x80000000 & this.jdField_a_of_type_Int) != 0) {
-            break;
-          }
-          localDrawable2 = aylc.a(this.jdField_a_of_type_Int, false);
-          localDrawable1 = localDrawable2;
-        } while (localDrawable2 == null);
-        localDrawable2.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
-        return localDrawable2;
-        i = 0x7FFFFFFF & this.jdField_a_of_type_Int;
-        if ((i < 0) || (i >= ayjy.b.length)) {
-          break label169;
-        }
-        if (ayjy.b[i] != ayjy.a[i]) {
-          break;
-        }
-        localDrawable2 = aylc.a(i, false);
-        localDrawable1 = localDrawable2;
-      } while (localDrawable2 == null);
-      localDrawable2.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
-      return localDrawable2;
-      localDrawable2 = aylc.a(i, true);
-      localDrawable1 = localDrawable2;
-    } while (localDrawable2 == null);
-    localDrawable2.setBounds(0, 0, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
-    return localDrawable2;
-    label169:
-    return new ColorDrawable();
+    this.jdField_b_of_type_JavaLangString = paramString;
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  public boolean c()
   {
-    paramCharSequence = a();
-    paramCanvas.save();
-    float f2 = paramInt4 - this.jdField_b_of_type_Int;
-    float f1 = f2;
-    if (paramInt5 > paramInt4)
-    {
-      f1 = f2;
-      if (paramPaint != null) {
-        f1 = f2 + paramPaint.getFontMetrics().descent;
-      }
-    }
-    paramCanvas.translate(paramFloat, f1);
-    if (paramCharSequence != null)
-    {
-      paramCharSequence.draw(paramCanvas);
-      this.jdField_a_of_type_Float = paramFloat;
-      this.jdField_b_of_type_Float = paramInt3;
-      this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float + this.jdField_b_of_type_Int);
-      this.d = paramInt5;
-    }
-    paramCanvas.restore();
+    return this.jdField_b_of_type_Boolean;
   }
   
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  public String d()
   {
-    if (paramFontMetricsInt != null)
-    {
-      paramFontMetricsInt.ascent = (-this.jdField_b_of_type_Int);
-      paramFontMetricsInt.descent = 0;
-      paramFontMetricsInt.top = paramFontMetricsInt.ascent;
-      paramFontMetricsInt.bottom = 0;
-    }
+    return this.j;
+  }
+  
+  public String e()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public int f()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int g()
+  {
+    return this.d;
+  }
+  
+  public int h()
+  {
     return this.jdField_b_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aykr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,132 @@
-import android.app.Activity;
-import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.util.SparseArray;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
+import com.tencent.qphone.base.util.QLog;
 
-class aprh
-  implements bfqu
+public abstract class aprh
+  extends aprq
 {
-  aprh(aprb paramaprb) {}
+  private static aprj a;
+  public int a;
+  protected Context a;
+  protected SparseArray<View> a;
   
-  public void F()
+  public aprh(Context paramContext, int paramInt1, int paramInt2)
   {
-    aprb.a(this.a, false);
-    this.a.jdField_a_of_type_Apqs.o();
-    this.a.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
+    super(paramInt1);
+    if (paramContext == null) {
+      throw new IllegalArgumentException("Context MUST NOT be null!!!");
+    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   }
   
-  public void G()
+  private boolean a(int paramInt)
   {
-    aprb.a(this.a, false);
-    if (aprb.a(this.a)) {
-      this.a.g(true);
+    switch (paramInt)
+    {
+    default: 
+      return false;
     }
-    if (aprb.b(this.a)) {
-      this.a.h(true);
-    }
-    if (aprb.c(this.a)) {
-      this.a.b(true);
+    return true;
+  }
+  
+  public static void b()
+  {
+    if (jdField_a_of_type_Aprj != null)
+    {
+      jdField_a_of_type_Aprj.a();
+      jdField_a_of_type_Aprj = null;
     }
   }
   
-  public void H() {}
+  protected abstract int a(int paramInt);
   
-  public void a(float paramFloat)
+  protected View a(int paramInt)
   {
-    aprb.a(this.a, true);
-    Drawable localDrawable;
-    if (aprb.a(this.a) != null)
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelViewBinder", 2, " createEmoticonPanelView, type=" + paramInt);
+    }
+    long l = System.currentTimeMillis();
+    Object localObject;
+    switch (paramInt)
     {
-      localDrawable = aprb.a(this.a).getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha(0);
+    default: 
+      localObject = null;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonPanelViewBinder", 2, "[Performance] createEmoticonPanelView, type=" + paramInt + ",duration=" + (System.currentTimeMillis() - l));
       }
+      return localObject;
+      localObject = new EmoticonLinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
+      ((EmoticonLinearLayout)localObject).setPanelViewType(paramInt);
     }
-    if (aprb.b(this.a) != null)
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidContentContext = null;
+    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {}
+    View localView;
+    do
     {
-      localDrawable = aprb.b(this.a).getBackground();
-      if (localDrawable != null) {
-        localDrawable.mutate().setAlpha((int)(255.0F * paramFloat));
+      do
+      {
+        do
+        {
+          return;
+          localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+        } while (localView == null);
+        this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+        paramInt = a(paramInt);
+      } while (!a(paramInt));
+      if (jdField_a_of_type_Aprj == null) {
+        jdField_a_of_type_Aprj = new aprj();
       }
+    } while (jdField_a_of_type_Aprj.a(paramInt, localView));
+  }
+  
+  protected abstract void a(View paramView, int paramInt);
+  
+  public View b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonPanelViewBinder", 2, "getEmoticonPanelView, pageIndex=" + paramInt + ",viewBinder=" + this);
     }
-    if (paramFloat < 0.8F)
+    int i = a(paramInt);
+    View localView1 = null;
+    if (jdField_a_of_type_Aprj != null) {
+      localView1 = jdField_a_of_type_Aprj.a(i);
+    }
+    View localView2 = localView1;
+    if (localView1 == null) {
+      localView2 = a(i);
+    }
+    if (localView2 != null)
     {
-      aprb.a(this.a).setVisibility(8);
-      aprb.c(this.a).setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+        this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+      }
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView2);
+      a(localView2, paramInt);
     }
+    return localView2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aprh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,146 +1,41 @@
 import android.text.TextUtils;
-import com.tencent.util.Pair;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.funchat.zimu.ZimuToolbar;
+import com.tencent.qphone.base.util.QLog;
 
 public class mqy
+  implements mjp
 {
-  public static Pair<Integer, Integer> a(int paramInt1, int paramInt2)
+  public mqy(ZimuToolbar paramZimuToolbar) {}
+  
+  public void a(long paramLong)
   {
-    int j = 1;
-    switch (paramInt2)
+    EffectSettingUi.a(ZimuToolbar.access$400(this.a), paramLong);
+  }
+  
+  public void a(long paramLong, mkj parammkj)
+  {
+    EffectSettingUi.a(ZimuToolbar.access$000(this.a), paramLong);
+    QLog.w("ZimuToolbar", 1, "onEffectClick, 自己点击了字幕, id[" + parammkj.a + "], seq[" + paramLong + "]");
+    ZimuToolbar.access$100(this.a, paramLong, parammkj.a);
+    if ((!TextUtils.isEmpty(parammkj.a)) && (!"0".equalsIgnoreCase(parammkj.a)))
     {
-    default: 
-      return null;
-    }
-    for (int i = 1;; i = 2)
-    {
-      paramInt2 = j;
-      switch (paramInt1)
+      llt.a("0X80085CD", parammkj.a);
+      if (llr.a(parammkj.a))
       {
-      default: 
-        return null;
+        parammkj = ZimuToolbar.access$200(this.a).a().a().d;
+        String str = ZimuToolbar.access$300(this.a).getCurrentAccountUin();
+        llt.a("0X8009191", str, parammkj);
+        llt.a("0X8009192", str, parammkj);
       }
     }
-    paramInt2 = 2;
-    for (;;)
-    {
-      return new Pair(Integer.valueOf(paramInt2), Integer.valueOf(i));
-      paramInt2 = 3;
-      continue;
-      paramInt2 = 4;
-      continue;
-      paramInt2 = 5;
-      continue;
-      paramInt2 = 7;
-    }
-  }
-  
-  public static void a()
-  {
-    mqw.b("0X800A2B9");
-  }
-  
-  public static void a(int paramInt)
-  {
-    String str;
-    switch (paramInt)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
-    case 4: 
-      str = "0X800A2BF";
-    }
-    for (;;)
-    {
-      mqw.b(str);
-      return;
-      str = "0X800A2C1";
-      continue;
-      str = "0X800A2BE";
-      continue;
-      str = "0X800A2C3";
-    }
-  }
-  
-  public static void a(int paramInt1, int paramInt2)
-  {
-    Pair localPair = a(paramInt1, paramInt2);
-    if (localPair == null) {
-      return;
-    }
-    axqy.b(null, "dc00898", "", "", "0X800A2BB", "0X800A2BB", ((Integer)localPair.first).intValue(), 0, String.valueOf(((Integer)localPair.second).intValue()), "", "", "");
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
-  {
-    String str;
-    switch (paramInt3)
-    {
-    default: 
-      return;
-    case 1: 
-      str = "0X800A3E3";
-    }
-    for (;;)
-    {
-      Object localObject = a(paramInt1, paramInt2);
-      if (localObject == null) {
-        break;
-      }
-      paramInt1 = ((Integer)((Pair)localObject).first).intValue();
-      localObject = String.valueOf(((Pair)localObject).second);
-      if (!TextUtils.isEmpty(paramString)) {
-        localObject = paramString;
-      }
-      axqy.b(null, "dc00898", "", "", str, str, paramInt1, 0, (String)localObject, "", "", "");
-      return;
-      str = "0X800A3E1";
-      continue;
-      str = "0X800A2BC";
-    }
-  }
-  
-  public static void a(int paramInt, String paramString)
-  {
-    if (paramInt == 1) {
-      axqy.b(null, "dc00898", "", "", "0X800A3E2", "0X800A3E2", 0, 0, "", paramString, "", "");
-    }
-  }
-  
-  public static void b()
-  {
-    mqw.b("0X800A2BA");
-  }
-  
-  public static void c()
-  {
-    mqw.b("0X800A2BD");
-  }
-  
-  public static void d()
-  {
-    mqw.b("0X800A2C0");
-  }
-  
-  public static void e()
-  {
-    mqw.b("0X800A2C2");
-  }
-  
-  public static void f()
-  {
-    mqw.b("0X800A3DB");
-  }
-  
-  public static void g()
-  {
-    mqw.b("0X800A3DC");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mqy
  * JD-Core Version:    0.7.0.1
  */

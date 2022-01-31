@@ -10,7 +10,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
-import axqy;
+import azmj;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -54,7 +54,7 @@ class ThemeDIYActivity$12
       }
       for (;;)
       {
-        axqy.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", paramAdapterView, 0, 0, String.valueOf(this.this$0.mCurrentPageIndex), paramView.id, "" + paramView.from, "");
+        azmj.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", paramAdapterView, 0, 0, String.valueOf(this.this$0.mCurrentPageIndex), paramView.id, "" + paramView.from, "");
         return;
         this.this$0.mPageView.mData.tryOnBgRSD = paramView;
         this.this$0.setListItemStatus(this.this$0.bgResHListView, this.this$0.mPageView.mData.tryOnBgRSD, this.this$0.mPageView.mData.usedBgRSD, null);
@@ -108,7 +108,7 @@ class ThemeDIYActivity$12
       for (this.this$0.mStyleSetStatus = 2;; this.this$0.mStyleSetStatus = 0)
       {
         this.this$0.mAdapter.tryOnStyleRSD = this.this$0.tryOnStyleRSD;
-        axqy.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", "diy_style", 0, 0, String.valueOf(this.this$0.mCurrentPageIndex), paramAdapterView.id, "", "");
+        azmj.b(this.this$0.app, "CliOper", "", this.this$0.app.getCurrentAccountUin(), "theme_mall", "diy_style", 0, 0, String.valueOf(this.this$0.mCurrentPageIndex), paramAdapterView.id, "", "");
         if (this.this$0.mCurrentPageIndex != 0) {
           break;
         }
@@ -122,7 +122,7 @@ class ThemeDIYActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDIYActivity.12
  * JD-Core Version:    0.7.0.1
  */

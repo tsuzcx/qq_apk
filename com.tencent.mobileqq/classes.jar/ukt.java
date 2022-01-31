@@ -1,23 +1,27 @@
-import android.util.LruCache;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-class ukt
-  extends LruCache<String, ukl>
+public class ukt
 {
-  ukt(uks paramuks, int paramInt)
+  public int a;
+  public ErrorMessage a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  
+  public ukt()
   {
-    super(paramInt);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage();
   }
   
-  protected void a(boolean paramBoolean, String paramString, ukl paramukl1, ukl paramukl2)
+  public String toString()
   {
-    super.entryRemoved(paramBoolean, paramString, paramukl1, paramukl2);
-    ukj.a("story.icon.ShareGroupIconManager", "entryRemoved key = %s" + paramString);
-    paramukl1.a();
+    return "UploadResult{errorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", fileKey='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileId='" + this.b + '\'' + ", uploadServerIp='" + this.d + '\'' + ", mLastUploadOffset='" + this.jdField_a_of_type_Int + '\'' + ", cdnUrl='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ukt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.model.CreateVirtualResult;
+import android.graphics.Bitmap;
 
-public final class bdns
-  implements Parcelable.Creator<CreateVirtualResult>
+public class bdns
 {
-  public CreateVirtualResult a(Parcel paramParcel)
-  {
-    return new CreateVirtualResult(paramParcel);
-  }
-  
-  public CreateVirtualResult[] a(int paramInt)
-  {
-    return new CreateVirtualResult[paramInt];
-  }
+  public int a;
+  public Bitmap a;
+  public float[] a;
+  public int[] a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdns
  * JD-Core Version:    0.7.0.1
  */

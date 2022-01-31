@@ -1,43 +1,36 @@
-import android.content.res.Resources;
-import android.content.res.TypedArray;
-import android.util.TypedValue;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import java.lang.ref.WeakReference;
 
 public class rvj
+  implements Handler.Callback
 {
-  public float a;
-  public int a;
-  public String a;
-  public float b;
-  public int b;
-  public float c;
-  public int c;
-  public float d;
-  public int d;
+  private WeakReference<ReadInJoyXListView> a;
   
-  public rvj(TickerView paramTickerView, Resources paramResources)
+  public rvj(ReadInJoyXListView paramReadInJoyXListView)
   {
-    this.jdField_c_of_type_Int = -16777216;
-    this.jdField_d_of_type_Float = TypedValue.applyDimension(2, 12.0F, paramResources.getDisplayMetrics());
-    this.jdField_a_of_type_Int = 8388611;
+    this.a = new WeakReference(paramReadInJoyXListView);
   }
   
-  public void a(TypedArray paramTypedArray)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Int = paramTypedArray.getInt(4, this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_Int = paramTypedArray.getColor(6, this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_Float = paramTypedArray.getFloat(7, this.jdField_a_of_type_Float);
-    this.jdField_b_of_type_Float = paramTypedArray.getFloat(8, this.jdField_b_of_type_Float);
-    this.jdField_c_of_type_Float = paramTypedArray.getFloat(9, this.jdField_c_of_type_Float);
-    this.jdField_a_of_type_JavaLangString = paramTypedArray.getString(5);
-    this.jdField_c_of_type_Int = paramTypedArray.getColor(3, this.jdField_c_of_type_Int);
-    this.jdField_d_of_type_Float = paramTypedArray.getDimension(1, this.jdField_d_of_type_Float);
-    this.jdField_d_of_type_Int = paramTypedArray.getInt(2, this.jdField_d_of_type_Int);
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if ((this.a != null) && (this.a.get() != null))
+    {
+      ((ReadInJoyXListView)this.a.get()).i();
+      return true;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rvj
  * JD-Core Version:    0.7.0.1
  */

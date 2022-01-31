@@ -1,57 +1,73 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoni
-  implements Animation.AnimationListener
+  extends aofy<aonj>
 {
-  public aoni(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a()
   {
-    Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+    return 607;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  @NonNull
+  public aonj a(int paramInt)
   {
-    if (Face2FaceFriendBubbleView.a(this.a) == 1)
-    {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+    return new aonj();
+  }
+  
+  @Nullable
+  public aonj a(aogf[] paramArrayOfaogf)
+  {
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0) && (paramArrayOfaogf[0] != null)) {
+      return aonj.a(paramArrayOfaogf[0].a);
     }
-    for (;;)
-    {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(4);
-      return;
-      if (Face2FaceFriendBubbleView.a(this.a) == 2)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839577);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 3)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839578);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 4)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839579);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("SubAccountConfProcessor", 2, "onParsed is null");
     }
+    return null;
+  }
+  
+  public Class<aonj> a()
+  {
+    return aonj.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SubAccountConfProcessor", 2, new Object[] { "onReqFailed ", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(aonj paramaonj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SubAccountConfProcessor", 2, "onUpdate " + paramaonj.toString());
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SubAccountConfProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoni
  * JD-Core Version:    0.7.0.1
  */

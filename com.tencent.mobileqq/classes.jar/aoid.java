@@ -1,32 +1,23 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import java.util.ArrayList;
 
 public class aoid
-  extends aoez
 {
-  public aoid(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
+  public int a;
+  public String a;
+  public ArrayList<aoin> a;
+  public int b;
   
-  protected void a(boolean paramBoolean1, long paramLong, String paramString, boolean paramBoolean2, byte[] paramArrayOfByte, boolean paramBoolean3, boolean paramBoolean4, int paramInt, List<aogm> paramList, aoft paramaoft)
+  public aoid(int paramInt1, int paramInt2, String paramString, ArrayList<aoin> paramArrayList)
   {
-    if (ExtendFriendSearchFragment.a(this.a) != paramLong) {
-      return;
-    }
-    try
-    {
-      ExtendFriendSearchFragment.a(this.a, 1);
-      ExtendFriendSearchFragment.a(this.a, paramBoolean1, paramString, paramBoolean2, paramArrayOfByte, paramBoolean3, paramBoolean4, paramInt, paramList, paramaoft);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("ExtendFriendSearchFragment", 1, "onGetSquareStrangerList exception", paramString);
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoid
  * JD-Core Version:    0.7.0.1
  */

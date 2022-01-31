@@ -1,30 +1,31 @@
-import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.teamwork.PadInfo;
 
-class ayjl
-  implements View.OnClickListener
+public abstract interface ayjl
+  extends ayji
 {
-  ayjl(ayjh paramayjh) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    paramView = (PadInfo)((ayht)paramView.getTag()).a;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", mzb.a(paramView.pad_url, "_bid=2517"));
-    localBundle.putInt("key_team_work_edit_type", paramView.type);
-    localBundle.putString("key_team_work_title", paramView.title);
-    localBundle.putString("key_team_work_rul", paramView.pad_url);
-    localBundle.putInt("key_team_work_pad_list_type", paramView.type_list);
-    localBundle.putString("tdsourcetag", "s_qq_grpfile");
-    TeamWorkDocEditBrowserActivity.a(this.a.a, localBundle, true);
-  }
+  public abstract CharSequence a();
+  
+  public abstract String a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(View paramView);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract CharSequence b();
+  
+  public abstract CharSequence c();
+  
+  public abstract CharSequence d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayjl
  * JD-Core Version:    0.7.0.1
  */

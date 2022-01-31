@@ -1,54 +1,37 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Handler;
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public class bjtb
-  extends Handler
+final class bjtb
+  implements bjnu
 {
-  public bjtb(bjta parambjta) {}
-  
-  public void dispatchMessage(Message paramMessage)
+  public void a(BaseResp paramBaseResp)
   {
-    super.dispatchMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      if (bjta.a(this.a) != null)
-      {
-        vej.b("0X80080E3", vej.a);
-        paramMessage = new ArrayList();
-        paramMessage.add(Uri.parse(bjta.a(this.a)));
-        paramMessage = new Intent("", Uri.parse("pituopenapi://TTPTBEAUTIFY?back=1&v=490&refer=qqimageedit")).setClassName("com.tencent.ttpic", "com.tencent.ttpic.module.MainActivity").putParcelableArrayListExtra("android.intent.extra.STREAM", paramMessage);
-        paramMessage.putExtra("big_brother_source_key", "biz_src_jc_editor");
-        this.a.jdField_a_of_type_Bjyv.getActivity().startActivityForResult(paramMessage, 100);
-      }
-      this.a.c();
-      return;
-    case 2: 
-      paramMessage = (Bitmap)paramMessage.obj;
-      this.a.jdField_a_of_type_Bjxn.a(paramMessage, false);
-      if (this.a.jdField_a_of_type_Bjxn.a != null)
-      {
-        this.a.jdField_a_of_type_Bjxn.a.d();
-        this.a.jdField_a_of_type_Bjxn.z();
-      }
-      this.a.jdField_a_of_type_Boolean = true;
-      return;
+    if ((!TextUtils.isEmpty(bjta.jdField_a_of_type_JavaLangString)) && (bjta.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null)) {
+      bjta.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.callJs(bjta.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(paramBaseResp.errCode) });
     }
-    this.a.jdField_a_of_type_Bjxn.a(0);
-    this.a.c();
+    for (;;)
+    {
+      bjta.jdField_a_of_type_JavaLangString = null;
+      bjta.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
+      bjnt.a().b(this);
+      return;
+      switch (paramBaseResp.errCode)
+      {
+      case -2: 
+      case -1: 
+      default: 
+        xxb.a(1, 2131720019);
+        break;
+      case 0: 
+        xxb.a(2, 2131720038);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjtb
  * JD-Core Version:    0.7.0.1
  */

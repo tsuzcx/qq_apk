@@ -6,22 +6,22 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import axrn;
-import bbdh;
+import azmz;
+import bdcb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.viola.annotation.JSMethod;
 import com.tencent.viola.commons.Destroyable;
 import com.tencent.viola.module.BaseModule;
-import fi;
+import dr;
 import java.util.HashMap;
 import java.util.Iterator;
-import naj;
-import nol;
-import onh;
+import ndd;
+import nrt;
 import org.json.JSONException;
 import org.json.JSONObject;
+import ors;
 
 public class QReportModule
   extends BaseModule
@@ -33,7 +33,7 @@ public class QReportModule
   private HashMap getDTBase()
   {
     HashMap localHashMap = new HashMap();
-    Object localObject = (QQAppInterface)onh.a();
+    Object localObject = (QQAppInterface)ors.a();
     if (localObject != null)
     {
       localObject = ((QQAppInterface)localObject).getAccount();
@@ -42,13 +42,13 @@ public class QReportModule
       }
     }
     localHashMap.put("app", "qq");
-    localHashMap.put("av", "8.3.0");
-    localHashMap.put("imei", bbdh.a());
+    localHashMap.put("av", "8.3.3");
+    localHashMap.put("imei", bdcb.a());
     localHashMap.put("oper_time", Long.toString(System.currentTimeMillis()));
     localHashMap.put("domain", "1");
     localHashMap.put("md", Build.MODEL);
-    localHashMap.put("net_type", Integer.toString(naj.a()));
-    localHashMap.put("client_ip", fi.a(fi.a()));
+    localHashMap.put("net_type", Integer.toString(ndd.a()));
+    localHashMap.put("client_ip", dr.a(dr.a()));
     if (BaseApplication.getContext() != null)
     {
       localObject = BaseApplication.getContext().getResources().getDisplayMetrics();
@@ -89,7 +89,7 @@ public class QReportModule
         if (QLog.isColorLevel()) {
           QLog.d("QReportModule", 2, "reportDTImpl JSONException  e: " + paramJSONObject.getMessage());
         }
-        axrn.a(paramContext).a(null, paramString, true, -1L, 0L, localHashMap, null);
+        azmz.a(paramContext).a(null, paramString, true, -1L, 0L, localHashMap, null);
       }
       if (((localObject instanceof Number)) || ((localObject instanceof Long)) || ((localObject instanceof Integer)) || ((localObject instanceof Double)) || ((localObject instanceof Float))) {
         localObject = localObject.toString();
@@ -119,14 +119,14 @@ public class QReportModule
     if (paramJSONObject != null) {}
     for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = "")
     {
-      nol.a(null, null, paramString, paramString, 0, 0, str1, str2, str3, paramJSONObject, false);
+      nrt.a(null, null, paramString, paramString, 0, 0, str1, str2, str3, paramJSONObject, false);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.modules.QReportModule
  * JD-Core Version:    0.7.0.1
  */

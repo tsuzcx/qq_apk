@@ -1,35 +1,136 @@
-import org.json.JSONObject;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class ahcz
+  extends BaseAdapter
+  implements View.OnClickListener
 {
-  public int a;
-  public String a;
-  public JSONObject a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public ahda a;
+  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  List<ReadInJoySearchHistoryEntity> jdField_a_of_type_JavaUtilList;
   
-  public ahcz() {}
-  
-  public ahcz(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  public ahcz(Context paramContext, List<ReadInJoySearchHistoryEntity> paramList, ahda paramahda)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.d = paramString4;
-    this.e = paramString5;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    b(paramList);
+    this.jdField_a_of_type_Ahda = paramahda;
   }
   
-  public String toString()
+  private void b(List<ReadInJoySearchHistoryEntity> paramList)
   {
-    return "id: " + this.jdField_a_of_type_JavaLangString + " type: " + this.jdField_a_of_type_Int + " name: " + this.b + " params: " + this.jdField_a_of_type_OrgJsonJSONObject;
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      this.jdField_a_of_type_JavaUtilList = null;
+      return;
+    }
+    if (paramList.size() < 6)
+    {
+      this.jdField_a_of_type_JavaUtilList = paramList;
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList = paramList.subList(0, 5);
+  }
+  
+  public void a(List<ReadInJoySearchHistoryEntity> paramList)
+  {
+    b(paramList);
+    super.notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size() + 1;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return (ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    View localView;
+    if (paramViewGroup == null) {
+      localView = null;
+    }
+    do
+    {
+      return localView;
+      if (paramView == null)
+      {
+        paramView = LayoutInflater.from(paramViewGroup).inflate(2131559665, null);
+        paramViewGroup = new ahdb(this);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367662));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131369071));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364305));
+        paramView.setTag(paramViewGroup);
+        paramView.setOnClickListener(this);
+      }
+      for (;;)
+      {
+        paramViewGroup.jdField_a_of_type_Int = paramInt;
+        if (paramInt >= this.jdField_a_of_type_JavaUtilList.size()) {
+          break;
+        }
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt)).keyWord);
+        return paramView;
+        paramViewGroup = (ahdb)paramView.getTag();
+      }
+      localView = paramView;
+    } while (paramInt != this.jdField_a_of_type_JavaUtilList.size());
+    paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    return paramView;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((paramView.getTag() instanceof ahdb))
+    {
+      paramView = (ahdb)paramView.getTag();
+      if (paramView.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {
+        break label69;
+      }
+      if (this.jdField_a_of_type_Ahda != null)
+      {
+        paramView = (ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramView.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Ahda.a(paramView);
+      }
+    }
+    label69:
+    while ((paramView.jdField_a_of_type_Int != this.jdField_a_of_type_JavaUtilList.size()) || (this.jdField_a_of_type_Ahda == null)) {
+      return;
+    }
+    this.jdField_a_of_type_Ahda.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahcz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emotionintegrate;
 
-import ajya;
+import alpo;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,15 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import aodd;
-import aode;
-import axqy;
-import bbjs;
+import apvd;
+import apve;
+import azmj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngImage;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import mqq.app.AppRuntime;
 
 public abstract class AIOEmotionBaseFragment
@@ -39,27 +39,27 @@ public abstract class AIOEmotionBaseFragment
   
   public abstract void a();
   
-  protected abstract void a(int paramInt, bbjs parambbjs);
+  protected abstract void a(int paramInt, ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem);
   
   protected void a(View paramView)
   {
     paramView.setFitsSystemWindows(true);
-    TextView localTextView = (TextView)paramView.findViewById(2131368429);
-    localTextView.setText(ajya.a(2131700026));
-    localTextView.setOnClickListener(new aodd(this));
+    TextView localTextView = (TextView)paramView.findViewById(2131368613);
+    localTextView.setText(alpo.a(2131700395));
+    localTextView.setOnClickListener(new apvd(this));
     if (a())
     {
-      paramView = (ImageView)paramView.findViewById(2131368441);
-      paramView.setImageResource(2130837739);
+      paramView = (ImageView)paramView.findViewById(2131368627);
+      paramView.setImageResource(2130837935);
       paramView.setVisibility(0);
-      paramView.setContentDescription(ajya.a(2131700025));
-      paramView.setOnClickListener(new aode(this));
+      paramView.setContentDescription(alpo.a(2131700394));
+      paramView.setOnClickListener(new apve(this));
     }
   }
   
   public void a(String paramString)
   {
-    axqy.b(null, "dc00898", "", "", paramString, paramString, this.jdField_a_of_type_Int, 0, "", "", "", "");
+    azmj.b(null, "dc00898", "", "", paramString, paramString, this.jdField_a_of_type_Int, 0, "", "", "", "");
   }
   
   public boolean a()
@@ -101,7 +101,7 @@ public abstract class AIOEmotionBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.emotionintegrate.AIOEmotionBaseFragment
  * JD-Core Version:    0.7.0.1
  */

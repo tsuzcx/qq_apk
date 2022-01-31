@@ -1,23 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.ark.API.ArkAppNotifyCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class alpz
-  extends BroadcastReceiver
+final class alpz
+  implements DialogInterface.OnClickListener
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  alpz(QQAppInterface paramQQAppInterface) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ark.ArkAppNotifyCenter", 2, "--VolumeReceiver---" + paramIntent.getAction());
-    }
-    ArkAppNotifyCenter.access$100("com.tencent.gouwu.video");
+    paramDialogInterface.dismiss();
+    azmj.b(this.a, "CliOper", "", "", "0X8004C6C", "0X8004C6C", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alpz
  * JD-Core Version:    0.7.0.1
  */

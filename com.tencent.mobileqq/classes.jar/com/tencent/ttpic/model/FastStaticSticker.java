@@ -3,6 +3,7 @@ package com.tencent.ttpic.model;
 import android.graphics.PointF;
 import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.trigger.TriggerCtrlItem;
 import com.tencent.ttpic.util.AlgoUtils;
 import com.tencent.ttpic.util.VideoFilterFactory.POSITION_TYPE;
 import java.util.ArrayList;
@@ -114,10 +115,10 @@ public class FastStaticSticker
       m = this.item.width;
       k = this.item.height;
       if (this.item.type != VideoFilterFactory.POSITION_TYPE.RELATIVE.type) {
-        break label1168;
+        break label1182;
       }
       if ((paramInt != 90) && (paramInt != 270)) {
-        break label1626;
+        break label1654;
       }
       i = 720;
     }
@@ -161,7 +162,7 @@ public class FastStaticSticker
         d1 = 1.333333333333333D;
         label454:
         if (d2 < d1) {
-          break label917;
+          break label924;
         }
         f1 = this.width / j;
         if ((paramInt != 90) && (paramInt != 270)) {
@@ -216,9 +217,12 @@ public class FastStaticSticker
       float f4 = k;
       float f5 = i;
       localObject = AlgoUtils.calPositionsTriangles(f2, f3 + f4 * f1, f1 * m + f5, paramInt, this.width, this.height);
+      if (this.triggerCtrlItem == null) {
+        break;
+      }
       this.renderParam.position = AlgoUtils.adjustPositionTriangles((float[])localObject, (float)this.triggerCtrlItem.getAudioScaleFactor(), this.item.anchorPointAudio, this.item.scaleDirection);
       return;
-      label917:
+      label924:
       float f1 = this.height / i;
       if ((paramInt == 90) || (paramInt == 270)) {}
       for (paramInt = (int)(this.height / 0.75D);; paramInt = (int)(this.height * 0.75D))
@@ -241,9 +245,12 @@ public class FastStaticSticker
       f4 = k;
       f5 = paramInt;
       localObject = AlgoUtils.calPositionsTriangles(f2, f3 + f4 * f1, f1 * m + f5, i, this.width, this.height);
+      if (this.triggerCtrlItem == null) {
+        break;
+      }
       this.renderParam.position = AlgoUtils.adjustPositionTriangles((float[])localObject, (float)this.triggerCtrlItem.getAudioScaleFactor(), this.item.anchorPointAudio, this.item.scaleDirection);
       return;
-      label1168:
+      label1182:
       if (this.width / this.height >= 0.75D)
       {
         d1 = this.width / 720.0D;
@@ -264,6 +271,9 @@ public class FastStaticSticker
         f2 = (float)(i + k * d1);
         d2 = paramInt;
         localObject = AlgoUtils.calPositionsTriangles(f1, f2, (float)(d1 * m + d2), i, this.width, this.height);
+        if (this.triggerCtrlItem == null) {
+          break;
+        }
         this.renderParam.position = AlgoUtils.adjustPositionTriangles((float[])localObject, (float)this.triggerCtrlItem.getAudioScaleFactor(), this.item.anchorPointAudio, this.item.scaleDirection);
         return;
       }
@@ -284,9 +294,12 @@ public class FastStaticSticker
       f2 = (float)(paramInt + k * d1);
       double d2 = i;
       localObject = AlgoUtils.calPositionsTriangles(f1, f2, (float)(d1 * m + d2), paramInt, this.width, this.height);
+      if (this.triggerCtrlItem == null) {
+        break;
+      }
       this.renderParam.position = AlgoUtils.adjustPositionTriangles((float[])localObject, (float)this.triggerCtrlItem.getAudioScaleFactor(), this.item.anchorPointAudio, this.item.scaleDirection);
       return;
-      label1626:
+      label1654:
       i = 960;
     }
   }

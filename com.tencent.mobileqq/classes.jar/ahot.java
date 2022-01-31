@@ -1,19 +1,21 @@
-class ahot
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+
+public class ahot
+  implements axxi
 {
-  long jdField_a_of_type_Long;
-  String jdField_a_of_type_JavaLangString;
-  String b;
+  private ahot(FriendFragment paramFriendFragment) {}
   
-  public ahot(String paramString1, String paramString2, long paramLong)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramLong;
+    if ((FriendFragment.b(this.a)) && (paramBitmap != null) && (paramInt2 == 200)) {
+      FriendFragment.a(this.a, 1400L, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahot
  * JD-Core Version:    0.7.0.1
  */

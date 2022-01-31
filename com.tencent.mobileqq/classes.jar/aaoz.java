@@ -1,23 +1,55 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.widget.AuthorizationItem;
 
-public final class aaoz
-  implements DialogInterface.OnClickListener
+public class aaoz
 {
-  public aaoz(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString, boolean paramBoolean, aaqa paramaaqa, Bundle paramBundle) {}
+  public int a;
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private aaoz(String paramString1, String paramString2, String paramString3)
   {
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Aaqa, this.jdField_a_of_type_AndroidOsBundle);
+    this(paramString1, paramString2, paramString3, 0);
+  }
+  
+  private aaoz(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private static aaoz b()
+  {
+    return new aaoz("", "", "", 1);
+  }
+  
+  public String a(String paramString)
+  {
+    if (TextUtils.equals(paramString, AuthorizationItem.a.b)) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    if (TextUtils.equals(paramString, AuthorizationItem.b.b)) {
+      return this.b;
+    }
+    if (TextUtils.equals(paramString, AuthorizationItem.c.b)) {
+      return this.c;
+    }
+    return "";
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "UserInfoEntity : [name -> " + this.jdField_a_of_type_JavaLangString + ", phone -> " + this.b + ", city -> " + this.c + ", errCode -> " + this.jdField_a_of_type_Int + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaoz
  * JD-Core Version:    0.7.0.1
  */

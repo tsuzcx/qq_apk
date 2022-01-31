@@ -1,19 +1,20 @@
-import android.animation.ValueAnimator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class bkdf
-  implements bkde
+class bkdf
+  implements View.OnTouchListener
 {
-  public void a(ValueAnimator paramValueAnimator) {}
+  bkdf(bkdd parambkdd) {}
   
-  public void b(ValueAnimator paramValueAnimator) {}
-  
-  public void c(ValueAnimator paramValueAnimator) {}
-  
-  public void d(ValueAnimator paramValueAnimator) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return paramMotionEvent.getAction() == 2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkdf
  * JD-Core Version:    0.7.0.1
  */

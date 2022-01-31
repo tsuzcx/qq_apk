@@ -11,7 +11,6 @@ import android.media.MediaPlayer.OnVideoSizeChangedListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnCompletionListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnErrorListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnInfoListener;
-import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnPreparedListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnSeekCompleteListener;
 import com.tencent.thumbplayer.adapter.player.ITPPlayerBaseListener.IOnVideoSizeChangedListener;
 import com.tencent.thumbplayer.utils.TPLogUtil;
@@ -23,16 +22,22 @@ class TPSystemMediaPlayer$InnerPlayerListener
   
   public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
-    TPSystemMediaPlayer.access$2602(this.this$0, paramInt);
+    long l2 = ((float)(this.this$0.getDurationMs() * paramInt) / 100.0F) - this.this$0.getCurrentPositionMs();
+    paramMediaPlayer = this.this$0;
+    long l1 = l2;
+    if (l2 <= 0L) {
+      l1 = TPSystemMediaPlayer.access$2500(this.this$0);
+    }
+    TPSystemMediaPlayer.access$2502(paramMediaPlayer, l1);
   }
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
     TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "onCompletion, : ");
-    TPSystemMediaPlayer.access$202(this.this$0, TPSystemMediaPlayer.PlayerState.COMPLETE);
-    TPSystemMediaPlayer.access$1700(this.this$0);
-    if (TPSystemMediaPlayer.access$1800(this.this$0) != null) {
-      TPSystemMediaPlayer.access$1800(this.this$0).onCompletion();
+    TPSystemMediaPlayer.access$402(this.this$0, TPSystemMediaPlayer.PlayerState.COMPLETE);
+    TPSystemMediaPlayer.access$1500(this.this$0);
+    if (TPSystemMediaPlayer.access$1600(this.this$0) != null) {
+      TPSystemMediaPlayer.access$1600(this.this$0).onCompletion();
     }
   }
   
@@ -40,9 +45,9 @@ class TPSystemMediaPlayer$InnerPlayerListener
   {
     int j = 2000;
     TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "onError, : " + paramInt1 + ", extra: " + paramInt2);
-    TPSystemMediaPlayer.access$600(this.this$0);
-    TPSystemMediaPlayer.access$1700(this.this$0);
-    TPSystemMediaPlayer.access$202(this.this$0, TPSystemMediaPlayer.PlayerState.ERROR);
+    TPSystemMediaPlayer.access$800(this.this$0);
+    TPSystemMediaPlayer.access$1500(this.this$0);
+    TPSystemMediaPlayer.access$402(this.this$0, TPSystemMediaPlayer.PlayerState.ERROR);
     int i = j;
     switch (paramInt2)
     {
@@ -57,8 +62,8 @@ class TPSystemMediaPlayer$InnerPlayerListener
     }
     for (;;)
     {
-      if (TPSystemMediaPlayer.access$700(this.this$0) != null) {
-        TPSystemMediaPlayer.access$700(this.this$0).onError(i, TPSystemMediaPlayer.access$800(this.this$0, paramInt1), paramInt2, 0L);
+      if (TPSystemMediaPlayer.access$900(this.this$0) != null) {
+        TPSystemMediaPlayer.access$900(this.this$0).onError(i, TPSystemMediaPlayer.access$1000(this.this$0, paramInt1), paramInt2, 0L);
       }
       return true;
       i = 2001;
@@ -78,15 +83,15 @@ class TPSystemMediaPlayer$InnerPlayerListener
         if ((200 != paramInt1) && (201 != paramInt1)) {
           break label270;
         }
-        if (!TPSystemMediaPlayer.access$1900(this.this$0))
+        if (!TPSystemMediaPlayer.access$1800(this.this$0))
         {
           if (200 != paramInt1) {
             break label253;
           }
-          TPSystemMediaPlayer.access$2000(this.this$0);
+          TPSystemMediaPlayer.access$1900(this.this$0);
           label89:
-          if (TPSystemMediaPlayer.access$1400(this.this$0) != null) {
-            TPSystemMediaPlayer.access$1400(this.this$0).onInfo(paramInt1, 0L, 0L, null);
+          if (TPSystemMediaPlayer.access$2000(this.this$0) != null) {
+            TPSystemMediaPlayer.access$2000(this.this$0).onInfo(paramInt1, 0L, 0L, null);
           }
         }
       }
@@ -114,75 +119,48 @@ class TPSystemMediaPlayer$InnerPlayerListener
       break;
       paramInt1 = 106;
       break;
-      TPSystemMediaPlayer.access$1202(this.this$0, true);
+      TPSystemMediaPlayer.access$1702(this.this$0, true);
       paramInt1 = -1;
       break;
       label253:
       if (201 != paramInt1) {
         break label89;
       }
-      TPSystemMediaPlayer.access$1100(this.this$0);
+      TPSystemMediaPlayer.access$1300(this.this$0);
       break label89;
       label270:
-      if (TPSystemMediaPlayer.access$1400(this.this$0) != null) {
-        TPSystemMediaPlayer.access$1400(this.this$0).onInfo(paramInt1, 0L, 0L, null);
+      if (TPSystemMediaPlayer.access$2000(this.this$0) != null) {
+        TPSystemMediaPlayer.access$2000(this.this$0).onInfo(paramInt1, 0L, 0L, null);
       }
     }
   }
   
   public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (TPSystemMediaPlayer.access$200(this.this$0) != TPSystemMediaPlayer.PlayerState.PREPARING) {
-      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "onPrepared() is called in a wrong situation, mState = " + TPSystemMediaPlayer.access$200(this.this$0));
-    }
-    do
+    if (TPSystemMediaPlayer.access$400(this.this$0) != TPSystemMediaPlayer.PlayerState.PREPARING)
     {
+      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "onPrepared() is called in a wrong situation, mState = " + TPSystemMediaPlayer.access$400(this.this$0));
       return;
-      TPSystemMediaPlayer.access$202(this.this$0, TPSystemMediaPlayer.PlayerState.PREPARED);
-      TPSystemMediaPlayer.access$600(this.this$0);
-      TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "onPrepared() , mStartPositionMs=" + TPSystemMediaPlayer.access$400(this.this$0));
-      if ((TPSystemMediaPlayer.access$400(this.this$0) > 0) && (!TPSystemMediaPlayer.access$1200(this.this$0))) {
-        TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "onPrepared(), and seekto:" + TPSystemMediaPlayer.access$400(this.this$0));
-      }
-      try
-      {
-        paramMediaPlayer.seekTo(TPSystemMediaPlayer.access$400(this.this$0));
-        TPSystemMediaPlayer.access$302(this.this$0, true);
-        if (TPSystemMediaPlayer.access$1300(this.this$0))
-        {
-          this.this$0.start();
-          if (TPSystemMediaPlayer.access$1400(this.this$0) != null) {
-            TPSystemMediaPlayer.access$1400(this.this$0).onInfo(3, TPSystemMediaPlayer.access$1500(this.this$0), 0L, null);
-          }
-          TPSystemMediaPlayer.access$1302(this.this$0, false);
-          return;
-        }
-      }
-      catch (Exception paramMediaPlayer)
-      {
-        for (;;)
-        {
-          TPLogUtil.e("TPThumbPlayer[TPSystemMediaPlayer.java]", paramMediaPlayer);
-        }
-      }
-    } while (TPSystemMediaPlayer.access$1600(this.this$0) == null);
-    TPSystemMediaPlayer.access$1600(this.this$0).onPrepared();
+    }
+    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "onPrepared() , mStartPositionMs=" + TPSystemMediaPlayer.access$600(this.this$0));
+    TPSystemMediaPlayer.access$800(this.this$0);
+    TPSystemMediaPlayer.access$1400(this.this$0);
   }
   
   public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    if (TPSystemMediaPlayer.access$500(this.this$0) == null) {
+    if (TPSystemMediaPlayer.access$700(this.this$0) == null) {
       return;
     }
-    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "onSeekComplete(), and position:" + TPSystemMediaPlayer.access$2400(this.this$0));
-    if ((TPSystemMediaPlayer.PlayerState.PAUSED == TPSystemMediaPlayer.access$200(this.this$0)) && (paramMediaPlayer != null)) {}
+    TPLogUtil.i("TPThumbPlayer[TPSystemMediaPlayer.java]", "onSeekComplete().");
+    if ((TPSystemMediaPlayer.PlayerState.PAUSED == TPSystemMediaPlayer.access$400(this.this$0)) && (paramMediaPlayer != null)) {}
     try
     {
       paramMediaPlayer.pause();
-      if ((!TPSystemMediaPlayer.access$300(this.this$0)) && (TPSystemMediaPlayer.PlayerState.PREPARED != TPSystemMediaPlayer.access$200(this.this$0)) && (TPSystemMediaPlayer.access$2500(this.this$0) != null)) {
-        TPSystemMediaPlayer.access$2500(this.this$0).onSeekComplete();
+      if ((!TPSystemMediaPlayer.access$500(this.this$0)) && (TPSystemMediaPlayer.PlayerState.PREPARED != TPSystemMediaPlayer.access$400(this.this$0)) && (TPSystemMediaPlayer.access$2400(this.this$0) != null)) {
+        TPSystemMediaPlayer.access$2400(this.this$0).onSeekComplete();
       }
-      TPSystemMediaPlayer.access$302(this.this$0, false);
+      TPSystemMediaPlayer.access$502(this.this$0, false);
       return;
     }
     catch (Exception paramMediaPlayer)
@@ -221,7 +199,7 @@ class TPSystemMediaPlayer$InnerPlayerListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPSystemMediaPlayer.InnerPlayerListener
  * JD-Core Version:    0.7.0.1
  */

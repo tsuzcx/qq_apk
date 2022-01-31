@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity.photo.album.logicImp;
 
-import agrs;
-import ague;
+import aiob;
+import com.tencent.mobileqq.activity.photo.album.AbstractPhotoListActivity.PhotoListAdapter;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import mqq.util.WeakReference;
 
 class PhotoListLogicQzone$2$1
   implements Runnable
@@ -12,18 +11,18 @@ class PhotoListLogicQzone$2$1
   
   public void run()
   {
-    if (this.a.this$0.a.get() != null)
+    if (this.a.this$0.mActivity != null)
     {
-      agrs localagrs = ((NewPhotoListActivity)this.a.this$0.a.get()).a;
-      if (localagrs != null) {
-        localagrs.notifyDataSetChanged();
+      AbstractPhotoListActivity.PhotoListAdapter localPhotoListAdapter = ((NewPhotoListActivity)this.a.this$0.mActivity).photoListAdapter;
+      if (localPhotoListAdapter != null) {
+        localPhotoListAdapter.notifyDataSetChanged();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.logicImp.PhotoListLogicQzone.2.1
  * JD-Core Version:    0.7.0.1
  */

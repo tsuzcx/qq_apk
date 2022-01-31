@@ -1,9 +1,17 @@
-class airl
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
+
+public class airl
+  implements MediaPlayer.OnCompletionListener
 {
-  public int a;
-  public long a;
+  public airl(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  airl(airk paramairk) {}
+  public void onCompletion(MediaPlayer paramMediaPlayer)
+  {
+    RedPacketKSongFragment.a(this.a, false);
+    paramMediaPlayer.release();
+  }
 }
 
 

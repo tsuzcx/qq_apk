@@ -1,82 +1,52 @@
-import android.graphics.Rect;
-import android.text.Spannable;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ocr.OCRResultFragmentNew;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.Vector;
 
 public class auaz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements aubb
 {
-  public auaz(OCRResultFragmentNew paramOCRResultFragmentNew, EditText paramEditText) {}
+  public auaz(ChatBackgroundManager paramChatBackgroundManager, Context paramContext) {}
   
-  public void onGlobalLayout()
+  public void a(boolean paramBoolean, Vector<Integer> paramVector)
   {
-    Object localObject = new FrameLayout.LayoutParams(-1, -1);
-    OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew).findViewById(2131366662).setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = new Rect();
-    this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.b.getWindowVisibleDisplayFrame((Rect)localObject);
-    int j = this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.b.getRootView().getHeight();
-    int k = j - ((Rect)localObject).bottom;
-    StringBuilder localStringBuilder;
-    if (k != OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew))
+    if ((paramBoolean) && (this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
     {
-      OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, k);
-      if (k <= j * 0.15D) {
-        break label269;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.c.setVisibility(8);
-      try
+      paramVector = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
+      if ((paramVector != null) && (paramVector.a() != null) && (paramVector.a().a != null))
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetEditText.getText();
-        ayks[] arrayOfayks = (ayks[])((Spannable)localObject).getSpans(0, ((Spannable)localObject).length(), ayks.class);
-        if ((arrayOfayks != null) && (arrayOfayks.length > 0))
+        ChatXListView localChatXListView = paramVector.a().a;
+        int i = localChatXListView.getFirstVisiblePosition();
+        int j = localChatXListView.getLastVisiblePosition();
+        while (i <= j)
         {
-          int m = arrayOfayks.length;
-          int i = 0;
-          while (i < m)
+          Object localObject = aekt.a(localChatXListView, i);
+          if ((localObject != null) && (((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof aelt)))
           {
-            ((Spannable)localObject).removeSpan(arrayOfayks[i]);
-            i += 1;
+            localObject = (aelt)((View)localObject).getTag();
+            if ((((aelt)localObject).jdField_a_of_type_Ansf != null) && (!((aelt)localObject).jdField_a_of_type_Ansf.a) && (((aelt)localObject).jdField_a_of_type_Ansf.b))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("ChatBackgroundManager", 2, "BgThemeColorExtractListener.onBgThemeColorExtracted: success=true, refresh AIO.");
+              }
+              paramVector.a().a(((aelt)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage, 1);
+            }
           }
-        }
-        if (!QLog.isColorLevel()) {
-          break label268;
+          i += 1;
         }
       }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, this.jdField_a_of_type_AndroidWidgetEditText.getText(), true));
-        localException.printStackTrace();
-      }
-      localStringBuilder = new StringBuilder().append("OnGlobalLayoutListener showKeyboard:");
-      if (k <= j * 0.15D) {
-        break label331;
-      }
-    }
-    label268:
-    label269:
-    label331:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("OCRResultFragmentNew", 2, bool);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.c.setVisibility(0);
-      allt.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew), this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew.c, false, 0);
-      this.jdField_a_of_type_AndroidWidgetEditText.setText(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew, this.jdField_a_of_type_AndroidWidgetEditText.getText(), true));
-      this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auaz
  * JD-Core Version:    0.7.0.1
  */

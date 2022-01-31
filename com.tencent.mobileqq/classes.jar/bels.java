@@ -1,24 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.GridListView;
 
-class bels
-  extends BroadcastReceiver
+public class bels
+  implements View.OnClickListener
 {
-  bels(belr parambelr) {}
+  public bels(GridListView paramGridListView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (bely.a(paramIntent.getAction())) {}
-    while (belr.a(this.a) == null) {
-      return;
-    }
-    belr.a(this.a).a(paramContext, paramIntent);
+    int i = ((Integer)paramView.getTag(2131361808)).intValue();
+    this.a.a.onItemClick(this.a, paramView, i, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bels
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,65 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.1;
-import com.tencent.mobileqq.activity.aio.helper.TroopNotificationAIOHelper.2;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.os.MqqHandler;
 
 public class adjo
-  implements adif
+  implements bhqd
 {
-  private BaseChatPie a;
+  public adjo(ProfileCardMoreActivity paramProfileCardMoreActivity, String paramString, bhpy parambhpy) {}
   
-  public adjo(BaseChatPie paramBaseChatPie)
-  {
-    this.a = paramBaseChatPie;
-  }
-  
-  private void a()
-  {
-    if ((this.a != null) && (this.a.z()) && (this.a.b() == 1)) {
-      ThreadManager.post(new TroopNotificationAIOHelper.1(this), 8, null, true);
-    }
-  }
-  
-  private void b()
-  {
-    if ((this.a != null) && (this.a.b() == 1)) {
-      ThreadManager.post(new TroopNotificationAIOHelper.2(this), 8, null, true);
-    }
-  }
-  
-  public void a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
     switch (paramInt)
     {
-    default: 
-      return;
-    case 4: 
-      a();
-      return;
     }
-    b();
-  }
-  
-  public int[] a()
-  {
-    return new int[] { 4, 9 };
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.e();
+      return;
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "CliOper", "", "", "P_prof", "Pp_more_delete", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
+      if (bdee.d(BaseApplication.getContext()))
+      {
+        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.getHandler(ChatActivity.class);
+        if (paramView != null) {
+          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+        }
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.getHandler(ChatSettingActivity.class);
+        if (paramView != null) {
+          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent == null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent = new Intent();
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent.putExtra("finchat", true);
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.setResult(-1, this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent);
+        if (bdal.b(this.jdField_a_of_type_JavaLangString)) {
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.finish();
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.a(2131691542, 1);
+        continue;
+        if (bdal.b(this.jdField_a_of_type_JavaLangString)) {
+          azmj.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjo
  * JD-Core Version:    0.7.0.1
  */

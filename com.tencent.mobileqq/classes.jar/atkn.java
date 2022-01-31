@@ -1,28 +1,15 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.OperationView;
-import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import com.tencent.mobileqq.listentogether.data.MusicInfo;
+import java.util.List;
 
-public class atkn
+public abstract interface atkn
 {
-  public int a;
-  public View a;
-  public ViewGroup a;
-  public RelativeLayout a;
-  public VideoData a;
-  public OperationView a;
-  public QQStoryVideoPlayerErrorView a;
-  public ImageDisplayView a;
+  public abstract void a();
   
-  public atkn(VideoPlayerPagerAdapter paramVideoPlayerPagerAdapter) {}
+  public abstract void a(List<MusicInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atkn
  * JD-Core Version:    0.7.0.1
  */

@@ -4,16 +4,16 @@ import android.content.DialogInterface.OnClickListener;
 class bion
   implements DialogInterface.OnClickListener
 {
-  bion(biol parambiol, bire parambire) {}
+  bion(bioj parambioj) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    biol.a(this.jdField_a_of_type_Biol, this.jdField_a_of_type_Bire);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bion
  * JD-Core Version:    0.7.0.1
  */

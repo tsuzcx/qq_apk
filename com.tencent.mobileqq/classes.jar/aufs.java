@@ -1,21 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import android.widget.RelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aufs
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  aufs(aufj paramaufj, View paramView) {}
+  aufs(aufi paramaufi) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aufj.a(this.jdField_a_of_type_Aufj).removeView(this.jdField_a_of_type_AndroidViewView);
+    paramDialogInterface.dismiss();
+    azmj.b(this.a.a, "CliOper", "", "", aufi.b, aufi.b, 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aufs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,25 @@
-import android.provider.Settings.System;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class accz
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public accz(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public accz(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b(2);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
-    if (this.a.a().booleanValue())
-    {
-      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
-      this.a.b();
-      this.a.a(paramView);
-    }
+    paramDialogInterface = new Intent(this.a.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", alef.Y);
+    this.a.a.startActivityForResult(paramDialogInterface, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     accz
  * JD-Core Version:    0.7.0.1
  */

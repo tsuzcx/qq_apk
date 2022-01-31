@@ -1,48 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import java.lang.reflect.Method;
-
-public abstract class aqve
+class aqve
+  extends aqus
 {
-  public static aqve a;
-  
-  public static void a()
+  public aqve(aqug paramaqug)
   {
-    try
-    {
-      Method localMethod = Class.forName("com.tencent.mobileqq.haoliyou.JefsClass").getMethod("getInstance", new Class[0]);
-      localMethod.setAccessible(true);
-      a = (aqve)localMethod.invoke(null, new Object[0]);
-      return;
-    }
-    catch (Throwable localThrowable) {}
+    super(paramaqug);
   }
   
-  public static void a(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
+  protected String a()
   {
-    aqve localaqve = a;
-    if (localaqve != null) {
-      localaqve.b(paramActivity, paramIntent, paramInt, paramBundle);
-    }
+    return "StateSaveToWeiYunByPC";
   }
-  
-  public static void a(Context paramContext, Intent paramIntent, Runnable paramRunnable)
-  {
-    aqve localaqve = a;
-    if (localaqve != null) {
-      localaqve.b(paramContext, paramIntent, paramRunnable);
-    }
-  }
-  
-  public abstract void b(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle);
-  
-  public abstract void b(Context paramContext, Intent paramIntent, Runnable paramRunnable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqve
  * JD-Core Version:    0.7.0.1
  */

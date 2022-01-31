@@ -1,93 +1,56 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.AppFriendsInfo;
-import tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.RspBody;
+import android.content.Context;
+import android.provider.Settings.Secure;
+import android.telephony.TelephonyManager;
+import java.io.File;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
+import java.util.UUID;
 
-class aacu
-  extends mxj
+public class aacu
+  extends bfel
 {
-  aacu(aacs paramaacs, aabi paramaabi) {}
+  private static final String b = ;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(aacs.jdField_a_of_type_JavaLangString, 2, "onResult appid=" + aacs.a(this.jdField_a_of_type_Aacs).jdField_a_of_type_JavaLangString + ", openid=" + this.jdField_a_of_type_Aacs.jdField_a_of_type_Aacv.jdField_a_of_type_JavaLangString + ", openkey=" + this.jdField_a_of_type_Aacs.jdField_a_of_type_Aacv.b + ", code=" + paramInt);
-    }
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      aaep.a(this.jdField_a_of_type_Aabi, paramInt, "getappfriends result error, try again");
-      return;
-    }
-    paramBundle = new Oidb_0xb6e.RspBody();
+    return b + File.separator + ".GameCenterWebBuffer" + File.separator + "Images/games";
+  }
+  
+  public static String a(Context paramContext)
+  {
+    Object localObject = (TelephonyManager)paramContext.getSystemService("phone");
+    String str = "" + ((TelephonyManager)localObject).getDeviceId();
+    localObject = "" + ((TelephonyManager)localObject).getSimSerialNumber();
+    long l1 = ("" + Settings.Secure.getString(paramContext.getContentResolver(), "android_id")).hashCode();
+    long l2 = str.hashCode();
+    return new UUID(l1, ((String)localObject).hashCode() | l2 << 32).toString();
+  }
+  
+  public static String b()
+  {
     try
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = paramBundle;
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      JSONArray localJSONArray;
-      for (;;)
+      InetAddress localInetAddress;
+      do
       {
-        paramArrayOfByte = null;
-        paramBundle.printStackTrace();
-      }
-      try
-      {
-        paramBundle.put("appfriends", localJSONArray);
-        aaep.a(this.jdField_a_of_type_Aabi, paramBundle);
-        return;
-      }
-      catch (JSONException paramArrayOfByte)
-      {
-        for (;;)
+        localObject = NetworkInterface.getNetworkInterfaces();
+        Enumeration localEnumeration;
+        while (!localEnumeration.hasMoreElements())
         {
-          if (QLog.isColorLevel()) {
-            QLog.e(aacs.jdField_a_of_type_JavaLangString, 2, paramArrayOfByte.getMessage(), paramArrayOfByte);
+          if (!((Enumeration)localObject).hasMoreElements()) {
+            break;
           }
+          localEnumeration = ((NetworkInterface)((Enumeration)localObject).nextElement()).getInetAddresses();
         }
-      }
-      aaep.a(this.jdField_a_of_type_Aabi, -1, "parse result error, try again");
+        localInetAddress = (InetAddress)localEnumeration.nextElement();
+      } while (localInetAddress.isLoopbackAddress());
+      Object localObject = localInetAddress.getHostAddress().toString();
+      return localObject;
     }
-    if (paramArrayOfByte != null)
-    {
-      paramBundle = new JSONObject();
-      localJSONArray = new JSONArray();
-      paramArrayOfByte = paramArrayOfByte.rpt_friends_info.get().iterator();
-      while (paramArrayOfByte.hasNext())
-      {
-        Object localObject = (Oidb_0xb6e.AppFriendsInfo)paramArrayOfByte.next();
-        String str1 = ((Oidb_0xb6e.AppFriendsInfo)localObject).openid.get();
-        String str2 = ((Oidb_0xb6e.AppFriendsInfo)localObject).nick.get().toStringUtf8();
-        localObject = ((Oidb_0xb6e.AppFriendsInfo)localObject).figure_url_qq.get();
-        if (!TextUtils.isEmpty(str1))
-        {
-          try
-          {
-            JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("openid", str1.toUpperCase());
-            localJSONObject.put("nickName", str2);
-            localJSONObject.put("avatarUrl", localObject);
-            localJSONArray.put(localJSONObject);
-          }
-          catch (JSONException localJSONException) {}
-          if (QLog.isColorLevel()) {
-            QLog.e(aacs.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
-          }
-        }
-      }
-    }
+    catch (SocketException localSocketException) {}
+    return null;
   }
 }
 

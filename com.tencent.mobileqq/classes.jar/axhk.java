@@ -1,22 +1,43 @@
-public abstract interface axhk
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.redtouch.RedAppInfo;
+import com.tencent.mobileqq.redtouch.RedDisplayInfo;
+import java.util.ArrayList;
+
+public final class axhk
+  implements Parcelable.Creator<RedAppInfo>
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, int paramInt3);
+  public RedAppInfo a(Parcel paramParcel)
+  {
+    RedAppInfo localRedAppInfo = new RedAppInfo();
+    RedAppInfo.a(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.b(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.c(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.a(localRedAppInfo, paramParcel.readString());
+    RedAppInfo.b(localRedAppInfo, paramParcel.readString());
+    RedAppInfo.d(localRedAppInfo, paramParcel.readInt());
+    localRedAppInfo.a = new ArrayList();
+    paramParcel.readList(localRedAppInfo.a, null);
+    RedAppInfo.e(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.f(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.c(localRedAppInfo, paramParcel.readString());
+    RedAppInfo.g(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.h(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.i(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.j(localRedAppInfo, paramParcel.readInt());
+    RedAppInfo.a(localRedAppInfo, (RedDisplayInfo)paramParcel.readParcelable(getClass().getClassLoader()));
+    RedAppInfo.k(localRedAppInfo, paramParcel.readInt());
+    return localRedAppInfo;
+  }
   
-  public abstract void a(String paramString1, int paramInt1, int paramInt2, String paramString2);
-  
-  public abstract void a(String paramString, int paramInt, long paramLong);
-  
-  public abstract void b();
-  
-  public abstract void b(int paramInt);
-  
-  public abstract void b(int paramInt1, int paramInt2);
-  
-  public abstract void c();
+  public RedAppInfo[] a(int paramInt)
+  {
+    return new RedAppInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axhk
  * JD-Core Version:    0.7.0.1
  */

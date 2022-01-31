@@ -1,261 +1,118 @@
-import android.content.Context;
-import android.text.TextUtils;
+import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import com.tencent.util.Pair;
-import java.io.File;
-import java.util.ArrayList;
+import eipc.EIPCResult;
+import mqq.app.AppRuntime;
 
 public class alli
+  extends QIPCModule
 {
-  public static Pair<Long, String> a(String paramString)
+  public static alli a;
+  
+  private alli()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AROnlineVideoUtil", 2, "parseFileSize, str=" + paramString);
-    }
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return null;
-      paramString = paramString.split("\\|");
-      if ((paramString == null) || (paramString.length != 2)) {
-        continue;
-      }
-      try
-      {
-        l = Long.parseLong(paramString[0]);
-        if (l == -1L) {
-          continue;
-        }
-        return new Pair(Long.valueOf(l), paramString[1]);
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            localException.printStackTrace();
-          }
-          long l = -1L;
-        }
-      }
-    }
+    super("CommonModule");
   }
   
-  private static String a()
+  public static alli a()
   {
-    if (bbbm.a()) {
-      return bbvj.a(ajsd.aW + "iar" + File.separator);
-    }
-    return BaseApplicationImpl.getApplication().getFilesDir() + File.separator + "iar" + File.separator;
-  }
-  
-  public static String a(String paramString)
-  {
+    if (a == null) {}
     try
     {
-      paramString = bdik.d(paramString);
-      paramString = a() + paramString;
-      return paramString;
+      if (a == null) {
+        a = new alli();
+      }
+      return a;
     }
-    catch (Exception paramString)
+    finally {}
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonModule", 2, "onSetAvatarBackResult， intent=" + paramIntent);
+    }
+    if (paramIntent != null)
     {
-      if (QLog.isColorLevel())
+      int i = paramIntent.getIntExtra("param_callback_id", -1);
+      int j = paramIntent.getIntExtra("param_result_code", -99999);
+      paramIntent = paramIntent.getStringExtra("param_result_desc");
+      if (i > 0)
       {
-        QLog.d("AROnlineVideoUtil", 2, "getStorageDir, Exception");
-        paramString.printStackTrace();
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("param_result_code", j);
+        localBundle.putString("param_result_desc", paramIntent);
+        localBundle.putString("param_action", "set_avatar");
+        callbackResult(i, EIPCResult.createSuccessResult(localBundle));
       }
     }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonModule", 2, "action = " + paramString + ", params = " + paramBundle);
+    }
+    Bundle localBundle = new Bundle();
+    if ("getPhoneBindState".equals(paramString))
+    {
+      paramString = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramString instanceof QQAppInterface))
+      {
+        localBundle.putInt("selfBindState", ((aubm)((QQAppInterface)paramString).getManager(11)).d());
+        return EIPCResult.createSuccessResult(localBundle);
+      }
+    }
+    else
+    {
+      AppRuntime localAppRuntime;
+      if ("set_nickname".equals(paramString))
+      {
+        localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localAppRuntime instanceof QQAppInterface))
+        {
+          paramString = "";
+          if (paramBundle != null) {
+            paramString = paramBundle.getString("nickname");
+          }
+          ((alkv)((QQAppInterface)localAppRuntime).a(2)).notifyUI(94, true, paramString);
+          return EIPCResult.createSuccessResult(localBundle);
+        }
+      }
+      else if ("set_avatar".equals(paramString))
+      {
+        localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localAppRuntime instanceof QQAppInterface))
+        {
+          paramString = "";
+          if (paramBundle != null) {
+            paramString = paramBundle.getString("param_avatar_path");
+          }
+          paramBundle = new Intent();
+          paramBundle.putExtra("PhotoConst.SOURCE_FROM", "FROM_MINI_APP");
+          paramBundle.putExtra("param_callback_id", paramInt);
+          paramString = bcyw.a((QQAppInterface)localAppRuntime, paramString, paramBundle);
+          if (paramString.jdField_a_of_type_Int == 0) {
+            break label295;
+          }
+          localBundle.putInt("param_result_code", paramString.jdField_a_of_type_Int);
+          localBundle.putString("param_result_desc", paramString.jdField_a_of_type_JavaLangString);
+          localBundle.putString("param_action", "set_avatar");
+          callbackResult(paramInt, EIPCResult.createSuccessResult(localBundle));
+        }
+      }
+    }
+    return EIPCResult.createSuccessResult(localBundle);
+    label295:
     return null;
-  }
-  
-  public static void a(Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    boolean bool;
-    if (bbfj.b(BaseApplication.getContext()) == 1)
-    {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("AROnlineVideoUtil", 2, "preload, isWifi=" + bool);
-      }
-      if (bool) {
-        break label53;
-      }
-    }
-    label53:
-    Object localObject1;
-    label127:
-    Object localObject2;
-    label157:
-    label191:
-    int i;
-    label193:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-                bool = false;
-                break;
-              } while (paramQQAppInterface == null);
-              paramQQAppInterface = (alch)paramQQAppInterface.getManager(168);
-            } while (paramQQAppInterface == null);
-            paramQQAppInterface = paramQQAppInterface.a();
-          } while ((paramQQAppInterface == null) || (paramQQAppInterface.aREnd < NetConnInfoCenter.getServerTimeMillis()) || (paramQQAppInterface.mArCloudConfigInfos.size() == 0));
-          localObject1 = TVK_SDKMgr.getProxyFactory();
-          if (localObject1 != null) {
-            break label127;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("AROnlineVideoUtil", 2, "preload, factory == null");
-        return;
-        localObject1 = ((TVK_IProxyFactory)localObject1).getCacheMgr(paramContext);
-        if (localObject1 != null) {
-          break label157;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("AROnlineVideoUtil", 2, "preload, factory == null");
-      return;
-      localObject2 = new File(a());
-      if ((!((File)localObject2).exists()) || (!((File)localObject2).isFile())) {
-        break label271;
-      }
-      ((File)localObject2).delete();
-      i = 0;
-      if (i >= paramQQAppInterface.mArCloudConfigInfos.size()) {
-        break label269;
-      }
-      localObject2 = (ArCloudConfigInfo)paramQQAppInterface.mArCloudConfigInfos.get(i);
-    } while (localObject2 == null);
-    if ((((ArCloudConfigInfo)localObject2).jdField_d_of_type_Int != 4) || ((((ArCloudConfigInfo)localObject2).a.size() < 1) && (!TextUtils.isEmpty(((ArVideoResourceInfo)((ArCloudConfigInfo)localObject2).a.get(0)).jdField_d_of_type_JavaLangString)))) {}
-    for (;;)
-    {
-      i += 1;
-      break label193;
-      label269:
-      break;
-      label271:
-      if (((File)localObject2).exists()) {
-        break label191;
-      }
-      ((File)localObject2).mkdirs();
-      break label191;
-      localObject2 = ((ArVideoResourceInfo)((ArCloudConfigInfo)localObject2).a.get(0)).jdField_d_of_type_JavaLangString;
-      String str = a((String)localObject2);
-      bool = a(str);
-      if (QLog.isColorLevel()) {
-        QLog.d("AROnlineVideoUtil", 2, "preload, url=" + (String)localObject2 + ", videoPath=" + str + ", isCached=" + bool);
-      }
-      if (!bool)
-      {
-        TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-        localTVK_PlayerVideoInfo.setConfigMap("file_dir", str);
-        localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "60");
-        localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", "20161009");
-        localTVK_PlayerVideoInfo.setVid(bdik.d((String)localObject2));
-        ((TVK_ICacheMgr)localObject1).preLoadVideoByUrl(paramContext, (String)localObject2, null, localTVK_PlayerVideoInfo);
-      }
-    }
-  }
-  
-  public static void a(Context paramContext, ArVideoResourceInfo paramArVideoResourceInfo)
-  {
-    boolean bool = true;
-    if ((paramArVideoResourceInfo == null) || (TextUtils.isEmpty(paramArVideoResourceInfo.jdField_d_of_type_JavaLangString)) || (paramArVideoResourceInfo.jdField_d_of_type_Int != 4)) {}
-    label312:
-    for (;;)
-    {
-      return;
-      if (bbfj.b(BaseApplication.getContext()) == 1) {}
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AROnlineVideoUtil", 2, "preload for multi, isWifi=" + bool);
-        }
-        if (!bool) {
-          break;
-        }
-        localObject1 = TVK_SDKMgr.getProxyFactory();
-        if (localObject1 != null) {
-          break label98;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("AROnlineVideoUtil", 2, "preload for multi, factory == null");
-        return;
-        bool = false;
-      }
-      label98:
-      Object localObject1 = ((TVK_IProxyFactory)localObject1).getCacheMgr(paramContext);
-      if (localObject1 == null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AROnlineVideoUtil", 2, "preload for multi, factory == null");
-        }
-      }
-      else
-      {
-        Object localObject2 = new File(a());
-        if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
-          ((File)localObject2).delete();
-        }
-        for (;;)
-        {
-          if (TextUtils.isEmpty(paramArVideoResourceInfo.jdField_d_of_type_JavaLangString)) {
-            break label312;
-          }
-          paramArVideoResourceInfo = paramArVideoResourceInfo.jdField_d_of_type_JavaLangString;
-          localObject2 = a(paramArVideoResourceInfo);
-          bool = a((String)localObject2);
-          if (QLog.isColorLevel()) {
-            QLog.d("AROnlineVideoUtil", 2, "preload for multi, url=" + paramArVideoResourceInfo + ", videoPath=" + (String)localObject2 + ", isCached=" + bool);
-          }
-          if (bool) {
-            break;
-          }
-          TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-          localTVK_PlayerVideoInfo.setConfigMap("file_dir", (String)localObject2);
-          localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "60");
-          localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", "20161009");
-          localTVK_PlayerVideoInfo.setVid(bdik.d(paramArVideoResourceInfo));
-          ((TVK_ICacheMgr)localObject1).preLoadVideoByUrl(paramContext, paramArVideoResourceInfo, null, localTVK_PlayerVideoInfo);
-          return;
-          if (!((File)localObject2).exists()) {
-            ((File)localObject2).mkdirs();
-          }
-        }
-      }
-    }
-  }
-  
-  private static boolean a(String paramString)
-  {
-    paramString = new File(paramString);
-    return (paramString.exists()) && (paramString.length() > 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alli
  * JD-Core Version:    0.7.0.1
  */

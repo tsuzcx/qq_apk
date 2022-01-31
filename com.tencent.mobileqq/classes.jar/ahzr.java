@@ -1,95 +1,208 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.util.Log;
-import com.tencent.maxvideo.trim.TrimNative;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
+import com.tencent.mobileqq.activity.history.link.search.LinkMessageResultAdapter.1;
+import com.tencent.mobileqq.activity.history.link.search.LinkMessageResultAdapter.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatHistorySearchData;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.ColorNickTextView;
 import com.tencent.qphone.base.util.QLog;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 public class ahzr
+  extends aibl
 {
-  private static int a;
-  private static int b;
-  private static int c;
-  private static int d;
+  public Object a;
+  private SimpleDateFormat a;
+  public List<aicu> a;
+  public Set<Long> a;
+  private List<TroopLinkElement> c;
   
-  public static int a(String paramString, int paramInt1, int paramInt2)
+  public ahzr(Context paramContext, bhoe parambhoe, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface)
   {
-    return a(paramString, paramInt1, paramInt2, true);
+    super(paramContext, parambhoe, paramSessionInfo, paramQQAppInterface);
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
+    this.jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("M月d日");
   }
   
-  public static int a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public ChatHistorySearchData a(SessionInfo paramSessionInfo, String paramString)
   {
-    a = paramInt5;
-    b = paramInt6;
-    try
+    paramSessionInfo = new ChatHistorySearchData();
+    paramSessionInfo.mSearchData1 = new ArrayList();
+    Iterator localIterator = this.c.iterator();
+    while (localIterator.hasNext())
     {
-      paramInt1 = TrimNative.prepare(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
-      return paramInt1;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("ThumbnailUtils", 1, "init failed:" + Log.getStackTraceString(paramString));
-    }
-    return -444;
-  }
-  
-  public static int a(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    c = paramInt1;
-    d = paramInt2;
-    if (paramBoolean)
-    {
-      if (c <= d) {
-        break label55;
+      TroopLinkElement localTroopLinkElement = (TroopLinkElement)localIterator.next();
+      MessageForText localMessageForText = ayvw.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), localTroopLinkElement.uin, "", 0, (byte)1, (byte)0, (short)0, localTroopLinkElement.description());
+      localMessageForText.msgData = bbig.a(localTroopLinkElement);
+      localMessageForText.shmsgseq = Long.parseLong(localTroopLinkElement.msgSeq);
+      if (localMessageForText.msg.contains(paramString)) {
+        paramSessionInfo.mSearchData1.add(localMessageForText);
       }
-      c = 480;
-      d = (int)(d / (paramInt1 * 1.0D / 480.0D));
+    }
+    paramSessionInfo.mSearchData2 = new ArrayList();
+    return paramSessionInfo;
+  }
+  
+  public void a()
+  {
+    this.b.clear();
+    notifyDataSetChanged();
+  }
+  
+  public void a(long paramLong, String paramString, int paramInt)
+  {
+    ThreadManager.post(new LinkMessageResultAdapter.1(this, paramString, paramInt, paramLong), 8, null, false);
+  }
+  
+  public void a(List<TroopLinkElement> paramList)
+  {
+    this.c = paramList;
+  }
+  
+  public void a(List<aicu> paramList, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    Object localObject;
+    int i;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("setMessageItems loadType: ").append(paramInt1).append(", searchMode: ").append(paramInt2).append(", cloudGetCompleted: ").append(paramBoolean).append(", messageItems size: ");
+      if (paramList == null)
+      {
+        i = 0;
+        QLog.d("LinkMessageResultAdapter", 2, i);
+      }
+    }
+    else
+    {
+      if ((paramInt1 != 1) || (paramInt2 != 0)) {
+        break label98;
+      }
+      this.b = paramList;
+    }
+    label98:
+    do
+    {
+      do
+      {
+        return;
+        i = paramList.size();
+        break;
+        if ((paramInt1 == 2) && (paramInt2 == 0))
+        {
+          this.b.addAll(paramList);
+          return;
+        }
+      } while ((paramInt1 != 4) || (paramList == null) || (paramList.size() == 0) || (paramInt2 != 1));
+      if ((this.b.size() <= 0) || (paramList.size() <= 0)) {
+        break label237;
+      }
+      localObject = (aicu)paramList.get(0);
+      aicu localaicu = (aicu)this.b.get(this.b.size() - 1);
+      if (((aicu)localObject).a.time <= localaicu.a.time) {
+        break label237;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("LinkMessageResultAdapter", 2, "setMessageItems: error firstItem time > lastItem time");
+    return;
+    label237:
+    this.b.addAll(paramList);
+  }
+  
+  public void a(List<aicu> paramList, String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (QLog.isColorLevel()) {
+      QLog.d("LinkMessageResultAdapter", 2, "displayCloudMessages...");
+    }
+    ThreadManager.post(new LinkMessageResultAdapter.2(this, paramString, paramLong, paramList), 8, null, false);
+  }
+  
+  public void a(List<aicu> paramList, boolean paramBoolean)
+  {
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("LinkMessageResultAdapter", 2, "mergeMsgsAtFirstTime: merge cloud and local msgs cloudGetCompleted: " + paramBoolean);
+    }
+    this.b.clear();
+    this.b.addAll(paramList);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    aicu localaicu = (aicu)getItem(paramInt);
+    Object localObject1;
+    TroopLinkElement localTroopLinkElement;
+    if (paramView == null)
+    {
+      paramView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131559258, null);
+      paramViewGroup = new aibm();
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView = ((ColorNickTextView)paramView.findViewById(2131377981));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365126));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367808));
+      paramView.setTag(paramViewGroup);
+      localObject1 = localaicu.a;
+      localTroopLinkElement = new TroopLinkElement();
     }
     for (;;)
     {
-      return TrimNative.initGetFrame(paramString, c, d);
-      label55:
-      d = 480;
-      c = (int)(c / (paramInt2 * 1.0D / 480.0D));
+      try
+      {
+        localObject1 = bbig.a(((MessageRecord)localObject1).msgData);
+        if (localObject1 != null)
+        {
+          localTroopLinkElement = (TroopLinkElement)localObject1;
+          Object localObject2 = localTroopLinkElement.nickname;
+          localObject1 = localObject2;
+          if (TextUtils.isEmpty((CharSequence)localObject2)) {
+            localObject1 = localTroopLinkElement.uin;
+          }
+          localObject2 = localaicu.a(localTroopLinkElement.title, -11353092);
+          paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetColorNickTextView.setText((CharSequence)localObject2);
+          localObject2 = new Date(Long.parseLong(localTroopLinkElement.timeSecond) * 1000L);
+          localObject2 = this.jdField_a_of_type_JavaTextSimpleDateFormat.format((Date)localObject2);
+          localObject1 = String.format(alpo.a(2131706491), new Object[] { localObject2, localObject1 });
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localaicu.a((String)localObject1, -11353092));
+          if (!TextUtils.isEmpty(localTroopLinkElement.iconUrl))
+          {
+            ahzk.a(paramViewGroup.jdField_a_of_type_AndroidWidgetImageView, localTroopLinkElement.iconUrl);
+            return paramView;
+            paramViewGroup = (aibm)paramView.getTag();
+            break;
+          }
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130849787));
+          return paramView;
+        }
+      }
+      catch (Exception paramViewGroup)
+      {
+        return paramView;
+      }
     }
-  }
-  
-  public static Bitmap a(long paramLong1, long paramLong2)
-  {
-    if ((c <= 0) || (d <= 0)) {}
-    Bitmap localBitmap;
-    do
-    {
-      return null;
-      localBitmap = Bitmap.createBitmap(c, d, Bitmap.Config.ARGB_8888);
-      if (TrimNative.getFrame(paramLong1, paramLong2, localBitmap) == 0) {
-        break;
-      }
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    localBitmap.recycle();
-    return null;
-    return localBitmap;
-  }
-  
-  public static Bitmap b(long paramLong1, long paramLong2)
-  {
-    if ((a <= 0) || (b <= 0)) {}
-    Bitmap localBitmap;
-    do
-    {
-      return null;
-      localBitmap = Bitmap.createBitmap(a, b, Bitmap.Config.ARGB_8888);
-      if (TrimNative.getThumbnail(paramLong1, paramLong2, localBitmap) == 0) {
-        break;
-      }
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    localBitmap.recycle();
-    return null;
-    return localBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahzr
  * JD-Core Version:    0.7.0.1
  */

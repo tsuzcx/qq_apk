@@ -1,48 +1,22 @@
-import android.app.Activity;
-import android.content.res.Resources;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ProgressBar;
 
-class ahtf
-  implements ahtg
+final class ahtf
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  ahtf(ahtc paramahtc, ahtg paramahtg) {}
+  ahtf(ProgressBar paramProgressBar) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ahtc.a(this.jdField_a_of_type_Ahtc, new bcqf(ahtc.a(this.jdField_a_of_type_Ahtc), ahtc.a(this.jdField_a_of_type_Ahtc).getResources().getDimensionPixelSize(2131298865)));
-    ahtc.a(this.jdField_a_of_type_Ahtc).c(2131717997);
-    ahtc.a(this.jdField_a_of_type_Ahtc).setCancelable(false);
-    ahtc.a(this.jdField_a_of_type_Ahtc).show();
-    if (this.jdField_a_of_type_Ahtg != null) {
-      this.jdField_a_of_type_Ahtg.a();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (ahtc.a(this.jdField_a_of_type_Ahtc) != null) {
-      ahtc.a(this.jdField_a_of_type_Ahtc).dismiss();
-    }
-    this.jdField_a_of_type_Ahtc.a(true);
-    ahtc.a(this.jdField_a_of_type_Ahtc, false);
-    if (this.jdField_a_of_type_Ahtg != null) {
-      this.jdField_a_of_type_Ahtg.a(paramString);
-    }
-  }
-  
-  public void b()
-  {
-    if (ahtc.a(this.jdField_a_of_type_Ahtc) != null) {
-      ahtc.a(this.jdField_a_of_type_Ahtc).dismiss();
-    }
-    ahtc.a(this.jdField_a_of_type_Ahtc, false);
-    if (this.jdField_a_of_type_Ahtg != null) {
-      this.jdField_a_of_type_Ahtg.b();
+    if (this.a != null) {
+      this.a.setProgress(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtf
  * JD-Core Version:    0.7.0.1
  */

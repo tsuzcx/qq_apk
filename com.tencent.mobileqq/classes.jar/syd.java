@@ -1,18 +1,6 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
-
-public class syd
-{
-  public static void a(Object paramObject)
-  {
-    if ((paramObject instanceof QQAppInterface)) {
-      sye.a = new WeakReference((QQAppInterface)paramObject);
-    }
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     syd
  * JD-Core Version:    0.7.0.1
  */

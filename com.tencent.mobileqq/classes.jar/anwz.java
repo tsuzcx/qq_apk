@@ -1,31 +1,29 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
 
-class anwz
-  implements askq<Emoticon>
+public class anwz
+  implements CompoundButton.OnCheckedChangeListener
 {
-  anwz(anwx paramanwx, int paramInt, String paramString) {}
+  public anwz(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
   
-  public void a(Emoticon paramEmoticon)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramEmoticon == null) || (!paramEmoticon.hasEncryptKey()))
+    paramCompoundButton = this.a.getResources();
+    TextView localTextView = CampusCircleReplyActivity.a(this.a);
+    if (paramBoolean) {}
+    for (paramCompoundButton = paramCompoundButton.getColorStateList(2131166254);; paramCompoundButton = paramCompoundButton.getColorStateList(2131166256))
     {
-      this.jdField_a_of_type_Anwx.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
-      }
-    }
-    do
-    {
+      localTextView.setTextColor(paramCompoundButton);
       return;
-      this.jdField_a_of_type_Anwx.a(paramEmoticon);
-    } while (!QLog.isColorLevel());
-    QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anwz
  * JD-Core Version:    0.7.0.1
  */

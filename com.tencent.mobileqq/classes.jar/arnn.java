@@ -1,41 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-
-public class arnn
-  extends Handler
+final class arnn
+  implements bdvt
 {
-  arnm a;
+  arnn(army paramarmy) {}
   
-  protected arnn(arnm paramarnm)
+  public void callback(int paramInt)
   {
-    this.a = paramarnm;
-  }
-  
-  protected void a()
-  {
-    this.a = null;
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    if ((paramInt == 1) || (paramInt == 2))
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (String)paramMessage.obj;
-      this.a.a(paramMessage);
+      this.a.a();
       return;
     }
-    this.a.a();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arnn
  * JD-Core Version:    0.7.0.1
  */

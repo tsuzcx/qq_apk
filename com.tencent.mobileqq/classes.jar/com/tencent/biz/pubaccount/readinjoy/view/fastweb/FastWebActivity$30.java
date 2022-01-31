@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.readinjoy.view.fastweb;
 
-import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
-import ogn;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 class FastWebActivity$30
   implements Runnable
@@ -10,17 +10,12 @@ class FastWebActivity$30
   
   public void run()
   {
-    if (FastWebActivity.a(this.this$0).b)
-    {
-      FastWebActivity.a(this.this$0).f();
-      return;
-    }
-    FastWebActivity.a(this.this$0).e();
+    FastWebActivity.a(this.this$0).a(FastWebActivity.a(this.this$0).c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity.30
  * JD-Core Version:    0.7.0.1
  */

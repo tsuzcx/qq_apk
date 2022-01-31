@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.takevideo;
 
-import ajya;
+import alpo;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.media.MediaMetadataRetriever;
@@ -19,24 +19,24 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import bbll;
-import bkvi;
+import bdkf;
+import bngs;
 import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
 import com.tencent.qphone.base.util.QLog;
-import ved;
-import vei;
-import vjf;
-import vjg;
-import vwd;
-import vwl;
+import wsv;
+import wta;
+import wxx;
+import wxy;
+import xkv;
+import xld;
 
 public class LocalVideoSelectActivity
   extends QQStoryBaseActivity
-  implements View.OnClickListener, vwd
+  implements View.OnClickListener, xkv
 {
   public int a;
   public long a;
@@ -69,9 +69,9 @@ public class LocalVideoSelectActivity
   private void a()
   {
     this.jdField_e_of_type_Boolean = false;
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363296));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363294));
-    this.jdField_e_of_type_Boolean = bkvi.a(this.jdField_b_of_type_AndroidWidgetLinearLayout, this.jdField_a_of_type_AndroidWidgetRelativeLayout, 0);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363334));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363332));
+    this.jdField_e_of_type_Boolean = bngs.a(this.jdField_b_of_type_AndroidWidgetLinearLayout, this.jdField_a_of_type_AndroidWidgetRelativeLayout, 0);
   }
   
   private void d()
@@ -99,7 +99,7 @@ public class LocalVideoSelectActivity
     paramInt1 = (int)Math.floor((paramInt2 - paramInt1) / 1000.0F);
     paramInt2 = (int)Math.ceil(paramInt1 / 10.0F);
     if (this.jdField_d_of_type_Boolean) {}
-    for (String str = String.format(ajya.a(2131706301), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });; str = String.format(ajya.a(2131706302), new Object[] { Integer.valueOf(paramInt1) }))
+    for (String str = String.format(alpo.a(2131706673), new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });; str = String.format(alpo.a(2131706674), new Object[] { Integer.valueOf(paramInt1) }))
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       return;
@@ -114,10 +114,10 @@ public class LocalVideoSelectActivity
   @TargetApi(11)
   public boolean doOnCreate(@Nullable Bundle paramBundle)
   {
-    bkvi.a(this);
+    bngs.a(this);
     getWindow().addFlags(1024);
-    if (bkvi.c()) {
-      bkvi.b(this);
+    if (bngs.c()) {
+      bngs.b(this);
     }
     this.mNeedStatusTrans = false;
     this.mActNeedImmersive = false;
@@ -151,7 +151,7 @@ public class LocalVideoSelectActivity
       if (!this.jdField_c_of_type_Boolean) {
         break label256;
       }
-      ved.c("Q.qqstory.publish.edit.LocalVideoSelectActivity", "activity on-create, go through, start edit video activity directly");
+      wsv.c("Q.qqstory.publish.edit.LocalVideoSelectActivity", "activity on-create, go through, start edit video activity directly");
       return false;
       j = 0;
       break;
@@ -160,15 +160,15 @@ public class LocalVideoSelectActivity
     this.jdField_c_of_type_Boolean = paramBundle.getBoolean("mGoThrough");
     if (this.jdField_c_of_type_Boolean)
     {
-      ved.c("Q.qqstory.publish.edit.LocalVideoSelectActivity", "activity re-create, do nothing");
+      wsv.c("Q.qqstory.publish.edit.LocalVideoSelectActivity", "activity re-create, do nothing");
       return false;
     }
     label256:
-    ved.c("Q.qqstory.publish.edit.LocalVideoSelectActivity", "activity on-create, init ui");
-    setContentViewC(2131561279);
-    ved.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "onCreate");
+    wsv.c("Q.qqstory.publish.edit.LocalVideoSelectActivity", "activity on-create, init ui");
+    setContentViewC(2131561469);
+    wsv.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "onCreate");
     a();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373303));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373752));
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)getIntent().getParcelableExtra("media_info"));
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path;
     paramBundle = new MediaMetadataRetriever();
@@ -194,10 +194,10 @@ public class LocalVideoSelectActivity
     {
       paramBundle.release();
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131373302));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131373305));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373304));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar = ((ScrollFrameSelectBar)findViewById(2131373277));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131373751));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131373754));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131373753));
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar = ((ScrollFrameSelectBar)findViewById(2131373726));
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar.setMinDuration(2000);
     if (this.jdField_e_of_type_Boolean)
     {
@@ -205,7 +205,7 @@ public class LocalVideoSelectActivity
       paramBundle.bottomMargin = 0;
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar.setLayoutParams(paramBundle);
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView = ((TrimTextureVideoView)findViewById(2131369526));
+    this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView = ((TrimTextureVideoView)findViewById(2131369788));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar.setOnRangeValueChangeListener(this);
@@ -213,13 +213,13 @@ public class LocalVideoSelectActivity
     this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setVideoPath(this.jdField_b_of_type_JavaLangString);
     if (this.jdField_e_of_type_Boolean)
     {
-      paramBundle = (RelativeLayout)findViewById(2131363067);
+      paramBundle = (RelativeLayout)findViewById(2131363103);
       ((ViewGroup)paramBundle.getParent()).removeView(paramBundle);
       localObject1 = paramBundle.getLayoutParams();
       localObject1 = new RelativeLayout.LayoutParams(((ViewGroup.LayoutParams)localObject1).width, ((ViewGroup.LayoutParams)localObject1).height);
-      ((RelativeLayout.LayoutParams)localObject1).topMargin = bbll.a(14.0F);
-      ((RelativeLayout.LayoutParams)localObject1).leftMargin = bbll.a(12.0F);
-      ((RelativeLayout.LayoutParams)localObject1).rightMargin = bbll.a(12.0F);
+      ((RelativeLayout.LayoutParams)localObject1).topMargin = bdkf.a(14.0F);
+      ((RelativeLayout.LayoutParams)localObject1).leftMargin = bdkf.a(12.0F);
+      ((RelativeLayout.LayoutParams)localObject1).rightMargin = bdkf.a(12.0F);
       ((RelativeLayout.LayoutParams)localObject1).addRule(10, -1);
       ((RelativeLayout.LayoutParams)localObject1).addRule(12, 0);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramBundle, (ViewGroup.LayoutParams)localObject1);
@@ -237,16 +237,16 @@ public class LocalVideoSelectActivity
       {
         this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(QQStoryFlowCallback.a);
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        ved.b("Q.qqstory.publish.edit.LocalVideoSelectActivity", "onCreate mCoverView.setImageBitmap()");
+        wsv.b("Q.qqstory.publish.edit.LocalVideoSelectActivity", "onCreate mCoverView.setImageBitmap()");
       }
       paramBundle = getIntent().getBundleExtra("bundle_extra");
       if (paramBundle != null) {
         this.jdField_d_of_type_Boolean = paramBundle.getBoolean("enable_multi_fragment", false);
       }
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar.setLocalVideoView(this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView);
-      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setOnPreparedListener(new vjf(this));
-      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setOnErrorListener(new vjg(this));
-      vei.a("video_edit", "exp_cut", 0, 0, new String[0]);
+      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setOnPreparedListener(new wxx(this));
+      this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setOnErrorListener(new wxy(this));
+      wta.a("video_edit", "exp_cut", 0, 0, new String[0]);
       return false;
       this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.setCenterInside(true);
     }
@@ -301,13 +301,13 @@ public class LocalVideoSelectActivity
     }
     while (this.jdField_c_of_type_Boolean)
     {
-      ved.b("Q.qqstory.publish.edit.LocalVideoSelectActivity", "onActivityResult go through, requestCode=%d, resultCode=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+      wsv.b("Q.qqstory.publish.edit.LocalVideoSelectActivity", "onActivityResult go through, requestCode=%d, resultCode=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
       setResult(paramInt2, paramIntent);
       finish();
       return;
       if (paramInt2 == -1)
       {
-        ved.b("Q.qqstory.publish.edit.LocalVideoSelectActivity", "onActivityResult from edit video activity, requestCode=%d, resultCode=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+        wsv.b("Q.qqstory.publish.edit.LocalVideoSelectActivity", "onActivityResult from edit video activity, requestCode=%d, resultCode=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
         setResult(paramInt2, paramIntent);
         finish();
         return;
@@ -318,7 +318,7 @@ public class LocalVideoSelectActivity
         return;
       }
     }
-    ved.b("Q.qqstory.publish.edit.LocalVideoSelectActivity", "onActivityResult, requestCode=%d, resultCode=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+    wsv.b("Q.qqstory.publish.edit.LocalVideoSelectActivity", "onActivityResult, requestCode=%d, resultCode=%d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
   }
   
   public void onClick(View paramView)
@@ -340,7 +340,7 @@ public class LocalVideoSelectActivity
         paramView.putExtra("end_index", i1);
         paramView.putExtra("scroll_x", m);
         setResult(-1, paramView);
-        vei.a("pic_choose", "done_cutVideo", this.jdField_d_of_type_Int, 0, new String[] { this.jdField_a_of_type_JavaLangString, j + "-" + k });
+        wta.a("pic_choose", "done_cutVideo", this.jdField_d_of_type_Int, 0, new String[] { this.jdField_a_of_type_JavaLangString, j + "-" + k });
         finish();
       }
     }
@@ -348,23 +348,23 @@ public class LocalVideoSelectActivity
     {
       int j;
       return;
-      ved.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "publish the local video path=%s,start=%s,end=%s", new Object[] { this.jdField_b_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.b()), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.c()) });
+      wsv.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "publish the local video path=%s,start=%s,end=%s", new Object[] { this.jdField_b_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.b()), Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.c()) });
       String str2 = getIntent().getStringExtra("video_refer");
       int n = this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.b();
       int i1 = this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.c();
       if (i1 - n > 10000) {
-        vei.a("video_edit", "edit_split", 0, 0, new String[] { String.valueOf(Math.ceil((i1 - n) / 1000.0F)) });
+        wta.a("video_edit", "edit_split", 0, 0, new String[] { String.valueOf(Math.ceil((i1 - n) / 1000.0F)) });
       }
       paramView = getIntent().getBundleExtra("bundle_extra");
       if (paramView != null)
       {
-        ved.b("Q.qqstory.publish.edit.LocalVideoSelectActivity", "LocalVideoSelectActivity start edit video activity");
-        vwl.a("Q.qqstory.publish.edit.LocalVideoSelectActivity", paramView);
+        wsv.b("Q.qqstory.publish.edit.LocalVideoSelectActivity", "LocalVideoSelectActivity start edit video activity");
+        xld.a("Q.qqstory.publish.edit.LocalVideoSelectActivity", paramView);
         QQStoryFlowCallback.a(this, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, n, i1, paramView);
         j = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar.a();
         k = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarScrollFrameSelectBar.b();
         if ((j != this.h) || (k != this.i)) {
-          vei.a("video_edit", "num_cut", 0, 0, new String[0]);
+          wta.a("video_edit", "num_cut", 0, 0, new String[0]);
         }
         this.jdField_a_of_type_ComTencentBizQqstoryBoundariesExtensionWidgetsTrimTextureVideoView.a();
         return;
@@ -410,7 +410,7 @@ public class LocalVideoSelectActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity
  * JD-Core Version:    0.7.0.1
  */

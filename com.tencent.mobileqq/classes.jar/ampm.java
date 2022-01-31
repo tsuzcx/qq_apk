@@ -1,19 +1,12 @@
-final class ampm
+public abstract interface ampm
 {
-  public final int a;
-  public final long a;
-  public final Object a;
+  public abstract void a();
   
-  ampm(long paramLong, int paramInt, Object paramObject)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ampm
  * JD-Core Version:    0.7.0.1
  */

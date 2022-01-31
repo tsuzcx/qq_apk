@@ -1,29 +1,19 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-
 class atam
-  implements DialogInterface.OnClickListener
+  extends atao
 {
-  atam(ataj paramataj, Activity paramActivity) {}
+  atam(atal paramatal) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    paramDialogInterface = this.jdField_a_of_type_Ataj.a;
-    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.a)))
-    {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramDialogInterface.a);
-      this.jdField_a_of_type_AndroidAppActivity.startActivityForResult(localIntent, 1028);
+    super.a(paramBoolean, paramInt, paramLong, paramString1, paramString2);
+    if (paramBoolean) {
+      this.a.a(paramInt, paramLong, paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atam
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import akaw;
+import alsl;
 import android.util.Pair;
 import java.util.Calendar;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 public class MessageRoamManager$5
   implements Runnable
 {
-  public MessageRoamManager$5(akaw paramakaw, int paramInt) {}
+  public MessageRoamManager$5(alsl paramalsl, int paramInt) {}
   
   public void run()
   {

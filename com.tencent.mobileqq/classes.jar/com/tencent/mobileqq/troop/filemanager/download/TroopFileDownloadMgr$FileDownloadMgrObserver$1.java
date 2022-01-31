@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.filemanager.download;
 
-import aztq;
+import bbrz;
 
 public class TroopFileDownloadMgr$FileDownloadMgrObserver$1
   implements Runnable
 {
-  public TroopFileDownloadMgr$FileDownloadMgrObserver$1(aztq paramaztq, Object paramObject) {}
+  public TroopFileDownloadMgr$FileDownloadMgrObserver$1(bbrz parambbrz, Object paramObject) {}
   
   public void run()
   {
-    aztq.a(this.this$0, this.a);
+    bbrz.a(this.this$0, this.a);
   }
 }
 

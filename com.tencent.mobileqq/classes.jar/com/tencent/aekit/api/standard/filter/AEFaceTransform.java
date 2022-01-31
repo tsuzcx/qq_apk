@@ -29,6 +29,7 @@ public class AEFaceTransform
   extends AEChainI
 {
   private AIAttr aiAttr;
+  private BaseFilter copyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private VideoFilterBase fillFilter = new VideoFilterBase(BaseFilter.getFragmentShader(0));
   private final HashSet<BeautyRealConfig.TYPE> jsonType = new HashSet(Arrays.asList(new BeautyRealConfig.TYPE[] { BeautyRealConfig.TYPE.BASIC4, BeautyRealConfig.TYPE.BASIC3, BeautyRealConfig.TYPE.FACE_SHORTEN, BeautyRealConfig.TYPE.NOSE }));
   private List<List<PointF>> mAllFacePoints = null;
@@ -70,6 +71,7 @@ public class AEFaceTransform
       this.mBeautyTransformList.initial();
       this.fillFilter.ApplyGLSLFilter();
       this.mRemodelFilter.init();
+      this.copyFilter.apply();
       this.mIsApplied = true;
     }
   }
@@ -84,6 +86,9 @@ public class AEFaceTransform
     }
     if (this.fillFilter != null) {
       this.fillFilter.clearGLSLSelf();
+    }
+    if (this.copyFilter != null) {
+      this.copyFilter.clearGLSLSelf();
     }
     if (this.mTextureTmp != null)
     {
@@ -124,7 +129,7 @@ public class AEFaceTransform
         if (this.aiAttr != null) {
           this.mHairAttr = ((PTHairAttr)this.aiAttr.getRealtimeData(AEDetectorType.HAIR_SEGMENT.value));
         }
-        if ((this.mHairAttr != null) && (this.mHairAttr.isReady()) && (paramFrame != null) && (paramFrame.width > 0))
+        if ((this.mAllFacePoints != null) && (this.mAllFacePoints.size() > 0) && (this.mHairAttr != null) && (this.mHairAttr.isReady()) && (paramFrame != null) && (paramFrame.width > 0))
         {
           if (this.mTextureTmp == null)
           {
@@ -135,12 +140,12 @@ public class AEFaceTransform
           if ((BitmapUtils.isLegal(localBitmap)) && (localBitmap.getWidth() > 0))
           {
             GlUtil.loadTexture(this.mTextureTmp[0], localBitmap);
-            this.fillFilter.RenderProcess(this.mTextureTmp[0], localBitmap.getWidth(), localBitmap.getWidth() * paramFrame.height / paramFrame.width, -1, 0.0D, this.mHairMaskFrame);
+            this.mHairMaskFrame = this.copyFilter.RenderProcess(this.mTextureTmp[0], localBitmap.getWidth(), localBitmap.getHeight(), paramFrame.width, paramFrame.height);
             if ((this.mBeautyTransformList != null) && (this.mIsApplied)) {
-              this.mHairMaskFrame = this.mBeautyTransformList.process(this.mHairMaskFrame, this.mAllFacePoints, this.mStatusList, this.mFaceScale * paramFrame.width / localBitmap.getWidth(), this.mFacesAngles, this.mPhoneRotate, this.mIsAgeDetectOn);
+              this.mHairMaskFrame = this.mBeautyTransformList.process(this.mHairMaskFrame, this.mAllFacePoints, this.mStatusList, this.mFaceScale, this.mFacesAngles, this.mPhoneRotate, this.mIsAgeDetectOn);
             }
             if ((this.mRemodelFilter != null) && (this.mIsApplied)) {
-              this.mHairMaskFrame = this.mRemodelFilter.process(this.mHairMaskFrame, this.mAllFacePoints, this.mStatusList, this.mFacesAngles, this.mFaceScale * paramFrame.width / localBitmap.getWidth(), this.mIsAgeDetectOn);
+              this.mHairMaskFrame = this.mRemodelFilter.process(this.mHairMaskFrame, this.mAllFacePoints, this.mStatusList, this.mFacesAngles, this.mFaceScale, this.mIsAgeDetectOn);
             }
             this.mHairAttr.setMaskFrame(this.mHairMaskFrame);
           }
@@ -267,7 +272,7 @@ public class AEFaceTransform
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.aekit.api.standard.filter.AEFaceTransform
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.shortvideo;
 
-import axde;
-import axev;
-import axew;
-import axle;
+import ayyi;
+import azab;
+import azac;
+import azgk;
 import java.io.File;
 
 public final class PendantVersionManager$1
@@ -11,10 +11,10 @@ public final class PendantVersionManager$1
 {
   public void run()
   {
-    String str1 = axle.a(VideoEnvironment.a());
-    String str2 = axde.a();
+    String str1 = azgk.a(VideoEnvironment.a());
+    String str2 = ayyi.a();
     File[] arrayOfFile = new File(str1).listFiles();
-    int i = axde.a().length;
+    int i = ayyi.a().length;
     int j;
     Object localObject1;
     Object localObject2;
@@ -34,10 +34,10 @@ public final class PendantVersionManager$1
           k += 1;
           break;
           localObject2 = arrayOfFile[k].getName();
-          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!axde.b((String)localObject2)))
+          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!ayyi.b((String)localObject2)))
           {
-            localObject3 = axev.a((String)localObject2);
-            m = ((axew)localObject3).a();
+            localObject3 = azab.a((String)localObject2);
+            m = ((azac)localObject3).a();
             if (m == 0) {
               break label218;
             }
@@ -49,7 +49,7 @@ public final class PendantVersionManager$1
           }
         }
         label218:
-        localObject3 = ((axew)localObject3).b();
+        localObject3 = ((azac)localObject3).b();
       }
     }
     label418:
@@ -86,7 +86,7 @@ public final class PendantVersionManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PendantVersionManager.1
  * JD-Core Version:    0.7.0.1
  */

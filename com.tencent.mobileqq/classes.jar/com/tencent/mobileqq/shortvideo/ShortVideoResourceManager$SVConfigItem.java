@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo;
 
-import axfr;
-import bbkk;
+import azax;
+import bdje;
 
 public class ShortVideoResourceManager$SVConfigItem
 {
@@ -21,12 +21,12 @@ public class ShortVideoResourceManager$SVConfigItem
   
   public boolean check64BitReady()
   {
-    return (!bbkk.a(this.arm64v8a_md5)) && (!bbkk.a(this.arm64v8a_url));
+    return (!bdje.a(this.arm64v8a_md5)) && (!bdje.a(this.arm64v8a_url));
   }
   
   public String getSignature()
   {
-    if ((axfr.a()) && (check64BitReady())) {
+    if ((azax.a()) && (check64BitReady())) {
       return this.arm64v8a_md5 + '_' + this.versionCode;
     }
     return this.armv7a_md5 + '_' + this.versionCode;
@@ -34,7 +34,7 @@ public class ShortVideoResourceManager$SVConfigItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.SVConfigItem
  * JD-Core Version:    0.7.0.1
  */

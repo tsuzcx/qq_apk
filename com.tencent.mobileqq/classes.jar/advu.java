@@ -1,29 +1,54 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import java.util.ArrayList;
 
-class advu
-  extends auoo
+public class advu
+  implements Handler.Callback
 {
-  advu(advs paramadvs, BaseChatItemLayout paramBaseChatItemLayout) {}
+  public advu(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void a(int paramInt, aunw paramaunw)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
+    switch (paramMessage.what)
+    {
+    default: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return true;
+          paramMessage = (Intent)paramMessage.obj;
+          this.a.c = paramMessage.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+          if ((55 == paramMessage.getIntExtra(bdaq.h, -1)) && (paramMessage.getExtras().containsKey("PhotoConst.PHOTO_PATHS")))
+          {
+            ArrayList localArrayList = paramMessage.getExtras().getStringArrayList("PhotoConst.PHOTO_PATHS");
+            if ((localArrayList != null) && (localArrayList.size() > 0))
+            {
+              this.a.a(BaseApplicationImpl.getApplication(), localArrayList);
+              return true;
+            }
+          }
+        } while (!paramMessage.getBooleanExtra("IS_FROM_PREVIEW_ACTIVITY", false));
+        paramMessage = paramMessage.getStringArrayListExtra("key_photo_preview");
+      } while (paramMessage == null);
+      this.a.a(BaseApplicationImpl.getApplication(), paramMessage);
+      return true;
+    case 2: 
+      this.a.b(null);
+      return true;
     }
-  }
-  
-  public void a_(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
-    }
+    this.a.u();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advu
  * JD-Core Version:    0.7.0.1
  */

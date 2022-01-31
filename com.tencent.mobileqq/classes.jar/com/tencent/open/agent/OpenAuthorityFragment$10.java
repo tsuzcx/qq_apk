@@ -1,7 +1,7 @@
 package com.tencent.open.agent;
 
 import android.graphics.Bitmap;
-import bdnp;
+import bfmm;
 
 class OpenAuthorityFragment$10
   implements Runnable
@@ -10,7 +10,7 @@ class OpenAuthorityFragment$10
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a(this.this$0.jdField_a_of_type_Bdnp.a, "", this.a, false);
+    this.this$0.jdField_a_of_type_ComTencentOpenAgentOpenCardContainer.a(this.this$0.jdField_a_of_type_Bfmm.a, "", this.a, false);
   }
 }
 

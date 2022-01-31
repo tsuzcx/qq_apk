@@ -1,218 +1,62 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.provider.Settings.Secure;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.component.utils.preference.PreferenceManager;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.utils.SecurityUtile;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
+import android.opengl.GLES20;
 
 public class axqg
 {
-  public static boolean a = false;
-  public static boolean b;
-  public static boolean c;
-  private static boolean d;
+  private int a;
+  private int b;
+  private int c;
+  private int d;
   
-  public static void a()
+  public axqg(int paramInt1, int paramInt2)
   {
-    if (Build.VERSION.SDK_INT > 28) {}
-    for (;;)
-    {
-      return;
-      if (!c)
-      {
-        if (!PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext()).getBoolean("saveIDA", false)) {
-          d();
-        }
-        c = true;
-      }
-      if (b) {
-        continue;
-      }
-      Object localObject = acsx.a;
-      if ((localObject == null) || (((acsw)localObject).f != 1)) {
-        continue;
-      }
-      b = true;
-      localObject = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
-      if (((SharedPreferences)localObject).getBoolean("FightReporter_deviceid", false)) {
-        continue;
-      }
-      ((SharedPreferences)localObject).edit().putBoolean("FightReporter_deviceid", true).apply();
-      String str2 = bfnn.a("0");
-      try
-      {
-        localObject = Settings.Secure.getString(BaseApplicationImpl.getContext().getContentResolver(), "android_id");
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("imei", str2);
-        localHashMap.put("androidID", localObject);
-        String str3 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-        axrn.a(BaseApplicationImpl.getContext()).a(str3, "FightReporter_deviceid", true, 0L, 0L, localHashMap, null);
-        if (!QLog.isDevelopLevel()) {
-          continue;
-        }
-        QLog.d("FightReporter_", 2, "rYU.i.A.report real...IMEI = " + str2 + ",androidID = " + (String)localObject);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          String str1 = "";
-        }
-      }
-    }
+    this.c = paramInt1;
+    this.d = paramInt2;
+    int[] arrayOfInt = new int[1];
+    GLES20.glGenFramebuffers(1, arrayOfInt, 0);
+    this.b = arrayOfInt[0];
+    GLES20.glBindFramebuffer(36160, this.b);
+    a();
   }
   
-  public static void a(MessageRecord paramMessageRecord)
+  public void a()
   {
-    try
+    GLES20.glBindFramebuffer(36160, 0);
+    axqh.a(0);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt < 0)
     {
-      if (paramMessageRecord.msgtype == -2011)
-      {
-        paramMessageRecord = (MessageForStructing)paramMessageRecord;
-        if (paramMessageRecord.structingMsg != null)
-        {
-          int i = paramMessageRecord.structingMsg.mMsgServiceID;
-          a(paramMessageRecord.structingMsg);
-        }
-      }
+      wsv.d("AvEditor.FrameBuffer", "invalid textureId " + paramInt);
       return;
     }
-    catch (Throwable paramMessageRecord)
-    {
-      QLog.d("FightReporter_", 1, paramMessageRecord, new Object[0]);
+    int i = paramInt;
+    if (paramInt == 0) {
+      i = axqh.a(1)[0];
     }
+    GLES20.glActiveTexture(33984);
+    axqh.a(i);
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    GLES20.glTexImage2D(3553, 0, 6408, this.c, this.d, 0, 6408, 5121, null);
+    GLES20.glViewport(0, 0, this.c, this.d);
+    GLES20.glBindFramebuffer(36160, this.b);
+    GLES20.glFramebufferTexture2D(36160, 36064, 3553, i, 0);
+    GLES20.glClear(16384);
+    this.a = i;
   }
   
-  public static void a(AbsStructMsg paramAbsStructMsg)
+  public void b()
   {
-    acsw localacsw1;
-    do
-    {
-      try
-      {
-        int i = paramAbsStructMsg.mMsgServiceID;
-        if ((i < 0) || (i > 6)) {
-          break;
-        }
-        acsw localacsw2 = acsx.a;
-        localacsw1 = localacsw2;
-        if (!a) {
-          continue;
-        }
-        localacsw1 = localacsw2;
-        if (localacsw2 != null) {
-          continue;
-        }
-        localacsw1 = new acsw();
-        localacsw1.a = 1;
-        localacsw1.b = 1;
-        localacsw1.c = 5;
-      }
-      catch (Throwable paramAbsStructMsg)
-      {
-        QLog.d("FightReporter_", 1, paramAbsStructMsg, new Object[0]);
-        return;
-      }
-      if (localacsw1.a == 0) {
-        break;
-      }
-      a("FightReporter_structMsgServiceID", paramAbsStructMsg.getXml());
-      return;
-    } while (localacsw1 != null);
+    GLES20.glDeleteFramebuffers(1, new int[] { this.b }, 0);
   }
-  
-  public static void a(String paramString)
-  {
-    axpu.a(new Throwable(paramString));
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    axpu.a(new Throwable(paramString1), paramString2);
-  }
-  
-  public static void b()
-  {
-    if (d) {}
-    do
-    {
-      return;
-      d = true;
-      localObject = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
-    } while (((SharedPreferences)localObject).getBoolean("FightReporter_cpu_abi", false));
-    ((SharedPreferences)localObject).edit().putBoolean("FightReporter_cpu_abi", true).apply();
-    HashMap localHashMap = new HashMap();
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (Object localObject = Build.SUPPORTED_ABIS[0];; localObject = Build.CPU_ABI)
-    {
-      localHashMap.put("cpu_abi", localObject);
-      localHashMap.put("sdk", Build.VERSION.SDK_INT + "");
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      axrn.a(BaseApplicationImpl.getContext()).a(str, "FightReporter_cpu_abi", true, 0L, 0L, localHashMap, null);
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("FightReporter_", 2, "rYU.i.A.report real...cpu abi = " + (String)localObject + ",sdk = " + Build.VERSION.SDK_INT);
-      return;
-    }
-  }
-  
-  public static void c()
-  {
-    acsw localacsw = acsx.a;
-    if ((localacsw != null) && (localacsw.e == 1)) {
-      a("FightReporter_openthirdappnullinfo");
-    }
-  }
-  
-  public static void d()
-  {
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultGlobalPreference(BaseApplicationImpl.getContext());
-    String str3 = SecurityUtile.a("d_iemi");
-    String str2 = SecurityUtile.a("d_idandroid");
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    String str4 = bfnn.a("0");
-    Object localObject = "";
-    try
-    {
-      str1 = Settings.Secure.getString(BaseApplicationImpl.getContext().getContentResolver(), "android_id");
-      localObject = str1;
-    }
-    catch (Exception localException)
-    {
-      String str1;
-      label52:
-      break label52;
-    }
-    str1 = SecurityUtile.a(str4);
-    localObject = SecurityUtile.a((String)localObject);
-    localEditor.putString(str3, str1);
-    localEditor.putString(str2, (String)localObject);
-    localEditor.putBoolean("saveIDA", true);
-    localEditor.apply();
-    if (QLog.isDevelopLevel())
-    {
-      localObject = localSharedPreferences.getString(str3, "");
-      str1 = localSharedPreferences.getString(str2, "");
-      QLog.d("FightReporter_", 4, "has save suc,spIMStr = " + (String)localObject + ", imei = " + SecurityUtile.a((String)localObject) + ",androidid = " + SecurityUtile.a(str1));
-    }
-  }
-  
-  public static void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axqg
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.NativeAd.module;
 
 import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
 import com.tencent.open.downloadnew.DownloadInfo;
-import nli;
+import noe;
 
 public class AdModuleBase$8
   implements Runnable
 {
-  public AdModuleBase$8(nli paramnli, DownloadInfo paramDownloadInfo) {}
+  public AdModuleBase$8(noe paramnoe, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
@@ -18,7 +18,7 @@ public class AdModuleBase$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase.8
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,35 @@
-public abstract interface bkaz
+import android.app.Activity;
+import java.lang.reflect.Method;
+
+public abstract class bkaz
 {
-  public abstract void a(bkin parambkin);
+  public static bkaz a;
   
-  public abstract void a(bkin parambkin, int paramInt1, int paramInt2);
+  public static void a()
+  {
+    try
+    {
+      Method localMethod = Class.forName("cooperation.vip.common.VipClass").getMethod("getInstance", new Class[0]);
+      localMethod.setAccessible(true);
+      a = (bkaz)localMethod.invoke(null, new Object[0]);
+      return;
+    }
+    catch (Throwable localThrowable) {}
+  }
   
-  public abstract void a(bkin parambkin, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2);
+  public static void b(Activity paramActivity, String paramString)
+  {
+    bkaz localbkaz = a;
+    if (localbkaz != null) {
+      localbkaz.a(paramActivity, paramString);
+    }
+  }
   
-  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5);
-  
-  public abstract void b(bkin parambkin);
-  
-  public abstract void b(bkin parambkin, int paramInt1, int paramInt2);
+  public abstract void a(Activity paramActivity, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     bkaz
  * JD-Core Version:    0.7.0.1
  */

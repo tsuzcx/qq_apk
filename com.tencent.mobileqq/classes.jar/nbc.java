@@ -1,40 +1,104 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
 
-final class nbc
-  implements bfph
+public class nbc
 {
-  nbc(bfpc parambfpc, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
+  ymk a;
   
-  public void OnClick(View paramView, int paramInt)
+  public nbc(ymk paramymk)
   {
-    this.jdField_a_of_type_Bfpc.dismiss();
-    switch (paramInt)
-    {
-    }
+    this.a = paramymk;
+  }
+  
+  public void a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nbd.a, 2);
+    this.a.a(8, localBundle);
+  }
+  
+  public void a(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nbd.a, 5);
+    localBundle.putInt("mode", paramInt);
+    this.a.a(8, localBundle);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    ymm localymm;
     do
     {
-      return;
-      axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004655", "0X8004655", 0, 0, "", "", "", "");
-      try
+      int i;
+      do
       {
-        naz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "IvrAIOMessageEngineFalse");
         return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("CrmUtils", 2, "Start ivr audio error", paramView);
+        i = paramBundle.getInt("seq", -1);
+      } while (i == -1);
+      localymm = this.a.a(i);
+    } while (localymm == null);
+    localymm.callback(paramBundle);
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nbd.a, 1);
+    localBundle.putString("music", paramString);
+    this.a.a(8, localBundle);
+  }
+  
+  public void a(ymm paramymm)
+  {
+    if (paramymm == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nbd.a, 4);
+    localBundle.putInt("seq", this.a.a(paramymm));
+    this.a.a(8, localBundle);
+  }
+  
+  public void b()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nbd.a, 3);
+    this.a.a(8, localBundle);
+  }
+  
+  public void b(ymm paramymm)
+  {
+    if (paramymm == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nbd.a, 6);
+    localBundle.putInt("seq", this.a.a(paramymm));
+    this.a.a(8, localBundle);
+  }
+  
+  public void c()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nbd.a, 8);
+    this.a.a(8, localBundle);
+  }
+  
+  public void c(ymm paramymm)
+  {
+    if (paramymm == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(nbd.a, 7);
+    localBundle.putInt("seq", this.a.a(paramymm));
+    this.a.a(8, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbc
  * JD-Core Version:    0.7.0.1
  */

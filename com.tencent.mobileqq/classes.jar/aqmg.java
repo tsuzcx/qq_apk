@@ -1,16 +1,18 @@
-public abstract interface aqmg
+import android.view.View;
+
+class aqmg
+  implements bhrf
 {
-  public abstract void a(String paramString1, int paramInt, String paramString2);
+  aqmg(aqmd paramaqmd, View paramView) {}
   
-  public abstract boolean a();
-  
-  public abstract void b(String paramString1, int paramInt, String paramString2);
-  
-  public abstract void c(String paramString1, int paramInt, String paramString2);
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmg
  * JD-Core Version:    0.7.0.1
  */

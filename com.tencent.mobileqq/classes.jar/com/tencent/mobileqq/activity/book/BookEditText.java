@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.book;
 
-import afbu;
-import afbv;
+import agyz;
+import agza;
 import android.content.Context;
 import android.text.InputFilter;
 import android.util.AttributeSet;
@@ -12,9 +12,9 @@ public class BookEditText
   extends EditText
 {
   private int jdField_a_of_type_Int = 80;
-  private afbv jdField_a_of_type_Afbv;
+  private agza jdField_a_of_type_Agza;
   private boolean jdField_a_of_type_Boolean;
-  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new afbu(this) };
+  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new agyz(this) };
   
   public BookEditText(Context paramContext)
   {
@@ -52,9 +52,9 @@ public class BookEditText
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setInputListener(afbv paramafbv)
+  public void setInputListener(agza paramagza)
   {
-    this.jdField_a_of_type_Afbv = paramafbv;
+    this.jdField_a_of_type_Agza = paramagza;
   }
   
   public void setTextLengthLimit(int paramInt)
@@ -64,7 +64,7 @@ public class BookEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.book.BookEditText
  * JD-Core Version:    0.7.0.1
  */

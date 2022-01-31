@@ -1,29 +1,21 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afxo
-  extends afxp
+  extends StructingMsgItemBuilder
 {
-  public static final int[] a = { 2131690730, 2131690735, 2131690732, 2131690733, 2131690737, 2131690734, 2131690731 };
-  public static final int[] b = { 2131364085, 2131364090, 2131364087, 2131364088, 2131364091, 2131364089, 2131364086 };
-  
-  public afxo(FragmentActivity paramFragmentActivity)
+  public afxo(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
-    super(paramFragmentActivity);
-  }
-  
-  protected int[] a()
-  {
-    return b;
-  }
-  
-  protected int[] b()
-  {
-    return a;
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afxo
  * JD-Core Version:    0.7.0.1
  */

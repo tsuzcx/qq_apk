@@ -1,42 +1,21 @@
-import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.widget.XListView;
+import android.widget.TextView;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
 
-public class afgg
-  implements awcf
+class afgg
+  extends aekx
 {
-  public afgg(SearchBaseFragment paramSearchBaseFragment) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if ((paramBitmap == null) || (paramInt2 == 201)) {}
-    for (;;)
-    {
-      return;
-      if ((this.a.e == 0) && (this.a.a != null))
-      {
-        int i = this.a.a.getChildCount();
-        paramInt2 = 0;
-        while (paramInt2 < i)
-        {
-          paramBitmap = this.a.a.getChildAt(paramInt2).getTag();
-          if ((paramBitmap != null) && ((paramBitmap instanceof afgj)))
-          {
-            paramBitmap = (afgj)paramBitmap;
-            if (paramBitmap.jdField_a_of_type_Int == paramInt1) {
-              this.a.a(paramBitmap, paramBitmap.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
-            }
-          }
-          paramInt2 += 1;
-        }
-      }
-    }
-  }
+  public long a;
+  ConfessNewsBgView a;
+  public String a;
+  View jdField_b_of_type_AndroidViewView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afgg
  * JD-Core Version:    0.7.0.1
  */

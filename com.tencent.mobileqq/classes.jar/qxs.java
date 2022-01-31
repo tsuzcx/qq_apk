@@ -1,68 +1,174 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
 
 public class qxs
+  extends qxq
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private qpv jdField_a_of_type_Qpv;
-  private qwy jdField_a_of_type_Qwy;
-  private siu jdField_a_of_type_Siu;
+  private long jdField_a_of_type_Long;
+  baua jdField_a_of_type_Baua = new qxt(this);
+  baub jdField_a_of_type_Baub;
+  private Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
+  private String jdField_a_of_type_JavaLangString;
+  private long jdField_b_of_type_Long;
+  private Long jdField_b_of_type_JavaLangLong = Long.valueOf(0L);
+  private String jdField_b_of_type_JavaLangString;
+  private long jdField_c_of_type_Long;
+  private String jdField_c_of_type_JavaLangString;
+  private long jdField_d_of_type_Long;
+  private String jdField_d_of_type_JavaLangString;
   
-  qxs(Activity paramActivity, qwy paramqwy)
+  public qxs(Context paramContext, QQAppInterface paramQQAppInterface, qxr paramqxr)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Qwy = paramqwy;
-    this.jdField_a_of_type_Siu = ((siu)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(126));
-    this.jdField_a_of_type_Qpv = new qpv(paramActivity, 1);
+    super(paramContext, paramQQAppInterface, paramqxr);
   }
   
-  void a()
+  private void a(int paramInt)
   {
-    this.jdField_a_of_type_Qpv.a();
-  }
-  
-  void a(VideoInfo paramVideoInfo)
-  {
-    int i = 0;
-    boolean bool;
-    if (!paramVideoInfo.l)
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(paramInt));
+    long l1 = this.jdField_b_of_type_Long;
+    long l2 = this.jdField_a_of_type_Long;
+    azmz localazmz = azmz.a(this.jdField_a_of_type_AndroidContentContext);
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
     {
-      bool = true;
-      paramVideoInfo.l = bool;
-      if (!paramVideoInfo.l) {
-        break label53;
-      }
-      i = paramVideoInfo.u + 1;
+      localazmz.a(str, "actReadInJoyUGCVideo", bool, l1 - l2, 0L, localHashMap, "");
+      return;
     }
+  }
+  
+  private void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  {
+    b(paramInt);
+    c(paramInt);
+    if (this.jdField_a_of_type_Qxr != null) {
+      this.jdField_a_of_type_Qxr.a(paramInt, paramString1, paramString2, paramString3);
+    }
+  }
+  
+  private void b(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(paramInt));
+    localHashMap.put("cover_size_before_compression", this.jdField_a_of_type_JavaLangLong.toString());
+    localHashMap.put("cover_size_after_compression", this.jdField_b_of_type_JavaLangLong.toString());
+    azmz localazmz = azmz.a(this.jdField_a_of_type_AndroidContentContext);
+    String str = ors.a();
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localazmz.a(str, "actReadInJoyDeliverVideoCompressCover", bool, this.jdField_b_of_type_Long - this.jdField_a_of_type_Long, 0L, localHashMap, "");
+      return;
+    }
+  }
+  
+  private void c(int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(paramInt));
+    azmz localazmz = azmz.a(this.jdField_a_of_type_AndroidContentContext);
+    String str = ors.a();
+    if (paramInt == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localazmz.a(str, "actReadInJoyDeliverVideoUploadCover", bool, this.jdField_c_of_type_Long - this.jdField_d_of_type_Long, 0L, localHashMap, "");
+      return;
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    a(paramString, paramBoolean, 0);
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageUploadController", 2, "startUploadPic path=" + paramString);
+    }
+    this.jdField_d_of_type_JavaLangString = paramString;
+    if (TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ImageUploadController", 2, "startUploadPic empty path!");
+      }
+      a(1001, null, null, null);
+      return;
+    }
+    Object localObject = new File(paramString);
+    if (!((File)localObject).exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ImageUploadController", 2, "startUploadPic file not exist, path=" + paramString);
+      }
+      a(1002, null, null, null);
+      return;
+    }
+    this.jdField_a_of_type_JavaLangLong = Long.valueOf(((File)localObject).length());
+    if (!ndk.a(this.jdField_a_of_type_AndroidContentContext))
+    {
+      a(1003, null, null, null);
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    localObject = new CompressInfo(paramString, paramInt);
+    ((CompressInfo)localObject).f = 0;
+    if (!awga.a((CompressInfo)localObject)) {
+      a(1001);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageUploadController", 2, "startUploadPic compressPath=" + ((CompressInfo)localObject).jdField_e_of_type_JavaLangString + ", originPath=" + paramString + ", outWidth=" + ((CompressInfo)localObject).d + ", outHeight=" + ((CompressInfo)localObject).jdField_e_of_type_Int);
+    }
+    if (TextUtils.isEmpty(((CompressInfo)localObject).jdField_e_of_type_JavaLangString)) {}
     for (;;)
     {
-      paramVideoInfo.u = i;
-      this.jdField_a_of_type_Siu.a(paramVideoInfo, paramVideoInfo.l);
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_b_of_type_JavaLangLong = Long.valueOf(new File(this.jdField_a_of_type_JavaLangString).length());
+      this.jdField_b_of_type_Long = System.currentTimeMillis();
+      paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      this.jdField_a_of_type_Baua.addFilter(new Class[] { bamp.class });
+      paramString.a(this.jdField_a_of_type_Baua);
+      this.jdField_a_of_type_Baub = new baub();
+      this.jdField_a_of_type_Baub.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Baub.jdField_c_of_type_Int = 10;
+      this.jdField_a_of_type_Baub.i = this.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Baub.jdField_a_of_type_Long = (System.currentTimeMillis() + (Math.random() * 10000.0D));
+      this.jdField_a_of_type_Baub.jdField_c_of_type_JavaLangString = "0";
+      this.jdField_a_of_type_Baub.b = 24;
+      this.jdField_a_of_type_Baub.jdField_a_of_type_JavaLangString = "KandianUGCPicUpload";
+      paramString.a(this.jdField_a_of_type_Baub);
       return;
-      bool = false;
-      break;
-      label53:
-      if (paramVideoInfo.u > 0) {
-        i = paramVideoInfo.u - 1;
-      }
+      paramString = ((CompressInfo)localObject).jdField_e_of_type_JavaLangString;
     }
   }
   
-  void a(VideoInfo paramVideoInfo, int paramInt1, int paramInt2)
+  public void b()
   {
-    if (!paramVideoInfo.l) {
-      a(paramVideoInfo);
-    }
-    if ((paramInt1 >= 0) && (paramInt2 >= 0)) {
-      this.jdField_a_of_type_Qpv.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Baua);
+    if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_d_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ImageUploadController", 2, "clearTempFile(image), origin:" + this.jdField_d_of_type_JavaLangString + ", compress:" + this.jdField_a_of_type_JavaLangString);
+      }
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (localFile.exists()) {
+        localFile.delete();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qxs
  * JD-Core Version:    0.7.0.1
  */

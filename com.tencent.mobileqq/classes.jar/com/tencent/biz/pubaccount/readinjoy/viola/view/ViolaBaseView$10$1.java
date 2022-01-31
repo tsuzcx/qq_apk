@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.viola.view;
 
-import baxq;
+import bcwk;
 import com.tencent.qphone.base.util.QLog;
-import rzo;
-import rzp;
+import sqv;
+import sqw;
 
 public class ViolaBaseView$10$1
   implements Runnable
 {
-  public ViolaBaseView$10$1(rzo paramrzo) {}
+  public ViolaBaseView$10$1(sqv paramsqv) {}
   
   public void run()
   {
     try
     {
-      ViolaBaseView.a(this.a.a, new rzp(this));
-      baxq.a().a(ViolaBaseView.a(this.a.a));
+      ViolaBaseView.a(this.a.a, new sqw(this));
+      bcwk.a().a(ViolaBaseView.a(this.a.a));
       return;
     }
     catch (Exception localException)
@@ -27,7 +27,7 @@ public class ViolaBaseView$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.10.1
  * JD-Core Version:    0.7.0.1
  */

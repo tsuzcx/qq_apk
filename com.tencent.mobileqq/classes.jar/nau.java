@@ -1,351 +1,210 @@
-import android.app.Activity;
+import NearbyGroup.Color;
+import NearbyGroup.GroupInfo;
+import NearbyGroup.GroupLabel;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.data.ShowExternalTroop;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.troop.widget.TroopLabelLayout;
+import com.tencent.pb.addcontacts.AccountSearchPb.Color;
+import com.tencent.pb.addcontacts.AccountSearchPb.Label;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 import com.tencent.qphone.base.util.QLog;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.group.group_label.GroupLabel.Color;
+import tencent.im.group.group_label.GroupLabel.Label;
+import tencent.im.oidb.cmd0x935.oidb_0x935.RgroupInfo;
+import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.Color;
+import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.Label;
 
 public class nau
 {
-  public static final String a(int paramInt)
+  public static String a = nau.class.getSimpleName();
+  
+  public static View a(Context paramContext, ViewGroup paramViewGroup, int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    String str = "";
-    if (paramInt == 0) {
-      str = "contact";
-    }
-    do
-    {
-      return str;
-      if (paramInt == 1) {
-        return "group";
-      }
-    } while (paramInt != 3000);
-    return "discussions";
+    paramContext = bbkw.a(paramContext, paramViewGroup, paramInt2);
+    paramViewGroup = (bbky)paramContext.getTag();
+    paramViewGroup.a.setMaxLabelCount(paramInt1);
+    paramViewGroup.a.setmIsNeedPriority(paramBoolean);
+    return paramContext;
   }
   
-  public static String a(InputStream paramInputStream)
+  public static ArrayList<GroupLabel> a(RecommendTroopItem paramRecommendTroopItem)
   {
-    try
+    if (paramRecommendTroopItem == null) {}
+    for (;;)
     {
-      BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(paramInputStream));
-      String str;
-      InputStream localInputStream;
-      for (paramInputStream = "";; paramInputStream = paramInputStream + str)
+      return null;
+      Object localObject;
+      if ((paramRecommendTroopItem.labelList == null) && (paramRecommendTroopItem.x935RgroupInfo != null)) {
+        localObject = new oidb_0x935.RgroupInfo();
+      }
+      try
       {
-        str = localBufferedReader.readLine();
-        localInputStream = paramInputStream;
-        if (str == null) {
-          break;
+        ((oidb_0x935.RgroupInfo)localObject).mergeFrom(paramRecommendTroopItem.x935RgroupInfo);
+        if (((oidb_0x935.RgroupInfo)localObject).rpt_group_label.has()) {
+          paramRecommendTroopItem.labelList = alws.a(((oidb_0x935.RgroupInfo)localObject).rpt_group_label.get());
         }
-      }
-      return localInputStream;
-    }
-    catch (Exception paramInputStream)
-    {
-      paramInputStream.printStackTrace();
-      localInputStream = null;
-    }
-  }
-  
-  public static String a(String paramString)
-  {
-    if (paramString == null) {
-      return "null";
-    }
-    StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("\"");
-    int j = paramString.length();
-    int i = 0;
-    if (i < j)
-    {
-      char c = paramString.charAt(i);
-      switch (c)
-      {
-      default: 
-        if (c <= '\037') {
-          localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+        if ((paramRecommendTroopItem.labelList == null) || (paramRecommendTroopItem.labelList.size() <= 0)) {
+          continue;
         }
-        break;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append('\\').append(c);
-        continue;
-        localStringBuilder.append("\\t");
-        continue;
-        localStringBuilder.append("\\b");
-        continue;
-        localStringBuilder.append("\\n");
-        continue;
-        localStringBuilder.append("\\r");
-        continue;
-        localStringBuilder.append("\\f");
-        continue;
-        localStringBuilder.append(c);
-      }
-    }
-    localStringBuilder.append("\"");
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    str2 = "";
-    Object localObject1 = str2;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localObject1 = str2;
-      if (paramInt <= 0) {}
-    }
-    try
-    {
-      Object localObject2 = Uri.parse(paramString);
-      localObject1 = str2;
-      if (((Uri)localObject2).isHierarchical())
-      {
-        localObject2 = ((Uri)localObject2).getHost();
-        localObject1 = str2;
-        if (localObject2 != null)
+        localObject = new ArrayList();
+        paramRecommendTroopItem = paramRecommendTroopItem.labelList.iterator();
+        while (paramRecommendTroopItem.hasNext())
         {
-          localObject2 = ((String)localObject2).split("\\.");
-          localObject1 = str2;
-          if (localObject2.length > 0)
-          {
-            int i = Math.max(0, localObject2.length - (paramInt + 1));
-            localObject1 = new StringBuilder(256);
-            ((StringBuilder)localObject1).append(localObject2[i]);
-            i += 1;
-            while (i < localObject2.length)
-            {
-              ((StringBuilder)localObject1).append('.').append(localObject2[i]);
-              i += 1;
-            }
-            localObject1 = ((StringBuilder)localObject1).toString();
-          }
+          oidb_0x9fb.Label localLabel = (oidb_0x9fb.Label)paramRecommendTroopItem.next();
+          GroupLabel localGroupLabel = new GroupLabel();
+          Color localColor = new Color();
+          localColor.R = localLabel.edging_color.uint32_r.get();
+          localColor.G = localLabel.edging_color.uint32_g.get();
+          localColor.B = localLabel.edging_color.uint32_b.get();
+          localGroupLabel.edging_color = localColor;
+          localColor = new Color();
+          localColor.R = localLabel.text_color.uint32_r.get();
+          localColor.G = localLabel.text_color.uint32_g.get();
+          localColor.B = localLabel.text_color.uint32_b.get();
+          localGroupLabel.text_color = localColor;
+          localGroupLabel.strWording = localLabel.bytes_name.get().toStringUtf8();
+          localGroupLabel.type = localLabel.uint32_label_attr.get();
+          ((ArrayList)localObject).add(localGroupLabel);
         }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
-        localException.printStackTrace();
-        String str1 = str2;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QLog", 2, "Get " + paramInt + " level domain= " + (String)localObject1 + " from " + paramString);
-    }
-    return localObject1;
-  }
-  
-  public static String a(String paramString, String... paramVarArgs)
-  {
-    String str;
-    if (TextUtils.isEmpty(paramString))
-    {
-      str = paramString;
-      return str;
-    }
-    paramString = paramString.replaceAll("(?<=\\?|#|&)((?i)sid|3g_sid|uin|sec_sig|MOBINFO|originuin)=[^&#]*&", "").replaceAll("[\\?#&]((?i)sid|3g_sid|uin|sec_sig|MOBINFO|originuin)=[^&#]*(?=#|$)", "").replaceAll("(?<=\\?|#|&)((?i)from)=androidqq&", "").replaceAll("[\\?#&]((?i)from)=androidqq(?=#|$)", "");
-    int j = paramVarArgs.length;
-    int i = 0;
-    for (;;)
-    {
-      str = paramString;
-      if (i >= j) {
-        break;
-      }
-      paramString = paramString.replace(paramVarArgs[i], "");
-      i += 1;
-    }
-  }
-  
-  public static void a(Context paramContext, int paramInt, String paramString1, String paramString2)
-  {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("key_error_code", paramInt);
-    localIntent.putExtra("key_error_msg", paramString1);
-    localIntent.putExtra("key_error_detail", paramString2);
-    localIntent.putExtra("key_response", "");
-    ((Activity)paramContext).setResult(-1, localIntent);
-  }
-  
-  public static final void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, long paramLong1, long paramLong2, String paramString3)
-  {
-    a(paramQQAppInterface, paramString1, "connect_share2qq", paramString2, paramLong1, paramLong2, paramString3);
-  }
-  
-  public static final void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, String paramString4)
-  {
-    if (paramString4 == null) {
-      paramString4 = "";
-    }
-    for (;;)
-    {
-      if (paramString1 == null) {
-        paramString1 = "";
-      }
-      for (;;)
-      {
-        String str1 = "";
-        if (paramLong2 > 0L) {
-          str1 = String.valueOf(paramLong2);
+        for (;;)
+        {
+          localInvalidProtocolBufferMicroException.printStackTrace();
         }
-        String str2 = "";
-        if (paramLong1 > 0L) {
-          str2 = String.valueOf(paramLong1);
-        }
-        axqy.b(paramQQAppInterface, "P_CliOper", "qqconnect", paramString1, paramString2, paramString3, 0, 0, str2, str1, paramString4, "");
-        return;
+        return localInvalidProtocolBufferMicroException;
       }
     }
   }
   
-  public static void a(String paramString)
+  public static void a(View paramView, Context paramContext, ShowExternalTroop paramShowExternalTroop)
   {
-    if (paramString != null) {}
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str;
-    File[] arrayOfFile;
-    do
-    {
-      do
-      {
-        return false;
-        str = paramString;
-        if (!paramString.endsWith(File.separator)) {
-          str = paramString + File.separator;
-        }
-        paramString = new File(str);
-      } while ((paramString == null) || (!paramString.exists()) || (!paramString.isDirectory()));
-      arrayOfFile = paramString.listFiles();
-    } while (arrayOfFile == null);
-    int i = 0;
-    if (i < arrayOfFile.length)
-    {
-      if (arrayOfFile[i] == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (arrayOfFile[i].isFile()) {
-          b(arrayOfFile[i].getAbsolutePath());
-        } else {
-          a(arrayOfFile[i].getAbsolutePath());
-        }
-      }
+    if (paramShowExternalTroop == null) {
+      return;
     }
-    paramString.delete();
-    if (QLog.isColorLevel()) {
-      QLog.d("Util", 2, new Object[] { "deleteDirectory dirPath:", str });
-    }
-    return true;
-  }
-  
-  public static String b(String paramString)
-  {
-    return a(paramString, 1);
-  }
-  
-  public static String b(String paramString, String... paramVarArgs)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return paramString;
-    }
-    return paramString.replaceAll("((?i)sid|uin|sec_sig|MOBINFO)=[^&#]+", "$1=****");
-  }
-  
-  public static void b(String paramString)
-  {
-    if (paramString != null) {}
-  }
-  
-  public static boolean b(String paramString)
-  {
-    boolean bool2 = false;
-    paramString = new File(paramString);
-    boolean bool1 = bool2;
-    if (paramString.isFile())
-    {
-      bool1 = bool2;
-      if (!paramString.exists()) {}
-    }
+    GroupInfo localGroupInfo = new GroupInfo();
     try
     {
-      paramString.delete();
-      bool1 = true;
-      return bool1;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return false;
-  }
-  
-  public static String c(String paramString)
-  {
-    paramString = paramString.toCharArray();
-    int i = 0;
-    if (i < paramString.length)
-    {
-      if (paramString[i] == '　') {
-        paramString[i] = 32;
+      localGroupInfo.lCode = Long.valueOf(paramShowExternalTroop.troopUin).longValue();
+      localGroupInfo.strName = paramShowExternalTroop.troopName;
+      if (!TextUtils.isEmpty(paramShowExternalTroop.troopDesText)) {
+        localGroupInfo.strIntro = paramShowExternalTroop.troopDesText;
       }
+      if ((paramShowExternalTroop.labelList != null) && (paramShowExternalTroop.labelList.size() != 0))
+      {
+        ArrayList localArrayList = new ArrayList();
+        paramShowExternalTroop = paramShowExternalTroop.labelList.iterator();
+        while (paramShowExternalTroop.hasNext())
+        {
+          GroupLabel.Label localLabel = (GroupLabel.Label)paramShowExternalTroop.next();
+          GroupLabel localGroupLabel = new GroupLabel();
+          Color localColor = new Color();
+          localColor.R = localLabel.edging_color.uint32_r.get();
+          localColor.G = localLabel.edging_color.uint32_g.get();
+          localColor.B = localLabel.edging_color.uint32_b.get();
+          localGroupLabel.edging_color = localColor;
+          localColor = new Color();
+          localColor.R = localLabel.text_color.uint32_r.get();
+          localColor.G = localLabel.text_color.uint32_g.get();
+          localColor.B = localLabel.text_color.uint32_b.get();
+          localGroupLabel.text_color = localColor;
+          localGroupLabel.strWording = localLabel.bytes_name.get().toStringUtf8();
+          localGroupLabel.type = localLabel.uint32_label_attr.get();
+          localArrayList.add(localGroupLabel);
+        }
+      }
+    }
+    catch (NumberFormatException localNumberFormatException)
+    {
       for (;;)
       {
-        i += 1;
-        break;
-        if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
-          paramString[i] = ((char)(paramString[i] - 65248));
+        if (QLog.isColorLevel()) {
+          QLog.e(a, 2, "fillCustomView NumberFormatException");
         }
       }
+      localGroupInfo.labels = localNumberFormatException;
+      bbkw.a(paramView, localGroupInfo, paramContext, false);
     }
-    return new String(paramString);
   }
   
-  public static String c(String paramString, String... paramVarArgs)
+  public static void a(View paramView, Context paramContext, AccountSearchPb.record paramrecord)
   {
-    Object localObject = paramString;
-    if (!TextUtils.isEmpty(paramString)) {
-      if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
-        break label39;
-      }
+    if (paramrecord == null) {
+      return;
     }
-    for (paramVarArgs = "(?<=(a1|a2|key|token|uin|sid|sig|stwxweb)=\\S)[^; ]+(?=[^;$])";; paramVarArgs = String.format("(?<=(a1|a2|key|token|uin|sid|sig|stwxweb%s)=\\S)[^; ]+(?=[^;$])", new Object[] { ((StringBuilder)localObject).toString() }))
+    GroupInfo localGroupInfo = new GroupInfo();
+    try
     {
-      localObject = paramString.toLowerCase().replaceAll(paramVarArgs, "*");
-      return localObject;
-      label39:
-      localObject = new StringBuilder("");
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
+      localGroupInfo.lCode = paramrecord.code.get();
+      localGroupInfo.strName = paramrecord.name.get();
+      if ((paramrecord.brief.has()) && (!TextUtils.isEmpty(paramrecord.brief.get()))) {
+        localGroupInfo.strIntro = paramrecord.brief.get();
+      }
+      if ((paramrecord.msg_group_labels.has()) && (!paramrecord.msg_group_labels.isEmpty()))
       {
-        String str = paramVarArgs[i];
-        if (!TextUtils.isEmpty(str)) {
-          ((StringBuilder)localObject).append("|").append(str);
+        ArrayList localArrayList = new ArrayList();
+        paramrecord = paramrecord.msg_group_labels.get().iterator();
+        while (paramrecord.hasNext())
+        {
+          AccountSearchPb.Label localLabel = (AccountSearchPb.Label)paramrecord.next();
+          GroupLabel localGroupLabel = new GroupLabel();
+          Color localColor = new Color();
+          localColor.R = localLabel.edging_color.uint32_r.get();
+          localColor.G = localLabel.edging_color.uint32_g.get();
+          localColor.B = localLabel.edging_color.uint32_b.get();
+          localGroupLabel.edging_color = localColor;
+          localColor = new Color();
+          localColor.R = localLabel.text_color.uint32_r.get();
+          localColor.G = localLabel.text_color.uint32_g.get();
+          localColor.B = localLabel.text_color.uint32_b.get();
+          localGroupLabel.text_color = localColor;
+          localGroupLabel.strWording = localLabel.bytes_name.get().toStringUtf8();
+          localGroupLabel.type = localLabel.uint32_label_attr.get();
+          localArrayList.add(localGroupLabel);
         }
-        i += 1;
       }
     }
+    catch (NumberFormatException localNumberFormatException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(a, 2, "fillCustomView NumberFormatException");
+        }
+      }
+      localGroupInfo.labels = localNumberFormatException;
+      bbkw.a(paramView, localGroupInfo, paramContext, false);
+    }
+  }
+  
+  public static View b(Context paramContext, ViewGroup paramViewGroup, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    paramContext = bbkw.a(paramContext, paramViewGroup, paramInt2, 2131561250);
+    paramViewGroup = (bbky)paramContext.getTag();
+    paramViewGroup.a.setMaxLabelCount(paramInt1);
+    paramViewGroup.a.setmIsNeedPriority(paramBoolean);
+    paramViewGroup.b = 1;
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nau
  * JD-Core Version:    0.7.0.1
  */

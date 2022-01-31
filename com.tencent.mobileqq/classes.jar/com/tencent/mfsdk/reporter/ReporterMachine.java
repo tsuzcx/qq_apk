@@ -1,11 +1,14 @@
 package com.tencent.mfsdk.reporter;
 
-import aaaj;
-import aaal;
-import aaam;
-import aaan;
-import aaaq;
-import aabb;
+import abqk;
+import abqr;
+import abqu;
+import abrg;
+import abri;
+import abrj;
+import abrk;
+import abrn;
+import abry;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -14,8 +17,8 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.text.TextUtils;
-import axrn;
-import ayta;
+import azmz;
+import baqx;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mfsdk.collector.ResultObject;
@@ -29,21 +32,18 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import zzn;
-import zzv;
-import zzy;
 
 public class ReporterMachine
 {
   public static int a;
-  private static aaaj jdField_a_of_type_Aaaj;
+  private static abrg jdField_a_of_type_Abrg;
   private static ReporterMachine jdField_a_of_type_ComTencentMfsdkReporterReporterMachine;
   private static String jdField_a_of_type_JavaLangString = "";
   private static List<ResultObject> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private static Queue<String> jdField_a_of_type_JavaUtilQueue;
   private static MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private static boolean jdField_a_of_type_Boolean;
-  private static aaaj b;
+  private static abrg b;
   
   static
   {
@@ -58,8 +58,8 @@ public class ReporterMachine
       HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("ReporterMachine", 0);
       localHandlerThread.start();
       jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(localHandlerThread.getLooper());
-      jdField_a_of_type_Aaaj = new aaaq(localHandlerThread);
-      b = new aaal(localHandlerThread);
+      jdField_a_of_type_Abrg = new abrn(localHandlerThread);
+      b = new abri(localHandlerThread);
     }
     jdField_a_of_type_JavaLangString = a();
   }
@@ -83,8 +83,8 @@ public class ReporterMachine
   
   public static void a(ResultObject paramResultObject)
   {
-    zzy.a(paramResultObject.params);
-    if ((true == paramResultObject.isRealTime) && (1 == ayta.a().a())) {
+    abqu.a(paramResultObject.params);
+    if ((true == paramResultObject.isRealTime) && (1 == baqx.a().a())) {
       try
       {
         c(paramResultObject);
@@ -107,7 +107,7 @@ public class ReporterMachine
   
   private static void c(ResultObject paramResultObject)
   {
-    if (zzv.jdField_a_of_type_Int > zzn.jdField_a_of_type_Int) {}
+    if (abqr.jdField_a_of_type_Int > abqk.jdField_a_of_type_Int) {}
     for (;;)
     {
       return;
@@ -118,22 +118,22 @@ public class ReporterMachine
       ((JSONObject)localObject).put("model", Build.MODEL);
       ((JSONObject)localObject).put("os", Build.VERSION.RELEASE);
       ((JSONObject)localObject).put("rdmuuid", jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("deviceid", aabb.a(BaseApplicationImpl.sApplication));
+      ((JSONObject)localObject).put("deviceid", abry.a(BaseApplicationImpl.sApplication));
       if (BaseApplicationImpl.sProcessId == 1) {}
       try
       {
         if (TextUtils.equals(String.valueOf(paramResultObject.params.get("newplugin")), String.valueOf(102)))
         {
           localObject = new HashMap();
-          axrn.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actAPMReportMainLooper", true, 0L, 0L, (HashMap)localObject, null);
+          azmz.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actAPMReportMainLooper", true, 0L, 0L, (HashMap)localObject, null);
         }
         if ((jdField_a_of_type_Int & 0x1) > 0) {
-          jdField_a_of_type_Aaaj.a(paramResultObject, new aaam());
+          jdField_a_of_type_Abrg.a(paramResultObject, new abrj());
         }
         if ((jdField_a_of_type_Int & 0x2) <= 0) {
           continue;
         }
-        b.a(paramResultObject, new aaan());
+        b.a(paramResultObject, new abrk());
         return;
       }
       catch (Exception localException)
@@ -180,7 +180,7 @@ public class ReporterMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mfsdk.reporter.ReporterMachine
  * JD-Core Version:    0.7.0.1
  */

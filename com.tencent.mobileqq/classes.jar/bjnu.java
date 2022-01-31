@@ -1,15 +1,12 @@
-import android.support.annotation.RestrictTo;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-@RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP})
-public class bjnu
+public abstract interface bjnu
 {
-  private Map<String, Integer> a = new HashMap();
+  public abstract void a(BaseResp paramBaseResp);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjnu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,57 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.NearbyTribeAppController.2.1;
+import com.tencent.mobileqq.widget.qqfloatingscreen.listener.IVideoOuterStatusListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import mqq.util.WeakReference;
 
 public class atbn
-  implements apwi
+  implements atxr
 {
-  atbn(atbm paramatbm) {}
+  private WeakReference<IVideoOuterStatusListener> a;
   
-  public void a(String paramString, long paramLong)
+  public atbn(WeakReference<IVideoOuterStatusListener> paramWeakReference)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L)) {}
-    do
-    {
+    this.a = paramWeakReference;
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if ((this.a == null) || (this.a.get() == null)) {
       return;
-      localObject = aptm.a().b() + paramString;
-      if (!new File((String)localObject).exists()) {
-        break;
-      }
-      apwe.a((String)localObject);
-    } while (!QLog.isColorLevel());
-    QLog.d(atbm.a(this.a), 2, "UniformDownloadUtil.installAPK,savePath=" + (String)localObject);
-    return;
-    atbm.a(this.a).post(new NearbyTribeAppController.2.1(this));
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("_filename_from_dlg", paramString);
-    ((Bundle)localObject).putLong("_filesize_from_dlg", paramLong);
-    ((Bundle)localObject).putString("_notify_name_dialog", ajya.a(2131707388));
-    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_hdsp_nearby");
-    apdc.a().a("http://pub.idqqimg.com/pc/misc/files/20170706/c221bf304be44e5a9e0441768beacff0.apk", (Bundle)localObject, null);
+    }
+    IVideoOuterStatusListener localIVideoOuterStatusListener = (IVideoOuterStatusListener)this.a.get();
+    if (paramBoolean)
+    {
+      localIVideoOuterStatusListener.onVideoStop();
+      return;
+    }
+    localIVideoOuterStatusListener.onVideoStart(-1);
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_GAIN");
+      atbj.a().a(false);
+      a(false);
+      return;
+    }
+    QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_LOSS");
+    atbj.a().a(true);
+    a(true);
+  }
+  
+  public void a(WeakReference<IVideoOuterStatusListener> paramWeakReference)
+  {
+    this.a = paramWeakReference;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atbn
  * JD-Core Version:    0.7.0.1
  */

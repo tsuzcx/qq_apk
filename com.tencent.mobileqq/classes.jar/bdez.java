@@ -1,7 +1,28 @@
-public abstract interface bdez {}
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+
+final class bdez
+  extends amab
+{
+  bdez(String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramString)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    QLog.w("QAVGroupConfig", 1, "onGetTroopInfoResult[" + this.b + "], troopuin[" + this.jdField_a_of_type_JavaLangString + "], isSuc[" + paramBoolean + "]");
+    if (paramBoolean) {
+      bdfb.a(this.b + ".onGetTroopInfoResult", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+  }
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdez
  * JD-Core Version:    0.7.0.1
  */

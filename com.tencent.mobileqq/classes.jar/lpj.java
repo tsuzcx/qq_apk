@@ -1,23 +1,42 @@
-import android.support.annotation.NonNull;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
 public class lpj
 {
-  public float a;
   public int a;
-  public float b;
+  public long a;
+  final String jdField_a_of_type_JavaLangString;
+  public boolean a;
   public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public boolean c;
+  public boolean d = false;
+  public boolean e = false;
   
-  @NonNull
+  public lpj(AVNotifyCenter paramAVNotifyCenter, String paramString, long paramLong)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = ("AvChatData_" + paramString + "_" + paramLong);
+  }
+  
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("[apiLevel: ").append(this.jdField_a_of_type_Int).append(", cpuNum: ").append(this.jdField_b_of_type_Int).append(", maxFreqGHZ: ").append(this.jdField_a_of_type_Float).append(", ramSizeGB:").append(this.jdField_b_of_type_Float).append("]");
-    return localStringBuilder.toString();
+    return this.jdField_a_of_type_JavaLangString + ", mRelationId[" + this.jdField_a_of_type_Long + "], mRelationType[" + this.jdField_c_of_type_Int + "], mUinType[" + this.jdField_b_of_type_Int + "], mPeerUin[" + this.jdField_b_of_type_JavaLangString + "], mIsChating[" + this.d + "], mIsWaitting[" + this.jdField_c_of_type_Boolean + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lpj
  * JD-Core Version:    0.7.0.1
  */

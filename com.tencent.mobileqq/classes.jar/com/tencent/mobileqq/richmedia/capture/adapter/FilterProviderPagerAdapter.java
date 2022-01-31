@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.adapter;
 
-import actj;
+import aekt;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v4.view.PagerAdapter;
@@ -8,8 +8,8 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
-import avrm;
-import bfpt;
+import axjk;
+import bhqp;
 import com.tencent.mobileqq.richmedia.capture.data.FilterCategory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -21,16 +21,16 @@ public class FilterProviderPagerAdapter
   extends PagerAdapter
 {
   public static final int a;
-  public static final int b = actj.a(0.0F, BaseApplication.getContext().getResources());
+  public static final int b = aekt.a(0.0F, BaseApplication.getContext().getResources());
   private Context jdField_a_of_type_AndroidContentContext;
   public SparseArray<GridView> a;
-  private bfpt jdField_a_of_type_Bfpt;
+  private bhqp jdField_a_of_type_Bhqp;
   private List<FilterCategory> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
   boolean jdField_a_of_type_Boolean = true;
   
   static
   {
-    jdField_a_of_type_Int = actj.a(7.0F, BaseApplication.getContext().getResources());
+    jdField_a_of_type_Int = aekt.a(7.0F, BaseApplication.getContext().getResources());
   }
   
   public FilterProviderPagerAdapter(Context paramContext, boolean paramBoolean)
@@ -40,9 +40,9 @@ public class FilterProviderPagerAdapter
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(bfpt parambfpt)
+  public void a(bhqp parambhqp)
   {
-    this.jdField_a_of_type_Bfpt = parambfpt;
+    this.jdField_a_of_type_Bhqp = parambhqp;
   }
   
   public void a(List<FilterCategory> paramList)
@@ -79,12 +79,12 @@ public class FilterProviderPagerAdapter
       ((GridView)localObject1).setClipToPadding(false);
       ((GridView)localObject1).setPadding(jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int, jdField_a_of_type_Int * 4);
       ((GridView)localObject1).setVerticalScrollBarEnabled(false);
-      localObject2 = new avrm(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Boolean);
+      localObject2 = new axjk(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Boolean);
       ((GridView)localObject1).setAdapter((ListAdapter)localObject2);
       if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        ((avrm)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
+        ((axjk)localObject2).a(((FilterCategory)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_JavaUtilList);
       }
-      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_Bfpt);
+      ((GridView)localObject1).setOnItemClickListener(this.jdField_a_of_type_Bhqp);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
     }
     paramViewGroup.addView((View)localObject1, -1, -1);
@@ -98,7 +98,7 @@ public class FilterProviderPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.adapter.FilterProviderPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

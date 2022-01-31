@@ -1,46 +1,27 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class adbh
-  extends Handler
+  implements View.OnFocusChangeListener
 {
-  public adbh(CommonRecordSoundPanel paramCommonRecordSoundPanel, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public adbh(Leba paramLeba) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    switch (paramMessage.what)
+    if (paramBoolean)
     {
-    default: 
-      return;
-    case 16711687: 
-      this.a.b(102);
-      return;
-    case 16711686: 
-      if (QLog.isColorLevel()) {
-        QLog.d("QQRecorder", 2, "QQRecorder stop() is called,time is:" + System.currentTimeMillis());
-      }
-      CommonRecordSoundPanel.a(this.a).c();
-      bbcf.b(2131230744, false);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16711686);
-      bbcf.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, false);
-      return;
+      paramView.clearFocus();
+      aynt.a(null, 0, 21, "0X8009D15", 0, 0, null, null);
+      UniteSearchActivity.a(this.a.a(), null, 21, 0L, null, 3);
+      azmj.b(this.a.a, "CliOper", "", "", "0x8004B21", "0x8004B21", 0, 0, "", "", "", "");
     }
-    this.a.b(1);
-    this.a.b();
-    bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131698553), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adbh
  * JD-Core Version:    0.7.0.1
  */

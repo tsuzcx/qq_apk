@@ -1,32 +1,26 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
 
-final class amew
-  implements URLDrawableDownListener
+class amew
+  implements DialogInterface.OnClickListener
 {
-  amew(URLImageView paramURLImageView) {}
+  amew(amev paramamev, Activity paramActivity) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setVisibility(8);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.a.setVisibility(0);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("back_for_hidden_chat", true);
+    paramDialogInterface.setFlags(603979776);
+    HiddenChatFragment.a(this.jdField_a_of_type_AndroidAppActivity, 3, 0, paramDialogInterface);
+    azmj.b(this.jdField_a_of_type_Amev.a, "dc00898", "", "", "0X800A34A", "0X800A34A", 0, 0, "0", "0", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amew
  * JD-Core Version:    0.7.0.1
  */

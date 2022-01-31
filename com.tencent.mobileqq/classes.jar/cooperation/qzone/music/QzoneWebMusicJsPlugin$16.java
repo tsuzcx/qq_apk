@@ -1,7 +1,7 @@
 package cooperation.qzone.music;
 
-import bhlc;
-import bhle;
+import bjmn;
+import bjmp;
 
 class QzoneWebMusicJsPlugin$16
   implements Runnable
@@ -10,12 +10,12 @@ class QzoneWebMusicJsPlugin$16
   
   public void run()
   {
-    bhlc.a().a().h();
+    bjmn.a().a().h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.music.QzoneWebMusicJsPlugin.16
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,50 @@
-import com.tencent.mobileqq.app.DataMigrationService;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.widget.PinnedFooterExpandableListView;
+import java.util.ArrayList;
 
 public class ajuw
-  extends WtloginListener
+  implements bbkb
 {
-  public ajuw(DataMigrationService paramDataMigrationService, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, WtloginHelper paramWtloginHelper) {}
+  public ajuw(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
   
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  public ArrayList<ResultRecord> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| OnException=" + paramErrMsg + ", cmd=" + paramInt);
-    }
-    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c();
   }
   
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| onGetA1WithA1 ret=" + paramInt2);
-    }
-    if (paramInt2 != 0)
+    FriendTeamListInnerFrame.a(this.a).notifyDataSetChanged();
+    if (FriendTeamListInnerFrame.a(this.a).getGroupCount() > 0)
     {
-      DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
-      return;
+      Groups localGroups1 = FriendTeamListInnerFrame.a(this.a).a(1007L);
+      Groups localGroups2 = FriendTeamListInnerFrame.a(this.a).a(1008L);
+      if ((localGroups1 != null) || (localGroups2 != null))
+      {
+        FriendTeamListInnerFrame.a(this.a).a(0);
+        FriendTeamListInnerFrame.a(this.a).setIsNeedScrollPositionTop(true);
+        FriendTeamListInnerFrame.a(this.a).smoothScrollToPositionFromTop(1, 0, 0);
+        if (localGroups1 != null) {
+          this.a.jdField_a_of_type_Bbjz.a();
+        }
+        if (localGroups2 != null) {
+          this.a.jdField_a_of_type_Bbjz.c();
+        }
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| send action");
-    }
-    paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
-    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, paramString, this.jdField_b_of_type_Int);
+  }
+  
+  public ArrayList<String> b()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajuw
  * JD-Core Version:    0.7.0.1
  */

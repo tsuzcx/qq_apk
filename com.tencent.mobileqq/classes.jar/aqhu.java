@@ -1,66 +1,42 @@
-import android.content.res.Resources;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.fragment.LangSettingFragment;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.ArrayList;
 
 public class aqhu
-  extends BaseAdapter
+  implements bhqd
 {
-  public aqhu(LangSettingFragment paramLangSettingFragment) {}
+  public aqhu(LocalFileBrowserActivity paramLocalFileBrowserActivity, bhpy parambhpy) {}
   
-  private View.OnClickListener a(int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    return new aqhv(this, paramInt);
-  }
-  
-  private boolean a(int paramInt)
-  {
-    if ((paramInt >= LangSettingFragment.a().size()) || (paramInt < 0)) {
-      return false;
-    }
-    return ((Integer)LangSettingFragment.a().get(paramInt)).intValue() == 1033;
-  }
-  
-  public int getCount()
-  {
-    return LangSettingFragment.a().size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return Integer.valueOf(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = new FormSimpleItem(this.a.getActivity());
-    if (paramInt == LangSettingFragment.a(this.a)) {
-      paramView.setRightIcon(this.a.getResources().getDrawable(2130843904));
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      if (paramInt < LangSettingFragment.a().size()) {
-        paramView.setLeftText(LangSettingFragment.a(this.a, paramInt, false));
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e != -1)
+      {
+        paramView = (FileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
+        if ((!arof.a(paramView.c())) || (arof.c(paramView.c())))
+        {
+          arni.d(paramView.c());
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.remove(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e);
+          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
+        }
+        else
+        {
+          armz.a(2131692486);
+        }
       }
-      paramView.setTag(Integer.valueOf(paramInt));
-      paramView.setOnClickListener(a(paramInt));
-      return paramView;
-      paramView.setRightIcon(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqhu
  * JD-Core Version:    0.7.0.1
  */

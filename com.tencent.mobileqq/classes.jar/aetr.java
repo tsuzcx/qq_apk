@@ -1,21 +1,30 @@
+import android.content.Context;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
 
-class aetr
-  implements View.OnClickListener
+public class aetr
+  extends AccessibilityDelegateCompat
 {
-  aetr(aetq paramaetq) {}
+  public aetr(PressToSpeakPanel paramPressToSpeakPanel) {}
   
-  public void onClick(View paramView)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    if (!this.a.N) {
-      aanz.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a());
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if ((AppSetting.c) && (PressToSpeakPanel.a(this.a) > 0) && (!PressToSpeakPanel.a(this.a)) && (PressToSpeakPanel.a(this.a).a() == 1))
+    {
+      PressToSpeakPanel.a(this.a, true);
+      PressToSpeakPanel.b(this.a);
+      bcvq.a(this.a, this.a.getContext().getString(2131691154));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aetr
  * JD-Core Version:    0.7.0.1
  */

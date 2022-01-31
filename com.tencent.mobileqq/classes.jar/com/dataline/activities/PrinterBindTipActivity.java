@@ -1,6 +1,7 @@
 package com.dataline.activities;
 
-import ajya;
+import aabm;
+import alpo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,7 +11,6 @@ import android.view.Window;
 import android.widget.Button;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import ymt;
 
 public class PrinterBindTipActivity
   extends IphoneTitleBarActivity
@@ -23,11 +23,11 @@ public class PrinterBindTipActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.getWindow().setBackgroundDrawableResource(2131165360);
-    super.setContentView(2131559399);
-    super.setTitle(ajya.a(2131708431));
-    super.setLeftViewName(2131691612);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363229));
+    super.getWindow().setBackgroundDrawableResource(2131165395);
+    super.setContentView(2131559451);
+    super.setTitle(alpo.a(2131708803));
+    super.setLeftViewName(2131691667);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363266));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     paramBundle = super.getIntent();
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("printer_bind_url");
@@ -37,8 +37,8 @@ public class PrinterBindTipActivity
   
   public void onClick(View paramView)
   {
-    ymt.a();
-    ymt.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 5, 0, 0);
+    aabm.a();
+    aabm.a(this.app, this.jdField_a_of_type_Long, "printer_hp", 5, 0, 0);
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       paramView = new Intent(this, QQBrowserActivity.class);
@@ -52,7 +52,7 @@ public class PrinterBindTipActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.dataline.activities.PrinterBindTipActivity
  * JD-Core Version:    0.7.0.1
  */

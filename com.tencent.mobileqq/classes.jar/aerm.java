@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.12.1;
-import mqq.os.MqqHandler;
+import android.support.annotation.IntRange;
 
-public class aerm
-  extends akil
+public abstract interface aerm
 {
-  aerm(aerj paramaerj) {}
+  public abstract void a();
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    paramString = this.a;
-    if ((paramBoolean1) && (paramBoolean2)) {}
-    for (paramBoolean1 = true;; paramBoolean1 = false)
-    {
-      paramString.Z = paramBoolean1;
-      aerj.c(this.a).post(new NearbyChatPie.12.1(this));
-      return;
-    }
-  }
+  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt);
+  
+  public abstract boolean a(@IntRange(from=0L, to=3L) int paramInt, String paramString1, String paramString2);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aerm
  * JD-Core Version:    0.7.0.1
  */

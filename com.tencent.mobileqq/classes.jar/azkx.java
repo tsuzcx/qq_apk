@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.startup.step.Step;
 
-public class azkx
-  extends ajxj
+public abstract interface azkx
 {
-  public azkx(NewTroopContactView paramNewTroopContactView) {}
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  public abstract Step a(int paramInt, azjg paramazjg, int[] paramArrayOfInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azkx
  * JD-Core Version:    0.7.0.1
  */

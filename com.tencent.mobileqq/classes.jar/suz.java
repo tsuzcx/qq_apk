@@ -1,16 +1,40 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.Adapter;
 
-public abstract interface suz
+public final class suz
+  implements svy
 {
-  public abstract void a(String paramString, int paramInt);
+  @NonNull
+  private final RecyclerView.Adapter a;
   
-  public abstract void a(String paramString, int paramInt, ErrorMessage paramErrorMessage);
+  public suz(@NonNull RecyclerView.Adapter paramAdapter)
+  {
+    this.a = paramAdapter;
+  }
   
-  public abstract void b(String paramString, int paramInt);
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    this.a.notifyItemRangeChanged(paramInt1, paramInt2, paramObject);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemMoved(paramInt1, paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     suz
  * JD-Core Version:    0.7.0.1
  */

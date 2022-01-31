@@ -1,22 +1,37 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.SwipListView;
 
 public class ahbo
+  implements akfm
 {
-  public bbwt a;
-  public PreloadModule a;
-  public PreloadResource a;
+  public ahbo(AddContactsView paramAddContactsView) {}
   
-  public ahbo(PreloadResource paramPreloadResource, PreloadModule paramPreloadModule, bbwt parambbwt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadResource = paramPreloadResource;
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadModule = paramPreloadModule;
-    this.jdField_a_of_type_Bbwt = parambbwt;
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled");
+    }
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onRecommendsAvailable");
+    }
+    this.a.b.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahbo
  * JD-Core Version:    0.7.0.1
  */

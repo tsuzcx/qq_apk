@@ -2,8 +2,8 @@ package com.tencent.mobileqq.activity.contact.troop;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 
 class TroopActivity$12
   implements Runnable
@@ -15,8 +15,8 @@ class TroopActivity$12
     if (this.this$0.f)
     {
       int i = this.this$0.app.a().b();
-      TextView localTextView = (TextView)this.this$0.findViewById(2131378015);
-      ImageView localImageView = (ImageView)this.this$0.findViewById(2131368742);
+      TextView localTextView = (TextView)this.this$0.findViewById(2131378562);
+      ImageView localImageView = (ImageView)this.this$0.findViewById(2131368961);
       localTextView.setVisibility(0);
       localImageView.setVisibility(0);
       localTextView.setText("" + i);
@@ -28,7 +28,7 @@ class TroopActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopActivity.12
  * JD-Core Version:    0.7.0.1
  */

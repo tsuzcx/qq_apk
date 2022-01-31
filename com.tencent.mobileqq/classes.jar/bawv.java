@@ -1,32 +1,22 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-
 public class bawv
-  implements DownloadParams.DecodeHandler
+  extends bawz
 {
-  private final int a = 10;
-  private final int b = 20;
+  public int a;
+  public long a;
+  public byte[] a;
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public String toString()
   {
-    try
-    {
-      paramDownloadParams = Bitmap.createScaledBitmap(paramBitmap, paramBitmap.getWidth() / 20, paramBitmap.getHeight() / 20, true);
-      bbki.a(paramDownloadParams, 10);
-      return paramDownloadParams;
-    }
-    catch (OutOfMemoryError paramDownloadParams)
-    {
-      return paramBitmap;
-    }
-    catch (Exception paramDownloadParams) {}
-    return paramBitmap;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(" storeType:");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bawv
  * JD-Core Version:    0.7.0.1
  */

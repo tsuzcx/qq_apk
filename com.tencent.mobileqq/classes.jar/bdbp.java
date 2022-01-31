@@ -1,38 +1,36 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.open.agent.OpenAuthorityAccountView;
-import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class bdbp
-  implements View.OnLayoutChangeListener
+  extends bdbo
 {
-  public bdbp(OpenAuthorityAccountView paramOpenAuthorityAccountView, RelativeLayout paramRelativeLayout) {}
+  public String b;
+  public List<Integer> b;
+  public String c;
+  public List<Integer> c;
+  public String d;
+  public List<Integer> d;
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public bdbo a()
   {
-    paramInt1 = paramView.getHeight();
-    paramInt2 = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenAuthorityAccountView", 2, paramInt1 + " /  / " + paramInt2);
-    }
-    paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    if (paramView == null) {
-      paramView = new RelativeLayout.LayoutParams(-1, -2);
-    }
-    for (;;)
-    {
-      paramView.addRule(12);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
-      return;
-      paramView.height = -2;
-    }
+    bdbo localbdbo = new bdbo();
+    localbdbo.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    localbdbo.jdField_a_of_type_JavaUtilList = this.jdField_b_of_type_JavaUtilList;
+    localbdbo.jdField_a_of_type_Int = 1;
+    return localbdbo;
+  }
+  
+  public bdbo b()
+  {
+    bdbo localbdbo = new bdbo();
+    localbdbo.jdField_a_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+    localbdbo.jdField_a_of_type_JavaUtilList = this.jdField_c_of_type_JavaUtilList;
+    localbdbo.jdField_a_of_type_Int = 2;
+    return localbdbo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdbp
  * JD-Core Version:    0.7.0.1
  */

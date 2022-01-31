@@ -1,45 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.SlideTabWidget;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class bcrw
-  extends Handler
+class bcrw
+  extends bdvu
 {
-  public bcrw(SlideTabWidget paramSlideTabWidget) {}
+  bcrw(bcrv parambcrv, File paramFile, bcrx parambcrx) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDone(bdvv parambdvv)
   {
-    switch (paramMessage.what)
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupCatalogTool", 2, "getChoiceListFromServer download suc ");
+    }
+    if ((parambdvv.a == 0) && (this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_Bcrv.a(BaseApplicationImpl.getContext())) && (this.jdField_a_of_type_Bcrv.b(BaseApplicationImpl.getContext())))
     {
-    default: 
-      return;
-    case 0: 
-      SlideTabWidget.a(this.a, 0.0F);
-      SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
-      this.a.invalidate();
-      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
-      return;
-    case 1: 
-      if (SlideTabWidget.a(this.a) < 1.0F)
-      {
-        SlideTabWidget.a(this.a, (float)(SlideTabWidget.a(this.a) + 0.1D));
-        if (SlideTabWidget.a(this.a) >= 1.0F) {
-          SlideTabWidget.a(this.a, false);
-        }
-        this.a.invalidate();
-        sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(1), 10L);
-        return;
+      this.jdField_a_of_type_Bcrv.a(BaseApplicationImpl.getContext(), System.currentTimeMillis());
+      if (this.jdField_a_of_type_Bcrx != null) {
+        this.jdField_a_of_type_Bcrx.a(true);
       }
-      sendMessageDelayed(SlideTabWidget.a(this.a).obtainMessage(2), 10L);
+    }
+    for (int i = 1;; i = 0)
+    {
+      if ((i == 0) && (this.jdField_a_of_type_Bcrx != null))
+      {
+        QLog.e("GroupCatalogTool", 1, "getChoiceListFromServer failed!");
+        this.jdField_a_of_type_Bcrx.a(false);
+      }
       return;
     }
-    SlideTabWidget.a(this.a, 1.0F);
-    SlideTabWidget.a(this.a, SlideTabWidget.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcrw
  * JD-Core Version:    0.7.0.1
  */

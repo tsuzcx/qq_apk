@@ -1,36 +1,25 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
+import android.widget.TextView;
 
-class orb
-  implements View.OnClickListener
+public class orb
+  extends RecyclerView.ViewHolder
 {
-  orb(ora paramora) {}
+  public View a;
+  public TextView a;
+  public TextView b;
   
-  public void onClick(View paramView)
+  public orb(oqy paramoqy, View paramView)
   {
-    int i = ((orc)paramView.getTag()).getAdapterPosition() - ora.a(this.a).c();
-    int j = this.a.getItemViewType(i);
-    ArticleInfo localArticleInfo = (ArticleInfo)ora.a(this.a, i);
-    if (localArticleInfo == null)
-    {
-      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onItemClick onClick articleInfo is null.");
-      return;
-    }
-    QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onItemClick, position = ", Integer.valueOf(i), ", itemViewType = ", Integer.valueOf(j) });
-    this.a.a(i, paramView);
-    localArticleInfo.invalidateProteusTemplateBean();
-    onh.a = localArticleInfo;
-    osg.a().a(localArticleInfo.mArticleID, System.currentTimeMillis());
-    this.a.notifyItemChanged(i);
-    onh.b(ora.a(this.a), localArticleInfo, (int)localArticleInfo.mChannelID);
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378677));
+    this.b = ((TextView)paramView.findViewById(2131378678));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131369433);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     orb
  * JD-Core Version:    0.7.0.1
  */

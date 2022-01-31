@@ -1,25 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashMap;
-
 public class asuk
-  extends astq
+  implements alkr
 {
-  public asuk(QQAppInterface paramQQAppInterface)
-  {
-    super(paramQQAppInterface);
-  }
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void a(asug paramasug, HashMap<String, ArrayList<MessageRecord>> paramHashMap, astt paramastt)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super.a(paramasug, paramHashMap, paramastt);
-    paramastt.a(0, 4, paramasug);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b(paramBoolean, ((Boolean)paramObject).booleanValue());
+      return;
+    }
+    a(paramBoolean, ((Boolean)paramObject).booleanValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asuk
  * JD-Core Version:    0.7.0.1
  */

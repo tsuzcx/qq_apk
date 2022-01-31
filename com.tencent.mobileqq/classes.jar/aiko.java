@@ -1,16 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Handler;
 
 class aiko
-  implements DialogInterface.OnClickListener
+  extends nac
 {
-  aiko(aikm paramaikm) {}
+  aiko(aikl paramaikl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if ((aikl.a(this.a).isFinishing()) || (this.a.a)) {
+      return;
+    }
+    this.a.d();
+    if (aikl.a(this.a) != null) {
+      aikl.a(this.a).removeCallbacks(aikl.b(this.a));
+    }
+    if (paramInt == 16)
+    {
+      this.a.e();
+      return;
+    }
+    aikl.a(this.a, aikl.a(this.a));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiko
  * JD-Core Version:    0.7.0.1
  */

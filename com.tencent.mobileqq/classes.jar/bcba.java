@@ -1,31 +1,52 @@
-import android.os.Bundle;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.DownloadListener;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 class bcba
-  implements DownloadListener
+  implements TextView.OnEditorActionListener
 {
-  bcba(bcaz parambcaz) {}
+  bcba(bcax parambcax, bcbd parambcbd) {}
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "start UniformDownloadActivity");
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramInt != 4) && (paramInt != 6))
+    {
+      bool1 = bool2;
+      if (paramKeyEvent != null)
+      {
+        bool1 = bool2;
+        if (66 == paramKeyEvent.getKeyCode())
+        {
+          bool1 = bool2;
+          if (paramKeyEvent.getAction() != 0) {}
+        }
+      }
     }
-    String str = this.a.mWebview.getUrl();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("_filesize", paramLong);
-    localBundle.putString("param_user_agent", paramString2);
-    localBundle.putString("param_content_des", paramString3);
-    localBundle.putString("param_mime_type", paramString4);
-    localBundle.putString("param_refer_url", str);
-    aoyd.a(this.a.mInActivity, paramString1, localBundle);
+    else
+    {
+      paramTextView = this.jdField_a_of_type_Bcbd.a.getEditableText().toString();
+      paramInt = this.jdField_a_of_type_Bcbd.a.getSelectionStart();
+      paramTextView = paramTextView.substring(0, paramInt);
+      paramTextView = this.jdField_a_of_type_Bcax.a(paramTextView);
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramTextView))
+      {
+        this.jdField_a_of_type_Bcbd.a.getEditableText().replace(paramInt, paramInt, "\n" + paramTextView);
+        this.jdField_a_of_type_Bcbd.a.setSelection(paramTextView.length() + paramInt + 1);
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcba
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,18 @@
-import android.content.DialogInterface.OnClickListener;
-
-class arkm
+public final class arkm
 {
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+  int jdField_a_of_type_Int;
   String jdField_a_of_type_JavaLangString;
-  String b;
+  boolean jdField_a_of_type_Boolean;
+  boolean b;
   
-  public arkm(arkj paramarkj, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  public arkm()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
+    this.a = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arkm
  * JD-Core Version:    0.7.0.1
  */

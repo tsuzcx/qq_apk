@@ -1,134 +1,170 @@
-import cooperation.qqreader.utils.QRDebugEnvUrlUtils;
-import java.util.HashMap;
-import java.util.Map;
+import android.os.Handler;
+import android.util.Pair;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.webkit.WebView;
+import com.tencent.qqmini.sdk.core.manager.ThreadManager;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.minigame.ui.VConsoleDragView;
+import com.tencent.qqmini.sdk.minigame.ui.VConsoleView;
+import com.tencent.qqmini.sdk.minigame.utils.VConsoleLogManager.3;
+import com.tencent.qqmini.sdk.minigame.utils.VConsoleLogManager.4;
+import java.util.concurrent.ArrayBlockingQueue;
 
-public final class bgwh
+public class bgwh
+  implements bgvx
 {
-  private static Map<String, String> a = new HashMap();
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new bgwj(this);
+  private View jdField_a_of_type_AndroidViewView;
+  private WebView jdField_a_of_type_AndroidWebkitWebView;
+  private VConsoleDragView jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView;
+  private VConsoleView jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView;
+  String jdField_a_of_type_JavaLangString = "file:///android_asset/mini/mini_vconsole.html";
+  private ArrayBlockingQueue jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue = new ArrayBlockingQueue(1000);
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
+  private boolean d;
   
-  static
+  private void a()
   {
-    a.put("qqreaderMan", "https://cdn.vip.qq.com/club/client/read/6/rel/index.html?isV2=1");
-    a.put("qqreaderWoman", "https://cdn.vip.qq.com/club/client/read/6/rel/index.html?isV2=1");
-    a.put("qqreaderPublish", "https://cdn.vip.qq.com/club/client/read/6/rel/index.html?isV2=1");
-    a.put("qqreaderBookShelfIndex", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_index.html");
-    a.put("qqreaderBookShelfBookList", "https://cdn.vip.qq.com/club/client/read/6/rel/man.html");
-    a.put("qqreaderBookShelfFm", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_fm.html");
-    a.put("qqreaderBookShelfFollow", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_follow.html");
-    a.put("qqreaderBookShelfDelete", "https://cdn.vip.qq.com/club/client/read/6/rel/bookShelf_delete.html");
-    a.put("qqreaderTribe", "https://cdn.vip.qq.com/club/client/read/6/rel/tribe.html");
-    a.put("qqreaderSearchResult", "https://cdn.vip.qq.com/club/client/read/6/rel/new_search.html");
-    a.put("qqreaderAccount", "https://cdn.vip.qq.com/club/client/read/6/rel/mine_index.html");
-    a.put("qqreaderAppdown", "https://cdn.vip.qq.com/club/client/read/6/rel/appdown.html");
-    a.put("qqreaderInteract", "https://cdn.vip.qq.com/club/client/read/6/rel/interact.html");
-    a.put("qqreaderComment", "https://cdn.vip.qq.com/club/client/read/6/rel/comment.html");
-    a.put("qqreaderReadover", "https://cdn.vip.qq.com/club/client/read/6/rel/readover.html");
-    a.put("qqreaderBookFont", "https://cdn.vip.qq.com/club/client/read/6/rel/bookFont.html");
-    a.put("qqreaderBookDetails", "https://cdn.vip.qq.com/club/client/read/6/rel/bookDetails.html");
-    a.put("qqreaderOffShelf", "https://cdn.vip.qq.com/club/client/read/6/rel/book_offShelf.html");
-    a.put("qqreaderBookOutDetail", "https://cdn.vip.qq.com/club/client/read/6/rel/book_outDetail.html");
-    a.put("qqreaderQQMoreState", "https://cdn.vip.qq.com/club/client/read/6/rel/userstate.html");
+    this.b = true;
+    for (Pair localPair = (Pair)this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.poll(); localPair != null; localPair = (Pair)this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.poll()) {
+      b((String)localPair.first, (String)localPair.second);
+    }
+    this.b = false;
   }
   
-  public static String a(String paramString)
+  private void a(String paramString)
   {
-    return a(paramString, true);
+    ThreadManager.c().post(new VConsoleLogManager.4(this, paramString));
   }
   
-  public static String a(String paramString, boolean paramBoolean)
+  private void a(boolean paramBoolean)
   {
-    Object localObject;
-    if (paramBoolean)
+    boolean bool = false;
+    this.c = paramBoolean;
+    a("javascript:showPannel()");
+    VConsoleView localVConsoleView;
+    if (this.d)
     {
-      localObject = d(paramString);
-      paramString = (String)localObject;
-      if (localObject == null) {
-        paramString = "https://cdn.vip.qq.com/club/client/read/6/rel/index.html";
-      }
-      localObject = new StringBuilder().append(paramString);
-      if (!paramString.contains("?")) {
-        break label170;
+      localVConsoleView = this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label63;
       }
     }
-    label170:
-    for (paramString = "&";; paramString = "?")
+    label63:
+    for (int i = 8;; i = 0)
     {
-      paramString = paramString;
-      localObject = paramString + "_bid=2036&refer=qqreader";
-      paramString = (String)localObject;
-      if (!((String)localObject).contains("&ChannelID=")) {
-        paramString = (String)localObject + "&ChannelID=" + bgwk.a();
+      localVConsoleView.setVisibility(i);
+      paramBoolean = bool;
+      if (!this.jdField_a_of_type_Boolean) {
+        paramBoolean = true;
       }
-      localObject = paramString;
-      if (QRDebugEnvUrlUtils.isDebugEnv()) {
-        localObject = QRDebugEnvUrlUtils.getTestUrl(paramString);
-      }
-      bgwf.e("ReaderUrlHelper", "getUrlWithBid = " + (String)localObject);
-      return localObject;
-      paramString = "https://cdn.vip.qq.com/club/client/read/6/rel/" + paramString;
-      break;
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      a();
+      return;
     }
   }
   
-  public static String b(String paramString)
+  private void b()
   {
-    String str;
-    if (paramString == null) {
-      str = a("index.html", false);
+    boolean bool1 = true;
+    boolean bool2 = false;
+    if ((this.jdField_a_of_type_AndroidWebkitWebView == null) || (this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView == null)) {
+      return;
     }
-    do
+    if (this.c)
     {
-      do
+      VConsoleView localVConsoleView = this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (int i = 8;; i = 0)
       {
-        return str;
-        str = paramString;
-      } while (paramString.toLowerCase().startsWith("http://"));
-      str = paramString;
-    } while (paramString.toLowerCase().startsWith("file://"));
-    return c(paramString);
-  }
-  
-  public static String c(String paramString)
-  {
-    if ((paramString != null) && (!paramString.equals(""))) {
-      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        String str = paramString;
-        if (QRDebugEnvUrlUtils.isDebugEnv()) {
-          str = QRDebugEnvUrlUtils.getTestUrl(paramString);
+        localVConsoleView.setVisibility(i);
+        bool1 = bool2;
+        if (!this.jdField_a_of_type_Boolean) {
+          bool1 = true;
         }
-        return str;
+        this.jdField_a_of_type_Boolean = bool1;
+        this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView.bringToFront();
+        return;
       }
     }
-    for (paramString = a(paramString, false);; paramString = a("index.html", false)) {
-      return paramString;
-    }
-  }
-  
-  private static String d(String paramString)
-  {
-    String str2 = null;
-    String str1;
-    if ((bguu.a != null) && (bguu.a.size() > 0)) {
-      str1 = (String)bguu.a.get(paramString);
-    }
+    if (!this.jdField_a_of_type_Boolean) {}
     for (;;)
     {
-      bgwf.d("ReaderUrlHelper", "getUrl = " + str1);
-      return str1;
-      if (bguu.a != null) {
-        str2 = (String)bguu.a.get(paramString);
+      this.d = bool1;
+      break;
+      bool1 = false;
+    }
+  }
+  
+  private void b(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_AndroidWebkitWebView == null)
+    {
+      QMLog.e("[minigame] VConsoleLogManager", "consoleWebView is not ready");
+      return;
+    }
+    ThreadManager.c().post(new VConsoleLogManager.3(this, paramString1, paramString2));
+  }
+  
+  public void a(VConsoleView paramVConsoleView, VConsoleDragView paramVConsoleDragView, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleView = paramVConsoleView;
+    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView = paramVConsoleDragView;
+    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView.bringToFront();
+    this.jdField_a_of_type_ComTencentQqminiSdkMinigameUiVConsoleDragView.setListener(this);
+    this.jdField_a_of_type_AndroidWebkitWebView = paramVConsoleView.jdField_a_of_type_AndroidWebkitWebView;
+    this.jdField_a_of_type_AndroidWebkitWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWebkitWebView.setWebViewClient(new bgwi(this));
+    this.jdField_a_of_type_Boolean = false;
+    paramVConsoleView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_AndroidViewView = paramVConsoleView.jdField_a_of_type_AndroidWidgetImageView;
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    if (paramBoolean) {
+      b();
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    String str = paramString2.replace("\n", "\\r\\n").replace("\\\"", "\"").replace("\"", "\\\"");
+    paramString2 = str;
+    if (str.endsWith("\\")) {
+      paramString2 = str + "\\";
+    }
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue == null) {
+        this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue = new ArrayBlockingQueue(1000);
       }
-      str1 = str2;
-      if (str2 == null) {
-        str1 = (String)a.get(paramString);
+      if (this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.size() == 1000) {
+        this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.poll();
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentArrayBlockingQueue.add(new Pair(paramString1, paramString2));
+      if ((this.c) && (!this.b)) {
+        a();
       }
     }
+    catch (Throwable paramString1)
+    {
+      for (;;)
+      {
+        QMLog.e("[minigame] VConsoleLogManager", "injectLog error", paramString1);
+      }
+    }
+    finally {}
+  }
+  
+  public void d()
+  {
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgwh
  * JD-Core Version:    0.7.0.1
  */

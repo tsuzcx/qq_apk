@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver.1;
-import java.util.Observable;
-import java.util.Observer;
-import mqq.os.MqqHandler;
-
-public abstract class bgjg
-  implements Observer
+public class bgjg
 {
-  public abstract void a();
+  private static volatile bgjg jdField_a_of_type_Bgjg;
+  private static volatile byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   
-  public final void update(Observable paramObservable, Object paramObject)
+  public static bgjg a()
   {
-    ThreadManager.getUIHandler().post(new QQComicRedTouchManager.PluginRedTouchObserver.1(this));
+    if (jdField_a_of_type_Bgjg == null) {}
+    synchronized (jdField_a_of_type_ArrayOfByte)
+    {
+      if (jdField_a_of_type_Bgjg == null) {
+        jdField_a_of_type_Bgjg = new bgjg();
+      }
+      return jdField_a_of_type_Bgjg;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgjg
  * JD-Core Version:    0.7.0.1
  */

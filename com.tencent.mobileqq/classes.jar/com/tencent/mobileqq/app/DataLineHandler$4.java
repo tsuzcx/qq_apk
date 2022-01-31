@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.app;
 
-import ajum;
+import allz;
 import java.util.TimerTask;
 
 public class DataLineHandler$4
   extends TimerTask
 {
-  public DataLineHandler$4(ajum paramajum) {}
+  public DataLineHandler$4(allz paramallz) {}
   
   public void run()
   {

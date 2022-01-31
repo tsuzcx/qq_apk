@@ -1,46 +1,26 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
 
-public class sjb
-  extends RecyclerView.ItemDecoration
+class sjb
+  implements bhqd
 {
-  private final int a = actj.a(4.0F, BaseApplicationImpl.getApplication().getResources());
+  sjb(siw paramsiw, bhpy parambhpy) {}
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void OnClick(View paramView, int paramInt)
   {
-    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    paramView = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
-    int i = paramView.getSpanIndex();
-    if (paramView.isFullSpan())
+    this.jdField_a_of_type_Bhpy.dismiss();
+    switch (paramInt)
     {
-      paramRect.left = 0;
-      paramRect.right = 0;
     }
-    for (;;)
+    do
     {
-      paramRect.bottom = this.a;
       return;
-      if (i % 2 == 0)
-      {
-        paramRect.left = 0;
-        paramRect.right = (this.a / 2);
-      }
-      else
-      {
-        paramRect.left = (this.a / 2);
-        paramRect.right = 0;
-      }
-    }
+    } while ((!siw.b(this.jdField_a_of_type_Siw)) || (!siw.a(this.jdField_a_of_type_Siw, "deleteFeeds")));
+    scq.a(siw.a(this.jdField_a_of_type_Siw), siw.a(this.jdField_a_of_type_Siw));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sjb
  * JD-Core Version:    0.7.0.1
  */

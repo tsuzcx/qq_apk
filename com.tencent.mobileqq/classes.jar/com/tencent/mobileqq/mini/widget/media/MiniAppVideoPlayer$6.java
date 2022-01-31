@@ -1,24 +1,52 @@
 package com.tencent.mobileqq.mini.widget.media;
 
-import android.widget.ImageView;
-import com.tencent.mobileqq.mini.util.ImageUtil;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 class MiniAppVideoPlayer$6
-  implements MediaUtils.OnLoadVideoImageListener
+  implements TVK_SDKMgr.OnLogListener
 {
   MiniAppVideoPlayer$6(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
   
-  public void onLoadImage(File paramFile)
+  public int d(String paramString1, String paramString2)
   {
-    if ((MiniAppVideoPlayer.access$2500(this.this$0) != null) && (paramFile != null)) {
-      MiniAppVideoPlayer.access$2500(this.this$0).setImageBitmap(ImageUtil.getLocalBitmap(paramFile.getAbsolutePath()));
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppVideoPlayer_TVK_IMediaPlayer", 2, paramString2);
     }
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    QLog.e("MiniAppVideoPlayer_TVK_IMediaPlayer", 1, paramString2);
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniAppVideoPlayer_TVK_IMediaPlayer", 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MiniAppVideoPlayer_TVK_IMediaPlayer", 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    QLog.w("MiniAppVideoPlayer_TVK_IMediaPlayer", 1, paramString2);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.media.MiniAppVideoPlayer.6
  * JD-Core Version:    0.7.0.1
  */

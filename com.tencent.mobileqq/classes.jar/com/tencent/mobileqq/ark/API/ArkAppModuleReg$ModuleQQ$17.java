@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ark.API;
 
-import alpe;
 import android.content.Intent;
 import android.os.Bundle;
+import anfv;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ArkAppModuleReg$ModuleQQ$17
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$17(alpe paramalpe, int paramInt, ArrayList paramArrayList) {}
+  public ArkAppModuleReg$ModuleQQ$17(anfv paramanfv, int paramInt, ArrayList paramArrayList) {}
   
   public void run()
   {
@@ -31,7 +31,7 @@ public class ArkAppModuleReg$ModuleQQ$17
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ.17
  * JD-Core Version:    0.7.0.1
  */

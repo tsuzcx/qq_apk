@@ -1,6 +1,6 @@
 package dov.com.qq.im.ptv;
 
-import ajya;
+import alpo;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -16,25 +16,25 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bcql;
-import bjal;
-import bjpq;
-import bjqw;
-import bjqz;
-import bjrk;
-import bjrl;
-import bjrm;
+import bllv;
+import bmba;
+import bmcg;
+import bmcj;
+import bmcu;
+import bmcv;
+import bmcw;
 import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import dov.com.tencent.mobileqq.activity.richmedia.FlowActivity;
 
 @TargetApi(14)
 public class PtvSoDownloadActivity
   extends FlowActivity
-  implements bjqz, bjrk, bjrl
+  implements bmcj, bmcu, bmcv
 {
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  bjrm jdField_a_of_type_Bjrm;
+  bmcw jdField_a_of_type_Bmcw;
   private String jdField_a_of_type_JavaLangString;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -72,7 +72,7 @@ public class PtvSoDownloadActivity
   
   public AppInterface a()
   {
-    return bjal.a();
+    return bllv.a();
   }
   
   public void a()
@@ -102,12 +102,12 @@ public class PtvSoDownloadActivity
       ((RelativeLayout.LayoutParams)localObject2).addRule(2, paramViewGroup.getId());
       localObject1 = new RelativeLayout(this);
       ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_Bjrm.a());
-      localObject2 = (ViewGroup)a(2131366472);
+      ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_Bmcw.a());
+      localObject2 = (ViewGroup)$(2131366578);
       if (this.c)
       {
         ImageView localImageView = new ImageView(this);
-        localImageView.setImageResource(2130843771);
+        localImageView.setImageResource(2130844114);
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
         localLayoutParams.addRule(2, paramViewGroup.getId());
         localImageView.setLayoutParams(localLayoutParams);
@@ -118,15 +118,10 @@ public class PtvSoDownloadActivity
     }
   }
   
-  public boolean a()
-  {
-    return false;
-  }
-  
   public void b()
   {
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_JavaLangString = bjpq.class.getName();
+      this.jdField_a_of_type_JavaLangString = bmba.class.getName();
     }
     if (this.jdField_a_of_type_AndroidOsBundle != null) {
       if (this.jdField_b_of_type_Boolean)
@@ -148,16 +143,21 @@ public class PtvSoDownloadActivity
   public void finish()
   {
     super.finish();
-    if (this.jdField_a_of_type_Bjrm != null) {
-      this.jdField_a_of_type_Bjrm.s();
+    if (this.jdField_a_of_type_Bmcw != null) {
+      this.jdField_a_of_type_Bmcw.s();
     }
+  }
+  
+  public boolean isWrapContent()
+  {
+    return false;
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.jdField_a_of_type_Bjrm != null) {
-      this.jdField_a_of_type_Bjrm.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Bmcw != null) {
+      this.jdField_a_of_type_Bmcw.a(paramInt1, paramInt2, paramIntent);
     }
     if (this.jdField_b_of_type_Boolean)
     {
@@ -168,27 +168,27 @@ public class PtvSoDownloadActivity
   
   public void onBackPressed()
   {
-    if (this.jdField_a_of_type_Bjrm != null) {
-      this.jdField_a_of_type_Bjrm.a();
+    if (this.jdField_a_of_type_Bmcw != null) {
+      this.jdField_a_of_type_Bmcw.a();
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.getWindow().addFlags(128);
-    this.ac = true;
-    this.ad = false;
+    this.mNeedStatusTrans = true;
+    this.mActNeedImmersive = false;
     this.c = getIntent().getBooleanExtra("flow_camera_show_panel", false);
     if (!this.c) {
-      getWindow().setBackgroundDrawableResource(2130843771);
+      getWindow().setBackgroundDrawableResource(2130844114);
     }
-    this.d = g();
-    this.jdField_a_of_type_Bjrm = new bjqw(this, this);
+    this.d = isInMultiWindow();
+    this.jdField_a_of_type_Bmcw = new bmcg(this, this);
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_Bjrm.a(paramBundle);
+    this.jdField_a_of_type_Bmcw.a(paramBundle);
     if (this.d)
     {
-      bcql.a(this, ajya.a(2131708739), 0).a();
+      QQToast.a(this, alpo.a(2131709111), 0).a();
       finish();
     }
     do
@@ -207,15 +207,15 @@ public class PtvSoDownloadActivity
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Bjrm != null) {
-      this.jdField_a_of_type_Bjrm.e();
+    if (this.jdField_a_of_type_Bmcw != null) {
+      this.jdField_a_of_type_Bmcw.e();
     }
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_Bjrm != null) {
-      return this.jdField_a_of_type_Bjrm.a(paramInt, paramKeyEvent, super.onKeyDown(paramInt, paramKeyEvent));
+    if (this.jdField_a_of_type_Bmcw != null) {
+      return this.jdField_a_of_type_Bmcw.a(paramInt, paramKeyEvent, super.onKeyDown(paramInt, paramKeyEvent));
     }
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
@@ -224,62 +224,62 @@ public class PtvSoDownloadActivity
   {
     super.onNewIntent(paramIntent);
     getIntent().putExtras(paramIntent);
-    if (this.jdField_a_of_type_Bjrm != null) {
-      this.jdField_a_of_type_Bjrm.a(paramIntent);
+    if (this.jdField_a_of_type_Bmcw != null) {
+      this.jdField_a_of_type_Bmcw.a(paramIntent);
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    if (this.jdField_a_of_type_Bjrm != null) {
-      this.jdField_a_of_type_Bjrm.d();
+    if (this.jdField_a_of_type_Bmcw != null) {
+      this.jdField_a_of_type_Bmcw.d();
     }
   }
   
   public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Bjrm != null) {
-      this.jdField_a_of_type_Bjrm.f();
+    if (this.jdField_a_of_type_Bmcw != null) {
+      this.jdField_a_of_type_Bmcw.f();
     }
   }
   
   protected void onSaveInstanceState(Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
-    if (this.jdField_a_of_type_Bjrm != null) {
-      this.jdField_a_of_type_Bjrm.b(paramBundle);
+    if (this.jdField_a_of_type_Bmcw != null) {
+      this.jdField_a_of_type_Bmcw.b(paramBundle);
     }
   }
   
   public void onStart()
   {
     super.onStart();
-    if (this.jdField_a_of_type_Bjrm != null) {
-      this.jdField_a_of_type_Bjrm.p();
+    if (this.jdField_a_of_type_Bmcw != null) {
+      this.jdField_a_of_type_Bmcw.p();
     }
   }
   
   public void onStop()
   {
     super.onStop();
-    if (this.jdField_a_of_type_Bjrm != null) {
-      this.jdField_a_of_type_Bjrm.t();
+    if (this.jdField_a_of_type_Bmcw != null) {
+      this.jdField_a_of_type_Bmcw.t();
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Bjrm != null) {
-      return this.jdField_a_of_type_Bjrm.a(paramMotionEvent, b(paramMotionEvent));
+    if (this.jdField_a_of_type_Bmcw != null) {
+      return this.jdField_a_of_type_Bmcw.a(paramMotionEvent, b(paramMotionEvent));
     }
     return b(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ptv.PtvSoDownloadActivity
  * JD-Core Version:    0.7.0.1
  */

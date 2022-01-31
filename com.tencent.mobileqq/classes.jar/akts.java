@@ -1,23 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
 class akts
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  akts(aktr paramaktr, String paramString) {}
+  akts(aktr paramaktr) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString), 120);
-    paramView.a();
-    tvc.a(this.jdField_a_of_type_Aktr.a, paramView.a(), null);
+    if (aktr.a(this.a) == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if ("android.intent.action.SCREEN_ON".equals(paramIntent.getAction()))
+        {
+          if (aktr.a(this.a))
+          {
+            aktr.a(this.a).runRenderTask(aktr.a(this.a));
+            return;
+          }
+          aktr.a(this.a);
+          return;
+        }
+      } while (!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()));
+      if (!aktr.a(this.a)) {
+        break;
+      }
+    } while (aktr.a(this.a) == null);
+    aktr.a(this.a).runRenderTask(aktr.b(this.a));
+    return;
+    aktr.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akts
  * JD-Core Version:    0.7.0.1
  */

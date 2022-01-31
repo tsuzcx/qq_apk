@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.8.1;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class aucd
-  implements aubq
+class aucd
+  implements Handler.Callback
 {
-  public aucd(ScanOcrActivity paramScanOcrActivity) {}
+  aucd(aucc paramaucc) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.runOnUiThread(new ScanOcrActivity.8.1(this, paramString, paramInt, paramOcrRecogResult, paramLong));
+    aucc.a(this.a, paramMessage);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aucd
  * JD-Core Version:    0.7.0.1
  */

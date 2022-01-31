@@ -5,7 +5,6 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.qqlive.tvkplayer.TVideoMgr;
 import com.tencent.qqlive.tvkplayer.thirdparties.LocalCache;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKHandlerThreadPool;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKLogUtil;
@@ -16,8 +15,6 @@ import com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerVideoInfo;
 import com.tencent.qqlive.tvkplayer.vinfo.TVKUserInfo;
 import com.tencent.qqlive.tvkplayer.vinfo.api.ITVKLiveInfoGetter;
 import com.tencent.qqlive.tvkplayer.vinfo.api.ITVKLiveInfoGetter.OnGetLiveInfoListener;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.Map;
 
 public class TVKLiveInfoGetter
@@ -206,38 +203,6 @@ public class TVKLiveInfoGetter
     return i;
   }
   
-  public static String urlAddGeneralKey(String paramString)
-  {
-    Object localObject = paramString;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      localObject = new StringBuilder(paramString);
-      if (!paramString.contains("?")) {
-        ((StringBuilder)localObject).append("?");
-      }
-      if (paramString.contains("guid=")) {}
-    }
-    try
-    {
-      ((StringBuilder)localObject).append("&guid=").append(URLEncoder.encode(TVideoMgr.getStaGuid(), "UTF-8"));
-      if (!paramString.contains("platform")) {
-        ((StringBuilder)localObject).append("&platform=").append(TVideoMgr.getVinfoPlatform());
-      }
-      if (!paramString.contains("newplatform")) {
-        ((StringBuilder)localObject).append("&newplatform=").append(TVideoMgr.getVinfoPlatform());
-      }
-      localObject = ((StringBuilder)localObject).toString();
-      return localObject;
-    }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException)
-    {
-      for (;;)
-      {
-        TVKLogUtil.e(TAG, localUnsupportedEncodingException);
-      }
-    }
-  }
-  
   public void cancel()
   {
     this.mLiveInfoCallBack.cancel();
@@ -296,6 +261,7 @@ public class TVKLiveInfoGetter
         paramTVKPlayerVideoInfo.setStreamFormat(paramInt);
         paramTVKPlayerVideoInfo.setDolby(paramBoolean);
         paramTVKPlayerVideoInfo.setExtraPara(this.mExtraPara);
+        paramTVKPlayerVideoInfo.setVideoInfo(this.mVideoInfo);
         new TVKLiveInfoRequest(i, paramTVKUserInfo, this.mProgramId, paramString, this.mLiveInfoCallBack, paramTVKPlayerVideoInfo).execute();
         return i;
       }
@@ -339,7 +305,7 @@ public class TVKLiveInfoGetter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.live.TVKLiveInfoGetter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,28 @@
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import pb.unite.search.RequestSearchWord.Rcmd;
+import com.tencent.TMG.sdk.AVVideoCtrl.RemoteVideoPreviewCallback;
+import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
+import com.tencent.mobileqq.apollo.AVCameraCaptureModel.1.2.1;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public abstract interface akja
+public class akja
+  extends AVVideoCtrl.RemoteVideoPreviewCallback
 {
-  public abstract void a(PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField);
+  akja(akiy paramakiy) {}
+  
+  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  {
+    Object localObject = akro.a(akix.a(this.a.a));
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = ((aktr)localObject).a();
+    } while (localObject == null);
+    ((ApolloSurfaceView)localObject).queueEvent(new AVCameraCaptureModel.1.2.1(this, paramVideoFrame, (ApolloSurfaceView)localObject));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akja
  * JD-Core Version:    0.7.0.1
  */

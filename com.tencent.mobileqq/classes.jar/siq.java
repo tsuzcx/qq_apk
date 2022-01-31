@@ -1,15 +1,12 @@
-import java.util.HashMap;
-import java.util.Map;
-
-public class siq
+public abstract interface siq
 {
-  private static final Map<String, Object> a = new HashMap();
+  public abstract void a(int paramInt);
   
-  public static void a() {}
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     siq
  * JD-Core Version:    0.7.0.1
  */

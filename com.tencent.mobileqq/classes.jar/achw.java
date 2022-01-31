@@ -1,21 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.os.AsyncTask;
+import android.os.Handler;
+import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class achw
-  implements DialogInterface.OnClickListener
+class achw
+  extends AsyncTask<MessageRecord, Object, Object>
 {
-  public achw(TroopInfoActivity paramTroopInfoActivity) {}
+  achw(achv paramachv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected Object a(MessageRecord... paramVarArgs)
   {
-    paramDialogInterface.dismiss();
-    this.a.i();
+    if (this.a.a.d) {
+      if (this.a.a.jdField_a_of_type_Awdi != null) {
+        this.a.a.jdField_a_of_type_Awdi.a(paramVarArgs[0], true);
+      }
+    }
+    for (;;)
+    {
+      if ((paramVarArgs[0] instanceof MessageForApollo)) {
+        akwk.a(this.a.a.app, "chat_history_start_del_msg");
+      }
+      return null;
+      this.a.a.app.a().a(paramVarArgs[0], true);
+    }
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    super.onPostExecute(paramObject);
+    this.a.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    if ((this.a.a.jdField_a_of_type_Bepp != null) && (this.a.a.jdField_a_of_type_Bepp.isShowing())) {
+      this.a.a.jdField_a_of_type_Bepp.dismiss();
+    }
+    if (this.a.a.d) {
+      this.a.a.a(11, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achw
  * JD-Core Version:    0.7.0.1
  */

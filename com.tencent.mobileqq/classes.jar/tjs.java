@@ -1,22 +1,23 @@
-import com.tencent.biz.qqstory.database.HotSortVideoEntry;
-import java.util.ArrayList;
+import UserGrowth.stWeishiReportRsp;
 
-public class tjs
-  extends ssh
+final class tjs
+  implements tgt
 {
-  public ArrayList<HotSortVideoEntry> a;
-  public boolean a;
-  public boolean b;
-  public boolean c;
+  tjs(String paramString) {}
   
-  public String toString()
+  public void a(the paramthe)
   {
-    return " GetVideoByHotSortEvent " + super.toString();
+    tlo.b("weishi-report", "report " + this.a + " start...");
+    if ((paramthe != null) && (paramthe.a != null) && ((paramthe.a instanceof stWeishiReportRsp)))
+    {
+      paramthe = (stWeishiReportRsp)paramthe.a;
+      tlo.b("weishi-report", "report" + this.a + "end: " + paramthe.code + paramthe.msg);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tjs
  * JD-Core Version:    0.7.0.1
  */

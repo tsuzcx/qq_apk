@@ -1,85 +1,73 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.util.HandlerPlus;
-import mqq.observer.BusinessObserver;
 
 public class bcys
-  implements BusinessObserver
 {
-  public bcys(AuthorityActivity paramAuthorityActivity) {}
+  private static int a = -1;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public static void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorityActivity", 2, "getAppInfo observer onReceive isSuccess = " + paramBoolean);
-    }
-    aqgj.a("KEY_GET_APP_INFO_REQUEST", this.a.jdField_a_of_type_Bdnp, paramBoolean);
-    AuthorityActivity.c(this.a).jdField_a_of_type_Long = (System.currentTimeMillis() - AuthorityActivity.c(this.a).jdField_a_of_type_Long);
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.a.jdField_a_of_type_Bdnp.jdField_a_of_type_JavaLangString.equals(localObject)) {
-      QLog.e("AuthorityActivity", 1, "mAccount.uin != ssoAccount");
-    }
-    do
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
+      a = i;
+      if (QLog.isColorLevel()) {
+        QLog.d("NoDisturbUtil", 2, new Object[] { "setMuteStat:", Integer.valueOf(a) });
+      }
       return;
-      this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    } while (!paramBoolean);
-    GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-    for (;;)
+    }
+  }
+  
+  public static boolean a(Context paramContext, AppInterface paramAppInterface)
+  {
+    return (!FriendsStatusUtil.a(paramContext)) || ((!paramAppInterface.isBackground_Pause) && (bczj.a(BaseApplicationImpl.sApplication)));
+  }
+  
+  public static boolean b(Context paramContext, AppInterface paramAppInterface)
+  {
+    boolean bool2 = true;
+    boolean bool3 = false;
+    aoiy localaoiy = (aoiy)aogj.a().a(528);
+    boolean bool1 = bool3;
+    if ((paramAppInterface instanceof QQAppInterface))
     {
-      try
+      bool1 = bool3;
+      if (localaoiy != null)
       {
-        byte[] arrayOfByte = paramBundle.getByteArray("data");
-        localObject = arrayOfByte;
-        if (!this.a.i) {
-          localObject = bdoo.b(arrayOfByte, this.a.jdField_a_of_type_Bdnp);
-        }
-        if (localObject == null) {
-          break;
-        }
-        localGetAppinfoResponse.mergeFrom((byte[])localObject);
-        if (!localGetAppinfoResponse.has()) {
-          break;
-        }
-        paramInt = localGetAppinfoResponse.ret.get();
-        if (paramInt == 0)
+        bool1 = bool3;
+        if (localaoiy.a == 1)
         {
-          localObject = this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.obtainMessage();
-          ((Message)localObject).what = 3;
-          ((Message)localObject).obj = localGetAppinfoResponse;
-          this.a.jdField_a_of_type_CooperationQqfavUtilHandlerPlus.sendMessage((Message)localObject);
-        }
-        localObject = new Bundle();
-        ((Bundle)localObject).putString("report_type", "103");
-        ((Bundle)localObject).putString("act_type", "12");
-        if (paramBundle.getBoolean("isShort", false))
-        {
-          paramBundle = "2";
-          ((Bundle)localObject).putString("intext_3", paramBundle);
-          ((Bundle)localObject).putString("stringext_1", AuthorityActivity.c(this.a).jdField_a_of_type_JavaLangString);
-          ((Bundle)localObject).putString("intext_2", "" + paramInt);
-          ((Bundle)localObject).putString("intext_5", "" + AuthorityActivity.c(this.a).jdField_a_of_type_Long);
-          bdes.a().a((Bundle)localObject, AuthorityActivity.e, this.a.jdField_a_of_type_JavaLangString, false);
-          return;
+          if (a != -1) {
+            break label87;
+          }
+          bool1 = SettingCloneUtil.readValue(paramContext, paramAppInterface.getCurrentAccountUin(), null, "qqsetting_qrlogin_set_mute", false);
+          if (!bool1) {
+            break label82;
+          }
         }
       }
-      catch (Exception paramBundle)
-      {
-        QLog.e("AuthorityActivity", 1, "getAppInfoResponse deal exception : " + paramBundle.getMessage());
-        paramBundle.printStackTrace();
-        return;
-      }
-      paramBundle = "1";
+    }
+    label82:
+    for (int i = 1;; i = 0)
+    {
+      a = i;
+      return bool1;
+    }
+    label87:
+    if (a == 1) {}
+    for (bool1 = bool2;; bool1 = false) {
+      return bool1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcys
  * JD-Core Version:    0.7.0.1
  */

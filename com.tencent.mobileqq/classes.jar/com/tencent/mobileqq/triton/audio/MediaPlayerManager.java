@@ -25,14 +25,32 @@ public class MediaPlayerManager
   
   public MediaPlayer dequeuePlayer()
   {
-    MediaPlayer localMediaPlayer2 = (MediaPlayer)this.realPlayers.poll();
-    MediaPlayer localMediaPlayer1 = localMediaPlayer2;
-    if (localMediaPlayer2 == null)
+    localObject1 = (MediaPlayer)this.realPlayers.poll();
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {}
+    try
     {
-      localMediaPlayer1 = new MediaPlayer();
-      TTLog.w("[audio] MediaPlayerManager", "new MediaPlayer on dequeue. " + localMediaPlayer1);
+      localObject2 = new MediaPlayer();
+      TTLog.e("[audio] MediaPlayerManager", "new MediaPlayer on dequeue - exception. ", localThrowable1);
     }
-    return localMediaPlayer1;
+    catch (Throwable localThrowable1)
+    {
+      try
+      {
+        TTLog.w("[audio] MediaPlayerManager", "new MediaPlayer on dequeue. " + localObject2);
+        return localObject2;
+      }
+      catch (Throwable localThrowable2)
+      {
+        for (;;)
+        {
+          localObject1 = localThrowable1;
+          Object localObject3 = localThrowable2;
+        }
+      }
+      localThrowable1 = localThrowable1;
+    }
+    return localObject1;
   }
   
   public void enqueuePlayer(MediaPlayer paramMediaPlayer)
@@ -44,7 +62,7 @@ public class MediaPlayerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.triton.audio.MediaPlayerManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,26 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
-import java.util.concurrent.ConcurrentHashMap;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class bksp
-  implements Comparable<bksp>
+class bksp
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a;
-  public long a;
-  public int b;
+  bksp(bksk parambksk) {}
   
-  public bksp(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
-    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
-  }
-  
-  public int a(bksp parambksp)
-  {
-    return -(int)(this.jdField_a_of_type_Long - parambksp.jdField_a_of_type_Long);
+    paramCompoundButton = bksk.d(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      paramCompoundButton.setVisibility(i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bksp
  * JD-Core Version:    0.7.0.1
  */

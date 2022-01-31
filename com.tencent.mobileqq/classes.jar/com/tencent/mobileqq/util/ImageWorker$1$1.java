@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.util;
 
 import android.graphics.drawable.Drawable;
-import bazn;
+import bcyh;
 
 class ImageWorker$1$1
   implements Runnable
@@ -15,7 +15,7 @@ class ImageWorker$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.ImageWorker.1.1
  * JD-Core Version:    0.7.0.1
  */

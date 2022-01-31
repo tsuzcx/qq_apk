@@ -1,24 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
 
 public class arsb
-  implements DialogInterface.OnDismissListener
+  extends arrv
 {
-  public arsb(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
+  public arsb(FlashChatTextEffectView paramFlashChatTextEffectView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void b(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((!ListenTogetherOverlayFragment.a(this.a)) && (!ListenTogetherOverlayFragment.a(this.a).isFinishing())) {
-      ListenTogetherOverlayFragment.a(this.a).finish();
+    super.b(paramBoolean, paramBundle);
+    if (paramBoolean) {
+      this.a.b();
     }
-    ListenTogetherOverlayFragment.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arsb
  * JD-Core Version:    0.7.0.1
  */

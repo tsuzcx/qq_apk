@@ -1,31 +1,48 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import android.view.animation.DecelerateInterpolator;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.intervideo.nowproxy.NowPluginObserver;
+import com.tencent.mobileqq.intervideo.now.dynamic.LoadingFragment;
 
-class aszr
-  extends AnimatorListenerAdapter
+public class aszr
+  implements NowPluginObserver
 {
-  aszr(aszq paramaszq, aszu paramaszu, URLDrawable paramURLDrawable) {}
+  public aszr(LoadingFragment paramLoadingFragment) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onCloseLoadingView()
   {
-    if (this.jdField_a_of_type_Aszq.a() != null)
-    {
-      this.jdField_a_of_type_Aszu.b.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
-      paramAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_Aszu.b, "alpha", new float[] { 0.2F, 1.0F });
-      paramAnimator.setInterpolator(new DecelerateInterpolator());
-      paramAnimator.setDuration(300L).start();
-      return;
+    FragmentActivity localFragmentActivity = this.a.getActivity();
+    if (localFragmentActivity != null) {
+      localFragmentActivity.finish();
     }
-    this.jdField_a_of_type_Aszu.b.setAlpha(1.0F);
+  }
+  
+  public void onEnterAvPlugin(Bundle paramBundle) {}
+  
+  public void onEnterRoom(Bundle paramBundle)
+  {
+    this.a.a();
+  }
+  
+  public void onExitRoom(Bundle paramBundle) {}
+  
+  public void onLoadingViewCreated(View paramView)
+  {
+    if (paramView != null)
+    {
+      this.a.getActivity();
+      FrameLayout localFrameLayout = (FrameLayout)this.a.getView();
+      if ((paramView != null) && (localFrameLayout != null)) {
+        localFrameLayout.addView(paramView, new FrameLayout.LayoutParams(-1, -1));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aszr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,10 @@
-class apnv
-  implements axof
+public abstract class apnv
 {
-  apnv(apnu paramapnu) {}
-  
-  public void a()
-  {
-    apug.a(this.a.a.a, this.a.a.c());
-  }
-  
-  public void b() {}
+  public void a(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apnv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,51 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.dataline.activities.LiteActivity;
-import com.dataline.activities.LiteActivity.9.1;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.dataline.util.file.DLFileInfo;
+import com.dataline.util.widget.AsyncImageView;
+import com.dataline.util.widget.WaitTextView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
 
 public class dq
-  implements View.OnTouchListener
+  implements Cloneable
 {
-  public dq(LiteActivity paramLiteActivity) {}
+  int jdField_a_of_type_Int;
+  public Button a;
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public DLFileInfo a;
+  public AsyncImageView a;
+  public WaitTextView a;
+  public TextView b;
+  public TextView c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public dq(dm paramdm) {}
+  
+  public Object clone()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(LiteActivity.jdField_a_of_type_JavaLangString, 2, "ontouch--fcc----: " + paramMotionEvent.getAction());
+    try
+    {
+      localObject = super.clone();
+      return localObject;
     }
-    this.a.q();
-    LiteActivity.a(this.a, false);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.postDelayed(new LiteActivity.9.1(this), 200L);
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.onTouch(paramView, paramMotionEvent);
-    return false;
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      do
+      {
+        Object localObject = this;
+      } while (!QLog.isColorLevel());
+      QLog.d("DatalineFilesAdapter", 2, "ItemHolder clone failed." + localCloneNotSupportedException.toString());
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dq
  * JD-Core Version:    0.7.0.1
  */

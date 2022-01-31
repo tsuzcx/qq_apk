@@ -1,27 +1,35 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgbackup.fragment.MsgBackupCompleteFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
+import java.io.InputStream;
 
-public class asmk
+class asmk
   implements DialogInterface.OnClickListener
 {
-  public asmk(MsgBackupCompleteFragment paramMsgBackupCompleteFragment) {}
+  asmk(asmj paramasmj, InputStream paramInputStream) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MsgBackupCompleteFragment.a(this.a);
-    if (MsgBackupCompleteFragment.a(this.a) == 1) {
-      asog.a("0X800A253", 5);
-    }
-    while ((MsgBackupCompleteFragment.a(this.a) != 4) || (!MsgBackupCompleteFragment.a(this.a))) {
+    try
+    {
+      this.jdField_a_of_type_JavaIoInputStream.close();
+      asmj.a(this.jdField_a_of_type_Asmj).finish();
       return;
     }
-    asog.a("0X800A267", 2);
+    catch (IOException paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("UriParserPathHelper", 1, "system share.exception.e=", paramDialogInterface);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asmk
  * JD-Core Version:    0.7.0.1
  */

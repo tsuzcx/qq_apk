@@ -1,67 +1,70 @@
-public class alpd
+import android.content.Context;
+import android.text.TextUtils;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.IPicDownloadListener;
+import com.tencent.mobileqq.mqsafeedit.MD5;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+
+final class alpd
+  extends bdvu
 {
-  private double jdField_a_of_type_Double;
-  private long jdField_a_of_type_Long;
-  private long b;
-  private long c;
+  alpd(String paramString, File paramFile, CustomEmotionData paramCustomEmotionData, boolean paramBoolean1, boolean paramBoolean2, apke paramapke, IPicDownloadListener paramIPicDownloadListener, List paramList1, List paramList2, Context paramContext, AtomicInteger paramAtomicInteger1, AtomicInteger paramAtomicInteger2) {}
   
-  public alpd(alpc paramalpc, long paramLong1, long paramLong2)
+  public void onDone(bdvv parambdvv)
   {
-    this.b = paramLong2;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_a_of_type_Double = paramLong1;
-    this.c = System.currentTimeMillis();
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Long == -1L) {
-      return true;
-    }
-    if (this.b > 0L)
+    super.onDone(parambdvv);
+    alpc.a.remove(this.jdField_a_of_type_JavaLangString);
+    if ((3 == parambdvv.a()) && (this.jdField_a_of_type_JavaIoFile.exists()))
     {
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_Double = Math.min(this.jdField_a_of_type_Double + (l - this.c) * this.jdField_a_of_type_Long / this.b, this.jdField_a_of_type_Long);
-      this.c = l;
-      if (this.jdField_a_of_type_Double >= 1.0D)
+      this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath = this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
+      if ("needDownload".equals(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType)) {
+        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.RomaingType = "isUpdate";
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId = "";
+      }
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath)))
       {
-        this.jdField_a_of_type_Double -= 1.0D;
-        return true;
+        parambdvv = MD5.getFileMd5(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath);
+        this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.md5 = HexUtil.bytes2HexStr(parambdvv);
+      }
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_Apke.b(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, true);
+      }
+      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      if (QLog.isColorLevel()) {
+        QLog.d("FunyPicHelper", 2, "update funnyPic eId->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId + " emoPath->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath + " download->sucess");
       }
     }
-    return false;
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    for (;;)
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get()) && (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onDone(this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList);
       }
-      paramObject = (alpd)paramObject;
-      if (this.jdField_a_of_type_Long != paramObject.jdField_a_of_type_Long) {
-        return false;
+      return;
+      this.jdField_b_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData);
+      if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingIPicDownloadListener.onFileDone(this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData, false);
       }
-    } while (this.b == paramObject.b);
-    return false;
-  }
-  
-  public int hashCode()
-  {
-    return (int)(this.jdField_a_of_type_Long ^ this.jdField_a_of_type_Long >>> 32) * 31 + (int)(this.b ^ this.b >>> 32);
-  }
-  
-  public String toString()
-  {
-    return String.format("TokenBucket:mTimes:%d,mPeriod:%d,mTokenCount:%f,mLastTimestamp:%d", new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b), Double.valueOf(this.jdField_a_of_type_Double), Long.valueOf(this.c) });
+      if (QLog.isColorLevel()) {
+        QLog.d("FunyPicHelper", 2, "update funnyPic eId->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.eId + " emoPath->" + this.jdField_a_of_type_ComTencentMobileqqDataCustomEmotionData.emoPath + " download->faile");
+      }
+      bdqr.a("emotionType", "emotionActionFav", "3", "", "", bdee.b(this.jdField_a_of_type_AndroidContentContext) + "", parambdvv.a + "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alpd
  * JD-Core Version:    0.7.0.1
  */

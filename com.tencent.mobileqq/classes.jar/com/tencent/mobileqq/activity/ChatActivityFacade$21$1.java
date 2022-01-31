@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity;
 
-import akpx;
-import amnr;
+import abot;
 import android.text.TextUtils;
-import askf;
+import aoep;
+import aube;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.Emoticon;
 import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.mobileqq.data.MessageForMarketFace;
@@ -14,7 +14,7 @@ import com.tencent.mobileqq.data.RecentEmotion;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
-import myb;
+import nav;
 
 class ChatActivityFacade$21$1
   implements Runnable
@@ -27,20 +27,20 @@ class ChatActivityFacade$21$1
     this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.msgVia = this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.c;
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.istroop == 1)
     {
-      myb.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace);
-      if (akpx.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) != 1032) {
+      nav.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace);
+      if (abot.a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) != 1032) {
         break label296;
       }
-      amnr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e);
+      aoep.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e);
     }
     for (;;)
     {
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, null);
-      askf localaskf = (askf)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
-      if (localaskf == null) {
+      aube localaube = (aube)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(14);
+      if (localaube == null) {
         break label376;
       }
-      Object localObject = localaskf.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+      Object localObject = localaube.a(this.this$0.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
       if ((localObject == null) || (((List)localObject).size() <= 0)) {
         break label376;
       }
@@ -55,19 +55,19 @@ class ChatActivityFacade$21$1
           localRecentEmotion.eId = this.this$0.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId;
           localRecentEmotion.keyword = str.toLowerCase();
           localRecentEmotion.exposeNum = 0;
-          localaskf.a(localRecentEmotion);
+          localaube.a(localRecentEmotion);
         }
       }
-      if (!myb.a().a) {
+      if (!nav.a().a) {
         break;
       }
-      myb.a().a = false;
+      nav.a().a = false;
       break;
       label296:
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.j) {
-        amnr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        aoep.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
       } else if (this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.k) {
-        amnr.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        aoep.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
       }
     }
     label376:
@@ -78,7 +78,7 @@ class ChatActivityFacade$21$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.21.1
  * JD-Core Version:    0.7.0.1
  */

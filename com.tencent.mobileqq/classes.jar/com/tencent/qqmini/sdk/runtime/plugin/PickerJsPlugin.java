@@ -1,15 +1,14 @@
 package com.tencent.qqmini.sdk.runtime.plugin;
 
 import android.text.TextUtils;
-import bekr;
-import bekz;
-import belh;
-import belj;
-import betc;
-import bfep;
-import bfes;
-import bfev;
+import bgkd;
+import bgkk;
+import bgkz;
+import bhen;
+import bheu;
+import bhfo;
 import com.tencent.qqmini.sdk.core.plugins.BaseJsPlugin;
+import com.tencent.qqmini.sdk.log.QMLog;
 import java.util.Calendar;
 import java.util.Date;
 import org.json.JSONException;
@@ -19,31 +18,15 @@ public class PickerJsPlugin
   extends BaseJsPlugin
 {
   private static final String TAG = "PickerJsPlugin";
-  private bfev mutiPickerView;
+  private bhfo mutiPickerView;
   
-  public void handleGetRegionData(bekr parambekr)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("data", belh.a(this.mContext, "mini/region"));
-      parambekr.a(localJSONObject);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      betc.d("PickerJsPlugin", "getRegionData exception: ", localJSONException);
-      parambekr.b();
-    }
-  }
-  
-  public void handleShowDatePickerView(bekr parambekr)
+  public void handleShowDatePickerView(bgkd parambgkd)
   {
     JSONObject localJSONObject;
     String str;
     try
     {
-      Object localObject2 = new JSONObject(parambekr.b);
+      Object localObject2 = new JSONObject(parambgkd.b);
       localJSONObject = ((JSONObject)localObject2).optJSONObject("range");
       str = ((JSONObject)localObject2).optString("current");
       Object localObject1 = str;
@@ -59,109 +42,109 @@ public class PickerJsPlugin
       localObject2 = ((JSONObject)localObject2).optString("fields");
       if ("date".equals(str))
       {
-        localObject1 = bfep.b((String)localObject1);
+        localObject1 = bhen.b((String)localObject1);
         if (localObject1 == null)
         {
-          parambekr.b();
+          parambgkd.b();
           return;
         }
-        bekz.a(new PickerJsPlugin.3(this, (Date)localObject1, (String)localObject2, parambekr, localJSONObject));
+        bgkk.a(new PickerJsPlugin.3(this, (Date)localObject1, (String)localObject2, parambgkd, localJSONObject));
         return;
       }
     }
     catch (JSONException localJSONException)
     {
-      betc.d("PickerJsPlugin", "showDatePickerView error.", localJSONException);
-      parambekr.b();
+      QMLog.e("PickerJsPlugin", "showDatePickerView error.", localJSONException);
+      parambgkd.b();
       return;
     }
     if ("time".equals(str)) {
-      bekz.a(new PickerJsPlugin.4(this, bfep.a(localJSONException), parambekr, localJSONObject));
+      bgkk.a(new PickerJsPlugin.4(this, bhen.a(localJSONException), parambgkd, localJSONObject));
     }
   }
   
-  public void handleShowMultiPickerView(bekr parambekr)
+  public void handleShowMultiPickerView(bgkd parambgkd)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambekr.b);
-      int[] arrayOfInt = belj.a(localJSONObject.optJSONArray("current"));
-      bekz.a(new PickerJsPlugin.2(this, belj.a(localJSONObject, "array"), arrayOfInt, parambekr));
+      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      int[] arrayOfInt = bgkz.a(localJSONObject.optJSONArray("current"));
+      bgkk.a(new PickerJsPlugin.2(this, bgkz.a(localJSONObject, "array"), arrayOfInt, parambgkd));
       return;
     }
     catch (JSONException localJSONException)
     {
-      betc.d("PickerJsPlugin", "showMultiPickerView error.", localJSONException);
-      parambekr.b();
+      QMLog.e("PickerJsPlugin", "showMultiPickerView error.", localJSONException);
+      parambgkd.b();
     }
   }
   
-  public void handleShowPickerView(bekr parambekr)
+  public void handleShowPickerView(bgkd parambgkd)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambekr.b);
-      bekz.a(new PickerJsPlugin.1(this, localJSONObject.optJSONArray("array"), localJSONObject.optInt("current", 0), parambekr));
+      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      bgkk.a(new PickerJsPlugin.1(this, localJSONObject.optJSONArray("array"), localJSONObject.optInt("current", 0), parambgkd));
       return;
     }
     catch (JSONException localJSONException)
     {
-      betc.d("PickerJsPlugin", "showPickerView error.", localJSONException);
-      parambekr.b();
+      QMLog.e("PickerJsPlugin", "showPickerView error.", localJSONException);
+      parambgkd.b();
     }
   }
   
-  public void handleUpdateMultiPickerView(bekr parambekr)
+  public void handleUpdateMultiPickerView(bgkd parambgkd)
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(parambekr.b);
-      bekz.a(new PickerJsPlugin.5(this, localJSONObject.optInt("column"), localJSONObject.optInt("current"), localJSONObject.optJSONArray("array"), parambekr));
+      JSONObject localJSONObject = new JSONObject(parambgkd.b);
+      bgkk.a(new PickerJsPlugin.5(this, localJSONObject.optInt("column"), localJSONObject.optInt("current"), localJSONObject.optJSONArray("array"), parambgkd));
       return;
     }
     catch (Exception localException)
     {
-      betc.d("PickerJsPlugin", "updateMultiPickerView error.", localException);
-      parambekr.b();
+      QMLog.e("PickerJsPlugin", "updateMultiPickerView error.", localException);
+      parambgkd.b();
     }
   }
   
-  protected void updateDataPickerFields(bfes parambfes, String paramString)
+  protected void updateDataPickerFields(bheu parambheu, String paramString)
   {
-    if (parambfes == null) {}
+    if (parambheu == null) {}
     do
     {
       return;
       if (TextUtils.isEmpty(paramString))
       {
-        parambfes.a(0);
-        parambfes.b(0);
-        parambfes.c(0);
+        parambheu.a(0);
+        parambheu.b(0);
+        parambheu.c(0);
         return;
       }
       if (paramString.equals("year"))
       {
-        parambfes.a(0);
-        parambfes.b(8);
-        parambfes.c(8);
+        parambheu.a(0);
+        parambheu.b(8);
+        parambheu.c(8);
         return;
       }
       if (paramString.equals("month"))
       {
-        parambfes.a(0);
-        parambfes.b(0);
-        parambfes.c(8);
+        parambheu.a(0);
+        parambheu.b(0);
+        parambheu.c(8);
         return;
       }
     } while (!paramString.equals("day"));
-    parambfes.a(0);
-    parambfes.b(0);
-    parambfes.c(0);
+    parambheu.a(0);
+    parambheu.b(0);
+    parambheu.c(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.plugin.PickerJsPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeMultiPicFragment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
-public class wqh
-  implements View.OnClickListener
+class wqh
+  extends SimpleJob<Void>
 {
-  public wqh(SubscribeMultiPicFragment paramSubscribeMultiPicFragment) {}
-  
-  public void onClick(View paramView)
+  wqh(wps paramwps, String paramString, List paramList)
   {
-    this.a.onBackEvent();
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    vjz.a();
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.toArray();
+    int j = paramJobContext.length;
+    int i = 0;
+    while (i < j)
+    {
+      vjz.a(paramJobContext[i].toString());
+      i += 1;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqh
  * JD-Core Version:    0.7.0.1
  */

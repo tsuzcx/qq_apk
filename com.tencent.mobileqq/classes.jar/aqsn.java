@@ -1,22 +1,13 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.gamecenter.fragment.QQGamePubAccountFragment;
+import android.os.Bundle;
 
-public class aqsn
-  implements View.OnTouchListener
+class aqsn
+  implements aqst
 {
-  public aqsn(QQGamePubAccountFragment paramQQGamePubAccountFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return this.a.a.onTouchEvent(paramMotionEvent);
-  }
+  aqsn(aqsl paramaqsl, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqsn
  * JD-Core Version:    0.7.0.1
  */

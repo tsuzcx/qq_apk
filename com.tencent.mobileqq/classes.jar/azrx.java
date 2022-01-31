@@ -1,100 +1,183 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.common.config.AppSetting;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import org.xmlpull.v1.XmlSerializer;
 
 public class azrx
-  implements aybz
+  extends azqj
 {
-  Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private azrw jdField_a_of_type_Azrw;
-  private bckq jdField_a_of_type_Bckq = new bckq();
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  List<bckp> jdField_a_of_type_JavaUtilList;
+  private String S = "";
+  public ArrayList<azqj> a;
   
-  public azrx(azrn paramazrn, QQAppInterface paramQQAppInterface, azrw paramazrw)
+  public azrx()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Azrw = paramazrw;
+    this.jdField_a_of_type_JavaLangString = "taglist";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  private void a(List<bckp> paramList, Canvas paramCanvas, Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3, Rect paramRect, int paramInt1, int paramInt2)
+  private LinearLayout a(Context paramContext)
   {
-    Object localObject = (bckp)paramList.get(0);
-    if (((bckp)localObject).c == 3)
+    paramContext = new LinearLayout(paramContext);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
+    paramContext.setOrientation(0);
+    paramContext.setLayoutParams(localLayoutParams);
+    paramContext.setId(2131362331);
+    if (AppSetting.c) {
+      paramContext.setContentDescription(this.S);
+    }
+    return paramContext;
+  }
+  
+  public View a(Context paramContext, View paramView, Bundle paramBundle)
+  {
+    Object localObject = paramContext.getResources();
+    int i;
+    if (paramView != null)
     {
-      localObject = (bbpl)((bckp)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle;
-      if (((bbpl)localObject).a == 2) {
-        paramPaint.setColor(((bbpl)localObject).b);
+      paramBundle = paramView;
+      if ((paramView instanceof LinearLayout))
+      {
+        localObject = (LinearLayout)paramView;
+        i = 0;
+        for (;;)
+        {
+          paramBundle = paramView;
+          if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+            break;
+          }
+          ((azqj)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramContext, ((LinearLayout)localObject).getChildAt(i), null);
+          i += 1;
+        }
       }
     }
     else
     {
-      paramList = paramList.iterator();
+      paramView = a(paramContext);
+      paramView.setPadding(aekt.a(12.0F, (Resources)localObject), 0, aekt.a(12.0F, (Resources)localObject), 0);
+      i = 0;
+      int j = 1;
+      paramBundle = paramView;
+      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        paramBundle = ((azqj)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramContext, null, null);
+        if (j == 0)
+        {
+          LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramBundle.getLayoutParams();
+          localLayoutParams.setMargins(aekt.a(2.0F, (Resources)localObject), 0, 0, 0);
+          paramView.addView(paramBundle, localLayoutParams);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          paramView.addView(paramBundle);
+          j = 0;
+        }
+      }
+    }
+    return paramBundle;
+  }
+  
+  public String a()
+  {
+    return "taglist";
+  }
+  
+  public void a(azqj paramazqj)
+  {
+    if ((paramazqj instanceof azrw)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramazqj);
+    }
+  }
+  
+  public void a(ObjectInput paramObjectInput)
+  {
+    super.a(paramObjectInput);
+    int j = paramObjectInput.readInt();
+    int i = 0;
+    while (i < j)
+    {
+      azqj localazqj = azqt.a(paramObjectInput.readUTF());
+      if (localazqj != null)
+      {
+        localazqj.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+        localazqj.a(paramObjectInput);
+        a(localazqj);
+      }
+      i += 1;
+    }
+  }
+  
+  public void a(ObjectOutput paramObjectOutput)
+  {
+    super.a(paramObjectOutput);
+    paramObjectOutput.writeInt(this.jdField_a_of_type_JavaUtilArrayList.size());
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((azqj)localIterator.next()).a(paramObjectOutput);
+    }
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, this.jdField_a_of_type_JavaLangString);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((azqj)localIterator.next()).a(paramXmlSerializer);
+    }
+    paramXmlSerializer.endTag(null, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean a(azsa paramazsa)
+  {
+    if (paramazsa == null) {
+      return true;
+    }
+    int j = paramazsa.a();
+    int i = 0;
+    label13:
+    azsa localazsa;
+    if (i < j)
+    {
+      localazsa = paramazsa.a(i);
+      if (localazsa != null) {
+        break label37;
+      }
     }
     for (;;)
     {
-      if (!paramList.hasNext()) {
-        break label275;
+      i += 1;
+      break label13;
+      break;
+      label37:
+      azqj localazqj = null;
+      if ("tag".equals(localazsa.b)) {
+        localazqj = azqt.a(localazsa.b);
       }
-      paramRect = (bckp)paramList.next();
-      switch (paramRect.c)
-      {
-      default: 
-        break;
-      case 1: 
-        paramCanvas.drawText(paramRect.jdField_a_of_type_JavaLangString, paramFloat1, paramFloat2 + paramFloat3, paramPaint);
-        paramFloat1 += paramPaint.measureText(paramRect.jdField_a_of_type_JavaLangString);
-        continue;
-        if (((bbpl)localObject).a != 3) {
-          break;
-        }
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-        if (!(localAppRuntime instanceof QQAppInterface)) {
-          break;
-        }
-        paramPaint.setShader(bbos.a((QQAppInterface)localAppRuntime).a(((bbpl)localObject).b, paramList, paramFloat1, paramFloat2, paramRect, paramPaint, paramInt1, paramInt2));
-        break;
-      case 2: 
-        paramRect = (aykr)paramRect.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        paramInt1 = paramRect.a().getBounds().height();
-        paramRect.draw(paramCanvas, "", 0, 0, paramFloat1, (int)paramFloat2, (int)(paramInt1 + paramFloat2), (int)(paramInt1 + paramFloat2), paramPaint);
-        paramFloat1 += paramRect.a().getBounds().width();
+      if (localazqj == null) {
+        return false;
       }
+      if (!localazqj.a(localazsa)) {
+        break label89;
+      }
+      a(localazqj);
     }
-    label275:
-    paramPaint.setShader(null);
-  }
-  
-  public int a(int paramInt1, int paramInt2, int paramInt3, String paramString, Paint paramPaint)
-  {
-    return bbos.a(this.jdField_a_of_type_JavaUtilList, paramPaint, this.jdField_a_of_type_AndroidGraphicsRect);
-  }
-  
-  public String a(aybf paramaybf, String paramString)
-  {
-    return paramString.replace("$NICK$", bbcz.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Azrw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Azrw.b, 1, 0));
-  }
-  
-  public void a(int paramInt, String paramString, Paint paramPaint)
-  {
-    this.jdField_a_of_type_JavaUtilList = bbos.a(paramInt, paramString, paramPaint, this.jdField_a_of_type_Bckq, 32);
-  }
-  
-  public boolean a(Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt1, int paramInt2, Paint paramPaint)
-  {
-    a(this.jdField_a_of_type_JavaUtilList, paramCanvas, paramPaint, paramFloat1, paramFloat2, paramFloat3, this.jdField_a_of_type_AndroidGraphicsRect, paramInt1, paramInt2);
-    return true;
+    label89:
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     azrx
  * JD-Core Version:    0.7.0.1
  */

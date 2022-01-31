@@ -23,7 +23,7 @@ public class QzoneHandlerThreadFactory
   public static final String VideoThread = "Video_HandlerThread";
   public static final String YellowVipThread = "YellowVip_HandlerThread";
   static final Map<String, QzoneBaseThread> mHandlerThreadMap = new HashMap();
-  public static Handler mMainHandler;
+  public static volatile Handler mMainHandler;
   public static final Object mMainHandlerLock = new Object();
   
   public static QzoneBaseThread getHandlerThread(String paramString)
@@ -110,7 +110,7 @@ public class QzoneHandlerThreadFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.thread.QzoneHandlerThreadFactory
  * JD-Core Version:    0.7.0.1
  */

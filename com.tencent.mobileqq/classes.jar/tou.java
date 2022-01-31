@@ -1,56 +1,21 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_group.GroupFeed;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspPublishVideo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
 
 public class tou
-  extends syn
+  implements View.OnClickListener
 {
-  public long a;
-  public String a;
-  public List<tnv> a;
-  public long b;
-  public String c;
-  public String d;
-  public String e;
+  public tou(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public tou(qqstory_service.RspPublishVideo paramRspPublishVideo)
+  public void onClick(View paramView)
   {
-    super(paramRspPublishVideo.result);
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Long = paramRspPublishVideo.create_time.get();
-    this.jdField_a_of_type_JavaLangString = paramRspPublishVideo.feed_id.get().toStringUtf8();
-    this.c = String.valueOf(paramRspPublishVideo.date.get());
-    this.b = paramRspPublishVideo.video_index.get();
-    if (paramRspPublishVideo.story_id.has()) {
-      this.d = paramRspPublishVideo.story_id.get().toStringUtf8();
-    }
-    if (paramRspPublishVideo.vid.has()) {
-      this.e = paramRspPublishVideo.vid.get().toStringUtf8();
-    }
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    paramRspPublishVideo = paramRspPublishVideo.group_feed_list.get().iterator();
-    while (paramRspPublishVideo.hasNext())
-    {
-      qqstory_group.GroupFeed localGroupFeed = (qqstory_group.GroupFeed)paramRspPublishVideo.next();
-      this.jdField_a_of_type_JavaUtilList.add(new tnv(localGroupFeed));
-    }
-  }
-  
-  public String toString()
-  {
-    return "PublishStoryVideoRespond{createTime=" + this.jdField_a_of_type_Long + ", feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + ", storyId='" + this.d + '\'' + ", videoIndex=" + this.b + ", vid=" + this.e + ", addShareGroupFeeds=" + this.jdField_a_of_type_JavaUtilList + '}';
+    PublicAccountImageCollectionCommentActivity.a(this.a);
+    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tou
  * JD-Core Version:    0.7.0.1
  */

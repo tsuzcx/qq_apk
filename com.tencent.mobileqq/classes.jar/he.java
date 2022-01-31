@@ -1,134 +1,302 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import com.etrump.mixlayout.ETDecoration;
-import com.etrump.mixlayout.ETEngine;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-public class he
+final class he
 {
-  private int jdField_a_of_type_Int;
-  private ArrayList<gy> jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  
-  public int a()
+  static int a(hb paramhb)
   {
-    return this.d;
+    return a(paramhb, true) + a(paramhb, false);
   }
   
-  public gy a(int paramInt)
+  private static int a(hb paramhb, boolean paramBoolean)
   {
-    int j = this.jdField_a_of_type_Int;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    int i = j;
-    while (localIterator.hasNext())
+    int m;
+    int n;
+    label20:
+    int i1;
+    if (paramBoolean)
     {
-      gy localgy = (gy)localIterator.next();
-      i += localgy.c();
-      if ((j <= paramInt) && (paramInt < i)) {
-        return localgy;
+      m = paramhb.a();
+      if (!paramBoolean) {
+        break label99;
+      }
+      n = paramhb.b();
+      paramhb = paramhb.a();
+      i1 = 0;
+    }
+    int j;
+    for (int i = 0;; i = j)
+    {
+      if (i1 >= m) {
+        return i;
+      }
+      j = -1;
+      int i2 = 0;
+      int i3 = 0;
+      label45:
+      if (i2 < n)
+      {
+        if (paramBoolean)
+        {
+          k = paramhb[i1][i2];
+          label65:
+          if (k != j) {
+            break label120;
+          }
+        }
+        for (int k = i3 + 1;; k = i3)
+        {
+          i2 += 1;
+          i3 = k;
+          break label45;
+          m = paramhb.b();
+          break;
+          label99:
+          n = paramhb.a();
+          break label20;
+          k = paramhb[i2][i1];
+          break label65;
+          label120:
+          j = i;
+          if (i3 >= 5) {
+            j = i + (i3 - 5 + 3);
+          }
+          i3 = 1;
+          i = j;
+          j = k;
+        }
       }
       j = i;
-    }
-    return null;
-  }
-  
-  public ArrayList<gy> a()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      gy localgy = (gy)localIterator.next();
-      localgy.a(paramCanvas, paramInt1, paramInt2, this.d);
-      paramInt1 += localgy.c();
-    }
-  }
-  
-  public void a(ETEngine paramETEngine, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = 0;
-    this.d = paramInt3;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      gy localgy = (gy)localIterator.next();
-      if (localgy.d() > this.d) {
-        this.d = localgy.d();
+      if (i3 > 5) {
+        j = i + (i3 - 5 + 3);
       }
-      paramInt1 = this.c;
-      this.c = (localgy.c() + paramInt1);
+      i1 += 1;
     }
-    this.e = 0;
-    localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    return i;
+  }
+  
+  static boolean a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    switch (paramInt1)
     {
-      paramInt1 = ((gy)localIterator.next()).a(paramETEngine);
-      if (paramInt1 > this.e) {
-        this.e = paramInt1;
+    default: 
+      throw new IllegalArgumentException("Invalid mask pattern: " + paramInt1);
+    case 0: 
+      paramInt1 = paramInt3 + paramInt2 & 0x1;
+    }
+    while (paramInt1 == 0)
+    {
+      return true;
+      paramInt1 = paramInt3 & 0x1;
+      continue;
+      paramInt1 = paramInt2 % 3;
+      continue;
+      paramInt1 = (paramInt3 + paramInt2) % 3;
+      continue;
+      paramInt1 = (paramInt3 >>> 1) + paramInt2 / 3 & 0x1;
+      continue;
+      paramInt1 = paramInt3 * paramInt2;
+      paramInt1 = paramInt1 % 3 + (paramInt1 & 0x1);
+      continue;
+      paramInt1 = paramInt3 * paramInt2;
+      paramInt1 = paramInt1 % 3 + (paramInt1 & 0x1) & 0x1;
+      continue;
+      paramInt1 = paramInt3 * paramInt2 % 3 + (paramInt3 + paramInt2 & 0x1) & 0x1;
+    }
+    return false;
+  }
+  
+  static int b(hb paramhb)
+  {
+    byte[][] arrayOfByte = paramhb.a();
+    int n = paramhb.b();
+    int i1 = paramhb.a();
+    int i = 0;
+    int j = 0;
+    while (i < i1 - 1)
+    {
+      int k = 0;
+      while (k < n - 1)
+      {
+        int i2 = arrayOfByte[i][k];
+        int m = j;
+        if (i2 == arrayOfByte[i][(k + 1)])
+        {
+          m = j;
+          if (i2 == arrayOfByte[(i + 1)][k])
+          {
+            m = j;
+            if (i2 == arrayOfByte[(i + 1)][(k + 1)]) {
+              m = j + 1;
+            }
+          }
+        }
+        k += 1;
+        j = m;
       }
+      i += 1;
     }
+    return j * 3;
   }
   
-  public void a(ETEngine paramETEngine, Bitmap paramBitmap, ETDecoration paramETDecoration, int paramInt1, int paramInt2)
+  static int c(hb paramhb)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    byte[][] arrayOfByte = paramhb.a();
+    int n = paramhb.b();
+    int i1 = paramhb.a();
+    int k = 0;
+    int i = 0;
+    while (k < i1)
     {
-      gy localgy = (gy)localIterator.next();
-      localgy.a(paramETEngine, paramBitmap, paramETDecoration, paramInt1, this.d - localgy.d() + paramInt2 - (this.e - localgy.a(paramETEngine)));
-      paramInt1 += localgy.c();
+      int m = 0;
+      while (m < n)
+      {
+        int j = i;
+        if (m + 6 < n)
+        {
+          j = i;
+          if (arrayOfByte[k][m] == 1)
+          {
+            j = i;
+            if (arrayOfByte[k][(m + 1)] == 0)
+            {
+              j = i;
+              if (arrayOfByte[k][(m + 2)] == 1)
+              {
+                j = i;
+                if (arrayOfByte[k][(m + 3)] == 1)
+                {
+                  j = i;
+                  if (arrayOfByte[k][(m + 4)] == 1)
+                  {
+                    j = i;
+                    if (arrayOfByte[k][(m + 5)] == 0)
+                    {
+                      j = i;
+                      if (arrayOfByte[k][(m + 6)] == 1) {
+                        if ((m + 10 >= n) || (arrayOfByte[k][(m + 7)] != 0) || (arrayOfByte[k][(m + 8)] != 0) || (arrayOfByte[k][(m + 9)] != 0) || (arrayOfByte[k][(m + 10)] != 0))
+                        {
+                          j = i;
+                          if (m - 4 >= 0)
+                          {
+                            j = i;
+                            if (arrayOfByte[k][(m - 1)] == 0)
+                            {
+                              j = i;
+                              if (arrayOfByte[k][(m - 2)] == 0)
+                              {
+                                j = i;
+                                if (arrayOfByte[k][(m - 3)] == 0)
+                                {
+                                  j = i;
+                                  if (arrayOfByte[k][(m - 4)] != 0) {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                        else
+                        {
+                          j = i + 40;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        i = j;
+        if (k + 6 < i1)
+        {
+          i = j;
+          if (arrayOfByte[k][m] == 1)
+          {
+            i = j;
+            if (arrayOfByte[(k + 1)][m] == 0)
+            {
+              i = j;
+              if (arrayOfByte[(k + 2)][m] == 1)
+              {
+                i = j;
+                if (arrayOfByte[(k + 3)][m] == 1)
+                {
+                  i = j;
+                  if (arrayOfByte[(k + 4)][m] == 1)
+                  {
+                    i = j;
+                    if (arrayOfByte[(k + 5)][m] == 0)
+                    {
+                      i = j;
+                      if (arrayOfByte[(k + 6)][m] == 1) {
+                        if ((k + 10 >= i1) || (arrayOfByte[(k + 7)][m] != 0) || (arrayOfByte[(k + 8)][m] != 0) || (arrayOfByte[(k + 9)][m] != 0) || (arrayOfByte[(k + 10)][m] != 0))
+                        {
+                          i = j;
+                          if (k - 4 >= 0)
+                          {
+                            i = j;
+                            if (arrayOfByte[(k - 1)][m] == 0)
+                            {
+                              i = j;
+                              if (arrayOfByte[(k - 2)][m] == 0)
+                              {
+                                i = j;
+                                if (arrayOfByte[(k - 3)][m] == 0)
+                                {
+                                  i = j;
+                                  if (arrayOfByte[(k - 4)][m] != 0) {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                        else
+                        {
+                          i = j + 40;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        m += 1;
+      }
+      k += 1;
     }
+    return i;
   }
   
-  public void a(gy paramgy)
+  static int d(hb paramhb)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramgy);
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public void b(Canvas paramCanvas, int paramInt1, int paramInt2)
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    byte[][] arrayOfByte = paramhb.a();
+    int n = paramhb.b();
+    int i1 = paramhb.a();
+    int i = 0;
+    int j = 0;
+    while (i < i1)
     {
-      gy localgy = (gy)localIterator.next();
-      localgy.b(paramCanvas, paramInt1, paramInt2, this.d);
-      paramInt1 += localgy.c();
+      byte[] arrayOfByte1 = arrayOfByte[i];
+      k = 0;
+      while (k < n)
+      {
+        int m = j;
+        if (arrayOfByte1[k] == 1) {
+          m = j + 1;
+        }
+        k += 1;
+        j = m;
+      }
+      i += 1;
     }
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_Int;
-  }
-  
-  public int d()
-  {
-    return this.b;
-  }
-  
-  public int e()
-  {
-    return this.e;
+    i = paramhb.a();
+    int k = paramhb.b();
+    return (int)(Math.abs(j / (i * k) - 0.5D) * 20.0D) * 10;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     he
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import aper;
+import aqxp;
 
 public class FileManagerProxy$1
   implements Runnable
 {
-  public FileManagerProxy$1(aper paramaper, FileManagerEntity paramFileManagerEntity) {}
+  public FileManagerProxy$1(aqxp paramaqxp, FileManagerEntity paramFileManagerEntity) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class FileManagerProxy$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerProxy.1
  * JD-Core Version:    0.7.0.1
  */

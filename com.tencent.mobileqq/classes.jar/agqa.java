@@ -1,26 +1,21 @@
-import android.os.Handler;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
-import com.tencent.mobileqq.activity.photo.SendPhotoTask;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-public class agqa
-  implements MessageQueue.IdleHandler
+class agqa
+  implements View.OnClickListener
 {
-  public agqa(SendPhotoActivity paramSendPhotoActivity) {}
+  agqa(agot paramagot, RelativeLayout paramRelativeLayout, LinearLayout paramLinearLayout) {}
   
-  public boolean queueIdle()
+  public void onClick(View paramView)
   {
-    aung.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "queueIdle", "start");
-    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask = new SendPhotoTask(this.a, null, this.a.jdField_a_of_type_AndroidOsHandler);
-    ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoTask, 8, null, false);
-    return false;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agqa
  * JD-Core Version:    0.7.0.1
  */

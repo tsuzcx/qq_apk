@@ -1,23 +1,31 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-final class aigx
-  implements DialogInterface.OnClickListener
+public class aigx
+  extends awdn
 {
-  aigx(boolean paramBoolean, BaseActivity paramBaseActivity) {}
+  public aigx(BindNumberActivity paramBindNumberActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void b(boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    super.b(paramBoolean);
+    if (paramBoolean) {
+      BindNumberActivity.a(this.a).sendEmptyMessage(3);
+    }
+    for (;;)
+    {
+      this.a.app.unRegistObserver(this.a.b);
+      this.a.b = null;
+      return;
+      this.a.b();
+      this.a.b(2131719221);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigx
  * JD-Core Version:    0.7.0.1
  */

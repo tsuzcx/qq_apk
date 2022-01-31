@@ -1,39 +1,24 @@
 package com.tencent.mobileqq.activity;
 
-import aawj;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.QLog;
+import acnh;
+import alpo;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class Conversation$32$2
   implements Runnable
 {
-  public Conversation$32$2(aawj paramaawj, boolean paramBoolean) {}
+  public Conversation$32$2(acnh paramacnh) {}
   
   public void run()
   {
-    Conversation.a(this.jdField_a_of_type_Aawj.a, 800L);
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.jdField_a_of_type_Aawj.a.a != null)
-    {
-      localPullRefreshHeader = this.jdField_a_of_type_Aawj.a.a;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label66;
-      }
-    }
-    label66:
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoMonitor", 2, "ConversationTab[onRefleshRecentListFinished_ui]");
-      }
-      return;
-    }
+    QQToast.a(this.a.a.a(), 2, alpo.a(2131702981), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131298914));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Conversation.32.2
  * JD-Core Version:    0.7.0.1
  */

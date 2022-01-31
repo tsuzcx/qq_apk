@@ -1,46 +1,30 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import com.tencent.mobileqq.vas.wallpaper.VipWallpaperService;
+import com.tencent.mobileqq.vas.wallpaper.WallpaperHelper;
+import java.lang.ref.WeakReference;
 
 public class bdst
+  implements SharedPreferences.OnSharedPreferenceChangeListener
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("qav_sdk_thread_sub");
-  private static Handler b = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  private final WeakReference<WallpaperHelper> a;
   
-  static
+  public bdst(WallpaperHelper paramWallpaperHelper)
   {
-    jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.a = new WeakReference(paramWallpaperHelper);
   }
   
-  public static Handler a()
+  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
   {
-    return jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  public static void a(Runnable paramRunnable)
-  {
-    b.post(paramRunnable);
-  }
-  
-  public static void a(Runnable paramRunnable, long paramLong)
-  {
-    b.postDelayed(paramRunnable, paramLong);
-  }
-  
-  public static Handler b()
-  {
-    return b;
-  }
-  
-  public static void b(Runnable paramRunnable)
-  {
-    b.removeCallbacks(paramRunnable);
+    paramString = (WallpaperHelper)this.a.get();
+    if (paramString != null) {
+      WallpaperHelper.a(paramString, VipWallpaperService.a(paramSharedPreferences), true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdst
  * JD-Core Version:    0.7.0.1
  */

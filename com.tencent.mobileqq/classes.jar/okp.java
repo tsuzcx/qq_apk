@@ -1,20 +1,23 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
 
 public class okp
-  implements bfqj
+  extends Editable.Factory
 {
-  public okp(NativeCommentTextView paramNativeCommentTextView) {}
+  public okp(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  public void a()
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    this.a.setBackgroundColor(NativeCommentTextView.a(this.a).getResources().getColor(2131167134));
+    if ((paramCharSequence instanceof ohr)) {
+      return (Editable)paramCharSequence;
+    }
+    return new ohr(paramCharSequence, 3, 20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     okp
  * JD-Core Version:    0.7.0.1
  */

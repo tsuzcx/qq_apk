@@ -1,20 +1,31 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
 class alrq
-  implements alrx
+  implements bhqd
 {
-  alrq(alrp paramalrp) {}
+  alrq(alro paramalro, bhpy parambhpy) {}
   
-  public void a(boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, full update result, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.a.jdField_a_of_type_Alrv.a }));
-    if (paramBoolean) {}
-    this.a.jdField_a_of_type_Alrx.a(paramBoolean);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.e();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("MayknowRecommendManager", 2, " onMsgTabRecommendBClick recommend_item_menu hide clicked");
+      }
+      this.jdField_a_of_type_Alro.h();
+      azmj.b(null, "dc00899", "Grp_recom", "", "msg_tab", "clk_hide", 0, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alrq
  * JD-Core Version:    0.7.0.1
  */

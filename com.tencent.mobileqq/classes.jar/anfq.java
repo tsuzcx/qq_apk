@@ -1,122 +1,44 @@
-import com.tencent.mobileqq.danmaku.core.DanmakuManager.DanmakuComparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallbackTimeOut;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class anfq
+final class anfq
+  implements ArkAppMgr.IGetAppPathByNameCallbackTimeOut
 {
-  private volatile long jdField_a_of_type_Long = -1L;
-  private final anht jdField_a_of_type_Anht;
-  private final anhu<anga> jdField_a_of_type_Anhu;
-  private final List<anga> jdField_a_of_type_JavaUtilList;
-  private final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean;
+  anfq(String paramString1, String paramString2, anfs paramanfs) {}
   
-  public anfq(anht paramanht, DanmakuManager.DanmakuComparator paramDanmakuComparator)
+  public void onGetAppPathByNameTimeout(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    this.jdField_a_of_type_Anht = paramanht;
-    this.jdField_a_of_type_Anhu = new anhu(paramDanmakuComparator, new anfr(this));
-    this.jdField_a_of_type_JavaUtilList = new LinkedList();
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-  }
-  
-  private void a(List<anga> paramList)
-  {
-    int i = paramList.size() - 1;
-    while (i >= 0)
+    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null))
     {
-      anga localanga = (anga)paramList.get(i);
-      if (localanga.d() <= this.jdField_a_of_type_Long) {
-        localanga.a();
+      paramString = ark.Application.Create(this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path);
+      if (paramString != null)
+      {
+        boolean bool = paramString.CheckShareUrlLegality(this.b);
+        paramString.Release();
+        if (bool)
+        {
+          this.jdField_a_of_type_Anfs.a(true);
+          ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality, url is in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+        }
       }
-      i -= 1;
-    }
-  }
-  
-  private void c()
-  {
-    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(false, true))
-    {
-      anic.b("DanmakuDataSource", "lock is blocked");
-      Thread.yield();
-    }
-  }
-  
-  private void d()
-  {
-    while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false))
-    {
-      anic.e("DanmakuDataSource", "update end is blocked! this can not happend!");
-      Thread.yield();
-    }
-  }
-  
-  public int a()
-  {
-    return this.jdField_a_of_type_Anhu.a();
-  }
-  
-  public anga a()
-  {
-    return (anga)this.jdField_a_of_type_Anhu.a();
-  }
-  
-  public List<anga> a()
-  {
-    c();
-    this.jdField_a_of_type_Anhu.a(this.jdField_a_of_type_Anht.a(), this.jdField_a_of_type_JavaUtilList, 3);
-    a(this.jdField_a_of_type_JavaUtilList);
-    d();
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a()
-  {
-    anic.a("DanmakuDataSource", "clear danmaku queue");
-    c();
-    this.jdField_a_of_type_Anhu.a();
-    d();
-  }
-  
-  public void a(anga paramanga)
-  {
-    c();
-    anic.c("DanmakuDataSource", "addNow: danmaku = " + paramanga);
-    this.jdField_a_of_type_Anhu.b(paramanga);
-    d();
-  }
-  
-  public boolean a()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {}
-    while ((this.jdField_a_of_type_Anhu != null) && (this.jdField_a_of_type_Anhu.a() > 0)) {
-      return true;
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    c();
-    anga localanga = (anga)this.jdField_a_of_type_Anhu.b();
-    if (localanga == null) {}
-    for (this.jdField_a_of_type_Long = -1L;; this.jdField_a_of_type_Long = localanga.d())
-    {
-      d();
+      else
+      {
+        return;
+      }
+      this.jdField_a_of_type_Anfs.a(false);
+      ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality, url is not in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
       return;
     }
-  }
-  
-  public void b(anga paramanga)
-  {
-    c();
-    anic.c("DanmakuDataSource", "addLast: danmaku = " + paramanga);
-    this.jdField_a_of_type_Anhu.a(paramanga);
-    d();
+    this.jdField_a_of_type_Anfs.a(false);
+    anjv.a(anfp.a(), this.jdField_a_of_type_JavaLangString, "ArkCheckShareUrlLegality", paramInt, 0, 0L, 0L, 0L, "", "");
+    ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality,getAppInfo is failed and msg=%s", new Object[] { paramString }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfq
  * JD-Core Version:    0.7.0.1
  */

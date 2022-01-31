@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import axmv;
+import azib;
 
 class GeneralSettingActivity$16
   implements Runnable
@@ -10,15 +10,15 @@ class GeneralSettingActivity$16
   public void run()
   {
     if (this.this$0.isFinishing()) {}
-    while ((!axmv.b()) || (this.this$0.a())) {
+    while ((!azib.b()) || (this.this$0.a())) {
       return;
     }
-    this.this$0.a(true, axmv.c());
+    this.this$0.a(true, azib.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GeneralSettingActivity.16
  * JD-Core Version:    0.7.0.1
  */

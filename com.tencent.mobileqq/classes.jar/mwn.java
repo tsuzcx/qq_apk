@@ -1,21 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.PoiMapActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class mwn
-  implements View.OnClickListener
+class mwn
+  implements DialogInterface.OnShowListener
 {
-  public mwn(PoiMapActivity paramPoiMapActivity) {}
+  mwn(mwk parammwk) {}
   
-  public void onClick(View paramView)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    this.a.a.setText("");
+    if (QLog.isColorLevel()) {
+      QLog.d("TraeSessionHelper", 2, "Trae_DRP 0X8008D1E at: " + System.currentTimeMillis());
+    }
+    azmj.b(null, "CliOper", "", "", "0X8008D1E", "0X8008D1E", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mwn
  * JD-Core Version:    0.7.0.1
  */

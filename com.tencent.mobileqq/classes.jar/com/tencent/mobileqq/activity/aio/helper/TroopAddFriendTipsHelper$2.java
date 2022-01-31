@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.helper;
 
-import adjl;
-import akhp;
+import afbt;
+import alzf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
 import java.util.ArrayList;
@@ -9,11 +9,11 @@ import java.util.ArrayList;
 public class TroopAddFriendTipsHelper$2
   implements Runnable
 {
-  public TroopAddFriendTipsHelper$2(adjl paramadjl, String paramString1, String paramString2) {}
+  public TroopAddFriendTipsHelper$2(afbt paramafbt, String paramString1, String paramString2) {}
   
   public void run()
   {
-    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((akhp)adjl.a(this.this$0).a(20)).a();
+    TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((alzf)afbt.a(this.this$0).a(20)).a();
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(this.a);
     localTroopBatchAddFriendMgr.a(this.b, localArrayList, 4);
@@ -22,7 +22,7 @@ public class TroopAddFriendTipsHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopAddFriendTipsHelper.2
  * JD-Core Version:    0.7.0.1
  */

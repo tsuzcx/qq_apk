@@ -1,32 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afll
-  implements DialogInterface.OnClickListener
+final class afll
+  implements afpr
 {
-  public afll(SystemMsgListView paramSystemMsgListView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent(this.a.getContext(), BindNumberActivity.class);
-      paramDialogInterface.putExtra("kSrouce", 17);
-      this.a.a(paramDialogInterface, 230);
-      axqy.b(this.a.a, "dc00898", "", "", "0X80077C9", "0X80077C9", 0, 0, "", "", "", "");
+    if (paramChatMessage.msgtype != -1036) {
+      return 18;
     }
-    while (paramInt != 0) {
-      return;
-    }
-    axqy.b(this.a.a, "dc00898", "", "", "0X80077CA", "0X80077CA", 0, 0, "", "", "", "");
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afll
  * JD-Core Version:    0.7.0.1
  */

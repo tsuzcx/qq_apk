@@ -9,16 +9,16 @@ class GameActivity$14
   
   public void run()
   {
-    if (!GameActivity.access$2100(this.this$0))
+    if (!GameActivity.access$2500(this.this$0))
     {
-      GameActivity.access$2200(this.this$0);
-      GameActivity.access$2400(this.this$0).updateVconsoleView(GameActivity.access$2300(this.this$0), GameActivity.access$1400(this.this$0), false);
+      GameActivity.access$2600(this.this$0);
+      GameActivity.access$2800(this.this$0).updateVconsoleView(GameActivity.access$2700(this.this$0), GameActivity.access$1600(this.this$0), false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity.14
  * JD-Core Version:    0.7.0.1
  */

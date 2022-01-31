@@ -8,8 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import axqy;
-import bfnz;
+import azmj;
+import bhou;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
 public class QQIdentiferLegacyActivity
@@ -19,14 +19,14 @@ public class QQIdentiferLegacyActivity
   {
     paramFragmentActivity = paramFragmentActivity.getSupportFragmentManager();
     FragmentTransaction localFragmentTransaction = paramFragmentActivity.beginTransaction();
-    if (paramFragmentActivity.findFragmentById(2131367260) != null) {
-      localFragmentTransaction.replace(2131367260, paramFragment);
+    if (paramFragmentActivity.findFragmentById(2131367390) != null) {
+      localFragmentTransaction.replace(2131367390, paramFragment);
     }
-    while (bfnz.e())
+    while (bhou.e())
     {
       localFragmentTransaction.commitAllowingStateLoss();
       return;
-      localFragmentTransaction.add(2131367260, paramFragment);
+      localFragmentTransaction.add(2131367390, paramFragment);
     }
     localFragmentTransaction.commit();
   }
@@ -35,10 +35,10 @@ public class QQIdentiferLegacyActivity
   {
     String str = getIntent().getStringExtra("method");
     if ("setFaceData".equals(str)) {
-      axqy.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "1", "", "", "");
+      azmj.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "1", "", "", "");
     }
     if ("loginVerify".equals(str)) {
-      axqy.a(null, "dc00898", "", "", paramString, paramString, 0, 0, "2", "", "", "");
+      azmj.a(null, "dc00898", "", "", paramString, paramString, 0, 0, "2", "", "", "");
     }
   }
   
@@ -46,7 +46,7 @@ public class QQIdentiferLegacyActivity
   {
     super.doOnCreate(paramBundle);
     paramBundle = new FrameLayout(this);
-    paramBundle.setId(2131367260);
+    paramBundle.setId(2131367390);
     paramBundle.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
     setContentView(paramBundle);
     a(this, new QQIdentiferLegacy());
@@ -55,7 +55,7 @@ public class QQIdentiferLegacyActivity
   
   public boolean onBackEvent()
   {
-    Fragment localFragment = getSupportFragmentManager().findFragmentById(2131367260);
+    Fragment localFragment = getSupportFragmentManager().findFragmentById(2131367390);
     if ((localFragment != null) && ((localFragment instanceof QQLightRecognitionGuide))) {
       a("0X800A85E");
     }
@@ -65,7 +65,7 @@ public class QQIdentiferLegacyActivity
   public void onBackPressed()
   {
     super.onBackPressed();
-    Fragment localFragment = getSupportFragmentManager().findFragmentById(2131367260);
+    Fragment localFragment = getSupportFragmentManager().findFragmentById(2131367390);
     if ((localFragment != null) && ((localFragment instanceof QQLightRecognitionGuide))) {
       a("0X800A85E");
     }
@@ -73,7 +73,7 @@ public class QQIdentiferLegacyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacyActivity
  * JD-Core Version:    0.7.0.1
  */

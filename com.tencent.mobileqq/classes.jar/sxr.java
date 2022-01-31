@@ -1,25 +1,17 @@
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.6;
 
 public class sxr
+  implements DialogInterface.OnClickListener
 {
-  public static String a(QQUserUIItem paramQQUserUIItem)
-  {
-    return syk.a(paramQQUserUIItem);
-  }
+  public sxr(PublicAccountH5AbilityPlugin.6 param6) {}
   
-  public static boolean a()
-  {
-    return true;
-  }
-  
-  public static String b(QQUserUIItem paramQQUserUIItem)
-  {
-    return syk.b(paramQQUserUIItem);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sxr
  * JD-Core Version:    0.7.0.1
  */

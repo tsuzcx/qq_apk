@@ -1,0 +1,1658 @@
+{
+  "favList": [
+    {
+      "name": "中国大陆",
+      "abbr": "CN",
+      "pinyin": "zhongguo",
+      "code": 86,
+      "tag": "常用地区"
+    },
+    {
+      "name": "中国香港",
+      "abbr": "HK",
+      "pinyin": "zhongguoxianggang",
+      "code": 852,
+      "tag": "常用地区"
+    },
+    {
+      "name": "中国澳门",
+      "abbr": "MO",
+      "pinyin": "zhongguoaomen",
+      "code": 853,
+      "tag": "常用地区"
+    },
+    {
+      "name": "中国台湾",
+      "abbr": "TW",
+      "pinyin": "zhongguotaiwan",
+      "code": 886,
+      "tag": "常用地区"
+    },
+    {
+      "name": "日本",
+      "abbr": "JP",
+      "pinyin": "riben",
+      "code": 81,
+      "tag": "常用地区"
+    },
+    {
+      "name": "美国",
+      "abbr": "US",
+      "pinyin": "meiguo",
+      "code": 1,
+      "tag": "常用地区"
+    },
+    {
+      "name": "英国",
+      "abbr": "GB",
+      "pinyin": "yingguo",
+      "code": 44,
+      "tag": "常用地区"
+    },
+    {
+      "name": "澳大利亚",
+      "abbr": "AU",
+      "pinyin": "aodaliya",
+      "code": 61,
+      "tag": "常用地区"
+    },
+    {
+      "name": "加拿大",
+      "abbr": "CA",
+      "pinyin": "jianada",
+      "code": 1,
+      "tag": "常用地区"
+    }
+  ],
+  "itemList": [
+    {
+      "name": "阿尔巴尼亚",
+      "abbr": "AL",
+      "pinyin": "aerbaniya",
+      "code": 355,
+      "tag": "A"
+    },
+    {
+      "name": "阿尔及利亚",
+      "abbr": "DZ",
+      "pinyin": "aerjiliya",
+      "code": 213,
+      "tag": "A"
+    },
+    {
+      "name": "阿富汗",
+      "abbr": "AF",
+      "pinyin": "afuhan",
+      "code": 93,
+      "tag": "A"
+    },
+    {
+      "name": "阿根廷",
+      "abbr": "AR",
+      "pinyin": "agenting",
+      "code": 54,
+      "tag": "A"
+    },
+    {
+      "name": "爱尔兰",
+      "abbr": "IE",
+      "pinyin": "aierlan",
+      "code": 353,
+      "tag": "A"
+    },
+    {
+      "name": "埃及",
+      "abbr": "EG",
+      "pinyin": "aiji",
+      "code": 20,
+      "tag": "A"
+    },
+    {
+      "name": "埃塞俄比亚",
+      "abbr": "ET",
+      "pinyin": "aisaiebiya",
+      "code": 251,
+      "tag": "A"
+    },
+    {
+      "name": "爱沙尼亚",
+      "abbr": "EE",
+      "pinyin": "aishaniya",
+      "code": 372,
+      "tag": "A"
+    },
+    {
+      "name": "阿拉伯联合酋长国",
+      "abbr": "AE",
+      "pinyin": "alabolianheqiuchangguo",
+      "code": 971,
+      "tag": "A"
+    },
+    {
+      "name": "阿鲁巴",
+      "abbr": "AW",
+      "pinyin": "aluba",
+      "code": 297,
+      "tag": "A"
+    },
+    {
+      "name": "阿曼",
+      "abbr": "OM",
+      "pinyin": "aman",
+      "code": 968,
+      "tag": "A"
+    },
+    {
+      "name": "安道尔",
+      "abbr": "AD",
+      "pinyin": "andaoer",
+      "code": 376,
+      "tag": "A"
+    },
+    {
+      "name": "安哥拉",
+      "abbr": "AO",
+      "pinyin": "angela",
+      "code": 244,
+      "tag": "A"
+    },
+    {
+      "name": "安圭拉",
+      "abbr": "AI",
+      "pinyin": "anguila",
+      "code": 1264,
+      "tag": "A"
+    },
+    {
+      "name": "安提瓜和巴布达",
+      "abbr": "AG",
+      "pinyin": "antiguahebabuda",
+      "code": 1268,
+      "tag": "A"
+    },
+    {
+      "name": "奥地利",
+      "abbr": "AT",
+      "pinyin": "aodili",
+      "code": 43,
+      "tag": "A"
+    },
+    {
+      "name": "阿塞拜疆",
+      "abbr": "AZ",
+      "pinyin": "asaibaijiang",
+      "code": 994,
+      "tag": "A"
+    },
+    {
+      "name": "巴巴多斯",
+      "abbr": "BB",
+      "pinyin": "babaduosi",
+      "code": 1246,
+      "tag": "B"
+    },
+    {
+      "name": "巴布亚新几内亚",
+      "abbr": "PG",
+      "pinyin": "babuyaxinjineiya",
+      "code": 675,
+      "tag": "B"
+    },
+    {
+      "name": "巴哈马",
+      "abbr": "BS",
+      "pinyin": "bahama",
+      "code": 1242,
+      "tag": "B"
+    },
+    {
+      "name": "白俄罗斯",
+      "abbr": "BY",
+      "pinyin": "baieluosi",
+      "code": 375,
+      "tag": "B"
+    },
+    {
+      "name": "百慕大",
+      "abbr": "BM",
+      "pinyin": "baimuda",
+      "code": 1441,
+      "tag": "B"
+    },
+    {
+      "name": "巴基斯坦",
+      "abbr": "PK",
+      "pinyin": "bajisitan",
+      "code": 92,
+      "tag": "B"
+    },
+    {
+      "name": "巴拉圭",
+      "abbr": "PY",
+      "pinyin": "balagui",
+      "code": 595,
+      "tag": "B"
+    },
+    {
+      "name": "巴勒斯坦国",
+      "abbr": "PS",
+      "pinyin": "balesitanguo",
+      "code": 970,
+      "tag": "B"
+    },
+    {
+      "name": "巴林",
+      "abbr": "BH",
+      "pinyin": "balin",
+      "code": 973,
+      "tag": "B"
+    },
+    {
+      "name": "巴拿马",
+      "abbr": "PA",
+      "pinyin": "banama",
+      "code": 507,
+      "tag": "B"
+    },
+    {
+      "name": "保加利亚",
+      "abbr": "BG",
+      "pinyin": "baojialiya",
+      "code": 359,
+      "tag": "B"
+    },
+    {
+      "name": "巴西",
+      "abbr": "BR",
+      "pinyin": "baxi",
+      "code": 55,
+      "tag": "B"
+    },
+    {
+      "name": "北马里亚纳群岛",
+      "abbr": "MP",
+      "pinyin": "beimaliyanaqundao",
+      "code": 1670,
+      "tag": "B"
+    },
+    {
+      "name": "贝宁",
+      "abbr": "BJ",
+      "pinyin": "beining",
+      "code": 229,
+      "tag": "B"
+    },
+    {
+      "name": "比利时",
+      "abbr": "BE",
+      "pinyin": "bilishi",
+      "code": 32,
+      "tag": "B"
+    },
+    {
+      "name": "秘鲁",
+      "abbr": "PE",
+      "pinyin": "bilu",
+      "code": 51,
+      "tag": "B"
+    },
+    {
+      "name": "冰岛",
+      "abbr": "IS",
+      "pinyin": "bingdao",
+      "code": 354,
+      "tag": "B"
+    },
+    {
+      "name": "博茨瓦纳",
+      "abbr": "BW",
+      "pinyin": "bociwana",
+      "code": 267,
+      "tag": "B"
+    },
+    {
+      "name": "波多黎各",
+      "abbr": "PR",
+      "pinyin": "boduolige",
+      "code": 1787,
+      "tag": "B"
+    },
+    {
+      "name": "波兰",
+      "abbr": "PL",
+      "pinyin": "bolan",
+      "code": 48,
+      "tag": "B"
+    },
+    {
+      "name": "玻利维亚",
+      "abbr": "BO",
+      "pinyin": "boliweiya",
+      "code": 591,
+      "tag": "B"
+    },
+    {
+      "name": "伯利兹",
+      "abbr": "BZ",
+      "pinyin": "bolizi",
+      "code": 501,
+      "tag": "B"
+    },
+    {
+      "name": "波斯尼亚和黑塞哥维那",
+      "abbr": "BA",
+      "pinyin": "bosiniyaheheisaigeweina",
+      "code": 387,
+      "tag": "B"
+    },
+    {
+      "name": "不丹",
+      "abbr": "BT",
+      "pinyin": "budan",
+      "code": 975,
+      "tag": "B"
+    },
+    {
+      "name": "布基纳法索",
+      "abbr": "BF",
+      "pinyin": "bujinafasuo",
+      "code": 226,
+      "tag": "B"
+    },
+    {
+      "name": "布隆迪",
+      "abbr": "BI",
+      "pinyin": "bulongdi",
+      "code": 257,
+      "tag": "B"
+    },
+    {
+      "name": "朝鲜",
+      "abbr": "KP",
+      "pinyin": "chaoxian",
+      "code": 850,
+      "tag": "C"
+    },
+    {
+      "name": "赤道几内亚",
+      "abbr": "GQ",
+      "pinyin": "chidaojineiya",
+      "code": 240,
+      "tag": "C"
+    },
+    {
+      "name": "丹麦",
+      "abbr": "DK",
+      "pinyin": "danmai",
+      "code": 45,
+      "tag": "D"
+    },
+    {
+      "name": "德国",
+      "abbr": "DE",
+      "pinyin": "deguo",
+      "code": 49,
+      "tag": "D"
+    },
+    {
+      "name": "东帝汶",
+      "abbr": "TL",
+      "pinyin": "dongdiwen",
+      "code": 670,
+      "tag": "D"
+    },
+    {
+      "name": "多哥",
+      "abbr": "TG",
+      "pinyin": "duoge",
+      "code": 228,
+      "tag": "D"
+    },
+    {
+      "name": "多米尼克",
+      "abbr": "DM",
+      "pinyin": "duominijia",
+      "code": 1767,
+      "tag": "D"
+    },
+    {
+      "name": "多米尼加共和国",
+      "abbr": "DO",
+      "pinyin": "duominijiagongheguo",
+      "code": 1809,
+      "tag": "D"
+    },
+    {
+      "name": "厄瓜多尔",
+      "abbr": "EC",
+      "pinyin": "eguaduoer",
+      "code": 593,
+      "tag": "E"
+    },
+    {
+      "name": "厄立特里亚",
+      "abbr": "ER",
+      "pinyin": "eliteliya",
+      "code": 291,
+      "tag": "E"
+    },
+    {
+      "name": "俄罗斯",
+      "abbr": "RU",
+      "pinyin": "eluosi",
+      "code": 7,
+      "tag": "E"
+    },
+    {
+      "name": "法国",
+      "abbr": "FR",
+      "pinyin": "faguo",
+      "code": 33,
+      "tag": "F"
+    },
+    {
+      "name": "法罗群岛",
+      "abbr": "FO",
+      "pinyin": "faluoqundao",
+      "code": 298,
+      "tag": "F"
+    },
+    {
+      "name": "梵蒂冈",
+      "abbr": "VA",
+      "pinyin": "fandigang",
+      "code": 379,
+      "tag": "F"
+    },
+    {
+      "name": "法属波利尼西亚",
+      "abbr": "PF",
+      "pinyin": "fashubolinixiya",
+      "code": 689,
+      "tag": "F"
+    },
+    {
+      "name": "法属圭亚那",
+      "abbr": "GF",
+      "pinyin": "fashuguiyana",
+      "code": 594,
+      "tag": "F"
+    },
+    {
+      "name": "法属圣马丁",
+      "abbr": "MF",
+      "pinyin": "fashushengmading",
+      "code": 590,
+      "tag": "F"
+    },
+    {
+      "name": "斐济",
+      "abbr": "FJ",
+      "pinyin": "feiji",
+      "code": 679,
+      "tag": "F"
+    },
+    {
+      "name": "菲律宾",
+      "abbr": "PH",
+      "pinyin": "feilvbin",
+      "code": 63,
+      "tag": "F"
+    },
+    {
+      "name": "芬兰",
+      "abbr": "FI",
+      "pinyin": "fenlan",
+      "code": 358,
+      "tag": "F"
+    },
+    {
+      "name": "佛得角",
+      "abbr": "CV",
+      "pinyin": "fodejiao",
+      "code": 238,
+      "tag": "F"
+    },
+    {
+      "name": "福克兰群岛",
+      "abbr": "FK",
+      "pinyin": "fukelanqundao",
+      "code": 500,
+      "tag": "F"
+    },
+    {
+      "name": "冈比亚",
+      "abbr": "GM",
+      "pinyin": "gangbiya",
+      "code": 220,
+      "tag": "G"
+    },
+    {
+      "name": "刚果（布）",
+      "abbr": "CG",
+      "pinyin": "gangguo（bu）",
+      "code": 242,
+      "tag": "G"
+    },
+    {
+      "name": "刚果（金）",
+      "abbr": "CD",
+      "pinyin": "gangguo（jin）",
+      "code": 243,
+      "tag": "G"
+    },
+    {
+      "name": "格陵兰",
+      "abbr": "GL",
+      "pinyin": "gelinglan",
+      "code": 299,
+      "tag": "G"
+    },
+    {
+      "name": "格林纳达",
+      "abbr": "GD",
+      "pinyin": "gelinnada",
+      "code": 1473,
+      "tag": "G"
+    },
+    {
+      "name": "格鲁吉亚",
+      "abbr": "GE",
+      "pinyin": "gelujiya",
+      "code": 995,
+      "tag": "G"
+    },
+    {
+      "name": "哥伦比亚",
+      "abbr": "CO",
+      "pinyin": "gelunbiya",
+      "code": 57,
+      "tag": "G"
+    },
+    {
+      "name": "哥斯达黎加",
+      "abbr": "CR",
+      "pinyin": "gesidalijia",
+      "code": 506,
+      "tag": "G"
+    },
+    {
+      "name": "瓜德罗普",
+      "abbr": "BL",
+      "pinyin": "guadeluopu",
+      "code": 590,
+      "tag": "G"
+    },
+    {
+      "name": "关岛",
+      "abbr": "GU",
+      "pinyin": "guandao",
+      "code": 1671,
+      "tag": "G"
+    },
+    {
+      "name": "古巴",
+      "abbr": "CU",
+      "pinyin": "guba",
+      "code": 53,
+      "tag": "G"
+    },
+    {
+      "name": "圭亚那",
+      "abbr": "GY",
+      "pinyin": "guiyana",
+      "code": 592,
+      "tag": "G"
+    },
+    {
+      "name": "海地",
+      "abbr": "HT",
+      "pinyin": "haidi",
+      "code": 509,
+      "tag": "H"
+    },
+    {
+      "name": "韩国",
+      "abbr": "KR",
+      "pinyin": "hanguo",
+      "code": 82,
+      "tag": "H"
+    },
+    {
+      "name": "哈萨克斯坦",
+      "abbr": "KZ",
+      "pinyin": "hasakesitan",
+      "code": 7,
+      "tag": "H"
+    },
+    {
+      "name": "黑山共和国",
+      "abbr": "ME",
+      "pinyin": "heishangongheguo",
+      "code": 382,
+      "tag": "H"
+    },
+    {
+      "name": "荷兰",
+      "abbr": "NL",
+      "pinyin": "helan",
+      "code": 31,
+      "tag": "H"
+    },
+    {
+      "name": "荷兰加勒比区",
+      "abbr": "BQ",
+      "pinyin": "helanjialebiqu",
+      "code": 599,
+      "tag": "H"
+    },
+    {
+      "name": "荷属圣马丁",
+      "abbr": "SX",
+      "pinyin": "heshushengmading",
+      "code": 1721,
+      "tag": "H"
+    },
+    {
+      "name": "洪都拉斯",
+      "abbr": "HN",
+      "pinyin": "hongdulasi",
+      "code": 504,
+      "tag": "H"
+    },
+    {
+      "name": "加纳",
+      "abbr": "GH",
+      "pinyin": "jiana",
+      "code": 233,
+      "tag": "J"
+    },
+    {
+      "name": "柬埔寨",
+      "abbr": "KH",
+      "pinyin": "jianpuzhai",
+      "code": 855,
+      "tag": "J"
+    },
+    {
+      "name": "加蓬",
+      "abbr": "GA",
+      "pinyin": "jiapeng",
+      "code": 241,
+      "tag": "J"
+    },
+    {
+      "name": "吉布提",
+      "abbr": "DJ",
+      "pinyin": "jibuti",
+      "code": 253,
+      "tag": "J"
+    },
+    {
+      "name": "捷克共和国",
+      "abbr": "CZ",
+      "pinyin": "jiekegongheguo",
+      "code": 420,
+      "tag": "J"
+    },
+    {
+      "name": "吉尔吉斯斯坦",
+      "abbr": "KG",
+      "pinyin": "jierjisisitan",
+      "code": 996,
+      "tag": "J"
+    },
+    {
+      "name": "基里巴斯",
+      "abbr": "KI",
+      "pinyin": "jilibasi",
+      "code": 686,
+      "tag": "J"
+    },
+    {
+      "name": "津巴布韦",
+      "abbr": "ZW",
+      "pinyin": "jinbabuwei",
+      "code": 263,
+      "tag": "J"
+    },
+    {
+      "name": "几内亚",
+      "abbr": "GN",
+      "pinyin": "jineiya",
+      "code": 224,
+      "tag": "J"
+    },
+    {
+      "name": "几内亚比绍",
+      "abbr": "GW",
+      "pinyin": "jineiyabishao",
+      "code": 245,
+      "tag": "J"
+    },
+    {
+      "name": "开曼群岛",
+      "abbr": "KY",
+      "pinyin": "kaimanqundao",
+      "code": 1345,
+      "tag": "K"
+    },
+    {
+      "name": "喀麦隆",
+      "abbr": "CM",
+      "pinyin": "kamailong",
+      "code": 237,
+      "tag": "K"
+    },
+    {
+      "name": "卡塔尔",
+      "abbr": "QA",
+      "pinyin": "kataer",
+      "code": 974,
+      "tag": "K"
+    },
+    {
+      "name": "科科斯（基林）群岛",
+      "abbr": "CC",
+      "pinyin": "kekexiqundao",
+      "code": 61,
+      "tag": "K"
+    },
+    {
+      "name": "克罗地亚",
+      "abbr": "HR",
+      "pinyin": "keluodiya",
+      "code": 385,
+      "tag": "K"
+    },
+    {
+      "name": "科摩罗",
+      "abbr": "KM",
+      "pinyin": "kemoluo",
+      "code": 269,
+      "tag": "K"
+    },
+    {
+      "name": "肯尼亚",
+      "abbr": "KE",
+      "pinyin": "kenniya",
+      "code": 254,
+      "tag": "K"
+    },
+    {
+      "name": "科特迪瓦",
+      "abbr": "CI",
+      "pinyin": "ketediwa",
+      "code": 225,
+      "tag": "K"
+    },
+    {
+      "name": "科威特",
+      "abbr": "KW",
+      "pinyin": "keweite",
+      "code": 965,
+      "tag": "K"
+    },
+    {
+      "name": "库克群岛",
+      "abbr": "CK",
+      "pinyin": "kukequndao",
+      "code": 682,
+      "tag": "K"
+    },
+    {
+      "name": "库拉索",
+      "abbr": "CW",
+      "pinyin": "kulasuo",
+      "code": 599,
+      "tag": "K"
+    },
+    {
+      "name": "莱索托",
+      "abbr": "LS",
+      "pinyin": "laisuotuo",
+      "code": 266,
+      "tag": "L"
+    },
+    {
+      "name": "老挝人民民主共和国",
+      "abbr": "LA",
+      "pinyin": "laozhuarenminminzhugongheguo",
+      "code": 856,
+      "tag": "L"
+    },
+    {
+      "name": "拉脱维亚",
+      "abbr": "LV",
+      "pinyin": "latuoweiya",
+      "code": 371,
+      "tag": "L"
+    },
+    {
+      "name": "黎巴嫩",
+      "abbr": "LB",
+      "pinyin": "libanen",
+      "code": 961,
+      "tag": "L"
+    },
+    {
+      "name": "利比里亚",
+      "abbr": "LR",
+      "pinyin": "libiliya",
+      "code": 231,
+      "tag": "L"
+    },
+    {
+      "name": "利比亚",
+      "abbr": "LY",
+      "pinyin": "libiya",
+      "code": 218,
+      "tag": "L"
+    },
+    {
+      "name": "列支敦士登",
+      "abbr": "LI",
+      "pinyin": "liezhidunshideng",
+      "code": 423,
+      "tag": "L"
+    },
+    {
+      "name": "立陶宛",
+      "abbr": "LT",
+      "pinyin": "litaowan",
+      "code": 370,
+      "tag": "L"
+    },
+    {
+      "name": "留尼汪",
+      "abbr": "RE",
+      "pinyin": "liuniwang",
+      "code": 262,
+      "tag": "L"
+    },
+    {
+      "name": "罗马尼亚",
+      "abbr": "RO",
+      "pinyin": "luomaniya",
+      "code": 40,
+      "tag": "L"
+    },
+    {
+      "name": "卢森堡",
+      "abbr": "LU",
+      "pinyin": "lusenbao",
+      "code": 352,
+      "tag": "L"
+    },
+    {
+      "name": "卢旺达",
+      "abbr": "RW",
+      "pinyin": "luwangda",
+      "code": 250,
+      "tag": "L"
+    },
+    {
+      "name": "马达加斯加",
+      "abbr": "MG",
+      "pinyin": "madajiasijia",
+      "code": 261,
+      "tag": "M"
+    },
+    {
+      "name": "马尔代夫",
+      "abbr": "MV",
+      "pinyin": "maerdaifu",
+      "code": 960,
+      "tag": "M"
+    },
+    {
+      "name": "马耳他",
+      "abbr": "MT",
+      "pinyin": "maerta",
+      "code": 356,
+      "tag": "M"
+    },
+    {
+      "name": "马来西亚",
+      "abbr": "MY",
+      "pinyin": "malaixiya",
+      "code": 60,
+      "tag": "M"
+    },
+    {
+      "name": "马拉维",
+      "abbr": "MW",
+      "pinyin": "malawei",
+      "code": 265,
+      "tag": "M"
+    },
+    {
+      "name": "马里",
+      "abbr": "ML",
+      "pinyin": "mali",
+      "code": 223,
+      "tag": "M"
+    },
+    {
+      "name": "毛里求斯",
+      "abbr": "MU",
+      "pinyin": "maoliqiusi",
+      "code": 230,
+      "tag": "M"
+    },
+    {
+      "name": "毛里塔尼亚",
+      "abbr": "MR",
+      "pinyin": "maolitaniya",
+      "code": 222,
+      "tag": "M"
+    },
+    {
+      "name": "马其顿",
+      "abbr": "MK",
+      "pinyin": "maqidun",
+      "code": 389,
+      "tag": "M"
+    },
+    {
+      "name": "马绍尔群岛",
+      "abbr": "MH",
+      "pinyin": "mashaoerqundao",
+      "code": 692,
+      "tag": "M"
+    },
+    {
+      "name": "马提尼克",
+      "abbr": "MQ",
+      "pinyin": "matinike",
+      "code": 596,
+      "tag": "M"
+    },
+    {
+      "name": "马约特",
+      "abbr": "YT",
+      "pinyin": "mayuete",
+      "code": 262,
+      "tag": "M"
+    },
+    {
+      "name": "美属萨摩亚",
+      "abbr": "AS",
+      "pinyin": "meishusamoya",
+      "code": 1684,
+      "tag": "M"
+    },
+    {
+      "name": "美属维京群岛",
+      "abbr": "VI",
+      "pinyin": "meishuweijingqundao",
+      "code": 1340,
+      "tag": "M"
+    },
+    {
+      "name": "蒙古",
+      "abbr": "MN",
+      "pinyin": "menggu",
+      "code": 976,
+      "tag": "M"
+    },
+    {
+      "name": "孟加拉国",
+      "abbr": "BD",
+      "pinyin": "mengjialaguo",
+      "code": 880,
+      "tag": "M"
+    },
+    {
+      "name": "蒙特塞拉特",
+      "abbr": "MS",
+      "pinyin": "mengtesailate",
+      "code": 1664,
+      "tag": "M"
+    },
+    {
+      "name": "缅甸",
+      "abbr": "MM",
+      "pinyin": "miandian",
+      "code": 95,
+      "tag": "M"
+    },
+    {
+      "name": "密克罗尼西亚联邦",
+      "abbr": "FM",
+      "pinyin": "mikeluonixiyalianbang",
+      "code": 691,
+      "tag": "M"
+    },
+    {
+      "name": "摩尔多瓦",
+      "abbr": "MD",
+      "pinyin": "moerduowa",
+      "code": 373,
+      "tag": "M"
+    },
+    {
+      "name": "摩洛哥",
+      "abbr": "MA",
+      "pinyin": "moluoge",
+      "code": 212,
+      "tag": "M"
+    },
+    {
+      "name": "摩纳哥",
+      "abbr": "MC",
+      "pinyin": "monage",
+      "code": 377,
+      "tag": "M"
+    },
+    {
+      "name": "莫桑比克",
+      "abbr": "MZ",
+      "pinyin": "mosangbike",
+      "code": 258,
+      "tag": "M"
+    },
+    {
+      "name": "墨西哥",
+      "abbr": "MX",
+      "pinyin": "moxige",
+      "code": 52,
+      "tag": "M"
+    },
+    {
+      "name": "纳米比亚",
+      "abbr": "NA",
+      "pinyin": "namibiya",
+      "code": 264,
+      "tag": "N"
+    },
+    {
+      "name": "南非",
+      "abbr": "ZA",
+      "pinyin": "nanfei",
+      "code": 27,
+      "tag": "N"
+    },
+    {
+      "name": "南苏丹共和国",
+      "abbr": "SS",
+      "pinyin": "nansudangongheguo",
+      "code": 211,
+      "tag": "N"
+    },
+    {
+      "name": "瑙鲁",
+      "abbr": "NR",
+      "pinyin": "naolu",
+      "code": 674,
+      "tag": "N"
+    },
+    {
+      "name": "尼泊尔",
+      "abbr": "NP",
+      "pinyin": "niboer",
+      "code": 977,
+      "tag": "N"
+    },
+    {
+      "name": "尼加拉瓜",
+      "abbr": "NI",
+      "pinyin": "nijialagua",
+      "code": 505,
+      "tag": "N"
+    },
+    {
+      "name": "尼日尔",
+      "abbr": "NE",
+      "pinyin": "nirier",
+      "code": 227,
+      "tag": "N"
+    },
+    {
+      "name": "尼日利亚",
+      "abbr": "NG",
+      "pinyin": "niriliya",
+      "code": 234,
+      "tag": "N"
+    },
+    {
+      "name": "纽埃",
+      "abbr": "NU",
+      "pinyin": "niuai",
+      "code": 683,
+      "tag": "N"
+    },
+    {
+      "name": "诺福克岛",
+      "abbr": "NF",
+      "pinyin": "nuofukedao",
+      "code": 672,
+      "tag": "N"
+    },
+    {
+      "name": "挪威",
+      "abbr": "NO",
+      "pinyin": "nuowei",
+      "code": 47,
+      "tag": "N"
+    },
+    {
+      "name": "帕劳",
+      "abbr": "PW",
+      "pinyin": "palao",
+      "code": 680,
+      "tag": "P"
+    },
+    {
+      "name": "葡萄牙",
+      "abbr": "PT",
+      "pinyin": "putaoya",
+      "code": 351,
+      "tag": "P"
+    },
+    {
+      "name": "瑞典",
+      "abbr": "SE",
+      "pinyin": "ruidian",
+      "code": 46,
+      "tag": "R"
+    },
+    {
+      "name": "瑞士",
+      "abbr": "CH",
+      "pinyin": "ruishi",
+      "code": 41,
+      "tag": "R"
+    },
+    {
+      "name": "萨尔瓦多",
+      "abbr": "SV",
+      "pinyin": "saerwaduo",
+      "code": 503,
+      "tag": "S"
+    },
+    {
+      "name": "塞尔维亚",
+      "abbr": "RS",
+      "pinyin": "saierweiya",
+      "code": 381,
+      "tag": "S"
+    },
+    {
+      "name": "塞拉利昂",
+      "abbr": "SL",
+      "pinyin": "sailaliang",
+      "code": 232,
+      "tag": "S"
+    },
+    {
+      "name": "塞内加尔",
+      "abbr": "SN",
+      "pinyin": "saineijiaer",
+      "code": 221,
+      "tag": "S"
+    },
+    {
+      "name": "塞浦路斯",
+      "abbr": "CY",
+      "pinyin": "saipulusi",
+      "code": 357,
+      "tag": "S"
+    },
+    {
+      "name": "塞舌尔群岛",
+      "abbr": "SC",
+      "pinyin": "saisheerqundao",
+      "code": 248,
+      "tag": "S"
+    },
+    {
+      "name": "萨摩亚",
+      "abbr": "WS",
+      "pinyin": "samoya",
+      "code": 685,
+      "tag": "S"
+    },
+    {
+      "name": "沙特阿拉伯",
+      "abbr": "SA",
+      "pinyin": "shatealabo",
+      "code": 966,
+      "tag": "S"
+    },
+    {
+      "name": "圣巴泰勒米",
+      "abbr": "GP",
+      "pinyin": "shengbatailemi",
+      "code": 590,
+      "tag": "S"
+    },
+    {
+      "name": "圣诞岛",
+      "abbr": "CX",
+      "pinyin": "shengdandao",
+      "code": 61,
+      "tag": "S"
+    },
+    {
+      "name": "圣多美和普林西比",
+      "abbr": "ST",
+      "pinyin": "shengduomeihepulinxibi",
+      "code": 239,
+      "tag": "S"
+    },
+    {
+      "name": "圣赫勒拿",
+      "abbr": "SH",
+      "pinyin": "shenghelena",
+      "code": 290,
+      "tag": "S"
+    },
+    {
+      "name": "圣基茨和尼维斯",
+      "abbr": "KN",
+      "pinyin": "shengjiciheniweisi",
+      "code": 1869,
+      "tag": "S"
+    },
+    {
+      "name": "圣卢西亚",
+      "abbr": "LC",
+      "pinyin": "shengluxiya",
+      "code": 1758,
+      "tag": "S"
+    },
+    {
+      "name": "圣马力诺",
+      "abbr": "SM",
+      "pinyin": "shengmalinuo",
+      "code": 378,
+      "tag": "S"
+    },
+    {
+      "name": "圣皮埃尔和密克隆",
+      "abbr": "PM",
+      "pinyin": "shengpiaierhemikelong",
+      "code": 508,
+      "tag": "S"
+    },
+    {
+      "name": "圣文森特和格林纳丁斯",
+      "abbr": "VC",
+      "pinyin": "shengwensentehegelinnadingsi",
+      "code": 1784,
+      "tag": "S"
+    },
+    {
+      "name": "斯里兰卡",
+      "abbr": "LK",
+      "pinyin": "sililanka",
+      "code": 94,
+      "tag": "S"
+    },
+    {
+      "name": "斯洛伐克",
+      "abbr": "SK",
+      "pinyin": "siluofake",
+      "code": 421,
+      "tag": "S"
+    },
+    {
+      "name": "斯洛文尼亚",
+      "abbr": "SI",
+      "pinyin": "siluowenniya",
+      "code": 386,
+      "tag": "S"
+    },
+    {
+      "name": "斯瓦尔巴和扬马延",
+      "abbr": "SJ",
+      "pinyin": "siwaerbaheyangmadan",
+      "code": 47,
+      "tag": "S"
+    },
+    {
+      "name": "斯威士兰",
+      "abbr": "SZ",
+      "pinyin": "siweishilan",
+      "code": 268,
+      "tag": "S"
+    },
+    {
+      "name": "苏丹",
+      "abbr": "SD",
+      "pinyin": "sudan",
+      "code": 249,
+      "tag": "S"
+    },
+    {
+      "name": "苏里南",
+      "abbr": "SR",
+      "pinyin": "sulinan",
+      "code": 597,
+      "tag": "S"
+    },
+    {
+      "name": "所罗门群岛",
+      "abbr": "SB",
+      "pinyin": "suoluomenqundao",
+      "code": 677,
+      "tag": "S"
+    },
+    {
+      "name": "索马里",
+      "abbr": "SO",
+      "pinyin": "suomali",
+      "code": 252,
+      "tag": "S"
+    },
+    {
+      "name": "泰国",
+      "abbr": "TH",
+      "pinyin": "taiguo",
+      "code": 66,
+      "tag": "T"
+    },
+    {
+      "name": "塔吉克斯坦",
+      "abbr": "TJ",
+      "pinyin": "tajikesitan",
+      "code": 992,
+      "tag": "T"
+    },
+    {
+      "name": "汤加",
+      "abbr": "TO",
+      "pinyin": "tangjia",
+      "code": 676,
+      "tag": "T"
+    },
+    {
+      "name": "坦桑尼亚",
+      "abbr": "TZ",
+      "pinyin": "tansangniya",
+      "code": 255,
+      "tag": "T"
+    },
+    {
+      "name": "特克斯和凯科斯群岛",
+      "abbr": "TC",
+      "pinyin": "tekesihekaikesiqundao",
+      "code": 1649,
+      "tag": "T"
+    },
+    {
+      "name": "特立尼达和多巴哥",
+      "abbr": "TT",
+      "pinyin": "telinidaheduobage",
+      "code": 1868,
+      "tag": "T"
+    },
+    {
+      "name": "土耳其",
+      "abbr": "TR",
+      "pinyin": "tuerqi",
+      "code": 90,
+      "tag": "T"
+    },
+    {
+      "name": "土库曼斯坦",
+      "abbr": "TM",
+      "pinyin": "tukumansitan",
+      "code": 993,
+      "tag": "T"
+    },
+    {
+      "name": "突尼斯",
+      "abbr": "TN",
+      "pinyin": "tunisi",
+      "code": 216,
+      "tag": "T"
+    },
+    {
+      "name": "托克劳",
+      "abbr": "TK",
+      "pinyin": "tuokelao",
+      "code": 690,
+      "tag": "T"
+    },
+    {
+      "name": "图瓦卢",
+      "abbr": "TV",
+      "pinyin": "tuwalu",
+      "code": 688,
+      "tag": "T"
+    },
+    {
+      "name": "瓦利斯和富图纳",
+      "abbr": "WF",
+      "pinyin": "walisihefutuna",
+      "code": 681,
+      "tag": "W"
+    },
+    {
+      "name": "瓦努阿图",
+      "abbr": "VU",
+      "pinyin": "wanuatu",
+      "code": 678,
+      "tag": "W"
+    },
+    {
+      "name": "危地马拉",
+      "abbr": "GT",
+      "pinyin": "weidimala",
+      "code": 502,
+      "tag": "W"
+    },
+    {
+      "name": "委内瑞拉",
+      "abbr": "VE",
+      "pinyin": "weineiruila",
+      "code": 58,
+      "tag": "W"
+    },
+    {
+      "name": "文莱",
+      "abbr": "BN",
+      "pinyin": "wenlai",
+      "code": 673,
+      "tag": "W"
+    },
+    {
+      "name": "乌干达",
+      "abbr": "UG",
+      "pinyin": "wuganda",
+      "code": 256,
+      "tag": "W"
+    },
+    {
+      "name": "乌克兰",
+      "abbr": "UA",
+      "pinyin": "wukelan",
+      "code": 380,
+      "tag": "W"
+    },
+    {
+      "name": "乌拉圭",
+      "abbr": "UY",
+      "pinyin": "wulagui",
+      "code": 598,
+      "tag": "W"
+    },
+    {
+      "name": "乌兹别克斯坦",
+      "abbr": "UZ",
+      "pinyin": "wuzibiekesitan",
+      "code": 998,
+      "tag": "W"
+    },
+    {
+      "name": "西班牙",
+      "abbr": "ES",
+      "pinyin": "xibanya",
+      "code": 34,
+      "tag": "X"
+    },
+    {
+      "name": "希腊",
+      "abbr": "GR",
+      "pinyin": "xila",
+      "code": 30,
+      "tag": "X"
+    },
+    {
+      "name": "新加坡",
+      "abbr": "SG",
+      "pinyin": "xinjiapo",
+      "code": 65,
+      "tag": "X"
+    },
+    {
+      "name": "新喀里多尼亚",
+      "abbr": "NC",
+      "pinyin": "xinkaliduoniya",
+      "code": 687,
+      "tag": "X"
+    },
+    {
+      "name": "新西兰",
+      "abbr": "NZ",
+      "pinyin": "xinxilan",
+      "code": 64,
+      "tag": "X"
+    },
+    {
+      "name": "匈牙利",
+      "abbr": "HU",
+      "pinyin": "xiongyali",
+      "code": 36,
+      "tag": "X"
+    },
+    {
+      "name": "叙利亚",
+      "abbr": "SY",
+      "pinyin": "xuliya",
+      "code": 963,
+      "tag": "X"
+    },
+    {
+      "name": "牙买加",
+      "abbr": "JM",
+      "pinyin": "yamaijia",
+      "code": 1876,
+      "tag": "Y"
+    },
+    {
+      "name": "亚美尼亚",
+      "abbr": "AM",
+      "pinyin": "yameiniya",
+      "code": 374,
+      "tag": "Y"
+    },
+    {
+      "name": "也门",
+      "abbr": "YE",
+      "pinyin": "yemen",
+      "code": 967,
+      "tag": "Y"
+    },
+    {
+      "name": "意大利",
+      "abbr": "IT",
+      "pinyin": "yidali",
+      "code": 39,
+      "tag": "Y"
+    },
+    {
+      "name": "伊拉克",
+      "abbr": "IQ",
+      "pinyin": "yilake",
+      "code": 964,
+      "tag": "Y"
+    },
+    {
+      "name": "伊朗",
+      "abbr": "IR",
+      "pinyin": "yilang",
+      "code": 98,
+      "tag": "Y"
+    },
+    {
+      "name": "印度",
+      "abbr": "IN",
+      "pinyin": "yindu",
+      "code": 91,
+      "tag": "Y"
+    },
+    {
+      "name": "印度尼西亚",
+      "abbr": "ID",
+      "pinyin": "yindunixiya",
+      "code": 62,
+      "tag": "Y"
+    },
+    {
+      "name": "英属维京群岛",
+      "abbr": "VG",
+      "pinyin": "yingshuweijingqundao",
+      "code": 1284,
+      "tag": "Y"
+    },
+    {
+      "name": "以色列",
+      "abbr": "IL",
+      "pinyin": "yiselie",
+      "code": 972,
+      "tag": "Y"
+    },
+    {
+      "name": "约旦",
+      "abbr": "JO",
+      "pinyin": "yuedan",
+      "code": 962,
+      "tag": "Y"
+    },
+    {
+      "name": "越南",
+      "abbr": "VN",
+      "pinyin": "yuenan",
+      "code": 84,
+      "tag": "Y"
+    },
+    {
+      "name": "赞比亚",
+      "abbr": "ZM",
+      "pinyin": "zanbiya",
+      "code": 260,
+      "tag": "Z"
+    },
+    {
+      "name": "乍得",
+      "abbr": "TD",
+      "pinyin": "zhade",
+      "code": 235,
+      "tag": "Z"
+    },
+    {
+      "name": "直布罗陀",
+      "abbr": "GI",
+      "pinyin": "zhibuluotuo",
+      "code": 350,
+      "tag": "Z"
+    },
+    {
+      "name": "智利",
+      "abbr": "CL",
+      "pinyin": "zhili",
+      "code": 56,
+      "tag": "Z"
+    },
+    {
+      "name": "中非共和国",
+      "abbr": "CF",
+      "pinyin": "zhongfeigongheguo",
+      "code": 236,
+      "tag": "Z"
+    }
+  ]
+}

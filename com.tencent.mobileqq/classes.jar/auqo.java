@@ -1,51 +1,31 @@
-import android.os.CountDownTimer;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.mobileqq.portal.ProgressViewRed;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.view.animation.DecelerateInterpolator;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 
 class auqo
-  extends CountDownTimer
+  extends AnimatorListenerAdapter
 {
-  auqo(auqk paramauqk, long paramLong1, long paramLong2, long[] paramArrayOfLong)
-  {
-    super(paramLong1, paramLong2);
-  }
+  auqo(auqn paramauqn, auqr paramauqr, URLDrawable paramURLDrawable) {}
   
-  public void onFinish()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    PortalManager localPortalManager = (PortalManager)this.jdField_a_of_type_Auqk.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(79);
-    if (localPortalManager != null) {
-      localPortalManager.a();
-    }
-  }
-  
-  public void onTick(long paramLong)
-  {
-    if (auqk.a(this.jdField_a_of_type_Auqk).getVisibility() == 0)
+    if (this.jdField_a_of_type_Auqn.a() != null)
     {
-      this.jdField_a_of_type_Auqk.a(paramLong);
-      auqk.a(this.jdField_a_of_type_Auqk).a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_Auqk.jdField_a_of_type_JavaLangStringBuilder);
-    }
-    if (this.jdField_a_of_type_Auqk.jdField_a_of_type_ComTencentMobileqqPortalFormalView.getVisibility() == 0)
-    {
-      this.jdField_a_of_type_Auqk.a(paramLong);
-      this.jdField_a_of_type_Auqk.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a(paramLong, this.jdField_a_of_type_ArrayOfLong[0], this.jdField_a_of_type_Auqk.jdField_b_of_type_JavaLangStringBuilder);
-    }
-    paramLong = System.currentTimeMillis() - this.jdField_a_of_type_Auqk.jdField_b_of_type_Long;
-    if (paramLong > 2000L) {
-      this.jdField_a_of_type_Auqk.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(1);
-    }
-    while (paramLong <= 1000L) {
+      this.jdField_a_of_type_Auqr.b.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_Auqr.b, "alpha", new float[] { 0.2F, 1.0F });
+      paramAnimator.setInterpolator(new DecelerateInterpolator());
+      paramAnimator.setDuration(300L).start();
       return;
     }
-    this.jdField_a_of_type_Auqk.jdField_a_of_type_ComTencentMobileqqPortalFormalView.setHBSpeed(2);
+    this.jdField_a_of_type_Auqr.b.setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auqo
  * JD-Core Version:    0.7.0.1
  */

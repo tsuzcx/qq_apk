@@ -1,31 +1,46 @@
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.HotChatManager.HotChatStateWrapper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import java.util.Map;
 
-class bcir
-  implements bcix<oidb_0x8ed.RspBody>
+public class bcir
 {
-  bcir(bciq parambciq, bcix parambcix, HotChatInfo paramHotChatInfo) {}
+  public int a;
+  public long a;
+  public ByteStringMicro a;
+  public List<bbnr> a;
+  public Map<String, bbnr> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public int d = 0;
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  public bcir(bcil parambcil, long paramLong)
   {
-    if (this.jdField_a_of_type_Bcix != null) {
-      this.jdField_a_of_type_Bcix.a(paramInt, paramRspBody);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = ByteStringMicro.copyFromUtf8("");
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    if (paramLong == 0L) {
+      this.c = 0;
     }
-    paramRspBody = (HotChatManager)this.jdField_a_of_type_Bciq.app.getManager(60);
-    List localList = paramRspBody.a();
-    if (localList != null) {
-      localList.remove(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
+    for (;;)
+    {
+      this.c = i;
+      return;
+      i = 3;
     }
-    paramRspBody.a(this.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, HotChatManager.HotChatStateWrapper.STATE_HOT_CHAT_IS_DISBANDED);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcir
  * JD-Core Version:    0.7.0.1
  */

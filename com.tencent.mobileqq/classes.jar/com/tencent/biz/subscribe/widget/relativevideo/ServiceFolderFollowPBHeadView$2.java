@@ -1,6 +1,6 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
-import ajya;
+import alpo;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,7 +14,7 @@ class ServiceFolderFollowPBHeadView$2
     if (this.a > 0)
     {
       ServiceFolderFollowPBHeadView.a(this.this$0).setVisibility(0);
-      String str = this.a + ajya.a(2131707901);
+      String str = this.a + alpo.a(2131708273);
       ServiceFolderFollowPBHeadView.a(this.this$0).setText(str);
       return;
     }
@@ -23,7 +23,7 @@ class ServiceFolderFollowPBHeadView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView.2
  * JD-Core Version:    0.7.0.1
  */

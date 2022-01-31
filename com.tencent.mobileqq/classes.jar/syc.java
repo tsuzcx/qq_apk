@@ -1,70 +1,27 @@
-import android.content.Context;
-import android.util.SparseArray;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil.10.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
 
-public class syc
+public final class syc
+  implements BusinessObserver
 {
-  public static SparseArray<Class<? extends wco>> a = new SparseArray();
-  public static SparseArray<Boolean> b = new SparseArray();
+  syc(QQAppInterface paramQQAppInterface) {}
   
-  static
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    a.put(1, vcf.class);
-    b.put(1, Boolean.valueOf(true));
-    a.put(5, vcm.class);
-    b.put(5, Boolean.valueOf(true));
-  }
-  
-  public static wco a(Context paramContext, int paramInt)
-  {
-    Object localObject = (Class)a.get(paramInt, null);
-    Boolean localBoolean = (Boolean)b.get(paramInt, Boolean.valueOf(true));
-    if (localObject == null) {
-      throw new IllegalArgumentException(ajya.a(2131713707));
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
     }
-    if (localBoolean.booleanValue()) {
-      try
-      {
-        paramContext = (wco)((Class)localObject).getConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
-        return paramContext;
-      }
-      catch (NoSuchMethodException paramContext)
-      {
-        throw new IllegalStateException(ajya.a(2131713703), paramContext);
-      }
-      catch (IllegalAccessException paramContext)
-      {
-        throw new IllegalStateException(ajya.a(2131713706), paramContext);
-      }
-      catch (InstantiationException paramContext)
-      {
-        throw new IllegalStateException(ajya.a(2131713709), paramContext);
-      }
-      catch (InvocationTargetException paramContext)
-      {
-        throw new IllegalArgumentException(ajya.a(2131713705), paramContext);
-      }
-    }
-    try
-    {
-      localObject = (String)((Class)localObject).getDeclaredField("KEY").get(null);
-      return new vdh(paramContext, (String)localObject);
-    }
-    catch (NoSuchFieldException paramContext)
-    {
-      throw new IllegalStateException(ajya.a(2131713710), paramContext);
-    }
-    catch (IllegalAccessException paramContext)
-    {
-      throw new IllegalStateException(ajya.a(2131713704), paramContext);
-    }
+    ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountUtil.10.1(this, paramBoolean, paramBundle), 10L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     syc
  * JD-Core Version:    0.7.0.1
  */

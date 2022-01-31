@@ -1,60 +1,69 @@
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Intent;
+import android.util.Log;
+import com.tencent.biz.pubaccount.weishi_new.net.WeishiIntent;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class thd
+  extends MSFServlet
 {
-  public static int a(long paramLong1, long paramLong2)
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramLong1 < paramLong2) {
-      return -1;
+    if (paramIntent == null) {
+      Log.e("weishi", "***onReceive request is null");
     }
-    if (paramLong1 == paramLong2) {
-      return 0;
+    while ((!(paramIntent instanceof WeishiIntent)) || (((WeishiIntent)paramIntent).a == null)) {
+      return;
     }
-    return 1;
+    ((WeishiIntent)paramIntent).a.a.a(paramFromServiceMsg);
   }
   
-  public static tff a(@NonNull List<tff> paramList1, @NonNull List<tff> paramList2, @NonNull String paramString)
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    paramList2.clear();
-    tff localtff = null;
-    Iterator localIterator = paramList1.iterator();
-    paramList1 = localtff;
-    if (localIterator.hasNext())
+    if (paramIntent == null)
     {
-      localtff = (tff)localIterator.next();
-      if (a(localtff)) {
-        paramList2.add(localtff);
-      }
-      if ((paramList1 != null) || (!TextUtils.equals(paramString, localtff.jdField_a_of_type_JavaLangString))) {
-        break label76;
-      }
-      paramList1 = localtff;
+      Log.e("weishi", "onSend request is null");
+      return;
     }
-    label76:
     for (;;)
     {
-      break;
-      return paramList1;
+      try
+      {
+        if ((paramIntent instanceof WeishiIntent))
+        {
+          the localthe = ((WeishiIntent)paramIntent).a;
+          thb localthb = localthe.a;
+          byte[] arrayOfByte2 = localthb.encode();
+          byte[] arrayOfByte1 = arrayOfByte2;
+          if (arrayOfByte2 == null)
+          {
+            Log.e("weishi-Servlet", "onSend request encode result is null.cmd=" + localthe.a.uniKey());
+            arrayOfByte1 = new byte[4];
+          }
+          paramPacket.setTimeout(30000L);
+          Log.e("timeout", "timeout:30000");
+          paramPacket.setSSOCommand("SQQzoneSvc." + localthe.a.c());
+          Log.i("weishi-Servlet", "WNS命令字: " + "SQQzoneSvc." + localthe.a.c());
+          localthb.d = arrayOfByte1.length;
+          paramPacket.putSendData(arrayOfByte1);
+          Log.i("weishi-Servlet", "onSend request cmd=" + localthe.a.uniKey() + " is correct");
+          ((WeishiIntent)paramIntent).a.a.a = System.currentTimeMillis();
+          return;
+        }
+      }
+      catch (Exception paramIntent)
+      {
+        Log.e("weishi-Servlet", "onSend occur exception.Exception detail=" + Log.getStackTraceString(paramIntent));
+        return;
+      }
+      Log.e("weishi-Servlet", "onSend request instanceod WeishiIntent is false");
     }
-  }
-  
-  public static boolean a()
-  {
-    return Build.VERSION.SDK_INT > 19;
-  }
-  
-  public static boolean a(tff paramtff)
-  {
-    return (paramtff.jdField_a_of_type_Int == 5) || (paramtff.jdField_a_of_type_Int == 6) || (paramtff.jdField_a_of_type_Int == 7) || (paramtff.jdField_a_of_type_Int == 8) || (paramtff.jdField_a_of_type_Int == 9) || (paramtff.jdField_a_of_type_Int == 12) || (paramtff.jdField_a_of_type_Int == 13);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thd
  * JD-Core Version:    0.7.0.1
  */

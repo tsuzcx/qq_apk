@@ -1,12 +1,43 @@
-public abstract interface albh
+import com.tencent.common.app.AppInterface;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
+
+class albh
 {
-  public abstract void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong);
+  public int a;
+  public String a;
+  public final List<albi> a;
   
-  public abstract void a(float[] paramArrayOfFloat);
+  public albh()
+  {
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public JSONObject a(String paramString, AppInterface paramAppInterface)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramAppInterface == null)) {
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((albi)localIterator.next()).a(paramString, localJSONObject, paramAppInterface);
+    }
+    return localJSONObject;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mClientId:").append(this.jdField_a_of_type_Int).append(" mCmdSSOName:").append(this.jdField_a_of_type_JavaLangString).append(" mParameters:").append(this.jdField_a_of_type_JavaUtilList);
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     albh
  * JD-Core Version:    0.7.0.1
  */

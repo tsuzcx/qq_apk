@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import ajvg;
-import ajxv;
+import almt;
+import alpj;
 import android.util.Pair;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ class GroupIconHelper$CheckDisIconThread
     Object localObject4;
     label62:
     Object localObject7;
-    ajxv localajxv;
+    alpj localalpj;
     label319:
     label334:
     int j;
@@ -47,19 +47,19 @@ class GroupIconHelper$CheckDisIconThread
             break label604;
           }
           localObject7 = (String)localIterator.next();
-          localajxv = (ajxv)GroupIconHelper.a(this.this$0).get(localObject7);
-          if ((localajxv != null) && (localajxv.jdField_b_of_type_Int >= 8))
+          localalpj = (alpj)GroupIconHelper.a(this.this$0).get(localObject7);
+          if ((localalpj != null) && (localalpj.jdField_b_of_type_Int >= 8))
           {
-            if ((GroupIconHelper.a(this.this$0) instanceof ajvg)) {
-              ((ajvg)GroupIconHelper.a(this.this$0)).a(false, true, (String)localObject7);
+            if ((GroupIconHelper.a(this.this$0) instanceof almt)) {
+              ((almt)GroupIconHelper.a(this.this$0)).a(false, true, (String)localObject7);
             }
             if (!QLog.isColorLevel()) {
               continue;
             }
-            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon, maxCreateCnt: " + (String)localObject7 + ",crateIconCount=" + localajxv.jdField_b_of_type_Int);
+            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon, maxCreateCnt: " + (String)localObject7 + ",crateIconCount=" + localalpj.jdField_b_of_type_Int);
           }
         }
-        if ((localajxv != null) && (!localajxv.e))
+        if ((localalpj != null) && (!localalpj.e))
         {
           if (QLog.isColorLevel()) {
             QLog.d("Q.qqhead.dih", 2, "CheckDisIcon isFromCreate: " + (String)localObject7 + ",fromCreate is false");
@@ -67,10 +67,10 @@ class GroupIconHelper$CheckDisIconThread
         }
         else
         {
-          if ((localajxv == null) || (localajxv.jdField_a_of_type_JavaLangString == null) || (localajxv.jdField_a_of_type_Byte == 3)) {
+          if ((localalpj == null) || (localalpj.jdField_a_of_type_JavaLangString == null) || (localalpj.jdField_a_of_type_Byte == 3)) {
             break label866;
           }
-          if ((localajxv.jdField_a_of_type_Byte == 1) && (l - localajxv.jdField_a_of_type_Long >= GroupIconHelper.a(this.this$0)))
+          if ((localalpj.jdField_a_of_type_Byte == 1) && (l - localalpj.jdField_a_of_type_Long >= GroupIconHelper.a(this.this$0)))
           {
             if (localObject4 != null) {
               break label875;
@@ -80,25 +80,25 @@ class GroupIconHelper$CheckDisIconThread
               break label872;
             }
             localObject7 = GroupIconHelper.b((String)localObject7);
-            j = localajxv.jdField_a_of_type_JavaUtilArrayList.size();
-            localajxv.jdField_a_of_type_Byte = 2;
+            j = localalpj.jdField_a_of_type_JavaUtilArrayList.size();
+            localalpj.jdField_a_of_type_Byte = 2;
             if (j <= 0) {
               break label885;
             }
             bool2 = true;
             bool1 = bool2;
-            if (localajxv.jdField_b_of_type_JavaLangString != null)
+            if (localalpj.jdField_b_of_type_JavaLangString != null)
             {
-              String str = GroupIconHelper.a(localajxv.jdField_a_of_type_JavaUtilArrayList, false);
+              String str = GroupIconHelper.a(localalpj.jdField_a_of_type_JavaUtilArrayList, false);
               bool1 = bool2;
-              if (localajxv.jdField_b_of_type_JavaLangString.equals(str)) {
+              if (localalpj.jdField_b_of_type_JavaLangString.equals(str)) {
                 bool1 = false;
               }
             }
             bool2 = bool1;
             if (bool1)
             {
-              ((ArrayList)localObject4).add(Pair.create(localObject7, localajxv));
+              ((ArrayList)localObject4).add(Pair.create(localObject7, localalpj));
               GroupIconHelper.a(this.this$0).remove(localObject7);
             }
           }
@@ -117,12 +117,12 @@ class GroupIconHelper$CheckDisIconThread
     {
       if (QLog.isColorLevel())
       {
-        QLog.d("Q.qqhead.dih", 2, "CheckDisIcon expired: " + (String)localObject7 + ", isTryCreate: " + bool2 + localajxv.toString());
+        QLog.d("Q.qqhead.dih", 2, "CheckDisIcon expired: " + (String)localObject7 + ", isTryCreate: " + bool2 + localalpj.toString());
         break label878;
-        if ((localajxv.jdField_a_of_type_Byte == 2) && (l - localajxv.jdField_a_of_type_Long >= GroupIconHelper.b(this.this$0)))
+        if ((localalpj.jdField_a_of_type_Byte == 2) && (l - localalpj.jdField_a_of_type_Long >= GroupIconHelper.b(this.this$0)))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon timeout: " + (String)localObject7 + localajxv.toString());
+            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon timeout: " + (String)localObject7 + localalpj.toString());
           }
           if (localObject2 != null) {
             break label869;
@@ -136,7 +136,7 @@ class GroupIconHelper$CheckDisIconThread
             ((ArrayList)???).add(localObject7);
             i += 1;
             break label882;
-            if (localajxv.jdField_a_of_type_Byte == 3) {
+            if (localalpj.jdField_a_of_type_Byte == 3) {
               break label866;
             }
             i += 1;
@@ -147,7 +147,7 @@ class GroupIconHelper$CheckDisIconThread
               while ((j < ((ArrayList)localObject4).size()) && (this.a))
               {
                 localObject7 = (Pair)((ArrayList)localObject4).get(j);
-                GroupIconHelper.a(this.this$0, (String)((Pair)localObject7).first, (ajxv)((Pair)localObject7).second, true);
+                GroupIconHelper.a(this.this$0, (String)((Pair)localObject7).first, (alpj)((Pair)localObject7).second, true);
                 j += 1;
               }
             }

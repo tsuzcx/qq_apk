@@ -1,34 +1,32 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ugc.coverselect.GalleryFragment;
+import java.util.List;
 
 public class qra
-  extends npr
+  implements qoj<qnz>
 {
-  private qra(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
+  public qra(GalleryFragment paramGalleryFragment) {}
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public List<qnz> a(int paramInt1, int paramInt2)
   {
-    VideoFeedsPlayActivity.a("onGetVideoPlayCount isSuccess: " + paramBoolean);
-    if ((!paramBoolean) || (paramBundle == null)) {}
-    Object localObject;
-    do
+    return qny.b(paramInt1, paramInt2);
+  }
+  
+  public void a(List<qnz> paramList, boolean paramBoolean)
+  {
+    GalleryFragment.a(this.a).addAll(paramList);
+    GalleryFragment.a(this.a).notifyDataSetChanged();
+    if (GalleryFragment.a(this.a).isEmpty())
     {
-      do
-      {
-        return;
-        localObject = paramBundle.getString("VALUE_VIDEO_VID");
-      } while (localObject == null);
-      localObject = VideoFeedsRecommendFragment.a(this.a).b((String)localObject);
-    } while (localObject == null);
-    ((VideoInfo)localObject).s = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
-    VideoFeedsRecommendFragment.a(this.a).b((VideoInfo)localObject);
+      GalleryFragment.a(this.a).setVisibility(0);
+      return;
+    }
+    GalleryFragment.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qra
  * JD-Core Version:    0.7.0.1
  */

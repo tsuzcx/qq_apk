@@ -1,75 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.view.View;
 
 public class opi
-  implements AladdinConfigHandler
 {
-  private final String a = "reset_kandian_configuration";
-  private final String b = "reset_version";
-  
-  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  @TargetApi(16)
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
-    Map localMap = oof.a(paramString);
-    Object localObject2 = localMap.keySet();
-    Object localObject1 = "";
-    paramString = "";
-    Iterator localIterator = ((Set)localObject2).iterator();
-    String str;
-    if (localIterator.hasNext())
+    if (Build.VERSION.SDK_INT >= 16)
     {
-      str = (String)localIterator.next();
-      localObject2 = (String)localMap.get(str);
-      QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
-      if (TextUtils.equals(str, "reset_kandian_configuration"))
-      {
-        localObject1 = paramString;
-        paramString = (String)localObject2;
-      }
+      paramView.setBackground(paramDrawable);
+      return;
     }
-    for (;;)
-    {
-      localObject2 = paramString;
-      paramString = (String)localObject1;
-      localObject1 = localObject2;
-      break;
-      if (TextUtils.equals(str, "reset_version"))
-      {
-        paramString = (String)localObject1;
-        localObject1 = localObject2;
-        continue;
-        if ((TextUtils.equals("1", (CharSequence)localObject1)) && (!TextUtils.isEmpty(paramString))) {}
-        try
-        {
-          paramInt1 = Integer.valueOf(paramString).intValue();
-          bbkb.q(BaseApplicationImpl.getApplication(), paramInt1, onh.a());
-          return true;
-        }
-        catch (NumberFormatException paramString)
-        {
-          QLog.e("ResetAllConfigHandler", 1, "[onReceiveConfig] e = " + paramString);
-          return true;
-        }
-      }
-      localObject2 = paramString;
-      paramString = (String)localObject1;
-      localObject1 = localObject2;
-    }
-  }
-  
-  public void onWipeConfig(int paramInt)
-  {
-    QLog.d("ResetAllConfigHandler", 2, "[onWipeConfig] id=" + paramInt);
+    paramView.setBackgroundDrawable(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     opi
  * JD-Core Version:    0.7.0.1
  */

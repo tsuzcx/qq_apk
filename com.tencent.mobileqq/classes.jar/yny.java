@@ -1,39 +1,41 @@
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.tgpa.vendorpd.GameCallback;
-import org.json.JSONObject;
+import java.io.File;
 
-public final class yny
-  implements GameCallback
+class yny
+  implements ynu
 {
-  public yny(JSONObject paramJSONObject) {}
+  yny(ynx paramynx, ynw paramynw) {}
   
-  public int getPreDownloadVersionInfo(String paramString)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GameCenterCheck", 2, "checkGameRes.getGameVersionUpdateInfo res =" + paramString);
+      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
     }
-    try
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
     {
-      paramString = new JSONObject(paramString);
-      if (paramString.optInt("ret") == 0)
+      if (this.jdField_a_of_type_Ynw.a)
       {
-        paramString = paramString.optJSONObject("data");
-        bicy.a().a(paramString, this.a);
+        this.jdField_a_of_type_Ynx.jdField_a_of_type_Yol.b(this.jdField_a_of_type_Ynx);
+        return;
       }
-      return 0;
-    }
-    catch (Throwable paramString)
-    {
-      for (;;)
+      if (this.jdField_a_of_type_Ynx.jdField_a_of_type_JavaLangString != null)
       {
-        QLog.e("GameCenterCheck", 1, "checkGameRes.getPreDownloadVersionInfo e=" + paramString.toString());
+        l = System.currentTimeMillis();
+        this.jdField_a_of_type_Ynx.jdField_a_of_type_Ynm.a(paramString1, this.jdField_a_of_type_Ynx.jdField_a_of_type_JavaLangString, new ynz(this, l));
+        return;
       }
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Ynx.a(localFile, this.jdField_a_of_type_Ynx.b, new yob(this, l));
+      return;
     }
+    this.jdField_a_of_type_Ynx.d = paramString2;
+    this.jdField_a_of_type_Ynx.jdField_a_of_type_Yol.a(this.jdField_a_of_type_Ynx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yny
  * JD-Core Version:    0.7.0.1
  */

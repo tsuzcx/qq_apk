@@ -1,6 +1,6 @@
 {
     "ReadInjoy_native_recommend_video_cell":{
-        "view_type":"cell",
+        "view_type":"container",
         "view_id":"id_native_recommend_small_container",
         "layout_type":"layout_relative",
         "height":{

@@ -1,108 +1,25 @@
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
 
 public class akpt
+  implements DialogInterface.OnClickListener
 {
-  private static ConcurrentHashMap<String, akpt> d = new ConcurrentHashMap();
-  private MsgLruCache a;
-  protected ConcurrentHashMap<String, Object> a;
-  private ConcurrentHashMap<String, List<MessageRecord>> b = new ConcurrentHashMap();
-  private ConcurrentHashMap<String, List<MessageRecord>> c = new ConcurrentHashMap();
+  public akpt(ApolloWebGameActivity paramApolloWebGameActivity) {}
   
-  private akpt()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppMsgcacheMsgLruCache = new MsgLruCache();
-  }
-  
-  public static akpt a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null)
-    {
-      paramString = "null";
-      str = paramString;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("MsgPool", 2, "getPoolInstance curUin is null");
-        str = paramString;
-      }
-    }
-    paramString = (akpt)d.get(str);
-    if (paramString == null) {
-      synchronized (d)
-      {
-        if (!d.containsKey(str))
-        {
-          paramString = new akpt();
-          d.put(str, paramString);
-          return paramString;
-        }
-        paramString = (akpt)d.get(str);
-      }
-    }
-    return paramString;
-  }
-  
-  public static void a(String arg0)
-  {
-    String str = ???;
-    if (??? == null)
-    {
-      ??? = "null";
-      str = ???;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("MsgPool", 2, "getPoolInstance curUin is null");
-        str = ???;
-      }
-    }
-    synchronized (d)
-    {
-      if (d.containsKey(str)) {
-        ((akpt)d.remove(str)).a().destroy();
-      }
-      return;
-    }
-  }
-  
-  public MsgLruCache a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppMsgcacheMsgLruCache;
-  }
-  
-  public Object a(String arg1, int paramInt)
-  {
-    String str = akpx.a(???, paramInt);
-    if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {}
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      if (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(str)) {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, new Object());
-      }
-      return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-    }
-  }
-  
-  public ConcurrentHashMap<String, List<MessageRecord>> a()
-  {
-    if (akry.a) {
-      return this.jdField_a_of_type_ComTencentMobileqqAppMsgcacheMsgLruCache;
-    }
-    return this.b;
-  }
-  
-  public ConcurrentHashMap<String, List<MessageRecord>> b()
-  {
-    return this.c;
+    paramDialogInterface = new Intent(this.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", alef.Y);
+    this.a.startActivity(paramDialogInterface);
+    ApolloWebGameActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akpt
  * JD-Core Version:    0.7.0.1
  */

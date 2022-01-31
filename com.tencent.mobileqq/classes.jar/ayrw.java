@@ -1,32 +1,55 @@
-import com.tencent.TMG.utils.QLog;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
-class ayrw
-  implements aysc
+public class ayrw
+  implements ayrt
 {
-  private ayrw(ayru paramayru) {}
+  protected View a;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private List<ayru> jdField_a_of_type_JavaUtilList;
   
-  public void onResp(aysz paramaysz)
+  public ayrw(ViewGroup paramViewGroup, int paramInt)
   {
-    synchronized (ayru.a(this.a))
-    {
-      ayru.a(this.a, paramaysz.jdField_a_of_type_Int);
-      ayru.b(this.a, paramaysz.b);
-      this.a.jdField_a_of_type_JavaLangString = paramaysz.jdField_a_of_type_JavaLangString;
-      this.a.jdField_a_of_type_Int = paramaysz.c;
-      ayru.a(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("HttpInterfaceForTVKImp", 0, "onResp, result = " + ayru.a(this.a) + " , errorCode = " + ayru.b(this.a) + " , mErrDesc = " + this.a.jdField_a_of_type_JavaLangString + " , mHttpCode = " + this.a.jdField_a_of_type_Int);
-      }
-      ayru.a(this.a).notify();
-      return;
-    }
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(paramInt, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370702));
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131369588));
   }
   
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public LinearLayout a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
+  }
+  
+  public TextView a()
+  {
+    return a();
+  }
+  
+  public List<ayru> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public TextView b()
+  {
+    return this.jdField_a_of_type_AndroidWidgetTextView;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayrw
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.sharp.jni;
 
 import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import lga;
+import lid;
 
 class TraeAudioManager$speakerSwitchThread
   extends TraeAudioManager.switchThread
@@ -31,9 +31,9 @@ class TraeAudioManager$speakerSwitchThread
         }
         if ((this.b) && (i > 4))
         {
-          lga locallga = VideoController.a().a();
-          if (!locallga.N) {
-            QLog.w(this.jdField_a_of_type_JavaLangString, 1, "_run, 不需要打开扬声器, sessionInfo[" + locallga + "]");
+          lid locallid = VideoController.a().a();
+          if (!locallid.O) {
+            QLog.w(this.jdField_a_of_type_JavaLangString, 1, "_run, 不需要打开扬声器, sessionInfo[" + locallid + "]");
           }
         }
       }
@@ -69,7 +69,7 @@ class TraeAudioManager$speakerSwitchThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.sharp.jni.TraeAudioManager.speakerSwitchThread
  * JD-Core Version:    0.7.0.1
  */

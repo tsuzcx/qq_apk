@@ -1,20 +1,52 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-public final class adgr
-  implements bfph
+public class adgr
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public adgr(Activity paramActivity, bfpc parambfpc, String paramString, adgw paramadgw) {}
+  public adgr(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    AIOLongShotHelper.a(this.jdField_a_of_type_AndroidAppActivity, paramView, paramInt, this.jdField_a_of_type_Bfpc, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adgw);
+    int i = 1;
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.c(this.a).setContentDescription(alpo.a(2131719338));
+    }
+    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131719338), "qqsetting_notify_blncontrol_key", paramBoolean);
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
+    {
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 1);
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label147;
+      }
+      label89:
+      if (!paramBoolean) {
+        break label152;
+      }
+    }
+    label147:
+    label152:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      azmj.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Led_blinking", 0, i, paramCompoundButton, "", "", "");
+      return;
+      NotifyPushSettingActivity.a(this.a.getActivity(), this.a.app.getCurrentAccountUin(), "LED_light", 0);
+      break;
+      i = 0;
+      break label89;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adgr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,180 +1,80 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import android.graphics.PorterDuff.Mode;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import dov.com.qq.im.QIMCameraCaptureActivity;
+import dov.com.tencent.biz.qqstory.takevideo.linker.LinkerSummaryView;
 
 public class xnz
-  extends Dialog
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private xoc jdField_a_of_type_Xoc;
-  private boolean jdField_a_of_type_Boolean;
-  private View jdField_b_of_type_AndroidViewView;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private TextView c;
-  private TextView d;
-  private TextView e;
-  
-  public xnz(Context paramContext)
+  public static Intent a(Intent paramIntent, Bundle paramBundle, Activity paramActivity)
   {
-    super(paramContext, 2131755791);
-    super.setContentView(2131559046);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    a();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131377362);
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131377357);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365135));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365141));
-    this.c = ((TextView)super.findViewById(2131377360));
-    ((ImageView)super.findViewById(2131377361)).setColorFilter(-7745469, PorterDuff.Mode.MULTIPLY);
-    this.d = ((TextView)super.findViewById(2131377355));
-    ((ImageView)super.findViewById(2131377356)).setColorFilter(-909794, PorterDuff.Mode.MULTIPLY);
-    this.e = ((TextView)super.findViewById(2131376621));
-  }
-  
-  private void b(boolean paramBoolean)
-  {
-    int j = 8;
-    QLog.i("ShareToQZone", 2, "width:" + this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().width);
+    if (paramBundle == null) {
+      return paramIntent;
+    }
+    if (paramBundle.containsKey("ignorePersonalPublish")) {
+      paramIntent.putExtra("ignorePersonalPublish", paramBundle.getBoolean("ignorePersonalPublish"));
+    }
+    paramIntent.putExtra("troop_uin", paramBundle.getInt("troop_uin", 0));
+    paramIntent.putExtra("entrance_type", paramBundle.getInt("entrance_type"));
+    paramIntent.putExtra("shareGroupType", paramBundle.getString("shareGroupType"));
+    paramIntent.putExtra("shareGroupId", paramBundle.getString("shareGroupId"));
+    paramIntent.putExtra("shareGroupName", paramBundle.getString("shareGroupName"));
     Object localObject;
-    if (paramBoolean)
+    if (paramBundle.getString("widgetinfo") != null)
     {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      localObject = this.jdField_b_of_type_AndroidViewView;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label126;
+      paramIntent.putExtra("qq_camera_scheme", bngr.a(paramBundle.getString("widgetinfo")));
+      paramIntent.putExtra("widgetinfo", paramBundle.getString("widgetinfo"));
+      localObject = paramBundle.getString("key_camera_material_name");
+      blfg.b("StoryIntentUtils", "passStoryRecordExtrasToIntent---takeSameName=" + (String)localObject);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break label439;
       }
-      i = 8;
-      label65:
-      ((View)localObject).setVisibility(i);
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label131;
+      paramIntent.putExtra("key_camera_material_name", (String)localObject);
+      paramIntent.putExtra("qq_camera_top_title", (String)localObject);
+    }
+    for (;;)
+    {
+      paramIntent.putExtra("key_scheme_request_from_business_type", paramBundle.getString("key_scheme_request_from_business_type"));
+      if ((paramActivity instanceof QIMCameraCaptureActivity))
+      {
+        localObject = (ViewGroup)((QIMCameraCaptureActivity)paramActivity).a();
+        if ((localObject != null) && (((ViewGroup)localObject).findViewById(2131379617) != null))
+        {
+          localObject = (LinkerSummaryView)((ViewGroup)localObject).findViewById(2131379617);
+          if ((localObject == null) || (((LinkerSummaryView)localObject).jdField_a_of_type_Bmvb == null)) {
+            break;
+          }
+          paramIntent.putExtra("share_url_target_url", ((LinkerSummaryView)localObject).jdField_a_of_type_Bmvb.jdField_a_of_type_JavaLangString);
+          paramIntent.putExtra("share_url_name", ((LinkerSummaryView)localObject).jdField_a_of_type_Bmvb.b);
+          paramIntent.putExtra("share_url_text", ((LinkerSummaryView)localObject).jdField_a_of_type_Bmvb.c);
+          paramIntent.putExtra("share_url_thumb_url", ((LinkerSummaryView)localObject).jdField_a_of_type_Bmvb.d);
+          paramIntent.putExtra("struct_share_key_source_name", ((LinkerSummaryView)localObject).b);
+          paramIntent.putExtra("struct_share_key_source_icon", ((LinkerSummaryView)localObject).jdField_a_of_type_JavaLangString);
+        }
       }
-      i = 0;
-      label86:
-      ((View)localObject).setVisibility(i);
-      localObject = this.e;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label137;
+      if (((paramActivity instanceof NewPhotoListActivity)) || ((paramActivity instanceof NewPhotoPreviewActivity)))
+      {
+        paramIntent.putExtra("share_url_target_url", paramBundle.getString("share_url_target_url"));
+        paramIntent.putExtra("share_url_name", paramBundle.getString("share_url_name"));
+        paramIntent.putExtra("share_url_text", paramBundle.getString("share_url_text"));
+        paramIntent.putExtra("share_url_thumb_url", paramBundle.getString("share_url_thumb_url"));
+        paramIntent.putExtra("struct_share_key_source_name", paramBundle.getString("struct_share_key_source_name"));
+        paramIntent.putExtra("struct_share_key_source_icon", paramBundle.getString("struct_share_key_source_icon"));
       }
-    }
-    label131:
-    label137:
-    for (int i = j;; i = 0)
-    {
-      ((TextView)localObject).setVisibility(i);
-      return;
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      break;
-      label126:
-      i = 0;
-      break label65;
-      i = 8;
-      break label86;
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.d != null) {
-      this.d.setText(paramInt);
-    }
-  }
-  
-  public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new xoa(this, paramOnClickListener));
-  }
-  
-  public void a(xoc paramxoc)
-  {
-    this.jdField_a_of_type_Xoc = paramxoc;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.e != null)
-    {
-      if (paramInt != 0) {
-        this.e.setText(paramInt);
-      }
-    }
-    else {
-      return;
-    }
-    this.e.setText("");
-  }
-  
-  public void b(String paramString, DialogInterface.OnClickListener paramOnClickListener)
-  {
-    if (paramOnClickListener == null)
-    {
-      b(false);
-      return;
-    }
-    b(true);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new xob(this, paramOnClickListener));
-  }
-  
-  public void c(int paramInt)
-  {
-    if (this.c != null) {
-      this.c.setText(paramInt);
-    }
-  }
-  
-  public void dismiss()
-  {
-    try
-    {
-      super.dismiss();
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public void onBackPressed()
-  {
-    QLog.i("ShareResultDialog", 2, "onBackPressed");
-    super.onBackPressed();
-    xoc localxoc;
-    if (this.jdField_a_of_type_Xoc != null)
-    {
-      localxoc = this.jdField_a_of_type_Xoc;
-      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 0) {
-        break label44;
-      }
-    }
-    label44:
-    for (boolean bool = true;; bool = false)
-    {
-      localxoc.a(bool);
-      return;
+      paramIntent.putExtra("video_tag_info", paramBundle.getString("video_tag_info"));
+      return paramIntent;
+      label439:
+      paramIntent.putExtra("qq_camera_top_title", "魔法视频");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xnz
  * JD-Core Version:    0.7.0.1
  */

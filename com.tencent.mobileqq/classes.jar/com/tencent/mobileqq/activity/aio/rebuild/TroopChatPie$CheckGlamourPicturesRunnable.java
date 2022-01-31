@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
 import android.content.Context;
-import baly;
+import bckl;
 import mqq.util.WeakReference;
 
 public class TroopChatPie$CheckGlamourPicturesRunnable
@@ -20,12 +20,12 @@ public class TroopChatPie$CheckGlamourPicturesRunnable
     if (localContext == null) {
       return;
     }
-    baly.a(localContext);
+    bckl.a(localContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie.CheckGlamourPicturesRunnable
  * JD-Core Version:    0.7.0.1
  */

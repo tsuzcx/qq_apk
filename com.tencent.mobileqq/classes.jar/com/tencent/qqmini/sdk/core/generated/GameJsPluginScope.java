@@ -9,20 +9,26 @@ public final class GameJsPluginScope
 {
   public static final Map EVENT_HANDLERS_GameDataJsPlugin;
   public static final Map EVENT_HANDLERS_ImmersiveJsPlugin;
+  public static final Map EVENT_HANDLERS_MiniGameUIJsPlugin;
   public static final Map EVENT_HANDLERS_OpenDataJsPlugin;
   public static final Map EVENT_HANDLERS_SubpackageJsPlugin;
   public static final Map EVENT_HANDLERS_UDPJsPlugin;
   public static final Map EVENT_HANDLERS_UpdateManagerJsPlugin;
+  public static final Map EVENT_HANDLERS_VideoJsPlugin;
   public static final Map EVENT_HANDLERS_WebAudioPlugin;
   public static final Map PLUGIN_EVENTS;
   public static final List PRELOAD_PLUGINS = new ArrayList();
+  public static final Map SECONDARY_PLUGIN_EVENTS;
   public static final Map SERVICE_INJECTORS_GameDataJsPlugin;
   public static final Map SERVICE_INJECTORS_OpenDataJsPlugin;
   
   static
   {
     PLUGIN_EVENTS = new HashMap();
+    SECONDARY_PLUGIN_EVENTS = new HashMap();
+    EVENT_HANDLERS_VideoJsPlugin = new HashMap();
     EVENT_HANDLERS_WebAudioPlugin = new HashMap();
+    EVENT_HANDLERS_MiniGameUIJsPlugin = new HashMap();
     EVENT_HANDLERS_OpenDataJsPlugin = new HashMap();
     SERVICE_INJECTORS_OpenDataJsPlugin = new HashMap();
     EVENT_HANDLERS_GameDataJsPlugin = new HashMap();
@@ -32,6 +38,11 @@ public final class GameJsPluginScope
     EVENT_HANDLERS_UDPJsPlugin = new HashMap();
     EVENT_HANDLERS_UpdateManagerJsPlugin = new HashMap();
     PRELOAD_PLUGINS.add("com.tencent.qqmini.sdk.minigame.plugins.OrientationJsPlugin");
+    EVENT_HANDLERS_VideoJsPlugin.put("insertVideoPlayer", "insertVideoPlayer");
+    EVENT_HANDLERS_VideoJsPlugin.put("updateVideoPlayer", "updateVideoPlayer");
+    EVENT_HANDLERS_VideoJsPlugin.put("operateVideoPlayer", "operateVideoPlayer");
+    EVENT_HANDLERS_VideoJsPlugin.put("removeVideoPlayer", "removeVideoPlayer");
+    PLUGIN_EVENTS.put("com.tencent.qqmini.sdk.minigame.plugins.VideoJsPlugin", EVENT_HANDLERS_VideoJsPlugin);
     EVENT_HANDLERS_WebAudioPlugin.put("createWebAudioContext", "createWebAudioContext");
     EVENT_HANDLERS_WebAudioPlugin.put("closeWebAudioContext", "closeWebAudioContext");
     EVENT_HANDLERS_WebAudioPlugin.put("operateWebAudioContext", "operateWebAudioContext");
@@ -52,7 +63,13 @@ public final class GameJsPluginScope
     EVENT_HANDLERS_WebAudioPlugin.put("audioBufferCopyToChannel", "audioBufferCopyToChannel");
     EVENT_HANDLERS_WebAudioPlugin.put("createWebAudioScriptProcessor", "createWebAudioScriptProcessor");
     EVENT_HANDLERS_WebAudioPlugin.put("audioProcessingEventSetQueueBuffer", "audioProcessingEventSetQueueBuffer");
+    EVENT_HANDLERS_WebAudioPlugin.put("webAudioConnectAudioNode", "webAudioConnectAudioNode");
     PLUGIN_EVENTS.put("com.tencent.qqmini.sdk.minigame.plugins.WebAudioPlugin", EVENT_HANDLERS_WebAudioPlugin);
+    EVENT_HANDLERS_MiniGameUIJsPlugin.put("showToast", "showToast");
+    EVENT_HANDLERS_MiniGameUIJsPlugin.put("hideToast", "hideToastOrLoading");
+    EVENT_HANDLERS_MiniGameUIJsPlugin.put("hideLoading", "hideToastOrLoading");
+    EVENT_HANDLERS_MiniGameUIJsPlugin.put("showLoading", "showLoading");
+    PLUGIN_EVENTS.put("com.tencent.qqmini.sdk.minigame.plugins.MiniGameUIJsPlugin", EVENT_HANDLERS_MiniGameUIJsPlugin);
     EVENT_HANDLERS_OpenDataJsPlugin.put("onMessage", "onMessage");
     EVENT_HANDLERS_OpenDataJsPlugin.put("getUserCloudStorage", "getUserCloudStorage");
     EVENT_HANDLERS_OpenDataJsPlugin.put("getFriendCloudStorage", "getFriendCloudStorage");
@@ -90,7 +107,7 @@ public final class GameJsPluginScope
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.GameJsPluginScope
  * JD-Core Version:    0.7.0.1
  */

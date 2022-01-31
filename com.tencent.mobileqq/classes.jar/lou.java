@@ -1,20 +1,21 @@
-import java.nio.ByteBuffer;
-
 public class lou
 {
-  public int a;
-  public ByteBuffer a;
-  public boolean a;
-  
-  public lou(ByteBuffer paramByteBuffer, int paramInt)
+  public static int a(String paramString)
   {
-    this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
-    this.jdField_a_of_type_Int = paramInt;
+    if ((paramString == null) || (paramString.equals("both"))) {}
+    do
+    {
+      return 0;
+      if (paramString.equals("top")) {
+        return 1;
+      }
+    } while (!paramString.equals("bottom"));
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lou
  * JD-Core Version:    0.7.0.1
  */

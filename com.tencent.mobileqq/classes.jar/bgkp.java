@@ -1,196 +1,45 @@
-import android.app.Activity;
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.PluginStatic;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.groupvideo.GVideoPluginInstallerActivity;
-import cooperation.groupvideo.GVideoProxyActivity;
-import cooperation.plugin.PluginInfo;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface.OnClickListener;
 
 public class bgkp
 {
-  public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  public static bgmu a(Context paramContext, int paramInt)
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    try
-    {
-      paramString = Class.forName("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
-      paramBaseApplicationImpl = paramString;
-    }
-    catch (ClassNotFoundException paramString)
-    {
-      for (;;)
-      {
-        try
-        {
-          QLog.e("GroupVideoLog", 1, "*createGroupVideoAppInterface load class fail");
-          return null;
-        }
-        catch (ClassNotFoundException paramBaseApplicationImpl)
-        {
-          paramBaseApplicationImpl.printStackTrace();
-        }
-        paramString = paramString;
-        paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "group_video_plugin.apk");
-        paramBaseApplicationImpl = paramString.loadClass("com.gvideo.com.tencent.av.app.GroupVideoAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, paramString);
-      }
-      do
-      {
-        return null;
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppInterface)));
-      paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
-    }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    if (paramBaseApplicationImpl != null) {}
+    return a(paramContext, paramInt, null, null, 2131694326, 2131694350, null, null);
   }
   
-  public static void a(AppRuntime paramAppRuntime, ServiceConnection paramServiceConnection)
+  public static bgmu a(Context paramContext, int paramInt, String paramString1, CharSequence paramCharSequence, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    if ((paramAppRuntime == null) || (paramServiceConnection == null)) {
-      return;
-    }
-    try
-    {
-      paramAppRuntime.getApplication().unbindService(paramServiceConnection);
-      return;
-    }
-    catch (IllegalArgumentException paramAppRuntime)
-    {
-      QLog.d("GroupVideoHelper", 2, "unbindService error" + paramAppRuntime.getMessage());
-    }
+    paramContext = new bgmu(paramContext, 2131755761);
+    paramContext.setContentView(2131559342);
+    paramContext.a(paramString1);
+    paramContext.a(paramCharSequence);
+    paramContext.a(paramString2, paramOnClickListener2);
+    paramContext.b(paramString3, paramOnClickListener1);
+    paramContext.setCanceledOnTouchOutside(false);
+    return paramContext;
   }
   
-  public static void a(AppRuntime paramAppRuntime, Class paramClass, ServiceConnection paramServiceConnection, String paramString)
+  public static bgmu a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    if ((paramAppRuntime == null) || (paramServiceConnection == null)) {
-      return;
-    }
-    paramClass = new Intent(paramAppRuntime.getApplication(), paramClass);
-    paramClass.putExtra("useSkinEngine", 1);
-    paramClass.putExtra("userQqResources", 2);
-    bglq localbglq = new bglq(1);
-    localbglq.b = "group_video_plugin.apk";
-    localbglq.d = PluginInfo.k;
-    localbglq.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localbglq.e = paramString;
-    localbglq.jdField_a_of_type_AndroidContentIntent = paramClass;
-    localbglq.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    bglh.c(paramAppRuntime.getApplication(), localbglq);
+    paramContext = new bgmu(paramContext, 2131755761);
+    paramContext.setContentView(2131559342);
+    paramContext.a(paramString1);
+    paramContext.a(paramString2);
+    paramContext.a(paramInt2, paramOnClickListener2);
+    paramContext.b(paramInt3, paramOnClickListener1);
+    paramContext.setCanceledOnTouchOutside(false);
+    return paramContext;
   }
   
-  public static boolean a(Context paramContext)
+  public static bgmu a(Context paramContext, int paramInt, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    if (paramContext != null)
-    {
-      paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-      if (paramContext != null)
-      {
-        paramContext = paramContext.iterator();
-        while (paramContext.hasNext()) {
-          if ("com.tencent.mobileqq:groupvideo".compareTo(((ActivityManager.RunningAppProcessInfo)paramContext.next()).processName) == 0) {
-            return true;
-          }
-        }
-      }
-    }
-    return false;
-  }
-  
-  public static boolean a(AppInterface paramAppInterface, Activity paramActivity, Intent paramIntent, int paramInt)
-  {
-    if ((paramAppInterface == null) || (paramActivity == null)) {
-      return false;
-    }
-    if ((paramIntent != null) && (paramIntent.getIntExtra("Type", 0) == 0)) {
-      paramIntent.putExtra("isInviteMode", true);
-    }
-    for (;;)
-    {
-      GVideoProxyActivity.a(paramActivity, paramIntent, GVideoProxyActivity.a(paramActivity), "com.gvideo.com.tencent.av.ui.GroupVideoActivity", paramAppInterface.getCurrentAccountUin(), paramInt);
-      return true;
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent, int paramInt)
-  {
-    if ((paramQQAppInterface == null) || (!(paramContext instanceof Activity))) {
-      return false;
-    }
-    paramContext = (Activity)paramContext;
-    bglh localbglh = (bglh)paramQQAppInterface.getManager(27);
-    if (localbglh == null) {
-      return false;
-    }
-    if (localbglh.isPlugininstalled("group_video_plugin.apk")) {
-      return a(paramQQAppInterface, paramContext, paramIntent, paramInt);
-    }
-    paramIntent.setClass(paramContext, GVideoPluginInstallerActivity.class);
-    paramContext.startActivityForResult(paramIntent, paramInt);
-    return true;
+    return a(paramContext, paramInt, paramString1, paramString2, 2131694326, 2131694350, paramOnClickListener1, paramOnClickListener2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgkp
  * JD-Core Version:    0.7.0.1
  */

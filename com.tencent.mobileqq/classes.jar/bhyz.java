@@ -1,40 +1,78 @@
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.util.QZLog;
-import cooperation.vip.ar.util.VipARUtils.4;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.PointF;
+import android.graphics.drawable.shapes.Shape;
 
 public class bhyz
-  implements ModuleDownloadListener
+  extends Shape
 {
-  public bhyz(VipARUtils.4 param4) {}
+  private int jdField_a_of_type_Int;
+  Path jdField_a_of_type_AndroidGraphicsPath = new Path();
   
-  public void onDownloadCanceled(String paramString)
+  public bhyz(int paramInt)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadCanceled ", paramString });
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onDownloadFailed(String paramString)
+  private void a(float paramFloat1, float paramFloat2, int paramInt)
   {
-    QZLog.i("VipARUtils", 4, new Object[] { "onDownloadFailed ", paramString });
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    QZLog.i("VipARUtils", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (!paramString.equals("libTar.so")) {
-      return;
+    PointF localPointF1 = null;
+    PointF localPointF3;
+    PointF localPointF2;
+    if (paramInt == 33)
+    {
+      localPointF3 = new PointF(0.0F, paramFloat2);
+      localPointF2 = new PointF(paramFloat1, paramFloat2);
+      localPointF1 = new PointF(paramFloat1 / 2.0F, 0.0F);
     }
-    QZLog.i("VipARUtils", 4, new Object[] { "url = ", bhyv.c(), " onDownloadSucceed = ", bhyv.d() });
-    LocalMultiProcConfig.putString("VipARUtils_SO_md5", bhyv.d());
+    for (;;)
+    {
+      if (localPointF3 != null) {
+        this.jdField_a_of_type_AndroidGraphicsPath.moveTo(localPointF3.x, localPointF3.y);
+      }
+      if (localPointF2 != null) {
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localPointF2.x, localPointF2.y);
+      }
+      if (localPointF1 != null) {
+        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(localPointF1.x, localPointF1.y);
+      }
+      return;
+      if (paramInt == 34)
+      {
+        localPointF3 = new PointF(0.0F, 0.0F);
+        localPointF2 = new PointF(paramFloat1, 0.0F);
+        localPointF1 = new PointF(paramFloat1 / 2.0F, paramFloat2);
+      }
+      else if (paramInt == 35)
+      {
+        localPointF3 = new PointF(0.0F, 0.0F);
+        localPointF2 = new PointF(0.0F, paramFloat2);
+        localPointF1 = new PointF(paramFloat1, paramFloat2 / 2.0F);
+      }
+      else if (paramInt == 36)
+      {
+        localPointF3 = new PointF(paramFloat1, 0.0F);
+        localPointF2 = new PointF(0.0F, paramFloat2 / 2.0F);
+        localPointF1 = new PointF(paramFloat1, paramFloat2);
+      }
+      else
+      {
+        localPointF2 = null;
+        localPointF3 = null;
+      }
+    }
+  }
+  
+  public void draw(Canvas paramCanvas, Paint paramPaint)
+  {
+    a(getWidth(), getHeight(), this.jdField_a_of_type_Int);
+    paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, paramPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhyz
  * JD-Core Version:    0.7.0.1
  */

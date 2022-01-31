@@ -1,36 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.os.Build.VERSION;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.ttpic.videoshelf.ui.VideoShelfPlayView;
+import dov.com.qq.im.ae.play.AEVideoShelfPreviewFragment;
 
-class bldc
-  extends BroadcastReceiver
+public class bldc
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  bldc(bldb parambldb) {}
+  public bldc(AEVideoShelfPreviewFragment paramAEVideoShelfPreviewFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onGlobalLayout()
   {
-    if (paramIntent.getAction() == null) {}
-    do
+    if (Build.VERSION.SDK_INT >= 16) {
+      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    }
+    for (;;)
     {
-      do
-      {
-        return;
-        paramContext = this.a.jdField_a_of_type_JavaLangString;
-        this.a.b();
-      } while ((this.a.jdField_a_of_type_Bldd == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
-      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
-      {
-        this.a.a();
-        this.a.jdField_a_of_type_Bldd.a(0, this.a.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
-    this.a.jdField_a_of_type_Bldd.a(1, this.a.jdField_a_of_type_JavaLangString);
+      AEVideoShelfPreviewFragment.a(this.a).updateVideoSize(AEVideoShelfPreviewFragment.a(this.a).getVideoWidth(), AEVideoShelfPreviewFragment.a(this.a).getVideoHeight());
+      return;
+      AEVideoShelfPreviewFragment.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bldc
  * JD-Core Version:    0.7.0.1
  */

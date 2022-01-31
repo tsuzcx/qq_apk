@@ -1,29 +1,27 @@
-import android.util.LruCache;
-import com.tencent.mobileqq.data.MessageForPoke;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import mqq.app.AppActivity;
 
-class adqf
-  extends LruCache<Long, MessageForPoke>
+public class adqf
+  implements DialogInterface.OnClickListener
 {
-  adqf(adqe paramadqe, int paramInt)
-  {
-    super(paramInt);
-  }
+  public adqf(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, AppActivity paramAppActivity) {}
   
-  protected void a(boolean paramBoolean, Long paramLong, MessageForPoke paramMessageForPoke1, MessageForPoke paramMessageForPoke2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramMessageForPoke1 != null) && (!paramMessageForPoke1.isPlayed))
+    if (paramInt == 1)
     {
-      paramMessageForPoke1.setPlayed(this.a.b);
-      paramMessageForPoke1.mFrameState.a = false;
-      paramMessageForPoke1.mFrameState.c = true;
-      paramMessageForPoke1.mUnlimitedState.a = false;
-      paramMessageForPoke1.mUnlimitedState.b = true;
+      RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity, true);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.a.a(this.jdField_a_of_type_MqqAppAppActivity, false)) {
+        RegisterPhoneNumActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity).b();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqf
  * JD-Core Version:    0.7.0.1
  */

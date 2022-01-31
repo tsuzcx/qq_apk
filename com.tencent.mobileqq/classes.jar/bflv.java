@@ -1,38 +1,58 @@
-public abstract interface bflv
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.export.js.VipDownloadInterface;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class bflv
+  implements bfki
 {
-  public abstract void a(int paramInt);
+  public bflv(VipDownloadInterface paramVipDownloadInterface, String paramString) {}
   
-  public abstract void a(int paramInt1, int paramInt2);
+  public void a(int paramInt, String paramString)
+  {
+    bfhg.e(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction ERROR");
+  }
   
-  public abstract void a(int paramInt, String paramString);
-  
-  public abstract void a(int paramInt, String paramString, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public abstract void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(long paramLong, int paramInt);
-  
-  public abstract void a(long paramLong, int paramInt, String paramString);
-  
-  public abstract void a(long paramLong, boolean paramBoolean);
-  
-  public abstract void a(long paramLong, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3);
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, long paramLong);
-  
-  public abstract void a(String paramString1, String paramString2);
-  
-  public abstract void a(boolean paramBoolean);
-  
-  public abstract void b(int paramInt, String paramString);
+  public void a(List<DownloadInfo> paramList)
+  {
+    bfhg.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "getQueryDownloadAction onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
+    }
+    paramList = "javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getQueryDownloadAction',{\"guid\": " + this.jdField_a_of_type_JavaLangString + ", \"r\" : 0, \"data\":" + localJSONArray.toString() + "});}void(0);";
+    bfhg.c(this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.jdField_a_of_type_JavaLangString, "querySucess : " + paramList);
+    this.jdField_a_of_type_ComTencentOpenExportJsVipDownloadInterface.a(paramList);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bflv
  * JD-Core Version:    0.7.0.1
  */

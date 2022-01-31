@@ -92,8 +92,7 @@
                                 "margin_left":"8",
                                 "margin_bottom":"21",
                                 "height": {
-                                    "type": "absolutely",
-                                    "value": "44"
+                                    "type": "wrap_content"
                                 },
                                 "width": {
                                     "type": "relative",
@@ -276,8 +275,7 @@
                                 "margin_left":"8",
                                 "margin_bottom":"21",
                                 "height": {
-                                    "type": "absolutely",
-                                    "value": "44"
+                                    "type": "wrap_content"
                                 },
                                 "width": {
                                     "type": "relative",

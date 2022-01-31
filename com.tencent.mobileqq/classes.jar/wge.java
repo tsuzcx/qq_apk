@@ -1,41 +1,28 @@
-import android.os.CountDownTimer;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
 
 public class wge
-  extends CountDownTimer
+  extends uhw<wfn, uzs>
 {
-  public wge(QRDisplayActivity paramQRDisplayActivity, long paramLong1, long paramLong2)
+  public wge(wfn paramwfn)
   {
-    super(paramLong1, paramLong2);
+    super(paramwfn);
   }
   
-  public void onFinish()
+  public void a(@NonNull wfn paramwfn, @NonNull uzs paramuzs)
   {
-    QRDisplayActivity.a(this.a, true);
-    if (QRDisplayActivity.a(this.a) == null)
-    {
-      QRDisplayActivity.b(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QRDisplayActivity", 4, "enter longclick");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (QRDisplayActivity.a(this.a) == null);
-      QRDisplayActivity.c(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("QRDisplayActivity", 4, "enter longclickstop");
+    wfn.a(paramwfn, paramuzs.a, this.TAG);
   }
   
-  public void onTick(long paramLong) {}
+  public Class acceptEventClass()
+  {
+    return uzs.class;
+  }
+  
+  public void b(@NonNull wfn paramwfn, @NonNull uzs paramuzs) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wge
  * JD-Core Version:    0.7.0.1
  */

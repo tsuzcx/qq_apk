@@ -1,148 +1,99 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.util.SparseArray;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 
-public class avwo
-  extends avxd
+class avwo
+  implements View.OnTouchListener
 {
-  private SparseArray<avwq> a = new SparseArray();
-  private Handler jdField_b_of_type_AndroidOsHandler = new avwp(this, a());
-  private String jdField_b_of_type_JavaLangString;
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private float b;
   
-  public avwo(Context paramContext)
-  {
-    super(paramContext);
-    int i = ((Activity)paramContext).getIntent().getIntExtra("forward_source_uin_type", -1);
-    if (i == 0)
-    {
-      this.jdField_b_of_type_JavaLangString = "c2c";
-      return;
-    }
-    if (i == 1)
-    {
-      this.jdField_b_of_type_JavaLangString = "grp";
-      return;
-    }
-    if (i == 3000)
-    {
-      this.jdField_b_of_type_JavaLangString = "dis";
-      return;
-    }
-    this.jdField_b_of_type_JavaLangString = "other";
-  }
+  avwo(avwn paramavwn) {}
   
-  private avwq a(int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    avwq localavwq2 = (avwq)this.a.get(paramInt);
-    avwq localavwq1 = localavwq2;
-    if (localavwq2 == null)
+    avxd localavxd;
+    float f2;
+    float f1;
+    if (avwn.a(this.jdField_a_of_type_Avwn) != null)
     {
-      localavwq1 = new avwq(paramInt, this.jdField_b_of_type_JavaLangString);
-      this.a.put(paramInt, localavwq1);
-    }
-    return localavwq1;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_AndroidOsHandler.obtainMessage().sendToTarget();
-  }
-  
-  public void a(int paramInt)
-  {
-    avwq.a(a(paramInt));
-  }
-  
-  public void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    avwq localavwq = (avwq)this.a.get(paramInt);
-    String str;
-    if (localavwq != null)
-    {
-      paramInt = avxf.a(paramLong1, paramLong2);
-      str = null;
-      switch (paramInt)
+      paramView = (avxc)avwn.a(this.jdField_a_of_type_Avwn).getTag(2131362774);
+      localavxd = (avxd)avwn.a(this.jdField_a_of_type_Avwn).getTag();
+      if ((paramView != null) && (localavxd != null))
       {
+        f2 = paramMotionEvent.getX();
+        f1 = paramMotionEvent.getY();
       }
     }
-    for (;;)
+    switch (paramMotionEvent.getAction())
     {
-      avwq.b(localavwq, str);
-      return;
-      str = "long";
-      continue;
-      str = "small";
-      continue;
-      str = "mid";
-      continue;
-      str = "large";
-      continue;
-      str = "extra";
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    avwq localavwq = (avwq)this.a.get(paramInt);
-    if (localavwq != null) {
-      avwq.d(localavwq, paramString);
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    avwq localavwq = (avwq)this.a.get(paramInt);
-    if (localavwq != null) {
-      avwq.a(localavwq, paramBoolean);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    avwq localavwq = (avwq)this.a.get(paramInt);
-    if ((localavwq != null) && (avwq.a(localavwq))) {
-      avwq.b(localavwq);
-    }
-  }
-  
-  public void b(int paramInt, boolean paramBoolean)
-  {
-    avwq localavwq = (avwq)this.a.get(paramInt);
-    if (localavwq != null) {
-      if (!paramBoolean) {
-        break label33;
+    default: 
+    case 0: 
+    case 2: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return true;
+            this.jdField_a_of_type_Float = f2;
+            this.b = f1;
+            this.jdField_a_of_type_Long = System.currentTimeMillis();
+          } while ((paramView.jdField_a_of_type_Int != 1) || (paramView.b != 2));
+          localavxd.a.setPressed(true);
+          return true;
+        } while ((paramView.jdField_a_of_type_Int != 1) || (paramView.b != 2));
+        f2 -= this.jdField_a_of_type_Float;
+        f1 -= this.b;
+      } while ((float)Math.sqrt(f2 * f2 + f1 * f1) < avwn.a(this.jdField_a_of_type_Avwn).getScaledTouchSlop());
+      localavxd.a.setPressed(false);
+      return true;
+    case 1: 
+      f2 -= this.jdField_a_of_type_Float;
+      f1 -= this.b;
+      f2 = (float)Math.sqrt(f2 * f2 + f1 * f1);
+      long l1 = System.currentTimeMillis();
+      long l2 = this.jdField_a_of_type_Long;
+      if (f2 < avwn.a(this.jdField_a_of_type_Avwn).getScaledTouchSlop()) {
+        if (paramView.b == 2)
+        {
+          avwn.a(this.jdField_a_of_type_Avwn).removeMessages(101);
+          avwn.a(this.jdField_a_of_type_Avwn).obtainMessage(101).sendToTarget();
+          if (paramView.jdField_a_of_type_Avwz != null) {
+            paramView.jdField_a_of_type_Avwz.a();
+          }
+        }
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Float = 0.0F;
+        this.b = 0.0F;
+        this.jdField_a_of_type_Long = 0L;
+        localavxd.a.setPressed(false);
+        return true;
+        if ((f2 > avwn.a(this.jdField_a_of_type_Avwn).getScaledTouchSlop()) && (f1 > 50.0F) && ((float)(l1 - l2) < 300.0F) && (paramView.jdField_a_of_type_Int == 1))
+        {
+          avwn.a(this.jdField_a_of_type_Avwn).removeMessages(101);
+          avwn.a(this.jdField_a_of_type_Avwn).obtainMessage(101).sendToTarget();
+        }
       }
     }
-    label33:
-    for (String str = "dynamic";; str = "static")
-    {
-      avwq.c(localavwq, str);
-      return;
-    }
-  }
-  
-  public void c(int paramInt)
-  {
-    avwq localavwq = (avwq)this.a.get(paramInt);
-    if ((localavwq != null) && (avwq.a(localavwq))) {
-      avwq.c(localavwq);
-    }
-  }
-  
-  public void d(int paramInt)
-  {
-    avwq localavwq = (avwq)this.a.get(paramInt);
-    if ((localavwq != null) && (avwq.a(localavwq))) {
-      avwq.a(localavwq, "sender");
-    }
+    this.jdField_a_of_type_Float = 0.0F;
+    this.b = 0.0F;
+    this.jdField_a_of_type_Long = 0L;
+    localavxd.a.setPressed(false);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avwo
  * JD-Core Version:    0.7.0.1
  */

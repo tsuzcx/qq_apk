@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.richstatus.sign;
 
-import awfm;
+import ayap;
 
 public class BaseSignViewHolder$3
   implements Runnable
 {
-  public BaseSignViewHolder$3(awfm paramawfm) {}
+  public BaseSignViewHolder$3(ayap paramayap) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class BaseSignViewHolder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.sign.BaseSignViewHolder.3
  * JD-Core Version:    0.7.0.1
  */

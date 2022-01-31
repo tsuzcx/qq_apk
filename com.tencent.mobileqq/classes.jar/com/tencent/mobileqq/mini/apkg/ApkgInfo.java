@@ -247,60 +247,20 @@ public class ApkgInfo
   
   public void init(String paramString)
   {
-    MiniAppInfo localMiniAppInfo = null;
     if (paramString != null) {}
     for (;;)
     {
       try
       {
         this.mConfigStr = FileUtils.readFileToString(new File(getApkgFolderPath() + "/" + paramString, "app-config.json"));
-        JSONObject localJSONObject = new JSONObject(this.mConfigStr);
-        paramString = new JSONObject();
-        paramString.put("USER_DATA_PATH", "wxfile://usr");
-        localJSONObject.put("env", paramString);
-        String str2 = localJSONObject.optString("entryPagePath");
-        if (this.appConfig == null) {
-          break label255;
-        }
-        LaunchParam localLaunchParam2 = this.appConfig.launchParam;
-        if (localLaunchParam2 == null) {
-          break label250;
-        }
-        paramString = localLaunchParam2.entryPath;
-        str1 = paramString;
-        localLaunchParam1 = localLaunchParam2;
-        if (this.appConfig.config != null)
-        {
-          localMiniAppInfo = this.appConfig.config;
-          localLaunchParam1 = localLaunchParam2;
-          str1 = paramString;
-        }
-        if (isUrlFileExist(str1)) {
-          break label245;
-        }
-        paramString = str2;
-        localJSONObject.put("appLaunchInfo", AppBrandUtil.getAppLaunchInfo(paramString, localLaunchParam1, localMiniAppInfo));
-        this.mConfigStr = localJSONObject.toString();
-        this.mAppConfigInfo = AppConfigInfo.parseAppConfig(this.mConfigStr, this);
-        AuthorizeCenter.updateScopeDescription(this.mAppConfigInfo.permissionInfo);
+        updateConfigStr(this.mConfigStr);
         return;
       }
       catch (Throwable paramString)
       {
         paramString.printStackTrace();
-        return;
       }
       this.mConfigStr = FileUtils.readFileToString(new File(getApkgFolderPath(), "app-config.json"));
-      continue;
-      label245:
-      paramString = str1;
-      continue;
-      label250:
-      paramString = null;
-      continue;
-      label255:
-      String str1 = null;
-      LaunchParam localLaunchParam1 = null;
     }
   }
   
@@ -376,6 +336,60 @@ public class ApkgInfo
     }
   }
   
+  public void updateConfigStr(String paramString)
+  {
+    MiniAppInfo localMiniAppInfo = null;
+    for (;;)
+    {
+      try
+      {
+        this.mConfigStr = paramString;
+        JSONObject localJSONObject = new JSONObject(this.mConfigStr);
+        paramString = new JSONObject();
+        paramString.put("USER_DATA_PATH", "wxfile://usr");
+        localJSONObject.put("env", paramString);
+        String str2 = localJSONObject.optString("entryPagePath");
+        if (this.appConfig == null) {
+          break label191;
+        }
+        LaunchParam localLaunchParam2 = this.appConfig.launchParam;
+        if (localLaunchParam2 != null)
+        {
+          paramString = localLaunchParam2.entryPath;
+          str1 = paramString;
+          localLaunchParam1 = localLaunchParam2;
+          if (this.appConfig.config != null)
+          {
+            localMiniAppInfo = this.appConfig.config;
+            localLaunchParam1 = localLaunchParam2;
+            str1 = paramString;
+          }
+          if (!isUrlFileExist(str1))
+          {
+            paramString = str2;
+            localJSONObject.put("appLaunchInfo", AppBrandUtil.getAppLaunchInfo(paramString, localLaunchParam1, localMiniAppInfo));
+            this.mConfigStr = localJSONObject.toString();
+            this.mAppConfigInfo = AppConfigInfo.parseAppConfig(this.mConfigStr, this);
+            AuthorizeCenter.updateScopeDescription(this.mAppConfigInfo.permissionInfo);
+            return;
+          }
+          paramString = str1;
+          continue;
+        }
+        paramString = null;
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      continue;
+      label191:
+      String str1 = null;
+      LaunchParam localLaunchParam1 = null;
+    }
+  }
+  
   public void updateMiniConfig(MiniAppConfig paramMiniAppConfig)
   {
     String str = this.appConfig.config.version;
@@ -386,7 +400,7 @@ public class ApkgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgInfo
  * JD-Core Version:    0.7.0.1
  */

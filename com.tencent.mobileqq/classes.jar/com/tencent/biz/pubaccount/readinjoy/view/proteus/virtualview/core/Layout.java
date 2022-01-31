@@ -323,9 +323,7 @@ public abstract class Layout
     }
     for (;;)
     {
-      if (this.mBorderRadius != 0) {
-        localPaintDrawable.setCornerRadius(this.mBorderRadius);
-      }
+      localPaintDrawable.setCornerRadii(new float[] { this.mBorderTopLeftRadius, this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderTopRightRadius, this.mBorderBottomRightRadius, this.mBorderBottomRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomLeftRadius });
       paramGradientColorBg = new LinearGradient(0.0F, 0.0F, j, i, paramGradientColorBg.startColor, paramGradientColorBg.endColor, Shader.TileMode.CLAMP);
       Paint localPaint = localPaintDrawable.getPaint();
       if (localPaint != null) {
@@ -347,7 +345,7 @@ public abstract class Layout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,93 +1,44 @@
 import android.content.Context;
-import android.content.res.Resources;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-public class atfr
-  extends PopupWindow
+class atfr
+  implements ymm
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new atfs(this);
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private atft jdField_a_of_type_Atft;
-  private String jdField_a_of_type_JavaLangString;
+  atfr(atfq paramatfq, String paramString) {}
   
-  public atfr(Context paramContext, int paramInt1, int paramInt2)
+  public void callback(Bundle paramBundle)
   {
-    super(paramContext);
-    this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_Int = paramInt2;
-    setWidth(this.jdField_a_of_type_Int);
-    setHeight((int)(this.jdField_a_of_type_Float * 42.0F + 0.5D));
-    View localView = LayoutInflater.from(paramContext).inflate(2131559396, null);
-    setContentView(localView);
-    a(paramContext, localView, paramInt1);
-    setOutsideTouchable(true);
-  }
-  
-  private void a(Context paramContext, View paramView, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378517));
-    this.jdField_a_of_type_AndroidWidgetTextView.getTextSize();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363516));
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)paramView.findViewById(2131368029).getLayoutParams();
-    int i = (int)(10.0F * this.jdField_a_of_type_Float + 0.5D);
-    if (paramInt <= 0) {
-      localLayoutParams.leftMargin = 0;
-    }
-    for (;;)
+    if (paramBundle.getBoolean("isSuccess", false))
     {
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      setBackgroundDrawable(paramContext.getResources().getDrawable(2130849558));
-      return;
-      if (paramInt < (this.jdField_a_of_type_Int - i) / 2)
-      {
-        localLayoutParams.leftMargin = ((int)((this.jdField_a_of_type_Float * 40.0F - i) / 2.0F) + paramInt);
+      int i = paramBundle.getInt("appid");
+      Object localObject = paramBundle.getString("openId");
+      if ((i != this.jdField_a_of_type_Atfq.jdField_a_of_type_JavaLangInteger.intValue()) || (!((String)localObject).equals(this.jdField_a_of_type_Atfq.jdField_a_of_type_JavaLangString))) {
+        break label120;
       }
-      else if (paramInt > paramContext.getResources().getDisplayMetrics().widthPixels - (int)(this.jdField_a_of_type_Float * 40.0F + 0.5D) - (this.jdField_a_of_type_Int - i) / 2)
+      paramBundle = paramBundle.getString("uin");
+      if (!TextUtils.isEmpty(paramBundle))
       {
-        int j = this.jdField_a_of_type_Int;
-        localLayoutParams.leftMargin = ((int)((this.jdField_a_of_type_Float * 40.0F - i) / 2.0F) + (j + paramInt) - paramContext.getResources().getDisplayMetrics().widthPixels);
-      }
-      else
-      {
-        localLayoutParams.leftMargin = ((int)((this.jdField_a_of_type_Int - i) / 2 + 0.5D));
+        localObject = new Intent(this.jdField_a_of_type_Atfq.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(), FriendProfileCardActivity.class);
+        ((Intent)localObject).putExtra("troopUin", this.jdField_a_of_type_JavaLangString);
+        ((Intent)localObject).putExtra("memberUin", paramBundle);
+        this.jdField_a_of_type_Atfq.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a().startActivity((Intent)localObject);
       }
     }
-  }
-  
-  public void a(atft paramatft)
-  {
-    this.jdField_a_of_type_Atft = paramatft;
-  }
-  
-  public void a(InterestTagInfo paramInterestTagInfo)
-  {
-    if (paramInterestTagInfo == null) {
+    label120:
+    while (!QLog.isColorLevel()) {
       return;
     }
-    if (!TextUtils.isEmpty(paramInterestTagInfo.tagName))
-    {
-      this.jdField_a_of_type_JavaLangString = paramInterestTagInfo.tagName;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_Long = paramInterestTagInfo.tagId;
+    QLog.d("UiApiPlugin", 2, "appId != appID || !openId.equals(openID)");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atfr
  * JD-Core Version:    0.7.0.1
  */

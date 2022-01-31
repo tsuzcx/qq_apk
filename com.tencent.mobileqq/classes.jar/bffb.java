@@ -1,203 +1,101 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
-import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.NonNull;
-import android.view.ContextThemeWrapper;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.NumberPicker;
-import android.widget.TextView;
-import android.widget.TimePicker;
-import java.lang.reflect.Field;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.open.appcommon.js.HttpInterface;
+import com.tencent.smtt.sdk.WebView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bffb
-  extends Dialog
-  implements DialogInterface.OnCancelListener, View.OnClickListener
+  implements bfic
 {
-  private int jdField_a_of_type_Int;
-  private NumberPicker jdField_a_of_type_AndroidWidgetNumberPicker;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private TimePicker jdField_a_of_type_AndroidWidgetTimePicker;
-  private bffd jdField_a_of_type_Bffd;
-  private int jdField_b_of_type_Int;
-  private NumberPicker jdField_b_of_type_AndroidWidgetNumberPicker;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int c;
-  private int d;
+  protected final WebView a;
+  protected final String a;
+  protected final boolean a;
+  protected final String b;
+  protected final String c;
   
-  public bffb(@NonNull Context paramContext)
+  public bffb(HttpInterface paramHttpInterface, WebView paramWebView, String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    super(paramContext, 2131755360);
-    a(paramContext);
+    this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
+    this.b = paramString3;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.c = paramString1;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  private void a(Context paramContext)
+  public void a(Exception paramException)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559259, null);
-    setContentView(paramContext);
-    Object localObject = getWindow();
-    if (localObject != null)
-    {
-      ((Window)localObject).getDecorView().setPadding(0, 0, 0, 0);
-      WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
-      localLayoutParams.width = -1;
-      localLayoutParams.height = -2;
-      ((Window)localObject).setAttributes(localLayoutParams);
-      ((Window)localObject).setGravity(80);
+    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
+      return;
     }
-    localObject = (FrameLayout)paramContext.findViewById(2131371655);
-    this.jdField_a_of_type_AndroidWidgetTimePicker = new TimePicker(new ContextThemeWrapper(getContext(), 16973934));
-    ((FrameLayout)localObject).addView(this.jdField_a_of_type_AndroidWidgetTimePicker);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378081));
-    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131378111));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    int i = Resources.getSystem().getIdentifier("hour", "id", "android");
-    int j = Resources.getSystem().getIdentifier("minute", "id", "android");
-    int k = Resources.getSystem().getIdentifier("amPm", "id", "android");
-    this.jdField_a_of_type_AndroidWidgetNumberPicker = ((NumberPicker)this.jdField_a_of_type_AndroidWidgetTimePicker.findViewById(i));
-    this.jdField_b_of_type_AndroidWidgetNumberPicker = ((NumberPicker)this.jdField_a_of_type_AndroidWidgetTimePicker.findViewById(j));
-    paramContext = (NumberPicker)this.jdField_a_of_type_AndroidWidgetTimePicker.findViewById(k);
-    a(this.jdField_a_of_type_AndroidWidgetNumberPicker);
-    a(this.jdField_b_of_type_AndroidWidgetNumberPicker);
-    a(paramContext);
-    setOnCancelListener(this);
+    bfhg.c("HttpInterface", "onException >>> ");
+    paramException = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
+    bffg localbffg = new bffg();
+    localbffg.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    paramException.obj = localbffg;
+    paramException.arg1 = 0;
+    if (TextUtils.isEmpty(this.b)) {}
+    for (localbffg.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");; localbffg.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"\"});void(0);"))
+    {
+      this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(paramException);
+      return;
+    }
   }
   
-  private void a(NumberPicker paramNumberPicker)
+  public void a(JSONObject paramJSONObject)
   {
-    Field[] arrayOfField = NumberPicker.class.getDeclaredFields();
-    int j = arrayOfField.length;
-    int i = 0;
+    if ((!this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.hasRight()) || (this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler == null)) {
+      return;
+    }
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    Message localMessage = this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.obtainMessage(0);
+    localbffg = new bffg();
+    localbffg.jdField_a_of_type_ComTencentSmttSdkWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    localMessage.obj = localbffg;
+    localMessage.arg1 = 0;
     for (;;)
     {
-      Field localField;
-      if (i < j)
+      try
       {
-        localField = arrayOfField[i];
-        if (localField.getName().equals("mSelectionDivider")) {
-          localField.setAccessible(true);
+        if (!this.jdField_a_of_type_Boolean) {
+          continue;
         }
+        localJSONObject.put("guid", this.c);
+        paramJSONObject = localJSONObject.toString();
+        bfhg.a("HttpInterface", "onResult >>> " + paramJSONObject);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          continue;
+        }
+        localbffg.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpSuccess'," + paramJSONObject + ");}void(0);");
       }
-      else
+      catch (JSONException paramJSONObject)
       {
-        try
-        {
-          localField.set(paramNumberPicker, new ColorDrawable(bfgh.a("#3CB371")));
-          return;
+        if (!TextUtils.isEmpty(this.b)) {
+          continue;
         }
-        catch (IllegalArgumentException paramNumberPicker)
-        {
-          paramNumberPicker.printStackTrace();
-          return;
-        }
-        catch (Resources.NotFoundException paramNumberPicker)
-        {
-          paramNumberPicker.printStackTrace();
-          return;
-        }
-        catch (IllegalAccessException paramNumberPicker)
-        {
-          paramNumberPicker.printStackTrace();
-          return;
-        }
+        localbffg.jdField_a_of_type_JavaLangString = ("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('httpError',{\"guid\":\"" + this.c + "\"});}void(0);");
+        continue;
+        localbffg.jdField_a_of_type_JavaLangString = ("javascript:" + this.b + "({\"guid\":\"" + this.c + "\",\"err\":\"json format error\"});void(0);");
+        continue;
       }
-      i += 1;
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      if (isShowing()) {
-        dismiss();
-      }
+      this.jdField_a_of_type_ComTencentOpenAppcommonJsHttpInterface.mHandler.sendMessage(localMessage);
       return;
+      paramJSONObject = new JSONObject();
+      paramJSONObject.put("guid", this.c);
+      paramJSONObject.put("content", localJSONObject.toString());
+      paramJSONObject = paramJSONObject.toString();
+      continue;
+      localbffg.jdField_a_of_type_JavaLangString = ("javascript:" + this.jdField_a_of_type_JavaLangString + "(" + paramJSONObject + ");void(0);");
     }
-    catch (Exception localException) {}
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetNumberPicker.setMaxValue(paramInt);
-  }
-  
-  public void a(int paramInt1, int paramInt2, bffd parambffd)
-  {
-    this.jdField_a_of_type_AndroidWidgetTimePicker.setCurrentHour(Integer.valueOf(paramInt1));
-    this.jdField_a_of_type_AndroidWidgetTimePicker.setCurrentMinute(Integer.valueOf(paramInt2));
-    this.jdField_a_of_type_AndroidWidgetTimePicker.setOnTimeChangedListener(new bffc(this));
-    this.jdField_a_of_type_Bffd = parambffd;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_AndroidWidgetTimePicker.setIs24HourView(Boolean.valueOf(paramBoolean));
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_a_of_type_AndroidWidgetNumberPicker.setMinValue(paramInt);
-  }
-  
-  public void c(int paramInt)
-  {
-    this.c = paramInt;
-  }
-  
-  public void d(int paramInt)
-  {
-    this.d = paramInt;
-  }
-  
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    if (this.jdField_a_of_type_Bffd != null) {
-      this.jdField_a_of_type_Bffd.onTimeCancel();
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    if (paramView.getId() == 2131378081)
-    {
-      if (this.jdField_a_of_type_Bffd != null) {
-        this.jdField_a_of_type_Bffd.onTimeCancel();
-      }
-      a();
-    }
-    while (paramView.getId() != 2131378111) {
-      return;
-    }
-    if (this.jdField_a_of_type_Bffd != null)
-    {
-      Object localObject = String.valueOf(this.jdField_a_of_type_Int);
-      paramView = (View)localObject;
-      if (this.jdField_a_of_type_Int < 10) {
-        paramView = "0" + (String)localObject;
-      }
-      String str = String.valueOf(this.jdField_b_of_type_Int);
-      localObject = str;
-      if (this.jdField_b_of_type_Int < 10) {
-        localObject = "0" + str;
-      }
-      this.jdField_a_of_type_Bffd.onTimeConfirm(paramView, (String)localObject);
-    }
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bffb
  * JD-Core Version:    0.7.0.1
  */

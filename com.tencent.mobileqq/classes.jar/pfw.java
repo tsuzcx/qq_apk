@@ -1,107 +1,165 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.model.FollowListInfoModule.1;
+import com.tencent.biz.pubaccount.readinjoy.model.FollowListInfoModule.2;
+import com.tencent.biz.pubaccount.readinjoy.model.FollowListInfoModule.4;
+import com.tencent.biz.pubaccount.readinjoy.model.FollowListInfoModule.6;
+import com.tencent.biz.pubaccount.readinjoy.model.FollowListInfoModule.8;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.ArrayList;
 import java.util.List;
-import org.json.JSONObject;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.FollowListInfo;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.ReqBody;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.ReqFollowPara;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.RspBody;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.RspFollowData;
 
 public class pfw
-  implements php
+  extends pgp
 {
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<qkw> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean = true;
+  private long jdField_b_of_type_Long;
+  private List<qkv> jdField_b_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_b_of_type_Boolean = true;
+  private long jdField_c_of_type_Long;
+  private List<qkw> jdField_c_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_c_of_type_Boolean = true;
+  private String j = "";
+  private String k = "";
+  
+  public pfw(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    return null;
+    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
   }
   
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mKdLiveInfo == null) || (paramBaseArticleInfo.mSubArtilceList == null) || (paramBaseArticleInfo.mSubArtilceList.get(0) == null) || (((ArticleInfo)paramBaseArticleInfo.mSubArtilceList.get(0)).mKdLiveInfo == null)) {
-      return new JSONObject();
-    }
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("style_ID", "ReadInJoy_live_double_video_cell");
-    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)paramBaseArticleInfo.mSubArtilceList.get(0);
-    qbf localqbf2 = paramBaseArticleInfo.mKdLiveInfo;
-    qbf localqbf1 = localBaseArticleInfo.mKdLiveInfo;
-    String str2 = " ";
-    String str1 = str2;
-    if (paramBaseArticleInfo.mSubscribeName != null)
+    Object localObject = (Integer)paramToServiceMsg.getAttribute("attr_follow_list_type");
+    QLog.i("FollowingInfoModule", 1, "[handleGetFollowMemberListFromServer] reqType=" + localObject);
+    paramToServiceMsg = new oidb_cmd0x977.RspBody();
+    int i = pvb.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
+    if (i != 0)
     {
-      str1 = str2;
-      if (paramBaseArticleInfo.mSubscribeName.length() > 0)
+      QLog.e("FollowingInfoModule", 1, "[handleGetFollowMemberListFromServer] result = " + i);
+      if (((Integer)localObject).intValue() != 3) {}
+    }
+    while (!paramToServiceMsg.msg_rsp_follow_data.has())
+    {
+      this.jdField_a_of_type_AndroidOsHandler.post(new FollowListInfoModule.1(this));
+      do
       {
-        if (paramBaseArticleInfo.mSubscribeName.length() <= 10) {
-          break label555;
-        }
-        str1 = paramBaseArticleInfo.mSubscribeName.substring(0, 10);
-        str1 = str1 + "...";
-      }
+        return;
+      } while (((Integer)localObject).intValue() != 2);
+      this.jdField_a_of_type_AndroidOsHandler.post(new FollowListInfoModule.2(this));
+      return;
     }
-    localJSONObject.put("left_user_name_text", str1);
-    localJSONObject.put("left_video_title_text", paramBaseArticleInfo.mTitle);
-    localJSONObject.put("left_video_bg_url", paramBaseArticleInfo.mFirstPagePicUrl);
-    localJSONObject.put("left_jump_url", paramBaseArticleInfo.mArticleContentUrl);
-    localJSONObject.put("left_live_status_bg_url", localqbf2.a);
-    if (!TextUtils.isEmpty(localqbf2.b)) {
-      localJSONObject.put("left_live_status_icon_url", localqbf2.b);
-    }
-    localJSONObject.put("left_live_status_text", localqbf2.c);
-    if (!TextUtils.isEmpty(localqbf2.d)) {
-      localJSONObject.put("left_live_hot_icon_url", localqbf2.d);
-    }
-    localJSONObject.put("left_live_hot_text", localqbf2.e);
-    str2 = " ";
-    str1 = str2;
-    if (localBaseArticleInfo.mSubscribeName != null)
+    paramObject = paramToServiceMsg.msg_rsp_follow_data.msg_follow_list;
+    localObject = paramObject.rpt_follow_status_info.get();
+    paramFromServiceMsg = paramToServiceMsg.msg_rsp_follow_data.bytes_cookie.get().toStringUtf8();
+    long l = paramToServiceMsg.msg_rsp_follow_data.uint64_total_count.get();
+    if (paramToServiceMsg.msg_rsp_follow_data.uint32_is_no_more_data.get() == 0) {}
+    for (boolean bool = true; paramObject.uint32_follow_list_type.get() == 3; bool = false)
     {
-      str1 = str2;
-      if (localBaseArticleInfo.mSubscribeName.length() > 0)
-      {
-        if (localBaseArticleInfo.mSubscribeName.length() <= 10) {
-          break label563;
-        }
-        str1 = localBaseArticleInfo.mSubscribeName.substring(0, 10);
+      paramToServiceMsg = qoa.a((Iterable)localObject, new pfx(this));
+      this.j = paramFromServiceMsg;
+      this.jdField_b_of_type_Boolean = bool;
+      this.jdField_b_of_type_Long = l;
+      this.jdField_b_of_type_JavaUtilList.addAll(paramToServiceMsg);
+      this.jdField_a_of_type_AndroidOsHandler.post(new FollowListInfoModule.4(this, paramToServiceMsg, l, bool));
+      return;
+    }
+    if (paramObject.uint32_follow_list_type.get() == 1)
+    {
+      paramToServiceMsg = qoa.a((Iterable)localObject, new pfy(this));
+      this.k = paramFromServiceMsg;
+      this.jdField_c_of_type_Long = l;
+      this.jdField_c_of_type_Boolean = bool;
+      this.jdField_c_of_type_JavaUtilList.addAll(paramToServiceMsg);
+      this.jdField_a_of_type_AndroidOsHandler.post(new FollowListInfoModule.6(this, paramToServiceMsg, l, bool));
+      return;
+    }
+    paramToServiceMsg = qoa.a((Iterable)localObject, new pfz(this));
+    this.jdField_a_of_type_JavaLangString = paramFromServiceMsg;
+    this.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_a_of_type_JavaUtilList.addAll(paramToServiceMsg);
+    this.jdField_a_of_type_AndroidOsHandler.post(new FollowListInfoModule.8(this, paramToServiceMsg, l, bool));
+  }
+  
+  public List<qkw> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    a(paramInt1, paramInt2, false);
+  }
+  
+  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FollowingInfoModule", 0, "[requestFollowersListFromServer] mFollowingList=" + this.jdField_a_of_type_JavaUtilList + ", mFollowingListCookie=" + this.jdField_a_of_type_JavaLangString + ", listType=" + paramInt2);
+    }
+    oidb_cmd0x977.ReqBody localReqBody = new oidb_cmd0x977.ReqBody();
+    localReqBody.uint64_uin.set(ors.a());
+    oidb_cmd0x977.ReqFollowPara localReqFollowPara = new oidb_cmd0x977.ReqFollowPara();
+    localReqFollowPara.op_type.set(2);
+    localReqFollowPara.uint32_req_count.set(paramInt1);
+    PBBytesField localPBBytesField = localReqFollowPara.bytes_cookie;
+    Object localObject;
+    if (paramInt2 == 2)
+    {
+      localObject = this.jdField_a_of_type_JavaLangString;
+      localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject));
+      localReqFollowPara.uint32_follow_list_type.set(paramInt2);
+      localObject = localReqFollowPara.uint32_need_kd_user_info;
+      if (!paramBoolean) {
+        break label222;
       }
     }
-    label555:
-    label563:
-    for (str1 = str1 + "...";; str1 = localBaseArticleInfo.mSubscribeName)
+    label222:
+    for (paramInt1 = 0;; paramInt1 = 1)
     {
-      localJSONObject.put("right_user_name_text", str1);
-      localJSONObject.put("right_video_title_text", localBaseArticleInfo.mTitle);
-      localJSONObject.put("right_video_bg_url", localBaseArticleInfo.mFirstPagePicUrl);
-      localJSONObject.put("right_jump_url", localBaseArticleInfo.mArticleContentUrl);
-      localJSONObject.put("right_live_status_bg_url", localqbf1.a);
-      if (!TextUtils.isEmpty(localqbf1.b)) {
-        localJSONObject.put("right_live_status_icon_url", localqbf1.b);
-      }
-      localJSONObject.put("right_live_status_text", localqbf1.c);
-      if (!TextUtils.isEmpty(localqbf1.d)) {
-        localJSONObject.put("right_live_hot_icon_url", localqbf1.d);
-      }
-      localJSONObject.put("right_live_hot_text", localqbf1.e);
-      localJSONObject.put("left_jump_report_info", paramBaseArticleInfo.mReportCommonData);
-      localJSONObject.put("right_jump_report_info", localBaseArticleInfo.mReportCommonData);
-      QLog.d("LiveDoubleVideoProteusItem", 1, localJSONObject.toString());
-      return localJSONObject;
-      str1 = paramBaseArticleInfo.mSubscribeName;
+      ((PBUInt32Field)localObject).set(paramInt1);
+      localReqFollowPara.uint32_no_check_friends.set(1);
+      localReqBody.msg_req_follow_para.set(localReqFollowPara);
+      localObject = pvb.a("OidbSvc.0x977", 2423, 5, localReqBody.toByteArray());
+      ((ToServiceMsg)localObject).addAttribute("attr_follow_list_type", Integer.valueOf(paramInt2));
+      a((ToServiceMsg)localObject);
+      return;
+      localObject = this.k;
       break;
     }
   }
   
-  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2) {}
-  
-  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    return false;
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0x977")) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pfw
  * JD-Core Version:    0.7.0.1
  */

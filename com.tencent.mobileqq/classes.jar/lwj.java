@@ -1,42 +1,18 @@
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-
-public abstract class lwj
-  extends Binder
-  implements lwi
+class lwj
+  implements lwo
 {
-  public static lwi a(IBinder paramIBinder)
-  {
-    if (paramIBinder == null) {
-      return null;
-    }
-    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVServiceCallback");
-    if ((localIInterface != null) && ((localIInterface instanceof lwi))) {
-      return (lwi)localIInterface;
-    }
-    return new lwk(paramIBinder);
-  }
+  lwj(lwi paramlwi) {}
   
-  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  public void a()
   {
-    switch (paramInt1)
-    {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.service.IAVServiceCallback");
-      return true;
+    if (this.a.a != null) {
+      this.a.a.a();
     }
-    paramParcel1.enforceInterface("com.tencent.av.service.IAVServiceCallback");
-    a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readInt());
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lwj
  * JD-Core Version:    0.7.0.1
  */

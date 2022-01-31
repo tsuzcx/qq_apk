@@ -1,44 +1,34 @@
-import android.text.TextUtils;
-import android.view.View;
+import android.os.AsyncTask;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
-class acwt
-  implements bfph
+public class acwt
+  implements Animation.AnimationListener
 {
-  acwt(acwl paramacwl, String paramString) {}
+  public acwt(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    acwl.a(this.jdField_a_of_type_Acwl).dismiss();
-    switch (paramInt)
-    {
+    this.a.a.execute(new Void[0]);
+    this.a.f = false;
+    if (this.a.d) {
+      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    do
-    {
-      return;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        acwl.a(this.jdField_a_of_type_Acwl, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (acwl.a(this.jdField_a_of_type_Acwl))
-      {
-        acwl.b(this.jdField_a_of_type_Acwl);
-        return;
-      }
-      acwl.c(this.jdField_a_of_type_Acwl);
-      return;
-    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    if (acwl.a(this.jdField_a_of_type_Acwl))
-    {
-      acwl.b(this.jdField_a_of_type_Acwl);
+    while (this.a.jdField_c_of_type_Boolean) {
       return;
     }
-    acwl.c(this.jdField_a_of_type_Acwl);
+    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwt
  * JD-Core Version:    0.7.0.1
  */

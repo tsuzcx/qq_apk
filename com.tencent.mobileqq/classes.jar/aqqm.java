@@ -1,58 +1,53 @@
-import android.view.View;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData.GameInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 class aqqm
-  implements bfph
+  extends aqqt
 {
-  aqqm(aqql paramaqql) {}
+  protected long a;
+  private Bundle jdField_a_of_type_AndroidOsBundle;
+  protected String a;
+  private long b;
+  protected String b;
   
-  public void OnClick(View paramView, int paramInt)
+  aqqm(aqpv paramaqpv, MessageRecord paramMessageRecord)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      paramView = new HashMap();
-      yoa.a(paramView, aqql.a(this.a).msgId);
-      paramView.put(Integer.valueOf(2), aqql.a(this.a).msgId);
-      paramView.put(Integer.valueOf(6), aqql.a(this.a).feedId);
-      paramView.put(Integer.valueOf(4), "20");
-      paramView.put(Integer.valueOf(43), aqql.a(this.a).algorithmId);
-      paramView.put(Integer.valueOf(44), aqql.a(this.a).type + "");
-      yoa.a(ajac.a(), "769", "205027", aqql.a(this.a).a().gameAppId, "76902", "1", "160", paramView);
-      paramView = new asge(aqqc.a(aqql.a(this.a)), aqqc.a(aqql.a(this.a)));
-      paramView.a(aqql.a(this.a).title, aqql.a(this.a).a().gameName, aqql.a(this.a).jumpUrl, aqql.a(this.a).coverImgUrl, "QQ手游中心", null);
-      paramView.a(new aqqn(this));
-      return;
+    super(paramaqpv);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.jdField_b_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFilePath");
+    paramaqpv = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.jdField_a_of_type_AndroidOsBundle = new Bundle();
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgWidth", paramaqpv);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardImgHeight", paramMessageRecord);
+  }
+  
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, aqqr paramaqqr)
+  {
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileType", "2");
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardReceiverUin", paramString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_JavaLangString);
+    String str1 = aqzr.a(arni.d(this.jdField_b_of_type_JavaLangString));
+    String str2 = aqzr.a(arni.a(this.jdField_b_of_type_JavaLangString));
+    this.jdField_a_of_type_Long = arni.a(this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Long + "");
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardMd5", str1);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardSha", str2);
+    this.jdField_a_of_type_AndroidOsBundle.putString("_m_ForwardDeadTime", "0");
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start DiscUploadTaskExcuter:" + this.jdField_a_of_type_JavaLangString);
     }
-    paramView = new HashMap();
-    yoa.a(paramView, aqql.a(this.a).msgId);
-    paramView.put(Integer.valueOf(2), aqql.a(this.a).msgId);
-    paramView.put(Integer.valueOf(6), aqql.a(this.a).feedId);
-    paramView.put(Integer.valueOf(4), "20");
-    paramView.put(Integer.valueOf(43), aqql.a(this.a).algorithmId);
-    paramView.put(Integer.valueOf(44), aqql.a(this.a).type + "");
-    yoa.a(ajac.a(), "769", "205025", aqql.a(this.a).a().gameAppId, "76902", "1", "160", paramView);
-    paramView = (bbrd)aqqc.a(aqql.a(this.a)).a(71);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(aqql.a(this.a).feedId);
-    paramView.a(localArrayList);
-    if (aqql.a(this.a) != null) {
-      aqql.a(this.a).dismiss();
-    }
-    aqql.a(this.a).a(aqql.a(this.a));
+    aqpv.a(this.jdField_a_of_type_Aqpv).a().a(str1, str2, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramString, aqpv.a(this.jdField_a_of_type_Aqpv).getCurrentAccountUin(), new aqqn(this, paramaqqr, str2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqqm
  * JD-Core Version:    0.7.0.1
  */

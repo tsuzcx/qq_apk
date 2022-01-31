@@ -1,37 +1,23 @@
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-class xlm
-  implements bfph
+public class xlm
+  implements View.OnLongClickListener
 {
-  xlm(xll paramxll) {}
+  public xlm(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    this.a.a.dismiss();
-    switch (paramInt)
-    {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
-      }
-      return;
-    case 0: 
-      xll.a(this.a);
-      return;
-    case 1: 
-      xll.b(this.a);
-      return;
-    case 2: 
-      xll.c(this.a);
-      return;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
+      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
     }
-    xll.d(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xlm
  * JD-Core Version:    0.7.0.1
  */

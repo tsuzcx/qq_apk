@@ -1,43 +1,46 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-class oth
-  extends BroadcastReceiver
+public class oth
+  implements AladdinConfigHandler
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static String a()
   {
-    if (paramIntent == null) {}
-    do
+    return (String)bjxj.a("double_short_video_font_size", "14");
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("DoubleShortVideoFontSize", 2, "[onReceiveConfig] " + paramString);
+    paramString = osq.a(paramString);
+    try
     {
-      return;
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_OFF"))
-      {
-        QLog.d("ReadinjoySPEventReport", 2, "receive screen off broadcast");
-        osx.e(false);
-        return;
+      paramString = (String)paramString.get("double_videocard_textsize");
+      if (!TextUtils.isEmpty(paramString)) {
+        bjxj.a("double_short_video_font_size", paramString);
       }
-      if (paramIntent.getAction().equals("android.intent.action.SCREEN_ON"))
-      {
-        QLog.d("ReadinjoySPEventReport", 2, "receive screen on broadcast");
-        osx.e(true);
-        return;
-      }
-      if ("mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction()))
-      {
-        osx.c(false);
-        osx.o();
-        return;
-      }
-    } while (!"mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()));
-    osx.d(false);
-    osx.o();
+      label55:
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      break label55;
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bjxj.a("double_short_video_font_size", "14");
+    if (QLog.isColorLevel()) {
+      QLog.d("DoubleShortVideoFontSize", 2, "font size: " + paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oth
  * JD-Core Version:    0.7.0.1
  */

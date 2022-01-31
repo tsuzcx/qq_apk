@@ -1,21 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView.1.1;
-import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
+import android.widget.Toast;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
 public class rff
-  implements aycb
+  implements qfu
 {
-  public rff(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView) {}
+  public rff(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void a(aybe paramaybe)
+  public void a(String paramString)
   {
-    ReadInJoySkinSlideDownView.a(this.a, paramaybe);
-    this.a.a.post(new ReadInJoySkinSlideDownView.1.1(this, paramaybe));
+    srt.a(this.a, paramString, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rff
  * JD-Core Version:    0.7.0.1
  */

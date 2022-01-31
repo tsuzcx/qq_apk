@@ -1,12 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.util.ArrayList;
 
-class aouw
-  implements DialogInterface.OnClickListener
+public class aouw
 {
-  aouw(aouu paramaouu) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ArrayList<aoux> a;
+  public boolean a;
 }
 
 

@@ -1,66 +1,23 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.text.TextUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.5;
 
-public abstract class aney
+public class aney
+  implements DialogInterface.OnClickListener
 {
-  public static int a(Context paramContext)
-  {
-    try
-    {
-      int i = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionCode;
-      return i;
-    }
-    catch (Exception paramContext) {}
-    return 0;
-  }
+  public aney(ArkAppDownloadModule.5 param5) {}
   
-  public static int a(Context paramContext, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      int i = paramContext.getPackageManager().getPackageInfo(paramString, 0).versionCode;
-      return i;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    catch (Exception paramContext) {}
-    return 0;
-  }
-  
-  public static String a(Context paramContext)
-  {
-    try
-    {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0).versionName;
-      return paramContext;
-    }
-    catch (Exception paramContext) {}
-    return "";
-  }
-  
-  public static boolean a(String paramString, Context paramContext)
-  {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
-    {
-      return false;
-      paramContext = paramContext.getPackageManager();
-      try
-      {
-        paramString = paramContext.getApplicationInfo(paramString, 0);
-        if (paramString != null) {
-          return true;
-        }
-      }
-      catch (PackageManager.NameNotFoundException paramString) {}
-    }
-    return false;
+    azmj.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.b, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aney
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,26 @@
-class bbfg
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+
+public class bbfg
+  implements TextWatcher
 {
-  private static final bbfe a = new bbfe(null);
+  public bbfg(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((!TextUtils.isEmpty(this.a.G)) && (paramInt1 > 0) && (paramInt1 < this.a.G.length() + 1) && (paramInt2 > paramInt3))
+    {
+      this.a.d(false);
+      return;
+    }
+    TroopBarPublishActivity.a(this.a);
+  }
 }
 
 

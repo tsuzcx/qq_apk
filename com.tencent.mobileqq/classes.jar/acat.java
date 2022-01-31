@@ -1,173 +1,153 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.SelectedAndSearchBar;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import java.util.List;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.data.SubAccountMessage;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class acat
-  extends BaseAdapter
+  implements View.OnClickListener
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private boolean jdField_a_of_type_Boolean;
+  public acat(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public acat(SelectedAndSearchBar paramSelectedAndSearchBar)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = SelectedAndSearchBar.a(paramSelectedAndSearchBar).getResources().getDrawable(2130844137);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = bbef.a();
-  }
-  
-  private int a(int paramInt)
-  {
-    int i = 4;
-    if (paramInt == 4) {
-      i = 11;
-    }
-    while (paramInt == 1) {
-      return i;
-    }
-    if (paramInt == 3000) {
-      return 101;
-    }
-    return 1;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean)
+    if ((paramView != null) && (paramView.getId() == 2131362114))
     {
-      if ((SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar) != null) && (SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).size() > 0))
+      AssociatedAccountActivity.a(this.a);
+      break label20;
+      break label20;
+    }
+    label20:
+    Object localObject;
+    label146:
+    do
+    {
+      do
       {
-        ResultRecord localResultRecord = (ResultRecord)SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).get(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).size() - 1);
-        if (SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar) != null) {
-          SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).a(localResultRecord);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar.a(false);
-        this.jdField_a_of_type_Boolean = false;
+        return;
+      } while ((paramView == null) || (!(paramView.getTag() instanceof akcp)));
+      paramView = (akcp)paramView.getTag();
+      if ((paramView == null) || (paramView.a == null)) {
+        break;
       }
+      localObject = paramView.a;
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "onItemClick type = " + ((azyj)localObject).jdField_a_of_type_Int);
+      }
+      switch (((azyj)localObject).jdField_a_of_type_Int)
+      {
+      case 5: 
+      default: 
+        paramView = null;
+      }
+    } while ((TextUtils.isEmpty(paramView)) || (!awdr.a().a(this.a.app, this.a)) || (!this.a.c()));
+    if (!((azyj)localObject).jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AssociatedAccountActivity", 2, "onItemClick goto SubAccountUgActivity");
+      }
+      this.a.jdField_a_of_type_JavaLangString = paramView;
+      this.a.d = true;
+      localObject = new Intent("before_account_change");
+      this.a.sendBroadcast((Intent)localObject);
+      localObject = new Intent(this.a, SubAccountUgActivity.class);
+      ((Intent)localObject).putExtra("subAccount", paramView);
+      ((Intent)localObject).putExtra("from_associated_activity", true);
+      this.a.startActivity((Intent)localObject);
       return;
+      if ((((azyj)localObject).jdField_a_of_type_JavaLangObject == null) || (!(((azyj)localObject).jdField_a_of_type_JavaLangObject instanceof SimpleAccount))) {
+        break label978;
+      }
     }
-    this.jdField_a_of_type_Boolean = true;
-    super.notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    String str = null;
-    ResultRecord localResultRecord = (ResultRecord)getItem(paramInt);
-    paramViewGroup = paramView;
-    if (paramView == null) {
-      paramViewGroup = LayoutInflater.from(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar)).inflate(2131559159, null);
-    }
-    paramViewGroup.setTag(localResultRecord);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131365824);
-    label99:
-    int i;
-    if (paramInt == getCount() - 1)
+    label978:
+    for (paramView = ((SimpleAccount)((azyj)localObject).jdField_a_of_type_JavaLangObject).getUin();; paramView = null)
     {
-      paramView = str;
-      if (this.jdField_a_of_type_Boolean) {
-        paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      }
-      localImageView.setImageDrawable(paramView);
-      if (localResultRecord.jdField_b_of_type_Int != -1) {
-        break label166;
-      }
-      paramInt = localResultRecord.jdField_a_of_type_Int;
-      if (localResultRecord.jdField_a_of_type_Int != -1) {
-        break label179;
-      }
-      i = paramInt;
-      label111:
-      localResultRecord.jdField_a_of_type_Int = i;
-      if (!ajsd.z.equals(localResultRecord.jdField_a_of_type_JavaLangString)) {
-        break label189;
-      }
-      localImageView.setBackgroundResource(2130843409);
-    }
-    for (;;)
-    {
-      if (AppSetting.d) {
-        localImageView.setContentDescription(localResultRecord.jdField_b_of_type_JavaLangString);
-      }
-      return paramViewGroup;
-      localImageView.setImageDrawable(null);
-      break;
-      label166:
-      paramInt = a(localResultRecord.jdField_b_of_type_Int);
-      break label99;
-      label179:
-      i = localResultRecord.jdField_a_of_type_Int;
-      break label111;
-      label189:
-      if (ajsd.A.equals(localResultRecord.jdField_a_of_type_JavaLangString))
+      azmj.b(this.a.app, "CliOper", "", "", "0X8007141", "0X8007141", 0, 0, "", "", "", "");
+      break label146;
+      AssociatedAccountActivity.a(this.a);
+      azmj.b(this.a.app, "CliOper", "", "", "0X800714A", "0X800714A", 0, 0, "", "", "", "");
+      return;
+      if ((((azyj)localObject).jdField_a_of_type_JavaLangObject != null) && ((((azyj)localObject).jdField_a_of_type_JavaLangObject instanceof SubAccountMessage))) {}
+      for (paramView = ((SubAccountMessage)((azyj)localObject).jdField_a_of_type_JavaLangObject).subUin;; paramView = null)
       {
-        localImageView.setBackgroundResource(2130843407);
-      }
-      else if (ajsd.B.equals(localResultRecord.jdField_a_of_type_JavaLangString))
-      {
-        localImageView.setBackgroundResource(2130843412);
-      }
-      else if (ajsd.y.equals(localResultRecord.jdField_a_of_type_JavaLangString))
-      {
-        localImageView.setBackgroundResource(2130839295);
-      }
-      else
-      {
-        if (localResultRecord.jdField_a_of_type_Int != 5) {
-          break label280;
+        azmj.b(this.a.app, "dc00898", "", "", "0X800AC3D", "0X800AC3D", 0, 0, "", "", "", "");
+        azmj.b(this.a.app, "CliOper", "", "", "0X8007140", "0X8007140", 0, 0, "", "", "", "");
+        break label146;
+        if ((((azyj)localObject).jdField_a_of_type_JavaLangObject != null) && ((((azyj)localObject).jdField_a_of_type_JavaLangObject instanceof SubAccountInfo))) {}
+        for (paramView = ((SubAccountInfo)((azyj)localObject).jdField_a_of_type_JavaLangObject).subuin;; paramView = null)
+        {
+          if (((azyj)localObject).jdField_a_of_type_Int == 2)
+          {
+            azmj.b(this.a.app, "dc00898", "", "", "0X800AC3C", "0X800AC3C", 0, 0, "", "", "", "");
+            azmj.b(this.a.app, "CliOper", "", "", "0X800713F", "0X800713F", 0, 0, "", "", "", "");
+            break label146;
+          }
+          azmj.b(this.a.app, "dc00898", "", "", "0X800AC3D", "0X800AC3D", 0, 0, "", "", "", "");
+          azmj.b(this.a.app, "CliOper", "", "", "0X8007140", "0X8007140", 0, 0, "", "", "", "");
+          break label146;
+          if ((((azyj)localObject).jdField_a_of_type_Boolean) && (((azyj)localObject).jdField_a_of_type_Int == 2))
+          {
+            if ((((azyj)localObject).jdField_a_of_type_JavaLangObject == null) || (!(((azyj)localObject).jdField_a_of_type_JavaLangObject instanceof SubAccountInfo)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo == null)) {
+              break;
+            }
+            paramView = (SubAccountInfo)((azyj)localObject).jdField_a_of_type_JavaLangObject;
+            if ((TextUtils.isEmpty(paramView.subuin)) || (paramView.subuin.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo.subuin))) {
+              break;
+            }
+            this.a.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo = paramView;
+            AssociatedAccountActivity.b(this.a, true);
+            return;
+          }
+          this.a.a(2131695075);
+          if (QLog.isColorLevel()) {
+            QLog.d("AssociatedAccountActivity", 2, "onItemClick mNeed2ConfirmMsgNum = " + this.a.b + "  toUin=" + paramView);
+          }
+          if (this.a.b > 0)
+          {
+            this.a.jdField_a_of_type_JavaLangString = paramView;
+            localObject = (MessageHandler)this.a.app.a(0);
+            azyu localazyu = (azyu)this.a.app.getManager(61);
+            Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+            int i = 0;
+            for (;;)
+            {
+              j = i;
+              if (!localIterator.hasNext()) {
+                break;
+              }
+              SubAccountInfo localSubAccountInfo = (SubAccountInfo)localIterator.next();
+              if ((localSubAccountInfo != null) && (!TextUtils.isEmpty(localSubAccountInfo.subuin)) && (localazyu.c(localSubAccountInfo.subuin) > 0))
+              {
+                i += 1;
+                ((MessageHandler)localObject).a().a(localSubAccountInfo.subuin, "sub.account.switchAccount");
+              }
+            }
+          }
+          int j = 0;
+          if (j > 0)
+          {
+            this.a.b = j;
+            return;
+          }
+          AssociatedAccountActivity.b(this.a, false, paramView);
+          return;
         }
-        localImageView.setImageResource(2130841580);
       }
     }
-    label280:
-    str = localResultRecord.jdField_a_of_type_JavaLangString;
-    paramView = SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).a(paramInt, str);
-    if (paramView == null)
-    {
-      SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).a(str, paramInt, true);
-      paramView = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    }
-    for (;;)
-    {
-      localImageView.setBackgroundDrawable(new BitmapDrawable(SelectedAndSearchBar.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectedAndSearchBar).getResources(), paramView));
-      break;
-    }
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acat
  * JD-Core Version:    0.7.0.1
  */

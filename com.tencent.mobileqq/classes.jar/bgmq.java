@@ -1,14 +1,12 @@
-import cooperation.plugin.PluginInfo;
-
 public abstract interface bgmq
 {
-  public abstract void a(boolean paramBoolean);
+  public abstract void a();
   
-  public abstract boolean a(PluginInfo paramPluginInfo);
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgmq
  * JD-Core Version:    0.7.0.1
  */

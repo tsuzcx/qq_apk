@@ -1,10 +1,10 @@
-public abstract interface blbq
+class blbq
 {
-  public abstract boolean a(double paramDouble);
+  private static final blbo a = new blbo(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blbq
  * JD-Core Version:    0.7.0.1
  */

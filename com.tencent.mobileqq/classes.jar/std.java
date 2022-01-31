@@ -1,35 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import java.util.List;
 
 class std
-  extends ajxj
+  extends bdin
 {
-  std(stc paramstc) {}
-  
-  protected void onAddFriend(String paramString)
+  std(Context paramContext, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("StoryHaloManager", 2, "onAddFriend: invoked.  addUin: " + paramString);
-    }
-    try
-    {
-      paramString = Long.valueOf(paramString);
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(paramString);
-      this.a.a(3, localArrayList);
-      this.a.a();
-      return;
-    }
-    catch (NumberFormatException paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("StoryHaloManager", 2, "onAddFriend: failed.  exception: " + paramString);
-    }
+    super(paramContext, paramList);
+  }
+  
+  protected int a()
+  {
+    return 2131562509;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     std
  * JD-Core Version:    0.7.0.1
  */

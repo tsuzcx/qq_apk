@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import android.text.TextUtils;
-import ayrx;
-import aysa;
+import baps;
+import bapv;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext;
 import com.tencent.biz.pubaccount.readinjoy.featurecompute.JSContext.Callback;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -25,8 +25,8 @@ class TaskManager$23
     String str2 = (String)paramArrayOfObject[2];
     String str1 = (String)paramArrayOfObject[3];
     String str3 = (String)paramArrayOfObject[4];
-    paramArrayOfObject = new ayrx();
-    paramArrayOfObject.jdField_a_of_type_Aysc = new TaskManager.23.1(this, str3, paramJSContext);
+    paramArrayOfObject = new baps();
+    paramArrayOfObject.jdField_a_of_type_Bapx = new TaskManager.23.1(this, str3, paramJSContext);
     paramArrayOfObject.jdField_a_of_type_JavaLangString = ((String)localObject);
     paramArrayOfObject.jdField_a_of_type_Int = ((int)d);
     if (!TextUtils.isEmpty(str2)) {
@@ -59,7 +59,7 @@ class TaskManager$23
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager.23
  * JD-Core Version:    0.7.0.1
  */

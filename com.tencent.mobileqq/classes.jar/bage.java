@@ -1,24 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class bage
-  implements View.OnClickListener
+  extends badk
 {
-  public bage(VisitorTroopCardFragment paramVisitorTroopCardFragment, Dialog paramDialog) {}
+  public bage(GroupTeamWorkListActivity paramGroupTeamWorkListActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    GroupTeamWorkListActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupTeamWorkListActivity", 2, " onDeletePad success: " + paramBoolean);
     }
-    VisitorTroopCardFragment.c(this.jdField_a_of_type_ComTencentMobileqqTroopTroopCardVisitorTroopCardFragment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bage
  * JD-Core Version:    0.7.0.1
  */

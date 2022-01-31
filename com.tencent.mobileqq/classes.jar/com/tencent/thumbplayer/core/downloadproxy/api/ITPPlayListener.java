@@ -29,7 +29,7 @@ public abstract interface ITPPlayListener
   
   public abstract void onDownloadFinish();
   
-  public abstract void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2);
+  public abstract void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString);
   
   public abstract void onDownloadProtocolUpdate(String paramString1, String paramString2);
   
@@ -39,7 +39,7 @@ public abstract interface ITPPlayListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener
  * JD-Core Version:    0.7.0.1
  */

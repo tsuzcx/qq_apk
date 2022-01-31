@@ -1,74 +1,20 @@
-import android.app.Activity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import java.util.Comparator;
 
 public class aqma
+  implements Comparator<OfflineFileInfo>
 {
-  public aqml a(int paramInt, aqng paramaqng)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new aqmq();
-    case 3: 
-      return new aqmp();
-    case 2: 
-      return new aqmu();
-    }
-    return new aqmr();
-  }
+  public aqma(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public aqng a(int paramInt)
+  public int a(OfflineFileInfo paramOfflineFileInfo1, OfflineFileInfo paramOfflineFileInfo2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      return new aqnj();
-    case 3: 
-      return new aqnh();
-    case 2: 
-      return new aqno();
-    }
-    return new aqnm();
-  }
-  
-  public aqon a(Activity paramActivity, int paramInt, aqng paramaqng)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case 1: 
-      if ((paramaqng instanceof aqnj)) {
-        return new aqoz(paramActivity, (aqnj)paramaqng);
-      }
-      aqmd.a().a().a("MVPFactory", 4, "createView type is PIC, presenter is error!");
-      return null;
-    case 3: 
-      if ((paramaqng instanceof aqnh)) {
-        return new aqot(paramActivity, (aqnh)paramaqng);
-      }
-      aqmd.a().a().a("MVPFactory", 4, "createView type is FILE_PIC, presenter is error!");
-      return null;
-    case 2: 
-      if ((paramaqng instanceof aqno)) {
-        return new aqpt(paramActivity, (aqno)paramaqng);
-      }
-      aqmd.a().a().a("MVPFactory", 4, "createView type is VIDEO, presenter is error!");
-      return null;
-    }
-    if ((paramaqng instanceof aqnm)) {
-      return new aqpp(paramActivity, (aqnm)paramaqng);
-    }
-    aqmd.a().a().a("MVPFactory", 4, "createView type is FILE_VIDEO, presenter is error!");
-    return null;
+    return Long.valueOf(paramOfflineFileInfo1.c).compareTo(Long.valueOf(paramOfflineFileInfo2.c));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqma
  * JD-Core Version:    0.7.0.1
  */

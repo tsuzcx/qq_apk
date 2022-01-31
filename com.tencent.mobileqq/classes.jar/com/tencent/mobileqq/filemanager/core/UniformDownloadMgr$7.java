@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.core;
 
 import android.os.Bundle;
-import apdc;
+import aqwa;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -10,7 +10,7 @@ import java.net.URLConnection;
 public class UniformDownloadMgr$7
   implements Runnable
 {
-  public UniformDownloadMgr$7(apdc paramapdc, String paramString, Bundle paramBundle) {}
+  public UniformDownloadMgr$7(aqwa paramaqwa, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
@@ -39,13 +39,13 @@ public class UniformDownloadMgr$7
       }
     }
     this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", l);
-    apdc.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    apdc.b(this.this$0);
+    aqwa.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
+    aqwa.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.UniformDownloadMgr.7
  * JD-Core Version:    0.7.0.1
  */

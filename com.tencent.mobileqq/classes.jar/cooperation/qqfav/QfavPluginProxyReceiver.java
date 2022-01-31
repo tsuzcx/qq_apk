@@ -1,8 +1,8 @@
 package cooperation.qqfav;
 
 import android.content.Intent;
-import bglh;
-import bglq;
+import bimg;
+import bimp;
 import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
 import mqq.app.AppRuntime;
 
@@ -11,18 +11,18 @@ public class QfavPluginProxyReceiver
 {
   public static void a(AppRuntime paramAppRuntime, Intent paramIntent)
   {
-    bglq localbglq = new bglq(0);
-    localbglq.b = "qqfav.apk";
-    localbglq.d = "qqfav.apk";
-    localbglq.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localbglq.e = "com.qqfav.ipc.QfavPluginReceiver";
-    localbglq.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    bglh.b(paramAppRuntime.getApplication(), localbglq);
+    bimp localbimp = new bimp(0);
+    localbimp.b = "qqfav.apk";
+    localbimp.d = "qqfav.apk";
+    localbimp.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localbimp.e = "com.qqfav.ipc.QfavPluginReceiver";
+    localbimp.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    bimg.b(paramAppRuntime.getApplication(), localbimp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqfav.QfavPluginProxyReceiver
  * JD-Core Version:    0.7.0.1
  */

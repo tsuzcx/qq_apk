@@ -1,235 +1,135 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.text.TextUtils;
+import android.content.Context;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinSlideDownView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 
-class rvd
+public class rvd
+  implements azzu
 {
-  private char jdField_a_of_type_Char = '\000';
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private final rvf jdField_a_of_type_Rvf;
-  private char[] jdField_a_of_type_ArrayOfChar;
-  private final rvb[] jdField_a_of_type_ArrayOfRvb;
-  private char jdField_b_of_type_Char = '\000';
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int;
-  private float jdField_d_of_type_Float;
-  private int jdField_d_of_type_Int;
-  private float e;
-  private float f;
-  private float g;
-  private float h;
+  public rvd(ReadInJoySkinSlideDownView paramReadInJoySkinSlideDownView, View.OnClickListener paramOnClickListener1, String paramString1, int paramInt, String paramString2, Context paramContext, View.OnClickListener paramOnClickListener2) {}
   
-  rvd(rvb[] paramArrayOfrvb, rvf paramrvf)
-  {
-    this.jdField_a_of_type_ArrayOfRvb = paramArrayOfrvb;
-    this.jdField_a_of_type_Rvf = paramrvf;
-  }
-  
-  private void a(int paramInt, boolean paramBoolean)
-  {
-    String str2 = null;
-    this.jdField_a_of_type_ArrayOfChar = null;
-    char c2 = this.jdField_b_of_type_Char;
-    char c1 = c2;
-    if (paramBoolean)
-    {
-      c1 = c2;
-      if (c2 == 0) {
-        c1 = '0';
-      }
-    }
-    int i = 0;
-    Object localObject;
-    while (i < this.jdField_a_of_type_ArrayOfRvb.length)
-    {
-      localObject = this.jdField_a_of_type_ArrayOfRvb[i].a(this.jdField_a_of_type_Char, c1, this.jdField_a_of_type_Rvf.a());
-      if (localObject != null)
-      {
-        this.jdField_a_of_type_ArrayOfChar = this.jdField_a_of_type_ArrayOfRvb[i].a();
-        this.jdField_a_of_type_Int = ((rvc)localObject).jdField_a_of_type_Int;
-        this.jdField_b_of_type_Int = ((rvc)localObject).jdField_b_of_type_Int;
-        str2 = this.jdField_a_of_type_ArrayOfRvb[i].a();
-      }
-      i += 1;
-    }
-    if ((this.jdField_a_of_type_ArrayOfChar != null) && (paramInt > 1) && (!TextUtils.isEmpty(str2)))
-    {
-      i = Math.min(paramInt - 1, 5);
-      String str1 = new String(this.jdField_a_of_type_ArrayOfChar);
-      if (this.jdField_a_of_type_Rvf.a() == 1)
-      {
-        paramInt = 0;
-        for (;;)
-        {
-          localObject = str1;
-          if (paramInt >= i) {
-            break;
-          }
-          str1 = str1 + str2;
-          this.jdField_a_of_type_Int += str2.length();
-          paramInt += 1;
-        }
-      }
-      localObject = str1;
-      if (this.jdField_a_of_type_Rvf.a() == 2)
-      {
-        paramInt = 0;
-        for (;;)
-        {
-          localObject = str1;
-          if (paramInt >= i) {
-            break;
-          }
-          str1 = str1 + str2;
-          this.jdField_b_of_type_Int += str2.length();
-          paramInt += 1;
-        }
-      }
-      this.jdField_a_of_type_ArrayOfChar = ((String)localObject).toCharArray();
-    }
-    if (this.jdField_a_of_type_ArrayOfChar == null)
-    {
-      if (this.jdField_a_of_type_Char == this.jdField_b_of_type_Char)
-      {
-        this.jdField_a_of_type_ArrayOfChar = new char[] { this.jdField_a_of_type_Char };
-        this.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Int = 0;
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ArrayOfChar = new char[] { this.jdField_a_of_type_Char, this.jdField_b_of_type_Char };
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 1;
-  }
-  
-  private boolean a(Canvas paramCanvas, Paint paramPaint, char[] paramArrayOfChar, int paramInt, float paramFloat)
-  {
-    if ((paramInt >= 0) && (paramInt < paramArrayOfChar.length))
-    {
-      paramCanvas.drawText(paramArrayOfChar, paramInt, 1, 0.0F, paramFloat, paramPaint);
-      return true;
-    }
-    return false;
-  }
-  
-  private void b()
-  {
-    float f1 = this.jdField_a_of_type_Rvf.a(this.jdField_b_of_type_Char);
-    if ((this.jdField_d_of_type_Float == this.e) && (this.e != f1))
-    {
-      this.e = f1;
-      this.jdField_d_of_type_Float = f1;
-      this.f = f1;
-    }
-  }
-  
-  char a()
-  {
-    return this.jdField_a_of_type_Char;
-  }
-  
-  float a()
-  {
-    b();
-    return this.jdField_d_of_type_Float;
-  }
-  
-  void a()
-  {
-    b();
-    this.f = this.jdField_d_of_type_Float;
-  }
-  
-  void a(float paramFloat, boolean paramBoolean)
-  {
-    if (paramFloat == 1.0F)
-    {
-      this.jdField_a_of_type_Char = this.jdField_b_of_type_Char;
-      this.g = 0.0F;
-      this.h = 0.0F;
-    }
-    float f1 = this.jdField_a_of_type_Rvf.a();
-    float f2 = Math.abs(this.jdField_b_of_type_Int - this.jdField_a_of_type_Int) * f1 * paramFloat / f1;
-    float f3 = (int)f2;
-    float f4 = this.h;
-    this.jdField_a_of_type_Float = ((f2 - f3) * f1 * this.jdField_d_of_type_Int + f4 * (1.0F - paramFloat));
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_c_of_type_Int = ((int)f2 * this.jdField_d_of_type_Int + i);
-    this.jdField_b_of_type_Float = f1;
-    if (paramBoolean)
-    {
-      this.jdField_d_of_type_Float = Math.max(this.e, this.jdField_c_of_type_Float);
-      if (paramFloat > 0.999F)
-      {
-        this.jdField_d_of_type_Float = this.e;
-        if (this.jdField_b_of_type_Char == 0) {
-          this.jdField_c_of_type_Int = 0;
-        }
-      }
-      return;
-    }
-    this.jdField_d_of_type_Float = (this.jdField_c_of_type_Float + (this.e - this.jdField_c_of_type_Float) * paramFloat);
-  }
-  
-  void a(int paramInt, char paramChar, boolean paramBoolean)
+  public void a(azzb paramazzb, azzc paramazzc, String paramString)
   {
     int i = 1;
-    this.jdField_b_of_type_Char = paramChar;
-    this.jdField_c_of_type_Float = this.jdField_d_of_type_Float;
-    this.e = this.jdField_a_of_type_Rvf.a(paramChar);
-    this.f = Math.max(this.jdField_c_of_type_Float, this.e);
-    a(paramInt, paramBoolean);
-    if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int)
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    RefreshData localRefreshData = qiu.b(ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView), 0);
+    if (paramString.equals("close"))
     {
-      paramInt = 1;
-      if (paramInt == 0) {
-        break label93;
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView);
+      paramazzb = new orz();
+      for (;;)
+      {
+        try
+        {
+          paramazzb.e();
+          paramazzb.a("skin_id", this.jdField_a_of_type_JavaLangString);
+          paramazzb.a("channel_id", this.jdField_a_of_type_Int);
+          if ((localRefreshData == null) || (!localRefreshData.isAD)) {
+            continue;
+          }
+          paramazzb.a("ad_page", i);
+        }
+        catch (JSONException paramazzc)
+        {
+          paramazzc.printStackTrace();
+          continue;
+        }
+        nrt.a(localQQAppInterface, "", "0X800969E", "0X800969E", 0, 0, this.jdField_a_of_type_JavaLangString, "" + ors.e(), String.valueOf(ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView)), paramazzb.a(), false);
+        return;
+        i = 0;
       }
     }
-    label93:
-    for (paramInt = i;; paramInt = -1)
+    if (paramString.equals("open_sound"))
     {
-      this.jdField_d_of_type_Int = paramInt;
-      this.h = this.g;
-      this.g = 0.0F;
+      paramazzb = paramazzb.a(alpo.a(2131713457));
+      if (paramazzb != null) {
+        paramazzb.c(0.0F);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a == null) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a = new MediaPlayer();
+      }
+      for (;;)
+      {
+        try
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.setDataSource(this.jdField_b_of_type_JavaLangString + "/audio.mp3");
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.prepare();
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.start();
+          paramazzb = new orz();
+          try
+          {
+            paramazzb.e();
+            paramazzb.a("skin_id", this.jdField_a_of_type_JavaLangString);
+            paramazzb.a("channel_id", this.jdField_a_of_type_Int);
+            if ((localRefreshData == null) || (!localRefreshData.isAD)) {
+              break label460;
+            }
+            i = 1;
+            paramazzb.a("ad_page", i);
+          }
+          catch (JSONException paramazzc)
+          {
+            paramazzc.printStackTrace();
+            continue;
+          }
+          nrt.a(localQQAppInterface, "", "0X800969D", "0X800969D", 0, 0, this.jdField_a_of_type_JavaLangString, "" + ors.e(), String.valueOf(ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView)), paramazzb.a(), false);
+          return;
+        }
+        catch (Exception paramazzb)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e("ReadInJoySkinSlideDownView", 2, QLog.getStackTraceString(paramazzb));
+          continue;
+        }
+        try
+        {
+          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.isPlaying()) {
+            continue;
+          }
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView.a.start();
+        }
+        catch (Exception paramazzb) {}
+        if (QLog.isColorLevel())
+        {
+          QLog.e("ReadInJoySkinSlideDownView", 2, QLog.getStackTraceString(paramazzb));
+          continue;
+          label460:
+          i = 0;
+        }
+      }
+    }
+    paramazzb = bdds.a(localQQAppInterface, this.jdField_a_of_type_AndroidContentContext, paramString);
+    if (paramazzb != null)
+    {
+      paramazzb.c();
+      ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView).onClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView);
+    }
+    for (;;)
+    {
+      ReadInJoySkinSlideDownView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView, this.jdField_a_of_type_Int, paramString, ((azyx)paramazzc).g_());
       return;
-      paramInt = 0;
-      break;
-    }
-  }
-  
-  void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    if (a(paramCanvas, paramPaint, this.jdField_a_of_type_ArrayOfChar, this.jdField_c_of_type_Int, this.jdField_a_of_type_Float))
-    {
-      if (this.jdField_c_of_type_Int >= 0) {
-        this.jdField_a_of_type_Char = this.jdField_a_of_type_ArrayOfChar[this.jdField_c_of_type_Int];
+      if ((paramString.startsWith("https://")) || (paramString.startsWith("http://")))
+      {
+        paramazzb = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        paramazzb.putExtra("url", paramString);
+        this.jdField_a_of_type_AndroidContentContext.startActivity(paramazzb);
+        this.jdField_b_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinSlideDownView);
       }
-      this.g = this.jdField_a_of_type_Float;
     }
-    a(paramCanvas, paramPaint, this.jdField_a_of_type_ArrayOfChar, this.jdField_c_of_type_Int + 1, this.jdField_a_of_type_Float - this.jdField_b_of_type_Float);
-    a(paramCanvas, paramPaint, this.jdField_a_of_type_ArrayOfChar, this.jdField_c_of_type_Int - 1, this.jdField_a_of_type_Float + this.jdField_b_of_type_Float);
-  }
-  
-  char b()
-  {
-    return this.jdField_b_of_type_Char;
-  }
-  
-  float b()
-  {
-    b();
-    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rvd
  * JD-Core Version:    0.7.0.1
  */

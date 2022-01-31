@@ -1,71 +1,42 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import java.util.List;
 
 public class ahrp
-  implements TextWatcher
+  implements AdapterView.OnItemClickListener
 {
-  public ahrp(LoginView paramLoginView) {}
+  public ahrp(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    LoginView.c(this.a);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    Object localObject;
-    if (paramCharSequence.length() > 0) {
-      if (this.a.b != null)
-      {
-        localObject = (ahse)this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getAdapter();
-        if ((localObject != null) && (((ahse)localObject).getCount() != 0)) {
-          break label139;
-        }
-        localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-        paramInt1 = (int)(15.0F * LoginView.a(this.a) + 0.5F);
-        if (((RelativeLayout.LayoutParams)localObject).rightMargin != paramInt1)
-        {
-          ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
-          this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-        this.a.b.setVisibility(0);
-      }
-    }
-    for (;;)
+    paramAdapterView = (ahrv)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+    boolean bool = paramAdapterView.jdField_a_of_type_Boolean;
+    if (bool)
     {
-      if (paramCharSequence.length() <= 4) {
-        break label237;
+      if (EmoticonGroupStoreFragment.b(this.a).contains(paramAdapterView.jdField_a_of_type_JavaLangString)) {
+        EmoticonGroupStoreFragment.b(this.a).remove(paramAdapterView.jdField_a_of_type_JavaLangString);
       }
-      this.a.b(paramCharSequence.toString());
-      return;
-      label139:
-      localObject = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-      paramInt1 = (int)(40.0F * LoginView.a(this.a) + 0.5F);
-      if (((RelativeLayout.LayoutParams)localObject).rightMargin == paramInt1) {
-        break;
-      }
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
-      this.a.b.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      break;
-      if ((this.a.b != null) && (this.a.b.isShown())) {
-        this.a.b.setVisibility(8);
+      paramAdapterView = (ahrv)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+      if (bool) {
+        break label126;
       }
     }
-    label237:
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView.a(false, null);
+    label126:
+    for (bool = true;; bool = false)
+    {
+      paramAdapterView.jdField_a_of_type_Boolean = bool;
+      EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+      return;
+      EmoticonGroupStoreFragment.b(this.a).add(paramAdapterView.jdField_a_of_type_JavaLangString);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrp
  * JD-Core Version:    0.7.0.1
  */

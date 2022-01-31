@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.activity.qwallet.emoj;
 
-import ahbt;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.hardware.Camera;
-import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.ttpic.openai.ttpicmodule.AEHandDetector;
@@ -15,7 +12,7 @@ public class HandRecognizer
 {
   public static final String TAG = HandRecognizer.class.getSimpleName();
   private static volatile HandRecognizer sInstance;
-  private Runnable DoHandDetecting = new HandRecognizer.2(this);
+  private Runnable DoHandDetecting = new HandRecognizer.1(this);
   public YtHandBox box = new YtHandBox();
   public final String handAlignmentModel = "add_p_tu_1130_800k.rpdm";
   public final String handClassifyModel = "v3.0_int8_resnet18_3MB_1130.pb.rapidnetmodel_nhwc";
@@ -60,12 +57,10 @@ public class HandRecognizer
   {
     try
     {
-      paramContext = PreloadManager.a();
-      DownloadParam localDownloadParam = new DownloadParam();
-      localDownloadParam.filePos = 1;
-      localDownloadParam.url = "https://i.gtimg.cn/channel/imglib/201912/upload_85725ea732680eb57a14b7dbbb988b61.zip";
-      paramContext.a(localDownloadParam, new HandRecognizer.1(this, paramString));
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d(TAG, 2, "init finished handResFolderPath: " + paramString);
+      }
+      this.hasSDkInit = this.mDetector.init(paramString, paramString);
     }
     catch (Throwable paramContext)
     {
@@ -73,15 +68,15 @@ public class HandRecognizer
       {
         QLog.e(TAG, 1, " occur an error: " + paramContext);
         this.hasSDkInit = false;
-        if (paramIBaseRecognizer != null) {
-          paramIBaseRecognizer.OnInitResultCallback(this.hasSDkInit);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(TAG, 2, "SDkInit : " + this.hasSDkInit);
-        }
       }
     }
     finally {}
+    if (QLog.isColorLevel()) {
+      QLog.d(TAG, 2, "SDkInit : " + this.hasSDkInit);
+    }
+    if (paramIBaseRecognizer != null) {
+      paramIBaseRecognizer.OnInitResultCallback(this.hasSDkInit);
+    }
   }
   
   public native int initHandAlignment(String paramString);
@@ -92,7 +87,10 @@ public class HandRecognizer
   
   public void onPreviewFrameHandler(byte[] paramArrayOfByte, int paramInt1, int paramInt2, Camera paramCamera, int paramInt3, HandRecognizer.OnPreviewFrameHandlerListener paramOnPreviewFrameHandlerListener)
   {
-    ThreadManagerV2.excute(new HandRecognizer.3(this, paramCamera, paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramOnPreviewFrameHandlerListener), 16, null, true);
+    if (!this.hasSDkInit) {
+      return;
+    }
+    ThreadManagerV2.excute(new HandRecognizer.2(this, paramCamera, paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramOnPreviewFrameHandlerListener), 16, null, true);
   }
   
   public native int releaseHandAlignment();
@@ -105,6 +103,7 @@ public class HandRecognizer
   {
     try
     {
+      this.mDetector.clear();
       releaseHandAlignment();
       releaseHandClassify();
       releaseHandDetection();
@@ -121,7 +120,7 @@ public class HandRecognizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.emoj.HandRecognizer
  * JD-Core Version:    0.7.0.1
  */

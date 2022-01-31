@@ -1,162 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.SystemClock;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class agvp
-  extends Handler
+class agvp
+  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long = 1000L;
-  public CopyOnWriteArrayList<agvq> a;
-  private boolean jdField_a_of_type_Boolean;
-  private long jdField_b_of_type_Long;
-  private boolean jdField_b_of_type_Boolean;
+  agvp(agvo paramagvo) {}
   
-  public agvp()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  }
-  
-  public agvp(Looper paramLooper)
-  {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    b();
-    c();
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_b_of_type_Long = Math.max(SystemClock.elapsedRealtime() + 1000L * paramLong, this.jdField_b_of_type_Long);
-    f();
-  }
-  
-  public void a(agvq paramagvq)
-  {
-    long l = SystemClock.elapsedRealtime();
-    if (agvq.a(paramagvq) > l)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramagvq);
-      a(agvq.a(paramagvq) - l);
-      return;
-    }
-    paramagvq.b();
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.isEmpty()) {
-      g();
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((agvq)localIterator.next()).a();
-    }
-  }
-  
-  public void b(agvq paramagvq)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramagvq);
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 2) {
-      g();
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((agvq)localIterator.next()).b();
-    }
-  }
-  
-  public void d()
-  {
-    removeMessages(1);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_b_of_type_Long >= SystemClock.elapsedRealtime()) {
-      sendMessage(obtainMessage(1));
-    }
-  }
-  
-  public void f()
-  {
-    for (;;)
-    {
-      try
-      {
-        boolean bool = this.jdField_b_of_type_Boolean;
-        if (bool) {
-          return;
-        }
-        if (this.jdField_b_of_type_Long <= SystemClock.elapsedRealtime())
-        {
-          a();
-          continue;
-        }
-        this.jdField_b_of_type_Boolean = true;
-      }
-      finally {}
-      sendMessage(obtainMessage(1));
-    }
-  }
-  
-  public void g()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    removeMessages(1);
-    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    for (;;)
-    {
-      try
-      {
-        l = this.jdField_b_of_type_Long - SystemClock.elapsedRealtime();
-        if (l <= 0L)
-        {
-          a();
-          return;
-        }
-        if (l < this.jdField_a_of_type_Long)
-        {
-          sendMessageDelayed(obtainMessage(1), l);
-          continue;
-        }
-        l = SystemClock.elapsedRealtime();
-      }
-      finally {}
-      b();
-      for (long l = l + this.jdField_a_of_type_Long - SystemClock.elapsedRealtime(); l < 0L; l += this.jdField_a_of_type_Long) {}
-      sendMessageDelayed(obtainMessage(1), l);
-    }
-  }
-  
-  public boolean sendMessageAtTime(Message paramMessage, long paramLong)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return super.sendMessageAtTime(paramMessage, paramLong);
-    }
-    return false;
+    paramView = new Intent(agvo.a(this.a), QQBrowserActivity.class);
+    paramView.putExtra("url", agvo.a(this.a));
+    agvo.a(this.a).startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agvp
  * JD-Core Version:    0.7.0.1
  */

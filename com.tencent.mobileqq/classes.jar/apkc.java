@@ -1,48 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.RspBody;
+import android.text.TextUtils;
 
-final class apkc
-  extends mxj
+public class apkc
 {
-  apkc(apkd paramapkd) {}
+  public static int a = 300;
+  public static int b = 300;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public static String a(String paramString)
   {
-    if (paramInt == 0) {
-      paramBundle = new oidb_0x6e7.RspBody();
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    do
-    {
-      try
-      {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, "is_white = " + paramBundle.uint32_is_white.get() + ", req_interval = " + paramBundle.uint32_interval.get());
-        }
-        if (this.a != null) {
-          this.a.a(paramBundle.uint32_is_white.get(), paramBundle.uint32_interval.get());
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("zivonchen", 2, QLog.getStackTraceString(paramArrayOfByte));
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "requestWhiteList() errorCode = " + paramInt);
-      }
-    } while (this.a == null);
-    this.a.a(0, -1);
+    return aljq.bi + ammj.a(paramString);
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder("https://p.qpic.cn/");
+    localStringBuilder.append(paramString2).append("/").append(paramString3).append("/").append(paramString1).append("/0");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apkc
  * JD-Core Version:    0.7.0.1
  */

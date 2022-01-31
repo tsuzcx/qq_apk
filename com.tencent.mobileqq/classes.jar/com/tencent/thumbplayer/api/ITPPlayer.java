@@ -1,8 +1,8 @@
 package com.tencent.thumbplayer.api;
 
 import android.os.ParcelFileDescriptor;
-import android.support.annotation.NonNull;
 import android.view.Surface;
+import androidx.annotation.NonNull;
 import com.tencent.thumbplayer.api.composition.ITPMediaAsset;
 import com.tencent.thumbplayer.api.proxy.ITPPlayerProxy;
 import com.tencent.thumbplayer.api.proxy.TPDownloadParamData;
@@ -11,12 +11,17 @@ import java.util.Map;
 
 public abstract interface ITPPlayer
 {
+  public static final String TP_MIMETYPE_TEXT_SUBRIP = "text/x-subrip";
+  public static final String TP_MIMETYPE_TEXT_VTT = "text/vtt";
   public static final int TP_PLAYER_LOOPBACK_ENDPOSITION_DEFAULT = -1;
   public static final int TP_PLAYER_LOOPBACK_STARTPOSITION_DEFAULT = 0;
   public static final int TP_PLAYER_SEEK_MODE_ACCURATE_POSITION = 3;
   public static final int TP_PLAYER_SEEK_MODE_FREVIOUS_KFRAME = 1;
   public static final int TP_PLAYER_SEEK_MODE_NEXT_CLIP = 4;
   public static final int TP_PLAYER_SEEK_MODE_NEXT_KFRAME = 2;
+  public static final int TP_PLAYER_SWITCH_DEF_AFTER_ALL_RESOURCE_CONSUME = 3;
+  public static final int TP_PLAYER_SWITCH_DEF_FAST_WITH_KEEP_NO_BUFFERING = 2;
+  public static final int TP_PLAYER_SWITCH_DEF_IMMEDIATELY = 1;
   
   public abstract void addAudioTrackSource(String paramString1, String paramString2);
   
@@ -94,6 +99,8 @@ public abstract interface ITPPlayer
   
   public abstract void setOnInfoListener(ITPPlayerListener.IOnInfoListener paramIOnInfoListener);
   
+  public abstract void setOnPlayerStateChangeListener(ITPPlayerListener.IOnStateChangeListener paramIOnStateChangeListener);
+  
   public abstract void setOnPreparedListener(ITPPlayerListener.IOnPreparedListener paramIOnPreparedListener);
   
   public abstract void setOnSeekCompleteListener(ITPPlayerListener.IOnSeekCompleteListener paramIOnSeekCompleteListener);
@@ -120,11 +127,15 @@ public abstract interface ITPPlayer
   
   public abstract void switchDefinition(@NonNull ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo);
   
+  public abstract void switchDefinition(@NonNull ITPMediaAsset paramITPMediaAsset, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt);
+  
   public abstract void switchDefinition(@NonNull String paramString, long paramLong, TPVideoInfo paramTPVideoInfo);
+  
+  public abstract void switchDefinition(@NonNull String paramString, long paramLong, TPVideoInfo paramTPVideoInfo, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.api.ITPPlayer
  * JD-Core Version:    0.7.0.1
  */

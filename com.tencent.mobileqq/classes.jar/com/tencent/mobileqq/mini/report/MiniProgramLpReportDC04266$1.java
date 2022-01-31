@@ -34,7 +34,7 @@ final class MiniProgramLpReportDC04266$1
     localObject = MiniProgramReportHelper.newAppQualityEntries(this.val$miniAppConfig, AppBrandUtil.getUrlWithoutParams(this.val$page), str, this.val$attachInfo, this.val$ssoCmdName, String.valueOf(this.val$ssoCmdRetCode), this.val$appType, String.valueOf(this.val$timeCost), this.val$httpRequestThirdUrl, String.valueOf(this.val$timestamp), (String)localObject, this.val$reserves1, this.val$reserves2, this.val$reserves3, this.val$reserves4);
     APP_REPORT_TRANSFER.SingleDcData localSingleDcData = MiniProgramReportHelper.newSingleReportData(MiniProgramLpReportDC04266.access$000(), (List)localObject, null);
     MiniProgramReporter.getInstance().addData(localSingleDcData);
-    if (MiniReportManager.needReportToDC5332(str))
+    if (MiniReportManager.needReportToDC5332(this.val$appType, str, this.val$reserves4))
     {
       localObject = MiniProgramReportHelper.newSingleReportData(MiniProgramLpReportDC04266.access$100(), (List)localObject, null);
       MiniProgramReporter.getInstance().addData((APP_REPORT_TRANSFER.SingleDcData)localObject);
@@ -47,7 +47,7 @@ final class MiniProgramLpReportDC04266$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04266.1
  * JD-Core Version:    0.7.0.1
  */

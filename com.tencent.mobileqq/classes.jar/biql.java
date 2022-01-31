@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class biql
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  biql(biqk parambiqk) {}
+  biql(biqi parambiqi) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (biqk.a(this.a) != null) {
-      biqk.a(this.a).a();
-    }
+    this.a.b = true;
+    biqi.a(this.a, 2);
+    biqi.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biql
  * JD-Core Version:    0.7.0.1
  */

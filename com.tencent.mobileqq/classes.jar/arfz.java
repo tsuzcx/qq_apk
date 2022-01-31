@@ -1,124 +1,394 @@
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.3;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.4;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
-class arfz
-  extends BroadcastReceiver
+public abstract class arfz
 {
-  arfz(arfy paramarfy) {}
+  protected int a;
+  private amzy a;
+  public Activity a;
+  public Bundle a;
+  protected aqho a;
+  protected aqsu a;
+  public ardn a;
+  protected areg a;
+  protected arei a;
+  protected arej a;
+  public arge a;
+  public argf a;
+  protected argg a;
+  protected ArrayList<ShareActionSheetBuilder.ActionSheetItem> a;
+  protected HashMap<String, ArrayList<ShareActionSheetBuilder.ActionSheetItem>> a;
+  public int b;
+  protected String f;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public arfz(Activity paramActivity)
   {
-    paramContext = paramIntent.getAction();
-    int i;
-    JSONObject localJSONObject;
-    if ((paramContext.equals(arfy.a(this.a.b))) || (paramContext.equals(arfy.d(this.a.b))))
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.b = 0;
+  }
+  
+  public abstract float a();
+  
+  public int a()
+  {
+    int i = 3;
+    int j = e();
+    if ((d() == 3) && (arni.c(d())) && (b() != 16))
     {
-      i = paramIntent.getIntExtra("key_state", -1);
-      arfy.a(this.a, i);
-      localJSONObject = arfy.a(this.a, i);
-      switch (i)
+      switch (j)
       {
+      case 3: 
       default: 
-        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
+        i = 1;
+      case 5: 
+        return i;
+      case 1: 
+        return 4;
+      case 2: 
+        return 2;
+      case 0: 
+        return 6;
       }
+      if (h()) {
+        return 5;
+      }
+      return 1;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("FileBrowserModelBase", 2, "getCreateFileType error : this is a local file, but is invalid, may be can not find file path");
+    }
+    return 0;
+  }
+  
+  public Intent a()
+  {
+    return null;
+  }
+  
+  public anxw a()
+  {
+    return new area();
+  }
+  
+  public abstract areg a();
+  
+  public abstract arei a();
+  
+  public abstract arej a();
+  
+  public arek a()
+  {
+    return null;
+  }
+  
+  public abstract TeamWorkFileImportInfo a();
+  
+  public String a()
+  {
+    return "";
+  }
+  
+  public abstract List<argc> a();
+  
+  protected abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, argc paramargc);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public void a(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(ardn paramardn)
+  {
+    this.jdField_a_of_type_Ardn = paramardn;
+  }
+  
+  public abstract void a(argd paramargd);
+  
+  public void a(arge paramarge)
+  {
+    this.jdField_a_of_type_Arge = paramarge;
+  }
+  
+  public void a(argf paramargf)
+  {
+    this.jdField_a_of_type_Argf = paramargf;
+  }
+  
+  public void a(argg paramargg)
+  {
+    this.jdField_a_of_type_Argg = paramargg;
+  }
+  
+  public void a(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem) {}
+  
+  public void a(String paramString)
+  {
+    if (bdcs.b(paramString)) {
+      aroo.a(this.jdField_a_of_type_AndroidAppActivity, paramString, new argb(this));
+    }
+  }
+  
+  public void a(String paramString, Bundle paramBundle) {}
+  
+  public void a(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  {
+    if (paramList == null) {}
+    Object localObject;
     do
     {
-      for (;;)
+      do
       {
         return;
-        l = paramIntent.getLongExtra("key_totalSize", 0L);
-        arfy.a(this.a, "size:" + l);
-        try
-        {
-          localJSONObject.putOpt("totalSize", Long.valueOf(l));
-          localJSONObject.remove("state");
+        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
         }
-        catch (JSONException paramContext)
-        {
-          for (;;)
-          {
-            paramContext.printStackTrace();
-          }
-        }
-      }
-      int j = paramIntent.getIntExtra("key_progress", 0);
-      long l = paramIntent.getLongExtra("key_totalSize", 0L);
-      paramIntent = this.a;
-      if (i == 1) {}
-      for (paramContext = "progress:STATE_DOWANLOADING:" + j;; paramContext = "progress:STATE_LOADING:" + j)
-      {
-        for (;;)
-        {
-          arfy.a(paramIntent, paramContext);
-          if (i == 4)
-          {
-            if (j <= 90) {
-              break;
-            }
-            arfy.a(this.a).removeCallbacksAndMessages(null);
-          }
-          try
-          {
-            localJSONObject.putOpt("totalSize", Long.valueOf(l));
-            localJSONObject.putOpt("pro", Integer.valueOf(j));
-          }
-          catch (JSONException paramContext)
-          {
-            paramContext.printStackTrace();
-          }
-        }
+        localObject = e();
+      } while (!bdcs.b((String)localObject));
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject)) {
         break;
       }
-      arfy.a(this.a, "STATE_DOWANLODAD_COMPLETE");
-      paramContext = Message.obtain();
-      if (arfy.a(this.a) == 1) {}
-      for (paramContext.arg1 = 40; !TextUtils.equals(arfy.a(this.a), "checkVersion"); paramContext.arg1 = 0)
-      {
-        arfy.b(this.a, 0);
-        arfy.a(this.a).sendMessage(paramContext);
-        break;
-      }
-      arfy.a(this.a, "STATE_DOWANLODAD_FAILED");
-      break;
-      arfy.a(this.a, "STATE_PRELOAD_FALIED");
-      break;
-      arfy.a(this.a, "STATE_LOAD_COMPLETE");
-      break;
-      arfy.a(this.a, "STATE_LOAD_FALIED");
-      break;
-      arfy.a(this.a, "STATE_LAUNCHERING");
-      break;
-      arfy.a(this.a, "STATE_LAUNCHER_SUCC");
-      break;
-      arfy.a(this.a, "STATE_LAUNCHER_FAILED");
-      break;
-      if (arfy.b(this.a.b).equals(paramContext))
-      {
-        paramContext = this.a.mRuntime.a();
-        if ((paramContext instanceof BaseActivity))
-        {
-          ((BaseActivity)paramContext).doOnBackPressed();
-          return;
-        }
-        paramContext.onBackPressed();
-        return;
-      }
-    } while (!arfy.c(this.a.b).equals(paramContext));
-    arfy.c(this.a, paramIntent.getIntExtra("key_isCache", -1));
+      localObject = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+    } while ((localObject == null) || (((ArrayList)localObject).isEmpty()));
+    paramList.addAll((Collection)localObject);
+    return;
+    aroo.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, new arga(this, (String)localObject));
+  }
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public boolean a(argd paramargd)
+  {
+    if (paramargd != null) {
+      paramargd.aI_();
+    }
+    return false;
+  }
+  
+  public abstract ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] a();
+  
+  public abstract int b();
+  
+  public abstract long b();
+  
+  public abstract String b();
+  
+  protected abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public void b(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+      paramList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    }
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+  }
+  
+  public abstract boolean b();
+  
+  public abstract ArrayList<ShareActionSheetBuilder.ActionSheetItem>[] b();
+  
+  public int c()
+  {
+    if (this.jdField_a_of_type_Int < 0) {
+      return 0;
+    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public abstract long c();
+  
+  public abstract String c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract long d();
+  
+  public abstract String d();
+  
+  protected abstract void d();
+  
+  public abstract void d(int paramInt);
+  
+  public abstract boolean d();
+  
+  public abstract int e();
+  
+  public String e()
+  {
+    return "";
+  }
+  
+  public abstract void e();
+  
+  public void e(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public abstract boolean e();
+  
+  public abstract int f();
+  
+  public abstract String f();
+  
+  public abstract void f();
+  
+  protected void f(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 118: 
+      azmj.b(null, "dc00898", "", "", "0X800ADBC", "0X800ADBC", 0, 0, "", "", "", "");
+      return;
+    case 52: 
+      azmj.b(null, "dc00898", "", "", "0X800ADBD", "0X800ADBD", 0, 0, "", "", "", "");
+      return;
+    case 55: 
+      azmj.b(null, "dc00898", "", "", "0X800ADBE", "0X800ADBE", 0, 0, "", "", "", "");
+      return;
+    }
+    azmj.b(null, "dc00898", "", "", "0X800ADBF", "0X800ADBF", 0, 0, "", "", "", "");
+  }
+  
+  public abstract boolean f();
+  
+  public void f_()
+  {
+    b();
+    if (this.jdField_a_of_type_Argf != null) {
+      this.jdField_a_of_type_Argf = null;
+    }
+    if (this.jdField_a_of_type_Arge != null) {
+      this.jdField_a_of_type_Arge = null;
+    }
+    if (this.jdField_a_of_type_Argg != null) {
+      this.jdField_a_of_type_Argg = null;
+    }
+    n();
+  }
+  
+  public abstract int g();
+  
+  public abstract String g();
+  
+  public abstract void g();
+  
+  public abstract boolean g();
+  
+  public abstract int h();
+  
+  public abstract String h();
+  
+  public abstract boolean h();
+  
+  public abstract int i();
+  
+  public String i()
+  {
+    return null;
+  }
+  
+  public void i()
+  {
+    a();
+    m();
+  }
+  
+  public abstract boolean i();
+  
+  public int j()
+  {
+    return 0;
+  }
+  
+  public String j()
+  {
+    return "";
+  }
+  
+  public void j()
+  {
+    if (this.jdField_a_of_type_Argf != null) {
+      this.jdField_a_of_type_Argf = null;
+    }
+    if (this.jdField_a_of_type_Arge != null) {
+      this.jdField_a_of_type_Arge = null;
+    }
+    if (this.jdField_a_of_type_Argg != null) {
+      this.jdField_a_of_type_Argg = null;
+    }
+  }
+  
+  public abstract boolean j();
+  
+  public int k()
+  {
+    return this.b;
+  }
+  
+  public String k()
+  {
+    return null;
+  }
+  
+  public boolean k()
+  {
+    return this.b != 12;
+  }
+  
+  public int l()
+  {
+    if (this.jdField_a_of_type_Ardn != null) {
+      return this.jdField_a_of_type_Ardn.a();
+    }
+    return 0;
+  }
+  
+  public void l() {}
+  
+  protected void m()
+  {
+    if (this.jdField_a_of_type_Amzy != null) {
+      return;
+    }
+    ThreadManagerV2.executeOnSubThread(new FileBrowserModelBase.3(this));
+  }
+  
+  protected void n()
+  {
+    if (this.jdField_a_of_type_Amzy == null) {
+      return;
+    }
+    ThreadManagerV2.executeOnSubThread(new FileBrowserModelBase.4(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arfz
  * JD-Core Version:    0.7.0.1
  */

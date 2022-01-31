@@ -1,40 +1,20 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
-import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
-import com.tencent.biz.qqstory.playvideo.entrance.ShareFromMemoryPlayInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-final class tve
-  implements ttc
+class tve
+  implements DialogInterface.OnClickListener
 {
-  tve(ShareFromMemoryPlayInfo paramShareFromMemoryPlayInfo, int paramInt, Activity paramActivity, View paramView) {}
+  tve(tvd paramtvd, int paramInt) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 1;
-    OpenPlayerBuilder.Data localData = new OpenPlayerBuilder(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceShareFromMemoryPlayInfo, this.jdField_a_of_type_Int).a();
-    OpenPlayerBuilder.UIStyle localUIStyle;
-    if (paramInt != -1)
-    {
-      localUIStyle = localData.mUIStyle;
-      if (paramInt != 1) {
-        break label66;
-      }
-    }
-    label66:
-    for (paramInt = i;; paramInt = 2)
-    {
-      localUIStyle.bottomWidgetShowFlag = paramInt;
-      localData.mUIStyle.mPlayerRepeatMode = 2;
-      tvc.a(this.jdField_a_of_type_AndroidAppActivity, localData, this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
+    this.jdField_a_of_type_Tvd.jdField_a_of_type_Tuu.a.a().a(tuk.a(this.jdField_a_of_type_Tvd.jdField_a_of_type_Tuu.a), this.jdField_a_of_type_Tvd.jdField_a_of_type_FeedcloudFeedCloudMeta$StComment, this.jdField_a_of_type_Tvd.jdField_a_of_type_FeedcloudFeedCloudMeta$StReply, this.jdField_a_of_type_Int);
+    tuk.b(this.jdField_a_of_type_Tvd.jdField_a_of_type_Tuu.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tve
  * JD-Core Version:    0.7.0.1
  */

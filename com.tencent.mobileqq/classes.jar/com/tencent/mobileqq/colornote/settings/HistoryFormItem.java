@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.colornote.settings;
 
-import amje;
-import amjf;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.AttributeSet;
@@ -10,15 +8,17 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import baxn;
+import aoaf;
+import aoag;
+import bcwh;
 import com.tencent.mobileqq.widget.FormSimpleItem;
 
 public class HistoryFormItem
   extends FormSimpleItem
 {
   private int jdField_a_of_type_Int;
-  private amjf jdField_a_of_type_Amjf;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private aoag jdField_a_of_type_Aoag;
   private boolean d;
   private boolean e = true;
   
@@ -38,7 +38,7 @@ public class HistoryFormItem
   {
     if (paramBoolean)
     {
-      setBackgroundResource(2130849245);
+      setBackgroundResource(2130849676);
       return;
     }
     setBgType(2);
@@ -48,10 +48,10 @@ public class HistoryFormItem
   {
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838999);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839079);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838998);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839078);
   }
   
   private void d()
@@ -63,14 +63,14 @@ public class HistoryFormItem
   {
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getResources().getString(2131690875));
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(getResources().getString(2131690927));
     c(this.d);
-    int i = getResources().getDimensionPixelSize(2131298675);
+    int i = getResources().getDimensionPixelSize(2131298703);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
     localLayoutParams.addRule(11, 1);
     localLayoutParams.addRule(15, 1);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new amje(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aoaf(this));
   }
   
   public int a()
@@ -92,7 +92,7 @@ public class HistoryFormItem
   public void b()
   {
     super.b();
-    this.o = baxn.a(getContext(), 290.0F);
+    this.o = bcwh.a(getContext(), 290.0F);
   }
   
   public void setChecked(boolean paramBoolean)
@@ -128,9 +128,9 @@ public class HistoryFormItem
     }
   }
   
-  public void setOnIconClickListener(amjf paramamjf)
+  public void setOnIconClickListener(aoag paramaoag)
   {
-    this.jdField_a_of_type_Amjf = paramamjf;
+    this.jdField_a_of_type_Aoag = paramaoag;
   }
   
   public void setRightIconResource(int paramInt)
@@ -142,7 +142,7 @@ public class HistoryFormItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.settings.HistoryFormItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,56 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import mqq.observer.BusinessObserver;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
 public class ahbe
-  implements BusinessObserver
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public void a(int paramInt, String paramString, Bundle paramBundle) {}
+  public ahbe(AddContactsActivity paramAddContactsActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if ((paramInt == 1) && (paramBundle != null))
+    if ((paramInt == 2131377315) && (AddContactsActivity.a(this.a).isChecked()))
     {
-      paramInt = paramBundle.getInt("btype");
-      String str = paramBundle.getString("bid");
-      if ((ahbc.a(paramInt)) && (!TextUtils.isEmpty(str))) {
-        a(paramInt, str, paramBundle);
-      }
+      AddContactsActivity.a(this.a);
+      azmj.b(this.a.app, "CliOper", "", "", "0X8004BE9", "0X8004BE9", 0, 0, "", "", "", "");
+      AddContactsActivity.a(this.a).setSelected(true);
+      AddContactsActivity.b(this.a).setSelected(false);
+      AddContactsActivity.c(this.a).setSelected(false);
+      AddContactsActivity.a(this.a).setVisibility(8);
     }
+    do
+    {
+      return;
+      if ((paramInt == 2131377317) && (AddContactsActivity.b(this.a).isChecked()))
+      {
+        AddContactsActivity.b(this.a);
+        azmj.b(this.a.app, "CliOper", "", "", "0X8004BEA", "0X8004BEA", 0, 0, "", "", "", "");
+        azmj.b(this.a.app, "P_CliOper", "Grp_find", "", "grptab", "exp", 0, 0, "", "", "", "");
+        AddContactsActivity.b(this.a).setSelected(true);
+        AddContactsActivity.a(this.a).setSelected(false);
+        AddContactsActivity.c(this.a).setSelected(false);
+        paramRadioGroup = AddContactsActivity.a(this.a);
+        if (AddContactsActivity.a(this.a)) {}
+        for (paramInt = 0;; paramInt = 8)
+        {
+          paramRadioGroup.setVisibility(paramInt);
+          return;
+        }
+      }
+    } while ((paramInt != 2131377316) || (!AddContactsActivity.c(this.a).isChecked()));
+    AddContactsActivity.c(this.a);
+    azmj.b(this.a.app, "CliOper", "", "", "0X8004BEB", "0X8004BEB", 0, 0, "", "", "", "");
+    AddContactsActivity.c(this.a).setSelected(true);
+    AddContactsActivity.a(this.a).setSelected(false);
+    AddContactsActivity.b(this.a).setSelected(false);
+    AddContactsActivity.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahbe
  * JD-Core Version:    0.7.0.1
  */

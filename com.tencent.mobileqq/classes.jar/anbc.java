@@ -1,95 +1,55 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.mobileqq.config.QStorageInstantiateException;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-public class anbc
-  extends ampa<anaz>
+public abstract class anbc
+  implements anbn
 {
-  public static anaz a()
+  public int a;
+  protected Context a;
+  protected AppInterface a;
+  protected int b;
+  
+  public anbc()
   {
-    anaz localanaz = (anaz)ampl.a().a(529);
-    if (localanaz != null) {
-      return localanaz;
-    }
-    return new anaz();
+    this.jdField_a_of_type_Int = 0;
   }
   
   public int a()
   {
-    return 529;
-  }
-  
-  @NonNull
-  public anaz a(int paramInt)
-  {
-    return new anaz();
-  }
-  
-  @Nullable
-  public anaz a(amph[] paramArrayOfamph)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    String str;
-    if (paramArrayOfamph != null)
-    {
-      localObject1 = localObject2;
-      if (paramArrayOfamph.length > 0)
-      {
-        str = paramArrayOfamph[0].a;
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(str)) {
-          if (QLog.isColorLevel()) {
-            QLog.e("SigTopicConfProcessor", 1, "SigTopic.[onParsed] type=" + a() + ", content = " + str);
-          }
-        }
-      }
-    }
-    try
-    {
-      paramArrayOfamph = (anba)ampv.a(str, anba.class);
-      localObject1 = new anaz(str, paramArrayOfamph);
-      return localObject1;
-    }
-    catch (QStorageInstantiateException paramArrayOfamph)
-    {
-      for (;;)
-      {
-        QLog.e("SigTopicConfProcessor", 1, "readJsonOrXml failed", paramArrayOfamph);
-        paramArrayOfamph = null;
-      }
-    }
-  }
-  
-  public Class<anaz> a()
-  {
-    return anaz.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(anaz paramanaz) {}
-  
-  public int b()
-  {
     return 0;
   }
   
-  public boolean b()
+  public void a(Context paramContext, AppInterface paramAppInterface)
   {
-    return false;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
   }
   
-  public boolean c()
+  public int b()
   {
-    return true;
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void h()
+  {
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public void i() {}
+  
+  public void j()
+  {
+    this.jdField_a_of_type_Int = 5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbc
  * JD-Core Version:    0.7.0.1
  */

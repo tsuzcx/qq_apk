@@ -1,28 +1,65 @@
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.List;
 
 class apry
-  implements aptw
+  implements URLDrawable.URLDrawableListener
 {
-  apry(aprw paramaprw, List paramList, apsb paramapsb) {}
+  apry(aprw paramaprw) {}
   
-  public void a()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    apug.a(this.jdField_a_of_type_JavaUtilList, aprw.a(this.jdField_a_of_type_Aprw));
-    if (this.jdField_a_of_type_Apsb != null) {
-      this.jdField_a_of_type_Apsb.a(2, 0);
+    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
+    if (QLog.isColorLevel())
+    {
+      paramURLDrawable = paramURLDrawable.getTag();
+      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
+      {
+        paramURLDrawable = (Emoticon)paramURLDrawable;
+        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadCanceled eId = " + paramURLDrawable.eId);
+      }
     }
   }
   
-  public void b()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.jdField_a_of_type_Apsb != null) {
-      this.jdField_a_of_type_Apsb.a(2, 1);
+    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
+    if (QLog.isColorLevel())
+    {
+      paramURLDrawable = paramURLDrawable.getTag();
+      if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
+      {
+        paramURLDrawable = (Emoticon)paramURLDrawable;
+        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener onLoadFialed eId = " + paramURLDrawable.eId);
+      }
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramURLDrawable);
+    paramURLDrawable = paramURLDrawable.getTag();
+    if ((paramURLDrawable != null) && ((paramURLDrawable instanceof Emoticon)))
+    {
+      paramURLDrawable = (Emoticon)paramURLDrawable;
+      if (!this.a.jdField_a_of_type_JavaUtilList.contains(paramURLDrawable)) {
+        this.a.jdField_a_of_type_JavaUtilList.add(paramURLDrawable);
+      }
+      this.a.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("EmotionKeywordAdapter", 2, "firstScreenListener downloadSucess eId = " + paramURLDrawable.eId);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apry
  * JD-Core Version:    0.7.0.1
  */

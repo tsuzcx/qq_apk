@@ -1,48 +1,33 @@
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
+import com.tencent.biz.game.SensorAPIJavaScript;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-class nek
-  implements nhb
+public class nek
 {
-  nek(nea paramnea) {}
+  public nek(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void a(int paramInt)
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    float f;
-    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
-    {
-      paramInt = -this.a.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
-      }
-      f = 150.0F * this.a.jdField_a_of_type_Float;
-      if (paramInt != 0)
-      {
-        if (!this.a.e) {
-          break label127;
-        }
-        if (paramInt <= f) {
-          break label119;
-        }
-        this.a.d(paramInt);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user denied = ");
     }
-    return;
-    label119:
-    this.a.e();
-    return;
-    label127:
-    if (paramInt > this.a.o - f)
-    {
-      this.a.d(paramInt);
-      return;
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "false", "{result: -10, msg: 'no permission to record'}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.TAG, 1, "CheckPermission user grant = ");
     }
-    this.a.e();
+    SensorAPIJavaScript.a(this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nek
  * JD-Core Version:    0.7.0.1
  */

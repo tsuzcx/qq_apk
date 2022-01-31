@@ -1,37 +1,35 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.widget.Button;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class ahjv
-  implements Animation.AnimationListener
 {
-  public ahjv(AnonymousEntranceView paramAnonymousEntranceView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (AnonymousEntranceView.a(this.a) != null) {
-      AnonymousEntranceView.a(this.a).setVisibility(4);
-    }
-    if (AnonymousEntranceView.b(this.a) != null)
-    {
-      AnonymousEntranceView.b(this.a).clearAnimation();
-      AnonymousEntranceView.b(this.a).startAnimation(AnonymousEntranceView.a(this.a));
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (AnonymousEntranceView.a(this.a) != null) {
-      AnonymousEntranceView.a(this.a).setVisibility(0);
-    }
-  }
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public ShaderAnimLayout a;
+  public String a;
+  public structmsg.StructMsg a;
+  public int b;
+  public long b;
+  public ImageView b;
+  public LinearLayout b;
+  public TextView b;
+  public String b;
+  public long c;
+  public TextView c;
+  public String c = "";
+  public TextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjv
  * JD-Core Version:    0.7.0.1
  */

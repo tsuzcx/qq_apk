@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.ark;
 
-import alrl;
-import alrm;
+import anid;
+import anie;
 
 public class ArkAiDictUpdateMgr$1$1$1
   implements Runnable
 {
-  public ArkAiDictUpdateMgr$1$1$1(alrm paramalrm) {}
+  public ArkAiDictUpdateMgr$1$1$1(anie paramanie) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class ArkAiDictUpdateMgr$1$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.1.1.1
  * JD-Core Version:    0.7.0.1
  */

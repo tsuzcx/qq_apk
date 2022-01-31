@@ -1,75 +1,49 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
-import android.view.ViewStub;
+import com.tencent.shadow.dynamic.host.EnterCallback;
+import cooperation.qqreader.shadow.ReaderShadowImpl.1;
 
-public abstract class biwr
+public class biwr
+  implements EnterCallback
 {
-  protected Activity a;
-  protected View a;
-  private ViewStub jdField_a_of_type_AndroidViewViewStub;
-  protected biws a;
-  private volatile boolean jdField_a_of_type_Boolean;
+  public biwr(ReaderShadowImpl.1 param1, long paramLong) {}
   
-  public biwr(Activity paramActivity, View paramView, biws parambiws)
+  public void onCloseLoadingView()
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Biws = parambiws;
-  }
-  
-  public biwr(Activity paramActivity, ViewStub paramViewStub, biws parambiws)
-  {
-    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_Biws = parambiws;
-  }
-  
-  public <T> T a(int paramInt, Object... paramVarArgs)
-  {
-    return null;
-  }
-  
-  protected abstract void a();
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(int paramInt, Object... paramVarArgs) {}
-  
-  protected void a(View paramView) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void b() {}
-  
-  public void c() {}
-  
-  public void g() {}
-  
-  public void h() {}
-  
-  public void i() {}
-  
-  protected final void j()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
+    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
+      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onCloseLoadingView();
     }
-    View localView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-    this.jdField_a_of_type_Boolean = true;
-    a(localView);
+    bixe.c("ReaderShadowImpl", "[onCloseLoadingView] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
+  }
+  
+  public void onEnterComplete()
+  {
+    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
+      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onEnterComplete();
+    }
+    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long == 1002L) {
+      bixh.a(this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_AndroidContentContext, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "0");
+    }
+    for (;;)
+    {
+      bixe.c("ReaderShadowImpl", "[onEnterComplete] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
+      return;
+      if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long == 1003L) {
+        bixh.a(this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_AndroidContentContext, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "1");
+      }
+    }
+  }
+  
+  public void onShowLoadingView(View paramView)
+  {
+    if (this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback != null) {
+      this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_ComTencentShadowDynamicHostEnterCallback.onShowLoadingView(paramView);
+    }
+    bixe.c("ReaderShadowImpl", "[onShowLoadingView] formId = " + this.jdField_a_of_type_CooperationQqreaderShadowReaderShadowImpl$1.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biwr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,14 @@
-import java.util.List;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-class oiy
-  extends ojn
+public abstract interface oiy
 {
-  oiy(oil paramoil, boolean paramBoolean, List paramList)
-  {
-    super(paramoil, null);
-  }
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString);
   
-  void a(ojq paramojq)
-  {
-    paramojq.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, oil.c(this.jdField_a_of_type_Oil), 6);
-  }
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oiy
  * JD-Core Version:    0.7.0.1
  */

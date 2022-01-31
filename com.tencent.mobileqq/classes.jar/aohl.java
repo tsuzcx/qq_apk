@@ -1,25 +1,22 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-
 public class aohl
-  extends RecyclerView.ViewHolder
+  extends aohi
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private aoic a;
   
-  public aohl(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView)
+  aohl(String paramString, aoic paramaoic)
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131367679));
+    super(paramString);
+    this.a = paramaoic;
+  }
+  
+  public aoic a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aohl
  * JD-Core Version:    0.7.0.1
  */

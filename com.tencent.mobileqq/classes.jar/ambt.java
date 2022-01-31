@@ -1,50 +1,75 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.List;
 
 public class ambt
-  extends QQLruCache<Integer, ambg>
+  implements alkr
 {
-  public ambt(BubbleManager paramBubbleManager, int paramInt1, int paramInt2, int paramInt3)
-  {
-    super(paramInt1, paramInt2, paramInt3);
-  }
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void a()
-  {
-    Map localMap = snapshot();
-    if (localMap != null)
-    {
-      Iterator localIterator = localMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((ambg)localIterator.next()).a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("BubbleManager", 2, "BubbleInfoLruCache cleared, size = " + localMap.size());
-      }
-    }
-  }
+  protected void a(boolean paramBoolean, String paramString) {}
   
-  protected void a(boolean paramBoolean, Integer paramInteger, ambg paramambg1, ambg paramambg2)
+  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    super.entryRemoved(paramBoolean, paramInteger, paramambg1, paramambg2);
     if (QLog.isColorLevel()) {
-      QLog.d("BubbleManager", 2, "entryRemoved key=" + paramInteger);
+      QLog.d("NewFriendVerification.obsever", 2, " onUpdate() type =" + paramInt + " isSuccess = " + paramBoolean);
     }
-    paramambg1.a();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return get(Integer.valueOf(paramInt)) != null;
+    switch (paramInt)
+    {
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendVerification.obsever", 2, " default type =" + paramInt);
+      }
+      return;
+    case 1: 
+      b(paramBoolean, null);
+      return;
+    case 2: 
+      a(paramBoolean, null);
+      return;
+    case 3: 
+      paramObject = (Object[])paramObject;
+      boolean bool1 = ((Boolean)paramObject[0]).booleanValue();
+      boolean bool2 = ((Boolean)paramObject[1]).booleanValue();
+      paramObject = (String)paramObject[2];
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendVerification.obsever", 2, " isShowEntrance =" + bool1 + " isShowRedPoint =" + bool2);
+      }
+      a(paramBoolean, bool1, bool2, paramObject);
+      return;
+    case 4: 
+      paramObject = (Object[])paramObject;
+      List localList = (List)paramObject[0];
+      String str = (String)paramObject[1];
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append(" blockedInfos =");
+        if (localList == null) {
+          break label297;
+        }
+      }
+      label297:
+      for (paramObject = Integer.valueOf(localList.size());; paramObject = " is null")
+      {
+        QLog.d("NewFriendVerification.obsever", 2, paramObject);
+        a(paramBoolean, localList, str);
+        return;
+      }
+    }
+    paramObject = (Object[])paramObject;
+    a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ambt
  * JD-Core Version:    0.7.0.1
  */

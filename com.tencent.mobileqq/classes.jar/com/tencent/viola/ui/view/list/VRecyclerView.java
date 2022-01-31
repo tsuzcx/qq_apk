@@ -205,69 +205,90 @@ public class VRecyclerView
   
   private void setupPagerSnaper()
   {
-    String str;
+    boolean bool2 = true;
+    Object localObject;
     if (getComponent().getDomObject().getAttributes().containsKey("stickyType"))
     {
-      str = (String)getComponent().getDomObject().getAttributes().get("stickyType");
-      if (!"none".equals(str))
+      localObject = (String)getComponent().getDomObject().getAttributes().get("stickyType");
+      if (!"none".equals(localObject))
       {
         if (getComponent().getDomObject().getAttributes().containsKey("stickyOffset")) {
           this.snapOffset = ((int)FlexConvertUtils.converPxByViewportToRealPx(getComponent().getDomObject().getAttributes().get("stickyOffset"), 750));
         }
         if (!getComponent().getDomObject().getAttributes().containsKey("stickyRebound")) {
-          break label416;
+          break label553;
         }
       }
     }
-    label416:
-    for (boolean bool = ((Boolean)getComponent().getDomObject().getAttributes().get("stickyRebound")).booleanValue();; bool = true)
+    label401:
+    label548:
+    label553:
+    for (boolean bool1 = ((Boolean)getComponent().getDomObject().getAttributes().get("stickyRebound")).booleanValue();; bool1 = true)
     {
       int i;
-      if ("top".equals(str))
+      if ("top".equals(localObject))
       {
         i = 1;
         this.pagerGravity = i;
         this.mPagerSnapHelper = new PagerSnapHelper(this.pagerGravity);
         this.mPagerSnapHelper.setSnapOffset(this.snapOffset);
+        this.mPagerSnapHelper.setHorizontalReverseLayout(getComponent().isReverse());
         this.mPagerSnapHelper.setEventListener(this);
         this.mPagerSnapHelper.attachToRecyclerView(this);
-        if (bool) {
+        if (bool1) {
           this.mPagerSnapHelper.setReboundFooterCount(1);
         }
         if (Build.VERSION.SDK_INT >= 23) {
           this.mPagerSnapHelper.setQuickPageChanged(true);
         }
-        if (getComponent().getDomObject().getAttributes().containsKey("stickySpeed")) {
+        if (getComponent().getDomObject().getAttributes().containsKey("stickyItemSpeed")) {
+          this.mPagerSnapHelper.setSnapSpeedFactor(((Integer)getComponent().getDomObject().getAttributes().get("stickyItemSpeed")).intValue());
+        }
+        if (getComponent().getDomObject().getAttributes().containsKey("stickySpeed"))
+        {
           if (!(getComponent().getDomObject().getAttributes().get("stickySpeed") instanceof Double)) {
-            break label340;
+            break label468;
+          }
+          this.snapSpeedFactor = Float.valueOf(getComponent().getDomObject().getAttributes().get("stickySpeed").toString()).floatValue();
+          label361:
+          this.flingVelocityIncrease = ((int)this.snapSpeedFactor);
+          if (getMinFlingVelocity() <= 10000) {
+            break label498;
+          }
+          this.flingVelocityIncrease = 0;
+          this.mPagerSnapHelper.setSnapOnFling(false);
+          this.mPagerSnapHelper.setSnapOnIdle(false);
+        }
+        if (getComponent().getDomObject().getAttributes().containsKey("stickySlowRebound"))
+        {
+          i = ((Integer)getComponent().getDomObject().getAttributes().get("stickySlowRebound")).intValue();
+          localObject = this.mPagerSnapHelper;
+          if (i != 1) {
+            break label548;
           }
         }
       }
-      label340:
-      for (this.snapSpeedFactor = Float.valueOf(getComponent().getDomObject().getAttributes().get("stickySpeed").toString()).floatValue();; this.snapSpeedFactor = ((Integer)getComponent().getDomObject().getAttributes().get("stickySpeed")).intValue())
+      for (bool1 = bool2;; bool1 = false)
       {
-        this.flingVelocityIncrease = ((int)this.snapSpeedFactor);
-        if (getMinFlingVelocity() <= 10000) {
-          break label370;
-        }
-        this.flingVelocityIncrease = 0;
-        this.mPagerSnapHelper.setSnapOnFling(false);
-        this.mPagerSnapHelper.setSnapOnIdle(false);
+        ((PagerSnapHelper)localObject).setSnapOnIdle(bool1);
         return;
         i = 0;
         break;
-      }
-      label370:
-      if (getMinFlingVelocity() <= 0)
-      {
-        this.flingVelocityIncrease = 0;
+        label468:
+        this.snapSpeedFactor = ((Integer)getComponent().getDomObject().getAttributes().get("stickySpeed")).intValue();
+        break label361;
+        label498:
+        if (getMinFlingVelocity() <= 0)
+        {
+          this.flingVelocityIncrease = 0;
+          this.mPagerSnapHelper.setSnapOnFling(true);
+          this.mPagerSnapHelper.setSnapOnIdle(true);
+          break label401;
+        }
+        this.mPagerSnapHelper.setSnapOnIdle(false);
         this.mPagerSnapHelper.setSnapOnFling(true);
-        this.mPagerSnapHelper.setSnapOnIdle(true);
-        return;
+        break label401;
       }
-      this.mPagerSnapHelper.setSnapOnIdle(false);
-      this.mPagerSnapHelper.setSnapOnFling(true);
-      return;
     }
   }
   
@@ -290,69 +311,93 @@ public class VRecyclerView
   
   public void calAndSetContentOffset(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    int m = getFirstVisibleItemPosition();
-    if ((m == 0) && (this.mRefreshOffset != 0))
+    if (getComponent() != null) {}
+    for (boolean bool = getComponent().isReverse();; bool = false)
     {
-      if (paramBoolean)
+      if (!bool) {}
+      int m;
+      for (;;)
       {
+        m = getFirstVisibleItemPosition();
+        if ((m != 0) || (this.mRefreshOffset == 0)) {
+          break label67;
+        }
+        if (!paramBoolean) {
+          break;
+        }
         this.mContentOffsetY = this.mRefreshOffset;
         return;
+        paramFloat1 = -paramFloat1;
       }
       this.mContentOffsetX = this.mRefreshOffset;
       return;
-    }
-    Object localObject = (VRecyclerViewAdapter)getAdapter();
-    int i = ((VRecyclerViewAdapter)localObject).getItemCount();
-    if (findLastCompletelyVisibleItemPositions() == i - 1)
-    {
-      if (paramBoolean)
+      label67:
+      Object localObject = (VRecyclerViewAdapter)getAdapter();
+      int i = ((VRecyclerViewAdapter)localObject).getItemCount();
+      if (findLastCompletelyVisibleItemPositions() == i - 1)
       {
-        this.mContentOffsetY = ((int)(this.mContentOffsetY + paramFloat2));
+        if (paramBoolean)
+        {
+          this.mContentOffsetY = ((int)(this.mContentOffsetY + paramFloat2));
+          return;
+        }
+        this.mContentOffsetX = ((int)(this.mContentOffsetX + paramFloat1));
         return;
       }
-      this.mContentOffsetX = ((int)(this.mContentOffsetX + paramFloat1));
-      return;
-    }
-    int j = 0;
-    i = 0;
-    if (j < m)
-    {
-      DomObject localDomObject = ((VRecyclerViewAdapter)localObject).getItem(j);
-      int k = i;
-      if (localDomObject != null)
+      int j = 0;
+      i = 0;
+      if (j < m)
       {
-        paramFloat2 = i;
-        if (!paramBoolean) {
-          break label161;
+        DomObject localDomObject = ((VRecyclerViewAdapter)localObject).getItem(j);
+        int k = i;
+        if (localDomObject != null)
+        {
+          paramFloat2 = i;
+          if (!paramBoolean) {
+            break label188;
+          }
+          paramFloat1 = localDomObject.getLayoutHeight();
+        }
+        for (;;)
+        {
+          k = (int)(paramFloat2 - paramFloat1);
+          j += 1;
+          i = k;
+          break;
+          label188:
+          if (!bool) {
+            paramFloat1 = localDomObject.getLayoutWidth();
+          } else {
+            paramFloat1 = -localDomObject.getLayoutWidth();
+          }
         }
       }
-      label161:
-      for (paramFloat1 = localDomObject.getLayoutHeight();; paramFloat1 = localDomObject.getLayoutWidth())
+      localObject = getChildAt(0);
+      if (localObject != null) {
+        if (paramBoolean)
+        {
+          j = ((View)localObject).getTop();
+          i = j + i;
+        }
+      }
+      for (;;)
       {
-        k = (int)(paramFloat2 - paramFloat1);
-        j += 1;
-        i = k;
-        break;
+        if (paramBoolean)
+        {
+          this.mContentOffsetY = i;
+          return;
+          j = ((View)localObject).getLeft();
+          break;
+        }
+        if (!bool) {}
+        for (;;)
+        {
+          this.mContentOffsetX = i;
+          return;
+          i = -i;
+        }
       }
     }
-    localObject = getChildAt(0);
-    j = i;
-    if (localObject != null) {
-      if (!paramBoolean) {
-        break label215;
-      }
-    }
-    label215:
-    for (j = ((View)localObject).getTop();; j = ((View)localObject).getLeft())
-    {
-      j = i + j;
-      if (!paramBoolean) {
-        break;
-      }
-      this.mContentOffsetY = j;
-      return;
-    }
-    this.mContentOffsetX = j;
   }
   
   public boolean canChildPullDown()
@@ -533,17 +578,27 @@ public class VRecyclerView
   
   public void onOverScroll(float paramFloat)
   {
-    if (paramFloat > 0.0F) {}
-    for (;;)
+    if (getComponent() != null) {}
+    for (boolean bool = getComponent().isReverse();; bool = false)
     {
-      if (this.mGestureListener != null) {
-        this.mGestureListener.onScroll(this, (int)paramFloat, 0, 0, 0);
+      if (bool) {
+        paramFloat = -paramFloat;
       }
-      return;
-      if (paramFloat < 0.0F) {
-        paramFloat += this.mContentOffsetX;
-      } else {
-        paramFloat = this.mContentOffsetX;
+      for (;;)
+      {
+        if (paramFloat > 0.0F) {}
+        for (;;)
+        {
+          if (this.mGestureListener != null) {
+            this.mGestureListener.onScroll(this, (int)paramFloat, 0, 0, 0, true);
+          }
+          return;
+          if (paramFloat < 0.0F) {
+            paramFloat += this.mContentOffsetX;
+          } else {
+            paramFloat = this.mContentOffsetX;
+          }
+        }
       }
     }
   }
@@ -590,49 +645,49 @@ public class VRecyclerView
       if (Math.abs(i) >= this.mScrollMinOffset)
       {
         if (!bool) {
-          break label673;
+          break label674;
         }
         this.mLastContentOffsetY = this.mContentOffsetY;
         if (this.mGestureListener != null)
         {
           localObject = this.mGestureListener;
           if (!bool) {
-            break label684;
+            break label685;
           }
           i = 0;
           if (!bool) {
-            break label693;
+            break label694;
           }
           j = this.mContentOffsetY;
           label92:
-          ((VRecyclerView.OnGestureListener)localObject).onScroll(this, i, j, paramInt1, paramInt2);
+          ((VRecyclerView.OnGestureListener)localObject).onScroll(this, i, j, paramInt1, paramInt2, false);
         }
       }
       if ((this.mGestureListener != null) && (getAdapter() != null))
       {
         localObject = this.mGestureListener;
         if (!bool) {
-          break label699;
+          break label700;
         }
         paramInt2 = this.mContentOffsetY;
-        label136:
+        label137:
         i = getFirstVisibleItemPosition();
         j = getChildCount();
         int m = getAdapter().getItemCount();
         if (canChildPullDown()) {
-          break label707;
+          break label708;
         }
         paramInt1 = 1;
-        label166:
+        label167:
         ((VRecyclerView.OnGestureListener)localObject).onScroll(paramInt2, i, j, m, paramInt1);
       }
     }
-    label673:
-    label684:
-    label693:
-    label699:
-    label707:
-    label966:
+    label674:
+    label685:
+    label694:
+    label700:
+    label708:
+    label967:
     for (;;)
     {
       Map.Entry localEntry;
@@ -647,16 +702,16 @@ public class VRecyclerView
           if (paramInt1 < getChildCount())
           {
             if (!(((VRecyclerViewAdapter)getAdapter()).getItem(getFirstVisibleItemPosition() + paramInt1) instanceof DomObjectCell)) {
-              break label966;
+              break label967;
             }
             localObject = (DomObjectCell)((VRecyclerViewAdapter)getAdapter()).getItem(getFirstVisibleItemPosition() + paramInt1);
             if ((localObject == null) || (!((DomObjectCell)localObject).isRegisterDidAppear())) {
-              break label966;
+              break label967;
             }
             View localView = getChildAt(paramInt1);
             Iterator localIterator = ((DomObjectCell)localObject).getRegisterDidAppearComponentDyStartMap().entrySet().iterator();
             if (!localIterator.hasNext()) {
-              break label966;
+              break label967;
             }
             localEntry = (Map.Entry)localIterator.next();
             f1 = localView.getY();
@@ -669,7 +724,7 @@ public class VRecyclerView
             f2 = this.mRefreshOffset + (f3 + f2 + f4) - ((Float)((DomObjectCell)localObject).getRegisterDidAppearComponentDyStartOffsetMap().get(localEntry.getKey())).floatValue() - ((Float)((DomObjectCell)localObject).getRegisterDidAppearComponentDyEndOffsetMap().get(localEntry.getKey())).floatValue();
             localComponentState = ((DomObjectCell)localObject).getComponentState((String)localEntry.getKey());
             if (!localComponentState.equals(DomObjectCell.ComponentState.DIDDISAPPEAR)) {
-              break label724;
+              break label725;
             }
             if (((f2 <= 0.0F) || (f1 >= 0.0F) || ((isScrollDown()) && (this.mRefreshOffset == 0))) && ((f1 >= getHeight()) || (f2 <= getHeight()) || ((!isScrollDown()) && (this.mRefreshOffset == 0)))) {
               continue;
@@ -694,15 +749,15 @@ public class VRecyclerView
       j = 0;
       break label92;
       paramInt2 = this.mContentOffsetX;
-      break label136;
+      break label137;
       if (!canChildPullUp())
       {
         paramInt1 = 2;
-        break label166;
+        break label167;
       }
       paramInt1 = 0;
-      break label166;
-      label724:
+      break label167;
+      label725:
       if (localComponentState.equals(DomObjectCell.ComponentState.DIDAPPEAR))
       {
         if ((f2 <= 0.0F) || (f1 >= getHeight() - 1))
@@ -839,7 +894,7 @@ public class VRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.VRecyclerView
  * JD-Core Version:    0.7.0.1
  */

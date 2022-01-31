@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.Advertisement.view;
 
 import android.os.Handler;
-import axqy;
+import azmj;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import nis;
-import niu;
+import nlo;
+import nlq;
 
 class VideoCoverView$11
   implements Runnable
@@ -20,7 +20,7 @@ class VideoCoverView$11
       {
         i = (int)((float)VideoCoverView.a(this.this$0).getCurrentPostion() * 1.0F * 100.0F / (float)this.this$0.jdField_a_of_type_Long);
         if ((VideoCoverView.a(this.this$0) == 1) && (i < VideoCoverView.a(this.this$0).d) && (VideoCoverView.a(this.this$0) != null) && (VideoCoverView.a(this.this$0).a != null)) {
-          axqy.a(null, "dc00898", "", VideoCoverView.a(this.this$0).a.jdField_a_of_type_JavaLangString, "0X8008F65", "0X8008F65", 0, 0, VideoCoverView.a(this.this$0).a.c, "", this.this$0.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.this$0).a.b);
+          azmj.a(null, "dc00898", "", VideoCoverView.a(this.this$0).a.jdField_a_of_type_JavaLangString, "0X8008F65", "0X8008F65", 0, 0, VideoCoverView.a(this.this$0).a.c, "", this.this$0.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.this$0).a.b);
         }
         if (VideoCoverView.b(this.this$0) != VideoCoverView.a(this.this$0).c) {
           continue;
@@ -58,7 +58,7 @@ class VideoCoverView$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.11
  * JD-Core Version:    0.7.0.1
  */

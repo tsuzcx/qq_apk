@@ -1,68 +1,74 @@
-import android.content.Context;
-import java.util.ArrayList;
-import java.util.concurrent.locks.ReentrantLock;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.export.js.VipDownloadInterface;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class bflw
+  implements bfki
 {
-  private ArrayList<bflx> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+  public bflw(VipDownloadInterface paramVipDownloadInterface) {}
   
-  public bflx a(long paramLong)
+  public void a(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    int i = 0;
-    bflx localbflx;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    bfhg.e(this.a.a, "getQueryDownloadAction onException code = " + paramInt + " msg= ");
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      localbflx = (bflx)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localbflx.a != paramLong) {}
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      return localbflx;
-      i += 1;
-      break;
-      localbflx = null;
-    }
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    int i = 0;
-    for (;;)
-    {
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
-      {
-        if (((bflx)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a == paramLong) {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(i);
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-        return;
-      }
-      i += 1;
-    }
-  }
-  
-  public void a(long paramLong, Context paramContext)
-  {
-    if (a(paramLong) != null) {
+      localJSONObject.put("errCode", paramInt);
+      localJSONObject.put("errMsg", paramString);
+      paramString = "javascript:publicAccountDownload.queryProcess(" + localJSONObject.toString() + ")";
+      this.a.a(paramString);
       return;
     }
-    paramContext = new bflx(this);
-    paramContext.a = paramLong;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramContext);
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void a(List<DownloadInfo> paramList)
+  {
+    bfhg.a(this.a.a, "getQueryDownloadAction onResult = " + paramList.size());
+    JSONArray localJSONArray = new JSONArray();
+    int j = paramList.size();
+    int i = 0;
+    for (;;)
+    {
+      if (i < j)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
+        try
+        {
+          localJSONObject.put("appid", localDownloadInfo.jdField_c_of_type_JavaLangString);
+          localJSONObject.put("pro", localDownloadInfo.f);
+          localJSONObject.put("state", localDownloadInfo.a());
+          localJSONObject.put("ismyapp", localDownloadInfo.jdField_c_of_type_Int);
+          localJSONArray.put(localJSONObject);
+          i += 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          for (;;)
+          {
+            localJSONException.printStackTrace();
+          }
+        }
+      }
+    }
+    paramList = "javascript:publicAccountDownload.queryProcess(" + localJSONArray.toString() + ")";
+    bfhg.a(this.a.a, "getQueryDownloadAction callback url = " + paramList);
+    this.a.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bflw
  * JD-Core Version:    0.7.0.1
  */

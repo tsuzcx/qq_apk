@@ -18,8 +18,4 @@
             <TextView android:textSize="13.0sp" android:textColor="#ff262626" android:id="@id/lqx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/q11" />
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/a8j" android:layout_width="fill_parent" android:layout_height="71.0dip" android:layout_below="@id/c2t">
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="63.0dip" android:layout_marginTop="8.0dip" android:src="@drawable/bgy" />
-        <TextView android:textSize="16.0dip" android:gravity="center" android:id="@id/vv" android:background="@drawable/lv" android:layout_width="fill_parent" android:layout_height="57.0dip" android:layout_marginLeft="@dimen/as6" android:layout_marginRight="@dimen/as6" android:includeFontPadding="false" />
-    </LinearLayout>
 </RelativeLayout>

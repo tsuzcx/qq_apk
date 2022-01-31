@@ -1,43 +1,43 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aoob
-  extends AsyncTask<Void, Void, Integer>
 {
-  public aoob(FMLocalFileActivity paramFMLocalFileActivity) {}
+  public int a;
+  public int b;
   
-  protected Integer a(Void... paramVarArgs)
+  public static aoob a(String paramString)
   {
-    return Integer.valueOf(apty.b(this.a));
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    this.a.stopTitleProgress();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (paramString == null) {}
+    do
     {
-      apep localapep = (apep)localIterator.next();
-      if (localapep.e == 4)
+      return null;
+      try
       {
-        localapep.d = paramInteger.intValue();
-        this.a.jdField_a_of_type_Apen.notifyDataSetChanged();
+        aoob localaoob = new aoob();
+        paramString = new JSONObject(paramString);
+        localaoob.a = paramString.optInt("switch", 0);
+        localaoob.b = paramString.optInt("stoppreload", 0);
+        QLog.d("ConfBean", 2, "confBean = " + localaoob.a);
+        return localaoob;
       }
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  protected void onPreExecute()
+  public String toString()
   {
-    super.onPreExecute();
-    this.a.startTitleProgress();
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("result:").append(this.a);
+    localStringBuilder.append(" stoppreload:").append(this.b);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoob
  * JD-Core Version:    0.7.0.1
  */

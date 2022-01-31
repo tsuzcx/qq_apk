@@ -1,21 +1,52 @@
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.util.SparseArray;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class oiu
-  extends ojn
+public class oiu
+  extends bmgo
 {
-  oiu(oil paramoil, boolean paramBoolean, List paramList)
+  public oiu(@NonNull bmix parambmix, long paramLong)
   {
-    super(paramoil, null);
+    super(parambmix, paramLong);
   }
   
-  void a(ojq paramojq)
+  private void j()
   {
-    paramojq.onCommentListLoad(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, oil.b(this.jdField_a_of_type_Oil), 3, 3);
+    ((ImageView)a(2131378116)).setVisibility(8);
+    ((TextView)a(2131364829)).setText(alpo.a(2131713240));
+  }
+  
+  public void a()
+  {
+    super.a();
+    j();
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    int i = paramView.getId();
+    paramView = (Long)this.a.get(i);
+    if (paramView != null) {}
+    switch ((int)paramView.longValue())
+    {
+    default: 
+      return;
+    case 4: 
+      nrt.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "3", "", "", "", false);
+      return;
+    case 8: 
+      nrt.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "1", "", "", "", false);
+      return;
+    }
+    nrt.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "2", "", "", "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oiu
  * JD-Core Version:    0.7.0.1
  */

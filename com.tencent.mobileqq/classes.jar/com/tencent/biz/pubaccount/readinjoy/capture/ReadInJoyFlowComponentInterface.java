@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.capture;
 
-import ahua;
+import ajlk;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class ReadInJoyFlowComponentInterface
-  implements ahua
+  implements ajlk
 {
   public static final String a = ReadInJoyFlowComponentInterface.class.getName();
   
@@ -38,11 +38,11 @@ public class ReadInJoyFlowComponentInterface
   
   public void a(Activity paramActivity, Intent paramIntent) {}
   
-  public void c_(String paramString) {}
+  public void d_(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyFlowComponentInterface
  * JD-Core Version:    0.7.0.1
  */

@@ -1,90 +1,57 @@
-import android.hardware.camera2.CameraCaptureSession;
-import android.hardware.camera2.CameraCaptureSession.CaptureCallback;
-import android.hardware.camera2.CaptureFailure;
-import android.hardware.camera2.CaptureRequest;
-import android.hardware.camera2.CaptureRequest.Builder;
-import android.hardware.camera2.CaptureResult;
-import android.hardware.camera2.TotalCaptureResult;
-import android.support.annotation.NonNull;
-import com.samsung.android.sdk.camera.SCameraCaptureProcessor;
-import com.tencent.mobileqq.shortvideo.camera2.Camera2Control;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.qzonevip.gift.particle.ParticleTextureView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class axfw
-  extends CameraCaptureSession.CaptureCallback
+  extends Handler
 {
-  public axfw(Camera2Control paramCamera2Control) {}
+  private Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
   
-  private void a(CaptureResult paramCaptureResult, CaptureRequest paramCaptureRequest)
+  public axfw(ParticleTextureView paramParticleTextureView, Looper paramLooper)
   {
-    paramCaptureRequest = paramCaptureRequest.getTag();
-    if ((!(paramCaptureRequest instanceof axih)) || (((axih)paramCaptureRequest).jdField_a_of_type_Boolean))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      axgf.a(1, "[Camera2] mAfCaptureCallback handled!");
-      Camera2Control.d(this.a, false);
     }
     do
     {
       return;
-      paramCaptureResult = (Integer)paramCaptureResult.get(CaptureResult.CONTROL_AF_STATE);
-      axgf.a(1, "[Camera2] mAfCaptureCallback:" + paramCaptureResult);
-    } while ((paramCaptureResult == null) || ((4 != paramCaptureResult.intValue()) && (5 != paramCaptureResult.intValue())));
-    a(true, (axih)paramCaptureRequest);
-  }
-  
-  private void a(boolean paramBoolean, axih paramaxih)
-  {
-    Camera2Control.d(this.a, false);
-    Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_TRIGGER, Integer.valueOf(2));
-    try
-    {
-      axgf.a(1, "[Camera2] mAfCaptureCallback run, success:" + paramBoolean);
-      Camera2Control.a(this.a).set(CaptureRequest.CONTROL_AF_MODE, Integer.valueOf(4));
-      CameraCaptureSession localCameraCaptureSession = Camera2Control.a(this.a);
-      if (this.a.jdField_a_of_type_Boolean) {}
-      for (CaptureRequest localCaptureRequest = Camera2Control.a(this.a).buildCaptureRequest(Camera2Control.a(this.a));; localCaptureRequest = Camera2Control.a(this.a).build())
+      QLog.i("ParticleTextureView", 1, "handleMessage: MSG_INIT_DATA");
+      this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.a();
+      ParticleTextureView.a(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView, 2);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.c = 0;
+      QLog.i("ParticleTextureView", 1, "handleMessage: MSG_ADD_DATA");
+      this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.a(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap);
+      ParticleTextureView.a(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView, 4);
+      return;
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView;
+      paramMessage.c += 1;
+      this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.a();
+      if (this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.a())
       {
-        localCameraCaptureSession.setRepeatingRequest(localCaptureRequest, null, null);
-        if ((paramaxih.jdField_a_of_type_Axgd.a == null) || (paramaxih.jdField_a_of_type_Boolean)) {
-          break;
-        }
-        paramaxih.jdField_a_of_type_Boolean = true;
-        paramaxih.jdField_a_of_type_Axgd.a.a(1, paramBoolean);
+        ParticleTextureView.a(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView, 2);
         return;
       }
+      ParticleTextureView.a(this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView, 4);
       return;
-    }
-    catch (Exception paramaxih)
-    {
-      axgf.a(2, "[Camera2] mAfCaptureCallback e:" + paramaxih);
-    }
-  }
-  
-  public void onCaptureCompleted(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull TotalCaptureResult paramTotalCaptureResult)
-  {
-    a(paramTotalCaptureResult, paramCaptureRequest);
-  }
-  
-  public void onCaptureFailed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureFailure paramCaptureFailure)
-  {
-    axgf.a(2, "[Camera2] mAfCaptureCallback failure reason:" + paramCaptureFailure.getReason());
-    paramCameraCaptureSession = paramCaptureRequest.getTag();
-    if ((!(paramCameraCaptureSession instanceof axih)) || (((axih)paramCameraCaptureSession).jdField_a_of_type_Boolean))
-    {
-      axgf.a(1, "[Camera2] mAfCaptureCallback handled!");
-      Camera2Control.d(this.a, false);
-      return;
-    }
-    a(false, (axih)paramCameraCaptureSession);
-  }
-  
-  public void onCaptureProgressed(@NonNull CameraCaptureSession paramCameraCaptureSession, @NonNull CaptureRequest paramCaptureRequest, @NonNull CaptureResult paramCaptureResult)
-  {
-    a(paramCaptureResult, paramCaptureRequest);
+      QLog.i("ParticleTextureView", 1, "handleMessage: MSG_REFRESH_VIEW size = " + this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.jdField_a_of_type_JavaUtilArrayList.size());
+    } while ((this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.jdField_a_of_type_JavaUtilArrayList.size() <= 0) && (this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.jdField_a_of_type_Boolean));
+    this.jdField_a_of_type_ComTencentMobileqqQzonevipGiftParticleParticleTextureView.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axfw
  * JD-Core Version:    0.7.0.1
  */

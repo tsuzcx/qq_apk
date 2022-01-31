@@ -1,8 +1,8 @@
 package com.google.android.filament;
 
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
-import android.support.annotation.Size;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
+import androidx.annotation.Size;
 import java.nio.Buffer;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,6 +41,10 @@ public class Material
   private static native int nGetParameterCount(long paramLong);
   
   private static native void nGetParameters(long paramLong, @NonNull List<Material.Parameter> paramList, @IntRange(from=1L) int paramInt);
+  
+  private static native int nGetRefractionMode(long paramLong);
+  
+  private static native int nGetRefractionType(long paramLong);
   
   private static native int nGetRequiredAttributes(long paramLong);
   
@@ -129,6 +133,16 @@ public class Material
       nGetParameters(getNativeObject(), localArrayList, i);
     }
     return localArrayList;
+  }
+  
+  public Material.RefractionMode getRefractionMode()
+  {
+    return Material.RefractionMode.values()[nGetRefractionMode(getNativeObject())];
+  }
+  
+  public Material.RefractionType getRefractionType()
+  {
+    return Material.RefractionType.values()[nGetRefractionType(getNativeObject())];
   }
   
   public Set<VertexBuffer.VertexAttribute> getRequiredAttributes()
@@ -293,7 +307,7 @@ public class Material
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.Material
  * JD-Core Version:    0.7.0.1
  */

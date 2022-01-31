@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import alkr;
+import anbh;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ArModelResource
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArModelResource> CREATOR = new alkr();
+  public static final Parcelable.Creator<ArModelResource> CREATOR = new anbh();
   public int a;
   public long a;
   public String a;
@@ -66,7 +66,7 @@ public class ArModelResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArModelResource
  * JD-Core Version:    0.7.0.1
  */

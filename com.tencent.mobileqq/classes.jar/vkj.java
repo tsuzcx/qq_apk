@@ -1,45 +1,59 @@
-import android.app.Activity;
-import com.tencent.common.app.AppInterface;
-import java.io.File;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import java.util.List;
 
 public class vkj
-  extends vkg
+  extends BaseAdapter
 {
-  private vhm a;
+  private vkj(VideoCoverListBar paramVideoCoverListBar) {}
   
-  public void a()
+  public String a(int paramInt)
   {
-    super.a();
-    if (jdField_b_of_type_Int != 2)
+    return (String)VideoCoverListBar.a(this.a).get(paramInt);
+  }
+  
+  public int getCount()
+  {
+    return VideoCoverListBar.a(this.a).size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      String str = new File(this.jdField_b_of_type_JavaLangString).getParent();
-      if (str != null) {
-        bbdx.a(str);
-      }
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131561519, null);
+      paramViewGroup = new vkk(this, paramView);
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      paramViewGroup.a(paramInt);
+      return paramView;
+      paramViewGroup = (vkk)paramView.getTag();
     }
   }
   
-  public void a(Activity paramActivity, String paramString1, String paramString2, AppInterface paramAppInterface, vhm paramvhm)
+  public int getViewTypeCount()
   {
-    super.a(paramActivity, paramString1, paramString2, paramAppInterface);
-    this.a = paramvhm;
-  }
-  
-  protected boolean a(bbjs parambbjs)
-  {
-    if (parambbjs.c == 2)
-    {
-      if (this.a != null) {
-        this.a.a();
-      }
-      return true;
-    }
-    return super.a(parambbjs);
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vkj
  * JD-Core Version:    0.7.0.1
  */

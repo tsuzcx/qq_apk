@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.upload.UploadManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import java.util.Iterator;
+import java.util.List;
+import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
 
-class apdz
-  implements bigd
+public class apdz
+  extends apeh
 {
-  apdz(apdn paramapdn) {}
+  public apdz(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
   
-  public void a(long paramLong, float paramFloat) {}
-  
-  public void a(String paramString)
+  public void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle)
   {
-    apdn.b(this.a, false);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    apdn.a(this.a, true);
-    apdn.b(this.a, false);
-    bidb.a(apdn.a(this.a).getApplication(), true);
-    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
+    if (paramBoolean)
+    {
+      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramBundle.hasNext())
+      {
+        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
+        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apdz
  * JD-Core Version:    0.7.0.1
  */

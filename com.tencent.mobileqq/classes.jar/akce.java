@@ -1,39 +1,66 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class akce
-  implements Comparator<PhoneContact>
 {
-  public akce(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  private static akce a;
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public static akce a()
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new akce();
+      }
+      return a;
     }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
+    finally {}
+  }
+  
+  private String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "";
+    case 0: 
+      return "folder_weather_arrive";
+    case 1: 
+      return "folder_weather_expose";
+    case 2: 
+      return "folder_weather_click";
+    case 3: 
+      return "aio_news_click";
+    case 4: 
+      return "aio_othercity_click";
+    case 5: 
+      return "aio_page_arrive";
     }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+    return "aio_search_push";
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  {
+    String str = System.currentTimeMillis() + "|" + "QQWeather" + "|" + "QQWeather_native" + "|" + a(paramInt) + "|" + "android";
+    azlj.a(paramQQAppInterface, "dc04698", str);
+    if (QLog.isColorLevel()) {
+      QLog.d("WeatherDCReportHelper", 2, "reportWeather : " + str);
     }
-    j = i;
-    if (i == 0) {
-      j = paramPhoneContact1.contactID - paramPhoneContact2.contactID;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
+  {
+    if ((paramMessageRecord instanceof MessageForArkApp)) {
+      a().a(paramQQAppInterface, 0);
     }
-    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akce
  * JD-Core Version:    0.7.0.1
  */

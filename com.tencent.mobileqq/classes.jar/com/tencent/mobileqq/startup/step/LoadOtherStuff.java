@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import axrn;
+import azmz;
 import com.tencent.common.app.BaseApplicationImpl;
 
 public class LoadOtherStuff
@@ -8,14 +8,14 @@ public class LoadOtherStuff
 {
   protected boolean doStep()
   {
-    axrn.a(BaseApplicationImpl.getContext());
+    azmz.a(BaseApplicationImpl.getContext());
     BaseApplicationImpl.getApplication().getSharedPreferences("UserGuide", 0);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.LoadOtherStuff
  * JD-Core Version:    0.7.0.1
  */

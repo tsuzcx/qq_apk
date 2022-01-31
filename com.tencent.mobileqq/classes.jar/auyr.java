@@ -1,30 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.MedalItem;
 
-class auyr
-  extends auym
+public final class auyr
+  implements Parcelable.Creator<MedalItem>
 {
-  auyr(auyq paramauyq, long paramLong)
+  public MedalItem a(Parcel paramParcel)
   {
-    super(paramLong);
+    return new MedalItem(paramParcel);
   }
   
-  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  public MedalItem[] a(int paramInt)
   {
-    paramUploadImageSize = auyl.a(paramAbstractUploadTask.uploadFilePath);
-    if (paramUploadImageSize != null)
-    {
-      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
-      paramUploadImageSize.recycle();
-      return paramAbstractUploadTask;
-    }
-    return new IUploadConfig.UploadImageSize(640, 1136, 100);
+    return new MedalItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auyr
  * JD-Core Version:    0.7.0.1
  */

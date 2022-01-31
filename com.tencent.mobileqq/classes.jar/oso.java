@@ -1,27 +1,23 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet.ConfigResult;
 
-final class oso
-  extends akui
+public final class oso
+  implements Parcelable.Creator<AladdinConfigServlet.ConfigResult>
 {
-  oso(String paramString, boolean paramBoolean)
+  public AladdinConfigServlet.ConfigResult a(Parcel paramParcel)
   {
-    super(paramString, paramBoolean);
+    return new AladdinConfigServlet.ConfigResult(paramParcel);
   }
   
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public AladdinConfigServlet.ConfigResult[] a(int paramInt)
   {
-    osn.a(false);
-    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "onLocationFinish errCode = ", Integer.valueOf(paramInt) });
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
-      sgg.a(100, new ArrayList());
-    }
+    return new AladdinConfigServlet.ConfigResult[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oso
  * JD-Core Version:    0.7.0.1
  */

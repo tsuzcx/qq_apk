@@ -35,13 +35,13 @@ public class MutiPickerView
   
   public MutiPickerView(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755360);
+    super(paramContext, 2131755367);
     initView(paramContext);
   }
   
   private void initView(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559320, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559371, null);
     setContentView(paramContext);
     Window localWindow = getWindow();
     if (localWindow != null)
@@ -53,10 +53,10 @@ public class MutiPickerView
       localWindow.setAttributes(localLayoutParams);
       localWindow.setGravity(80);
     }
-    this.mMutiPickerContainer = ((LinearLayout)paramContext.findViewById(2131370598));
-    this.mCancelTextView = ((TextView)paramContext.findViewById(2131370599));
+    this.mMutiPickerContainer = ((LinearLayout)paramContext.findViewById(2131370903));
+    this.mCancelTextView = ((TextView)paramContext.findViewById(2131370904));
     this.mCancelTextView.setOnClickListener(this);
-    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131370600));
+    this.mConfirmTextView = ((TextView)paramContext.findViewById(2131370905));
     this.mConfirmTextView.setOnClickListener(this);
     setOnCancelListener(this);
   }
@@ -124,14 +124,14 @@ public class MutiPickerView
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131370599)
+    if (paramView.getId() == 2131370904)
     {
       if (this.mOnConfirmListener != null) {
         this.mOnConfirmListener.onValCancel();
       }
       dismissDlg();
     }
-    while (paramView.getId() != 2131370600) {
+    while (paramView.getId() != 2131370905) {
       return;
     }
     if (this.mOnConfirmListener != null) {
@@ -221,7 +221,7 @@ public class MutiPickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MutiPickerView
  * JD-Core Version:    0.7.0.1
  */

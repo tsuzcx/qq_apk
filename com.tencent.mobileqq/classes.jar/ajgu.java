@@ -1,60 +1,73 @@
-import android.app.Activity;
-import android.graphics.Rect;
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
-import android.view.ViewTreeObserver;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class ajgu
+  extends ajff
 {
-  private int jdField_a_of_type_Int;
-  private View jdField_a_of_type_AndroidViewView;
-  private FrameLayout.LayoutParams jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams;
+  private int a;
+  private int b;
+  private int c;
+  private int d;
   
-  private ajgu(Activity paramActivity)
+  public View a(int paramInt, Object paramObject, ajfa paramajfa, View paramView, ViewGroup paramViewGroup, Context paramContext, View.OnClickListener paramOnClickListener, View.OnLongClickListener paramOnLongClickListener, ajgx paramajgx)
   {
-    this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new ajgv(this));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams = ((FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams());
-  }
-  
-  private int a()
-  {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
-    return localRect.bottom - localRect.top;
-  }
-  
-  private void a()
-  {
-    int i = a();
-    int j;
-    int k;
-    if (i != this.jdField_a_of_type_Int)
+    int i;
+    if (paramView == null)
     {
-      j = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
-      k = j - i;
-      if (k <= j / 4) {
-        break label58;
+      paramajfa = null;
+      if (!"TroopAssistantEmptyItemBuilder".equals(paramajfa))
+      {
+        paramView = View.inflate(paramContext, 2131562729, null);
+        paramView.setTag("TroopAssistantEmptyItemBuilder");
+        paramajfa = paramContext.getResources();
+        this.b = paramajfa.getDimensionPixelSize(2131298633);
+        this.a = paramajfa.getDimensionPixelSize(2131298638);
+        this.c = paramajfa.getDimensionPixelSize(2131298640);
+        i = paramajfa.getDimensionPixelSize(2131298942);
+        this.d = (paramajfa.getDimensionPixelSize(2131298943) + i);
+      }
+      i = paramViewGroup.getMeasuredHeight() - this.a - this.b - 10 - this.d;
+      if (i <= this.c) {
+        break label210;
+      }
+      label124:
+      paramajfa = new AbsListView.LayoutParams(-1, -1);
+      paramajfa.width = -1;
+      paramajfa.height = i;
+      paramView.setLayoutParams(paramajfa);
+      if ((paramObject instanceof Integer))
+      {
+        paramObject = (Integer)paramObject;
+        paramajfa = (TextView)paramView.findViewById(2131378288);
+        if (paramObject.intValue() != 4) {
+          break label219;
+        }
+        paramajfa.setText(2131720964);
       }
     }
-    label58:
-    for (this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = (j - k);; this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.height = j)
+    for (;;)
     {
-      this.jdField_a_of_type_AndroidViewView.requestLayout();
-      this.jdField_a_of_type_Int = i;
-      return;
+      paramView.setTag(-1, Integer.valueOf(paramInt));
+      return paramView;
+      paramajfa = paramView.getTag();
+      break;
+      label210:
+      i = this.c;
+      break label124;
+      label219:
+      paramajfa.setText(2131695287);
     }
-  }
-  
-  public static void a(Activity paramActivity)
-  {
-    new ajgu(paramActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgu
  * JD-Core Version:    0.7.0.1
  */

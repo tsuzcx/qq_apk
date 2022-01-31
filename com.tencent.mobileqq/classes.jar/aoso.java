@@ -1,33 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aoso
-  implements View.OnClickListener
 {
-  public aoso(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  private String a = alpo.a(2131715219);
+  private String b = "";
   
-  public void onClick(View paramView)
+  public static aoso a(aogf[] paramArrayOfaogf)
   {
-    paramView = (aosv)paramView.getTag();
-    FileInfo localFileInfo = (FileInfo)paramView.jdField_a_of_type_JavaLangObject;
-    switch (paramView.c)
-    {
+    if ((paramArrayOfaogf == null) || (paramArrayOfaogf.length <= 0)) {
+      return null;
     }
-    for (;;)
+    aoso localaoso = new aoso();
+    try
     {
-      this.a.i();
-      return;
-      this.a.a.a().ab();
-      this.a.a(localFileInfo, paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
+      paramArrayOfaogf = new JSONObject(paramArrayOfaogf[0].a);
+      localaoso.a = paramArrayOfaogf.getString("emptyShowWording");
+      localaoso.b = paramArrayOfaogf.getString("linkWord");
+      return localaoso;
     }
+    catch (JSONException paramArrayOfaogf)
+    {
+      paramArrayOfaogf.printStackTrace();
+      return localaoso;
+    }
+    catch (NullPointerException paramArrayOfaogf)
+    {
+      paramArrayOfaogf.printStackTrace();
+    }
+    return localaoso;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoso
  * JD-Core Version:    0.7.0.1
  */

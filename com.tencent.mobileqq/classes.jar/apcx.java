@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-class apcx
-  implements apap
+public class apcx
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  apcx(apcw paramapcw) {}
+  public apcx(DataReportViewer paramDataReportViewer) {}
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    apcw.c(this.a, paramString1);
-    apcw.a(this.a).a().a(paramBoolean, 60, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), paramString2, paramString1 });
-    apcw.a(this.a);
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apcx
  * JD-Core Version:    0.7.0.1
  */

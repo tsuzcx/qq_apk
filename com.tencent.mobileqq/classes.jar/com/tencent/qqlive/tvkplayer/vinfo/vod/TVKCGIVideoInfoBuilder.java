@@ -27,6 +27,7 @@ public class TVKCGIVideoInfoBuilder
   private ArrayList<String> urlList = new ArrayList();
   private String vid;
   private TVKCGIVideoInfo videoInfo = new TVKCGIVideoInfo();
+  private TVKVideoInfoParams videoInfoParams;
   private String vinfoXml;
   
   private void buildClipMp4CdnUrl(String paramString)
@@ -88,19 +89,19 @@ public class TVKCGIVideoInfoBuilder
   
   private void buildHlsCdnUrl(String paramString)
   {
-    String str = TVideoMgr.getVinfoSdtfrom();
+    String str = getSdtfrom();
     Object localObject = (TVKCGIVideoInfo.TVKCGIVideoUrlInfo)this.videoInfo.getUrlInfos().get(0);
     if (localObject != null)
     {
       if (!TextUtils.isEmpty(paramString)) {
-        break label263;
+        break label264;
       }
       if (this.dltype != 3) {
-        break label221;
+        break label222;
       }
       this.url = (((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getUrl() + String.format("%s&hlskey=%s&sdtfrom=%s", new Object[] { ((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getPt(), ((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getHk(), str }));
     }
-    label263:
+    label264:
     for (;;)
     {
       localObject = this.videoInfo.getUrlInfos().iterator();
@@ -125,7 +126,7 @@ public class TVKCGIVideoInfoBuilder
           this.urlList.add(localStringBuffer.toString());
         }
       }
-      label221:
+      label222:
       if (this.dltype == 8)
       {
         this.url = (((TVKCGIVideoInfo.TVKCGIVideoUrlInfo)localObject).getUrl() + "&sdtfrom=" + str);
@@ -222,9 +223,9 @@ public class TVKCGIVideoInfoBuilder
   
   private String generateMp4url(String paramString1, String paramString2, String paramString3)
   {
-    String str1 = TVideoMgr.getVinfoSdtfrom();
+    String str1 = getSdtfrom();
     String str2 = TVideoMgr.getStaGuid();
-    paramString2 = String.format("%s?vkey=%s&platform=%d&br=%d&fmt=%s&sdtfrom=%s&guid=%s", new Object[] { paramString1, paramString2, Integer.valueOf(TVideoMgr.getVinfoPlatform()), Integer.valueOf(this.br), this.format, str1, str2 });
+    paramString2 = String.format("%s?vkey=%s&platform=%d&br=%d&fmt=%s&sdtfrom=%s&guid=%s", new Object[] { paramString1, paramString2, Integer.valueOf(getPlatform()), Integer.valueOf(this.br), this.format, str1, str2 });
     paramString1 = paramString2;
     if (!TextUtils.isEmpty(paramString3))
     {
@@ -240,6 +241,22 @@ public class TVKCGIVideoInfoBuilder
       return paramNode.getFirstChild().getNodeValue();
     }
     return "";
+  }
+  
+  private int getPlatform()
+  {
+    if (this.videoInfoParams != null) {
+      return this.videoInfoParams.getPlatForm();
+    }
+    return TVideoMgr.getVinfoPlatform();
+  }
+  
+  private String getSdtfrom()
+  {
+    if (this.videoInfoParams != null) {
+      return TVideoMgr.getVinfoSdtfrom(this.videoInfoParams.getPlatForm());
+    }
+    return TVideoMgr.getVinfoSdtfrom();
   }
   
   private void parseTvLogoNode(NodeList paramNodeList)
@@ -460,6 +477,10 @@ public class TVKCGIVideoInfoBuilder
             localTVKCGIVideoFormatInfo.setSb(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
           } else if (localNode.getNodeName().equalsIgnoreCase("hdr10enh")) {
             localTVKCGIVideoFormatInfo.setHdr10enh(TVKUtils.optInt(getFirstChildNodeValue(localNode), 0));
+          } else if (localNode.getNodeName().equalsIgnoreCase("sname")) {
+            localTVKCGIVideoFormatInfo.setSname(getFirstChildNodeValue(localNode));
+          } else if (localNode.getNodeName().equalsIgnoreCase("resolution")) {
+            localTVKCGIVideoFormatInfo.setResolution(getFirstChildNodeValue(localNode));
           }
         }
       }
@@ -1069,6 +1090,11 @@ public class TVKCGIVideoInfoBuilder
     return this.vid;
   }
   
+  public TVKVideoInfoParams getVideoInfoParams()
+  {
+    return this.videoInfoParams;
+  }
+  
   public String getVinfoXml()
   {
     return this.vinfoXml;
@@ -1181,6 +1207,11 @@ public class TVKCGIVideoInfoBuilder
     }
   }
   
+  public void setVideoInfoParams(TVKVideoInfoParams paramTVKVideoInfoParams)
+  {
+    this.videoInfoParams = paramTVKVideoInfoParams;
+  }
+  
   public void setVinfoXml(String paramString)
   {
     this.vinfoXml = paramString;
@@ -1188,7 +1219,7 @@ public class TVKCGIVideoInfoBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKCGIVideoInfoBuilder
  * JD-Core Version:    0.7.0.1
  */

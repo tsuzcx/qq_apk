@@ -1,84 +1,78 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendVideoInfo;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
 
-class aiol
-  extends ajvj
+public class aiol
+  extends aiml
 {
-  aiol(aiod paramaiod) {}
-  
-  public void a(long paramLong)
+  protected aiol(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if (paramLong == 0L) {}
-    String str1;
-    String str2;
-    do
-    {
-      do
-      {
-        return;
-      } while (!this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Long.valueOf(paramLong)));
-      str1 = (String)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-      str2 = bbcz.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramLong));
-      if ((!TextUtils.isEmpty(str2)) && (!str2.equals(str1))) {
-        aiod.a(this.a, false);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "checkIfNeedUpdate [uin: %d, pre: %s, cur: %s]", new Object[] { Long.valueOf(paramLong), str1, str2 }));
+    super(paramNewPhotoListActivity);
   }
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  protected void a(Intent paramIntent, boolean paramBoolean, ArrayList<String> paramArrayList)
   {
-    if (paramBoolean) {
-      a(paramLong);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      if (!(paramObject instanceof ArrayList)) {
-        break label70;
-      }
-    }
-    label70:
-    for (paramObject = (ArrayList)paramObject;; paramObject = null)
+    int i2 = PhotoUtils.b(this.a.a);
+    paramIntent = new HashMap();
+    int i1 = 0;
+    int k = 0;
+    int j = 0;
+    int i = 0;
+    while (i1 < this.mPhotoCommonData.selectedPhotoList.size())
     {
-      if ((paramObject != null) && (paramObject.size() > 0))
+      paramArrayList = (String)this.mPhotoCommonData.selectedPhotoList.get(i1);
+      int m;
+      if (ImageManager.isNetworkUrl(paramArrayList))
       {
-        paramObject = paramObject.iterator();
-        while (paramObject.hasNext())
+        m = k;
+        k = i;
+        i = m;
+        i1 += 1;
+        m = k;
+        k = i;
+        i = m;
+      }
+      else
+      {
+        int n;
+        if (((NewPhotoListActivity)this.mActivity).a(paramArrayList) == 1)
         {
-          Object localObject = paramObject.next();
-          if ((localObject instanceof Long)) {
-            a(((Long)localObject).longValue());
+          paramArrayList = ((NewPhotoListActivity)this.mActivity).a(paramArrayList);
+          n = j;
+          m = i;
+          if (paramArrayList != null)
+          {
+            SendVideoActivity.SendVideoInfo localSendVideoInfo = new SendVideoActivity.SendVideoInfo();
+            localSendVideoInfo.fileSize = paramArrayList.fileSize;
+            localSendVideoInfo.duration = paramArrayList.mDuration;
+            paramIntent.put(Integer.valueOf(k), localSendVideoInfo);
+            m = i + 1;
+            n = j;
           }
         }
+        for (;;)
+        {
+          i = k + 1;
+          j = n;
+          k = m;
+          break;
+          n = j + 1;
+          m = i;
+        }
       }
-      return;
     }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      a(Long.parseLong(paramString));
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    azmj.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", i2, 0, String.valueOf(j), String.valueOf(i), "", "");
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiol
  * JD-Core Version:    0.7.0.1
  */

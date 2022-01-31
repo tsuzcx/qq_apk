@@ -1,62 +1,42 @@
-import java.io.File;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.widget.TextView;
+import cooperation.groupvideo.GVideoPluginInstallerActivity;
 
 public class bilj
+  extends Handler
 {
-  private static final String a = bilj.class.getSimpleName();
-  
-  public static birk a()
+  public bilj(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity, Looper paramLooper)
   {
-    birk localbirk = new birk();
-    localbirk.d = "http://sqdd.myapp.com/myapp/qqteam/QIM/zhinenglvjingdonghua/AutoAISceneAni.zip";
-    localbirk.f = "AutoAISceneAni";
-    localbirk.e = "6f6632b8106fe070a560abcec6051f0d";
-    localbirk.a = "AutoAISceneAni";
-    localbirk.n = biiq.c;
-    localbirk.o = biiq.b;
-    return localbirk;
+    super(paramLooper);
   }
   
-  public static void a(birk parambirk)
+  public void dispatchMessage(Message paramMessage)
   {
-    try
+    if (paramMessage == null) {}
+    do
     {
-      File localFile = new File(parambirk.c());
-      if (!localFile.exists()) {
+      return;
+      switch (paramMessage.what)
+      {
+      default: 
+        return;
+      case 1: 
+        GVideoPluginInstallerActivity.a(this.a);
         return;
       }
-      nav.a(localFile, parambirk.b());
-      return;
-    }
-    catch (Exception parambirk) {}
-  }
-  
-  public static birk b()
-  {
-    birk localbirk = new birk();
-    localbirk.d = "https://qzonestyle.gtimg.cn/qzone/qzact/act/external/StorySticker/aiScreenAndroid/AISceneLoading.zip";
-    localbirk.e = "da407ead2fb260d6b2570450f2e1bebd";
-    localbirk.f = "AISceneLoading";
-    localbirk.a = "AISceneLoading";
-    localbirk.n = biiq.c;
-    localbirk.o = biiq.b;
-    return localbirk;
-  }
-  
-  public static birk c()
-  {
-    birk localbirk = new birk();
-    localbirk.d = "https://qd.myapp.com/myapp/qqteam/shenqidegongneng/AISceneGuide19082601Android.zip";
-    localbirk.e = "dcb9d44eb8872db03a17fe57ce231a76";
-    localbirk.f = "AISceneGuide";
-    localbirk.a = "AISceneGuide";
-    localbirk.n = biiq.c;
-    localbirk.o = biiq.b;
-    return localbirk;
+    } while ((!(paramMessage.obj instanceof String)) || (this.a.a == null));
+    this.a.a.setText((String)paramMessage.obj);
+    return;
+    GVideoPluginInstallerActivity.b(this.a);
+    return;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bilj
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import com.tencent.mobileqq.mini.util.StorageUtil;
 import com.tencent.mobileqq.mini.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import nav;
+import ndr;
 
 class BaseLibManager$3
   implements Downloader.DownloadListener
@@ -94,7 +94,7 @@ class BaseLibManager$3
           FileUtils.delete(paramString, false);
         }
         paramDownloadResult.mkdir();
-        i = nav.a(this.val$downloadZipPath, paramString);
+        i = ndr.a(this.val$downloadZipPath, paramString);
         if (i != 0) {
           break label680;
         }
@@ -148,7 +148,7 @@ class BaseLibManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.BaseLibManager.3
  * JD-Core Version:    0.7.0.1
  */

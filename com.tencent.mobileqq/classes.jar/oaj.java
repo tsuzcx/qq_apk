@@ -1,56 +1,154 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoyBiuButton;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.NativeButton;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
+import java.util.List;
+import tencent.im.oidb.cmd0xe1b.oidb_0xe1b.RspBody;
+import tencent.im.oidb.cmd0xe1b.oidb_0xe1b.SetFlagInfoRsp;
+import tencent.kandian.flaginfo.flag_info.FlagInfo;
 
 public class oaj
+  extends nac
 {
-  public static int a(int paramInt)
+  private boolean b;
+  
+  public oaj(ReadInJoySettingActivity paramReadInJoySettingActivity, boolean paramBoolean)
   {
-    switch (paramInt)
-    {
-    default: 
-      return -1;
-    case 11: 
-      return 1;
-    case 12: 
-      return 2;
-    case 13: 
-      return 3;
-    }
-    return 4;
+    this.b = paramBoolean;
   }
   
-  public static void a(ViewBase paramViewBase, ArticleInfo paramArticleInfo, boolean paramBoolean)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((!shq.a(paramArticleInfo)) || (paramViewBase == null)) {}
-    do
+    boolean bool1 = true;
+    boolean bool2 = true;
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    label72:
+    int i;
+    label151:
+    int j;
+    try
     {
-      return;
-      if ((paramViewBase instanceof plb))
-      {
-        nmc.a(new nyd().a(BaseApplication.getContext()).a(11).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-        return;
+      QQToast.a(this.a.getApplicationContext(), 2131719103, 0).a();
+      paramArrayOfByte = this.a;
+      if (this.b) {
+        break label492;
       }
-      if ((paramViewBase instanceof ReadInJoyBiuButton))
-      {
-        nmc.a(new nyd().a(BaseApplication.getContext()).a(13).b(3).a((AdvertisementInfo)paramArticleInfo).a());
-        return;
+      bool1 = true;
+      ReadInJoySettingActivity.d(paramArrayOfByte, bool1);
+      paramArrayOfByte = ReadInJoySettingActivity.b(this.a);
+      if (this.b) {
+        break label498;
       }
-    } while (!(paramViewBase instanceof NativeButton));
-    if (paramBoolean)
-    {
-      nmc.a(new nyd().a(BaseApplication.getContext()).a(14).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+      bool1 = bool2;
+      paramArrayOfByte.setChecked(bool1);
       return;
     }
-    nmc.a(new nyd().a(BaseApplication.getContext()).a(12).b(3).a((AdvertisementInfo)paramArticleInfo).a());
+    catch (Exception paramArrayOfByte)
+    {
+      if (!QLog.isColorLevel()) {
+        break label491;
+      }
+    }
+    paramBundle = new oidb_0xe1b.RspBody();
+    paramBundle.mergeFrom(paramArrayOfByte);
+    if ((paramBundle.msg_set_flag_info_rsp.has()) && (paramBundle.msg_set_flag_info_rsp.rpt_msg_flag_info_list.has()))
+    {
+      paramArrayOfByte = ((oidb_0xe1b.SetFlagInfoRsp)paramBundle.msg_set_flag_info_rsp.get()).rpt_msg_flag_info_list.get();
+      if ((paramArrayOfByte == null) || (paramArrayOfByte.isEmpty())) {
+        break label513;
+      }
+      i = 0;
+      paramInt = 0;
+      j = paramInt;
+      if (i < paramArrayOfByte.size())
+      {
+        paramBundle = (flag_info.FlagInfo)paramArrayOfByte.get(i);
+        if (paramBundle == null) {
+          break label488;
+        }
+        paramInt = paramBundle.uint32_teenager_flag.get();
+        break label504;
+      }
+      label192:
+      if ((this.b) && (j == 1))
+      {
+        QQToast.a(this.a.getApplicationContext(), 2131719105, 0).a();
+        bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
+        ReadInJoySettingActivity.d(this.a, true);
+        return;
+        QLog.d("ReadInJoySettingActivity", 2, "requestChangeYoungsterMode, value = " + this.b + "failed.");
+        return;
+      }
+      if ((!this.b) && (j == 0))
+      {
+        QQToast.a(this.a.getApplicationContext(), 2131719104, 0).a();
+        bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
+        ReadInJoySettingActivity.d(this.a, false);
+        return;
+      }
+      QQToast.a(this.a.getApplicationContext(), 2131719103, 0).a();
+      paramArrayOfByte = this.a;
+      if (j != 1) {
+        break label519;
+      }
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.d(paramArrayOfByte, bool1);
+      ReadInJoySettingActivity.b(this.a).setChecked(ReadInJoySettingActivity.c(this.a));
+      if (ReadInJoySettingActivity.c(this.a))
+      {
+        bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(1));
+        return;
+      }
+      bjxj.a("key_sp_is_readinjoy_youngster", Integer.valueOf(2));
+      return;
+      QQToast.a(this.a.getApplicationContext(), 2131719103, 0).a();
+      paramArrayOfByte = this.a;
+      if (!this.b)
+      {
+        bool1 = true;
+        ReadInJoySettingActivity.d(paramArrayOfByte, bool1);
+        paramArrayOfByte = ReadInJoySettingActivity.b(this.a);
+        if (this.b) {
+          break label482;
+        }
+      }
+      label482:
+      for (bool1 = true;; bool1 = false)
+      {
+        paramArrayOfByte.setChecked(bool1);
+        return;
+        bool1 = false;
+        break;
+      }
+      label488:
+      break label504;
+      label491:
+      return;
+      label492:
+      bool1 = false;
+      break;
+      label498:
+      bool1 = false;
+      break label72;
+      label504:
+      i += 1;
+      break label151;
+      label513:
+      j = 0;
+      break label192;
+      label519:
+      bool1 = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oaj
  * JD-Core Version:    0.7.0.1
  */

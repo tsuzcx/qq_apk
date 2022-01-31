@@ -1,17 +1,21 @@
-import android.graphics.drawable.AnimationDrawable;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class bhvr
+class bhvr
+  implements View.OnClickListener
 {
-  public QzoneZipCacheHelperCallBack mCallBack;
+  bhvr(bhvq parambhvq) {}
   
-  public void onLoadedFailed() {}
-  
-  public void onLoadedSuccess(AnimationDrawable paramAnimationDrawable) {}
+  public void onClick(View paramView)
+  {
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhvr
  * JD-Core Version:    0.7.0.1
  */

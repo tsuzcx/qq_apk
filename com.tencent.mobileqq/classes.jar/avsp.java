@@ -1,37 +1,31 @@
-public class avsp
+import android.hardware.Camera;
+import android.hardware.Camera.PreviewCallback;
+
+class avsp
+  implements Camera.PreviewCallback
 {
-  public int a;
-  public avsq a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public boolean b;
-  public String c = "";
+  avsp(avsm paramavsm) {}
   
-  public avsp()
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Int == 0;
-  }
-  
-  public boolean b()
-  {
-    return (this.jdField_a_of_type_Avsq == null) || (this.jdField_a_of_type_Avsq.d == 2);
-  }
-  
-  public String toString()
-  {
-    return "SubtitleItem{id=" + this.jdField_a_of_type_Int + " name=" + this.jdField_b_of_type_JavaLangString + " isShow=" + this.jdField_a_of_type_Boolean + " pos=" + this.jdField_b_of_type_Int + "}";
+    if (paramArrayOfByte == null) {
+      return;
+    }
+    if (((this.a.jdField_a_of_type_Boolean) || (this.a.e == 1)) && (!avsm.a(this.a)))
+    {
+      this.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+      if ((this.a.e != 1) && (System.currentTimeMillis() - avsm.a(this.a) > this.a.c))
+      {
+        avsm.a(this.a, System.currentTimeMillis());
+        avsm.a(this.a, paramArrayOfByte);
+      }
+    }
+    avsm.a(this.a).addCallbackBuffer(paramArrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avsp
  * JD-Core Version:    0.7.0.1
  */

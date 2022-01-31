@@ -1,28 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import java.util.HashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 
-public class atgw
-  implements DialogInterface.OnDismissListener
+class atgw
+  extends atgx
 {
-  public atgw(StoryPlayController paramStoryPlayController, atkn paramatkn, HashMap paramHashMap) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public BusinessInfoCheckUpdate.AppInfo a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if (this.jdField_a_of_type_Atkn.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a.b();
-      if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Atkn.jdField_a_of_type_Int)) != null) {
-        ((atky)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Atkn.jdField_a_of_type_Int))).h();
-      }
+    paramQQAppInterface = ((axho)paramQQAppInterface.getManager(36)).a(0, paramString);
+    if ((RedTouch.a(paramQQAppInterface)) && (paramQQAppInterface.type.get() != 5)) {
+      RedTouch.d(paramQQAppInterface);
     }
-    StoryPlayController.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController, null);
+    return paramQQAppInterface;
+  }
+  
+  public void a(RedTouch paramRedTouch, BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    paramRedTouch.b(paramAppInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atgw
  * JD-Core Version:    0.7.0.1
  */

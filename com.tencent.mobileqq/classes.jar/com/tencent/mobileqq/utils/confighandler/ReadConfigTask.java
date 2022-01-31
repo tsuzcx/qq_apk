@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.utils.confighandler;
 
 import android.content.res.Resources;
-import bbkl;
+import bdjf;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class ReadConfigTask<T extends ConfigInfo>
-  extends bbkl
+  extends bdjf
 {
   int mConfigID = 0;
   public T mConfigInfo;
@@ -54,7 +54,7 @@ public class ReadConfigTask<T extends ConfigInfo>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.ReadConfigTask
  * JD-Core Version:    0.7.0.1
  */

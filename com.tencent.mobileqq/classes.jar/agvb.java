@@ -1,100 +1,114 @@
-import android.content.Intent;
-import android.os.Bundle;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.GamePartyTipsBar.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class agvb
-  extends agta
+  implements agvy
 {
-  protected agvb(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  private int jdField_a_of_type_Int;
+  private agwa jdField_a_of_type_Agwa;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
+  
+  public agvb(QQAppInterface paramQQAppInterface, agwa paramagwa, Context paramContext, SessionInfo paramSessionInfo)
   {
-    super(paramNewPhotoPreviewActivity);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Agwa = paramagwa;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
   }
   
-  public static agsq b(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  public int a()
   {
-    if ((jdField_a_of_type_Agsq == null) || (jdField_a_of_type_Agsq.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {}
-    try
-    {
-      if ((jdField_a_of_type_Agsq == null) || (jdField_a_of_type_Agsq.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {
-        jdField_a_of_type_Agsq = new agvb(paramNewPhotoPreviewActivity);
-      }
-      return jdField_a_of_type_Agsq;
-    }
-    finally {}
+    return 40;
   }
   
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public View a(Object... paramVarArgs)
   {
-    paramView = super.a(paramInt, paramView, paramViewGroup);
-    paramViewGroup = ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_Agrw.a(paramInt);
-    if (((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramViewGroup) == 1)
+    paramVarArgs = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558619, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramVarArgs.findViewById(2131362414));
+    a();
+    paramVarArgs.setOnClickListener(new agvc(this));
+    bfdq.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "", "", "2000", "2015", "0", false);
+    return paramVarArgs;
+  }
+  
+  public void a()
+  {
+    Object localObject = (askw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156);
+    if (((askw)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
     {
-      paramInt = 1;
-      if (paramInt == 0) {
-        break label111;
-      }
-      ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-      ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_b_of_type_AndroidWidgetCheckBox.setVisibility(8);
-      ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      this.jdField_a_of_type_JavaLangString = ((askw)localObject).jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Int = ((askw)localObject).jdField_b_of_type_Int;
+      this.jdField_b_of_type_Int = ((askw)localObject).c;
     }
-    label261:
-    label298:
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(((askw)localObject).jdField_b_of_type_JavaLangString)) {
+        break label173;
+      }
+      if (this.jdField_a_of_type_Int >= this.jdField_b_of_type_Int) {
+        break label157;
+      }
+      localObject = String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693028), new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_b_of_type_Int) });
+    }
+    Looper localLooper;
     for (;;)
     {
-      return paramView;
-      paramInt = 0;
-      break;
-      label111:
-      if (this.jdField_a_of_type_Agsp.g)
-      {
-        ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
-        if (!this.jdField_a_of_type_Agsp.f) {
-          break label261;
-        }
-        ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_b_of_type_AndroidWidgetCheckBox.setVisibility(0);
-        ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
-      for (;;)
-      {
-        if ((!this.jdField_a_of_type_Agsp.k) && (!this.jdField_a_of_type_Agsp.c)) {
-          break label298;
-        }
-        ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_b_of_type_AndroidWidgetCheckBox.setVisibility(8);
-        ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        return paramView;
-        ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+      localLooper = Looper.getMainLooper();
+      if (Thread.currentThread() != localLooper.getThread()) {
         break;
-        ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_b_of_type_AndroidWidgetCheckBox.setVisibility(8);
-        ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      return;
+      label157:
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693026);
+      continue;
+      label173:
+      if ((((askw)localObject).e == 3) || (((askw)localObject).e == 4)) {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693030);
+      } else if (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int) {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693029);
+      } else {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131693027);
       }
     }
+    new Handler(localLooper).post(new GamePartyTipsBar.2(this, (String)localObject));
   }
   
-  protected void a(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    if (paramBundle != null)
-    {
-      paramBundle.putBoolean("key_multi_edit_pic", true);
-      paramBundle.putBoolean("key_enable_edit_title_bar", true);
+    if (paramInt != 1000) {}
+    while (!((askw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      return;
     }
-    super.a(paramView, 10000, paramBundle, paramInt2, paramIntent);
+    this.jdField_a_of_type_Agwa.a(this, new Object[0]);
   }
   
-  public boolean a()
+  public int[] a()
   {
-    return (this.jdField_a_of_type_Agrz.a != null) && (!this.jdField_a_of_type_Agrz.a.isEmpty());
+    return null;
+  }
+  
+  public int b()
+  {
+    return 14;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agvb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,97 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.Button;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class agyk
-  implements TextWatcher
+  extends alsi
 {
-  public agyk(TransactionActivity paramTransactionActivity) {}
+  public agyk(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (TransactionActivity.b(this.a).getText().length() > 4) {
-      if (!TransactionActivity.b(this.a).isEnabled())
-      {
-        TransactionActivity.b(this.a).setEnabled(true);
-        TransactionActivity.b(this.a).setClickable(true);
-        this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.b(this.a), "");
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessManager", 2, "onBlessDirtyTextCheck " + paramBoolean + " ,code=" + paramInt);
+    }
+    if (paramBoolean) {}
+    while ((i != 0) && (!BlessSelectMemberActivity.b()))
+    {
+      BlessSelectMemberActivity.a(this.a, BlessSelectMemberActivity.a(this.a));
+      return;
+      if (paramInt != 0) {
+        if (paramInt == 1)
+        {
+          BlessSelectMemberActivity.a(this.a, 2131690552, true);
+          i = 0;
+        }
+        else
+        {
+          if (paramInt == 8) {
+            BlessSelectMemberActivity.a(this.a, 2131690587, true);
+          }
+          i = 0;
+        }
       }
     }
-    while (!TransactionActivity.b(this.a).isEnabled()) {
-      return;
-    }
-    TransactionActivity.b(this.a).setClickable(false);
-    TransactionActivity.b(this.a).setEnabled(false);
-    this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.b(this.a), "");
+    this.a.e();
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1 + " ,replyCode=" + paramInt + " waitTime=" + paramLong + " ,entrance=" + BlessSelectMemberActivity.a(this.a));
+    }
+    if (!this.a.a) {
+      return;
+    }
+    this.a.a = false;
+    if (paramInt == 67L)
+    {
+      BlessSelectMemberActivity.a(System.currentTimeMillis());
+      this.a.a(paramLong);
+      this.a.e();
+      BlessSelectMemberActivity.a(this.a, 2131690572, true);
+      return;
+    }
+    if (BlessSelectMemberActivity.b(this.a) == 15)
+    {
+      this.a.a(paramBoolean1);
+      return;
+    }
+    this.a.a(paramBoolean1, paramBoolean2);
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessSelectMemberActivity", 2, "onUpdateMsgContent, isSuc:" + paramBoolean + " ,type:" + BlessSelectMemberActivity.c(this.a));
+    }
+    if (BlessSelectMemberActivity.c(this.a) == 3) {
+      if (paramBoolean) {
+        BlessSelectMemberActivity.a(this.a);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        this.a.e();
+        BlessSelectMemberActivity.a(this.a, 2131690571, false);
+        return;
+      } while (BlessSelectMemberActivity.c(this.a) != 2);
+      if ((BlessSelectMemberActivity.a(this.a).a() == null) || (!paramBoolean))
+      {
+        this.a.e();
+        BlessSelectMemberActivity.a(this.a, 2131690588, false);
+        return;
+      }
+    } while (BlessSelectMemberActivity.b());
+    BlessSelectMemberActivity.b(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agyk
  * JD-Core Version:    0.7.0.1
  */

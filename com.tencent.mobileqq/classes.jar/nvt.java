@@ -1,23 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class nvt
-  implements myy
+class nvt
+  implements View.OnClickListener
 {
-  public nvt(ReadInJoyFeedsActivity.1 param1) {}
+  nvt(nvp paramnvp) {}
   
-  public void loaded(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2378 html web resource finish");
-    }
+    QLog.i("DailyHeaderViewController", 1, "[onClick] clickToRefresh");
+    nvp.a(this.a, 5);
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nvt
  * JD-Core Version:    0.7.0.1
  */

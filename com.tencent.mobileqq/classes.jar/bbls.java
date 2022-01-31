@@ -1,53 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.utils.VipUtils.UpdateRecentEfficientVipIconTask;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class bbls
+class bbls
+  extends Handler
 {
-  private static ArrayList<VipUtils.UpdateRecentEfficientVipIconTask> a = new ArrayList();
-  
-  public static void a(View paramView)
+  bbls(bblr parambblr, Looper paramLooper)
   {
-    Iterator localIterator = a.iterator();
-    VipUtils.UpdateRecentEfficientVipIconTask localUpdateRecentEfficientVipIconTask2;
-    View localView;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    }
     do
     {
-      if (!localIterator.hasNext()) {
-        break label80;
-      }
-      localUpdateRecentEfficientVipIconTask2 = (VipUtils.UpdateRecentEfficientVipIconTask)localIterator.next();
-      localView = VipUtils.UpdateRecentEfficientVipIconTask.a(localUpdateRecentEfficientVipIconTask2);
-      localUpdateRecentEfficientVipIconTask1 = localUpdateRecentEfficientVipIconTask2;
-      if (localView == paramView) {
-        break;
-      }
-    } while (localView != null);
-    label80:
-    for (VipUtils.UpdateRecentEfficientVipIconTask localUpdateRecentEfficientVipIconTask1 = localUpdateRecentEfficientVipIconTask2;; localUpdateRecentEfficientVipIconTask1 = null)
-    {
-      if (localUpdateRecentEfficientVipIconTask1 != null)
-      {
-        a.remove(localUpdateRecentEfficientVipIconTask1);
-        VipUtils.UpdateRecentEfficientVipIconTask.a(localUpdateRecentEfficientVipIconTask1, false);
-        if (QLog.isColorLevel()) {
-          QLog.w("VipUtils", 1, "updateRecentEfficientVipIcon async - diable");
-        }
-      }
       return;
-    }
-  }
-  
-  public static void a(VipUtils.UpdateRecentEfficientVipIconTask paramUpdateRecentEfficientVipIconTask)
-  {
-    a.add(paramUpdateRecentEfficientVipIconTask);
-  }
-  
-  public static void b(VipUtils.UpdateRecentEfficientVipIconTask paramUpdateRecentEfficientVipIconTask)
-  {
-    a.remove(paramUpdateRecentEfficientVipIconTask);
+    } while ((this.a.a == null) || (TextUtils.isEmpty(this.a.a.a)) || (!this.a.a.a.equals(this.a.b)));
+    this.a.h();
   }
 }
 

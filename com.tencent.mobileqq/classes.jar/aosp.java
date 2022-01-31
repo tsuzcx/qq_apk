@@ -1,64 +1,61 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.1;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.2;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView.7.3;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class aosp
-  extends aoun
+  extends aofy<aoso>
 {
-  public aosp(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
-  
-  protected void a(int paramInt, long paramLong, String paramString)
+  public static aoso a()
   {
-    super.a(paramInt, paramLong, paramString);
-    apug.a(paramLong, paramInt, paramString);
-    bigj.a(this.a.a, paramInt);
+    return (aoso)aogj.a().a(521);
   }
   
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  public int a()
   {
-    super.a(paramLong, paramString1, paramInt, paramString2);
-    apug.a(paramLong);
+    return 521;
   }
   
-  protected void a(apez paramapez)
+  @NonNull
+  public aoso a(int paramInt)
   {
-    if (paramapez == null) {}
-    FileManagerEntity localFileManagerEntity;
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramapez.a instanceof FileManagerEntity));
-      localFileManagerEntity = (FileManagerEntity)paramapez.a;
-    } while ((paramapez.b == null) || (paramapez.b.length() <= 0));
-    localFileManagerEntity.strThumbPath = paramapez.b;
-    QfileBaseLocalFileTabView.c(this.a).a().c(localFileManagerEntity);
-    this.a.i();
+    return new aoso();
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  @Nullable
+  public aoso a(aogf[] paramArrayOfaogf)
   {
-    QfileBaseLocalFileTabView.a(this.a, new QfileBaseLocalFileTabView.7.1(this));
+    if ((paramArrayOfaogf != null) && (paramArrayOfaogf.length > 0)) {
+      return aoso.a(paramArrayOfaogf);
+    }
+    return null;
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public Class<aoso> a()
   {
-    QfileBaseLocalFileTabView.b(this.a, new QfileBaseLocalFileTabView.7.2(this, paramLong2, paramBoolean, paramInt2, paramString2));
+    return aoso.class;
   }
   
-  protected void b()
+  public void a(int paramInt) {}
+  
+  public void a(aoso paramaoso) {}
+  
+  public int b()
   {
-    super.b();
-    QfileBaseLocalFileTabView.c(this.a, new QfileBaseLocalFileTabView.7.3(this));
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aosp
  * JD-Core Version:    0.7.0.1
  */

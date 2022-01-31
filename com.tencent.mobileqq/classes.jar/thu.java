@@ -1,36 +1,50 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-public class thu
-  extends QQUIEventReceiver<thh, tkk>
+class thu
+  implements TVK_SDKMgr.OnLogListener
 {
-  public thu(@NonNull thh paramthh)
+  public int d(String paramString1, String paramString2)
   {
-    super(paramthh);
+    if (QLog.isColorLevel()) {
+      tlo.b(paramString1, 2, paramString2);
+    }
+    return 0;
   }
   
-  public void a(@NonNull thh paramthh, @NonNull tkk paramtkk)
+  public int e(String paramString1, String paramString2)
   {
-    if ((paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramtkk.jdField_a_of_type_JavaUtilList != null) && (!paramtkk.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      paramthh.a.b(paramtkk);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver errorInfo: " + paramtkk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", userUIItems = " + paramtkk.jdField_a_of_type_JavaUtilList);
+    tlo.d(paramString1, 1, paramString2);
+    return 0;
   }
   
-  public Class acceptEventClass()
+  public int i(String paramString1, String paramString2)
   {
-    return tkk.class;
+    if (QLog.isColorLevel()) {
+      tlo.a(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      tlo.b(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      tlo.c(paramString1, 2, paramString2);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     thu
  * JD-Core Version:    0.7.0.1
  */

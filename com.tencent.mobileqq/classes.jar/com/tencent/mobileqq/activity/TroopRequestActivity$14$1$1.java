@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import acli;
+import aecs;
 import com.tencent.mobileqq.data.Card;
 
 class TroopRequestActivity$14$1$1
@@ -17,7 +17,7 @@ class TroopRequestActivity$14$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopRequestActivity.14.1.1
  * JD-Core Version:    0.7.0.1
  */

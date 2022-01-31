@@ -1,18 +1,9 @@
 package com.tencent.mobileqq.app.soso;
 
-import android.text.TextUtils;
-import bcql;
-import com.tencent.common.app.BaseApplicationImpl;
-
 final class SosoInterface$9
   implements Runnable
 {
-  public void run()
-  {
-    if (!TextUtils.isEmpty(this.a)) {
-      bcql.a(BaseApplicationImpl.getContext(), this.a, 1).a();
-    }
-  }
+  public void run() {}
 }
 
 

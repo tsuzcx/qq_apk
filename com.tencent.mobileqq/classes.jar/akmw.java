@@ -1,52 +1,35 @@
-import com.tencent.mobileqq.data.RecentUser;
-import java.util.Comparator;
+import android.content.Context;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-class akmw
-  implements Comparator<auko>
+public class akmw
+  extends ajee
 {
-  akmw(akmv paramakmv) {}
-  
-  public int a(auko paramauko1, auko paramauko2)
+  public akmw(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, ajdx paramajdx, int paramInt)
   {
-    int j = -1;
-    paramauko1 = (RecentUser)paramauko1;
-    paramauko2 = (RecentUser)paramauko2;
-    long l1 = Math.max(paramauko1.lastmsgtime, paramauko1.lastmsgdrafttime);
-    long l2 = Math.max(paramauko2.lastmsgtime, paramauko2.lastmsgdrafttime);
-    int i;
-    if (l1 < l2)
+    super(paramContext, paramQQAppInterface, paramXListView, paramajdx, paramInt);
+  }
+  
+  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
+  }
+  
+  public void b(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      i = 1;
-      if (paramauko1.getType() != paramauko2.getType()) {
-        break label80;
-      }
+      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
+      notifyDataSetChanged();
     }
-    label80:
-    do
-    {
-      do
-      {
-        return i;
-        if (l1 == l2)
-        {
-          i = 0;
-          break;
-        }
-        i = -1;
-        break;
-        i = j;
-      } while (paramauko1.getType() == 0);
-      if (paramauko2.getType() == 0) {
-        return 1;
-      }
-      i = j;
-    } while (paramauko1.getType() - paramauko2.getType() > 0);
-    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akmw
  * JD-Core Version:    0.7.0.1
  */

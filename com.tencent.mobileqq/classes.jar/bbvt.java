@@ -1,132 +1,43 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.support.v4.app.FragmentActivity;
+import android.telephony.TelephonyManager;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class bbvt
-  extends WebViewPlugin
+  extends BroadcastReceiver
 {
-  protected anqq a;
-  public final String a;
-  public String b;
+  public bbvt(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public bbvt()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_JavaLangString = "VideoApiPlugin";
-    this.jdField_a_of_type_Anqq = new bbvu(this);
-    this.mPluginNameSpace = "video";
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoApiPlugin", 2, "handleJsRequest, url=" + paramString1);
-    }
-    boolean bool1;
-    if ((!"video".equals(paramString2)) || (paramString1 == null) || (paramString3 == null)) {
-      bool1 = false;
-    }
-    label154:
-    do
+    if (this.a.a != null)
     {
-      do
-      {
-        do
-        {
-          return bool1;
-          for (;;)
-          {
-            try
-            {
-              paramString1 = new JSONObject(paramVarArgs[0]);
-              if (paramString1.has("callback"))
-              {
-                paramJsBridgeListener = paramString1.getString("callback");
-                if (!"isInstalled".equals(paramString3)) {
-                  break label154;
-                }
-                bool1 = bool2;
-                if (!anvq.a().a()) {
-                  break;
-                }
-                paramString1 = new Bundle();
-                paramJsBridgeListener = anqu.a("ipc_video_isinstalled", paramJsBridgeListener, this.jdField_a_of_type_Anqq.key, paramString1);
-                anvq.a().a(paramJsBridgeListener);
-                return true;
-              }
-            }
-            catch (Exception paramJsBridgeListener)
-            {
-              paramJsBridgeListener.printStackTrace();
-              return true;
-            }
-            paramJsBridgeListener = "";
-          }
-          if (!"installPlugin".equals(paramString3)) {
-            break;
-          }
-          bool1 = bool2;
-        } while (!anvq.a().a());
-        paramString1 = new Bundle();
-        paramJsBridgeListener = anqu.a("ipc_video_install_plugin", paramJsBridgeListener, this.jdField_a_of_type_Anqq.key, paramString1);
-        anvq.a().a(paramJsBridgeListener);
-        return true;
-        bool1 = bool2;
-      } while (!"playVideo".equals(paramString3));
-      paramString2 = paramString1.optString("vid", "");
-      paramString3 = paramString1.optString("format", "");
-      int i = paramString1.optInt("playType", 0);
-      paramString1 = paramString1.optString("screenOrientation", "landscape");
-      if (!TextUtils.isEmpty(paramJsBridgeListener)) {
-        this.b = paramJsBridgeListener;
+      paramContext = paramIntent.getAction();
+      if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+        break label51;
       }
-      if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (i > 0))
-      {
-        paramJsBridgeListener = new Intent(this.mRuntime.a(), VipVideoPlayActivity.class);
-        paramJsBridgeListener.putExtra("vid", paramString2);
-        paramJsBridgeListener.putExtra("videoFormat", paramString3);
-        paramJsBridgeListener.putExtra("vtype", i);
-        paramJsBridgeListener.putExtra("screenOrientation", paramString1);
-        startActivityForResult(paramJsBridgeListener, (byte)100);
-        return true;
+      if (QLog.isColorLevel()) {
+        QLog.d("PublishHomeWorkFragment", 2, "receive action_recv_video_request");
       }
-      bool1 = bool2;
-    } while (TextUtils.isEmpty(this.b));
-    callJs(this.b, new String[] { String.valueOf(4) });
-    return true;
-  }
-  
-  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoApiPlugin", 2, "vip video api plugin on activity result requestCode=" + paramByte + ",resultCode=" + paramInt);
+      this.a.a.b(102);
     }
-    super.onActivityResult(paramIntent, paramByte, paramInt);
-    if ((paramByte == 100) && (!TextUtils.isEmpty(this.b))) {
-      callJs(this.b, new String[] { String.valueOf(paramInt) });
+    label51:
+    while (!"android.intent.action.PHONE_STATE".equals(paramContext)) {
+      return;
     }
-  }
-  
-  public void onCreate()
-  {
-    super.onCreate();
-    anvq.a().a(this.jdField_a_of_type_Anqq);
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    anvq.a().b(this.jdField_a_of_type_Anqq);
+    if ((((TelephonyManager)this.a.getActivity().getSystemService("phone")).getCallState() == 1) && (QLog.isColorLevel())) {
+      QLog.d("PublishHomeWorkFragment", 2, "receive action_phone_state_changed|call_state_ringing");
+    }
+    this.a.a.b(102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbvt
  * JD-Core Version:    0.7.0.1
  */

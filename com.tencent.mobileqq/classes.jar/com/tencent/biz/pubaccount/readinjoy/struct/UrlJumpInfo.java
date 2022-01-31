@@ -7,14 +7,14 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import onh;
-import qdu;
+import ors;
+import qnr;
 import tencent.im.oidb.articlesummary.articlesummary.UrlJumpInfo;
 
 public class UrlJumpInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<UrlJumpInfo> CREATOR = new qdu();
+  public static final Parcelable.Creator<UrlJumpInfo> CREATOR = new qnr();
   public int a;
   public String a;
   public String b;
@@ -43,11 +43,11 @@ public class UrlJumpInfo
       for (int i = paramUrlJumpInfo.uint32_jump_type.get();; i = 0)
       {
         localUrlJumpInfo.jdField_a_of_type_Int = i;
-        localUrlJumpInfo.c = onh.a(paramUrlJumpInfo.bytes_jump_schema);
-        localUrlJumpInfo.b = onh.a(paramUrlJumpInfo.bytes_jump_bundle);
-        localUrlJumpInfo.jdField_a_of_type_JavaLangString = onh.a(paramUrlJumpInfo.bytes_jump_url);
-        localUrlJumpInfo.d = onh.a(paramUrlJumpInfo.bytes_clipboard_info);
-        localUrlJumpInfo.e = onh.a(paramUrlJumpInfo.bytes_common_data);
+        localUrlJumpInfo.c = ors.a(paramUrlJumpInfo.bytes_jump_schema);
+        localUrlJumpInfo.b = ors.a(paramUrlJumpInfo.bytes_jump_bundle);
+        localUrlJumpInfo.jdField_a_of_type_JavaLangString = ors.a(paramUrlJumpInfo.bytes_jump_url);
+        localUrlJumpInfo.d = ors.a(paramUrlJumpInfo.bytes_clipboard_info);
+        localUrlJumpInfo.e = ors.a(paramUrlJumpInfo.bytes_common_data);
         return localUrlJumpInfo;
       }
     }
@@ -98,7 +98,7 @@ public class UrlJumpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo
  * JD-Core Version:    0.7.0.1
  */

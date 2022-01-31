@@ -1,55 +1,23 @@
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
 
-public class aakd
-  extends MqqHandler
+public final class aakd
+  implements Parcelable.Creator<GdtInterstitialParams>
 {
-  public aakd(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public GdtInterstitialParams a(Parcel paramParcel)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (AssociatedAccountManageActivity.a(this.a) == null) {
-        AssociatedAccountManageActivity.a(this.a, new bcqf(this.a, this.a.getTitleBarHeight()));
-      }
-      if ((!this.a.isFinishing()) && (!AssociatedAccountManageActivity.a(this.a).isShowing()))
-      {
-        try
-        {
-          AssociatedAccountManageActivity.a(this.a).show();
-        }
-        catch (Exception localException) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.e("AssociatedAccountManage", 2, "QQProgressDialog show exception.", localException);
-          continue;
-          if ((AssociatedAccountManageActivity.a(this.a) != null) && (AssociatedAccountManageActivity.a(this.a).isShowing()))
-          {
-            AssociatedAccountManageActivity.a(this.a).dismiss();
-            AssociatedAccountManageActivity.a(this.a, null);
-            continue;
-            if (AssociatedAccountManageActivity.a(this.a) != null) {
-              AssociatedAccountManageActivity.a(this.a).cancel();
-            }
-            AssociatedAccountManageActivity.a(this.a, bcql.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
-          }
-        }
-      }
-    }
+    return new GdtInterstitialParams(paramParcel);
+  }
+  
+  public GdtInterstitialParams[] a(int paramInt)
+  {
+    return new GdtInterstitialParams[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aakd
  * JD-Core Version:    0.7.0.1
  */

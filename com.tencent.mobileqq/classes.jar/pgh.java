@@ -1,227 +1,117 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.os.Build.VERSION;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.TextUtils;
-import android.text.style.AbsoluteSizeSpan;
-import android.text.style.ForegroundColorSpan;
-import com.tencent.biz.pubaccount.readinjoy.notecard.SoundCheckRunnable;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.NoteCardProteusItem.5;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.GetNumApproveStateReqBody;
+import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.GetNumApproveStateRspBody;
+import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.NumApproveStateItem;
+import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.ReqBody;
+import tencent.im.oidb.cmd0xb57.oidb_cmd0xb57.RspBody;
 
 public class pgh
-  implements pcc, php
+  extends pgp
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private SoundCheckRunnable jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable;
-  private pau jdField_a_of_type_Pau;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private pgi a;
   
-  private SpannableStringBuilder a(JSONArray paramJSONArray)
+  public pgh(AppInterface paramAppInterface, awbw paramawbw, ExecutorService paramExecutorService, puz parampuz, Handler paramHandler)
   {
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    int i = 0;
-    while (i < paramJSONArray.length())
-    {
-      Object localObject = new JSONObject(paramJSONArray.get(i).toString());
-      String str = ((JSONObject)localObject).optString("word", "    ");
-      int j = Color.parseColor(((JSONObject)localObject).optString("color", "#C3C0D6"));
-      int k = Integer.valueOf(((JSONObject)localObject).optString("size", "15")).intValue();
-      localObject = new SpannableString(str);
-      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(j), 0, str.length(), 33);
-      ((SpannableString)localObject).setSpan(new AbsoluteSizeSpan(k, true), 0, str.length(), 33);
-      localSpannableStringBuilder.append((CharSequence)localObject);
-      i += 1;
-    }
-    return localSpannableStringBuilder;
+    super(paramAppInterface, paramawbw, paramExecutorService, parampuz, paramHandler);
   }
   
-  private void a(Activity paramActivity)
+  private ToServiceMsg a(long paramLong)
   {
-    try
-    {
-      new aumj(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getPackageName()).a();
-      muc.a(paramActivity);
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NoteCardProteusItem", 1, paramActivity, new Object[0]);
-    }
+    oidb_cmd0xb57.ReqBody localReqBody = new oidb_cmd0xb57.ReqBody();
+    localReqBody.uint32_oper.set(2);
+    List localList = Arrays.asList(new Long[] { Long.valueOf(paramLong) });
+    oidb_cmd0xb57.GetNumApproveStateReqBody localGetNumApproveStateReqBody = new oidb_cmd0xb57.GetNumApproveStateReqBody();
+    localGetNumApproveStateReqBody.rpt_uint64_query_num.set(localList);
+    localReqBody.msg_get_num_approve_state_req.set(localGetNumApproveStateReqBody);
+    return pvb.a("OidbSvc.0xb57", 2903, 16, localReqBody.toByteArray());
   }
   
-  private void b()
+  private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable == null) || (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable.a()))
+    Object localObject = new oidb_cmd0xb57.RspBody();
+    int i = pvb.a(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+    QLog.d("RIJUserApproveModule", 1, new Object[] { "handle0xb57UserInfo result = ", Integer.valueOf(i) });
+    if ((i == 0) && (((oidb_cmd0xb57.RspBody)localObject).msg_get_num_approve_state_rsp.has()))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable = new SoundCheckRunnable();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable.a(this);
-      ThreadManager.excute(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable, 16, null, true);
-      ThreadManager.getUIHandler().removeCallbacksAndMessages(null);
-      ThreadManager.getUIHandler().postDelayed(new NoteCardProteusItem.5(this), 60000L);
-    }
-  }
-  
-  private void c()
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable != null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable.a();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable.a(null);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyNotecardSoundCheckRunnable = null;
-    }
-    ThreadManager.getUIHandler().removeCallbacksAndMessages(null);
-  }
-  
-  public void F_()
-  {
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      if (pcb.a(this.jdField_a_of_type_AndroidContentContext, str) >= qcb.jdField_d_of_type_Int) {
-        break label51;
-      }
-      if (this.jdField_a_of_type_Pau != null) {
-        this.jdField_a_of_type_Pau.a().o();
-      }
-    }
-    return;
-    label51:
-    bcql.a(this.jdField_a_of_type_AndroidContentContext, 0, this.jdField_a_of_type_AndroidContentContext.getString(2131718594), 0).a();
-  }
-  
-  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
-  {
-    return null;
-  }
-  
-  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
-  {
-    int i = 0;
-    paramInt = 0;
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("style_ID", "ReadInjoy_zhitiao_view");
-    for (;;)
-    {
-      qcb localqcb;
-      try
+      paramFromServiceMsg = ((oidb_cmd0xb57.RspBody)localObject).msg_get_num_approve_state_rsp.rpt_msg_num_approve_state_items.get();
+      if (paramFromServiceMsg != null)
       {
-        localqcb = paramBaseArticleInfo.scripCmsInfo;
-        if (localqcb == null) {
-          break;
-        }
-        if ((localqcb.jdField_a_of_type_Int == 1) || ((TextUtils.isEmpty(localqcb.g)) && (TextUtils.isEmpty(localqcb.h))))
+        paramFromServiceMsg = paramFromServiceMsg.iterator();
+        while (paramFromServiceMsg.hasNext())
         {
-          paramBaseArticleInfo = new JSONObject(localqcb.jdField_a_of_type_JavaLangString).getJSONArray("S");
-          Object localObject = new JSONObject(localqcb.b).getJSONArray("S");
-          localJSONObject.put("main_title_rich", a(paramBaseArticleInfo));
-          localJSONObject.put("sub_title_rich", a((JSONArray)localObject));
-          localJSONObject.put("privacy_text", localqcb.jdField_d_of_type_JavaLangString);
-          paramBaseArticleInfo = pcb.c();
-          localObject = BaseApplicationImpl.getContext();
-          if ((Build.VERSION.SDK_INT < 23) || (localObject == null)) {
-            break label415;
-          }
-          if (((Context)localObject).checkSelfPermission("android.permission.RECORD_AUDIO") == 0) {
-            paramInt = 1;
-          }
-          if ((paramInt == 0) && (pcb.a() == 1))
+          paramObject = (oidb_cmd0xb57.NumApproveStateItem)paramFromServiceMsg.next();
+          if ((paramObject != null) && (paramObject.uint64_query_num.has()))
           {
-            localJSONObject.put("tips_text", ((Context)localObject).getString(2131718517));
-            localJSONObject.put("icon_image_url", localqcb.e);
-            localJSONObject.put("bg_image_url", localqcb.c);
-            localJSONObject.put("animation_url", localqcb.f);
-            return localJSONObject;
+            localObject = (Long)paramToServiceMsg.getAttribute("KEY_USER_APPROVE_UIN");
+            long l = paramObject.uint64_query_num.get();
+            if ((l == ((Long)localObject).longValue()) && (paramObject.uint32_is_approve.has()))
+            {
+              QLog.d("RIJUserApproveModule", 1, "handle0xb57UserInfo state = " + paramObject.uint32_is_approve.get());
+              localObject = ReadInJoyUserInfoModule.a(l, null);
+              if (localObject != null) {
+                ((ReadInJoyUserInfo)localObject).isApproved = paramObject.uint32_is_approve.get();
+              }
+              if (this.a != null) {
+                this.a.a(paramObject.uint32_is_approve.get());
+              }
+            }
           }
-          localJSONObject.put("tips_text", paramBaseArticleInfo);
-          continue;
-        }
-        localJSONObject.put("main_title_rich", localqcb.g.replace("#$%", pcb.a()));
-      }
-      catch (Exception paramBaseArticleInfo)
-      {
-        QLog.d("NoteCardProteusItem", 2, paramBaseArticleInfo.getMessage());
-        return localJSONObject;
-      }
-      paramBaseArticleInfo = BaseApplicationImpl.getContext();
-      if ((Build.VERSION.SDK_INT >= 23) && (paramBaseArticleInfo != null))
-      {
-        paramInt = i;
-        if (paramBaseArticleInfo.checkSelfPermission("android.permission.RECORD_AUDIO") != 0) {}
-      }
-      for (paramInt = 1;; paramInt = 1)
-      {
-        if ((paramInt == 0) && (pcb.a() == 1)) {}
-        for (paramBaseArticleInfo = localqcb.h.replace("#$%", paramBaseArticleInfo.getString(2131718516));; paramBaseArticleInfo = localqcb.h.replace("#$%", pcb.b()))
-        {
-          localJSONObject.put("sub_title_rich", paramBaseArticleInfo);
-          localJSONObject.put("bg_image_url", localqcb.i);
-          return localJSONObject;
         }
       }
-      label415:
-      paramInt = 1;
     }
-    return localJSONObject;
   }
   
-  public void a(int paramInt1, Container paramContainer, pau parampau, int paramInt2)
+  public void a()
   {
-    ram localram;
-    if ((parampau != null) && (parampau.a() != null))
-    {
-      localram = parampau.a();
-      this.jdField_a_of_type_AndroidContentContext = paramContainer.getContext();
-      this.jdField_a_of_type_Pau = parampau;
-      localObject = paramContainer.getViewIdMapping();
-      if ((((Map)localObject).get("id_lottie_view") == null) || (!(((Map)localObject).get("id_lottie_view") instanceof plf))) {
-        break label102;
+    this.a = null;
+  }
+  
+  public void a(long paramLong, pgi parampgi)
+  {
+    QLog.d("RIJUserApproveModule", 1, "requestUserApproveInfo uin: " + paramLong);
+    if (parampgi != null) {
+      this.a = parampgi;
+    }
+    ReadInJoyUserInfo localReadInJoyUserInfo = ReadInJoyUserInfoModule.a(paramLong, null);
+    if ((localReadInJoyUserInfo != null) && (localReadInJoyUserInfo.isApproved != -1)) {
+      if (parampgi != null) {
+        parampgi.a(localReadInJoyUserInfo.isApproved);
       }
     }
-    label102:
-    for (Object localObject = (plf)((Map)localObject).get("id_lottie_view");; localObject = null)
+    do
     {
-      localram.a(new pgi(this, (plf)localObject, parampau, paramContainer));
       return;
-    }
+      parampgi = a(paramLong);
+    } while (parampgi == null);
+    parampgi.addAttribute("KEY_USER_APPROVE_UIN", Long.valueOf(paramLong));
+    a(parampgi);
   }
   
-  public boolean a(int paramInt, Container paramContainer, pau parampau, ViewBase paramViewBase)
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
-    {
-    default: 
-      return false;
-    case 1155: 
-      paramViewBase.setOnClickListener(new pgj(this, parampau, paramContainer));
-      return true;
-    case 1156: 
-      paramViewBase.setOnClickListener(new pgk(this, paramContainer));
-      return true;
+    if (paramFromServiceMsg.getServiceCmd().equals("OidbSvc.0xb57")) {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
     }
-    paramViewBase.setOnClickListener(new pgl(this, paramContainer));
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pgh
  * JD-Core Version:    0.7.0.1
  */

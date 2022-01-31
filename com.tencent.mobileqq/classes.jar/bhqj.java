@@ -1,28 +1,33 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public final class bhqj
-  implements bhlf
+class bhqj
+  implements DialogInterface.OnDismissListener
 {
-  public bhqj(Handler paramHandler) {}
+  private WeakReference<DialogInterface.OnDismissListener> a;
   
-  public void onWebEvent(String paramString, Bundle paramBundle)
+  public bhqj(DialogInterface.OnDismissListener paramOnDismissListener)
   {
-    if ("cmd.uploadCommentVideo".equals(paramString))
-    {
-      paramString = new Message();
-      paramString.obj = paramBundle;
-      this.a.sendMessage(paramString);
-      if ((paramBundle.getBundle("data") != null) && (paramBundle.getBundle("data").getInt("status") != 2)) {
-        bhlc.a().b(this);
-      }
+    this.a = new WeakReference(paramOnDismissListener);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    DialogInterface.OnDismissListener localOnDismissListener = (DialogInterface.OnDismissListener)this.a.get();
+    if (localOnDismissListener != null) {
+      localOnDismissListener.onDismiss(paramDialogInterface);
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.i("Q.dating", 2, "CustomDismissListener, lis is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhqj
  * JD-Core Version:    0.7.0.1
  */

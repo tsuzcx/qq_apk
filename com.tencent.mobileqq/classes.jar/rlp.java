@@ -1,29 +1,24 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
 
-public class rlp
-  implements rkh
+class rlp
+  implements Animation.AnimationListener
 {
-  public int a(BaseData paramBaseData)
+  rlp(rlo paramrlo) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return 5;
+    rlo.a(this.a).startAnimation(rlo.a(this.a));
   }
   
-  public rkg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
-  {
-    return new rlq(LayoutInflater.from(paramContext).inflate(2131559929, null), paramBaseData);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.p == 5;
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rlp
  * JD-Core Version:    0.7.0.1
  */

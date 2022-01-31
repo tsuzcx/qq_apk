@@ -1,25 +1,14 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajzl
-  implements ajtd
+public final class ajzl
+  implements DialogInterface.OnClickListener
 {
-  public List<String> a(AppInterface paramAppInterface)
-  {
-    if (((paramAppInterface instanceof QQAppInterface)) && (((QQAppInterface)paramAppInterface).a().a()))
-    {
-      paramAppInterface = new ArrayList();
-      paramAppInterface.add("100000");
-      return paramAppInterface;
-    }
-    return null;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,71 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.9.1;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.miniaio.IMiniMsgUnreadCallback;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class atfl
-  implements bcno
+  implements IMiniMsgUnreadCallback
 {
-  public atfl(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public atfl(UiApiPlugin paramUiApiPlugin) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void destroy() {}
+  
+  public void hide() {}
+  
+  public void hideUnread()
   {
-    ChooseInterestTagActivity.a(this.a).post(new ChooseInterestTagActivity.9.1(this, paramInt1));
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("unReadHide", true);
+      this.a.a("UnRead", localJSONObject);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.d("UiApiPlugin", 1, localException, new Object[0]);
+    }
+  }
+  
+  public boolean show(int paramInt)
+  {
+    return false;
+  }
+  
+  public void updateOnBackFromMiniAIO(Bundle paramBundle)
+  {
+    try
+    {
+      paramBundle = new JSONObject();
+      this.a.a("backFromMiniAIO", paramBundle);
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      QLog.d("UiApiPlugin", 1, paramBundle, new Object[0]);
+    }
+  }
+  
+  public void updateUnreadCount(int paramInt, boolean paramBoolean)
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("unReadC", paramInt);
+      localJSONObject.put("unReadHide", paramBoolean);
+      this.a.a("updateUnreadCount", localJSONObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("UiApiPlugin", 2, "mini_msg uiApiPlugin undateUnreadCount = " + paramInt);
+      }
+      return;
+    }
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atfl
  * JD-Core Version:    0.7.0.1
  */

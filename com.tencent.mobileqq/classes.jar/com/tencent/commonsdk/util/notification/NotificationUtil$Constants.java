@@ -2,6 +2,7 @@ package com.tencent.commonsdk.util.notification;
 
 public abstract interface NotificationUtil$Constants
 {
+  public static final String BLACK_ID_FILE_PATH = "push_id_file_path";
   public static final int NOTIFY_ID_ACTIVEPULL_PUSH = 269;
   public static final int NOTIFY_ID_APPCENTER_BEGIN = 378;
   public static final int NOTIFY_ID_APPCENTER_END = 477;
@@ -17,7 +18,7 @@ public abstract interface NotificationUtil$Constants
   public static final int NOTIFY_ID_LBS_FRIEND_UNREAD = 268;
   public static final int NOTIFY_ID_LIMIT_CHAT_UNREAD = 266;
   public static final int NOTIFY_ID_LOCSHARING = 525;
-  public static final int NOTIFY_ID_MAX = 526;
+  public static final int NOTIFY_ID_MAX = 527;
   public static final int NOTIFY_ID_MSF_PUSH_AVMSG = 479;
   public static final int NOTIFY_ID_MSF_PUSH_DEVLOCK_QUICKLOGIN_MSG = 480;
   public static final int NOTIFY_ID_MSF_PUSH_OFFLINE = 478;
@@ -33,6 +34,7 @@ public abstract interface NotificationUtil$Constants
   public static final int NOTIFY_ID_PUSH_SCHEMA = 243;
   public static final int NOTIFY_ID_PUSH_SPECIAL = 244;
   public static final int NOTIFY_ID_QAV = 235;
+  public static final int NOTIFY_ID_QQGAME_MSG = 527;
   public static final int NOTIFY_ID_QQREADER_DOWNLOAD = 234;
   public static final int NOTIFY_ID_QZONE_SPECIAL2 = 242;
   public static final int NOTIFY_ID_SEPARATE_SESSION_END = 522;

@@ -8,6 +8,8 @@ import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.minigame.api.ApiUtil;
 import com.tencent.mobileqq.minigame.gpkg.MiniGamePkg;
 import com.tencent.mobileqq.minigame.manager.GameInfoManager;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoader;
+import com.tencent.mobileqq.minigame.manager.GameRuntimeLoaderManager;
 import com.tencent.mobileqq.minigame.utils.GameLog;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -71,22 +73,30 @@ public class SubpackageJsPlugin
         }
       }
     }
-    MiniGamePkg localMiniGamePkg = GameInfoManager.g().getMiniGamePkg();
-    if (localMiniGamePkg != null)
+    GameRuntimeLoader localGameRuntimeLoader = GameRuntimeLoaderManager.g().getBindRuntimeLoader(this.jsPluginEngine.appBrandRuntime.activity);
+    MiniGamePkg localMiniGamePkg;
+    if (localGameRuntimeLoader != null) {
+      localMiniGamePkg = localGameRuntimeLoader.getGameInfoManager().getMiniGamePkg();
+    }
+    for (;;)
     {
-      GameLog.getInstance().i("SubpackageJsPlugin", "start loadSubPackage:" + paramJSONObject + ", gameId:" + localMiniGamePkg.appId + ", gameName:" + localMiniGamePkg.apkgName);
-      localMiniGamePkg.downloadSubPack(paramJSONObject, new SubpackageJsPlugin.3(this, paramJSONObject, paramWeakReference, paramInt));
-      paramJSONObject = new JSONObject();
-      try
+      if (localMiniGamePkg != null)
       {
-        paramJSONObject.put("loadTaskId", paramInt);
-        return ApiUtil.wrapCallbackOk(paramString, paramJSONObject).toString();
-      }
-      catch (JSONException paramWeakReference)
-      {
-        for (;;)
+        GameLog.getInstance().i("SubpackageJsPlugin", "start loadSubPackage:" + paramJSONObject + ", gameId:" + localMiniGamePkg.appId + ", gameName:" + localMiniGamePkg.apkgName);
+        localMiniGamePkg.downloadSubPack(paramJSONObject, new SubpackageJsPlugin.3(this, localGameRuntimeLoader, paramJSONObject, paramWeakReference, paramInt));
+        paramJSONObject = new JSONObject();
+        try
         {
-          paramWeakReference.printStackTrace();
+          paramJSONObject.put("loadTaskId", paramInt);
+          return ApiUtil.wrapCallbackOk(paramString, paramJSONObject).toString();
+          localMiniGamePkg = null;
+        }
+        catch (JSONException paramWeakReference)
+        {
+          for (;;)
+          {
+            paramWeakReference.printStackTrace();
+          }
         }
       }
     }
@@ -126,7 +136,7 @@ public class SubpackageJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.SubpackageJsPlugin
  * JD-Core Version:    0.7.0.1
  */

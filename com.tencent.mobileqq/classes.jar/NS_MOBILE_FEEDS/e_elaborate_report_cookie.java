@@ -15,6 +15,7 @@ public final class e_elaborate_report_cookie
   public static final int _ELABORATE_REPORT_BANNER_RECORD_ID = 26;
   public static final int _ELABORATE_REPORT_BANNER_TYPE = 25;
   public static final int _ELABORATE_REPORT_BUSI_EXT = 33;
+  public static final int _ELABORATE_REPORT_CLIENT_MODEL = 40;
   public static final int _ELABORATE_REPORT_COLOR_EXPT_IDS = 4;
   public static final int _ELABORATE_REPORT_COLOR_STRATEGY_IDS = 5;
   public static final int _ELABORATE_REPORT_COLOR_TRIGGER = 6;
@@ -27,13 +28,21 @@ public final class e_elaborate_report_cookie
   public static final int _ELABORATE_REPORT_FORWARD_ARG_ID = 30;
   public static final int _ELABORATE_REPORT_FRDLIKE_RULE_ID = 21;
   public static final int _ELABORATE_REPORT_FRD_LISTEN_ACTION_URL = 17;
+  public static final int _ELABORATE_REPORT_GROWTH_INFO = 41;
   public static final int _ELABORATE_REPORT_HAS_VIDEO_RECOM_TAB = 31;
   public static final int _ELABORATE_REPORT_IS_FIRST_PLACE_RECOM = 15;
   public static final int _ELABORATE_REPORT_IS_READED = 11;
   public static final int _ELABORATE_REPORT_IS_WEISHI = 34;
+  public static final int _ELABORATE_REPORT_KUOLIE_CAMPUS_ALG_ID = 43;
+  public static final int _ELABORATE_REPORT_KUOLIE_CAMPUS_SOURCE = 44;
   public static final int _ELABORATE_REPORT_LINK_DOMAIN = 12;
+  public static final int _ELABORATE_REPORT_LUOMA_INFO = 42;
+  public static final int _ELABORATE_REPORT_NEED_EXPOSE_REPT = 38;
   public static final int _ELABORATE_REPORT_ORG_UNIQ_KEY = 10;
+  public static final int _ELABORATE_REPORT_RECOM_TRIGGLE = 36;
   public static final int _ELABORATE_REPORT_ROOM_ID = 14;
+  public static final int _ELABORATE_REPORT_SHARE_FEEDS_URL = 37;
+  public static final int _ELABORATE_REPORT_THIRD_APPID = 39;
   public static final int _ELABORATE_REPORT_TYPE = 1;
   public static final int _ELABORATE_REPORT_UNIQ_KEY = 3;
   public static final int _ELABORATE_REPORT_UNREAD_NUM = 29;
@@ -43,7 +52,7 @@ public final class e_elaborate_report_cookie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_elaborate_report_cookie
  * JD-Core Version:    0.7.0.1
  */

@@ -1,142 +1,74 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
-import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.util.Pair;
 
 public class oqu
-  extends oqo<String, DynamicChannelDataModel>
 {
-  private oqt a;
-  public final String b = "ReadInJoyCGIDynamicChannelAdapter";
+  public static int a;
+  public static final String a;
+  public static boolean a;
+  private static final char[] a;
+  public static final Pair<Integer, Integer>[] a;
+  public static int b;
+  public static final String b;
+  public static final Pair<Integer, Integer>[] b;
+  public static int c;
+  public static String c;
+  public static int d;
+  public static String d;
+  public static int e;
+  public static String e;
+  public static String f;
+  public static String g;
+  public static String h;
+  public static String i;
+  public static String j;
+  public static String k;
+  public static String l;
+  public static String m;
+  public static String n;
+  public static String o;
+  public static String p;
+  public static String q;
+  public static String r;
+  public static String s;
+  public static String t;
+  public static String u = "https://post.mp.qq.com/mkandian/follow?_wv=7";
+  public static String v = "https://post.mp.qq.com/mkandian/fan?_wv=7";
   
-  public oqu(Activity paramActivity, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter, int paramInt)
+  static
   {
-    super(paramActivity, paramRecyclerViewWithHeaderFooter, paramInt);
-    this.jdField_a_of_type_Oqt = new oqt();
-    this.jdField_a_of_type_Oqt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, 0);
-  }
-  
-  public long a()
-  {
-    long l2 = -1L;
-    long l1 = l2;
-    if (this.jdField_a_of_type_JavaUtilList != null)
-    {
-      l1 = l2;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        l1 = -1L;
-        if (localIterator.hasNext())
-        {
-          DynamicChannelDataModel localDynamicChannelDataModel = (DynamicChannelDataModel)localIterator.next();
-          if (localDynamicChannelDataModel.recommendSeq <= l1) {
-            break label85;
-          }
-          l1 = localDynamicChannelDataModel.recommendSeq;
-        }
-      }
-    }
-    label85:
-    for (;;)
-    {
-      break;
-      return l1;
-    }
-  }
-  
-  public bfzf a(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (this.jdField_a_of_type_Oqt.a(paramInt))
-    {
-      Object localObject = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        paramViewGroup = oqn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, a(), (String)localObject);
-        if ((paramInt == oql.b) && (paramViewGroup != null)) {
-          paramViewGroup.setVisibility(8);
-        }
-        QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, new Object[] { "onCreateViewHolder, viewType = ", Integer.valueOf(paramInt), ", styleID = ", localObject });
-        localObject = paramViewGroup;
-        if (paramViewGroup == null)
-        {
-          localObject = new ProteusItemView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext());
-          QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, "proteusItemView is null");
-        }
-        return new oqv(this, (View)localObject);
-      }
-      QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, "onCreateViewHolder styleID is empty");
-    }
-    for (;;)
-    {
-      paramViewGroup = null;
-      break;
-      QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, "onCreateViewHolder not the right type");
-    }
-  }
-  
-  public void a(bfzf parambfzf, int paramInt)
-  {
-    DynamicChannelDataModel localDynamicChannelDataModel = (DynamicChannelDataModel)a(paramInt);
-    int i = parambfzf.getItemViewType();
-    parambfzf = (ProteusItemView)parambfzf.itemView;
-    if (localDynamicChannelDataModel != null)
-    {
-      if (!this.jdField_a_of_type_Oqt.a(i)) {
-        break label139;
-      }
-      if (i != oql.b) {
-        break label120;
-      }
-      parambfzf.setVisibility(8);
-    }
-    for (;;)
-    {
-      a(localDynamicChannelDataModel.uniqueID, localDynamicChannelDataModel);
-      QLog.d("ReadInJoyCGIDynamicChannelAdapter", 2, new Object[] { "onBindViewHolder, dataModel = ", localDynamicChannelDataModel, ", proteusItemView = ", parambfzf, " , position = ", Integer.valueOf(paramInt), ", type = ", Integer.valueOf(i) });
-      return;
-      label120:
-      this.jdField_a_of_type_Oqt.a(parambfzf, i, localDynamicChannelDataModel, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt);
-      continue;
-      label139:
-      QLog.d("ReadInJoyCGIDynamicChannelAdapter", 1, "onBindViewHolder not the right type");
-    }
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    Object localObject = (DynamicChannelDataModel)a(paramInt);
-    int i = oql.b;
-    paramInt = i;
-    if (localObject != null)
-    {
-      paramInt = i;
-      if (this.jdField_a_of_type_Oqt.a((DynamicChannelDataModel)localObject))
-      {
-        i = this.jdField_a_of_type_Oqt.a((DynamicChannelDataModel)localObject);
-        localObject = ((DynamicChannelDataModel)localObject).styleID;
-        paramInt = i;
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), localObject);
-          paramInt = i;
-        }
-      }
-    }
-    return paramInt;
+    jdField_a_of_type_ArrayOfChar = new char[] { '…' };
+    jdField_a_of_type_JavaLangString = new String(jdField_a_of_type_ArrayOfChar);
+    jdField_b_of_type_JavaLangString = alpo.a(2131713520);
+    jdField_c_of_type_JavaLangString = "https://kandian.qq.com/mqq/html/homepage.html?_wv=16778243&_bid=2378&uin=";
+    jdField_d_of_type_JavaLangString = "https://kandian.qq.com/mqq/html/messagebox3.html?_wv=3&_bid=2378&x5PreFetch=1&adtag=1&privateLetters=";
+    jdField_e_of_type_JavaLangString = "https://kandian.qq.com/mqq/vue/comment?_wv=3&_bid=2378&x5PreFetch=1&feedstype=&uin=&feeds_id=";
+    f = "https://kandian.qq.com/mqq/html/recommend_friends.html?_wv=3&_bid=2378&x5PreFetch=1&feeds_id=";
+    g = "https://kandian.qq.com/mqq/vue/main?_wv=10145&_bid=2378&adfrom=client&x5PreFetch=1&accountId=";
+    h = "https://kandian.qq.com/mqq/html/messagebox3.html?_wv=3&_bid=2378&x5PreFetch=1&adtag=2&privateLetters=";
+    i = "https://kandian.qq.com/mqq/html/allfrdbiu.html?_wv=3&_bid=2378&x5PreFetch=1";
+    j = "https://kandian.qq.com/mqq/vue/wendafeeds?_wv=67&_bid=2378&source=1";
+    k = "https://kandian.qq.com/mqq/vue/main?_wv=10145&_bid=2378&adfrom=client&x5PreFetch=1&accountId=";
+    l = alpo.a(2131713142);
+    m = "https://kandian.qq.com/mqq/html/feedback.html?_wv=3&_bid=2378&x5PreFetch=1";
+    n = "https://post.mp.qq.com/mkandian/history";
+    o = "https://post.mp.qq.com/mkandian/topic?_wv=3";
+    p = "https://kandian.qq.com/mqq/html/collectBox.html?_wv=3&_bid=2378&x5PreFetch=1";
+    q = "https://post.mp.qq.com/mkandian/notify?_wv=3";
+    r = "https://kandian.qq.com/mqq/vue/collectBox?_wv=3&amp;_bid=2378&amp;x5PreFetch=1";
+    s = "https://kandian.qq.com/mqq/vue/myPraised?_wv=3&_bid=2378&x5PreFetch=1";
+    t = "https://kandian.qq.com/mqq/vue/myComment?_wv=3&_bid=2378&x5PreFetch=1";
+    jdField_a_of_type_Int = 100;
+    jdField_b_of_type_Int = 100;
+    jdField_c_of_type_Int = 819200;
+    jdField_d_of_type_Int = 3000;
+    jdField_e_of_type_Int = 500;
+    jdField_a_of_type_ArrayOfAndroidUtilPair = new Pair[] { new Pair(Integer.valueOf(159), Integer.valueOf(95)), new Pair(Integer.valueOf(179), Integer.valueOf(95)), new Pair(Integer.valueOf(158), Integer.valueOf(143)), new Pair(Integer.valueOf(178), Integer.valueOf(143)), new Pair(Integer.valueOf(238), Integer.valueOf(143)), new Pair(Integer.valueOf(358), Integer.valueOf(143)), new Pair(Integer.valueOf(119), Integer.valueOf(95)), new Pair(Integer.valueOf(239), Integer.valueOf(95)), new Pair(Integer.valueOf(79), Integer.valueOf(95)), new Pair(Integer.valueOf(59), Integer.valueOf(95)), new Pair(Integer.valueOf(89), Integer.valueOf(95)), new Pair(Integer.valueOf(280), Integer.valueOf(280)) };
+    jdField_b_of_type_ArrayOfAndroidUtilPair = new Pair[] { new Pair(Integer.valueOf(160), Integer.valueOf(90)), new Pair(Integer.valueOf(280), Integer.valueOf(280)), new Pair(Integer.valueOf(30), Integer.valueOf(40)), new Pair(Integer.valueOf(90), Integer.valueOf(160)), new Pair(Integer.valueOf(440), Integer.valueOf(246)) };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oqu
  * JD-Core Version:    0.7.0.1
  */

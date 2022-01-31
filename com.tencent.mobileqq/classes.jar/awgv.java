@@ -1,38 +1,14 @@
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.qphone.base.util.QLog;
-
-public class awgv
-  implements Comparable<awgv>
+public final class awgv
+  extends awgp
 {
-  public int a;
-  public MessageForScribble a;
-  
-  awgv(MessageForScribble paramMessageForScribble, int paramInt)
+  protected int c()
   {
-    this.jdField_a_of_type_Int = 200;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble = paramMessageForScribble;
-    if (paramInt >= 200)
-    {
-      this.jdField_a_of_type_Int = paramInt;
-      return;
-    }
-    QLog.e("ScribbleDownloadInfo", 1, "err priority");
-  }
-  
-  public int a(awgv paramawgv)
-  {
-    if (this.jdField_a_of_type_Int < paramawgv.jdField_a_of_type_Int) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Int > paramawgv.jdField_a_of_type_Int) {
-      return 1;
-    }
-    return 0;
+    return 509;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awgv
  * JD-Core Version:    0.7.0.1
  */

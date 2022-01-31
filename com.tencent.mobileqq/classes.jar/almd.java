@@ -1,40 +1,37 @@
-import android.content.Context;
-import android.graphics.Point;
-import com.tencent.mobileqq.ar.view.ARScanEntryView;
-import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
-import com.tencent.tencentmap.mapsdk.maps.MapView;
-import com.tencent.tencentmap.mapsdk.maps.Projection;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public class almd
-  implements TencentMap.OnMapLoadedCallback
+class almd
+  implements INetInfoHandler
 {
-  public almd(ARScanEntryView paramARScanEntryView) {}
+  almd(allz paramallz) {}
   
-  public void onMapLoaded()
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
   {
-    this.a.j = true;
-    if (ARScanEntryView.a(this.a) != null)
-    {
-      Projection localProjection = ARScanEntryView.a(this.a).getMap().getProjection();
-      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
-      if ((localProjection != null) && (localTencentMap != null))
-      {
-        Point localPoint = localProjection.toScreenLocation(localTencentMap.getCameraPosition().target);
-        if (localPoint != null)
-        {
-          localPoint.offset(0, actj.a(60.0F, this.a.a.getResources()) * -1);
-          localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(localProjection.fromScreenLocation(localPoint)));
-        }
-      }
-    }
+    this.a.b();
+  }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    this.a.b();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    this.a.c();
+  }
+  
+  public void onNetWifi2None()
+  {
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     almd
  * JD-Core Version:    0.7.0.1
  */

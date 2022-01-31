@@ -1,54 +1,73 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.TMG.utils.QLog;
+import java.lang.ref.SoftReference;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
-class txu
-  implements View.OnClickListener
+public class txu
 {
-  txu(txt paramtxt) {}
+  public static final String a;
+  private static volatile txu jdField_a_of_type_Txu;
+  private List<SoftReference<Object>> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private ConcurrentHashMap<String, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void onClick(View paramView)
+  static
   {
-    if ((txt.a(this.a) != null) && (txt.a(this.a).a()))
+    jdField_a_of_type_JavaLangString = txu.class.getSimpleName();
+  }
+  
+  public static txu a()
+  {
+    if (jdField_a_of_type_Txu == null) {}
+    try
     {
-      txt.a(this.a).c();
-      int i;
-      if (txt.a(this.a) != null)
+      if (jdField_a_of_type_Txu == null) {
+        jdField_a_of_type_Txu = new txu();
+      }
+      return jdField_a_of_type_Txu;
+    }
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "clear all");
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    }
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Boolean.valueOf(paramBoolean));
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (paramString != null) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString));
+  }
+  
+  public boolean b(String paramString)
+  {
+    if (a(paramString))
+    {
+      paramString = (Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+      if (paramString == null)
       {
-        i = vei.a(txt.a(this.a).a);
-        if (!this.a.a()) {
-          break label121;
-        }
+        QLog.e(jdField_a_of_type_JavaLangString, 1, "mTagFollowMap getValue tagId null");
+        return false;
       }
-      label121:
-      for (paramView = "1";; paramView = "2")
-      {
-        vei.a("home_page", "cancel_reply", i, 0, new String[] { paramView, vei.a(txt.a(this.a)), "5", txt.a(this.a) });
-        return;
-        i = 0;
-        break;
-      }
+      return paramString.booleanValue();
     }
-    this.a.a();
-    if (this.a.a())
-    {
-      paramView = "2";
-      if (!this.a.b()) {
-        break label188;
-      }
-    }
-    label188:
-    for (String str = "2";; str = "1")
-    {
-      vei.a("play_video", "close_reply", 0, 3, new String[] { paramView, str });
-      return;
-      paramView = "1";
-      break;
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     txu
  * JD-Core Version:    0.7.0.1
  */

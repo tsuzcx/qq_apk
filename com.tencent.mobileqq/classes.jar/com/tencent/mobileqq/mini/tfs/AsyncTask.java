@@ -2,8 +2,6 @@ package com.tencent.mobileqq.mini.tfs;
 
 import android.content.Context;
 import android.os.Looper;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
 
 public abstract class AsyncTask
   extends BaseTask
@@ -15,12 +13,7 @@ public abstract class AsyncTask
   
   public void execute()
   {
-    if (!isMainThread())
-    {
-      executeAsync();
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new AsyncTask.1(this));
+    new Thread(new AsyncTask.1(this)).start();
   }
   
   public abstract void executeAsync();
@@ -32,7 +25,7 @@ public abstract class AsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.tfs.AsyncTask
  * JD-Core Version:    0.7.0.1
  */

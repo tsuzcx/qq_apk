@@ -49,7 +49,9 @@ public class FilamentJavaUtil
   private static final String TAG;
   public static final String TEST_FRAG_SHADER = "#version 300 es\nprecision highp float;\nlayout(location = 0) out vec4 fragColor;\n\n void main(void) {\n     const vec3 _347[2] = vec3[](vec3(1, 1, 1), vec3(1, 1, 1));\n\n     float _1025 = 0.0;\n     for (uint _1149 = 0u; _1149 < 2u; _1149++){\n         _1025 += _347[_1149].z;\n     }\n     fragColor = vec4(_1025 / 2.0);\n }";
   private static Set<String> debugExpression;
+  private static Map<String, Range> defaultExpressionList;
   private static Map<String, Integer> expName2Index;
+  private static Set<String> expressionList;
   private static Set<String> smoothExpression;
   private static final Handler uiHandler = new Handler(Looper.getMainLooper());
   private static final Map<String, Float> valueMap = new HashMap();
@@ -60,6 +62,8 @@ public class FilamentJavaUtil
     expName2Index = new HashMap();
     debugExpression = new HashSet();
     smoothExpression = new HashSet();
+    expressionList = new HashSet();
+    defaultExpressionList = new HashMap();
     expName2Index.put("browDownLeft", Integer.valueOf(0));
     expName2Index.put("browDownRight", Integer.valueOf(1));
     expName2Index.put("browInnerUp", Integer.valueOf(2));
@@ -117,59 +121,85 @@ public class FilamentJavaUtil
     debugExpression.add("mouthPucker");
     smoothExpression.add("eyeBlinkLeft");
     smoothExpression.add("eyeBlinkRight");
+    defaultExpressionList.put("browOuterUpRight", new Range(0.2F, 1.0F));
+    defaultExpressionList.put("browOuterUpLeft", new Range(0.2F, 0.95F));
+    defaultExpressionList.put("browDownRight", new Range(0.0F, 0.95F));
+    defaultExpressionList.put("browDownLeft", new Range(0.0F, 0.95F));
+    defaultExpressionList.put("mouthUpperUpRight", new Range(0.8F, 0.9F));
+    defaultExpressionList.put("upgradeoneeyeblinkthreshold", new Range(0.3F, 0.3F));
+    defaultExpressionList.put("disablemouthsmilewhenmouthpucker", new Range(0.3F, 0.3F));
+    defaultExpressionList.put("upgradethresholdwhenspecificsituation", new Range(0.65F, 1.0F));
   }
   
   public static void adjustExpressionWeights(List<AnimojiExpressionJava> paramList, float[] paramArrayOfFloat1, float paramFloat, float[] paramArrayOfFloat2)
   {
     float f1 = paramArrayOfFloat1[((Integer)expName2Index.get("jawOpen")).intValue()];
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
     {
-      Object localObject = (AnimojiExpressionJava)paramList.next();
-      if (((AnimojiExpressionJava)localObject).shapeName.toLowerCase().equals("upgradeoneeyeblinkthreshold"))
+      AnimojiExpressionJava localAnimojiExpressionJava = (AnimojiExpressionJava)localIterator.next();
+      if (!expressionList.contains(localAnimojiExpressionJava.shapeName.toLowerCase()))
       {
-        float f2 = paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkLeft")).intValue()];
-        float f3 = paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkRight")).intValue()];
-        if ((f2 >= 0.95D) && (f3 < ((AnimojiExpressionJava)localObject).shapeRange.min)) {
-          paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkRight")).intValue()] = 0.0F;
-        } else if ((f3 >= 0.95D) && (f2 < ((AnimojiExpressionJava)localObject).shapeRange.min)) {
-          paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkLeft")).intValue()] = 0.0F;
+        expressionList.add(localAnimojiExpressionJava.shapeName.toLowerCase());
+        paramList = new Range(0.0F, 1.0F);
+        if (localAnimojiExpressionJava.shapeRange != null) {
+          paramList = localAnimojiExpressionJava.shapeRange;
         }
-      }
-      else if (((AnimojiExpressionJava)localObject).shapeName.toLowerCase().equals("disablemouthsmilewhenmouthpucker"))
-      {
-        if (paramArrayOfFloat1[((Integer)expName2Index.get("mouthPucker")).intValue()] > ((AnimojiExpressionJava)localObject).shapeRange.min)
+        for (;;)
         {
-          paramArrayOfFloat1[((Integer)expName2Index.get("mouthSmileLeft")).intValue()] = 0.0F;
-          paramArrayOfFloat1[((Integer)expName2Index.get("mouthSmileRight")).intValue()] = 0.0F;
+          if (localAnimojiExpressionJava.shapeName.toLowerCase().equals("upgradeoneeyeblinkthreshold"))
+          {
+            float f2 = paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkLeft")).intValue()];
+            float f3 = paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkRight")).intValue()];
+            if ((f2 >= 0.95D) && (f3 < paramList.min))
+            {
+              paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkRight")).intValue()] = 0.0F;
+              break;
+              if (!defaultExpressionList.containsKey(localAnimojiExpressionJava.shapeName)) {
+                continue;
+              }
+              paramList = (Range)defaultExpressionList.get(localAnimojiExpressionJava.shapeName);
+              continue;
+            }
+            if ((f3 < 0.95D) || (f2 >= paramList.min)) {
+              break;
+            }
+            paramArrayOfFloat1[((Integer)expName2Index.get("eyeBlinkLeft")).intValue()] = 0.0F;
+            break;
+          }
         }
-      }
-      else if (((AnimojiExpressionJava)localObject).shapeName.toLowerCase().equals("disablemouthpuckerwhenjawopen"))
-      {
-        if (f1 > ((AnimojiExpressionJava)localObject).shapeRange.min) {
-          paramArrayOfFloat1[((Integer)expName2Index.get("mouthPucker")).intValue()] = 0.0F;
-        }
-      }
-      else if (((AnimojiExpressionJava)localObject).shapeName.toLowerCase().equals("upgradethresholdwhenspecificsituation"))
-      {
-        localObject = ((AnimojiExpressionJava)localObject).shapeRange;
-        if (Math.abs(paramArrayOfFloat2[1]) > 0.5235987755982988D)
+        if (localAnimojiExpressionJava.shapeName.toLowerCase().equals("disablemouthsmilewhenmouthpucker"))
         {
-          adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get("mouthSmileLeft")).intValue(), ((Range)localObject).min, ((Range)localObject).max);
-          adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get("mouthSmileRight")).intValue(), ((Range)localObject).min, ((Range)localObject).max);
-          adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get("eyeBlinkLeft")).intValue(), ((Range)localObject).min, ((Range)localObject).max);
-          adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get("eyeBlinkRight")).intValue(), ((Range)localObject).min, ((Range)localObject).max);
+          if (paramArrayOfFloat1[((Integer)expName2Index.get("mouthPucker")).intValue()] > paramList.min)
+          {
+            paramArrayOfFloat1[((Integer)expName2Index.get("mouthSmileLeft")).intValue()] = 0.0F;
+            paramArrayOfFloat1[((Integer)expName2Index.get("mouthSmileRight")).intValue()] = 0.0F;
+          }
         }
-        else if (Math.abs(paramArrayOfFloat2[0]) > 0.2617993877991494D)
+        else if (localAnimojiExpressionJava.shapeName.toLowerCase().equals("disablemouthpuckerwhenjawopen"))
         {
-          adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get("eyeBlinkLeft")).intValue(), ((Range)localObject).min, ((Range)localObject).max);
-          adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get("eyeBlinkRight")).intValue(), ((Range)localObject).min, ((Range)localObject).max);
+          if (f1 > localAnimojiExpressionJava.shapeRange.min) {
+            paramArrayOfFloat1[((Integer)expName2Index.get("mouthPucker")).intValue()] = 0.0F;
+          }
         }
-      }
-      else if (expName2Index.containsKey(((AnimojiExpressionJava)localObject).shapeName))
-      {
-        Range localRange = ((AnimojiExpressionJava)localObject).shapeRange;
-        adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get(((AnimojiExpressionJava)localObject).shapeName)).intValue(), localRange.min, localRange.max);
+        else if (localAnimojiExpressionJava.shapeName.toLowerCase().equals("upgradethresholdwhenspecificsituation"))
+        {
+          if (Math.abs(paramArrayOfFloat2[1]) > 0.5235987755982988D)
+          {
+            adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get("mouthSmileLeft")).intValue(), paramList.min, paramList.max);
+            adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get("mouthSmileRight")).intValue(), paramList.min, paramList.max);
+            adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get("eyeBlinkLeft")).intValue(), paramList.min, paramList.max);
+            adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get("eyeBlinkRight")).intValue(), paramList.min, paramList.max);
+          }
+          else if (Math.abs(paramArrayOfFloat2[0]) > 0.2617993877991494D)
+          {
+            adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get("eyeBlinkLeft")).intValue(), paramList.min, paramList.max);
+            adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get("eyeBlinkRight")).intValue(), paramList.min, paramList.max);
+          }
+        }
+        else if (expName2Index.containsKey(localAnimojiExpressionJava.shapeName)) {
+          adjustValue(paramArrayOfFloat1, ((Integer)expName2Index.get(localAnimojiExpressionJava.shapeName)).intValue(), paramList.min, paramList.max);
+        }
       }
     }
     if (f1 > paramFloat)
@@ -802,6 +832,24 @@ public class FilamentJavaUtil
       }
     }
     return true;
+  }
+  
+  public static boolean isValidTransform(float[] paramArrayOfFloat)
+  {
+    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length < 16)) {}
+    for (;;)
+    {
+      return false;
+      int j = paramArrayOfFloat.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (Float.compare(paramArrayOfFloat[i], 0.0F) != 0) {
+          return true;
+        }
+        i += 1;
+      }
+    }
   }
   
   public static float lengthVector3(float paramFloat1, float paramFloat2, float paramFloat3)

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import atnz;
-import atof;
+import avez;
+import avff;
 
 public class PicBrowserGalleryAdapter$1
   implements Runnable
 {
-  public PicBrowserGalleryAdapter$1(atnz paramatnz, int paramInt1, int paramInt2) {}
+  public PicBrowserGalleryAdapter$1(avez paramavez, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    atnz.a(this.this$0, this.a, this.b);
-    if (atnz.a(this.this$0) != null) {
-      atnz.a(this.this$0).a(this.a, this.b);
+    avez.a(this.this$0, this.a, this.b);
+    if (avez.a(this.this$0) != null) {
+      avez.a(this.this$0).a(this.a, this.b);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryAdapter.1
  * JD-Core Version:    0.7.0.1
  */

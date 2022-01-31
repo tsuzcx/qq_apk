@@ -1,26 +1,44 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class uop
-  extends SimpleJob<Void>
+  extends QQUIEventReceiver<uok, uyz>
 {
-  public uop(StoryTransitionActivity paramStoryTransitionActivity, String paramString)
+  public uop(@NonNull uok paramuok)
   {
-    super(paramString);
+    super(paramuok);
   }
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a(@NonNull uok paramuok, @NonNull uyz paramuyz)
   {
-    ved.d("StoryTransitionActivity", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(svl.a()) });
-    return null;
+    if (paramuyz.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
+    CommentEntry localCommentEntry;
+    do
+    {
+      return;
+      Iterator localIterator;
+      while (!localIterator.hasNext()) {
+        localIterator = paramuok.a.iterator();
+      }
+      localCommentEntry = (CommentEntry)localIterator.next();
+    } while ((paramuyz.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.authorUnionId) == null) && (paramuyz.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.replierUnionId) == null));
+    paramuok.f();
+    wsv.e(this.TAG, "UserIconUpdateReceiver FeedCommentLego need to update");
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uyz.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uop
  * JD-Core Version:    0.7.0.1
  */

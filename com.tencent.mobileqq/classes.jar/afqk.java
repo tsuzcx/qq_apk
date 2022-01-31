@@ -1,10 +1,16 @@
-public abstract interface afqk
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+
+class afqk
+  implements DialogInterface.OnClickListener
 {
-  public abstract void b(boolean paramBoolean);
+  afqk(afqh paramafqh) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afqk
  * JD-Core Version:    0.7.0.1
  */

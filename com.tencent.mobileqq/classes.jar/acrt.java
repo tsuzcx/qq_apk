@@ -1,101 +1,110 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.ColorDrawable;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.Window;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 public class acrt
-  extends Dialog
+  implements aubp<List<EmoticonPackage>>
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  Animatable jdField_a_of_type_AndroidGraphicsDrawableAnimatable = null;
+  public acrt(EmosmActivity paramEmosmActivity) {}
   
-  public acrt(Context paramContext)
+  public void a(List<EmoticonPackage> paramList)
   {
-    super(paramContext);
-    a(paramContext);
-  }
-  
-  protected void a(Context paramContext)
-  {
-    super.requestWindowFeature(1);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setContentView(LayoutInflater.from(paramContext).inflate(2131560604, null));
-    paramContext = getWindow();
-    if (paramContext != null)
+    if (paramList == null) {
+      return;
+    }
+    int j = paramList.size();
+    int i = 0;
+    label14:
+    if (i < j) {
+      if (((EmoticonPackage)paramList.get(i)).jobType != 3) {}
+    }
+    for (;;)
     {
-      paramContext.setLayout(-1, -1);
-      paramContext.setBackgroundDrawable(new ColorDrawable(0));
-      if (ImmersiveUtils.isSupporImmersive() == 1) {
-        paramContext.addFlags(67108864);
-      }
-    }
-    setCanceledOnTouchOutside(false);
-    paramContext = (ImageView)super.findViewById(2131372588);
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setDuration(800L);
-    localTranslateAnimation.setRepeatCount(-1);
-    paramContext.startAnimation(localTranslateAnimation);
-    super.setCancelable(false);
-  }
-  
-  public void dismiss()
-  {
-    super.dismiss();
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
-    }
-  }
-  
-  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
-  {
-    if (paramInt == 4) {
-      try
+      ArrayList localArrayList = new ArrayList();
+      Object localObject1;
+      Object localObject2;
+      if (1 == this.a.b)
       {
-        dismiss();
-        if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-          ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
-        }
-        return false;
-      }
-      catch (Exception paramKeyEvent)
-      {
-        for (;;)
+        if (i == -1)
         {
-          if (QLog.isDevelopLevel()) {
-            paramKeyEvent.printStackTrace();
+          paramList = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (paramList.hasNext()) {
+            localArrayList.add(((EmoticonPackage)paramList.next()).epId);
+          }
+          i += 1;
+          break label14;
+        }
+        localObject1 = new ArrayList();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject2 = (EmoticonPackage)paramList.next();
+          if (((EmoticonPackage)localObject2).jobType == 3) {
+            ((ArrayList)localObject1).add(((EmoticonPackage)localObject2).epId);
+          }
+        }
+        if (i >= this.a.jdField_a_of_type_JavaUtilArrayList.size())
+        {
+          paramList = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+          while (paramList.hasNext()) {
+            localArrayList.add(((EmoticonPackage)paramList.next()).epId);
+          }
+          localArrayList.addAll((Collection)localObject1);
+        }
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_Aube.a(localArrayList, 0);
+        paramList = (alna)this.a.app.a(12);
+        if (paramList == null) {
+          break;
+        }
+        paramList.a(localArrayList, true, 0);
+        return;
+        int k = this.a.jdField_a_of_type_JavaUtilArrayList.size();
+        j = 0;
+        while (j < k)
+        {
+          paramList = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(j);
+          if (j == i) {
+            localArrayList.addAll((Collection)localObject1);
+          }
+          localArrayList.add(paramList.epId);
+          j += 1;
+        }
+        continue;
+        if (2 == this.a.b)
+        {
+          k = paramList.size();
+          j = 0;
+          while (j < k)
+          {
+            localObject1 = (EmoticonPackage)paramList.get(j);
+            if (j == i)
+            {
+              localObject2 = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+              while (((Iterator)localObject2).hasNext()) {
+                localArrayList.add(((EmoticonPackage)((Iterator)localObject2).next()).epId);
+              }
+            }
+            if (((EmoticonPackage)localObject1).jobType != 3) {
+              localArrayList.add(((EmoticonPackage)localObject1).epId);
+            }
+            j += 1;
           }
         }
       }
-    }
-    return super.onKeyDown(paramInt, paramKeyEvent);
-  }
-  
-  public void onWindowFocusChanged(boolean paramBoolean)
-  {
-    super.onWindowFocusChanged(paramBoolean);
-    if (this.jdField_a_of_type_AndroidContentContext != null)
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839144));
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
-      }
+      i = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrt
  * JD-Core Version:    0.7.0.1
  */

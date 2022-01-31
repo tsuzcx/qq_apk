@@ -1,54 +1,23 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
 
-public class avwm
-  extends Handler
+public final class avwm
+  implements Parcelable.Creator<ShuayishuaConfig>
 {
-  public avwm(LiteTcpConnection paramLiteTcpConnection, Looper paramLooper)
+  public ShuayishuaConfig a(Parcel paramParcel)
   {
-    super(paramLooper);
+    return new ShuayishuaConfig(paramParcel);
   }
   
-  public void a()
+  public ShuayishuaConfig[] a(int paramInt)
   {
-    if (LiteTcpConnection.a(this.a) != null) {
-      LiteTcpConnection.a(this.a).sendEmptyMessage(3);
-    }
-  }
-  
-  public void b()
-  {
-    avwm localavwm = LiteTcpConnection.a(this.a);
-    if (localavwm != null) {
-      localavwm.sendEmptyMessage(2);
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1) {
-      LiteTcpConnection.a(this.a, LiteTcpConnection.a(this.a));
-    }
-    do
-    {
-      return;
-      if (paramMessage.what == 2)
-      {
-        LiteTcpConnection.a(this.a);
-        return;
-      }
-    } while (paramMessage.what != 3);
-    LiteTcpConnection.a(this.a).quit();
-    LiteTcpConnection.a(this.a, null);
-    LiteTcpConnection.a(this.a, null);
+    return new ShuayishuaConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avwm
  * JD-Core Version:    0.7.0.1
  */

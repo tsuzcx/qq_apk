@@ -1,78 +1,46 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.JobReporter;
-import com.tencent.mobileqq.app.ThreadWrapContext;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.Switch;
 
 public class akhl
-  implements ThreadWrapContext
+  extends akee
 {
-  private static boolean a;
-  private static volatile boolean b;
+  public akhj a;
+  public View a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public Switch a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public ImageView d;
+  public TextView d;
+  public TextView e;
   
-  public static void a(long paramLong)
+  public akhl(View paramView)
   {
-    if ((!a) && (BaseApplicationImpl.sProcessId == 1))
-    {
-      a = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|chance " + paramLong);
-      }
-      if (paramLong > 0L)
-      {
-        b = JobReporter.ramdomReport((int)paramLong);
-        if (QLog.isColorLevel()) {
-          QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|sShotChanceForPublicVersion " + b);
-        }
-      }
-    }
-  }
-  
-  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
-  {
-    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
-  }
-  
-  public long getMainProccessThreadMonitorTime()
-  {
-    return bbkb.d();
-  }
-  
-  public long getMainProccessThreadPeakCounts()
-  {
-    return bbkb.c();
-  }
-  
-  public boolean isColorLevel()
-  {
-    return QLog.isColorLevel();
-  }
-  
-  public boolean isShotReportRejectedError()
-  {
-    return b;
-  }
-  
-  public void reportDengTaException(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
-  {
-    axrn.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
-  }
-  
-  public void reportRDMException(Throwable paramThrowable, String paramString1, String paramString2) {}
-  
-  public void setMainProccessThreadMonitorTime(long paramLong)
-  {
-    bbkb.b(paramLong);
-  }
-  
-  public void setMainProccessThreadPeakCounts(long paramLong)
-  {
-    bbkb.a(paramLong);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367808));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370067));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131376952));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131375954));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377553));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377555));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370804));
+    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131378290));
+    this.jdField_c_of_type_AndroidWidgetImageView.setClickable(false);
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131373099));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131378382);
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378448));
+    this.e = ((TextView)paramView.findViewById(2131378447));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhl
  * JD-Core Version:    0.7.0.1
  */

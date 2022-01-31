@@ -1,26 +1,26 @@
-public abstract class ahpt
-  implements ahpv
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+
+class ahpt
+  extends apxc
 {
-  public int a;
-  public long a;
-  public azmm a;
-  public String a;
-  public int b;
-  public long b;
-  public String b;
-  public String c;
+  ahpt(ahpq paramahpq) {}
   
-  public ahpt()
+  protected void c(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_b_of_type_Int = -35072;
-    this.jdField_a_of_type_Azmm = new azmm();
+    ahpl localahpl = this.a.a(2);
+    localahpl.jdField_a_of_type_JavaLangObject = Boolean.valueOf(paramBoolean);
+    if ((localahpl.c) && (paramBoolean)) {
+      ahpq.a(this.a);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("CTEntryMng", 2, String.format(Locale.getDefault(), "onResourceStateUpdate [id: %s, canBeShown: %s, isReady: %s]", new Object[] { Integer.valueOf(localahpl.jdField_a_of_type_Int), Boolean.valueOf(localahpl.c), Boolean.valueOf(paramBoolean) }));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahpt
  * JD-Core Version:    0.7.0.1
  */

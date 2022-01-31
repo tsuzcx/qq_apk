@@ -1,54 +1,37 @@
-import android.view.View;
-import com.tencent.mobileqq.search.activity.MessageSearchActivity;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.upload.uinterface.data.UpsImageUploadResult;
 
 public class awnv
-  implements awoh
+  extends awqb
 {
-  public static final String a;
-  private List<awoi> a;
-  private String b;
-  
-  static
+  public awnv(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3)
   {
-    jdField_a_of_type_JavaLangString = ajya.a(2131705398);
+    super(paramLong, paramString1, paramArrayOfByte, paramString2);
   }
   
-  public awnv(List<awoi> paramList, String paramString)
+  public void a(int paramInt, Object... paramVarArgs)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.b = paramString;
-  }
-  
-  public int a()
-  {
-    return 3;
-  }
-  
-  public String a()
-  {
-    return jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<awoi> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(View paramView)
-  {
-    awwa.a(this.b, 40, 0, paramView);
-    MessageSearchActivity.a(paramView.getContext(), this.b);
-  }
-  
-  public String b()
-  {
-    return this.b;
+    switch (paramInt)
+    {
+    default: 
+    case 1001: 
+      do
+      {
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
+      } while (a() == null);
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a());
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
+    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(24, a());
+    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage(paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awnv
  * JD-Core Version:    0.7.0.1
  */

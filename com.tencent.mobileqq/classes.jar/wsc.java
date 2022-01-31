@@ -1,14 +1,19 @@
-import android.graphics.drawable.AnimationDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public abstract interface wsc
+class wsc
+  implements View.OnClickListener
 {
-  public abstract void a();
+  wsc(wsb paramwsb) {}
   
-  public abstract void a(AnimationDrawable paramAnimationDrawable);
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wsc
  * JD-Core Version:    0.7.0.1
  */

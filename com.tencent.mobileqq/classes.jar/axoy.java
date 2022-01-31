@@ -1,111 +1,64 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.startup.step.ProcessInfoUtil.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
 
 public class axoy
+  extends axow
 {
-  public static int a(Context paramContext, String paramString)
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public int i;
+  public int j = -1;
+  public int k = -1;
+  public int l = 1001;
+  public int m = -1;
+  
+  public axoy()
   {
-    if (paramContext != null)
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Long = 0L;
+  }
+  
+  public HashMap<String, String> a(String paramString)
+  {
+    if ("ShortVideo.Send".equals(paramString))
     {
-      paramContext = (ActivityManager)paramContext.getSystemService("activity");
-      if (paramContext != null)
-      {
-        paramContext = paramContext.getRunningAppProcesses();
-        if (paramContext != null)
-        {
-          paramContext = paramContext.iterator();
-          while (paramContext.hasNext())
-          {
-            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-            if (paramString.compareTo(localRunningAppProcessInfo.processName) == 0) {
-              return localRunningAppProcessInfo.pid;
-            }
-          }
-        }
-      }
-    }
-    return -1;
-  }
-  
-  public static int a(String paramString)
-  {
-    int i = -1;
-    SharedPreferences localSharedPreferences = b();
-    if (localSharedPreferences != null) {
-      i = localSharedPreferences.getInt("pid" + paramString, -1);
-    }
-    return i;
-  }
-  
-  public static long a(String paramString)
-  {
-    long l2 = 0L;
-    int i = a(BaseApplicationImpl.getContext(), paramString);
-    long l1;
-    if (i == -1) {
-      l1 = l2;
-    }
-    do
-    {
-      long l3;
-      do
-      {
-        int j;
-        do
-        {
-          do
-          {
-            return l1;
-            j = a(paramString);
-            l1 = l2;
-          } while (j == -1);
-          l1 = l2;
-        } while (i != j);
-        l3 = b(paramString);
-        l1 = l2;
-      } while (l3 == -1L);
-      l2 = System.currentTimeMillis() - l3;
-      l1 = l2;
-    } while (!QLog.isColorLevel());
-    QLog.d("ProcessUtils", 2, "getProcessRunningTime - " + paramString + ":" + l2);
-    return l2;
-  }
-  
-  public static void a(String paramString)
-  {
-    ThreadManager.post(new ProcessInfoUtil.1(paramString), 5, null, true);
-  }
-  
-  public static long b(String paramString)
-  {
-    long l = -1L;
-    SharedPreferences localSharedPreferences = b();
-    if (localSharedPreferences != null) {
-      l = localSharedPreferences.getLong("start_time" + paramString, -1L);
-    }
-    return l;
-  }
-  
-  private static SharedPreferences b()
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      return localBaseApplicationImpl.getSharedPreferences("process_info_pref", 4);
+      paramString = new HashMap();
+      paramString.put("param_DetailUrl", this.jdField_a_of_type_JavaLangString);
+      paramString.put("param_uinType", this.jdField_b_of_type_Int + "");
+      paramString.put("param_GroupMemberCount", this.c + "");
+      paramString.put("param_isForward", this.jdField_a_of_type_Boolean + "");
+      paramString.put("param_isExist", this.jdField_b_of_type_Boolean + "");
+      paramString.put("param_forwardSourceUinType", this.jdField_a_of_type_Int + "");
+      paramString.put("param_forwardSourceGroupMemberCount", this.i + "");
+      paramString.put("param_age", this.d + "");
+      paramString.put("param_gender", this.e + "");
+      paramString.put("param_userType", this.l + "");
+      paramString.put("param_shortVideoType", this.f + "");
+      paramString.put("param_shortVideoSourceType", this.j + "");
+      paramString.put("param_reportHour", this.g + "");
+      paramString.put("param_fileInterval", this.k + "");
+      paramString.put("param_netType", this.h + "");
+      paramString.put("param_md5", this.jdField_b_of_type_JavaLangString);
+      paramString.put("param_fileSize", this.jdField_a_of_type_Long + "");
+      paramString.put("param_duration", this.jdField_b_of_type_Long + "");
+      paramString.put("param_status", this.m + "");
+      return paramString;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axoy
  * JD-Core Version:    0.7.0.1
  */

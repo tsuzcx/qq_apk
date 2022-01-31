@@ -1,64 +1,64 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.util.Calendar;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import android.view.LayoutInflater.Factory2;
+import android.view.View;
 
 public class xky
-  implements amnf
+  implements LayoutInflater.Factory2
 {
-  private int jdField_a_of_type_Int;
+  private final LayoutInflater.Factory2 jdField_a_of_type_AndroidViewLayoutInflater$Factory2;
+  private final LayoutInflater.Factory jdField_a_of_type_AndroidViewLayoutInflater$Factory;
+  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public xky(NewerGuidePlugin paramNewerGuidePlugin, int paramInt)
+  public xky(@NonNull LayoutInflater paramLayoutInflater)
   {
-    if (paramInt < 1897)
-    {
-      paramNewerGuidePlugin = Calendar.getInstance();
-      paramNewerGuidePlugin.setTimeInMillis(NetConnInfoCenter.getServerTimeMillis());
-      this.jdField_a_of_type_Int = paramNewerGuidePlugin.get(1);
-      return;
-    }
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
+    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory = paramLayoutInflater.getFactory();
+    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 = paramLayoutInflater.getFactory2();
   }
   
-  public int a()
+  protected View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    return 3;
+    xkz.a("LayoutModifier", "onCreateViewPrivate " + paramString);
+    return null;
   }
   
-  public int a(int paramInt)
+  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    switch (paramInt)
+    View localView2 = a(paramView, paramString, paramContext, paramAttributeSet);
+    View localView1 = localView2;
+    if (localView2 == null)
     {
-    default: 
-      return 0;
-    case 0: 
-      return this.jdField_a_of_type_Int - 1897 + 1;
-    case 1: 
-      return 12;
+      localView1 = localView2;
+      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 != null) {
+        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+      }
     }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, NewerGuidePlugin.b(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin) + 1897);
-    localCalendar.set(2, NewerGuidePlugin.c(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin));
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
+    xkz.a("LayoutModifier", "onCreateView " + localView1);
+    return localView1;
   }
   
-  public String a(int paramInt1, int paramInt2)
+  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
   {
-    switch (paramInt1)
+    View localView2 = a(null, paramString, paramContext, paramAttributeSet);
+    View localView1 = localView2;
+    if (localView2 == null)
     {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1897 + ajya.a(2131707440);
-    case 1: 
-      return paramInt2 + 1 + ajya.a(2131707441);
+      localView1 = localView2;
+      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory != null) {
+        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory.onCreateView(paramString, paramContext, paramAttributeSet);
+      }
     }
-    return paramInt2 + 1 + ajya.a(2131707435);
+    xkz.a("LayoutModifier", "onCreateView " + localView1);
+    return localView1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xky
  * JD-Core Version:    0.7.0.1
  */

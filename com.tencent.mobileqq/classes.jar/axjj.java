@@ -1,14 +1,41 @@
-public abstract interface axjj
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class axjj
 {
-  public abstract void a(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
+  public ConcurrentHashMap<String, axiy> a = new ConcurrentHashMap(10);
   
-  public abstract void a(long paramLong, int paramInt1, float paramFloat1, float paramFloat2, int paramInt2);
+  public axiy a(SVHwEncoder paramSVHwEncoder, SessionInfo paramSessionInfo, int paramInt)
+  {
+    paramSVHwEncoder = new axiy(paramSVHwEncoder, paramSessionInfo, paramInt);
+    this.a.put(paramSVHwEncoder.a, paramSVHwEncoder);
+    axjd.a("VideoCompoundController", "newProcessor, key = " + paramSVHwEncoder.a);
+    return paramSVHwEncoder;
+  }
   
-  public abstract boolean a(long paramLong, int paramInt);
+  public axiy a(String paramString)
+  {
+    axjd.a("VideoCompoundController", "findProcessor, key = " + paramString);
+    if ((!this.a.isEmpty()) && (paramString != null) && (this.a.containsKey(paramString))) {
+      return (axiy)this.a.get(paramString);
+    }
+    return null;
+  }
+  
+  public boolean a(String paramString)
+  {
+    axjd.a("VideoCompoundController", "removeProcessor, key = " + paramString);
+    if (paramString == null) {}
+    while (this.a.remove(paramString) == null) {
+      return false;
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axjj
  * JD-Core Version:    0.7.0.1
  */

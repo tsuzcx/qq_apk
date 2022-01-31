@@ -1,29 +1,37 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import android.text.TextUtils;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.util.HashMap;
 
-public class rlm
-  implements rkh
+class rlm
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public int a(BaseData paramBaseData)
+  rlm(rlk paramrlk) {}
+  
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    return 2;
+    if (rlk.a(this.a) != null)
+    {
+      paramString2 = (String)rlk.a(this.a).get(paramString1);
+      if (!TextUtils.isEmpty(paramString2)) {
+        rlk.a(this.a).a(paramString1, paramInt, paramString2);
+      }
+    }
   }
   
-  public rkg a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  public void onPreLoadSucess(String paramString1, String paramString2)
   {
-    return new rln(LayoutInflater.from(paramContext).inflate(2131559927, null), paramBaseData);
-  }
-  
-  public boolean a(BaseData paramBaseData)
-  {
-    return paramBaseData.p == 0;
+    if (rlk.a(this.a) != null)
+    {
+      paramString2 = (String)rlk.a(this.a).get(paramString1);
+      if (!TextUtils.isEmpty(paramString2)) {
+        rlk.a(this.a).a(paramString1, 1, paramString2);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rlm
  * JD-Core Version:    0.7.0.1
  */

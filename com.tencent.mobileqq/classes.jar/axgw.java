@@ -1,101 +1,56 @@
-import android.content.IntentFilter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
-import com.tencent.mobileqq.utils.BusinessCommonConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class axgw
+  extends RecyclerView.ItemDecoration
 {
-  int jdField_a_of_type_Int = 0;
-  DownloadInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = null;
-  ArrayList<axgs> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private int jdField_a_of_type_Int;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private int b;
   
-  axgw()
+  private axgw(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    a(BaseApplicationImpl.getApplication());
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = axgy.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
-    QLog.d("QavGesture", 1, String.format("GestureMgr, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
   
-  void a(boolean paramBoolean, axgs paramaxgs)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    if (paramBoolean) {}
-    for (;;)
+    paramRect.set(0, 0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+  }
+  
+  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int j = paramRecyclerView.getPaddingLeft();
+    int k = this.jdField_a_of_type_Int;
+    int m = paramRecyclerView.getWidth();
+    int n = paramRecyclerView.getPaddingRight();
+    int i1 = this.b;
+    int i2 = paramRecyclerView.getChildCount();
+    int i = 0;
+    while (i < i2)
     {
-      try
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramaxgs);
-        return;
-      }
-      finally {}
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramaxgs);
-    }
-  }
-  
-  boolean a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    this.jdField_a_of_type_Int = axgy.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGesture", 4, String.format("checkResReady, mStatusGesture[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-    }
-    return 11 != this.jdField_a_of_type_Int;
-  }
-  
-  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QavGesture", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("tencent.video.gesturemgr.notify");
-    return paramBaseApplicationImpl.registerReceiver(new axgx(this), localIntentFilter) != null;
-  }
-  
-  boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  boolean c()
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo == null) {
-      return false;
-    }
-    if ((this.jdField_a_of_type_Int == 1) && (axgy.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo))) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
-  }
-  
-  boolean d()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = axgy.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
-    if (this.jdField_a_of_type_Int == 11)
-    {
-      this.jdField_a_of_type_Int = 12;
-      BusinessCommonConfig.notifyQQDownload(1, null, 0);
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavGesture", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusGesture[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
-      }
-      return bool;
+      paramState = paramRecyclerView.getChildAt(i);
+      RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramState.getLayoutParams();
+      int i3 = paramState.getBottom();
+      i3 = localLayoutParams.bottomMargin + i3;
+      int i4 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(j + k, i3, m - n - i1, i4 + i3);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axgw
  * JD-Core Version:    0.7.0.1
  */

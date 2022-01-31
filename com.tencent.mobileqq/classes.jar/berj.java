@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.qqmini.sdk.launcher.model.ApiScopeEntry;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.TabBarView;
 
-public final class berj
-  implements Parcelable.Creator<ApiScopeEntry>
+public class berj
+  implements View.OnClickListener
 {
-  public ApiScopeEntry a(Parcel paramParcel)
-  {
-    return new ApiScopeEntry(paramParcel);
-  }
+  public berj(TabBarView paramTabBarView, int paramInt) {}
   
-  public ApiScopeEntry[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ApiScopeEntry[paramInt];
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a < 500L) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a = l;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     berj
  * JD-Core Version:    0.7.0.1
  */

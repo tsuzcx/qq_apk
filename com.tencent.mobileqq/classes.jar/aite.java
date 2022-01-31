@@ -1,46 +1,44 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import org.json.JSONObject;
+import Wallet.RspWalletConfig;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.BusinessObserver;
 
-public final class aite
-  implements aabi
+class aite
+  implements BusinessObserver
 {
-  public aite(View paramView, aabl paramaabl, long paramLong, int paramInt) {}
+  aite(aitd paramaitd, long paramLong, aitg paramaitg, WeakReference paramWeakReference) {}
   
-  public void onComplete() {}
-  
-  public void onFailure(int paramInt, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aabl, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location failed," + paramString);
-  }
-  
-  public void onPermission(int paramInt)
-  {
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aabl, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
-  }
-  
-  public void onSuccess(JSONObject paramJSONObject)
-  {
-    double d1 = paramJSONObject.optDouble("altitude", 0.0D);
-    double d2 = paramJSONObject.optDouble("latitude", 0.0D);
-    double d3 = paramJSONObject.optDouble("longitude", 0.0D);
-    double d4 = paramJSONObject.optDouble("horizontalAccuracy", 0.0D);
-    paramJSONObject.optDouble("verticalAccuracy", 0.0D);
-    paramJSONObject.optDouble("accuracy", 0.0D);
-    double d5 = paramJSONObject.optDouble("speed", 0.0D);
-    if (this.jdField_a_of_type_Int == 1)
+    if ((paramInt != 10) || (!paramBoolean)) {}
+    try
     {
-      ApolloRender.getLocationCity(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aabl, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D);
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletConfigManager", 2, "fail get rsp:" + this.jdField_a_of_type_Long);
+      }
+      aitd.a(this.jdField_a_of_type_Aitd, -1L);
       return;
     }
-    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Aabl, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
+    catch (Throwable paramBundle)
+    {
+      for (;;)
+      {
+        paramBundle.printStackTrace();
+      }
+    }
+    paramBundle = (RspWalletConfig)paramBundle.getSerializable("rsp");
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletConfigManager", 2, "RspWalletConfig|" + paramBundle);
+    }
+    aitd.a(this.jdField_a_of_type_Aitd).handleRsp(paramBundle, this.jdField_a_of_type_Long, this.jdField_a_of_type_Aitg, (aitd)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    aitd.a(this.jdField_a_of_type_Aitd, -1L);
   }
-  
-  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aite
  * JD-Core Version:    0.7.0.1
  */

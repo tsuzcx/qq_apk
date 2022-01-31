@@ -1,103 +1,70 @@
-import com.tencent.mobileqq.app.CoreService;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import java.util.Comparator;
 
-public class ajwh
-  extends ajxz
+class ajwh
+  implements Comparator<ajwf>
 {
-  protected long a;
-  private String a;
-  protected long b;
-  
-  protected void a()
+  public int a(ajwf paramajwf)
   {
-    boolean bool2 = true;
-    super.a();
-    this.jdField_a_of_type_Long += 1L;
-    this.b += 1L;
-    if (this.d >= 3L)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
-        break label203;
-      }
-      bool1 = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, new String[] { "com.tencent.mobileqq:tool", "com.tencent.mobileqq:qzone", "com.tencent.mobileqq:mini", this.jdField_a_of_type_JavaLangString });
-      this.d = 0L;
-      if (!bool1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
-      }
+    if (paramajwf.jdField_a_of_type_Int != -1) {
+      return paramajwf.jdField_a_of_type_Int;
     }
-    if ((this.jdField_a_of_type_Long >= 15L) && (!DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.disable_qzone_kill.name())))
+    Friends localFriends = paramajwf.jdField_a_of_type_ComTencentMobileqqDataFriends;
+    int k = bdbt.a(localFriends.detalStatusFlag, localFriends.iTermType);
+    int j;
+    int i;
+    if ((k != 6) && (k != 0))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString != null)
+      j = 65536;
+      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+        break label132;
+      }
+      i = 4096;
+      switch (k)
       {
-        bool1 = true;
-        label139:
-        this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:qzone");
-        axrv.a().d(axrv.a());
-        this.jdField_a_of_type_Long = 0L;
+      case 5: 
+      case 6: 
+      default: 
+        label64:
+        i = j | i | (int)localFriends.getLastLoginType();
       }
     }
-    else if (this.b >= GuardManager.d) {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.jdField_a_of_type_JavaLangString == null) {
-        break label213;
-      }
-    }
-    label203:
-    label213:
-    for (boolean bool1 = bool2;; bool1 = false)
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(bool1, "com.tencent.mobileqq:tool");
-      this.b = 0L;
-      return;
-      bool1 = false;
+      paramajwf.jdField_a_of_type_Int = i;
+      return i;
+      j = 131072;
       break;
-      bool1 = false;
-      break label139;
+      label132:
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
+      {
+        i = 8192;
+        break label64;
+      }
+      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
+      {
+        i = 12288;
+        break label64;
+      }
+      i = 16384;
+      break label64;
+      i = j | i | 0x1;
+      continue;
+      i = j | i | 0x2;
+      continue;
+      i = j | i | 0x3;
     }
   }
   
-  protected void a(String paramString)
+  public int a(ajwf paramajwf1, ajwf paramajwf2)
   {
-    if (!"com.tencent.mobileqq".equals(paramString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(3, paramString);
-      altt.a();
-    }
-  }
-  
-  protected void b(String paramString)
-  {
-    super.b(paramString);
-    QQAppInterface.a().d();
-    ajwd.a().a(paramString);
-    amkf.a(true);
-    this.jdField_a_of_type_Long = 0L;
-    this.b = 0L;
-    CoreService.startCoreService(ajxx.a().a);
-    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.b();
-  }
-  
-  protected void c(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  protected void d(String paramString)
-  {
-    if ("com.tencent.mobileqq".equals(paramString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, null);
-      altt.b();
-      amkf.a(false);
-    }
+    return a(paramajwf1) - a(paramajwf2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwh
  * JD-Core Version:    0.7.0.1
  */

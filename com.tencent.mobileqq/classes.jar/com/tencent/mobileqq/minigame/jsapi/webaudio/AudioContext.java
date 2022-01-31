@@ -1,30 +1,43 @@
 package com.tencent.mobileqq.minigame.jsapi.webaudio;
 
+import com.tencent.mobileqq.triton.sdk.audio.IAudioNativeManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class AudioContext
 {
   private ArrayList<Integer> audioBufferSourceNodeList = new ArrayList();
+  private IAudioNativeManager mAudioNativeManager;
   public float sampleRate;
   private long startTime = System.currentTimeMillis();
   public String state;
   
-  public AudioContext()
+  public AudioContext(IAudioNativeManager paramIAudioNativeManager)
   {
-    AudioNativeManager.initAudioContext();
+    if (paramIAudioNativeManager != null)
+    {
+      this.mAudioNativeManager = paramIAudioNativeManager;
+      this.mAudioNativeManager.initAudioContext();
+    }
   }
   
   public int createBufferSource()
   {
-    int i = AudioNativeManager.createBufferSource();
-    this.audioBufferSourceNodeList.add(Integer.valueOf(i));
-    return i;
+    if (this.mAudioNativeManager != null)
+    {
+      int i = this.mAudioNativeManager.createBufferSource();
+      this.audioBufferSourceNodeList.add(Integer.valueOf(i));
+      return i;
+    }
+    return -1;
   }
   
   public float getCurrentGain(int paramInt)
   {
-    return AudioNativeManager.getCurrentGain(paramInt);
+    if (this.mAudioNativeManager != null) {
+      return this.mAudioNativeManager.getCurrentGain(paramInt);
+    }
+    return 0.0F;
   }
   
   public long getCurrentTime()
@@ -34,25 +47,34 @@ public class AudioContext
   
   public void setBufferSourceLoop(int paramInt, boolean paramBoolean)
   {
-    AudioNativeManager.setBufferSourceLoop(paramInt, paramBoolean);
+    if (this.mAudioNativeManager != null) {
+      this.mAudioNativeManager.setBufferSourceLoop(paramInt, paramBoolean);
+    }
   }
   
   public void setCurrentGain(int paramInt, double paramDouble)
   {
-    AudioNativeManager.setCurrentGain(paramInt, (float)paramDouble);
+    if (this.mAudioNativeManager != null) {
+      this.mAudioNativeManager.setCurrentGain(paramInt, (float)paramDouble);
+    }
   }
   
   public void stopAllChannels()
   {
-    Iterator localIterator = this.audioBufferSourceNodeList.iterator();
-    while (localIterator.hasNext()) {
-      AudioNativeManager.stopSource(((Integer)localIterator.next()).intValue());
+    if (this.mAudioNativeManager != null)
+    {
+      Iterator localIterator = this.audioBufferSourceNodeList.iterator();
+      while (localIterator.hasNext())
+      {
+        int i = ((Integer)localIterator.next()).intValue();
+        this.mAudioNativeManager.stopSource(i);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.webaudio.AudioContext
  * JD-Core Version:    0.7.0.1
  */

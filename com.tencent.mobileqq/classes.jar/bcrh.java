@@ -1,18 +1,22 @@
-import android.view.View;
+import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController.1.1;
 
-public abstract interface bcrh
+public class bcrh
+  implements baar
 {
-  public abstract void a(View paramView, float paramFloat1, float paramFloat2);
+  public bcrh(TroopInteractGiftAnimationController.1.1 param1) {}
   
-  public abstract void a(View paramView, int paramInt);
-  
-  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract void b(View paramView, float paramFloat1, float paramFloat2);
+  public void a(int paramInt)
+  {
+    if (this.a.a.this$0.a != null) {
+      this.a.a.this$0.a.setProgress(paramInt / 30);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcrh
  * JD-Core Version:    0.7.0.1
  */

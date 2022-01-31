@@ -1,20 +1,103 @@
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
-class xmh
-  implements QzoneZipCacheHelperCallBack
+public class xmh
 {
-  xmh(xmf paramxmf, String paramString1, String paramString2, String paramString3) {}
-  
-  public void onResult(boolean paramBoolean)
+  public static <T> T a(T paramT)
   {
-    xmf.a(this.jdField_a_of_type_Xmf, paramBoolean, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    if (paramT == null) {
+      wsv.e("Q.qqstory.AssertUtils", "checkNotNull failed:" + a(2));
+    }
+    return paramT;
   }
   
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
+  public static String a(int paramInt)
+  {
+    for (;;)
+    {
+      try
+      {
+        localObject = new RuntimeException("getStackTrace").getStackTrace();
+        localStringBuilder = new StringBuilder();
+        i = paramInt;
+        if (localObject.length > paramInt) {
+          break label87;
+        }
+        i = localObject.length;
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        StringBuilder localStringBuilder;
+        int i;
+        return "";
+      }
+      if (paramInt < i)
+      {
+        localStringBuilder.append("\n" + localObject[paramInt].toString());
+        paramInt += 1;
+      }
+      else
+      {
+        localObject = localStringBuilder.toString();
+        return localObject;
+        label87:
+        paramInt = 2;
+      }
+    }
+  }
+  
+  public static void a() {}
+  
+  public static <T> void a(T paramT)
+  {
+    if (paramT == null)
+    {
+      paramT = xny.a("StoryAssertUtils Exception!");
+      azlf.a(paramT, "StoryAssertUtils assertNotNull_DEBUG()");
+      wsv.c("Q.qqstory.AssertUtils", "assertNotNull_DEBUG failed: ", paramT);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    wsv.e("Q.qqstory.AssertUtils", "checkNotEmpty failed :" + a(2));
+  }
+  
+  public static void a(String paramString, Object... paramVarArgs)
+  {
+    if (paramVarArgs.length == 0) {}
+    for (;;)
+    {
+      wsv.e("Q.qqstory.AssertUtils", paramString);
+      return;
+      paramString = String.format(paramString, paramVarArgs);
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      wsv.e("Q.qqstory.AssertUtils", "assertTrue failed:" + a(4));
+    }
+  }
+  
+  public static void a(boolean paramBoolean, @NonNull String paramString)
+  {
+    if (paramBoolean) {
+      return;
+    }
+    wsv.e("Q.qqstory.AssertUtils", paramString);
+  }
+  
+  public static void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xmh
  * JD-Core Version:    0.7.0.1
  */

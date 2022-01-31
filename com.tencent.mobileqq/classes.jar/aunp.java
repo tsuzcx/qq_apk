@@ -1,89 +1,69 @@
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+
 public class aunp
-  extends aunq
-  implements auoc
+  implements BusinessObserver
 {
-  public int a;
-  public aunn a;
-  public auod a;
-  public boolean a;
-  public boolean b = true;
+  public aunp(MusicPlayerActivity paramMusicPlayerActivity, Intent paramIntent) {}
   
-  public aunp()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_Auod = new auod();
-    this.jdField_a_of_type_Aunn = new aunn();
-  }
-  
-  public String a()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("\nPicFowardInfo");
-    if (this.jdField_a_of_type_Auod != null) {}
-    for (String str = this.jdField_a_of_type_Auod.a();; str = "\n |-upInfo=null")
+    if (paramBoolean) {}
+    try
     {
-      localStringBuilder.append(str);
-      localStringBuilder.append(this.jdField_a_of_type_Aunn);
-      return localStringBuilder.toString();
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_Auod == null)
-    {
-      a("PicFowardInfo.check", "upInfo == null");
-      return false;
-    }
-    if (((this.jdField_a_of_type_Auod.b == 1000) || (this.jdField_a_of_type_Auod.b == 1020) || (this.jdField_a_of_type_Auod.b == 1004)) && (this.jdField_a_of_type_Auod.d == null))
-    {
-      a("PicFowardInfo.check", "secondId invalid,uinType:" + this.jdField_a_of_type_Auod.b + ",secondId:" + this.jdField_a_of_type_Auod.d);
-      return false;
-    }
-    if (this.jdField_a_of_type_Auod.jdField_g_of_type_Int == -1)
-    {
-      a("PicFowardInfo.check", "protocolType invalid,protocolType:" + this.jdField_a_of_type_Auod.jdField_g_of_type_Int);
-      return false;
-    }
-    if (!bbdx.b(this.jdField_a_of_type_Auod.jdField_g_of_type_JavaLangString))
-    {
-      if (this.jdField_a_of_type_Aunn == null)
+      Object localObject = paramBundle.getByteArray("data");
+      if (localObject != null)
       {
-        a("PicFowardInfo.check", "downInfo == null");
-        return false;
-      }
-      if (!this.jdField_a_of_type_Aunn.a())
-      {
-        this.jdField_a_of_type_Aunr = this.jdField_a_of_type_Aunn.jdField_a_of_type_Aunr;
-        return false;
+        paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+        paramBundle.mergeFrom((byte[])localObject);
+        if ((paramBundle.has()) && (paramBundle.ret.get() == 0) && (paramBundle.androidInfo != null))
+        {
+          GetAppInfoProto.AndroidInfo localAndroidInfo = paramBundle.androidInfo;
+          localObject = zbj.a(paramBundle.iconsURL, 16);
+          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_url", localAndroidInfo.sourceUrl.get());
+          Intent localIntent = this.jdField_a_of_type_AndroidContentIntent;
+          paramBundle = (Bundle)localObject;
+          if (localObject == null) {
+            paramBundle = "";
+          }
+          localIntent.putExtra("struct_share_key_source_icon", paramBundle);
+          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_name", localAndroidInfo.messagetail.get());
+          this.jdField_a_of_type_AndroidContentIntent.putExtra("struct_share_key_source_a_action_data", localAndroidInfo.packName.get());
+        }
       }
     }
-    return true;
-  }
-  
-  public aunn getPicDownloadInfo()
-  {
-    return this.jdField_a_of_type_Aunn;
-  }
-  
-  public auod getPicUploadInfo()
-  {
-    return this.jdField_a_of_type_Auod;
-  }
-  
-  public boolean isSendFromLocal()
-  {
-    return this.b;
-  }
-  
-  public String toString()
-  {
-    return a();
+    catch (Exception paramBundle)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MusicPlayerActivity", 2, paramBundle.getMessage());
+        }
+      }
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("stuctmsg_bytes", paramBundle.getBytes());
+      this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicPlayerActivity.startActivityForResult(this.jdField_a_of_type_AndroidContentIntent, 0);
+    }
+    paramBundle = azqu.a(this.jdField_a_of_type_AndroidContentIntent.getExtras());
+    if (paramBundle == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicPlayerActivity", 2, "build struct msg fail");
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aunp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,32 @@
-import com.tencent.gdtad.api.banner.GdtBannerAd;
-import com.tencent.mobileqq.apollo.process.ads.CmGameBannerAds.4;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.io.File;
+import java.util.Comparator;
 
-public class ajag
-  implements ysy
+final class ajag
+  implements Comparator<File>
 {
-  public ajag(CmGameBannerAds.4 param4, GdtBannerAd paramGdtBannerAd) {}
-  
-  private long a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  private int a(String paramString)
   {
-    if ((paramGdtAd != null) && (paramGdtAd.getAd() != null)) {
-      return paramGdtAd.getAd().getAId();
+    try
+    {
+      int i = paramString.lastIndexOf('.');
+      if (i == -1) {
+        return Integer.parseInt(paramString);
+      }
+      i = Integer.parseInt(paramString.substring(0, i));
+      return i;
     }
-    return -2147483648L;
+    catch (Exception paramString) {}
+    return 0;
   }
   
-  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd)
+  public int a(File paramFile1, File paramFile2)
   {
-    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdLoaded %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-    paramGdtAd = new ajah();
-    paramGdtAd.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd = this.jdField_a_of_type_ComTencentGdtadApiBannerGdtBannerAd;
-    paramGdtAd.b = this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.jdField_a_of_type_Int;
-    paramGdtAd.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b;
-    ajaf.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.this$0).put(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b), paramGdtAd);
-    ajaf.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b, 0, 0);
-  }
-  
-  public void a(com.tencent.gdtad.api.GdtAd paramGdtAd, ysx paramysx)
-  {
-    QLog.e("cmgame_process.CmGameBannerAds", 1, "onAdFailedToLoad " + paramysx.a());
-    ajaf.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.this$0, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqApolloProcessAdsCmGameBannerAds$4.b, -1, paramysx.a());
-  }
-  
-  public void b(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdImpression %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-  }
-  
-  public void c(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdClicked %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
-  }
-  
-  public void d(com.tencent.gdtad.api.GdtAd paramGdtAd)
-  {
-    QLog.i("cmgame_process.CmGameBannerAds", 1, String.format("onAdClosed %d", new Object[] { Long.valueOf(a(paramGdtAd)) }));
+    return a(paramFile1.getName()) - a(paramFile2.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajag
  * JD-Core Version:    0.7.0.1
  */

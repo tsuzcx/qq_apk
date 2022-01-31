@@ -1,50 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import android.support.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 class phx
-  implements ViewBase.OnClickListener
+  implements phy<BEAN, COOKIE>
 {
-  phx(phw paramphw, pau parampau, Container paramContainer) {}
+  phx(phu paramphu, pht parampht) {}
   
-  public void onClick(ViewBase paramViewBase)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, ArrayList<BEAN> paramArrayList, @Nullable COOKIE paramCOOKIE, int paramInt2, String paramString)
   {
-    ArticleInfo localArticleInfo = this.jdField_a_of_type_Pau.a();
-    Object localObject2 = new ReportModelDC02528().module("all_result").action("clk_Kdfeedsback_list").obj1("2049").ver2("Kdfeedsback").ver3(localArticleInfo.mArticleContentUrl);
-    Object localObject1;
-    String str1;
-    String str2;
-    if ((paramViewBase instanceof pmg))
+    this.jdField_a_of_type_Phu.a.addAll(paramArrayList);
+    if (paramBoolean1)
     {
-      localObject1 = ((pmg)paramViewBase).getText();
-      awsq.a(null, ((ReportModelDC02528)localObject2).ver4((String)localObject1).ver5(localArticleInfo.mTitle).ver6(ByteStringMicro.copyFromUtf8(localArticleInfo.innerUniqueID).toStringUtf8()).ver7("{jumpurl:" + paramViewBase.getEventAttachedData() + ",clk_index:" + paramViewBase.getClickEvnet().substring("search_word_click_".length()) + "}").session_id(localArticleInfo.mSearchWordSessionId));
-      awwa.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase.getEventAttachedData());
-      localObject1 = (akiz)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(111);
-      localObject2 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      str1 = localArticleInfo.mSearchWordSessionId;
-      str2 = localArticleInfo.mArticleContentUrl;
-      if (!(paramViewBase instanceof pmg)) {
-        break label261;
+      phu.a(this.jdField_a_of_type_Phu, paramCOOKIE);
+      paramArrayList = this.jdField_a_of_type_Phu;
+      if (paramBoolean2) {
+        break label68;
       }
     }
-    label261:
-    for (paramViewBase = ((pmg)paramViewBase).getText();; paramViewBase = "")
+    label68:
+    for (paramBoolean2 = true;; paramBoolean2 = false)
     {
-      ((akiz)localObject1).a((QQAppInterface)localObject2, "clk_Kdfeedsback_list", str1, str2, paramViewBase, localArticleInfo.mTitle, ByteStringMicro.copyFromUtf8(localArticleInfo.innerUniqueID).toStringUtf8());
+      phu.a(paramArrayList, paramBoolean2);
+      this.jdField_a_of_type_Pht.a(paramBoolean1, this.jdField_a_of_type_Phu.a, paramInt2, paramString);
       return;
-      localObject1 = "";
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     phx
  * JD-Core Version:    0.7.0.1
  */

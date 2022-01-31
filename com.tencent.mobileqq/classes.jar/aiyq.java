@@ -1,35 +1,60 @@
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Handler;
-import com.tencent.TMG.utils.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class aiyq
-  implements EIPCResultCallback
+public class aiyq
+  extends Handler
 {
-  aiyq(aiyp paramaiyp) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public aiyq(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment, Looper paramLooper)
   {
-    if (paramEIPCResult.code == 0)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      paramEIPCResult = paramEIPCResult.data.getString("key_game_friUin");
-      QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] current game friendUin:" + paramEIPCResult + ",mCurrentFriUin:" + aiyp.a(this.a));
-      if (!aiyp.a(this.a).equals(paramEIPCResult))
-      {
-        aiyp.a(this.a).removeMessages(1);
-        aiyp.a(this.a).sendEmptyMessage(1);
-      }
-      return;
     }
-    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] game is not exist. exit room");
-    aiyp.a(this.a).removeMessages(1);
-    aiyp.a(this.a).sendEmptyMessage(1);
+    FragmentActivity localFragmentActivity;
+    do
+    {
+      return;
+      paramMessage = (aiza)paramMessage.obj;
+      if (QLog.isColorLevel()) {
+        QLog.d(DrawRedpacketPannelPreviewFragment.jdField_a_of_type_JavaLangString, 2, "save path: " + paramMessage.c + " thread name: " + Thread.currentThread().getName());
+      }
+      localFragmentActivity = this.a.getActivity();
+    } while (localFragmentActivity == null);
+    Intent localIntent = new Intent(localFragmentActivity, SendPhotoActivity.class);
+    localIntent.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1007);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramMessage.c);
+    localIntent.putStringArrayListExtra("PhotoConst.PHOTO_PATHS", localArrayList);
+    localIntent.putExtra("PhotoConst.PHOTO_COUNT", localArrayList.size());
+    localIntent.putExtra("uin", paramMessage.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("uintype", paramMessage.jdField_a_of_type_Int);
+    localIntent.putExtra("troop_uin", paramMessage.jdField_b_of_type_JavaLangString);
+    localIntent.putExtra("key_confess_topicid", paramMessage.jdField_b_of_type_Int);
+    localIntent.putExtra("PhotoConst.SEND_SIZE_SPEC", 0);
+    localIntent.putExtra("PhotoConst.HANDLE_DEST_RESULT", true);
+    if (localArrayList.size() == 1) {
+      localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", localArrayList);
+    }
+    localFragmentActivity.startActivity(localIntent);
+    localFragmentActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyq
  * JD-Core Version:    0.7.0.1
  */

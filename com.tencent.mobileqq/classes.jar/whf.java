@@ -1,45 +1,16 @@
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class whf
-  implements whr
+class whf
+  implements DialogInterface.OnDismissListener
 {
-  public whf(ScannerActivity paramScannerActivity) {}
+  whf(whe paramwhe) {}
   
-  public JSONObject a()
-  {
-    try
-    {
-      JSONObject localJSONObject = ScannerActivity.a(this.a);
-      return localJSONObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.i("ScannerActivity", 1, "getQRReportParams error: " + localThrowable.getMessage());
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "restartDecodeFrame");
-    }
-    this.a.finish();
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "cameraOn");
-    }
-    this.a.finish();
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     whf
  * JD-Core Version:    0.7.0.1
  */

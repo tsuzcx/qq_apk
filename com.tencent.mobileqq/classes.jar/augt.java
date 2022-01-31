@@ -1,88 +1,22 @@
-import android.content.ContentResolver;
 import android.content.Context;
-import android.database.ContentObserver;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Handler;
-import android.provider.MediaStore.Images.Media;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.ChatActivity;
 
-public class augt
-  extends ContentObserver
+final class augt
+  implements auha
 {
-  private static final String jdField_a_of_type_JavaLangString = MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString();
-  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "_data", "date_added" };
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
-  private augu jdField_a_of_type_Augu;
+  augt(Context paramContext) {}
   
-  public augt(Handler paramHandler, Context paramContext)
+  public void a(Intent paramIntent)
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = paramContext.getContentResolver();
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, this);
-  }
-  
-  public void a(augu paramaugu)
-  {
-    this.jdField_a_of_type_Augu = paramaugu;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    onChange(paramBoolean, null);
-  }
-  
-  public void onChange(boolean paramBoolean, Uri paramUri)
-  {
-    Cursor localCursor;
-    String str;
-    long l;
-    if (paramUri == null)
-    {
-      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, jdField_a_of_type_ArrayOfJavaLangString, null, null, "date_added DESC");
-      if ((localCursor != null) && (localCursor.moveToFirst()))
-      {
-        str = localCursor.getString(localCursor.getColumnIndex("_data"));
-        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
-        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_Augu != null)) {
-          this.jdField_a_of_type_Augu.a(paramUri);
-        }
-      }
-      if (localCursor != null) {
-        localCursor.close();
-      }
+    if ((this.a instanceof ChatActivity)) {
+      ((ChatActivity)this.a).a(paramIntent);
     }
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramUri.toString().matches(jdField_a_of_type_JavaLangString + "/\\d+"));
-      localCursor = this.jdField_a_of_type_AndroidContentContentResolver.query(paramUri, jdField_a_of_type_ArrayOfJavaLangString, null, null, null);
-      if ((localCursor != null) && (localCursor.moveToFirst()))
-      {
-        str = localCursor.getString(localCursor.getColumnIndex("_data"));
-        l = localCursor.getLong(localCursor.getColumnIndex("date_added"));
-        if ((Math.abs(System.currentTimeMillis() / 1000L - l) <= 3L) && (str.toLowerCase().contains("screenshot")) && (this.jdField_a_of_type_Augu != null)) {
-          this.jdField_a_of_type_Augu.a(paramUri);
-        }
-      }
-    } while (localCursor == null);
-    localCursor.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     augt
  * JD-Core Version:    0.7.0.1
  */

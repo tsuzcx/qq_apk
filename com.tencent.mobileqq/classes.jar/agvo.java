@@ -1,76 +1,74 @@
-import java.io.FileInputStream;
+import android.content.Context;
+import android.util.Base64;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class agvo
-  extends agvn
+  implements agvy
 {
-  private static final byte[] a;
-  private static final byte[] b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
   
-  static
+  public agvo(Context paramContext)
   {
-    jdField_a_of_type_ArrayOfByte = "WEBP".getBytes();
-    jdField_b_of_type_ArrayOfByte = "RIFF".getBytes();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public agvo(String paramString)
+  public int a()
   {
-    super(paramString);
-    this.jdField_a_of_type_JavaLangString = "PhotoIncompatibleWebp";
-    this.jdField_b_of_type_JavaLangString = "reportGenerateWebp";
+    return 66;
   }
   
-  static boolean a(String paramString)
+  public View a(Object... paramVarArgs)
   {
-    byte[] arrayOfByte = new byte[16];
-    int i;
-    for (;;)
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      try
-      {
-        new FileInputStream(paramString).read(arrayOfByte);
-        if (arrayOfByte.length >= 12) {
-          break label98;
-        }
-        return false;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
-      if (i >= jdField_b_of_type_ArrayOfByte.length) {
-        break label103;
-      }
-      if (jdField_b_of_type_ArrayOfByte[i] != arrayOfByte[i]) {
-        break;
-      }
-      i += 1;
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558620, null);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362421));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362420));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846807);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new agvp(this));
     }
-    for (;;)
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof String))) {
+      paramVarArgs = new String(Base64.decode((String)paramVarArgs[0], 0));
+    }
+    try
     {
-      if (i < 12)
-      {
-        int j = jdField_a_of_type_ArrayOfByte[(i - 8)];
-        int k = arrayOfByte[i];
-        if (j == k) {
-          i += 1;
-        }
-      }
-      else
-      {
-        return true;
-      }
-      return false;
-      label98:
-      i = 0;
-      break;
-      label103:
-      i = 8;
+      paramVarArgs = new JSONObject(paramVarArgs);
+      String str = paramVarArgs.getString("content");
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      this.jdField_a_of_type_JavaLangString = paramVarArgs.getString("url");
+      label150:
+      return this.jdField_a_of_type_AndroidViewView;
     }
+    catch (JSONException paramVarArgs)
+    {
+      break label150;
+    }
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 17;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agvo
  * JD-Core Version:    0.7.0.1
  */

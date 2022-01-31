@@ -1,44 +1,49 @@
-import android.graphics.Point;
-import android.os.Bundle;
-import com.tencent.mobileqq.colornote.data.ColorNote;
+import android.annotation.SuppressLint;
+import android.util.Pair;
+import java.util.HashMap;
+import java.util.Map;
 
 public class amgq
 {
-  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static Map<Integer, Pair<String, Integer>> jdField_a_of_type_JavaUtilMap;
+  
+  public static int a(int paramInt)
   {
-    if (paramBundle != null)
+    return ((Integer)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).second).intValue();
+  }
+  
+  public static String a(int paramInt)
+  {
+    return (String)((Pair)jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).first;
+  }
+  
+  public static Map<Integer, Pair<String, Integer>> a()
+  {
+    if (jdField_a_of_type_JavaUtilMap == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      int i = paramBundle.getInt("param_service_type");
-      String str = paramBundle.getString("param_sub_type");
-      if (paramBundle.getInt("param_extra", 1) != 2) {
-        amhj.a().a(i, str, paramBoolean);
+      if (jdField_a_of_type_JavaUtilMap == null) {
+        a();
       }
-      amhj.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
+      return jdField_a_of_type_JavaUtilMap;
     }
   }
   
-  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
+  @SuppressLint({"UseSparseArrays"})
+  private static void a()
   {
-    amhj.a().a(paramInt, paramString, paramBoolean);
-  }
-  
-  public void onUpdateColorNote(ColorNote paramColorNote, boolean paramBoolean) {}
-  
-  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
-  {
-    if (paramBundle != null)
-    {
-      amhj.a().a(paramInt, paramString, paramBundle.getBoolean("extra_is_colornote_exists"));
-      amhj.a().c(paramBundle.getBoolean("extra_can_add_colornote"));
-      amhj.a().a(new Point(paramBundle.getInt("key_float_window_position_x"), paramBundle.getInt("key_float_window_position_y")));
-      boolean bool = paramBundle.getBoolean("extra_after_sync_msg");
-      amhj.a().b(bool);
-    }
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(193), Pair.create("video_processor", Integer.valueOf(9002)));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(734), Pair.create("video_processor", Integer.valueOf(9003)));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(524), Pair.create("discuss_update_processor", Integer.valueOf(9010)));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(736), Pair.create("info_update_processor", Integer.valueOf(9011)));
+    jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(526), Pair.create("slave_master_processor", Integer.valueOf(9012)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgq
  * JD-Core Version:    0.7.0.1
  */

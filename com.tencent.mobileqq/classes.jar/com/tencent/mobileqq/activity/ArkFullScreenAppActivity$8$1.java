@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
-import aaiq;
+import abzq;
 import android.content.Intent;
-import bbgo;
+import bdfk;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class ArkFullScreenAppActivity$8$1
   implements Runnable
 {
-  public ArkFullScreenAppActivity$8$1(aaiq paramaaiq) {}
+  public ArkFullScreenAppActivity$8$1(abzq paramabzq) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ArkFullScreenAppActivity$8$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ArkFullScreenAppActivity.8.1
  * JD-Core Version:    0.7.0.1
  */

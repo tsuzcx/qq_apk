@@ -1,70 +1,30 @@
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class uii
-  extends QQUIEventReceiver<uhw, tta>
+class uii
+  extends SimpleJob<Object>
 {
-  public uii(@NonNull uhw paramuhw)
+  uii(uid paramuid, String paramString1, String paramString2, uim paramuim)
   {
-    super(paramuhw);
+    super(paramString1);
   }
   
-  public void a(@NonNull uhw paramuhw, @NonNull tta paramtta)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (TextUtils.equals(String.valueOf(paramuhw.hashCode()), paramtta.jdField_a_of_type_JavaLangString)) {
-      b(paramuhw, paramtta);
-    }
+    uid.a(this.jdField_a_of_type_Uid, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Uim);
+    return null;
   }
   
-  public Class acceptEventClass()
+  public int getJobType()
   {
-    return tta.class;
-  }
-  
-  public void b(uhw paramuhw, tta paramtta)
-  {
-    paramuhw = ((StoryPlayerGroupHolder)paramuhw.a()).a();
-    if (paramuhw != null) {
-      paramuhw.c(false);
-    }
-    if (paramtta.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
-      return;
-    }
-    boolean bool = tsr.a(paramtta.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-    switch (paramtta.jdField_a_of_type_Int)
-    {
-    case 0: 
-    default: 
-      return;
-    case 1: 
-      bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131706890), 0).a();
-      return;
-    case 2: 
-      if (bool) {}
-      for (paramuhw = "2";; paramuhw = "1")
-      {
-        vei.a("play_video", "down_suc", 0, 0, new String[] { paramuhw, "", "", paramtta.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-        bcql.a(BaseApplicationImpl.getContext(), 2, sxm.a(2131699719), 0).a();
-        return;
-      }
-    }
-    if (bool) {}
-    for (paramuhw = "2";; paramuhw = "1")
-    {
-      vei.a("play_video", "down_fail", 0, 0, new String[] { paramuhw, "", "", paramtta.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-      bcql.a(BaseApplicationImpl.getContext(), 1, ajya.a(2131706894), 0).a();
-      return;
-    }
+    return 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uii
  * JD-Core Version:    0.7.0.1
  */

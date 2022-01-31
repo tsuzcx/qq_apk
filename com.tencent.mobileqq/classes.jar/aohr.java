@@ -1,25 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.QLog;
 
-class aohr
-  implements View.OnClickListener
+public class aohr
+  extends aoho
 {
-  aohr(aohp paramaohp, ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    int j = this.jdField_a_of_type_Aohp.getPosition();
-    int i = j;
-    if (j > 0) {
-      i = j - 1;
+    return 250;
+  }
+  
+  public aohi a(String paramString)
+  {
+    QLog.d("ArkConfProcessor", 1, "[onParsed] type=" + a() + ", content = " + paramString);
+    try
+    {
+      aoic localaoic = (aoic)aogt.a(paramString, aoic.class);
+      return new aohl(paramString, localaoic);
     }
-    aohp.a(this.jdField_a_of_type_Aohp).a(i);
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      for (;;)
+      {
+        QLog.i("ArkConfProcessor", 1, "loadConfig:" + paramString + "fail", localQStorageInstantiateException);
+        Object localObject = null;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aohr
  * JD-Core Version:    0.7.0.1
  */

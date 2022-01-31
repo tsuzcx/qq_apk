@@ -1,68 +1,55 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class bayv
+  implements TVK_SDKMgr.OnLogListener
 {
-  private bayx jdField_a_of_type_Bayx;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public bayv(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment) {}
   
-  public bayv(QQAppInterface paramQQAppInterface)
+  public int d(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-  }
-  
-  private bayx a()
-  {
-    bayx localbayx = new bayx(new bayw(this));
     if (QLog.isColorLevel()) {
-      QLog.i("FetchInfoListManager", 2, "createFetchInfoListManager fm: " + localbayx);
+      QLog.d("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
     }
-    return localbayx;
+    return 0;
   }
   
-  public void a()
+  public int e(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Bayx != null) {
-      this.jdField_a_of_type_Bayx.a();
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
     }
+    return 0;
   }
   
-  public void a(String paramString)
+  public int i(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Bayx == null) {
-      this.jdField_a_of_type_Bayx = a();
+    if (QLog.isColorLevel()) {
+      QLog.i("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
     }
-    this.jdField_a_of_type_Bayx.a(2, paramString, null, null, null);
+    return 0;
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, Bundle paramBundle)
+  public int v(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Bayx == null) {
-      this.jdField_a_of_type_Bayx = a();
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
     }
-    this.jdField_a_of_type_Bayx.a(3, paramString1, paramString2, paramString3, paramBundle);
+    return 0;
   }
   
-  public void b(String paramString)
+  public int w(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Bayx == null) {
-      this.jdField_a_of_type_Bayx = a();
+    if (QLog.isColorLevel()) {
+      QLog.w("TribeVideoListPlayerFragment", 2, paramString1 + " " + paramString2);
     }
-    this.jdField_a_of_type_Bayx.a(1, paramString, null, null, null);
-  }
-  
-  public void c(String paramString)
-  {
-    if (this.jdField_a_of_type_Bayx == null) {
-      this.jdField_a_of_type_Bayx = a();
-    }
-    this.jdField_a_of_type_Bayx.a(4, paramString, null, null, null);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bayv
  * JD-Core Version:    0.7.0.1
  */

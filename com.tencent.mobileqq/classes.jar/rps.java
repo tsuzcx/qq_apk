@@ -1,51 +1,77 @@
-import android.content.Context;
-import android.content.res.AssetManager;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.loaders.ComplementFileStringLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
+import android.graphics.drawable.BitmapDrawable;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.widget.RangeButtonView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class rps
-  implements ComplementFileStringLoader
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private String jdField_a_of_type_JavaLangString;
-  private rpz jdField_a_of_type_Rpz;
+  private int jdField_a_of_type_Int;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private bhwb jdField_a_of_type_Bhwb;
+  private List<bhwf> jdField_a_of_type_JavaUtilList;
+  private List<String> b;
   
-  public rps(Context paramContext, String paramString)
+  public rps(LayoutInflater paramLayoutInflater)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Rpz = new rpz(paramContext, paramString);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
   }
   
-  public String loadFileAsString(String paramString)
+  public rpq a()
   {
-    AssetManager localAssetManager = this.jdField_a_of_type_AndroidContentContext.getAssets();
-    try
+    rpq localrpq = new rpq(null);
+    Object localObject = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559086, null);
+    rpq.a(localrpq, new PopupWindow((View)localObject, -1, -2));
+    rpq.a(localrpq).setBackgroundDrawable(new BitmapDrawable());
+    rpq.a(localrpq).setOutsideTouchable(true);
+    localObject = (RangeButtonView)((View)localObject).findViewById(2131366672);
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
-      InputStream localInputStream = this.jdField_a_of_type_Rpz.a(paramString);
-      Object localObject = localInputStream;
-      if (localInputStream == null) {
-        localObject = localAssetManager.open(this.jdField_a_of_type_JavaLangString + "/" + paramString);
-      }
-      localObject = rqj.a((InputStream)localObject);
-      return localObject;
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      this.jdField_a_of_type_JavaUtilList.add(new bhwf(alpo.a(2131705081), TypedValue.applyDimension(1, 15.0F, alnq.a)));
+      this.jdField_a_of_type_JavaUtilList.add(new bhwf(alpo.a(2131705078), TypedValue.applyDimension(1, 16.0F, alnq.a)));
+      this.jdField_a_of_type_JavaUtilList.add(new bhwf(alpo.a(2131705079), TypedValue.applyDimension(1, 17.0F, alnq.a)));
+      this.jdField_a_of_type_JavaUtilList.add(new bhwf(alpo.a(2131705080), TypedValue.applyDimension(1, 18.0F, alnq.a)));
+      this.jdField_a_of_type_JavaUtilList.add(new bhwf(alpo.a(2131705082), TypedValue.applyDimension(1, 20.0F, alnq.a)));
     }
-    catch (IOException localIOException)
+    ((RangeButtonView)localObject).setTitleData(this.jdField_a_of_type_JavaUtilList);
+    rpq.a(localrpq, this.jdField_a_of_type_JavaUtilList);
+    if (this.jdField_a_of_type_Bhwb != null) {
+      ((RangeButtonView)localObject).setOnChangerListener(this.jdField_a_of_type_Bhwb);
+    }
+    ((RangeButtonView)localObject).setThumbPosition(this.jdField_a_of_type_Int);
+    if ((this.b == null) || (this.b.isEmpty()))
     {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("AssetsComplementFileStringLoader", 2, "loadFileAsString: fail to include - " + paramString);
-        localIOException.printStackTrace();
-      }
+      this.b = new ArrayList();
+      this.b.add(BaseApplicationImpl.getApplication().getString(2131691163));
+      this.b.add(BaseApplicationImpl.getApplication().getString(2131691164));
+      this.b.add(BaseApplicationImpl.getApplication().getString(2131691165));
+      this.b.add(BaseApplicationImpl.getApplication().getString(2131691166));
+      this.b.add(BaseApplicationImpl.getApplication().getString(2131691167));
     }
-    return null;
+    ((RangeButtonView)localObject).setContentDescList(this.b);
+    return localrpq;
+  }
+  
+  public rps a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public rps a(bhwb parambhwb)
+  {
+    this.jdField_a_of_type_Bhwb = parambhwb;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rps
  * JD-Core Version:    0.7.0.1
  */

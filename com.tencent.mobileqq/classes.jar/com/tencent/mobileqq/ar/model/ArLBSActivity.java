@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import alkq;
+import anbg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ArLBSActivity
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArLBSActivity> CREATOR = new alkq();
+  public static final Parcelable.Creator<ArLBSActivity> CREATOR = new anbg();
   public String a = "";
   public String b = "";
   public String c = "";
@@ -66,7 +66,7 @@ public class ArLBSActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArLBSActivity
  * JD-Core Version:    0.7.0.1
  */

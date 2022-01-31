@@ -2,8 +2,8 @@ package com.tencent.open.appcommon;
 
 import android.content.Context;
 import android.os.Handler;
-import bdfo;
-import bdii;
+import bfem;
+import bfhg;
 import com.tencent.smtt.sdk.WebView;
 import dalvik.system.DexClassLoader;
 import java.io.File;
@@ -17,7 +17,7 @@ import java.util.concurrent.Executors;
 
 public class JsWebWorker
 {
-  protected static Map<String, bdfo> a;
+  protected static Map<String, bfem> a;
   protected static ExecutorService a;
   protected Context a;
   protected Handler a;
@@ -29,25 +29,25 @@ public class JsWebWorker
     jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
-  protected bdfo a(String paramString1, String paramString2, String paramString3)
+  protected bfem a(String paramString1, String paramString2, String paramString3)
   {
     for (;;)
     {
       int i;
       try
       {
-        bdii.c("JsWebWorker", "initClass " + paramString1 + " | " + paramString2 + " | " + paramString3);
+        bfhg.c("JsWebWorker", "initClass " + paramString1 + " | " + paramString2 + " | " + paramString3);
         Object localObject1 = new File(paramString2);
         if (!((File)localObject1).exists())
         {
-          bdii.c("JsWebWorker", "cant find file " + paramString2);
+          bfhg.c("JsWebWorker", "cant find file " + paramString2);
           return null;
         }
         paramString1 = new DexClassLoader(((File)localObject1).toString(), paramString1, null, this.jdField_a_of_type_AndroidContentContext.getClassLoader());
-        bdii.c("JsWebWorker", "classLoader start ");
+        bfhg.c("JsWebWorker", "classLoader start ");
         paramString1 = paramString1.loadClass(paramString3);
-        bdii.c("JsWebWorker", "classLoader successed ");
-        paramString2 = new bdfo(this);
+        bfhg.c("JsWebWorker", "classLoader successed ");
+        paramString2 = new bfem(this);
         localObject1 = paramString1.getDeclaredMethods();
         int j = localObject1.length;
         i = 0;
@@ -68,14 +68,14 @@ public class JsWebWorker
       }
       catch (Exception paramString1)
       {
-        bdii.c("JsWebWorker", "initClass error", paramString1);
+        bfhg.c("JsWebWorker", "initClass error", paramString1);
         return null;
       }
       i += 1;
     }
   }
   
-  protected Object a(bdfo parambdfo, Context paramContext, WebView paramWebView)
+  protected Object a(bfem parambfem, Context paramContext, WebView paramWebView)
   {
     if (paramWebView != null) {}
     for (;;)
@@ -83,21 +83,21 @@ public class JsWebWorker
       try
       {
         i = paramWebView.hashCode();
-        Object localObject2 = parambdfo.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
+        Object localObject2 = parambfem.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(i));
         Object localObject1 = localObject2;
         if (localObject2 == null)
         {
-          Constructor localConstructor = parambdfo.jdField_a_of_type_JavaLangClass.getConstructor(new Class[] { Context.class, WebView.class, Handler.class });
+          Constructor localConstructor = parambfem.jdField_a_of_type_JavaLangClass.getConstructor(new Class[] { Context.class, WebView.class, Handler.class });
           localObject1 = localObject2;
           if (localConstructor != null)
           {
             localObject1 = localConstructor.newInstance(new Object[] { paramContext, paramWebView, this.jdField_a_of_type_AndroidOsHandler });
-            parambdfo.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), localObject1);
+            parambfem.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), localObject1);
           }
         }
         return localObject1;
       }
-      catch (Exception parambdfo)
+      catch (Exception parambfem)
       {
         return null;
       }
@@ -111,44 +111,44 @@ public class JsWebWorker
     {
       try
       {
-        bdii.c("JsWebWorker", "invoke>>" + paramString1 + ">>>" + paramString2 + ">>>" + paramString3);
-        bdfo localbdfo = (bdfo)jdField_a_of_type_JavaUtilMap.get(paramString2);
-        if (localbdfo == null)
+        bfhg.c("JsWebWorker", "invoke>>" + paramString1 + ">>>" + paramString2 + ">>>" + paramString3);
+        bfem localbfem = (bfem)jdField_a_of_type_JavaUtilMap.get(paramString2);
+        if (localbfem == null)
         {
-          localbdfo = a(this.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsolutePath(), paramString1, paramString2);
-          if (localbdfo == null)
+          localbfem = a(this.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsolutePath(), paramString1, paramString2);
+          if (localbfem == null)
           {
-            bdii.c("JsWebWorker", "refC == NULL return");
+            bfhg.c("JsWebWorker", "refC == NULL return");
             return null;
           }
-          bdii.c("JsWebWorker", "got refC");
-          if ((Method)localbdfo.b.get(paramString3) == null)
+          bfhg.c("JsWebWorker", "got refC");
+          if ((Method)localbfem.b.get(paramString3) == null)
           {
-            localbdfo.a();
+            localbfem.a();
             if (a(this.jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsolutePath(), paramString1, paramString2) != null) {
               break;
             }
-            bdii.c("JsWebWorker", "cant find method and refC == NULL return");
+            bfhg.c("JsWebWorker", "cant find method and refC == NULL return");
             break;
           }
-          bdii.c("JsWebWorker", "get method");
-          paramString1 = (Method)localbdfo.b.get(paramString3);
+          bfhg.c("JsWebWorker", "get method");
+          paramString1 = (Method)localbfem.b.get(paramString3);
           if (paramString1 == null) {
             return null;
           }
-          bdii.c("JsWebWorker", "got method");
-          paramString2 = a(localbdfo, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView);
+          bfhg.c("JsWebWorker", "got method");
+          paramString2 = a(localbfem, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView);
           if (paramString2 == null) {
             return null;
           }
-          bdii.c("JsWebWorker", "method invoke");
+          bfhg.c("JsWebWorker", "method invoke");
           paramString1 = (String)paramString1.invoke(paramString2, new Object[] { paramArrayOfString });
           return paramString1;
         }
       }
       catch (Exception paramString1)
       {
-        bdii.c("JsWebWorker", "invoke error", paramString1);
+        bfhg.c("JsWebWorker", "invoke error", paramString1);
         return null;
       }
     }

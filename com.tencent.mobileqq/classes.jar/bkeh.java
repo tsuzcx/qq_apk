@@ -1,21 +1,27 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 class bkeh
-  implements bkeq
+  implements BusinessObserver
 {
-  bkeh(bkeg parambkeg, boolean paramBoolean) {}
+  bkeh(bkee parambkee, String paramString) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (DoodleLayout.a(this.jdField_a_of_type_Bkeg.a) != null) {
-      DoodleLayout.a(this.jdField_a_of_type_Bkeg.a).c(true);
+    paramInt = paramBundle.getInt("extra_result_code");
+    String str = paramBundle.getString("extra_result_err_msg");
+    paramBundle = paramBundle.getString("extra_cmd");
+    if (!paramBoolean)
+    {
+      bfnq.a("WadlProxyServiceManager", "onReportDownloadEvent fail operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle + ",errCode=" + paramInt + ",errMsg=" + str);
+      return;
     }
-    this.jdField_a_of_type_Bkeg.a.a().b(this.jdField_a_of_type_Boolean);
+    bfnq.c("WadlProxyServiceManager", "onReportDownloadEvent success operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkeh
  * JD-Core Version:    0.7.0.1
  */

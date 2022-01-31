@@ -98,11 +98,12 @@ public final class PreDownloadConstants$2
     put(Integer.valueOf(10091), "ae_res_a_package_download");
     put(Integer.valueOf(10092), "flutter_engine_res");
     put(Integer.valueOf(10093), "flutter_app_res");
+    put(Integer.valueOf(10094), "ptt_transition_anim_zip");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadConstants.2
  * JD-Core Version:    0.7.0.1
  */

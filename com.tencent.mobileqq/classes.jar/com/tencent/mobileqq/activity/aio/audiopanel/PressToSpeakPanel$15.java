@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
-import ajya;
+import alpo;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
@@ -9,7 +9,6 @@ import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
-import bcql;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -17,6 +16,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.QQRecorder;
 import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
@@ -45,20 +45,20 @@ class PressToSpeakPanel$15
     }
     Object localObject = PressToSpeakPanel.a(this.this$0).a();
     int i = PressToSpeakPanel.a(this.this$0).a().getTitleBarHeight();
-    aytn.a = SystemClock.uptimeMillis();
+    bark.a = SystemClock.uptimeMillis();
     if (!QQRecorder.a(((QQRecorder.RecorderParam)localObject).c))
     {
-      bcql.a(BaseApplication.getContext(), 2131693600, 0).b(i);
+      QQToast.a(BaseApplication.getContext(), 2131693701, 0).b(i);
       return;
     }
     if (PressToSpeakPanel.a(this.this$0).n())
     {
-      bcql.a(BaseApplication.getContext(), ajya.a(2131708418), 0).b(i);
+      QQToast.a(BaseApplication.getContext(), alpo.a(2131708790), 0).b(i);
       return;
     }
     if (PressToSpeakPanel.a(this.this$0).c())
     {
-      bcql.a(BaseApplication.getContext(), 2131695522, 0).b(i);
+      QQToast.a(BaseApplication.getContext(), 2131695680, 0).b(i);
       return;
     }
     if (AudioHelper.b(1))
@@ -99,7 +99,7 @@ class PressToSpeakPanel$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel.15
  * JD-Core Version:    0.7.0.1
  */

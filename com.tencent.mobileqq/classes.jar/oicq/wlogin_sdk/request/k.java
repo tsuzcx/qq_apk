@@ -613,7 +613,7 @@ public class k
       l1 = l2;
       l2 = l5;
       break label660;
-      localObject1 = new tlv_t177().get_tlv_177(1582559746L, "6.0.0.2423");
+      localObject1 = new tlv_t177().get_tlv_177(1585297161L, "6.0.0.2424");
       l5 = l1;
       l1 = l2;
       l2 = l5;
@@ -722,7 +722,7 @@ public class k
       l2 = l5;
       break label660;
       l2 = System.currentTimeMillis();
-      localObject1 = new tlv_t544().get_tlv_544(this.a, paramLong3, t.A.length, t.A, "6.0.0.2423".length(), "6.0.0.2423", this.u);
+      localObject1 = new tlv_t544().get_tlv_544(this.a, paramLong3, t.A.length, t.A, "6.0.0.2424".length(), "6.0.0.2424", this.u);
       l1 = System.currentTimeMillis();
       util.LOGI("tgt 0x544 cost:" + (l1 - l2), "" + paramLong3);
       break label660;

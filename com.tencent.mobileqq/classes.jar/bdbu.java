@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.agent.OpenAuthorityFragment;
-
 public class bdbu
-  implements DialogInterface.OnClickListener
 {
-  public bdbu(OpenAuthorityFragment paramOpenAuthorityFragment) {}
+  public String a;
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  bdbu(String paramString, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdbu
  * JD-Core Version:    0.7.0.1
  */

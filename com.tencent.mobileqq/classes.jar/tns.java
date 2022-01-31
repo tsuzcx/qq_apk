@@ -1,37 +1,41 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPromoteTaskList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.List;
 
 public class tns
-  extends tly<qqstory_service.ReqGetPromoteTaskList>
+  extends tnn
 {
-  public static final String b = sxm.a("StorySvc.get_promote_tasklist");
-  
-  public tns(String paramString)
+  public tns(tmj paramtmj)
   {
-    super(b, new qqstory_service.ReqGetPromoteTaskList(), null);
-    ((qqstory_service.ReqGetPromoteTaskList)this.a).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramString));
+    super(paramtmj);
   }
   
-  public syn a(byte[] paramArrayOfByte)
+  public List<tmv> a(ArrayList paramArrayList)
   {
-    return new tnt(paramArrayOfByte);
+    return tms.a().a(paramArrayList);
   }
   
-  protected byte[] a()
+  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    ved.a("GetPromoteTaskRequest", "encode: %s", this);
-    return super.a();
+    super.a(paramViewHolder, paramInt);
+    tlo.d("comment", "WSVerticalForRecommendPresenter onPageSelected: " + paramInt);
+    if ((paramViewHolder instanceof tnj))
+    {
+      paramViewHolder = new ybt(4, new Object[] { Integer.valueOf(paramInt), ((tnj)paramViewHolder).a });
+      uht.a().dispatch(paramViewHolder);
+    }
   }
   
-  public String toString()
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return vyp.a(this.a);
+    tms.a().a(2, paramBoolean1, paramBoolean2, null, null, this);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tns
  * JD-Core Version:    0.7.0.1
  */

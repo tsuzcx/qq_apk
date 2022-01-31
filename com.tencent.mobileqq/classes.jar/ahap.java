@@ -1,59 +1,250 @@
-import Wallet.SkinInfo;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactFindTroopRTLW.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.ArrayList;
 
 public class ahap
+  extends ahai
 {
-  public static ahan a(String paramString)
+  static int c = 50;
+  public int a;
+  public ahar a;
+  String jdField_a_of_type_JavaLangString;
+  ArrayList<RecommendTroopItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  int b;
+  boolean d;
+  boolean e = false;
+  
+  public ahap(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, ahal paramahal, int paramInt, String paramString)
   {
-    ahan localahan = new ahan(ajya.a(2131705438));
-    localahan.jdField_b_of_type_Int = -2;
-    localahan.jdField_a_of_type_WalletSkinInfo.skin_id = -2;
-    localahan.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
-    localahan.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
-    localahan.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon = null;
-    localahan.jdField_a_of_type_Int = 0;
-    return localahan;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+    this.jdField_a_of_type_Ahal = paramahal;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Boolean = false;
+    a();
   }
   
-  public static ahan a(List<ahan> paramList, int paramInt)
+  protected ahad a()
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    return new ahdc(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    a(false);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    boolean bool2 = false;
+    alzf localalzf = (alzf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "getRecommendTroopList ,itemType = " + this.jdField_a_of_type_Int + ",keyWord = " + this.jdField_a_of_type_JavaLangString + ",loadMore = " + paramBoolean + ",this = " + this);
+    }
+    if (!paramBoolean)
     {
-      ahan localahan = (ahan)paramList.next();
-      if (localahan.jdField_a_of_type_WalletSkinInfo.skin_id == paramInt) {
-        return localahan;
+      this.jdField_b_of_type_Int = -1;
+      this.d = false;
+    }
+    f();
+    boolean bool1;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      if (Build.VERSION.SDK_INT < 23) {
+        break label288;
+      }
+      bool1 = bool2;
+      if (this.jdField_a_of_type_AndroidContentContext.checkSelfPermission("android.permission.ACCESS_COARSE_LOCATION") != -1)
+      {
+        if (this.jdField_a_of_type_AndroidContentContext.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION") != -1) {
+          break label283;
+        }
+        bool1 = bool2;
+      }
+      bool2 = bool1;
+      if (QLog.isColorLevel()) {
+        QLog.w("ac_ft.AddContactFindTroopRTLW", 2, "getRecommendTroopList  >= M, canRequestLocation = " + bool1);
       }
     }
-    return null;
+    label283:
+    label288:
+    for (bool2 = bool1;; bool2 = true)
+    {
+      if (bool2)
+      {
+        SosoInterface.SosoLbsInfo localSosoLbsInfo = amkv.a("recommend_troop");
+        if (QLog.isColorLevel()) {
+          QLog.i("ac_ft.AddContactFindTroopRTLW", 2, "getRecommendTroopList  >= M, info = " + localSosoLbsInfo);
+        }
+        if (localSosoLbsInfo == null) {
+          amkv.a(new ahaq(this, "recommend_troop", localalzf, paramBoolean));
+        }
+      }
+      else
+      {
+        return;
+      }
+      localalzf.a(1, this.jdField_b_of_type_Int, 25, paramBoolean, a());
+      return;
+      localalzf.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, 25, paramBoolean);
+      return;
+      bool1 = true;
+      break;
+    }
   }
   
-  public static ahan b(String paramString)
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
   {
-    ahan localahan = new ahan(ajya.a(2131705440));
-    localahan.jdField_b_of_type_Int = -1;
-    localahan.jdField_a_of_type_WalletSkinInfo.skin_id = 0;
-    localahan.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
-    localahan.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
-    localahan.jdField_a_of_type_Int = -1;
-    return localahan;
+    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int j = paramArrayList.size();
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "onGetAddContactFindTroopNearbyTroopList isSuccess = " + paramBoolean1 + ",itemType = " + paramInt1 + ",this.itemType = " + this.jdField_a_of_type_Int + ",serverPageID = " + paramInt2 + ",dataListSize = " + i + ",newDataListSize = " + j);
+    }
+    if (paramInt1 == this.jdField_a_of_type_Int)
+    {
+      this.d = paramBoolean2;
+      if (paramBoolean1)
+      {
+        if (!paramBoolean3)
+        {
+          this.e = true;
+          this.jdField_a_of_type_JavaUtilArrayList.clear();
+        }
+        i = this.jdField_a_of_type_JavaUtilArrayList.size();
+        if (i + j < c) {
+          break label358;
+        }
+        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList.subList(0, c - i));
+        this.d = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "onGetAddContactFindTroopRecommendTroopList reach limit,this.dataList.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size());
+        }
+      }
+    }
+    for (;;)
+    {
+      i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      c();
+      if (QLog.isColorLevel()) {
+        QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "onGetAddContactFindTroopNearbyTroopList do update Data,itemType = " + paramInt1 + ",this.itemType = " + this.jdField_a_of_type_Int + ",serverPageID = " + paramInt2 + ",dataListSize = " + i + ",newDataListSize = " + j);
+      }
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        if (this.d) {
+          this.jdField_a_of_type_AndroidWidgetTextView.setText("没有更多内容了");
+        }
+      }
+      this.jdField_b_of_type_Int = paramInt2;
+      if (this.jdField_a_of_type_Ahar != null) {
+        this.jdField_a_of_type_Ahar.a(paramBoolean1, i);
+      }
+      return;
+      label358:
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    }
   }
   
-  public static ahan c(String paramString)
+  protected void a(boolean paramBoolean1, int paramInt1, String paramString, int paramInt2, boolean paramBoolean2, ArrayList<RecommendTroopItem> paramArrayList, boolean paramBoolean3)
   {
-    ahan localahan = new ahan(ajya.a(2131705439));
-    localahan.jdField_b_of_type_JavaLangString = paramString;
-    localahan.jdField_b_of_type_Int = 1;
-    localahan.jdField_a_of_type_Int = 1000;
-    localahan.jdField_a_of_type_WalletSkinInfo.skin_id = -1;
-    localahan.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
-    return localahan;
+    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
+    int j = paramArrayList.size();
+    this.d = paramBoolean2;
+    if ((paramInt1 == this.jdField_a_of_type_Int) && (paramString.equals(this.jdField_a_of_type_JavaLangString))) {
+      if (paramBoolean1)
+      {
+        if (!paramBoolean3)
+        {
+          this.e = true;
+          this.jdField_a_of_type_JavaUtilArrayList.clear();
+        }
+        i = this.jdField_a_of_type_JavaUtilArrayList.size();
+        if (i + j < c) {
+          break label320;
+        }
+        this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList.subList(0, c - i));
+        this.d = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "onGetAddContactFindTroopRecommendTroopList reach limit,this.dataList.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size());
+        }
+      }
+    }
+    for (;;)
+    {
+      i = this.jdField_a_of_type_JavaUtilArrayList.size();
+      c();
+      if (QLog.isColorLevel()) {
+        QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "onGetAddContactFindTroopRecommendTroopList,do update Data ,itemType = " + paramInt1 + ",this.itemType = " + this.jdField_a_of_type_Int + ",keyWord = " + paramString + ",this.keyWord = " + this.jdField_a_of_type_JavaLangString + ",serverPageID = " + paramInt2 + ",dataListSize = " + i + ",newDataListSize = " + j + ",this = " + this);
+      }
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        if (this.d) {
+          this.jdField_a_of_type_AndroidWidgetTextView.setText("没有更多内容了");
+        }
+      }
+      this.jdField_b_of_type_Int = paramInt2;
+      if (this.jdField_a_of_type_Ahar != null) {
+        this.jdField_a_of_type_Ahar.a(paramBoolean1, i);
+      }
+      return;
+      label320:
+      this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    }
+  }
+  
+  protected boolean a()
+  {
+    return this.d;
+  }
+  
+  protected void b(boolean paramBoolean)
+  {
+    super.b(paramBoolean);
+  }
+  
+  protected void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactFindTroopRTLW", 2, "refreshListView,this.dataList.size() = " + this.jdField_a_of_type_JavaUtilArrayList.size() + ",needResetListViewPostion = " + this.e);
+    }
+    this.jdField_a_of_type_Ahad.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Ahad.notifyDataSetChanged();
+    if (this.e)
+    {
+      this.jdField_a_of_type_ComTencentWidgetXListView.setSelection(0);
+      this.e = false;
+    }
+  }
+  
+  public void e()
+  {
+    super.e();
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+    }
+  }
+  
+  void f()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() != 0) {
+      this.jdField_a_of_type_AndroidWidgetTextView.post(new AddContactFindTroopRTLW.2(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahap
  * JD-Core Version:    0.7.0.1
  */

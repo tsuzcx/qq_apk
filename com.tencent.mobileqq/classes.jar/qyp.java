@@ -1,39 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-class qyp
-  extends Handler
+public abstract class qyp
 {
-  private qyp(qym paramqym) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public String b;
+  public String c;
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      qym.a(this.a);
-      qym.a(this.a).sendEmptyMessageDelayed(0, qym.a(this.a));
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(qym.a(this.a), 2, "prePlay timeout, try rePlay");
-    }
-    if ((this.a.e()) && (qym.a(this.a).a() == qym.a(this.a)))
-    {
-      qym.b(this.a);
-      return;
-    }
-    qym.a(this.a, false);
-    this.a.a(qym.a(this.a));
-    qym.a(this.a, qym.a(this.a));
-  }
+  public abstract VideoInfo a();
+  
+  public abstract String a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qyp
  * JD-Core Version:    0.7.0.1
  */

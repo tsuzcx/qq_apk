@@ -1,22 +1,26 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import com.tribe.async.reactive.Stream;
-import java.util.List;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
 class ukv
-  implements ukp<Bitmap>
+  implements yvx
 {
-  ukv(uks paramuks, List paramList, String paramString) {}
+  ukv(uku paramuku, yvy paramyvy, PublishVideoEntry paramPublishVideoEntry) {}
   
-  @NonNull
-  public Stream<Bitmap> a(ukl paramukl)
+  public void a(yvy paramyvy)
   {
-    return uks.a(this.jdField_a_of_type_Uks, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Yvy.a(0);
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.videoRangeEnd = 60000;
+    uku.a(this.jdField_a_of_type_Uku, "convertImageToVideo ");
+  }
+  
+  public void b(yvy paramyvy)
+  {
+    this.jdField_a_of_type_Yvy.a(paramyvy.a());
+    uku.a(this.jdField_a_of_type_Uku, "convertImageToVideo ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ukv
  * JD-Core Version:    0.7.0.1
  */

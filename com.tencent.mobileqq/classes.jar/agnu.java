@@ -1,27 +1,58 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.widget.NumberCheckBox;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-public class agnu
+class agnu
+  implements Observer
 {
-  agnr jdField_a_of_type_Agnr;
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  public NumberCheckBox a;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  public ImageView c;
-  ImageView d;
+  agnu(agnp paramagnp) {}
   
-  agnu(agnt paramagnt) {}
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    if ((paramObject instanceof avpz))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "new FriendSystemMessage,:");
+      }
+      paramObservable = ((avpz)paramObject).a.getSystemMsg();
+      if (paramObservable != null) {
+        break label42;
+      }
+    }
+    label42:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (paramObservable.msg.sub_type.get() != 9);
+        paramObservable = String.valueOf(paramObservable.req_uin.get());
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "FRIEND_ADDSUCCESS, uin:" + paramObservable + " badd:" + agnp.a(this.a));
+        }
+      } while ((TextUtils.isEmpty(paramObservable)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (!paramObservable.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)));
+      if (!agnp.a(this.a))
+      {
+        agnp.a(this.a, true);
+        athk.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramObservable);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "FRIEND_ADDSUCCESS, processed:");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agnu
  * JD-Core Version:    0.7.0.1
  */

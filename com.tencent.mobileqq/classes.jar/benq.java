@@ -1,88 +1,114 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.Toast;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.BlockingQueue;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PaintFlagsDrawFilter;
+import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 
-class benq
-  extends Handler
+public class benq
+  extends Drawable
 {
-  private benq(Looper paramLooper)
+  private int jdField_a_of_type_Int;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  Matrix jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  String jdField_a_of_type_JavaLangString = "0%";
+  boolean jdField_a_of_type_Boolean = false;
+  private int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = true;
+  private int c;
+  
+  public benq(Bitmap paramBitmap, int paramInt)
   {
-    super(paramLooper);
+    this(paramBitmap, paramInt, true);
   }
   
-  private void a(benn parambenn)
+  public benq(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
   {
-    if (parambenn == null) {}
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(Typeface.DEFAULT_BOLD);
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_Boolean = false;
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    paramCanvas.save();
+    paramCanvas.setDrawFilter(new PaintFlagsDrawFilter(0, 3));
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      return;
+    }
+    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
+    int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+      this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(this.jdField_a_of_type_Int - i, this.jdField_b_of_type_Int - j);
+      this.jdField_a_of_type_Boolean = true;
+    }
+    this.jdField_a_of_type_AndroidGraphicsMatrix.postRotate(5.0F, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
+    if (this.jdField_b_of_type_Boolean)
+    {
+      if (this.c < 10) {
+        break label183;
+      }
+      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, (float)(this.jdField_a_of_type_Int - i * 0.6D), (float)(this.jdField_b_of_type_Int + j * 0.25D), this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
     for (;;)
     {
+      paramCanvas.restore();
+      invalidateSelf();
       return;
-      if (!benn.a(parambenn))
-      {
-        benn.a(parambenn, System.currentTimeMillis() + benn.a(parambenn));
-        benn.b(parambenn, true);
-      }
-      parambenn.a();
-      if (benn.a(parambenn) == 0) {}
-      for (int i = 200; benn.b(parambenn) + i < benn.c(parambenn); i = 400)
-      {
-        benn.a().add(new WeakReference(parambenn));
-        long l = benn.b(parambenn);
-        a(parambenn, i + l - System.currentTimeMillis());
-        return;
-      }
+      label183:
+      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, (float)(this.jdField_a_of_type_Int - i * 0.375D), (float)(this.jdField_b_of_type_Int + j * 0.25D), this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
-  private void a(benn parambenn, long paramLong)
+  public int getOpacity()
   {
-    betc.a("QQToast", "scheduleNextToast to " + paramLong);
-    removeMessages(1);
-    benn.a().add(new WeakReference(parambenn));
-    sendEmptyMessageDelayed(1, paramLong);
+    return 0;
   }
   
-  private void b(benn parambenn)
+  protected boolean onLevelChange(int paramInt)
   {
-    if (parambenn == null) {}
-    do
+    int i = 99;
+    int j = paramInt / 85;
+    if (j > 99) {}
+    for (;;)
     {
-      return;
-      benn.b(parambenn, false);
-    } while (benn.a(parambenn) == null);
-    benn.a(parambenn).cancel();
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
+      this.c = i;
+      this.jdField_a_of_type_JavaLangString = (this.c + "%");
+      return super.onLevelChange(paramInt);
+      i = j;
     }
-    do
-    {
-      do
-      {
-        return;
-        if (betc.a()) {
-          betc.a("QQToast", "MSG_SHOW_TOAST received");
-        }
-        paramMessage = (WeakReference)benn.a().poll();
-      } while (paramMessage == null);
-      a((benn)paramMessage.get());
-      return;
-      if (betc.a()) {
-        betc.a("QQToast", "MSG_HIDE_TOAST received");
-      }
-      paramMessage = (WeakReference)benn.a().poll();
-    } while (paramMessage == null);
-    b((benn)paramMessage.get());
   }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setBounds(Rect paramRect)
+  {
+    this.jdField_a_of_type_Int = paramRect.centerX();
+    this.jdField_b_of_type_Int = paramRect.centerY();
+    this.jdField_a_of_type_Boolean = false;
+    super.setBounds(paramRect);
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     benq
  * JD-Core Version:    0.7.0.1
  */

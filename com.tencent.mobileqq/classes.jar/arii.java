@@ -1,26 +1,43 @@
-import android.content.Intent;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import android.view.View;
+import com.tencent.widget.AdapterView;
 
-public class arii
-  extends ajxj
+class arii
+  implements bhqp
 {
-  public arii(ShareToQQActivity paramShareToQQActivity) {}
+  arii(arif paramarif) {}
   
-  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((paramLong != 0L) && (this.a.a != null) && (this.a.a.equals(paramLong + "")))
+    paramAdapterView = this.a;
+    boolean bool;
+    if (!arif.a(this.a))
     {
-      paramString = new Intent();
-      paramString.putExtra("isSuccess", paramBoolean2);
-      paramString.putExtra("isCancelShield", false);
-      this.a.setResult(-1, paramString);
+      bool = true;
+      arif.a(paramAdapterView, bool);
+      if (this.a.jdField_a_of_type_Ardo != null) {
+        this.a.jdField_a_of_type_Ardo.a(arif.a(this.a));
+      }
+      if (!arif.a(this.a)) {
+        break label110;
+      }
+      this.a.jdField_a_of_type_Arjx.a(false);
+      this.a.jdField_a_of_type_Arjx.b(false);
     }
-    this.a.finish();
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Arjx.e(arif.a(this.a));
+      return;
+      bool = false;
+      break;
+      label110:
+      this.a.jdField_a_of_type_Arjx.a(true);
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arii
  * JD-Core Version:    0.7.0.1
  */

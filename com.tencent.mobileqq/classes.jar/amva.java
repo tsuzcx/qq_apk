@@ -1,16 +1,17 @@
-class amva
-  implements bjjg
+import android.os.IInterface;
+
+public abstract interface amva
+  extends IInterface
 {
-  amva(amuz paramamuz) {}
+  public abstract void a(int paramInt);
   
-  public void a(String paramString)
-  {
-    ((bkzp)bjav.a(3)).a(paramString, 1);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amva
  * JD-Core Version:    0.7.0.1
  */

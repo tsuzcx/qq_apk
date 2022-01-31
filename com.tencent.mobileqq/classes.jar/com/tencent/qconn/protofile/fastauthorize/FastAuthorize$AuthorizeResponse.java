@@ -25,7 +25,7 @@ public final class FastAuthorize$AuthorizeResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse
  * JD-Core Version:    0.7.0.1
  */

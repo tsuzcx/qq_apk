@@ -1,17 +1,24 @@
-import java.nio.charset.Charset;
-import java.nio.charset.CharsetDecoder;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import mqq.app.AppRuntime;
 
-final class nbh
-  extends ThreadLocal<CharsetDecoder>
+public class nbh
 {
-  protected CharsetDecoder a()
+  TroopMemberApiService a;
+  
+  public nbh(TroopMemberApiService paramTroopMemberApiService)
   {
-    return Charset.forName("UTF-8").newDecoder();
+    this.a = paramTroopMemberApiService;
+  }
+  
+  public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nbh
  * JD-Core Version:    0.7.0.1
  */

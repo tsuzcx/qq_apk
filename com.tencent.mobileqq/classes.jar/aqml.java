@@ -1,39 +1,62 @@
-import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aqml
-  implements aqmn
+  extends aroh
 {
-  public int a()
+  public aqml(QfileRecentAllFileTabView paramQfileRecentAllFileTabView) {}
+  
+  public void a()
   {
-    return 0;
+    this.a.a.a().b();
   }
   
-  public aqmm a()
+  public void b()
   {
-    return null;
+    this.a.a.a().p();
   }
   
-  public aqmm a(int paramInt)
+  public void c()
   {
-    return null;
+    this.a.a.a().q();
   }
   
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(Intent paramIntent) {}
-  
-  public int b()
+  public void d()
   {
-    return 0;
+    this.a.a.a().r();
   }
   
-  public void b() {}
+  public void e()
+  {
+    this.a.a.a().s();
+    Object localObject = aqxj.b();
+    if ((localObject != null) && (((List)localObject).size() > 0))
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (aqxh.a(((FileManagerEntity)((Iterator)localObject).next()).Uuid)) {
+          azmj.b(QfileRecentAllFileTabView.b(this.a), "dc00898", "", "", "0X800A087", "0X800A087", 0, 0, "", "", "", "");
+        }
+      }
+    }
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqml
  * JD-Core Version:    0.7.0.1
  */

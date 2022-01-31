@@ -1,35 +1,10 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
-class bgmd
-  implements bglf
+public abstract interface bgmd<T>
 {
-  bgmd(bgmb parambgmb) {}
-  
-  public void a(File paramFile1, File paramFile2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "dex2Oat onStart " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
-    }
-  }
-  
-  public void a(File paramFile1, File paramFile2, File paramFile3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "dex2Oat onSuccess " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
-    }
-  }
-  
-  public void a(File paramFile1, File paramFile2, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "preDex2Oat onFailed " + paramFile1.getAbsolutePath() + " o" + paramFile2.getAbsolutePath());
-    }
-  }
+  public abstract T a(bgme parambgme);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgmd
  * JD-Core Version:    0.7.0.1
  */

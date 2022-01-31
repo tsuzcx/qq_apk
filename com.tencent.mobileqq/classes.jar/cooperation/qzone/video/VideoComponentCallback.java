@@ -1,17 +1,17 @@
 package cooperation.qzone.video;
 
-import ahua;
+import ajlk;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcql;
-import bgyp;
-import bgyw;
-import bhlc;
+import bizm;
+import bizt;
+import bjmn;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -19,11 +19,11 @@ import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.QzonePluginProxyActivity;
 import java.util.ArrayList;
 import mqq.app.AppRuntime;
-import vtm;
-import vtz;
+import xie;
+import xir;
 
 public class VideoComponentCallback
-  implements ahua
+  implements ajlk
 {
   public static final String a = VideoComponentCallback.class.getName();
   private String b;
@@ -65,7 +65,7 @@ public class VideoComponentCallback
     for (paramInt1 = 213;; paramInt1 = 214)
     {
       paramString3.putInt("param.uploadEntrance", paramInt1);
-      paramString3.putInt("param.entranceSource", vtm.a().a());
+      paramString3.putInt("param.entranceSource", xie.a().a());
       if (paramInt6 >= 0)
       {
         paramString3.putInt("extra_key_font_id", paramInt6);
@@ -77,7 +77,7 @@ public class VideoComponentCallback
         paramString3.putInt("extra_key_super_font_id", paramInt8);
         paramString3.putString("extra_key_super_font_info", paramString11);
       }
-      bhlc.a().a("cmd.publishVideoMood", paramString3, false);
+      bjmn.a().a("cmd.publishVideoMood", paramString3, false);
       return;
     }
   }
@@ -155,14 +155,14 @@ public class VideoComponentCallback
     try
     {
       boolean bool = LocalMultiProcConfig.getBool("support_trim", false);
-      localObject = bgyw.a();
-      ((bgyw)localObject).a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+      localObject = bizt.a();
+      ((bizt)localObject).a = BaseApplicationImpl.getApplication().getRuntime().getAccount();
       if (!bool) {
         break label296;
       }
       if ("cover_mall_record_video".equals(a()))
       {
-        bgyp.a(paramActivity, (bgyw)localObject, "", 0L, 1000, 2, "", a());
+        bizm.a(paramActivity, (bizt)localObject, "", 0L, 1000, 2, "", a());
         return;
       }
     }
@@ -171,10 +171,10 @@ public class VideoComponentCallback
       QLog.w(a, 4, "", paramActivity);
       return;
     }
-    Intent localIntent = new Intent(paramActivity, PhotoListActivity.class);
+    Intent localIntent = new Intent(paramActivity, NewPhotoListActivity.class);
     localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 2);
-    localIntent.putExtra("qzone_uin", ((bgyw)localObject).a);
-    localIntent.putExtra("nickname", ((bgyw)localObject).b);
+    localIntent.putExtra("qzone_uin", ((bizt)localObject).a);
+    localIntent.putExtra("nickname", ((bizt)localObject).b);
     Object localObject = QzoneConfig.getInstance().getConfig("MiniVideo", "FileSizeLimit");
     if (TextUtils.isEmpty((CharSequence)localObject)) {}
     for (long l = 1048576000L;; l = Long.valueOf((String)localObject).longValue())
@@ -185,16 +185,16 @@ public class VideoComponentCallback
       localIntent.putExtra("PhotoConst.IS_PREVIEW_VIDEO", false);
       localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", paramActivity.getClass().getName());
       localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
-      localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_VIDEO_CAN_UPLOAD_DURATION", bgyp.a());
+      localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_VIDEO_CAN_UPLOAD_DURATION", bizm.a());
       paramActivity.startActivity(localIntent);
       return;
     }
     label296:
     if ("cover_mall_record_video".equals(a()))
     {
-      int i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298865);
-      localObject = paramActivity.getString(2131718267);
-      bcql.a(paramActivity, (CharSequence)localObject, 0).b(i);
+      int i = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131298914);
+      localObject = paramActivity.getString(2131718642);
+      QQToast.a(paramActivity, (CharSequence)localObject, 0).b(i);
       QLog.i(a, 2, "video cover,not support trim," + (String)localObject);
       return;
     }
@@ -203,8 +203,8 @@ public class VideoComponentCallback
     localIntent.putExtra("key_is_upload_video", true);
     localIntent.putExtra("key_need_load_photo_from_intent", false);
     localIntent.putExtra("key_trim_video_black_list", true);
-    localIntent.putExtra("uin", ((bgyw)localObject).a);
-    bgyp.b(paramActivity, (bgyw)localObject, localIntent, 1000);
+    localIntent.putExtra("uin", ((bizt)localObject).a);
+    bizm.b(paramActivity, (bizt)localObject, localIntent, 1000);
   }
   
   public void a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
@@ -298,7 +298,7 @@ public class VideoComponentCallback
       QLog.i(a, 2, "videoCover,record video open video preview activity.totalDuration=" + i);
       localBundle.putInt("sv_encode_ref_frame", i1);
       localBundle.putInt("sv_encode_smooth", i2);
-      bgyp.a(paramActivity, 0, null, true, str1, str2, k, m, i * 1000, 0L, i * 1000, 0L, n, localBundle, "", "", a(), "CustomVideoCover");
+      bizm.a(paramActivity, 0, null, true, str1, str2, k, m, i * 1000, 0L, i * 1000, 0L, n, localBundle, "", "", a(), "CustomVideoCover");
       return;
     }
     if ("ref_h5_record_video".equals(a()))
@@ -319,14 +319,14 @@ public class VideoComponentCallback
     a(paramActivity, 0, true, str1, str2, k, m, j, 0L, j, 0L, n, localBundle, "", "", "");
   }
   
-  public void c_(String paramString)
+  public void d_(String paramString)
   {
     this.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.video.VideoComponentCallback
  * JD-Core Version:    0.7.0.1
  */

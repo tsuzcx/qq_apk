@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import auko;
+import awbv;
 
 public class StoryVideoListEntry
-  extends auko
+  extends awbv
 {
   public static final int LIST_TYPE_COLLECTION = 5;
   public static final int LIST_TYPE_EXPIRE_USER = 6;
@@ -62,7 +62,7 @@ public class StoryVideoListEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.StoryVideoListEntry
  * JD-Core Version:    0.7.0.1
  */

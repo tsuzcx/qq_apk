@@ -1,158 +1,215 @@
-import BOSSStrategyCenter.tAdvDesc;
-import NS_MOBILE_QBOSS_PROTO.MobileQbossAdvRsp;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.ims.QSecPushSeriveMsg.QSecPushSeriveBody;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.qqprotect.qsec.QSecPushServiceMgr.1;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.app.MobileQQ;
 
 public class bhkw
-  extends atzq
 {
-  private static bhkw jdField_a_of_type_Bhkw;
-  private WeakReference<bhks> jdField_a_of_type_JavaLangRefWeakReference;
+  private int jdField_a_of_type_Int;
+  private bhkc jdField_a_of_type_Bhkc;
+  private bhkn jdField_a_of_type_Bhkn;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
+  private HashMap<Integer, List<bhky>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public static bhkw a()
+  public bhkw(bhkn parambhkn, bhkc parambhkc)
   {
-    if (jdField_a_of_type_Bhkw == null) {}
+    this.jdField_a_of_type_Bhkn = parambhkn;
+    this.jdField_a_of_type_Bhkc = parambhkc;
+    this.jdField_a_of_type_Bhkn.a(new bhkx(this));
+  }
+  
+  private bhky a(byte[] paramArrayOfByte)
+  {
+    int j = -1;
+    boolean bool = true;
+    int i;
     try
     {
-      if (jdField_a_of_type_Bhkw == null) {
-        jdField_a_of_type_Bhkw = new bhkw();
+      localQSecPushSeriveBody = new QSecPushSeriveMsg.QSecPushSeriveBody();
+      localQSecPushSeriveBody.mergeFrom(paramArrayOfByte);
+      if ((localQSecPushSeriveBody.ver == null) || (!localQSecPushSeriveBody.ver.has())) {
+        break label411;
       }
-      return jdField_a_of_type_Bhkw;
+      i = localQSecPushSeriveBody.ver.get();
     }
-    finally {}
-  }
-  
-  public static Boolean a(String paramString)
-  {
-    boolean bool = false;
-    try
+    catch (Exception paramArrayOfByte)
     {
-      paramString = BaseApplicationImpl.getContext().getPackageManager().getApplicationInfo(paramString, 0);
-      if (paramString != null) {
-        bool = true;
+      QSecPushSeriveMsg.QSecPushSeriveBody localQSecPushSeriveBody;
+      label80:
+      paramArrayOfByte.printStackTrace();
+      return null;
+    }
+    if ((localQSecPushSeriveBody.platform != null) && (localQSecPushSeriveBody.platform.has()))
+    {
+      i = localQSecPushSeriveBody.platform.get();
+      if ((i & 0x1) == 0) {
+        break label418;
       }
-    }
-    catch (PackageManager.NameNotFoundException paramString)
-    {
-      for (;;)
+      if ((localQSecPushSeriveBody.qsecJavaVer != null) && (localQSecPushSeriveBody.qsecJavaVer.has()))
       {
-        paramString.printStackTrace();
+        i = localQSecPushSeriveBody.qsecJavaVer.get();
+        break label420;
       }
     }
-    return Boolean.valueOf(bool);
-  }
-  
-  public static String a(String paramString)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(paramString))
-    {
-      paramString = Pattern.compile("\"download_app_package_name\":\"[^\"]*").matcher(paramString);
-      localObject1 = localObject2;
-      if (paramString.find())
-      {
-        paramString = paramString.group(0).split("\"");
-        localObject1 = localObject2;
-        if (paramString.length == 4)
-        {
-          localObject1 = localObject2;
-          if (paramString[3].length() > 0) {
-            localObject1 = paramString[3];
-          }
-        }
-      }
-    }
-    return localObject1;
-  }
-  
-  public static void a(MobileQbossAdvRsp paramMobileQbossAdvRsp)
-  {
-    if (paramMobileQbossAdvRsp == null) {}
     for (;;)
     {
-      return;
-      paramMobileQbossAdvRsp = paramMobileQbossAdvRsp.mapAdv.entrySet().iterator();
-      while (paramMobileQbossAdvRsp.hasNext())
+      i = j;
+      if (localQSecPushSeriveBody.qsecNativeVer != null)
       {
-        Map.Entry localEntry = (Map.Entry)paramMobileQbossAdvRsp.next();
-        Iterator localIterator = ((ArrayList)localEntry.getValue()).iterator();
-        while (localIterator.hasNext())
+        i = j;
+        if (localQSecPushSeriveBody.qsecNativeVer.has()) {
+          i = localQSecPushSeriveBody.qsecNativeVer.get();
+        }
+      }
+      if ((i == 0) || (i == QSecFramework.a().a()))
+      {
+        if ((localQSecPushSeriveBody.packageName != null) && (localQSecPushSeriveBody.packageName.has())) {
+          paramArrayOfByte = localQSecPushSeriveBody.packageName.get();
+        }
+        for (;;)
         {
-          tAdvDesc localtAdvDesc = (tAdvDesc)localIterator.next();
-          String str = a(localtAdvDesc.res_data);
-          if ((str != null) && (a(str).booleanValue()))
+          if ((TextUtils.isEmpty(paramArrayOfByte)) || (paramArrayOfByte.equalsIgnoreCase(bhim.c())))
           {
-            localIterator.remove();
-            bhku.a().d(localtAdvDesc.res_traceinfo, null);
+            paramArrayOfByte = new bhky(null);
+            if ((localQSecPushSeriveBody.pluginId != null) && (localQSecPushSeriveBody.pluginId.has()))
+            {
+              paramArrayOfByte.jdField_a_of_type_Int = localQSecPushSeriveBody.pluginId.get();
+              if ((localQSecPushSeriveBody.pluginCmd != null) && (localQSecPushSeriveBody.pluginCmd.has()))
+              {
+                paramArrayOfByte.c = localQSecPushSeriveBody.pluginCmd.get();
+                if ((localQSecPushSeriveBody.pluginVer != null) && (localQSecPushSeriveBody.pluginVer.has()))
+                {
+                  paramArrayOfByte.b = localQSecPushSeriveBody.pluginVer.get();
+                  if ((localQSecPushSeriveBody.canCache != null) && (localQSecPushSeriveBody.canCache.has())) {
+                    if (localQSecPushSeriveBody.canCache.get() != 1) {
+                      break label383;
+                    }
+                  }
+                  for (;;)
+                  {
+                    paramArrayOfByte.jdField_a_of_type_Boolean = bool;
+                    if ((localQSecPushSeriveBody.extraInfo != null) && (localQSecPushSeriveBody.extraInfo.has())) {
+                      paramArrayOfByte.jdField_a_of_type_ArrayOfByte = localQSecPushSeriveBody.extraInfo.get().toByteArray();
+                    }
+                    return paramArrayOfByte;
+                    label383:
+                    bool = false;
+                  }
+                  paramArrayOfByte = null;
+                  continue;
+                  i = -1;
+                  break label420;
+                  i = 0;
+                  break label80;
+                  label411:
+                  i = 0;
+                  if (i == 1) {
+                    break;
+                  }
+                }
+              }
+            }
           }
         }
-        if (((ArrayList)localEntry.getValue()).size() == 0) {
-          paramMobileQbossAdvRsp.remove();
+      }
+      label418:
+      label420:
+      do
+      {
+        return null;
+        if (i == 0) {
+          break;
         }
+      } while (i != 33751040);
+    }
+  }
+  
+  private void a(bhky parambhky)
+  {
+    if (parambhky.jdField_a_of_type_Int == 0)
+    {
+      c(parambhky);
+      return;
+    }
+    b(parambhky);
+  }
+  
+  private void b(bhky parambhky)
+  {
+    int i = this.jdField_a_of_type_Bhkn.a(parambhky.jdField_a_of_type_Int, parambhky.b, parambhky.c, new Object[] { parambhky.jdField_a_of_type_ArrayOfByte }, null);
+    if (((i == 17) || (i == 7) || (i == 4)) && (parambhky.jdField_a_of_type_Boolean)) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        if (this.jdField_a_of_type_Int < 50)
+        {
+          List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(parambhky.jdField_a_of_type_Int));
+          Object localObject1 = localList;
+          if (localList == null)
+          {
+            localObject1 = new LinkedList();
+            this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(parambhky.jdField_a_of_type_Int), localObject1);
+          }
+          ((List)localObject1).add(parambhky);
+          this.jdField_a_of_type_Int += 1;
+        }
+        return;
       }
     }
   }
   
-  public void a(ArrayList<Integer> paramArrayList, bhks parambhks, String paramString)
+  private void c(bhky parambhky)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambhks);
-    parambhks = BaseApplicationImpl.getApplication().getRuntime();
-    NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getApplication(), axcr.class);
-    localNewIntent.putExtra("selfuin", Long.parseLong(parambhks.getAccount()));
-    localNewIntent.putIntegerArrayListExtra("appid", paramArrayList);
-    localNewIntent.putExtra("requestType", paramString);
-    parambhks.registObserver(this);
-    parambhks.startServlet(localNewIntent);
-    QLog.i("QzoneQbossHelper", 1, "getQbossData req");
-  }
-  
-  protected void h(boolean paramBoolean, Bundle paramBundle)
-  {
-    String str1 = paramBundle.getString("requestType");
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {}
-    for (bhks localbhks = (bhks)this.jdField_a_of_type_JavaLangRefWeakReference.get();; localbhks = null)
+    switch (parambhky.c)
     {
-      if (paramBoolean)
-      {
-        if (localbhks != null) {
-          localbhks.a(paramBundle, str1, (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-        }
-        QLog.i("QzoneQbossHelper", 1, "onGetQbossData rsp success");
-      }
+    }
+    do
+    {
       for (;;)
       {
-        BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this);
         return;
-        int i = paramBundle.getInt("ret", 0);
-        String str2 = paramBundle.getString("msg");
-        paramBundle = paramBundle.getIntegerArrayList("appid");
-        if (localbhks != null) {
-          localbhks.a(i, str2, str1, paramBundle);
+        this.jdField_a_of_type_Bhkc.a(true);
+        return;
+        try
+        {
+          parambhky = (QQAppInterface)BaseApplicationImpl.sMobileQQ.waitAppRuntime(null);
+          if (parambhky != null)
+          {
+            ((bhll)parambhky.getManager(194)).b(0);
+            return;
+          }
+        }
+        catch (Exception parambhky)
+        {
+          return;
         }
       }
+      parambhky = parambhky.jdField_a_of_type_ArrayOfByte;
+    } while (!bhjn.a().a(parambhky));
+    bhjn.a().a();
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return;
     }
+    QSecFramework.a().post(new QSecPushServiceMgr.1(this, paramArrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhkw
  * JD-Core Version:    0.7.0.1
  */

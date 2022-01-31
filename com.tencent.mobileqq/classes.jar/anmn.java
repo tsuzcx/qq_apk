@@ -1,70 +1,51 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
 
 public class anmn
-  extends aejf
+  extends aimu
 {
-  public anmn(HotChatFlashPicActivity paramHotChatFlashPicActivity) {}
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private String b;
   
-  public void a() {}
-  
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
+  public anmn(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.hotchat", 4, "notifyImageProgress progress:" + paramInt3);
-    }
-    if ((HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Long == paramLong1) && (HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Int == paramInt1)) {
-      HotChatFlashPicActivity.a(this.a, paramInt3 / 100);
-    }
+    super(paramNewPhotoPreviewActivity);
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  public void initData(Intent paramIntent)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.hotchat", 4, "notifyImageResult type:" + paramInt2 + ",resultStr:" + paramString + ",result:" + paramInt3 + ",isPart:" + paramBoolean);
-    }
-    if ((HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Long == paramLong) && (HotChatFlashPicActivity.a(this.a).jdField_f_of_type_Int == paramInt1) && (paramInt2 == 2))
-    {
-      HotChatFlashPicActivity.a(this.a, false);
-      if (paramInt3 != 1) {
-        break label228;
-      }
-      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_JavaLangString = paramString;
-      HotChatFlashPicActivity.a(this.a).d = paramBoolean;
-      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = false;
-      HotChatFlashPicActivity.a(this.a, HotChatFlashPicActivity.a(this.a));
-      if ((HotChatFlashPicActivity.b(this.a) == null) || (HotChatFlashPicActivity.b(this.a).equals("I:E"))) {
-        break label242;
-      }
-      bbdg.b(HotChatFlashPicActivity.b(this.a), HotChatFlashPicActivity.c(this.a));
-      HotChatFlashPicActivity.b(this.a, true);
-      HotChatFlashPicActivity.a(this.a, HotChatFlashPicActivity.b(this.a));
-    }
-    label228:
-    label242:
-    while (HotChatFlashPicActivity.b(this.a) == null)
-    {
-      return;
-      HotChatFlashPicActivity.a(this.a).jdField_b_of_type_Boolean = true;
-      break;
-    }
-    HotChatFlashPicActivity.a(this.a).sendEmptyMessage(1);
+    super.initData(paramIntent);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("key_ark_app_res_path");
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("key_should_compress", false);
+    this.b = paramIntent.getStringExtra("key_ark_app_engine_res_dir");
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, String paramString1, String[] paramArrayOfString, String paramString2, MessageForShortVideo paramMessageForShortVideo, int paramInt3) {}
+  public void initUI()
+  {
+    super.initUI();
+    ((NewPhotoPreviewActivity)this.mActivity).sendBtn.setOnClickListener(new anmo(this));
+  }
   
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
-  
-  public void b() {}
-  
-  public void c() {}
+  public void onBackPressed(boolean paramBoolean)
+  {
+    if ("FROM_PHOTO_LIST".equals(this.jdField_a_of_type_Aimr.from))
+    {
+      Intent localIntent = ((NewPhotoPreviewActivity)this.mActivity).getIntent();
+      localIntent.putExtra("PhotoConst.ALWAYS_SHOW_NUMBER_WHEN_ONLY_ONE_IMAGE", true);
+      localIntent.putExtra("key_ark_app_res_path", this.jdField_a_of_type_JavaLangString);
+      localIntent.putExtra("key_should_compress", this.jdField_a_of_type_Boolean);
+      localIntent.putExtra("key_ark_app_engine_res_dir", this.b);
+      localIntent.putExtra("FROM_ARK_CHOOSE_IMAGE", true);
+      localIntent.putExtra("enter_from", 3);
+    }
+    super.onBackPressed(paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anmn
  * JD-Core Version:    0.7.0.1
  */

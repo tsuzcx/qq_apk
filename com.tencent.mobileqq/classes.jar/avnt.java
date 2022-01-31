@@ -1,23 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.qzonevip.gift.particle.ParticleDropView;
+import android.widget.TextView;
 
-class avnt
-  extends AnimatorListenerAdapter
+public class avnt
+  extends avma
 {
-  avnt(avns paramavns) {}
+  public TextView g;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public avnt(avns paramavns)
   {
-    if (avno.a(this.a.a) != null) {
-      avno.a(this.a.a).c();
-    }
-    avno.a(this.a.a, 8);
+    super(paramavns);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avnt
  * JD-Core Version:    0.7.0.1
  */

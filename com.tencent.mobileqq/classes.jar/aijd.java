@@ -1,38 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
 
 public class aijd
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public aijd(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public aijd(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
-      return;
-      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
-      bcql.a(BaseApplication.getContext(), 1, 2131694610, 0).b(this.a.getTitleBarHeight());
-      return;
-      if (this.a.jdField_a_of_type_Bcqf == null) {
-        this.a.jdField_a_of_type_Bcqf = new bcqf(this.a, this.a.getTitleBarHeight());
-      }
-      this.a.jdField_a_of_type_Bcqf.c(2131699495);
-    } while ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Bcqf.isShowing()));
-    this.a.jdField_a_of_type_Bcqf.show();
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,49 @@
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.os.Handler;
-import android.view.KeyEvent;
-import android.view.ViewGroup;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import java.util.Iterator;
+import java.util.List;
 
-public abstract class xqb
+public class xqb
+  implements ViewPager.OnPageChangeListener
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  protected xpw a;
+  public xqb(EmptySupportViewPager paramEmptySupportViewPager) {}
   
-  public ViewGroup a()
+  public void onPageScrollStateChanged(int paramInt)
   {
-    return this.jdField_a_of_type_AndroidViewViewGroup;
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
+      }
+    }
   }
   
-  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public void a(Configuration paramConfiguration) {}
-  
-  void a(xpw paramxpw)
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    this.jdField_a_of_type_Xpw = paramxpw;
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrolled(paramInt1, paramFloat, paramInt2);
+      }
+    }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  public void onPageSelected(int paramInt)
   {
-    return false;
-  }
-  
-  public void b(ViewGroup paramViewGroup)
-  {
-    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
-  }
-  
-  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public boolean e()
-  {
-    return false;
-  }
-  
-  public void f() {}
-  
-  public void h() {}
-  
-  public void k() {}
-  
-  public void l() {}
-  
-  public void p() {}
-  
-  public void s() {}
-  
-  public void t()
-  {
-    if (this.jdField_a_of_type_Xpw != null) {
-      this.jdField_a_of_type_Xpw.a();
+    if (this.a.a != null)
+    {
+      Iterator localIterator = this.a.a.iterator();
+      while (localIterator.hasNext()) {
+        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xqb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,42 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.multiaio.MultiAIOFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
 
 public class aspf
-  implements View.OnClickListener
 {
-  public aspf(MultiAIOFragment paramMultiAIOFragment) {}
+  protected Context a;
+  protected aspd a;
+  protected aspd b;
+  protected aspd c;
   
-  public void onClick(View paramView)
+  public aspf(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "indicator onClick() called with: v = [" + paramView + "]");
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public aspd a(int paramInt, asox paramasox)
+  {
+    switch (paramInt)
+    {
+    default: 
+      if (this.jdField_a_of_type_Aspd == null) {
+        this.jdField_a_of_type_Aspd = new aspe(this.jdField_a_of_type_AndroidContentContext, 2130845407, paramasox);
+      }
+      return this.jdField_a_of_type_Aspd;
+    case 2: 
+      if (this.c == null) {
+        this.c = new PayLikeFloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130842232, paramasox);
+      }
+      return this.c;
     }
-    this.a.getActivity().finish();
+    if (this.b == null) {
+      this.b = new aspe(this.jdField_a_of_type_AndroidContentContext, 2130845411, paramasox);
+    }
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aspf
  * JD-Core Version:    0.7.0.1
  */

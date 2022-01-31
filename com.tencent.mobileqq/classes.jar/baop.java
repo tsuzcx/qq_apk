@@ -1,144 +1,152 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor.ForwardStep.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ThemeImageView;
-import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class baop
+public abstract class baop
 {
-  public final int a;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private View jdField_a_of_type_AndroidViewView;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  public final String a;
-  private int jdField_b_of_type_Int;
-  private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private int c;
+  protected long a;
+  private baop jdField_a_of_type_Baop;
+  protected String a;
+  protected AtomicBoolean a;
+  private baop[] jdField_a_of_type_ArrayOfBaop;
+  public AtomicBoolean b = new AtomicBoolean(false);
   
-  public baop(Context paramContext, String paramString)
+  baop(baoo parambaoo)
   {
-    this.jdField_a_of_type_Int = 3;
-    this.jdField_a_of_type_JavaLangString = "RobotMemberFormItem";
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    b();
-    a(paramString);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.jdField_a_of_type_JavaLangString = "ForwardStep";
   }
   
-  private void b()
+  public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131561146, null);
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369134));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375302));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131362962));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375030));
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 4, this.jdField_a_of_type_JavaLangString + "|doStep");
     }
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298648);
-    this.c = this.jdField_b_of_type_Int;
-  }
-  
-  public View a()
-  {
-    return this.jdField_a_of_type_AndroidViewView;
-  }
-  
-  public void a() {}
-  
-  public void a(AppInterface paramAppInterface, ArrayList<bamj> paramArrayList)
-  {
-    QLog.d("RobotMemberFormItem", 2, "setMemberUinList!");
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      if (this.jdField_b_of_type_AndroidWidgetTextView != null)
-      {
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131694678));
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        }
-      }
-    }
-    do
+    if ((this.jdField_a_of_type_ArrayOfBaop != null) && (this.jdField_a_of_type_ArrayOfBaop.length > 0))
     {
-      return;
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-      }
-      int i = 0;
-      while ((i < paramArrayList.size()) && (i < 3))
-      {
-        bamj localbamj = (bamj)paramArrayList.get(i);
-        String str = String.valueOf(localbamj.a());
-        Object localObject = bbef.a();
-        localObject = bayh.a(paramAppInterface, 1, str, 3, (Drawable)localObject, (Drawable)localObject, 4);
-        ThemeImageView localThemeImageView = new ThemeImageView(this.jdField_a_of_type_AndroidContentContext);
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.jdField_b_of_type_Int, this.c);
-        localLayoutParams.leftMargin = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131298649);
-        if (localbamj.b()) {
-          ((bayh)localObject).setAlpha(50);
-        }
-        localThemeImageView.setTag(localbamj);
-        localThemeImageView.setLayoutParams(localLayoutParams);
-        localThemeImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        localThemeImageView.setBackgroundDrawable((Drawable)localObject);
-        if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
-        {
-          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localThemeImageView);
-          QLog.d("RobotMemberFormItem", 2, "add AvatarViews task  " + str);
-        }
-        i += 1;
-      }
-      if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      }
-    } while (this.jdField_b_of_type_AndroidWidgetTextView == null);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-    {
-      if (paramString != null) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
-    {
-      if (paramBoolean) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
+      baop[] arrayOfbaop = this.jdField_a_of_type_ArrayOfBaop;
+      int m = arrayOfbaop.length;
+      int j = 0;
+      int i = 1;
       for (;;)
       {
-        QLog.d("RobotMemberFormItem", 2, "setRobotRedDot" + paramBoolean);
-        return;
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        k = i;
+        if (j >= m) {
+          break;
+        }
+        baop localbaop = arrayOfbaop[j];
+        QLog.d("Q.share.ForwardSdkShareProcessor", 1, new Object[] { localbaop.jdField_a_of_type_JavaLangString, "|finished=", Boolean.valueOf(localbaop.a()), ", processing=", Boolean.valueOf(localbaop.b()) });
+        if (!localbaop.a())
+        {
+          if (!localbaop.b()) {
+            localbaop.a();
+          }
+          i = 0;
+        }
+        j += 1;
       }
     }
-    QLog.d("RobotMemberFormItem", 2, "mImgRobotRedDoterr");
+    int k = 1;
+    if ((k != 0) && (!a()) && (!b()))
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      d();
+    }
+  }
+  
+  void a(baop[] paramArrayOfbaop)
+  {
+    this.jdField_a_of_type_ArrayOfBaop = paramArrayOfbaop;
+    if ((this.jdField_a_of_type_ArrayOfBaop != null) && (this.jdField_a_of_type_ArrayOfBaop.length > 0))
+    {
+      paramArrayOfbaop = this.jdField_a_of_type_ArrayOfBaop;
+      int j = paramArrayOfbaop.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramArrayOfbaop[i].jdField_a_of_type_Baop = this;
+        i += 1;
+      }
+    }
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    long l = 0L;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 4, this.jdField_a_of_type_JavaLangString + "|doNextStep");
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_a_of_type_Long != 0L) {
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.share.ForwardSdkShareProcessor", 2, this.jdField_a_of_type_JavaLangString + "|finished,cost=" + l);
+    }
+    arzy.a(this.jdField_a_of_type_JavaLangString, l);
+    if ((this.jdField_a_of_type_Baop != null) && (!this.b.get())) {
+      this.jdField_a_of_type_Baoo.a.a.post(new ForwardSdkShareProcessor.ForwardStep.1(this));
+    }
+  }
+  
+  protected boolean b()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public void c()
+  {
+    long l = 0L;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_a_of_type_Long != 0L) {
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    }
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.jdField_a_of_type_JavaLangString + "|doError,cost=" + l);
+    this.jdField_a_of_type_Baoo.d();
+  }
+  
+  protected abstract void d();
+  
+  protected void e()
+  {
+    if (a()) {}
+    for (;;)
+    {
+      return;
+      this.b.set(true);
+      if ((this.jdField_a_of_type_ArrayOfBaop != null) && (this.jdField_a_of_type_ArrayOfBaop.length > 0))
+      {
+        baop[] arrayOfbaop = this.jdField_a_of_type_ArrayOfBaop;
+        int j = arrayOfbaop.length;
+        int i = 0;
+        while (i < j)
+        {
+          arrayOfbaop[i].e();
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public void f()
+  {
+    long l = 0L;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+    if (this.jdField_a_of_type_Long != 0L) {
+      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+    }
+    QLog.d("Q.share.ForwardSdkShareProcessor", 1, this.jdField_a_of_type_JavaLangString + "|doCancel,cost=" + l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baop
  * JD-Core Version:    0.7.0.1
  */

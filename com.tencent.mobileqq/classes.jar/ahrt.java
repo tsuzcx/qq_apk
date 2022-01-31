@@ -1,211 +1,81 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.AutoCompleteTextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView.26.1;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 import java.util.List;
-import mqq.observer.AccountObserver;
 
 public class ahrt
-  extends AccountObserver
+  extends BaseAdapter
 {
-  public ahrt(LoginView paramLoginView) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private List<ahrv> jdField_a_of_type_JavaUtilList;
   
-  public void onCheckQuickRegisterAccount(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte)
+  public ahrt(Context paramContext)
   {
-    super.onCheckQuickRegisterAccount(paramBoolean, paramInt, paramArrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_LoginActivity.LoginView", 2, "onCheckQuickRegisterAccount|isSuccess= " + paramBoolean + ",code=" + paramInt);
-    }
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {}
-    try
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.dismissDialog(4);
-      if ((paramBoolean) && (paramInt == 0))
-      {
-        paramArrayOfByte = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, RegisterByNicknameAndPwdActivity.class);
-        paramArrayOfByte.putExtra("key_register_binduin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        paramArrayOfByte.putExtra("key_register_from_quick_register", true);
-        paramArrayOfByte.putExtra("key_register_is_phone_num_registered", true);
-        paramArrayOfByte.putExtra("not_need_verify_sms", true);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramArrayOfByte);
-        return;
-      }
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-      paramArrayOfByte = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, RegisterPhoneNumActivity.class);
-      paramArrayOfByte.putExtra("key_register_from", 3);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramArrayOfByte);
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
   }
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
+  public void a(List<ahrv> paramList)
   {
-    QLog.d("login", 1, "LoginActivity onLoginFailed ret=" + paramInt1);
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {}
-    try
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.dismissDialog(0);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new LoginView.26.1(this));
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginActivity.LoginView", 2, "onLoginFailed errorMsg = " + paramString2 + " ret=" + paramInt1);
-      }
-      if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
-      {
-        List localList = BaseApplicationImpl.sApplication.getAllAccounts();
-        if ((localList != null) && (localList.size() > 0))
-        {
-          str = this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString();
-          int i = 0;
-          for (;;)
-          {
-            if (i >= localList.size()) {
-              break label250;
-            }
-            localSimpleAccount = (SimpleAccount)localList.get(i);
-            if (localSimpleAccount != null) {
-              break;
-            }
-            i += 1;
-          }
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      String str;
-      SimpleAccount localSimpleAccount;
-      do
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      } while (!str.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(localSimpleAccount.getUin())));
-      bbkb.a(BaseApplicationImpl.sApplication, this.a.jdField_a_of_type_JavaLangString, true);
-      label250:
-      if ((paramString2 == null) || (paramString2.equals("")))
-      {
-        bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131694608, 0).a();
-        return;
-      }
-      if (!TextUtils.isEmpty(paramString3))
-      {
-        Intent localIntent = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, NotificationActivity.class);
-        localIntent.putExtra("type", 8);
-        if (paramInt1 == 40)
-        {
-          localIntent.putExtra("msg", paramString2);
-          localIntent.putExtra("errorver", paramInt2);
-          axqy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800AC0B", "0X800AC0B", 0, 0, "", "", "", "");
-        }
-        for (;;)
-        {
-          localIntent.putExtra("loginalias", paramString1);
-          localIntent.putExtra("loginret", paramInt1);
-          localIntent.putExtra("errorUrl", paramString3);
-          localIntent.putExtra("expiredSig", paramArrayOfByte);
-          this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent);
-          return;
-          localIntent.putExtra("msg", paramString2 + " " + paramString3);
-        }
-      }
-      if (paramInt1 == 2008)
-      {
-        bbdj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, ajya.a(2131706372), ajya.a(2131706367), "OK", null, new ahru(this), null).show();
-        bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131693130, 0).a();
-        return;
-      }
-      bbdj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230, ajya.a(2131706360), paramString2, new ahrv(this), null).show();
-    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public void onLoginSuccess(String paramString1, String paramString2)
+  public int getCount()
   {
-    QLog.d("login", 1, "LoginActivity onLoginSuccess");
-    if (LoginView.f(this.a))
-    {
-      axqy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007365", "0X8007365", 0, 0, "", "", "", "");
-      axqy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007365", "0X8007365", 1, 0, "", "", "", "");
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
+    return 0;
   }
   
-  public void onLoginTimeout(String paramString)
+  public Object getItem(int paramInt)
   {
-    QLog.d("login", 1, "LoginActivity onLoginTimeout");
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {}
-    try
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.dismissDialog(0);
-      if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
-      {
-        paramString = BaseApplicationImpl.sApplication.getAllAccounts();
-        if ((paramString != null) && (paramString.size() > 0))
-        {
-          str = this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString();
-          int i = 0;
-          for (;;)
-          {
-            if (i >= paramString.size()) {
-              break label160;
-            }
-            localSimpleAccount = (SimpleAccount)paramString.get(i);
-            if (localSimpleAccount != null) {
-              break;
-            }
-            i += 1;
-          }
-        }
+      paramViewGroup = new ahrw(this, null);
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561692, null, false);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368094));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368093));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379084));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379085));
+      paramView.setTag(paramViewGroup);
+    }
+    for (;;)
+    {
+      ahrv localahrv = (ahrv)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localahrv.jdField_a_of_type_AndroidGraphicsBitmap);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localahrv.b);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localahrv.jdField_a_of_type_Int + alpo.a(2131704980));
+      if (!localahrv.jdField_a_of_type_Boolean) {
+        break;
       }
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839026));
+      return paramView;
+      paramViewGroup = (ahrw)paramView.getTag();
     }
-    catch (Exception paramString)
-    {
-      String str;
-      SimpleAccount localSimpleAccount;
-      do
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      } while (!str.equals(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(localSimpleAccount.getUin())));
-      bbkb.a(BaseApplicationImpl.sApplication, this.a.jdField_a_of_type_JavaLangString, true);
-      label160:
-      bcql.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131694608, 0).a();
-    }
-  }
-  
-  public void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) {}
-    try
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.dismissDialog(0);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839028));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahrt
  * JD-Core Version:    0.7.0.1
  */

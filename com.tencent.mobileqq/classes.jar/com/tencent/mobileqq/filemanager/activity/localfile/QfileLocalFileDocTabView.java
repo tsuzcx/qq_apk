@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity.localfile;
 
-import ajya;
+import alpo;
 import android.content.Context;
-import aoqb;
-import aost;
-import apvd;
-import apvj;
-import apxx;
+import aqiz;
+import aqlr;
+import arof;
+import arol;
+import arqz;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
@@ -20,7 +20,7 @@ import java.util.Set;
 public class QfileLocalFileDocTabView
   extends QfileBaseLocalFileTabView
 {
-  public QfileLocalFileDocTabView(Context paramContext, List<apxx> paramList, boolean paramBoolean)
+  public QfileLocalFileDocTabView(Context paramContext, List<arqz> paramList, boolean paramBoolean)
   {
     super(paramContext, paramList, paramBoolean);
     setEditbarButton(false, false, true, true, true);
@@ -28,9 +28,9 @@ public class QfileLocalFileDocTabView
   
   private String a(String paramString)
   {
-    paramString = apvd.a(paramString);
+    paramString = arof.a(paramString);
     if ((paramString == null) || (paramString.length() == 0)) {
-      return ajya.a(2131709679);
+      return alpo.a(2131710051);
     }
     paramString = paramString.toLowerCase();
     if (".doc|.docx|.wps|.pages|".indexOf(paramString) >= 0) {
@@ -45,12 +45,12 @@ public class QfileLocalFileDocTabView
     if (".pdf|".indexOf(paramString) >= 0) {
       return "PDF";
     }
-    return ajya.a(2131709695);
+    return alpo.a(2131710067);
   }
   
-  protected aoqb a()
+  protected aqiz a()
   {
-    return new aost(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
+    return new aqlr(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.d);
   }
   
   protected void a()
@@ -123,7 +123,7 @@ public class QfileLocalFileDocTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView
  * JD-Core Version:    0.7.0.1
  */

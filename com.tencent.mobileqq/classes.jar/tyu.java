@@ -1,23 +1,56 @@
-import android.support.annotation.NonNull;
+import android.text.Layout;
+import android.text.Spannable;
+import android.text.method.BaseMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.MotionEvent;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.CommentEntry;
+import android.widget.TextView;
 
-public abstract interface tyu
+public class tyu
+  extends BaseMovementMethod
 {
-  public abstract void a();
+  private static tyu a;
   
-  public abstract void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  public static tyu a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new tyu();
+      }
+      return a;
+    }
+    finally {}
+  }
   
-  public abstract void a(@NonNull upp paramupp, ErrorMessage paramErrorMessage);
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
-  
-  public abstract void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0))
+    {
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      paramMotionEvent = paramTextView.getLayout();
+      j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
+      paramSpannable = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (paramSpannable.length != 0)
+      {
+        paramSpannable = paramSpannable[0];
+        if (i == 1) {
+          paramSpannable.onClick(paramTextView);
+        }
+      }
+    }
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tyu
  * JD-Core Version:    0.7.0.1
  */

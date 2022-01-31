@@ -1,51 +1,58 @@
-import android.util.SparseArray;
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import java.util.List;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class atcs
-  implements bcix<oidb_0x8e4.RspBody>
+  extends WebViewPlugin
 {
-  public atcs(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  ymk a;
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public atcs()
   {
-    if ((paramInt == 0) || (paramInt == 1004))
+    this.mPluginNameSpace = "connect";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    boolean bool = false;
+    if (("connect".equals(paramString2)) && ("exchangeID".equals(paramString3)) && (paramVarArgs.length > 0)) {}
+    try
     {
-      this.a.jdField_a_of_type_Atch.d();
-      bbkb.a(this.a, this.a.app.getCurrentAccountUin(), false, System.currentTimeMillis());
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_b_of_type_Long = this.a.app.getLongAccountUin();
-      this.a.jdField_b_of_type_JavaLangString = null;
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
-      this.a.jdField_a_of_type_JavaUtilList = null;
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (this.a.jdField_b_of_type_JavaUtilList != null) {
-        this.a.jdField_b_of_type_JavaUtilList.clear();
+      paramString3 = new JSONObject(paramVarArgs[0]);
+      paramJsBridgeListener = paramString3.optString("appid");
+      paramString1 = paramString3.optString("openid");
+      paramString2 = paramString3.optString("troopuin");
+      paramString3 = paramString3.optString("callback");
+      if (this.a == null)
+      {
+        this.a = ymk.a();
+        this.a.a();
       }
-      this.a.f = false;
-      this.a.a();
-      paramRspBody = this.a.a();
-      if ((paramRspBody != null) && (paramRspBody.jdField_a_of_type_Boolean)) {
-        bcql.a(this.a, ajya.a(2131705068), 0).a();
-      }
-      this.a.jdField_a_of_type_Atdo.notifyDataSetChanged();
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.a.c(paramJsBridgeListener, paramString1, paramString2, new atct(this, paramString3));
+      bool = true;
     }
-    for (;;)
+    catch (JSONException paramJsBridgeListener)
     {
-      this.a.jdField_b_of_type_AndroidViewView.setEnabled(true);
-      return;
-      this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ConnectApiPlugin", 2, "handleJsRequest JSONException:" + paramJsBridgeListener);
+    }
+    return bool;
+    return false;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.a != null) {
+      this.a.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atcs
  * JD-Core Version:    0.7.0.1
  */

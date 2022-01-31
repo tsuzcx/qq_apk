@@ -1,19 +1,36 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.Emoticon;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS;
+import java.lang.ref.WeakReference;
 
-class aana
-  implements askq<Emoticon>
+public class aana
+  implements View.OnClickListener
 {
-  aana(aamz paramaamz, int paramInt1, int paramInt2, String paramString) {}
+  public aana(GdtInterstitialFragmentForJS paramGdtInterstitialFragmentForJS) {}
   
-  public void a(Emoticon paramEmoticon)
+  public void onClick(View paramView)
   {
-    adue.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Aamz.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aamz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aamz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false);
+    if (GdtInterstitialFragmentForJS.a(this.a) == null)
+    {
+      paramView = "loading ad data";
+      aaig localaaig = new aaig();
+      localaaig.a = GdtInterstitialFragmentForJS.a(this.a);
+      GdtInterstitialFragmentForJS.a(this.a, new aaie(localaaig, new WeakReference(GdtInterstitialFragmentForJS.a(this.a))));
+      GdtInterstitialFragmentForJS.a(this.a).a(new WeakReference(this.a.getActivity()));
+    }
+    for (;;)
+    {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), paramView, 0).show();
+      return;
+      paramView = "load ad data error";
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aana
  * JD-Core Version:    0.7.0.1
  */

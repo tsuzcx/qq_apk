@@ -1,18 +1,32 @@
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.QQBroadcastReceiver;
 
-public abstract interface avxw
+public class avxw
+  extends QQBroadcastReceiver
 {
-  public abstract int a();
+  public avxw(ScanTorchActivity paramScanTorchActivity) {}
   
-  public abstract int a(List<avxs> paramList);
-  
-  public abstract void d();
-  
-  public abstract void e();
+  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
+  {
+    if (paramIntent == null) {}
+    do
+    {
+      return;
+      paramAppRuntime = paramIntent.getAction();
+      if (QLog.isColorLevel()) {
+        QLog.d("ScanTorchActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
+      }
+    } while (!"com.tencent.mobileqq__alive".equals(paramAppRuntime));
+    ScanTorchActivity.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avxw
  * JD-Core Version:    0.7.0.1
  */

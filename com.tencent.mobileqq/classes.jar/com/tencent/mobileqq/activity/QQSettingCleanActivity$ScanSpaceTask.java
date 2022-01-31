@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import abwb;
-import abwd;
-import axua;
-import bbjn;
+import adnj;
+import adnl;
+import azpt;
+import bdij;
 import com.tencent.mobileqq.widget.CircleProgressBar;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,17 +14,17 @@ public class QQSettingCleanActivity$ScanSpaceTask
   
   public void run()
   {
-    long l1 = bbjn.a();
-    long l2 = bbjn.a(this.this$0);
-    long l3 = bbjn.b();
-    long l4 = bbjn.b(this.this$0);
+    long l1 = bdij.a();
+    long l2 = bdij.a(this.this$0);
+    long l3 = bdij.b();
+    long l4 = bdij.b(this.this$0);
     this.this$0.b = (l1 + l2);
     this.this$0.e = (l3 + l4);
-    abwd localabwd = new abwd(this);
-    this.this$0.c = axua.a().a(localabwd, 0, 98);
-    this.this$0.d = axua.a().a(QQSettingCleanActivity.jdField_a_of_type_JavaUtilArrayList);
+    adnl localadnl = new adnl(this);
+    this.this$0.c = azpt.a().a(localadnl, 0, 98);
+    this.this$0.d = azpt.a().a(QQSettingCleanActivity.jdField_a_of_type_JavaUtilArrayList);
     this.this$0.c -= this.this$0.d;
-    localabwd.a(100);
+    localadnl.a(100);
     QLog.d("QQCleanActivity", 1, "SpaceInfo total: " + this.this$0.b + " ava: " + this.this$0.e + " qq: " + this.this$0.c + " file: " + this.this$0.d);
     QLog.d("QQCleanActivity", 1, "SpaceInfo totalIner: " + l1 + " totalExter: " + l2 + " avaInter: " + l3 + " avaExter: " + l4);
     this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressBar.setFinish(this.this$0.c, this.this$0.d, this.this$0.b - this.this$0.c - this.this$0.d - this.this$0.e, this.this$0.e, 3.0F);
@@ -33,7 +33,7 @@ public class QQSettingCleanActivity$ScanSpaceTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQSettingCleanActivity.ScanSpaceTask
  * JD-Core Version:    0.7.0.1
  */

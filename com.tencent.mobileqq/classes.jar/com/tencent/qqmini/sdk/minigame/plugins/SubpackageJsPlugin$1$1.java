@@ -1,8 +1,8 @@
 package com.tencent.qqmini.sdk.minigame.plugins;
 
-import behp;
-import bekr;
-import bexk;
+import bghn;
+import bgkd;
+import bgwc;
 import com.tencent.mobileqq.triton.sdk.game.IGameLauncher;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,7 +14,7 @@ class SubpackageJsPlugin$1$1
   
   public void run()
   {
-    bexk.a().i("SubpackageJsPlugin", "loadSubPackage callback onInitGpkgInfo on JSThread, resCode:" + this.val$resCode + ", dirPath:" + this.val$dirPath + ", error msg=" + this.val$errorMsg);
+    bgwc.a().i("SubpackageJsPlugin", "loadSubPackage callback onInitGpkgInfo on JSThread, resCode:" + this.val$resCode + ", dirPath:" + this.val$dirPath + ", error msg=" + this.val$errorMsg);
     Object localObject;
     if (this.val$resCode != 0)
     {
@@ -52,7 +52,7 @@ class SubpackageJsPlugin$1$1
         localJSONException1.printStackTrace();
         continue;
       }
-      bexk.a().e("SubpackageJsPlugin", "loadSubpackage loadFinish success? " + bool);
+      bgwc.a().e("SubpackageJsPlugin", "loadSubpackage loadFinish success? " + bool);
       this.this$1.val$req.a.a("onLoadSubPackageTaskStateChange", localJSONObject.toString(), -1);
       return;
       localObject = "fail";
@@ -61,7 +61,7 @@ class SubpackageJsPlugin$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.minigame.plugins.SubpackageJsPlugin.1.1
  * JD-Core Version:    0.7.0.1
  */

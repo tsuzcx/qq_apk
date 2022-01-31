@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 
 import android.os.Handler;
 import com.tencent.biz.pubaccount.VideoInfo;
-import qoi;
+import rdm;
 
 class VideoFollowManager$CheckAccountFollowedRunnable
   implements Runnable
@@ -16,9 +16,9 @@ class VideoFollowManager$CheckAccountFollowedRunnable
   
   private boolean a(VideoInfo paramVideoInfo, boolean paramBoolean)
   {
-    if ((paramVideoInfo.j != null) && (paramVideoInfo.j.equals(this.a.j)) && (!paramVideoInfo.c) && (paramVideoInfo.k != paramBoolean))
+    if ((paramVideoInfo.j != null) && (paramVideoInfo.j.equals(this.a.j)) && (!paramVideoInfo.c) && (paramVideoInfo.o != paramBoolean))
     {
-      paramVideoInfo.k = paramBoolean;
+      paramVideoInfo.o = paramBoolean;
       return true;
     }
     return false;
@@ -28,7 +28,7 @@ class VideoFollowManager$CheckAccountFollowedRunnable
   {
     try
     {
-      boolean bool = qoi.a(VideoFollowManager.a(this.this$0), Long.valueOf(this.a.j).longValue());
+      boolean bool = rdm.a(VideoFollowManager.a(this.this$0), Long.valueOf(this.a.j).longValue());
       if (VideoFollowManager.a(this.this$0) == null) {
         return;
       }
@@ -40,7 +40,7 @@ class VideoFollowManager$CheckAccountFollowedRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFollowManager.CheckAccountFollowedRunnable
  * JD-Core Version:    0.7.0.1
  */

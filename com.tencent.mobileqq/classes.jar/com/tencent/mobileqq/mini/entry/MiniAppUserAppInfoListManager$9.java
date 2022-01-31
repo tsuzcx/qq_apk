@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.mini.entry;
 
-import auko;
-import aukp;
-import aukq;
-import aukr;
+import awbv;
+import awbw;
+import awbx;
+import awby;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class MiniAppUserAppInfoListManager$9
   implements Runnable
 {
-  MiniAppUserAppInfoListManager$9(MiniAppUserAppInfoListManager paramMiniAppUserAppInfoListManager, auko paramauko) {}
+  MiniAppUserAppInfoListManager$9(MiniAppUserAppInfoListManager paramMiniAppUserAppInfoListManager, awbv paramawbv) {}
   
   public void run()
   {
@@ -18,18 +18,18 @@ class MiniAppUserAppInfoListManager$9
     if (localObject1 == null) {
       QLog.e("MiniAppUserAppInfoListManager", 1, "saveToDB, app is null.");
     }
-    aukp localaukp;
+    awbw localawbw;
     do
     {
       return;
-      localaukp = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-    } while ((localaukp == null) || (this.val$entity == null));
-    localObject1 = localaukp.a();
-    ((aukr)localObject1).a();
+      localawbw = ((AppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+    } while ((localawbw == null) || (this.val$entity == null));
+    localObject1 = localawbw.a();
+    ((awby)localObject1).a();
     try
     {
-      MiniAppUserAppInfoListManager.access$1100(this.this$0, localaukp, this.val$entity);
-      ((aukr)localObject1).c();
+      MiniAppUserAppInfoListManager.access$1100(this.this$0, localawbw, this.val$entity);
+      ((awby)localObject1).c();
       QLog.w("MiniAppUserAppInfoListManager", 2, "saveToDB, appInfo: " + this.val$entity);
       return;
     }
@@ -42,13 +42,13 @@ class MiniAppUserAppInfoListManager$9
     }
     finally
     {
-      ((aukr)localObject1).b();
+      ((awby)localObject1).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.9
  * JD-Core Version:    0.7.0.1
  */

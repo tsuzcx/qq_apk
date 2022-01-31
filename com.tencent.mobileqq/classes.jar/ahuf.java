@@ -1,187 +1,84 @@
-import android.annotation.TargetApi;
-import android.app.AppOpsManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.soso.SosoInterface;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.NewIntent;
+import mqq.os.MqqHandler;
 
 public class ahuf
+  extends BroadcastReceiver
 {
-  private static ahuf jdField_a_of_type_Ahuf;
-  private ahuh jdField_a_of_type_Ahuh = new ahuh(this, null);
-  private ahuj jdField_a_of_type_Ahuj;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new ahug(this));
-  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  public ahuf(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  private ahuf(AppInterface paramAppInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Ahuh);
-    }
-  }
-  
-  public static ahuf a(AppInterface paramAppInterface)
-  {
-    if (jdField_a_of_type_Ahuf == null) {
-      jdField_a_of_type_Ahuf = new ahuf(paramAppInterface);
-    }
-    return jdField_a_of_type_Ahuf;
-  }
-  
-  public static void a()
-  {
-    if (jdField_a_of_type_Ahuf != null)
+    int j = 1;
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramContext)) || (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM"))) {}
+    do
     {
-      jdField_a_of_type_Ahuf.b();
-      jdField_a_of_type_Ahuf = null;
-    }
-  }
-  
-  private void a(double paramDouble1, double paramDouble2, int paramInt)
-  {
-    int i = 4;
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
-      return;
-    }
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), kp.class);
-    localNewIntent.putExtra("key_latitude", paramDouble1);
-    localNewIntent.putExtra("key_longitude", paramDouble2);
-    localNewIntent.putExtra("k_cmd", 4);
-    localNewIntent.putExtra("key_lbs_template_cookie", paramInt);
-    switch (bbfj.a(BaseApplicationImpl.getApplication().getBaseContext()))
-    {
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      localNewIntent.putExtra("key_lbs_template_network_type", i);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(localNewIntent);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("LBSDetetor", 2, "getLBSTemplateIds. req:" + paramInt + " netType:" + i + " latitude:" + paramDouble1 + " longitude:" + paramDouble2);
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 5;
-    }
-  }
-  
-  private void a(boolean paramBoolean, ArrayList<String> paramArrayList, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "callback. isSuccess: " + paramBoolean + " cookie: " + paramInt);
-    }
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
-    if (this.jdField_a_of_type_Ahuj != null)
-    {
-      Object localObject = paramArrayList;
-      if (paramArrayList == null) {
-        localObject = new ArrayList(1);
-      }
-      this.jdField_a_of_type_Ahuj.a(paramInt, paramBoolean, (ArrayList)localObject);
-    }
-  }
-  
-  private void b()
-  {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "destroy");
-      }
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Ahuh);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-    }
-    this.jdField_a_of_type_Ahuj = null;
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-  }
-  
-  @TargetApi(19)
-  public void a(int paramInt)
-  {
-    for (;;)
-    {
-      try
+      do
       {
-        if (Build.VERSION.SDK_INT < 19) {
-          continue;
-        }
-        Object localObject = BaseApplicationImpl.getApplication().getBaseContext();
-        AppOpsManager localAppOpsManager = (AppOpsManager)((Context)localObject).getSystemService("appops");
-        localObject = ((Context)localObject).getApplicationInfo();
-        int i = localAppOpsManager.checkOpNoThrow("android:fine_location", ((ApplicationInfo)localObject).uid, ((ApplicationInfo)localObject).packageName);
-        int j = localAppOpsManager.checkOpNoThrow("android:coarse_location", ((ApplicationInfo)localObject).uid, ((ApplicationInfo)localObject).packageName);
-        if ((i == 0) && (j == 0))
-        {
-          bool1 = true;
-          bool2 = bool1;
-        }
-      }
-      catch (Exception localException1)
-      {
-        boolean bool1 = true;
-        boolean bool2 = bool1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("LBSDetetor", 2, "something wrong:" + localException1.toString());
-        bool2 = bool1;
-        continue;
-        bool2 = true;
-        continue;
-      }
-      try
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("LBSDetetor", 2, "check permission by AppOpsManager:" + bool1);
-          bool2 = bool1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("LBSDetetor", 2, "startCheckPermissionAndDetetLocation. hasPermission:" + bool2);
-        }
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
-        if (bool2)
-        {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(paramInt, 30000L);
-          SosoInterface.a(new ahui(this, 0, true, true, 30000L, false, false, "NewFlowCameraActivity", paramInt));
-        }
-        if (this.jdField_a_of_type_Ahuj != null) {
-          this.jdField_a_of_type_Ahuj.a(paramInt, bool2);
-        }
         return;
-      }
-      catch (Exception localException2)
+        if (this.a.getActivity() != null) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.history.C2CAllFragment", 2, "OpenDevLockReceiver get activity is null");
+      return;
+    } while (this.a.jdField_a_of_type_AndroidContentBroadcastReceiver == null);
+    this.a.getActivity().getApplicationContext().unregisterReceiver(this.a.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.a.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    boolean bool = paramIntent.getBooleanExtra("auth_dev_open", false);
+    int k = paramIntent.getIntExtra("auth_dev_open_cb_reason", 0);
+    paramIntent = paramIntent.getByteArrayExtra("devlock_roam_sig");
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder().append("openDevLock callback isOpen: ").append(bool).append(", reason: ").append(k).append(", da2 length: ");
+      if (paramIntent == null)
       {
-        continue;
+        i = 0;
+        QLog.d("Q.history.C2CAllFragment", 2, i);
       }
-      bool1 = false;
     }
-  }
-  
-  public void a(ahuj paramahuj)
-  {
-    this.jdField_a_of_type_Ahuj = paramahuj;
+    else
+    {
+      QQAppInterface localQQAppInterface = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      String str = k + "";
+      if (!bool) {
+        break label301;
+      }
+      paramContext = "true";
+      label211:
+      VipUtils.a(localQQAppInterface, "chat_history", "LockSet", "opendev_amount", 1, 0, new String[] { str, "0", paramContext });
+      paramContext = this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(29);
+      if (!bool) {
+        break label307;
+      }
+    }
+    label301:
+    label307:
+    for (int i = j;; i = 0)
+    {
+      paramContext.arg1 = i;
+      paramContext.arg2 = k;
+      paramContext.obj = paramIntent;
+      this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(paramContext, 500L);
+      return;
+      i = paramIntent.length;
+      break;
+      paramContext = "false";
+      break label211;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahuf
  * JD-Core Version:    0.7.0.1
  */

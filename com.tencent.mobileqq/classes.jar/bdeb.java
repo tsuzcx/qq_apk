@@ -1,32 +1,10 @@
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.open.agent.TroopAbilityPreVerificationFragment;
-import com.tencent.qphone.base.util.QLog;
-
-public class bdeb
-  extends naq
+class bdeb
 {
-  public bdeb(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
-  
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
-  {
-    QLog.d("TroopAbility.PreVerification", 1, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID);
-    if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-    {
-      if (!paramOpenID.openID.equals(this.a.b))
-      {
-        this.a.d();
-        TroopAbilityPreVerificationFragment.a(this.a);
-        return;
-      }
-      this.a.c();
-      return;
-    }
-    this.a.c(ajya.a(2131715140));
-  }
+  private static final bddz a = new bddz(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdeb
  * JD-Core Version:    0.7.0.1
  */

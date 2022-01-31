@@ -1,19 +1,14 @@
-import android.content.Context;
-import com.tencent.mobileqq.data.MessageForFile;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
 
-class adoy
-  implements bcwm
+public class adoy
+  extends Handler
 {
-  adoy(adox paramadox, MessageForFile paramMessageForFile, Context paramContext) {}
-  
-  public void a(int paramInt)
-  {
-    apug.a(this.jdField_a_of_type_Adox.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
-  }
+  public adoy(RecentLoginDevActivity paramRecentLoginDevActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adoy
  * JD-Core Version:    0.7.0.1
  */

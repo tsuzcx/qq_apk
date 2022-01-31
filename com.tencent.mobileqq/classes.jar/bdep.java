@@ -1,264 +1,201 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v4.util.LruCache;
+import android.content.Context;
+import com.tencent.commonsdk.soload.SoLoadUtilNew;
+import com.tencent.mobileqq.utils.AmrInputStreamWrapper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
-class bdep
-  implements bdji
+public class bdep
 {
-  bdep(bdeo parambdeo, bdeq parambdeq, String paramString) {}
+  private static boolean jdField_a_of_type_Boolean;
+  private int jdField_a_of_type_Int = 14;
+  private long jdField_a_of_type_Long;
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[320];
+  private int jdField_b_of_type_Int = 1;
+  private long jdField_b_of_type_Long;
+  private byte[] jdField_b_of_type_ArrayOfByte;
+  private int jdField_c_of_type_Int;
+  private byte[] jdField_c_of_type_ArrayOfByte = new byte[320];
+  private int jdField_d_of_type_Int;
+  private byte[] jdField_d_of_type_ArrayOfByte = new byte[10240];
   
-  public void a(String paramString1, String arg2, String paramString3)
+  public bdep(Context paramContext, int paramInt)
   {
+    if (!jdField_a_of_type_Boolean) {}
     try
     {
-      Bitmap localBitmap = BitmapFactory.decodeFile(paramString3);
-      bdii.c("ImageLoader", "-->imgDownloaded path = " + ??? + " localUrl = " + paramString3);
-      localBitmap = bdfb.a(bcyb.a().a(), localBitmap, 50, 50);
-      synchronized (bdeo.jdField_a_of_type_ArrayOfByte)
+      bool = SoLoadUtilNew.loadSoByName(paramContext, "amrnb");
+      if (bool)
       {
-        this.jdField_a_of_type_Bdeo.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramString1, localBitmap);
-        this.jdField_a_of_type_Bdeq.a(this.jdField_a_of_type_JavaLangString, localBitmap, paramString3);
+        jdField_a_of_type_Boolean = true;
+        this.jdField_b_of_type_Int = paramInt;
+        this.jdField_a_of_type_Int = bdas.a(paramInt);
+        this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
+        this.jdField_a_of_type_Long = AmrInputStreamWrapper.CreateEncoder();
+        this.jdField_b_of_type_Long = AmrInputStreamWrapper.GsmAmrEncoderNew(this.jdField_a_of_type_Long);
+        AmrInputStreamWrapper.GsmAmrEncoderInitialize(this.jdField_b_of_type_Long);
         return;
       }
-      return;
     }
-    catch (OutOfMemoryError paramString1)
+    catch (Throwable paramContext)
     {
-      paramString1.printStackTrace();
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Pcm2AmrWrapper", 2, "libamrnb.so load failed, exception info : " + QLog.getStackTraceString(paramContext));
+        }
+        boolean bool = false;
+        continue;
+        try
+        {
+          System.loadLibrary("amrnb");
+          jdField_a_of_type_Boolean = true;
+        }
+        catch (UnsatisfiedLinkError paramContext) {}
+        if (QLog.isColorLevel()) {
+          QLog.e("Pcm2AmrWrapper", 2, "libamrnb.so load system way failed, exception info : " + QLog.getStackTraceString(paramContext));
+        }
+      }
+    }
+  }
+  
+  private void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    if ((this.jdField_a_of_type_Long == 0L) || (this.jdField_b_of_type_Long == 0L)) {
+      throw new IllegalStateException("not open");
+    }
+    if (AmrInputStreamWrapper.GsmAmrEncoderEncode(this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, paramArrayOfByte1, 0, paramArrayOfByte2, 0) < 0) {
+      b();
     }
   }
   
   /* Error */
-  public void b(String paramString1, String arg2, String paramString3)
+  public void a()
   {
     // Byte code:
-    //   0: ldc 33
-    //   2: new 35	java/lang/StringBuilder
-    //   5: dup
-    //   6: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   9: ldc 96
-    //   11: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   14: aload_2
-    //   15: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   18: ldc 44
-    //   20: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: aload_3
-    //   24: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokestatic 54	bdii:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   33: invokestatic 101	bdfn:a	()Z
-    //   36: ifne +157 -> 193
-    //   39: new 103	java/net/URL
-    //   42: dup
-    //   43: aload_0
-    //   44: getfield 18	bdep:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   47: invokespecial 106	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   50: invokevirtual 110	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   53: checkcast 112	java/net/HttpURLConnection
-    //   56: astore_2
-    //   57: aload_2
-    //   58: sipush 5000
-    //   61: invokevirtual 116	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   64: aload_2
-    //   65: ldc 118
-    //   67: invokevirtual 121	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   70: aload_2
-    //   71: invokevirtual 125	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   74: astore 4
-    //   76: aload 4
-    //   78: astore_2
-    //   79: aload 4
-    //   81: invokestatic 129	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
-    //   84: astore 5
-    //   86: aload 4
-    //   88: ifnull +8 -> 96
-    //   91: aload 4
-    //   93: invokevirtual 134	java/io/InputStream:close	()V
-    //   96: aload 5
-    //   98: astore_2
-    //   99: iconst_0
-    //   100: ifeq +11 -> 111
-    //   103: new 136	java/lang/NullPointerException
-    //   106: dup
-    //   107: invokespecial 137	java/lang/NullPointerException:<init>	()V
-    //   110: athrow
-    //   111: ldc 33
-    //   113: new 35	java/lang/StringBuilder
-    //   116: dup
-    //   117: invokespecial 36	java/lang/StringBuilder:<init>	()V
-    //   120: ldc 139
-    //   122: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: aload_2
-    //   126: invokevirtual 142	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   129: invokevirtual 48	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokestatic 54	bdii:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   135: aload_2
-    //   136: ifnull +57 -> 193
-    //   139: invokestatic 59	bcyb:a	()Lbcyb;
-    //   142: invokevirtual 62	bcyb:a	()Landroid/content/Context;
-    //   145: aload_2
-    //   146: bipush 50
-    //   148: bipush 50
-    //   150: invokestatic 67	bdfb:a	(Landroid/content/Context;Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
-    //   153: astore 4
-    //   155: getstatic 72	bdeo:jdField_a_of_type_ArrayOfByte	[B
-    //   158: astore_2
-    //   159: aload_2
-    //   160: monitorenter
-    //   161: aload_0
-    //   162: getfield 14	bdep:jdField_a_of_type_Bdeo	Lbdeo;
-    //   165: getfield 75	bdeo:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
-    //   168: aload_1
-    //   169: aload 4
-    //   171: invokevirtual 81	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   174: pop
-    //   175: aload_2
-    //   176: monitorexit
-    //   177: aload_0
-    //   178: getfield 16	bdep:jdField_a_of_type_Bdeq	Lbdeq;
-    //   181: aload_0
-    //   182: getfield 18	bdep:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   185: aload 4
-    //   187: aload_3
-    //   188: invokeinterface 86 4 0
-    //   193: return
-    //   194: astore_2
-    //   195: aload_2
-    //   196: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   199: goto -103 -> 96
-    //   202: astore_2
-    //   203: aload_2
-    //   204: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   207: aload 5
-    //   209: astore_2
-    //   210: goto -99 -> 111
-    //   213: astore 5
-    //   215: aconst_null
-    //   216: astore 4
-    //   218: aload 4
-    //   220: astore_2
-    //   221: aload 5
-    //   223: invokevirtual 144	java/net/MalformedURLException:printStackTrace	()V
-    //   226: aload 4
-    //   228: ifnull +8 -> 236
-    //   231: aload 4
-    //   233: invokevirtual 134	java/io/InputStream:close	()V
-    //   236: iconst_0
-    //   237: ifeq +142 -> 379
-    //   240: new 136	java/lang/NullPointerException
-    //   243: dup
-    //   244: invokespecial 137	java/lang/NullPointerException:<init>	()V
-    //   247: athrow
-    //   248: astore_2
-    //   249: aload_2
-    //   250: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   253: goto -17 -> 236
-    //   256: astore_2
-    //   257: aload_2
-    //   258: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   261: aconst_null
-    //   262: astore_2
-    //   263: goto -152 -> 111
-    //   266: astore 5
-    //   268: aconst_null
-    //   269: astore 4
-    //   271: aload 4
-    //   273: astore_2
-    //   274: aload 5
-    //   276: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   279: aload 4
-    //   281: ifnull +8 -> 289
-    //   284: aload 4
-    //   286: invokevirtual 134	java/io/InputStream:close	()V
-    //   289: iconst_0
-    //   290: ifeq +89 -> 379
-    //   293: new 136	java/lang/NullPointerException
-    //   296: dup
-    //   297: invokespecial 137	java/lang/NullPointerException:<init>	()V
-    //   300: athrow
-    //   301: astore_2
-    //   302: aload_2
-    //   303: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   306: goto -17 -> 289
-    //   309: astore_2
-    //   310: aload_2
-    //   311: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   314: aconst_null
-    //   315: astore_2
-    //   316: goto -205 -> 111
-    //   319: astore_1
-    //   320: aconst_null
-    //   321: astore_2
-    //   322: aload_2
-    //   323: ifnull +7 -> 330
-    //   326: aload_2
-    //   327: invokevirtual 134	java/io/InputStream:close	()V
-    //   330: iconst_0
-    //   331: ifeq +11 -> 342
-    //   334: new 136	java/lang/NullPointerException
-    //   337: dup
-    //   338: invokespecial 137	java/lang/NullPointerException:<init>	()V
-    //   341: athrow
-    //   342: aload_1
-    //   343: athrow
-    //   344: astore_2
-    //   345: aload_2
-    //   346: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   349: goto -19 -> 330
-    //   352: astore_2
-    //   353: aload_2
-    //   354: invokevirtual 143	java/io/IOException:printStackTrace	()V
-    //   357: goto -15 -> 342
-    //   360: astore_1
-    //   361: aload_2
-    //   362: monitorexit
-    //   363: aload_1
-    //   364: athrow
-    //   365: astore_1
-    //   366: goto -44 -> 322
-    //   369: astore 5
-    //   371: goto -100 -> 271
-    //   374: astore 5
-    //   376: goto -158 -> 218
-    //   379: aconst_null
-    //   380: astore_2
-    //   381: goto -270 -> 111
+    //   0: aload_0
+    //   1: getfield 62	bdep:jdField_b_of_type_Long	J
+    //   4: lconst_0
+    //   5: lcmp
+    //   6: ifeq +14 -> 20
+    //   9: aload_0
+    //   10: getfield 56	bdep:jdField_a_of_type_Long	J
+    //   13: aload_0
+    //   14: getfield 62	bdep:jdField_b_of_type_Long	J
+    //   17: invokestatic 121	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderCleanup	(JJ)V
+    //   20: aload_0
+    //   21: getfield 62	bdep:jdField_b_of_type_Long	J
+    //   24: lconst_0
+    //   25: lcmp
+    //   26: ifeq +14 -> 40
+    //   29: aload_0
+    //   30: getfield 56	bdep:jdField_a_of_type_Long	J
+    //   33: aload_0
+    //   34: getfield 62	bdep:jdField_b_of_type_Long	J
+    //   37: invokestatic 124	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderDelete	(JJ)V
+    //   40: aload_0
+    //   41: lconst_0
+    //   42: putfield 62	bdep:jdField_b_of_type_Long	J
+    //   45: aload_0
+    //   46: invokevirtual 117	bdep:b	()V
+    //   49: return
+    //   50: astore_1
+    //   51: aload_0
+    //   52: lconst_0
+    //   53: putfield 62	bdep:jdField_b_of_type_Long	J
+    //   56: aload_1
+    //   57: athrow
+    //   58: astore_1
+    //   59: aload_0
+    //   60: getfield 62	bdep:jdField_b_of_type_Long	J
+    //   63: lconst_0
+    //   64: lcmp
+    //   65: ifeq +14 -> 79
+    //   68: aload_0
+    //   69: getfield 56	bdep:jdField_a_of_type_Long	J
+    //   72: aload_0
+    //   73: getfield 62	bdep:jdField_b_of_type_Long	J
+    //   76: invokestatic 124	com/tencent/mobileqq/utils/AmrInputStreamWrapper:GsmAmrEncoderDelete	(JJ)V
+    //   79: aload_0
+    //   80: lconst_0
+    //   81: putfield 62	bdep:jdField_b_of_type_Long	J
+    //   84: aload_1
+    //   85: athrow
+    //   86: astore_1
+    //   87: aload_0
+    //   88: lconst_0
+    //   89: putfield 62	bdep:jdField_b_of_type_Long	J
+    //   92: aload_1
+    //   93: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	384	0	this	bdep
-    //   0	384	1	paramString1	String
-    //   0	384	3	paramString3	String
-    //   74	211	4	localObject	Object
-    //   84	124	5	localBitmap	Bitmap
-    //   213	9	5	localMalformedURLException1	java.net.MalformedURLException
-    //   266	9	5	localIOException1	java.io.IOException
-    //   369	1	5	localIOException2	java.io.IOException
-    //   374	1	5	localMalformedURLException2	java.net.MalformedURLException
+    //   0	94	0	this	bdep
+    //   50	7	1	localObject1	Object
+    //   58	27	1	localObject2	Object
+    //   86	7	1	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   91	96	194	java/io/IOException
-    //   103	111	202	java/io/IOException
-    //   39	76	213	java/net/MalformedURLException
-    //   231	236	248	java/io/IOException
-    //   240	248	256	java/io/IOException
-    //   39	76	266	java/io/IOException
-    //   284	289	301	java/io/IOException
-    //   293	301	309	java/io/IOException
-    //   39	76	319	finally
-    //   326	330	344	java/io/IOException
-    //   334	342	352	java/io/IOException
-    //   161	177	360	finally
-    //   361	363	360	finally
-    //   79	86	365	finally
-    //   221	226	365	finally
-    //   274	279	365	finally
-    //   79	86	369	java/io/IOException
-    //   79	86	374	java/net/MalformedURLException
+    //   20	40	50	finally
+    //   0	20	58	finally
+    //   59	79	86	finally
+  }
+  
+  public byte[] a(byte[] paramArrayOfByte, int paramInt)
+  {
+    if (this.jdField_c_of_type_Int + paramInt > 10240) {
+      this.jdField_d_of_type_ArrayOfByte = new byte[this.jdField_c_of_type_Int + paramInt];
+    }
+    if (this.jdField_c_of_type_Int + paramInt < 320)
+    {
+      System.arraycopy(paramArrayOfByte, 0, this.jdField_c_of_type_ArrayOfByte, this.jdField_c_of_type_Int, paramInt);
+      return null;
+    }
+    System.arraycopy(this.jdField_c_of_type_ArrayOfByte, 0, this.jdField_d_of_type_ArrayOfByte, 0, this.jdField_c_of_type_Int);
+    System.arraycopy(paramArrayOfByte, 0, this.jdField_d_of_type_ArrayOfByte, this.jdField_c_of_type_Int, paramInt);
+    this.jdField_d_of_type_Int = (this.jdField_c_of_type_Int + paramInt);
+    paramInt = this.jdField_d_of_type_Int % 320;
+    this.jdField_c_of_type_Int = paramInt;
+    if (paramInt != 0) {
+      System.arraycopy(this.jdField_d_of_type_ArrayOfByte, this.jdField_d_of_type_Int - paramInt, this.jdField_c_of_type_ArrayOfByte, 0, paramInt);
+    }
+    paramArrayOfByte = new byte[this.jdField_d_of_type_Int / 320 * this.jdField_a_of_type_Int];
+    int i = 0;
+    paramInt = 0;
+    while (this.jdField_d_of_type_Int >= 320)
+    {
+      System.arraycopy(this.jdField_d_of_type_ArrayOfByte, paramInt, this.jdField_a_of_type_ArrayOfByte, 0, 320);
+      try
+      {
+        a(this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte);
+        System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte, i, this.jdField_b_of_type_ArrayOfByte.length);
+        i += this.jdField_b_of_type_ArrayOfByte.length;
+        paramInt += 320;
+        this.jdField_d_of_type_Int -= 320;
+      }
+      catch (IOException paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Pcm2AmrWrapper", 2, "========mPcm2Amr.pcm2amrParser==IOException=====", paramArrayOfByte);
+        }
+        b();
+        return null;
+      }
+    }
+    if (i == paramArrayOfByte.length) {
+      return paramArrayOfByte;
+    }
+    byte[] arrayOfByte = new byte[i];
+    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, i);
+    return arrayOfByte;
+  }
+  
+  public void b()
+  {
+    this.jdField_c_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdep
  * JD-Core Version:    0.7.0.1
  */

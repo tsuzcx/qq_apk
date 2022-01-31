@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import bcfo;
+import beep;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ import mqq.manager.TicketManager;
 public class SwiftBrowserStatistics$1
   implements Runnable
 {
-  public SwiftBrowserStatistics$1(bcfo parambcfo) {}
+  public SwiftBrowserStatistics$1(beep parambeep) {}
   
   public void run()
   {
@@ -33,7 +33,7 @@ public class SwiftBrowserStatistics$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.1
  * JD-Core Version:    0.7.0.1
  */

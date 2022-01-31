@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.DynamicPhotoData;
+import android.content.Intent;
+import com.tencent.qqmini.sdk.runtime.widget.InnerWebView;
 
-public final class bhfd
-  implements Parcelable.Creator<DynamicPhotoData>
+class bhfd
+  implements bgje
 {
-  public DynamicPhotoData a(Parcel paramParcel)
-  {
-    return new DynamicPhotoData(paramParcel);
-  }
+  bhfd(bhex parambhex) {}
   
-  public DynamicPhotoData[] a(int paramInt)
+  public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    return new DynamicPhotoData[paramInt];
+    if (paramInt1 == 2019)
+    {
+      this.a.a.a(paramInt1, paramInt2, paramIntent);
+      bgjd.a().b(this);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhfd
  * JD-Core Version:    0.7.0.1
  */

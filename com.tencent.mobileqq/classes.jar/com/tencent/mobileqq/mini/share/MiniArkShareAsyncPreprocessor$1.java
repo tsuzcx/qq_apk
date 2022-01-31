@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.share;
 
-import alwn;
 import android.os.Bundle;
+import annk;
 import com.tencent.mobileqq.mini.launch.CmdCallback.Stub;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
@@ -9,7 +9,7 @@ import org.json.JSONObject;
 class MiniArkShareAsyncPreprocessor$1
   extends CmdCallback.Stub
 {
-  MiniArkShareAsyncPreprocessor$1(MiniArkShareAsyncPreprocessor paramMiniArkShareAsyncPreprocessor, JSONObject paramJSONObject, alwn paramalwn, Object paramObject, String paramString) {}
+  MiniArkShareAsyncPreprocessor$1(MiniArkShareAsyncPreprocessor paramMiniArkShareAsyncPreprocessor, JSONObject paramJSONObject, annk paramannk, Object paramObject, String paramString) {}
   
   public void onCmdResult(boolean paramBoolean, Bundle paramBundle)
   {
@@ -22,7 +22,7 @@ class MiniArkShareAsyncPreprocessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniArkShareAsyncPreprocessor.1
  * JD-Core Version:    0.7.0.1
  */

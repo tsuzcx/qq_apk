@@ -1,41 +1,23 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.database.DiscoverBannerVideoEntry.BannerInfo;
 
-class uqg
-  implements View.OnTouchListener
+public final class uqg
+  implements Parcelable.Creator<DiscoverBannerVideoEntry.BannerInfo>
 {
-  uqg(uqe paramuqe) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public DiscoverBannerVideoEntry.BannerInfo a(Parcel paramParcel)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      if (uqe.a(this.a)) {
-        break label105;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(uqe.a(this.a), uqe.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, uqe.a(this.a).jdField_a_of_type_Boolean);
-      uqe.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
-      paramView = this.a;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
-        break label100;
-      }
-    }
-    label100:
-    for (boolean bool = true;; bool = false)
-    {
-      uqe.a(paramView, bool);
-      return false;
-    }
-    label105:
-    this.a.b();
-    return false;
+    return new DiscoverBannerVideoEntry.BannerInfo(paramParcel);
+  }
+  
+  public DiscoverBannerVideoEntry.BannerInfo[] a(int paramInt)
+  {
+    return new DiscoverBannerVideoEntry.BannerInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uqg
  * JD-Core Version:    0.7.0.1
  */

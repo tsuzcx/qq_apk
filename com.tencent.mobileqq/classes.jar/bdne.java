@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.open.filedownload.ApkFileDownloadFragment;
+import android.support.v7.widget.GridLayoutManager.SpanSizeLookup;
 
-public class bdne
-  implements View.OnClickListener
+class bdne
+  extends GridLayoutManager.SpanSizeLookup
 {
-  public bdne(ApkFileDownloadFragment paramApkFileDownloadFragment) {}
+  bdne(bdnd parambdnd) {}
   
-  public void onClick(View paramView)
+  public int getSpanSize(int paramInt)
   {
-    ApkFileDownloadFragment.a(this.a, true);
+    int i = 3;
+    switch (this.a.getItemViewType(paramInt))
+    {
+    default: 
+      i = 1;
+    case 1: 
+    case 2: 
+    case 4: 
+      return i;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdne
  * JD-Core Version:    0.7.0.1
  */

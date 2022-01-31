@@ -10,12 +10,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
-import bcql;
-import bdfk;
-import bdkx;
-import bdlb;
-import bdld;
-import bgyi;
+import bfei;
+import bfju;
+import bfjy;
+import bfka;
+import bizf;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
@@ -28,6 +27,7 @@ import com.tencent.mobileqq.mini.sdk.LaunchParam;
 import com.tencent.mobileqq.mini.webview.JsRuntime;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Set;
 import org.json.JSONException;
@@ -43,14 +43,14 @@ public class InternalJSPlugin
   private static final Set<String> S_EVENT_MAP = new InternalJSPlugin.1();
   public static final String TAG = "InternalJSPlugin";
   public Set<String> eventMap;
-  private bdld mDownloadListener = new InternalJSPlugin.6(this);
+  private bfka mDownloadListener = new InternalJSPlugin.8(this);
   private String mDownloadNativeAppId;
   private String mDownloadPackageName;
   private String mDownloadUrl;
   
   private void confirmOpenAppDetailPage(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, JsRuntime paramJsRuntime, int paramInt)
   {
-    paramActivity.runOnUiThread(new InternalJSPlugin.5(this, paramActivity, paramString3, paramString4, paramString1, paramString2, paramJsRuntime, paramString5, paramInt));
+    paramActivity.runOnUiThread(new InternalJSPlugin.7(this, paramActivity, paramString3, paramString4, paramString1, paramString2, paramJsRuntime, paramString5, paramInt));
   }
   
   private void downloadByDownloadApi(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
@@ -59,16 +59,16 @@ public class InternalJSPlugin
     this.mDownloadNativeAppId = paramString1;
     this.mDownloadPackageName = paramString2;
     Bundle localBundle = new Bundle();
-    localBundle.putString(bdlb.b, paramString1);
-    localBundle.putString(bdlb.j, paramString4);
-    localBundle.putString(bdlb.f, paramString2);
-    localBundle.putInt(bdlb.k, 2);
-    localBundle.putString(bdlb.i, "MiniApp");
-    localBundle.putString(bdlb.l, paramString3);
-    localBundle.putInt(bdlb.H, 1);
-    bdkx.a(this.mDownloadListener);
-    bdkx.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
-    bcql.a(paramActivity, "开始下载", 1).a();
+    localBundle.putString(bfjy.b, paramString1);
+    localBundle.putString(bfjy.j, paramString4);
+    localBundle.putString(bfjy.f, paramString2);
+    localBundle.putInt(bfjy.k, 2);
+    localBundle.putString(bfjy.i, "MiniApp");
+    localBundle.putString(bfjy.l, paramString3);
+    localBundle.putInt(bfjy.H, 1);
+    bfju.a(this.mDownloadListener);
+    bfju.a(paramActivity, localBundle, "biz_src_miniapp", null, 0);
+    QQToast.a(paramActivity, "开始下载", 1).a();
     InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "qqdownload");
   }
   
@@ -132,13 +132,13 @@ public class InternalJSPlugin
     localBundle.putString("big_brother_source_key", "biz_src_miniapp");
     if ((paramContext instanceof BasePluginActivity))
     {
-      bdfk.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
+      bfei.b(((BasePluginActivity)paramContext).getOutActivity(), localBundle);
       InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
     if ((paramContext instanceof Activity))
     {
-      bdfk.b((Activity)paramContext, localBundle);
+      bfei.b((Activity)paramContext, localBundle);
       InnerAppReportDc4239.innerAppReport(this.jsPluginEngine.appBrandRuntime.getApkgInfo().appConfig, null, "launchapp", "downloadapp", "yybdownload");
       return;
     }
@@ -227,7 +227,7 @@ public class InternalJSPlugin
             break label262;
             paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(0, 0);
             continue;
-            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772278, 0);
+            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772292, 0);
           }
           continue;
           localBundle = new Bundle();
@@ -297,7 +297,7 @@ public class InternalJSPlugin
             break label846;
             paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(0, 0);
             break;
-            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772278, 0);
+            paramBaseJsPluginEngine.getActivityContext().overridePendingTransition(2130772292, 0);
             break;
             break label296;
             label803:
@@ -413,7 +413,7 @@ public class InternalJSPlugin
       {
         try
         {
-          ((JSONObject)localObject1).put("qua", bgyi.a());
+          ((JSONObject)localObject1).put("qua", bizf.a());
           this.jsPluginEngine.callbackJsEventOK(paramJsRuntime, paramString1, (JSONObject)localObject1, paramInt);
           return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
         }
@@ -472,7 +472,7 @@ public class InternalJSPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.InternalJSPlugin
  * JD-Core Version:    0.7.0.1
  */

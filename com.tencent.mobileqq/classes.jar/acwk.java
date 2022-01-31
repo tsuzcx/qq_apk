@@ -1,20 +1,32 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.qphone.base.util.QLog;
 
-class acwk
-  implements bcww
+public class acwk
+  implements OnCompositionLoadedListener
 {
-  acwk(acwi paramacwi) {}
+  public acwk(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if (paramBaseResp.errCode != 0) {
-      acwi.a(this.a, 1, 2131693651);
+    if ((QLog.isColorLevel()) || (paramLottieComposition == null)) {
+      QLog.d("ColorScreenManager", 1, "onCompositionLoaded: composition= " + paramLottieComposition);
     }
+    if (paramLottieComposition == null)
+    {
+      bdqk.a(this.a.this$0.app, "individual_v2_colorscreen_parse_fail", "0", "", Integer.toString(this.a.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
+      bdqj.a("individual_v2_colorscreen_parse_fail", "id:" + this.a.jdField_a_of_type_Int);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition = paramLottieComposition;
+    this.a.this$0.b.postDelayed(this.a, 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acwk
  * JD-Core Version:    0.7.0.1
  */

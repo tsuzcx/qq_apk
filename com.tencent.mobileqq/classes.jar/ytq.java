@@ -1,34 +1,10 @@
-import com.tencent.image.URLDrawable;
-import java.net.URL;
-
-class ytq
-  implements zaz
+public abstract interface ytq
 {
-  ytq(ytp paramytp) {}
-  
-  public void a(URLDrawable paramURLDrawable)
-  {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
-    {
-      yxp.b("GdtBannerImageView", String.format("onLoadSuccessful %s", new Object[] { paramURLDrawable }));
-      return;
-    }
-  }
-  
-  public void b(URLDrawable paramURLDrawable)
-  {
-    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
-    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
-    {
-      yxp.b("GdtBannerImageView", String.format("onLoadFailed %s", new Object[] { paramURLDrawable }));
-      return;
-    }
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ytq
  * JD-Core Version:    0.7.0.1
  */

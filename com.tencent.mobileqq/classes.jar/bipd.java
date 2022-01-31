@@ -1,21 +1,27 @@
-import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-class bipd
-  implements bjos<biwo>
+public class bipd
+  extends amiz
 {
-  bipd(bipc parambipc) {}
-  
-  public void a(@Nullable biwo parambiwo)
+  public bipd(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    if (parambiwo == null) {
-      return;
-    }
-    bipc.a(this.a, parambiwo);
+    super(paramQQAppInterface, paramProxyManager);
+  }
+  
+  protected void a()
+  {
+    bipb.a().c();
+  }
+  
+  protected void b()
+  {
+    bipb.a().d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bipd
  * JD-Core Version:    0.7.0.1
  */

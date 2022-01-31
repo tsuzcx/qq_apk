@@ -1,76 +1,132 @@
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.manager.Manager;
+
 public class amce
-  extends amcc
+  implements Manager
 {
-  public float a;
-  public float b;
-  public boolean b;
-  public float c;
-  public boolean c;
-  public float d;
-  public float e;
-  public int e;
-  public float f;
-  public int f;
-  public float g;
-  public int g;
-  public float h;
-  public int h;
-  public int i;
-  public int j = 1;
+  private amcg jdField_a_of_type_Amcg;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private boolean jdField_a_of_type_Boolean;
+  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
+  private amcc[] jdField_a_of_type_ArrayOfAmcc = new amcc[4];
+  private boolean jdField_b_of_type_Boolean;
+  private int[] jdField_b_of_type_ArrayOfInt = new int[0];
   
-  public amce()
+  public amce(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_e_of_type_Int = 0;
-    this.jdField_f_of_type_Int = 100;
-    this.jdField_g_of_type_Int = 100;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Amcg = new amcg(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public amce a()
+  private void a(int[] paramArrayOfInt)
   {
-    amce localamce = new amce();
-    localamce.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
-    localamce.jdField_b_of_type_Float = this.d;
-    localamce.jdField_c_of_type_Float = this.jdField_a_of_type_Float;
-    localamce.d = this.jdField_b_of_type_Float;
-    this.jdField_a_of_type_JavaLangString += "reverse";
-    boolean bool;
-    if (!this.jdField_b_of_type_Boolean)
+    int j = paramArrayOfInt.length;
+    int i = 0;
+    while (i < j)
     {
-      bool = true;
-      localamce.jdField_b_of_type_Boolean = bool;
-      localamce.jdField_b_of_type_Int = this.jdField_b_of_type_Int;
-      localamce.jdField_b_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      localamce.jdField_f_of_type_Int = this.jdField_g_of_type_Int;
-      localamce.jdField_g_of_type_Int = this.jdField_f_of_type_Int;
-      localamce.jdField_h_of_type_Int = this.i;
-      localamce.i = this.jdField_h_of_type_Int;
-      if (!this.jdField_c_of_type_Boolean) {
-        break label214;
+      int k = paramArrayOfInt[i];
+      long l = System.currentTimeMillis();
+      amcc localamcc = a(k);
+      if (localamcc != null)
+      {
+        localamcc.a();
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.db.Cache", 2, "cacheManager init cache:" + localamcc.getClass().getName() + " cost=" + (System.currentTimeMillis() - l));
+        }
+        localamcc.a(0);
       }
-      localamce.jdField_e_of_type_Float = this.jdField_e_of_type_Float;
-      localamce.jdField_g_of_type_Float = this.jdField_g_of_type_Float;
-      localamce.jdField_f_of_type_Float = this.jdField_f_of_type_Float;
+      i += 1;
     }
-    for (localamce.jdField_h_of_type_Float = this.jdField_h_of_type_Float;; localamce.jdField_h_of_type_Float = this.jdField_f_of_type_Float)
+  }
+  
+  public amcc a(int paramInt)
+  {
+    amcc localamcc = this.jdField_a_of_type_ArrayOfAmcc[paramInt];
+    if (localamcc == null) {}
+    for (;;)
     {
-      localamce.jdField_e_of_type_Int = this.jdField_e_of_type_Int;
-      localamce.jdField_c_of_type_Boolean = this.jdField_c_of_type_Boolean;
-      localamce.j = this.j;
-      localamce.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      localamce.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-      return localamce;
-      bool = false;
-      break;
-      label214:
-      localamce.jdField_e_of_type_Float = this.jdField_g_of_type_Float;
-      localamce.jdField_g_of_type_Float = this.jdField_e_of_type_Float;
-      localamce.jdField_f_of_type_Float = this.jdField_h_of_type_Float;
+      synchronized (this.jdField_a_of_type_ArrayOfAmcc)
+      {
+        localamcc = this.jdField_a_of_type_ArrayOfAmcc[paramInt];
+        if (localamcc != null) {
+          return localamcc;
+        }
+        long l = System.currentTimeMillis();
+        switch (paramInt)
+        {
+        case 2: 
+          if ((localamcc != null) && (this.jdField_a_of_type_ArrayOfAmcc[paramInt] == null)) {
+            this.jdField_a_of_type_ArrayOfAmcc[paramInt] = localamcc;
+          }
+          if ((QLog.isColorLevel()) && (localamcc != null)) {
+            QLog.d("Q.db.Cache", 2, "get cache instance:" + localamcc.getClass().getName() + " cost=" + (System.currentTimeMillis() - l));
+          }
+          return localamcc;
+        }
+      }
+      Object localObject2 = new amcl(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Amcg);
+      continue;
+      localObject2 = new amcn(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Amcg);
+      continue;
+      return localObject2;
+    }
+  }
+  
+  public amcg a()
+  {
+    return this.jdField_a_of_type_Amcg;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    a(this.jdField_a_of_type_ArrayOfInt);
+    this.jdField_a_of_type_Amcg.a();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    a(this.jdField_b_of_type_ArrayOfInt);
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void onDestroy()
+  {
+    for (;;)
+    {
+      int i;
+      synchronized (this.jdField_a_of_type_ArrayOfAmcc)
+      {
+        amcc[] arrayOfamcc2 = this.jdField_a_of_type_ArrayOfAmcc;
+        int j = arrayOfamcc2.length;
+        i = 0;
+        if (i < j)
+        {
+          amcc localamcc = arrayOfamcc2[i];
+          if (localamcc != null) {
+            localamcc.b();
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_Amcg.onDestroy();
+          return;
+        }
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amce
  * JD-Core Version:    0.7.0.1
  */

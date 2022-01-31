@@ -1,6 +1,6 @@
 package dov.com.qq.im.ae.config;
 
-import auko;
+import awbv;
 import camera.MOBILE_QQ_MATERIAL_INTERFACE.GetCategoryMaterialRsp;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaCategory;
 import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CategoryMaterialStoryEntity
-  extends auko
+  extends awbv
 {
   public String additionalFields;
   public String bigId;
@@ -62,7 +62,7 @@ public class CategoryMaterialStoryEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.config.CategoryMaterialStoryEntity
  * JD-Core Version:    0.7.0.1
  */

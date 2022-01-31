@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark.API;
 
-import adlj;
-import alpe;
+import afdt;
+import anfv;
 import com.tencent.ark.ark;
 import com.tencent.ark.ark.Container;
 import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
@@ -11,7 +11,7 @@ import java.lang.ref.WeakReference;
 public class ArkAppModuleReg$ModuleQQ$14
   implements Runnable
 {
-  public ArkAppModuleReg$ModuleQQ$14(alpe paramalpe, long paramLong, String paramString) {}
+  public ArkAppModuleReg$ModuleQQ$14(anfv paramanfv, long paramLong, String paramString) {}
   
   public void run()
   {
@@ -27,16 +27,16 @@ public class ArkAppModuleReg$ModuleQQ$14
           return;
         } while (!(BaseActivity.sTopActivity instanceof ArkFullScreenAppActivity));
         localArkFullScreenAppActivity = (ArkFullScreenAppActivity)BaseActivity.sTopActivity;
-        localObject = adlj.a((ark.Container)localObject);
+        localObject = afdt.a((ark.Container)localObject);
       } while (localObject == null);
-      localObject = (adlj)((WeakReference)localObject).get();
+      localObject = (afdt)((WeakReference)localObject).get();
     } while (localObject == null);
-    localArkFullScreenAppActivity.a((adlj)localObject, this.jdField_a_of_type_JavaLangString);
+    localArkFullScreenAppActivity.a((afdt)localObject, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ.14
  * JD-Core Version:    0.7.0.1
  */

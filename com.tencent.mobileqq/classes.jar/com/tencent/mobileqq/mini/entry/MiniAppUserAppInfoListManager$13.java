@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
-import aukp;
-import aukq;
+import awbw;
+import awbx;
 import com.tencent.common.app.AppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -21,7 +21,7 @@ class MiniAppUserAppInfoListManager$13
       return;
       localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
     } while (localObject == null);
-    if (MiniAppUserAppInfoListManager.access$1300(this.this$0, (aukp)localObject, this.val$entity))
+    if (MiniAppUserAppInfoListManager.access$1300(this.this$0, (awbw)localObject, this.val$entity))
     {
       QLog.d("MiniAppUserAppInfoListManager", 1, "updateRedDotData, success to delete recommend appInfo: " + this.val$entity);
       return;
@@ -31,7 +31,7 @@ class MiniAppUserAppInfoListManager$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUserAppInfoListManager.13
  * JD-Core Version:    0.7.0.1
  */

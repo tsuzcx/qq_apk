@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.v4.os.ParcelableCompat;
 import android.view.View.BaseSavedState;
-import ucu;
+import vrm;
 
 public class XViewPager$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator<SavedState> CREATOR = ParcelableCompat.newCreator(new ucu());
+  public static final Parcelable.Creator<SavedState> CREATOR = ParcelableCompat.newCreator(new vrm());
   int jdField_a_of_type_Int;
   Parcelable jdField_a_of_type_AndroidOsParcelable;
   ClassLoader jdField_a_of_type_JavaLangClassLoader;
@@ -46,7 +46,7 @@ public class XViewPager$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState
  * JD-Core Version:    0.7.0.1
  */

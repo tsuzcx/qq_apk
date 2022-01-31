@@ -1,64 +1,140 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.CameraInfo;
 import com.tencent.qphone.base.util.QLog;
 
-class anvz
-  extends bbwt
+@TargetApi(9)
+public class anvz
 {
-  anvz(anvx paramanvx, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  private static anvz jdField_a_of_type_Anvz;
+  private static Camera.CameraInfo[] jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
+  private final int jdField_a_of_type_Int;
+  private anwt jdField_a_of_type_Anwt = anwt.a();
+  private final Camera.CameraInfo[] jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
+  private int jdField_b_of_type_Int = -1;
+  private int c = -1;
+  private int d = -1;
   
-  public void onDone(bbwu parambbwu)
+  private anvz()
   {
-    super.onDone(parambbwu);
-    Object localObject = parambbwu.a();
-    int j = ((Bundle)localObject).getInt(parambbwu.c);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener| onDone:epId=" + ((EmoticonPackage)localObject).epId + " task:" + parambbwu + " localVersion=" + ((EmoticonPackage)localObject).localVersion + ",latestVersion=" + ((EmoticonPackage)localObject).latestVersion + ",updateFlag=" + ((EmoticonPackage)localObject).updateFlag);
-    }
-    int i = 0;
-    if (parambbwu.a() != 3)
+    int i;
+    if (jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo != null)
     {
-      i = anqz.a(parambbwu.a);
-      if (anvx.a(j)) {
-        anvx.jdField_a_of_type_Anvw.a((EmoticonPackage)localObject, j, -1, i);
+      this.jdField_a_of_type_Int = jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo.length;
+      this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo = jdField_b_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
+      i = k;
+      if (i >= this.jdField_a_of_type_Int) {
+        return;
       }
-      anvx.jdField_a_of_type_Anvw.a((EmoticonPackage)localObject, i, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if ((this.c != -1) || (this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[i].facing != 0)) {
+        break label203;
+      }
+      this.c = i;
     }
     for (;;)
     {
-      long l1 = parambbwu.h;
-      long l2 = parambbwu.g;
-      this.a.a((EmoticonPackage)localObject, i, l1 - l2, parambbwu.d);
-      return;
-      anvx.jdField_a_of_type_Anvw.a((EmoticonPackage)localObject, j, 0, 0);
+      i += 1;
+      break;
+      this.jdField_a_of_type_Int = a();
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.camera.CameraHolder", 1, "[CameraHolder] mNumberOfCameras = " + this.jdField_a_of_type_Int);
+      }
+      this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo = new Camera.CameraInfo[this.jdField_a_of_type_Int];
+      int j = 0;
+      for (;;)
+      {
+        i = k;
+        if (j >= this.jdField_a_of_type_Int) {
+          break;
+        }
+        this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[j] = new Camera.CameraInfo();
+        try
+        {
+          Camera.getCameraInfo(j, this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[j]);
+          j += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            QLog.e("Q.camera.CameraHolder", 2, localException, new Object[0]);
+          }
+        }
+      }
+      label203:
+      if ((this.d == -1) && (this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo[i].facing == 1)) {
+        this.d = i;
+      }
     }
   }
   
-  public void onDoneFile(bbwu parambbwu)
+  /* Error */
+  public static anvz a()
   {
-    Object localObject = parambbwu.a();
-    int i = ((Bundle)localObject).getInt(parambbwu.c);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener | onProgress:epId=" + ((EmoticonPackage)localObject).epId + parambbwu);
-    }
-    if (anvx.a(i)) {
-      anvx.jdField_a_of_type_Anvw.a((EmoticonPackage)localObject, i, 0, 0);
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 90	anvz:jdField_a_of_type_Anvz	Lanvz;
+    //   6: ifnonnull +25 -> 31
+    //   9: ldc 2
+    //   11: monitorenter
+    //   12: getstatic 90	anvz:jdField_a_of_type_Anvz	Lanvz;
+    //   15: ifnonnull +13 -> 28
+    //   18: new 2	anvz
+    //   21: dup
+    //   22: invokespecial 91	anvz:<init>	()V
+    //   25: putstatic 90	anvz:jdField_a_of_type_Anvz	Lanvz;
+    //   28: ldc 2
+    //   30: monitorexit
+    //   31: getstatic 90	anvz:jdField_a_of_type_Anvz	Lanvz;
+    //   34: astore_0
+    //   35: ldc 2
+    //   37: monitorexit
+    //   38: aload_0
+    //   39: areturn
+    //   40: astore_0
+    //   41: ldc 2
+    //   43: monitorexit
+    //   44: aload_0
+    //   45: athrow
+    //   46: astore_0
+    //   47: ldc 2
+    //   49: monitorexit
+    //   50: aload_0
+    //   51: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   34	5	0	localanvz	anvz
+    //   40	5	0	localObject1	Object
+    //   46	5	0	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   12	28	40	finally
+    //   28	31	40	finally
+    //   41	44	40	finally
+    //   3	12	46	finally
+    //   31	35	46	finally
+    //   44	46	46	finally
   }
   
-  public boolean onStart(bbwu parambbwu)
+  public int a()
   {
-    return super.onStart(parambbwu);
+    return anwt.a().b();
+  }
+  
+  public anwt a()
+  {
+    return anwt.a();
+  }
+  
+  public Camera.CameraInfo[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfAndroidHardwareCamera$CameraInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anvz
  * JD-Core Version:    0.7.0.1
  */

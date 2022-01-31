@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
 
 import NS_MINI_AD.MiniAppAd.StGetAdReq;
+import aano;
 import android.text.TextUtils;
-import bbll;
+import bdkf;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.mini.apkg.ApkgInfo;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -24,7 +25,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
-import yxo;
 
 public class BannerAdPlugin
   extends BaseJsPlugin
@@ -76,7 +76,7 @@ public class BannerAdPlugin
       if (i == 0)
       {
         localJSONObject = localJSONObject.getJSONArray("ads_info").getJSONObject(0);
-        return (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(yxo.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject));
+        return (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(aano.a(new qq_ad_get.QQAdGetRsp.AdInfo(), localJSONObject));
       }
       if (paramJsRuntime != null)
       {
@@ -148,9 +148,9 @@ public class BannerAdPlugin
         if (!localJSONObject.has("width")) {
           break label521;
         }
-        float f = bbll.a();
-        j = bbll.a();
-        i = bbll.b();
+        float f = bdkf.a();
+        j = bdkf.a();
+        i = bdkf.b();
         if (!(this.jsPluginEngine.activityContext instanceof GameActivity)) {
           break label513;
         }
@@ -294,14 +294,14 @@ public class BannerAdPlugin
         String str3 = this.jsPluginEngine.activityContext.getCurrentAccountUin();
         localObject1 = null;
         int k = 0;
-        float f = bbll.a();
-        int j = bbll.a();
-        i = bbll.a();
+        float f = bdkf.a();
+        int j = bdkf.a();
+        i = bdkf.a();
         if ((this.jsPluginEngine.activityContext instanceof GameActivity))
         {
           localObject1 = ((GameActivity)this.jsPluginEngine.activityContext).getMiniGameAppId();
           if (!((GameActivity)this.jsPluginEngine.activityContext).getIsOrientationLandscape()) {
-            break label1161;
+            break label1158;
           }
           i = 90;
           f = ((GameActivity)this.jsPluginEngine.activityContext).getGameDensity();
@@ -357,7 +357,7 @@ public class BannerAdPlugin
             localObject3 = str2;
             if (localApkgInfo.appConfig.launchParam != null)
             {
-              localObject4 = MiniAppInfo.getReportDataString(localApkgInfo.appConfig.launchParam.reportData);
+              localObject4 = localApkgInfo.appConfig.launchParam.reportData;
               localObject3 = String.valueOf(localApkgInfo.appConfig.launchParam.scene);
             }
           }
@@ -407,7 +407,7 @@ public class BannerAdPlugin
           localObject1 = new JSONObject(paramString2).getString("type");
           QLog.i("[minigame] BannerAdPlugin", 2, "handle operateBannerAd type = " + (String)localObject1);
           if (!"show".equals(localObject1)) {
-            break label975;
+            break label972;
           }
           if (!(this.jsPluginEngine.activityContext instanceof GameActivity)) {
             continue;
@@ -419,7 +419,7 @@ public class BannerAdPlugin
           QLog.i("[minigame] BannerAdPlugin", 2, "handle operateBannerAd parse json error", localJSONException);
         }
         continue;
-        label975:
+        label972:
         if ("hide".equals(localJSONException))
         {
           if ((this.jsPluginEngine.activityContext instanceof GameActivity)) {
@@ -446,7 +446,7 @@ public class BannerAdPlugin
         }
         updateBannerSize(paramJsRuntime, paramString2);
         continue;
-        label1161:
+        label1158:
         i = 0;
       }
     }
@@ -459,7 +459,7 @@ public class BannerAdPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.BannerAdPlugin
  * JD-Core Version:    0.7.0.1
  */

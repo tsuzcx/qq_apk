@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState.WebSo3;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class bchr
-  implements Parcelable.Creator<WebSoService.WebSoState.WebSo3>
+final class bchr
+  implements DialogInterface.OnClickListener
 {
-  public WebSoService.WebSoState.WebSo3 a(Parcel paramParcel)
-  {
-    return new WebSoService.WebSoState.WebSo3(paramParcel);
-  }
-  
-  public WebSoService.WebSoState.WebSo3[] a(int paramInt)
-  {
-    return new WebSoService.WebSoState.WebSo3[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bchr
  * JD-Core Version:    0.7.0.1
  */

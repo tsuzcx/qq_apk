@@ -1,33 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Text;
 
-class aenq
-  implements Animator.AnimatorListener
+public final class aenq
+  implements Parcelable.Creator<ForwardUtils.Section_Text>
 {
-  aenq(aenp paramaenp) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public ForwardUtils.Section_Text a(Parcel paramParcel)
   {
-    if (aenm.a(this.a.a.this$0) != null) {
-      aenm.a(this.a.a.this$0).setVisibility(0);
-    }
-    if (aenm.a(this.a.a.this$0) != null) {
-      aenm.a(this.a.a.this$0).setVisibility(4);
-    }
+    return new ForwardUtils.Section_Text(paramParcel);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public ForwardUtils.Section_Text[] a(int paramInt)
+  {
+    return new ForwardUtils.Section_Text[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aenq
  * JD-Core Version:    0.7.0.1
  */

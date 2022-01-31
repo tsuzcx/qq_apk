@@ -1,36 +1,38 @@
-class bayt
-  extends ajxj
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoListPlayerFragment;
+
+public class bayt
+  extends ClickableSpan
 {
-  private bayt(bayr parambayr) {}
+  public bayt(TribeVideoListPlayerFragment paramTribeVideoListPlayerFragment, bbaa parambbaa) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    this.a.a(4, paramBoolean, new Object[] { paramString });
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity(), QQBrowserActivity.class);
+    paramView.putExtra("url", String.format("https://buluo.qq.com/mobile/topic_video_group.html?themeid=%d&_bid=128&_wwv=1024&_wv=1027&webview=1", new Object[] { Integer.valueOf(this.jdField_a_of_type_Bbaa.h) }));
+    this.jdField_a_of_type_ComTencentMobileqqTribeFragmentTribeVideoListPlayerFragment.getActivity().startActivity(paramView);
+    if (this.jdField_a_of_type_Bbaa.c == 31) {}
+    for (paramView = "1";; paramView = "2")
+    {
+      azmj.b(null, "dc00899", "Grp_tribe", "", "video_player", "Clk_theme", 0, 0, this.jdField_a_of_type_Bbaa.d, this.jdField_a_of_type_Bbaa.b + "", "", paramView);
+      return;
+    }
   }
   
-  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    this.a.a(39, paramBoolean, new Object[] { paramString });
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(6, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(5, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(30, paramBoolean, new Object[] { paramString });
+    paramTextPaint.setColor(-18432);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bayt
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
-import bhkh;
+import bjls;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 
 public class QZoneLiveVideoPluginScreenRecordProxyService
@@ -15,12 +15,12 @@ public class QZoneLiveVideoPluginScreenRecordProxyService
     Intent localIntent = new Intent(paramContext, QZoneLiveVideoPluginScreenRecordProxyService.class);
     localIntent.setAction("com.qzone.LiveVideoScreenRecordPluginService");
     localIntent.putExtras(paramBundle);
-    QZoneLiveVideoPluginProxyService.a(paramContext, paramString, localIntent, paramServiceConnection, bhkh.a());
+    QZoneLiveVideoPluginProxyService.a(paramContext, paramString, localIntent, paramServiceConnection, bjls.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.video.QZoneLiveVideoPluginScreenRecordProxyService
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.activity;
 
-import abrq;
-import akgd;
-import akge;
+import adiy;
+import alxt;
+import alxu;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
-import bbfj;
-import bcql;
+import bdee;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class PhoneUnityPhoneLoginActivity
   extends IphoneTitleBarActivity
   implements CompoundButton.OnCheckedChangeListener
 {
-  private akge jdField_a_of_type_Akge = new abrq(this);
+  private alxu jdField_a_of_type_Alxu = new adiy(this);
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private byte[] jdField_a_of_type_ArrayOfByte;
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131560944);
-    setTitle(getString(2131695009));
-    setContentBackgroundResource(2130838514);
-    this.leftView.setText(2131699435);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131371430));
+    super.setContentView(2131561127);
+    setTitle(getString(2131695166));
+    setContentBackgroundResource(2130838591);
+    this.leftView.setText(2131699786);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131371746));
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
     }
-    addObserver(this.jdField_a_of_type_Akge);
+    addObserver(this.jdField_a_of_type_Alxu);
     paramBundle = super.getIntent();
     if (paramBundle != null)
     {
@@ -47,7 +47,7 @@ public class PhoneUnityPhoneLoginActivity
   
   public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_Akge);
+    removeObserver(this.jdField_a_of_type_Alxu);
     super.doOnDestroy();
   }
   
@@ -73,10 +73,10 @@ public class PhoneUnityPhoneLoginActivity
       bool = false;
       paramCompoundButton.setChecked(bool);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-      if (bbfj.d(this)) {
+      if (bdee.d(this)) {
         break label81;
       }
-      bcql.a(this, getString(2131692321), 0).b(getTitleBarHeight());
+      QQToast.a(this, getString(2131692397), 0).b(getTitleBarHeight());
     }
     label76:
     label81:
@@ -85,7 +85,7 @@ public class PhoneUnityPhoneLoginActivity
       return;
       bool = true;
       break;
-      paramCompoundButton = (akgd)this.app.a(34);
+      paramCompoundButton = (alxt)this.app.a(34);
     } while ((paramCompoundButton == null) || (this.jdField_a_of_type_ArrayOfByte == null));
     if (paramBoolean)
     {
@@ -97,7 +97,7 @@ public class PhoneUnityPhoneLoginActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,361 +1,628 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.av.app.GAudioUIObserver.1;
-import com.tencent.av.service.RecvMsg;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class lfb
-  implements Observer
 {
-  Handler a = null;
+  public static String a;
+  static volatile lfb jdField_a_of_type_Lfb;
+  private Map<String, lid> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private lid jdField_a_of_type_Lid = new lid();
   
-  protected void a() {}
-  
-  protected void a(int paramInt) {}
-  
-  protected void a(int paramInt1, long paramLong, int paramInt2) {}
-  
-  protected void a(int paramInt1, long paramLong1, long paramLong2, int paramInt2, int paramInt3, long paramLong3, long paramLong4) {}
-  
-  protected void a(int paramInt1, long paramLong1, long paramLong2, int paramInt2, long paramLong3, long paramLong4) {}
-  
-  protected void a(int paramInt, String paramString) {}
-  
-  protected void a(long paramLong) {}
-  
-  protected void a(long paramLong, int paramInt) {}
-  
-  protected void a(long paramLong, int paramInt1, int paramInt2) {}
-  
-  protected void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean) {}
-  
-  protected void a(long paramLong1, int paramInt1, long paramLong2, long paramLong3, long paramLong4, int paramInt2) {}
-  
-  protected void a(long paramLong, int paramInt, String paramString) {}
-  
-  protected void a(long paramLong1, long paramLong2) {}
-  
-  protected void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2) {}
-  
-  protected void a(long paramLong1, long paramLong2, int paramInt, boolean paramBoolean) {}
-  
-  protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt) {}
-  
-  protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt, boolean paramBoolean) {}
-  
-  protected void a(long paramLong1, long paramLong2, String paramString) {}
-  
-  protected void a(long paramLong1, long paramLong2, boolean paramBoolean) {}
-  
-  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void a(long paramLong, String paramString) {}
-  
-  protected void a(long paramLong, ArrayList<ldr> paramArrayList, int paramInt1, int paramInt2) {}
-  
-  protected void a(long paramLong, boolean paramBoolean) {}
-  
-  protected void a(long paramLong, boolean paramBoolean, int paramInt) {}
-  
-  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void a(RecvMsg paramRecvMsg) {}
-  
-  public void a(Object paramObject)
+  static
   {
-    paramObject = (Object[])paramObject;
-    int i = ((Integer)paramObject[0]).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("qav.GAudioUIObserver", 2, "OnUpdate，msgType = " + i);
-    }
-    long l1;
-    long l2;
-    int j;
-    switch (i)
-    {
-    default: 
-      if (QLog.isColorLevel()) {
-        QLog.e("qav.GAudioUIObserver", 2, "OnUpdate-->Wrong notify type.Type = " + i);
-      }
-      return;
-    case 10: 
-      a();
-      return;
-    case 12: 
-      a((RecvMsg)paramObject[1]);
-      return;
-    case 61: 
-      a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue(), ((Boolean)paramObject[4]).booleanValue());
-      return;
-    case 62: 
-      a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue());
-      return;
-    case 69: 
-      c(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue());
-      return;
-    case 70: 
-      l1 = ((Long)paramObject[1]).longValue();
-      l2 = ((Long)paramObject[2]).longValue();
-      i = ((Integer)paramObject[3]).intValue();
-      a(mtj.a(paramObject, 4), l1, l2, i);
-      return;
-    case 77: 
-      b(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), true, ((Boolean)paramObject[3]).booleanValue());
-      return;
-    case 78: 
-      b(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), false, ((Boolean)paramObject[3]).booleanValue());
-      return;
-    case 90: 
-    case 91: 
-    case 92: 
-    case 93: 
-    case 94: 
-    case 95: 
-      l1 = ((Long)paramObject[1]).longValue();
-      l2 = ((Long)paramObject[2]).longValue();
-      long l3 = ((Long)paramObject[3]).longValue();
-      j = ((Integer)paramObject[4]).intValue();
-      a(mtj.a(paramObject, 5), i, l1, l2, l3, j);
-      return;
-    case 96: 
-    case 97: 
-    case 98: 
-      l1 = ((Long)paramObject[1]).longValue();
-      l2 = ((Long)paramObject[2]).longValue();
-      j = ((Integer)paramObject[3]).intValue();
-      a(mtj.a(paramObject, 4), i, 0L, l1, l2, j);
-      return;
-    case 63: 
-      a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue(), ((Boolean)paramObject[3]).booleanValue());
-      return;
-    case 64: 
-      a(((Long)paramObject[1]).longValue(), (ArrayList)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
-      return;
-    case 66: 
-      a(((Long)paramObject[1]).longValue());
-      return;
-    case 202: 
-      a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
-      return;
-    case 67: 
-      a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
-      return;
-    case 68: 
-      b(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
-      return;
-    case 21: 
-      a(((Integer)paramObject[1]).intValue());
-      return;
-    case 79: 
-      a(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue(), ((Integer)paramObject[3]).intValue());
-      return;
-    case 80: 
-      l1 = ((Long)paramObject[1]).longValue();
-      b(mtj.a(paramObject, 2), l1);
-      return;
-    case 83: 
-      l1 = ((Long)paramObject[1]).longValue();
-      a(mtj.a(paramObject, 2), l1);
-      return;
-    case 200: 
-      a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
-      return;
-    case 81: 
-      c(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
-      return;
-    case 82: 
-      a((String)paramObject[1], (String[])paramObject[2]);
-      return;
-    case 84: 
-      b();
-      return;
-    case 85: 
-      a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Integer)paramObject[3]).intValue());
-      return;
-    case 86: 
-      b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Integer)paramObject[3]).intValue());
-      return;
-    case 87: 
-      a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
-      return;
-    case 71: 
-      l1 = ((Long)paramObject[1]).longValue();
-      i = ((Integer)paramObject[2]).intValue();
-      a(l1, ((Long)paramObject[3]).longValue(), i, true);
-      return;
-    case 72: 
-      l1 = ((Long)paramObject[1]).longValue();
-      i = ((Integer)paramObject[2]).intValue();
-      a(l1, ((Long)paramObject[3]).longValue(), i, false);
-      return;
-    case 73: 
-      l1 = ((Long)paramObject[1]).longValue();
-      l2 = ((Long)paramObject[2]).longValue();
-      i = ((Integer)paramObject[3]).intValue();
-      a(mtj.a(paramObject, 4), l1, l2, i, true);
-      return;
-    case 74: 
-      l1 = ((Long)paramObject[1]).longValue();
-      l2 = ((Long)paramObject[2]).longValue();
-      i = ((Integer)paramObject[3]).intValue();
-      a(mtj.a(paramObject, 4), l1, l2, i, false);
-      return;
-    case 88: 
-      b(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
-      return;
-    case 89: 
-      a(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (String)paramObject[3]);
-      return;
-    case 138: 
-      a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Boolean)paramObject[4]).booleanValue());
-      return;
-    case 139: 
-      b(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue(), ((Boolean)paramObject[3]).booleanValue());
-      return;
-    case 140: 
-      d(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue());
-      return;
-    case 141: 
-      a((ArrayList)paramObject[1]);
-      return;
-    case 142: 
-      a((ArrayList)paramObject[1], ((Integer)paramObject[2]).intValue());
-      return;
-    case 301: 
-      b(((Long)paramObject[1]).longValue());
-      return;
-    case 302: 
-      b(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue());
-      return;
-    case 303: 
-      c(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), ((Boolean)paramObject[3]).booleanValue());
-      return;
-    case 307: 
-      c();
-      return;
-    case 406: 
-      d();
-      return;
-    case 404: 
-      c(((Long)paramObject[1]).longValue());
-      return;
-    case 409: 
-      a(((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-      return;
-    case 500: 
-      a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue(), ((Integer)paramObject[4]).intValue(), mtj.a(paramObject, 5), ((Long)paramObject[6]).longValue());
-      return;
-    case 502: 
-      a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), mtj.a(paramObject, 6), ((Long)paramObject[7]).longValue());
-      return;
-    case 309: 
-      a((String)paramObject[1], (String)paramObject[2]);
-      return;
-    case 410: 
-      d(((Long)paramObject[1]).longValue());
-      return;
-    case 707: 
-      e();
-      return;
-    case 513: 
-      b(((Long)paramObject[1]).longValue(), ((Long)paramObject[2]).longValue(), (String)paramObject[3]);
-      return;
-    case 514: 
-      e(((Long)paramObject[1]).longValue());
-      return;
-    case 515: 
-      f(((Long)paramObject[1]).longValue());
-      return;
-    case 516: 
-      a(((Long)paramObject[1]).longValue(), (String)paramObject[2]);
-      return;
-    case 209: 
-      if (QLog.isColorLevel()) {
-        QLog.d("qav.GAudioUIObserver", 2, "TYPE_NOTIFY_RANDOM_MULTI_OWNER_PUSH [random room owner]");
-      }
-      a(((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), (String)paramObject[3]);
-      return;
-    case 210: 
-      b(((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
-      return;
-    }
-    b(((Long)paramObject[1]).longValue(), ((Boolean)paramObject[2]).booleanValue());
+    jdField_a_of_type_JavaLangString = "AvSessionMgr";
   }
   
-  protected void a(String paramString1, String paramString2) {}
-  
-  protected void a(String paramString, String[] paramArrayOfString) {}
-  
-  protected void a(ArrayList<lnp> paramArrayList) {}
-  
-  protected void a(ArrayList<Long> paramArrayList, int paramInt) {}
-  
-  protected void b() {}
-  
-  protected void b(int paramInt1, long paramLong, int paramInt2) {}
-  
-  protected void b(int paramInt, String paramString) {}
-  
-  protected void b(long paramLong) {}
-  
-  protected void b(long paramLong, int paramInt) {}
-  
-  protected void b(long paramLong, int paramInt1, int paramInt2) {}
-  
-  protected void b(long paramLong1, long paramLong2) {}
-  
-  protected void b(long paramLong1, long paramLong2, String paramString) {}
-  
-  protected void b(long paramLong1, long paramLong2, boolean paramBoolean) {}
-  
-  protected void b(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void b(long paramLong, boolean paramBoolean) {}
-  
-  protected void b(long paramLong, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  protected void c() {}
-  
-  protected void c(long paramLong) {}
-  
-  protected void c(long paramLong, int paramInt) {}
-  
-  protected void c(long paramLong1, long paramLong2) {}
-  
-  protected void c(long paramLong1, long paramLong2, boolean paramBoolean) {}
-  
-  protected void d() {}
-  
-  protected void d(long paramLong) {}
-  
-  protected void d(long paramLong, int paramInt) {}
-  
-  protected void e() {}
-  
-  protected void e(long paramLong) {}
-  
-  protected void f(long paramLong) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
+  public static int a(int paramInt)
   {
-    paramObservable = Looper.getMainLooper();
-    if (Thread.currentThread() != paramObservable.getThread())
+    switch (paramInt)
     {
-      if (this.a == null) {
-        this.a = new Handler(paramObservable);
-      }
-      this.a.post(new GAudioUIObserver.1(this, paramObject));
-      return;
+    case 0: 
+    case 1011: 
+    default: 
+      return 3;
+    case 3000: 
+      return 2;
     }
-    a(paramObject);
+    return 1;
+  }
+  
+  public static String a(int paramInt, String paramString, int... paramVarArgs)
+  {
+    String str = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      str = paramString;
+      if (paramString.startsWith("+")) {
+        str = paramString.substring(1);
+      }
+    }
+    str = String.valueOf(paramInt) + "-" + str;
+    paramString = str;
+    if (paramInt == 1)
+    {
+      paramString = str;
+      if (paramVarArgs != null)
+      {
+        paramString = str;
+        if (paramVarArgs.length == 1) {
+          paramString = str + "-" + paramVarArgs[0];
+        }
+      }
+    }
+    return paramString;
+  }
+  
+  public static lfb a()
+  {
+    if (jdField_a_of_type_Lfb == null) {}
+    try
+    {
+      if (jdField_a_of_type_Lfb == null) {
+        jdField_a_of_type_Lfb = new lfb();
+      }
+      return jdField_a_of_type_Lfb;
+    }
+    finally {}
+  }
+  
+  public static boolean a(lid paramlid)
+  {
+    boolean bool = true;
+    if (paramlid == null) {}
+    do
+    {
+      do
+      {
+        return false;
+        if (paramlid.i != -1)
+        {
+          if ((paramlid.i != 3000) && (paramlid.i != 1)) {}
+          for (;;)
+          {
+            return bool;
+            bool = false;
+          }
+        }
+        if (paramlid.E == 0) {
+          break;
+        }
+      } while ((paramlid.E != 3) && (paramlid.E != 100) && (paramlid.E != 4));
+      return true;
+      if (paramlid.J) {
+        return true;
+      }
+    } while (!paramlid.U);
+    return false;
+  }
+  
+  public int a()
+  {
+    int i;
+    for (;;)
+    {
+      try
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+        i = 0;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        Object localObject2 = (String)localIterator.next();
+        lid locallid = (lid)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
+        int j = i;
+        if (!locallid.e()) {
+          j = i + 1;
+        }
+        i = j;
+        if (QLog.isColorLevel())
+        {
+          String str = jdField_a_of_type_JavaLangString;
+          localObject2 = new StringBuilder().append("getAliveSessionCount, count[").append(j).append("], key[").append((String)localObject2).append("], main[");
+          boolean bool;
+          if (locallid == this.jdField_a_of_type_Lid)
+          {
+            bool = true;
+            QLog.w(str, 1, bool + "], session[" + locallid + "]");
+            i = j;
+          }
+          else
+          {
+            bool = false;
+          }
+        }
+      }
+      finally {}
+    }
+    return i;
+  }
+  
+  public lid a()
+  {
+    try
+    {
+      lid locallid = this.jdField_a_of_type_Lid;
+      return locallid;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public lid a(String paramString)
+  {
+    Object localObject2;
+    for (Object localObject1 = null;; localObject1 = localObject2) {
+      try
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+        if (localIterator.hasNext())
+        {
+          localObject2 = (String)localIterator.next();
+          localObject2 = (lid)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
+          if ((localObject2 != null) && (((lid)localObject2).d != null) && (((lid)localObject2).d.equals(paramString)))
+          {
+            if (localObject1 != null)
+            {
+              boolean bool = a((lid)localObject2);
+              if (bool) {}
+            }
+          }
+          else {
+            localObject2 = localObject1;
+          }
+        }
+        else
+        {
+          return localObject1;
+        }
+      }
+      finally {}
+    }
+  }
+  
+  public lid a(String paramString, boolean paramBoolean)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (TextUtils.isEmpty(paramString))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "createSession with null sessionId ");
+          }
+          locallid = null;
+          return locallid;
+        }
+        if (this.jdField_a_of_type_JavaUtilMap.get(paramString) != null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(jdField_a_of_type_JavaLangString, 2, "createSession already exist sessionId : " + paramString);
+          }
+          locallid = (lid)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+          continue;
+        }
+        if (this.jdField_a_of_type_JavaUtilMap.isEmpty())
+        {
+          locallid = this.jdField_a_of_type_Lid;
+          this.jdField_a_of_type_JavaUtilMap.put(paramString, locallid);
+          locallid.a("createSession", paramString);
+          QLog.w(jdField_a_of_type_JavaLangString, 1, "createSession, sessionId[" + paramString + "], TAG[" + locallid.jdField_a_of_type_JavaLangString + "]");
+          if ((this.jdField_a_of_type_JavaUtilMap.size() != 1) && (!paramBoolean)) {
+            break label213;
+          }
+          a(paramString, 2);
+          continue;
+        }
+        lid locallid = new lid();
+      }
+      finally {}
+      continue;
+      label213:
+      a(paramString, 1);
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+          break label236;
+        }
+        Object localObject = (lid)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+        if (localObject == null)
+        {
+          i = 1;
+          j = -1;
+          if ((QLog.isColorLevel()) || (j != paramInt) || (i != 0))
+          {
+            localObject = jdField_a_of_type_JavaLangString;
+            StringBuilder localStringBuilder = new StringBuilder().append("setSessionStatus, sessionId[").append(paramString).append("], status[");
+            if (i != 0) {
+              continue;
+            }
+            paramString = j + "->" + paramInt;
+            QLog.w((String)localObject, 1, paramString + "]");
+          }
+        }
+        else
+        {
+          j = ((lid)localObject).c;
+          if (((lid)localObject).c != paramInt)
+          {
+            if (paramInt == 2) {
+              this.jdField_a_of_type_Lid = ((lid)localObject);
+            }
+            ((lid)localObject).c = paramInt;
+            i = 0;
+            continue;
+          }
+          if ((paramInt != 2) || (this.jdField_a_of_type_Lid == localObject)) {
+            break label231;
+          }
+          this.jdField_a_of_type_Lid = ((lid)localObject);
+          i = 2;
+          continue;
+        }
+        paramString = paramInt + "], step[" + i;
+        continue;
+        i = 0;
+      }
+      finally {}
+      label231:
+      continue;
+      label236:
+      int i = 0;
+      int j = -1;
+    }
+  }
+  
+  /* Error */
+  public boolean a()
+  {
+    // Byte code:
+    //   0: iconst_1
+    //   1: istore_2
+    //   2: aload_0
+    //   3: monitorenter
+    //   4: aload_0
+    //   5: invokevirtual 201	lfb:a	()I
+    //   8: istore_1
+    //   9: iload_1
+    //   10: iconst_1
+    //   11: if_icmple +7 -> 18
+    //   14: aload_0
+    //   15: monitorexit
+    //   16: iload_2
+    //   17: ireturn
+    //   18: iconst_0
+    //   19: istore_2
+    //   20: goto -6 -> 14
+    //   23: astore_3
+    //   24: aload_0
+    //   25: monitorexit
+    //   26: aload_3
+    //   27: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	28	0	this	lfb
+    //   8	4	1	i	int
+    //   1	19	2	bool	boolean
+    //   23	4	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   4	9	23	finally
+  }
+  
+  public boolean a(long paramLong, String paramString)
+  {
+    boolean bool;
+    lid locallid;
+    try
+    {
+      bool = this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
+      QLog.w(jdField_a_of_type_JavaLangString, 1, "removeSession, sessionId[" + paramString + "], size[" + this.jdField_a_of_type_JavaUtilMap.size() + "], contains[" + bool + "], seq[" + paramLong + "]");
+      if (bool)
+      {
+        locallid = (lid)this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+        if (this.jdField_a_of_type_JavaUtilMap.size() == 1)
+        {
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+          while (localIterator.hasNext()) {
+            b((String)localIterator.next());
+          }
+        }
+      }
+      else
+      {
+        bool = false;
+      }
+    }
+    finally {}
+    for (;;)
+    {
+      return bool;
+      if (this.jdField_a_of_type_Lid == locallid)
+      {
+        this.jdField_a_of_type_Lid = new lid();
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "removeSession, active is cur need remove one. id[" + paramString + "]");
+      }
+      bool = true;
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    try
+    {
+      boolean bool = this.jdField_a_of_type_JavaUtilMap.containsKey(paramString);
+      return bool;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  /* Error */
+  @java.lang.Deprecated
+  public boolean a(String paramString1, String paramString2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5: ifeq +38 -> 43
+    //   8: getstatic 16	lfb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   11: iconst_2
+    //   12: new 52	java/lang/StringBuilder
+    //   15: dup
+    //   16: invokespecial 53	java/lang/StringBuilder:<init>	()V
+    //   19: ldc 227
+    //   21: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: aload_1
+    //   25: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: ldc 229
+    //   30: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: aload_2
+    //   34: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   37: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   40: invokestatic 163	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   43: aload_0
+    //   44: getfield 30	lfb:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   47: aload_1
+    //   48: invokeinterface 188 2 0
+    //   53: ifne +24 -> 77
+    //   56: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   59: ifeq +12 -> 71
+    //   62: getstatic 16	lfb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   65: iconst_2
+    //   66: ldc 231
+    //   68: invokestatic 163	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   71: iconst_0
+    //   72: istore_3
+    //   73: aload_0
+    //   74: monitorexit
+    //   75: iload_3
+    //   76: ireturn
+    //   77: aload_0
+    //   78: getfield 30	lfb:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   81: aload_1
+    //   82: invokeinterface 115 2 0
+    //   87: checkcast 22	lid
+    //   90: astore 4
+    //   92: aload 4
+    //   94: ldc 233
+    //   96: aload_2
+    //   97: invokevirtual 174	lid:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   100: aload_0
+    //   101: getfield 30	lfb:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   104: aload_1
+    //   105: invokeinterface 216 2 0
+    //   110: pop
+    //   111: aload_0
+    //   112: getfield 30	lfb:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   115: aload_2
+    //   116: aload 4
+    //   118: invokeinterface 169 3 0
+    //   123: pop
+    //   124: iconst_1
+    //   125: istore_3
+    //   126: goto -53 -> 73
+    //   129: astore_1
+    //   130: aload_0
+    //   131: monitorexit
+    //   132: aload_1
+    //   133: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	134	0	this	lfb
+    //   0	134	1	paramString1	String
+    //   0	134	2	paramString2	String
+    //   72	54	3	bool	boolean
+    //   90	27	4	locallid	lid
+    // Exception table:
+    //   from	to	target	type
+    //   2	43	129	finally
+    //   43	71	129	finally
+    //   77	124	129	finally
+  }
+  
+  public lid b(String paramString)
+  {
+    Object localObject2;
+    for (Object localObject1 = null;; localObject1 = localObject2) {
+      try
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+        if (localIterator.hasNext())
+        {
+          localObject2 = (String)localIterator.next();
+          localObject2 = (lid)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
+          if ((localObject2 != null) && (TextUtils.equals(paramString, ((lid)localObject2).d)))
+          {
+            if ((localObject1 == null) && (!((lid)localObject2).J)) {
+              continue;
+            }
+            if (a((lid)localObject2))
+            {
+              boolean bool = ((lid)localObject2).J;
+              if (!bool) {
+                continue;
+              }
+            }
+          }
+          localObject2 = localObject1;
+        }
+        else
+        {
+          return localObject1;
+        }
+      }
+      finally {}
+    }
+  }
+  
+  /* Error */
+  public boolean b()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 30	lfb:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   6: invokeinterface 95 1 0
+    //   11: invokeinterface 101 1 0
+    //   16: astore_2
+    //   17: aload_2
+    //   18: invokeinterface 107 1 0
+    //   23: ifeq +40 -> 63
+    //   26: aload_2
+    //   27: invokeinterface 111 1 0
+    //   32: checkcast 42	java/lang/String
+    //   35: astore_3
+    //   36: aload_0
+    //   37: getfield 30	lfb:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   40: aload_3
+    //   41: invokeinterface 115 2 0
+    //   46: checkcast 22	lid
+    //   49: invokevirtual 118	lid:e	()Z
+    //   52: istore_1
+    //   53: iload_1
+    //   54: ifne -37 -> 17
+    //   57: iconst_0
+    //   58: istore_1
+    //   59: aload_0
+    //   60: monitorexit
+    //   61: iload_1
+    //   62: ireturn
+    //   63: iconst_1
+    //   64: istore_1
+    //   65: goto -6 -> 59
+    //   68: astore_2
+    //   69: aload_0
+    //   70: monitorexit
+    //   71: aload_2
+    //   72: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	73	0	this	lfb
+    //   52	13	1	bool	boolean
+    //   16	11	2	localIterator	Iterator
+    //   68	4	2	localObject	Object
+    //   35	6	3	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   2	17	68	finally
+    //   17	53	68	finally
+  }
+  
+  /* Error */
+  public boolean b(String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   5: ifeq +43 -> 48
+    //   8: getstatic 16	lfb:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   11: iconst_2
+    //   12: new 52	java/lang/StringBuilder
+    //   15: dup
+    //   16: invokespecial 53	java/lang/StringBuilder:<init>	()V
+    //   19: ldc 239
+    //   21: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: aload_1
+    //   25: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: ldc 139
+    //   30: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 66	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: new 241	java/lang/Throwable
+    //   39: dup
+    //   40: ldc 243
+    //   42: invokespecial 246	java/lang/Throwable:<init>	(Ljava/lang/String;)V
+    //   45: invokestatic 249	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   48: aload_0
+    //   49: getfield 30	lfb:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
+    //   52: aload_1
+    //   53: invokeinterface 188 2 0
+    //   58: ifeq +15 -> 73
+    //   61: aload_0
+    //   62: aload_1
+    //   63: iconst_2
+    //   64: invokevirtual 185	lfb:a	(Ljava/lang/String;I)V
+    //   67: iconst_1
+    //   68: istore_2
+    //   69: aload_0
+    //   70: monitorexit
+    //   71: iload_2
+    //   72: ireturn
+    //   73: iconst_0
+    //   74: istore_2
+    //   75: goto -6 -> 69
+    //   78: astore_1
+    //   79: aload_0
+    //   80: monitorexit
+    //   81: aload_1
+    //   82: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	83	0	this	lfb
+    //   0	83	1	paramString	String
+    //   68	7	2	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   2	48	78	finally
+    //   48	67	78	finally
+  }
+  
+  public lid c(String paramString)
+  {
+    try
+    {
+      if ((!this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) && (QLog.isColorLevel())) {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "getSession not exist sessionId : " + paramString);
+      }
+      paramString = (lid)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      return paramString;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lfb
  * JD-Core Version:    0.7.0.1
  */

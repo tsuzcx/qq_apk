@@ -1,28 +1,44 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class absh
-  extends akat
 {
-  public absh(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public static final JSONObject a = new JSONObject();
   
-  protected void a(boolean paramBoolean, String paramString)
+  public static JSONObject a(Bundle paramBundle)
   {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
-      this.a.a(paramBoolean, false);
+    JSONObject localJSONObject = new JSONObject();
+    if (paramBundle == null) {
+      return a;
     }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramString != null) && (this.a.a.a != null) && (this.a.a.a.equals(paramString))) {
-      this.a.a(paramBoolean, true);
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Object localObject2 = paramBundle.get(str);
+      Object localObject1 = localObject2;
+      if ((localObject2 instanceof Bundle)) {
+        localObject1 = a((Bundle)localObject2);
+      }
+      try
+      {
+        localJSONObject.put(str, localObject1);
+      }
+      catch (JSONException localJSONException) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("APIParam", 2, localJSONException.getMessage(), localJSONException);
+      }
     }
+    return localJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absh
  * JD-Core Version:    0.7.0.1
  */

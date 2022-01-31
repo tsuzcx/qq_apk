@@ -1,191 +1,89 @@
-import android.content.Context;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.filemanager.bubble.QFileBubbleModel.1;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.graphics.Canvas;
+import android.graphics.SurfaceTexture;
+import android.view.TextureView;
+import android.view.TextureView.SurfaceTextureListener;
+import android.view.View.OnTouchListener;
 
-public abstract class aoyq
+public class aoyq
+  implements TextureView.SurfaceTextureListener, aoyn
 {
-  protected Context a;
-  protected SessionInfo a;
-  public QQAppInterface a;
-  private ChatMessage jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-  private MessageForFile jdField_a_of_type_ComTencentMobileqqDataMessageForFile;
-  private MessageForTroopFile jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile;
-  public boolean a;
-  private ChatMessage b;
+  private TextureView jdField_a_of_type_AndroidViewTextureView;
+  private aoyo jdField_a_of_type_Aoyo;
   
-  public aoyq(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  public aoyq(TextureView paramTextureView)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_AndroidViewTextureView = paramTextureView;
+    this.jdField_a_of_type_AndroidViewTextureView.setOpaque(false);
+    this.jdField_a_of_type_AndroidViewTextureView.setSurfaceTextureListener(this);
   }
   
-  private ChatMessage a(ChatMessage paramChatMessage)
+  public float a()
   {
-    int i = -2005;
-    Object localObject = paramChatMessage.getExtInfoFromExtStr("_m_ForwardFileType");
-    if ((paramChatMessage.isMultiMsg) && (!TextUtils.isEmpty((CharSequence)localObject)))
+    return this.jdField_a_of_type_AndroidViewTextureView.getY();
+  }
+  
+  public Canvas a()
+  {
+    return this.jdField_a_of_type_AndroidViewTextureView.lockCanvas();
+  }
+  
+  public void a() {}
+  
+  public void a(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_AndroidViewTextureView.unlockCanvasAndPost(paramCanvas);
+  }
+  
+  public void a(View.OnTouchListener paramOnTouchListener)
+  {
+    this.jdField_a_of_type_AndroidViewTextureView.setOnTouchListener(paramOnTouchListener);
+  }
+  
+  public void a(aoyo paramaoyo)
+  {
+    this.jdField_a_of_type_Aoyo = paramaoyo;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Aoyo = null;
+    if (this.jdField_a_of_type_AndroidViewTextureView != null)
     {
-      QLog.i("QFileBubbleModel", 1, "getRealChatMessage log, fileType[" + (String)localObject + "]");
-      int j = Integer.parseInt((String)localObject);
-      if (j == 3)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile == null) {
-          this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile = ((MessageForTroopFile)axas.a(-2017));
-        }
-        apug.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile;
-        ((ChatMessage)localObject).isMultiMsg = paramChatMessage.isMultiMsg;
-        ((ChatMessage)localObject).frienduin = paramChatMessage.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-        ((ChatMessage)localObject).senderuin = paramChatMessage.getExtInfoFromExtStr("_m_ForwardSenderUin");
-        apug.a(paramChatMessage, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-        ((ChatMessage)localObject).istroop = 1;
-        if ((j == 1) || (j == 2)) {
-          apug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((ChatMessage)localObject).uniseq, ((ChatMessage)localObject).frienduin, ((ChatMessage)localObject).istroop, paramChatMessage);
-        }
-        return localObject;
-      }
-      if ((j == 1) || (j == 2))
-      {
-        if (j == 1) {}
-        for (;;)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile == null) {
-            this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile = ((MessageForFile)axas.a(i));
-          }
-          apug.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
-          localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile;
-          ((ChatMessage)localObject).isMultiMsg = paramChatMessage.isMultiMsg;
-          ((ChatMessage)localObject).frienduin = paramChatMessage.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-          ((ChatMessage)localObject).senderuin = paramChatMessage.getExtInfoFromExtStr("_m_ForwardSenderUin");
-          apvm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject, paramChatMessage);
-          apug.a(paramChatMessage, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
-          break;
-          i = -2014;
-        }
-      }
-      QLog.e("QFileBubbleModel", 1, "getRealChatMessage error, not support fileType. fileType[" + (String)localObject + "] extInfo[" + paramChatMessage.extStr + "]");
-      return (ChatMessage)axas.a(-2005);
-    }
-    QLog.e("QFileBubbleModel", 1, "getRealChatMessage error, not exist fileType. isMultiMsg[" + paramChatMessage.isMultiMsg + "] extInfo[" + paramChatMessage.extStr + "]");
-    return (ChatMessage)axas.a(-2005);
-  }
-  
-  public abstract int a();
-  
-  public abstract long a();
-  
-  public abstract aouf a();
-  
-  public abstract aoui a();
-  
-  public ChatMessage a()
-  {
-    return this.b;
-  }
-  
-  public abstract String a();
-  
-  public abstract List<Integer> a(int paramInt);
-  
-  public abstract void a();
-  
-  public abstract void a(int paramInt);
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public abstract void a(int paramInt, View paramView);
-  
-  protected abstract void a(ChatMessage paramChatMessage);
-  
-  public abstract boolean a();
-  
-  public abstract int b();
-  
-  public long b()
-  {
-    return 0L;
-  }
-  
-  public abstract String b();
-  
-  public abstract List<Integer> b(int paramInt);
-  
-  public void b() {}
-  
-  public void b(ChatMessage paramChatMessage)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isMultiMsg) {}
-    for (this.b = a(paramChatMessage);; this.b = paramChatMessage)
-    {
-      a(this.b);
-      return;
+      this.jdField_a_of_type_AndroidViewTextureView.setOnTouchListener(null);
+      this.jdField_a_of_type_AndroidViewTextureView = null;
     }
   }
   
-  public boolean b()
+  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
+    this.jdField_a_of_type_AndroidViewTextureView.setOpaque(false);
+    if (this.jdField_a_of_type_Aoyo != null)
+    {
+      this.jdField_a_of_type_Aoyo.i();
+      this.jdField_a_of_type_Aoyo.j();
+    }
+  }
+  
+  public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
+  {
+    if (this.jdField_a_of_type_Aoyo != null) {
+      this.jdField_a_of_type_Aoyo.k();
+    }
     return false;
   }
   
-  public abstract int c();
-  
-  public String c()
+  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    return "";
-  }
-  
-  public void c() {}
-  
-  protected void c(ChatMessage paramChatMessage)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(paramChatMessage.frienduin, paramChatMessage.istroop, paramChatMessage.uniseq);
-    if (paramChatMessage.isSendFromLocal())
-    {
-      paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramChatMessage.frienduin, paramChatMessage.uniseq);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramChatMessage);
+    if (this.jdField_a_of_type_Aoyo != null) {
+      this.jdField_a_of_type_Aoyo.j();
     }
   }
   
-  public boolean c()
-  {
-    return false;
-  }
-  
-  public abstract int d();
-  
-  public void d() {}
-  
-  public abstract int e();
-  
-  protected void e()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    ThreadManagerV2.getUIHandlerV2().postDelayed(new QFileBubbleModel.1(this), 1000L);
-  }
-  
-  public int f()
-  {
-    return 0;
-  }
+  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aoyq
  * JD-Core Version:    0.7.0.1
  */

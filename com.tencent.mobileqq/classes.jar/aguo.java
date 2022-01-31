@@ -1,92 +1,75 @@
-import android.content.Intent;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
-import com.tencent.mobileqq.activity.shortvideo.SendVideoActivity.SendVideoInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.util.WeakReference;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class aguo
-  extends agsj
+  implements agvy
 {
-  protected aguo(NewPhotoListActivity paramNewPhotoListActivity)
+  private long jdField_a_of_type_Long = -1L;
+  private agwa jdField_a_of_type_Agwa;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  public aguo(agwa paramagwa, Context paramContext)
   {
-    super(paramNewPhotoListActivity);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Agwa = paramagwa;
   }
   
-  public static agsc b(NewPhotoListActivity paramNewPhotoListActivity)
+  public int a()
   {
-    if ((jdField_a_of_type_Agsc == null) || (jdField_a_of_type_Agsc.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {}
-    try
-    {
-      if ((jdField_a_of_type_Agsc == null) || (jdField_a_of_type_Agsc.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {
-        jdField_a_of_type_Agsc = new aguo(paramNewPhotoListActivity);
-      }
-      return jdField_a_of_type_Agsc;
-    }
-    finally {}
+    return 55;
   }
   
-  protected void a(Intent paramIntent, boolean paramBoolean, ArrayList<String> paramArrayList)
+  public View a(Object... paramVarArgs)
   {
-    int i2 = PhotoUtils.b(this.jdField_a_of_type_Agsb.a);
-    paramIntent = new HashMap();
-    int i1 = 0;
-    int k = 0;
-    int j = 0;
-    int i = 0;
-    while (i1 < this.jdField_a_of_type_Agrz.a.size())
+    if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      paramArrayList = (String)this.jdField_a_of_type_Agrz.a.get(i1);
-      int m;
-      if (ImageManager.isNetworkUrl(paramArrayList))
-      {
-        m = k;
-        k = i;
-        i = m;
-        i1 += 1;
-        m = k;
-        k = i;
-        i = m;
-      }
-      else
-      {
-        int n;
-        if (((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramArrayList) == 1)
-        {
-          paramArrayList = ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramArrayList);
-          n = j;
-          m = i;
-          if (paramArrayList != null)
-          {
-            SendVideoActivity.SendVideoInfo localSendVideoInfo = new SendVideoActivity.SendVideoInfo();
-            localSendVideoInfo.fileSize = paramArrayList.fileSize;
-            localSendVideoInfo.duration = paramArrayList.mDuration;
-            paramIntent.put(Integer.valueOf(k), localSendVideoInfo);
-            m = i + 1;
-            n = j;
-          }
-        }
-        for (;;)
-        {
-          i = k + 1;
-          j = n;
-          k = m;
-          break;
-          n = j + 1;
-          m = i;
-        }
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558557, null);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362396));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new agup(this));
+    }
+    if ((paramVarArgs != null) && (paramVarArgs.length > 1) && ((paramVarArgs[0] instanceof CharSequence)) && ((paramVarArgs[1] instanceof Long)))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramVarArgs[0]);
+      this.jdField_a_of_type_Long = ((Long)paramVarArgs[1]).longValue();
+    }
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if (paramInt != 1000) {}
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362394);
+      if (localImageView != null) {
+        localImageView.setImageDrawable(paramDrawable);
       }
     }
-    axqy.b(null, "CliOper", "", "", "0X8009AB0", "0X8009AB0", i2, 0, String.valueOf(j), String.valueOf(i), "", "");
-    i();
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 16;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aguo
  * JD-Core Version:    0.7.0.1
  */

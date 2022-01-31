@@ -1,47 +1,21 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.FriendTeamListInnerFrame;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.PinnedFooterExpandableListView;
+import android.view.View.OnTouchListener;
 
-public class aidk
-  implements bfuj
+class aidk
+  implements View.OnTouchListener
 {
-  public aidk(FriendTeamListInnerFrame paramFriendTeamListInnerFrame) {}
+  aidk(aidj paramaidj) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a = true;
-    FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
-  }
-  
-  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
-  {
-    if (!this.a.a)
-    {
-      if (paramInt - 1 >= 0) {
-        paramPinnedFooterExpandableListView.b(paramInt - 1);
-      }
-      for (;;)
-      {
-        this.a.a = true;
-        FriendTeamListInnerFrame.a(this.a).setFooterEnable(false);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendTeamListInnerFrameNew", 2, "header group unusal: " + paramInt);
-        }
-      }
-    }
-    if (paramPinnedFooterExpandableListView.c(paramInt))
-    {
-      paramPinnedFooterExpandableListView.b(paramInt);
-      return;
-    }
-    paramPinnedFooterExpandableListView.a(paramInt);
+    aidj.a(this.a, paramView);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aidk
  * JD-Core Version:    0.7.0.1
  */

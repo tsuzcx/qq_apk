@@ -1,21 +1,21 @@
 package com.tencent.biz.qqstory.takevideo.tag;
 
-import vux;
-import vuy;
+import xjp;
+import xjq;
 
 public class EditVideoTagPresenter$1$1
   implements Runnable
 {
-  public EditVideoTagPresenter$1$1(vuy paramvuy) {}
+  public EditVideoTagPresenter$1$1(xjq paramxjq) {}
   
   public void run()
   {
-    vux.a(vux.a(this.a.a), vux.a(this.a.a));
+    xjp.a(xjp.a(this.a.a), xjp.a(this.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,87 @@
-import android.os.SystemClock;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager;
-import com.tencent.mobileqq.multicard.MultiCardPageIndicator;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.util.ArrayList;
 
 public class assp
-  implements View.OnClickListener
 {
-  public assp(MultiCardPageIndicator paramMultiCardPageIndicator) {}
+  private static volatile assp jdField_a_of_type_Assp;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new assr(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new assq(this);
+  private ArrayList<asss> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  private assp(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabPageIndicator", 2, "onClick() called with: view = [" + paramView + "]");
-    }
-    MultiCardPageIndicator.a(this.a, SystemClock.uptimeMillis());
-    paramView = paramView.getTag();
-    if ((paramView instanceof asss)) {}
-    for (paramView = (asss)paramView;; paramView = null)
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    a(true);
+  }
+  
+  public static assp a(Context paramContext)
+  {
+    if (jdField_a_of_type_Assp == null) {}
+    try
     {
-      if (paramView == null) {}
-      int j;
-      do
-      {
-        return;
-        int i = MultiCardPageIndicator.a(this.a).a();
-        j = paramView.jdField_a_of_type_Int;
-        this.a.setCurrentItem(j);
-        axqy.b(null, "dc00898", "", "", "0X800A216", "0X800A216", 0, 0, "", "", "", "");
-        paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        MultiCardPageIndicator.a(this.a).setCurrentItem(j);
-        if ((i == j) && (MultiCardPageIndicator.a(this.a) != null)) {
-          MultiCardPageIndicator.a(this.a).a(j);
-        }
-      } while (MultiCardPageIndicator.a(this.a) == null);
-      MultiCardPageIndicator.a(this.a).a(j);
+      if (jdField_a_of_type_Assp == null) {
+        jdField_a_of_type_Assp = new assp(paramContext);
+      }
+      return jdField_a_of_type_Assp;
+    }
+    finally {}
+  }
+  
+  public void a(asss paramasss)
+  {
+    if ((!this.jdField_a_of_type_JavaUtilArrayList.contains(paramasss)) && (paramasss != null)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramasss);
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean == paramBoolean) {
       return;
+    }
+    if (paramBoolean)
+    {
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
+      localIntentFilter.addAction("tencent.av.v2q.StartVideoChat");
+      localIntentFilter.addAction("tencent.av.v2q.StopVideoChat");
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      localIntentFilter.addAction("VolumeBtnDown");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+      AppNetConnInfo.registerConnectionChangeReceiver(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    while (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+      return false;
+    }
+    return true;
+  }
+  
+  public void b(asss paramasss)
+  {
+    if ((paramasss != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramasss))) {
+      this.jdField_a_of_type_JavaUtilArrayList.remove(paramasss);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     assp
  * JD-Core Version:    0.7.0.1
  */

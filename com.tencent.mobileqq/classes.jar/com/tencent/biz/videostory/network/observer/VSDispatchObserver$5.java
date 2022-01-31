@@ -1,23 +1,24 @@
 package com.tencent.biz.videostory.network.observer;
 
+import com.tencent.biz.videostory.network.request.VSBaseRequest;
 import com.tencent.qphone.base.util.QLog;
-import xgt;
-import xgu;
+import yvm;
+import yvn;
 
 public class VSDispatchObserver$5
   implements Runnable
 {
-  public VSDispatchObserver$5(xgt paramxgt, xgu paramxgu) {}
+  public VSDispatchObserver$5(yvm paramyvm, yvn paramyvn, VSBaseRequest paramVSBaseRequest, long paramLong) {}
   
   public void run()
   {
-    this.a.a(false, -1L, "FromMsg Parse Error", null);
-    QLog.e("VSNetworkHelper", 1, "VSBaseRequest or FromServiceMsg is null!");
+    this.jdField_a_of_type_Yvn.a(false, -1L, "FromMsg Parse Error", null);
+    QLog.e("VSNetworkHelper", 1, "VSDispatchObserver: ParseException: CmdName:" + this.jdField_a_of_type_ComTencentBizVideostoryNetworkRequestVSBaseRequest.getCmdName() + " | TraceId:" + this.jdField_a_of_type_ComTencentBizVideostoryNetworkRequestVSBaseRequest.getTraceId() + " | SeqId:" + this.jdField_a_of_type_ComTencentBizVideostoryNetworkRequestVSBaseRequest.getCurrentSeq() + " | final dispatch costTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + " | errorMsg:VSBaseRequest or FromServiceMsg is null!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.videostory.network.observer.VSDispatchObserver.5
  * JD-Core Version:    0.7.0.1
  */

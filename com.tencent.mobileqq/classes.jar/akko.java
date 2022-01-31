@@ -1,132 +1,85 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Rect;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.PopupWindow;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.ApolloRender;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.Manager;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class akko
-  implements Manager
+public final class akko
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private akkq jdField_a_of_type_Akkq;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private boolean jdField_a_of_type_Boolean;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[0];
-  private akkm[] jdField_a_of_type_ArrayOfAkkm = new akkm[4];
-  private boolean jdField_b_of_type_Boolean;
-  private int[] jdField_b_of_type_ArrayOfInt = new int[0];
+  public akko(ApolloRender paramApolloRender, View paramView) {}
   
-  public akko(QQAppInterface paramQQAppInterface)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_Akkq = new akkq(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  private void a(int[] paramArrayOfInt)
-  {
-    int j = paramArrayOfInt.length;
-    int i = 0;
-    while (i < j)
-    {
-      int k = paramArrayOfInt[i];
-      long l = System.currentTimeMillis();
-      akkm localakkm = a(k);
-      if (localakkm != null)
-      {
-        localakkm.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.db.Cache", 2, "cacheManager init cache:" + localakkm.getClass().getName() + " cost=" + (System.currentTimeMillis() - l));
-        }
-        localakkm.a(0);
-      }
-      i += 1;
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow == null) || (!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mShowEditWindow)) {
+      QLog.e("rogersxiao", 2, "render.mEditWindow return");
     }
-  }
-  
-  public akkm a(int paramInt)
-  {
-    akkm localakkm = this.jdField_a_of_type_ArrayOfAkkm[paramInt];
-    if (localakkm == null) {}
-    for (;;)
+    do
     {
-      synchronized (this.jdField_a_of_type_ArrayOfAkkm)
-      {
-        localakkm = this.jdField_a_of_type_ArrayOfAkkm[paramInt];
-        if (localakkm != null) {
-          return localakkm;
-        }
-        long l = System.currentTimeMillis();
-        switch (paramInt)
-        {
-        case 2: 
-          if ((localakkm != null) && (this.jdField_a_of_type_ArrayOfAkkm[paramInt] == null)) {
-            this.jdField_a_of_type_ArrayOfAkkm[paramInt] = localakkm;
-          }
-          if ((QLog.isColorLevel()) && (localakkm != null)) {
-            QLog.d("Q.db.Cache", 2, "get cache instance:" + localakkm.getClass().getName() + " cost=" + (System.currentTimeMillis() - l));
-          }
-          return localakkm;
-        }
-      }
-      Object localObject2 = new akkv(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Akkq);
-      continue;
-      localObject2 = new akkx(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Akkq);
-      continue;
-      return localObject2;
-    }
-  }
-  
-  public akkq a()
-  {
-    return this.jdField_a_of_type_Akkq;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
       return;
-    }
-    a(this.jdField_a_of_type_ArrayOfInt);
-    this.jdField_a_of_type_Akkq.a();
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    a(this.jdField_b_of_type_ArrayOfInt);
-    this.jdField_b_of_type_Boolean = true;
-  }
-  
-  public void onDestroy()
-  {
-    for (;;)
-    {
-      int i;
-      synchronized (this.jdField_a_of_type_ArrayOfAkkm)
-      {
-        akkm[] arrayOfakkm2 = this.jdField_a_of_type_ArrayOfAkkm;
-        int j = arrayOfakkm2.length;
-        i = 0;
-        if (i < j)
-        {
-          akkm localakkm = arrayOfakkm2[i];
-          if (localakkm != null) {
-            localakkm.b();
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_Akkq.onDestroy();
-          return;
-        }
+      localObject = new Rect();
+      this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame((Rect)localObject);
+      i = (int)bdcb.l();
+      j = ((Rect)localObject).bottom;
+      int k = ((Rect)localObject).top;
+      ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidViewView.getContext());
+      if (i - (j - k) >= 200) {
+        break;
       }
-      i += 1;
+    } while (!ApolloRender.sIsKeyBoardShow);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.dismiss();
+    ApolloRender.sIsKeyBoardDissmiss = true;
+    return;
+    int i = ((Rect)localObject).bottom - this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight();
+    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
+    int j = ((SharedPreferences)localObject).getInt("sp_key_apollo_keyboard_height", 0);
+    if ((this.jdField_a_of_type_AndroidViewView.getContext() instanceof Activity))
+    {
+      if (((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).isFinishing())
+      {
+        QLog.e("sava_ApolloRender", 1, "showKeyBorad activity is isFinishing");
+        return;
+      }
+      if ((Build.VERSION.SDK_INT >= 17) && (((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).isDestroyed()))
+      {
+        QLog.e("sava_ApolloRender", 1, "showKeyBorad activity is destroy");
+        return;
+      }
     }
+    if (j != i) {}
+    try
+    {
+      ((SharedPreferences)localObject).edit().putInt("sp_key_apollo_keyboard_height", i).commit();
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, i);
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, i, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
+      ApolloRender.sIsKeyBoardDissmiss = false;
+      if (ApolloRender.sIsKeyBoardDissmiss)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, i);
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, i, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
+        ApolloRender.sIsKeyBoardDissmiss = false;
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("sava_ApolloRender", 1, localException, new Object[0]);
+      }
+    }
+    ApolloRender.sIsKeyBoardShow = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akko
  * JD-Core Version:    0.7.0.1
  */

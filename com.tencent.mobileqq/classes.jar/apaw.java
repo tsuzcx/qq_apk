@@ -1,88 +1,93 @@
-import android.os.Bundle;
-import android.text.TextUtils;
+import com.tencent.mobileqq.data.MessageForStarLeague;
 import com.tencent.qphone.base.util.QLog;
+import org.xml.sax.Attributes;
+import org.xml.sax.helpers.DefaultHandler;
 
-class apaw
-  extends aoun
+public class apaw
+  extends DefaultHandler
 {
-  apaw(apav paramapav) {}
+  MessageForStarLeague a;
+  public String a;
   
-  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, Bundle paramBundle)
+  public apaw()
   {
-    label280:
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague = ((MessageForStarLeague)ayvw.a(-2069));
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public MessageForStarLeague a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
+  }
+  
+  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
+  {
+    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
+    if (paramArrayOfChar.equals("\n")) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_JavaLangString.equals("title"))
+      {
+        localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName == null) {}
+        for (;;)
+        {
+          localMessageForStarLeague.starName = paramArrayOfChar;
+          this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.trim();
+          return;
+          paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starName.concat(paramArrayOfChar);
+        }
+      }
+    } while (!this.jdField_a_of_type_JavaLangString.equals("summary"));
+    MessageForStarLeague localMessageForStarLeague = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle == null) {}
     for (;;)
+    {
+      localMessageForStarLeague.subTitle = paramArrayOfChar;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.trim();
+      return;
+      paramArrayOfChar = this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.subTitle.concat(paramArrayOfChar);
+    }
+  }
+  
+  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
+  {
+    if (paramString3.equals("msg")) {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.actionUrl = paramAttributes.getValue("url");
+    }
+    do
     {
       try
       {
-        String str1;
-        if (apei.a)
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.levelStatus = Integer.parseInt(paramAttributes.getValue("levelStatus"));
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.brief = paramAttributes.getValue("brief");
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
         {
-          paramString6 = "183.61.37.13";
-          str1 = "443";
-          paramString5 = null;
-          paramString4 = paramString5;
-          if (apei.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-          {
-            paramString4 = paramString5;
-            if (paramBundle != null)
-            {
-              String str2 = paramBundle.getString("strHttpsDomain");
-              short s2 = paramBundle.getShort("httpsPort", (short)0);
-              paramString4 = paramString5;
-              if (!TextUtils.isEmpty(str2))
-              {
-                short s1 = s2;
-                if (s2 == 0) {
-                  s1 = 443;
-                }
-                paramString4 = new Bundle();
-                paramString4.putBoolean("ishttps", true);
-                paramString4.putString("httpsdomain", str2);
-                paramString4.putShort("httpsport", s1);
-              }
-            }
-          }
-          paramString5 = paramString4;
-          if (apvm.a())
-          {
-            paramString5 = paramString4;
-            if (paramBundle != null)
-            {
-              paramBundle = paramBundle.getString("IPv6Dns");
-              paramString5 = paramString4;
-              if (paramString4 == null) {
-                paramString5 = new Bundle();
-              }
-              paramString5.putString("ipv6domain", paramBundle);
-            }
-          }
-          if (this.a.jdField_a_of_type_Aooq != null) {
-            this.a.jdField_a_of_type_Aooq.a(paramBoolean, paramString6, str1, paramInt1, paramString1, paramString3, paramString2, this.a.jdField_a_of_type_JavaLangString, paramString5);
-          }
-        }
-        else
-        {
-          if ((paramString4 == null) || (paramString4.length() <= 0)) {
-            break label280;
-          }
-          str1 = String.valueOf(paramInt2);
-          paramString6 = paramString4;
-          continue;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.e(this.a.b, 2, " callback is null");
-          continue;
-          paramString4 = paramString5;
+          QLog.e("StructMsg", 1, "levelStatus parse failed!", paramString1);
         }
       }
-      finally {}
-    }
+      if (paramString3.equals("picture"))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataMessageForStarLeague.starAvatar = paramAttributes.getValue("cover");
+        return;
+      }
+      if (paramString3.equals("title"))
+      {
+        this.jdField_a_of_type_JavaLangString = "title";
+        return;
+      }
+    } while (!paramString3.equals("summary"));
+    this.jdField_a_of_type_JavaLangString = "summary";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apaw
  * JD-Core Version:    0.7.0.1
  */

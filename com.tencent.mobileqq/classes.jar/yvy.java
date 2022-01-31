@@ -1,22 +1,32 @@
-import android.view.View;
-import com.tencent.gdtad.aditem.GdtAd;
-
-class yvy
-  implements yxz
+public class yvy
 {
-  yvy(yvs paramyvs) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
   
-  public void reportImpression(View paramView)
+  public yvy(int paramInt, String paramString)
   {
-    paramView = paramView.getTag(2131379211);
-    if ((paramView != null) && ((paramView instanceof GdtAd))) {
-      yyb.a(((GdtAd)paramView).getUrlForImpression());
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yvy
  * JD-Core Version:    0.7.0.1
  */

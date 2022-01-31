@@ -1,25 +1,21 @@
 package dov.com.qq.im.ae;
 
-import bijd;
-import birb;
-import biws;
-import com.tencent.ttpic.openapi.model.VideoMaterial;
+import bkle;
+import bkpa;
 
 public class AEPituCameraUnit$21
   implements Runnable
 {
-  public AEPituCameraUnit$21(bijd parambijd, VideoMaterial paramVideoMaterial) {}
+  public AEPituCameraUnit$21(bkle parambkle) {}
   
   public void run()
   {
-    if ((bijd.a(this.this$0) != null) && (bijd.a(this.this$0).a(131072) != null)) {
-      bijd.a(this.this$0).a(131072).a(115, this.a);
-    }
+    bkle.a(this.this$0).g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.ae.AEPituCameraUnit.21
  * JD-Core Version:    0.7.0.1
  */

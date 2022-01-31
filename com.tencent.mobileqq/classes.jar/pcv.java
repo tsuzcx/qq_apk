@@ -1,102 +1,160 @@
-import com.tencent.biz.pubaccount.readinjoy.preload.util.FeedsPreloadExposeReport.1;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.widget.ListView;
 import java.util.Iterator;
-import java.util.List;
-import mqq.app.AppRuntime;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class pcv
 {
-  public static void a(List<ArticleInfo> paramList, String paramString)
+  public static void a(View paramView)
   {
-    QLog.d("FeedsPreloadExposeReport", 1, "reportFeedsExposeRewrite.");
-    Object localObject = (osl)((QQAppInterface)onh.a()).getManager(163);
-    if (localObject != null)
-    {
-      localObject = ((osl)localObject).a();
-      pcs.a().a(new FeedsPreloadExposeReport.1((osg)localObject, paramList, paramString));
-      return;
+    if ((paramView instanceof pcp)) {
+      ((pcp)paramView).a();
     }
-    QLog.d("FeedsPreloadExposeReport", 1, "readInJoyLogicManager is null.");
   }
   
-  public static void a(boolean paramBoolean, long paramLong, int paramInt)
+  public static void a(Container paramContainer)
   {
-    String str = onh.a();
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("retCode", String.valueOf(paramInt));
-    localHashMap.put("uin", str);
-    AppRuntime localAppRuntime = onh.a();
-    if ((localAppRuntime == null) || (paramLong < 0L) || (paramLong > 30000L))
+    paramContainer = paramContainer.getViewIdMapping().entrySet().iterator();
+    while (paramContainer.hasNext())
     {
-      QLog.d("FeedsPreloadExposeReport", 1, "app is null or cost is not available, reportFeedsPreloadExposeMonitorData");
-      return;
-    }
-    axrn.a(localAppRuntime.getApplication()).a(str, "actFeedsPreloadExposeReport", paramBoolean, paramLong, 0L, localHashMap, null);
-  }
-  
-  private static List<ReportInfo> b(List<ArticleInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramList != null) && (!paramList.isEmpty()))
-    {
-      paramList = new ArrayList(paramList).iterator();
-      while (paramList.hasNext())
+      Object localObject = (Map.Entry)paramContainer.next();
+      if ((((Map.Entry)localObject).getValue() instanceof psd))
       {
-        Object localObject1 = (ArticleInfo)paramList.next();
-        Object localObject2;
-        if ((onh.t((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (((ArticleInfo)localObject1).mNewPolymericInfo.a != null))
-        {
-          localObject1 = ((ArticleInfo)localObject1).mNewPolymericInfo.a.iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (qbo)((Iterator)localObject1).next();
-            ReportInfo localReportInfo = new ReportInfo();
-            localReportInfo.mUin = onh.a();
-            localReportInfo.mOperation = 56;
-            localReportInfo.mSourceArticleId = ((qbo)localObject2).a;
-            localReportInfo.mInnerId = ((qbo)localObject2).g;
-            localReportInfo.mAlgorithmId = ((int)((qbo)localObject2).b);
-            localReportInfo.mGWCommonData = "";
-            localArrayList.add(localReportInfo);
-          }
-        }
-        else
-        {
-          localObject2 = new ReportInfo();
-          ((ReportInfo)localObject2).mUin = onh.a();
-          ((ReportInfo)localObject2).mOperation = 56;
-          ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
-          ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
-          ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
-          ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
-          localArrayList.add(localObject2);
-          if (((ArticleInfo)localObject1).hasOnlyTwoVideoFeeds())
-          {
-            localObject1 = (ArticleInfo)((ArticleInfo)localObject1).mSubArtilceList.get(0);
-            localObject2 = new ReportInfo();
-            ((ReportInfo)localObject2).mUin = onh.a();
-            ((ReportInfo)localObject2).mOperation = 56;
-            ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
-            ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
-            ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
-            ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
-            localArrayList.add(localObject2);
-          }
+        localObject = (psd)((Map.Entry)localObject).getValue();
+        if ((((psd)localObject).a() instanceof NativeVideoView)) {
+          ((psd)localObject).a().c();
         }
       }
     }
-    return localArrayList;
+  }
+  
+  public static void a(ListView paramListView)
+  {
+    a(paramListView, true);
+  }
+  
+  public static void a(ListView paramListView, boolean paramBoolean)
+  {
+    e(paramListView);
+  }
+  
+  public static void b(Container paramContainer)
+  {
+    paramContainer = paramContainer.getViewIdMapping().entrySet().iterator();
+    while (paramContainer.hasNext())
+    {
+      Object localObject = (Map.Entry)paramContainer.next();
+      if ((((Map.Entry)localObject).getValue() instanceof psd))
+      {
+        localObject = (psd)((Map.Entry)localObject).getValue();
+        if ((((psd)localObject).a() instanceof NativeVideoView)) {
+          ((psd)localObject).a().b();
+        }
+      }
+    }
+  }
+  
+  public static void b(ListView paramListView)
+  {
+    if ((!ors.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramListView.getChildCount())
+      {
+        View localView = paramListView.getChildAt(i);
+        if ((localView instanceof pcp)) {
+          ((pcp)localView).b();
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public static void c(ListView paramListView)
+  {
+    if ((!ors.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramListView.getChildCount())
+      {
+        View localView = paramListView.getChildAt(i);
+        if ((localView instanceof pcp)) {
+          ((pcp)localView).a();
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public static void d(ListView paramListView)
+  {
+    if ((!ors.a(paramListView.getContext())) || (paramListView.getChildCount() <= 0)) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramListView.getChildCount())
+      {
+        View localView = paramListView.getChildAt(i);
+        if ((localView instanceof pcp)) {
+          ((pcp)localView).c();
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  private static void e(ListView paramListView)
+  {
+    int j = 0;
+    int i = 0;
+    View localView;
+    if (i < paramListView.getChildCount())
+    {
+      localView = paramListView.getChildAt(i);
+      if (((localView instanceof pcp)) && (orc.a(localView) >= 60.0F))
+      {
+        QLog.d("gifvideo.VideoPlayControlUtils", 2, ">= 60f");
+        if (!((pcp)localView).a()) {}
+      }
+    }
+    for (;;)
+    {
+      if (i != -1)
+      {
+        QLog.d("gifvideo.VideoPlayControlUtils", 2, "item to play: " + i);
+        for (;;)
+        {
+          if (j < paramListView.getChildCount())
+          {
+            localView = paramListView.getChildAt(j);
+            if (((localView instanceof pcp)) && (j != i)) {
+              ((pcp)localView).a();
+            }
+            j += 1;
+            continue;
+            i += 1;
+            break;
+          }
+        }
+      }
+      return;
+      i = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pcv
  * JD-Core Version:    0.7.0.1
  */

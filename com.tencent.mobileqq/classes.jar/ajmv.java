@@ -1,25 +1,25 @@
-import com.tencent.mobileqq.data.ApolloFavActionData;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.45;
 
-class ajmv
-  implements Comparator<ApolloFavActionData>
+public class ajmv
+  implements DialogInterface.OnClickListener
 {
-  ajmv(ajmu paramajmu) {}
+  public ajmv(NewFlowCameraActivity.45 param45) {}
   
-  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
-      return 0;
-    }
-    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
-      return 1;
-    }
-    return -1;
+    paramDialogInterface = this.a.this$0.getIntent();
+    paramDialogInterface.putExtra("flow_back", 0);
+    this.a.this$0.setResult(1001, paramDialogInterface);
+    this.a.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,33 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.qphone.base.util.QLog;
 
-class adxk
-  implements View.OnTouchListener
+public class adxk
+  implements ThreadExcutor.IThreadListener
 {
-  adxk(adxj paramadxj) {}
+  public adxk(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAdded()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      return true;
-    case 0: 
-      adxj.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      adxj.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(true);
-      return true;
-    case 3: 
-      adxj.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-      adxj.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
-      return true;
-    }
-    adxj.a(this.a).jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    adxj.a(this.a).jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView.setPressed(false);
-    paramView.performClick();
-    adxj.a(this.a, paramView);
-    return true;
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onAdded:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, true);
+  }
+  
+  public void onPostRun()
+  {
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPostRun:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, false);
+  }
+  
+  public void onPreRun()
+  {
+    QLog.e("TroopAssistantActivity", 2, "mRefreshListener onPreRun:" + TroopAssistantActivity.a(this.a));
+    TroopAssistantActivity.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxk
  * JD-Core Version:    0.7.0.1
  */

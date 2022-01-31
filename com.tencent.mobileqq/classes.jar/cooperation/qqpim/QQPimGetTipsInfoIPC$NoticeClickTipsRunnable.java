@@ -1,8 +1,8 @@
 package cooperation.qqpim;
 
 import android.os.Bundle;
-import bgta;
-import bgtf;
+import bitz;
+import biue;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
 
 public class QQPimGetTipsInfoIPC$NoticeClickTipsRunnable
@@ -15,8 +15,8 @@ public class QQPimGetTipsInfoIPC$NoticeClickTipsRunnable
     try
     {
       Bundle localBundle = new Bundle();
-      localBundle.putInt(bgta.r, 3);
-      QIPCServerHelper.getInstance().callClient(bgta.b, bgta.c, bgta.e, localBundle, new bgtf(this));
+      localBundle.putInt(bitz.r, 3);
+      QIPCServerHelper.getInstance().callClient(bitz.b, bitz.c, bitz.e, localBundle, new biue(this));
       return;
     }
     catch (Throwable localThrowable)
@@ -27,7 +27,7 @@ public class QQPimGetTipsInfoIPC$NoticeClickTipsRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqpim.QQPimGetTipsInfoIPC.NoticeClickTipsRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -63,7 +63,7 @@ public class FaceLineFilter
     setCoordNum(48);
   }
   
-  public void updatePoints(List<List<PointF>> paramList, int paramInt)
+  public void updatePoints(List<List<PointF>> paramList, double paramDouble, int paramInt)
   {
     if (paramList.size() == 0)
     {
@@ -73,7 +73,7 @@ public class FaceLineFilter
     }
     paramList = VideoMaterialUtil.copyList((List)paramList.get(paramInt));
     FaceOffUtil.getFullCoords(paramList, 2.0F);
-    setPositions(FaceOffUtil.initFaceLinePositions(paramList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
+    setPositions(FaceOffUtil.initFaceLinePositions(paramList, (int)(this.width * paramDouble), (int)(this.height * paramDouble), this.faceVertices));
     setCoordNum(1380);
   }
 }

@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.kandianreport;
 
 import android.os.Build;
-import bbdh;
+import bdcb;
 import com.tencent.common.config.AppSetting;
 import com.tencent.qphone.base.util.QLog;
-import nol;
+import nrt;
 import org.json.JSONObject;
 
 public class TaskException
@@ -85,7 +85,7 @@ public class TaskException
     //   155: ifne +327 -> 482
     //   158: ldc 95
     //   160: ldc 97
-    //   162: invokestatic 103	bhvy:a	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
+    //   162: invokestatic 103	bjxj:a	(Ljava/lang/String;Ljava/lang/Object;)Ljava/lang/Object;
     //   165: checkcast 90	java/lang/String
     //   168: astore 14
     //   170: new 105	org/json/JSONArray
@@ -184,7 +184,7 @@ public class TaskException
     //   355: ldc 152
     //   357: iconst_0
     //   358: invokestatic 158	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   361: invokestatic 161	bhvy:a	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   361: invokestatic 161	bjxj:a	(Ljava/lang/String;Ljava/lang/Object;)V
     //   364: aconst_null
     //   365: ldc 97
     //   367: ldc 163
@@ -197,10 +197,10 @@ public class TaskException
     //   379: aload 13
     //   381: invokevirtual 164	org/json/JSONObject:toString	()Ljava/lang/String;
     //   384: iconst_0
-    //   385: invokestatic 169	nol:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
+    //   385: invokestatic 169	nrt:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
     //   388: ldc 95
     //   390: aload_0
-    //   391: invokestatic 161	bhvy:a	(Ljava/lang/String;Ljava/lang/Object;)V
+    //   391: invokestatic 161	bjxj:a	(Ljava/lang/String;Ljava/lang/Object;)V
     //   394: invokestatic 175	com/tencent/biz/pubaccount/readinjoy/kandianreport/TaskManager:getInstance	()Lcom/tencent/biz/pubaccount/readinjoy/kandianreport/TaskManager;
     //   397: pop
     //   398: bipush 81
@@ -208,7 +208,7 @@ public class TaskException
     //   403: aload 13
     //   405: invokevirtual 164	org/json/JSONObject:toString	()Ljava/lang/String;
     //   408: invokestatic 185	com/tencent/biz/pubaccount/readinjoy/kandianreport/TaskDistribution:getAttrList	(Ljava/lang/String;)Ljava/util/List;
-    //   411: invokestatic 190	sgg:a	(IILjava/util/List;)V
+    //   411: invokestatic 190	syb:a	(IILjava/util/List;)V
     //   414: return
     //   415: astore 11
     //   417: getstatic 12	com/tencent/biz/pubaccount/readinjoy/kandianreport/TaskException:TAG	Ljava/lang/String;
@@ -291,11 +291,11 @@ public class TaskException
       localJSONObject.put("version", TaskManager.scriptVersion + "");
       localJSONObject.put("so_version", KandianReportSoLoader.getSoVersion() + "");
       localJSONObject.put("phone", Build.MODEL);
-      localJSONObject.put("sys_version", bbdh.e());
-      localJSONObject.put("qq_version", bbdh.c());
+      localJSONObject.put("sys_version", bdcb.e());
+      localJSONObject.put("qq_version", bdcb.c());
       localJSONObject.put("appid", AppSetting.a() + "");
       QLog.d(TAG, 1, "reportException: " + localJSONObject.toString());
-      nol.a(null, "", "0X8009831", "0X8009831", 0, 0, "", "", "", localJSONObject.toString(), false);
+      nrt.a(null, "", "0X8009831", "0X8009831", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (Exception paramString)
@@ -313,11 +313,11 @@ public class TaskException
       localJSONObject.put("taskId", paramString1);
       localJSONObject.put("so_version", KandianReportSoLoader.getSoVersion() + "");
       localJSONObject.put("phone", Build.MODEL);
-      localJSONObject.put("sys_version", bbdh.e());
-      localJSONObject.put("qq_version", bbdh.c());
+      localJSONObject.put("sys_version", bdcb.e());
+      localJSONObject.put("qq_version", bdcb.c());
       localJSONObject.put("version", TaskManager.scriptVersion + "");
       localJSONObject.put("appid", AppSetting.a() + "");
-      nol.a(null, "", "0X8009830", "0X8009830", 0, 0, "", "", "", localJSONObject.toString(), false);
+      nrt.a(null, "", "0X8009830", "0X8009830", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (Exception paramString1)
@@ -334,11 +334,11 @@ public class TaskException
       localJSONObject.put("exception", paramString);
       localJSONObject.put("so_version", KandianReportSoLoader.getSoVersion() + "");
       localJSONObject.put("phone", Build.MODEL);
-      localJSONObject.put("sys_version", bbdh.e());
-      localJSONObject.put("qq_version", bbdh.c());
+      localJSONObject.put("sys_version", bdcb.e());
+      localJSONObject.put("qq_version", bdcb.c());
       localJSONObject.put("version", TaskManager.scriptVersion + "");
       localJSONObject.put("appid", AppSetting.a() + "");
-      nol.a(null, "", "0X800982E", "0X800982E", 0, 0, "", "", "", localJSONObject.toString(), false);
+      nrt.a(null, "", "0X800982E", "0X800982E", 0, 0, "", "", "", localJSONObject.toString(), false);
       return;
     }
     catch (Exception paramString)
@@ -349,7 +349,7 @@ public class TaskException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskException
  * JD-Core Version:    0.7.0.1
  */

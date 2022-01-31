@@ -1,20 +1,14 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-final class bbas
-  implements ValueAnimator.AnimatorUpdateListener
+class bbas
 {
-  bbas(audw paramaudw) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    this.a.a(paramValueAnimator.intValue());
-  }
+  public RelativeLayout a;
+  public TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbas
  * JD-Core Version:    0.7.0.1
  */

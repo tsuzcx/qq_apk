@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity.photo;
 
-import agqb;
-import agqd;
+import ailb;
+import aild;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class SendPhotoActivity$MyHandler$1
   implements Runnable
 {
-  public SendPhotoActivity$MyHandler$1(agqb paramagqb, boolean paramBoolean, String[] paramArrayOfString, int paramInt, QQAppInterface paramQQAppInterface) {}
+  public SendPhotoActivity$MyHandler$1(ailb paramailb, boolean paramBoolean, String[] paramArrayOfString, int paramInt, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
     
     if (this.jdField_a_of_type_Boolean) {
-      agqd.e();
+      aild.e();
     }
     try
     {
-      agqd.a(this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Int, false, false, -1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      aild.a(this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_Int, false, false, -1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       return;
     }
     catch (Exception localException) {}
@@ -25,7 +25,7 @@ public class SendPhotoActivity$MyHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SendPhotoActivity.MyHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,29 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.QZoneShareData;
+import cooperation.qzone.share.QZoneShareActivity;
 
-class bjnh
+public class bjnh
+  implements DialogInterface.OnClickListener
 {
-  final Map<bjnp, List<bjni>> a;
-  final Map<bjni, bjnp> b;
+  public bjnh(QZoneShareActivity paramQZoneShareActivity, Activity paramActivity, QZoneShareData paramQZoneShareData) {}
   
-  bjnh(Map<bjni, bjnp> paramMap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.b = paramMap;
-    this.a = new HashMap();
-    Iterator localIterator = paramMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    switch (paramInt)
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      bjnp localbjnp = (bjnp)localEntry.getValue();
-      List localList = (List)this.a.get(localbjnp);
-      paramMap = localList;
-      if (localList == null)
-      {
-        paramMap = new ArrayList();
-        this.a.put(localbjnp, paramMap);
-      }
-      paramMap.add(localEntry.getKey());
+    default: 
+      return;
     }
+    QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationQzoneQZoneShareData, false);
+    this.jdField_a_of_type_AndroidAppActivity.setResult(0, this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity.getIntent());
+    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjnh
  * JD-Core Version:    0.7.0.1
  */

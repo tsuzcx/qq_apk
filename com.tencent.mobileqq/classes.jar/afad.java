@@ -1,89 +1,68 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.datarecv.pb.ZhituReportMsg.ReqBody;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.text.Editable;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
-public class afad
+class afad
+  implements ActionMode.Callback
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  @Nullable
-  public String f;
-  @Nullable
-  public String g;
+  int jdField_a_of_type_Int = 1;
+  int b = 2;
   
-  public ZhituReportMsg.ReqBody a()
+  afad(afab paramafab) {}
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    if (this.jdField_a_of_type_JavaLangString == null) {
-      this.jdField_a_of_type_JavaLangString = "";
+    boolean bool = false;
+    if (paramMenuItem.getItemId() == this.jdField_a_of_type_Int)
+    {
+      azmj.b(this.jdField_a_of_type_Afab.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A513", "0X800A513", this.jdField_a_of_type_Afab.a(), 0, "", "", "", "");
+      this.jdField_a_of_type_Afab.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getText().insert(this.jdField_a_of_type_Afab.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getSelectionStart(), "\n");
+      paramActionMode.finish();
+      bool = true;
     }
-    if (this.c == null) {
-      this.c = "";
+    while (paramMenuItem.getItemId() != this.b) {
+      return bool;
     }
-    if (this.b == null) {
-      this.b = "";
+    if (this.jdField_a_of_type_Afab.a())
+    {
+      azmj.b(this.jdField_a_of_type_Afab.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A514", "0X800A514", this.jdField_a_of_type_Afab.a(), 0, "", "", "", "");
+      this.jdField_a_of_type_Afab.a(false);
     }
-    if (this.d == null) {
-      this.d = "";
+    for (;;)
+    {
+      paramActionMode.finish();
+      return true;
+      azmj.b(this.jdField_a_of_type_Afab.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F28", "0X8009F28", this.jdField_a_of_type_Afab.a(), 0, "", "", "", "");
+      afab.b(this.jdField_a_of_type_Afab);
     }
-    if (this.e == null) {
-      this.e = "";
-    }
-    if (this.f == null) {
-      this.f = "";
-    }
-    if (this.g == null) {
-      this.g = "";
-    }
-    ZhituReportMsg.ReqBody localReqBody = new ZhituReportMsg.ReqBody();
-    localReqBody.bytes_pass.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
-    localReqBody.bytes_pic_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    localReqBody.bytes_style.set(ByteStringMicro.copyFromUtf8(this.c));
-    localReqBody.uint32_action.set(this.jdField_a_of_type_Int);
-    localReqBody.bytes_aio_type.set(ByteStringMicro.copyFromUtf8(this.d));
-    localReqBody.bytes_mobile_type.set(ByteStringMicro.copyFromUtf8("android"));
-    localReqBody.bytes_current_text.set(ByteStringMicro.copyFromUtf8(this.e));
-    return localReqBody;
   }
   
-  public String toString()
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("ZhituReportData{pass='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", imgId='").append(this.b).append('\'').append(", styles='").append(this.c).append('\'').append(", action=").append(this.jdField_a_of_type_Int).append(", aioType='").append(this.d).append('\'').append(", queryText='");
-    if (this.e != null)
+    paramMenu.add(0, this.jdField_a_of_type_Int, 196608, alpo.a(2131705342));
+    int i = this.b;
+    if (this.jdField_a_of_type_Afab.a()) {}
+    for (paramActionMode = alpo.a(2131705343);; paramActionMode = alpo.a(2131705340))
     {
-      str = bflg.a(this.e);
-      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastMessage='");
-      if (this.f == null) {
-        break label207;
-      }
-      str = bflg.a(this.f);
-      label139:
-      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastTwoMessage='");
-      if (this.g == null) {
-        break label213;
-      }
+      paramMenu.add(0, i, 196608, paramActionMode);
+      return true;
     }
-    label207:
-    label213:
-    for (String str = bflg.a(this.g);; str = "null")
-    {
-      return str + '\'' + ", isReported=" + this.jdField_a_of_type_Boolean + '}';
-      str = "null";
-      break;
-      str = "null";
-      break label139;
-    }
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afad
  * JD-Core Version:    0.7.0.1
  */

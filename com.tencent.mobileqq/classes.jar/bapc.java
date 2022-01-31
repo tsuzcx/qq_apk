@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.troop.widget.TroopAIORobotLayout;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
 
-public class bapc
-  implements bams
+class bapc
+  implements ITransCallbackForReport
 {
-  public bapc(TroopAIORobotLayout paramTroopAIORobotLayout) {}
+  bapc(bapa parambapa) {}
   
-  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    if (paramInt == 0) {}
+    this.a.a(false, paramInt, paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bapc
  * JD-Core Version:    0.7.0.1
  */

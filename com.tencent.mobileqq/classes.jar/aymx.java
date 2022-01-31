@@ -1,15 +1,19 @@
-import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aymx
+class aymx
+  implements View.OnClickListener
 {
-  public Drawable a;
-  public String a;
-  public int[] a;
-  public String b;
+  aymx(aymw paramaymw, ayjk paramayjk) {}
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_Ayjk.a(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aymx
  * JD-Core Version:    0.7.0.1
  */

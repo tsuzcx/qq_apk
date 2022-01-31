@@ -7,6 +7,13 @@ import com.tencent.qphone.base.util.BaseApplication;
 
 public class SdkInfoUtil
 {
+  public static final int Q_VERSION_CODE = 29;
+  
+  public static boolean isAndroidQ()
+  {
+    return Build.VERSION.SDK_INT >= 29;
+  }
+  
   public static boolean isOreo()
   {
     return Build.VERSION.SDK_INT >= 26;

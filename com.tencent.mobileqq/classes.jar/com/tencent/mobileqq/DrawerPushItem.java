@@ -1,11 +1,11 @@
 package com.tencent.mobileqq;
 
-import auko;
-import aulz;
-import aumc;
+import awbv;
+import awdg;
+import awdj;
 
 public class DrawerPushItem
-  extends auko
+  extends awbv
 {
   public static final int BUBBLE_PUSH_MSG_TYPE_AIO = 2;
   public static final int BUBBLE_PUSH_MSG_TYPE_AIO_GAME_PANEL = 9;
@@ -31,12 +31,13 @@ public class DrawerPushItem
   public String icon_url;
   public int is_reddot;
   public int life_Time;
-  @aumc
+  @awdj
   public String msg_id;
   public int msg_type;
   public int priority;
   public int reddotGameId;
-  @aulz
+  public String reddotPath;
+  @awdg
   public int reddotRedId;
   public String scheme;
   public int send_time;
@@ -45,6 +46,8 @@ public class DrawerPushItem
   public int start_ts;
   public int sub_priority;
   public int target_model;
+  public int tianshuAdId;
+  public String tianshuTraceInfo;
   public String tips_str;
   
   public String toString()
@@ -56,7 +59,7 @@ public class DrawerPushItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.DrawerPushItem
  * JD-Core Version:    0.7.0.1
  */

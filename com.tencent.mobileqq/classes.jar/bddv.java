@@ -1,42 +1,72 @@
+import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.open.agent.SocialFriendChooser;
+import android.content.pm.ApplicationInfo;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Build.VERSION;
+import com.tencent.qphone.base.util.ROMUtil;
 
 public class bddv
-  extends Handler
 {
-  public bddv(SocialFriendChooser paramSocialFriendChooser) {}
-  
-  public void handleMessage(Message paramMessage)
+  public static Intent a(Context paramContext)
   {
-    switch (paramMessage.what)
+    if (("MIUI".equals(ROMUtil.getRomName())) && (Build.VERSION.SDK_INT > 19)) {
+      return d(paramContext);
+    }
+    if (("SMARTISAN".equals(ROMUtil.getRomName())) || ("360".equals(ROMUtil.getRomName()))) {
+      return c(paramContext);
+    }
+    return b(paramContext);
+  }
+  
+  public static Intent b(Context paramContext)
+  {
+    Intent localIntent;
+    if (Build.VERSION.SDK_INT >= 26)
     {
-    default: 
-      return;
-    case 10001: 
-      paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
-      paramMessage.putString("agentversion", bcyb.a().e());
-      paramMessage.putString("facetype", "mqqface");
-      String str = bdoc.a().a("http://fusion.qq.com/cgi-bin/appstage/get_image_update");
-      bdcy.a().a(str, paramMessage, new bddw(this));
-      return;
+      localIntent = new Intent();
+      localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+      localIntent.putExtra("android.provider.extra.APP_PACKAGE", paramContext.getPackageName());
+      localIntent.putExtra("android.provider.extra.CHANNEL_ID", paramContext.getApplicationInfo().uid);
+      return localIntent;
     }
-    if ((this.a.jdField_a_of_type_Bdjd != null) && (!this.a.jdField_a_of_type_Bdjd.isCancelled())) {
-      this.a.jdField_a_of_type_Bdjd.cancel(true);
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      localIntent = new Intent();
+      localIntent.setAction("android.settings.APP_NOTIFICATION_SETTINGS");
+      localIntent.putExtra("app_package", paramContext.getPackageName());
+      localIntent.putExtra("app_uid", paramContext.getApplicationInfo().uid);
+      return localIntent;
     }
-    this.a.l();
-    paramMessage = new Intent();
-    paramMessage.putExtra("key_error_code", -7);
-    paramMessage.putExtra("key_error_msg", bdjm.e);
-    this.a.setResult(-1, paramMessage);
-    this.a.finish();
+    if (Build.VERSION.SDK_INT >= 19) {
+      return c(paramContext);
+    }
+    return c(paramContext);
+  }
+  
+  public static Intent c(Context paramContext)
+  {
+    Intent localIntent = new Intent();
+    localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+    localIntent.setData(Uri.parse("package:" + paramContext.getPackageName()));
+    return localIntent;
+  }
+  
+  public static Intent d(Context paramContext)
+  {
+    if (Build.VERSION.SDK_INT < 21) {
+      return c(paramContext);
+    }
+    Intent localIntent = new Intent("android.intent.action.MAIN");
+    localIntent.setClassName("com.android.settings", "com.android.settings.Settings$NotificationFilterActivity");
+    localIntent.putExtra("appName", paramContext.getResources().getString(paramContext.getApplicationInfo().labelRes));
+    localIntent.putExtra("packageName", paramContext.getPackageName());
+    return localIntent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bddv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.open.downloadnew;
 
 import android.os.Bundle;
-import bdii;
-import bdlm;
+import bfhg;
+import bfkj;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import java.util.Map;
 
 public class DownloaderGetCodeClient$1
   implements Runnable
 {
-  public DownloaderGetCodeClient$1(bdlm parambdlm, String paramString, int paramInt, Bundle paramBundle) {}
+  public DownloaderGetCodeClient$1(bfkj parambfkj, String paramString, int paramInt, Bundle paramBundle) {}
   
   public void run()
   {
-    if (((Boolean)bdlm.a(this.this$0).get(bdlm.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int))).booleanValue())
+    if (((Boolean)bfkj.a(this.this$0).get(bfkj.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int))).booleanValue())
     {
-      bdii.c("DownloaderGetCodeClient", "last request not back,retry ......");
-      QIPCClientHelper.getInstance().callServer("Module_DownloaderGetCodeServer", "DownloaderWriteCodeIPC_Action__GetCode", this.jdField_a_of_type_AndroidOsBundle, bdlm.a(this.this$0));
+      bfhg.c("DownloaderGetCodeClient", "last request not back,retry ......");
+      QIPCClientHelper.getInstance().callServer("Module_DownloaderGetCodeServer", "DownloaderWriteCodeIPC_Action__GetCode", this.jdField_a_of_type_AndroidOsBundle, bfkj.a(this.this$0));
     }
   }
 }

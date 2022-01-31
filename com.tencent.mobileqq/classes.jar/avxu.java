@@ -1,41 +1,22 @@
-import android.opengl.Matrix;
-
-public class avxu
+public abstract interface avxu
 {
-  public static float[] a = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-  public static final float[] b = { 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F };
+  public abstract void a(ampd paramampd);
   
-  public static float[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    float f1 = paramInt3 / paramInt4;
-    float f2 = paramInt1 / paramInt2;
-    if (f1 < f2)
-    {
-      f2 = paramInt4 * f2 / paramInt3;
-      f1 = 1.0F;
-    }
-    for (;;)
-    {
-      float[] arrayOfFloat = new float[16];
-      Matrix.setIdentityM(arrayOfFloat, 0);
-      Matrix.scaleM(arrayOfFloat, 0, f2, f1, 1.0F);
-      return arrayOfFloat;
-      if (f1 > f2)
-      {
-        f1 = paramInt3 / (f2 * paramInt4);
-        f2 = 1.0F;
-      }
-      else
-      {
-        f1 = 1.0F;
-        f2 = 1.0F;
-      }
-    }
-  }
+  public abstract void a(ampd paramampd, boolean paramBoolean);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avxu
  * JD-Core Version:    0.7.0.1
  */

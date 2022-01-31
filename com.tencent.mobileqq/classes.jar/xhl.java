@@ -1,130 +1,95 @@
 import android.graphics.Bitmap;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.biz.qqstory.base.BitmapError;
+import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tribe.async.async.JobContext;
 
-class xhl
-  implements avzm
+public class xhl
+  extends xhf<xgs, xgs>
 {
-  public long a;
-  
-  xhl(xhk paramxhk, List paramList, xhe paramxhe, xhf paramxhf) {}
-  
-  private boolean a()
+  protected void a(JobContext paramJobContext, xgs paramxgs)
   {
-    boolean bool2 = false;
-    int i;
-    if (xhk.a(this.jdField_a_of_type_Xhk).size() == 1) {
-      i = 0;
+    System.currentTimeMillis();
+    int i = xod.a(BaseApplication.getContext());
+    i = xod.d(BaseApplication.getContext()) * 720 / i;
+    if (i % 2 != 0) {
+      i += 1;
     }
-    int j;
-    do
+    for (;;)
     {
-      long l = 1000000 * xhk.c(this.jdField_a_of_type_Xhk);
-      boolean bool1 = bool2;
-      if (xhk.a(this.jdField_a_of_type_Xhk) != null)
+      Object localObject = paramxgs.jdField_a_of_type_Xgw.jdField_a_of_type_JavaLangString;
+      paramJobContext = (JobContext)localObject;
+      if (!paramxgs.jdField_a_of_type_Xgw.jdField_b_of_type_Boolean)
       {
-        bool1 = bool2;
-        if (((Integer)xhk.a(this.jdField_a_of_type_Xhk).get(i)).intValue() > 0)
-        {
-          bool1 = bool2;
-          if (xhk.a(this.jdField_a_of_type_Xhk) < xhk.b(this.jdField_a_of_type_Xhk) * 1000000L)
-          {
-            xhk.a(this.jdField_a_of_type_Xhk).a(3553, ((Integer)xhk.a(this.jdField_a_of_type_Xhk).get(0)).intValue(), null, null, xhk.a(this.jdField_a_of_type_Xhk));
-            xhk.a(this.jdField_a_of_type_Xhk, xhk.a(this.jdField_a_of_type_Xhk) + l);
-            bool1 = true;
-          }
+        paramJobContext = (JobContext)localObject;
+        if (paramxgs.jdField_a_of_type_Xgw.jdField_a_of_type_Boolean) {
+          paramJobContext = paramxgs.jdField_a_of_type_Xgw.jdField_b_of_type_JavaLangString;
         }
       }
-      return bool1;
-      j = (int)(xhk.a(this.jdField_a_of_type_Xhk) / (Long.valueOf("2").longValue() * 1000L * 1000000L));
-      i = j;
-    } while (j < xhk.a(this.jdField_a_of_type_Xhk).size());
-    return false;
-  }
-  
-  public void a()
-  {
-    long l1 = System.currentTimeMillis();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    if (localIterator.hasNext())
-    {
-      Bitmap localBitmap = (Bitmap)localIterator.next();
-      if (!xhk.a(this.jdField_a_of_type_Xhk)) {}
-      for (int i = xhk.a(this.jdField_a_of_type_Xhk, localBitmap, xhk.a(this.jdField_a_of_type_Xhk), xhk.b(this.jdField_a_of_type_Xhk));; i = xhk.b(this.jdField_a_of_type_Xhk, localBitmap, xhk.a(this.jdField_a_of_type_Xhk), xhk.b(this.jdField_a_of_type_Xhk)))
+      localObject = new BitmapFactory.Options();
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+      for (;;)
       {
-        xhk.a(this.jdField_a_of_type_Xhk).add(Integer.valueOf(i));
-        break;
+        try
+        {
+          bdda.a(paramJobContext, (BitmapFactory.Options)localObject);
+          if (((BitmapFactory.Options)localObject).outWidth * 720 == ((BitmapFactory.Options)localObject).outHeight * i)
+          {
+            j = 1;
+            if ((!(paramxgs.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalPhotoSource)) && ((paramxgs.jdField_a_of_type_Int != 1) || (j != 0)) && (((BitmapFactory.Options)localObject).outWidth <= 720) && (((BitmapFactory.Options)localObject).outHeight <= i) && (((BitmapFactory.Options)localObject).outWidth % 2 == 0) && (((BitmapFactory.Options)localObject).outHeight % 2 == 0)) {
+              break label384;
+            }
+            paramJobContext = paramxgs.jdField_a_of_type_Xgw.jdField_a_of_type_AndroidGraphicsBitmap;
+            if (paramJobContext != null) {
+              break;
+            }
+            wsv.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "srcBitmap is null please check!");
+            super.notifyError(new BitmapError("Q.qqstory.publish.edit.ResizeBitmapSegment", 0));
+            return;
+          }
+        }
+        catch (OutOfMemoryError paramJobContext)
+        {
+          wsv.b("Q.qqstory.publish.edit.ResizeBitmapSegment", "decode image failed", paramJobContext);
+          super.notifyError(new BitmapError("Q.qqstory.publish.edit.ResizeBitmapSegment", 6));
+          return;
+        }
+        int j = 0;
       }
-    }
-    long l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("MuiltiImageToVideo", 2, "onEncodeStart preProcess cost: " + (l2 - l1) + " ms mGpuBlur:" + xhk.a(this.jdField_a_of_type_Xhk));
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a();
-  }
-  
-  public void a(String arg1)
-  {
-    long l = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("MuiltiImageToVideo", 2, "onEncodeStart encode cost: " + (l - this.jdField_a_of_type_Long) + " ms mGpuBlur:" + xhk.a(this.jdField_a_of_type_Xhk));
-    }
-    if (this.jdField_a_of_type_Xhe != null) {
-      this.jdField_a_of_type_Xhe.a(this.jdField_a_of_type_Xhf);
-    }
-    if (xhk.a(this.jdField_a_of_type_Xhk) != null)
-    {
-      xhk.a(this.jdField_a_of_type_Xhk).surfaceDestroyed();
-      xhk.a(this.jdField_a_of_type_Xhk, null);
-    }
-    if (xhk.a(this.jdField_a_of_type_Xhk) != null)
-    {
-      xhk.a(this.jdField_a_of_type_Xhk).c();
-      xhk.a(this.jdField_a_of_type_Xhk, null);
-    }
-    if (xhk.a(this.jdField_a_of_type_Xhk) != null) {
-      xhk.a(this.jdField_a_of_type_Xhk).clear();
-    }
-    synchronized (this.jdField_a_of_type_Xhk)
-    {
-      this.jdField_a_of_type_Xhk.notifyAll();
-      return;
-    }
-  }
-  
-  public void a_(int paramInt, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("MuiltiImageToVideo", 2, "onEncodeError, code:" + paramInt);
-    }
-    synchronized (this.jdField_a_of_type_Xhk)
-    {
-      this.jdField_a_of_type_Xhk.notifyAll();
-      if (this.jdField_a_of_type_Xhe != null)
+      wsv.a("Q.qqstory.publish.edit.ResizeBitmapSegment", "srcBitmap width=%s, height=%s", Integer.valueOf(paramJobContext.getWidth()), Integer.valueOf(paramJobContext.getHeight()));
+      localObject = xmn.b(paramJobContext, 720, i, false, false);
+      if (localObject == null)
       {
-        this.jdField_a_of_type_Xhf.a(paramThrowable.getMessage());
-        this.jdField_a_of_type_Xhf.a(943001);
-        this.jdField_a_of_type_Xhe.b(this.jdField_a_of_type_Xhf);
+        super.notifyError(new BitmapError("Q.qqstory.publish.edit.ResizeBitmapSegment", 5));
+        return;
       }
+      paramxgs.jdField_a_of_type_Xgw.jdField_b_of_type_Boolean = false;
+      paramxgs.jdField_a_of_type_Xgw.jdField_a_of_type_Boolean = true;
+      String str = xhi.a(paramxgs.jdField_a_of_type_Int, paramxgs.jdField_b_of_type_JavaLangString, ".jpg");
+      xmn.a((Bitmap)localObject, str);
+      if (paramJobContext != localObject)
+      {
+        ((Bitmap)localObject).recycle();
+        wsv.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "BitmapUtils.resizeAndFillBitmapEdge recycle bitmap");
+      }
+      for (;;)
+      {
+        paramxgs.jdField_a_of_type_Xgw.jdField_b_of_type_JavaLangString = str;
+        super.notifyResult(paramxgs);
+        return;
+        wsv.d("Q.qqstory.publish.edit.ResizeBitmapSegment", "BitmapUtils.resizeAndFillBitmapEdge do not recycle bitmap");
+      }
+      label384:
+      wsv.b("Q.qqstory.publish.edit.ResizeBitmapSegment", "no need resize. srcWidth=%s, srcHeight=%s, destWidth=%s, destHeight=%s", Integer.valueOf(((BitmapFactory.Options)localObject).outWidth), Integer.valueOf(((BitmapFactory.Options)localObject).outHeight), Integer.valueOf(720), Integer.valueOf(i));
+      super.notifyResult(paramxgs);
       return;
-    }
-  }
-  
-  public void b()
-  {
-    QLog.d("MuiltiImageToVideo", 2, "onEncodeFrame() ");
-    if ((!a()) && (xhk.a(this.jdField_a_of_type_Xhk) != null)) {
-      xhk.a(this.jdField_a_of_type_Xhk).b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xhl
  * JD-Core Version:    0.7.0.1
  */

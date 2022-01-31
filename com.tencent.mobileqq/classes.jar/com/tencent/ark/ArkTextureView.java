@@ -24,6 +24,7 @@ public class ArkTextureView
   private View mArkView;
   private Context mContext;
   private boolean mIsGpuRendering;
+  protected boolean mOnStartTemporaryDetach = true;
   private ArkTextureView.ArkTextureViewInterface mTextureViewInterface;
   public ArkViewImplement mViewImpl;
   
@@ -150,7 +151,9 @@ public class ArkTextureView
   public void onStartTemporaryDetach()
   {
     super.onStartTemporaryDetach();
-    this.mViewImpl.onStartTemporaryDetach();
+    if (this.mOnStartTemporaryDetach) {
+      this.mViewImpl.onStartTemporaryDetach();
+    }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -251,7 +254,7 @@ public class ArkTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.ark.ArkTextureView
  * JD-Core Version:    0.7.0.1
  */

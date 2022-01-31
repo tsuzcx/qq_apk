@@ -1,21 +1,17 @@
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
+import com.tencent.pts.core.PTSAppInstance;
+import com.tencent.pts.ui.vnode.PTSNodeVirtual.IBuilder;
 
 public class pws
-  extends CharacterStyle
+  implements PTSNodeVirtual.IBuilder<pwq>
 {
-  public pws(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  public pwq a(PTSAppInstance paramPTSAppInstance)
   {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(actj.a(2, 14, this.a.getResources()));
+    return new pwq(paramPTSAppInstance, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pws
  * JD-Core Version:    0.7.0.1
  */

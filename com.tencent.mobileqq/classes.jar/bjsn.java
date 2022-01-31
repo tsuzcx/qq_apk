@@ -1,81 +1,79 @@
-import android.graphics.PointF;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class bjsn
-  implements vlb
+public class bjsn
+  extends bjts
 {
-  int jdField_a_of_type_Int = actj.a(18.0F, bjry.a(this.jdField_a_of_type_Bjry).getResources());
-  
-  bjsn(bjry parambjry) {}
-  
-  public void a()
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    bjry.e(this.jdField_a_of_type_Bjry);
-    bjry.a(this.jdField_a_of_type_Bjry, true);
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (paramFloat == 1.0F)
+    if ((!paramString2.equals("Qzone")) || (this.a == null) || (this.a.mRuntime == null)) {}
+    boolean bool;
+    do
     {
-      vlp localvlp = ((vla)bjry.a(this.jdField_a_of_type_Bjry).a("TextLayer")).a();
-      localvlp.b = this.jdField_a_of_type_Int;
-      bjry.a(this.jdField_a_of_type_Bjry).a(localvlp);
-    }
-  }
-  
-  public void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3)
-  {
-    vkv localvkv = (vkv)bjry.a(this.jdField_a_of_type_Bjry).a("GuideLineLayer");
-    if (localvkv != null) {
-      localvkv.a(paramBoolean1, paramFloat, paramInt1, paramInt2, paramPointF, paramBoolean2, paramInt3);
-    }
-  }
-  
-  public boolean a(vlc paramvlc)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (bjry.a(this.jdField_a_of_type_Bjry) != null)
-    {
-      bool1 = bool2;
-      if (paramvlc != null)
+      do
       {
-        bjry.a(this.jdField_a_of_type_Bjry).setVisibility(0);
-        if (bjry.a(this.jdField_a_of_type_Bjry).a.b())
+        do
         {
-          Object localObject = bjry.a(this.jdField_a_of_type_Bjry).a.a();
-          ((vpp)localObject).d = false;
-          if ((localObject instanceof vlc))
+          do
           {
-            localObject = (vla)bjry.a(this.jdField_a_of_type_Bjry).a("TextLayer");
-            if (localObject != null) {
-              ((vla)localObject).d();
+            return false;
+          } while ((!"getQZoneLiveStatus".equals(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length <= 0));
+          try
+          {
+            paramString1 = new JSONObject(paramVarArgs[0]);
+            paramJsBridgeListener = paramString1.optString("callback");
+            bool = paramString1.optBoolean("needInstall");
+            if (QLog.isColorLevel()) {
+              QLog.i("QZoneLiveJsPlugin", 2, "H5参数：" + paramString1);
             }
+            paramString1 = new JSONObject();
+            paramString2 = bjls.a();
+            if (QLog.isColorLevel()) {
+              QLog.i("QZoneLiveJsPlugin", 2, "pluginid ：" + paramString2);
+            }
+            if (!TextUtils.isEmpty(paramString2)) {
+              break;
+            }
+            paramString1.put("isInstalled", false);
+            if (QLog.isColorLevel()) {
+              QLog.i("QZoneLiveJsPlugin", 2, "pluginid 为空，返回：" + paramString1);
+            }
+            this.a.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+            return false;
           }
+          catch (Exception paramJsBridgeListener) {}
+        } while (!QLog.isColorLevel());
+        QLog.e("QZoneLiveJsPlugin", 2, "", paramJsBridgeListener);
+        return false;
+        if (!"qzone_live_video_plugin.apk".equals(paramString2)) {
+          break;
         }
-        bjry.a(this.jdField_a_of_type_Bjry).a.a(paramvlc);
-        paramvlc.d = true;
-        bjry.a(this.jdField_a_of_type_Bjry).requestLayout();
-        bool1 = true;
+      } while (TextUtils.isEmpty(paramJsBridgeListener));
+      paramString2 = this.a.mRuntime.a();
+      if (paramString2 == null)
+      {
+        paramString1.put("isInstalled", false);
+        if (QLog.isColorLevel()) {
+          QLog.i("QZoneLiveJsPlugin", 2, "context 为空，返回：" + paramString1);
+        }
+        this.a.callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
+        return false;
       }
-    }
-    return bool1;
-  }
-  
-  public void b()
-  {
-    bjry.a(this.jdField_a_of_type_Bjry, "");
-    bjry.b(this.jdField_a_of_type_Bjry).setVisibility(0);
-    bjry.c(this.jdField_a_of_type_Bjry, false);
+      PluginManagerHelper.getPluginInterface(paramString2, new bjso(this, paramString1, paramJsBridgeListener, bool));
+      return false;
+    } while ((!paramString2.equals("qzone_live_video_plugin_hack.apk")) || (TextUtils.isEmpty(paramJsBridgeListener)));
+    bjlk.a(BaseApplicationImpl.getContext(), new bjsp(this, paramString1, bool, paramJsBridgeListener));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjsn
  * JD-Core Version:    0.7.0.1
  */

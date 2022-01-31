@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app.asyncdb.cache;
 
-import auko;
+import awbv;
 import java.util.concurrent.ConcurrentHashMap;
 
 class RecentUserCache$CacheMap
-  extends ConcurrentHashMap<String, auko>
+  extends ConcurrentHashMap<String, awbv>
 {
   private RecentUserCache$CacheMap(RecentUserCache paramRecentUserCache) {}
   
@@ -14,7 +14,7 @@ class RecentUserCache$CacheMap
     super.clear();
   }
   
-  public auko put(String paramString, auko paramauko)
+  public awbv put(String paramString, awbv paramawbv)
   {
     Object localObject1 = paramString.split("&");
     if (localObject1.length >= 2)
@@ -28,12 +28,12 @@ class RecentUserCache$CacheMap
         localObject1 = new ConcurrentHashMap();
         this.this$0.b.put(localObject2, localObject1);
       }
-      ((ConcurrentHashMap)localObject1).put(localObject3, paramauko);
+      ((ConcurrentHashMap)localObject1).put(localObject3, paramawbv);
     }
-    return (auko)super.put(paramString, paramauko);
+    return (awbv)super.put(paramString, paramawbv);
   }
   
-  public auko remove(Object paramObject)
+  public awbv remove(Object paramObject)
   {
     Object localObject2 = ((String)paramObject).split("&");
     if (localObject2.length >= 2)
@@ -49,7 +49,7 @@ class RecentUserCache$CacheMap
         }
       }
     }
-    return (auko)super.remove(paramObject);
+    return (awbv)super.remove(paramObject);
   }
 }
 

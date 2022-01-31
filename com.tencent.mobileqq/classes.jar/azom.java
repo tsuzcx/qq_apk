@@ -1,92 +1,97 @@
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.PowerManager.WakeLock;
+import android.os.SystemClock;
+import android.util.Pair;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class azom
+class azom
 {
   public int a;
-  public long a;
-  public azob a;
+  private long jdField_a_of_type_Long;
+  private azoq jdField_a_of_type_Azoq;
   public String a;
-  public ArrayList<ResultRecord> a;
-  public boolean a;
-  public int b;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private long jdField_b_of_type_Long;
+  private azoq jdField_b_of_type_Azoq;
   public String b;
-  public boolean b;
-  public int c;
   public String c;
-  public boolean c;
-  public int d;
-  public String d;
-  public String e;
-  public String f;
   
-  public azom()
+  public azom(azok paramazok)
   {
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    b();
+    this.jdField_a_of_type_Azoq = new azoq(azok.a(paramazok), azok.a(paramazok));
+    this.jdField_b_of_type_Azoq = new azoq(azok.b(paramazok), azok.b(paramazok));
+  }
+  
+  public long a()
+  {
+    if (a()) {
+      return SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+    }
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public Pair<Boolean, Long> a(PowerManager.WakeLock paramWakeLock, int paramInt)
+  {
+    long l;
+    boolean bool;
+    if ((!paramWakeLock.isHeld()) && (this.jdField_a_of_type_Long != 0L))
+    {
+      l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Long = 0L;
+      this.jdField_b_of_type_Long = l;
+      bool = true;
+    }
+    for (;;)
+    {
+      return new Pair(Boolean.valueOf(bool), Long.valueOf(l));
+      bool = false;
+      l = 0L;
+    }
+  }
+  
+  public Pair<Boolean, List<azor>> a(PowerManager.WakeLock paramWakeLock, String paramString, long paramLong)
+  {
+    boolean bool = false;
+    if (!paramWakeLock.isHeld())
+    {
+      bool = true;
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    }
+    this.jdField_a_of_type_Azoq.a(paramString);
+    return new Pair(Boolean.valueOf(bool), this.jdField_b_of_type_Azoq.a(paramString));
+  }
+  
+  public Pair<Boolean, Integer> a(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))
+      {
+        paramString = new Pair(Boolean.valueOf(false), this.jdField_a_of_type_JavaUtilMap.get(paramString));
+        return paramString;
+      }
+      int i = this.jdField_a_of_type_JavaUtilMap.size();
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(i));
+      paramString = new Pair(Boolean.valueOf(true), Integer.valueOf(i));
+      return paramString;
+    }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Azob = new azob();
-    this.jdField_a_of_type_Azob.jdField_b_of_type_Int = 1;
-    this.jdField_a_of_type_Azob.a = new byte[0];
+    this.jdField_a_of_type_Azoq.a();
+    this.jdField_b_of_type_Azoq.a();
   }
   
-  public void a(String paramString)
+  public boolean a()
   {
-    boolean bool = true;
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("classify", 0);
-      this.jdField_b_of_type_Int = paramString.optInt("verifyType", 2);
-      this.jdField_a_of_type_JavaLangString = paramString.optString("classificationInfo", "");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("name", "");
-      this.jdField_d_of_type_JavaLangString = paramString.optString("introduction", "");
-      this.e = paramString.optString("location", "");
-      this.jdField_c_of_type_Int = paramString.optInt("group_type", -1);
-      if (paramString.optInt("isJumpAio") == 1) {}
-      for (;;)
-      {
-        this.jdField_b_of_type_Boolean = bool;
-        this.jdField_d_of_type_Int = paramString.optInt("create_source", 0);
-        return;
-        bool = false;
-      }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_d_of_type_JavaLangString = "";
-    this.e = "";
-    this.jdField_a_of_type_Azob = null;
-    this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
+    return this.jdField_a_of_type_Long != 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azom
  * JD-Core Version:    0.7.0.1
  */

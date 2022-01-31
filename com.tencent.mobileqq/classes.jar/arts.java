@@ -1,15 +1,24 @@
-import com.tencent.mobileqq.listentogether.data.MusicInfo;
-import java.util.List;
-
-public abstract interface arts
+public class arts
 {
-  public abstract void a();
+  public int a;
+  public boolean a;
+  public boolean b;
   
-  public abstract void a(List<MusicInfo> paramList);
+  public arts(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.b = paramBoolean2;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arts
  * JD-Core Version:    0.7.0.1
  */

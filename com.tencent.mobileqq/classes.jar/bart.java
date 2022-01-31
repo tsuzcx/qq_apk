@@ -1,25 +1,106 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController.5.1.1;
+import android.os.SystemClock;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import java.io.FileNotFoundException;
+import java.io.RandomAccessFile;
+import java.util.HashMap;
+import tencent.im.qim.trans.QIMVideoUpload.QIMVideoUpload.ReqBody;
 
 public class bart
-  implements bayi
 {
-  public bart(TroopGiftAnimationController.5 param5) {}
+  public int a;
+  private long jdField_a_of_type_Long;
+  private barv jdField_a_of_type_Barv;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private Transaction jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction;
+  private RandomAccessFile jdField_a_of_type_JavaIoRandomAccessFile;
+  private String jdField_a_of_type_JavaLangString;
+  private HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public boolean a;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private volatile boolean jdField_b_of_type_Boolean;
+  private String c;
+  private String d;
+  private String e;
   
-  public void onLoadingStateChanged(int paramInt1, int paramInt2)
+  public bart(AppInterface paramAppInterface, barv parambarv, String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2)
   {
-    Bitmap localBitmap = banb.a(this.a.this$0.a(String.valueOf(this.a.a.senderUin), null));
-    if ((paramInt1 == 0) && (paramInt2 == 1) && (this.a.this$0.a != null)) {
-      this.a.this$0.a.b(new TroopGiftAnimationController.5.1.1(this, localBitmap));
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_Barv = parambarv;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
+    this.jdField_a_of_type_Int = paramInt;
+    this.e = paramString2;
+  }
+  
+  public boolean a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMWebVideoUploaderFirstFrame", 2, "<BDH_LOG> doUpload " + this.jdField_a_of_type_Boolean);
     }
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    if (this.jdField_a_of_type_JavaIoRandomAccessFile == null) {
+      try
+      {
+        this.jdField_a_of_type_JavaIoRandomAccessFile = new RandomAccessFile(this.jdField_a_of_type_JavaLangString, "r");
+        if (this.jdField_a_of_type_JavaIoRandomAccessFile == null)
+        {
+          this.jdField_b_of_type_Int = 9303;
+          this.d = "read video file error";
+          this.jdField_a_of_type_Barv.b(this.jdField_b_of_type_Int, this.d);
+          return false;
+        }
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        for (;;)
+        {
+          localFileNotFoundException.printStackTrace();
+          this.jdField_a_of_type_JavaIoRandomAccessFile = null;
+        }
+      }
+    }
+    Object localObject = new QIMVideoUpload.ReqBody();
+    ((QIMVideoUpload.ReqBody)localObject).uint64_uin.set(Long.parseLong(this.jdField_b_of_type_JavaLangString));
+    ((QIMVideoUpload.ReqBody)localObject).uint64_service_type.set(this.jdField_a_of_type_Int);
+    ((QIMVideoUpload.ReqBody)localObject).uint64_data_type.set(1L);
+    ((QIMVideoUpload.ReqBody)localObject).bytes_md5.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ArrayOfByte));
+    ((QIMVideoUpload.ReqBody)localObject).uint64_pic_type.set(1L);
+    ((QIMVideoUpload.ReqBody)localObject).str_video_uuid.set(this.e);
+    localObject = ((QIMVideoUpload.ReqBody)localObject).toByteArray();
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMWebVideoUploaderFirstFrame", 2, "doUpload|mVideoFileMd5= " + HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte));
+    }
+    baru localbaru = new baru(this);
+    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = new Transaction(this.jdField_b_of_type_JavaLangString, 53, this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ArrayOfByte, localbaru, (byte[])localObject, false);
+    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask(this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMWebVideoUploaderFirstFrame", 2, "<BDH_LOG>sendFileByBDH Transaction submit RetCode:" + i + " T_ID:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.getTransationId() + " MD5:" + HexUtil.bytes2HexStr(this.jdField_a_of_type_ArrayOfByte) + " Path:" + this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction.filePath + " Cmd:" + 53);
+    }
+    if (i != 0)
+    {
+      this.jdField_b_of_type_Int = i;
+      this.d = "SubmitError";
+      this.jdField_a_of_type_Barv.b(this.jdField_b_of_type_Int, this.d);
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bart
  * JD-Core Version:    0.7.0.1
  */

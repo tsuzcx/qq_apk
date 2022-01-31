@@ -141,17 +141,15 @@ public class QQLiveImage
         sImageList.add(paramQQLiveImage);
         bool1 = true;
       }
-      localReentrantLock1 = mLockForImageList;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ReentrantLock localReentrantLock1;
         if (QLog.isColorLevel()) {
           QLog.e(TAG, 2, "addToList()", localException);
         }
-        ReentrantLock localReentrantLock2 = mLockForImageList;
+        mLockForImageList.unlock();
         bool1 = bool2;
       }
     }
@@ -159,7 +157,6 @@ public class QQLiveImage
     {
       mLockForImageList.unlock();
     }
-    localReentrantLock1.unlock();
     QLog.i(TAG, 1, "addToList().... addSuccess: " + bool1 + ", ID: " + paramQQLiveImage.ID);
   }
   
@@ -345,7 +342,6 @@ public class QQLiveImage
           sImageList.clear();
           sImageList = null;
         }
-        paramActivity = mLockForImageList;
       }
       catch (Exception paramActivity)
       {
@@ -353,14 +349,13 @@ public class QQLiveImage
           continue;
         }
         QLog.e(TAG, 2, "release liveImage", paramActivity);
-        paramActivity = mLockForImageList;
+        mLockForImageList.unlock();
         continue;
       }
       finally
       {
         mLockForImageList.unlock();
       }
-      paramActivity.unlock();
       sAllPaused = false;
       return;
       label212:
@@ -406,38 +401,32 @@ public class QQLiveImage
   private static void tryReycleFramesUseless(QQLiveImage paramQQLiveImage)
   {
     if (mLockForImageList.tryLock()) {}
-    for (;;)
+    try
     {
-      try
+      if (sImageList != null)
       {
-        if (sImageList != null)
+        int i = 0;
+        while (i < sImageList.size())
         {
-          int i = 0;
-          if (i < sImageList.size())
-          {
-            QQLiveImage localQQLiveImage = (QQLiveImage)sImageList.get(i);
-            if ((localQQLiveImage != null) && (localQQLiveImage.isRecycled()) && (localQQLiveImage != paramQQLiveImage)) {
-              localQQLiveImage.recycleCurFrame();
-            }
-            i += 1;
-            continue;
+          QQLiveImage localQQLiveImage = (QQLiveImage)sImageList.get(i);
+          if ((localQQLiveImage != null) && (localQQLiveImage.isRecycled()) && (localQQLiveImage != paramQQLiveImage)) {
+            localQQLiveImage.recycleCurFrame();
           }
+          i += 1;
         }
-        paramQQLiveImage = mLockForImageList;
       }
-      catch (Exception paramQQLiveImage)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e(TAG, 2, "tryReycleFramesUseless()", paramQQLiveImage);
-        }
-        paramQQLiveImage = mLockForImageList;
-        paramQQLiveImage.unlock();
-        return;
+      return;
+    }
+    catch (Exception paramQQLiveImage)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(TAG, 2, "tryReycleFramesUseless()", paramQQLiveImage);
       }
-      finally
-      {
-        mLockForImageList.unlock();
-      }
+      return;
+    }
+    finally
+    {
+      mLockForImageList.unlock();
     }
   }
   
@@ -455,8 +444,8 @@ public class QQLiveImage
         QLog.e(TAG + this.ID, 1, "[TVK_IMediaPlayer] OnVideoOutputFrame: mediaPlayer not current player..just return.  mediaPlayer=" + paramTVK_IMediaPlayer);
       }
     }
-    label740:
-    label749:
+    label738:
+    label747:
     do
     {
       return;
@@ -482,12 +471,12 @@ public class QQLiveImage
         l = this.mVideoPlayer.getCurrentPostion();
         this.mCurPosi = l;
         if (this.mParams.mMaxPlayTimeMs <= 0) {
-          break label749;
+          break label747;
         }
         if (l >= this.mParams.mMaxPlayTimeMs + this.mParams.mStartPosi)
         {
           if (!this.mParams.mLoopback) {
-            break label740;
+            break label738;
           }
           QLog.d(TAG + this.ID, 2, "[TVK_IMediaPlayer] OnVideoOutputFrame: mLoopback is true, seekTo startPosi , " + this.mParams.mStartPosi);
           this.mVideoPlayer.seekTo(this.mParams.mStartPosi);
@@ -549,7 +538,6 @@ public class QQLiveImage
             }
           }
           this.mFrameIndex += 1;
-          paramTVK_IMediaPlayer = this.mLock;
         }
         catch (Exception paramTVK_IMediaPlayer)
         {
@@ -557,7 +545,7 @@ public class QQLiveImage
             continue;
           }
           QLog.e(TAG + this.ID, 2, "[TVK_IMediaPlayer] OnVideoOutputFrame: exception happens... ", paramTVK_IMediaPlayer);
-          paramTVK_IMediaPlayer = this.mLock;
+          this.mLock.unlock();
           continue;
         }
         catch (OutOfMemoryError paramTVK_IMediaPlayer)
@@ -566,14 +554,13 @@ public class QQLiveImage
             continue;
           }
           QLog.e(TAG + this.ID, 2, "[TVK_IMediaPlayer] OnVideoOutputFrame: Catch OutOfMemoryError... ");
-          paramTVK_IMediaPlayer = this.mLock;
+          this.mLock.unlock();
           continue;
         }
         finally
         {
           this.mLock.unlock();
         }
-        paramTVK_IMediaPlayer.unlock();
         System.currentTimeMillis();
         this.mHandler.removeMessages(1);
         this.mHandler.sendEmptyMessage(1);
@@ -1119,25 +1106,22 @@ public class QQLiveImage
       if (sImageList != null) {
         sImageList.remove(this);
       }
-      localReentrantLock1 = mLockForImageList;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ReentrantLock localReentrantLock1;
         localException = localException;
         if (QLog.isColorLevel()) {
           QLog.e(TAG, 2, "release()", localException);
         }
-        ReentrantLock localReentrantLock2 = mLockForImageList;
+        mLockForImageList.unlock();
       }
     }
     finally
     {
       mLockForImageList.unlock();
     }
-    localReentrantLock1.unlock();
     asyncReleasePlayer(false);
     if (this.mLock.tryLock())
     {

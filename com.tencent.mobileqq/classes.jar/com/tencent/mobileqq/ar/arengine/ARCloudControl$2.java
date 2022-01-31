@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import ajya;
-import alfn;
-import alfu;
-import bcql;
+import alpo;
+import amwd;
+import amwk;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ARCloudControl$2
   implements Runnable
 {
-  public ARCloudControl$2(alfn paramalfn) {}
+  public ARCloudControl$2(amwd paramamwd) {}
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getContext(), String.format(ajya.a(2131700640), new Object[] { Integer.valueOf(this.this$0.a.c) }), 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), String.format(alpo.a(2131701009), new Object[] { Integer.valueOf(this.this$0.a.c) }), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudControl.2
  * JD-Core Version:    0.7.0.1
  */

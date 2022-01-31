@@ -1,41 +1,89 @@
-import android.graphics.Matrix;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.text.method.PasswordTransformationMethod;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.CustomSafeEditText;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
 
 public class ajjb
-  extends Animation
+  implements TextWatcher
 {
-  private final int a;
-  private final int b;
-  private final int c;
-  private final int d;
-  private final int e;
-  private final int f;
+  public ajjb(LoginView paramLoginView) {}
   
-  public ajjb(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    this.e = paramInt1;
-    this.f = paramInt2;
-    this.d = paramInt5;
-    this.c = paramInt6;
-    this.a = paramInt3;
-    this.b = paramInt4;
-  }
+  public void afterTextChanged(Editable paramEditable) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    float f1 = this.e;
-    float f2 = this.a;
-    float f3 = this.d;
-    float f4 = this.f;
-    float f5 = this.b;
-    float f6 = this.c;
-    paramTransformation.getMatrix().preTranslate((1.0F - paramFloat) * (1.0F - paramFloat) * f1 + 2.0F * paramFloat * (1.0F - paramFloat) * f2 + paramFloat * paramFloat * f3, (1.0F - paramFloat) * (1.0F - paramFloat) * f4 + 2.0F * paramFloat * (1.0F - paramFloat) * f5 + paramFloat * paramFloat * f6);
+    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null) {
+      LoginView.a(this.a, null);
+    }
+    String str;
+    SimpleAccount localSimpleAccount;
+    for (;;)
+    {
+      return;
+      if (paramCharSequence != null)
+      {
+        str = paramCharSequence.toString();
+        if ((str == null) || (str.length() == 0) || (this.a.jdField_a_of_type_JavaUtilList == null)) {
+          break;
+        }
+        paramInt1 = 0;
+        while (paramInt1 < this.a.jdField_a_of_type_JavaUtilList.size())
+        {
+          localSimpleAccount = (SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(paramInt1);
+          if ((localSimpleAccount != null) && (localSimpleAccount.getUin() != null)) {
+            break label110;
+          }
+          paramInt1 += 1;
+        }
+      }
+    }
+    label110:
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+    {
+      paramCharSequence = localSimpleAccount.getUin();
+      label126:
+      if (!str.equals(paramCharSequence)) {
+        break label298;
+      }
+      if ((localSimpleAccount != null) && (localSimpleAccount.isLogined())) {
+        if (!LoginView.h(this.a))
+        {
+          LoginView.i(this.a, true);
+          this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+          paramCharSequence = this.a.c;
+          if ((!LoginView.d(this.a)) && (!LoginView.e(this.a)) && (!LoginView.f(this.a))) {
+            break label300;
+          }
+        }
+      }
+    }
+    label298:
+    label300:
+    for (paramInt1 = 2130846451;; paramInt1 = 2130844232)
+    {
+      paramCharSequence.setImageResource(paramInt1);
+      this.a.c.setContentDescription(alpo.a(2131706733));
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText("!@#ewaGbhkc$!!=");
+      this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount = localSimpleAccount;
+      LoginView.c(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setClearButtonVisible(false);
+      return;
+      paramCharSequence = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(localSimpleAccount.getUin());
+      break label126;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajjb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,23 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
-public class aqxo
-  extends akat
+public final class aqxo
+  implements Parcelable.Creator<FileInfo>
 {
-  private WeakReference<Context> a;
-  
-  public aqxo(Context paramContext)
+  public FileInfo a(Parcel paramParcel)
   {
-    this.a = new WeakReference(paramContext);
+    return new FileInfo(paramParcel, null);
   }
   
-  protected void a(int paramInt, byte[] paramArrayOfByte)
+  public FileInfo[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HiBoomFont.HiBoomManager", 2, "onHiBoomAuthResult errorCode = " + paramInt);
-    }
-    Context localContext = (Context)this.a.get();
-    if ((paramInt != 0) && (localContext != null)) {
-      aqxj.a(localContext, paramArrayOfByte, 0);
-    }
+    return new FileInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqxo
  * JD-Core Version:    0.7.0.1
  */

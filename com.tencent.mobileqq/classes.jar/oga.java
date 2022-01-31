@@ -1,33 +1,19 @@
-import android.graphics.Rect;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class oga
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class oga
+  implements View.OnClickListener
 {
-  public oga(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  oga(ofx paramofx) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    Rect localRect = new Rect();
-    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.getWindowVisibleDisplayFrame(localRect);
-    int j = localRect.bottom;
-    int i = j;
-    if (!this.a.d) {
-      i = j - this.a.g;
-    }
-    if (i != this.a.f)
-    {
-      this.a.f = i;
-      this.a.jdField_a_of_type_AndroidViewViewGroup$LayoutParams.height = this.a.f;
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.requestLayout();
-    }
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oga
  * JD-Core Version:    0.7.0.1
  */

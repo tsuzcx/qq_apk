@@ -1,121 +1,132 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
-import com.tencent.mobileqq.data.QQAlbumInfo;
+import android.util.SparseIntArray;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
-import mqq.util.WeakReference;
 
 public class agtm
-  extends agrk
 {
-  private List<String> a;
+  private static final SparseIntArray a = new SparseIntArray();
   
-  private agtm(AlbumListFragment paramAlbumListFragment)
+  static
   {
-    super(paramAlbumListFragment);
+    a.put(2, 10);
+    a.put(3, 20);
+    a.put(4, 30);
   }
   
-  public static agrh b(AlbumListFragment paramAlbumListFragment)
+  public static <T extends agtj> List<T> a(QQAppInterface paramQQAppInterface, List<T> paramList)
   {
-    if ((jdField_a_of_type_Agrh == null) || (jdField_a_of_type_Agrh.jdField_a_of_type_MqqUtilWeakReference.get() != paramAlbumListFragment)) {}
-    try
+    paramQQAppInterface = new ArrayList();
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      if ((jdField_a_of_type_Agrh == null) || (jdField_a_of_type_Agrh.jdField_a_of_type_MqqUtilWeakReference.get() != paramAlbumListFragment)) {
-        jdField_a_of_type_Agrh = new agtm(paramAlbumListFragment);
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchStickerRecEmoticonUtil", 2, "getSearchStickerRecEmotions stickerRecSearches.size:" + paramList.size());
       }
-      return jdField_a_of_type_Agrh;
-    }
-    finally {}
-  }
-  
-  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramView = super.a(paramInt, paramView, paramViewGroup);
-    paramViewGroup = (AlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((paramViewGroup != null) && (paramViewGroup.isAdded()) && (!paramViewGroup.isDetached()) && (!paramViewGroup.isRemoving()))
-    {
-      paramViewGroup = paramViewGroup.a;
-      if (paramViewGroup != null)
+      Collections.sort(paramList, new agtn());
+      if (paramList.size() > 0) {
+        paramQQAppInterface.add(paramList.remove(0));
+      }
+      if (paramList.size() > 0) {
+        a(paramList, paramQQAppInterface);
+      }
+      if (paramList.size() > 0)
       {
-        paramViewGroup = paramViewGroup.a(paramInt);
-        if ((paramViewGroup != null) && ((paramView instanceof TextView))) {
-          ((TextView)paramView).setText(paramViewGroup.name);
-        }
+        Collections.sort(paramList, new agto());
+        a(paramList, paramQQAppInterface);
+      }
+      if (QLog.isColorLevel()) {
+        paramList = paramQQAppInterface.iterator();
       }
     }
-    return paramView;
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(-1);
-  }
-  
-  protected void a(Intent paramIntent)
-  {
-    if (paramIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 0) == 5) {
-      paramIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 6);
-    }
-    super.a(paramIntent);
-    this.jdField_a_of_type_Agrz.b = paramIntent.getStringExtra("ALBUM_NAME");
-    paramIntent = (AlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()))
+    else
     {
-      paramIntent = bifz.a(paramIntent.getActivity().getApplicationContext(), this.jdField_a_of_type_Agrz.a, "pref_select_album");
-      if (!TextUtils.isEmpty(paramIntent)) {
-        break label176;
-      }
-    }
-    label176:
-    for (paramIntent = new ArrayList();; paramIntent = bifz.a(paramIntent))
-    {
-      this.jdField_a_of_type_JavaUtilList = paramIntent;
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-        this.jdField_a_of_type_Agrz.c = ((String)this.jdField_a_of_type_JavaUtilList.get(0));
-      }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_Agrz.c)) {
-        this.jdField_a_of_type_Agrz.c = "$RecentAlbumId";
-      }
-      return;
-    }
-  }
-  
-  protected void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
-  {
-    super.a(paramQQAlbumInfo, paramInt, paramIntent);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Agrz.b)) {
-      paramIntent.putExtra("ALBUM_NAME", this.jdField_a_of_type_Agrz.b);
-    }
-    paramIntent = (AlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()) && (this.jdField_a_of_type_JavaUtilList != null)) {
-      if (!TextUtils.isEmpty(paramQQAlbumInfo._id))
+      while (paramList.hasNext())
       {
-        if ((this.jdField_a_of_type_JavaUtilList.contains(paramQQAlbumInfo._id)) && (!TextUtils.equals(paramQQAlbumInfo._id, (CharSequence)this.jdField_a_of_type_JavaUtilList.get(0)))) {
-          this.jdField_a_of_type_JavaUtilList.remove(paramQQAlbumInfo._id);
+        agtj localagtj = (agtj)paramList.next();
+        QLog.d("SearchStickerRecEmoticonUtil", 2, "getSearchStickerRecEmotions item.ClickNum:" + localagtj.b() + ",item.ExposeNum: " + localagtj.a());
+        continue;
+        return paramQQAppInterface;
+      }
+      QLog.d("SearchStickerRecEmoticonUtil", 2, "getSearchStickerRecEmotions stickerRecEmotionList.size:" + paramQQAppInterface.size());
+    }
+    return paramQQAppInterface;
+  }
+  
+  private static <T extends agtj> void a(List<T> paramList1, List<T> paramList2)
+  {
+    if (paramList2 == null) {}
+    agtj localagtj;
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramList1 == null) || (paramList1.isEmpty()));
+      for (localagtj = (agtj)paramList1.remove(0); (a(paramList2, localagtj)) && (paramList1.size() > 0); localagtj = (agtj)paramList1.remove(0)) {}
+    } while (a(paramList2, localagtj));
+    paramList2.add(localagtj);
+  }
+  
+  private static <T extends agtj> boolean a(List<T> paramList, T paramT)
+  {
+    if ((paramList == null) || (paramT == null)) {
+      return false;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject2 = (agtj)paramList.next();
+      if (((agtj)localObject2).c() != paramT.c())
+      {
+        Object localObject3;
+        Object localObject1;
+        String str;
+        if ((((agtj)localObject2).c() == 2) && (paramT.c() == 4))
+        {
+          localObject2 = (ague)localObject2;
+          localObject3 = (aguc)paramT;
+          localObject1 = ((aguc)localObject3).a.emoPath;
+          localObject3 = ((aguc)localObject3).a.eId;
+          str = ((ague)localObject2).a.epId;
+          localObject2 = ((ague)localObject2).a.eId;
+          if ((localObject1 != null) && (((String)localObject1).equals(str)) && (localObject3 != null) && (((String)localObject3).equals(localObject2))) {
+            return true;
+          }
         }
-        if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-          break label198;
+        else if ((((agtj)localObject2).c() == 4) && (paramT.c() == 2))
+        {
+          localObject1 = (ague)paramT;
+          localObject3 = (aguc)localObject2;
+          localObject2 = ((aguc)localObject3).a.emoPath;
+          localObject3 = ((aguc)localObject3).a.eId;
+          str = ((ague)localObject1).a.epId;
+          localObject1 = ((ague)localObject1).a.eId;
+          if ((localObject2 != null) && (((String)localObject2).equals(str)) && (localObject3 != null) && (((String)localObject3).equals(localObject1))) {
+            return true;
+          }
         }
-        this.jdField_a_of_type_JavaUtilList.add(paramQQAlbumInfo._id);
+        else
+        {
+          if ((((agtj)localObject2).c() == 4) && (paramT.c() == 3) && (((aguc)localObject2).b() != null) && (((aguc)localObject2).b().equals(((agtv)paramT).b()))) {
+            return true;
+          }
+          if ((((agtj)localObject2).c() == 3) && (paramT.c() == 4) && (((aguc)paramT).b() != null) && (((aguc)paramT).b().equals(((agtv)localObject2).b()))) {
+            return true;
+          }
+        }
       }
     }
-    for (;;)
-    {
-      bifz.a(paramIntent.getActivity().getApplicationContext(), this.jdField_a_of_type_Agrz.a, "pref_select_album", bifz.a(this.jdField_a_of_type_JavaUtilList.iterator()));
-      return;
-      label198:
-      this.jdField_a_of_type_JavaUtilList.set(0, paramQQAlbumInfo._id);
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agtm
  * JD-Core Version:    0.7.0.1
  */

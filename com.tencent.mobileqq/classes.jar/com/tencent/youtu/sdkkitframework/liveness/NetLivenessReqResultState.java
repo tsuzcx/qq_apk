@@ -373,25 +373,34 @@ public class NetLivenessReqResultState
   
   private void onActReflectRequest()
   {
-    Object localObject2 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.ACTION_STATE));
-    this.bestImage = ((YuvImage)((YtFSMBaseState)localObject2).getStateDataBy("best_frame"));
-    this.stateData.put("best_frame", this.bestImage);
-    Object localObject1 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.REFLECT_STATE));
-    UploadVideoRequesterV3.UploadVideoResponse localUploadVideoResponse = (UploadVideoRequesterV3.UploadVideoResponse)((YtFSMBaseState)localObject1).getStateDataBy("reflect_response_object");
-    localObject1 = (ActionReflectReq)((YtFSMBaseState)localObject1).getStateDataBy("reflect_request_object");
-    localObject2 = Base64.encode((byte[])((YtFSMBaseState)localObject2).getStateDataBy("frames"), 2);
-    WeJson localWeJson = new WeJson();
-    NetLivenessReqResultState.Version localVersion = new NetLivenessReqResultState.Version(this);
-    localVersion.sdk_version = YtSDKKitFramework.getInstance().version();
-    localVersion.ftrack_sdk_version = YTFaceTrack.Version;
-    localVersion.faction_sdk_version = YTPoseDetectJNIInterface.getVersion();
-    localVersion.freflect_sdk_version = "3.4.7";
-    ((ActionReflectReq)localObject1).action_video = new String((byte[])localObject2);
-    ((ActionReflectReq)localObject1).client_version = String.format("sdk_version:%s;ftrack_sdk_version:%s;freflect_sdk_version:%s;faction_sdk_version:%s", new Object[] { localVersion.sdk_version, localVersion.ftrack_sdk_version, localVersion.freflect_sdk_version, localVersion.faction_sdk_version });
-    YtLogger.d(TAG, "action_video:size:" + ((ActionReflectReq)localObject1).action_video.length());
-    YtLogger.d(TAG, "client_version:" + ((ActionReflectReq)localObject1).client_version);
-    localObject1 = localWeJson.toJson(localObject1);
-    YtFSM.getInstance().sendNetworkRequset(this.resultUrl, (String)localObject1, null, new NetLivenessReqResultState.6(this, localUploadVideoResponse));
+    try
+    {
+      Object localObject2 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.ACTION_STATE));
+      this.bestImage = ((YuvImage)((YtFSMBaseState)localObject2).getStateDataBy("best_frame"));
+      this.stateData.put("best_frame", this.bestImage);
+      Object localObject1 = YtFSM.getInstance().getStateByName(YtSDKKitCommon.StateNameHelper.classNameOfState(YtSDKKitCommon.StateNameHelper.StateClassName.REFLECT_STATE));
+      UploadVideoRequesterV3.UploadVideoResponse localUploadVideoResponse = (UploadVideoRequesterV3.UploadVideoResponse)((YtFSMBaseState)localObject1).getStateDataBy("reflect_response_object");
+      localObject1 = (ActionReflectReq)((YtFSMBaseState)localObject1).getStateDataBy("reflect_request_object");
+      localObject2 = Base64.encode((byte[])((YtFSMBaseState)localObject2).getStateDataBy("frames"), 2);
+      WeJson localWeJson = new WeJson();
+      NetLivenessReqResultState.Version localVersion = new NetLivenessReqResultState.Version(this);
+      localVersion.sdk_version = YtSDKKitFramework.getInstance().version();
+      localVersion.ftrack_sdk_version = YTFaceTrack.Version;
+      localVersion.faction_sdk_version = YTPoseDetectJNIInterface.getVersion();
+      localVersion.freflect_sdk_version = "3.4.7";
+      ((ActionReflectReq)localObject1).action_video = new String((byte[])localObject2);
+      ((ActionReflectReq)localObject1).client_version = String.format("sdk_version:%s;ftrack_sdk_version:%s;freflect_sdk_version:%s;faction_sdk_version:%s", new Object[] { localVersion.sdk_version, localVersion.ftrack_sdk_version, localVersion.freflect_sdk_version, localVersion.faction_sdk_version });
+      YtLogger.d(TAG, "action_video:size:" + ((ActionReflectReq)localObject1).action_video.length());
+      YtLogger.d(TAG, "client_version:" + ((ActionReflectReq)localObject1).client_version);
+      localObject1 = localWeJson.toJson(localObject1);
+      YtFSM.getInstance().sendNetworkRequset(this.resultUrl, (String)localObject1, null, new NetLivenessReqResultState.6(this, localUploadVideoResponse));
+      return;
+    }
+    catch (Exception localException)
+    {
+      YtLogger.e(TAG, "actrefl request failed" + localException.getLocalizedMessage());
+      YtFSM.getInstance().sendFSMEvent(new NetLivenessReqResultState.7(this, localException));
+    }
   }
   
   private void onActReflectRequest2()
@@ -498,7 +507,7 @@ public class NetLivenessReqResultState
           YtLogger.d(TAG, "f5p count" + ((NetLivenessReqResultState.ActionReflectReq2)localObject3).five_points.size());
           localObject1 = new WeJson().toJson(localObject3);
           YtLogger.d(TAG, "upload string size:" + ((String)localObject1).length());
-          YtFSM.getInstance().sendNetworkRequset(this.resultUrl, (String)localObject1, null, new NetLivenessReqResultState.7(this));
+          YtFSM.getInstance().sendNetworkRequset(this.resultUrl, (String)localObject1, null, new NetLivenessReqResultState.8(this));
           return;
           localIOException1 = localIOException1;
           localObject2 = null;
@@ -645,7 +654,7 @@ public class NetLivenessReqResultState
   {
     super.enter();
     YtFSM.getInstance().sendFSMEvent(new NetLivenessReqResultState.1(this));
-    switch (NetLivenessReqResultState.8.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[YtFSM.getInstance().getWorkMode().ordinal()])
+    switch (NetLivenessReqResultState.9.$SwitchMap$com$tencent$youtu$sdkkitframework$framework$YtSDKKitFramework$YtSDKKitFrameworkWorkMode[YtFSM.getInstance().getWorkMode().ordinal()])
     {
     default: 
       return;
@@ -732,7 +741,7 @@ public class NetLivenessReqResultState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.NetLivenessReqResultState
  * JD-Core Version:    0.7.0.1
  */

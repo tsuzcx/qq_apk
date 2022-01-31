@@ -1,56 +1,49 @@
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class afdz
-  implements RadioGroup.OnCheckedChangeListener
+class afdz
+  extends Handler
 {
-  public afdz(AddContactsActivity paramAddContactsActivity) {}
-  
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  afdz(afdy paramafdy, Looper paramLooper)
   {
-    if ((paramInt == 2131376802) && (AddContactsActivity.a(this.a).isChecked()))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.obj == null)
     {
-      AddContactsActivity.a(this.a);
-      axqy.b(this.a.app, "CliOper", "", "", "0X8004BE9", "0X8004BE9", 0, 0, "", "", "", "");
-      AddContactsActivity.a(this.a).setSelected(true);
-      AddContactsActivity.b(this.a).setSelected(false);
-      AddContactsActivity.c(this.a).setSelected(false);
-      AddContactsActivity.a(this.a).setVisibility(8);
-    }
-    do
-    {
-      return;
-      if ((paramInt == 2131376804) && (AddContactsActivity.b(this.a).isChecked()))
+      switch (paramMessage.what)
       {
-        AddContactsActivity.b(this.a);
-        axqy.b(this.a.app, "CliOper", "", "", "0X8004BEA", "0X8004BEA", 0, 0, "", "", "", "");
-        axqy.b(this.a.app, "P_CliOper", "Grp_find", "", "grptab", "exp", 0, 0, "", "", "", "");
-        AddContactsActivity.b(this.a).setSelected(true);
-        AddContactsActivity.a(this.a).setSelected(false);
-        AddContactsActivity.c(this.a).setSelected(false);
-        paramRadioGroup = AddContactsActivity.a(this.a);
-        if (AddContactsActivity.a(this.a)) {}
-        for (paramInt = 0;; paramInt = 8)
-        {
-          paramRadioGroup.setVisibility(paramInt);
-          return;
-        }
+      default: 
+        return;
+      case 4: 
+        afdy.a(this.a);
+        return;
       }
-    } while ((paramInt != 2131376803) || (!AddContactsActivity.c(this.a).isChecked()));
-    AddContactsActivity.c(this.a);
-    axqy.b(this.a.app, "CliOper", "", "", "0X8004BEB", "0X8004BEB", 0, 0, "", "", "", "");
-    AddContactsActivity.c(this.a).setSelected(true);
-    AddContactsActivity.a(this.a).setSelected(false);
-    AddContactsActivity.b(this.a).setSelected(false);
-    AddContactsActivity.a(this.a).setVisibility(8);
+      afdy.a(this.a, true);
+      return;
+    }
+    WeakReference localWeakReference = (WeakReference)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      afdy.a(this.a, localWeakReference);
+      return;
+    case 2: 
+      afdy.b(this.a, localWeakReference);
+      return;
+    }
+    afdy.c(this.a, localWeakReference);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afdz
  * JD-Core Version:    0.7.0.1
  */

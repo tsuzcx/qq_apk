@@ -1,25 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.26.1;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public class aesl
-  implements Animation.AnimationListener
+class aesl
+  implements azzg
 {
-  aesl(aert paramaert) {}
+  aesl(aesi paramaesi) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a()
   {
-    aert.e(this.a).post(new PublicAccountChatPie.26.1(this));
+    azzm localazzm = new azzm(3000, 360, 0);
+    localazzm.a = true;
+    this.a.a.f.a(new azzf[] { localazzm });
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,176 +1,108 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
-import java.io.InputStream;
+import android.annotation.SuppressLint;
+import android.content.ContentResolver;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.media.ThumbnailUtils;
+import android.os.Build.VERSION;
+import android.provider.MediaStore.Images.Media;
+import android.provider.MediaStore.Video.Thumbnails;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
+import java.io.OutputStream;
 
 public class baut
-  extends InputStream
+  extends bame
 {
-  private int jdField_a_of_type_Int;
-  private InputStream jdField_a_of_type_JavaIoInputStream;
-  private boolean jdField_a_of_type_Boolean = true;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean;
-  private boolean c;
+  private static final String[] a = { "DISTINCT _id", "_data" };
   
-  public baut(InputStream paramInputStream)
+  @SuppressLint({"NewApi"})
+  private Bitmap a(String paramString)
   {
-    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
+    if (Build.VERSION.SDK_INT < 8) {
+      return null;
+    }
+    return ThumbnailUtils.createVideoThumbnail(paramString, 1);
   }
   
-  private static int a(InputStream paramInputStream)
+  private Bitmap b(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramInputStream == null) {
-      return -1;
-    }
-    int i = 0;
-    for (;;)
+    Object localObject = null;
+    Cursor localCursor = null;
+    if (Build.VERSION.SDK_INT < 5)
     {
-      if (i != -1)
+      localObject = localCursor;
+      label17:
+      return localObject;
+    }
+    try
+    {
+      localCursor = a(paramString);
+      paramString = (String)localObject;
+      if (localCursor != null) {
+        paramString = (String)localObject;
+      }
+    }
+    finally
+    {
+      try
       {
-        int j = paramInputStream.read();
-        if (j == 123)
+        if (localCursor.getCount() > 0)
         {
-          if (!QLog.isColorLevel()) {
-            break;
+          long l = localCursor.getLong(localCursor.getColumnIndexOrThrow("_id"));
+          paramString = (String)localObject;
+          if (localCursor.moveToFirst()) {
+            paramString = MediaStore.Video.Thumbnails.getThumbnail(BaseApplicationImpl.getContext().getContentResolver(), l, 1, null);
           }
-          QLog.d("ChunkedInputStream", 1, "Server did not return any chunk");
-          return -1;
         }
-        switch (i)
-        {
-        default: 
-          break;
-        case 0: 
-          if (j == 13) {
-            i = 1;
-          } else {
-            localStringBuilder.append((char)j);
-          }
-          break;
-        case 1: 
-          if (j == 10) {
-            i = -1;
-          } else {
-            throw new IOException("Read CRLF invalid!");
-          }
-          break;
+        localObject = paramString;
+        if (localCursor == null) {
+          break label17;
         }
+        localCursor.close();
+        return paramString;
       }
-    }
-    return Integer.parseInt(localStringBuilder.toString(), 16);
-  }
-  
-  private boolean a()
-  {
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = b();; bool = false)
-    {
-      this.jdField_a_of_type_Int = a(this.jdField_a_of_type_JavaIoInputStream);
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Int = 0;
-      if (this.jdField_a_of_type_Int == 0) {
-        this.jdField_b_of_type_Boolean = true;
-      }
-      return (this.jdField_a_of_type_Int >= 0) && (bool);
-    }
-  }
-  
-  private boolean b()
-  {
-    int i = this.jdField_a_of_type_JavaIoInputStream.read();
-    int j = this.jdField_a_of_type_JavaIoInputStream.read();
-    return (i == 13) && (j == 10);
-  }
-  
-  public byte[] a()
-  {
-    boolean bool = true;
-    if (!this.jdField_a_of_type_Boolean) {
-      bool = b();
-    }
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_JavaIoInputStream == null) {
-      return new byte[0];
-    }
-    this.jdField_a_of_type_Int = a(this.jdField_a_of_type_JavaIoInputStream);
-    if (4 == this.jdField_a_of_type_Int) {
-      read(new byte[4], 0, 4);
-    }
-    if ((this.jdField_a_of_type_Int <= 0) || (!bool)) {
-      return new byte[0];
-    }
-    byte[] arrayOfByte = new byte[this.jdField_a_of_type_Int];
-    int i = this.jdField_a_of_type_Int;
-    int j;
-    do
-    {
-      j = read(arrayOfByte, this.jdField_b_of_type_Int, i);
-      if (j < 0) {
-        return new byte[0];
-      }
-      j = i - j;
-      i = j;
-    } while (j > 0);
-    return arrayOfByte;
-  }
-  
-  public int read()
-  {
-    if (this.c) {
-      throw new IOException("Attempted read from closed stream.");
-    }
-    if (this.jdField_b_of_type_Boolean) {}
-    do
-    {
-      return -1;
-      if (this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) {
-        break;
-      }
-      a();
-    } while (this.jdField_b_of_type_Boolean);
-    this.jdField_b_of_type_Int += 1;
-    return this.jdField_a_of_type_JavaIoInputStream.read();
-  }
-  
-  public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    int j = -1;
-    if (this.c) {
-      throw new IOException("Attempted read from closed stream.");
-    }
-    int i;
-    if (this.jdField_b_of_type_Boolean) {
-      i = j;
-    }
-    do
-    {
-      boolean bool;
-      do
+      finally
       {
-        do
-        {
-          return i;
-          if (this.jdField_b_of_type_Int < this.jdField_a_of_type_Int) {
-            break;
-          }
-          bool = a();
-          i = j;
-        } while (this.jdField_b_of_type_Boolean);
-        i = j;
-      } while (!bool);
-      paramInt2 = Math.min(paramInt2, this.jdField_a_of_type_Int - this.jdField_b_of_type_Int);
-      paramInt1 = this.jdField_a_of_type_JavaIoInputStream.read(paramArrayOfByte, paramInt1, paramInt2);
-      this.jdField_b_of_type_Int += paramInt1;
-      i = paramInt1;
-    } while (this.jdField_b_of_type_Int != this.jdField_a_of_type_Int);
-    this.jdField_b_of_type_Int = 0;
-    return paramInt1;
+        break label112;
+      }
+      paramString = finally;
+      localCursor = null;
+    }
+    label112:
+    if (localCursor != null) {
+      localCursor.close();
+    }
+    throw paramString;
+  }
+  
+  public Cursor a(String paramString)
+  {
+    paramString = "_data='" + banw.a(paramString) + "' COLLATE NOCASE";
+    return BaseApplicationImpl.getContext().getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, a, paramString, null, null);
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    return new File(aljq.aW);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    return AlbumThumbManager.getInstance(BaseApplicationImpl.getContext()).getThumb(paramDownloadParams.url, new bauu(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     baut
  * JD-Core Version:    0.7.0.1
  */

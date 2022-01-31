@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
 import SummaryCard.TPraiseInfo;
-import ajya;
+import alpo;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -20,18 +20,18 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import annd;
-import aqyp;
-import aqyq;
-import aqyr;
-import ataj;
-import atop;
-import atoq;
-import auws;
-import auwu;
-import auww;
-import auwx;
-import baxn;
+import apek;
+import aspd;
+import aspe;
+import aspf;
+import auri;
+import avfp;
+import avfq;
+import awoe;
+import awog;
+import awoi;
+import awoj;
+import bcwh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.NearbyPeopleCard;
 import com.tencent.mobileqq.hotchat.anim.HeartLayout;
@@ -45,7 +45,7 @@ import java.util.Set;
 
 public class NearbyCardVoteView
   extends RelativeLayout
-  implements auwx
+  implements awoj
 {
   public static int c;
   public static int d;
@@ -55,8 +55,8 @@ public class NearbyCardVoteView
   View jdField_a_of_type_AndroidViewView;
   public FrameLayout a;
   public TextView a;
-  aqyr jdField_a_of_type_Aqyr;
-  auws jdField_a_of_type_Auws = new auws();
+  aspf jdField_a_of_type_Aspf;
+  awoe jdField_a_of_type_Awoe = new awoe();
   public QQAppInterface a;
   private NearbyPeopleCard jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard;
   HeartLayout jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout;
@@ -79,7 +79,7 @@ public class NearbyCardVoteView
   {
     super(paramContext);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new atop(this);
+    this.jdField_a_of_type_AndroidOsHandler = new avfp(this);
     a();
   }
   
@@ -87,7 +87,7 @@ public class NearbyCardVoteView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new atop(this);
+    this.jdField_a_of_type_AndroidOsHandler = new avfp(this);
     a();
   }
   
@@ -95,7 +95,7 @@ public class NearbyCardVoteView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new atop(this);
+    this.jdField_a_of_type_AndroidOsHandler = new avfp(this);
     a();
   }
   
@@ -105,19 +105,19 @@ public class NearbyCardVoteView
     this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_Aqyr = new aqyr(getContext());
-    this.jdField_a_of_type_Auws.jdField_a_of_type_Aqyr = this.jdField_a_of_type_Aqyr;
+    this.jdField_a_of_type_Aspf = new aspf(getContext());
+    this.jdField_a_of_type_Awoe.jdField_a_of_type_Aspf = this.jdField_a_of_type_Aspf;
     Object localObject = getResources();
     this.jdField_a_of_type_Double = ((Resources)localObject).getDisplayMetrics().density;
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Double * 50.0D), (int)(this.jdField_a_of_type_Double * 50.0D));
     localLayoutParams.addRule(12);
     localLayoutParams.addRule(11);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130844677);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130845041);
     addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_b_of_type_AndroidViewView = new SingleLineTextView(getContext());
-    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130845042);
-    this.jdField_b_of_type_AndroidViewView.setId(2131369180);
+    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130845407);
+    this.jdField_b_of_type_AndroidViewView.setId(2131369412);
     localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Double * 25.0D), (int)(this.jdField_a_of_type_Double * 25.0D));
     localLayoutParams.topMargin = ((int)(15.0D * this.jdField_a_of_type_Double));
     localLayoutParams.addRule(14);
@@ -132,17 +132,17 @@ public class NearbyCardVoteView
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-15550475);
     addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(getContext());
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131368672);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130849307);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131368879);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130849738);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setMinimumHeight((int)(this.jdField_a_of_type_Double * 6.0D));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setMinimumWidth((int)(this.jdField_a_of_type_Double * 6.0D));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setContentDescription(((Resources)localObject).getString(2131691140));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setContentDescription(((Resources)localObject).getString(2131691193));
     localObject = new RelativeLayout.LayoutParams(-2, -2);
     ((RelativeLayout.LayoutParams)localObject).addRule(10);
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
     addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131370777);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131371088);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 11.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, -2, -2);
@@ -154,21 +154,21 @@ public class NearbyCardVoteView
     this.jdField_b_of_type_AndroidViewView.getLocationInWindow((int[])localObject);
     float f1 = localObject[0] + this.jdField_b_of_type_AndroidViewView.getWidth() / 2;
     float f2 = localObject[1] - this.jdField_b_of_type_AndroidViewView.getHeight() / 2;
-    localObject = this.jdField_a_of_type_Aqyr.a(paramInt2, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout.a);
+    localObject = this.jdField_a_of_type_Aspf.a(paramInt2, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout.a);
     if (paramInt1 > 0)
     {
-      this.jdField_a_of_type_Auws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout, ((aqyp)localObject).a(), this, paramInt1, true, paramInt2, f1, f2);
+      this.jdField_a_of_type_Awoe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout, ((aspd)localObject).a(), this, paramInt1, true, paramInt2, f1, f2);
       return;
     }
     if (paramInt2 == 2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout.a(((aqyp)localObject).a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (aqyp)localObject, f1 - baxn.a(getContext(), 20.0F), f2 - baxn.a(getContext(), 120.0F), baxn.a(getContext(), 75.0F), baxn.a(getContext(), 65.0F));
+      this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout.a(((aspd)localObject).a(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (aspd)localObject, f1 - bcwh.a(getContext(), 20.0F), f2 - bcwh.a(getContext(), 120.0F), bcwh.a(getContext(), 75.0F), bcwh.a(getContext(), 65.0F));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout.a(((aqyp)localObject).a(), f1, f2);
+    this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout.a(((aspd)localObject).a(), f1, f2);
   }
   
-  public void a(int paramInt1, auww paramauww, int paramInt2, String paramString)
+  public void a(int paramInt1, awoi paramawoi, int paramInt2, String paramString)
   {
     if (paramInt1 == 0) {}
     do
@@ -176,36 +176,36 @@ public class NearbyCardVoteView
       do
       {
         return;
-      } while (paramauww == null);
+      } while (paramawoi == null);
       if ((!this.jdField_d_of_type_Boolean) && (paramInt1 == PraiseManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
-        a(paramauww);
+        a(paramawoi);
       }
-      paramauww = (Pair)this.jdField_a_of_type_Auws.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
-    } while (paramauww == null);
-    float f1 = ((Point)paramauww.first).x;
-    float f2 = ((Point)paramauww.first).y;
-    paramInt2 = ((Integer)paramauww.second).intValue();
-    this.jdField_a_of_type_Auws.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout, this.jdField_a_of_type_Aqyr.a(paramInt2, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout.a).a(), this, paramInt1, false, paramInt2, f1, f2);
-    this.jdField_a_of_type_Auws.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt1);
+      paramawoi = (Pair)this.jdField_a_of_type_Awoe.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt1);
+    } while (paramawoi == null);
+    float f1 = ((Point)paramawoi.first).x;
+    float f2 = ((Point)paramawoi.first).y;
+    paramInt2 = ((Integer)paramawoi.second).intValue();
+    this.jdField_a_of_type_Awoe.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout, this.jdField_a_of_type_Aspf.a(paramInt2, this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout.a).a(), this, paramInt1, false, paramInt2, f1, f2);
+    this.jdField_a_of_type_Awoe.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt1);
   }
   
-  public void a(auww paramauww)
+  public void a(awoi paramawoi)
   {
-    if ((!this.jdField_d_of_type_Boolean) && (paramauww != null) && (!this.jdField_a_of_type_Auws.jdField_a_of_type_Boolean))
+    if ((!this.jdField_d_of_type_Boolean) && (paramawoi != null) && (!this.jdField_a_of_type_Awoe.jdField_a_of_type_Boolean))
     {
-      this.jdField_a_of_type_Auws.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView;
-      this.jdField_a_of_type_Auws.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(getResources(), paramauww.a);
-      paramauww = (ataj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(207);
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard == null) || (!paramauww.c(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin).longValue()))) {
+      this.jdField_a_of_type_Awoe.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView;
+      this.jdField_a_of_type_Awoe.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(getResources(), paramawoi.a);
+      paramawoi = (auri)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(207);
+      if ((this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard == null) || (!paramawoi.c(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin).longValue()))) {
         break label147;
       }
     }
     label147:
     for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Auws.a(this.jdField_c_of_type_Boolean, bool, this.jdField_b_of_type_AndroidViewView.getBackground(), getResources());
-      this.jdField_b_of_type_AndroidViewView.startAnimation(auws.a(this.jdField_a_of_type_Auws, 1.0F, 0.3F));
-      this.jdField_a_of_type_Auws.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Awoe.a(this.jdField_c_of_type_Boolean, bool, this.jdField_b_of_type_AndroidViewView.getBackground(), getResources());
+      this.jdField_b_of_type_AndroidViewView.startAnimation(awoe.a(this.jdField_a_of_type_Awoe, 1.0F, 0.3F));
+      this.jdField_a_of_type_Awoe.jdField_a_of_type_Boolean = true;
       return;
     }
   }
@@ -227,7 +227,7 @@ public class NearbyCardVoteView
       localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
       if (paramBoolean)
       {
-        j = 2130849298;
+        j = 2130849729;
         i = this.jdField_a_of_type_Int;
         i = j;
         if (localObject != null)
@@ -257,7 +257,7 @@ public class NearbyCardVoteView
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Int + "");
       return;
-      j = 2130849301;
+      j = 2130849732;
       i = this.jdField_a_of_type_Int;
       i = this.jdField_b_of_type_Int;
       i = j;
@@ -280,7 +280,7 @@ public class NearbyCardVoteView
     }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, annd paramannd, boolean paramBoolean3, boolean paramBoolean4, List<TPraiseInfo> paramList)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, apek paramapek, boolean paramBoolean3, boolean paramBoolean4, List<TPraiseInfo> paramList)
   {
     this.jdField_d_of_type_Boolean = paramBoolean1;
     this.jdField_c_of_type_Boolean = paramBoolean2;
@@ -295,7 +295,7 @@ public class NearbyCardVoteView
       this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int % 20);
       label43:
       this.jdField_a_of_type_Int -= paramInt2;
-      localObject = (ataj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(207);
+      localObject = (auri)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(207);
       if ((this.jdField_d_of_type_Boolean) || (!this.jdField_c_of_type_Boolean)) {
         break label493;
       }
@@ -309,29 +309,29 @@ public class NearbyCardVoteView
       {
         try
         {
-          if ((this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (((ataj)localObject).c(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin).longValue())))
+          if ((this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (((auri)localObject).c(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin).longValue())))
           {
-            paramannd = getResources().getDrawable(2130842079);
+            paramapek = getResources().getDrawable(2130842232);
             this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-13291);
-            if (!this.jdField_a_of_type_Auws.jdField_a_of_type_Boolean) {
+            if (!this.jdField_a_of_type_Awoe.jdField_a_of_type_Boolean) {
               break label568;
             }
-            if ((this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard == null) || (!((ataj)localObject).c(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin).longValue()))) {
+            if ((this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard == null) || (!((auri)localObject).c(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin).longValue()))) {
               break label563;
             }
             paramBoolean1 = true;
-            this.jdField_a_of_type_Auws.a(this.jdField_c_of_type_Boolean, paramBoolean1, paramannd, getResources());
-            if ((!this.jdField_d_of_type_Boolean) && (!this.jdField_a_of_type_Auws.jdField_a_of_type_Boolean) && (!paramBoolean3))
+            this.jdField_a_of_type_Awoe.a(this.jdField_c_of_type_Boolean, paramBoolean1, paramapek, getResources());
+            if ((!this.jdField_d_of_type_Boolean) && (!this.jdField_a_of_type_Awoe.jdField_a_of_type_Boolean) && (!paramBoolean3))
             {
               i = PraiseManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
               if (i > 0)
               {
-                paramannd = (PraiseManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(209);
-                paramannd.a(this);
-                a(paramannd.a(i, true, "from_profile_card"));
+                paramapek = (PraiseManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(209);
+                paramapek.a(this);
+                a(paramapek.a(i, true, "from_profile_card"));
               }
             }
-            setContentDescription(this.jdField_a_of_type_Int + ajya.a(2131707120));
+            setContentDescription(this.jdField_a_of_type_Int + alpo.a(2131707492));
             if (this.jdField_d_of_type_Boolean) {
               break label671;
             }
@@ -359,45 +359,45 @@ public class NearbyCardVoteView
           }
           if (!this.jdField_a_of_type_Boolean)
           {
-            paramannd = getResources().getDrawable(2130844696);
+            paramapek = getResources().getDrawable(2130845060);
             this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-52924);
             continue;
           }
         }
-        catch (NumberFormatException paramannd)
+        catch (NumberFormatException paramapek)
         {
           if (QLog.isColorLevel()) {
-            QLog.e("VoteView", 2, paramannd.toString(), paramannd);
+            QLog.e("VoteView", 2, paramapek.toString(), paramapek);
           }
-          paramannd = getResources().getDrawable(2130845042);
+          paramapek = getResources().getDrawable(2130845407);
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-15550475);
           continue;
-          paramannd = getResources().getDrawable(2130845042);
+          paramapek = getResources().getDrawable(2130845407);
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-15550475);
           continue;
         }
         if (this.jdField_a_of_type_Boolean)
         {
-          paramannd = getResources().getDrawable(2130842081);
+          paramapek = getResources().getDrawable(2130842234);
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
         }
         else
         {
-          paramannd = getResources().getDrawable(2130844698);
+          paramapek = getResources().getDrawable(2130845062);
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-8947849);
           this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(new ColorDrawable(0));
           continue;
           paramBoolean1 = false;
           continue;
-          this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(paramannd);
+          this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(paramapek);
           if (!this.jdField_a_of_type_Boolean)
           {
             this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(new ColorDrawable(0));
-            paramannd = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Double * 32.0D), (int)(this.jdField_a_of_type_Double * 32.0D));
-            paramannd.topMargin = ((int)(15.0D * this.jdField_a_of_type_Double));
-            paramannd.addRule(14);
-            paramannd.addRule(10);
-            this.jdField_b_of_type_AndroidViewView.setLayoutParams(paramannd);
+            paramapek = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Double * 32.0D), (int)(this.jdField_a_of_type_Double * 32.0D));
+            paramapek.topMargin = ((int)(15.0D * this.jdField_a_of_type_Double));
+            paramapek.addRule(14);
+            paramapek.addRule(10);
+            this.jdField_b_of_type_AndroidViewView.setLayoutParams(paramapek);
             continue;
             paramInt1 = 2;
           }
@@ -414,12 +414,12 @@ public class NearbyCardVoteView
     } while ((i == paramInt1) && (j == paramInt2));
     label563:
     label568:
-    paramannd = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(jdField_d_of_type_Int, paramInt1, paramInt2, paramList);
+    paramapek = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(jdField_d_of_type_Int, paramInt1, paramInt2, paramList);
     label666:
     label671:
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      paramannd.sendToTarget();
+      paramapek.sendToTarget();
       return;
     }
     Object localObject = (PraiseManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(209);
@@ -432,12 +432,12 @@ public class NearbyCardVoteView
         localHashSet.add(Integer.valueOf((int)localTPraiseInfo.uCustomId));
       }
     }
-    if (((PraiseManager)localObject).a(localHashSet, new atoq(this, paramInt1, paramInt2, paramList)))
+    if (((PraiseManager)localObject).a(localHashSet, new avfq(this, paramInt1, paramInt2, paramList)))
     {
-      paramannd.sendToTarget();
+      paramapek.sendToTarget();
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramannd, auwu.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramapek, awog.jdField_b_of_type_Int);
     return;
     label953:
     a(false, 0);
@@ -463,7 +463,7 @@ public class NearbyCardVoteView
   public void setHeartLayout(HeartLayout paramHeartLayout)
   {
     this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout = paramHeartLayout;
-    aqyq.a(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout);
+    aspe.a(this.jdField_a_of_type_ComTencentMobileqqHotchatAnimHeartLayout);
   }
   
   public void setIsTribe(boolean paramBoolean)
@@ -478,7 +478,7 @@ public class NearbyCardVoteView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyCardVoteView
  * JD-Core Version:    0.7.0.1
  */

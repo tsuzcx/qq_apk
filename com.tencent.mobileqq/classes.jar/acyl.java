@@ -1,44 +1,23 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.widget.ListView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.QQSettingAutoDownloadAndSaveFragment;
 
-public abstract class acyl
+public class acyl
+  implements View.OnClickListener
 {
-  public int a;
-  public AIOAnimationConatiner a;
-  public ListView a;
+  public acyl(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public acyl(int paramInt, AIOAnimationConatiner paramAIOAnimationConatiner, ListView paramListView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner = paramAIOAnimationConatiner;
-    this.jdField_a_of_type_ComTencentWidgetListView = paramListView;
-  }
-  
-  public void a() {}
-  
-  public void a(int paramInt) {}
-  
-  public boolean a(int paramInt)
-  {
-    return false;
-  }
-  
-  public abstract boolean a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public abstract boolean a(Object... paramVarArgs);
-  
-  public void b() {}
-  
-  public abstract void c();
-  
-  public void d()
-  {
-    AIOAnimationConatiner.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
+    PublicFragmentActivity.a(this.a.getActivity(), QQSettingAutoDownloadAndSaveFragment.class);
+    azmj.b(null, "CliOper", "", "", "0X800A2DB", "0X800A2DB", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acyl
  * JD-Core Version:    0.7.0.1
  */

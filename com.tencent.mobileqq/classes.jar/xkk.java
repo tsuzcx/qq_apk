@@ -1,25 +1,14 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-class xkk
-  extends akui
+public abstract interface xkk
 {
-  xkk(xkj paramxkj, String paramString)
-  {
-    super(paramString);
-  }
-  
-  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("LocationPlugin", 2, "onLocationFinish errCode = " + paramInt);
-    }
-    xki.a(this.a.jdField_a_of_type_Xki, paramSosoLbsInfo, this.a.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(@NonNull ArrayList<xkl> paramArrayList, @NonNull Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xkk
  * JD-Core Version:    0.7.0.1
  */

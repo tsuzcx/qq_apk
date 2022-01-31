@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import bcql;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 class PreloadingFragment$8
@@ -12,7 +12,7 @@ class PreloadingFragment$8
   {
     try
     {
-      bcql.a(this.this$0.getActivity(), this.val$msg, 0).a();
+      QQToast.a(this.this$0.getActivity(), this.val$msg, 0).a();
       return;
     }
     catch (Throwable localThrowable)
@@ -23,7 +23,7 @@ class PreloadingFragment$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment.8
  * JD-Core Version:    0.7.0.1
  */

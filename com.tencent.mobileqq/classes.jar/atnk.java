@@ -1,48 +1,41 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.view.LayoutInflater;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.text.Editable;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.AnimationPoint;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.location.ui.MapWidget;
+import com.tencent.qphone.base.util.QLog;
 
-public class atnk
-  extends Dialog
+class atnk
+  implements View.OnClickListener
 {
-  protected TextView a;
-  protected AnimationPoint a;
+  atnk(atnf paramatnf, Activity paramActivity, EditText paramEditText) {}
   
-  public atnk(Context paramContext)
+  public void onClick(View paramView)
   {
-    super(paramContext, 2131755014);
-    paramContext = LayoutInflater.from(paramContext).inflate(2131561308, null);
-    paramContext.setOnTouchListener(new atnl(this));
-    super.setContentView(paramContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131362546));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131367281));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(-1L);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new atnm(this));
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void dismiss()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
-    super.dismiss();
-  }
-  
-  public void show()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
-    super.show();
+    if (QLog.isColorLevel()) {
+      QLog.d("LocationShareController", 2, "myBtn onClick: invoked. set my btn black");
+    }
+    atnf.a(this.jdField_a_of_type_Atnf).setClickable(false);
+    atnf.a(this.jdField_a_of_type_Atnf).setImageDrawable(this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840353));
+    atnf.a(this.jdField_a_of_type_Atnf).a(true);
+    atnf.a(this.jdField_a_of_type_Atnf, atnf.a(this.jdField_a_of_type_Atnf).a());
+    if (this.jdField_a_of_type_AndroidWidgetEditText.getText().length() > 0) {
+      this.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    }
+    for (;;)
+    {
+      azmj.b(null, "CliOper", "", "", "0X800A771", "0X800A771", 0, 0, "", "0", "0", "");
+      return;
+      this.jdField_a_of_type_Atnf.a("");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atnk
  * JD-Core Version:    0.7.0.1
  */

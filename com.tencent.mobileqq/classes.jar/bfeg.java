@@ -1,77 +1,92 @@
-import android.content.Context;
-import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.SparseArray;
+import com.tencent.tmassistant.common.jce.StatItem;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-@behk(a="RuntimeInitTask")
-public class bfeg
-  extends bffk
+class bfeg
+  extends Handler
 {
-  private bfbi jdField_a_of_type_Bfbi;
-  private boolean jdField_a_of_type_Boolean;
-  
-  public bfeg(Context paramContext, beqm parambeqm)
+  bfeg(bfef parambfef, Looper paramLooper)
   {
-    super(paramContext, parambeqm);
+    super(paramLooper);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    beyq.a(202, "", a().getMiniAppInfoForReport());
-    MiniAppInfo localMiniAppInfo = a().getMiniAppInfo();
+    int i;
     Object localObject2;
-    if (a() != null)
+    if (paramMessage.what == 1)
     {
-      localObject2 = a();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label121;
-      }
-      localObject1 = bfel.class;
-      localObject1 = (bfej)((beqm)localObject2).getTask((Class)localObject1);
-      if (localObject1 == null) {
-        break label132;
+      localObject1 = bfef.a(this.a).keySet();
+      if ((localObject1 != null) && (((Set)localObject1).size() > 0))
+      {
+        paramMessage = new ArrayList();
+        localObject1 = ((Set)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          i = ((Integer)((Iterator)localObject1).next()).intValue();
+          localObject2 = new StatItem();
+          ((StatItem)localObject2).type = i;
+          ((StatItem)localObject2).records = ((ArrayList)bfef.a(this.a).get(Integer.valueOf(i)));
+          paramMessage.add(localObject2);
+        }
+        bfef.a(this.a).clear();
+        if (paramMessage.size() > 0)
+        {
+          i = bfef.a(this.a).a(paramMessage);
+          bfef.a(this.a).put(i, paramMessage);
+        }
       }
     }
-    label132:
-    for (Object localObject1 = ((bfej)localObject1).a();; localObject1 = null)
-    {
-      localObject2 = (bfef)a().getTask(bfef.class);
-      if (localObject2 != null)
-      {
-        this.jdField_a_of_type_Bfbi = ((bfef)localObject2).a();
-        this.jdField_a_of_type_Bfbi.a((bfdt)localObject1);
-      }
-      if ((this.jdField_a_of_type_Bfbi != null) && (localMiniAppInfo != null))
-      {
-        this.jdField_a_of_type_Bfbi.a(localMiniAppInfo, null);
-        c();
-        return;
-        label121:
-        localObject1 = bfej.class;
-        break;
-      }
-      f();
+    while (paramMessage.what != 2) {
       return;
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void aU_()
-  {
-    beyq.a(222, "", a().getMiniAppInfoForReport());
-  }
-  
-  public void c()
-  {
-    super.c();
-    beyq.a(203, "", a().getMiniAppInfoForReport());
+    Object localObject1 = bfds.a().a();
+    paramMessage = new ArrayList();
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      i = ((Integer)((Iterator)localObject1).next()).intValue();
+      Object localObject3 = bfds.a().a(String.valueOf(i));
+      localObject2 = new ArrayList();
+      if (localObject3 != null)
+      {
+        localObject3 = ((List)localObject3).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          Serializable localSerializable = (Serializable)((Iterator)localObject3).next();
+          try
+          {
+            ((ArrayList)localObject2).add((String)localSerializable);
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+        }
+      }
+      if (((ArrayList)localObject2).size() > 0) {
+        paramMessage.add(new StatItem(i, (ArrayList)localObject2));
+      }
+    }
+    if (paramMessage.size() > 0)
+    {
+      i = bfef.a(this.a).a(paramMessage);
+      bfef.b(this.a).put(i, paramMessage);
+    }
+    bfef.a(this.a).sendEmptyMessageDelayed(2, bfef.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfeg
  * JD-Core Version:    0.7.0.1
  */

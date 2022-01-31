@@ -1,33 +1,61 @@
-public class akyb
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.sdk.CmShowRenderView;
+import com.tencent.qphone.base.util.QLog;
+
+final class akyb
+  implements akxj
 {
-  public int a;
-  public int b;
-  public int c;
+  akyb(CmShowRenderView paramCmShowRenderView) {}
   
-  public akyb(akya paramakya, int paramInt1, int paramInt2)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.b = paramInt1;
-    this.c = paramInt2;
+    QLog.i("CmShowTest", 1, "onViewReady w:" + paramInt1);
+    this.a.a("1669140032", "1174992642", 1.0F, 0, null);
+    akxz.a(this.a);
   }
   
-  public boolean a()
+  public void a(int paramInt, String paramString)
   {
-    return this.c == 1;
+    QLog.i("CmShowTest", 1, "onClick apolloId:" + paramString);
   }
   
-  public boolean b()
+  public void a(String paramString)
   {
-    return this.c == 2;
+    QLog.i("CmShowTest", 1, "onLongTouch name:" + paramString);
   }
   
-  public boolean c()
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    return this.c == 3;
+    QLog.i("CmShowTest", 1, "onActionStart actionId:" + paramInt1);
   }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
+  {
+    QLog.i("CmShowTest", 1, "onActionComplete actionId:" + paramInt1 + " actionSeqId:" + paramInt2 + " playFragment:" + paramInt3);
+    if (paramInt2 == 100)
+    {
+      akxz.b(this.a);
+      return;
+    }
+    if (paramInt2 == 101)
+    {
+      if (akxz.a() < 3)
+      {
+        akxz.b();
+        akxz.b(this.a);
+        return;
+      }
+      akxz.c(this.a);
+      return;
+    }
+    akxz.a(0);
+  }
+  
+  public void a(boolean paramBoolean, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     akyb
  * JD-Core Version:    0.7.0.1
  */

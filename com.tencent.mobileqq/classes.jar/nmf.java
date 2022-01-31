@@ -1,40 +1,53 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils.3;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.io.File;
+import org.json.JSONObject;
 
-public class nmf
-  implements BusinessObserver
+class nmf
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public nmf(NativeAdUtils.3 param3) {}
+  private nmf(nmb paramnmb) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if (paramBoolean) {}
-    try
+    synchronized (nmb.a(this.a))
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        if ((localWebSsoResponseBody.ret.has()) && (localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
-          QLog.d("NativeAdUtils", 2, " new report success");
-        }
-      }
+      nmb.c("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
+      nmb.a(this.a, nmb.a(this.a));
       return;
     }
-    catch (Exception paramBundle)
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    synchronized (nmb.a(this.a))
     {
-      paramBundle.printStackTrace();
+      nmb.c("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
+      try
+      {
+        paramString2 = new JSONObject(paramString2);
+        long l1 = paramString2.optLong("fileSize");
+        long l2 = paramString2.optLong("offset");
+        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
+        {
+          paramString2 = new File(nmb.b(paramString1));
+          if (paramString2.exists()) {
+            paramString2.renameTo(new File(nmb.a(paramString1)));
+          }
+          nmb.a(this.a, nmb.a(this.a));
+        }
+      }
+      catch (Exception paramString1)
+      {
+        label136:
+        break label136;
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nmf
  * JD-Core Version:    0.7.0.1
  */

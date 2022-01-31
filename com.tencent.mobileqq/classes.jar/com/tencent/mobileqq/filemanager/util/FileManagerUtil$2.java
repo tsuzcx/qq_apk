@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import ajya;
-import android.app.Activity;
-import aptx;
-import apvm;
+import alpo;
+import android.content.Context;
+import armz;
+import aroo;
 
 public final class FileManagerUtil$2
   implements Runnable
 {
-  public FileManagerUtil$2(Activity paramActivity, String paramString) {}
+  public FileManagerUtil$2(Context paramContext, String paramString) {}
   
   public void run()
   {
     try
     {
-      apvm.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
-      aptx.b(2131692878);
+      aroo.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      armz.b(2131692960);
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      aptx.a(ajya.a(2131704532));
+      armz.a(alpo.a(2131704904));
       return;
     }
     catch (Exception localException)
     {
-      aptx.a(2131692877);
+      armz.a(2131692959);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FileManagerUtil.2
  * JD-Core Version:    0.7.0.1
  */

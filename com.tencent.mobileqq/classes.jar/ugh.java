@@ -1,16 +1,29 @@
-import android.content.Intent;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.album.view.AlbumImageView;
 
-public abstract interface ugh
+class ugh
+  implements Animation.AnimationListener
 {
-  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
+  ugh(ugg paramugg) {}
   
-  public abstract void b();
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    if (ugc.a(this.a.a) == 1)
+    {
+      this.a.a.b.setVisibility(8);
+      ugc.a(this.a.a).sendEmptyMessage(1);
+    }
+  }
   
-  public abstract void c();
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ugh
  * JD-Core Version:    0.7.0.1
  */

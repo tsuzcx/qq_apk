@@ -14,7 +14,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import apzy;
+import artc;
 import com.idlefish.flutterboost.FlutterBoost;
 import com.idlefish.flutterboost.containers.BoostFlutterActivity.SerializableMap;
 import com.idlefish.flutterboost.containers.FlutterActivityAndFragmentDelegate;
@@ -196,7 +196,7 @@ public class QFlutterFragment
     if (this.jdField_a_of_type_IoFlutterEmbeddingAndroidSplashScreen != null) {
       return this.jdField_a_of_type_IoFlutterEmbeddingAndroidSplashScreen;
     }
-    return new apzy(null);
+    return new artc(null);
   }
   
   public boolean shouldAttachEngineToActivity()
@@ -206,7 +206,7 @@ public class QFlutterFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.container.QFlutterFragment
  * JD-Core Version:    0.7.0.1
  */

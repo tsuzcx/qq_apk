@@ -1,76 +1,59 @@
-import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
-import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.mini.servlet.MiniAppAbstractServlet;
-import com.tencent.mobileqq.mini.servlet.MiniAppObserver;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.Packet;
+import android.app.Activity;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
 public class xgx
-  extends MiniAppAbstractServlet
+  extends xhf<xgs, xgs>
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  private int a;
+  public WeakReference<Activity> a;
+  
+  public xgx(@NonNull Activity paramActivity, int paramInt)
   {
-    Bundle localBundle = new Bundle();
-    if (paramFromServiceMsg != null) {}
-    for (;;)
-    {
-      try
-      {
-        PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
-        localStQWebRsp.mergeFrom(bbma.b(paramFromServiceMsg.getWupBuffer()));
-        localBundle.putInt("key_index", (int)localStQWebRsp.Seq.get());
-        if (paramFromServiceMsg.isSuccess())
-        {
-          localBundle.putParcelable("key_get_story_feed_list", paramFromServiceMsg);
-          notifyObserver(paramIntent, 1031, true, localBundle, MiniAppObserver.class);
-          super.onReceive(paramIntent, paramFromServiceMsg);
-          return;
-        }
-        QLog.e("GetMineStoryFeedListServlet", 2, "inform GetMineStoryFeedListServlet isSuccess false");
-        notifyObserver(paramIntent, 1031, false, localBundle, MiniAppObserver.class);
-        continue;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("GetMineStoryFeedListServlet", 1, localThrowable + "onReceive error");
-        notifyObserver(paramIntent, 1031, false, localBundle, MiniAppObserver.class);
-        continue;
-      }
-      QLog.e("GetMineStoryFeedListServlet", 2, "inform GetMineStoryFeedListServlet resultcode fail.");
-      notifyObserver(paramIntent, 1031, false, localBundle, MiniAppObserver.class);
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  protected void a(JobContext paramJobContext, xgs paramxgs)
   {
-    int i = paramIntent.getIntExtra("key_index", -1);
-    int j = paramIntent.getIntExtra("key_list_tyep", -1);
-    long l1 = paramIntent.getLongExtra("key_uin", 0L);
-    long l2 = paramIntent.getLongExtra("key_newest_time", 0L);
-    Object localObject1 = new CLIENT.StUinTime();
-    ((CLIENT.StUinTime)localObject1).newestTime.set(l2);
-    ((CLIENT.StUinTime)localObject1).uin.set(l1);
-    Object localObject2 = new xgv(j, (CLIENT.StUinTime)localObject1);
-    localObject1 = getTraceId();
-    localObject2 = ((xgv)localObject2).encode(paramIntent, i, (String)localObject1);
-    QLog.e("GetMineStoryFeedListServlet", 2, "GetMineStoryFeedListServlet trace id = " + (String)localObject1);
-    localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new byte[4];
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null)
+    {
+      wsv.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
+      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
+      return;
     }
-    paramPacket.setSSOCommand("LightAppSvc.qq_story_client.GetStoryFeedList");
-    paramPacket.putSendData(bbma.a((byte[])localObject1));
-    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
-    super.onSend(paramIntent, paramPacket);
+    Object localObject = paramxgs.jdField_a_of_type_Xgw.jdField_a_of_type_JavaLangString;
+    paramJobContext = (JobContext)localObject;
+    if (!paramxgs.jdField_a_of_type_Xgw.jdField_b_of_type_Boolean)
+    {
+      paramJobContext = (JobContext)localObject;
+      if (paramxgs.jdField_a_of_type_Xgw.jdField_a_of_type_Boolean) {
+        paramJobContext = paramxgs.jdField_a_of_type_Xgw.jdField_b_of_type_JavaLangString;
+      }
+    }
+    localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
+    int i = ((BitmapFactory.Options)localObject).outWidth;
+    int j = ((BitmapFactory.Options)localObject).outHeight;
+    if (this.jdField_a_of_type_Int == 5) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramxgs.jdField_a_of_type_Xgy = new xgy(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
+      paramxgs.jdField_a_of_type_JavaLangString = paramJobContext;
+      super.notifyResult(paramxgs);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xgx
  * JD-Core Version:    0.7.0.1
  */

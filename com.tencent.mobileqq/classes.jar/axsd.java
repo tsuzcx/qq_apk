@@ -1,90 +1,117 @@
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-import com.tencent.mobileqq.statistics.UnifiedMonitor.StackGetterJob;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
+import android.support.annotation.NonNull;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class axsd
+  extends GPUBaseFilter
 {
-  public float a;
-  public int a;
-  public long a;
-  public volatile UnifiedMonitor.StackGetterJob a;
-  public volatile String a;
-  public AbstractUnifiedMonitor.ThreadMonitorCallback a;
-  public boolean a;
-  public float b;
-  public int b;
-  public volatile long b;
-  public volatile boolean b;
-  public int c;
-  public boolean c;
-  public int d;
-  public boolean d;
-  public int e = 5;
-  public int f = 300;
-  public int g = 0;
-  public int h = 0;
-  public int i = 0;
+  private int jdField_a_of_type_Int = -1;
+  private List<GPUBaseFilter> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private List<RenderBuffer> b;
   
-  public axsd()
+  private void a()
   {
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_b_of_type_Int = 10;
-    this.jdField_a_of_type_Float = 0.001F;
-    this.jdField_b_of_type_Float = 0.1F;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 500;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-  }
-  
-  public axsd(float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = 100;
-    this.jdField_b_of_type_Int = 10;
-    this.jdField_a_of_type_Float = 0.001F;
-    this.jdField_b_of_type_Float = 0.1F;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_d_of_type_Int = 500;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.i = paramInt4;
-    this.jdField_d_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(int paramInt)
-  {
-    if ((UnifiedMonitor.d()) && (paramInt != 9) && (this.jdField_a_of_type_Float > 0.0F))
+    if (this.b != null)
     {
-      this.jdField_a_of_type_Float = 1.0F;
-      this.jdField_b_of_type_Float = 1.0F;
-      this.jdField_b_of_type_Int = 2147483647;
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext()) {
+        ((RenderBuffer)localIterator.next()).destroy();
+      }
+      this.b = null;
     }
-    if (Math.random() <= this.jdField_a_of_type_Float) {}
-    for (boolean bool = true;; bool = false)
+  }
+  
+  public RenderBuffer a()
+  {
+    if ((this.b != null) && (this.b.size() > 0)) {
+      return (RenderBuffer)this.b.get(this.b.size() - 1);
+    }
+    throw new RuntimeException("please check your state");
+  }
+  
+  public void a(@NonNull GPUBaseFilter paramGPUBaseFilter)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramGPUBaseFilter);
+  }
+  
+  public void destroy()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((GPUBaseFilter)localIterator.next()).destroy();
+    }
+    a();
+  }
+  
+  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    paramInt = 0;
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size())
     {
-      this.jdField_a_of_type_Boolean = bool;
-      return;
+      if (paramInt != this.jdField_a_of_type_JavaUtilList.size() - 1)
+      {
+        ((RenderBuffer)this.b.get(paramInt)).bind();
+        ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, null, null);
+        ((RenderBuffer)this.b.get(paramInt)).unbind();
+        this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
+      }
+      for (;;)
+      {
+        paramInt += 1;
+        break;
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
+        }
+        else
+        {
+          ((RenderBuffer)this.b.get(paramInt)).bind();
+          ((GPUBaseFilter)this.jdField_a_of_type_JavaUtilList.get(paramInt)).drawTexture(this.jdField_a_of_type_Int, paramArrayOfFloat1, paramArrayOfFloat2);
+          ((RenderBuffer)this.b.get(paramInt)).unbind();
+          this.jdField_a_of_type_Int = ((RenderBuffer)this.b.get(paramInt)).getTexId();
+        }
+      }
+    }
+  }
+  
+  public void init()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((GPUBaseFilter)localIterator.next()).init();
+    }
+  }
+  
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
+  {
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((GPUBaseFilter)((Iterator)localObject).next()).onOutputSizeChanged(paramInt1, paramInt2);
+    }
+    a();
+    this.b = new ArrayList();
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int i = j;
+    if (this.jdField_a_of_type_Boolean) {
+      i = j - 1;
+    }
+    j = 0;
+    while (j < i)
+    {
+      localObject = new RenderBuffer(paramInt1, paramInt2, 33984);
+      this.b.add(localObject);
+      j += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axsd
  * JD-Core Version:    0.7.0.1
  */

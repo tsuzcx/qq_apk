@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import rzz;
+import srg;
 
 class ViolaAccessHelper$6$2
   implements Runnable
@@ -14,7 +14,7 @@ class ViolaAccessHelper$6$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.6.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import alko;
+import anbe;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ArDefaultSetting
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArDefaultSetting> CREATOR = new alko();
+  public static final Parcelable.Creator<ArDefaultSetting> CREATOR = new anbe();
   public int a;
   public String a;
   public int b;
@@ -44,7 +44,7 @@ public class ArDefaultSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArDefaultSetting
  * JD-Core Version:    0.7.0.1
  */

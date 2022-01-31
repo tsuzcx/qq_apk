@@ -1,20 +1,16 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.av.smallscreen.BaseSmallScreenService;
+import android.os.IInterface;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public class lyu
-  extends PhoneStateListener
+public abstract interface lyu
+  extends IInterface
 {
-  public lyu(BaseSmallScreenService paramBaseSmallScreenService) {}
+  public abstract void a(boolean paramBoolean, AVRedPacketConfig paramAVRedPacketConfig);
   
-  public void onCallStateChanged(int paramInt, String paramString)
-  {
-    super.onCallStateChanged(paramInt, paramString);
-    this.a.a(paramInt, paramString);
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lyu
  * JD-Core Version:    0.7.0.1
  */

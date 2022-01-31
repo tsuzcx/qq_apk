@@ -1,57 +1,74 @@
-import com.tencent.av.VideoController;
+import android.content.Context;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.av.ui.VoiceChangeToolbar;
 
 public class mlq
-  implements mgx
+  extends mll
 {
-  public mlq(VoiceChangeToolbar paramVoiceChangeToolbar) {}
-  
-  public void a(long paramLong)
+  protected mlq(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    EffectSettingUi.a(this.a.mApp, paramLong);
+    super(paramContext, paramVideoAppInterface);
   }
   
-  public void a(long paramLong, mhr parammhr)
+  private void a(mgp parammgp1, mgp parammgp2, int paramInt)
   {
-    lcg.d(VoiceChangeToolbar.TAG, "onEffectClick| voiceType=" + parammhr.jdField_a_of_type_JavaLangString);
-    lga locallga = this.a.mApp.a().a();
-    int i = Integer.parseInt(parammhr.jdField_a_of_type_JavaLangString);
-    if (i == 0) {
-      ltm.a().b(64);
-    }
-    while (i == 0)
+    int i = paramInt >> 1;
+    int j = mlm.b(paramInt);
+    parammgp1.a(0, 0, 0, 0);
+    parammgp1.b(i, 0, paramInt, j);
+    parammgp1.d(-15197410);
+    parammgp2.a(0, 0, 0, 0);
+    parammgp2.b(0, 0, i, j);
+    parammgp2.d(-15197410);
+  }
+  
+  public int a()
+  {
+    return 2;
+  }
+  
+  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
+  
+  public void a(mgp[] paramArrayOfmgp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
+  {
+    boolean bool;
+    if (!this.a.getCurrentAccountUin().equals(paramArrayOfmgp[1].a(0)))
     {
-      locallga.v = null;
-      locallga.T = i;
-      locallga.U = 0;
-      parammhr = this.a.getAVActivity();
-      if ((parammhr != null) && (parammhr.a != null)) {
-        parammhr.a.f(paramLong, 8);
+      bool = true;
+      lek.c("ScreenLayoutSmallUIDouble", "layoutCommon: " + paramBoolean + "|" + bool);
+      if (!bool) {
+        break label112;
       }
-      this.a.mApp.a().A();
-      mlo.a(locallga, i);
-      EffectSettingUi.a(this.a.mApp, paramLong);
-      if (locallga.d == 4) {
-        axqq.e(String.valueOf(i));
+      if (paramBoolean) {
+        break label94;
       }
+      paramBoolean = true;
+    }
+    label94:
+    label112:
+    for (;;)
+    {
+      if (paramBoolean)
+      {
+        a(paramArrayOfmgp[0], paramArrayOfmgp[1], paramInt1);
+        return;
+        bool = false;
+        break;
+        paramBoolean = false;
+        continue;
+      }
+      a(paramArrayOfmgp[1], paramArrayOfmgp[0], paramInt1);
       return;
-      ltm.a().a(64);
     }
-    if ((parammhr.jdField_a_of_type_JavaLangObject instanceof mln)) {}
-    for (locallga.v = ((mln)parammhr.jdField_a_of_type_JavaLangObject).b;; locallga.v = parammhr.b)
-    {
-      mqw.a(parammhr.jdField_a_of_type_JavaLangString);
-      break;
-    }
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mlq
  * JD-Core Version:    0.7.0.1
  */

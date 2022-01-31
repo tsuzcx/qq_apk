@@ -1,50 +1,55 @@
-import android.media.ExifInterface;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.lang.reflect.Field;
-import java.util.HashMap;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
 
 public class ahtw
-  implements aiai
+  extends arqb
 {
-  public ahtw(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
+  public ahtw(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
   
-  public void a_(String paramString)
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FlowCameraActivity", 2, "onPictureToken path " + paramString);
+    if (paramView.getId() == 2131365849) {
+      ChatHistoryBaseTenDocFragment.a(this.a);
     }
-    bbef.a(paramString, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_Double);
-    if (QLog.isColorLevel()) {}
-    try
-    {
-      Object localObject = Class.forName("android.media.ExifInterface").getDeclaredField("mAttributes");
-      ((Field)localObject).setAccessible(true);
-      localObject = (HashMap)((Field)localObject).get(new ExifInterface(paramString));
-      QLog.i("FlowCameraActivity", 2, "exif " + localObject);
-      if (paramString != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(this.jdField_a_of_type_JavaIoFile);
-        return;
-      }
+    while ((paramView.getTag() instanceof String)) {
+      return;
     }
-    catch (Exception localException)
+    TencentDocItem localTencentDocItem = ((ahtt)paramView.getTag()).a;
+    if (this.a.c)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
+      this.a.jdField_a_of_type_Ahze.a(localTencentDocItem);
+      ChatHistoryBaseTenDocFragment.a(this.a).notifyDataSetChanged();
+      return;
+    }
+    paramView = "unknown";
+    if (aqxh.b(localTencentDocItem.mUrl)) {
+      paramView = "doc";
+    }
+    for (;;)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("url", localTencentDocItem.mUrl);
+      localBundle.putString("tdsourcetag", "s_qq_history_tab");
+      localBundle.putString("tdsourcetype", paramView + ChatHistoryBaseTenDocFragment.a(this.a));
+      TeamWorkDocEditBrowserActivity.a(ChatHistoryBaseTenDocFragment.a(this.a), localBundle, false);
+      azmj.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A16B", "0X800A16B", ChatHistoryBaseTenDocFragment.a(this.a), 0, "", "", "s_qq_history_tab", paramView);
+      return;
+      if (aqxh.e(localTencentDocItem.mUrl)) {
+        paramView = "form";
+      } else if (aqxh.d(localTencentDocItem.mUrl)) {
+        paramView = "ppt";
+      } else if (aqxh.c(localTencentDocItem.mUrl)) {
+        paramView = "sheet";
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setClickable(true);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.jdField_b_of_type_AndroidWidgetButton.setOnLongClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.c.setEnabled(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahtw
  * JD-Core Version:    0.7.0.1
  */

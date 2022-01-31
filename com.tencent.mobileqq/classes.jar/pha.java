@@ -1,30 +1,49 @@
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class pha
-  implements View.OnAttachStateChangeListener
+public class pha
 {
-  pha(pgw parampgw) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void onViewAttachedToWindow(View paramView) {}
-  
-  public void onViewDetachedFromWindow(View paramView)
+  public JSONObject a()
   {
-    if (pgw.a(this.a) != null)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      pgw.a(this.a).b();
-      pgw.a(this.a, null);
+      localJSONObject.put("businessId", this.jdField_a_of_type_Int);
+      localJSONObject.put("businessType", this.jdField_b_of_type_Int);
+      localJSONObject.put("businessName", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("jumpUrl", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("businessIconUrl", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("fansCount", this.jdField_c_of_type_Int);
+      return localJSONObject;
     }
-    if (pgw.a(this.a) != null)
+    catch (JSONException localJSONException)
     {
-      pgw.a(this.a).a();
-      pgw.a(this.a, null);
+      QLog.e("SelfInfoModule", 1, "toJson error. " + localJSONException);
     }
+    return localJSONObject;
+  }
+  
+  public void a(JSONObject paramJSONObject)
+  {
+    this.jdField_a_of_type_Int = paramJSONObject.getInt("businessId");
+    this.jdField_b_of_type_Int = paramJSONObject.getInt("businessType");
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("businessName");
+    this.jdField_b_of_type_JavaLangString = paramJSONObject.getString("jumpUrl");
+    this.jdField_c_of_type_JavaLangString = paramJSONObject.getString("businessIconUrl");
+    this.jdField_c_of_type_Int = paramJSONObject.getInt("fansCount");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pha
  * JD-Core Version:    0.7.0.1
  */

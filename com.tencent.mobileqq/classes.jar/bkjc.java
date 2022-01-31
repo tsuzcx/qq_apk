@@ -1,38 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class bkjc
-  implements DialogInterface.OnClickListener
+public class bkjc
+  implements bnhy
 {
-  static
-  {
-    if (!bkjb.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
+  public bkjc(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  bkjc(bkjb parambkjb) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Bundle();
-    bkbk localbkbk = this.jdField_a_of_type_Bkjb.a().a;
-    if ((!jdField_a_of_type_Boolean) && (localbkbk == null)) {
-      throw new AssertionError();
-    }
-    bjyy.a(paramDialogInterface, localbkbk);
-    paramDialogInterface.putInt("interact_type", bkjb.a(this.jdField_a_of_type_Bkjb));
-    this.jdField_a_of_type_Bkjb.a.a(38, paramDialogInterface);
+    QIMEffectCameraCaptureUnit.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkjc
  * JD-Core Version:    0.7.0.1
  */

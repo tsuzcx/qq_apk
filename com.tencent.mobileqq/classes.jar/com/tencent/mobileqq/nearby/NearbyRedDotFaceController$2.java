@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby;
 
 import android.os.Handler;
-import atbc;
+import ausb;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -22,8 +22,8 @@ public class NearbyRedDotFaceController$2
         this.this$0.jdField_a_of_type_Int = 0;
       }
       this.this$0.a((String)this.this$0.jdField_a_of_type_JavaUtilArrayList.get(this.this$0.jdField_a_of_type_Int));
-      atbc localatbc2 = this.this$0;
-      localatbc2.jdField_a_of_type_Int += 1;
+      ausb localausb2 = this.this$0;
+      localausb2.jdField_a_of_type_Int += 1;
       if (this.this$0.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
         this.this$0.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 3000L);
       }
@@ -33,7 +33,7 @@ public class NearbyRedDotFaceController$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyRedDotFaceController.2
  * JD-Core Version:    0.7.0.1
  */

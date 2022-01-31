@@ -1,50 +1,55 @@
-import android.view.View;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.widget.ListView;
+import android.animation.ValueAnimator;
+import android.graphics.Canvas;
+import android.graphics.PointF;
+import android.support.annotation.NonNull;
 
-public class xeh
-  implements bfub
+public abstract class xeh
 {
-  public xeh(RefreshView paramRefreshView) {}
+  public ValueAnimator a;
+  public PointF a;
+  public boolean b = true;
+  public boolean c;
+  public boolean d;
+  public int e;
+  public boolean e;
+  public boolean f;
+  public float j = 1.0F;
+  public float k;
+  public float l;
+  public float m;
+  public float n;
+  public float o;
+  public float p = 1.0F;
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public xeh(@NonNull PointF paramPointF, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_Int == 2)
-    {
-      this.a.jdField_a_of_type_Xea.ao_();
-      return;
-    }
-    this.a.jdField_a_of_type_Xea.c(0L);
+    this.a = new PointF(paramPointF.x, paramPointF.y);
+    this.j = paramFloat1;
+    this.k = paramFloat2;
+    this.l = paramFloat3;
+    this.m = paramFloat4;
+    this.n = paramFloat5;
+    this.o = paramFloat6;
+    this.b = paramBoolean;
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public xeh(xeh paramxeh, float paramFloat)
   {
-    if (this.a.jdField_a_of_type_Int != 2)
-    {
-      RefreshView.a(this.a, false);
-      this.a.a(RefreshView.a(this.a));
-      this.a.jdField_a_of_type_Xea.a(0L);
-      this.a.jdField_a_of_type_Int = 2;
-      RefreshView.a(this.a);
-    }
-    return false;
+    this.a = new PointF(paramxeh.a.x * paramFloat, paramxeh.a.y * paramFloat);
+    paramxeh.j *= paramFloat;
+    this.k = paramxeh.k;
+    paramxeh.l *= paramFloat;
+    paramxeh.m *= paramFloat;
+    this.n = paramxeh.n;
+    this.o = paramxeh.o;
+    this.b = paramxeh.b;
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    if (this.a.jdField_a_of_type_Int != 2) {
-      this.a.jdField_a_of_type_Xea.b(0L);
-    }
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.a();
-  }
+  public void a(Canvas paramCanvas) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xeh
  * JD-Core Version:    0.7.0.1
  */

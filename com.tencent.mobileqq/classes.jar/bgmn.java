@@ -1,96 +1,145 @@
-import android.app.ProgressDialog;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.PluginInfo;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class bgmn
-  extends OnPluginInstallListener.Stub
+public class bgmn
+  extends Dialog
 {
-  long jdField_a_of_type_Long = 0L;
-  private bgml jdField_a_of_type_Bgml;
+  Bundle jdField_a_of_type_AndroidOsBundle;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  private boolean jdField_a_of_type_Boolean;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  private boolean jdField_b_of_type_Boolean;
+  TextView c;
+  TextView d;
+  TextView e;
+  TextView f;
   
-  public bgmn(bgmh parambgmh, bgml parambgml)
+  public bgmn(Context paramContext)
   {
-    this.jdField_a_of_type_Bgml = parambgml;
+    super(paramContext, 2131755760);
+    a(paramContext);
   }
   
-  public void onInstallBegin(String paramString)
+  private void a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "onInstallBegin." + paramString);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131559332, null);
+    setContentView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131370474));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131370487));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131362916));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131379381));
+    this.c = ((TextView)paramContext.findViewById(2131379409));
+    this.d = ((TextView)paramContext.findViewById(2131362906));
+    this.e = ((TextView)paramContext.findViewById(2131369338));
+    this.f = ((TextView)paramContext.findViewById(2131375754));
+    setCanceledOnTouchOutside(true);
+    paramContext = getWindow();
+    if (paramContext != null) {
+      paramContext.setGravity(80);
     }
-    if ((!this.jdField_a_of_type_Bgml.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bgml.jdField_a_of_type_AndroidAppProgressDialog != null)) {
-      this.jdField_a_of_type_Bgml.jdField_a_of_type_AndroidAppProgressDialog.show();
-    }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  public Bundle a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "onInstallDownloadProgress." + paramString);
-    }
-    if ((!this.jdField_a_of_type_Bgml.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Bgml.jdField_a_of_type_AndroidAppProgressDialog != null))
+    return this.jdField_a_of_type_AndroidOsBundle;
+  }
+  
+  public void a(Drawable paramDrawable1, String paramString1, String paramString2, Drawable paramDrawable2, String paramString3, String paramString4, String paramString5, View.OnClickListener paramOnClickListener1, String paramString6, View.OnClickListener paramOnClickListener2)
+  {
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString1);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString2);
+    if (paramDrawable2 == null)
     {
-      this.jdField_a_of_type_Bgml.jdField_a_of_type_AndroidAppProgressDialog.setMax(paramInt2);
-      this.jdField_a_of_type_Bgml.jdField_a_of_type_AndroidAppProgressDialog.setProgress(paramInt1);
-    }
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "onInstallError." + paramString + "," + paramInt);
-    }
-    bgml localbgml = this.jdField_a_of_type_Bgml;
-    if ((localbgml != null) && (localbgml.jdField_a_of_type_Bglo != null))
-    {
-      paramString = this.jdField_a_of_type_Bgmh.a(paramString);
-      if ((paramString != null) && (paramString.mInstalledPath != null)) {
-        localbgml.jdField_a_of_type_Bglq.c = paramString.mInstalledPath;
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      if (!TextUtils.isEmpty(paramString3)) {
+        break label141;
       }
-      paramString = localbgml.jdField_a_of_type_Bglo;
-      if (paramInt != 2) {
-        break label122;
+      this.c.setVisibility(8);
+      label65:
+      if (!TextUtils.isEmpty(paramString5)) {
+        break label161;
       }
+      this.e.setVisibility(8);
+      label82:
+      if (!TextUtils.isEmpty(paramString6)) {
+        break label190;
+      }
+      this.f.setVisibility(8);
+      label99:
+      if (!TextUtils.isEmpty(paramString4)) {
+        break label219;
+      }
+      this.d.setVisibility(8);
     }
-    label122:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      paramString.a(bool, localbgml.jdField_a_of_type_AndroidContentContext, localbgml.jdField_a_of_type_Bglq);
+      show();
       return;
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable2);
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      break;
+      label141:
+      this.c.setText(paramString3);
+      this.c.setVisibility(0);
+      break label65;
+      label161:
+      this.e.setText(paramString5);
+      this.e.setOnClickListener(paramOnClickListener1);
+      this.e.setVisibility(0);
+      break label82;
+      label190:
+      this.f.setText(paramString6);
+      this.f.setOnClickListener(paramOnClickListener2);
+      this.f.setVisibility(0);
+      break label99;
+      label219:
+      this.d.setVisibility(0);
+      this.d.setText(paramString4);
     }
   }
   
-  public void onInstallFinish(String paramString)
+  public void a(Bundle paramBundle)
   {
-    long l = 0L;
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "onInstallFinish." + paramString);
-    }
-    paramString = this.jdField_a_of_type_Bgml;
-    if ((paramString != null) && (!paramString.jdField_a_of_type_Boolean) && (paramString.jdField_a_of_type_AndroidAppProgressDialog != null)) {
-      paramString.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
-    }
-    if ((paramString != null) && (paramString.jdField_a_of_type_Bglo != null))
-    {
-      PluginInfo localPluginInfo = bgmh.a(this.jdField_a_of_type_Bgmh).a(paramString.jdField_a_of_type_Bglq.b);
-      if ((localPluginInfo != null) && (localPluginInfo.mInstalledPath != null))
-      {
-        paramString.jdField_a_of_type_Bglq.c = localPluginInfo.mInstalledPath;
-        paramString.jdField_a_of_type_Bglq.a(localPluginInfo);
-      }
-      paramString.jdField_a_of_type_Bglo.a(true, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_Bglq);
-    }
-    if (this.jdField_a_of_type_Long != 0L) {
-      l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    }
-    this.jdField_a_of_type_Bgmh.a(this.jdField_a_of_type_Bgml.jdField_a_of_type_Bglq.b, "pluginDownloadCost", l);
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgmn
  * JD-Core Version:    0.7.0.1
  */

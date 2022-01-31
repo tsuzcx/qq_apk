@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class wqu
-  implements View.OnClickListener
 {
-  public wqu(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
+  public int a;
+  public final long a;
+  public final String a;
+  public boolean a;
+  public String b = "";
   
-  public void onClick(View paramView)
+  public wqu(String paramString)
   {
-    this.a.onBackEvent();
+    this.jdField_a_of_type_Int = 1000;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public ErrorMessage a()
+  {
+    return new ErrorMessage(this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wqu
  * JD-Core Version:    0.7.0.1
  */

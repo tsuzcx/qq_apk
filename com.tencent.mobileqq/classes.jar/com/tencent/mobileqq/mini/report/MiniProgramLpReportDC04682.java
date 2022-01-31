@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.report;
 
 import NS_COMM.COMM.Entry;
-import bcyb;
+import bexd;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class MiniProgramLpReportDC04682
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(MiniProgramReportHelper.newEntry("platform", "Android"));
-    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(bcyb.a().a())));
+    localArrayList.add(MiniProgramReportHelper.newEntry("uin", String.valueOf(bexd.a().a())));
     if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null))
     {
       localArrayList.add(MiniProgramReportHelper.newEntry("appid", paramMiniAppConfig.config.appId));
@@ -51,7 +51,7 @@ public class MiniProgramLpReportDC04682
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04682
  * JD-Core Version:    0.7.0.1
  */

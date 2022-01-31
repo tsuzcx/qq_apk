@@ -1,29 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupInnerListView;
+import android.content.Intent;
+import android.util.SparseIntArray;
+import mqq.app.MSFServlet;
 
 public class umh
-  implements wdd
 {
-  public umh(ShareGroupInnerListView paramShareGroupInnerListView) {}
-  
-  public void a()
+  public static void a(SparseIntArray paramSparseIntArray)
   {
-    if ((this.a.jdField_a_of_type_Umi != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))) {
-      this.a.jdField_a_of_type_Umi.a(this.a.jdField_a_of_type_JavaLangString);
-    }
+    una.a(paramSparseIntArray);
   }
   
-  public boolean a(boolean paramBoolean)
+  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_Umi != null) {
-      return this.a.jdField_a_of_type_Umi.a(this.a.jdField_a_of_type_JavaLangString);
-    }
-    return false;
+    una.a(paramMSFServlet, paramIntent, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     umh
  * JD-Core Version:    0.7.0.1
  */

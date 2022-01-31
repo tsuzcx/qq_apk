@@ -1,26 +1,30 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class ajbx
-  implements EIPCResultCallback
+class ajbx
+  implements View.OnClickListener
 {
-  ajbx(long paramLong, String paramString) {}
+  ajbx(ajbm paramajbm) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    paramEIPCResult = paramEIPCResult.data.getString("resData");
-    ajac.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, paramEIPCResult);
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_DRESS_PATH onCallback resJson:" + paramEIPCResult);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
     }
+    paramView = new Bundle();
+    paramView.putBoolean("string_from", false);
+    paramView.putBoolean("string_uin", true);
+    paramView.putLong("device_din", 0L);
+    paramView.putInt("sTitleID", 0);
+    biqg.a(ajbm.a(this.a), paramView, "com.qqdataline.activity.LiteWifiphotoActivity");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajbx
  * JD-Core Version:    0.7.0.1
  */

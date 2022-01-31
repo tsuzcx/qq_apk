@@ -15,13 +15,13 @@ class AssociatedAccountActivity$2
     if (this.this$0.isFinishing()) {
       return;
     }
-    AssociatedAccountActivity.a(this.this$0);
-    AssociatedAccountActivity.b(this.this$0);
+    this.this$0.a();
+    this.this$0.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.2
  * JD-Core Version:    0.7.0.1
  */

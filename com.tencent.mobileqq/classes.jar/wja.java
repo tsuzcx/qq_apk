@@ -1,22 +1,28 @@
-import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
-import java.util.List;
+import android.content.Context;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class wja
-  implements wjg
+  extends wsa
 {
-  public wja(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
+  public wja(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    if ((paramBoolean) && ((FollowedRecommendBannerView.a(this.a) == null) || (FollowedRecommendBannerView.a(this.a).a() == null) || (paramInt >= FollowedRecommendBannerView.a(this.a).a().size()))) {
+    super(paramContext, paramString1, paramString2, paramInt1, paramInt2);
+  }
+  
+  protected void aa_()
+  {
+    xrg localxrg = a().a("FeedSegment");
+    if ((localxrg != null) && (localxrg.a() == 0))
+    {
+      this.a = true;
       return;
     }
-    xhb.a(FollowedRecommendBannerView.a(this.a), "auth_person", "reco_follow", 0, 0, new String[0]);
+    this.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wja
  * JD-Core Version:    0.7.0.1
  */

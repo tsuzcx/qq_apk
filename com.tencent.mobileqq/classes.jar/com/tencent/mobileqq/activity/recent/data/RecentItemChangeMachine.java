@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.recent.data;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
-import bahw;
+import bcgi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
 import org.json.JSONException;
@@ -40,18 +40,18 @@ public class RecentItemChangeMachine
         i = 0;
         this.mUnreadNum = i;
         this.mDisplayTime = this.mUser.showUpTime;
-        paramQQAppInterface = (bahw)paramQQAppInterface.getManager(183);
+        paramQQAppInterface = (bcgi)paramQQAppInterface.getManager(183);
         if (TextUtils.isEmpty(this.mTitleName))
         {
           if (!TextUtils.isEmpty(paramQQAppInterface.a)) {
             break label181;
           }
-          this.mTitleName = paramContext.getResources().getString(2131697546);
+          this.mTitleName = paramContext.getResources().getString(2131697721);
         }
         if (!TextUtils.isEmpty(paramQQAppInterface.b)) {
           break label192;
         }
-        this.mLastMsg = paramContext.getResources().getString(2131697545);
+        this.mLastMsg = paramContext.getResources().getString(2131697720);
       }
     }
     catch (JSONException localJSONException)
@@ -72,7 +72,7 @@ public class RecentItemChangeMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemChangeMachine
  * JD-Core Version:    0.7.0.1
  */

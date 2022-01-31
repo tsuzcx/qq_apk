@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.recent.data;
 
-import akpb;
+import abol;
 import android.content.Context;
 import com.tencent.common.config.AppSetting;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageForYanZhi;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
@@ -38,11 +38,11 @@ public class RecentYanZhiItem
         return;
       }
       ((MessageForYanZhi)localObject1).parse();
-      this.mTitleName = paramContext.getString(2131694403);
+      this.mTitleName = paramContext.getString(2131694560);
       Object localObject2 = paramQQAppInterface.a();
       if (localObject2 != null)
       {
-        this.mUnreadNum = ((akpb)localObject2).a(((MessageForYanZhi)localObject1).frienduin, ((MessageForYanZhi)localObject1).istroop);
+        this.mUnreadNum = ((abol)localObject2).a(((MessageForYanZhi)localObject1).frienduin, ((MessageForYanZhi)localObject1).istroop);
         if (this.mUnreadNum <= 1) {}
       }
       for (this.mUnreadNum = 1;; this.mUnreadNum = 0)
@@ -50,9 +50,9 @@ public class RecentYanZhiItem
         this.mUnreadFlag = 1;
         this.mDisplayTime = ((MessageForYanZhi)localObject1).time;
         localObject2 = a();
-        ((MsgSummary)localObject2).strContent = (((MessageForYanZhi)localObject1).likeCount + paramContext.getString(2131694404));
+        ((MsgSummary)localObject2).strContent = (((MessageForYanZhi)localObject1).likeCount + paramContext.getString(2131694561));
         a(paramQQAppInterface, paramContext, (MsgSummary)localObject2);
-        if (!AppSetting.d) {
+        if (!AppSetting.c) {
           break;
         }
         paramQQAppInterface = new StringBuilder(24);
@@ -69,7 +69,7 @@ public class RecentYanZhiItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentYanZhiItem
  * JD-Core Version:    0.7.0.1
  */

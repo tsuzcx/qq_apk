@@ -4,17 +4,17 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bkkj;
-import bkkk;
+import bmvt;
+import bmvu;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 public class VideoCoverSegmentPicker
   extends RelativeLayout
-  implements bkkk
+  implements bmvu
 {
   private VideoCoverSegmentRangeView jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoCoverSegmentRangeView;
-  private WeakReference<bkkj> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bmvt> jdField_a_of_type_JavaLangRefWeakReference;
   
   public VideoCoverSegmentPicker(Context paramContext)
   {
@@ -46,23 +46,23 @@ public class VideoCoverSegmentPicker
   
   public void a(long paramLong)
   {
-    bkkj localbkkj = null;
+    bmvt localbmvt = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbkkj = (bkkj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbmvt = (bmvt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbkkj != null) {
-      localbkkj.a(paramLong);
+    if (localbmvt != null) {
+      localbmvt.a(paramLong);
     }
   }
   
   public void a(List<Long> paramList)
   {
-    bkkj localbkkj = null;
+    bmvt localbmvt = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localbkkj = (bkkj)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbmvt = (bmvt)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localbkkj != null) {
-      localbkkj.a(paramList);
+    if (localbmvt != null) {
+      localbmvt.a(paramList);
     }
   }
   
@@ -73,9 +73,9 @@ public class VideoCoverSegmentPicker
     }
   }
   
-  public boolean a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bkkj parambkkj, boolean paramBoolean2)
+  public boolean a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, bmvt parambmvt, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambkkj);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambmvt);
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoCoverSegmentRangeView != null) {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoCoverSegmentRangeView.a(paramString, paramLong1, paramLong2, paramInt1, paramInt2, paramInt3, paramBoolean1, this, paramBoolean2);
     }
@@ -91,7 +91,7 @@ public class VideoCoverSegmentPicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoCoverSegmentPicker
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import auko;
-import aulz;
-import bbbr;
+import awbv;
+import awdg;
+import bdal;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.io.UnsupportedEncodingException;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="subUin,senderuin,time")
 public class SubAccountMessage
-  extends auko
+  extends awbv
   implements Comparable<SubAccountMessage>
 {
   public static final String SUB_EXTR_RED_PACKET = "RED_PACKET";
@@ -25,17 +25,17 @@ public class SubAccountMessage
   public int longMsgCount;
   public int longMsgId;
   public int longMsgIndex;
-  @aulz
+  @awdg
   public CharSequence mEmoRecentMsg;
-  @aulz
+  @awdg
   public String mTimeString;
-  @aulz
+  @awdg
   public String msg;
   public byte[] msgData;
   public long msgUid;
   public long msgseq;
   public int msgtype;
-  @aulz
+  @awdg
   public boolean needNotify;
   public String selfuin;
   public String sendername;
@@ -149,13 +149,13 @@ public class SubAccountMessage
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("SubAccountMessage");
-    localStringBuilder.append(",subUin:").append(this.subUin).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",senderName:").append(this.sendername).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",msgType:").append(this.msgtype).append(",subExtr:").append(this.subExtr).append(",msg:").append(bbbr.a(this.msg));
+    localStringBuilder.append(",subUin:").append(this.subUin).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",senderName:").append(this.sendername).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",msgType:").append(this.msgtype).append(",subExtr:").append(this.subExtr).append(",msg:").append(bdal.a(this.msg));
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.SubAccountMessage
  * JD-Core Version:    0.7.0.1
  */

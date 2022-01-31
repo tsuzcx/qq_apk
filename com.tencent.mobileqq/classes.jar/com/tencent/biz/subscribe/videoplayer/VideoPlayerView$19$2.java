@@ -1,11 +1,11 @@
 package com.tencent.biz.subscribe.videoplayer;
 
-import wuc;
+import yiu;
 
 public class VideoPlayerView$19$2
   implements Runnable
 {
-  public VideoPlayerView$19$2(wuc paramwuc) {}
+  public VideoPlayerView$19$2(yiu paramyiu) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class VideoPlayerView$19$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoPlayerView.19.2
  * JD-Core Version:    0.7.0.1
  */

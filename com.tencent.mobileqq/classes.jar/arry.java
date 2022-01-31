@@ -1,28 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
-import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
+import com.tencent.mobileqq.flashchat.FlashChatItem;
 
 public class arry
-  implements DialogInterface.OnClickListener
 {
-  public arry(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (FloatingScreenPermission.requestPermission(BaseApplicationImpl.getContext()))
-    {
-      ListenTogetherOverlayFragment.a(this.a, true);
-      return;
-    }
-    ListenTogetherOverlayFragment.a(this.a).finish();
-  }
+  public int a;
+  public FlashChatItem a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arry
  * JD-Core Version:    0.7.0.1
  */

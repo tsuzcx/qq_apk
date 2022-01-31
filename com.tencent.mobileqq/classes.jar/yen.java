@@ -1,19 +1,20 @@
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+
 public class yen
+  implements yju
 {
-  public int a;
-  public long a;
-  public String a;
+  public yen(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public yen(yel paramyel, String paramString, int paramInt, long paramLong)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    if (paramInt == 12) {
+      this.a.a = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yen
  * JD-Core Version:    0.7.0.1
  */

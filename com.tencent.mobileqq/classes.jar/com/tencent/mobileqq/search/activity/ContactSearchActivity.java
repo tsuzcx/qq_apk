@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.activity;
 
-import ajya;
+import alpo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import axqy;
-import banb;
+import azmj;
+import bclo;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
@@ -48,9 +48,9 @@ public class ContactSearchActivity
     switch (this.d)
     {
     default: 
-      return ajya.a(2131702563);
+      return alpo.a(2131702935);
     }
-    return ajya.a(2131702546);
+    return alpo.a(2131702918);
   }
   
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -60,8 +60,8 @@ public class ContactSearchActivity
       paramIntent = paramIntent.getStringExtra("roomId");
       if (paramIntent != null)
       {
-        banb.a(this, paramIntent, true);
-        axqy.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
+        bclo.a(this, paramIntent, true);
+        azmj.b(this.app, "CliOper", "", "", "0X8006360", "0X8006360", 0, 0, "", "", "", "");
       }
     }
   }
@@ -79,7 +79,7 @@ public class ContactSearchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ContactSearchActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,32 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgListHeadNode;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class tov
-  extends syn
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private String jdField_a_of_type_JavaLangString;
-  private List<tff> jdField_a_of_type_JavaUtilList;
+  public tov(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public tov(@NonNull qqstory_service.RspMsgListHeadNode paramRspMsgListHeadNode)
+  public void onGlobalLayout()
   {
-    super(paramRspMsgListHeadNode.result);
-    this.jdField_a_of_type_JavaLangString = paramRspMsgListHeadNode.list_seq.get().toStringUtf8();
-    this.jdField_a_of_type_JavaUtilList = a(paramRspMsgListHeadNode.node_list.get());
-  }
-  
-  private static List<tff> a(List<qqstory_service.MsgTabNodeInfo> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramList.next();
-      tff localtff = new tff();
-      localtff.a(localMsgTabNodeInfo);
-      localArrayList.add(localtff);
+    int i = PublicAccountImageCollectionCommentActivity.a(this.a).getRootView().getHeight() - PublicAccountImageCollectionCommentActivity.a(this.a).getHeight();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ImageCollectionCommentActivity", 2, "heightDiff:" + i);
     }
-    return localArrayList;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
-  public List<tff> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public String toString()
-  {
-    return "RecentTabHaloResponse{mSeq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mMsgTabNodeInfos=" + this.jdField_a_of_type_JavaUtilList + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + '}';
+    if (i > 150) {
+      PublicAccountImageCollectionCommentActivity.a(this.a, true);
+    }
+    while (!PublicAccountImageCollectionCommentActivity.a(this.a)) {
+      return;
+    }
+    PublicAccountImageCollectionCommentActivity.a(this.a, false);
+    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tov
  * JD-Core Version:    0.7.0.1
  */

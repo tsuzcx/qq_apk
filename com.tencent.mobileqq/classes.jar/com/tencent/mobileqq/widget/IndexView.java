@@ -11,8 +11,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import bcnf;
-import bcng;
+import bemh;
+import bemi;
 import com.tencent.qphone.base.util.QLog;
 
 public class IndexView
@@ -21,8 +21,8 @@ public class IndexView
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-  private bcnf jdField_a_of_type_Bcnf;
-  private bcng jdField_a_of_type_Bcng;
+  private bemh jdField_a_of_type_Bemh;
+  private bemi jdField_a_of_type_Bemi;
   private boolean jdField_a_of_type_Boolean;
   private int[] jdField_a_of_type_ArrayOfInt;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
@@ -321,7 +321,7 @@ public class IndexView
           break label425;
         }
         f2 = paramMotionEvent.getY();
-        if ((this.jdField_a_of_type_Bcnf == null) || (f2 < 0.0F)) {
+        if ((this.jdField_a_of_type_Bemh == null) || (f2 < 0.0F)) {
           break label419;
         }
         i = getHeight() - getPaddingTop() - getPaddingBottom();
@@ -380,9 +380,9 @@ public class IndexView
       if (i >= this.jdField_a_of_type_ArrayOfInt.length) {
         j = this.jdField_a_of_type_ArrayOfInt.length - 1;
       }
-      this.jdField_a_of_type_Bcnf.a(this.jdField_a_of_type_ArrayOfJavaLangString[j]);
-      if (this.jdField_a_of_type_Bcng != null) {
-        this.jdField_a_of_type_Bcng.a(this.jdField_a_of_type_ArrayOfJavaLangString[j], k);
+      this.jdField_a_of_type_Bemh.a(this.jdField_a_of_type_ArrayOfJavaLangString[j]);
+      if (this.jdField_a_of_type_Bemi != null) {
+        this.jdField_a_of_type_Bemi.a(this.jdField_a_of_type_ArrayOfJavaLangString[j], k);
       }
       bool = true;
       do
@@ -398,12 +398,12 @@ public class IndexView
     if ("$".equals(paramArrayOfString[0]))
     {
       this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840118);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840221);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     }
     if (this.c)
     {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840117);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130840220);
       this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
     }
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
@@ -486,14 +486,14 @@ public class IndexView
     }
   }
   
-  public void setOnIndexChangedListener(bcnf parambcnf)
+  public void setOnIndexChangedListener(bemh parambemh)
   {
-    this.jdField_a_of_type_Bcnf = parambcnf;
+    this.jdField_a_of_type_Bemh = parambemh;
   }
   
-  public void setOnIndexChangedListener2(bcng parambcng)
+  public void setOnIndexChangedListener2(bemi parambemi)
   {
-    this.jdField_a_of_type_Bcng = parambcng;
+    this.jdField_a_of_type_Bemi = parambemi;
   }
 }
 

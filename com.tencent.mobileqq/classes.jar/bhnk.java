@@ -1,22 +1,37 @@
-import android.content.Context;
+import com.tencent.tar.jni.ScanFeatureFilterView;
 
-public class bhnk
+public final class bhnk
 {
-  public static Context a;
+  public float a;
+  public int a;
+  public long a;
+  public boolean a;
+  public float b;
+  public int b;
+  public long b;
+  public boolean b;
   
-  public static Context a()
+  public float a(int paramInt, long paramLong)
   {
-    return a;
+    if (paramLong < this.jdField_b_of_type_Long) {
+      return 0.0F;
+    }
+    if (paramLong - this.jdField_b_of_type_Long > paramInt) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return (float)(paramLong - this.jdField_b_of_type_Long) / paramInt % 1.0F;
   }
   
-  public static void a(Context paramContext)
+  public void a()
   {
-    a = paramContext;
+    this.jdField_a_of_type_Long = ScanFeatureFilterView.a();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhnk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.qwallet.report;
 
 import VACDReport.ReportHeader;
-import ahij;
-import ahik;
+import aizs;
+import aizt;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,7 +12,7 @@ import java.util.Map;
 public class VACDReportMgr$6
   implements Runnable
 {
-  public VACDReportMgr$6(ahik paramahik, List paramList) {}
+  public VACDReportMgr$6(aizt paramaizt, List paramList) {}
   
   public void run()
   {
@@ -26,7 +26,7 @@ public class VACDReportMgr$6
     if (QLog.isColorLevel()) {
       QLog.d("VACDReport", 2, "handleReponse, headers= " + this.a);
     }
-    synchronized (ahik.a())
+    synchronized (aizt.a())
     {
       ArrayList localArrayList = new ArrayList(8);
       Iterator localIterator = this.a.iterator();
@@ -38,20 +38,20 @@ public class VACDReportMgr$6
           if (localReportHeader.result == 0)
           {
             localArrayList.add(Long.valueOf(localReportHeader.seqno));
-            ahik.a(this.this$0).remove(Long.valueOf(localReportHeader.seqno));
+            aizt.a(this.this$0).remove(Long.valueOf(localReportHeader.seqno));
           }
-          ahik.b(this.this$0).remove(Long.valueOf(localReportHeader.seqno));
+          aizt.b(this.this$0).remove(Long.valueOf(localReportHeader.seqno));
         }
       }
     }
     if (!localList.isEmpty()) {
-      ahik.a(this.this$0).a(localList);
+      aizt.a(this.this$0).a(localList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.report.VACDReportMgr.6
  * JD-Core Version:    0.7.0.1
  */

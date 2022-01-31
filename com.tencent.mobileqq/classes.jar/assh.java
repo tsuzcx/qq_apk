@@ -1,81 +1,28 @@
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.multicard.MultiCardCustomLayout;
-import com.tencent.mobileqq.multicard.MultiCardFragment;
-import com.tencent.mobileqq.multicard.MultiCardRootLayout;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-public class assh
+class assh
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public float a;
-  public int a;
-  public ViewGroup.LayoutParams a;
-  public asrs a;
-  public MultiCardCustomLayout a;
-  public MultiCardRootLayout a;
-  public float b;
-  public int b;
-  public int c;
+  assh(assd paramassd) {}
   
-  public assh(MultiCardFragment paramMultiCardFragment, MultiCardRootLayout paramMultiCardRootLayout, MultiCardCustomLayout paramMultiCardCustomLayout, asrs paramasrs, asru paramasru)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout = paramMultiCardRootLayout;
-    this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout = paramMultiCardCustomLayout;
-    this.jdField_a_of_type_Asrs = paramasrs;
-    if (this.jdField_a_of_type_Asrs != null) {
-      this.jdField_a_of_type_Asrs.a(paramasru);
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null)
+    this.a.jdField_a_of_type_Boolean = false;
+    assd.a(this.a, true);
+    if (this.a.c == 3) {}
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.a(false);
-      this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getScaleX();
-      this.jdField_b_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.getScaleY();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)
-    {
-      this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getLayoutParams();
-      Object localObject = new int[2];
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.getLocationOnScreen((int[])localObject);
-      this.jdField_b_of_type_Int = localObject[0];
-      this.c = localObject[1];
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(true);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.findViewById(2131370543);
-      if (localObject != null)
-      {
-        this.jdField_a_of_type_Int = ((View)localObject).getVisibility();
-        ((View)localObject).setVisibility(8);
-      }
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout);
-    }
-    if (this.jdField_a_of_type_Asrs != null) {
-      this.jdField_a_of_type_Asrs.b(0);
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.a(false);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setScaleX(1.0F);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout.setScaleY(1.0F);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.a(true);
-      this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardRootLayout.addView(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardCustomLayout, 0);
-    }
-    if (this.jdField_a_of_type_Asrs != null) {
-      this.jdField_a_of_type_Asrs.b(1);
-    }
+      return;
+      this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+      this.a.c = 2;
+    } while (assd.a(this.a) == null);
+    assd.a(this.a).j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     assh
  * JD-Core Version:    0.7.0.1
  */

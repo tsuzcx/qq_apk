@@ -1,23 +1,27 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import java.io.File;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-public abstract interface sum
+class sum
+  extends alvc
 {
-  public abstract void a(String paramString, int paramInt1, int paramInt2, sui paramsui);
+  sum(suk paramsuk) {}
   
-  public abstract void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, sui paramsui);
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.h();
+    }
+  }
   
-  public abstract void a(String paramString, int paramInt1, File paramFile, int paramInt2, sui paramsui);
-  
-  public abstract void a(String paramString, int paramInt, sui paramsui);
-  
-  public abstract void b(String paramString, int paramInt1, File paramFile, int paramInt2, sui paramsui);
-  
-  public abstract void b(String paramString, int paramInt, sui paramsui);
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.h();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sum
  * JD-Core Version:    0.7.0.1
  */

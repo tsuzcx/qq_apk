@@ -19,6 +19,7 @@ public class GetUserAppListRequest
     if (paramStCommonExt != null) {
       this.req.extInfo.set(paramStCommonExt);
     }
+    QLog.d("ProtoBufRequest", 1, new Object[] { "MiniAppSummaryCard GetFriendPlayListV2Request uin:", Long.valueOf(paramLong1), " num:", Long.valueOf(paramLong2) });
   }
   
   public static INTERFACE.StGetUserAppListRsp onResponse(byte[] paramArrayOfByte)
@@ -45,7 +46,7 @@ public class GetUserAppListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetUserAppListRequest
  * JD-Core Version:    0.7.0.1
  */

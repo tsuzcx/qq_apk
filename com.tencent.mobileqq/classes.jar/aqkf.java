@@ -1,32 +1,53 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
-import com.tencent.mobileqq.friends.intimate.CommonTroopListActivity;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.qphone.base.util.QLog;
 
 public class aqkf
-  implements View.OnClickListener
+  extends aroh
 {
-  public aqkf(CommonTroopListActivity paramCommonTroopListActivity) {}
+  public aqkf(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((paramView.getTag() instanceof IntimateInfo.CommonTroopInfo))
-    {
-      paramView = (IntimateInfo.CommonTroopInfo)paramView.getTag();
-      Intent localIntent = actj.a(new Intent(CommonTroopListActivity.a(this.a), SplashActivity.class), null);
-      localIntent.putExtra("uin", paramView.troopCode);
-      localIntent.putExtra("uintype", 1);
-      localIntent.putExtra("uinname", paramView.troopName);
-      this.a.startActivity(localIntent);
+    this.a.a.a().a();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().g();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().h();
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(QfileBaseCloudFileTabView.b, 2, "wy saveto wy?" + arni.a());
     }
-    axqy.b(null, "dc00898", "", "", "0X8009F54", "0X8009F54", CommonTroopListActivity.a(this.a), 0, "", "", "", "");
+  }
+  
+  public void e()
+  {
+    this.a.a.a().i();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().j();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().E();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqkf
  * JD-Core Version:    0.7.0.1
  */

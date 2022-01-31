@@ -1,53 +1,88 @@
-import java.io.File;
+import ConfigPush.DomainIpChannel;
+import ConfigPush.DomainIpInfo;
+import ConfigPush.DomainIpList;
+import ConfigPush.FileStoragePushFSSvcList;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class birk
-  extends bire
 {
-  public String n;
-  public String o;
+  protected String a;
+  protected String b;
+  protected String c;
   
-  public String a()
+  public void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList)
   {
-    File localFile = new File(this.o);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.o + File.separator + this.f;
-  }
-  
-  public String b()
-  {
-    File localFile = new File(this.o);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.o + File.separator;
-  }
-  
-  public String c()
-  {
-    File localFile = new File(this.n);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    return this.n + File.separator + this.f;
-  }
-  
-  public boolean d()
-  {
-    Object localObject = new File(a());
-    if (!((File)localObject).exists()) {}
-    do
+    Object localObject = BaseApplicationImpl.getApplication();
+    int i;
+    if (Build.VERSION.SDK_INT > 10)
     {
-      return false;
-      localObject = ((File)localObject).list();
-    } while ((localObject == null) || (localObject.length <= 0));
-    return true;
+      i = 4;
+      localObject = ((BaseApplicationImpl)localObject).getSharedPreferences("QfavSrvAddrList", i);
+      if (localObject != null) {
+        break label32;
+      }
+    }
+    label32:
+    while ((paramFileStoragePushFSSvcList == null) || (paramFileStoragePushFSSvcList.domainIpChannel == null) || (paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists == null))
+    {
+      return;
+      i = 0;
+      break;
+    }
+    paramFileStoragePushFSSvcList = paramFileStoragePushFSSvcList.domainIpChannel.vDomain_iplists.iterator();
+    while (paramFileStoragePushFSSvcList.hasNext())
+    {
+      DomainIpList localDomainIpList = (DomainIpList)paramFileStoragePushFSSvcList.next();
+      StringBuilder localStringBuilder = new StringBuilder();
+      if ((localDomainIpList.uDomain_type == 4) || (localDomainIpList.uDomain_type == 5) || (localDomainIpList.uDomain_type == 6))
+      {
+        if ((localDomainIpList.vIplist != null) && (localDomainIpList.vIplist.size() != 0))
+        {
+          i = 0;
+          while (i < localDomainIpList.vIplist.size())
+          {
+            DomainIpInfo localDomainIpInfo = (DomainIpInfo)localDomainIpList.vIplist.get(i);
+            localStringBuilder.append(bdee.a(localDomainIpInfo.uIp)).append(":").append(localDomainIpInfo.uPort);
+            if (i < localDomainIpList.vIplist.size() - 1) {
+              localStringBuilder.append("|");
+            }
+            i += 1;
+          }
+        }
+      }
+      else {
+        switch (localDomainIpList.uDomain_type)
+        {
+        default: 
+          break;
+        case 4: 
+          this.a = localStringBuilder.toString();
+          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_FavIp", this.a).commit();
+          break;
+        case 5: 
+          this.c = localStringBuilder.toString();
+          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_UploadPicIp", this.c).commit();
+          break;
+        case 6: 
+          this.b = localStringBuilder.toString();
+          ((SharedPreferences)localObject).edit().putString("QfavSrvAddrList_PicPlatformIp", this.b).commit();
+        }
+      }
+    }
+    paramFileStoragePushFSSvcList = new Intent("com.tencent.receiver.qfav.srvaddr");
+    paramFileStoragePushFSSvcList.putExtra("com.tencent.receiver.qfav.srvaddr.type", 0);
+    BaseApplicationImpl.getApplication().sendBroadcast(paramFileStoragePushFSSvcList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     birk
  * JD-Core Version:    0.7.0.1
  */

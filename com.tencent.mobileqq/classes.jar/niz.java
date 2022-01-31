@@ -1,72 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class niz
+class niz
+  implements View.OnClickListener
 {
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static niz jdField_a_of_type_Niz;
-  private URLDrawable.DownloadListener jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener = new nja(this);
-  private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private ArrayList<String> b = new ArrayList();
+  niz(nin paramnin, String paramString, npo paramnpo) {}
   
-  public static niz a()
+  public void onClick(View paramView)
   {
-    if (jdField_a_of_type_Niz == null) {
-      jdField_a_of_type_Niz = new niz();
-    }
-    return jdField_a_of_type_Niz;
-  }
-  
-  private void a()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-        this.jdField_a_of_type_ComTencentImageURLDrawable = aywm.a(str);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.setDownloadListener(this.jdField_a_of_type_ComTencentImageURLDrawable$DownloadListener);
-        this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
-        if (QLog.isColorLevel()) {
-          QLog.d("AdvertisementCoverPreloadManager", 2, "startImageDownload url:" + str);
-        }
-      }
-      return;
-    }
-  }
-  
-  public void a(ArrayList<String> paramArrayList)
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramArrayList == null) || (paramArrayList.size() <= 0)) {
-        break label118;
-      }
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        String str = (String)paramArrayList.next();
-        if ((!TextUtils.isEmpty(str)) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(str)))
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.add(str);
-          if (QLog.isColorLevel()) {
-            QLog.d("AdvertisementCoverPreloadManager", 2, "addImagesToPreload url:" + str);
-          }
-        }
-      }
-    }
-    a();
-    label118:
+    nin.c(this.jdField_a_of_type_Nin, this.jdField_a_of_type_JavaLangString);
+    nin.a(this.jdField_a_of_type_Nin, this.jdField_a_of_type_Npo.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     niz
  * JD-Core Version:    0.7.0.1
  */

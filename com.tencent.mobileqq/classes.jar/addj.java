@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 
 public class addj
-  implements adfb
+  implements View.OnCreateContextMenuListener
 {
-  public addj(DoodlePanel paramDoodlePanel) {}
+  public addj(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void a(adfa paramadfa)
+  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    this.a.a(paramadfa);
-    paramadfa = "" + paramadfa.a + ";" + paramadfa.b + ";" + paramadfa.c;
-    bbax.a(this.a.getContext(), "aio_doodle_colorpicker_select", paramadfa);
+    paramContextMenu.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     addj
  * JD-Core Version:    0.7.0.1
  */

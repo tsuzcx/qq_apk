@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
-import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class QQAppInterface$24
   implements Runnable
@@ -10,7 +10,7 @@ class QQAppInterface$24
   
   public void run()
   {
-    bcql.a(QQAppInterface.k(this.this$0).getApplicationContext(), 2131690329, 5000).a();
+    QQToast.a(QQAppInterface.k(this.this$0).getApplicationContext(), 2131690380, 5000).a();
   }
 }
 

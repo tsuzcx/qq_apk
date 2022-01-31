@@ -573,7 +573,7 @@ public class ag
   public static byte[] b(ToServiceMsg paramToServiceMsg, int paramInt)
   {
     int i1;
-    SSOReserveField.ReserveFields localReserveFields;
+    Object localObject;
     try
     {
       if (MsfCore.sCore != null)
@@ -587,47 +587,67 @@ public class ag
         i3 = (int)(Math.random() * 100.0D);
         if ((paramToServiceMsg.getServiceCmd().equals("MessageSvc.PbGetMsg")) && (i3 % i2 == i2 - 1))
         {
-          localReserveFields = new SSOReserveField.ReserveFields();
+          localObject = new SSOReserveField.ReserveFields();
           paramToServiceMsg = (String)paramToServiceMsg.getAttribute("sso_push_timestamp");
-          if (paramToServiceMsg == null) {
-            break label506;
-          }
-          String[] arrayOfString = paramToServiceMsg.split("\\|");
-          String str1 = Build.MODEL.replace('\n', '-');
-          i2 = Build.VERSION.SDK_INT;
-          String str2 = Build.DISPLAY;
-          String str3 = Build.MANUFACTURER;
-          if (arrayOfString.length == 3)
+          if (paramToServiceMsg != null)
           {
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("model:" + str1 + ";");
-            localStringBuilder.append("os:" + i2 + ";");
-            localStringBuilder.append("version:v2");
-            if (com.tencent.mobileqq.msf.core.a.a.bl())
+            String[] arrayOfString = paramToServiceMsg.split("\\|");
+            String str1 = Build.MODEL.replace('\n', '-');
+            i2 = Build.VERSION.SDK_INT;
+            String str2 = Build.DISPLAY;
+            String str3 = Build.MANUFACTURER;
+            if (arrayOfString.length == 3)
             {
-              localStringBuilder.append("man:" + str3);
-              localStringBuilder.append("sys:" + str2);
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("model:" + str1 + ";");
+              localStringBuilder.append("os:" + i2 + ";");
+              localStringBuilder.append("version:v2");
+              if (com.tencent.mobileqq.msf.core.a.a.bl())
+              {
+                localStringBuilder.append("man:" + str3);
+                localStringBuilder.append("sys:" + str2);
+              }
+              ((SSOReserveField.ReserveFields)localObject).sso_send.set(Long.parseLong(arrayOfString[0]));
+              ((SSOReserveField.ReserveFields)localObject).sdk_recv.set(Long.parseLong(arrayOfString[1]));
+              ((SSOReserveField.ReserveFields)localObject).app_recv.set(Long.parseLong(arrayOfString[2]));
+              ((SSOReserveField.ReserveFields)localObject).sdk_send.set(System.currentTimeMillis());
+              ((SSOReserveField.ReserveFields)localObject).type.set(w);
+              ((SSOReserveField.ReserveFields)localObject).extra.set(localStringBuilder.toString());
+              if (i1 > 0) {
+                ((SSOReserveField.ReserveFields)localObject).locale_id.set(i1);
+              }
+              if ((2 <= paramInt) && (N != null))
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("MSF.C.NetConnTag", 2, "MSF.C.CodecWarpper buildReserveFiled sGwV4Sec:" + N);
+                }
+                ((SSOReserveField.ReserveFields)localObject).client_ipcookie.set(ByteStringMicro.copyFrom(N));
+              }
             }
-            localReserveFields.sso_send.set(Long.parseLong(arrayOfString[0]));
-            localReserveFields.sdk_recv.set(Long.parseLong(arrayOfString[1]));
-            localReserveFields.app_recv.set(Long.parseLong(arrayOfString[2]));
-            localReserveFields.sdk_send.set(System.currentTimeMillis());
-            localReserveFields.type.set(w);
-            localReserveFields.extra.set(localStringBuilder.toString());
-            if (i1 > 0) {
-              localReserveFields.locale_id.set(i1);
-            }
-            if ((2 <= paramInt) && (N != null)) {
-              localReserveFields.client_ipcookie.set(ByteStringMicro.copyFrom(N));
-            }
+            QLog.d("MSF.C.NetConnTag", 1, "msf get timestamp:" + paramToServiceMsg + ", length:" + arrayOfString.length + ", model:" + str1 + ", type:" + w);
           }
-          QLog.d("MSF.C.NetConnTag", 1, "msf get timestamp:" + paramToServiceMsg + ", length:" + arrayOfString.length + ", model:" + str1 + ", type:" + w);
-          break label506;
         }
-        if (i1 > 0)
+        else if (i1 > 0)
         {
           paramToServiceMsg = new SSOReserveField.ReserveFields();
           paramToServiceMsg.locale_id.set(i1);
+          label507:
+          localObject = paramToServiceMsg;
+          if (2 > paramInt) {
+            break label622;
+          }
+          localObject = paramToServiceMsg;
+          if (N == null) {
+            break label622;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("MSF.C.NetConnTag", 2, "MSF.C.CodecWarpper buildReserveFiled sGwV4Sec:" + N);
+          }
+          localObject = paramToServiceMsg;
+          if (paramToServiceMsg == null) {
+            localObject = new SSOReserveField.ReserveFields();
+          }
+          ((SSOReserveField.ReserveFields)localObject).client_ipcookie.set(ByteStringMicro.copyFrom(N));
         }
       }
     }
@@ -636,17 +656,16 @@ public class ag
       QLog.d("MSF.C.NetConnTag", 1, "failed to construct reserve field", paramToServiceMsg);
       return null;
     }
-    label506:
+    label622:
     do
     {
-      paramToServiceMsg = paramToServiceMsg.toByteArray();
+      paramToServiceMsg = ((SSOReserveField.ReserveFields)localObject).toByteArray();
       return paramToServiceMsg;
       paramToServiceMsg = null;
-      continue;
+      break label507;
       i1 = 0;
       break;
-      paramToServiceMsg = localReserveFields;
-    } while (paramToServiceMsg != null);
+    } while (localObject != null);
     return null;
   }
   
@@ -708,7 +727,7 @@ public class ag
     //   43: aload_2
     //   44: astore 4
     //   46: aload 7
-    //   48: invokevirtual 906	java/io/File:delete	()Z
+    //   48: invokevirtual 908	java/io/File:delete	()Z
     //   51: pop
     //   52: aload_2
     //   53: astore 4
@@ -717,7 +736,7 @@ public class ag
     //   58: new 225	java/lang/StringBuilder
     //   61: dup
     //   62: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   65: ldc_w 908
+    //   65: ldc_w 910
     //   68: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   71: getstatic 249	com/tencent/mobileqq/msf/core/ag:aK	Ljava/lang/String;
     //   74: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -731,26 +750,26 @@ public class ag
     //   93: aload_2
     //   94: astore 4
     //   96: aload_0
-    //   97: invokespecial 910	com/tencent/mobileqq/msf/core/ag:x	()V
+    //   97: invokespecial 912	com/tencent/mobileqq/msf/core/ag:x	()V
     //   100: aload_2
     //   101: astore 4
     //   103: aload_0
     //   104: iload_1
-    //   105: invokespecial 912	com/tencent/mobileqq/msf/core/ag:e	(I)Ljava/lang/String;
+    //   105: invokespecial 914	com/tencent/mobileqq/msf/core/ag:e	(I)Ljava/lang/String;
     //   108: astore_2
     //   109: aload_2
     //   110: astore 4
-    //   112: new 914	java/io/FileOutputStream
+    //   112: new 916	java/io/FileOutputStream
     //   115: dup
     //   116: aload_3
-    //   117: invokespecial 915	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   117: invokespecial 917	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   120: astore_3
     //   121: aload_3
     //   122: ifnull +453 -> 575
     //   125: aload_3
     //   126: aload_2
-    //   127: invokevirtual 918	java/lang/String:getBytes	()[B
-    //   130: invokevirtual 921	java/io/FileOutputStream:write	([B)V
+    //   127: invokevirtual 920	java/lang/String:getBytes	()[B
+    //   130: invokevirtual 923	java/io/FileOutputStream:write	([B)V
     //   133: aload 6
     //   135: astore 4
     //   137: aload 4
@@ -762,7 +781,7 @@ public class ag
     //   150: aload_3
     //   151: ifnull +10 -> 161
     //   154: aload_3
-    //   155: invokevirtual 922	java/io/FileOutputStream:close	()V
+    //   155: invokevirtual 924	java/io/FileOutputStream:close	()V
     //   158: aload_2
     //   159: astore 4
     //   161: aload 4
@@ -781,12 +800,12 @@ public class ag
     //   181: ifnull +379 -> 560
     //   184: aload_3
     //   185: aload_2
-    //   186: invokevirtual 926	java/io/FileInputStream:read	([B)I
+    //   186: invokevirtual 928	java/io/FileInputStream:read	([B)I
     //   189: pop
     //   190: new 198	java/lang/String
     //   193: dup
     //   194: aload_2
-    //   195: invokespecial 928	java/lang/String:<init>	([B)V
+    //   195: invokespecial 930	java/lang/String:<init>	([B)V
     //   198: astore_2
     //   199: aload_3
     //   200: invokevirtual 622	java/io/FileInputStream:close	()V
@@ -803,7 +822,7 @@ public class ag
     //   220: new 225	java/lang/StringBuilder
     //   223: dup
     //   224: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   227: ldc_w 930
+    //   227: ldc_w 932
     //   230: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   233: aload 4
     //   235: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -816,7 +835,7 @@ public class ag
     //   251: new 225	java/lang/StringBuilder
     //   254: dup
     //   255: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   258: ldc_w 932
+    //   258: ldc_w 934
     //   261: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   264: aload_3
     //   265: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -840,7 +859,7 @@ public class ag
     //   295: new 225	java/lang/StringBuilder
     //   298: dup
     //   299: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   302: ldc_w 934
+    //   302: ldc_w 936
     //   305: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   308: aload 4
     //   310: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -855,7 +874,7 @@ public class ag
     //   332: aload_3
     //   333: ifnull -172 -> 161
     //   336: aload_3
-    //   337: invokevirtual 922	java/io/FileOutputStream:close	()V
+    //   337: invokevirtual 924	java/io/FileOutputStream:close	()V
     //   340: aload_2
     //   341: areturn
     //   342: astore_3
@@ -864,7 +883,7 @@ public class ag
     //   346: new 225	java/lang/StringBuilder
     //   349: dup
     //   350: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   353: ldc_w 932
+    //   353: ldc_w 934
     //   356: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   359: aload_3
     //   360: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -878,7 +897,7 @@ public class ag
     //   376: new 225	java/lang/StringBuilder
     //   379: dup
     //   380: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   383: ldc_w 930
+    //   383: ldc_w 932
     //   386: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   389: aload 4
     //   391: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -897,7 +916,7 @@ public class ag
     //   420: aload_3
     //   421: ifnull +7 -> 428
     //   424: aload_3
-    //   425: invokevirtual 922	java/io/FileOutputStream:close	()V
+    //   425: invokevirtual 924	java/io/FileOutputStream:close	()V
     //   428: aload_2
     //   429: athrow
     //   430: astore 4
@@ -906,7 +925,7 @@ public class ag
     //   435: new 225	java/lang/StringBuilder
     //   438: dup
     //   439: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   442: ldc_w 930
+    //   442: ldc_w 932
     //   445: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   448: aload 4
     //   450: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -919,7 +938,7 @@ public class ag
     //   466: new 225	java/lang/StringBuilder
     //   469: dup
     //   470: invokespecial 226	java/lang/StringBuilder:<init>	()V
-    //   473: ldc_w 932
+    //   473: ldc_w 934
     //   476: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   479: aload_3
     //   480: invokevirtual 477	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -1521,9 +1540,9 @@ public class ag
         break;
       }
     } while (this.C.onSSOPingResponse(paramArrayOfByte, paramInt) <= 0);
-    this.C.nativeOnReceData(paramArrayOfByte);
+    this.C.nativeOnReceData(paramArrayOfByte, paramInt);
     return;
-    this.C.nativeOnReceData(paramArrayOfByte);
+    this.C.nativeOnReceData(paramArrayOfByte, paramInt);
   }
   
   public void a(String[] paramArrayOfString)
@@ -1535,7 +1554,9 @@ public class ag
       while (i1 < i2)
       {
         String str = paramArrayOfString[i1];
-        this.au.add(str);
+        if ((str != null) && (str.length() > 0)) {
+          this.au.add(str);
+        }
         i1 += 1;
       }
     }
@@ -1591,6 +1612,17 @@ public class ag
     this.au.add("StatSvc.RspMSFForceOffline");
     this.au.add("LightAppSvc.mini_app_userapp.GetUserAppList");
     this.au.add("qzoneh5.video.vv");
+    this.au.add("OidbSvc.0xb77_9");
+    this.au.add("OidbSvc.0xdc2_9");
+    this.au.add("OidbSvc.0xd55");
+    this.au.add("QQConnectLogin.pre_auth");
+    this.au.add("ConnAuthSvr.get_app_info");
+    this.au.add("ConnAuthSvr.sdk_auth_api");
+    this.au.add("ConnAuthSvr.get_auth_api_list");
+    this.au.add("QQConnectLogin.pre_auth_emp");
+    this.au.add("ConnAuthSvr.get_app_info_emp");
+    this.au.add("ConnAuthSvr.sdk_auth_api_emp");
+    this.au.add("ConnAuthSvr.get_auth_api_list_emp");
   }
   
   public boolean a(Context paramContext)

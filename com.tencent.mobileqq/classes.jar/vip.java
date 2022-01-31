@@ -1,157 +1,35 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Message;
-import android.support.annotation.NonNull;
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoSpreadGroupList;
-import com.tencent.biz.qqstory.takevideo.shareto.ShareToActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Dialog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
 public class vip
-  extends vhk
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public SparseArray<teq> a;
+  public vip(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public vip(@NonNull vhm paramvhm)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    super(paramvhm);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(6);
+    return true;
   }
   
-  @NonNull
-  private List<Long> a(@NonNull List<String> paramList)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((paramMotionEvent2 != null) && (paramMotionEvent1 != null))
     {
-      String str = (String)paramList.next();
-      try
-      {
-        localArrayList.add(Long.valueOf(Long.valueOf(str).longValue()));
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        ved.e("Q.qqstory.publish.edit.EditVideoPermission", "can't format uin:%s", new Object[] { str });
+      paramFloat1 = Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX());
+      float f = Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY());
+      double d = Math.abs(Math.asin(paramFloat1 / Math.sqrt(paramFloat1 * paramFloat1 + f * f)));
+      if ((paramFloat2 > 0.0F) && (d < 0.5235987755982988D) && (this.a.b == 0)) {
+        this.a.a.dismiss();
       }
     }
-    return localArrayList;
-  }
-  
-  private void f()
-  {
-    Activity localActivity = a().getActivity();
-    if (localActivity != null)
-    {
-      Intent localIntent = new Intent(localActivity, ShareToActivity.class);
-      teq localteq = (teq)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Vhm.a());
-      if (!teq.a(localteq)) {
-        localIntent.putStringArrayListExtra("share_to_group_key", new ArrayList(localteq.a));
-      }
-      localActivity.startActivityForResult(localIntent, 5555);
-    }
-  }
-  
-  private void g()
-  {
-    veq localveq = (veq)super.a(veq.class);
-    if (teq.a((teq)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_Vhm.a())))
-    {
-      localveq.b(2130845934);
-      return;
-    }
-    localveq.b(2130845935);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    super.a(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == 5555)
-    {
-      if (paramInt2 == 1)
-      {
-        paramIntent = paramIntent.getStringArrayListExtra("share_to_group_key");
-        if (paramIntent != null) {
-          this.jdField_a_of_type_AndroidUtilSparseArray.put(this.jdField_a_of_type_Vhm.a(), new teq(paramIntent));
-        }
-      }
-      this.jdField_a_of_type_Vhm.a(0);
-      g();
-    }
-  }
-  
-  public void a(int paramInt, Object paramObject)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    f();
-  }
-  
-  public void a(int paramInt, @NonNull vsa paramvsa)
-  {
-    super.a(paramInt, paramvsa);
-    ??? = (teq)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (teq.a((teq)???)) {}
-    for (;;)
-    {
-      return;
-      List localList = a(((teq)???).a);
-      if (localList.size() > 0) {}
-      synchronized (this.jdField_a_of_type_Vhm)
-      {
-        qqstory_struct.VideoSpreadGroupList localVideoSpreadGroupList = new qqstory_struct.VideoSpreadGroupList();
-        byte[] arrayOfByte = paramvsa.a.spreadGroupBytes;
-        if (arrayOfByte != null) {}
-        try
-        {
-          localVideoSpreadGroupList.mergeFrom(paramvsa.a.spreadGroupBytes);
-          localVideoSpreadGroupList.group_list.set(localList);
-          localVideoSpreadGroupList.visibility_type.set(2);
-          localVideoSpreadGroupList.setHasFlag(true);
-          paramvsa.a.spreadGroupBytes = localVideoSpreadGroupList.toByteArray();
-          ved.d("Q.qqstory.publish.edit.EditVideoPermission", "editVideoPrePublish fragment index = %d, qq-group count %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(localList.size()) });
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("zivonchen", 2, "editVideoPrePublish fragmentIndex = " + paramInt + ", shareGroupArray: " + paramvsa.a.spreadGroupBytes);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-        {
-          for (;;)
-          {
-            ved.c("Q.qqstory.publish.edit.EditVideoPermission", "editVideoPrePublish error", localInvalidProtocolBufferMicroException);
-          }
-        }
-      }
-    }
-  }
-  
-  protected boolean a(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return super.a(paramMessage);
-      g();
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vip
  * JD-Core Version:    0.7.0.1
  */

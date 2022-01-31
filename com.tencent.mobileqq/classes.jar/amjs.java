@@ -1,25 +1,76 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.fts.FTSTroopSync;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.app.MobileQQ;
 
-class amjs
-  implements DialogInterface.OnDismissListener
+public class amjs
+  implements amjt
 {
-  amjs(amjp paramamjp) {}
+  amjq jdField_a_of_type_Amjq;
+  amjr jdField_a_of_type_Amjr;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  amjs(QQAppInterface paramQQAppInterface, amjr paramamjr)
   {
-    if (this.a.a.getActivity() != null)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Amjr = paramamjr;
+    this.jdField_a_of_type_Amjq = this.jdField_a_of_type_Amjr.jdField_a_of_type_Amjq;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    SharedPreferences.Editor localEditor = paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).edit();
+    localEditor.putBoolean("fts_troop_upgrade_flag" + paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    localEditor.commit();
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    return paramQQAppInterface.getApplication().getSharedPreferences("fts_sp_file", 0).getBoolean("fts_troop_upgrade_flag" + paramQQAppInterface.getCurrentAccountUin(), false);
+  }
+  
+  public void a() {}
+  
+  public boolean a()
+  {
+    return !a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(FTSTroopSync.class.getSimpleName());
+    Object localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a();
+    ArrayList localArrayList = new ArrayList(((ArrayList)localObject).size());
+    localObject = ((ArrayList)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      this.a.a.getActivity().finish();
-      this.a.a.getActivity().overridePendingTransition(0, 0);
+      TroopInfo localTroopInfo = (TroopInfo)((Iterator)localObject).next();
+      try
+      {
+        localArrayList.add(new FTSTroopSync(5, Long.parseLong(localTroopInfo.troopuin)));
+      }
+      catch (Exception localException) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("FTSTroopUpgrader", 2, "startUpgrade exception : " + localException.toString());
+      }
     }
+    if (this.jdField_a_of_type_Amjr.a(localArrayList))
+    {
+      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjs
  * JD-Core Version:    0.7.0.1
  */

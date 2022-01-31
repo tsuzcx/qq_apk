@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.apollo.sdk;
 
-import ajfs;
-import ajgh;
+import akxe;
+import akxt;
 import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
 
 public class CmShowSpriteDrawerInfoBridge$1$1
   implements Runnable
 {
-  public CmShowSpriteDrawerInfoBridge$1$1(ajgh paramajgh, SpriteTaskParam paramSpriteTaskParam) {}
+  public CmShowSpriteDrawerInfoBridge$1$1(akxt paramakxt, SpriteTaskParam paramSpriteTaskParam) {}
   
   public void run()
   {
-    ajfs.a(this.jdField_a_of_type_Ajgh.a, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.e);
+    akxe.a(this.jdField_a_of_type_Akxt.a, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.sdk.CmShowSpriteDrawerInfoBridge.1.1
  * JD-Core Version:    0.7.0.1
  */

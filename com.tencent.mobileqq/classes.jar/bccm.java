@@ -1,19 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-
 class bccm
-  implements View.OnClickListener
+  implements bcgm
 {
   bccm(bccj parambccj) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    this.a.a(false, 0, 0);
+    this.a.a(bcgk.b(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bccm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class qbb
+class qbb
+  implements View.OnClickListener
 {
-  public String a;
-  public List<RecommendFollowInfo> a = new ArrayList();
+  qbb(qba paramqba) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = this.a.jdField_a_of_type_Rqj.a();
+    if (paramView != null) {
+      paramView.a(null, ((pgd)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qbb
  * JD-Core Version:    0.7.0.1
  */

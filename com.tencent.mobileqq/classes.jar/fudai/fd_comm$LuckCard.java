@@ -19,7 +19,7 @@ public final class fd_comm$LuckCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     fudai.fd_comm.LuckCard
  * JD-Core Version:    0.7.0.1
  */

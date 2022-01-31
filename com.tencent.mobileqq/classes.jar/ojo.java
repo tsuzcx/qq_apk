@@ -1,26 +1,19 @@
-public class ojo
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+
+class ojo
+  implements ViewBase.OnClickListener
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
+  ojo(ojn paramojn) {}
   
-  public ojo(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.a.jdField_a_of_type_Omg.b(this.a.jdField_a_of_type_Omt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ojo
  * JD-Core Version:    0.7.0.1
  */

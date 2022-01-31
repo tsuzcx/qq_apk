@@ -1,193 +1,379 @@
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout.LayoutParams;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONObject;
 
-class bccg
-  implements View.OnTouchListener
+public class bccg
+  extends WebViewPlugin
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int b;
-  int c;
-  int d;
-  int e = 2000;
-  int f;
-  int g;
-  int h;
-  int i;
+  protected AtomicBoolean a;
+  protected ymk a;
   
-  bccg(bcce parambcce, DisplayMetrics paramDisplayMetrics) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public bccg()
   {
-    if (paramView == this.jdField_a_of_type_Bcce.jdField_a_of_type_AndroidViewView)
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+    this.mPluginNameSpace = "troopAssistantFeeds";
+  }
+  
+  protected void a(String paramString)
+  {
+    try
     {
-      int j;
-      int k;
-      switch (paramMotionEvent.getAction())
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopFeeds:" + paramString);
+      }
+      if (TextUtils.isEmpty(new JSONObject(paramString).getString("url"))) {
+        return;
+      }
+      QQToast.a(this.mRuntime.a(), 0, alpo.a(2131715588), 0).a();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopFeeds:" + paramString.toString());
+      }
+    }
+  }
+  
+  protected void b(String paramString)
+  {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      paramString.getString("guin");
+      paramString.getString("gcode");
+      c(paramString.getString("videourl"));
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void c(String paramString)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openVideoInBrowserActivity:" + paramString);
+      }
+      Activity localActivity = this.mRuntime.a();
+      paramString = paramString.trim();
+      String str = this.mRuntime.a().getCurrentAccountUin();
+      Intent localIntent = new Intent(localActivity, QQBrowserDelegationActivity.class);
+      StringBuilder localStringBuilder = new StringBuilder(paramString);
+      if (paramString.indexOf("?") > 0) {}
+      for (paramString = "";; paramString = "?")
       {
-      default: 
-      case 0: 
-      case 2: 
-        do
-        {
-          return true;
-          this.jdField_a_of_type_Bcce.c.setVisibility(8);
-          j = (int)paramMotionEvent.getRawX();
-          this.jdField_a_of_type_Int = j;
-          this.c = j;
-          j = (int)paramMotionEvent.getRawY();
-          this.jdField_b_of_type_Int = j;
-          this.d = j;
-          return true;
-        } while (this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.getVisibility() == 0);
-        j = (int)paramMotionEvent.getRawX() - this.jdField_a_of_type_Int;
-        k = (int)paramMotionEvent.getRawY() - this.jdField_b_of_type_Int;
-        this.e = (paramView.getLeft() + j);
-        this.f = (paramView.getTop() + k);
-        this.g = (j + paramView.getRight());
-        this.h = (paramView.getBottom() + k);
-        if (this.e < 0)
-        {
-          this.e = 0;
-          this.g = (this.e + paramView.getWidth());
-          label195:
-          if (this.f >= 0) {
-            break label406;
-          }
-          this.f = 0;
-          this.h = (this.f + paramView.getHeight());
+        paramString = localStringBuilder.append(paramString).append("&from=androidqq");
+        localIntent.putExtra("param_force_internal_browser", true);
+        localIntent.putExtra("injectrecommend", false);
+        localIntent.putExtra("key_isReadModeEnabled", true);
+        localIntent.putExtra("url", paramString.toString().trim());
+        localIntent.putExtra("uin", str);
+        localIntent.putExtra("friendUin", "");
+        localActivity.startActivity(localIntent);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openVideoInBrowserActivity:" + paramString.toString());
+      }
+    }
+  }
+  
+  protected void d(String paramString)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopCard:" + paramString);
+      }
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).getString("guin");
+      localObject = ((JSONObject)localObject).getString("gcode");
+      if (!TextUtils.isEmpty(paramString))
+      {
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          return;
         }
+        Activity localActivity = this.mRuntime.a();
+        Bundle localBundle = TroopInfoActivity.a(String.valueOf(localObject), 6);
+        localBundle.putString("troop_code", paramString);
+        localBundle.putString("troop_uin", (String)localObject);
+        localBundle.putInt("troop_uin", 6);
+        bclo.a(localActivity, localBundle, 2);
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopCard:" + paramString.toString());
+      }
+    }
+  }
+  
+  protected void e(String paramString)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopMemberCard:" + paramString);
+      }
+      Object localObject1 = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject1).getString("guin");
+      String str = ((JSONObject)localObject1).getString("gcode");
+      localObject1 = ((JSONObject)localObject1).getString("muin");
+      Object localObject2 = this.mRuntime.a().getCurrentAccountUin();
+      if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+      {
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          return;
+        }
+        localObject2 = this.mRuntime.a();
+        Intent localIntent = new Intent((Context)localObject2, FriendProfileCardActivity.class);
+        localIntent.putExtra("troopUin", str);
+        localIntent.putExtra("troopCode", paramString);
+        localIntent.putExtra("memberUin", (String)localObject1);
+        localIntent.putExtra("fromFlag", 3);
+        ((Activity)localObject2).startActivity(localIntent);
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopMemberCard:" + paramString.toString());
+      }
+    }
+  }
+  
+  protected void f(String paramString)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopAIO:" + paramString);
+      }
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).getString("guin");
+      String str = ((JSONObject)localObject).getString("gcode");
+      localObject = ((JSONObject)localObject).getString("gname");
+      if (!TextUtils.isEmpty(paramString))
+      {
+        if (TextUtils.isEmpty(str)) {
+          return;
+        }
+        Activity localActivity = this.mRuntime.a();
+        Intent localIntent = aekt.a(new Intent(localActivity, SplashActivity.class), null);
+        localIntent.putExtra("uin", str);
+        localIntent.putExtra("troop_uin", paramString);
+        localIntent.putExtra("uintype", 1);
+        localIntent.putExtra("uinname", (String)localObject);
+        localActivity.startActivity(localIntent);
+        return;
+      }
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openTroopAIO:" + paramString.toString());
+      }
+    }
+  }
+  
+  protected void g(String paramString)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openFile:" + paramString);
+      }
+      Object localObject2 = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject2).getString("uuid");
+      try
+      {
+        l1 = ((JSONObject)localObject2).getLong("fileSize");
+        l2 = ((JSONObject)localObject2).getLong("gcode");
+        String str1 = ((JSONObject)localObject2).getString("fileName");
+        String str2 = ((JSONObject)localObject2).getString("url");
+        int i = ((JSONObject)localObject2).getInt("bisID");
+        Object localObject1 = ((JSONObject)localObject2).optString("senderUin");
+        long l3 = ((JSONObject)localObject2).optLong("lastTime");
+        localObject2 = this.mRuntime.a();
+        Intent localIntent = new Intent((Context)localObject2, TroopFileDetailBrowserActivity.class);
+        localIntent.putExtra("from_webview", true);
+        localIntent.putExtra("bisId", i);
+        localIntent.putExtra("sender_uin", (String)localObject1);
+        localIntent.putExtra("last_time", l3);
+        localObject1 = new ForwardFileInfo();
+        ((ForwardFileInfo)localObject1).d(4);
+        ((ForwardFileInfo)localObject1).b(10006);
+        ((ForwardFileInfo)localObject1).d(str1);
+        ((ForwardFileInfo)localObject1).d(l1);
+        ((ForwardFileInfo)localObject1).a(l2);
+        ((ForwardFileInfo)localObject1).b(paramString);
+        ((ForwardFileInfo)localObject1).e(str2);
+        localIntent.putExtra("fileinfo", (Parcelable)localObject1);
+        ((Activity)localObject2).startActivity(localIntent);
+        return;
+      }
+      catch (Exception localException)
+      {
         for (;;)
         {
-          paramView.layout(this.e, this.f, this.g, this.h);
-          this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
-          this.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawY());
-          if ((this.jdField_a_of_type_Boolean) || ((Math.abs(paramMotionEvent.getRawX() - this.c) <= this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 5.0F) && (Math.abs(paramMotionEvent.getRawY() - this.d) <= this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 5.0F))) {
-            break;
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopAssistantFeedsJsHandler", 2, "openFile:" + localException.toString());
           }
-          this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.setVisibility(8);
-          this.jdField_a_of_type_Bcce.a(this.jdField_a_of_type_Bcce.jdField_a_of_type_AndroidViewView, true);
-          this.jdField_a_of_type_Bcce.i.setVisibility(8);
-          this.jdField_a_of_type_Boolean = true;
-          return true;
-          if (this.g <= this.jdField_a_of_type_Bcce.jdField_a_of_type_Int) {
-            break label195;
-          }
-          this.g = this.jdField_a_of_type_Bcce.jdField_a_of_type_Int;
-          this.e = (this.g - paramView.getWidth());
-          break label195;
-          label406:
-          if (this.h > this.jdField_a_of_type_Bcce.jdField_b_of_type_Int)
-          {
-            this.h = this.jdField_a_of_type_Bcce.jdField_b_of_type_Int;
-            this.f = (this.jdField_a_of_type_Bcce.jdField_b_of_type_Int - paramView.getHeight());
-          }
+          long l1 = 0L;
+          long l2 = 0L;
         }
       }
-      this.jdField_a_of_type_Bcce.a(this.jdField_a_of_type_Bcce.jdField_a_of_type_AndroidViewView, true);
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        if (this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.getVisibility() == 0)
-        {
-          this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.setVisibility(8);
-          this.jdField_a_of_type_Bcce.a(this.jdField_a_of_type_Bcce.jdField_a_of_type_AndroidViewView, true);
-          this.jdField_a_of_type_Bcce.i.setVisibility(8);
-          return true;
-        }
-        this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_Bcce.a(this.jdField_a_of_type_Bcce.jdField_a_of_type_AndroidViewView, false);
-        this.jdField_a_of_type_Bcce.i.setVisibility(0);
-        j = paramView.getTop();
-        k = paramView.getWidth() / 2;
-        if (this.e + k < this.jdField_a_of_type_Bcce.jdField_a_of_type_Int / 2) {
-          if (Build.VERSION.SDK_INT < 11) {}
-        }
-        for (;;)
-        {
-          try
-          {
-            this.jdField_a_of_type_Bcce.jdField_a_of_type_AndroidViewView.setRotationY(180.0F);
-            paramView = (FrameLayout.LayoutParams)this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.getLayoutParams();
-            paramView.gravity = 3;
-            paramView.leftMargin = (k + this.e);
-            paramView.topMargin = j;
-            this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.setLayoutParams(paramView);
-            this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.setPadding((int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 35.0F), this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.getPaddingTop(), (int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 20.0F), this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.getPaddingBottom());
-            axqy.b(null, "P_CliOper", "BizTechReport", "", "web", "float_bar_show", 0, 1, 0, this.jdField_a_of_type_Bcce.jdField_a_of_type_Bcga.c + "", "", "", "");
-            return true;
-          }
-          catch (Throwable paramView)
-          {
-            QLog.e("WebLog_SwiftFloatViewUI", 1, "floatbtn.setrotationy error!", paramView);
-            continue;
-          }
-          if (Build.VERSION.SDK_INT >= 11) {}
-          try
-          {
-            this.jdField_a_of_type_Bcce.jdField_a_of_type_AndroidViewView.setRotationY(0.0F);
-            paramMotionEvent = (FrameLayout.LayoutParams)this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.getLayoutParams();
-            paramMotionEvent.gravity = 5;
-            paramMotionEvent.rightMargin = (k + (this.jdField_a_of_type_Bcce.jdField_a_of_type_Int - paramView.getRight()));
-            paramMotionEvent.topMargin = j;
-            this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.setLayoutParams(paramMotionEvent);
-            this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.setPadding((int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 20.0F), this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.getPaddingTop(), (int)(this.jdField_a_of_type_AndroidUtilDisplayMetrics.density * 35.0F), this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.getPaddingBottom());
-          }
-          catch (Throwable paramMotionEvent)
-          {
-            for (;;)
-            {
-              QLog.e("WebLog_SwiftFloatViewUI", 1, "floatbtn.setrotationy error!", paramMotionEvent);
-            }
-          }
-        }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openFile:" + paramString.toString());
       }
-      this.i = Math.min(this.e, this.jdField_a_of_type_Bcce.jdField_a_of_type_Int - this.g);
-      if (this.i == this.e)
-      {
-        paramMotionEvent = new TranslateAnimation(0.0F, -this.e, 0.0F, 0.0F);
-        this.e = 0;
-        this.g = (this.e + paramView.getWidth());
+    }
+  }
+  
+  protected void h(String paramString)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openQZoneAlbumDetail:" + paramString);
       }
-      for (;;)
+      paramString = new JSONObject(paramString).getString("url");
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+      AppInterface localAppInterface = this.mRuntime.a();
+      Activity localActivity = this.mRuntime.a();
+      bizt localbizt = bizt.a();
+      localbizt.a = localAppInterface.getCurrentAccountUin();
+      localbizt.b = "";
+      bizm.b(localActivity, localbizt, paramString, "mqqChat.QzoneCard", -1);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopAssistantFeedsJsHandler", 2, "openQZoneAlbumDetail:" + paramString.toString());
+      }
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("troopAssistantFeeds".equals(paramString2))
+    {
+      if (("openGroupCard".equals(paramString3)) && (paramVarArgs.length > 0))
       {
-        paramMotionEvent.setDuration(500L);
-        paramView.setVisibility(8);
-        paramMotionEvent.setAnimationListener(new bcch(this, paramView));
-        paramView.startAnimation(paramMotionEvent);
+        d(paramVarArgs[0]);
         return true;
-        paramMotionEvent = new TranslateAnimation(0.0F, this.i, 0.0F, 0.0F);
-        this.g = this.jdField_a_of_type_Bcce.jdField_a_of_type_Int;
-        this.e = (this.g - paramView.getWidth());
       }
-    }
-    if (paramView == this.jdField_a_of_type_Bcce.c)
-    {
-      this.jdField_a_of_type_Bcce.c.setVisibility(8);
-      this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Bcce.a(this.jdField_a_of_type_Bcce.jdField_a_of_type_AndroidViewView, true);
-      this.jdField_a_of_type_Bcce.i.setVisibility(8);
-      return true;
-    }
-    if (paramView == this.jdField_a_of_type_Bcce.i)
-    {
-      this.jdField_a_of_type_Bcce.c.setVisibility(8);
-      this.jdField_a_of_type_Bcce.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Bcce.a(this.jdField_a_of_type_Bcce.jdField_a_of_type_AndroidViewView, true);
-      this.jdField_a_of_type_Bcce.i.setVisibility(8);
-      return true;
+      if (("openGroupMemCard".equals(paramString3)) && (paramVarArgs.length > 0))
+      {
+        e(paramVarArgs[0]);
+        return true;
+      }
+      if (("openGroupAIO".equals(paramString3)) && (paramVarArgs.length > 0))
+      {
+        f(paramVarArgs[0]);
+        return true;
+      }
+      if (("openGroupFileDetail".equals(paramString3)) && (paramVarArgs.length > 0))
+      {
+        g(paramVarArgs[0]);
+        return true;
+      }
+      if (("openGroupPhotoDetail".equals(paramString3)) && (paramVarArgs.length > 0))
+      {
+        h(paramVarArgs[0]);
+        return true;
+      }
+      if (("openVideo".equals(paramString3)) && (paramVarArgs.length > 0))
+      {
+        b(paramVarArgs[0]);
+        return true;
+      }
+      if (("openGroupFeedsDetail".equals(paramString3)) && (paramVarArgs.length > 0))
+      {
+        a(paramVarArgs[0]);
+        return true;
+      }
     }
     return false;
+  }
+  
+  /* Error */
+  public void onDestroy()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: invokespecial 344	com/tencent/mobileqq/webview/swift/WebViewPlugin:onDestroy	()V
+    //   4: aload_0
+    //   5: getfield 346	bccg:jdField_a_of_type_Ymk	Lymk;
+    //   8: ifnull +10 -> 18
+    //   11: aload_0
+    //   12: getfield 346	bccg:jdField_a_of_type_Ymk	Lymk;
+    //   15: invokevirtual 350	ymk:b	()V
+    //   18: aload_0
+    //   19: getfield 18	bccg:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   22: iconst_0
+    //   23: invokevirtual 353	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   26: return
+    //   27: astore_1
+    //   28: aload_0
+    //   29: getfield 18	bccg:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   32: iconst_0
+    //   33: invokevirtual 353	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   36: return
+    //   37: astore_1
+    //   38: aload_0
+    //   39: getfield 18	bccg:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   42: iconst_0
+    //   43: invokevirtual 353	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
+    //   46: aload_1
+    //   47: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	48	0	this	bccg
+    //   27	1	1	localException	Exception
+    //   37	10	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   4	18	27	java/lang/Exception
+    //   4	18	37	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bccg
  * JD-Core Version:    0.7.0.1
  */

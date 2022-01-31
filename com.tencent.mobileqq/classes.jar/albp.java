@@ -1,65 +1,62 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.ar.ArConfigService.4.1;
-import com.tencent.mobileqq.ar.ArConfigService.4.2;
-import com.tencent.mobileqq.ar.ArConfigService.4.3;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.LRULinkedHashMap;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
 
-public class albp
-  implements anpf
+class albp
 {
-  public albp(ArConfigService paramArConfigService) {}
+  public String a;
+  public WeakReference<WebViewPlugin> a;
+  private WeakReference<albo> b;
   
-  public void a(XmlData paramXmlData)
+  public albp(albo paramalbo, String paramString, WebViewPlugin paramWebViewPlugin)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, "EarlyDownLoadListener");
-    }
+    this.b = new WeakReference(paramalbo);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramWebViewPlugin);
   }
   
-  public void a(XmlData paramXmlData, long paramLong1, long paramLong2)
+  public void a(albq paramalbq, albr paramalbr)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadProgress data=%s curOffset=%s totalLen=%s", new Object[] { paramXmlData, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    paramXmlData = paramXmlData.strResName;
-    if (anpk.a.equals(paramXmlData)) {
-      ArConfigService.a(this.a, (int)(100L * paramLong1 / paramLong2));
-    }
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a) + ArConfigService.d(this.a) + ArConfigService.e(this.a)) / 5;
-    if (!ArConfigService.e(this.a)) {
-      ArConfigService.a(this.a).post(new ArConfigService.4.1(this, i));
-    }
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadFinish data=%s result=%s", new Object[] { paramXmlData, Boolean.valueOf(paramBoolean1) }));
-    }
-    if (paramBoolean1)
+    albo localalbo = (albo)this.b.get();
+    WebViewPlugin localWebViewPlugin;
+    if ((localalbo != null) && (paramalbq != null))
     {
-      paramXmlData = paramXmlData.strResName;
-      if (anpk.a.equals(paramXmlData)) {
-        ArConfigService.b(this.a, true);
-      }
-      if ((ArConfigService.f(this.a)) && (ArConfigService.g(this.a)) && (ArConfigService.h(this.a)) && (ArConfigService.i(this.a)) && (ArConfigService.j(this.a))) {
-        ArConfigService.a(this.a).post(new ArConfigService.4.2(this));
+      localWebViewPlugin = (WebViewPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if ((localWebViewPlugin != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      {
+        if (paramalbr != null) {
+          paramalbr.d = System.currentTimeMillis();
+        }
+        if (albq.a(paramalbq) == null) {
+          break label175;
+        }
+        localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { albq.a(paramalbq).toString() });
       }
     }
-    while (ArConfigService.e(this.a)) {
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, plugin.callJs.mResultJson:" + albq.a(paramalbq));
+      }
+      if (albo.a(localalbo) != null)
+      {
+        albo.a(localalbo).remove(albq.a(paramalbq));
+        if (QLog.isColorLevel()) {
+          QLog.d("apollo_client_ApolloWebDataHandler", 2, "WebDataCallBack, onSSOCallBack, remove sso from mPreloadSSODatas:" + albq.a(paramalbq));
+        }
+      }
       return;
+      label175:
+      localWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
     }
-    ArConfigService.a(this.a).post(new ArConfigService.4.3(this));
-    ArConfigService.a(this.a, true);
   }
-  
-  public void b(XmlData paramXmlData) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     albp
  * JD-Core Version:    0.7.0.1
  */

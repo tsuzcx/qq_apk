@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.contact.newfriend.connections;
 
-import afly;
+import ahjd;
 
 public class ConnectsExplorationFriendAdapter$9
   implements Runnable
 {
-  public ConnectsExplorationFriendAdapter$9(afly paramafly) {}
+  public ConnectsExplorationFriendAdapter$9(ahjd paramahjd) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ConnectsExplorationFriendAdapter$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.connections.ConnectsExplorationFriendAdapter.9
  * JD-Core Version:    0.7.0.1
  */

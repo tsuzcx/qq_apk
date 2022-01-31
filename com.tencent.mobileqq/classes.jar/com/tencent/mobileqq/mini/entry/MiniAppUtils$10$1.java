@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.entry;
 
-import akwp;
-import amtb;
+import amnf;
+import aokd;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
@@ -32,18 +32,18 @@ class MiniAppUtils$10$1
           return;
           paramJSONObject = BaseApplicationImpl.getApplication().getRuntime();
         } while (!(paramJSONObject instanceof QQAppInterface));
-        paramBoolean = amtb.i();
+        paramBoolean = aokd.i();
         if (QLog.isColorLevel()) {
           QLog.d("MiniAppUtils", 2, "updatePullDownEntryListData, check needClearPublicAccountRedDot: " + paramBoolean);
         }
         if (paramBoolean)
         {
-          akwp localakwp = (akwp)((QQAppInterface)paramJSONObject).a(148);
-          if (localakwp != null) {
-            localakwp.a(this.this$0.val$appConfig.config.appId);
+          amnf localamnf = (amnf)((QQAppInterface)paramJSONObject).a(148);
+          if (localamnf != null) {
+            localamnf.a(this.this$0.val$appConfig.config.appId);
           }
         }
-        if (!amtb.g()) {
+        if (!aokd.g()) {
           break;
         }
         paramJSONObject = (DesktopDataManager)paramJSONObject.getManager(336);
@@ -57,7 +57,7 @@ class MiniAppUtils$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.10.1
  * JD-Core Version:    0.7.0.1
  */

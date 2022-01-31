@@ -1,36 +1,10 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-
-public class qpx
-  extends DataSetObserver
+public abstract interface qpx
 {
-  public qpx(VideoFeedsListView paramVideoFeedsListView) {}
-  
-  public void onChanged()
-  {
-    VideoFeedsListView localVideoFeedsListView = this.a;
-    if (VideoFeedsListView.a(this.a) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      VideoFeedsListView.a(localVideoFeedsListView, bool);
-      return;
-    }
-  }
-  
-  public void onInvalidated()
-  {
-    VideoFeedsListView localVideoFeedsListView = this.a;
-    if (VideoFeedsListView.a(this.a) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      VideoFeedsListView.a(localVideoFeedsListView, bool);
-      return;
-    }
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qpx
  * JD-Core Version:    0.7.0.1
  */

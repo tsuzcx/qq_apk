@@ -1,23 +1,32 @@
-import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import android.view.View;
+import com.tencent.biz.qqcircle.widgets.QCircleFollowView;
 
 public class ubf
-  implements ttd
+  implements bhqd
 {
-  public ubf(VideoViewVideoHolder paramVideoViewVideoHolder) {}
+  public ubf(QCircleFollowView paramQCircleFollowView, bhpy parambhpy) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    ved.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoaded");
-  }
-  
-  public void b()
-  {
-    ved.b(this.a.a, "coverImageViewLoadCallback, onImageViewLoadedFailed");
+    if (!ytg.a("showUnFollowUserActionSheetClick")) {
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView) != null) {
+        QCircleFollowView.a(this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView).a();
+      }
+      this.jdField_a_of_type_ComTencentBizQqcircleWidgetsQCircleFollowView.b(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     ubf
  * JD-Core Version:    0.7.0.1
  */

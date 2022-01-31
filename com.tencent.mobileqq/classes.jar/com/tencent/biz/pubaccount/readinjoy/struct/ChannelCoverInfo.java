@@ -1,11 +1,11 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import auko;
-import aulz;
+import awbv;
+import awdg;
 import com.tencent.qphone.base.util.QLog;
 
 public class ChannelCoverInfo
-  extends auko
+  extends awbv
   implements Cloneable
 {
   public static final String FILTER_COLOR = "filterColor";
@@ -14,12 +14,12 @@ public class ChannelCoverInfo
   public String externalExposureBackgroundUrl = "";
   public int filterColor;
   public boolean hasFilterColor;
-  @aulz
+  @awdg
   public boolean isCurrent;
   public boolean isExternalExposure;
   public boolean isExternalExposurePersist;
   public boolean isReport;
-  @aulz
+  @awdg
   public boolean isSelected;
   public long mArticleId = -1L;
   public String mChannelCoverIcon = "";
@@ -43,7 +43,7 @@ public class ChannelCoverInfo
   public String mTipsText = "";
   public int mTipsType = -1;
   public long mUpdateTime;
-  @aulz
+  @awdg
   public int position;
   
   public ChannelCoverInfo clone()
@@ -67,7 +67,7 @@ public class ChannelCoverInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo
  * JD-Core Version:    0.7.0.1
  */

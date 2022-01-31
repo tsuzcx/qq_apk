@@ -2,7 +2,7 @@ package com.tencent.mobileqq.microapp.appbrand.utils;
 
 import Wallet.GetMiniAppRsp;
 import android.os.Bundle;
-import bbkk;
+import bdje;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.observer.BusinessObserver;
@@ -15,7 +15,7 @@ final class l
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     paramBundle = (GetMiniAppRsp)paramBundle.getSerializable("rsp");
-    if ((paramBundle != null) && (!bbkk.a(paramBundle.extra)))
+    if ((paramBundle != null) && (!bdje.a(paramBundle.extra)))
     {
       paramBundle = paramBundle.extra;
       MiniLogManager.access$800(paramBundle, this.a);
@@ -29,7 +29,7 @@ final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.utils.l
  * JD-Core Version:    0.7.0.1
  */

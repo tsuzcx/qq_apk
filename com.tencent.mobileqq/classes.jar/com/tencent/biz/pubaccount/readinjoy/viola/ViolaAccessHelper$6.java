@@ -1,26 +1,26 @@
 package com.tencent.biz.pubaccount.readinjoy.viola;
 
-import ajsd;
+import aljq;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import bbdx;
-import bbvj;
-import bdij;
+import bdcs;
+import bduw;
+import bfhh;
 import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
-import rzz;
+import srg;
 
 public final class ViolaAccessHelper$6
   implements Runnable
 {
-  public ViolaAccessHelper$6(String paramString, rzz paramrzz) {}
+  public ViolaAccessHelper$6(String paramString, srg paramsrg) {}
   
   public void run()
   {
-    String str = bbvj.a(ajsd.cC + bdij.a(this.jdField_a_of_type_JavaLangString) + ".js");
+    String str = bduw.a(aljq.cD + bfhh.a(this.jdField_a_of_type_JavaLangString) + ".js");
     if (TextUtils.isEmpty(str)) {
       if (QLog.isColorLevel()) {
         QLog.e("ViolaAccessHelper", 2, "loadJSFromNet [url:" + this.jdField_a_of_type_JavaLangString + "] get localPath error, download cancel");
@@ -35,7 +35,7 @@ public final class ViolaAccessHelper$6
           QLog.d("ViolaAccessHelper", 2, "loadJSFromNet [ url:" + this.jdField_a_of_type_JavaLangString + "] Download to " + str);
         }
         if (new File(str).exists()) {
-          bbdx.d(str);
+          bdcs.d(str);
         }
         boolean bool = HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, new File(str));
         if (QLog.isColorLevel()) {
@@ -44,10 +44,10 @@ public final class ViolaAccessHelper$6
         if (bool) {}
         try
         {
-          if (this.jdField_a_of_type_Rzz != null) {
+          if (this.jdField_a_of_type_Srg != null) {
             new Handler(Looper.getMainLooper()).postDelayed(new ViolaAccessHelper.6.1(this, str), 0L);
           }
-          if (TextUtils.isEmpty(bbdx.b(new File(str))))
+          if (TextUtils.isEmpty(bdcs.b(new File(str))))
           {
             if (QLog.isColorLevel()) {
               QLog.d("ViolaAccessHelper", 2, "loadJSFromNet download isSucc but readFileToString is null");
@@ -61,14 +61,14 @@ public final class ViolaAccessHelper$6
         }
         catch (IOException localIOException) {}
       }
-    } while (this.jdField_a_of_type_Rzz == null);
+    } while (this.jdField_a_of_type_Srg == null);
     new Handler(Looper.getMainLooper()).postDelayed(new ViolaAccessHelper.6.2(this), 0L);
     return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.6
  * JD-Core Version:    0.7.0.1
  */

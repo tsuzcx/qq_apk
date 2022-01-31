@@ -2,11 +2,11 @@ package com.tencent.qqprotect.common;
 
 import android.os.Handler.Callback;
 import android.os.Message;
-import bbfj;
-import bfht;
-import bfhv;
-import bfhx;
-import bfnk;
+import bdee;
+import bhin;
+import bhip;
+import bhir;
+import bhoe;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ims.SafeReport.ReqBody;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -15,52 +15,52 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Vector;
 import mqq.app.MobileQQ;
-import mxf;
+import mzy;
 
 public class QSecRptControllerImpl
-  extends bfht
+  extends bhin
   implements Handler.Callback
 {
-  private static volatile bfht jdField_a_of_type_Bfht;
+  private static volatile bhin jdField_a_of_type_Bhin;
   private final long jdField_a_of_type_Long = 300000L;
-  private bfnk jdField_a_of_type_Bfnk = new bfnk(ThreadManager.getSubThreadLooper(), this);
+  private bhoe jdField_a_of_type_Bhoe = new bhoe(ThreadManager.getSubThreadLooper(), this);
   private QSecRptControllerImpl.ReportRunnable jdField_a_of_type_ComTencentQqprotectCommonQSecRptControllerImpl$ReportRunnable;
-  private final Vector<bfhx> jdField_a_of_type_JavaUtilVector = new Vector();
+  private final Vector<bhir> jdField_a_of_type_JavaUtilVector = new Vector();
   
   private QSecRptControllerImpl()
   {
-    this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(12315, 300000L);
+    this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(12315, 300000L);
   }
   
-  public static bfht a()
+  public static bhin a()
   {
-    if (jdField_a_of_type_Bfht == null) {}
+    if (jdField_a_of_type_Bhin == null) {}
     try
     {
-      if (jdField_a_of_type_Bfht == null) {
-        jdField_a_of_type_Bfht = new QSecRptControllerImpl();
+      if (jdField_a_of_type_Bhin == null) {
+        jdField_a_of_type_Bhin = new QSecRptControllerImpl();
       }
-      return jdField_a_of_type_Bfht;
+      return jdField_a_of_type_Bhin;
     }
     finally {}
   }
   
   private void a()
   {
-    this.jdField_a_of_type_Bfnk.removeMessages(12315);
+    this.jdField_a_of_type_Bhoe.removeMessages(12315);
     b();
-    this.jdField_a_of_type_Bfnk.sendEmptyMessageDelayed(12315, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Bhoe.sendEmptyMessageDelayed(12315, this.jdField_a_of_type_Long);
   }
   
-  private void a(bfhx parambfhx)
+  private void a(bhir parambhir)
   {
     synchronized (this.jdField_a_of_type_JavaUtilVector)
     {
-      this.jdField_a_of_type_JavaUtilVector.add(parambfhx);
+      this.jdField_a_of_type_JavaUtilVector.add(parambhir);
       if (QLog.isColorLevel()) {
         QLog.d("QSRPT", 2, String.format("add report: totally %d items in cache", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size()) }));
       }
-      if ((parambfhx.c == 2) || (this.jdField_a_of_type_JavaUtilVector.size() >= 40)) {
+      if ((parambhir.c == 2) || (this.jdField_a_of_type_JavaUtilVector.size() >= 40)) {
         b();
       }
       return;
@@ -75,12 +75,12 @@ public class QSecRptControllerImpl
     if (QLog.isColorLevel()) {
       QLog.d("QSRPT", 2, String.format("totally sending report: %d items", new Object[] { Integer.valueOf(paramReqBody.LogItem_reportdata.size()) }));
     }
-    mxf.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), new bfhv(this), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
+    mzy.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), new bhip(this), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
   }
   
   private void b()
   {
-    if (!bbfj.d(BaseApplicationImpl.sApplication)) {}
+    if (!bdee.d(BaseApplicationImpl.sApplication)) {}
     do
     {
       return;
@@ -97,18 +97,18 @@ public class QSecRptControllerImpl
   
   public void b(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    bfhx localbfhx = new bfhx();
-    localbfhx.jdField_a_of_type_Int = paramInt1;
-    localbfhx.b = paramInt2;
-    localbfhx.jdField_a_of_type_JavaLangString = paramString;
-    localbfhx.c = paramInt3;
-    this.jdField_a_of_type_Bfnk.obtainMessage(12316, localbfhx).sendToTarget();
+    bhir localbhir = new bhir();
+    localbhir.jdField_a_of_type_Int = paramInt1;
+    localbhir.b = paramInt2;
+    localbhir.jdField_a_of_type_JavaLangString = paramString;
+    localbhir.c = paramInt3;
+    this.jdField_a_of_type_Bhoe.obtainMessage(12316, localbhir).sendToTarget();
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 12316) {
-      a((bfhx)paramMessage.obj);
+      a((bhir)paramMessage.obj);
     }
     for (;;)
     {

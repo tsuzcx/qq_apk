@@ -1,10 +1,10 @@
 package com.tencent.gdtad.views.videoimax;
 
+import aanp;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import java.lang.ref.WeakReference;
-import yxp;
 
 public class GdtVideoImaxFragment$MyResultReceiver
   extends ResultReceiver
@@ -24,7 +24,7 @@ public class GdtVideoImaxFragment$MyResultReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    yxp.a("GdtVideoImaxFragment", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
+    aanp.a("GdtVideoImaxFragment", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
     paramBundle = (GdtVideoImaxFragment)this.a.get();
     if ((paramBundle != null) && (paramInt == 1)) {
       GdtVideoImaxFragment.c(paramBundle);
@@ -33,7 +33,7 @@ public class GdtVideoImaxFragment$MyResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.MyResultReceiver
  * JD-Core Version:    0.7.0.1
  */

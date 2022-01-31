@@ -1,274 +1,277 @@
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Message;
+import android.os.Environment;
 import android.text.TextUtils;
-import android.view.View;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.viewplugin.ViewPluginLoader.5;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.aditem.GdtAd;
-import java.lang.ref.WeakReference;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.LzmaUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
+import org.json.JSONObject;
 
 public class yxy
-  implements Handler.Callback
 {
-  private static yxy jdField_a_of_type_Yxy = new yxy();
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private ConcurrentHashMap<String, WeakReference<View>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  public static final HashMap<String, yxy> a;
+  int jdField_a_of_type_Int = 0;
+  public SharedPreferences a;
+  public ClassLoader a;
+  public Object a;
+  public String a;
+  ncm jdField_a_of_type_Ncm = new ncm();
+  public yxx a;
+  public volatile boolean a;
+  public String b;
+  boolean b;
+  public String c = null;
+  public String d;
+  public String e;
+  private String f;
   
-  private yxy()
+  static
   {
-    HandlerThread localHandlerThread = new HandlerThread("GdtImpressionPolicy");
-    localHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(localHandlerThread.getLooper(), this);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
-  private GdtAd a(View paramView)
+  public yxy(String paramString1, String paramString2)
   {
-    if (paramView == null) {
-      paramView = null;
-    }
-    GdtAd localGdtAd;
-    do
-    {
-      return paramView;
-      paramView = paramView.getTag(2131379211);
-      if (paramView == null) {
-        return null;
-      }
-      if (!(paramView instanceof GdtAd)) {
-        return null;
-      }
-      localGdtAd = (GdtAd)paramView;
-      if (TextUtils.isEmpty(localGdtAd.getTraceId())) {
-        return null;
-      }
-      paramView = localGdtAd;
-    } while (!TextUtils.isEmpty(localGdtAd.getUrlForImpression()));
-    return null;
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = (BaseApplicationImpl.getContext().getFilesDir() + "/pluginopt/" + paramString2 + "/opt");
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("viewplugin_sp", 0);
+    jdField_a_of_type_JavaUtilHashMap.put(paramString2, this);
+    this.f = (Environment.getExternalStorageDirectory().getPath() + "/tencent/plugins/");
   }
   
-  public static yxy a()
+  public bdwa a()
   {
-    try
-    {
-      yxy localyxy = jdField_a_of_type_Yxy;
-      return localyxy;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private void a(SharedPreferences paramSharedPreferences, SharedPreferences.Editor paramEditor, int paramInt)
-  {
-    int i = 0;
-    paramSharedPreferences = paramSharedPreferences.getAll();
-    if (paramSharedPreferences != null)
-    {
-      Object localObject = paramSharedPreferences.keySet();
-      if (((Set)localObject).size() - paramInt > 0)
-      {
-        int k = Math.abs((int)(((Set)localObject).size() - paramInt * 0.5F));
-        paramSharedPreferences = new String[k];
-        localObject = ((Set)localObject).iterator();
-        int j;
-        for (paramInt = 0;; paramInt = j) {
-          if (((Iterator)localObject).hasNext())
-          {
-            String str = (String)((Iterator)localObject).next();
-            j = paramInt + 1;
-            paramSharedPreferences[paramInt] = str;
-            if (j < k) {}
-          }
-          else
-          {
-            j = paramSharedPreferences.length;
-            paramInt = i;
-            while (paramInt < j)
-            {
-              paramEditor.remove(paramSharedPreferences[paramInt]);
-              paramInt += 1;
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  private void a(View paramView, GdtAd paramGdtAd)
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet();
-    if (localObject != null)
-    {
-      localObject = ((Set)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        String str = (String)((Iterator)localObject).next();
-        WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
-        if ((localWeakReference != null) && (localWeakReference.get() != null) && (paramView == localWeakReference.get())) {
-          if ((paramGdtAd.getTraceId() != null) && (!paramGdtAd.getTraceId().equals(str))) {
-            a(str);
-          }
-        }
-      }
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
-  }
-  
-  private void a(String paramString, WeakReference<View> paramWeakReference)
-  {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramWeakReference);
-  }
-  
-  private void a(String paramString, boolean paramBoolean)
-  {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("GdtImpressionPolicyReported", 0);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    a(localSharedPreferences, localEditor, 8192);
-    localEditor.putBoolean(paramString, paramBoolean);
-    localEditor.apply();
-  }
-  
-  public static boolean a(View paramView)
-  {
-    return yzb.a(paramView) > 0.5D;
-  }
-  
-  private boolean a(String paramString)
-  {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("GdtImpressionPolicyReported", 0).getBoolean(paramString, false);
-  }
-  
-  private boolean b(View paramView)
-  {
-    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values();
-    if (localObject != null)
-    {
-      localObject = ((Collection)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
-        if ((paramView != null) && (localWeakReference != null) && (localWeakReference.get() != null) && (paramView == localWeakReference.get())) {
-          return true;
-        }
-      }
-    }
-    return false;
+    return ((bdvx)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(47)).a(1);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    behr localbehr = (behr)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(107);
+    try
+    {
+      if (this.jdField_b_of_type_Boolean)
+      {
+        localbehr.notifyUI(3, true, Integer.valueOf(4));
+        return;
+      }
+      this.jdField_b_of_type_Boolean = true;
+      String str = "http://" + this.jdField_b_of_type_JavaLangString + "?_bid=" + this.jdField_a_of_type_JavaLangString;
+      BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+      long l = System.currentTimeMillis();
+      if ((!nbv.a(BaseApplicationImpl.getContext(), str, new yxz(this, l, localbehr, localBaseApplication))) && (QLog.isColorLevel()))
+      {
+        QLog.i("ViewPluginLoader", 2, "plugin:" + this.jdField_b_of_type_JavaLangString + " transToLocalUrl: return false");
+        return;
+      }
+    }
+    finally {}
   }
   
-  public void a(View paramView)
+  public void a(BaseActivity paramBaseActivity)
   {
-    yxp.a("GdtImpressionPolicy", "report view: " + paramView.hashCode());
-    GdtAd localGdtAd = a(paramView);
-    if (localGdtAd == null)
+    if (this.jdField_a_of_type_Yxx != null)
     {
-      yxp.a("GdtImpressionPolicy", "break: statistics == null");
+      this.jdField_a_of_type_Yxx = new yxx(paramBaseActivity, 0, this.jdField_a_of_type_Yxx);
       return;
     }
-    if (localGdtAd.reportState == 2)
-    {
-      yxp.a("GdtImpressionPolicy", "break: already report " + localGdtAd.getTraceId());
-      return;
-    }
-    if (!a(paramView))
-    {
-      yxp.a("GdtImpressionPolicy", "break: isVisibleAreaSatisfied not");
-      return;
-    }
-    a(paramView, localGdtAd);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-    WeakReference localWeakReference = new WeakReference(paramView);
-    localMessage.obj = localWeakReference;
-    if (!b(paramView))
-    {
-      yxp.a("GdtImpressionPolicy", "inCountingMap not " + localGdtAd.getTraceId());
-      a(localGdtAd.getTraceId(), localWeakReference);
-    }
-    localGdtAd.reportState = 1;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1000L);
+    this.jdField_a_of_type_Yxx = new yxx(paramBaseActivity, 0, this.e, this.jdField_a_of_type_JavaLangClassLoader);
   }
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(JSONObject paramJSONObject, QQAppInterface paramQQAppInterface)
   {
-    yxp.a("GdtImpressionPolicy", "handleMessage : ");
-    if ((paramMessage == null) || (paramMessage.obj == null)) {}
-    GdtAd localGdtAd;
-    Object localObject;
+    boolean bool1 = true;
+    int i = paramJSONObject.optInt("code");
+    paramQQAppInterface = ncb.b(this.jdField_a_of_type_JavaLangString);
+    boolean bool2;
+    if (!TextUtils.isEmpty(paramQQAppInterface)) {
+      if (i == 4)
+      {
+        paramQQAppInterface = paramQQAppInterface + this.jdField_a_of_type_JavaLangString + ".7z";
+        bool2 = false;
+      }
+    }
     for (;;)
     {
-      return false;
-      paramMessage = (WeakReference)paramMessage.obj;
-      if (paramMessage.get() != null)
+      ThreadManager.post(new ViewPluginLoader.5(this, paramJSONObject, paramQQAppInterface, new yyb(this, paramQQAppInterface, bool2, bool1)), 8, null, false);
+      return;
+      if ((i == 3) || (i == 2))
       {
-        paramMessage = (View)paramMessage.get();
-        localGdtAd = a(paramMessage);
-        if (localGdtAd == null)
+        paramQQAppInterface = paramQQAppInterface + this.jdField_a_of_type_JavaLangString + ".zip";
+        bool2 = true;
+        bool1 = false;
+      }
+      else
+      {
+        QLog.e("ViewPluginLoader", 1, "do not know what format, use default zip name!");
+        paramQQAppInterface = paramQQAppInterface + this.jdField_a_of_type_JavaLangString + ".zip";
+        bool2 = false;
+        bool1 = false;
+        continue;
+        bool1 = false;
+        bool2 = false;
+        paramQQAppInterface = null;
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    b();
+  }
+  
+  public boolean a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 1;
+    for (;;)
+    {
+      String str2;
+      File localFile;
+      String str1;
+      Object localObject;
+      try
+      {
+        str2 = this.jdField_a_of_type_JavaLangString;
+        boolean bool = TextUtils.isEmpty(str2);
+        if (bool)
         {
-          yxp.a("GdtImpressionPolicy", "break: statistics == null");
+          paramBoolean2 = false;
+          return paramBoolean2;
         }
-        else if (localGdtAd.reportState != 1)
+        if (TextUtils.isEmpty(ncb.b(str2)))
         {
-          yxp.a("GdtImpressionPolicy", "break: statistics.reportState != 1 " + localGdtAd.getTraceId());
+          paramBoolean2 = false;
+          continue;
         }
-        else if (!a(paramMessage))
+        localFile = new File(paramString);
+        if (!localFile.exists())
         {
-          yxp.a("GdtImpressionPolicy", "break: isVisibleAreaSatisfied not " + localGdtAd.getTraceId());
-          localGdtAd.reportState = -1;
+          if (!QLog.isColorLevel()) {
+            break label595;
+          }
+          QLog.i("ViewPluginLoader", 2, "doUnzipZip: no zip ! : businessId:" + str2);
+          break label595;
         }
-        else if (!b(paramMessage))
+        long l = System.currentTimeMillis();
+        str1 = localFile.getParent() + File.separator + str2;
+        localObject = BidDownloader.a(paramString);
+        if (QLog.isColorLevel()) {
+          QLog.i("ViewPluginLoader", 2, "fileFormat: " + (String)localObject + ", path: " + paramString);
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          break label378;
+        }
+        if (((String)localObject).equals("zip"))
         {
-          yxp.a("GdtImpressionPolicy", "break: inCountingMap not " + localGdtAd.getTraceId());
+          i = ndr.a(paramString, str1);
+          if (QLog.isColorLevel()) {
+            QLog.i("ViewPluginLoader", 2, "now delete original download offline zip, path: " + paramString);
+          }
+          ndq.b(paramString);
+          if (i <= 0) {
+            break label440;
+          }
+          nbv.a(str2, 13, 0L, i, "lixian_update", "0");
+          if (!QLog.isColorLevel()) {
+            break label590;
+          }
+          QLog.i("ViewPluginLoader", 2, "unZipFolder fail!");
+          paramBoolean1 = false;
+          ndq.a(str1);
+          paramBoolean2 = paramBoolean1;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.i("ViewPluginLoader", 2, "time of unzip zip：" + (System.currentTimeMillis() - l) + ", isSuccess: " + paramBoolean1);
+          paramBoolean2 = paramBoolean1;
+          continue;
+        }
+        if (!((String)localObject).equals("7z")) {
+          continue;
+        }
+      }
+      finally {}
+      i = LzmaUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramString, str1);
+      continue;
+      label378:
+      QLog.w("ViewPluginLoader", 1, "can not recognize download compress file format, " + paramString);
+      if (paramBoolean1)
+      {
+        i = ndr.a(paramString, str1);
+      }
+      else if (paramBoolean2)
+      {
+        i = LzmaUtils.a(BaseApplicationImpl.getApplication().getApplicationContext(), paramString, str1);
+        continue;
+        label440:
+        paramString = str1 + File.separator + str2 + ".zip";
+        localObject = new File(paramString);
+        str2 = localFile.getParent() + File.separator + str2 + ".zip";
+        if (QLog.isColorLevel()) {
+          QLog.i("ViewPluginLoader", 2, "now move zip file to location: " + str2);
+        }
+        if (((File)localObject).exists())
+        {
+          paramBoolean2 = ((File)localObject).renameTo(new File(str2));
+          paramBoolean1 = paramBoolean2;
+          if (!paramBoolean2) {
+            paramBoolean1 = bdcs.b(paramString, str2);
+          }
         }
         else
         {
-          localObject = paramMessage.getTag(2131379210);
-          if (localObject == null)
-          {
-            yxp.a("GdtImpressionPolicy", "break: o2 == null " + localGdtAd.getTraceId());
-          }
-          else if (!(localObject instanceof yxz))
-          {
-            yxp.a("GdtImpressionPolicy", "break: o2 instanceof ReportListener not " + localGdtAd.getTraceId());
-          }
-          else
-          {
-            if (!a(localGdtAd.getTraceId())) {
-              break;
-            }
-            yxp.a("GdtImpressionPolicy", "break: already reported " + localGdtAd.getTraceId());
-          }
+          label590:
+          paramBoolean1 = false;
+          continue;
+          label595:
+          paramBoolean2 = false;
         }
       }
     }
-    ((yxz)localObject).reportImpression(paramMessage);
-    localGdtAd.reportState = 2;
-    a(localGdtAd.getTraceId(), true);
-    yxp.a("GdtImpressionPolicy", "report " + localGdtAd.getTraceId());
-    a(localGdtAd.getTraceId());
-    return true;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int = 0;
+    nbv.a();
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((localQQAppInterface != null) && (localQQAppInterface.getLongAccountUin() % 10L == 6L)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      nbv.a = bool;
+      String str = nbv.a(this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("ViewPluginLoader", 2, "checkOfflineAndLoad version = " + str);
+      }
+      if ((!new File(ncb.a(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_JavaLangString + "/" + this.jdField_b_of_type_JavaLangString).exists()) && (!TextUtils.isEmpty(str)) && (!"0".equals(str))) {
+        bdcs.a(ncb.a(this.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_JavaLangString);
+      }
+      if (localQQAppInterface != null) {
+        break;
+      }
+      return;
+    }
+    nbv.a(this.jdField_a_of_type_JavaLangString, localQQAppInterface, new yya(this, localQQAppInterface), false);
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Yxx = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yxy
  * JD-Core Version:    0.7.0.1
  */

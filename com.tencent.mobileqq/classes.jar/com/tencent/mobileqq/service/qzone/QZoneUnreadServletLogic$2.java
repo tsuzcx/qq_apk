@@ -2,8 +2,8 @@ package com.tencent.mobileqq.service.qzone;
 
 import NS_MOBILE_COMM_CONF.MobileCommConf;
 import NS_UNDEAL_COUNT.mobile_count_rsp_new;
-import axbj;
-import bibt;
+import aywn;
+import bkdp;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 
@@ -16,8 +16,8 @@ public final class QZoneUnreadServletLogic$2
   {
     try
     {
-      MobileCommConf localMobileCommConf = (MobileCommConf)axbj.a(MobileCommConf.class, (byte[])this.a.mapTransData.get("ZengzhiCommConf"));
-      bibt.a().a(localMobileCommConf);
+      MobileCommConf localMobileCommConf = (MobileCommConf)aywn.a(MobileCommConf.class, (byte[])this.a.mapTransData.get("ZengzhiCommConf"));
+      bkdp.a().a(localMobileCommConf);
       return;
     }
     catch (Exception localException)
@@ -28,7 +28,7 @@ public final class QZoneUnreadServletLogic$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic.2
  * JD-Core Version:    0.7.0.1
  */

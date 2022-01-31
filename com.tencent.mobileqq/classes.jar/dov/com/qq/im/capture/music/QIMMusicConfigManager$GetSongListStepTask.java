@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.music;
 
-import ayrx;
-import aysa;
-import aysy;
-import aysz;
-import bbdh;
-import bjbs;
+import baps;
+import bapv;
+import baqv;
+import baqw;
+import bdcb;
+import blnc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.PeakAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -26,14 +26,14 @@ final class QIMMusicConfigManager$GetSongListStepTask
     super(paramQIMMusicConfigManager2);
   }
   
-  public void onResp(aysz paramaysz)
+  public void onResp(baqw parambaqw)
   {
-    if (paramaysz.c == 200)
+    if (parambaqw.c == 200)
     {
-      if (paramaysz.a != null)
+      if (parambaqw.a != null)
       {
-        paramaysz = new String(paramaysz.a);
-        PeakAppInterface.a.a(String.valueOf(1008), new Object[] { paramaysz });
+        parambaqw = new String(parambaqw.a);
+        PeakAppInterface.a.a(String.valueOf(1008), new Object[] { parambaqw });
         return;
       }
       QIMMusicConfigManager.a(this.this$0, false);
@@ -41,7 +41,7 @@ final class QIMMusicConfigManager$GetSongListStepTask
       return;
     }
     QIMMusicConfigManager.a(this.this$0, false);
-    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, false, "Http Request fail, code=" + paramaysz.c);
+    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, false, "Http Request fail, code=" + parambaqw.c);
   }
   
   public void run()
@@ -69,26 +69,26 @@ final class QIMMusicConfigManager$GetSongListStepTask
           l1 = ((JSONObject)localObject2).optLong("diss_id", -1L);
           if (l1 != -1L)
           {
-            localObject1 = new ayrx();
-            ((ayrx)localObject1).jdField_a_of_type_Int = 0;
-            ((ayrx)localObject1).e = 1;
-            ((ayrx)localObject1).jdField_a_of_type_Aysc = this;
+            localObject1 = new baps();
+            ((baps)localObject1).jdField_a_of_type_Int = 0;
+            ((baps)localObject1).e = 1;
+            ((baps)localObject1).jdField_a_of_type_Bapx = this;
             long l2 = System.currentTimeMillis() / 1000L;
             localObject2 = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2)).getSkey(this.c);
             HashMap localHashMap = new HashMap();
             localHashMap.put("app_id", "2000000025");
             localHashMap.put("app_key", "SApgehUTVGxZKBQZTt");
-            localHashMap.put("device_id", bbdh.a());
+            localHashMap.put("device_id", bdcb.a());
             localHashMap.put("timestamp", String.valueOf(l2));
             localHashMap.put("sign", a(l2));
             localHashMap.put("dissid", String.valueOf(l1));
             localHashMap.putAll(a(this.c, (String)localObject2));
-            ((ayrx)localObject1).jdField_a_of_type_JavaLangString = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_songlist_detail.fcg", localHashMap);
-            this.jdField_a_of_type_Aysa.a((aysy)localObject1);
+            ((baps)localObject1).jdField_a_of_type_JavaLangString = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_songlist_detail.fcg", localHashMap);
+            this.jdField_a_of_type_Bapv.a((baqv)localObject1);
             if (!QLog.isColorLevel()) {
               break label389;
             }
-            QLog.d("QIMMusicConfigManager", 2, "QQMusicReq GetSongListStepTask req url=" + ((ayrx)localObject1).jdField_a_of_type_JavaLangString);
+            QLog.d("QIMMusicConfigManager", 2, "QQMusicReq GetSongListStepTask req url=" + ((baps)localObject1).jdField_a_of_type_JavaLangString);
             return;
           }
           QIMMusicConfigManager.a(this.this$0, true);
@@ -113,7 +113,7 @@ final class QIMMusicConfigManager$GetSongListStepTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.capture.music.QIMMusicConfigManager.GetSongListStepTask
  * JD-Core Version:    0.7.0.1
  */

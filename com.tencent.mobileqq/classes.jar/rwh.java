@@ -1,64 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
 
 public class rwh
-  implements sac
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public rwh(ViolaFragment paramViolaFragment) {}
+  public rwh(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
   
-  public void a()
+  @SuppressLint({"NewApi"})
+  public void onGlobalLayout()
   {
-    this.a.a.b();
-    this.a.a.d();
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaFragment", 2, "initViola success!");
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    this.a.a.b();
-    this.a.a.c();
-    if (QLog.isColorLevel()) {
-      QLog.e("ViolaFragment", 2, "initViola error,error code=" + paramInt);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
-  {
-    if ((this.a.a.b()) && (paramBoolean))
+    for (;;)
     {
-      if (Math.abs(paramInt1) < this.a.a.a() / 2) {
-        break label79;
-      }
-      if (!ViolaFragment.a(this.a))
-      {
-        this.a.a(Boolean.valueOf(false));
-        ahip.a(this.a.getActivity(), true);
-        ViolaFragment.a(this.a, true);
-      }
-    }
-    label79:
-    while (!ViolaFragment.a(this.a)) {
+      ReadinjoySlidingIndicator.a(this.a, ReadinjoySlidingIndicator.a(this.a));
+      View localView = ReadinjoySlidingIndicator.a(this.a).getChildAt(ReadinjoySlidingIndicator.a(this.a));
+      ReadinjoySlidingIndicator.a(this.a, localView.getLeft());
+      this.a.invalidate();
       return;
-    }
-    this.a.a(Boolean.valueOf(true));
-    ahip.a(this.a.getActivity(), false);
-    ViolaFragment.a(this.a, false);
-  }
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void b(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ViolaFragment", 2, "initViola process,process code=" + paramInt);
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rwh
  * JD-Core Version:    0.7.0.1
  */

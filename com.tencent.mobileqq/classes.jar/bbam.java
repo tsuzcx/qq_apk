@@ -1,33 +1,37 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.widget.ListView;
+import java.util.List;
 
-final class bbam
-  implements URLDrawable.URLDrawableListener
+public class bbam
 {
-  bbam(WeakReference paramWeakReference) {}
+  private static String jdField_a_of_type_JavaLangString = "TribeTitlePrefixPanelView";
+  private ListView jdField_a_of_type_AndroidWidgetListView;
+  private bbaq jdField_a_of_type_Bbaq;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public bbam(Context paramContext, ListView paramListView)
   {
-    if (this.a != null)
-    {
-      paramURLDrawable = (View)this.a.get();
-      if (paramURLDrawable != null) {
-        paramURLDrawable.postInvalidate();
-      }
+    this.jdField_a_of_type_AndroidWidgetListView = paramListView;
+    this.jdField_a_of_type_Bbaq = new bbaq(paramContext);
+    this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_Bbaq);
+  }
+  
+  public void a(bbap parambbap)
+  {
+    if (this.jdField_a_of_type_Bbaq != null) {
+      this.jdField_a_of_type_Bbaq.a(parambbap);
+    }
+  }
+  
+  public void a(List<bbar> paramList)
+  {
+    if (this.jdField_a_of_type_Bbaq != null) {
+      this.jdField_a_of_type_Bbaq.a(paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbam
  * JD-Core Version:    0.7.0.1
  */

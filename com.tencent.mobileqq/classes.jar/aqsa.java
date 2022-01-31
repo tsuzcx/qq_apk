@@ -1,58 +1,96 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.gamecenter.data.FeedsItemData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class aqsa
-  extends aqrw
+class aqsa
+  extends aqnl
 {
-  private ImageView b;
-  private TextView d;
-  private TextView e;
+  aqsa(aqrz paramaqrz) {}
   
-  public aqsa(Context paramContext, View paramView, ViewGroup paramViewGroup)
+  protected void b(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6, long paramLong, Bundle paramBundle)
   {
-    super(paramContext, paramView, paramViewGroup);
-    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559085, paramViewGroup, false);
-    if (paramContext != null) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(paramContext);
+    QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] OnGetDiscVideoThumbInfo, bSuccess[" + paramBoolean + " retCode:" + paramInt1 + " downloadIp:" + paramString4 + " downloadDomain:" + paramString5 + " port:" + paramInt2 + " url:" + paramString6 + " cookie:" + paramString2);
+    aqsb localaqsb = aqrz.a(this.a, paramLong, false);
+    if (localaqsb == null)
+    {
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetDiscVideoThumbInfo no this session");
+      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
+      return;
     }
-    this.b = ((ImageView)paramContext.findViewById(2131367992));
-    this.d = ((TextView)paramContext.findViewById(2131378364));
-    this.e = ((TextView)paramContext.findViewById(2131378262));
-  }
-  
-  public void a(FeedsItemData paramFeedsItemData)
-  {
-    super.a(paramFeedsItemData);
-    this.e.setText(paramFeedsItemData.title + "");
-    if (TextUtils.isEmpty(paramFeedsItemData.subTitle)) {
-      this.d.setVisibility(8);
+    if (!paramBoolean)
+    {
+      this.a.a.a().a(false, 50, new Object[] { localaqsb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+      this.a.a(paramLong);
+      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
+      return;
+    }
+    if ((paramString6 != null) && (paramString6.length() > 0))
+    {
+      QLog.w("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetDiscVideoThumbInfo url=null");
+      this.a.a.a().a(false, 50, new Object[] { localaqsb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+      this.a.a(paramLong);
+      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
+      return;
+    }
+    paramString6 = null;
+    if ((paramString4 != null) && (paramString4.length() > 0)) {
+      paramString1 = paramString4;
+    }
+    while ((paramString1 == null) || (paramString1.length() < 0))
+    {
+      this.a.a.a().a(false, 50, new Object[] { localaqsb.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity });
+      this.a.a(paramLong);
+      this.a.a(paramLong, false, null, 0, null, null, paramString2, false, null, (short)0, null);
+      return;
+      paramString1 = paramString6;
+      if (paramString5 != null)
+      {
+        paramString1 = paramString6;
+        if (paramString5.length() > 0) {
+          paramString1 = paramString5;
+        }
+      }
+    }
+    if ((paramString3 == null) || (paramString3.length() < 0)) {
+      QLog.w("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] OnGetOfflineVideoThumbInfo downloadKey invaild");
+    }
+    paramString5 = "/ftn_video_pic/rkey=" + paramString3 + "&filetype=" + localaqsb.b + "&size=" + this.a.a(localaqsb.jdField_a_of_type_Int) + "&";
+    paramBoolean = false;
+    short s1 = 0;
+    if ((aqxg.h(this.a.a)) && (paramBundle != null))
+    {
+      paramString4 = paramBundle.getString("strHttpsDomain");
+      if (!TextUtils.isEmpty(paramString4))
+      {
+        boolean bool = true;
+        short s2 = paramBundle.getShort("httpsPort", (short)0);
+        paramBoolean = bool;
+        paramString3 = paramString4;
+        s1 = s2;
+        if (s2 == 0)
+        {
+          s1 = 443;
+          paramString3 = paramString4;
+          paramBoolean = bool;
+        }
+      }
     }
     for (;;)
     {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = this.itemView.getResources().getDrawable(2130846170);
-      localURLDrawableOptions.mFailedDrawable = this.itemView.getResources().getDrawable(2130846170);
-      paramFeedsItemData = URLDrawable.getDrawable(paramFeedsItemData.coverImgUrl, localURLDrawableOptions);
-      this.b.setImageDrawable(paramFeedsItemData);
+      paramString4 = "";
+      if (aroo.b(this.a.a)) {
+        paramString4 = paramBundle.getString("IPv6Dns");
+      }
+      this.a.a(paramLong, true, paramString1, paramInt2, paramString5, null, paramString2, paramBoolean, paramString3, s1, paramString4);
       return;
-      this.d.setVisibility(0);
-      this.d.setText(paramFeedsItemData.subTitle + "");
+      paramString3 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aqsa
  * JD-Core Version:    0.7.0.1
  */

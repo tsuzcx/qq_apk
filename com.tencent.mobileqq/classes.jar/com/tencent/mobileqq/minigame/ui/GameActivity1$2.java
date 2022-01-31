@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.minigame.ui;
 
-import amki;
+import aobg;
 
 class GameActivity1$2
-  implements amki
+  implements aobg
 {
   GameActivity1$2(GameActivity1 paramGameActivity1) {}
   
@@ -15,7 +15,7 @@ class GameActivity1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity1.2
  * JD-Core Version:    0.7.0.1
  */

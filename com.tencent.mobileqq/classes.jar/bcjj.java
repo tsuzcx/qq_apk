@@ -1,167 +1,48 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.LebaPluginInfo;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForTroopFile;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
+import java.util.UUID;
 
-public class bcjj
-  implements Handler.Callback
+class bcjj
+  extends alkl
 {
-  public static int a;
-  public static boolean c;
-  bfob jdField_a_of_type_Bfob;
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  public boolean a;
-  int b;
-  public volatile boolean b;
+  bcjj(bcji parambcji) {}
   
-  static
+  protected void a(Object paramObject)
   {
-    jdField_a_of_type_Int = 42080;
-  }
-  
-  public bcjj(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_b_of_type_Int = 0;
-    if (paramQQAppInterface == null) {}
-    do
+    if (this.a.a == null) {}
+    for (;;)
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-      this.jdField_a_of_type_Bfob = new bfob(ThreadManager.getSubThreadLooper(), this);
-      this.jdField_a_of_type_Boolean = paramQQAppInterface.getPreferences().getBoolean(paramQQAppInterface.getCurrentAccountUin() + "whole_people_vote_switch", false);
-      if (QLog.isColorLevel()) {
-        QLog.i("WholePeopleLebaEntryChecker", 2, "WholePeopleLebaEntryChecker init switch:" + this.jdField_a_of_type_Boolean);
-      }
-    } while (!c);
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool2 = true;
-    Object localObject = paramQQAppInterface.a();
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WholePeopleLebaEntryChecker", 2, "checkPluginShow, list is null, return false");
-      }
-      return false;
-    }
-    int i = 0;
-    if (i < ((List)localObject).size())
-    {
-      LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)((List)localObject).get(i);
-      if ((localLebaPluginInfo == null) || (localLebaPluginInfo.uiResId != 770L)) {}
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WholePeopleLebaEntryChecker", 2, "checkPluginShow, is=770, find=" + bool1);
-      }
-      if (!bool1) {
-        break;
-      }
-      localObject = paramQQAppInterface.a().a;
-      if (localObject == null) {
-        if (QLog.isColorLevel()) {
-          QLog.d("WholePeopleLebaEntryChecker", 2, "checkPluginShow, campusLebaEntryChecker is null");
-        }
-      }
-      while (((bcjj)localObject).jdField_b_of_type_Boolean)
+      paramObject = (bbpe)paramObject;
+      if (((!paramObject.jdField_a_of_type_Boolean) || (paramObject.jdField_b_of_type_Int != 1)) && (paramObject.jdField_b_of_type_Int == 12))
       {
-        paramQQAppInterface = ((avps)paramQQAppInterface.getManager(36)).a().iterator();
-        do
+        long l = paramObject.jdField_b_of_type_Long;
+        Iterator localIterator = this.a.a.a().a(String.valueOf(l), 1).iterator();
+        while (localIterator.hasNext())
         {
-          bool1 = bool2;
-          if (!paramQQAppInterface.hasNext()) {
-            break;
+          Object localObject = (ChatMessage)localIterator.next();
+          if ((((ChatMessage)localObject).msgtype == -2017) && ((((ChatMessage)localObject).extraflag == 32772) || (((ChatMessage)localObject).extraflag == 32768)) && (((ChatMessage)localObject).isSendFromLocal()))
+          {
+            localObject = (MessageForTroopFile)localObject;
+            if ((((MessageForTroopFile)localObject).uuid != null) && (((MessageForTroopFile)localObject).uuid.equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString()))) {
+              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            } else if ((!TextUtils.isEmpty(((MessageForTroopFile)localObject).url)) && (!TextUtils.isEmpty(paramObject.e)) && (((MessageForTroopFile)localObject).url.equals(paramObject.e))) {
+              this.a.a.a().b(((MessageForTroopFile)localObject).frienduin, ((MessageForTroopFile)localObject).istroop, ((MessageForTroopFile)localObject).uniseq);
+            }
           }
-          localObject = (BusinessInfoCheckUpdate.AppSetting)paramQQAppInterface.next();
-        } while (((BusinessInfoCheckUpdate.AppSetting)localObject).appid.get() != 770);
-        bool2 = ((BusinessInfoCheckUpdate.AppSetting)localObject).setting.get();
-        bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("WholePeopleLebaEntryChecker", 2, "checkPluginShow find appid 770");
-          bool1 = bool2;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("WholePeopleLebaEntryChecker", 2, "checkPluginShow return " + bool1);
-        }
-        return bool1;
-        i += 1;
-        break;
       }
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("WholePeopleLebaEntryChecker", 2, "checkPluginShow, switch is off, return false");
-      return false;
     }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Bfob.hasMessages(0)) {
-      this.jdField_a_of_type_Bfob.removeMessages(0);
-    }
-    this.jdField_b_of_type_Int += 1;
-    this.jdField_a_of_type_Bfob.sendEmptyMessageDelayed(0, 2000L);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      return;
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (c) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      paramQQAppInterface.getPreferences().edit().putBoolean(paramQQAppInterface.getCurrentAccountUin() + "whole_people_vote_switch", paramBoolean).apply();
-    } while (!QLog.isColorLevel());
-    QLog.i("WholePeopleLebaEntryChecker", 2, String.format(Locale.getDefault(), "update show: %b", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WholePeopleLebaEntryChecker", 2, "setEntryIsOn " + paramBoolean);
-    }
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
-    {
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      akfh.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime());
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
-    }
-    axqy.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008824", "0X8008824", 0, this.jdField_b_of_type_Int, 0, "", "", "", "");
-    this.jdField_b_of_type_Int = 0;
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcjj
  * JD-Core Version:    0.7.0.1
  */

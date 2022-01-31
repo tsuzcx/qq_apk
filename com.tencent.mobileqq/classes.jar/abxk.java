@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
+import com.tencent.mobileqq.activity.AddFriendActivity;
 
 public class abxk
-  implements DialogInterface.OnDismissListener
+  implements ahcq
 {
-  public abxk(QQTranslucentBrowserActivity paramQQTranslucentBrowserActivity) {}
+  public abxk(AddFriendActivity paramAddFriendActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
   {
-    this.a.finish();
+    if (AddFriendActivity.a(this.a))
+    {
+      AddFriendActivity.a(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
+      return;
+    }
+    AddFriendActivity.b(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxk
  * JD-Core Version:    0.7.0.1
  */

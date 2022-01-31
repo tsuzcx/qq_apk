@@ -1,48 +1,53 @@
-import com.tencent.mobileqq.triton.sdk.download.ITDownloadListener;
-import com.tencent.qqmini.sdk.core.proxy.DownloaderProxy.DownloadListener;
-import java.io.File;
-import java.util.List;
-import java.util.Map;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class bevh
-  implements DownloaderProxy.DownloadListener
+final class bevh
+  implements DialogInterface.OnClickListener
 {
-  bevh(bevg parambevg, ITDownloadListener paramITDownloadListener, String paramString1, String paramString2) {}
+  bevh(int paramInt, Activity paramActivity, bevo parambevo) {}
   
-  public void onDownloadFailed(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener.onFail(this.jdField_a_of_type_JavaLangString, paramInt, null);
-    }
-  }
-  
-  public void onDownloadHeadersReceived(int paramInt, Map<String, List<String>> paramMap) {}
-  
-  public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener.onProgress(this.jdField_a_of_type_JavaLangString, paramLong2, paramFloat);
-    }
-  }
-  
-  public void onDownloadSucceed(int paramInt, String paramString, Map<String, List<String>> paramMap)
-  {
-    boolean bool = new File(this.b).exists();
-    if (this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener != null)
+    paramInt = 2;
+    if (this.jdField_a_of_type_Int == 1)
     {
-      if (bool) {
-        this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener.onSuccess(this.jdField_a_of_type_JavaLangString, paramInt, null, bejl.a().e(this.b));
+      bevd.b(this.jdField_a_of_type_AndroidAppActivity, 398668);
+      bevd.a("0X80094F5");
+      paramInt = 1;
+    }
+    for (;;)
+    {
+      bevd.c(this.jdField_a_of_type_AndroidAppActivity, paramInt);
+      this.jdField_a_of_type_Bevo.a(1);
+      paramDialogInterface.dismiss();
+      return;
+      if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 5))
+      {
+        bevd.b(this.jdField_a_of_type_AndroidAppActivity, 398668);
+        bevd.a("0X80094F4");
+        paramInt = 1;
+      }
+      else if (this.jdField_a_of_type_Int == 3)
+      {
+        bevd.b(this.jdField_a_of_type_AndroidAppActivity, 398671);
+        bevd.a("0X80094F6");
+      }
+      else
+      {
+        if (this.jdField_a_of_type_Int == 4)
+        {
+          bevd.b(this.jdField_a_of_type_AndroidAppActivity, 398690);
+          bevd.a("0X80094F4");
+        }
+        paramInt = 1;
       }
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTritonSdkDownloadITDownloadListener.onFail(this.jdField_a_of_type_JavaLangString, 5, "target file not exists");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bevh
  * JD-Core Version:    0.7.0.1
  */

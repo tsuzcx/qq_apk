@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import aimw;
+import akeh;
 import android.view.View;
 import com.tencent.mobileqq.adapter.ForwardRecentItemView;
 import com.tencent.widget.XListView;

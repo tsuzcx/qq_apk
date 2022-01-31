@@ -1,24 +1,24 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.qphone.base.util.QLog;
 
-class mfw
-  implements View.OnClickListener
+public class mfw
+  implements View.OnTouchListener
 {
-  mfw(mfv parammfv) {}
+  public mfw(EffectSettingUi paramEffectSettingUi) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.j();
-    }
-    axqy.b(null, "CliOper", "", "", "0X8005DF1", "0X8005DF1", 0, 0, "", "", "", "");
+    EffectSettingUi.a(this.a.a, -1008L);
+    QLog.w("EffectSettingUi", 1, "m_qav_effect_bottom, onTouchEvent[" + paramMotionEvent.getAction() + "]");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mfw
  * JD-Core Version:    0.7.0.1
  */

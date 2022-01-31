@@ -1,41 +1,53 @@
-import android.support.annotation.NonNull;
-import java.util.List;
-
-public class bjfh
+public abstract class bjfh
 {
-  public static bjbw a(String paramString)
+  public static bjfq a(long paramLong)
   {
-    return new bjdr(Integer.valueOf(paramString).intValue());
+    return bjfl.a().a(paramLong);
   }
   
-  public static bjbw a(String paramString1, @NonNull String paramString2, String paramString3, float paramFloat1, float paramFloat2, float paramFloat3)
+  public static bjfr a(long paramLong)
   {
-    bkfz localbkfz = ((bjfl)bjav.a(4)).a(paramString2);
-    if ((localbkfz instanceof bkgj)) {
-      return new bjfe((bkgj)localbkfz, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
-    }
-    if ((localbkfz instanceof bkgg)) {
-      return new bjfd((bkgg)localbkfz, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
-    }
-    if ((localbkfz instanceof bkga)) {
-      return new bjfa((bkga)localbkfz, paramString1, paramString2, paramString3, paramFloat1, paramFloat2, paramFloat3);
-    }
-    return null;
+    return bjfl.a().a(paramLong);
   }
   
-  public static bjbw a(@NonNull String paramString, @NonNull List<String> paramList, float paramFloat1, float paramFloat2, float paramFloat3)
+  public static bjfs a(long paramLong)
   {
-    return new bjhf(paramString, paramList, paramFloat1, paramFloat2, paramFloat3);
+    return bjfl.a().a(paramLong);
   }
   
-  public static bjbw b(String paramString)
+  public static String a(int paramInt, String paramString1, String paramString2, bjfj parambjfj)
   {
-    return new bjfi(paramString);
+    return bjfl.a().a(paramInt, paramString1, paramString2, parambjfj);
+  }
+  
+  public static String a(int paramInt, String paramString1, String paramString2, bjfk parambjfk)
+  {
+    return a(paramInt, paramString1, paramString2, true, parambjfk);
+  }
+  
+  public static String a(int paramInt, String paramString1, String paramString2, boolean paramBoolean, bjfk parambjfk)
+  {
+    return bjfl.a().a(paramInt, paramString1, paramString2, paramBoolean, parambjfk);
+  }
+  
+  public static void a(long paramLong, bjfq parambjfq)
+  {
+    bjfl.a().a(paramLong, parambjfq);
+  }
+  
+  public static void a(long paramLong, bjfr parambjfr)
+  {
+    bjfl.a().a(paramLong, parambjfr);
+  }
+  
+  public static void a(long paramLong, bjfs parambjfs)
+  {
+    bjfl.a().a(paramLong, parambjfs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjfh
  * JD-Core Version:    0.7.0.1
  */

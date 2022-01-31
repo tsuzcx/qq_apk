@@ -1,7 +1,12 @@
-class auji {}
+import java.util.ArrayList;
+
+public abstract interface auji
+{
+  public abstract void a(long paramLong, ArrayList<Long> paramArrayList);
+}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auji
  * JD-Core Version:    0.7.0.1
  */

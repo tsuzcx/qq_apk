@@ -1,131 +1,115 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import SummaryCardTaf.SSummaryCardRsp;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import java.util.List;
 
 public class aplu
-  implements apll
+  extends allb
 {
-  private azqv jdField_a_of_type_Azqv;
-  private UUID jdField_a_of_type_JavaUtilUUID;
+  public aplu(MessengerService paramMessengerService) {}
   
-  public aplu(azqv paramazqv)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Azqv = paramazqv;
-    this.jdField_a_of_type_JavaUtilUUID = this.jdField_a_of_type_Azqv.jdField_a_of_type_JavaUtilUUID;
-    if (this.jdField_a_of_type_JavaUtilUUID == null) {
-      throw new NullPointerException("TroopFileStatusInfo Id null");
-    }
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Azqv.c;
-  }
-  
-  public String a()
-  {
-    return this.jdField_a_of_type_Azqv.e;
-  }
-  
-  public void a(long paramLong)
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Azqv.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifyProgress: get troopFileTransferManager failed.");
-    }
-    TroopFileTransferManager.Item localItem;
-    do
-    {
-      return;
-      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Azqv.jdField_a_of_type_JavaUtilUUID);
-    } while (localItem == null);
-    localItem.ProgressValue = paramLong;
-    localTroopFileTransferManager.a(localItem, 8);
-  }
-  
-  public void a(apaf paramapaf)
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Azqv.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null)
-    {
-      QLog.e("VideoForTroop<QFile>", 1, "getUrl: get troopFileTransferManager failed.");
-      return;
-    }
-    localTroopFileTransferManager.a(this.jdField_a_of_type_Azqv.e, this.jdField_a_of_type_Azqv.g, this.jdField_a_of_type_Azqv.c, this.jdField_a_of_type_Azqv.h, new aplv(this, paramapaf));
-  }
-  
-  public void a(String paramString)
-  {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Azqv.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed: get troopFileTransferManager failed.");
-    }
-    TroopFileTransferManager.Item localItem;
-    do
-    {
-      return;
-      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Azqv.jdField_a_of_type_JavaUtilUUID);
-    } while (localItem == null);
-    boolean bool = azpj.b(localItem.Status);
+    long l2 = 0L;
     if (QLog.isColorLevel()) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifySuccessed  itemStatus[" + localItem.Status + "]");
+      QLog.d("MessengerService.onCardDownload", 2, "received onCardDownload");
     }
-    if ((bool) || (this.jdField_a_of_type_Azqv.jdField_b_of_type_Int == 7))
+    Object localObject;
+    long l1;
+    int i;
+    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof Card)))
     {
-      localItem.LocalFile = paramString;
-      localTroopFileTransferManager.a(localItem, 11);
-      return;
+      paramObject = (Card)paramObject;
+      localObject = (QQAppInterface)MessengerService.h(this.a);
+      if ((localObject != null) && (bdal.a(((QQAppInterface)localObject).getCurrentAccountUin(), paramObject.uin))) {
+        if ((paramObject.templateRet == 0) || (paramObject.templateRet == 101107) || (paramObject.templateRet == 101108))
+        {
+          l1 = paramObject.lCurrentBgId;
+          l2 = paramObject.lCurrentStyleId;
+          if (awmr.a(l2)) {
+            l1 = paramObject.cardId;
+          }
+          i = 0;
+        }
+      }
     }
-    localTroopFileTransferManager.a(localItem, 6);
+    for (;;)
+    {
+      paramObject = new Bundle();
+      paramObject.putLong("currentId", l1);
+      paramObject.putLong("styleId", l2);
+      paramObject.putInt("result", i);
+      if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
+      {
+        localObject = (Bundle)this.a.jdField_a_of_type_JavaUtilList.remove(0);
+        ((Bundle)localObject).putBundle("response", paramObject);
+        this.a.a((Bundle)localObject);
+      }
+      return;
+      i = -1;
+      l1 = 0L;
+      continue;
+      i = -1;
+      l1 = 0L;
+      continue;
+      QLog.e("Q.emoji.web.MessengerService", 1, "onCardDownload fail isSuccess = " + paramBoolean + "data = " + paramObject);
+      i = -1;
+      l1 = 0L;
+    }
   }
   
-  public void a(boolean paramBoolean)
+  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
   {
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_Azqv.jdField_b_of_type_Long);
-    if (localTroopFileTransferManager == null) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifyFileFailed: get troopFileTransferManager failed.");
+    int j = 0;
+    int i = -1;
+    String str2 = "";
+    String str1 = "";
+    if ((paramBoolean) && (paramObject != null)) {
+      if ((paramObject instanceof Card)) {
+        i = 0;
+      }
     }
-    TroopFileTransferManager.Item localItem;
-    do
+    for (;;)
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.emoji.web.MessengerService", 2, "onSetCardTemplateReturn...resultCode=" + i);
+      }
+      if (this.a.jdField_a_of_type_AndroidOsBundle != null)
+      {
+        paramObject = new Bundle();
+        this.a.jdField_a_of_type_AndroidOsBundle.putString("cmd", "card_setSummaryCard");
+        paramObject.putInt("result", i);
+        paramObject.putString("message", str2);
+        if (TextUtils.isEmpty(str1)) {
+          paramObject.putString("aid", str1);
+        }
+        paramObject.putInt("payType", j);
+        this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
+        this.a.a(this.a.jdField_a_of_type_AndroidOsBundle);
+        this.a.jdField_a_of_type_AndroidOsBundle = null;
+      }
       return;
-      localItem = localTroopFileTransferManager.a(this.jdField_a_of_type_Azqv.jdField_a_of_type_JavaUtilUUID);
-    } while (localItem == null);
-    if (paramBoolean)
-    {
-      localTroopFileTransferManager.a(localItem, 12);
-      return;
+      if ((paramObject instanceof Pair))
+      {
+        paramObject = (Pair)paramObject;
+        i = ((Integer)paramObject.first).intValue();
+        str2 = ((SSummaryCardRsp)paramObject.second).emsg;
+        j = ((SSummaryCardRsp)paramObject.second).payType;
+        str1 = ((SSummaryCardRsp)paramObject.second).aid;
+        continue;
+        QLog.e("Q.emoji.web.MessengerService", 1, "onSetCardTemplateReturn fail isSuccess = " + paramBoolean + "obj = " + paramObject);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("VideoForTroop<QFile>", 1, "notifyFileFaild isInvalid[" + paramBoolean + "], itemStatus[" + localItem.Status + "]");
-    }
-    if ((azpj.b(localItem.Status)) || (this.jdField_a_of_type_Azqv.jdField_b_of_type_Int == 7))
-    {
-      localTroopFileTransferManager.a(localItem, 10);
-      return;
-    }
-    localTroopFileTransferManager.a(localItem, 3);
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Azqv.jdField_b_of_type_Int == 12;
-  }
-  
-  public String b()
-  {
-    return aptm.a().c() + bflg.a(this.jdField_a_of_type_Azqv.e);
-  }
-  
-  public String c()
-  {
-    return this.jdField_a_of_type_Azqv.g;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aplu
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import bhau;
+import bjcb;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.smtt.sdk.WebView;
@@ -40,8 +40,8 @@ public class QzoneTranslucentBrowserFragment
       localLayoutParams.rightMargin = a(15.0F);
       localLayoutParams.addRule(11);
       paramRelativeLayout.addView(localImageView, localLayoutParams);
-      localImageView.setImageDrawable(getResources().getDrawable(2130847646));
-      localImageView.setOnClickListener(new bhau(this));
+      localImageView.setImageDrawable(getResources().getDrawable(2130848028));
+      localImageView.setOnClickListener(new bjcb(this));
     }
   }
   
@@ -53,8 +53,8 @@ public class QzoneTranslucentBrowserFragment
   
   public int d(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_Bcfx != null) {
-      this.jdField_a_of_type_Bcfx.d = true;
+    if (this.jdField_a_of_type_Beey != null) {
+      this.jdField_a_of_type_Beey.d = true;
     }
     int i = super.d(paramBundle);
     if (this.jdField_a_of_type_AndroidContentIntent != null)
@@ -75,7 +75,7 @@ public class QzoneTranslucentBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.QzoneTranslucentBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

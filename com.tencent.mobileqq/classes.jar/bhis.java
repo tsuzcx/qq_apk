@@ -1,19 +1,58 @@
-import android.os.IInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqprotect.qsec.IRuntimeInterface;
+import com.tencent.qqprotect.qsec.QSecFramework;
+import mqq.app.MobileQQ;
 
-public abstract interface bhis
-  extends IInterface
+public class bhis
+  implements bhjs, IRuntimeInterface
 {
-  public abstract void a(String paramString);
+  private static volatile bhis a;
   
-  public abstract void a(String paramString, float paramFloat, long paramLong);
+  private bhis()
+  {
+    QSecFramework.a(4L, new bhit(this));
+  }
   
-  public abstract void a(String paramString, int paramInt);
+  public static bhis a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new bhis();
+      }
+      return a;
+    }
+    finally {}
+  }
   
-  public abstract void b(String paramString);
+  public void a(String paramString, byte[] paramArrayOfByte, bhjt parambhjt)
+  {
+    try
+    {
+      QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (parambhjt != null)
+      {
+        mzy.a(localQQAppInterface, new bhiv(paramArrayOfByte, parambhjt), paramArrayOfByte, paramString);
+        return;
+      }
+      mzy.a(localQQAppInterface, new bhiu(this), paramArrayOfByte, paramString);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public String getInterfaceName()
+  {
+    return "CSP";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhis
  * JD-Core Version:    0.7.0.1
  */

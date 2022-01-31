@@ -1,25 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-
-class aona
-  implements Animation.AnimationListener
+public class aona
 {
-  aona(aomx paramaomx, int paramInt, boolean paramBoolean) {}
+  @atcn(a="c2c_time_interval")
+  public double a = 72.0D;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public static aona a(String paramString)
   {
-    this.jdField_a_of_type_Aomx.jdField_a_of_type_Float = this.jdField_a_of_type_Aomx.b;
-    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Aomx.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    return (aona)atco.a(paramString, aona.class);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aona
  * JD-Core Version:    0.7.0.1
  */

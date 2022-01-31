@@ -1,203 +1,188 @@
-import android.content.res.Configuration;
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.model.DiandianTopConfig;
-import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicInfo;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil.1;
+import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil.2;
+import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil.3;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0xbd6.oidb_cmd0xbd6.RspBody;
-import tencent.im.oidb.cmd0xc6d.oidb_cmd0xc6d.ModuleInfo;
-import tencent.im.oidb.cmd0xc6d.oidb_cmd0xc6d.TextCardInfo;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class osm
-  implements ajte
 {
-  public void a(float paramFloat, int paramInt) {}
-  
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean) {}
-  
-  public void a(int paramInt, long paramLong, String paramString) {}
-  
-  public void a(int paramInt1, long paramLong, String paramString1, int paramInt2, String paramString2, String paramString3) {}
-  
-  public void a(int paramInt1, long paramLong, List<Long> paramList, int paramInt2, int paramInt3, boolean paramBoolean) {}
-  
-  public void a(int paramInt, SelectPositionModule.PositionData paramPositionData) {}
-  
-  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2) {}
-  
-  public void a(int paramInt, Object paramObject) {}
-  
-  public void a(int paramInt, String paramString) {}
-  
-  public void a(int paramInt, List<Long> paramList) {}
-  
-  public void a(int paramInt, qbj paramqbj) {}
-  
-  public void a(int paramInt, boolean paramBoolean, List<ChannelCoverInfo> paramList) {}
-  
-  public void a(long paramLong, int paramInt, String paramString) {}
-  
-  public void a(long paramLong, boolean paramBoolean) {}
-  
-  public void a(Configuration paramConfiguration) {}
-  
-  public void a(View paramView) {}
-  
-  public void a(ArticleInfo paramArticleInfo, boolean paramBoolean) {}
-  
-  public void a(TabChannelCoverInfo paramTabChannelCoverInfo) {}
-  
-  public void a(TopBannerInfo paramTopBannerInfo) {}
-  
-  public void a(Object paramObject, int paramInt, boolean paramBoolean, String... paramVarArgs) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void a(String paramString1, int paramInt1, long paramLong, String paramString2, int paramInt2, String paramString3, String paramString4) {}
-  
-  public void a(String paramString1, int paramInt, oidb_cmd0xbd6.RspBody paramRspBody, String paramString2) {}
-  
-  public void a(String paramString1, String paramString2, int paramInt) {}
-  
-  public void a(ArrayList<String> paramArrayList, List<oidb_cmd0xc6d.ModuleInfo> paramList, List<oidb_cmd0xc6d.TextCardInfo> paramList1) {}
-  
-  public void a(List<String> paramList, List<TopicInfo> paramList1) {}
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean, int paramInt, long paramLong, List<Long> paramList, List<ArticleInfo> paramList1) {}
-  
-  public void a(boolean paramBoolean, int paramInt, SparseArray<ChannelInfo> paramSparseArray) {}
-  
-  public void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
-  
-  public void a(boolean paramBoolean, long paramLong) {}
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString) {}
-  
-  public void a(boolean paramBoolean, long paramLong, List<RecommendFollowInfo> paramList) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5) {}
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt) {}
-  
-  public void a(boolean paramBoolean, List<TabChannelCoverInfo> paramList) {}
-  
-  public void a(boolean paramBoolean1, List<qaz> paramList, long paramLong, boolean paramBoolean2) {}
-  
-  public void a(boolean paramBoolean, List<Long> paramList, List<ArticleInfo> paramList1) {}
-  
-  public void a_(List<sda> paramList) {}
-  
-  public void ap_() {}
-  
-  public void b(int paramInt) {}
-  
-  public void b(int paramInt, List<Long> paramList) {}
-  
-  public void b(long paramLong, boolean paramBoolean) {}
-  
-  public void b(List<InterestLabelInfo> paramList) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
-  
-  public void b(boolean paramBoolean, long paramLong) {}
-  
-  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList) {}
-  
-  public void b(boolean paramBoolean1, List<qaz> paramList, long paramLong, boolean paramBoolean2) {}
-  
-  public void c(int paramInt) {}
-  
-  public void c(int paramInt, List<Long> paramList) {}
-  
-  public void c(List<TagInfo> paramList) {}
-  
-  public void c(boolean paramBoolean, List<ChannelCoverInfo> paramList) {}
-  
-  public void c(boolean paramBoolean1, List<qay> paramList, long paramLong, boolean paramBoolean2) {}
-  
-  public void d() {}
-  
-  public void d(int paramInt) {}
-  
-  public void d(boolean paramBoolean) {}
-  
-  public void d(boolean paramBoolean, List<DiandianTopConfig> paramList) {}
-  
-  public void e() {}
-  
-  public void e(int paramInt) {}
-  
-  public void e(boolean paramBoolean) {}
-  
-  public void e(boolean paramBoolean, List<ChannelInfo> paramList) {}
-  
-  public void f() {}
-  
-  public void f(int paramInt) {}
-  
-  public void f(boolean paramBoolean) {}
-  
-  public void f(boolean paramBoolean, List<ChannelInfo> paramList) {}
-  
-  public void g() {}
-  
-  public void g(int paramInt) {}
-  
-  public void g(boolean paramBoolean) {}
-  
-  public void g(boolean paramBoolean, List<Integer> paramList) {}
-  
-  public void h() {}
-  
-  public void h(int paramInt) {}
-  
-  public void h(boolean paramBoolean, List<ChannelCoverInfo> paramList) {}
-  
-  public void i() {}
-  
-  public void j() {}
-  
-  public void k() {}
-  
-  public void l() {}
-  
-  public void m() {}
-  
-  public void n() {}
-  
-  public void o() {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
+  private static long jdField_a_of_type_Long = -1L;
+  private static MessageForStructing jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
+  
+  public static long a()
+  {
+    return jdField_a_of_type_Long;
+  }
+  
+  public static MessageForStructing a()
+  {
+    return ((oye)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(274)).a();
+  }
+  
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "Other";
+    }
+    return "MsgTab";
+  }
+  
+  public static String a(long paramLong)
+  {
+    return String.valueOf((paramLong - a()) / 1000L);
+  }
+  
+  public static String a(RecentBaseData paramRecentBaseData)
+  {
+    if (paramRecentBaseData != null) {
+      return b(paramRecentBaseData.mUnreadFlag);
+    }
+    return "";
+  }
+  
+  public static String a(MessageForStructing paramMessageForStructing)
+  {
+    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null) && (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mArticleIds)))
+    {
+      paramMessageForStructing = paramMessageForStructing.structingMsg.mArticleIds.split("\\|");
+      if (paramMessageForStructing.length > 0) {
+        return paramMessageForStructing[0];
+      }
+    }
+    return "";
+  }
+  
+  public static void a()
+  {
+    String str = d(a());
+    ArrayList localArrayList = new ArrayList();
+    oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
+    localAttributeList.att_id.set(1);
+    localAttributeList.att_name.set("FolderStatus");
+    localAttributeList.att_value.set(str);
+    localArrayList.add(localAttributeList);
+    syb.a(27, localArrayList);
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    oxs.a(25);
+    ThreadManager.executeOnSubThread(new WeishiReportUtil.1(paramInt, paramString1, paramString2, paramString3, paramString4));
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, String paramString5)
+  {
+    a(paramInt, paramString1, paramString2, paramString3, paramString4, paramLong, paramString5, true);
+  }
+  
+  public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong, String paramString5, boolean paramBoolean)
+  {
+    ThreadManager.executeOnSubThread(new WeishiReportUtil.2(paramInt, paramString1, paramLong, paramString2, paramString3, paramString4));
+    if (paramBoolean) {
+      oxs.a();
+    }
+  }
+  
+  public static void a(RecentBaseData paramRecentBaseData, int paramInt)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    MessageForStructing localMessageForStructing = ((oye)localQQAppInterface.getManager(274)).a();
+    if ((localMessageForStructing == null) || (localMessageForStructing.isread)) {}
+    String str;
+    do
+    {
+      return;
+      str = localMessageForStructing.getExtInfoFromExtStr("weishi_red_pnt_report");
+    } while ((!TextUtils.isEmpty(str)) && ("1".equals(str)));
+    localMessageForStructing.saveExtInfoToExtStr("weishi_red_pnt_report", "1");
+    jdField_a_of_type_Long = System.currentTimeMillis();
+    ThreadManager.post(new WeishiReportUtil.3(localQQAppInterface, localMessageForStructing, paramRecentBaseData, paramInt), 5, null, false);
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WeishiReportUtil", 2, " " + paramString3 + "|" + paramString1 + "|" + paramString2 + "|" + paramString4);
+    }
+    nrt.a(null, "CliOper", "", "", paramString3, paramString3, 0, 0, "", paramString1, paramString2, paramString4, false);
+  }
+  
+  public static boolean a(MessageForStructing paramMessageForStructing)
+  {
+    return (paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null);
+  }
+  
+  public static MessageForStructing b()
+  {
+    MessageForStructing localMessageForStructing = jdField_a_of_type_ComTencentMobileqqDataMessageForStructing;
+    jdField_a_of_type_ComTencentMobileqqDataMessageForStructing = null;
+    return localMessageForStructing;
+  }
+  
+  public static String b(int paramInt)
+  {
+    if (paramInt == 1) {
+      return "1";
+    }
+    if (paramInt == 2) {
+      return "0";
+    }
+    return "";
+  }
+  
+  public static String b(MessageForStructing paramMessageForStructing)
+  {
+    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null) && (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mStrategyIds))) {
+      return paramMessageForStructing.structingMsg.mStrategyIds;
+    }
+    return "";
+  }
+  
+  public static String c(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "1";
+    }
+    return "0";
+  }
+  
+  public static String c(MessageForStructing paramMessageForStructing)
+  {
+    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null) && (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mAlgorithmIds))) {
+      return paramMessageForStructing.structingMsg.mAlgorithmIds;
+    }
+    return "";
+  }
+  
+  public static String d(MessageForStructing paramMessageForStructing)
+  {
+    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null))
+    {
+      if (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.reportEventFolderStatusValue)) {
+        return paramMessageForStructing.structingMsg.reportEventFolderStatusValue;
+      }
+      return "2";
+    }
+    return "1";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     osm
  * JD-Core Version:    0.7.0.1
  */

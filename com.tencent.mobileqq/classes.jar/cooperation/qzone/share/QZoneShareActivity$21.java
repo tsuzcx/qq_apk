@@ -1,6 +1,6 @@
 package cooperation.qzone.share;
 
-import bcqf;
+import bepp;
 import com.tencent.qphone.base.util.QLog;
 
 class QZoneShareActivity$21
@@ -24,7 +24,7 @@ class QZoneShareActivity$21
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.share.QZoneShareActivity.21
  * JD-Core Version:    0.7.0.1
  */

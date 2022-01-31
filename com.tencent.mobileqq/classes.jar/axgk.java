@@ -1,57 +1,49 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x986.oidb_0x986.RspBody;
 
-class axgk<K, V>
+public class axgk
+  extends axhd<ReceiptMessageDetailFragment>
 {
-  private HashMap<K, ArrayList<V>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  
-  public axgk(axgj paramaxgj) {}
-  
-  public ArrayList<V> a(K paramK)
+  public axgk(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    return (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
+    super(paramReceiptMessageDetailFragment);
   }
   
-  public void a(V paramV)
+  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback onRes: " + paramInt);
+    }
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      ArrayList localArrayList = (ArrayList)localEntry.getValue();
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        Object localObject = localArrayList.get(i);
-        if ((localObject == paramV) || ((localObject != null) && (localObject.equals(paramV)))) {
-          ((ArrayList)localEntry.getValue()).remove(paramV);
-        } else {
-          i += 1;
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopFetchReadStatusCallback succ");
       }
+      paramBundle = new oidb_0x986.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = paramBundle.uint32_read_uin_num.get();
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, 2147483647, true);
+      return;
     }
-  }
-  
-  public void a(K paramK, V paramV)
-  {
-    ArrayList localArrayList2 = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(paramK);
-    ArrayList localArrayList1 = localArrayList2;
-    if (localArrayList2 == null)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      localArrayList1 = new ArrayList();
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramK, localArrayList1);
+      QLog.d("ReceiptMessageDetailFragment", 1, "fetch read member fail on invalid data");
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
     }
-    if (!localArrayList1.contains(paramV)) {
-      localArrayList1.add(paramV);
-    }
+    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axgk
  * JD-Core Version:    0.7.0.1
  */

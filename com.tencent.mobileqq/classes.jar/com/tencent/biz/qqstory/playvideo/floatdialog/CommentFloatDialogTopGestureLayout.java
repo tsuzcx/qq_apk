@@ -9,8 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.Scroller;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
-import txt;
-import vei;
+import vml;
+import wta;
 
 public class CommentFloatDialogTopGestureLayout
   extends LinearLayout
@@ -20,7 +20,7 @@ public class CommentFloatDialogTopGestureLayout
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
   private StoryPlayerCommentListView jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView;
-  private txt jdField_a_of_type_Txt;
+  private vml jdField_a_of_type_Vml;
   float b;
   
   public CommentFloatDialogTopGestureLayout(Context paramContext)
@@ -82,18 +82,18 @@ public class CommentFloatDialogTopGestureLayout
       }
       Object localObject = this.jdField_a_of_type_AndroidViewView;
       ThreadManager.getUIHandler().postDelayed(new CommentFloatDialogTopGestureLayout.1(this, (View)localObject), 32L);
-      this.jdField_a_of_type_Txt.a(i);
-      if (this.jdField_a_of_type_Txt.a())
+      this.jdField_a_of_type_Vml.a(i);
+      if (this.jdField_a_of_type_Vml.a())
       {
         localObject = "2";
-        if (!this.jdField_a_of_type_Txt.b()) {
+        if (!this.jdField_a_of_type_Vml.b()) {
           break label127;
         }
       }
       label127:
       for (String str = "2";; str = "1")
       {
-        vei.a("play_video", "close_reply", 0, 2, new String[] { localObject, str });
+        wta.a("play_video", "close_reply", 0, 2, new String[] { localObject, str });
         return;
         localObject = "1";
         break;
@@ -102,9 +102,9 @@ public class CommentFloatDialogTopGestureLayout
     a(0, 0, 200);
   }
   
-  public void a(txt paramtxt, StoryPlayerCommentListView paramStoryPlayerCommentListView, View paramView)
+  public void a(vml paramvml, StoryPlayerCommentListView paramStoryPlayerCommentListView, View paramView)
   {
-    this.jdField_a_of_type_Txt = paramtxt;
+    this.jdField_a_of_type_Vml = paramvml;
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoFloatdialogStoryPlayerCommentListView = paramStoryPlayerCommentListView;
     this.jdField_a_of_type_AndroidViewView = paramView;
   }
@@ -163,7 +163,7 @@ public class CommentFloatDialogTopGestureLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialogTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

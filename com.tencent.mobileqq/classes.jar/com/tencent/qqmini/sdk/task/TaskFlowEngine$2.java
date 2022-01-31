@@ -1,12 +1,12 @@
 package com.tencent.qqmini.sdk.task;
 
-import bffi;
-import bffl;
+import bhhn;
+import bhhq;
 
 public class TaskFlowEngine$2
   implements Runnable
 {
-  public TaskFlowEngine$2(bffl parambffl, bffi parambffi) {}
+  public TaskFlowEngine$2(bhhq parambhhq, bhhn parambhhn) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class TaskFlowEngine$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.TaskFlowEngine.2
  * JD-Core Version:    0.7.0.1
  */

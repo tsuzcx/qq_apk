@@ -10,6 +10,7 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$DisplayInfo
   public float ecpm = 0.0F;
   public int inner_adshowtype = 0;
   public qq_common.LocalInfo local_info;
+  public String mini_program_id;
   public String mini_program_name;
   public int mini_program_type = 0;
   public qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.MutiPicTextInfo muti_pic_text_info;

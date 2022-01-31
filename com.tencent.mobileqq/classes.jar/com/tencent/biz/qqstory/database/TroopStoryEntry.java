@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.database;
 
-import auko;
+import awbv;
 import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
 public class TroopStoryEntry
-  extends auko
+  extends awbv
 {
   public static final int ITEM_TYPE_DAY = 1;
   public static final int ITEM_TYPE_VIDEO = 2;
@@ -41,7 +41,7 @@ public class TroopStoryEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.TroopStoryEntry
  * JD-Core Version:    0.7.0.1
  */

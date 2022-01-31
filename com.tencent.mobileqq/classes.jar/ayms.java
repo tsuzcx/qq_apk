@@ -1,26 +1,19 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class ayms
-  implements bbqp
+  implements View.OnClickListener
 {
   ayms(aymr paramaymr) {}
   
-  public void onCompleted(QQAppInterface paramQQAppInterface, long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    QLog.e("TintManager", 1, "tint config download onCompleted");
-    this.a.loadConfig(BaseApplicationImpl.getApplication().getResources(), aymr.a(this.a));
-    paramQQAppInterface = new Intent("com.tencent.qplus.THEME_UPDATE");
-    BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface, "com.tencent.msg.permission.pushnotify");
+    aymr.a(this.a).a(paramView);
   }
-  
-  public void onProgress(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayms
  * JD-Core Version:    0.7.0.1
  */

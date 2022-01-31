@@ -5,7 +5,9 @@ import java.util.List;
 
 public class PTHandAttr
 {
+  public static final int FORE_FINGER = 2;
   public static final int HAND_LABEL_EIGHT = 211;
+  public static final int HAND_LABEL_FINGER = 220;
   public static final int HAND_LABEL_FIST = 204;
   public static final int HAND_LABEL_HAND = 200;
   public static final int HAND_LABEL_HEART = 201;
@@ -21,6 +23,10 @@ public class PTHandAttr
   public static final int HAND_LABEL_ST_BLESS = 214;
   public static final int HAND_LABEL_ST_CONGRATULATE = 213;
   public static final int HAND_LABEL_ST_ILOVEYOU = 215;
+  public static final int LITTLE_FINGER = 5;
+  public static final int MIDDLE_FINGER = 3;
+  public static final int RING_FINGER = 4;
+  public static final int THUMB_FINGER = 1;
   public static final int[] handTypes = { 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215 };
   protected float confidence = 0.0F;
   private int detectHeight;
@@ -99,7 +105,7 @@ public class PTHandAttr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.aekit.plugin.core.PTHandAttr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,76 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
-import java.util.Map;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-class phc
-  implements ViewBase.OnClickListener
+public class phc
 {
-  phc(pgw parampgw, ViewBase paramViewBase, pau parampau) {}
+  private static phc jdField_a_of_type_Phc;
+  private SparseArray<ChannelInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void onClick(ViewBase paramViewBase)
+  public static phc a()
   {
-    paramViewBase = (ply)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getParent().findViewBaseByName("id_pgc_short_content_video_view");
-    ViewBean localViewBean = this.jdField_a_of_type_Pau.a().mProteusTemplateBean.getViewBean().findViewFromChild("id_pgc_short_content_video_audio_icon");
-    ViewBase localViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getParent().findViewBaseByName("id_pgc_short_content_video_audio_icon");
-    if ((localViewBase == null) || (paramViewBase == null) || (localViewBean == null)) {
-      return;
-    }
-    boolean bool;
-    if (!"video_audio_mute".equals(localViewBean.valueBean.dynamicValue.get("loadImageWithPath:")))
+    if (jdField_a_of_type_Phc == null) {}
+    try
     {
-      bool = true;
-      paramViewBase.a().setMute(bool);
-      if (!bool) {
-        break label123;
+      if (jdField_a_of_type_Phc == null) {
+        jdField_a_of_type_Phc = new phc();
+      }
+      return jdField_a_of_type_Phc;
+    }
+    finally {}
+  }
+  
+  public void a(List<Integer> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        int i = ((Integer)paramList.next()).intValue();
+        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
       }
     }
-    label123:
-    for (paramViewBase = "video_audio_mute";; paramViewBase = "video_audio_speak")
+  }
+  
+  public void b(List<Integer> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
     {
-      localViewBean.putMapValue("pgc_video_content_audio_icon", paramViewBase);
-      localViewBase.bindDynamicValue(localViewBean);
       return;
-      bool = false;
-      break;
+      ArrayList localArrayList = new ArrayList();
+      int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+      int i = 0;
+      while (i < j)
+      {
+        int k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
+        if ((!ors.a(k)) && (!paramList.contains(Integer.valueOf(k)))) {
+          localArrayList.add(Integer.valueOf(k));
+        }
+        i += 1;
+      }
+      paramList = localArrayList.iterator();
+      while (paramList.hasNext())
+      {
+        i = ((Integer)paramList.next()).intValue();
+        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     phc
  * JD-Core Version:    0.7.0.1
  */

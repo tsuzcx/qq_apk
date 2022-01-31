@@ -1,56 +1,72 @@
+import android.animation.Animator.AnimatorListener;
+import android.animation.PropertyValuesHolder;
+import android.animation.ValueAnimator;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 
 public class vnq
-  implements vos
 {
-  private vnq(DoodleLayout paramDoodleLayout) {}
-  
-  private void a()
+  public static void a(ViewGroup paramViewGroup, @NonNull AnimationParam paramAnimationParam, Animator.AnimatorListener paramAnimatorListener)
   {
-    this.a.a(new View[] { this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel, this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
-    this.a.a(false);
-    this.a.b(new View[] { this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView });
-    this.a.setDoodleGLViewVisibility(0);
-    this.a.c(0);
-    this.a.d(0);
+    wsv.b("Q.qqstory.playernew.AnimationUtils", "doExitAnimation");
+    View localView = paramViewGroup.findViewById(2131375981);
+    ImageView localImageView2 = (ImageView)paramViewGroup.findViewById(2131362571);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131379852);
+    Drawable localDrawable = paramAnimationParam.a();
+    ImageView localImageView1 = null;
+    if (localDrawable != null)
+    {
+      localImageView1 = new ImageView(paramViewGroup.getContext());
+      localViewGroup.addView(localImageView1, new RelativeLayout.LayoutParams(-1, -1));
+      localImageView1.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      localImageView1.setImageDrawable(localDrawable);
+    }
+    int i = localView.getMeasuredWidth();
+    int j = localView.getMeasuredHeight();
+    float f1 = paramAnimationParam.c * 1.0F / i;
+    float f2 = paramAnimationParam.d * 1.0F / j;
+    paramViewGroup = new ValueAnimator();
+    paramViewGroup.setInterpolator(new DecelerateInterpolator());
+    paramViewGroup.setDuration(250L);
+    paramViewGroup.setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F, f1 }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F, f2 }), PropertyValuesHolder.ofInt("width", new int[] { i, paramAnimationParam.c }), PropertyValuesHolder.ofInt("height", new int[] { j, paramAnimationParam.d }), PropertyValuesHolder.ofFloat("translateX", new float[] { 0.0F, paramAnimationParam.a }), PropertyValuesHolder.ofFloat("translateY", new float[] { 0.0F, paramAnimationParam.b }), PropertyValuesHolder.ofFloat("backgroundAlpha", new float[] { 1.0F, 0.0F }) });
+    paramViewGroup.addUpdateListener(new vnr(localViewGroup, localDrawable, localImageView1, localImageView2));
+    paramViewGroup.addListener(new vns(paramAnimatorListener));
+    paramViewGroup.start();
   }
   
-  public void a(vlo paramvlo, float paramFloat1, float paramFloat2, float paramFloat3)
+  public static void b(ViewGroup paramViewGroup, @NonNull AnimationParam paramAnimationParam, Animator.AnimatorListener paramAnimatorListener)
   {
-    ved.a("DoodleLayout", "onNormalFaceSelected, item : %s , x : %s , y : %s , scale : %s ", paramvlo, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3));
-    a();
-    vku localvku = new vku(paramFloat1, paramFloat2 + this.a.a(), paramFloat3, 0.0F, 0.0F, 0.0F, paramvlo.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), paramvlo.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3))
-    {
-      LpReportInfo_pf00064.allReport(615, 6);
-      LpReportInfo_pf00064.allReport(615, 4, 2);
-    }
-    if (this.a.a().a(paramvlo.jdField_a_of_type_JavaLangString, paramvlo.b, paramvlo.jdField_a_of_type_AndroidGraphicsDrawableDrawable, localvku))
-    {
-      DoodleLayout.a("clk_oneface");
-      vej.a("0X80076CA");
-      vej.b("0X80075DF");
-    }
-  }
-  
-  public void a(vou paramvou)
-  {
-    ved.b("DoodleLayout", "onLocationFaceSelected, pictureUrl:" + paramvou.d);
-    a();
-    this.a.a(paramvou);
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3) {
-      LpReportInfo_pf00064.report(615, 6);
-    }
-    vej.b("0X80075E3");
+    wsv.b("Q.qqstory.playernew.AnimationUtils", "doEnterAnimation");
+    Object localObject = paramViewGroup.findViewById(2131375981);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362571);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131379852);
+    paramViewGroup = new ImageView(paramViewGroup.getContext());
+    localViewGroup.addView(paramViewGroup, 0, new RelativeLayout.LayoutParams(-1, -1));
+    paramViewGroup.setScaleType(ImageView.ScaleType.CENTER_CROP);
+    paramViewGroup.setImageDrawable(paramAnimationParam.a());
+    int i = ((View)localObject).getMeasuredWidth();
+    int j = ((View)localObject).getMeasuredHeight();
+    float f1 = paramAnimationParam.c * 1.0F / i;
+    float f2 = paramAnimationParam.d * 1.0F / j;
+    localObject = new ValueAnimator();
+    ((ValueAnimator)localObject).setInterpolator(new DecelerateInterpolator());
+    ((ValueAnimator)localObject).setDuration(250L);
+    ((ValueAnimator)localObject).setValues(new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { f1, 1.0F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { f2, 1.0F }), PropertyValuesHolder.ofInt("width", new int[] { paramAnimationParam.c, i }), PropertyValuesHolder.ofInt("height", new int[] { paramAnimationParam.d, j }), PropertyValuesHolder.ofFloat("translateX", new float[] { paramAnimationParam.a, 0.0F }), PropertyValuesHolder.ofFloat("translateY", new float[] { paramAnimationParam.b, 0.0F }), PropertyValuesHolder.ofFloat("backgroundAlpha", new float[] { 0.0F, 1.0F }) });
+    ((ValueAnimator)localObject).addUpdateListener(new vnt(localViewGroup, paramViewGroup, localImageView));
+    ((ValueAnimator)localObject).addListener(new vnu(paramAnimatorListener, localViewGroup, paramViewGroup));
+    ((ValueAnimator)localObject).start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vnq
  * JD-Core Version:    0.7.0.1
  */

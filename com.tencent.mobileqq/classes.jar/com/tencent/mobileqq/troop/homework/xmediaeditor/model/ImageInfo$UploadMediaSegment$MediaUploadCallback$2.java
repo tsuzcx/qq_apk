@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import babl;
-import babn;
-import babo;
-import bacm;
+import bbzu;
+import bbzw;
+import bbzx;
+import bcav;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import java.lang.ref.WeakReference;
@@ -11,23 +11,23 @@ import java.lang.ref.WeakReference;
 public class ImageInfo$UploadMediaSegment$MediaUploadCallback$2
   implements Runnable
 {
-  public ImageInfo$UploadMediaSegment$MediaUploadCallback$2(babo parambabo, int paramInt) {}
+  public ImageInfo$UploadMediaSegment$MediaUploadCallback$2(bbzx parambbzx, int paramInt) {}
   
   public void run()
   {
-    babn.a(this.jdField_a_of_type_Babo.a).e = this.jdField_a_of_type_Int;
-    Object localObject = (XMediaEditor)babn.a(this.jdField_a_of_type_Babo.a).get();
+    bbzw.a(this.jdField_a_of_type_Bbzx.a).e = this.jdField_a_of_type_Int;
+    Object localObject = (XMediaEditor)bbzw.a(this.jdField_a_of_type_Bbzx.a).get();
     if (localObject != null)
     {
-      localObject = ((XMediaEditor)localObject).findViewHolderForLayoutPosition(babn.a(this.jdField_a_of_type_Babo.a).c);
-      if ((localObject instanceof bacm))
+      localObject = ((XMediaEditor)localObject).findViewHolderForLayoutPosition(bbzw.a(this.jdField_a_of_type_Bbzx.a).c);
+      if ((localObject instanceof bcav))
       {
-        localObject = (bacm)localObject;
-        if (babn.a(this.jdField_a_of_type_Babo.a).d.equals(((bacm)localObject).a.getTag()))
+        localObject = (bcav)localObject;
+        if (bbzw.a(this.jdField_a_of_type_Bbzx.a).d.equals(((bcav)localObject).a.getTag()))
         {
-          ((bacm)localObject).a.setVisibility(0);
-          ((bacm)localObject).a.setDrawStatus(1);
-          ((bacm)localObject).a.setAnimProgress(babn.a(this.jdField_a_of_type_Babo.a).e, babn.a(this.jdField_a_of_type_Babo.a).d);
+          ((bcav)localObject).a.setVisibility(0);
+          ((bcav)localObject).a.setDrawStatus(1);
+          ((bcav)localObject).a.setAnimProgress(bbzw.a(this.jdField_a_of_type_Bbzx.a).e, bbzw.a(this.jdField_a_of_type_Bbzx.a).d);
         }
       }
     }

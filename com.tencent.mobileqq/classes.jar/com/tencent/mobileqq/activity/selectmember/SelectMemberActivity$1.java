@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.selectmember;
 
-import akhp;
+import alzf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,12 +11,12 @@ class SelectMemberActivity$1
   
   public void run()
   {
-    akhp localakhp = (akhp)this.this$0.app.a(20);
-    if (localakhp != null) {}
+    alzf localalzf = (alzf)this.this$0.app.a(20);
+    if (localalzf != null) {}
     try
     {
-      localakhp.b(Long.valueOf(this.this$0.c));
-      localakhp.a(Long.valueOf(this.this$0.c));
+      localalzf.b(Long.valueOf(this.this$0.c));
+      localalzf.a(Long.valueOf(this.this$0.c));
       return;
     }
     catch (NumberFormatException localNumberFormatException)
@@ -28,7 +28,7 @@ class SelectMemberActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.1
  * JD-Core Version:    0.7.0.1
  */

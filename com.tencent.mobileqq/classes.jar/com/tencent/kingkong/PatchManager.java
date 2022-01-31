@@ -1,15 +1,15 @@
 package com.tencent.kingkong;
 
+import abpt;
+import abpx;
+import abqd;
+import abqe;
+import abqg;
 import android.content.Context;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import zyw;
-import zza;
-import zzg;
-import zzh;
-import zzj;
 
 public class PatchManager
 {
@@ -18,18 +18,18 @@ public class PatchManager
   private static String b = "";
   private static String c = "/";
   
-  private static ArrayList<zzg> a()
+  private static ArrayList<abqd> a()
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
-    Object localObject1 = zza.a(jdField_a_of_type_AndroidContentContext).a().iterator();
+    Object localObject1 = abpx.a(jdField_a_of_type_AndroidContentContext).a().iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (zzh)((Iterator)localObject1).next();
-      if (((zzh)localObject2).g.equals("READY"))
+      localObject2 = (abqe)((Iterator)localObject1).next();
+      if (((abqe)localObject2).g.equals("READY"))
       {
-        localObject2 = zzg.b(b, (zzh)localObject2);
+        localObject2 = abqd.b(b, (abqe)localObject2);
         if (localObject2 != null) {
           localArrayList1.add(localObject2);
         }
@@ -44,21 +44,21 @@ public class PatchManager
         localObject2 = localArrayList1.iterator();
         while (((Iterator)localObject2).hasNext())
         {
-          zzg localzzg = (zzg)((Iterator)localObject2).next();
-          if (!localArrayList2.contains(localzzg))
+          abqd localabqd = (abqd)((Iterator)localObject2).next();
+          if (!localArrayList2.contains(localabqd))
           {
-            String str1 = localzzg.a.k;
-            String str2 = localzzg.a.jdField_a_of_type_JavaLangString;
+            String str1 = localabqd.a.k;
+            String str2 = localabqd.a.jdField_a_of_type_JavaLangString;
             if (str1.equals(""))
             {
-              zyw.a("KingKongPatchManager", "Patch is ready -->" + str2);
-              localArrayList2.add(localzzg);
+              abpt.a("KingKongPatchManager", "Patch is ready -->" + str2);
+              localArrayList2.add(localabqd);
               ((ArrayList)localObject1).add(str2);
             }
             else if (((ArrayList)localObject1).contains(str1))
             {
-              zyw.a("KingKongPatchManager", "Patch is ready -->" + str2 + ", previous patch is " + str1);
-              localArrayList2.add(localzzg);
+              abpt.a("KingKongPatchManager", "Patch is ready -->" + str2 + ", previous patch is " + str1);
+              localArrayList2.add(localabqd);
               ((ArrayList)localObject1).add(str2);
             }
           }
@@ -82,19 +82,19 @@ public class PatchManager
     localObject1 = ((ArrayList)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      zzg localzzg = (zzg)((Iterator)localObject1).next();
-      Object localObject2 = localzzg.a;
-      String str = ((zzh)localObject2).k;
-      localObject2 = ((zzh)localObject2).jdField_a_of_type_JavaLangString;
+      abqd localabqd = (abqd)((Iterator)localObject1).next();
+      Object localObject2 = localabqd.a;
+      String str = ((abqe)localObject2).k;
+      localObject2 = ((abqe)localObject2).jdField_a_of_type_JavaLangString;
       if ((!str.equals("")) && ((!localHashMap.containsKey(str)) || (((Integer)localHashMap.get(str)).intValue() != 0)))
       {
-        zyw.a("KingKongPatchManager", "Previouse patch " + str + " of " + (String)localObject2 + " failed");
+        abpt.a("KingKongPatchManager", "Previouse patch " + str + " of " + (String)localObject2 + " failed");
       }
       else
       {
-        int i = localzzg.a(jdField_a_of_type_AndroidContentContext);
+        int i = localabqd.a(jdField_a_of_type_AndroidContentContext);
         localHashMap.put(localObject2, Integer.valueOf(i));
-        Common.a(i, localzzg.c, localzzg.e, localzzg.d, "");
+        Common.a(i, localabqd.c, localabqd.e, localabqd.d, "");
       }
     }
   }
@@ -110,7 +110,7 @@ public class PatchManager
       if (!((File)localObject).exists())
       {
         if (((File)localObject).mkdirs()) {
-          zyw.a("KingKongPatchManager", "Create patch download folder : " + jdField_a_of_type_JavaLangString + " OK");
+          abpt.a("KingKongPatchManager", "Create patch download folder : " + jdField_a_of_type_JavaLangString + " OK");
         }
       }
       else
@@ -121,42 +121,42 @@ public class PatchManager
           if (!((File)localObject).mkdirs()) {
             break label212;
           }
-          zyw.a("KingKongPatchManager", "Create patch folder : " + b + " OK");
+          abpt.a("KingKongPatchManager", "Create patch folder : " + b + " OK");
         }
         localObject = new File(jdField_a_of_type_JavaLangString + c + "KingkongPatch.apk");
         if ((!((File)localObject).exists()) || (((File)localObject).delete())) {
           break label245;
         }
-        zyw.a("KingKongPatchManager", "Delete asset file failed");
+        abpt.a("KingKongPatchManager", "Delete asset file failed");
         return false;
       }
-      zyw.a("KingKongPatchManager", "Create patch download folder : " + jdField_a_of_type_JavaLangString + " failed");
+      abpt.a("KingKongPatchManager", "Create patch download folder : " + jdField_a_of_type_JavaLangString + " failed");
       return false;
       label212:
-      zyw.a("KingKongPatchManager", "Create patch folder : " + b + " failed");
+      abpt.a("KingKongPatchManager", "Create patch folder : " + b + " failed");
       return false;
       label245:
       if (!((File)localObject).exists())
       {
-        if (!zzj.a(jdField_a_of_type_AndroidContentContext, "KingkongPatch.apk", ((File)localObject).getAbsolutePath()))
+        if (!abqg.a(jdField_a_of_type_AndroidContentContext, "KingkongPatch.apk", ((File)localObject).getAbsolutePath()))
         {
-          zyw.a("KingKongPatchManager", "Copy KingkongPatch.apk from asset failed");
+          abpt.a("KingKongPatchManager", "Copy KingkongPatch.apk from asset failed");
           return false;
         }
-        zyw.a("KingKongPatchManager", "Copy KingkongPatch.apk from asset OK");
+        abpt.a("KingKongPatchManager", "Copy KingkongPatch.apk from asset OK");
       }
       localObject = jdField_a_of_type_JavaLangString + c + "KingkongPatch.apk";
-      if (!zzj.a(b + c + "libkkfixerdriver.so", (String)localObject, "libkkfixerdriver.so", false)) {
+      if (!abqg.a(b + c + "libkkfixerdriver.so", (String)localObject, "libkkfixerdriver.so", false)) {
         return false;
       }
       localObject = jdField_a_of_type_JavaLangString + c + "KingkongPatch.apk";
-      if (!zzj.a(b + c + "libPatchDispatcher.so", (String)localObject, "libPatchDispatcher.so", false)) {
+      if (!abqg.a(b + c + "libPatchDispatcher.so", (String)localObject, "libPatchDispatcher.so", false)) {
         return false;
       }
       localObject = new File(jdField_a_of_type_JavaLangString + c + "KingkongPatch.apk");
       if ((((File)localObject).exists()) && (!((File)localObject).delete()))
       {
-        zyw.a("KingKongPatchManager", "Delete asset file failed");
+        abpt.a("KingKongPatchManager", "Delete asset file failed");
         return false;
       }
       Common.a(1);
@@ -206,17 +206,17 @@ public class PatchManager
     {
       System.load(str2);
       System.load(str1);
-      zyw.a("KingKongPatchManager", "Load library " + str1 + " OK");
+      abpt.a("KingKongPatchManager", "Load library " + str1 + " OK");
       return true;
     }
     catch (Exception localException)
     {
-      zyw.a("KingKongPatchManager", "Load library " + str1 + " failed : " + localException);
+      abpt.a("KingKongPatchManager", "Load library " + str1 + " failed : " + localException);
       return false;
     }
     catch (Throwable localThrowable)
     {
-      zyw.a("KingKongPatchManager", "Load library " + str1 + " failed : " + localThrowable);
+      abpt.a("KingKongPatchManager", "Load library " + str1 + " failed : " + localThrowable);
     }
     return false;
   }
@@ -237,7 +237,7 @@ public class PatchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.kingkong.PatchManager
  * JD-Core Version:    0.7.0.1
  */

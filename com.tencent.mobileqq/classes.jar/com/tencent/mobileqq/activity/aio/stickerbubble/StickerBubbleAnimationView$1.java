@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity.aio.stickerbubble;
 
-import aevn;
+import agss;
 import java.util.List;
 import java.util.Map;
 
 class StickerBubbleAnimationView$1
   implements Runnable
 {
-  StickerBubbleAnimationView$1(StickerBubbleAnimationView paramStickerBubbleAnimationView, aevn paramaevn) {}
+  StickerBubbleAnimationView$1(StickerBubbleAnimationView paramStickerBubbleAnimationView, agss paramagss) {}
   
   public void run()
   {
@@ -23,7 +23,7 @@ class StickerBubbleAnimationView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.liveroom.LiveRoomHelper;
-import cooperation.liveroom.LiveRoomProxyActivity;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class armu
-  extends WebViewPlugin
 {
-  public armu()
-  {
-    this.mPluginNameSpace = "gflivesdk";
-  }
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  public String b;
+  public String c;
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  private armu(armo paramarmo) {}
+  
+  public void a() {}
+  
+  public void a(Context paramContext)
   {
-    if ("openView".equals(paramString3)) {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, "openView");
-        }
-        paramString1 = new JSONObject(paramVarArgs[0]);
-        paramString2 = paramString1.optString("viewType");
-        paramJsBridgeListener = paramString1.optString("callback");
-        if ("activity".equals(paramString2))
-        {
-          paramString1 = paramString1.optString("url");
-          paramString2 = this.mRuntime.a();
-          if ((paramString2 != null) && (paramString1 != null) && (!paramString1.isEmpty()))
-          {
-            LiveRoomProxyActivity.open(paramString2, paramString1, "BusinessPlugin openView");
-            callJs(paramJsBridgeListener, new String[] { "{\"result\":0}" });
-          }
-        }
-        return true;
-      }
-      catch (JSONException paramJsBridgeListener)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-        }
-      }
-    }
-    for (;;)
+    paramContext.getSharedPreferences("FMSETTING_59", 3).edit().putString("DefaultRootPath", this.b).commit();
+    paramContext = armo.a(this.jdField_a_of_type_Armo, this.b + this.c);
+    Object localObject = armo.b(this.jdField_a_of_type_Armo, this.b + this.c);
+    String str = armo.c(this.jdField_a_of_type_Armo, this.b + this.c);
+    armo.a(this.jdField_a_of_type_Armo, paramContext);
+    armo.a(this.jdField_a_of_type_Armo, str);
+    armo.a(this.jdField_a_of_type_Armo, (String)localObject);
+    paramContext = this.jdField_a_of_type_Armo.a.keySet().iterator();
+    while (paramContext.hasNext())
     {
-      return false;
-      if ("checkSDKInstalled".equals(paramString3))
+      localObject = (String)paramContext.next();
+      localObject = (armu)this.jdField_a_of_type_Armo.a.get(localObject);
+      if ((((armu)localObject).jdField_a_of_type_Boolean) && (localObject != this))
       {
-        try
-        {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-          if ((!LiveRoomHelper.getPluginInstalledInTool()) || (TextUtils.isEmpty(LiveRoomHelper.getPluginVersionInTool()))) {
-            break;
-          }
-          callJs(paramJsBridgeListener, new String[] { "{\"result\":0,\"version\":\"" + LiveRoomHelper.getPluginVersionInTool() + "\"}" });
-          return true;
-        }
-        catch (JSONException paramJsBridgeListener) {}
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
-        }
+        armo.a(2, "getDefaultStorage[" + ((armu)localObject).b + "]");
+        ((armu)localObject).jdField_a_of_type_Boolean = false;
       }
     }
-    PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), new armv(this, paramJsBridgeListener));
-    return true;
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     armu
  * JD-Core Version:    0.7.0.1
  */

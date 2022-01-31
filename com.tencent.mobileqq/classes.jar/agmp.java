@@ -1,24 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.photo.PhotoCropActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 
 class agmp
-  implements bfph
+  extends BroadcastReceiver
 {
-  agmp(agmo paramagmo, bfpc parambfpc) {}
+  agmp(agmb paramagmb) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramInt != this.jdField_a_of_type_Agmo.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_Agmo.a(paramInt);
-      this.jdField_a_of_type_Agmo.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoCropActivity.a();
+    if (this.a.jdField_a_of_type_Autg != null) {
+      this.a.jdField_a_of_type_Autg.a(paramContext);
     }
-    this.jdField_a_of_type_Bfpc.dismiss();
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agmp
  * JD-Core Version:    0.7.0.1
  */

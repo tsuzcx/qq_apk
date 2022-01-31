@@ -23,11 +23,13 @@ public class MiniAppObserver
   public static final int MINI_APP_GET_APPINFO_BY_LINK = 1003;
   public static final int MINI_APP_GET_APPINFO_BY_LINK_FOR_SDK = 1056;
   public static final int MINI_APP_GET_AUTH_LIST = 1043;
+  public static final int MINI_APP_GET_CONETNT_ACCELERATE = 1070;
   public static final int MINI_APP_GET_EXT_CONFIG_DETAIL = 1040;
   static final int MINI_APP_GET_FORM_ID = 1020;
   public static final int MINI_APP_GET_FRIEND_CLOUD_STORAGE = 1019;
   public static final int MINI_APP_GET_GROUP_CLOUD_STORAGE = 1018;
   public static final int MINI_APP_GET_GROUP_SHARE_INFO = 1033;
+  public static final int MINI_APP_GET_HOT_SEARCH_APPS = 1071;
   public static final int MINI_APP_GET_KUOLIE_APPLIST = 1044;
   public static final int MINI_APP_GET_LOGIN_CODE = 1000;
   public static final int MINI_APP_GET_MINE_STORY_FEED_LIST = 1031;
@@ -60,6 +62,8 @@ public class MiniAppObserver
   public static final int MINI_APP_OPEN_CHANNEL = 1054;
   public static final int MINI_APP_REMOVE_USER_CLOUD_STORAGE = 1017;
   public static final int MINI_APP_REPORT_LOG_FILE_URL = 1035;
+  public static final int MINI_APP_REPORT_SHARE = 1063;
+  public static final int MINI_APP_SEARCH_APP = 1072;
   public static final int MINI_APP_SEND_ARK_MSG = 1061;
   public static final int MINI_APP_SET_AUTH = 1042;
   public static final int MINI_APP_SET_AVATAR = 1034;
@@ -257,6 +261,18 @@ public class MiniAppObserver
     }
     if (1062 == paramInt) {
       return "MINI_APP_GET_USER_GROUP_INFO";
+    }
+    if (1063 == paramInt) {
+      return "MINI_APP_REPORT_SHARE";
+    }
+    if (1070 == paramInt) {
+      return "MINI_APP_GET_CONETNT_ACCELERATE";
+    }
+    if (1071 == paramInt) {
+      return "MINI_APP_GET_HOT_SEARCH_APPS";
+    }
+    if (1072 == paramInt) {
+      return "MINI_APP_SEARCH_APP";
     }
     return "default cmd";
   }
@@ -586,8 +602,28 @@ public class MiniAppObserver
         onSendArkMsg(i, paramBoolean, paramBundle);
         return;
       }
-    } while (paramInt != 1062);
-    onGetUserGroupInfo(i, paramBoolean, paramBundle);
+      if (paramInt == 1062)
+      {
+        onGetUserGroupInfo(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1063)
+      {
+        onReportShare(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1070)
+      {
+        onGetContentAccelerateServlet(i, paramBoolean, paramBundle);
+        return;
+      }
+      if (paramInt == 1071)
+      {
+        onGetHotSearchApps(i, paramBoolean, paramBundle);
+        return;
+      }
+    } while (paramInt != 1072);
+    onSearchApp(i, paramBoolean, paramBundle);
   }
   
   protected void onBatchGetContact(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -618,6 +654,8 @@ public class MiniAppObserver
   
   protected void onGetAuthList(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
+  protected void onGetContentAccelerateServlet(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onGetExtConfigDetail(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetFormId(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -627,6 +665,8 @@ public class MiniAppObserver
   protected void onGetGroupCloudStorage(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetGroupShareInfo(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onGetHotSearchApps(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onGetKuolieAppListServlet(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
@@ -697,6 +737,10 @@ public class MiniAppObserver
   
   protected void onReportLogFileUrlServlet(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
+  protected void onReportShare(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onSearchApp(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  
   protected void onSendArkMsg(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
   protected void onSetAuth(int paramInt, boolean paramBoolean, Bundle paramBundle) {}
@@ -723,7 +767,7 @@ public class MiniAppObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenView android:id="@id/hxm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/b_7" android:background="@drawable/b4k" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="60.0dip">
-        <FrameLayout android:id="@id/evx" android:layout_width="fill_parent" android:layout_height="36.0dip">
-            <ImageView android:layout_gravity="center" android:id="@id/g0_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hzk" />
-        </FrameLayout>
-    </LinearLayout>
-</com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenView>
+    <Button android:id="@id/ex1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="appear" />
+    <com.tencent.mobileqq.widget.qus.QUSDragFloatingScreenView android:id="@id/hxm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

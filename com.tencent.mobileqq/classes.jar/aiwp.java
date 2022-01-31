@@ -1,26 +1,23 @@
-public class aiwp
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.emoj.EmojiGifHelper.OnConvertListener;
+import eipc.EIPCResult;
+
+class aiwp
+  implements EmojiGifHelper.OnConvertListener
 {
-  public float a;
-  public float b;
-  public float c;
+  aiwp(aiwk paramaiwk, int paramInt) {}
   
-  public aiwp(float paramFloat1, float paramFloat2, float paramFloat3)
+  public void onConvertResult(boolean paramBoolean, String paramString)
   {
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ApolloRoleInfo:").append("scale:").append(this.a).append(",xPos:").append(this.b).append(",yPos:").append(this.c);
-    return localStringBuilder.toString();
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("res", paramBoolean);
+    localBundle.putString("path", paramString);
+    this.jdField_a_of_type_Aiwk.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwp
  * JD-Core Version:    0.7.0.1
  */

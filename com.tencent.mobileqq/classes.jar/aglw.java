@@ -1,26 +1,55 @@
-final class aglw
-  extends aglv
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+class aglw
+  extends asiw
 {
-  public boolean a(String paramString)
-  {
-    if (!super.a(paramString)) {}
-    String[] arrayOfString;
-    do
-    {
-      return false;
-      arrayOfString = agmm.a(paramString);
-    } while ((arrayOfString != null) && ((("image".equals(arrayOfString[0])) && (agmm.a(arrayOfString[1]))) || (agmm.b(paramString))));
-    return true;
-  }
+  aglw(aglv paramaglv) {}
   
-  public boolean d()
+  protected void a(Object paramObject)
   {
-    return true;
+    QLog.i(aglv.g, 1, "[onGameUsrInfoChangedNotify]");
+    for (;;)
+    {
+      asik localasik;
+      try
+      {
+        if ((paramObject instanceof ArrayList))
+        {
+          paramObject = ((ArrayList)paramObject).iterator();
+          if (paramObject.hasNext())
+          {
+            localasik = (asik)paramObject.next();
+            if ((TextUtils.isEmpty(localasik.b)) || (!localasik.b.equals(this.a.a.a()))) {
+              break label115;
+            }
+            aglv.a(this.a, localasik);
+            aglv.a(this.a, localasik);
+            QLog.i(aglv.g, 1, "update friend info.");
+            continue;
+          }
+        }
+        return;
+      }
+      catch (Throwable paramObject)
+      {
+        QLog.e(aglv.g, 1, paramObject.getMessage());
+      }
+      label115:
+      if ((!TextUtils.isEmpty(localasik.b)) && (localasik.b.equals(this.a.a.b())))
+      {
+        aglv.b(this.a, localasik);
+        QLog.i(aglv.g, 1, "update my info.");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aglw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import feedcloud.FeedCloudRead.StGetFeedListRsp;
 
-public class tth
-  extends ssh
+class tth
+  implements yfu<Object>
 {
-  public StoryVideoItem a;
-  public String a;
-  public String b;
+  tth(ttc paramttc) {}
   
-  public tth(ErrorMessage paramErrorMessage, String paramString)
+  public void a(Object... paramVarArgs)
   {
-    this.a = paramErrorMessage;
-    this.b = paramString;
+    if ((paramVarArgs != null) && (paramVarArgs.length == 4)) {
+      ttc.a(this.a).a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), (String)paramVarArgs[2], (FeedCloudRead.StGetFeedListRsp)paramVarArgs[3], false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tth
  * JD-Core Version:    0.7.0.1
  */

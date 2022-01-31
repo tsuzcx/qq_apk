@@ -1,28 +1,21 @@
-import android.content.Context;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ChannelClassificationListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
 
 public class oum
-  extends ReadInjoyXRecyclerView
+  extends AnimatorListenerAdapter
 {
-  public oum(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public oum(DailyTipsFoldUtils.1 param1, View paramView) {}
   
-  public void a(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super.a(paramViewHolder, paramInt);
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView != null)) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewChannelClassificationListView.setData(this.a.a(), this.a.jdField_a_of_type_JavaUtilArrayList);
-    }
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oum
  * JD-Core Version:    0.7.0.1
  */

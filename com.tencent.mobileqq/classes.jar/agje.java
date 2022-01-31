@@ -1,23 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.ContactListView;
+import android.os.Handler;
 
-public class agje
-  extends ajxj
+class agje
+  extends alsi
 {
-  public agje(ContactListView paramContactListView) {}
+  agje(agiy paramagiy) {}
   
-  protected void onAddFriend(String paramString) {}
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  protected void f(boolean paramBoolean)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
-      this.a.j();
-    }
+    super.f(paramBoolean);
+    this.a.a.sendEmptyMessage(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agje
  * JD-Core Version:    0.7.0.1
  */

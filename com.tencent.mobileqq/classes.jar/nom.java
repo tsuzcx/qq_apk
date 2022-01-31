@@ -1,371 +1,73 @@
-import android.content.SharedPreferences;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountSearchRecommendManager.1;
-import com.tencent.biz.pubaccount.PublicAccountSearchRecommendManager.2;
-import com.tencent.mobileqq.ac.ArticleComment.GetRecommendPubAccountRequest;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class nom
+  extends noe
 {
-  private static nom jdField_a_of_type_Nom;
-  private final int jdField_a_of_type_Int = 8;
-  private final long jdField_a_of_type_Long = 86400000L;
-  private final String jdField_a_of_type_JavaLangString = nom.class.getSimpleName();
-  private ArrayList<noq> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private HashMap<String, nop> jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean;
-  private final long jdField_b_of_type_Long = 3600000L;
-  private final String jdField_b_of_type_JavaLangString = "recommend_title";
-  private ArrayList<nop> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean;
-  private final long jdField_c_of_type_Long = 2592000000L;
-  private final String jdField_c_of_type_JavaLangString = "recommend_cache_time";
-  private long jdField_d_of_type_Long;
-  private final String jdField_d_of_type_JavaLangString = "recommend_fetch_time";
-  private long jdField_e_of_type_Long;
-  private final String jdField_e_of_type_JavaLangString = "recommend_content_list";
-  private final String f = "recommend_is_forbidden";
-  private final String g = "search_history_list";
-  private String h;
+  public long a;
+  public non a;
+  public int d;
+  public String d;
+  public String e;
+  public String f;
   
-  private ArrayList<noq> a()
+  public static nom a(JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 8) {
-      return (ArrayList)this.jdField_a_of_type_JavaUtilArrayList.clone();
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < 8)
-    {
-      localArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
-      i += 1;
-    }
-    return (ArrayList)localArrayList.clone();
-  }
-  
-  private ArrayList<noq> a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = new ArrayList();
-    Iterator localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      nop localnop = (nop)localIterator.next();
-      paramQQAppInterface.add(new noq(this, localnop.jdField_a_of_type_JavaLangString, localnop.jdField_b_of_type_JavaLangString, localnop.jdField_a_of_type_Boolean));
-    }
-    return paramQQAppInterface;
-  }
-  
-  public static nom a()
-  {
-    if (jdField_a_of_type_Nom == null) {}
-    try
-    {
-      jdField_a_of_type_Nom = new nom();
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_Nom.jdField_a_of_type_JavaLangString, 2, "newInstance!");
-      }
-      return jdField_a_of_type_Nom;
-    }
-    finally {}
-  }
-  
-  private void a(QQAppInterface paramQQAppInterface, noo paramnoo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getRecommendListFromLocal->mRecommendIsForbidden:" + this.jdField_b_of_type_Boolean);
-    }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      paramnoo.a(new ArrayList(), null, true);
-      return;
-    }
-    if (b(paramQQAppInterface))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getRecommendListFromLocal->使用推荐内容缓存!");
-      }
-      paramnoo.a(a(), this.h, true);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getRecommendListFromLocal->使用搜索历史!");
-    }
-    paramnoo.a(a(paramQQAppInterface), null, false);
-  }
-  
-  private boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      a(paramQQAppInterface);
-    }
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    boolean bool = false;
-    if (l - this.jdField_e_of_type_Long > 3600000L) {
-      bool = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkShouldFetchData->now:" + l + ", fetchTime:" + this.jdField_e_of_type_Long + ", result:" + bool);
-    }
-    return bool;
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("sp_public_account_with_cuin_" + paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.getString("public_account_search_recommend", null);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "loadRecommendListFromLocal->json:" + paramQQAppInterface);
-      }
-      if (!TextUtils.isEmpty(paramQQAppInterface)) {
-        try
-        {
-          paramQQAppInterface = sgg.a(paramQQAppInterface);
-          if (paramQQAppInterface != null)
-          {
-            this.h = paramQQAppInterface.getString("recommend_title");
-            this.jdField_d_of_type_Long = paramQQAppInterface.getLong("recommend_cache_time");
-            this.jdField_e_of_type_Long = paramQQAppInterface.getLong("recommend_fetch_time");
-            this.jdField_b_of_type_Boolean = paramQQAppInterface.getBoolean("recommend_is_forbidden");
-            paramQQAppInterface = paramQQAppInterface.getJSONArray("recommend_content_list");
-            this.jdField_a_of_type_JavaUtilArrayList.clear();
-            int i = 0;
-            while (i < paramQQAppInterface.length())
-            {
-              Object localObject = (JSONObject)paramQQAppInterface.get(i);
-              localObject = new noq(this, ((JSONObject)localObject).optString("uin"), ((JSONObject)localObject).optString("name"), ((JSONObject)localObject).optBoolean("isPA", true));
-              this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
-              i += 1;
-            }
-          }
-          return;
-        }
-        catch (JSONException paramQQAppInterface)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "loadRecommendListFromLocal->error:" + paramQQAppInterface);
-          }
-        }
-      }
-    }
-  }
-  
-  private void b(QQAppInterface paramQQAppInterface, noo paramnoo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "sendGetPublicAccountSearchRecommendRequest->begin!");
-    }
-    NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication().getApplicationContext(), nor.class);
-    localNewIntent.putExtra("cmd", "PubAccountArticleCenter.GetRecommendPubAccount");
-    ArticleComment.GetRecommendPubAccountRequest localGetRecommendPubAccountRequest = new ArticleComment.GetRecommendPubAccountRequest();
-    localGetRecommendPubAccountRequest.version.set(sgg.a());
-    localGetRecommendPubAccountRequest.cuin.set(Long.parseLong(paramQQAppInterface.getCurrentAccountUin()));
-    localGetRecommendPubAccountRequest.count.set(8);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "sendGetPublicAccountSearchRecommendRequset->versionInfo:" + localGetRecommendPubAccountRequest.version.get() + ", cuin:" + localGetRecommendPubAccountRequest.cuin.get() + ", count:" + localGetRecommendPubAccountRequest.count.get());
-    }
-    localNewIntent.putExtra("data", localGetRecommendPubAccountRequest.toByteArray());
-    localNewIntent.setObserver(new non(this, localNewIntent, paramQQAppInterface, paramnoo));
-    this.jdField_e_of_type_Long = NetConnInfoCenter.getServerTimeMillis();
-    paramQQAppInterface.startServlet(localNewIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "sendGetPublicAccountSearchRecommendRequest->send request, time:" + this.jdField_e_of_type_Long);
-    }
-  }
-  
-  private boolean b(QQAppInterface paramQQAppInterface)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      a(paramQQAppInterface);
-    }
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (l - this.jdField_d_of_type_Long < 86400000L)
-    {
-      bool1 = bool2;
-      if (i > 0) {
-        bool1 = true;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "checkRecommendCacheValid->now:" + l + ", cacheTime:" + this.jdField_d_of_type_Long + ", size:" + i + ", result:" + bool1);
-    }
-    return bool1;
-  }
-  
-  private void c(QQAppInterface paramQQAppInterface)
-  {
-    ThreadManager.executeOnFileThread(new PublicAccountSearchRecommendManager.1(this, paramQQAppInterface));
-  }
-  
-  private void d(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = paramQQAppInterface.getApplication().getSharedPreferences("sp_public_account_with_cuin_" + paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.getString("public_account_search_history", null);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "loadHistoryListFromLocal->json:" + paramQQAppInterface);
-      }
-      if (!TextUtils.isEmpty(paramQQAppInterface)) {
-        try
-        {
-          paramQQAppInterface = sgg.a(paramQQAppInterface);
-          if (paramQQAppInterface != null)
-          {
-            paramQQAppInterface = paramQQAppInterface.getJSONArray("search_history_list");
-            this.jdField_b_of_type_JavaUtilArrayList.clear();
-            this.jdField_a_of_type_JavaUtilHashMap.clear();
-            int i = 0;
-            while (i < paramQQAppInterface.length())
-            {
-              Object localObject = (JSONObject)paramQQAppInterface.get(i);
-              localObject = new nop(this, ((JSONObject)localObject).optString("uin"), ((JSONObject)localObject).optString("name"), ((JSONObject)localObject).optLong("time"), ((JSONObject)localObject).optBoolean("isPA", true));
-              this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
-              this.jdField_a_of_type_JavaUtilHashMap.put(((nop)localObject).jdField_a_of_type_JavaLangString, localObject);
-              i += 1;
-            }
-          }
-          return;
-        }
-        catch (JSONException paramQQAppInterface)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "loadHistoryListFromLocal->error:" + paramQQAppInterface);
-          }
-        }
-      }
-    }
-  }
-  
-  private void e(QQAppInterface paramQQAppInterface)
-  {
-    ThreadManager.executeOnFileThread(new PublicAccountSearchRecommendManager.2(this, paramQQAppInterface));
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.h = "";
-    this.jdField_d_of_type_Long = 0L;
-    this.jdField_e_of_type_Long = 0L;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "resetManager!");
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface)
-  {
-    if ((!this.jdField_a_of_type_Boolean) && (paramQQAppInterface != null))
-    {
-      b(paramQQAppInterface);
-      d(paramQQAppInterface);
-      this.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "initFromLocalData!");
-      }
-    }
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "updatePublicAccountSearchHistoryItem->uin:" + paramString1 + ", name:" + paramString2 + ", isPublicAccount:" + paramBoolean + ", time:" + l);
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
-    {
-      paramString1 = (nop)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-      this.jdField_b_of_type_JavaUtilArrayList.remove(paramString1);
-      this.jdField_b_of_type_JavaUtilArrayList.add(0, paramString1);
-      paramString1.jdField_a_of_type_Long = l;
-      paramString1.jdField_a_of_type_Boolean = paramBoolean;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "updatePublicAccountSearchHistoryItem update!");
-      }
-    }
+    if (paramJSONObject == null) {}
+    nom localnom;
+    Object localObject;
     for (;;)
     {
-      e(paramQQAppInterface);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      paramQQAppInterface = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-      while (paramQQAppInterface.hasNext())
+      return null;
+      localnom = new nom();
+      try
       {
-        paramString1 = (nop)paramQQAppInterface.next();
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, paramString1.toString());
-      }
-      break;
-      paramString2 = new nop(this, paramString1, paramString2, l, paramBoolean);
-      this.jdField_b_of_type_JavaUtilArrayList.add(0, paramString2);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, paramString2);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "updatePublicAccountSearchHistoryItem insert!");
-      }
-      int i = this.jdField_b_of_type_JavaUtilArrayList.size();
-      if (i > 8)
-      {
-        paramString1 = (nop)this.jdField_b_of_type_JavaUtilArrayList.get(i - 1);
-        this.jdField_b_of_type_JavaUtilArrayList.remove(paramString1);
-        this.jdField_a_of_type_JavaUtilHashMap.remove(paramString1.jdField_a_of_type_JavaLangString);
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "updatePublicAccountSearchHistoryItem remove lastItem!");
+        localObject = paramJSONObject.optJSONObject("video");
+        if (localObject != null)
+        {
+          localnom.e = ((JSONObject)localObject).optString("coverUrl");
+          localnom.jdField_d_of_type_JavaLangString = ((JSONObject)localObject).optString("videoUrl");
+          if (TextUtils.isEmpty(localnom.jdField_d_of_type_JavaLangString))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("AdModuleVideo", 2, "video url is null");
+            return null;
+          }
         }
       }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return null;
+      }
     }
+    localnom.jdField_a_of_type_Long = paramJSONObject.optLong("duration");
+    localnom.jdField_d_of_type_Int = paramJSONObject.optInt("mixType");
+    localnom.f = paramJSONObject.optString("linkUrl");
+    paramJSONObject = paramJSONObject.optString("appInfo");
+    if (!TextUtils.isEmpty(paramJSONObject))
+    {
+      paramJSONObject = new JSONObject(paramJSONObject);
+      localObject = new non();
+      ((non)localObject).a = paramJSONObject.optString("appid");
+      ((non)localObject).b = paramJSONObject.optString("scheme");
+      ((non)localObject).c = paramJSONObject.optString("packageName");
+      ((non)localObject).jdField_d_of_type_JavaLangString = paramJSONObject.optString("androidDownloadUrl");
+      ((non)localObject).e = paramJSONObject.optString("appName");
+      localnom.jdField_a_of_type_Non = ((non)localObject);
+    }
+    return localnom;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean, noo paramnoo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getRecommendList->isFromCreate:" + paramBoolean);
-    }
-    if (!paramBoolean)
-    {
-      paramnoo.a(a(paramQQAppInterface), null, false);
-      return;
-    }
-    if (a(paramQQAppInterface))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getRecommendList->sendGetPublicAccountSearchRecommendRequest!");
-      }
-      b(paramQQAppInterface, paramnoo);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "getRecommendList->getRecommendListFromLocal!");
-    }
-    a(paramQQAppInterface, paramnoo);
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nom
  * JD-Core Version:    0.7.0.1
  */

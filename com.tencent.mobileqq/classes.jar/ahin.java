@@ -1,60 +1,36 @@
-import VACDReport.ReportReq;
-import VACDReport.ReportRsp;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ahin
-  extends MSFServlet
+  extends Handler
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
-  {
-    if ((paramFromServiceMsg == null) || (paramIntent == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("VACDReport", 2, "onReceive request or response is null");
-      }
-    }
-    while (!"QQWalletPayReportSvc.vacdReportProxy".equals(paramFromServiceMsg.getServiceCmd())) {
-      return;
-    }
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (ReportRsp localReportRsp = (ReportRsp)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "rsp", new ReportRsp());; localReportRsp = null)
-    {
-      Bundle localBundle = new Bundle();
-      if (localReportRsp != null) {
-        localBundle.putSerializable("rsp", localReportRsp);
-      }
-      localBundle.putSerializable("req", paramIntent.getSerializableExtra("req"));
-      notifyObserver(paramIntent, 1, paramFromServiceMsg.isSuccess(), localBundle, null);
-      return;
-    }
-  }
+  public ahin(SystemMsgListView paramSystemMsgListView) {}
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public void handleMessage(Message paramMessage)
   {
-    switch (paramIntent.getExtras().getInt("cmd_type"))
+    switch (paramMessage.what)
     {
     default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (SystemMsgListView.a(this.a) == null);
+      this.a.i();
+      SystemMsgListView.a(this.a).notifyDataSetChanged();
       return;
     }
-    try
-    {
-      paramPacket.addRequestPacket("req", (ReportReq)paramIntent.getSerializableExtra("req"));
-      paramPacket.setSSOCommand("QQWalletPayReportSvc.vacdReportProxy");
-      paramPacket.setFuncName("vacdReportProxy");
-      paramPacket.setServantName("MQQ.VACDReportServer.VACDReportObj");
-      paramPacket.setTimeout(15000L);
-      return;
-    }
-    catch (OutOfMemoryError paramIntent) {}
+    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131720527);
+    QQToast.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahin
  * JD-Core Version:    0.7.0.1
  */

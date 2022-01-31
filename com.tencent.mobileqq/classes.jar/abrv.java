@@ -1,52 +1,104 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
+import android.support.annotation.NonNull;
 
 public class abrv
-  implements GestureDetector.OnDoubleTapListener, GestureDetector.OnGestureListener
 {
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  protected int a;
+  protected boolean a;
+  @NonNull
+  protected byte[] a;
+  protected int b;
+  protected boolean b;
+  protected int c;
+  protected boolean c;
+  
+  public abrv()
   {
-    return false;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = 1536;
+    this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_b_of_type_Int];
   }
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  protected long a()
   {
-    return false;
+    boolean bool = false;
+    long l = 0L;
+    int i = 0;
+    while ((i == 0) && (b())) {
+      if (Character.isDigit(this.jdField_a_of_type_Int))
+      {
+        l = l * 10L + (this.jdField_a_of_type_Int - 48);
+        bool = true;
+      }
+      else
+      {
+        i = 1;
+      }
+    }
+    a(bool);
+    return l;
   }
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  protected void a(char paramChar)
   {
-    return false;
+    boolean bool = false;
+    while ((!bool) && (b())) {
+      if (this.jdField_a_of_type_Int == paramChar) {
+        bool = true;
+      }
+    }
+    a(bool);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  protected boolean a()
   {
-    return false;
+    b();
+    this.jdField_c_of_type_Boolean = true;
+    return !this.jdField_b_of_type_Boolean;
   }
   
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  protected boolean a(boolean paramBoolean)
   {
-    return false;
+    this.jdField_a_of_type_Boolean &= paramBoolean;
+    return this.jdField_a_of_type_Boolean;
   }
   
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  protected boolean b()
   {
-    return false;
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
+    if (this.jdField_c_of_type_Boolean)
+    {
+      this.jdField_c_of_type_Boolean = false;
+      return !this.jdField_b_of_type_Boolean;
+    }
+    if (this.jdField_c_of_type_Int >= this.jdField_b_of_type_Int) {
+      return false;
+    }
+    int i;
+    if (this.jdField_a_of_type_ArrayOfByte[this.jdField_c_of_type_Int] != -1)
+    {
+      i = this.jdField_a_of_type_ArrayOfByte[this.jdField_c_of_type_Int] & 0xFF;
+      label63:
+      this.jdField_a_of_type_Int = i;
+      this.jdField_c_of_type_Int += 1;
+      if (this.jdField_a_of_type_Int != -1) {
+        break label107;
+      }
+    }
+    label107:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_b_of_type_Boolean = bool;
+      if (!this.jdField_b_of_type_Boolean) {
+        break;
+      }
+      return false;
+      i = -1;
+      break label63;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abrv
  * JD-Core Version:    0.7.0.1
  */

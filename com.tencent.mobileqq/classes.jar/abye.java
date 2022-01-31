@@ -1,26 +1,61 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.graphics.drawable.Animatable;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.widget.QQToast;
+import java.io.File;
+import java.net.MalformedURLException;
 
 public class abye
-  implements DialogInterface.OnKeyListener
+  extends Handler
 {
-  public abye(RegisterActivity paramRegisterActivity) {}
+  public abye(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
+    switch (paramMessage.what)
     {
-      RegisterActivity.b(this.a);
-      return true;
     }
-    return false;
+    for (;;)
+    {
+      return;
+      if ((this.a.isFinishing()) || (AddFriendVerifyActivity.a(this.a) == null)) {
+        continue;
+      }
+      AddFriendVerifyActivity.a(this.a).setVisibility(0);
+      ((Animatable)AddFriendVerifyActivity.a(this.a).getDrawable()).start();
+      return;
+      if (this.a.isFinishing()) {
+        continue;
+      }
+      if (!TextUtils.isEmpty(AddFriendVerifyActivity.c(this.a))) {}
+      try
+      {
+        paramMessage = new File(AddFriendVerifyActivity.d(this.a)).toURL();
+        AddFriendVerifyActivity.a(this.a).setImageDrawable(URLDrawable.getDrawable(paramMessage, 100, 100));
+        label142:
+        if (AddFriendVerifyActivity.a(this.a) == null) {
+          continue;
+        }
+        AddFriendVerifyActivity.a(this.a).setVisibility(8);
+        return;
+        QQToast.a(this.a.getApplicationContext(), 1, 2131721234, 0).b(this.a.getTitleBarHeight());
+        return;
+      }
+      catch (MalformedURLException paramMessage)
+      {
+        break label142;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abye
  * JD-Core Version:    0.7.0.1
  */

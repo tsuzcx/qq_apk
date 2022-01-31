@@ -1,29 +1,22 @@
-import android.os.Parcel;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
 
-public abstract class ahqu
+public class ahqu
+  extends View.AccessibilityDelegate
 {
-  public abstract void a(Object paramObject, Parcel paramParcel, ArrayList<Field> paramArrayList);
+  public ahqu(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  abstract void a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
-  
-  public boolean a(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel)
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    a(paramObject, paramArrayList, paramParcel);
-    if (b(paramObject, paramArrayList, paramParcel)) {
-      b(paramObject, paramArrayList, paramParcel);
+    if (paramInt != 4096) {
+      super.sendAccessibilityEvent(paramView, paramInt);
     }
-    return false;
   }
-  
-  abstract void b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
-  
-  abstract boolean b(Object paramObject, ArrayList<Field> paramArrayList, Parcel paramParcel);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahqu
  * JD-Core Version:    0.7.0.1
  */

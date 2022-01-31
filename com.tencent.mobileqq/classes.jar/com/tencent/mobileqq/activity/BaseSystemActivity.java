@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.XListView;
@@ -35,16 +35,16 @@ public class BaseSystemActivity
     int j = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
     int k = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
     if (k == j) {
-      i = 2131720346;
+      i = 2131720882;
     }
     do
     {
       return i;
       if (k == j - 1) {
-        return 2131720930;
+        return 2131721491;
       }
     } while (k != j - 2);
-    return 2131690456;
+    return 2131690507;
   }
   
   public static String a(long paramLong, boolean paramBoolean)
@@ -55,7 +55,7 @@ public class BaseSystemActivity
     int k = a(paramLong);
     if (k != -1)
     {
-      if (k != 2131720346) {
+      if (k != 2131720882) {
         jdField_a_of_type_JavaLangStringBuffer.append(BaseApplication.getContext().getString(k));
       }
       i = 1;
@@ -63,7 +63,7 @@ public class BaseSystemActivity
     int m = jdField_a_of_type_JavaUtilCalendar.get(11);
     int j = jdField_a_of_type_JavaUtilCalendar.get(12);
     if (i != 0) {
-      if (k == 2131720346) {
+      if (k == 2131720882) {
         if (m == 24)
         {
           i = 24;
@@ -114,9 +114,9 @@ public class BaseSystemActivity
   
   private void c()
   {
-    super.setContentView(2131561127);
-    setContentBackgroundResource(2130838514);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131376779));
+    super.setContentView(2131561314);
+    setContentBackgroundResource(2130838591);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131377291));
     this.jdField_a_of_type_JavaLangString = a();
     if (this.jdField_a_of_type_JavaLangString == null) {
       throw new Exception("peerUin is null");
@@ -207,7 +207,7 @@ public class BaseSystemActivity
   {
     super.onCreateRightView();
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130849497, 0, 0, 0);
+    this.rightViewText.setCompoundDrawablesWithIntrinsicBounds(2130849937, 0, 0, 0);
     return this.rightViewText;
   }
   
@@ -244,7 +244,7 @@ public class BaseSystemActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.BaseSystemActivity
  * JD-Core Version:    0.7.0.1
  */

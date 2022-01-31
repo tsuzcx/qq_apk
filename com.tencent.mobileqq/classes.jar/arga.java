@@ -1,49 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 class arga
-  extends Handler
+  implements areh
 {
-  arga(arfy paramarfy, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  arga(arfz paramarfz, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString, List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    int i = paramMessage.arg1;
-    if ((i < arfy.b(this.a)) || (i > 95)) {
-      return;
-    }
-    arfy.b(this.a, i);
-    arfy.a(this.a, "STATE_Loading:" + i);
-    paramMessage = new JSONObject();
-    try
+    paramString = new ArrayList();
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      paramMessage.putOpt("state", Integer.valueOf(4));
-      paramMessage.putOpt("totalSize", Integer.valueOf(100));
-      paramMessage.putOpt("pro", Integer.valueOf(i));
-      this.a.callJs(this.a.a, new String[] { paramMessage.toString() });
-      paramMessage = Message.obtain();
-      paramMessage.arg1 = (i + 5);
-      sendMessageDelayed(paramMessage, 500L);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
+      paramString.addAll(paramList);
+      if (this.jdField_a_of_type_Arfz.jdField_a_of_type_Ardn != null) {
+        this.jdField_a_of_type_Arfz.jdField_a_of_type_Ardn.e();
       }
     }
+    this.jdField_a_of_type_Arfz.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arga
  * JD-Core Version:    0.7.0.1
  */

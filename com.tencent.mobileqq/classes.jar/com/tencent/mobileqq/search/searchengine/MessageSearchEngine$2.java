@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.searchengine;
 
-import akmt;
-import awuw;
+import amej;
+import aypz;
 
 public class MessageSearchEngine$2
   implements Runnable
 {
-  public MessageSearchEngine$2(awuw paramawuw) {}
+  public MessageSearchEngine$2(aypz paramaypz) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class MessageSearchEngine$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.MessageSearchEngine.2
  * JD-Core Version:    0.7.0.1
  */

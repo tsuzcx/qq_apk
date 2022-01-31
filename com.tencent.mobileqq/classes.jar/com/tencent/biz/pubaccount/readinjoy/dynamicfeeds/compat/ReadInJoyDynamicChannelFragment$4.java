@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import nol;
+import nrt;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,7 +62,7 @@ class ReadInJoyDynamicChannelFragment$4
             QLog.d("ReadInJoyDynamicChannelFragment", 2, "reportExposedData, json exception, ", localJSONException2);
           }
           QLog.d("ReadInJoyDynamicChannelFragment", 1, new Object[] { "actionName = ", ReadInJoyDynamicChannelFragment.a(this.this$0), "\n", "r5 = ", localJSONObject });
-          nol.a(null, "", ReadInJoyDynamicChannelFragment.b(this.this$0), ReadInJoyDynamicChannelFragment.c(this.this$0), 0, 0, "", "", "", localJSONObject.toString(), false);
+          nrt.a(null, "", ReadInJoyDynamicChannelFragment.b(this.this$0), ReadInJoyDynamicChannelFragment.c(this.this$0), 0, 0, "", "", "", localJSONObject.toString(), false);
         }
       }
     }
@@ -70,7 +70,7 @@ class ReadInJoyDynamicChannelFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment.4
  * JD-Core Version:    0.7.0.1
  */

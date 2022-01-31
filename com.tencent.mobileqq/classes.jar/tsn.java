@@ -1,13 +1,32 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import android.view.View;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
 
-public abstract interface tsn
+class tsn
+  implements bhqd
 {
-  public abstract boolean a(@NonNull StoryVideoItem paramStoryVideoItem);
+  tsn(tsl paramtsl, bhpy parambhpy) {}
+  
+  public void OnClick(View paramView, int paramInt)
+  {
+    if (!ytg.a("showMoreActionSheetClick")) {
+      switch (paramInt)
+      {
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bhpy.dismiss();
+      return;
+      tsl.d(this.jdField_a_of_type_Tsl);
+      continue;
+      PublicFragmentActivity.a(this.jdField_a_of_type_Tsl.a(), TempMsgSettingFragment.class);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tsn
  * JD-Core Version:    0.7.0.1
  */

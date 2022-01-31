@@ -1,10 +1,21 @@
-public abstract interface rtg
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+
+public class rtg
+  extends pdi
 {
-  public abstract void a(boolean paramBoolean);
+  public rtg(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
+  {
+    super(paramString);
+  }
+  
+  public void a(pdc parampdc)
+  {
+    parampdc.f();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rtg
  * JD-Core Version:    0.7.0.1
  */

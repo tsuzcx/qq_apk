@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import android.widget.TextView;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import mqq.os.MqqHandler;
 
 class ServiceAccountFolderActivity$3
@@ -18,7 +18,7 @@ class ServiceAccountFolderActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity.3
  * JD-Core Version:    0.7.0.1
  */

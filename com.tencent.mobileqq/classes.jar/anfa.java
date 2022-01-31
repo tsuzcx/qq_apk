@@ -1,26 +1,54 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.content.Context;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class anfa
-  implements TextWatcher
+  implements INetInfoHandler
 {
-  anfa(anez paramanez) {}
+  anfa(aneq paramaneq) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onNetMobile2None()
   {
-    if (!TextUtils.isEmpty(paramCharSequence)) {
-      this.a.a();
+    QLog.e("ark.download.module", 1, "onNetMobile2None");
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    QLog.e("ark.download.module", 1, new Object[] { "onNetMobile2Wifi", paramString });
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    QLog.e("ark.download.module", 1, new Object[] { "ark.dctrl.onNetNone2Mobile", paramString });
+    paramString = BaseActivity.sTopActivity;
+    if ((aneq.a(this.a)) && (!aneq.b(this.a)) && (paramString != null))
+    {
+      paramString = paramString.getString(2131690282);
+      if (aneq.a(this.a, paramString)) {
+        aneq.b(this.a, true);
+      }
     }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    QLog.e("ark.download.module", 1, new Object[] { "onNetNone2Wifi", paramString });
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    QLog.e("ark.download.module", 1, new Object[] { "onNetWifi2Mobile", paramString });
+  }
+  
+  public void onNetWifi2None()
+  {
+    QLog.e("ark.download.module", 1, "onNetWifi2None");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfa
  * JD-Core Version:    0.7.0.1
  */

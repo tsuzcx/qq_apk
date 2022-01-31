@@ -1,56 +1,38 @@
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
+import com.tencent.smtt.sdk.WebChromeClient;
 
-public class bhbk
+class bhbk
+  extends WebChromeClient
 {
-  public final int a;
-  public final long a;
-  public String a;
-  public final int b;
-  public final long b;
-  public final int c;
-  public final long c;
-  public final int d;
-  public final long d;
-  public final long e;
-  public final long f;
+  bhbk(bhbi parambhbi) {}
   
-  private bhbk(ByteBuffer paramByteBuffer, int paramInt)
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    switch (paramInt)
+    if (paramConsoleMessage != null)
     {
-    default: 
-      throw new IOException("Unexpected elf class: " + paramInt);
-    case 1: 
-      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_c_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_d_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
-      this.e = paramByteBuffer.getInt();
+      if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
+        break label135;
+      }
+      QMLog.e("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message() + " line:" + paramConsoleMessage.lineNumber() + "  page:" + bhbi.a(this.a));
+      bgyd.a(paramConsoleMessage.lineNumber() + ": " + paramConsoleMessage.message(), bhbi.a(this.a).a(), bhbi.a(this.a));
     }
-    for (this.f = paramByteBuffer.getInt();; this.f = paramByteBuffer.getLong())
+    for (;;)
     {
-      this.jdField_a_of_type_JavaLangString = null;
-      return;
-      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_a_of_type_Long = paramByteBuffer.getLong();
-      this.jdField_b_of_type_Long = paramByteBuffer.getLong();
-      this.jdField_c_of_type_Long = paramByteBuffer.getLong();
-      this.jdField_d_of_type_Long = paramByteBuffer.getLong();
-      this.jdField_c_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_d_of_type_Int = paramByteBuffer.getInt();
-      this.e = paramByteBuffer.getLong();
+      return super.onConsoleMessage(paramConsoleMessage);
+      label135:
+      if (paramConsoleMessage.messageLevel() == ConsoleMessage.MessageLevel.WARNING) {
+        QMLog.w("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message() + " line:" + paramConsoleMessage.lineNumber() + "  page:" + bhbi.a(this.a));
+      } else {
+        QMLog.i("TAG_CHROMIUM", "PageWebView: " + paramConsoleMessage.message());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhbk
  * JD-Core Version:    0.7.0.1
  */

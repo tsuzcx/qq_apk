@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contacts.view.pullrefresh;
 
-import aftk;
+import ahrc;
 
 class CommonRefreshLayout$1
   implements Runnable
@@ -17,7 +17,7 @@ class CommonRefreshLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout.1
  * JD-Core Version:    0.7.0.1
  */

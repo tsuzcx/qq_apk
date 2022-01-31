@@ -1,10 +1,12 @@
 package com.tencent.luan.ioc;
 
 import com.tencent.luan.core.SingleLinkedListNode;
+import com.tencent.luan.ioc.wrapper.FixObjectWrapper;
+import com.tencent.luan.ioc.wrapper.ObjectHolder;
+import com.tencent.luan.ioc.wrapper.ObjectWrapper;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -12,24 +14,18 @@ import java.util.Set;
 class LuanInjector
   implements Injector
 {
-  private static final LuanInjector.ProviderObjectCreator PROVIDER_OBJECT_CREATOR = new LuanInjector.ProviderObjectCreator(null);
-  private static final LuanInjector.TypeObjectCreator TYPE_OBJECT_CREATOR = new LuanInjector.TypeObjectCreator(null);
   private SingleLinkedListNode<Object> createObjHeadNode;
   private SingleLinkedListNode<Object> createObjTailNode;
   private boolean isInjected;
-  private final Map<String, Object> nameObjCache = new HashMap();
-  private LuanInjector.NameObjectGetter nameObjectGetter;
+  private final Map<String, ObjectWrapper<?>> nameObjectWrapperMap = new HashMap();
   private final LuanInjectService service;
-  private final LuanInjector.ProviderAndNamedTypeSnapshot snapshot;
   private final Object source;
-  private final Map<Class<?>, List<Object>> typeObjCache = new HashMap();
-  private LuanInjector.TypeObjectGetter typeObjectGetter;
+  private final Map<String, ObjectWrapper<?>> typeObjectWrapperMap = new HashMap();
   
-  LuanInjector(Object paramObject, LuanInjectService paramLuanInjectService, LuanInjector.ProviderAndNamedTypeSnapshot paramProviderAndNamedTypeSnapshot)
+  LuanInjector(Object paramObject, LuanInjectService paramLuanInjectService)
   {
     this.source = paramObject;
     this.service = paramLuanInjectService;
-    this.snapshot = paramProviderAndNamedTypeSnapshot;
   }
   
   private void addCreateObjectToLinkedList(Object paramObject)
@@ -43,6 +39,31 @@ class LuanInjector
       this.createObjTailNode = paramObject;
       return;
       this.createObjTailNode.setNext(paramObject);
+    }
+  }
+  
+  private static void combineWrapperAndPutToCache(Map<String, ObjectWrapper<?>> paramMap, ObjectWrapper<?> paramObjectWrapper, Object paramObject, String paramString)
+  {
+    paramObject = paramObjectWrapper.combine(paramObject);
+    if (paramObjectWrapper != paramObject) {
+      paramMap.put(paramString, paramObject);
+    }
+  }
+  
+  private Object getObjectByWrapper(ObjectWrapper<?> paramObjectWrapper)
+  {
+    try
+    {
+      paramObjectWrapper = paramObjectWrapper.createObjectIfAbsent(this);
+      Object localObject = paramObjectWrapper.object;
+      if (paramObjectWrapper.needInject) {
+        addCreateObjectToLinkedList(localObject);
+      }
+      return localObject;
+    }
+    catch (IllegalStateException paramObjectWrapper)
+    {
+      throw new InjectException("failed to inference inject type such as more than one types " + paramObjectWrapper);
     }
   }
   
@@ -75,24 +96,23 @@ class LuanInjector
   
   private void putObjInAllTypeCache(Object paramObject, Class<?> paramClass)
   {
-    HashSet localHashSet = new HashSet();
-    readAllType(paramClass, localHashSet);
-    paramClass = localHashSet.iterator();
-    while (paramClass.hasNext()) {
-      putObjInSingleTypeCache(paramObject, (Class)paramClass.next());
-    }
-  }
-  
-  private void putObjInSingleTypeCache(Object paramObject, Class<?> paramClass)
-  {
-    List localList = (List)this.typeObjCache.get(paramClass);
-    Object localObject = localList;
-    if (localList == null)
+    Object localObject1 = new HashSet();
+    readAllType(paramClass, (Set)localObject1);
+    paramClass = ((Set)localObject1).iterator();
+    while (paramClass.hasNext())
     {
-      localObject = new LinkedList();
-      this.typeObjCache.put(paramClass, localObject);
+      localObject1 = ((Class)paramClass.next()).getName();
+      Object localObject2 = (ObjectWrapper)this.typeObjectWrapperMap.get(localObject1);
+      if (localObject2 == null)
+      {
+        localObject2 = new FixObjectWrapper(paramObject);
+        this.typeObjectWrapperMap.put(localObject1, localObject2);
+      }
+      else
+      {
+        combineWrapperAndPutToCache(this.typeObjectWrapperMap, (ObjectWrapper)localObject2, paramObject, (String)localObject1);
+      }
     }
-    ((List)localObject).add(paramObject);
   }
   
   private void readAllType(Class<?> paramClass, Set<Class<?>> paramSet)
@@ -147,10 +167,19 @@ class LuanInjector
     if (this.isInjected) {
       throw new IllegalStateException("injection is already done");
     }
-    if (this.typeObjectGetter == null) {
-      this.typeObjectGetter = new LuanInjector.TypeObjectGetter(this, null);
+    String str = paramClass.getName();
+    Object localObject2 = (ObjectWrapper)this.typeObjectWrapperMap.get(str);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = this.service.getInjectConstructor(paramClass).wrapper();
+      this.typeObjectWrapperMap.put(str, localObject1);
     }
-    return this.typeObjectGetter.get(paramClass);
+    localObject2 = getObjectByWrapper((ObjectWrapper)localObject1);
+    if (((ObjectWrapper)localObject1).needCache()) {
+      putObjInAllTypeCache(localObject2, paramClass);
+    }
+    return localObject2;
   }
   
   public Object getOrCreateObject(String paramString)
@@ -158,10 +187,22 @@ class LuanInjector
     if (this.isInjected) {
       throw new IllegalStateException("injection is already done");
     }
-    if (this.nameObjectGetter == null) {
-      this.nameObjectGetter = new LuanInjector.NameObjectGetter(this, null);
+    Object localObject2 = (ObjectWrapper)this.nameObjectWrapperMap.get(paramString);
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject1 = (InjectConstructor)this.service.nameInjectConstructorMap.get(paramString);
+      if (localObject1 == null) {
+        throw new InjectException("failed to create instance by this name " + paramString);
+      }
+      localObject1 = ((InjectConstructor)localObject1).wrapper();
+      this.nameObjectWrapperMap.put(paramString, localObject1);
     }
-    return this.nameObjectGetter.get(paramString);
+    localObject2 = getObjectByWrapper((ObjectWrapper)localObject1);
+    if (((ObjectWrapper)localObject1).needCache()) {
+      combineWrapperAndPutToCache(this.nameObjectWrapperMap, (ObjectWrapper)localObject1, localObject2, paramString);
+    }
+    return localObject2;
   }
   
   void inject()
@@ -191,7 +232,7 @@ class LuanInjector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.luan.ioc.LuanInjector
  * JD-Core Version:    0.7.0.1
  */

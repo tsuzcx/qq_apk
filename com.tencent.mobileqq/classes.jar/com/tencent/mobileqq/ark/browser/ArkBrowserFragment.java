@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.ark.browser;
 
-import aadl;
-import aaep;
-import aluk;
-import aluo;
+import abui;
+import abvm;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import bcee;
-import bcfh;
-import bcga;
+import anld;
+import anlh;
+import bedf;
+import beei;
+import befb;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
@@ -24,7 +24,7 @@ public class ArkBrowserFragment
     super.a(paramInt1, paramInt2, paramIntent);
     Object localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
     String str = b();
-    if (TextUtils.isEmpty(aaep.a(str))) {}
+    if (TextUtils.isEmpty(abvm.a(str))) {}
     do
     {
       do
@@ -32,18 +32,18 @@ public class ArkBrowserFragment
         return;
         localObject = ((WebViewPluginEngine)localObject).a(str);
       } while (localObject == null);
-      localObject = (aluo)((aadl)localObject).a(aluo.class, false);
+      localObject = (anlh)((abui)localObject).a(anlh.class, false);
     } while (localObject == null);
-    ((aluo)localObject).a(paramIntent, (byte)paramInt1, paramInt2);
+    ((anlh)localObject).a(paramIntent, (byte)paramInt1, paramInt2);
   }
   
   public void c()
   {
-    bcfh localbcfh = (bcfh)this.jdField_a_of_type_Bcee.a(4);
-    if (localbcfh != null)
+    beei localbeei = (beei)this.jdField_a_of_type_Bedf.a(4);
+    if (localbeei != null)
     {
-      localbcfh.a(new aluk(this));
-      localbcfh.a(b(), this.jdField_a_of_type_Bcga.a);
+      localbeei.a(new anld(this));
+      localbeei.a(b(), this.jdField_a_of_type_Befb.a);
     }
   }
   
@@ -55,7 +55,7 @@ public class ArkBrowserFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.browser.ArkBrowserFragment
  * JD-Core Version:    0.7.0.1
  */

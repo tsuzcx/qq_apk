@@ -1,44 +1,22 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import aert;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import nnu;
-import sgg;
+import agot;
 
 public class PublicAccountChatPie$25
   implements Runnable
 {
-  public PublicAccountChatPie$25(aert paramaert, AccountDetail paramAccountDetail) {}
+  public PublicAccountChatPie$25(agot paramagot, int paramInt) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.jdField_a_of_type_JavaLangString, 2, "updateUnfollowInfo");
+    if (agot.d(this.this$0) > 0) {
+      this.this$0.A(this.a);
     }
-    if (this.this$0.aa)
-    {
-      int i = sgg.a(this.a.accountFlag);
-      if ((i == -3) || (i == -4)) {
-        nnu.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.uin);
-      }
-    }
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.b(this.a);
-    }
-    aert.b(this.this$0, this.a);
-    aert.a(this.this$0).post(new PublicAccountChatPie.25.1(this));
-    this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 1008);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.25
  * JD-Core Version:    0.7.0.1
  */

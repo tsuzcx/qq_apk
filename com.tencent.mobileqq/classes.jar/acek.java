@@ -1,54 +1,24 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import mqq.app.QQPermissionCallback;
 
 public class acek
-  implements Handler.Callback
+  implements QQPermissionCallback
 {
-  public acek(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public acek(BaseChatPie paramBaseChatPie) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 1: 
-      do
-      {
-        do
-        {
-          return true;
-          paramMessage = (Intent)paramMessage.obj;
-          this.a.c = paramMessage.getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
-          if ((55 == paramMessage.getIntExtra(bbbw.h, -1)) && (paramMessage.getExtras().containsKey("PhotoConst.PHOTO_PATHS")))
-          {
-            ArrayList localArrayList = paramMessage.getExtras().getStringArrayList("PhotoConst.PHOTO_PATHS");
-            if ((localArrayList != null) && (localArrayList.size() > 0))
-            {
-              this.a.a(BaseApplicationImpl.getApplication(), localArrayList);
-              return true;
-            }
-          }
-        } while (!paramMessage.getBooleanExtra("IS_FROM_PREVIEW_ACTIVITY", false));
-        paramMessage = paramMessage.getStringArrayListExtra("key_photo_preview");
-      } while (paramMessage == null);
-      this.a.a(BaseApplicationImpl.getApplication(), paramMessage);
-      return true;
-    case 2: 
-      this.a.b(null);
-      return true;
-    }
-    this.a.u();
-    return true;
+    bdcd.a(this.a.a(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.bm();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acek
  * JD-Core Version:    0.7.0.1
  */

@@ -1,100 +1,102 @@
-import android.support.annotation.NonNull;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FilenameFilter;
-import java.util.regex.Pattern;
-import mqq.app.ISecurityFileHelper;
+import android.os.Handler;
+import com.tencent.mobileqq.triton.sdk.ITTEngine.IListener;
+import com.tencent.qqmini.sdk.launcher.AppRuntimeLoaderManager;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.qqmini.sdk.minigame.GameRuntime.3.1;
+import com.tencent.qqmini.sdk.utils.GameWnsUtils;
 
 public class bgtm
-  implements ISecurityFileHelper
+  implements ITTEngine.IListener
 {
-  private FilenameFilter jdField_a_of_type_JavaIoFilenameFilter = new bgtn(this);
-  private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\d{5,}");
+  bgtm(bgtj parambgtj) {}
   
-  public String declareBusinessFileName()
+  public void onExit()
   {
-    return "ReaderZone";
+    bgtj.a(this.a);
   }
   
-  public boolean doMigrate(File paramFile)
+  public void onFirstRender()
   {
-    boolean bool2 = false;
-    File localFile1 = new File(ajsd.aV, "/Tencent/ReaderZone/");
-    String[] arrayOfString = localFile1.list(this.jdField_a_of_type_JavaIoFilenameFilter);
-    boolean bool1;
-    if ((arrayOfString == null) || (arrayOfString.length == 0))
-    {
-      bool1 = true;
-      return bool1;
+    QMLog.i("GameRuntime", "onFirstRender. " + bgtj.a(this.a));
+    if (bgtj.a(this.a) != null) {
+      bgtj.a(this.a).b();
     }
-    int j = arrayOfString.length;
-    int i = 0;
+    this.a.a(bghw.a(2032, Integer.valueOf(bgtj.b(this.a))));
+    bgtj.a(this.a, System.currentTimeMillis());
+    String str = bgtj.a(this.a);
+    if (bgtj.a(this.a))
+    {
+      bgtj.a(this.a, false);
+      QMLog.i("GameRuntime", "game[" + bgtj.a(this.a).appId + "][" + bgtj.a(this.a).name + "] 冷启动，首帧出现!");
+      bgyd.a(bgtj.a(this.a), 1022, "1");
+    }
     for (;;)
     {
-      if (i >= j) {
-        break label220;
-      }
-      Object localObject = arrayOfString[i];
-      File localFile2 = new File(localFile1, (String)localObject);
-      localObject = new File(paramFile.getAbsolutePath() + File.separator + (String)localObject + File.separator + declareBusinessFileName());
-      int k = bbdx.a(localFile2.getAbsolutePath(), ((File)localObject).getAbsolutePath());
-      QLog.d("ISecurityFileHelper", 1, "doMigrate：" + declareBusinessFileName() + " result = " + k + " fromFile = " + localFile2.getAbsolutePath() + " targetFile = " + ((File)localObject).getAbsolutePath());
-      bool1 = bool2;
-      if (k != 0) {
-        break;
-      }
-      i += 1;
+      long l1 = bgtj.b(this.a);
+      long l2 = bgtj.c(this.a);
+      bgyd.a(bgtj.a(this.a), 1042, null, str, null, 0, "1", l1 - l2, null);
+      bghk.a(bgtj.b(this.a));
+      bgtj.a(this.a).post(new GameRuntime.3.1(this));
+      return;
+      QMLog.i("GameRuntime", "game[" + bgtj.a(this.a).appId + "][" + bgtj.a(this.a).name + "] 热启动,二次启动游戏!");
+      bgyd.a(bgtj.a(this.a), 1023, "1");
+      bguz.a(bgtj.a(this.a), bgtj.a(this.a));
     }
-    label220:
-    return true;
   }
   
-  public boolean needMigration()
+  public void onGameLaunched(int paramInt, long paramLong)
   {
-    String[] arrayOfString = new File(ajsd.aV, "/Tencent/ReaderZone/").list(this.jdField_a_of_type_JavaIoFilenameFilter);
-    return (arrayOfString != null) && (arrayOfString.length > 0);
-  }
-  
-  @NonNull
-  public File oldBusinessDir(String paramString)
-  {
-    return new File(new File(ajsd.aV, "/Tencent/ReaderZone/"), paramString);
-  }
-  
-  public boolean oldBusinessDirExist(String paramString)
-  {
-    paramString = oldBusinessDir(paramString);
-    return (paramString.isDirectory()) && (paramString.exists());
-  }
-  
-  public String[] reportHistoryFileInfo()
-  {
-    long l2 = 0L;
-    String[] arrayOfString1 = new String[2];
-    File localFile = new File(ajsd.aV, "/Tencent/ReaderZone/");
-    String[] arrayOfString2 = localFile.list(this.jdField_a_of_type_JavaIoFilenameFilter);
-    if ((arrayOfString2 != null) && (arrayOfString2.length > 0))
+    Object localObject = this.a;
+    int i;
+    MiniAppInfo localMiniAppInfo;
+    if (paramInt >= 0)
     {
-      int j = arrayOfString2.length;
-      int i = 0;
-      long l1 = 0L;
-      while (i < j)
-      {
-        String str = arrayOfString2[i];
-        l2 += bbdx.b(new File(localFile, str).getAbsolutePath());
-        l1 += bbdx.c(new File(localFile, str).getAbsolutePath());
-        i += 1;
+      i = 0;
+      bgtj.a((bgtj)localObject, i);
+      bgtj.b(this.a, System.currentTimeMillis());
+      QMLog.i("[minigame][timecost] ", "step[launchGame] launchResult: " + paramInt + ", timeCost: " + paramLong + ", " + bgtj.a(this.a));
+      bgyd.a(bgtj.a(this.a), 1040, null, bgtj.a(this.a), null, 0, "1", paramLong, null);
+      AppRuntimeLoaderManager.g().notifyRuntimeEvent(63, new Object[] { Integer.valueOf(paramInt) });
+      AppRuntimeLoaderManager.g().notifyRuntimeEvent(2051, new Object[0]);
+      bgxl.a("2load_end", String.valueOf(bgtj.b(this.a)), null, bgtj.a(this.a));
+      if (bgtj.b(this.a) < 0) {
+        break label234;
       }
-      arrayOfString1[0] = Long.toString(l2);
-      arrayOfString1[1] = Long.toString(l1);
-      QLog.d("ISecurityFileHelper", 1, "reportHistoryFileInfo:" + declareBusinessFileName() + " fileAmount = " + l1 + " fileSize = " + l2);
+      localMiniAppInfo = bgtj.a(this.a);
+      if (!bgtj.a(this.a)) {
+        break label227;
+      }
     }
-    return arrayOfString1;
+    label227:
+    for (localObject = "1";; localObject = "0")
+    {
+      bgyd.b(localMiniAppInfo, 1008, (String)localObject);
+      bgyd.a(bgtj.a(this.a), 1008, "1");
+      return;
+      i = paramInt;
+      break;
+    }
+    label234:
+    bgyg.a(bgtj.a(this.a), "1", null, "show_fail", "load_pkg_fail");
+    bgxl.a("2launch_fail", "load_pkg_fail", null, bgtj.a(this.a));
+    bgxq.a(bgtj.a(this.a), 512);
+    bgiv.a(bgtj.a(this.a), bgte.a().a(), bgtj.a(this.a), GameWnsUtils.getGameLaunchFailContent());
+  }
+  
+  public void onInitFinish()
+  {
+    QMLog.i("GameRuntime", "onInitFinish");
+    long l = System.currentTimeMillis() - bgtj.a(this.a);
+    bgyd.a(bgtj.a(this.a), 1039, null, String.valueOf(bgtj.a(this.a)), null, 0, "1", l, null);
+    QMLog.e("[minigame][timecost] ", "step[create surfaceView] cost time: " + l + "(from create SurfaceView)");
+    this.a.f();
+    bgtj.a(this.a, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgtm
  * JD-Core Version:    0.7.0.1
  */

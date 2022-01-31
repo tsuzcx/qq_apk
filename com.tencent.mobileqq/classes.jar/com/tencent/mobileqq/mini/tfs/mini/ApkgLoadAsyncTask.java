@@ -27,7 +27,7 @@ public class ApkgLoadAsyncTask
   private void loadApkgInMiniProcess(MiniAppConfig paramMiniAppConfig)
   {
     ApkgMainProcessManager.queueSubProcessLoadTask(paramMiniAppConfig);
-    ApkgManager.getInstance().getApkgInfoByConfig(paramMiniAppConfig, new ApkgLoadAsyncTask.2(this, paramMiniAppConfig));
+    ApkgManager.getInstance().getApkgInfoByConfig(paramMiniAppConfig, new ApkgLoadAsyncTask.2(this, paramMiniAppConfig), new ApkgLoadAsyncTask.3(this, paramMiniAppConfig));
   }
   
   private void tryLoadApkgInMainProcess(MiniAppConfig paramMiniAppConfig)
@@ -94,7 +94,7 @@ public class ApkgLoadAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.tfs.mini.ApkgLoadAsyncTask
  * JD-Core Version:    0.7.0.1
  */

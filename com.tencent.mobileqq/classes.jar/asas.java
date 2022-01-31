@@ -1,34 +1,32 @@
-import android.view.ViewGroup;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.loginwelcome.LoginwelcomeHelper.1.1;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.fragment.AppletsSettingFragment;
 
 public class asas
-  implements asap
+  implements View.OnClickListener
 {
-  asas(asar paramasar) {}
+  public asas(AppletsSettingFragment paramAppletsSettingFragment) {}
   
-  public void a(asam paramasam)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onShowCommonGuideWeb");
+    if (AppletsSettingFragment.a(this.a))
+    {
+      this.a.a();
+      return;
     }
-    asar.a(this.a, paramasam);
-  }
-  
-  public void a(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginWelcomeManager", 2, "onShowContactsGuideLayer");
-    }
-    if (asar.a(this.a) != null) {
-      asar.a(this.a).post(new LoginwelcomeHelper.1.1(this, paramURLDrawable));
+    paramView = this.a;
+    if (!AppletsSettingFragment.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      AppletsSettingFragment.a(paramView, bool);
+      AppletsSettingFragment.a(this.a, AppletsSettingFragment.a(this.a));
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asas
  * JD-Core Version:    0.7.0.1
  */

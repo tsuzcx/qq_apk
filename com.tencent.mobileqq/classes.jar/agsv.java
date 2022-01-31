@@ -1,21 +1,12 @@
-import android.support.annotation.RequiresApi;
-import android.view.View;
-import android.view.View.OnClickListener;
-
-class agsv
-  implements View.OnClickListener
+public abstract interface agsv
 {
-  agsv(agsu paramagsu) {}
+  public abstract void a();
   
-  @RequiresApi(api=17)
-  public void onClick(View paramView)
-  {
-    this.a.a(paramView);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsv
  * JD-Core Version:    0.7.0.1
  */

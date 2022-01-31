@@ -1,35 +1,20 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.BaseActivity;
-
-class aexk
-  implements View.OnClickListener
+public abstract class aexk
 {
-  aexk(aexj paramaexj) {}
+  private boolean a;
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
-    {
-      paramView = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (paramView != null)
-      {
-        paramView = paramView.a();
-        if (paramView != null) {
-          paramView.b(aexj.a(this.a));
-        }
-      }
-      alub.a().a();
-    }
+    this.a = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aexk
  * JD-Core Version:    0.7.0.1
  */

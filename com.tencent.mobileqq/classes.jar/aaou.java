@@ -1,22 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-
-public final class aaou
-  implements DialogInterface.OnClickListener
-{
-  public aaou(aaqa paramaaqa) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a != null) {
-      this.a.a();
-    }
-    paramDialogInterface.dismiss();
-  }
-}
+public class aaou {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaou
  * JD-Core Version:    0.7.0.1
  */

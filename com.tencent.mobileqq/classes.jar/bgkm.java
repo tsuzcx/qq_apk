@@ -1,46 +1,78 @@
-import android.os.Handler;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.groupvideo.GVideoPluginInstallerActivity;
+import android.text.TextUtils;
+import android.widget.TextView;
 
 public class bgkm
-  extends OnPluginInstallListener.Stub
 {
-  public bgkm(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity) {}
-  
-  public void onInstallBegin(String paramString)
+  public static void a(TextView paramTextView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "Group video plugin onInstallBegin...");
+    a(paramTextView, paramInt1, paramInt2, paramInt3, 99, null);
+  }
+  
+  public static void a(TextView paramTextView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
+  {
+    if (paramTextView == null) {
+      return;
+    }
+    paramString = "";
+    switch (paramInt1)
+    {
+    default: 
+      paramInt1 = 0;
+      if (paramString == null) {
+        paramString = "";
+      }
+      break;
+    }
+    for (;;)
+    {
+      if ((TextUtils.isEmpty(paramString)) && (paramInt1 == 0))
+      {
+        paramTextView.setVisibility(8);
+        return;
+        if (paramInt3 > 0) {}
+        for (paramInt1 = paramInt3;; paramInt1 = 2130840946)
+        {
+          if (paramInt2 <= paramInt4) {
+            break label104;
+          }
+          paramString = String.valueOf(paramInt4) + "+";
+          break;
+        }
+        label104:
+        paramString = String.valueOf(paramInt2);
+        break;
+      }
+      Object localObject = paramTextView.getTag(2131370594);
+      if (localObject == null) {}
+      for (;;)
+      {
+        paramTextView.setBackgroundResource(paramInt1);
+        if (!a(paramTextView.getText().toString(), paramString))
+        {
+          paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+          paramTextView.setText(paramString);
+        }
+        paramTextView.setVisibility(0);
+        return;
+        if ((!(localObject instanceof Integer)) || (((Integer)localObject).intValue() != 0))
+        {
+          paramTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+          paramTextView.setTag(2131370594, Integer.valueOf(0));
+          paramTextView.setText(paramString);
+          paramTextView.setPadding(0, 0, 0, 0);
+        }
+      }
     }
   }
   
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  public static boolean a(Object paramObject1, Object paramObject2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "Group video plugin onInstallDownloadProgress...");
-    }
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "Group video plugin onInstallError...");
-    }
-    this.a.b.sendEmptyMessageDelayed(3, 200L);
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "Group video plugin onInstallFinish...");
-    }
-    this.a.b.sendEmptyMessageDelayed(1, 1000L);
+    return (paramObject1 == paramObject2) || ((paramObject1 != null) && (paramObject1.equals(paramObject2)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgkm
  * JD-Core Version:    0.7.0.1
  */

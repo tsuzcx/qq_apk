@@ -10,9 +10,6 @@ import com.tencent.aekit.openrender.util.GlUtil;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.baseutils.io.FileUtils;
 import com.tencent.ttpic.baseutils.log.LogUtils;
-import com.tencent.ttpic.model.TRIGGERED_STATUS;
-import com.tencent.ttpic.model.TriggerCtrlItem;
-import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.cache.VideoMemoryManager;
 import com.tencent.ttpic.openapi.config.MediaConfig;
 import com.tencent.ttpic.openapi.model.StickerItem;
@@ -123,7 +120,7 @@ public class StaticNumFilter
     for (Object localObject1 = "x";; localObject1 = Integer.valueOf(paramInt1))
     {
       localObject1 = localObject1;
-      i = this.triggerCtrlItem.getFrameIndex();
+      i = getFrameIndex();
       if ((paramInt2 != this.mLastBitIndex) || (!this.mLastImageIndexMap.containsKey(localObject1)) || (i != ((Integer)this.mLastImageIndexMap.get(localObject1)).intValue()) || (this.mTextureParam == null)) {
         break;
       }
@@ -285,21 +282,11 @@ public class StaticNumFilter
   
   public void updatePreview(Object paramObject)
   {
-    if ((paramObject instanceof PTDetectInfo)) {
-      if (updateActionTriggered((PTDetectInfo)paramObject) != TRIGGERED_STATUS.FIRST_TRIGGERED) {
-        break label45;
-      }
-    }
-    label45:
-    for (boolean bool = true;; bool = false)
+    updatePlayer(this.isFirstTriggered);
+    if (!needRenderTexture())
     {
-      updatePlayer(bool);
-      if (!needRenderTexture())
-      {
-        clearTextureParam();
-        setNum(-1);
-      }
-      return;
+      clearTextureParam();
+      setNum(-1);
     }
   }
   

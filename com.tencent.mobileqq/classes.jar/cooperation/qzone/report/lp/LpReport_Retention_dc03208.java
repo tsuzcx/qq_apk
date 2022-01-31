@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
 import android.os.Build;
-import bgyi;
+import bizf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.module.common.NetworkState;
 import java.util.HashMap;
@@ -48,7 +48,7 @@ public class LpReport_Retention_dc03208
   {
     HashMap localHashMap = new HashMap();
     LpReportUtils.safePut(localHashMap, "uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
-    LpReportUtils.safePut(localHashMap, "qua", bgyi.a());
+    LpReportUtils.safePut(localHashMap, "qua", bizf.a());
     localHashMap.put("network_type", String.valueOf(LpReportInfo_dc00321.convertNetworkTypeToFitInDc00321(NetworkState.g().getNetworkType())));
     LpReportUtils.safePut(localHashMap, "mobile_type", Build.MODEL);
     localHashMap.put("device", "2");
@@ -62,7 +62,7 @@ public class LpReport_Retention_dc03208
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_Retention_dc03208
  * JD-Core Version:    0.7.0.1
  */

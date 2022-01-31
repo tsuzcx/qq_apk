@@ -1,30 +1,12 @@
-class qwk
-  extends qwm
+public abstract interface qwk<V>
 {
-  private final float a;
+  public abstract void a();
   
-  public qwk(float paramFloat)
-  {
-    this.a = paramFloat;
-  }
-  
-  public long a(long paramLong)
-  {
-    long l = paramLong;
-    if (this.b > 0L) {
-      l = (this.a * (float)paramLong + (1.0F - this.a) * (float)this.b);
-    }
-    return l;
-  }
-  
-  public String toString()
-  {
-    return "ExponentialPredictor(" + this.a + ')';
-  }
+  public abstract void a(V paramV);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qwk
  * JD-Core Version:    0.7.0.1
  */

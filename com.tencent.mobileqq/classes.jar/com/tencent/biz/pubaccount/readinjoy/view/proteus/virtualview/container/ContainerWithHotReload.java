@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewParent;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
@@ -99,8 +98,7 @@ public class ContainerWithHotReload
     }
     catch (IOException paramContext)
     {
-      label22:
-      break label22;
+      paramContext.printStackTrace();
     }
   }
   
@@ -109,10 +107,8 @@ public class ContainerWithHotReload
     Object localObject1 = paramContainerWithHotReload.getVafContext();
     paramString = ((VafContext)localObject1).getTemplateFactory().getTemplate(paramString);
     Object localObject2 = paramContainerWithHotReload.getTemplateBean().getData();
-    if (localObject2 != null)
-    {
-      paramString.setData((JSONObject)localObject2);
-      paramString.getViewBean().bindData((JSONObject)localObject2, paramString.getViewDataBinding());
+    if (localObject2 != null) {
+      paramString.bindData((JSONObject)localObject2);
     }
     localObject2 = ((VafContext)localObject1).getViewFactory();
     if ((localObject2 instanceof ViewFactorWithHotReload)) {
@@ -148,7 +144,7 @@ public class ContainerWithHotReload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.ContainerWithHotReload
  * JD-Core Version:    0.7.0.1
  */

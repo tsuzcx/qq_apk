@@ -1,115 +1,31 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import mqq.app.AppRuntime;
 
-public class asoa
-  extends ampa<asob>
+final class asoa
+  implements asnq
 {
-  public static boolean a;
-  private static boolean b;
-  
-  public static boolean e()
+  public String a()
   {
-    if (b) {
-      return a;
-    }
-    b = true;
-    a = f();
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData isSwitchOpened = " + a);
-    }
-    return a;
-  }
-  
-  private static boolean f()
-  {
-    asob localasob2 = (asob)ampl.a().a(522);
-    asob localasob1 = localasob2;
-    if (localasob2 == null)
-    {
-      localasob2 = new asob();
-      localasob1 = localasob2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData = null, general new bean, so switch default");
-        localasob1 = localasob2;
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "MsgBackupConfigData switch isOpened = " + localasob1);
-    }
-    return localasob1.a();
-  }
-  
-  public int a()
-  {
-    return 522;
-  }
-  
-  @NonNull
-  public asob a(int paramInt)
-  {
-    return new asob();
-  }
-  
-  @Nullable
-  public asob a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackupConfigProcessor", 2, "onParsed : " + paramArrayOfamph[0].a);
-      }
-      return asob.a(paramArrayOfamph[0].a);
-    }
-    return new asob();
-  }
-  
-  public Class<asob> a()
-  {
-    return asob.class;
+    return asnp.b;
   }
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "onReqFailed : " + paramInt);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      ((VasQuickUpdateManager)((AppRuntime)localObject).getManager(184)).downloadItem(5L, "font.hifont.android." + paramInt, "HiBoomDownloader");
+      localObject = ((asnx)((AppRuntime)localObject).getManager(219)).a(paramInt);
+      ((asnw)localObject).b = true;
+      ((asnw)localObject).c = 0;
     }
-  }
-  
-  public void a(asob paramasob)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackupConfigProcessor", 2, "onUpdate : " + paramasob);
-    }
-    if (paramasob != null) {
-      a = paramasob.a();
-    }
-  }
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
-  }
-  
-  public boolean d()
-  {
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asoa
  * JD-Core Version:    0.7.0.1
  */

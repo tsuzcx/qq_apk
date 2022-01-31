@@ -1,64 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
 
 public class aqzj
-  extends BroadcastReceiver
+  extends ayfe<ayjl, ayru>
 {
-  private final String jdField_a_of_type_JavaLangString = "reason";
-  private final String b = "homekey";
+  public aqzj(TroopFileSearchFragment paramTroopFileSearchFragment) {}
   
-  public aqzj(HotPicPageView paramHotPicPageView) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected aymg<ayjl, ayru> a(int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicManagerHotPicPageView", 2, "onReceive ===>" + paramContext);
-    }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
-      HotPicPageView.b = true;
-    }
-    label49:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            break label49;
-            break label49;
-            do
-            {
-              return;
-            } while ("android.intent.action.SCREEN_ON".equals(paramContext));
-            if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
-            {
-              HotPicPageView.b = true;
-              return;
-            }
-          } while (("tencent.av.v2q.StopVideoChat".equals(paramContext)) || (!paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")));
-          paramContext = paramIntent.getStringExtra("reason");
-          if (paramContext != null) {
-            break;
-          }
-        } while ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a == null) || (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a != 3));
-        paramContext = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a();
-      } while (paramContext == null);
-      paramContext.d();
-      return;
-    } while (!paramContext.equals("homekey"));
-    HotPicPageView.b = true;
+    return new aqzl();
+  }
+  
+  protected ayrv a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new aqzn(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqzj
  * JD-Core Version:    0.7.0.1
  */

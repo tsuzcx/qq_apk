@@ -1,6 +1,6 @@
 package cooperation.readinjoy;
 
-import bhvz;
+import bjxk;
 import com.tencent.ark.open.ArkAppMgr;
 
 public final class ReadInJoyHelper$1
@@ -10,12 +10,12 @@ public final class ReadInJoyHelper$1
   
   public void run()
   {
-    ArkAppMgr.getInstance().getAppPathByName(this.a, "", this.b, new Object(), new bhvz(this));
+    ArkAppMgr.getInstance().getAppPathByName(this.a, "", this.b, new Object(), new bjxk(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.readinjoy.ReadInJoyHelper.1
  * JD-Core Version:    0.7.0.1
  */

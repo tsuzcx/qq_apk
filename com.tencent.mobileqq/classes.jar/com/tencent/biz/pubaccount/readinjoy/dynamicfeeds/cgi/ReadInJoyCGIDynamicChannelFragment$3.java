@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import nol;
+import nrt;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -60,7 +60,7 @@ class ReadInJoyCGIDynamicChannelFragment$3
             QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "put channelID failed, mChannelID = ", Integer.valueOf(ReadInJoyCGIDynamicChannelFragment.h(this.this$0)), ", e = ", localJSONException2 });
           }
           QLog.d("ReadInJoyDynamicChannelBaseFragment", 1, new Object[] { "actionName = ", ReadInJoyCGIDynamicChannelFragment.a(this.this$0), ", r5 = ", localJSONObject.toString() });
-          nol.a(null, "", ReadInJoyCGIDynamicChannelFragment.b(this.this$0), ReadInJoyCGIDynamicChannelFragment.c(this.this$0), 0, 0, "", "", "", localJSONObject.toString(), false);
+          nrt.a(null, "", ReadInJoyCGIDynamicChannelFragment.b(this.this$0), ReadInJoyCGIDynamicChannelFragment.c(this.this$0), 0, 0, "", "", "", localJSONObject.toString(), false);
         }
       }
     }
@@ -68,7 +68,7 @@ class ReadInJoyCGIDynamicChannelFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,25 @@
+import android.os.MessageQueue.IdleHandler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.widget.XListView;
 
-public class ackp
-  implements View.OnClickListener
+class ackp
+  implements MessageQueue.IdleHandler
 {
-  public ackp(TroopMemberListActivity paramTroopMemberListActivity) {}
+  ackp(acko paramacko) {}
   
-  public void onClick(View paramView)
+  public boolean queueIdle()
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
+    View localView = this.a.a.jdField_a_of_type_ArrayOfAndroidViewView[40];
+    int i = localView.getTop();
+    int j = (this.a.a.jdField_a_of_type_ComTencentWidgetXListView.getHeight() - localView.getHeight()) / 2;
+    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollBy(i - j, 1000);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ackp
  * JD-Core Version:    0.7.0.1
  */

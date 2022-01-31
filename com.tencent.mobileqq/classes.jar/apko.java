@@ -1,67 +1,110 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-class apko
-  implements apim
+public class apko
+  extends RecyclerView.LayoutManager
 {
-  apko(apkn paramapkn, BaseActivity paramBaseActivity) {}
+  private View.OnClickListener a;
   
-  public apnb a()
+  public apko(View.OnClickListener paramOnClickListener)
   {
-    Object localObject3 = null;
-    int i = 0;
-    Object localObject1;
-    switch (this.jdField_a_of_type_Apkn.a())
-    {
-    default: 
-      localObject1 = null;
-    }
+    this.a = paramOnClickListener;
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
+    layoutDecorated(paramView, paramInt1 + localLayoutParams.leftMargin, paramInt2 + localLayoutParams.topMargin, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
+  }
+  
+  public RecyclerView.LayoutParams generateDefaultLayoutParams()
+  {
+    return new RecyclerView.LayoutParams(-2, -2);
+  }
+  
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    detachAndScrapAttachedViews(paramRecycler);
+    int i = getItemCount();
+    int m;
     int j;
     int k;
-    for (;;)
+    if (i > 3)
     {
-      Object localObject2 = localObject3;
-      if (localObject1 != null)
+      i = 3;
+      if (i >= 0)
       {
-        localObject2 = localObject3;
-        if (((List)localObject1).size() > 0)
+        paramState = paramRecycler.getViewForPosition(i);
+        addView(paramState);
+        measureChildWithMargins(paramState, 0, 0);
+        m = getWidth() - getDecoratedMeasuredWidth(paramState);
+        j = getHeight() - getDecoratedMeasuredHeight(paramState);
+        k = m / 2;
+        m /= 2;
+        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
+        if (i == 3)
         {
-          localObject2 = (apkt)((List)localObject1).get(i);
-          j = ((apkt)localObject2).c();
-          k = ((apkt)localObject2).b();
-          if (j != 7) {
-            break;
+          paramState.setScaleX(1.0F - (i - 1) * 0.1F);
+          paramState.setScaleY(1.0F - (i - 1) * 0.1F);
+          paramState.setTranslationY((i - 1) * paramState.getMeasuredHeight() / -10);
+          paramState.setAlpha(0.8F);
+        }
+        for (;;)
+        {
+          i -= 1;
+          break;
+          if (i > 0)
+          {
+            paramState.setScaleX(1.0F - i * 0.1F);
+            paramState.setScaleY(1.0F - i * 0.1F);
+            paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
+            paramState.setAlpha(0.6F);
           }
-          localObject2 = new apnh(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+          else if (this.a != null)
+          {
+            paramState.setOnClickListener(this.a);
+          }
         }
       }
-      return localObject2;
-      localObject1 = this.jdField_a_of_type_Apkn.a();
-      i = this.jdField_a_of_type_Apkn.b();
-      continue;
-      localObject1 = this.jdField_a_of_type_Apkn.a();
-      i = this.jdField_a_of_type_Apkn.b();
-      continue;
-      localObject1 = new ArrayList(1);
-      ((List)localObject1).add(this.jdField_a_of_type_Apkn.a());
     }
-    if (j == 9) {
-      return new apmy(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    }
-    switch (k)
+    else
     {
-    default: 
-      return new aplw(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
-    case 6000: 
-      return new apmc(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
+      i -= 1;
+      if (i >= 0)
+      {
+        paramState = paramRecycler.getViewForPosition(i);
+        addView(paramState);
+        measureChildWithMargins(paramState, 0, 0);
+        m = getWidth() - getDecoratedMeasuredWidth(paramState);
+        j = getHeight() - getDecoratedMeasuredHeight(paramState);
+        k = m / 2;
+        m /= 2;
+        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
+        if (i > 0)
+        {
+          paramState.setScaleX(1.0F - i * 0.1F);
+          paramState.setScaleY(1.0F - i * 0.1F);
+          paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
+        }
+        for (;;)
+        {
+          i -= 1;
+          break;
+          if (this.a != null) {
+            paramState.setOnClickListener(this.a);
+          }
+        }
+      }
     }
-    return new apmt(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (List)localObject1, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apko
  * JD-Core Version:    0.7.0.1
  */

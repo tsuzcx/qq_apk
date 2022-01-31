@@ -1,43 +1,19 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.theme.SkinnableBitmapDrawable;
-import com.tencent.theme.SkinnableNinePatchDrawable;
+import android.net.Uri;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
 public class bbay
+  implements bbfu
 {
-  public static int a(Drawable paramDrawable)
-  {
-    if (paramDrawable == null) {}
-    do
-    {
-      return -1;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return bbbr.a(((BitmapDrawable)paramDrawable).getBitmap());
-      }
-      if ((paramDrawable instanceof SkinnableBitmapDrawable)) {
-        return bbbr.a(((SkinnableBitmapDrawable)paramDrawable).getBitmap());
-      }
-    } while (!(paramDrawable instanceof SkinnableNinePatchDrawable));
-    return bbbr.a(((SkinnableNinePatchDrawable)paramDrawable).getBitmap());
-  }
+  public bbay(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public static final Bitmap a(Drawable paramDrawable)
+  public void a(Uri paramUri)
   {
-    if (paramDrawable == null) {}
-    do
-    {
-      return null;
-      if ((paramDrawable instanceof BitmapDrawable)) {
-        return ((BitmapDrawable)paramDrawable).getBitmap();
-      }
-    } while (!(paramDrawable instanceof SkinnableBitmapDrawable));
-    return ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
+    this.a.a = paramUri;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bbay
  * JD-Core Version:    0.7.0.1
  */

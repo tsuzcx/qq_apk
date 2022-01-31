@@ -1,12 +1,20 @@
-public abstract interface aigo
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+
+public class aigo
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public aigo(BaseActivityView paramBaseActivityView) {}
   
-  public abstract void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3);
+  public void onClick(View paramView)
+  {
+    this.a.f();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aigo
  * JD-Core Version:    0.7.0.1
  */

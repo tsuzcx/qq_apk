@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
 import com.tencent.qphone.base.util.QLog;
-import liq;
+import lkt;
 
 class EffectToolbar$2
   implements Runnable
@@ -19,7 +19,7 @@ class EffectToolbar$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.EffectToolbar.2
  * JD-Core Version:    0.7.0.1
  */

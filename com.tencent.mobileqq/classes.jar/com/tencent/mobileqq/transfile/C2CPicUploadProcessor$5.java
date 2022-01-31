@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.transfile;
 
-import aypl;
+import bang;
 
 public class C2CPicUploadProcessor$5
   implements Runnable
 {
-  public C2CPicUploadProcessor$5(aypl paramaypl) {}
+  public C2CPicUploadProcessor$5(bang parambang) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class C2CPicUploadProcessor$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.C2CPicUploadProcessor.5
  * JD-Core Version:    0.7.0.1
  */

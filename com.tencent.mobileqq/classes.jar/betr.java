@@ -1,48 +1,30 @@
-import android.os.Bundle;
-import android.util.SparseArray;
-import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
-import com.tencent.qqmini.sdk.manager.EngineChannel;
-import com.tencent.qqmini.sdk.manager.EngineManager.2;
+import android.view.View;
 
-public class betr
-  implements betp
+class betr
+  implements beto
 {
-  public betr(EngineManager.2 param2) {}
+  betr(betq parambetq) {}
   
-  public void a()
-  {
-    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
-    betm localbetm = (betm)betq.b(this.a.this$0).get(this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
-    if (localbetm != null) {
-      localbetm.b(this);
-    }
-  }
+  public void a() {}
   
-  public void a(float paramFloat, String paramString)
+  public void a(boolean paramBoolean)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putFloat("engineInstallerProgress", paramFloat);
-    localBundle.putString("engineInstallerMessage", paramString);
-    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(53, localBundle);
+    this.a.a(true, new View[] { this.a.a });
   }
   
   public void b()
   {
-    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(52, null);
+    this.a.a(false, new View[] { this.a.a });
   }
   
   public void c()
   {
-    this.a.jdField_a_of_type_ComTencentQqminiSdkManagerEngineChannel.a(54, null);
-    betm localbetm = (betm)betq.b(this.a.this$0).get(this.a.jdField_a_of_type_ComTencentQqminiSdkLauncherModelBaseLibInfo.baseLibType);
-    if (localbetm != null) {
-      localbetm.b(this);
-    }
+    this.a.b(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     betr
  * JD-Core Version:    0.7.0.1
  */

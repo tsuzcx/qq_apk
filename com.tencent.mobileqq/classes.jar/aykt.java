@@ -1,148 +1,82 @@
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.drawable.Drawable;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.JobQueue;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.text.QQText.SmallEmojiSpan.1;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aykt
-  extends aykr
+  implements ayjk
 {
-  boolean b;
-  int d;
-  public int e;
-  public int f;
-  
-  public aykt(char[] paramArrayOfChar, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    super(-1, paramInt, 2);
-    this.d = paramInt;
-    this.b = paramBoolean1;
-    this.a = paramBoolean2;
-    paramArrayOfChar = anqz.a(paramArrayOfChar);
-    if ((paramArrayOfChar != null) && (paramArrayOfChar.length == 2))
-    {
-      this.e = paramArrayOfChar[0];
-      this.f = paramArrayOfChar[1];
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQText", 2, "mEpId:" + this.e + ",mEId:" + this.f);
-    }
-  }
-  
-  private void a()
-  {
-    QQText.SmallEmojiSpan.1 local1 = new QQText.SmallEmojiSpan.1(this);
-    try
-    {
-      anvx localanvx = (anvx)((QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(aykk.d())).getManager(43);
-      if (localanvx != null) {
-        localanvx.a.execute(local1, 128, true);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-      }
-    }
-  }
+  public int a;
+  public int b;
+  public int c;
   
   public int a()
   {
-    return this.e;
+    return 0;
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = -1;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.uniteSearch.SearchResultGroupModelImpl", 2, "getPosition(). type=" + paramInt + "  position=" + i);
+      }
+      return i;
+      i = this.a;
+      continue;
+      i = this.b;
+      continue;
+      i = this.c;
+    }
   }
   
   public String a()
   {
-    String str = aykk.c;
-    Emoticon localEmoticon = null;
-    askf localaskf = anzr.a();
-    if (localaskf != null) {
-      localEmoticon = localaskf.a(Integer.toString(this.e), Integer.toString(this.f));
-    }
-    if (localEmoticon != null) {
-      str = localEmoticon.character;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQText", 2, "descp:" + str);
-    }
-    return str;
+    return null;
   }
   
-  public void a(int paramInt)
+  public List<ayjl> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("tag.vasFont.enlarge", 2, "SmallEmojiSpan setSize size: " + paramInt);
-    }
-    this.d = paramInt;
-    this.b = paramInt;
+    return null;
   }
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((!this.a) && (paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2))
+    switch (paramInt1)
     {
-      this.a = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQText", 2, "updateApngFlag mIsAPNG = true");
-      }
+    default: 
+      return;
+    case 1: 
+      this.a = paramInt2;
+      return;
+    case 2: 
+      this.b = paramInt2;
+      return;
     }
+    this.c = paramInt2;
   }
   
-  protected Drawable b()
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = new aocg(aykk.d());
-    Emoticon localEmoticon = new Emoticon();
-    localEmoticon.eId = String.valueOf(this.f);
-    localEmoticon.epId = String.valueOf(this.e);
-    if (!this.b)
-    {
-      localEmoticon.jobType = 3;
-      ((aocg)localObject).a = localEmoticon;
-      localObject = ((aocg)localObject).a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density);
-    }
-    for (;;)
-    {
-      if (localObject != null) {
-        ((Drawable)localObject).setBounds(0, 0, this.d, this.d);
-      }
-      return localObject;
-      localEmoticon.jobType = 3;
-      ((aocg)localObject).a = localEmoticon;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQText", 2, "SmallEmojiSpan doGetDrawable: epid = " + this.e + " eid = " + this.f + " isAPNG = " + this.a);
-      }
-      ((aocg)localObject).b = this.a;
-      localObject = ((aocg)localObject).b(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density);
-      a();
-    }
+    a(2, paramInt1);
+    a(1, paramInt2);
+    a(3, paramInt3);
   }
   
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  public void a(View paramView) {}
+  
+  public String b()
   {
-    if (paramFontMetricsInt != null)
-    {
-      paramFontMetricsInt.ascent = (-this.d);
-      paramFontMetricsInt.descent = 0;
-      paramFontMetricsInt.top = paramFontMetricsInt.ascent;
-      paramFontMetricsInt.bottom = 0;
-    }
-    return this.d;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aykt
  * JD-Core Version:    0.7.0.1
  */

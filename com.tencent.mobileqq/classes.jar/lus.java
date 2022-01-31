@@ -1,175 +1,57 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.Align;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Paint.Style;
-import android.graphics.Path;
-import android.graphics.RectF;
-import com.tencent.qphone.base.util.QLog;
-
 public class lus
-  extends lum
 {
-  public Path a;
-  public RectF a;
-  public String a;
-  lut a;
-  public boolean a;
-  public int b;
-  public long b;
-  public volatile boolean b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
-  public int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public int m;
-  public int n;
-  public int o;
+  private static float jdField_a_of_type_Float = (float)(Math.log(0.75D) / Math.log(0.9D));
+  private static final float[] jdField_a_of_type_ArrayOfFloat;
+  private static float b = 800.0F;
+  private static float c = 0.4F;
+  private static float d = 1.0F - c;
+  private static float e;
+  private static float f = 1.0F / a(1.0F);
   
-  public lus()
+  static
   {
-    this.jdField_b_of_type_Long = 3000L;
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    a(255);
-  }
-  
-  public long a()
-  {
-    return this.jdField_b_of_type_Long;
-  }
-  
-  public void a(long paramLong)
-  {
-    long l1 = this.jdField_a_of_type_Long;
-    if (this.jdField_b_of_type_Long == 0L) {}
-    int i1;
-    do
+    jdField_a_of_type_ArrayOfFloat = new float[101];
+    float f1 = 0.0F;
+    int i = 0;
+    if (i <= 100)
     {
-      return;
-      i1 = (int)((paramLong - l1) * this.g / this.jdField_b_of_type_Long - this.c);
-      a(this.f, i1, this.f + this.jdField_b_of_type_Int, this.c + i1);
-      if ((this.jdField_a_of_type_Lut != null) && (this.jdField_b_of_type_Boolean) && (i1 > this.c))
+      float f4 = i / 100.0F;
+      float f2 = 1.0F;
+      for (;;)
       {
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_a_of_type_Lut.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("RedPacketGameParticleEmoji", 2, "call onShow  top = " + i1 + ",mHeight = " + this.c);
+        float f3 = (f2 - f1) / 2.0F + f1;
+        float f5 = 3.0F * f3 * (1.0F - f3);
+        float f6 = ((1.0F - f3) * c + d * f3) * f5 + f3 * f3 * f3;
+        if (Math.abs(f6 - f4) < 1.E-005D)
+        {
+          jdField_a_of_type_ArrayOfFloat[i] = (f3 * f3 * f3 + f5);
+          i += 1;
+          break;
+        }
+        if (f6 > f4) {
+          f2 = f3;
+        } else {
+          f1 = f3;
         }
       }
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (i1 + this.n);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (this.jdField_a_of_type_AndroidGraphicsRectF.top + this.i);
-    this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.f + this.jdField_b_of_type_Int / 2 - this.l / 2, this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.f + this.jdField_b_of_type_Int / 2 + this.l / 2, this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
-    this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.f + this.jdField_b_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsRectF.bottom + this.m);
-    this.jdField_a_of_type_AndroidGraphicsPath.close();
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    super.a(paramCanvas, paramPaint);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramPaint.setColor(-706970);
-      paramPaint.setStyle(Paint.Style.FILL);
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.j, this.j, paramPaint);
-      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, paramPaint);
-      paramPaint.setColor(-3398);
-      paramPaint.setTextSize(this.k);
-      paramPaint.setTextAlign(Paint.Align.CENTER);
-      Paint.FontMetrics localFontMetrics = paramPaint.getFontMetrics();
-      float f1 = this.jdField_a_of_type_AndroidGraphicsRectF.centerY();
-      float f2 = localFontMetrics.ascent;
-      f2 = (localFontMetrics.descent + f2) / 2.0F;
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsRectF.centerX(), f1 - f2, paramPaint);
     }
+    jdField_a_of_type_ArrayOfFloat[100] = 1.0F;
+    e = 8.0F;
+    f = 1.0F;
   }
   
-  public void a(String paramString)
+  static float a(float paramFloat)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void b()
-  {
-    super.b();
-    this.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_AndroidGraphicsRectF = null;
-    this.jdField_a_of_type_AndroidGraphicsPath = null;
-    this.jdField_a_of_type_Lut = null;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.d != paramInt)
-    {
-      this.d = paramInt;
-      c();
+    paramFloat = e * paramFloat;
+    if (paramFloat < 1.0F) {}
+    for (paramFloat -= 1.0F - (float)Math.exp(-paramFloat);; paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * (1.0F - 0.3678795F) + 0.3678795F) {
+      return paramFloat * f;
     }
-  }
-  
-  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_b_of_type_Int = (paramInt1 * 176 / 750);
-    this.c = (paramInt1 * 176 / 750);
-    this.e = paramInt1;
-    this.g = (this.c + paramInt2);
-    c();
-    this.h = (paramInt1 * 360 / 750);
-    this.i = (paramInt1 * 70 / 750);
-    this.j = (paramInt1 * 5 / 750);
-    this.k = (paramInt1 * 32 / 750);
-    this.l = (paramInt1 * 28 / 750);
-    this.m = (paramInt1 * 16 / 750);
-    this.n = (paramInt1 * -143 / 750);
-    this.o = (paramInt1 * 10 / 750);
-  }
-  
-  public void b(long paramLong)
-  {
-    if (this.jdField_b_of_type_Long != paramLong) {
-      this.jdField_b_of_type_Long = paramLong;
-    }
-    QLog.d("RedPacketGameParticleEmoji", 2, "WL_DEBUG setDuration duration = " + paramLong);
-  }
-  
-  public void c()
-  {
-    this.f = ((this.e - this.jdField_b_of_type_Int * 3) * (this.d + 1) / 4 + this.jdField_b_of_type_Int * this.d);
-    int i3 = this.f + this.jdField_b_of_type_Int / 2 - this.h / 2;
-    int i1 = this.h + i3;
-    int i2 = i3;
-    if (i3 < this.o)
-    {
-      i2 = this.o;
-      i1 = this.h + i2;
-    }
-    i3 = i1;
-    if (i1 > this.e - this.o)
-    {
-      i3 = this.e - this.o;
-      i2 = i3 - this.h;
-    }
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = i2;
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = i3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lus
  * JD-Core Version:    0.7.0.1
  */

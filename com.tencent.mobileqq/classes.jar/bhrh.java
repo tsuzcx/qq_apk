@@ -1,335 +1,221 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.Rect;
+import android.view.KeyEvent;
+import android.view.KeyEvent.DispatcherState;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import com.tencent.widget.BubblePopupWindow;
 
 public class bhrh
-  extends bhsh
+  extends FrameLayout
 {
-  private BroadcastReceiver a;
+  View jdField_a_of_type_AndroidViewView = null;
   
-  public bhrh()
+  public bhrh(BubblePopupWindow paramBubblePopupWindow, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new bhri(this);
+    super(paramContext);
   }
   
-  private void a(int paramInt)
+  private View a(View paramView)
   {
-    switch (paramInt)
-    {
-    case 5: 
-    default: 
-      return;
-    case 1: 
-      e();
-      return;
-    case 2: 
-      b();
-      return;
-    case 3: 
-      c();
-      return;
-    case 4: 
-      d();
-      return;
+    if (paramView.isPressed()) {
+      return paramView;
     }
-    f();
-  }
-  
-  private void g()
-  {
-    try
+    if ((paramView instanceof ViewGroup))
     {
-      IntentFilter localIntentFilter = new IntentFilter("com.tencent.qq.syncSecretShuoshuoMsg");
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.w("QZonePublishSecretShuoShuoH5Plugin", 1, "registerMsgReceiver----", localException);
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, localException, new Object[0]);
-    }
-  }
-  
-  public void a(Intent paramIntent, byte paramByte, int paramInt)
-  {
-    super.a(paramIntent, paramByte, paramInt);
-    switch (paramByte)
-    {
-    default: 
-      return;
-    }
-    if (paramInt == -1)
-    {
-      bhbf.a().a(paramIntent, 0);
-      return;
-    }
-    f();
-  }
-  
-  public void a(WebViewPlugin paramWebViewPlugin)
-  {
-    super.a(paramWebViewPlugin);
-    g();
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, "callback is null");
-    }
-    for (;;)
-    {
-      return;
-      Object localObject = new JSONObject();
-      try
+      paramView = (ViewGroup)paramView;
+      int i = 0;
+      while (i < paramView.getChildCount())
       {
-        ((JSONObject)localObject).put("ret", 0);
-        ((JSONObject)localObject).put("voiceTime", paramLong);
-        localObject = ((JSONObject)localObject).toString();
-        if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() != null))
+        View localView = a(paramView.getChildAt(i));
+        if (localView != null) {
+          return localView;
+        }
+        i += 1;
+      }
+    }
+    return null;
+  }
+  
+  private void a(View paramView1, View paramView2, Rect paramRect)
+  {
+    if (paramView1 == paramView2) {
+      return;
+    }
+    paramRect.top += paramView1.getTop();
+    paramRect.bottom += paramView1.getTop();
+    paramRect.left += paramView1.getLeft();
+    paramRect.right += paramView1.getLeft();
+    a((View)paramView1.getParent(), paramView2, paramRect);
+  }
+  
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  {
+    boolean bool = true;
+    if (paramKeyEvent.getKeyCode() == 4)
+    {
+      if (getKeyDispatcherState() == null) {
+        bool = super.dispatchKeyEvent(paramKeyEvent);
+      }
+      KeyEvent.DispatcherState localDispatcherState;
+      do
+      {
+        return bool;
+        if ((paramKeyEvent.getAction() != 0) || (paramKeyEvent.getRepeatCount() != 0)) {
+          break;
+        }
+        localDispatcherState = getKeyDispatcherState();
+      } while (localDispatcherState == null);
+      localDispatcherState.startTracking(paramKeyEvent, this);
+      return true;
+      if (paramKeyEvent.getAction() == 1)
+      {
+        localDispatcherState = getKeyDispatcherState();
+        if ((localDispatcherState != null) && (localDispatcherState.isTracking(paramKeyEvent)) && (!paramKeyEvent.isCanceled()))
         {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().callJs(paramString, new String[] { localObject });
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, paramString.getMessage());
-      }
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
-      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, "callback is null");
-    }
-    for (;;)
-    {
-      return;
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("ret", 0);
-        localJSONObject.put("voiceData", paramString2);
-        localJSONObject.put("voiceFormat", "amr");
-        paramString2 = localJSONObject.toString();
-        if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() != null))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().callJs(paramString1, new String[] { paramString2 });
-          return;
-        }
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, paramString1.getMessage());
-      }
-    }
-  }
-  
-  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    int k = 0;
-    int j = 0;
-    if ((!paramString2.equals("Qzone")) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null)) {}
-    do
-    {
-      return false;
-      if (paramString3.equalsIgnoreCase("updateFeedsAndPopup"))
-      {
-        paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-        if ((paramJsBridgeListener instanceof bhsq)) {
-          ((bhsq)paramJsBridgeListener).aK();
-        }
-        return true;
-      }
-      if (paramString3.equalsIgnoreCase("editTitleButtons"))
-      {
-        paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-        if ((paramJsBridgeListener instanceof bhsq)) {
-          ((bhsq)paramJsBridgeListener).aL();
-        }
-        return true;
-      }
-      if (paramString3.equalsIgnoreCase("getMoodVoiceRecordTime"))
-      {
-        paramString1 = "";
-        try
-        {
-          paramString2 = new JSONObject(paramVarArgs[0]);
-          paramJsBridgeListener = paramString1;
-          if (paramString2 != null) {
-            paramJsBridgeListener = paramString2.optString("callback");
+          if (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow) != null) {
+            BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a();
           }
+          this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+          return true;
         }
-        catch (JSONException paramJsBridgeListener)
+      }
+      return super.dispatchKeyEvent(paramKeyEvent);
+    }
+    return super.dispatchKeyEvent(paramKeyEvent);
+  }
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if ((BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow) != null) && (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).onTouch(this, paramMotionEvent))) {
+      return true;
+    }
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    if (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow) == null) {
+      return bool;
+    }
+    View localView = a(BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
+    int i;
+    if ((this.jdField_a_of_type_AndroidViewView == null) && (localView == null))
+    {
+      i = 0;
+      if ((i == 0) && ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)))
+      {
+        BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
+        BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
+        BubblePopupWindow.c(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
+        BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).invalidate();
+      }
+      return bool;
+    }
+    this.jdField_a_of_type_AndroidViewView = localView;
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.scrollTo(0, 0);
+      this.jdField_a_of_type_AndroidViewView.getDrawingRect(BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
+      a(this.jdField_a_of_type_AndroidViewView, BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow), BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
+      if (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).left != 0) {
+        break label488;
+      }
+    }
+    label315:
+    label488:
+    for (int j = 1;; j = 0)
+    {
+      if (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).right == BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getWidth()) {
+        i = BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getWidth();
+      }
+      for (int k = 1;; k = 0)
+      {
+        if ((j == 0) || (k == 0))
         {
-          for (;;)
+          this.jdField_a_of_type_AndroidViewView.getDrawingRect(BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
+          a(this.jdField_a_of_type_AndroidViewView, BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow), BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
+          if (j == 0)
           {
-            paramJsBridgeListener.printStackTrace();
-            paramJsBridgeListener = paramString1;
+            j = BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).left;
+            if (k == 0) {
+              i = BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).right;
+            }
           }
         }
-        bhbf.a().a(paramJsBridgeListener, this);
-        return true;
-      }
-      int i;
-      if (paramString3.equalsIgnoreCase("playMoodVoice"))
-      {
-        paramString1 = "";
-        paramJsBridgeListener = paramString1;
-        try
+        for (;;)
         {
-          paramString2 = new JSONObject(paramVarArgs[0]);
-          i = j;
-          paramJsBridgeListener = paramString1;
-          if (paramString2 != null)
+          BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(j, i);
+          BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(j - BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getLeft(), i - BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getLeft());
+          BubblePopupWindow.c(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(j - BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getLeft(), i - BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getLeft());
+          for (i = 0;; i = 1)
           {
-            paramJsBridgeListener = paramString1;
-            paramString1 = paramString2.optString("callback");
-            paramJsBridgeListener = paramString1;
-            i = paramString2.optInt("voiceID");
-            paramJsBridgeListener = paramString1;
+            BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).invalidate();
+            break;
+            BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
+            BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
+            BubblePopupWindow.c(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
           }
+          continue;
+          j = 0;
+          break label315;
+          j = 0;
         }
-        catch (JSONException paramString1)
-        {
-          for (;;)
-          {
-            paramString1.printStackTrace();
-            i = j;
-          }
-        }
-        bhbf.a().a(paramJsBridgeListener, i, this);
-        return true;
+        i = 0;
       }
-      if (paramString3.equalsIgnoreCase("getMoodVoiceData"))
-      {
-        paramString1 = "";
-        paramJsBridgeListener = paramString1;
-        try
-        {
-          paramString2 = new JSONObject(paramVarArgs[0]);
-          i = k;
-          paramJsBridgeListener = paramString1;
-          if (paramString2 != null)
-          {
-            paramJsBridgeListener = paramString1;
-            paramString1 = paramString2.optString("callback");
-            paramJsBridgeListener = paramString1;
-            i = paramString2.optInt("voiceID");
-            paramJsBridgeListener = paramString1;
-          }
-        }
-        catch (JSONException paramString1)
-        {
-          for (;;)
-          {
-            paramString1.printStackTrace();
-            i = k;
-          }
-        }
-        bhbf.a().b(paramJsBridgeListener, i, this);
-        return true;
-      }
-      if (paramString3.equalsIgnoreCase("stopPlayingMoodVoice"))
-      {
-        bhbf.a().d();
-        return true;
-      }
-    } while (!paramString3.equalsIgnoreCase("didPublishMoodVoice"));
-    paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a();
-    if ((paramJsBridgeListener instanceof bhrk)) {
-      ((bhrk)paramJsBridgeListener).b();
-    }
-    return true;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.secret.onRightButtonClick()");
     }
   }
   
-  public void b(String paramString, long paramLong)
+  @TargetApi(8)
+  protected void onConfigurationChanged(Configuration paramConfiguration)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, "callback is null");
-    }
-    for (;;)
+    super.onConfigurationChanged(paramConfiguration);
+    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+  }
+  
+  protected int[] onCreateDrawableState(int paramInt)
+  {
+    if (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow))
     {
+      int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
+      View.mergeDrawableStates(arrayOfInt, BubblePopupWindow.a());
+      return arrayOfInt;
+    }
+    return super.onCreateDrawableState(paramInt);
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    int i = (int)paramMotionEvent.getX();
+    int j = (int)paramMotionEvent.getY();
+    if ((paramMotionEvent.getAction() == 0) && ((i < 0) || (i >= getWidth()) || (j < 0) || (j >= getHeight())))
+    {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+      return true;
+    }
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
+      return true;
+    }
+    return super.onTouchEvent(paramMotionEvent);
+  }
+  
+  public void sendAccessibilityEvent(int paramInt)
+  {
+    if (BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow) != null)
+    {
+      BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).sendAccessibilityEvent(paramInt);
       return;
-      Object localObject = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject).put("ret", 0);
-        ((JSONObject)localObject).put("voiceTime", paramLong);
-        localObject = ((JSONObject)localObject).toString();
-        if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() != null))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().callJs(paramString, new String[] { localObject });
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        QLog.e("QZonePublishSecretShuoShuoH5Plugin", 1, paramString.getMessage());
-      }
     }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.secret.onEditLeftButtonClick()");
-    }
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.secret.onEditRightButtonClick()");
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("window.QZMoodVoiceJSInterface.onRecordDone()");
-    }
-  }
-  
-  public void f()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.callJs("try { window.QZMoodVoiceJSInterface.onRecordCancel() } catch (error) {}");
-    }
+    super.sendAccessibilityEvent(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhrh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.storyHome;
 
-import ajya;
-import bcql;
+import alpo;
+import com.tencent.mobileqq.widget.QQToast;
 
 class VideoEncodeActivity$1$1
   implements Runnable
@@ -11,12 +11,12 @@ class VideoEncodeActivity$1$1
   public void run()
   {
     this.a.this$0.b();
-    bcql.a(this.a.this$0, ajya.a(2131716144), 0).a();
+    QQToast.a(this.a.this$0, alpo.a(2131716516), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.VideoEncodeActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

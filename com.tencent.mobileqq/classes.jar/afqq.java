@@ -1,24 +1,17 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class afqq
-  extends View.AccessibilityDelegate
+  extends aekx
 {
-  public afqq(ContactsBaseFragment paramContactsBaseFragment) {}
+  public ImageView a;
+  public TextView b;
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
-  {
-    int i = paramInt;
-    if (paramInt == 8) {
-      i = 32768;
-    }
-    super.sendAccessibilityEvent(paramView, i);
-  }
+  public afqq(afqp paramafqp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afqq
  * JD-Core Version:    0.7.0.1
  */

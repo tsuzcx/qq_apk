@@ -1,29 +1,24 @@
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import android.os.Bundle;
 
-public class absm
-  extends ajto
+public abstract class absm
+  implements ymm
 {
-  public absm(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  protected abstract void a(boolean paramBoolean, Bundle paramBundle);
   
-  protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
+  public void callback(Bundle paramBundle)
   {
-    if (paramBoolean)
+    paramBundle = paramBundle.getBundle("key_result");
+    if (paramBundle != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      this.a.setResult(-1);
-      this.a.b(2131720050);
-    }
-    for (;;)
-    {
-      this.a.a = false;
-      this.a.finish();
+      a(bool, paramBundle);
       return;
-      this.a.b(2131720048);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absm
  * JD-Core Version:    0.7.0.1
  */

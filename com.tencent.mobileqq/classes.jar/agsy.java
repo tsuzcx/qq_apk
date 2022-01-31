@@ -1,37 +1,26 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.widget.Adapter;
-import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
-import com.tencent.widget.AdapterView;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class agsy
-  implements bfpt
+public class agsy
+  implements agsv
 {
-  agsy(agsu paramagsu) {}
+  agsy(agsw paramagsw) {}
   
-  @TargetApi(11)
-  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a()
   {
-    paramAdapterView = (String)paramAdapterView.getAdapter().getItem(paramInt);
-    if (((NewPhotoPreviewActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramAdapterView) == 1)
-    {
-      if (((NewPhotoPreviewActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).a != null) {
-        ((NewPhotoPreviewActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).a.f();
-      }
-      return;
-    }
-    if (this.a.jdField_a_of_type_Agso.a)
-    {
-      ((NewPhotoPreviewActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).a();
-      return;
-    }
-    ((NewPhotoPreviewActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).b();
+    agsw.a(this.a, agsw.b(this.a));
+    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.2.1(this));
+  }
+  
+  public void b()
+  {
+    agsw.b(this.a, agsw.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agsy
  * JD-Core Version:    0.7.0.1
  */

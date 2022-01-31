@@ -1,23 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
-
-public final class aldu
-  implements Parcelable.Creator<ARCommonConfigInfo.NativeSoRes>
+public class aldu
 {
-  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
-  {
-    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
-  }
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
   
-  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
+  public String toString()
   {
-    return new ARCommonConfigInfo.NativeSoRes[paramInt];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{").append("errCode:").append(this.a).append(",cost:").append(this.b);
+    if (this.c > 0) {
+      localStringBuilder.append(",mem:").append(this.c);
+    }
+    if (this.d > 0) {
+      localStringBuilder.append(",cpu:").append(this.d);
+    }
+    if (this.f != 0) {
+      localStringBuilder.append(",javaHeap:").append(this.f);
+    }
+    if (this.g != 0) {
+      localStringBuilder.append(",nativeHeap:").append(this.g);
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aldu
  * JD-Core Version:    0.7.0.1
  */

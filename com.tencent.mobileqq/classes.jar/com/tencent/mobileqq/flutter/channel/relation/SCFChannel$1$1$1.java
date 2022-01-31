@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.flutter.channel.relation;
 
-import bcql;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 import io.flutter.plugin.common.MethodChannel.Result;
 
 class SCFChannel$1$1$1
@@ -13,16 +13,16 @@ class SCFChannel$1$1$1
   {
     this.a.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result.success(null);
     if (this.a.jdField_a_of_type_JavaLangBoolean.booleanValue()) {}
-    for (int i = 2131699499;; i = 2131699498)
+    for (int i = 2131699852;; i = 2131699851)
     {
-      bcql.a(BaseApplicationImpl.getContext(), 2, i, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 2, i, 0).a();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.relation.SCFChannel.1.1.1
  * JD-Core Version:    0.7.0.1
  */

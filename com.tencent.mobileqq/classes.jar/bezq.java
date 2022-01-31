@@ -1,58 +1,32 @@
-import NS_MINI_INTERFACE.INTERFACE.StCheckSessionReq;
-import NS_MINI_INTERFACE.INTERFACE.StCheckSessionRsp;
-import com.tencent.mobileqq.pb.PBStringField;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.RelativeLayout;
+import com.tencent.open.agent.DeviceFriendListOpenFrame;
 
 public class bezq
-  extends bfau
+  extends Handler
 {
-  private INTERFACE.StCheckSessionReq a = new INTERFACE.StCheckSessionReq();
+  public bezq(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame) {}
   
-  public bezq(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.appid.set(paramString);
-  }
-  
-  protected String a()
-  {
-    return "mini_program_auth";
-  }
-  
-  public JSONObject a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return null;
-    }
-    INTERFACE.StCheckSessionRsp localStCheckSessionRsp = new INTERFACE.StCheckSessionRsp();
-    try
+    switch (paramMessage.what)
     {
-      localStCheckSessionRsp.mergeFrom(a(paramArrayOfByte));
-      if (localStCheckSessionRsp != null) {
-        return new JSONObject();
-      }
-      betc.a("ProtoBufRequest", "onResponse fail.rsp = null");
-      return null;
+    default: 
+      return;
+    case 1: 
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
+      return;
+    case 2: 
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
+      return;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      betc.a("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  public byte[] a()
-  {
-    return this.a.toByteArray();
-  }
-  
-  protected String b()
-  {
-    return "CheckSession";
+    this.a.jdField_a_of_type_Bezr.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bezq
  * JD-Core Version:    0.7.0.1
  */

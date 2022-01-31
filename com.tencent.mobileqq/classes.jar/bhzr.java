@@ -1,45 +1,51 @@
-import SWEET_NEW_BASE.sweet_req_comm;
-import SWEET_NEW_PAIR.sweet_pair_check_req;
-import android.content.Intent;
-import com.qq.taf.jce.JceStruct;
-import cooperation.qzone.QzoneExternalRequest;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
 
 class bhzr
-  extends QzoneExternalRequest
+  extends GestureDetector.SimpleOnGestureListener
 {
-  bhzr(bhzq parambhzq, Intent paramIntent) {}
+  bhzr(bhzk parambhzk) {}
   
-  public String getCmdString()
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    return "SweetQzoneService.getPairState";
+    return true;
   }
   
-  public JceStruct getReq()
+  public void onLongPress(MotionEvent paramMotionEvent)
   {
-    sweet_pair_check_req localsweet_pair_check_req = new sweet_pair_check_req();
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    Object localObject = this.a.findChildView(paramMotionEvent);
+    if (localObject != null)
     {
-      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
-      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
-      localsweet_req_comm.opuin = l;
-      localsweet_req_comm.uin = l;
-      localsweet_req_comm.loveuin = 0L;
-      localsweet_req_comm.qua = bgyi.a();
-      localsweet_req_comm.pf = 1;
-      localsweet_req_comm.src = 3;
-      localsweet_pair_check_req.req_comm = localsweet_req_comm;
+      localObject = this.a.mRecyclerView.getChildViewHolder((View)localObject);
+      if ((localObject != null) && (this.a.mCallback.hasDragFlag(this.a.mRecyclerView, (RecyclerView.ViewHolder)localObject))) {
+        break label57;
+      }
     }
-    return localsweet_pair_check_req;
-  }
-  
-  public String uniKey()
-  {
-    return "getPairState";
+    label57:
+    do
+    {
+      do
+      {
+        return;
+      } while (paramMotionEvent.getPointerId(0) != this.a.mActivePointerId);
+      int i = paramMotionEvent.findPointerIndex(this.a.mActivePointerId);
+      float f1 = paramMotionEvent.getX(i);
+      float f2 = paramMotionEvent.getY(i);
+      this.a.mInitialTouchX = f1;
+      this.a.mInitialTouchY = f2;
+      paramMotionEvent = this.a;
+      this.a.mDy = 0.0F;
+      paramMotionEvent.mDx = 0.0F;
+    } while (!this.a.mCallback.isLongPressDragEnabled());
+    this.a.select((RecyclerView.ViewHolder)localObject, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhzr
  * JD-Core Version:    0.7.0.1
  */

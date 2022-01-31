@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import bccw;
-import bcdp;
-import bcii;
-import bcql;
+import bebx;
+import becq;
+import behj;
+import com.tencent.mobileqq.widget.QQToast;
 
 class MQPSecJsPlugin$4
   implements Runnable
@@ -13,9 +13,9 @@ class MQPSecJsPlugin$4
   
   public void run()
   {
-    bccw localbccw = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-    if ((localbccw != null) && ((localbccw instanceof bcii))) {
-      bcql.a(this.this$0.activity, this.this$0.activity.getString(2131692321), 0).b(((bcii)localbccw).b());
+    bebx localbebx = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
+    if ((localbebx != null) && ((localbebx instanceof behj))) {
+      QQToast.a(this.this$0.activity, this.this$0.activity.getString(2131692397), 0).b(((behj)localbebx).b());
     }
   }
 }

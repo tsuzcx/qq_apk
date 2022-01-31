@@ -1,39 +1,42 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
 
 class aygb
-  implements WtTicketPromise
+  implements View.OnClickListener
 {
-  aygb(ayga paramayga, Runnable paramRunnable) {}
+  aygb(ayga paramayga, String paramString, int paramInt) {}
   
-  public void Done(Ticket paramTicket)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TenDocOCRExportHandler", 2, "--- pskey invalid retry ---  ");
+    paramView = this.jdField_a_of_type_Ayga.a.getActivity();
+    if ((this.jdField_a_of_type_Ayga.a.getActivity() instanceof ayfz))
+    {
+      paramView = (ayfz)paramView;
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      aynt.a(null, new ReportModelDC02528().module("all_search").action("clk_frame_up").ver1(this.jdField_a_of_type_JavaLangString).ver2("kandian").ver3(UniteSearchActivity.d).ver4(this.jdField_a_of_type_Ayga.a.jdField_a_of_type_JavaLangString).ver5(this.jdField_a_of_type_Int / 2 + 1 + "").ver6(UniteSearchActivity.c).session_id(UniteSearchActivity.e));
     }
-    ThreadManager.executeOnNetWorkThread(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey failed ---  " + paramErrMsg.getMessage());
-    }
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TenDocOCRExportHandler", 2, "--- get pskey timeout ---  " + paramErrMsg.getMessage());
+    for (;;)
+    {
+      if (paramView != null) {
+        paramView.c(this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+      if (AssociateSearchWordsFragment.a(this.jdField_a_of_type_Ayga.a) != null) {
+        paramView = AssociateSearchWordsFragment.a(this.jdField_a_of_type_Ayga.a);
+      } else {
+        paramView = null;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aygb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,45 @@
 import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.ChatHistoryViewBase.1;
 
-public class acju
-  extends balg
+public abstract class acju
 {
-  public acju(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public ChatHistoryFileActivity a;
+  public boolean i = true;
   
-  public void a(int paramInt, String paramString)
+  public abstract View a();
+  
+  public void a(int paramInt) {}
+  
+  public void a(long paramLong) {}
+  
+  public void b() {}
+  
+  public abstract boolean b();
+  
+  public void c() {}
+  
+  protected boolean c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList error");
-    }
-    TroopMemberListActivity.a(this.a, true);
-    if (TroopMemberListActivity.b(this.a))
-    {
-      paramString = this.a.a.obtainMessage(12, null);
-      this.a.a.sendMessage(paramString);
-    }
+    return this.i;
   }
   
-  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
+  public void d() {}
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  protected void k()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList");
-    }
-    TroopMemberListActivity.a(this.a, paramArrayOfLong1);
-    TroopMemberListActivity.b(this.a, paramArrayOfLong2);
-    TroopMemberListActivity.c(this.a, paramArrayOfLong3);
-    TroopMemberListActivity.a(this.a, true);
-    if (TroopMemberListActivity.b(this.a))
-    {
-      paramArrayOfLong1 = this.a.a.obtainMessage(12, null);
-      this.a.a.sendMessage(paramArrayOfLong1);
-    }
+    this.i = false;
+    new Handler().postDelayed(new ChatHistoryViewBase.1(this), 1500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acju
  * JD-Core Version:    0.7.0.1
  */

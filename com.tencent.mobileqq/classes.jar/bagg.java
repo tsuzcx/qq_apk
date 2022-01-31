@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.troopCard.VisitorTroopCardFragment;
+import com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity.3;
+import com.tencent.qphone.base.util.QLog;
 
 public class bagg
-  implements DialogInterface.OnClickListener
+  implements bdzz
 {
-  public bagg(VisitorTroopCardFragment paramVisitorTroopCardFragment, boolean paramBoolean) {}
+  public bagg(GroupTeamWorkListActivity.3 param3) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      bagx.a(2, new Object());
+    if ((paramBoolean) && (QLog.isColorLevel())) {
+      QLog.i("Tag_webView", 1, "Web_qqbrowser_web TeamWorkList preloadWebProcess success! ");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bagg
  * JD-Core Version:    0.7.0.1
  */

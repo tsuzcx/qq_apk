@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity;
 
-import abpe;
-import abpf;
-import abpg;
-import abph;
-import ajti;
-import ajto;
-import ajud;
+import adgm;
+import adgn;
+import adgo;
+import adgp;
+import alkv;
+import allb;
+import allq;
 import android.content.Intent;
 import android.os.Bundle;
-import axqy;
-import bbdj;
-import bbgu;
+import azmj;
+import bdcd;
+import bdfq;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -21,55 +21,55 @@ public class NotifyPCActiveActivity
 {
   public static NotifyPCActiveActivity a;
   private int jdField_a_of_type_Int;
-  private ajto jdField_a_of_type_Ajto = new abph(this);
-  private bbgu jdField_a_of_type_Bbgu;
+  private allb jdField_a_of_type_Allb = new adgp(this);
+  private bdfq jdField_a_of_type_Bdfq;
   
   private void a()
   {
-    ajud localajud = (ajud)this.app.a(4);
-    if (localajud != null) {
-      localajud.a();
+    allq localallq = (allq)this.app.a(4);
+    if (localallq != null) {
+      localallq.a();
     }
   }
   
   private void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
-      this.jdField_a_of_type_Bbgu.dismiss();
+    if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {
+      this.jdField_a_of_type_Bdfq.dismiss();
     }
-    this.jdField_a_of_type_Bbgu = null;
+    this.jdField_a_of_type_Bdfq = null;
     switch (paramInt)
     {
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Bbgu != null)
+      if (this.jdField_a_of_type_Bdfq != null)
       {
-        this.jdField_a_of_type_Bbgu.setCancelable(false);
-        this.jdField_a_of_type_Bbgu.show();
+        this.jdField_a_of_type_Bdfq.setCancelable(false);
+        this.jdField_a_of_type_Bdfq.show();
       }
       return;
-      this.app.addObserver(this.jdField_a_of_type_Ajto, true);
-      Object localObject1 = (ajti)this.app.a(2);
+      this.app.addObserver(this.jdField_a_of_type_Allb, true);
+      Object localObject1 = (alkv)this.app.a(2);
       Object localObject3 = getIntent().getExtras();
       Object localObject2 = ((Bundle)localObject3).getString("Message");
       String str = ((Bundle)localObject3).getString("lButton");
       localObject3 = ((Bundle)localObject3).getString("rButton");
-      this.jdField_a_of_type_Bbgu = bbdj.a(this, 230);
-      this.jdField_a_of_type_Bbgu.setContentView(2131558883);
-      this.jdField_a_of_type_Bbgu.setTitle(null).setMessage((CharSequence)localObject2).setPositiveButton((String)localObject3, new abpf(this, (ajti)localObject1)).setNegativeButton(str, new abpe(this));
+      this.jdField_a_of_type_Bdfq = bdcd.a(this, 230);
+      this.jdField_a_of_type_Bdfq.setContentView(2131558920);
+      this.jdField_a_of_type_Bdfq.setTitle(null).setMessage((CharSequence)localObject2).setPositiveButton((String)localObject3, new adgn(this, (alkv)localObject1)).setNegativeButton(str, new adgm(this));
       continue;
       localObject2 = getIntent().getExtras();
       localObject1 = ((Bundle)localObject2).getString("Message");
       localObject2 = ((Bundle)localObject2).getString("button");
-      this.jdField_a_of_type_Bbgu = bbdj.a(this, 230).setMessage((CharSequence)localObject1).setPositiveButton((String)localObject2, new abpg(this));
+      this.jdField_a_of_type_Bdfq = bdcd.a(this, 230).setMessage((CharSequence)localObject1).setPositiveButton((String)localObject2, new adgo(this));
     }
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559347);
+    super.setContentView(2131559399);
     jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity = this;
     this.jdField_a_of_type_Int = getIntent().getIntExtra("type", 0);
     paramBundle = getIntent().getAction();
@@ -78,7 +78,7 @@ public class NotifyPCActiveActivity
     }
     if ("mqq.intent.action.PCACTIVE_TIPS".equals(paramBundle))
     {
-      axqy.b(null, "CliOper", "", "", "0X8004975", "0X8004975", 0, 0, "", "", "", "");
+      azmj.b(null, "CliOper", "", "", "0X8004975", "0X8004975", 0, 0, "", "", "", "");
       this.jdField_a_of_type_Int = 1;
       a();
     }
@@ -94,7 +94,7 @@ public class NotifyPCActiveActivity
   
   public void doOnDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_Ajto);
+    this.app.removeObserver(this.jdField_a_of_type_Allb);
     super.doOnDestroy();
     if (jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity != null) {
       jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity = null;
@@ -126,17 +126,17 @@ public class NotifyPCActiveActivity
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_Bbgu != null) && (this.jdField_a_of_type_Bbgu.isShowing())) {
-      this.jdField_a_of_type_Bbgu.dismiss();
+    if ((this.jdField_a_of_type_Bdfq != null) && (this.jdField_a_of_type_Bdfq.isShowing())) {
+      this.jdField_a_of_type_Bdfq.dismiss();
     }
-    this.jdField_a_of_type_Bbgu = null;
+    this.jdField_a_of_type_Bdfq = null;
     super.finish();
     jdField_a_of_type_ComTencentMobileqqActivityNotifyPCActiveActivity = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotifyPCActiveActivity
  * JD-Core Version:    0.7.0.1
  */

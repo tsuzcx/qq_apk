@@ -1,76 +1,56 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.xmldata.QavVideoData;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.os.Build.VERSION;
+import android.os.MessageQueue.IdleHandler;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class anqd
-  extends anpn
+  implements MessageQueue.IdleHandler
 {
-  public anqd(QQAppInterface paramQQAppInterface)
-  {
-    super("qq.android.qav.video", paramQQAppInterface);
-  }
+  public anqd(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public int a()
+  public boolean queueIdle()
   {
-    return 10049;
-  }
-  
-  public Class<? extends XmlData> a()
-  {
-    return QavVideoData.class;
-  }
-  
-  public String a()
-  {
-    return "qavDownloadVideoDuration";
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QavVideoDownloadHandler", 2, "download success: " + paramString);
+    if (azcw.d(azcw.b)) {
+      this.a.a(true);
     }
-    try
+    for (;;)
     {
-      bbdx.a(paramString, mrs.c(), false);
-      return;
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+      DynamicAvatarRecordActivity.a(this.a);
+      if (Build.VERSION.SDK_INT < 14) {
+        this.a.jdField_a_of_type_Bdfq = bdcd.a(this.a, 230).setMessage(alpo.a(2131703948)).setPositiveButton(this.a.getString(2131694205), new anqe(this));
+      }
+      try
+      {
+        this.a.jdField_a_of_type_Bdfq.setCancelable(false);
+        this.a.jdField_a_of_type_Bdfq.show();
+        if (QLog.isColorLevel()) {
+          QLog.i("PEAK_CAMERA", 2, "Added camera view.");
+        }
+        return false;
+        this.a.a(false);
+      }
+      catch (WindowManager.BadTokenException localBadTokenException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("DynamicAvatarRecordActivity", 2, "", localBadTokenException);
+          }
+        }
+      }
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    QavVideoData localQavVideoData = (QavVideoData)a();
-    if ((localQavVideoData != null) && (!localQavVideoData.autoDownload))
-    {
-      localQavVideoData.autoDownload = true;
-      anpb.a(localQavVideoData, new String[] { "autoDownload" });
-    }
-    super.a(paramBoolean);
-  }
-  
-  public boolean a()
-  {
-    return true;
-  }
-  
-  public String b()
-  {
-    return null;
-  }
-  
-  public boolean h()
-  {
-    return ((QavVideoData)a()).autoDownload;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anqd
  * JD-Core Version:    0.7.0.1
  */

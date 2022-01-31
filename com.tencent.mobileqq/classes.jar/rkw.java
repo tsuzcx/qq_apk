@@ -1,21 +1,12 @@
-class rkw
-  extends osm
+public abstract interface rkw
 {
-  rkw(rkv paramrkv, rku paramrku) {}
+  public abstract void a(rjk paramrjk1, rjk paramrjk2);
   
-  public void a(boolean paramBoolean, int paramInt, String paramString)
-  {
-    rkv.a(this.jdField_a_of_type_Rkv, paramBoolean, paramInt, paramString);
-  }
-  
-  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
-  {
-    rkv.a(this.jdField_a_of_type_Rkv, paramBoolean, paramLong, paramInt, paramString);
-  }
+  public abstract void l();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkw
  * JD-Core Version:    0.7.0.1
  */

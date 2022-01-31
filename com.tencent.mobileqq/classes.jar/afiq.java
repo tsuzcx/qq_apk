@@ -1,49 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
 public class afiq
-  extends Handler
+  extends VasQuickUpdateManager.CallBacker
 {
-  public WeakReference<GroupSearchRecommendView> a;
+  afiq(afij paramafij) {}
   
-  public afiq(GroupSearchRecommendView paramGroupSearchRecommendView)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    this.a = new WeakReference(paramGroupSearchRecommendView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    GroupSearchRecommendView localGroupSearchRecommendView = (GroupSearchRecommendView)this.a.get();
-    if (localGroupSearchRecommendView == null) {
-      return;
-    }
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    if ((paramString1.equals("poke.effectList")) && (paramInt1 == 0))
     {
-    default: 
-      return;
-    case 1: 
-      GroupSearchRecommendView.a(localGroupSearchRecommendView);
-      return;
-    case 2: 
       if (QLog.isColorLevel()) {
-        QLog.i("GroupSearchRecommendView", 2, "fetch data successfully");
+        QLog.d("GivingHeart", 2, "download vas poke list from GivingHeartItemBuilder, update pokeSvipMap now.");
       }
-      GroupSearchRecommendView.a(localGroupSearchRecommendView, false);
-      return;
+      ThreadManager.getFileThreadHandler().post(new GivingHeartItemBuilder.4.1(this));
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("GroupSearchRecommendView", 2, "fetch data failed");
-    }
-    GroupSearchRecommendView.a(localGroupSearchRecommendView, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afiq
  * JD-Core Version:    0.7.0.1
  */

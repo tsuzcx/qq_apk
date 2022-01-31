@@ -1,267 +1,330 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Color;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.ViewConfiguration;
+import android.view.animation.AnimationUtils;
 
-public class myb
+class myb
 {
-  public static final int a;
-  public static myb a;
-  public static final int b;
-  public static final int c;
-  public static final int d = Color.argb(154, 255, 255, 255);
-  public static final int e = Color.rgb(19, 19, 19);
-  public HashMap<String, myd> a;
-  public mye a;
-  public myf a;
-  public boolean a;
+  private static final float[] jdField_a_of_type_ArrayOfFloat;
+  private static final float[] jdField_b_of_type_ArrayOfFloat;
+  private static float jdField_d_of_type_Float;
+  private static float jdField_e_of_type_Float;
+  private double jdField_a_of_type_Double;
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private boolean jdField_a_of_type_Boolean = true;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private float jdField_c_of_type_Float = ViewConfiguration.getScrollFriction();
+  private int jdField_c_of_type_Int;
+  private int jdField_d_of_type_Int;
+  private int jdField_e_of_type_Int;
+  private float jdField_f_of_type_Float;
+  private int jdField_f_of_type_Int;
+  private int g;
+  private int h;
+  private int i = 0;
   
   static
   {
-    jdField_a_of_type_Int = Color.rgb(64, 64, 65);
-    jdField_b_of_type_Int = Color.rgb(166, 166, 166);
-    jdField_c_of_type_Int = Color.argb(205, 255, 255, 255);
-  }
-  
-  public myb()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
-  
-  public static String a(int paramInt)
-  {
-    return "http://pub.idqqimg.com/pc/group/anony/portrait/img/" + paramInt + ".png";
-  }
-  
-  public static String a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    float f2 = 0.0F;
+    jdField_e_of_type_Float = (float)(Math.log(0.78D) / Math.log(0.9D));
+    jdField_a_of_type_ArrayOfFloat = new float[101];
+    jdField_b_of_type_ArrayOfFloat = new float[101];
+    int j = 0;
+    float f1 = 0.0F;
+    if (j < 100)
     {
-      localJSONObject.put("flags", paramInt1);
-      localJSONObject.put("an_id", paramString1);
-      localJSONObject.put("an_nick", paramString2);
-      localJSONObject.put("head_protrait", paramInt2);
-      localJSONObject.put("expire_time", paramInt3);
-      localJSONObject.put("rankColor", paramString3);
-      paramString1 = localJSONObject.toString();
-      return paramString1;
+      float f5 = j / 100.0F;
+      float f3 = 1.0F;
+      label55:
+      float f4 = (f3 - f1) / 2.0F + f1;
+      float f6 = 3.0F * f4 * (1.0F - f4);
+      float f7 = ((1.0F - f4) * 0.175F + 0.35F * f4) * f6 + f4 * f4 * f4;
+      if (Math.abs(f7 - f5) < 1.E-005D)
+      {
+        jdField_a_of_type_ArrayOfFloat[j] = (f4 * (f4 * f4) + f6 * ((1.0F - f4) * 0.5F + f4));
+        f3 = 1.0F;
+      }
+      for (;;)
+      {
+        f4 = (f3 - f2) / 2.0F + f2;
+        f6 = 3.0F * f4 * (1.0F - f4);
+        f7 = ((1.0F - f4) * 0.5F + f4) * f6 + f4 * f4 * f4;
+        if (Math.abs(f7 - f5) < 1.E-005D)
+        {
+          jdField_b_of_type_ArrayOfFloat[j] = (f4 * (f4 * f4) + ((1.0F - f4) * 0.175F + 0.35F * f4) * f6);
+          j += 1;
+          break;
+          if (f7 > f5)
+          {
+            f3 = f4;
+            break label55;
+          }
+          f1 = f4;
+          break label55;
+        }
+        if (f7 > f5) {
+          f3 = f4;
+        } else {
+          f2 = f4;
+        }
+      }
     }
-    catch (JSONException paramString1)
+    float[] arrayOfFloat = jdField_a_of_type_ArrayOfFloat;
+    jdField_b_of_type_ArrayOfFloat[100] = 1.0F;
+    arrayOfFloat[100] = 1.0F;
+  }
+  
+  private double a(int paramInt)
+  {
+    return Math.log(0.35F * Math.abs(paramInt) / (this.jdField_c_of_type_Float * jdField_d_of_type_Float));
+  }
+  
+  private int a(int paramInt)
+  {
+    return (int)(Math.exp(a(paramInt) / (jdField_e_of_type_Float - 1.0D)) * 1000.0D);
+  }
+  
+  private void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    float f1 = Math.abs((paramInt3 - paramInt1) / (paramInt2 - paramInt1));
+    paramInt1 = (int)(100.0F * f1);
+    if (paramInt1 < 100)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AnonymousChatHelper", 2, "getJsonStr JSONException:" + paramString1.toString());
-      }
-      paramString1.printStackTrace();
+      float f2 = paramInt1 / 100.0F;
+      float f3 = (paramInt1 + 1) / 100.0F;
+      float f4 = jdField_b_of_type_ArrayOfFloat[paramInt1];
+      float f5 = jdField_b_of_type_ArrayOfFloat[(paramInt1 + 1)];
+      this.jdField_e_of_type_Int = ((int)(((f1 - f2) / (f3 - f2) * (f5 - f4) + f4) * this.jdField_e_of_type_Int));
     }
-    return "";
   }
   
-  public static myb a()
+  static void a(Context paramContext)
   {
-    if (jdField_a_of_type_Myb == null) {
-      jdField_a_of_type_Myb = new myb();
-    }
-    return jdField_a_of_type_Myb;
+    jdField_d_of_type_Float = paramContext.getResources().getDisplayMetrics().density * 160.0F * 386.0878F * 0.84F;
   }
   
-  public static myc a(MessageRecord paramMessageRecord)
+  private double b(int paramInt)
   {
-    Object localObject = paramMessageRecord.getExtInfoFromExtStr("anonymous");
-    paramMessageRecord = new myc();
-    try
+    double d1 = a(paramInt);
+    double d2 = jdField_e_of_type_Float;
+    double d3 = this.jdField_c_of_type_Float * jdField_d_of_type_Float;
+    return Math.exp(d1 * (jdField_e_of_type_Float / (d2 - 1.0D))) * d3;
+  }
+  
+  private void b()
+  {
+    long l = this.jdField_a_of_type_Long;
+    l = this.jdField_e_of_type_Int + l;
+    int j = (int)(this.jdField_e_of_type_Int / this.jdField_f_of_type_Int * 100.0F);
+    float f1 = 0.0F;
+    if (j < 100)
     {
-      localObject = new JSONObject((String)localObject);
-      if (((JSONObject)localObject).has("flags")) {
-        paramMessageRecord.jdField_a_of_type_Int = ((JSONObject)localObject).getInt("flags");
-      }
-      if (((JSONObject)localObject).has("an_id")) {
-        paramMessageRecord.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).getString("an_id");
-      }
-      if (((JSONObject)localObject).has("an_nick")) {
-        paramMessageRecord.jdField_b_of_type_JavaLangString = ((JSONObject)localObject).getString("an_nick");
-      }
-      if (((JSONObject)localObject).has("head_protrait")) {
-        paramMessageRecord.jdField_b_of_type_Int = ((JSONObject)localObject).getInt("head_protrait");
-      }
-      if (((JSONObject)localObject).has("expire_time")) {
-        paramMessageRecord.jdField_c_of_type_Int = ((JSONObject)localObject).getInt("expire_time");
-      }
-      if (((JSONObject)localObject).has("rankColor")) {
-        paramMessageRecord.jdField_c_of_type_JavaLangString = ((JSONObject)localObject).optString("rankColor");
-      }
-      return paramMessageRecord;
+      f1 = j / 100.0F;
+      float f2 = (j + 1) / 100.0F;
+      float f3 = jdField_a_of_type_ArrayOfFloat[j];
+      f1 = (jdField_a_of_type_ArrayOfFloat[(j + 1)] - f3) / (f2 - f1);
     }
-    catch (JSONException localJSONException)
+    this.jdField_a_of_type_Float = (f1 * this.g / this.jdField_f_of_type_Int * 1000.0F);
+    this.jdField_b_of_type_Float = ((float)((this.jdField_a_of_type_Float - this.jdField_a_of_type_Double) / (l - this.jdField_b_of_type_Long) * 1000.0D));
+    a(this.jdField_c_of_type_Int, this.h, (int)this.jdField_a_of_type_Float, 400);
+    this.jdField_a_of_type_Long = l;
+    b();
+  }
+  
+  private void b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.i = 1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+    this.h = (paramInt2 - paramInt1);
+    this.jdField_e_of_type_Int = 400;
+  }
+  
+  void a()
+  {
+    this.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  void a(float paramFloat)
+  {
+    this.jdField_c_of_type_Float = paramFloat;
+  }
+  
+  void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    float f2 = 0.09606F * paramInt2 / (1.E-005F * paramInt4);
+    if (paramInt3 > 0) {}
+    for (float f1 = 10.0F;; f1 = -10.0F)
     {
-      localJSONException.printStackTrace();
-    }
-    return paramMessageRecord;
-  }
-  
-  public static boolean a(Context paramContext, QQAppInterface paramQQAppInterface)
-  {
-    paramContext = paramContext.getSharedPreferences("anonymous_chat", 0);
-    if (paramContext.getBoolean("first_enter_anonymous" + paramQQAppInterface.getCurrentAccountUin(), true))
-    {
-      paramContext.edit().putBoolean("first_enter_anonymous" + paramQQAppInterface.getCurrentAccountUin(), false).commit();
-      return true;
-    }
-    return false;
-  }
-  
-  public static boolean a(MessageRecord paramMessageRecord)
-  {
-    return (paramMessageRecord.extLong & 0x3) == 3;
-  }
-  
-  public static boolean b(MessageRecord paramMessageRecord)
-  {
-    if (((paramMessageRecord instanceof ChatMessage)) && (((ChatMessage)paramMessageRecord).fakeSenderType == 2)) {}
-    for (int i = 1;; i = 0) {
-      return (i == 0) && (!paramMessageRecord.isMultiMsg) && (a(paramMessageRecord).jdField_a_of_type_Int == 2);
-    }
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    while (this.jdField_a_of_type_Mye == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_Mye.jdField_c_of_type_JavaLangString;
-  }
-  
-  public myd a(String paramString)
-  {
-    return (myd)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
-  }
-  
-  public void a(MessageRecord paramMessageRecord)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      if ((paramMessageRecord.longMsgCount == paramMessageRecord.longMsgIndex + 1) || (paramMessageRecord.longMsgCount == 0)) {
-        this.jdField_a_of_type_Boolean = false;
+      if (Math.abs(paramInt3) < f2) {
+        f1 = paramInt3 * 10.0F / f2;
       }
-    }
-    while (!a(paramMessageRecord.frienduin)) {
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_c_of_type_Int = paramInt1;
+      this.jdField_d_of_type_Int = paramInt3;
+      this.h = paramInt2;
+      this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+      this.jdField_e_of_type_Int = paramInt4;
+      this.jdField_f_of_type_Float = f1;
+      this.i = 3;
       return;
     }
-    myd localmyd = a(paramMessageRecord.frienduin);
-    paramMessageRecord.vipBubbleID = localmyd.jdField_a_of_type_Long;
-    paramMessageRecord.extLong |= 0x3;
-    paramMessageRecord.saveExtInfoToExtStr("anonymous", a(2, localmyd.jdField_b_of_type_JavaLangString, localmyd.jdField_a_of_type_JavaLangString, localmyd.jdField_a_of_type_Int, localmyd.jdField_b_of_type_Int, localmyd.jdField_c_of_type_JavaLangString));
   }
   
-  public void a(String paramString1, long paramLong, int paramInt1, String paramString2, int paramInt2, String paramString3, String paramString4)
+  void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("AnonymousUpdate", 2, "nickName=" + paramString2 + ", vipBubbleId=" + paramLong + ", headId=" + paramInt1);
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString1))
+    this.h = paramInt5;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_d_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Float = paramInt2;
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_e_of_type_Int = 0;
+    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt1;
+    if ((paramInt1 > paramInt4) || (paramInt1 < paramInt3))
     {
-      localmyd = (myd)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1);
-      localmyd.jdField_a_of_type_Int = paramInt1;
-      if ((paramString2 != null) && (!paramString2.equals(localmyd.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_Myf != null)) {
-        this.jdField_a_of_type_Myf.a(paramString1, paramString2);
+      if (paramInt1 > paramInt4) {}
+      for (;;)
+      {
+        b(paramInt1, paramInt4, paramInt2);
+        return;
+        paramInt4 = paramInt3;
       }
-      localmyd.jdField_a_of_type_JavaLangString = paramString2;
-      localmyd.jdField_a_of_type_Long = paramLong;
-      localmyd.jdField_b_of_type_Int = paramInt2;
-      localmyd.jdField_b_of_type_JavaLangString = paramString3;
-      localmyd.jdField_c_of_type_JavaLangString = paramString4;
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localmyd);
-      return;
     }
-    myd localmyd = new myd(this, false);
-    localmyd.jdField_a_of_type_Int = paramInt1;
-    localmyd.jdField_a_of_type_JavaLangString = paramString2;
-    localmyd.jdField_a_of_type_Long = paramLong;
-    localmyd.jdField_b_of_type_Int = paramInt2;
-    localmyd.jdField_b_of_type_JavaLangString = paramString3;
-    localmyd.jdField_c_of_type_JavaLangString = paramString4;
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1, localmyd);
-  }
-  
-  public void a(String paramString1, String paramString2, MessageRecord paramMessageRecord)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramMessageRecord == null)) {}
+    this.i = 0;
+    double d1 = 0.0D;
+    if (paramInt2 != 0)
+    {
+      paramInt5 = a(paramInt2);
+      this.jdField_f_of_type_Int = paramInt5;
+      this.jdField_e_of_type_Int = paramInt5;
+      this.jdField_b_of_type_Float = ((float)(a(paramInt2) * 1000.0D));
+      d1 = b(paramInt2);
+    }
+    this.g = ((int)(d1 * Math.signum(paramInt2)));
+    this.jdField_c_of_type_Int = (this.g + paramInt1);
+    if (this.jdField_c_of_type_Int < paramInt3)
+    {
+      a(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, paramInt3);
+      this.jdField_c_of_type_Int = paramInt3;
+    }
     do
     {
-      return;
-      paramMessageRecord = xmk.a(paramMessageRecord);
-    } while (TextUtils.isEmpty(paramMessageRecord));
-    if (this.jdField_a_of_type_Mye == null) {
-      this.jdField_a_of_type_Mye = new mye(this);
-    }
-    this.jdField_a_of_type_Mye.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Mye.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Mye.jdField_c_of_type_JavaLangString = paramMessageRecord;
-  }
-  
-  public void a(myf parammyf)
-  {
-    this.jdField_a_of_type_Myf = parammyf;
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+      for (;;)
+      {
+        this.jdField_a_of_type_Double = paramInt2;
+        this.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
+        return;
+        if (this.jdField_c_of_type_Int <= paramInt4) {
+          break;
+        }
+        a(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, paramInt4);
+        this.jdField_c_of_type_Int = paramInt4;
+      }
+    } while ((this.g == 0) || (paramInt6 <= 0) || (this.jdField_c_of_type_Int % paramInt6 == 0));
+    if (paramInt2 > 0)
     {
-      ((myd)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new myd(this, paramBoolean));
-  }
-  
-  public boolean a(String paramString)
-  {
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
-      return ((myd)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).jdField_a_of_type_Boolean;
-    }
-    return false;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Myf = null;
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      if ((paramMessageRecord.longMsgCount == paramMessageRecord.longMsgIndex + 1) || (paramMessageRecord.longMsgCount == 0)) {
-        this.jdField_a_of_type_Boolean = false;
+      paramInt3 = this.jdField_c_of_type_Int / paramInt6 * paramInt6;
+      paramInt4 = (this.jdField_c_of_type_Int / paramInt6 + 1) * paramInt6;
+      if ((Math.abs(paramInt4 - this.jdField_c_of_type_Int) < Math.abs(this.jdField_c_of_type_Int - paramInt3)) || (paramInt3 < paramInt1)) {
+        this.jdField_c_of_type_Int = paramInt4;
       }
     }
-    while (!a(paramMessageRecord.frienduin)) {
-      return;
+    for (;;)
+    {
+      this.g = (this.jdField_c_of_type_Int - paramInt1);
+      break;
+      this.jdField_c_of_type_Int = paramInt3;
+      continue;
+      paramInt3 = this.jdField_c_of_type_Int / paramInt6 * paramInt6;
+      paramInt4 = (this.jdField_c_of_type_Int / paramInt6 - 1) * paramInt6;
+      if ((Math.abs(paramInt4 - this.jdField_c_of_type_Int) < Math.abs(this.jdField_c_of_type_Int - paramInt3)) || (paramInt3 > paramInt1)) {
+        this.jdField_c_of_type_Int = paramInt4;
+      } else {
+        this.jdField_c_of_type_Int = paramInt3;
+      }
     }
-    myd localmyd = a(paramMessageRecord.frienduin);
-    paramMessageRecord.vipBubbleID = localmyd.jdField_a_of_type_Long;
-    paramMessageRecord.extLong |= 0x3;
-    paramMessageRecord.saveExtInfoToExtStr("anonymous", a(2, null, localmyd.jdField_a_of_type_JavaLangString, localmyd.jdField_a_of_type_Int, localmyd.jdField_b_of_type_Int, localmyd.jdField_c_of_type_JavaLangString));
+  }
+  
+  boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    switch (this.i)
+    {
+    }
+    for (;;)
+    {
+      b();
+      bool1 = true;
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (this.jdField_e_of_type_Int >= this.jdField_f_of_type_Int);
+      b();
+    }
+  }
+  
+  void b(float paramFloat)
+  {
+    this.jdField_b_of_type_Int = (this.jdField_a_of_type_Int + Math.round((this.jdField_c_of_type_Int - this.jdField_a_of_type_Int) * paramFloat));
+  }
+  
+  boolean b()
+  {
+    float f2 = 1.0F;
+    long l1 = AnimationUtils.currentAnimationTimeMillis();
+    long l2 = l1 - this.jdField_a_of_type_Long;
+    if (l2 > this.jdField_e_of_type_Int) {
+      return false;
+    }
+    double d1;
+    switch (this.i)
+    {
+    case 2: 
+    default: 
+      d1 = 0.0D;
+    }
+    for (;;)
+    {
+      int j = this.jdField_a_of_type_Int;
+      this.jdField_b_of_type_Int = ((int)Math.round(d1) + j);
+      return true;
+      float f3 = (float)l2 / this.jdField_f_of_type_Int;
+      j = (int)(100.0F * f3);
+      float f1 = 0.0F;
+      if (j < 100)
+      {
+        f2 = j / 100.0F;
+        f1 = (j + 1) / 100.0F;
+        float f4 = jdField_a_of_type_ArrayOfFloat[j];
+        f1 = (jdField_a_of_type_ArrayOfFloat[(j + 1)] - f4) / (f1 - f2);
+        f2 = (f3 - f2) * f1 + f4;
+      }
+      d1 = f2 * this.g;
+      this.jdField_a_of_type_Float = (f1 * this.g / this.jdField_f_of_type_Int * 1000.0F);
+      this.jdField_b_of_type_Float = ((float)((this.jdField_a_of_type_Float - this.jdField_a_of_type_Double) / (l1 - this.jdField_b_of_type_Long) * 1000.0D));
+      continue;
+      d1 = mya.a((float)l2 / this.jdField_e_of_type_Int) * this.h;
+      continue;
+      f1 = (float)l2 / this.jdField_e_of_type_Int - 1.0F;
+      f2 = this.h;
+      d1 = (f1 * this.jdField_f_of_type_Float + this.jdField_f_of_type_Float) * (f2 * f1 * f1 * f1 * f1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     myb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,270 +1,383 @@
+import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.IntentFilter;
+import android.net.Uri;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.intervideo.groupvideo.IVPluginDataReporter;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.util.ArrayList;
-import mqq.util.WeakReference;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class asxr
+  extends WebViewPlugin
 {
-  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  WeakReference<ayxs> jdField_a_of_type_MqqUtilWeakReference;
-  boolean jdField_a_of_type_Boolean = false;
-  ArrayList<asxv> b = new ArrayList();
+  private int jdField_a_of_type_Int = 1;
+  public long a;
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new asxw(this);
+  protected Context a;
+  private Handler jdField_a_of_type_AndroidOsHandler = new asxu(this, Looper.getMainLooper());
+  private asuy jdField_a_of_type_Asuy;
+  private asxa jdField_a_of_type_Asxa;
+  private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter;
+  public String a;
+  public long b;
+  public String b;
+  private long c;
+  public String c;
+  public String d;
+  private String e = "";
+  private String f = "com.tencent.huiyin";
   
-  private static String a()
+  public asxr()
   {
-    Object localObject1 = null;
-    Object localObject2 = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localObject2 != null)
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.mPluginNameSpace = "huiyin";
+  }
+  
+  private JSONObject a(int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      localObject2 = ((File)localObject2).getAbsolutePath() + "/pddata/prd/common_resources";
-      File localFile = new File((String)localObject2);
-      localObject1 = localObject2;
-      if (!localFile.exists())
-      {
-        localFile.mkdirs();
-        localObject1 = localObject2;
-      }
+      localJSONObject.putOpt("state", Integer.valueOf(paramInt));
+      return localJSONObject;
     }
-    return localObject1;
-  }
-  
-  public static String a(String paramString1, String paramString2)
-  {
-    return c(paramString2);
-  }
-  
-  private void a(String paramString1, String arg2, boolean paramBoolean, asxw paramasxw)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZipResourcesDownloader", 2, "onDownloadEnd url:" + paramString1 + " success:" + paramBoolean + " mDestroyed:" + this.jdField_a_of_type_Boolean);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    catch (JSONException localJSONException)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramString1);
-      if (paramasxw != null) {
-        paramasxw.a(paramBoolean);
-      }
+      localJSONException.printStackTrace();
     }
-    synchronized (this.b)
-    {
-      int i = this.b.size() - 1;
-      while (i >= 0)
-      {
-        paramasxw = (asxv)this.b.get(i);
-        if ((paramasxw != null) && (TextUtils.equals(paramString1, paramasxw.jdField_a_of_type_JavaLangString)))
-        {
-          if (paramasxw.jdField_a_of_type_Asxw != null) {
-            paramasxw.jdField_a_of_type_Asxw.a(paramBoolean);
-          }
-          this.b.remove(i);
-        }
-        i -= 1;
-        continue;
-        paramString1 = finally;
-        throw paramString1;
-      }
-      return;
-    }
+    return localJSONObject;
   }
   
-  private static boolean a(String paramString)
-  {
-    return new File(paramString).exists();
-  }
-  
-  public static boolean a(String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    return c(paramString1, paramString2, paramArrayOfString);
-  }
-  
-  private static String b(String paramString)
-  {
-    return String.format("%s/%s.zip", new Object[] { a(), paramString });
-  }
-  
-  private static void b(String paramString)
-  {
-    bbdx.a(paramString, false);
-  }
-  
-  private static String c(String paramString)
-  {
-    return String.format("%s/%s", new Object[] { a(), paramString });
-  }
-  
-  private static boolean c(String paramString1, String paramString2)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (new File(paramString1).exists())
-    {
-      paramString1 = aurn.a(paramString1);
-      bool1 = bool2;
-      if (paramString2 != null)
-      {
-        bool1 = bool2;
-        if (paramString2.equalsIgnoreCase(paramString1)) {
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
-  }
-  
-  private static boolean c(String paramString1, String paramString2, String[] paramArrayOfString)
-  {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
-    {
-      paramString1 = a(paramString1, paramString2);
-      if (a(paramString1)) {}
-    }
-    else
-    {
-      return false;
-    }
-    if ((paramArrayOfString != null) && (paramArrayOfString.length > 0))
-    {
-      int j = paramArrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramString2 = paramArrayOfString[i];
-        paramString2 = paramString1 + "/" + paramString2;
-        if (!a(paramString2))
-        {
-          QLog.e("ZipResourcesDownloader", 1, String.format("isFilesExist check fail. filePath=%s", new Object[] { paramString2 }));
-          return false;
-        }
-        i += 1;
-      }
-    }
-    return true;
-  }
-  
-  private static boolean d(String paramString1, String paramString2)
+  private void a(int paramInt, long paramLong, String paramString1, String paramString2, JSONObject paramJSONObject)
   {
     try
     {
-      albv.a(paramString1, paramString2);
-      return true;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", paramInt);
+      localJSONObject.put("seqid", paramLong);
+      if (paramString2 != null) {
+        localJSONObject.put("msg", paramString2);
+      }
+      if (paramJSONObject != null) {
+        localJSONObject.put("data", paramJSONObject);
+      }
+      a("invoke jscallback " + localJSONObject.toString());
+      callJs(paramString1, new String[] { localJSONObject.toString() });
+      return;
     }
-    catch (Exception paramString1)
+    catch (JSONException paramString1)
     {
-      QLog.e("ZipResourcesDownloader", 1, "unzipResource fail.", paramString1);
+      a("invoke callback error " + paramString1.getLocalizedMessage());
     }
+  }
+  
+  private void a(long paramLong, String paramString)
+  {
+    String str = Environment.getExternalStorageDirectory().getPath() + "/tencent/huiyin";
+    if (!new File(str).exists()) {
+      new File(str).mkdir();
+    }
+    this.jdField_a_of_type_Asxa.a(str + "/av_" + System.currentTimeMillis() + this.jdField_a_of_type_Asxa.a(), new asxt(this));
+    this.jdField_c_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Int = 0;
+    a(0, paramLong, paramString, null, null);
+  }
+  
+  private void a(long paramLong, String paramString1, String paramString2)
+  {
+    str5 = "unknown";
+    String str4 = "http://huiyin.qq.com/cgi-bin/mozart/upload_user_voice";
+    String str3 = "0";
+    Log.i("Huiyin", "do real upload begin...");
+    localObject2 = str3;
+    str1 = str4;
+    try
+    {
+      localJSONObject = new JSONObject(paramString2);
+      localObject2 = str3;
+      str1 = str4;
+      localObject1 = str4;
+      if (!localJSONObject.has("uploadUrl")) {
+        break label502;
+      }
+      localObject2 = str3;
+      str1 = str4;
+      localObject1 = localJSONObject.getString("uploadUrl");
+    }
+    catch (JSONException paramString2)
+    {
+      for (;;)
+      {
+        Object localObject1;
+        try
+        {
+          JSONObject localJSONObject;
+          str1 = URLEncoder.encode(this.jdField_c_of_type_JavaLangString, "UTF-8");
+          asxe.a(paramString2, this.e, String.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_JavaLangString, str1, (String)localObject1, String.valueOf(this.jdField_b_of_type_Long), this.jdField_b_of_type_JavaLangString, new asxv(this, paramLong, paramString1));
+          return;
+          paramString2 = paramString2;
+          localObject1 = localObject2;
+          paramString2 = str1;
+          continue;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          localUnsupportedEncodingException.printStackTrace();
+          String str2 = str5;
+          continue;
+        }
+        paramString2 = (String)localObject1;
+        if (localObject1 == null) {
+          paramString2 = "http://huiyin.qq.com/cgi-bin/mozart/upload_user_voice";
+        }
+      }
+    }
+    localObject1 = str3;
+    localObject2 = str3;
+    str1 = paramString2;
+    if (localJSONObject.has("gender"))
+    {
+      localObject2 = str3;
+      str1 = paramString2;
+      localObject1 = localJSONObject.getString("gender");
+    }
+    localObject2 = localObject1;
+    str1 = paramString2;
+    if (localJSONObject.has("tinyID"))
+    {
+      localObject2 = localObject1;
+      str1 = paramString2;
+      this.jdField_a_of_type_Long = Long.parseLong(localJSONObject.getString("tinyID"));
+      localObject2 = localObject1;
+      str1 = paramString2;
+      QLog.d("Huiyin", 2, "tinyID: " + this.jdField_a_of_type_Long);
+    }
+    localObject2 = localObject1;
+    str1 = paramString2;
+    if (localJSONObject.has("a2"))
+    {
+      localObject2 = localObject1;
+      str1 = paramString2;
+      this.jdField_a_of_type_JavaLangString = localJSONObject.getString("a2");
+      localObject2 = localObject1;
+      str1 = paramString2;
+      QLog.d("Huiyin", 2, "a2: " + this.jdField_a_of_type_JavaLangString);
+    }
+    localObject2 = localObject1;
+    str1 = paramString2;
+    if (localJSONObject.has("uid"))
+    {
+      localObject2 = localObject1;
+      str1 = paramString2;
+      this.jdField_b_of_type_Long = Long.parseLong(localJSONObject.getString("uid"));
+      localObject2 = localObject1;
+      str1 = paramString2;
+      QLog.d("Huiyin", 2, "uin: " + this.jdField_b_of_type_Long);
+    }
+    localObject2 = localObject1;
+    str1 = paramString2;
+    if (localJSONObject.has("voice_word"))
+    {
+      localObject2 = localObject1;
+      str1 = paramString2;
+      this.jdField_b_of_type_JavaLangString = localJSONObject.getString("voice_word");
+      localObject2 = localObject1;
+      str1 = paramString2;
+      QLog.d("Huiyin", 2, "voice_word: " + this.jdField_b_of_type_JavaLangString);
+    }
+  }
+  
+  private void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Huiyin", 2, paramString);
+    }
+  }
+  
+  private void b(long paramLong, String paramString)
+  {
+    this.jdField_a_of_type_Asxa.a();
+    this.jdField_a_of_type_Int = 1;
+    a(0, paramLong, paramString, null, null);
+  }
+  
+  private void c(long paramLong, String paramString)
+  {
+    int i = this.jdField_a_of_type_Asxa.c();
+    if (this.jdField_a_of_type_Int == 0) {}
+    for (long l = System.currentTimeMillis() - this.jdField_c_of_type_Long;; l = 0L) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("volume", i);
+        localJSONObject.put("duration", l);
+        localJSONObject.put("state", this.jdField_a_of_type_Int);
+        localJSONObject.put("seqid", paramLong);
+        a(0, paramLong, paramString, null, localJSONObject);
+        return;
+      }
+      catch (JSONException paramString) {}
+    }
+  }
+  
+  void a(String paramString, int paramInt)
+  {
+    asxx.a.jdField_a_of_type_Int = -1;
+    if (paramString == null) {
+      return;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("redNum", paramInt);
+      callJs(paramString, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
+      }
+    }
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"huiyin".equals(paramString2)) {}
+    do
+    {
+      return false;
+      paramString2 = new StringBuilder().append("huiyin handleJsRequest: method:").append(paramString3).append(" args:");
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0)) {
+        paramJsBridgeListener = paramVarArgs[0];
+      }
+      for (;;)
+      {
+        a(paramJsBridgeListener);
+        long l1 = 0L;
+        paramString1 = Uri.parse(paramString1);
+        for (;;)
+        {
+          try
+          {
+            long l2 = Long.valueOf(paramString1.getQueryParameter("seqid")).longValue();
+            l1 = l2;
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            continue;
+          }
+          try
+          {
+            paramJsBridgeListener = paramString1.getQueryParameter("callback");
+            if ("startRecord".equals(paramString3))
+            {
+              a(l1, paramJsBridgeListener);
+              return false;
+              paramJsBridgeListener = "";
+            }
+          }
+          catch (Exception paramJsBridgeListener)
+          {
+            paramJsBridgeListener = null;
+            continue;
+            if ("stopRecord".equals(paramString3))
+            {
+              b(l1, paramJsBridgeListener);
+              return false;
+            }
+            if ("queryRecordState".equals(paramString3))
+            {
+              c(l1, paramJsBridgeListener);
+              return false;
+            }
+            if ("uploadRecord".equals(paramString3)) {
+              try
+              {
+                paramString1 = URLDecoder.decode(paramString1.getQueryParameter("param"), "UTF-8");
+                Log.i("Huiyin", "upload extra " + paramString1);
+                a(l1, paramJsBridgeListener, paramString1);
+                return false;
+              }
+              catch (Exception paramJsBridgeListener)
+              {
+                paramJsBridgeListener.printStackTrace();
+                return false;
+              }
+            }
+            if ("start".equals(paramString3))
+            {
+              bdiv.b(this.mRuntime.a().getApp().getApplicationContext());
+              asxx.a.a(this.mRuntime.a(), paramString1.getQueryParameter("p"));
+              a(this.d, 0);
+              this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("huiyin").opName("huiyin_click").report();
+              asxx.a.a(0, null);
+              return false;
+            }
+            if ("requestRedNum".equals(paramString3))
+            {
+              asxx.a.b(this.mRuntime.a(), paramString1.getQueryParameter("p"));
+              this.d = paramJsBridgeListener;
+              if (asxx.a.jdField_a_of_type_Int != -1)
+              {
+                a(this.d, asxx.a.jdField_a_of_type_Int);
+                return false;
+              }
+              asxx.a.a(this.mRuntime.a(), new asxs(this));
+              return false;
+            }
+          }
+        }
+      }
+    } while (!"registerOk".equals(paramString3));
+    asxx.a.jdField_a_of_type_Boolean = false;
+    asxx.a.a(11, null);
     return false;
   }
   
-  public void a()
+  public void onCreate()
   {
-    this.jdField_a_of_type_Boolean = true;
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    synchronized (this.b)
-    {
-      this.b.clear();
-      return;
-      localObject1 = finally;
-      throw localObject1;
-    }
+    super.onCreate();
+    this.jdField_a_of_type_AndroidContentContext = this.mRuntime.a().getApplicationContext();
+    a(" onCreate");
+    this.jdField_a_of_type_Asxa = new asxa(this.jdField_a_of_type_AndroidContentContext, 1);
+    this.jdField_a_of_type_Asuy = new asuy();
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("huiyin");
+    IntentFilter localIntentFilter = new IntentFilter(aswm.a(this.f));
+    localIntentFilter.addAction(aswm.b(this.f));
+    localIntentFilter.addAction(aswm.c(this.f));
+    localIntentFilter.addAction(aswm.d(this.f));
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
   }
   
-  public void a(QQAppInterface arg1, int paramInt, String paramString1, String paramString2, String paramString3, String[] paramArrayOfString, asxw paramasxw)
+  public void onDestroy()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ZipResourcesDownloader", 2, String.format("downloadResource url=%s md5=%s callback=%s", new Object[] { paramString2, paramString3, paramasxw }));
-    }
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (??? == null)) {
-      QLog.e("ZipResourcesDownloader", 1, "downloadResource invalid parameters.");
-    }
-    label359:
-    boolean bool1;
-    do
-    {
-      Object localObject1;
-      Object localObject2;
-      for (;;)
-      {
-        return;
-        localObject1 = null;
-        if (this.jdField_a_of_type_MqqUtilWeakReference != null) {
-          localObject1 = (ayxs)this.jdField_a_of_type_MqqUtilWeakReference.get();
-        }
-        localObject2 = localObject1;
-        if (localObject1 == null)
-        {
-          localObject2 = (ayxs)???.getManager(193);
-          this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(localObject2);
-        }
-        if (localObject2 != null)
-        {
-          localObject1 = b(paramString3);
-          if (c((String)localObject1, paramString3)) {
-            break label359;
-          }
-          int i = 0;
-          synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-          {
-            if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramString2)) {
-              i = 1;
-            }
-            if (i != 0)
-            {
-              if (paramasxw == null) {
-                continue;
-              }
-              synchronized (this.b)
-              {
-                this.b.add(new asxv(this, paramString2, paramasxw));
-                return;
-              }
-            }
-          }
-        }
-      }
-      b((String)localObject1);
-      ??? = new ayrx();
-      ((ayrx)???).jdField_a_of_type_Aysc = new asxs(this);
-      ((ayrx)???).jdField_a_of_type_JavaLangString = paramString2;
-      ((ayrx)???).jdField_a_of_type_Int = 0;
-      ((ayrx)???).c = ((String)localObject1);
-      ((ayrx)???).e = 0;
-      ((ayrx)???).jdField_a_of_type_Aysb = new asxt(this);
-      ((ayxs)localObject2).a(paramInt, paramString1, paramString3, 0, paramString2, (String)localObject1, 2, 0, false, new ayxq(???, paramString3, new asxu(this, paramString3, paramArrayOfString, paramasxw), (ayrx)???));
-      synchronized (this.jdField_a_of_type_JavaUtilArrayList)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString2);
-        return;
-      }
-      boolean bool2 = c(paramString2, paramString3, paramArrayOfString);
-      bool1 = bool2;
-      if (!bool2)
-      {
-        boolean bool3 = d((String)localObject1, c(paramString3));
-        bool2 = c(paramString2, paramString3, paramArrayOfString);
-        bool1 = bool2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ZipResourcesDownloader", 2, String.format("downloadResource unzip result=%s unzipped=%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool2) }));
-          bool1 = bool2;
-        }
-      }
-    } while (paramasxw == null);
-    paramasxw.a(bool1);
+    super.onDestroy();
+    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Asxa.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asxr
  * JD-Core Version:    0.7.0.1
  */

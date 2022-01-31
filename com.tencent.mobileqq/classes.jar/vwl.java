@@ -1,30 +1,21 @@
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import java.util.Iterator;
-import java.util.Set;
+import android.app.Activity;
+import android.content.Intent;
 
 public class vwl
+  extends vox
 {
-  public static void a(@NonNull String paramString, Bundle paramBundle)
+  public vwl(vwk paramvwk) {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramBundle == null)
-    {
-      ved.b(paramString, ", logBundleDetails : null");
-      return;
+    if ((paramInt1 == 66666) && (paramInt2 == -1)) {
+      this.a.a.b().finish();
     }
-    ved.b(paramString, "-- ----------- logBundleDetails ------------- [[[");
-    Iterator localIterator = paramBundle.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      ved.a(paramString, "-- - %s : %s", str, paramBundle.get(str));
-    }
-    ved.b(paramString, "-- ----------- logBundleDetails ------------- ]]]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vwl
  * JD-Core Version:    0.7.0.1
  */

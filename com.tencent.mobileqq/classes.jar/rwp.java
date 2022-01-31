@@ -1,52 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.viola.adapter.IBridgeAdapter;
-import com.tencent.viola.adapter.IBridgeAdapter.OnInovkeCallback;
-import com.tencent.viola.core.ViolaInstance;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class rwp
-  implements IBridgeAdapter
+  implements View.OnClickListener
 {
-  public rwp()
-  {
-    registerModuleFunction();
-  }
+  public rwp(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public ArrayList<String> getAdapterUnRegisterFunction()
+  public void onClick(View paramView)
   {
-    return null;
-  }
-  
-  public void registerModuleFunction() {}
-  
-  public void titleUiInvoke(String paramString, Object paramObject, IBridgeAdapter.OnInovkeCallback paramOnInovkeCallback, ViolaInstance paramViolaInstance)
-  {
-    if (paramViolaInstance == null) {
-      break label5;
-    }
-    for (;;)
-    {
-      label5:
-      return;
-      if (("change_title_transparent".equals(paramString)) && ((paramObject instanceof Boolean)))
-      {
-        paramString = paramViolaInstance.getFragment();
-        if (paramString == null) {
-          break;
-        }
-        if ((paramString instanceof ViolaFragment)) {}
-        for (paramString = ((ViolaFragment)paramString).a(); paramString != null; paramString = null)
-        {
-          paramString.a(((Boolean)paramObject).booleanValue());
-          return;
-        }
-      }
-    }
+    ReadinjoyTabFrame.a(this.a).setText("");
+    ReadinjoyTabFrame.a(this.a).setVisibility(8);
+    szp.a(this.a.a, true);
+    ((KandianMergeManager)this.a.a.getManager(162)).d(true);
+    ors.a(this.a.a(), 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rwp
  * JD-Core Version:    0.7.0.1
  */

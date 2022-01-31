@@ -1,61 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArDefaultSetting;
 
-public class anbe
-  extends ampa<anbd>
+public final class anbe
+  implements Parcelable.Creator<ArDefaultSetting>
 {
-  public static anbd a()
+  public ArDefaultSetting a(Parcel paramParcel)
   {
-    return (anbd)ampl.a().a(486);
+    return new ArDefaultSetting(paramParcel);
   }
   
-  public int a()
+  public ArDefaultSetting[] a(int paramInt)
   {
-    return 486;
-  }
-  
-  @NonNull
-  public anbd a(int paramInt)
-  {
-    return new anbd();
-  }
-  
-  @Nullable
-  public anbd a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph != null) && (paramArrayOfamph.length > 0)) {
-      return anbd.a(paramArrayOfamph);
-    }
-    return null;
-  }
-  
-  public Class<anbd> a()
-  {
-    return anbd.class;
-  }
-  
-  public void a(int paramInt) {}
-  
-  public void a(anbd paramanbd) {}
-  
-  public int b()
-  {
-    return 0;
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return true;
+    return new ArDefaultSetting[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbe
  * JD-Core Version:    0.7.0.1
  */

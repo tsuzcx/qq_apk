@@ -1,12 +1,24 @@
-class bbjj
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+
+public class bbjj
+  implements AdapterView.OnItemClickListener
 {
-  public int a;
-  public String a;
+  public bbjj(NewTroopContactView paramNewTroopContactView) {}
   
-  public bbjj()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
+    paramAdapterView = ((ResultRecord)paramView.getTag()).a;
+    if (this.a.a(paramAdapterView))
+    {
+      NewTroopContactView.a(this.a, paramAdapterView);
+      this.a.a.notifyDataSetChanged();
+      this.a.b(false);
+      NewTroopContactView.a(this.a);
+    }
   }
 }
 

@@ -1,76 +1,218 @@
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.text.TextUtils;
-import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.Utils;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import java.io.File;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class bjtr
-  implements bfph
+public class bjtr
+  extends bjts
 {
-  bjtr(bjto parambjto, bfpc parambfpc, Intent paramIntent, String paramString, Activity paramActivity) {}
+  private static JSONObject a;
   
-  public void OnClick(View paramView, int paramInt)
+  private static void a(String paramString)
   {
-    if (paramView == null)
+    QLog.i("QzoneInternalWebViewPlugin", 2, "saxon@ openUserInfoCard uin is " + paramString);
+    try
     {
-      this.jdField_a_of_type_Bfpc.dismiss();
+      Intent localIntent = new Intent("com.tencent.mobileqq.action.ACTION_OPEN_USER_INFO_CARD");
+      localIntent.putExtra("uin", paramString);
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
       return;
     }
-    Object localObject = this.jdField_a_of_type_Bfpc.a(paramInt);
-    if (localObject == null)
+    catch (Throwable paramString)
     {
-      this.jdField_a_of_type_Bfpc.dismiss();
+      QLog.e("QzoneInternalWebViewPlugin", 1, "saxon@ notifyOpenUserInfoCard exception", paramString);
+    }
+  }
+  
+  private static void b()
+  {
+    QLog.i("QzoneInternalWebViewPlugin", 2, "saxon@ hideInnerWebview running");
+    try
+    {
+      Intent localIntent = new Intent("com.tencent.mobileqq.action.ACTION_HIDE_INNER_WEBVIEW");
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
       return;
     }
-    if (TextUtils.isEmpty((CharSequence)localObject))
+    catch (Throwable localThrowable)
     {
-      this.jdField_a_of_type_Bfpc.dismiss();
+      QLog.e("QzoneInternalWebViewPlugin", 1, "saxon@ notifyHideInnerWebview exception", localThrowable);
+    }
+  }
+  
+  private static void c()
+  {
+    QLog.i("QzoneInternalWebViewPlugin", 2, "saxon@ onPageReady running");
+    try
+    {
+      Intent localIntent = new Intent("com.tencent.mobileqq.action.ACTION_NOTIFY_PAGE_READY");
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
       return;
     }
-    if (((String)localObject).equals(paramView.getResources().getString(2131693384)))
+    catch (Throwable localThrowable)
     {
-      int i = 1;
-      paramInt = i;
-      if (this.jdField_a_of_type_Bjto.a.c() == 130)
+      QLog.e("QzoneInternalWebViewPlugin", 1, "saxon@ notifyPageReadyInnerWebview exception", localThrowable);
+    }
+  }
+  
+  public boolean a(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ((!"qzlive".equals(paramString2)) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin == null)) {}
+    boolean bool;
+    do
+    {
+      do
       {
-        paramInt = i;
-        if (!this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("extra_is_edited_pic", false)) {
-          paramInt = 0;
+        return false;
+      } while (TextUtils.isEmpty(paramString3));
+      QLog.i("QzoneInternalWebViewPlugin", 2, "qz_livevideo_jsbridge, dispatch method callback linkchain, " + paramString3);
+      bool = b(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+      try
+      {
+        paramJsBridgeListener = new Intent("com.tencent.mobileqq.action.ACTION_QZ_LIVE_DISPATCH_EVENT");
+        paramJsBridgeListener.putExtra("event", paramString3);
+        if ((paramVarArgs != null) && (paramVarArgs.length > 0))
+        {
+          paramString1 = new JSONObject(paramVarArgs[0]);
+          if (paramString1 != null) {
+            paramJsBridgeListener.putExtra("data", paramString1.toString());
+          }
+        }
+        BaseApplicationImpl.getContext().sendBroadcast(paramJsBridgeListener, "com.tencent.msg.permission.pushnotify");
+        if (!bool) {}
+        return true;
+      }
+      catch (Throwable paramJsBridgeListener)
+      {
+        QLog.e("QzoneInternalWebViewPlugin", 1, "qz_livevideo_jsbridge, dispatch method callback linkchain exception", paramJsBridgeListener);
+      }
+    } while (!bool);
+    return true;
+  }
+  
+  public boolean b(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if ("getLiveMusicUrl".equals(paramString3)) {
+      if (paramVarArgs != null) {
+        try
+        {
+          if (paramVarArgs.length == 1)
+          {
+            jdField_a_of_type_OrgJsonJSONObject = new JSONObject(paramVarArgs[0]);
+            if (jdField_a_of_type_OrgJsonJSONObject != null)
+            {
+              paramJsBridgeListener = jdField_a_of_type_OrgJsonJSONObject.optJSONObject("data");
+              paramJsBridgeListener.getString("file_mid");
+              paramJsBridgeListener = paramJsBridgeListener.getString("song_mid");
+              paramString1 = new Intent("com.qzone.module.browser.plugin.QzLivePlugin.liveMusicSelect");
+              paramString1.putExtra("get_live_music_song_mid", paramJsBridgeListener);
+              BaseApplicationImpl.getApplication().sendBroadcast(paramString1);
+              if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() != null)) {
+                this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().finish();
+              }
+            }
+            return true;
+          }
+        }
+        catch (Exception paramJsBridgeListener)
+        {
+          QLog.w("QzoneInternalWebViewPlugin", 1, "getLiveMusicUrl Exception" + paramJsBridgeListener.toString());
         }
       }
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_type", paramInt);
-      this.jdField_a_of_type_AndroidContentIntent.putExtra("forward_filepath", this.jdField_a_of_type_JavaLangString);
-      aqbe.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentIntent, 19003);
-      axqy.b(null, "dc00898", "", "", "0X800A184", "0X800A184", 0, 0, "", "", "", "");
     }
-    for (;;)
+    label157:
+    label334:
+    do
     {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
-      if (((String)localObject).equals(paramView.getResources().getString(2131693394)))
+      for (;;)
       {
-        localObject = new File(this.jdField_a_of_type_JavaLangString);
-        String str = ((File)localObject).getAbsolutePath();
-        aehw.a((Activity)paramView.getContext(), (File)localObject, Utils.Crc64String(str), this.jdField_a_of_type_Bjto);
-        axqy.b(null, "dc00898", "", "", "0X800A185", "0X800A185", 0, 0, "", "", "", "");
+        return false;
+        if ("getAuthenticationResults".equals(paramString3))
+        {
+          if (paramVarArgs != null) {
+            for (;;)
+            {
+              try
+              {
+                if (paramVarArgs.length <= 0) {
+                  break label157;
+                }
+                paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+                if (paramJsBridgeListener == null) {
+                  break;
+                }
+                int i = paramJsBridgeListener.getInt("result");
+                int j = paramJsBridgeListener.getInt("from");
+                paramJsBridgeListener = new Intent("com.cooperation.cooperation.qzone.webviewplugin.QzoneInterActiveVideoPlugin.getAuthenticationResults");
+                paramJsBridgeListener.putExtra("result", i);
+                paramJsBridgeListener.putExtra("from", j);
+                BaseApplicationImpl.getApplication().sendBroadcast(paramJsBridgeListener);
+                if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a() == null)) {
+                  break label334;
+                }
+                this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().finish();
+                QLog.i("QzoneInternalWebViewPlugin", 1, "result is " + i + ",from is " + j);
+                return true;
+              }
+              catch (Exception paramJsBridgeListener)
+              {
+                QLog.w("QzoneInternalWebViewPlugin", 1, "doAuthentication catch an exception in handleJsRequest", paramJsBridgeListener);
+              }
+              break label157;
+              if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime == null) {
+                QLog.i("QzoneInternalWebViewPlugin", 1, " the parentPlugin.mRuntime is null");
+              } else {
+                QLog.i("QzoneInternalWebViewPlugin", 1, " parentPlugin.mRuntime.getActivity() is null");
+              }
+            }
+          }
+        }
+        else
+        {
+          if (!"openUserInfoCard".equals(paramString3)) {
+            break label460;
+          }
+          if (paramVarArgs != null) {
+            try
+            {
+              if (paramVarArgs.length > 0)
+              {
+                paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("uin");
+                if ((paramJsBridgeListener != null) && (paramJsBridgeListener.length() != 0)) {
+                  break label454;
+                }
+                QLog.w("QzoneInternalWebViewPlugin", 1, "openUserInfoCard uin is empty");
+                return true;
+              }
+            }
+            catch (Exception paramJsBridgeListener)
+            {
+              QLog.w("QzoneInternalWebViewPlugin", 1, "openUserInfoCard Exception" + paramJsBridgeListener);
+            }
+          }
+        }
       }
-      else if (((String)localObject).equals(paramView.getResources().getString(2131693382)))
+      a(paramJsBridgeListener);
+      return true;
+      if ("hideInnerWebview".equals(paramString3))
       {
-        paramView = BaseApplicationImpl.getApplication();
-        bgpu.b(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_AndroidAppActivity, paramView.getRuntime().getAccount(), 2131695163, this.jdField_a_of_type_Bjto);
-        axqy.b(null, "dc00898", "", "", "0X800A186", "0X800A186", 0, 0, "", "", "", "");
+        b();
+        return true;
       }
-    }
+    } while (!"onPageReady".equals(paramString3));
+    label454:
+    label460:
+    c();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjtr
  * JD-Core Version:    0.7.0.1
  */

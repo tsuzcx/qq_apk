@@ -1,56 +1,34 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class atqr
-  implements View.OnClickListener
+public class atqr
 {
-  atqr(atpk paramatpk, String paramString) {}
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new atqs(this);
+  private atqt jdField_a_of_type_Atqt;
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void onClick(View paramView)
+  public atqr(QQAppInterface paramQQAppInterface)
   {
-    axrc localaxrc = new axrc(this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).b("grp_lbs").c("data_card").d("live_clk").e(atpk.a(this.jdField_a_of_type_Atpk).uin);
-    if (atpk.a(this.jdField_a_of_type_Atpk).gender == 0) {
-      paramView = "1";
-    }
-    for (;;)
-    {
-      localaxrc.a(new String[] { paramView }).a();
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break;
-      }
-      QLog.i("NearbyProfileDisplayPanel", 1, "jumpUrl is empty");
-      return;
-      if (atpk.a(this.jdField_a_of_type_Atpk).gender == 1) {
-        paramView = "2";
-      } else {
-        paramView = "0";
-      }
-    }
-    if (this.jdField_a_of_type_JavaLangString.startsWith("mqqapi:"))
-    {
-      paramView = bbex.a(this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, this.jdField_a_of_type_Atpk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-      if (paramView != null)
-      {
-        paramView.c();
-        return;
-      }
-      QLog.i("NearbyProfileDisplayPanel", 1, "ja==null, jumpUrl=" + this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    paramView = new Intent(this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Atpk.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.startActivity(paramView);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    BaseApplicationImpl.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, new IntentFilter("com.tencent.qplus.THEME_INVALIDATE"), "com.tencent.msg.permission.pushnotify", null);
+  }
+  
+  public void a()
+  {
+    BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+  }
+  
+  public void a(atqt paramatqt)
+  {
+    this.jdField_a_of_type_Atqt = paramatqt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atqr
  * JD-Core Version:    0.7.0.1
  */

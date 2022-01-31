@@ -1,42 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
 
-final class atir
-  implements URLDrawable.URLDrawableListener
+public class atir
+  implements DialogInterface.OnCancelListener
 {
-  atir(String paramString1, atiu paramatiu, String paramString2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface) {}
+  public atir(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment, atjn paramatjn) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    paramURLDrawable = baxi.b(BaseApplicationImpl.getApplication().getResources(), 2130844480);
-    WXShareHelper.a().a(new atit(this));
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
-    new atix().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    Bitmap localBitmap = atij.a(paramURLDrawable);
-    paramURLDrawable = localBitmap;
-    if (localBitmap == null) {
-      paramURLDrawable = baxi.b(BaseApplicationImpl.getApplication().getResources(), 2130844480);
+    this.jdField_a_of_type_Atjn.b(false);
+    if (!ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).isFinishing()) {
+      ListenTogetherOverlayFragment.a(this.jdField_a_of_type_ComTencentMobileqqListentogetherFragmentListenTogetherOverlayFragment).finish();
     }
-    WXShareHelper.a().a(new atis(this));
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
-    new atix().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atir
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,21 @@
-public abstract interface apar
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.GrayTipsSpan;
+import com.tencent.mobileqq.data.MessageForNewGrayTips;
+
+public class apar
+  implements View.OnClickListener
 {
-  public abstract int a();
+  public apar(MessageForNewGrayTips paramMessageForNewGrayTips, GrayTipsSpan paramGrayTipsSpan) {}
   
-  public abstract long a();
-  
-  public abstract String a();
-  
-  public abstract void a();
-  
-  public abstract void a(aozz paramaozz);
-  
-  public abstract void a(byte[] paramArrayOfByte);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(long paramLong);
-  
-  public abstract int b();
-  
-  public abstract long b();
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForNewGrayTips.click(paramView, this.jdField_a_of_type_ComTencentMobileqqDataGrayTipsSpan.url);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apar
  * JD-Core Version:    0.7.0.1
  */

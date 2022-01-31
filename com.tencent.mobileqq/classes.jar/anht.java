@@ -1,20 +1,25 @@
-public class anht
+import java.util.ArrayList;
+
+class anht
+  implements affd
 {
-  private long a;
+  anht(anhr paramanhr) {}
   
-  public long a()
+  public void a()
   {
-    return this.a;
+    boolean bool = ((afds)anhr.a(this.a).get(anhr.a(this.a))).checkShare();
+    if (bool != anhr.a(this.a))
+    {
+      anhr.a(this.a, bool);
+      anhr.a(this.a, anhr.a(this.a));
+    }
   }
   
-  public void a(long paramLong)
-  {
-    this.a = paramLong;
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anht
  * JD-Core Version:    0.7.0.1
  */

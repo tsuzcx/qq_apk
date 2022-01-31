@@ -1,32 +1,27 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class oxg
-  implements Animator.AnimatorListener
+final class oxg
+  extends amky
 {
-  public oxg(VideoView paramVideoView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  oxg(String paramString, boolean paramBoolean)
   {
-    if (VideoView.a(this.a) != null) {
-      VideoView.a(this.a).setVisibility(4);
-    }
-    if (VideoView.b(this.a) != null) {
-      VideoView.b(this.a).setVisibility(4);
-    }
+    super(paramString, paramBoolean);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    oxf.a(false);
+    QLog.d("ReadInJoySpEventReportUtil", 1, new Object[] { "onLocationFinish errCode = ", Integer.valueOf(paramInt) });
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
+      syb.a(100, new ArrayList());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oxg
  * JD-Core Version:    0.7.0.1
  */

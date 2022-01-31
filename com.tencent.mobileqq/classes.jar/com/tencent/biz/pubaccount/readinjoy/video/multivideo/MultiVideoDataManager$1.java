@@ -8,22 +8,22 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-import qoi;
-import qxg;
-import qxr;
+import rdm;
+import rmv;
+import rng;
 
 public class MultiVideoDataManager$1
   implements Runnable
 {
-  public MultiVideoDataManager$1(qxg paramqxg, int paramInt1, int paramInt2) {}
+  public MultiVideoDataManager$1(rmv paramrmv, int paramInt1, int paramInt2) {}
   
   public void run()
   {
     HashMap localHashMap = new HashMap();
     int i = this.a;
-    if ((i < this.a + this.b) && (i < qxg.a(this.this$0).a().size()))
+    if ((i < this.a + this.b) && (i < rmv.a(this.this$0).a().size()))
     {
-      localObject = (VideoInfo)qxg.a(this.this$0).a().get(i);
+      localObject = (VideoInfo)rmv.a(this.this$0).a().get(i);
       if ((TextUtils.isEmpty(((VideoInfo)localObject).j)) || (((VideoInfo)localObject).b)) {}
       for (;;)
       {
@@ -42,16 +42,16 @@ public class MultiVideoDataManager$1
       if (((Iterator)localObject).hasNext())
       {
         str = (String)((Iterator)localObject).next();
-        boolean bool = qoi.a(qxg.a(this.this$0), Long.valueOf(str).longValue());
+        boolean bool = rdm.a(rmv.a(this.this$0), Long.valueOf(str).longValue());
         Iterator localIterator = localHashMap.values().iterator();
         i = 0;
         if (localIterator.hasNext())
         {
           VideoInfo localVideoInfo = (VideoInfo)localIterator.next();
-          if (localVideoInfo.k == bool) {
+          if (localVideoInfo.o == bool) {
             break label243;
           }
-          localVideoInfo.k = bool;
+          localVideoInfo.o = bool;
           i = 1;
         }
       }
@@ -61,7 +61,7 @@ public class MultiVideoDataManager$1
         if (i == 0) {
           break label244;
         }
-        qxg.a(this.this$0).post(new MultiVideoDataManager.1.1(this, str));
+        rmv.a(this.this$0).post(new MultiVideoDataManager.1.1(this, str));
         break;
         return;
       }
@@ -70,7 +70,7 @@ public class MultiVideoDataManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.multivideo.MultiVideoDataManager.1
  * JD-Core Version:    0.7.0.1
  */

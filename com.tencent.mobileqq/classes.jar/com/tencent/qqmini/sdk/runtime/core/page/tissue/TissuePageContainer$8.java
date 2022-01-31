@@ -1,13 +1,13 @@
 package com.tencent.qqmini.sdk.runtime.core.page.tissue;
 
-import bfcr;
+import bhch;
 import io.flutter.plugin.common.BasicMessageChannel;
 import java.util.Map;
 
 public class TissuePageContainer$8
   implements Runnable
 {
-  public TissuePageContainer$8(bfcr parambfcr, Map paramMap) {}
+  public TissuePageContainer$8(bhch parambhch, Map paramMap) {}
   
   public void run()
   {
@@ -16,7 +16,7 @@ public class TissuePageContainer$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.core.page.tissue.TissuePageContainer.8
  * JD-Core Version:    0.7.0.1
  */

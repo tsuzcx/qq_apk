@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar;
 
-import alcs;
-import alct;
-import alcu;
+import amti;
+import amtj;
+import amtk;
 
 class FramePerformanceMonitor$CurrentRunnable
   implements Runnable
@@ -31,15 +31,15 @@ class FramePerformanceMonitor$CurrentRunnable
       {
         localException.printStackTrace();
       }
-      alcu localalcu = FramePerformanceMonitor.a(this.this$0).a();
-      FramePerformanceMonitor.a(this.this$0).a(localalcu);
+      amtk localamtk = FramePerformanceMonitor.a(this.this$0).a();
+      FramePerformanceMonitor.a(this.this$0).a(localamtk);
       Thread.sleep(FramePerformanceMonitor.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.FramePerformanceMonitor.CurrentRunnable
  * JD-Core Version:    0.7.0.1
  */

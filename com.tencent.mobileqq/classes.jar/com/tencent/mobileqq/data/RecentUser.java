@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import ahpw;
+import ajhf;
 import android.database.Cursor;
-import aulv;
-import aulw;
-import aulx;
-import aulz;
+import awdc;
+import awdd;
+import awde;
+import awdg;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
@@ -19,28 +19,28 @@ public class RecentUser
   public static final String TABLE_NAME = "recent";
   private static final String TAG = "RecentUser";
   public String displayName;
-  @aulz
+  @awdg
   public Object extraInfo;
-  @aulv(a=0)
+  @awdc(a=0)
   public int isHiddenChat;
-  @aulz
+  @awdg
   public int jumpTabMode;
-  @aulw
+  @awdd
   public long lFlag;
-  @aulw
+  @awdd
   public long lastmsgdrafttime;
   public long lastmsgtime;
-  @aulz
+  @awdg
   public Object msg;
   public byte[] msgData;
   public int msgType;
-  @aulw
+  @awdd
   public long opTime;
   public byte[] parceledRecentBaseData;
-  @aulw
+  @awdd
   public long showUpTime;
   public String troopUin;
-  @aulx
+  @awde
   private int type;
   public String uin;
   
@@ -68,7 +68,7 @@ public class RecentUser
   
   public void doParse()
   {
-    this.msg = ahpw.a(this.msgType, this.msgData);
+    this.msg = ajhf.a(this.msgType, this.msgData);
   }
   
   public boolean entityByCursor(Cursor paramCursor)
@@ -124,7 +124,7 @@ public class RecentUser
   
   public void prewrite()
   {
-    this.msgData = ahpw.a(this.msgType, this.msg);
+    this.msgData = ajhf.a(this.msgType, this.msg);
     super.prewrite();
   }
   
@@ -153,7 +153,7 @@ public class RecentUser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.RecentUser
  * JD-Core Version:    0.7.0.1
  */

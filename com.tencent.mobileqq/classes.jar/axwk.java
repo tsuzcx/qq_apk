@@ -1,84 +1,20 @@
-import com.tencent.mm.vfs.VFSFileInputStream;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-import org.xml.sax.SAXException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.videoplatform.view.BaseVideoView;
 
-public class axwk
+class axwk
+  implements DialogInterface.OnClickListener
 {
-  public static AbsStructMsg a(String paramString)
-  {
-    paramString = new ByteArrayInputStream(paramString.getBytes());
-    axwh localaxwh = new axwh();
-    SAXParserFactory localSAXParserFactory = SAXParserFactory.newInstance();
-    try
-    {
-      localSAXParserFactory.newSAXParser().parse(paramString, localaxwh);
-      paramString.close();
-      paramString = localaxwh.a();
-      return paramString;
-    }
-    catch (ParserConfigurationException paramString)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-      }
-      return null;
-    }
-    catch (SAXException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
-    catch (IOException paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TestStructMsg", 2, "getStructMsgFromXmlBuffByStream", paramString);
-        }
-      }
-    }
-  }
+  axwk(axwf paramaxwf) {}
   
-  public static String a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      paramString = new VFSFileInputStream(paramString);
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      byte[] arrayOfByte = new byte[1024];
-      for (;;)
-      {
-        int i = paramString.read(arrayOfByte, 0, 1024);
-        if (i == -1) {
-          break;
-        }
-        localByteArrayOutputStream.write(arrayOfByte, 0, i);
-      }
-      paramString = new String(localByteArrayOutputStream.toByteArray(), "utf-8");
-    }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
-      return "";
-    }
-    return paramString;
+    this.a.a.play();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     axwk
  * JD-Core Version:    0.7.0.1
  */

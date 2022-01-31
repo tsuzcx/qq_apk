@@ -1,12 +1,12 @@
-import java.util.List;
-
-public abstract interface awiv
+public class awiv
 {
-  public abstract void a(int paramInt, List<? extends awij> paramList);
+  public int a;
+  public String a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awiv
  * JD-Core Version:    0.7.0.1
  */

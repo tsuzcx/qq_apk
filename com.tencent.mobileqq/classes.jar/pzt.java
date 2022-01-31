@@ -1,49 +1,166 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.BaseResData;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInjoySkinAndRefreshFacade.1;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class pzt
+  extends pxl
 {
-  private int jdField_a_of_type_Int;
-  public AppInterface a;
-  private String jdField_a_of_type_JavaLangString;
-  private pze jdField_a_of_type_Pze = new pzu(this);
-  pzv jdField_a_of_type_Pzv;
-  private boolean jdField_a_of_type_Boolean;
+  private static final String a;
   
-  public pzt(AppInterface paramAppInterface, int paramInt)
+  static
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_JavaLangString = pzt.class.getSimpleName();
   }
   
-  private void a(int paramInt, String paramString, BaseResData paramBaseResData)
+  public pzt(Context paramContext, bcws parambcws, rqj paramrqj)
   {
-    if (this.jdField_a_of_type_Pzv != null) {
-      this.jdField_a_of_type_Pzv.a(paramInt, paramString, paramBaseResData);
+    super(paramContext, parambcws, paramrqj);
+  }
+  
+  private void a(LinearLayout paramLinearLayout, pgd parampgd)
+  {
+    if (parampgd.e() == 56)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setDividerWidth(aekt.a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setPadding(bcwh.a(this.jdField_a_of_type_AndroidContentContext, 6.0F), 0, bcwh.a(this.jdField_a_of_type_AndroidContentContext, 6.0F), bcwh.a(this.jdField_a_of_type_AndroidContentContext, 15.0F));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setClipToPadding(false);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setClipChildren(false);
+      paramLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView);
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setDividerWidth(aekt.a(1.5F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setPadding(bcwh.a(this.jdField_a_of_type_AndroidContentContext, 6.0F), bcwh.a(this.jdField_a_of_type_AndroidContentContext, 8.0F), bcwh.a(this.jdField_a_of_type_AndroidContentContext, 12.0F), bcwh.a(this.jdField_a_of_type_AndroidContentContext, 8.0F));
     }
   }
   
-  public void a()
+  public static boolean a(int paramInt)
   {
-    ThreadManager.post(new ReadInjoySkinAndRefreshFacade.1(this), 5, null, true);
+    return (paramInt == 9) || (paramInt == 10) || (paramInt == 11);
   }
   
-  public void a(pzv parampzv)
+  private void b(View paramView)
   {
-    this.jdField_a_of_type_Pzv = parampzv;
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof ReadInJoyNewFeedsActivity)) {}
+    for (;;)
+    {
+      return;
+      if (bjxj.i()) {
+        try
+        {
+          ReadinjoyTabFrame localReadinjoyTabFrame = (ReadinjoyTabFrame)FrameHelperActivity.a((BaseActivity)this.jdField_a_of_type_AndroidContentContext).a(ReadinjoyTabFrame.class);
+          if (localReadinjoyTabFrame != null)
+          {
+            localReadinjoyTabFrame.a(paramView);
+            return;
+          }
+        }
+        catch (Exception paramView)
+        {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "readinjoy tab add dispatch touch event view fail ! e : " + paramView);
+          paramView.printStackTrace();
+        }
+      }
+    }
   }
   
-  public void b()
+  public pxl a()
   {
-    this.jdField_a_of_type_Pzv = null;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this.jdField_a_of_type_Pze);
+    this.jdField_a_of_type_Boolean = true;
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pgd)) && (((pgd)this.jdField_a_of_type_JavaLangObject).e() == 56))
+    {
+      if (((pgd)this.jdField_a_of_type_JavaLangObject).b() == 53) {
+        return b(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).u().n();
+      }
+      return b(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).u().n().l().m();
+    }
+    return b(this.jdField_a_of_type_Rqj, this.jdField_a_of_type_Bcws).u().n().l();
+  }
+  
+  public pxl d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric);
+    }
+    Object localObject;
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof pgd)) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView != null))
+    {
+      localObject = ((pgd)this.jdField_a_of_type_JavaLangObject).a();
+      if ((((ArticleInfo)localObject).mPolymericInfo == null) || (!a(((ArticleInfo)localObject).mPolymericInfo.a))) {
+        break label193;
+      }
+      a(localLinearLayout, (pgd)this.jdField_a_of_type_JavaLangObject);
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentWhiteSpace != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentWhiteSpace);
+      }
+      a(localLinearLayout);
+      b(a());
+      return this;
+      label193:
+      localObject = new LinearLayout.LayoutParams(-1, -2);
+      ((LinearLayout.LayoutParams)localObject).leftMargin = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 12.0F);
+      ((LinearLayout.LayoutParams)localObject).bottomMargin = bcwh.a(this.jdField_a_of_type_AndroidContentContext, 20.0F);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.setDividerWidth(aekt.a(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView, (ViewGroup.LayoutParams)localObject);
+    }
+  }
+  
+  public pxl e()
+  {
+    return this;
+  }
+  
+  public pxl o()
+  {
+    super.o();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPolymericView.a(this.jdField_a_of_type_JavaLangObject);
+    }
+    return this;
+  }
+  
+  public pxl p()
+  {
+    super.p();
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric.a(this.jdField_a_of_type_Pxt);
+    }
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     pzt
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.FrameLayout;
-import bbdh;
+import bdcb;
 import com.tencent.mobileqq.microapp.R.drawable;
 
 public class SwipeBackLayout
@@ -126,7 +126,7 @@ public class SwipeBackLayout
         break label153;
       }
       return this.mViewDragHelper.a(paramMotionEvent);
-      if (Math.abs(j) >= bbdh.a() * 30.0F)
+      if (Math.abs(j) >= bdcb.a() * 30.0F)
       {
         i = 0;
         continue;
@@ -176,7 +176,7 @@ public class SwipeBackLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.ui.SwipeBackLayout
  * JD-Core Version:    0.7.0.1
  */

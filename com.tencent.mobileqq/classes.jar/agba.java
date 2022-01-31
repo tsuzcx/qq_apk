@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.TroopAdmin;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
 
-public final class agba
-  implements Parcelable.Creator<ChatHistoryTroopMemberFragment.TroopAdmin>
+public class agba
+  extends agar
 {
-  public ChatHistoryTroopMemberFragment.TroopAdmin a(Parcel paramParcel)
-  {
-    return new ChatHistoryTroopMemberFragment.TroopAdmin(paramParcel, null);
-  }
-  
-  public ChatHistoryTroopMemberFragment.TroopAdmin[] a(int paramInt)
-  {
-    return new ChatHistoryTroopMemberFragment.TroopAdmin[paramInt];
-  }
+  public TroopSignVideoView a;
+  public View e;
+  public View f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agba
  * JD-Core Version:    0.7.0.1
  */

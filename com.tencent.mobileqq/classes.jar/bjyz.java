@@ -1,38 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import android.app.Activity;
+import cooperation.troop_homework.jsp.TroopHWJsPlugin;
+import mqq.app.QQPermissionCallback;
 
-class bjyz
-  implements DialogInterface.OnClickListener
+public class bjyz
+  implements QQPermissionCallback
 {
-  static
+  public bjyz(TroopHWJsPlugin paramTroopHWJsPlugin, Activity paramActivity, int paramInt) {}
+  
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (!bjyy.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
+    bdcd.a(this.jdField_a_of_type_AndroidAppActivity, paramArrayOfString, paramArrayOfInt);
   }
   
-  bjyz(bjyy parambjyy, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Bundle();
-    bkbk localbkbk = this.jdField_a_of_type_Bjyy.a().a;
-    if ((!jdField_a_of_type_Boolean) && (localbkbk == null)) {
-      throw new AssertionError();
-    }
-    bjyy.a(paramDialogInterface, localbkbk);
-    paramDialogInterface.putInt("element_index", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Bjyy.a.a(35, paramDialogInterface);
+    this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.c = TroopHWJsPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bjyz
  * JD-Core Version:    0.7.0.1
  */

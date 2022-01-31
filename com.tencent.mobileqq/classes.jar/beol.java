@@ -1,54 +1,21 @@
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy;
-import com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy.OnInfoListener;
-import com.tencent.qqmini.sdk.core.widget.media.MiniAppVideoPlayer;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class beol
-  implements VideoPlayerProxy.OnInfoListener
+  implements View.OnClickListener
 {
-  public beol(MiniAppVideoPlayer paramMiniAppVideoPlayer) {}
+  public beol(ProfileCardMoreInfoView paramProfileCardMoreInfoView, View paramView) {}
   
-  public boolean onInfo(VideoPlayerProxy paramVideoPlayerProxy, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    betc.b("MiniAppVideoPlayer", "onInfo: " + paramInt1 + " " + paramInt1);
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      betc.a("MiniAppVideoPlayer", "video player PLAYER_INFO_START_BUFFERING--------------");
-      try
-      {
-        paramVideoPlayerProxy = new JSONObject();
-        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-        this.a.jdField_a_of_type_Behp.a("onVideoLoadStart", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-        betc.a("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoLoadStart = " + paramVideoPlayerProxy.toString());
-      }
-      catch (JSONException paramVideoPlayerProxy)
-      {
-        paramVideoPlayerProxy.printStackTrace();
-      }
-      continue;
-      betc.a("MiniAppVideoPlayer", "video player PLAYER_INFO_ENDOF_BUFFERING--------------");
-      try
-      {
-        paramVideoPlayerProxy = new JSONObject();
-        paramVideoPlayerProxy.put("data", this.a.jdField_a_of_type_JavaLangString);
-        this.a.jdField_a_of_type_Behp.a("onVideoLoadedData", paramVideoPlayerProxy.toString(), this.a.jdField_a_of_type_Int);
-        betc.a("MiniAppVideoPlayer", "evaluateSubcribeJS onVideoLoadedData = " + paramVideoPlayerProxy.toString());
-      }
-      catch (JSONException paramVideoPlayerProxy)
-      {
-        paramVideoPlayerProxy.printStackTrace();
-      }
-    }
+    awne.a().c(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     beol
  * JD-Core Version:    0.7.0.1
  */

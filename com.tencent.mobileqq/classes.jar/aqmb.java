@@ -1,14 +1,21 @@
-import com.tencent.image.URLDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
-public abstract interface aqmb
+public class aqmb
+  implements View.OnClickListener
 {
-  public abstract void a(int paramInt, URLDrawable paramURLDrawable);
+  public aqmb(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public abstract void a(int paramInt, boolean paramBoolean);
+  public void onClick(View paramView)
+  {
+    this.a.c.setVisibility(8);
+    aotn.a().a("");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmb
  * JD-Core Version:    0.7.0.1
  */

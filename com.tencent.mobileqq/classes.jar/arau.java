@@ -1,37 +1,99 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.SystemClock;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.ProtocolDownloader.Adapter;
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.image.Utils;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hotpic.HotVideoData;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadBizInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploaderRp;
+import com.tencent.mobileqq.filemanager.excitingtransfer.upload.uploader.ExtfC2CFileUploader.1;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Calendar;
+import java.util.Timer;
 
 public class arau
-  extends ProtocolDownloader.Adapter
+  extends arat
+  implements aqtp
 {
-  public static final String a = ajsd.aW + "hotvideo/preview/";
+  protected aqsx a;
+  protected ExcitingTransferUploadResultRp a;
+  protected Timer a;
+  protected String b;
+  protected boolean b;
   
-  public static Drawable a(Context paramContext, HotVideoData paramHotVideoData)
+  private arau(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, arav paramarav, araz paramaraz)
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if (Build.VERSION.SDK_INT < 17) {
-      localObject1 = new ColorDrawable(Color.parseColor("#7f000000"));
+    super(paramQQAppInterface, paramLong1, paramLong2, 0, paramarav, paramaraz);
+    this.jdField_b_of_type_JavaLangString = "";
+  }
+  
+  public static int a(int paramInt)
+  {
+    int i = 9004;
+    switch (paramInt)
+    {
+    case 21: 
+    case 22: 
+    case 23: 
+    case 24: 
+    case 25: 
+    case 26: 
+    case 27: 
+    case 28: 
+    case 29: 
+    default: 
+      i = 9001;
+    case 1: 
+    case 2: 
+      return i;
+    case 0: 
+      return 0;
+    case 3: 
+      return 9045;
+    case 4: 
+      return 9052;
+    case 5: 
+      return 9032;
+    case 6: 
+      return 9052;
+    case 7: 
+      return 9005;
+    case 8: 
+      return 9003;
+    case 9: 
+      return 4606;
+    case 10: 
+      return 4606;
+    case 11: 
+      return 9001;
+    case 12: 
+      return 9052;
+    case 13: 
+    case 16: 
+      return 9009;
+    case 14: 
+    case 15: 
+      return 9032;
+    case 17: 
+      return 9001;
+    case 18: 
+      return 9052;
+    case 19: 
+    case 20: 
+      return 9001;
+    case 30: 
+      return 9043;
+    case 31: 
+      return 9006;
+    case 32: 
+      return 9042;
+    }
+    return 9037;
+  }
+  
+  public static aqtp a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, arav paramarav, araz paramaraz)
+  {
+    if (paramarav == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 2, "getFileUploader fileInfo is null");
+      }
     }
     do
     {
@@ -39,209 +101,282 @@ public class arau
       {
         do
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                return localObject1;
-                localObject1 = localObject2;
-              } while (paramHotVideoData == null);
-              localObject1 = localObject2;
-            } while (paramHotVideoData.url == null);
-            localObject1 = localObject2;
-          } while (paramHotVideoData.md5 == null);
-          localObject1 = localObject2;
-        } while (paramContext == null);
-        localObject1 = localObject2;
-      } while (!a(paramHotVideoData.md5).exists());
-      localObject1 = Utils.Crc64String(paramHotVideoData.md5);
-      localObject1 = a + (String)localObject1;
-      try
-      {
-        localObject1 = BitmapFactory.decodeFile((String)localObject1);
-        paramHotVideoData = (HotVideoData)localObject1;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
-        {
-          localOutOfMemoryError.printStackTrace();
-          QLog.e("HotPicManager.HotVideoPreviewDownloader", 1, "decodeFile hotVideo thum Bitmap OOM. hotVideo name is " + paramHotVideoData.name);
-          paramHotVideoData = null;
+          return null;
+          if (paramaraz != null) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 2, "getFileUploader svrInfo is null");
+        return null;
+        if (paramarav.a()) {
+          break;
         }
-      }
-      localObject1 = localObject2;
-    } while (paramHotVideoData == null);
-    paramHotVideoData = araw.a(paramHotVideoData, 10.0F, paramContext);
-    return new BitmapDrawable(paramContext.getResources(), paramHotVideoData);
-  }
-  
-  public static File a(String paramString)
-  {
-    try
-    {
-      paramString = Utils.Crc64String(paramString);
-      paramString = new File(a + paramString);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static String a(HotVideoData paramHotVideoData)
-  {
-    if (paramHotVideoData == null) {
+      } while (!QLog.isColorLevel());
+      QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 2, "getFileUploader fileInfo is err");
       return null;
-    }
-    return a + paramHotVideoData.md5 + ".jpg";
+      if (paramaraz.a()) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 2, "getFileUploader svrInfo is err");
+    return null;
+    return new arau(paramQQAppInterface, paramLong1, paramLong2, paramarav, paramaraz);
   }
   
-  public static URL a(HotVideoData paramHotVideoData)
+  private void b(ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
   {
-    paramHotVideoData = a(paramHotVideoData);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp = paramExcitingTransferUploadResultRp;
+  }
+  
+  private void d()
+  {
     try
     {
-      paramHotVideoData = new URL("hot_video_preview", "", paramHotVideoData);
-      return paramHotVideoData;
-    }
-    catch (MalformedURLException paramHotVideoData)
-    {
-      paramHotVideoData.printStackTrace();
-    }
-    return null;
-  }
-  
-  private void a(File paramFile, HotVideoData paramHotVideoData, URLDrawableHandler paramURLDrawableHandler)
-  {
-    File localFile = paramFile;
-    if (paramFile == null) {
-      localFile = a(paramHotVideoData.md5);
-    }
-    paramFile = new File(a);
-    if (!paramFile.exists()) {
-      paramFile.mkdir();
-    }
-    SystemClock.uptimeMillis();
-    paramFile = new bbwu(paramHotVideoData.url.replaceFirst("https", "http"), localFile);
-    paramFile.n = true;
-    paramFile.b = 2;
-    int i = bbww.a(paramFile, null, null);
-    if (i == 0)
-    {
-      paramFile = aurn.a(localFile.getAbsolutePath());
-      if (!paramHotVideoData.md5.equalsIgnoreCase(paramFile))
-      {
-        localFile.delete();
-        a("onFileDownloadFailed .md5.equalsIgnoreCase is false videoData.md5 is :" + paramHotVideoData.md5 + " fileMD5 is " + paramFile, paramHotVideoData);
-        if (paramURLDrawableHandler != null) {
-          paramURLDrawableHandler.onFileDownloadFailed(paramHotVideoData.picIndex);
-        }
-        paramHotVideoData.onFileDownloadFailed(paramHotVideoData.picIndex);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotVideoPreviewDownloader", 2, "onFileDownloadSucceed download:" + paramHotVideoData.picIndex + localFile.getAbsolutePath());
-      }
-      if (paramURLDrawableHandler != null) {
-        paramURLDrawableHandler.onFileDownloadSucceed(paramHotVideoData.picIndex);
-      }
-      paramHotVideoData.onFileDownloadSucceed(paramHotVideoData.picIndex);
-      a("DownloadFile: onFileDownloadSucceed End", paramHotVideoData);
+      QLog.i("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] need to wait sha calc done");
+      e();
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_JavaUtilTimer = new Timer();
+      this.jdField_a_of_type_JavaUtilTimer.schedule(new ExtfC2CFileUploader.1(this), 120000L);
       return;
     }
-    if (paramURLDrawableHandler != null)
+    finally
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotVideoPreviewDownloader", 2, "onFileDownloadFailed:" + paramHotVideoData.picIndex + " " + i);
-      }
-      paramURLDrawableHandler.onFileDownloadFailed(paramHotVideoData.picIndex);
+      localObject = finally;
+      throw localObject;
     }
-    paramHotVideoData.onFileDownloadFailed(paramHotVideoData.picIndex);
-    a("DownloadFile: onFileDownloadFailed End", paramHotVideoData);
   }
   
-  private static void a(String paramString, HotVideoData paramHotVideoData)
+  private void e()
   {
-    if (QLog.isColorLevel())
+    try
     {
-      Object localObject = Calendar.getInstance();
-      localObject = "" + " Time is :" + ((Calendar)localObject).get(11) + ":" + ((Calendar)localObject).get(12) + ":" + ((Calendar)localObject).get(13) + ":" + ((Calendar)localObject).get(14);
-      localObject = (String)localObject + " " + paramString;
-      paramString = (String)localObject;
-      if (paramHotVideoData != null)
+      this.jdField_b_of_type_Boolean = false;
+      if (this.jdField_a_of_type_JavaUtilTimer != null)
       {
-        paramString = (String)localObject + " PicIndex is " + paramHotVideoData.picIndex;
-        paramString = paramString + " Name is " + paramHotVideoData.name;
+        QLog.i("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] cancel wait sha calc");
+        this.jdField_a_of_type_JavaUtilTimer.cancel();
+        this.jdField_a_of_type_JavaUtilTimer = null;
       }
-      QLog.d("HotPicManager.HotVideoPreviewDownloader", 2, paramString);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public static boolean a(HotVideoData paramHotVideoData)
+  public int a()
   {
-    if ((paramHotVideoData == null) || (paramHotVideoData.md5 == null)) {}
-    do
-    {
-      return false;
-      paramHotVideoData = a(paramHotVideoData.md5);
-    } while ((paramHotVideoData == null) || (!paramHotVideoData.exists()));
-    return true;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null) {
+      return (int)this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uIpChangeCount;
+    }
+    return f();
   }
   
-  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public long a()
   {
-    paramDownloadParams = (HotVideoData)paramDownloadParams.mExtraInfo;
-    paramURLDrawableHandler = aurn.a(paramFile.getAbsolutePath());
-    if (paramDownloadParams.md5.equalsIgnoreCase(paramURLDrawableHandler)) {
-      try
+    return c();
+  }
+  
+  protected ExcitingTransferUploadChnConfigInfo a()
+  {
+    return aqzy.a().a();
+  }
+  
+  public ExcitingTransferUploadResultRp a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    QLog.i("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] cancelTask");
+    e();
+    b();
+    b(null);
+  }
+  
+  protected void a(long paramLong1, long paramLong2, long paramLong3)
+  {
+    super.a(paramLong1, paramLong2, paramLong3);
+    if (this.jdField_a_of_type_Aqsx != null) {
+      this.jdField_a_of_type_Aqsx.a(paramLong1);
+    }
+  }
+  
+  public void a(aqsx paramaqsx)
+  {
+    this.jdField_a_of_type_Aqsx = paramaqsx;
+  }
+  
+  protected void a(ExcitingTransferUploadBizInfo paramExcitingTransferUploadBizInfo)
+  {
+    super.a(paramExcitingTransferUploadBizInfo);
+    if ((this.jdField_a_of_type_Araw instanceof arav))
+    {
+      arav localarav = (arav)this.jdField_a_of_type_Araw;
+      paramExcitingTransferUploadBizInfo.bufUuid = localarav.a;
+      paramExcitingTransferUploadBizInfo.bufUploadKey = localarav.b;
+      return;
+    }
+    QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] onGetOtherSendBusInfo. no other info");
+  }
+  
+  protected void a(ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
+  {
+    super.a(paramExcitingTransferUploadResultRp);
+    if (paramExcitingTransferUploadResultRp != null) {}
+    for (String str = paramExcitingTransferUploadResultRp.m_strFileUrl;; str = "")
+    {
+      this.jdField_b_of_type_JavaLangString = str;
+      b(paramExcitingTransferUploadResultRp);
+      if (this.jdField_a_of_type_Aqsx != null) {
+        this.jdField_a_of_type_Aqsx.g();
+      }
+      return;
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    if ((this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean)) {
+      return;
+    }
+    QLog.i("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] onFullShaCalcDone...");
+    e();
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
+      a(-2, null);
+      return;
+    }
+    this.jdField_a_of_type_Araw.a(paramArrayOfByte);
+    b();
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null)
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_Araw != null)
       {
-        paramFile = BitmapFactory.decodeFile(paramFile.getAbsolutePath());
-        return paramFile;
-      }
-      catch (OutOfMemoryError paramFile)
-      {
-        paramFile.printStackTrace();
-        QLog.e("HotPicManager.HotVideoPreviewDownloader", 1, "Override decodeFile hotVideo thum Bitmap OOM. HotVideo name is " + paramDownloadParams.name);
-        return null;
+        bool1 = bool2;
+        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64StartSize == this.jdField_a_of_type_Araw.a()) {
+          bool1 = true;
+        }
       }
     }
-    return null;
+    return bool1;
   }
   
-  @TargetApi(9)
-  public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  public boolean a(long paramLong)
   {
-    paramDownloadParams = (HotVideoData)paramDownloadParams.mExtraInfo;
-    paramDownloadParams.onFileDownloadStarted();
-    File localFile = a(paramDownloadParams.md5);
-    if (localFile.exists())
+    QLog.i("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] sendFile pos:" + paramLong);
+    this.jdField_a_of_type_Boolean = false;
+    c();
+    e();
+    b(null);
+    if ((this.jdField_a_of_type_Araw.d() == null) || (this.jdField_a_of_type_Araw.d().length == 0))
     {
-      paramDownloadParams.onFileDownloadSucceed(paramDownloadParams.picIndex);
-      if (paramURLDrawableHandler != null) {
-        paramURLDrawableHandler.onFileDownloadSucceed(paramDownloadParams.picIndex);
+      if (this.jdField_a_of_type_Aqsx != null)
+      {
+        Bundle localBundle = new Bundle();
+        byte[] arrayOfByte = this.jdField_a_of_type_Aqsx.a(localBundle);
+        if ((arrayOfByte == null) || (arrayOfByte.length == 0))
+        {
+          int i = localBundle.getInt("_shaCalcProgress_", 0);
+          if (i == 1)
+          {
+            d();
+            return true;
+          }
+          this.jdField_a_of_type_Boolean = true;
+          QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] sendFile fail. fullsha calc fail or none. " + i);
+          return false;
+        }
+        this.jdField_a_of_type_Araw.a(arrayOfByte);
       }
-      return localFile;
     }
-    if ((bbbr.a()) && (bbbr.b() < 20971520L)) {
-      throw new IOException("SD card free space is " + bbbr.b());
+    else {
+      return b();
     }
-    if (paramDownloadParams.url.isEmpty())
+    this.jdField_a_of_type_Boolean = true;
+    QLog.e("ExcitingTransfer.C2CFileUploader<FileAssistant>", 1, "Id[" + this.d + "] sendFile fail. fullsha can not get");
+    return false;
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null) {
+      return (int)this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_uRetryCount;
+    }
+    return 0;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp != null) {
+      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadResultRp.m_u64StartSize;
+    }
+    return 0L;
+  }
+  
+  protected void b(int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
+  {
+    super.b(paramInt, paramExcitingTransferUploadResultRp);
+    if (paramExcitingTransferUploadResultRp != null) {}
+    for (String str = paramExcitingTransferUploadResultRp.m_strFileUrl;; str = "")
     {
-      paramDownloadParams.GetPreviewURLAsync((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), 0, "0", new arav(this, paramDownloadParams, localFile, paramURLDrawableHandler));
-      return localFile;
+      this.jdField_b_of_type_JavaLangString = str;
+      b(paramExcitingTransferUploadResultRp);
+      paramInt = a(paramInt);
+      if (this.jdField_a_of_type_Aqsx != null) {
+        this.jdField_a_of_type_Aqsx.a(true, this.c, paramInt, "", "");
+      }
+      return;
     }
-    a(localFile, paramDownloadParams, paramURLDrawableHandler);
-    return localFile;
+  }
+  
+  protected int c()
+  {
+    return 69;
+  }
+  
+  protected int d()
+  {
+    return 0;
+  }
+  
+  protected int e()
+  {
+    return 3;
+  }
+  
+  public void onExcitingSubSenderResult(int paramInt, ExcitingTransferUploaderRp paramExcitingTransferUploaderRp)
+  {
+    if (paramExcitingTransferUploaderRp != null) {}
+    for (String str = paramExcitingTransferUploaderRp.m_strFileUrl;; str = "")
+    {
+      this.jdField_b_of_type_JavaLangString = str;
+      super.onExcitingSubSenderResult(paramInt, paramExcitingTransferUploaderRp);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arau
  * JD-Core Version:    0.7.0.1
  */

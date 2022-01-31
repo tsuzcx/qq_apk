@@ -1,22 +1,19 @@
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-final class asxn
-  implements Comparator<String>
+class asxn
+  implements View.OnClickListener
 {
-  public int a(String paramString1, String paramString2)
+  asxn(asxl paramasxl) {}
+  
+  public void onClick(View paramView)
   {
-    if (paramString1.length() > paramString2.length()) {
-      return -1;
-    }
-    if (paramString1.length() < paramString2.length()) {
-      return 1;
-    }
-    return 0;
+    asxg.a(this.a.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     asxn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,14 @@
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import java.util.ArrayList;
 
-class bhue
+public abstract interface bhue
 {
-  public static File a()
-  {
-    try
-    {
-      String str = bhcq.b;
-      File localFile1 = new File(str);
-      boolean bool = localFile1.exists();
-      if (!bool) {
-        try
-        {
-          new File(str, ".nomedia").createNewFile();
-          if (!localFile1.mkdirs())
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("InnerEnvironment", 2, "Unable to create external cache directory");
-            }
-            return null;
-          }
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            localIOException.printStackTrace();
-          }
-        }
-      }
-    }
-    finally {}
-    return localFile2;
-  }
+  public abstract void a(View paramView, int paramInt, ArrayList<DislikeInfo> paramArrayList, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhue
  * JD-Core Version:    0.7.0.1
  */

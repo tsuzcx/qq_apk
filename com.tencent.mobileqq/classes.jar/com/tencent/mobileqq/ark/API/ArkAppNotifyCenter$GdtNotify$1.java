@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ark.API;
 
-import acup;
-import alpv;
+import aelz;
 import android.graphics.Rect;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import angm;
 import com.tencent.ark.ark;
 import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatFragment;
@@ -16,12 +16,12 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import vzl;
+import xod;
 
 public class ArkAppNotifyCenter$GdtNotify$1
   implements Runnable
 {
-  public ArkAppNotifyCenter$GdtNotify$1(alpv paramalpv, JSONObject paramJSONObject, String paramString1, String paramString2) {}
+  public ArkAppNotifyCenter$GdtNotify$1(angm paramangm, JSONObject paramJSONObject, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -42,7 +42,7 @@ public class ArkAppNotifyCenter$GdtNotify$1
         localObject1 = ((ChatFragment)localObject2).a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
         JSONArray localJSONArray1 = new JSONArray();
         this.jdField_a_of_type_OrgJsonJSONObject.put("results", localJSONArray1);
-        localObject2 = ((ChatFragment)localObject2).a.jdField_a_of_type_Acup.a();
+        localObject2 = ((ChatFragment)localObject2).a.jdField_a_of_type_Aelz.a();
         JSONArray localJSONArray2 = new JSONObject(this.jdField_a_of_type_JavaLangString).optJSONArray("traceids");
         if (i >= localJSONArray2.length()) {
           break label524;
@@ -61,17 +61,17 @@ public class ArkAppNotifyCenter$GdtNotify$1
         if (localObject3 == null) {
           break label435;
         }
-        localObject3 = (ArkAppView)((View)localObject3).findViewById(2131362768);
+        localObject3 = (ArkAppView)((View)localObject3).findViewById(2131362798);
         if (localObject3 == null) {
           break label396;
         }
         localObject4 = ArkAppNotifyCenter.access$400((View)localObject3);
         if (localObject4 != null)
         {
-          localJSONObject1.put("left", vzl.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).left));
-          localJSONObject1.put("top", vzl.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).top));
-          localJSONObject1.put("right", vzl.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).right));
-          localJSONObject1.put("bottom", vzl.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).bottom));
+          localJSONObject1.put("left", xod.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).left));
+          localJSONObject1.put("top", xod.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).top));
+          localJSONObject1.put("right", xod.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).right));
+          localJSONObject1.put("bottom", xod.a(((ArkAppView)localObject3).getContext(), ((Rect)localObject4).bottom));
         }
       }
       catch (Exception localException)
@@ -117,7 +117,7 @@ public class ArkAppNotifyCenter$GdtNotify$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.API.ArkAppNotifyCenter.GdtNotify.1
  * JD-Core Version:    0.7.0.1
  */

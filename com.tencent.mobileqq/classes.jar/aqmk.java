@@ -1,33 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.gallery.model.GalleryBaseData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class aqmk
-  implements Parcelable.Creator<GalleryBaseData>
+class aqmk
+  implements army
 {
-  public GalleryBaseData a(Parcel paramParcel)
+  aqmk(aqmi paramaqmi, FileManagerEntity paramFileManagerEntity) {}
+  
+  public void a()
   {
-    Object localObject = paramParcel.readString();
-    try
-    {
-      localObject = GalleryBaseData.a((String)localObject);
-      ((GalleryBaseData)localObject).a(paramParcel);
-      return localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0) {
+      QfileBaseRecentFileTabView.z(this.jdField_a_of_type_Aqmi.a).a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
     }
-    catch (ClassNotFoundException paramParcel)
+    allz localallz;
+    ArrayList localArrayList;
+    do
     {
-      throw new RuntimeException(paramParcel);
-    }
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() != 6) {
+        break;
+      }
+      localallz = (allz)QfileBaseRecentFileTabView.A(this.jdField_a_of_type_Aqmi.a).a(8);
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq));
+    } while (localallz.a(localArrayList));
+    armz.a(2131692744);
+    return;
+    QfileBaseRecentFileTabView.B(this.jdField_a_of_type_Aqmi.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
   
-  public GalleryBaseData[] a(int paramInt)
-  {
-    return new GalleryBaseData[paramInt];
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqmk
  * JD-Core Version:    0.7.0.1
  */

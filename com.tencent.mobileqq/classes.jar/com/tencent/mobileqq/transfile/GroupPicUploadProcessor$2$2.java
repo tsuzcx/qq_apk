@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.transfile;
 
-import ayrf;
-import ayrg;
+import bapa;
+import bapb;
 
 public class GroupPicUploadProcessor$2$2
   implements Runnable
 {
-  public GroupPicUploadProcessor$2$2(ayrg paramayrg, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public GroupPicUploadProcessor$2$2(bapb parambapb, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ayrg.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
+    this.jdField_a_of_type_Bapb.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.GroupPicUploadProcessor.2.2
  * JD-Core Version:    0.7.0.1
  */

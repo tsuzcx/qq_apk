@@ -1,25 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-
 public class aboe
-  implements DialogInterface.OnClickListener
 {
-  public aboe(NotificationActivity paramNotificationActivity) {}
+  public long a;
+  public boolean a;
+  public long b;
+  public boolean b;
+  public boolean c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    axqy.a(this.a.app, "dc00898", "", NotificationActivity.d(this.a), "0X800AA31", "0X800AA31", 0, 0, "", "", "", NotificationActivity.a(this.a));
-    paramDialogInterface = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    this.a.startActivity(paramDialogInterface.putExtra("url", "https://myun.tenpay.com/mqq/banneduser/index.shtml?_wv=1027"));
-    this.a.finish();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.c = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aboe
  * JD-Core Version:    0.7.0.1
  */

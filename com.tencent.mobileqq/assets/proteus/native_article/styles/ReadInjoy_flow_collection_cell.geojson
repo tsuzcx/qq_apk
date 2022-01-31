@@ -1,6 +1,6 @@
 {
   "RIJ_fg_polymer_cell": {
-    "view_type": "cell",
+    "view_type": "container",
     "direction": "vertical",
     "height": {
       "type": "wrap_content"

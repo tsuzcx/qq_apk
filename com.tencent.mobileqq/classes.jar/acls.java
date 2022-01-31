@@ -1,84 +1,44 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.OpenID;
 import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class acls
-  implements afnt
+  extends ndm
 {
-  public acls(TroopRequestActivity paramTroopRequestActivity) {}
+  public acls(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void a(String paramString, structmsg.StructMsg paramStructMsg, int paramInt)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    int i;
-    if ((TroopInfo.hasPayPrivilege(paramInt, 128)) && (TroopInfo.hasPayPrivilege(paramInt, 512)))
-    {
-      i = 1;
-      if (i == 0) {
-        break label126;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.TroopRequestActivity", 2, "onTroopPrivilege payTroop, rspTroopUin: " + paramString + ", privilegeFlag = " + paramInt);
-      }
-      afns.a(this.a, paramString);
-      afns.a(this.a.app);
-      this.a.i();
-      axqy.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "pay_troop", "", "", "");
-    }
-    label126:
+    if ((this.a.isFinishing()) || (this.a.m)) {}
     do
     {
       do
       {
-        do
-        {
-          return;
-          i = 0;
-          break;
-          if (((this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 11) || (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.sub_type.get() != 3)) && (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 7)) {
-            break label250;
-          }
-        } while (this.a.jdField_a_of_type_Akhp == null);
-        try
-        {
-          long l = Long.parseLong(this.a.jdField_a_of_type_JavaLangString);
-          this.a.h();
-          this.a.jdField_a_of_type_Akhp.a(l, 8390784);
-          return;
+        return;
+        this.a.p();
+        if (this.a.b != null) {
+          this.a.b.removeCallbacksAndMessages(null);
         }
-        catch (Exception paramString) {}
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.systemmsg.TroopRequestActivity", 2, paramString.toString());
-      return;
-      this.a.h();
-      TroopRequestActivity.a(this.a, 1);
-    } while (this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() != 2);
-    label250:
-    axqy.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "agree_invite", 0, 0, paramString, "", "0", "0");
-    axqy.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "normal_troop", "", "", "");
-  }
-  
-  public void a(String paramString1, structmsg.StructMsg paramStructMsg, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.i();
-    paramStructMsg = this.a;
-    if (paramInt1 == 72) {}
-    for (paramInt1 = 2131690026;; paramInt1 = 2131690025)
-    {
-      bcql.a(paramStructMsg, paramInt1, 1).a();
-      axqy.b(null, "P_CliOper", "BizTechReport", "", "agree_invite", "rsp_pay_troop_getPrivilege", 0, 0, "err", "", "", "");
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.chatopttroop", 2, "openIdObserver success");
+        }
+      } while (paramOpenID.openID.equals(this.a.e));
       if (QLog.isColorLevel()) {
-        QLog.e("Q.systemmsg.TroopRequestActivity", 2, "NotificationView onTroopPrivilege network! error rspTroopUin = " + paramString1);
+        QLog.w("Q.chatopttroop", 2, "-->onGetOpenId--openid doesn't equal current openid");
       }
+      this.a.s();
       return;
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.chatopttroop", 2, "openIdObserver fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acls
  * JD-Core Version:    0.7.0.1
  */

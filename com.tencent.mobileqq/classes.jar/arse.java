@@ -1,20 +1,31 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment;
-import com.tencent.mobileqq.listentogether.fragment.ListenTogetherPlayFragment.1.1;
+import android.os.Message;
+import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
+import mqq.os.MqqHandler;
 
-public class arse
-  implements aswc
+class arse
+  implements affd
 {
-  public arse(ListenTogetherPlayFragment paramListenTogetherPlayFragment) {}
+  arse(arsc paramarsc, arsf paramarsf, int paramInt) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2, Object paramObject)
+  public void a()
   {
-    this.a.getActivity().runOnUiThread(new ListenTogetherPlayFragment.1.1(this, paramString, paramInt1, paramInt2));
+    FlashChatTextEffectView.a(this.jdField_a_of_type_Arsf);
+    Message localMessage = Message.obtain();
+    localMessage.obj = this.jdField_a_of_type_Arsf;
+    localMessage.what = this.jdField_a_of_type_Int;
+    if (this.jdField_a_of_type_Int < FlashChatTextEffectView.a().length)
+    {
+      arsc.a(this.jdField_a_of_type_Arsc).sendMessageDelayed(localMessage, FlashChatTextEffectView.a()[this.jdField_a_of_type_Int]);
+      return;
+    }
+    arsc.a(this.jdField_a_of_type_Arsc).sendMessageDelayed(localMessage, 7000L);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arse
  * JD-Core Version:    0.7.0.1
  */

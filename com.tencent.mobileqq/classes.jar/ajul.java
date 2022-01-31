@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionBase;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
-public abstract class ajul<T extends CustomEmotionBase>
-  extends ajtb
+public class ajul
+  extends Handler
 {
-  protected ajul(QQAppInterface paramQQAppInterface)
+  public ajul(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    super(paramQQAppInterface);
+    switch (paramMessage.what)
+    {
+    }
   }
-  
-  public abstract void a();
-  
-  protected abstract void a(Object paramObject, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajul
  * JD-Core Version:    0.7.0.1
  */

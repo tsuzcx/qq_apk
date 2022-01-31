@@ -1,23 +1,14 @@
-import android.os.Bundle;
+import com.tencent.image.URLImageView;
 
-public class npr
-  implements ajte
+class npr
 {
-  protected void a(boolean paramBoolean, Bundle paramBundle) {}
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramObject != null)
-    {
-      a(paramBoolean, (Bundle)paramObject);
-      return;
-    }
-    a(paramBoolean, null);
-  }
+  npr(npq paramnpq) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npr
  * JD-Core Version:    0.7.0.1
  */

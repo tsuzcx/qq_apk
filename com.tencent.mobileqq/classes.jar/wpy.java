@@ -1,50 +1,62 @@
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
-import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
-import android.text.TextUtils;
-import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
-import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
-import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMultiRcmdDisLike;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import java.util.List;
 
-public class wpy
-  implements amgv
+class wpy
+  extends nac
 {
-  public wpy(SubscribeBaseFragment paramSubscribeBaseFragment) {}
+  wpy(wpx paramwpx) {}
   
-  public ColorNote getColorNote()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo == null))
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      QLog.e("SubscribeBaseFragment", 1, "initColorNote, shareInfoBean is null");
-      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.home:FeedSegment", 2, "ReqMultiRcmdDisLike,onResult error=" + paramInt + " data=" + paramArrayOfByte);
+      }
+      return;
     }
-    byte[] arrayOfByte = wst.a(new SubscribeColorNoteReserveBean(this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.toByteArray(), this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType));
-    wkm localwkm = new wkm();
-    localwkm.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = this.a.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
-    localwkm.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = this.a.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
-    String str1 = "";
-    String str3 = localwkm.c();
-    String str2 = localwkm.d();
-    String str4 = localwkm.e();
-    switch (localwkm.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo.pageType)
+    try
     {
+      paramBundle = new qqstory_service.RspMultiRcmdDisLike();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramInt = ((qqstory_struct.ErrorInfo)paramBundle.result.get()).error_code.get();
+      if (paramInt != 0) {
+        break label255;
+      }
+      QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, dislike success");
+      paramArrayOfByte = (wma)this.a.jdField_a_of_type_Wps.a.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
+      paramArrayOfByte.a(this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      if (paramArrayOfByte.a().isEmpty())
+      {
+        this.a.jdField_a_of_type_Wps.a.a().remove(paramArrayOfByte);
+        paramArrayOfByte = this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId;
+        Bosses.get().postJob(new wpz(this, "Q.qqstory.home:FeedSegment", paramArrayOfByte));
+        wps.a(this.a.jdField_a_of_type_Wps);
+        return;
+      }
     }
-    while (TextUtils.isEmpty(str1))
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      return null;
-      str2 = localwkm.f();
-      str1 = "" + localwkm.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get();
-      continue;
-      str1 = "" + localwkm.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get();
+      QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, error protobuf content" + paramArrayOfByte.getStackTrace());
+      return;
     }
-    return new amhb().a(16908291).a(str1).b(str3).c(str2).d(str4).a(arrayOfByte).a();
+    wps.a(this.a.jdField_a_of_type_Wps, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHotRecommendFeedItem.feedId);
+    return;
+    label255:
+    QLog.d("Q.qqstory.home:FeedSegment", 1, "RspMultiRcmdDisLike, errorcode:" + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wpy
  * JD-Core Version:    0.7.0.1
  */

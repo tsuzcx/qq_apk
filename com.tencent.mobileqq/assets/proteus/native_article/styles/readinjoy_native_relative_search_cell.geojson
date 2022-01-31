@@ -1,6 +1,6 @@
 {
 	"readinjoy_native_relative_search_cell": {
-		"view_type": "cell",
+		"view_type": "container",
 		"direction": "vertical",
 		"height": {
 			"type": "wrap_content"
@@ -16,8 +16,7 @@
 			"align_parent_right": "YES",
 			"margin_left": "16",
 			"margin_right": "16",
-			"margin_top": "33",
-			"margin_bottom": "34",
+			"margin_top": "30",
 			"height": {
 				"type": "wrap_content"
 			},

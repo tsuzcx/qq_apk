@@ -3,18 +3,14 @@ package com.tencent.biz.pubaccount.readinjoy.capture;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import axtw;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import oej;
+import oiv;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ReadInJoyUgcVideoReportItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<ReadInJoyUgcVideoReportItem> CREATOR = new oej();
+  public static final Parcelable.Creator<ReadInJoyUgcVideoReportItem> CREATOR = new oiv();
   public double a;
   public int a;
   public long a;
@@ -42,29 +38,6 @@ public class ReadInJoyUgcVideoReportItem
     this.jdField_a_of_type_Long = paramParcel.readLong();
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.h = paramParcel.readString();
-  }
-  
-  public static ArrayList<ReadInJoyUgcVideoReportItem> a(List<axtw> paramList)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (paramList != null)
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        axtw localaxtw = (axtw)paramList.next();
-        ReadInJoyUgcVideoReportItem localReadInJoyUgcVideoReportItem = new ReadInJoyUgcVideoReportItem();
-        localReadInJoyUgcVideoReportItem.jdField_a_of_type_Double = localaxtw.jdField_a_of_type_Double;
-        localReadInJoyUgcVideoReportItem.jdField_a_of_type_JavaLangString = localaxtw.h;
-        localReadInJoyUgcVideoReportItem.b = localaxtw.i;
-        localReadInJoyUgcVideoReportItem.c = localaxtw.j;
-        localReadInJoyUgcVideoReportItem.d = localaxtw.k;
-        localReadInJoyUgcVideoReportItem.e = localaxtw.l;
-        localReadInJoyUgcVideoReportItem.f = localaxtw.m;
-        localArrayList.add(localReadInJoyUgcVideoReportItem);
-      }
-    }
-    return localArrayList;
   }
   
   public JSONObject a()
@@ -110,7 +83,7 @@ public class ReadInJoyUgcVideoReportItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyUgcVideoReportItem
  * JD-Core Version:    0.7.0.1
  */

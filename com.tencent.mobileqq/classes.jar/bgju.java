@@ -1,22 +1,24 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableSpeakerCompleteCallback;
-import com.tencent.qphone.base.util.QLog;
-
 class bgju
-  extends AVAudioCtrl.EnableSpeakerCompleteCallback
 {
-  bgju(bgjq parambgjq) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  int b;
   
-  public void onComplete(boolean paramBoolean, int paramInt)
+  public bgju(String paramString, int paramInt1, int paramInt2)
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenSpeaker.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.b(paramBoolean, paramInt);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public String toString()
+  {
+    return "WxapkgFile{name='" + this.jdField_a_of_type_JavaLangString + '\'' + ", start=" + this.jdField_a_of_type_Int + ", length=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgju
  * JD-Core Version:    0.7.0.1
  */

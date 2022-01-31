@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget.navbar;
 
-import actj;
-import ajya;
+import aekt;
+import alpo;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -16,9 +16,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import baww;
-import bbll;
-import bctk;
+import bcvq;
+import bdkf;
+import best;
 import com.tencent.common.config.AppSetting;
 
 public class NavBarCommon
@@ -28,7 +28,7 @@ public class NavBarCommon
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private bctk jdField_a_of_type_Bctk;
+  private best jdField_a_of_type_Best;
   private boolean jdField_a_of_type_Boolean = true;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -60,28 +60,28 @@ public class NavBarCommon
   
   private void a(Context paramContext)
   {
-    View.inflate(paramContext, 2131558878, this);
-    setBackgroundResource(2130849032);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368429));
-    this.e = ((TextView)findViewById(2131378015));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368742));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368431));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368472));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377400));
-    this.g = ((TextView)findViewById(2131377438));
-    this.h = ((TextView)findViewById(2131377379));
-    this.d = ((TextView)findViewById(2131368457));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368446));
-    this.f = ((TextView)findViewById(2131368458));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368441));
-    if (AppSetting.d)
+    View.inflate(paramContext, 2131558915, this);
+    setBackgroundResource(2130849463);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368613));
+    this.e = ((TextView)findViewById(2131378562));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368961));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368615));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368659));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377935));
+    this.g = ((TextView)findViewById(2131377975));
+    this.h = ((TextView)findViewById(2131377914));
+    this.d = ((TextView)findViewById(2131368644));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368633));
+    this.f = ((TextView)findViewById(2131368645));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368627));
+    if (AppSetting.c)
     {
-      baww.b(this.jdField_a_of_type_AndroidWidgetTextView, Button.class.getName());
+      bcvq.b(this.jdField_a_of_type_AndroidWidgetTextView, Button.class.getName());
       if (this.e != null) {
-        baww.b(this.e, Button.class.getName());
+        bcvq.b(this.e, Button.class.getName());
       }
       if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-        baww.b(this.jdField_b_of_type_AndroidWidgetImageView, Button.class.getName());
+        bcvq.b(this.jdField_b_of_type_AndroidWidgetImageView, Button.class.getName());
       }
     }
   }
@@ -108,9 +108,9 @@ public class NavBarCommon
     TextView localTextView;
     if (paramBoolean)
     {
-      i = 2131167134;
+      i = 2131167192;
       setBackgroundResource(i);
-      localColorStateList = getResources().getColorStateList(2131166849);
+      localColorStateList = getResources().getColorStateList(2131166896);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
       localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
       if (!paramBoolean) {
@@ -118,7 +118,7 @@ public class NavBarCommon
       }
     }
     label96:
-    for (int i = 2130839748;; i = 2130849547)
+    for (int i = 2130840096;; i = 2130849987)
     {
       localTextView.setBackgroundResource(i);
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
@@ -127,19 +127,19 @@ public class NavBarCommon
       this.d.setTextColor(localColorStateList);
       this.f.setTextColor(localColorStateList);
       return;
-      i = 2130849032;
+      i = 2130849463;
       break;
     }
   }
   
   public void b()
   {
-    bbll.b(this.jdField_b_of_type_AndroidWidgetTextView, 8);
+    bdkf.b(this.jdField_b_of_type_AndroidWidgetTextView, 8);
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Bctk == null) {}
+    if (this.jdField_a_of_type_Best == null) {}
     for (;;)
     {
       return;
@@ -149,7 +149,7 @@ public class NavBarCommon
       }
       while (i != 0)
       {
-        this.jdField_a_of_type_Bctk.a(paramView, i);
+        this.jdField_a_of_type_Best.a(paramView, i);
         return;
         i = 1;
         continue;
@@ -170,11 +170,11 @@ public class NavBarCommon
   
   public void setCustomView(View paramView)
   {
-    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-2, actj.a(29.0F, getResources()));
+    RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-2, aekt.a(29.0F, getResources()));
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
     localLayoutParams1.addRule(13, -1);
     RelativeLayout.LayoutParams localLayoutParams2 = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-    int i = actj.a(24.0F, getResources());
+    int i = aekt.a(24.0F, getResources());
     localLayoutParams2.leftMargin = i;
     localLayoutParams2.rightMargin = i;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams2);
@@ -184,13 +184,13 @@ public class NavBarCommon
   
   public void setLeftBackVisible(int paramInt)
   {
-    bbll.b(this.jdField_a_of_type_AndroidWidgetTextView, paramInt);
+    bdkf.b(this.jdField_a_of_type_AndroidWidgetTextView, paramInt);
   }
   
   public void setLeftButton(int paramInt)
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368431));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368615));
     setLayerType(this.jdField_b_of_type_AndroidWidgetTextView);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(paramInt);
@@ -199,7 +199,7 @@ public class NavBarCommon
   public void setLeftButton(String paramString)
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368431));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368615));
     setLayerType(this.jdField_b_of_type_AndroidWidgetTextView);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
@@ -219,7 +219,7 @@ public class NavBarCommon
       localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
       localObject1 = localObject2;
       if ("".equals(localObject2)) {
-        localObject1 = getContext().getString(2131690572);
+        localObject1 = getContext().getString(2131690623);
       }
       if (!this.jdField_a_of_type_Boolean) {
         break label139;
@@ -229,11 +229,11 @@ public class NavBarCommon
     for (;;)
     {
       localTextView.setVisibility(0);
-      if (AppSetting.d)
+      if (AppSetting.c)
       {
         localObject2 = localObject1;
-        if (!((String)localObject1).contains(getContext().getString(2131690572))) {
-          localObject2 = getContext().getString(2131690572) + (String)localObject1;
+        if (!((String)localObject1).contains(getContext().getString(2131690623))) {
+          localObject2 = getContext().getString(2131690623) + (String)localObject1;
         }
         this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription((CharSequence)localObject2);
       }
@@ -265,15 +265,15 @@ public class NavBarCommon
             if (!TextUtils.isEmpty((CharSequence)localObject))
             {
               paramBundle = (Bundle)localObject;
-              if (((String)localObject).contains(ajya.a(2131707090))) {
-                paramBundle = getContext().getString(2131690572);
+              if (((String)localObject).contains(alpo.a(2131707462))) {
+                paramBundle = getContext().getString(2131690623);
               }
             }
           }
         }
         localObject = paramBundle;
         if (paramBundle == null) {
-          localObject = getContext().getString(2131690572);
+          localObject = getContext().getString(2131690623);
         }
         if (this.jdField_a_of_type_Boolean) {
           localTextView.setText("  ");
@@ -281,12 +281,12 @@ public class NavBarCommon
         for (;;)
         {
           localTextView.setVisibility(0);
-          if (!AppSetting.d) {
+          if (!AppSetting.c) {
             break;
           }
           paramBundle = (Bundle)localObject;
-          if (!((String)localObject).contains(getContext().getString(2131690572))) {
-            paramBundle = getContext().getString(2131690572) + (String)localObject;
+          if (!((String)localObject).contains(getContext().getString(2131690623))) {
+            paramBundle = getContext().getString(2131690623) + (String)localObject;
           }
           this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(paramBundle);
           return;
@@ -298,9 +298,9 @@ public class NavBarCommon
     }
   }
   
-  public void setOnItemSelectListener(bctk parambctk)
+  public void setOnItemSelectListener(best parambest)
   {
-    this.jdField_a_of_type_Bctk = parambctk;
+    this.jdField_a_of_type_Best = parambest;
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     if (this.e != null) {
       this.e.setOnClickListener(this);
@@ -325,8 +325,8 @@ public class NavBarCommon
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
     this.d.setText(paramInt);
     this.d.setEnabled(true);
-    if (AppSetting.d) {
-      this.d.setContentDescription(this.d.getText() + ajya.a(2131707091));
+    if (AppSetting.c) {
+      this.d.setContentDescription(this.d.getText() + alpo.a(2131707463));
     }
   }
   
@@ -336,8 +336,8 @@ public class NavBarCommon
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
     this.d.setText(paramString);
     this.d.setEnabled(true);
-    if (AppSetting.d) {
-      this.d.setContentDescription(this.d.getText() + ajya.a(2131707089));
+    if (AppSetting.c) {
+      this.d.setContentDescription(this.d.getText() + alpo.a(2131707461));
     }
   }
   
@@ -347,8 +347,8 @@ public class NavBarCommon
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.f.setText(paramInt);
     this.f.setEnabled(true);
-    if (AppSetting.d) {
-      this.d.setContentDescription(this.d.getText() + ajya.a(2131707092));
+    if (AppSetting.c) {
+      this.d.setContentDescription(this.d.getText() + alpo.a(2131707464));
     }
   }
   
@@ -378,7 +378,7 @@ public class NavBarCommon
   
   public void setRightViewTextVisible(int paramInt)
   {
-    bbll.b(this.d, paramInt);
+    bdkf.b(this.d, paramInt);
   }
   
   public void setTitle(CharSequence paramCharSequence)
@@ -423,7 +423,7 @@ public class NavBarCommon
       if (!TextUtils.equals(paramCharSequence, this.jdField_c_of_type_AndroidWidgetTextView.getText())) {
         this.jdField_c_of_type_AndroidWidgetTextView.setText(paramCharSequence);
       }
-      if ((!TextUtils.equals(paramString, this.jdField_c_of_type_AndroidWidgetTextView.getContentDescription())) && (AppSetting.d)) {
+      if ((!TextUtils.equals(paramString, this.jdField_c_of_type_AndroidWidgetTextView.getContentDescription())) && (AppSetting.c)) {
         this.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(paramString);
       }
     }

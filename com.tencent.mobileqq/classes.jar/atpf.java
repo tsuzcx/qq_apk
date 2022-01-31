@@ -1,25 +1,27 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.location.ui.MapWidget;
 
 public class atpf
-  implements View.OnClickListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public atpf(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public atpf(MapWidget paramMapWidget, LocationRoom.Venue paramVenue) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if ((this.a.a != null) && (!this.a.isFinishing()))
+    this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    if (this.jdField_a_of_type_ComTencentMobileqqLocationDataLocationRoom$Venue == null)
     {
-      this.a.a.dismiss();
-      this.a.a = null;
+      this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget.a(true, Float.valueOf(15.0F));
+      return;
     }
+    MapWidget.a(this.jdField_a_of_type_ComTencentMobileqqLocationUiMapWidget);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atpf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,41 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class aogd
-  implements Parcelable.Creator<MiniAppRecommInfo>
+public class aogd
+  implements aofq
 {
-  public MiniAppRecommInfo a(Parcel paramParcel)
+  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString, aofp paramaofp)
   {
-    return new MiniAppRecommInfo(paramParcel);
-  }
-  
-  public MiniAppRecommInfo[] a(int paramInt)
-  {
-    return new MiniAppRecommInfo[paramInt];
+    if ((paramaofp != null) && ("smart_devices_discovery_config".equals(paramString))) {
+      if (QLog.isColorLevel()) {
+        QLog.d("OnSmartDeviceDiscoveryCfgListener", 2, "handleConfigForTag smartDeviceDiscoverCfg content = " + paramaofp.a);
+      }
+    }
+    try
+    {
+      paramInt = new JSONObject(paramaofp.a).optInt("smart_device_discovery_config_switch");
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", paramInt).apply();
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      return;
+    }
+    catch (Exception paramString) {}finally
+    {
+      BaseApplication.getContext().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "smart_device_discovery_config_file", 0).edit().putInt("smart_device_discovery_config_switch", 1).apply();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aogd
  * JD-Core Version:    0.7.0.1
  */

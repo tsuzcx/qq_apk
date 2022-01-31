@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ark;
 
-import alri;
-import alte;
+import ania;
+import anjx;
 import com.tencent.wordsegment.WordSegment;
 import java.util.Locale;
 
@@ -10,12 +10,12 @@ public class ArkAiDictMgr$5
 {
   public void run()
   {
-    String str = alte.a().a() + "/";
+    String str = anjx.a().a() + "/";
     WordSegment.uninit();
     int i = WordSegment.init(str);
     if (i == 0)
     {
-      alri.b(str);
+      ania.b(str);
       return;
     }
     ArkAppCenter.c("ArkApp.Dict", String.format(Locale.CHINA, "initWordData failed, ret=%d", new Object[] { Integer.valueOf(i) }));
@@ -23,7 +23,7 @@ public class ArkAiDictMgr$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkAiDictMgr.5
  * JD-Core Version:    0.7.0.1
  */

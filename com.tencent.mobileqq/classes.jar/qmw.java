@@ -1,51 +1,35 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVoiceInfo;
+import java.util.ArrayList;
 
-class qmw
-  implements ohj
+public class qmw
 {
-  qmw(qmu paramqmu) {}
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<qmx> a;
+  public qlz a;
+  public qmc a;
+  public int b;
+  public String b;
+  public ArrayList<qmy> b;
+  public String c;
+  public ArrayList<SocializeFeedsInfo.UGCVoiceInfo> c;
   
-  public void a()
+  public qmw()
   {
-    if (qmu.a(this.a) != null) {
-      qmu.a(this.a).b();
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_c_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void a(int paramInt)
+  public String toString()
   {
-    if (paramInt < 0) {
-      return;
-    }
-    qmu.a(this.a).e = paramInt;
-    qmu.a(this.a).b(qmu.a(this.a));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    this.a.f();
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    }
-    qmu.a(this.a).e();
-    this.a.f();
+    return "UGCFeedsInfo{ugcFeedsCardType=" + this.jdField_a_of_type_Int + ", ugcPicInfos=" + this.jdField_a_of_type_JavaUtilArrayList + ", ugcVideoInfos=" + this.jdField_b_of_type_JavaUtilArrayList + ", ugcVoiceInfos=" + this.jdField_c_of_type_JavaUtilArrayList + ", cuin=" + this.jdField_a_of_type_Long + ", ugc_comments='" + this.jdField_a_of_type_JavaLangString + '\'' + ", nickName='" + this.jdField_b_of_type_JavaLangString + '\'' + ", ugcAtComments=" + this.jdField_a_of_type_Qmc + ", ugcFeedsSrc=" + this.jdField_b_of_type_Int + ", jumpUrl='" + this.jdField_c_of_type_JavaLangString + '\'' + ", accountProfileInfo=" + this.jdField_a_of_type_Qlz + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qmw
  * JD-Core Version:    0.7.0.1
  */

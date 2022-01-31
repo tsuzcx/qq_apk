@@ -1,61 +1,44 @@
-import android.support.annotation.NonNull;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo;
+import com.tencent.viola.core.dispatch.ComponentAppearEvent;
+import com.tencent.viola.core.dispatch.IEvent;
+import com.tencent.viola.core.dispatch.IObserver;
 
-public abstract class sqn<Config extends sqv>
+public class sqn
+  implements IObserver
 {
-  protected spy a;
-  private Config a;
+  public sqn(VTopicVideo paramVTopicVideo) {}
   
-  protected List<spz> a()
+  public String getRef()
   {
-    if (this.jdField_a_of_type_Spy != null) {
-      return this.jdField_a_of_type_Spy.a();
-    }
-    return null;
+    return this.a.getRef();
   }
   
-  protected abstract List<spy> a(@NonNull List<spz> paramList);
-  
-  public Config a()
+  public void onReceive(IEvent paramIEvent)
   {
-    return this.jdField_a_of_type_Sqv;
-  }
-  
-  public void a(spy paramspy)
-  {
-    if (paramspy.b() > 0) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramIEvent.getRef().equals(this.a.getRef())) && (this.a.getVideoLifeCycleChangeListener() != null))
     {
-      vxp.a(bool);
-      this.jdField_a_of_type_Spy = paramspy;
+      paramIEvent = (ComponentAppearEvent)paramIEvent;
+      if (!paramIEvent.event.equals("didDisappear")) {
+        break label59;
+      }
+      this.a.getVideoLifeCycleChangeListener().O_();
+    }
+    label59:
+    do
+    {
       return;
-    }
-  }
-  
-  public void a(Config paramConfig)
-  {
-    this.jdField_a_of_type_Sqv = paramConfig;
-  }
-  
-  public List<spy> b()
-  {
-    List localList = a();
-    if ((localList == null) || (localList.size() == 0))
-    {
-      ved.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "data is null");
-      return null;
-    }
-    if ((a() != null) && (localList.size() < a().b))
-    {
-      ved.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "too little data");
-      return null;
-    }
-    return a(a());
+      if (paramIEvent.event.equals("willAppear"))
+      {
+        this.a.getVideoLifeCycleChangeListener().M_();
+        return;
+      }
+    } while (!paramIEvent.event.equals("didAppear"));
+    this.a.getVideoLifeCycleChangeListener().N_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sqn
  * JD-Core Version:    0.7.0.1
  */

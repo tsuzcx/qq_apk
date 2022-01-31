@@ -4,20 +4,20 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.TextView;
-import bhvy;
+import bjxj;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import java.util.ArrayList;
-import pau;
-import pqp;
-import pqy;
-import puy;
-import qdq;
-import qds;
+import pgd;
+import pxk;
+import pxt;
+import qbs;
+import qnm;
+import qno;
 
 public class ComponentCenterTopicTitle
   extends ComponentTitle
-  implements pqp
+  implements pxk
 {
   TextView a;
   TextView b;
@@ -41,27 +41,27 @@ public class ComponentCenterTopicTitle
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131559887, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364590));
-    this.b = ((TextView)findViewById(2131365017));
+    LayoutInflater.from(paramContext).inflate(2131559982, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364668));
+    this.b = ((TextView)findViewById(2131365102));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof pau))
+    if ((paramObject instanceof pgd))
     {
-      paramObject = (pau)paramObject;
-      this.jdField_a_of_type_Puy.a(paramObject);
+      paramObject = (pgd)paramObject;
+      this.jdField_a_of_type_Qbs.a(paramObject);
       paramObject = paramObject.a();
       if ((paramObject != null) && (paramObject.mSocialFeedInfo != null) && (paramObject.mSocialFeedInfo.a != null) && (paramObject.mSocialFeedInfo.a.a != null) && (!paramObject.mSocialFeedInfo.a.a.isEmpty()))
       {
-        paramObject = (qds)paramObject.mSocialFeedInfo.a.a.get(0);
+        paramObject = (qno)paramObject.mSocialFeedInfo.a.a.get(0);
         String str = paramObject.c + paramObject.a;
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
         if (paramObject.b <= 0) {
           break label176;
         }
-        paramObject = String.format("- %s人正在参与 -", new Object[] { bhvy.a(paramObject.b) });
+        paramObject = String.format("- %s人正在参与 -", new Object[] { bjxj.a(paramObject.b) });
         this.b.setText(paramObject);
         this.b.setVisibility(0);
       }
@@ -75,9 +75,9 @@ public class ComponentCenterTopicTitle
     }
   }
   
-  public void a(pqy parampqy)
+  public void a(pxt parampxt)
   {
-    this.jdField_a_of_type_Puy.a(parampqy);
+    this.jdField_a_of_type_Qbs.a(parampxt);
   }
   
   public void b() {}
@@ -86,7 +86,7 @@ public class ComponentCenterTopicTitle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentCenterTopicTitle
  * JD-Core Version:    0.7.0.1
  */

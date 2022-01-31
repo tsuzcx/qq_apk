@@ -14,9 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import avpb;
-import avpc;
-import baxy;
+import axgw;
+import axgx;
+import bcws;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ public class ReceiptMessageReadMemberListFragment
   extends Fragment
 {
   private View jdField_a_of_type_AndroidViewView;
-  private baxy jdField_a_of_type_Baxy;
+  private bcws jdField_a_of_type_Bcws;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   @Nonnull
@@ -55,13 +55,13 @@ public class ReceiptMessageReadMemberListFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558596, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2131558629, paramViewGroup, false);
     return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void onDestroy()
   {
-    this.jdField_a_of_type_Baxy.d();
+    this.jdField_a_of_type_Bcws.d();
     super.onDestroy();
   }
   
@@ -73,23 +73,23 @@ public class ReceiptMessageReadMemberListFragment
     paramBundle = paramBundle.getString("ReceiptMessageReadMemberListFragment.EXTRA_KEY_EMPTY_TEXT");
     if (((paramView == null) || (paramView.isEmpty())) && (!TextUtils.isEmpty(paramBundle)))
     {
-      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131365675);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365679)).setText(paramBundle);
+      localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131365759);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365763)).setText(paramBundle);
       ((View)localObject).setVisibility(0);
     }
-    paramBundle = (RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369865);
-    this.jdField_a_of_type_Baxy = new baxy(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    Object localObject = new avpc(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Baxy, paramBundle, null);
-    ((avpc)localObject).a(paramView);
+    paramBundle = (RecyclerView)this.jdField_a_of_type_AndroidViewView.findViewById(2131370129);
+    this.jdField_a_of_type_Bcws = new bcws(BaseApplicationImpl.getContext(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject = new axgx(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Bcws, paramBundle, null);
+    ((axgx)localObject).a(paramView);
     paramBundle.setAdapter((RecyclerView.Adapter)localObject);
     paramBundle.setLayoutManager(new LinearLayoutManager(BaseApplicationImpl.getContext()));
     int i = (int)(getResources().getDisplayMetrics().density * 64.0F);
-    paramBundle.addItemDecoration(new avpb(getResources().getDrawable(2130838084), i, 0, null));
+    paramBundle.addItemDecoration(new axgw(getResources().getDrawable(2130838140), i, 0, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment
  * JD-Core Version:    0.7.0.1
  */

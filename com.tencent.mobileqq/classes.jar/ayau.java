@@ -1,17 +1,12 @@
-class ayau
+import android.view.View;
+
+public abstract interface ayau
 {
-  Object jdField_a_of_type_JavaLangObject;
-  String jdField_a_of_type_JavaLangString;
-  
-  public ayau(String paramString, Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
+  public abstract void a(View paramView, int paramInt, ayat paramayat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayau
  * JD-Core Version:    0.7.0.1
  */

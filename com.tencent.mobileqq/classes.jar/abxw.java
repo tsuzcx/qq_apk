@@ -1,24 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class abxw
-  implements bfvx
+  implements DialogInterface.OnDismissListener
 {
-  public abxw(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public abxw(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void a(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    RecommendFriendActivity.a(this.a, false);
-  }
-  
-  public void b(View paramView)
-  {
-    RecommendFriendActivity.a(this.a, true);
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxw
  * JD-Core Version:    0.7.0.1
  */

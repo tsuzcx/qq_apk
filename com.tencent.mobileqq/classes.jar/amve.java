@@ -1,67 +1,95 @@
-import org.json.JSONObject;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class amve
+public abstract class amve
+  extends Binder
+  implements amvd
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
-  
   public amve()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
   }
   
-  public static amve a(amph[] paramArrayOfamph)
+  public static amvd a(IBinder paramIBinder)
   {
-    localamve = new amve();
-    int i = 0;
-    try
-    {
-      while (i < paramArrayOfamph.length)
-      {
-        JSONObject localJSONObject = new JSONObject(paramArrayOfamph[i].jdField_a_of_type_JavaLangString);
-        if (localJSONObject.has("pubaccountSwitch"))
-        {
-          localamve.jdField_a_of_type_Int = localJSONObject.optInt("pubaccountSwitch");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed swtich=" + localamve.jdField_a_of_type_Int);
-          }
-        }
-        if (localJSONObject.has("fullPopIntervalDay"))
-        {
-          localamve.b = localJSONObject.optInt("fullPopIntervalDay");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed fullPopIntervalDay=" + localamve.b);
-          }
-        }
-        if (localJSONObject.has("isFeedByWeb"))
-        {
-          localamve.c = localJSONObject.optInt("isFeedByWeb");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed isFeedByWeb=" + localamve.c);
-          }
-        }
-        if (localJSONObject.has("feedUrl"))
-        {
-          localamve.jdField_a_of_type_JavaLangString = localJSONObject.optString("feedUrl");
-          if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-            com.tencent.qphone.base.util.QLog.d("QQGameConfBean", 2, "onParsed feedUrl=" + localamve.jdField_a_of_type_JavaLangString);
-          }
-        }
-        i += 1;
-      }
-      return localamve;
+    if (paramIBinder == null) {
+      return null;
     }
-    catch (Throwable paramArrayOfamph)
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof amvd))) {
+      return (amvd)localIInterface;
+    }
+    return new amvf(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      com.tencent.TMG.utils.QLog.e("QQGameConfBean", 1, "QQGameConfBean parse error e=" + paramArrayOfamph.toString());
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      a();
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      a(paramParcel1.readLong(), paramParcel1.readLong());
+      paramParcel2.writeNoException();
+      return true;
+    case 3: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+    ArConfigInfo localArConfigInfo;
+    ArEffectConfig localArEffectConfig;
+    if (paramParcel1.readInt() != 0)
+    {
+      localArConfigInfo = (ArConfigInfo)ArConfigInfo.CREATOR.createFromParcel(paramParcel1);
+      if (paramParcel1.readInt() == 0) {
+        break label219;
+      }
+      localArEffectConfig = (ArEffectConfig)ArEffectConfig.CREATOR.createFromParcel(paramParcel1);
+      label178:
+      if (paramParcel1.readInt() == 0) {
+        break label225;
+      }
+    }
+    label219:
+    label225:
+    for (paramParcel1 = (ARCommonConfigInfo)ARCommonConfigInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+    {
+      a(localArConfigInfo, localArEffectConfig, paramParcel1);
+      paramParcel2.writeNoException();
+      return true;
+      localArConfigInfo = null;
+      break;
+      localArEffectConfig = null;
+      break label178;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amve
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.observer;
 
 import android.os.Bundle;
-import atzq;
+import avqu;
 
 public class QZoneObserver$1
   implements Runnable
 {
-  public QZoneObserver$1(atzq paramatzq, boolean paramBoolean, Bundle paramBundle) {}
+  public QZoneObserver$1(avqu paramavqu, boolean paramBoolean, Bundle paramBundle) {}
   
   public void run()
   {
@@ -15,7 +15,7 @@ public class QZoneObserver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.observer.QZoneObserver.1
  * JD-Core Version:    0.7.0.1
  */

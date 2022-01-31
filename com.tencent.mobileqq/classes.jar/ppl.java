@@ -1,112 +1,166 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.1;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.2;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.3;
-import com.tencent.biz.pubaccount.readinjoy.pts.loader.PTSJSCLoader.4;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class ppl
+public abstract class ppl
+  implements ViewBase.OnClickListener
 {
-  private static String jdField_a_of_type_JavaLangString;
-  private static volatile ppl jdField_a_of_type_Ppl;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private final String b = "4044";
-  private final String c = "readinjoy_pts_jsc";
-  private final String d = "libjsc.so";
-  private final String e = "pts_jsc_config.json";
-  private final String f = mzh.a("4044") + "4044";
-  private final String g = BaseApplicationImpl.getApplication().getFilesDir().getParent() + "/txlib/" + "readinjoy_pts_jsc";
+  Context jdField_a_of_type_AndroidContentContext;
+  ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public static ppl a()
+  ppl(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    if (jdField_a_of_type_Ppl == null) {}
-    try
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a(ArticleInfo paramArticleInfo, int paramInt)
+  {
+    if (paramArticleInfo != null)
     {
-      if (jdField_a_of_type_Ppl == null) {
-        jdField_a_of_type_Ppl = new ppl();
+      ReportInfo localReportInfo = new ReportInfo();
+      Object localObject = paramArticleInfo.mSocialFeedInfo;
+      qlv localqlv = new qlv();
+      localReportInfo.mUin = ors.a();
+      localReportInfo.mSource = 0;
+      localReportInfo.mSourceArticleId = paramArticleInfo.mArticleID;
+      localReportInfo.mChannelId = ((int)paramArticleInfo.mChannelID);
+      localReportInfo.mAlgorithmId = ((int)paramArticleInfo.mAlgorithmID);
+      localReportInfo.mStrategyId = paramArticleInfo.mStrategyId;
+      localReportInfo.mServerContext = paramArticleInfo.mServerContext;
+      localReportInfo.mReadTimeLength = -1;
+      localReportInfo.mOperation = paramInt;
+      if (localObject != null)
+      {
+        localqlv.jdField_a_of_type_Long = ((SocializeFeedsInfo)localObject).jdField_a_of_type_Long;
+        if (((SocializeFeedsInfo)localObject).jdField_a_of_type_Qme != null) {
+          localqlv.jdField_b_of_type_Long = ((SocializeFeedsInfo)localObject).jdField_a_of_type_Qme.jdField_a_of_type_Long;
+        }
+        localqlv.jdField_a_of_type_Int = ((SocializeFeedsInfo)localObject).jdField_b_of_type_Int;
+        localqlv.jdField_b_of_type_Int = ((SocializeFeedsInfo)localObject).d;
+        paramArticleInfo = ((SocializeFeedsInfo)localObject).jdField_a_of_type_JavaUtilList;
+        if ((paramArticleInfo != null) && (!paramArticleInfo.isEmpty()))
+        {
+          localqlv.jdField_a_of_type_JavaUtilList = new ArrayList();
+          paramArticleInfo = paramArticleInfo.iterator();
+          while (paramArticleInfo.hasNext())
+          {
+            localObject = (qme)paramArticleInfo.next();
+            if (localObject != null) {
+              localqlv.jdField_a_of_type_JavaUtilList.add(Long.valueOf(((qme)localObject).jdField_a_of_type_Long));
+            }
+          }
+        }
       }
-      return jdField_a_of_type_Ppl;
+      localReportInfo.mFeedsReportData = localqlv;
+      paramArticleInfo = new ArrayList();
+      paramArticleInfo.add(localReportInfo);
+      owy.a().a(paramArticleInfo);
     }
-    finally {}
   }
   
-  private void b()
+  public static void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2)
   {
-    bejn.a(new PTSJSCLoader.3(this), 128, null, true);
-  }
-  
-  private boolean b()
-  {
-    Object localObject = this.g + "/" + "pts_jsc_config.json";
-    boolean bool1 = bbdx.a(this.g + "/" + "libjsc.so");
-    boolean bool2 = ppn.a((String)localObject);
-    jdField_a_of_type_JavaLangString = ppn.b((String)localObject);
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("[checkInnerPTSJSCIsValid]").append("\n").append(", ptsJSCVersion = ").append(jdField_a_of_type_JavaLangString).append("\n").append(", isJSCSoExists = ").append(bool1).append("\n").append(", isVersionSupport = ").append(bool2).append("\n");
-    QLog.i("PTSJSCLoader", 1, ((StringBuilder)localObject).toString());
-    return (bool1) && (bool2);
-  }
-  
-  private void c()
-  {
-    try
-    {
-      bejn.a(new PTSJSCLoader.4(this), 64, null, false);
+    if ((paramArticleInfo == null) || (paramArticleInfo.mSocialFeedInfo == null)) {
       return;
     }
-    finally
+    SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
+    label28:
+    label40:
+    int i;
+    label59:
+    int j;
+    label73:
+    long l;
+    if (szp.a(paramArticleInfo.mChannelID))
     {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a()
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = false;
-      PTSJSCLoader.1 local1 = new PTSJSCLoader.1(this);
-      bejn.a().postDelayed(local1, 10000L);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    if (a())
-    {
-      QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], jsc has loaded, no need to load again.");
-      if (paramRunnable != null) {
-        bejn.b().post(paramRunnable);
+      if (!rqj.a(paramArticleInfo)) {
+        break label290;
       }
-      return;
+      paramString1 = paramArticleInfo.mSubscribeID;
+      if (localSocializeFeedsInfo.jdField_a_of_type_JavaUtilList == null) {
+        break label320;
+      }
+      i = localSocializeFeedsInfo.jdField_a_of_type_JavaUtilList.size();
+      if (!TextUtils.isEmpty(localSocializeFeedsInfo.jdField_a_of_type_JavaLangString)) {
+        break label325;
+      }
+      j = 0;
+      int k = localSocializeFeedsInfo.jdField_b_of_type_Int;
+      int m = localSocializeFeedsInfo.d;
+      int n = localSocializeFeedsInfo.f;
+      paramString1 = ors.a((int)paramArticleInfo.mChannelID, paramArticleInfo.mAlgorithmID, ors.a(paramArticleInfo), paramString1, paramArticleInfo.innerUniqueID, i + 1, j, k, m, n).a();
+      l = paramArticleInfo.mArticleID;
+      if ((!ors.b(paramArticleInfo)) && (!ors.c(paramArticleInfo)) && (!ors.e(paramArticleInfo)) && (!ors.f(paramArticleInfo))) {
+        break label381;
+      }
+      l = paramArticleInfo.businessId;
     }
-    if (b())
+    label290:
+    label320:
+    label325:
+    label381:
+    for (;;)
     {
-      paramRunnable = new PTSJSCLoader.2(this, paramRunnable);
-      bejn.b().post(paramRunnable);
+      if ((rqj.i(paramArticleInfo)) || (rqj.b(paramArticleInfo)) || (rqj.j(paramArticleInfo)) || (rqj.k(paramArticleInfo)))
+      {
+        if (!rqj.o(paramArticleInfo)) {
+          nrt.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Qmw.jdField_a_of_type_Long), paramString2, paramString2, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(l), "" + paramArticleInfo.mStrategyId, paramString1, false);
+        }
+        if ((ors.k(paramArticleInfo)) || (ors.l(paramArticleInfo))) {
+          break;
+        }
+        rqj.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
+        return;
+        paramString2 = paramString1;
+        break label28;
+        paramString1 = "" + localSocializeFeedsInfo.jdField_a_of_type_Qme.jdField_a_of_type_Long;
+        break label40;
+        i = 0;
+        break label59;
+        j = 1;
+        break label73;
+      }
+      nrt.a(null, paramArticleInfo.mSubscribeID, paramString2, paramString2, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(l), "" + paramArticleInfo.mStrategyId, paramString1, false);
       return;
     }
-    QLog.i("PTSJSCLoader", 1, "[loadPTSJSC], pts jsc is not valid, load jsc so failed.");
-    c();
   }
   
-  public boolean a()
+  private void b(ArticleInfo paramArticleInfo)
   {
-    return this.jdField_a_of_type_Boolean;
+    ors.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  private void c(ArticleInfo paramArticleInfo)
+  {
+    a(paramArticleInfo);
+    a(paramArticleInfo, a());
+  }
+  
+  protected abstract int a();
+  
+  protected abstract void a(ArticleInfo paramArticleInfo);
+  
+  protected abstract void a(ViewBase paramViewBase);
+  
+  public final void onClick(ViewBase paramViewBase)
+  {
+    b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    a(paramViewBase);
+    c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    odw.a(paramViewBase, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ppl
  * JD-Core Version:    0.7.0.1
  */

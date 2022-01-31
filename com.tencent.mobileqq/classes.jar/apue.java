@@ -1,53 +1,35 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.Editable;
+import android.widget.EditText;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class apue
+class apue
+  implements aubp<EmoticonPackage>
 {
-  public static void a(String paramString)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject != null) && ((localObject instanceof QQAppInterface))) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject == null) {
-        return;
-      }
-      apuf localapuf = new apuf();
-      localapuf.jdField_b_of_type_JavaLangString = paramString;
-      localapuf.jdField_a_of_type_JavaLangString = paramString;
-      if (localapuf.jdField_a_of_type_Boolean) {}
-      for (int i = 0;; i = 1)
-      {
-        axqy.b((QQAppInterface)localObject, "CliOper", "", "", localapuf.jdField_a_of_type_JavaLangString, localapuf.jdField_b_of_type_JavaLangString, localapuf.jdField_a_of_type_Int, localapuf.jdField_b_of_type_Int, i, String.valueOf(localapuf.jdField_b_of_type_Long), localapuf.d, apuf.a(localapuf), localapuf.c);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("FileManagerReporter<FileAssistant>", 2, "report key:" + paramString);
-        return;
-      }
-    }
-  }
+  apue(apud paramapud, int paramInt1, int paramInt2, EditText paramEditText, QQAppInterface paramQQAppInterface) {}
   
-  public static void a(String paramString, apuf paramapuf)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    BaseApplicationImpl.getContext();
-    paramString = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramString != null) && ((paramString instanceof QQAppInterface))) {}
-    for (paramString = (QQAppInterface)paramString;; paramString = null)
-    {
-      if (paramapuf.jdField_a_of_type_Boolean) {}
-      for (int i = 0;; i = 1)
-      {
-        axqy.b(paramString, "CliOper", "", "", paramapuf.jdField_a_of_type_JavaLangString, paramapuf.jdField_b_of_type_JavaLangString, paramapuf.jdField_a_of_type_Int, paramapuf.jdField_b_of_type_Int, i, String.valueOf(paramapuf.jdField_b_of_type_Long), paramapuf.d, apuf.a(paramapuf), paramapuf.c);
-        return;
-      }
+    char[] arrayOfChar1 = apih.a(this.jdField_a_of_type_Int, this.b);
+    char[] arrayOfChar2 = new char[5];
+    arrayOfChar2[0] = '\024';
+    arrayOfChar2[1] = arrayOfChar1[3];
+    arrayOfChar2[2] = arrayOfChar1[2];
+    arrayOfChar2[3] = arrayOfChar1[1];
+    arrayOfChar2[4] = arrayOfChar1[0];
+    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2)) {
+      arrayOfChar2[1] = 'ǿ';
     }
+    int i = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
+    int j = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
+    this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, String.valueOf(arrayOfChar2));
+    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800717E", 0, 0, this.jdField_a_of_type_Int + "", this.b + "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apue
  * JD-Core Version:    0.7.0.1
  */

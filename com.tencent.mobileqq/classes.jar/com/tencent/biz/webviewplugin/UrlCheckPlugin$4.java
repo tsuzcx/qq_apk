@@ -1,11 +1,11 @@
 package com.tencent.biz.webviewplugin;
 
-import xnb;
+import zbu;
 
 public class UrlCheckPlugin$4
   implements Runnable
 {
-  public UrlCheckPlugin$4(xnb paramxnb) {}
+  public UrlCheckPlugin$4(zbu paramzbu) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class UrlCheckPlugin$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.UrlCheckPlugin.4
  * JD-Core Version:    0.7.0.1
  */

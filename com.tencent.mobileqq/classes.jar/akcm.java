@@ -1,47 +1,20 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.widget.Switch;
 
 public class akcm
-  extends ContentObserver
 {
-  WeakReference<PhoneContactManagerImp> a;
-  
-  public akcm(Handler paramHandler)
-  {
-    super(paramHandler);
-  }
-  
-  public void a(PhoneContactManagerImp paramPhoneContactManagerImp)
-  {
-    if (this.a != null) {
-      this.a.clear();
-    }
-    if (paramPhoneContactManagerImp != null) {
-      this.a = new WeakReference(paramPhoneContactManagerImp);
-    }
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneContact.Manager", 2, "Contact changed.");
-    }
-    if (this.a == null) {}
-    for (PhoneContactManagerImp localPhoneContactManagerImp = null;; localPhoneContactManagerImp = (PhoneContactManagerImp)this.a.get())
-    {
-      if (localPhoneContactManagerImp != null) {
-        localPhoneContactManagerImp.g = true;
-      }
-      return;
-    }
-  }
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  AppletItem jdField_a_of_type_ComTencentMobileqqAppletsDataAppletItem;
+  Switch jdField_a_of_type_ComTencentWidgetSwitch;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akcm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,65 +1,75 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.widget.Button;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import java.util.ArrayList;
-
 public class xaj
-  extends xao
+  implements Cloneable
 {
-  public xaj(MoveFileActivity paramMoveFileActivity) {}
+  public final int a;
+  public final String a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
+  public final String f;
+  public final String g;
+  public String h;
   
-  protected void a(boolean paramBoolean, int paramInt, azpi paramazpi)
+  public xaj(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    if (this.a.getActivity().isFinishing()) {
-      return;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = null;
+    this.d = paramString3;
+    this.e = paramString4;
+    this.f = paramString5;
+    this.g = paramString6;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public xaj(vcw paramvcw)
+  {
+    this.jdField_a_of_type_JavaLangString = paramvcw.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramvcw.jdField_b_of_type_JavaLangString;
+    this.c = paramvcw.c;
+    this.d = paramvcw.d;
+    this.e = paramvcw.e;
+    this.f = paramvcw.g;
+    this.g = paramvcw.f;
+    this.jdField_a_of_type_Int = paramvcw.jdField_b_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.h;
+  }
+  
+  public void a(String paramString)
+  {
+    this.h = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
     }
-    this.a.b();
-    int i = this.a.getActivity().getResources().getDimensionPixelSize(2131298865);
-    if (paramBoolean)
-    {
-      MoveFileActivity.a(this.a).add(0, paramazpi);
-      MoveFileActivity.c(this.a, 0);
-      MoveFileActivity.a(this.a).setEnabled(true);
-      MoveFileActivity.a(this.a).setBackgroundResource(2130839047);
-      MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131755329);
-      MoveFileActivity.a(this.a).i(paramazpi);
-      MoveFileActivity.a(this.a).notifyDataSetChanged();
-      axqy.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "new_suc", 0, 0, this.a.jdField_a_of_type_Long + "", paramazpi.b, "", "");
-      bcql.a(this.a.getActivity(), 2, ajya.a(2131706910), 0).b(i);
-      return;
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return false;
     }
-    switch (paramInt)
-    {
-    default: 
-      paramazpi = this.a.getString(2131696381);
-      bcql.a(this.a.getActivity(), 1, paramazpi, 0).b(i);
-      return;
-    case -313: 
-      paramazpi = this.a.getString(2131697627);
-      axqy.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "repeat", 0, 0, this.a.jdField_a_of_type_Long + "", "1", "", "");
-    }
-    for (;;)
-    {
-      this.a.a(this.a.getResources().getString(2131697792), null, this.a.jdField_a_of_type_JavaLangString, paramazpi);
-      return;
-      paramazpi = this.a.getString(2131697632);
-      axqy.b(this.a.app, "P_CliOper", "Grp_files", "", "file", "sensitive", 0, 0, this.a.jdField_a_of_type_Long + "", "1", "", "");
-      continue;
-      paramazpi = this.a.getString(2131697630);
-      bcql.a(this.a.getActivity(), 1, paramazpi, 0).b(i);
-      return;
-      paramazpi = this.a.getString(2131697629);
-      bcql.a(this.a.getActivity(), 1, paramazpi, 0).b(i);
-      return;
-      paramazpi = this.a.getString(2131697633);
-      bcql.a(this.a.getActivity(), 1, paramazpi, 0).b(i);
-    }
+    paramObject = (xaj)paramObject;
+    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  public String toString()
+  {
+    return "DoodleEmojiItem{mPackId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLogoUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mDownloadLogoUrl='" + this.c + '\'' + ", mPackName='" + this.d + '\'' + ", mPackDownloadUrl='" + this.e + '\'' + ", mPackMd5='" + this.g + '\'' + ", mLocalEmojiFolderPath='" + this.h + '\'' + ", mConfig='" + this.f + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xaj
  * JD-Core Version:    0.7.0.1
  */

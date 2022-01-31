@@ -35,6 +35,14 @@ public class OrientationPlugin
     this.mOrientationListener.disable();
   }
   
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (this.mOrientationListener != null) {
+      this.mOrientationListener.disable();
+    }
+  }
+  
   public Set<String> supportedEvents()
   {
     return Collections.emptySet();
@@ -42,7 +50,7 @@ public class OrientationPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.jsapi.plugins.OrientationPlugin
  * JD-Core Version:    0.7.0.1
  */

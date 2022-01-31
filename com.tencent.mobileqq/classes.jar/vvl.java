@@ -1,25 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
 public class vvl
-  implements View.OnClickListener
+  extends uhw<vvc, uow>
 {
-  public vvl(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
-  
-  public void onClick(View paramView)
+  public vvl(vvc paramvvc)
   {
-    ved.b("SelectColorLayout", "onUndoClick: undoTypeEnable=" + this.a.jdField_a_of_type_Boolean);
-    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
-    while ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_Vvn == null)) {
-      return;
-    }
-    this.a.jdField_a_of_type_Vvn.a();
+    super(paramvvc);
   }
+  
+  public void a(@NonNull vvc paramvvc, @NonNull uow paramuow)
+  {
+    if ((paramvvc.a != null) && (TextUtils.equals(paramvvc.a.b, paramuow.a)))
+    {
+      wsv.a(this.TAG, "receive feed info change event. %s.", paramuow.toString());
+      paramvvc.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uow.class;
+  }
+  
+  public void b(@NonNull vvc paramvvc, @NonNull uow paramuow) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vvl
  * JD-Core Version:    0.7.0.1
  */

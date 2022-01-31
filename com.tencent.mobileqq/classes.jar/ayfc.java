@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 
 public class ayfc
-  extends ayet
+  extends ClickableSpan
 {
-  public ayfc(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
+  public ayfc(UniteSearchActivity paramUniteSearchActivity) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramTeamWorkFileImportInfo, paramQQAppInterface);
+    this.a.openContextMenu(this.a.a);
   }
   
-  public void a(QQAppInterface paramQQAppInterface)
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (paramQQAppInterface != null))
-    {
-      this.jdField_a_of_type_Ayeq.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      this.jdField_a_of_type_Ayeq.h(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-    }
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ayfc
  * JD-Core Version:    0.7.0.1
  */

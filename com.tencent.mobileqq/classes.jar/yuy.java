@@ -1,21 +1,26 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
 class yuy
-  implements View.OnSystemUiVisibilityChangeListener
+  implements Animation.AnimationListener
 {
-  yuy(yuw paramyuw, ViewGroup paramViewGroup) {}
+  yuy(yuu paramyuu) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if ((paramInt & 0x4) == 0) {
-      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(3846);
+    if (yuu.b(this.a) != null) {
+      yuu.b(this.a).setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yuy
  * JD-Core Version:    0.7.0.1
  */

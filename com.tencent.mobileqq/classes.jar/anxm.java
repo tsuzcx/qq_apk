@@ -1,27 +1,56 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.VipIPSiteInfo;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-
-class anxm
-  implements View.OnClickListener
+public class anxm
 {
-  anxm(anxk paramanxk, VipIPSiteInfo paramVipIPSiteInfo, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  public static final int a(int paramInt)
   {
-    paramView = new Intent(this.jdField_a_of_type_Anxk.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("hide_operation_bar", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Anxk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqDataVipIPSiteInfo.ipUrl, -1L, paramView, false, -1);
-    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_Anxk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "IP", "aio_enterclk", "", 0, 0, 0, this.jdField_a_of_type_JavaLangString, this.b, "", "", "", "", "", 0, 0, 0, 0);
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 16842752: 
+      return 3;
+    case 16908288: 
+      return 1;
+    case 17039360: 
+      return 2;
+    case 16908290: 
+      return 4;
+    case 16908289: 
+      return 5;
+    case 16973824: 
+      return 6;
+    case 17104896: 
+      return 7;
+    case 16908292: 
+      return 8;
+    case 16908291: 
+      return 9;
+    }
+    return 10;
+  }
+  
+  public static int b(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return 0;
+    case 16908288: 
+      return 1;
+    case 17039360: 
+      return 2;
+    case 16908290: 
+      return 3;
+    case 16908289: 
+      return 4;
+    case 16842752: 
+      return 5;
+    }
+    return 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anxm
  * JD-Core Version:    0.7.0.1
  */

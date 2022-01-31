@@ -1,23 +1,61 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.location.ui.LocationPickFragment;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class arwv
-  implements View.OnClickListener
 {
-  public arwv(LocationPickFragment paramLocationPickFragment, Activity paramActivity) {}
-  
-  public void onClick(View paramView)
+  public static int a(int paramInt, double paramDouble)
   {
-    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    axqy.b(null, "CliOper", "", "", "0X800A963", "0X800A963", 0, 0, "0", "0", "0", "");
+    float f = 1.0F;
+    if (paramInt > 150) {
+      f = paramInt / 100;
+    }
+    if (paramDouble <= 1.5D) {
+      return (int)(f * 9.0F);
+    }
+    if (paramDouble <= 2.0D) {
+      return (int)(f * 9.0F);
+    }
+    return (int)(f * 4.0F);
+  }
+  
+  public static Drawable a(Bitmap paramBitmap)
+  {
+    Object localObject = null;
+    Bitmap localBitmap = bdda.a(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+    paramBitmap = localObject;
+    if (localBitmap != null) {
+      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
+    }
+    return paramBitmap;
+  }
+  
+  public static Drawable a(Bitmap paramBitmap, double paramDouble)
+  {
+    Object localObject = null;
+    Bitmap localBitmap = bdda.a(paramBitmap, a(0, paramDouble));
+    paramBitmap = localObject;
+    if (localBitmap != null) {
+      paramBitmap = new BitmapDrawable(BaseApplicationImpl.getApplication().getResources(), localBitmap);
+    }
+    return paramBitmap;
+  }
+  
+  public static Drawable a(Drawable paramDrawable, double paramDouble)
+  {
+    return a(bczs.a(paramDrawable), paramDouble);
+  }
+  
+  public static final boolean a(Intent paramIntent)
+  {
+    return (paramIntent != null) && (paramIntent.hasExtra("report")) && ("Music_gene_aio".equals(paramIntent.getStringExtra("report")));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     arwv
  * JD-Core Version:    0.7.0.1
  */

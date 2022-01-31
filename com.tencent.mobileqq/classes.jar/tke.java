@@ -1,59 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqIconPostfix;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import java.util.ArrayList;
-import java.util.Iterator;
+import UserGrowth.stFollowFeedsReq;
+import UserGrowth.stFollowFeedsRsp;
 
 public class tke
-  extends tba
+  extends thb<stFollowFeedsRsp>
 {
-  private ArrayList<String> a;
-  
-  public tke(ArrayList<String> paramArrayList)
+  public tke(String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, int paramInt)
   {
-    this.a = paramArrayList;
-  }
-  
-  public String a()
-  {
-    return sxm.a("StorySvc.batch_get_user_icon_info");
-  }
-  
-  public tbb a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspIconPostfix localRspIconPostfix = new qqstory_service.RspIconPostfix();
-    try
-    {
-      localRspIconPostfix.mergeFrom(paramArrayOfByte);
-      return new tkf(localRspIconPostfix);
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      ved.d("GetUserIconHandler", "" + paramArrayOfByte);
-    }
-    return null;
-  }
-  
-  protected byte[] a()
-  {
-    qqstory_service.ReqIconPostfix localReqIconPostfix = new qqstory_service.ReqIconPostfix();
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (!TextUtils.isEmpty(str)) {
-        localReqIconPostfix.union_id_list.add(ByteStringMicro.copyFromUtf8(str));
-      }
-    }
-    return localReqIconPostfix.toByteArray();
+    super("FollowFeeds");
+    stFollowFeedsReq localstFollowFeedsReq = new stFollowFeedsReq();
+    localstFollowFeedsReq.attatch_info = paramString1;
+    localstFollowFeedsReq.is_refresh = paramBoolean2;
+    localstFollowFeedsReq.is_first = paramBoolean1;
+    localstFollowFeedsReq.push_info = paramString2;
+    localstFollowFeedsReq.scene = paramInt;
+    this.a = localstFollowFeedsReq;
+    tlo.d("FollowRequest", localstFollowFeedsReq.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tke
  * JD-Core Version:    0.7.0.1
  */

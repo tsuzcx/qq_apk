@@ -1,47 +1,39 @@
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.qqmini.sdk.log.QMLog;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
-public class bhbj
+class bhbj
+  extends WebViewClient
 {
-  public final int a;
-  public final long a;
-  public final int b;
-  public final long b;
-  public final long c;
-  public final long d;
-  public final long e;
-  public final long f;
+  bhbj(bhbi parambhbi) {}
   
-  private bhbj(ByteBuffer paramByteBuffer, int paramInt)
+  public void onPageFinished(WebView paramWebView, String paramString)
   {
-    switch (paramInt)
+    super.onPageFinished(paramWebView, paramString);
+    this.a.setCurrState(bhbi.a(this.a));
+    this.a.d();
+  }
+  
+  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  {
+    QMLog.i("TAG_CHROMIUM", "shouldInterceptRequest: " + paramWebResourceRequest.getUrl());
+    if ((paramWebResourceRequest != null) && (paramWebResourceRequest.getUrl() != null))
     {
-    default: 
-      throw new IOException("Unexpected elf class: " + paramInt);
-    case 1: 
-      this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-      this.jdField_a_of_type_Long = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Long = paramByteBuffer.getInt();
-      this.c = paramByteBuffer.getInt();
-      this.d = paramByteBuffer.getInt();
-      this.e = paramByteBuffer.getInt();
-      this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-      this.f = paramByteBuffer.getInt();
-      return;
+      String str = paramWebResourceRequest.getUrl().toString();
+      if ((!TextUtils.isEmpty(str)) && ((str.startsWith("https://appservice.qq.com/")) || (str.startsWith("wxfile://")))) {
+        return bhbi.a(this.a, paramWebView, paramWebResourceRequest.getUrl().toString());
+      }
     }
-    this.jdField_a_of_type_Int = paramByteBuffer.getInt();
-    this.jdField_b_of_type_Int = paramByteBuffer.getInt();
-    this.jdField_a_of_type_Long = paramByteBuffer.getLong();
-    this.jdField_b_of_type_Long = paramByteBuffer.getLong();
-    this.c = paramByteBuffer.getLong();
-    this.d = paramByteBuffer.getLong();
-    this.e = paramByteBuffer.getLong();
-    this.f = paramByteBuffer.getLong();
+    return super.shouldInterceptRequest(paramWebView, paramWebResourceRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhbj
  * JD-Core Version:    0.7.0.1
  */

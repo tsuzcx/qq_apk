@@ -1,53 +1,122 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import com.tencent.mobileqq.olympic.TorchInfo;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.olympic.OlympicTorchSvc.SceneWording;
+import tencent.im.oidb.olympic.torch_transfer.TorchbearerInfo;
 
-class avwe
+public class avwe
+  implements alkr
 {
-  private final Drawable a;
-  private final Drawable b;
+  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2) {}
   
-  avwe(Context paramContext)
-  {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837549);
-    this.b = paramContext.getDrawable(2130837553);
-  }
+  public void a(boolean paramBoolean, int paramInt, String paramString) {}
   
-  private Drawable a(Drawable paramDrawable)
-  {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
-  }
+  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo) {}
   
-  private Drawable b(Drawable paramDrawable)
-  {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
-  }
+  public void a(boolean paramBoolean, TorchInfo paramTorchInfo) {}
   
-  Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, String paramString, int paramInt2, int paramInt3, byte[] paramArrayOfByte) {}
   
-  StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString, torch_transfer.TorchbearerInfo paramTorchbearerInfo, OlympicTorchSvc.SceneWording paramSceneWording) {}
+  
+  public void b(boolean paramBoolean, int paramInt, String paramString) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    if (QLog.isColorLevel()) {
+      QLog.d("OlympicObserver", 2, new Object[] { "onUpdata, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
+    }
+    switch (paramInt)
+    {
+    default: 
+    case 0: 
+    case 1: 
+    case 2: 
+    case 6: 
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  do
+                  {
+                    do
+                    {
+                      return;
+                      if ((paramObject != null) && ((paramObject instanceof Object[]))) {
+                        break;
+                      }
+                    } while (!QLog.isColorLevel());
+                    QLog.d("OlympicObserver", 2, "NOTIFY_GET_BUSINESS_TORCH, data is null or not Object[]");
+                    return;
+                    paramObject = (Object[])paramObject;
+                    if (paramObject.length >= 4) {
+                      break;
+                    }
+                  } while (!QLog.isColorLevel());
+                  QLog.d("OlympicObserver", 2, "NOTIFY_GET_BUSINESS_TORCH, objs.length < 4, is " + paramObject.length);
+                  return;
+                  a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2], (torch_transfer.TorchbearerInfo)paramObject[3], (OlympicTorchSvc.SceneWording)paramObject[4]);
+                  return;
+                  if ((paramObject != null) && ((paramObject instanceof Object[]))) {
+                    break;
+                  }
+                } while (!QLog.isColorLevel());
+                QLog.d("OlympicObserver", 2, "NOTIFY_DELIVER_TORCH, data is null or not Object[]");
+                return;
+                paramObject = (Object[])paramObject;
+                if (paramObject.length >= 6) {
+                  break;
+                }
+              } while (!QLog.isColorLevel());
+              QLog.d("OlympicObserver", 2, "NOTIFY_DELIVER_TORCH, objs.length < 6, is " + paramObject.length);
+              return;
+              a(paramBoolean, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue(), (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), (byte[])paramObject[5]);
+              return;
+              if ((paramObject != null) && ((paramObject instanceof Object[]))) {
+                break;
+              }
+            } while (!QLog.isColorLevel());
+            QLog.d("OlympicObserver", 2, "NOTIFY_EXIT_DELIVER_TORCH, data is null or not Object[]");
+            return;
+            paramObject = (Object[])paramObject;
+            if (paramObject.length >= 2) {
+              break;
+            }
+          } while (!QLog.isColorLevel());
+          QLog.d("OlympicObserver", 2, "NOTIFY_EXIT_DELIVER_TORCH, objs.length < 2, is " + paramObject.length);
+          return;
+          a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+          return;
+        } while ((paramObject == null) || (!(paramObject instanceof Object[])));
+        paramObject = (Object[])paramObject;
+      } while (paramObject.length < 2);
+      b(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1]);
+      return;
+    case 3: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (String)paramObject[1], (byte[])paramObject[2], (TorchInfo)paramObject[3]);
+      return;
+    case 4: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, ((Integer)paramObject[0]).intValue(), (TorchInfo)paramObject[1], ((Integer)paramObject[2]).intValue());
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("OlympicObserver", 2, "NOTIFY_PUSH_0Xb4");
+    }
+    a(true, (TorchInfo)((Object[])(Object[])paramObject)[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avwe
  * JD-Core Version:    0.7.0.1
  */

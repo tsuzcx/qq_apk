@@ -1,32 +1,34 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.recent.AnonymousEntranceView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import mqq.os.MqqHandler;
 
 public class ahjw
-  implements Animation.AnimationListener
+  extends MqqHandler
 {
-  public ahjw(AnonymousEntranceView paramAnonymousEntranceView) {}
+  public ahjw(NotificationView paramNotificationView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(4);
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Ahjt == null);
+      this.a.i();
+      this.a.jdField_a_of_type_Ahjt.a = baba.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_Ahjt.notifyDataSetChanged();
+      return;
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (AnonymousEntranceView.b(this.a) != null) {
-      AnonymousEntranceView.b(this.a).setVisibility(0);
-    }
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahjw
  * JD-Core Version:    0.7.0.1
  */

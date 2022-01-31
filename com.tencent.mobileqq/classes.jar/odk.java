@@ -1,40 +1,93 @@
-import android.view.View;
-import com.tencent.mobileqq.data.ArkAppMessage;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class odk
 {
-  public static AtomicBoolean a;
-  
-  public static ArkAppMessage a(qak paramqak)
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    return null;
+    int k = 1;
+    for (;;)
+    {
+      try
+      {
+        if (paramAdData.a == null) {
+          return paramJSONObject;
+        }
+        paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_inner_game_cell");
+        if (!TextUtils.isEmpty(paramAdData.a.k)) {
+          paramJSONObject.put("id_inner_small_img", new JSONObject());
+        }
+        JSONObject localJSONObject;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_JavaLangString))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_JavaLangString);
+          paramJSONObject.put("id_inner_title", localJSONObject);
+        }
+        if ((!odv.c(paramAdData)) && (!TextUtils.isEmpty(paramAdData.a.h)))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.h);
+          paramJSONObject.put("id_inner_category", localJSONObject);
+        }
+        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Obf.d)) {
+          break label424;
+        }
+        paramJSONObject.put("id_inner_game_img1", new JSONObject());
+        paramJSONObject.put("id_game_img1_container1", new JSONObject());
+        i = 1;
+        j = 1;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Obf.e))
+        {
+          paramJSONObject.put("id_inner_game_img2", new JSONObject());
+          paramJSONObject.put("id_game_img2_container2", new JSONObject());
+          i = 1;
+          j = 1;
+        }
+        if (TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Obf.f)) {
+          break label421;
+        }
+        paramJSONObject.put("id_inner_game_img3", new JSONObject());
+        paramJSONObject.put("id_game_img3_container3", new JSONObject());
+        i = 0;
+        j = 1;
+        if (!TextUtils.isEmpty(paramAdData.a.jdField_a_of_type_Obf.g))
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("text", paramAdData.a.jdField_a_of_type_Obf.g);
+          paramJSONObject.put("id_inner_ad_name", localJSONObject);
+          j = k;
+          if (j != 0) {
+            paramJSONObject.put("id_bottom_operation", new JSONObject());
+          }
+          if (i != 0) {
+            paramJSONObject.put("id_game_img_right_space", new JSONObject());
+          }
+          localJSONObject = new JSONObject();
+          localJSONObject.put("innerGameModel", paramAdData);
+          paramJSONObject.put("id_view_AdDownloadView", localJSONObject);
+          return paramJSONObject;
+        }
+      }
+      catch (JSONException paramAdData)
+      {
+        paramAdData.printStackTrace();
+        return paramJSONObject;
+      }
+      continue;
+      label421:
+      continue;
+      label424:
+      int i = 0;
+      int j = 0;
+    }
   }
-  
-  public static void a() {}
-  
-  public static void a(int paramInt) {}
-  
-  public static void a(View paramView) {}
-  
-  public static void a(ArkAppMessage paramArkAppMessage, int paramInt) {}
-  
-  public static void a(odi paramodi, int paramInt) {}
-  
-  public static boolean a(ArkAppMessage paramArkAppMessage)
-  {
-    return false;
-  }
-  
-  public static void b() {}
-  
-  public static void b(int paramInt) {}
-  
-  public static void b(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     odk
  * JD-Core Version:    0.7.0.1
  */

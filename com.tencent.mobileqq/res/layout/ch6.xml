@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:layout_gravity="center_horizontal" android:id="@id/mr0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="42.0dip" android:shadowColor="@color/by" android:shadowDx="5.0" android:shadowDy="5.0" />
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ch5" />
+    <ViewStub android:layout_gravity="bottom" android:id="@id/mv5" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqcircle.widgets.QCirclePolymorphicAniView android:id="@id/mm_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqcircle.widgets.QCircleRockeyPopupView android:layout_gravity="bottom|center|right" android:id="@id/mmp" android:layout_width="115.0dip" android:layout_height="210.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="62.0dip" />
+</merge>

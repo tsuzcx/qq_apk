@@ -1,10 +1,23 @@
-public abstract interface atar
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession;
+
+public final class atar
+  implements Parcelable.Creator<SingTogetherSession>
 {
-  public abstract void a(String paramString, boolean paramBoolean);
+  public SingTogetherSession a(Parcel paramParcel)
+  {
+    return new SingTogetherSession(paramParcel, null);
+  }
+  
+  public SingTogetherSession[] a(int paramInt)
+  {
+    return new SingTogetherSession[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atar
  * JD-Core Version:    0.7.0.1
  */

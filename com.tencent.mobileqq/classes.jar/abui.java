@@ -1,24 +1,38 @@
-import com.tencent.mobileqq.activity.QQIdentiferLegacy;
-import mqq.app.QQPermissionCallback;
+import android.app.Activity;
+import java.util.Map;
 
 public class abui
-  implements QQPermissionCallback
+  extends absp
 {
-  public abui(QQIdentiferLegacy paramQQIdentiferLegacy) {}
+  public boolean b;
+  protected String c;
+  public String d;
+  public String e;
   
-  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public abui(Activity paramActivity, int paramInt, String paramString1, String paramString2)
   {
-    bbdj.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
+    super(paramActivity, paramInt, paramString1);
+    this.c = paramString2;
   }
   
-  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  protected Map<String, absg> a()
   {
-    QQIdentiferLegacy.a(this.a);
+    return abus.a();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Int == 2;
+  }
+  
+  protected void c()
+  {
+    absu.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, new abuj(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abui
  * JD-Core Version:    0.7.0.1
  */

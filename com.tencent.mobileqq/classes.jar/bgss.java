@@ -1,34 +1,33 @@
-import android.os.Bundle;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import NS_MINI_INTERFACE.INTERFACE.GuardInstruction;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.core.proxy.MiniAppProxy;
+import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 
 class bgss
-  extends akgo
+  implements DialogInterface.OnClickListener
 {
-  bgss(bgsp parambgsp) {}
+  bgss(bgsr parambgsr) {}
   
-  protected void c(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
+    paramDialogInterface.dismiss();
+    if ((this.a.a() instanceof Activity))
     {
-      paramObject = (Bundle)paramObject;
-      paramObject.putInt("which_method", 0);
-      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
-    }
-  }
-  
-  protected void d(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean)
-    {
-      paramObject = (Bundle)paramObject;
-      paramObject.putInt("which_method", 1);
-      QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 4, paramObject);
+      paramDialogInterface = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+      Activity localActivity = (Activity)this.a.a();
+      Intent localIntent = new Intent();
+      localIntent.putExtra("url", this.a.a().url.get());
+      paramDialogInterface.startBrowserActivity(localActivity, localIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgss
  * JD-Core Version:    0.7.0.1
  */

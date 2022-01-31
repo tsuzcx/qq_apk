@@ -1,87 +1,41 @@
+import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.view.Display;
-import android.view.OrientationEventListener;
-import android.view.WindowManager;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.av.smallscreen.SmallScreenService;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class mbq
-  extends OrientationEventListener
+public class mbq
+  extends BroadcastReceiver
 {
-  int jdField_a_of_type_Int = -25;
-  protected Context a;
-  Configuration jdField_a_of_type_AndroidContentResConfiguration;
-  Display jdField_a_of_type_AndroidViewDisplay;
-  boolean jdField_a_of_type_Boolean = false;
-  public boolean b;
+  public mbq(SmallScreenService paramSmallScreenService) {}
   
-  public mbq(Context paramContext, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    super(paramContext, paramInt);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidContentResConfiguration = this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration();
-    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    this.jdField_a_of_type_Boolean = msf.f(paramContext);
-  }
-  
-  public abstract void a(int paramInt, boolean paramBoolean);
-  
-  public void onOrientationChanged(int paramInt)
-  {
-    if (paramInt == -1) {
-      this.jdField_a_of_type_Int = paramInt;
+    long l = AudioHelper.b();
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.w("SmallScreenService", 1, "onReceive, action[" + paramContext + "], seq[" + l + "]");
     }
-    do
+    if (paramContext.equals("android.intent.action.NEW_OUTGOING_CALL"))
     {
-      return;
-      if (this.jdField_a_of_type_Int < 0) {
-        this.jdField_a_of_type_Int = 0;
-      }
-    } while ((paramInt - this.jdField_a_of_type_Int < 20) && (paramInt - this.jdField_a_of_type_Int > -20) && (!this.b));
-    int i = paramInt;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramInt -= 90;
-      i = paramInt;
-      if (paramInt < 0) {
-        i = paramInt + 360;
+      paramContext = paramIntent.getStringExtra("android.intent.extra.PHONE_NUMBER");
+      if (QLog.isColorLevel()) {
+        QLog.d("SmallScreenService", 2, "onReceive NEW_OUTGOING_CALL phoneNumber = " + paramContext);
       }
     }
-    if (this.b) {}
-    for (paramInt = lll.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90;; paramInt = lll.b(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90)
-    {
-      int j = paramInt;
-      if (paramInt > 360) {
-        j = paramInt % 360;
-      }
-      i -= j;
-      paramInt = i;
-      if (i < 0) {
-        paramInt = i + 360;
-      }
-      this.jdField_a_of_type_Int = paramInt;
-      if ((paramInt <= 314) && (paramInt >= 45)) {
-        break;
-      }
-      a(0, this.b);
+    while ((!paramContext.equals("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED")) || (this.a.a == null)) {
       return;
     }
-    if ((paramInt > 44) && (paramInt < 135))
-    {
-      a(90, this.b);
-      return;
-    }
-    if ((paramInt > 134) && (paramInt < 225))
-    {
-      a(180, this.b);
-      return;
-    }
-    a(270, this.b);
+    this.a.a().removeCallbacks(this.a.a);
+    this.a.a.a = l;
+    this.a.a().postDelayed(this.a.a, 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mbq
  * JD-Core Version:    0.7.0.1
  */

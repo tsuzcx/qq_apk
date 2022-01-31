@@ -1,280 +1,340 @@
 package c.t.m.g;
 
-import android.net.wifi.ScanResult;
+import android.location.Location;
+import android.os.Build;
+import android.os.Build.VERSION;
+import android.os.Handler;
 import android.os.Message;
-import android.util.Base64;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Locale;
 
 public final class cr
-  extends di
-  implements ds.a, Runnable
+  extends dj
 {
-  private volatile boolean d = false;
-  private List<String> e = new ArrayList();
-  private db f = new db((byte)0);
-  private volatile dc g;
-  private File h;
-  private String i = "wf4_bf";
-  private String j = "wf4";
-  private StringBuilder k = new StringBuilder(100);
+  private final StringBuilder c = new StringBuilder();
+  private final File d;
+  private volatile long e = 0L;
+  private volatile long f = 0L;
+  private final long[] g = new long[2];
+  private final int[] h = new int[2];
   
   public cr(File paramFile)
   {
-    this.h = paramFile;
-    co.a("data dir:" + this.h.getAbsolutePath());
+    this.d = paramFile;
   }
   
-  private String a(ScanResult paramScanResult)
+  private void a(String paramString)
   {
-    this.k.setLength(0);
-    try
-    {
-      this.k.append(paramScanResult.BSSID).append(',');
-      this.k.append(Base64.encodeToString(paramScanResult.SSID.getBytes("UTF-8"), 2)).append(',');
-      this.k.append(paramScanResult.frequency).append(',');
-      this.k.append(Base64.encodeToString(paramScanResult.capabilities.getBytes("UTF-8"), 2));
-      return this.k.toString();
-    }
-    catch (Throwable paramScanResult)
+    if (co.c(paramString)) {}
+    do
     {
       for (;;)
       {
-        this.k.setLength(0);
-      }
-    }
-  }
-  
-  private void a(List<String> paramList)
-  {
-    if ((!this.d) && (!co.a(paramList))) {
-      if (this.g != null) {
-        break label28;
-      }
-    }
-    label28:
-    for (int m = 1; m != 0; m = 0) {
-      return;
-    }
-    long l = this.g.b().length();
-    co.a("wf file len:".concat(String.valueOf(l)));
-    Object localObject2;
-    if (l <= 51200L)
-    {
-      localObject1 = new StringBuilder(500);
-      ((StringBuilder)localObject1).append("1|").append(paramList.size());
-      localObject2 = paramList.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        ??? = (String)((Iterator)localObject2).next();
-        ((StringBuilder)localObject1).append('|').append((String)???);
-      }
-      localObject2 = this.g;
-    }
-    for (Object localObject1 = ((StringBuilder)localObject1).toString();; localObject1 = ((dc)localObject2).c.a((byte[])localObject1)) {
-      synchronized (((dc)localObject2).a)
-      {
-        if (((dc)localObject2).b == null)
-        {
-          paramList.clear();
-          return;
-        }
-        localObject1 = ((String)localObject1).getBytes("UTF-8");
-        if (((dc)localObject2).c == null) {
-          ((dc)localObject2).b.write((byte[])localObject1);
-        }
-      }
-    }
-  }
-  
-  private void b(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 100: 
-    case 104: 
-    case 102: 
-      do
-      {
         return;
-        this.g = new dc(new File(this.h, this.j));
-        this.g.a(this);
-        byte[] arrayOfByte = co.a(new File(this.h, this.i));
-        l1 = ((Long)dv.b("LocationSDK", "log_fc_wf_bf_create_t_ms", Long.valueOf(0L))).longValue();
-        l2 = System.currentTimeMillis();
-        db localdb;
-        if ((l2 - l1 < 2592000000L) && (!co.b(arrayOfByte)))
+        try
         {
-          localdb = this.f;
-          paramMessage = localdb.a;
-          if (arrayOfByte == null) {}
-        }
-        for (;;)
-        {
-          try
+          Object localObject = paramString.getBytes("UTF-8");
+          paramString = cw.a((byte[])localObject, 3);
+          if (co.e()) {
+            co.a("srcBytes.len=" + localObject.length + ",encBytes.len=" + paramString.length);
+          }
+          localObject = "utr_" + co.b(cq.class.getName(), "SHA-256").substring(0, 8) + "_" + dq.b("yyyyMMdd");
+          localObject = new File(this.d, (String)localObject);
+          co.a((File)localObject, paramString, true);
+          if (((File)localObject).length() > 51200L)
           {
-            int m = Math.min(arrayOfByte.length, localdb.b.length);
-            System.arraycopy(arrayOfByte, 0, localdb.b, 0, m);
-            co.a("bf init.");
-            a(103, 300000L);
-            co.a(new File(this.h, this.i), this.f.a());
-            a(104, 300000L);
+            ((File)localObject).renameTo(new File(((File)localObject).getParent(), ((File)localObject).getName() + "_" + dq.b("HHmmss")));
             return;
           }
-          finally {}
-          dv.a("LocationSDK", "log_fc_wf_bf_create_t_ms", Long.valueOf(l2));
-          co.a("bf reset.");
         }
-        paramMessage = ((List)paramMessage.obj).iterator();
-        while (paramMessage.hasNext())
+        catch (Throwable paramString) {}
+      }
+    } while (!co.e());
+    co.a("writeStrToFile error.", paramString);
+  }
+  
+  private void g()
+  {
+    this.f = System.currentTimeMillis();
+    this.c.setLength(0);
+    Arrays.fill(this.h, 0);
+    Arrays.fill(this.g, 0L);
+  }
+  
+  private void h()
+  {
+    long l1 = System.currentTimeMillis();
+    if (l1 - this.e < 60000L) {
+      if (co.e()) {
+        co.a("last upload time: < 1min");
+      }
+    }
+    for (;;)
+    {
+      return;
+      this.e = l1;
+      dv.a locala = dv.a(dp.a());
+      boolean bool;
+      if (locala == dv.a.a) {
+        bool = false;
+      }
+      label167:
+      while (bool)
+      {
+        i();
+        return;
+        if (locala == dv.a.b)
         {
-          Object localObject2 = (ScanResult)paramMessage.next();
-          if (!this.f.b(((ScanResult)localObject2).BSSID))
-          {
-            this.f.a(((ScanResult)localObject2).BSSID);
-            localObject2 = a((ScanResult)localObject2);
-            this.e.add(localObject2);
+          bool = cu.f;
+          if ((cu.f) || (!cu.g)) {
+            break label167;
+          }
+          long l2 = ((Long)dy.b("LocationSDK", "log_utr_up_in_m", Long.valueOf(l1))).longValue();
+          if (l1 - l2 <= 86400000L) {
+            break label167;
+          }
+          dy.a("LocationSDK", "log_utr_up_in_m", Long.valueOf(l1));
+          if (co.e()) {
+            co.a("upload in mobile once today. lastUpT=" + l2 + ",curT=" + l1);
           }
         }
-        co.a("wf list size:" + this.e.size());
-      } while (this.e.size() < 30);
-      a(this.e);
-      return;
-    case 101: 
-      a(this.e);
-      co.a(new File(this.h, this.i), this.f.a());
-      if (this.g != null)
-      {
-        this.g.a();
-        this.g = null;
+        bool = true;
       }
+    }
+  }
+  
+  private void i()
+  {
+    int j = 0;
+    File[] arrayOfFile;
+    if ((this.d != null) && (this.d.exists()))
+    {
+      arrayOfFile = this.d.listFiles();
+      if ((arrayOfFile != null) && (arrayOfFile.length != 0)) {
+        break label52;
+      }
+    }
+    label52:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        break label57;
+      }
+      return;
+      arrayOfFile = null;
       break;
     }
-    if (e()) {
-      a(103, 1800000L);
-    }
-    long l1 = System.currentTimeMillis();
-    long l2 = ((Long)dv.b("LocationSDK", "log_fc_wf_up_t_ms", Long.valueOf(0L))).longValue();
-    paramMessage = dt.a(do.a());
-    if ((paramMessage == dt.a.c) || ((paramMessage == dt.a.b) && ((ct.f) || (ct.g)))) {}
-    for (boolean bool = true;; bool = false)
+    label57:
+    long l = System.currentTimeMillis();
+    dv.a locala = dv.a(dp.a());
+    String str2 = dq.b("yyyyMMdd");
+    i = 0;
+    label79:
+    Object localObject;
+    String str1;
+    int k;
+    if (i < arrayOfFile.length)
     {
-      co.a("lastUpT:" + l2 + ",deltaT:" + (l1 - l2) + ",network status:" + paramMessage + ",isUpload:" + bool);
-      if (!bool) {
-        break;
+      localObject = arrayOfFile[i];
+      str1 = ((File)localObject).getName();
+      k = j;
+      if (((File)localObject).exists())
+      {
+        k = j;
+        if (((File)localObject).isFile())
+        {
+          k = j;
+          if (str1.startsWith("utr_"))
+          {
+            k = j;
+            if (!str1.contains(str2))
+            {
+              if (l - ((File)localObject).lastModified() <= 1296000000L) {
+                break label204;
+              }
+              if (co.e()) {
+                co.a("del file:" + ((File)localObject).getName());
+              }
+              ((File)localObject).delete();
+              k = j;
+            }
+          }
+        }
       }
-      if ((l2 != 0L) && (l1 - l2 >= 86400000L)) {
-        break label633;
-      }
-      if (l2 != 0L) {
-        break;
-      }
-      dv.a("LocationSDK", "log_fc_wf_up_t_ms", Long.valueOf(l1));
-      return;
     }
-    label633:
-    new Thread(this, "th_upload_wf").start();
-    dv.a("LocationSDK", "log_fc_wf_up_t_ms", Long.valueOf(l1));
+    for (;;)
+    {
+      i += 1;
+      j = k;
+      break label79;
+      break;
+      label204:
+      byte[] arrayOfByte = co.a((File)localObject);
+      k = arrayOfByte.length + j;
+      if (co.e()) {
+        co.a("upload file:" + ((File)localObject).getName() + ",len=" + arrayOfByte.length + ",sum=" + k + ",netType=" + locala);
+      }
+      boolean bool = cu.h;
+      str1 = "https://analytics.map.qq.com/tr?utr";
+      if (!cu.e) {
+        str1 = "https://analytics.map.qq.com/tr?utr".replace("https:", "http:");
+      }
+      localObject = new cr.1(this, (File)localObject);
+      if (!co.b(arrayOfByte)) {
+        ds.a("th_loc_task_t_consume", new cr.2(this, str1, arrayOfByte, (de)localObject));
+      }
+      if ((locala == dv.a.b) || (k >= 409600)) {
+        break;
+      }
+    }
   }
   
   public final int a()
   {
-    a(100, 0L);
+    a(1001, 0L);
     return 0;
+  }
+  
+  public final void a(Location paramLocation)
+  {
+    long l;
+    synchronized (this.b)
+    {
+      if (!f()) {
+        return;
+      }
+      l = System.currentTimeMillis();
+      if (l - this.g[0] < 900L) {
+        return;
+      }
+    }
+    this.g[0] = l;
+    Object localObject = this.h;
+    localObject[0] += 1;
+    if (paramLocation != null) {}
+    for (;;)
+    {
+      try
+      {
+        boolean bool = "gps".equals(paramLocation.getProvider());
+        if (!bool) {
+          return;
+        }
+        bool = cu.h;
+        if (Build.VERSION.SDK_INT >= 18)
+        {
+          bool = paramLocation.isFromMockProvider();
+          if (bool) {
+            return;
+          }
+        }
+        localObject = String.format(Locale.ENGLISH, "%d,G,%d,0,%.6f,%.6f,%.1f,%.1f,%.1f,%.1f", new Object[] { Long.valueOf(l), Long.valueOf(paramLocation.getTime()), Double.valueOf(paramLocation.getLatitude()), Double.valueOf(paramLocation.getLongitude()), Double.valueOf(paramLocation.getAltitude()), Float.valueOf(paramLocation.getAccuracy()), Float.valueOf(paramLocation.getSpeed()), Float.valueOf(paramLocation.getBearing()) });
+        localHandler = e();
+        if (localHandler != null)
+        {
+          if (localHandler != null) {
+            continue;
+          }
+          paramLocation = new Message();
+          paramLocation.what = 1003;
+          paramLocation.arg1 = 0;
+          paramLocation.arg2 = 0;
+          paramLocation.obj = localObject;
+          co.a(localHandler, paramLocation, 0L);
+        }
+      }
+      catch (Throwable paramLocation)
+      {
+        Handler localHandler;
+        if (!co.e()) {
+          continue;
+        }
+        co.a("set gps loc error.", paramLocation);
+        continue;
+      }
+      return;
+      paramLocation = localHandler.obtainMessage(1003);
+    }
   }
   
   public final void a(Message paramMessage)
   {
-    try
+    switch (paramMessage.what)
     {
-      if (this.h == null) {
+    default: 
+      return;
+    case 1003: 
+      String str1 = (String)paramMessage.obj;
+      long l = System.currentTimeMillis();
+      StringBuilder localStringBuilder1;
+      String str2;
+      String str3;
+      StringBuilder localStringBuilder2;
+      StringBuilder localStringBuilder3;
+      if (this.c.length() == 0)
+      {
+        localStringBuilder1 = this.c;
+        str2 = dz.g().replaceAll("[| _,]", "") + "_" + dz.f() + "_" + dz.h();
+        str3 = ((String)co.a(Build.MANUFACTURER, "")).replaceAll("[| _,]", "") + "_" + ((String)co.a(Build.MODEL, "")).replaceAll("[| _,]", "");
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder3 = localStringBuilder2.append("SYSTEM,").append(System.currentTimeMillis()).append(',').append(dz.c()).append(',');
+        if (cu.i != null) {
+          break label438;
+        }
+      }
+      for (paramMessage = "";; paramMessage = dt.a(cu.i.c))
+      {
+        localStringBuilder3.append(paramMessage).append(',').append(str2).append(',').append(str3).append(',').append(Build.VERSION.SDK_INT).append(',').append(cx.a()).append(',').append(cx.c()).append(',').append(cx.d().replaceAll(":", "").toLowerCase()).append(',').append(cx.b());
+        localStringBuilder1.append(localStringBuilder2.toString());
+        this.f = l;
+        this.c.append('$').append(str1);
+        if ((this.c.length() < 15360L) && ((this.f == 0L) || (l - this.f < 600000L))) {
+          break;
+        }
+        if (this.h[0] + this.h[1] >= 3) {
+          a(this.c.toString());
+        }
+        this.c.setLength(0);
+        Arrays.fill(this.h, 0);
         return;
       }
-      co.a("msg " + paramMessage.what);
-      b(paramMessage);
+    case 1002: 
+      paramMessage = e();
+      if (paramMessage != null) {
+        paramMessage.removeCallbacksAndMessages(null);
+      }
+      if (this.h[0] + this.h[1] >= 3) {
+        a(this.c.toString());
+      }
+      g();
+      this.e = 0L;
+      h();
+      return;
+    case 1001: 
+      label438:
+      g();
+      this.e = (System.currentTimeMillis() - 40000L);
+      a(1004, 300000L);
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      co.a("handler msg error:" + paramMessage.what, localThrowable);
-    }
-  }
-  
-  public final byte[] a(byte[] paramArrayOfByte)
-  {
-    paramArrayOfByte = dq.a(co.a(paramArrayOfByte), "0PEq^X$sjtWqEqa2$dg4TG2PT^4dFEep");
-    if (!co.b(paramArrayOfByte))
-    {
-      paramArrayOfByte = Base64.encode(paramArrayOfByte, 2);
-      if (!co.b(paramArrayOfByte))
-      {
-        paramArrayOfByte = new String(paramArrayOfByte);
-        paramArrayOfByte = paramArrayOfByte + '$';
-        try
-        {
-          paramArrayOfByte = paramArrayOfByte.getBytes("UTF-8");
-          return paramArrayOfByte;
-        }
-        catch (Throwable paramArrayOfByte) {}
-      }
-    }
-    return new byte[0];
+    a(1004, 1800000L);
+    h();
   }
   
   public final void b()
   {
-    a(101, 0L);
+    a(1002, 0L);
   }
   
   public final String c()
   {
-    return "WifiInfoPro";
-  }
-  
-  public final void run()
-  {
-    try
-    {
-      this.d = true;
-      if (this.g != null)
-      {
-        this.g.a();
-        this.g = null;
-      }
-      File localFile = new File(this.h, this.j);
-      co.a("upload:" + localFile.getName() + "," + localFile.length());
-      byte[] arrayOfByte = co.a(co.a(localFile));
-      boolean bool = ct.h;
-      String str = "https://analytics.map.qq.com/?wf4";
-      if (!ct.e) {
-        str = "https://analytics.map.qq.com/?wf4".replace("https:", "http:");
-      }
-      ct.i.a(str, arrayOfByte, new cr.1(this, localFile));
-      if (e())
-      {
-        this.g = new dc(new File(this.h, this.j));
-        this.g.a(this);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      co.a("upload error.", localThrowable);
-      return;
-    }
-    finally
-    {
-      this.d = false;
-    }
+    return "UserTrackPro";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     c.t.m.g.cr
  * JD-Core Version:    0.7.0.1
  */

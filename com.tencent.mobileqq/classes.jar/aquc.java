@@ -1,40 +1,73 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment;
-import com.tencent.mobileqq.gamecenter.web.QQGameFeedWebFragment.MessageQGameReceiver.1;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
-public class aquc
-  extends BroadcastReceiver
+class aquc
+  extends aqnl
 {
-  private aquc(QQGameFeedWebFragment paramQQGameFeedWebFragment) {}
+  aquc(aqua paramaqua) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(long paramLong)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileProgressDirectDone sessionid error.return");
+    }
+    aqug localaqug;
     do
     {
-      do
+      return;
+      localaqug = this.a.a(paramLong);
+      if (localaqug == null)
       {
-        do
-        {
-          return;
-        } while (!"action_qgame_tool_messgae".equals(paramContext));
-        paramContext = paramIntent.getExtras();
-      } while (paramContext == null);
-      paramContext = (ArrayList)paramContext.getSerializable("key_get_msg");
-    } while ((paramContext == null) || (paramContext.size() <= 0));
-    ThreadManagerV2.getUIHandlerV2().post(new QQGameFeedWebFragment.MessageQGameReceiver.1(this, paramContext));
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileProgressDirectDone");
+        return;
+      }
+      localaqug.h();
+    } while (!localaqug.c());
+    this.a.c(paramLong);
+  }
+  
+  protected void b(long paramLong)
+  {
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
+    }
+    aqug localaqug;
+    do
+    {
+      return;
+      localaqug = this.a.a(paramLong);
+      if (localaqug == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
+        return;
+      }
+      localaqug.j();
+    } while (!localaqug.c());
+    this.a.c(paramLong);
+  }
+  
+  protected void c(long paramLong)
+  {
+    if (0L == paramLong) {
+      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
+    }
+    aqug localaqug;
+    do
+    {
+      return;
+      localaqug = this.a.a(paramLong);
+      if (localaqug == null)
+      {
+        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
+        return;
+      }
+      localaqug.l();
+    } while (!localaqug.c());
+    this.a.c(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aquc
  * JD-Core Version:    0.7.0.1
  */

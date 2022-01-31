@@ -1,59 +1,75 @@
-import android.content.Context;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
-import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
-import cooperation.qzone.QZoneTopGestureLayout;
+import NS_MINI_INTERFACE.INTERFACE.StReportExecuteReq;
+import NS_MINI_INTERFACE.INTERFACE.StReportExecuteRsp;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import org.json.JSONObject;
 
 public class bgzs
-  extends TopGestureLayout.TopGestureDetector
+  extends bgzp
 {
-  public bgzs(QZoneTopGestureLayout paramQZoneTopGestureLayout, Context paramContext)
+  private INTERFACE.StReportExecuteReq a = new INTERFACE.StReportExecuteReq();
+  
+  public bgzs(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    super(paramQZoneTopGestureLayout, paramContext);
+    this.a.appid.set(paramString1);
+    this.a.execTime.set(paramInt);
+    this.a.instrTraceId.set(paramString2);
+    this.a.ruleName.set(paramString3);
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  protected String a()
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return false;
+    return "mini_app_growguard";
+  }
+  
+  public JSONObject a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
     }
-    if (!QZoneTopGestureLayout.b()) {
-      QZoneTopGestureLayout.b(this.a, -1);
-    }
-    if (QZoneTopGestureLayout.a(this.a)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    paramFloat2 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    float f = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat2);
-    if (QZoneTopGestureLayout.a(this.a, 1))
+    INTERFACE.StReportExecuteRsp localStReportExecuteRsp = new INTERFACE.StReportExecuteRsp();
+    try
     {
-      if ((paramFloat2 < 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (paramFloat1 > 500.0F))
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      localStReportExecuteRsp.mergeFrom(localStQWebRsp.busiBuff.get().toByteArray());
+      if (localStReportExecuteRsp != null)
       {
-        QZoneTopGestureLayout.c(this.a, -1);
-        this.a.mOnFlingGesture.flingLToR();
-        return true;
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("response", localStReportExecuteRsp);
+        paramArrayOfByte.put("resultCode", 0);
+        paramArrayOfByte.put("retCode", localStQWebRsp.retCode.get());
+        paramArrayOfByte.put("errMsg", localStQWebRsp.errMsg.get().toStringUtf8());
+        return paramArrayOfByte;
       }
+      QMLog.d("ReportExecuteRequest", "onResponse fail.rsp = null");
+      return null;
     }
-    else if ((QZoneTopGestureLayout.b(this.a, 0)) && (paramFloat2 > 0.0F) && (f < 0.5F) && (this.a.mOnFlingGesture != null) && (-1.0F * paramFloat1 > 500.0F))
+    catch (Exception paramArrayOfByte)
     {
-      QZoneTopGestureLayout.d(this.a, -1);
-      this.a.mOnFlingGesture.flingRToL();
-      return true;
+      QMLog.d("ReportExecuteRequest", "onResponse fail." + paramArrayOfByte);
     }
-    return false;
+    return null;
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  protected byte[] a()
   {
-    if (!QZoneTopGestureLayout.b()) {
-      QZoneTopGestureLayout.a(this.a, -1);
-    }
-    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    return this.a.toByteArray();
+  }
+  
+  protected String b()
+  {
+    return "ReportExecute";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgzs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,43 @@
-public class axqt
+class axqt
+  implements axpo
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public String d = "";
-  public String e = "";
-  public String f = "cartoon";
-  public String g = "";
-  public String h = "";
-  public String i = "";
-  public String j = "";
-  public String k = "";
-  public String l = "";
-  public String m = "";
-  public String n = String.valueOf(System.currentTimeMillis() / 1000L);
-  public String o = "";
-  public String p = "";
-  public String q = "";
+  axqt(axqs paramaxqs) {}
   
-  public String toString()
+  public void a(int paramInt, Throwable paramThrowable)
   {
-    StringBuffer localStringBuffer = new StringBuffer(64);
-    localStringBuffer.append(this.a).append("|");
-    localStringBuffer.append(this.b).append("|");
-    localStringBuffer.append(this.c).append("|");
-    localStringBuffer.append(this.d).append("|");
-    localStringBuffer.append(this.e).append("|");
-    localStringBuffer.append(this.f).append("|");
-    localStringBuffer.append(this.g).append("|");
-    localStringBuffer.append(this.h).append("|");
-    localStringBuffer.append(this.i).append("|");
-    localStringBuffer.append(this.j).append("|");
-    localStringBuffer.append(this.k).append("|");
-    localStringBuffer.append(this.l).append("|");
-    localStringBuffer.append(this.m).append("|");
-    localStringBuffer.append(this.n).append("|");
-    localStringBuffer.append(this.o).append("|");
-    localStringBuffer.append(this.p).append("|");
-    localStringBuffer.append(this.q).append("|");
-    return localStringBuffer.toString();
+    wsv.d("FlowEdit_VideoFlowDecodeWrapper", paramThrowable, "onDecodeError: %d", new Object[] { Integer.valueOf(paramInt) });
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void b(long paramLong)
+  {
+    wsv.a("FlowEdit_VideoFlowDecodeWrapper", "onDecodeSeekTo: %d", Long.valueOf(paramLong));
+  }
+  
+  public void f()
+  {
+    wsv.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeStart: ");
+  }
+  
+  public void g()
+  {
+    wsv.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeFinish: ");
+  }
+  
+  public void i()
+  {
+    wsv.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeCancel: ");
+  }
+  
+  public void l()
+  {
+    wsv.b("FlowEdit_VideoFlowDecodeWrapper", "onDecodeRepeat: ");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     axqt
  * JD-Core Version:    0.7.0.1
  */

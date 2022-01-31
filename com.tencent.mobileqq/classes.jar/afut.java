@@ -1,29 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
 
 class afut
-  implements DialogInterface.OnClickListener
+  implements aeov
 {
-  afut(afup paramafup, ArrayList paramArrayList, int paramInt) {}
+  afut(afus paramafus) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    afup.a(this.jdField_a_of_type_Afup, true);
-    afup.a(this.jdField_a_of_type_Afup).a(1);
-    afup.a(this.jdField_a_of_type_Afup, this.jdField_a_of_type_JavaUtilArrayList.size(), 0.0F);
-    if (bbfj.d(BaseApplicationImpl.getContext()))
-    {
-      paramInt = (int)(90.0F / this.jdField_a_of_type_Int);
-      afup.a(this.jdField_a_of_type_Afup).b(paramInt);
+    paramView = (afvc)((View)paramView.getParent().getParent().getParent()).getTag();
+    if (paramView != null) {
+      paramView.a.performLongClick();
     }
-    afup.a(this.jdField_a_of_type_Afup, this.jdField_a_of_type_JavaUtilArrayList);
+    return true;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afut
  * JD-Core Version:    0.7.0.1
  */

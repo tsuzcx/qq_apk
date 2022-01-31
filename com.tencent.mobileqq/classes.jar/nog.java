@@ -1,44 +1,60 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 class nog
-  extends BroadcastReceiver
+  implements INetInfoHandler
 {
-  nog(nnu paramnnu, boolean paramBoolean, MqqHandler paramMqqHandler) {}
+  nog(noe paramnoe) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onNetMobile2None()
   {
-    String str = paramIntent.getStringExtra("com.tencent.biz.pubaccount.scanResultData");
-    int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.scanResultType", 0);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Nnu.a(str, i, 12, -1, null);
-      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(19);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetMobile2None");
     }
-    try
-    {
-      for (;;)
-      {
-        paramContext.unregisterReceiver(this.jdField_a_of_type_Nnu.a);
-        label65:
-        this.jdField_a_of_type_Nnu.a = null;
-        return;
-        this.jdField_a_of_type_Nnu.a(str, i, 11, -1, null);
-      }
+    noe.b(this.a);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetMobile2Wifi");
     }
-    catch (Exception paramContext)
-    {
-      break label65;
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetNone2Mobile");
     }
+    noe.b(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetNone2Wifi");
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetWifi2Mobile");
+    }
+    noe.b(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AdModuleBase", 2, "onNetWifi2None");
+    }
+    noe.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nog
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,12 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
-import com.tencent.viola.core.ViolaInstance;
-
 public class rzy
-  implements View.OnLayoutChangeListener
 {
-  public rzy(ViolaBaseView paramViolaBaseView) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
-  {
-    if (ViolaBaseView.a(this.a) != null) {
-      ViolaBaseView.a(this.a).setSize(paramView.getWidth(), paramView.getHeight());
-    }
-  }
+  public long a;
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rzy
  * JD-Core Version:    0.7.0.1
  */

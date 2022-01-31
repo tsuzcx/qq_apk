@@ -10,14 +10,15 @@
     </FrameLayout>
     <RelativeLayout android:id="@id/kqx" android:layout_width="fill_parent" android:layout_height="fill_parent">
         <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGradientMaskView android:id="@id/dm5" android:layout_width="fill_parent" android:layout_height="240.0dip" android:layout_alignParentBottom="true" tencent:mask_mode="10" />
-        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsOptView android:id="@id/lyg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsOptView android:id="@id/lyh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginBottom="12.0dip" android:layout_above="@id/lyi" />
-        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsOptView android:id="@id/lyi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginBottom="12.0dip" android:layout_above="@id/jln" />
+        <FrameLayout android:id="@id/mso" android:layout_width="fill_parent" android:layout_height="58.0dip" android:layout_alignParentTop="true">
+            <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGView android:layout_gravity="center" android:id="@id/msp" android:visibility="gone" android:layout_width="153.0dip" android:layout_height="28.0dip" />
+        </FrameLayout>
+        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsUGView android:id="@id/msn" android:visibility="gone" android:layout_width="153.0dip" android:layout_height="28.0dip" android:layout_marginLeft="15.0dip" android:layout_marginBottom="12.0dip" android:layout_above="@id/jln" />
         <ViewStub android:id="@id/jmt" android:visibility="gone" android:layout="@layout/as8" android:layout_width="68.0dip" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
         <ViewStub android:id="@id/jmb" android:visibility="gone" android:layout="@layout/arj" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
         <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/jln" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/cix" android:layout_alignParentBottom="true">
             <include layout="@layout/aru" />
-            <ViewStub android:id="@id/jme" android:visibility="gone" android:layout="@layout/ab5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
+            <ViewStub android:id="@id/jme" android:visibility="gone" android:layout="@layout/ab5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" />
             <ViewStub android:id="@id/jms" android:visibility="gone" android:layout="@layout/as4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" />
             <TextView android:textSize="14.0dip" android:textColor="#d8ffffff" android:ellipsize="end" android:gravity="left" android:id="@id/jq3" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:maxLines="2" android:layout_weight="1.0" android:lineSpacingExtra="2.0dip" />
             <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" layout="@layout/arq" />

@@ -1,25 +1,28 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import java.util.HashMap;
 
 public class auxv
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public auxv(StickyNotePublishFragment paramStickyNotePublishFragment) {}
+  public auxv(StoryPlayController paramStoryPlayController, avbn paramavbn, HashMap paramHashMap) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a(0);
-    this.a.b(false);
-    StickyNotePublishFragment.a(this.a).setImageResource(2130848814);
-    StickyNotePublishFragment.a(this.a).setContentDescription(this.a.getActivity().getString(2131690313));
+    if (this.jdField_a_of_type_Avbn.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController.a.b();
+      if (this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Avbn.jdField_a_of_type_Int)) != null) {
+        ((avby)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.jdField_a_of_type_Avbn.jdField_a_of_type_Int))).h();
+      }
+    }
+    StoryPlayController.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowStoryPlayController, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     auxv
  * JD-Core Version:    0.7.0.1
  */

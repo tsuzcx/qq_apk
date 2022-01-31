@@ -1,19 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity;
+import java.lang.ref.WeakReference;
 
-class ahgx
-  implements DialogInterface.OnCancelListener
+public class ahgx
+  extends Handler
 {
-  ahgx(ahgw paramahgw) {}
+  private WeakReference<NewFriendActivity> a;
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public ahgx(NewFriendActivity paramNewFriendActivity)
   {
-    ahif.a("sq.cftc", 4, 0, null);
+    this.a = new WeakReference(paramNewFriendActivity);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    NewFriendActivity localNewFriendActivity = (NewFriendActivity)this.a.get();
+    if (localNewFriendActivity == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      localNewFriendActivity.a(paramMessage.arg1);
+      return;
+    }
+    localNewFriendActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgx
  * JD-Core Version:    0.7.0.1
  */

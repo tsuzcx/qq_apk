@@ -1,39 +1,19 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import java.util.Comparator;
 
-public class bcdh
-  implements View.OnLongClickListener
+final class bcdh
+  implements Comparator
 {
-  public bcdh(WebViewFragment paramWebViewFragment) {}
+  bcdh(Editable paramEditable) {}
   
-  public boolean onLongClick(View paramView)
+  public int compare(Object paramObject1, Object paramObject2)
   {
-    if (!this.a.jdField_a_of_type_Bcfg.a("web_view_long_click", true))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable long click on current url!");
-      }
-      return true;
-    }
-    if (!this.a.jdField_a_of_type_Bcfg.a("image_long_click", false))
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("WebLog_WebViewFragment", 1, "disable image long click on current url!");
-      }
-      return false;
-    }
-    bcer localbcer = (bcer)this.a.jdField_a_of_type_Bcee.a(8);
-    if ((localbcer != null) && (localbcer.a(paramView))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return this.a.getSpanStart(paramObject1) - this.a.getSpanStart(paramObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcdh
  * JD-Core Version:    0.7.0.1
  */

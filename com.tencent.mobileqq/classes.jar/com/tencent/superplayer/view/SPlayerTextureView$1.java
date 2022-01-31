@@ -2,7 +2,7 @@ package com.tencent.superplayer.view;
 
 import android.graphics.SurfaceTexture;
 import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.superplayer.utils.SPlayerLogUtil;
+import com.tencent.superplayer.utils.LogUtil;
 
 class SPlayerTextureView$1
   implements TextureView.SurfaceTextureListener
@@ -11,7 +11,7 @@ class SPlayerTextureView$1
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    SPlayerLogUtil.i(SPlayerTextureView.access$000(), "FCCTextureView = " + System.identityHashCode(this.this$0) + ", onSurfaceTextureAvailable() surface = " + paramSurfaceTexture.toString() + " width = " + paramInt1 + ", height=" + paramInt2);
+    LogUtil.i(SPlayerTextureView.access$000(), "FCCTextureView = " + System.identityHashCode(this.this$0) + ", onSurfaceTextureAvailable() surface = " + paramSurfaceTexture.toString() + " width = " + paramInt1 + ", height=" + paramInt2);
     if (SPlayerTextureView.access$100(this.this$0) != null) {
       SPlayerTextureView.access$100(this.this$0).onViewCreated(paramSurfaceTexture, paramInt1, paramInt2);
     }
@@ -19,13 +19,13 @@ class SPlayerTextureView$1
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    SPlayerLogUtil.i(SPlayerTextureView.access$000(), "FCCTextureView = " + System.identityHashCode(this.this$0) + ", onSurfaceTextureDestroyed() surface = " + paramSurfaceTexture.toString());
+    LogUtil.i(SPlayerTextureView.access$000(), "FCCTextureView = " + System.identityHashCode(this.this$0) + ", onSurfaceTextureDestroyed() surface = " + paramSurfaceTexture.toString());
     return (SPlayerTextureView.access$100(this.this$0) == null) || (SPlayerTextureView.access$100(this.this$0).onViewDestroyed(paramSurfaceTexture));
   }
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    SPlayerLogUtil.i(SPlayerTextureView.access$000(), "FCCTextureView = " + System.identityHashCode(this.this$0) + ", onSurfaceTextureSizeChanged() surface = " + paramSurfaceTexture.toString() + " width = " + paramInt1 + ", height=" + paramInt2);
+    LogUtil.i(SPlayerTextureView.access$000(), "FCCTextureView = " + System.identityHashCode(this.this$0) + ", onSurfaceTextureSizeChanged() surface = " + paramSurfaceTexture.toString() + " width = " + paramInt1 + ", height=" + paramInt2);
     if (SPlayerTextureView.access$100(this.this$0) != null) {
       SPlayerTextureView.access$100(this.this$0).onViewChanged(paramSurfaceTexture, paramInt1, paramInt2);
     }
@@ -40,7 +40,7 @@ class SPlayerTextureView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.superplayer.view.SPlayerTextureView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.jsp;
 
 import android.app.Activity;
-import armk;
+import atcy;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
 import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
@@ -13,7 +13,7 @@ import mqq.manager.TicketManager;
 public class DocxApiPlugin$2
   implements Runnable
 {
-  public DocxApiPlugin$2(armk paramarmk, Activity paramActivity, String paramString1, String paramString2) {}
+  public DocxApiPlugin$2(atcy paramatcy, Activity paramActivity, String paramString1, String paramString2) {}
   
   public void run()
   {
@@ -41,7 +41,7 @@ public class DocxApiPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DocxApiPlugin.2
  * JD-Core Version:    0.7.0.1
  */

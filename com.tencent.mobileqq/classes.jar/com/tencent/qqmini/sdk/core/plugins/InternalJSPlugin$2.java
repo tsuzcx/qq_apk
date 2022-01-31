@@ -1,11 +1,11 @@
 package com.tencent.qqmini.sdk.core.plugins;
 
-import bekr;
+import bgkd;
 
 class InternalJSPlugin$2
   implements InternalJSPlugin.openUrlCallback
 {
-  InternalJSPlugin$2(InternalJSPlugin paramInternalJSPlugin, bekr parambekr) {}
+  InternalJSPlugin$2(InternalJSPlugin paramInternalJSPlugin, bgkd parambgkd) {}
   
   public void openResult(boolean paramBoolean, String paramString)
   {
@@ -19,7 +19,7 @@ class InternalJSPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.InternalJSPlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,11 @@
 package cooperation.liveroom;
 
-import airb;
-import armm;
-import bcbo;
-import bcbp;
-import bcim;
+import aare;
+import akim;
+import atda;
+import beap;
+import beaq;
+import behn;
 import com.tencent.biz.webviewplugin.OpenCenterPlugin;
 import com.tencent.mobileqq.mini.out.webPlugins.MiniAppPlugin;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
@@ -13,12 +14,11 @@ import com.tencent.mobileqq.webview.sonic.SonicJsPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import java.util.ArrayList;
 import java.util.List;
-import xlb;
-import xlk;
-import xmf;
-import xmk;
-import xne;
-import zcf;
+import yzu;
+import zad;
+import zay;
+import zbd;
+import zbx;
 
 class LiveRoomWebViewBuilder$1
   extends WebAccelerateHelper.CommonJsPluginFactory
@@ -28,27 +28,27 @@ class LiveRoomWebViewBuilder$1
   public List<WebViewPlugin> getCommonJsPlugin()
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new airb());
-    localArrayList.add(new bcbo());
-    localArrayList.add(new bcbp());
+    localArrayList.add(new akim());
+    localArrayList.add(new beap());
+    localArrayList.add(new beaq());
     localArrayList.add(new VasWebReport());
-    localArrayList.add(new xne());
-    localArrayList.add(new xmk());
-    localArrayList.add(new xlb());
-    localArrayList.add(new xlk());
-    localArrayList.add(new bcim());
-    localArrayList.add(new armm());
+    localArrayList.add(new zbx());
+    localArrayList.add(new zbd());
+    localArrayList.add(new yzu());
+    localArrayList.add(new zad());
+    localArrayList.add(new behn());
+    localArrayList.add(new atda());
     localArrayList.add(new OpenCenterPlugin());
     localArrayList.add(new MiniAppPlugin());
-    localArrayList.add(new xmf());
-    localArrayList.add(new zcf());
+    localArrayList.add(new zay());
+    localArrayList.add(new aare());
     localArrayList.add(new SonicJsPlugin());
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.liveroom.LiveRoomWebViewBuilder.1
  * JD-Core Version:    0.7.0.1
  */

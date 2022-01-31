@@ -1,24 +1,14 @@
-import android.os.Handler;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity;
-import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity.1;
-import dov.com.tencent.mobileqq.activity.richmedia.QzoneEditPictureActivity.1.1.1;
-
-public class bkpx
-  implements bkri
+class bkpx
 {
-  public bkpx(QzoneEditPictureActivity.1 param1) {}
+  public double a;
+  public boolean a;
+  public boolean b;
   
-  public void l(boolean paramBoolean)
-  {
-    if (QzoneEditPictureActivity.a(this.a.this$0).a != null) {
-      QzoneHandlerThreadFactory.getMainHandler().post(new QzoneEditPictureActivity.1.1.1(this));
-    }
-  }
+  bkpx(bkpw parambkpw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkpx
  * JD-Core Version:    0.7.0.1
  */

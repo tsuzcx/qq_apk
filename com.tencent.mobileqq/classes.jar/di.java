@@ -1,27 +1,10 @@
-import android.view.View;
-import com.dataline.activities.LiteActivity;
-import com.tencent.widget.ListView;
-
-public class di
-  implements bfub
+public abstract interface di
 {
-  public di(LiteActivity paramLiteActivity) {}
-  
-  public void a(int paramInt, View paramView, ListView paramListView) {}
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    this.a.c();
-    return true;
-  }
-  
-  public void b(int paramInt, View paramView, ListView paramListView) {}
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     di
  * JD-Core Version:    0.7.0.1
  */

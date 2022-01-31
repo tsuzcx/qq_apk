@@ -3,7 +3,7 @@ package com.tencent.qqmini.sdk.manager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
-import betl;
+import bgrs;
 
 public class EngineChannel$MyReceiver
   extends ResultReceiver
@@ -22,7 +22,7 @@ public class EngineChannel$MyReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.EngineChannel.MyReceiver
  * JD-Core Version:    0.7.0.1
  */

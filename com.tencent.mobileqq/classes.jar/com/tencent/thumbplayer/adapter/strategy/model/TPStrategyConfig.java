@@ -27,7 +27,7 @@ public class TPStrategyConfig
       if ((paramTPPlaybackParams != null) && (paramTPPlaybackParams.getParamType() == 2) && (isDecStrategyVaild(paramTPPlaybackParams.getParamLong().value))) {
         this.decStrategy = ((int)paramTPPlaybackParams.getParamLong().value);
       }
-      checkParamsIllegal(this.decStrategy, this.playerStrategy);
+      checkParamsIllegal(this.playerStrategy, this.decStrategy);
     }
   }
   
@@ -60,7 +60,7 @@ public class TPStrategyConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.strategy.model.TPStrategyConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,19 @@
-import android.widget.ImageView;
-import android.widget.TextView;
+import java.io.File;
+import java.io.FileFilter;
 
-public class xal
-  extends aimt
+class xal
+  implements FileFilter
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
+  xal(xak paramxak) {}
+  
+  public boolean accept(File paramFile)
+  {
+    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xal
  * JD-Core Version:    0.7.0.1
  */

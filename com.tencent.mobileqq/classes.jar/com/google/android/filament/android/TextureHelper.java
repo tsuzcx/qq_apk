@@ -2,8 +2,8 @@ package com.google.android.filament.android;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import android.support.annotation.IntRange;
-import android.support.annotation.NonNull;
+import androidx.annotation.IntRange;
+import androidx.annotation.NonNull;
 import com.google.android.filament.Engine;
 import com.google.android.filament.Texture;
 
@@ -53,7 +53,7 @@ public final class TextureHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.android.TextureHelper
  * JD-Core Version:    0.7.0.1
  */

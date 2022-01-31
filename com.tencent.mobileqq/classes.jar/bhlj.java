@@ -1,43 +1,47 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MSFServlet;
-import mqq.app.Packet;
-
 public class bhlj
-  extends MSFServlet
 {
-  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  public static String a(String paramString)
   {
-    if (paramFromServiceMsg != null) {
-      bhli.a().c(paramFromServiceMsg.getResultCode());
+    String str = paramString;
+    int i;
+    if (a(paramString)) {
+      i = paramString.length() - 1;
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    for (;;)
+    {
+      if ((i < 0) || (paramString.charAt(i) == '\\') || (paramString.charAt(i) == '/'))
+      {
+        str = paramString.substring(i + 1);
+        return str;
+      }
+      i -= 1;
     }
-    QLog.d("QzoneOnlineTimeServlet", 2, "fromServiceMsg==msg");
   }
   
-  public void onSend(Intent paramIntent, Packet paramPacket)
+  public static boolean a(String paramString)
   {
-    paramIntent = paramIntent.getSerializableExtra("list");
-    QLog.d("QzoneOnlineTimeServlet", 1, "uin:" + getAppRuntime().getLongAccountUin());
-    bhlh localbhlh = new bhlh(getAppRuntime().getLongAccountUin(), (ArrayList)paramIntent);
-    byte[] arrayOfByte = localbhlh.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
-      paramIntent = new byte[4];
+    boolean bool2 = false;
+    int j = paramString.length();
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
+      {
+        if ((paramString.charAt(i) == '\\') || (paramString.charAt(i) == '/')) {
+          bool1 = true;
+        }
+      }
+      else {
+        return bool1;
+      }
+      i += 1;
     }
-    paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localbhlh.uniKey());
-    paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhlj
  * JD-Core Version:    0.7.0.1
  */

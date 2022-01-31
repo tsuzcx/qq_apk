@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.trooppiceffects.view;
 
-import bauf;
+import bcsz;
 
 public class ShakePicView$1$1
   implements Runnable
 {
-  public ShakePicView$1$1(bauf parambauf) {}
+  public ShakePicView$1$1(bcsz parambcsz) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ public class ShakePicView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.ShakePicView.1.1
  * JD-Core Version:    0.7.0.1
  */

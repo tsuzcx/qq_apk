@@ -3,29 +3,29 @@ package com.tencent.biz.qqstory.notification;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import tsd;
+import vgv;
 
 public class StoryMsgNotification$2
   implements Runnable
 {
-  public StoryMsgNotification$2(tsd paramtsd) {}
+  public StoryMsgNotification$2(vgv paramvgv) {}
   
   public void run()
   {
-    tsd.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    vgv.jdField_a_of_type_AndroidUtilSparseArray.clear();
     QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
-    int j = tsd.jdField_a_of_type_AndroidUtilSparseIntArray.size();
+    int j = vgv.jdField_a_of_type_AndroidUtilSparseIntArray.size();
     int i = 0;
     while (i < j)
     {
-      localQQNotificationManager.cancel("StoryMsgNotification", tsd.jdField_a_of_type_AndroidUtilSparseIntArray.get(tsd.jdField_a_of_type_AndroidUtilSparseIntArray.keyAt(i)));
+      localQQNotificationManager.cancel("StoryMsgNotification", vgv.jdField_a_of_type_AndroidUtilSparseIntArray.get(vgv.jdField_a_of_type_AndroidUtilSparseIntArray.keyAt(i)));
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.qqstory.notification.StoryMsgNotification.2
  * JD-Core Version:    0.7.0.1
  */

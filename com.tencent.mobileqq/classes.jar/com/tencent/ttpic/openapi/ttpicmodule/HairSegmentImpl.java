@@ -5,8 +5,6 @@ import android.graphics.PointF;
 import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTHairAttr;
-import com.tencent.ttpic.openapi.initializer.RapidNetSDKInitializer;
-import com.tencent.ttpic.openapi.manager.FeatureManager.Features;
 import com.tencent.ttpic.openapi.ttpicmodule.module_hair_segment.HairSegmentInitializer;
 import com.tencent.ttpic.openapi.ttpicmodule.module_hair_segment.PTHairSegmenter;
 import java.nio.Buffer;
@@ -32,6 +30,7 @@ public class HairSegmentImpl
   private PTHairAttr genSegAttr(Bitmap paramBitmap, int paramInt1, int paramInt2, PointF[] paramArrayOfPointF1, PointF[] paramArrayOfPointF2, float paramFloat)
   {
     this.hairAttr.setMaskBitmap(paramBitmap);
+    this.hairAttr.setMaskFrame(null);
     this.hairAttr.setFaceBright(paramInt1);
     this.hairAttr.setHairBright(paramInt2);
     this.hairAttr.setHairRect(paramArrayOfPointF1);
@@ -299,7 +298,7 @@ public class HairSegmentImpl
   
   public PTHairAttr detectFrame(Bitmap paramBitmap, PTFaceAttr paramPTFaceAttr, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((FeatureManager.Features.RAPID_NET.isModelLoaded(1)) && (BitmapUtils.isLegal(paramBitmap)))
+    if ((PTHairSegmenter.HAIR_SEGMENT.isFunctionReady()) && (BitmapUtils.isLegal(paramBitmap)))
     {
       this.outBitmap = PTHairSegmenter.HAIR_SEGMENT.forward(paramBitmap, (-paramInt3 + 360) % 360);
       if (this.outBitmap != null) {

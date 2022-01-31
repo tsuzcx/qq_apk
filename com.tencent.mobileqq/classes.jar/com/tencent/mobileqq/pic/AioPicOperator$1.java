@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.pic;
 
-import aumn;
+import awdu;
 import com.tencent.image.URLDrawable;
 
 public class AioPicOperator$1
   implements Runnable
 {
-  public AioPicOperator$1(aumn paramaumn, URLDrawable paramURLDrawable) {}
+  public AioPicOperator$1(awdu paramawdu, URLDrawable paramURLDrawable) {}
   
   public void run()
   {
@@ -17,7 +17,7 @@ public class AioPicOperator$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.pic.AioPicOperator.1
  * JD-Core Version:    0.7.0.1
  */

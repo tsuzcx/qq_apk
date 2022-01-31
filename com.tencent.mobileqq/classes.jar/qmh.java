@@ -1,38 +1,43 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnticipateInterpolator;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.VideoInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import tencent.im.oidb.articlesummary.feeds_info.IconWordingInfo;
 
-class qmh
-  implements Animation.AnimationListener
+public class qmh
 {
-  qmh(qmg paramqmg) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public feeds_info.IconWordingInfo a()
   {
-    if ((qlp.a(this.a.c) == qmg.a(this.a)) && (qlp.a(this.a.c) != null)) {
-      qlp.a(this.a.c).a(qmg.a(this.a));
+    feeds_info.IconWordingInfo localIconWordingInfo = new feeds_info.IconWordingInfo();
+    localIconWordingInfo.uint32_type.set(this.jdField_a_of_type_Int);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      localIconWordingInfo.bytes_icon_url.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    if ((qmg.a(this.a).a != null) && (qmg.a(this.a).a.a != null))
-    {
-      boolean bool = qmg.a(this.a).a.a.l;
-      if (qmg.a(this.a).l != null) {
-        qmg.a(this.a).l.setImageDrawable(qlp.a(this.a.c, this.a.a(bool)));
-      }
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localIconWordingInfo.bytes_wording.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
     }
-    paramAnimation.setInterpolator(new AnticipateInterpolator());
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      localIconWordingInfo.bytes_status_icon_url.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    localIconWordingInfo.uint32_status.set(this.jdField_b_of_type_Int);
+    localIconWordingInfo.uint32_icon_show_mode.set(this.jdField_c_of_type_Int);
+    if (!TextUtils.isEmpty(this.d)) {
+      localIconWordingInfo.bytes_status.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    return localIconWordingInfo;
   }
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qmh
  * JD-Core Version:    0.7.0.1
  */

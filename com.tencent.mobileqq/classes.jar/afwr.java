@@ -1,30 +1,23 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
 public class afwr
-  implements View.OnClickListener
+  implements bemn
 {
-  public afwr(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
+  public afwr(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, afwt paramafwt) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    if (!this.a.d)
-    {
-      if (bfnz.e()) {
-        this.a.startActivity(new Intent("android.settings.SETTINGS"));
-      }
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Afwt.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Afwt.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Afwt.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afwr
  * JD-Core Version:    0.7.0.1
  */

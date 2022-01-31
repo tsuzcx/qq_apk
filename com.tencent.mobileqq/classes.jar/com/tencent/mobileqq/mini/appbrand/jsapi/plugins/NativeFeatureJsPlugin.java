@@ -24,7 +24,6 @@ public class NativeFeatureJsPlugin
   public NativeFeatureJsPlugin()
   {
     this.eventMap.add("invokeNativePlugin");
-    initializeNativePlugins();
   }
   
   private NativePlugin initPlugin(NativePluginManager.PluginInfo paramPluginInfo)
@@ -56,7 +55,10 @@ public class NativeFeatureJsPlugin
     while (((Iterator)localObject).hasNext())
     {
       NativePluginManager.PluginInfo localPluginInfo = (NativePluginManager.PluginInfo)((Iterator)localObject).next();
-      this.plugins.put(localPluginInfo.getApi_name(), initPlugin(localPluginInfo));
+      NativePlugin localNativePlugin = initPlugin(localPluginInfo);
+      if (localNativePlugin != null) {
+        this.plugins.put(localPluginInfo.getApi_name(), localNativePlugin);
+      }
     }
   }
   
@@ -82,6 +84,12 @@ public class NativeFeatureJsPlugin
       }
     }
     return super.handleNativeRequest(paramString1, paramString2, paramJsRuntime, paramInt);
+  }
+  
+  public void onCreate(BaseJsPluginEngine paramBaseJsPluginEngine)
+  {
+    super.onCreate(paramBaseJsPluginEngine);
+    initializeNativePlugins();
   }
   
   public void onDestroy()
@@ -117,7 +125,7 @@ public class NativeFeatureJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.NativeFeatureJsPlugin
  * JD-Core Version:    0.7.0.1
  */

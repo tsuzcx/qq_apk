@@ -1,30 +1,10 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-
-class aesa
-  implements Animation.AnimationListener
+public abstract interface aesa
 {
-  aesa(aert paramaert) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.W = false;
-    this.a.s = 0;
-    this.a.X = false;
-    this.a.ag = false;
-    this.a.af = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a(this.a.o, aert.b(this.a));
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aesa
  * JD-Core Version:    0.7.0.1
  */

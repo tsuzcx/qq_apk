@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.upload.uploader;
 
-import aphv;
+import arat;
 import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadResultRp;
 
 public class ExtfBaseFileUploader$2
   implements Runnable
 {
-  public ExtfBaseFileUploader$2(aphv paramaphv, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp) {}
+  public ExtfBaseFileUploader$2(arat paramarat, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class ExtfBaseFileUploader$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.upload.uploader.ExtfBaseFileUploader.2
  * JD-Core Version:    0.7.0.1
  */

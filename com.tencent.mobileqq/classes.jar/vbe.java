@@ -1,19 +1,59 @@
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqFriendStoryFeedVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFriendStoryFeedVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
-class vbe
-  implements bfpj
+public class vbe
+  extends unk<vcy>
 {
-  vbe(vba paramvba, int paramInt) {}
+  public String a = "";
+  public String b = "";
+  public int c;
   
-  public void onDismiss()
+  public String a()
   {
-    uxm localuxm = (uxm)this.jdField_a_of_type_Vba.a.a().get(this.jdField_a_of_type_Int);
-    vba.a(this.jdField_a_of_type_Vba, localuxm, "clk_hide");
+    return ume.a("StorySvc.homepage_feed_loadmore_720");
+  }
+  
+  public unf a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspFriendStoryFeedVideoList localRspFriendStoryFeedVideoList = new qqstory_service.RspFriendStoryFeedVideoList();
+    try
+    {
+      localRspFriendStoryFeedVideoList.mergeFrom(paramArrayOfByte);
+      return new vcy(localRspFriendStoryFeedVideoList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      wsv.d("Q.qqstory:GetFeedVideoListRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqFriendStoryFeedVideoList localReqFriendStoryFeedVideoList = new qqstory_service.ReqFriendStoryFeedVideoList();
+    if (!TextUtils.isEmpty(this.a)) {
+      localReqFriendStoryFeedVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    }
+    if (!TextUtils.isEmpty(this.b)) {
+      localReqFriendStoryFeedVideoList.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    }
+    localReqFriendStoryFeedVideoList.pull_type.set(this.c);
+    return localReqFriendStoryFeedVideoList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetFeedVideoListRequest{, feedId='" + this.b + '\'' + ", startCookie='" + this.a + '\'' + ", pullType=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     vbe
  * JD-Core Version:    0.7.0.1
  */

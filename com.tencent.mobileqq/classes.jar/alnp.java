@@ -1,28 +1,70 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3.3.1;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
 public class alnp
-  implements alox
 {
-  public alnp(ArkAppDeviceModule.ObserverMethod.3.3.1 param1) {}
-  
-  public void a(long paramLong)
+  public static void a(MessageRecord paramMessageRecord)
   {
-    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Alnj.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    if (paramMessageRecord != null) {
+      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", "true");
     }
   }
   
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  public static void a(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    alng.a(this.a.a.a.jdField_a_of_type_Alnj.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    if (paramMessageRecord.msgtype == -2000) {
+      paramMessageRecord.saveExtInfoToExtStr("commen_flash_pic", paramBoolean + "");
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("FlashPicHelper", 4, "setFlashPicFlag,troopUin:" + paramMessageRecord.frienduin + ",isReaded:" + paramBoolean + ",msgType:" + paramMessageRecord.msgtype);
+    }
+  }
+  
+  public static boolean a(int paramInt, HotChatManager paramHotChatManager, String paramString)
+  {
+    return ((paramInt == 0) || (paramInt == 1) || (paramInt == 3000)) && (!paramHotChatManager.b(paramString));
+  }
+  
+  public static boolean a(MessageRecord paramMessageRecord)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramMessageRecord != null) {
+      if (paramMessageRecord.msgtype != -2000)
+      {
+        bool1 = bool2;
+        if (paramMessageRecord.msgtype != -2006) {}
+      }
+      else
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic"))) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public static boolean b(MessageRecord paramMessageRecord)
+  {
+    try
+    {
+      boolean bool = Boolean.valueOf(paramMessageRecord.getExtInfoFromExtStr("commen_flash_pic")).booleanValue();
+      return bool;
+    }
+    catch (Exception paramMessageRecord)
+    {
+      paramMessageRecord.printStackTrace();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alnp
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ import android.util.DisplayMetrics;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-import lcg;
-import lib;
+import lek;
+import lke;
 
 public class MagicfaceViewForAV
   extends SurfaceView
-  implements SurfaceHolder.Callback, lib
+  implements SurfaceHolder.Callback, lke
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
@@ -32,7 +32,7 @@ public class MagicfaceViewForAV
     DisplayMetrics localDisplayMetrics = getContext().getResources().getDisplayMetrics();
     this.jdField_a_of_type_Float = localDisplayMetrics.density;
     this.jdField_a_of_type_Int = localDisplayMetrics.widthPixels;
-    lcg.c("MagicfaceViewForAV", "init() density: " + this.jdField_a_of_type_Int + "|" + this.jdField_a_of_type_Float);
+    lek.c("MagicfaceViewForAV", "init() density: " + this.jdField_a_of_type_Int + "|" + this.jdField_a_of_type_Float);
   }
   
   /* Error */
@@ -315,7 +315,7 @@ public class MagicfaceViewForAV
     //   581: ldc 63
     //   583: aload_1
     //   584: invokevirtual 213	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   587: invokestatic 215	lcg:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   587: invokestatic 215	lek:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   590: return
     //   591: iload 4
     //   593: ifeq +132 -> 725
@@ -522,13 +522,13 @@ public class MagicfaceViewForAV
     //   1007: ldc 63
     //   1009: aload_1
     //   1010: invokevirtual 213	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1013: invokestatic 215	lcg:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1013: invokestatic 215	lek:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1016: return
     //   1017: astore_2
     //   1018: ldc 63
     //   1020: aload_2
     //   1021: invokevirtual 213	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   1024: invokestatic 215	lcg:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1024: invokestatic 215	lek:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1027: goto -304 -> 723
     // Local variable table:
     //   start	length	slot	name	signature
@@ -650,7 +650,7 @@ public class MagicfaceViewForAV
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.funchat.magicface.MagicfaceViewForAV
  * JD-Core Version:    0.7.0.1
  */

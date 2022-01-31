@@ -1,27 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
 
-public final class aapu
-  implements DialogInterface.OnClickListener
+public class aapu
+  implements TextView.OnEditorActionListener
 {
-  public aapu(aaqb paramaaqb, aaqa paramaaqa) {}
+  public aapu(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.jdField_a_of_type_Aaqb.a) {
-      axqy.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
+    if (paramInt == 6)
+    {
+      aanp.b("GdtFormItemTextBoxView", "onEditorActionDone " + GdtFormItemTextBoxView.b(this.a));
+      GdtFormItemTextBoxView.a(this.a).clearFocus();
+      GdtFormItemTextBoxView.a(paramTextView);
     }
-    if (this.jdField_a_of_type_Aaqa != null) {
-      this.jdField_a_of_type_Aaqa.a();
-    }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    for (;;)
+    {
+      return false;
+      aanp.b("GdtFormItemTextBoxView", "onEditorAction " + paramInt + " " + GdtFormItemTextBoxView.c(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aapu
  * JD-Core Version:    0.7.0.1
  */

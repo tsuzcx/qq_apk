@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import bcip;
+import behq;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 
@@ -23,7 +23,7 @@ public class WereWolvesLoadingView
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   View jdField_a_of_type_AndroidViewView;
   public TextView a;
-  bcip jdField_a_of_type_Bcip;
+  behq jdField_a_of_type_Behq;
   Runnable jdField_a_of_type_JavaLangRunnable = new WereWolvesLoadingView.1(this);
   boolean jdField_a_of_type_Boolean;
   int jdField_b_of_type_Int = 0;
@@ -46,12 +46,12 @@ public class WereWolvesLoadingView
   
   void a()
   {
-    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559332, this);
-    this.jdField_a_of_type_Int = findViewById(2131372007).getLayoutParams().width;
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131372004);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372029));
+    this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131559383, this);
+    this.jdField_a_of_type_Int = findViewById(2131372324).getLayoutParams().width;
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131372321);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372346));
     setProgress(0);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377315));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131377844));
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
     ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#323e6f"));
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
@@ -71,11 +71,11 @@ public class WereWolvesLoadingView
     this.jdField_b_of_type_Boolean = true;
   }
   
-  public void setComplete(bcip parambcip)
+  public void setComplete(behq parambehq)
   {
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_Bcip = parambcip;
+    this.jdField_a_of_type_Behq = parambehq;
     this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
@@ -101,9 +101,9 @@ public class WereWolvesLoadingView
       if (this.jdField_b_of_type_Int < 100) {
         break label141;
       }
-      if ((this.jdField_a_of_type_Bcip != null) && (!this.jdField_a_of_type_Boolean))
+      if ((this.jdField_a_of_type_Behq != null) && (!this.jdField_a_of_type_Boolean))
       {
-        this.jdField_a_of_type_Bcip.a();
+        this.jdField_a_of_type_Behq.a();
         this.jdField_a_of_type_Boolean = true;
       }
       return;
@@ -127,7 +127,7 @@ public class WereWolvesLoadingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WereWolvesLoadingView
  * JD-Core Version:    0.7.0.1
  */

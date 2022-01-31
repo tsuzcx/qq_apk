@@ -6,9 +6,9 @@ import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
 import android.util.Log;
-import axnx;
-import axpl;
-import bfwu;
+import azjg;
+import azkw;
+import bhxr;
 import com.tencent.qphone.base.util.QLog;
 
 public class Step
@@ -16,6 +16,7 @@ public class Step
 {
   public static final int STEP_BROADCAST_REPORT_REGISTER = 44;
   public static final int STEP_DO_LOAD_DEX = 4;
+  public static final int STEP_GDT_INITIALIZE_ON_TOOL_PROCESS = 48;
   public static final int STEP_GROUP = 0;
   public static final int STEP_HACK_ALL_VM = 43;
   public static final int STEP_HACK_AVM = 42;
@@ -39,6 +40,7 @@ public class Step
   public static final int STEP_OLD_ONCREATE = 8;
   public static final int STEP_OPEN_THRED_CREATE_HOOK = 40;
   public static final int STEP_PRE_INIT_VALUES = 31;
+  public static final int STEP_QQLIVE_AND_STUDY_ROOM_PLUGIN = 47;
   public static final int STEP_QZONE_HOOK_THREAD = 38;
   public static final int STEP_QZONE_PERFORMANCE_TRACER = 19;
   public static final int STEP_RDM = 13;
@@ -61,7 +63,7 @@ public class Step
   public static final int STEP_UPGRAD_DB = 30;
   public static final int STEP_URL_DRAWABLE = 11;
   public static final int STEP_WEBP = 28;
-  public axnx mDirector;
+  public azjg mDirector;
   private Handler mHandler;
   public int mId;
   protected String mName;
@@ -77,7 +79,7 @@ public class Step
       int i = 0;
       while (i < j)
       {
-        if (!axpl.b(arrayOfInt[i], this.mDirector, null).step()) {
+        if (!azkw.b(arrayOfInt[i], this.mDirector, null).step()) {
           return false;
         }
         i += 1;
@@ -108,13 +110,13 @@ public class Step
       i = localThread.getPriority();
       localThread.setPriority(10);
     }
-    if (axnx.a)
+    if (azjg.a)
     {
       l = SystemClock.uptimeMillis();
       if (Looper.myLooper() != Looper.getMainLooper()) {
         break label170;
       }
-      bfwu.a(this.mName);
+      bhxr.a(this.mName);
     }
     for (;;)
     {
@@ -130,15 +132,15 @@ public class Step
         {
           QLog.e("AutoMonitor", 1, "", localThrowable);
           continue;
-          bfwu.b(4096L, this.mName, Process.myTid());
+          bhxr.b(4096L, this.mName, Process.myTid());
         }
       }
-      if (axnx.a)
+      if (azjg.a)
       {
         if (Looper.myLooper() != Looper.getMainLooper()) {
           break;
         }
-        bfwu.a();
+        bhxr.a();
         Log.i("AutoMonitor", this.mName + ", cost=" + (SystemClock.uptimeMillis() - l) + " results: " + bool1);
       }
       if (this.mHandler != null)
@@ -148,7 +150,7 @@ public class Step
       }
       return bool1;
       label170:
-      bfwu.a(4096L, this.mName, Process.myTid());
+      bhxr.a(4096L, this.mName, Process.myTid());
     }
   }
 }

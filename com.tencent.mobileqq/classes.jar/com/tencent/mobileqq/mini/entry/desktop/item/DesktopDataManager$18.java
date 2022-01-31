@@ -1,67 +1,59 @@
 package com.tencent.mobileqq.mini.entry.desktop.item;
 
-import auko;
-import aukp;
-import aukq;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.mini.entry.MiniAppUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import java.util.Iterator;
+import java.util.List;
 
 class DesktopDataManager$18
   implements Runnable
 {
-  DesktopDataManager$18(DesktopDataManager paramDesktopDataManager, DesktopItemInfo paramDesktopItemInfo) {}
+  DesktopDataManager$18(DesktopDataManager paramDesktopDataManager, MiniAppInfo paramMiniAppInfo) {}
   
   public void run()
   {
-    Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject == null) {
-      QLog.e("DesktopDataManager", 1, "insertEntityWithBatch, app is null.");
+    if ((this.val$miniAppInfo != null) && (DesktopDataManager.access$1600(this.this$0) != null)) {
+      switch (this.val$miniAppInfo.topType)
+      {
+      }
     }
-    aukp localaukp;
-    do
-    {
-      return;
-      localaukp = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localaukp == null);
+    label241:
     for (;;)
     {
-      try
+      DesktopDataManager.access$1900(DesktopDataManager.access$1600(this.this$0));
+      if (DesktopDataManager.access$1500(this.this$0) != null) {
+        DesktopDataManager.access$1500(this.this$0).onDataChanged();
+      }
+      return;
+      Object localObject = DesktopDataManager.access$1600(this.this$0).iterator();
+      DesktopItemInfo localDesktopItemInfo;
+      while (((Iterator)localObject).hasNext())
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localObject = null;
-        if (!(this.val$data instanceof DesktopAppInfo)) {
-          break label148;
+        localDesktopItemInfo = (DesktopItemInfo)((Iterator)localObject).next();
+        if (((localDesktopItemInfo instanceof DesktopAppInfo)) && (localDesktopItemInfo.getModuleType() == 3) && (((DesktopAppInfo)localDesktopItemInfo).mMiniAppInfo.equals(this.val$miniAppInfo))) {
+          ((Iterator)localObject).remove();
         }
-        localObject = new DeskTopAppEntity(((DesktopAppInfo)this.val$data).mMiniAppInfo);
-        if (localObject != null)
+      }
+      localObject = new DesktopAppInfo(3, this.val$miniAppInfo);
+      int i = 0;
+      for (;;)
+      {
+        if (i >= DesktopDataManager.access$1600(this.this$0).size()) {
+          break label241;
+        }
+        localDesktopItemInfo = (DesktopItemInfo)DesktopDataManager.access$1600(this.this$0).get(i);
+        if (((localDesktopItemInfo instanceof DesktopAppModuleInfo)) && (localDesktopItemInfo.getModuleType() == 3))
         {
-          ((DeskTopAppEntity)localObject).setStatus(1000);
-          DesktopDataManager.access$3100(this.this$0, localaukp, (auko)localObject);
-          localStringBuilder.append(((DeskTopAppEntity)localObject).name).append(", ");
-        }
-        if (!QLog.isColorLevel()) {
+          DesktopDataManager.access$1600(this.this$0).add(i + 1, localObject);
           break;
         }
-        QLog.d("DesktopDataManager", 2, new Object[] { "insertEntity : ", localStringBuilder.toString() });
-        return;
-      }
-      catch (Exception localException) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("DesktopDataManager", 2, "insertEntity exception: ", localException);
-      return;
-      label148:
-      if ((this.val$data instanceof DesktopSearchInfo)) {
-        DeskTopAppEntity localDeskTopAppEntity = new DeskTopAppEntity(((DesktopSearchInfo)this.val$data).mAppInfo);
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.18
  * JD-Core Version:    0.7.0.1
  */

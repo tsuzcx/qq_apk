@@ -1,194 +1,80 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.widget.TextView;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.AddCommentNoFilterReq;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsg;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.CommentMsgBody;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.DelCommentReq;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.GetCommentListNoFilterReq;
-import com.tencent.pb.now.NowNearbyVideoCommentProto.UserInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import mqq.manager.TicketManager;
-import tencent.im.oidb.cmd0xada.oidb_0xada.ReqBody;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class athb
-  implements atgx
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-  private VideoData jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData;
-  private HashSet<Long> jdField_a_of_type_JavaUtilHashSet = new HashSet();
-  
-  public athb(VideoData paramVideoData, QQAppInterface paramQQAppInterface)
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData = paramVideoData;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (paramInt == 1) {
+      return 1;
+    }
+    return 2;
   }
   
-  private boolean a(oidb_0xada.ReqBody paramReqBody)
+  public static int a(RedTouch paramRedTouch)
   {
-    paramReqBody.uid.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-    paramReqBody.tinyid.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-    Object localObject = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-    String str = ((TicketManager)localObject).getA2(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    localObject = ((TicketManager)localObject).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+    if ((paramRedTouch == null) || (!paramRedTouch.a())) {}
+    do
     {
-      paramReqBody.a2.set(str);
-      paramReqBody.platform.set(1);
-      paramReqBody.version.set("8.3.0");
-      paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      paramReqBody.original_key.set((String)localObject);
-      paramReqBody.original_id_type.set(1);
-      return true;
+      return 0;
+      paramRedTouch = paramRedTouch.a();
+    } while ((paramRedTouch == null) || (paramRedTouch.isEmpty()));
+    paramRedTouch = paramRedTouch.iterator();
+    while (paramRedTouch.hasNext())
+    {
+      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)paramRedTouch.next();
+      if (localRedTypeInfo.red_type.get() == 0) {
+        return 1;
+      }
+      if (localRedTypeInfo.red_type.get() == 5) {
+        return 2;
+      }
+      if (localRedTypeInfo.red_type.get() == 11) {
+        return 3;
+      }
     }
-    return false;
+    return 3;
   }
   
-  public int a()
+  public static int a(boolean paramBoolean, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
   {
-    try
-    {
-      int i = Integer.parseInt("8.3.0".replace(".", ""));
-      return i;
+    if ((!paramBoolean) || (paramRedTypeInfo == null)) {
+      return 0;
     }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("CommentsDataSource", 2, "getVersionInt exp:" + localException.toString());
-      }
+    if (paramRedTypeInfo.red_type.get() == 0) {
+      return 1;
     }
-    return 0;
+    if (paramRedTypeInfo.red_type.get() == 5) {
+      return 2;
+    }
+    return 3;
   }
   
-  public void a(int paramInt, atgz paramatgz)
+  public static azov a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-      return;
-    }
-    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
-    if (!a(localReqBody))
-    {
-      QLog.i("CommentsDataSource", 1, "oidb_0xada configCommonFileds failed");
-      paramatgz.a();
-    }
-    NowNearbyVideoCommentProto.GetCommentListNoFilterReq localGetCommentListNoFilterReq = new NowNearbyVideoCommentProto.GetCommentListNoFilterReq();
-    localGetCommentListNoFilterReq.count.set(20L);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString)) {
-      localGetCommentListNoFilterReq.feed_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);
-    }
-    localGetCommentListNoFilterReq.feed_type.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j);
-    localGetCommentListNoFilterReq.page.set(paramInt);
-    localGetCommentListNoFilterReq.filter.set(0L);
-    localReqBody.cmd.set(857);
-    localReqBody.subcmd.set(8);
-    localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localGetCommentListNoFilterReq.toByteArray()));
-    mxf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new athc(this, paramatgz), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+    azov localazov = new azov();
+    localazov.i = "trends_tab";
+    localazov.j = "trends_plugin";
+    localazov.k = paramString;
+    return localazov;
   }
   
-  public void a(Comments.Comment paramComment, atgy paramatgy)
+  public static int b(RedTouch paramRedTouch)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-      return;
+    if (paramRedTouch == null) {}
+    while ((paramRedTouch.a == null) || (paramRedTouch.a.getVisibility() != 0)) {
+      return 0;
     }
-    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
-    if (a(localReqBody))
-    {
-      localReqBody.cmd.set(857);
-      localReqBody.subcmd.set(3);
-      NowNearbyVideoCommentProto.DelCommentReq localDelCommentReq = new NowNearbyVideoCommentProto.DelCommentReq();
-      localDelCommentReq.feed_id.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString.getBytes()));
-      localDelCommentReq.comment_id.set(paramComment.jdField_a_of_type_Long);
-      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localDelCommentReq.toByteArray()));
-      mxf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new athe(this, paramatgy, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
-      return;
-    }
-    paramatgy.a(paramComment, -1);
-  }
-  
-  public void a(Comments.Comment paramComment, atha paramatha)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-      return;
-    }
-    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
-    if (!a(localReqBody))
-    {
-      QLog.i("CommentsDataSource", 1, "oidb_0xada configCommonFileds failed");
-      paramatha.a(paramComment, -1, "");
-      return;
-    }
-    NowNearbyVideoCommentProto.AddCommentNoFilterReq localAddCommentNoFilterReq = new NowNearbyVideoCommentProto.AddCommentNoFilterReq();
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j == 6) {
-      localAddCommentNoFilterReq.feed_type.set(6L);
-    }
-    for (;;)
-    {
-      localAddCommentNoFilterReq.feed_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);
-      Object localObject = new NowNearbyVideoCommentProto.UserInfo();
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).uid.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_c_of_type_Long);
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).user_type.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_g_of_type_Int);
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).now_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.d);
-      localAddCommentNoFilterReq.video_recorder.set((MessageMicro)localObject);
-      if ((paramComment.e > 0L) || (paramComment.f > 0L))
-      {
-        localObject = new NowNearbyVideoCommentProto.UserInfo();
-        ((NowNearbyVideoCommentProto.UserInfo)localObject).uid.set(paramComment.e);
-        ((NowNearbyVideoCommentProto.UserInfo)localObject).user_type.set(paramComment.jdField_c_of_type_Int);
-        ((NowNearbyVideoCommentProto.UserInfo)localObject).now_id.set(paramComment.f);
-        localAddCommentNoFilterReq.reply_user.set((MessageMicro)localObject);
-      }
-      localObject = new NowNearbyVideoCommentProto.UserInfo();
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).uid.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_g_of_type_Long);
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).now_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_h_of_type_Long);
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).user_type.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_h_of_type_Int);
-      localAddCommentNoFilterReq.video_owner.set((MessageMicro)localObject);
-      localAddCommentNoFilterReq.is_aggregate_short_video.set(0);
-      localObject = new NowNearbyVideoCommentProto.UserInfo();
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).uid.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Long);
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).user_type.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_c_of_type_Int);
-      ((NowNearbyVideoCommentProto.UserInfo)localObject).now_id.set(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.b);
-      localAddCommentNoFilterReq.video_anchor.set((MessageMicro)localObject);
-      localObject = new NowNearbyVideoCommentProto.CommentMsgBody();
-      NowNearbyVideoCommentProto.CommentMsg localCommentMsg = new NowNearbyVideoCommentProto.CommentMsg();
-      localCommentMsg.msg.set(ByteStringMicro.copyFromUtf8(paramComment.jdField_a_of_type_JavaLangString));
-      localCommentMsg.type.set(0);
-      ((NowNearbyVideoCommentProto.CommentMsgBody)localObject).msgs.add(localCommentMsg);
-      localAddCommentNoFilterReq.content.set((MessageMicro)localObject);
-      localReqBody.cmd.set(857);
-      localReqBody.subcmd.set(9);
-      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localAddCommentNoFilterReq.toByteArray()));
-      if (QLog.isColorLevel()) {
-        QLog.i("CommentsDataSource", 2, "print bytes count =" + localAddCommentNoFilterReq.toByteArray().length);
-      }
-      int i = a();
-      QLog.i("CommentsDataSource", 1, "publishComment, qqver=" + i);
-      if (i > 0) {
-        localReqBody.version_code.set(i);
-      }
-      mxf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new athd(this, paramatha, paramComment), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.j == 4) {
-        localAddCommentNoFilterReq.feed_type.set(4L);
-      } else {
-        localAddCommentNoFilterReq.feed_type.set(3L);
-      }
-    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     athb
  * JD-Core Version:    0.7.0.1
  */

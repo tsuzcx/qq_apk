@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aikm
-  implements View.OnClickListener
+class aikm
+  implements DialogInterface.OnClickListener
 {
-  public aikm(SessionClearFragment paramSessionClearFragment) {}
+  aikm(aikl paramaikl) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = ajya.a(2131713854);
-    paramView = bbdj.a(SessionClearFragment.a(this.a), 230, ajya.a(2131713856), paramView, 2131694648, 2131720929, new aikn(this), new aiko(this));
-    SessionClearFragment.a(this.a, paramView);
+    if (paramInt == 0)
+    {
+      this.a.b();
+      aikl.a(this.a).moveTaskToBack(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aikm
  * JD-Core Version:    0.7.0.1
  */

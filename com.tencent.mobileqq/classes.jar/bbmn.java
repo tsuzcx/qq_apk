@@ -1,14 +1,24 @@
-public abstract interface bbmn
+import com.tencent.mobileqq.troop.createNewTroop.RelationTroopEntity;
+import java.util.ArrayList;
+
+class bbmn
+  implements bccr
 {
-  public abstract void a(bbml parambbml, bbmm parambbmm, float paramFloat1, float paramFloat2);
+  bbmn(bbml parambbml, bbmt parambbmt) {}
   
-  public abstract boolean a(float paramFloat1, float paramFloat2);
-  
-  public abstract boolean a(bbml parambbml, bbmm parambbmm, float paramFloat1, float paramFloat2);
-  
-  public abstract void b(bbml parambbml, bbmm parambbmm, float paramFloat1, float paramFloat2);
-  
-  public abstract boolean b(bbml parambbml, bbmm parambbmm, float paramFloat1, float paramFloat2);
+  public void a(ArrayList<bccq> paramArrayList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      RelationTroopEntity localRelationTroopEntity = new RelationTroopEntity();
+      localRelationTroopEntity.troopInfo = ((bccq)paramArrayList.get(i)).a;
+      localArrayList.add(localRelationTroopEntity);
+      i += 1;
+    }
+    this.jdField_a_of_type_Bbmt.a(localArrayList);
+  }
 }
 
 

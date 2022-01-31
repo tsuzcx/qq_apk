@@ -1,43 +1,24 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import java.util.HashMap;
-import java.util.List;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.image.RegionDrawableData;
 
-class aikc
-  implements aijc
+public abstract interface aikc
 {
-  aikc(aikb paramaikb, String paramString) {}
+  public abstract View onCreateView(int paramInt, View paramView, ViewGroup paramViewGroup);
   
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Aikb.mRuntime.a().getCurrentAccountUin();
-      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
-      aikb.a(this.jdField_a_of_type_Aikb, this.jdField_a_of_type_JavaLangString, (List)localObject);
-      return;
-    }
-    catch (Exception localException1)
-    {
-      localException1.printStackTrace();
-      try
-      {
-        aikb.a(this.jdField_a_of_type_Aikb, this.jdField_a_of_type_JavaLangString, null);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        localException2.printStackTrace();
-      }
-    }
-    aikb.a(this.jdField_a_of_type_Aikb, this.jdField_a_of_type_JavaLangString, null);
-    return;
-  }
+  public abstract void onDestroyView(int paramInt, View paramView, ViewGroup paramViewGroup);
+  
+  public abstract void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData);
+  
+  public abstract void onSlot(int paramInt, View paramView, ViewGroup paramViewGroup);
+  
+  public abstract void onViewDetached(int paramInt, View paramView, ViewGroup paramViewGroup, boolean paramBoolean);
+  
+  public abstract void onscaleBegin(int paramInt, View paramView, ViewGroup paramViewGroup);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aikc
  * JD-Core Version:    0.7.0.1
  */

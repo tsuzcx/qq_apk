@@ -1,189 +1,320 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.HtmlOfflineCheckConfig;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.SpringHbIPCModule.1;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report.SpringHbReportManager;
-import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.report.SpringHbReportManager.ReportInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.ViewGroup;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ahge
-  extends QIPCModule
+public class ahge<T>
+  extends RecyclerView.Adapter<ahgk>
 {
-  public static ahge a;
+  private int jdField_a_of_type_Int;
+  protected ahgd a;
+  protected ahgi a;
+  private ahgj jdField_a_of_type_Ahgj;
+  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  protected View a;
+  protected List<T> a;
+  protected boolean a;
+  protected int b;
+  protected Context b;
+  private SparseArray<View> jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+  private View jdField_b_of_type_AndroidViewView;
+  protected int c = -1;
   
-  public ahge()
+  public ahge(Context paramContext)
   {
-    super("SpringHbIPCModule");
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_b_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Ahgd = new ahgd();
   }
   
-  public static ahge a()
+  private ahge<T> a(ahgj paramahgj)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new ahge();
-      }
-      return a;
+    if (paramahgj != null) {
+      this.jdField_a_of_type_Ahgj = paramahgj;
     }
-    finally {}
+    return this;
   }
   
-  private static EIPCResult a(AppRuntime paramAppRuntime)
+  public int a()
   {
-    try
-    {
-      if ((paramAppRuntime instanceof QQAppInterface)) {}
-      for (boolean bool = ((QQAppInterface)paramAppRuntime).c();; bool = false)
-      {
-        paramAppRuntime = new Bundle();
-        paramAppRuntime.putBoolean("isVideoChatting", bool);
-        return EIPCResult.createSuccessResult(paramAppRuntime);
-        QLog.e("springHb_SpringHbIPCModule", 1, "doGetIsVideoChatting appRuntime is not QQAppInterface");
-      }
-      return EIPCResult.createSuccessResult(paramAppRuntime);
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      return 0;
     }
-    catch (Exception paramAppRuntime)
-    {
-      paramAppRuntime = new Bundle();
-      paramAppRuntime.putBoolean("isVideoChatting", false);
-    }
+    return this.jdField_a_of_type_JavaUtilList.size();
   }
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public ahge a(int paramInt)
   {
-    Bundle localBundle = null;
-    Object localObject2 = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("SpringHbIPCModule", 2, "action = " + paramString + ", params = " + paramBundle);
-    }
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject1 = localObject2;
-    if (localAppRuntime != null)
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public ahge a(ahgc<T> paramahgc)
+  {
+    this.jdField_a_of_type_Ahgd.a(paramahgc);
+    return this;
+  }
+  
+  public ahgk a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    return ahgk.a(paramContext, paramViewGroup, paramInt);
+  }
+  
+  public ahgk a(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (paramInt == 2147483646)
     {
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        break label78;
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        return ahgk.a(paramViewGroup.getContext(), this.jdField_a_of_type_AndroidViewView);
       }
-      localObject1 = localObject2;
+      return ahgk.a(paramViewGroup.getContext(), paramViewGroup, this.jdField_b_of_type_Int);
     }
-    label78:
+    if ((paramInt == 2147483645) && (a()))
+    {
+      if (this.jdField_b_of_type_AndroidViewView != null) {
+        return ahgk.a(paramViewGroup.getContext(), this.jdField_b_of_type_AndroidViewView);
+      }
+      return ahgk.a(paramViewGroup.getContext(), paramViewGroup, this.jdField_a_of_type_Int);
+    }
+    if ((paramInt >= 1000000) && (this.jdField_a_of_type_AndroidUtilSparseArray != null) && (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null)) {
+      return ahgk.a(paramViewGroup.getContext(), (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    }
+    if ((paramInt >= 2000000) && (this.jdField_b_of_type_AndroidUtilSparseArray != null) && (this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt) != null)) {
+      return ahgk.a(paramViewGroup.getContext(), (View)this.jdField_b_of_type_AndroidUtilSparseArray.get(paramInt));
+    }
+    int i = this.jdField_a_of_type_Ahgd.a(paramInt).a();
+    ahgk localahgk = a(this.jdField_b_of_type_AndroidContentContext, paramViewGroup, i);
+    a(localahgk, localahgk.a());
+    a(paramViewGroup, localahgk, paramInt);
+    return localahgk;
+  }
+  
+  protected T a(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList == null) {}
     do
     {
-      do
+      return null;
+      paramInt -= b();
+    } while (paramInt >= this.jdField_a_of_type_JavaUtilList.size());
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    notifyDataSetChanged();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void a(ahgi paramahgi)
+  {
+    this.jdField_a_of_type_Ahgi = paramahgi;
+  }
+  
+  public void a(ahgj paramahgj)
+  {
+    if (a()) {
+      return;
+    }
+    a(paramahgj);
+    this.jdField_a_of_type_Boolean = true;
+    notifyDataSetChanged();
+  }
+  
+  public void a(ahgk paramahgk)
+  {
+    super.onViewAttachedToWindow(paramahgk);
+    if ((a(paramahgk.getLayoutPosition())) || (b(paramahgk.getLayoutPosition())) || (c(paramahgk.getLayoutPosition())) || (b()))
+    {
+      paramahgk = paramahgk.itemView.getLayoutParams();
+      if ((paramahgk != null) && ((paramahgk instanceof StaggeredGridLayoutManager.LayoutParams))) {
+        ((StaggeredGridLayoutManager.LayoutParams)paramahgk).setFullSpan(true);
+      }
+    }
+  }
+  
+  public void a(ahgk paramahgk, int paramInt)
+  {
+    if ((a(paramInt)) || (b(paramInt)) || (b())) {}
+    do
+    {
+      return;
+      if (!c(paramInt)) {
+        break;
+      }
+    } while (this.jdField_a_of_type_Ahgj == null);
+    this.jdField_a_of_type_Ahgj.a();
+    return;
+    a(paramahgk, a(paramInt));
+  }
+  
+  public void a(ahgk paramahgk, View paramView) {}
+  
+  public void a(ahgk paramahgk, T paramT)
+  {
+    this.jdField_a_of_type_Ahgd.a(paramahgk, paramT, paramahgk.getAdapterPosition());
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  protected void a(ViewGroup paramViewGroup, ahgk paramahgk, int paramInt)
+  {
+    if (!d(paramInt)) {
+      return;
+    }
+    paramahgk.a().setOnClickListener(new ahgg(this, paramahgk));
+    paramahgk.a().setOnLongClickListener(new ahgh(this, paramahgk));
+  }
+  
+  public void a(List<T> paramList)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      if (b())
       {
-        do
-        {
-          return localObject1;
-          if (!"ReportData".equals(paramString)) {
-            break;
-          }
-          paramString = (SpringHbReportManager.ReportInfo)paramBundle.getSerializable("key1");
-          paramBundle = (SpringHbReportManager)((QQAppInterface)localAppRuntime).getManager(344);
-          localObject1 = localObject2;
-        } while (paramBundle == null);
-        paramBundle.a(paramString);
-        return null;
-        if ("GetDomain".equals(paramString))
-        {
-          paramString = ((ahfq)localAppRuntime.getManager(343)).a();
-          paramBundle = new EIPCResult();
-          localObject1 = new Bundle();
-          ((Bundle)localObject1).putString("res_domain", paramString);
-          paramBundle.data = ((Bundle)localObject1);
-          return paramBundle;
-        }
-        if ("GetEmergencyInfo".equals(paramString))
-        {
-          paramBundle = (ahfq)localAppRuntime.getManager(343);
-          localObject1 = new EIPCResult();
-          localBundle = new Bundle();
-          if ((paramBundle == null) || (paramBundle.a() == null))
-          {
-            paramString = null;
-            if ((paramBundle != null) && (paramBundle.a() != null)) {
-              break label292;
-            }
-          }
-          for (paramBundle = null;; paramBundle = paramBundle.a().emergencyUrl)
-          {
-            localBundle.putString("key1", paramString);
-            localBundle.putString("key2", paramBundle);
-            ((EIPCResult)localObject1).data = localBundle;
-            callbackResult(paramInt, (EIPCResult)localObject1);
-            return null;
-            paramString = paramBundle.a().activityPrefix;
-            break;
-          }
-        }
-        if ("GetHtmlOffline".equals(paramString))
-        {
-          paramString = (ahfq)localAppRuntime.getManager(343);
-          paramBundle = new EIPCResult();
-          localObject1 = new Bundle();
-          if (paramString.a() == null) {}
-          for (paramString = "";; paramString = paramString.a().bids)
-          {
-            ((Bundle)localObject1).putString("bids", paramString);
-            paramBundle.data = ((Bundle)localObject1);
-            return paramBundle;
-          }
-        }
-        if ("GetcfgInfo".equals(paramString))
-        {
-          paramString = (ahfq)localAppRuntime.getManager(343);
-          paramBundle = new EIPCResult();
-          localObject1 = new Bundle();
-          ((Bundle)localObject1).putInt("task_id", paramString.a());
-          ((Bundle)localObject1).putInt("cfg_version", paramString.b());
-          paramBundle.data = ((Bundle)localObject1);
-          return paramBundle;
-        }
-        if ("removeEntryLoadingAnimationView".equals(paramString))
-        {
-          QLog.i("SpringHbIPCModule", 1, "webview ACTION_REMOVE_ENTRY_LOADING_ANIMATION_VIEW");
-          ThreadManager.getUIHandler().postDelayed(new SpringHbIPCModule.1(this), 1000L);
-          return EIPCResult.createSuccessResult(new Bundle());
-        }
-        if ("GetActivityPref".equals(paramString))
-        {
-          paramString = (ahfq)localAppRuntime.getManager(343);
-          paramBundle = new EIPCResult();
-          localObject1 = new Bundle();
-          if (paramString.a() == null) {}
-          for (paramString = localBundle;; paramString = paramString.a().activityPrefix)
-          {
-            ((Bundle)localObject1).putString("activity_pref", paramString);
-            paramBundle.data = ((Bundle)localObject1);
-            return paramBundle;
-          }
-        }
-        if (!"GetServerTime".equals(paramString)) {
-          break;
-        }
-        paramBundle = (ahfx)localAppRuntime.getManager(342);
-        paramString = new EIPCResult();
-        localObject1 = paramString;
-      } while (paramBundle == null);
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putLong("server_time", paramBundle.b());
-      paramString.data = ((Bundle)localObject1);
-      return paramString;
-      localObject1 = localObject2;
-    } while (!"getIsVideoChatting".equals(paramString));
-    label292:
-    return a(localAppRuntime);
+        notifyItemRemoved(this.c);
+        notifyDataSetChanged();
+      }
+      int i = b();
+      int j = a();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyItemRangeInserted(i + j, paramList.size());
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && ((this.jdField_b_of_type_AndroidViewView != null) || (this.jdField_a_of_type_Int != 0));
+  }
+  
+  protected boolean a(int paramInt)
+  {
+    return paramInt < b();
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
+      return this.jdField_a_of_type_AndroidUtilSparseArray.size();
+    }
+    return 0;
+  }
+  
+  public void b()
+  {
+    if (a())
+    {
+      a(null);
+      this.jdField_a_of_type_Boolean = false;
+      notifyDataSetChanged();
+    }
+  }
+  
+  protected boolean b()
+  {
+    return ((this.jdField_a_of_type_AndroidViewView != null) || (this.jdField_b_of_type_Int != 0)) && (a() == 0);
+  }
+  
+  protected boolean b(int paramInt)
+  {
+    return (paramInt >= a() + b() + e()) && (paramInt < a() + b() + e() + c());
+  }
+  
+  public int c()
+  {
+    if (this.jdField_b_of_type_AndroidUtilSparseArray != null) {
+      return this.jdField_b_of_type_AndroidUtilSparseArray.size();
+    }
+    return 0;
+  }
+  
+  protected boolean c()
+  {
+    return this.jdField_a_of_type_Ahgd.a() > 0;
+  }
+  
+  protected boolean c(int paramInt)
+  {
+    return (a()) && (paramInt == a() + b() + e() + c());
+  }
+  
+  protected int d()
+  {
+    if (a()) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  protected boolean d(int paramInt)
+  {
+    return true;
+  }
+  
+  protected int e()
+  {
+    if (b()) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public int getItemCount()
+  {
+    return b() + c() + a() + e() + d();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if (a(paramInt)) {
+      return this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(paramInt);
+    }
+    if ((b()) && ((this.c == -1) || (paramInt == this.c)))
+    {
+      this.c = paramInt;
+      return 2147483646;
+    }
+    if (b(paramInt)) {
+      return this.jdField_b_of_type_AndroidUtilSparseArray.keyAt(paramInt - b() - a() - e());
+    }
+    if (c(paramInt)) {
+      return 2147483645;
+    }
+    if (c()) {
+      return this.jdField_a_of_type_Ahgd.a(a(paramInt), paramInt);
+    }
+    return super.getItemViewType(paramInt);
+  }
+  
+  public void onAttachedToRecyclerView(RecyclerView paramRecyclerView)
+  {
+    super.onAttachedToRecyclerView(paramRecyclerView);
+    paramRecyclerView = paramRecyclerView.getLayoutManager();
+    if ((paramRecyclerView instanceof GridLayoutManager))
+    {
+      paramRecyclerView = (GridLayoutManager)paramRecyclerView;
+      paramRecyclerView.setSpanSizeLookup(new ahgf(this, paramRecyclerView));
+      paramRecyclerView.setSpanCount(paramRecyclerView.getSpanCount());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahge
  * JD-Core Version:    0.7.0.1
  */

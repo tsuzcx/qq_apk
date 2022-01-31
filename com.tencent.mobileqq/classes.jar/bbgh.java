@@ -1,8 +1,18 @@
+import android.view.KeyEvent;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+
 public class bbgh
+  implements bcpn
 {
-  long a;
-  public String a;
-  public String b;
+  public bbgh(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1)) {
+      TroopBarReplyActivity.a(this.a, false);
+    }
+    return false;
+  }
 }
 
 

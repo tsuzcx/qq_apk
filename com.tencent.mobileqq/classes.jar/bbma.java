@@ -1,96 +1,84 @@
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-public class bbma
+class bbma
+  implements Comparator<MessageRecord>
 {
-  public static byte[] a(byte[] paramArrayOfByte)
-  {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(paramArrayOfByte.length + 4);
-    DataOutputStream localDataOutputStream = new DataOutputStream(localByteArrayOutputStream);
-    try
-    {
-      localDataOutputStream.writeInt(paramArrayOfByte.length + 4);
-      localDataOutputStream.write(paramArrayOfByte);
-      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-      label76:
-      return paramArrayOfByte;
-    }
-    catch (Exception paramArrayOfByte)
-    {
-      paramArrayOfByte = paramArrayOfByte;
-      paramArrayOfByte.printStackTrace();
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        return null;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        return null;
-      }
-    }
-    finally
-    {
-      try
-      {
-        localByteArrayOutputStream.close();
-        localDataOutputStream.close();
-        throw paramArrayOfByte;
-      }
-      catch (Exception localException1)
-      {
-        break label76;
-      }
-    }
-  }
+  bbma(bblz parambblz) {}
   
-  public static byte[] b(byte[] paramArrayOfByte)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
-    DataInputStream localDataInputStream = new DataInputStream(localByteArrayInputStream);
-    try
-    {
-      paramArrayOfByte = new byte[localDataInputStream.readInt() - 4];
-      label72:
-      return paramArrayOfByte;
+    int j = 0;
+    long l3 = 1L;
+    long l1 = paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq;
+    int i;
+    long l2;
+    label89:
+    boolean bool2;
+    if (l1 == 0L) {
+      if ((paramMessageRecord1.msgtype == -1012) || (abot.j(paramMessageRecord1.msgtype)))
+      {
+        i = 1;
+        if ((paramMessageRecord2.msgtype == -1012) || (abot.j(paramMessageRecord2.msgtype))) {
+          j = 1;
+        }
+        if (i == 0) {
+          break label165;
+        }
+        if (j == 0) {
+          break label159;
+        }
+        l2 = paramMessageRecord1.time - paramMessageRecord2.time;
+        l1 = l2;
+        if (l2 == 0L)
+        {
+          boolean bool1 = abot.r(paramMessageRecord1.msgtype);
+          bool2 = abot.r(paramMessageRecord2.msgtype);
+          if (!bool1) {
+            break label191;
+          }
+          if (!bool2) {
+            break label185;
+          }
+          l1 = paramMessageRecord1.time - paramMessageRecord2.time;
+        }
+      }
     }
-    catch (Exception localException1)
+    for (;;)
     {
-      try
-      {
-        localByteArrayInputStream.close();
-        localDataInputStream.close();
-        return paramArrayOfByte;
+      label139:
+      if (l1 > 0L) {
+        l1 = l3;
       }
-      catch (Exception localException5) {}
-      localException1 = localException1;
-      paramArrayOfByte = null;
-      localException1.printStackTrace();
-      try
+      for (;;)
       {
-        localByteArrayInputStream.close();
-        localDataInputStream.close();
-        return paramArrayOfByte;
-      }
-      catch (Exception localException2)
-      {
-        return paramArrayOfByte;
-      }
-    }
-    finally
-    {
-      try
-      {
-        localByteArrayInputStream.close();
-        localDataInputStream.close();
-        throw paramArrayOfByte;
-      }
-      catch (Exception localException3)
-      {
-        break label72;
+        return (int)l1;
+        i = 0;
+        break;
+        label159:
+        l2 = 1L;
+        break label89;
+        label165:
+        if (j != 0)
+        {
+          l2 = -1L;
+          break label89;
+        }
+        l2 = l1;
+        break label89;
+        label185:
+        l1 = 1L;
+        break label139;
+        label191:
+        l1 = l2;
+        if (!bool2) {
+          break label139;
+        }
+        l1 = -1L;
+        break label139;
+        if (l1 < 0L) {
+          l1 = -1L;
+        }
       }
     }
   }

@@ -4,8 +4,8 @@ import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import android.content.Intent;
 import android.text.TextUtils;
-import bgyh;
-import bgyi;
+import bize;
+import bizf;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -48,8 +48,8 @@ public abstract class ProtoBufRequest
     }
     PROTOCAL.StQWebReq localStQWebReq = new PROTOCAL.StQWebReq();
     localStQWebReq.Seq.set(paramInt);
-    localStQWebReq.qua.set(bgyi.a());
-    localStQWebReq.deviceInfo.set(bgyh.a().c());
+    localStQWebReq.qua.set(bizf.a());
+    localStQWebReq.deviceInfo.set(bize.a().c());
     localStQWebReq.busiBuff.set(ByteStringMicro.copyFrom(getBusiBuf()));
     if (!TextUtils.isEmpty(paramString)) {
       localStQWebReq.traceid.set(paramString);
@@ -64,7 +64,7 @@ public abstract class ProtoBufRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.ProtoBufRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public final class MiniFileProto$MiniFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.device.MiniFileProto.MiniFile
  * JD-Core Version:    0.7.0.1
  */

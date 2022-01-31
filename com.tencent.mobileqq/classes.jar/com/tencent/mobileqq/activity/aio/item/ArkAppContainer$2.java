@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import adlj;
+import afdt;
 import com.tencent.qphone.base.util.QLog;
 
 public class ArkAppContainer$2
   implements Runnable
 {
-  public ArkAppContainer$2(adlj paramadlj, String paramString) {}
+  public ArkAppContainer$2(afdt paramafdt, String paramString) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class ArkAppContainer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppContainer.2
  * JD-Core Version:    0.7.0.1
  */

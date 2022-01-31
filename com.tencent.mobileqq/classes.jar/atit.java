@@ -1,34 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.listentogether.fragment.ListenTogetherOverlayFragment;
+import com.tencent.mobileqq.widget.qqfloatingscreen.FloatingScreenPermission;
 
-class atit
-  implements bcww
+public class atit
+  implements DialogInterface.OnClickListener
 {
-  atit(atir paramatir) {}
+  public atit(ListenTogetherOverlayFragment paramListenTogetherOverlayFragment) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
+    if (FloatingScreenPermission.requestPermission(BaseApplicationImpl.getContext()))
     {
-      WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label59;
-      }
-      if (this.a.jdField_a_of_type_Atiu != null) {
-        this.a.jdField_a_of_type_Atiu.a(true);
-      }
-    }
-    label59:
-    while (this.a.jdField_a_of_type_Atiu == null) {
+      ListenTogetherOverlayFragment.a(this.a, true);
       return;
     }
-    this.a.jdField_a_of_type_Atiu.a(false);
+    ListenTogetherOverlayFragment.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atit
  * JD-Core Version:    0.7.0.1
  */

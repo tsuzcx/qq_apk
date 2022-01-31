@@ -1,48 +1,33 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
-import mqq.app.MobileQQ;
 
 public class acab
-  extends RecyclerView.Adapter<acac>
+  implements CompoundButton.OnCheckedChangeListener
 {
-  abzz jdField_a_of_type_Abzz;
+  public acab(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public acab(ScoreQAVFragment paramScoreQAVFragment) {}
-  
-  public acac a(ViewGroup paramViewGroup, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return new acac(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2131559576, paramViewGroup, false), this.jdField_a_of_type_Abzz);
-  }
-  
-  public void a(abzz paramabzz)
-  {
-    this.jdField_a_of_type_Abzz = paramabzz;
-  }
-  
-  public void a(acac paramacac, int paramInt)
-  {
-    paramacac.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt))
+    boolean bool = true;
+    if (!bdee.d(this.a.getActivity()))
     {
-      paramacac.a.setSelected(true);
-      return;
+      AssistantSettingActivity.a(this.a, 2131694829, 1);
+      paramCompoundButton = this.a;
+      if (!paramBoolean) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        AssistantSettingActivity.a(paramCompoundButton, paramBoolean, this);
+        return;
+      }
     }
-    paramacac.a.setSelected(false);
-  }
-  
-  public int getItemCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
+    ((alkv)this.a.app.a(2)).q(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acab
  * JD-Core Version:    0.7.0.1
  */

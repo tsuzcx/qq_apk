@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.mini.reuse;
 
-import amtb;
 import android.text.TextUtils;
+import aokd;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager;
 import com.tencent.qphone.base.util.QLog;
@@ -18,7 +18,7 @@ class MiniAppTransferModule$1
     DesktopDataManager localDesktopDataManager = (DesktopDataManager)this.val$runtime.getManager(336);
     if ((localDesktopDataManager != null) && (!TextUtils.isEmpty(this.val$appid)))
     {
-      if ((this.val$topType != 1) || (localDesktopDataManager.getTopMiniAppNumber() < amtb.c())) {
+      if ((this.val$topType != 1) || (localDesktopDataManager.getTopMiniAppNumber() < aokd.c())) {
         break label64;
       }
       this.this$0.callbackResult(this.val$callbackId, EIPCResult.createResult(-100, null));
@@ -41,7 +41,7 @@ class MiniAppTransferModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppTransferModule.1
  * JD-Core Version:    0.7.0.1
  */

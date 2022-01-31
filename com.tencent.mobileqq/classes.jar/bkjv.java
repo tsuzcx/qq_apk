@@ -1,32 +1,41 @@
-import android.annotation.TargetApi;
-import android.media.MediaExtractor;
-import android.media.MediaFormat;
-import android.util.Log;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.takevideo.CameraFocusView;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.richmedia.capture.view.FollowCaptureView;
+import com.tencent.qphone.base.util.QLog;
 
-public class bkjv
+class bkjv
+  extends axkq
 {
-  @TargetApi(16)
-  public static int a(MediaExtractor paramMediaExtractor)
+  public bkjv(bkju parambkju, CameraFocusView paramCameraFocusView)
   {
-    int j = paramMediaExtractor.getTrackCount();
-    int i = 0;
-    while (i < j)
+    super(paramCameraFocusView);
+  }
+  
+  protected void a(CameraCaptureView paramCameraCaptureView, float paramFloat1, float paramFloat2)
+  {
+    super.a(paramCameraCaptureView, paramFloat1, paramFloat2 - paramCameraCaptureView.getTop());
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
     {
-      MediaFormat localMediaFormat = paramMediaExtractor.getTrackFormat(i);
-      String str = localMediaFormat.getString("mime");
-      if (str.startsWith("video/"))
-      {
-        Log.d("VideoUtils", "Extractor selected track " + i + " (" + str + "): " + localMediaFormat);
-        return i;
-      }
-      i += 1;
+      QLog.d("GLGestureListener", 2, "event : (" + paramMotionEvent.getX() + "," + paramMotionEvent.getY() + ")");
+      QLog.d("GLGestureListener", 2, "view : (" + bkju.a(this.a).getLeft() + "," + bkju.a(this.a).getRight() + "," + bkju.a(this.a).getTop() + "," + bkju.a(this.a).getBottom() + ")");
     }
-    return -1;
+    if ((paramMotionEvent.getX() > bkju.a(this.a).getRight() / 2) || (paramMotionEvent.getY() < bkju.a(this.a).getTop()) || (paramMotionEvent.getY() > bkju.a(this.a).getBottom()))
+    {
+      QLog.d("GLGestureListener", 2, "touch out");
+      return false;
+    }
+    QLog.d("GLGestureListener", 2, "touch in");
+    return super.onTouchEvent(paramMotionEvent, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkjv
  * JD-Core Version:    0.7.0.1
  */

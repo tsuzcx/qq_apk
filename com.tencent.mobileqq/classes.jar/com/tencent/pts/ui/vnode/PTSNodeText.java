@@ -52,113 +52,72 @@ public class PTSNodeText
   
   protected boolean setStyle(String paramString, Object paramObject)
   {
-    int j = 0;
     if (super.setStyle(paramString, paramObject)) {}
-    label76:
     do
     {
       return true;
-      switch (paramString.hashCode())
+      if ("font-size".equalsIgnoreCase(paramString))
       {
-      default: 
-        i = -1;
+        ((PTSTextView)getView()).setTextSize(0, PTSValueConvertUtil.dp2px(getNodeInfo().getStyle().getFontSize()));
+        return true;
       }
-      for (;;)
+      if ("color".equalsIgnoreCase(paramString))
       {
-        switch (i)
-        {
-        default: 
-          return false;
-          if (!paramString.equals("font-size")) {
-            break label76;
-          }
-          i = 0;
-          continue;
-          if (!paramString.equals("color")) {
-            break label76;
-          }
-          i = 1;
-          continue;
-          if (!paramString.equals("font-style")) {
-            break label76;
-          }
-          i = 2;
-          continue;
-          if (!paramString.equals("font-weight")) {
-            break label76;
-          }
-          i = 3;
-          continue;
-          if (!paramString.equals("-webkit-line-clamp")) {
-            break label76;
-          }
-          i = 4;
-          continue;
-          if (!paramString.equals("line-height")) {
-            break label76;
-          }
-          i = 5;
-        }
+        ((PTSTextView)getView()).setTextColor(PTSValueConvertUtil.getColor(paramObject));
+        return true;
       }
-      ((PTSTextView)getView()).setTextSize(0, PTSValueConvertUtil.dp2px(getNodeInfo().getStyle().getFontSize()));
-      return true;
-      ((PTSTextView)getView()).setTextColor(PTSValueConvertUtil.getColor(paramObject));
-      return true;
+      if (!"font-style".equalsIgnoreCase(paramString)) {
+        break;
+      }
     } while (!"italic".equals(PTSValueConvertUtil.getString(paramObject)));
     ((PTSTextView)getView()).setTypeface(null, 2);
     return true;
-    paramString = PTSValueConvertUtil.getString(paramObject);
-    paramObject = ((PTSTextView)getView()).getPaint();
-    paramObject.setStyle(Paint.Style.FILL_AND_STROKE);
-    switch (paramString.hashCode())
+    if ("font-weight".equalsIgnoreCase(paramString))
     {
-    default: 
-      label340:
-      i = -1;
-    }
-    for (;;)
-    {
-      switch (i)
+      paramString = PTSValueConvertUtil.getString(paramObject);
+      paramObject = ((PTSTextView)getView()).getPaint();
+      paramObject.setStyle(Paint.Style.FILL_AND_STROKE);
+      if ("bold".equalsIgnoreCase(paramString))
       {
-      default: 
+        paramObject.setStrokeWidth(1.5F);
+        return true;
+      }
+      if (("lighter".equalsIgnoreCase(paramString)) || ("normal".equalsIgnoreCase(paramString)))
+      {
         paramObject.setStrokeWidth(0.0F);
         return true;
-        if (!paramString.equals("bold")) {
-          break label340;
-        }
-        i = j;
-        continue;
-        if (!paramString.equals("lighter")) {
-          break label340;
-        }
-        i = 1;
-        continue;
-        if (!paramString.equals("normal")) {
-          break label340;
-        }
-        i = 2;
       }
+      paramObject.setStrokeWidth(0.0F);
+      return true;
     }
-    paramObject.setStrokeWidth(1.5F);
-    return true;
-    int i = PTSValueConvertUtil.getInt(paramObject);
-    if (i <= 0) {
+    int i;
+    if ("-webkit-line-clamp".equalsIgnoreCase(paramString))
+    {
+      i = PTSValueConvertUtil.getInt(paramObject);
+      if (i > 0) {
+        break label276;
+      }
       i = 1;
     }
+    label276:
     for (;;)
     {
       ((PTSTextView)getView()).setMaxLines(i);
       ((PTSTextView)getView()).setEllipsize(TextUtils.TruncateAt.END);
       return true;
-      float f = PTSValueConvertUtil.dp2px(getNodeInfo().getStyle().getLineSpacing());
-      ((PTSTextView)getView()).setLineSpacing(f, 1.0F);
-      return true;
+      if ("line-height".equalsIgnoreCase(paramString))
+      {
+        float f = PTSValueConvertUtil.dp2px(getNodeInfo().getStyle().getLineSpacing());
+        ((PTSTextView)getView()).setLineSpacing(f, 1.0F);
+        return true;
+      }
+      return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pts.ui.vnode.PTSNodeText
  * JD-Core Version:    0.7.0.1
  */

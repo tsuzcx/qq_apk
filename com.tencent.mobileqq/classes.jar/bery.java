@@ -1,19 +1,27 @@
-import java.util.Properties;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.widget.VoteView;
+import com.tencent.mobileqq.widget.VoteView.1;
 
 public class bery
+  implements View.OnClickListener
 {
-  public String a;
-  public Properties a;
+  public bery(VoteView.1 param1) {}
   
-  public bery(String paramString, Properties paramProperties)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilProperties = paramProperties;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    paramView = new Intent(this.a.this$0.getContext(), QQBrowserActivity.class);
+    String str = bdox.a(this.a.this$0.getContext(), "praise", "");
+    VasWebviewUtil.openQQBrowserWithoutAD(this.a.this$0.getContext(), str, 536870912L, paramView, false, -1);
+    VasWebviewUtil.reportCommercialDrainage(null, "thumbup", "others_click", null, 1, 0, 0, null, "1", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bery
  * JD-Core Version:    0.7.0.1
  */

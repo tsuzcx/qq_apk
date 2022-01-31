@@ -1,27 +1,44 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class apfc
+public class apfc
 {
-  public abstract int a();
+  public static void a(String paramString)
+  {
+    QLog.d("TencentDocUtils", 1, "WL_DEBUG reportClickEvent actionName = " + paramString);
+    azmj.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
   
-  public abstract String a();
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool = apfb.a(paramQQAppInterface.getApp(), paramQQAppInterface.getAccount());
+    if (!bool) {
+      ((alkv)paramQQAppInterface.a(2)).A();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocUtils", 1, "WL_DEBUG updateTencentDocUser isUser = " + bool);
+    }
+    return bool;
+  }
   
-  public abstract HashMap<String, ArrayList<MessageRecord>> a();
-  
-  public abstract void a(int paramInt, List<MessageRecord> paramList1, List<MessageRecord> paramList2);
-  
-  public abstract void a(String paramString, List<MessageRecord> paramList, MessageRecord paramMessageRecord, int paramInt);
-  
-  protected void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap1, HashMap<String, ArrayList<MessageRecord>> paramHashMap2) {}
-  
-  public abstract String b();
+  public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
+  {
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    paramQQAppInterface = paramQQAppInterface.c();
+    paramBoolean = localBaseApplication.getSharedPreferences("call_tim_config_pre" + paramQQAppInterface, 0).getBoolean("call_tim_config_switch", false);
+    paramQQAppInterface = aoum.a().a();
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocUtils", 2, "WL_DEBUG showInQQSettingMe enable = " + paramBoolean + ", isUser = " + false + ", userConfigMeURL = " + paramQQAppInterface);
+    }
+    return (!paramBoolean) && (paramBoolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apfc
  * JD-Core Version:    0.7.0.1
  */

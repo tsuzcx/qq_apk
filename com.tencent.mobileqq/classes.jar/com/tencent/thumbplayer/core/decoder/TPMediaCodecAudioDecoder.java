@@ -16,8 +16,10 @@ public class TPMediaCodecAudioDecoder
   extends TPBaseMediaCodecDecoder
 {
   private static final String TAG = "TPMediaCodecAudioDecoder";
+  private int mAudioFormat = 0;
   private int mChannelCount = 0;
   private byte[] mCsd0Data = null;
+  private boolean mEnableAudioPassThrough = false;
   private boolean mIsAdts = false;
   private MediaCrypto mMediaCrypto = null;
   private String mMimeType = null;
@@ -48,16 +50,18 @@ public class TPMediaCodecAudioDecoder
     return this.mMimeType;
   }
   
-  public boolean initDecoder(String paramString, int paramInt1, int paramInt2)
+  public boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    TPNativeLog.printLog(2, "TPMediaCodecAudioDecoder", "initDecoder: ");
+    TPNativeLog.printLog(2, "TPMediaCodecAudioDecoder", "initDecoder, mimeType:" + paramString + " sampleRate:" + paramInt1 + " channelCount:" + paramInt2 + " drmType:" + paramInt3 + " audioFormat:" + paramInt4);
     this.mMimeType = paramString;
     this.mSampleRate = paramInt1;
     this.mChannelCount = paramInt2;
+    this.mDrmType = paramInt3;
+    this.mAudioFormat = paramInt4;
     return true;
   }
   
-  public boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, Surface paramSurface)
+  public boolean initDecoder(String paramString, int paramInt1, int paramInt2, int paramInt3, Surface paramSurface, int paramInt4)
   {
     return false;
   }
@@ -68,6 +72,7 @@ public class TPMediaCodecAudioDecoder
   {
     paramTPFrameInfo.sampleRate = this.mSampleRate;
     paramTPFrameInfo.channelCount = this.mChannelCount;
+    paramTPFrameInfo.format = this.mAudioFormat;
     if (Build.VERSION.SDK_INT >= 21) {}
     for (ByteBuffer localByteBuffer = paramMediaCodec.getOutputBuffer(paramInt);; localByteBuffer = paramMediaCodec.getOutputBuffers()[paramInt])
     {
@@ -88,31 +93,121 @@ public class TPMediaCodecAudioDecoder
     }
   }
   
+  void processOutputConfigData(@NonNull MediaCodec paramMediaCodec, int paramInt, @NonNull MediaCodec.BufferInfo paramBufferInfo, @NonNull TPFrameInfo paramTPFrameInfo)
+  {
+    paramMediaCodec.releaseOutputBuffer(paramInt, false);
+    paramTPFrameInfo.errCode = 1;
+  }
+  
+  /* Error */
   void processOutputFormatChanged(@NonNull MediaFormat paramMediaFormat)
   {
-    try
-    {
-      if (paramMediaFormat.containsKey("sample-rate")) {
-        this.mSampleRate = paramMediaFormat.getInteger("sample-rate");
-      }
-      if (paramMediaFormat.containsKey("channel-count")) {
-        this.mChannelCount = paramMediaFormat.getInteger("channel-count");
-      }
-      if ((Build.VERSION.SDK_INT < 24) || (!paramMediaFormat.containsKey("pcm-encoding"))) {
-        break label142;
-      }
-      i = paramMediaFormat.getInteger("pcm-encoding");
-    }
-    catch (Exception paramMediaFormat)
-    {
-      for (;;)
-      {
-        TPNativeLog.printLog(4, "TPMediaCodecAudioDecoder", "processOutputFormatChanged got one exception: " + getStackTrace(paramMediaFormat));
-        label142:
-        int i = 2;
-      }
-    }
-    TPNativeLog.printLog(2, "TPMediaCodecAudioDecoder", "processOutputFormatChanged: mSampleRate: " + this.mSampleRate + ", mChannelCount: " + this.mChannelCount + " pcmFormat: " + i);
+    // Byte code:
+    //   0: aload_1
+    //   1: ldc 182
+    //   3: invokevirtual 186	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   6: ifeq +13 -> 19
+    //   9: aload_0
+    //   10: aload_1
+    //   11: ldc 182
+    //   13: invokevirtual 190	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   16: putfield 31	com/tencent/thumbplayer/core/decoder/TPMediaCodecAudioDecoder:mSampleRate	I
+    //   19: aload_1
+    //   20: ldc 192
+    //   22: invokevirtual 186	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   25: ifeq +13 -> 38
+    //   28: aload_0
+    //   29: aload_1
+    //   30: ldc 192
+    //   32: invokevirtual 190	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   35: putfield 33	com/tencent/thumbplayer/core/decoder/TPMediaCodecAudioDecoder:mChannelCount	I
+    //   38: getstatic 140	android/os/Build$VERSION:SDK_INT	I
+    //   41: bipush 24
+    //   43: if_icmplt +157 -> 200
+    //   46: aload_1
+    //   47: ldc 194
+    //   49: invokevirtual 186	android/media/MediaFormat:containsKey	(Ljava/lang/String;)Z
+    //   52: ifeq +148 -> 200
+    //   55: aload_1
+    //   56: ldc 194
+    //   58: invokevirtual 190	android/media/MediaFormat:getInteger	(Ljava/lang/String;)I
+    //   61: istore_2
+    //   62: iconst_2
+    //   63: ldc 11
+    //   65: new 95	java/lang/StringBuilder
+    //   68: dup
+    //   69: invokespecial 96	java/lang/StringBuilder:<init>	()V
+    //   72: ldc 196
+    //   74: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: iload_2
+    //   78: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   81: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   84: invokestatic 55	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   87: iconst_2
+    //   88: ldc 11
+    //   90: new 95	java/lang/StringBuilder
+    //   93: dup
+    //   94: invokespecial 96	java/lang/StringBuilder:<init>	()V
+    //   97: ldc 198
+    //   99: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: aload_0
+    //   103: getfield 43	com/tencent/thumbplayer/core/decoder/TPMediaCodecAudioDecoder:mEnableAudioPassThrough	Z
+    //   106: invokevirtual 201	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   109: ldc 203
+    //   111: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: aload_0
+    //   115: getfield 31	com/tencent/thumbplayer/core/decoder/TPMediaCodecAudioDecoder:mSampleRate	I
+    //   118: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   121: ldc 205
+    //   123: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   126: aload_0
+    //   127: getfield 33	com/tencent/thumbplayer/core/decoder/TPMediaCodecAudioDecoder:mChannelCount	I
+    //   130: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   133: ldc 207
+    //   135: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: aload_0
+    //   139: getfield 35	com/tencent/thumbplayer/core/decoder/TPMediaCodecAudioDecoder:mAudioFormat	I
+    //   142: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   145: ldc 209
+    //   147: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: iload_2
+    //   151: invokevirtual 107	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   154: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   157: invokestatic 55	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   160: return
+    //   161: astore_1
+    //   162: iconst_2
+    //   163: istore_2
+    //   164: iconst_4
+    //   165: ldc 11
+    //   167: new 95	java/lang/StringBuilder
+    //   170: dup
+    //   171: invokespecial 96	java/lang/StringBuilder:<init>	()V
+    //   174: ldc 211
+    //   176: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: aload_0
+    //   180: aload_1
+    //   181: invokevirtual 215	com/tencent/thumbplayer/core/decoder/TPMediaCodecAudioDecoder:getStackTrace	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   184: invokevirtual 102	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   187: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   190: invokestatic 55	com/tencent/thumbplayer/core/common/TPNativeLog:printLog	(ILjava/lang/String;Ljava/lang/String;)V
+    //   193: goto -106 -> 87
+    //   196: astore_1
+    //   197: goto -33 -> 164
+    //   200: iconst_2
+    //   201: istore_2
+    //   202: goto -115 -> 87
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	205	0	this	TPMediaCodecAudioDecoder
+    //   0	205	1	paramMediaFormat	MediaFormat
+    //   61	141	2	i	int
+    // Exception table:
+    //   from	to	target	type
+    //   0	19	161	java/lang/Exception
+    //   19	38	161	java/lang/Exception
+    //   38	62	161	java/lang/Exception
+    //   62	87	196	java/lang/Exception
   }
   
   public boolean setParamBool(int paramInt, boolean paramBoolean)
@@ -120,6 +215,12 @@ public class TPMediaCodecAudioDecoder
     if (paramInt == 2)
     {
       this.mIsAdts = paramBoolean;
+      return true;
+    }
+    if (paramInt == 3)
+    {
+      this.mEnableAudioPassThrough = paramBoolean;
+      TPNativeLog.printLog(2, getLogTag(), "setParamBool mEnableAudioPassThrough:" + this.mEnableAudioPassThrough);
       return true;
     }
     return super.setParamBool(paramInt, paramBoolean);
@@ -145,7 +246,7 @@ public class TPMediaCodecAudioDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPMediaCodecAudioDecoder
  * JD-Core Version:    0.7.0.1
  */

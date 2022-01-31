@@ -1,25 +1,18 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import mqq.os.MqqHandler;
-
-class qsm
-  implements DialogInterface.OnClickListener
+public abstract interface qsm<T extends qsl>
 {
-  qsm(qsl paramqsl, String paramString) {}
+  public abstract void a(T paramT);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Qsl, qrt.a(this.jdField_a_of_type_Qsl.a).getIntent().getExtras().getString("thumbfile_md5") + ".mp4", true));
-  }
+  public abstract void a(T paramT, int paramInt1, int paramInt2);
+  
+  public abstract void a(T paramT, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void b(T paramT, int paramInt1, int paramInt2);
+  
+  public abstract void c(T paramT, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     qsm
  * JD-Core Version:    0.7.0.1
  */

@@ -2,11 +2,11 @@ package com.tencent.biz.pubaccount.readinjoy.channelCover;
 
 import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.qphone.base.util.QLog;
-import nol;
-import npu;
-import onh;
+import nrt;
+import ntd;
 import org.json.JSONObject;
-import qzb;
+import ors;
+import ron;
 
 public final class ChannelCoverView$3
   implements Runnable
@@ -22,14 +22,14 @@ public final class ChannelCoverView$3
       if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) {
         ((JSONObject)localObject).put("channel_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId);
       }
-      ((JSONObject)localObject).put("network_type", npu.a());
-      ((JSONObject)localObject).put("version", npu.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("network_type", ntd.a());
+      ((JSONObject)localObject).put("version", ntd.jdField_a_of_type_JavaLangString);
       ((JSONObject)localObject).put("os", "1");
-      ((JSONObject)localObject).put("imei", onh.f());
-      ((JSONObject)localObject).put("imsi", onh.g());
-      ((JSONObject)localObject).put("kandian_mode_new", npu.a());
-      ((JSONObject)localObject).put("kandian_mode", onh.e());
-      ((JSONObject)localObject).put("entrance", qzb.a(this.jdField_a_of_type_Int));
+      ((JSONObject)localObject).put("imei", ors.f());
+      ((JSONObject)localObject).put("imsi", ors.g());
+      ((JSONObject)localObject).put("kandian_mode_new", ntd.a());
+      ((JSONObject)localObject).put("kandian_mode", ors.e());
+      ((JSONObject)localObject).put("entrance", ron.a(this.jdField_a_of_type_Int));
       localObject = ((JSONObject)localObject).toString();
     }
     catch (Exception localException)
@@ -44,12 +44,12 @@ public final class ChannelCoverView$3
         }
       }
     }
-    nol.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, (String)localObject, false);
+    nrt.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, (String)localObject, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverView.3
  * JD-Core Version:    0.7.0.1
  */

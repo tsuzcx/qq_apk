@@ -20,7 +20,7 @@ public class TPOptionalParam
   {
     this.paramType = 1;
     this.key = paramInt;
-    this.paramBoolean = new TPOptionalParam.OptionalParamBoolean(this);
+    this.paramBoolean = new TPOptionalParam.OptionalParamBoolean();
     this.paramBoolean.value = paramBoolean1;
     return this;
   }
@@ -29,7 +29,7 @@ public class TPOptionalParam
   {
     this.paramType = 2;
     this.key = paramInt;
-    this.paramLong = new TPOptionalParam.OptionalParamLong(this);
+    this.paramLong = new TPOptionalParam.OptionalParamLong();
     this.paramLong.value = paramLong1;
     return this;
   }
@@ -38,7 +38,7 @@ public class TPOptionalParam
   {
     this.paramType = 2;
     this.key = paramInt;
-    this.paramLong = new TPOptionalParam.OptionalParamLong(this);
+    this.paramLong = new TPOptionalParam.OptionalParamLong();
     this.paramLong.value = paramLong1;
     this.paramLong.param1 = paramLong2;
     this.paramLong.param2 = paramLong3;
@@ -49,7 +49,7 @@ public class TPOptionalParam
   {
     this.paramType = 4;
     this.key = paramInt;
-    this.paramQueueInt = new TPOptionalParam.OptionalParamQueueInt(this);
+    this.paramQueueInt = new TPOptionalParam.OptionalParamQueueInt();
     this.paramQueueInt.queueValue = paramArrayOfInt;
     return this;
   }
@@ -58,7 +58,7 @@ public class TPOptionalParam
   {
     this.paramType = 5;
     this.key = paramInt;
-    this.paramQueueString = new TPOptionalParam.OptionalParamQueueString(this);
+    this.paramQueueString = new TPOptionalParam.OptionalParamQueueString();
     this.paramQueueString.queueValue = paramArrayOfString;
     return this;
   }
@@ -67,7 +67,7 @@ public class TPOptionalParam
   {
     this.paramType = 3;
     this.key = paramInt;
-    this.paramString = new TPOptionalParam.OptionalParamString(this);
+    this.paramString = new TPOptionalParam.OptionalParamString();
     this.paramString.value = paramString1;
     return this;
   }
@@ -76,7 +76,7 @@ public class TPOptionalParam
   {
     this.paramType = 3;
     this.key = paramInt;
-    this.paramString = new TPOptionalParam.OptionalParamString(this);
+    this.paramString = new TPOptionalParam.OptionalParamString();
     this.paramString.value = paramString1;
     this.paramString.param1 = paramString2;
     this.paramString.param2 = paramString3;
@@ -168,7 +168,7 @@ public class TPOptionalParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.thumbplayer.api.TPOptionalParam
  * JD-Core Version:    0.7.0.1
  */

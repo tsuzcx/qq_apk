@@ -1,23 +1,41 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.history.ChatHistoryAuthDevForRoamMsgFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ahto
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Handler.Callback
 {
-  public ahto(FlowCameraActivity2 paramFlowCameraActivity2, int paramInt) {}
+  public ahto(ChatHistoryAuthDevForRoamMsgFragment paramChatHistoryAuthDevForRoamMsgFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.g.setPadding(0, 0, 0, paramValueAnimator.intValue());
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.e.setPadding(0, this.jdField_a_of_type_Int - paramValueAnimator.intValue(), 0, 0);
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    ChatHistoryAuthDevForRoamMsgFragment.a(this.a).findViewById(2131379348).setEnabled(true);
+    if ((this.a.a != null) && (this.a.a.isShowing())) {
+      this.a.a.dismiss();
+    }
+    if (paramMessage.arg1 == 0) {
+      QQToast.a(this.a.getActivity(), 2, alpo.a(2131701989), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
+    for (;;)
+    {
+      this.a.getActivity().setResult(1);
+      this.a.getActivity().finish();
+      return false;
+      QQToast.a(this.a.getActivity(), 2, alpo.a(2131701999), 0).b(this.a.getActivity().getTitleBarHeight());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahto
  * JD-Core Version:    0.7.0.1
  */

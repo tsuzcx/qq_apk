@@ -1,30 +1,36 @@
 import android.content.Context;
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.mobileqq.apollo.view.ApolloLottieAnim;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-public class bhzf
-  extends ApolloLottieAnim
+public final class bhzf
 {
-  private Downloader a;
+  private final bhzg a;
   
-  public bhzf(QQAppInterface paramQQAppInterface, Context paramContext)
+  public bhzf(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
-    super(paramQQAppInterface, paramContext);
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader = DownloaderFactory.getInstance(paramContext).getCommonDownloader();
+    this(paramContext, paramOnGestureListener, null);
   }
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  public bhzf(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
   {
-    this.jdField_a_of_type_Int = 1;
-    paramString3 = new bhzg(this, paramString2, paramString3);
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader.download(paramString1, paramString2, false, paramString3);
+    if (Build.VERSION.SDK_INT > 17)
+    {
+      this.a = new bhzj(paramContext, paramOnGestureListener, paramHandler);
+      return;
+    }
+    this.a = new bhzh(paramContext, paramOnGestureListener, paramHandler);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return this.a.a(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhzf
  * JD-Core Version:    0.7.0.1
  */

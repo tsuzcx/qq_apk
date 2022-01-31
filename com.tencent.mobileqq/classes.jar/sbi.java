@@ -1,58 +1,91 @@
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.view.ViewGroup;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
-import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView;
-import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
-import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 
 public class sbi
-  extends wps
+  extends sah
+  implements View.OnClickListener
 {
-  private FolderRecommendTabFragment.FolderRecommendHeadItemView jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView;
-  private TopPanelViewNew jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelViewNew;
-  private wjz jdField_a_of_type_Wjz;
+  public scx a;
+  boolean a;
   
-  public sbi(FolderRecommendTabFragment paramFolderRecommendTabFragment, Bundle paramBundle)
+  public sbi(View paramView, BaseData paramBaseData)
   {
-    super(paramBundle);
+    super(paramView, paramBaseData);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Scx = new scx();
+    if (sbh.a()) {
+      paramView.findViewById(2131378776).setVisibility(0);
+    }
+    paramView.findViewById(2131368858).setOnClickListener(this);
+    paramView.findViewById(2131368861).setOnClickListener(this);
+    paramView.findViewById(2131368959).setOnClickListener(this);
+    paramView.findViewById(2131368958).setOnClickListener(this);
   }
   
-  protected BaseWidgetView a(ViewGroup paramViewGroup, woz paramwoz)
+  private void a(ArticleInfo paramArticleInfo, int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView;
+    owy.a().a().a(paramArticleInfo.mArticleContentUrl, paramArticleInfo.innerUniqueID + "", paramArticleInfo.mSubscribeID, paramInt, new sbj(this, paramArticleInfo));
   }
   
-  public void a(Bundle paramBundle)
+  private void a(String paramString, orz paramorz)
   {
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelViewNew = new TopPanelViewNew(a());
-    paramBundle = new FrameLayout.LayoutParams(-1, -2);
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelViewNew.setLayoutParams(paramBundle);
-    this.jdField_a_of_type_Wjz = new wjz(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelViewNew);
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView = new FolderRecommendTabFragment.FolderRecommendHeadItemView(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment, a());
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelViewNew);
-    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelViewNew.setOnHideBtnClickListener(new sbj(this));
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b;
+    if (localArticleInfo == null) {
+      return;
+    }
+    paramorz.b("source", "10");
+    sdn.a(localArticleInfo, paramString, paramorz.a());
   }
   
-  public void a(wpk paramwpk)
+  public void a()
   {
-    if ((paramwpk.c()) && (sfe.b()) && (this.jdField_a_of_type_Wjz != null)) {
-      this.jdField_a_of_type_Wjz.b();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      a("0X80095EF", new orz());
     }
   }
   
-  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean) {}
+  
+  public void onClick(View paramView)
   {
-    super.onDetachedFromRecyclerView(paramRecyclerView);
-    if (this.jdField_a_of_type_Wjz != null) {
-      this.jdField_a_of_type_Wjz.c();
+    ArticleInfo localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.b;
+    if (localArticleInfo == null) {
+      return;
+    }
+    Object localObject = "";
+    switch (paramView.getId())
+    {
+    default: 
+      paramView = (View)localObject;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131378776).setVisibility(8);
+      localObject = new orz();
+      ((orz)localObject).b("sourceFrom", paramView);
+      a("0X80095F0", (orz)localObject);
+      return;
+      a(localArticleInfo, 2);
+      paramView = "1";
+      continue;
+      a(localArticleInfo, 3);
+      paramView = "2";
+      continue;
+      a(localArticleInfo, 4);
+      paramView = "3";
+      continue;
+      a(localArticleInfo, 5);
+      paramView = "4";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     sbi
  * JD-Core Version:    0.7.0.1
  */

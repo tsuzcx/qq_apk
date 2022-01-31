@@ -1,18 +1,23 @@
-import java.util.ArrayList;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class acyr
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public int a = -1;
-  public acys a;
-  public ArrayList<String> a;
-  public boolean a;
-  public int b = -1;
-  public ArrayList<acyt> b;
-  public int c = -1;
+  public acyr(GeneralSettingActivity paramGeneralSettingActivity) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    bajd.a(paramBoolean);
+    if (paramBoolean) {
+      bajd.a(new acys(this.a.jdField_a_of_type_Adto, this.a.jdField_a_of_type_AndroidViewView));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acyr
  * JD-Core Version:    0.7.0.1
  */

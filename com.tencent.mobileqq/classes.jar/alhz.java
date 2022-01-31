@@ -1,20 +1,20 @@
-import android.graphics.RectF;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 
 public class alhz
+  implements DialogInterface.OnClickListener
 {
-  public double a;
-  public RectF a;
-  public String a;
-  public boolean a;
-  public byte[] a;
-  public String b;
-  public boolean b;
-  public String c;
-  public String d;
+  public alhz(ApolloPanel paramApolloPanel) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.n();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     alhz
  * JD-Core Version:    0.7.0.1
  */

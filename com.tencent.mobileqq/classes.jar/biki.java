@@ -1,14 +1,21 @@
-import android.graphics.Bitmap;
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public abstract interface biki
+class biki
+  implements FilenameFilter
 {
-  public abstract void a(Bitmap paramBitmap);
+  biki(bikh parambikh) {}
   
-  public abstract void b(int paramInt);
+  public boolean accept(File paramFile, String paramString)
+  {
+    return (paramFile != null) && (paramFile.isDirectory()) && (bikh.a(this.a).matcher(paramString).matches());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     biki
  * JD-Core Version:    0.7.0.1
  */

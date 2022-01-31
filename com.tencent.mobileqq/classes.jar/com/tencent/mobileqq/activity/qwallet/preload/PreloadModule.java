@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
-import ahby;
-import ahiw;
+import aiwc;
+import ajaf;
 import android.net.Uri;
 import android.text.TextUtils;
-import bbwt;
+import bdvu;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.app.AppRuntime;
-import mzb;
+import nbv;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -75,7 +75,7 @@ public class PreloadModule
       paramString.printStackTrace();
       return;
     }
-    mzb.b(paramString, paramAppRuntime, true, new ahby(this));
+    nbv.b(paramString, paramAppRuntime, true, new aiwc(this));
   }
   
   private boolean a(String paramString)
@@ -90,29 +90,29 @@ public class PreloadModule
     PreloadModule localPreloadModule = new PreloadModule();
     for (;;)
     {
-      Object localObject;
       try
       {
         if (paramJSONObject.optInt("back_control") != 1) {
-          break label249;
+          break label248;
         }
         bool1 = true;
         localPreloadModule.mBackControl = bool1;
-        if (paramBoolean) {
-          localPreloadModule.mBackControl = false;
+        if (!paramBoolean) {
+          break label240;
         }
-        if (paramInt == 2)
+        localPreloadModule.mBackControl = false;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
+      Object localObject = paramJSONObject.optString("module_id");
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localPreloadModule.mid = localPreloadModule.name;
+        localPreloadModule.option = paramJSONObject.optInt("option");
+        if (paramJSONObject.optInt("forbid_download") == 1)
         {
-          localPreloadModule.name = "2020_red_packet";
-          localObject = paramJSONObject.optString("module_id");
-          if (!TextUtils.isEmpty((CharSequence)localObject)) {
-            break label233;
-          }
-          localPreloadModule.mid = localPreloadModule.name;
-          localPreloadModule.option = paramJSONObject.optInt("option");
-          if (paramJSONObject.optInt("forbid_download") != 1) {
-            break label243;
-          }
           bool1 = bool2;
           localPreloadModule.isForbidAutoDownload = bool1;
           localPreloadModule.mBaseUrl = paramJSONObject.optString("url_base");
@@ -126,27 +126,26 @@ public class PreloadModule
             localPreloadModule.mPreloadResources.add(localObject);
             i += 1;
             continue;
+            localPreloadModule.name = paramJSONObject.optString("module_name");
+            continue;
           }
+          return localPreloadModule;
         }
-        else
-        {
-          localPreloadModule.name = paramJSONObject.optString("module_name");
-          continue;
-        }
-        return localPreloadModule;
       }
-      catch (Exception paramJSONObject)
+      else
       {
-        paramJSONObject.printStackTrace();
+        localPreloadModule.mid = ((String)localObject);
+        continue;
       }
-      label233:
-      localPreloadModule.mid = ((String)localObject);
-      continue;
-      label243:
       boolean bool1 = false;
       continue;
-      label249:
-      bool1 = false;
+      label240:
+      if (paramInt == 2)
+      {
+        continue;
+        label248:
+        bool1 = false;
+      }
     }
   }
   
@@ -185,7 +184,7 @@ public class PreloadModule
     }
   }
   
-  public void downloadModule(boolean paramBoolean1, bbwt parambbwt, PreloadManager paramPreloadManager, boolean paramBoolean2)
+  public void downloadModule(boolean paramBoolean1, bdvu parambdvu, PreloadManager paramPreloadManager, boolean paramBoolean2)
   {
     if (this.name.equals("wallet_offline")) {
       handleHtmlOffline(paramPreloadManager.a);
@@ -204,9 +203,9 @@ public class PreloadModule
             localPreloadResource.deleteResFile(this, paramPreloadManager, 6);
             this.mPreloadResources.remove(localPreloadResource);
           }
-          else if (localPreloadResource.isTimeToDownload(paramPreloadManager, this))
+          else if ((localPreloadResource.isAbiMatch()) && (localPreloadResource.isTimeToDownload(paramPreloadManager)))
           {
-            localPreloadResource.startDownload(paramPreloadManager, this, parambbwt, paramBoolean2);
+            localPreloadResource.startDownload(paramPreloadManager, this, parambdvu, paramBoolean2);
           }
         }
       }
@@ -272,7 +271,7 @@ public class PreloadModule
     while (localIterator.hasNext())
     {
       PreloadResource localPreloadResource = (PreloadResource)localIterator.next();
-      if (ahiw.c(localPreloadResource.mResId, paramString)) {
+      if (ajaf.c(localPreloadResource.mResId, paramString)) {
         return localPreloadResource;
       }
     }
@@ -304,7 +303,7 @@ public class PreloadModule
   {
     boolean bool2 = false;
     boolean bool1;
-    if (!ahiw.c(this.mid, paramPreloadModule.mid))
+    if (!ajaf.c(this.mid, paramPreloadModule.mid))
     {
       bool1 = true;
       return bool1;
@@ -312,7 +311,7 @@ public class PreloadModule
     if (this.mBackControl != paramPreloadModule.mBackControl) {
       return true;
     }
-    if (!ahiw.c(this.name, paramPreloadModule.name)) {
+    if (!ajaf.c(this.name, paramPreloadModule.name)) {
       return true;
     }
     if (this.option != paramPreloadModule.option) {
@@ -327,7 +326,7 @@ public class PreloadModule
     if (this.mRetryCount != paramPreloadModule.mRetryCount) {
       return true;
     }
-    if (!ahiw.c(this.mBaseUrl, paramPreloadModule.mBaseUrl)) {
+    if (!ajaf.c(this.mBaseUrl, paramPreloadModule.mBaseUrl)) {
       return true;
     }
     List localList = getResList();
@@ -433,13 +432,14 @@ public class PreloadModule
         localPreloadResource2.mUnzipPrefix = localPreloadResource1.mUnzipPrefix;
         localPreloadResource2.mFromType = localPreloadResource1.mFromType;
         localPreloadResource2.mFilePos = localPreloadResource1.mFilePos;
+        localPreloadResource2.mAbi = localPreloadResource1.mAbi;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadModule
  * JD-Core Version:    0.7.0.1
  */

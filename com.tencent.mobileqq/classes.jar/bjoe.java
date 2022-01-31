@@ -1,23 +1,25 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
-
-class bjoe
-  implements ThreadFactory
+public abstract class bjoe<T, P>
 {
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private volatile T a;
   
-  bjoe(bjod parambjod) {}
+  protected abstract T a(P paramP);
   
-  public Thread newThread(Runnable paramRunnable)
+  public final T b(P paramP)
   {
-    paramRunnable = new Thread(paramRunnable);
-    paramRunnable.setName(String.format("arch_disk_io_%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement()) }));
-    return paramRunnable;
+    if (this.a == null) {}
+    try
+    {
+      if (this.a == null) {
+        this.a = a(paramP);
+      }
+      return this.a;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bjoe
  * JD-Core Version:    0.7.0.1
  */

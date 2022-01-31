@@ -1,18 +1,16 @@
-import java.util.ArrayList;
-
-public final class tlc
-  extends ssh
+public abstract interface tlc
 {
-  public int a;
-  public long a;
-  public String a;
-  public ArrayList<Integer> a;
-  public int b;
-  public String b;
+  public abstract void a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tlc
  * JD-Core Version:    0.7.0.1
  */

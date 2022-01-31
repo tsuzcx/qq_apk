@@ -1,160 +1,173 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.TextPaint;
-import android.view.Window;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.downloadnew.MyAppDialog.1;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import java.util.Arrays;
 
-public class bdmf
-  extends Dialog
+class bdmf
 {
-  public ProgressBar a;
-  TextView a;
-  protected final WeakReference<Activity> a;
-  TextView b;
-  public TextView c;
-  TextView d;
-  public TextView e;
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g;
+  private int h;
+  private int i;
   
-  public bdmf(Activity paramActivity)
+  bdmf(bdmd parambdmd, int paramInt1, int paramInt2)
   {
-    super(paramActivity);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
-    requestWindowFeature(1);
-    paramActivity = new ColorDrawable();
-    paramActivity.setAlpha(0);
-    getWindow().setBackgroundDrawable(paramActivity);
-    setContentView(2131559472);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    a();
   }
   
-  public Activity a()
+  final int a()
   {
-    Activity localActivity2 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Activity localActivity1 = localActivity2;
-    if (localActivity2 == null) {
-      localActivity1 = null;
+    return (this.e - this.d + 1) * (this.g - this.f + 1) * (this.i - this.h + 1);
+  }
+  
+  final bdmf a()
+  {
+    if (!a()) {
+      throw new IllegalStateException("Can not split a box with only 1 color");
     }
-    return localActivity1;
+    int j = d();
+    bdmf localbdmf = new bdmf(this.jdField_a_of_type_Bdmd, j + 1, this.b);
+    this.b = j;
+    a();
+    return localbdmf;
   }
   
-  public bdmf a(int paramInt)
+  final bdmm a()
   {
-    this.b.setTextColor(paramInt);
-    return this;
-  }
-  
-  public bdmf a(int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    if (paramOnClickListener == null)
+    int i1 = 0;
+    int[] arrayOfInt1 = this.jdField_a_of_type_Bdmd.a;
+    int[] arrayOfInt2 = this.jdField_a_of_type_Bdmd.b;
+    int n = this.jdField_a_of_type_Int;
+    int j = 0;
+    int k = 0;
+    int m = 0;
+    while (n <= this.b)
     {
-      this.c.setVisibility(8);
-      return this;
+      int i2 = arrayOfInt1[n];
+      int i3 = arrayOfInt2[i2];
+      i1 += i3;
+      m += bdmd.a(i2) * i3;
+      k += bdmd.b(i2) * i3;
+      j += bdmd.c(i2) * i3;
+      n += 1;
     }
-    this.c.setText(paramInt1);
-    this.c.setTextColor(paramInt2);
-    this.c.setVisibility(0);
-    this.c.setOnClickListener(new bdmh(this, paramOnClickListener, paramInt1, paramBoolean));
-    return this;
+    return new bdmm(bdmd.a(Math.round(m / i1), Math.round(k / i1), Math.round(j / i1)), i1);
   }
   
-  public bdmf a(int paramInt, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
+  final void a()
   {
-    if (paramOnClickListener == null)
+    int[] arrayOfInt1 = this.jdField_a_of_type_Bdmd.a;
+    int[] arrayOfInt2 = this.jdField_a_of_type_Bdmd.b;
+    int n = -2147483648;
+    int i5 = 0;
+    int m = this.jdField_a_of_type_Int;
+    int i6 = -2147483648;
+    int j = 2147483647;
+    int k = 2147483647;
+    int i3 = 2147483647;
+    int i2 = -2147483648;
+    while (m <= this.b)
     {
-      this.c.setVisibility(8);
-      return this;
+      int i1 = arrayOfInt1[m];
+      int i9 = i5 + arrayOfInt2[i1];
+      int i8 = bdmd.a(i1);
+      int i7 = bdmd.b(i1);
+      i5 = bdmd.c(i1);
+      i1 = i6;
+      if (i8 > i6) {
+        i1 = i8;
+      }
+      int i4 = i3;
+      if (i8 < i3) {
+        i4 = i8;
+      }
+      i3 = i2;
+      if (i7 > i2) {
+        i3 = i7;
+      }
+      i8 = k;
+      if (i7 < k) {
+        i8 = i7;
+      }
+      i2 = n;
+      if (i5 > n) {
+        i2 = i5;
+      }
+      k = j;
+      if (i5 < j) {
+        k = i5;
+      }
+      m += 1;
+      i5 = i9;
+      n = i2;
+      i2 = i3;
+      i6 = i1;
+      j = k;
+      k = i8;
+      i3 = i4;
     }
-    this.c.setText(paramInt);
-    this.c.setVisibility(0);
-    this.c.setOnClickListener(new bdmg(this, paramOnClickListener, paramInt, paramBoolean));
-    return this;
+    this.d = i3;
+    this.e = i6;
+    this.f = k;
+    this.g = i2;
+    this.h = j;
+    this.i = n;
+    this.c = i5;
   }
   
-  public bdmf a(String paramString)
+  final boolean a()
   {
-    if (paramString != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    return b() > 1;
+  }
+  
+  final int b()
+  {
+    return this.b + 1 - this.jdField_a_of_type_Int;
+  }
+  
+  final int c()
+  {
+    int j = this.e - this.d;
+    int k = this.g - this.f;
+    int m = this.i - this.h;
+    if ((j >= k) && (j >= m)) {
+      return -3;
     }
-    return this;
+    if ((k >= j) && (k >= m)) {
+      return -2;
+    }
+    return -1;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  final int d()
   {
-    ThreadManager.getUIHandler().post(new MyAppDialog.1(this, paramInt1, paramInt2));
-  }
-  
-  public void a(Drawable paramDrawable)
-  {
-    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgressDrawable(paramDrawable);
-  }
-  
-  public bdmf b(int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    if (paramOnClickListener == null)
+    int j = c();
+    int[] arrayOfInt1 = this.jdField_a_of_type_Bdmd.a;
+    int[] arrayOfInt2 = this.jdField_a_of_type_Bdmd.b;
+    bdmd.a(arrayOfInt1, j, this.jdField_a_of_type_Int, this.b);
+    Arrays.sort(arrayOfInt1, this.jdField_a_of_type_Int, this.b + 1);
+    bdmd.a(arrayOfInt1, j, this.jdField_a_of_type_Int, this.b);
+    int m = this.c / 2;
+    j = this.jdField_a_of_type_Int;
+    int k = 0;
+    while (j <= this.b)
     {
-      this.d.setVisibility(8);
-      return this;
+      k += arrayOfInt2[arrayOfInt1[j]];
+      if (k >= m) {
+        return Math.min(this.b - 1, j);
+      }
+      j += 1;
     }
-    this.d.setText(paramInt1);
-    this.d.setTextColor(paramInt2);
-    this.d.setVisibility(0);
-    this.d.setOnClickListener(new bdmj(this, paramOnClickListener, paramInt1, paramBoolean));
-    return this;
-  }
-  
-  public bdmf b(int paramInt, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean)
-  {
-    if (paramOnClickListener == null)
-    {
-      this.d.setVisibility(8);
-      return this;
-    }
-    this.d.setText(paramInt);
-    this.d.setVisibility(0);
-    this.d.setOnClickListener(new bdmi(this, paramOnClickListener, paramInt, paramBoolean));
-    return this;
-  }
-  
-  public bdmf b(String paramString)
-  {
-    if (paramString != null) {
-      this.b.setText(paramString);
-    }
-    return this;
-  }
-  
-  public void dismiss()
-  {
-    try
-    {
-      super.dismiss();
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public void setContentView(int paramInt)
-  {
-    super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365150));
-    this.b = ((TextView)findViewById(2131365146));
-    this.c = ((TextView)findViewById(2131365135));
-    this.c.getPaint().setFakeBoldText(true);
-    this.d = ((TextView)findViewById(2131365141));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131371995));
-    this.e = ((TextView)findViewById(2131372021));
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdmf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.device.msg.data;
 
-import awzy;
+import ayvc;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.data.MessageRecord;
-import yer;
+import ztk;
 
 public class DeviceMsgHandle$3
   implements Runnable
 {
-  public DeviceMsgHandle$3(yer paramyer, MessageRecord paramMessageRecord) {}
+  public DeviceMsgHandle$3(ztk paramztk, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
@@ -19,7 +19,7 @@ public class DeviceMsgHandle$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceMsgHandle.3
  * JD-Core Version:    0.7.0.1
  */

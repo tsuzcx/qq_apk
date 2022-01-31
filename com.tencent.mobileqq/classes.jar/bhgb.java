@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastOneShow;
+import android.media.MediaRecorder;
+import android.media.MediaRecorder.OnErrorListener;
+import android.util.Log;
+import com.tencent.qqmini.sdk.runtime.widget.camera.MiniAppCamera;
 
-public final class bhgb
-  implements Parcelable.Creator<BroadcastOneShow>
+public class bhgb
+  implements MediaRecorder.OnErrorListener
 {
-  public BroadcastOneShow a(Parcel paramParcel)
-  {
-    return new BroadcastOneShow(paramParcel);
-  }
+  public bhgb(MiniAppCamera paramMiniAppCamera, bgkd parambgkd) {}
   
-  public BroadcastOneShow[] a(int paramInt)
+  public void onError(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
   {
-    return new BroadcastOneShow[paramInt];
+    Log.i("MiniAppCamera", "onError: " + paramInt1);
+    this.jdField_a_of_type_Bgkd.b();
+    MiniAppCamera.a(this.jdField_a_of_type_ComTencentQqminiSdkRuntimeWidgetCameraMiniAppCamera);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhgb
  * JD-Core Version:    0.7.0.1
  */

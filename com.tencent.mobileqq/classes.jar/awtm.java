@@ -1,265 +1,122 @@
-import android.content.Context;
-import android.os.Environment;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 public class awtm
 {
-  private static volatile awtm jdField_a_of_type_Awtm;
-  public static final String a;
-  private Map<Integer, awsv> jdField_a_of_type_JavaUtilMap = new HashMap();
-  private boolean jdField_a_of_type_Boolean = true;
-  private Map<Integer, awtf> b = new HashMap();
+  private static int jdField_a_of_type_Int = 5;
+  private static long jdField_a_of_type_Long;
+  private static String jdField_a_of_type_JavaLangString = awtm.class.getSimpleName();
+  private static ArrayList<awtn> jdField_a_of_type_JavaUtilArrayList;
   
   static
   {
-    jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory() + File.separator + "ArkApp";
+    jdField_a_of_type_Long = 60000L;
   }
   
-  private awtc a(int paramInt)
+  public static bica a()
   {
-    awtc localawtc2 = c(paramInt);
-    awtc localawtc1 = localawtc2;
-    if (localawtc2 == null) {
-      localawtc1 = b(paramInt);
-    }
-    return localawtc1;
-  }
-  
-  public static awtm a()
-  {
-    if (jdField_a_of_type_Awtm == null) {}
     try
     {
-      if (jdField_a_of_type_Awtm == null)
-      {
-        jdField_a_of_type_Awtm = new awtm();
-        jdField_a_of_type_Awtm.b();
+      if (jdField_a_of_type_JavaUtilArrayList == null) {
+        jdField_a_of_type_JavaUtilArrayList = new ArrayList();
       }
-      return jdField_a_of_type_Awtm;
+      Object localObject3 = b();
+      Object localObject1 = localObject3;
+      if (localObject3 == null)
+      {
+        localObject3 = new awtl();
+        ((bica)localObject3).a();
+        jdField_a_of_type_JavaUtilArrayList.add(new awtn((bica)localObject3));
+        localObject1 = localObject3;
+        if (QLog.isColorLevel())
+        {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "can't find sscm object, add new one, size= " + jdField_a_of_type_JavaUtilArrayList.size());
+          localObject1 = localObject3;
+        }
+      }
+      return localObject1;
     }
     finally {}
   }
   
-  private void a(List<awtf> arg1, List<awsv> paramList1)
+  public static void a()
   {
-    if (??? != null)
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("RichNodeFactory", 2, "updateConfig， nativesize :" + ???.size());
-      }
-      synchronized (this.b)
-      {
-        this.b.clear();
-        ??? = ???.iterator();
-        if (???.hasNext())
-        {
-          awtf localawtf = (awtf)???.next();
-          this.b.put(Integer.valueOf(localawtf.a()), localawtf);
-        }
-      }
-    }
-    for (;;)
-    {
-      if (paramList1 == null) {
-        break label264;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("RichNodeFactory", 2, "updateConfig， arksize:" + paramList1.size());
-      }
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
-      {
-        this.jdField_a_of_type_JavaUtilMap.clear();
-        paramList1 = paramList1.iterator();
-        if (!paramList1.hasNext()) {
-          break;
-        }
-        ??? = (awsv)paramList1.next();
-        this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(((awsv)???).a()), ???);
-      }
-      synchronized (this.b)
-      {
-        this.b.clear();
-        if (QLog.isColorLevel()) {
-          QLog.d("RichNodeFactory", 2, "updateConfig， nativesize = 0");
-        }
-      }
-    }
-    for (;;)
-    {
+      jdField_a_of_type_JavaUtilArrayList = null;
       return;
-      label264:
-      synchronized (this.jdField_a_of_type_JavaUtilMap)
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void a(bica parambica)
+  {
+    for (;;)
+    {
+      awtn localawtn;
+      try
       {
-        this.jdField_a_of_type_JavaUtilMap.clear();
-        if (!QLog.isColorLevel()) {
+        Object localObject = jdField_a_of_type_JavaUtilArrayList;
+        if (localObject == null) {}else {
+          localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
+        }
+        if (!((Iterator)localObject).hasNext()) {
           continue;
         }
-        QLog.d("RichNodeFactory", 2, "updateConfig， arksize = 0");
-        return;
-      }
-    }
-  }
-  
-  private awtc b(int paramInt)
-  {
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      awsv localawsv = (awsv)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      if (localawsv != null) {
-        return new awta(localawsv);
-      }
-    }
-    return null;
-  }
-  
-  private void b()
-  {
-    c();
-  }
-  
-  private awtc c(int paramInt)
-  {
-    if (paramInt == 101) {
-      return new awth();
-    }
-    return null;
-  }
-  
-  private void c()
-  {
-    ArrayList localArrayList = null;
-    Object localObject1 = anar.a();
-    if (localObject1 == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RichNodeFactory", 2, "initConfig , config is null");
-      }
-      return;
-    }
-    this.jdField_a_of_type_Boolean = ((anar)localObject1).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RichNodeFactory", 2, "mRichSwitchOn :" + this.jdField_a_of_type_Boolean);
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      a(null, null);
-      return;
-    }
-    Object localObject2 = ((anar)localObject1).a("ark");
-    Object localObject3 = ((anar)localObject1).a("native");
-    if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0))
-    {
-      localObject1 = new ArrayList();
-      localObject2 = ((ArrayList)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        anas localanas = (anas)((Iterator)localObject2).next();
-        ((List)localObject1).add(new awsv(localanas.a, localanas.b, localanas.c, localanas.d, "", null));
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localArrayList;
-      if (localObject3 != null)
-      {
-        localObject2 = localArrayList;
-        if (((ArrayList)localObject3).size() > 0)
-        {
-          localArrayList = new ArrayList();
-          localObject3 = ((ArrayList)localObject3).iterator();
-          for (;;)
-          {
-            localObject2 = localArrayList;
-            if (!((Iterator)localObject3).hasNext()) {
-              break;
-            }
-            localArrayList.add(new awtf(((anas)((Iterator)localObject3).next()).a));
-          }
+        localawtn = (awtn)((Iterator)localObject).next();
+        if (parambica != localawtn.jdField_a_of_type_Bica) {
+          continue;
         }
-      }
-      a((List)localObject2, (List)localObject1);
-      return;
-      localObject1 = null;
-    }
-  }
-  
-  public awtc a(QQAppInterface paramQQAppInterface, Context paramContext, awog paramawog)
-  {
-    Object localObject1 = null;
-    if (paramawog == null) {}
-    Object localObject2;
-    String str1;
-    String str2;
-    do
-    {
-      int i;
-      do
-      {
-        do
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "return sscm, current size=" + jdField_a_of_type_JavaUtilArrayList.size());
+        }
+        if (jdField_a_of_type_JavaUtilArrayList.size() > jdField_a_of_type_Int)
         {
-          return localObject1;
-        } while (!(paramawog instanceof awpo));
-        localObject2 = (awpo)paramawog;
-        i = ((awpo)localObject2).f();
-        paramawog = a(i);
-        localObject1 = paramawog;
-      } while (paramawog == null);
-      str1 = ((awpo)localObject2).c();
-      str2 = ((awpo)localObject2).e();
-      localObject2 = ((awpo)localObject2).d();
-      paramawog.a(paramQQAppInterface, paramContext, i, str1, (String)localObject2, str2);
-      localObject1 = paramawog;
-    } while (!QLog.isColorLevel());
-    QLog.d("RichNodeFactory", 2, "create, data:" + str1 + " config:" + str2 + " extradata:" + (String)localObject2);
-    return paramawog;
+          ((Iterator)localObject).remove();
+          continue;
+        }
+        localawtn.jdField_a_of_type_Boolean = false;
+      }
+      finally {}
+      localawtn.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    }
   }
   
-  public void a()
+  private static bica b()
   {
-    c();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichNodeFactory", 2, "nodeExist， id:" + paramInt);
+    if (jdField_a_of_type_JavaUtilArrayList == null) {
+      return null;
     }
-    if (!this.jdField_a_of_type_Boolean)
+    Object localObject = jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("RichNodeFactory", 2, "nodeExist， switch off");
-      }
-      return false;
-    }
-    synchronized (this.b)
-    {
-      if (this.b.get(Integer.valueOf(paramInt)) != null) {
-        return true;
-      }
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      awsv localawsv = (awsv)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      if (localawsv != null)
+      awtn localawtn = (awtn)((Iterator)localObject).next();
+      if (!localawtn.jdField_a_of_type_Boolean)
       {
-        return true;
-        localObject1 = finally;
-        throw localObject1;
+        localObject = localawtn.jdField_a_of_type_Bica;
+        localawtn.jdField_a_of_type_Boolean = true;
+        long l = SystemClock.elapsedRealtime();
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "query for sscm, get one expired:" + (l - localawtn.jdField_a_of_type_Long));
+        }
+        if (l - localawtn.jdField_a_of_type_Long > jdField_a_of_type_Long) {
+          localawtn.jdField_a_of_type_Bica.a();
+        }
+        return localObject;
       }
     }
-    return false;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awtm
  * JD-Core Version:    0.7.0.1
  */

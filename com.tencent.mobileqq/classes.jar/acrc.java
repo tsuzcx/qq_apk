@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acrc
-  extends akjy
+class acrc
+  implements DialogInterface.OnClickListener
 {
-  public acrc(ActivateFriendActivity paramActivateFriendActivity) {}
+  acrc(acrb paramacrb) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.MainActivity", 2, "onReceiveBirthDayPushUpdate");
-    }
-    ActivateFriendActivity.b(this.a);
+    bdqe.a(this.a.a, "mvip.g.a.qnc_gc", "CJCLUBT", -1, false, true);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acrc
  * JD-Core Version:    0.7.0.1
  */

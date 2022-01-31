@@ -1,21 +1,12 @@
-class awfn
-  implements bbse
+public class awfn
 {
-  awfn(awfm paramawfm) {}
-  
-  public void a()
-  {
-    this.a.l();
-    this.a.h();
-  }
-  
-  public void b() {}
-  
-  public void c() {}
+  public long a;
+  public long b;
+  public long c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     awfn
  * JD-Core Version:    0.7.0.1
  */

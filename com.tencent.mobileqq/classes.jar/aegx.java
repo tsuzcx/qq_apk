@@ -1,38 +1,103 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import java.io.File;
+import SummaryCardTaf.SSummaryCardRsp;
+import android.annotation.TargetApi;
+import android.os.Message;
+import android.util.Pair;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class aegx
-  implements bfph
+public class aegx
+  extends allb
 {
-  aegx(aegs paramaegs, bfpc parambfpc, AIOImageData paramAIOImageData, File paramFile) {}
+  public aegx(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  @TargetApi(9)
+  public void onSetCardTemplateReturn(boolean paramBoolean, Object paramObject)
   {
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("VipProfileCardDiyActivity", 2, "CardObserver onSetCardTemplateReturn isSuccess : " + paramBoolean + ", obj : " + paramObject);
     }
-    paramView = this.jdField_a_of_type_Bfpc.a(paramInt);
-    if (paramView == null)
-    {
-      this.jdField_a_of_type_Bfpc.dismiss();
-      return;
+    this.a.b.set(false);
+    this.a.a.removeMessages(6);
+    this.a.i();
+    if ((paramBoolean) && (paramObject != null)) {
+      if ((paramObject instanceof Card)) {
+        ThreadManager.post(new VipProfileCardDiyActivity.4.1(this, (Card)paramObject), 5, null, true);
+      }
     }
-    if (TextUtils.isEmpty(paramView))
+    for (;;)
     {
-      this.jdField_a_of_type_Bfpc.dismiss();
+      this.a.f = null;
+      this.a.j = 0;
       return;
+      if ((paramObject instanceof Pair))
+      {
+        paramObject = (Pair)paramObject;
+        QLog.e("VipProfileCardDiyActivity", 1, "set diy card failed, code=" + paramObject.first + ", msg=" + ((SSummaryCardRsp)paramObject.second).emsg);
+        if (((Integer)paramObject.first).intValue() == 101107)
+        {
+          this.a.n = 1;
+          this.a.a.obtainMessage(2, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
+          if (VipUtils.c(this.a.app)) {}
+          for (paramObject = "3";; paramObject = "2")
+          {
+            VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
+            break;
+          }
+        }
+        if (((Integer)paramObject.first).intValue() == 101108)
+        {
+          this.a.n = 2;
+          this.a.a.obtainMessage(2, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
+          if (VipUtils.b(this.a.app)) {}
+          for (paramObject = "3";; paramObject = "2")
+          {
+            VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
+            break;
+          }
+        }
+        if (((Integer)paramObject.first).intValue() == 401019)
+        {
+          this.a.a.obtainMessage(8, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
+        }
+        else if (((Integer)paramObject.first).intValue() == 401020)
+        {
+          this.a.a.obtainMessage(7, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
+        }
+        else
+        {
+          if (((Integer)paramObject.first).intValue() == 401009)
+          {
+            this.a.n = 2;
+            this.a.a.obtainMessage(2, ((SSummaryCardRsp)paramObject.second).emsg).sendToTarget();
+            if (VipUtils.b(this.a.app)) {}
+            for (paramObject = "3";; paramObject = "2")
+            {
+              VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
+              break;
+            }
+          }
+          Message localMessage = this.a.a.obtainMessage(1);
+          if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999)) {
+            localMessage.obj = ((SSummaryCardRsp)paramObject.second).emsg;
+          }
+          this.a.a.sendMessage(localMessage);
+          continue;
+          paramObject = this.a.a.obtainMessage(1);
+          this.a.a.sendMessage(paramObject);
+        }
+      }
     }
-    if (this.jdField_a_of_type_Aegs.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
-    this.jdField_a_of_type_Bfpc.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aegx
  * JD-Core Version:    0.7.0.1
  */

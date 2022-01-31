@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.readinjoy.engine;
 
-import ajsd;
-import aktf;
+import aljq;
+import amjk;
+import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
@@ -13,8 +13,8 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import java.util.Calendar;
 import mqq.os.MqqHandler;
-import nol;
-import onh;
+import nrt;
+import ors;
 
 public class KandianDailyManager$DailySetTopInfo
   implements Serializable
@@ -59,7 +59,7 @@ public class KandianDailyManager$DailySetTopInfo
     if (paramQQAppInterface == null) {}
     MessageRecord localMessageRecord;
     long l;
-    aktf localaktf;
+    amjk localamjk;
     RecentUser localRecentUser;
     do
     {
@@ -69,26 +69,26 @@ public class KandianDailyManager$DailySetTopInfo
         {
           return;
         } while (!a());
-        localMessageRecord = paramQQAppInterface.a().b(ajsd.aR, 1008);
-        if ((localMessageRecord == null) || (localMessageRecord.isread) || (onh.b(ajsd.aR)) || (localMessageRecord.uniseq == this.lastSetTopMsgUniseq)) {
+        localMessageRecord = paramQQAppInterface.a().b(aljq.aS, 1008);
+        if ((localMessageRecord == null) || (localMessageRecord.isread) || (ors.b(aljq.aS)) || (localMessageRecord.uniseq == this.lastSetTopMsgUniseq)) {
           break;
         }
         l = NetConnInfoCenter.getServerTime();
-        localaktf = paramQQAppInterface.a().a();
-      } while (localaktf == null);
-      localRecentUser = localaktf.b(ajsd.aR, 1008);
+        localamjk = paramQQAppInterface.a().a();
+      } while (localamjk == null);
+      localRecentUser = localamjk.b(aljq.aS, 1008);
     } while (localRecentUser == null);
     localRecentUser.lastmsgtime = l;
-    paramQQAppInterface.a().a(ajsd.aR, 1008, localMessageRecord.uniseq, "time", Long.valueOf(l));
-    localaktf.a(localRecentUser);
+    paramQQAppInterface.a().a(aljq.aS, 1008, localMessageRecord.uniseq, "time", Long.valueOf(l));
+    localamjk.a(localRecentUser);
     paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
     if (paramQQAppInterface != null) {
       paramQQAppInterface.sendEmptyMessage(1009);
     }
     this.lastSetTopMsgUniseq = localMessageRecord.uniseq;
     this.lastSetTopMsgTime = a();
-    onh.a("readinjoy_daily_settop_info_key", this, true);
-    nol.a(null, "CliOper", "", "", "0X8007927", "0X8007927", 0, 0, "", "", "", "");
+    ors.a("readinjoy_daily_settop_info_key", this, true);
+    nrt.a(null, "CliOper", "", "", "0X8007927", "0X8007927", 0, 0, "", "", "", "");
     QLog.d("KandianDailyManager", 2, "successful setTop !  " + this);
     return;
     QLog.d("KandianDailyManager", 2, "give up setTop!");
@@ -96,7 +96,7 @@ public class KandianDailyManager$DailySetTopInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.engine.KandianDailyManager.DailySetTopInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import ajya;
-import bbbr;
+import alpo;
+import bdal;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForVideo
@@ -54,7 +54,7 @@ public class MessageForVideo
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d("MessageForVideo", 2, "java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg byte " + bbbr.a(this.msg));
+        QLog.d("MessageForVideo", 2, "java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg byte " + bdal.a(this.msg));
         continue;
       }
       label230:
@@ -70,7 +70,7 @@ public class MessageForVideo
         if (!bool1)
         {
           bool1 = bool2;
-          if (!arrayOfString[0].contains(ajya.a(2131706611))) {}
+          if (!arrayOfString[0].contains(alpo.a(2131706983))) {}
         }
         else
         {
@@ -93,7 +93,7 @@ public class MessageForVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForVideo
  * JD-Core Version:    0.7.0.1
  */

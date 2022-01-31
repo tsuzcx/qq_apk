@@ -1,37 +1,45 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.listentogether.player.QQMusicPlayService;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class artq
-  extends BroadcastReceiver
 {
-  private artq(QQMusicPlayService paramQQMusicPlayService) {}
+  private static final String a = aljq.aW + File.separator + "qflutter";
+  private static final String b = BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath() + File.separator + "qflutter-so" + File.separator;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static void a()
   {
-    if (paramIntent != null)
+    if (arof.a(a))
     {
-      QLog.d("QQMusicPlay.QQMusicPlayService", 1, "QQMusicPlayBroadcastReceiver onReceive,action:" + paramIntent.getAction());
-      paramContext = paramIntent.getAction();
-      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("QQMusicPlay_exit_action"))))
+      int i = bdcs.a(a, b, false, true, true);
+      if (i == 0)
       {
-        if (QQMusicPlayService.a(this.a) == null) {
-          break label150;
+        QLog.d("QFlutter.launcher", 4, String.format("checkDebugInstall copy result: %s", new Object[] { Integer.valueOf(i) }));
+        File[] arrayOfFile = new File(b).listFiles();
+        int j = arrayOfFile.length;
+        i = 0;
+        while (i < j)
+        {
+          File localFile = arrayOfFile[i];
+          QLog.d("QFlutter.launcher", 4, String.format("path: %s, time: %s, size: %s byte", new Object[] { localFile.getAbsolutePath(), Long.valueOf(localFile.lastModified()), Long.valueOf(localFile.length()) }));
+          i += 1;
         }
-        QQMusicPlayService.a(this.a).sendEmptyMessage(11);
+        artu.a().a(true, b, true, true);
+        return;
       }
     }
-    return;
-    label150:
-    this.a.stopSelf();
+    artu.a().a(false, b, true, true);
+  }
+  
+  public static boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     artq
  * JD-Core Version:    0.7.0.1
  */

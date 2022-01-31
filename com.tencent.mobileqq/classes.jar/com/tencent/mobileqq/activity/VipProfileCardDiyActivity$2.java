@@ -3,8 +3,8 @@ package com.tencent.mobileqq.activity;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory.Options;
 import android.util.DisplayMetrics;
-import baxi;
-import bfob;
+import bcwc;
+import bhow;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.mobileqq.vas.VasQuickUpdateManager;
 import java.io.File;
@@ -24,9 +24,9 @@ class VipProfileCardDiyActivity$2
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inDensity = 320;
       localOptions.inTargetDensity = this.this$0.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().densityDpi;
-      this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = baxi.a(localFile1.getAbsolutePath(), localOptions);
-      this.this$0.b = baxi.a(localFile2.getAbsolutePath(), localOptions);
-      this.this$0.jdField_a_of_type_Bfob.sendEmptyMessage(9);
+      this.this$0.jdField_a_of_type_AndroidGraphicsBitmap = bcwc.a(localFile1.getAbsolutePath(), localOptions);
+      this.this$0.b = bcwc.a(localFile2.getAbsolutePath(), localOptions);
+      this.this$0.jdField_a_of_type_Bhow.sendEmptyMessage(9);
       this.this$0.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       return;
     }
@@ -35,7 +35,7 @@ class VipProfileCardDiyActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VipProfileCardDiyActivity.2
  * JD-Core Version:    0.7.0.1
  */

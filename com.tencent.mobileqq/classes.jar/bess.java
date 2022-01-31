@@ -1,32 +1,42 @@
-import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.widget.ksong.KSongTextView;
+import com.tencent.mobileqq.widget.ksong.KSongView;
+import cooperation.qwallet.plugin.QwAdapter.IViewHolder;
 
-public abstract class bess
+public class bess
+  implements QwAdapter.IViewHolder<atse>
 {
-  public static final String TAG = "BaselibLoader";
-  protected best mBaselibContent;
+  public KSongTextView a;
   
-  public best getBaselib()
+  public bess(KSongView paramKSongView) {}
+  
+  public void a(int paramInt, View paramView, atse paramatse)
   {
-    return this.mBaselibContent;
-  }
-  
-  public boolean isBaseLibInit()
-  {
-    return (this.mBaselibContent != null) && (this.mBaselibContent.a());
-  }
-  
-  public abstract void loadBaselib(Context paramContext, besu parambesu);
-  
-  public void setBaselib(best parambest)
-  {
-    if ((parambest != null) && (parambest.a())) {
-      this.mBaselibContent = parambest;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView.a();
+    KSongTextView localKSongTextView = this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView;
+    if (TextUtils.isEmpty(paramatse.a)) {}
+    for (paramView = "";; paramView = paramatse.a)
+    {
+      localKSongTextView.setText(paramView);
+      return;
     }
+  }
+  
+  public QwAdapter.IViewHolder clone()
+  {
+    return (QwAdapter.IViewHolder)super.clone();
+  }
+  
+  public View initView(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetKsongKSongTextView = ((KSongTextView)paramView.findViewById(2131373877));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bess
  * JD-Core Version:    0.7.0.1
  */

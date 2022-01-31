@@ -1,52 +1,76 @@
+import NS_COMM.COMM.StCommonExt;
+import NS_MINI_INTERFACE.INTERFACE.StSetAuthsReq;
+import NS_MINI_INTERFACE.INTERFACE.StUserAuthInfo;
+import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qqmini.sdk.log.QMLog;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONObject;
+
 public class bgzu
+  extends bgzp
 {
-  public static final bgzu a;
-  public static final bgzu b;
-  public static final bgzu c;
-  public static final bgzu d = new bgzu(false, ajya.a(2131712481), false, true);
-  public static final bgzu e = new bgzu(false, ajya.a(2131712489), false, true);
-  public static final bgzu f = new bgzu(false, ajya.a(2131712493), true, true);
-  public static final bgzu g = new bgzu(false, ajya.a(2131712505), true, true);
-  public static final bgzu h = new bgzu(false, ajya.a(2131712466), false, true);
-  public static final bgzu i = new bgzu(false, ajya.a(2131712555), true, true);
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
-  private boolean b;
-  private boolean c;
+  private INTERFACE.StSetAuthsReq a = new INTERFACE.StSetAuthsReq();
   
-  static
+  public bgzu(COMM.StCommonExt paramStCommonExt, String paramString, INTERFACE.StUserAuthInfo paramStUserAuthInfo)
   {
-    jdField_a_of_type_Bgzu = new bgzu(true, ajya.a(2131712522), false, false);
-    jdField_b_of_type_Bgzu = new bgzu(false, "CPU指令集不支持", false, true);
-    jdField_c_of_type_Bgzu = new bgzu(false, ajya.a(2131712506), false, true);
+    this.a.appid.set(paramString);
+    if (paramStUserAuthInfo != null)
+    {
+      paramString = new ArrayList();
+      paramString.add(paramStUserAuthInfo);
+      this.a.auths.set(paramString);
+    }
+    if (paramStCommonExt != null) {
+      this.a.extInfo.set(paramStCommonExt);
+    }
   }
   
-  bgzu(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  protected String a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Boolean = paramBoolean2;
-    this.jdField_c_of_type_Boolean = paramBoolean3;
+    return "mini_user_info";
   }
   
-  public String a()
+  public JSONObject a(byte[] paramArrayOfByte)
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    try
+    {
+      PROTOCAL.StQWebRsp localStQWebRsp = new PROTOCAL.StQWebRsp();
+      localStQWebRsp.mergeFrom(paramArrayOfByte);
+      if (localStQWebRsp != null)
+      {
+        paramArrayOfByte = new JSONObject();
+        paramArrayOfByte.put("retCode", localStQWebRsp.retCode);
+        return paramArrayOfByte;
+      }
+      QMLog.d("SetAuthsRequest", "onResponse fail.rsp = null");
+      return null;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      QMLog.d("SetAuthsRequest", "onResponse fail." + paramArrayOfByte);
+    }
+    return null;
   }
   
-  public boolean a()
+  protected byte[] a()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.a.toByteArray();
   }
   
-  public boolean b()
+  protected String b()
   {
-    return this.jdField_b_of_type_Boolean;
+    return "SetAuths";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgzu
  * JD-Core Version:    0.7.0.1
  */

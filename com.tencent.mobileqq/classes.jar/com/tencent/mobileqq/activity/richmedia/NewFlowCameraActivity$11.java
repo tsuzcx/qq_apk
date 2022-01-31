@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.richmedia;
 
-import ajya;
-import bcql;
+import alpo;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
 class NewFlowCameraActivity$11
   implements Runnable
@@ -11,13 +11,13 @@ class NewFlowCameraActivity$11
   
   public void run()
   {
-    bcql.a(BaseApplicationImpl.getApplication(), ajya.a(2131707443), 1).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131707815), 1).a();
     this.this$0.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity.11
  * JD-Core Version:    0.7.0.1
  */

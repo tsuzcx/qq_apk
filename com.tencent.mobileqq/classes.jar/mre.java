@@ -1,49 +1,24 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.guide.GuideHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class mre
+  implements View.OnTouchListener
 {
-  public static String a()
-  {
-    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
-    if (localFile == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("GAudioSoundUtil", 2, "[sound_early] getFilesDir is null");
-      }
-      return "";
-    }
-    return localFile.getParent() + "/qav/sound_early/";
-  }
+  public mre(GuideHelper paramGuideHelper, long paramLong) {}
   
-  public static void a(Context paramContext)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GAudioSoundUtil", 2, "[sound_early] trigger early download");
-    }
-    Object localObject2 = a();
-    Object localObject1 = new File((String)localObject2, "qav_gaudio_muted.mp3");
-    File localFile = new File((String)localObject2, "qav_gaudio_cancel_muted.mp3");
-    localObject2 = new File((String)localObject2, "qav_peer_phone_calling.mp3");
-    if ((!((File)localObject1).exists()) || (!localFile.exists()) || (!((File)localObject2).exists()))
-    {
-      localObject1 = new Intent("tencent.video.v2q.downloadGAudioSound");
-      ((Intent)localObject1).setPackage(paramContext.getPackageName());
-      paramContext.sendBroadcast((Intent)localObject1);
-    }
-  }
-  
-  public static boolean a(String paramString)
-  {
-    return new File(a(), paramString).exists();
+    QLog.w("GuideHelper", 1, "onTouch to hide, seq[" + this.jdField_a_of_type_Long + "]");
+    GuideHelper.a(this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper, this.jdField_a_of_type_Long);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mre
  * JD-Core Version:    0.7.0.1
  */

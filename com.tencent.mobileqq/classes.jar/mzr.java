@@ -1,31 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.widget.AdapterView;
 
-public class mzr
-  implements mzo
+class mzr
+  implements bhqp
 {
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i(paramString1, paramInt, paramString2);
-  }
+  mzr(mzq parammzq, PoiMapActivity paramPoiMapActivity) {}
   
-  public boolean a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return QLog.isColorLevel();
-  }
-  
-  public void b(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.d(paramString1, paramInt, paramString2);
-  }
-  
-  public boolean b()
-  {
-    return QLog.isDevelopLevel();
+    this.jdField_a_of_type_Mzq.a(paramInt, true);
+    int i = this.jdField_a_of_type_Mzq.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      if (this.jdField_a_of_type_Mzq.e != paramInt) {
+        this.jdField_a_of_type_Mzq.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
+      }
+      paramInt += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mzr
  * JD-Core Version:    0.7.0.1
  */

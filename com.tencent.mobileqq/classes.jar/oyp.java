@@ -1,53 +1,24 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJSkinOperationPopupStep.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
-public abstract class oyp
-  implements qvg
+public class oyp
+  extends qiz
 {
-  public int a;
-  protected Context a;
-  protected View.OnClickListener a;
-  public osm a;
-  protected oye a;
-  public View f;
+  oyp(oym paramoym) {}
   
-  public oyp(Context paramContext, oye paramoye)
+  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo, int paramInt)
   {
-    this.jdField_a_of_type_Osm = new oyq(this);
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Oye = paramoye;
+    if ((paramBoolean) && (paramInt == 0)) {
+      ThreadManager.excute(new RIJSkinOperationPopupStep.5.1(this, paramGuideInfo2, paramInt, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 16, null, true);
+    }
   }
-  
-  public abstract View a(int paramInt, ViewGroup paramViewGroup);
-  
-  public void a(View.OnClickListener paramOnClickListener)
-  {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  protected void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL)
-  {
-    a(paramKandianUrlImageView, paramURL, false);
-  }
-  
-  protected void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, boolean paramBoolean)
-  {
-    omr.a(paramKandianUrlImageView, paramURL, this.jdField_a_of_type_AndroidContentContext, paramBoolean);
-  }
-  
-  public void a(qtv paramqtv, int paramInt1, int paramInt2) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString) {}
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oyp
  * JD-Core Version:    0.7.0.1
  */

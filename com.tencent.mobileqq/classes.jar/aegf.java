@@ -1,28 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class aegf
-  extends BroadcastReceiver
+  implements DialogInterface.OnDismissListener
 {
-  public aegf(AIOGalleryActivity paramAIOGalleryActivity) {}
+  public aegf(UpgradeActivity paramUpgradeActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryActivity", 2, "receive videochat in aiogallery");
-      }
-      this.a.finish();
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aegf
  * JD-Core Version:    0.7.0.1
  */

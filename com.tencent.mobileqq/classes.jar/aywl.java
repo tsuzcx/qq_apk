@@ -1,72 +1,268 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import tencent.im.msg.im_msg_body.CustomFace;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.common.config.AppSetting;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.IBaseActionListener;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class aywl
-  extends ayrf
+  extends zdf
 {
-  public im_msg_body.CustomFace a;
+  private static String[] a = { "QzoneService", "SQQzoneSvc" };
   
-  public aywl(ayvx paramayvx, aywc paramaywc)
+  private UniPacket a(String paramString)
   {
-    super(paramayvx, paramaywc);
+    UniPacket localUniPacket = new UniPacket();
+    localUniPacket.setEncodeName("utf8");
+    a(localUniPacket);
+    localUniPacket.put("uin", Long.valueOf(Long.parseLong(paramString)));
+    return localUniPacket;
   }
   
-  void t()
+  private Object a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
-    if (this.jdField_a_of_type_Aywc.a != null)
+    paramFromServiceMsg = bjam.a(paramFromServiceMsg.getWupBuffer());
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qzonecover.", 2, "decodeGetQZoneCover|jceObj = " + paramFromServiceMsg);
+    }
+    return paramFromServiceMsg;
+  }
+  
+  private void a(UniPacket paramUniPacket)
+  {
+    paramUniPacket.setEncodeName("utf8");
+    paramUniPacket.put("version", Integer.valueOf(1091030));
+    paramUniPacket.put("Q-UA", AppSetting.e());
+    paramUniPacket.put("rupt", Boolean.valueOf(false));
+  }
+  
+  private Object b(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
+  {
+    paramFromServiceMsg = bizl.a(paramFromServiceMsg.getWupBuffer());
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qzonephotowall", 2, "decodeGetQZonePhotoWall|jceObj = " + paramFromServiceMsg);
+    }
+    return paramFromServiceMsg;
+  }
+  
+  private byte[] b(ToServiceMsg paramToServiceMsg)
+  {
+    UniPacket localUniPacket = a(paramToServiceMsg.getUin());
+    localUniPacket.put("uin", Long.valueOf(Long.parseLong(paramToServiceMsg.getUin())));
+    a(localUniPacket);
+    localUniPacket.setServantName("QzoneServer");
+    localUniPacket.setFuncName("GetNewAndUnread");
+    return bdku.a(localUniPacket.encode());
+  }
+  
+  private Object c(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
+  {
+    paramFromServiceMsg = bizj.a(paramFromServiceMsg.getWupBuffer());
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qzonephotowall", 2, "decodeDelQZonePhotoWall|jceObj = " + paramFromServiceMsg);
+    }
+    return paramFromServiceMsg;
+  }
+  
+  private byte[] c(ToServiceMsg paramToServiceMsg)
+  {
+    long l4 = 0L;
+    String str = (String)paramToServiceMsg.getAttribute("uin");
+    Integer localInteger = (Integer)paramToServiceMsg.getAttribute("flag", Integer.valueOf(1));
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qzonecover.", 2, "handleGetQZoneCover|uin = " + str + ",flag=" + localInteger.intValue());
+    }
+    for (;;)
     {
-      x();
-      auor localauor = new auor();
-      localauor.jdField_a_of_type_Long = this.jdField_q_of_type_Long;
-      localauor.d = this.c;
-      localauor.c = this.d;
-      localauor.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Aywc.i;
-      localauor.jdField_b_of_type_Long = this.jdField_a_of_type_Long;
-      localauor.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_TencentImMsgIm_msg_body$CustomFace;
-      this.jdField_a_of_type_Aywc.a.b(localauor);
-      a(true);
+      try
+      {
+        l1 = Long.parseLong(str);
+        l3 = l1;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        try
+        {
+          l2 = Long.parseLong(paramToServiceMsg.getUin());
+          l3 = l1;
+          return new bjam(l3, l2, localInteger.intValue()).encode();
+        }
+        catch (Exception paramToServiceMsg)
+        {
+          long l1;
+          long l2;
+          long l3;
+          break label115;
+        }
+        paramToServiceMsg = paramToServiceMsg;
+        l1 = 0L;
+      }
+      label115:
+      l2 = l4;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.qzonecover.", 2, paramToServiceMsg.toString());
+        l3 = l1;
+        l2 = l4;
+      }
     }
   }
   
-  protected void x()
+  private byte[] d(ToServiceMsg paramToServiceMsg)
   {
-    im_msg_body.CustomFace localCustomFace = new im_msg_body.CustomFace();
-    localCustomFace.uint32_file_id.set((int)this.jdField_a_of_type_Long);
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-    {
-      localObject = (ayuq)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-      localCustomFace.uint32_server_ip.set(a(((ayuq)localObject).jdField_a_of_type_JavaLangString));
-      localCustomFace.uint32_server_port.set(((ayuq)localObject).jdField_a_of_type_Int);
+    long l4 = 0L;
+    String str2 = (String)paramToServiceMsg.getAttribute("uin");
+    String str1 = (String)paramToServiceMsg.getAttribute("photo_id");
+    Long localLong = (Long)paramToServiceMsg.getAttribute("photo_time");
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qzonephotowall", 2, "handleDetQZonePhotoWall|uin = " + str2);
     }
-    localCustomFace.uint32_file_type.set(Integer.valueOf(66).intValue());
-    localCustomFace.uint32_useful.set(1);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a() != null) {
-      localCustomFace.bytes_signature.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a()));
-    }
-    localCustomFace.bytes_md5.set(ByteStringMicro.copyFrom(this.jdField_a_of_type_ArrayOfByte));
-    localCustomFace.str_file_path.set(this.d);
-    Object localObject = localCustomFace.uint32_origin;
-    if (this.l) {}
-    for (int i = 1;; i = 0)
+    for (;;)
     {
-      ((PBUInt32Field)localObject).set(i);
-      localCustomFace.uint32_width.set(this.p);
-      localCustomFace.uint32_height.set(this.jdField_q_of_type_Int);
-      localCustomFace.uint32_size.set((int)this.jdField_q_of_type_Long);
-      localCustomFace.uint32_source.set(200);
-      this.jdField_a_of_type_TencentImMsgIm_msg_body$CustomFace = localCustomFace;
+      try
+      {
+        l1 = Long.parseLong(str2);
+        l3 = l1;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        try
+        {
+          l2 = Long.parseLong(paramToServiceMsg.getUin());
+          l3 = l1;
+          return new bizj(l3, l2, str1, localLong).encode();
+        }
+        catch (Exception paramToServiceMsg)
+        {
+          long l1;
+          long l2;
+          long l3;
+          break label108;
+        }
+        paramToServiceMsg = paramToServiceMsg;
+        l1 = 0L;
+      }
+      label108:
+      l2 = l4;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.qzonephotowall", 2, paramToServiceMsg.toString());
+        l3 = l1;
+        l2 = l4;
+      }
+    }
+  }
+  
+  private byte[] e(ToServiceMsg paramToServiceMsg)
+  {
+    long l4 = 0L;
+    String str2 = (String)paramToServiceMsg.getAttribute("uin");
+    String str1 = (String)paramToServiceMsg.getAttribute("attachInfo");
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qzonephotowall", 2, "handleGetQZonePhotoWall|uin = " + str2);
+    }
+    for (;;)
+    {
+      try
+      {
+        l1 = Long.parseLong(str2);
+        l3 = l1;
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        try
+        {
+          l2 = Long.parseLong(paramToServiceMsg.getUin());
+          l3 = l1;
+          return new bizl(l3, l2, str1).encode();
+        }
+        catch (Exception paramToServiceMsg)
+        {
+          long l1;
+          long l2;
+          long l3;
+          break label95;
+        }
+        paramToServiceMsg = paramToServiceMsg;
+        l1 = 0L;
+      }
+      label95:
+      l2 = l4;
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.qzonephotowall", 2, paramToServiceMsg.toString());
+        l3 = l1;
+        l2 = l4;
+      }
+    }
+  }
+  
+  public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    String str = paramFromServiceMsg.getServiceCmd();
+    Object localObject = null;
+    if ("SQQzoneSvc.getCover".equals(str)) {
+      localObject = a(paramFromServiceMsg, paramToServiceMsg);
+    }
+    do
+    {
+      return localObject;
+      if ("SQQzoneSvc.getPhotoWall".equals(str)) {
+        return b(paramFromServiceMsg, paramToServiceMsg);
+      }
+    } while (!"SQQzoneSvc.delPhotoWall".equals(str));
+    return c(paramFromServiceMsg, paramToServiceMsg);
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
+  {
+    try
+    {
+      paramToServiceMsg.actionListener.onActionResult(paramFromServiceMsg);
       return;
     }
+    catch (Exception paramToServiceMsg)
+    {
+      paramToServiceMsg.printStackTrace();
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
+  {
+    return false;
+  }
+  
+  public byte[] a(ToServiceMsg paramToServiceMsg)
+  {
+    String str = paramToServiceMsg.getServiceCmd();
+    if ("QzoneService.GetNewAndUnread".equals(str)) {
+      return b(paramToServiceMsg);
+    }
+    if ("SQQzoneSvc.getCover".equals(str)) {
+      return c(paramToServiceMsg);
+    }
+    if ("SQQzoneSvc.getPhotoWall".equals(str)) {
+      return e(paramToServiceMsg);
+    }
+    if ("SQQzoneSvc.delPhotoWall".equals(str)) {
+      return d(paramToServiceMsg);
+    }
+    return null;
+  }
+  
+  public String[] a()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aywl
  * JD-Core Version:    0.7.0.1
  */

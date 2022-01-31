@@ -1,45 +1,29 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBlackList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class tmb
-  extends sys<tnz>
+final class tmb
+  implements Animation.AnimationListener
 {
-  public static final String a = sxm.a("StorySvc.get_user_black_status");
-  public String b;
+  tmb(View paramView) {}
   
-  public String a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return a;
-  }
-  
-  public syn a(byte[] paramArrayOfByte)
-  {
-    qqstory_service.RspGetBlackList localRspGetBlackList = new qqstory_service.RspGetBlackList();
-    try
+    if ((this.a.getTag(-1) != null) && (((Integer)this.a.getTag(-1)).intValue() == 8))
     {
-      localRspGetBlackList.mergeFrom(paramArrayOfByte);
-      return new tnz(localRspGetBlackList);
+      this.a.clearAnimation();
+      this.a.setVisibility(8);
+      this.a.setTag(-1, null);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
-    return null;
   }
   
-  protected byte[] a()
-  {
-    qqstory_service.ReqGetBlackList localReqGetBlackList = new qqstory_service.ReqGetBlackList();
-    localReqGetBlackList.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
-    return localReqGetBlackList.toByteArray();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tmb
  * JD-Core Version:    0.7.0.1
  */

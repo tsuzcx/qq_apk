@@ -1,19 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 
-final class aptu
-  implements DialogInterface.OnClickListener
+public class aptu
 {
-  aptu(aptw paramaptw) {}
+  public ImageView a;
+  public URLDrawable a;
+  public URLImageView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a();
-  }
+  public aptu(aptt paramaptt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aptu
  * JD-Core Version:    0.7.0.1
  */

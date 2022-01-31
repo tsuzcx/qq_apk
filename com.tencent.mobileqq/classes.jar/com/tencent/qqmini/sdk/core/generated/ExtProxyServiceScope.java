@@ -18,14 +18,19 @@ public final class ExtProxyServiceScope
     PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.WnsConfigProxy", "com.tencent.qqmini.proxyimpl.WnsConfigProxyImpl");
     PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.AdProxy", "com.tencent.qqmini.proxyimpl.AdProxyImpl");
     PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.PayProxy", "com.tencent.qqmini.proxyimpl.PayProxyImpl");
+    PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.VideoPlayerProviderProxy", "com.tencent.qqmini.proxyimpl.VideoPlayerProviderProxyImpl");
     PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.VideoPlayerProxy", "com.tencent.qqmini.proxyimpl.VideoPlayerProxyImpl");
     PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.ShareProxy", "com.tencent.qqmini.proxyimpl.ShareProxyImpl");
     PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.KingCardProxy", "com.tencent.qqmini.proxyimpl.KingCardProxyImpl");
+    PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.ThirdAppProxy", "com.tencent.qqmini.proxyimpl.ThirdAppProxyImpl");
+    PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.VoIPProxy", "com.tencent.qqmini.proxyimpl.VoIPProxyImpl");
+    PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.VideoJsProxy", "com.tencent.qqmini.proxyimpl.VideoJsProxyImpl");
+    PROXY_SERVICES.put("com.tencent.qqmini.sdk.core.proxy.NavigationProxy", "com.tencent.qqmini.proxyimpl.NavigationProxyImpl");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.ExtProxyServiceScope
  * JD-Core Version:    0.7.0.1
  */

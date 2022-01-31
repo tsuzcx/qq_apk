@@ -1,54 +1,54 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import anpb;
-import anqi;
-import auko;
+import apgi;
+import aphq;
+import awbv;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 public abstract class XmlData
-  extends auko
+  extends awbv
 {
   public static final int STATE_LOADING = 2;
   public static final int STATE_NONE = 0;
   public static final int STATE_SUCCESS = 1;
-  @anqi(a=true, b=false)
+  @aphq(a=true, b=false)
   public String MD5;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public boolean StoreBackup;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public int Version;
   public long downSize;
-  @anqi(a=false, b=true)
+  @aphq(a=false, b=true)
   public boolean hasResDownloaded;
   public boolean isUserClick;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public boolean load2G;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public boolean load3G;
-  @anqi(a=false, b=true)
+  @aphq(a=false, b=true)
   public int loadState;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public boolean loadWifi;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public boolean net_2_2G;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public boolean net_2_3G;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public boolean net_2_wifi;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public boolean notPreDownloadInLowEndPhone;
   public int reqLoadCount;
   public String strLog;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public String strPkgName;
-  @anqi(a=true, b=true)
+  @aphq(a=true, b=true)
   public String strResName;
-  @anqi(a=true, b=false)
+  @aphq(a=true, b=false)
   public String strResURL_big;
-  @anqi(a=true, b=false)
+  @aphq(a=true, b=false)
   public String strResURL_small;
-  @anqi(a=false, b=true)
+  @aphq(a=false, b=true)
   public long tLoadFail;
   public long tStart;
   public long totalSize;
@@ -60,7 +60,7 @@ public abstract class XmlData
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    for (Class localClass = getClass(); localClass != auko.class; localClass = localClass.getSuperclass())
+    for (Class localClass = getClass(); localClass != awbv.class; localClass = localClass.getSuperclass())
     {
       Field[] arrayOfField = localClass.getDeclaredFields();
       int j = arrayOfField.length;
@@ -73,7 +73,7 @@ public abstract class XmlData
         {
           i += 1;
           break;
-          if (((Field)localObject).isAnnotationPresent(anqi.class))
+          if (((Field)localObject).isAnnotationPresent(aphq.class))
           {
             if (!((Field)localObject).isAccessible()) {
               ((Field)localObject).setAccessible(true);
@@ -102,14 +102,14 @@ public abstract class XmlData
     do
     {
       return;
-      arrayOfField = anpb.a(paramXmlData.getClass());
+      arrayOfField = apgi.a(paramXmlData.getClass());
     } while ((arrayOfField == null) || (arrayOfField.length == 0));
     int j = arrayOfField.length;
     int i = 0;
     while (i < j)
     {
       Field localField = arrayOfField[i];
-      if ((localField.isAnnotationPresent(anqi.class)) && (((anqi)localField.getAnnotation(anqi.class)).a())) {}
+      if ((localField.isAnnotationPresent(aphq.class)) && (((aphq)localField.getAnnotation(aphq.class)).a())) {}
       try
       {
         localField.set(this, localField.get(paramXmlData));
@@ -134,7 +134,7 @@ public abstract class XmlData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.XmlData
  * JD-Core Version:    0.7.0.1
  */

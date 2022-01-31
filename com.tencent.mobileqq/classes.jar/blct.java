@@ -1,18 +1,21 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.ttpic.videoshelf.model.VideoShelfEngine;
+import dov.com.qq.im.ae.play.AEVideoShelfEditFragment;
 
 public class blct
-  implements FileFilter
+  implements DialogInterface.OnCancelListener
 {
-  public boolean accept(File paramFile)
+  public blct(AEVideoShelfEditFragment paramAEVideoShelfEditFragment) {}
+  
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    AEVideoShelfEditFragment.a(this.a).cancelSave();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     blct
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,40 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import java.lang.ref.SoftReference;
+import java.util.concurrent.Future;
 
-public class avoq
-  extends avpi<ReceiptMessageDetailFragment>
+public final class avoq<Params, Result>
 {
-  public avoq(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
-  {
-    super(paramReceiptMessageDetailFragment);
-  }
+  public final int a;
+  public final Integer a;
+  public Long a;
+  public final Params a;
+  public final String a;
+  public SoftReference<View> a;
+  public Future<?> a;
+  public SoftReference<View> b;
+  public SoftReference<Result> c;
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public avoq(String paramString, View paramView1, View paramView2, Params paramParams, int paramInt1, int paramInt2, long paramLong)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.d("ReceiptMessageDetailFragment", 4, "mTroopSendReadReportCallback onRes: " + paramInt);
-    }
-    if (paramInt == 0)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView1);
+    if (paramView2 != null) {}
+    for (paramString = new SoftReference(paramView2);; paramString = null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReceiptMessageDetailFragment", 2, "mTroopSendReadReportCallback succ");
-      }
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, 0, 0, false);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(4);
+      this.b = paramString;
+      this.jdField_a_of_type_JavaLangObject = paramParams;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
+      this.c = null;
+      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
+      this.jdField_a_of_type_JavaUtilConcurrentFuture = null;
       return;
     }
-    if (paramInt != 1281)
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "mTroopSendReadReportCallback fatal error: " + paramInt);
-      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(5);
-      return;
-    }
-    ReceiptMessageDetailFragment.n((ReceiptMessageDetailFragment)this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avoq
  * JD-Core Version:    0.7.0.1
  */

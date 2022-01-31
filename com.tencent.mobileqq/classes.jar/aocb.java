@@ -1,25 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.comment.DanmuItemBean;
 
-class aocb
-  implements askr<Void, List<aoam>>
+public final class aocb
+  implements Parcelable.Creator<DanmuItemBean>
 {
-  aocb(aobz paramaobz) {}
-  
-  public List<aoam> a(Void paramVoid)
+  public DanmuItemBean a(Parcel paramParcel)
   {
-    paramVoid = ((askf)this.a.a.getManager(14)).a(false, aobz.a(this.a), false);
-    ArrayList localArrayList = new ArrayList();
-    if (paramVoid != null) {
-      localArrayList.addAll(paramVoid);
+    boolean bool = true;
+    DanmuItemBean localDanmuItemBean = new DanmuItemBean();
+    localDanmuItemBean.jdField_a_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.jdField_b_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.d = paramParcel.readLong();
+    localDanmuItemBean.jdField_c_of_type_Long = paramParcel.readLong();
+    localDanmuItemBean.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localDanmuItemBean.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
+    {
+      localDanmuItemBean.jdField_a_of_type_Boolean = bool;
+      localDanmuItemBean.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localDanmuItemBean.jdField_a_of_type_Int = paramParcel.readInt();
+      return localDanmuItemBean;
+      bool = false;
     }
-    return localArrayList;
+  }
+  
+  public DanmuItemBean[] a(int paramInt)
+  {
+    return new DanmuItemBean[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aocb
  * JD-Core Version:    0.7.0.1
  */

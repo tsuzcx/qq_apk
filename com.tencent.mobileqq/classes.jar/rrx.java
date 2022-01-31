@@ -1,110 +1,46 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class rrx<T>
-  extends rrw<T>
+public class rrx
+  implements rpz
 {
-  protected Context a;
-  protected List<T> a;
-  protected int b;
+  public rrx(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
   
-  protected rrx(Context paramContext, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = paramInt;
+    String str = paramBundle.getString("mTaskID");
+    ReadInJoyBaseListViewGroup.a(this.a, str);
+    qod.b(paramBundle);
   }
   
-  private void c(List<T> paramList)
+  public void a(String paramString, Bundle paramBundle)
   {
-    a(paramList);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-  }
-  
-  public int a()
-  {
-    return this.b;
-  }
-  
-  protected Context a()
-  {
-    return this.jdField_a_of_type_AndroidContentContext;
-  }
-  
-  public List<T> a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public void a(int paramInt, T paramT)
-  {
-    a(paramT);
-    this.jdField_a_of_type_JavaUtilList.add(paramInt, paramT);
-    notifyDataSetChanged();
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return true;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (paramInt < getCount())
+    paramString = this.a.a();
+    Intent localIntent;
+    if ((paramBundle != null) && (paramString != null))
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramInt);
-      notifyDataSetChanged();
+      localIntent = new Intent();
+      localIntent.putExtras(paramBundle);
+      localIntent.setClass(paramString, KandianVideoUploadService.class);
     }
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 < getCount())
+    try
     {
-      ReadInJoyDynamicGridView.a(this.jdField_a_of_type_JavaUtilList, paramInt1, paramInt2);
-      notifyDataSetChanged();
+      paramString.startService(localIntent);
+      return;
     }
-  }
-  
-  public void b(T paramT)
-  {
-    a(paramT);
-    this.jdField_a_of_type_JavaUtilList.add(paramT);
-    notifyDataSetChanged();
-  }
-  
-  public void b(List<T> paramList)
-  {
-    c();
-    c(paramList);
-    notifyDataSetChanged();
-  }
-  
-  public void c()
-  {
-    b();
-    this.jdField_a_of_type_JavaUtilList.clear();
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public T getItem(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilList.size())) {
-      return null;
+    catch (Throwable paramString)
+    {
+      QLog.d("KandianVideoUpload", 1, "Kandian retryFail", paramString);
     }
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rrx
  * JD-Core Version:    0.7.0.1
  */

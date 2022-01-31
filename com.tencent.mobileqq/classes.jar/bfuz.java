@@ -1,49 +1,46 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.widget.ProgressPieView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem;
 
-public class bfuz
-  extends Handler
+public final class bfuz
+  implements Parcelable.Creator<QidianProfileCardActivity.QidianCompoundProfileItem>
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  
-  public bfuz(ProgressPieView paramProgressPieView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public QidianProfileCardActivity.QidianCompoundProfileItem a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b > this.jdField_a_of_type_Int)
+    boolean bool2 = true;
+    QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
+    localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localQidianCompoundProfileItem.c = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
-    }
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b < this.jdField_a_of_type_Int)
-      {
-        int i = this.jdField_a_of_type_ComTencentWidgetProgressPieView.b + this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Int;
-        if (i <= this.jdField_a_of_type_Int) {
-          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
-        }
-        for (;;)
-        {
-          sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
-          return;
-          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_Int);
-        }
+      bool1 = true;
+      localQidianCompoundProfileItem.jdField_a_of_type_Boolean = bool1;
+      localQidianCompoundProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readByte() == 0) {
+        break label103;
       }
-      removeMessages(0);
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setShowImage(false);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = false;
+    }
+    label103:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localQidianCompoundProfileItem.jdField_b_of_type_Boolean = bool1;
+      localQidianCompoundProfileItem.d = paramParcel.readString();
+      localQidianCompoundProfileItem.e = paramParcel.readString();
+      return localQidianCompoundProfileItem;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public QidianProfileCardActivity.QidianCompoundProfileItem[] a(int paramInt)
+  {
+    return new QidianProfileCardActivity.QidianCompoundProfileItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bfuz
  * JD-Core Version:    0.7.0.1
  */

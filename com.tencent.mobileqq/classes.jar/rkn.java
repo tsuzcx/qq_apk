@@ -1,19 +1,16 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-
 class rkn
-  extends rkg
+  extends syt
 {
-  public rkn(rkk paramrkk, View paramView, BaseData paramBaseData)
-  {
-    super(paramView, paramBaseData);
-  }
+  rkn(rkd paramrkd) {}
   
-  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean) {}
+  protected boolean a(Integer paramInteger)
+  {
+    return this.a.a(paramInteger.intValue());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rkn
  * JD-Core Version:    0.7.0.1
  */

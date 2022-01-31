@@ -2,14 +2,14 @@ package com.tencent.qqmini.sdk.core.plugins;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
-import bekr;
+import bgkd;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 class WifiJsPlugin$2
   implements WifiJsPlugin.LocationPermissionListener
 {
-  WifiJsPlugin$2(WifiJsPlugin paramWifiJsPlugin, bekr parambekr) {}
+  WifiJsPlugin$2(WifiJsPlugin paramWifiJsPlugin, bgkd parambgkd) {}
   
   public void onExecute(boolean paramBoolean)
   {
@@ -50,7 +50,7 @@ class WifiJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.plugins.WifiJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

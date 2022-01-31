@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class birr
-  extends ayxt
+  implements View.OnClickListener
 {
-  birr(birq parambirq, QQAppInterface paramQQAppInterface, String paramString, Runnable paramRunnable, long paramLong)
-  {
-    super(paramQQAppInterface, paramString, paramRunnable, paramLong);
-  }
+  birr(birq parambirq, biru parambiru) {}
   
-  protected void realCancel()
+  public void onClick(View paramView)
   {
-    bjah.b("AEResDownloader", "【RunnableTask】cancel ");
+    this.jdField_a_of_type_Biru.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     birr
  * JD-Core Version:    0.7.0.1
  */

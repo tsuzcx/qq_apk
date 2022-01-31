@@ -1,289 +1,200 @@
-import android.content.Intent;
-import android.net.wifi.WifiManager;
-import android.os.Bundle;
-import com.qq.jce.wup.BasicClassTypeUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qlink.QlinkPluginProxyActivity;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.net.URLDecoder;
+import android.animation.ObjectAnimator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.qqmini.sdk.core.widget.ToastView.1;
+import com.tencent.qqmini.sdk.log.QMLog;
 
 public class bgnw
 {
-  public static Intent a()
+  private int jdField_a_of_type_Int = 1500;
+  private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Resources jdField_a_of_type_AndroidContentResResources;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  View jdField_a_of_type_AndroidViewView;
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  Runnable jdField_a_of_type_JavaLangRunnable = new ToastView.1(this);
+  
+  public bgnw(Context paramContext, ViewGroup paramViewGroup)
   {
-    Intent localIntent = new Intent();
-    QlinkPluginProxyActivity.a(localIntent, "com.tencent.qlink.activity.QlinkProxyActivity");
-    return localIntent;
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
+    this.jdField_a_of_type_AndroidContentResResources = paramContext.getResources();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
   }
   
-  public static bgnx a(String paramString)
+  public static int a(String paramString)
   {
-    int i = 0;
-    if (paramString == null) {}
-    bgnx localbgnx;
-    Object localObject;
-    int j;
-    String str2;
-    for (;;)
-    {
-      return null;
-      localbgnx = new bgnx();
-      try
-      {
-        if (paramString.startsWith("qqf2f://qf/?"))
-        {
-          localObject = paramString.substring("qqf2f://qf/?".length(), paramString.length()).split("&");
-          paramString = new Bundle();
-          j = localObject.length;
-        }
-      }
-      catch (Exception paramString)
-      {
-        int k;
-        String str1;
-        paramString.printStackTrace();
-        return null;
-      }
+    if ("success".equals(paramString)) {
+      return 2130840834;
     }
-    k = str2.indexOf("=");
-    if (-1 != k)
-    {
-      str1 = str2.substring(0, k + 1);
-      str2 = str2.substring(k + 1, str2.length());
-      if ((str1 != null) && (str2 != null)) {
-        paramString.putString(str1, str2);
-      }
+    if ("warn".equals(paramString)) {
+      return 2130840832;
     }
-    label293:
-    for (;;)
+    if ("loading".equals(paramString)) {
+      return 2130840915;
+    }
+    return 2130840833;
+  }
+  
+  private void a(int paramInt)
+  {
+    if (paramInt != 0) {
+      a(this.jdField_a_of_type_AndroidContentResResources.getDrawable(paramInt));
+    }
+  }
+  
+  private void a(int paramInt, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559351, null);
+    this.jdField_a_of_type_AndroidViewView.setClickable(paramBoolean);
+    Object localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378059);
+    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378056);
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(localImageView, "rotation", new float[] { 0.0F, 360.0F });
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setInterpolator(new LinearInterpolator());
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(2000L);
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatMode(1);
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.setRepeatCount(-1);
+    ((TextView)localObject).setEms(7);
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
-      localbgnx.a = paramString.getString("k=");
-      localbgnx.b = d(paramString.getString("u="));
-      localObject = b(paramString.getString("n="));
+      localImageView.setVisibility(0);
+      localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      ((TextView)localObject).setMaxLines(1);
+    }
+    while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence))
+    {
+      ((TextView)localObject).setVisibility(8);
+      localObject = localImageView.getLayoutParams();
       if (localObject != null)
       {
-        localbgnx.c = URLDecoder.decode((String)localObject, "UTF-8");
-        if (localbgnx.c != null) {}
+        localObject = (LinearLayout.LayoutParams)localObject;
+        ((LinearLayout.LayoutParams)localObject).gravity = 17;
+        ((LinearLayout.LayoutParams)localObject).topMargin = 0;
+        localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      for (localbgnx.c = localbgnx.b;; localbgnx.c = localbgnx.b)
+      return;
+      localImageView.setVisibility(8);
+      ((TextView)localObject).setGravity(17);
+      if (paramInt == 1)
       {
-        localbgnx.d = paramString.getString("o=");
-        localbgnx.e = paramString.getString("p=");
-        localbgnx.f = paramString.getString("d=");
-        if ((localbgnx.a == null) || (localbgnx.b == null) || (localbgnx.d == null)) {
-          break;
-        }
-        return localbgnx;
+        ((TextView)localObject).setMaxLines(1);
       }
-      for (;;)
+      else if (paramInt == 0)
       {
-        if (i >= j) {
-          break label293;
-        }
-        str2 = localObject[i];
-        if (str2 != null) {
-          break;
-        }
-        i += 1;
+        ((TextView)localObject).setEms(18);
+        ((TextView)localObject).setMaxLines(2);
       }
+    }
+    ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangCharSequence);
+  }
+  
+  private void a(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+  }
+  
+  private void a(CharSequence paramCharSequence)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+  }
+  
+  private void b()
+  {
+    QMLog.d("ToastView", "show mParentView=" + this.jdField_a_of_type_AndroidViewViewGroup + ",toastLayout=" + this.jdField_a_of_type_AndroidViewView);
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null))
+    {
+      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_AndroidViewView, new ViewGroup.LayoutParams(-1, -1));
+      if (this.jdField_a_of_type_Int > -1) {
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, this.jdField_a_of_type_Int);
+      }
+    }
+    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
     }
   }
   
-  public static AppInterface a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
+  private void b(int paramInt)
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    QMLog.d("ToastView", "hide mParentView=" + this.jdField_a_of_type_AndroidViewViewGroup + ",toastLayout=" + this.jdField_a_of_type_AndroidViewView);
+    if ((this.jdField_a_of_type_AndroidViewViewGroup != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      this.jdField_a_of_type_AndroidViewViewGroup.removeView(this.jdField_a_of_type_AndroidViewView);
     }
-    try
+    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null)
     {
-      Class localClass1 = Class.forName("com.tencent.qlink.app.QlinkAppInterface");
-      if (localClass1 == null) {
-        return null;
-      }
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.cancel();
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator = null;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      Class localClass2;
-      try
-      {
-        ClassLoader localClassLoader = QlinkPluginProxyActivity.a(paramBaseApplicationImpl);
-        localClass2 = localClassLoader.loadClass("com.tencent.qlink.app.QlinkAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, localClassLoader);
-      }
-      catch (ClassNotFoundException paramBaseApplicationImpl)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-      do
-      {
-        return null;
-        paramBaseApplicationImpl = localClass2.getDeclaredConstructor(new Class[] { paramBaseApplicationImpl.getClass(), paramString.getClass() }).newInstance(new Object[] { paramBaseApplicationImpl, paramString });
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppInterface)));
-      paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+  }
+  
+  public void a(int paramInt1, String paramString1, String paramString2, CharSequence paramCharSequence, int paramInt2, boolean paramBoolean)
+  {
+    QMLog.d("ToastView", "show iconType=" + paramString1 + ",localIconPath=" + paramString2 + ",msg=" + paramCharSequence + ",duration=" + paramInt2 + ",mask=" + paramBoolean);
+    a();
+    if (!TextUtils.isEmpty(paramString2)) {
+      a(new BitmapDrawable(paramString2));
     }
-    catch (IllegalArgumentException paramBaseApplicationImpl)
+    for (;;)
     {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (IllegalAccessException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InstantiationException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (InvocationTargetException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (NoSuchMethodException paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
-    }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      for (;;)
-      {
-        paramBaseApplicationImpl.printStackTrace();
-      }
+      a(paramCharSequence);
+      b(paramInt2);
+      a(paramInt1, paramBoolean);
+      b();
+      return;
+      a(a(paramString1));
     }
   }
   
-  public static String a(String paramString)
+  public void a(String paramString)
   {
-    int j = 0;
-    if (paramString == null) {
-      return null;
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      return;
     }
-    Object localObject = paramString.getBytes();
-    paramString = new byte[localObject.length];
-    int i = 0;
-    while (i < localObject.length)
+    a(paramString);
+    paramString = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378059);
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangCharSequence))
     {
-      paramString[i] = ((byte)((byte)((byte)(localObject[i] ^ 0xFFFFFFA2) ^ 0x68) ^ 0x1B));
-      i += 1;
+      paramString.setVisibility(8);
+      return;
     }
-    localObject = new StringBuilder(paramString.length * 2);
-    i = j;
-    while (i < paramString.length)
-    {
-      ((StringBuilder)localObject).append(Integer.toHexString((paramString[i] & 0xF0) >> 4));
-      ((StringBuilder)localObject).append(Integer.toHexString(paramString[i] & 0xF));
-      i += 1;
-    }
-    return ((StringBuilder)localObject).toString();
+    paramString.setVisibility(0);
+    paramString.setText(this.jdField_a_of_type_JavaLangCharSequence);
   }
   
-  public static boolean a()
+  public boolean a()
   {
-    try
-    {
-      WifiManager localWifiManager = (WifiManager)BaseApplicationImpl.getContext().getSystemService("wifi");
-      Method localMethod = localWifiManager.getClass().getMethod("isWifiApEnabled", new Class[0]);
-      localMethod.setAccessible(true);
-      boolean bool = ((Boolean)localMethod.invoke(localWifiManager, new Object[0])).booleanValue();
-      return bool;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      localNoSuchMethodException.printStackTrace();
+    if (this.jdField_a_of_type_AndroidViewView == null) {}
+    while (this.jdField_a_of_type_AndroidViewView.getParent() == null) {
       return false;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public static String b(String paramString)
-  {
-    int j = 0;
-    if (paramString == null) {
-      return null;
-    }
-    int k = paramString.length() / 2;
-    byte[] arrayOfByte = new byte[k];
-    int i = 0;
-    while (i < k) {
-      try
-      {
-        arrayOfByte[i] = Integer.valueOf(paramString.substring(i * 2, i * 2 + 2), 16).byteValue();
-        i += 1;
-      }
-      catch (NumberFormatException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-    }
-    paramString = new byte[k];
-    i = j;
-    while (i < arrayOfByte.length)
-    {
-      paramString[i] = ((byte)((byte)((byte)(arrayOfByte[i] ^ 0x1B) ^ 0x68) ^ 0xFFFFFFA2));
-      i += 1;
-    }
-    try
-    {
-      paramString = new String(paramString, "UTF-8");
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
-    return null;
-  }
-  
-  public static String c(String paramString)
-  {
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      return String.valueOf(l ^ 0x3702D1C2 ^ 0x5891625D ^ 0xCF267E29);
-    }
-    catch (Exception paramString) {}
-    return null;
-  }
-  
-  public static String d(String paramString)
-  {
-    try
-    {
-      long l = Long.valueOf(paramString).longValue();
-      return String.valueOf(l ^ 0xCF267E29 ^ 0x5891625D ^ 0x3702D1C2);
-    }
-    catch (Exception paramString) {}
-    return null;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bgnw
  * JD-Core Version:    0.7.0.1
  */

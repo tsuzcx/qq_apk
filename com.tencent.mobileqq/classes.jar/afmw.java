@@ -1,47 +1,23 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class afmw
-  extends bajm
+class afmw
+  extends afpq
 {
-  public afmw(NotificationView paramNotificationView) {}
-  
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  afmw(aflj paramaflj)
   {
-    if ((paramBoolean) && (paramBundle != null)) {}
-    while (this.a.jdField_a_of_type_Bcqf == null) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("structMsg");
-        structmsg.StructMsg localStructMsg = new structmsg.StructMsg();
-        localStructMsg.mergeFrom(paramBundle);
-        NotificationView.a(this.a, 1, localStructMsg);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        do
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("NotificationView", 2, "structMsg merge error");
-          }
-        } while (this.a.jdField_a_of_type_Bcqf == null);
-        this.a.jdField_a_of_type_Bcqf.dismiss();
-        bcql.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131697634), 0).b(this.a.a());
-        return;
-      }
-    }
-    this.a.jdField_a_of_type_Bcqf.dismiss();
-    bcql.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_AndroidContentContext.getString(2131697634), 0).b(this.a.a());
+    super(paramaflj, null);
+  }
+  
+  protected aemj a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
+  {
+    return new StructingMsgItemBuilder(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afmw
  * JD-Core Version:    0.7.0.1
  */

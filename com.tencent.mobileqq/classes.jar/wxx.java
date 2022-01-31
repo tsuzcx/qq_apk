@@ -1,41 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 
-class wxx
-  implements wzb
+public class wxx
+  implements vue
 {
-  wxx(wxv paramwxv, String paramString) {}
+  public wxx(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void a_(vtz paramvtz)
   {
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        localJSONObject.put("retCode", 0);
-        if (!TextUtils.isEmpty(paramString2)) {
-          localJSONObject.put("errMsg", paramString2);
-        }
-        if (!TextUtils.isEmpty(paramString1)) {
-          localJSONObject.put("file", paramString1);
-        }
-        this.jdField_a_of_type_Wxv.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        QLog.e(this.jdField_a_of_type_Wxv.TAG, 1, paramString2, paramString1);
-      }
-      localJSONObject.put("retCode", 1);
-    }
+    wsv.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
+    LocalVideoSelectActivity.a(this.a).c();
+    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wxx
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
-import bbbx;
+import bdar;
 import com.tencent.mobileqq.activity.photo.ProGallery;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.microapp.R.dimen;
@@ -151,7 +151,7 @@ public class PhotoPreviewActivity
   
   void e()
   {
-    bbbx.a(this, true, false);
+    bdar.anim(this, true, false);
     super.finish();
   }
   
@@ -162,7 +162,7 @@ public class PhotoPreviewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.out.activity.PhotoPreviewActivity
  * JD-Core Version:    0.7.0.1
  */

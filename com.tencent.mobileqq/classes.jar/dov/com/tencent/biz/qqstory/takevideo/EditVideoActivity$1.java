@@ -1,7 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import bjtm;
-import blan;
+import bmew;
+import bnlx;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 
 class EditVideoActivity$1
@@ -11,13 +11,13 @@ class EditVideoActivity$1
   
   public void run()
   {
-    blan.a(QQStoryContext.a().a(), this.this$0);
-    bjtm.a(QQStoryContext.a().a(), this.this$0);
+    bnlx.a(QQStoryContext.a().a(), this.this$0);
+    bmew.a(QQStoryContext.a().a(), this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,43 @@
-public abstract interface xdj
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
+
+public class xdj
+  implements AdapterView.OnItemClickListener
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  public xdj(FacePanel paramFacePanel) {}
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
+    if (DoodleLayout.a) {}
+    for (paramAdapterView = "2";; paramAdapterView = "1")
+    {
+      DoodleLayout.a("change_face", 0, 0, new String[] { paramAdapterView });
+      if (this.a.jdField_a_of_type_Xdt != null)
+      {
+        paramAdapterView = this.a.jdField_a_of_type_Xdt.a(paramInt);
+        if ((paramAdapterView != null) && ((paramAdapterView instanceof xdi)))
+        {
+          wtb.a("0X80076C7", "", "", ((xdi)paramAdapterView).a, "");
+          wtb.a("0X80075DC", ((xdi)paramAdapterView).a);
+        }
+      }
+      if (paramInt == 1)
+      {
+        wtb.a("0X80076CC");
+        wtb.b("0X80075E1");
+      }
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     xdj
  * JD-Core Version:    0.7.0.1
  */

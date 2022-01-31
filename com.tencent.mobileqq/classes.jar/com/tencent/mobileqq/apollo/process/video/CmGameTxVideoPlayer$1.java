@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.process.video;
 
-import ajef;
-import ajen;
+import akvr;
+import akvz;
 import android.os.Handler;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -9,30 +9,30 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class CmGameTxVideoPlayer$1
   implements Runnable
 {
-  public CmGameTxVideoPlayer$1(ajef paramajef) {}
+  public CmGameTxVideoPlayer$1(akvr paramakvr) {}
   
   public void run()
   {
-    if (ajef.a(this.this$0) < 0L) {}
+    if (akvr.a(this.this$0) < 0L) {}
     do
     {
       return;
-      Iterator localIterator = ajef.a(this.this$0).iterator();
+      Iterator localIterator = akvr.a(this.this$0).iterator();
       while (localIterator.hasNext())
       {
-        ajen localajen = (ajen)localIterator.next();
-        if (localajen != null) {
-          localajen.a(ajef.a(this.this$0), this.this$0.a() / 1000L);
+        akvz localakvz = (akvz)localIterator.next();
+        if (localakvz != null) {
+          localakvz.a(akvr.a(this.this$0), this.this$0.a());
         }
       }
-      ajef.b(this.this$0);
-    } while (ajef.a(this.this$0) == null);
-    ajef.a(this.this$0).postDelayed(this, 1000L);
+      akvr.a(this.this$0, this.this$0.a() - this.this$0.b());
+    } while (akvr.a(this.this$0) == null);
+    akvr.a(this.this$0).postDelayed(this, akvr.b(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.process.video.CmGameTxVideoPlayer.1
  * JD-Core Version:    0.7.0.1
  */

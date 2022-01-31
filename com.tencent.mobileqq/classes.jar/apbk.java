@@ -1,34 +1,23 @@
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.SpecialCareInfo;
 
-class apbk
-  extends apbm
+public final class apbk
+  implements Parcelable.Creator<SpecialCareInfo>
 {
-  public apbk(apbi paramapbi)
+  public SpecialCareInfo a(Parcel paramParcel)
   {
-    super(paramapbi);
+    return new SpecialCareInfo(paramParcel);
   }
   
-  protected String a()
+  public SpecialCareInfo[] a(int paramInt)
   {
-    return "StateAcceptByPCWhenPause";
-  }
-  
-  protected void a()
-  {
-    if (this.jdField_a_of_type_Apbi.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
-    {
-      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
-      return;
-    }
-    apbi.b(this.jdField_a_of_type_Apbi, 11, 5);
-    apbi.c(this.jdField_a_of_type_Apbi, 11, 5);
-    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Apbi.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Apbm.a() + "->StateAcceptByPC)");
-    this.jdField_a_of_type_Apbm = new apbj(this.jdField_a_of_type_Apbi);
+    return new SpecialCareInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     apbk
  * JD-Core Version:    0.7.0.1
  */

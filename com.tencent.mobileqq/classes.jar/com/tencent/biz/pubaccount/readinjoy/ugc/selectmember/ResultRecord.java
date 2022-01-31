@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.ugc.selectmember;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qhj;
+import qvo;
 
 public class ResultRecord
   implements Parcelable
 {
-  public static final Parcelable.Creator<ResultRecord> CREATOR = new qhj();
+  public static final Parcelable.Creator<ResultRecord> CREATOR = new qvo();
   private int jdField_a_of_type_Int;
   private String jdField_a_of_type_JavaLangString;
   private String b;
@@ -96,7 +96,7 @@ public class ResultRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.ugc.selectmember.ResultRecord
  * JD-Core Version:    0.7.0.1
  */

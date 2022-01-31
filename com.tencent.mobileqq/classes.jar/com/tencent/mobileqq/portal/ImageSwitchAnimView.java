@@ -5,12 +5,12 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
-import aure;
+import awiq;
 
 public class ImageSwitchAnimView
   extends View
 {
-  private aure a = new aure(getContext(), 0, 0, 0, 0, 0, 0, 0, 0);
+  private awiq a = new awiq(getContext(), 0, 0, 0, 0, 0, 0, 0, 0);
   
   public ImageSwitchAnimView(Context paramContext)
   {
@@ -95,7 +95,7 @@ public class ImageSwitchAnimView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ImageSwitchAnimView
  * JD-Core Version:    0.7.0.1
  */

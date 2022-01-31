@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import afcw;
-import auko;
-import aulz;
-import aumc;
+import ahab;
+import awbv;
+import awdg;
+import awdj;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 
 public class PhoneContact
-  extends auko
+  extends awbv
   implements Serializable, Cloneable
 {
   public int ability;
@@ -34,7 +34,7 @@ public class PhoneContact
   public String md5;
   @Deprecated
   public String mobileCode;
-  @aumc
+  @awdj
   public String mobileNo;
   public String name;
   @Deprecated
@@ -45,12 +45,12 @@ public class PhoneContact
   @Deprecated
   public long originBinder;
   public String pinyinAll;
-  @aulz
+  @awdg
   public String pinyinFirst;
   public String pinyinInitial;
   public String remark;
   public byte[] richBuffer;
-  @aulz
+  @awdg
   private RichStatus richStatus;
   public long richTime;
   public int samFriend;
@@ -92,7 +92,7 @@ public class PhoneContact
         i = this.netTypeIconId;
       }
     }
-    afcw localafcw;
+    ahab localahab;
     do
     {
       return i;
@@ -101,7 +101,7 @@ public class PhoneContact
       if (((this.detalStatusFlag == -55) && (this.iTermType == 68361) && ((this.abilityBits & 1L) == 0L)) || (this.iTermType == 68104) || (this.iTermType == 65805)) {
         return 0;
       }
-      localafcw = afcw.a();
+      localahab = ahab.a();
       if (this.eNetworkType != 0) {
         break;
       }
@@ -109,8 +109,8 @@ public class PhoneContact
         return 0;
       }
       i = j;
-    } while (1 != localafcw.a(this.iTermType, 1));
-    if (1 != localafcw.a(this.iTermType, 1)) {
+    } while (1 != localahab.a(this.iTermType, 1));
+    if (1 != localahab.a(this.iTermType, 1)) {
       i = j;
     }
     switch (this.netTypeIconId)
@@ -152,7 +152,7 @@ public class PhoneContact
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.data.PhoneContact
  * JD-Core Version:    0.7.0.1
  */

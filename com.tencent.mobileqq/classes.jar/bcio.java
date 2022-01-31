@@ -1,39 +1,44 @@
-import java.lang.reflect.Method;
+import android.content.res.Resources;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class bcio
+class bcio
+  extends ypi
 {
-  public static Class a(ClassLoader paramClassLoader, String paramString)
-  {
-    try
-    {
-      paramClassLoader = paramClassLoader.loadClass(paramString);
-      return paramClassLoader;
-    }
-    catch (ClassNotFoundException paramClassLoader)
-    {
-      paramClassLoader.printStackTrace();
-    }
-    return null;
-  }
+  bcio(bcil parambcil) {}
   
-  public static Method a(Class paramClass, String paramString, Class[] paramArrayOfClass)
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle, String paramString1, String paramString2)
   {
-    try
-    {
-      paramClass = paramClass.getDeclaredMethod(paramString, paramArrayOfClass);
-      paramClass.setAccessible(true);
-      return paramClass;
+    if (paramBundle == null) {
+      return;
     }
-    catch (NoSuchMethodException paramClass)
+    int i = BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131298914);
+    paramBundle = paramBundle.getString("fileId");
+    bbrc.c("TroopFileManager", bbrc.a, "delete onActionResult: fileId:" + paramBundle + " isSuccess:" + paramBoolean + " errorCode:" + paramInt);
+    if (paramBoolean)
     {
-      paramClass.printStackTrace();
+      this.a.b(paramBundle);
+      return;
     }
-    return null;
+    switch (paramInt)
+    {
+    default: 
+      QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131715747), 0).b(i);
+      return;
+    case -302: 
+    case -301: 
+    case -103: 
+      QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131715744), 0).b(i);
+      this.a.a(paramBundle);
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getApplication(), alpo.a(2131715728), 0).b(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bcio
  * JD-Core Version:    0.7.0.1
  */

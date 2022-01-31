@@ -6,7 +6,7 @@ import android.net.Uri;
 import android.os.Looper;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
-import bfnx;
+import bhos;
 import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -585,7 +585,7 @@ public class AppBrandUtil
         localStringBuilder.append(str1).append('=').append(str2);
       }
     }
-    return bfnx.a(localStringBuilder.toString());
+    return bhos.a(localStringBuilder.toString());
   }
   
   public static boolean needUpdate(MiniAppInfo paramMiniAppInfo1, MiniAppInfo paramMiniAppInfo2)
@@ -641,7 +641,7 @@ public class AppBrandUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil
  * JD-Core Version:    0.7.0.1
  */

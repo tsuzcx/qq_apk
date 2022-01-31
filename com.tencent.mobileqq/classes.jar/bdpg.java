@@ -1,46 +1,28 @@
-import cooperation.wadl.ipc.WadlResult;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule;
+import com.tencent.mobileqq.vas.QuickUpdateIPCModule.Params;
+import eipc.EIPCResult;
 
 public class bdpg
-  extends bdoz
+  implements bdpe
 {
-  private WeakReference<bdph> a;
+  public bdpg(QuickUpdateIPCModule paramQuickUpdateIPCModule, int paramInt) {}
   
-  public bdpg()
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    super(false, null);
-  }
-  
-  public void a(bdph parambdph)
-  {
-    this.a = new WeakReference(parambdph);
-  }
-  
-  public void onQueryCallback(ArrayList<WadlResult> paramArrayList)
-  {
-    super.onQueryCallback(paramArrayList);
-    if ((this.a != null) && (this.a.get() != null)) {
-      ((bdph)this.a.get()).a(paramArrayList);
-    }
-  }
-  
-  public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
-  {
-    super.onWadlTaskStatusChanged(paramWadlResult);
-    if ((paramWadlResult == null) || (paramWadlResult.a == null)) {}
-    int i;
-    do
-    {
-      return;
-      i = bdpe.a(paramWadlResult.b);
-    } while ((this.a == null) || (this.a.get() == null));
-    ((bdph)this.a.get()).a(i, paramWadlResult);
+    QuickUpdateIPCModule.Params localParams = new QuickUpdateIPCModule.Params(null);
+    localParams.intVal = paramInt;
+    localParams.strVal1 = paramString1;
+    localParams.strVal2 = paramString2;
+    paramString1 = new Bundle();
+    paramString1.putSerializable("params", localParams);
+    paramString1 = EIPCResult.createResult(0, paramString1);
+    this.jdField_a_of_type_ComTencentMobileqqVasQuickUpdateIPCModule.callbackResult(this.jdField_a_of_type_Int, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bdpg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,68 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.ReportWatchVideoEntry;
 
-class uri
-  extends ste<uqv, upt>
+public class uri
 {
-  uri(uqv paramuqv)
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  
+  public uri() {}
+  
+  public uri(String paramString1, String paramString2, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2)
   {
-    super(paramuqv);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
-  public void a(@NonNull uqv paramuqv, @NonNull upt paramupt)
+  public ReportWatchVideoEntry a()
   {
-    if ((!paramupt.jdField_a_of_type_Boolean) || (!paramupt.jdField_a_of_type_JavaLangString.equals(uqv.a(paramuqv))) || (paramupt.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (uqv.a(paramuqv) == null))
-    {
-      ved.b(this.TAG, "ignore this like list event. %s.", paramupt.toString());
-      return;
+    ReportWatchVideoEntry localReportWatchVideoEntry = new ReportWatchVideoEntry();
+    localReportWatchVideoEntry.vid = this.jdField_a_of_type_JavaLangString;
+    localReportWatchVideoEntry.videoUnionId = this.jdField_b_of_type_JavaLangString;
+    localReportWatchVideoEntry.isLiveVideo = this.jdField_a_of_type_Boolean;
+    localReportWatchVideoEntry.createTime = this.jdField_a_of_type_Long;
+    localReportWatchVideoEntry.source = this.jdField_a_of_type_Int;
+    localReportWatchVideoEntry.vidType = this.jdField_b_of_type_Int;
+    return localReportWatchVideoEntry;
+  }
+  
+  public void a(ReportWatchVideoEntry paramReportWatchVideoEntry)
+  {
+    this.jdField_a_of_type_JavaLangString = paramReportWatchVideoEntry.vid;
+    this.jdField_b_of_type_JavaLangString = paramReportWatchVideoEntry.videoUnionId;
+    this.jdField_a_of_type_Boolean = paramReportWatchVideoEntry.isLiveVideo;
+    this.jdField_a_of_type_Long = paramReportWatchVideoEntry.createTime;
+    this.jdField_a_of_type_Int = paramReportWatchVideoEntry.source;
+    this.jdField_b_of_type_Int = paramReportWatchVideoEntry.vidType;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
     }
-    ved.a(this.TAG, "receive like list event. %s.", paramupt.toString());
-    boolean bool2 = uqv.a(paramuqv);
-    if (paramupt.jdField_a_of_type_Int == 0) {}
-    for (boolean bool1 = false;; bool1 = true)
-    {
-      uqv.a(paramuqv).b(bool1, paramupt.b);
-      uqv.a(paramuqv).b(paramupt.jdField_a_of_type_JavaUtilList, true, bool1);
-      if (bool2 != bool1) {
-        break;
-      }
-      paramuqv.a();
-      return;
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return false;
     }
+    paramObject = (uri)paramObject;
+    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
   }
   
-  public Class acceptEventClass()
+  public String toString()
   {
-    return upt.class;
+    return "InnerVideoItem { mVid=" + this.jdField_a_of_type_JavaLangString + " mVideoUid=" + this.jdField_b_of_type_JavaLangString + " mIsLiveVideo=" + this.jdField_a_of_type_Boolean + " mCreateTime=" + this.jdField_a_of_type_Long + " mSource=" + this.jdField_a_of_type_Int + " mVidType=" + this.jdField_b_of_type_Int + "}";
   }
-  
-  public void b(@NonNull uqv paramuqv, @NonNull upt paramupt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     uri
  * JD-Core Version:    0.7.0.1
  */

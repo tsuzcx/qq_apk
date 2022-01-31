@@ -1,13 +1,13 @@
 package dov.com.qq.im;
 
-import agmg;
 import android.media.MediaFormat;
-import bbdx;
-import bigp;
-import bigq;
-import blcz;
+import bdcs;
+import bkil;
+import bkim;
+import bnoj;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
 import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
 import com.tencent.mobileqq.utils.AudioHelper;
@@ -16,16 +16,16 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import wav;
+import xpn;
 
 public class QIMCameraCaptureUnit$10
   implements Runnable
 {
-  public QIMCameraCaptureUnit$10(bigp parambigp, List paramList) {}
+  public QIMCameraCaptureUnit$10(bkil parambkil, List paramList) {}
   
   public void run()
   {
-    wav localwav = new wav();
+    xpn localxpn = new xpn();
     ArrayList localArrayList1 = new ArrayList(this.a.size());
     ArrayList localArrayList2 = new ArrayList(this.a.size());
     this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult = new CameraCaptureView.VideoCaptureResult();
@@ -48,28 +48,28 @@ public class QIMCameraCaptureUnit$10
       if (localArrayList2.size() != this.a.size()) {
         break label509;
       }
-      localObject1 = this.this$0.a() + File.separator + "audio_data_cache" + File.separator + blcz.a();
-      localwav.a(localArrayList2, (String)localObject1);
+      localObject1 = this.this$0.a() + File.separator + "audio_data_cache" + File.separator + bnoj.a();
+      localxpn.a(localArrayList2, (String)localObject1);
       this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.audioDataFilePath = ((String)localObject1);
       this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath = ((String)localObject2);
       this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.type = ((CameraCaptureView.VideoCaptureResult)this.a.get(0)).type;
       this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.orientation = ((CameraCaptureView.VideoCaptureResult)this.a.get(0)).orientation;
-      bigp.a(this.this$0, new LocalMediaInfo());
-      bigp.a(this.this$0).path = this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath;
-      bigp.a(this.this$0).mMimeType = "video";
+      bkil.a(this.this$0, new LocalMediaInfo());
+      bkil.a(this.this$0).path = this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoMp4FilePath;
+      bkil.a(this.this$0).mMimeType = "video";
       localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.a();
       if (localObject1 == null) {
         break label562;
       }
-      bool = localwav.a(localArrayList1, (String)localObject2, 0, 0, (MediaFormat)localObject1);
+      bool = localxpn.a(localArrayList1, (String)localObject2, 0, 0, (MediaFormat)localObject1);
       if (!AudioHelper.f()) {
         break label542;
       }
-      bigp.a(this.this$0).mTransferPosList = localwav.a(localArrayList1, (String)localObject2);
+      bkil.a(this.this$0).mTransferPosList = localxpn.a(localArrayList1, (String)localObject2);
       if (QLog.isColorLevel()) {
         QLog.d("QIMCameraCaptureUnit", 2, "[segmentCapture] onSegmentVideoCaptured segment video merge result: " + bool);
       }
-      agmg.a(BaseApplicationImpl.getContext()).a(new bigq(this), bigp.a(this.this$0));
+      MediaScanner.getInstance(BaseApplicationImpl.getContext()).queryMediaInfoAsync(new bkim(this), bkil.a(this.this$0));
     }
     label509:
     while (!QLog.isColorLevel()) {
@@ -78,9 +78,9 @@ public class QIMCameraCaptureUnit$10
         boolean bool;
         return;
         localObject1 = this.this$0.a() + "/noaudio";
-        bbdx.c((String)localObject1);
+        bdcs.c((String)localObject1);
         break;
-        bigp.a(this.this$0).mTransferPosList = localwav.a(localArrayList1);
+        bkil.a(this.this$0).mTransferPosList = localxpn.a(localArrayList1);
       }
     }
     label542:
@@ -90,7 +90,7 @@ public class QIMCameraCaptureUnit$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     dov.com.qq.im.QIMCameraCaptureUnit.10
  * JD-Core Version:    0.7.0.1
  */

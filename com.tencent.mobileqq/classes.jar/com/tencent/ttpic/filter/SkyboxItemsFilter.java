@@ -1,14 +1,18 @@
 package com.tencent.ttpic.filter;
 
 import android.graphics.Bitmap;
+import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.ttpic.openapi.PTDetectInfo;
 import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.trigger.TriggerCtrlItem;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 public class SkyboxItemsFilter
+  implements AEFilterI
 {
   private int blendMode;
   private MaskBlendFilter maskBlendFilter;
@@ -26,6 +30,11 @@ public class SkyboxItemsFilter
     }
     this.maskBlendFilter = new MaskBlendFilter();
     this.blendMode = ((StickerItem)paramList.get(0)).blendMode;
+  }
+  
+  public Frame RenderProcess(Frame paramFrame)
+  {
+    return paramFrame;
   }
   
   public void apply()
@@ -71,6 +80,24 @@ public class SkyboxItemsFilter
       return paramBitmap;
     }
   }
+  
+  public void setTriggerCtrlItemMap(HashMap<String, TriggerCtrlItem> paramHashMap)
+  {
+    if (paramHashMap != null)
+    {
+      Iterator localIterator = this.skyboxFilters.iterator();
+      while (localIterator.hasNext())
+      {
+        SkyboxFilter localSkyboxFilter = (SkyboxFilter)localIterator.next();
+        TriggerCtrlItem localTriggerCtrlItem = (TriggerCtrlItem)paramHashMap.get(localSkyboxFilter.getItemId());
+        if (localTriggerCtrlItem != null) {
+          localSkyboxFilter.setTriggerCtrlItem(localTriggerCtrlItem);
+        }
+      }
+    }
+  }
+  
+  public void updatePreview(Object paramObject) {}
 }
 
 

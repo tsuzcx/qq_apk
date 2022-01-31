@@ -1,55 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.CustomImgView;
+import com.tencent.mobileqq.apollo.data.CmGamePushItem;
+import java.util.Comparator;
 
-public class aknr
-  implements View.OnClickListener
+class aknr
+  implements Comparator<CmGamePushItem>
 {
-  public aknr(AIOIceBreakView paramAIOIceBreakView) {}
+  aknr(aknq paramaknq) {}
   
-  public void onClick(View paramView)
+  public int a(CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2)
   {
-    int i = 1;
-    QLog.i("IceBreak.HotPic", 2, "onClick.");
-    URLImageView localURLImageView = (URLImageView)((CustomImgView)paramView).a;
-    paramView = (aewf)paramView.getTag();
-    if ((localURLImageView.getDrawable() instanceof URLDrawable))
-    {
-      if (((URLDrawable)localURLImageView.getDrawable()).getStatus() == 1) {
-        AIOIceBreakView.a(this.a, paramView);
-      }
+    if (paramCmGamePushItem1.start_ts == paramCmGamePushItem2.start_ts) {
+      return paramCmGamePushItem2.send_time - paramCmGamePushItem1.send_time;
     }
-    else if (AIOIceBreakView.a(this.a).a.a != 1044) {
-      if (AIOIceBreakView.a(this.a).a.a != 0) {
-        break label167;
-      }
-    }
-    for (;;)
-    {
-      axqy.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CB", "0X800A4CB", i, 0, "", "", "", "");
-      if (AIOIceBreakView.a(this.a) != null) {
-        AIOIceBreakView.a(this.a).a(localURLImageView);
-      }
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("IceBreak.HotPic", 2, "onClick:URLDrawable status != successed");
-      break;
-      label167:
-      i = 2;
-    }
+    return paramCmGamePushItem2.start_ts - paramCmGamePushItem1.start_ts;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aknr
  * JD-Core Version:    0.7.0.1
  */

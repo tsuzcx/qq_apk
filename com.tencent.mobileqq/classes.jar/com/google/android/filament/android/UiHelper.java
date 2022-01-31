@@ -1,14 +1,14 @@
 package com.google.android.filament.android;
 
 import android.graphics.Rect;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class UiHelper
 {
@@ -160,7 +160,7 @@ public class UiHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.google.android.filament.android.UiHelper
  * JD-Core Version:    0.7.0.1
  */

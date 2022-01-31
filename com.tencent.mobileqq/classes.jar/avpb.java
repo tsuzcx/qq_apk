@@ -1,56 +1,47 @@
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.content.Context;
+import android.view.animation.Interpolator;
+import android.widget.Scroller;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
+import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
+import java.lang.reflect.Field;
 
 public class avpb
-  extends RecyclerView.ItemDecoration
+  extends Scroller
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private int b;
-  
-  private avpb(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public avpb(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    super(paramContext, paramInterpolator);
   }
   
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public void a()
   {
-    paramRect.set(0, 0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
-  }
-  
-  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    int j = paramRecyclerView.getPaddingLeft();
-    int k = this.jdField_a_of_type_Int;
-    int m = paramRecyclerView.getWidth();
-    int n = paramRecyclerView.getPaddingRight();
-    int i1 = this.b;
-    int i2 = paramRecyclerView.getChildCount();
-    int i = 0;
-    while (i < i2)
+    try
     {
-      paramState = paramRecyclerView.getChildAt(i);
-      RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramState.getLayoutParams();
-      int i3 = paramState.getBottom();
-      i3 = localLayoutParams.bottomMargin + i3;
-      int i4 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(j + k, i3, m - n - i1, i4 + i3);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      i += 1;
+      Field localField = AvatarWallViewPager.RollViewPager.class.getDeclaredField("mScroller");
+      localField.setAccessible(true);
+      localField.set(this.a.a, this);
+      localField.setAccessible(false);
+      return;
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
+  }
+  
+  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     avpb
  * JD-Core Version:    0.7.0.1
  */

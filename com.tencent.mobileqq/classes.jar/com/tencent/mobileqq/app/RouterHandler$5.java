@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.app;
 
-import ajum;
+import allz;
 import com.tencent.litetransfersdk.LiteTransferWrapper;
 import com.tencent.litetransfersdk.ProtocolHelper;
 import com.tencent.litetransfersdk.Session;
@@ -28,7 +28,7 @@ class RouterHandler$5
         if (localRouterMsgRecord.uSessionID != this.a) {
           break label225;
         }
-        localObject2 = this.this$0.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(0, localRouterMsgRecord.filename, null, ajum.b(localRouterMsgRecord.msgtype), 0, this.a, 0, 0, 0);
+        localObject2 = this.this$0.jdField_a_of_type_ComTencentLitetransfersdkProtocolHelper.genSession(0, localRouterMsgRecord.filename, null, allz.b(localRouterMsgRecord.msgtype), 0, this.a, 0, 0, 0);
         localObject1 = localObject2;
         if (localObject2 == null) {
           break label225;

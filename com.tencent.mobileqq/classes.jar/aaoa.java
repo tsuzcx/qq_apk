@@ -1,50 +1,110 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import android.text.TextUtils;
+import com.tencent.gdtad.aditem.GdtAd;
+import java.net.URLEncoder;
+import org.json.JSONObject;
 
-final class aaoa
-  implements auoq
+public class aaoa
 {
-  aaoa(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface) {}
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
-  {
-    return null;
-  }
-  
-  public void a(auor paramauor) {}
-  
-  public void b(auor paramauor)
+  public static String a(int paramInt)
   {
     try
     {
-      if (paramauor.jdField_a_of_type_Int == 0)
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("pp", String.valueOf(paramInt));
+      ((JSONObject)localObject).put("ps", String.valueOf(1));
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (Exception localException) {}
+    return null;
+  }
+  
+  public static String a(long paramLong1, long paramLong2, boolean paramBoolean, int paramInt)
+  {
+    int k = 1;
+    int i;
+    if ((paramLong1 >= 0L) && (paramLong2 == 0L)) {
+      i = 4;
+    }
+    for (;;)
+    {
+      long l = paramLong1;
+      if (paramLong1 <= -1L)
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.resIDForLongMsg = paramauor.c;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
-        return;
+        i = 4;
+        l = 0L;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, result.errStr=" + paramauor.b + ",result.errStr=" + paramauor.jdField_a_of_type_JavaLangString);
+      if (l >= paramLong2) {
+        i = 4;
       }
-      astu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      try
+      {
+        Object localObject = new JSONObject();
+        ((JSONObject)localObject).put("bt", l + "");
+        ((JSONObject)localObject).put("et", paramLong2 + "");
+        StringBuilder localStringBuilder = new StringBuilder();
+        if (l > 0L)
+        {
+          j = 0;
+          ((JSONObject)localObject).put("bf", j + "");
+          localStringBuilder = new StringBuilder();
+          if (!paramBoolean) {
+            break label249;
+          }
+        }
+        label249:
+        for (int j = k;; j = 0)
+        {
+          ((JSONObject)localObject).put("ef", j + "");
+          ((JSONObject)localObject).put("pp", String.valueOf(paramInt));
+          ((JSONObject)localObject).put("pa", i + "");
+          localObject = ((JSONObject)localObject).toString();
+          return localObject;
+          j = 1;
+          break;
+        }
+        i = 0;
+      }
+      catch (Exception localException)
+      {
+        return null;
+      }
+    }
+  }
+  
+  public static void a(GdtAd paramGdtAd, String paramString)
+  {
+    if ((paramGdtAd == null) || (TextUtils.isEmpty(paramGdtAd.getUrlForImpression()))) {
       return;
     }
-    catch (Exception paramauor)
+    a(paramGdtAd.getUrlForImpression(), paramString);
+  }
+  
+  public static void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    aaob.a(paramString);
+  }
+  
+  private static void a(String paramString1, String paramString2)
+  {
+    if (TextUtils.isEmpty(paramString1)) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramString2)) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, catch exception", paramauor);
-      }
-      astu.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      aaob.a(paramString1);
+      return;
+      paramString1 = paramString1 + "&" + "video" + "=" + URLEncoder.encode(paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaoa
  * JD-Core Version:    0.7.0.1
  */

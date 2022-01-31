@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.view;
 
-import akzk;
-import akzv;
-import allf;
+import amqa;
+import amql;
+import anbv;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,33 +27,33 @@ public class ScanGLRenderEnvFragment
   
   private void c()
   {
-    boolean bool = akzv.a();
+    boolean bool = amql.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("initVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = new VideoRecordController(getActivity());
-        akzk.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+        amqa.a().a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       }
-      allf localallf = this.jdField_a_of_type_Allf;
-      if (localallf != null) {
-        localallf.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+      anbv localanbv = this.jdField_a_of_type_Anbv;
+      if (localanbv != null) {
+        localanbv.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       }
     }
   }
   
   private void d()
   {
-    boolean bool = akzv.a();
+    boolean bool = amql.a();
     QLog.d("AREngine_ScanGLRenderEnvFragment", 2, String.format("unInitVideoRecord support=%s", new Object[] { Boolean.valueOf(bool) }));
     if (bool)
     {
-      allf localallf = this.jdField_a_of_type_Allf;
-      if (localallf != null) {
-        localallf.a(null);
+      anbv localanbv = this.jdField_a_of_type_Anbv;
+      if (localanbv != null) {
+        localanbv.a(null);
       }
-      akzk.a().b(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
+      amqa.a().b(this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController);
       if (this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController != null) {
         this.jdField_a_of_type_ComTencentMobileqqArARRecordVideoRecordController = null;
       }
@@ -93,7 +93,7 @@ public class ScanGLRenderEnvFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanGLRenderEnvFragment
  * JD-Core Version:    0.7.0.1
  */

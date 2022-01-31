@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.activity;
 
-import ajsd;
+import aljq;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import awjr;
+import ayer;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -75,7 +75,7 @@ public class ContactSearchComponentActivity
     ArrayList localArrayList = new ArrayList();
     if ((i == 7) || (i == 6) || (i == 23))
     {
-      localArrayList.add(ajsd.aC);
+      localArrayList.add(aljq.aC);
       return ContactSearchFragment.a(i, j, str, localArrayList, null, false, 0, getIntent().getLongExtra("contactSearchResultFilterType", -1L));
     }
     return super.a();
@@ -85,7 +85,7 @@ public class ContactSearchComponentActivity
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    findViewById(2131375704).setOnTouchListener(new awjr(this));
+    findViewById(2131376197).setOnTouchListener(new ayer(this));
     return true;
   }
   
@@ -97,7 +97,7 @@ public class ContactSearchComponentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ContactSearchComponentActivity
  * JD-Core Version:    0.7.0.1
  */

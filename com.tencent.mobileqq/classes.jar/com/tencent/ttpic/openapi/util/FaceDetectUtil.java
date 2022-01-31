@@ -6,6 +6,7 @@ import android.graphics.PointF;
 import android.graphics.Rect;
 import android.text.TextUtils;
 import android.util.Pair;
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.faceBeauty.AndroidFaceDetect;
 import com.tencent.faceBeauty.FaceDetect;
 import com.tencent.faceBeauty.FaceParam;
@@ -15,6 +16,7 @@ import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
 import com.tencent.ttpic.openapi.PTFaceAttr;
 import com.tencent.ttpic.openapi.PTFaceAttr.Builder;
 import com.tencent.ttpic.openapi.PTFaceAttr.PTExpression;
+import com.tencent.ttpic.openapi.PTFaceDetector;
 import com.tencent.ttpic.openapi.facedetect.FaceInfo;
 import com.tencent.ttpic.openapi.facedetect.FaceParams;
 import com.tencent.ttpic.openapi.initializer.FaceDetectInitializer;
@@ -77,6 +79,19 @@ public class FaceDetectUtil
       return 2;
     }
     return 0;
+  }
+  
+  public static PTFaceAttr detectFace(Bitmap paramBitmap, double paramDouble)
+  {
+    int i = RendererUtils.createTexture(paramBitmap);
+    paramBitmap = new Frame(0, i, paramBitmap.getWidth(), paramBitmap.getHeight());
+    PTFaceDetector localPTFaceDetector = new PTFaceDetector();
+    localPTFaceDetector.init(true);
+    PTFaceAttr localPTFaceAttr = localPTFaceDetector.detectFrame(paramBitmap, System.currentTimeMillis(), 0, false, paramDouble, 0.0F, true, null);
+    paramBitmap.clear();
+    RendererUtils.clearTexture(i);
+    localPTFaceDetector.destroy();
+    return localPTFaceAttr;
   }
   
   public static List<FaceParam> detectFacesByBitmap(Bitmap paramBitmap, boolean paramBoolean)
@@ -315,7 +330,7 @@ public class FaceDetectUtil
       ((FaceInfo)localObject3).denseFaceModel = null;
       ((FaceInfo)localObject3).transform = null;
       ((FaceInfo)localObject3).expressionWeights = null;
-      ((FaceInfo)localObject3).gender = GenderType.FEMALE.value;
+      ((FaceInfo)localObject3).gender = GenderType.DEFAULT.value;
       localArrayList.add(localObject3);
     }
     Object localObject7 = new ArrayList();
@@ -411,67 +426,67 @@ public class FaceDetectUtil
     //   6: aload_0
     //   7: ifnull +13 -> 20
     //   10: aload_0
-    //   11: invokevirtual 173	android/graphics/Bitmap:isRecycled	()Z
+    //   11: invokevirtual 213	android/graphics/Bitmap:isRecycled	()Z
     //   14: ifeq +8 -> 22
     //   17: aload 4
     //   19: astore_1
     //   20: aload_1
     //   21: areturn
-    //   22: new 81	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect
+    //   22: new 130	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect
     //   25: dup
-    //   26: invokespecial 82	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:<init>	()V
+    //   26: invokespecial 131	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:<init>	()V
     //   29: astore_2
     //   30: aload_2
     //   31: astore_1
     //   32: aload_2
     //   33: iconst_1
-    //   34: invokevirtual 86	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:needDetectFaceFeatures	(Z)V
+    //   34: invokevirtual 134	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:needDetectFaceFeatures	(Z)V
     //   37: aload_2
     //   38: astore_1
     //   39: aload_2
     //   40: iconst_1
-    //   41: invokevirtual 205	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:needDetectFaceGender	(Z)V
+    //   41: invokevirtual 245	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:needDetectFaceGender	(Z)V
     //   44: aload_2
     //   45: astore_1
     //   46: aload_2
     //   47: aload_0
-    //   48: invokevirtual 90	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:detectFace	(Landroid/graphics/Bitmap;)V
+    //   48: invokevirtual 137	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:detectFace	(Landroid/graphics/Bitmap;)V
     //   51: aload_2
     //   52: astore_1
     //   53: aload_2
-    //   54: invokevirtual 93	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:detectedFace	()Z
+    //   54: invokevirtual 140	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:detectedFace	()Z
     //   57: ifeq +72 -> 129
     //   60: aload_2
     //   61: astore_1
     //   62: getstatic 30	com/tencent/ttpic/openapi/util/FaceDetectUtil:TAG	Ljava/lang/String;
-    //   65: new 490	java/lang/StringBuilder
+    //   65: new 524	java/lang/StringBuilder
     //   68: dup
-    //   69: invokespecial 491	java/lang/StringBuilder:<init>	()V
-    //   72: ldc_w 493
-    //   75: invokevirtual 497	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: invokespecial 525	java/lang/StringBuilder:<init>	()V
+    //   72: ldc_w 527
+    //   75: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: aload_0
-    //   79: invokevirtual 500	android/graphics/Bitmap:getWidth	()I
-    //   82: invokevirtual 503	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   85: ldc_w 505
-    //   88: invokevirtual 497	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: invokevirtual 93	android/graphics/Bitmap:getWidth	()I
+    //   82: invokevirtual 534	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   85: ldc_w 536
+    //   88: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   91: aload_0
-    //   92: invokevirtual 508	android/graphics/Bitmap:getHeight	()I
-    //   95: invokevirtual 503	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   98: ldc_w 510
-    //   101: invokevirtual 497	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: invokevirtual 513	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: invokestatic 519	com/tencent/ttpic/baseutils/log/LogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   92: invokevirtual 96	android/graphics/Bitmap:getHeight	()I
+    //   95: invokevirtual 534	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   98: ldc_w 538
+    //   101: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   104: invokevirtual 541	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   107: invokestatic 547	com/tencent/ttpic/baseutils/log/LogUtils:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   110: aload_2
     //   111: astore_1
     //   112: aload_2
-    //   113: getfield 522	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:mFaceParams	Ljava/util/List;
+    //   113: getfield 550	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:mFaceParams	Ljava/util/List;
     //   116: astore_0
     //   117: aload_0
     //   118: astore_1
     //   119: aload_2
     //   120: ifnull -100 -> 20
     //   123: aload_2
-    //   124: invokevirtual 104	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
+    //   124: invokevirtual 148	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
     //   127: aload_0
     //   128: areturn
     //   129: aload 4
@@ -479,7 +494,7 @@ public class FaceDetectUtil
     //   132: aload_2
     //   133: ifnull -113 -> 20
     //   136: aload_2
-    //   137: invokevirtual 104	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
+    //   137: invokevirtual 148	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
     //   140: aconst_null
     //   141: areturn
     //   142: astore_3
@@ -488,22 +503,22 @@ public class FaceDetectUtil
     //   145: aload_0
     //   146: astore_1
     //   147: getstatic 30	com/tencent/ttpic/openapi/util/FaceDetectUtil:TAG	Ljava/lang/String;
-    //   150: new 490	java/lang/StringBuilder
+    //   150: new 524	java/lang/StringBuilder
     //   153: dup
-    //   154: invokespecial 491	java/lang/StringBuilder:<init>	()V
-    //   157: ldc_w 524
-    //   160: invokevirtual 497	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   154: invokespecial 525	java/lang/StringBuilder:<init>	()V
+    //   157: ldc_w 552
+    //   160: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   163: aload_3
-    //   164: invokevirtual 527	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   167: invokevirtual 497	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: invokevirtual 513	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   173: invokestatic 530	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   164: invokevirtual 555	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   167: invokevirtual 531	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: invokevirtual 541	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   173: invokestatic 558	com/tencent/ttpic/baseutils/log/LogUtils:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   176: aload 4
     //   178: astore_1
     //   179: aload_0
     //   180: ifnull -160 -> 20
     //   183: aload_0
-    //   184: invokevirtual 104	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
+    //   184: invokevirtual 148	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
     //   187: aconst_null
     //   188: areturn
     //   189: astore_0
@@ -512,7 +527,7 @@ public class FaceDetectUtil
     //   192: aload_1
     //   193: ifnull +7 -> 200
     //   196: aload_1
-    //   197: invokevirtual 104	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
+    //   197: invokevirtual 148	com/tencent/ttpic/util/youtu/TTpicBitmapFaceDetect:destroy	()V
     //   200: aload_0
     //   201: athrow
     //   202: astore_0

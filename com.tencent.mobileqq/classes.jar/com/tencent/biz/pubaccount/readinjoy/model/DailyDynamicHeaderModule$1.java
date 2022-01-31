@@ -1,21 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
-import osj;
-import pae;
+import oxb;
+import pfn;
 
 public class DailyDynamicHeaderModule$1
   implements Runnable
 {
-  public DailyDynamicHeaderModule$1(pae parampae, boolean paramBoolean) {}
+  public DailyDynamicHeaderModule$1(pfn parampfn, boolean paramBoolean) {}
   
   public void run()
   {
-    osj.a().f(this.a);
+    oxb.a().e(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.model.DailyDynamicHeaderModule.1
  * JD-Core Version:    0.7.0.1
  */

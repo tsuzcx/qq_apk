@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import ajya;
-import bcql;
+import alpo;
+import com.tencent.mobileqq.widget.QQToast;
 
 class NearbyPeopleProfileActivity$2$1
   implements Runnable
@@ -11,12 +11,12 @@ class NearbyPeopleProfileActivity$2$1
   public void run()
   {
     this.a.this$0.a();
-    bcql.a(this.a.this$0, 1, ajya.a(2131707248), 0).a();
+    QQToast.a(this.a.this$0, 1, alpo.a(2131707620), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.2.1
  * JD-Core Version:    0.7.0.1
  */

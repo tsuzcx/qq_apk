@@ -63,6 +63,7 @@ public class TVKVideoInfoRequest
     this.mParams = paramTVKVideoInfoParams;
     this.mResponse = paramITVKVideoInfoResponse;
     this.mVideoInfoBuilder = new TVKCGIVideoInfoBuilder();
+    this.mVideoInfoBuilder.setVideoInfoParams(paramTVKVideoInfoParams);
     this.mVinfoRequest = new TVKCGIVInfoRequest(new TVKCGIVInfoRequestParams.TVKCGIVInfoRequestParasBuilder(this.mParams.getVid()).uin(this.mParams.getUin()).dlType(this.mParams.getDlType()).ipstack(this.mParams.getipstack()).isCharge(this.mParams.isCharge()).drm(this.mParams.getDrm()).ckeyExtraParamsMap(this.mParams.getCkeyExtraParamsMap()).extraParamsMap(this.mParams.getExtraParamsMap()).format(this.mParams.getFormat()).loginCookie(this.mParams.getLoginCookie()).platForm(this.mParams.getPlatForm()).sdtFrom(this.mParams.getSdtFrom()).requestType(this.mParams.getRequestType()).playerCapacity(this.mParams.getPlayerCapacity()).requestID(String.valueOf(this.mRequestId)).upc(this.mParams.getUpc()).appVer(this.mParams.getAppVer()).encryptVer(this.mParams.getEncryptVer()).networkType(this.mParams.getNetworkType()).wxOpenId(this.mParams.getWxOpenId()).guid(this.mParams.getGuid()).build(), this.mCGIVInfoResponse);
     this.mVinfoRequest.executeRequest();
     return this.mRequestId;
@@ -70,7 +71,7 @@ public class TVKVideoInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.vod.TVKVideoInfoRequest
  * JD-Core Version:    0.7.0.1
  */

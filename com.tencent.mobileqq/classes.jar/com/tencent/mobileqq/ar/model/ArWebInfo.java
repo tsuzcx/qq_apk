@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import alkt;
+import anbj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ArWebInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<ArWebInfo> CREATOR = new alkt();
+  public static final Parcelable.Creator<ArWebInfo> CREATOR = new anbj();
   public String a;
   public boolean a;
   public String b;
@@ -84,7 +84,7 @@ public class ArWebInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArWebInfo
  * JD-Core Version:    0.7.0.1
  */

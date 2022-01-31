@@ -1,92 +1,81 @@
-import com.tencent.open.downloadnew.DownloadInfo;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.MX3DynamicAvatarRecordActivity;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import java.io.File;
 
-class yzl
-  implements bdld
+public class yzl
+  implements bhqd
 {
-  private WeakReference<yzi> a;
+  public yzl(NewerGuidePlugin paramNewerGuidePlugin, Activity paramActivity, bhpy parambhpy) {}
   
-  yzl(yzi paramyzi)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a = new WeakReference(paramyzi);
-  }
-  
-  public void installSucceed(String paramString1, String paramString2)
-  {
-    yzi localyzi = (yzi)this.a.get();
-    if (localyzi != null) {
-      localyzi.a(paramString1, paramString2);
+    switch (paramInt)
+    {
     }
-  }
-  
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
-  {
-    yzi localyzi = (yzi)this.a.get();
-    if (localyzi != null) {
-      localyzi.d(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    yzi localyzi = (yzi)this.a.get();
-    if (localyzi != null) {
-      localyzi.a(paramDownloadInfo, paramInt1, paramString, paramInt2);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    yzi localyzi = (yzi)this.a.get();
-    if (localyzi != null) {
-      localyzi.c(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    yzi localyzi = (yzi)this.a.get();
-    if (localyzi != null) {
-      localyzi.a(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadUpdate(List<DownloadInfo> paramList)
-  {
-    yzi localyzi = (yzi)this.a.get();
-    if (localyzi != null) {
-      localyzi.a(paramList);
-    }
-  }
-  
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
-  {
-    yzi localyzi = (yzi)this.a.get();
-    if (localyzi != null) {
-      localyzi.b(paramDownloadInfo);
-    }
-  }
-  
-  public void packageReplaced(String paramString1, String paramString2)
-  {
-    yzi localyzi = (yzi)this.a.get();
-    if (localyzi != null) {
-      localyzi.c(paramString1, paramString2);
-    }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    yzi localyzi = (yzi)this.a.get();
-    if (localyzi != null) {
-      localyzi.b(paramString1, paramString2);
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Bhpy.dismiss();
+        return;
+      }
+      catch (Exception paramView) {}
+      paramView = DynamicAvatarRecordActivity.class;
+      if (azcw.d(azcw.c)) {
+        paramView = MX3DynamicAvatarRecordActivity.class;
+      }
+      paramView = new Intent(this.jdField_a_of_type_AndroidAppActivity, paramView);
+      paramView.putExtra("param_source", 1);
+      paramView.putExtra("param_from_newer_guide", true);
+      this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.startActivityForResult(paramView, (byte)100);
+      continue;
+      paramView = bcyw.a();
+      paramInt = bcyw.b(this.jdField_a_of_type_AndroidAppActivity);
+      Object localObject = new Intent();
+      ((Intent)localObject).setClass(this.jdField_a_of_type_AndroidAppActivity, NewPhotoListActivity.class);
+      ((Intent)localObject).putExtra("enter_from", 50);
+      ((Intent)localObject).putExtra("PhotoConst.DEST_BROADCAST_ACTION_NAME", "ACTION_NEWER_GUIDE_SELECT_AVATAR_RESULT");
+      ((Intent)localObject).putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
+      ((Intent)localObject).putExtra("Business_Origin", 100);
+      ((Intent)localObject).putExtra("BUSINESS_ORIGIN_NEW", 100);
+      ((Intent)localObject).putExtra("PhotoConst.PHOTOLIST_KEY_FILTER_GIF_VIDEO", true);
+      ((Intent)localObject).putExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
+      ((Intent)localObject).putExtra("PhotoConst.IS_SINGLE_MODE", true);
+      ((Intent)localObject).putExtra("PhotoConst.IS_SINGLE_NEED_EDIT", true);
+      ((Intent)localObject).putExtra("PhotoConst.TARGET_PATH", paramView);
+      ((Intent)localObject).putExtra("PhotoConst.CLIP_WIDTH", paramInt);
+      ((Intent)localObject).putExtra("PhotoConst.CLIP_HEIGHT", paramInt);
+      ((Intent)localObject).putExtra("PhotoConst.TARGET_WIDTH", 1080);
+      ((Intent)localObject).putExtra("PhotoConst.TARGET_HEIGHT", 1080);
+      ((Intent)localObject).putExtra("PhotoConst.IS_RECODE_LAST_ALBUMPATH", true);
+      ((Intent)localObject).putExtra("PhotoConst.32_Bit_Config", true);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
+      continue;
+      if (!lmm.b(BaseApplicationImpl.getContext()))
+      {
+        paramView = bduw.a(aljq.aX + "photo/");
+        localObject = new File(paramView);
+        if (!((File)localObject).exists()) {
+          ((File)localObject).mkdirs();
+        }
+        paramView = new File(paramView + System.currentTimeMillis() + ".jpg");
+        localObject = new Intent();
+        NewerGuidePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin, FileProvider7Helper.setSystemCapture(this.jdField_a_of_type_AndroidAppActivity, paramView, (Intent)localObject));
+        this.jdField_a_of_type_ComTencentBizWebviewpluginNewerGuidePlugin.startActivityForResult((Intent)localObject, (byte)101);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yzl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,26 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.av.ui.beauty.BeautyBaseView;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
 public class mlz
-  extends PagerAdapter
+  implements DialogInterface.OnClickListener
 {
-  final List<BeautyBaseView> jdField_a_of_type_JavaUtilList = new ArrayList();
+  public mlz(VideoControlUI paramVideoControlUI, long paramLong) {}
   
-  public mlz(List<BeautyBaseView> paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    Collection localCollection;
-    if (localCollection != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(localCollection);
+    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_ComTencentAvUiVideoControlUI.g()) {
+      return;
     }
-  }
-  
-  public BeautyBaseView a(int paramInt)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
-    {
-      localObject1 = localObject2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        localObject1 = (BeautyBaseView)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      }
-    }
-    return localObject1;
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if ((paramViewGroup != null) && ((paramObject instanceof BeautyBaseView))) {
-      paramViewGroup.removeView((BeautyBaseView)paramObject);
-    }
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    BeautyBaseView localBeautyBaseView = a(paramInt);
-    if ((paramViewGroup != null) && (localBeautyBaseView != null)) {
-      paramViewGroup.addView(localBeautyBaseView);
-    }
-    return localBeautyBaseView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.d, 1, "showPermissionNormalDialog.gotoSetting, seq[" + this.jdField_a_of_type_Long + "]");
+    mww.a(this.jdField_a_of_type_ComTencentAvUiVideoControlUI.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mlz
  * JD-Core Version:    0.7.0.1
  */

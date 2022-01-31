@@ -1,21 +1,21 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-class aehq
-  implements DialogInterface.OnClickListener
+public class aehq
+  extends bhnr
 {
-  aehq(aeho paramaeho) {}
+  public aehq(VisitorsActivity paramVisitorsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
-    aegs.u(this.a.a).setResult(8001);
+    this.a.jdField_f_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.jdField_f_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aehq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,27 @@
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aest
-  extends ajxj
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aest(aert paramaert, ImageView paramImageView) {}
+  aest(aess paramaess) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_Aert.a().a))) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bayh.a(this.jdField_a_of_type_Aert.a, paramString, (byte)3));
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (aess.a(this.a) != null) {
+      aess.a(this.a).setAlpha((float)d);
+    }
+    if (aess.a(this.a) != null) {
+      aess.a(this.a).setAlpha((float)d * 2.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aest
  * JD-Core Version:    0.7.0.1
  */

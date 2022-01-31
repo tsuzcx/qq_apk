@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import abzg;
+import adqo;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -9,7 +9,7 @@ import android.text.method.LinkMovementMethod;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import aumk;
+import awdr;
 import com.tencent.qphone.base.util.QLog;
 
 public class RegisterVerifyCodeActivity$5
@@ -31,7 +31,7 @@ public class RegisterVerifyCodeActivity$5
       str1 = this.a.getString("openDevLockText");
       str2 = this.a.getString("openDevLockHelpText");
       RegisterVerifyCodeActivity.e(this.this$0, this.a.getString("openDevLockHelpURL"));
-    } while ((!bool1) || (TextUtils.isEmpty(str1)) || (RegisterVerifyCodeActivity.a(this.this$0, "8.3.0", (String)localObject) < 0));
+    } while ((!bool1) || (TextUtils.isEmpty(str1)) || (RegisterVerifyCodeActivity.a(this.this$0, "8.3.3", (String)localObject) < 0));
     if (QLog.isColorLevel()) {
       QLog.d("RegisterVerifyCodeActivity", 2, "update ui.");
     }
@@ -41,9 +41,9 @@ public class RegisterVerifyCodeActivity$5
     Object localObject = SpannableString.valueOf(str1);
     if (!TextUtils.isEmpty(str2))
     {
-      abzg localabzg = new abzg(this, str1);
+      adqo localadqo = new adqo(this, str1);
       int i = str1.indexOf(str2);
-      ((SpannableString)localObject).setSpan(localabzg, i, str2.length() + i, 33);
+      ((SpannableString)localObject).setSpan(localadqo, i, str2.length() + i, 33);
     }
     RegisterVerifyCodeActivity.b(this.this$0).setText((CharSequence)localObject);
     RegisterVerifyCodeActivity.a(this.this$0).setContentDescription((CharSequence)localObject);
@@ -53,16 +53,16 @@ public class RegisterVerifyCodeActivity$5
     }
     if (this.this$0.getIntent().getBooleanExtra("key_register_from_fail_pay_lh", false))
     {
-      RegisterVerifyCodeActivity.a(this.this$0).setChecked(aumk.a().a);
+      RegisterVerifyCodeActivity.a(this.this$0).setChecked(awdr.a().a);
       RegisterVerifyCodeActivity.a(this.this$0).setEnabled(false);
       return;
     }
-    aumk.a().a = bool2;
+    awdr.a().a = bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterVerifyCodeActivity.5
  * JD-Core Version:    0.7.0.1
  */

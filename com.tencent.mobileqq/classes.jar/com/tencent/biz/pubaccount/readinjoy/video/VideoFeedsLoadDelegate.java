@@ -1,6 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
-import ajya;
+import alpo;
 import android.app.PendingIntent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,13 +18,13 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import qjp;
-import qjq;
-import qoi;
-import qwb;
+import qyw;
+import qyx;
+import rdm;
+import rls;
 
 public class VideoFeedsLoadDelegate
-  implements qjp
+  implements qyw
 {
   protected static ArrayList<VideoInfo> a;
   protected int a;
@@ -34,17 +34,17 @@ public class VideoFeedsLoadDelegate
   protected VideoFeedsRecommendFragment a;
   protected QQAppInterface a;
   protected String a;
-  protected qjq a;
+  protected qyx a;
   protected String[] a;
   protected int b;
   protected String b;
   protected boolean b;
   
-  public VideoFeedsLoadDelegate(qjq paramqjq, Bundle paramBundle, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, String paramString2, boolean paramBoolean, int paramInt)
+  public VideoFeedsLoadDelegate(qyx paramqyx, Bundle paramBundle, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, String paramString1, String paramString2, boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_Int = 2131364656;
-    this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajya.a(2131716149), ajya.a(2131716184) };
-    this.jdField_a_of_type_Qjq = paramqjq;
+    this.jdField_a_of_type_Int = 2131364735;
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { alpo.a(2131716521), alpo.a(2131716556) };
+    this.jdField_a_of_type_Qyx = paramqyx;
     this.jdField_a_of_type_AndroidOsBundle = paramBundle;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
@@ -60,7 +60,7 @@ public class VideoFeedsLoadDelegate
     if (this.jdField_a_of_type_AndroidOsBundle.getParcelable("VIDEO_OBJ") != null)
     {
       localObject1 = (VideoInfo)this.jdField_a_of_type_AndroidOsBundle.getParcelable("VIDEO_OBJ");
-      qoi.a((VideoInfo)localObject1);
+      rdm.a((VideoInfo)localObject1);
       if (QLog.isColorLevel()) {
         QLog.d("VideoFeedsLoadDelegate", 2, "generateRequestVideoInfo: 外部传进来的VideoInfo=" + ((VideoInfo)localObject1).b());
       }
@@ -77,8 +77,8 @@ public class VideoFeedsLoadDelegate
         ((VideoInfo)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo = ((MessageForShortVideo)localObject2);
         return localObject1;
       }
-      localObject2 = qoi.a(this.jdField_a_of_type_AndroidOsBundle);
-      qoi.a((VideoInfo)localObject2);
+      localObject2 = rdm.a(this.jdField_a_of_type_AndroidOsBundle);
+      rdm.a((VideoInfo)localObject2);
       localObject1 = localObject2;
     } while (!QLog.isColorLevel());
     QLog.d("VideoFeedsLoadDelegate", 2, "generateRequestVideoInfo: 外部传进来的VideoInfo=" + ((VideoInfo)localObject2).b());
@@ -127,8 +127,8 @@ public class VideoFeedsLoadDelegate
       }
       for (localObject = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_AndroidOsBundle, localVideoInfo, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, true, i);; localObject = VideoFeedsRecommendFragment.a(this.jdField_a_of_type_AndroidOsBundle, a(), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString))
       {
-        if (this.jdField_a_of_type_Qjq != null) {
-          this.jdField_a_of_type_Qjq.a((VideoFeedsRecommendFragment)localObject);
+        if (this.jdField_a_of_type_Qyx != null) {
+          this.jdField_a_of_type_Qyx.a((VideoFeedsRecommendFragment)localObject);
         }
         return localObject;
       }
@@ -138,9 +138,11 @@ public class VideoFeedsLoadDelegate
   
   public void a(VideoInfo paramVideoInfo)
   {
-    if (this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_OLD_LOAD_DELEGATE_TYPE", -1) == 2) {
-      new qwb(null, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int).b(paramVideoInfo);
+    if (this.jdField_a_of_type_AndroidOsBundle == null) {}
+    while (this.jdField_a_of_type_AndroidOsBundle.getInt("KEY_OLD_LOAD_DELEGATE_TYPE", -1) != 2) {
+      return;
     }
+    new rls(null, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int).b(paramVideoInfo);
   }
   
   public void a(DragFrameLayout paramDragFrameLayout)
@@ -154,13 +156,13 @@ public class VideoFeedsLoadDelegate
       this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(0, 0);
       return;
     }
-    int j = qoi.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity)[0];
+    int j = rdm.b(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity)[0];
     if (((k == 0) && (m == 0) && (i == 0)) || (i >= n))
     {
-      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(2130772200, 0);
+      this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(2130772215, 0);
       return;
     }
-    int[] arrayOfInt = qoi.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, k, m);
+    int[] arrayOfInt = rdm.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, k, m);
     k = arrayOfInt[0];
     m = arrayOfInt[1];
     this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.overridePendingTransition(0, 0);
@@ -170,7 +172,7 @@ public class VideoFeedsLoadDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsLoadDelegate
  * JD-Core Version:    0.7.0.1
  */

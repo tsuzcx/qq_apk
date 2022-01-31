@@ -1,25 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
+import com.tencent.mobileqq.activity.bless.BlessTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class agyd
-  implements DialogInterface.OnClickListener
+class agyd
+  extends bdvu
 {
-  public agyd(TopayManager.5.1 param1) {}
+  agyd(agyc paramagyc, String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(bdvv parambdvv)
   {
-    switch (paramInt)
+    agyc.a(this.jdField_a_of_type_Agyc).remove(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onDone(bdvv parambdvv)
+  {
+    agyc.a(this.jdField_a_of_type_Agyc).remove(this.jdField_a_of_type_JavaLangString);
+    if (parambdvv.a() == 3)
     {
-    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("BlessManager", 2, "download finished " + this.b);
+      }
+      if ((this.b != null) && (agyc.a(this.jdField_a_of_type_Agyc) != null) && (this.b.equals(agyc.a(this.jdField_a_of_type_Agyc).starVideo))) {
+        agyc.b(this.jdField_a_of_type_Agyc);
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      return;
+      agyc.a(this.jdField_a_of_type_Agyc);
       return;
     }
-    paramDialogInterface.dismiss();
+    QLog.d("BlessManager", 2, "downloadFile failed: " + parambdvv.b + " code=" + parambdvv.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agyd
  * JD-Core Version:    0.7.0.1
  */

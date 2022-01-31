@@ -1,88 +1,63 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import java.io.File;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
 
-public class amuv
-  extends ampa<bjjh>
+public abstract class amuv
+  extends Binder
+  implements amuu
 {
-  public int a()
+  public amuv()
   {
-    return 305;
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArFaceCallback");
   }
   
-  @NonNull
-  public bjjh a(int paramInt)
+  public static amuu a(IBinder paramIBinder)
   {
-    return new bjjh();
-  }
-  
-  @Nullable
-  public bjjh a(amph[] paramArrayOfamph)
-  {
-    if ((paramArrayOfamph == null) || (paramArrayOfamph.length == 0)) {
+    if (paramIBinder == null) {
       return null;
     }
-    paramArrayOfamph = paramArrayOfamph[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onParsed, content:" + paramArrayOfamph);
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof amuu))) {
+      return (amuu)localIInterface;
     }
-    return new bjje().a(paramArrayOfamph, QIMMusicConfigManager.a.getAbsolutePath(), "temp_music_zip", new amuw(this));
+    return new amuw(paramIBinder);
   }
   
-  public Class<bjjh> a()
+  public IBinder asBinder()
   {
-    return bjjh.class;
+    return this;
   }
   
-  public void a(int paramInt)
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onReqFailed");
-    }
-  }
-  
-  public void a(bjjh parambjjh)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigProcessor", 2, "handleGetQIMMusicConfig onUpdate");
-    }
-  }
-  
-  public int b()
-  {
-    if (!QIMMusicConfigManager.a()) {
-      return 0;
-    }
-    return bbkb.B(BaseApplicationImpl.getContext());
-  }
-  
-  public int b(int paramInt)
-  {
-    if (!QIMMusicConfigManager.a())
+    switch (paramInt1)
     {
-      QLog.i("QIMMusicConfigProcessor", 1, "config file not exist");
-      ampl.a().a(305, 0);
-      return 0;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      a(paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+      a(paramParcel1.readInt(), paramParcel1.readInt());
+      paramParcel2.writeNoException();
+      return true;
     }
-    return super.b(paramInt);
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArFaceCallback");
+    b(paramParcel1.readInt(), paramParcel1.readInt());
+    paramParcel2.writeNoException();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amuv
  * JD-Core Version:    0.7.0.1
  */

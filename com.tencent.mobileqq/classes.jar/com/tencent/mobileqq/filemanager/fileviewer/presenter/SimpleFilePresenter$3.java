@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import apnb;
-import appo;
-import ayfg;
+import arfz;
+import arin;
+import badd;
 import java.util.List;
 
 public class SimpleFilePresenter$3
   implements Runnable
 {
-  public SimpleFilePresenter$3(appo paramappo, String paramString, boolean paramBoolean, int paramInt, List paramList) {}
+  public SimpleFilePresenter$3(arin paramarin, String paramString, boolean paramBoolean, int paramInt, List paramList) {}
   
   public void run()
   {
@@ -20,7 +20,7 @@ public class SimpleFilePresenter$3
     boolean bool;
     if (localObject.length == 2)
     {
-      str1 = this.this$0.a.h();
+      str1 = this.this$0.a.j();
       str2 = localObject[0];
       str3 = localObject[1];
       bool = this.jdField_a_of_type_Boolean;
@@ -39,7 +39,7 @@ public class SimpleFilePresenter$3
       if (this.jdField_a_of_type_Int == 3000) {
         localList2 = this.jdField_a_of_type_JavaUtilList;
       }
-      ayfg.a(str1, str2, str3, false, bool, 1, (List)localObject, localList1, localList2);
+      badd.a(str1, str2, str3, false, bool, 1, (List)localObject, localList1, localList2);
       return;
       localObject = null;
       break;
@@ -48,7 +48,7 @@ public class SimpleFilePresenter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter.3
  * JD-Core Version:    0.7.0.1
  */

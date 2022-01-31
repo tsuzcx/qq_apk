@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.activity.delDownloadFile;
 
 import android.content.Context;
-import aoqb;
-import aoqf;
-import aost;
-import apel;
-import apxx;
-import axqy;
+import aqiz;
+import aqjd;
+import aqlr;
+import aqxj;
+import arqz;
+import azmj;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileDocTabView;
@@ -23,7 +23,7 @@ import java.util.Set;
 
 public class QfileLocalFileDelFileTabView
   extends QfileLocalFileDocTabView
-  implements aoqf
+  implements aqjd
 {
   int jdField_a_of_type_Int = -1;
   Pair<String, Integer> jdField_a_of_type_ComTencentUtilPair;
@@ -37,7 +37,7 @@ public class QfileLocalFileDelFileTabView
   final int jdField_c_of_type_Int = 1000;
   List<FileInfo> jdField_c_of_type_JavaUtilList = new ArrayList();
   
-  public QfileLocalFileDelFileTabView(Context paramContext, List<apxx> paramList, Pair<String, Integer> paramPair)
+  public QfileLocalFileDelFileTabView(Context paramContext, List<arqz> paramList, Pair<String, Integer> paramPair)
   {
     super(paramContext, paramList, false);
     this.jdField_d_of_type_Int = 1;
@@ -137,11 +137,11 @@ public class QfileLocalFileDelFileTabView
     }
   }
   
-  public aoqb a()
+  public aqiz a()
   {
-    aost localaost = new aost(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_d_of_type_AndroidViewView$OnClickListener);
-    localaost.a(this);
-    return localaost;
+    aqlr localaqlr = new aqlr(a(), this.jdField_c_of_type_JavaUtilLinkedHashMap, a(), this.jdField_a_of_type_AndroidViewView$OnClickListener, this.jdField_c_of_type_AndroidViewView$OnClickListener, this.jdField_a_of_type_AndroidViewView$OnLongClickListener, this.jdField_d_of_type_AndroidViewView$OnClickListener);
+    localaqlr.a(this);
+    return localaqlr;
   }
   
   public String a(FileInfo paramFileInfo)
@@ -217,7 +217,7 @@ public class QfileLocalFileDelFileTabView
       this.jdField_c_of_type_JavaUtilList.clear();
       i();
       l2 /= 1048576L;
-      axqy.b(null, "dc00898", "", "", "0X800A0CC", "0X800A0CC", c(), 0, "" + l1, "" + l2, "", "");
+      azmj.b(null, "dc00898", "", "", "0X800A0CC", "0X800A0CC", c(), 0, "" + l1, "" + l2, "", "");
       return;
     }
   }
@@ -240,8 +240,8 @@ public class QfileLocalFileDelFileTabView
   {
     this.jdField_b_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
     this.jdField_c_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    long l = apel.d() / 1048576L;
-    axqy.b(null, "dc00898", "", "", "0X800A0CB", "0X800A0CB", c(), 0, "" + this.jdField_b_of_type_Int, "" + l, "", "");
+    long l = aqxj.d() / 1048576L;
+    azmj.b(null, "dc00898", "", "", "0X800A0CB", "0X800A0CB", c(), 0, "" + this.jdField_b_of_type_Int, "" + l, "", "");
     super.d();
   }
   
@@ -289,15 +289,15 @@ public class QfileLocalFileDelFileTabView
       i();
       setSelect(0);
       return;
-      axqy.b(null, "dc00898", "", "", "0X800A0C8", "0X800A0C8", c(), 0, "", "", "", "");
+      azmj.b(null, "dc00898", "", "", "0X800A0C8", "0X800A0C8", c(), 0, "", "", "", "");
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
         this.jdField_c_of_type_JavaUtilLinkedHashMap.put(this.jdField_a_of_type_ComTencentUtilPair.first, this.jdField_a_of_type_JavaUtilList);
         continue;
-        axqy.b(null, "dc00898", "", "", "0X800A0C9", "0X800A0C9", c(), 0, "", "", "", "");
+        azmj.b(null, "dc00898", "", "", "0X800A0C9", "0X800A0C9", c(), 0, "", "", "", "");
         this.jdField_c_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
         continue;
-        axqy.b(null, "dc00898", "", "", "0X800A0CA", "0X800A0CA", c(), 0, "", "", "", "");
+        azmj.b(null, "dc00898", "", "", "0X800A0CA", "0X800A0CA", c(), 0, "", "", "", "");
         this.jdField_c_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_b_of_type_JavaUtilLinkedHashMap);
       }
     }
@@ -305,7 +305,7 @@ public class QfileLocalFileDelFileTabView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelFileTabView
  * JD-Core Version:    0.7.0.1
  */

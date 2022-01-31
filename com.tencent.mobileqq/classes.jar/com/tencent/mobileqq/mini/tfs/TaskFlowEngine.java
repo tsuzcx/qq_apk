@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.mini.tfs;
 
-import android.os.Handler;
 import android.os.Handler.Callback;
-import android.os.HandlerThread;
-import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.utils.DeviceInfoUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,83 +15,62 @@ public class TaskFlowEngine
   public static final int MSG_WHAT_TASK_DONE = 101;
   public static final String TAG = "TaskFlow";
   private List<BaseTask> mAllTasks = new ArrayList();
-  protected Handler mEngineHandler;
-  private List<TaskFlowEngine.DependFlow> mFlows = new ArrayList();
+  private final List<TaskFlowEngine.DependFlow> mFlows = new ArrayList();
+  private TaskThreadPool mTaskThreadPool;
   private BaseTask[] mTasks;
   
   public TaskFlowEngine()
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
     try
     {
-      HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("TaskFlow", 5);
-      localObject1 = localHandlerThread;
-      localObject3 = localHandlerThread;
-      localHandlerThread.start();
-      if ((localHandlerThread != null) && (localHandlerThread.isAlive()))
-      {
-        this.mEngineHandler = new Handler(localHandlerThread.getLooper(), this);
-        return;
+      int j = DeviceInfoUtil.getNumberOfCPUCores();
+      QLog.w("TaskFlow", 1, "create thread pool, cpuCores=" + j);
+      if (j > 0) {
+        i = j + 1;
       }
-      this.mEngineHandler = new Handler(Looper.getMainLooper(), this);
+      this.mTaskThreadPool = new TaskThreadPool("TaskFlowEngine", 2, i);
       return;
     }
     catch (Exception localException)
     {
-      localObject3 = localObject1;
-      QLog.e("TaskFlow", 1, "create thread error!", localException);
-      if ((localObject1 != null) && (localObject1.isAlive()))
-      {
-        this.mEngineHandler = new Handler(localObject1.getLooper(), this);
-        return;
-      }
-      this.mEngineHandler = new Handler(Looper.getMainLooper(), this);
-      return;
-    }
-    finally
-    {
-      if (localObject3 == null) {
-        break label175;
-      }
-    }
-    if (localObject3.isAlive()) {}
-    label175:
-    for (this.mEngineHandler = new Handler(localObject3.getLooper(), this);; this.mEngineHandler = new Handler(Looper.getMainLooper(), this)) {
-      throw localObject2;
+      QLog.e("TaskFlow", 1, "create thread pool error!", localException);
     }
   }
   
-  private void executeTask(BaseTask paramBaseTask)
+  private void executeTask(BaseTask arg1)
   {
-    if (paramBaseTask == null) {
+    if (??? == null) {
       return;
     }
-    List localList = paramBaseTask.getDependTasks();
+    List localList = ???.getDependTasks();
     if ((localList == null) || (localList.size() <= 0))
     {
-      paramBaseTask.run();
+      ???.run();
       return;
     }
-    Iterator localIterator = this.mFlows.iterator();
+    Object localObject2 = this.mFlows.iterator();
     do
     {
-      if (!localIterator.hasNext()) {
+      if (!((Iterator)localObject2).hasNext()) {
         break;
       }
-    } while (((TaskFlowEngine.DependFlow)localIterator.next()).mTask != paramBaseTask);
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0)
+    } while (((TaskFlowEngine.DependFlow)((Iterator)localObject2).next()).mTask != ???);
+    for (int i = 1;; i = 0) {
+      for (;;)
       {
-        paramBaseTask = new TaskFlowEngine.DependFlow(this, paramBaseTask, localList);
-        this.mFlows.add(paramBaseTask);
+        if (i == 0) {
+          localObject2 = new TaskFlowEngine.DependFlow(this, ???, localList);
+        }
+        synchronized (this.mFlows)
+        {
+          this.mFlows.add(localObject2);
+          ??? = localList.iterator();
+          if (!???.hasNext()) {
+            break;
+          }
+          executeTask((BaseTask)???.next());
+        }
       }
-      paramBaseTask = localList.iterator();
-      while (paramBaseTask.hasNext()) {
-        executeTask((BaseTask)paramBaseTask.next());
-      }
-      break;
     }
   }
   
@@ -105,7 +81,6 @@ public class TaskFlowEngine
     {
       return;
       paramBaseTask.setCallback(this);
-      paramBaseTask.setWorkLooper(this.mEngineHandler.getLooper());
       if (!this.mAllTasks.contains(paramBaseTask)) {
         this.mAllTasks.add(paramBaseTask);
       }
@@ -120,9 +95,9 @@ public class TaskFlowEngine
     }
   }
   
-  public Looper getWorkThreadLooper()
+  public BaseTask[] getTasks()
   {
-    return this.mEngineHandler.getLooper();
+    return this.mTasks;
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -158,7 +133,7 @@ public class TaskFlowEngine
     while (!paramBaseTask.isSucceed()) {
       return;
     }
-    this.mEngineHandler.post(new TaskFlowEngine.2(this, paramBaseTask));
+    this.mTaskThreadPool.addExecuteTask(new TaskFlowEngine.2(this, paramBaseTask));
   }
   
   public void resetTaskAndDepends(BaseTask paramBaseTask)
@@ -184,24 +159,27 @@ public class TaskFlowEngine
     if ((this.mTasks == null) || (this.mTasks.length <= 0)) {
       return;
     }
-    this.mEngineHandler.post(new TaskFlowEngine.1(this));
+    this.mTaskThreadPool.addExecuteTask(new TaskFlowEngine.1(this));
   }
   
   protected void updateFlow(BaseTask paramBaseTask)
   {
-    Iterator localIterator = this.mFlows.iterator();
-    while (localIterator.hasNext())
+    synchronized (this.mFlows)
     {
-      TaskFlowEngine.DependFlow localDependFlow = (TaskFlowEngine.DependFlow)localIterator.next();
-      if (localDependFlow.isDepend(paramBaseTask)) {
-        localDependFlow.onDependCompleted();
+      Iterator localIterator = this.mFlows.iterator();
+      while (localIterator.hasNext())
+      {
+        TaskFlowEngine.DependFlow localDependFlow = (TaskFlowEngine.DependFlow)localIterator.next();
+        if (localDependFlow.isDepend(paramBaseTask)) {
+          localDependFlow.onDependCompleted();
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.mini.tfs.TaskFlowEngine
  * JD-Core Version:    0.7.0.1
  */

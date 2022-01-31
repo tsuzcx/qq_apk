@@ -1,19 +1,26 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class tli
-  extends ssh
+final class tli
+  extends ClickableSpan
 {
-  public List<StoryVideoItem> a;
+  tli(String paramString) {}
   
-  public String toString()
+  public void onClick(@NonNull View paramView)
   {
-    return "GetVideoBasicInfoListEvent{, mVideoList=" + this.a + '}';
+    tlq.a(tlf.a(), "biz_src_jc_gzh_weishi", "weishi://profile?person_id=" + this.a);
+  }
+  
+  public void updateDrawState(@NonNull TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tli
  * JD-Core Version:    0.7.0.1
  */

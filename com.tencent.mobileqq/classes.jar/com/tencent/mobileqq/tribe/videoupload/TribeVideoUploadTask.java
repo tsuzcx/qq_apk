@@ -3,32 +3,32 @@ package com.tencent.mobileqq.tribe.videoupload;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import azci;
-import azck;
-import azcl;
+import bbah;
+import bbaj;
+import bbak;
 import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.List;
-import sxc;
-import sxd;
+import ulu;
+import ulv;
 
 public class TribeVideoUploadTask
-  extends BasePublishTask<azck>
-  implements sxd
+  extends BasePublishTask<bbaj>
+  implements ulv
 {
   protected Handler a;
   protected WeakReference<BaseActivity> a;
   
-  public TribeVideoUploadTask(BaseActivity paramBaseActivity, Handler paramHandler, azck paramazck)
+  public TribeVideoUploadTask(BaseActivity paramBaseActivity, Handler paramHandler, bbaj parambbaj)
   {
-    super(paramazck);
-    paramazck.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    azci localazci = new azci(paramazck.jdField_a_of_type_JavaLangString);
-    localazci.a(new azcl(this, paramazck));
-    paramazck.jdField_a_of_type_JavaUtilList.add(localazci);
+    super(parambbaj);
+    parambbaj.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    bbah localbbah = new bbah(parambbaj.jdField_a_of_type_JavaLangString);
+    localbbah.a(new bbak(this, parambbaj));
+    parambbaj.jdField_a_of_type_JavaUtilList.add(localbbah);
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
     a(this);
@@ -54,7 +54,7 @@ public class TribeVideoUploadTask
   public void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage)
   {
     QLog.i("tribe_publish_tribe_publish_VideoUploadTask", 1, "upload finish status:" + paramBasePublishTask.a().a);
-    paramBasePublishTask = (azck)paramBasePublishTask.a();
+    paramBasePublishTask = (bbaj)paramBasePublishTask.a();
     if (paramBasePublishTask.b())
     {
       QLog.i("tribe_publish_tribe_publish_VideoUploadTask", 1, "uploadVideo succ " + paramBasePublishTask.c);
@@ -74,7 +74,7 @@ public class TribeVideoUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.videoupload.TribeVideoUploadTask
  * JD-Core Version:    0.7.0.1
  */

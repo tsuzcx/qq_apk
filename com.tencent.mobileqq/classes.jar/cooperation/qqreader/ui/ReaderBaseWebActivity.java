@@ -5,12 +5,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Window;
-import bgup;
-import bguu;
-import bguy;
-import bgvn;
-import bgwf;
-import bgwk;
+import bivo;
+import bivt;
+import bivx;
+import biwm;
+import bixe;
+import bixj;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
@@ -21,49 +21,49 @@ public class ReaderBaseWebActivity
   extends QQBrowserActivity
 {
   private static boolean jdField_a_of_type_Boolean;
-  private bguy jdField_a_of_type_Bguy;
+  private bivx jdField_a_of_type_Bivx;
   
   private void a()
   {
     if (!jdField_a_of_type_Boolean)
     {
       jdField_a_of_type_Boolean = true;
-      bgwk.a(this);
+      bixj.a(this);
       ChannelIdHelper.initChannelId(getIntent());
-      if ((!bgwk.jdField_a_of_type_Boolean) && (!"Meizu_M040".equals(Build.MANUFACTURER + "_" + Build.MODEL)))
+      if ((!bixj.jdField_a_of_type_Boolean) && (!"Meizu_M040".equals(Build.MANUFACTURER + "_" + Build.MODEL)))
       {
-        bgwf.d("WebLog_QQBrowserActivity", "HardAcc true");
+        bixe.d("WebLog_QQBrowserActivity", "HardAcc true");
         getWindow().addFlags(16777216);
       }
       if (QRDebugEnvUrlUtils.isDebugEnv()) {
         QRDebugEnvUrlUtils.initTestEnv(this);
       }
-      bgwk.a(this);
+      bixj.a(this);
     }
   }
   
   @Nullable
-  public bguy a(TouchWebView paramTouchWebView)
+  public bivx a(TouchWebView paramTouchWebView)
   {
-    if ((this.jdField_a_of_type_Bguy == null) && (paramTouchWebView != null) && (paramTouchWebView.getPluginEngine() != null))
+    if ((this.jdField_a_of_type_Bivx == null) && (paramTouchWebView != null) && (paramTouchWebView.getPluginEngine() != null))
     {
       paramTouchWebView = paramTouchWebView.getPluginEngine();
       if (paramTouchWebView != null)
       {
         paramTouchWebView = paramTouchWebView.a(207, true);
-        if ((paramTouchWebView instanceof bguy)) {
-          this.jdField_a_of_type_Bguy = ((bguy)paramTouchWebView);
+        if ((paramTouchWebView instanceof bivx)) {
+          this.jdField_a_of_type_Bivx = ((bivx)paramTouchWebView);
         }
       }
     }
-    return this.jdField_a_of_type_Bguy;
+    return this.jdField_a_of_type_Bivx;
   }
   
   protected void a(Intent paramIntent)
   {
     if (paramIntent == null)
     {
-      bgwf.a("WebLog_QQBrowserActivity", "[putReaderExtra] intent = null");
+      bixe.a("WebLog_QQBrowserActivity", "[putReaderExtra] intent = null");
       return;
     }
     paramIntent.putExtra("fragmentStyle", 4);
@@ -77,7 +77,7 @@ public class ReaderBaseWebActivity
   {
     g();
     a();
-    if (!bgup.a())
+    if (!bivo.a())
     {
       paramBundle = new Intent(this, ForceUserUpdateActivity.class);
       paramBundle.putExtra("origin_intent", getIntent());
@@ -87,20 +87,20 @@ public class ReaderBaseWebActivity
       return true;
     }
     super.doOnCreate(paramBundle);
-    new bguu(this).a();
+    new bivt(this).a();
     return true;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     a(getIntent());
-    bgvn.a(this, true);
+    biwm.a(this, true);
     super.onCreate(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqreader.ui.ReaderBaseWebActivity
  * JD-Core Version:    0.7.0.1
  */

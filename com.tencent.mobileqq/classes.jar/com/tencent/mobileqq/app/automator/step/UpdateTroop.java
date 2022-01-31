@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import akhp;
-import akil;
-import akms;
+import alzf;
+import amab;
+import amei;
 import android.content.SharedPreferences;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
@@ -14,16 +14,16 @@ import com.tencent.qphone.base.util.QLog;
 public class UpdateTroop
   extends AsyncStep
 {
-  private akil a;
+  private amab a;
   
   private void b()
   {
-    if (this.jdField_a_of_type_Akil == null)
+    if (this.jdField_a_of_type_Amab == null)
     {
-      this.jdField_a_of_type_Akil = new akms(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Akil);
+      this.jdField_a_of_type_Amab = new amei(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Amab);
     }
-    ((akhp)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(20)).b();
+    ((alzf)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(20)).b();
   }
   
   public int a()
@@ -41,9 +41,9 @@ public class UpdateTroop
         if (QLog.isColorLevel()) {
           QLog.d("QQInitHandler", 2, "onCheckTroopList:Done");
         }
-        akhp localakhp = (akhp)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(20);
+        alzf localalzf = (alzf)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(20);
         ((TroopManager)localObject).b();
-        localakhp.notifyUI(2, true, null);
+        localalzf.notifyUI(2, true, null);
         this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.notifyUI(3, true, Integer.valueOf(2));
         return 7;
       }
@@ -64,10 +64,10 @@ public class UpdateTroop
   
   public void d()
   {
-    if (this.jdField_a_of_type_Akil != null)
+    if (this.jdField_a_of_type_Amab != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Akil);
-      this.jdField_a_of_type_Akil = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Amab);
+      this.jdField_a_of_type_Amab = null;
     }
   }
 }

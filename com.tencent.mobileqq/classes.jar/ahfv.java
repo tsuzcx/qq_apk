@@ -1,45 +1,49 @@
-import android.support.v4.util.SparseArrayCompat;
-import android.text.TextUtils;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchRecommendView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class ahfv
+  extends Handler
 {
-  public int a;
-  public SparseArrayCompat<ArrayList<String>> a;
+  public WeakReference<GroupSearchRecommendView> a;
   
-  public ahfv()
+  public ahfv(GroupSearchRecommendView paramGroupSearchRecommendView)
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
+    this.a = new WeakReference(paramGroupSearchRecommendView);
   }
   
-  public static ahfv a(String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    GroupSearchRecommendView localGroupSearchRecommendView = (GroupSearchRecommendView)this.a.get();
+    if (localGroupSearchRecommendView == null) {
+      return;
     }
-    ahfv localahfv = new ahfv();
-    Object localObject = new JSONObject(paramString);
-    localahfv.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("avoid_peak_interval");
-    paramString = new SparseArrayCompat();
-    localObject = ((JSONObject)localObject).optJSONArray("regions");
-    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      int i = 0;
-      while (i < ((JSONArray)localObject).length())
-      {
-        paramString.put(i, ahfl.a(((JSONArray)localObject).optJSONArray(i)));
-        i += 1;
+    default: 
+      return;
+    case 1: 
+      GroupSearchRecommendView.a(localGroupSearchRecommendView);
+      return;
+    case 2: 
+      if (QLog.isColorLevel()) {
+        QLog.i("GroupSearchRecommendView", 2, "fetch data successfully");
       }
+      GroupSearchRecommendView.a(localGroupSearchRecommendView, false);
+      return;
     }
-    localahfv.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = paramString;
-    return localahfv;
+    if (QLog.isColorLevel()) {
+      QLog.i("GroupSearchRecommendView", 2, "fetch data failed");
+    }
+    GroupSearchRecommendView.a(localGroupSearchRecommendView, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahfv
  * JD-Core Version:    0.7.0.1
  */

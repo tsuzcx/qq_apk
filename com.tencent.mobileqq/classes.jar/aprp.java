@@ -1,89 +1,35 @@
+import android.app.Activity;
 import android.os.Message;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
-import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
 
 final class aprp
-  implements UploadManager.IUploadStatusListener
+  implements aubp<EmoticonPackage>
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference<aprm> jdField_a_of_type_MqqUtilWeakReference;
+  aprp(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, int paramInt, Activity paramActivity) {}
   
-  private aprp(aprm paramaprm, String paramString)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if (paramaprm == null) {}
-    for (paramaprm = null;; paramaprm = new WeakReference(paramaprm))
+    if ((paramEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1008) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1000) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1001) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10002) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1002) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1003) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1005) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1006))
     {
-      this.jdField_a_of_type_MqqUtilWeakReference = paramaprm;
-      this.jdField_a_of_type_JavaLangString = paramString;
+      paramEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
+      if (paramEmoticonPackage != null) {
+        paramEmoticonPackage.obtainMessage(22, String.valueOf(this.jdField_a_of_type_Int)).sendToTarget();
+      }
+      azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8006FFE", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Int), "", "");
       return;
     }
-  }
-  
-  public void onUploadJobAdded(String paramString, long paramLong) {}
-  
-  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
-  {
-    aprm localaprm;
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null)
-    {
-      localaprm = null;
-      if ((localaprm != null) && (!aprm.a(localaprm))) {
-        break label39;
-      }
-    }
-    label39:
-    while (aprm.a(localaprm) == null)
-    {
-      return;
-      localaprm = (aprm)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      break;
-    }
-    if (paramBoolean)
-    {
-      switch (paramStatusInfo.state)
-      {
-      default: 
-        label80:
-        paramString = null;
-      }
-      while (paramString != null)
-      {
-        aprm.a(localaprm).sendMessage(paramString);
-        return;
-        if (paramStatusInfo.errorCode == 1810002)
-        {
-          if (!QLog.isColorLevel()) {
-            break label80;
-          }
-          QLog.i("WeiyunShareProcessController<FileAssistant>", 2, "upload is canceled, for file:" + this.jdField_a_of_type_JavaLangString);
-          paramString = null;
-          continue;
-        }
-        paramString = new Message();
-        paramString.what = 3;
-        paramString.obj = new Object[] { Integer.valueOf(paramStatusInfo.errorCode), paramStatusInfo.errorMsg };
-        continue;
-        paramString = new Message();
-        paramString.what = 2;
-        paramString.obj = new Object[] { paramStatusInfo, this.jdField_a_of_type_JavaLangString };
-      }
-    }
-    if (paramStatusInfo.totalSize <= 0L) {}
-    for (float f = 0.0F;; f = (float)paramStatusInfo.currSize / (float)paramStatusInfo.totalSize)
-    {
-      paramString = new Message();
-      paramString.what = 4;
-      paramString.obj = new Object[] { Float.valueOf(f) };
-      break;
-    }
+    EmojiHomeUiPlugin.openEmojiDetailPage(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_Int), false, true);
+    azmj.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8006FFF", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Int), "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aprp
  * JD-Core Version:    0.7.0.1
  */

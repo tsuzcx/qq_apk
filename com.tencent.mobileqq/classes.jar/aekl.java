@@ -1,32 +1,76 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import com.tencent.widget.RoundRectImageView;
-
-class aekl
-  implements Animation.AnimationListener
+public class aekl
 {
-  aekl(aekk paramaekk) {}
+  private static aekl a;
+  public int a;
+  private int b = -1;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  private aekl()
   {
-    paramAnimation = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getWidth() / 2, this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.getHeight() / 2);
-    paramAnimation.addAnimation(this.a.b);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.setDuration(200L);
-    this.a.jdField_a_of_type_ComTencentWidgetRoundRectImageView.startAnimation(paramAnimation);
-    paramAnimation.setAnimationListener(this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  /* Error */
+  public static aekl a()
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 20	aekl:jdField_a_of_type_Aekl	Laekl;
+    //   6: ifnonnull +22 -> 28
+    //   9: new 2	aekl
+    //   12: dup
+    //   13: invokespecial 21	aekl:<init>	()V
+    //   16: putstatic 20	aekl:jdField_a_of_type_Aekl	Laekl;
+    //   19: getstatic 20	aekl:jdField_a_of_type_Aekl	Laekl;
+    //   22: astore_0
+    //   23: ldc 2
+    //   25: monitorexit
+    //   26: aload_0
+    //   27: areturn
+    //   28: getstatic 20	aekl:jdField_a_of_type_Aekl	Laekl;
+    //   31: iconst_1
+    //   32: putfield 14	aekl:jdField_a_of_type_Int	I
+    //   35: goto -16 -> 19
+    //   38: astore_0
+    //   39: ldc 2
+    //   41: monitorexit
+    //   42: aload_0
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   22	5	0	localaekl	aekl
+    //   38	5	0	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	19	38	finally
+    //   19	23	38	finally
+    //   28	35	38	finally
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public int a()
+  {
+    if (-1 == this.b)
+    {
+      if ((bdcb.d() >>> 20 <= 1390L) || (bdcb.b() <= 3) || (bdcb.a() <= 1433L)) {
+        break label48;
+      }
+      this.b = 1;
+    }
+    for (;;)
+    {
+      return this.b;
+      label48:
+      if ((bdcb.d() >>> 20 > 926L) && (bdcb.b() > 1) && (bdcb.a() > 961L)) {
+        this.b = 2;
+      } else {
+        this.b = 3;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aekl
  * JD-Core Version:    0.7.0.1
  */

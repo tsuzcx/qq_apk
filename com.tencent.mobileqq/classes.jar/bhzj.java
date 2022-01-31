@@ -1,76 +1,27 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
+import android.content.Context;
+import android.os.Handler;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-public class bhzj
-  extends bhzo
+class bhzj
+  implements bhzg
 {
-  public bhzj(String paramString, View paramView)
+  private final GestureDetector a;
+  
+  public bhzj(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
   {
-    super(paramString, paramView);
+    this.a = new GestureDetector(paramContext, paramOnGestureListener, paramHandler);
   }
   
-  private ImageView.ScaleType a(String paramString)
+  public boolean a(MotionEvent paramMotionEvent)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return ImageView.ScaleType.CENTER_CROP;
-    }
-    if ("center_crop".equals(paramString)) {
-      return ImageView.ScaleType.CENTER_CROP;
-    }
-    if ("fit_center".equals(paramString)) {
-      return ImageView.ScaleType.FIT_CENTER;
-    }
-    return ImageView.ScaleType.CENTER_CROP;
-  }
-  
-  protected void a(String paramString)
-  {
-    if (!bfnx.a(paramString)) {}
-    do
-    {
-      return;
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      if ((this.jdField_a_of_type_Int > 0) && (this.b > 0))
-      {
-        localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
-        localURLDrawableOptions.mRequestHeight = this.b;
-      }
-      localURLDrawableOptions.mLoadingDrawable = aywm.a;
-      localURLDrawableOptions.mFailedDrawable = aywm.a;
-      localURLDrawableOptions.mPlayGifImage = false;
-      paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
-    } while (paramString == null);
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(paramString);
-  }
-  
-  protected void a(String paramString1, String paramString2)
-  {
-    super.a(paramString1, paramString2);
-    if (!(this.jdField_a_of_type_AndroidViewView instanceof ImageView)) {}
-    do
-    {
-      return;
-      if ("content".equals(paramString1))
-      {
-        a(paramString2);
-        return;
-      }
-    } while (!"scale_type".equals(paramString1));
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setScaleType(a(paramString2));
-  }
-  
-  protected void b()
-  {
-    super.b();
+    return this.a.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     bhzj
  * JD-Core Version:    0.7.0.1
  */

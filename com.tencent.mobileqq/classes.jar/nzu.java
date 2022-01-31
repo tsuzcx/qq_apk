@@ -1,51 +1,42 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
 public class nzu
+  implements bepr
 {
-  public static void a(VideoInfo paramVideoInfo, ReadInJoyHeadImageView paramReadInJoyHeadImageView)
+  public nzu(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  
+  public void a()
   {
-    Drawable localDrawable = bbef.a(true);
-    if (!TextUtils.isEmpty(paramVideoInfo.E))
+    boolean bool2 = true;
+    Object localObject;
+    if (this.a.a)
     {
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mRequestWidth = paramReadInJoyHeadImageView.getWidth();
-      localURLDrawableOptions.mRequestHeight = paramReadInJoyHeadImageView.getHeight();
-      localURLDrawableOptions.mLoadingDrawable = localDrawable;
-      localURLDrawableOptions.mFailedDrawable = localDrawable;
-      try
-      {
-        paramVideoInfo = URLDrawable.getDrawable(new URL(paramVideoInfo.E), localURLDrawableOptions);
-        paramVideoInfo.setDecodeHandler(bavw.a);
-        paramReadInJoyHeadImageView.setImageDrawable(paramVideoInfo);
-        return;
+      localObject = this.a;
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label61;
       }
-      catch (MalformedURLException paramVideoInfo)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("MultiVideoIconHelper", 2, "initVideoItemContentUI() ERROR e = " + paramVideoInfo.getMessage());
-        return;
+      bool1 = true;
+      ReadInJoySettingActivity.a((ReadInJoySettingActivity)localObject, bool1);
+      localObject = ReadInJoySettingActivity.a(this.a);
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label66;
       }
     }
-    if (!TextUtils.isEmpty(paramVideoInfo.j))
+    label61:
+    label66:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramReadInJoyHeadImageView.a(localDrawable);
-      paramReadInJoyHeadImageView.setHeadImgByUin(Long.valueOf(paramVideoInfo.j).longValue(), false);
+      ((Switch)localObject).setChecked(bool1);
       return;
+      bool1 = false;
+      break;
     }
-    paramReadInJoyHeadImageView.setImageDrawable(localDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     nzu
  * JD-Core Version:    0.7.0.1
  */

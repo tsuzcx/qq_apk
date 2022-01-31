@@ -1,78 +1,248 @@
-import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richstatus.ActionListActivity;
-import java.util.ArrayList;
+import android.annotation.TargetApi;
+import android.content.ContentResolver;
+import android.database.CharArrayBuffer;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.database.DataSetObserver;
+import android.net.Uri;
+import android.os.Bundle;
+import java.util.HashMap;
 
 public class awbp
-  extends BaseAdapter
+  implements Cursor
 {
-  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
+  private Cursor jdField_a_of_type_AndroidDatabaseCursor;
+  private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap;
   
-  public awbp(ArrayList<Integer> paramArrayList)
+  public awbp(Cursor paramCursor)
   {
-    Object localObject;
-    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+    this.jdField_a_of_type_AndroidDatabaseCursor = paramCursor;
+  }
+  
+  public void close()
+  {
+    this.jdField_a_of_type_AndroidDatabaseCursor.close();
+  }
+  
+  public void copyStringToBuffer(int paramInt, CharArrayBuffer paramCharArrayBuffer)
+  {
+    this.jdField_a_of_type_AndroidDatabaseCursor.copyStringToBuffer(paramInt, paramCharArrayBuffer);
+  }
+  
+  public void deactivate()
+  {
+    this.jdField_a_of_type_AndroidDatabaseCursor.deactivate();
+  }
+  
+  public byte[] getBlob(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getBlob(paramInt);
+  }
+  
+  public int getColumnCount()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getColumnCount();
+  }
+  
+  public int getColumnIndex(String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null)
+    {
+      String[] arrayOfString = getColumnNames();
+      HashMap localHashMap = new HashMap(arrayOfString.length);
+      int i = 0;
+      int j = arrayOfString.length;
+      while (i < j)
+      {
+        localHashMap.put(arrayOfString[i], Integer.valueOf(i));
+        i += 1;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap = localHashMap;
+    }
+    paramString = (Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (paramString != null) {
+      return paramString.intValue();
+    }
+    return -1;
+  }
+  
+  public int getColumnIndexOrThrow(String paramString)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getColumnIndexOrThrow(paramString);
+  }
+  
+  public String getColumnName(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getColumnName(paramInt);
+  }
+  
+  public String[] getColumnNames()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getColumnNames();
   }
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-      return 0;
-    }
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getCount();
   }
   
-  public Object getItem(int paramInt)
+  public double getDouble(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getDouble(paramInt);
   }
   
-  public long getItemId(int paramInt)
+  public Bundle getExtras()
   {
-    return paramInt;
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getExtras();
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public float getFloat(int paramInt)
   {
-    View localView = paramView;
-    if (paramView == null)
-    {
-      localView = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getLayoutInflater().inflate(2131562458, paramViewGroup, false);
-      paramView = new awbo(null);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376624));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376625));
-      localView.setTag(paramView);
-    }
-    paramView = (awbo)localView.getTag();
-    paramViewGroup = ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).intValue());
-    if ((paramViewGroup != null) && (paramView.jdField_a_of_type_Int != paramViewGroup.jdField_a_of_type_Int))
-    {
-      paramView.jdField_a_of_type_Int = paramViewGroup.jdField_a_of_type_Int;
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(new bcry(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources(), ActionListActivity.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity).a(paramViewGroup.jdField_a_of_type_Int, 201), false, false));
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup.c);
-      if (paramViewGroup.b != 1) {
-        break label205;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
-    }
-    for (;;)
-    {
-      localView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity);
-      return localView;
-      label205:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getResources().getDrawable(2130839016), null);
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
-    }
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getFloat(paramInt);
+  }
+  
+  public int getInt(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getInt(paramInt);
+  }
+  
+  public long getLong(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getLong(paramInt);
+  }
+  
+  public Uri getNotificationUri()
+  {
+    return null;
+  }
+  
+  public int getPosition()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getPosition();
+  }
+  
+  public short getShort(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getShort(paramInt);
+  }
+  
+  public String getString(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getString(paramInt);
+  }
+  
+  @TargetApi(11)
+  public int getType(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getType(paramInt);
+  }
+  
+  public boolean getWantsAllOnMoveCalls()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.getWantsAllOnMoveCalls();
+  }
+  
+  public boolean isAfterLast()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.isAfterLast();
+  }
+  
+  public boolean isBeforeFirst()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.isBeforeFirst();
+  }
+  
+  public boolean isClosed()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.isClosed();
+  }
+  
+  public boolean isFirst()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.isFirst();
+  }
+  
+  public boolean isLast()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.isLast();
+  }
+  
+  public boolean isNull(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.isNull(paramInt);
+  }
+  
+  public boolean move(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.move(paramInt);
+  }
+  
+  public boolean moveToFirst()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToFirst();
+  }
+  
+  public boolean moveToLast()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToLast();
+  }
+  
+  public boolean moveToNext()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToNext();
+  }
+  
+  public boolean moveToPosition(int paramInt)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToPosition(paramInt);
+  }
+  
+  public boolean moveToPrevious()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.moveToPrevious();
+  }
+  
+  public void registerContentObserver(ContentObserver paramContentObserver)
+  {
+    this.jdField_a_of_type_AndroidDatabaseCursor.registerContentObserver(paramContentObserver);
+  }
+  
+  public void registerDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.jdField_a_of_type_AndroidDatabaseCursor.registerDataSetObserver(paramDataSetObserver);
+  }
+  
+  @Deprecated
+  public boolean requery()
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.requery();
+  }
+  
+  public Bundle respond(Bundle paramBundle)
+  {
+    return this.jdField_a_of_type_AndroidDatabaseCursor.respond(paramBundle);
+  }
+  
+  public void setExtras(Bundle paramBundle) {}
+  
+  public void setNotificationUri(ContentResolver paramContentResolver, Uri paramUri)
+  {
+    this.jdField_a_of_type_AndroidDatabaseCursor.setNotificationUri(paramContentResolver, paramUri);
+  }
+  
+  public void unregisterContentObserver(ContentObserver paramContentObserver)
+  {
+    this.jdField_a_of_type_AndroidDatabaseCursor.unregisterContentObserver(paramContentObserver);
+  }
+  
+  public void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
+  {
+    this.jdField_a_of_type_AndroidDatabaseCursor.unregisterDataSetObserver(paramDataSetObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     awbp
  * JD-Core Version:    0.7.0.1
  */

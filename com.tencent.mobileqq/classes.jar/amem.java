@@ -1,42 +1,52 @@
-import android.os.AsyncTask;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import java.io.IOException;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-public class amem
-  extends AsyncTask<Void, Void, String>
+class amem
+  implements Comparator<awbv>
 {
-  public amem(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, String paramString) {}
+  amem(amel paramamel) {}
   
-  protected String a(Void... paramVarArgs)
+  public int a(awbv paramawbv1, awbv paramawbv2)
   {
-    try
+    int j = -1;
+    paramawbv1 = (RecentUser)paramawbv1;
+    paramawbv2 = (RecentUser)paramawbv2;
+    long l1 = Math.max(paramawbv1.lastmsgtime, paramawbv1.lastmsgdrafttime);
+    long l2 = Math.max(paramawbv2.lastmsgtime, paramawbv2.lastmsgdrafttime);
+    int i;
+    if (l1 < l2)
     {
-      paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(this.jdField_a_of_type_JavaLangString);
-      if (paramVarArgs != null)
-      {
-        bbef.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramVarArgs);
-        return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695191) + " " + paramVarArgs;
+      i = 1;
+      if (paramawbv1.getType() != paramawbv2.getType()) {
+        break label80;
       }
-      paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695190);
-      return paramVarArgs;
     }
-    catch (IOException paramVarArgs)
+    label80:
+    do
     {
-      return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695190);
-    }
-    catch (OutOfMemoryError paramVarArgs) {}
-    return this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getString(2131695190);
-  }
-  
-  protected void a(String paramString)
-  {
-    bcql.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity, paramString, 0).b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.getTitleBarHeight());
+      do
+      {
+        return i;
+        if (l1 == l2)
+        {
+          i = 0;
+          break;
+        }
+        i = -1;
+        break;
+        i = j;
+      } while (paramawbv1.getType() == 0);
+      if (paramawbv2.getType() == 0) {
+        return 1;
+      }
+      i = j;
+    } while (paramawbv1.getType() - paramawbv2.getType() > 0);
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,21 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class tny
-  extends syn
+class tny
+  implements View.OnClickListener
 {
-  public tny(qqstory_service.RspDeleteVideo paramRspDeleteVideo)
+  tny(tnx paramtnx) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramRspDeleteVideo.result);
+    if (this.a.isShowing()) {
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tny
  * JD-Core Version:    0.7.0.1
  */

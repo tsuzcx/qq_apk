@@ -1,80 +1,29 @@
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+
 public class aqwf
 {
-  public final aqwh a = new aqwh();
+  public final int a;
+  final long jdField_a_of_type_Long;
+  final Bundle jdField_a_of_type_AndroidOsBundle;
+  public arpl a;
+  public final String a;
+  final int b;
   
-  public static aqwf a()
+  public aqwf(aqwa paramaqwa, Bundle paramBundle, int paramInt1, arpl paramarpl, long paramLong, int paramInt2)
   {
-    return aqwi.a();
-  }
-  
-  public String a()
-  {
-    return this.a.jdField_a_of_type_JavaLangString;
-  }
-  
-  public boolean a()
-  {
-    return this.a.d.a();
-  }
-  
-  public String b()
-  {
-    return this.a.jdField_b_of_type_JavaLangString;
-  }
-  
-  public boolean b()
-  {
-    return this.a.c.a();
-  }
-  
-  public boolean c()
-  {
-    return this.a.jdField_a_of_type_Aqwj.a();
-  }
-  
-  public boolean d()
-  {
-    return this.a.jdField_a_of_type_Boolean;
-  }
-  
-  public boolean e()
-  {
-    return this.a.jdField_b_of_type_Boolean;
-  }
-  
-  public boolean f()
-  {
-    return this.a.e.a();
-  }
-  
-  public boolean g()
-  {
-    return this.a.g.a();
-  }
-  
-  public boolean h()
-  {
-    return this.a.f.a();
-  }
-  
-  public boolean i()
-  {
-    return this.a.h.a();
-  }
-  
-  public boolean j()
-  {
-    return this.a.i.a();
-  }
-  
-  public boolean k()
-  {
-    return this.a.j.a();
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Arpl = paramarpl;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramarpl.a();
+    this.b = paramInt2;
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] new DownloadInst.[ mUDID:[" + this.jdField_a_of_type_Long + "] url:" + this.jdField_a_of_type_JavaLangString + " ]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aqwf
  * JD-Core Version:    0.7.0.1
  */

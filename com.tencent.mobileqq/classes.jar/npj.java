@@ -1,23 +1,62 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdDownloadInfo;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
-public final class npj
-  implements Parcelable.Creator<VideoInfo.GameAdDownloadInfo>
+public class npj
+  implements INetInfoHandler
 {
-  public VideoInfo.GameAdDownloadInfo a(Parcel paramParcel)
+  public npj(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  
+  public void onNetMobile2None()
   {
-    return new VideoInfo.GameAdDownloadInfo(paramParcel);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from mobile to none");
+    }
+    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
   }
   
-  public VideoInfo.GameAdDownloadInfo[] a(int paramInt)
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString)
   {
-    return new VideoInfo.GameAdDownloadInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from none to mobile");
+    }
+    ReadInJoyNativeAdAppVideoView.a(this.a).removeCallbacks(this.a.b);
+    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from none to wifi");
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
+    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
+    ReadInJoyNativeAdAppVideoView.a(this.a);
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNativeAdAppVideoView", 2, "network change from wifi to none");
+    }
+    ReadInJoyNativeAdAppVideoView.a(this.a).postDelayed(this.a.b, 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     npj
  * JD-Core Version:    0.7.0.1
  */

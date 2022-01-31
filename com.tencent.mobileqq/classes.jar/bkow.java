@@ -1,24 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.ttpic.openapi.filter.MaterialLoadFinishListener;
 
-public class bkow
-  implements View.OnClickListener
+class bkow
+  implements MaterialLoadFinishListener
 {
-  public bkow(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  bkow(bkov parambkov) {}
   
-  public void onClick(View paramView)
+  public void onLoadFinish(long paramLong)
   {
-    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
-    while (this.a.a == null) {
-      return;
-    }
-    this.a.a.a();
+    blen.a().a(bkov.a(this.a), paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkow
  * JD-Core Version:    0.7.0.1
  */

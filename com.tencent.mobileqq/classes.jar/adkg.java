@@ -1,26 +1,21 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
-class adkg
-  extends ajxj
+public class adkg
+  extends avqr
 {
-  adkg(adke paramadke) {}
+  public adkg(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
-    {
-      paramString = this.a.a.a(this.a.a.getCurrentAccountUin(), (byte)3, false);
-      if ((paramString != null) && (adke.a(this.a) != null)) {
-        adke.a(this.a).setImageBitmap(paramString);
-      }
+    if (PublicAccountListActivity.a(this.a)) {
+      PublicAccountListActivity.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adkg
  * JD-Core Version:    0.7.0.1
  */

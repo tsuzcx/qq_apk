@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import ajsd;
-import askf;
-import bbdx;
+import aljq;
+import aube;
+import bdcs;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.EmoticonTab;
@@ -21,28 +21,28 @@ class EmosmActivity$2
     {
       if (localObject1 != null)
       {
-        localObject1 = ((askf)((QQAppInterface)localObject1).getManager(14)).a(this.a);
+        localObject1 = ((aube)((QQAppInterface)localObject1).getManager(14)).a(this.a);
         if ((localObject1 == null) || ((!((EmoticonTab)localObject1).aioHave) && (!((EmoticonTab)localObject1).kandianHave)))
         {
-          Object localObject2 = ajsd.bR + this.a;
+          Object localObject2 = aljq.bS + this.a;
           localObject1 = new File((String)localObject2);
           localObject2 = new File((String)localObject2 + "del");
           if (!((File)localObject1).renameTo((File)localObject2)) {
             break label134;
           }
-          bbdx.a(((File)localObject2).getAbsolutePath());
+          bdcs.a(((File)localObject2).getAbsolutePath());
         }
       }
       return;
       label134:
-      bbdx.a(((File)localObject1).getAbsolutePath());
+      bdcs.a(((File)localObject1).getAbsolutePath());
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EmosmActivity.2
  * JD-Core Version:    0.7.0.1
  */

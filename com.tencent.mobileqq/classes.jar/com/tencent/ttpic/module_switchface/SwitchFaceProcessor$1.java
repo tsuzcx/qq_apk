@@ -2,7 +2,7 @@ package com.tencent.ttpic.module_switchface;
 
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import lzz;
+import mco;
 
 class SwitchFaceProcessor$1
   implements Runnable
@@ -39,7 +39,7 @@ class SwitchFaceProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.module_switchface.SwitchFaceProcessor.1
  * JD-Core Version:    0.7.0.1
  */

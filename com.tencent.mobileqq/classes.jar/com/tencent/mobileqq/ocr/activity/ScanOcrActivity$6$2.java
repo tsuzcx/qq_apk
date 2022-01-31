@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ocr.activity;
 
 import android.widget.TextView;
-import aucb;
+import avtf;
 import com.tencent.mobileqq.ocr.view.MaskView;
 import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class ScanOcrActivity$6$2
   implements Runnable
 {
-  public ScanOcrActivity$6$2(aucb paramaucb) {}
+  public ScanOcrActivity$6$2(avtf paramavtf) {}
   
   public void run()
   {
@@ -28,7 +28,7 @@ public class ScanOcrActivity$6$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.activity.ScanOcrActivity.6.2
  * JD-Core Version:    0.7.0.1
  */

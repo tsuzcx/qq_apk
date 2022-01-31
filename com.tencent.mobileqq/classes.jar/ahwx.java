@@ -1,53 +1,22 @@
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
-class ahwx
-  implements aysc
+public class ahwx
+  implements DialogInterface.OnClickListener
 {
-  ahwx(ahww paramahww) {}
+  public ahwx(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment) {}
   
-  public void onResp(aysz paramaysz)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = (FilterDesc)paramaysz.jdField_a_of_type_Aysy.a();
-    if (paramaysz.jdField_a_of_type_Int != 0) {
-      lcg.c("VideoFilterTools", "download file failed. errorCode: " + paramaysz.b + ", errorMsg: " + paramaysz.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).resurl);
-    }
-    for (;;)
-    {
-      return;
-      if (!((FilterDesc)localObject).resMD5.equalsIgnoreCase(SecUtil.getFileMd5(paramaysz.jdField_a_of_type_Aysy.c)))
-      {
-        lcg.c("VideoFilterTools", "download file failed: md5 is not match.");
-        bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
-        return;
-      }
-      lcg.c("VideoFilterTools", "download resFile success. file: " + ((FilterDesc)localObject).resurl);
-      try
-      {
-        localObject = ahww.b;
-        bbdx.a(paramaysz.jdField_a_of_type_Aysy.c, (String)localObject, false);
-        bbdx.d(paramaysz.jdField_a_of_type_Aysy.c);
-        if ((ahww.a(this.a).decrementAndGet() == 0) && (ahww.a(this.a) != null))
-        {
-          ahww.a(this.a).a(true);
-          return;
-        }
-      }
-      catch (IOException paramaysz)
-      {
-        paramaysz.printStackTrace();
-        lcg.c("VideoFilterTools", "unzip file failed.");
-      }
-    }
+    paramDialogInterface.dismiss();
+    this.a.getActivity().setResult(8001);
   }
-  
-  public void onUpdateProgeress(aysy paramaysy, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahwx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,17 @@
-import android.view.MotionEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public abstract interface agbw
+final class agbw
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(MotionEvent paramMotionEvent);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agbw
  * JD-Core Version:    0.7.0.1
  */

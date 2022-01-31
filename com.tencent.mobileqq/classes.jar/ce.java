@@ -1,22 +1,44 @@
-import android.view.View;
+import android.os.AsyncTask;
+import android.os.Bundle;
 import com.dataline.activities.LiteActivity;
-import com.tencent.widget.XListView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import java.util.Iterator;
+import java.util.List;
 
 public class ce
-  implements bcpz
+  extends AsyncTask<Bundle, Integer, Void>
 {
-  private View jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.findViewById(2131371906);
-  
   public ce(LiteActivity paramLiteActivity) {}
   
-  public boolean a()
+  protected Void a(Bundle... paramVarArgs)
   {
-    return (this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a.isDirty()) || (this.jdField_a_of_type_AndroidViewView.isDirty());
+    Object localObject = paramVarArgs[0].getStringArrayList("PhotoConst.PHOTO_PATHS");
+    if (localObject == null) {}
+    for (;;)
+    {
+      return null;
+      paramVarArgs = (allz)this.a.app.a(8);
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
+        localDataLineMsgRecord.path = str;
+        localDataLineMsgRecord.msgtype = -2009;
+        paramVarArgs.a(localDataLineMsgRecord, false);
+      }
+    }
+  }
+  
+  protected void a(Void paramVoid)
+  {
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ce
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,55 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.util.DisplayMetrics;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class yor
+class yor
+  implements URLDrawable.URLDrawableListener
 {
-  private static AppInterface a;
+  yor(yom paramyom, DisplayMetrics paramDisplayMetrics) {}
   
-  private static void a(String paramString, long paramLong)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    String[] arrayOfString;
-    if (bbfj.b(BaseApplication.getContext()) == 1)
-    {
-      arrayOfString = new String[3];
-      arrayOfString[0] = "param_WIFIGameCenterDownloadFlow";
-      arrayOfString[1] = "param_WIFIFlow";
-      arrayOfString[2] = "param_Flow";
-    }
-    for (;;)
-    {
-      a(paramString, arrayOfString, paramLong);
-      return;
-      arrayOfString = new String[3];
-      arrayOfString[0] = "param_XGGameCenterDownloadFlow";
-      arrayOfString[1] = "param_XGFlow";
-      arrayOfString[2] = "param_Flow";
-    }
+    this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_Yom.c = false;
   }
   
-  public static void a(String paramString, long paramLong, short paramShort)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramShort == 0) {
-      a(paramString, paramLong);
-    }
-    while (paramShort != 1) {
-      return;
-    }
-    b(paramString, paramLong);
+    this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_Yom.c = false;
   }
   
-  private static void a(String paramString, String[] paramArrayOfString, long paramLong)
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((a == null) || (paramArrayOfString == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("TrafficStatistics", 2, "application or tags is null, return.");
+    this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
+    this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramURLDrawable);
+    float f1 = paramURLDrawable.getIntrinsicHeight();
+    float f2 = paramURLDrawable.getIntrinsicWidth();
+    paramURLDrawable = this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    int i = 0;
+    if (f2 != 0.0F) {
+      if (f1 <= bdcq.a(this.jdField_a_of_type_Yom.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F)) {
+        break label109;
       }
     }
-    for (;;)
+    label109:
+    for (i = (int)bdcq.a(this.jdField_a_of_type_Yom.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 150.0F);; i = (int)((this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - bdcq.a(this.jdField_a_of_type_Yom.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 60.0F)) * (f1 / f2)))
     {
-      return;
-      try
+      if (i > 0)
       {
-        String str = a.getCurrentAccountUin();
-        a.sendAppDataIncerment(str, paramArrayOfString, paramLong);
-        if (QLog.isColorLevel())
-        {
-          QLog.d("TrafficStatistics", 2, paramString + " fileSize: " + paramLong);
-          return;
-        }
+        paramURLDrawable.height = i;
+        this.jdField_a_of_type_Yom.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramURLDrawable);
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
-  
-  private static void b(String paramString, long paramLong)
-  {
-    String[] arrayOfString;
-    if (bbfj.b(BaseApplication.getContext()) == 1)
-    {
-      arrayOfString = new String[3];
-      arrayOfString[0] = "param_WIFIGameCenterUploadFlow";
-      arrayOfString[1] = "param_WIFIFlow";
-      arrayOfString[2] = "param_Flow";
-    }
-    for (;;)
-    {
-      a(paramString, arrayOfString, paramLong);
       return;
-      arrayOfString = new String[3];
-      arrayOfString[0] = "param_XGGameCenterUploadFlow";
-      arrayOfString[1] = "param_XGFlow";
-      arrayOfString[2] = "param_Flow";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     yor
  * JD-Core Version:    0.7.0.1
  */

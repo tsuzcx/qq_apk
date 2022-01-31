@@ -1,56 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
 public class afxk
-  implements View.OnClickListener
 {
-  public afxk(ChatHistoryC2CLinkFragment paramChatHistoryC2CLinkFragment) {}
+  public float a;
+  public int a;
+  public afxi a;
+  public ValueAnimator a;
+  public boolean a;
+  public float b;
+  public int b;
+  public ValueAnimator b;
+  public boolean b;
+  public int c;
+  public ValueAnimator c;
+  public int d;
+  public ValueAnimator d;
+  public int e;
+  public int f;
+  public int g;
   
-  public void onClick(View paramView)
-  {
-    if ((paramView.getTag() instanceof String)) {
-      return;
-    }
-    Object localObject1 = (ChatMessage)((afxi)paramView.getTag()).a;
-    if (this.a.c)
-    {
-      this.a.jdField_a_of_type_Agbd.a(localObject1);
-      this.a.jdField_a_of_type_Afxg.notifyDataSetChanged();
-    }
-    while ((!(localObject1 instanceof MessageForStructing)) || (((MessageForStructing)localObject1).structingMsg == null) || (!(((MessageForStructing)localObject1).structingMsg instanceof AbsShareMsg)))
-    {
-      this.a.jdField_a_of_type_Afxg.notifyDataSetChanged();
-      return;
-    }
-    localObject1 = (AbsShareMsg)((MessageForStructing)localObject1).structingMsg;
-    Object localObject2;
-    if ((localObject1 instanceof StructMsgForGeneralShare))
-    {
-      localObject2 = (StructMsgForGeneralShare)localObject1;
-      axvm localaxvm = new axvm(this.a.b, paramView, (StructMsgForGeneralShare)localObject2);
-      StructMsgForGeneralShare.onClickEvent(this.a.b, this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForGeneralShare)localObject2, paramView, localaxvm);
-    }
-    for (;;)
-    {
-      ((AbsShareMsg)localObject1).getOnClickListener().onClick(paramView);
-      break;
-      if ((localObject1 instanceof StructMsgForAudioShare))
-      {
-        localObject2 = (StructMsgForAudioShare)localObject1;
-        StructMsgForAudioShare.onClickEvent(this.a.jdField_a_of_type_AndroidContentContext, (StructMsgForAudioShare)localObject2);
-      }
-    }
-  }
+  public afxk(SixCombolEffectView paramSixCombolEffectView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     afxk
  * JD-Core Version:    0.7.0.1
  */

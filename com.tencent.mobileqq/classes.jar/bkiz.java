@@ -1,40 +1,25 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.ttpic.openapi.filter.CosFunHelper.CountDownListener;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class bkiz
-  implements uqs
+public class bkiz
+  implements CosFunHelper.CountDownListener
 {
-  bkiz(bkiy parambkiy) {}
+  public bkiz(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void b(boolean paramBoolean)
+  public void onCountDownEnd()
   {
-    if (bkiy.a(this.a).b())
-    {
-      vei.a("video_edit", "repost_comment", 0, 0, new String[] { "", "", "", bkiy.a(this.a).a.a("vip_forward_vid") });
-      return;
-    }
-    vei.a("video_edit", "repost_emoji", 0, 0, new String[] { "", "", "", bkiy.a(this.a).a.a("vip_forward_vid") });
+    QIMEffectCameraCaptureUnit.a(this.a);
   }
   
-  public boolean b()
+  public void onCountDownStart(VideoMaterial paramVideoMaterial)
   {
-    return false;
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if ((!bkiy.a(this.a).a()) && (!bkiy.a(this.a).c())) {
-      this.a.dismiss();
-    }
-  }
-  
-  public void d()
-  {
-    this.a.dismiss();
+    QIMEffectCameraCaptureUnit.a(this.a, paramVideoMaterial.getTipsDrawable());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     bkiz
  * JD-Core Version:    0.7.0.1
  */

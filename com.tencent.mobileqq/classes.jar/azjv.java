@@ -1,33 +1,46 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDKData;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDKData.LeakListener.1;
+import com.tencent.mobileqq.startup.step.InitMagnifierSDKData.LeakListener.2;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class azjv
-  implements BusinessObserver
+public class azjv
+  implements abqq
 {
-  protected abstract void a(long paramLong);
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public List<String> a(String paramString)
   {
-    if (QLog.isColorLevel())
-    {
-      String str = "success = [" + paramBoolean + "], [" + paramBundle + "]";
-      QLog.i("GroupAppsObserver", 2, " onReceive: invoked. " + str);
+    if (BaseActivity.sTopActivity != null) {
+      BaseActivity.sTopActivity.runOnUiThread(new InitMagnifierSDKData.LeakListener.1(this, paramString));
     }
-    if (!paramBoolean) {
-      return;
+    paramString = new ArrayList(4);
+    paramString.add(abqn.b());
+    paramString.add(abqn.a());
+    paramString.addAll(abqn.b());
+    return paramString;
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    if (BaseActivity.sTopActivity != null) {
+      BaseActivity.sTopActivity.runOnUiThread(new InitMagnifierSDKData.LeakListener.2(this, paramString1, paramBoolean, paramString2));
     }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    a(paramBundle.getLong("KEY_GROUP_UIN"));
+  }
+  
+  public boolean a(LeakInspector.InspectUUID paramInspectUUID)
+  {
+    return InitMagnifierSDKData.a(paramInspectUUID);
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     azjv
  * JD-Core Version:    0.7.0.1
  */

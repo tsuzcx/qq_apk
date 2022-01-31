@@ -1,31 +1,25 @@
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 
-class oji
-  extends ojn
+public final class oji
+  implements pgr
 {
-  oji(oil paramoil, int paramInt)
+  public oji(CommentInfo paramCommentInfo) {}
+  
+  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    super(paramoil, null);
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.authorUin)) || (paramReadInJoyUserInfo == null)) {
+      return;
+    }
+    this.a.authorNickName = paramReadInJoyUserInfo.nick;
   }
   
-  void a(ojq paramojq)
-  {
-    if (paramojq == null) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        paramojq.onCommentListLoad(1, false, new ArrayList(), false, 2, 2);
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 2);
-    paramojq.onCommentLoadMore(1, false, new ArrayList(), false, 2);
-  }
+  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     oji
  * JD-Core Version:    0.7.0.1
  */

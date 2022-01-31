@@ -1,23 +1,25 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
-import bihv;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
 
 class ReadInJoyListViewGroup$7
   implements Runnable
 {
-  ReadInJoyListViewGroup$7(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
-  
   public void run()
   {
-    if (BaseApplicationImpl.sProcessId != 9) {
-      bihv.a(BaseApplicationImpl.getContext());
+    View localView = this.this$0.findViewById(2131366722);
+    this.jdField_a_of_type_AndroidViewView.getHeight();
+    if (this.jdField_a_of_type_Boolean) {}
+    for (int i = this.jdField_a_of_type_Int;; i = this.b)
+    {
+      localView.setPadding(0, i, 0, 0);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.7
  * JD-Core Version:    0.7.0.1
  */

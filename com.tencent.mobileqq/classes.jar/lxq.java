@@ -1,178 +1,138 @@
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.RemoteException;
-import com.tencent.av.service.AVPbInfo;
-import com.tencent.av.service.AVServiceForQQ;
 import com.tencent.qphone.base.util.QLog;
 
 public class lxq
+  extends lwt
 {
-  Context jdField_a_of_type_AndroidContentContext = null;
-  lwl jdField_a_of_type_Lwl = null;
-  lxr jdField_a_of_type_Lxr = null;
-  lxs jdField_a_of_type_Lxs = new lxs(this);
+  public boolean a;
   
-  public lxq(Context paramContext)
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public int a(long paramLong, int paramInt)
-  {
-    if (this.jdField_a_of_type_Lwl == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
-    do
-    {
-      return 0;
-      try
+    long l = paramLong - this.jdField_a_of_type_Long;
+    int k = 0;
+    int j = 0;
+    int i;
+    float f;
+    if (this.jdField_a_of_type_Boolean) {
+      if ((l > 0L) && (l < 100L))
       {
-        paramInt = this.jdField_a_of_type_Lwl.a(paramLong, paramInt);
-        return paramInt;
-      }
-      catch (RemoteException localRemoteException) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "RemoteException", localRemoteException);
-    return 0;
-  }
-  
-  public AVPbInfo a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Lwl == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
+        i = (int)(255L * l / 100L);
+        if ((l <= 0L) || (l > 200L)) {
+          break label226;
+        }
+        f = -0.0035F * (float)l + 1.5F;
       }
     }
-    do
+    label539:
+    for (;;)
     {
-      return null;
-      try
-      {
-        paramArrayOfByte = this.jdField_a_of_type_Lwl.a(paramArrayOfByte);
-        return paramArrayOfByte;
-      }
-      catch (RemoteException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "processQCallPush RemoteException", paramArrayOfByte);
-    return null;
-  }
-  
-  public void a()
-  {
-    b(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Lxr = null;
-  }
-  
-  public void a(Context paramContext)
-  {
-    if (this.jdField_a_of_type_Lwl == null)
-    {
-      Intent localIntent = new Intent(paramContext, AVServiceForQQ.class);
-      boolean bool = paramContext.getApplicationContext().bindService(localIntent, this.jdField_a_of_type_Lxs, 1);
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "bindService result == " + bool);
-      }
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.jdField_a_of_type_Lwl == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
-    do
-    {
+      QLog.d("RedPacketGameParticleTopWordTip", 2, "WL_DEBUG update duration = " + l + ", alpha = " + i + ", scale = " + f + ", curTime = " + paramLong + ", mStartTime = " + this.jdField_a_of_type_Long);
+      a(i);
+      b(f);
       return;
-      try
+      if ((l >= 100L) && (l <= 1200L))
       {
-        this.jdField_a_of_type_Lwl.a(paramString);
-        return;
+        i = 255;
+        break;
       }
-      catch (RemoteException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "onGetQCallNickName RemoteException", paramString);
-  }
-  
-  public void a(String paramString, Bitmap paramBitmap)
-  {
-    if (this.jdField_a_of_type_Lwl == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
+      i = j;
+      if (l <= 1200L) {
+        break;
+      }
+      i = j;
+      if (l >= 1250L) {
+        break;
+      }
+      i = (int)(255L * (l - 1250L) / -50L);
+      break;
+      label226:
+      if ((l > 200L) && (l <= 350L))
+      {
+        f = 0.001333333F * (float)l + 0.5333334F;
+      }
+      else if ((l > 350L) && (l <= 450L))
+      {
+        f = -0.001F * (float)l + 1.35F;
+      }
+      else if ((l > 450L) && (l <= 550L))
+      {
+        f = 0.001F * (float)l + 0.45F;
+      }
+      else if ((l > 550L) && (l <= 1100L))
+      {
+        f = 1.0F;
+      }
+      else if ((l > 1100L) && (l <= 1150L))
+      {
+        f = 0.0016F * (float)l - 0.76F;
+      }
+      else if ((l > 1150L) && (l <= 1250L))
+      {
+        f = -0.0108F * (float)l + 13.5F;
+      }
+      else
+      {
+        f = 0.0F;
+        continue;
+        if ((l > 0L) && (l < 100L)) {
+          i = (int)(255L * l / 100L);
+        }
+        for (;;)
+        {
+          if ((l <= 0L) || (l > 200L)) {
+            break label539;
+          }
+          f = -0.0035F * (float)l + 1.5F;
+          break;
+          if ((l >= 100L) && (l <= 700L))
+          {
+            i = 255;
+          }
+          else
+          {
+            i = k;
+            if (l > 700L)
+            {
+              i = k;
+              if (l < 750L) {
+                i = (int)(255L * (l - 750L) / -50L);
+              }
+            }
+          }
+        }
+        if ((l > 200L) && (l <= 350L)) {
+          f = 0.001333333F * (float)l + 0.5333334F;
+        } else if ((l > 350L) && (l <= 450L)) {
+          f = -0.001F * (float)l + 1.35F;
+        } else if ((l > 450L) && (l <= 550L)) {
+          f = 0.001F * (float)l + 0.45F;
+        } else if ((l > 550L) && (l <= 600L)) {
+          f = 1.0F;
+        } else if ((l > 600L) && (l <= 650L)) {
+          f = 0.0016F * (float)l + 0.04F;
+        } else if ((l > 650L) && (l <= 750L)) {
+          f = -0.0108F * (float)l + 8.1F;
+        } else {
+          f = 0.0F;
+        }
       }
     }
-    do
-    {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lwl.a(paramString, paramBitmap);
-        return;
-      }
-      catch (RemoteException paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "pushStrangeFace RemoteException", paramString);
   }
   
-  public void a(lxr paramlxr)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Lxr = paramlxr;
-    a(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void a(byte[] paramArrayOfByte)
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_Lwl == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
-    do
-    {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lwl.a(paramArrayOfByte);
-        return;
-      }
-      catch (RemoteException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "RemoteException", paramArrayOfByte);
-  }
-  
-  public void b(Context paramContext)
-  {
-    paramContext.getApplicationContext().unbindService(this.jdField_a_of_type_Lxs);
-    this.jdField_a_of_type_Lwl = null;
-  }
-  
-  public void b(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_Lwl == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavWrapper", 2, "mQavProxy == null");
-      }
-    }
-    do
-    {
-      return;
-      try
-      {
-        this.jdField_a_of_type_Lwl.c(paramArrayOfByte);
-        return;
-      }
-      catch (RemoteException paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("QavWrapper", 2, "RemoteException", paramArrayOfByte);
+    paramInt2 = paramInt1 * 39 / 750;
+    paramInt3 = paramInt1 * 59 / 750;
+    a(paramInt2, paramInt3, paramInt1 - paramInt2, paramInt1 * 268 / 750 + paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     lxq
  * JD-Core Version:    0.7.0.1
  */

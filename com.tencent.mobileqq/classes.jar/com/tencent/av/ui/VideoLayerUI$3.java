@@ -1,7 +1,7 @@
 package com.tencent.av.ui;
 
-import mao;
-import muc;
+import mdd;
+import mww;
 
 class VideoLayerUI$3
   implements Runnable
@@ -10,13 +10,13 @@ class VideoLayerUI$3
   
   public void run()
   {
-    mao.a(this.this$0.a, 1055);
-    muc.a(2);
+    mdd.a(this.this$0.a, 1055);
+    mww.a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUI.3
  * JD-Core Version:    0.7.0.1
  */

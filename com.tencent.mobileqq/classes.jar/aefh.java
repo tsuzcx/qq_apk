@@ -1,30 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.MessageForVideo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.Friends;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class aefh
-  implements View.OnClickListener
+public class aefh
+  extends allb
 {
-  aefh(aefg paramaefg) {}
+  public aefh(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
   
-  public void onClick(View paramView)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if (!aefg.a(this.a)) {}
-    do
+    if (!paramBoolean) {
+      return;
+    }
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
-      do
+      if ((paramObject != null) && (!TextUtils.isEmpty(paramObject.uin)))
       {
+        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+        aefn localaefn;
+        do
+        {
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localaefn = (aefn)localIterator.next();
+        } while ((localaefn.a == null) || (!(localaefn.a instanceof Friends)) || (!paramObject.uin.equals(((Friends)localaefn.a).uin)));
+      }
+      for (int i = 1; i != 0; i = 0)
+      {
+        UncommonlyUsedContactsActivity.a(this.a);
+        this.a.jdField_a_of_type_Aefl.notifyDataSetChanged();
         return;
-      } while ((!llw.c()) || (!llw.d()));
-      paramView = (acva)actj.a(paramView);
-    } while (paramView == null);
-    paramView = (MessageForVideo)paramView.a;
-    aefg.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramView, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      }
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefh
  * JD-Core Version:    0.7.0.1
  */

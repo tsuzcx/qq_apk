@@ -1,60 +1,37 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.widget.XPanelContainer;
-import java.util.ArrayList;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.api.GdtAd;
 
-public class aamq
-  implements aeka
+class aamq
+  implements View.OnClickListener
 {
-  public aamq(BaseChatPie paramBaseChatPie) {}
+  aamq(aamo paramaamo) {}
   
-  public void a(Intent paramIntent)
+  public void onClick(View paramView)
   {
-    ((adis)this.a.jdField_a_of_type_Adia.a(7)).a(this.a.hashCode(), paramIntent);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    Object localObject = ((adis)this.a.jdField_a_of_type_Adia.a(7)).a(this.a.hashCode());
-    int i = paramInt;
-    if (localObject != null)
+    if (this.a.a() == null)
     {
-      i = paramInt;
-      if (((Intent)localObject).hasExtra("PhotoConst.SELECTED_PATHS"))
-      {
-        localObject = ((Intent)localObject).getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
-        i = paramInt;
-        if (localObject != null) {
-          i = ((ArrayList)localObject).size();
-        }
-      }
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "error", 0).show();
+      return;
     }
-    PanelIconLinearLayout localPanelIconLinearLayout;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (!this.a.K))
+    if (!this.a.a().isLoaded())
     {
-      boolean bool = myb.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      if ((this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) && (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() == 4)) {}
-      localPanelIconLinearLayout = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
-      if (!bool) {
-        break label179;
-      }
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
+      return;
     }
-    label179:
-    for (localObject = aeft.m;; localObject = aeft.l)
+    if (this.a.a().isInvalidated())
     {
-      localPanelIconLinearLayout.a((int[])localObject, i);
-      if ((i > 0) && (!this.a.B())) {
-        this.a.a(true);
-      }
-      return false;
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is invalidated", 0).show();
+      return;
     }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamq
  * JD-Core Version:    0.7.0.1
  */

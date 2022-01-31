@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.structmsg;
 
-import axqy;
-import axvm;
+import azmj;
+import azrg;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class StructMsgForGeneralShare$GeneralClickHandler$4
   implements Runnable
 {
-  public StructMsgForGeneralShare$GeneralClickHandler$4(axvm paramaxvm, QQAppInterface paramQQAppInterface) {}
+  public StructMsgForGeneralShare$GeneralClickHandler$4(azrg paramazrg, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    axqy.b(this.a, "dc00898", "", "", "0X8009304", "0X8009304", 0, 0, "", "", "", "");
+    azmj.b(this.a, "dc00898", "", "", "0X8009304", "0X8009304", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler.4
  * JD-Core Version:    0.7.0.1
  */

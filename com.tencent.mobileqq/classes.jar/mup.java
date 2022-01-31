@@ -1,92 +1,132 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.highway.config.HwServlet;
-import com.tencent.mobileqq.highway.openup.SessionInfo;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtReq;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.UUID;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class mup
+public class mup
 {
-  private final int jdField_a_of_type_Int;
-  protected AppInterface a;
-  final String jdField_a_of_type_JavaLangString;
+  private static volatile mup jdField_a_of_type_Mup;
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new muq(this);
+  Context jdField_a_of_type_AndroidContentContext = null;
+  VideoController jdField_a_of_type_ComTencentAvVideoController = null;
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+  String jdField_a_of_type_JavaLangString = null;
+  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  mur jdField_a_of_type_Mur = null;
   
-  protected mup(AppInterface paramAppInterface, int paramInt, long paramLong)
+  private mup(VideoAppInterface paramVideoAppInterface)
   {
-    this.jdField_a_of_type_JavaLangString = ("FileUpload_" + paramInt + "_" + paramLong);
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    IntentFilter localIntentFilter = new IntentFilter("tencent.video.q2v.getNearByProfile");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp();
+    this.jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
   }
   
-  public static void a(AppInterface paramAppInterface)
+  public static mup a(VideoAppInterface paramVideoAppInterface)
   {
-    if (paramAppInterface != null) {
-      paramAppInterface.getHwEngine().preConnect();
-    }
-  }
-  
-  public static byte[] a(String paramString, AppInterface paramAppInterface)
-  {
+    if (jdField_a_of_type_Mup == null) {}
     try
     {
-      String str = paramAppInterface.getCurrentAccountUin();
-      if (SessionInfo.getInstance(str).getHttpconn_sig_session() != null)
-      {
-        int i = SessionInfo.getInstance(str).getHttpconn_sig_session().length;
-        paramString = new byte[i];
-        System.arraycopy(SessionInfo.getInstance(str).getHttpconn_sig_session(), 0, paramString, 0, i);
-        return paramString;
+      if (jdField_a_of_type_Mup == null) {
+        jdField_a_of_type_Mup = new mup(paramVideoAppInterface);
       }
-      HwServlet.getConfig(paramAppInterface, str);
-      QLog.w(paramString, 1, "getSig, fail");
-      return null;
+      return jdField_a_of_type_Mup;
     }
     finally {}
   }
   
-  protected boolean a(String paramString, mur parammur)
+  public void a()
   {
-    long l = new File(paramString).length();
-    String str = alet.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if (l == 0L)
-    {
-      parammur.a(-10001, str, "", null);
-      return false;
-    }
-    Object localObject = a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    if ((localObject == null) || (localObject.length == 0))
-    {
-      parammur.a(-10003, str, "", null);
-      return false;
-    }
-    byte[] arrayOfByte = alet.a(paramString);
-    if ((arrayOfByte == null) || (arrayOfByte.length == 0))
-    {
-      parammur.a(-10002, str, "", null);
-      return false;
-    }
-    muq localmuq = new muq(this, str, l, arrayOfByte, parammur);
-    Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
-    localCommFileExtReq.uint32_action_type.set(0);
-    localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
-    localObject = new Transaction(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int, paramString, 0, (byte[])localObject, arrayOfByte, localmuq, localCommFileExtReq.toByteArray());
-    int i = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().submitTransactionTask((Transaction)localObject);
-    if (i != 0) {
-      parammur.a(i, str, "", null);
-    }
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "requestToUpload, localFile[" + paramString + "], sessionId[" + str + "]");
-    return i == 0;
+    this.jdField_a_of_type_Mur = null;
+    this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_ComTencentAvVideoController = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+    jdField_a_of_type_Mup = null;
+  }
+  
+  /* Error */
+  public void a(VideoAppInterface paramVideoAppInterface, String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: invokestatic 89	lfb:a	()Llfb;
+    //   5: aload_0
+    //   6: getfield 34	mup:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   9: invokevirtual 93	lfb:c	(Ljava/lang/String;)Llid;
+    //   12: astore_3
+    //   13: aload_3
+    //   14: ifnonnull +6 -> 20
+    //   17: aload_0
+    //   18: monitorexit
+    //   19: return
+    //   20: aload_0
+    //   21: getfield 32	mup:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   24: aload_2
+    //   25: invokeinterface 97 2 0
+    //   30: ifne -13 -> 17
+    //   33: invokestatic 103	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   36: ifeq +28 -> 64
+    //   39: ldc 105
+    //   41: iconst_2
+    //   42: new 107	java/lang/StringBuilder
+    //   45: dup
+    //   46: invokespecial 108	java/lang/StringBuilder:<init>	()V
+    //   49: ldc 110
+    //   51: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: aload_2
+    //   55: invokevirtual 114	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   61: invokestatic 122	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   64: aload_1
+    //   65: aload_2
+    //   66: invokevirtual 126	com/tencent/av/app/VideoAppInterface:b	(Ljava/lang/String;)Z
+    //   69: ifeq -52 -> 17
+    //   72: aload_0
+    //   73: getfield 32	mup:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   76: aload_2
+    //   77: invokeinterface 129 2 0
+    //   82: pop
+    //   83: goto -66 -> 17
+    //   86: astore_1
+    //   87: aload_0
+    //   88: monitorexit
+    //   89: aload_1
+    //   90: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	91	0	this	mup
+    //   0	91	1	paramVideoAppInterface	VideoAppInterface
+    //   0	91	2	paramString	String
+    //   12	2	3	locallid	lid
+    // Exception table:
+    //   from	to	target	type
+    //   2	13	86	finally
+    //   20	64	86	finally
+    //   64	83	86	finally
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(mur parammur)
+  {
+    this.jdField_a_of_type_Mur = parammur;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     mup
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.Context;
-import avcu;
-import avcw;
+import awuh;
+import awuj;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
 import java.io.PipedInputStream;
 
 public final class AmrInputStreamWrapper
-  extends avcw
+  extends awuj
 {
   private static boolean jdField_a_of_type_Boolean;
   private long jdField_a_of_type_Long;
@@ -60,7 +60,7 @@ public final class AmrInputStreamWrapper
     this.jdField_a_of_type_Int = 320;
     this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
     this.c = new byte[960];
-    this.jdField_a_of_type_Avcu = new avcu(this.c, 0);
+    this.jdField_a_of_type_Awuh = new awuh(this.c, 0);
   }
   
   /* Error */
@@ -235,7 +235,7 @@ public final class AmrInputStreamWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AmrInputStreamWrapper
  * JD-Core Version:    0.7.0.1
  */

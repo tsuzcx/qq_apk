@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.apollo.view;
 
-import ajqf;
-import ajqg;
+import alhs;
+import alht;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 public class ApolloMainViewBinder$1$1$1
   implements Runnable
 {
-  public ApolloMainViewBinder$1$1$1(ajqf paramajqf) {}
+  public ApolloMainViewBinder$1$1$1(alhs paramalhs) {}
   
   public void run()
   {
@@ -17,14 +17,14 @@ public class ApolloMainViewBinder$1$1$1
     localTranslateAnimation.setDuration(400L);
     localTranslateAnimation.setRepeatCount(1);
     localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new ajqg(this));
+    localTranslateAnimation.setAnimationListener(new alht(this));
     this.a.a.a.setVisibility(0);
     this.a.a.a.startAnimation(localTranslateAnimation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.ApolloMainViewBinder.1.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,31 @@
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserSimpleInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class tos
-  extends syn
+  implements TextWatcher
 {
-  public long a;
-  public List<qqstory_struct.UserSimpleInfo> a;
-  public long b;
+  public tos(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
   
-  public tos(String paramString, qqstory_service.RspGetFeedVisitor paramRspGetFeedVisitor)
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramRspGetFeedVisitor.result);
-    this.b = paramRspGetFeedVisitor.view_total_num.get();
-    this.jdField_a_of_type_JavaUtilList = paramRspGetFeedVisitor.user_list.get();
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilList.size();
+    PublicAccountImageCollectionCommentActivity.a(this.a, paramEditable.toString());
   }
   
-  public String toString()
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    return "GetVideoWatcherListResponse{totalReadTime=" + this.b + "totalWatcherCount=" + this.jdField_a_of_type_Long + ", userList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    if ((!TextUtils.isEmpty(paramCharSequence)) && (paramCharSequence.length() - paramInt2 + paramInt3 > 100)) {
+      QQToast.a(this.a, 0, this.a.getString(2131695712), 0).b(this.a.getTitleBarHeight());
+    }
   }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tos
  * JD-Core Version:    0.7.0.1
  */

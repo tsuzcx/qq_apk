@@ -1,36 +1,77 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import com.tencent.qqconnect.wtlogin.AuthDevVerifyCodeActivity2;
+import org.json.JSONObject;
 
-class atdl
-  implements bcix<oidb_0x8e4.RspBody>
+public class atdl
+  extends WebViewPlugin
 {
-  atdl(atdk paramatdk) {}
-  
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public atdl()
   {
-    if (paramInt == 0)
+    this.mPluginNameSpace = "login";
+  }
+  
+  private Activity a()
+  {
+    for (Activity localActivity = this.mRuntime.a(); (localActivity instanceof BasePluginActivity); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (("login".equals(paramString2)) && ("openSmsPage".equals(paramString3))) {}
+    for (;;)
     {
-      paramRspBody = paramRspBody.poi_info;
-      String str = paramRspBody.bytes_uid.get().toStringUtf8();
-      this.a.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
+      try
+      {
+        addOpenApiListenerIfNeeded(paramString3, paramJsBridgeListener);
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        paramString1 = paramJsBridgeListener.optString("countryCode");
+        paramString2 = paramJsBridgeListener.optString("uin");
+        paramString3 = paramJsBridgeListener.optString("phone");
+        int j = Integer.parseInt(paramJsBridgeListener.optString("verifySeq"));
+        if (paramJsBridgeListener.optInt("isFromOpenSdk", 0) == 1)
+        {
+          i = 1;
+          if (i != 0)
+          {
+            paramJsBridgeListener = new Intent(a(), AuthDevVerifyCodeActivity2.class);
+            paramJsBridgeListener.putExtra("phone_num", paramString3);
+            paramJsBridgeListener.putExtra("country_code", paramString1);
+            paramJsBridgeListener.putExtra("mobile_type", 0);
+            paramJsBridgeListener.putExtra("from_login", true);
+            paramJsBridgeListener.putExtra("uin", paramString2);
+            paramJsBridgeListener.putExtra("seq", j);
+            startActivityForResult(paramJsBridgeListener, (byte)12);
+            azmj.a(null, "dc00898", "", "", "0X800ADE1", "0X800ADE1", 0, 0, "", "", "", "");
+            return true;
+          }
+          paramJsBridgeListener = new Intent(a(), AuthDevVerifyCodeActivity.class);
+          continue;
+          return false;
+        }
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        QLog.e("LoginPlugin", 1, new Object[] { "deal login jsbridge error : ", paramJsBridgeListener.getMessage() });
+      }
+      int i = 0;
     }
-    do
-    {
-      return;
-      this.a.a.a(paramInt, paramRspBody, ajya.a(2131705073));
-    } while (!QLog.isColorLevel());
-    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
+  }
+  
+  public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
+  {
+    super.onActivityResult(paramIntent, paramByte, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     atdl
  * JD-Core Version:    0.7.0.1
  */

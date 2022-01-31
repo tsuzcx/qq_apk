@@ -7,12 +7,12 @@ class AssociatedAccountActivity$16
   
   public void run()
   {
-    AssociatedAccountActivity.b(this.this$0);
+    this.this$0.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.16
  * JD-Core Version:    0.7.0.1
  */
